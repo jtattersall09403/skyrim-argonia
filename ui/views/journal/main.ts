@@ -29,7 +29,7 @@ function show(i: number): void {
   const folio = root.querySelector<HTMLElement>(".folio");
   if (folio) {  // the page as ArgoniaCore counts it, and the leaf within it when it has more than one
     folio.dataset.page ??= folio.textContent ?? "";
-    folio.textContent = leaves() > 1 ? `${folio.dataset.page}, leaf ${leaf + 1} of ${leaves()}` : folio.dataset.page;
+    folio.textContent = leaves() > 1 ? `Pages ${2 * leaf + 1}–${2 * leaf + 2} of ${2 * leaves()}` : folio.dataset.page;
   }
   for (const b of root.querySelectorAll<HTMLButtonElement>(".turn")) {
     const back = b.dataset.dir === "prev";

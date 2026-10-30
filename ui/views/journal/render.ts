@@ -13,7 +13,7 @@ const STATUS: Record<QuestIndexItem["status"], string> = { active: "", complete:
 function entry(e: JournalEntry, prev: JournalEntry | undefined): string {
   const date = prev?.date.text === e.date.text ? "" : `<h2 class="date">${esc(e.date.text)}</h2>`;
   const runs = e.runs.map((r) => r.topic === undefined ? esc(r.text) : `<span class="kw">${esc(r.text)}</span>`).join("");
-  return `<div class="entry ${e.kind}">${date}<p><span class="qname">${esc(e.questName)}.</span> ${runs}</p></div>`;
+  return `<div class="entry ${e.kind}">${date}<p><span class="qname">${esc(e.questName)}</span>${runs}</p></div>`;
 }
 
 function quest(q: QuestIndexItem): string {

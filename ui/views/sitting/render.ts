@@ -39,7 +39,7 @@ export function render(s: SittingState): string {
   const later = s.pendingAfter > 0 ? `<span class="later">${s.pendingAfter} more to take later</span>` : "";
   return `<section class="sitting paper" aria-label="Level sitting">
   <header class="head"><h1>Level ${s.level}</h1><span class="vastei">Vastei carried <b>${fmt(s.vastei)}</b></span>${later}</header>
-  <div class="cols"><span>Attribute</span><span>Now</span><span>This sitting</span><span>Next point</span></div>
+  <div class="cols"><span>Attribute</span><span>Now</span><span>This sitting</span><span>Vastei</span><span></span><span></span></div>
   <ul class="attrs">${s.attributes.map(row).join("")}</ul>
   <div class="base"><p class="pool">Health <b>${fmt(s.health.before)}</b> <span class="arrow">&rarr;</span> <b>${fmt(s.health.after)}</b></p>
   ${notice}

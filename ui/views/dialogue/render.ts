@@ -42,15 +42,16 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
   const persuade = s.persuasion.available
     ? `<button type="button" class="special" data-ui="persuade-open" data-key="persuade">Persuasion</button>` : "";
   const goodbye = s.canLeave
-    ? intentButton({ type: "dialogue.goodbye", v: 1, body: {} }, "goodbye", "Goodbye", `data-key="goodbye"`) : "";
+    ? intentButton({ type: "dialogue.goodbye", v: 1, body: {} }, "goodbye", "Goodbye", `data-key="goodbye"`)
+    : `<p class="forced">You cannot leave this talk yet.</p>`;
   return `<section class="dialogue paper" data-band="${d.band}" aria-label="${esc(s.speaker.name)}">
   <header class="title"><h1>${esc(s.speaker.name)}</h1></header>
   <div class="cols">
     <div class="talk scroll" data-scroll="talk">${entries(s)}</div>
     <aside class="side">
       <div class="disp" title="Disposition">
-        <div class="disp-bar"><div class="disp-fill" style="width:${d.value}%"></div>
-          <span class="disp-text">Disposition ${d.value}</span></div>
+        <span class="disp-text">Disposition ${d.value}</span>
+        <div class="disp-bar"><div class="disp-fill" style="width:${d.value}%"></div></div>
       </div>
       ${persuade}
       ${ui.filter ? `<div class="filter" aria-live="polite">${esc(ui.filter)}</div>` : ""}

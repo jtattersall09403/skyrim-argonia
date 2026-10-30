@@ -4,7 +4,7 @@ body { display: flex; align-items: center; justify-content: center; }
 
 .dialogue {
   position: relative;
-  width: min(94vw, 62rem); height: 88vh;
+  width: min(94vw, 62rem); height: 72vh; margin-top: 18vh;
   display: flex; flex-direction: column;
   padding: var(--s3) var(--s4) var(--s4);
 }
@@ -15,12 +15,12 @@ body { display: flex; align-items: center; justify-content: center; }
 .cols { flex: 1; min-height: 0; display: flex; gap: var(--s4); }
 
 .talk {
-  flex: 2.1; min-width: 0; padding: var(--s2) var(--s3);
+  flex: 1.7; min-width: 0; overflow-y: auto; padding: var(--s2) var(--s3);
   background: rgba(241, 232, 207, 0.55); border: 1px solid rgba(84, 67, 44, 0.35);
   box-shadow: inset 0 0.1rem 0.4rem rgba(80, 60, 30, 0.25);
 }
 .entry { margin: 0 0 var(--s3); }
-.entry p { margin: 0; }
+.entry p { margin: 0; max-width: 60ch; }
 .entry.notice p { color: var(--ink-soft); font-style: italic; }
 .entry:not(.last) { color: var(--ink-soft); }
 .asked { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); }
@@ -30,16 +30,16 @@ body { display: flex; align-items: center; justify-content: center; }
 }
 .kw:hover { color: var(--link-hi); }
 
-.side { position: relative; flex: 1; min-width: 10.5rem; max-width: 19rem; display: flex; flex-direction: column; gap: var(--s2); }
+.side { position: relative; flex: 1; min-width: 10.5rem; max-width: 24rem; display: flex; flex-direction: column; gap: var(--s2); }
+.disp { display: flex; flex-direction: column; gap: var(--s1); }
+.disp-text b { font-weight: normal; color: var(--rust); }
+.forced { margin: 0; padding: var(--s2); text-align: center; font-style: italic; color: var(--ink-soft); }
 .disp-bar {
-  position: relative; height: 1.6rem; border: var(--edge) solid var(--ink-soft); background: var(--trough);
+  position: relative; height: 0.6rem; border: var(--edge) solid var(--ink-soft); background: var(--trough);
   border-radius: 0.1rem; overflow: hidden;
 }
 .disp-fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(#a84a2c, var(--rust) 60%, #5d2113); }
-.disp-text {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  color: var(--paper-light); text-shadow: 0 0 0.2rem #000, 0 0 0.1rem #000;
-}
+.disp-text { text-align: center; }
 .special, .goodbye, .back-btn {
   min-height: 2rem; padding: var(--s1) var(--s3); text-align: center;
   border: var(--edge) solid var(--ink-soft); border-radius: 0.15rem; background: var(--paper-light);
@@ -79,5 +79,5 @@ body { display: flex; align-items: center; justify-content: center; }
 .opt:disabled .cost { color: var(--ink-soft); }
 
 /* Short and wide (the fold closed at 21:9): the side column narrows, the title tightens. */
-@media (max-aspect-ratio: 1/1) { .dialogue { height: 80vh; } }
-@media (min-aspect-ratio: 2/1) { .dialogue { width: min(80vw, 66rem); height: 92vh; } .title h1 { font-size: var(--t-head); } }
+@media (max-aspect-ratio: 1/1) { .dialogue { height: 80vh; margin-top: 10vh; } }
+@media (min-aspect-ratio: 2/1) { .dialogue { width: min(80vw, 66rem); height: 92vh; margin-top: 0; } .title h1 { font-size: var(--t-head); } }

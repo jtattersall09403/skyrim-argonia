@@ -1,0 +1,100 @@
+# Lane ui-review (2026-10-30, owner: "have our new ui screens been seen and reviewed?"): every screen of ours seen in
+# the running game at desktop size, one still each for a `reader` against ui/DESIGN.md and the owner's UI goals.
+# Our screens: dialogue (topics, a long answer), the HUD (bars, the journal notice), the journal (a quest entry),
+# the chart, the sitting; then the paper-themed vanilla menus that remain (Tween, inventory, container, book) and the
+# loading menu. Barter stays owed (no merchant record of ours, ui-sweep). The title screen is ui-sweep's last step.
+# Staged by the scene (ui-props): the place, a camp spot, a crate and the station ledger. The pending level for the
+# sitting comes from dev-grow (the fixture, as grow-at-rest); the sitting's look is what is judged.
+id: ui-review
+runner: 1
+crash_risk: medium
+scene: ui-props
+steps:
+  - name: hud-play
+    do: [{wait: 2}]
+    expect: [{read: [core, ViewState, hud], path: value.body.bars, contains: "health"}]
+    reader: [our bars minimal and in our palette, no compass or marker, Pelagiad]
+  - name: dialogue-topics     # Takes: her greeting with linked keywords, the topic list
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 0"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.n1-3}]
+    reader: [Morrowind-style window, topics list, hyperlinked keywords in teal, paper theme, Pelagiad legible, no clipping]
+  - name: dialogue-answer     # a long answer
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}, {wait: 1}]
+    expect: [{read: [core, KnowsTopic, topic.claywater-two-charges], path: value, eq: true}]
+    reader: [the long answer readable and not clipped, scroll if needed, keywords linked]
+  - name: dialogue-livia      # Livia's side: LF83 starts, its journal entry written
+    do:
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}
+      - {wait: 1}
+    expect: [{read: [core, JournalEntries], path: value, contains: "quest.local.lf83 10 ", within: 8}]
+    reader: [disposition shown, persuasion and Goodbye buttons, layout]
+  - name: hud-notice          # back in play: the journal notice on our HUD
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
+    expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
+    reader: [the notice legible on its plate, the HUD minimal]
+  - name: journal             # J: the quest entry
+    do: [{key: "J 120"}, {wait: 2}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
+    reader: [reads as a diary, dated entries, the quest entry, Pelagiad, binding and paper]
+  - name: journal-closed      # the menu-context keys on the os route are lost (diag3-g15): close_menu, as ui-sweep
+    do: [{close_menu: journal}]
+    expect: [{read: [core, ViewState, journal], path: value, eq: null}]
+  - name: chart
+    do: [{key: "M 120"}, {wait: 2}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready open"}]
+    reader: [parchment chart, no Skyrim map, legible labels, Black Marsh feel]
+  - name: chart-closed
+    do: [{close_menu: MapMenu}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]
+  - name: tween
+    do: [{key: "TAB 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: TweenMenu}}]
+    reader: [paper theme, Pelagiad, no Nordic ornament]
+  - name: tween-closed
+    do: [{close_menu: TweenMenu}]
+  - name: inventory
+    do: [{key: "I 120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: InventoryMenu}}]
+    reader: [paper theme, Pelagiad, no Nordic ornament]
+  - name: inventory-closed
+    do: [{close_menu: InventoryMenu}]
+  - name: props-found
+    expect:
+      - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: refs.0.ref, keep: chest}
+      - {read: [refs, ARG_Book_StationWaterLedger, "1500"], path: refs.0.ref, keep: book}
+  - name: container
+    do: [{console: '"{chest}".activate player'}, {wait: 2}]
+    expect: [{event: {kind: menu, match: ContainerMenu}}]
+    reader: [paper theme, Pelagiad, no Nordic ornament]
+  - name: container-closed
+    do: [{close_menu: ContainerMenu}]
+  - name: book
+    do: [{console: '"{book}".activate player'}, {wait: 2}]
+    expect: [{event: {kind: menu, match: Book Menu}}]
+    reader: [the page in our palette, Pelagiad, no Nordic ornament]
+  - name: book-closed
+    do: [{close_menu: Book Menu}]
+  - name: pending-level       # the fixture: a level pending
+    do: [{call: [dev-grow, ARG_Ref_ClaywaterStationCrocodile, "1", "2000"]}]
+    expect: [{read: [core, GetPendingLevels], path: value, ge: 1}]
+  - name: sitting             # rest at the scene's camp spot: our sitting view
+    do: [{rest: ARG_Ref_ClaywaterStationRoadIn}]
+    expect: [{read: [core, SittingOpen], path: value, eq: true, within: 10}]
+    reader: [the sitting view on paper, attributes legible, Pelagiad, no perk constellation]
+  - name: sitting-done
+    do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
+    expect: [{read: [core, SittingOpen], path: value, eq: false}]
+  - name: loading-screen
+    do: [{console: "coc LilmothApothecaryHouse"}, {wait: 1}]
+    expect: [{event: {kind: menu, match: Loading Menu}, within: 10}]
+    reader: [loading screen in our palette, Pelagiad, no Skyrim art]
