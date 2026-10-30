@@ -1,5 +1,6 @@
 """job_guard.sh's game-machine locks are per machine: one machine's job never blocks another's, and a second job
-on the same machine is refused. Runs the real script with HOME in a temp dir."""
+on the same machine queues behind it (or, with GPU_WAIT=0, gives up at once). Runs the real script with HOME in a
+temp dir."""
 import os
 import subprocess
 import time
@@ -31,10 +32,16 @@ def test_locks_are_per_machine(tmp_path):
         time.sleep(0.05)
     assert held(lock2)
 
-    # Same machine: refused (the job dies without a result).
-    guard(tmp_path, "run", "--gpu=argonia-play-2", "same", "--", "true")
+    # Same machine with GPU_WAIT=0: gives up at once, with a failed result.
+    guard(tmp_path, "run", "--gpu=argonia-play-2", "same", "--", "true", env={"GPU_WAIT": "0"})
     assert guard(tmp_path, "wait", "same").returncode == 1
-    assert not (jobs / "same.rc").exists()
+    # Same machine by default: queued behind the holder, and runs once it is released (checked at the end).
+    guard(tmp_path, "run", "--gpu=argonia-play-2", "queued", "--", "true")
+    for _ in range(100):
+        if "queued (" in guard(tmp_path, "status", "queued").stdout:
+            break
+        time.sleep(0.05)
+    assert "queued (" in guard(tmp_path, "status", "queued").stdout
 
     # Other machines: run, each with ARGONIA_PLAY set to its machine; bare --gpu is argonia-play on gpu.lock.
     for name, flag, machine in (("p1", "--gpu", "argonia-play"), ("p3", "--gpu=argonia-play-3", "argonia-play-3")):
@@ -44,12 +51,13 @@ def test_locks_are_per_machine(tmp_path):
     assert (jobs / "gpu.lock").exists() and (jobs / "gpu-argonia-play-3.lock").exists()
 
     # Bare --gpu follows ARGONIA_PLAY, so it shares play-2's lock.
-    guard(tmp_path, "run", "--gpu", "env2", "--", "true", env={"ARGONIA_PLAY": "argonia-play-2"})
+    guard(tmp_path, "run", "--gpu", "env2", "--", "true", env={"ARGONIA_PLAY": "argonia-play-2", "GPU_WAIT": "0"})
     assert guard(tmp_path, "wait", "env2").returncode == 1
 
     with open(fifo, "w") as f:
         f.write("go\n")
     assert guard(tmp_path, "wait", "hold").returncode == 0
+    assert guard(tmp_path, "wait", "queued").returncode == 0
 
 
 def test_unknown_machine_refused(tmp_path):
