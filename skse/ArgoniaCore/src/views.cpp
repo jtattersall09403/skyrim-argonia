@@ -182,19 +182,27 @@ void HideVanillaHud() {
       continue;
     }
     movie->SetVariable((path + "._visible").c_str(), RE::GFxValue(false));
+    // A plain member of our own marks the clip: an AS2 clip's built-in _name is not read through GetMember (game-10,
+    // 2026-10-30: 0 of 4 matched by _name), but a member we set is, on the same object the list holds.
+    v.SetMember("argoniaHidden", RE::GFxValue(true));
     ++hidden;
-    if (list_name.empty()) continue;
-    for (std::uint32_t i = list.GetArraySize(); i-- > 0;) {
-      RE::GFxValue el, name;
-      if (list.GetElement(i, &el) && el.IsDisplayObject() && el.GetMember("_name", &name) && name.IsString() &&
-          clip == name.GetString()) {
+  }
+  std::uint32_t size = 0;
+  if (!list_name.empty()) {
+    size = list.GetArraySize();
+    for (std::uint32_t i = size; i-- > 0;) {
+      RE::GFxValue el, mark;
+      if (list.GetElement(i, &el) && el.IsObject() && el.GetMember("argoniaHidden", &mark) && mark.IsBool() &&
+          mark.GetBool()) {
         list.RemoveElement(i);
         ++listed;
       }
     }
   }
   g_vanilla_hud = "vanilla-hud hidden " + std::to_string(hidden) + "/" + std::to_string(clips.size()) +
-                  (list_name.empty() ? ", no HudElements list" : ", " + std::to_string(listed) + " out of " + list_name) +
+                  (list_name.empty() ? ", no HudElements list"
+                                     : ", " + std::to_string(listed) + " out of " + list_name + " (" +
+                                           std::to_string(size) + " listed)") +
                   (missing.empty() ? "" : ", missing:" + missing);
   SKSE::log::info("views: {}", g_vanilla_hud);
 }

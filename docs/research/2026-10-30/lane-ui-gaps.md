@@ -80,5 +80,5 @@ and two overflowed at 1080p, so text was cut off where the player could not see 
 4. Check that the LF83 journal shows the text and directions.
 5. Check that the play-camera still shows no vanilla bars and no compass.
 
-If `HudElements` is not found, the Views line says so. In that case the clips are hidden only until the next HUD
+First L4 run (game-10): `hidden 4/4, 0 out of HudElements`. The clips were found, but matching the list by `_name` failed, since an AS2 built-in is not read through `GetMember`. Fixed by marking each clip with a member of our own (`argoniaHidden`) and removing the marked elements. The Views line now also gives the list's size. MSVC green again (32/32). If `HudElements` is not found, the Views line says so. In that case the clips are hidden only until the next HUD
 mode change, and that is the thing to report.
