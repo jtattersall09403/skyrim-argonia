@@ -1,6 +1,6 @@
 # 1.6-wiring (owed L4), native map S14a/S11b: the sheet -> damage and stamina join. Wiring rows w.damage.*,
-# w.stamina.*, w.armour.*; docs/research/2026-10-30/combat-wiring.md. The novice and god builds are set through
-# ArgoniaCore's setters, which the bridge refuses: those halves are owed; the base-save build is measured here.
+# w.stamina.*, w.armour.*; docs/research/2026-10-30/combat-wiring.md. The builds' attributes are set at the step's
+# start through the dev bridge's `dev-set` (ArgoniaCore's own SetAttribute); Long Blade has no setter (owed).
 id: fight-damage-builds
 runner: 1
 scene: duel-ring
@@ -38,7 +38,29 @@ steps:
   - name: power-attack-stamina
     do: [{pad: "RT:150 wait:2500"}]
     expect: [{read: [av, Stamina, player], path: current, keep: st1}]
-  - name: builds
-    owed: ArgoniaCore setters through the bridge for the novice (Str 40, LB 5, Agi 40) and god (100s) builds; then 10.8 / 36.0 within 0.5
+  - name: novice-blow         # Str 40, Agi 40 (the input), one light blow
+    do:
+      - {call: [dev-set, SetAttribute, strength, "40"]}
+      - {call: [dev-set, SetAttribute, agility, "40"]}
+      - {wait: 1}
+      - {console: "{opp}.setav health 2000"}
+      - {wait: 1}
+      - {pad: "RB:120 wait:1200"}
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [av, Health, "{opp}"], path: current, keep: hn}
+  - name: god-blow            # Str 100, Agi 100: the same blow lands harder
+    do:
+      - {call: [dev-set, SetAttribute, strength, "100"]}
+      - {call: [dev-set, SetAttribute, agility, "100"]}
+      - {wait: 1}
+      - {console: "{opp}.setav health 2000"}
+      - {wait: 1}
+      - {pad: "RB:120 wait:1200"}
+    expect:
+      - {event: {kind: hit, match: "*"}}
+      - {read: [av, Health, "{opp}"], path: current, lt: {kept: hn}}
+  - name: builds-long-blade
+    owed: "a Long Blade setter for the novice's LB 5 (ArgoniaCore has no SetSkill native; adding one is ArgoniaCore's call, not the bridge's); then 10.8 / 36.0 within 0.5"
   - name: difficulties
     owed: the same ratio at each difficulty (a GetGameSetting read of fDiffMultHPByPCN/ToPCN per difficulty)

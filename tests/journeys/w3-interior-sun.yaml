@@ -27,5 +27,5 @@ steps:
     owed: a hall with several windows facing another way (no such interior is built yet)
   - name: control-bit-15
     owed: the same still with the cell's bit 15 cleared (a control build of the cell), so the check can fail
-  - name: cs-log
-    owed: Community Shaders' log name for the `log` expectation (the feature loaded)
+  - name: cs-log              # Community Shaders loaded its Interior Sun feature (written at launch, so read whole)
+    expect: [{read: [logfile, CommunityShaders, "[Interior Sun] Installed hooks"], path: found, eq: true}]

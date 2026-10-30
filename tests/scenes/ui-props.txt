@@ -1,0 +1,18 @@
+; ui-sweep's props (1.2 §a): the first place as tests/scenes/first-place.txt stages it, plus the props whose menus the
+; sweep opens: two of our crates (one is locked by the journey: a container and the lockpicking menu), our station
+; ledger (the book menu) and a lockpick. All our own records; nothing about LF83, the sheet or vastei is set.
+; A merchant, a trainer and an alchemy table have no record of ours yet: those menus stay owed (ui-sweep).
+; the travel line is last (game-7); the props are placed at the road ref itself
+set GameMonth to 2
+set GameDay to 15
+set gamehour to 10
+fw ARG_Weather_tannin_haze
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_CampSpot 1
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Cont_OpeningWorkCampGuardStores 1 200 2
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Cont_OpeningWorkCampGuardStores 1 200 3
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Book_StationWaterLedger 1 150 0
+player.additem 0000000A 2
+player.additem ARG_Weap_SteelSword 1
+player.equipitem ARG_Weap_SteelSword
+ARG_Ref_ClaywaterStationCrocodile.additem ARG_Armo_Steel_Shield 1
+player.moveto ARG_Ref_ClaywaterStationRoadIn

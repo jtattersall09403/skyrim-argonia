@@ -1,6 +1,7 @@
 # 1.1 adapters (owed L4): the 7 attributes live in the STAT family and are mirrored into 7 reserved actor values
 # (seam.cpp attribute_mirrors, av-audit.md). Reads through the bridge's `core GetAttribute` and `av`. The setter half
-# (SetAttribute, its clamps and the unknown-name path) needs a bridge setter, which `core` refuses by design: owed.
+# (SetAttribute, its clamps and the unknown-name path) goes through the dev bridge's `dev-set`, ArgoniaCore's own native
+# called by the Papyrus VM (the input set; the clamp and the mirror are what is read back).
 id: attributes
 runner: 1
 scene: first-place
@@ -24,7 +25,21 @@ steps:
   - name: unknown-attribute   # luck is not one of the 7: the not-found value
     expect: [{read: [core, GetAttribute, luck], path: value, eq: -1.0}]
   - name: set-and-clamp
-    owed: a bridge setter for SetAttribute (core refuses setters); then 40+i for each, 10000 -> 255, -5 -> 0
+    expect:
+      - {read: [dev-set, SetAttribute, strength, "41"], path: value, eq: 41.0}
+      - {read: [av, Fame, player], path: current, eq: 41.0}
+      - {read: [dev-set, SetAttribute, personality, "47"], path: value, eq: 47.0}
+      - {read: [av, IgnoreCrippledLimbs, player], path: current, eq: 47.0}
+      - {read: [dev-set, SetAttribute, strength, "10000"], path: value, eq: 255.0}
+      - {read: [av, Fame, player], path: current, eq: 255.0}
+      - {read: [dev-set, SetAttribute, strength, "-5"], path: value, eq: 0.0}
+      - {read: [av, Fame, player], path: current, eq: 0.0}
+      - {read: [dev-set, SetAttribute, luck, "50"], path: value, eq: -1.0}
+  - name: set-back            # the base save's values again, so the rest and the load compare against them
+    do:
+      - {call: [dev-set, SetAttribute, strength, "{a_str}"]}
+      - {call: [dev-set, SetAttribute, personality, "{a_per}"]}
+    expect: [{read: [core, GetAttribute, strength], path: value, eq: {kept: a_str}}]
   - name: rest-save           # the only save: rest at the scene's camp spot
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -90 0"}

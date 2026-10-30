@@ -4,7 +4,8 @@
 //   dev-grow <ref> <n> [max]      landed blows (hit events into ArgoniaCore's own sink, the target's health lowered
 //                                 first so the blow has damage) until GetPendingLevels >= n; the blow count comes back
 //   tdm-target                    TrueDirectionalMovement's lock state and current target (its plugin API, V1)
-//   refs <base>                   the references of a base form in the form map (the vastei pile count)
+//   refs <base> [radius]          the references of a base form in the form map (the vastei pile count); with a
+//                                 radius, only those within it of the player (a scene's placed props)
 //   ini <name:Section>            an INI setting as the game holds it (prefs first, then Skyrim.ini)
 //   ltex                          the land texture under the player
 //   logfile <name> <text>         an SKSE log beside ours: its line count and the lines containing the text
@@ -154,10 +155,14 @@ std::string tdm_target(const Request&) {
 
 // --- refs ------------------------------------------------------------------------------------------------------
 std::string refs(const Request& req) {
-  std::string base = rest(req);
-  if (base.empty()) return reply_error("refs", "usage: refs <base form id | editor id>");
-  return on_main_thread("refs", [base] {
+  if (req.args.empty() || req.args.size() > 2) return reply_error("refs", "usage: refs <base form id | editor id> [radius]");
+  std::string base = req.args[0];
+  std::optional<double> radius;
+  if (req.args.size() == 2 && !(radius = to_number(req.args[1]))) return reply_error("refs", "the radius is a number");
+  return on_main_thread("refs", [base, radius] {
     auto* b = find_any(base);
+    auto* p = player_in_world();
+    if (radius && !p) return reply_error("refs", "no player in a world for the radius");
     if (!b) return reply_error("refs", "no base form " + base);
     std::string list = "[";
     long long count = 0, enabled = 0;
@@ -167,6 +172,8 @@ std::string refs(const Request& req) {
       for (auto& [id, form] : *map) {
         auto* r = form ? form->AsReference() : nullptr;
         if (!r || r->GetBaseObject() != b || r->IsDeleted()) continue;
+        if (radius && (r->GetParentCell() != p->GetParentCell() && r->GetWorldspace() != p->GetWorldspace())) continue;
+        if (radius && r->GetPosition().GetDistance(p->GetPosition()) > *radius) continue;
         ++count;
         if (!r->IsDisabled()) ++enabled;
         if (count <= 20) {

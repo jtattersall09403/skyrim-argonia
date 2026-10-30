@@ -1,6 +1,6 @@
 # 1.6-wiring (owed L4): rolls at the burden tiers; wiring rows w.roll.tier, w.roll.distance, w.iframes.*,
 # w.stamina.roll. The load is the steel set and ingots added as setup (r = kg / (30 + 3 x Str)); the roll is the
-# pad's (sprint tap, stick held). Per-frame i-frame tracing (PresentMon) is owed to a frame-trace read.
+# pad's (sprint tap, stick held). The i-frame window is the bridge's per-frame `trace` (ghost or TK Dodge's graph bools).
 id: fight-roll-burden
 runner: 1
 scene: duel-ring
@@ -36,5 +36,12 @@ steps:
   - name: unlocked            # the ingots dropped: the perk given back
     do: [{console: "player.removeitem 0005ACE4 320"}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "roll unlocked"}, within: 10}]
-  - name: iframes-per-frame
-    owed: a frame-trace read (position, ghost state and health per frame through a swing) for the i-frame window per tier
+  - name: iframes-per-frame   # a traced roll: the i-frame window, first to last i-frame frame
+    do:
+      - {call: [trace, start, "180", bIframeActive, bInIframe]}
+      - {pad: "+LX=0,LY=1:500 B:100 wait:600 -:1200"}
+      - {wait: 1}
+    expect:
+      - {read: [trace, read], path: iframe_frames, gt: 0}
+      - {read: [trace, read], path: window_ms, gt: 0}
+      - {read: [trace, read], path: window_ms, keep: iframe_ms}

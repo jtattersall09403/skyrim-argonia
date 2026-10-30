@@ -1,6 +1,7 @@
 # 1.5 (owed L4), native map S16a-c: skill use earns vastei and never vanilla XP; the level waits for rest. The duel
 # ring's deserter is the target (its health raised as setup so the blows land without a kill); a camp spot is placed
-# at the player's marker at step 0. Reaching a pending level needs a measured blow count or a bridge setter: owed.
+# at the player's marker at step 0. The pending level comes from landed blows sent by the dev bridge's `dev-grow` into
+# ArgoniaCore's own hit sink (the count is measured and kept); the rest and the sitting are what is tested.
 id: grow-at-rest
 runner: 1
 scene: duel-ring
@@ -37,8 +38,6 @@ steps:
       - {read: [av, OneHanded, player], path: base, eq: {kept: oh0}}   # P4: vanilla XP never moves
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}          # the level waits for rest
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
-  - name: pending-level
-    owed: a measured blow count to GetPendingLevels 1 (or a dev setter); then the sitting at the camp, sitting.buy endurance, sitting.done
   - name: rest-no-pending     # with no level pending the rest saves and no sitting opens
     do:
       - {console: "{opp}.stopcombat"}
@@ -53,3 +52,31 @@ steps:
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaRest written (rest)"}, within: 10}
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
+  - name: pending-level       # blows until a level is pending; the level still waits for rest
+    do: [{call: [dev-grow, "{opp}", "1", "2000"]}, {console: "{opp}.stopcombat"}]
+    expect:
+      - {read: [core, GetPendingLevels], path: value, eq: 1}
+      - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
+      - {read: [core, GetAttribute, endurance], path: value, keep: end0}
+  - name: rest-opens-sitting
+    do:
+      - {console: "player.moveto ARG_PG_DuelPlayerMarker 0 -90 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 40"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 4}
+      - {console: "player.setangle x 0"}
+    expect:
+      - {read: [core, SittingOpen], path: value, eq: true, within: 10}
+      - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}
+  - name: sitting-buy
+    do: [{call: [core, ViewIntent, '{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}']}]
+    expect: [{read: [core, ViewState, sitting], path: value.type, eq: sitting.state}]
+  - name: sitting-done
+    do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
+    expect:
+      - {read: [core, SittingOpen], path: value, eq: false}
+      - {read: [core, GetPendingLevels], path: value, eq: 0}
+      - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
+      - {read: [core, GetAttribute, endurance], path: value, gt: {kept: end0}}

@@ -28,6 +28,10 @@ sys.path.insert(0, str(REPO))
 from tools.argonia_world import skyrim_units as su  # noqa: E402
 
 JOURNEY = REPO / "tests" / "journeys" / "world-sample.yaml"
+ROAD_HOPS = REPO / "tests" / "journeys" / "w3-road-hops.yaml"
+HOP_M = 100.0  # 2.W3 §b: a hop every 100 m along each traced leg
+EDGE_M = 40.0  # hops this close to the province's edge are skipped: the exit gates stand 20 m inside it (stop 9)
+TEAR_STAGE = "place.dunmer-north.tear-road-stage"
 SCENES = REPO / "tests" / "scenes"
 TOL_M = 0.5  # 2.W1 §a: ground within 0.5 m of the heightfield
 DROP_U = 100  # a probe starts this far above the ground (about 1.4 m) and falls to it
@@ -702,8 +706,8 @@ def stop_13(w: World, g: Ground) -> dict:
 
 
 # --- assembly --------------------------------------------------------------------------------------------------
-def build() -> list[dict]:
-    w, g = World(), Ground()
+def build(w: World | None = None, g: Ground | None = None) -> list[dict]:
+    w, g = w or World(), g or Ground()
     stops = [stop_1(w, g)]
     stops += [stop_2(w, g), stop_3(w, g), stop_4(w, g), stop_5(w, g), stop_6(w, g), stop_7(w, g), stop_8(w, g),
               stop_9(w, g), stop_10(w, g)]
@@ -733,10 +737,81 @@ HEADER = """# The world track's in-game sample (docs/phases/1-core-loop/README.m
 """
 
 
+# --- 2.W3 §b: the road-leg hops (tests/journeys/w3-road-hops.yaml) -------------------------------------------------
+def _along(points: list[tuple[float, float]], every_m: float) -> list[tuple[float, float, float]]:
+    """(x_m, y_m, distance along) every `every_m` metres of a polyline, its start included and its end added."""
+    out, walked, want = [], 0.0, 0.0
+    for (x0, y0), (x1, y1) in zip(points, points[1:]):
+        seg = math.hypot(x1 - x0, y1 - y0)
+        while seg > 0 and want <= walked + seg:
+            t = (want - walked) / seg
+            out.append((x0 + t * (x1 - x0), y0 + t * (y1 - y0), want))
+            want += every_m
+        walked += seg
+    if points and (not out or walked - out[-1][2] > every_m / 4):
+        out.append((points[-1][0], points[-1][1], walked))
+    return out
+
+
+def _ltex_id(form_key: str) -> str:
+    """A Skyrim.esm LTEX FormKey ("0B424C:Skyrim.esm") as the runtime id the bridge's `ltex` read gives."""
+    local, plugin = form_key.split(":", 1)
+    if plugin.lower() != "skyrim.esm":
+        raise ValueError(f"{form_key}: only Skyrim.esm's LTEX ids are load-order fixed")
+    return f"{int(local, 16):08X}"
+
+
+def road_hops(w: World, g: Ground) -> dict:
+    from tools.argonia_world.terrain import landcover
+    covers = landcover.table(w.db)
+    edge = (su.PROVINCE_SAMPLES - 1) * su.PROVINCE_SAMPLE_M - EDGE_M
+    tol = su.metres_to_units(TOL_M)
+    steps = [{"name": "arrive", "do": [{"wait": 3}], "expect": [in_world(0)]}]
+    legs = []
+    for route_id, cover in w.db.query("SELECT route_id, surface_cover FROM road ORDER BY route_id"):
+        pts = [(r[0], r[1]) for r in w.db.query("SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", route_id)]
+        ltex = _ltex_id(covers[cover].ltex)
+        key = route_id.removeprefix("route.").replace(".", "-")
+        hops = [(x, y, d) for x, y, d in _along(pts, HOP_M) if EDGE_M <= x <= edge and EDGE_M <= y <= edge]
+        legs.append({"route": route_id, "hops": len(hops), "ltex": ltex, "ltex_edid": covers[cover].ltex_edid})
+        for i, (x_m, y_m, d) in enumerate(hops):
+            r, c = g.snap(x_m, y_m)
+            x, y, z = g.units(r, c)
+            do = [{"teleport": f"pos {x} {y} {su.rounded(z + DROP_U, 2)}"}, {"wait": 3}]
+            if i == 0:  # a leg starts with a travel: the hop's cell and its neighbours loaded first
+                do = [{"console": cow(*g.cell(r, c))}, {"wait": 8}] + do
+            steps.append({"name": f"{key}-{int(round(d)):05d}",
+                          "do": do,
+                          "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
+                                     {"read": ["player"], "path": "pos.z", "le": su.rounded(z + tol, 2), "within": 3},
+                                     {"read": ["ltex"], "path": "texture.id", "eq": ltex}],
+                          "expected_ground_m": round(float(g.H[r, c]), 3)})
+    px, py = next(iter(w.db.query("SELECT position_m_x, position_m_y FROM place WHERE id = ?", TEAR_STAGE)))
+    r, c = g.snap(px, py)
+    x, y, z = g.units(r, c)
+    steps.append({"name": "tear-road-stage", "why": "the stage's own position, off the traced road",
+                  "do": [{"console": cow(*g.cell(r, c))}, {"wait": 8},
+                         {"teleport": f"pos {x} {y} {su.rounded(z + DROP_U, 2)}"}, {"wait": 3}],
+                  "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
+                             {"read": ["player"], "path": "pos.z", "le": su.rounded(z + tol, 2), "within": 3}],
+                  "expected_ground_m": round(float(g.H[r, c]), 3)})
+    return {"id": "w3-road-hops", "runner": 1, "scene": "world-sample-01-claywater", "legs": legs, "steps": steps}
+
+
+ROAD_HEADER = """# 2.W3 §b: each traced road leg is on the road surface end to end. GENERATED by tools/world_sample.py from road_point
+# (a hop every 100 m, hops within 40 m of the province's edge skipped), the LAND heights (z within 0.5 m) and the
+# painted LTEX of the road's surface cover (the bridge's `ltex` read): edit the generator, never this file. The exit
+# gates and their push are world-sample's stop 9, the signpost its stop 10. Each leg starts with a `cow` to its first
+# hop's cell; the hops after it are short teleports inside the loaded cells.
+"""
+
+
 def render() -> dict[Path, str]:
     import yaml
-    stops = build()
+    w, g = World(), Ground()
+    stops = build(w, g)
     files = {JOURNEY: HEADER + yaml.safe_dump(journey(stops), sort_keys=False, width=140, allow_unicode=True)}
+    files[ROAD_HOPS] = ROAD_HEADER + yaml.safe_dump(road_hops(w, g), sort_keys=False, width=140, allow_unicode=True)
     for s in stops:
         files[SCENES / f"{s['scene']}.txt"] = scene_text(s)
     return files

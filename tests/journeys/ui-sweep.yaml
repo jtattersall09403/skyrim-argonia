@@ -1,12 +1,12 @@
 # 1.2 §a (owed L4): every vanilla and SkyUI menu reachable from the first place shows Pelagiad, our palette, the
 # Argonia title, and no compass or quest marker. Each menu opens by its key (judged by its menu event), a still per
 # step; the stills go to a `reader` with each step's `reader:` list (palette, Pelagiad, no Nordic tell, no Futura).
-# The menus that need a prop the first place does not stage (container, barter, book, lockpick, training, crafting)
-# are owed to a scene with those props. Ends at the main menu: a save-changing item, last in its batch.
+# The props scene (tests/scenes/ui-props.txt) stages a crate, a crate to lock, a book and lockpicks; each prop's menu
+# opens by activating it from the console (the menu's look is the test). Barter, training and crafting are owed. Ends at the main menu: a save-changing item, last in its batch.
 id: ui-sweep
 runner: 1
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)
-scene: first-place
+scene: ui-props
 steps:
   - name: hud-open            # no compass, no marker: the vanilla HUD elements are hidden; turn the camera round
     do: [{wait: 2}, {pad: "+RX=1:2500 -:100"}]
@@ -62,14 +62,40 @@ steps:
     do: [{key: "ESC 80"}, {wait: 1.5}]
   - name: mcm
     owed: the pad path into System > Mod Configuration (its list position under the SkyUI tab)
-  - name: prop-menus
-    owed: a scene staging a chest, a merchant, a book, a locked chest, a trainer and an alchemy table at the first place
+  - name: props-found
+    expect:
+      - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: count, eq: 2}
+      - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: refs.0.ref, keep: chest}
+      - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: refs.1.ref, keep: lockbox}
+      - {read: [refs, ARG_Book_StationWaterLedger, "1500"], path: refs.0.ref, keep: book}
+  - name: container
+    do: [{console: '"{chest}".activate player'}, {wait: 2}]
+    expect: [{event: {kind: menu, match: ContainerMenu}}]
+    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+  - name: container-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: book
+    do: [{console: '"{book}".activate player'}, {wait: 2}]
+    expect: [{event: {kind: menu, match: Book Menu}}]
+    reader: [the page in our palette, every word in Pelagiad, no Nordic ornament]
+  - name: book-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: lockpicking
+    do: [{console: '"{lockbox}".lock 25'}, {console: '"{lockbox}".activate player'}, {wait: 2}]
+    expect: [{event: {kind: menu, match: Lockpicking Menu}}]
+    reader: [the lock in our palette, every word in Pelagiad, no Nordic ornament]
+  - name: lockpicking-closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: prop-menus-owed
+    owed: a merchant, a trainer and an alchemy table (barter, training, crafting menus) need records of ours or reviewed vanilla bases (0012 §6); none is in the world database yet
   - name: loading-screen      # coc to Claywater's interior and back: the loading menu
     do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia"}, {wait: 1}, {console: "coc LilmothApothecaryHouse"}, {wait: 1}]
     expect: [{event: {kind: menu, match: Loading Menu}, within: 10}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
-  - name: interface-ini
-    owed: a bridge read of the INI's [Interface] bShowCompass and bShowQuestMarkers (0 and 0)
+  - name: interface-ini       # the INI as the game holds it
+    expect:
+      - {read: [ini, "bShowCompass:Interface"], path: value, eq: false}
+      - {read: [ini, "bShowQuestMarkers:Interface"], path: value, eq: false}
   - name: main-menu           # the player's own Quit (the pad, as menus-quit), to the main menu
     do:
       - {key: "ESC 80"}

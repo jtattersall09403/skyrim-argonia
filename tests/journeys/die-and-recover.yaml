@@ -59,5 +59,19 @@ steps:
     expect:
       - {read: [core, GetVastei], path: value, eq: {kept: v}}
       - {read: [core, PileState], path: value, eq: ""}
-  - name: second-death-replaces
-    owed: a pile-count read (the form scan) to show exactly one pile after a second and third death
+  - name: second-death        # the pile is dropped again: one pile in the form map
+    do:
+      - {console: "player.forceav health 5"}
+      - {console: "{opp}.startcombat player"}
+      - {wait: 10}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}
+      - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}
+  - name: third-death-replaces  # dying again with the pile untaken replaces it: still one
+    do:
+      - {console: "player.forceav health 5"}
+      - {console: "{opp}.startcombat player"}
+      - {wait: 10}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}
+      - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}
