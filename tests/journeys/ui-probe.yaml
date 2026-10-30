@@ -22,9 +22,10 @@ steps:
       - {read: [core, Views], path: value, contains: "hud ready open"}
       - {read: [core, Views], path: value, contains: "chart ready closed"}
       - {read: [core, Views], path: value, contains: "journal ready closed"}
-  - name: hud                # the HUD is on in play: its state was pushed, the bars carry health
-    expect:
+  - name: hud                # the HUD is on in play: its state was pushed, the bars carry health; the vanilla bars and
+    expect:                  # compass are hidden (the still shows ours alone)
       - {read: [core, ViewState, hud], path: value.body.bars, contains: "health"}
+      - {read: [core, Views], path: value, contains: "vanilla-hud hidden 4/4, 4 out of HudElements"}
   - name: frames-closed      # the baseline: play, no view open (600 frames)
     expect:
       - {read: [frametime, 600], path: p50_ms, keep: closed_p50}
@@ -91,6 +92,8 @@ steps:
     expect:
       - {read: [core, ViewState, chart], path: value.type, eq: chart.state}
       - {read: [core, Views], path: value, contains: "chart ready open"}
+      - {read: [core, Views], path: value, not_contains: "chart revealed 0'"}   # the scene's cell, at least
+      - {read: [core, ViewState, chart], path: value.body.revealed.0.x, ne: null}
   - name: chart-pan          # the view's own pan intent (as a drag sends it); ArgoniaCore writes the layout file
     do: [{call: [core, ViewIntent, '{"type":"chart.pan","v":1,"body":{"view":{"centreX":-56.85,"centreY":11.7,"zoom":4}}}']}]
     expect: [{read: [core, Views], path: value, contains: "chart ready open"}]
@@ -99,10 +102,10 @@ steps:
     expect:
       - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}
       - {read: [core, ViewState, chart], path: value.body.view.centreX, eq: -56.85}
-  - name: relaunch           # the restart: quit, relaunch to the main menu, load the base save, reapply the scene
-    owed: "a relaunch action in tools/run_journey.py (Bridge.launch, then apply_scene); until then the game lane relaunches by hand between chart-reopen and remembered"
-  - name: remembered         # after the restart the chart opens where it was left
-    owed: "the relaunch step above"
+  - name: relaunch           # the restart: qqq, relaunch to the main menu, load the journey's save, reapply the scene
+    do: [{relaunch: true}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]
+  - name: remembered         # after the restart the chart opens where it was left (the layout file, not the save)
     do: [{key: "M 120"}, {wait: 2}]
     expect:
       - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}

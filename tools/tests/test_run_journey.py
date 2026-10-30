@@ -248,3 +248,58 @@ def test_judge_soak_names_every_reason():
     why = " | ".join(rj.judge_soak(loops, bars))
     for part in ("game went down", "failed at die", "queue grew 3 -> 31", "co-save after the first loop", "p50 25"):
         assert part in why, why
+
+
+class RelaunchFake(Fake):
+    """Fake with the machine's side: a game that goes down on qqq (or hangs), health, and launch."""
+    def __init__(self, hang=False, drop_reply=False):
+        super().__init__()
+        self.alive, self.hang, self.drop_reply, self.log = True, hang, drop_reply, []
+
+    def call(self, cmd, *args, **kw):
+        if cmd in ("load", "console") and (cmd == "load" or args[0] == "qqq"):
+            self.log.append((cmd, args[0]))
+        if cmd == "console" and args[0] == "qqq":
+            self.alive = self.hang
+            if self.drop_reply:
+                raise GameDown("the bridge closed the connection without a reply (is the game running?)")
+        return super().call(cmd, *args)
+
+    def health(self):
+        self.log.append(("health", self.alive))
+        return {"alive": self.alive}
+
+    def launch(self):
+        self.log.append(("launch",))
+        self.alive = True
+        return {"ping": {"pong": True}}
+
+
+def test_relaunch_quits_launches_and_loads_the_journeys_save(tmp_path):
+    j = journey(tmp_path, [{"name": "pan", "do": [{"console": "x"}]}, {"name": "relaunch", "do": [{"relaunch": True}]},
+                           {"name": "remembered", "do": [{"console": "y"}]}])
+    b = RelaunchFake(drop_reply=True)  # the game went down before it answered: the quit, not a failure
+    rep = rj.Runner(b, tmp_path / "out", stills=False).run(j, "argoniabase")
+    assert rep["passed"], rep
+    assert b.log == [("load", "argoniabase"), ("console", "qqq"), ("health", False), ("launch",), ("load", "argoniabase")]
+    assert rep["calls"][-1] == {"call": ["relaunch", "argoniabase"],
+                                "result": {"quit_clean": True, "save": "argoniabase", "ping": {"pong": True}}}
+
+
+def test_relaunch_to_a_named_save_after_a_hung_quit(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj, "QUIT_WAIT_S", 3)
+    j = journey(tmp_path, [{"name": "relaunch", "do": [{"relaunch": "studio-a"}]}])
+    b = RelaunchFake(hang=True)
+    rep = rj.Runner(b, tmp_path / "out", stills=False).run(j, "argoniabase")
+    assert rep["passed"], rep
+    assert b.log[-3:] == [("health", True), ("launch",), ("load", "studio-a")]  # launch kills what the quit left
+    assert rep["calls"][-1]["result"]["quit_clean"] is False
+
+
+def test_the_ui_probe_validates_with_its_relaunch():
+    here = pathlib.Path(rj.__file__).resolve().parents[1] / "tests" / "journeys"
+    j = rj.load_journey(here / "ui-probe.yaml")
+    steps = {s["name"]: s for s in j["steps"]}
+    assert steps["relaunch"]["do"] == [{"relaunch": True}] and "owed" not in steps["relaunch"]
+    assert "owed" not in steps["remembered"]
+    assert "ok" in rj.dry(here / "ui-probe.yaml")

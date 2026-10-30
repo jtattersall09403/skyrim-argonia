@@ -19,7 +19,10 @@ A runnable journey has `runner: 1` (the drafts beside it are prose for a lane to
 
 Actions: pad <seq>; key "<K[+K]> <ms>"; console <line>; teleport [cell <edid> | pos x y z | ref <id>];
 wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, the game's own clock, then the
-timescale is put back); call [<command>, args...] (any bridge read, kept in the report).
+timescale is put back); call [<command>, args...] (any bridge read, kept in the report); relaunch <save | true>
+(the game quit cleanly by the console's qqq, launched again through the bridge's `launch` to the main menu with the
+bridge answering, then the save loaded, the journey's own with `true`, and the journey's scene applied again: a
+step after it sees a restarted game, e.g. what a view remembers between sessions).
 Expectations: read [<command>, args...] with path a.b.c and one of eq ne gt ge lt le contains not_contains;
 console <line> with contains / not_contains; event {kind, match} since the step began; moved {gt|lt: units} on the
 ground since the step began; quests_running {allowed: <json>} (the bridge's running quests against the file's
@@ -151,6 +154,8 @@ class Runner:
         self.run_sh = run_sh or str(REPO / "infra" / "gpu-box" / "run.sh")
         self.calls = []
         self.kept: dict = {}
+        self.scene: str | None = None  # the journey's scene and save, for a relaunch
+        self.save = BASE_SAVE
 
     def fill(self, value):
         """`{name}` / `{name.i}` in an action's text: the kept value (a string split on spaces for the index)."""
@@ -226,6 +231,25 @@ class Runner:
             self.b.call("console", f"set timescale to {old:g}")
         return {"from": before["days_passed"], "to": self.b.call("time")["days_passed"]}
 
+    def _relaunch(self, save):
+        """Quit cleanly, relaunch, load `save` (true: the journey's own) and apply the journey's scene again."""
+        save = self.save if save is True else str(save)
+        try:
+            self.b.call("console", "qqq", timeout=10)  # the reply may not come: the game is going down
+        except (BridgeError, OSError, ValueError):
+            pass
+        clean = False
+        for _ in range(QUIT_WAIT_S):
+            if not self.b.health().get("alive"):
+                clean = True
+                break
+            time.sleep(1)
+        launched = self.b.launch()  # kills what is left (a quit that hung), lays the DLL, waits for the ping
+        self.apply_scene(self.scene, save)
+        r = {"quit_clean": clean, "save": save, "ping": launched.get("ping")}
+        self.calls.append({"call": ["relaunch", save], "result": r})
+        return r
+
     def _call(self, args):
         r = self.b.call(*args)
         self.calls.append({"call": args, "result": r})
@@ -294,6 +318,7 @@ class Runner:
     def run(self, j: dict, save: str) -> dict:
         self.out.mkdir(parents=True, exist_ok=True)
         rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False}
+        self.scene, self.save = j.get("scene"), save
         t0 = time.monotonic()
         try:
             rep["scene_output"] = self.apply_scene(j.get("scene"), save)
@@ -354,7 +379,8 @@ class Runner:
 
 
 ACTIONS = {"pad": Runner._pad, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
-           "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call}
+           "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
+QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music")
 # The 0.2 §d bar (60 fps median, 45 fps 1% lows) as frame times, and the soak's flatness tolerances.
 SOAK_BARS = {"p50_ms": 1000 / 60, "p99_ms": 1000 / 45, "queue_growth": 5, "cosave_growth_bytes": 512}
