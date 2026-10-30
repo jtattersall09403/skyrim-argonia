@@ -75,6 +75,30 @@
 5. Not done: PROGRESS rows, the Outcomes and decision 0017's 1.2 §0 numbers. No item closed in game. 0.3's timings
    are recorded (journals/bridge.md, game-11), and the deploy timings above add to them.
 
+## The held-Data fix and the terrain diagnosis (planner's follow-up, 7048862)
+- **The deploy's and g12-lod2's fresh lays died the same way.** `stack.ps1 on` called `off`, which deleted every
+  non-vanilla file, while a leftover xLODGen (from g12-lod's throw) held Data\SkyUI_SE.bsa.
+- **Fix in stack.ps1:**
+  - `on` maps what the profile lays and leaves a file that already matches its mod file (a hard link: the same
+    length and write time). It removes only what the profile does not lay.
+  - `on` and `off` first wait at most 30 s for SkyrimSE, skse64_loader, xLODGen, TexGen, DynDOLOD, LODGen or
+    Texconv to exit. Then they fail with the holder's name.
+  - Proved live against the running LOD: "Data is held by Texconvx64 (11776), xLODGenx64 (9160) after 30 s".
+    Data was untouched.
+  - Owed: the in-place lay on the next deploy. The `on` line should read "N files laid, M already laid".
+  - Not on the machine yet: C:\argonia\infra\stack.ps1 is the old one until the next deploy sends it.
+- **xLODGen terrain failed three times, each from a different cause.** Each was fixed at source before the next
+  run, so none was a blind retry:
+  1. g12-lod: "ARG_Province not in the worldspace list". xLODGen lists a worldspace only if
+     Data\LODSettings\<WRLD>.lod exists. Fixed by lodsettings.py; in g12-lod3 it listed and selected
+     "ARG_Province [WRLD:0B000800]".
+  2. g12-lod2: the fresh lay's IOException. The xLODGen that run 1 left open held the BSAs. Fixed by prepare's
+     kill, and now by Wait-DataFree.
+  3. g12-lod3: "unknown pop-up: " (empty text) after Generate. The watch took the VCL's own TApplication and
+     TfrmMain windows for pop-ups. Fixed by skipping them and any blank window.
+- g12-lod4 got past all three. At 12:55, xLODGen and Texconv were generating terrain at 100% CPU.
+- If it fails again, read out/lod/logs/terrain.log's last dump before any rerun.
+
 ## Machine state
 argonia-play is running for LOD (xLODGen terrain). The game is down (one zombie child). Combat set A is laid, and
 our build from 692edc4+ is deployed. Stop the machine when LOD and the next batch end.
