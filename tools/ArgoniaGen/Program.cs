@@ -9,6 +9,7 @@
 //   vegetation --in <ArgoniaWorld.esm> --veg <dir> --out <esm>   the vegetation REFRs spliced into each cell's Temporary group (VegetationRecords.cs)
 //   vegcheck   --in <esm> --first <hex> --last <hex> --out <jsonl>   its Mutagen read-back: vegetation REFRs per cell
 //   links      --data <dir> --order <file> --check a.esm,b.esm [--ours <dir>]   every FormLink and master resolved in the game's order (LinkCheck.cs)
+//   npcai      --data <dir> --out <json> [--plugin p] [--edids a,b|auto:n]   NPC_s and their PACKs, AI fields (PackageRecords.cs)
 //   navmesh    roundtrip --in <jsonl.gz> --data <dir> --out <esm>   the vanilla NAVM round trip (NavmeshRecords.cs)
 using ArgoniaGen;
 
@@ -55,6 +56,8 @@ try
                                            Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "packages":
             return PackageRecords.Dump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "").Split(','), Opt("--plugin") ?? "Skyrim.esm");
+        case "npcai":
+            return PackageRecords.NpcDump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "auto:3").Split(','), Opt("--plugin") ?? "Skyrim.esm");
         case "navmesh":
             return NavmeshRecords.Run(args, Opt, Dir);
         case "links":

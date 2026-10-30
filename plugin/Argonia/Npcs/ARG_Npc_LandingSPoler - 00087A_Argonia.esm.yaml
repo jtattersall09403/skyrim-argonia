@@ -2,6 +2,7 @@ FormKey: 00087A:Argonia.esm
 EditorID: ARG_Npc_LandingSPoler
 Configuration:
   Flags:
+  - AutoCalcStats
   - Unique
   Level:
     MutagenObjectType: NpcLevel
@@ -17,6 +18,8 @@ Perks: []
 Items: []
 AIData:
   Confidence: Average
+  EnergyLevel: 50
+  Responsibility: NoCrime
 Packages:
 - 000878:Argonia.esm
 - 000879:Argonia.esm
@@ -103,3 +106,5 @@ PlayerSkills:
     Value: 0
 Height: 1
 Weight: 50
+SoundLevel: Normal
+DefaultOutfit: 4C52C3:King of the Murkmire.esp

@@ -32,7 +32,6 @@ Data:
 - Key: 0
   Value:
     MutagenObjectType: PackageDataLocation
-    Flags: []
     Location:
       Target:
         MutagenObjectType: LocationTarget
@@ -41,80 +40,64 @@ Data:
 - Key: 1
   Value:
     MutagenObjectType: PackageDataTarget
-    Flags: []
     Target:
       MutagenObjectType: PackageTargetObjectType
       Type: TouchActorEffects
 - Key: 2
   Value:
     MutagenObjectType: PackageDataObjectList
-    Flags: []
     Data: 0
 - Key: 6
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 8
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 11
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 13
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 15
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 17
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 18
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 19
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 20
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 21
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 22
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 24
   Value:
     MutagenObjectType: PackageDataFloat
-    Flags: []
     Data: 50
 - Key: 25
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 26
   Value:
     MutagenObjectType: PackageDataFloat
-    Flags: []
     Data: 300
 XnamMarker: 0x1B
 OnBegin:

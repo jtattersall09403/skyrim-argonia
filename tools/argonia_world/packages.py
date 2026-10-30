@@ -7,6 +7,10 @@ from tools.argonia_world import skyrim_units as su
 
 SANDBOX_TEMPLATE = "01C254:Skyrim.esm"  # PACK EditorID Sandbox (PackageTemplate; data inputs 0 Location, 1..7, 14, 25, 27, 29, 31)
 SLEEP_TEMPLATE = "019717:Skyrim.esm"  # PACK EditorID Sleep (PackageTemplate; inputs 0 Location, 1 Target, 2 Found Bed, 11..26)
+# The data inputs a vanilla PACK built on each template carries (its valued inputs; label-only ones dropped), read with
+# `ArgoniaGen npcai` from Skyrim.esm (lane npc-ai: SolitudeBardsCollegeBendtSandbox4x18 12, SolitudeBardsCollegeBendt's
+# sleep 10DEB5 17). ArgoniaGen fails the build when a written PACK carries another count.
+TEMPLATE_INPUTS = {SANDBOX_TEMPLATE: 12, SLEEP_TEMPLATE: 17}
 
 
 def _record(alloc, edid, entity_key, template, flags, ref_form_key, radius_m, start_hour, hours) -> dict:
@@ -16,7 +20,7 @@ def _record(alloc, edid, entity_key, template, flags, ref_form_key, radius_m, st
         raise ValueError(f"{edid}: duration {hours} h outside (0, 24]")
     return {
         "type": "PACK", "formKey": alloc.form_key(edid, "PACK", entity_key), "edid": edid, "template": template,
-        "flags": list(flags),
+        "inputCount": TEMPLATE_INPUTS[template], "flags": list(flags),
         "schedule": {"hour": int(start_hour), "minute": 0, "durationHours": hours, "dayOfWeek": "Any"},
         "location": {"ref": ref_form_key, "radius": su.rounded(su.metres_to_units(radius_m), 2)},
     }

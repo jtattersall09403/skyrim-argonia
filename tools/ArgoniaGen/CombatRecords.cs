@@ -81,6 +81,14 @@ static class CombatRecords
             foreach (var k in pks.EnumerateArray()) n.Packages.Add(new FormLink<IPackageGetter>(FK(k.GetString()!)));
         if (r.TryGetProperty("voice", out var vo)) n.Voice.SetTo(FK(vo.GetString()!));
         if (r.TryGetProperty("outfit", out var of)) n.DefaultOutfit.SetTo(FK(of.GetString()!));
+        if (r.TryGetProperty("energy", out var en)) n.AIData.EnergyLevel = (byte)en.GetInt32();
+        if (r.TryGetProperty("responsibility", out var rs)) n.AIData.Responsibility = Enum.Parse<Responsibility>(rs.GetString()!);
+        if (r.TryGetProperty("mood", out var md)) n.AIData.Mood = Enum.Parse<Mood>(md.GetString()!);
+        if (r.TryGetProperty("assistance", out var asst)) n.AIData.Assistance = Enum.Parse<Assistance>(asst.GetString()!);
+        if (r.TryGetProperty("soundLevel", out var sl)) n.SoundLevel = Enum.Parse<SoundLevel>(sl.GetString()!);
+        if (r.TryGetProperty("combatStyle", out var cs)) n.CombatStyle.SetTo(FK(cs.GetString()!));
+        foreach (var f in A(r, "factions"))
+            n.Factions.Add(new RankPlacement { Faction = new FormLink<IFactionGetter>(FK(S(f, "faction"))), Rank = (sbyte)I(f, "rank") });
         mod.Npcs.Add(n);
     }
 

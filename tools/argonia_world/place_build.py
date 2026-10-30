@@ -35,6 +35,11 @@ ACTIVATORS = {
     "ARG_ACTI_LF83MortarTub": ("Mortar Tub", "clutter/bucket01.nif"),
 }
 PEOPLE_TEMPLATE_FLAGS = ["Traits"]
+# A Traits-only template gives face, body and voice; AI data, packages, inventory and outfit are the record's own, so a
+# person carries what a vanilla townsperson does (lane npc-ai, vs Skyrim.esm's TreasCorpseCommoner* and Bendt):
+# stats auto-calculated from class and level, AIDT energy 50 (0 is Mutagen's default, not a vanilla value), no crime.
+PEOPLE_AI = {"aggression": "Unaggressive", "confidence": "Average", "energy": 50, "responsibility": "NoCrime",
+             "mood": "Neutral", "assistance": "HelpsNobody", "soundLevel": "Normal"}
 CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "AIData", "Inventory", "Script", "AttackData"]
 
 
@@ -214,7 +219,11 @@ def _people(ctx, world, refs) -> None:
                "class": _studio_class(ctx.alloc), "female": npc.sex == "female", "level": 1, "healthOffset": 0,
                "aggression": "Unaggressive", "confidence": "Average", "height": su.NPC_DEFAULT_HEIGHT,
                "weight": su.NPC_DEFAULT_WEIGHT, "perks": [], "items": [], "packages": pkgs,
-               "flags": [] if creature else ["Unique"]}
+               "flags": [] if creature else ["Unique", "AutoCalcStats"]}
+        if not creature:
+            rec.update(PEOPLE_AI)
+            if p.outfit_form_key:
+                rec["outfit"] = p.outfit_form_key
         if p.respawn:
             rec["flags"].append("Respawn")
         if p.speaker:
@@ -250,7 +259,25 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
                         "formKey": keys(cx, cy), "worldspace": wrld_form_key, "refs": recs})
     out = list(ctx.records.values()) + out
     check_package_targets(out)
+    check_people(out)
     return out
+
+
+def check_people(records: list[dict]) -> None:
+    """L1 (lane npc-ai): every person's NPC_ (a Traits-only template, so these are the record's own) carries packages,
+    AI data, a default outfit and a class; every PACK carries its template's data-input count (packages.py)."""
+    from tools.argonia_world.packages import TEMPLATE_INPUTS
+    bad = []
+    for r in records:
+        if r.get("type") == "NPC_" and r.get("templateFlags") == PEOPLE_TEMPLATE_FLAGS:
+            missing = [k for k in ("packages", "aggression", "confidence", "energy", "outfit", "class") if not r.get(k)]
+            if missing:
+                bad.append(f"{r['edid']}: no {', '.join(missing)}")
+        elif r.get("type") == "PACK" and r.get("inputCount") != TEMPLATE_INPUTS.get(r.get("template")):
+            bad.append(f"{r['edid']}: {r.get('inputCount')} data inputs, template {r.get('template')} has "
+                       f"{TEMPLATE_INPUTS.get(r.get('template'))}")
+    if bad:
+        raise ValueError("people records short of a vanilla NPC_'s AI fields: " + "; ".join(bad))
 
 
 def check_package_targets(records: list[dict]) -> None:

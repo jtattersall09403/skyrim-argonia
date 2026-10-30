@@ -3,6 +3,7 @@ EditorID: ARG_Npc_N13
 Configuration:
   Flags:
   - Female
+  - AutoCalcStats
   - Unique
   Level:
     MutagenObjectType: NpcLevel
@@ -18,6 +19,8 @@ Perks: []
 Items: []
 AIData:
   Confidence: Average
+  EnergyLevel: 50
+  Responsibility: NoCrime
 Packages:
 - 000880:Argonia.esm
 - 000881:Argonia.esm
@@ -104,3 +107,5 @@ PlayerSkills:
     Value: 0
 Height: 1
 Weight: 50
+SoundLevel: Normal
+DefaultOutfit: 0A087F:King of the Murkmire.esp

@@ -47,7 +47,7 @@ static class PackageRecords
             EditorID = S(r, "edid"), Type = Package.Types.Package, InterruptOverride = t.InterruptOverride, PreferredSpeed = t.PreferredSpeed,
             InterruptFlags = t.InterruptFlags, DataInputVersion = t.DataInputVersion, XnamMarker = t.XnamMarker.ToArray(),
             ScheduleMonth = -1, ScheduleDate = 0, ScheduleHour = -1, ScheduleMinute = -1,
-            OnBegin = t.OnBegin?.DeepCopy(), OnEnd = t.OnEnd?.DeepCopy(), OnChange = t.OnChange?.DeepCopy(),
+            OnBegin = Event(t.OnBegin), OnEnd = Event(t.OnEnd), OnChange = Event(t.OnChange),
         };
         p.PackageTemplate.SetTo(tk);
         if (r.TryGetProperty("flags", out var fl)) foreach (var f in fl.EnumerateArray()) p.Flags |= Enum.Parse<Package.Flag>(f.GetString()!);
@@ -63,9 +63,11 @@ static class PackageRecords
             if (kv.Value is not (IPackageDataLocationGetter or IPackageDataBoolGetter or IPackageDataIntGetter or IPackageDataFloatGetter
                 or IPackageDataTargetGetter or IPackageDataObjectListGetter or IPackageDataTopicGetter)) continue;  // label-only entries
             var c = kv.Value.DeepCopy();
-            c.Name = null; c.Flags = 0;
+            c.Name = null; c.Flags = null;  // a templated vanilla PACK carries no UNAM/BNAM/PNAM label of its own (lane npc-ai)
             p.Data[kv.Key] = c;
         }
+        if (r.TryGetProperty("inputCount", out var ic) && ic.GetInt32() != p.Data.Count)
+            throw new InvalidDataException($"{S(r, "edid")}: {p.Data.Count} data inputs from {tk}, the record expects {ic.GetInt32()}");
         if (r.TryGetProperty("location", out var loc)) SetLocation(p, 0, loc);
         if (r.TryGetProperty("target", out var tg))
             ((PackageDataTarget)p.Data[1]).Target = new PackageTargetSpecificReference { Reference = new FormLink<IPlacedGetter>(FK(S(tg, "ref"))), CountOrDistance = 0 };
@@ -82,6 +84,15 @@ static class PackageRecords
                 }
             }
         mod.Packages.Add(p);
+    }
+
+    // The template's preamble event without its script header: a vanilla templated PACK's events carry none (lane npc-ai).
+    static PackageEvent? Event(IPackageEventGetter? e)
+    {
+        if (e is null) return null;
+        var c = e.DeepCopy();
+        c.SCHR = null;
+        return c;
     }
 
     static void SetLocation(Package p, sbyte idx, JsonElement loc)
@@ -121,15 +132,77 @@ static class PackageRecords
         return 0;
     }
 
+    // npcai: the AI-relevant shape of NPC_ records and their PACKs (lane npc-ai's vanilla-vs-ours diff). `--edids` names
+    // NPC_ records; `auto:<n>` picks the first n non-unique, unscripted NPC_s whose one package is templated on Sandbox 01C254.
+    // `outfits` also lists the plugin's OTFTs. Overlay reads only, explicit fields (a reflection walk of NPC_ ran to 10 GB).
+    public static int NpcDump(string data, string outPath, string[] edids, string plugin)
+    {
+        using var mod = Load.Open(data, plugin);
+        using var sky = plugin == "Skyrim.esm" ? null : Load.Open(data, "Skyrim.esm");
+        var packs = mod.Packages.ToDictionary(p => p.FormKey);
+        IEnumerable<INpcGetter> npcs;
+        if (edids.Length == 1 && edids[0].StartsWith("auto:"))
+        {
+            var sand = mod.Packages.Where(p => p.PackageTemplate.FormKeyNullable?.ToString() == "01C254:Skyrim.esm").Select(p => p.FormKey).ToHashSet();
+            npcs = mod.Npcs.Where(n => n.Template.IsNull && n.Packages.Count == 1 && sand.Contains(n.Packages[0].FormKey) && !n.DefaultOutfit.IsNull
+                    && !n.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Unique) && n.VirtualMachineAdapter == null)
+                .Take(int.Parse(edids[0][5..]));
+        }
+        else npcs = mod.Npcs.Where(n => edids.Contains(n.EditorID ?? ""));
+        var outNpcs = new List<object?>();
+        var outPacks = new Dictionary<string, object?>();
+        foreach (var n in npcs)
+        {
+            var c = n.Configuration; var a = n.AIData;
+            var d = new Dictionary<string, object?>
+            {
+                ["$edid"] = n.EditorID, ["$formKey"] = n.FormKey.ToString(),
+                ["acbsFlags"] = c.Flags.ToString(), ["templateFlags"] = c.TemplateFlags.ToString(), ["template"] = n.Template.FormKeyNullable?.ToString(),
+                ["level"] = Dyn(c.Level, 0), ["speedMult"] = c.SpeedMultiplier, ["disposition"] = c.DispositionBase,
+                ["aidt"] = $"aggr {a.Aggression} conf {a.Confidence} energy {a.EnergyLevel} resp {a.Responsibility} mood {a.Mood} assist {a.Assistance} aggroWarn {a.AggroRadiusBehavior} warn {a.Warn} warnAttack {a.WarnOrAttack} attack {a.Attack}",
+                ["class"] = n.Class.FormKeyNullable?.ToString(), ["combatStyle"] = n.CombatStyle.FormKeyNullable?.ToString(),
+                ["race"] = n.Race.FormKeyNullable?.ToString(), ["voice"] = n.Voice.FormKeyNullable?.ToString(),
+                ["doft"] = n.DefaultOutfit.FormKeyNullable?.ToString(), ["soft"] = n.SleepingOutfit.FormKeyNullable?.ToString(),
+                ["defaultPackageList"] = n.DefaultPackageList.FormKeyNullable?.ToString(), ["spectator"] = n.SpectatorOverridePackageList.FormKeyNullable?.ToString(),
+                ["observeCorpse"] = n.ObserveDeadBodyOverridePackageList.FormKeyNullable?.ToString(), ["combatOverride"] = n.CombatOverridePackageList.FormKeyNullable?.ToString(),
+                ["guardWarn"] = n.GuardWarnOverridePackageList.FormKeyNullable?.ToString(),
+                ["packages"] = n.Packages.Select(k => k.FormKey.ToString()).ToList(),
+                ["factions"] = n.Factions.Select(f => $"{f.Faction.FormKey} r{f.Rank}").ToList(),
+                ["items"] = n.Items?.Count ?? 0, ["spells"] = n.ActorEffect?.Count ?? 0, ["perks"] = n.Perks?.Count ?? 0,
+                ["keywords"] = n.Keywords?.Count ?? 0, ["attackRace"] = n.AttackRace.FormKeyNullable?.ToString(),
+                ["giftFilter"] = n.GiftFilter.FormKeyNullable?.ToString(), ["crimeFaction"] = n.CrimeFaction.FormKeyNullable?.ToString(),
+                ["virtualMachineAdapter"] = n.VirtualMachineAdapter != null, ["dest"] = n.Destructible != null,
+                ["height"] = n.Height, ["weight"] = n.Weight, ["soundLevel"] = n.SoundLevel.ToString(),
+                ["dnam"] = $"health {n.PlayerSkills?.Health} mag {n.PlayerSkills?.Magicka} stam {n.PlayerSkills?.Stamina} far {n.PlayerSkills?.FarAwayModelDistance}",
+                ["majorFlags"] = n.MajorRecordFlagsRaw,
+            };
+            outNpcs.Add(d);
+            foreach (var pk in n.Packages)
+                if (packs.TryGetValue(pk.FormKey, out var p) || (sky != null && sky.Packages.FirstOrDefault(x => x.FormKey == pk.FormKey) is { } q && (p = q) != null))
+                {
+                    var pd = (Dictionary<string, object?>)Dyn(p, 0)!;
+                    pd["$edid"] = p.EditorID;
+                    outPacks[pk.FormKey.ToString()] = pd;
+                }
+        }
+        var otft = edids.Contains("outfits") ? mod.Outfits.Select(o => $"{o.FormKey} {o.EditorID} [{string.Join(" ", o.Items?.Select(i => i.FormKey.ToString()) ?? new List<string>())}]").ToList() : null;
+        var top = mod.Worldspaces.Select(w => new { ws = w.FormKey.ToString(), w.EditorID, top = w.TopCell?.FormKey.ToString(), topFlags = w.TopCell?.Flags.ToString(),
+            topMajor = w.TopCell?.MajorRecordFlagsRaw, actors = w.TopCell?.Persistent.OfType<IPlacedNpcGetter>().Select(a => $"{a.FormKey} {a.Base.FormKey} flags {a.MajorRecordFlagsRaw:X} pos {a.Placement?.Position}").ToList() }).ToList();
+        Load.WriteJson(outPath, new { npcs = outNpcs, packs = outPacks, top, otft });
+        return 0;
+    }
+
     static object? Dyn(object? o, int depth)
     {
         if (o is null) return null;
         var t = o.GetType();
         if (o is string || t.IsPrimitive || t.IsEnum || o is decimal) return o.ToString();
         if (o is IFormLinkGetter l) return l.FormKeyNullable?.ToString();
+        if (o is Mutagen.Bethesda.Strings.ITranslatedStringGetter) return "(string)";  // resolving needs the strings files
         if (depth > 6) return "...";
+        if (t.Name.StartsWith("ReadOnlyMemorySlice") || o is byte[] || t.Name.StartsWith("MemorySlice")) return $"<bytes>";
         if (o is System.Collections.IDictionary d) { var r = new Dictionary<string, object?>(); foreach (System.Collections.DictionaryEntry kv in d) r[kv.Key + ":" + kv.Value?.GetType().Name] = Dyn(kv.Value, depth + 1); return r; }
-        if (o is System.Collections.IEnumerable en) return en.Cast<object?>().Select(x => Dyn(x, depth + 1)).ToList();
+        if (o is System.Collections.IEnumerable en) return en.Cast<object?>().Take(64).Select(x => Dyn(x, depth + 1)).ToList();
         var res = new Dictionary<string, object?> { ["$t"] = t.Name };
         foreach (var pr in t.GetProperties().Where(x => x.GetIndexParameters().Length == 0 && x.DeclaringType != typeof(object)))
         {

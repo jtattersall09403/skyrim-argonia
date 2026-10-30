@@ -1,0 +1,15 @@
+; DEV ONLY (lane npc-ai): the control for Claywater's people running no AI. Noon at the station, two extra actors
+; placed at Livia's work spot (ARG_Ref_ClaywaterStationKeeperWork, a persistent ref, so placeatme resolves before the
+; cell loads): a vanilla townsperson whose one package is a Sandbox-template PACK near its editor location (Golldir,
+; 00019FE8), and a temporary copy of our own Livia's base (ARG_Npc_WellKeeper). Read with GetCurrentAIPackage and
+; GetCurrentAIProcedure on each, and on ARG_Ref_ClaywaterStationLivia:
+;   vanilla runs, our copy runs, Livia does not  -> the persistent placement in the WRLD persistent cell
+;   vanilla runs, neither of ours runs           -> our NPC_/PACK records
+;   nothing runs                                 -> the place or the session (navmesh, or AI toggled off: tai)
+; Never in a packet: the vanilla actor is a Nordic element.
+; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
+set gamehour to 12
+fw 0000081A
+ARG_Ref_ClaywaterStationKeeperWork.placeatme 00019FE8 1
+ARG_Ref_ClaywaterStationKeeperWork.placeatme ARG_Npc_WellKeeper 1
+player.moveto ARG_Ref_ClaywaterStationKeeperWork 0 -300 0

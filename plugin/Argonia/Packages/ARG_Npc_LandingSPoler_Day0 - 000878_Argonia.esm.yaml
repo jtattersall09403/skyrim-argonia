@@ -28,7 +28,6 @@ Data:
 - Key: 0
   Value:
     MutagenObjectType: PackageDataLocation
-    Flags: []
     Location:
       Target:
         MutagenObjectType: LocationTarget
@@ -37,64 +36,50 @@ Data:
 - Key: 1
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 3
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 4
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 5
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 6
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 - Key: 7
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 14
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 25
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 27
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
 - Key: 29
   Value:
     MutagenObjectType: PackageDataFloat
-    Flags: []
     Data: 50
 - Key: 31
   Value:
     MutagenObjectType: PackageDataBool
-    Flags: []
     Data: True
 XnamMarker: 0x20
 OnBegin:
-  SCHR: 0x0000000000000000000000000000000000000100
   Topics:
   - MutagenObjectType: TopicReference
 OnEnd:
-  SCHR: 0x0000000000000000000000000000000000000100
   Topics:
   - MutagenObjectType: TopicReference
 OnChange:
-  SCHR: 0x0000000000000000000000000000000000000100
   Topics:
   - MutagenObjectType: TopicReference

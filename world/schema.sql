@@ -6301,6 +6301,9 @@ CREATE TABLE "build_ref" (
 
 -- Home of a built person's Skyrim record choices (0.4 §d): the vanilla NPC_ whose face, body and voice the person's
 -- record takes through its template (TPLT, Traits flag), and the radius of the day's sandbox and the night's bed.
+-- `outfit_form_key` is the record's default outfit (DOFT: a Traits-only template gives none, so a person without one
+-- stands naked; lane npc-ai); `outfit_stand_in` marks a borrowed outfit standing in for the npc's `look_outfit` until
+-- that clothing is a record of ours. A creature's comes from its template (Inventory), so it has none.
 -- The schedule itself is the person's `npc_day_block` rows; the places are the `build_ref` rows of their sockets.
 CREATE TABLE "build_person" (
   "npc_id" TEXT NOT NULL PRIMARY KEY REFERENCES "npc"("id"),
@@ -6309,7 +6312,11 @@ CREATE TABLE "build_person" (
   "race_form_key" TEXT NOT NULL CHECK ("race_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
   "speaker" BOOLEAN NOT NULL DEFAULT 1 CHECK ("speaker" IN (0, 1)),
   "sandbox_radius_m" REAL NOT NULL CHECK ("sandbox_radius_m" > 0),
-  "respawn" BOOLEAN NOT NULL DEFAULT 0 CHECK ("respawn" IN (0, 1))
+  "respawn" BOOLEAN NOT NULL DEFAULT 0 CHECK ("respawn" IN (0, 1)),
+  "outfit_form_key" TEXT CHECK ("outfit_form_key" IS NULL OR "outfit_form_key" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*'),
+  "outfit_stand_in" BOOLEAN NOT NULL DEFAULT 0 CHECK ("outfit_stand_in" IN (0, 1)),
+  "outfit_why" TEXT,
+  CHECK (("outfit_form_key" IS NULL) = ("outfit_why" IS NULL))
 );
 
 -- Home of one ground edit a built place asks of the generated terrain (0.4 §d): a bowl carved to `floor_m` (metres
