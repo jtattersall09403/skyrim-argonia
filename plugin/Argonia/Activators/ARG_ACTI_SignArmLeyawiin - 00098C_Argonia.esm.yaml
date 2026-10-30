@@ -1,0 +1,10 @@
+FormKey: 00098C:Argonia.esm
+EditorID: ARG_ACTI_SignArmLeyawiin
+Name:
+  TargetLanguage: English
+  Value: Leyawiin
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

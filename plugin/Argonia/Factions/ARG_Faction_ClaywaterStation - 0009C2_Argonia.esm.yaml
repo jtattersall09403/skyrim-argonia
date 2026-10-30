@@ -1,0 +1,23 @@
+FormKey: 0009C2:Argonia.esm
+EditorID: ARG_Faction_ClaywaterStation
+Name:
+  TargetLanguage: English
+  Value: Claywater Station
+Flags:
+- HiddenFromPC
+- TrackCrime
+CrimeValues:
+  Arrest: True
+  AttackOnSight: True
+  Murder: 1000
+  Assault: 40
+  Trespass: 5
+  Pickpocket: 25
+  StealMult: 1
+Ranks:
+- Number: 0
+  Title:
+    Male:
+      TargetLanguage: English
+      Value: Resident
+    Female: {}

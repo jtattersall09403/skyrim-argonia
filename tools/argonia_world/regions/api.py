@@ -295,7 +295,7 @@ def wrld_record() -> dict:
 def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
     """The Argonia.esm layers of the region family. ``wrld`` is ArgoniaWorld.esm's WRLD intermediate record
     (terrain/world.py), which the override repeats with the climate set (an override replaces the whole record);
-    with a piece ``resolver``, the gates and landings (routes/infra.py) ride in its persistent cell."""
+    with a piece ``resolver``, the gates, landings and signposts (routes/infra.py) ride in its persistent cell."""
     from tools.argonia_world.intermediate import Layer
     c = world.query("SELECT * FROM climate ORDER BY id")[0]
     images, by_id = _image_records(alloc, world)
@@ -311,10 +311,10 @@ def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
                     map=dict(wrld["map"], cameraMin=cam_min, cameraMax=cam_max, cameraPitch=pitch))
         over.pop("layer", None)
         if resolver is not None:
+            from tools.argonia_world.place_build import GameGround
             from tools.argonia_world.routes import infra
-            from tools.argonia_world.routes.build import Ground
-            refs, stats, _ = infra.refs(alloc, world, resolver, Ground().z)
+            refs, bases, _ = infra.refs(alloc, world, resolver, GameGround().z)  # the final ground (f6177a7)
             over["persistentRefs"] = refs
-            recs += stats
+            recs += bases
         recs.append(over)
     return [Layer("base:regions", recs)]

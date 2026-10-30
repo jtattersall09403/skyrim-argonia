@@ -1,0 +1,10 @@
+FormKey: 0009A6:Argonia.esm
+EditorID: ARG_ACTI_SignArmCartwrightSCross
+Name:
+  TargetLanguage: English
+  Value: Cartwright's Cross
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

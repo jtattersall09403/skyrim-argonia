@@ -1,0 +1,10 @@
+FormKey: 000994:Argonia.esm
+EditorID: ARG_ACTI_SignArmLilmoth
+Name:
+  TargetLanguage: English
+  Value: Lilmoth
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

@@ -1,0 +1,10 @@
+FormKey: 00098E:Argonia.esm
+EditorID: ARG_ACTI_SignArmRidgeRunnersPost
+Name:
+  TargetLanguage: English
+  Value: Ridge Runners' Post
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

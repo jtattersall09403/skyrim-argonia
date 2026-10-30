@@ -447,35 +447,55 @@ def stop_8(w: World, g: Ground) -> dict:
     return s
 
 
+def _gate(w: World) -> dict:
+    """The Tear road's exit gate as 2.W3 places it (routes/infra.py), with its reference EditorID."""
+    from tools.argonia_world.routes import infra
+    gate = next(p for p in infra.placements(w.db, lambda x, y: 0.0) if p["id"] == "gate.tear-road")
+    return dict(gate, edid=infra.edid(gate))
+
+
+def _before(ref: str, yaw_deg: float, back_m: float, side_m: float = 0.0) -> str:
+    """`player.moveto` to `back_m` behind and `side_m` right of a reference facing `yaw_deg` (offsets are world axes)."""
+    a = math.radians(yaw_deg)
+    dx = -math.sin(a) * back_m + math.cos(a) * side_m
+    dy = -math.cos(a) * back_m - math.sin(a) * side_m
+    return f"player.moveto {ref} {su.rounded(su.metres_to_units(dx), 1)} {su.rounded(su.metres_to_units(dy), 1)} 0"
+
+
 def stop_9(w: World, g: Ground) -> dict:
     from tools.argonia_world.terrain import edges
     poly = edges.border_polygon()
     xs, ys = [p[0] for p in poly], [p[1] for p in poly]
-    gate = next(x for x in edges.gates(w.db) if x["route"] == "route.road.thorn-tear-road")
+    gate = _gate(w)
     inset = su.metres_to_units(30.0)
     # a west border segment, a third of the way down the province's west side
     seg_y_m = (su.PROVINCE_SAMPLES - 1) * su.PROVINCE_SAMPLE_M / 3
     wr, wc = g.snap(30.0, seg_y_m)
     seg_x, seg_y, seg_z = g.units(wr, wc)
-    gr, gc = g.snap(gate["atM"][0], gate["atM"][1])
+    gr, gc = g.snap(gate["at_m"][0], gate["at_m"][1])
     gx, gy, gz = g.units(gr, gc)
-    cell = tuple(gate["cell"])
+    cell = su.cell_of(gx, gy)
     s = new_stop(9, "border", "A border segment and the Tear road gate",
                  "the player cannot leave; the closed-road message", cell, w)
-    s["border"] = {"min_x": min(xs), "max_y": max(ys), "gate_pos": [gx, gy], "inset_u": round(inset, 1)}
+    s["border"] = {"min_x": min(xs), "max_y": max(ys), "gate_pos": [gx, gy], "inset_u": round(inset, 1),
+                   "gate_ref": gate["edid"]}
     push = [{"pad": "+LY=1:3000 -:100"} for _ in range(3)]
+    face = round(gate["yaw"] % 360, 1)
     s["steps"] = [
         arrive(s, False),
-        {"name": "s09-gate-push-north", "why": "20 m inside the border at the Tear road gate, facing north, walking out for 9 s",
-         "do": [{"teleport": f"pos {gx} {gy} {su.rounded(gz + DROP_U, 2)}"}, {"wait": 3},
-                {"console": "player.setangle z 0"}, *push],
-         "expect": [{"read": ["player"], "path": "pos.y", "ge": su.rounded(gy + 300, 2), "within": 1},
-                    {"read": ["player"], "path": "pos.y", "le": max(ys), "within": 1},
+        {"name": "s09-gate-push-north", "why": "5 m before the Tear road gate (20 m inside the border), facing out, "
+                                               "walking at it for 9 s",
+         "do": [{"console": _before(gate["edid"], gate["yaw"], 5.0)}, {"wait": 3},
+                {"console": f"player.setangle z {face}"}, *push],
+         "expect": [{"read": ["player"], "path": "pos.y", "le": max(ys), "within": 1},
                     {"read": ["player"], "path": "dead", "eq": False, "within": 1}],
-         "reader": ["the road ends at a gate or barrier; nothing beyond it is walkable; " + NORDIC]},
-        {"name": "s09-gate-message", "owed": "the exit gate's activator (the closed-road message) is placed by 2.W3 with the road; "
-                                              "its reference is not in the formid table yet",
-         "expect": [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"}]},
+         "reader": ["the road ends at a closed cypress gate across it; nothing beyond it is walkable; " + NORDIC]},
+        {"name": "s09-gate-message", "why": "3 m before the gate, facing it, activate: the closed road's notice",
+         "do": [{"console": _before(gate["edid"], gate["yaw"], 3.0)}, {"wait": 2},
+                {"console": f"player.setangle z {face}"}, {"wait": 1}, {"key": "E 120"}, {"wait": 1}],
+         "expect": [{"console": f"{gate['edid']}.GetDisabled", "contains": ">> 0"},
+                    {"console": "player.HasPerk ARG_Perk_RoadClosed", "contains": ">> 1"}],
+         "reader": [f"the notice reads \"{gate['message']}\" in our own words", "the crosshair named the gate \"Border Gate\""]},
         {"name": "s09-segment-travel", "do": [{"console": cow(*g.cell(wr, wc))}, {"wait": 8}], "expect": [in_world(9)]},
         {"name": "s09-segment-push-west", "why": "30 m inside the west border, facing west, walking out for 9 s",
          "do": [{"teleport": f"pos {seg_x} {seg_y} {su.rounded(seg_z + DROP_U, 2)}"}, {"wait": 3},
@@ -487,11 +507,14 @@ def stop_9(w: World, g: Ground) -> dict:
 
 
 def stop_10(w: World, g: Ground) -> dict:
+    from tools.argonia_world.routes import infra
     sign = w.db.query("SELECT s.id, s.x_m, s.y_m, s.yaw_deg, count(a.ord) n FROM signpost s "
                       "JOIN signpost_arm a ON a.signpost_id = s.id GROUP BY s.id ORDER BY n DESC, s.id")[0]
-    arms = w.db.query(
-        "SELECT a.bearing_deg, coalesce(p.name, n.name, n.id) FROM signpost_arm a JOIN route_node n ON n.id = a.to_node_id "
-        "LEFT JOIN place p ON p.id = n.place_id WHERE a.signpost_id = ? ORDER BY a.ord", sign[0])
+    texts = infra.arm_texts(w.db)
+    arms = [(a["bearing_deg"], texts[(sign[0], a["ord"])])
+            for a in w.db.query("SELECT ord, bearing_deg FROM signpost_arm WHERE signpost_id = ? ORDER BY ord", sign[0])]
+    post = infra.edid({"id": sign[0], "kind": "signpost", "signpost": sign[0]})
+    arm0 = infra.edid({"id": f"{sign[0]}.arm0", "kind": "arm", "signpost": sign[0]})
     r, c = g.snap(sign[1], sign[2])
     sx, sy, sz = g.units(r, c)
     yaw = math.radians(sign[3])
@@ -502,19 +525,30 @@ def stop_10(w: World, g: Ground) -> dict:
     heading = round((sign[3] + 180.0) % 360.0, 1)
     cell = su.cell_of(px, py)
     s = new_stop(10, "signpost", "A signpost at a junction", "sign text and arms", cell, w)
-    s["signpost"] = {"id": sign[0], "arms": [[round(b, 1), n] for b, n in arms]}
+    s["signpost"] = {"id": sign[0], "post_ref": post, "arms": [[round(b, 1), n] for b, n in arms]}
     names = ", ".join(f"{n} ({b:.0f} deg)" for b, n in arms)
+    # in front of arm 0's board (0.6 m out along it), 1.5 m to its right, looking at it and up to the board's height
+    b0 = arms[0][0]
+    look_up = round(-math.degrees(math.atan2(infra.ARM_TOP_M - 1.6, 1.5)), 1)
+    a = math.radians(b0)
+    out_dx, out_dy = math.sin(a) * 0.6 + math.cos(a) * 1.5, math.cos(a) * 0.6 - math.sin(a) * 1.5
     s["steps"] = [arrive(s, False), {
         "name": "s10-face-the-sign", "why": f"5 m in front of {sign[0]}, facing it",
         "do": [{"teleport": f"pos {px} {py} {su.rounded(pz + DROP_U, 2)}"}, {"wait": 4}, {"console": f"player.setangle z {heading}"}, {"wait": 1}],
         "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(pz - su.metres_to_units(TOL_M), 2), "within": 3},
                    {"read": ["player"], "path": "pos.z", "le": su.rounded(pz + su.metres_to_units(TOL_M), 2), "within": 3}],
-        "reader": [f"the signpost stands upright on the ground, with {len(arms)} arms", f"the arms read, pointing the way: {names}",
-                   "the lettering is legible and spelled as the place names above, in our own words, no Nordic rune or word",
-                   "wood and rope are marsh-made, not Nordic; " + NORDIC]},
-        {"name": "s10-sign-text", "owed": "the signpost reference and its text read (the bridge has no activator text read yet) "
-                                           "are placed with the roads by 2.W3; the reader judges the still above",
-         "expect": [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"}]}]
+        "reader": [f"the signpost stands upright on the ground, with {len(arms)} arms", f"the arms point the way: {names}",
+                   "wood and rope are marsh-made, not Nordic; any lettering on the boards is no Nordic rune or Skyrim "
+                   "place name; " + NORDIC]},
+        {"name": "s10-sign-text", "why": f"before arm 0 of {sign[0]}, looking at its board: the crosshair reads it",
+         "do": [{"console": f"player.moveto {post} {su.rounded(su.metres_to_units(out_dx), 1)} "
+                            f"{su.rounded(su.metres_to_units(out_dy), 1)} 0"}, {"wait": 2},
+                {"console": f"player.setangle z {round((b0 - 90.0) % 360, 1)}"},
+                {"console": f"player.setangle x {look_up}"}, {"wait": 1}],
+         "expect": [{"console": f"{post}.GetDisabled", "contains": ">> 0"},
+                    {"console": f"{arm0}.GetDisabled", "contains": ">> 0"}],
+         "reader": [f"the crosshair reads \"{infra.ARM_VERB} {arms[0][1]}\" over the board",
+                    f"the board points away from the post towards {b0:.0f} deg (the way to {arms[0][1]})"]}]
     return s
 
 

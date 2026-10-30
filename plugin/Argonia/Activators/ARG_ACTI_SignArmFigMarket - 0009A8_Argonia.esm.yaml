@@ -1,0 +1,10 @@
+FormKey: 0009A8:Argonia.esm
+EditorID: ARG_ACTI_SignArmFigMarket
+Name:
+  TargetLanguage: English
+  Value: Fig Market
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

@@ -1,0 +1,12 @@
+FormKey: 000973:Argonia.esm
+EditorID: ARG_ACTI_BorderGate
+Name:
+  TargetLanguage: English
+  Value: Border Gate
+Model:
+  File: argonia/stockades/stockadegate01.nif
+Keywords:
+- 000971:Argonia.esm
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Open

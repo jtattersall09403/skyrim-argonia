@@ -1,0 +1,10 @@
+FormKey: 0009A3:Argonia.esm
+EditorID: ARG_ACTI_SignArmGangGround
+Name:
+  TargetLanguage: English
+  Value: Gang Ground
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

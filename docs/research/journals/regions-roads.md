@@ -25,3 +25,14 @@
     (`rain-ma` merged into it), `storm-rain` is StormRainTU (`storm-ff` merged into it), `fog-co` became `fog-vt`
     (FogVT), and the `storm` and `squall` templates are StormRainTU. TS has only two restyled rains and one restyled
     storm rain, so the groups now share them.
+- **2026-10-30, lane w3-infra.** The gates, landings and signposts are placed: 60 persistent refs in the WRLD
+  override (2 gates, 2 landings, 16 posts, 40 arms), all on the final ground. Design pieces map to meshes in
+  `infra.DESIGN_PIECES`: KotM's cypress palisade gate (as an ACTI of ours, so it never opens), the tamu wooden dock,
+  and Claywater's own waymark (the vanilla road-sign post with BMV's medium board).
+  - Sign text is the crosshair, the only text Skyrim gives a sign: each arm is an ACTI named with its destination,
+    with "To" as its verb, so the player reads "To Gideon".
+  - The closed road is activation, not a trigger. A hidden perk's Activate entry on the gate's keyword shows the
+    MESG; the gate's collision and the border REGN stop the player. This is the barred-door pattern, and it needs no
+    primitive or trigger-script writer.
+  - Claywater's people are in its town crime faction (Track Crime). The crime values come from the region's Owing,
+    and the station and the landing are one town (one culture sheet, two groups).

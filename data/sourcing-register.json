@@ -688,7 +688,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/190459?tab=files&file_id=822292",
     "version": "1.1.1 (archive sha256 00abb3b460ee..., data/dependencies.json row king-of-the-murkmire)",
     "licence": "Author terms on page: free for free mods that do not use AI",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Saxhleel clothing, Murkmire buildings and props",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Saxhleel clothing, Murkmire buildings and props; 2.W3: the exit gates (stockadegate01, as an ACTI of ours) and the ferry landings (tamu_wooddock01)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: Page allows use of its assets in free mods that do not make use of AI; depending is fine, but our pipeline uses AI so the owner's permission held since 2026-09-24 is what covers our placement of its items. AI clause: restricts AI: \"do not make use of AI\" (audit quote of page terms) Permission request drafted for the owner (0.2 §e)."
   },
@@ -877,7 +877,7 @@
     "source_url": "https://www.moddb.com/mods/black-marsh-valenwood",
     "version": " (archive sha256 f236dc8d45c4..., data/dependencies.json row bmv)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Black Marsh & Valenwood: buildings, props, creatures (ModDB, 9.6 GB; cached privately)",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Black Marsh & Valenwood: buildings, props, creatures (ModDB, 9.6 GB; cached privately); 2.W3: the signpost arm boards (roadsignmedium01r, one ACTI per destination)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },

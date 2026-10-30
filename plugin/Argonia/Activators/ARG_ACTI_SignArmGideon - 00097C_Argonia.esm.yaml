@@ -1,0 +1,10 @@
+FormKey: 00097C:Argonia.esm
+EditorID: ARG_ACTI_SignArmGideon
+Name:
+  TargetLanguage: English
+  Value: Gideon
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

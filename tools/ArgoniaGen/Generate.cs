@@ -54,6 +54,7 @@ static class Generate
                 case "PACK": PackageRecords.Write(mod, r, data); break;
                 case "NPC_" or "ECZN": CombatRecords.Write(mod, r); break;
                 case "ACTI" or "GMST": ActivatorRecords.Write(mod, r); break;
+                case "FACT" or "MESG": SocialRecords.Write(mod, r); break;
                 case "REGN" or "CLMT" or "WTHR" or "IMGS" or "WRLD": RegionWriters.Write(mod, r, data); break;
                 default: throw new InvalidDataException($"record type {type} has no writer ({S(r, "edid")})");
             }

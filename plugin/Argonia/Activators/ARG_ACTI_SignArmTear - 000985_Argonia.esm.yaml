@@ -1,0 +1,10 @@
+FormKey: 000985:Argonia.esm
+EditorID: ARG_ACTI_SignArmTear
+Name:
+  TargetLanguage: English
+  Value: Tear
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

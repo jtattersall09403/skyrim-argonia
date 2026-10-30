@@ -13,6 +13,9 @@ Configuration:
   SpeedMultiplier: 100
   TemplateFlags:
   - Traits
+Factions:
+- Faction: 0009C2:Argonia.esm
+  Fluff: 0x000000
 Template: 0457FB:Skyrim.esm
 Race: 013740:Skyrim.esm
 Perks: []
@@ -109,3 +112,4 @@ Height: 1
 Weight: 50
 SoundLevel: Normal
 DefaultOutfit: 0A087F:King of the Murkmire.esp
+CrimeFaction: 0009C2:Argonia.esm

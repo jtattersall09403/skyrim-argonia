@@ -1,0 +1,10 @@
+FormKey: 000990:Argonia.esm
+EditorID: ARG_ACTI_SignArmSoulrest
+Name:
+  TargetLanguage: English
+  Value: Soulrest
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

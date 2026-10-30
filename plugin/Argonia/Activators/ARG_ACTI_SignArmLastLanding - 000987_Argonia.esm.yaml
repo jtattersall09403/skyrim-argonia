@@ -1,0 +1,10 @@
+FormKey: 000987:Argonia.esm
+EditorID: ARG_ACTI_SignArmLastLanding
+Name:
+  TargetLanguage: English
+  Value: Last Landing
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

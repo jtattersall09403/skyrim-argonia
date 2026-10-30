@@ -1,0 +1,10 @@
+FormKey: 000980:Argonia.esm
+EditorID: ARG_ACTI_SignArmBogmother
+Name:
+  TargetLanguage: English
+  Value: Bogmother
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

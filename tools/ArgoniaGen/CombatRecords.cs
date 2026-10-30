@@ -96,6 +96,7 @@ static class CombatRecords
         if (r.TryGetProperty("combatStyle", out var cs)) n.CombatStyle.SetTo(FK(cs.GetString()!));
         foreach (var f in A(r, "factions"))
             n.Factions.Add(new RankPlacement { Faction = new FormLink<IFactionGetter>(FK(S(f, "faction"))), Rank = (sbyte)I(f, "rank") });
+        if (r.TryGetProperty("crimeFaction", out var cf)) n.CrimeFaction.SetTo(FK(cf.GetString()!));
         mod.Npcs.Add(n);
     }
 

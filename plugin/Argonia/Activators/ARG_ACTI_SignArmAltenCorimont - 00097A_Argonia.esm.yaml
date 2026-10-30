@@ -1,0 +1,10 @@
+FormKey: 00097A:Argonia.esm
+EditorID: ARG_ACTI_SignArmAltenCorimont
+Name:
+  TargetLanguage: English
+  Value: Alten Corimont
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

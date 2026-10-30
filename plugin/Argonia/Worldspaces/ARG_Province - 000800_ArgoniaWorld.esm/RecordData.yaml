@@ -285,5 +285,599 @@ TopCell:
     Owner: 000876:Argonia.esm
     Placement:
       Position: -234169.1, 47753.24, 2354.41
+  - MutagenObjectType: PlacedObject
+    FormKey: 000975:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_GateBlackwoodRoad
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000973:Argonia.esm
+    Placement:
+      Position: -252586.45, 50005.34, 2238.86
+      Rotation: 0, 0, 3.926816
+  - MutagenObjectType: PlacedObject
+    FormKey: 000976:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_GateTearRoad
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000973:Argonia.esm
+    Placement:
+      Position: 192767.89, 260743.44, 1016.14
+  - MutagenObjectType: PlacedObject
+    FormKey: 000977:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_LandingDrowningGateEast
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 01FA35:King of the Murkmire.esp
+    Placement:
+      Position: -232117.27, 50232.24, 2261.97
+      Rotation: 0, 0, 3.081728
+  - MutagenObjectType: PlacedObject
+    FormKey: 000978:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_LandingDrowningGateWest
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 01FA35:King of the Murkmire.esp
+    Placement:
+      Position: -232061.23, 49132.8, 2233.26
+      Rotation: 0, 0, 6.183527
+  - MutagenObjectType: PlacedObject
+    FormKey: 000979:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthStormhold
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -64456.2, 207452.12, 2000.76
+      Rotation: 0, 0, 5.195845
+  - MutagenObjectType: PlacedObject
+    FormKey: 00097B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthStormholdArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097A:Argonia.esm
+    Placement:
+      Position: -64456.2, 207452.12, 2159.73
+      Rotation: 0, 0, 3.625049
+  - MutagenObjectType: PlacedObject
+    FormKey: 00097D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthStormholdArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -64456.2, 207452.12, 2139.42
+      Rotation: 0, 0, 4.803146
+  - MutagenObjectType: PlacedObject
+    FormKey: 00097F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthStormholdArm2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097E:Argonia.esm
+    Placement:
+      Position: -64456.2, 207452.12, 2119.11
+      Rotation: 0, 0, 4.803146
+  - MutagenObjectType: PlacedObject
+    FormKey: 000981:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthStormholdArm3
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000980:Argonia.esm
+    Placement:
+      Position: -64456.2, 207452.12, 2098.8
+      Rotation: 0, 0, 3.625049
+  - MutagenObjectType: PlacedObject
+    FormKey: 000982:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthThorn
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: 183583.02, 219006.75, 2987.48
+      Rotation: 0, 0, 3.380703
+  - MutagenObjectType: PlacedObject
+    FormKey: 000984:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthThornArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000983:Argonia.esm
+    Placement:
+      Position: 183583.02, 219006.75, 3146.45
+      Rotation: 0, 0, 1.809906
+  - MutagenObjectType: PlacedObject
+    FormKey: 000986:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthThornArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000985:Argonia.esm
+    Placement:
+      Position: 183583.02, 219006.75, 3126.14
+      Rotation: 0, 0, 1.809906
+  - MutagenObjectType: PlacedObject
+    FormKey: 000988:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignDunmerNorthThornArm2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000987:Argonia.esm
+    Placement:
+      Position: 183583.02, 219006.75, 3105.83
+      Rotation: 0, 0, 1.809906
+  - MutagenObjectType: PlacedObject
+    FormKey: 000989:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideon
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3083.42
+      Rotation: 0, 0, 0.282743
+  - MutagenObjectType: PlacedObject
+    FormKey: 00098B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideonArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098A:Argonia.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3242.39
+      Rotation: 0, 0, 4.995132
+  - MutagenObjectType: PlacedObject
+    FormKey: 00098D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideonArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098C:Argonia.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3222.08
+      Rotation: 0, 0, 4.995132
+  - MutagenObjectType: PlacedObject
+    FormKey: 00098F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideonArm2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098E:Argonia.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3201.77
+      Rotation: 0, 0, 5.667084
+  - MutagenObjectType: PlacedObject
+    FormKey: 000991:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideonArm3
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3181.46
+      Rotation: 0, 0, 4.995132
+  - MutagenObjectType: PlacedObject
+    FormKey: 000992:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialFringeGideonArm4
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000983:Argonia.esm
+    Placement:
+      Position: -145338.55, 47228.03, 3161.15
+      Rotation: 0, 0, 4.995132
+  - MutagenObjectType: PlacedObject
+    FormKey: 000993:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialPenalSouthBlackrose
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -89876.37, -187771.97, 184.18
+      Rotation: 0, 0, 0.162316
+  - MutagenObjectType: PlacedObject
+    FormKey: 000995:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialPenalSouthBlackroseArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000994:Argonia.esm
+    Placement:
+      Position: -89876.37, -187771.97, 343.15
+      Rotation: 0, 0, 4.874705
+  - MutagenObjectType: PlacedObject
+    FormKey: 000996:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignImperialPenalSouthBlackroseArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -89876.37, -187771.97, 322.84
+      Rotation: 0, 0, 4.874705
+  - MutagenObjectType: PlacedObject
+    FormKey: 000997:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastLilmoth
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -2061.24, -180783.17, 1439.12
+      Rotation: 0, 0, 3.940953
+  - MutagenObjectType: PlacedObject
+    FormKey: 000999:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastLilmothArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -2061.24, -180783.17, 1598.08
+      Rotation: 0, 0, 2.370157
+  - MutagenObjectType: PlacedObject
+    FormKey: 00099A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastLilmothArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -2061.24, -180783.17, 1577.78
+      Rotation: 0, 0, 4.036947
+  - MutagenObjectType: PlacedObject
+    FormKey: 00099C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastLilmothArm2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00099B:Argonia.esm
+    Placement:
+      Position: -2061.24, -180783.17, 1557.47
+      Rotation: 0, 0, 4.036947
+  - MutagenObjectType: PlacedObject
+    FormKey: 00099D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastSoulrest
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -216977.2, -187715.94, 544.83
+      Rotation: 0, 0, 1.132719
+  - MutagenObjectType: PlacedObject
+    FormKey: 00099E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastSoulrestArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -216977.2, -187715.94, 703.8
+      Rotation: 0, 0, 5.845108
+  - MutagenObjectType: PlacedObject
+    FormKey: 00099F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastSoulrestArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -216977.2, -187715.94, 683.49
+      Rotation: 0, 0, 5.845108
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastSoulrestArm2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000994:Argonia.esm
+    Placement:
+      Position: -216977.2, -187715.94, 663.18
+      Rotation: 0, 0, 6.180211
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignPirateFreeholdsAltenCorimont
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: 21048, 179721.03, 715.01
+      Rotation: 0, 0, 0.680678
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignPirateFreeholdsAltenCorimontArm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000983:Argonia.esm
+    Placement:
+      Position: 21048, 179721.03, 873.97
+      Rotation: 0, 0, 5.393067
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignPirateFreeholdsAltenCorimontArm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0009A3:Argonia.esm
+    Placement:
+      Position: 21048, 179721.03, 853.67
+      Rotation: 0, 0, 5.393067
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -119552.14, 29440.22, 2376.12
+      Rotation: 0, 0, 5.497787
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0009A6:Argonia.esm
+    Placement:
+      Position: -119552.14, 29440.22, 2535.09
+      Rotation: 0, 0, 3.926991
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009A9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0009A8:Argonia.esm
+    Placement:
+      Position: -119552.14, 29440.22, 2514.78
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -204209, 38990.64, 2946.86
+      Rotation: 0, 0, 0.785398
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -204209, 38990.64, 3105.83
+      Rotation: 0, 0, 5.497787
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098C:Argonia.esm
+    Placement:
+      Position: -204209, 38990.64, 3085.52
+      Rotation: 0, 0, 2.356194
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonSoulrest1234
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -108800.04, -6400.12, 1343.88
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonSoulrest1234Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -108800.04, -6400.12, 1502.84
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009AF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonSoulrest1234Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -108800.04, -6400.12, 1482.54
+      Rotation: 0, 0, 2.356194
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose2289
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -109311.94, -170751.66, 168.07
+      Rotation: 0, 0, 0.785398
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose2289Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -109311.94, -170751.66, 327.04
+      Rotation: 0, 0, 5.497787
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose2289Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -109311.94, -170751.66, 306.73
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose711
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -191744.02, -220416.22, 392.17
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose711Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -191744.02, -220416.22, 551.14
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose711Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -191744.02, -220416.22, 530.83
+      Rotation: 0, 0, 0.694641
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose906
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -179267.12, -222463.84, 140.06
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose906Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -179267.12, -222463.84, 299.03
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose906Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -179267.12, -222463.84, 278.72
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009B9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignStormholdThorn1114
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -7423.99, 226559.97, 712.21
+      Rotation: 0, 0, 5.356415
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignStormholdThorn1114Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000983:Argonia.esm
+    Placement:
+      Position: -7423.99, 226559.97, 871.17
+      Rotation: 0, 0, 3.785619
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignStormholdThorn1114Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097E:Argonia.esm
+    Placement:
+      Position: -7423.99, 226559.97, 850.86
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad369
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: 200959.77, 225024.25, 1336.17
+      Rotation: 0, 0, 3.926991
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad369Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097E:Argonia.esm
+    Placement:
+      Position: 200959.77, 225024.25, 1495.14
+      Rotation: 0, 0, 2.356194
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad369Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000985:Argonia.esm
+    Placement:
+      Position: 200959.77, 225024.25, 1474.83
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009BF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -64008.72, -177816.08, 58.12
+      Rotation: 0, 0, 4.680973
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009C0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -64008.72, -177816.08, 217.09
+      Rotation: 0, 0, 3.110177
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009C1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000994:Argonia.esm
+    Placement:
+      Position: -64008.72, -177816.08, 196.78
+      Rotation: 0, 0, 6.251769
   MajorFlags:
   - Persistent

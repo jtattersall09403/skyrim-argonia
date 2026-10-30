@@ -1,0 +1,10 @@
+FormKey: 000998:Argonia.esm
+EditorID: ARG_ACTI_SignArmBlackrose
+Name:
+  TargetLanguage: English
+  Value: Blackrose
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

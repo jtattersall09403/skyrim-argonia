@@ -1,5 +1,23 @@
+{"editor_id":"ARG_ACTI_BorderGate","plugin":"Argonia.esm","form_id":2419,"record_type":"ACTI","entity_key":"infra.border-gate"}
 {"editor_id":"ARG_ACTI_LF83MortarTub","plugin":"Argonia.esm","form_id":2160,"record_type":"ACTI","entity_key":"thing.lf83.mortar-tub"}
 {"editor_id":"ARG_ACTI_LF83WellHead","plugin":"Argonia.esm","form_id":2161,"record_type":"ACTI","entity_key":"thing.lf83.well-head"}
+{"editor_id":"ARG_ACTI_SignArmAltenCorimont","plugin":"Argonia.esm","form_id":2426,"record_type":"ACTI","entity_key":"infra.sign-arm.Alten Corimont"}
+{"editor_id":"ARG_ACTI_SignArmArchon","plugin":"Argonia.esm","form_id":2442,"record_type":"ACTI","entity_key":"infra.sign-arm.Archon"}
+{"editor_id":"ARG_ACTI_SignArmBlackrose","plugin":"Argonia.esm","form_id":2456,"record_type":"ACTI","entity_key":"infra.sign-arm.Blackrose"}
+{"editor_id":"ARG_ACTI_SignArmBogmother","plugin":"Argonia.esm","form_id":2432,"record_type":"ACTI","entity_key":"infra.sign-arm.Bogmother"}
+{"editor_id":"ARG_ACTI_SignArmCartwrightSCross","plugin":"Argonia.esm","form_id":2470,"record_type":"ACTI","entity_key":"infra.sign-arm.Cartwright's Cross"}
+{"editor_id":"ARG_ACTI_SignArmFigMarket","plugin":"Argonia.esm","form_id":2472,"record_type":"ACTI","entity_key":"infra.sign-arm.Fig Market"}
+{"editor_id":"ARG_ACTI_SignArmGangGround","plugin":"Argonia.esm","form_id":2467,"record_type":"ACTI","entity_key":"infra.sign-arm.Gang Ground"}
+{"editor_id":"ARG_ACTI_SignArmGideon","plugin":"Argonia.esm","form_id":2428,"record_type":"ACTI","entity_key":"infra.sign-arm.Gideon"}
+{"editor_id":"ARG_ACTI_SignArmLastLanding","plugin":"Argonia.esm","form_id":2439,"record_type":"ACTI","entity_key":"infra.sign-arm.Last Landing"}
+{"editor_id":"ARG_ACTI_SignArmLeyawiin","plugin":"Argonia.esm","form_id":2444,"record_type":"ACTI","entity_key":"infra.sign-arm.Leyawiin"}
+{"editor_id":"ARG_ACTI_SignArmLilmoth","plugin":"Argonia.esm","form_id":2452,"record_type":"ACTI","entity_key":"infra.sign-arm.Lilmoth"}
+{"editor_id":"ARG_ACTI_SignArmRidgeRunnersPost","plugin":"Argonia.esm","form_id":2446,"record_type":"ACTI","entity_key":"infra.sign-arm.Ridge Runners' Post"}
+{"editor_id":"ARG_ACTI_SignArmSoulrest","plugin":"Argonia.esm","form_id":2448,"record_type":"ACTI","entity_key":"infra.sign-arm.Soulrest"}
+{"editor_id":"ARG_ACTI_SignArmStormhold","plugin":"Argonia.esm","form_id":2435,"record_type":"ACTI","entity_key":"infra.sign-arm.Stormhold"}
+{"editor_id":"ARG_ACTI_SignArmTear","plugin":"Argonia.esm","form_id":2437,"record_type":"ACTI","entity_key":"infra.sign-arm.Tear"}
+{"editor_id":"ARG_ACTI_SignArmTheTeethOfSithis","plugin":"Argonia.esm","form_id":2459,"record_type":"ACTI","entity_key":"infra.sign-arm.The Teeth of Sithis"}
+{"editor_id":"ARG_ACTI_SignArmThorn","plugin":"Argonia.esm","form_id":2430,"record_type":"ACTI","entity_key":"infra.sign-arm.Thorn"}
 {"editor_id":"ARG_Alch_HealingDraught","plugin":"Argonia.esm","form_id":2129,"record_type":"ALCH","entity_key":"item.healing-draught"}
 {"editor_id":"ARG_Arma_Steel_Boots","plugin":"Argonia.esm","form_id":2113,"record_type":"ARMA","entity_key":"item.steel-boots#boots"}
 {"editor_id":"ARG_Arma_Steel_Cuirass","plugin":"Argonia.esm","form_id":2115,"record_type":"ARMA","entity_key":"item.steel-cuirass#cuirass"}
@@ -29,8 +47,10 @@
 {"editor_id":"ARG_CampSpot","plugin":"Argonia.esm","form_id":2143,"record_type":"ACTI","entity_key":"rest.camp-spot"}
 {"editor_id":"ARG_Class_marsh_guide","plugin":"Argonia.esm","form_id":2054,"record_type":"CLAS","entity_key":"class.marsh-guide"}
 {"editor_id":"ARG_Climate_black_marsh","plugin":"Argonia.esm","form_id":2067,"record_type":"CLMT","entity_key":"climate.black-marsh"}
+{"editor_id":"ARG_ClosedGate","plugin":"Argonia.esm","form_id":2417,"record_type":"KYWD","entity_key":"hook.closed-gate"}
 {"editor_id":"ARG_Cont_OpeningWorkCampGuardStores","plugin":"Argonia.esm","form_id":2127,"record_type":"CONT","entity_key":"lock.opening-work-camp.guard-stores"}
 {"editor_id":"ARG_Ecz_AmbushDeserter","plugin":"Argonia.esm","form_id":2135,"record_type":"ECZN","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter#zone"}
+{"editor_id":"ARG_Faction_ClaywaterStation","plugin":"Argonia.esm","form_id":2498,"record_type":"FACT","entity_key":"faction.claywater-station"}
 {"editor_id":"ARG_HoldingCell","plugin":"Argonia.esm","form_id":2050,"record_type":"CELL"}
 {"editor_id":"ARG_HoldingFloor","plugin":"Argonia.esm","form_id":2052,"record_type":"REFR"}
 {"editor_id":"ARG_HoldingMarker","plugin":"Argonia.esm","form_id":2051,"record_type":"REFR"}
@@ -45,6 +65,7 @@
 {"editor_id":"ARG_Misc_Lf83ClayBasket","plugin":"Argonia.esm","form_id":2158,"record_type":"MISC","entity_key":"item.lf83.clay-basket"}
 {"editor_id":"ARG_Misc_Lf83WellSilt","plugin":"Argonia.esm","form_id":2162,"record_type":"MISC","entity_key":"item.lf83.well-silt"}
 {"editor_id":"ARG_Misc_Lf83WellWater","plugin":"Argonia.esm","form_id":2163,"record_type":"MISC","entity_key":"item.lf83.well-water"}
+{"editor_id":"ARG_Msg_RoadClosed","plugin":"Argonia.esm","form_id":2418,"record_type":"MESG","entity_key":"message.road-closed"}
 {"editor_id":"ARG_MusicSilence","plugin":"Argonia.esm","form_id":2049,"record_type":"MUSC"}
 {"editor_id":"ARG_Npc_AmbushDeserter","plugin":"Argonia.esm","form_id":2136,"record_type":"NPC_","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter"}
 {"editor_id":"ARG_Npc_EcoCrocodile","plugin":"Argonia.esm","form_id":2166,"record_type":"NPC_","entity_key":"creature-at.imperial-fringe.claywater-station.eco-crocodile"}
@@ -173,6 +194,7 @@
 {"editor_id":"ARG_Perk_Carriers","plugin":"Argonia.esm","form_id":2133,"record_type":"PERK","entity_key":"combat.carriers"}
 {"editor_id":"ARG_Perk_DialogueIntercept","plugin":"Argonia.esm","form_id":2132,"record_type":"PERK","entity_key":"hook.dialogue-intercept"}
 {"editor_id":"ARG_Perk_RestIntercept","plugin":"Argonia.esm","form_id":2145,"record_type":"PERK","entity_key":"hook.rest-intercept"}
+{"editor_id":"ARG_Perk_RoadClosed","plugin":"Argonia.esm","form_id":2420,"record_type":"PERK","entity_key":"hook.road-closed"}
 {"editor_id":"ARG_ProvingGround","plugin":"Argonia.esm","form_id":2404,"record_type":"CELL"}
 {"editor_id":"ARG_Q_LF83","plugin":"Argonia.esm","form_id":2130,"record_type":"QUST","entity_key":"quest.local.lf83"}
 {"editor_id":"ARG_QuarantineNever","plugin":"Argonia.esm","form_id":2048,"record_type":"GLOB"}
@@ -289,6 +311,66 @@
 {"editor_id":"ARG_Ref_ClaywaterStationWell","plugin":"Argonia.esm","form_id":2292,"record_type":"REFR","entity_key":"ref.claywater-station.well"}
 {"editor_id":"ARG_Ref_ClaywaterStationWellSilt","plugin":"Argonia.esm","form_id":2293,"record_type":"REFR","entity_key":"ref.claywater-station.well-silt"}
 {"editor_id":"ARG_Ref_ClaywaterStationWellWater","plugin":"Argonia.esm","form_id":2294,"record_type":"REFR","entity_key":"ref.claywater-station.well-water"}
+{"editor_id":"ARG_Ref_GateBlackwoodRoad","plugin":"Argonia.esm","form_id":2421,"record_type":"REFR","entity_key":"gate.blackwood-road"}
+{"editor_id":"ARG_Ref_GateTearRoad","plugin":"Argonia.esm","form_id":2422,"record_type":"REFR","entity_key":"gate.tear-road"}
+{"editor_id":"ARG_Ref_LandingDrowningGateEast","plugin":"Argonia.esm","form_id":2423,"record_type":"REFR","entity_key":"landing.drowning-gate.east"}
+{"editor_id":"ARG_Ref_LandingDrowningGateWest","plugin":"Argonia.esm","form_id":2424,"record_type":"REFR","entity_key":"landing.drowning-gate.west"}
+{"editor_id":"ARG_Ref_SignCartwrightsCrossFigMarket1790","plugin":"Argonia.esm","form_id":2469,"record_type":"REFR","entity_key":"sign.road.cartwrights-cross-fig-market.1790"}
+{"editor_id":"ARG_Ref_SignCartwrightsCrossFigMarket1790Arm0","plugin":"Argonia.esm","form_id":2471,"record_type":"REFR","entity_key":"sign.road.cartwrights-cross-fig-market.1790.arm0"}
+{"editor_id":"ARG_Ref_SignCartwrightsCrossFigMarket1790Arm1","plugin":"Argonia.esm","form_id":2473,"record_type":"REFR","entity_key":"sign.road.cartwrights-cross-fig-market.1790.arm1"}
+{"editor_id":"ARG_Ref_SignDunmerNorthStormhold","plugin":"Argonia.esm","form_id":2425,"record_type":"REFR","entity_key":"sign.place.dunmer-north.stormhold"}
+{"editor_id":"ARG_Ref_SignDunmerNorthStormholdArm0","plugin":"Argonia.esm","form_id":2427,"record_type":"REFR","entity_key":"sign.place.dunmer-north.stormhold.arm0"}
+{"editor_id":"ARG_Ref_SignDunmerNorthStormholdArm1","plugin":"Argonia.esm","form_id":2429,"record_type":"REFR","entity_key":"sign.place.dunmer-north.stormhold.arm1"}
+{"editor_id":"ARG_Ref_SignDunmerNorthStormholdArm2","plugin":"Argonia.esm","form_id":2431,"record_type":"REFR","entity_key":"sign.place.dunmer-north.stormhold.arm2"}
+{"editor_id":"ARG_Ref_SignDunmerNorthStormholdArm3","plugin":"Argonia.esm","form_id":2433,"record_type":"REFR","entity_key":"sign.place.dunmer-north.stormhold.arm3"}
+{"editor_id":"ARG_Ref_SignDunmerNorthThorn","plugin":"Argonia.esm","form_id":2434,"record_type":"REFR","entity_key":"sign.place.dunmer-north.thorn"}
+{"editor_id":"ARG_Ref_SignDunmerNorthThornArm0","plugin":"Argonia.esm","form_id":2436,"record_type":"REFR","entity_key":"sign.place.dunmer-north.thorn.arm0"}
+{"editor_id":"ARG_Ref_SignDunmerNorthThornArm1","plugin":"Argonia.esm","form_id":2438,"record_type":"REFR","entity_key":"sign.place.dunmer-north.thorn.arm1"}
+{"editor_id":"ARG_Ref_SignDunmerNorthThornArm2","plugin":"Argonia.esm","form_id":2440,"record_type":"REFR","entity_key":"sign.place.dunmer-north.thorn.arm2"}
+{"editor_id":"ARG_Ref_SignGideonBlackwoodRoad1087","plugin":"Argonia.esm","form_id":2474,"record_type":"REFR","entity_key":"sign.road.gideon-blackwood-road.1087"}
+{"editor_id":"ARG_Ref_SignGideonBlackwoodRoad1087Arm0","plugin":"Argonia.esm","form_id":2475,"record_type":"REFR","entity_key":"sign.road.gideon-blackwood-road.1087.arm0"}
+{"editor_id":"ARG_Ref_SignGideonBlackwoodRoad1087Arm1","plugin":"Argonia.esm","form_id":2476,"record_type":"REFR","entity_key":"sign.road.gideon-blackwood-road.1087.arm1"}
+{"editor_id":"ARG_Ref_SignGideonSoulrest1234","plugin":"Argonia.esm","form_id":2477,"record_type":"REFR","entity_key":"sign.road.gideon-soulrest.1234"}
+{"editor_id":"ARG_Ref_SignGideonSoulrest1234Arm0","plugin":"Argonia.esm","form_id":2478,"record_type":"REFR","entity_key":"sign.road.gideon-soulrest.1234.arm0"}
+{"editor_id":"ARG_Ref_SignGideonSoulrest1234Arm1","plugin":"Argonia.esm","form_id":2479,"record_type":"REFR","entity_key":"sign.road.gideon-soulrest.1234.arm1"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideon","plugin":"Argonia.esm","form_id":2441,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideonArm0","plugin":"Argonia.esm","form_id":2443,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon.arm0"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideonArm1","plugin":"Argonia.esm","form_id":2445,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon.arm1"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideonArm2","plugin":"Argonia.esm","form_id":2447,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon.arm2"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideonArm3","plugin":"Argonia.esm","form_id":2449,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon.arm3"}
+{"editor_id":"ARG_Ref_SignImperialFringeGideonArm4","plugin":"Argonia.esm","form_id":2450,"record_type":"REFR","entity_key":"sign.place.imperial-fringe.gideon.arm4"}
+{"editor_id":"ARG_Ref_SignImperialPenalSouthBlackrose","plugin":"Argonia.esm","form_id":2451,"record_type":"REFR","entity_key":"sign.place.imperial-penal-south.blackrose"}
+{"editor_id":"ARG_Ref_SignImperialPenalSouthBlackroseArm0","plugin":"Argonia.esm","form_id":2453,"record_type":"REFR","entity_key":"sign.place.imperial-penal-south.blackrose.arm0"}
+{"editor_id":"ARG_Ref_SignImperialPenalSouthBlackroseArm1","plugin":"Argonia.esm","form_id":2454,"record_type":"REFR","entity_key":"sign.place.imperial-penal-south.blackrose.arm1"}
+{"editor_id":"ARG_Ref_SignMercantileCoastCoastRoad3444","plugin":"Argonia.esm","form_id":2495,"record_type":"REFR","entity_key":"sign.track.mercantile-coast.coast-road.3444"}
+{"editor_id":"ARG_Ref_SignMercantileCoastCoastRoad3444Arm0","plugin":"Argonia.esm","form_id":2496,"record_type":"REFR","entity_key":"sign.track.mercantile-coast.coast-road.3444.arm0"}
+{"editor_id":"ARG_Ref_SignMercantileCoastCoastRoad3444Arm1","plugin":"Argonia.esm","form_id":2497,"record_type":"REFR","entity_key":"sign.track.mercantile-coast.coast-road.3444.arm1"}
+{"editor_id":"ARG_Ref_SignMercantileCoastLilmoth","plugin":"Argonia.esm","form_id":2455,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.lilmoth"}
+{"editor_id":"ARG_Ref_SignMercantileCoastLilmothArm0","plugin":"Argonia.esm","form_id":2457,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.lilmoth.arm0"}
+{"editor_id":"ARG_Ref_SignMercantileCoastLilmothArm1","plugin":"Argonia.esm","form_id":2458,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.lilmoth.arm1"}
+{"editor_id":"ARG_Ref_SignMercantileCoastLilmothArm2","plugin":"Argonia.esm","form_id":2460,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.lilmoth.arm2"}
+{"editor_id":"ARG_Ref_SignMercantileCoastSoulrest","plugin":"Argonia.esm","form_id":2461,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.soulrest"}
+{"editor_id":"ARG_Ref_SignMercantileCoastSoulrestArm0","plugin":"Argonia.esm","form_id":2462,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.soulrest.arm0"}
+{"editor_id":"ARG_Ref_SignMercantileCoastSoulrestArm1","plugin":"Argonia.esm","form_id":2463,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.soulrest.arm1"}
+{"editor_id":"ARG_Ref_SignMercantileCoastSoulrestArm2","plugin":"Argonia.esm","form_id":2464,"record_type":"REFR","entity_key":"sign.place.mercantile-coast.soulrest.arm2"}
+{"editor_id":"ARG_Ref_SignPirateFreeholdsAltenCorimont","plugin":"Argonia.esm","form_id":2465,"record_type":"REFR","entity_key":"sign.place.pirate-freeholds.alten-corimont"}
+{"editor_id":"ARG_Ref_SignPirateFreeholdsAltenCorimontArm0","plugin":"Argonia.esm","form_id":2466,"record_type":"REFR","entity_key":"sign.place.pirate-freeholds.alten-corimont.arm0"}
+{"editor_id":"ARG_Ref_SignPirateFreeholdsAltenCorimontArm1","plugin":"Argonia.esm","form_id":2468,"record_type":"REFR","entity_key":"sign.place.pirate-freeholds.alten-corimont.arm1"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose2289","plugin":"Argonia.esm","form_id":2480,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.2289"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose2289Arm0","plugin":"Argonia.esm","form_id":2481,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.2289.arm0"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose2289Arm1","plugin":"Argonia.esm","form_id":2482,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.2289.arm1"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose711","plugin":"Argonia.esm","form_id":2483,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.711"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose711Arm0","plugin":"Argonia.esm","form_id":2484,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.711.arm0"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose711Arm1","plugin":"Argonia.esm","form_id":2485,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.711.arm1"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose906","plugin":"Argonia.esm","form_id":2486,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.906"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose906Arm0","plugin":"Argonia.esm","form_id":2487,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.906.arm0"}
+{"editor_id":"ARG_Ref_SignSoulrestBlackrose906Arm1","plugin":"Argonia.esm","form_id":2488,"record_type":"REFR","entity_key":"sign.road.soulrest-blackrose.906.arm1"}
+{"editor_id":"ARG_Ref_SignStormholdThorn1114","plugin":"Argonia.esm","form_id":2489,"record_type":"REFR","entity_key":"sign.road.stormhold-thorn.1114"}
+{"editor_id":"ARG_Ref_SignStormholdThorn1114Arm0","plugin":"Argonia.esm","form_id":2490,"record_type":"REFR","entity_key":"sign.road.stormhold-thorn.1114.arm0"}
+{"editor_id":"ARG_Ref_SignStormholdThorn1114Arm1","plugin":"Argonia.esm","form_id":2491,"record_type":"REFR","entity_key":"sign.road.stormhold-thorn.1114.arm1"}
+{"editor_id":"ARG_Ref_SignThornTearRoad369","plugin":"Argonia.esm","form_id":2492,"record_type":"REFR","entity_key":"sign.road.thorn-tear-road.369"}
+{"editor_id":"ARG_Ref_SignThornTearRoad369Arm0","plugin":"Argonia.esm","form_id":2493,"record_type":"REFR","entity_key":"sign.road.thorn-tear-road.369.arm0"}
+{"editor_id":"ARG_Ref_SignThornTearRoad369Arm1","plugin":"Argonia.esm","form_id":2494,"record_type":"REFR","entity_key":"sign.road.thorn-tear-road.369.arm1"}
 {"editor_id":"ARG_Region_border","plugin":"Argonia.esm","form_id":2100,"record_type":"REGN","entity_key":"land_region.border"}
 {"editor_id":"ARG_Region_dunmer_north_coastal_lagoon","plugin":"ArgoniaWorld.esm","form_id":524288,"record_type":"REGN","entity_key":"land_region.dunmer-north.coastal-lagoon"}
 {"editor_id":"ARG_Region_dunmer_north_deep_sink_basin","plugin":"ArgoniaWorld.esm","form_id":524289,"record_type":"REGN","entity_key":"land_region.dunmer-north.deep-sink-basin"}

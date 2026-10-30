@@ -1,0 +1,39 @@
+FormKey: 000974:Argonia.esm
+EditorID: ARG_Perk_RoadClosed
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_PRKF_RoadClosed
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RoadClosed
+      Object: 000972:Argonia.esm
+  ScriptFragments:
+    FileName: ARG_PRKF_RoadClosed
+    Fragments:
+    - Unknown2: 1
+      ScriptName: ARG_PRKF_RoadClosed
+      FragmentName: Fragment_0
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 000971:Argonia.esm
+      ComparisonValue: 1
+  ButtonLabel:
+    TargetLanguage: English
+    Value: Open
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+  EntryPoint: Activate
+  PerkConditionTabCount: 2

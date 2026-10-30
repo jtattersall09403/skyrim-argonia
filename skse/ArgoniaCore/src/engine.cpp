@@ -218,7 +218,7 @@ void MirrorAttributes() {
 void EnsurePerks() {
   auto* p = Player();
   if (!p) return;
-  for (auto id : {"hook.dialogue-intercept"sv, "hook.rest-intercept"sv, "combat.carriers"sv}) {
+  for (auto id : {"hook.dialogue-intercept"sv, "hook.rest-intercept"sv, "hook.road-closed"sv, "combat.carriers"sv}) {
     auto* perk = Lookup<RE::BGSPerk>(id);
     if (!perk) {
       SKSE::log::error("perks: {} is not in this load order", id);

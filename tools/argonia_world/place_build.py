@@ -48,6 +48,11 @@ CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "Inventor
 # Attack 1500. These are vanilla's own numbers in game units, not metres, so no conversion is involved.
 CREATURE_AGGRO = {"behavior": True, "warn": 0, "warnOrAttack": 2000, "attack": 1500}
 CREATURE_AI = {"aggression": "VeryAggressive", "confidence": "Foolhardy", "energy": 50, "aggro": CREATURE_AGGRO}
+# A settlement's crime faction (lane w3-infra): the settlement faction seated at the place (place_faction_presence role
+# 'seat'), crime tracked, hidden from the player; its crime values are the Owing of the place's region in gold
+# (owing_region rates). Escape and werewolf have no Owing rate yet (2.10), so they are 0. Every person of the place is
+# a member (rank 0) and has it as their crime faction, as a vanilla townsperson has their hold's.
+TOWN_FACTION_FLAGS = ["TrackCrime", "HiddenFromPC"]
 
 
 def slug(s: str) -> str:
@@ -179,7 +184,27 @@ def _items(ctx, world, refs) -> None:
                               "model": model.replace("/", "\\")}
 
 
-def _people(ctx, world, refs, cells) -> None:
+def town_faction(ctx, world, place_id: str) -> str | None:
+    """The FormKey of the place's crime faction (its FACT added to the layer), or None if no settlement sits there."""
+    f = next(iter(world.query("SELECT f.id, f.name FROM place_faction_presence s JOIN faction f ON f.id = s.faction_ref "
+                              "WHERE s.place_id = ? AND s.role = 'seat' AND f.kind = 'settlement' ORDER BY s.ord",
+                              place_id)), None)
+    if f is None:
+        return None
+    edid = "ARG_Faction_" + slug(f["id"].split(".", 1)[1])
+    rec = {"type": "FACT", "edid": edid, "formKey": ctx.alloc.form_key(edid, "FACT", f["id"]), "name": f["name"],
+           "flags": TOWN_FACTION_FLAGS, "ranks": [{"number": 0, "title": "Resident"}]}
+    o = next(iter(world.query("SELECT * FROM owing_region WHERE region = ?", world.get("place", place_id).region)), None)
+    if o is None:
+        raise ValueError(f"{place_id}: no Owing for its region, so its crime faction has no crime values")
+    rec["crime"] = {"arrest": True, "attackOnSight": True, "murder": o["rates_murder"], "assault": o["rates_assault"],
+                    "trespass": o["rates_trespass"], "pickpocket": o["rates_pickpocket"],
+                    "stealMult": float(o["rates_theft_per_value"]), "escape": 0, "werewolf": 0}
+    ctx.records[edid] = rec
+    return rec["formKey"]
+
+
+def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
     from tools.argonia_world import packages
     from tools.argonia_world.combat_records import _studio_class
     from tools.argonia_world.hooks_records import SPEAKER_EDID
@@ -231,6 +256,8 @@ def _people(ctx, world, refs, cells) -> None:
             rec.update(CREATURE_AI)
         else:
             rec.update(PEOPLE_AI)
+            if crime:
+                rec.update(factions=[{"faction": crime, "rank": 0}], crimeFaction=crime)
             if p.outfit_form_key:
                 rec["outfit"] = p.outfit_form_key
         if p.respawn:
@@ -247,7 +274,7 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
     ctx = _Ctx(alloc, world, resolver, ground)
     _items(ctx, world, refs)
     if any(r.npc_id for r in refs):
-        _people(ctx, world, refs, cells)
+        _people(ctx, world, refs, cells, town_faction(ctx, world, place_id))
     out: list[dict] = []
     ext_cells: dict[tuple[int, int], list[dict]] = {}
     for cid, c in sorted(cells.items()):
@@ -275,12 +302,13 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
 
 def check_people(records: list[dict]) -> None:
     """L1 (lane npc-ai): every person's NPC_ (a Traits-only template, so these are the record's own) carries packages,
-    AI data, a default outfit and a class; every PACK carries its template's data-input count (packages.py)."""
+    AI data, a default outfit, a class, a faction and a crime faction (lane w3-infra); every PACK carries its template's data-input count (packages.py)."""
     from tools.argonia_world.packages import TEMPLATE_INPUTS
     bad = []
     for r in records:
         if r.get("type") == "NPC_" and r.get("templateFlags") == PEOPLE_TEMPLATE_FLAGS:
-            missing = [k for k in ("packages", "aggression", "confidence", "energy", "outfit", "class") if not r.get(k)]
+            missing = [k for k in ("packages", "aggression", "confidence", "energy", "outfit", "class", "factions",
+                                         "crimeFaction") if not r.get(k)]
             if missing:
                 bad.append(f"{r['edid']}: no {', '.join(missing)}")
         elif r.get("type") == "PACK" and r.get("inputCount") != TEMPLATE_INPUTS.get(r.get("template")):

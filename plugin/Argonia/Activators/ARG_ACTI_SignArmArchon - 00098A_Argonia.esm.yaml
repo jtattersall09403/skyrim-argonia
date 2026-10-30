@@ -1,0 +1,10 @@
+FormKey: 00098A:Argonia.esm
+EditorID: ARG_ACTI_SignArmArchon
+Name:
+  TargetLanguage: English
+  Value: Archon
+Model:
+  File: roadsignmedium01r.nif
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: To

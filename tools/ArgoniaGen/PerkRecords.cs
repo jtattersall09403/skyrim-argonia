@@ -45,7 +45,15 @@ static class PerkRecords
             // the engine binds no ARG_PRKF instance and the entry point's fragment never runs (game-9: E on the camp
             // spot and on a speaker ran nothing with the .pex laid; no bind line in Papyrus.0.log).
             var vm = new PerkAdapter { ScriptFragments = fr };
-            vm.Scripts.Add(new ScriptEntry { Name = name });
+            var entry = new ScriptEntry { Name = name };
+            // Object properties of the fragment script (the closed road's MESG): name -> a record of ours or a master's.
+            foreach (var pr in A(frag, "properties"))
+                entry.Properties.Add(new ScriptObjectProperty
+                {
+                    Name = S(pr, "name"), Flags = ScriptProperty.Flag.Edited,
+                    Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory(S(pr, "object"))),
+                });
+            vm.Scripts.Add(entry);
             p.VirtualMachineAdapter = vm;
         }
         mod.Perks.Add(p);

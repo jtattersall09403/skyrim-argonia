@@ -113,17 +113,18 @@ stops:
   title: A border segment and the Tear road gate
   scene: world-sample-09-border
   cell:
-  - -12
+  - 47
   - 63
-  region: dunmer-north.northern-transition
-  weather: ARG_Weather_tannin_haze
+  region: dunmer-north.tidal-delta
+  weather: SkyrimClearCO
   border:
     min_x: -253952.0
     max_y: 262144.0
     gate_pos:
-    - -45696.0
+    - 192768.0
     - 260736.0
     inset_u: 2100.9
+    gate_ref: ARG_Ref_GateTearRoad
 - n: 10
   title: A signpost at a junction
   scene: world-sample-10-signpost
@@ -134,6 +135,7 @@ stops:
   weather: ARG_Weather_tannin_haze
   signpost:
     id: sign.place.imperial-fringe.gideon
+    post_ref: ARG_Ref_SignImperialFringeGideon
     arms:
     - - 16.2
       - Archon
@@ -690,11 +692,11 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s09-gate-push-north
-  why: 20 m inside the border at the Tear road gate, facing north, walking out for 9 s
+  why: 5 m before the Tear road gate (20 m inside the border), facing out, walking at it for 9 s
   do:
-  - teleport: pos -45696.0 260736.0 9436.0
+  - console: player.moveto ARG_Ref_GateTearRoad 0.0 -350.1 0
   - wait: 3
-  - console: player.setangle z 0
+  - console: player.setangle z 0.0
   - &id001
     pad: +LY=1:3000 -:100
   - &id002
@@ -702,11 +704,6 @@ steps:
   - &id003
     pad: +LY=1:3000 -:100
   expect:
-  - read:
-    - player
-    path: pos.y
-    ge: 261036.0
-    within: 1
   - read:
     - player
     path: pos.y
@@ -718,13 +715,25 @@ steps:
     eq: false
     within: 1
   reader:
-  - the road ends at a gate or barrier; nothing beyond it is walkable; no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey
-    rock anywhere in frame
+  - the road ends at a closed cypress gate across it; nothing beyond it is walkable; no pine, spruce, birch, snow, frost, heather, Nordic architecture
+    or Nordic-grey rock anywhere in frame
 - name: s09-gate-message
-  owed: the exit gate's activator (the closed-road message) is placed by 2.W3 with the road; its reference is not in the formid table yet
+  why: '3 m before the gate, facing it, activate: the closed road''s notice'
+  do:
+  - console: player.moveto ARG_Ref_GateTearRoad 0.0 -210.1 0
+  - wait: 2
+  - console: player.setangle z 0.0
+  - wait: 1
+  - key: E 120
+  - wait: 1
   expect:
-  - console: player.GetInWorldspace ARG_Province
+  - console: ARG_Ref_GateTearRoad.GetDisabled
+    contains: '>> 0'
+  - console: player.HasPerk ARG_Perk_RoadClosed
     contains: '>> 1'
+  reader:
+  - the notice reads "The road beyond is closed." in our own words
+  - the crosshair named the gate "Border Gate"
 - name: s09-segment-travel
   do:
   - console: cow ARG_Province -62 22
@@ -790,16 +799,25 @@ steps:
     within: 3
   reader:
   - the signpost stands upright on the ground, with 5 arms
-  - 'the arms read, pointing the way: Archon (16 deg), Leyawiin (16 deg), Ridge Runners'' Post (55 deg), Soulrest (16 deg), Stormhold (16 deg)'
-  - the lettering is legible and spelled as the place names above, in our own words, no Nordic rune or word
-  - wood and rope are marsh-made, not Nordic; no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in
-    frame
+  - 'the arms point the way: Archon (16 deg), Leyawiin (16 deg), Ridge Runners'' Post (55 deg), Soulrest (16 deg), Stormhold (16 deg)'
+  - wood and rope are marsh-made, not Nordic; any lettering on the boards is no Nordic rune or Skyrim place name; no pine, spruce, birch, snow,
+    frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s10-sign-text
-  owed: the signpost reference and its text read (the bridge has no activator text read yet) are placed with the roads by 2.W3; the reader judges
-    the still above
+  why: 'before arm 0 of sign.place.imperial-fringe.gideon, looking at its board: the crosshair reads it'
+  do:
+  - console: player.moveto ARG_Ref_SignImperialFringeGideon 112.6 11.0 0
+  - wait: 2
+  - console: player.setangle z 286.2
+  - console: player.setangle x -24.1
+  - wait: 1
   expect:
-  - console: player.GetInWorldspace ARG_Province
-    contains: '>> 1'
+  - console: ARG_Ref_SignImperialFringeGideon.GetDisabled
+    contains: '>> 0'
+  - console: ARG_Ref_SignImperialFringeGideonArm0.GetDisabled
+    contains: '>> 0'
+  reader:
+  - the crosshair reads "To Archon" over the board
+  - the board points away from the post towards 16 deg (the way to Archon)
 - name: s11-arrive
   do:
   - console: bat world-sample-11-weather-skip
