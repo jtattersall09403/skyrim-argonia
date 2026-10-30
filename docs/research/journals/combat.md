@@ -80,3 +80,78 @@ Not changed:
 
 **Next:** game-5 deploys the DLL and restages tk-dodge-re-addon. Then fight-damage-builds and fight-roll-burden run
 at L4 from `bat duel-ring`.
+
+## 2026-10-30: the combat trial, A against B and B2 (lane combat-trial-prep)
+
+The owner asked to try Dark Souls Combat SE (Nexus 28567) as group B. The research is
+`docs/research/2026-10-29/combat-mod-28567.md`. This section is the trial plan. The game lane runs it in one slot
+and fills in the table. Neither B nor B2 ships: its i-frames are Papyrus waits, and it runs scripts on every
+actor. The trial decides which of DSC's rules (the poise pool, the weight bands, counter damage) 2.7 builds in
+`ArgoniaCombat` from DSR numbers.
+
+**What is ready (L1, build VM):**
+- **The sets are data.** `data/dependencies.json` has `combat` sets `souls-0.0` (A, the default), `dsc-b` and
+  `dsc-b2`. DSC's archive sha256 `ca203060…` matches. Its row drops `sound/fx/bb_dsc*` (7 Dark Souls audio rips) at
+  stage, and the stage prints the count.
+- **The per-set settings are written into the staged plugin.** `plugin_values` writes them into the staged
+  `Dark Souls Combat.esp` (decision 0014: made at install, never shipped). B: `RollKey` 277, the pad's B. The mod
+  registers only LAlt, so out of the box a pad never rolls. B2: `BB_Poise_VarCritsAllowed` 0 and `RollKey` 0, so TK
+  Dodge alone rolls. Both: `BB_Poise_VarDebugTrace` 1. Poise is a script variable, and DSC's Papyrus log is its only
+  read. The script reads the globals only every fifth update, so they cannot be set at scene step 0.
+- **DSC's quests stay running.** `BB_Poise_GivePlayerAbilityQuest`, `BB_RollCameraQuest` and `BB_Poise_ConfigMenuQuest`
+  are on `data/quarantine/allowed-quests.json`. A shelled roll quest would break every poise monitor too.
+- **The switch.** Dry-run on the build VM: `stack.py combat A B B2 --dry <scratch>` staged the combat group only.
+  - A: 22 rows, 6,357 files.
+  - B: 9 rows, 3,982 files. 14 A rows out (TK Dodge, Dynamic Dodge, i-frame generator, Elden Parry and Rim Parry
+    with patches, Modern Stagger Lock); DSC in, with 53 files and none under `sound\`.
+  - B2: 22 rows, 6,256 files. A without Modern Stagger Lock, plus DSC.
+  - Staging A again gave A's first file set exactly. A second stage of the same set restaged nothing.
+- **Pandora cannot be checked on the build VM.** It is a Windows-only exe (decision: no Wine).
+  `stack.py pandora-check` runs on the machine after Pandora and reads three things:
+  - Pandora's engine log for `BBDarkSoulsCombat`;
+  - the generated behaviours for 5 DSC events: 3 rolls, and the 2 paired (`pa`) killmoves, which are the known risk;
+  - the animation data for DSC's clips.
+
+  `stack.py combat B|B2` runs the check after install. If the roll events are missing, B is dead.
+
+**The steps (game lane, one slot):**
+1. `stack.py combat B2`. The result must say `PANDORA-DSC OK`. Then run `run_journey.py tests/journeys/combat-trial-b2.yaml`
+   and fetch `Papyrus.0.log` beside the report.
+2. The same for `combat B` with `combat-trial-b.yaml`.
+3. `stack.py combat A` and `combat-trial-a.yaml`. This also restores the base stack, and `stack.py verify` must say
+   VERIFY OK.
+
+The base save is made under A and is never saved over. A save under B holds DSC script instances.
+
+**Owed by the runner:**
+- `parry-riposte` is `owed` in all three journeys. pad.ps1 holds only sticks across steps, but a bash needs L1/L2 held
+  while R1 taps. The fix is a held trigger (`+LT=1`), and the step names the sequence.
+- The opponent is `actors 3000`'s first listed actor. If duel-ring lists another actor first, use a nearer radius.
+
+**Known before it runs (static):**
+- **DSC's pad direction.** It reads W/A/S/D with `Input.IsKeyPressed`, so on a pad every roll may be the backstep. Each
+  roll step keeps the player's position before and after.
+- **DSC's band edges** are roll weight against max stamina: fast ≤ stamina/8, mid ≤ stamina/4. The load steps keep
+  stamina and the carried weight. DSC counts our steel set as poise 25: the int weights 12+3+2+3+3+2, with shields
+  ignored.
+- **Recovery is +20 poise every 3 s**, so the full set may never stagger against the deserter. That would be a finding,
+  not a failure.
+
+**The verdict table (fill with numbers from the three reports and the Papyrus logs):**
+
+| Measure | A | B | B2 | Source |
+|---|---|---|---|---|
+| Pandora: DSC events in the behaviours (rolls / paired) | n/a | | | pandora-check |
+| Hits to stagger, naked / full steel (poise 0 / 25) | | | | poise steps: hit events, the log's "current poise" |
+| Roll distance fast / mid / fat, forward (units) | | | | roll steps' `call: [player]` |
+| Roll direction honoured on the pad (4 of 4?) | | | | roll steps' positions |
+| Backstab: power hit from behind lands / killmove plays | | | | backstab steps |
+| Parry into riposte, riposte count (B2: exactly 1) | | | | parry-riposte (owed: held trigger) |
+| Papyrus stacks: start / 5 fighters / settled; overstressed | | | | ready, script-load, settle |
+| Owner's feel (L6, packet) | | | | owner |
+
+What decides it:
+- **B is out** if Pandora drops its rolls, if the pad cannot roll in all four directions, or if the queue grows
+  under 5 fighters without draining.
+- **B2 is the candidate** if its poise staggers by worn weight and one riposte plays: the rule set to port.
+- **A stays** if B2 adds nothing over A's stagger. Either way, the numbers DSC uses are not DSR's (decision 0004).
