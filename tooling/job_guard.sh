@@ -9,6 +9,9 @@
 #   job_guard.sh reserve [--gpu[=<machine>]] <lane> [--minutes N]   hold a machine for a whole slot (default 90 min;
 #     call again to renew): writes <lock>.slot. `run --gpu` with ARGONIA_LANE=<lane> queues (up to GPU_WAIT) behind
 #     another lane's live slot, printing "queued behind slot of <lane> until <time>"; an expired slot is ignored.
+#     An idle slot yields: when the holder lane has no running job and its newest job ended more than $SLOT_IDLE s
+#     ago (default 600; a holder that never ran a job counts from the slot's creation), other lanes' jobs pass it
+#     and `status` shows "(idle Nm, yielding)". `run` with ARGONIA_LANE records the job's lane in <name>.lane.
 #   job_guard.sh release [--gpu[=<machine>]] <lane>   free the slot (only its own lane's)
 #   job_guard.sh wait <name>                          wait up to 270 s; exit 0 done-ok, 1 done-failed, 3 still running
 #   job_guard.sh status [<name>] | log <name>
@@ -28,9 +31,22 @@ parse_gpu() {
   fi
 }
 # Slot file: "<lane> <expiry epoch>". Prints the other lane's live slot as "<lane> <epoch>", else nothing.
+# Prints the idle seconds of lane $2's slot holder (slot file $1) when it has no running job and its newest job
+# ended more than ${SLOT_IDLE:-600} s ago; nothing when it is busy or recently active.
+slot_idle() { # lock lane
+  local last f n now; now=$(date +%s); last=$(stat -c %Y "$1.slot" 2>/dev/null) || return 0
+  for f in "$JOBS"/*.lane; do [ -e "$f" ] || continue
+    [ "$(cat "$f" 2>/dev/null)" = "$2" ] || continue; n=$(basename "$f" .lane)
+    if [ -f "$JOBS/$n.rc" ]; then t=$(stat -c %Y "$JOBS/$n.rc"); [ "$t" -gt "$last" ] && last=$t
+    elif kill -0 "$(cat "$JOBS/$n.pid" 2>/dev/null || echo 0)" 2>/dev/null; then return 0; fi
+  done
+  [ $((now - last)) -gt "${SLOT_IDLE:-600}" ] && echo $((now - last)) || true
+}
+# Slot file: "<lane> <expiry epoch>". Prints the other lane's live, non-idle slot as "<lane> <epoch>", else nothing.
 foreign_slot() { # lock lane
   local l e; { read -r l e < "$1.slot"; } 2>/dev/null || return 0
-  [ -n "${l:-}" ] && [ "${e:-0}" -gt "$(date +%s)" ] && [ "$l" != "$2" ] && echo "$l $e" || true
+  [ -n "${l:-}" ] && [ "${e:-0}" -gt "$(date +%s)" ] && [ "$l" != "$2" ] || return 0
+  [ -z "$(slot_idle "$1" "$l")" ] && echo "$l $e" || true
 }
 case "$cmd" in
   _slotwait) # internal: lock lane wait_s; exit 0 when no other lane's live slot, 1 on giving up
@@ -60,7 +76,8 @@ case "$cmd" in
     parse_gpu "$@"; shift $shiftn
     name=$1; shift; [ "${1:-}" = "--" ] && shift
     if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
-    rm -f "$JOBS/$name.rc" "$JOBS/$name.started"
+    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane"
+    [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
     if [ $gpu = 1 ]; then
       wait_s=${GPU_WAIT:-7200}; lane=${ARGONIA_LANE:-}; me=$(readlink -f "$0"); holder=$(cat "$lock.holder" 2>/dev/null || echo "?")
       # The holder file names the job inside the lock; `started` marks that this one got it (queued until then).
@@ -88,8 +105,10 @@ case "$cmd" in
       if [ -f "$JOBS/$n.rc" ]; then echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then
         if grep -q '^queued' "$JOBS/$n.log" 2>/dev/null && [ ! -f "$JOBS/$n.started" ]; then echo "$n queued ($(head -1 "$JOBS/$n.log"))"; else echo "$n running"; fi; else echo "$n dead"; fi; done
     for f in "$JOBS"/gpu*.lock.slot; do [ -e "$f" ] || continue; read -r l e < "$f" || continue
-      if [ "${e:-0}" -gt "$(date +%s)" ]; then echo "slot $(basename "$f" .lock.slot): $l until $(date -d "@$e" +%H:%M:%S)"
+      if [ "${e:-0}" -gt "$(date +%s)" ]; then idle=$(slot_idle "${f%.slot}" "$l"); sfx=""
+        [ -n "$idle" ] && sfx=" (idle $((idle / 60))m, yielding)"
+        echo "slot $(basename "$f" .lock.slot): $l until $(date -d "@$e" +%H:%M:%S)$sfx"
       else echo "slot $(basename "$f" .lock.slot): $l expired"; fi; done ;;
   log) tail -n 50 "$JOBS/$1.log" ;;
-  *) sed -n '2,15p' "$0"; exit 2 ;;
+  *) sed -n '2,18p' "$0"; exit 2 ;;
 esac

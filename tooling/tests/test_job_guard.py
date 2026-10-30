@@ -93,3 +93,31 @@ def test_slot_reservation(tmp_path):
     assert not (jobs / "gpu.lock.slot").exists()
     guard(tmp_path, "run", "--gpu", "free", "--", "true", env=lane_b)
     assert guard(tmp_path, "wait", "free").returncode == 0
+
+
+def test_idle_slot_yields(tmp_path):
+    jobs = tmp_path / ".argonia" / "jobs"
+    a, b = {"ARGONIA_LANE": "a", "GPU_WAIT": "0", "SLOT_IDLE": "100"}, {"ARGONIA_LANE": "b", "GPU_WAIT": "0", "SLOT_IDLE": "100"}
+    assert guard(tmp_path, "reserve", "--gpu", "a", "--minutes", "5").returncode == 0
+    guard(tmp_path, "run", "--gpu", "own", "--", "true", env=a)  # own lane runs straight through
+    assert guard(tmp_path, "wait", "own").returncode == 0
+    assert (jobs / "own.lane").read_text().strip() == "a"
+    guard(tmp_path, "run", "--gpu", "early", "--", "true", env=b)  # a ended moments ago: still blocks
+    assert guard(tmp_path, "wait", "early").returncode == 1
+    old = time.time() - 200  # backdate a's activity past SLOT_IDLE
+    for f in (jobs / "own.rc", jobs / "gpu.lock.slot"):
+        os.utime(f, (old, old))
+    assert "(idle 3m, yielding)" in guard(tmp_path, "status", env=a).stdout
+    guard(tmp_path, "run", "--gpu", "late", "--", "true", env=b)
+    assert guard(tmp_path, "wait", "late").returncode == 0
+
+
+def test_busy_slot_holder_blocks(tmp_path):
+    a, b = {"ARGONIA_LANE": "a", "SLOT_IDLE": "1", "GPU_WAIT": "0"}, {"ARGONIA_LANE": "b", "SLOT_IDLE": "1", "GPU_WAIT": "0"}
+    assert guard(tmp_path, "reserve", "--gpu", "a", "--minutes", "5").returncode == 0
+    guard(tmp_path, "run", "--gpu", "long", "--", "sleep", "6", env=a)
+    time.sleep(3)  # a's job still running past SLOT_IDLE: the slot blocks
+    assert "yielding" not in guard(tmp_path, "status", env=a).stdout
+    guard(tmp_path, "run", "--gpu", "other", "--", "true", env=b)
+    assert guard(tmp_path, "wait", "other").returncode == 1
+    assert guard(tmp_path, "wait", "long").returncode == 0
