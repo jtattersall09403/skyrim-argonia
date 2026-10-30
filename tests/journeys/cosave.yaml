@@ -1,0 +1,32 @@
+# Draft (1.1 adapters): owed L4, run by 0.3's hands. In 0.3 §d's format, because tools/run_journey.py does not
+# exist yet (checked 2026-10-30). 1.1's acceptance: ArgoniaCore's co-save families survive save, quit and load.
+id: cosave
+status: draft, owed L4
+scene: the base save; ArgoniaCore.dll deployed, Argonia.esm loaded
+# Step 0 gives every family something to carry, through the natives. This is allowed, because the journey tests
+# persistence, not the setting.
+step0:
+  - ArgoniaCore.SetFlag("flag.test.cosave", True)          # QSTA
+  - ArgoniaCore.GrantTopic("topic.claywater-two-charges")  # TOPC
+  - ArgoniaCore.ChangeDisposition("npc.imperial-fringe.claywater-station.well-keeper", 7)  # DISP
+  - ArgoniaCore.SetAttribute("strength", 55)               # STAT
+  - ArgoniaCore.GiveItem("item.potion-of-regeneration", 1) # ITEM
+  - setstage ARG_Q_LF83 0 (WatchQuest; QWCH), then ArgoniaCore.AddJournalEntry(ARG_Q_LF83, 10, 0)  # JRNL
+steps:
+  - do: read ArgoniaCore.Families() and, for each, ArgoniaCore.FamilyDigest(fourcc); read SaveCount()
+    expect: Families() lists META STAT DISP JRNL ITEM DETH QSTA TOPC QWCH (TEST and TSTN never in a release build)
+    still: one
+  - do: console `save arg-cosave`, then quit the game process (qqq) and wait for it to exit (timeout 60 s)
+    expect: the SKSE log shows ArgoniaCore's save callback writing 9 families, with no error
+  - do: relaunch through the stack, then console `load arg-cosave` (timeout 120 s to the loaded event)
+    expect: the SKSE log shows the load callback reading 9 families, with no 'unknown family' or version error
+    still: one
+  - do: read Families(), FamilyDigest(each), SaveCount(), GetFlag("flag.test.cosave"),
+      KnowsTopic("topic.claywater-two-charges"), GetDisposition(well-keeper), GetAttribute("strength"),
+      JournalEntries(), console `GetAV Fame`
+    expect: every digest equals its step-1 value; SaveCount is the step-1 value + 1; the flag is true and the topic
+      known; disposition is its step-1 value; strength is 55 and GetAV Fame is 55 (the mirror is re-applied on load);
+      the LF83 stage-10 entry is present once
+pass: every expectation above
+fails_if: a digest differs, a family is missing or extra, SaveCount does not move by exactly 1, a load error in the
+  SKSE log, a crash

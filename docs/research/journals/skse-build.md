@@ -79,3 +79,21 @@ save and load; `ArgoniaBridge/ping.ps1` returns ok and `-Token bad` fails. Addre
   compiled under MSVC yet: the planner runs `infra/gpu-box/skse_build.sh build windows-dev`.
 - **A pitfall:** a function with the same name as its namespace (`carriers::carriers`) is ambiguous under
   `using namespace`, so it is `carriers::compute`.
+
+## 2026-10-30: ArgoniaCore on the seam, the MSVC side (lane 1.1-adapters)
+
+- **MSVC needs generated code that is safe from `windows.h` macros.** Under MSVC a Windows header defines the `max` macro, so
+  `std::numeric_limits<double>::max()` in the schema twin's `messages.h` expanded as that macro and failed. `tools/schema_gen/emit_cpp.ts` now emits `(std::numeric_limits<double>::max)()`. The parentheses stop
+  the macro expanding, whatever the includer defines. The same pass fixed C4456 (a shadowed `v` in each field's
+  parse) by naming one variable per field. g++ never raised either error, so a generator change is proved only by
+  the MSVC build.
+- **Measured (0c53bee):** SKSE-BUILD OK windows-dev, ctest 27/27, `ArgoniaCore.dll` 1,254,912 bytes, and no
+  `warning C` line from our sources. On the build VM, `bash skse/check.sh` passed 27/27 at 342 MB peak RSS.
+- **Deploying is skipped while the game runs.** Windows locks a loaded DLL, and MO2's copy is the one SKSE loads.
+  The build ran with `skse_build.ps1 -ModDir C:\argonia\no-deploy`, a folder that does not exist, so the outputs
+  stay in the build tree ("mo2: ... absent"). The game lane deploys with `infra/gpu-box/skse_build.sh build
+  windows-dev` once the game is down.
+- **The CK's Papyrus compiler is not on argonia-play** (2026-10-30). There is no `Papyrus Compiler\PapyrusCompiler.exe`
+  and no appmanifest for 1946180. `records_jobs.sh papyrus <files|dirs>` stops at its `Need` check, and the
+  owner-setup step "Add the Creation Kit to the Steam library" is still unticked. Until the CK is installed,
+  ArgoniaCore.psc, ARG_PRKF_DialogueIntercept.psc and ARG_QF_LF83.psc are uncompiled.

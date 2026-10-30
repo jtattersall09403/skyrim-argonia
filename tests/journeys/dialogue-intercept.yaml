@@ -1,0 +1,26 @@
+# Draft (1.1 adapters): owed L4, run by 0.3's hands. In 0.3 §d's format, because tools/run_journey.py does not
+# exist yet (checked 2026-10-30). 1.1's acceptance: talking to an Argonia speaker opens our dialogue view, never
+# the vanilla Dialogue Menu.
+# BLOCKED until 2.W5: the journey needs Livia Varinius's NPC_ record to carry the keyword ARG_Speaker (KYWD 0x853).
+# The perk ARG_Perk_DialogueIntercept (0x854) is in the plugin (8dacfe1), but no NPC_ carries the keyword yet.
+id: dialogue-intercept
+status: draft, owed L4 (blocked on 2.W5's speaker keyword)
+scene: claywater (the base save; cow ArgoniaWorld -57 11; the player holds ARG_Perk_DialogueIntercept, which
+  ArgoniaCore adds on load (engine.cpp EnsurePerk), never the scene)
+steps:
+  - do: read RouterLog() and ViewState("dialogue"); subscribe to MenuOpenCloseEvent through the bridge
+    expect: ViewState("dialogue") == ""
+  - do: face Livia Varinius (npc.imperial-fringe.claywater-station.well-keeper) at 150 units and activate
+    expect: within 2 s, RouterLog() gains an OpenDialogue entry for her; ViewState("dialogue") is non-empty and
+      names her; no MenuOpenCloseEvent with "Dialogue Menu" opening (the whole journey)
+    still: one (our window at the play camera)
+  - do: ViewIntent a topic choice from the state's topic list
+    expect: the next state shows that topic's answer; RouterLog() records the choice
+  - do: ViewIntent goodbye
+    expect: ViewIntent returns ""; ViewState("dialogue") == ""; the player can move (controls back)
+  - do: activate a vanilla actor without ARG_Speaker (the control)
+    expect: the vanilla path is untouched (the perk's HasKeyword condition fails); this one is allowed to open the
+      Dialogue Menu, which shows the condition can fail
+pass: every expectation; Dialogue Menu never opens for Livia
+fails_if: the Dialogue Menu opens for an ARG_Speaker, the view does not open within 2 s, controls are not returned
+  on close, a crash

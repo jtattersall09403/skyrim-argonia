@@ -1,0 +1,39 @@
+# Draft (1.1 adapters): owed L4, run by 0.3's hands. In 0.3 §d's format, because tools/run_journey.py does not
+# exist yet (checked 2026-10-30). 1.1's acceptance: LF83 runs start to end by the journal, and its fail-forward fires.
+# The stage graph is skse/core quest_runtime's, and the conditions are the world db's (quest_objective,
+# quest_fail_forward and condition rows for quest.local.lf83). ARG_QF_LF83's fragments only call the natives.
+id: quest-board
+status: draft, owed L4
+scene: claywater (the base save; cow ArgoniaWorld -57 11; season dry; nothing about LF83 set)
+runs:
+  main:
+    steps:
+      - do: talk to n1-3 (the landing's walker) and take topic.claywater-two-charges (start_when, the dry season and
+          the topic heard from one of the three named speakers)
+        expect: GetStage ARG_Q_LF83 == 10 within 5 s; JournalEntries() ends with the stage-10 entry (kind progress,
+          dated today); objectives 10 and 11 shown
+        still: one
+      - do: complete hear-station and hear-landing (Livia Varinius and Signs-For-The-Cargo, each through the view's
+          topic choice, ViewIntent)
+        expect: stage 20; KnowsTopic(topic.claywater-landing-terms) and KnowsTopic(topic.lf83-cracked-well)
+      - do: why-failing, clear-bend (kill the crocodile at the clay cut, by the player's attacks) and get-clay
+        expect: stage 30; KnowsTopic(topic.lf83-one-charge)
+      - do: terms (the shared-charge choice with both keepers)
+        expect: stage 40, the quest completed; GetFlag(flag.lf83.terms-settled); GetDisposition(well-keeper) is
+          +5 over its stage-30 value, landing-s-poler and n1-3 +15, n1 -15; the item given; JournalEntries() holds
+          10, 20, 30 and 40 once each, the last of kind complete
+        still: one
+  fail-forward:
+    steps:
+      - do: from the scene, start the quest as in main step 1 (stage 10), then kill Livia Varinius by the player's
+          attacks (the console only to give the player the means)
+        expect: stage 92 within 5 s of her death event; the quest failed; JournalEntries() ends with 92, kind fail;
+          the objectives of the open stage are no longer shown
+        still: one
+      - do: second variant, from the scene again with stage 10 reached; wait game time into the wet season
+          (seasonIs wet)
+        expect: stage 90 at the first menu close or load after the day change (the stated loss, a day change is
+          seen only then)
+pass: every expectation, in both runs
+fails_if: a stage skipped or set twice, a journal entry duplicated or missing, a fail-forward that does not fire,
+  or one that fires after the quest completed; a crash

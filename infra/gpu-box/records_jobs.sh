@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # The record pipeline's game-machine jobs (0.4 §a): Papyrus compile, the CK load check, BSArch packing.
-#   records_jobs.sh papyrus | ckload | bsarch | all
+#   records_jobs.sh papyrus [file.psc|dir ...] | ckload | bsarch | all
+#   papyrus compiles papyrus/*.psc, or the .psc files and directories (their *.psc) given after it.
 # Run under the GPU lock:  tooling/job_guard.sh run --gpu records -- infra/gpu-box/records_jobs.sh all
 # Outputs come back to out/gpu/ (build outputs, never committed): papyrus/*.pex, compile.log, ck-warnings.log,
 # Argonia.bsa and its contents list. The machine is not stopped here; the batch that runs this stops it.
@@ -9,7 +10,13 @@ here=$(cd "$(dirname "$0")" && pwd)
 repo=$(cd "$here/../.." && pwd)
 run="$here/run.sh"
 stage=${1:-all}
-case "$stage" in papyrus|ckload|bsarch|all) ;; *) sed -n '2,3p' "$0"; exit 2 ;; esac
+case "$stage" in papyrus|ckload|bsarch|all) ;; *) sed -n '2,4p' "$0"; exit 2 ;; esac
+shift || true
+srcs=()
+for a in "${@:-$repo/papyrus}"; do
+  if [ -d "$a" ]; then srcs+=("$a"/*.psc); else srcs+=("$a"); fi
+done
+for f in "${srcs[@]}"; do [ -f "$f" ] || { echo "no such .psc: $f" >&2; exit 2; }; done
 mkdir -p "$repo/out/gpu"
 
 "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra,C:\argonia\records\in\papyrus | Out-Null'
@@ -20,7 +27,7 @@ job() {
 }
 papyrus() {
   "$run" ps 'Remove-Item C:\argonia\records\in\papyrus\* -Force -EA SilentlyContinue'
-  for f in "$repo"/papyrus/*.psc; do "$run" put "$f" C:/argonia/records/in/papyrus/ >/dev/null; done
+  for f in "${srcs[@]}"; do "$run" put "$f" C:/argonia/records/in/papyrus/ >/dev/null; done
   job papyrus
   "$run" get C:/argonia/records/out/papyrus "$repo/out/gpu/" >/dev/null
   "$run" get C:/argonia/records/out/compile.log "$repo/out/gpu/" >/dev/null
