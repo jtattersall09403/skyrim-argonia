@@ -67,6 +67,9 @@ DIRS = {"N": (0, 1), "NE": (0.7, 0.7), "E": (1, 0), "SE": (0.7, -0.7), "S": (0, 
         "W": (-1, 0), "NW": (-0.7, 0.7)}
 
 
+STILLS = True
+
+
 def moved(seq, name, home):
     B.call("teleport", "pos", home["x"], home["y"], home["z"] + 8)  # every run from the same flat spot
     time.sleep(0.8)
@@ -79,21 +82,26 @@ def moved(seq, name, home):
     tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
     return {"units": units, "heading_deg": heading, "stamina": [round(p0["stamina"]["current"], 1),
             round(p1["stamina"]["current"], 1)], "dodge_tags": sorted({t for t in tags if "odge" in t or "oll" in t}),
-            "still": still(name)}
+            "still": still(name) if STILLS else None}
 
 
 def cmd_dodge(a):
+    global STILLS
+    STILLS = not a.no_stills
+    want = a.dirs.split(",") if a.dirs else list(DIRS) + ["back"]
     home = player()["pos"]
     # the walk alone over the same stick time is the baseline a roll must clearly beat
     record("walk-N", moved("+LX=0,LY=1:220 -:1500", "walk-N", home))
     for d, (x, y) in DIRS.items():
-        record(f"roll-{d}", moved(f"+LX={x},LY={y}:120 B:100 -:1500", f"roll-{d}", home))
-    record("backstep", moved("wait:300 B:100 wait:1500", "backstep", home))
+        if d in want:
+            record(f"roll-{d}", moved(f"+LX={x},LY={y}:120 B:100 -:1500", f"roll-{d}", home))
+    if "back" in want:
+        record("backstep", moved("wait:300 B:100 wait:1500", "backstep", home))
     walk = RESULTS["walk-N"]["units"]
     rolls = {k: v["units"] for k, v in RESULTS.items() if k.startswith("roll-")}
-    record("dodge-verdict", {"walk": walk, "rolls": rolls, "backstep": RESULTS["backstep"]["units"],
+    record("dodge-verdict", {"walk": walk, "rolls": rolls, "backstep": RESULTS.get("backstep", {}).get("units"),
                              "all_rolls_beat_walk": all(u > walk + 50 for u in rolls.values()),
-                             "backstep_moves": RESULTS["backstep"]["units"] > 30})
+                             "backstep_moves": RESULTS.get("backstep", {}).get("units", 0) > 30})
 
 
 def during(seq, probe, every=0.25):
@@ -118,27 +126,37 @@ def during(seq, probe, every=0.25):
     return seen
 
 
+def yes(out):
+    """A console condition's answer: `>> 1.00` for most; IsBlocking prints "... is blocking" / "is not blocking"."""
+    out = str(out)
+    return ">> 1" in out or (" is blocking" in out and "not blocking" not in out)
+
+
+WOLF = "00023ABE"  # Skyrim.esm: Wolf, an actor base the console places (the bandit leveled list id was refused)
+
+
 def cmd_pad(a):
     console("player.setav stamina 300")  # setup only: enough stamina for several attacks
     console("player.restoreav stamina 300")
+    B.pad("RB:120 wait:1500")  # RB on sheathed draws, so the light attack below is an attack
     for name, seq, want in (("light-RB", "RB:120 wait:1800", "light"), ("heavy-RT", "RT:450 wait:2000", "power")):
         p0 = player()
         since = B.call("events")["last"]
         power = during(seq, lambda: console("player.IsPowerAttacking"))
         p1 = player()
         tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
-        record(name, {"IsPowerAttacking_seen": any(">> 1" in str(s) for s in power),
+        record(name, {"IsPowerAttacking_seen": any(yes(s) for s in power),
                       "attack_tags": sorted({t for t in tags if "ttack" in t or "eapon" in t}),
                       "stamina": [round(p0["stamina"]["current"], 1), round(p1["stamina"]["current"], 1)],
                       "still": still(name)})
     since = B.call("events")["last"]
     blocking = during("LB:2600", lambda: console("player.IsBlocking"))
     tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
-    record("block-LB", {"IsBlocking_seen": any(">> 1" in str(s) for s in blocking),
+    record("block-LB", {"IsBlocking_seen": any(yes(s) for s in blocking),
                         "block_tags": sorted({t for t in tags if "lock" in t}),
                         "released": console("player.IsBlocking")})
-    # lock-on needs a target: a bandit placed ahead (setup), then RS; TDM's lock shows its reticle
-    console("player.placeatme 0001E7D9 1")  # Skyrim.esm EncBandit01Melee1HNordM (a leveled bandit)
+    # lock-on needs a target: a wolf placed by the player (setup), then RS; TDM's lock shows its reticle
+    console(f"player.placeatme {WOLF} 1")
     console("tai")  # AI off for the target while the lock is read (setup); toggled back below
     time.sleep(1.0)
     B.pad("RX=0:100 RS:120 wait:900")
@@ -203,7 +221,7 @@ def cmd_scene(a, run=1):
     r = moved("+LX=0,LY=1:120 B:100 -:1500", f"scene{run}-roll", home)
     record(f"scene{run}-roll", r)
     blocking = during("LB:1800", lambda: console("player.IsBlocking"))
-    record(f"scene{run}-block", {"IsBlocking_seen": any(">> 1" in str(s) for s in blocking)})
+    record(f"scene{run}-block", {"IsBlocking_seen": any(yes(s) for s in blocking)})
     cmd_menus(a, tag=f"-scene{run}")
     record(f"scene{run}-logs", {"logs": logs_after(), "alive": B.health(), "seconds": round(time.monotonic() - t0)})
 
@@ -242,7 +260,9 @@ def main():
     s = sub.add_parser("launch")
     s.add_argument("--save", default="argoniariverwood")
     s.add_argument("--fresh", action="store_true")
-    sub.add_parser("dodge")
+    s = sub.add_parser("dodge")
+    s.add_argument("--dirs", default="", help="a subset, e.g. back,N,E (default: all eight and the backstep)")
+    s.add_argument("--no-stills", action="store_true")
     sub.add_parser("pad")
     sub.add_parser("menus")
     s = sub.add_parser("scene")

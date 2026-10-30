@@ -106,3 +106,61 @@ runs on, so "SkyLink as the bridge, ours for the gaps" would leave ours carrying
 two pipes to keep alive. The rebuilt SkyLink is a useful **oracle beside ours** in game-1's slot. If its
 `get_player_info` or `execute_command` works where ours fails on 1.7.104, that names the bug on our side. The
 planner decides on the slot's results.
+
+## 2026-10-30: 50/50 live, the hung game in 21.5 s, and SkyLink beside ours (lane game-2)
+
+**The run.** Rebuilt by `skse_build.sh build windows-dev`: ctest 21/21 on MSVC, `ArgoniaBridge.dll` 822,784
+bytes with SkyLink's SEH wrapper on `console` and `teleport cell`. `core.messages` needed a second skip (its
+`twins_and_vocabularies_agree` also reads `ui/schema`, absent from the machine's skse-only tree).
+`~/.argonia/venv/bin/python -u -m tools.tests.bridge_live --save argoniariverwood --crash` passed **50/50** on its
+third run, with Defender quiet (MsMpEng +0.22 CPU-s over 30 s). Fixed between runs:
+- **The hung game took 74.0 s.** `bridge.ps1 health` called a game hung only when *every* thread was suspended.
+  After `NtSuspendProcess`, 62 of 63 threads read `Wait, Suspended` and one read `Wait, Executive`, a thread
+  in a kernel wait that is not marked until it returns. `Responding` from the SSH session read True. The test is
+  now "more than half suspended", and the hung game is reported at the first health check, in **21.5 s**.
+- **The pad walk "moved 48,027 units"** because it ran after `setstage MQ101 5`, whose opening scripts move the
+  player. The stage case now runs last in its group, followed by a reload of the base save. Without the reload
+  the opening moved the player mid-booth and the booth's placed item was lost ("nothing placed").
+
+**Measured times** (build VM to game machine through the tunnel; one run unless a range is given):
+
+| Step | Time |
+|---|---|
+| launch: kill, prepare, menu, ping | 41-42 s |
+| load the base save (Riverwood) from the menu | 8.4-8.5 s (6.3 s with a warm cache; 12.1-12.8 s under Defender) |
+| save then load back | 2.0-2.2 s |
+| `teleport cell QASmoke` | 0.73-0.84 s |
+| `teleport pos` | 0.28-0.29 s |
+| `player`, `console`, reads | 3-30 ms (`player` 1.2-1.9 s as the first call after a load) |
+| a refusal | 3-30 ms |
+| hit event (a placed wolf bites) | 3.6-4.6 s |
+| key W 1.2 s | 1.28 s |
+| a pad sequence of 1.5 s | 9.2-9.4 s (the desktop job's start, not the pad) |
+| a still (Desktop Duplication, copied back) | ~7 s each (oracle pair 13.7-15.7 s; booth six views 45-48 s) |
+| `frametime 120` | 2.9 s (p50 20.5-22.5 ms in Riverwood at the base save) |
+| forced crash reported | 4.5-4.6 s |
+| relaunch after a crash (kills the zombie) | 52-53 s |
+| hung game reported | 21.5 s |
+| relaunch over the hung game | 42-44 s |
+
+The pad and the still are the slow calls: each runs as a scheduled task in the desktop session (`run.sh
+desktop`), whose start costs seconds. A journey that takes many stills should batch them. That is a later
+optimisation, not done.
+
+**SkyLink rebuilt, beside ours** (`tools/tests/skylink_compare.py`, `out/bridge/skylink.json`). The rebuilt
+`SkyrimMCPPlugin.dll` was laid beside ArgoniaBridge for one launch. **It loads on 1.7.104** ("loaded
+successfully", 17 event sinks registered, its pipe up at kDataLoaded). Every comparable call answered. SkyLink's
+times are on the machine; ours are from the build VM through the tunnel.
+
+| Call | ArgoniaBridge | SkyLink (rebuilt) |
+|---|---|---|
+| ping | 5 ms | 20 ms |
+| player | 13 ms: pos, heading, health/stamina/magicka, cell and worldspace ids, interior, air, swim | 25 ms: pos, the three bars, level, race, name, cell and worldspace *names* (no ids, no heading) |
+| console `player.getav health` | 14 ms, "GetActorValue: Health >> 100.00" | 27 ms, the same line |
+| save then load | 478 ms save (waits for the file), 1,615 ms load (waits for the post-load message) | 24 ms and 20 ms: `save_game` only queues the save and `load_most_recent_save` returns `loading: true` before the load. Neither tells the caller when it is done |
+| teleport to a cell | 729 ms, answers where the player stands | 702 ms; the player arrived in Breezehome, but its `output` was "GetNumericPackageData >> 1.00", **a stale line**: it reads `ConsoleLog`'s last message, which `coc` did not write |
+
+**Verdict.** Nothing in SkyLink beats ours on 1.7.104. Our console output (a buffer delta) is right where its
+last-line read is wrong, and our save and load wait for completion where its calls do not. It stays an oracle
+only. It is **not laid**: the comparison removes it and relaunches clean. The planner's recommendation stands:
+keep ArgoniaBridge.

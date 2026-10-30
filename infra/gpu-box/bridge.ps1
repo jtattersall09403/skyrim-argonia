@@ -24,9 +24,10 @@ switch ($Cmd) {
     $crash = Get-ChildItem "$Skse\crash-*.log" -EA SilentlyContinue | ? { $_.LastWriteTime -ge $since } |
       Sort LastWriteTime | Select -Last 1
     $head = if ($crash) { (Get-Content $crash.FullName -TotalCount 12) -join "`n" } else { '' }
-    # Responding reads the window from this (SSH) session, which may not see it; a process whose every thread is
-    # suspended is hung whatever the window says.
-    $susp = if ($p) { @($p.Threads | ? { $_.ThreadState -eq 'Wait' -and $_.WaitReason -eq 'Suspended' }).Count -eq $p.Threads.Count } else { $false }
+    # Responding reads the window from this (SSH) session, which may not see it; a process with most of its threads
+    # suspended is hung whatever the window says. Not "every": a thread in a kernel wait (WaitReason Executive)
+    # stays unsuspended until it returns (live, 2026-10-29: 62 of 63 after NtSuspendProcess). A running game has none.
+    $susp = if ($p) { 2 * @($p.Threads | ? { $_.ThreadState -eq 'Wait' -and $_.WaitReason -eq 'Suspended' }).Count -gt $p.Threads.Count } else { $false }
     J ([ordered]@{ alive = [bool]$p; pid = $(if ($p) { $p.Id } else { 0 }); responding = $(if ($p) { $p.Responding -and -not $susp } else { $false })
                    launched = $since.ToString('o'); crash_log = $(if ($crash) { $crash.Name } else { '' }); crash_head = $head })
   }

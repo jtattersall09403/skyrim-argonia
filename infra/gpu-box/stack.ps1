@@ -53,6 +53,9 @@ function Set-GameWindow {
   Set-ItemProperty -Path $layers -Name "$Game\SkyrimSE.exe" -Value '~ HIGHDPIAWARE'
   # Third person only (owner, 2026-10-29): scrolling in stops before first person.
   & $set "$docs\Skyrim.ini" 'Camera' @{ 'fMinCurrentZoom' = '0.1' }
+  # The Papyrus log, so a smoke run can read script errors (a missing native from a cut helper mod reads
+  # "Unable to bind" or "Cannot call"); a dev machine's setting, never a player's.
+  & $set "$docs\Skyrim.ini" 'Papyrus' @{ 'bEnableLogging' = 1; 'bEnableTrace' = 1; 'bLoadDebugInformation' = 1 }
 }
 
 function Focus-Skyrim {

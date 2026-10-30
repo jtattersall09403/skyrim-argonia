@@ -128,6 +128,10 @@ void encode_refuses_what_decode_would() {
 }
 
 void twins_and_vocabularies_agree() {
+  if (!std::filesystem::exists(kRepo / "ui" / "schema")) {
+    std::puts("skip: ui/schema not in this tree (the build VM's make check runs it)");
+    return;
+  }
   const std::string ts = slurp(kRepo / "ui" / "schema" / "generated" / "messages.ts");
   CHECK(contains(ts, "export const schemaHash = \"" + std::string(msg::kSchemaHash) + "\";"));
   // The message vocabularies that mirror skse/core's own.

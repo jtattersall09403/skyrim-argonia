@@ -147,12 +147,6 @@ def events_and_input(b: Bridge, save: str) -> None:
         check(len(ev) > 0, "no animation events while walking")
         return {"input": r, "moved": round(moved), "anim_events": len(ev), "tags": sorted({e["data"]["tag"] for e in ev})[:12]}
     case("input", "key W 1.2 s walks, with animation events", walk, False)
-    # after the walk: MQ101's stage 5 starts the opening's scripts, which held the main thread past 3 s (live)
-    def stage():
-        since = b.call("events")["last"]
-        b.call("console", f"setstage {MQ101} 5")
-        return b.call("wait_event", "quest", MQ101, 5000, since)
-    case("events", "a quest stage (setstage MQ101 5)", stage, False)
     case("input", "a 3.5 s hold (over the cap)", lambda: b.call("input", "key", "W", 3500), True)
     case("input", "a key that does not exist", lambda: b.call("input", "key", "NOPE", 100), True)
     case("events", "wait for an animation tag that never comes", lambda: b.call("wait_event", "anim", "NoSuchTagZZ", 800), True)
@@ -167,6 +161,17 @@ def events_and_input(b: Bridge, save: str) -> None:
         return {"pad": r, "moved": round(moved)}
     case("input", "pad left stick 1.5 s walks", pad, False)
     case("input", "a pad sequence over 3 s", lambda: pad_duration_ms("LY=1:2000 B:1500"), True)
+
+    # Last in the group: MQ101's stage 5 starts the opening's scripts, which held the main thread past 3 s after a
+    # walk, and moves the player (the pad "walked" 48,027 units when it ran after this, live 2026-10-29).
+    def stage():
+        since = b.call("events")["last"]
+        b.call("console", f"setstage {MQ101} 5")
+        return b.call("wait_event", "quest", MQ101, 5000, since)
+    case("events", "a quest stage (setstage MQ101 5)", stage, False)
+    # the opening then moves the player a few seconds later: placed booth items were lost with it (live, 2026-10-29)
+    b.call("load", save)
+    time.sleep(3)
 
 
 def frames_nav_booth(b: Bridge) -> None:
