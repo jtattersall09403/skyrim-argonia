@@ -23,6 +23,8 @@ struct Live {
   journal::Log log;
   items::Table items;
   death::State dth;
+  quest_state::State qst;
+  topics::Known known;
   std::uint32_t a = 0, b = 0;      // TEST
   std::string name;                // TSTN
   std::int32_t count = 0;
@@ -68,6 +70,10 @@ void bind_all(Registry& reg) {
                     [] { live.items.clear(); })));
   CHECK(reg.add(fam(death::kDeathType, 1, [] { return death::encode(live.dth); }, into(live.dth, death::decode),
                     [] { live.dth = {}; })));
+  CHECK(reg.add(fam(quest_state::kQuestStateType, 1, [] { return quest_state::encode(live.qst); },
+                    into(live.qst, quest_state::decode), [] { live.qst = {}; })));
+  CHECK(reg.add(fam(topics::kTopicsType, 1, [] { return topics::encode(live.known); }, into(live.known, topics::decode),
+                    [] { live.known = {}; })));
   CHECK(reg.add(fam(
       cosave::fourcc("TEST"), 2, [] { cosave::Writer w; w.u32(live.a); w.u32(live.b); return w.take(); },
       [](std::span<const std::uint8_t> b) {
@@ -106,7 +112,7 @@ void every_family_against_its_schema() {
     if (!declared.count(id)) std::fprintf(stderr, "  family %s has no schema\n", fourcc_name(id).c_str());
     CHECK(declared.count(id) == 1);
   }
-  CHECK(declared.size() == reg.ids().size() && schemas.size() == 8);
+  CHECK(declared.size() == reg.ids().size() && schemas.size() == 10);
 }
 
 void two_versions_a_migration_and_a_refusal() {

@@ -8,6 +8,8 @@
 #include "argonia/core/items.h"
 #include "argonia/core/journal.h"
 #include "argonia/core/progression.h"
+#include "argonia/core/quest_state.h"
+#include "argonia/core/topics.h"
 
 #include <vector>
 
@@ -34,6 +36,12 @@ inline std::vector<roundtrip::FamilySchema> family_schemas() {
     }},
     {cosave::fourcc("DETH"), "death", false, {
         {1, false, {flag("pile", {f64("x"), f64("y"), f64("z"), u32("cell"), f64("vastei", 0.0, 1000000000.0)}), flag("wake", {f64("x"), f64("y"), f64("z"), u32("cell")})}},
+    }},
+    {cosave::fourcc("QSTA"), "quest_state", false, {
+        {1, false, {list("flags", 100000, {u32("flag"), u8("value", 0, 1.0)}, true), list("counters", 100000, {u32("counter"), i32("value")}, true), list("deeds", 1000, {u32("faction"), list("classes", 1000, {u32("deed"), i32("count", 1.0, 2147483647.0)}, true)}, true)}},
+    }},
+    {cosave::fourcc("TOPC"), "topics", false, {
+        {1, false, {list("topics", 100000, {u32("topic"), list("heard_from", 100000, {u32("npc")}, true)}, true)}},
     }},
     {cosave::fourcc("TEST"), "test", true, {
         {1, true, {u32("a")}},

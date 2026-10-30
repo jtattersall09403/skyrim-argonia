@@ -4,7 +4,7 @@
 configure_file(include/argonia/core/version.h.in "${CMAKE_CURRENT_BINARY_DIR}/generated/argonia/core/version.h" @ONLY)
 
 set(ARGONIA_CORE_MODULES curve sheet effects carriers progression sitting rest death respawn conditions disposition
-    journal items families weather json router roundtrip)
+    journal items families weather json router roundtrip quest_runtime quest_state actions topics)
 set(ARGONIA_CORE_SOURCES src/cosave.cpp)
 foreach(m IN LISTS ARGONIA_CORE_MODULES)
   list(APPEND ARGONIA_CORE_SOURCES src/${m}.cpp)
