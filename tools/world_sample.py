@@ -311,14 +311,25 @@ def stop_4(w: World, g: Ground) -> dict:
     return s
 
 
+def piece_keys() -> dict:
+    """The FormKeys the water plan places for its falls and mist pieces: the piece resolver's answer over the full
+    dependency set's index (data/pieces-preference.json), never a record named here, so a change of preference or
+    of the index cannot leave the stop counting no falls."""
+    from tools.argonia_world import pieces as pz
+    from tools.argonia_world.water import steps
+    resolver = pz.Resolver(pz.Index.load(need(REPO / "out" / "pieces-index.json")))
+    return {k: resolver.resolve(steps.PIECES[k][0])[0].form_key for k in ("falls", "mist")}
+
+
 def stop_5(w: World, g: Ground) -> dict:
     mist, falls = [], []
+    keys = piece_keys()
     for line in need(REPO / "out" / "water" / "cells.jsonl").read_text().splitlines():
         d = json.loads(line)
         for ref in d["refs"]:
-            if ref["base"] == "01ACAE:Skyrim.esm":
+            if ref["base"] == keys["mist"]:
                 mist.append(ref["pos"])
-            elif ref["base"] == "017F7A:Dawnguard.esm":
+            elif ref["base"] == keys["falls"]:
                 falls.append(ref["pos"])
     ref_pt = water_plan()["sampleReach"]["pieces"][0]
     rx, ry = su.province_to_skyrim(ref_pt["eastM"], ref_pt["southM"])

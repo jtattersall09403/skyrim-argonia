@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "0e319eafda84c1bf1abd8268ae91683a23e62f8060ca9e056565007477f95dd3",
- "measured": "2026-10-30, re-pinned deliberately: vegetation now in the sample cells (4 cells, 81 refs); 2026-10-30, two builds identical; the WRLD EditorID renamed ArgoniaWorld -> ARG_Province (KotM's worldspace is also ArgoniaWorld); 2.W2's designed water and regrade, on 2.W3's REGN shells, XCLR and road paint"
+ "sha256": "acdd07217db8ea61f186d1fc39af7d7bf7891fc4f305bb524d5fdd95f799bd43",
+ "measured": "2026-10-30, re-pinned deliberately: the falls piece now resolves by the preference table to Skyrim.esm 0FC85E (vanilla tier beats the DLC; it was Dawnguard 017F7A), the same mesh (the sample's two cliff cells place it); two builds identical; 2026-10-30, re-pinned deliberately: vegetation now in the sample cells (4 cells, 81 refs); 2026-10-30, two builds identical; the WRLD EditorID renamed ArgoniaWorld -> ARG_Province (KotM's worldspace is also ArgoniaWorld); 2.W2's designed water and regrade, on 2.W3's REGN shells, XCLR and road paint"
 }

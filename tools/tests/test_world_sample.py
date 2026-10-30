@@ -91,3 +91,15 @@ def test_the_files_on_disk_are_what_the_data_gives():
         assert path.read_bytes().decode() == text, f"{path.name} is stale: run tools/world_sample.py --write"
     for s in ws.build():
         assert s["weather"]["edid"] in s["weather"]["list"] and s["weather"]["id"] != "clear"
+
+
+def test_the_falls_stop_counts_the_resolved_falls_piece():
+    """The stop finds its falls by the piece resolver's key, not a record named in the generator: it must see the
+    placed falls pieces (a hard-coded Dawnguard key once left it counting none, and top_z fell to the mist's)."""
+    import json
+    keys = ws.piece_keys()
+    assert keys["falls"] != keys["mist"]
+    placed = {r["base"] for line in (ws.REPO / "out" / "water" / "cells.jsonl").read_text().splitlines()
+              for r in json.loads(line)["refs"]}
+    assert keys["falls"] in placed and keys["mist"] in placed
+    assert [s for s in STOPS if s["n"] == 5][0]["falls"]["pieces_near"] >= 1

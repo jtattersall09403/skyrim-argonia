@@ -90,11 +90,20 @@ def _croc_records(w, hunt=None):
     return ctx, actor, cells, {r.id: r for r in refs}
 
 
-def test_crocodile_walks_by_default_with_our_combat_style():
+def test_crocodile_waits_in_the_shallows_by_default_with_our_combat_style():
     w = db.open()
     hunt = w.get("creature_hunt", CROC)
-    assert hunt.way == "walk" and hunt.den_ref_id == _den(w, CROC).id  # (b): the bank den
+    assert hunt.way == "shallows" and hunt.den_ref_id == "ref.claywater-station.crocodile-den-shallows"  # (a)
     ctx, *_ = _croc_records(w)
+    assert not [r for r in ctx.records.values() if r["type"] == "RACE"]  # no override: it never walks on land
+    csty = next(r for r in ctx.records.values() if r["type"] == "CSTY")
+    assert next(r for r in ctx.records.values() if r["type"] == "NPC_")["combatStyle"] == csty["formKey"]
+
+
+def test_walk_stays_in_the_data_one_row_away():
+    w = db.open()
+    row = dataclasses.replace(w.get("creature_hunt", CROC), way="walk", den_ref_id=_den(w, CROC).id)  # (b): the bank den
+    ctx, *_ = _croc_records(w, row)
     npc = next(r for r in ctx.records.values() if r["type"] == "NPC_")
     race = [r for r in ctx.records.values() if r["type"] == "RACE"]
     assert race == [{"type": "RACE", "override": True, "edid": race[0]["edid"],
@@ -103,7 +112,7 @@ def test_crocodile_walks_by_default_with_our_combat_style():
     assert npc["combatStyle"] == csty["formKey"] and csty["offensive"] > csty["defensive"]
 
 
-def test_shallows_fallback_is_one_row_away():
+def test_shallows_den_stands_at_wading_depth():
     from tools.argonia_world import place_build as pb
     w = db.open()
     shallows = w.get("build_ref", "ref.claywater-station.crocodile-den-shallows")

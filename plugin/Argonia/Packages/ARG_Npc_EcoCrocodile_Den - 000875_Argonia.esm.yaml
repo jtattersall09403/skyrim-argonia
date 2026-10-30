@@ -30,7 +30,7 @@ Data:
     Location:
       Target:
         MutagenObjectType: LocationTarget
-        Link: 000970:Argonia.esm
+        Link: 0009C6:Argonia.esm
       Radius: 175
 - Key: 1
   Value:
