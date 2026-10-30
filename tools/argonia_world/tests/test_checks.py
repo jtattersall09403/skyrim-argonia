@@ -90,3 +90,10 @@ def test_stage_ids_are_unique_in_a_quest(w):
     s = w.query("SELECT quest_id, id FROM quest_stage WHERE quest_id = 'quest.local.lh38' ORDER BY ord LIMIT 2")
     with pytest.raises(db.sqlite3.IntegrityError):
         w.update("quest_stage", "quest.local.lh38", 1, id=s[0]["id"])
+
+
+def test_season_is(w):
+    cid = w.values("SELECT id FROM condition WHERE term = 'seasonIs' ORDER BY id")[0]
+    w.update("condition_arg", cid, 0, value="wet-peak")
+    errs = checks.run(w, ["season-is"])
+    assert len(errs) == 1 and "'wet-peak' is not a season row" in errs[0]

@@ -145,3 +145,12 @@ def term_arity(w) -> list[str]:
         elif not lo <= n <= hi:
             out.append(f"action {lid}[{ord_}]: {term} takes {lo}-{hi} argument(s), has {n}")
     return out
+
+
+@check("season-is", "condition", "condition_arg", "season")
+def season_is(w) -> list[str]:
+    """Every seasonIs argument is a row of `season`, the one vocabulary (85 §A6): dry, hatching, wet."""
+    return [f"condition {r[0]}: seasonIs {r[1]!r} is not a season row"
+            for r in w.query("SELECT a.condition_id, a.value FROM condition_arg a JOIN condition c "
+                             "ON c.id = a.condition_id WHERE c.term = 'seasonIs' AND a.ord = 0 "
+                             "AND a.value NOT IN (SELECT id FROM season) ORDER BY 1")]
