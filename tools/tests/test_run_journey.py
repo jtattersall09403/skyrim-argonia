@@ -500,6 +500,9 @@ class TalkFake(Fake):
         if cmd == "input":
             self.keys.append(args)
             return {"ms": 120}
+        if cmd == "events":  # a menu opens once E has been pressed (talk retries E while none does)
+            n = sum(1 for k in self.keys if k[1] == "E")
+            return {"last": n, "events": [{"seq": n, "kind": "menu", "data": {"opening": True}}] if n else []}
         return super().call(cmd, *args)
 
     def resolve_refs(self, text):

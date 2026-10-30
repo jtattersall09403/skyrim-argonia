@@ -17,7 +17,7 @@ steps:
       - {talk: ARG_Ref_ClaywaterStationLivia}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 2}
-      - {read: [core, RouterLog], path: value, contains: OpenDialogue}
+      - {read: [core, RouterLog], path: value, contains: "hook dialogueIntercept"}   # the registrations; the speaker id above proves the open (game-15)
       - {event: {kind: menu, match: Dialogue Menu, absent: true}}
   - name: topic               # a topic choice from the state's list, as a click sends it
     do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-two-charges"}}']}]

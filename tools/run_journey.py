@@ -325,6 +325,9 @@ class Runner:
         ref = str(ref).strip().strip('"')
         # The third-person camera keeps its own orbit until the player moves, so after console-only setup the
         # crosshair ray ignores setangle (diag3-g15): one short step re-syncs it before the NPC is placed.
+        # Pitched 15 degrees down: level, the ray passed over the NPC's head at talk range and E did nothing (game-15:
+        # with x 10-20 the crosshair held Livia and engine E opened the dialogue).
+        self.b.call("console", "player.setangle x 15")
         self.b.call("input", "key", "W", 80)
         caller = ref if ref.startswith("ARG_") else f'"{ref}"'  # a runtime id calls quoted (tools/journey_lint.py)
         h = float(self.b.call("player")["heading_deg"])
@@ -341,8 +344,18 @@ class Runner:
                 raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
-        r = self.b.call("input", "key", "E", 120)  # engine route by default (bridge: activation keys)
-        self.calls.append({"call": ["input", "key", "E", 120], "result": r})
+        # The first E after a scene's setup is lost; a second opens the dialogue (game-15, live, engine route). So E,
+        # then again (3 tries, 3.5 s apart) while no menu opened: the second E took 3.5 s after the first, not 1.5 s.
+        for attempt in (1, 2, 3):
+            last = (self.b.call("events") or {}).get("last")
+            r = self.b.call("input", "key", "E", 120)  # engine route by default (bridge: activation keys)
+            self.calls.append({"call": ["input", "key", "E", 120], "result": r, "attempt": attempt})
+            time.sleep(1.5)
+            evs = (self.b.call("events") or {}).get("events") or []
+            if any(e.get("kind") == "menu" and (e.get("data") or {}).get("opening") and (last is None or e.get("seq", 0) > last)
+                   for e in evs):
+                break
+            time.sleep(2.0)
         return r
 
     def _call(self, args):
