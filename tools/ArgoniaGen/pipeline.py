@@ -82,12 +82,24 @@ def scans(data: Path):
     sf.write_text(stamp)
 
 
+NAV_PROVINCE = OUT / "navmesh" / "province"  # `make navmesh`'s build, which out/ArgoniaWorld.esm carries
+
+
 def generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
     """intermediate -> ESM -> YAML, all under `into`; returns (esm, yaml dir)."""
     into.mkdir(parents=True, exist_ok=True)
     inter, esm, yaml = into / "argonia.json", into / "Argonia.esm", into / "yaml"
     run(sys.executable, "-m", "tools.argonia_world.intermediate", "--data", data, "--out", inter,
         "--frozen", "1" if frozen else "0")
+    # Load doors on the navmesh (tools/navmesh/doors.py): the door cells' NAVMs with their door triangles, from the
+    # province navmesh out/ArgoniaWorld.esm carries, for PlaceCells to write as overrides in Argonia.esm.
+    ENV.pop("ARGONIA_NAV_DOORS", None)
+    if (NAV_PROVINCE / "build.json").exists():
+        run(sys.executable, "-m", "tools.navmesh", "doors", "overlay", "--nav", NAV_PROVINCE, "--intermediate", inter,
+            "--out", into / "doors.json")
+        ENV["ARGONIA_NAV_DOORS"] = str(into / "doors.json")
+    else:
+        print("plugin: WARNING no province navmesh (out/navmesh/province): Argonia.esm has no door triangles")
     run(GEN, "generate", "--in", inter, "--data", data, "--out", esm, capped=True)
     shutil.rmtree(yaml, ignore_errors=True)
     run("spriggit", "serialize", "-i", esm, "-o", yaml, "-g", "SkyrimSE", *SPRIGGIT, capped=True)
@@ -327,6 +339,12 @@ def check() -> int:
     if r.returncode:
         errs.append("pieces: " + r.stdout.strip())
     errs += links(data, a_esm.parent)
+    if (NAV_PROVINCE / "build.json").exists():  # L1: every built load door has its door triangle on both sides
+        r = subprocess.run([sys.executable, "-m", "tools.navmesh", "doors", "check", "--nav", str(NAV_PROVINCE),
+                            "--intermediate", str(a_esm.parent / "argonia.json"), "--esm", str(a_esm), "--data", str(data)],
+                           cwd=ROOT, check=False, capture_output=True, text=True)
+        if r.returncode:
+            errs.append(f"navmesh doors: red\n{(r.stdout + r.stderr)[-1500:]}")
     b_esm, b_yaml = generate(data, OUT / "check" / "b", frozen=True)
     if a_esm.read_bytes() != b_esm.read_bytes():
         errs.append("regenerate: the two ESMs differ")

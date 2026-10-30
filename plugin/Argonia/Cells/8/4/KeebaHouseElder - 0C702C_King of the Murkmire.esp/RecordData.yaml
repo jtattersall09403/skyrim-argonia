@@ -60,7 +60,7 @@ Persistent:
   Base: 089921:King of the Murkmire.esp
   TeleportDestination:
     Door: 0008BC:Argonia.esm
-    Position: -230212.5, 54566.97, 2505.1
+    Position: -230212.5, 54841.9, 2515.97
   Placement:
     Position: 7778.65, -3989.4, 6491.01
     Rotation: 0, 0, 2.470863

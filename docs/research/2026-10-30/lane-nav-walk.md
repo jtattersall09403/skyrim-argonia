@@ -61,3 +61,34 @@
 
 Not done: steps 1 to 5, `make check` (only `pytest tools/navmesh` and the navmesh sample hash were run), and game-8
 has not been told. In game the porch exists only after step 4, and the door link only after step 2.
+
+## Continuation (nav-walk-2, 2026-10-30): door triangles, the Argonia.esm overlay, the huts, the province rebuild
+- **Door pass** (`tools/navmesh/doors.py`, `python -m tools.navmesh doors overlay|check|reach`):
+  - The triangle under each exterior load door's arrival point (its partner's XTEL) gets flag 0x400 and an NVNM
+    door entry. Its NVMI gets the door link.
+  - pipeline.py's `generate` writes the overlay from out/navmesh/province (grant: generate() and check() only).
+    PlaceCells.cs writes it into Argonia.esm (`$ARGONIA_NAV_DOORS`): 3 NAVM overrides, for cells (-57, 11),
+    (-57, 12) and (-57, 13), inside their cell overrides. The NAVI override holds those 3 NVMI only. Masters are
+    [Skyrim.esm, ArgoniaWorld.esm] and the doors are index 2.
+- **L1 `doors check`** (in plugin-check, on the generated ESM): each door's door triangle must be within 1 m of its
+  arrival on both sides, in the winning NAVM.
+  - Red on purpose before the overlay: 4 of 8 (every exterior door).
+  - Green after: 8 of 8, on the block build and on the province.
+  - Interiors need no override: KotM's interior NAVMs already name the door REFRs we override.
+- **Huts**: smpodext01's collision is a closed ball (radius about 340, no opening), so the old 2.6 m set-out put
+  each door and its arrival inside it.
+  - The 6 b4/b5/b6 door and doorway rows now use KotM's own door-to-doorway offset: door-local (30.9, 205.4,
+    -85.6), same yaw, 5 of its 8 exterior mud-hut doors. Each door faces out at the ball's edge plus 17 units.
+  - The pods are unchanged.
+- **Path queries** (province records plus out/Argonia.esm), from the road-in marker: station house 64 triangles,
+  polers 127, family 107, store 130. Livia's bed (8933BE) is reachable from the station house's door triangle in 7.
+  The arrival point is 17 units off KotM's 15-triangle navmesh edge, and the bed is 101 units from the nearest
+  centroid, at its side.
+- **Rebuild**:
+  - `make navmesh`: 21:33 wall, peak RSS 1.54 GB. 12,085 cells, 4,260,357 triangles, L1 green, NAVM in the ESM
+    12,085/12,085 identical. ArgoniaWorld.esm sha256 `40069607…`.
+  - `make plugin` twice: Argonia.esm `299daa57…` both times.
+  - plugin-check green. The navmesh sample manifest is unchanged (no re-pin).
+  - `make check` 138 s: only lint was red (an unused import in doors.py), re-proved green with ruff.
+- **Owed**: the L4 night walk (game lane told), cover triangles, and the hut look at the play camera (the doorways
+  now stand out of the pods by KotM's offset; not yet seen in game).

@@ -109,7 +109,8 @@ TopCell:
       Position: 7711.09, -3806.71, 5820.68
       Rotation: 0, 0, 4.215246
     Placement:
-      Position: -231963.2, 52242.04, 2447.16
+      Position: -231963.2, 52522.99, 2455.04
+      Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 0008BC:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -122,7 +123,8 @@ TopCell:
       Position: 7699.53, -3961.07, 6491.01
       Rotation: 0, 0, 5.056176
     Placement:
-      Position: -230212.5, 54482.94, 2500.3
+      Position: -230212.5, 54757.87, 2515.97
+      Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 0008C3:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -135,8 +137,8 @@ TopCell:
       Position: 7472.79, -3806.36, 6065.16
       Rotation: 0, 0, 3.208757
     Placement:
-      Position: -231094.86, 53320.47, 2478.69
-      Rotation: 0, 0, 4.712389
+      Position: -231359.77, 53320.47, 2503.22
+      Rotation: 0, 0, 1.570796
   - MutagenObjectType: PlacedObject
     FormKey: 0008C9:Argonia.esm
     MajorRecordFlagsRaw: 1024

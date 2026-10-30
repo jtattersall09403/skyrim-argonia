@@ -94,14 +94,9 @@ sealed class PlaceCells : IDisposable
                 if (PlacedRefs.Persistent(p)) ws.TopCell!.Persistent.Add(PlacedRefs.Build(p));
                 else cell.Temporary.Add(PlacedRefs.Build(p));
             }
-            var g = cell.Grid!.Point;
-            int bx = g.X >> 5, by = g.Y >> 5, sx = g.X >> 3, sy = g.Y >> 3;  // floor division, as the engine's blocks
-            var blk = ws.SubCells.FirstOrDefault(x => x.BlockNumberX == bx && x.BlockNumberY == by);
-            if (blk == null) { blk = new WorldspaceBlock { BlockNumberX = (short)bx, BlockNumberY = (short)by, GroupType = GroupTypeEnum.ExteriorCellBlock }; ws.SubCells.Add(blk); }
-            var sub2 = blk.Items.FirstOrDefault(x => x.BlockNumberX == sx && x.BlockNumberY == sy);
-            if (sub2 == null) { sub2 = new WorldspaceSubBlock { BlockNumberX = (short)sx, BlockNumberY = (short)sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock }; blk.Items.Add(sub2); }
-            sub2.Items.Add(cell);
+            PlaceExterior(ws, cell);
         }
+        if (Environment.GetEnvironmentVariable("ARGONIA_NAV_DOORS") is { Length: > 0 } nav) NavDoors(mod, nav);
         // Blocks, sub-blocks and cells in a fixed order, so the bytes do not depend on the layers' order.
         foreach (var ws in mod.Worldspaces)
         {
@@ -120,6 +115,46 @@ sealed class PlaceCells : IDisposable
                 ws.SubCells.Add(b);
             }
         }
+    }
+
+    static void PlaceExterior(Worldspace ws, Cell cell)
+    {
+        var g = cell.Grid!.Point;
+        int bx = g.X >> 5, by = g.Y >> 5, sx = g.X >> 3, sy = g.Y >> 3;  // floor division, as the engine's blocks
+        var blk = ws.SubCells.FirstOrDefault(x => x.BlockNumberX == bx && x.BlockNumberY == by);
+        if (blk == null) { blk = new WorldspaceBlock { BlockNumberX = (short)bx, BlockNumberY = (short)by, GroupType = GroupTypeEnum.ExteriorCellBlock }; ws.SubCells.Add(blk); }
+        var sub2 = blk.Items.FirstOrDefault(x => x.BlockNumberX == sx && x.BlockNumberY == sy);
+        if (sub2 == null) { sub2 = new WorldspaceSubBlock { BlockNumberX = (short)sx, BlockNumberY = (short)sy, GroupType = GroupTypeEnum.ExteriorCellSubBlock }; blk.Items.Add(sub2); }
+        sub2.Items.Add(cell);
+    }
+
+    /// Load doors on the navmesh (tools/navmesh/doors.py; $ARGONIA_NAV_DOORS, pipeline.py): each door cell's NAVM
+    /// overridden with its door triangles, in that cell's override (a shell of the master's when the place lays no
+    /// reference there), and the NAVI overridden with those NAVMs' entries alone, as Dawnguard and KotM do.
+    ///   {"schema": 1, "masters", "self", "navm": [{"x", "y", "worldspace", "navm": base64 NAVM}], "navi": base64 | null}
+    void NavDoors(SkyrimMod mod, string path)
+    {
+        using var doc = JsonDocument.Parse(File.ReadAllText(path));
+        var r = doc.RootElement;
+        if (r.GetProperty("schema").GetInt32() != 1) throw new InvalidDataException($"{path}: schema must be 1");
+        var meta = NavmeshRecords.Meta(r.GetProperty("masters").EnumerateArray().Select(e => e.GetString()!), S(r, "self"));
+        foreach (var e in r.GetProperty("navm").EnumerateArray())
+        {
+            var wk = FormKey.Factory(S(e, "worldspace"));
+            int x = e.GetProperty("x").GetInt32(), y = e.GetProperty("y").GetInt32();
+            var ws = mod.Worldspaces.FirstOrDefault(w => w.FormKey == wk) ?? throw new InvalidDataException($"navmesh doors: Argonia.esm has no WRLD override {wk}");
+            bool At(ICellGetter c) => c.Grid is { } g && g.Point.X == x && g.Point.Y == y;
+            var cell = ws.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).FirstOrDefault(At);
+            if (cell == null)
+            {
+                var mws = Master(wk.ModKey).Worldspaces.FirstOrDefault(w => w.FormKey == wk) ?? throw new InvalidDataException($"navmesh doors: no worldspace {wk}");
+                var src = mws.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).FirstOrDefault(At)
+                          ?? throw new InvalidDataException($"navmesh doors: no cell ({x}, {y}) in {wk}");
+                PlaceExterior(ws, cell = Shell(src, null));
+            }
+            cell.NavigationMeshes.Add(NavmeshRecords.Parse(Convert.FromBase64String(S(e, "navm")), meta));
+        }
+        if (Os(r, "navi") is { } navi) mod.NavigationMeshInfoMaps.Add(NavmeshRecords.ParseNavi(Convert.FromBase64String(navi), meta));
     }
 
     public void Dispose()

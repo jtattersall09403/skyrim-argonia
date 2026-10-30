@@ -7,6 +7,7 @@
     python -m tools.navmesh vanilla [--out DIR]
         the layout proof on Skyrim.esm (vanilla.py): the codec over every NAVM, the rules, and the 20-record round
         trip through ArgoniaGen and Mutagen
+    python -m tools.navmesh doors (overlay | check | reach) ...   load doors' door triangles (doors.py)
     python -m tools.navmesh block claywater      the block's cell box (db.py's place row, intermediate.py's mirror)
 
 Default DIR: out/navmesh/<block|province|x0_y0_x1_y1>. ArgoniaWorld.esm takes it through `make navmesh`.
@@ -102,6 +103,10 @@ def game_data() -> Path:
 
 def main(argv=None) -> int:
     from tools.navmesh import placed
+    argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] == ["doors"]:  # doors.py: the door triangles, Argonia.esm's overlay and the L1 check
+        from tools.navmesh import doors
+        return doors.main(argv[1:])
     ap = argparse.ArgumentParser(prog="python -m tools.navmesh")
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build")
@@ -112,6 +117,7 @@ def main(argv=None) -> int:
     b.add_argument("--out")
     b.add_argument("--no-check", action="store_true")
     b.add_argument("--no-placed", action="store_true", help="the ground only, without the built places' objects")
+    b.add_argument("--intermediate", default=str(placed.INTERMEDIATE), help="the built places' references (out/build/argonia.json)")
     v = sub.add_parser("vanilla")
     v.add_argument("--out", default=str(ROOT / "out" / "navmesh" / "vanilla"))
     k = sub.add_parser("block")
@@ -132,8 +138,8 @@ def main(argv=None) -> int:
     name = a.block or ("province" if a.province else "_".join(map(str, box)))
     out = Path(a.out) if a.out else ROOT / "out" / "navmesh" / name
     objects = None
-    if not a.no_placed and placed.INTERMEDIATE.exists():  # the built places' references (placed.py)
-        objects, tally = placed.triangles(game_data())
+    if not a.no_placed and Path(a.intermediate).exists():  # the built places' references (placed.py)
+        objects, tally = placed.triangles(game_data(), Path(a.intermediate))
         print(json.dumps({"placed": tally}))
     res = build(box, out, check=not a.no_check, objects=objects)
     print(json.dumps({k: res[k] for k in ("box", "times", "totals", "sha256")}, sort_keys=True))

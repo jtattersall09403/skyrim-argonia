@@ -150,3 +150,25 @@ def test_a_split_point_on_the_line_to_the_far_corner_is_left_out():
     m = stitch.Mesh(0, 0, verts, [[0, 1, 2]], [63])
     # 2, 0 and 3 are on one line: (0, 3, 2) would have zero area
     assert stitch.fan_points(m, 0, 1, 2, [(0.01, 3)]) == []
+
+
+def test_door_triangle_is_found_only_when_flagged_and_named():
+    from tools.navmesh import doors
+    n = square_nvnm()
+    n.doors = np.zeros(0, nvnm.DOOR_TRI)
+    m = doors.Navm("600001:ArgoniaWorld.esm", n, [])
+    arrival = (70.0, 20.0, 2.0)  # inside triangle 0
+    assert doors.door_triangle_near([m], "0008B7:Argonia.esm", arrival) is None  # no entry: red
+    m.doors = [(0, "0008B7:Argonia.esm")]
+    assert doors.door_triangle_near([m], "0008B7:Argonia.esm", arrival) is None  # an entry without the Door flag
+    n.tris["flags"][0] |= nvnm.DOOR
+    assert doors.door_triangle_near([m], "0008B7:Argonia.esm", arrival)[:2] == ("600001:ArgoniaWorld.esm", 0)
+    assert doors.door_triangle_near([m], "0008B7:Argonia.esm", (70.0, 20.0, 400.0)) is None  # a floor above
+
+
+def test_nvmi_door_links_are_replaced_in_place():
+    from tools.navmesh import doors
+    plain = nvnm.nvmi(0x01600001, (1, 2, 3), [0x01600002], [], 0x01000800, (3, -4), preferred=0.25)
+    want = nvnm.nvmi(0x01600001, (1, 2, 3), [0x01600002], [0x02000892, 0x020008B7], 0x01000800, (3, -4), preferred=0.25)
+    assert doors.nvmi_with_doors(plain, [0x020008B7, 0x02000892]) == want
+    assert doors.form_id("0008B7:Argonia.esm", doors.MASTERS, doors.SELF_FILE) == 0x020008B7

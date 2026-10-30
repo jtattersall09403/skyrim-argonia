@@ -120,7 +120,28 @@ at a hand-off. The lane report is `docs/research/2026-10-29/lane-2.W4-navmesh.md
 - **Placed objects (nav-walk, 2026-10-30):** real collision now comes from the laid stack's meshes (bsa.py,
   meshes.py, nif.py). The ground is solid, and cells with placed collision erode by 16. Livia's station-house door
   is now reachable on the block (docs/research/2026-10-30/lane-nav-walk.md).
-- **Door triangles (owed):** vanilla puts the door triangle under the linked door's XTEL arrival point (426/426).
-  Ours must be NAVM overrides in Argonia.esm, because the door REFRs live there. The NAVI merges across plugins:
-  Dawnguard and KotM carry only their own NVMIs.
+- **Door triangles (nav-walk, 2026-10-30; `doors.py`):**
+  - The rule is vanilla's (426/426): the triangle under each load door's arrival point (its partner's XTEL) gets
+    flag Door (0x400), an NVNM door entry naming the door, and the door among its NVMI's door links.
+  - Our exterior doors are Argonia.esm REFRs, so `doors overlay` writes the door cells' NAVMs as built plus the door
+    data. PlaceCells.cs (`$ARGONIA_NAV_DOORS`, set by pipeline.py's `generate`) writes them as overrides in
+    Argonia.esm, inside the cell override, with a NAVI override that holds only their 3 NVMI. Masters
+    [Skyrim.esm, ArgoniaWorld.esm] keep every built FormID at index 1, and the doors are index 2.
+  - The L1 check `doors check` runs in plugin-check on the generated ESM. It requires every built place's load door
+    (not the fixtures' proving ground) to have its door triangle within 1 m in plan and 128 units in height of its
+    arrival point, in the winning NAVM on both sides. It was red on purpose before the overlay (4 of 8: every
+    exterior door) and green after (8 of 8).
+  - **Interiors:** KotM's own interior NAVMs already name the door REFRs we override (same FormIDs), and our arrival
+    points lie within 1 m of them, so no interior override is needed. The station house's navmesh is KotM's 15
+    triangles. Our arrival (8622, -5157) is 17 units off its edge (KotM's own is 8704, -5184), so the bed path
+    starts from the door triangle. Livia's bed (8933BE) is reachable, 7 triangles; the nearest centroid is 101 units
+    from the bed's centre, at its side.
+- **The pods (nav-walk):** KotM's smpodext01 collision is a closed ball: no opening in any 15-degree sector at any
+  height, radius about 340, centre at local (7, 129). The old set-out put each hut door and its arrival 2.6 m from
+  the pod's origin, inside the ball. KotM never puts a door on smpodext01. Its 8 exterior mud-hut doors stand
+  before an smpodextdoor doorway at door-local (30.9, 205.4, -85.6) units with the same yaw (5 of 8 exactly), and
+  the arrival lies 70 to 230 units in front.
+  - The b4/b5/b6 door and doorway rows now follow that offset. Each door faces out from the pod at the ball's edge
+    plus 17 units (447 to 463 units from the pod's origin), with z on the ground. All 4 exterior doors are reachable
+    from the road-in marker (64 to 130 triangles).
 - **Cover:** not started.

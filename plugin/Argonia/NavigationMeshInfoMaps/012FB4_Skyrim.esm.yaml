@@ -1,0 +1,53 @@
+FormKey: 012FB4:Skyrim.esm
+NavMeshVersion: 12
+MapInfos:
+- NavigationMesh: 609097:ArgoniaWorld.esm
+  Point: -231230.64, 47121.867, 2604.9531
+  PreferredMergesFlag: 1041812063
+  MergedTo:
+  - 608F91:ArgoniaWorld.esm
+  - 609096:ArgoniaWorld.esm
+  - 609098:ArgoniaWorld.esm
+  - 60919D:ArgoniaWorld.esm
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 000892:Argonia.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 000800:ArgoniaWorld.esm
+    ParentWorldspaceCoord: 11, -57
+- NavigationMesh: 60919D:ArgoniaWorld.esm
+  Point: -231144.86, 51122.984, 2403.5415
+  PreferredMergesFlag: 1033900427
+  MergedTo:
+  - 609097:ArgoniaWorld.esm
+  - 60919C:ArgoniaWorld.esm
+  - 60919E:ArgoniaWorld.esm
+  - 6092A3:ArgoniaWorld.esm
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0008B7:Argonia.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 000800:ArgoniaWorld.esm
+    ParentWorldspaceCoord: 12, -57
+- NavigationMesh: 6092A3:ArgoniaWorld.esm
+  Point: -230676.83, 54526.613, 2581.2932
+  MergedTo:
+  - 60919D:ArgoniaWorld.esm
+  - 6092A2:ArgoniaWorld.esm
+  - 6092A4:ArgoniaWorld.esm
+  - 6093A9:ArgoniaWorld.esm
+  LinkedDoors:
+  - Unknown: -460622861
+    Door: 0008BC:Argonia.esm
+  - Unknown: -460622861
+    Door: 0008C3:Argonia.esm
+  Unknown2: -1511415748
+  Parent:
+    MutagenObjectType: NavigationMapInfoWorldParent
+    ParentWorldspace: 000800:ArgoniaWorld.esm
+    ParentWorldspaceCoord: 13, -57
+PreferredPathing: {}

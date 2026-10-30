@@ -50,6 +50,9 @@ sealed class NavmeshRecords
         return n;
     }
 
+    /// A NAVI record's bytes through Mutagen's parser (the door overlay's partial NAVI, PlaceCells.NavDoors).
+    public static NavigationMeshInfoMap ParseNavi(byte[] record, ParsingMeta meta) => NavigationMeshInfoMap.CreateFromBinary(Frame(record, meta));
+
     public static NavmeshRecords Load(string dir)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "navi.json")));
