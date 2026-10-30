@@ -35,6 +35,7 @@ prisma::Api1* g_api = nullptr;
 prisma::Api2* g_api2 = nullptr;
 std::map<std::string, prisma::View, std::less<>> g_ids;  // our view id -> PrismaUI's handle (set once, at data loaded)
 std::atomic<bool> g_hud_loop{false};
+ac::views::ClosePressGuard g_close_guard;  // under Get().lock
 std::string g_vanilla_hud = "vanilla-hud not yet hidden";  // ViewsReport's line: what the last hide found
 
 double Now() {
@@ -350,10 +351,20 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
     for (auto* e = events ? *events : nullptr; e && ue; e = e->next) {
       if (e->GetEventType() != RE::INPUT_EVENT_TYPE::kButton) continue;
       const auto* b = e->AsButtonEvent();
-      if (b && b->IsDown() && b->QUserEvent() == ue->journal) {
+      if (!b) continue;
+      if (b->IsDown() && b->QUserEvent() == ue->journal) {
         std::lock_guard l(Get().lock);
         Get().journal_key.press(Now());
       }
+      // A press that began in one of our views ends there: its repeats and release lose their user event, so the
+      // game (TK Dodge on the sprint key) never reads the B that closed the view as gameplay input.
+      const auto key = (std::uint32_t(b->GetDevice()) << 16) | std::uint32_t(b->GetIDCode());
+      bool swallow;
+      {
+        std::lock_guard l(Get().lock);
+        swallow = g_close_guard.swallow(key, b->IsDown(), b->IsUp(), Get().view_host.modal().has_value());
+      }
+      if (swallow) b->userEvent = "";
     }
     return RE::BSEventNotifyControl::kContinue;
   }

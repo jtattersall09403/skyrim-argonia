@@ -232,4 +232,15 @@ msg::DialogueState probe_dialogue(std::string speaker_id, std::string speaker_na
   return s;
 }
 
+bool ClosePressGuard::swallow(std::uint32_t key, bool down, bool up, bool modal_open) {
+  const auto it = std::find(held_.begin(), held_.end(), key);
+  if (down) {
+    if (it == held_.end() && modal_open) held_.push_back(key);  // pressed inside a view: the game never gets its end
+    return false;  // the view's own input path handles the press itself
+  }
+  if (it == held_.end()) return false;
+  if (up) held_.erase(it);
+  return true;  // a repeat or the release of a press that began in a view
+}
+
 }  // namespace argonia::core::views

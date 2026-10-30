@@ -18,6 +18,17 @@ bool has(const std::vector<Op>& ops, OpKind k, std::string_view v) {
   return false;
 }
 
+void close_press_is_consumed() {
+  ClosePressGuard g;
+  CHECK(!g.swallow(275, true, false, true));    // B goes down in the journal
+  CHECK(g.swallow(275, false, false, true));    // its repeat
+  CHECK(g.swallow(275, false, true, false));    // released after the view closed: hidden from TK Dodge
+  CHECK(!g.swallow(275, false, true, false));   // once only
+  CHECK(!g.swallow(275, true, false, false));   // a press with no view open is the game's
+  CHECK(!g.swallow(275, false, true, false));
+  CHECK(!g.swallow(1, true, false, true) && !g.swallow(2, false, true, false));  // another button's release passes
+}
+
 void the_table() {
   std::set<std::string_view> ids;
   for (const auto& s : kViews) {
@@ -175,6 +186,7 @@ void the_probe() {
 }  // namespace
 
 int main() {
+  close_press_is_consumed();
   the_table();
   push_waits_for_ready();
   one_modal();

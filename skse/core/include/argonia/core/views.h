@@ -10,6 +10,7 @@
 #include "argonia/core/messages.h"
 
 #include <array>
+#include <cstdint>
 #include <functional>
 #include <map>
 #include <optional>
@@ -76,6 +77,19 @@ class KeyLatch {
 
  private:
   std::optional<double> at_;
+};
+
+// The press that closes a modal view must not reach the game: B (or Esc) goes down while the view is open, the view
+// closes, and the release then reaches TK Dodge, which rolls on a sprint-key tap. The guard remembers each button
+// that went down while a modal was open and swallows that button's repeats and release, once; a press that began
+// with no modal open is never touched. `key` is the device and button id packed by the adapter.
+class ClosePressGuard {
+ public:
+  // True when the adapter must hide this event from the game.
+  bool swallow(std::uint32_t key, bool down, bool up, bool modal_open);
+
+ private:
+  std::vector<std::uint32_t> held_;
 };
 
 // The chart's view as remembered between sessions: the settings file holds the last chart.pan intent's text. A
