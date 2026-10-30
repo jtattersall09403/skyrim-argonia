@@ -207,4 +207,5 @@ Something they can **play**, that is:
 | 2026-10-30 | **NPC movement is not checked in game**: walking, wandering and swimming are the base engine's own work, so the NPC-walk, NPC-sandbox and NPC-swim checks are dropped. |
 | 2026-10-30 | **Machine move after things work**: get everything working on the current g4dn first, then move for frame rate. Approved: g6.xlarge in London, Paris or Ireland, or g5.xlarge at $0.31/h, whichever is available (the owner requested a G spot quota of 16 in eu-west-3 and eu-west-1). No standing retry loop. |
 | 2026-10-30 | **Respawn on rest covers our own actors only** (planner, applying 0012): the rest roster is limited to our plugins' actors, not every vanilla or dependency actor with the Respawn flag (2,930 before). Reversible; for the owner to overrule. |
+| 2026-10-30 | **No 'restart at this size' button**: folding or unfolding mid-session keeps the picture size until the game next starts. |
 
