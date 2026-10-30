@@ -5,6 +5,9 @@
 #include "core.h"
 #include "argonia/core/version.h"
 
+#include <algorithm>
+#include <format>
+
 namespace argonia::plugin {
 
 namespace {
@@ -173,6 +176,68 @@ Strings JournalEntries(RE::StaticFunctionTag*) {
   return out;
 }
 
+// --- 1.5: grow, die, rest, save --------------------------------------------------------------------------------
+bool RestAtNative(RE::StaticFunctionTag*, RE::TESObjectREFR* spot) { return RestAt(spot); }
+RE::BSFixedString RestNotice(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  return Get().rest_notice;
+}
+float TakeVasteiNative(RE::StaticFunctionTag*, RE::TESObjectREFR* pile) {
+  auto got = TakeVastei(pile);
+  return got ? static_cast<float>(*got) : -1.0f;
+}
+RE::BSFixedString SittingIntentNative(RE::StaticFunctionTag*, RE::BSFixedString json) { return SittingIntent(Str(json)); }
+bool SuspendSave(RE::StaticFunctionTag*, RE::BSFixedString why) {
+  const auto w = Str(why) == "quit" ? ac::life::SuspendWhy::quit : ac::life::SuspendWhy::stream_drop;
+  std::optional<double> before;
+  {
+    std::lock_guard l(Get().lock);
+    before = Get().last_save_s;
+  }
+  SuspendCheck(w);
+  std::lock_guard l(Get().lock);
+  return Get().last_save_s != before;
+}
+float GetVastei(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  return static_cast<float>(Get().state.prog.vastei);
+}
+float SetVastei(RE::StaticFunctionTag*, float v) {
+  std::lock_guard l(Get().lock);
+  Get().state.prog.vastei = (std::max)(0.0, static_cast<double>(v));
+  return static_cast<float>(Get().state.prog.vastei);
+}
+std::int32_t GetPendingLevels(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  return Get().state.prog.pending_levels;
+}
+std::int32_t GetLevel(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  return Get().state.sheet.level;
+}
+float GetSkill(RE::StaticFunctionTag*, RE::BSFixedString name) {
+  auto s = ac::life::skill_named(Str(name));
+  std::lock_guard l(Get().lock);
+  return s ? static_cast<float>(Get().state.sheet.s[*s]) : -1.0f;
+}
+std::string PosText(const ac::rest::Pos& p) {
+  return std::format("{:.2f} {:.2f} {:.2f} {:08X}", p.x, p.y, p.z, p.cell);
+}
+RE::BSFixedString PileState(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  const auto& pile = Get().state.death.pile;
+  return pile ? PosText(pile->at) + std::format(" {:.0f}", pile->vastei) : std::string();
+}
+RE::BSFixedString WakePoint(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  const auto& w = Get().state.death.wake;
+  return w ? PosText(*w) : std::string();
+}
+bool SittingOpen(RE::StaticFunctionTag*) {
+  std::lock_guard l(Get().lock);
+  return Get().sitting.has_value();
+}
+
 }  // namespace
 
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
@@ -204,6 +269,19 @@ bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
   vm->RegisterFunction("KnowsTopic"sv, k, KnowsTopic);
   vm->RegisterFunction("GetDisposition"sv, k, GetDisposition);
   vm->RegisterFunction("JournalEntries"sv, k, JournalEntries);
+  vm->RegisterFunction("RestAt"sv, k, RestAtNative);
+  vm->RegisterFunction("RestNotice"sv, k, RestNotice);
+  vm->RegisterFunction("TakeVastei"sv, k, TakeVasteiNative);
+  vm->RegisterFunction("SittingIntent"sv, k, SittingIntentNative);
+  vm->RegisterFunction("SuspendSave"sv, k, SuspendSave);
+  vm->RegisterFunction("GetVastei"sv, k, GetVastei);
+  vm->RegisterFunction("SetVastei"sv, k, SetVastei);
+  vm->RegisterFunction("GetPendingLevels"sv, k, GetPendingLevels);
+  vm->RegisterFunction("GetLevel"sv, k, GetLevel);
+  vm->RegisterFunction("GetSkill"sv, k, GetSkill);
+  vm->RegisterFunction("PileState"sv, k, PileState);
+  vm->RegisterFunction("WakePoint"sv, k, WakePoint);
+  vm->RegisterFunction("SittingOpen"sv, k, SittingOpen);
   return true;
 }
 

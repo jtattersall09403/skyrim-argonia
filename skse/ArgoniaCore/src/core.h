@@ -2,6 +2,7 @@
 // skse/core (seam, talk, quest_runtime, router, families ...) and tested there; these files turn engine events into
 // the seam's inputs and write its outputs back (SetStage, SetObjectiveCompleted, actor values, globals, view pushes).
 #pragma once
+#include "argonia/core/life.h"
 #include "argonia/core/quests.h"
 #include "argonia/core/router.h"
 #include "argonia/core/seam.h"
@@ -31,6 +32,16 @@ struct Core {
   std::optional<ac::weather::Season> season;              // the season the weather globals hold
   RE::ObjectRefHandle pending_speaker;                    // the person the intercept is opening for
   ac::seam::InFlight inflight;                            // quest orders dispatched, not yet run by the VM
+  // 1.5 (life.cpp): grow, die, rest, save.
+  ac::life::HealthWatch health;                           // each hit actor's health after its last hit
+  std::optional<ac::life::Sitting> sitting;               // the open level sitting
+  std::vector<ac::respawn::Roster> roster;                // the placed actors that reset at a rest
+  std::optional<double> last_save_s;                      // the last rest or suspend save, real seconds
+  RE::ObjectRefHandle pile_ref;                           // the vastei pile in the world
+  RE::ObjectRefHandle rest_spot;                          // the camp spot of the last rest (since the load)
+  std::string rest_notice;                                // why the last rest was refused
+  bool dying = false;                                     // the death intercept is running
+  bool lockpicking = false;                               // the Lockpicking Menu is open
 };
 Core& Get();
 
@@ -66,6 +77,16 @@ bool OpenDialogue(RE::TESObjectREFR* target);
 std::string ViewIntent(std::string_view json);
 void Push(std::string_view view, std::string json);
 void InstallHooks();
+
+// --- life.cpp: grow, die, rest, save (1.5) ---------------------------------------------------------------------
+void LifeDataLoaded();
+void LifeGameReady();
+void MirrorSkills();
+void MirrorPools();
+void SuspendCheck(ac::life::SuspendWhy why);
+bool RestAt(RE::TESObjectREFR* spot);
+std::string SittingIntent(std::string_view json);
+std::optional<double> TakeVastei(RE::TESObjectREFR* pile);
 
 // --- natives.cpp ------------------------------------------------------------------------------------------------
 bool RegisterNatives(RE::BSScript::IVirtualMachine* vm);

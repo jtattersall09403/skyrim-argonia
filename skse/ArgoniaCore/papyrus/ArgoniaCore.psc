@@ -43,3 +43,24 @@ Bool Function GetFlag(String asFlag) global native
 Bool Function KnowsTopic(String asTopic) global native
 Int Function GetDisposition(String asNpc) global native
 String[] Function JournalEntries() global native
+
+; --- Grow, die, rest, save (1.5) ---
+; Called by ARG_PRKF_RestIntercept: rest at the camp spot (false when refused; RestNotice() says why).
+Bool Function RestAt(ObjectReference akSpot) global native
+String Function RestNotice() global native
+; Called by ARG_PRKF_RestIntercept: take the vastei pile back; the amount, or -1 when out of reach or gone.
+Float Function TakeVastei(ObjectReference akPile) global native
+; The sitting view's intent (sitting.buy, sitting.done) as JSON; the new sitting.state, "" once it closed.
+String Function SittingIntent(String asJson) global native
+; The hidden suspend save: "quit" or "stream_drop" (the bridge's hand on a drop); true when written.
+Bool Function SuspendSave(String asWhy) global native
+; Reads for the L4 journeys, and the scenes' step-0 setter of carried vastei.
+Float Function GetVastei() global native
+Float Function SetVastei(Float afValue) global native
+Int Function GetPendingLevels() global native
+Int Function GetLevel() global native
+Float Function GetSkill(String asSkill) global native
+; "x y z space vastei" in metres and the space's FormID in hex, "" when there is no pile; WakePoint likewise.
+String Function PileState() global native
+String Function WakePoint() global native
+Bool Function SittingOpen() global native

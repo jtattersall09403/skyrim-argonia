@@ -52,6 +52,8 @@ void OnRevert(SKSE::SerializationInterface*) {
   c.talk.reset();
   c.views.clear();
   c.season.reset();
+  c.sitting.reset();
+  c.health.clear();
 }
 
 void OnDataLoaded() {
@@ -68,11 +70,13 @@ void OnDataLoaded() {
     for (const auto& why : store.error()) SKSE::log::error("dialogue: {}", why);
   }
   plugin::InstallHooks();
+  plugin::LifeDataLoaded();
 }
 
 void OnGameReady(const char* how) {
   plugin::EnsurePerk();
   plugin::MirrorAttributes();
+  plugin::LifeGameReady();
   plugin::FactsChanged(how);
 }
 
