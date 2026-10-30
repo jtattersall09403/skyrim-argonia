@@ -29,7 +29,7 @@ parse_gpu() {
 }
 # Slot file: "<lane> <expiry epoch>". Prints the other lane's live slot as "<lane> <epoch>", else nothing.
 foreign_slot() { # lock lane
-  local l e; read -r l e < "$1.slot" 2>/dev/null || return 0
+  local l e; { read -r l e < "$1.slot"; } 2>/dev/null || return 0
   [ -n "${l:-}" ] && [ "${e:-0}" -gt "$(date +%s)" ] && [ "$l" != "$2" ] && echo "$l $e" || true
 }
 case "$cmd" in
