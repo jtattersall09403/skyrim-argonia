@@ -83,6 +83,10 @@ void Push(std::string_view view, std::string json);
 // The dev bridge's greeting read: the window a conversation with this speaker opens on, as JSON; the refusal else.
 std::expected<std::string, std::string> GreetingFor(std::string_view speaker_id);
 void InstallHooks();
+// natives.cpp: the dev bridge's `core <Native> [arg]` (1.7's journeys): a whitelisted native's value as the reply's
+// JSON; HandleBridgeCore answers the "CORE" SKSE message in place and returns false for any other message.
+std::expected<std::string, std::string> BridgeCall(std::string_view native, const std::optional<std::string>& arg);
+bool HandleBridgeCore(SKSE::MessagingInterface::Message* m);
 
 // --- life.cpp: grow, die, rest, save (1.5) ---------------------------------------------------------------------
 void LifeDataLoaded();

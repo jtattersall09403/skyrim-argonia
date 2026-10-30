@@ -85,6 +85,12 @@ def _last_json(text: str) -> dict:
     raise BridgeError(f"no JSON in the machine's answer: {text.strip()[-400:]}")
 
 
+def valid_save_name(name: str) -> bool:
+    """bridge_protocol's rule: 1..64 of [A-Za-z0-9 _-], no leading or trailing space."""
+    import re
+    return bool(re.fullmatch(r"[A-Za-z0-9_\- ]{1,64}", name)) and name == name.strip()
+
+
 class Machine:
     """The game machine over SSH: run.sh for transport, bridge.ps1 for the chores."""
 
@@ -197,10 +203,12 @@ class Bridge:
         self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
         words = " ".join(str(a) for a in args)
-        line = f"{{t}} {command}" + (f" {words}" if words else "")
-        reply = self._exchange(line.format(t=self.token()), cap)
+        tail = f" {command}" + (f" {words}" if words else "")  # never str.format: a view intent's JSON has braces
+        if "\n" in tail or "\r" in tail:
+            raise BridgeError(f"{command}: a request is one line")
+        reply = self._exchange(self.token() + tail, cap)
         if not reply.get("ok") and reply.get("error") == "bad token":  # a new launch: read its token once
-            reply = self._exchange(line.format(t=self.token(refresh=True)), cap)
+            reply = self._exchange(self.token(refresh=True) + tail, cap)
         if not reply.get("ok"):
             if "did not run the task" in str(reply.get("error")):  # a stalled or crashed main thread
                 self._raise_if_down()
@@ -272,6 +280,37 @@ class Bridge:
         if why not in ("quit", "stream_drop"):
             raise BridgeError(f"suspend_save: {why!r} is not a caller's reason (quit, stream_drop)")
         return self.call("core-suspend", why)
+
+    CORE_NATIVES = ("Version", "SaveCount", "ViewIntent", "ViewState", "GetAttribute", "Families", "FamilyDigest",
+                    "RouterLog", "GetFlag", "KnowsTopic", "GetDisposition", "JournalEntries", "RestNotice",
+                    "SittingIntent", "GetVastei", "GetPendingLevels", "GetLevel", "GetSkill", "PileState", "WakePoint",
+                    "SittingOpen")  # skse/core/src/bridge_call.cpp's whitelist; the plugin refuses anything else too
+
+    def core(self, native: str, arg: str | None = None):
+        """An ArgoniaCore native through ArgoniaBridge's `core` (1.7's journeys): its value. Only the reads of
+        ArgoniaCore.psc and the two view intents; a setter is refused here before it is sent."""
+        if native not in self.CORE_NATIVES:
+            raise BridgeError(f"core: {native!r} is not a callable native (reads and view intents only)")
+        r = self.call("core", native, *([] if arg is None else [arg]))
+        return r["value"]
+
+    def papyrus_queue(self) -> dict:
+        """The Papyrus VM's stacks: {"stacks": running + suspended, "running", "suspended", "waiting_latent",
+        "waiting_functions", "overstressed"} (the soak's queue length)."""
+        return self.call("papyrus-queue")
+
+    def save_bytes(self, name: str = "ArgoniaRest") -> dict:
+        """The sizes of Saves\\<name>.ess and its co-save <name>.skse on the machine, in bytes (0 when absent)."""
+        if not valid_save_name(name):
+            raise BridgeError(f"save_bytes: {name!r} is not a save name")
+        out = self.machine.ps(
+            "$d=\"$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\Saves\"; "
+            f"foreach($x in 'ess','skse'){{$f=Join-Path $d ('{name}.'+$x); "
+            "if(Test-Path $f){'{0} {1}' -f $x,(Get-Item $f).Length}else{'{0} 0' -f $x}}")
+        sizes = dict(ln.split() for ln in out.splitlines() if ln.strip()[:3] in ("ess", "sks"))
+        if set(sizes) != {"ess", "skse"}:
+            raise BridgeError(f"save_bytes: unreadable answer {out.strip()[-200:]!r}")
+        return {k: int(v) for k, v in sizes.items()}
 
     def pad(self, seq: str) -> dict:
         """A real gamepad sequence on the virtual Xbox pad (infra/gpu-box/pad.ps1, ViGEm), capped at 3 s."""

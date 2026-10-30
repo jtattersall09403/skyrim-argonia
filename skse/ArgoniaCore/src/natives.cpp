@@ -3,6 +3,7 @@
 // applies it) and then steps the watched quests. No condition is evaluated in Papyrus. The read natives are the L4
 // journeys' hands (tests/journeys/{cosave,quest-board,dialogue-intercept,attributes}*).
 #include "core.h"
+#include "argonia/core/bridge_call.h"
 #include "argonia/core/version.h"
 
 #include <algorithm>
@@ -273,6 +274,62 @@ bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
   vm->RegisterFunction("PileState"sv, k, PileState);
   vm->RegisterFunction("WakePoint"sv, k, WakePoint);
   vm->RegisterFunction("SittingOpen"sv, k, SittingOpen);
+  return true;
+}
+
+// The dev bridge's `core <Native> [arg]` (argonia/core/bridge_call.h): the same natives a script calls, on the main
+// thread, their value encoded for the reply. The whitelist is checked first, so no setter is reachable from here.
+std::expected<std::string, std::string> BridgeCall(std::string_view native, const std::optional<std::string>& arg) {
+  namespace bc = ac::bridge_call;
+  if (auto why = bc::refuse(native, arg.has_value())) return std::unexpected(*why);
+  const RE::BSFixedString a(arg ? arg->c_str() : "");
+  auto list = [&](const Strings& s) {
+    std::vector<std::string> out;
+    for (const auto& x : s) out.push_back(Str(x));
+    return bc::encode_list(native, out);
+  };
+  const auto n = native;
+  if (n == "Version") return bc::encode_text(n, Str(Version(nullptr)));
+  if (n == "SaveCount") return bc::encode_number(n, SaveCount(nullptr));
+  if (n == "ViewIntent") return bc::encode_json(n, Str(ViewIntentNative(nullptr, a)));
+  if (n == "ViewState") return bc::encode_json(n, Str(ViewState(nullptr, a)));
+  if (n == "GetAttribute") return bc::encode_number(n, GetAttribute(nullptr, a));
+  if (n == "Families") return list(Families(nullptr));
+  if (n == "FamilyDigest") return bc::encode_text(n, Str(FamilyDigest(nullptr, a)));
+  if (n == "RouterLog") return list(RouterLog(nullptr));
+  if (n == "GetFlag") return bc::encode_bool(n, GetFlag(nullptr, a));
+  if (n == "KnowsTopic") return bc::encode_bool(n, KnowsTopic(nullptr, a));
+  if (n == "GetDisposition") return bc::encode_number(n, GetDisposition(nullptr, a));
+  if (n == "JournalEntries") return list(JournalEntries(nullptr));
+  if (n == "RestNotice") return bc::encode_text(n, Str(RestNotice(nullptr)));
+  if (n == "SittingIntent") return bc::encode_json(n, Str(SittingIntentNative(nullptr, a)));
+  if (n == "GetVastei") return bc::encode_number(n, GetVastei(nullptr));
+  if (n == "GetPendingLevels") return bc::encode_number(n, GetPendingLevels(nullptr));
+  if (n == "GetLevel") return bc::encode_number(n, GetLevel(nullptr));
+  if (n == "GetSkill") return bc::encode_number(n, GetSkill(nullptr, a));
+  if (n == "PileState") return bc::encode_text(n, Str(PileState(nullptr)));
+  if (n == "WakePoint") return bc::encode_text(n, Str(WakePoint(nullptr)));
+  if (n == "SittingOpen") return bc::encode_bool(n, SittingOpen(nullptr));
+  return std::unexpected("whitelisted but not wired: " + std::string(native));  // a new whitelist row needs a line here
+}
+
+bool HandleBridgeCore(SKSE::MessagingInterface::Message* m) {
+  namespace bc = ac::bridge_call;
+  if (!m || m->type != bc::kBridgeCoreMessage || !m->data || m->dataLen != sizeof(bc::BridgeCore)) return false;
+  auto* req = static_cast<bc::BridgeCore*>(m->data);
+  req->native[sizeof(req->native) - 1] = '\0';
+  req->arg[sizeof(req->arg) - 1] = '\0';
+  auto r = BridgeCall(req->native, req->has_arg ? std::optional<std::string>(req->arg) : std::nullopt);
+  const std::string& text = r ? *r : r.error();
+  char* into = r ? req->json : req->error;
+  const std::size_t cap = r ? sizeof(req->json) : sizeof(req->error);
+  req->ok = r.has_value() && text.size() < cap;
+  if (r && !req->ok) {
+    std::string why = "the value is " + std::to_string(text.size()) + " bytes, over the reply's room";
+    why.copy(req->error, (std::min)(why.size(), sizeof(req->error) - 1));
+    return true;
+  }
+  text.copy(into, (std::min)(text.size(), cap - 1));  // (std::min): windows.h defines min
   return true;
 }
 

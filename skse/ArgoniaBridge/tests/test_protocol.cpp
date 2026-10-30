@@ -112,7 +112,19 @@ void input_keys_and_frames() {
 
 void nav_tests();
 
+void core_calls_and_the_queue() {
+  auto parsed = [](std::string line) { return std::get<Request>(parse(kToken + " " + line, kToken)); };
+  CHECK(!core_call(parsed("core")));
+  auto c = core_call(parsed("core GetVastei"));
+  CHECK(c && c->native == "GetVastei" && !c->arg);
+  c = core_call(parsed(R"(core ViewIntent {"type":"dialogue.topic","v":1,"body":{"topic":"a b"}})"));
+  CHECK(c && c->native == "ViewIntent" && c->arg == R"({"type":"dialogue.topic","v":1,"body":{"topic":"a b"}})");
+  CHECK(papyrus_queue_json({3, 2, 1, 0, false}) ==
+        R"({"stacks":5,"running":3,"suspended":2,"waiting_latent":1,"waiting_functions":0,"overstressed":false})");
+}
+
 int main() {
+  core_calls_and_the_queue();
   input_keys_and_frames();
   nav_tests();
   rest_keeps_the_line();

@@ -90,4 +90,24 @@ FrameStats frame_stats(std::vector<double> ms);
 // A save name the bridge will pass to the game: 1..64 of [A-Za-z0-9 _-], no path, no extension.
 bool valid_save_name(std::string_view name);
 
+// `core <Native> [arg ...]` (1.7): the native's name, and its one argument as the rest of the line (spaces kept, so
+// a view intent's JSON arrives whole). Nothing when no native is named. Which natives may go is ArgoniaCore's
+// whitelist (argonia/core/bridge_call.h), checked by the handler before any message is sent.
+struct CoreCall {
+  std::string native;
+  std::optional<std::string> arg;
+};
+std::optional<CoreCall> core_call(const Request& r);
+
+// `papyrus-queue` (1.7's soak): the Papyrus VM's load, read under its own locks on the main thread.
+struct PapyrusQueue {
+  long long running = 0;            // allRunningStacks
+  long long suspended = 0;          // both suspend queues and their overflow arrays
+  long long waiting_latent = 0;     // waitingLatentReturns
+  long long waiting_functions = 0;  // uiWaitingFunctionMessages
+  bool overstressed = false;
+};
+// {"stacks":running+suspended,"running":..,"suspended":..,"waiting_latent":..,"waiting_functions":..,"overstressed":..}
+std::string papyrus_queue_json(const PapyrusQueue& q);
+
 }  // namespace argonia::bridge

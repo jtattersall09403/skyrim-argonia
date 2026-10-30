@@ -3,7 +3,7 @@
 if(ARGONIA_RELEASE)
   message(FATAL_ERROR "ArgoniaBridge is dev-only and cannot be part of a release build")
 endif()
-argonia_plugin(ArgoniaBridge COMPONENT dev SOURCES src/main.cpp src/ep_state.cpp src/ep_world.cpp src/ep_events.cpp src/ep_input.cpp src/ep_nav.cpp src/tcp.cpp src/bridge.h src/server.h src/pch.h)
+argonia_plugin(ArgoniaBridge COMPONENT dev SOURCES src/main.cpp src/ep_state.cpp src/ep_core.cpp src/ep_world.cpp src/ep_events.cpp src/ep_input.cpp src/ep_nav.cpp src/tcp.cpp src/bridge.h src/server.h src/pch.h)
 target_link_libraries(ArgoniaBridge PRIVATE argonia_bridge_protocol argonia_core ws2_32)
 # Winsock and CommonLib's <Windows.h> clash in one TU, so the socket file skips the PCH (src/server.h).
 set_source_files_properties(src/tcp.cpp PROPERTIES SKIP_PRECOMPILE_HEADERS ON)

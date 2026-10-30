@@ -194,3 +194,44 @@ def test_calls_refresh_the_busy_flag_at_most_once_per_interval(tmp_path):
         time.sleep(0.05)
     assert log.read_text().splitlines() == ["ps $null"]
     ls.close()
+
+
+def test_core_sends_the_native_and_its_json_arg_whole_and_refuses_setters():
+    seen = []
+    ls, port = serve(lambda line: seen.append(line) or {"ok": True, "result": {"native": "x", "value": 120}})
+    b = make(port, FakeMachine())
+    assert b.core("GetVastei") == 120
+    intent = '{"type":"dialogue.topic","v":1,"body":{"topic":"a b"}}'  # braces: never str.format'd
+    b.core("ViewIntent", intent)
+    assert seen == ["t" * 32 + " core GetVastei", "t" * 32 + " core ViewIntent " + intent]
+    for setter in ("SetVastei", "GrantTopic", "SetAttribute", "RestAt"):  # fail on purpose: never sent
+        with pytest.raises(B.BridgeError, match="not a callable native"):
+            b.core(setter, "1")
+    with pytest.raises(B.BridgeError, match="one line"):
+        b.core("ViewIntent", "{}\n{}")
+    assert len(seen) == 2
+    ls.close()
+
+
+def test_papyrus_queue_and_a_refused_core_read():
+    replies = iter([{"ok": True, "result": {"stacks": 5, "running": 3, "suspended": 2}},
+                    {"ok": False, "error": "KnowsTopic takes one argument"}])
+    ls, port = serve(lambda line: next(replies))
+    b = make(port, FakeMachine())
+    assert b.papyrus_queue()["stacks"] == 5
+    with pytest.raises(B.BridgeError, match="takes one argument"):
+        b.core("KnowsTopic")
+    ls.close()
+
+
+def test_save_bytes_reads_both_files_and_refuses_a_path():
+    class PsMachine(FakeMachine):
+        def ps(self, script, timeout=0):
+            self.calls.append(script)
+            return "ess 1048576\r\nskse 2210\r\n"
+    m = PsMachine()
+    b = make(0, m)
+    assert b.save_bytes() == {"ess": 1048576, "skse": 2210}
+    assert "ArgoniaRest." in m.calls[-1]
+    with pytest.raises(B.BridgeError, match="not a save name"):
+        b.save_bytes("..\\x")

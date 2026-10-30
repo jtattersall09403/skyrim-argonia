@@ -220,4 +220,22 @@ bool valid_save_name(std::string_view n) {
   return n.front() != ' ' && n.back() != ' ';
 }
 
+std::optional<CoreCall> core_call(const Request& r) {
+  if (r.args.empty() || r.args[0].empty()) return std::nullopt;
+  CoreCall c{r.args[0], std::nullopt};
+  if (r.args.size() > 1) c.arg = rest(r, 1);
+  return c;
+}
+
+std::string papyrus_queue_json(const PapyrusQueue& q) {
+  return JsonObject()
+      .integer("stacks", q.running + q.suspended)
+      .integer("running", q.running)
+      .integer("suspended", q.suspended)
+      .integer("waiting_latent", q.waiting_latent)
+      .integer("waiting_functions", q.waiting_functions)
+      .boolean("overstressed", q.overstressed)
+      .done();
+}
+
 }  // namespace argonia::bridge
