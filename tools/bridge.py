@@ -45,6 +45,7 @@ HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash
 TIMEOUTS = {"load": 150.0, "save": 45.0, "core-suspend": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0,
             "wait_event": 70.0, "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
 DEFAULT_TIMEOUT = 15.0
+HEARTBEAT_EVERY = 240.0  # seconds between busy-flag refreshes; idle-stop.ps1 stops after 15 idle minutes
 INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
 
 
@@ -193,6 +194,7 @@ class Bridge:
     def call(self, command: str, *args, timeout: float | None = None) -> dict:
         """One endpoint call; its `result` on success, else BridgeError (GameDown when the game is down)."""
         self.tunnel()
+        self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
         words = " ".join(str(a) for a in args)
         line = f"{{t}} {command}" + (f" {words}" if words else "")
@@ -204,6 +206,23 @@ class Bridge:
                 self._raise_if_down()
             raise BridgeError(f"{command}: {reply.get('error')}")
         return reply.get("result")
+
+    def heartbeat(self) -> None:
+        """Refresh the machine's busy flag (C:\\argonia\\state\\busy, which idle-stop.ps1 reads) at most every
+        HEARTBEAT_EVERY seconds, in the background: bridge calls made outside `job_guard --gpu` did not, and idle-stop
+        stopped the machine mid-lane (game-5, 2026-10-30)."""
+        stamp = self.state / "heartbeat"
+        try:
+            if time.time() - stamp.stat().st_mtime < HEARTBEAT_EVERY:
+                return
+        except OSError:
+            pass
+        self.state.mkdir(parents=True, exist_ok=True)
+        stamp.touch()
+        run = getattr(self.machine, "run", None)
+        if run:  # run.sh ps touches the flag before its command
+            subprocess.Popen([run, "ps", "$null"], env=getattr(self.machine, "env", None), stdout=subprocess.DEVNULL,
+                             stderr=subprocess.DEVNULL, start_new_session=True)
 
     def health(self) -> dict:
         return self.machine.helper("health", timeout=60)

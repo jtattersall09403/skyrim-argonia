@@ -174,3 +174,23 @@ def test_a_release_build_refuses_the_bridge():
     assert "ArgoniaBridge.dll" in (B.REPO / "skse" / "dev-only.txt").read_text()
     top = (B.REPO / "skse" / "CMakeLists.txt").read_text()
     assert "if(NOT ARGONIA_RELEASE)\n    add_subdirectory(ArgoniaBridge)" in top
+
+
+def test_calls_refresh_the_busy_flag_at_most_once_per_interval(tmp_path):
+    """idle-stop stopped the machine mid-lane: bridge calls outside job_guard never touched its busy flag (game-6)."""
+    log = tmp_path / "ps.log"
+    run = tmp_path / "run.sh"
+    run.write_text(f"#!/bin/sh\necho \"$@\" >> {log}\n")
+    run.chmod(0o755)
+    m = FakeMachine()
+    m.run, m.env = str(run), None
+    ls, port = serve(lambda line: {"ok": True, "result": {}})
+    b = make(port, m)
+    b.call("player")
+    b.call("player")
+    for _ in range(50):
+        if log.exists():
+            break
+        time.sleep(0.05)
+    assert log.read_text().splitlines() == ["ps $null"]
+    ls.close()
