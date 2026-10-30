@@ -150,6 +150,27 @@ float SetAttribute(RE::StaticFunctionTag*, RE::BSFixedString name, float v) {
   return static_cast<float>(stored);
 }
 
+#ifdef ARGONIA_DEV_NATIVES
+// DEV BUILD ONLY (script class ArgoniaDev, windows-dev preset; absent from the release ArgoniaCore): a test input at a
+// scene's step 0, through the core's own clamp and the same mirrors and combat refresh SetAttribute drives.
+float SetSkill(RE::StaticFunctionTag*, RE::BSFixedString name, float v) {
+  auto s = ac::life::skill_named(Str(name));
+  if (!s) {
+    SKSE::log::warn("SetSkill: no skill {}", Str(name));
+    return -1.0f;
+  }
+  double stored = 0;
+  {
+    std::lock_guard l(Get().lock);
+    stored = ac::seam::set_skill(Get().state, *s, v);
+  }
+  MirrorSkills();
+  WriteCombat("skill");
+  FactsChanged("skill");
+  return static_cast<float>(stored);
+}
+#endif
+
 Strings Families(RE::StaticFunctionTag*) {
   Strings out;
   std::lock_guard l(Get().lock);
@@ -278,6 +299,9 @@ bool RegisterNatives(RE::BSScript::IVirtualMachine* vm) {
   vm->RegisterFunction("ViewState"sv, k, ViewState);
   vm->RegisterFunction("GetAttribute"sv, k, GetAttribute);
   vm->RegisterFunction("SetAttribute"sv, k, SetAttribute);
+#ifdef ARGONIA_DEV_NATIVES
+  vm->RegisterFunction("SetSkill"sv, "ArgoniaDev"sv, SetSkill);
+#endif
   vm->RegisterFunction("Families"sv, k, Families);
   vm->RegisterFunction("FamilyDigest"sv, k, FamilyDigest);
   vm->RegisterFunction("RouterLog"sv, k, RouterLog);

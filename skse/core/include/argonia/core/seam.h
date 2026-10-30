@@ -202,5 +202,8 @@ std::optional<AttrId> attribute_named(std::string_view name);  // "strength" ...
 double attribute(const State& s, AttrId a);
 // Sets the base attribute, clamped to the STAT family's range; returns the value stored.
 double set_attribute(State& s, AttrId a, double v);
+// Sets a base skill, clamped to 0..skill_cap (the cap the ranks and trainers stop at); returns the value stored.
+// Only the dev build's SetSkill native calls it (ARGONIA_DEV_NATIVES); the release ArgoniaCore never exposes it.
+double set_skill(State& s, SkillId k, double v);
 
 }  // namespace argonia::core::seam

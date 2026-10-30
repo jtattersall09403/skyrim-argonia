@@ -1,6 +1,7 @@
 # 1.6-wiring (owed L4), native map S14a/S11b: the sheet -> damage and stamina join. Wiring rows w.damage.*,
 # w.stamina.*, w.armour.*; docs/research/2026-10-30/combat-wiring.md. The builds' attributes are set at the step's
-# start through the dev bridge's `dev-set` (ArgoniaCore's own SetAttribute); Long Blade has no setter (owed).
+# start through the dev bridge's `dev-set` (ArgoniaCore's own SetAttribute); Long Blade through the dev-only
+# `dev-set SetSkill` (ArgoniaDev.SetSkill, the windows-dev ArgoniaCore only; core seam::set_skill clamps 0-100).
 id: fight-damage-builds
 runner: 1
 scene: duel-ring
@@ -38,8 +39,9 @@ steps:
   - name: power-attack-stamina
     do: [{pad: "RT:150 wait:2500"}]
     expect: [{read: [av, Stamina, player], path: current, keep: st1}]
-  - name: novice-blow         # Str 40, Agi 40 (the input), one light blow
+  - name: novice-blow         # Str 40, Agi 40, Long Blade 5 (the inputs), one light blow
     do:
+      - {call: [dev-set, SetSkill, longBlade, "5"]}
       - {call: [dev-set, SetAttribute, strength, "40"]}
       - {call: [dev-set, SetAttribute, agility, "40"]}
       - {wait: 1}
@@ -49,8 +51,11 @@ steps:
     expect:
       - {event: {kind: hit, match: "*"}}
       - {read: [av, Health, "{opp}"], path: current, keep: hn}
-  - name: god-blow            # Str 100, Agi 100: the same blow lands harder
+      - {read: [av, Health, "{opp}"], path: current, ge: 1988.7}   # 2000 - 10.8 (+-0.5), combat-wiring.md novice
+      - {read: [av, Health, "{opp}"], path: current, le: 1989.7}
+  - name: god-blow            # Str 100, Agi 100, Long Blade 100: the same blow lands harder
     do:
+      - {call: [dev-set, SetSkill, longBlade, "100"]}
       - {call: [dev-set, SetAttribute, strength, "100"]}
       - {call: [dev-set, SetAttribute, agility, "100"]}
       - {wait: 1}
@@ -60,7 +65,7 @@ steps:
     expect:
       - {event: {kind: hit, match: "*"}}
       - {read: [av, Health, "{opp}"], path: current, lt: {kept: hn}}
-  - name: builds-long-blade
-    owed: "a Long Blade setter for the novice's LB 5 (ArgoniaCore has no SetSkill native; adding one is ArgoniaCore's call, not the bridge's); then 10.8 / 36.0 within 0.5"
+      - {read: [av, Health, "{opp}"], path: current, ge: 1963.2}   # 2000 - 36.0 (+-0.5), combat-wiring.md god
+      - {read: [av, Health, "{opp}"], path: current, le: 1964.2}
   - name: difficulties
     owed: the same ratio at each difficulty (a GetGameSetting read of fDiffMultHPByPCN/ToPCN per difficulty)

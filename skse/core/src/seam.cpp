@@ -408,4 +408,9 @@ double set_attribute(State& s, AttrId a, double v) {
   return s.sheet.a[a];
 }
 
+double set_skill(State& s, SkillId k, double v) {
+  s.sheet.s[k] = std::clamp(v, 0.0, gen::progression::skill_cap);
+  return s.sheet.s[k];
+}
+
 }  // namespace argonia::core::seam

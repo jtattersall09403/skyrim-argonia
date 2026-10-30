@@ -10,6 +10,14 @@ py=$(command -v "$HOME/.argonia/venv/bin/python" || command -v python3)
 # The schema twins (1.1 §b-§d: messages, family layouts, the router table) must match their sources: regenerate, diff.
 node=$(command -v node || echo "$HOME/.local/bin/node")
 (cd "$here/.." && "$node" --experimental-strip-types --disable-warning=ExperimentalWarning tools/schema_gen/gen.ts --check)
+# The dev-only SetSkill never reaches a release ArgoniaCore: it is defined, registered and declared only behind
+# ARGONIA_DEV_NATIVES (set only when ARGONIA_RELEASE is off), and the shipped script and install list lack it.
+if grep -q "SetSkill" "$here/ArgoniaCore/papyrus/ArgoniaCore.psc" || grep -q "ArgoniaDev" "$here/ArgoniaCore/CMakeLists.txt" \
+  || [ "$(grep -c "ARGONIA_DEV_NATIVES" "$here/ArgoniaCore/src/natives.cpp")" != 2 ] \
+  || ! grep -B1 "ARGONIA_DEV_NATIVES=1" "$here/ArgoniaCore/CMakeLists.txt" | grep -q "NOT ARGONIA_RELEASE" \
+  || grep -rq "SetSkill" "$here"/ArgoniaCore/src/[!n]*.cpp; then
+  echo "skse: SetSkill leaks outside the ARGONIA_DEV_NATIVES guard" >&2; exit 1
+fi
 export PATH="$PATH:$HOME/.argonia/buildtools/bin"
 if command -v cmake >/dev/null && command -v ninja >/dev/null; then
   cd "$here"

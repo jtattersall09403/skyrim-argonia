@@ -6,16 +6,16 @@
 namespace argonia::bridge::dev {
 
 namespace {
-constexpr std::array<std::string_view, 2> kSetters{"SetAttribute", "SetVastei"};
+constexpr std::array<std::string_view, 3> kSetters{"SetAttribute", "SetVastei", "SetSkill"};
 }
 
 std::vector<std::string_view> setters() { return {kSetters.begin(), kSetters.end()}; }
 
 std::variant<SetCall, std::string> set_call(const Request& r) {
-  const std::string usage = "usage: dev-set SetAttribute <attribute> <value> | dev-set SetVastei <value>";
+  const std::string usage = "usage: dev-set SetAttribute <attribute> <value> | dev-set SetSkill <skill> <value> | dev-set SetVastei <value>";
   if (r.args.empty()) return usage;
   const auto& n = r.args[0];
-  if (n == "SetAttribute") {
+  if (n == "SetAttribute" || n == "SetSkill") {
     if (r.args.size() != 3) return usage;
     auto v = to_number(r.args[2]);
     if (!v) return "the value must be a number";

@@ -1,5 +1,5 @@
-// The dev setters and the reads 1.7's journeys owed (lane bridge-gaps; DEV ONLY, never in ArgoniaCore):
-//   dev-set <Native> [text] <n>   SetAttribute / SetVastei through the Papyrus VM, ArgoniaCore's own natives, so their
+// The dev setters and the reads 1.7's journeys owed (lane bridge-gaps; DEV ONLY, the setters live in ArgoniaCore only for SetSkill, under ARGONIA_DEV_NATIVES):
+//   dev-set <Native> [text] <n>   SetAttribute / SetVastei / SetSkill (the dev ArgoniaDev.SetSkill) through the Papyrus VM, ArgoniaCore's own natives, so their
 //                                 clamps apply; the stored value comes back. Scene inputs at step 0 only.
 //   dev-grow <ref> <n> [max]      landed blows (hit events into ArgoniaCore's own sink, the target's health lowered
 //                                 first so the blow has damage) until GetPendingLevels >= n; the blow count comes back
@@ -67,8 +67,8 @@ std::string dev_set(const Request& req) {
     RE::BSTSmartPointer<RE::BSScript::IStackCallbackFunctor> cb(new FloatResult(done));
     auto* args = call.text ? RE::MakeFunctionArguments(RE::BSFixedString(*call.text), static_cast<float>(call.value))
                            : RE::MakeFunctionArguments(static_cast<float>(call.value));
-    if (!vm->DispatchStaticCall("ArgoniaCore", call.native.c_str(), args, cb))
-      return reply_error("dev-set", "the VM refused ArgoniaCore." + call.native + " (ArgoniaCore.pex not loaded?)");
+    if (!vm->DispatchStaticCall(call.native == "SetSkill" ? "ArgoniaDev" : "ArgoniaCore", call.native.c_str(), args, cb))
+      return reply_error("dev-set", "the VM refused " + call.native + " (ArgoniaCore.pex / ArgoniaDev.pex not loaded?)");
     return reply_ok("dev-set", "true");
   });
   if (sent.find("\"ok\":true") == std::string::npos) return sent;

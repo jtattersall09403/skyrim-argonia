@@ -239,6 +239,8 @@ void attributes() {
   seam::State s;
   CHECK(seam::set_attribute(s, AttrId::endurance, 70) == 70 && seam::attribute(s, AttrId::endurance) == 70);
   CHECK(seam::set_attribute(s, AttrId::endurance, 900) == 255 && seam::set_attribute(s, AttrId::endurance, -1) == 0);
+  CHECK(seam::set_skill(s, SkillId::longBlade, 5) == 5 && s.sheet.s[SkillId::longBlade] == 5);
+  CHECK(seam::set_skill(s, SkillId::longBlade, 900) == 100 && seam::set_skill(s, SkillId::longBlade, -3) == 0);
   CHECK(seam::disposition_of(s, kKeeper) == 0);  // unmet, authored base 0, Personality 0
 }
 

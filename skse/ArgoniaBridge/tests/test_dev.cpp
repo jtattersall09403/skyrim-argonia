@@ -17,10 +17,12 @@ void setters_are_scene_inputs_only() {
   CHECK(std::get_if<SetCall>(&v) && std::get<SetCall>(v).value == -5 && !std::get<SetCall>(v).text);
   CHECK(std::holds_alternative<std::string>(set_call(req({"SetFlag", "x", "1"}))));      // sets what quests test
   CHECK(std::holds_alternative<std::string>(set_call(req({"GiveGold", "5"}))));
+  auto sk = set_call(req({"SetSkill", "longBlade", "5"}));
+  CHECK(std::holds_alternative<SetCall>(sk) && std::get<SetCall>(sk).text == "longBlade" && std::get<SetCall>(sk).value == 5);
   CHECK(std::holds_alternative<std::string>(set_call(req({"SetAttribute", "strength"}))));
   CHECK(std::holds_alternative<std::string>(set_call(req({"SetAttribute", "strength", "lots"}))));
   CHECK(std::holds_alternative<std::string>(set_call(req({}))));
-  CHECK(setters().size() == 2);
+  CHECK(setters().size() == 3);
 }
 
 void grow_takes_a_ref_and_a_small_count() {
