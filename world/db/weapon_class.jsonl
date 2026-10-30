@@ -1,0 +1,7 @@
+{"id":"axe","skill":"axe","keyword_edid":"ARG_WeapClass_Axe","label":"Axe"}
+{"id":"blunt","skill":"blunt","keyword_edid":"ARG_WeapClass_Blunt","label":"Blunt Weapon"}
+{"id":"handToHand","skill":"handToHand","keyword_edid":"ARG_WeapClass_HandToHand","label":"Hand-to-Hand"}
+{"id":"longBlade","skill":"longBlade","keyword_edid":"ARG_WeapClass_LongBlade","label":"Long Blade"}
+{"id":"marksman","skill":"marksman","keyword_edid":"ARG_WeapClass_Marksman","label":"Marksman"}
+{"id":"shortBlade","skill":"shortBlade","keyword_edid":"ARG_WeapClass_ShortBlade","label":"Short Blade"}
+{"id":"spear","skill":"spear","keyword_edid":"ARG_WeapClass_Spear","label":"Spear"}

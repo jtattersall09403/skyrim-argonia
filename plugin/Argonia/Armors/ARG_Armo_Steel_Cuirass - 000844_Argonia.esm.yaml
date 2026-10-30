@@ -1,0 +1,14 @@
+FormKey: 000844:Argonia.esm
+EditorID: ARG_Armo_Steel_Cuirass
+Name:
+  TargetLanguage: English
+  Value: Steel Cuirass
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 000843:Argonia.esm
+Value: 275
+Weight: 12

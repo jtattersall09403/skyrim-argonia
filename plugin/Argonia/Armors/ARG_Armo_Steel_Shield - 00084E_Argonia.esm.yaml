@@ -1,0 +1,14 @@
+FormKey: 00084E:Argonia.esm
+EditorID: ARG_Armo_Steel_Shield
+Name:
+  TargetLanguage: English
+  Value: Steel Shield
+BodyTemplate:
+  FirstPersonFlags:
+  - Shield
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 00084D:Argonia.esm
+Value: 150
+Weight: 6

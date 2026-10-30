@@ -1,0 +1,14 @@
+FormKey: 000851:Argonia.esm
+EditorID: ARG_Alch_HealingDraught
+Name:
+  TargetLanguage: English
+  Value: Healing Draught
+Model:
+  File: clutter\potions\potionhealthlesser.nif
+Weight: 0.5
+Value: 35
+Effects:
+- BaseEffect: 03EB15:Skyrim.esm
+  Data:
+    Magnitude: 40.8
+    Duration: 7

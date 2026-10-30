@@ -1,0 +1,231 @@
+FormKey: 000852:Argonia.esm
+EditorID: ARG_Q_LF83
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_LF83
+  FileName: ARG_QF_LF83
+  Fragments:
+  - Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_0
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_10
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_20
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_30
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_40
+  - Stage: 41
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_41
+  - Stage: 42
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_42
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_90
+  - Stage: 92
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_92
+  - Stage: 93
+    Unknown2: 1
+    ScriptName: ARG_QF_LF83
+    FragmentName: Fragment_93
+Name:
+  TargetLanguage: English
+  Value: The Well and the Landing
+Flags:
+- StartGameEnabled
+- RunOnce
+Priority: 40
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I came to Claywater Station on the Blackwood Road. Travellers there pay Livia Varinius, the well-keeper, 2 drakes for the stop this season. Signs-For-The-Cargo, the landing's poler, now wants 1 drake from every walker who wades the ford. I'm to hear each keeper's side. Claywater Station is about 640 yards west of the signpost at Cartwright's Cross on the Blackwood Road, where the arms point to Gideon and to Leyawiin. Going west, a painted pole barrier stands in a field about 110 yards off the road on the right; that is the Drowning Gate. The station house roof shows about 100 yards on, ahead on the left. Livia Varinius keeps the well at the station house door, inside the low stone walls. Signs-For-The-Cargo poles the plank raft at the landing stage across the ford in the morning, about 65 yards north of the well. The round mud huts stand behind it on the far bank. If the road runs on into open marsh with no roofs in sight, I have passed it.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: At Claywater Station, Livia Varinius told me she raised the station's charge to 2 drakes to pay a mason to re-line the cracked well in stone. Signs-For-The-Cargo told me the landing began charging walkers at the ford. The landing worked this ford before the well was dug. The landing will not haul stone for the station. Signs-For-The-Cargo says a crocodile has taken the landing's clay cut below the ford. The landing will hear terms only from whoever wins back the cut before the rains. I'm to kill the crocodile and bring back the clay basket that lies at the cut. The cut is below the ford on the station bank. From the well, I go about 45 yards west, outside the low stone walls, to where the river swings west under a bare clay bank and the water lies deep and dark. If the bank flattens into reeds, I have gone past it. Signs-For-The-Cargo says Takes-The-Short-Weight can tell what ails the station's water. She lives in the round mud hut on the landing bank, about 30 yards north of the raft. In the morning she sits at the landing's fire, about 50 yards north of the raft.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "I killed the crocodile at the clay cut below the ford at Claywater Station and have the landing's clay basket. I'm to put terms to Livia Varinius and to Signs-For-The-Cargo before the rains: one charge of 2 drakes a stop, 1 to each bank, with the landing's clay rammed in behind the cracked lining. Livia Varinius says a mason's lining will mend the well and mud has no place in it. She says the landing would take half a charge for water it never draws. I'm to find out whether the well has cracked before. Takes-The-Short-Weight can taste the station's water if I bring it to her in Livia Varinius's dipper. Signs-For-The-Cargo says the station only wants stone. He will not haul it. Livia Varinius is at the well in the morning, at the counter by the station house door in the afternoon and at the stable at dusk. Signs-For-The-Cargo poles the raft in the morning and is at the drying racks behind it in the afternoon."
+- Index: 40
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: 'I brought Livia Varinius and Signs-For-The-Cargo to terms at Claywater Station: one charge of 2 drakes a stop, 1 to each bank. The landing has rammed its clay in behind the cracked lining before the rains. I killed the crocodile at the clay cut and gave the landing back its basket. Livia Varinius will send for no mason. Travellers no longer have a reason to wade below the cut at night. The ferry at the Drowning Gate is free to me from now on.'
+- Index: 41
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I found that travellers at Claywater Station paid Livia Varinius at the well and again at the ford. I paid Signs-For-The-Cargo 100 drakes to take no charge from walkers this season, so they pay once, at the well. The well is still cracked.
+- Index: 42
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I found that travellers at Claywater Station paid Livia Varinius at the well and again at the ford. I also found that the well's lining has cracked and been mended every year. To keep that quiet, Livia Varinius has dropped her charge back to the old drake. Signs-For-The-Cargo has dropped the walkers' charge in answer. Livia Varinius will send for no mason. The well is still cracked. The ferry at the Drowning Gate is free to me from now on.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: The rains came to Claywater Station before I made terms between Livia Varinius and Signs-For-The-Cargo. The well is still cracked. Travellers still pay at both banks or wade below the ford at night.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Livia Varinius is dead. The well at Claywater Station has no keeper now. The station's charge ended with her. Signs-For-The-Cargo keeps the landing's charge on the ford. The two charges cannot be settled now.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - FailQuest
+    Entry:
+      TargetLanguage: English
+      Value: Signs-For-The-Cargo is dead. The raft at Claywater Station has no poler. The landing will make no terms with Livia Varinius and the station while it mourns. Both charges stand.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear Livia Varinius's side at the well.
+- Index: 11
+  DisplayText:
+    TargetLanguage: English
+    Value: Hear Signs-For-The-Cargo's side, and what ails the landing, at the raft.
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Find out why the well at Claywater Station keeps failing.
+- Index: 21
+  DisplayText:
+    TargetLanguage: English
+    Value: Kill the crocodile at the clay cut below the ford.
+- Index: 22
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring the landing's clay basket back from the cut.
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Put terms to Livia Varinius and Signs-For-The-Cargo before the rains.
+- Index: 31
+  DisplayText:
+    TargetLanguage: English
+    Value: Find out whether the well has cracked before.
+NextAliasID: 14
+Aliases:
+- Name: WellKeeper
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 1
+  Name: LandingSPoler
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 2
+  Name: N13
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 3
+  Name: N1
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 4
+  Name: WellHead
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 5
+  Name: WellSilt
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 6
+  Name: StationWaterLedger
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 7
+  Name: FerryRaft
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 8
+  Name: LandingWalls
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 9
+  Name: ClayBend
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 10
+  Name: ClayBasket
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 11
+  Name: EcoCrocodile
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 12
+  Name: WellWater
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+- ID: 13
+  Name: MortarTub
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled

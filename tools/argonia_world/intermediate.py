@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GLOB", "MUSC", "STAT", "LTEX", "CLAS", "SPEL", "LVLI", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GLOB", "MUSC", "STAT", "LTEX", "CLAS", "SPEL", "LVLI", "KYWD", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "ALCH", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -198,6 +198,8 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
     layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
+    from tools.argonia_world import items_records  # 1.3 §c: the item records of the carry rung
+    layers.append(items_records.layer(alloc, alloc.world))
     from tools.argonia_world import quest_gen  # 1.4: the quests in the game, from their records
     layers += quest_gen.layers(alloc, alloc.world)
     from tools.argonia_world.terrain import grass  # 2.W1: the painted ground grows only grass-source GRAS (0006)

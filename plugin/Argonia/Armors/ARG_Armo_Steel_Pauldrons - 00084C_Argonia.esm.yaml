@@ -1,0 +1,14 @@
+FormKey: 00084C:Argonia.esm
+EditorID: ARG_Armo_Steel_Pauldrons
+Name:
+  TargetLanguage: English
+  Value: Steel Pauldrons
+BodyTemplate:
+  FirstPersonFlags:
+  - 0x8000000
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 00084B:Argonia.esm
+Value: 55
+Weight: 2.5

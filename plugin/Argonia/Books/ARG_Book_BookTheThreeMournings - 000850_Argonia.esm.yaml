@@ -1,0 +1,40 @@
+FormKey: 000850:Argonia.esm
+EditorID: ARG_Book_BookTheThreeMournings
+Name:
+  TargetLanguage: English
+  Value: The Three Mournings
+Model:
+  File: clutter\books\basicbook01.nif
+BookText:
+  TargetLanguage: English
+  Value: >-
+    The Argonian year is kept in twelve months. The old names of the months follow the life of the Hist from sprout to death. Three of the months carry a Mourning. Every village keeps all three. A child learns them before the rest of the calendar.
+
+
+    A Mourning is a grief that the village agrees to feel together. The Argonians hold that the pain of the world comes from holding too tightly to what has come to pass. That pain is called shunatei. A Mourning is the way that a village lets go of one thing at a time, in the right month, together.
+
+    [pagebreak]
+
+    The First Mourning is Xeech's. Xeech is the month of planting. It is hopeful and melancholy at once. A nut that is planted is lost forever. The village mourns it. Then it sees the sprout.
+
+
+    The village keeps this Mourning so that the planting is done knowingly. A village that did not mourn the nut would meet the loss later, at the harvest. The loss comes at the start of the year.
+
+    [pagebreak]
+
+    The Second Mourning is Hist-Tsoko's. Hist-Tsoko is the holiest month. It is the month of knowledge, wisdom and fullness. In it the elders recite Saxhleel history. This is the Root Talk.
+
+
+    The Second Mourning is kept because what the elders recite is over. A history that has been told in full is a history that has come to pass. The elders recite the whole of it, so that it is known. The village mourns it, so that it is let go.
+
+    [pagebreak]
+
+    The Third Mourning is Xulomaht's. It is the most significant. Xulomaht is the last month of the year. Its name means the deceased. The village mourns the year that has gone. It holds festivals for its dead.
+
+
+    The month before it is Saxhleel, when the elders gather to prepare for the deaths to come. The Third Mourning is kept because the year can still be changed until it ends. The village holds festivals for the dead of the year.
+Teaches:
+  MutagenObjectType: BookTeachesNothing
+  RawContent: 0
+Value: 40
+Weight: 0.8

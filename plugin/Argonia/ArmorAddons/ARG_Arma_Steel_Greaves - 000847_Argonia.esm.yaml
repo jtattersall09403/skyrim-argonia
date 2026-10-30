@@ -1,0 +1,16 @@
+FormKey: 000847:Argonia.esm
+EditorID: ARG_Arma_Steel_Greaves
+BodyTemplate:
+  FirstPersonFlags:
+  - 0x800000
+  ActsLike44: True
+Race: 000019:Skyrim.esm
+Priority:
+  Male: 0
+  Female: 0
+WeightSliderEnabled:
+  Male: False
+  Female: False
+WorldModel:
+  Male:
+    File: Argonia\armour\steel-boots-male.nif

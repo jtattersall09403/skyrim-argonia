@@ -6076,6 +6076,45 @@ CREATE TABLE "ltex_grass" (
   PRIMARY KEY ("ltex_form_key", "ord")
 );
 
+-- == The item records' lookups (1.3 §c; the Argonia.esm item writers, tools/argonia_world/items_records.py) ==
+
+-- Home of a Morrowind weapon class (decision 0005 C5): the keyword record that marks it and the skill it trains.
+-- The keyword is our own KYWD (`keyword_edid`, an Argonia EditorID); ArgoniaCore's skill redirect reads it.
+CREATE TABLE "weapon_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "skill" TEXT NOT NULL REFERENCES "skill"("id"),
+  "keyword_edid" TEXT NOT NULL UNIQUE,
+  "label" TEXT NOT NULL
+);
+
+-- Home of the item subkinds that belong to a weapon class (the item table's `subkind` where `kind` is weapon).
+-- `animation` is the engine's weapon animation type (Mutagen's WeaponAnimationType name), empty where the subkind has none yet.
+-- A subkind not listed here has no class yet and writes no weapon record.
+CREATE TABLE "weapon_class_subkind" (
+  "subkind" TEXT NOT NULL PRIMARY KEY,
+  "weapon_class_id" TEXT NOT NULL REFERENCES "weapon_class"("id"),
+  "animation" TEXT
+);
+
+-- Home of an armour slot of the Morrowind set (decision 0005 C6): its biped slot number and the item subkind whose
+-- imported row it is written from. `stand_in` is true where the import has no row of that piece (no pauldron or
+-- greave rows exist): the nearest piece's row (its weight and value) is used and the record is named from the set.
+CREATE TABLE "armour_slot" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "label" TEXT NOT NULL,
+  "biped_slot" INTEGER NOT NULL UNIQUE CHECK ("biped_slot" BETWEEN 30 AND 61),
+  "subkind" TEXT NOT NULL,
+  "stand_in" BOOLEAN NOT NULL CHECK ("stand_in" IN (0, 1))
+);
+
+-- Home of the master record an item effect id names (alchemy's ENIT effects link to a magic effect record).
+CREATE TABLE "effect_skyrim_mgef" (
+  "effect_id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT NOT NULL,
+  "form_id" INTEGER NOT NULL,
+  "editor_id" TEXT NOT NULL
+);
+
 -- == The action vocabulary's shapes (lane 1.3-rules; 85 §B as data, read by skse/core `actions`) ==
 
 -- Home of an action verb's arguments in order (85 §B): the kind of each and whether it may be left out

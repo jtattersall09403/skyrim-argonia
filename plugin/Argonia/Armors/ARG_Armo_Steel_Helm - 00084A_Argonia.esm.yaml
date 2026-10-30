@@ -1,0 +1,14 @@
+FormKey: 00084A:Argonia.esm
+EditorID: ARG_Armo_Steel_Helm
+Name:
+  TargetLanguage: English
+  Value: Steel Helmet
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 000849:Argonia.esm
+Value: 125
+Weight: 3

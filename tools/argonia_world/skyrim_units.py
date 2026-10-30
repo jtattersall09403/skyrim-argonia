@@ -72,6 +72,26 @@ OFFICIAL_MASTERS = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.es
 ENGINE_MARKER_HEADING = "000034:Skyrim.esm"  # XMarkerHeading: the engine's own heading marker
 MAP_MARKER = "000010:Skyrim.esm"  # MapMarker: the static a map marker reference stands on
 
+# --- items (1.3 §c) ---------------------------------------------------------------------------------------------
+WEIGHT_PER_KG = 1.0  # a record's Weight is the world row's kilograms as they stand (Skyrim's Weight is unitless, ~kg)
+BIPED_FIRST_SLOT = 30  # biped slot numbers run 30..61; the record stores them as bit (slot - 30) of a mask
+DEFAULT_RACE = "000019:Skyrim.esm"  # DefaultRace: the race an ARMA names so every race can wear it
+ARMOR_TYPE = {"light": "LightArmor", "heavy": "HeavyArmor"}  # a set's armour_class as the engine's ARMO type; no medium
+
+WEAP_NEUTRAL_SPEED = WEAP_NEUTRAL_REACH = 1.0  # the engine's neutral multipliers; ArgoniaCore holds the measured values
+
+
+def kg_to_weight(kg: float) -> float:
+    return rounded(kg * WEIGHT_PER_KG, 4)
+
+
+def biped_mask(slot: int) -> int:
+    """The BOD2 biped-flag mask for one slot number (CK numbering, 30..61)."""
+    if not BIPED_FIRST_SLOT <= slot < BIPED_FIRST_SLOT + 32:
+        raise ValueError(f"biped slot {slot}: must be 30..61")
+    return 1 << (slot - BIPED_FIRST_SLOT)
+
+
 # --- skills -----------------------------------------------------------------------------------------------
 # Our 27 skills (the world's `skill` table) onto Skyrim's 18 skill actor values (Mutagen's Skill names), for the
 # engine-side records that need one (CLAS weights, NPC levelling). None: no Skyrim skill carries it; ArgoniaCore

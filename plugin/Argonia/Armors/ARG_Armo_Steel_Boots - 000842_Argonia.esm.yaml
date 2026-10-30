@@ -1,0 +1,14 @@
+FormKey: 000842:Argonia.esm
+EditorID: ARG_Armo_Steel_Boots
+Name:
+  TargetLanguage: English
+  Value: Steel Boots
+BodyTemplate:
+  FirstPersonFlags:
+  - Feet
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 000841:Argonia.esm
+Value: 55
+Weight: 3.5

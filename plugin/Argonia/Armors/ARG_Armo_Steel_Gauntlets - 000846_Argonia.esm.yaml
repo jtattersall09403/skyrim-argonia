@@ -1,0 +1,14 @@
+FormKey: 000846:Argonia.esm
+EditorID: ARG_Armo_Steel_Gauntlets
+Name:
+  TargetLanguage: English
+  Value: Steel Gauntlets
+BodyTemplate:
+  FirstPersonFlags:
+  - Hands
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 000845:Argonia.esm
+Value: 55
+Weight: 2.5

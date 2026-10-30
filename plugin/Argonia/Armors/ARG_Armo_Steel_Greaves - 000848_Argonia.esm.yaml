@@ -1,0 +1,14 @@
+FormKey: 000848:Argonia.esm
+EditorID: ARG_Armo_Steel_Greaves
+Name:
+  TargetLanguage: English
+  Value: Steel Greaves
+BodyTemplate:
+  FirstPersonFlags:
+  - 0x800000
+  ArmorType: HeavyArmor
+  ActsLike44: True
+Armature:
+- 000847:Argonia.esm
+Value: 55
+Weight: 3.5

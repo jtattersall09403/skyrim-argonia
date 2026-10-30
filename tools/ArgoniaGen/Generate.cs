@@ -40,6 +40,13 @@ static class Generate
                 case "SPEL": Spell(mod, r); break;
                 case "LVLI": LevItem(mod, r); break;
                 case "LTEX": LandTextures.Write(mod, r); break;
+                case "KYWD": ItemWriters.Write(mod, r); break;
+                case "WEAP": ItemWriters.Write(mod, r); break;
+                case "ARMO": ItemWriters.Write(mod, r); break;
+                case "ARMA": ItemWriters.Write(mod, r); break;
+                case "CONT": ItemWriters.Write(mod, r); break;
+                case "BOOK": ItemWriters.Write(mod, r); break;
+                case "ALCH": ItemWriters.Write(mod, r); break;
                 case "REGN" or "CLMT" or "WTHR" or "IMGS" or "WRLD": RegionWriters.Write(mod, r, data); break;
                 default: throw new InvalidDataException($"record type {type} has no writer ({S(r, "edid")})");
             }

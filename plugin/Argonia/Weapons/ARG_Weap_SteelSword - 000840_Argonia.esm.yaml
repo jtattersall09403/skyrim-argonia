@@ -1,0 +1,18 @@
+FormKey: 000840:Argonia.esm
+EditorID: ARG_Weap_SteelSword
+Name:
+  TargetLanguage: English
+  Value: Steel Sword
+Model:
+  File: Argonia\weapons\steel-sword.nif
+Keywords:
+- 00083C:Argonia.esm
+BasicStats:
+  Value: 45
+  Weight: 3.2
+Data:
+  AnimationType: OneHandSword
+  Unused: 0x000000
+  Speed: 1
+  Reach: 1
+  Unknown3: 0x000000000000000000000000

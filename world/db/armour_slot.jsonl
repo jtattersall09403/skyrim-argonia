@@ -1,0 +1,7 @@
+{"id":"boots","label":"Boots","biped_slot":37,"subkind":"boots","stand_in":false}
+{"id":"cuirass","label":"Cuirass","biped_slot":32,"subkind":"cuirass","stand_in":false}
+{"id":"gauntlets","label":"Gauntlets","biped_slot":33,"subkind":"gauntlets","stand_in":false}
+{"id":"greaves","label":"Greaves","biped_slot":53,"subkind":"boots","stand_in":true}
+{"id":"helm","label":"Helm","biped_slot":30,"subkind":"helmet","stand_in":false}
+{"id":"pauldrons","label":"Pauldrons","biped_slot":57,"subkind":"gauntlets","stand_in":true}
+{"id":"shield","label":"Shield","biped_slot":39,"subkind":"shield","stand_in":false}
