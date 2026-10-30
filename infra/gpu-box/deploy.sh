@@ -30,6 +30,8 @@ for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: 
 "$PY" -c 'import sys; n = open("out/ArgoniaWorld.esm", "rb").read().count(b"NAVM"); print(f"ArgoniaWorld.esm: {n} NAVM"); sys.exit(n == 0)' \
   || [ "${ARGONIA_NO_NAVMESH:-}" = 1 ] || { echo "out/ArgoniaWorld.esm has no navmesh: make navmesh (or ARGONIA_NO_NAVMESH=1)" >&2; exit 1; }
 step "machine up" "$run" up
+# the game down before the push: a running game holds argonia-views open and the tar unpack fails (game-17, after uireview)
+step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
 if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push; fi
 if [ $papyrus = 1 ]; then step "papyrus" "$here/records_jobs.sh" papyrus; fi
 ls out/gpu/papyrus/*.pex >/dev/null 2>&1 || { echo "no out/gpu/papyrus/*.pex: records_jobs.sh papyrus" >&2; exit 1; }
