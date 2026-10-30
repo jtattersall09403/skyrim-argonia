@@ -250,14 +250,16 @@ def cmd_menus(a, tag=""):
         since = B.call("events")["last"]
         B.call("input", "key", key, 120)
         try:
-            B.call("wait_event", "menu", menu, 4000, since)
+            # 8 s: a pause-hub menu opens late when ArgoniaCore's suspend save runs first (game-8: the stills lagged
+            # one menu behind their names at 4 s)
+            B.call("wait_event", "menu", menu, 8000, since)
             opened = True
         except BridgeError:
             opened = False
         time.sleep(1.2)  # the menu's open animation
         record(f"menu-{menu}{tag}", {"opened": opened, "still": still(f"menu-{menu.replace(' ', '')}{tag}")})
         B.call("input", "key", close, 120)
-        time.sleep(1.0)
+        time.sleep(2.0)  # the close animation; a key sent sooner landed in the closing menu
         if menu == "StatsMenu":
             B.call("input", "key", "ESC", 120)  # the stats menu returns to the tween menu
             time.sleep(0.8)

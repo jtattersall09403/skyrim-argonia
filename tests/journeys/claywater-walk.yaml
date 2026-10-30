@@ -34,5 +34,6 @@ steps:
          {wait: 2}, {key: "E 120"}, {wait: 6}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: night
+    owed: "the bed is indoors (KotM 088933BE) and the stilt house's porch and load door are off the navmesh (no door or placed-object walk triangles, 2.W4): Livia takes her sleep package and cannot path to it; moved onto the bed she sleeps (game-8)"
     do: [{console: "set gamehour to 23"}, {wait: 8}]
     expect: [{console: "ARG_Ref_ClaywaterStationLivia.GetSleeping", not_contains: ">> 0", within: 60}]

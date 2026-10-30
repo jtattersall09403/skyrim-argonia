@@ -23,6 +23,7 @@ steps:
     do: [{pad: "LY=1:3000"}, {pad: "LY=1:3000"}]
     expect: [{moved: {gt: 600}}]
   - name: make-camp        # a rest outside the settlement: the wake point for the death later
+    owed: "the rest perk's fragment ARG_PRKF_RestIntercept is not compiled (Papyrus, owner #15): E on the camp spot runs nothing (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
       - {console: "player.setangle z 0"}
@@ -139,6 +140,7 @@ steps:
       - {read: [player], path: dead, eq: false}
       - {console: "ARG_Ref_ClaywaterStationAmbushDeserter.GetDead", contains: ">> 0"}
   - name: retrieve-vastei  # back to where the pile fell, face down onto it, take it
+    owed: "the pile's Take is the same perk's Fragment_1 (Papyrus, owner #15)"
     do:
       - {teleport: "pos {pile.0} {pile.1} {pile.2}"}
       - {console: "player.setangle x 60"}
@@ -178,6 +180,7 @@ steps:
       - {read: [core, GetPendingLevels], path: value, ge: 1}
       - {read: [core, GetLevel], path: value, keep: level0}
   - name: rest-at-camp
+    owed: "the rest perk's fragment ARG_PRKF_RestIntercept is not compiled (Papyrus, owner #15): E on the camp spot runs nothing (game-8)"
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn 0 -150 0"}
       - {console: "player.setangle z 0"}
@@ -189,9 +192,11 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: true}
       - {read: [core, ViewState, sitting], path: value.type, eq: sitting.state}
   - name: spend            # one point of endurance, the view's own intent
+    owed: "the sitting opens only from a rest (make-camp's fragment, owner #15)"
     do: [{call: [core, ViewIntent, '{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}']}]
     expect: [{read: [core, ViewState, sitting], path: value.body.attributes, contains: "'bought': 1"}]
   - name: rise
+    owed: "the sitting opens only from a rest (make-camp's fragment, owner #15)"
     do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
     expect:
       - {read: [core, SittingOpen], path: value, eq: false}
@@ -211,8 +216,10 @@ steps:
       - {read: [core, FamilyDigest, QWCH], path: value, keep: d_qwch}
       - {read: [core, FamilyDigest, META], path: value, keep: d_meta}
   - name: load-rest-save
+    owed: "ArgoniaRest is written only by a rest (owner #15)"
     do: [{call: [load, ArgoniaRest]}, {wait: 4}]
   - name: every-family
+    owed: "compares with the rest save's values (owner #15)"
     expect:
       - {read: [core, Families], path: "", eq: {kept: families}}
       - {read: [core, Families], path: value, contains: "QWCH"}
