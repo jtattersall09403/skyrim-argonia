@@ -42,8 +42,8 @@ def test_each_scene_ends_on_its_travel_line_and_sets_time_and_a_region_weather()
 def test_travel_lines_after_the_first_are_run_by_the_journey_with_a_wait():
     for s in STOPS[1:]:
         arrive = next(st for st in JOURNEY["steps"] if st["name"] == f"s{s['n']:02d}-arrive")
-        assert arrive["do"][:2] == ws.HOLD and arrive["do"][2] == {"console": f"bat {s['scene']}"} \
-            and arrive["do"][3]["wait"] <= 10
+        assert arrive["do"][0] == {"relaunch": {"save": True, "scene": False}} \
+            and arrive["do"][1] == {"console": f"bat {s['scene']}"} and arrive["do"][2]["wait"] <= 10
 
 
 def test_numbers_decide_where_the_brief_says():
@@ -108,12 +108,12 @@ def test_the_falls_stop_counts_the_resolved_falls_piece():
 
 def test_every_cow_in_a_journey_step_comes_from_the_holding_cell():
     """game-12: cow straight after `teleport pos` (raw SetPosition) crashed unloading the old grid; each journey cow
-    is preceded by coc ARG_HoldingCell in the same step."""
+    is preceded in the same step by coc ARG_HoldingCell or a relaunch into the save (the holding cell; game-16)."""
     import yaml
     for name in ("world-sample",):
         j = yaml.safe_load((Path(__file__).resolve().parents[2] / "tests" / "journeys" / f"{name}.yaml").read_text())
         for st in j["steps"]:
-            lines = [a.get("console", "") for a in st.get("do", []) if isinstance(a, dict)]
+            lines = [a.get("console", "relaunch" if "relaunch" in a else "") for a in st.get("do", []) if isinstance(a, dict)]
             for i, line in enumerate(lines):
                 if line.startswith("cow ") or line.startswith("bat world-sample"):
-                    assert "coc ARG_HoldingCell" in lines[:i], (name, st["name"])
+                    assert {"coc ARG_HoldingCell", "relaunch"} & set(lines[:i]), (name, st["name"])

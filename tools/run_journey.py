@@ -353,15 +353,35 @@ class Runner:
         self.b.call("console", f"{caller}.moveto player {dx:.0f} {dy:.0f} 0")
         self.b.call("console", f"{caller}.setangle z {(h + 180) % 360:.0f}")
         want = _form_id(self.b.resolve_refs(ref))
-        seen, end = None, time.monotonic() + TALK_WAIT_S
+        seen, end, aimed = None, time.monotonic() + TALK_WAIT_S, 0.0
         while True:
             seen = (self.b.call("crosshair") or {}).get("ref")
             if seen and want is not None and _form_id(seen.get("id")) == want:
                 break
+            if time.monotonic() - aimed >= 1.0:  # an NPC under AI or a moveto that landed off the mark: aim again
+                self._aim(caller)
+                aimed = time.monotonic()
             if time.monotonic() >= end:
                 raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
+
+    def _aim(self, caller):
+        """The player turned to the ref's measured position: yaw by atan2 of the offset, pitch down to its chest
+        (AIM_CHEST_Z above its feet) from the eye (AIM_EYE_Z above the player's); game-16: a fixed heading and
+        a fixed 15-degree pitch missed an NPC that moved or stood off the moveto mark."""
+        try:
+            tx, ty, tz = (float(str(self.b.call("console", f"{caller}.GetPos {a}").get("output", "")).split(">>")[-1])
+                          for a in "XYZ")
+        except (ValueError, BridgeError):
+            return
+        pos = self.b.call("player")["pos"]
+        dx, dy = tx - float(pos["x"]), ty - float(pos["y"])
+        dz = (tz + AIM_CHEST_Z) - (float(pos["z"]) + AIM_EYE_Z)
+        yaw = math.degrees(math.atan2(dx, dy)) % 360
+        pitch = -math.degrees(math.atan2(dz, max(math.hypot(dx, dy), 1.0)))  # x: positive looks down
+        self.b.call("console", f"player.setangle z {yaw:.1f}")
+        self.b.call("console", f"player.setangle x {pitch:.1f}")
 
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""
@@ -585,6 +605,7 @@ def _form_id(text) -> int | None:
 
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
 STRIKE_UNITS = 80  # inside a sword's reach
+AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left

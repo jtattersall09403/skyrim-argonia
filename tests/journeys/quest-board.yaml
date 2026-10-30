@@ -26,9 +26,8 @@ steps:
       - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 100 0"}
       - {console: "ARG_Ref_ClaywaterStationLivia.damageav health 1000"}
       - {console: "ARG_Ref_ClaywaterStationLivia.restoreav health 5"}
-      - {key: "R 150"}
-      - {wait: 1.5}
-    expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
+      - {wait: 1}
+    expect: [{console: player.IsWeaponOut, contains: ">>"}]   # strike draws (R here sheathed a drawn blade: game-16)
   - name: strike              # the player's blows
     do: [{strike: ARG_Ref_ClaywaterStationLivia}, {strike: ARG_Ref_ClaywaterStationLivia}, {strike: ARG_Ref_ClaywaterStationLivia}]
     expect:

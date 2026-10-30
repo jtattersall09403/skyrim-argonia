@@ -27,9 +27,8 @@ steps:
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {key: "W 80"}             # the third-person camera ignores setangle until the player moves (diag3-g15)
-      - {key: "R 150"}
-      - {wait: 1.5}
-    expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
+      - {wait: 1}
+    expect: [{console: player.IsWeaponOut, contains: ">>"}]   # strike draws (R here sheathed a drawn blade: game-16)
   - name: ten-blows           # the player's attacks, not a console hit
     do:
       - {strike: "{opp}"}

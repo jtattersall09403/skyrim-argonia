@@ -249,10 +249,9 @@ steps:
   - no stretched or smeared ground texture
 - name: s02-arrive
   do:
-  - &id001
-    console: coc ARG_HoldingCell
-  - &id002
-    wait: 5
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-02-cliff
   - wait: 8
   expect:
@@ -302,8 +301,9 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s03-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-03-corner
   - wait: 8
   expect:
@@ -403,8 +403,9 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s04-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-04-rapids
   - wait: 8
   expect:
@@ -467,8 +468,9 @@ steps:
   - water colour reads fresh and green-brown, not blue
 - name: s05-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-05-waterfall
   - wait: 8
   expect:
@@ -501,8 +503,9 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s06-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-06-marsh
   - wait: 8
   expect:
@@ -537,8 +540,9 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s07-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-07-lake-coast
   - wait: 8
   expect:
@@ -570,8 +574,10 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s07-coast-travel
   do:
-  - *id001
-  - *id002
+  - &id001
+    console: coc ARG_HoldingCell
+  - &id002
+    wait: 5
   - console: cow ARG_Province 61 57
   - wait: 8
   expect:
@@ -614,8 +620,9 @@ steps:
   - no pine, spruce, birch, snow, frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s08-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-08-dense-vegetation
   - wait: 8
   expect:
@@ -702,8 +709,9 @@ steps:
   - no pop-in line across the view
 - name: s09-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-09-border
   - wait: 8
   expect:
@@ -794,8 +802,9 @@ steps:
     within: 1
 - name: s10-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-10-signpost
   - wait: 8
   expect:
@@ -845,8 +854,9 @@ steps:
   - the board points away from the post towards 16 deg (the way to Archon)
 - name: s11-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-11-weather-skip
   - wait: 8
   expect:
@@ -943,8 +953,9 @@ steps:
     within: 0
 - name: s12-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-12-navmesh
   - wait: 8
   expect:
@@ -1629,8 +1640,9 @@ steps:
   - the player stands on the walkable ground at the block's centre, nothing floating or sunk
 - name: s13-arrive
   do:
-  - *id001
-  - *id002
+  - relaunch:
+      save: true
+      scene: false
   - console: bat world-sample-13-distant-view
   - wait: 8
   expect:
