@@ -249,6 +249,7 @@
 {"editor_id":"ARG_Ref_ClaywaterStationCleat1","plugin":"Argonia.esm","form_id":2250,"record_type":"REFR","entity_key":"ref.claywater-station.cleat1"}
 {"editor_id":"ARG_Ref_ClaywaterStationCleat2","plugin":"Argonia.esm","form_id":2252,"record_type":"REFR","entity_key":"ref.claywater-station.cleat2"}
 {"editor_id":"ARG_Ref_ClaywaterStationCrocodile","plugin":"Argonia.esm","form_id":2253,"record_type":"ACHR","entity_key":"ref.claywater-station.crocodile"}
+{"editor_id":"ARG_Ref_ClaywaterStationCrocodileDen","plugin":"Argonia.esm","form_id":2416,"record_type":"REFR","entity_key":"ref.claywater-station.crocodile-den"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Bench","plugin":"Argonia.esm","form_id":2254,"record_type":"REFR","entity_key":"ref.claywater-station.d9-bench"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Chop","plugin":"Argonia.esm","form_id":2255,"record_type":"REFR","entity_key":"ref.claywater-station.d9-chop"}
 {"editor_id":"ARG_Ref_ClaywaterStationD9Hide","plugin":"Argonia.esm","form_id":2256,"record_type":"REFR","entity_key":"ref.claywater-station.d9-hide"}

@@ -197,19 +197,32 @@ int main() {
   auto d0 = die(fresh, at(9, 9), {});
   CHECK(!d0.had_wake_point && d0.outcome.wake == at(9, 9));
 
-  // The suspend save: quit and stream drop always (if the game can save); else once the interval has passed and
-  // never in combat.
+  // The suspend save: quit and stream drop always (if the game can save); else once the interval has passed, never
+  // in combat and never with a menu open. Opening a menu (the Journal, the Tween hub) is never a reason (game-8).
   const double iv = gen::rest::suspend_save_interval_s;
   CHECK(suspend_why("quit") == SuspendWhy::quit);
   CHECK(suspend_why("stream_drop") == SuspendWhy::stream_drop);
-  for (auto w : {"", "pause_hub", "interval", "stream drop", "QUIT"}) CHECK(!suspend_why(w));
-  CHECK(suspend_due(SuspendWhy::quit, 10, 9, true, true));
-  CHECK(suspend_due(SuspendWhy::stream_drop, 10, 9, false, true));
-  CHECK(!suspend_due(SuspendWhy::quit, 10, 9, false, false));
-  CHECK(suspend_due(SuspendWhy::pause_hub, 10, std::nullopt, false, true));
-  CHECK(!suspend_due(SuspendWhy::pause_hub, 10, 9, false, true));
-  CHECK(suspend_due(SuspendWhy::interval, 9 + iv, 9, false, true));
-  CHECK(!suspend_due(SuspendWhy::interval, 9 + iv, 9, true, true));
+  for (auto w : {"", "pause_hub", "pause hub", "interval", "stream drop", "QUIT"}) CHECK(!suspend_why(w));
+  CHECK(suspend_due(SuspendWhy::quit, 10, 9, true, true, true));
+  CHECK(suspend_due(SuspendWhy::stream_drop, 10, 9, false, true, true));
+  CHECK(!suspend_due(SuspendWhy::quit, 10, 9, false, false, false));
+  CHECK(suspend_due(SuspendWhy::interval, 9 + iv, 9, false, true, false));
+  CHECK(suspend_due(SuspendWhy::interval, 10, std::nullopt, false, true, false));
+  CHECK(!suspend_due(SuspendWhy::interval, 9 + iv, 9, true, true, false));
+  CHECK(!suspend_due(SuspendWhy::interval, 9 + iv, 9, false, true, true));     // a menu is open: never
+  CHECK(!suspend_due(SuspendWhy::interval, 10, std::nullopt, false, true, true));
+  {
+    QuitWatch q;
+    CHECK(!q.on_menu(true, false));   // the Journal opens: nothing
+    CHECK(!q.on_menu(true, false));   // the Tween hub opens: nothing
+    CHECK(!q.on_menu(false, false));  // a menu closes with no quit asked: nothing
+    CHECK(!q.on_menu(true, false));   // the quit confirmation opens: nothing yet
+    CHECK(!q.on_menu(true, true));    // a menu opening never saves, even mid-quit
+    CHECK(q.on_menu(false, true) == SuspendWhy::quit);  // Yes: the confirmation closes with the flag set
+    CHECK(!q.on_menu(false, true));   // the Journal closes next: once per quit
+    CHECK(!q.on_menu(true, false));   // a load clears the flag and the latch
+    CHECK(q.on_menu(false, true) == SuspendWhy::quit);  // the next quit saves again
+  }
   CHECK(kRestSave != kSuspendSave);
 
   // The router: the two 1.5 hooks once, the LevelUp Menu blocked with its handler run, playerDeath handled.

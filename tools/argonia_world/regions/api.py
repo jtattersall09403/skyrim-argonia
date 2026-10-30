@@ -305,7 +305,10 @@ def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
                  "value": c["timescale"]})
     if wrld is not None:
         recs += region_records(alloc, world, wrld["formKey"])
-        over = dict(wrld, override=True, climate=climate_form_key(alloc))
+        from tools.chart import fwmf  # the world map is FWMF's flat chart (1.2 §e): its camera and map offset
+        cam_min, cam_max, pitch = fwmf.CAMERA
+        over = dict(wrld, override=True, climate=climate_form_key(alloc), mapOffset=list(fwmf.OFFSET),
+                    map=dict(wrld["map"], cameraMin=cam_min, cameraMax=cam_max, cameraPitch=pitch))
         over.pop("layer", None)
         if resolver is not None:
             from tools.argonia_world.routes import infra

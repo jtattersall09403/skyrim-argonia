@@ -634,9 +634,9 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/29932?tab=files&file_id=793801",
     "version": "1.9.990 (archive sha256 3b9eb3b3b8c2..., data/dependencies.json row flat-world-map)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 2.10: flat world map (FOMOD Lite)",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.2 §e: the world map, FWMF's paper quad showing our chart's sketch layer through the derived overlay argonia-map (tools/chart/fwmf.py: a level-32 block derived from FWMF's Tamriel block, our DDS, the Flat Map Markers whitelist; made on the player's machine, never shipped)",
     "linked_or_forked_by": "none: depended on as the player’s own download",
-    "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+    "notes": "permission: No terms stated on the page; the owner confirmed the permissions on 2026-10-30. A player-downloaded dependency; our derived block is made from the player's own copy at install and never shipped. AI clause: not stated; covered by the owner's confirmation."
   },
   {
     "name": "No Google Maps Skyrim (Nexus 147105)",

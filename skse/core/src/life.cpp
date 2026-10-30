@@ -283,7 +283,6 @@ const char* to_string(SuspendWhy w) {
   switch (w) {
     case SuspendWhy::quit: return "quit";
     case SuspendWhy::stream_drop: return "stream drop";
-    case SuspendWhy::pause_hub: return "pause hub";
     case SuspendWhy::interval: return "interval";
   }
   return "?";
@@ -295,11 +294,22 @@ std::optional<SuspendWhy> suspend_why(std::string_view wire) {
   return std::nullopt;
 }
 
-bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now) {
+bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now,
+                 bool menu_open) {
   if (!can_save_now) return false;
   if (why == SuspendWhy::quit || why == SuspendWhy::stream_drop) return true;
-  if (in_combat) return false;
+  if (in_combat || menu_open) return false;
   return !last_save_s || now_s - *last_save_s >= gen::rest::suspend_save_interval_s;
+}
+
+std::optional<SuspendWhy> QuitWatch::on_menu(bool opening, bool quit_requested) {
+  if (!quit_requested) {
+    saved_ = false;
+    return std::nullopt;
+  }
+  if (opening || saved_) return std::nullopt;
+  saved_ = true;
+  return SuspendWhy::quit;
 }
 
 std::vector<std::string> install(router::Router& r, router::Handler on_level_up, router::Handler on_death) {

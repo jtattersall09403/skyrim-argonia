@@ -148,10 +148,11 @@ void SavingBlocked(bool blocked) {
 
 // Our own save: saving is opened for the one call and closed again (whether the chargen flag also blocks
 // BGSSaveLoadManager::Save is S17a's question; this works either way).
-void WriteSave(std::string_view slot, std::string_view why) {
-  SKSE::GetTaskInterface()->AddTask([slot = std::string(slot), why = std::string(why)] {
+// Writes a save: `now` on the main thread (a menu event: the quit, before the engine resets), else as a task.
+void WriteSave(std::string_view slot, std::string_view why, bool now = false) {
+  auto write = [slot = std::string(slot), why = std::string(why)] {
     auto* mgr = RE::BGSSaveLoadManager::GetSingleton();
-    if (!mgr) return;
+    if (!mgr || !Player()) return;
     SavingBlocked(false);
     mgr->Save(slot.c_str());
     SavingBlocked(true);
@@ -159,7 +160,22 @@ void WriteSave(std::string_view slot, std::string_view why) {
     std::lock_guard l(c.lock);
     c.last_save_s = Seconds();
     SKSE::log::info("saves: {} written ({})", slot, why);
-  });
+  };
+  if (now) write();
+  else SKSE::GetTaskInterface()->AddTask(std::move(write));
+}
+
+// A menu that pauses the game is open (the Journal, the Tween hub, a crafting or lock menu): no interval save then,
+// because a save's spinner closes the player's menu (game-8).
+bool MenuOpen() {
+  auto* ui = RE::UI::GetSingleton();
+  return ui && ui->GameIsPaused();
+}
+
+// The engine's quit (to the desktop) or reset (to the main menu) flag: set when the player confirms Quit.
+bool QuitRequested() {
+  auto* m = RE::Main::GetSingleton();
+  return m && (m->GetRuntimeData().quitGame || m->GetRuntimeData().resetGame);
 }
 
 bool CanSaveNow() {
@@ -350,15 +366,21 @@ class BleedoutSink final : public RE::BSTEventSink<RE::TESEnterBleedoutEvent> {
   }
 };
 
-// The menus 1.5 watches: the pause hub (the suspend save), the Lockpicking Menu (an unlock is the player's).
+// The menus 1.5 watches: the quit (the suspend save, on the first menu close once the player confirmed Quit; never
+// on a menu opening), the Lockpicking Menu (an unlock is the player's).
 class LifeMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
     if (!e) return RE::BSEventNotifyControl::kContinue;
     const std::string_view menu = e->menuName.c_str();
     if (menu == RE::LockpickingMenu::MENU_NAME) Get().lockpicking = e->opening;
-    if (e->opening && (menu == RE::TweenMenu::MENU_NAME || menu == RE::JournalMenu::MENU_NAME))
-      SuspendCheck(ac::life::SuspendWhy::pause_hub);
+    std::optional<ac::life::SuspendWhy> why;
+    {
+      auto& c = Get();
+      std::lock_guard l(c.lock);
+      why = c.quit_watch.on_menu(e->opening, QuitRequested());
+    }
+    if (why) SuspendCheck(*why, true);
     return RE::BSEventNotifyControl::kContinue;
   }
 };
@@ -396,16 +418,17 @@ void MirrorPools() {
   avo->SetBaseActorValue(RE::ActorValue::kMagicka, static_cast<float>(d->magicka));
 }
 
-bool SuspendCheck(ac::life::SuspendWhy why) {
+bool SuspendCheck(ac::life::SuspendWhy why, bool now) {
   auto& c = Get();
   bool due;
   {
     std::lock_guard l(c.lock);
     auto* p = Player();
-    due = ac::life::suspend_due(why, Seconds(), c.last_save_s, p && p->IsInCombat(), CanSaveNow());
+    due = ac::life::suspend_due(why, Seconds(), c.last_save_s, p && p->IsInCombat(), CanSaveNow(),
+                                    MenuOpen());
     if (due) c.last_save_s = Seconds();  // one at a time: the task sets it again when written
   }
-  if (due) WriteSave(ac::life::kSuspendSave, ac::life::to_string(why));
+  if (due) WriteSave(ac::life::kSuspendSave, ac::life::to_string(why), now);
   return due;
 }
 
@@ -577,7 +600,7 @@ void LifeDataLoaded() {
   if (auto* ui = RE::UI::GetSingleton()) ui->AddEventSink<RE::MenuOpenCloseEvent>(&menus);
   for (const auto& line : ac::life::install(c.router, OnLevelUpSurface, OnDeathSurface)) c.router_log.push_back(line);
   c.router_log.push_back("sinks: TESHitEvent, TESDeathEvent (kills), TESSpellCastEvent, TESLockChangedEvent, "
-                         "TESEnterBleedoutEvent, MenuOpenCloseEvent (pause hub, lockpicking)");
+                         "TESEnterBleedoutEvent, MenuOpenCloseEvent (quit, lockpicking)");
   SKSE::log::info("grow: {} vanilla skills' gain off, {} engine save points off, roster {} actors", zeroed, off,
                   c.roster.size());
 }

@@ -14,7 +14,8 @@ as the records of Argonia.esm, one layer per place (`place:<slug>`).
   takes its stats, attacks, AI data, spells and inventory), the speaker keyword for people, Unique, no Respawn
   flag (a killed one stays dead), and one package per `npc_day_block` row: `work:N` sandboxes around the reference
   realising the person's N-th work socket (else their post), `home` sleeps at their bed (the reference realising
-  their home socket that they own). A creature sandboxes around its den all day: its territory is the radius.
+  their home socket that they own). A creature sandboxes around its den all day (the marker it owns, else where it
+  stands): its territory is the radius.
 - **Things.** The LF83 activators (ACTI) and the quest items (MISC from `item` rows, the ledger's BOOK from its
   document) that the place's references place; `thing_id` rows fill quest aliases (quest_gen.py reads `placed`).
 
@@ -208,8 +209,8 @@ def _people(ctx, world, refs) -> None:
                                       p.sandbox_radius_m, start, span)
             ctx.records[pk["edid"]] = pk
             pkgs.append(pk["formKey"])
-        if creature:  # its den is the reference realising its home socket (LF83: the cut), else where it stands
-            den = next((r for r in refs if r.thing_id == "thing.lf83.clay-bend"), actor) if p.npc_id.endswith("crocodile") else actor
+        if creature:  # its den is the marker it owns (Claywater's crocodile: on the bank by LF83's pool), else where it stands
+            den = next((r for r in refs if r.owner_npc_id == p.npc_id and not r.npc_id), actor)
             pk = packages.sandbox(ctx.alloc, f"{edid}_Den", f"{p.npc_id}#den", ref_form_key(ctx.alloc, den), p.sandbox_radius_m, 0, 24)
             ctx.records[pk["edid"]] = pk
             pkgs.append(pk["formKey"])

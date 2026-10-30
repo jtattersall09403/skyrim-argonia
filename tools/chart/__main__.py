@@ -4,6 +4,8 @@
     python -m tools.chart twice [--size MASTER]                     two renders in two processes: the same hashes
     python -m tools.chart sample                                    the synthetic sample's hash (the gate's test)
     python -m tools.chart fetch-font                                Pelagiad (OFL) into $ARGONIA_PRIVATE/fonts
+    python -m tools.chart fwmf --fwmf <mods>/flat-world-map --out <mods>/argonia-map [--chart out/chart] [--size N]
+                                                                    the world map overlay (fwmf.py; installer step)
 """
 from __future__ import annotations
 
@@ -145,6 +147,19 @@ def cmd_sample(_a) -> int:
     return 0
 
 
+def cmd_fwmf(a) -> int:
+    from tools.chart import fwmf
+
+    out = Path(a.out)
+    rep = fwmf.build(Path(a.fwmf), Path(a.chart), out, a.size)
+    bad = fwmf.verify(out)
+    b = rep["block"]
+    print(f"fwmf: {len(rep['files'])} files -> {out}; paper centre {b['paper']['centre'][:2]}, half "
+          f"{b['paper']['half_units']:.0f} u, {len(b['hidden_shapes'])} Tamriel shapes hidden; chart "
+          f"{rep['texture']['width']}px {rep['texture']['fourcc']}; verify {'FAIL ' + '; '.join(bad) if bad else 'ok'}")
+    return 1 if bad else 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="tools.chart")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -155,11 +170,16 @@ def main(argv: list[str] | None = None) -> int:
     t.add_argument("--size", type=int, default=render.MASTER)
     sub.add_parser("sample")
     sub.add_parser("fetch-font")
+    w = sub.add_parser("fwmf")
+    w.add_argument("--fwmf", required=True, help="the player's Flat World Map Framework mod folder (or its unpacked archive)")
+    w.add_argument("--chart", default=str(OUT), help="the rendered chart (index.json, sketch-<size>.png)")
+    w.add_argument("--out", required=True, help="the overlay mod folder (argonia-map)")
+    w.add_argument("--size", type=int, default=render.MASTER, help="the map texture's side, pixels")
     a = ap.parse_args(argv)
     if a.cmd == "fetch-font":
         print(render.fetch_font())
         return 0
-    return {"render": cmd_render, "twice": cmd_twice, "sample": cmd_sample}[a.cmd](a)
+    return {"render": cmd_render, "twice": cmd_twice, "sample": cmd_sample, "fwmf": cmd_fwmf}[a.cmd](a)
 
 
 if __name__ == "__main__":

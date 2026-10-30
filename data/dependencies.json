@@ -2097,23 +2097,22 @@
    "version": "1.9.990",
    "archive": "Flat World Map Framework FOMOD Lite 29932 1.9.990 2026-08-23T10-16Z xDLPwGaj5.zip",
    "size_kb": 114837,
-   "why": "flat world map (FOMOD Lite)",
-   "chunk": "2.12",
+   "why": "flat world map (FOMOD Lite): ARG_Province's map is our chart's sketch layer on its paper quad (1.2 §e; the overlay argonia-map, tools/chart/fwmf.py, made at install)",
+   "chunk": "1.2",
    "required": true,
    "profile": "play",
    "sha256": "3b9eb3b3b8c2e8ce5fa15fccef57a06e644c85b27a35538cd2821a9520bbacf3",
    "licence": "none stated",
-   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
-   "ai_clause": "not stated: ask the author",
-   "permission_ask": true,
-   "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'",
+   "permission_summary": "No terms stated on the page; the owner confirmed the permissions on 2026-10-30. We depend on the player's own download and, at install on the player's machine, derive our level-32 map block from its Tamriel block (never shipped).",
+   "ai_clause": "not stated; covered by the owner's confirmation 2026-10-30",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description read; reuse-audit.md line 255: permissions unknown; bundles a GPLv3 add-on 'with author's permission'; owner: permissions done (2026-10-30, lane fixes-1 brief)",
    "plugins": [
     "FWMF for Fantasy Paper Maps.esp"
    ],
    "runtime": "loads on 1.7.104.0 (FlatMapMarkersSSE.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download",
-   "from": "2.12"
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "no-google-maps",

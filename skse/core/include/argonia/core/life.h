@@ -150,10 +150,10 @@ std::string pile_name(double vastei);
 // --- Saving: rest is the only save (2.8 §c) -------------------------------------------------------------------
 inline constexpr std::string_view kRestSave = "ArgoniaRest";        // one slot, overwritten at each rest
 inline constexpr std::string_view kSuspendSave = "ArgoniaSuspend";  // the hidden suspend save
-enum class SuspendWhy { quit, stream_drop, pause_hub, interval };
+enum class SuspendWhy { quit, stream_drop, interval };
 const char* to_string(SuspendWhy w);
 // A caller's reason by its wire name ("quit", "stream_drop"): only the two outside callers' reasons are accepted
-// (the pause hub and the interval are ArgoniaCore's own), so an unknown word never forces a save in combat.
+// (the interval is ArgoniaCore's own), so an unknown word never forces a save in combat.
 std::optional<SuspendWhy> suspend_why(std::string_view wire);
 // The dev bridge's call (ArgoniaBridge `core-suspend <why>`): an SKSE message to ArgoniaCore whose data is this
 // struct; ArgoniaCore's listener answers in `written` before the dispatch returns.
@@ -162,10 +162,23 @@ struct BridgeSuspend {
   char why[32] = {};
   bool written = false;
 };
-// When the suspend save is written: on a quit or a stream drop always; on opening the pause hub (where quit lives)
-// or at any other event once the interval has passed since the last save of either kind, never in combat; never
-// when the game cannot save now (a menu, a load). `now_s` and `last_save_s` are real seconds.
-bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now);
+// When the suspend save is written: on a quit or a stream drop always; at any other event once the interval has
+// passed since the last save of either kind, never in combat and never while a menu is open (a save's spinner
+// closes the player's menu: game-8's Journal lag); never when the game cannot save now (a load). Opening a menu is
+// never a reason. `now_s` and `last_save_s` are real seconds.
+bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now,
+                 bool menu_open);
+// The actual quit, from the menu events: the player confirmed Quit (to the main menu or the desktop) in the pause
+// menu, so the engine's quit or reset flag is set, and a menu (the confirmation, then the Journal) closes. Returns
+// `quit` once per quit, on the first close with the flag set; a menu opening never returns a reason; the latch
+// clears when the flag does (a load or a new game).
+class QuitWatch {
+ public:
+  std::optional<SuspendWhy> on_menu(bool opening, bool quit_requested);
+
+ private:
+  bool saved_ = false;
+};
 
 // --- The router's 1.5 hooks (1.1 §d) --------------------------------------------------------------------------
 // Installs progressionOff and deathIntercept, registers `on_level_up` for the LevelUp Menu (blocked; a sighting is

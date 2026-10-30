@@ -30,8 +30,8 @@ Data:
     Location:
       Target:
         MutagenObjectType: LocationTarget
-        Link: 000874:Argonia.esm
-      Radius: 1401
+        Link: 000970:Argonia.esm
+      Radius: 175
 - Key: 1
   Value:
     MutagenObjectType: PackageDataBool

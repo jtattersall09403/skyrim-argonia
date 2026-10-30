@@ -1,5 +1,5 @@
 # Draft (1.5 build): owed L4, the hidden suspend save (2.8 §c): a quit or a stream drop writes ArgoniaSuspend, and the
-# pause hub and the interval write it while the game runs, never in combat.
+# interval writes it while the game runs, never in combat and never with a menu open; opening a menu never does.
 id: suspend-save
 status: draft, owed L4
 scene: >-
@@ -8,10 +8,10 @@ step0:
   - rest at the camp (ArgoniaRest written); note ArgoniaSuspend.ess's time if present
 steps:
   - do: >-
-      open the pause hub (Tab: the TweenMenu)
+      open the pause hub (Tab: the TweenMenu), then the Journal (J), each for 5 s
     expect: >-
-      within 5 s ArgoniaSuspend.ess is written ("saves: ArgoniaSuspend written (pause hub)"), unless a save of
-      either kind was written in the last 300 s (then none, and the log says nothing)
+      no ArgoniaSuspend.ess is written and the log has no "saves: ArgoniaSuspend written"; each menu stays open
+      until closed (game-8's lag: the save's spinner closed the Journal)
   - do: >-
       the bridge's `core-suspend stream_drop` (Bridge.suspend_save(), the stream client's hand on a drop; an SKSE
       message to ArgoniaCore, which runs SuspendSave("stream_drop"))
@@ -22,9 +22,9 @@ steps:
     expect: >-
       the stream-drop save is written even in combat; no interval save is written in combat
   - do: >-
-      walk 50 m from the camp, SuspendSave("quit"), quit the game, relaunch, choose Continue
+      walk 50 m from the camp, quit from the Journal's System tab (Quit, confirm Yes), relaunch, choose Continue
     expect: >-
-      the game loads ArgoniaSuspend (the newest), the player stands 50 m from the camp, and WakePoint() is
+      the log has "saves: ArgoniaSuspend written (quit)" as the confirmation closes; the game loads ArgoniaSuspend (the newest), the player stands 50 m from the camp, and WakePoint() is
       still the camp; dying now wakes at the camp, not at the suspend point
 pass: >-
   every expectation above

@@ -9,9 +9,10 @@ LandDefaults:
 MapData:
   NorthwestCellCoords: -62, 63
   SoutheastCellCoords: 63, -62
-  CameraMinHeight: 50000
-  CameraMaxHeight: 80000
-  CameraInitialPitch: 50
+  CameraMinHeight: 269488
+  CameraMaxHeight: 435000
+  CameraInitialPitch: 90
+WorldMapCellOffset: 0, 0, 184072.97
 ObjectBoundsMin: -130, -130
 ObjectBoundsMax: 131, 131
 TopCell:
@@ -156,7 +157,7 @@ TopCell:
     - 0x400
     Base: 000876:Argonia.esm
     Placement:
-      Position: -234309.14, 47823.27, 2486.88
+      Position: -234169.1, 47718.23, 2369.11
     MajorFlags:
     - Persistent
   - MutagenObjectType: PlacedNpc
@@ -274,5 +275,15 @@ TopCell:
     Owner: 000886:Argonia.esm
     Placement:
       Position: -231234.9, 47830.27, 2572.23
+  - MutagenObjectType: PlacedObject
+    FormKey: 000970:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationCrocodileDen
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Owner: 000876:Argonia.esm
+    Placement:
+      Position: -234169.1, 47753.24, 2354.41
   MajorFlags:
   - Persistent

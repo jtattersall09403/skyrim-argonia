@@ -85,6 +85,7 @@ def save_manifest(doc):
 
 
 THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
+MAP = "argonia-map"  # 1.2 §e's derived world map overlay over FWMF (tools/chart/fwmf.py, installer/steps/world-map.md)
 LOD = "Argonia LOD (generated)"  # 2.W4 §c: filled on the machine by lod.ps1 (decision 0014 §4), never staged or pushed
 CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
 
@@ -581,7 +582,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", THEME, LOD):
+        if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, LOD):
             shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
@@ -624,6 +625,13 @@ def cmd_stage(a):
         print(f"staged {THEME} from {theme}")
     names.append(LOD)  # filled by lod.ps1 on the machine; it overrides nothing of the mods
     (mods / LOD).mkdir(exist_ok=True)
+    chart = REPO / "out" / "argonia_map" / MAP  # derived on the build VM (installer/steps/world-map.md), never committed
+    if chart.exists():  # above the LOD and flat-world-map: its level-32 block 0,0 is the map's paper
+        shutil.rmtree(mods / MAP, ignore_errors=True)
+        shutil.copytree(chart, mods / MAP)
+        names.append(MAP)
+        restaged.add(MAP)
+        print(f"staged {MAP} from {chart}")
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE

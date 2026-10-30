@@ -43,6 +43,7 @@ struct Core {
   std::string rest_notice;                                // why the last rest was refused
   bool dying = false;                                     // the death intercept is running
   bool lockpicking = false;                               // the Lockpicking Menu is open
+  ac::life::QuitWatch quit_watch;                         // the actual quit, from the menu events (once per quit)
 };
 Core& Get();
 
@@ -94,8 +95,8 @@ void LifeDataLoaded();
 void LifeGameReady();
 void MirrorSkills();
 void MirrorPools();
-// True when a suspend save is due and queued.
-bool SuspendCheck(ac::life::SuspendWhy why);
+// True when a suspend save is due and written (now, on the main thread) or queued (a task).
+bool SuspendCheck(ac::life::SuspendWhy why, bool now = false);
 bool RestAt(RE::TESObjectREFR* spot);
 std::string SittingIntent(std::string_view json);
 std::optional<double> TakeVastei(RE::TESObjectREFR* pile);

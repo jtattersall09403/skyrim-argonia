@@ -125,6 +125,11 @@ static class LandWorld
             CameraMaxHeight = m.GetProperty("cameraMax").GetSingle(),
             CameraInitialPitch = m.GetProperty("cameraPitch").GetSingle(),
         };
+        if (r.TryGetProperty("mapOffset", out var mo))  // ONAM: scale, cell x, y, z offset (Argonia.esm's override: FWMF's)
+        {
+            ws.WorldMapOffsetScale = mo[0].GetSingle();
+            ws.WorldMapCellOffset = new P3Float(mo[1].GetSingle(), mo[2].GetSingle(), mo[3].GetSingle());
+        }
         var top = r.GetProperty("topCell");
         ws.TopCell = new Cell(FK(S(top, "formKey")), Rel)
         {
