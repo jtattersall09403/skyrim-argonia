@@ -1,0 +1,12 @@
+FormKey: 00085F:Argonia.esm
+EditorID: ARG_CampSpot
+Name:
+  TargetLanguage: English
+  Value: Camp
+Model:
+  File: Furniture\Bedroll\BedrollGround.nif
+Keywords:
+- 000859:Argonia.esm
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Rest

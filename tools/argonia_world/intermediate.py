@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GLOB", "MUSC", "STAT", "LTEX", "CLAS", "SPEL", "LVLI", "KYWD", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "ALCH", "PERK", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "SPEL", "LVLI", "KYWD", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "ALCH", "ACTI", "PERK", "ECZN", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -202,6 +202,10 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     layers.append(items_records.layer(alloc, alloc.world))
     from tools.argonia_world import hooks_records  # native map P3: the dialogue intercept perk
     layers.append(hooks_records.layer(alloc))
+    from tools.argonia_world import combat_records  # 1.6: the combat wiring's carrier perk and archetype
+    layers.append(combat_records.layer(alloc, alloc.world))
+    from tools.argonia_world import life_records  # native map P3, P4: rest spot, Vastei pile, game settings
+    layers.append(life_records.layer(alloc, alloc.world, scan))
     from tools.argonia_world import quest_gen  # 1.4: the quests in the game, from their records
     layers += quest_gen.layers(alloc, alloc.world)
     from tools.argonia_world.terrain import grass  # 2.W1: the painted ground grows only grass-source GRAS (0006)

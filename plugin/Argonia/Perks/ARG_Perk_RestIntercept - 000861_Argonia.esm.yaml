@@ -1,0 +1,56 @@
+FormKey: 000861:Argonia.esm
+EditorID: ARG_Perk_RestIntercept
+VirtualMachineAdapter:
+  ScriptFragments:
+    FileName: ARG_PRKF_RestIntercept
+    Fragments:
+    - Unknown2: 1
+      ScriptName: ARG_PRKF_RestIntercept
+      FragmentName: Fragment_0
+    - FragmentIndex: 1
+      Unknown2: 1
+      ScriptName: ARG_PRKF_RestIntercept
+      FragmentName: Fragment_1
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 000859:Argonia.esm
+      ComparisonValue: 1
+  ButtonLabel:
+    TargetLanguage: English
+    Value: Rest
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+  EntryPoint: Activate
+  PerkConditionTabCount: 2
+- MutagenObjectType: PerkEntryPointAddActivateChoice
+  Conditions:
+  - RunOnTabIndex: 1
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: HasKeywordConditionData
+        Keyword: 00085A:Argonia.esm
+      ComparisonValue: 1
+  ButtonLabel:
+    TargetLanguage: English
+    Value: Take Vastei
+  Flags:
+    Flags:
+    - RunImmediately
+    - ReplaceDefault
+    FragmentIndex: 1
+  EntryPoint: Activate
+  PerkConditionTabCount: 2

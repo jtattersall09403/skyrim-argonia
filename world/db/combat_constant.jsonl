@@ -1,0 +1,3 @@
+{"id":"damage_unit","value":24.0,"provenance":"SHEET: listedDamage = motion x damageScale x 24 (76 §121.1)"}
+{"id":"race_start_health","value":50.0,"provenance":"GUESS: Skyrim's playable races start at 50 health; read in game by fight-archetype"}
+{"id":"reference_blow","value":24.0,"provenance":"SHEET: the reference 24-damage blow at which AR 50 mitigates 25 % (76 §121.4)"}

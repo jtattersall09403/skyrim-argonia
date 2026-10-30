@@ -500,9 +500,28 @@ def set_ini(text, section, key, value):
     return "\n".join(lines) + "\n"
 
 
+_COMBAT = None
+
+
+def combat_settings(mod_id):
+    """The world database's combat settings for one mod (`combat_mod_setting`, the 1.6 wiring: decision 0030 makes
+    the db the home of every tuned value; bindings and install toggles stay in the manifest's `ini`), grouped as the
+    manifest's ini edits are."""
+    global _COMBAT
+    if _COMBAT is None:
+        sys.path.insert(0, str(REPO))
+        from tools.argonia_world import db
+        _COMBAT = {}
+        for r in db.open().rows("combat_mod_setting"):
+            _COMBAT.setdefault(r.mod, {}).setdefault((r.file, r.section), {})[r.key] = r.value
+    return [{"file": f, "section": sec, "set": kv} for (f, sec), kv in sorted(_COMBAT.get(mod_id, {}).items(),
+                                                                                key=lambda x: (x[0][0], x[0][1] or ""))]
+
+
 def apply_ini(m, data):
-    """The row's settings: {"file": glob under the mod, "section": name or null, "set": {key: value}}."""
-    for edit in m.get("ini", []):
+    """The row's settings: {"file": glob under the mod, "section": name or null, "set": {key: value}}, the manifest's
+    then the world database's combat settings for the row."""
+    for edit in m.get("ini", []) + combat_settings(m["id"]):
         hits = [f for f in data.rglob("*") if f.is_file()
                 and fnmatch.fnmatch(str(f.relative_to(data)).replace("\\", "/").lower(), edit["file"].lower())]
         if not hits:
@@ -554,6 +573,8 @@ def cmd_stage(a):
             shutil.rmtree(d)
     for m in rows:
         laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
+        if combat_settings(m["id"]):  # a changed db setting re-stages its row (and only rows that have some)
+            laid["combat_settings"] = combat_settings(m["id"])
         data, key = mods / m["id"], hashlib.sha256(json.dumps(laid, sort_keys=True).encode()).hexdigest()
         kf = keys / f"{m['id']}.json"
         laid_ok = (tools / m["id"]).exists() if m.get("install") == "tool" else (data.exists() or m.get("install"))

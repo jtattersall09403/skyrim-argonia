@@ -1478,16 +1478,6 @@
     "dsc-b2"
    ],
    "sha256": "d2432a29cb116c083ab30ef7a29b0704242a9b5a9b3f243684e159ea2d772a49",
-   "ini": [
-    {
-     "file": "*EldenParry.ini",
-     "section": null,
-     "set": {
-      "fParryWindow_Start": "0.02",
-      "fParryWindow_End": "0.2"
-     }
-    }
-   ],
    "licence": "none for D7ry original (github D7ry/EldenParry); GPL-3.0 only on the doodlum fork",
    "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. Using the GPL-3.0 doodlum fork would need no asking.",
    "ai_clause": "not stated: ask the author",

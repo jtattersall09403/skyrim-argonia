@@ -10,6 +10,7 @@ Keywords:
 BasicStats:
   Value: 45
   Weight: 3.2
+  Damage: 24
 Data:
   AnimationType: OneHandSword
   Unused: 0x000000

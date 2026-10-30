@@ -1,0 +1,30 @@
+{"id":"w.archery.damage","behaviour":"archery","quantity":"bow position term, no Strength","route":"perk_entry","writer":"runtime","source":"sheet"}
+{"id":"w.archery.draw","behaviour":"archery","quantity":"draw time and draw stamina","route":"none","writer":"mod","source":"dsr"}
+{"id":"w.armour.mitigation","behaviour":"armour","quantity":"the player's mitigation AR/(AR + 135.6 + 0.6 x blow) at the reference blow","route":"perk_entry","writer":"runtime","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.armour.vanilla","behaviour":"armour","quantity":"Skyrim's own armour rating on our items, held at 0","route":"record","writer":"generated","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.damage.critical","behaviour":"damage","quantity":"riposte and backstab multiplier","route":"mod_setting","writer":"mod","source":"dsr","journey":"fight-archetype"}
+{"id":"w.damage.difficulty","behaviour":"damage","quantity":"Skyrim's difficulty damage multipliers, held at 1","route":"gmst","writer":"generated","source":"owner","journey":"fight-damage-builds"}
+{"id":"w.damage.left-hand","behaviour":"damage","quantity":"a left-hand weapon blow's position and Strength","route":"none","writer":"runtime","source":"sheet"}
+{"id":"w.damage.listed","behaviour":"damage","quantity":"listed weapon damage (WEAP DATA damage)","route":"record","writer":"generated","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.damage.position-strength","behaviour":"damage","quantity":"where in the range the blow lands x the Strength term","route":"perk_entry","writer":"runtime","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.damage.vanilla-skill","behaviour":"damage","quantity":"Skyrim's own weapon-skill damage term, neutralised","route":"actor_value","writer":"runtime","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.enemy.armour","behaviour":"enemy","quantity":"an archetype's mitigation of the reference blow from its band's AR","route":"perk_entry","writer":"generated","source":"sheet","journey":"fight-archetype"}
+{"id":"w.enemy.damage","behaviour":"enemy","quantity":"an archetype's light hit from its band and position","route":"perk_entry","writer":"generated","source":"sheet","journey":"fight-archetype"}
+{"id":"w.enemy.health","behaviour":"enemy","quantity":"an archetype's health from its band and position","route":"record","writer":"generated","source":"sheet","journey":"fight-archetype"}
+{"id":"w.enemy.level","behaviour":"enemy","quantity":"an archetype's fixed level and its encounter zone (min = max)","route":"record","writer":"generated","source":"sheet","journey":"fight-archetype"}
+{"id":"w.guard.stability","behaviour":"guard","quantity":"share of a blocked blow stopped (Block band, capped, plus the stack's blockStability)","route":"perk_entry","writer":"runtime","source":"sheet","journey":"fight-archetype"}
+{"id":"w.guard.stamina","behaviour":"guard","quantity":"guard stamina multiplier (Block band)","route":"runtime_hook","writer":"runtime","source":"sheet"}
+{"id":"w.iframes.duration","behaviour":"iframes","quantity":"roll invulnerability window","route":"mod_setting","writer":"data","source":"dsr","journey":"fight-roll-burden"}
+{"id":"w.iframes.tier","behaviour":"iframes","quantity":"i-frames per burden tier","route":"runtime_hook","writer":"runtime","source":"dsr","journey":"fight-roll-burden"}
+{"id":"w.lockon.distance","behaviour":"lockon","quantity":"lock-on range","route":"mod_setting","writer":"data","source":"dsr","journey":"fight-lock-on"}
+{"id":"w.parry.window","behaviour":"parry","quantity":"parry window start and end in the bash clip","route":"mod_setting","writer":"data","source":"dsr","journey":"fight-archetype"}
+{"id":"w.poise.stagger","behaviour":"poise","quantity":"poise pool and stagger (Modern Stagger Lock in A, DSC's pool in B and B2)","route":"perk_entry","writer":"runtime","source":"dsr"}
+{"id":"w.power.heavy","behaviour":"power","quantity":"heavy blow over light blow (the class's motion values)","route":"none","writer":"runtime","source":"dsr"}
+{"id":"w.roll.distance","behaviour":"roll","quantity":"roll distance and recovery per burden tier","route":"runtime_hook","writer":"runtime","source":"dsr","journey":"fight-roll-burden"}
+{"id":"w.roll.tier","behaviour":"roll","quantity":"burden tier -> roll allowed (none when overloaded)","route":"runtime_hook","writer":"runtime","source":"sheet","journey":"fight-roll-burden"}
+{"id":"w.stamina.actions","behaviour":"stamina","quantity":"light attack, block and stagger stamina costs","route":"mod_setting","writer":"mod","source":"dsr"}
+{"id":"w.stamina.max","behaviour":"stamina","quantity":"maximum stamina","route":"actor_value","writer":"runtime","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.stamina.power","behaviour":"stamina","quantity":"power attack stamina x skill band x burden x soft requirement","route":"perk_entry","writer":"runtime","source":"sheet","journey":"fight-damage-builds"}
+{"id":"w.stamina.regen","behaviour":"stamina","quantity":"stamina regeneration rate, in and out of combat","route":"gmst","writer":"generated","source":"dsr","journey":"fight-roll-burden"}
+{"id":"w.stamina.regen-delay","behaviour":"stamina","quantity":"delay before stamina regenerates after it is spent","route":"gmst","writer":"generated","source":"dsr","journey":"fight-roll-burden"}
+{"id":"w.stamina.roll","behaviour":"stamina","quantity":"roll stamina cost","route":"mod_setting","writer":"data","source":"dsr","journey":"fight-roll-burden"}

@@ -114,9 +114,16 @@ static class QuestScan
         var quests = new Dictionary<FormKey, (string Edid, int Flags)>();
         var nodes = new Dictionary<FormKey, FormKey[]>();
         var musics = new Dictionary<FormKey, (string Edid, string[] Flags, int Tracks)>();
+        // Every game setting of the masters (winning copy): the FormKey and kind the GMST overrides are written with.
+        var settings = new SortedDictionary<string, object>(StringComparer.Ordinal);
         foreach (var plugin in plugins)
         {
             using var mod = Load.Open(data, plugin);
+            foreach (var g in mod.GameSettings)
+                if (g.EditorID is { Length: > 0 } id)
+                    settings[id] = new { formKey = Load.Key(g.FormKey),
+                                         kind = g switch { IGameSettingFloatGetter => "float", IGameSettingIntGetter => "int",
+                                                           IGameSettingBoolGetter => "bool", _ => "string" } };
             foreach (var q in mod.Quests) quests[q.FormKey] = (q.EditorID ?? "", (int)q.Flags);
             foreach (var node in mod.StoryManagerQuestNodes) nodes[node.FormKey] = node.Quests.Select(n => n.Quest.FormKey).ToArray();
             foreach (var m in mod.MusicTypes)
@@ -137,7 +144,7 @@ static class QuestScan
             .Select(kv => (object)new { formKey = Load.Key(kv.Key), edid = kv.Value.Edid, plugin = kv.Key.ModKey.FileName.String,
                                         flags = kv.Value.Flags, tracks = kv.Value.Tracks })
             .ToList();
-        Load.WriteJson(outPath, new { plugins, quests = rows, musicTypes = music });
+        Load.WriteJson(outPath, new { plugins, quests = rows, musicTypes = music, gameSettings = settings });
         Console.WriteLine($"quests: {rows.Count} self-starting vanilla quests, {music.Count} music types -> {outPath}");
         return 0;
     }

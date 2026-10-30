@@ -635,6 +635,7 @@
 {"npc_id":"npc.imperial-fringe.cartwrights-cross.four-corner-holders","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-fringe.cassian-farm.heir","fight":90,"flee":10,"alarm":100}
 {"npc_id":"npc.imperial-fringe.castle-giovesse.ghost-whom-city-calls","fight":90,"flee":10,"alarm":100}
+{"npc_id":"npc.imperial-fringe.claywater-station.ambush-deserter","fight":100,"flee":0,"alarm":0}
 {"npc_id":"npc.imperial-fringe.claywater-station.landing-s-poler","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.imperial-fringe.claywater-station.n1","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.imperial-fringe.claywater-station.n1-2","fight":20,"flee":40,"alarm":80}

@@ -1,0 +1,81 @@
+// NPC_ and ECZN: the intermediate's combat archetypes (tools/argonia_world/combat_records.py) -> Mutagen. Fixed level
+// (no PC level multiplier), stats not auto-calculated, the health offset, a face template's traits (decision 0014 §3),
+// the compiled perk and the inventory. No choices here: every number and link arrives resolved.
+using System.Text.Json;
+using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Skyrim;
+using Mutagen.Bethesda.Strings;
+using Noggog;
+
+namespace ArgoniaGen;
+
+static class CombatRecords
+{
+    const SkyrimRelease Rel = SkyrimRelease.SkyrimSE;
+
+    static string S(JsonElement e, string k) => e.GetProperty(k).GetString() ?? throw new InvalidDataException($"{k} is null");
+    static int I(JsonElement e, string k) => e.GetProperty(k).GetInt32();
+    static bool B(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.GetBoolean();
+    static IEnumerable<JsonElement> A(JsonElement e, string k) =>
+        e.TryGetProperty(k, out var v) ? v.EnumerateArray() : Enumerable.Empty<JsonElement>();
+    static FormKey FK(string s) => FormKey.Factory(s);
+
+    public static void Write(SkyrimMod mod, JsonElement r)
+    {
+        switch (S(r, "type"))
+        {
+            case "NPC_": Npc(mod, r); break;
+            case "ECZN": Zone(mod, r); break;
+            default: throw new InvalidDataException($"CombatRecords: {S(r, "type")}");
+        }
+    }
+
+    static void Zone(SkyrimMod mod, JsonElement r)
+    {
+        mod.EncounterZones.Add(new EncounterZone(FK(S(r, "formKey")), Rel)
+        {
+            EditorID = S(r, "edid"), MinLevel = (byte)I(r, "minLevel"), MaxLevel = (byte)I(r, "maxLevel"),
+        });
+    }
+
+    static void Npc(SkyrimMod mod, JsonElement r)
+    {
+        var flags = B(r, "female") ? NpcConfiguration.Flag.Female : 0;
+        TemplateFlags(r, out var tf);
+        var n = new Npc(FK(S(r, "formKey")), Rel)
+        {
+            EditorID = S(r, "edid"),
+            Name = new TranslatedString(Language.English, S(r, "name")),
+            Configuration = new NpcConfiguration
+            {
+                Flags = flags, Level = new NpcLevel { Level = (short)I(r, "level") },
+                CalcMinLevel = (short)I(r, "level"), CalcMaxLevel = (short)I(r, "level"),
+                HealthOffset = (short)I(r, "healthOffset"), TemplateFlags = tf, SpeedMultiplier = 100,
+            },
+            PlayerSkills = new PlayerSkills(),
+            AIData = new AIData
+            {
+                Aggression = Enum.Parse<Aggression>(S(r, "aggression")),
+                Confidence = Enum.Parse<Confidence>(S(r, "confidence")),
+            },
+            Perks = new ExtendedList<PerkPlacement>(),
+            Items = new ExtendedList<ContainerEntry>(),
+            Height = r.GetProperty("height").GetSingle(), Weight = r.GetProperty("weight").GetSingle(),
+        };
+        n.Race.SetTo(FK(S(r, "race")));
+        n.Class.SetTo(FK(S(r, "class")));
+        if (r.TryGetProperty("template", out var t)) n.Template.SetTo(FK(t.GetString()!));
+        foreach (var p in A(r, "perks"))
+            n.Perks.Add(new PerkPlacement { Perk = new FormLink<IPerkGetter>(FK(p.GetString()!)), Rank = 1 });
+        foreach (var i in A(r, "items"))
+            n.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(FK(S(i, "item"))), Count = I(i, "count") } });
+        mod.Npcs.Add(n);
+    }
+
+    static void TemplateFlags(JsonElement r, out NpcConfiguration.TemplateFlag tf)
+    {
+        tf = 0;
+        foreach (var f in A(r, "templateFlags")) tf |= Enum.Parse<NpcConfiguration.TemplateFlag>(f.GetString()!);
+    }
+}

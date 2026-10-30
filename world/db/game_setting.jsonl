@@ -1,0 +1,17 @@
+{"edid":"fCombatStaminaRegenRateMult","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.stamina.regen: SHEET: one regen rate 12 + 0.24 x Agi in and out of combat (76 §121.2); DSR regen owed (2.7 §b)"}
+{"edid":"fDamagedStaminaRegenDelay","kind":"float","value":1.05,"chunk":"1.6","why":"combat wiring w.stamina.regen-delay: GUESS: the sheet's 1.05 s (76 §121.2); DSR regen delay owed (2.7 §b)"}
+{"edid":"fDiffMultHPByPCE","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCH","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCL","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCN","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCVE","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCVH","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCE","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCH","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCL","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCN","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCVE","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCVH","kind":"float","value":1.0,"chunk":"1.6","why":"combat wiring w.damage.difficulty: OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fXPPerSkillRank","kind":"float","value":0.0,"chunk":"1.5","why":"(no Skyrim.esm record: written as our own GMST) Character XP off: skill use never levels the character, so the LevelUp Menu never fires (native map P4)."}
+{"edid":"iHoursToRespawnCell","kind":"int","value":1000000.0,"chunk":"1.5","why":"The engine's cell respawn put out of reach; ArgoniaCore respawns on a rest (native map 3.4)."}
+{"edid":"iHoursToRespawnCellCleared","kind":"int","value":1000000.0,"chunk":"1.5","why":"The engine's cleared-cell respawn put out of reach; ArgoniaCore respawns on a rest (native map 3.4)."}

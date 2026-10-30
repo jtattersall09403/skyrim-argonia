@@ -1,0 +1,18 @@
+FormKey: 000856:Argonia.esm
+EditorID: ARG_Perk_Arch_AmbushDeserter
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 1.333333
+- MutagenObjectType: PerkEntryPointModifyValue
+  EntryPoint: ModIncomingDamage
+  PerkConditionTabCount: 3
+  Modification: Multiply
+  Value: 0.826446

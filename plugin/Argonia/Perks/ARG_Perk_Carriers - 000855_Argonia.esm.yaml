@@ -1,0 +1,32 @@
+FormKey: 000855:Argonia.esm
+EditorID: ARG_Perk_Carriers
+Description:
+  TargetLanguage: English
+  Value: ''
+NumRanks: 1
+Hidden: True
+Effects:
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  EntryPoint: ModPercentBlocked
+  PerkConditionTabCount: 3
+  ActorValue: OneHandedSkillAdvance
+  Value: 1
+  Modification: MultiplyOnePlusAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  EntryPoint: ModIncomingDamage
+  PerkConditionTabCount: 3
+  ActorValue: Energy
+  Value: 1
+  Modification: MultiplyOnePlusAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  EntryPoint: ModAttackDamage
+  PerkConditionTabCount: 3
+  ActorValue: VoicePoints
+  Value: 1
+  Modification: MultiplyOnePlusAVMult
+- MutagenObjectType: PerkEntryPointModifyActorValue
+  EntryPoint: ModPowerAttackStamina
+  PerkConditionTabCount: 2
+  ActorValue: VoiceRate
+  Value: 1
+  Modification: MultiplyOnePlusAVMult

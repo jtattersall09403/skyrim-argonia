@@ -150,3 +150,12 @@ def province_to_skyrim(x_m: float, y_south_m: float) -> tuple[float, float]:
 def height_to_steps(z_m):
     """Metres above sea (scalar or numpy array) as VHGT steps, unrounded."""
     return z_m * (UNITS_PER_METRE / VHGT_STEP_UNITS)
+
+# Condition tabs of each value perk entry point the combat wiring uses (CK: Perk Owner first; 1.6-wiring). The
+# entry point's tab count is written into the PERK effect; a wrong count is refused by the CK, so the L4 drafts read
+# each entry's effect in game (tests/journeys/fight-damage-builds.yaml).
+PERK_ENTRY_TABS = {"ModAttackDamage": 3, "ModIncomingDamage": 3, "ModPowerAttackStamina": 2, "ModPercentBlocked": 3,
+                   "ModIncomingStagger": 2, "ModTargetStagger": 2}
+# Skyrim's NPC_ height and weight the archetype records are written with (the CK's defaults for a new actor).
+NPC_DEFAULT_HEIGHT = 1.0
+NPC_DEFAULT_WEIGHT = 50.0

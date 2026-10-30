@@ -5128,9 +5128,12 @@ CREATE TABLE "action_arg" (
 -- Home of every FormID of ours: an EditorID (`ARG_` plus the world id) to the object id it was first given in its
 -- plugin; append-only (an entry never changes and is never removed; the next id is past the highest ever given).
 -- `entity_key` is the world row the record is generated from, when it has one. Written only by the allocator
--- (tools/argonia_world/formids.py) through db.py.
+-- (tools/argonia_world/formids.py) through db.py. A game setting no master carries keeps the engine's own name (the
+-- engine reads a GMST by its EditorID), so a GMST row is the one exception to the `ARG_` prefix.
 CREATE TABLE "formid" (
-  "editor_id" TEXT NOT NULL PRIMARY KEY CHECK ("editor_id" GLOB 'ARG_*' AND length("editor_id") <= 99),
+  "editor_id" TEXT NOT NULL PRIMARY KEY CHECK (("editor_id" GLOB 'ARG_*' OR
+                                               ("record_type" = 'GMST' AND "editor_id" GLOB '[fibus][A-Z]*'))
+                                              AND length("editor_id") <= 99),
   "plugin" TEXT NOT NULL,
   "form_id" INTEGER NOT NULL CHECK ("form_id" BETWEEN 2048 AND 16777215),
   "record_type" TEXT,
@@ -6124,4 +6127,125 @@ CREATE TABLE "action_shape_arg" (
   "kind" TEXT NOT NULL CHECK ("kind" IN ('id', 'int', 'bool')),
   "optional" BOOLEAN NOT NULL CHECK ("optional" IN (0, 1)),
   PRIMARY KEY ("term", "ord")
+);
+
+-- == The combat wiring (lane 1.6-wiring; docs/research/2026-10-30/combat-wiring.md; decisions 0004, 0014, 0019) ==
+-- How the sheet reaches the combat stack. tools/argonia_world/combat_records.py writes the carrier perk and the
+-- archetype from these (the GMSTs are `game_setting` rows, written by life_records.py); infra/gpu-box/stack.py applies combat_mod_setting at stage. A provenance is one of
+-- decision 0004's tags (DSR:, DS3:, OWNER:, GUESS:) or MOD: (the mod's own value, kept on purpose) or SHEET: (the
+-- sheet's formula, named in the tag).
+
+-- Home of each combat quantity's route (a row of the wiring spec): what carries it, who writes it, where its number
+-- comes from, and the L4 draft that checks it (tests/journeys/<journey>.yaml).
+CREATE TABLE "combat_wiring" (
+  "id" TEXT NOT NULL PRIMARY KEY CHECK ("id" GLOB 'w.*'),
+  "behaviour" TEXT NOT NULL CHECK ("behaviour" IN ('damage', 'stamina', 'poise', 'guard', 'parry', 'roll', 'iframes',
+                                                   'power', 'archery', 'armour', 'lockon', 'enemy')),
+  "quantity" TEXT NOT NULL,
+  "route" TEXT NOT NULL CHECK ("route" IN ('mod_setting', 'gmst', 'perk_entry', 'actor_value', 'record',
+                                           'runtime_hook', 'none')),
+  "writer" TEXT NOT NULL CHECK ("writer" IN ('data', 'generated', 'runtime', 'mod')),
+  "source" TEXT NOT NULL CHECK ("source" IN ('sheet', 'dsr', 'mod', 'owner')),
+  "journey" TEXT
+);
+
+-- Home of every combat mod setting the stack is tuned with: the dependency row (data/dependencies.json `mods[].id`),
+-- the file glob under its staged folder, the section (NULL: any) and key, and the value written at stage.
+CREATE TABLE "combat_mod_setting" (
+  "mod" TEXT NOT NULL,
+  "file" TEXT NOT NULL,
+  "section" TEXT,
+  "key" TEXT NOT NULL,
+  "value" TEXT NOT NULL,
+  "wiring" TEXT NOT NULL REFERENCES "combat_wiring"("id"),
+  "provenance" TEXT NOT NULL CHECK ("provenance" GLOB 'DSR:*' OR "provenance" GLOB 'DS3:*' OR
+                                    "provenance" GLOB 'OWNER:*' OR "provenance" GLOB 'GUESS:*' OR
+                                    "provenance" GLOB 'MOD:*' OR "provenance" GLOB 'SHEET:*'),
+  PRIMARY KEY ("mod", "file", "key")
+);
+
+-- Home of each P1 carrier (native map §2): the reserved actor value ArgoniaCore writes for the player (from the
+-- reserve order of docs/research/2026-10-30/av-audit.md), the perk entry point that applies it with
+-- Multiply 1 + Actor Value Mult (so the value written is factor − 1, and an unwritten carrier is neutral), and the
+-- one optional condition (a keyword on the entry point's tab, as a FormKey).
+CREATE TABLE "combat_carrier" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "actor_value" TEXT NOT NULL UNIQUE,
+  "hand" TEXT NOT NULL CHECK ("hand" IN ('right', 'left', 'body')),
+  "entry_point" TEXT NOT NULL,
+  "condition_tab" INTEGER,
+  "condition_keyword" TEXT,
+  "wired" BOOLEAN NOT NULL CHECK ("wired" IN (0, 1)),
+  "wiring" TEXT NOT NULL REFERENCES "combat_wiring"("id"),
+  CHECK (("condition_tab" IS NULL) = ("condition_keyword" IS NULL))
+);
+
+-- Home of each danger band's combat block (76 §128): the compiled ranges an actor at position 0..1 is read from,
+-- the blows that kill the band's intended character, and the band's character level.
+CREATE TABLE "danger_band_combat" (
+  "band" TEXT NOT NULL PRIMARY KEY REFERENCES "danger_band"("id"),
+  "health_lo" REAL NOT NULL,
+  "health_hi" REAL NOT NULL,
+  "light_hit_lo" REAL NOT NULL,
+  "light_hit_hi" REAL NOT NULL,
+  "ar_lo" REAL NOT NULL,
+  "ar_hi" REAL NOT NULL,
+  "blows_to_kill" REAL NOT NULL,
+  "level" INTEGER NOT NULL,
+  "design_ref" TEXT NOT NULL,
+  CHECK ("health_lo" <= "health_hi" AND "light_hit_lo" <= "light_hit_hi" AND "ar_lo" <= "ar_hi")
+);
+
+-- Home of a fighting archetype's record facts (1.6): the npc row it is written from (its band and position are the
+-- npc_statblock's), its race and face template (decision 0014 §3: a template NPC reuses a shipped face), its weapon
+-- and shield items (both must have records in Argonia.esm).
+CREATE TABLE "combat_archetype" (
+  "npc_id" TEXT NOT NULL PRIMARY KEY REFERENCES "npc"("id"),
+  "race_form" TEXT NOT NULL,
+  "face_template" TEXT NOT NULL,
+  "weapon" TEXT NOT NULL REFERENCES "item"("id"),
+  "shield" TEXT REFERENCES "item"("id"),
+  "design_ref" TEXT NOT NULL
+);
+
+-- Home of the combat wiring's scalar constants (the listed-damage unit, the reference blow armour is compiled
+-- against, the vanilla race health the archetype's offset is taken from), each with its source.
+CREATE TABLE "combat_constant" (
+  "id" TEXT NOT NULL PRIMARY KEY CHECK ("id" GLOB '[a-z]*' AND "id" NOT GLOB '*[^a-z0-9_]*'),
+  "value" REAL NOT NULL,
+  "provenance" TEXT NOT NULL CHECK ("provenance" GLOB 'DSR:*' OR "provenance" GLOB 'DS3:*' OR
+                                    "provenance" GLOB 'OWNER:*' OR "provenance" GLOB 'GUESS:*' OR
+                                    "provenance" GLOB 'MOD:*' OR "provenance" GLOB 'SHEET:*')
+);
+
+-- Home of a weapon class's combat numbers (76 §121.1, §121.3): the motion value of its light and heavy blow (listed
+-- damage = motion x the set's damage_scale x combat_constant damage_unit) and its poise damage (NULL: not wired).
+CREATE TABLE "weapon_class_combat" (
+  "weapon_class" TEXT NOT NULL PRIMARY KEY REFERENCES "weapon_class"("id"),
+  "motion_light" REAL NOT NULL,
+  "motion_heavy" REAL NOT NULL,
+  "poise_damage" REAL,
+  "provenance" TEXT NOT NULL CHECK ("provenance" GLOB 'DSR:*' OR "provenance" GLOB 'DS3:*' OR
+                                    "provenance" GLOB 'OWNER:*' OR "provenance" GLOB 'GUESS:*' OR
+                                    "provenance" GLOB 'MOD:*' OR "provenance" GLOB 'SHEET:*')
+);
+
+-- == The life hooks (lane 1.5-build/records; docs/research/native-map.md P4, §3.4) ==
+-- Home of the engine game settings Argonia.esm overrides (a GMST record of Skyrim.esm, its FormKey read from the
+-- vanilla scan by EditorID): the value, the chunk that needs it and why.
+CREATE TABLE "game_setting" (
+  "edid" TEXT NOT NULL PRIMARY KEY CHECK ("edid" GLOB '[fib][A-Z]*'),
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('float', 'int', 'bool')),
+  "value" REAL NOT NULL,
+  "chunk" TEXT NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- Home of the combat route of a game setting (lane 1.6-wiring): the wiring row it serves and its provenance.
+CREATE TABLE "game_setting_combat" (
+  "edid" TEXT NOT NULL PRIMARY KEY REFERENCES "game_setting"("edid"),
+  "wiring" TEXT NOT NULL REFERENCES "combat_wiring"("id"),
+  "provenance" TEXT NOT NULL CHECK ("provenance" GLOB 'DSR:*' OR "provenance" GLOB 'DS3:*' OR
+                                    "provenance" GLOB 'OWNER:*' OR "provenance" GLOB 'GUESS:*' OR
+                                    "provenance" GLOB 'MOD:*' OR "provenance" GLOB 'SHEET:*')
 );

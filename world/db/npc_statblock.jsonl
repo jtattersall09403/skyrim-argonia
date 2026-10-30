@@ -264,6 +264,7 @@
 {"npc_id":"npc.imperial-fringe.burnt-field-village.fire-watcher","class":"npc","band":"D3","position":0.6,"loadout":"loadout.saxhleel.spear","respawn":"never","soul_trappable":false,"class_id":"kaal"}
 {"npc_id":"npc.imperial-fringe.cassian-farm.heir","class":"npc","band":"D2","position":0.6,"loadout":"loadout.imperial.bow","respawn":"never","soul_trappable":false,"class_id":"scout"}
 {"npc_id":"npc.imperial-fringe.castle-giovesse.ghost-whom-city-calls","class":"npc","band":"D4","position":0.6,"loadout":"loadout.imperial.spear","respawn":"never","soul_trappable":false,"class_id":"warrior"}
+{"npc_id":"npc.imperial-fringe.claywater-station.ambush-deserter","class":"npc","band":"D2","position":0.5,"loadout":"item.steel-sword+item.steel-shield","respawn":"onRest","soul_trappable":false}
 {"npc_id":"npc.imperial-fringe.claywater-station.landing-s-poler","class":"npc","band":"D3","position":0.6,"respawn":"never","soul_trappable":false,"class_id":"reed-sail-hand"}
 {"npc_id":"npc.imperial-fringe.claywater-station.n1","class":"npc","band":"D1","position":0.4,"respawn":"never","soul_trappable":false,"class_id":"scout"}
 {"npc_id":"npc.imperial-fringe.claywater-station.n1-2","class":"npc","band":"D1","position":0.4,"respawn":"never","soul_trappable":false,"class_id":"marsh-guide"}

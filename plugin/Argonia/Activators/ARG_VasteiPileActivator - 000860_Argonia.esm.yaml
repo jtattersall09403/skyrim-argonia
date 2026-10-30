@@ -1,0 +1,12 @@
+FormKey: 000860:Argonia.esm
+EditorID: ARG_VasteiPileActivator
+Name:
+  TargetLanguage: English
+  Value: Vastei
+Model:
+  File: Clutter\SoulGem\SoulGemPetty01.nif
+Keywords:
+- 00085A:Argonia.esm
+ActivateTextOverride:
+  TargetLanguage: English
+  Value: Take

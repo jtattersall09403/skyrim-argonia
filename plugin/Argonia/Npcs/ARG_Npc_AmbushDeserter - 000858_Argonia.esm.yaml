@@ -1,0 +1,109 @@
+FormKey: 000858:Argonia.esm
+EditorID: ARG_Npc_AmbushDeserter
+Configuration:
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 10
+  CalcMinLevel: 10
+  CalcMaxLevel: 10
+  SpeedMultiplier: 100
+  TemplateFlags:
+  - Traits
+  HealthOffset: -6
+Template: 0551C7:Skyrim.esm
+Race: 013744:Skyrim.esm
+Perks:
+- Perk: 000856:Argonia.esm
+  Rank: 1
+  Fluff: 0x000000
+Items:
+- Item:
+    Item: 000840:Argonia.esm
+    Count: 1
+- Item:
+    Item: 00084E:Argonia.esm
+    Count: 1
+AIData:
+  Aggression: VeryAggressive
+  Confidence: Foolhardy
+Class: 000806:Argonia.esm
+Name:
+  TargetLanguage: English
+  Value: Deserter
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+Height: 1
+Weight: 50

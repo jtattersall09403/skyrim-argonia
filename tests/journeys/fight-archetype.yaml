@@ -1,0 +1,22 @@
+# Draft (1.6-wiring): owed L4. 1.6 acceptance (bat claywater-ambush) and native-map S13a, S13b, S13c.
+# Wiring rows: w.enemy.*, w.guard.stability, w.parry.window, w.damage.critical.
+id: fight-archetype
+status: draft, owed L4
+scene: claywater-ambush
+actor: ARG_Npc_AmbushDeserter (npc.imperial-fringe.claywater-station.ambush-deserter; D2 at 0.5; zone ARG_Ecz_AmbushDeserter)
+steps:
+  - with the player at level 1 then level 20 (set through ArgoniaCore), read the archetype's level and max health
+  - read its perk list (ARG_Perk_Arch_AmbushDeserter) and inventory (steel sword, steel shield), a still of it equipped
+  - teleport the player 15 m in its view; within 5 s it is in combat targeting the player
+  - let it land 3 unblocked light hits on a player with 0 AR; read the player's health before and after each
+  - land 3 light blows of the marsh-hand build; read its health before and after each
+  - guard one swing with the shield; parry one (Elden Parry window), riposte; a still per step
+  - kill it, loot it; rest (1.5) and re-enter: it is back
+pass:
+  - level 10 and max health 44 at both player levels (fixed danger; health = race start + offset -6, the race start
+    read here settles combat_constant race_start_health)
+  - its light hit lands 32 +- 1 (24 x 1.3333); the marsh-hand blow lands 20.5 x 0.826 = 16.9 +- 0.5
+  - the guarded hit takes the guard's share (1 + OneHandedSkillAdvance) of the vanilla block; parry plays once, one
+    riposte
+  - respawned after rest
+fails_if: level or health moves with the player's level, damage off by more than the tolerance, a double riposte, a crash

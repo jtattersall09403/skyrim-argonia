@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parents[2]
 MOD = "Argonia.esm"
 LAND_MOD = "ArgoniaWorld.esm"
 EDID = re.compile(r"^ARG_[A-Za-z0-9_]+$")
+GMST_EDID = re.compile(r"^[fibus][A-Z][A-Za-z0-9_]+$")  # a game setting is named by the engine, not by us
 
 
 def read_ids(world, mod: str = MOD) -> dict[str, int]:
@@ -47,7 +48,7 @@ class Allocator:
     def get(self, edid: str, record_type: str | None = None, entity_key: str | None = None) -> int:
         if edid in self.ids:
             return self.ids[edid]
-        if not EDID.match(edid) or len(edid) > su.EDITOR_ID_MAX:
+        if not (EDID.match(edid) or (record_type == "GMST" and GMST_EDID.match(edid))) or len(edid) > su.EDITOR_ID_MAX:
             raise ValueError(f"not an Argonia EditorID: {edid!r}")
         if self.frozen:
             raise KeyError(f"{edid}: no FormID yet; run `make plugin` and commit the formid table")

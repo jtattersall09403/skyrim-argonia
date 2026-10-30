@@ -1,0 +1,21 @@
+# Draft (1.6-wiring): owed L4. 1.6 acceptance (the sheet -> damage and stamina join) and native-map S14a/S11b.
+# Wiring rows: w.damage.*, w.stamina.max, w.stamina.power, w.armour.*; docs/research/2026-10-30/combat-wiring.md.
+id: fight-damage-builds
+status: draft, owed L4
+scene: duel-ring
+builds: [novice (Str 40, Long Blade 5, Agi 40), god (Str 100, Long Blade 100, Agi 100)]
+setup_step_0:
+  - set each build through ArgoniaCore (never the console's SetAV on our attribute AVs; the scene sets state only)
+  - equip ARG_Weap_SteelSword (listed 24); the target is a training dummy with ARG_Perk_Arch_* removed and 0 armour
+  - ArgoniaCore has written the carriers; the player has ARG_Perk_Carriers
+steps:
+  - read the carrier AVs (VoicePoints, VoiceRate, Energy, OneHandedSkillAdvance) and the vanilla OneHanded base AV
+  - land 5 light blows with SkyLink input; read the target's health before and after each (bridge stat read)
+  - land 2 power attacks; read the player's stamina before and after each
+  - read GetGameSetting for fDiffMultHPByPCN and fDiffMultHPToPCN, and each difficulty in turn
+pass:
+  - VoicePoints = P x S - 1 from skse/core carriers (novice -0.549, god +0.500); OneHanded base AV = 0
+  - light blow damage = 24 x (1 + VoicePoints) within 0.5 (novice 10.8, god 36.0); ratio god/novice 3.33 +- 2 %
+  - the same ratio at every difficulty (the difficulty GMSTs held at 1)
+  - power attack stamina scales by 1 + VoiceRate against a carrier-0 control run
+fails_if: damage differs between difficulties, a carrier reads 0 after ArgoniaCore's write, a crash

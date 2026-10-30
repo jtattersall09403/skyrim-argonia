@@ -48,6 +48,8 @@ static class Generate
                 case "BOOK": ItemWriters.Write(mod, r); break;
                 case "ALCH": ItemWriters.Write(mod, r); break;
                 case "PERK": PerkRecords.Write(mod, r); break;
+                case "NPC_" or "ECZN": CombatRecords.Write(mod, r); break;
+                case "ACTI" or "GMST": ActivatorRecords.Write(mod, r); break;
                 case "REGN" or "CLMT" or "WTHR" or "IMGS" or "WRLD": RegionWriters.Write(mod, r, data); break;
                 default: throw new InvalidDataException($"record type {type} has no writer ({S(r, "edid")})");
             }

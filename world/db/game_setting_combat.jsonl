@@ -1,0 +1,14 @@
+{"edid":"fCombatStaminaRegenRateMult","wiring":"w.stamina.regen","provenance":"SHEET: one regen rate 12 + 0.24 x Agi in and out of combat (76 §121.2); DSR regen owed (2.7 §b)"}
+{"edid":"fDamagedStaminaRegenDelay","wiring":"w.stamina.regen-delay","provenance":"GUESS: the sheet's 1.05 s (76 §121.2); DSR regen delay owed (2.7 §b)"}
+{"edid":"fDiffMultHPByPCE","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCH","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCL","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCN","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCVE","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPByPCVH","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCE","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCH","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCL","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCN","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCVE","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}
+{"edid":"fDiffMultHPToPCVH","wiring":"w.damage.difficulty","provenance":"OWNER: 76 §121.4 lethality knob at 1.0 (the difficulty setting comes later)"}

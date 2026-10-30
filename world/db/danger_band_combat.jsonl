@@ -1,0 +1,5 @@
+{"band":"D1","health_lo":18.0,"health_hi":28.0,"light_hit_lo":4.0,"light_hit_hi":14.0,"ar_lo":0.0,"ar_hi":18.0,"blows_to_kill":6.0,"level":1,"design_ref":"docs/design/world/76-stats-progression.md §128"}
+{"band":"D2","health_lo":27.0,"health_hi":62.0,"light_hit_lo":24.0,"light_hit_hi":40.0,"ar_lo":18.0,"ar_hi":45.0,"blows_to_kill":4.0,"level":10,"design_ref":"docs/design/world/76-stats-progression.md §128"}
+{"band":"D3","health_lo":40.0,"health_hi":90.0,"light_hit_lo":52.0,"light_hit_hi":92.0,"ar_lo":45.0,"ar_hi":80.0,"blows_to_kill":3.5,"level":20,"design_ref":"docs/design/world/76-stats-progression.md §128"}
+{"band":"D4","health_lo":50.0,"health_hi":110.0,"light_hit_lo":120.0,"light_hit_hi":210.0,"ar_lo":80.0,"ar_hi":130.0,"blows_to_kill":3.0,"level":35,"design_ref":"docs/design/world/76-stats-progression.md §128"}
+{"band":"D5","health_lo":96.0,"health_hi":205.0,"light_hit_lo":185.0,"light_hit_hi":320.0,"ar_lo":100.0,"ar_hi":170.0,"blows_to_kill":3.0,"level":50,"design_ref":"docs/design/world/76-stats-progression.md §128"}

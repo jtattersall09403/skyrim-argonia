@@ -1,0 +1,12 @@
+# Draft (1.6-wiring): owed L4. 1.6 deliverable "the pad and lock-on"; wiring row w.lockon.distance.
+id: fight-lock-on
+status: draft, owed L4
+scene: duel-ring
+setup_step_0: [the archetype placed hostile at 10 m, a second hostile at 25 m and one at 35 m]
+steps:
+  - press the right stick (TDM uTargetLockKey 273) with SkyLink; read TDM's lock target (TrueHUD reticle actor, bridge)
+  - flick the right stick toward the 25 m hostile; read the target
+  - teleport the player to 30 m from every hostile and press again
+pass: lock acquires the nearest hostile in view; the flick switches; nothing locks beyond fTargetLockDistance
+  (2000 u = 28.6 m, the GUESS until DSR's LockCamParam is measured); a still per step at the play camera
+fails_if: no lock inside range, a lock beyond it, a crash

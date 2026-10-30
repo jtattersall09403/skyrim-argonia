@@ -48,7 +48,7 @@ static class ItemWriters
             EditorID = S(r, "edid"),
             Name = T(r, "name"),
             Model = M(r, "model"),
-            BasicStats = new WeaponBasicStats { Value = (uint)I(r, "value"), Weight = F(r, "weight") },
+            BasicStats = new WeaponBasicStats { Value = (uint)I(r, "value"), Weight = F(r, "weight"), Damage = (ushort)I(r, "damage") },
             Data = new WeaponData
             {
                 AnimationType = Enum.Parse<WeaponAnimationType>(S(r, "animation")),

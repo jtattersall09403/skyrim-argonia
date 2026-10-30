@@ -2,7 +2,8 @@
 the straight-sword class (WEAP + its class KYWD), one armour set as ARMO + ARMA pairs in the Morrowind slots, one
 container (CONT), one book (BOOK) and one potion (ALCH). Every field is a row's: the item, its set, its lock, its
 document leaves, its effect rows; the class keyword to skill map and the slot numbers are the `weapon_class` and
-`armour_slot` tables. Nothing here is a combat number: damage, armour rating and condition are ArgoniaCore's.
+`armour_slot` tables. The one combat number is a weapon's listed damage (76 §121.1, `combat_records.listed_damage`,
+lane 1.6-wiring); armour rating stays 0 (mitigation is the carrier's) and condition is ArgoniaCore's.
 
 A mesh path is the row's asset data: a vanilla `meshes/` path as it stands (the base game's file, never shipped,
 decision 0003), or, for a sourced model built by the asset pipeline, `Argonia\\<path under files/>.nif` (the
@@ -10,6 +11,7 @@ installer makes the .nif on the player's machine, decision 0014).
 """
 from __future__ import annotations
 
+from tools.argonia_world import combat_records
 from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.formids import Allocator
 from tools.argonia_world.intermediate import Layer
@@ -64,7 +66,8 @@ def weapon_record(alloc: Allocator, world, item_id: str = SWORD) -> dict:
     return {"type": "WEAP", "edid": edid, "formKey": alloc.form_key(edid, "WEAP", it.id), "name": it.name,
             "model": model_path(it), "weight": su.kg_to_weight(it.weight_kg), "value": it.value,
             "keywords": [alloc.form_key(cls.keyword_edid)], "animation": sub.animation,
-            "speed": su.WEAP_NEUTRAL_SPEED, "reach": su.WEAP_NEUTRAL_REACH}
+            "speed": su.WEAP_NEUTRAL_SPEED, "reach": su.WEAP_NEUTRAL_REACH,
+            "damage": round(combat_records.listed_damage(world, item_id))}
 
 
 def armour_set_records(alloc: Allocator, world, set_id: str = ARMOUR_SET) -> list[dict]:

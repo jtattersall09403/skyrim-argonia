@@ -1,0 +1,6 @@
+{"id":"body.block","actor_value":"OneHandedSkillAdvance","hand":"body","entry_point":"ModPercentBlocked","wired":true,"wiring":"w.guard.stability"}
+{"id":"body.incoming-damage","actor_value":"Energy","hand":"body","entry_point":"ModIncomingDamage","wired":true,"wiring":"w.armour.mitigation"}
+{"id":"body.incoming-stagger","actor_value":"MarksmanSkillAdvance","hand":"body","entry_point":"ModIncomingStagger","wired":false,"wiring":"w.poise.stagger"}
+{"id":"left.attack-damage","actor_value":"TwoHandedSkillAdvance","hand":"left","entry_point":"ModAttackDamage","wired":false,"wiring":"w.damage.left-hand"}
+{"id":"right.attack-damage","actor_value":"VoicePoints","hand":"right","entry_point":"ModAttackDamage","wired":true,"wiring":"w.damage.position-strength"}
+{"id":"right.power-stamina","actor_value":"VoiceRate","hand":"right","entry_point":"ModPowerAttackStamina","wired":true,"wiring":"w.stamina.power"}

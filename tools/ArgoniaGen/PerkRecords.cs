@@ -46,7 +46,47 @@ static class PerkRecords
         mod.Perks.Add(p);
     }
 
-    static PerkEntryPointAddActivateChoice Effect(string edid, JsonElement e)
+    static APerkEntryPointEffect Effect(string edid, JsonElement e) => S(e, "function") switch
+    {
+        "AddActivateChoice" => ActivateChoice(edid, e),
+        "MultiplyOnePlusAVMult" or "MultiplyAVMult" => ModifyActorValue(edid, e),
+        "MultiplyValue" => ModifyValue(edid, e),
+        var fn => throw new InvalidDataException($"{edid}: perk function {fn} not supported yet"),
+    };
+
+    // A modify-value entry point (1.6 combat wiring): the entry point, its condition tab count and the value.
+    static APerkEntryPointEffect.EntryType Entry(string edid, JsonElement e) =>
+        Enum.TryParse<APerkEntryPointEffect.EntryType>(S(e, "entryPoint"), out var t) && t != APerkEntryPointEffect.EntryType.Activate
+            ? t : throw new InvalidDataException($"{edid}: entry point {S(e, "entryPoint")} is not a value entry point");
+
+    static PerkEntryPointModifyActorValue ModifyActorValue(string edid, JsonElement e)
+    {
+        var eff = new PerkEntryPointModifyActorValue
+        {
+            EntryPoint = Entry(edid, e), Rank = (byte)I(e, "rank"), Priority = (byte)I(e, "priority"),
+            PerkConditionTabCount = (byte)I(e, "tabCount"),
+            ActorValue = Enum.Parse<ActorValue>(S(e, "actorValue")),
+            Modification = Enum.Parse<PerkEntryPointModifyActorValue.ModificationType>(S(e, "function")),
+            Value = e.GetProperty("value").GetSingle(),
+        };
+        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
+        return eff;
+    }
+
+    static PerkEntryPointModifyValue ModifyValue(string edid, JsonElement e)
+    {
+        var eff = new PerkEntryPointModifyValue
+        {
+            EntryPoint = Entry(edid, e), Rank = (byte)I(e, "rank"), Priority = (byte)I(e, "priority"),
+            PerkConditionTabCount = (byte)I(e, "tabCount"),
+            Modification = PerkEntryPointModifyValue.ModificationType.Multiply,
+            Value = e.GetProperty("value").GetSingle(),
+        };
+        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
+        return eff;
+    }
+
+    static PerkEntryPointAddActivateChoice ActivateChoice(string edid, JsonElement e)
     {
         var ep = S(e, "entryPoint");
         var fn = S(e, "function");
@@ -62,26 +102,28 @@ static class PerkRecords
             ButtonLabel = S(e, "buttonLabel"),
             Flags = new PerkScriptFlag { Flags = (PerkScriptFlag.Flag)fl, FragmentIndex = (ushort)I(e, "fragment") },
         };
-        foreach (var c in A(e, "conditions"))
-        {
-            var cf = S(c, "function");
-            if (cf != "HasKeyword") throw new InvalidDataException($"{edid}: condition function {cf} not supported yet");
-            var data = new HasKeywordConditionData { RunOnType = Condition.RunOnType.Subject };
-            data.Keyword.Link.SetTo(FormKey.Factory(S(c, "keyword")));
-            eff.Conditions.Add(new PerkCondition
-            {
-                RunOnTabIndex = (byte)I(c, "tab"),
-                Conditions =
-                {
-                    new ConditionFloat
-                    {
-                        CompareOperator = Enum.Parse<CompareOperator>(S(c, "op")),
-                        ComparisonValue = c.GetProperty("value").GetSingle(),
-                        Data = data,
-                    },
-                },
-            });
-        }
+        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
         return eff;
+    }
+
+    static PerkCondition Cond(string edid, JsonElement c)
+    {
+        var cf = S(c, "function");
+        if (cf != "HasKeyword") throw new InvalidDataException($"{edid}: condition function {cf} not supported yet");
+        var data = new HasKeywordConditionData { RunOnType = Condition.RunOnType.Subject };
+        data.Keyword.Link.SetTo(FormKey.Factory(S(c, "keyword")));
+        return new PerkCondition
+        {
+            RunOnTabIndex = (byte)I(c, "tab"),
+            Conditions =
+            {
+                new ConditionFloat
+                {
+                    CompareOperator = Enum.Parse<CompareOperator>(S(c, "op")),
+                    ComparisonValue = c.GetProperty("value").GetSingle(),
+                    Data = data,
+                },
+            },
+        };
     }
 }
