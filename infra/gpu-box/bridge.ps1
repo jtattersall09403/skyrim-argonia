@@ -2,7 +2,9 @@
 #   bridge.ps1 health              is SkyrimSE alive, responding, and has Crash Logger written a log since this launch
 #   bridge.ps1 token               the token ArgoniaBridge wrote at this launch (and its time)
 #   bridge.ps1 kill                end SkyrimSE and its loader; a zombie (not responding, or surviving a kill) is
-#                                  taskkilled with its tree, and the call fails if anything survives 20 s
+#                                  taskkilled with its tree, and the call fails if anything survives 20 s. Notepad is
+#                                  closed too: Crash Logger opens each crash log in it, and that window keeps the
+#                                  keyboard and pad from the next launch (game-14: every key and pad press dead)
 #   bridge.ps1 prepare [-Fresh]    the profile on (stack.ps1 on, only if it is off, or always with -Fresh), then ArgoniaBridge.dll, ArgoniaCore.dll, our ESMs and .pex (C:\argonia\ours) copied from
 #                                  the dev-only MO2 folder into Data\SKSE\Plugins (a copy, not a link, so a rebuild
 #                                  never meets a locked file); stack.ps1 off removes it
@@ -37,6 +39,7 @@ switch ($Cmd) {
   }
   'kill' {
     $names = 'SkyrimSE', 'skse64_loader'
+    Get-Process notepad -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue
     $before = @(Get-Process $names -EA SilentlyContinue | % Id)
     Get-Process $names -EA SilentlyContinue | Stop-Process -Force -EA SilentlyContinue
     for ($i = 0; $i -lt 10 -and (Get-Process $names -EA SilentlyContinue); $i++) { Start-Sleep 1 }
