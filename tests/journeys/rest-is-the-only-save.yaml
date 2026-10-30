@@ -1,0 +1,34 @@
+# Draft (1.5 build): owed L4, native map S17a's saving half. 1.5's acceptance: manual saves, quicksave and autosaves
+# are hidden; rest writes the save.
+id: rest-is-the-only-save
+status: draft, owed L4
+scene: >-
+  bat camp
+step0:
+  - count the files in the save folder (the bridge's file list) -> N0; note ArgoniaRest.ess's time if present
+steps:
+  - do: >-
+      press the quicksave key (F5 through SkyLink); open the Journal Menu's System tab and choose Save if reachable
+    expect: >-
+      the save-folder count is still N0; no new quicksave file; the SKSE log has no "co-save: ... written"
+  - do: >-
+      travel through a load door, wait one hour (the T key; wait is allowed everywhere), open the character menu
+    expect: >-
+      still N0 (bSaveOnTravel, bSaveOnWait and bSaveOnCharacterMenu off; no autosave file is written)
+  - do: >-
+      activate the camp spot (no level pending)
+    expect: >-
+      exactly one save written: ArgoniaRest.ess has a new time; SaveCount() +1; the SKSE log has
+      "saves: ArgoniaRest written (rest)"
+  - do: >-
+      activate a camp spot placed inside the settlement bounds (a location with ARG_LocType_Settlement)
+    expect: >-
+      refused with the wait-only line as a notification; no save written; WakePoint() unchanged
+  - do: >-
+      load ArgoniaRest from the main menu
+    expect: >-
+      every family's digest equals its value before the load (FamilyDigest) and the player stands at the camp
+pass: >-
+  every expectation above
+fails_if: >-
+  any save other than the rest save is written; a refused rest moves the wake point; the load differs

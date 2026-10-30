@@ -1,0 +1,42 @@
+# Draft (1.5 build): owed L4, native map S17a. 1.5's acceptance: die with vastei -> wake at the camp -> walk to the
+# pile -> take it -> the amount is equal; a second death replaces the pile; the archetype respawns after rest.
+id: die-and-recover
+status: draft, owed L4
+scene: >-
+  bat camp then bat claywater-ambush (the archetype onRest, persistent, keyword ARG_Respawn_OnRest)
+step0:
+  - rest at the camp spot (activate it; no level pending, so no sitting): WakePoint() reads the spot's position
+  - move one container in the camp (console `setpos x` on it) and note it: a death must load no save
+  - ArgoniaCore.SetVastei(120)
+steps:
+  - do: >-
+      teleport near the archetype; kill it (SkyLink attacks)
+    expect: >-
+      the archetype is dead (`GetDead` 1)
+  - do: >-
+      let the second hostile (or console `kill` on the player is NOT used: a game action) deal lethal damage; set
+      the player's health low at step 0 of this step only if the fight is too slow (`player.damageav health`)
+    expect: >-
+      no death camera, no load (the SKSE log has "death: fell" and "death: woke", no "co-save: loaded");
+      within 3 s the player stands within 2 m of the camp spot; GetVastei() 0; PileState() reads the death spot
+      and 120; the moved container is still moved; the archetype is alive again at its editor place (waking counts
+      as a rest)
+    still: >-
+      one at the camp, one at the pile (a gold ring with a halo; the halo shader is owed, see the report)
+  - do: >-
+      teleport 1.5 m from the pile; activate it
+    expect: >-
+      the prompt reads "Take Vastei (120)"; GetVastei() 120; PileState() empty; the pile reference is gone
+    still: >-
+      one
+  - do: >-
+      SetVastei(50); die again at another spot; then SetVastei(30); die a third time elsewhere
+    expect: >-
+      after each death exactly one pile reference exists (the form scan in the log, or the console `prid` on
+      the old one fails); PileState() holds 30 at the third spot; the 50 pile is gone
+pass: >-
+  every expectation above
+fails_if: >-
+  a save is loaded on death; two piles exist; the amount taken differs from the amount dropped; the
+  archetype stays dead after waking; the bleedout kneel lasts more than a frame before the fade (recorded, not a fail
+  until the fallback hook is chosen); a crash

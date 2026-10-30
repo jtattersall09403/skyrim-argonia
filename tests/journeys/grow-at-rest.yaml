@@ -1,0 +1,54 @@
+# Draft (1.5 build): owed L4, native map S16a, S16b, S16c. In 0.3 §d's format (tools/run_journey.py does not exist
+# yet). 1.5's acceptance: scripted skill uses -> pending level -> rest -> the sitting opens -> spend -> values change.
+id: grow-at-rest
+status: draft, owed L4
+scene: >-
+  bat duel-ring (a hostile training opponent of the archetype in reach), then bat camp; Argonia.esm and
+  ArgoniaCore.dll deployed. Until bat camp exists, step 0 places the camp spot with `player.placeatme ARG_CampSpot`.
+step0:
+  - equip the steel sword (item.steel-sword, keyword ARG_WeapClass_LongBlade); read ArgoniaCore.GetSkill("longBlade") -> L0
+  - read console `GetAV OneHanded`, `GetPCMiscStat` is not used; read the vanilla XP through the bridge's
+    PlayerSkills read (S16a) -> X0
+  - the archetype's health set high (console `setav health 2000` on it) so the blows land without a kill
+steps:
+  - do: >-
+      ten connecting blows, each at least 15% of the target's health (SkyLink attack inputs, not a console hit)
+    expect: >-
+      the SKSE log has ten "grow: hit longBlade" lines; GetVastei() equals the sum of their vastei; vanilla
+      One-handed XP equals X0 (P4); `GetAV OneHanded` unchanged
+    still: >-
+      one, with the HUD's vastei plaque
+  - do: >-
+      one block (raise the shield as the opponent swings), take one hit, cast one Destruction spell, pick one lock
+    expect: >-
+      one "grow:" line each (struck heavyArmor or lightArmor, block, cast destruction, unlock security); vanilla
+      XP unchanged after each
+  - do: >-
+      keep the blows going until GetPendingLevels() reads 1 (log the count and the game minutes)
+    expect: >-
+      GetLevel() is still the start level; the LevelUp Menu never reports open (RouterLog has no levelUpMenu
+      sighting, the SKSE log has no "LevelUp Menu opened" error); no "rest and meditate" notice in the still
+    still: >-
+      one
+  - do: >-
+      teleport to the camp spot; activate it (SkyLink activate)
+    expect: >-
+      SittingOpen() is true; ViewState("sitting") is a sitting.state with level = start + 1 and seven rows
+    still: >-
+      one, of the sitting view
+  - do: >-
+      ViewIntent through ArgoniaCore.SittingIntent('{"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}}')
+      (the view's own intent, until the PrismaUI binding sends it from a click)
+    expect: >-
+      the returned state's vastei = before - the endurance row's cost; Endurance +1; health.after > health.before
+  - do: >-
+      SittingIntent('{"type":"sitting.done","v":1,"body":{}}')
+    expect: >-
+      SittingOpen() false; GetLevel() = start + 1; GetPendingLevels() 0; GetAttribute("endurance") +1;
+      console `GetBaseAV Health` equals the core's derive(health) for the new sheet; SaveCount() +1 and the save
+      folder has ArgoniaRest.ess with a new time
+pass: >-
+  every expectation above
+fails_if: >-
+  any vanilla skill XP moves; the LevelUp Menu opens; the sitting does not open or applies a price other than
+  the row's; no rest save; a crash
