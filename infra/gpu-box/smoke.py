@@ -14,6 +14,7 @@ and events read by the bridge, a still per step. Results and stills go to ~/.arg
 import argparse
 import json
 import math
+import os
 import pathlib
 import subprocess
 import sys
@@ -31,7 +32,13 @@ B = Bridge()
 
 
 def player():
-    return B.call("player")
+    try:
+        return B.call("player")
+    except BridgeError as e:  # a cell load can hold the main thread past the bridge's 3 s once (2026-10-30)
+        if "main thread" not in str(e):
+            raise
+        time.sleep(2)
+        return B.call("player")
 
 
 def console(cmd):
@@ -70,38 +77,74 @@ DIRS = {"N": (0, 1), "NE": (0.7, 0.7), "E": (1, 0), "SE": (0.7, -0.7), "S": (0, 
 STILLS = True
 
 
+def dodging_sample():
+    v = B.call("graph", "player", "bIsDodging")["vars"].get("bIsDodging") or {}
+    return player()["pos"], bool(v.get("bool"))
+
+
 def moved(seq, name, home):
+    """The net move over the sequence, and the dodge's own: from the last sample before TK Dodge's bIsDodging
+    graph variable goes true to the first after it falls (the walk before it left out)."""
     B.call("teleport", "pos", home["x"], home["y"], home["z"] + 8)  # every run from the same flat spot
     time.sleep(0.8)
     p0 = player()
     since = B.call("events")["last"]
-    B.pad(seq)
+    samples = [s for s in during(seq, dodging_sample, every=0.05) if not isinstance(s, str)]
     time.sleep(0.3)
     p1 = player()
     units, heading = flat(p0, p1)
+    on = [i for i, (_, d) in enumerate(samples) if d]
+    roll = None
+    if on:
+        start = samples[max(on[0] - 1, 0)][0]
+        end = samples[min(on[-1] + 1, len(samples) - 1)][0] if on[-1] + 1 < len(samples) else p1["pos"]
+        roll = flat({"pos": start}, {"pos": end})
     tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
-    return {"units": units, "heading_deg": heading, "stamina": [round(p0["stamina"]["current"], 1),
-            round(p1["stamina"]["current"], 1)], "dodge_tags": sorted({t for t in tags if "odge" in t or "oll" in t}),
-            "still": still(name) if STILLS else None}
+    return {"units": units, "heading_deg": heading, "roll_units": roll and roll[0], "roll_heading_deg": roll and roll[1],
+            "samples": len(samples), "stamina": [round(p0["stamina"]["current"], 1), round(p1["stamina"]["current"], 1)],
+            "dodge_tags": sorted({t for t in tags if "odge" in t or "oll" in t}), "still": still(name) if STILLS else None}
+
+
+def off_by(a, b):
+    return abs((a - b + 180) % 360 - 180)
 
 
 def cmd_dodge(a):
     global STILLS
     STILLS = not a.no_stills
     want = a.dirs.split(",") if a.dirs else list(DIRS) + ["back"]
+    if a.cell:  # an open floor: at Riverwood a roll toward the trees ends on a trunk (setup only)
+        B.call("console", f"coc {a.cell}")
+        time.sleep(8)
+    if a.drawn:
+        B.pad("RB:120 wait:1500")  # RB on sheathed draws: the sword out, as in a fight
     home = player()["pos"]
-    # the walk alone over the same stick time is the baseline a roll must clearly beat
-    record("walk-N", moved("+LX=0,LY=1:220 -:1500", "walk-N", home))
+    # TK Dodge picks the roll from the player's movement, not the stick: after 120 ms of stick the player is not yet
+    # moving and every direction gave the backstep's clip (2026-10-30, AMR's log), so the stick is held 500 ms, as a
+    # player moving and then dodging does, and stays held past B's release (TK Dodge reads the movement when the
+    # sprint key comes up: a stick released with it gave the backstep's clip in about half the runs).
+    record("walk-N", moved("+LX=0,LY=1:500 wait:100 -:1500", "walk-N", home))
     for d, (x, y) in DIRS.items():
         if d in want:
-            record(f"roll-{d}", moved(f"+LX={x},LY={y}:120 B:100 -:1500", f"roll-{d}", home))
+            record(f"roll-{d}", moved(f"+LX={x},LY={y}:500 B:100 wait:600 -:1200", f"roll-{d}", home))
     if "back" in want:
         record("backstep", moved("wait:300 B:100 wait:1500", "backstep", home))
-    walk = RESULTS["walk-N"]["units"]
-    rolls = {k: v["units"] for k, v in RESULTS.items() if k.startswith("roll-")}
-    record("dodge-verdict", {"walk": walk, "rolls": rolls, "backstep": RESULTS.get("backstep", {}).get("units"),
-                             "all_rolls_beat_walk": all(u > walk + 50 for u in rolls.values()),
-                             "backstep_moves": RESULTS.get("backstep", {}).get("units", 0) > 30})
+    # the camera's heading is the walk's; a roll must cover ground along its stick direction, the backstep away
+    # from the facing (the camera's, at rest)
+    cam = RESULTS["walk-N"]["heading_deg"]
+    rolls = {}
+    for d, (x, y) in DIRS.items():
+        r = RESULTS.get(f"roll-{d}")
+        if r:
+            want_h = (cam + math.degrees(math.atan2(x, y))) % 360
+            rolls[d] = {"units": r["roll_units"], "heading_off": r["roll_heading_deg"] is not None
+                        and off_by(r["roll_heading_deg"], want_h)}
+    back = RESULTS.get("backstep", {})
+    record("dodge-verdict", {"camera_deg": cam, "rolls": rolls, "backstep": back.get("roll_units"),
+                             "backstep_off": back.get("roll_heading_deg") is not None and off_by(back["roll_heading_deg"], cam + 180),
+                             "rolls_cover_ground": all((r["units"] or 0) > 150 for r in rolls.values()),
+                             "rolls_on_their_stick": all(r["heading_off"] is not False and r["heading_off"] <= 45 for r in rolls.values()),
+                             "backstep_moves": (back.get("roll_units") or 0) > 80})
 
 
 def during(seq, probe, every=0.25):
@@ -218,7 +261,7 @@ def cmd_scene(a, run=1):
     B.pad("RB:120 wait:1200")
     tags = [e["data"]["tag"] for e in B.call("events", since, "anim")["events"]]
     record(f"scene{run}-swing", {"attack_tags": sorted({t for t in tags if "ttack" in t})[:10]})
-    r = moved("+LX=0,LY=1:120 B:100 -:1500", f"scene{run}-roll", home)
+    r = moved("+LX=0,LY=1:500 B:100 wait:600 -:1200", f"scene{run}-roll", home)
     record(f"scene{run}-roll", r)
     blocking = during("LB:1800", lambda: console("player.IsBlocking"))
     record(f"scene{run}-block", {"IsBlocking_seen": any(yes(s) for s in blocking)})
@@ -235,12 +278,15 @@ def cmd_frametime(a):
     """PresentMon over the running game for a.seconds (the player standing in the scene), then median and 1% low;
     the bridge's own per-frame Update intervals beside it."""
     csv = rf"C:\argonia\logs\presentmon-{a.label}.csv"
-    subprocess.run([RUN, "ps", rf"Remove-Item {csv} -EA SilentlyContinue; & C:\argonia\tools\presentmon\PresentMon.exe "
-                    rf"--process_name SkyrimSE.exe --output_file {csv} --timed {a.seconds} --terminate_after_timed "
-                    rf"--no_console_stats --v1_metrics | Out-Null"], capture_output=True, text=True, check=True)
+    # PresentMon's ETW session writes nothing from the SSH service session (2026-10-30): it runs in the desktop one
+    out = subprocess.run([RUN, "desktop", rf"Remove-Item {csv} -EA SilentlyContinue; & C:\argonia\tools\presentmon\PresentMon.exe "
+                          rf"--process_name SkyrimSE.exe --output_file {csv} --timed {a.seconds} --terminate_after_timed "
+                          rf"--no_console_stats --v1_metrics 2>&1 | Select-Object -Last 5"], capture_output=True, text=True,
+                         env={**os.environ, "DESKTOP_WAIT": str(a.seconds + 60)}, check=True).stdout
     OUT.mkdir(parents=True, exist_ok=True)
     local = OUT / f"presentmon-{a.label}.csv"
-    subprocess.run([RUN, "get", csv.replace("\\", "/"), str(local)], check=True, capture_output=True)
+    if subprocess.run([RUN, "get", csv.replace("\\", "/"), str(local)], capture_output=True).returncode:
+        raise SystemExit(f"PresentMon wrote no CSV:\n{out}")
     rows = local.read_text().splitlines()
     head = rows[0].split(",")
     col = {n: head.index(n) for n in ("MsBetweenPresents", "msGPUActive") if n in head}
@@ -263,6 +309,8 @@ def main():
     s = sub.add_parser("dodge")
     s.add_argument("--dirs", default="", help="a subset, e.g. back,N,E (default: all eight and the backstep)")
     s.add_argument("--no-stills", action="store_true")
+    s.add_argument("--drawn", action="store_true", help="the weapon drawn first")
+    s.add_argument("--cell", default="qasmoke", help="the cell to roll in (empty: where the player stands)")
     sub.add_parser("pad")
     sub.add_parser("menus")
     s = sub.add_parser("scene")

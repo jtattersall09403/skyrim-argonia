@@ -47,6 +47,7 @@ reply) or `Bridge().call(command, *args)` (the `result`, or `BridgeError` / `Gam
 | `quest <id/edid>` | stage, running, enabled, completed | not a quest |
 | `global <id/edid>` | its value | not a global |
 | `av <name> [player/ref]` | current, base, permanent | no such actor value or actor |
+| `graph <player/ref> <name>...` | each behaviour graph variable as bool, int and float; null for a name no graph knows (game-3, 2026-10-30: `bIsDodging` times a roll) | no actor reference; fewer than two args |
 | `inventory [player/ref]` | items with count and worn | no such reference |
 | `events [since] [kind]` | the ring (4096) of hit, anim (the player's graph), quest (stages) and menu events after `since`, each with `seq`, `t_ms` since load and `game_days` | - |
 | `wait_event <kind> <match/*> <ms> [since]` | blocks for the first match (anim tag, quest id, menu name, hit target id), at most 60 s | nothing matching within the timeout |

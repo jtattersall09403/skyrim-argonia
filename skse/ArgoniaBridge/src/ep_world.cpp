@@ -256,6 +256,31 @@ std::string av(const Request& req) {
   });
 }
 
+// graph <player | ref id> <name>...: each behaviour graph variable as bool, int and float (the types the graph
+// answers; a name no graph knows is null). bAnimationDriven is the root-motion read of 0.2 §c's dodge.
+std::string graph(const Request& req) {
+  if (req.args.size() < 2) return reply_error("graph", "usage: graph <player | ref id> <name>...");
+  return on_main_thread("graph", [req] {
+    std::string err;
+    auto* a = actor_arg(req, 0, err);
+    if (!a) return reply_error("graph", err);
+    JsonObject vars;
+    for (std::size_t i = 1; i < req.args.size(); ++i) {
+      const auto& n = req.args[i];
+      bool b = false;
+      std::int32_t iv = 0;
+      float f = 0.0f;
+      const bool hb = a->GetGraphVariableBool(n, b), hi = a->GetGraphVariableInt(n, iv), hf = a->GetGraphVariableFloat(n, f);
+      if (!hb && !hi && !hf) {
+        vars.raw(n, "null");
+        continue;
+      }
+      vars.raw(n, JsonObject().boolean("bool", b).integer("int", iv).num("float", f).done());
+    }
+    return reply_ok("graph", JsonObject().hex("actor", a->GetFormID()).raw("vars", vars.done()).done());
+  });
+}
+
 // inventory [player | <ref id>]: every item with its count and whether it is worn.
 std::string inventory(const Request& req) {
   return on_main_thread("inventory", [req] {
@@ -289,6 +314,7 @@ const Register r_weather{"weather", &weather};
 const Register r_quest{"quest", &quest};
 const Register r_global{"global", &global};
 const Register r_av{"av", &av};
+const Register r_graph{"graph", &graph};
 const Register r_inventory{"inventory", &inventory};
 
 }  // namespace

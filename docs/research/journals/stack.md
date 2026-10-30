@@ -116,3 +116,68 @@ Owed:
 - **The stream latency.** `stream-e2e` was not run in this slot.
 
 The brief's fallback is lighter CS settings, then a larger instance, each measured.
+
+## 2026-10-30: the dodge's missing root motion found and fixed (lane game-3)
+
+**Cause: Pandora's animation data has no motion for TK Dodge's clip generators.** TK Dodge RE's `tkuc` patch
+plays the vanilla dodge animations through new clip generators: TKDodgeBack (DodgeBack.hkx or
+TKDodge\StepDodgeBack.hkx), TKDodgeLeft, TKDodgeRight and TKDodgeForward (SneakRun_ForwardRoll.hkx). Skyrim
+moves an actor by a clip's root motion only when `meshes\animationdatasinglefile.txt` holds a motion block under
+that clip generator's name in the actor's project. Pandora's output holds DodgeBack (clip 643, 207 units back) and
+the others, but no TKDodge* entry in DefaultMale, DefaultFemale or FirstPerson. The mod ships no animation-data
+part (`Nemesis_Engine\mod\tkuc` has only behaviour folders), so the dodge played in place. AMR's custom
+translations (Dynamic Dodge's clips) apply only to clips that already have a motion entry: its log reads them, but
+the move stayed 0.0.
+
+**What the bisect had wrong.** "Animation-driven motion is zeroed for all clips" was a misreading. A standing
+one-handed power attack barely steps in vanilla either. A **forward power attack moved 468 to 486 units** with
+Pandora's behaviours, with vanilla behaviours, and with vanilla animation data alike. The bridge's new `graph`
+read showed `bAnimationDriven` false through every dodge and attack, in all three variants, so it is not the
+switch. The rest of the asked bisect (Engine Fixes, BDI, Payload Interpreter, OAR, SkySA, Custom Skills, the
+inis) was not needed. The motion system works; only the TKDodge* clips lacked data.
+
+| Variant (`bis3.py`, Riverwood) | Backstep | Roll N (120 ms stick) | fwd + RT | back + RT |
+|---|---|---|---|---|
+| everything laid | 0.0 | 80 | 486 | 154 |
+| vanilla animation data (Pandora's aside) | 0.0 | 75 | 477 | 149 |
+| vanilla behaviours and data (Pandora's outputs aside) | 0.0 (no dodge) | 97 (walk) | 468 | 151 |
+| **TKDodge* motion added (copied from Dodge*)** | **130.7** | 37 | 586 | 162 |
+
+**Fix at source:** `infra/gpu-box/animdata.py` adds each missing TKDodge* clip to the three player projects. It
+copies the triggers and motion of the clip generator that plays the same animation, under the lowest free id
+(12 clips). Unit-tested in `tools/tests/test_animdata.py`: an exact round trip, the copy, idempotence, and a
+refused truncated file. `stack.py install` runs it after Pandora (`stack.py animdata`). It writes the file into
+`pandora-output` and Data, and checks both hashes. It is a derived file, made on the machine (0014). Applied on
+argonia-play: "12 clips added, pandora-output and Data match".
+
+**Test-method fixes in `smoke.py dodge`:**
+- TK Dodge reads the player's *movement* when the sprint key comes up, not the stick. After 120 ms of stick, every
+  direction played DodgeBack.hkx (AMR's log names the clip). A stick released together with B gave the
+  backstep in about half the runs. The stick is now held 500 ms, and stays held 600 ms past B.
+- Rolls run on QASmoke's open floor (`--cell`), because at Riverwood a roll ends on a trunk.
+- Each roll is measured from TK Dodge's `bIsDodging` window (the bridge's `graph`, sampled every 50 ms), so the
+  walk before it is left out.
+- `--drawn` draws the sword first.
+
+**Measured after the fix (QASmoke, 2026-10-30T01:5x, the roll's own distance in units and its heading error
+against the stick):**
+
+| | N | NE | E | SE | S | SW | W | NW | backstep |
+|---|---|---|---|---|---|---|---|---|---|
+| sheathed | 443, 0 | 91, 27 | 68, 61 | 32, 141 | 128, 0 | 35, 145 | 100, 25 | 438, 44 | 121 back |
+| sword drawn | 441, 0 | 126, 40 | 52, 28 | 19, 60 | 209, 0 | 2, 178 | 108, 10 | none fired | 213 back |
+
+**The owner's "rolls in place" is fixed for forward, back and the backstep.** The forward roll covers 441 units,
+the back roll 209, and the backstep 121 sheathed and 213 drawn (each was 0.0 before).
+
+**Side and diagonal rolls are still short** (2 to 126 units). TK Dodge chooses Left or Right from the stick
+against the camera (E-500 played DodgeRight.hkx). By then TDM's free directional movement has turned the
+character toward the stick, so the side clip's motion runs at an angle to the character and mostly cancels.
+Dynamic Dodge's direction variants (OAR folders 701x1 to 701x4) need TDM's directional movement off, or a target
+lock (TDM global 807, effect 804), plus Keytrace.esp's key effects (801 to 804), and Keytrace is not in the stack.
+
+Next steps:
+- Measure the 8-way with a lock on (RS on the wolf), which is DS1's case for side rolls.
+- Decide unlocked behaviour. DS1 rolls forward along the stick, which here needs TK Dodge to send TKDodgeForward
+  whenever TDM is free.
+- Add Keytrace if Dynamic Dodge's 8-way is wanted.

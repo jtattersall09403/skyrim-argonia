@@ -103,6 +103,8 @@ def world(b: Bridge) -> None:
     case("global", "a form that is not a global", lambda: b.call("global", TAMRIEL), True)
     case("av", "player health", lambda: b.call("av", "Health"), False)
     case("av", "an actor value that does not exist", lambda: b.call("av", "NoSuchValueZZ"), True)
+    case("graph", "the player's bAnimationDriven", lambda: b.call("graph", "player", "bAnimationDriven"), False)
+    case("graph", "no actor reference", lambda: b.call("graph", "FFFFFFF0", "bAnimationDriven"), True)
     case("inventory", "the player's", lambda: b.call("inventory"), False)
     case("inventory", "a reference that does not exist", lambda: b.call("inventory", "FFFFFFF0"), True)
 

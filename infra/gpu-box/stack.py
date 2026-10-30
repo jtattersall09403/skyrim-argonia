@@ -9,7 +9,9 @@ the game machine, with exact undo (chunk 0.2 §b; grew from 0.0's combat_test_st
                                               (modlist, plugins.txt, loadorder.txt) and installed.json (every file's hash)
   stack.py push                               send changed mod folders and the profile to C:\\argonia\\MO2 on the machine
   stack.py install [--set ...] [--dev]        fetch, stage, push, then on the machine: stack.ps1 on (bare Data first),
-                                              Pandora, and the main-menu check
+                                              Pandora, the animation-data patch, and the main-menu check
+  stack.py animdata                           after Pandora: the root motion its animation data lacks (animdata.py), in
+                                              pandora-output and Data alike
   stack.py menu                               launch through SKSE, wait for the main menu, keep a still, list each DLL's load
   stack.py verify [--full]                    archives against the manifest; every laid file in Data against installed.json
                                               (hashes cached by size and mtime on the machine; --full rehashes all)
@@ -33,6 +35,7 @@ import shutil
 import struct
 import subprocess
 import sys
+import tempfile
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -749,7 +752,35 @@ def cmd_install(a):
                     r"& C:\argonia\infra\stack.ps1 off", capture=True))
     os.environ["DESKTOP_WAIT"] = "900"
     print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
+    cmd_animdata(a)
     cmd_menu(a)
+
+
+ANIMDATA = r"meshes\animationdatasinglefile.txt"
+
+
+def cmd_animdata(a):
+    """Pandora's animation data lacks the root motion of TK Dodge's clips (animdata.py): patched on the build VM
+    and written over pandora-output's file and Data's (a copy may break the hard link), both then hashed."""
+    import animdata
+    mod = rf"C:\argonia\MO2\mods\pandora-output\{ANIMDATA}"
+    data = rf"C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\{ANIMDATA}"
+    with tempfile.TemporaryDirectory() as t:
+        src, out = pathlib.Path(t) / "in.txt", pathlib.Path(t) / "out.txt"
+        run("get", mod.replace("\\", "/"), str(src))
+        text, added = animdata.patch(open(src, newline="").read())
+        print("\n".join(added) or "animdata: nothing missing")
+        if not added:
+            return
+        open(out, "w", newline="").write(text)
+        run("put", str(out), r"C:/argonia/animdata.tmp")
+        got = run("ps", rf"Copy-Item C:\argonia\animdata.tmp '{mod}' -Force; "
+                        rf"Copy-Item C:\argonia\animdata.tmp '{data}' -Force; "
+                        rf"(Get-FileHash '{mod}').Hash + ' ' + (Get-FileHash '{data}').Hash", capture=True).split()
+    want = hashlib.sha256(text.encode()).hexdigest().upper()
+    if got != [want, want]:
+        raise SystemExit(f"animdata: the machine's files hash {got}, not {want}")
+    print(f"animdata: {len(added)} clips added, pandora-output and Data match")
 
 
 def cmd_verify(a):
@@ -857,14 +888,15 @@ def main():
                        help="lay deferred rows whose `from` chunk has started by this part or chunk (default: the current part)")
         if name == "install":
             s.add_argument("--skip-fetch", action="store_true")
-    for name in ("push", "menu", "masters", "prune", "evict"):
+    for name in ("push", "menu", "masters", "prune", "evict", "animdata"):
         sub.add_parser(name)
     sub.add_parser("verify").add_argument("--full", action="store_true", help="rehash every file (no cache)")
     a = p.parse_args()
     if a.machine:
         os.environ["ARGONIA_PLAY"] = a.machine  # run.sh reads it
     {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
-     "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict}[a.cmd](a)
+     "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict,
+     "animdata": cmd_animdata}[a.cmd](a)
 
 
 if __name__ == "__main__":
