@@ -1,0 +1,112 @@
+# The 1.2 §0 probe (lane ui-live): our web views drawn by PrismaUI on 1.7.104, on the hardest capability. It decides
+# PrismaUI or Scaleform (decision 0017's "1.2 §0 record", the numbers it names). Judged on state, the frame times
+# and a still per step at the play camera; the stills go to a `reader` (the 300-topic list, the filtered list, each
+# view legible in Pelagiad, no vanilla menu behind).
+# Needs: ArgoniaCore with views.cpp (skse_build.sh), the profile restaged so argonia-views lays out/ui/views under
+# Data/PrismaUI/views/argonia (python3 tools/ui_harness/build.py, then stack.py stage/push), PrismaUI 1.5.1 laid.
+# The probe window is ArgoniaCore's dev ViewProbe (a speaker of 300 topics: the fixture, set at its step, never what
+# is measured); talking to Livia first proves the real intercept opens our view. Scrolling and the journal's pad
+# button are the real pad (pad.ps1: PrismaUI forwards pad buttons to the view); the filter is typed.
+# A hitch while scrolling shows only in motion: the scroll is L5 (a clip of the scroll step, reason: a hitch) beside
+# the frame-time reads here, which run while the view sits open (the runner reads frames between actions).
+# The sitting view is grow-at-rest's (its rest opens it); its still there counts for 1.2 §0.
+id: ui-probe
+runner: 1
+scene: first-place
+steps:
+  - name: bound              # PrismaUI's API answered and every page reported DOM ready
+    do: [{wait: 3}]
+    expect:
+      - {read: [core, Views], path: value, contains: "bound v"}
+      - {read: [core, Views], path: value, contains: "dialogue ready closed"}
+      - {read: [core, Views], path: value, contains: "hud ready open"}
+      - {read: [core, Views], path: value, contains: "chart ready closed"}
+      - {read: [core, Views], path: value, contains: "journal ready closed"}
+  - name: hud                # the HUD is on in play: its state was pushed, the bars carry health
+    expect:
+      - {read: [core, ViewState, hud], path: value.body.bars, contains: "health"}
+  - name: frames-closed      # the baseline: play, no view open (600 frames)
+    expect:
+      - {read: [frametime, 600], path: p50_ms, keep: closed_p50}
+      - {read: [frametime, 600], path: p99_ms, keep: closed_p99}
+  - name: talk-livia         # the real intercept opens our dialogue view
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 110 0"}
+      - {console: "player.setangle x 0"}
+      - {wait: 3}
+      - {key: "E 120"}
+      - {wait: 2}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
+      - {read: [core, Views], path: value, contains: "dialogue ready open"}
+  - name: probe-300          # the fixture: Livia's window with 300 topics
+    do: [{call: [core, ViewProbe, "300"]}, {wait: 1}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
+      - {read: [core, Views], path: value, contains: "dialogue ready open"}
+  - name: scroll             # 40 rows down by the pad's d-pad: the list scrolls under focus (still: rows past 20)
+    do:
+      - {pad: "DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70"}
+      - {pad: "DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70 DOWN:70"}
+      - {wait: 1}
+    expect:
+      - {read: [core, Views], path: value, contains: "dialogue ready open"}
+  - name: frames-open        # the cost: the 300-topic window open (600 frames); within the 0.2 §d bar
+    expect:
+      - {read: [frametime, 600], path: p50_ms, keep: open_p50}
+      - {read: [frametime, 600], path: p99_ms, le: 22.3, keep: open_p99}
+  - name: filter             # typed "29" narrows to 13 topics (Topic 029, 129, 229, 290-299): the still shows them
+    do: [{key: "2 80"}, {key: "9 80"}, {wait: 1}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}   # view-local: state unchanged
+  - name: close-dialogue     # Escape clears the filter, a second Escape closes (view.close)
+    do: [{key: "ESC 80"}, {wait: 1}, {key: "ESC 80"}, {wait: 1}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value, eq: null}
+      - {read: [core, Views], path: value, contains: "dialogue ready closed"}
+  - name: journal-key        # J opens our journal in place of the Journal Menu
+    do: [{key: "J 120"}, {wait: 1.5}]
+    expect:
+      - {read: [core, ViewState, journal], path: value.type, eq: journal.state}
+      - {read: [core, Views], path: value, contains: "journal ready open"}
+  - name: journal-close
+    do: [{key: "ESC 80"}, {wait: 1}]
+    expect: [{read: [core, ViewState, journal], path: value, eq: null}]
+  - name: journal-pad        # the pad's Back is the same user event
+    do: [{pad: "BACK:120"}, {wait: 1.5}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
+  - name: journal-pad-close
+    do: [{pad: "B:120"}, {wait: 1}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
+  - name: escape-keeps-system  # Escape in play opens the vanilla Journal Menu (System tab): ours stays closed
+    do: [{key: "ESC 80"}, {wait: 1.5}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
+  - name: escape-out
+    do: [{key: "ESC 80"}, {wait: 1}]
+    expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
+  - name: chart-open         # M opens our chart in place of the MapMenu (and FWMF's)
+    do: [{key: "M 120"}, {wait: 2}]
+    expect:
+      - {read: [core, ViewState, chart], path: value.type, eq: chart.state}
+      - {read: [core, Views], path: value, contains: "chart ready open"}
+  - name: chart-pan          # the view's own pan intent (as a drag sends it); ArgoniaCore writes the layout file
+    do: [{call: [core, ViewIntent, '{"type":"chart.pan","v":1,"body":{"view":{"centreX":-56.85,"centreY":11.7,"zoom":4}}}']}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready open"}]
+  - name: chart-reopen       # closed and opened: the view comes back where it was left (read from the file)
+    do: [{key: "ESC 80"}, {wait: 1}, {key: "M 120"}, {wait: 2}]
+    expect:
+      - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}
+      - {read: [core, ViewState, chart], path: value.body.view.centreX, eq: -56.85}
+  - name: relaunch           # the restart: quit, relaunch to the main menu, load the base save, reapply the scene
+    owed: "a relaunch action in tools/run_journey.py (Bridge.launch, then apply_scene); until then the game lane relaunches by hand between chart-reopen and remembered"
+  - name: remembered         # after the restart the chart opens where it was left
+    owed: "the relaunch step above"
+    do: [{key: "M 120"}, {wait: 2}]
+    expect:
+      - {read: [core, ViewState, chart], path: value.body.view.zoom, eq: 4}
+      - {read: [core, ViewState, chart], path: value.body.view.centreX, eq: -56.85}
+  - name: chart-close
+    do: [{key: "ESC 80"}, {wait: 1}]
+    expect: [{read: [core, ViewState, chart], path: value, eq: null}]
