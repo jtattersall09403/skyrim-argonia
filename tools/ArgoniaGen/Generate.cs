@@ -35,7 +35,7 @@ static class Generate
                 case "MUSC": Music(mod, r); break;
                 case "STAT": Static(mod, r); break;
                 case "CELL": Cell(mod, r); break;
-                case "QUST": Quest(mod, r); break;
+                case "QUST": QuestRecords.Write(mod, r); break;
                 case "CLAS": Class(mod, r); break;
                 case "SPEL": Spell(mod, r); break;
                 case "LVLI": LevItem(mod, r); break;
@@ -163,68 +163,6 @@ static class Generate
         if (!l.TryGetProperty(k, out var v)) return System.Drawing.Color.FromArgb(0, 0, 0, 0);
         var a = v.EnumerateArray().Select(x => x.GetInt32()).ToArray();
         return System.Drawing.Color.FromArgb(0, a[0], a[1], a[2]);
-    }
-
-    static void Quest(SkyrimMod mod, JsonElement r)
-    {
-        var q = new Quest(Key(r), Rel)
-        {
-            EditorID = S(r, "edid"),
-            Name = Text(r, "name"),
-            Flags = Flags<Quest.Flag>(r, "flags"),
-            Priority = (byte)I(r, "priority"),
-            Type = Enum.Parse<Quest.TypeEnum>(Os(r, "questType") ?? "None"),
-        };
-        foreach (var c in A(r, "eventConditions")) q.EventConditions.Add(Condition(c));
-        var scripts = A(r, "scripts").ToList();
-        if (scripts.Count > 0)
-        {
-            var vm = new QuestAdapter();
-            foreach (var s in scripts) vm.Scripts.Add(Script(s));
-            q.VirtualMachineAdapter = vm;
-        }
-        foreach (var st in A(r, "stages"))
-            q.Stages.Add(new QuestStage { Index = (ushort)I(st, "index"), Flags = Flags<QuestStage.Flag>(st, "flags") });
-        mod.Quests.Add(q);
-    }
-
-    static ScriptEntry Script(JsonElement s)
-    {
-        var e = new ScriptEntry { Name = S(s, "name") };
-        foreach (var p in A(s, "properties"))
-        {
-            if (Os(p, "object") is { } obj)
-                e.Properties.Add(new ScriptObjectProperty
-                {
-                    Name = S(p, "name"), Flags = ScriptProperty.Flag.Edited,
-                    Object = new FormLink<ISkyrimMajorRecordGetter>(FK(obj)),
-                });
-            else throw new InvalidDataException($"script {e.Name}: property {S(p, "name")} kind not supported yet");
-        }
-        return e;
-    }
-
-    static Condition Condition(JsonElement c)
-    {
-        var fn = S(c, "function");
-        ConditionData data = fn switch
-        {
-            "GetGlobalValue" => Global(c),
-            _ => throw new InvalidDataException($"condition function {fn} not supported yet"),
-        };
-        return new ConditionFloat
-        {
-            CompareOperator = Enum.Parse<CompareOperator>(S(c, "op")),
-            ComparisonValue = F(c, "value"),
-            Data = data,
-        };
-    }
-
-    static ConditionData Global(JsonElement c)
-    {
-        var d = new GetGlobalValueConditionData();
-        d.Global.Link.SetTo(FK(S(c, "global")));
-        return d;
     }
 
     static void Class(SkyrimMod mod, JsonElement r)

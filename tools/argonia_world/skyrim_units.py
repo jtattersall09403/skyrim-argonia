@@ -70,6 +70,7 @@ EDITOR_ID_MAX = 99  # the CK's limit; voice paths take only the first 25 (gotcha
 # Skyrim.ccc for those present, then the dependency plugins (data/dependencies.json), then ours.
 OFFICIAL_MASTERS = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm")
 ENGINE_MARKER_HEADING = "000034:Skyrim.esm"  # XMarkerHeading: the engine's own heading marker
+MAP_MARKER = "000010:Skyrim.esm"  # MapMarker: the static a map marker reference stands on
 
 # --- skills -----------------------------------------------------------------------------------------------
 # Our 27 skills (the world's `skill` table) onto Skyrim's 18 skill actor values (Mutagen's Skill names), for the
