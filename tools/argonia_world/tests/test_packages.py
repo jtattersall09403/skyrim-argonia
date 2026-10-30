@@ -41,6 +41,8 @@ def test_shape_and_units():
         pk.sleep(a, "ARG_Pack_C", "k", REF, 3.0, 25, 8)
     home = pk.sleep(a, "ARG_Pack_D", "k", REF, 3.0, 21, 9, cell_form_key="893374:King of the Murkmire.esp")
     assert home["location"] == {"cell": "893374:King of the Murkmire.esp", "radius": 0}  # in cell: her own bed there
+    assert home["inputs"] == [{"index": 15, "value": False}]  # no LockDoors step: she sleeps with the player in the room
+    assert "inputs" not in pk.sleep(a, "ARG_Pack_E", "k", REF, 3.0, 21, 9)
 
 
 @pytest.mark.skipif(not (DATA / "Skyrim.esm").exists() or not GEN.exists() or not DOTNET.exists(),

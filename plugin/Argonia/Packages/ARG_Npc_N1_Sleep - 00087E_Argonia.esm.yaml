@@ -62,7 +62,6 @@ Data:
 - Key: 15
   Value:
     MutagenObjectType: PackageDataBool
-    Data: True
 - Key: 17
   Value:
     MutagenObjectType: PackageDataBool

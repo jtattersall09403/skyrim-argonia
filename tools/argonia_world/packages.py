@@ -11,6 +11,7 @@ SLEEP_TEMPLATE = "019717:Skyrim.esm"  # PACK EditorID Sleep (PackageTemplate; in
 # `ArgoniaGen npcai` from Skyrim.esm (lane npc-ai: SolitudeBardsCollegeBendtSandbox4x18 12, SolitudeBardsCollegeBendt's
 # sleep 10DEB5 17). ArgoniaGen fails the build when a written PACK carries another count.
 TEMPLATE_INPUTS = {SANDBOX_TEMPLATE: 12, SLEEP_TEMPLATE: 17}
+SLEEP_LOCK_DOORS = 15  # the Sleep template's bool input "Lock Doors?" (BNAM, read from Skyrim.esm 019717)
 
 
 def _record(alloc, edid, entity_key, template, flags, ref_form_key, radius_m, start_hour, hours) -> dict:
@@ -38,4 +39,8 @@ def sleep(alloc, edid, entity_key, ref_form_key, radius_m, start_hour, hours, ce
     rec = _record(alloc, edid, entity_key, SLEEP_TEMPLATE, ["WeaponsUnequipped"], ref_form_key, radius_m, start_hour, hours)
     if cell_form_key:
         rec["location"] = {"cell": cell_form_key, "radius": 0}
+        # The template runs Travel, then LockDoors when "Lock Doors?" (input 15) is set, then Find bed and Sleep;
+        # LockDoors with "Warn Before Locking?" (13) waits for the player to leave, so she never lay down with the
+        # player in her room (game-10: asleep only once he went outside). Off, as on vanilla's inn sleepers.
+        rec["inputs"] = [{"index": SLEEP_LOCK_DOORS, "value": False}]
     return rec
