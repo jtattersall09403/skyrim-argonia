@@ -24,7 +24,11 @@ std::variant<KeyCall, std::string> key_call(const Request& r) {
   c.route = Route::engine;
   for (auto code : c.codes)
     if (is_movement_key(code)) c.route = Route::os;
+  bool mouse = false;
+  for (auto code : c.codes) mouse = mouse || code >= 0x100;
+  if (mouse) c.route = Route::engine;  // SendInput here sends scan codes only: a mouse button goes by the engine
   if (a.size() == 4) {
+    if (mouse && a[3] == "os") return "a mouse button goes by the engine route only";
     if (a[3] == "engine") c.route = Route::engine;
     else if (a[3] == "os") c.route = Route::os;
     else return "the route is engine or os, not " + a[3];

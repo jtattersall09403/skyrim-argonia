@@ -26,10 +26,11 @@ steps:
       - {console: "ARG_Ref_ClaywaterStationLivia.moveto player 0 100 0"}
       - {console: "ARG_Ref_ClaywaterStationLivia.damageav health 1000"}
       - {console: "ARG_Ref_ClaywaterStationLivia.restoreav health 5"}
-      - {pad: "RB:120 wait:1500"}
+      - {key: "R 150"}
+      - {wait: 1.5}
     expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
   - name: strike              # the player's blows
-    do: [{pad: "RB:120 wait:900"}, {pad: "RB:120 wait:900"}, {pad: "RB:120 wait:900"}]   # one pad call each: 3 x 1020 ms is over the 3 s cap
+    do: [{strike: ARG_Ref_ClaywaterStationLivia}, {strike: ARG_Ref_ClaywaterStationLivia}, {strike: ARG_Ref_ClaywaterStationLivia}]
     expect:
       - {event: {kind: hit, match: "*"}}
       - {console: "ARG_Ref_ClaywaterStationLivia.GetDead", contains: ">> 1", within: 8}

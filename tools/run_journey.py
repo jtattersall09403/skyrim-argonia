@@ -261,8 +261,26 @@ class Runner:
 
     def _key(self, spec):
         keys, ms, *route = str(spec).split()  # `key: "TAB 120"` or `key: "TAB 120 engine"`; the bridge picks per key
+        if keys == "E" and not route:
+            return self._activate(int(ms))
         r = self.b.call("input", "key", keys, int(ms), *route)
         self.calls.append({"call": ["input", "key", keys, int(ms), *route], "result": r})
+        return r
+
+    def _activate(self, ms=120):
+        """E, then again (3 tries, 3.5 s apart) while no menu opened and the player's cell is unchanged: the first E
+        after a scene's setup is lost; a second, 3.5 s later, opens the dialogue (game-15, live, engine route)."""
+        cell0 = (self.b.call("player") or {}).get("cell")
+        for attempt in (1, 2, 3):
+            last = (self.b.call("events") or {}).get("last")
+            r = self.b.call("input", "key", "E", ms)  # engine route by default (bridge: activation keys)
+            self.calls.append({"call": ["input", "key", "E", ms], "result": r, "attempt": attempt})
+            time.sleep(1.5)
+            evs = (self.b.call("events") or {}).get("events") or []
+            if any(e.get("kind") == "menu" and (e.get("data") or {}).get("opening") and (last is None or e.get("seq", 0) > last)
+                   for e in evs) or (self.b.call("player") or {}).get("cell") != cell0:
+                break
+            time.sleep(2.0)
         return r
 
     def _console(self, line):
@@ -318,8 +336,8 @@ class Runner:
         self.calls.append({"call": ["relaunch", save], "result": r})
         return r
 
-    def _talk(self, ref):
-        """`talk: <ref>`: the NPC moved TALK_UNITS in front of the player, turned to face them, then E once the
+    def _face(self, ref, units=None):
+        """The NPC moved TALK_UNITS (or `units`) in front of the player, turned to face them, then E once the
         crosshair's ref is that NPC (the bridge's `crosshair` read), polled for TALK_WAIT_S; StepFailed when it never
         is. An NPC under AI walked out of the crosshair during a fixed wait before E (diag2-dialogue-crime)."""
         ref = str(ref).strip().strip('"')
@@ -331,7 +349,7 @@ class Runner:
         self.b.call("input", "key", "W", 80)
         caller = ref if ref.startswith("ARG_") else f'"{ref}"'  # a runtime id calls quoted (tools/journey_lint.py)
         h = float(self.b.call("player")["heading_deg"])
-        dx, dy = TALK_UNITS * math.sin(math.radians(h)), TALK_UNITS * math.cos(math.radians(h))
+        dx, dy = (units or TALK_UNITS) * math.sin(math.radians(h)), (units or TALK_UNITS) * math.cos(math.radians(h))
         self.b.call("console", f"{caller}.moveto player {dx:.0f} {dy:.0f} 0")
         self.b.call("console", f"{caller}.setangle z {(h + 180) % 360:.0f}")
         want = _form_id(self.b.resolve_refs(ref))
@@ -344,19 +362,27 @@ class Runner:
                 raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
-        # The first E after a scene's setup is lost; a second opens the dialogue (game-15, live, engine route). So E,
-        # then again (3 tries, 3.5 s apart) while no menu opened: the second E took 3.5 s after the first, not 1.5 s.
-        for attempt in (1, 2, 3):
-            last = (self.b.call("events") or {}).get("last")
-            r = self.b.call("input", "key", "E", 120)  # engine route by default (bridge: activation keys)
-            self.calls.append({"call": ["input", "key", "E", 120], "result": r, "attempt": attempt})
+
+    def _talk(self, ref):
+        """`talk: <ref>`: _face, then E (retried while no menu opens)."""
+        self._face(ref)
+        return self._activate(120)
+
+    def _strike(self, ref):
+        """`strike: <ref>`: one real melee swing at the ref with no key or pad on the path (the input path is the
+        owner's #17 stream check): the ref faced at reach (_face, STRIKE_UNITS), the weapon drawn (R) and one attack
+        (MOUSE1), both engine ButtonEvents (`sae` attack events were refused by the player's graph; the pad was dead
+        after another lane's run: game-15), so the engine's hit, our damage and the crime rules all run."""
+        self._face(ref, STRIKE_UNITS)
+        out = []
+        if str(self.b.call("console", "player.IsWeaponOut").get("output", "")).split(">>")[-1].strip().startswith("0"):
+            out.append(self.b.call("input", "key", "R", 150))  # Ready Weapon (engine route)
             time.sleep(1.5)
-            evs = (self.b.call("events") or {}).get("events") or []
-            if any(e.get("kind") == "menu" and (e.get("data") or {}).get("opening") and (last is None or e.get("seq", 0) > last)
-                   for e in evs):
-                break
-            time.sleep(2.0)
-        return r
+        out.append(self.b.call("input", "key", "MOUSE1", 150))  # Right Attack (engine route: a mouse ButtonEvent)
+        self.calls.append({"call": ["strike", ref], "result": out})
+        time.sleep(1.2)
+        return out
+
 
     def _call(self, args):
         r = self.b.call(*args)
@@ -558,7 +584,8 @@ def _form_id(text) -> int | None:
 
 
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
-ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
+STRIKE_UNITS = 80  # inside a sword's reach
+ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")

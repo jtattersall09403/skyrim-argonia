@@ -29,7 +29,8 @@ steps:
       - {console: "player.moveto {opp} 0 -110 0"}
       - {console: "player.setangle z 0"}
       - {key: "W 80"}             # the third-person camera ignores setangle until the player moves (diag3-g15)
-      - {pad: "RB:120 wait:1500"}
+      - {key: "R 150"}
+      - {wait: 1.5}
     expect:
       - {read: [av, VoicePoints, player], path: current, eq: {kept: vp}}
       - {console: player.IsWeaponOut, not_contains: ">> 0"}
@@ -40,7 +41,7 @@ steps:
       - {call: [dev-set, SetAttribute, agility, "40"]}
       - {console: '"{opp}".setav health 2000'}
       - {wait: 1}
-      - {pad: "RB:120 wait:1200"}
+      - {strike: "{opp}"}
     expect:
       - {event: {kind: hit, match: "*"}}
       - {read: [av, Health, "{opp}"], path: current, ge: 1988.7}
@@ -52,7 +53,7 @@ steps:
       - {call: [dev-set, SetAttribute, agility, "100"]}
       - {console: '"{opp}".setav health 2000'}
       - {wait: 1}
-      - {pad: "RB:120 wait:1200"}
+      - {strike: "{opp}"}
     expect:
       - {event: {kind: hit, match: "*"}}
       - {read: [av, Health, "{opp}"], path: current, ge: 1963.2}

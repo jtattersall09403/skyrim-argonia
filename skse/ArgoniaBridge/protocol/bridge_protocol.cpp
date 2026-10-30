@@ -173,6 +173,7 @@ std::optional<std::uint16_t> scancode(std::string_view n) {
       {"LCTRL", 0x1D}, {"A", 0x1E}, {"S", 0x1F}, {"D", 0x20}, {"F", 0x21}, {"G", 0x22}, {"H", 0x23}, {"J", 0x24},
       {"K", 0x25}, {"L", 0x26}, {"TILDE", 0x29}, {"LSHIFT", 0x2A}, {"Z", 0x2C}, {"X", 0x2D}, {"C", 0x2E},
       {"V", 0x2F}, {"B", 0x30}, {"N", 0x31}, {"M", 0x32}, {"SLASH", 0x35}, {"LALT", 0x38}, {"SPACE", 0x39}, {"CAPS", 0x3A},
+      {"MOUSE1", 0x100}, {"MOUSE2", 0x101},  // mouse buttons 0 and 1 (attack right, left/block): engine route only
       {"F1", 0x3B}, {"F2", 0x3C}, {"F3", 0x3D}, {"F4", 0x3E}, {"F5", 0x3F}, {"F6", 0x40}, {"F12", 0x58},
   };
   for (const auto& k : keys)

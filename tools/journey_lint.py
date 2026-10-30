@@ -115,7 +115,7 @@ def lint(journey: dict, vocab: dict | None) -> list[str]:
                 found += console_line(str(v), vocab)
             elif k == "call" and isinstance(v, list):
                 found += read_call(v, vocab)
-            elif k == "talk":
+            elif k in ("talk", "strike"):
                 found += talk_ref(str(v), vocab)
         for e in s.get("expect", []):
             if "console" in e:

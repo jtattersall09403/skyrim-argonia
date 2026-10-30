@@ -19,6 +19,10 @@ void key_calls() {
   v = key_call(req("input key TAB+W 120"));  // any movement key in the chord: os
   k = std::get_if<KeyCall>(&v);
   CHECK(k && k->route == Route::os);
+  v = key_call(req("input key MOUSE1 120"));  // a mouse button: engine only
+  k = std::get_if<KeyCall>(&v);
+  CHECK(k && k->route == Route::engine && k->codes[0] == 0x100);
+  CHECK(std::holds_alternative<std::string>(key_call(req("input key MOUSE1 120 os"))));
   v = key_call(req("input key E 120 os"));
   k = std::get_if<KeyCall>(&v);
   CHECK(k && k->route == Route::os);

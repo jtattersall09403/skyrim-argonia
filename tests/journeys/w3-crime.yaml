@@ -21,10 +21,10 @@ steps:
       - {read: [crime-gold, "Argonia.esm|0x9C2"], path: violent, keep: gold_before}
       - {console: "ARG_Ref_ClaywaterStationLivia.GetInFaction ARG_Faction_ClaywaterStation", contains: ">> 1"}
   - name: draw
-    do: [{pad: "RB:120 wait:1500"}]
+    do: [{key: "R 150"}, {wait: 1.5}]
     expect: [{console: player.IsWeaponOut, not_contains: ">> 0"}]
   - name: strike              # the blow lands on her; the assault is reported to her crime faction
-    do: [{pad: "RB:120 wait:1200"}]   # one blow: she fights back and can kill the player before a second read
+    do: [{strike: ARG_Ref_ClaywaterStationLivia}]   # one blow: she fights back and can kill the player before a second read
     expect:
       - {event: {kind: hit, match: "*"}, within: 5}   # hit data carries runtime hex ids; the crime gold read is the real check
       - {read: [crime-gold, "Argonia.esm|0x9C2"], path: violent, gt: {kept: gold_before}, within: 3}

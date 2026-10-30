@@ -127,9 +127,12 @@ void engine_event(std::vector<std::uint16_t> codes, float value, float held) {
     auto ctx = RE::UserEvents::INPUT_CONTEXT_ID::kGameplay;
     if (auto& stack = map->GetRuntimeData().contextPriorityStack; !stack.empty()) ctx = stack.back();
     for (auto code : codes) {
-      auto name = map->GetUserEventName(code, RE::INPUT_DEVICE::kKeyboard, ctx);
-      if (name.empty()) name = map->GetUserEventName(code, RE::INPUT_DEVICE::kKeyboard);
-      auto* ev = RE::ButtonEvent::Create(RE::INPUT_DEVICE::kKeyboard, RE::BSFixedString(name), code, value, held);
+      // Codes from 0x100 are mouse buttons (protocol scancode MOUSE1/MOUSE2): the mouse device, button code - 0x100.
+      auto dev = code >= 0x100 ? RE::INPUT_DEVICE::kMouse : RE::INPUT_DEVICE::kKeyboard;
+      std::uint32_t id = code >= 0x100 ? code - 0x100 : code;
+      auto name = map->GetUserEventName(id, dev, ctx);
+      if (name.empty()) name = map->GetUserEventName(id, dev);
+      auto* ev = RE::ButtonEvent::Create(dev, RE::BSFixedString(name), id, value, held);
       if (!ev) continue;
       RE::InputEvent* head = ev;
       mgr->SendEvent(&head);
