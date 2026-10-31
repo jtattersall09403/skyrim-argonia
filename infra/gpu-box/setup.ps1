@@ -123,6 +123,14 @@ function Install-Stream {
     $tr = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 5)
     Register-ScheduledTask -TaskName argonia-idle-stop -Action $a -Trigger $tr -User SYSTEM -RunLevel Highest | Out-Null
   }
+  # The spot interruption watcher (spot-watch.ps1, 1.8): on AWS's two-minute notice, the suspend save and
+  # C:\argonia\state\interrupted.json. It polls every 5 s from boot, as SYSTEM.
+  if (-not (Get-ScheduledTask -TaskName argonia-spot-watch -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\spot-watch.ps1"
+    $st = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([TimeSpan]::Zero) -RestartCount 99 -RestartInterval (New-TimeSpan -Minutes 1)
+    Register-ScheduledTask -TaskName argonia-spot-watch -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -Settings $st -User SYSTEM -RunLevel Highest | Out-Null
+    Start-ScheduledTask -TaskName argonia-spot-watch
+  }
   # The owner's desktop launchers: vanilla, or the 0.0 combat-test mods.
   $sh = New-Object -ComObject WScript.Shell
   foreach ($l in @(@('Skyrim (vanilla)', 'play-vanilla'), @('Skyrim (souls-like mods)', 'play-modded'))) {

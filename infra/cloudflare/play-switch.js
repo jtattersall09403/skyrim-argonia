@@ -92,8 +92,10 @@ async function startPage(env) {
   if (s.ip) await syncHost(env, s.ip)
   if (s.state === "stopped") {
     await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
+    if (s.reclaimed) return page("Starting the game machine", `${RECLAIMED_TEXT} Starting it again; if AWS has no room yet, this page keeps trying.`, true)
     return page("Starting the game machine", "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
   }
+  if (s.reclaimed) return page("AWS is taking the game machine back", `${RECLAIMED_TEXT} This page starts it again once it has stopped.`, true)
   if (s.state === "stopping") return page("The game machine is still switching off", "Give it a minute; this page will start it again.", true)
   if (s.state === "running") return page("The game machine is on; its desktop is starting", "Usually under two minutes.", true)
   return page("Starting the game machine", `It is ${s.state}. This page reloads into the stream when it is ready.`, true)
@@ -125,15 +127,37 @@ async function state(env) {
   const xml = await ec2(env, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": NAME,
     // never a terminated or shutting-down instance that still carries the name (a cut-over leaves one)
     "Filter.2.Name": "instance-state-name", "Filter.2.Value.1": "pending", "Filter.2.Value.2": "running", "Filter.2.Value.3": "stopping", "Filter.2.Value.4": "stopped" })
+  const s = parseInstance(xml)
+  if (s.spot) {  // a spot machine: why it stopped, if AWS stopped it (1.8 §2); the IAM user may lack the read
+    try { s.spotStatus = spotStatus(await ec2(env, { Action: "DescribeSpotInstanceRequests", "SpotInstanceRequestId.1": s.spot })) } catch { s.spotStatus = null }
+    s.reclaimed = reclaimed(s.state, s.spotStatus)
+  }
+  return s
+}
+
+/** The first instance of a DescribeInstances answer: id, state, launch time, public IP, spot request id. */
+export function parseInstance(xml) {
   const items = [...xml.matchAll(/<instancesSet>([\s\S]*?)<\/instancesSet>/g)].map((m) => m[1]).join("")
   const id = /<instanceId>(i-[0-9a-f]+)<\/instanceId>/.exec(items)?.[1]
   const st = /<instanceState>[\s\S]*?<name>([a-z-]+)<\/name>/.exec(items)?.[1] ?? "missing"
   const launched = /<launchTime>([^<]+)<\/launchTime>/.exec(items)?.[1] ?? null
   const ip = /<ipAddress>([0-9.]+)<\/ipAddress>/.exec(items)?.[1] ?? null
-  return { id, state: st, launched, ip }
+  const spot = /<spotInstanceRequestId>(sir-[0-9a-z]+)<\/spotInstanceRequestId>/.exec(items)?.[1] ?? null
+  return { id, state: st, launched, ip, spot }
 }
 
-// EC2 Query API with Signature Version 4 (WebCrypto; no dependencies).
+/** A DescribeSpotInstanceRequests answer's status code (e.g. marked-for-stop, instance-stopped-no-capacity). */
+export function spotStatus(xml) { return /<status>[\s\S]*?<code>([a-z-]+)<\/code>/.exec(xml)?.[1] ?? null }
+
+/** Did AWS take the machine back (not the owner, idle-stop or a cap)? Then the page says so: spot-watch.ps1 wrote
+ *  the suspend save on the two-minute notice. */
+export function reclaimed(state, code) {
+  if (!code || state === "running" || state === "pending") return code === "marked-for-stop"
+  return code === "marked-for-stop" || code.startsWith("instance-stopped-") && code !== "instance-stopped-by-user"
+}
+
+export const RECLAIMED_TEXT = "AWS took the machine back; your game was saved."
+
 async function ec2(env, params) {
   const REGION = env.REGION || "eu-west-2"   // machines.conf's region for argonia-play, bound by cloudflare_gate.py (#27)
   const host = `ec2.${REGION}.amazonaws.com`

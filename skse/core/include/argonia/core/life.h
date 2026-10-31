@@ -150,9 +150,10 @@ std::string pile_name(double vastei);
 // --- Saving: rest is the only save (2.8 §c) -------------------------------------------------------------------
 inline constexpr std::string_view kRestSave = "ArgoniaRest";        // one slot, overwritten at each rest
 inline constexpr std::string_view kSuspendSave = "ArgoniaSuspend";  // the hidden suspend save
-enum class SuspendWhy { quit, stream_drop, interval };
+enum class SuspendWhy { quit, stream_drop, spot_reclaim, interval };
 const char* to_string(SuspendWhy w);
-// A caller's reason by its wire name ("quit", "stream_drop"): only the two outside callers' reasons are accepted
+// A caller's reason by its wire name ("quit", "stream_drop", "spot_reclaim": AWS's two-minute notice that it takes
+// the spot machine back, from infra/gpu-box/spot-watch.ps1): only the outside callers' reasons are accepted
 // (the interval is ArgoniaCore's own), so an unknown word never forces a save in combat.
 std::optional<SuspendWhy> suspend_why(std::string_view wire);
 // The dev bridge's call (ArgoniaBridge `core-suspend <why>`): an SKSE message to ArgoniaCore whose data is this
@@ -162,7 +163,7 @@ struct BridgeSuspend {
   char why[32] = {};
   bool written = false;
 };
-// When the suspend save is written: on a quit or a stream drop always; at any other event once the interval has
+// When the suspend save is written: on a quit, a stream drop or a spot reclaim always; at any other event once the interval has
 // passed since the last save of either kind, never in combat and never while a menu is open (a save's spinner
 // closes the player's menu: game-8's Journal lag); never when the game cannot save now (a load). Opening a menu is
 // never a reason. `now_s` and `last_save_s` are real seconds.

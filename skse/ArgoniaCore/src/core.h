@@ -112,7 +112,7 @@ std::string SittingIntent(std::string_view json);
 std::optional<double> TakeVastei(RE::TESObjectREFR* pile);
 // The skill an equipped weapon trains, from its Argonia weapon-class keyword; none for any other weapon.
 std::optional<ac::SkillId> WeaponSkillOf(RE::FormID weapon);
-// The suspend save on a caller's reason ("quit", "stream_drop"); false when refused or not due (the log says why).
+// The suspend save on a caller's reason ("quit", "stream_drop", "spot_reclaim"); false when refused or not due (the log says why).
 bool SuspendSaveFor(std::string_view why);
 
 // --- combat.cpp: the carriers, the pinned weapon skills, the roll lock (1.6) -------------------------------------
