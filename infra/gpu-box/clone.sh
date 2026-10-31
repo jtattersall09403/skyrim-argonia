@@ -112,4 +112,8 @@ if grep -q RENAMED <<<"$out"; then
   read -t 45 < /dev/zero 2>/dev/null || true
   for i in $(seq 1 24); do "$here/run.sh" ps hostname >/dev/null 2>&1 && break; read -t 10 < /dev/zero 2>/dev/null || true; done
 fi
+"$here/run.sh" put "$here/gpu-bind.ps1" C:/argonia/infra/gpu-bind.ps1 >/dev/null  # new hardware: bind the GPU (1.8)
+if "$here/run.sh" ps '& C:\argonia\infra\gpu-bind.ps1' | grep -q REBOOTING; then
+  read -t 60 < /dev/zero 2>/dev/null || true; "$here/run.sh" up
+fi
 log "$NAME is $("$here/run.sh" ps hostname | tr -d '\r') at $("$here/run.sh" ip)"

@@ -15,6 +15,7 @@
 #   job_guard.sh release [--gpu[=<machine>]] <lane>   free the slot (only its own lane's)
 #   job_guard.sh wait <name>                          wait up to 270 s; exit 0 done-ok, 1 done-failed, 3 still running
 #   job_guard.sh status [<name>] | log <name>
+#   job_guard.sh stop <name>                          end the job and everything it started (its process group)
 set -euo pipefail
 JOBS="$HOME/.argonia/jobs"; mkdir -p "$JOBS"
 cmd=${1:-}; shift || true
@@ -114,5 +115,9 @@ case "$cmd" in
         echo "slot $(basename "$f" .lock.slot): $l until $(date -d "@$e" +%H:%M:%S)$sfx"
       else echo "slot $(basename "$f" .lock.slot): $l expired"; fi; done ;;
   log) tail -n 50 "$JOBS/$1.log" ;;
+  stop)  # the whole job (its setsid process group), never only the top pid: a bare kill left a job's script running (1.8)
+    p=$(cat "$JOBS/$1.pid" 2>/dev/null) || { echo "no job $1" >&2; exit 2; }
+    kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true
+    echo 143 > "$JOBS/$1.rc"; echo "stopped $1" ;;
   *) sed -n '2,18p' "$0"; exit 2 ;;
 esac

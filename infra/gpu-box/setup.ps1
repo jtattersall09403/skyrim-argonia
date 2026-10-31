@@ -125,6 +125,10 @@ function Install-Stream {
   }
   # The spot interruption watcher (spot-watch.ps1, 1.8): on AWS's two-minute notice, the suspend save and
   # C:\argonia\state\interrupted.json. It polls every 5 s from boot, as SYSTEM.
+  if (-not (Get-ScheduledTask -TaskName argonia-gpu-bind -ErrorAction SilentlyContinue)) {  # 1.8: new GPU hardware binds itself
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument '-NoProfile -ExecutionPolicy Bypass -File C:\argonia\infra\gpu-bind.ps1'
+    Register-ScheduledTask -TaskName argonia-gpu-bind -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null
+  }
   if (-not (Get-ScheduledTask -TaskName argonia-spot-watch -ErrorAction SilentlyContinue)) {
     $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\spot-watch.ps1"
     $st = New-ScheduledTaskSettingsSet -ExecutionTimeLimit ([TimeSpan]::Zero) -RestartCount 99 -RestartInterval (New-TimeSpan -Minutes 1)

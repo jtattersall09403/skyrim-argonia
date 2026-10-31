@@ -43,11 +43,9 @@ fi
 aws ec2 wait instance-running --region "$R" --instance-ids "$ID"
 run="$here/run.sh --machine $NAME"
 $run up  # waits for SSH
-if ! $run ps 'nvidia-smi -L' 2>/dev/null | grep -q GPU; then
-  log "GPU unbound: rebinding the driver and rebooting"
-  $run ps 'pnputil /add-driver C:\Windows\INF\oem81.inf /install | Out-Null; Restart-Computer -Force' || true
-  read -t 60 < /dev/zero 2>/dev/null || true
-  $run up
+$run put "$here/gpu-bind.ps1" C:/argonia/infra/gpu-bind.ps1 >/dev/null
+if $run ps '& C:\argonia\infra\gpu-bind.ps1' | grep -q REBOOTING; then
+  log "GPU bound on new hardware: rebooting"; read -t 60 < /dev/zero 2>/dev/null || true; $run up
 fi
 $run ps 'nvidia-smi -L'
 log "$NAME $ID up from $AMI; next: deploy, prove, cut over"
