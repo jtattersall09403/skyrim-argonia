@@ -49,7 +49,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk); the R2 keys are already copied (2026-10-29) and the frozen arrays pulled | 0.2 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
 | O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.7, 2.17, 4.1 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
-| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | Invisible layer (0005 C4) |
+| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | answered 2026-10-31: invisible for now, a visible layer kept possible (#20) |
 | O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | 0.3 | Send all in one batch early; build only on cleared mods |
 | ~~O-6~~ | ~~Nexus Premium~~ | — | **Answered 2026-10-29: held; the key is `NEXUS_API_KEY` in the secrets file** |
 | O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.0 | Owner logs in through the stream once; then offline mode |
