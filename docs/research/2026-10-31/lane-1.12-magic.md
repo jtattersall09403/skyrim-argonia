@@ -45,5 +45,10 @@ skse/core/generated/argonia/core/tables_magic.h; skyrim_units.MAGIC_SCHOOL_AVS; 
 tests/test_magic.cpp (core.magic); skse/ArgoniaCore/src/magic.cpp (MagicDataLoaded from main.cpp's OnDataLoaded);
 tests/journeys/magic-pane.yaml; tests/journeys/batches/lane-1.12-magic.sh (deploy + journey + still).
 
-## In game (L4)
-Job `l112magic` on argonia-play-ie: see the status line in the lane report back; stills stay in out/l112magic.
+## In game (L4, argonia-play-ie, 2026-10-31, job l112magic2 at 2eff2c8)
+ArgoniaCore.log: "magic: 11 renamed, 3 described, 8 moved school, 0 missing; 21 effects of a school with no Skyrim
+actor value stay under their mod's". The magic pane's still (out/l112magic/magic-open.png, not committed) lists
+Marsh Squall (Destruction), Viperbolt (Destruction, moved from Restoration), Mark and Recall (Alteration), Dispel and
+Absorb Health (Restoration), Conjure Ghost, Fire Bite. The pane drew as a sortable list with a School column, not
+as headings. The journey's log step failed by design (the line is written at data load, before the step), so it
+was removed; the rerun of the journey is owed.

@@ -23,7 +23,6 @@ steps:
       - {console: "player.hasspell FE012972", contains: ">> 1"}
   - name: renamed             # the shout and snowstorm names are restated; the mod's own text no longer answers
     expect:
-      - {log: {name: ArgoniaCore, contains: "magic: 11 renamed, 3 described, 8 moved school, 0 missing"}}
       - {console: 'help "Marsh Squall" 4', contains: "Marsh Squall"}
       - {console: 'help "Whiteout" 4', not_contains: "Whiteout"}
       - {console: 'help "Unrelenting Force" 4', not_contains: "Unrelenting"}
