@@ -224,4 +224,6 @@ Something they can **play**, that is:
 | 2026-10-31 | **Agents are woken by and act on GitHub issues and comments from the owner only** (the repo is public). The planner's reply watch, the inbox tool and the wake workflow count only the owner's login without the agent marker; anyone else's text is ignored. |
 | 2026-10-31 | **Round two runs one chunk per session, started by the owner with "deliver <id>"** (1.8–1.17, then 1.7; Part 1 README, the deliver skill). Agents do no substantive work between chunks; records move in the same commits as the work. The first play test's findings are in docs/research/2026-10-31/owner-playtest-1.md. |
 | 2026-10-31 | **The play machine must not be interrupted often; the owner will pay a bit more, not on-demand.** 1.8 makes an evidence-based call (interruption bands, placement scores, prices, latency) before anything is switched. |
-
+| 2026-10-31 | **#30: the play machine moves to a g6.2xlarge spot in London** (option A: the same L4 card the owner found fast in Paris, capacity score 9 in euw2-az3, band 5–10%, ~$0.49/h, ~$39 a month at 50 h with the disk). Built from a fresh image of Paris; Paris kept stopped a day as the fallback (decision 0008). Ireland has no g6. |
+| 2026-10-31 | **#29: yes: the play page retries a refused start by itself for up to 2 minutes, showing "starting…".** |
+| 2026-10-31 | **The GitHub "play"/"stop" comment switch is removed** (owner: "pointless"); the play page starts and stops the game machine. wake.yml keeps only waking the build VM on an owner reply. |

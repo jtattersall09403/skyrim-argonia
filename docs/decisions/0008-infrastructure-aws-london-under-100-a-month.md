@@ -14,8 +14,10 @@ possible", London). Prices re-measured in 0.1 and recorded in [infra/README.md](
    in the AWS console is the break-glass shell. Nothing is installed on the Mac. Claude Code runs in the
    tunnel's terminal inside `tmux`. x86 is required: Wine (xEdit,
    PapyrusCompiler, msvc-wine, BSArch, xLODGen, DSAnimStudio) does not run on Graviton.
-2. **GPU box `argonia-play`**: created in 0.2 from a script in `infra/`; g6.xlarge (L4) spot by default, g4dn
-   (T4) for light agent runs if the benchmark allows, in the same VPC/AZ as the build VM. Stopped when idle
+2. **GPU box `argonia-play`**: created in 0.2 from a script in `infra/`; g6.2xlarge (L4) persistent spot in London's
+   euw2-az3 (owner, #30, 2026-10-31: the same L4 as the g6.xlarge, which AWS kept reclaiming in Paris, at capacity
+   score 9 and interruption band 5–10%, ~$0.49/h; evidence docs/research/2026-10-31/1.8-machine-evidence.md), in the
+   build VM's VPC. Stopped when idle
    (15 min). It holds Skyrim, the pinned dependency mods, Proton, the agent bridge, Selkies and saves.
 3. **Control from Claude Code**: AWS CLI under an IAM role scoped to start/stop/describe instances tagged
    `project=argonia` and read/write one S3 bucket; optionally the AWS MCP server with the same role. The GPU
