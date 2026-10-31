@@ -6,6 +6,7 @@
 # Staged by the scene (ui-props): the place, a camp spot, a crate and the station ledger. The pending level for the
 # sitting comes from dev-grow (the fixture, as grow-at-rest); the sitting's look is what is judged.
 id: ui-review
+step_saves: true             # --from resumes a long journey (ui-review4)
 runner: 1
 crash_risk: medium
 batch_last: true         # ends at the main menu

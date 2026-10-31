@@ -1,4 +1,4 @@
-"""SkyUI's item-list font sizes (ui-review4): SKI_ConfigMenu's ApplyItemListFontSize sets them as string overrides on
+"""SkyUI's item-list font sizes (ui-review4): MCM Helper's SKI_ConfigMenu.ApplyItemListFontSize sets them as string overrides on
 every game load ("13"/"12" small, "14"/"12" medium, "18"/"14" large, icons "16"/"18"/"20"), which win over
 interface/skyui/config.txt; at 1080p medium read ~14 px a line. The recipe reads SKI_ConfigMenu.pex out of
 SkyUI_SE.bsa (an uncompressed v105 archive), maps those numeric strings in its string table and writes a loose copy
@@ -80,8 +80,11 @@ def remap(pex: bytes, mapping: dict[str, str]) -> tuple[bytes, list[str]]:
     return pex[:start] + table + pex[end:], [k for k in mapping if k not in found]
 
 
-def write_overlay(skyui_bsa: Path, out: Path) -> str:
-    pex = bsa_file(skyui_bsa.read_bytes(), *TARGET)
+def write_overlay(mcm_helper_pex: Path, out: Path) -> str:
+    """MCM Helper's SKI_ConfigMenu (it replaces SkyUI's and re-applies the sizes on every load, OnGameReload ->
+    LoadSettings -> ApplyItemListFontSize); SkyUI's own copy in the BSA applies them only on an option change and
+    would drop MCM Helper's page (ui-review4 research)."""
+    pex = mcm_helper_pex.read_bytes()
     if "ApplyItemListFontSize" not in strings(pex):
         raise ValueError("SKI_ConfigMenu.pex has no ApplyItemListFontSize: a changed SkyUI")
     new, missing = remap(pex, SIZES)

@@ -118,3 +118,27 @@ Stills (copied to the main tree): `out/runs/ui-review3/20261031T041616/` (round 
 | Persuasion | owed to chunk 2.5 (talk.cpp:201). |
 
 Gate: skse, ui, unit green; lint red is `tools/world_sample.py:296` F841 (another lane's). Worktree `/home/ubuntu/wt-uir3`.
+
+## Lane ui-review4 (2026-10-31, 04:20-05:15 UTC): argonia-play-2, hand-off at the context limit
+
+Clone **left running** (i-068ccffaa6e41b5d6; ~4.4 h since the 00:50 launch, ~$1.15 at $0.26/h). Worktree `/home/ubuntu/wt-uir4`.
+Stills: `/home/ubuntu/wt-uir4/out/runs/ui-review/20261031T045235/` (round 1: knot fixed) and `.../20261031T050520/`
+(round 2: loading frames `loading-frames-NN.png`, `pause`, `main-menu`, if that run finished; not yet read).
+
+| Screen | State |
+|---|---|
+| Item-list size | OPEN MAJOR, cause found (research, file reading): **MCM Helper's** `SKI_ConfigMenu.pex` (mods/mcm-helper/Scripts) re-applies SkyUI's size overrides on every load (OnGameReload -> LoadSettings -> ApplyItemListFontSize, medium "14"/"12", icon "18"), which beat config.txt. Round 1 patched SkyUI's BSA copy instead (no effect, and it shadowed MCM Helper's page). Fixed in `tools/ui_theme/pex.py` (now remaps MCM Helper's pex x1.6, 15940 bytes, all keys found); **not yet built, laid or read in game**. Stage is 2560x720, so 14 pt reads 21 px tall but 10.5 px wide. |
+| Knot | **FIXED, PASS** (reader, run 045235): retheme recolours DefineShape fills/lines; the plate ornament is dark ink (124,102,69). |
+| "X Take All" | OPEN MAJOR: two labels drawn in one footer slot (x383-418, y925-942); the other hints clean. Not diagnosed (containermenu.swf's AS sets "$Take All"; look for a second hint in the same slot). |
+| Loading | still loop written (`{burst}`/`{burst_fetch}` actions, `grab.ps1 -Frames -Fps`); step 26 passed in run 050520; frames not read yet. |
+| Title | reader: **PASS** on ui-review3/25-main-menu.png (no Nordic element; MINOR: unselected items 17-20 px, grey, low contrast). Quit step split: a `pause` still, then the pad walk; result in run 050520. |
+| Phones | NOT RUN. Sunshine is already Running on the clone; `infra/stream-client/build` is linked from the main tree. |
+
+Lessons: `stack.py stage` takes the masters from the worktree's `out/Argonia.esm` (absent: DepthsOfSkyrim and
+sirenroot dropped and the base save failed to load); copy the deployed ESM in first. After a lay, `bridge.py launch
+--fresh` re-enables our ESMs. `step_saves: true` is now on the journey, so `--from` works. Iterate the loading capture
+in a small journey of its own, not the whole one (coordinator).
+
+Next: build (`python -m tools.ui_theme.build ...`), `stack.py stage`, kill, `push`, `launch --fresh`, re-shoot
+inventory/barter (`--from barter-talk`), reader; read run 050520's loading frames and title; the Take All overprint;
+the phones; then terminate argonia-play-2 (instance, volume, spot request, alarm `argonia-play-2-idle`).

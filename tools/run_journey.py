@@ -70,7 +70,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError, GameDown, _sh  # noqa: E402
+from tools.bridge import Bridge, BridgeError, GameDown  # noqa: E402
 
 BASE_SAVE = "argoniabase"
 RESUME = REPO / "out" / "resume"
@@ -298,9 +298,10 @@ class Runner:
             raise StepFailed(f"burst {arg}: at most 40 frames over 30 s")
         m = self.b.machine
         env = dict(m.env, DESKTOP_JOB="burst", DESKTOP_WAIT="0")
-        m.ps(r"Remove-Item C:\argonia\logs\burst_*.png, C:\argonia\logs\desktop-burst.done -EA SilentlyContinue", 60)
-        _sh([m.run, "desktop", rf"& C:\argonia\infra\grab.ps1 C:\argonia\logs\burst.png -Frames {frames} -Fps {fps}"],
-            timeout=90, env=env)
+        m.ps(r"Remove-Item C:\argonia\logs\burst_*.png, C:\argonia\logs\desktop-burst.done -EA SilentlyContinue; exit 0", 60)
+        # started, not awaited: the job's log does not exist yet, so run.sh's last line exits 1 (ignored)
+        subprocess.run([m.run, "desktop", rf"& C:\argonia\infra\grab.ps1 C:\argonia\logs\burst.png -Frames {frames} -Fps {fps}"],
+                       capture_output=True, timeout=90, env=env)
 
     def _burst_fetch(self, name):
         m = self.b.machine

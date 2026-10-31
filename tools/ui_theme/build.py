@@ -53,7 +53,7 @@ def main(argv=None) -> int:
     dest.write_text(text, encoding="utf-8", newline="")
     print(f"{dest}: list sizes {LIST_SIZES} from {src}" + (f"; missing {missing}" if missing else ""))
     try:
-        print(pex.write_overlay(a.mods / "skyui" / "SkyUI_SE.bsa", a.out))
+        print(pex.write_overlay(a.mods / "mcm-helper" / "Scripts" / "SKI_ConfigMenu.pex", a.out))
     except (OSError, KeyError, ValueError) as e:
         print(f"SkyUI list font sizes: {e}")
         return 1
