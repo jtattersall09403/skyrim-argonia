@@ -3,7 +3,7 @@
 #   ARGONIA_LANE=1.12-design tooling/job_guard.sh run --gpu=argonia-play wu -- tools/ui_harness/windui_stills.sh
 set -x
 cd "$(dirname "$0")/../.."
-make deploy || exit 1
+make plugin && infra/gpu-box/deploy.sh --no-skse || exit 1  # ArgoniaCore failed to build at ae7c76e (chart.h:69)
 O=out/windui-stills; mkdir -p $O
 R="infra/gpu-box/run.sh"
 B="$HOME/.argonia/venv/bin/python tools/bridge.py"
