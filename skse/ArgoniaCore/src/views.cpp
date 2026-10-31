@@ -241,7 +241,7 @@ void HideVanillaHud() {
 }
 
 void RegisterCrosshair();  // below, beside its sink
-void PushHudState();
+void PushHudState(std::optional<std::int64_t> gained = std::nullopt);
 
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
@@ -369,14 +369,14 @@ bool SheetOpen() {
   return false;
 }
 
-void PushHudState() {
+void PushHudState(std::optional<std::int64_t> gained) {
   auto& c = Get();
   ac::msg::HudState s;
   s.visible = !c.view_host.modal().has_value() && !SheetOpen();
   s.bars = Bars();
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
-  s.vastei = {std::int64_t(c.state.prog.vastei), std::nullopt};
+  s.vastei = {std::int64_t(c.state.prog.vastei), gained};  // gained: the +N cue, only on a rise
   c.hud_vastei = s.vastei.carried;
   s.prompt = g_prompt;
   if (s.visible) ac::journal::show(c.journal_notices, Now());
@@ -421,7 +421,11 @@ void PushHudBars() {
   if (!g_api || c.view_host.modal()) return;
   // Vastei rides only in the full state: earned, lost at death, taken back or set, the HUD showed the old count until
   // the next load or menu (1.11 in game: 180 held, 0 shown). A change pushes the state; the view draws its +N cue.
-  if (std::int64_t(c.state.prog.vastei) != c.hud_vastei) return PushHudState();
+  if (const auto now = std::int64_t(c.state.prog.vastei); now != c.hud_vastei) {
+    std::optional<std::int64_t> gain;
+    if (c.hud_vastei >= 0 && now > c.hud_vastei) gain = now - c.hud_vastei;  // a load (-1) or a loss shows no +N
+    return PushHudState(gain);
+  }
   auto bars = Bars();
   if (bars == c.hud_bars) return;
   c.hud_bars = bars;
