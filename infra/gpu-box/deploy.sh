@@ -67,6 +67,10 @@ send_esms() {
   echo "$(ls out/gpu/papyrus/*.pex | wc -l) .pex sent"
   local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
   for ps in stack.ps1 bridge.ps1 vanilla-data-files.txt; do "$run" put "$here/$ps" "C:/argonia/infra/$ps" >/dev/null; done
+  # Moonlight's cards (owner, 2026-10-31: a machine from an old image still listed vanilla and souls-like): the
+  # repo's apps.json and cards laid each deploy; Sunshine reads apps.json when a client asks for the list.
+  for f in sunshine-apps.json make-cards.ps1; do "$run" put "$here/$f" "C:/argonia/infra/$f" >/dev/null; done
+  "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; Copy-Item C:\\argonia\\infra\\sunshine-apps.json 'C:\\Program Files\\Sunshine\\config\\apps.json' -Force"
 }
 send_scenes() {  # after the launch: a ref is named by its runtime id, the plugin's prefix read from the game (game-7)
   rm -rf out/scenes; "$PY" tools/ref_ids.py render out/scenes

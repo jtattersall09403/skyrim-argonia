@@ -2,10 +2,11 @@
 # here, not art: a dark panel, the name, a short line under it. Written to C:\argonia\cards\ for apps.json.
 Add-Type -AssemblyName System.Drawing
 $out = 'C:\argonia\cards'; New-Item -ItemType Directory -Force $out | Out-Null
-$cards = @(
-  @{ file = 'skyrim.png';       title = "SKYRIM";       sub = "vanilla";                 colour = '#2b3a2b' },
-  @{ file = 'skyrim-souls.png'; title = "SKYRIM";       sub = "souls-like mods";         colour = '#3a2b2b' }
+$cards = @(  # the Argonia cards only: the vanilla and souls-like test cards are gone (owner, 2026-10-31)
+  @{ file = 'argonia-on.png';  title = "ARGONIA"; sub = "shaders on";  colour = '#2b3a2b' },
+  @{ file = 'argonia-off.png'; title = "ARGONIA"; sub = "shaders off"; colour = '#3a352b' }
 )
+Get-ChildItem $out -Filter 'skyrim*.png' -ErrorAction SilentlyContinue | Remove-Item -Force
 foreach ($c in $cards) {
   $bmp = New-Object System.Drawing.Bitmap 600, 800
   $g = [System.Drawing.Graphics]::FromImage($bmp)
