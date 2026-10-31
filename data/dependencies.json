@@ -1912,7 +1912,24 @@
    ],
    "runtime": "loads on 1.7.104.0 (FreeClimb.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "ini": [
+    {
+     "file": "SKSE/Plugins/FreeClimb.ini",
+     "section": "Controls",
+     "set": {
+      "Entry": "W+Space"
+     }
+    },
+    {
+     "file": "SKSE/Plugins/FreeClimb.ini",
+     "section": "Gamepad",
+     "set": {
+      "Entry": "Y"
+     }
+    }
+   ],
+   "settings_why": "Climbing starts by jumping at a wall: W+Space, or the pad's Y (our jump), instead of FreeClimb's default W+A+D+Space / LB+Y chords, which the owner could not find in play test 2 (1.12). Proved in game 2026-10-31 before the change: the default chord reached FreeClimb (\"Entry input: phase=begin\") and a grab was refused only for the slope (\"surface layer, slope or facing rejected\"); its 31 clips commit and its hooks install on 1.7.104."
   },
   {
    "id": "swimming-extensions",
