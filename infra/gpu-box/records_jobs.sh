@@ -21,6 +21,12 @@ done
 for f in "${srcs[@]}"; do [ -f "$f" ] || { echo "no such .psc: $f" >&2; exit 2; }; done
 mkdir -p "$repo/out/gpu"
 
+# Unchanged sources (and compile script) since the last good compile skip it: ~55 s a deploy (planner, 2026-10-31).
+# out/gpu is shared by the worktrees (tooling/worktree.sh), so one lane's compile serves the others.
+stamp=$(cat "${srcs[@]}" "$here/records_jobs.ps1" | sha256sum | cut -c1-64)
+pex_fresh() { [ "$(cat "$repo/out/gpu/papyrus.stamp" 2>/dev/null)" = "$stamp" ] && ls "$repo"/out/gpu/papyrus/*.pex >/dev/null 2>&1; }
+[ "$stage" = papyrus ] && pex_fresh && { echo "papyrus: unchanged (${stamp:0:12}), compile skipped"; exit 0; }
+
 "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra,C:\argonia\records\in\papyrus | Out-Null'
 "$run" put "$here/records_jobs.ps1" C:/argonia/infra/records_jobs.ps1 >/dev/null
 
@@ -28,11 +34,14 @@ job() {
   "$run" ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\records_jobs.ps1 -Stage $1"
 }
 papyrus() {
+  pex_fresh && { echo "papyrus: unchanged (${stamp:0:12}), compile skipped"; return 0; }
+  rm -f "$repo/out/gpu/papyrus.stamp"
   "$run" ps 'Remove-Item C:\argonia\records\in\papyrus\* -Force -EA SilentlyContinue'
-  for f in "${srcs[@]}"; do "$run" put "$f" C:/argonia/records/in/papyrus/ >/dev/null; done
+  "$run" put "${srcs[@]}" C:/argonia/records/in/papyrus/ >/dev/null  # one scp, not one per file
   job papyrus
   "$run" get C:/argonia/records/out/papyrus "$repo/out/gpu/" >/dev/null
   "$run" get C:/argonia/records/out/compile.log "$repo/out/gpu/" >/dev/null
+  echo "$stamp" > "$repo/out/gpu/papyrus.stamp"
 }
 ckload() {
   [ -f "$repo/out/Argonia.esm" ] || { echo "no out/Argonia.esm: run make plugin" >&2; exit 1; }
