@@ -157,10 +157,10 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | owed | black screen with the HUD, nothing works (docs/research/2026-10-31/owner-playtest-1.md) |
-| No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | owed | the owner saw it |
-| No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | owed | the owner saw it |
-| A reader over 3 load stills: Skyrim's classic layout with a 3D model from our stack (nothing Nordic), our fact in our font, readable unsquashed text at 16:9 and the phone's aspects, no HUD | owner play test 7, 8; owner-brief 2026-10-31 | L4 | owed | the Oblivion-like menu dropped (owner-brief 2026-10-31); models being chosen |
+| Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | owed | argoniabase is the black holding cell; ArgoniaWalk (base_save.py) owed its run of tests/journeys/walk-save.yaml |
+| No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | owed | source: Tropical Skyrim's menu fog mesh, dropped (lane-1.9); owed a main-menu still |
+| No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | owed | owed tools/ui_theme/front_door.py stills (lane-1.9) |
+| A reader over 3 load stills: Skyrim's classic layout with a 3D model from our stack (nothing Nordic), our fact in our font, readable unsquashed text at 16:9 and the phone's aspects, no HUD | owner play test 7, 8; owner-brief 2026-10-31 | L4 | owed | 12 models set (lane-1.9); owed load stills by drive.mjs at desktop, v5-unfolded, v5-folded |
 
 ## 1.10 The player character
 
