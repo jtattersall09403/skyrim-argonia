@@ -407,7 +407,9 @@ def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
             from tools.argonia_world.place_build import GameGround
             from tools.argonia_world.routes import infra
             refs, bases, _ = infra.refs(alloc, world, resolver, GameGround().z)  # the final ground (f6177a7)
-            over["persistentRefs"] = refs + border_wall_refs(alloc, GameGround().z)
+            from tools.argonia_world import map_markers  # 1.12: every placed place's marker, hidden until discovered
+            over["persistentRefs"] = refs + border_wall_refs(alloc, GameGround().z) \
+                + map_markers.refs(alloc, world, GameGround().z)
             recs += bases
         recs.append(over)
     return [Layer("base:regions", recs)]

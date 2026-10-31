@@ -279,6 +279,12 @@ static class RegionWriters
                     Type = (PlacedPrimitive.TypeEnum)pr.GetProperty("type").GetInt32(),
                 };
             }
+            if (p.TryGetProperty("mapMarker", out var mm))  // a place's map marker (map_markers.py): hidden until discovered
+            {
+                var fl = mm.TryGetProperty("flags", out var fa) ? fa.EnumerateArray().Select(x => Enum.Parse<MapMarker.Flag>(x.GetString()!))
+                    .Aggregate((MapMarker.Flag)0, (x, y) => x | y) : (MapMarker.Flag)0;
+                refr.MapMarker = new MapMarker { Name = S(mm, "name"), Type = Enum.Parse<MapMarker.MarkerType>(S(mm, "type")), Flags = fl };
+            }
             refr.MajorRecordFlagsRaw |= (int)PlacedObject.DefaultMajorFlag.Persistent;
             ws.TopCell!.Persistent.Add(refr);
         }

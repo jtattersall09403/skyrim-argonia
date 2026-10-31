@@ -350,12 +350,30 @@ def check_records(records: list[dict]) -> list[str]:
             for a in r.get("aliases") or []:
                 if {"Essential", "Protected"} & set(a.get("flags") or []):
                     errs.append(f"{r['edid']} alias {a['name']}: Essential or Protected (nobody is unkillable)")
-        for ref in r.get("refs") or []:
+        for ref in (r.get("refs") or []) + (r.get("persistentRefs") or []):
             mm = ref.get("mapMarker")
             if (ref.get("base") == su.MAP_MARKER or mm is not None) and {"Visible", "CanTravelTo"} & set((mm or {}).get("flags") or []):
                 errs.append(f"{r.get('edid')} ref {ref.get('edid') or ref['formKey']}: map marker shown before it is "
                             "reached (old 0137: it appears only on discovery)")
     return errs
+
+
+def _yaml_marker_shown(t: str) -> bool:
+    """A serialised MapMarker block (the lines indented under `MapMarker:`) lists Visible or CanTravelTo. Linear in
+    the file: 1.12 lays ~570 markers in the WRLD's one RecordData.yaml."""
+    lines, i = t.split("\n"), 0
+    while i < len(lines):
+        ln = lines[i]
+        if ln.strip() == "MapMarker:":
+            k = len(ln) - len(ln.lstrip())
+            i += 1
+            while i < len(lines) and (not lines[i].strip() or len(lines[i]) - len(lines[i].lstrip()) > k):
+                if re.match(r"\s*-\s+(Visible|CanTravelTo)\b", lines[i]):
+                    return True
+                i += 1
+            continue
+        i += 1
+    return False
 
 
 def check_yaml(root: Path) -> list[str]:
@@ -365,7 +383,7 @@ def check_yaml(root: Path) -> list[str]:
         t = f.read_text(encoding="utf-8")
         if "Quests" in f.parts and re.search(r"^\s+Targets:", t, re.M):
             errs.append(f"{f.relative_to(root)}: a quest objective carries target data")
-        if re.search(r"MapMarker:(?:\n\s+.*)*?\n\s+-\s+(Visible|CanTravelTo)\b", t):
+        if "MapMarker:" in t and _yaml_marker_shown(t):
             errs.append(f"{f.relative_to(root)}: a map marker is visible before it is reached")
     return errs
 
