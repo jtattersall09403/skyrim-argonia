@@ -470,7 +470,9 @@ def stop_7(w: World, g: Ground) -> dict:
     cc = c
     while cc > 0 and g.H[r, cc] < level:  # west along the row to the shore
         cc -= 1
-    shore_c = cc - 3  # three samples inland, on the dry bank
+    shore_c = cc - 3  # three samples inland, on the dry bank, walked on west to ground under 35 deg (game-18: the
+    while shore_c > 0 and g.slope_deg(r, shore_c) >= 35.0:  # bank probe slid 14 m into the lake off a steep bank)
+        shore_c -= 1
     s = new_stop(7, "lake-coast", "A lake shore and a coast", "banks, the sea default at 0, the apron through the haze",
                  g.cell(r, shore_c), w)
     s["lake"] = {"body": lake[0], "level_m": level, "area_m2": lake[4]}

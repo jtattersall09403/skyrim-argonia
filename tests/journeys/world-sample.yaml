@@ -575,14 +575,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 3620.99
+    ge: 3868.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3691.01
+    le: 3939.01
     within: 3
-  expected_ground_m: 52.206
+  expected_ground_m: 55.748
   reader:
   - the bank meets the water without a gap, step or floating edge
   - the lake surface is one level; shore texture is mud/sand/reed, not Nordic
