@@ -5,7 +5,9 @@ This folder is the **schedule**:
 - one folder per part, each with a README holding its chunk table;
 - one brief per chunk.
 
-Status lives only in [../PROGRESS.md](../PROGRESS.md). The why of any rule lives in
+Status lives in [../PROGRESS.md](../PROGRESS.md), mirrored as one word in each part README's Status column and
+each brief's Status line, with owed in-game checks in each part's `checks.md`; `tools/check_records.py` (in
+`make check`) fails when they disagree. The why of any rule lives in
 [../decisions/](../decisions/README.md). Design lives in `docs/design/` (imported from the old project) and in
 the briefs that build it. Decision [0023](../decisions/0023-five-parts-de-risk-first.md) made this plan and
 records why it differs from both the old four parts and this repo's first P0–P10 plan.

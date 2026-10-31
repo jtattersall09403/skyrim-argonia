@@ -48,31 +48,31 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 
 ## Chunk table
 
-| Id | Chunk | Depends on | Lane-able beside |
-|---|---|---|---|
-| 2.W1 | [Terrain, apron and edges](../1-core-loop/2.W1-terrain.md) | 0.4 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track |
-| 2.W2 | [Water](../1-core-loop/2.W2-water.md) | 2.W1 | systems track |
-| 2.W3 | [Regions, weather, light, roads and the route graph](../1-core-loop/2.W3-regions-roads.md) | 2.W1 | 2.W2 |
-| 2.W4 | [Vegetation, navmesh and LOD](../1-core-loop/2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track |
-| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W4 (navmesh at least, for wave 1) | systems track |
-| 2.W6 | [Performance and the world walk](2.W6-performance-walk.md) | 2.W5 wave 2 | systems track |
-| 2.4 | [People](2.4-people.md) | Part 1 exit, 2.W5 wave 1 | 2.1, 2.3 |
-| 2.5 | [Dialogue](2.5-dialogue.md) | 2.4 | 2.3 |
-| 2.12 | [Quests, journal and maps](2.12-quests-journal-map.md) | 2.5, 2.W3 (the route graph) | 2.6, 2.7 |
-| 2.1 | [The sheet whole: races, birthsigns, classes, effects, perks](2.1-the-sheet.md) | Part 1 exit | world track |
-| 2.3 | [Items](2.3-items.md) | 2.1 | 2.4 |
-| 2.6 | [Trade, services and travel](2.6-trade-and-services.md) | 2.5, 2.3 | 2.7 |
-| 2.7 | [Combat: the map, DSR measured, timing, the built rows, encounters](2.7-combat.md) | 2.3 (2.4 for encounters) | 2.5, 2.6, 2.12 |
-| 2.8 | [Progression, rest and death](2.8-progression.md) | 2.7 | 2.9 |
-| 2.2 | [The UI, stage two: the design system, the windows, the HUD, every screen](2.2-ui-whole.md) | Part 1 exit (the 1.2 §d rounds) | every systems chunk (it owns the components; each system wires its screen) |
-| 2.9 | [Magic](2.9-magic.md) | 2.8 | 2.11 |
-| 2.10 | [Crafting](2.10-crafting.md) | 2.9, 2.W5 wave 2 | 2.11 |
-| 2.11 | [Stealth, crime, locks and the Owing](2.11-stealth-crime.md) | 2.6, 2.7, 2.W5 wave 2 | 2.9 |
-| 2.13 | [Swim and climb](2.13-swim-and-climb.md) | 2.W4, 2.7 | 2.12 |
-| 2.14 | [Marsh specials: hazards, effect arrows, harvests, materials](2.14-marsh-specials.md) | 2.9, 2.10, 2.13, 2.W5 wave 2 | — |
-| 2.15 | [Boats](2.15-boats.md) | 2.13, 2.6 | 2.16 prep |
-| 2.16 | [Sound and music](2.16-sound-and-music.md) | 2.15 | — |
-| 2.17 | [Persistence, the immersion gate and the playthrough](2.17-playthrough.md) | all above | — |
+| Id | Chunk | Depends on | Lane-able beside | Status |
+|---|---|---|---|---|
+| 2.W1 | [Terrain, apron and edges](../1-core-loop/2.W1-terrain.md) | 0.4 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track | in progress |
+| 2.W2 | [Water](../1-core-loop/2.W2-water.md) | 2.W1 | systems track | in progress |
+| 2.W3 | [Regions, weather, light, roads and the route graph](../1-core-loop/2.W3-regions-roads.md) | 2.W1 | 2.W2 | in progress |
+| 2.W4 | [Vegetation, navmesh and LOD](../1-core-loop/2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track | in progress |
+| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W4 (navmesh at least, for wave 1) | systems track | todo |
+| 2.W6 | [Performance and the world walk](2.W6-performance-walk.md) | 2.W5 wave 2 | systems track | todo |
+| 2.4 | [People](2.4-people.md) | Part 1 exit, 2.W5 wave 1 | 2.1, 2.3 | todo |
+| 2.5 | [Dialogue](2.5-dialogue.md) | 2.4 | 2.3 | todo |
+| 2.12 | [Quests, journal and maps](2.12-quests-journal-map.md) | 2.5, 2.W3 (the route graph) | 2.6, 2.7 | todo |
+| 2.1 | [The sheet whole: races, birthsigns, classes, effects, perks](2.1-the-sheet.md) | Part 1 exit | world track | todo |
+| 2.3 | [Items](2.3-items.md) | 2.1 | 2.4 | todo |
+| 2.6 | [Trade, services and travel](2.6-trade-and-services.md) | 2.5, 2.3 | 2.7 | todo |
+| 2.7 | [Combat: the map, DSR measured, timing, the built rows, encounters](2.7-combat.md) | 2.3 (2.4 for encounters) | 2.5, 2.6, 2.12 | todo |
+| 2.8 | [Progression, rest and death](2.8-progression.md) | 2.7 | 2.9 | todo |
+| 2.2 | [The UI, stage two: the design system, the windows, the HUD, every screen](2.2-ui-whole.md) | Part 1 exit (the 1.2 §d rounds) | every systems chunk (it owns the components; each system wires its screen) | todo |
+| 2.9 | [Magic](2.9-magic.md) | 2.8 | 2.11 | todo |
+| 2.10 | [Crafting](2.10-crafting.md) | 2.9, 2.W5 wave 2 | 2.11 | todo |
+| 2.11 | [Stealth, crime, locks and the Owing](2.11-stealth-crime.md) | 2.6, 2.7, 2.W5 wave 2 | 2.9 | todo |
+| 2.13 | [Swim and climb](2.13-swim-and-climb.md) | 2.W4, 2.7 | 2.12 | todo |
+| 2.14 | [Marsh specials: hazards, effect arrows, harvests, materials](2.14-marsh-specials.md) | 2.9, 2.10, 2.13, 2.W5 wave 2 | — | todo |
+| 2.15 | [Boats](2.15-boats.md) | 2.13, 2.6 | 2.16 prep | todo |
+| 2.16 | [Sound and music](2.16-sound-and-music.md) | 2.15 | — | todo |
+| 2.17 | [Persistence, the immersion gate and the playthrough](2.17-playthrough.md) | all above | — | todo |
 
 Sub-chunks (`2.7a` and so on) are the lettered sections of a brief. The planner may run one as its own session.
 

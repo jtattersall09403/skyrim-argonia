@@ -14,22 +14,23 @@ G0); then put everything in place that Part 1 builds on, each piece real and kep
 **What this part is not.** It builds no game system (Part 1), no installer for other players (3.4), and no tool
 before the chunk that uses it (decision 0027 §7). It builds no harness an existing tool already provides (0029 §8).
 
-## Starting state (2026-10-29)
+## Starting state (2026-10-31)
 
-0.0 is closing in its own session (the owner's play sessions passed; the hand-off is in its brief). 0.1 is done
-(its Outcome). The game machine is a Windows spot GPU instance with Skyrim 1.7.104 pinned offline, the 0.0
-souls-like overlay and the stream; the build VM holds the toolchain, the imported world, the pulled heightfield
+0.0 and 0.1 are done (their Outcomes); 0.2–0.4 are in progress (the Status column below and
+[PROGRESS](../../PROGRESS.md)). The game machines are Windows g6 spot instances named in
+`infra/gpu-box/machines.conf` (argonia-play in Paris for the owner, argonia-play-london for agents' checks), with
+Skyrim 1.7.104 pinned offline, the Argonia stack and the stream; the build VM holds the toolchain, the imported world, the pulled heightfield
 and hydrology arrays in `$ARGONIA_DATA`, the corpus in `$ARGONIA_PRIVATE`, and the Nexus key.
 
 ## Chunk table
 
-| Id | Chunk | Depends on | Runs beside |
-|---|---|---|---|
-| 0.0 | [Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0)](0.0-can-it-be-played.md) | — | — |
-| 0.1 | [Bootstrap: repo, ways of working, lean toolchain, import](0.1-bootstrap.md) | 0.0 | 0.0 |
-| 0.2 | [Our stack on the game machine](0.2-the-stack.md) | 0.1 | 0.4 §a–§c (build VM) |
-| 0.3 | [The agent's hands: bridge, SKSE build, scenes, runner, deploy, the timed loop](0.3-the-agents-hands.md) | 0.2 | 0.4 §a–§c |
-| 0.4 | [The pipeline, the quarantine, the inventory and the first block](0.4-pipeline-and-first-block.md) | §a–§c: 0.1; §d: 0.2, 0.3 | 0.2, 0.3 |
+| Id | Chunk | Depends on | Runs beside | Status |
+|---|---|---|---|---|
+| 0.0 | [Can it be played? Vanilla Skyrim streamed, touch and GameSir controls, a feel probe (G0)](0.0-can-it-be-played.md) | — | — | done |
+| 0.1 | [Bootstrap: repo, ways of working, lean toolchain, import](0.1-bootstrap.md) | 0.0 | 0.0 | done |
+| 0.2 | [Our stack on the game machine](0.2-the-stack.md) | 0.1 | 0.4 §a–§c (build VM) | in progress |
+| 0.3 | [The agent's hands: bridge, SKSE build, scenes, runner, deploy, the timed loop](0.3-the-agents-hands.md) | 0.2 | 0.4 §a–§c | in progress |
+| 0.4 | [The pipeline, the quarantine, the inventory and the first block](0.4-pipeline-and-first-block.md) | §a–§c: 0.1; §d: 0.2, 0.3 | 0.2, 0.3 | in progress |
 
 **The overnight order.** 0.2 on the game machine and 0.4 §a–§c on the build VM at once; 0.3 when 0.2's stack
 passes its smoke scene; 0.4 §d when 0.3's hands work; then Part 1's 1.1 and the world track's 2.W1 at once.

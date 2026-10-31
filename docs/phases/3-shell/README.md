@@ -16,13 +16,13 @@ Written by the agent that closes 2.17.
 
 ## Chunk table
 
-| Id | Chunk | Depends on | Lane-able beside |
-|---|---|---|---|
-| 3.1 | [Boot, main menu, loading, settings and controls](3.1-boot-menus-settings.md) | 2.17 | 3.2, 3.4 |
-| 3.2 | [Character creation](3.2-character-creation.md) | 2.1, 3.1 components | 3.1 |
-| 3.3 | [The opening](3.3-the-opening.md) | 3.2, 2.12 | 3.4 |
-| 3.4 | [Install, release and the owner's permanent setup](3.4-install-release.md) | 2.17 | 3.1–3.3 |
-| 3.5 | [First playable](3.5-first-playable.md) | all above | — |
+| Id | Chunk | Depends on | Lane-able beside | Status |
+|---|---|---|---|---|
+| 3.1 | [Boot, main menu, loading, settings and controls](3.1-boot-menus-settings.md) | 2.17 | 3.2, 3.4 | todo |
+| 3.2 | [Character creation](3.2-character-creation.md) | 2.1, 3.1 components | 3.1 | todo |
+| 3.3 | [The opening](3.3-the-opening.md) | 3.2, 2.12 | 3.4 | todo |
+| 3.4 | [Install, release and the owner's permanent setup](3.4-install-release.md) | 2.17 | 3.1–3.3 | todo |
+| 3.5 | [First playable](3.5-first-playable.md) | all above | — | todo |
 
 ## Part 3 exit (the owner signs)
 

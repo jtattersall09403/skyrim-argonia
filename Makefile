@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := $(shell git rev-parse --git-dir)/check-red  # .git is a file in a worktree
-PARTS := guard lint unit budget links world plugin-check skse immersion ui
+PARTS := guard lint unit budget links records world plugin-check skse immersion ui
 # The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
@@ -31,6 +31,10 @@ unit:
 
 budget:
 	@python3 -m pytest -q tooling/tests/test_word_budget.py $(FAIL)
+
+# The records agree and cite only what exists (owner, 2026-10-31: never stale): tools/check_records.py.
+records:
+	@python3 tools/check_records.py $(FAIL)
 
 links:
 	@python3 tooling/check_links.py $(FAIL)

@@ -58,21 +58,25 @@ A failing stop is diagnosed, the whole class fixed once at L1, and the stop re-r
 a defect the sample missed (0011 §2). The briefs' longer owed lists (1,000 probe points, 30 step stills, 200 paths)
 are met by the L1 checks plus this sample.
 
-## Starting state
+## Starting state (2026-10-31)
 
-Written by the agent that closes Part 0.
+Part 0 is not closed: 0.2–0.4 are in progress (the g6 frame times, the timed loop row and the owner's Claywater walk
+are owed) and Part 1 runs beside them. Every chunk here is built at L1–L3; in game, most journeys have passed at
+least once and the reds are listed in each PROGRESS row. Game machines are named in `infra/gpu-box/machines.conf`:
+argonia-play (the play machine, Paris) and argonia-play-london (agents' checks). Status: [PROGRESS](../../PROGRESS.md),
+the Status column below and `checks.md`.
 
 ## Chunk table
 
-| Id | Chunk | Depends on | Lane-able beside |
-|---|---|---|---|
-| 1.1 | [The game-state seam](1.1-game-state-seam.md) | Part 0 | 1.2 §a |
-| 1.2 | [The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart](1.2-ui-foundation.md) | 1.1 schema | 1.3 §a |
-| 1.3 | [Talk and carry, on the sheet](1.3-talk-and-carry.md) | 1.1, 1.2 dialogue window | 1.6 (wiring draft) |
-| 1.4 | [One quest through the journal](1.4-one-quest.md) | 1.3, 1.2 journal, 0.1 §i | 1.5 |
-| 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3 | 1.4 |
-| 1.6 | [Fight on the tuned stack, wired to the sheet](1.6-fight-on-the-stack.md) | 1.3 sheet | 1.4, 1.5 |
-| 1.7 | [The first-place journey and the owner's verdict](1.7-verdict.md) | all above | — |
+| Id | Chunk | Depends on | Lane-able beside | Status |
+|---|---|---|---|---|
+| 1.1 | [The game-state seam](1.1-game-state-seam.md) | Part 0 | 1.2 §a | in progress |
+| 1.2 | [The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart](1.2-ui-foundation.md) | 1.1 schema | 1.3 §a | in progress |
+| 1.3 | [Talk and carry, on the sheet](1.3-talk-and-carry.md) | 1.1, 1.2 dialogue window | 1.6 (wiring draft) | in progress |
+| 1.4 | [One quest through the journal](1.4-one-quest.md) | 1.3, 1.2 journal, 0.1 §i | 1.5 | in progress |
+| 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3 | 1.4 | in progress |
+| 1.6 | [Fight on the tuned stack, wired to the sheet](1.6-fight-on-the-stack.md) | 1.3 sheet | 1.4, 1.5 | in progress |
+| 1.7 | [The first-place journey and the owner's verdict](1.7-verdict.md) | all above | — | in progress |
 
 ## Part 1 exit (the owner signs)
 

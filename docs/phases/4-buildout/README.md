@@ -35,14 +35,14 @@ Written by the agent that closes 3.5.
 
 ## Chunk table
 
-| Id | Chunk | Depends on |
-|---|---|---|
-| 4.1 | [Before scale](4.1-before-scale.md) | 3.5 |
-| 4.2 | [Region packets](4.2-region-packets.md) (one chunk per packet, `4.2-<region>-<n>`) | 4.1 |
-| 4.3 | [Narrative lines](4.3-narrative-lines.md) (one chunk per line, `4.3-<line>`) | the packets a line needs |
-| 4.4 | [Assembled interiors](4.4-assembled-interiors.md) | the first packet that needs one |
-| 4.5 | [Systems depth](4.5-systems-depth.md) (one chunk per system, `4.5-<system>`) | the packet or line that needs it |
-| 4.6 | [Final look, polish and release](4.6-final-polish-release.md) | the last packet |
+| Id | Chunk | Depends on | Status |
+|---|---|---|---|
+| 4.1 | [Before scale](4.1-before-scale.md) | 3.5 | todo |
+| 4.2 | [Region packets](4.2-region-packets.md) (one chunk per packet, `4.2-<region>-<n>`) | 4.1 | todo |
+| 4.3 | [Narrative lines](4.3-narrative-lines.md) (one chunk per line, `4.3-<line>`) | the packets a line needs | todo |
+| 4.4 | [Assembled interiors](4.4-assembled-interiors.md) | the first packet that needs one | todo |
+| 4.5 | [Systems depth](4.5-systems-depth.md) (one chunk per system, `4.5-<system>`) | the packet or line that needs it | todo |
+| 4.6 | [Final look, polish and release](4.6-final-polish-release.md) | the last packet | todo |
 
 ## Milestones
 - **M1, the first complete playthrough:**
