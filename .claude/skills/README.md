@@ -6,3 +6,4 @@
 - `text-review`: one `reader` pass then the linter over changed player-visible prose.
 - `cost-review`: periodic Claude usage and cost review from `tooling/session_tokens.py`.
 - `routing-audit`: walk a part's chunk briefs as a fresh agent; check routes, starting state and pointers.
+- `grill-me`: stress-test a plan with the owner, one question at a time, after the repo has answered what it can (adapted from mattpocock/skills, MIT).
