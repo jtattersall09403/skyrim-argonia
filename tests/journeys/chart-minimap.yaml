@@ -46,5 +46,14 @@ steps:
     do: [{console: "save chartminimap"}, {wait: 3}, {console: "load chartminimap"}, {wait: 15}]
     expect: [{log: {name: ArgoniaCore, contains: "co-save"}, within: 30}, {read: [core, Views], path: value, contains: "chart revealed "}]
     owed: "the read's count must equal the count before the save: run_journey has no 'equals the earlier read' expectation; the reader compares the two Views reads in report.json"
-  - name: place-marked-after-discovery        # Skyrim's discovery fires as the player reaches the place
-    owed: "the plugin places no map marker yet (plugin/ has no MapMarker reference; the world track's place generation adds them): reach Claywater's marker, then expect 'chart places 1' and the log line 'chart: discovered Claywater Station'"
+  - name: place-marked-after-discovery        # Skyrim's discovery fires as the player reaches the place's marker (f4f0b54)
+    do: [{console: "player.moveto ARG_MapMarker_ClaywaterStation"}, {pad: "LY=1:1500"}, {wait: 4}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "chart: discovered Claywater Station"}, within: 20}
+      - {read: [core, Views], path: value, contains: "chart places 1"}
+  - name: chart-with-the-place
+    do: [{key: "M 120"}, {wait: 2}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready open"}]
+    reader: [our chart now marks Claywater Station by its name, the player's arrow beside it, no other place marked]
+  - name: chart-with-the-place-closed
+    do: [{close_menu: MapMenu}]
