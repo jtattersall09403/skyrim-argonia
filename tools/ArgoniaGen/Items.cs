@@ -105,15 +105,23 @@ static class ItemWriters
         return c;
     }
 
-    static Book Book(JsonElement r) => new Book(Key(r), Rel)
+    static Book Book(JsonElement r)
     {
-        EditorID = S(r, "edid"),
-        Name = T(r, "name"),
-        BookText = T(r, "text"),
-        Model = M(r, "model"),
-        Value = (uint)I(r, "value"),
-        Weight = F(r, "weight"),
-    };
+        var b = new Book(Key(r), Rel)
+        {
+            EditorID = S(r, "edid"),
+            Name = T(r, "name"),
+            BookText = T(r, "text"),
+            Model = M(r, "model"),
+            Value = (uint)I(r, "value"),
+            Weight = F(r, "weight"),
+        };
+        // BookMenu draws the inventory art's 3D book: a BOOK with none crashes the menu on read (game-18).
+        if (!r.TryGetProperty("inventoryArt", out _) || string.IsNullOrEmpty(b.Model?.File))
+            throw new InvalidDataException($"BOOK {b.EditorID} has no inventory art or model: BookMenu crashes on it");
+        b.InventoryArt.SetTo(FK(S(r, "inventoryArt")));
+        return b;
+    }
 
     static Ingestible Potion(JsonElement r)
     {

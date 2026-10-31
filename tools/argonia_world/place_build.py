@@ -210,8 +210,8 @@ def _items(ctx, world, refs) -> None:
                               "weight": su.kg_to_weight(item.weight_kg or 0)}
         elif b.startswith("ARG_Book_") and b not in ctx.records:
             doc = next(d for d in world.rows("document") if d.item and b == "ARG_Book_" + ir.slug(d.item[len("item."):]))
-            rec = ir.book_record(ctx.alloc, world, doc.id)
-            ctx.records[rec["edid"]] = rec
+            for rec in ir.book_records(ctx.alloc, world, doc.id):
+                ctx.records[rec["edid"]] = rec
         elif b in ACTIVATORS and b not in ctx.records:
             name, model = ACTIVATORS[b]
             ctx.records[b] = {"type": "ACTI", "edid": b, "formKey": ctx.alloc.form_key(b, "ACTI", r.thing_id), "name": name,

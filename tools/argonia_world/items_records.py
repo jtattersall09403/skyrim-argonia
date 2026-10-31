@@ -126,7 +126,19 @@ def book_record(alloc: Allocator, world, doc_id: str = BOOK_DOCUMENT) -> dict:
     edid = f"ARG_Book_{slug(it.id[5:])}"
     return {"type": "BOOK", "edid": edid, "formKey": alloc.form_key(edid, "BOOK", doc_id), "name": doc.name,
             "text": PAGEBREAK.join(p.replace("\n", EOL) for p in pages), "model": model_path(it), "weight": su.kg_to_weight(it.weight_kg),
-            "value": it.value}
+            "value": it.value, "inventoryArt": alloc.form_key(_art_edid(edid), "STAT", doc_id + "#inventory-art")}
+
+
+def _art_edid(book_edid: str) -> str:
+    return "ARG_BookArt_" + book_edid[len("ARG_Book_"):]
+
+
+def book_records(alloc: Allocator, world, doc_id: str = BOOK_DOCUMENT) -> list[dict]:
+    """The book and its inventory art: the STAT BookMenu draws as the open 3D book (a BOOK with no INAM crashes the
+    menu, game-18: SkyrimSE+0EDC8C8). The art is the book's own mesh, as vanilla's inventory statics are."""
+    b = book_record(alloc, world, doc_id)
+    art = _art_edid(b["edid"])
+    return [{"type": "STAT", "edid": art, "formKey": b["inventoryArt"], "model": b["model"]}, b]
 
 
 def potion_record(alloc: Allocator, world, item_id: str = POTION) -> dict:
@@ -147,5 +159,5 @@ def potion_record(alloc: Allocator, world, item_id: str = POTION) -> dict:
 
 def layer(alloc: Allocator, world) -> Layer:
     recs = class_keywords(alloc, world) + [weapon_record(alloc, world)] + armour_set_records(alloc, world)
-    recs += [container_record(alloc, world), book_record(alloc, world), potion_record(alloc, world)]
+    recs += [container_record(alloc, world), *book_records(alloc, world), potion_record(alloc, world)]
     return Layer("base:items", recs)

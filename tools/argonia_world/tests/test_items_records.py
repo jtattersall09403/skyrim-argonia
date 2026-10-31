@@ -109,6 +109,25 @@ def test_book_text_is_its_documents_leaves(world, recs):
     assert b["name"] == doc.name and b["value"] == world.get("item", doc.item).value
 
 
+def test_book_carries_its_inventory_art(recs):
+    [b] = recs["BOOK"]
+    art = {r["formKey"]: r for r in recs["STAT"]}[b["inventoryArt"]]
+    assert b["model"] and art["model"] == b["model"]
+
+
+def test_every_generated_book_has_inventory_art_and_model():
+    """L1 over the committed plugin: every BOOK names a STAT of the plugin as InventoryArt and has a model."""
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[3] / "plugin" / "Argonia"
+    stats = {p.name.rsplit(" - ", 1)[1].removesuffix(".yaml").replace("_", ":", 1) for p in (root / "Statics").glob("*.yaml")}
+    books = sorted((root / "Books").glob("*.yaml"))
+    assert books
+    for p in books:
+        t = p.read_text()
+        art = next((ln.split(":", 1)[1].strip() for ln in t.splitlines() if ln.startswith("InventoryArt:")), None)
+        assert art in stats and "\nModel:\n  File: " in "\n" + t, p.name
+
+
 def test_potion_effect_is_the_rows_effect(world, recs):
     [p] = recs["ALCH"]
     rows = world.rows("item_effect", item_id=ir.POTION)

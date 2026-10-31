@@ -83,6 +83,14 @@ class KeyLatch {
 // closes, and the release then reaches TK Dodge, which rolls on a sprint-key tap. The guard remembers each button
 // that went down while a modal was open and swallows that button's repeats and release, once; a press that began
 // with no modal open is never touched. `key` is the device and button id packed by the adapter.
+// The intent a close control (Cancel, the Tween Menu key Tab, the Journal key Esc or the pad's Back, the Quick Map key
+// on the chart) sends to the open modal view, or nothing when that view does not close by it. The dialogue view says
+// goodbye when a conversation is open (the probe's window, with none, just closes); sitting stands by its own intent.
+struct CloseControl {
+  bool cancel = false, tween = false, journal = false, quick_map = false;
+};
+std::optional<std::string> close_intent(std::string_view open_view, const CloseControl& c, bool conversation_open);
+
 class ClosePressGuard {
  public:
   // True when the adapter must hide this event from the game.

@@ -33,6 +33,8 @@
 {"editor_id":"ARG_Armo_Steel_Helm","plugin":"Argonia.esm","form_id":2122,"record_type":"ARMO","entity_key":"item.steel-helmet#helm"}
 {"editor_id":"ARG_Armo_Steel_Pauldrons","plugin":"Argonia.esm","form_id":2124,"record_type":"ARMO","entity_key":"item.steel-gauntlets#pauldrons"}
 {"editor_id":"ARG_Armo_Steel_Shield","plugin":"Argonia.esm","form_id":2126,"record_type":"ARMO","entity_key":"item.steel-shield#shield"}
+{"editor_id":"ARG_BookArt_BookTheThreeMournings","plugin":"Argonia.esm","form_id":2553,"record_type":"STAT","entity_key":"document.the-three-mournings#inventory-art"}
+{"editor_id":"ARG_BookArt_StationWaterLedger","plugin":"Argonia.esm","form_id":2552,"record_type":"STAT","entity_key":"document.station-water-ledger#inventory-art"}
 {"editor_id":"ARG_Book_BookTheThreeMournings","plugin":"Argonia.esm","form_id":2128,"record_type":"BOOK","entity_key":"document.the-three-mournings"}
 {"editor_id":"ARG_Book_StationWaterLedger","plugin":"Argonia.esm","form_id":2159,"record_type":"BOOK","entity_key":"document.station-water-ledger"}
 {"editor_id":"ARG_Booth","plugin":"Argonia.esm","form_id":2413,"record_type":"CELL"}

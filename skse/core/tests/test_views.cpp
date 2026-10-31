@@ -29,6 +29,18 @@ void close_press_is_consumed() {
   CHECK(!g.swallow(1, true, false, true) && !g.swallow(2, false, true, false));  // another button's release passes
 }
 
+void close_controls() {
+  const CloseControl esc{false, false, true, false}, tab{false, true, false, false}, b{true, false, false, false},
+      m{false, false, false, true}, none{};
+  CHECK(close_intent("dialogue", esc, true) == R"({"type":"dialogue.goodbye","v":1,"body":{}})");
+  CHECK(close_intent("dialogue", tab, true) && close_intent("dialogue", b, true));
+  CHECK(close_intent("dialogue", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"dialogue"}})");
+  CHECK(!close_intent("dialogue", m, true) && !close_intent("dialogue", none, true));
+  CHECK(close_intent("journal", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"journal"}})");
+  CHECK(!close_intent("journal", m, false) && close_intent("chart", m, false));
+  CHECK(!close_intent("sitting", esc, false) && !close_intent("hud", esc, false));
+}
+
 void the_table() {
   std::set<std::string_view> ids;
   for (const auto& s : kViews) {
@@ -187,6 +199,7 @@ void the_probe() {
 
 int main() {
   close_press_is_consumed();
+  close_controls();
   the_table();
   push_waits_for_ready();
   one_modal();

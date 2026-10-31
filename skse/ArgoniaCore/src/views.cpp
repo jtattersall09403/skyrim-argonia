@@ -360,28 +360,29 @@ void PushHudBars() {
 }
 
 // --- our views' close controls ------------------------------------------------------------------------------------
-// While the journal or the chart is open, the controls that close the vanilla menus close ours (B's pad press reaches
-// the view as its back action): Cancel in the menu context, and the key whose gameplay event is the Tween Menu (Tab),
-// the Journal (Esc, the pad's Back) or, for the chart, the Quick Map (M again). The dialogue and sitting views close
-// through their own intents (goodbye, stand), never here.
+// While one of our modal views is open, the controls that close the vanilla menus close ours: Cancel in the menu
+// context (the pad's B), and the key whose gameplay event is the Tween Menu (Tab), the Journal (Esc, the pad's Back)
+// or, for the chart, the Quick Map (M again). The page never sees Esc (the engine's input reads it first), so the
+// close is decided here (views::close_intent): the dialogue view says goodbye; sitting stands through its own intent.
 void CloseByControl(const RE::ButtonEvent& b, const RE::UserEvents& ue) {
   std::optional<std::string> open;
+  bool conversation = false;
   {
     std::lock_guard l(Get().lock);
     if (auto m = Get().view_host.modal()) open = std::string(*m);
+    conversation = Get().talk.has_value();
   }
-  if (!open || (*open != "journal" && *open != "chart")) return;
+  if (!open) return;
   const auto* cm = RE::ControlMap::GetSingleton();
   const std::string_view game = cm ? cm->GetUserEventName(b.GetIDCode(), b.GetDevice(), RE::ControlMap::InputContextID::kGameplay)
                                    : std::string_view{};
-  const bool closes = b.QUserEvent() == ue.cancel || game == ue.tweenMenu.c_str() || game == ue.journal.c_str() ||
-                      (*open == "chart" && game == ue.quickMap.c_str());
-  if (!closes) return;
+  const ac::views::CloseControl c{b.QUserEvent() == ue.cancel, game == ue.tweenMenu.c_str(), game == ue.journal.c_str(),
+                                  game == ue.quickMap.c_str()};
+  auto intent = ac::views::close_intent(*open, c, conversation);
+  if (!intent) return;
   SKSE::log::info("views: {} closed by {} ({})", *open, game.empty() ? b.QUserEvent().c_str() : std::string(game).c_str(),
                   b.GetIDCode());
-  SKSE::GetTaskInterface()->AddTask([v = *open] {
-    ViewIntent(R"({"type":"view.close","v":1,"body":{"view":")" + v + R"("}})");
-  });
+  SKSE::GetTaskInterface()->AddTask([i = std::move(*intent)] { ViewIntent(i); });
 }
 
 // --- the journal key ---------------------------------------------------------------------------------------------
