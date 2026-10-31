@@ -105,7 +105,9 @@ case "$cmd" in
       # A bare `status` lists finished jobs from the last 6 h only (hundreds of old ones filled every lane's context);
       # `status <name>` always answers.
       if [ -f "$JOBS/$n.rc" ]; then [ -n "${1:-}" ] || [ -n "$(find "$JOBS/$n.rc" -mmin -360)" ] && echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then
-        if grep -q '^queued' "$JOBS/$n.log" 2>/dev/null && [ ! -f "$JOBS/$n.started" ]; then echo "$n queued ($(head -1 "$JOBS/$n.log"))"; else echo "$n running"; fi; else echo "$n dead"; fi; done
+        if grep -q '^queued' "$JOBS/$n.log" 2>/dev/null && [ ! -f "$JOBS/$n.started" ]; then echo "$n queued ($(head -1 "$JOBS/$n.log"))"; else  # how long it has run, and how long its log has been quiet: a long quiet log is a hang to look at
+          now=$(date +%s); st=$(stat -c %Y "$JOBS/$n.started" 2>/dev/null || stat -c %Y "$f"); lw=$(stat -c %Y "$JOBS/$n.log" 2>/dev/null || echo "$now")
+          echo "$n running $(( (now - st) / 60 ))m, log quiet $(( (now - lw) / 60 ))m"; fi; else echo "$n dead"; fi; done
     for f in "$JOBS"/gpu*.lock.slot; do [ -e "$f" ] || continue; read -r l e < "$f" || continue
       if [ "${e:-0}" -gt "$(date +%s)" ]; then idle=$(slot_idle "${f%.slot}" "$l"); sfx=""
         [ -n "$idle" ] && sfx=" (idle $((idle / 60))m, yielding)"
