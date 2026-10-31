@@ -1,5 +1,5 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
-RED := .git/check-red
+RED := $(shell git rev-parse --git-dir)/check-red  # .git is a file in a worktree
 PARTS := guard lint unit budget links world plugin-check skse immersion ui
 # The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
