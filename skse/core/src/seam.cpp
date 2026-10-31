@@ -8,6 +8,14 @@ namespace argonia::core::seam {
 
 namespace {
 
+// The engine's string pool is case-insensitive and hands back the first-interned casing ("Speed"), so a name read
+// through a BSFixedString matches ours whatever its case (diag5-g17 §5).
+bool same_name(std::string_view a, std::string_view b) {
+  auto low = [](char c) { return c >= 'A' && c <= 'Z' ? char(c - 'A' + 'a') : c; };
+  return a.size() == b.size() &&
+         std::equal(a.begin(), a.end(), b.begin(), [&](char x, char y) { return low(x) == low(y); });
+}
+
 using conditions::Arg;
 using conditions::Term;
 
@@ -221,7 +229,7 @@ std::optional<double> WorldFacts::number(Term t, std::span<const Arg> keys) cons
     case Term::skillAtLeast:
       if (a)
         for (std::size_t i = 0; i < gen::kSkillIdNames.size(); ++i)
-          if (gen::kSkillIdNames[i] == *a) return s_.sheet.s.v[i];
+          if (same_name(gen::kSkillIdNames[i], *a)) return s_.sheet.s.v[i];
       break;
     case Term::hasItem:
       if (a)
@@ -397,7 +405,7 @@ std::span<const Mirror> attribute_mirrors() {
 
 std::optional<AttrId> attribute_named(std::string_view name) {
   for (std::size_t i = 0; i < gen::kAttrIdNames.size(); ++i)
-    if (gen::kAttrIdNames[i] == name) return AttrId(i);
+    if (same_name(gen::kAttrIdNames[i], name)) return AttrId(i);
   return std::nullopt;
 }
 

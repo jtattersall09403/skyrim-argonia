@@ -236,6 +236,8 @@ void attributes() {
   for (const auto& m : seam::attribute_mirrors()) { covered.insert(m.attribute); avs.insert(m.actor_value); }
   CHECK(covered.size() == gen::kAttrIdCount && avs.size() == gen::kAttrIdCount);
   CHECK(seam::attribute_named("strength") == AttrId::strength && !seam::attribute_named("luck"));
+  CHECK(seam::attribute_named("Speed") == AttrId::speed && seam::attribute_named("SPEED") == AttrId::speed);
+  CHECK(!seam::attribute_named("Spee") && !seam::attribute_named("speed_"));
   seam::State s;
   CHECK(seam::set_attribute(s, AttrId::endurance, 70) == 70 && seam::attribute(s, AttrId::endurance) == 70);
   CHECK(seam::set_attribute(s, AttrId::endurance, 900) == 255 && seam::set_attribute(s, AttrId::endurance, -1) == 0);

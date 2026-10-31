@@ -177,7 +177,7 @@ def fragment_calls(p: Plan, st: dict | None) -> list[str]:
             raise ValueError(f"{p.q['id']} stage {st['id']}: ending {st.get('endingId')!r} has no row")
         out += [_action(p, a) for a in (e.get("world") or []) + (e.get("rewards") or [])]
         out += ["CompleteAllObjectives()" if st["ending"] == "complete" else "FailAllObjectives()",
-                "ArgoniaCore.UnwatchQuest(self)"]
+                "ArgoniaCore.UnwatchQuest(self)", "Stop()"]  # an ended quest stops (diag5-g17 §4); GetStage still reads
     return out
 
 

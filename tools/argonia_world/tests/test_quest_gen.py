@@ -116,3 +116,15 @@ def test_fragments_name_every_native_and_evaluate_nothing(w, plan):
 
 def test_state_keys_hash_like_the_core():
     assert G.fnv1a32("") == 2166136261 and G.fnv1a32("a") == 0xE40C292C
+
+
+def test_every_ending_fragment_ends_with_stop(plan):
+    """An ended quest stops its QUST (diag5-g17 §4: fail-forward 92 left it running); a non-ending stage never does."""
+    endings = [st for st in plan.stages if st.get("ending")]
+    assert endings
+    for st in plan.stages:
+        calls = G.fragment_calls(plan, st)
+        if st.get("ending"):
+            assert calls[-2:] == ["ArgoniaCore.UnwatchQuest(self)", "Stop()"], st["id"]
+        else:
+            assert "Stop()" not in calls, st["id"]

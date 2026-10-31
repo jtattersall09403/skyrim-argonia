@@ -591,7 +591,7 @@ steps:
   do:
   - *id001
   - *id002
-  - console: cow ARG_Province 61 57
+  - console: player.moveto ARG_Ref_ProbeS07CoastArrive
   - wait: 8
   expect:
   - read:
@@ -784,7 +784,7 @@ steps:
   do:
   - *id001
   - *id002
-  - console: cow ARG_Province -62 22
+  - console: player.moveto ARG_Ref_ProbeS09SegmentArrive
   - wait: 8
   expect:
   - read:

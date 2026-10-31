@@ -1079,5 +1079,122 @@ TopCell:
     Base: 000034:Skyrim.esm
     Placement:
       Position: -213631.97, 12287.98, 30931.97
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS02Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -75776.02, 239615.98, 1748.02
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS03Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -194559.98, 133119.98, 35555.98
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS04Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -133120, 59391.97, 1316
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS05Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -190463.97, 92159.97, 17020.02
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS06Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -51199.97, 104447.99, 292.03
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS07Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -55295.98, 190464.03, 3708.02
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS07CoastArrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: 251904.02, 235519.98, 92.02
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009E9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS08Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -198655.98, 112640.01, 22060.01
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009EA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS09Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: 194559.97, 260096.03, 100
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009EB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS09SegmentArrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -251904.03, 92159.97, 17220.03
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009EC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS10Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -145408.02, 47104.01, 3187.98
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009ED:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS12Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -231423.98, 47104.01, 2739.99
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009EE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ProbeS13Arrive
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Placement:
+      Position: -215040.03, 14336.02, 29883.97
   MajorFlags:
   - Persistent

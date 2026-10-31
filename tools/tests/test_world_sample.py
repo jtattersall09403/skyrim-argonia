@@ -32,7 +32,7 @@ def test_the_journey_validates_and_has_thirteen_stops_in_order():
 def test_each_scene_ends_on_its_travel_line_and_sets_time_and_a_region_weather():
     for s in STOPS:
         lines = scene_lines(s)
-        assert re.match(r"(cow ARG_Province -?\d+ -?\d+|player\.moveto ARG_Ref_\w+)$", lines[-1]), (s["scene"], lines[-1])
+        assert re.match(r"player\.moveto ARG_Ref_\w+$", lines[-1]), (s["scene"], lines[-1])
         assert any(ln.startswith("set gamehour to") for ln in lines[:-1])
         weather = [ln for ln in lines[:-1] if ln.split()[0] in ("fw", "sw")]
         assert len(weather) == 1 and weather[0].split()[1] == s["weather"]
@@ -116,7 +116,7 @@ def test_every_cow_in_a_journey_step_comes_from_the_holding_cell():
         for st in j["steps"]:
             lines = [a.get("console", "relaunch" if "relaunch" in a else "") for a in st.get("do", []) if isinstance(a, dict)]
             for i, line in enumerate(lines):
-                if line.startswith("cow ") or line.startswith("bat world-sample"):
+                if line.startswith("cow ") or line.startswith("bat world-sample") or "arrive" in line.lower():
                     assert {"coc ARG_HoldingCell", "relaunch"} & set(lines[:i]), (name, st["name"])
 
 
@@ -131,4 +131,17 @@ def test_every_probe_moves_to_a_placed_marker_of_the_world_db():
     assert "teleport" not in ws.JOURNEY.read_text()
     moves = [d["console"].split()[1] for st in JOURNEY["steps"] for d in st.get("do", [])
              if isinstance(d, dict) and str(d.get("console", "")).startswith("player.moveto ARG_Ref_Probe")]
+    moves += [ln.split()[1] for s in STOPS for ln in scene_lines(s) if ln.startswith("player.moveto ARG_Ref_Probe")]
     assert len(moves) >= 15 and set(moves) == set(edids), set(moves) ^ set(edids)
+
+
+def test_no_scene_travels_by_cow_or_teleport_pos():
+    """diag5-g17 §2: a scene's `cow` grid change crashed the culling job (w3-weather-stills, water-swim) and a raw
+    `teleport pos` crossed cells the same way; every scene moves the player with `player.moveto` a placed marker."""
+    bad = []
+    for f in sorted((REPO / "tests" / "scenes").glob("*.txt")):
+        for ln in f.read_bytes().decode().splitlines():
+            cmd = ln.strip().lower()
+            if cmd and not cmd.startswith(";") and (cmd.startswith(("cow ", "centeronworld ")) or "teleport pos" in cmd):
+                bad.append(f"{f.name}: {ln.strip()}")
+    assert bad == []

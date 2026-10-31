@@ -60,6 +60,7 @@ Function Fragment_40()
   ArgoniaCore.ChangeSettlementStanding("place.imperial-fringe.claywater-station", 10)
   CompleteAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -75,6 +76,7 @@ Function Fragment_41()
   ArgoniaCore.ChangeDisposition("npc.imperial-fringe.claywater-station.n1-3", -15)
   CompleteAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -92,6 +94,7 @@ Function Fragment_42()
   ArgoniaCore.ChangeSettlementStanding("place.imperial-fringe.claywater-station", -5)
   CompleteAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -103,6 +106,7 @@ Function Fragment_90()
   ArgoniaCore.ChangeSettlementStanding("place.imperial-fringe.claywater-station", -5)
   FailAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -114,6 +118,7 @@ Function Fragment_92()
   ArgoniaCore.ChangeSettlementStanding("place.imperial-fringe.claywater-station", -10)
   FailAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -125,6 +130,7 @@ Function Fragment_93()
   ArgoniaCore.ChangeSettlementStanding("place.imperial-fringe.claywater-station", -10)
   FailAllObjectives()
   ArgoniaCore.UnwatchQuest(self)
+  Stop()
 ;END CODE
 EndFunction
 ;END FRAGMENT

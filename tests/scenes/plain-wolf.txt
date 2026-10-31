@@ -1,7 +1,0 @@
-; the wolf (player.placeatme 00023ABE 1) is the journey's first step: a line after the cow races its load
-; the travel line is last: a line after a cow ran during its load and crashed the game (game-6)
-set gamehour to 12
-fw ARG_Weather_tannin_haze
-player.additem 00012EB7 1
-player.equipitem 00012EB7
-cow tamriel 2 -4
