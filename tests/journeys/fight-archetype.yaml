@@ -20,6 +20,8 @@ steps:
   - name: its-light-hit       # 24 x 1.3333 = 32 +- 1 on the player's 0 AR
     do: [{console: "player.unequipall"}, {console: "player.moveto {opp} 0 -150 0"}, {console: '"{opp}".startcombat player'}]   # moved first: combat begun at the old distance never swung (game-17)
     expect:
+      - {console: '"{opp}".GetEquippedItemType 1', contains: ">> 1"}   # one-handed sword in his right hand (diag6 §6)
+      - {console: '"{opp}".GetCombatTarget', contains: "Prisoner"}
       - {event: {kind: hit, match: "*"}, within: 12}
       - {read: [av, Health, player], path: current, le: {kept: hp, plus: -31}}
       - {read: [av, Health, player], path: current, ge: {kept: hp, plus: -33}}

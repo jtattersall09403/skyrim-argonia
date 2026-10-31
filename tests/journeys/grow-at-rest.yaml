@@ -62,7 +62,7 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
   - name: pending-level       # blows until a level is pending; the level still waits for rest
-    do: [{call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
+    do: [{console: '"{opp}".moveto player 0 150 0'}, {console: '"{opp}".startcombat player'}, {call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
     expect:
       - {read: [core, GetPendingLevels], path: value, eq: 1}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}

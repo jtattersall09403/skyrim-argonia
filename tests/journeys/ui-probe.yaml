@@ -50,7 +50,7 @@ steps:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
       - {read: [core, Views], path: value, contains: "dialogue ready open"}
   - name: probe-300          # the fixture: Livia's window with 300 topics
-    do: [{call: [core, ViewProbe, "300"]}, {wait: 1}]
+    do: [{call: [core, ViewProbe, "300 focus"]}, {wait: 1}]   # focus kept: the Esc steps reach the page (diag6 §2)
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
       - {read: [core, Views], path: value, contains: "dialogue ready open"}

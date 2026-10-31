@@ -540,7 +540,9 @@ std::string ViewProbe(std::string_view topics) {
   Push("dialogue", *json);
   // The probe measures the window drawn over running play: its focus (which pauses the game, so no frame reaches the
   // bridge's player-update clock: game-16/17 ui-probe frames-open) is dropped; the page stays shown. Dev only.
-  if (auto it = g_ids.find("dialogue"); g_api && it != g_ids.end()) g_api->Unfocus(it->second);
+  // "<n> focus" keeps the focus, so the page's Escape (filter clear, then view.close) runs (diag6 §2).
+  const bool keep_focus = std::string_view(topics).find("focus") != std::string_view::npos;
+  if (auto it = g_ids.find("dialogue"); !keep_focus && g_api && it != g_ids.end()) g_api->Unfocus(it->second);
   return *json;
 }
 
