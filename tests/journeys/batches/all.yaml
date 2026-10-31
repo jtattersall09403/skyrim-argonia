@@ -16,22 +16,22 @@ items:
   - fight-roll-burden
   - quarantine
   - quest-board
-  - smoke
   - w3-crime
   - first-place
   - grow-at-rest
   - lf83-components
   - lf83-endings
   - livia-sleep
+  - rest-respawn
+  - ui-review
   - w3-interior-sun
-  - w3-weather-stills
-  - water-swim
   - ui-sweep
   - croc-den
   - rest-is-the-only-save
+  - smoke
   - ui-probe
-  - world-sample
   - cosave
   - die-and-recover
   - menus-quit
   - suspend-save
+  - world-sample
