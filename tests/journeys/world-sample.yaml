@@ -744,11 +744,11 @@ steps:
   - wait: 3
   - console: player.setangle z 0.0
   - &id003
-    pad: +LY=1:3000 -:100
+    pad: +LY=1:2900 -:100
   - &id004
-    pad: +LY=1:3000 -:100
+    pad: +LY=1:2900 -:100
   - &id005
-    pad: +LY=1:3000 -:100
+    pad: +LY=1:2900 -:100
   expect:
   - read:
     - player

@@ -568,7 +568,7 @@ def stop_9(w: World, g: Ground) -> dict:
                  "the player cannot leave; the closed-road message", cell, w)
     s["border"] = {"min_x": min(xs), "max_y": max(ys), "gate_pos": [gx, gy], "inset_u": round(inset, 1),
                    "gate_ref": gate["edid"]}
-    push = [{"pad": "+LY=1:3000 -:100"} for _ in range(3)]
+    push = [{"pad": "+LY=1:2900 -:100"} for _ in range(3)]
     face = round(gate["yaw"] % 360, 1)
     s["steps"] = [
         arrive(s, False),

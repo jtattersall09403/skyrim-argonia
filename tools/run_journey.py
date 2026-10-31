@@ -336,7 +336,7 @@ class Runner:
         self.calls.append({"call": ["relaunch", save], "result": r})
         return r
 
-    def _face(self, ref, units=None):
+    def _face(self, ref, units=None, need_crosshair=True):
         """The NPC moved TALK_UNITS (or `units`) in front of the player, turned to face them, then E once the
         crosshair's ref is that NPC (the bridge's `crosshair` read), polled for TALK_WAIT_S; StepFailed when it never
         is. An NPC under AI walked out of the crosshair during a fixed wait before E (diag2-dialogue-crime)."""
@@ -362,6 +362,8 @@ class Runner:
                 self._aim(caller)
                 aimed = time.monotonic()
             if time.monotonic() >= end:
+                if not need_crosshair:  # a swing lands on what stands in front; the step's hit expects are the check
+                    return
                 raise StepFailed(f"talk {ref}: the crosshair never showed it within {TALK_WAIT_S:g} s "
                                  f"(last: {(seen or {}).get('editor_id') or (seen or {}).get('id') or 'nothing'})")
             time.sleep(0.25)
@@ -447,7 +449,9 @@ class Runner:
         owner's #17 stream check): the ref faced at reach (_face, STRIKE_UNITS), the weapon drawn (R) and one attack
         (MOUSE1), both engine ButtonEvents (`sae` attack events were refused by the player's graph; the pad was dead
         after another lane's run: game-15), so the engine's hit, our damage and the crime rules all run."""
-        self._face(ref, STRIKE_UNITS)
+        # The crosshair is not the hit: at sword reach the third-person pick missed the armed deserter in some runs
+        # (g18b, g18c, g19 ten-blows) while the swing still lands, so the strike swings after the aim either way.
+        self._face(ref, STRIKE_UNITS, need_crosshair=False)
         out = []
         if str(self.b.call("console", "player.IsWeaponOut").get("output", "")).split(">>")[-1].strip().startswith("0"):
             out.append(self.b.call("input", "key", "R", 150))  # Ready Weapon (engine route)

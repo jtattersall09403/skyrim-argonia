@@ -12,6 +12,7 @@ steps:
       - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
       - {console: "player.additem ARG_Weap_SteelSword 1"}
       - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {console: "player.setav health 1000"}   # the woken player survives his blows until the next step disables him (g19: one blow at full 44 killed him 7 s after the wake, and a 1-vastei pile replaced the 51)
       - {wait: 2}
     expect: [{read: [actors, "4000"], path: listed.0.ref, keep: opp}]
   - name: rest                # the wake point is the camp; the deserter out of combat ("cannot rest with enemies nearby")
@@ -29,7 +30,7 @@ steps:
       - {read: [core, GetVastei], path: value, keep: v}
   - name: die                 # the deserter's attacks; no death camera, no load
     do:
-      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
+      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}   # no fixed wait: the expects poll, and a 10 s wait let him kill the woken player again (g18d)
     expect:
       - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
@@ -61,7 +62,7 @@ steps:
     do:
       - {console: '"{opp}".moveto player 0 300 0'}
       - {console: '"{opp}".enable'}
-      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
+      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
@@ -69,7 +70,7 @@ steps:
       - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}
   - name: third-death-replaces  # dying again with the pile untaken replaces it: still one
     do:
-      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
+      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:

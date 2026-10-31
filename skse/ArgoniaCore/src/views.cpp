@@ -376,8 +376,10 @@ void CloseByControl(const RE::ButtonEvent& b, const RE::UserEvents& ue) {
   const auto* cm = RE::ControlMap::GetSingleton();
   const std::string_view game = cm ? cm->GetUserEventName(b.GetIDCode(), b.GetDevice(), RE::ControlMap::InputContextID::kGameplay)
                                    : std::string_view{};
-  const ac::views::CloseControl c{b.QUserEvent() == ue.cancel, game == ue.tweenMenu.c_str(), game == ue.journal.c_str(),
-                                  game == ue.quickMap.c_str()};
+  // Esc's gameplay event is Pause on this control map (logged "closed by Pause (1)", g19); it is the Journal key's
+  // class (the System menu), and under PrismaUI's focus menu the press carries no Cancel, so it counts as Journal.
+  const ac::views::CloseControl c{b.QUserEvent() == ue.cancel, game == ue.tweenMenu.c_str(),
+                                  game == ue.journal.c_str() || game == ue.pause.c_str(), game == ue.quickMap.c_str()};
   auto intent = ac::views::close_intent(*open, c, conversation);
   if (!intent) return;
   SKSE::log::info("views: {} closed by {} ({})", *open, game.empty() ? b.QUserEvent().c_str() : std::string(game).c_str(),

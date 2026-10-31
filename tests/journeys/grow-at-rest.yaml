@@ -63,7 +63,8 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
   - name: pending-level       # blows until a level is pending; the level still waits for rest
-    do: [{console: '"{opp}".setrestrained 0'}, {console: '"{opp}".moveto player 0 150 0'}, {console: '"{opp}".startcombat player'}, {call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
+    # aggression back up: arm set 0 so he held still, and a calm actor is not hostile, so its blows earn nothing (g19, live)
+    do: [{console: '"{opp}".setrestrained 0'}, {console: '"{opp}".setav aggression 2'}, {console: '"{opp}".moveto player 0 150 0'}, {console: '"{opp}".startcombat player'}, {call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
     expect:
       - {read: [core, GetPendingLevels], path: value, eq: 1}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
