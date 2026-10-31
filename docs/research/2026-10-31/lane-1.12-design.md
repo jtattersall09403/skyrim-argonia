@@ -28,3 +28,16 @@ Commit 765110d. Status: (1) and (4) done; (2) and (3) not closed; (5) owned by t
 1. Diagnose the intercept (WindUI.log after I; vanilla.txt on the machine), re-shoot 01-04, reader pass against tmp/image.png.
 2. Corner knots of panel9: replace the corner sub-paths or pick a knot-free card shape of the same size.
 3. The off-game set at 4 sizes through tools/ui_harness.
+
+## Round 2 (ae7c76e, 7306d34)
+- (2) itemcard's seven card frames (#32 #64 #111 #144 #202 #216 #219, panel9 among them) redrawn as our own double rule with
+  plain lozenge corners, bounds identical; WindUI.log "4 pieces ... 4 drawn, 0 not in the game's menus". tools/ui_theme 16 passed.
+- make deploy failed: ArgoniaCore build, skse/src/core/include/argonia/core/chart.h(69) C2059 (another lane); stills ran with
+  deploy.sh --no-skse.
+- Wind UI did not take over in 3 runs: I gave SkyUI's inventory, TAB/P/K Dear Diary's tween, also 5 min after load with the
+  console answering. vanilla.txt `off`, log "inventory intercept installed (vanilla passthrough: off)", and no menu line after I.
+  The readiness gate never saw "0 over 100 ms" (2-4 over per 30 s). Open: diagnose (stale ArgoniaCore from the failed build?).
+- (3) harness: 184 stills at 4 sizes, 0 fails, 245.9 s. Reader: dialogue/journal/chart/HUD one family but flat; sitting still
+  parchment (wants dark); Dear Diary's System and tween level bars carry knotwork end caps (bitmaps, retheme CLEAR list);
+  minimap place label clipped at the disc. Fixes proposed: dark sitting, gold-green 2px trim with own corner art, greener
+  ground #0d150f, warm-gold links.
