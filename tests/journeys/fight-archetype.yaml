@@ -1,7 +1,8 @@
 # 1.6-wiring, the ambush deserter's archetype as OUR record (owner, 2026-10-30: test our integration, simple reads in
 # a real place): on the Blackwood Road beyond Claywater's ford (bat claywater-ambush), its level, max health and
-# steel kit are the record's values, and its light hit on 0 AR is our number (24 x 1.3333 = 32). Native map S13a.
-# Cut: aggro range (Skyrim's AI), the player's blow, parry and riposte (Elden Parry, Rim Parry), the rest respawn.
+# steel kit are the record's values and its outfit is worn. Native map S13a.
+# Cut (owner, 2026-10-31: only what we built): the swing and hit (Skyrim's combat AI), aggro range, the player's blow,
+# parry and riposte (Elden Parry, Rim Parry), the rest respawn.
 id: fight-archetype
 runner: 1
 crash_risk: low
@@ -16,12 +17,6 @@ steps:
       - {console: '"{opp}".GetLevel', contains: ">> 10"}
       - {read: [av, Health, "{opp}"], path: permanent, eq: 44}
       - {read: [inventory, "{opp}"], path: items, contains: "Steel"}
-      - {read: [av, Health, player], path: current, keep: hp}   # before the fight: the first blow can land inside the next step's do
-  - name: its-light-hit       # 24 x 1.3333 = 32 +- 1 on the player's 0 AR
-    do: [{console: "player.unequipall"}, {console: "player.moveto {opp} 0 -150 0"}, {console: '"{opp}".startcombat player'}]   # moved first: combat begun at the old distance never swung (game-17)
+  - name: outfit-worn         # our DefaultOutfit (ARG_Otft_AmbushDeserter: steel sword and shield) reached the actor
     expect:
-      - {console: '"{opp}".GetEquippedItemType Right', contains: ">> 1"}   # one-handed sword in his right hand (diag6 §6)
-      - {console: '"{opp}".GetCombatTarget', contains: "Prisoner"}
-      - {event: {kind: hit, match: "*"}, within: 12}
-      - {read: [av, Health, player], path: current, le: {kept: hp, plus: -31}}
-      - {read: [av, Health, player], path: current, ge: {kept: hp, plus: -33}}
+      - {console: '"{opp}".GetEquippedItemType Right', contains: ">> 1"}   # 1 = one-handed sword
