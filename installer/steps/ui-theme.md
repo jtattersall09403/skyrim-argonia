@@ -22,6 +22,11 @@ Wood and Paper (44174) and the Oblivion-like Loading Menu (38708) laid as the pr
    the SkyUI config panel's copy, and `textures/interface/objects/mainmenuwallpaper.dds` (the Argonia title on our own
    paper; Dear Diary's Skyrim map is replaced, not recoloured). Exit 1 means a Nordic watermark was not where it was
    measured (a changed Dear Diary version): stop and report.
+2b. **Wind UI's frames** (1.12 §3, inside step 0's command; `--game-data <Skyrim>/Data`):
+   `python -m tools.ui_theme.windui --mods <mods>/argonia-theme <mods>/wood-and-paper <mods>/dear-diary --game-data <Data> --out <mods>/argonia-theme`
+   writes `interface/tweenmenu.swf` and `interface/inventory components/itemcard.swf` (the latter from the game's
+   `Skyrim - Interface.bsa`) with every shape colour on the frame ramp and the Nordic knot shapes cleared; Wind UI
+   redraws its art cache on the next launch. Exit 1 means a source or a knot shape was not found: stop and report.
 3. **Order.** Add `argonia-theme` to the profile above `oblivion-loading-menu`, `wood-and-paper` and `dear-diary`
    (MO2 `modlist.txt`: earlier line wins), so its `fontconfig.txt` replaces Dear Diary's.
 4. **Verify.** `argonia-theme/argonia-theme.json` lists every file written and each bitmap's treatment; the verify

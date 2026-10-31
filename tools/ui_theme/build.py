@@ -14,7 +14,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from tools.ui_theme import fontlib, labels, pex, retheme
+from tools.ui_theme import fontlib, labels, pex, retheme, windui
 
 THEMED = ("dear-diary", "wood-and-paper")  # retheme's roots, lowest priority first
 CHECKED = ("dear-diary", "skyui", "wood-and-paper")
@@ -46,6 +46,9 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     shutil.rmtree(a.out, ignore_errors=True)
     bad = retheme.main(["--mods", *[str(a.mods / m) for m in THEMED], "--ttf", str(a.ttf), "--out", str(a.out)])
+    # Wind UI's frame art (1.12 §3): after the retheme, so our tweenmenu.swf is its source
+    bad |= windui.main(["--mods", str(a.out), *[str(a.mods / m) for m in reversed(THEMED)], "--game-data", str(a.data),
+                        "--out", str(a.out)])
     bad |= fontlib.main(["--ttf", str(a.ttf), "--out", str(a.out), "--check", *[str(a.mods / m) for m in CHECKED]])
     raw = labels.source([a.mods / m for m in CHECKED], a.data)
     if raw is None:

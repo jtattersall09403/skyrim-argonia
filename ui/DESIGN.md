@@ -47,6 +47,11 @@ and a moss accent. No Nordic ornament (0006).
 | `--trail` | #dba66e | the trail's fallback; each bar's trail (`--tr` in hud.css) is a lighter, warmer step of its own fill |
 | `--hud-plate`, `--hud-trim` / `-hi`, `--hud-text` / `-soft` | ink-black at 74%; #9c8259 / #d4b27a; #f1e8cf / #cdbb8f | the HUD's dark lacquer plates, bronze hairlines and words (the HUD page) |
 | `--plate` | paper at 92% | a paper plaque over play (no longer used by the HUD, 1.11) |
+| `--frame-ground` | #0e130d | the frame style's solid pane ground; Wind UI's art ramp starts here, and cleared knots take it |
+| `--frame-bg` / `-well` | ground at 95% / #080b08 at 90% | a pane over play, an inset list well (the reference's green-black) |
+| `--frame-trim` / `-hi` | #6f6a35 / #b5a862 | the gold-green filigree rule and its lit edge: Skyrim's grey rules and white edges map to these |
+| `--frame-text` / `-soft` / `-head` | #d9cfa6 / #a39a74 / #e6dcb2 | warm body text, labels, titles on dark panes (Pelagiad) |
+| `--frame-link`, `--frame-select` | #8fb7c0, teal at 16% | keywords on a dark pane; a selected row's wash |
 
 ## Space, edges and depth
 
@@ -116,3 +121,30 @@ state that persists.
 **Not on our HUD**, with the reason in the inventory: the time readout, the equipped hands, the quick
 belt, the crosshair, and the lock-on cue and target bar (TDM draws the lock-on reticle in the world; a target bar
 needs a field the interface does not have, 2.7).
+
+## Wind UI's frames (1.12 §3)
+
+Wind UI's pane fill and text colour are fixed in its DLL (black, grey-white) and it is never modified; its four frame
+pieces are drawn from shapes in `interface/inventory components/itemcard.swf` (panel9, knot) and
+`interface/tweenmenu.swf` (the caps), and redrawn whenever those files change. `tools/ui_theme/windui.py` maps every
+shape colour there through a luminance ramp (ground, trim, trim-hi) and clears the shapes that carry Nordic interlace
+(itemcard #78, tweenmenu #48 #53 #55 #57) at install. Geometry and bounds stay, since Wind UI finds each piece by size.
+
+## The UI map
+
+| Screen | Drawn by | Style |
+|---|---|---|
+| Front door (main menu) | Dear Diary's menu, our title wallpaper (ui/title) | paper, lightly tweaked |
+| Loading | Oblivion-like Loading Menu, retheme recipe | paper |
+| Menu mode, inventory, stats, magic, favourites, container, barter, gift, crafting, the taskbar | Wind UI | frame style (retinted art over its black panes) |
+| Map | our chart (ArgoniaCore mapMenu surface, PrismaUI) | paper chart in a frame |
+| Journal | our journal view (PrismaUI) | paper book |
+| Dialogue | our dialogue view (PrismaUI) | frame style |
+| System pane (Esc), settings | Skyrim's Scaleform (Dear Diary), our System view where 1.12 lands it | frame style |
+| HUD and minimap | our HUD view (ui/views/hud) | lacquer plates (`--hud-*`) |
+| Message boxes | Skyrim's MessageBoxMenu, retheme recipe | frame style |
+| Books and notes | Skyrim's Book Menu, Dear Diary paper | paper |
+| The sitting (level up), perks | our System pane + perks lane | frame style |
+| Notices | our HUD view | lacquer strips |
+| Lockpicking | Skyrim's Lockpicking Menu, retheme recipe | frame style |
+| Sleep / wait | Skyrim's Sleep/Wait Menu (Dear Diary), retheme recipe | frame style |
