@@ -70,7 +70,9 @@ send_esms() {
   # Moonlight's cards (owner, 2026-10-31: a machine from an old image still listed vanilla and souls-like): the
   # repo's apps.json and cards laid each deploy; Sunshine reads apps.json when a client asks for the list.
   for f in sunshine-apps.json make-cards.ps1; do "$run" put "$here/$f" "C:/argonia/infra/$f" >/dev/null; done
-  "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; Copy-Item C:\\argonia\\infra\\sunshine-apps.json 'C:\\Program Files\\Sunshine\\config\\apps.json' -Force"
+  # Sunshine reads apps.json only at its start (game-21: the old list stayed until a restart), so a changed list
+  # restarts it; an unchanged one leaves a live stream alone.
+  "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; \$a='C:\\Program Files\\Sunshine\\config\\apps.json'; \$n='C:\\argonia\\infra\\sunshine-apps.json'; if ((Get-FileHash \$n).Hash -ne (Get-FileHash \$a -EA SilentlyContinue).Hash) { Copy-Item \$n \$a -Force; Restart-Service SunshineService; 'sunshine: app list changed, restarted' } else { 'sunshine: app list unchanged' }"
 }
 send_scenes() {  # after the launch: a ref is named by its runtime id, the plugin's prefix read from the game (game-7)
   rm -rf out/scenes; "$PY" tools/ref_ids.py render out/scenes
