@@ -63,6 +63,17 @@ steps:
     reader: [the System tab is selected and shows settings (Wind UI's page among them), load and quit]
   - name: system-pad-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
+  # OWED (touch): the HUD's "Menu" button (top right, under the minimap; hud.menu intent -> OpenTweenMenu). The runner has
+  # no touch action, so the batch taps it by hand/adb at the button's centre; the step below sends the same intent
+  # through ViewIntent, which proves the engine half (what the tap ends in). The batch reads the log line
+  # "views: the HUD menu button opened the TweenMenu" and the menu event TweenMenu opening.
+  - name: hud-menu-button     # the Menu button's intent opens the Tween Menu (Wind UI's menu mode), as Tab does
+    do: [{call: [core, ViewIntent, '{"type":"hud.menu","v":1,"body":{}}']}, {wait: 2}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "views: the HUD menu button opened the TweenMenu"}, within: 5}
+      - {event: {kind: menu, match: TweenMenu}, within: 5}
+  - name: hud-menu-closed
+    do: [{close_menu: TweenMenu}, {wait: 1.5}]
   - name: favorite-one        # dev-favorite by the sword's form key (game-22: the editor id misses weapons)
     do: [{call: [dev-favorite, "000840:Argonia.esm"]}, {wait: 1}]
     expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]

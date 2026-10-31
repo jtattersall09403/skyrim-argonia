@@ -267,6 +267,7 @@ std::string ViewIntent(std::string_view json) {
   if (m)
     if (const auto* p = std::get_if<ac::msg::ChartPan>(&*m)) return ChartIntent(*p);
   if (*view == "sitting") return SittingIntent(json);
+  if (*view == "hud") return OpenTweenMenu() ? std::string{} : R"({"error":"the Tween Menu could not open"})";
   SKSE::log::warn("views: no host for the {} view's intents yet", *view);
   return R"({"error":"that view has no host yet"})";
 }

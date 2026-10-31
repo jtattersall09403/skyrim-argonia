@@ -8,6 +8,7 @@
 //   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>] [--navmesh <dir>]   the generated ground (LandWorld.cs), its water (WaterRecords.cs) and navmesh (NavmeshRecords.cs)
 //   vegetation --in <ArgoniaWorld.esm> --veg <dir> --out <esm>   the vegetation REFRs spliced into each cell's Temporary group (VegetationRecords.cs)
 //   vegcheck   --in <esm> --first <hex> --last <hex> --out <jsonl>   its Mutagen read-back: vegetation REFRs per cell
+//   perks      --in <perk_text.jsonl> --data <dir> --out <ArgoniaPerks.esp>   the skill-tree perks' reworded names, derived at install (PerkRecords.Plugin)
 //   links      --data <dir> --order <file> --check a.esm,b.esm [--ours <dir>]   every FormLink and master resolved in the game's order (LinkCheck.cs)
 //   npcai      --data <dir> --out <json> [--plugin p] [--edids a,b|auto:n]   NPC_s and their PACKs, AI fields (PackageRecords.cs)
 //   navmesh    roundtrip --in <jsonl.gz> --data <dir> --out <esm>   the vanilla NAVM round trip (NavmeshRecords.cs)
@@ -60,6 +61,9 @@ try
             return PackageRecords.NpcDump(Dir(Opt("--data")), Opt("--out") ?? throw new ArgumentException("missing --out"), (Opt("--edids") ?? "auto:3").Split(','), Opt("--plugin") ?? "Skyrim.esm");
         case "navmesh":
             return NavmeshRecords.Run(args, Opt, Dir);
+        case "perks":
+            return PerkRecords.Plugin(Opt("--in") ?? throw new ArgumentException("missing --in"), Dir(Opt("--data")),
+                                      Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "links":
             return LinkCheck.Run(Dir(Opt("--data")), Opt("--order") ?? throw new ArgumentException("missing --order"), (Opt("--check") ?? "Argonia.esm,ArgoniaWorld.esm").Split(','), Opt("--ours") is { } o ? string.Join(',', o.Split(',').Select(Dir)) : null);
         default:

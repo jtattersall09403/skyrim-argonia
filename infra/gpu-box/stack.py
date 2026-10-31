@@ -93,6 +93,7 @@ def save_manifest(doc):
 THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
 MAP = "argonia-map"  # 1.2 §e's derived world map overlay over FWMF (tools/chart/fwmf.py, installer/steps/world-map.md)
 VIEWS = "argonia-views"  # 1.2 §0's view bundle (tools/ui_harness/build.py: out/ui/views) under PrismaUI/views/argonia
+PERKS = "argonia-perks"  # 1.12 §4: ArgoniaPerks.esp, the skill-tree perks in our words (tools/argonia_world/perk_plugin.py)
 CSF = "argonia-csf"  # 1.12 §4: Custom Skills Framework's SKILLS.json (tools/argonia_world/csf_records.py: data/csf)
 LOD = "Argonia LOD (generated)"  # 2.W4 §c: filled on the machine by lod.ps1 (decision 0014 §4), never staged or pushed
 CURRENT_PART = "1"  # stack.py --through's default: the rows of every chunk of the part being built
@@ -735,7 +736,7 @@ def cmd_stage(a):
     names, record, ids, pruned, restaged = [], {}, {m["id"] for m in rows}, set(), {"pandora-output"}
     prev = json.loads((STACK / "installed.json").read_text())["files"] if (STACK / "installed.json").exists() else {}
     for d in list(mods.iterdir()):
-        if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, VIEWS, LOD):
+        if d.name not in ids and d.name not in ("pandora-output", THEME, MAP, VIEWS, LOD, PERKS):
             shutil.rmtree(d)
     for d in list(tools.iterdir()):  # a tool of another set too (game-12: B2's Nemesis stayed, and A's Pandora ran it)
         if d.is_dir() and d.name not in ids:
@@ -806,6 +807,13 @@ def cmd_stage(a):
         names.append(CSF)
         restaged.add(CSF)
         print(f"staged {CSF} from {csf}")
+    perks = REPO / "out" / "perks" / PERKS  # derived on the build VM (installer/steps/perk-text.md), never committed
+    if (perks / "ArgoniaPerks.esp").exists():  # above our ESMs (they are rows of the set), so its FULL/DESC win
+        shutil.rmtree(mods / PERKS, ignore_errors=True)
+        shutil.copytree(perks, mods / PERKS)
+        names.append(PERKS)
+        restaged.add(PERKS)
+        print(f"staged {PERKS} from {perks}")
     names.append("pandora-output")  # filled when Pandora runs on the machine; highest priority
     (mods / "pandora-output").mkdir(exist_ok=True)
     prof = MO2 / "profiles" / PROFILE
@@ -1182,7 +1190,7 @@ def cmd_combat(a):
     def one(name):
         stage.set = [f"combat={COMBAT[name]}"]
         print(f"== combat {name} ({COMBAT[name]})")
-        restaged = cmd_stage(stage) - {THEME, MAP, VIEWS}  # derived overlays, copied afresh by every stage
+        restaged = cmd_stage(stage) - {THEME, MAP, VIEWS, PERKS}  # derived overlays, copied afresh by every stage
         inst = json.loads((out / "installed.json").read_text())
         return restaged, inst
 

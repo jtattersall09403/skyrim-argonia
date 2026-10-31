@@ -2,7 +2,7 @@
 """The reachable skill-tree perks (1.12 §4; decision 0012): every PERK on a skill tree of the official plugins (the AVIF
 perk-tree nodes, then each node's NNAM rank chain), with its vanilla name and description, written to the ignored
 out/perk-text/vanilla.json (game text: never committed, decision 0003). tests/test_perk_text.py compares our wording
-in world/db/perk_text.jsonl with it when it is present.
+in the perk_text table with it when it is present.
 
     python3 tools/immersion/perk_extract.py     (game data: $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data;
                                                  strings: out/strings-cache, the official STRINGS tables)

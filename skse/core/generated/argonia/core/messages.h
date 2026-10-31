@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "1c0f39ffc05ad872";
+inline constexpr std::string_view kSchemaHash = "54cf2f0e7c4cfa95";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -366,6 +366,11 @@ struct HudMinimap {
   bool operator==(const HudMinimap&) const = default;
 };
 
+// The player pressed the on-screen menu button (touch): open the Tween Menu, as Tab does
+struct HudMenu {
+  bool operator==(const HudMenu&) const = default;
+};
+
 // Where the chart is looking; kept by ArgoniaCore between openings
 struct ChartView {
   double centre_x = 0;  // centre in cell units
@@ -508,6 +513,12 @@ struct Traits<HudMinimap> {
   static constexpr Direction dir = Direction::push;
 };
 template <>
+struct Traits<HudMenu> {
+  static constexpr std::string_view type = "hud.menu";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<ChartState> {
   static constexpr std::string_view type = "chart.state";
   static constexpr std::uint32_t version = 2;
@@ -545,11 +556,11 @@ struct Traits<ViewClose> {
 };
 
 using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, HudMenu, ChartPan, SittingBuy, SittingDone, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, HudMenu, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 17> kMessages{{
+inline constexpr std::array<MessageInfo, 18> kMessages{{
     {"dialogue.state", 2, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -561,6 +572,7 @@ inline constexpr std::array<MessageInfo, 17> kMessages{{
     {"hud.state", 1, Direction::push},
     {"hud.bars", 1, Direction::push},
     {"hud.minimap", 1, Direction::push},
+    {"hud.menu", 1, Direction::intent},
     {"chart.state", 2, Direction::push},
     {"chart.pan", 1, Direction::intent},
     {"sitting.state", 1, Direction::push},
@@ -1909,6 +1921,18 @@ inline bool from_json(const json::Value& j, HudMinimap& out, const std::string& 
   return f.done();
 }
 
+inline json::Value to_json(const HudMenu& v) {
+  json::Object o;
+  (void)v;
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, HudMenu& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  (void)out;
+  return f.done();
+}
+
 inline json::Value to_json(const ChartView& v) {
   json::Object o;
   o.reserve(3);
@@ -2337,6 +2361,17 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("hud.minimap: " + std::string(refuse));
     }
   }
+  if (type == "hud.menu") {
+    if constexpr (std::is_constructible_v<V, HudMenu>) {
+      if (v != 1)
+        return std::unexpected("hud.menu version " + std::to_string(v) + ": this build speaks version 1");
+      HudMenu m;
+      if (!from_json(*body, m, "hud.menu body", err)) return std::unexpected(err);
+      return V{std::in_place_type<HudMenu>, std::move(m)};
+    } else {
+      return std::unexpected("hud.menu: " + std::string(refuse));
+    }
+  }
   if (type == "chart.state") {
     if constexpr (std::is_constructible_v<V, ChartState>) {
       if (v != 2)
@@ -2485,6 +2520,13 @@ inline std::expected<std::string, std::string> encode(const HudMinimap& m) {
   std::string err;
   if (!detail::from_json(body, check, "hud.minimap body", err)) return std::unexpected(err);
   return json::envelope("hud.minimap", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const HudMenu& m) {
+  json::Value body = detail::to_json(m);
+  HudMenu check;
+  std::string err;
+  if (!detail::from_json(body, check, "hud.menu body", err)) return std::unexpected(err);
+  return json::envelope("hud.menu", 1, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ChartState& m) {
   json::Value body = detail::to_json(m);

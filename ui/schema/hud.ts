@@ -3,7 +3,7 @@
 // data, with a compass rose that turns with the player. No compass bar and no quest marker, ever. Boss bars join in 2.7.
 import { CellKey, ChartPlace, ChartPlayer } from "./chart.ts";
 import { InputGlyph } from "./common.ts";
-import { bool, enumDef, int, list, num, oneOf, opt, push, ref, str, struct } from "./types.ts";
+import { bool, enumDef, int, intent, list, num, oneOf, opt, push, ref, str, struct } from "./types.ts";
 
 export const BarKind = enumDef("BarKind", "a bar of the HUD", ["health", "stamina", "magicka", "breath", "climb"]);
 export const EffectPolarity = enumDef("EffectPolarity", "how the stack colours an effect", ["boon", "bane"]);
@@ -78,4 +78,6 @@ export const hudMinimap = push("hud.minimap", 1, "The minimap alone, sent when t
   map: ref(Minimap),
 });
 
-export const messages = [hudState, hudBars, hudMinimap];
+export const hudMenu = intent("hud.menu", 1, "The player pressed the on-screen menu button (touch): open the Tween Menu, as Tab does", {});
+
+export const messages = [hudState, hudBars, hudMinimap, hudMenu];

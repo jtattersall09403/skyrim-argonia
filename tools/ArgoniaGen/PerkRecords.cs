@@ -45,17 +45,43 @@ static class PerkRecords
     // 1.12 §4 (decision 0012): a master's skill-tree perk overridden with our name and description (perk_text), the
     // record otherwise copied whole from the load order. The master's own strings live in its string tables, which are
     // not read here, so the copy leaves Name and Description out and sets ours.
-    public static void Override(SkyrimMod mod, JsonElement r, string data)
+    public static void Override(SkyrimMod mod, JsonElement r, string data) =>
+        Override(mod, S(r, "formKey"), S(r, "name"), S(r, "description"), data);
+
+    public static void Override(SkyrimMod mod, string formKey, string name, string description, string data)
     {
-        var key = FormKey.Factory(S(r, "formKey"));
+        var key = FormKey.Factory(formKey);
         var file = key.ModKey.FileName.String;
         if (!masters.TryGetValue(file, out var master))
             masters[file] = master = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, file), Rel, StringsParams());
         if (!master.Perks.TryGetValue(key, out var src)) throw new InvalidDataException($"no PERK {key} in {file}");
         var p = (Perk)src.DeepCopy(new Perk.TranslationMask(true) { Name = false, Description = false });
-        p.Name = new TranslatedString(Language.English, S(r, "name"));
-        p.Description = new TranslatedString(Language.English, S(r, "description"));
+        p.Name = new TranslatedString(Language.English, name);
+        p.Description = new TranslatedString(Language.English, description);
         mod.Perks.Add(p);
+    }
+
+    // perks: the perk_text table + the player's masters -> ArgoniaPerks.esp (installer/steps/perk-text.md, 0014).
+    // A derived plugin made on the player's machine: it carries the masters' PERK records, so it is never committed.
+    public static int Plugin(string jsonl, string data, string outPath)
+    {
+        var mod = new SkyrimMod(ModKey.FromFileName(Path.GetFileName(outPath)), Rel);
+        mod.ModHeader.Author = "Elder Souls: Argonia (derived at install)";
+        mod.ModHeader.Description = "The skill-tree perks' names and descriptions in Argonia's words. Made on your machine; do not share.";
+        var n = 0;
+        foreach (var line in File.ReadLines(jsonl).Where(l => l.Trim().Length > 0))
+        {
+            using var doc = JsonDocument.Parse(line);
+            var r = doc.RootElement;
+            Override(mod, S(r, "formkey"), S(r, "name"), S(r, "description"), data);
+            n++;
+        }
+        Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
+        // masters listed in load order (Skyrim.esm first), as the Creation Kit writes them
+        var order = new[] { "Skyrim.esm", "Dawnguard.esm" }.Select(f => ModKey.FromFileName(f)).Append(mod.ModKey);
+        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithDataFolder(data).Write();
+        Console.WriteLine($"perks: {n} overrides -> {outPath}");
+        return 0;
     }
 
     public static void Write(SkyrimMod mod, JsonElement r)

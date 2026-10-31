@@ -45,6 +45,7 @@ if [ $stage = 1 ]; then
   step "views" "$PY" -m tools.ui_harness.build
   step "theme" bash -c 'rm -rf out/ui_theme/argonia-theme && "$0" -m tools.ui_theme.build --mods "$HOME/.argonia/stack/MO2/mods" \
     --ttf "${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf" --out out/ui_theme/argonia-theme' "$PY"
+  step "perks" bash -c 'rm -rf out/perks/argonia-perks && "$0" -m tools.argonia_world.perk_plugin --out out/perks/argonia-perks' "$PY"
   step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push
 fi
 if [ $papyrus = 1 ]; then step "papyrus" "$here/records_jobs.sh" papyrus; fi

@@ -246,6 +246,15 @@ class Harness:
         if sent != [{"type": "dialogue.topic", "v": 1, "body": {"topic": third}}]:
             fails.append(f"pad walk sent {sent}, want the third topic")
 
+        hud = fixtures("hud")
+        p = self.open(vp, "hud")
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(hud["states"]["play"]))
+        p.evaluate("() => { window.argoniaSent.length = 0; }")
+        p.click(".menu-btn")
+        sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
+        if sent != [{"type": "hud.menu", "v": 1, "body": {}}]:
+            fails.append(f"hud menu button sent {sent}, want hud.menu")
+
         j = fixtures("journal")
         p = self.open(vp, "journal")
         p.evaluate("(m) => window.argonia.push(m)", json.dumps(j["states"]["all"]))

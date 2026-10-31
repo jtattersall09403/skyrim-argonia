@@ -264,4 +264,19 @@ void EnsurePerks() {
   }
 }
 
+// The HUD's menu button (touch): the Tween Menu (Wind UI's menu mode) by the UI message queue, as the Tab key's gameplay
+// event does. Nothing while a pausing menu is already open (a second press must not stack a menu).
+bool OpenTweenMenu() {
+  auto* ui = RE::UI::GetSingleton();
+  auto* q = RE::UIMessageQueue::GetSingleton();
+  if (!ui || !q) return false;
+  if (ui->GameIsPaused() || ui->IsMenuOpen(RE::TweenMenu::MENU_NAME)) {
+    SKSE::log::info("views: the HUD menu button ignored (a menu is open)");
+    return true;
+  }
+  q->AddMessage(RE::TweenMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
+  SKSE::log::info("views: the HUD menu button opened the TweenMenu");
+  return true;
+}
+
 }  // namespace argonia::plugin

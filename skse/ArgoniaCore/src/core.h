@@ -93,6 +93,8 @@ void EnsurePerks();
 // --- dialogue.cpp: the router's handler, the view host, the sinks ---------------------------------------------
 bool OpenDialogue(RE::TESObjectREFR* target);
 std::string ViewIntent(std::string_view json);
+// engine.cpp: the HUD's menu button (touch) opens the Tween Menu through the UI message queue, as Tab does.
+bool OpenTweenMenu();
 // The dev bridge's greeting read: the window a conversation with this speaker opens on, as JSON; the refusal else.
 std::expected<std::string, std::string> GreetingFor(std::string_view speaker_id);
 void InstallHooks();

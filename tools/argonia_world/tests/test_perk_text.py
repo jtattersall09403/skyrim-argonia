@@ -1,4 +1,4 @@
-"""1.12 §4: our wording of the skill-tree perks (world/db/perk_text.jsonl) keeps every number of the vanilla text.
+"""1.12 §4: our wording of the skill-tree perks (the perk_text table) keeps every number of the vanilla text.
 
 The vanilla extract (tools/immersion/perk_extract.py -> out/perk-text/vanilla.json) is game text and stays out of git;
 without it the number checks skip and only our own rows are checked."""

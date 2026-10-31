@@ -83,3 +83,29 @@ No game machine: L1/L2 here; every in-game row is in tests/journeys/system-perks
 - `make check`: exit 0 (job chk). skse ctest is 33/33. tools/ui_theme has 14 tests, all passing. Both journeys lint
   clean.
 - `make plugin` regenerated plugin/Argonia with the CSF records: 2787 YAML files.
+
+## Follow-ups (coordinator)
+- **Perk text, install-time route (0014).** `python -m tools.argonia_world.perk_plugin` reads the perk_text table
+  through db.py and the player's Skyrim.esm and Dawnguard.esm. It writes out/perks/argonia-perks/ArgoniaPerks.esp
+  (ArgoniaGen `perks`) in about 2 s. deploy.sh runs it as the `perks` step, and stack.py stages it as the mod
+  `argonia-perks` above our ESMs.
+- What was checked:
+  - a dry stage of the lod group listed it in plugins.txt and modlist.txt; the full 8-group stage was not run;
+  - test_perk_plugin finds 273 overrides. Only FULL, DESC and EPF2 (the button label) differ. Skyrim.esm records are
+    compared byte for byte; Dawnguard records only by signature and size;
+  - every number in DESC matches the vanilla text;
+  - plugin/Argonia/ is unchanged;
+  - a reader went over the 11 candidate rows (the four post-pass-2 rows could not be singled out) and found 0 hits.
+  - The step is documented in installer/steps/perk-text.md.
+- **Touch menu button.** The HUD has a "Menu" button under the minimap: at least 44 px, frame tokens. It sends
+  `hud.menu`, and ArgoniaCore's `OpenTweenMenu` (engine.cpp) shows the Tween Menu. dialogue.cpp gained one line,
+  the routing.
+  - Off-game: the stills (out/ui/stills/hud/minimap0@{720p,1080p,v5-folded,v5-unfolded}) passed the reader.
+    The ui harness had 0 fails over 156 stills.
+  - Not seen: the effects stack and the minimap together.
+  - The batch must read `views: the HUD menu button opened the TweenMenu` and the TweenMenu event. Whether PrismaUI
+    passes touch to the HUD is unproven, and the tap itself is owed (the runner has no touch).
+  - No wait/rest button: skipped to keep the control clean.
+- **world-reads:** the perk paths now go through db.py. `make world` is green.
+- **Gate:** the only red left is `budget`: CLAUDE.md is 1134 words against 1100, which came in at 63a7ad1 and is not
+  this lane's.
