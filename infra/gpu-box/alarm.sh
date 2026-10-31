@@ -6,7 +6,7 @@
 # A clone is headless and has no tunnel heartbeat, so its backstop is CPU: under 3% average for 45 minutes.
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
-R=eu-west-2
+R=${R:-eu-west-2}  # the machine's region (clone.sh --region passes it)
 NAME=${1:-argonia-play}
 ID=$(aws ec2 describe-instances --region $R --filters "Name=tag:Name,Values=$NAME" \
   Name=instance-state-name,Values=pending,running,stopping,stopped --query 'Reservations[0].Instances[0].InstanceId' --output text)

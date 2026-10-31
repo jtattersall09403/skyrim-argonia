@@ -24,7 +24,8 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --from) FROM=$2; shift 2 ;;
     --new-image) NEW_IMAGE=1; shift ;;
-    --image) AMI_GIVEN=$2; shift 2 ;;  # a named London image (the source has moved region, #27)
+    --image) AMI_GIVEN=$2; shift 2 ;;  # a named image in the clone's region (the source has moved region, #27)
+    --region) R=$2; shift 2 ;;  # another region: its default VPC; the clone is reached on its public address (1.8)
     *) break ;;
   esac
 done
@@ -32,11 +33,13 @@ NAME=${1:?usage: clone.sh [--from argonia-play] [--new-image] argonia-play-N [ty
 case "$NAME" in argonia-play-[0-9]*) ;; *) echo "clone names are argonia-play-<n>" >&2; exit 2 ;; esac
 log() { echo "[$(date -u +%T)] $*"; }
 q() { aws ec2 "$@" --region $R --output text; }
+[ "$R" = eu-west-2 ] || VPC=$(q describe-vpcs --filters Name=is-default,Values=true --query 'Vpcs[0].VpcId')
 live='Name=instance-state-name,Values=pending,running,stopping,stopped'
 
 read -r SRC SRC_TYPE SRC_AZ <<<"$(q describe-instances --filters "Name=tag:Name,Values=$FROM" "$live" \
   --query 'Reservations[0].Instances[0].[InstanceId,InstanceType,Placement.AvailabilityZone]')"
-[ "$SRC" != None ] || { echo "no machine $FROM" >&2; exit 1; }
+# The source gives the defaults and a new image; with --image, a type and an AZ it may be absent (another region).
+[ "$SRC" != None ] || { [ -n "$AMI_GIVEN" ] && [ -n "${2:-}" ] && [ -n "${3:-}" ]; } || { echo "no machine $FROM" >&2; exit 1; }
 TYPE=${2:-$SRC_TYPE}; AZ=${3:-$SRC_AZ}
 
 ID=$(q describe-instances --filters "Name=tag:Name,Values=$NAME" "$live" --query 'Reservations[0].Instances[0].InstanceId')
@@ -64,6 +67,7 @@ if [ "$ID" = None ]; then
 
   # 2. The security group and the machine.
   BUILD_IP=$(hostname -I | awk '{print $1}')
+  [ "$R" = eu-west-2 ] || BUILD_IP=$(curl -s -m 5 https://checkip.amazonaws.com)  # cross-region: the public address
   SG=$(q describe-security-groups --filters Name=group-name,Values=argonia-play-clone Name=vpc-id,Values=$VPC \
     --query 'SecurityGroups[0].GroupId')
   if [ "$SG" = None ]; then
@@ -74,7 +78,7 @@ if [ "$ID" = None ]; then
     q authorize-security-group-ingress --group-id "$SG" \
       --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$BUILD_IP/32,Description=build-vm}]" >/dev/null
     q revoke-security-group-egress --group-id "$SG" --ip-permissions 'IpProtocol=-1,IpRanges=[{CidrIp=0.0.0.0/0}]' >/dev/null
-    q authorize-security-group-egress --group-id "$SG" \
+    [ "$R" != eu-west-2 ] || q authorize-security-group-egress --group-id "$SG" \
       --ip-permissions 'IpProtocol=-1,IpRanges=[{CidrIp=172.31.0.0/16,Description=vpc-only}]' >/dev/null
     log "security group $SG"
   fi
@@ -95,7 +99,7 @@ if [ "$ID" = None ]; then
   aws ec2 wait instance-running --region $R --instance-ids "$ID"
 fi
 # The AWS-side idle backstop, keyed to this instance (idle-stop.ps1 inside Windows comes with the image).
-"$here/alarm.sh" "$NAME"
+R=$R "$here/alarm.sh" "$NAME"
 
 # 3. First boot.
 export ARGONIA_PLAY=$NAME

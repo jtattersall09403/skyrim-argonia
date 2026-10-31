@@ -12,7 +12,7 @@ set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 export PATH="$HOME/.local/bin:$PATH"
 AMI=${1:?usage}; AR=${2:?usage}; TYPE=${3:?usage}; SUBNET=${4:?usage}; R=${5:-eu-west-2}
-SG=sg-0c73f686853568ced; PROFILE=argonia-play-ssm; NAME=${NAME:-argonia-play-new}  # NAME=... for the agents' machine
+SG=${SG:-sg-0c73f686853568ced}; PROFILE=argonia-play-ssm; NAME=${NAME:-argonia-play-new}  # NAME=... for the agents' machine
 log() { echo "[$(date -u +%T)] $*"; }
 avail() {  # an image from a 150 GB disk takes ~1 h; each waiter gives up after 10 min
   local i; for i in $(seq 1 12); do aws ec2 wait image-available --region "$1" --image-ids "$2" 2>/dev/null && return 0; done
