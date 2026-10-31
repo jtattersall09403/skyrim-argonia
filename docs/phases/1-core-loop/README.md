@@ -79,7 +79,7 @@ the Status column below and `checks.md`.
 | 1.8 | [A play machine you can rely on](1.8-a-play-machine-you-can-rely-on.md) | — | 1.9–1.16 | in progress |
 | 1.9 | [The front door and loads](1.9-the-front-door-and-loads.md) | — | 1.10 | in progress |
 | 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | in progress |
-| 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.13 | todo |
+| 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.13 | in progress (L3 passed, lane-1.11.md; owed: L4 batch, owner) |
 | 1.12 | [Menus: the system menu, the pause menu, quit, favourites, touch](1.12-menus.md) | 1.11 (the theme's HUD pass) | 1.13 | todo |
 | 1.13 | [The chart](1.13-the-chart.md) | — | 1.11, 1.12 | todo |
 | 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.13 | todo |

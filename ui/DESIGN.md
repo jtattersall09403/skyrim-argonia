@@ -40,9 +40,11 @@ and a moss accent. No Nordic ornament (0006).
 | `--link` | #1d5263 | hyperlinked keywords and topics (Morrowind's blue, moved to marsh teal) |
 | `--moss` | #4b5a2a | a finished quest, a boon, a gain |
 | `--focus` | #b0702a | the focus ring (amber), seen on paper and over play |
-| `--bar-*` | health #9a2f22, stamina #3f6e2c, magicka #2f4f96, breath #3a7884, climb #b07a26 | HUD bars |
-| `--trough` | ink at 82% | a bar's empty part |
-| `--plate` | paper at 92% | the plaque behind every HUD word, so it reads over a bright frame |
+| `--bar-*` | health #7e2a1e, stamina #42622c, magicka #34506e (slate), breath #3a7884, climb #b07a26 | HUD bars |
+| `--bar-*-hi` | health #b65438, stamina #7d9450, magicka #6f8fae, breath #6cadb5, climb #d9a24e | a bar's lit tone at its leading edge |
+| `--trail` | #dba66e | the trail's fallback; each bar's trail (`--tr` in hud.css) is a lighter, warmer step of its own fill |
+| `--hud-plate`, `--hud-trim` / `-hi`, `--hud-text` / `-soft` | ink-black at 74%; #9c8259 / #d4b27a; #f1e8cf / #cdbb8f | the HUD's dark lacquer plates, bronze hairlines and words (the HUD page) |
+| `--plate` | paper at 92% | a paper plaque over play (no longer used by the HUD, 1.11) |
 
 ## Space, edges and depth
 
@@ -68,3 +70,47 @@ and a moss accent. No Nordic ornament (0006).
 Flexbox, CSS columns (the journal's two leaves), `min()` (with a JS fallback), canvas 2D with `source-in` (the chart
 mask), inline SVG (the sneak eye and status marks), and `@font-face` from a relative file. There are no web
 components, no fetch and no framework. If 1.2 §0 picks Scaleform, these tokens carry over and only the views change.
+
+## The HUD (1.11)
+
+Our HUD over play, rebuilt from the old project's (its 2.2 §b; the inventory is
+`docs/research/2026-10-31/lane-1.11.md`) and from Dark Souls' restraint, in our own drawing. The view is
+`views/hud`; its interface (`schema/hud.ts`) is unchanged.
+
+**Layout.** One column top left: the bars, vastei directly under them, then the notices, newest last. Top right the
+effect stack; top centre the sneak eye while sneaking; the place banner at 15% height; the prompt under the centre.
+Nothing else at the centre, no compass, no marker. The column never grows past 44% of the width.
+
+**Plates.** Every HUD word sits on dark lacquer (`--hud-plate`) with a bronze hairline and a soft shadow, the
+words in paper-light. Paper plates read as a menu laid over play and were the owner's "parchment box"; dark plates
+read over a bright marsh and a dark interior alike. The banner has no plate: the name over a soft dark band between
+two bronze rules.
+
+**Bars.** Health, stamina, magicka in that fixed order, told apart by colour and place (Dark Souls); breath and grip
+come and go below them with their name.
+- *Length* grows with the maximum: 0.1rem a point, at least 4rem, at most 40% of the width.
+- *Frame*: a recessed black trough (near-black, a deep inner shadow, a faint lower lip), a bronze hairline, a black keyline; a
+  bronze spine with a lozenge head binds the three on the left. Health 1.05rem tall, the others 0.8rem.
+- *Fill*: the bar's hue at its root running to its lit tone (`--bar-*-hi`) at the leading edge, a top highlight, a bevel (a light top line, a shaded base) and a shadow cast on the track
+  and a lower shade for depth, and a lit lip at the edge. A faint tick every 50 points.
+- *Damage trail*: on a drop the fill falls at once and a lighter, warmer step of the bar's own colour, with a lit end, holds what was lost; 0.9 s after the
+  last hit it falls to the fill over 0.5 s (main.ts; `remember` in render.ts). A second hit inside the hold keeps
+  the trail at its first height, so a combo reads as one loss.
+- *Regeneration*: while a bar rises a soft light runs along its fill toward the edge; it stops 0.7 s after the last
+  rise.
+- *Low health* (at or under a quarter): the health fill pulses brighter, its frame warms to red clay, and the
+  screen's rim darkens to a red-clay vignette that breathes.
+
+**Vastei.** Under the bars: our lozenge mark, the count in heading size, the word. A gain (`gained`) shows "+N" in
+the stamina's lit tone, rising in; the frame warms and one glint runs along the plate (1.6 s, once). A loss shows at
+once, as the count.
+
+**Notices** are lacquer strips with a rule in the kind's colour (journal teal, discovery moss, warning clay),
+rising in. **Effects** keep their stack top right, the medals dark with a moss or clay ring.
+
+**Motion** stays under 2 s and never loops but for the regeneration light and the low-health pulse, which say a
+state that persists.
+
+**Not on our HUD**, with the reason in the inventory: the minimap and time readout, the equipped hands, the quick
+belt, the crosshair, and the lock-on cue and target bar (TDM draws the lock-on reticle in the world; a target bar
+needs a field the interface does not have, 2.7).

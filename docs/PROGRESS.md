@@ -22,7 +22,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.8 | A play machine you can rely on | in progress (evidence docs/research/2026-10-31/1.8-machine-evidence.md, call #30 waits on the owner; saves backup proven) |
 | 1 | 1.9 | The front door and loads | in progress (lane-1.9 off-machine: 12 loading-screen models, the scrolling bar's source dropped, the ArgoniaWalk save, the squash's scale mode; in-game rows wait on a machine: the agents' machine was reclaimed twice) |
 | 1 | 1.10 | The player character | in progress (L1: the plugin's Player override, ArgonianRace and ArgonianMalePreset06's face, test_player_record.py; base_save.py runs no setrace; owed: the L4 reader on player-look stills, no game machine (lane-1.10.md)) |
-| 1 | 1.11 | Our HUD, rebuilt from the old game's | todo |
+| 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (L3 passed, lane-1.11.md; owed: L4 batch, owner) |
 | 1 | 1.12 | Menus: the system menu, the pause menu, quit, favourites, touch | todo |
 | 1 | 1.13 | The chart | todo |
 | 1 | 1.14 | Death, the pile and respawn | todo |

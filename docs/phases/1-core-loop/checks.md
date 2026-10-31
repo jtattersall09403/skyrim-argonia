@@ -174,8 +174,9 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| The old HUD's inventory: every element built or dropped with a reason | owner play test 5 | L1 | owed | not done |
-| A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | owed | flat primary bars; vastei bottom right |
+| The old HUD's inventory: every element built or dropped with a reason | owner play test 5 | L1 | proven | docs/research/2026-10-31/lane-1.11.md |
+| A reader over calm, fight and low-health stills off game (1080p, V5 folded, unfolded) | owner play test 5 | L3 | proven | docs/research/2026-10-31/lane-1.11.md |
+| A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | owed | built and passed at L3; batch tests/journeys/batches/lane-1.11.sh owed until the machines move |
 | The owner says the HUD looks right | owner play test 5 | L6 | owed | — |
 
 ## 1.12 Menus
