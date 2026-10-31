@@ -293,7 +293,6 @@ def stop_2(w: World, g: Ground) -> dict:
     (ar, ac), (br, bc) = pair
     hi, lo = ((ar, ac), (br, bc)) if win[ar, ac] >= win[br, bc] else ((br, bc), (ar, ac))
     steep = float(abs(win[ar, ac] - win[br, bc]))
-    clamp = lambda v: min(max(v, 0), su.QUADS_PER_CELL)  # noqa: E731
     def standable(start, away):
         """The first vertex out along `away` (from 2 samples) whose slope is under 35 deg: the limiter spreads this
         cell's cliff into an ~83 deg VHGT ramp several samples wide, and a probe set on it slides (game-18: the top
