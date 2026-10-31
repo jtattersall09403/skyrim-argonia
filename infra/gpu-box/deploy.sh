@@ -79,5 +79,5 @@ send_scenes() {  # after the launch: a ref is named by its runtime id, the plugi
 step "send ESMs and helpers" send_esms
 step "launch" "$PY" tools/bridge.py launch --fresh
 step "send scenes" send_scenes
-[ $base = 1 ] && step "base save" "$PY" "$here/base_save.py"
+[ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"
