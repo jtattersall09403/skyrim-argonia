@@ -215,4 +215,6 @@ Something they can **play**, that is:
 | 2026-10-30 | **Claywater has a trader**: the station keeper (Livia, the well-keeper) is the place's general trader; her trade service is wired the native way (vendor faction, merchant chest, a barter topic in our dialogue). |
 | 2026-10-31 | **O-2 answered**: the owner is on the 20x subscription now. Open calls O-4, O-9, O-11, O-16 posted as issues #20–#23. |
 | 2026-10-31 | **O-9 (#21): armour pieces stay as base Skyrim has them** (no separate pauldrons or gauntlets); the owner will look for mods later. |
+| 2026-10-31 | **O-11 (#22): dialogue stays unvoiced text, but keep Skyrim's voiced barks** (the out-of-conversation lines people say aloud as you pass, in combat, idles), using Skyrim's own voice types per race; each bark's words still pass the Nordic review (0012), so lines naming Skyrim places, people or events are filtered out. |
+| 2026-10-31 | **O-16 (#23): one rest banks one pending level** (the old 76 text). |
 
