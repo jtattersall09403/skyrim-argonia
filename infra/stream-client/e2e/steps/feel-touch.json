@@ -1,0 +1,9 @@
+[{"probe": "argonia.layer.isShown() ? 'shown' : (document.getElementById('argonia-touch-toggle').click(), 'toggled')"},
+ {"scene": "plain-armed"}, {"wait": 2000}, {"shot": "hud"},
+ {"tap": "#argonia-touch .at-btn[data-id=\"start\"]"}, {"wait": 1500}, {"shot": "menu"},
+ {"tap": "#argonia-touch .at-btn[data-id=\"b\"]"}, {"wait": 1500}, {"shot": "menu-closed"},
+ {"drag": ["#argonia-touch .at-zone[data-side=\"left\"]", 0, -90, 1800]}, {"shot": "moved"},
+ {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700},
+ {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700},
+ {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"shot": "attack"},
+ {"wait": 2500}, {"probe": "FEEL"}]
