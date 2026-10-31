@@ -130,6 +130,7 @@ const LABEL: Record<ButtonId, string> = {
 export function layoutFor(w: number, h: number): Layout {
     const shape = shapeOf(w, h)
     if (shape === "folded-landscape") return bandLayout(w, h)
+    if (shape === "unfolded") return stripLayout(w, h)
     const short = Math.min(w, h)
     // the button diameter: ~9.5% of the short side, never under 44 px (the touch minimum) nor over 96
     const unit = Math.round(Math.max(44, Math.min(96, short * (0.095))))
@@ -212,29 +213,31 @@ function bandLayout(w: number, h: number): Layout {
     const buttons: ButtonSpec[] = []
     const add = (id: ButtonId, cx: number, cy: number, size = unit, round = true, small = false) =>
         buttons.push({ kind: "button", id, label: LABEL[id], round, small, rect: { x: Math.round(cx - size / 2), y: Math.round(cy - size / 2), w: Math.round(size), h: Math.round(size) } })
-    const sw = Math.min(unit * 1.5, band - 2 * m), sh = unit * 0.8
+    const sw = Math.min(unit * 1.5, band - 2 * m), sh = Math.max(44, unit * 0.8)
     const pill = (id: ButtonId, cx: number, cy: number, small = false) =>
         buttons.push({ kind: "button", id, label: LABEL[id], round: false, small, rect: { x: Math.round(cx - sw / 2), y: Math.round(cy - sh / 2), w: Math.round(sw), h: Math.round(sh) } })
     const lc = band / 2, rc = w - band / 2
     const ty = m + sh / 2, by = ty + sh + gap
     pill("lt", lc, ty); pill("lb", lc, by)
     pill("rt", rc, ty); pill("rb", rc, by)
+    // Back (journal) and Start (Tween) stay in the bands too: over the picture's top centre they sat on the
+    // Journal's tabs (ui-review5). Back at the foot of the left band, Start under RB.
+    pill("back", lc, h - m - sh / 2, true)
+    pill("start", rc, by + sh + gap, true)
     const tc = w / 2
-    pill("back", tc - gap / 2 - sw / 2, ty, true)
-    pill("start", tc + gap / 2 + sw / 2, ty, true)
     // left band: the d-pad, then L3 under it
-    const dp = Math.max(40, unit * 0.78)
+    const dp = Math.max(48, unit * 0.78)
     const dcy = by + sh / 2 + gap + dp * 1.5
     add("up", lc, dcy - dp, dp * 0.92, false, true)
     add("down", lc, dcy + dp, dp * 0.92, false, true)
     add("left", lc - dp, dcy, dp * 0.92, false, true)
     add("right", lc + dp, dcy, dp * 0.92, false, true)
-    add("l3", lc, Math.min(h - m - unit * 0.425, dcy + dp * 1.5 + gap + unit * 0.425), unit * 0.85)
+    add("l3", lc, Math.min(h - m - sh - gap - unit * 0.425, dcy + dp * 1.5 + gap + unit * 0.425), Math.max(44, unit * 0.85))
     // right band: the face diamond in the bottom corner, R3 above it
     const d = unit + gap * 0.6
     const fy = h - m - unit / 2 - d
     add("y", rc, fy - d); add("x", rc - d, fy); add("b", rc + d, fy); add("a", rc, fy + d)
-    add("r3", rc + d, Math.max(by + sh / 2 + gap + unit * 0.425, fy - d - gap - unit * 0.5), unit * 0.85)
+    add("r3", rc + d, Math.max(by + sh * 1.5 + 2 * gap + unit * 0.425, fy - d - gap - unit * 0.5), Math.max(44, unit * 0.85))
     const zoneTop = Math.round(ty + sh / 2 + gap)
     const radius = Math.round(unit * 1.25)
     // the rings rest on the picture's inner edge: bottom left (nothing of the HUD there) and mid right (the money
@@ -246,6 +249,62 @@ function bandLayout(w: number, h: number): Layout {
     const ts = Math.round(Math.max(36, unit * 0.6))
     const toggle = { x: Math.round(tc - ts / 2), y: Math.round(ty + sh / 2 + gap), w: ts, h: ts }
     return { shape: "folded-landscape", unit, buttons, zones, toggle }
+}
+
+/** The unfolded phone: buttons over a near-square picture sat on the HUD bars (top left, under LT/LB), the money
+ *  counter (under A), the Tween level bar (under the right stick) and the Journal's tabs (ui-review5), so the
+ *  controls live in a strip above and below the picture and the stream is asked for the picture between them
+ *  (stream_settings.ts; upstream centres the video, so the strips are equal). Top: the shoulders, Back, Start, L3
+ *  and R3; bottom: the d-pad, the two stick rings and the face diamond. */
+export function stripUnit(w: number, h: number): number { return Math.round(Math.max(44, Math.min(72, Math.min(w, h) * 0.06))) }
+export function stripHeight(w: number, h: number): number {
+    if (shapeOf(w, h) !== "unfolded") return 0
+    const unit = stripUnit(w, h), gap = Math.round(unit * 0.18), m = Math.round(Math.max(12, unit * 0.3))
+    return Math.round(2 * (unit + gap * 0.6) + unit + 2 * m)
+}
+
+function stripLayout(w: number, h: number): Layout {
+    const unit = stripUnit(w, h)
+    const gap = Math.round(unit * 0.18)
+    const m = Math.round(Math.max(12, unit * 0.3))
+    const strip = stripHeight(w, h)
+    const buttons: ButtonSpec[] = []
+    const add = (id: ButtonId, cx: number, cy: number, size = unit, round = true, small = false) =>
+        buttons.push({ kind: "button", id, label: LABEL[id], round, small, rect: { x: Math.round(cx - size / 2), y: Math.round(cy - size / 2), w: Math.round(size), h: Math.round(size) } })
+    const sw = unit * 1.5, sh = Math.max(44, unit * 0.8)
+    const pill = (id: ButtonId, cx: number, cy: number, small = false) =>
+        buttons.push({ kind: "button", id, label: LABEL[id], round: false, small, rect: { x: Math.round(cx - sw / 2), y: Math.round(cy - sh / 2), w: Math.round(sw), h: Math.round(sh) } })
+    // top strip: triggers outboard, bumpers inboard, Back and Start at the centre; L3 and R3 under the bumpers
+    const ty = m + sh / 2
+    const lx = m + sw / 2, rx = w - m - sw / 2
+    pill("lt", lx, ty); pill("lb", lx + sw + gap, ty)
+    pill("rt", rx, ty); pill("rb", rx - sw - gap, ty)
+    const tc = w / 2
+    pill("back", tc - gap / 2 - sw / 2, ty, true)
+    pill("start", tc + gap / 2 + sw / 2, ty, true)
+    const l3y = Math.min(strip - m - unit * 0.425, ty + sh / 2 + gap + unit * 0.425)
+    add("l3", lx, l3y, Math.max(44, unit * 0.85))
+    add("r3", rx, l3y, Math.max(44, unit * 0.85))
+    // bottom strip: the d-pad at the left, the face diamond at the right, the stick rings between
+    const base = h - strip
+    const dp = Math.max(48, unit * 0.78)
+    const dcx = m + dp * 1.5, dcy = base + strip / 2
+    const ds = dp * 0.92
+    add("up", dcx, dcy - dp, ds, false, true)
+    add("down", dcx, dcy + dp, ds, false, true)
+    add("left", dcx - dp, dcy, ds, false, true)
+    add("right", dcx + dp, dcy, ds, false, true)
+    const d = unit + gap * 0.6
+    const fx = w - m - unit / 2 - d, fy = base + strip / 2
+    add("y", fx, fy - d); add("x", fx - d, fy); add("b", fx + d, fy); add("a", fx, fy + d)
+    const radius = Math.round(Math.min(unit * 1.25, strip / 2 - m))
+    const zones: ZoneSpec[] = [
+        { kind: "stick", side: "left", radius, rect: { x: 0, y: base, w: Math.round(w / 2), h: strip }, rest: { x: Math.round(dcx + dp * 1.5 + gap + radius * 1.4), y: Math.round(dcy) } },
+        { kind: "stick", side: "right", radius, rect: { x: Math.round(w / 2), y: base, w: w - Math.round(w / 2), h: strip }, rest: { x: Math.round(fx - d - unit / 2 - gap - radius * 1.4), y: Math.round(fy) } },
+    ]
+    const ts = Math.round(Math.max(36, unit * 0.6))
+    const toggle = { x: Math.round(tc - ts / 2), y: Math.round(ty + sh / 2 + gap), w: ts, h: ts }
+    return { shape: "unfolded", unit, buttons, zones, toggle }
 }
 
 /** Rectangles that overlap (for the layout test): any two buttons, or a button off screen. */

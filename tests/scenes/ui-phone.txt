@@ -1,0 +1,19 @@
+; The phone run's scene (lane phone-take): ui-props, then the player 120 units south of the station's Takes and
+; facing him, so the phone's own A press opens the dialogue. Applied by the bridge (drive.mjs `scene` step), never typed
+; through the stream: in ui-review5 the console toggles fell out of step, so the later lines went into the game and
+; the touch B, Back and Start taps went to an open console.
+set GameMonth to 2
+set GameDay to 15
+set gamehour to 10
+fw ARG_Weather_tannin_haze
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_CampSpot 1
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Cont_OpeningWorkCampGuardStores 1 200 2
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Cont_OpeningWorkCampGuardStores 1 200 3
+ARG_Ref_ClaywaterStationRoadIn.placeatme ARG_Book_StationWaterLedger 1 150 0
+player.additem 0000000A 2
+player.additem ARG_Weap_SteelSword 1
+player.equipitem ARG_Weap_SteelSword
+ARG_Ref_ClaywaterStationCrocodile.additem ARG_Armo_Steel_Shield 1
+player.moveto ARG_Ref_ClaywaterStationRoadIn
+player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0
+player.setangle z 0

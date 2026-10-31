@@ -1,6 +1,6 @@
 import { test } from "node:test"
 import assert from "node:assert/strict"
-import { BUTTON_INDEX, MIN_HOLD_MS, PadModel, bandWidth, layoutFor, layoutProblems, shapeOf, stickFromDrag, type ButtonId } from "../src/touch_model.ts"
+import { BUTTON_INDEX, MIN_HOLD_MS, PadModel, bandWidth, stripHeight, layoutFor, layoutProblems, shapeOf, stickFromDrag, type ButtonId } from "../src/touch_model.ts"
 
 test("stick: drag maps to Gamepad API axes (y down), clamped, with a radial dead zone", () => {
     assert.deepEqual(stickFromDrag(0, 0, 100), { x: 0, y: 0 })
@@ -80,21 +80,40 @@ test("every Xbox control Skyrim reads is on screen in all three shapes, none ove
             const r = b.rect, cx = Math.max(r.x, Math.min(z.rest.x, r.x + r.w)), cy = Math.max(r.y, Math.min(z.rest.y, r.y + r.h))
             assert.ok(Math.hypot(cx - z.rest.x, cy - z.rest.y) >= z.radius * 0.7, `${z.side} rest ring under ${b.id} at ${w}x${h}`)
         }
-        for (const z of l.zones) assert.ok(z.rect.w >= w / 3 && z.rect.h >= h / 3 - (shape === "folded-portrait" ? w * 9 / 16 : 0), `${z.side} zone at ${w}x${h}`)
+        const minH = shape === "unfolded" ? stripHeight(w, h) : h / 3 - (shape === "folded-portrait" ? w * 9 / 16 : 0)
+        for (const z of l.zones) assert.ok(z.rect.w >= w / 3 && z.rect.h >= minH, `${z.side} zone at ${w}x${h}`)
     }
 })
 
-test("folded landscape: every button but Back and Start sits in a side band, clear of the picture and its HUD", () => {
+test("folded landscape: every button sits in a side band, clear of the picture, its HUD and the Journal's tabs", () => {
     for (const [w, h] of [[970, 432], [914, 408], [844, 390]]) {
         const band = bandWidth(w, h)
         assert.ok(band >= 150 && w - 2 * band >= h * 1.25, `${w}x${h} band ${band}`)
         for (const b of layoutFor(w, h).buttons) {
-            if (b.id === "back" || b.id === "start") continue
             const r = b.rect
             assert.ok(r.x + r.w <= band || r.x >= w - band, `${b.id} over the picture at ${w}x${h}`)
+            assert.ok(r.w >= 44 && r.h >= 44, `${b.id} at ${w}x${h} is ${r.w}x${r.h}`)
         }
     }
     assert.equal(bandWidth(784, 724), 0)
+})
+
+test("unfolded: every button, ring and stick zone sits in the strips above and below the picture, buttons >= 44 px", () => {
+    for (const [w, h] of [[784, 724], [905, 835], [2352, 2172]]) {
+        const s = stripHeight(w, h), l = layoutFor(w, h)
+        const pic = h - 2 * s
+        assert.ok(s >= 120 && w / pic <= 2.1, `${w}x${h} strip ${s}, picture ${w}x${pic}`)
+        for (const b of l.buttons) {
+            const r = b.rect
+            assert.ok(r.y + r.h <= s || r.y >= h - s, `${b.id} over the picture at ${w}x${h}`)
+            assert.ok(r.w >= 44 && r.h >= 44, `${b.id} at ${w}x${h} is ${r.w}x${r.h}`)
+        }
+        for (const z of l.zones) {
+            assert.ok(z.rect.y >= h - s && z.rest.y - z.radius >= h - s, `${z.side} zone over the picture at ${w}x${h}`)
+            assert.ok(z.radius >= 44, `${z.side} ring radius ${z.radius}`)
+        }
+    }
+    assert.equal(stripHeight(970, 432), 0)
 })
 
 test("a tap is held at least 120 ms, so the game sees a touch B or RT as it sees a pad press", () => {

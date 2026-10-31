@@ -5,7 +5,7 @@
 // Run headful under xvfb-run (drive.sh does): pointer lock and Chrome's mobile mode need a real window. Phone and
 // tablet profiles use Chrome's mobile emulation, so taps are real touch events (Input.dispatchTouchEvent), not clicks.
 // steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"hold": ["css", ms]} | {"click": "css"}
-//          | {"down": key} | {"up": key} | {"shots": [name, count, ms]}]
+//          | {"down": key} | {"up": key} | {"shots": [name, count, ms]} | {"scene": id, "save"?: name} (bridge: load, bat)]
 import fs from "node:fs"
 import os from "node:os"
 import path from "node:path"
@@ -168,6 +168,14 @@ try {
             const c = page.viewport() ?? { width: 800, height: 600 }
             let x = c.width / 2, y = c.height / 2
             for (let i = 0; i < n; i++) { x += dx / n; y += dy / n; await page.mouse.move(x, y); await wait(30) }
+        }
+        else if (s.scene) {   // the save loaded and a scene run through the bridge (the hands), not typed into the console
+            // by the stream: ui-review5's console toggles fell out of step, so its later lines went into the game
+            const repo = path.resolve(here, "../../..")
+            const py = `import pathlib,sys; from tools.bridge import Bridge; from tools.run_journey import Runner; ` +
+                `Runner(Bridge(), pathlib.Path(sys.argv[2])).apply_scene(sys.argv[1], sys.argv[3])`
+            try { execFileSync("python3", ["-c", py, s.scene, path.join(out, "scene"), s.save ?? "argoniabase"], { cwd: repo, stdio: "inherit", timeout: 180000 }); log("scene", s.scene) }
+            catch (e) { log("scene failed", s.scene, e.message); throw e }
         }
         else if (s.probe) { log("probe", s.probe, JSON.stringify(await page.evaluate(s.probe))) }
         else if (s.click) { await page.click(s.click).catch((e) => log("click failed", s.click, e.message)); await wait(600) }

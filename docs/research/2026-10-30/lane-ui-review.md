@@ -157,3 +157,29 @@ the phones; then terminate argonia-play-2 (instance, volume, spot request, alarm
 Note: after the phone runs, the journey's `close_menu BarterMenu` failed (none of B, ESC, TAB closed it); a left-over stream session may hold input. The stream also leaves the game at its resolution (2240x2068): relaunch before the next journey.
 
 Clone argonia-play-2 **terminated** at the end of this lane (instance, volume, spot request, alarm): ~5.2 h since the 00:50 launch, ~$1.35 (g4dn.xlarge spot $0.2455/h plus 150 GB gp3).
+
+## Lane phone-take (2026-10-31, build VM): the phone and "Take All" majors diagnosed
+
+**Phones: the cause is the steps, not the input path.** The reader read the ui-review5 stills: in all four folded
+stills the developer console is open (its last line is the bat's `player.moveto`); in the unfolded run the console is
+closed, and Back opened our journal and Start opened the Tween menu from the phone (both stills show them). So touch and
+pad events reach Sunshine and the game window has focus. The bridge's per-key route (protocol/input.cpp) only steers
+input the bridge injects, so it cannot stop Sunshine's OS input. The failures come from the console toggles in
+ui-review-phone.json falling out of step (Backquote opens or closes the console, and `load` and the cell-changing
+moveto close it themselves). The setangle and activate lines were typed into the game. Dialogue never opened, and in
+the folded run the taps went to an open console. Fix: drive.mjs gains a `scene` step that loads the save and runs the
+scene through the bridge (Runner.apply_scene). The new scene `ui-phone` is ui-props plus the player facing the Takes.
+The phone steps use no console and open dialogue with the phone's own A.
+
+**Overlay:** the folded layout puts Back and Start in the side bands as well (Back at the foot of the left band,
+Start under RB), so nothing covers the Journal's tabs. The unfolded layout keeps every control in a strip above and
+below the picture, and the stream asks for the picture between the strips (`stripHeight`, `pictureCss`). At 784x724
+that is 784x388. Every target is at least 44 px (`npm test`, 27 of 27). Cost: the unfolded picture is now 2:1, not the
+full near-square screen.
+
+**"X Take All": the bindings are not the cause.** A disassembly of containermenu.swf's updateButtons (our built copy;
+the AS is upstream SkyUI as Dear Diary ships it) gives these bindings. In the container branch: `$Take` goes on Activate
+and `$Take All` on XButton (only when not in NPC mode), then a jump past the inventory branch. `$Store`/`$Give` sit in
+the inventory branch on Activate, not X. So no two hints share X, and no binding or text patch applies. The second label
+at the same x is more likely a ButtonPanel layout fault: the next hint is placed from a text width measured as about 0
+(our font library or the x1.6 sizes at 2240x2068). This is unproven without the game.
