@@ -23,7 +23,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0014](0014-derived-files-are-made-on-the-players-machine.md) Derived files (FaceGen, LOD, behaviours, timing, menus) are made at runtime or on the player's machine
 - [0015](0015-repo-licence-and-licence-tracking.md) Repo licence (GPL-3.0 code, CC BY-NC-SA content, recommended) and licence tracking
 - [0016](0016-weapon-classes-follow-morrowind.md) Weapon classes follow Morrowind, including crossbows and thrown
-- [0017](0017-one-coherent-argonian-ui-approach-chosen-with-the-owner.md) One coherent Argonian UI, Morrowind in spirit and good by today's standards: Morrowind dialogue and pause-menu windows (draggable, resizable, remembered); the approach chosen with the owner in G11
+- [0017](0017-one-coherent-argonian-ui-approach-chosen-with-the-owner.md) One coherent Argonian UI, Morrowind in spirit and good by today's standards: the parchment front door; in play Wind UI's windows under our Argonian patch, our chart, book, dialogue window and HUD; one designer over every screen; every device
 - [0019](0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md) Combat maps each DS1 behaviour to a tuned mod or to our own build of DS1's system (the combat map decides, row by row); nothing from the old project's combat
 - [0020](0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md) Reuse others' methods: universal-modder's skills, agents and field notes; agent-ready Ghidra tooling (ReVa, pyghidra-mcp)
 - [0021](0021-fast-focused-loops-and-the-ladder.md) Fast focused loops with eyes on the cheapest rung of the ladder; one lane tests a feature and its joins; journeys are eyeless on two runners
@@ -49,7 +49,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | O-1 | Fate of the old elder-souls-argonia EC2 machine (stopped; ~$23/month for its 250 GiB disk); the R2 keys are already copied (2026-10-29) and the frozen arrays pulled | 0.2 | Snapshot the disk to S3, then delete the volume; keep the R2 vault |
 | O-2 | Subscription: 5x now, 20x from Part 4 (or Part 2's two tracks, if measured) | 0.1, 1.7, 2.17, 4.1 | 0013 |
 | O-3 | Confirm the pinned runtime chosen in 0.2 | 0.2 end | 0002 rule |
-| O-4 | Perks: invisible engine layer only, or a visible Morrowind-flavoured perk layer merged with vastei | 2.1 (asked in 1.7) | answered 2026-10-31: invisible for now, a visible layer kept possible (#20) |
+| O-4 | Perks: invisible engine layer only, or a visible perk layer | 2.1 (asked in 1.7) | answered 2026-10-31: visible and taken in Wind UI's perk list, a point per level at the sitting, reworded for the Nordic review (#20, the 1.12 grilling) |
 | O-5 | Send permission requests to mod authors (drafted by agents, sent from the owner's Nexus/ModDB account): Black Marsh & Valenwood (dalecallen1987), MihailMods, Tropical Skyrim (Soolie) and its SSE port (78044), King of the Murkmire (pancake0723; AI clause), Xanmeer tileset (NorthwindBlue, DarthVitrial), Sign of Cipactli (URL unknown), Tamriel Worldspaces – Argonia (118678) | 0.3 | Send all in one batch early; build only on cleared mods |
 | ~~O-6~~ | ~~Nexus Premium~~ | — | **Answered 2026-10-29: held; the key is `NEXUS_API_KEY` in the secrets file** |
 | O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.0 | Owner logs in through the stream once; then offline mode |

@@ -149,7 +149,7 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | NPCs, whole-body templates, schedules, factions | the old people carried over (0026 §6), 0138 lamp clock, 0028 | 1 (+FaceGen for unique faces) | — | ArgoniaGen, AI packages | 0.4 → 2.4 |
 | Fixed danger D0–D5, roaming bands, respawn on rest | 0004, 0142, 76 §128 | 1 + 4 | — | encounter zones, spawner | 1.6 (one zone) → 2.7 §j |
 | Attributes, 27 skills, formulas | 76 §116–122 | 2 + 5 | Custom Skills Framework | ArgoniaCore stats | 1.3 (whole) |
-| Races, birthsigns, classes, effect stack, perks | 76 §116–119, owner C4 | 1 + 5 | — | records, perk audit | 2.1 |
+| Races, birthsigns, classes, effect stack, perks | 76 §116–119, owner C4 | 1 + 5 | — | records, perk trees in Wind UI's list | 2.1 |
 | Skill use, vastei, levels at rest, the sitting | 76 §120, 0147 | 3 + 5 + 6 | Sleep to Gain XP (pattern), Skill Uncapper | ArgoniaCore + sitting view | 1.5 → 2.8 |
 | Death pile, wake at last rest, rest = only save | 76 §126, 0031, 0144 | 3 + 5 | Respawn – Soulslike (pattern) | ArgoniaCore | 1.5 → 2.8 |
 | Dialogue: topics, hyperlinks, disposition, persuasion | 0139, 0143, 0145, dialogue data | 2 or 5 + 6 | tes4skyrim's MorrowindRuntime (OpenMW's engine in SKSE; audited in 0.1 §j), PrismaUI | topic store + dialogue view | 1.3 §b → 2.5 |
@@ -157,8 +157,8 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 | Writing quests, dialogue and text (one source of truth, generated briefs; [0024](decisions/0024-content-is-written-from-one-source-of-truth.md)) | old quest design, culture sheets | tool | — | skills `quest-write`, `quest-review`, `dialogue-write`; agents `quest-reviewer`, `dialogue-writer`, `corpus-find` | 0.1 §b, §i → 1.3 → 2.5, 2.12 → 3.3 → 4.2, 4.3 |
 | Investigation support and the detectives' faction ([0025](decisions/0025-a-detectives-faction.md)) | condition vocabulary, 40-factions, lore extrapolation | 1 + 4 + 5 | — | evaluator predicates, journal clues, faction record, line record | 0.1 §i → 2.4, 2.5, 2.12 → 4.1 → 4.2, 4.3 |
 | Journal, directions, no markers | 0137 | 2 + 5 + 6 | Wayfinder (pattern), No Google Maps | directions generator + journal view | 1.2, 1.4 (first rung) → 2.12 |
-| World map, local map | old map styles | 2 + 6 | Flat World Map Framework | map views | 2.12 |
-| Our own UI and HUD, Pelagiad, the UI map, transitions | 0017's four goals; old `packages/ui` as one candidate | 2 then 6 | chosen in 1.2 §0 with the owner (PrismaUI the working assumption; SkyUI-style Scaleform, MorrowindRuntime's menu, OpenMW layouts); stage one on a permissive paper skin (Dear Diary family) if its permissions allow | stage one: the font, the theme, the dialogue window, the journal; stage two: the design system, `ui/DESIGN.md`, the windows, the HUD, every view | 1.2 §0 → 1.2 (stage one) → 2.2 (stage two) → 3.1 |
+| The chart and the HUD's minimap | the old repo's map | 2 + 6 | Wind UI's map pane; Flat World Map Framework (fallback) | the chart view, the minimap | 1.12 → 2.12 |
+| The UI: Pelagiad, the front door, the in-game windows, our HUD, the UI map, transitions | 0017's four goals | 2 then 6 | Dear Diary (the parchment main menu), Wind UI (the in-game windows), PrismaUI (our own views) | our Argonian patch over Wind UI, the dialogue window, the journal book, the chart, the HUD and minimap, `ui/DESIGN.md` | 1.2 → 1.12 → 2.2 → 3.1 |
 | Weapon classes (incl. crossbows/thrown, 0016), armour slots, condition | 76 §118, 0040 | 1 + 2 + 5 | spear/throwing mods, animation sets | keywords, slot data, rating hook | 1.3 → 2.3 |
 | Economy, barter, training, services, travel | 0141, 76 §124 | 1 + 4 (+5) | — | data, price hook | 2.6 |
 | Magic | 0146, 0148, 76 §123 | 1 + 2 + 4 + 5 | Skyrim magic; Magic Expanded (133435) checked in 1.2 | magic rules | 2.9 |
@@ -265,4 +265,4 @@ From Skyrim modding, each owned by a rule or a chunk:
   retuned to suit the stream (0.2 §d).
 - **Navmesh is the classic world-building sink:** survey every failure first, fix in one batch, keep the CK as a
   scripted fallback (2.W4).
-- **Single-author dependencies** (PrismaUI, FreeClimb) are pinned and have a written fallback.
+- **Single-author dependencies** (PrismaUI, Wind UI, FreeClimb) are pinned and have a written fallback.

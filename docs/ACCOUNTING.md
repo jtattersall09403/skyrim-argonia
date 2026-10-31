@@ -74,7 +74,7 @@ Legend: **In** = handled where named. **Out** = deliberately excluded (reason gi
 | B10 | Tropical Skyrim SSE for base assets | 0006 §8 |
 | B11 | VS Code in the browser for working on the VM | 0008 §1; infra/README |
 | B12 | Crossbows and thrown weapons back in | 0016 |
-| B13 | Our own original UI for major screens and our own HUD, like the old repo's; use mod-scene or OpenMW UI only if it saves work | 0017 (port of the old React design system; OpenMW as structural reference; no Morrowind UI exists in the Skyrim mod scene) |
+| B13 | Our own original UI for major screens and our own HUD, like the old repo's; use mod-scene or OpenMW UI only if it saves work | 0017 (Wind UI's Morrowind windows under our Argonian patch in play; our own views for dialogue, the journal book, the chart and the HUD; the parchment front door) |
 | B14 | The $100 cap is AWS infrastructure only | 0008 |
 | B16 | The owner can get the Creation Kit; "isn't that how mods normally get made?" | 0018 (CK as a scripted tool; records by code; Papyrus compiler and base scripts come from the CK); 0.1; 0.4; 2.W4 |
 | B17 | Study OpenMW's window layouts and contents to improve our UI | 0017 §8; 2.2 §a |

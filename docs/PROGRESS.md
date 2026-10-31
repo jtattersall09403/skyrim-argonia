@@ -14,7 +14,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 0 | 0.3 | The agent's hands: bridge, SKSE build, scenes, runner, deploy, the timed loop | in progress (bridge 50/50; deploy builds SKSE, Papyrus and the base save, SKSE-only DEPLOY OK in 219 s (lane-game-21.md); Papyrus compiled on the machine 9351d1d; owed: the timed edit-deploy-verdict row in game) |
 | 0 | 0.4 | The pipeline, the quarantine, the inventory and the first block | in progress (§0-§c done; claywater-walk, claywater-look and quarantine green (lane-game-17.md); owed: the owner's walk of the Claywater block, the Part 0 check-in) |
 | 1 | 1.1 | The game-state seam | in progress (L2: c26c042 aae9ac8 0710bee 0c53bee; L4 cosave and dialogue-intercept green (lane-game-17.md), attributes and quest-board green (lane-game-18.md); owed: the Part 1 batch in one pass) |
-| 1 | 1.2 | The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart | in progress (the four views at L3: 2d7dcb5 dd0d5cf; PrismaUI 54658cc; CHRT b14743f; ui-probe green once (lane-game-19.md); owed: ui-sweep (favourites), menus-quit (no MainMenu after quit), ui-review, our HUD drawn over the load (6a14cb8 not yet effective) (lane-game-21.md)) |
+| 1 | 1.2 | The UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart | in progress (the four views at L3: 2d7dcb5 dd0d5cf; PrismaUI 54658cc; CHRT b14743f; ui-probe green once (lane-game-19.md); owed: our HUD drawn over the load (6a14cb8 not yet effective) (lane-game-21.md), the screen numbers (1.17); the sweep, review, quit and device rows are 1.12's) |
 | 1 | 1.3 | Talk and carry, on the sheet | in progress (route b, topics, actions, items: f7ca725 7ccb595; LF83's people 645ddf7 356c0ac; Livia the trader c745ef3; attributes green (lane-game-18.md), livia-sleep green (lane-game-17.md); owed: the Part 1 batch in one pass) |
 | 1 | 1.4 | One quest through the journal | in progress (LF83 record, lines, QUST: 979cf55 7ccb595 dfc29b9; lf83-components green (lane-game-19.md); lf83-endings and quest-board green (lane-game-18.md); first-place green (lane-game-17.md); owed: the Part 1 batch in one pass) |
 | 1 | 1.5 | Grow, die, rest, save | in progress (life module L2: 4bfe537 f2582ea 0f3eaa4; sitting 48c12a6; rest-is-the-only-save, suspend-save, rest-respawn green (lane-game-17.md); grow-at-rest green once (lane-game-19.md); owed: die-and-recover (red at die, lane-game-21.md); rest-respawn-cleared (respawn until the place is wholly cleared, then never) when a clearable place is built) |
@@ -23,8 +23,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.9 | The front door and loads | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.10 | The player character | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (in game on argonia-play, docs/research/2026-10-31/owner-playtest-2.md; owed: the owner's look) |
-| 1 | 1.12 | Menus: the system menu, the pause menu, quit, favourites, touch | todo |
-| 1 | 1.13 | The chart | todo |
+| 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | todo |
 | 1 | 1.14 | Death, the pile and respawn | todo |
 | 1 | 1.15 | The world track's close | todo |
 | 1 | 1.16 | The owed integration checks | todo |

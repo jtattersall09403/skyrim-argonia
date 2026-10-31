@@ -1,8 +1,10 @@
-# The paper theme: tokens, first cut (1.2)
+# The design system: tokens and the UI map
 
-Stage one's look for our four screens (dialogue, journal, HUD, chart). The full design system, with the mood boards
-and the owner's rounds, is 2.2 (decision 0017 §2). The tokens live in `ui/views/core/theme.css`, and this file gives
-the reason for each. A screen uses only these tokens.
+The tokens for every screen the player meets. They live in `ui/views/core/theme.css`, and this file gives the reason
+for each. A screen uses only these tokens. This is the paper cut made for our first screens (1.2). 1.12's designer
+sets the whole system around Wind UI's retinted frames (the dark green-black panes of the owner's reference), keeps the
+paper for the front door, the journal book, books and the chart, and adds the UI map of every screen here (decision
+0017 §6).
 
 **Reference.** The look follows Dear Diary – Paper SkyUI Menus (uranreactor; the paper theme over the vanilla menus,
 1.2 §a), so our screens and the themed menus read as one: warm paper sheets, dark-brown ink, a soft mottle, a darker
@@ -78,7 +80,7 @@ Our HUD over play, rebuilt from the old project's (its 2.2 §b; the inventory is
 `views/hud`; its interface (`schema/hud.ts`) is unchanged.
 
 **Layout.** One column top left: the bars, vastei directly under them, then the notices, newest last. Top right the
-effect stack; top centre the sneak eye while sneaking; the place banner at 15% height; the prompt under the centre.
+minimap with its compass rose (1.12), the effect stack beside it; top centre the sneak eye while sneaking; the place banner at 15% height; the prompt under the centre.
 Nothing else at the centre, no compass, no marker. The column never grows past 44% of the width.
 
 **Plates.** Every HUD word sits on dark lacquer (`--hud-plate`) with a bronze hairline and a soft shadow, the
@@ -111,6 +113,6 @@ rising in. **Effects** keep their stack top right, the medals dark with a moss o
 **Motion** stays under 2 s and never loops but for the regeneration light and the low-health pulse, which say a
 state that persists.
 
-**Not on our HUD**, with the reason in the inventory: the minimap and time readout, the equipped hands, the quick
+**Not on our HUD**, with the reason in the inventory: the time readout, the equipped hands, the quick
 belt, the crosshair, and the lock-on cue and target bar (TDM draws the lock-on reticle in the world; a target bar
 needs a field the interface does not have, 2.7).

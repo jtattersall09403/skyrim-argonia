@@ -59,12 +59,12 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 | 2.4 | [People](2.4-people.md) | Part 1 exit, 2.W5 wave 1 | 2.1, 2.3 | todo |
 | 2.5 | [Dialogue](2.5-dialogue.md) | 2.4 | 2.3 | todo |
 | 2.12 | [Quests, journal and maps](2.12-quests-journal-map.md) | 2.5, 2.W3 (the route graph) | 2.6, 2.7 | todo |
-| 2.1 | [The sheet whole: races, birthsigns, classes, effects, perks](2.1-the-sheet.md) | Part 1 exit | world track | todo |
+| 2.1 | [The sheet whole: races, birthsigns, classes, effects, perk trees](2.1-the-sheet.md) | Part 1 exit | world track | todo |
 | 2.3 | [Items](2.3-items.md) | 2.1 | 2.4 | todo |
 | 2.6 | [Trade, services and travel](2.6-trade-and-services.md) | 2.5, 2.3 | 2.7 | todo |
 | 2.7 | [Combat: the map, DSR measured, timing, the built rows, encounters](2.7-combat.md) | 2.3 (2.4 for encounters) | 2.5, 2.6, 2.12 | todo |
 | 2.8 | [Progression, rest and death](2.8-progression.md) | 2.7 | 2.9 | todo |
-| 2.2 | [The UI, stage two: the design system, the windows, the HUD, every screen](2.2-ui-whole.md) | Part 1 exit (the 1.2 §d rounds) | every systems chunk (it owns the components; each system wires its screen) | todo |
+| 2.2 | [The UI whole: every later screen on 1.12's design system](2.2-ui-whole.md) | Part 1 exit (1.12) | every systems chunk (it owns the components; each system wires its screen) | todo |
 | 2.9 | [Magic](2.9-magic.md) | 2.8 | 2.11 | todo |
 | 2.10 | [Crafting](2.10-crafting.md) | 2.9, 2.W5 wave 2 | 2.11 | todo |
 | 2.11 | [Stealth, crime, locks and the Owing](2.11-stealth-crime.md) | 2.6, 2.7, 2.W5 wave 2 | 2.9 | todo |

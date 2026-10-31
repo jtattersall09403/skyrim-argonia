@@ -18,20 +18,12 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| The sweep of every menu from the first place: Pelagiad, our palette, the Argonia title, no compass, no marker | 1.2 §a, 0.2 §c | L4 | owed | journey:ui-sweep fail out/batch/adhoc/20261031T112117 |
-| A reader's Nordic-tells pass on the sweep's stills is clean | 1.2 §a | L4 | owed | waits on ui-sweep |
-| The owner sees a before-and-after still of the main menu and one menu | 1.2 §a | L6 | owed | no check-in on record |
-| Text readable on the folded Magic V5 (drive.sh v5-folded and v5-unfolded) | 1.2, 1.2 §d | L4 | owed | docs/research/2026-10-31/lane-game-21.md:28 (not run) |
 | Our dialogue window opens on talking, shows live topics, closes back to play; no vanilla Dialogue Menu | 1.2, 1.2 §b, 1.1 | L4 | proven | journey:dialogue-intercept pass out/batch/g17/20261030T225900 |
-| Our screens in play: the dialogue topics, a long answer, the HUD notice, the journal's quest entry | 1.2 §b, §c | L4 | owed | journey:ui-review fail out/runs/ui-review/20261031T002055 |
-| The dialogue and journal open and close hand-offs, a clip | 1.2 §b, §c | L5 | owed | no clip made |
 | B closes the journal with no roll; B while moving rolls (pad) | 1.2 §c | L4 | proven | docs/research/2026-10-30/lane-game-17.md:15 |
-| Touch B closes the journal | 1.2 §c | L4 | owed | docs/research/2026-10-31/lane-game-21.md:28 (not run) |
 | The HUD's states and the vanilla HUD hidden; the chart opens and reveals | 1.2 §d, §e, 1.6 | L4 | proven | journey:ui-probe pass out/batch/adhoc/20261031T041115 |
 | Our HUD is hidden over the loading screens | 1.2 §d | L4 | owed | docs/research/2026-10-31/lane-game-21.md:41 |
 | The chart closes on B, Tab, M and touch Close | 1.2 §e | L4 | proven | docs/research/2026-10-30/lane-game-17.md:11 |
 | Favourites open on D-up with a favourite set | 1.2 §a | L4 | proven | docs/research/2026-10-30/lane-game-17.md:17 |
-| Quit from the menus writes the suspend save and returns to the main menu | 1.2 §a, 1.5 | L4 | owed | journey:menus-quit fail out/batch/adhoc/20261031T112117 |
 | The screen technology's numbers (decision 0017, 1.2 §0) from the play machine's frame times | 1.2 §0 | L4 | owed | waits on the 0.2 §d frame times |
 
 ## 1.3 Talk and carry
@@ -179,19 +171,30 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; lane-1.11.sh on argonia-play, rc 0 |
 | The owner says the HUD looks right | owner play test 5 | L6 | owed | — |
 
-## 1.12 Menus
+## 1.12 The in-game UI
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
+| Wind UI's facts in windui.md: what it replaces, pad support, where frames come from, Shift, fast travel and show-on-map switched off | 1.12 §1 | L4 | owed | not started |
+| Our chart in the map window and a book page in the journal window move, resize and go full screen with it, and take the pad's focus | 1.12 §2 | L4 | owed | not started |
 | The system menu (settings, load, quit) opens from play by pad, keyboard and touch | owner play test 11 | L4 | owed | the owner found no way to open it |
-| The pause menu: sentence-case labels and our proportions (a reader) | owner play test 10 | L4 | owed | all caps; squashed horizontally |
-| Favourites open by Q and D-up with a favourite set | game-22 | L4 | owed | `dev-favorite` misses weapons by editor id (docs/research/2026-10-31/lane-game-22.md) |
-
-## 1.13 The chart
-
-| Check | From | Level | Status | Evidence |
-|---|---|---|---|---|
+| Every pane, the journal and the map open, cycle and close by pad, keyboard and touch, one run each | 1.12 §8 | L4 | owed | not started |
+| The designer's off-game set of every screen at the four viewports, read as one design by a reader | 1.12 §9 | L3 | owed | not started |
+| The sweep of every in-game screen from the first place: one design, Pelagiad, sentence-case labels, nothing squashed, no compass bar, no quest marker | 1.2 §a, 0.2 §c, owner play test 10 | L4 | owed | journey:ui-sweep fail out/batch/adhoc/20261031T112117 |
+| A reader's Nordic-tells pass on the sweep's stills is clean, the perk list included | 1.2 §a, 1.12 §4 | L4 | owed | waits on ui-sweep |
+| Text readable on the folded and unfolded Magic V5 in full-screen pane mode (drive.sh v5-folded and v5-unfolded) | 1.2, 1.2 §d | L4 | owed | docs/research/2026-10-31/lane-game-21.md:28 (not run) |
+| Our screens in play: the dialogue topics, a long answer, the HUD notice, the journal's quest entry | 1.2 §b, §c | L4 | owed | journey:ui-review fail out/runs/ui-review/20261031T002055 |
+| The open and close hand-offs of the panes, the journal and the dialogue window, a clip | 1.2 §b, §c | L5 | owed | no clip made |
+| Touch B closes the journal | 1.2 §c | L4 | owed | docs/research/2026-10-31/lane-game-21.md:28 (not run) |
+| Quit to the main menu from play writes the suspend save and reaches the main menu | 1.2 §a, 1.5 | L4 | owed | journey:menus-quit fail out/batch/adhoc/20261031T112117 |
+| Favourites or quick keys open by keyboard and pad with one set | game-22 | L4 | owed | `dev-favorite` misses weapons by editor id (docs/research/2026-10-31/lane-game-22.md) |
+| The chart's art is the old project's hand-drawn map (or its design) | owner note (tmp/owner-message.md) | L3 | owed | unconfirmed |
 | Full zoom-out shows the whole province, nothing cut off | owner play test 9 | L4 | owed | bottom cut off |
 | The player marker shows at the player | owner play test 9 | L4 | owed | none |
-| The area around the player reveals as they explore, and holds after a save and load | owner play test 9 | L4 | owed | not revealed |
-| The chart's art is the old project's hand-drawn map (or its design) | owner note (tmp/owner-message.md) | L3 | owed | unconfirmed |
+| The land around the player reveals as they explore, and holds after a save and load | owner play test 9 | L4 | owed | not revealed |
+| A place's marker is absent before its discovery and shown after; no fast travel from the map | 1.12 §5 | L4 | owed | not started |
+| The HUD's minimap top right, with its compass turned two ways | 1.12 §5 | L4 | owed | not started |
+| A perk taken in Wind UI's list with a point from the sitting; Wind UI's level-up window never shows | 1.12 §4 | L4 | owed | not started |
+| The 1.4 quest under Current with its latest direction first, and under Finished once complete | 1.12 §6 | L4 | owed | not started |
+| The dialogue window in the frame style; Barter opens Wind UI's barter window and returns | 1.12 §6 | L4 | owed | not started |
+| The owner's look at the in-game UI on their devices, in the 1.7 packet | 1.2 §a | L6 | owed | no check-in on record |

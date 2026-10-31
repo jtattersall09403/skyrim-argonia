@@ -25,8 +25,8 @@ family, the real view and the real formulas (decision 0023 §2):
 
 **What is left out on purpose.** Barter (2.6); the combat map and anything built from DS1 (2.7); our rules for
 climbing, swimming and boats (the mods are in the stack from the start, owner 2026-10-29, so the player can climb,
-swim and sail at the first place as the mods ship; 2.13 and 2.15 build the rules); every UI screen beyond the
-dialogue window, the journal, our HUD, the chart and the theme (2.2); magic, crafting, stealth (Part 2). A gap found here that needs
+swim and sail at the first place as the mods ship; 2.13 and 2.15 build the rules); the screens of systems Part 2
+builds, which join 1.12's design system as they land (2.2); magic, crafting, stealth (Part 2). A gap found here that needs
 a whole system is noted in that system's Part 2 brief, never built now.
 
 **The world track runs beside this part.** 2.W1–2.W4 start as soon as 0.4 passes and load the build VM;
@@ -79,10 +79,9 @@ the Status column below and `checks.md`.
 | 1.8 | [A play machine you can rely on](1.8-a-play-machine-you-can-rely-on.md) | — | 1.9–1.16 | in progress |
 | 1.9 | [The front door and loads](1.9-the-front-door-and-loads.md) | — | 1.10 | done |
 | 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | done |
-| 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.13 | in progress |
-| 1.12 | [Menus: the system menu, the pause menu, quit, favourites, touch](1.12-menus.md) | 1.11 (the theme's HUD pass) | 1.13 | todo |
-| 1.13 | [The chart](1.13-the-chart.md) | — | 1.11, 1.12 | todo |
-| 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.13 | todo |
+| 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.14 | in progress |
+| 1.12 | [The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device](1.12-the-in-game-ui.md) | 1.11 (the HUD it restyles) | 1.14 | todo |
+| 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.11, 1.12 | todo |
 | 1.15 | [The world track's close](1.15-the-world-tracks-close.md) | 1.8 (the play machine) | 1.16 | todo |
 | 1.16 | [The owed integration checks](1.16-the-owed-integration-checks.md) | 1.9–1.14 | 1.15 | todo |
 | 1.17 | [Frame rate and the screen numbers](1.17-frame-rate-and-the-screen-numbers.md) | 1.8, 1.15 | — | todo |
@@ -110,7 +109,7 @@ play test ([owner-playtest-1.md](../../research/2026-10-31/owner-playtest-1.md))
 ([ledger-audit.md](../../research/2026-10-31/ledger-audit.md): 56 proven, 38 owed, 9 dropped) left what 1.8–1.17
 do. Each is **one session's work**, taken one at a time by the owner, in this order:
 - first what stops play: 1.8 the machine, 1.9 loads, 1.10 the Nord head;
-- then what the owner sees: 1.11 the HUD, 1.12 menus, 1.13 the chart, 1.14 death;
+- then what the owner sees: 1.11 the HUD, 1.12 the in-game UI (menus, the chart, the journal, dialogue, every device), 1.14 death;
 - then what proves the rest: 1.15 the world track, 1.16 the owed checks, 1.17 frame rate;
 - then 1.7, the packet and the verdict.
 
@@ -131,12 +130,12 @@ A chunk that doesn't finish leaves its hand-off in the brief's Starting state.
 | SkyLink AI's approach for our tools | 1.16 |
 | 98 dependency mods, slim if not needed | done: the stack is 70 mods (stack.py) |
 | Water "falls back to one level": designed levels only, drop stray puddles | 1.15 |
-| The hand-drawn map: the old repo's? | 1.13 |
+| The hand-drawn map: the old repo's? | 1.12 |
 | Sample smartly; no long walks; no quest playthrough in game; headless playthrough only | the rules in CLAUDE.md and "How a chunk session runs" |
 | The Morrowind attributes and skills mod (nexus 60199) as a foundation, in our theme | 1.16 |
 | Permission requests | done (owner) |
 | Parallelism: whatever works best | done (owner-brief) |
-| World map finalised | 1.13 |
+| World map finalised | 1.12 |
 | Livia to bed at night | proven (livia-sleep, checks.md 1.3) |
 | The crocodile in and working | proven (croc-den) |
 | Judging Black Marsh feel | the owner, at 1.7 |

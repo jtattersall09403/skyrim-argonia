@@ -155,7 +155,7 @@ Research date 2026-10-27. Web sources: Nexus mod pages, GitHub, UESP / CK wiki, 
   - **Licence:** the custom Prisma UI License allows non-commercial use and redistribution of the official files. Modified public forks need written permission, and the Ultralight SDK has its own free licence. Fine as a player-downloaded dependency.
 - **dMenu NG** ([Nexus 166751](https://www.nexusmods.com/skyrimspecialedition/mods/166751); GPL-3, Sept 2026). An in-game ImGui-style settings menu with an external API.
 - **Full skins** such as [Dear Diary Dark Mode](https://nexusmods.com/skyrimspecialedition/mods/60837) and [Outlander UI II](https://www.nexusmods.com/skyrimspecialedition/mods/118815). SWF reskins, which shows a whole Morrowind-parchment skin is feasible.
-- **No "Morrowind UI" replacer** for Skyrim SE was found. Skywind's UI is "based on SE with custom changes" (FAQ).
+- **Wind UI** ([Nexus 196534](https://www.nexusmods.com/skyrimspecialedition/mods/196534)) is a Morrowind UI replacer for Skyrim SE: Morrowind's windows (inventory, stats, magic, quick keys, journal, map) open together, draggable and resizable; it is our in-game base (decision 0017; `docs/research/2026-10-31/windui.md`). Skywind's UI is "based on SE with custom changes" (FAQ).
 
 ### (B) Closing the gap
 - **Scaleform route.** Skyrim's menus are Scaleform GFx with ActionScript 2 SWFs.

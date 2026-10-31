@@ -107,11 +107,15 @@ reason.
 
 **Part 1, [The first place](1-core-loop/README.md)**, Claywater Station and the proving ground:
 - 1.1 the game-state seam;
-- 1.2 the UI, stage one: Pelagiad, the paper theme, the dialogue window, the journal, our HUD and the chart;
+- 1.2 the UI, stage one: Pelagiad, the parchment front door, our screens' technology, the dialogue window, the journal, our HUD and the chart;
 - 1.3 talk and carry, on the sheet;
 - 1.4 one quest through the journal;
 - 1.5 grow, die, rest, save;
 - 1.6 fight on the tuned stack, wired to the sheet;
+- 1.8 a play machine you can rely on; 1.9 the front door and loads; 1.10 the player character;
+- 1.11 our HUD; 1.12 the in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window,
+  the minimap, every device; 1.14 death, the pile and respawn;
+- 1.15 the world track's close; 1.16 the owed integration checks; 1.17 frame rate and the screen numbers;
 - 1.7 the owner's verdict.
 
 **The world track** starts after 0.4 and runs beside Part 1 and Part 2 as its own lane:
@@ -131,7 +135,7 @@ reason.
 - 2.6 trade and services;
 - 2.7 combat: the map, DSR measured, timing, the built rows;
 - 2.8 progression, rest and death;
-- 2.2 the UI, stage two: the design system, the windows, the HUD, every screen;
+- 2.2 the UI whole: every later screen on 1.12's design system;
 - 2.9 magic; 2.10 crafting; 2.11 stealth and crime; 2.13 swim and climb; 2.14 marsh specials; 2.15 boats;
   2.16 sound and music;
 - 2.17 persistence and the playthrough.
@@ -222,7 +226,7 @@ owner gate until 2.W5's walks.
 | 2.3 items | 2.6 trade, 2.7 loot, 2.11 theft | they move items |
 | 2.4 people | 2.5 onwards | each one talks to, trades with, fights, robs or questions an NPC |
 | 2.7 combat (the map) | 2.8 death and respawn, 2.9 cast interrupts, 2.11 sneak blows | they read combat state |
-| 1.1 the seam | 2.2 the UI stage two | views are replaced over the schema, rules untouched (decision 0027 §5) |
+| 1.1 the seam | 1.12 and 2.2 the UI | screens join over the schema, rules untouched (decision 0027 §5) |
 | 2.17 save round trip | Part 3 | the continue flow loads what the slice saves |
 | 3.4 installer | 3.5 the stranger's install | a first playable that only the owner's box can run is not de-risked |
 | 4.1 world-builder proved, packet template written | 4.2 packets | a packet runs the proven skill unattended on minor types |

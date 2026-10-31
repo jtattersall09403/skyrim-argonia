@@ -13,8 +13,8 @@ machine at 12:03 UK (`Server.SpotInstanceShutdown`), not our code or the play sw
 | 6 | The default character has an Argonian body and a Nord head | blocker (a Nordic element) | [1.10](../../phases/1-core-loop/1.10-the-player-character.md) |
 | 7 | Loading screens: no Argonia pictures in the frames | blocker | 1.9 |
 | 8 | The fact text under the pictures is squashed horizontally | polish | 1.9 |
-| 9 | Map: can't zoom out far enough to see the whole map; the bottom is cut off; no player marker; the area around the player isn't revealed | blocker | [1.13](../../phases/1-core-loop/1.13-the-chart.md) |
-| 10 | Pause menu: "MAGIC", "SKILLS" etc should be sentence case; the element is squashed horizontally | polish | [1.12](../../phases/1-core-loop/1.12-menus.md) |
+| 9 | Map: can't zoom out far enough to see the whole map; the bottom is cut off; no player marker; the area around the player isn't revealed | blocker | [1.12](../../phases/1-core-loop/1.12-the-in-game-ui.md) |
+| 10 | Pause menu: "MAGIC", "SKILLS" etc should be sentence case; the element is squashed horizontally | polish | [1.12](../../phases/1-core-loop/1.12-the-in-game-ui.md) |
 | 11 | No way to bring up the main pause menu (quit to menu, settings) | blocker | 1.12 |
 | 12 | The machine switched off mid-play, and again at once on a retry. The owner will pay a bit more for a machine that isn't interrupted often, but not on-demand | blocker | [1.8](../../phases/1-core-loop/1.8-a-play-machine-you-can-rely-on.md) |
 
