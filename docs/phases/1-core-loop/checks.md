@@ -148,6 +148,8 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The play page retries a refused start for 2 minutes, showing "starting…" | 1.8, #29 | L4 | owed | the owner said yes (owner-brief 2026-10-31); being built (lane-1.8-watch) |
 | The baked image boots to the Argonia menu with no first-boot fix by hand | 1.8 | L4 | owed | not built |
 | `machine_inventory.sh` shows nothing unarchived on London and on Paris | 1.8, docs/machine-moves.md | L4 | owed | London: 6 MO2 folders unarchived (docs/research/2026-10-31/lane-records.md) |
+| The agents' machine is the play machine's type (g6.2xlarge), from the same image, with no tunnel | 1.8, owner-brief 2026-10-31 | L4 | owed | after the cut-over |
+| stream-feel: every device profile drives the game over the real stream on the agents' machine, with stills and press-to-screen medians, and the owner's estimate printed | 1.8, owner-brief 2026-10-31 | L4 | owed | not built |
 | `saves.sh backup` succeeds at a stop | 1.8 | L4 | proven | docs/research/2026-10-31/1.8-session-1.md; run.sh stop backed up 26 saves each: s3 argonia-saves saves/20261031T122540Z.zip (argonia-play) and saves/argonia-play-london/20261031T122615Z.zip (2026-10-31) |
 | wake.yml's "play" comment starts the Paris machine | 1.8, #27 | L6 | dropped | owner-brief:2026-10-31 the "play" comment switch removed |
 
