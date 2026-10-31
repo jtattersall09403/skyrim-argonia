@@ -1,6 +1,7 @@
 # 1.5 (owed L4), native map S17a: die with vastei -> wake at the camp with no load -> the pile holds it -> take it
 # back, the same amount. The vastei is set by dev-set SetVastei (setup); the player's health is forced
-# low as setup only, and the deserter's own attacks deal the death.
+# low as setup only. game-22: the death is one engine damage call past the player's health (the deserter's AI held
+# no weapon and left him at 5 of 1000, game-21): the check is our intercept, pile and wake, not base combat.
 id: die-and-recover
 runner: 1
 crash_risk: high     # death and wake three times
@@ -20,8 +21,6 @@ steps:
       - {console: '"{opp}".stopcombat'}
       - {console: '"{opp}".disable'}   # the hostile deserter out of the way: the engine rightly refuses a rest beside him (game-16)
       - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}   # stops combat, aims at the camp spot, E until the rest logs (game-16)
-      - {console: '"{opp}".moveto player 0 300 0'}   # loaded beside the player before enable (diag4)
-      - {console: '"{opp}".enable'}
     expect: [{read: [core, WakePoint], path: value, ne: "", keep: wake, within: 10}]
   - name: earn                # the vastei carried, set (the check is the pile on death, not earning it)
     do: [{call: [dev-set, SetVastei, "50"]}]
@@ -30,8 +29,7 @@ steps:
       - {read: [core, GetVastei], path: value, keep: v}
   - name: die                 # the deserter's attacks; no death camera, no load
     do:
-      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
-      - {console: '"{opp}".startcombat player'}   # no fixed wait: the expects poll, and a 10 s wait let him kill the woken player again (g18d)
+      - {console: "player.damageav health 1100"}   # past 1000: the essential player's lethal blow is our bleedout intercept
     expect:
       - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
@@ -60,19 +58,13 @@ steps:
       - {read: [core, PileState], path: value, eq: ""}
   - name: second-death        # the pile is dropped again: one pile in the form map
     do:
-      - {console: '"{opp}".moveto player 0 300 0'}
-      - {console: '"{opp}".enable'}
-      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
-      - {console: '"{opp}".startcombat player'}
-      - {wait: 10}
+      - {console: "player.damageav health 1100"}
     expect:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}
       - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}
   - name: third-death-replaces  # dying again with the pile untaken replaces it: still one
     do:
-      - {console: "player.damageav health 995"}   # 1000 -> 5; damageav, so the wake restores to full (diag6 §4)
-      - {console: '"{opp}".startcombat player'}
-      - {wait: 10}
+      - {console: "player.damageav health 1100"}
     expect:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 20}
       - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}

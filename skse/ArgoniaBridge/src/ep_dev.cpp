@@ -12,9 +12,8 @@
 //   trace start <frames> [var..]  arms a per-frame trace of the player (position, health, ghost or any named graph
 //   vocab                         the console/script function names and the av names, for the journey linter
 //   trace read [samples]          bool true = an i-frame); read gives the window (first/last i-frame frame)
-//   dev-quit-to-menu              the Journal's Quit to the main menu: Main::resetGame set, then the Journal closed
-//                                 (opened first when it is not), so ArgoniaCore's quit watch sees a menu close with
-//                                 the quit requested and writes the quit save (life.cpp LifeMenuSink)
+//   dev-quit-to-menu              the Journal's Quit to the main menu: the Journal opened when it is not, then its own
+//                                 GameDelegate callback "QuitToMainMenu" called, as the confirmation's press does
 #include "bridge.h"
 #include "dev.h"
 #include "argonia/core/bridge_call.h"
@@ -307,29 +306,62 @@ std::string vocab(const Request&) {
 }
 
 // --- dev-quit-to-menu -------------------------------------------------------------------------------------------
-// The vanilla Journal's Quit sets Main::resetGame (CommonLib RE/M/Main.h RUNTIME_DATA, beside quitGame for the
-// desktop) and the Journal then closes; the engine returns to the main menu on its next frame. Driving the Journal's
-// Quit by keys was unreliable (game-20), so this does the same two things directly. DEV ONLY.
+// The vanilla Journal's Quit confirmation calls GameDelegate.call("QuitToMainMenu") (quest_journal.swf, Interface
+// BSA; game-22). Setting Main::resetGame and closing the Journal did not return to the main menu (game-21), so this
+// opens the Journal when it is not open and calls that same registered callback on its FxDelegate, the engine's own
+// handler, as the confirmation's button press does. DEV ONLY.
+void quit_via_journal(int frames_left) {
+  auto* ui = RE::UI::GetSingleton();
+  auto menu = ui ? ui->GetMenu(RE::JournalMenu::MENU_NAME) : RE::GPtr<RE::IMenu>{};
+  if (menu && menu->fxDelegate && menu->uiMovie) {
+    menu->fxDelegate->Callback(menu->uiMovie.get(), "QuitToMainMenu", nullptr, 0);
+    SKSE::log::info("dev-quit-to-menu: the Journal's QuitToMainMenu callback called");
+    return;
+  }
+  if (frames_left <= 0) {
+    SKSE::log::warn("dev-quit-to-menu: the Journal Menu did not open; no quit");
+    return;
+  }
+  SKSE::GetTaskInterface()->AddTask([frames_left] { quit_via_journal(frames_left - 1); });
+}
+
 std::string dev_quit_to_menu(const Request&) {
   return on_main_thread("dev-quit-to-menu", [] {
-    auto* m = RE::Main::GetSingleton();
     auto* ui = RE::UI::GetSingleton();
     auto* q = RE::UIMessageQueue::GetSingleton();
-    if (!m || !ui || !q || !player_in_world()) return reply_error("dev-quit-to-menu", "no game in progress");
+    if (!ui || !q || !player_in_world()) return reply_error("dev-quit-to-menu", "no game in progress");
     const bool open = ui->IsMenuOpen(RE::JournalMenu::MENU_NAME);
-    m->GetRuntimeData().resetGame = true;
     if (!open) q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
-    q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
-    // game-21: the quit save was written but no MainMenu followed in 30 s. The Journal's show/hide in this frame may
-    // clear the flag again (not measured), so it is set once more on the next frame, after the UI queue has run.
-    SKSE::GetTaskInterface()->AddTask([] {
-      if (auto* main = RE::Main::GetSingleton()) main->GetRuntimeData().resetGame = true;
-    });
-    return reply_ok("dev-quit-to-menu", JsonObject().boolean("reset_game", true).boolean("journal_was_open", open).done());
+    SKSE::GetTaskInterface()->AddTask([] { quit_via_journal(600); });
+    return reply_ok("dev-quit-to-menu", JsonObject().boolean("journal_was_open", open).done());
+  });
+}
+
+// --- dev-favorite <form> ----------------------------------------------------------------------------------------
+// Marks one carried item a favourite, as the inventory's F does (InventoryChanges::SetFavorite on its first extra
+// list). Setup for ui-sweep's FavoritesMenu step: Q opens nothing with no favourite (game-17), and favouriting by os
+// keys in the inventory did not take (game-18). DEV ONLY.
+std::string dev_favorite(const Request& req) {
+  const std::string want = req.args.empty() ? std::string{} : std::string(req.args[0]);
+  return on_main_thread("dev-favorite", [want] {
+    auto* p = player_in_world();
+    auto* f = find_any(want);
+    if (!p) return reply_error("dev-favorite", "no player in the world");
+    if (!f) return reply_error("dev-favorite", "no form " + want);
+    auto* changes = p->GetInventoryChanges();
+    if (!changes || !changes->entryList) return reply_error("dev-favorite", "the player carries nothing");
+    for (auto* entry : *changes->entryList) {
+      if (!entry || entry->object != f) continue;
+      RE::ExtraDataList* xl = entry->extraLists && !entry->extraLists->empty() ? entry->extraLists->front() : nullptr;
+      changes->SetFavorite(entry, xl);
+      return reply_ok("dev-favorite", ref_json(f));
+    }
+    return reply_error("dev-favorite", "the player does not carry " + want);
   });
 }
 
 const Register r_dev_set{"dev-set", &dev_set};
+const Register r_dev_fav{"dev-favorite", &dev_favorite};
 const Register r_dev_quit{"dev-quit-to-menu", &dev_quit_to_menu};
 const Register r_dev_grow{"dev-grow", &dev_grow};
 const Register r_tdm{"tdm-target", &tdm_target};

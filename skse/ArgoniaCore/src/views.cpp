@@ -7,6 +7,7 @@
 // mapMenu (our chart: decision 0017's 1.2 §0 record says why it replaces FWMF's map), the HUD (always on; the
 // vanilla HUD's bars and compass hidden through the hudElements hook, router::kHudClips). The chart's revealed
 // cells: the player's exterior cell in ARG_Province is marked on every cell change (BGSActorCellEvent) and at load.
+#include <set>
 #include "core.h"
 #include "prisma_api.h"
 
@@ -493,15 +494,22 @@ void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
 }  // namespace
 
 void HudRefresh() { PushHudState(); }
-void HudLoading(bool open) {
-  g_loading_open = open;
+void HudLoading(std::string_view menu, bool open) {
+  static std::set<std::string, std::less<>> loads;  // the load menus open now (main thread: menu events)
+  const bool was = !loads.empty();
+  if (open) loads.emplace(menu);
+  else if (auto it = loads.find(menu); it != loads.end()) loads.erase(it);
+  const bool now = !loads.empty();
+  g_loading_open = now;
   PushHudState();
+  if (was == now) return;
   // The push above is a JS call the page runs only when Prisma next renders, and the load blocks that: game-21's
   // stills showed the bars and the vastei box over the black load for 4-16 s. The native layer hides at once (the
-  // HUD is not modal, so the view host never hides it: Show on the close puts back what was there).
+  // HUD is not modal, so the view host never hides it: Show on the last close puts back what was there).
   if (auto it = g_ids.find("hud"); g_api && it != g_ids.end()) {
-    if (open) g_api->Hide(it->second);
+    if (now) g_api->Hide(it->second);
     else g_api->Show(it->second);
+    SKSE::log::info("views: hud {} for the load ({} {})", now ? "hidden" : "shown", menu, open ? "opened" : "closed");
   }
 }
 

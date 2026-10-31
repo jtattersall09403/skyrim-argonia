@@ -41,9 +41,11 @@ steps:
   - name: map-closed          # Tab: the map swallows M (batch 20261030T151243: M left it open and Q was lost)
     do: [{close_menu: MapMenu}]
     expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]   # the chart is the map (MapMenu hidden as it opens)
-  - name: favorite-one        # Favorites opens only with a favourite: one item marked in the inventory (game-17, live)
-    do: [{key: "I 120"}, {wait: 2}, {key: "D 100 os"}, {wait: 1}, {key: "S 100 os"}, {wait: 1}, {key: "F 100 os"}, {wait: 1}, {key: "I 120"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"menu": "InventoryMenu", "opening": false'}}]
+  - name: favorite-one        # Favorites opens only with a favourite (game-17); set natively, as the inventory's F does (game-18: the os keys did not take)
+    do:
+      - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {call: [dev-favorite, ARG_Weap_SteelSword]}
+      - {wait: 1}
   - name: favorites
     do: [{key: "Q 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: FavoritesMenu}}]

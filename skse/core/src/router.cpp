@@ -29,7 +29,11 @@ bool covers_hud(std::string_view menu_name) {
   return true;
 }
 
-bool hides_hud_at_once(std::string_view menu_name) { return covers_hud(menu_name) && menu_name == "Loading Menu"; }
+// The load's own menus (game-22: the Fader and Mist menus hold the black for seconds around a short Loading Menu,
+// and our HUD stayed over them): hidden natively at once, shown when the last of them closes.
+bool hides_hud_at_once(std::string_view menu_name) {
+  return menu_name == "Loading Menu" || menu_name == "Fader Menu" || menu_name == "Mist Menu";
+}
 
 bool is_hud_mode(std::string_view m) {
   for (auto k : kHudModes)

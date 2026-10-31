@@ -80,6 +80,7 @@ send_scenes() {  # after the launch: a ref is named by its runtime id, the plugi
   echo "$(ls out/scenes/*.txt | wc -l) scenes sent"
 }
 step "send ESMs and helpers" send_esms
+step "lod" "$here/lod.sh" ensure   # nothing lives only on a machine: the archived LOD for this ArgoniaWorld
 step "launch" "$PY" tools/bridge.py launch --fresh
 step "send scenes" send_scenes
 [ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }

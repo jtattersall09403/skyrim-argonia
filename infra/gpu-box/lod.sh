@@ -11,6 +11,8 @@
 #   lod.sh archive                     the machine's "Argonia LOD (generated)" mod as a tar to the private bucket
 #                                      (s3://argonia-private-…/lod/<ArgoniaWorld sha12>.tar and latest.tar): derived
 #                                      from game data, so never the repo (decision 0003)
+#   lod.sh ensure                      deploy's step: restore when the machine's LOD key (argonia-lod.key in the mod)
+#                                      is not this ArgoniaWorld's; no archive for it: a loud WARNING, the old LOD kept
 #   lod.sh restore [key]               that tar (default: the one made from this out/ArgoniaWorld.esm) onto the machine
 #                                      and the profile laid again with it: minutes, not 26 of xLODGen. Skyrim is killed.
 #   PRESET=Low|Medium (default Medium) sets DynDOLOD's preset.
@@ -70,7 +72,7 @@ for rid in sys.argv[2:]:
 EOF
 }
 
-case "${1:-}" in tools|survey|run|still|archive|restore) ;; *) sed -n "2,10p" "$0"; exit 2 ;; esac
+case "${1:-}" in tools|survey|run|still|archive|restore|ensure) ;; *) sed -n "2,10p" "$0"; exit 2 ;; esac
 "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools | Out-Null' >/dev/null
 "$run" put "$here/lod.ps1" C:/argonia/infra/lod.ps1 >/dev/null
 # ARG_Province's LODSettings file, from the land the plugin build wrote (lodsettings.py; lod.ps1 lays it)
@@ -101,6 +103,15 @@ case "${1:-}" in
     "${B[@]}" screenshot "$repo/out/lod/vantage-$2.png"
     "${B[@]}" player | head -20
     "${B[@]}" console 'tm' >/dev/null ;;
+  ensure)
+    bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
+    key=$(sha256sum "$repo/out/ArgoniaWorld.esm" | cut -c1-12)
+    mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
+    have=$("$run" ps "Get-Content '$mod\argonia-lod.key' -EA SilentlyContinue" | tr -d '\r\n ' || true)
+    if [ "$have" = "$key" ]; then echo "LOD current ($key)"; exit 0; fi
+    if aws s3 ls "s3://$bucket/lod/$key.tar" >/dev/null 2>&1; then exec "$0" restore "$key"; fi
+    printf '\n!!!!!!!! WARNING: no LOD archive for this ArgoniaWorld (%s); the machine keeps LOD %s.\n!!!!!!!! Distant land may be missing or stale: run lod.sh run prepare terrain collect && lod.sh archive\n\n' "$key" "${have:-none}"
+    exit 0 ;;
   archive|restore)
     bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
     key=${2:-$(sha256sum "$repo/out/ArgoniaWorld.esm" | cut -c1-12)}; tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
@@ -116,7 +127,7 @@ case "${1:-}" in
       aws s3 cp "s3://$bucket/lod/$key.tar" "$tmp/lod.tar" --only-show-errors || { echo "no s3://$bucket/lod/$key.tar (lod.sh restore latest, or run the job)"; exit 1; }
       "$run" ps "Stop-Process -Name SkyrimSE -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\MO2\push | Out-Null" >/dev/null
       "$run" put "$tmp/lod.tar" C:/argonia/MO2/push/lod.tar >/dev/null
-      "$run" ps "Remove-Item '$mod' -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force '$mod' | Out-Null; tar -xf C:\argonia\MO2\push\lod.tar -C '$mod'; Remove-Item C:\argonia\MO2\push\lod.tar; & C:\argonia\infra\bridge.ps1 -Cmd prepare -Fresh | Out-Null; 'LOD restored: ' + (Get-ChildItem '$mod' -Recurse -File).Count + ' files'"
+      "$run" ps "Remove-Item '$mod' -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force '$mod' | Out-Null; tar -xf C:\argonia\MO2\push\lod.tar -C '$mod'; Remove-Item C:\argonia\MO2\push\lod.tar; Set-Content '$mod\argonia-lod.key' '$key'; & C:\argonia\infra\bridge.ps1 -Cmd prepare -Fresh | Out-Null; 'LOD restored: ' + (Get-ChildItem '$mod' -Recurse -File).Count + ' files'"
     fi ;;
   *) sed -n '2,13p' "$0"; exit 2 ;;
 esac
