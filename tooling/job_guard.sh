@@ -128,7 +128,7 @@ case "$cmd" in
       st=$(aws ec2 describe-instances --region "$r" --filters "Name=tag:Name,Values=$m" \
         --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null)
       if [ "$st" != running ]; then :
-      elif "$run" --machine "$m" ps '. C:\argonia\infra\stream-activity.ps1; (Get-StreamActivity).streaming' 2>/dev/null | grep -q True; then
+      elif ARGONIA_PEEK=1 "$run" --machine "$m" ps '. C:\argonia\infra\stream-activity.ps1; (Get-StreamActivity).streaming' 2>/dev/null | grep -q True; then
         echo "$m: someone is streaming; left running"
       else
         "$run" --machine "$m" stop

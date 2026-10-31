@@ -51,11 +51,15 @@ id() {
     --query 'Reservations[0].Instances[0].InstanceId' --output text
 }
 SSH_OPTS=(-i "$KEY" -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o BatchMode=yes -o ServerAliveInterval=30)
-# Every command refreshes the machine's busy flag, so idle-stop.ps1 never stops it between an agent's commands.
+# Every command refreshes the machine's busy flag, so idle-stop.ps1 never stops it between an agent's commands;
+# ARGONIA_PEEK=1 (a read-only look: is anyone streaming, a log line) leaves it, so a status check never keeps an idle
+# machine up (1.8: each 20-min check held Paris busy for 15 min).
 ps() {  # a connection failure (255) with a cached address re-reads it once: the machine was restarted elsewhere
-  local rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*" || rc=$?
+  local rc=0 touch="New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; "
+  [ -z "${ARGONIA_PEEK:-}" ] || touch=""
+  ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*" || rc=$?
   if [ $rc = 255 ] && [ -f "$C/ip-$M" ]; then rm -f "$C/ip-$M"
-    rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*" || rc=$?; fi
+    rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*" || rc=$?; fi
   return $rc
 }
 wait_ssh() {
