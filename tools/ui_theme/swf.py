@@ -19,6 +19,7 @@ EXPORT_ASSETS = 56
 IMPORT_ASSETS2 = 71
 SET_BACKGROUND = 9
 SHOW_FRAME = 1
+DO_ACTION = 12
 END = 0
 FONT_EM = 1024 * 20  # DefineFont3 glyphs are drawn on a 1024 em at 20x resolution
 
@@ -52,6 +53,21 @@ class Movie:
         if self.signature in (b"CWS", b"CFX"):
             return self.signature + bytes([self.version]) + length + zlib.compress(body, 9)
         return self.signature + bytes([self.version]) + length + body
+
+
+def stage_scale_mode(mode: str) -> Tag:
+    """A DoAction tag running `Stage.scaleMode = mode` (AS2): ActionPush "Stage", ActionGetVariable, ActionPush
+    "scaleMode" mode, ActionSetMember, ActionEnd."""
+    def push(*strings: str) -> bytes:
+        body = b"".join(b"\x00" + x.encode() + b"\x00" for x in strings)
+        return b"\x96" + struct.pack("<H", len(body)) + body
+    return Tag(DO_ACTION, push("Stage") + b"\x1c" + push("scaleMode", mode) + b"\x4f\x00")
+
+
+def set_stage_scale_mode(movie: "Movie", mode: str) -> None:
+    """Run `Stage.scaleMode = mode` first in frame 1 (before the movie's own frame-1 actions)."""
+    first = next(i for i, t in enumerate(movie.tags) if t.code in (DO_ACTION, SHOW_FRAME))
+    movie.tags.insert(first, stage_scale_mode(mode))
 
 
 def read(blob: bytes) -> Movie:

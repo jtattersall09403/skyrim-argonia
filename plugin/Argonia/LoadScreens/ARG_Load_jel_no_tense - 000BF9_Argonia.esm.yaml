@@ -3,3 +3,10 @@ EditorID: ARG_Load_jel_no_tense
 Description:
   TargetLanguage: English
   Value: Jel has no past or future tense, only the present. Argonians also express attitude through body movement.
+LoadingScreenNif: 000C05:Argonia.esm
+InitialScale: 2
+InitialRotation: -10, 0, 30
+RotationOffsetConstraints:
+  Min: -45
+  Max: 45
+InitialTranslationOffset: 0, 0, 0

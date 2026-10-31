@@ -3,3 +3,10 @@ EditorID: ARG_Load_wallowing
 Description:
   TargetLanguage: English
   Value: Marsh-born Argonians enjoy wallowing in cool mud and basking in the sun. Wallowing keeps their scales from drying out. They do not worship the sun.
+LoadingScreenNif: 000C06:Argonia.esm
+InitialScale: 0.24
+InitialRotation: -10, 0, 30
+RotationOffsetConstraints:
+  Min: -45
+  Max: 45
+InitialTranslationOffset: 0, 0, 0

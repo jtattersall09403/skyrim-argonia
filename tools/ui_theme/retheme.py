@@ -39,6 +39,9 @@ CLEAR = {
     "interface/deardiary/inventory/craftingmenu_enchanting_bg.swf": ((197, 408), "Skyrim's barbed enchanting sigil"),
 }
 WALLPAPER = "textures/interface/objects/mainmenuwallpaper.dds"
+# Movies the engine stretches to the screen (exact fit): a 16:9 stage on the phone's near-square stream squashed the
+# loading fact sideways (owner play test 8; g21-load2, 2240x2068). `showAll` keeps the stage's aspect (1.9 §6).
+SCALE_MODE = {"interface/loadingmenu.swf": "showAll"}
 
 
 def winners(roots: list[Path]) -> dict[str, Path]:
@@ -80,11 +83,16 @@ def recolour_shapes(movie: swf.Movie, palette: Palette) -> int:
     return n
 
 
-def rewrite(path: Path, decide, palette: Palette | None = None) -> tuple[bytes | None, list[str]]:
-    """The movie with each bitmap decide(bitmap) returns a treatment for replaced, and its vector colours mapped when
-    a palette is given; None when nothing changed."""
+def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str | None = None
+            ) -> tuple[bytes | None, list[str]]:
+    """The movie with each bitmap decide(bitmap) returns a treatment for replaced, its vector colours mapped when
+    a palette is given, and its stage scale mode set when one is given; None when nothing changed."""
     movie = swf.read(path.read_bytes())
     notes, changed = [], False
+    if scale_mode:
+        swf.set_stage_scale_mode(movie, scale_mode)
+        notes.append(f"stage scale mode {scale_mode}")
+        changed = True
     if palette is not None and (n := recolour_shapes(movie, palette)):
         notes.append(f"recoloured {n} shape colours")
         changed = True
@@ -128,7 +136,7 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None) -> dic
         else:
             continue
         shapes = any(fnmatch(rel, s) for s in SHAPES) and not any(fnmatch(rel, s) for s in NO_SHAPES)
-        blob, notes = rewrite(p, decide, palette if shapes else None)
+        blob, notes = rewrite(p, decide, palette if shapes else None, SCALE_MODE.get(rel))
         if blob is None:
             continue
         dest = out / rel

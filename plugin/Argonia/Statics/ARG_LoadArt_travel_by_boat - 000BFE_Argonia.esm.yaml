@@ -1,0 +1,5 @@
+FormKey: 000BFE:Argonia.esm
+EditorID: ARG_LoadArt_travel_by_boat
+Model:
+  File: actors/sfss/canoe/canoe1.nif
+Unused: 0x000000

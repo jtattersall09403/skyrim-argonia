@@ -162,19 +162,26 @@ LOADING_SCREENS = ROOT / "data" / "loading-screens.json"
 
 
 def loading_screen_layer(alloc: Allocator) -> Layer:
-    """Our loading screens: one LSCR per row of data/loading-screens.json (a reviewed loading fact), no model and
-    no condition."""
+    """Our loading screens (Skyrim's classic layout, owner 2026-10-31): one LSCR per row of data/loading-screens.json
+    (a reviewed loading fact) with its 3D model, a STAT of ours over a mesh from our stack, set at the row's initial
+    scale, rotation, rotation range and translation; no condition."""
     records = []
     for row in json.loads(LOADING_SCREENS.read_text(encoding="utf-8"))["screens"]:
-        fid = row["fact"]
-        edid = "ARG_Load_" + fid.removeprefix("fact.").replace("-", "_")
+        fid, m = row["fact"], row["model"]
+        name = fid.removeprefix("fact.").replace("-", "_")
+        art = "ARG_LoadArt_" + name
+        art_key = alloc.form_key(art, "STAT", fid + "#model")
+        records.append({"type": "STAT", "edid": art, "formKey": art_key, "model": m["mesh"]})
+        edid = "ARG_Load_" + name
         records.append({"type": "LSCR", "edid": edid, "formKey": alloc.form_key(edid, "LSCR", fid),
-                        "text": row["text"]})
+                        "text": row["text"], "model": art_key, "scale": m["scale"], "rotation": m["rotation"],
+                        "rotationRange": m["rotationRange"], "translation": m["translation"]})
     return Layer("base:loading-screens", records)
 
 
 def loading_screen_errors(scan: dict, records: list[dict], mod: str = "Argonia.esm") -> list[str]:
-    """L1: every loaded LSCR other than ours is shelled with a never-true condition, and ours exist with text."""
+    """L1: every loaded LSCR other than ours is shelled with a never-true condition, and ours exist, each with text and
+    a model (a STAT of ours with a mesh) set at an initial scale (classic layout, owner 2026-10-31)."""
     by_key = {r["formKey"]: r for r in records if r["type"] == "LSCR"}
     errs = []
     for row in scan.get("loadScreens", []):
@@ -184,8 +191,17 @@ def loading_screen_errors(scan: dict, records: list[dict], mod: str = "Argonia.e
                                                           for c in conds)):
             errs.append(f"{row['plugin']} {row['edid'] or row['formKey']}: not disabled")
     ours = [r for r in by_key.values() if r["formKey"].endswith(":" + mod)]
-    if len(ours) < 3 or any(not r.get("text") or r.get("model") for r in ours):
-        errs.append(f"our loading screens: {len(ours)}, each needs text and no model")
+    stats = {r["formKey"]: r for r in records if r["type"] == "STAT"}
+    if len(ours) < 3:
+        errs.append(f"our loading screens: {len(ours)}, at least 3 needed")
+    for r in ours:
+        art = stats.get(r.get("model") or "")
+        if not r.get("text"):
+            errs.append(f"{r['edid']}: no text")
+        if not (art and art["formKey"].endswith(":" + mod) and art.get("model", "").lower().endswith(".nif")):
+            errs.append(f"{r['edid']}: needs a model, a STAT of ours with a mesh")
+        elif not r.get("scale"):
+            errs.append(f"{r['edid']}: its model has no initial scale")
     return errs
 
 

@@ -1,0 +1,23 @@
+# 1.9 §1: the walk save. From `argoniabase` (the studio character in the holding cell, a black room with only the
+# HUD: what the owner loaded, owner play test 3), the claywater scene puts the player on the Blackwood Road into
+# Claywater Station; the game saves it as `ArgoniaWalk`, the save the owner loads for the test walk. Then the game is
+# quit and launched again, `ArgoniaWalk` loaded with no scene (as the owner loads it), and the player must walk.
+# Re-runnable: `tools/run_journey.py tests/journeys/walk-save.yaml` remakes the save after any base-save change
+# (1.10 remakes it after the player's race and head records change).
+id: walk-save
+runner: 1
+crash_risk: medium
+scene: claywater
+steps:
+  - name: arrived
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+  - name: save
+    do: [{wait: 3}, {call: [save, ArgoniaWalk]}, {wait: 3}]
+  - name: relaunched-into-the-walk-save
+    do: [{relaunch: {save: ArgoniaWalk, scene: false}}]
+    expect:
+      - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}
+      - {read: [player], path: cell.editor_id, ne: ARG_HoldingCell}
+  - name: can-move
+    do: [{pad: "LY=1:3000"}]
+    expect: [{moved: {gt: 300}}]

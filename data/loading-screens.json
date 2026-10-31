@@ -1,53 +1,293 @@
 {
- "about": "Our loading screens (LSCR, decision 0012): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), no 3D model, on the Oblivion-like Loading Menu's paper. Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
+ "about": "Our loading screens (LSCR, decision 0012), Skyrim's classic layout (owner, 2026-10-31): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), and a 3D model: a STAT of ours (ARG_LoadArt_<fact>) over a mesh from our stack (`mod` is its dependencies.json row; Black Marsh mods, then Tropical Skyrim, before vanilla; never Nordic), with its initial scale (about 60 units across from the mesh's measured size), rotation (degrees x, y, z), rotation range (degrees the player may turn it) and translation. Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
  "screens": [
   {
    "fact": "fact.travel-by-boat",
-   "text": "There are few roads in Black Marsh. The principal way to travel is by boat."
+   "text": "There are few roads in Black Marsh. The principal way to travel is by boat.",
+   "model": {
+    "mod": "sailboats-expanded-update",
+    "mesh": "actors/sfss/canoe/canoe1.nif",
+    "shows": "a dugout canoe",
+    "scale": 0.125,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.hist-spore-trees",
-   "text": "The Hist are giant spore trees that grow in the innermost swamps of Black Marsh."
+   "text": "The Hist are giant spore trees that grow in the innermost swamps of Black Marsh.",
+   "model": {
+    "mod": "htbm-cipactli",
+    "mesh": "here there be monsters - curse of cipactli/trees/histtree.nif",
+    "shows": "a full Hist tree",
+    "scale": 0.015,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.hist-one-mind",
-   "text": "All Hist trees are joined at the root. They share one mind and speak to one another."
+   "text": "All Hist trees are joined at the root. They share one mind and speak to one another.",
+   "model": {
+    "mod": "htbm-cipactli",
+    "mesh": "here there be monsters - curse of cipactli/trees/histroots01.nif",
+    "shows": "the Hist roots that join the trees",
+    "scale": 0.015,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.hist-hatching-pools",
-   "text": "Argonian eggs are usually incubated in pools of Hist sap so that the Hist can help with the hatching."
+   "text": "Argonian eggs are usually incubated in pools of Hist sap so that the Hist can help with the hatching.",
+   "model": {
+    "mod": "mud-mother-grove",
+    "mesh": "gv_meshes/argoniannest/histtree.nif",
+    "shows": "a young Hist over its pool",
+    "scale": 0.095,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.naming-day",
-   "text": "On their Naming Day a hatchling licks the Hist and is granted a name."
+   "text": "On their Naming Day a hatchling licks the Hist and is granted a name.",
+   "model": {
+    "mod": "htbm-cipactli",
+    "mesh": "here there be monsters - curse of cipactli/clutter/corruptedtaproothist.nif",
+    "shows": "a Hist taproot",
+    "scale": 4.0,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.xul-vaat",
-   "text": "A xul-vaat, or grave-stake, pins a corpse into the mud so it does not float up when the marsh floods. The dead person's story is carved upon it."
+   "text": "A xul-vaat, or grave-stake, pins a corpse into the mud so it does not float up when the marsh floods. The dead person's story is carved upon it.",
+   "model": {
+    "mod": "mud-mother-grove",
+    "mesh": "gv_meshes/argoniannest/argoniantotem01.nif",
+    "shows": "a carved Argonian post",
+    "scale": 0.462,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.vastei-change",
-   "text": "Change, or 'vastei', is perhaps the strongest driving force behind the Saxhleel. They hold that defying change is folly."
+   "text": "Change, or 'vastei', is perhaps the strongest driving force behind the Saxhleel. They hold that defying change is folly.",
+   "model": {
+    "mod": "mud-mother-grove",
+    "mesh": "gv_meshes/argoniannest/sithisshrine.nif",
+    "shows": "a shrine to Sithis, the changer",
+    "scale": 0.6,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.jel-no-tense",
-   "text": "Jel has no past or future tense, only the present. Argonians also express attitude through body movement."
+   "text": "Jel has no past or future tense, only the present. Argonians also express attitude through body movement.",
+   "model": {
+    "mod": "mud-mother-grove",
+    "mesh": "gv_meshes/argoniannest/wallhanging01.nif",
+    "shows": "a painted Argonian hanging",
+    "scale": 2.0,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.wallowing",
-   "text": "Marsh-born Argonians enjoy wallowing in cool mud and basking in the sun. Wallowing keeps their scales from drying out. They do not worship the sun."
+   "text": "Marsh-born Argonians enjoy wallowing in cool mud and basking in the sun. Wallowing keeps their scales from drying out. They do not worship the sun.",
+   "model": {
+    "mod": "mud-mother-grove",
+    "mesh": "gv_meshes/argoniannest/mudhut01.nif",
+    "shows": "a marsh mud hut",
+    "scale": 0.24,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.rormasu",
-   "text": "Crocodiles, known locally as rormasu, are common throughout Black Marsh."
+   "text": "Crocodiles, known locally as rormasu, are common throughout Black Marsh.",
+   "model": {
+    "mod": "htbm-cipactli",
+    "mesh": "here there be monsters - curse of cipactli/actors/mihailcrocodile.nif",
+    "shows": "a crocodile",
+    "scale": 0.24,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.egg-tooth",
-   "text": "Argonians hatch with an egg-tooth. A cracked egg-tooth on a newborn is seen as a good omen."
+   "text": "Argonians hatch with an egg-tooth. A cracked egg-tooth on a newborn is seen as a good omen.",
+   "model": {
+    "mod": "htbm",
+    "mesh": "here there be monsters/eggs.nif",
+    "shows": "a clutch of eggs",
+    "scale": 6.0,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   },
   {
    "fact": "fact.teeba-hatsei",
-   "text": "Teeba-Hatsei, or 'Hip and Tail Ball', is an Argonian sport played with hips, elbows and tails. Hands and feet may not strike the ball."
+   "text": "Teeba-Hatsei, or 'Hip and Tail Ball', is an Argonian sport played with hips, elbows and tails. Hands and feet may not strike the ball.",
+   "model": {
+    "mod": "htbm-cipactli",
+    "mesh": "here there be monsters - curse of cipactli/clutter/histfruit.nif",
+    "shows": "a round Hist fruit, the size of the ball",
+    "scale": 5.0,
+    "rotation": [
+     -10,
+     0,
+     30
+    ],
+    "rotationRange": [
+     -45,
+     45
+    ],
+    "translation": [
+     0,
+     0,
+     0
+    ]
+   }
   }
  ]
 }
