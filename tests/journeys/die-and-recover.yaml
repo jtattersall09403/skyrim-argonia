@@ -29,7 +29,7 @@ steps:
       - {read: [core, GetVastei], path: value, keep: v}
   - name: die                 # the deserter's attacks; no death camera, no load
     do:
-      - {console: "player.forceav health 5"}
+      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
@@ -37,6 +37,7 @@ steps:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
   - name: woke-at-camp
     expect:
+      - {log: {name: ArgoniaCore, contains: "death: bleedout ended"}, within: 10}
       - {read: [core, GetVastei], path: value, eq: 0}
       - {read: [core, WakePoint], path: value, eq: {kept: wake}}
       - {read: [core, PileState], path: value, ne: "", keep: pile}
@@ -56,7 +57,7 @@ steps:
       - {read: [core, PileState], path: value, eq: ""}
   - name: second-death        # the pile is dropped again: one pile in the form map
     do:
-      - {console: "player.forceav health 5"}
+      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
@@ -64,7 +65,7 @@ steps:
       - {read: [refs, ARG_VasteiPileActivator], path: enabled, eq: 1}
   - name: third-death-replaces  # dying again with the pile untaken replaces it: still one
     do:
-      - {console: "player.forceav health 5"}
+      - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
     expect:
