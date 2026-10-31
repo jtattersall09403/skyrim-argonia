@@ -35,9 +35,9 @@ steps:
     expect:
       - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
+      - {log: {name: ArgoniaCore, contains: "death: bleedout ended"}, within: 10}   # logged with the wake, inside this step (g18b)
   - name: woke-at-camp
     expect:
-      - {log: {name: ArgoniaCore, contains: "death: bleedout ended"}, within: 10}
       - {read: [core, GetVastei], path: value, eq: 0}
       - {read: [core, WakePoint], path: value, eq: {kept: wake}}
       - {read: [core, PileState], path: value, ne: "", keep: pile}

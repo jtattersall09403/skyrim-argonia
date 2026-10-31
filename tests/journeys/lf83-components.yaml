@@ -112,9 +112,9 @@ steps:
     expect: [{read: [core, GetFlag, flag.lf83.crack-seen], path: value, eq: true, within: 5}]
   - name: mortar-tub       # E on the mortar tub: flag tub-seen
     do:
-      - {console: "player.moveto ARG_Ref_ClaywaterStationMortarTub 0 -100 0"}
-      - {console: "player.setangle z 0"}
-      - {console: "player.setangle x 30"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationMortarTub -50 87 0"}    # NW of the tub, square to the tub-well line (the well is +1.4 m x, +0.8 m y):
+      - {console: "player.setangle z 150"}                                       # facing SSE puts the tub, not the well head,
+      - {console: "player.setangle x 45"}                                        # under the crosshair (g18b: E hit the well 3x)
       - {wait: 3}
       - {key: "E 120"}
       - {wait: 2}

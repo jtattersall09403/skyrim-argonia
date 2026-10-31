@@ -55,7 +55,7 @@ steps:
       - {read: [core, ViewState, dialogue], path: value.body.topics, contains: "Topic 300"}
       - {read: [core, Views], path: value, contains: "dialogue ready open"}
   - name: close-dialogue     # Escape clears the filter, a second Escape closes (view.close)
-    do: [{key: "ESC 80"}, {wait: 1}, {key: "ESC 80"}, {wait: 1}]
+    do: [{key: "ESC 80 os"}, {wait: 1}, {key: "ESC 80 os"}, {wait: 1}]   # the os route reaches the focused page (the engine route is the game's)
     expect:
       - {read: [core, ViewState, dialogue], path: value, eq: null}
       - {read: [core, Views], path: value, contains: "dialogue ready closed"}

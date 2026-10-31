@@ -29,7 +29,9 @@ steps:
     do:                      # hot-plugged inside a paused menu never becomes the active device (diag6 §7)
       - {close_menu: journal}
       - {wait: 1}
-      - {pad: "START:80 wait:1500 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 A:120 wait:1500 A:120"}
+      - {pad: "START:80 wait:1500"}   # the persistent pad host keeps one pad plugged, so the calls can be split (3 s cap)
+      - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
+      - {pad: "A:120 wait:1500 A:120"}
       - {wait: 8}
     expect:
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}

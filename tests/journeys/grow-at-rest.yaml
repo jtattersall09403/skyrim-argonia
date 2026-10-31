@@ -23,6 +23,7 @@ steps:
     do:
       - {console: '"{opp}".stopcombat'}
       - {console: '"{opp}".setav aggression 0'}
+      - {console: '"{opp}".setrestrained 1'}   # he holds still under the crosshair: armed now (diag6-fix), he fought and moved off it (g18b)
       - {console: '"{opp}".setav health 2000'}
       - {console: "player.setav health 3000"}   # the deserter still swings: a death wakes with vastei 0 (game-17)
       - {console: "player.moveto {opp} 0 -110 0"}
@@ -62,7 +63,7 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
   - name: pending-level       # blows until a level is pending; the level still waits for rest
-    do: [{console: '"{opp}".moveto player 0 150 0'}, {console: '"{opp}".startcombat player'}, {call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
+    do: [{console: '"{opp}".setrestrained 0'}, {console: '"{opp}".moveto player 0 150 0'}, {console: '"{opp}".startcombat player'}, {call: [dev-grow, "{opp}", "1", "2000"]}, {console: '"{opp}".stopcombat'}]
     expect:
       - {read: [core, GetPendingLevels], path: value, eq: 1}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0}}
