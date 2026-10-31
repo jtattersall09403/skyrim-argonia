@@ -117,7 +117,15 @@ void vanilla_hud_hidden() {
   CHECK(!is_hud_mode("Mode") && !is_hud_mode("_visible") && !is_hud_mode("argoniaHidden") && !is_hud_mode("onModeChange"));
 }
 
+void sheets_cover_the_hud() {
+  CHECK(covers_hud("BarterMenu") && covers_hud("ContainerMenu") && covers_hud("InventoryMenu") && covers_hud("TweenMenu") && covers_hud("Book Menu"));
+  CHECK(covers_hud("Journal Menu") && covers_hud("Sleep/Wait Menu"));
+  CHECK(!covers_hud("FavoritesMenu") && !covers_hud("MessageBoxMenu") && !covers_hud("Quantity Menu"));
+  CHECK(!covers_hud("TrueHUD") && !covers_hud("Fader Menu") && !covers_hud("HUD Menu") && !covers_hud(""));
+}
+
 int main() {
+  sheets_cover_the_hud();
   vanilla_hud_hidden();
   intents_reach_their_view();
   the_registry();

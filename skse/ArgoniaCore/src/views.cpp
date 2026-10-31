@@ -293,14 +293,25 @@ std::vector<ac::msg::Bar> Bars() {
   return out;
 }
 
+// An engine sheet covering the screen (router::covers_hud): our HUD hides under it, as the vanilla HUD does.
+bool SheetOpen() {
+  auto* ui = RE::UI::GetSingleton();
+  if (!ui) return false;
+  for (const auto& r : ac::gen::kSurfaces)
+    if (ac::router::covers_hud(r.menu) && ui->IsMenuOpen(RE::BSFixedString(std::string(r.menu).c_str()))) return true;
+  return false;
+}
+
 void PushHudState() {
   auto& c = Get();
   ac::msg::HudState s;
-  s.visible = !c.view_host.modal().has_value();
+  s.visible = !c.view_host.modal().has_value() && !SheetOpen();
   s.bars = Bars();
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
   s.vastei = {std::int64_t(c.state.prog.vastei), std::nullopt};
+  if (s.visible) ac::journal::show(c.journal_notices, Now());
+  else ac::journal::hide(c.journal_notices, Now());
   for (const auto& n : ac::journal::live(c.journal_notices, Now()))
     s.notices.push_back({"journal-" + std::to_string(n.seq), ac::msg::NoticeKind::journal,
                          std::string(ac::journal::kNoticeText)});
@@ -410,6 +421,8 @@ void OnJournalSurface(ac::router::SurfaceId) { OpenJournal({ac::msg::JournalTab:
 void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
 
 }  // namespace
+
+void HudRefresh() { PushHudState(); }
 
 bool ViewsBound() { return g_api != nullptr; }
 

@@ -58,7 +58,18 @@ std::optional<Notice> notify(Notices& n, NoticeCause cause, std::string_view que
   return out;
 }
 
+void hide(Notices& n, double now) {
+  if (!n.hidden_at) n.hidden_at = now;
+}
+
+void show(Notices& n, double now) {
+  if (!n.hidden_at) return;
+  for (auto& x : n.recent) x.at = now - (std::max)(0.0, *n.hidden_at - x.at);
+  n.hidden_at.reset();
+}
+
 std::vector<Notice> live(Notices& n, double now) {
+  if (n.hidden_at) return n.recent;  // frozen while our HUD is hidden
   std::erase_if(n.recent, [&](const Notice& x) { return now - x.at >= kNoticeLife || now < x.at; });
   return n.recent;
 }

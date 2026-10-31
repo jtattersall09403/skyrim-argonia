@@ -204,7 +204,8 @@ test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoo
   assert.deepEqual(unknown, ["9,9"]);
   const v = { centreX: 0, centreY: 0, zoom: 1 };
   const t = transform(ix, v, 400, 200);
-  assert.equal(t.scale, 1);
+  assert.equal(t.scale, 2);  // zoom 1 covers: the 400-wide sheet shows the 200 px canvas at 2x, no blank sides
+  assert.ok(t.tx <= 0 && t.tx + 200 * t.scale >= 400);
   const far = pan(ix, v, 400, 200, 1e6, -1e6, 1000);
   assert.equal(far.zoom, 16);
   const [px, py] = toPx(ix, far.centreX, far.centreY);

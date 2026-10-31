@@ -21,6 +21,14 @@ std::vector<std::string_view> hidden_hud_clips() {
   return out;
 }
 
+bool covers_hud(std::string_view menu_name) {
+  const auto s = by_menu(menu_name);
+  if (!s || row(*s).kind != SurfaceKind::menu) return false;
+  for (std::string_view over_play : {"FavoritesMenu", "MessageBoxMenu", "Quantity Menu", "Tutorial Menu"})
+    if (menu_name == over_play) return false;
+  return true;
+}
+
 bool is_hud_mode(std::string_view m) {
   for (auto k : kHudModes)
     if (m == k) return true;

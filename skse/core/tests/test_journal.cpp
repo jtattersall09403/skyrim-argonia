@@ -45,6 +45,19 @@ int main() {
   CHECK(live(ns, 103.0).size() == 3);
   CHECK((live(ns, 107.0) == std::vector<Notice>{*b, *c}));   // the first aged out after kNoticeLife
   CHECK(live(ns, 200.0).empty());
+  // Raised in a conversation (our HUD hidden), the notice waits for the HUD: it is shown its full life after.
+  Notices hid;
+  hide(hid, 300.0);
+  const auto in_talk = notify(hid, NoticeCause::entry, "quest.local.lf83", 10, 301.0);
+  CHECK(in_talk && live(hid, 330.0).size() == 1);   // 29 s in the conversation: still held
+  show(hid, 330.0);
+  CHECK(live(hid, 335.0).size() == 1);               // 5 s on the HUD
+  CHECK(live(hid, 336.5).empty());                   // gone after its 6 s
+  // One already 4 s old when the HUD hid keeps its 2 s left.
+  Notices aged;
+  notify(aged, NoticeCause::clue, "quest.local.lf83", 1, 400.0);
+  hide(aged, 404.0); show(aged, 500.0);
+  CHECK(live(aged, 501.5).size() == 1 && live(aged, 502.5).empty());
   CHECK(kNoticeText == "Journal updated");
   return TEST_MAIN_RESULT("core.journal");
 }

@@ -128,6 +128,7 @@ bool ViewsBound();
 void ViewsPostLoad();    // kPostLoad: PrismaUI's API, or the views stay off
 void ViewsDataLoaded();  // after InstallHooks: the views created, the journal and map handlers, the HUD loop
 void ViewsGameReady();   // the HUD's whole state
+void HudRefresh();       // the HUD's state again (a sheet opened or closed: router::covers_hud)
 bool JournalKeyTaken();  // the Journal Menu opening now follows the journal key (J, the pad's Back), not Escape
 // A push keeps the view's last state (ViewState reads it) and sends it; a modal view opens on its first push.
 void Push(std::string_view view, std::string json);

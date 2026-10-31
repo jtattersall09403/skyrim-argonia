@@ -81,9 +81,10 @@ export function revealRects(ix: CellIndex, revealed: CellKey[]) {
 
 export const ZOOM_MIN = 1, ZOOM_MAX = 16;     // the schema allows 0.05..64; a chart below 1 or past 16 shows nothing new
 
-// Master px -> screen px for a view of a w x h viewport: zoom 1 fits the whole canvas (contain).
+// Master px -> screen px for a view of a w x h viewport: zoom 1 fills the sheet (cover; ui-review2: contain left
+// the 16:9 sheet's sides blank parchment), so the chart pans along the shorter side.
 export function transform(ix: CellIndex, v: ChartView, w: number, h: number) {
-  const scale = (Math.min(w, h) / ix.size) * v.zoom;
+  const scale = (Math.max(w, h) / ix.size) * v.zoom;
   const [cx, cy] = toPx(ix, v.centreX, v.centreY);
   // The paper always fills the sheet: a centre near the edge stops at the edge; a canvas smaller than the sheet centres.
   const fit = (t: number, side: number) => {

@@ -335,7 +335,7 @@
   {
    "id": "containerMenu",
    "kind": "menu",
-   "menu": "Container Menu",
+   "menu": "ContainerMenu",
    "inventory": "interface/containermenu.swf",
    "replacement": "restyled",
    "by": "dearDiary",
@@ -346,7 +346,7 @@
   {
    "id": "barterMenu",
    "kind": "menu",
-   "menu": "Barter Menu",
+   "menu": "BarterMenu",
    "inventory": "interface/bartermenu.swf",
    "replacement": "restyled",
    "by": "dearDiary",

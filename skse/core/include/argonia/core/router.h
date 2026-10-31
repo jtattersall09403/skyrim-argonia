@@ -96,6 +96,11 @@ inline constexpr std::array<std::string_view, 16> kHudModes{
 // A member HUDMovieBase reads as a mode flag: a known mode, or any other name the HUD's mode naming gives
 // (…Mode, …Playback), so a mode another HUD mod adds is cleared too.
 bool is_hud_mode(std::string_view member);
+
+// Our HUD hides while an engine sheet covers the screen (ui-review2: the bars and the vastei plaque sat over the
+// BarterMenu's header): any menu surface but those that sit over play (favourites, a message box, a quantity
+// prompt, a tutorial card). Unlisted menus (TrueHUD, the fader) never hide it.
+bool covers_hud(std::string_view menu_name);
 // One entry of HudElements as the adapter reads it.
 struct HudListEntry {
   bool same_object = false;  // == to one hidden clip's value (the same display object)

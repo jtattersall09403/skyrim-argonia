@@ -75,6 +75,8 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
     if (!e) return RE::BSEventNotifyControl::kContinue;
     const std::string_view menu = e->menuName.c_str();
+    // A sheet opening or closing shows or hides our HUD; the task runs after the menu stack has changed.
+    if (ac::router::covers_hud(menu)) SKSE::GetTaskInterface()->AddTask([] { HudRefresh(); });
     if (!e->opening) {
       if (menu == RE::SleepWaitMenu::MENU_NAME || menu == RE::LoadingMenu::MENU_NAME) FactsChanged("time passed");
       return RE::BSEventNotifyControl::kContinue;

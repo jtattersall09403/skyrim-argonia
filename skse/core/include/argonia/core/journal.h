@@ -66,11 +66,16 @@ struct Notice {
 struct Notices {
   std::vector<Notice> recent;  // oldest first
   std::uint32_t seq = 0;
+  std::optional<double> hidden_at;  // our HUD hidden since (a conversation or a sheet): the notices do not age
 };
 // The notice to raise now, or nothing when the same quest raised one less than kNoticeMerge seconds ago.
 std::optional<Notice> notify(Notices& n, NoticeCause cause, std::string_view quest, std::int32_t mark, double now);
 // The notices still shown at `now` (younger than kNoticeLife), oldest first; older ones are dropped.
 std::vector<Notice> live(Notices& n, double now);
+// Our HUD hidden (ui-review2: Livia's entry was raised in the conversation and gone before the HUD came back): the
+// notices stop ageing at `now`; shown again, each resumes with the age it had, and one raised meanwhile starts fresh.
+void hide(Notices& n, double now);
+void show(Notices& n, double now);
 
 inline constexpr std::uint32_t kJournalType = cosave::fourcc("JRNL");
 cosave::Bytes encode(const Log& log);
