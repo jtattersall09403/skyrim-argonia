@@ -94,7 +94,7 @@ THEME = "argonia-theme"  # 1.2 §a's derived UI theme overlay (tools/ui_theme)
 MAP = "argonia-map"  # 1.2 §e's derived world map overlay over FWMF (tools/chart/fwmf.py, installer/steps/world-map.md)
 VIEWS = "argonia-views"  # 1.2 §0's view bundle (tools/ui_harness/build.py: out/ui/views) under PrismaUI/views/argonia
 LOD = "Argonia LOD (generated)"  # 2.W4 §c: filled on the machine by lod.ps1 (decision 0014 §4), never staged or pushed
-CURRENT_PART = "0"  # stack.py --through's default: the rows of every chunk of the part being built
+CURRENT_PART = "1"  # stack.py --through's default: the rows of every chunk of the part being built
 
 
 def started(chunk, through):
