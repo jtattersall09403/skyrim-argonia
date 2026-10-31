@@ -344,6 +344,18 @@ public static class ParHash {
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on
+      # Argonia itself (game-21: `on` lays only the modlist, so the Argonia cards started Skyrim without our ESMs,
+      # ArgoniaCore or scripts, and removed the ones a studio launch had laid): the same lay as bridge.ps1 prepare,
+      # without the dev-only bridge.
+      foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "$Root\ours\$e") {
+        Copy-Item "$Root\ours\$e" "$Data\$e" -Force
+        $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
+        $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
+      $core = "$Root\MO2\mods\Argonia SKSE\SKSE\Plugins\ArgoniaCore.dll"
+      if (Test-Path $core) { New-Item -ItemType Directory -Force "$Data\SKSE\Plugins" | Out-Null; Copy-Item $core "$Data\SKSE\Plugins\ArgoniaCore.dll" -Force }
+      $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
+      if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
+      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia*.esm' }) -join ', '); core $(Test-Path "$Data\SKSE\Plugins\ArgoniaCore.dll"); $($pex.Count) .pex"
       # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
