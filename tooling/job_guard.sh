@@ -102,7 +102,9 @@ case "$cmd" in
     echo "job $name still running"; tail -3 "$JOBS/$name.log"; exit 3 ;;
   status)
     for f in "$JOBS"/${1:-*}.pid; do [ -e "$f" ] || continue; n=$(basename "$f" .pid)
-      if [ -f "$JOBS/$n.rc" ]; then echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then
+      # A bare `status` lists finished jobs from the last 6 h only (hundreds of old ones filled every lane's context);
+      # `status <name>` always answers.
+      if [ -f "$JOBS/$n.rc" ]; then [ -n "${1:-}" ] || [ -n "$(find "$JOBS/$n.rc" -mmin -360)" ] && echo "$n done rc=$(cat "$JOBS/$n.rc")"; elif kill -0 "$(cat "$f")" 2>/dev/null; then
         if grep -q '^queued' "$JOBS/$n.log" 2>/dev/null && [ ! -f "$JOBS/$n.started" ]; then echo "$n queued ($(head -1 "$JOBS/$n.log"))"; else echo "$n running"; fi; else echo "$n dead"; fi; done
     for f in "$JOBS"/gpu*.lock.slot; do [ -e "$f" ] || continue; read -r l e < "$f" || continue
       if [ "${e:-0}" -gt "$(date +%s)" ]; then idle=$(slot_idle "${f%.slot}" "$l"); sfx=""
