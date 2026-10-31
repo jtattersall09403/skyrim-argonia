@@ -172,6 +172,34 @@ def test_title_svg_is_generated_from_its_source():
 def test_skyui_list_sizes_are_raised_and_a_changed_config_fails():
     cfg = "defaults.entry.textFormat.size = 14\n  defaults.label.textFormat.size=12\ncolumns.x.size = 9\n"
     out, missing = build.list_sizes(cfg)
-    assert "defaults.entry.textFormat.size = 20" in out and "defaults.label.textFormat.size=16" in out
+    assert "defaults.entry.textFormat.size = 22" in out and "defaults.label.textFormat.size=19" in out
     assert "columns.x.size = 9" in out and missing == []
     assert build.list_sizes("nothing here\n")[1] == list(build.LIST_SIZES)
+
+
+def test_shape_colours_recoloured_in_place():
+    """ui-review4: the barter plate's red knot is a DefineShape3 fill; its colours are found and mapped, alpha kept."""
+    body = struct.pack("<H", 7) + swf.rect(0, 200, 0, 200)
+    body += bytes([1, 0x00, 200, 0, 0, 128])  # one solid fill, red at alpha 128
+    body += bytes([1]) + struct.pack("<H", 20) + bytes([0, 200, 0, 255])  # one line, green
+    body += bytes([0x11, 0x00])  # 1 fill bit, 1 line bit; the end record
+    tag = swf.Tag(32, body)
+    offs, alpha = swf.shape_colours(tag)
+    assert alpha and [body[o:o + 4] for o in offs] == [bytes([200, 0, 0, 128]), bytes([0, 200, 0, 255])]
+    movie = swf.Movie(b"FWS", 10, b"", [tag])
+    assert retheme.recolour_shapes(movie, Palette()) == 2
+    new = movie.tags[0].data
+    assert len(new) == len(body) and new[offs[0] + 3] == 128 and new[offs[0]:offs[0] + 3] != bytes([200, 0, 0])
+
+
+def test_pex_string_table_remap_keeps_indices():
+    """ui-review4: SKI_ConfigMenu's size overrides are string-table entries; the remap changes only the table."""
+    from tools.ui_theme import pex
+
+    def wstr(b):
+        return struct.pack(">H", len(b)) + b
+    head = b"\xfa\x57\xc0\xde" + bytes(12) + wstr(b"a.psc") + wstr(b"u") + wstr(b"m")
+    table = struct.pack(">H", 3) + wstr(b"ApplyItemListFontSize") + wstr(b"14") + wstr(b"x")
+    blob = head + table + b"CODE"
+    new, missing = pex.remap(blob, {"14": "22", "99": "1"})
+    assert missing == ["99"] and pex.strings(new) == ["ApplyItemListFontSize", "22", "x"] and new.endswith(b"CODE")

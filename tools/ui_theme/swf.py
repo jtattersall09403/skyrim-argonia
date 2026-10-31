@@ -387,3 +387,117 @@ def imports(movie: Movie) -> list[tuple[str, str]]:
             out.append((url, t.data[i:e].decode("latin-1")))
             i = e + 1
     return out
+
+
+# DefineShape..DefineShape4: the vector frames and ornaments (ui-review4: the barter plate's red knot is one).
+SHAPE_TAGS = {2: 1, 22: 2, 32: 3, 83: 4}
+
+
+def _skip_matrix(data: bytes, pos: int) -> int:
+    r = BitReader(data, pos)
+    if r.u(1):
+        n = r.u(5)
+        r.s(n), r.s(n)
+    if r.u(1):
+        n = r.u(5)
+        r.s(n), r.s(n)
+    n = r.u(5)
+    r.s(n), r.s(n)
+    return r.align()
+
+
+def _fill(data: bytes, pos: int, ver: int, out: list[int]) -> int:
+    kind = data[pos]
+    pos += 1
+    width = 4 if ver >= 3 else 3
+    if kind == 0x00:
+        out.append(pos)
+        return pos + width
+    if kind in (0x10, 0x12, 0x13):
+        pos = _skip_matrix(data, pos)
+        n = data[pos] & 15
+        pos += 1
+        for _ in range(n):
+            out.append(pos + 1)
+            pos += 1 + width
+        return pos + (2 if kind == 0x13 else 0)
+    if 0x40 <= kind <= 0x43:
+        return _skip_matrix(data, pos + 2)
+    raise ValueError(f"fill style type {kind:#x}")
+
+
+def _styles(data: bytes, pos: int, ver: int, out: list[int]) -> int:
+    n = data[pos]
+    pos += 1
+    if n == 0xFF and ver >= 2:
+        n = struct.unpack_from("<H", data, pos)[0]
+        pos += 2
+    for _ in range(n):
+        pos = _fill(data, pos, ver, out)
+    n = data[pos]
+    pos += 1
+    if n == 0xFF and ver >= 2:
+        n = struct.unpack_from("<H", data, pos)[0]
+        pos += 2
+    for _ in range(n):
+        pos += 2
+        if ver < 4:
+            out.append(pos)
+            pos += 4 if ver >= 3 else 3
+            continue
+        f1, f2 = data[pos], data[pos + 1]
+        pos += 2
+        if (f1 >> 4) & 3 == 2:  # miter join
+            pos += 2
+        if f1 & 8:
+            pos = _fill(data, pos, ver, out)
+        else:
+            out.append(pos)
+            pos += 4
+        del f2
+    return pos
+
+
+def shape_colours(tag: Tag) -> tuple[list[int], bool]:
+    """Byte offsets in tag.data of every solid, gradient and line colour of a DefineShape(1-4), and whether they carry
+    alpha (RGBA, else RGB). Colours sit byte-aligned, so they are recoloured in place."""
+    ver = SHAPE_TAGS[tag.code]
+    data, out = tag.data, []
+    r = BitReader(data, 2)
+    read_rect(r)
+    pos = r.align()
+    if ver == 4:
+        r = BitReader(data, pos)
+        read_rect(r)
+        pos = r.align() + 1
+    pos = _styles(data, pos, ver, out)
+    nf, nl = data[pos] >> 4, data[pos] & 15
+    r = BitReader(data, pos + 1)
+    while True:
+        if r.u(1):  # edge
+            straight, n = r.u(1), r.u(4) + 2
+            if straight:
+                if r.u(1):
+                    r.s(n), r.s(n)
+                else:
+                    r.u(1), r.s(n)
+            else:
+                r.s(n), r.s(n), r.s(n), r.s(n)
+            continue
+        flags = r.u(5)
+        if not flags:
+            break
+        if flags & 1:
+            n = r.u(5)
+            r.s(n), r.s(n)
+        if flags & 2:
+            r.u(nf)
+        if flags & 4:
+            r.u(nf)
+        if flags & 8:
+            r.u(nl)
+        if flags & 16 and ver >= 2:
+            pos = _styles(data, r.align(), ver, out)
+            nf, nl = data[pos] >> 4, data[pos] & 15
+            r = BitReader(data, pos + 1)
+    return out, ver >= 3

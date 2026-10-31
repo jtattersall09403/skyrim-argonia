@@ -14,13 +14,14 @@ import shutil
 import sys
 from pathlib import Path
 
-from tools.ui_theme import fontlib, retheme
+from tools.ui_theme import fontlib, pex, retheme
 
 THEMED = ("dear-diary", "wood-and-paper", "oblivion-loading-menu")  # retheme's roots, lowest priority first
 CHECKED = ("dear-diary", "skyui", "wood-and-paper", "oblivion-loading-menu")
 SKYUI_CONFIG = "interface/skyui/config.txt"
-# SkyUI's item-list text (points in its 1280x720 movie); Dear Diary's 14 and 12 read ~10 px at 1080p (ui-review2).
-LIST_SIZES = {"defaults.entry.textFormat.size": 20, "defaults.label.textFormat.size": 16}
+# SkyUI's item-list text (points). The config is only the fallback: SKI_ConfigMenu overrides it on every load from
+# its MCM font-size option, so the sizes players see come from pex.SIZES (ui-review4: config 30 changed nothing).
+LIST_SIZES = {"defaults.entry.textFormat.size": 22, "defaults.label.textFormat.size": 19}
 
 
 def list_sizes(config: str, sizes: dict[str, int] = LIST_SIZES) -> tuple[str, list[str]]:
@@ -51,6 +52,11 @@ def main(argv=None) -> int:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(text, encoding="utf-8", newline="")
     print(f"{dest}: list sizes {LIST_SIZES} from {src}" + (f"; missing {missing}" if missing else ""))
+    try:
+        print(pex.write_overlay(a.mods / "skyui" / "SkyUI_SE.bsa", a.out))
+    except (OSError, KeyError, ValueError) as e:
+        print(f"SkyUI list font sizes: {e}")
+        return 1
     return 1 if bad or missing else 0
 
 

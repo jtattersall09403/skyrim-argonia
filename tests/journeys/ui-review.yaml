@@ -105,7 +105,7 @@ steps:
     expect: [{event: {kind: menu, match: Book Menu}}]
     reader: [the page in our palette, Pelagiad, no Nordic ornament]
   - name: book-closed         # the player's own close, as ui-sweep: close_menu on the 3D book crashed in BookMenu (ui-review2, twice)
-    do: [{key: "TAB 80"}, {wait: 1.5}]
+    do: [{key: "TAB 80"}, {wait: 1.5}, {pad: "B:120"}, {wait: 1.5}]   # TAB alone left the book open (ui-review4)
     expect: [{event: {kind: menu, match: '"menu": "Book Menu", "opening": false'}}]
   - name: pending-level       # the fixture: a level pending
     do: [{call: [dev-grow, ARG_Ref_ClaywaterStationCrocodile, "1", "2000"]}]
@@ -119,15 +119,16 @@ steps:
     expect: [{read: [core, SittingOpen], path: value, eq: false}]
   - name: loading-indoors      # an interior first, so the next load is a long one (an interior coc ends before the still)
     do: [{console: "coc LilmothApothecaryHouse"}, {wait: 8}]
-  - name: loading-screen       # a far exterior from indoors: the province's terrain loads cold; the still on the event
-    do: [{console: "player.moveto ARG_Ref_ProbeS13Arrive"}]
+  - name: loading-screen       # a far exterior from indoors; the Loading Menu outlives no step's still, so a still loop
+    do: [{burst: {frames: 24, fps: 2}}, {wait: 2}, {console: "player.moveto ARG_Ref_ProbeS13Arrive"}]   # runs across it (ui-review4)
     expect: [{event: {kind: menu, match: Loading Menu}, within: 10}]
+  - name: loading-frames      # the loop's frames: loading-frames-NN.png
+    do: [{burst_fetch: loading-frames}]
     reader: [loading screen in our palette, Pelagiad, no Skyrim art]
+  - name: pause               # the player's own pause (ESC): the still names the list the quit walks
+    do: [{wait: 4}, {key: "ESC 80"}, {wait: 2}]
   - name: main-menu           # the title screen: the player's own Quit (the pad, as ui-sweep), last
     do:
-      - {wait: 4}
-      - {key: "ESC 80"}
-      - {wait: 2}
       - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
       - {pad: "A:120 wait:1500 A:120"}
       - {wait: 8}

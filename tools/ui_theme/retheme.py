@@ -28,6 +28,10 @@ from tools.ui_theme import swf
 from tools.ui_theme.palette import Palette
 
 SCOPE = ("interface/deardiary/*_bg.swf", "interface/loadingmenu.swf")
+# SWFs whose vector shapes (DefineShape fills and lines) are recoloured too: the menus and SkyUI's lists, plates and
+# icons; ui-review4 found the barter and container name plates' red knot drawn as a shape, not a bitmap.
+SHAPES = ("interface/*.swf", "interface/skyui/*.swf", "interface/deardiary/*_bg.swf")
+NO_SHAPES = ("interface/fonts_*.swf",)
 EMBEDDERS = "interface/*.swf"  # menu SWFs carrying copies of the BG bitmaps (fallbacks): matched by their pixels
 # Nordic marks (0006), by path and the bitmap's measured size (w, h); cleared to transparent, not recoloured.
 CLEAR = {
@@ -57,10 +61,33 @@ def treat(bm: swf.Bitmap, palette: Palette, clear: bool) -> swf.Bitmap:
     return swf.Bitmap(bm.char_id, palette.apply(bm.rgba))
 
 
-def rewrite(path: Path, decide) -> tuple[bytes | None, list[str]]:
-    """The movie with each bitmap decide(bitmap) returns a treatment for replaced; None when nothing changed."""
+def recolour_shapes(movie: swf.Movie, palette: Palette) -> int:
+    """Every DefineShape fill, gradient and line colour mapped through the palette in place, alpha kept; the count."""
+    n = 0
+    for k, tag in enumerate(movie.tags):
+        if tag.code not in swf.SHAPE_TAGS:
+            continue
+        offs, alpha = swf.shape_colours(tag)
+        if not offs:
+            continue
+        data = bytearray(tag.data)
+        rgba = np.array([[list(data[o:o + 3]) + [data[o + 3] if alpha else 255] for o in offs]], np.uint8)
+        new = palette.apply(rgba)[0]
+        for o, c in zip(offs, new):
+            data[o:o + 3] = bytes(int(v) for v in c[:3])
+        movie.tags[k] = swf.Tag(tag.code, bytes(data), tag.long)
+        n += len(offs)
+    return n
+
+
+def rewrite(path: Path, decide, palette: Palette | None = None) -> tuple[bytes | None, list[str]]:
+    """The movie with each bitmap decide(bitmap) returns a treatment for replaced, and its vector colours mapped when
+    a palette is given; None when nothing changed."""
     movie = swf.read(path.read_bytes())
     notes, changed = [], False
+    if palette is not None and (n := recolour_shapes(movie, palette)):
+        notes.append(f"recoloured {n} shape colours")
+        changed = True
     for k, bm in swf.bitmaps(movie):
         verdict = decide(bm)
         if verdict is None:
@@ -95,9 +122,13 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None) -> dic
             def decide(bm):
                 c = seen.get(digest(bm.rgba))
                 return None if c is None else (palette, c)
+        elif any(fnmatch(rel, s) for s in SHAPES):
+            def decide(bm):
+                return None
         else:
             continue
-        blob, notes = rewrite(p, decide)
+        shapes = any(fnmatch(rel, s) for s in SHAPES) and not any(fnmatch(rel, s) for s in NO_SHAPES)
+        blob, notes = rewrite(p, decide, palette if shapes else None)
         if blob is None:
             continue
         dest = out / rel

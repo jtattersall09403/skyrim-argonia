@@ -70,7 +70,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError, GameDown  # noqa: E402
+from tools.bridge import Bridge, BridgeError, GameDown, _sh  # noqa: E402
 
 BASE_SAVE = "argoniabase"
 RESUME = REPO / "out" / "resume"
@@ -288,6 +288,32 @@ class Runner:
 
     def _teleport(self, args):
         return self.b.call("teleport", *(args if isinstance(args, list) else str(args).split()))
+
+    def _burst(self, arg):
+        """A still loop for a screen too short for a step's still (the Loading Menu, ui-review4): grab.ps1 records
+        {frames, fps} in the desktop session without waiting, while the step's next actions run; {burst_fetch: name}
+        later copies the frames to out/<name>-NN.png."""
+        frames, fps = int(arg.get("frames", 20)), float(arg.get("fps", 2))
+        if frames > 40 or frames / fps > 30:
+            raise StepFailed(f"burst {arg}: at most 40 frames over 30 s")
+        m = self.b.machine
+        env = dict(m.env, DESKTOP_JOB="burst", DESKTOP_WAIT="0")
+        m.ps(r"Remove-Item C:\argonia\logs\burst_*.png, C:\argonia\logs\desktop-burst.done -EA SilentlyContinue", 60)
+        _sh([m.run, "desktop", rf"& C:\argonia\infra\grab.ps1 C:\argonia\logs\burst.png -Frames {frames} -Fps {fps}"],
+            timeout=90, env=env)
+
+    def _burst_fetch(self, name):
+        m = self.b.machine
+        for _ in range(40):
+            out = m.ps(r"Test-Path C:\argonia\logs\desktop-burst.done", 60)
+            if "True" in out:
+                break
+            time.sleep(1)
+        listing = m.ps(r"(Get-ChildItem C:\argonia\logs\burst_*.png).Name", 60)
+        names = sorted(n.strip() for n in listing.splitlines() if n.strip().endswith(".png"))
+        for k, n in enumerate(names):
+            m.get(rf"C:\argonia\logs\{n}", self.out / f"{name}-{k:02d}.png")
+        return {"frames": len(names)}
 
     def _wait(self, seconds):
         if float(seconds) > 10:
@@ -667,7 +693,8 @@ MENU_VIEWS = {"journal": "journal", "MapMenu": "chart"}  # a menu name and our v
 CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order; pad B closes our journal (game-16, live)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
-           "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch}
+           "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
+           "burst": Runner._burst, "burst_fetch": Runner._burst_fetch}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
 SKSE_LOGS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\SKSE"
