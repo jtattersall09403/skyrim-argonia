@@ -37,7 +37,7 @@ ViewProbe "<n> focus" keeps the dialogue focus.
   and a 1.2-vastei pile replaced it (log 02:53:21-28). 0bb02fb drops the wait (not yet run).
 - menus-quit: RB RB from Quests still logged no quit save (still not read).
 - Deploy 6 (fb563bb esc-book) failed at the skse build: ssh broke because argonia-play was stopped
-  ("User initiated", 03:00:35 GMT) mid-deploy, not by this lane. It was restarted for the next lane.
+  ("User initiated", 03:00:35 GMT) mid-deploy, not by this lane. It is left stopped; game-19 starts it.
 
 ## Next lane
 1. ONE deploy at origin/main (fb563bb esc-book, 0bb02fb, 4b9eef3 and later). The YAML that `make plugin` rewrites
