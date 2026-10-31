@@ -47,5 +47,7 @@ $run put "$here/gpu-bind.ps1" C:/argonia/infra/gpu-bind.ps1 >/dev/null
 if $run ps '& C:\argonia\infra\gpu-bind.ps1' | grep -q REBOOTING; then
   log "GPU bound on new hardware: rebooting"; read -t 60 < /dev/zero 2>/dev/null || true; $run up
 fi
+$run put "$here/prewarm.ps1" C:/argonia/infra/prewarm.ps1 >/dev/null
+$run ps '& C:\argonia\infra\prewarm.ps1'  # a disk fresh from an image reads each block from S3 once: warm it before play
 $run ps 'nvidia-smi -L'
 log "$NAME $ID up from $AMI; next: deploy, prove, cut over"

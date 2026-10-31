@@ -10,6 +10,7 @@ set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
 case "${1:-}" in --machine) export ARGONIA_PLAY=$2; shift 2 ;; esac
 M=${ARGONIA_PLAY:-argonia-play}
+AS=${ARGONIA_STATE_AS:-$M}  # the bucket prefix: the machine the folders came from (a retired one, restored from its snapshot)
 BUCKET=argonia-private-050977237313
 run="$here/run.sh"
 [ $# -gt 0 ] || { sed -n 2,8p "$0"; exit 2; }
@@ -23,10 +24,10 @@ for f in "$@"; do
   n=$("$run" ps "if (!(Test-Path 'C:\\argonia\\$f')) { 'missing'; return }; tar.exe -cf 'C:\\argonia\\logs\\state-$f.tar' -C 'C:\\argonia' '$f'; (Get-Item 'C:\\argonia\\logs\\state-$f.tar').Length" | tr -d '\r' | tail -1)
   [ "$n" = missing ] && { echo "$M: C:\\argonia\\$f is not there"; continue; }
   "$run" get "C:/argonia/logs/state-$f.tar" "$tmp/$f.tar"
-  aws s3 cp "$tmp/$f.tar" "s3://$BUCKET/machines/$M/state/$f.tar" --only-show-errors
-  got=$(aws s3api head-object --bucket "$BUCKET" --key "machines/$M/state/$f.tar" --query ContentLength --output text)
+  aws s3 cp "$tmp/$f.tar" "s3://$BUCKET/machines/$AS/state/$f.tar" --only-show-errors
+  got=$(aws s3api head-object --bucket "$BUCKET" --key "machines/$AS/state/$f.tar" --query ContentLength --output text)
   [ "$got" = "$n" ] || { echo "$f: bucket holds $got bytes, the machine made $n: kept on the machine" >&2; exit 1; }
   "$run" ps "Remove-Item -Recurse -Force 'C:\\argonia\\$f', 'C:\\argonia\\logs\\state-$f.tar'" >/dev/null
-  echo "$M: $f archived ($((n >> 20)) MB, s3://$BUCKET/machines/$M/state/$f.tar) and removed"
+  echo "$M: $f archived ($((n >> 20)) MB, s3://$BUCKET/machines/$AS/state/$f.tar) and removed"
   rm -f "$tmp/$f.tar"
 done

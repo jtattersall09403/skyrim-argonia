@@ -116,4 +116,6 @@ fi
 if "$here/run.sh" ps '& C:\argonia\infra\gpu-bind.ps1' | grep -q REBOOTING; then
   read -t 60 < /dev/zero 2>/dev/null || true; "$here/run.sh" up
 fi
+"$here/run.sh" put "$here/prewarm.ps1" C:/argonia/infra/prewarm.ps1 >/dev/null
+"$here/run.sh" ps '& C:\argonia\infra\prewarm.ps1'  # warm the fresh-from-image disk before the first game launch (1.8)
 log "$NAME is $("$here/run.sh" ps hostname | tr -d '\r') at $("$here/run.sh" ip)"
