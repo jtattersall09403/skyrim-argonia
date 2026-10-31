@@ -61,13 +61,18 @@ jobs:
         env:
           ACTION: ${{ steps.ask.outputs.action }}
         run: |
-          state() { aws ec2 describe-instances --filters "Name=tag:Name,Values=$1" \
+          # argonia-play's region from infra/gpu-box/machines.conf (#27; the build VM stays in eu-west-2)
+          PR=$(curl -fsS "https://raw.githubusercontent.com/${{ github.repository }}/main/infra/gpu-box/machines.conf" \
+            -H "Authorization: Bearer ${{ github.token }}" | awk '$1=="argonia-play" {print $2}')
+          PR=${PR:-eu-west-2}; echo "argonia-play region: $PR"
+          reg() { [ "$1" = argonia-play ] && echo "$PR" || echo eu-west-2; }
+          state() { aws ec2 describe-instances --region "$(reg "$1")" --filters "Name=tag:Name,Values=$1" \
             --query 'Reservations[].Instances[?State.Name!=`terminated`][].[InstanceId,State.Name]' --output text | head -1; }
           start() {  # name -> result: started / already-<state> / no-capacity / denied / missing
             read -r id st < <(state "$1")
             if [ -z "$id" ]; then echo missing; return; fi
             if [ "$st" != stopped ]; then echo "already-$st"; return; fi
-            if out=$(aws ec2 start-instances --instance-ids "$id" 2>&1); then echo started
+            if out=$(aws ec2 start-instances --region "$(reg "$1")" --instance-ids "$id" 2>&1); then echo started
             elif grep -q -E 'InsufficientInstanceCapacity|capacity' <<<"$out"; then echo no-capacity
             elif grep -q -E 'UnauthorizedOperation|AccessDenied' <<<"$out"; then echo denied
             else echo "error: $out" >&2; echo error; fi
@@ -78,12 +83,12 @@ jobs:
             play=$(start argonia-play)
             if [ "$play" = started ] || [ "$play" = already-pending ]; then
               read -r id _ < <(state argonia-play)
-              aws ec2 wait instance-running --instance-ids "$id" && play=running
+              aws ec2 wait instance-running --region "$PR" --instance-ids "$id" && play=running
             fi
           elif [ "$ACTION" = stop ]; then
             read -r id st < <(state argonia-play)
             if [ -n "$id" ] && [ "$st" = running ]; then
-              aws ec2 stop-instances --instance-ids "$id" >/dev/null 2>&1 && play=stopped || play=denied
+              aws ec2 stop-instances --region "$PR" --instance-ids "$id" >/dev/null 2>&1 && play=stopped || play=denied
             else play="already-$st"; fi
           fi
           echo "play=$play" >> "$GITHUB_OUTPUT"; echo "game machine: $play"

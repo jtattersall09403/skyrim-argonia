@@ -7,7 +7,8 @@ import fs from "node:fs"
 import os from "node:os"
 import worker from "../play-switch.js"
 const env = Object.fromEntries([...fs.readFileSync(os.homedir() + "/.argonia/secrets.env", "utf8").matchAll(/^\s*([A-Z_]+)=(.*)$/gm)].map((m) => [m[1], m[2].trim()]))
-const wenv = { AWS_KEY_ID: env.AWS_SWITCH_KEY_ID, AWS_SECRET: env.AWS_SWITCH_SECRET }
+const REGION = fs.readFileSync(new URL("../../gpu-box/machines.conf", import.meta.url), "utf8").match(/^argonia-play\s+(\S+)/m)?.[1]  // as the deployed worker's binding
+const wenv = { AWS_KEY_ID: env.AWS_SWITCH_KEY_ID, AWS_SECRET: env.AWS_SWITCH_SECRET, REGION }
 const cf = async (p) => (await (await fetch("https://api.cloudflare.com/client/v4" + p, { headers: { Authorization: "Bearer " + env.CLOUDFLARE_API_TOKEN } })).json()).result
 const acct = env.CLOUDFLARE_ACCOUNT_ID
 const [tun] = await cf(`/accounts/${acct}/cfd_tunnel?name=argonia-play&is_deleted=false`)
