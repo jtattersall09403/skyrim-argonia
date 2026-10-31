@@ -43,6 +43,20 @@
   --hud-trim-hi: #d4b27a;
   --hud-text: #f1e8cf;
   --hud-text-soft: #cdbb8f;
+  /* the frame style (1.12, provisional until the designer's loop sets them): Wind UI's panes retinted toward the
+     owner's reference (tmp/image.png): dark green-black panes, gold-green filigree trim, warm serif text, a
+     Morrowind-blue selection moved to marsh teal. The dialogue window, the System pane, message boxes and the
+     frames around the chart and the book use these. */
+  --frame-bg: rgba(14, 19, 13, 0.95);       /* a pane's ground */
+  --frame-well: rgba(8, 11, 8, 0.9);        /* an inset list or text well inside a pane */
+  --frame-trim: #6f6a35;                    /* the gold-green filigree line */
+  --frame-trim-hi: #b5a862;                 /* its lit edge, a title's ornament */
+  --frame-text: #d9cfa6;                    /* body text */
+  --frame-text-soft: #a39a74;               /* labels, secondary text */
+  --frame-head: #e6dcb2;                    /* titles */
+  --frame-link: #8fb7c0;                    /* hyperlinked keywords on a dark pane (marsh teal, lit) */
+  --frame-select: rgba(143, 183, 192, 0.16);/* a selected row's wash */
+  --frame-shadow: rgba(0, 0, 0, 0.6);
   /* space and type (1rem is set from the device by scale.ts, the one place) */
   --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem;
   --t-body: 1rem; --t-head: 1.25rem; --t-title: 1.6rem; --t-banner: 2.6rem;
