@@ -27,6 +27,10 @@
 make unit 469 passed; skse/check.sh 33/33; run_journey --dry ok. The cloudflare .mjs tests are not in make check.
 
 ## Owed
-- The L4 journey on argonia-play-london: see the run status below.
+- The L4 journey: London (argonia-play-london) had no spot capacity all afternoon (InsufficientInstanceCapacity),
+  so the check moved to argonia-play-new (g6.2xlarge, fresh from image). There deploy failed at launch and the
+  journey failed at its scene (out/runs/spot-watch/20261031T135035): bridge `ping`/`player` "main thread did not
+  run the task within 3000 ms", before any watcher step ran, likely EBS lazy-loading on the fresh disk. The
+  coordinator took the batch over (pre-warm, redeploy, spot-watch). Runner: the scratchpad watch-new.sh.
 - The watcher reaches the save through ArgoniaBridge (dev-only plugin). A player build without the bridge needs a
   non-dev seam (e.g. a named pipe in ArgoniaCore); the drill does not test the scheduled task itself, only the script.
