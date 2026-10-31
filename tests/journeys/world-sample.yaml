@@ -617,15 +617,15 @@ steps:
     within: 3
   expected_ground_m: 0.8
 - name: s07-coast-sea
-  why: 'three samples out in the sea: the sea default is level 0, so the player swims'
+  why: 'three samples out in the sea: the sea default is level 0, no land above it'
   do:
   - console: player.moveto ARG_Ref_ProbeS07CoastSea
   - wait: 4
   expect:
   - read:
     - player
-    path: swimming
-    eq: true
+    path: pos.z
+    le: 105.05
     within: 5
   reader:
   - the sea meets the shore without a gap; the water plane is at one level

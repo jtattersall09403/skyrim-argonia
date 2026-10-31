@@ -500,10 +500,11 @@ def stop_7(w: World, g: Ground) -> dict:
     s["steps"] += [{"name": "s07-coast-travel", "do": [*HOLD, {"console": travel(g, "s07-coast-arrive", ccx, ccy)}, {"wait": 8}], "expect": [in_world(7)]},
                    probe_step(g, "s07-coast-land", rr, shore_pt, "land three samples back from the sea edge"),
                    {"name": "s07-coast-sea",
-                    "why": "three samples out in the sea: the sea default is level 0, so the player swims",
+                    "why": "three samples out in the sea: the sea default is level 0, no land above it",
                     "do": [probe_go("s07-coast-sea", *g.units(rr, sea_pt)[:2], su.metres_to_units(1.5)),
                            {"wait": 4}],
-                    "expect": [{"read": ["player"], "path": "swimming", "eq": True, "within": 5}],
+                    # not `swimming` (owner, 2026-10-31: swimming is base Skyrim): our part is no land above the sea
+                    "expect": [{"read": ["player"], "path": "pos.z", "le": su.rounded(su.metres_to_units(1.5), 2), "within": 5}],
                     "reader": ["the sea meets the shore without a gap; the water plane is at one level",
                                "the apron beyond the coast fades through haze with no hard edge", NORDIC]}]
     return s
