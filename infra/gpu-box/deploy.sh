@@ -31,7 +31,10 @@ for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: 
 step "machine up" "$run" up
 # Heartbeat (game-19's gap): idle-stop.ps1 counts the busy flag, which only commands refresh; a long single step
 # (stage push, skse build) could outlast it. Touch it every 5 min while the deploy runs; stopped on exit.
-( while sleep 300; do "$run" ps 'hostname' >/dev/null 2>&1 || true; done ) & hb=$!
+# The loop's sleep is its own child: killing the loop alone left `sleep 300` holding the job's inherited gpu.lock fd
+# for up to 5 min after DEPLOY OK (game-21). The TERM trap kills the sleep too; `wait` lets TERM in at once.
+( trap 'kill $s 2>/dev/null; exit 0' TERM
+  while :; do sleep 300 & s=$!; wait $s; "$run" ps 'hostname' >/dev/null 2>&1 || true; done ) & hb=$!
 trap 'kill $hb 2>/dev/null || true' EXIT
 # the game down before the push: a running game holds argonia-views open and the tar unpack fails (game-17, after uireview)
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
