@@ -4,7 +4,7 @@
 //   node drive.mjs <outDir> webrtc <steps.json>        ARGONIA_DEVICE=desktop|mac|v5-unfolded|v5-folded|matepad
 // Run headful under xvfb-run (drive.sh does): pointer lock and Chrome's mobile mode need a real window. Phone and
 // tablet profiles use Chrome's mobile emulation, so taps are real touch events (Input.dispatchTouchEvent), not clicks.
-// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"hold": ["css", ms]} | {"click": "css"}
+// steps: [{"key": "Backquote"} | {"text": "coc riverwood"} | {"wait": ms} | {"shot": "name"} | {"viewport": [w, h]} | {"tap": [x, y]} | {"hold": ["css", ms]} | {"drag": ["css", dx, dy, ms]} | {"click": "css"}
 //          | {"down": key} | {"up": key} | {"shots": [name, count, ms]} | {"scene": id, "save"?: name} (bridge: load, bat)]
 import fs from "node:fs"
 import os from "node:os"
@@ -162,6 +162,12 @@ try {
             const r = await page.$eval(s.hold[0], (el) => { const b = el.getBoundingClientRect(); return { x: b.x + b.width / 2, y: b.y + b.height / 2 } }).catch(() => null)
             if (!r) { log("hold: no element", s.hold[0]); continue }
             await page.touchscreen.touchStart(r.x, r.y); await wait(s.hold[1]); await page.touchscreen.touchEnd(); await wait(400)
+        }
+        else if (s.drag) {   // a touch dragged from 60% across an element by [dx, dy] and held ms: ["css", dx, dy, ms] (a stick)
+            const r = await page.$eval(s.drag[0], (el) => { const b = el.getBoundingClientRect(); return { x: b.x + b.width * 0.6, y: b.y + b.height * 0.6 } }).catch(() => null)
+            if (!r) { log("drag: no element", s.drag[0]); continue }
+            await page.touchscreen.touchStart(r.x, r.y); await page.touchscreen.touchMove(r.x + s.drag[1], r.y + s.drag[2])
+            await wait(s.drag[3] ?? 1000); await page.touchscreen.touchEnd(); await wait(300)
         }
         else if (s.look) {   // relative mouse movement in steps (the camera): [dx, dy, steps]
             const [dx, dy, n = 10] = s.look
