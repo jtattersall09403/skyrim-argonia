@@ -17,6 +17,10 @@ Report: `docs/research/2026-10-31/lane-game-18.md` (each journey's verdict and t
 | Drafts, not in the batch | rest-respawn-cleared; w4-veg-densest and water-budget |
 | Dropped | soak, w3-road-hops, nav-npc-walk, nav-sandbox-20, water-npc-swim |
 
+Lane game-20 (2026-10-31 05:40): the border now has a shell that every cell lists, and world-sample s09 is still red
+(the player walks 16 m past the border). menus-quit needs a DEV resetGame call. Neither fix is proven yet; see
+`docs/research/2026-10-31/lane-game-20.md`.
+
 ## Not covered by a journey
 
 | Item | From | Status |
