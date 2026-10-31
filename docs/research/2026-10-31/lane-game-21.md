@@ -32,3 +32,18 @@ The build VM restarted at 06:29 and killed the g4dn round, which had not produce
 2. Then the load-screen still capture again, starting the grabs earlier, with a reader.
 3. Then re-run ui-sweep, menus-quit and die-and-recover. Then one all.yaml pass, crash-prone checks last. Update in-game-owed.md.
 4. Leave the machine running.
+
+## London round (argonia-play-london, 11:15 to 11:30, after an SKSE-only deploy: DEPLOY OK in 219 s)
+The cut-over moved argonia-play to Paris. The main tree's job_guard rejects the name argonia-play-london; the worktree's newer copy accepts it.
+
+**Load stills (g21-load2, 12 stills, reader):**
+- No Nordic art in any frame and no knot border. But no Loading Menu art or text was caught either: every load frame is plain black.
+- Our HUD bars and the vastei box are still drawn over the black for 4 to 12 s, so 6a14cb8's native Hide has not taken effect.
+- ArgoniaCore does push `visible:false`. Next step: confirm that the black frame is the Loading Menu at all (menu events while the grabs are taken). If it is not, the fade before the load is what needs our HUD hidden.
+
+**Batch g21-b5 (the reds again): 0 of 3 passed.**
+- **die-and-recover: FAIL at die again.** The reader's still from b4 shows the player alive at about 5 of 1000 health with blood on screen, and the deserter shirtless with no weapon visible, facing away. The log has one "grow: struck unarmored" in 20 s. His blows land but do not kill: he is unarmed, or the damage is under 5. This is the harness's setup, not ArgoniaCore's death path. Next: check his inventory (`"{opp}".getequippeditemtype 1`) and lower the forced health to 1.
+- **ui-sweep: hud-open now passes** with the corrected expectation. favorites fails: no FavoritesMenu event after Q (0 menu events).
+- **menus-quit: still no MainMenu** after dev-quit-to-menu, even with the extra resetGame on the next frame, so resetGame alone does not return to the menu. Next: find what the engine's Journal Quit really calls (decompile it; output stays private).
+
+**LOD:** g21-lod2 started at 11:30 (`lod.sh run prepare terrain collect && lod.sh archive`, about 26 min plus the upload).
