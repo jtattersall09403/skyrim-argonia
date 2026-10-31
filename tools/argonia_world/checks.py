@@ -48,6 +48,16 @@ def lock_owner(w) -> list[str]:
     return out
 
 
+@check("person-disposition", "npc", "npc_kind")
+def person_disposition(w) -> list[str]:
+    """Every person has a starting disposition (npc.base_disposition); a creature has none."""
+    out = [f"npc {r[0]}: a person with no base_disposition"
+           for r in w.query("SELECT id FROM npc WHERE kind = 'person' AND base_disposition IS NULL ORDER BY id")]
+    out += [f"npc {r[0]}: a creature carries a base_disposition"
+            for r in w.query("SELECT id FROM npc WHERE kind != 'person' AND base_disposition IS NOT NULL ORDER BY id")]
+    return out
+
+
 @check("journal-grounding", "journal_entry_grounding", "fact", "promise")
 def journal_grounding(w) -> list[str]:
     """journal_entry_grounding.value is a fact id or a promise id."""

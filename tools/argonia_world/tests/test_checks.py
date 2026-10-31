@@ -25,6 +25,13 @@ def test_lock_owner(w):
     assert any("has no row in faction" in e for e in checks.run(w, ["lock-owner"]))
 
 
+def test_person_disposition(w):
+    assert all(r[0] is not None for r in w.query("SELECT base_disposition FROM npc WHERE kind = 'person'"))
+    assert w.get("npc", "npc.imperial-fringe.claywater-station.well-keeper").base_disposition == 55
+    w.update("npc", "npc.imperial-fringe.claywater-station.well-keeper", base_disposition=None)
+    assert any("a person with no base_disposition" in e for e in checks.run(w, ["person-disposition"]))
+
+
 def test_journal_grounding(w):
     w.insert("journal_entry_grounding", journal_entry_id="text.journal.bc05.10", ord=99, value="fact.nowhere")
     assert checks.run(w, ["journal-grounding"]) == [

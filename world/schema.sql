@@ -477,6 +477,9 @@ CREATE TABLE "npc" (
   "asset_availability_notes" TEXT,
   "trade_class" TEXT,
   "caster" BOOLEAN CHECK ("caster" IN (0, 1)),
+  -- A person's own starting regard for a stranger, 0-100 (76 §125; Morrowind's neutral is 50). Persons carry one
+  -- (check person-disposition); creatures none. ArgoniaCore adds the player's Personality and the priors to it.
+  "base_disposition" INTEGER CHECK ("base_disposition" BETWEEN 0 AND 100),
   PRIMARY KEY ("id")
 );
 

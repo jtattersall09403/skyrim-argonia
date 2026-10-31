@@ -157,7 +157,12 @@ int disposition_of(const State& s, std::string_view npc) {
   if (auto it = s.disp.find(key(npc)); it != s.disp.end()) return it->second;
   disposition::Priors p;
   p.personality = s.sheet.a[AttrId::personality];
-  return disposition::base({}, p);
+  // The person's own regard from their world row; one with no row starts at Morrowind's neutral.
+  disposition::Speaker sp{gen::disposition::neutral_base};
+  auto row = std::lower_bound(gen::kNpcDisposition.begin(), gen::kNpcDisposition.end(), npc,
+                              [](const gen::NpcDispositionRow& r, std::string_view id) { return r.id < id; });
+  if (row != gen::kNpcDisposition.end() && row->id == npc) sp.authored_base = row->base;
+  return disposition::base(sp, p);
 }
 
 std::string variant_flag(std::string_view place, std::string_view variant) {

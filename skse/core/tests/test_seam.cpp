@@ -153,7 +153,7 @@ void the_action_natives() {
   CHECK(ses.act("giveItem", {std::string("item.potion-of-regeneration"), 1.0}).done && e.writes.size() == 1);
   s.disp[seam::key(kKeeper)] = 95;
   CHECK(ses.act("changeDisposition", {std::string(kKeeper), 15.0}).done && s.disp[seam::key(kKeeper)] == 100);
-  CHECK(ses.act("changeDisposition", {std::string(kPoler), -15.0}).done && s.disp[seam::key(kPoler)] == 0);
+  CHECK(ses.act("changeDisposition", {std::string(kPoler), -15.0}).done && s.disp[seam::key(kPoler)] == 5);  // Poler starts at his authored 45 + 0.5 x (0 - 50) = 20
   CHECK(ses.act("applyLocalVariant", {std::string("place.p"), std::string("v")}).done);
   CHECK(ses.facts().truth(Term::localVariantActive, std::vector<Arg>{std::string("place.p"), std::string("v")}) == true);
   CHECK(ses.act("setPrice", {std::string("ferry.f"), 7.0}).done && ses.act("setPrice", {std::string("ferry.f"), 0.0}).done);
@@ -243,7 +243,10 @@ void attributes() {
   CHECK(seam::set_attribute(s, AttrId::endurance, 900) == 255 && seam::set_attribute(s, AttrId::endurance, -1) == 0);
   CHECK(seam::set_skill(s, SkillId::longBlade, 5) == 5 && s.sheet.s[SkillId::longBlade] == 5);
   CHECK(seam::set_skill(s, SkillId::longBlade, 900) == 100 && seam::set_skill(s, SkillId::longBlade, -3) == 0);
-  CHECK(seam::disposition_of(s, kKeeper) == 0);  // unmet, authored base 0, Personality 0
+  CHECK(seam::disposition_of(s, kKeeper) == 30);  // unmet: Livia's authored 55 + 0.5 x (Personality 0 - 50)
+  s.sheet.a[AttrId::personality] = 70;
+  CHECK(seam::disposition_of(s, kKeeper) == 65);  // 55 + 0.5 x (70 - 50)
+  CHECK(seam::disposition_of(s, "npc.nobody") == 60);  // no row: neutral 50, the same Personality
 }
 
 }  // namespace

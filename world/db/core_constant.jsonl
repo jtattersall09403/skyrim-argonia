@@ -38,6 +38,7 @@
 {"id":"min_use_value","module":"progression","value":0.05,"design_ref":"docs/design/world/76-stats-progression.md §120.2"}
 {"id":"mitigation_constant","module":"carriers","value":135.6,"design_ref":"docs/design/world/76-stats-progression.md §121.4"}
 {"id":"mitigation_damage_coefficient","module":"carriers","value":0.6,"design_ref":"docs/design/world/76-stats-progression.md §121.4"}
+{"id":"neutral_base","module":"disposition","value":50.0,"design_ref":"docs/design/world/76-stats-progression.md §125 (Morrowind neutral; a person with no row)"}
 {"id":"notice_life_seconds","module":"journal","value":6.0,"design_ref":"game-10 §2 (lane fixes-2): real seconds a \"Journal updated\" notice stays in our HUD's notice stack"}
 {"id":"notice_merge_seconds","module":"journal","value":2.0,"design_ref":"game-10 §2 (lane fixes-2): a clue that sets a stage and that stage's entry, raised within this many real seconds, are one \"Journal updated\" notice"}
 {"id":"overloaded_walk_fraction","module":"sheet","value":0.4,"design_ref":"docs/design/world/76-stats-progression.md §122"}

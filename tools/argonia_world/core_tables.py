@@ -269,7 +269,13 @@ def conditions(w: db.World) -> str:
           + ", ".join(sv(o["id"]) for o in ops) + "};", "",
           *_enum("DispositionBand", [r["id"] for r in bands]),
           f"inline constexpr std::array<double, {len(bands)}> kDispositionBandMin{{"
-          + ", ".join(num(r["min"]) for r in bands) + "};", "", *_constants(w, "conditions")]
+          + ", ".join(num(r["min"]) for r in bands) + "};", "",
+          "// A person's own starting regard (npc.base_disposition), by world id; disposition::Speaker::authored_base.",
+          "struct NpcDispositionRow { std::string_view id; int base; };"]
+    people = w.query("SELECT id, base_disposition FROM npc WHERE base_disposition IS NOT NULL ORDER BY id")
+    b += [f"inline constexpr std::array<NpcDispositionRow, {len(people)}> kNpcDisposition{{{{"]
+    b += [f"    {{{sv(r['id'])}, {r['base_disposition']}}}," for r in people]
+    b += ["}};", "", *_constants(w, "conditions")]
     return _wrap("conditions", ["array", "cstddef", "cstdint", "string_view"], b)
 
 
