@@ -54,11 +54,11 @@ steps:
     expect:
       - {event: {kind: menu, match: Journal Menu}}
       - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu wrapped"}, within: 5}
-    reader: [the System page lists settings, load and quit, labels in sentence case ("Settings", "Quit"), not upper case, and not squashed sideways]
+    reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
   - name: system-by-pad       # Start, then the right bumper to the System tab (last in the cycle)
-    do: [{pad: "START:120 wait:1500 RB:120 wait:600 RB:120 wait:600 RB:120 wait:600"}, {wait: 1}]
+    do: [{pad: "START:120 wait:1500"}, {pad: "RB:120 wait:600 RB:120 wait:600 RB:120 wait:600"}, {wait: 1}]
     expect: [{event: {kind: menu, match: Journal Menu}}]
     reader: [the System tab is selected and shows settings (Wind UI's page among them), load and quit]
   - name: system-pad-closed
