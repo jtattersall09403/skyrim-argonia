@@ -17,7 +17,7 @@ fi
 mkdir -p "$wt/out"
 for d in "$main"/out/*/; do
   n=$(basename "$d")
-  case "$n" in batch|runs|check|resume|build) continue ;; esac  # per-run outputs stay the worktree's own
+  case "$n" in batch|runs|check|resume|build|ui|ui_theme) continue ;; esac  # per-run outputs and the UI deploy builds stay the worktree's own
   [ -e "$wt/out/$n" ] || ln -s "$d" "$wt/out/$n"
 done
 echo "worktree $wt at $(git -C "$wt" rev-parse --short HEAD), $(find "$wt/out" -maxdepth 1 -type l | wc -l) build inputs linked"

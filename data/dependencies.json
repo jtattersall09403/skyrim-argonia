@@ -1105,6 +1105,9 @@
    "archive": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
    "size_kb": 4284,
    "why": "lock-on reticle and boss bars",
+   "ini": [
+    {"file": "MCM/Config/TrueHUD/settings.ini", "section": "General", "set": {"bEnablePlayerWidget": "0"}}
+   ],
    "chunk": "1.6",
    "required": true,
    "profile": "play",

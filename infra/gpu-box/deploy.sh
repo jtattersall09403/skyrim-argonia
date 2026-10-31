@@ -38,7 +38,15 @@ step "machine up" "$run" up
 trap 'kill $hb 2>/dev/null || true' EXIT
 # the game down before the push: a running game holds argonia-views open and the tar unpack fails (game-17, after uireview)
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
-if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push; fi
+# The derived UI, built from this tree's source before the stage copies it (1.11: a deploy shipped a HUD built hours
+# before the redesign, because nothing rebuilt out/ui/views and worktrees linked the main tree's copy): the views
+# (esbuild, seconds) and the theme overlay (the retheme recipe over the staged mods; cleared first so a dropped file goes).
+if [ $stage = 1 ]; then
+  step "views" "$PY" -m tools.ui_harness.build
+  step "theme" bash -c 'rm -rf out/ui_theme/argonia-theme && "$0" -m tools.ui_theme.build --mods "$HOME/.argonia/stack/MO2/mods" \
+    --ttf "${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf" --out out/ui_theme/argonia-theme' "$PY"
+  step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push
+fi
 if [ $papyrus = 1 ]; then step "papyrus" "$here/records_jobs.sh" papyrus; fi
 ls out/gpu/papyrus/*.pex >/dev/null 2>&1 || { echo "no out/gpu/papyrus/*.pex: records_jobs.sh papyrus" >&2; exit 1; }
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
