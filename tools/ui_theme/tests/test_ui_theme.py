@@ -170,9 +170,10 @@ def test_title_svg_is_generated_from_its_source():
 
 
 def test_skyui_list_sizes_are_raised_and_a_changed_config_fails():
-    cfg = "defaults.entry.textFormat.size = 14\n  defaults.label.textFormat.size=12\ncolumns.x.size = 9\n"
+    cfg = "defaults.entry.textFormat.size = 14\n  defaults.label.textFormat.size=12\ncolumns.x.size = 9\ncolumns.weightColumn.width = 0.06\ncolumns.valueColumn.width = 0.06\n"
     out, missing = build.list_sizes(cfg)
     assert "defaults.entry.textFormat.size = 22" in out and "defaults.label.textFormat.size=19" in out
+    assert "columns.valueColumn.width = 0.09" in out
     assert "columns.x.size = 9" in out and missing == []
     assert build.list_sizes("nothing here\n")[1] == list(build.LIST_SIZES)
 

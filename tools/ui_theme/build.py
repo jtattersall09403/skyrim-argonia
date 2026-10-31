@@ -22,13 +22,15 @@ SKYUI_CONFIG = "interface/skyui/config.txt"
 # SkyUI's item-list text (points). The config is only the fallback: SKI_ConfigMenu overrides it on every load from
 # its MCM font-size option, so the sizes players see come from pex.SIZES (ui-review4: config 30 changed nothing).
 LIST_SIZES = {"defaults.entry.textFormat.size": 22, "defaults.label.textFormat.size": 19}
+# The weight and value columns at the larger size (ui-review5 reader: the VAL label clipped at 0.06 of the list).
+LIST_SIZES |= {"columns.weightColumn.width": 0.08, "columns.valueColumn.width": 0.09}
 
 
-def list_sizes(config: str, sizes: dict[str, int] = LIST_SIZES) -> tuple[str, list[str]]:
+def list_sizes(config: str, sizes: dict[str, float] = LIST_SIZES) -> tuple[str, list[str]]:
     """The SkyUI config with each named size set; the keys it did not find (a changed config) are returned."""
     missing = []
     for key, v in sizes.items():
-        config, n = re.subn(rf"(?m)^(\s*{re.escape(key)}\s*=\s*)\d+", rf"\g<1>{v}", config)
+        config, n = re.subn(rf"(?m)^(\s*{re.escape(key)}\s*=\s*)[\d.]+", rf"\g<1>{v}", config)
         if not n:
             missing.append(key)
     return config, missing
