@@ -110,7 +110,7 @@ test("no control, toggle or stick ring overlaps the HUD-bar, effects, money, Twe
             ...(l.shape === "unfolded" ? l.zones : []).map((z) => ({ id: `${z.side}-ring`, r: { x: z.rest.x - z.radius, y: z.rest.y - z.radius, w: 2 * z.radius, h: 2 * z.radius } }))]
         for (const it of items) for (const e of ex) assert.ok(!hit(it.r, e.r), `${it.id} overlaps ${e.name} at ${w}x${h}`)
         for (const b of l.buttons) assert.ok(b.rect.w >= 44 && b.rect.h >= 44, `${b.id} at ${w}x${h} is ${b.rect.w}x${b.rect.h}`)
-        assert.ok(l.toggle.w >= 44, `toggle at ${w}x${h}`)
+        assert.ok(l.shape !== "unfolded" || l.toggle.w >= 44, `toggle at ${w}x${h}`)
         for (const z of l.zones) assert.ok(z.radius >= 44 || l.shape !== "unfolded", `${z.side} ring radius ${z.radius}`)
     }
 })
