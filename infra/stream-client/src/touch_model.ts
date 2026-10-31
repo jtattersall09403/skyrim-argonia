@@ -130,7 +130,7 @@ const LABEL: Record<ButtonId, string> = {
 export function layoutFor(w: number, h: number): Layout {
     const shape = shapeOf(w, h)
     if (shape === "folded-landscape") return bandLayout(w, h)
-    if (shape === "unfolded") return stripLayout(w, h)
+    if (shape === "unfolded") return overlayLayout(w, h)
     const short = Math.min(w, h)
     // the button diameter: ~9.5% of the short side, never under 44 px (the touch minimum) nor over 96
     const unit = Math.round(Math.max(44, Math.min(96, short * (0.095))))
@@ -251,59 +251,69 @@ function bandLayout(w: number, h: number): Layout {
     return { shape: "folded-landscape", unit, buttons, zones, toggle }
 }
 
-/** The unfolded phone: buttons over a near-square picture sat on the HUD bars (top left, under LT/LB), the money
- *  counter (under A), the Tween level bar (under the right stick) and the Journal's tabs (ui-review5), so the
- *  controls live in a strip above and below the picture and the stream is asked for the picture between them
- *  (stream_settings.ts; upstream centres the video, so the strips are equal). Top: the shoulders, Back, Start, L3
- *  and R3; bottom: the d-pad, the two stick rings and the face diamond. */
-export function stripUnit(w: number, h: number): number { return Math.round(Math.max(44, Math.min(72, Math.min(w, h) * 0.06))) }
-export function stripHeight(w: number, h: number): number {
-    if (shapeOf(w, h) !== "unfolded") return 0
-    const unit = stripUnit(w, h), gap = Math.round(unit * 0.18), m = Math.round(Math.max(12, unit * 0.3))
-    return Math.round(2 * (unit + gap * 0.6) + unit + 2 * m)
+/** The unfolded phone keeps the full-screen picture (owner #17: no bands). The controls sit translucently over it,
+ *  in the left and right columns and the top centre, clear of the exclusion rectangles below: our HUD bars, the
+ *  effects and sneak plates, the money counter, the Tween level bar and the Journal's foot (tabs, folio, Close). */
+export function overlayUnit(w: number, h: number): number { return Math.round(Math.max(44, Math.min(72, Math.min(w, h) * 0.06))) }
+
+/** Where our UI must stay uncovered, in fractions of the viewport (x0, y0, x1, y1), read off the ui-review5 stills
+ *  (2352x2172) and ui/views/hud/hud.css (bars left 2.5vw top 3.5vh, effects right 2.5vw, sneak top centre, money
+ *  right 2.5vw bottom 4vh) and journal.css (.foot: Journal and Quests tabs, folio, Close, along the book's bottom). */
+export const EXCLUSIONS: { name: string, x0: number, y0: number, x1: number, y1: number }[] = [
+    { name: "hud-bars", x0: 0.02, y0: 0.03, x1: 0.46, y1: 0.20 },
+    { name: "hud-effects", x0: 0.78, y0: 0.03, x1: 0.98, y1: 0.15 },
+    { name: "hud-sneak", x0: 0.40, y0: 0.03, x1: 0.60, y1: 0.12 },
+    { name: "hud-money", x0: 0.76, y0: 0.88, x1: 0.98, y1: 0.97 },
+    { name: "tween-level-bar", x0: 0.35, y0: 0.62, x1: 0.66, y1: 0.72 },
+    { name: "journal-tabs", x0: 0.04, y0: 0.87, x1: 0.97, y1: 0.96 },
+]
+
+/** The exclusions in CSS pixels for a viewport. Folded landscape streams the picture between its side bands, so the
+ *  fractions apply to that picture; unfolded, to the whole screen. */
+export function exclusionRects(w: number, h: number): { name: string, r: Rect }[] {
+    const band = bandWidth(w, h), pw = w - 2 * band
+    return EXCLUSIONS.map((e) => ({ name: e.name, r: { x: Math.round(band + e.x0 * pw), y: Math.round(e.y0 * h), w: Math.round((e.x1 - e.x0) * pw), h: Math.round((e.y1 - e.y0) * h) } }))
 }
 
-function stripLayout(w: number, h: number): Layout {
-    const unit = stripUnit(w, h)
+function overlayLayout(w: number, h: number): Layout {
+    const unit = overlayUnit(w, h)
     const gap = Math.round(unit * 0.18)
     const m = Math.round(Math.max(12, unit * 0.3))
-    const strip = stripHeight(w, h)
     const buttons: ButtonSpec[] = []
     const add = (id: ButtonId, cx: number, cy: number, size = unit, round = true, small = false) =>
         buttons.push({ kind: "button", id, label: LABEL[id], round, small, rect: { x: Math.round(cx - size / 2), y: Math.round(cy - size / 2), w: Math.round(size), h: Math.round(size) } })
     const sw = unit * 1.5, sh = Math.max(44, unit * 0.8)
     const pill = (id: ButtonId, cx: number, cy: number, small = false) =>
         buttons.push({ kind: "button", id, label: LABEL[id], round: false, small, rect: { x: Math.round(cx - sw / 2), y: Math.round(cy - sh / 2), w: Math.round(sw), h: Math.round(sh) } })
-    // top strip: triggers outboard, bumpers inboard, Back and Start at the centre; L3 and R3 under the bumpers
-    const ty = m + sh / 2
     const lx = m + sw / 2, rx = w - m - sw / 2
-    pill("lt", lx, ty); pill("lb", lx + sw + gap, ty)
-    pill("rt", rx, ty); pill("rb", rx - sw - gap, ty)
+    const ty = Math.round(0.21 * h + sh / 2), by = ty + sh + gap
+    // shoulders stacked in each side column under the HUD bars and effects
+    pill("lt", lx, ty); pill("lb", lx, by)
+    pill("rt", rx, ty); pill("rb", rx, by)
     const tc = w / 2
     pill("back", tc - gap / 2 - sw / 2, ty, true)
     pill("start", tc + gap / 2 + sw / 2, ty, true)
-    const l3y = Math.min(strip - m - unit * 0.425, ty + sh / 2 + gap + unit * 0.425)
-    add("l3", lx, l3y, Math.max(44, unit * 0.85))
-    add("r3", rx, l3y, Math.max(44, unit * 0.85))
-    // bottom strip: the d-pad at the left, the face diamond at the right, the stick rings between
-    const base = h - strip
-    const dp = Math.max(48, unit * 0.78)
-    const dcx = m + dp * 1.5, dcy = base + strip / 2
-    const ds = dp * 0.92
+    // left: d-pad and L3 mid-height, the stick ring below them
+    const dp = Math.max(48, unit * 0.78), ds = dp * 0.92
+    const dcx = m + dp * 1.5, dcy = Math.round(0.52 * h)
     add("up", dcx, dcy - dp, ds, false, true)
     add("down", dcx, dcy + dp, ds, false, true)
     add("left", dcx - dp, dcy, ds, false, true)
     add("right", dcx + dp, dcy, ds, false, true)
+    add("l3", dcx + dp * 2.7, dcy, Math.max(44, unit * 0.85))
+    // right: the face diamond mid-height with R3 above it, the stick ring below, right of the Tween level bar
     const d = unit + gap * 0.6
-    const fx = w - m - unit / 2 - d, fy = base + strip / 2
+    const fx = w - m - unit / 2 - d, fy = Math.round(0.55 * h)
     add("y", fx, fy - d); add("x", fx - d, fy); add("b", fx + d, fy); add("a", fx, fy + d)
-    const radius = Math.round(Math.min(unit * 1.25, strip / 2 - m))
+    add("r3", fx, fy - 2 * d - gap, Math.max(44, unit * 0.85))
+    const radius = Math.round(Math.min(unit * 1.25, 0.075 * h))
+    const zoneTop = Math.round(0.2 * h)
     const zones: ZoneSpec[] = [
-        { kind: "stick", side: "left", radius, rect: { x: 0, y: base, w: Math.round(w / 2), h: strip }, rest: { x: Math.round(dcx + dp * 1.5 + gap + radius * 1.4), y: Math.round(dcy) } },
-        { kind: "stick", side: "right", radius, rect: { x: Math.round(w / 2), y: base, w: w - Math.round(w / 2), h: strip }, rest: { x: Math.round(fx - d - unit / 2 - gap - radius * 1.4), y: Math.round(fy) } },
+        { kind: "stick", side: "left", radius, rect: { x: 0, y: zoneTop, w: Math.round(w / 2), h: h - zoneTop }, rest: { x: Math.round(m + radius), y: Math.round(0.76 * h) } },
+        { kind: "stick", side: "right", radius, rect: { x: Math.round(w / 2), y: zoneTop, w: w - Math.round(w / 2), h: h - zoneTop }, rest: { x: Math.round(0.74 * w), y: Math.round(0.76 * h) } },
     ]
-    const ts = Math.round(Math.max(36, unit * 0.6))
-    const toggle = { x: Math.round(tc - ts / 2), y: Math.round(ty + sh / 2 + gap), w: ts, h: ts }
+    const ts = Math.round(Math.max(44, unit * 0.6))
+    const toggle = { x: Math.round(tc - ts / 2), y: Math.round(0.13 * h), w: ts, h: ts }
     return { shape: "unfolded", unit, buttons, zones, toggle }
 }
 
