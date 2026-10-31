@@ -25,11 +25,9 @@ steps:
   - name: system-tab         # Escape in play: the vanilla Journal Menu on its System tab
     do: [{key: "ESC 80"}, {wait: 2}]
     expect: [{event: {kind: menu, match: Journal Menu}}]
-  - name: quit-confirmed     # the pad opens the Journal from play (START: System tab) in the same call as its presses: a pad
-    do:                      # hot-plugged inside a paused menu never becomes the active device (diag6 §7)
-      - {close_menu: journal}
-      - {wait: 1}
-      - {pad: "START:80 wait:1500"}   # the persistent pad host keeps one pad plugged, so the calls can be split (3 s cap)
+  - name: quit-confirmed     # Esc opened the Journal on Quests; the host's pad is live in it (g18c still: pad glyphs), so
+    do:                      # RB twice to System, the d-pad to Quit, A, A on Yes (START opens our journal view instead)
+      - {pad: "RB:80 wait:300 RB:80 wait:300"}
       - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
       - {pad: "A:120 wait:1500 A:120"}
       - {wait: 8}
