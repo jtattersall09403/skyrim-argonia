@@ -1,0 +1,21 @@
+# 1.9 §1: the walk save. From `argoniabase` (the studio character in the holding cell, a black room with only the
+# HUD: what the owner loaded, owner play test 3), infra/gpu-box/base_save.py (every deploy's last step) applies the
+# claywater scene and saves `ArgoniaWalk`, the save the owner loads for the test walk; remake it alone with
+# `base_save.py` at the main menu (1.10 remakes it after the player's race and head records change). This journey
+# proves it: the game quit and launched again, `ArgoniaWalk` loaded with no scene (as the owner loads it), and the
+# player walks.
+id: walk-save
+runner: 1
+crash_risk: medium
+scene: claywater
+steps:
+  - name: arrived
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+  - name: relaunched-into-the-walk-save
+    do: [{relaunch: {save: ArgoniaWalk, scene: false}}]
+    expect:
+      - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}
+      - {read: [player], path: cell.editor_id, ne: ARG_HoldingCell}
+  - name: can-move
+    do: [{pad: "LY=1:3000"}]
+    expect: [{moved: {gt: 300}}]

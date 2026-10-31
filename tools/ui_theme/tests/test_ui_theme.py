@@ -204,3 +204,16 @@ def test_pex_string_table_remap_keeps_indices():
     blob = head + table + b"CODE"
     new, missing = pex.remap(blob, {"14": "22", "99": "1"})
     assert missing == ["99"] and pex.strings(new) == ["ApplyItemListFontSize", "22", "x"] and new.endswith(b"CODE")
+
+
+def test_loading_menu_keeps_its_aspect(tmp_path):
+    """1.9 §6: the loading menu's stage is set to showAll before its own frame-1 actions, so the engine's stretch
+    to a near-square screen no longer squashes the fact text."""
+    dd = tmp_path / "dd"
+    menu(dd, "interface/loadingmenu.swf", bitmaps=[np.zeros((2, 2, 4), np.uint8)])
+    retheme.run([dd], tmp_path / "out", Palette(), None)
+    movie = swf.read((tmp_path / "out" / "interface/loadingmenu.swf").read_bytes())
+    acts = [t for t in movie.tags if t.code == swf.DO_ACTION]
+    assert acts and acts[0].data == (b"\x96\x07\x00\x00Stage\x00\x1c\x96\x14\x00\x00scaleMode\x00\x00showAll\x00"
+                                     b"\x4f\x00")
+    assert movie.tags.index(acts[0]) < next(i for i, t in enumerate(movie.tags) if t.code == swf.SHOW_FRAME)

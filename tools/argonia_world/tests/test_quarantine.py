@@ -35,11 +35,25 @@ def test_every_loaded_loading_screen_but_ours_is_disabled():
     scan = {"loadScreens": [{"formKey": "0FF0A1:Skyrim.esm", "edid": "LoadScreenDragon", "plugin": "Skyrim.esm"},
                             {"formKey": "000D10:Black Marsh.esm", "edid": "", "plugin": "Black Marsh.esm"}]}
     never = [{"function": "GetGlobalValue", "global": "000800:Argonia.esm", "op": "EqualTo", "value": 1}]
-    ours = [{"type": "LSCR", "formKey": f"00090{i}:Argonia.esm", "text": "t"} for i in range(3)]
+    arts = [{"type": "STAT", "formKey": f"00091{i}:Argonia.esm", "model": "gv_meshes/a.nif"} for i in range(3)]
+    ours = [{"type": "LSCR", "edid": f"L{i}", "formKey": f"00090{i}:Argonia.esm", "text": "t", "scale": 1.0,
+             "model": arts[i]["formKey"]} for i in range(3)] + arts
     shells = [{"type": "LSCR", "override": True, "formKey": r["formKey"], "conditions": never} for r in scan["loadScreens"]]
     assert loading_screen_errors(scan, shells + ours) == []
     assert loading_screen_errors(scan, shells[:1] + ours) == ["Black Marsh.esm 000D10:Black Marsh.esm: not disabled"]
-    assert loading_screen_errors(scan, shells) == ["our loading screens: 0, each needs text and no model"]
+    assert loading_screen_errors(scan, shells) == ["our loading screens: 0, at least 3 needed"]
+    no_model = [dict(ours[0], model=None)] + ours[1:]
+    assert loading_screen_errors(scan, shells + no_model) == ["L0: needs a model, a STAT of ours with a mesh"]
+
+
+def test_each_loading_screen_has_a_model_from_our_stack():
+    from tools.argonia_world.intermediate import LOADING_SCREENS
+    deps = json.loads((LOADING_SCREENS.parent / "dependencies.json").read_text())
+    ids = {m["id"] for m in deps["mods"] if not m.get("dropped")}
+    for r in json.loads(LOADING_SCREENS.read_text())["screens"]:
+        m = r["model"]
+        assert m["mesh"].endswith(".nif") and m["scale"] > 0 and len(m["rotation"]) == 3, r["fact"]
+        assert m["mod"] in ids, f"{r['fact']}: {m['mod']} is not a dependency row"
 
 
 def test_our_loading_screens_have_text_and_no_nordic_word():

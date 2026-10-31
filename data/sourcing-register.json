@@ -697,7 +697,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35929?tab=files&file_id=576886",
     "version": "9.31 (archive sha256 59058ce25da1..., data/dependencies.json row htbm)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Here There Be Monsters: Sign of Cipactli's requirement",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Here There Be Monsters: Sign of Cipactli's requirement; data/loading-screens.json (1.9): our loading screens' models reference its meshes by path (eggs.nif), nothing copied",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
@@ -706,7 +706,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35933?tab=files&file_id=207025",
     "version": "2.92 (archive sha256 c44da49e52ae..., data/dependencies.json row htbm-cipactli)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Argonian architecture, armour and creatures",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Argonian architecture, armour and creatures; data/loading-screens.json (1.9): our loading screens' models reference its meshes by path (corruptedtaproothist.nif, histfruit.nif, histroots01.nif, histtree.nif, mihailcrocodile.nif), nothing copied",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
@@ -715,7 +715,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/146557?tab=files&file_id=612822",
     "version": "1.5.1 (archive sha256 7ac552437eea..., data/dependencies.json row mud-mother-grove)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Argonian mud hut kit (ESL)",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Argonian mud hut kit (ESL); data/loading-screens.json (1.9): our loading screens' models reference its meshes by path (argoniantotem01.nif, histtree.nif, mudhut01.nif, sithisshrine.nif, wallhanging01.nif), nothing copied",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },
@@ -850,7 +850,7 @@
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/40057?tab=files&file_id=205629",
     "version": "2.5 (archive sha256 a1784ac8687e..., data/dependencies.json row sailboats-expanded-update)",
     "licence": "none stated",
-    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 2.8: Script Free Ship Sailing SSE: the master Sailboats.esp needs",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 2.8: Script Free Ship Sailing SSE: the master Sailboats.esp needs; data/loading-screens.json (1.9): our loading screens' models reference its meshes by path (canoe1.nif), nothing copied",
     "linked_or_forked_by": "none: depended on as the player’s own download",
     "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
   },

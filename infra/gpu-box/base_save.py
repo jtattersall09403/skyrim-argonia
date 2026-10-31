@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """The base save (chunk 0.3 §c; decision 0022): from the main menu, a new game that starts in our holding cell, the
-studio character made, saved as `argoniabase`. Every scene (`bat <id>`) starts from it. Never committed. DEV ONLY.
+studio character made, saved as `argoniabase`. Every scene (`bat <id>`) starts from it. Then the walk save: the
+claywater scene applied and saved as `ArgoniaWalk`, the save the owner loads to walk Claywater (1.9 §1; argoniabase
+itself is the black holding cell). Never committed. DEV ONLY.
 
-    base_save.py [--name argoniabase]          the game at the main menu (make deploy launches it first)
+    base_save.py [--name argoniabase] [--walk ArgoniaWalk]   the game at the main menu (make deploy launches it first)
 
 The new game is started by the console's `coc ARG_HoldingCell` at the main menu, which begins a new game with the
 start-game-enabled quests running and the player placed in the cell. Our start quest's own move (0.4 §b,
@@ -23,9 +25,29 @@ from tools.bridge import Bridge, BridgeError  # noqa: E402
 RACES = {"argonian": "ArgonianRace"}  # Skyrim.esm's playable race the studio character uses (start.json `studio`)
 
 
+def walk_save(b: Bridge, name: str) -> dict:
+    """The owner's walk save (1.9 §1): `argoniabase` stands in the holding cell, a black room where only the HUD shows
+    and nothing can be done (owner play test 3). From it the claywater scene (tests/scenes/claywater.txt, sent by
+    deploy's step 5) puts the player on the Blackwood Road into Claywater Station, and the game saves that. Its proof
+    is tests/journeys/walk-save.yaml (relaunch, load, walk)."""
+    since = b.call("events")["last"]
+    b.call("console", "bat claywater")
+    for _ in range(60):  # the scene's moveto loads the road's cells: until the Loading Menu closes
+        time.sleep(1)
+        if any(e["data"].get("menu") == "Loading Menu" and not e["data"].get("opening")
+               for e in b.call("events", since, "menu")["events"]):
+            break
+    time.sleep(5)  # the fade-in and the cells settling before the save
+    pl = b.call("player")
+    if (pl.get("cell") or {}).get("editor_id") == "ARG_HoldingCell":
+        raise SystemExit("the claywater scene did not move the player out of the holding cell")
+    return {"cell": pl["cell"], "save": b.call("save", name)}
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--name", default="argoniabase")
+    p.add_argument("--walk", default="ArgoniaWalk", help="the walk save's name ('' for none)")
     a = p.parse_args(argv)
     start = json.loads((REPO / "data" / "quarantine" / "start.json").read_text())
     cell, studio = start["cell"]["edid"], start["studio"]
@@ -59,6 +81,8 @@ def main(argv=None):
     out["quest"] = b.call("quest", start["quest"]["edid"])
     out["mq101"] = b.call("quest", "MQ101")
     out["save"] = b.call("save", a.name)
+    if a.walk:
+        out["walk"] = walk_save(b, a.walk)
     out["seconds"] = round(time.monotonic() - t0, 1)
     print(json.dumps(out, indent=1))
 

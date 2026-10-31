@@ -55,7 +55,7 @@ lod = [int(x) for x in open(f"{tmp}/lod.sizes").read().split()]
 saves = set(open(f"{tmp}/saves.tsv").read().splitlines())
 vm = set(open(f"{tmp}/vm.tsv").read().splitlines())
 known = set(os.environ["KNOWN"].split())
-ours = re.compile(r"^(argoniabase|ArgoniaRest|ArgoniaSuspend|quicksave|autosave)|\.skse$", re.I)
+ours = re.compile(r"^(argoniabase|ArgoniaWalk|ArgoniaRest|ArgoniaSuspend|quicksave|autosave)|\.skse$", re.I)
 bad = 0
 for line in open(tsv):
     kind, name, size, n = (line.rstrip("\n").split("\t") + ["", "", ""])[:4]

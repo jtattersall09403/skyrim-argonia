@@ -2282,6 +2282,11 @@
    "archive": "Tropical Skyrim for SE V1.1-78044-1-1-1667415678.rar",
    "size_kb": 774366,
    "why": "the land: tropical trees, grass and climate (decision 0028)",
+   "drop": [
+    "meshes/interface",
+    "textures/interface"
+   ],
+   "drop_why": "its main-menu fog particles (meshes/interface/intmenufogparticles.nif over textures/interface/objects/background*.dds) are the scrolling tree/desert bar on the main menu and behind loads (owner play test 1; 1.9); Dear Diary's menu meshes win once these go",
    "chunk": "2.W1",
    "required": true,
    "profile": "play",

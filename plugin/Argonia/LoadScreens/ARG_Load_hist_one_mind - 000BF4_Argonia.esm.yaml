@@ -3,3 +3,10 @@ EditorID: ARG_Load_hist_one_mind
 Description:
   TargetLanguage: English
   Value: All Hist trees are joined at the root. They share one mind and speak to one another.
+LoadingScreenNif: 000C00:Argonia.esm
+InitialScale: 0.015
+InitialRotation: -10, 0, 30
+RotationOffsetConstraints:
+  Min: -45
+  Max: 45
+InitialTranslationOffset: 0, 0, 0
