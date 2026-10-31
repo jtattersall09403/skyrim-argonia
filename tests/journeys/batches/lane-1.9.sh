@@ -18,4 +18,4 @@ $PY -m tools.ui_theme.front_door --out out/l19/front-door
 for d in desktop v5-unfolded v5-folded; do
   ARGONIA_FORCE=1 ARGONIA_DEVICE=$d infra/stream-client/e2e/drive.sh infra/stream-client/e2e/steps/load-stills.json out/l19/drive-$d
 done
-infra/gpu-box/run.sh stop
+[ -n "${KEEP_UP:-}" ] || infra/gpu-box/run.sh stop  # KEEP_UP=1: a chained batch keeps the machine up

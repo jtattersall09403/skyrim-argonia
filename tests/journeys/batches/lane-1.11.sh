@@ -22,4 +22,4 @@ $B screenshot $O/low.png
 $B dev-set SetVastei 180
 $B screenshot $O/vastei-gain.png
 $B console 'player.restoreav health 1000'
-infra/gpu-box/run.sh stop
+[ -n "${KEEP_UP:-}" ] || infra/gpu-box/run.sh stop  # KEEP_UP=1: a chained batch keeps the machine up

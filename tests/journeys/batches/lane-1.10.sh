@@ -15,4 +15,4 @@ $PY tools/bridge.py oracle out/l110
 $PY tools/run_journey.py tests/journeys/player-look.yaml --save ArgoniaWalk
 $PY tools/bridge.py load argoniabase; $PY tools/bridge.py player; $PY tools/bridge.py console "player.GetIsRace ArgonianRace"
 ls -d out/runs/player-look/*/ | tail -2
-infra/gpu-box/run.sh stop
+[ -n "${KEEP_UP:-}" ] || infra/gpu-box/run.sh stop  # KEEP_UP=1: a chained batch keeps the machine up
