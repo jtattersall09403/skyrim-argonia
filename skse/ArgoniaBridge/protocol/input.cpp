@@ -36,6 +36,61 @@ std::variant<KeyCall, std::string> key_call(const Request& r) {
   return c;
 }
 
+bool is_mouse_call(const Request& r) {
+  return !r.args.empty() && (r.args[0] == "mouse" || r.args[0] == "click" || r.args[0] == "wheel" || r.args[0] == "cursor");
+}
+
+std::variant<MouseCall, std::string> mouse_call(const Request& r) {
+  const auto& a = r.args;
+  MouseCall c;
+  if (a.empty()) return "usage: input mouse|click|wheel|cursor ...";
+  if (a[0] == "cursor") {
+    if (a.size() != 1) return "usage: input cursor";
+    return c;
+  }
+  if (a[0] == "mouse") {
+    if (a.size() != 3 && a.size() != 4) return "usage: input mouse <x> <y> [event|cursor|both]";
+    auto x = to_number(a[1]), y = to_number(a[2]);
+    if (!x || !y || *x < 0 || *y < 0 || *x > 16384 || *y > 16384) return "x and y are screen pixels, 0..16384";
+    c.kind = MouseKind::move;
+    c.x = static_cast<float>(*x);
+    c.y = static_cast<float>(*y);
+    if (a.size() == 4) {
+      if (a[3] == "event") c.route = MoveRoute::event;
+      else if (a[3] == "cursor") c.route = MoveRoute::cursor;
+      else if (a[3] != "both") return "the move route is event, cursor or both, not " + a[3];
+    }
+    return c;
+  }
+  if (a[0] == "click") {
+    if (a.size() > 3) return "usage: input click [left|right] [ms]";
+    c.kind = MouseKind::click;
+    if (a.size() >= 2) {
+      if (a[1] == "right") c.right = true;
+      else if (a[1] != "left") return "the button is left or right, not " + a[1];
+    }
+    if (a.size() == 3) {
+      auto ms = to_number(a[2]);
+      if (!ms || *ms < 1 || *ms > kInputCapMs || *ms != static_cast<int>(*ms)) return "the hold must be a whole 1..3000 ms";
+      c.ms = static_cast<int>(*ms);
+    }
+    return c;
+  }
+  if (a[0] == "wheel") {
+    if (a.size() != 2 && a.size() != 3) return "usage: input wheel <up|down> [notches]";
+    c.kind = MouseKind::wheel;
+    if (a[1] == "down") c.right = true;
+    else if (a[1] != "up") return "the wheel turns up or down, not " + a[1];
+    if (a.size() == 3) {
+      auto n = to_number(a[2]);
+      if (!n || *n < 1 || *n > 20 || *n != static_cast<int>(*n)) return "notches are a whole 1..20";
+      c.notches = static_cast<int>(*n);
+    }
+    return c;
+  }
+  return "usage: input mouse|click|wheel|cursor ...";
+}
+
 bool is_movement_key(std::uint16_t code) {
   switch (code) {
     case 0x11: case 0x1E: case 0x1F: case 0x20:  // W A S D

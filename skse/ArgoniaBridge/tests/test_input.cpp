@@ -9,6 +9,30 @@ namespace {
 const std::string kTok = "0123456789abcdef0123456789abcdef";
 Request req(const std::string& line) { return std::get<Request>(parse(kTok + " " + line, kTok)); }
 
+void mouse_calls() {
+  CHECK(is_mouse_call(req("input mouse 10 20")));
+  CHECK(!is_mouse_call(req("input key E 120")));
+  auto v = mouse_call(req("input mouse 640 360"));
+  auto* m = std::get_if<MouseCall>(&v);
+  CHECK(m && m->kind == MouseKind::move && m->x == 640 && m->y == 360 && m->route == MoveRoute::both);
+  v = mouse_call(req("input mouse 1 2 event"));
+  CHECK(std::get_if<MouseCall>(&v) && std::get<MouseCall>(v).route == MoveRoute::event);
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input mouse 1 2 warp"))));
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input mouse -1 2"))));
+  v = mouse_call(req("input click right"));
+  CHECK(std::get_if<MouseCall>(&v) && std::get<MouseCall>(v).right && std::get<MouseCall>(v).ms == 80);
+  v = mouse_call(req("input click"));
+  CHECK(std::get_if<MouseCall>(&v) && !std::get<MouseCall>(v).right);
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input click middle"))));
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input click left 5000"))));
+  v = mouse_call(req("input wheel down 3"));
+  CHECK(std::get_if<MouseCall>(&v) && std::get<MouseCall>(v).right && std::get<MouseCall>(v).notches == 3);
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input wheel sideways"))));
+  CHECK(std::holds_alternative<std::string>(mouse_call(req("input wheel up 99"))));
+  v = mouse_call(req("input cursor"));
+  CHECK(std::get_if<MouseCall>(&v) && std::get<MouseCall>(v).kind == MouseKind::cursor);
+}
+
 void key_calls() {
   auto v = key_call(req("input key F 150"));
   auto* k = std::get_if<KeyCall>(&v);
@@ -66,6 +90,7 @@ void focus() {
 
 void input_tests() {
   key_calls();
+  mouse_calls();
   ticks();
   focus();
 }

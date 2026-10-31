@@ -15,6 +15,7 @@ dead process or a Crash Logger file written since this launch raises GameDown wi
     python3 tools/bridge.py launch [--fresh]           # kill any zombie, lay the DLL, start to the main menu
     python3 tools/bridge.py health | screenshot out.png | oracle | commands
     python3 tools/bridge.py pad 'LY=1:800 B:150'       # the virtual pad, at most 3 s
+    python3 tools/bridge.py input mouse 640 360        # the game's cursor (engine); input click [left|right]; input wheel down 2; input cursor
     python3 tools/bridge.py booth 0001A26F out/booth   # six stills of one base record
 
     from tools.bridge import Bridge;  b = Bridge();  b.call("player")["pos"]["z"]

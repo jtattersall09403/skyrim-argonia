@@ -142,7 +142,92 @@ void engine_event(std::vector<std::uint16_t> codes, float value, float held) {
   });
 }
 
+// --- the dev mouse (1.12 §8): Wind UI draws and reads the game's cursor, so the moves and clicks go by the engine ---
+void send_one(RE::InputEvent* ev) {
+  auto* mgr = RE::BSInputDeviceManager::GetSingleton();
+  if (!mgr || !ev) return;
+  RE::InputEvent* head = ev;
+  mgr->SendEvent(&head);
+}
+
+// A MouseMoveEvent as the mouse device makes one (built the way CommonLib's ButtonEvent::Create builds a button).
+void mouse_move_event(std::int32_t dx, std::int32_t dy) {
+  auto* ev = static_cast<RE::MouseMoveEvent*>(RE::malloc(sizeof(RE::MouseMoveEvent)));
+  if (!ev) return;
+  std::memset(static_cast<void*>(ev), 0, sizeof(RE::MouseMoveEvent));
+  REL::Relocation<std::uintptr_t> vt{RE::VTABLE_MouseMoveEvent[0]};
+  *reinterpret_cast<std::uintptr_t*>(ev) = vt.address();
+  ev->device = RE::INPUT_DEVICE::kMouse;
+  ev->eventType = RE::INPUT_EVENT_TYPE::kMouseMove;
+  ev->next = nullptr;
+  ev->idCode = 0x0A;  // the mouse device's move code (BSWin32MouseDevice: 8 buttons, 2 wheel codes, then the move)
+  ev->mouseInputX = dx;
+  ev->mouseInputY = dy;
+  ev->userEvent = RE::BSFixedString(RE::UserEvents::GetSingleton()->look);
+  send_one(ev);
+  ev->userEvent = RE::BSFixedString();
+  RE::free(ev);
+}
+
+std::string cursor_json() {
+  auto* c = RE::MenuCursor::GetSingleton();
+  if (!c) return "null";
+  auto& d = c->GetRuntimeData();
+  return JsonObject()
+      .num("x", d.cursorPosX)
+      .num("y", d.cursorPosY)
+      .num("screen_w", d.screenWidthX)
+      .num("screen_h", d.screenWidthY)
+      .done();
+}
+
+std::string input_mouse(const Request& req) {
+  auto parsed = in::mouse_call(req);
+  if (auto* e = std::get_if<std::string>(&parsed)) return reply_error("input", *e);
+  auto c = std::get<in::MouseCall>(parsed);
+  if (save_loading() || !RE::BSInputDeviceManager::GetSingleton())
+    return reply_error("input", "the game is loading: the engine input queue is not running");
+  if (c.kind == in::MouseKind::cursor)
+    return on_main_thread("input", [] { return reply_ok("input", cursor_json()); });
+  if (c.kind == in::MouseKind::move) {
+    auto before = on_main_thread("input", [c] {
+      auto* cur = RE::MenuCursor::GetSingleton();
+      std::string was = cursor_json();
+      if (!cur) return was;
+      auto& d = cur->GetRuntimeData();
+      if (c.route != in::MoveRoute::cursor)
+        mouse_move_event(static_cast<std::int32_t>(c.x - d.cursorPosX), static_cast<std::int32_t>(c.y - d.cursorPosY));
+      if (c.route != in::MoveRoute::event) {
+        d.cursorPosX = c.x;
+        d.cursorPosY = c.y;
+      }
+      return was;
+    });
+    std::this_thread::sleep_for(50ms);  // a frame or two, so the reply shows what the engine made of it
+    auto after = on_main_thread("input", [] { return cursor_json(); });
+    const char* route = c.route == in::MoveRoute::event ? "event" : c.route == in::MoveRoute::cursor ? "cursor" : "both";
+    return reply_ok("input", JsonObject().str("route", route).raw("before", before).raw("after", after).done());
+  }
+  auto t0 = std::chrono::steady_clock::now();
+  if (c.kind == in::MouseKind::click) {
+    std::vector<std::uint16_t> code{static_cast<std::uint16_t>(0x100 + (c.right ? 1 : 0))};
+    for (const auto& tick : in::press_ticks(c.ms)) {
+      std::this_thread::sleep_until(t0 + std::chrono::milliseconds(tick.at_ms));
+      engine_event(code, tick.value, tick.held_s);
+    }
+    return reply_ok("input", JsonObject().str("click", c.right ? "right" : "left").integer("ms", c.ms).done());
+  }
+  std::vector<std::uint16_t> code{static_cast<std::uint16_t>(0x100 + (c.right ? 9 : 8))};  // kWheelUp 8, kWheelDown 9
+  for (int i = 0; i < c.notches; ++i) {
+    engine_event(code, 1.0f, 0.0f);
+    engine_event(code, 0.0f, 0.02f);
+    std::this_thread::sleep_for(40ms);
+  }
+  return reply_ok("input", JsonObject().str("wheel", c.right ? "down" : "up").integer("notches", c.notches).done());
+}
+
 std::string input_key(const Request& req) {
+  if (in::is_mouse_call(req)) return input_mouse(req);
   auto parsed = in::key_call(req);
   if (auto* e = std::get_if<std::string>(&parsed)) return reply_error("input", *e);
   auto c = std::get<in::KeyCall>(parsed);

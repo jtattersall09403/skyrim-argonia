@@ -28,8 +28,8 @@ GAMEPLAY = {
     "Ready Weapon": [X],              # DS1's use-item position; attacking draws the weapon anyway
     "Shout": [],                      # no shouts in Argonia
     "Tween Menu": [START],            # DS1's Start menu
-    "Journal": [BACK],                # quests and the system menu (save, load, settings)
-    "Wait": [DPAD_DOWN],
+    "Journal": [],                    # the journal and System are panes of Start's windows now (1.12 §8)
+    "Wait": [BACK, DPAD_DOWN],        # owner (1.12 "Input on every device"): Select is wait and rest
     "Favorites": [DPAD_UP],
     "Hotkey1": [DPAD_LEFT],           # DS1 switches the left and right weapons here
     "Hotkey2": [DPAD_RIGHT],

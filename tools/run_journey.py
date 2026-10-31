@@ -267,6 +267,28 @@ class Runner:
         self.calls.append({"call": ["input", "key", keys, int(ms), *route], "result": r})
         return r
 
+    def _mouse(self, spec):
+        """`mouse: "640 360"` (or `"640 360 event"`): the game's cursor to a screen pixel by the engine (bridge `input
+        mouse`); Wind UI reads that cursor, never the OS's (windui.md)."""
+        args = str(spec).split()
+        r = self.b.call("input", "mouse", *args)
+        self.calls.append({"call": ["input", "mouse", *args], "result": r})
+        return r
+
+    def _click(self, spec):
+        """`click: left` / `click: right` / `click: "left 120"`: a mouse button by the engine route."""
+        args = str(spec or "left").split()
+        r = self.b.call("input", "click", *args)
+        self.calls.append({"call": ["input", "click", *args], "result": r})
+        return r
+
+    def _wheel(self, spec):
+        """`wheel: "down 3"`: wheel notches by the engine route."""
+        args = str(spec).split()
+        r = self.b.call("input", "wheel", *args)
+        self.calls.append({"call": ["input", "wheel", *args], "result": r})
+        return r
+
     def _activate(self, ms=120):
         """E, then again (3 tries, 3.5 s apart) while no menu opened and the player's cell is unchanged: the first E
         after a scene's setup is lost; a second, 3.5 s later, opens the dialogue (game-15, live, engine route)."""
@@ -695,7 +717,8 @@ CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"),
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
-           "burst": Runner._burst, "burst_fetch": Runner._burst_fetch}
+           "burst": Runner._burst, "burst_fetch": Runner._burst_fetch,
+           "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
 SKSE_LOGS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\SKSE"

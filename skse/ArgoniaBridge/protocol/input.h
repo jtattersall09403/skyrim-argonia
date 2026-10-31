@@ -28,6 +28,26 @@ struct KeyCall {
 };
 std::variant<KeyCall, std::string> key_call(const Request& r);  // the call, or the refusal in words
 
+// The dev mouse (1.12 §8, so checks can drive Wind UI, which reads the game's cursor, not the OS's):
+//   input mouse <x> <y> [event|cursor|both]  the cursor to screen pixel x,y: event sends the engine a MouseMoveEvent
+//            of the difference (what a real mouse makes), cursor writes the MenuCursor's position, both (default) does
+//            the two
+//   input click [left|right] [ms]            a mouse button pressed ms (default 80) by the engine route
+//   input wheel <up|down> [notches]          wheel notches (default 1, at most 20) by the engine route
+//   input cursor                             the MenuCursor's position and screen size
+enum class MouseKind { move, click, wheel, cursor };
+enum class MoveRoute { event, cursor, both };
+struct MouseCall {
+  MouseKind kind = MouseKind::cursor;
+  float x = 0, y = 0;
+  MoveRoute route = MoveRoute::both;
+  bool right = false;  // click: the right button; wheel: down
+  int ms = 80;
+  int notches = 1;
+};
+bool is_mouse_call(const Request& r);                                 // args[0] is mouse, click, wheel or cursor
+std::variant<MouseCall, std::string> mouse_call(const Request& r);  // the call, or the refusal in words
+
 // One engine ButtonEvent of a press: at `at_ms` after the press began, value 1 (down or held) or 0 (up), and the
 // seconds held so far (0 on the down event, as the engine's own devices send it; > 0 on held and up events).
 struct Tick {
