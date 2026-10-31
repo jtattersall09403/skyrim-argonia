@@ -30,7 +30,11 @@ def main(argv=None):
     start = json.loads((REPO / "data" / "quarantine" / "start.json").read_text())
     cell, studio = start["cell"]["edid"], start["studio"]
     b, t0 = Bridge(), time.monotonic()
-    b.call("console", f"coc {cell}")
+    try:
+        b.call("console", f"coc {cell}")
+    except BridgeError as e:  # the coc's new-game load holds the main thread past the 3 s reply (game-20, game-21 x2):
+        if "did not run the task" not in str(e):  # the load goes on; the loop below waits for the cell
+            raise
     for _ in range(60):  # the new game's load
         time.sleep(2)
         try:
