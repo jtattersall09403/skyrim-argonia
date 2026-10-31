@@ -5,6 +5,7 @@ Grid:
   Point: -57, 11
 Regions:
 - 080010:ArgoniaWorld.esm
+- 08002F:ArgoniaWorld.esm
 NavigationMeshes:
 - FormKey: 609097:ArgoniaWorld.esm
   IsCompressed: True

@@ -6,4 +6,5 @@ Grid:
 WaterHeight: 46.22
 Regions:
 - 080008:ArgoniaWorld.esm
+- 08002F:ArgoniaWorld.esm
 Water: 100003:ArgoniaWorld.esm

@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 395> kForms{{
+inline constexpr std::array<FormRow, 396> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
@@ -67,6 +67,7 @@ inline constexpr std::array<FormRow, 395> kForms{{
     {"item.lf83.well-water", "Argonia.esm", "MISC", 0x000873},
     {"item.steel-sword", "Argonia.esm", "WEAP", 0x000840},
     {"land_region.border", "Argonia.esm", "REGN", 0x000834},
+    {"land_region.border.shell", "ArgoniaWorld.esm", "REGN", 0x08002F},
     {"land_region.dunmer-north.coastal-lagoon", "ArgoniaWorld.esm", "REGN", 0x080000},
     {"land_region.dunmer-north.deep-sink-basin", "ArgoniaWorld.esm", "REGN", 0x080001},
     {"land_region.dunmer-north.interior-swamp", "ArgoniaWorld.esm", "REGN", 0x080002},
