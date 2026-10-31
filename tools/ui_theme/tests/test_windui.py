@@ -25,3 +25,12 @@ def test_ramp_maps_grey_to_trim_and_clears_knots():
     (o2,), _ = swf.shape_colours(m.tags[1])
     assert m.tags[1].data[o2 + 3] == 0
     assert [swf.read_rect(swf.BitReader(t.data, 2)) for t in m.tags] == before
+
+
+def test_frame_redraw_keeps_bounds_and_parses():
+    m = swf.Movie(b"FWS", 8, b"", [_shape(32, (153, 153, 153, 255))])
+    before = swf.read_rect(swf.BitReader(m.tags[0].data, 2))
+    assert windui.redraw_frames(m, (32,), (181, 168, 98)) == [32]
+    assert swf.read_rect(swf.BitReader(m.tags[0].data, 2)) == before
+    offs, alpha = swf.shape_colours(m.tags[0])  # the record stream decodes to its end
+    assert len(offs) == 1 and alpha
