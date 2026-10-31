@@ -2,7 +2,7 @@
 # stream client and no agent job. Run every 5 minutes by the scheduled task "argonia-idle-stop".
 #   idle-stop.ps1 [-Status]
 # Busy means any of: a live stream of any kind (stream-activity.ps1: Sunshine's session log, DCV's connections, or
-# traffic), an agent over SSH (port 22), or C:\argonia\state\busy touched in the last 15 min.
+# traffic), or C:\argonia\state\busy touched in the last 15 min (every run.sh command and bridge heartbeat).
 param([switch]$Status)
 $State = 'C:\argonia\state'; New-Item -ItemType Directory -Force $State | Out-Null
 $IdleMinutes = 15
@@ -11,7 +11,8 @@ $tcp = Get-NetTCPConnection -State Established -EA SilentlyContinue
 $why = @()
 $act = Get-StreamActivity
 if ($act.streaming) { $why += "stream ($(($act.clients + "$($act.outKbps) kbps") -join ', '))" }
-if ($tcp | ? { $_.LocalPort -eq 22 }) { $why += 'agent ssh' }
+# An open SSH connection is no longer a sign of work: the bridge keeps its tunnel up after a lane ends, and held Paris
+# busy for hours (1.8, 2026-10-31). Agents' work is the busy flag (run.sh touches it each command; the bridge every few minutes).
 if ((Test-Path "$State\busy") -and ((Get-Item "$State\busy").LastWriteTime -gt (Get-Date).AddMinutes(-$IdleMinutes))) { $why += 'agent job' }
 $now = Get-Date
 # The heartbeat the play switch reads through the tunnel (/argonia-metrics/activity): if it goes stale, the

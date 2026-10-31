@@ -74,7 +74,7 @@ send_esms() {
   "$run" put out/gpu/papyrus/*.pex C:/argonia/ours/scripts/ >/dev/null  # one scp, not one per file (~3 s each)
   echo "$(ls out/gpu/papyrus/*.pex | wc -l) .pex sent"
   local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
-  "$run" put "$here"/{stack.ps1,bridge.ps1,vanilla-data-files.txt} C:/argonia/infra/ >/dev/null
+  "$run" put "$here"/{stack.ps1,bridge.ps1,idle-stop.ps1,vanilla-data-files.txt} C:/argonia/infra/ >/dev/null
   # Moonlight's cards (owner, 2026-10-31: a machine from an old image still listed vanilla and souls-like): the
   # repo's apps.json and cards laid each deploy; Sunshine reads apps.json when a client asks for the list.
   "$run" put "$here"/{sunshine-apps.json,make-cards.ps1} C:/argonia/infra/ >/dev/null
