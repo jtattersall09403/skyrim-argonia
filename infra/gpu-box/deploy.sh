@@ -63,23 +63,20 @@ send_esms() {
   done
   # Our compiled Papyrus (game-9): bridge.ps1 prepare copies them into Data\Scripts.
   "$run" ps 'Remove-Item C:\argonia\ours\scripts -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\ours\scripts | Out-Null' >/dev/null
-  local pex; for pex in out/gpu/papyrus/*.pex; do "$run" put "$pex" C:/argonia/ours/scripts/ >/dev/null; done
+  "$run" put out/gpu/papyrus/*.pex C:/argonia/ours/scripts/ >/dev/null  # one scp, not one per file (~3 s each)
   echo "$(ls out/gpu/papyrus/*.pex | wc -l) .pex sent"
   local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
-  for ps in stack.ps1 bridge.ps1 vanilla-data-files.txt; do "$run" put "$here/$ps" "C:/argonia/infra/$ps" >/dev/null; done
+  "$run" put "$here"/{stack.ps1,bridge.ps1,vanilla-data-files.txt} C:/argonia/infra/ >/dev/null
   # Moonlight's cards (owner, 2026-10-31: a machine from an old image still listed vanilla and souls-like): the
   # repo's apps.json and cards laid each deploy; Sunshine reads apps.json when a client asks for the list.
-  for f in sunshine-apps.json make-cards.ps1; do "$run" put "$here/$f" "C:/argonia/infra/$f" >/dev/null; done
+  "$run" put "$here"/{sunshine-apps.json,make-cards.ps1} C:/argonia/infra/ >/dev/null
   # Sunshine reads apps.json only at its start (game-21: the old list stayed until a restart), so a changed list
   # restarts it; an unchanged one leaves a live stream alone.
   "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; \$a='C:\\Program Files\\Sunshine\\config\\apps.json'; \$n='C:\\argonia\\infra\\sunshine-apps.json'; if ((Get-FileHash \$n).Hash -ne (Get-FileHash \$a -EA SilentlyContinue).Hash) { Copy-Item \$n \$a -Force; Restart-Service SunshineService; 'sunshine: app list changed, restarted' } else { 'sunshine: app list unchanged' }"
 }
 send_scenes() {  # after the launch: a ref is named by its runtime id, the plugin's prefix read from the game (game-7)
   rm -rf out/scenes; "$PY" tools/ref_ids.py render out/scenes
-  local sc
-  for sc in out/scenes/*.txt; do
-    "$run" put "$sc" "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/$(basename "$sc")" >/dev/null
-  done
+  "$run" put out/scenes/*.txt "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Edition/" >/dev/null  # one scp: 31 puts took 98 s
   echo "$(ls out/scenes/*.txt | wc -l) scenes sent"
 }
 step "send ESMs and helpers" send_esms

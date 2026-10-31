@@ -5,7 +5,7 @@
 #   run.sh ip                       print its private IP
 #   run.sh ps '<powershell>'        run a command
 #   run.sh setup [stage]            copy infra/gpu-box/*.ps1 over and run setup.ps1, rebooting when it asks
-#   run.sh put <local> <remote>     copy a file or directory to the machine
+#   run.sh put <local>... <remote>  copy files or directories to the machine (several: one scp, <remote> a directory)
 #   run.sh get <remote> <local>     copy a file or directory back
 #   run.sh desktop '<powershell>'   run in the logged-in desktop session (GUI apps, display settings); waits
 #   run.sh start | stop             start or stop the instance
@@ -72,7 +72,7 @@ Start-ScheduledTask argonia-desktop-'"$j"'
 for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-'"$j"'.done); $i++) { Start-Sleep 1 }
 Get-Content $o -EA SilentlyContinue' ;;
   get) scp "${SSH_OPTS[@]}" -r "Administrator@$(ip):$2" "$3" ;;
-  put) scp "${SSH_OPTS[@]}" -r "$2" "Administrator@$(ip):$3" ;;
+  put) shift; dst=${!#}; scp "${SSH_OPTS[@]}" -r "${@:1:$#-1}" "Administrator@$(ip):$dst" ;;
   setup)
     stage="${2:-all}"
     ps 'New-Item -ItemType Directory -Force C:\argonia\infra | Out-Null'
