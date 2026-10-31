@@ -217,4 +217,5 @@ Something they can **play**, that is:
 | 2026-10-31 | **O-9 (#21): armour pieces stay as base Skyrim has them** (no separate pauldrons or gauntlets); the owner will look for mods later. |
 | 2026-10-31 | **O-11 (#22): dialogue stays unvoiced text, but keep Skyrim's voiced barks** (the out-of-conversation lines people say aloud as you pass, in combat, idles), using Skyrim's own voice types per race; each bark's words still pass the Nordic review (0012), so lines naming Skyrim places, people or events are filtered out. |
 | 2026-10-31 | **O-16 (#23): one rest banks one pending level** (the old 76 text). |
+| 2026-10-31 | **#25: the agent may copy the game machine's image to Paris and Ireland** (permission added); used only if London has no g6/g5 when a machine is needed. |
 
