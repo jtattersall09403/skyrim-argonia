@@ -45,6 +45,7 @@ HEALTH_EVERY = 20.0  # seconds between health checks while a call waits: a crash
 TIMEOUTS = {"load": 150.0, "save": 45.0, "core-suspend": 45.0, "nav": 30.0, "booth": 60.0, "input": 15.0,
             "wait_event": 70.0, "frametime": 120.0}  # 2000 frames at 20 fps is 100 s
 DEFAULT_TIMEOUT = 15.0
+SUSPEND_WHYS = ("quit", "stream_drop", "spot_reclaim")  # skse/core life::suspend_why: the callers' reasons
 # Event kinds (ep_events.cpp): hit, anim, quest, menu, mod. A `mod` event is an SKSE mod callback, matched by name:
 # ArgoniaCore's "journal updated" notice (str "<quest> entry|clue", num the stage or objective). A journey asserts it
 # with `event: {kind: mod, match: ArgoniaJournalNotice}`.
@@ -236,6 +237,8 @@ class Bridge:
         raise AssertionError("unreachable")
 
     def _call_once(self, command: str, *args, timeout: float | None = None) -> dict:
+        if command == "spot-drill":  # machine-side, not the plugin: the watcher's drill (journey `call`)
+            return self.spot_drill()
         self.tunnel()
         self.heartbeat()
         cap = timeout or TIMEOUTS.get(command, DEFAULT_TIMEOUT)
@@ -336,12 +339,24 @@ class Bridge:
         self.machine.get(remote, out)
         return out
 
+    def spot_drill(self) -> dict:
+        """The spot watcher's check (1.8 §2): infra/gpu-box/spot-watch.ps1 -Drill on the machine, a mock metadata
+        server answering a stop notice; ok when ArgoniaSuspend.ess was written for spot_reclaim within 30 s."""
+        _sh([self.machine.run, "put", str(REPO / "infra" / "gpu-box" / "spot-watch.ps1"),
+             "C:/argonia/infra/spot-watch.ps1"], env=self.machine.env)
+        out = self.machine.ps(r"powershell -ExecutionPolicy Bypass -File C:\argonia\infra\spot-watch.ps1 -Drill",
+                              timeout=120)
+        line = next((ln for ln in reversed(out.splitlines()) if ln.startswith("{")), "")
+        if not line:
+            raise BridgeError(f"spot-drill: no JSON from spot-watch.ps1: {out.strip()[-400:]}")
+        return json.loads(line)
+
     def suspend_save(self, why: str = "stream_drop") -> dict:
         """ArgoniaCore's hidden suspend save (2.8 §c): the stream client's hand on a drop ("stream_drop") or a quit
         ("quit"). ArgoniaBridge's `core-suspend` messages ArgoniaCore and answers once ArgoniaSuspend.ess is written;
         any other reason is refused before it is sent."""
-        if why not in ("quit", "stream_drop"):
-            raise BridgeError(f"suspend_save: {why!r} is not a caller's reason (quit, stream_drop)")
+        if why not in SUSPEND_WHYS:
+            raise BridgeError(f"suspend_save: {why!r} is not a caller's reason ({', '.join(SUSPEND_WHYS)})")
         return self.call("core-suspend", why)
 
     CORE_NATIVES = ("Version", "SaveCount", "ViewIntent", "ViewState", "GetAttribute", "Families", "FamilyDigest",

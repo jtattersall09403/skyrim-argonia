@@ -45,7 +45,7 @@ export default {
       if (s.state === "running" || s.state === "pending") await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
       return page("Stopping the game machine", "It is switching off. Nothing is charged while it is off.", false)
     }
-    if (url.pathname === "/argonia/start") return startPage(env)
+    if (url.pathname === "/argonia/start") return startPage(env, request)
     // One sign-in only (owner, 2026-10-29): Moonlight-Web serves its default user to anyone without a session, and
     // only the owner gets past Access, but a stale or expired mlSession cookie makes it ask for a login instead.
     // So the cookie never reaches it.
@@ -63,7 +63,7 @@ export default {
     // Only a page load starts the machine: the heartbeat read and a stale tab's metrics posts must not
     // (a heartbeat check through the gate started it, 2026-10-29).
     if (url.pathname.startsWith("/argonia-metrics")) return json({ error: "the game machine is off" }, 503)
-    return startPage(env)
+    return startPage(env, request)
   },
 
   async scheduled(event, env) {
@@ -87,13 +87,40 @@ async function heartbeat(env) {
   } catch { return null }
 }
 
-async function startPage(env) {
+/** A Start refused while the spot request or the instance is still settling after a stop (owner #29): the page
+ *  says "starting…" and tries again at each reload (4 s) for up to START_RETRY_MS from the first refusal, which a
+ *  cookie carries; any other refusal, or one past the window, is shown as it is. */
+export const START_RETRY_MS = 120e3
+const SETTLING = /IncorrectSpotRequestState|IncorrectInstanceState|InsufficientInstanceCapacity/
+export function startRetry(error, firstMs, nowMs) {
+  if (!SETTLING.test(String(error))) return false
+  return !firstMs || nowMs - firstMs < START_RETRY_MS
+}
+const RETRY_COOKIE = "argoniaStartRetry"
+
+async function startPage(env, request) {
   const s = await state(env)
   if (s.ip) await syncHost(env, s.ip)
   if (s.state === "stopped") {
-    await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
+    const first = Number(/(?:^|;\s*)argoniaStartRetry=(\d+)/.exec(request?.headers.get("cookie") || "")?.[1]) || 0
+    try {
+      await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
+    } catch (e) {
+      const now = Date.now()
+      if (!startRetry(e.message, first, now)) {
+        const res = page("The game machine did not start", `AWS said: ${String(e.message).replace(/<[^>]*>/g, " ").slice(0, 300)}`, false)
+        res.headers.append("set-cookie", `${RETRY_COOKIE}=; Path=/; Max-Age=0; Secure`)
+        return res
+      }
+      const res = page("Starting\u2026", s.reclaimed ? `${RECLAIMED_TEXT} AWS is still settling the machine; this page keeps trying for two minutes.`
+                                                   : "AWS is still settling the machine after its stop; this page keeps trying for two minutes.", true)
+      if (!first) res.headers.append("set-cookie", `${RETRY_COOKIE}=${now}; Path=/; Max-Age=300; Secure`)
+      return res
+    }
+    if (s.reclaimed) return page("Starting the game machine", `${RECLAIMED_TEXT} Starting it again; if AWS has no room yet, this page keeps trying.`, true)
     return page("Starting the game machine", "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
   }
+  if (s.reclaimed) return page("AWS is taking the game machine back", `${RECLAIMED_TEXT} This page starts it again once it has stopped.`, true)
   if (s.state === "stopping") return page("The game machine is still switching off", "Give it a minute; this page will start it again.", true)
   if (s.state === "running") return page("The game machine is on; its desktop is starting", "Usually under two minutes.", true)
   return page("Starting the game machine", `It is ${s.state}. This page reloads into the stream when it is ready.`, true)
@@ -125,15 +152,37 @@ async function state(env) {
   const xml = await ec2(env, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": NAME,
     // never a terminated or shutting-down instance that still carries the name (a cut-over leaves one)
     "Filter.2.Name": "instance-state-name", "Filter.2.Value.1": "pending", "Filter.2.Value.2": "running", "Filter.2.Value.3": "stopping", "Filter.2.Value.4": "stopped" })
+  const s = parseInstance(xml)
+  if (s.spot) {  // a spot machine: why it stopped, if AWS stopped it (1.8 §2); the IAM user may lack the read
+    try { s.spotStatus = spotStatus(await ec2(env, { Action: "DescribeSpotInstanceRequests", "SpotInstanceRequestId.1": s.spot })) } catch { s.spotStatus = null }
+    s.reclaimed = reclaimed(s.state, s.spotStatus)
+  }
+  return s
+}
+
+/** The first instance of a DescribeInstances answer: id, state, launch time, public IP, spot request id. */
+export function parseInstance(xml) {
   const items = [...xml.matchAll(/<instancesSet>([\s\S]*?)<\/instancesSet>/g)].map((m) => m[1]).join("")
   const id = /<instanceId>(i-[0-9a-f]+)<\/instanceId>/.exec(items)?.[1]
   const st = /<instanceState>[\s\S]*?<name>([a-z-]+)<\/name>/.exec(items)?.[1] ?? "missing"
   const launched = /<launchTime>([^<]+)<\/launchTime>/.exec(items)?.[1] ?? null
   const ip = /<ipAddress>([0-9.]+)<\/ipAddress>/.exec(items)?.[1] ?? null
-  return { id, state: st, launched, ip }
+  const spot = /<spotInstanceRequestId>(sir-[0-9a-z]+)<\/spotInstanceRequestId>/.exec(items)?.[1] ?? null
+  return { id, state: st, launched, ip, spot }
 }
 
-// EC2 Query API with Signature Version 4 (WebCrypto; no dependencies).
+/** A DescribeSpotInstanceRequests answer's status code (e.g. marked-for-stop, instance-stopped-no-capacity). */
+export function spotStatus(xml) { return /<status>[\s\S]*?<code>([a-z-]+)<\/code>/.exec(xml)?.[1] ?? null }
+
+/** Did AWS take the machine back (not the owner, idle-stop or a cap)? Then the page says so: spot-watch.ps1 wrote
+ *  the suspend save on the two-minute notice. */
+export function reclaimed(state, code) {
+  if (!code || state === "running" || state === "pending") return code === "marked-for-stop"
+  return code === "marked-for-stop" || code.startsWith("instance-stopped-") && code !== "instance-stopped-by-user"
+}
+
+export const RECLAIMED_TEXT = "AWS took the machine back; your game was saved."
+
 async function ec2(env, params) {
   const REGION = env.REGION || "eu-west-2"   // machines.conf's region for argonia-play, bound by cloudflare_gate.py (#27)
   const host = `ec2.${REGION}.amazonaws.com`

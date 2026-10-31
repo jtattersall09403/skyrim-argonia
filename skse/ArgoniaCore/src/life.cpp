@@ -489,7 +489,7 @@ bool SuspendCheck(ac::life::SuspendWhy why, bool now) {
 bool SuspendSaveFor(std::string_view wire) {
   const auto why = ac::life::suspend_why(wire);
   if (!why) {
-    SKSE::log::warn("saves: SuspendSave(\"{}\") refused: the callers' reasons are quit and stream_drop", wire);
+    SKSE::log::warn("saves: SuspendSave(\"{}\") refused: the callers' reasons are quit, stream_drop and spot_reclaim", wire);
     return false;
   }
   const bool due = SuspendCheck(*why);

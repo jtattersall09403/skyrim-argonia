@@ -202,7 +202,11 @@ int main() {
   const double iv = gen::rest::suspend_save_interval_s;
   CHECK(suspend_why("quit") == SuspendWhy::quit);
   CHECK(suspend_why("stream_drop") == SuspendWhy::stream_drop);
-  for (auto w : {"", "pause_hub", "pause hub", "interval", "stream drop", "QUIT"}) CHECK(!suspend_why(w));
+  CHECK(suspend_why("spot_reclaim") == SuspendWhy::spot_reclaim);
+  CHECK(std::string(to_string(SuspendWhy::spot_reclaim)) == "spot_reclaim");  // spot-watch.yaml reads the log line
+  for (auto w : {"", "pause_hub", "pause hub", "interval", "stream drop", "QUIT", "spot reclaim", "spot"}) CHECK(!suspend_why(w));
+  CHECK(suspend_due(SuspendWhy::spot_reclaim, 10, 9, true, true, false));   // in combat, just saved: still written
+  CHECK(!suspend_due(SuspendWhy::spot_reclaim, 10, 9, false, false, false));  // the game cannot save now
   CHECK(suspend_due(SuspendWhy::quit, 10, 9, true, true, true));
   CHECK(suspend_due(SuspendWhy::stream_drop, 10, 9, false, true, true));
   CHECK(!suspend_due(SuspendWhy::quit, 10, 9, false, false, false));

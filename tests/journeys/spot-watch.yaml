@@ -1,0 +1,14 @@
+# 1.8 §2 (L4): AWS's two-minute spot notice makes ArgoniaCore write the suspend save. The watcher
+# (infra/gpu-box/spot-watch.ps1 -Drill, through the bridge's machine-side `spot-drill`) starts a mock IMDSv2 server
+# on the machine that answers spot/instance-action with a stop notice, points the watcher at it, and reports whether
+# ArgoniaSuspend.ess was written after the mock's start; the scene sets nothing about saves or the watcher.
+id: spot-watch
+runner: 1
+crash_risk: low
+step_saves: false        # it tests a save: no step save
+scene: first-place
+steps:
+  - name: notice-saves
+    expect:
+      - {read: [spot-drill], path: ok, eq: true, within: 1}   # ok only when written within 30 s of the mock
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (spot_reclaim)"}, within: 10}

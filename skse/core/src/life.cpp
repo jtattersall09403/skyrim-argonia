@@ -283,6 +283,7 @@ const char* to_string(SuspendWhy w) {
   switch (w) {
     case SuspendWhy::quit: return "quit";
     case SuspendWhy::stream_drop: return "stream drop";
+    case SuspendWhy::spot_reclaim: return "spot_reclaim";
     case SuspendWhy::interval: return "interval";
   }
   return "?";
@@ -291,13 +292,14 @@ const char* to_string(SuspendWhy w) {
 std::optional<SuspendWhy> suspend_why(std::string_view wire) {
   if (wire == "quit") return SuspendWhy::quit;
   if (wire == "stream_drop") return SuspendWhy::stream_drop;
+  if (wire == "spot_reclaim") return SuspendWhy::spot_reclaim;
   return std::nullopt;
 }
 
 bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s, bool in_combat, bool can_save_now,
                  bool menu_open) {
   if (!can_save_now) return false;
-  if (why == SuspendWhy::quit || why == SuspendWhy::stream_drop) return true;
+  if (why != SuspendWhy::interval) return true;  // a caller's reason: quit, stream drop, spot reclaim
   if (in_combat || menu_open) return false;
   return !last_save_s || now_s - *last_save_s >= gen::rest::suspend_save_interval_s;
 }

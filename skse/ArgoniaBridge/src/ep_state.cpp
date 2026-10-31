@@ -143,13 +143,13 @@ std::string greeting(const Request& req) {
   });
 }
 
-// core-suspend <quit|stream_drop>: ArgoniaCore's hidden suspend save (2.8 §c), the stream client's hand on a drop.
+// core-suspend <quit|stream_drop|spot_reclaim>: ArgoniaCore's hidden suspend save (2.8 §c), the stream client's hand on a drop.
 // The call is an SKSE message to ArgoniaCore (core::life::BridgeSuspend), dispatched on the main thread; ok only
 // once Saves\ArgoniaSuspend.ess exists, newer than the call (30 s cap), as `save` does.
 std::string core_suspend(const Request& req) {
   namespace life = argonia::core::life;
   auto why = rest(req);
-  if (!life::suspend_why(why)) return reply_error("core-suspend", "usage: core-suspend <quit|stream_drop>");
+  if (!life::suspend_why(why)) return reply_error("core-suspend", "usage: core-suspend <quit|stream_drop|spot_reclaim>");
   auto file = save_path(std::string(life::kSuspendSave));
   auto t0 = std::filesystem::file_time_type::clock::now();
   auto queued = on_main_thread(req.command, [why] {
