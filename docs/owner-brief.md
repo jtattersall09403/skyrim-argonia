@@ -211,4 +211,6 @@ Something they can **play**, that is:
 | 2026-10-30 | **Magic is mostly covered by the Morrowind spells mod** (Magic Expanded, 133435): reuse it rather than build magic. |
 | 2026-10-30 | **Fix, don't defer**: anything fixable is fixed, with more rounds overnight, so the owner gets something fixed and complete in the morning; 'known issues' only for what truly cannot be fixed in time, each with why. Replaces the planner's time-box. |
 | 2026-10-30 | **UI review means fix**: every screen (the dialogue window above all) is seen in game, reviewed, and every major issue fixed and re-reviewed, not only photographed. |
+| 2026-10-30 | **Checks cover only what we built**: base-Skyrim behaviour is not checked (weather, swimming, enemies equipping and using their kit, NPC movement). The w3-weather-stills and water-swim checks are dropped; crash-prone checks run once, not three times. |
+| 2026-10-30 | **Claywater has a trader**: the station keeper (Livia, the well-keeper) is the place's general trader; her trade service is wired the native way (vendor faction, merchant chest, a barter topic in our dialogue). |
 
