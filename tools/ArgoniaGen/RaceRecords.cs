@@ -40,6 +40,44 @@ static class RaceRecords
         foreach (var f in A(r, "flagsAdd")) race.Flags |= Enum.Parse<Race.Flag>(f.GetString()!);
     }
 
+    // The player (1.10): Skyrim.esm's Player overridden with the race and one race preset's face, copied whole (head
+    // parts, feather colour, morphs, face parts, tints, texture lighting), as the race menu does when a preset is
+    // picked. The head texture stays the race default so the head's scales match the body's (no neck seam).
+    public static void Player(SkyrimMod mod, JsonElement r, string data)
+    {
+        var key = FK(S(r, "formKey"));
+        var file = key.ModKey.FileName.String;
+        if (!masters.TryGetValue(file, out var master))
+            masters[file] = master = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, file), Rel);
+        if (!master.Npcs.TryGetValue(key, out var src)) throw new InvalidDataException($"no NPC_ {key} in {file}");
+        var pk = FK(S(r, "preset"));
+        if (!master.Npcs.TryGetValue(pk, out var preset) || preset.EditorID != S(r, "presetEdid"))
+            throw new InvalidDataException($"the player's preset {pk} is not {S(r, "presetEdid")} in {file}");
+        var race = FK(S(r, "race"));
+        if (preset.Race.FormKey != race) throw new InvalidDataException($"{preset.EditorID} is not of race {race}");
+        // Copied without its localized names (their strings live in the master's BSA, which Mutagen does not read
+        // here): the override carries no FULL, so the save's own player name stands.
+        var p = (Npc)src.DeepCopy(new Npc.TranslationMask(true) { Name = false, ShortName = false });
+        // Factions, spells and items in FormKey order, as Spriggit writes them back (the round trip is byte-identical).
+        var fac = p.Factions.OrderBy(f => f.Faction.FormKey.ModKey.FileName.String).ThenBy(f => f.Faction.FormKey.ID).ToList();
+        p.Factions.Clear(); p.Factions.AddRange(fac);
+        if (p.ActorEffect is { } sp) { var s = sp.OrderBy(k => k.FormKey.ModKey.FileName.String).ThenBy(k => k.FormKey.ID).ToList(); sp.Clear(); sp.AddRange(s); }
+        if (p.Items is { } it) { var s = it.OrderBy(e => e.Item.Item.FormKey.ModKey.FileName.String).ThenBy(e => e.Item.Item.FormKey.ID).ToList(); it.Clear(); it.AddRange(s); }
+        if (p.PlayerSkills is { } ps) ps.Unused2 = new byte[ps.Unused2.Length];  // the pad byte Spriggit writes as 0
+        mod.Npcs.Add(p);
+        p.Race.SetTo(race);
+        p.HeadParts.Clear();
+        p.HeadParts.AddRange(preset.HeadParts.Select(h => h.FormKey));
+        p.HairColor.SetTo(preset.HairColor.FormKeyNullable);
+        p.HeadTexture.Clear();
+        p.TextureLighting = preset.TextureLighting;
+        p.FaceMorph = preset.FaceMorph?.DeepCopy();
+        p.FaceParts = preset.FaceParts?.DeepCopy();
+        p.TintLayers.Clear();
+        p.TintLayers.AddRange(preset.TintLayers.Select(t => t.DeepCopy()));
+        p.Weight = preset.Weight;
+    }
+
     static void Style(SkyrimMod mod, JsonElement r)
     {
         var cs = new CombatStyle(FK(S(r, "formKey")), Rel)

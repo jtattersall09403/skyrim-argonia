@@ -1,0 +1,30 @@
+# 1.10: the player character, front, side and back at the play camera, for a `reader`: an Argonian head and body, no
+# Nord features (no Nord head, hair or brows), natural colours (dark green scales, black frills, no neon), and the
+# head's scales matching the body's with no seam or tone step at the neck. The race and face come from our plugin's
+# override of Skyrim.esm's Player (data/quarantine/start.json `player`), not a console setrace; base_save.py makes
+# ArgoniaWalk from a new game with no race change. The third-person camera keeps its orbit until the player moves
+# (run_journey.py _face), so one step forward puts it behind (the back still) and a turn without moving shows the
+# side and the front.
+id: player-look
+runner: 1
+save: ArgoniaWalk
+crash_risk: low
+step_saves: false
+steps:
+  - name: argonian
+    expect:
+      - {console: "player.GetIsRace ArgonianRace", contains: ">> 1"}
+      - {read: [player], path: cell.editor_id, ne: ARG_HoldingCell}
+  - name: back
+    do:
+      - console: "player.setangle x 0"
+      - console: "player.setangle z 0"
+      - key: "W 80"
+      - wait: 2
+    expect: [{console: "player.GetAngle Z", contains: ">> 0"}]
+  - name: side
+    do: [{console: "player.setangle z 90"}, {wait: 1}]
+    expect: [{console: "player.GetAngle Z", contains: ">> 90"}]
+  - name: front
+    do: [{console: "player.setangle z 180"}, {wait: 1}]
+    expect: [{console: "player.GetAngle Z", contains: ">> 180"}]

@@ -53,6 +53,7 @@ static class Generate
                 case "PERK": PerkRecords.Write(mod, r); break;
                 case "LSCR": LoadScreenRecords.Write(mod, r); break;
                 case "PACK": PackageRecords.Write(mod, r, data); break;
+                case "NPC_" when r.TryGetProperty("override", out var po) && po.GetBoolean(): RaceRecords.Player(mod, r, data); break;
                 case "NPC_" or "ECZN" or "OTFT": CombatRecords.Write(mod, r); break;
                 case "ACTI" or "GMST" or "LCTN": ActivatorRecords.Write(mod, r); break;
                 case "RACE" or "CSTY": RaceRecords.Write(mod, r, data); break;

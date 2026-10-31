@@ -62,5 +62,12 @@
   "class": "marsh-guide",
   "birthsign": "serpent",
   "why": "the studio character of decision 0022, fixed answers (3.2 later builds it through its own flow); scenes may name any other"
+ },
+ "player": {
+  "formKey": "000007:Skyrim.esm",
+  "race": "013740:Skyrim.esm",
+  "preset": "0B2E10:Skyrim.esm",
+  "presetEdid": "ArgonianMalePreset06",
+  "why": "the Player NPC_ (Skyrim.esm 0x7) starts every new game as ArgonianRace with the race's own preset face: its head parts (the race defaults, the preset's eyes, brows, scars and horn/frill set), feather colour, morphs and tints (dark green scales, black frills); the race's default face texture so the head's scales match the body's; no console setrace (1.10). The engine builds the player's face at run time; no FaceGen is shipped (0014)"
  }
 }

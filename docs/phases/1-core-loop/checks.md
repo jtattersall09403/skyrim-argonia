@@ -166,8 +166,9 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| A reader over front, side and back full-body stills: an Argonian head, no Nord features, natural hair and tint | owner play test 6; game-22 reader | L4 | owed | a Nord head on an Argonian body; neon yellow-green hair |
-| The same from `argoniabase` and from a fresh base save | 1.10 | L4 | owed | — |
+| Argonia.esm overrides Skyrim.esm's Player (0x7): ArgonianRace, an Argonian race preset's head parts and frills, dark green scale tints, no Nord hair | 1.10 | L1 | proven | tools/argonia_world/tests/test_player_record.py |
+| A reader over front, side and back full-body stills from ArgoniaWalk: an Argonian head, no Nord features, natural colours, no seam at the neck | owner play test 6; game-22 reader | L4 | owed | journey:player-look tests/journeys/batches/lane-1.10.sh (no game machine: London reclaimed) |
+| The same from `argoniabase` and from a fresh base save (base_save.py, no setrace) | 1.10 | L4 | owed | tests/journeys/batches/lane-1.10.sh |
 
 ## 1.11 Our HUD, rebuilt from the old game's
 

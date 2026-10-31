@@ -235,6 +235,21 @@ def sheet_layer(alloc: Allocator, world, studio: dict) -> Layer:
     ])
 
 
+# --- the player character (1.10) --------------------------------------------------------------------------
+def player_layer(player: dict) -> Layer:
+    """Skyrim.esm's Player NPC_ overridden to start Argonian: the race and one of the race's own face presets,
+    copied whole by ArgoniaGen (RaceRecords.Player). Nothing Nordic carries over (decision 0006); the engine
+    builds the face at run time (0014)."""
+    for k in ("formKey", "race", "preset", "presetEdid"):
+        if not player.get(k):
+            raise ValueError(f"start.json player: no {k}")
+    if player["formKey"] != "000007:Skyrim.esm":
+        raise ValueError(f"start.json player: {player['formKey']} is not Skyrim.esm's Player")
+    return Layer("base:player", [{"type": "NPC_", "override": True, "edid": "Player", "formKey": player["formKey"],
+                                  "race": player["race"], "preset": player["preset"],
+                                  "presetEdid": player["presetEdid"]}])
+
+
 # --- the load order --------------------------------------------------------------------------------------
 def load_order(data: Path) -> list[str]:
     """The runtime's masters present in Data, then its Creation Club masters, then the dependency plugins."""
@@ -256,7 +271,9 @@ def load_order(data: Path) -> list[str]:
 def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[Layer] = ()) -> dict:
     resolver = Resolver(index)
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
-    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio)] + list(extra)
+    player = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]
+    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio), player_layer(player)] \
+        + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
     from tools.argonia_world import fixtures, place_build  # 0.4 §d: the built places; the studio's fixture cells
     layers += place_build.layers(alloc, alloc.world, resolver, regions_api.wrld_record()["formKey"])
