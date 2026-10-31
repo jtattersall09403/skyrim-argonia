@@ -81,13 +81,14 @@
 .vmark path + path { stroke: var(--hud-trim-hi); stroke-width: 1.1; }
 .vastei .count { font-size: var(--t-head); line-height: 1.15; font-variant-numeric: tabular-nums; }
 .vastei .vlabel { color: var(--hud-text-soft); letter-spacing: 0.04em; }
-.vastei .gain { color: #b9d27e; animation: rise 1.6s ease-out both; }
+.vastei .gain { color: #b9d27e; animation: gain 3s ease-out both; }  /* in, held ~2 s, gone: the count stays */
 .vastei.up { border-color: var(--hud-trim-hi); animation: warm 1.6s ease-out both; }
 .vastei.up::after { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(105deg, transparent 35%, rgba(255, 236, 190, 0.35) 50%, transparent 65%) no-repeat;
   background-size: 250% 100%; animation: glint 1.2s ease-out 0.1s both; }
 @keyframes glint { from { background-position: 120% 0; } to { background-position: -20% 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(0.35rem); } 30% { opacity: 1; transform: none; } }
+@keyframes gain { from { opacity: 0; transform: translateY(0.35rem); } 12% { opacity: 1; transform: none; } 75% { opacity: 1; } to { opacity: 0; } }
 @keyframes warm { from { box-shadow: 0 0 0.7rem rgba(212, 178, 122, 0.7); } }
 
 /* ---- Notices: the left column under vastei, newest last, each a lacquer strip with a kind-coloured rule. ---- */
