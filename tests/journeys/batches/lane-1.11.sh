@@ -9,8 +9,8 @@ O=out/l111; mkdir -p $O
 infra/gpu-box/run.sh up || exit $?
 PY=~/.argonia/venv/bin/python
 B="$PY tools/bridge.py"
-make deploy || exit 1
-$B load argoniabase
+[ -n "${NO_DEPLOY:-}" ] || make deploy || exit 1  # NO_DEPLOY=1: the machine was just deployed from this commit
+$B load ArgoniaWalk                               # the walk save: the HUD over Claywater, not the dark holding cell
 $B pad 'LY=1:800'                                # a game action, so play has started and the HUD shows
 $B console 'player.setav health 200'          # setup: a known maximum, so the hit and low states are fixed shares
 $B screenshot $O/calm.png
@@ -19,6 +19,7 @@ for i in 0 1 2 3 4 5; do $B screenshot $O/fight-$i.png; done   # the strip: the 
 $B console 'player.restoreav health 1000'; $B screenshot $O/regen.png
 $B console "player.damageav health 90"; $B pad 'LY=1:400'
 $B screenshot $O/low.png
+$B console 'player.damageav stamina 60'; $B screenshot $O/stamina-used.png   # one stamina bar only (TrueHUD's player widget off)
 $B dev-set SetVastei 180
 $B screenshot $O/vastei-gain.png
 $B console 'player.restoreav health 1000'

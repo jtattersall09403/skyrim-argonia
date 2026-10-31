@@ -8,7 +8,7 @@ infra/gpu-box/run.sh up || exit $?
 infra/gpu-box/run.sh put infra/gpu-box/prewarm.ps1 C:/argonia/infra/prewarm.ps1
 infra/gpu-box/run.sh ps '& C:\argonia\infra\prewarm.ps1'
 PY=~/.argonia/venv/bin/python
-make deploy || exit 1
+[ -n "${NO_DEPLOY:-}" ] || make deploy || exit 1  # NO_DEPLOY=1: the machine was just deployed from this commit
 infra/gpu-box/run.sh ps 'Test-Path C:\argonia\MO2\mods\oblivion-loading-menu; Get-ChildItem C:\argonia\MO2\mods\tropical-skyrim-sse\Meshes -Name'
 $PY tools/bridge.py load argoniabase
 $PY tools/bridge.py player; $PY tools/bridge.py pad 'LY=1:2500'; $PY tools/bridge.py player

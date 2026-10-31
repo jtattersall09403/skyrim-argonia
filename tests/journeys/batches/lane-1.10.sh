@@ -10,7 +10,7 @@ infra/gpu-box/run.sh up || exit $?
 infra/gpu-box/run.sh put infra/gpu-box/prewarm.ps1 C:/argonia/infra/prewarm.ps1
 infra/gpu-box/run.sh ps '& C:\argonia\infra\prewarm.ps1'
 PY=~/.argonia/venv/bin/python
-make deploy || exit 1   # its last step: base_save.py (argoniabase, then ArgoniaWalk); fails if the player is not Argonian
+[ -n "${NO_DEPLOY:-}" ] || make deploy || exit 1  # NO_DEPLOY=1: the machine was just deployed from this commit   # its last step: base_save.py (argoniabase, then ArgoniaWalk); fails if the player is not Argonian
 $PY tools/bridge.py oracle out/l110
 $PY tools/run_journey.py tests/journeys/player-look.yaml --save ArgoniaWalk
 $PY tools/bridge.py load argoniabase; $PY tools/bridge.py player; $PY tools/bridge.py console "player.GetIsRace ArgonianRace"
