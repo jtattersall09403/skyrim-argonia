@@ -8,13 +8,13 @@
 
 namespace argonia::core::gen {
 
-enum class Verb : std::uint16_t { addCounter, addJournalEntry, addOwing, applyLocalVariant, changeDisposition, changeSettlementStanding, changeStanding, clearLocalVariant, clearOwing, completeQuest, disableRef, enableRef, expel, failQuest, giveGold, giveItem, grantAbility, grantGlossaryTerm, grantHistStep, grantMapMarker, grantServiceAccess, grantTopic, moveRef, offerTeach, promoteSuccessor, recordWitnessed, removeTopic, seedRumour, sendCourier, setAmbience, setDoorAccess, setFactionRank, setFlag, setMaterialFlag, setNotoriety, setPrice, setSchedule, setStage, setWeather, startScene, startTimer, takeGold, takeItem };
-inline constexpr std::size_t kVerbCount = 43;
-inline constexpr std::array<std::string_view, 43> kVerbNames{"addCounter", "addJournalEntry", "addOwing", "applyLocalVariant", "changeDisposition", "changeSettlementStanding", "changeStanding", "clearLocalVariant", "clearOwing", "completeQuest", "disableRef", "enableRef", "expel", "failQuest", "giveGold", "giveItem", "grantAbility", "grantGlossaryTerm", "grantHistStep", "grantMapMarker", "grantServiceAccess", "grantTopic", "moveRef", "offerTeach", "promoteSuccessor", "recordWitnessed", "removeTopic", "seedRumour", "sendCourier", "setAmbience", "setDoorAccess", "setFactionRank", "setFlag", "setMaterialFlag", "setNotoriety", "setPrice", "setSchedule", "setStage", "setWeather", "startScene", "startTimer", "takeGold", "takeItem"};
+enum class Verb : std::uint16_t { addCounter, addJournalEntry, addOwing, applyLocalVariant, changeDisposition, changeSettlementStanding, changeStanding, clearLocalVariant, clearOwing, completeQuest, disableRef, enableRef, expel, failQuest, giveGold, giveItem, grantAbility, grantGlossaryTerm, grantHistStep, grantMapMarker, grantServiceAccess, grantTopic, moveRef, offerTeach, openBarter, promoteSuccessor, recordWitnessed, removeTopic, seedRumour, sendCourier, setAmbience, setDoorAccess, setFactionRank, setFlag, setMaterialFlag, setNotoriety, setPrice, setSchedule, setStage, setWeather, startScene, startTimer, takeGold, takeItem };
+inline constexpr std::size_t kVerbCount = 44;
+inline constexpr std::array<std::string_view, 44> kVerbNames{"addCounter", "addJournalEntry", "addOwing", "applyLocalVariant", "changeDisposition", "changeSettlementStanding", "changeStanding", "clearLocalVariant", "clearOwing", "completeQuest", "disableRef", "enableRef", "expel", "failQuest", "giveGold", "giveItem", "grantAbility", "grantGlossaryTerm", "grantHistStep", "grantMapMarker", "grantServiceAccess", "grantTopic", "moveRef", "offerTeach", "openBarter", "promoteSuccessor", "recordWitnessed", "removeTopic", "seedRumour", "sendCourier", "setAmbience", "setDoorAccess", "setFactionRank", "setFlag", "setMaterialFlag", "setNotoriety", "setPrice", "setSchedule", "setStage", "setWeather", "startScene", "startTimer", "takeGold", "takeItem"};
 enum class ActionArgKind : std::uint8_t { id, int_, bool_ };
 struct ActionArgSpec { ActionArgKind kind; bool optional; };
 struct VerbRow { std::size_t first_arg, arg_count; };  // into kActionArgSpecs
-inline constexpr std::array<VerbRow, 43> kVerbs{{
+inline constexpr std::array<VerbRow, 44> kVerbs{{
     {0, 2},  // addCounter
     {2, 2},  // addJournalEntry
     {4, 2},  // addOwing
@@ -39,27 +39,28 @@ inline constexpr std::array<VerbRow, 43> kVerbs{{
     {30, 1},  // grantTopic
     {31, 2},  // moveRef
     {33, 1},  // offerTeach
-    {34, 2},  // promoteSuccessor
-    {36, 1},  // recordWitnessed
-    {37, 1},  // removeTopic
-    {38, 2},  // seedRumour
-    {40, 1},  // sendCourier
-    {41, 2},  // setAmbience
-    {43, 2},  // setDoorAccess
-    {45, 2},  // setFactionRank
-    {47, 2},  // setFlag
-    {49, 2},  // setMaterialFlag
-    {51, 2},  // setNotoriety
-    {53, 2},  // setPrice
-    {55, 2},  // setSchedule
-    {57, 2},  // setStage
-    {59, 2},  // setWeather
-    {61, 1},  // startScene
-    {62, 1},  // startTimer
-    {63, 1},  // takeGold
-    {64, 2},  // takeItem
+    {34, 1},  // openBarter
+    {35, 2},  // promoteSuccessor
+    {37, 1},  // recordWitnessed
+    {38, 1},  // removeTopic
+    {39, 2},  // seedRumour
+    {41, 1},  // sendCourier
+    {42, 2},  // setAmbience
+    {44, 2},  // setDoorAccess
+    {46, 2},  // setFactionRank
+    {48, 2},  // setFlag
+    {50, 2},  // setMaterialFlag
+    {52, 2},  // setNotoriety
+    {54, 2},  // setPrice
+    {56, 2},  // setSchedule
+    {58, 2},  // setStage
+    {60, 2},  // setWeather
+    {62, 1},  // startScene
+    {63, 1},  // startTimer
+    {64, 1},  // takeGold
+    {65, 2},  // takeItem
 }};
-inline constexpr std::array<ActionArgSpec, 66> kActionArgSpecs{{
+inline constexpr std::array<ActionArgSpec, 67> kActionArgSpecs{{
     ActionArgSpec{ActionArgKind::id, false},
     ActionArgSpec{ActionArgKind::int_, false},
     ActionArgSpec{ActionArgKind::id, false},
@@ -85,6 +86,7 @@ inline constexpr std::array<ActionArgSpec, 66> kActionArgSpecs{{
     ActionArgSpec{ActionArgKind::int_, false},
     ActionArgSpec{ActionArgKind::id, false},
     ActionArgSpec{ActionArgKind::int_, true},
+    ActionArgSpec{ActionArgKind::id, false},
     ActionArgSpec{ActionArgKind::id, false},
     ActionArgSpec{ActionArgKind::id, false},
     ActionArgSpec{ActionArgKind::id, false},

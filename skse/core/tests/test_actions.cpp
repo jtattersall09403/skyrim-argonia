@@ -43,6 +43,7 @@ struct Log : Effects {
   bool changeSettlementStanding(std::string_view x, int d) override {
     return note("changeSettlementStanding " + std::string(x) + " " + n(d));
   }
+  bool openBarter(std::string_view x) override { return note("openBarter " + std::string(x)); }
   bool other(const Action& a) override { return note("other " + describe(a)); }
 };
 
@@ -55,7 +56,7 @@ Action A(std::string_view verb, std::vector<Arg> args) {
 const std::string kItem = "item.lf83.clay-basket", kNpc = "npc.w", kPlace = "place.p";
 
 void vocabulary() {
-  CHECK(gen::kVerbCount == 43);  // the condition_term rows of kind action
+  CHECK(gen::kVerbCount == 44);  // the condition_term rows of kind action
   for (std::size_t i = 0; i < gen::kVerbCount; ++i) CHECK(verb_named(gen::kVerbNames[i]) == Verb(i));
   CHECK(!verb_named("questStage"));
   CHECK(!make("giveItem", {}).has_value());                                       // arity
@@ -79,13 +80,14 @@ void each_verb() {
                            A("grantTopic", {std::string("topic.t")}), A("applyLocalVariant", {kPlace, std::string("v")}),
                            A("setPrice", {std::string("ferry.f"), 0.0}), A("changeDisposition", {kNpc, 5.0}),
                            A("changeSettlementStanding", {kPlace, 10.0}), A("giveGold", {150.0}),
-                           A("setStage", {std::string("quest.q"), 10.0})};
+                           A("openBarter", {kNpc}), A("setStage", {std::string("quest.q"), 10.0})};
   auto o = run(list, f, fx);
   CHECK(o.done && o.applied == list.size() && o.refused.empty());
   const std::vector<std::string> want{"takeGold 100", "takeItem item.lf83.clay-basket 1", "giveItem item.x 2",
                                       "setFlag flag.a 1", "setFlag flag.b 0", "grantTopic topic.t",
                                       "applyLocalVariant place.p v", "setPrice ferry.f 0", "changeDisposition npc.w 5",
-                                      "changeSettlementStanding place.p 10", "giveGold 150", "other setStage(quest.q, 10)"};
+                                      "changeSettlementStanding place.p 10", "giveGold 150", "openBarter npc.w",
+                                      "other setStage(quest.q, 10)"};
   CHECK(fx.done == want);
 }
 

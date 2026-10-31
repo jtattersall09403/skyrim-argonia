@@ -42,6 +42,7 @@ void OnDialogueSurface(ac::router::SurfaceId) {
     return;
   }
   c.talk = std::move(*conv);
+  c.talk_ref = ref ? ref->GetHandle() : RE::ObjectRefHandle{};
   for (const auto& n : c.talk->greeting_notes()) SKSE::log::info("{}", n);
   auto json = ac::msg::encode(c.talk->view(s));
   if (!json) {

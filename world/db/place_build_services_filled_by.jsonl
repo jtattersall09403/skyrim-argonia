@@ -11,6 +11,7 @@
 {"place_id":"place.imperial-fringe.claywater-station","services_ord":0,"ord":0,"value":"parcel.claywater-station.ferry-raft"}
 {"place_id":"place.imperial-fringe.claywater-station","services_ord":1,"ord":0,"value":"parcel.claywater-station.station-house"}
 {"place_id":"place.imperial-fringe.claywater-station","services_ord":1,"ord":1,"value":"socket.claywater-station.idle-travellers-sleep"}
+{"place_id":"place.imperial-fringe.claywater-station","services_ord":3,"ord":0,"value":"parcel.claywater-station.station-house"}
 {"place_id":"place.mercantile-coast.chasepoint","services_ord":0,"ord":0,"value":"parcel.chasepoint.the-stage"}
 {"place_id":"place.mercantile-coast.chasepoint","services_ord":0,"ord":1,"value":"socket.chasepoint.npc-merchant"}
 {"place_id":"place.mercantile-coast.chasepoint","services_ord":1,"ord":0,"value":"parcel.chasepoint.the-stage"}

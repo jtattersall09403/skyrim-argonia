@@ -5278,6 +5278,25 @@ CREATE TABLE "trade_class" (
   "id" TEXT NOT NULL PRIMARY KEY
 );
 
+-- Home of a trade class's stock (2.10 migrates the rest of trade-classes.json): what a trader of the class keeps in
+-- their merchant chest, as item rows (our record, or the reviewed base record the item names, decision 0012).
+CREATE TABLE "trade_class_stock" (
+  "trade_class_id" TEXT NOT NULL REFERENCES "trade_class"("id") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "item_id" TEXT NOT NULL REFERENCES "item"("id"),
+  "count" INTEGER NOT NULL CHECK ("count" > 0),
+  PRIMARY KEY ("trade_class_id", "ord")
+);
+
+-- Home of a person's barter terms (Morrowind's barter gold; Skyrim's vendor faction): the gold in their merchant
+-- chest and the hours they trade (HH:MM, game time). Their stock is their trade class's (npc.trade_class).
+CREATE TABLE "npc_trade" (
+  "npc_id" TEXT NOT NULL PRIMARY KEY REFERENCES "npc"("id") ON DELETE CASCADE,
+  "barter_gold" INTEGER NOT NULL CHECK ("barter_gold" >= 0),
+  "opens" TEXT NOT NULL,
+  "closes" TEXT NOT NULL
+);
+
 -- Home of a blanket loot rule a container fills from. Migrated by 2.3 from world/sources/registries/loot-rules.json; until then a key only.
 CREATE TABLE "loot_rule" (
   "id" TEXT NOT NULL PRIMARY KEY

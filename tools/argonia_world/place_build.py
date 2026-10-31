@@ -72,6 +72,15 @@ COMBAT_STYLES = {
 # (owing_region rates). Escape and werewolf have no Owing rate yet (2.10), so they are 0. Every person of the place is
 # a member (rank 0) and has it as their crime faction, as a vanilla townsperson has their hold's.
 TOWN_FACTION_FLAGS = ["TrackCrime", "HiddenFromPC"]
+# A trader (npc_trade, lane trader): vanilla's merchant wiring, generated. Their own vendor faction (Vendor, hidden),
+# a member at rank 0, carrying the trade hours, the buy/sell list and the merchant chest; the chest is a persistent
+# CONT of ours holding the trade class's stock and the barter gold, in an interior cell of the place's with no door
+# (unreachable, as vanilla's merchant chest cells). The buy/sell list is a FLST naming one keyword of ours that no item
+# carries, with "not sell/buy" set: the trader buys everything (Morrowind's general trader), sells the chest.
+VENDOR_FACTION_FLAGS = ["Vendor", "HiddenFromPC"]
+VENDOR_NO_SALE_KEYWORD = ("ARG_Kwd_VendorNoSale", "trade.no-sale")
+VENDOR_RADIUS_M = 0.0  # vanilla's "near reference" radius for a vendor at their own reference
+GOLD_ITEM = "item.gold"  # its base record is the engine's currency (item_asset_record: Gold001)
 
 
 def slug(s: str) -> str:
@@ -318,6 +327,68 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
         ctx.records[edid] = rec
 
 
+def stock_form_key(ctx, world, item_id: str) -> str:
+    """An item row's record: ours when the allocator holds one for the item, else the base record its asset data
+    names (item_asset_record ord 0), by EditorID in the masters' index."""
+    ours = next(iter(world.query("SELECT form_id, plugin FROM formid WHERE entity_key = ? AND record_type IN "
+                                 "('ALCH', 'MISC', 'BOOK', 'WEAP', 'ARMO')", item_id)), None)
+    if ours is not None:
+        return f"{ours['form_id']:06X}:{ours['plugin']}"
+    rec = next((r.value for r in world.rows("item_asset_record", item_id=item_id) if r.ord == 0), None)
+    if rec is None:
+        raise ValueError(f"{item_id}: no record of ours and no base record in its asset data")
+    keys = ctx.resolver.index.form_keys_of(rec)
+    if len(keys) != 1:
+        raise ValueError(f"{item_id}: base record {rec} matches {sorted(keys) or 'nothing'} in the masters' index")
+    return keys.pop()
+
+
+def _traders(ctx, world, refs, place_id: str) -> None:
+    """Each trader of the place (an npc_trade row, placed here): vendor FACT, merchant chest CONT and its cell, the NPC_
+    a member (VENDOR_FACTION_FLAGS)."""
+    chests = []
+    for t in world.rows("npc_trade"):
+        actor = next((r for r in refs if r.npc_id == t.npc_id), None)
+        npc = world.get("npc", t.npc_id)
+        if actor is None or npc.home_place_id != place_id:
+            continue
+        if not npc.trade_class or world.get("trade_class", npc.trade_class) is None:
+            raise ValueError(f"{t.npc_id}: trades but has no trade class row")
+        name = slug(t.npc_id.rsplit(".", 1)[1])
+        items = [{"item": stock_form_key(ctx, world, s.item_id), "count": s.count}
+                 for s in world.rows("trade_class_stock", trade_class_id=npc.trade_class)]
+        if not items:
+            raise ValueError(f"{npc.trade_class}: no stock")
+        if t.barter_gold:
+            items.append({"item": stock_form_key(ctx, world, GOLD_ITEM), "count": t.barter_gold})
+        cont = f"ARG_Cont_MerchantChest{name}"
+        ctx.records[cont] = {"type": "CONT", "edid": cont, "formKey": ctx.alloc.form_key(cont, "CONT", t.npc_id + "#chest"),
+                             "name": "Merchant Chest", "weight": 0.0, "flags": [], "items": items}
+        ref = f"ARG_Ref_MerchantChest{name}"
+        chests.append({"formKey": ctx.alloc.form_key(ref, "REFR", t.npc_id + "#chest-ref"), "edid": ref,
+                       "base": ctx.records[cont]["formKey"], "pos": [0.0, 0.0, 0.0], "rot": [0.0, 0.0, 0.0],
+                       "persistent": True})
+        kw, kw_key = VENDOR_NO_SALE_KEYWORD
+        if kw not in ctx.records:
+            ctx.records[kw] = {"type": "KYWD", "edid": kw, "formKey": ctx.alloc.form_key(kw, "KYWD", kw_key)}
+        fl = f"ARG_Flst_VendorList{name}"
+        ctx.records[fl] = {"type": "FLST", "edid": fl, "formKey": ctx.alloc.form_key(fl, "FLST", t.npc_id + "#buys"),
+                           "items": [ctx.records[kw]["formKey"]]}
+        fe = f"ARG_Faction_Vendor{name}"
+        ctx.records[fe] = {"type": "FACT", "edid": fe, "formKey": ctx.alloc.form_key(fe, "FACT", t.npc_id + "#vendor"),
+                           "name": f"{npc.name}'s trade", "flags": VENDOR_FACTION_FLAGS, "ranks": [{"number": 0, "title": "Trader"}],
+                           "vendor": {"startHour": int(hours(t.opens)), "endHour": int(hours(t.closes)),
+                                      "radius": int(su.metres_to_units(VENDOR_RADIUS_M)), "onlyBuysStolen": False,
+                                      "notSellBuy": True, "buySellList": ctx.records[fl]["formKey"],
+                                      "chest": chests[-1]["formKey"], "nearRef": ref_form_key(ctx.alloc, actor)}}
+        person = ctx.records[npc_edid(t.npc_id)]
+        person["factions"] = [*person.get("factions", []), {"faction": ctx.records[fe]["formKey"], "rank": 0}]
+    if chests:
+        edid = f"ARG_Cell_{slug(place_id.rsplit('.', 1)[1])}MerchantChests"
+        ctx.records[edid] = {"type": "CELL", "edid": edid, "formKey": ctx.alloc.form_key(edid, "CELL", place_id + "#merchant-chests"),
+                             "flags": ["IsInteriorCell"], "refs": chests}
+
+
 def _clearable_home(world, npc_id: str) -> str | None:
     npc = world.get("npc", npc_id)
     h = npc and npc.home_place_id and world.get("place_build_hostility", npc.home_place_id)
@@ -339,6 +410,7 @@ def place_records(alloc, world, resolver, ground, wrld_form_key: str, place_id: 
     _items(ctx, world, refs)
     if any(r.npc_id for r in refs):
         _people(ctx, world, refs, cells, town_faction(ctx, world, place_id))
+        _traders(ctx, world, refs, place_id)
     out: list[dict] = []
     ext_cells: dict[tuple[int, int], list[dict]] = {}
     for cid, c in sorted(cells.items()):

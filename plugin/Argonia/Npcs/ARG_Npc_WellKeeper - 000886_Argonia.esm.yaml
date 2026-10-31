@@ -16,6 +16,8 @@ Configuration:
 Factions:
 - Faction: 0009C2:Argonia.esm
   Fluff: 0x000000
+- Faction: 0009F6:Argonia.esm
+  Fluff: 0x000000
 Template: 045802:Skyrim.esm
 Race: 013744:Skyrim.esm
 Perks: []

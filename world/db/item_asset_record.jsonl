@@ -80,6 +80,7 @@
 {"item_id":"item.glow-dust","ord":0,"value":"glowDust"}
 {"item_id":"item.goat-cheese-wedge","ord":0,"value":"FoodCheeseWedge01"}
 {"item_id":"item.goblet","ord":0,"value":"SilverGoblet01"}
+{"item_id":"item.gold","ord":0,"value":"Gold001"}
 {"item_id":"item.gold-amulet","ord":0,"value":"JewelryNecklaceGold"}
 {"item_id":"item.gold-ring","ord":0,"value":"JewelryRingGold"}
 {"item_id":"item.grand-soul-gem","ord":0,"value":"SoulGemGrand"}
@@ -117,6 +118,7 @@
 {"item_id":"item.lesser-soul-gem-filled","ord":0,"value":"SoulGemLesserFilled"}
 {"item_id":"item.leviathan-bone","ord":0,"value":"SwampLeviathanClaws"}
 {"item_id":"item.linen-wrap","ord":0,"value":"RuinsLinenPile01"}
+{"item_id":"item.lockpick","ord":0,"value":"Lockpick"}
 {"item_id":"item.malachite-ore","ord":0,"value":"OreMalachite"}
 {"item_id":"item.marsh-native-foot-wraps","ord":0,"value":"CIPHTBMNativeBoots2"}
 {"item_id":"item.marsh-native-hat","ord":0,"value":"CIPHTBMNativeHat1"}
@@ -202,6 +204,7 @@
 {"item_id":"item.taproot","ord":0,"value":"Taproot"}
 {"item_id":"item.tee-lel","ord":0,"value":"TeeLel"}
 {"item_id":"item.thistle-branch","ord":0,"value":"Thistle01"}
+{"item_id":"item.torch","ord":0,"value":"Torch01"}
 {"item_id":"item.troll-fat","ord":0,"value":"TrollFat"}
 {"item_id":"item.tunic-with-sash","ord":0,"value":"SaxhleelTunicBlue01"}
 {"item_id":"item.tunic-with-sash","ord":1,"value":"SaxhleelTunicGreen01"}

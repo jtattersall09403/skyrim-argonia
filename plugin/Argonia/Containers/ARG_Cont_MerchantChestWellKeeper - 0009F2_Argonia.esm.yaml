@@ -1,0 +1,60 @@
+FormKey: 0009F2:Argonia.esm
+EditorID: ARG_Cont_MerchantChestWellKeeper
+Name:
+  TargetLanguage: English
+  Value: Merchant Chest
+Items:
+- Item:
+    Item: 005C43:King of the Murkmire.esp
+    Count: 4
+- Item:
+    Item: 0F7A99:King of the Murkmire.esp
+    Count: 2
+- Item:
+    Item: 000A15:King of the Murkmire.esp
+    Count: 3
+- Item:
+    Item: 065C98:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 0669A5:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 064B41:Skyrim.esm
+    Count: 4
+- Item:
+    Item: 03133B:Skyrim.esm
+    Count: 2
+- Item:
+    Item: 000851:Argonia.esm
+    Count: 3
+- Item:
+    Item: 0B9BDC:Skyrim.esm
+    Count: 2
+- Item:
+    Item: 0B9BCC:Skyrim.esm
+    Count: 2
+- Item:
+    Item: 0747FB:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0318FA:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 0319E5:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 033761:Skyrim.esm
+    Count: 2
+- Item:
+    Item: 0DB5D2:Skyrim.esm
+    Count: 2
+- Item:
+    Item: 01D4EC:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 00000A:Skyrim.esm
+    Count: 5
+- Item:
+    Item: 00000F:Skyrim.esm
+    Count: 300

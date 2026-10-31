@@ -133,6 +133,8 @@ class EngineWrites {
   virtual bool take_item(std::string_view item, int count) = 0;
   virtual bool give_gold(int amount) = 0;
   virtual bool take_gold(int amount) = 0;
+  // The engine's BarterMenu with this trader (their vendor faction's stock); ours closes the conversation first.
+  virtual bool open_barter(std::string_view npc) = 0;
 };
 
 // The orders a step gives one watched quest, for the engine's own quest functions.

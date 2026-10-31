@@ -285,6 +285,7 @@
 {"id":"topic.rose-bone-waystation-directions","topic_class":"local","label":"the way from the Tag House","keys_place":"place.imperial-penal-south.rose-bone-waystation","keys_aspect":"directions"}
 {"id":"topic.rose-bone-waystation-people","topic_class":"local","label":"the people of the Tag House","keys_place":"place.imperial-penal-south.rose-bone-waystation","keys_aspect":"people"}
 {"id":"topic.rose-bone-waystation-work","topic_class":"local","label":"work at the Tag House","keys_place":"place.imperial-penal-south.rose-bone-waystation","keys_aspect":"work"}
+{"id":"topic.service-barter","topic_class":"service","label":"What do you have for sale?"}
 {"id":"topic.tag-seventeen","topic_class":"quest","label":"Tag 17","keys_quest":"quest.local.lr24"}
 {"id":"topic.teeth-lost-purpose","topic_class":"quest","label":"the Teeth's lost purpose","keys_quest":"quest.ni.ni05"}
 {"id":"topic.teeth-of-sithis","topic_class":"local","label":"the Teeth of Sithis","keys_place":"place.mercantile-coast.teeth-of-sithis","keys_aspect":"place"}

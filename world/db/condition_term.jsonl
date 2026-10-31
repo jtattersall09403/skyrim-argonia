@@ -61,6 +61,7 @@
 {"id":"npcInCustody","kind":"predicate","section":"A7","args":"npc `id`"}
 {"id":"objectiveComplete","kind":"predicate","section":"A1","args":"quest `id`, objective `id`","reads":"a single objective within a stage"}
 {"id":"offerTeach","kind":"action","section":"B5","args":"spell","reads":"2.9d: the host opens the teach service with that spell"}
+{"id":"openBarter","kind":"action","section":"B5","args":"npc","reads":"lane trader: ArgoniaCore closes the conversation and opens the engine's BarterMenu with that trader"}
 {"id":"owingAtLeast","kind":"predicate","section":"A5","args":"region `id`, `int`","reads":"the crime-as-Owing ledger, **per region** (0039)"}
 {"id":"owingHere","kind":"predicate","section":"A5","args":"none","reads":"an open Owing in the region the player stands in (the ledger, 0151; the owing greetings)"}
 {"id":"placeCleared","kind":"predicate","section":"A6","args":"place `id`","reads":"the catalogue's `hostility.clearable` state (Phase 11 v2, 2026-09-03)"}

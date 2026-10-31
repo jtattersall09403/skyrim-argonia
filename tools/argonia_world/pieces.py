@@ -93,6 +93,13 @@ class Index:
             rows.sort(key=lambda r: (self.prefer.tier(mesh, r["plugin"]), -rank.get(r["plugin"].lower(), -1),
                                      TYPE_RANK.get(r["type"], 99), int(r["formKey"].split(":")[0], 16)))
         self.meshes = {norm_mesh(m) for m in doc["meshes"]} | set(self.by_mesh)
+        self.by_edid: dict[str, set[str]] = {}
+        for r in doc["records"]:
+            self.by_edid.setdefault(r["edid"], set()).add(r["formKey"])
+
+    def form_keys_of(self, edid: str) -> set[str]:
+        """The FormKeys of the masters' records with this EditorID (an override keeps its origin's key)."""
+        return set(self.by_edid.get(edid, ()))
 
     @classmethod
     def load(cls, path: Path = INDEX) -> Index:

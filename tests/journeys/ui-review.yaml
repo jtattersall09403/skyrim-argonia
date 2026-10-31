@@ -2,7 +2,7 @@
 # the running game at desktop size, one still each for a `reader` against ui/DESIGN.md and the owner's UI goals.
 # Our screens: dialogue (topics, a long answer), the HUD (bars, the journal notice), the journal (a quest entry),
 # the chart, the sitting; then the paper-themed vanilla menus that remain (Tween, inventory, container, book) and the
-# loading menu. Barter stays owed (no merchant record of ours, ui-sweep). The title screen is ui-sweep's last step.
+# loading menu. Barter: Livia's service topic opens the engine's BarterMenu (lane trader). The title screen is ui-sweep's last step.
 # Staged by the scene (ui-props): the place, a camp spot, a crate and the station ledger. The pending level for the
 # sitting comes from dev-grow (the fixture, as grow-at-rest); the sitting's look is what is judged.
 id: ui-review
@@ -42,6 +42,23 @@ steps:
     do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
     expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
     reader: [the notice legible on its plate, the HUD minimal]
+  - name: barter-talk         # lane trader: Livia, the station's general trader, in her hours (08:00-20:00)
+    do:
+      - {console: "set gamehour to 12"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.topics, contains: "topic.service-barter"}]
+  - name: barter              # her service topic: her answer, then the engine's BarterMenu with her stock
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.service-barter"}}']}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: BarterMenu}, within: 8}
+      - {read: [core, ViewState, dialogue], path: value, eq: null}
+    reader: [her stock listed (saltrice flatbread, jeel-sa, frog legs, bread, leeks, potatoes, Alto wine, healing draught, cups, bowls, a pot, torches, paper, leather, lockpicks), her 300 gold shown, the sheet in our palette, every word in Pelagiad, no Nordic ornament]
+  - name: barter-closed
+    do: [{close_menu: BarterMenu}]
+    expect: [{event: {kind: menu, match: '"menu": "BarterMenu", "opening": false'}}]
   - name: journal             # J: the quest entry
     do: [{key: "J 120"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]

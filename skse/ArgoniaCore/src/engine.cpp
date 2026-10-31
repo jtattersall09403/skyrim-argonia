@@ -154,6 +154,37 @@ bool GameEngine::take_gold(int amount) {
   return true;
 }
 
+// The openBarter action (lane trader): the conversation's own speaker, when they are `npc`, gets the engine's BarterMenu
+// on the next frame, after our conversation closes; the menu reads their vendor faction (chest, hours, buy/sell list).
+bool GameEngine::open_barter(std::string_view npc) {
+  auto& c = Get();
+  auto ref = c.talk_ref.get();
+  auto* actor = ref ? ref->As<RE::Actor>() : nullptr;
+  auto id = actor ? WorldId(actor->GetActorBase()) : std::nullopt;
+  if (!id && actor) id = WorldId(actor);
+  if (!actor || !id || *id != npc) {
+    SKSE::log::warn("openBarter: {} is not the person this conversation is with", npc);
+    return false;
+  }
+  SKSE::GetTaskInterface()->AddTask([h = c.talk_ref, who = std::string(npc)] {
+    auto& c = Get();
+    std::lock_guard l(c.lock);
+    c.talk.reset();
+    c.talk_ref = {};
+    CloseView("dialogue");
+    auto r = h.get();
+    auto* a = r ? r->As<RE::Actor>() : nullptr;
+    if (!a) {
+      SKSE::log::warn("openBarter: {} is gone before the menu opened", who);
+      return;
+    }
+    SKSE::log::info("openBarter: BarterMenu for {} (vendor faction {:08X})", who,
+                    a->GetVendorFaction() ? a->GetVendorFaction()->GetFormID() : 0);
+    RE::BarterMenu::OpenMenu(a);
+  });
+  return true;
+}
+
 ac::seam::Session Session() {
   static GameEngine engine;
   auto& c = Get();

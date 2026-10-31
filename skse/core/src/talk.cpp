@@ -44,7 +44,7 @@ namespace fixture_rows {
 std::vector<topics::Topic> topics() {
   std::vector<topics::Topic> out;
   for (const auto& t : fx::kTopics) {
-    topics::Topic x{std::string(t.id), std::string(t.label), {}, t.essential};
+    topics::Topic x{std::string(t.id), std::string(t.label), {}, t.essential, t.service};
     for (std::size_t i = 0; i < t.form_count; ++i) x.forms.emplace_back(fx::kForms[t.first_form + i]);
     out.push_back(std::move(x));
   }

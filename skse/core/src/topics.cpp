@@ -186,7 +186,7 @@ Answer words_at(const Line& l, int d) {
 std::vector<std::string_view> offered(const Store& s, const Speaker& sp, const Known& k, const Facts& host) {
   std::vector<std::string_view> out;
   for (const auto& t : s.all())
-    if (k.knows(t.id) && first(s, t.id, LineType::dialogue, sp, k, host)) out.push_back(t.id);
+    if ((t.service || k.knows(t.id)) && first(s, t.id, LineType::dialogue, sp, k, host)) out.push_back(t.id);
   return out;
 }
 

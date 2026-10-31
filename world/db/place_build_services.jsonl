@@ -15,7 +15,7 @@
 {"place_id":"place.imperial-fringe.claywater-station","ord":0,"kind":"ferry","promised":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":1,"kind":"lodging","promised":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":2,"kind":"boat","promised":false}
-{"place_id":"place.imperial-fringe.claywater-station","ord":3,"kind":"trade","promised":false}
+{"place_id":"place.imperial-fringe.claywater-station","ord":3,"kind":"trade","promised":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":4,"kind":"train","promised":false}
 {"place_id":"place.mercantile-coast.chasepoint","ord":0,"kind":"trader","promised":true}
 {"place_id":"place.mercantile-coast.chasepoint","ord":1,"kind":"trade","promised":false}

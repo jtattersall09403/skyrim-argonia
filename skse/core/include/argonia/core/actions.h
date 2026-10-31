@@ -50,6 +50,7 @@ class Effects {
   virtual bool setPrice(std::string_view service, int price) = 0;
   virtual bool changeDisposition(std::string_view npc, int delta) = 0;  // delta already clamped to 0-100 by run
   virtual bool changeSettlementStanding(std::string_view settlement, int delta) = 0;
+  virtual bool openBarter(std::string_view npc) = 0;  // the trader's own BarterMenu (lane trader)
   virtual bool other(const Action& a) = 0;
 };
 

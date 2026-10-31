@@ -47,12 +47,16 @@
 {"editor_id":"ARG_CSTY_MeleeAmbush","plugin":"Argonia.esm","form_id":2501,"record_type":"CSTY","entity_key":"combat-style.melee-ambush"}
 {"editor_id":"ARG_CSTY_SwordAndShield","plugin":"Argonia.esm","form_id":2544,"record_type":"CSTY","entity_key":"combat-style.sword-and-shield"}
 {"editor_id":"ARG_CampSpot","plugin":"Argonia.esm","form_id":2143,"record_type":"ACTI","entity_key":"rest.camp-spot"}
+{"editor_id":"ARG_Cell_ClaywaterStationMerchantChests","plugin":"Argonia.esm","form_id":2551,"record_type":"CELL","entity_key":"place.imperial-fringe.claywater-station#merchant-chests"}
 {"editor_id":"ARG_Class_marsh_guide","plugin":"Argonia.esm","form_id":2054,"record_type":"CLAS","entity_key":"class.marsh-guide"}
 {"editor_id":"ARG_Climate_black_marsh","plugin":"Argonia.esm","form_id":2067,"record_type":"CLMT","entity_key":"climate.black-marsh"}
 {"editor_id":"ARG_ClosedGate","plugin":"Argonia.esm","form_id":2417,"record_type":"KYWD","entity_key":"hook.closed-gate"}
+{"editor_id":"ARG_Cont_MerchantChestWellKeeper","plugin":"Argonia.esm","form_id":2546,"record_type":"CONT","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#chest"}
 {"editor_id":"ARG_Cont_OpeningWorkCampGuardStores","plugin":"Argonia.esm","form_id":2127,"record_type":"CONT","entity_key":"lock.opening-work-camp.guard-stores"}
 {"editor_id":"ARG_Ecz_AmbushDeserter","plugin":"Argonia.esm","form_id":2135,"record_type":"ECZN","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter#zone"}
 {"editor_id":"ARG_Faction_ClaywaterStation","plugin":"Argonia.esm","form_id":2498,"record_type":"FACT","entity_key":"faction.claywater-station"}
+{"editor_id":"ARG_Faction_VendorWellKeeper","plugin":"Argonia.esm","form_id":2550,"record_type":"FACT","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#vendor"}
+{"editor_id":"ARG_Flst_VendorListWellKeeper","plugin":"Argonia.esm","form_id":2549,"record_type":"FLST","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#buys"}
 {"editor_id":"ARG_HoldingCell","plugin":"Argonia.esm","form_id":2050,"record_type":"CELL"}
 {"editor_id":"ARG_HoldingFloor","plugin":"Argonia.esm","form_id":2052,"record_type":"REFR"}
 {"editor_id":"ARG_HoldingMarker","plugin":"Argonia.esm","form_id":2051,"record_type":"REFR"}
@@ -62,6 +66,7 @@
 {"editor_id":"ARG_ImageSpace_marsh_mist","plugin":"Argonia.esm","form_id":2060,"record_type":"IMGS","entity_key":"image_space.mist"}
 {"editor_id":"ARG_ImageSpace_marsh_night","plugin":"Argonia.esm","form_id":2061,"record_type":"IMGS","entity_key":"image_space.night"}
 {"editor_id":"ARG_ImageSpace_marsh_storm","plugin":"Argonia.esm","form_id":2062,"record_type":"IMGS","entity_key":"image_space.storm"}
+{"editor_id":"ARG_Kwd_VendorNoSale","plugin":"Argonia.esm","form_id":2548,"record_type":"KYWD","entity_key":"trade.no-sale"}
 {"editor_id":"ARG_LItem_Weap_AmbushDeserter","plugin":"Argonia.esm","form_id":2545,"record_type":"LVLI","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter#weapon"}
 {"editor_id":"ARG_LocType_Clearable","plugin":"Argonia.esm","form_id":2503,"record_type":"KYWD","entity_key":"hook.loc-clearable"}
 {"editor_id":"ARG_LocType_Dungeon","plugin":"Argonia.esm","form_id":2140,"record_type":"KYWD","entity_key":"hook.loc-dungeon"}
@@ -327,6 +332,7 @@
 {"editor_id":"ARG_Ref_GateTearRoad","plugin":"Argonia.esm","form_id":2422,"record_type":"REFR","entity_key":"gate.tear-road"}
 {"editor_id":"ARG_Ref_LandingDrowningGateEast","plugin":"Argonia.esm","form_id":2423,"record_type":"REFR","entity_key":"landing.drowning-gate.east"}
 {"editor_id":"ARG_Ref_LandingDrowningGateWest","plugin":"Argonia.esm","form_id":2424,"record_type":"REFR","entity_key":"landing.drowning-gate.west"}
+{"editor_id":"ARG_Ref_MerchantChestWellKeeper","plugin":"Argonia.esm","form_id":2547,"record_type":"REFR","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#chest-ref"}
 {"editor_id":"ARG_Ref_ProbeS01ProbeEast30m","plugin":"Argonia.esm","form_id":2509,"record_type":"REFR","entity_key":"ref.probe.s01-probe-east-30m"}
 {"editor_id":"ARG_Ref_ProbeS01ProbeRoadIn","plugin":"Argonia.esm","form_id":2510,"record_type":"REFR","entity_key":"ref.probe.s01-probe-road-in"}
 {"editor_id":"ARG_Ref_ProbeS01ProbeWest30m","plugin":"Argonia.esm","form_id":2511,"record_type":"REFR","entity_key":"ref.probe.s01-probe-west-30m"}

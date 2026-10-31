@@ -2,7 +2,7 @@
 # Argonia title, and no compass or quest marker. Each menu opens by its key (judged by its menu event), a still per
 # step; the stills go to a `reader` with each step's `reader:` list (palette, Pelagiad, no Nordic tell, no Futura).
 # The props scene (tests/scenes/ui-props.txt) stages a crate, a crate to lock, a book and lockpicks; each prop's menu
-# opens by activating it from the console (the menu's look is the test). Barter, training and crafting are owed. Ends at the main menu: a save-changing item, last in its batch.
+# opens by activating it from the console (the menu's look is the test). Barter opens from Livia's service topic; training and crafting are owed. Ends at the main menu: a save-changing item, last in its batch.
 id: ui-sweep
 runner: 1
 crash_risk: medium
@@ -96,8 +96,25 @@ steps:
     reader: [the lock in our palette, every word in Pelagiad, no Nordic ornament]
   - name: lockpicking-closed
     do: [{key: "ESC 80"}, {wait: 1.5}]
+  - name: barter-talk         # lane trader: Livia, the station's general trader, in her hours (08:00-20:00)
+    do:
+      - {console: "set gamehour to 12"}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.topics, contains: "topic.service-barter"}]
+  - name: barter              # her service topic: her answer, then the engine's BarterMenu with her stock
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.service-barter"}}']}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: BarterMenu}, within: 8}
+      - {read: [core, ViewState, dialogue], path: value, eq: null}
+    reader: [her stock listed (saltrice flatbread, jeel-sa, frog legs, bread, leeks, potatoes, Alto wine, healing draught, cups, bowls, a pot, torches, paper, leather, lockpicks), her 300 gold shown, the sheet in our palette, every word in Pelagiad, no Nordic ornament]
+  - name: barter-closed
+    do: [{close_menu: BarterMenu}]
+    expect: [{event: {kind: menu, match: '"menu": "BarterMenu", "opening": false'}}]
   - name: prop-menus-owed
-    owed: a merchant, a trainer and an alchemy table (barter, training, crafting menus) need records of ours or reviewed vanilla bases (0012 §6); none is in the world database yet
+    owed: a trainer and an alchemy table (training, crafting menus) need records of ours or reviewed vanilla bases (0012 §6); none is in the world database yet
   - name: loading-screen      # coc to Claywater's interior and back: the loading menu
     do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia"}, {wait: 1}, {console: "coc LilmothApothecaryHouse"}, {wait: 1}]
     expect: [{event: {kind: menu, match: Loading Menu}, within: 10}]

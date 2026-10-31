@@ -26,6 +26,8 @@ struct Engine : seam::Engine, seam::EngineWrites {
   bool take_item(std::string_view, int) override { return true; }
   bool give_gold(int) override { return true; }
   bool take_gold(int) override { return true; }
+  std::vector<std::string> barters;
+  bool open_barter(std::string_view n) override { barters.emplace_back(n); return true; }
 };
 
 void the_store_holds_written_lines_only() {
@@ -99,11 +101,38 @@ void livia_talks() {
   CHECK(esc.closed);
 }
 
+// Lane trader: her service topic is offered before it is learned, and answering it opens her BarterMenu.
+void livia_trades() {
+  auto store = talk::fixture_store();
+  if (!store) return;
+  seam::State st;
+  Engine e;
+  const auto graphs = gen::quest_graphs();
+  seam::Session ses(st, e, e, graphs);
+  auto c = talk::Conversation::open(*store, ses, kKeeper, "Livia Varinius");
+  CHECK(c.has_value());
+  if (!c) return;
+  const std::string barter = "topic.service-barter";
+  CHECK(!st.known.knows(barter));
+  const auto v = c->view(ses);
+  CHECK(std::any_of(v.topics.begin(), v.topics.end(), [&](const auto& t) { return t.id == barter; }));
+  auto r = c->ask(barter, ses);
+  CHECK(r.state && r.state->entries.size() == 2 && !r.closed);
+  CHECK(e.barters.size() == 1 && e.barters[0] == kKeeper);
+  // Another speaker without a line for it does not offer it.
+  auto p = talk::Conversation::open(*store, ses, "npc.imperial-fringe.claywater-station.landing-s-poler", "Poler");
+  if (p) {
+    const auto pv = p->view(ses);
+    CHECK(std::none_of(pv.topics.begin(), pv.topics.end(), [&](const auto& t) { return t.id == barter; }));
+  }
+}
+
 }  // namespace
 
 int main() {
   the_store_holds_written_lines_only();
   runs_split_at_keywords();
   livia_talks();
+  livia_trades();
   return TEST_MAIN_RESULT("core.talk");
 }

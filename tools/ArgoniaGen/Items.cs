@@ -93,12 +93,17 @@ static class ItemWriters
         return a;
     }
 
-    static Container Container(JsonElement r) => new Container(Key(r), Rel)
+    static Container Container(JsonElement r)
     {
-        EditorID = S(r, "edid"),
-        Name = T(r, "name"),
-        Weight = F(r, "weight"),
-    };
+        var c = new Container(Key(r), Rel) { EditorID = S(r, "edid"), Name = T(r, "name"), Weight = F(r, "weight") };
+        if (r.TryGetProperty("items", out var its))  // a merchant chest's stock (place_build._traders)
+        {
+            c.Items = new Noggog.ExtendedList<ContainerEntry>();
+            foreach (var i in its.EnumerateArray())
+                c.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(FK(S(i, "item"))), Count = i.GetProperty("count").GetInt32() } });
+        }
+        return c;
+    }
 
     static Book Book(JsonElement r) => new Book(Key(r), Rel)
     {

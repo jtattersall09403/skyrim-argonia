@@ -291,6 +291,7 @@ class Fx : public actions::Effects {
     quest_state::add_counter(s_.quests, settlement, delta);
     return true;
   }
+  bool openBarter(std::string_view npc) override { return w_.open_barter(npc); }
   bool other(const actions::Action&) override { return false; }  // its chunk gives it an entry (2.5, 2.12)
 
  private:

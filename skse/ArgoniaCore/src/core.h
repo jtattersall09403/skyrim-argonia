@@ -34,6 +34,7 @@ struct Core {
   std::map<std::string, std::string, std::less<>> views;  // the last push per view, as the view received it
   std::optional<ac::weather::Season> season;              // the season the weather globals hold
   RE::ObjectRefHandle pending_speaker;                    // the person the intercept is opening for
+  RE::ObjectRefHandle talk_ref;                           // the person the open conversation is with
   ac::seam::InFlight inflight;                            // quest orders dispatched, not yet run by the VM
   // 1.5 (life.cpp): grow, die, rest, save.
   ac::life::HealthWatch health;                           // each hit actor's health after its last hit
@@ -78,6 +79,7 @@ class GameEngine final : public ac::seam::Engine, public ac::seam::EngineWrites 
   bool take_item(std::string_view item, int count) override;
   bool give_gold(int amount) override;
   bool take_gold(int amount) override;
+  bool open_barter(std::string_view npc) override;
 };
 ac::seam::Session Session();
 // A fact changed (`why` names it for the log): step the watched quests and apply the orders; check the season.

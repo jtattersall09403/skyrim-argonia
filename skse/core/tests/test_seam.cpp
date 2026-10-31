@@ -46,6 +46,7 @@ struct FakeEngine : seam::Engine, seam::EngineWrites {
   bool take_item(std::string_view i, int n) override { items[std::string(i)] -= n; return true; }
   bool give_gold(int n) override { *purse += n; return true; }
   bool take_gold(int n) override { *purse -= n; return true; }
+  bool open_barter(std::string_view n) override { writes.push_back("barter " + std::string(n)); return true; }
 };
 
 void forms_both_ways() {

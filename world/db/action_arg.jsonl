@@ -22,6 +22,7 @@
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.agree:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.argued:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.livia-persuaded"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.argued:on_delivered","ord":0,"arg_ord":1,"value":1}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.service-barter:on_delivered","ord":0,"arg_ord":0,"value":"npc.imperial-fringe.claywater-station.well-keeper"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.stop-charge.drop:on_delivered","ord":0,"arg_ord":0,"value":"flag.lf83.stop-charge-dropped"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.stop-charge.drop:on_delivered","ord":0,"arg_ord":1,"value":1}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":0,"arg_ord":0,"value":2}

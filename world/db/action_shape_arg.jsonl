@@ -32,6 +32,7 @@
 {"term":"moveRef","ord":0,"kind":"id","optional":false}
 {"term":"moveRef","ord":1,"kind":"id","optional":false}
 {"term":"offerTeach","ord":0,"kind":"id","optional":false}
+{"term":"openBarter","ord":0,"kind":"id","optional":false}
 {"term":"promoteSuccessor","ord":0,"kind":"id","optional":false}
 {"term":"promoteSuccessor","ord":1,"kind":"id","optional":false}
 {"term":"recordWitnessed","ord":0,"kind":"id","optional":false}

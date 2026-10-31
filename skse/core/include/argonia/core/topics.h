@@ -41,6 +41,7 @@ struct Topic {
   std::string label;               // the topic list's name and its first keyword form
   std::vector<std::string> forms;  // the glossary forms that also hyperlink it
   bool essential = false;
+  bool service = false;  // a service (topic_class service): every speaker who answers it offers it, learned or not
 };
 
 struct Line {

@@ -1,0 +1,25 @@
+FormKey: 0009F6:Argonia.esm
+EditorID: ARG_Faction_VendorWellKeeper
+Name:
+  TargetLanguage: English
+  Value: Livia Varinius's trade
+Flags:
+- HiddenFromPC
+- Vendor
+Ranks:
+- Number: 0
+  Title:
+    Male:
+      TargetLanguage: English
+      Value: Trader
+    Female: {}
+VendorBuySellList: 0009F5:Argonia.esm
+MerchantContainer: 0009F3:Argonia.esm
+VendorValues:
+  StartHour: 8
+  EndHour: 20
+  NotSellBuy: True
+VendorLocation:
+  Target:
+    MutagenObjectType: LocationTarget
+    Link: 0008DB:Argonia.esm

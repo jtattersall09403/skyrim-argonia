@@ -11,6 +11,7 @@
 {"list_id":"dialogue_line:line.claywater-station.n1-3.cracked-well.tasted:on_delivered","ord":1,"term":"setFlag"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.agree:on_delivered","ord":0,"term":"setFlag"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.one-charge.argued:on_delivered","ord":0,"term":"setFlag"}
+{"list_id":"dialogue_line:line.claywater-station.well-keeper.service-barter:on_delivered","ord":0,"term":"openBarter"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.stop-charge.drop:on_delivered","ord":0,"term":"setFlag"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":0,"term":"takeGold"}
 {"list_id":"dialogue_line:line.claywater-station.well-keeper.two-charges.pay:on_delivered","ord":1,"term":"giveItem"}

@@ -136,6 +136,7 @@ Outcome run(std::span<const Action> list, const conditions::Facts& facts, Effect
         ok = fx.changeDisposition(id(a, 0), delta);
         break;
       }
+      case Verb::openBarter: ok = fx.openBarter(id(a, 0)); break;
       case Verb::changeSettlementStanding: ok = fx.changeSettlementStanding(id(a, 0), whole(a, 1, 0)); break;
       default: ok = fx.other(a); break;
     }
