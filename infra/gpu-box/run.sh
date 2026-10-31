@@ -20,6 +20,16 @@ KEY="$HOME/.argonia/keys/argonia-play"
 # Region and address from machines.conf (#27).
 read -r R ADDR < <(awk -v m="$M" '$1==m {print $2, $3; f=1} END {if (!f) print "eu-west-2 private"}' "$here/machines.conf")
 [ "$ADDR" = public ] && IPQ=PublicIpAddress || IPQ=PrivateIpAddress
+# A public-address machine allows SSH only from the build VM, whose public IP changes at every start (no Elastic
+# IP): open port 22 to today's address on the machine's security group (idempotent; a duplicate is refused).
+open_ssh() {
+  [ "$ADDR" = public ] || return 0
+  local me sg; me=$(curl -s -m 5 https://checkip.amazonaws.com) || return 0
+  sg=$(aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
+    --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)
+  aws ec2 authorize-security-group-ingress --region $R --group-id "$sg" \
+    --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$me/32,Description=build-vm}]" >/dev/null 2>&1 || true
+}
 
 ip() {
   aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
@@ -39,6 +49,10 @@ wait_ssh() {
   echo "no SSH after 4 minutes" >&2; return 1
 }
 
+case "${1:-}" in
+  machine|stop) ;;
+  *) open_ssh ;;
+esac
 case "${1:-}" in
   machine) echo "$M $(id)" ;;
   ip) ip ;;
