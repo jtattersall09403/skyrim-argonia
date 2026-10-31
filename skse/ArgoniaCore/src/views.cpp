@@ -496,6 +496,13 @@ void HudRefresh() { PushHudState(); }
 void HudLoading(bool open) {
   g_loading_open = open;
   PushHudState();
+  // The push above is a JS call the page runs only when Prisma next renders, and the load blocks that: game-21's
+  // stills showed the bars and the vastei box over the black load for 4-16 s. The native layer hides at once (the
+  // HUD is not modal, so the view host never hides it: Show on the close puts back what was there).
+  if (auto it = g_ids.find("hud"); g_api && it != g_ids.end()) {
+    if (open) g_api->Hide(it->second);
+    else g_api->Show(it->second);
+  }
 }
 
 bool ViewsBound() { return g_api != nullptr; }
