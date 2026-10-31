@@ -157,18 +157,18 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | owed | argoniabase is the black holding cell; ArgoniaWalk (base_save.py) owed its run of tests/journeys/walk-save.yaml |
-| No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | owed | source: Tropical Skyrim's menu fog mesh, dropped (lane-1.9); owed a main-menu still |
-| No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | owed | owed tools/ui_theme/front_door.py stills (lane-1.9) |
-| A reader over 3 load stills: Skyrim's classic layout with a 3D model from our stack (nothing Nordic), our fact in our font, readable unsquashed text at 16:9 and the phone's aspects, no HUD | owner play test 7, 8; owner-brief 2026-10-31 | L4 | owed | 12 models set (lane-1.9); owed load stills by drive.mjs at desktop, v5-unfolded, v5-folded |
+| Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: ArgoniaWalk loads (argoniabase is the holding cell; the walk save is the owner's) |
+| No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: main menu OK |
+| No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: 1.8-1.11 done but the HUD |
+| A reader over 3 load stills: Skyrim's classic layout with a 3D model from our stack (nothing Nordic), our fact in our font, readable unsquashed text at 16:9 and the phone's aspects, no HUD | owner play test 7, 8; owner-brief 2026-10-31 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: loading screens OK for now |
 
 ## 1.10 The player character
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
 | Argonia.esm overrides Skyrim.esm's Player (0x7): ArgonianRace, an Argonian race preset's head parts and frills, dark green scale tints, no Nord hair | 1.10 | L1 | proven | tools/argonia_world/tests/test_player_record.py |
-| A reader over front, side and back full-body stills from ArgoniaWalk: an Argonian head, no Nord features, natural colours, no seam at the neck | owner play test 6; game-22 reader | L4 | owed | journey:player-look tests/journeys/batches/lane-1.10.sh (no game machine: London reclaimed) |
-| The same from `argoniabase` and from a fresh base save (base_save.py, no setrace) | 1.10 | L4 | owed | tests/journeys/batches/lane-1.10.sh |
+| A reader over front, side and back full-body stills from ArgoniaWalk: an Argonian head, no Nord features, natural colours, no seam at the neck | owner play test 6; game-22 reader | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: the player character fixed |
+| The same from `argoniabase` and from a fresh base save (base_save.py, no setrace) | 1.10 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; the owner: the player character fixed |
 
 ## 1.11 Our HUD, rebuilt from the old game's
 
@@ -176,7 +176,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 |---|---|---|---|---|
 | The old HUD's inventory: every element built or dropped with a reason | owner play test 5 | L1 | proven | docs/research/2026-10-31/lane-1.11.md |
 | A reader over calm, fight and low-health stills off game (1080p, V5 folded, unfolded) | owner play test 5 | L3 | proven | docs/research/2026-10-31/lane-1.11.md |
-| A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | owed | built and passed at L3; batch tests/journeys/batches/lane-1.11.sh owed until the machines move |
+| A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | proven | docs/research/2026-10-31/owner-playtest-2.md; lane-1.11.sh on argonia-play, rc 0 |
 | The owner says the HUD looks right | owner play test 5 | L6 | owed | — |
 
 ## 1.12 Menus
