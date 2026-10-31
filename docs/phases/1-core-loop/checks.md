@@ -143,11 +143,11 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| The owner has ruled on the machine from an evidence-based call (interruption bands, placement scores, prices, latency), and it is built | 1.8, owner play test 12 | L6 | owed | reclaimed twice on 2026-10-31, the second at once on a retry (docs/research/2026-10-31/owner-playtest-1.md); on-demand ruled out by the owner |
+| The owner has ruled on the machine from an evidence-based call (interruption bands, placement scores, prices, latency), and it is built | 1.8, owner play test 12 | L6 | owed | evidence in docs/research/2026-10-31/1.8-machine-evidence.md; the call posted as #30 (recommends g6.2xlarge spot in London: same L4, score 9, band 5-10%); waits on the owner |
 | A simulated spot interruption (the metadata mock) writes the suspend save | 1.8 | L4 | owed | not built |
 | The baked image boots to the Argonia menu with no first-boot fix by hand | 1.8 | L4 | owed | not built |
 | `machine_inventory.sh` shows nothing unarchived on London and on Paris | 1.8, docs/machine-moves.md | L4 | owed | London: 6 MO2 folders unarchived (docs/research/2026-10-31/lane-records.md) |
-| `saves.sh backup` succeeds at a stop | 1.8 | L4 | owed | "saves backup failed" at London's stop (docs/research/2026-10-31/lane-game-22.md) |
+| `saves.sh backup` succeeds at a stop | 1.8 | L4 | proven | docs/research/2026-10-31/1.8-session-1.md; run.sh stop backed up 26 saves each: s3 argonia-saves saves/20261031T122540Z.zip (argonia-play) and saves/argonia-play-london/20261031T122615Z.zip (2026-10-31) |
 | wake.yml's "play" comment starts the Paris machine | 1.8, #27 | L6 | owed | unproved until the owner's next "play" |
 
 ## 1.9 The front door and loads

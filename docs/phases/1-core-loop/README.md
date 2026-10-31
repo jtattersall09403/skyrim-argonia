@@ -76,7 +76,7 @@ the Status column below and `checks.md`.
 | 1.4 | [One quest through the journal](1.4-one-quest.md) | 1.3, 1.2 journal, 0.1 §i | 1.5 | in progress |
 | 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3 | 1.4 | in progress |
 | 1.6 | [Fight on the tuned stack, wired to the sheet](1.6-fight-on-the-stack.md) | 1.3 sheet | 1.4, 1.5 | in progress |
-| 1.8 | [A play machine you can rely on](1.8-a-play-machine-you-can-rely-on.md) | — | 1.9–1.16 | todo |
+| 1.8 | [A play machine you can rely on](1.8-a-play-machine-you-can-rely-on.md) | — | 1.9–1.16 | in progress |
 | 1.9 | [The front door and loads](1.9-the-front-door-and-loads.md) | — | 1.10 | todo |
 | 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | todo |
 | 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.13 | todo |

@@ -7,6 +7,8 @@ set -euo pipefail
 main=$(cd "$(dirname "$0")/.." && pwd)
 wt=${1:?usage: worktree.sh <path>}
 git -C "$main" fetch -q origin
+# Each new lane first archives and removes lanes idle for 3 h (tooling/disk.sh; the owner pays for the disk).
+[ -n "${NO_TIDY:-}" ] || "$main/tooling/disk.sh" tidy | grep -v '^keep ' || true
 if [ -d "$wt/.git" ] || [ -f "$wt/.git" ]; then
   git -C "$wt" checkout -q --detach origin/main
 else

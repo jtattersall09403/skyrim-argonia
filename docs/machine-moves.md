@@ -37,3 +37,19 @@ scenes, the base save, the manifest's mods) are not listed; `deploy.sh` and `sta
 3. Prove the owner's path on the new machine (the card, our ESMs loaded, a still).
 4. Run the inventory on the old machine once more, then retire it. Its image goes only after the new machine has
    run for a day.
+
+## The build VM's disk
+
+The owner pays for the build VM's disk by its size (120 GB gp3, about $11 a month), so it must never need to grow.
+`tooling/disk.sh report` shows what fills it, by kind; `tooling/disk.sh tidy` frees what the bucket can give back:
+
+- **Lane worktrees** (`~/wt-*`, one per agent lane, about 0.6 GB each): one idle for 3 hours (no process inside,
+  nothing changed) is archived to `s3://argonia-private-…/worktrees/<name>/` and removed. The archive holds its
+  `out/` (run dirs, batches, stills; built plugins excepted), its untracked files, any uncommitted edits and a bundle
+  of any commits not on origin/main. Evidence a doc cites as `wt-<name>/out/…` is at that prefix, same path.
+  `tooling/worktree.sh` runs the tidy before it makes each new lane (`NO_TIDY=1` skips it).
+- **Mod archives** (`~/.argonia/mods`, 16 GB): `stack.py evict` deletes each local archive once the bucket's
+  `mods/` holds it with the manifest's hash; `stack.py fetch` takes it back from the bucket in minutes.
+
+Kept on purpose: the staged mods (`~/.argonia/stack/MO2`; stack push and the UI theme build read them), the owned
+games (`~/games`: Skyrim SE data for ArgoniaGen, DSR for measuring), the main tree's `out/`.

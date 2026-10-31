@@ -121,6 +121,7 @@ Get-Content $o -EA SilentlyContinue' ;;
     done
     wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
-  stop) "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo stopping ;;
+  # stop names its machine first: GPU_NAME=... (not ARGONIA_PLAY) once stopped argonia-play silently (1.8, 2026-10-31)
+  stop) echo "stopping $M ($R)"; "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo "stopping $M" ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
 esac

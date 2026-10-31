@@ -19,7 +19,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.4 | One quest through the journal | in progress (LF83 record, lines, QUST: 979cf55 7ccb595 dfc29b9; lf83-components green (lane-game-19.md); lf83-endings and quest-board green (lane-game-18.md); first-place green (lane-game-17.md); owed: the Part 1 batch in one pass) |
 | 1 | 1.5 | Grow, die, rest, save | in progress (life module L2: 4bfe537 f2582ea 0f3eaa4; sitting 48c12a6; rest-is-the-only-save, suspend-save, rest-respawn green (lane-game-17.md); grow-at-rest green once (lane-game-19.md); owed: die-and-recover (red at die, lane-game-21.md); rest-respawn-cleared (respawn until the place is wholly cleared, then never) when a clearable place is built) |
 | 1 | 1.6 | Fight on the tuned stack, wired to the sheet | in progress (wiring spec L1 dbf8da4; fight-damage-builds, fight-lock-on, fight-roll-burden, combat-trial-a, croc-den green (lane-game-17.md); fight-archetype green as our records only c413ce5 (lane-game-18.md); owed: the Part 1 batch in one pass) |
-| 1 | 1.8 | A play machine you can rely on | todo |
+| 1 | 1.8 | A play machine you can rely on | in progress (evidence docs/research/2026-10-31/1.8-machine-evidence.md, call #30 waits on the owner; saves backup proven) |
 | 1 | 1.9 | The front door and loads | todo |
 | 1 | 1.10 | The player character | todo |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | todo |
