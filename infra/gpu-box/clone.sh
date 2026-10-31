@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Clone a game machine into another one (owner, 2026-10-29: "as many game machines as you need").
-#   clone.sh [--from argonia-play] [--new-image] argonia-play-N [instance-type] [az]
+#   clone.sh [--from argonia-play] [--new-image | --image ami-...] argonia-play-N [instance-type] [az]
 # Run it under the new machine's lock; it waits on the image (tens of minutes the first time):
 #   tooling/job_guard.sh run --gpu=argonia-play-2 clone-play-2 -- infra/gpu-box/clone.sh argonia-play-2
 #
@@ -19,11 +19,12 @@ export PATH="$HOME/.local/bin:$PATH"
 here=$(cd "$(dirname "$0")" && pwd)
 R=eu-west-2
 VPC=vpc-8dfe71e5
-FROM=argonia-play; NEW_IMAGE=0
+FROM=argonia-play; NEW_IMAGE=0; AMI_GIVEN=
 while [ $# -gt 0 ]; do
   case "$1" in
     --from) FROM=$2; shift 2 ;;
     --new-image) NEW_IMAGE=1; shift ;;
+    --image) AMI_GIVEN=$2; shift 2 ;;  # a named London image (the source has moved region, #27)
     *) break ;;
   esac
 done
@@ -41,8 +42,8 @@ TYPE=${2:-$SRC_TYPE}; AZ=${3:-$SRC_AZ}
 ID=$(q describe-instances --filters "Name=tag:Name,Values=$NAME" "$live" --query 'Reservations[0].Instances[0].InstanceId')
 if [ "$ID" = None ]; then
   # 1. The image.
-  AMI=None
-  [ $NEW_IMAGE = 1 ] || AMI=$(q describe-images --owners self --filters "Name=tag:argonia-image,Values=$FROM" \
+  AMI=${AMI_GIVEN:-None}
+  [ -n "$AMI_GIVEN" ] || [ $NEW_IMAGE = 1 ] || AMI=$(q describe-images --owners self --filters "Name=tag:argonia-image,Values=$FROM" \
     Name=state,Values=available,pending --query 'sort_by(Images,&CreationDate)[-1].ImageId')
   if [ "$AMI" = None ] || [ -z "$AMI" ]; then
     stamp=$(date -u +%Y%m%dT%H%MZ)
