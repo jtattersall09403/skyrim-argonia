@@ -20,21 +20,30 @@ KEY="$HOME/.argonia/keys/argonia-play"
 # Region and address from machines.conf (#27).
 read -r R ADDR < <(awk -v m="$M" '$1==m {print $2, $3; f=1} END {if (!f) print "eu-west-2 private"}' "$here/machines.conf")
 [ "$ADDR" = public ] && IPQ=PublicIpAddress || IPQ=PrivateIpAddress
+# The address is cached for 5 min (a describe-instances is ~1.5 s, and an agent makes hundreds of calls); start, stop
+# and up drop it, since a public address changes at every start.
+C="$HOME/.argonia/cache"; mkdir -p "$C"
 # A public-address machine allows SSH only from the build VM, whose public IP changes at every start (no Elastic
 # IP): open port 22 to today's address on the machine's security group (idempotent; a duplicate is refused).
 open_ssh() {
   [ "$ADDR" = public ] || return 0
   local me sg; me=$(curl -s -m 5 https://checkip.amazonaws.com) || return 0
+  [ "$(cat "$C/sg-$M" 2>/dev/null)" = "$me" ] && return 0  # already opened to this address (saves ~3 s a call)
   sg=$(aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)
   aws ec2 authorize-security-group-ingress --region $R --group-id "$sg" \
     --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$me/32,Description=build-vm}]" >/dev/null 2>&1 || true
+  echo "$me" > "$C/sg-$M"
 }
 
 ip() {
-  aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
+  local f="$C/ip-$M" a
+  if [ -n "$(find "$f" -mmin -5 2>/dev/null)" ]; then cat "$f"; return; fi
+  a=$(aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     Name=instance-state-name,Values=pending,running,stopping,stopped \
-    --query "Reservations[0].Instances[0].$IPQ" --output text
+    --query "Reservations[0].Instances[0].$IPQ" --output text)
+  [[ "$a" =~ ^[0-9]+(\.[0-9]+){3}$ ]] && echo "$a" > "$f"
+  echo "$a"
 }
 id() {
   aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
@@ -43,12 +52,20 @@ id() {
 }
 SSH_OPTS=(-i "$KEY" -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o BatchMode=yes -o ServerAliveInterval=30)
 # Every command refreshes the machine's busy flag, so idle-stop.ps1 never stops it between an agent's commands.
-ps() { ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*"; }
+ps() {  # a connection failure (255) with a cached address re-reads it once: the machine was restarted elsewhere
+  local rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*" || rc=$?
+  if [ $rc = 255 ] && [ -f "$C/ip-$M" ]; then rm -f "$C/ip-$M"
+    rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $*" || rc=$?; fi
+  return $rc
+}
 wait_ssh() {
   local i; for i in $(seq 1 24); do ps 'hostname' >/dev/null 2>&1 && return 0; read -t 10 < /dev/zero 2>/dev/null || true; done
   echo "no SSH after 4 minutes" >&2; return 1
 }
 
+case "${1:-}" in
+  start|stop|up) rm -f "$C/ip-$M" ;;
+esac
 case "${1:-}" in
   machine|stop) ;;
   *) open_ssh ;;
