@@ -9,7 +9,7 @@ const buy = (a: SittingAttribute["id"]) => ({ type: "sitting.buy" as const, v: 1
 
 export const REFUSAL: Record<SittingRefusal, string> = {
   tooDear: "Not enough vastei",
-  atCapThisSitting: "No more this sitting",
+  atCapThisSitting: "No more at this sitting",
   atPurchaseCap: "At its height",
   noPendingLevel: "No level to take",
 };
@@ -36,10 +36,10 @@ function row(a: SittingAttribute): string {
 
 export function render(s: SittingState): string {
   const notice = s.notice !== undefined ? `<p class="notice" role="status">${esc(s.notice)}</p>` : "";
-  const later = s.pendingAfter > 0 ? `<span class="later">${s.pendingAfter} more to take later</span>` : "";
+  const later = s.pendingAfter > 0 ? `<span class="later">${s.pendingAfter} more level to take later</span>` : "";
   return `<section class="sitting paper" aria-label="Level sitting">
   <header class="head"><h1>Level ${s.level}</h1><span class="vastei">Vastei carried <b>${fmt(s.vastei)}</b></span>${later}</header>
-  <div class="cols"><span>Attribute</span><span>Now</span><span>This sitting</span><span>Vastei</span><span></span><span></span></div>
+  <div class="cols"><span>Attribute</span><span>Now</span><span>This sitting</span><span>Cost</span><span></span><span></span></div>
   <ul class="attrs">${s.attributes.map(row).join("")}</ul>
   <div class="base"><p class="pool">Health <b>${fmt(s.health.before)}</b> <span class="arrow">&rarr;</span> <b>${fmt(s.health.after)}</b></p>
   ${notice}

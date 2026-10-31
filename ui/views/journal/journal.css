@@ -22,7 +22,7 @@ body { display: flex; align-items: center; justify-content: center; }
 .entry { break-inside: avoid; margin: 0 0 var(--s4); }
 .entry p { margin: 0; }
 .date { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); }
-.qname { display: block; color: var(--rust); font-style: italic; }
+.qname { display: block; margin-bottom: 0.4rem; color: var(--rust); font-style: italic; }
 .entry.complete p::after { content: " \2014 Finished."; color: var(--moss); }
 .entry.fail p::after { content: " \2014 Failed."; color: var(--rust); }
 .kw { color: var(--link); }

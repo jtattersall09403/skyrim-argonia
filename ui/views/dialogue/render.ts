@@ -43,7 +43,7 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
     ? `<button type="button" class="special" data-ui="persuade-open" data-key="persuade">Persuasion</button>` : "";
   const goodbye = s.canLeave
     ? intentButton({ type: "dialogue.goodbye", v: 1, body: {} }, "goodbye", "Goodbye", `data-key="goodbye"`)
-    : `<p class="forced">You cannot leave this talk yet.</p>`;
+    : `<p class="forced">You cannot leave yet.</p>`;
   return `<section class="dialogue paper" data-band="${d.band}" aria-label="${esc(s.speaker.name)}">
   <header class="title"><h1>${esc(s.speaker.name)}</h1></header>
   <div class="cols">
