@@ -27,7 +27,7 @@ lint:
 	else python3 -m compileall -q tooling tools >/dev/null; fi $(FAIL)
 
 unit:
-	@$(PY) -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
+	@$(PY) -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools infra/stream-client/e2e/test_feel.py; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
 
 budget:
 	@python3 -m pytest -q tooling/tests/test_word_budget.py $(FAIL)
