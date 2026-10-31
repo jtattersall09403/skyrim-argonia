@@ -1,85 +1,88 @@
-/* The dialogue window: Morrowind's layout (text left, disposition, persuasion, topics and Goodbye right) in paper. */
+/* The dialogue window (1.12 §6): Morrowind's layout (text left; disposition, persuasion, topics, services and Goodbye
+   right) in the frame style: a dark green-black pane, the gold-green trim, an inset well for the conversation. */
 body { display: flex; align-items: center; justify-content: center; }
 #view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
+.frame {
+  color: var(--frame-text); background: var(--frame-bg);
+  border: var(--edge) solid var(--frame-trim); border-radius: 0.3rem;
+  box-shadow: 0 0.4rem 1.6rem var(--frame-shadow), inset 0 0 0 0.3rem var(--frame-bg),
+    inset 0 0 0 calc(0.3rem + 1px) var(--frame-trim);
+}
 .dialogue {
   position: relative;
   width: min(94vw, 62rem); height: 72vh; margin-top: 18vh;
   display: flex; flex-direction: column;
   padding: var(--s3) var(--s4) var(--s4);
 }
-.title { text-align: center; border-bottom: 1px solid var(--ink-faint); margin-bottom: var(--s3); }
+.title { text-align: center; border-bottom: 1px solid var(--frame-trim); margin-bottom: var(--s3); }
 .title h1 {
-  margin: 0 0 var(--s1); font-size: var(--t-title); font-weight: normal; letter-spacing: 0.06em; color: var(--ink);
+  margin: 0 0 var(--s1); font-size: var(--t-title); font-weight: normal; letter-spacing: 0.06em; color: var(--frame-head);
 }
 .cols { flex: 1; min-height: 0; display: flex; gap: var(--s4); }
 
 .talk {
   flex: 1.7; min-width: 0; overflow-y: auto; padding: var(--s2) var(--s3);
-  background: rgba(241, 232, 207, 0.55); border: 1px solid rgba(84, 67, 44, 0.35);
-  box-shadow: inset 0 0.1rem 0.4rem rgba(80, 60, 30, 0.25);
+  background: var(--frame-well); border: 1px solid var(--frame-trim);
+  scrollbar-color: var(--frame-trim) transparent;
 }
 .entry { margin: 0 0 var(--s3); }
 .entry p { margin: 0; }
-.goodbye:disabled { color: var(--ink-faint); border-color: var(--ink-faint); }
-.entry.notice p { color: var(--ink-soft); font-style: italic; }
-.entry:not(.last) { color: var(--ink-soft); }
-.asked { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); }
+.entry.notice p { color: var(--frame-text-soft); font-style: italic; }
+.entry:not(.last) { color: var(--frame-text-soft); }
+.asked { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--frame-trim-hi); }
 .kw {
-  display: inline; color: var(--link); text-decoration: underline; text-decoration-thickness: 0.06em;
+  display: inline; color: var(--frame-link); text-decoration: underline; text-decoration-thickness: 0.06em;
   text-underline-offset: 0.14em;
 }
-.kw:hover { color: var(--link-hi); }
+.kw:hover { color: var(--frame-head); }
 
 .side { position: relative; flex: 1; min-width: 10.5rem; max-width: 24rem; display: flex; flex-direction: column; gap: var(--s2); }
 .disp { display: flex; align-items: center; gap: var(--s2); }
-.disp-bar { flex: 1; }
-.disp-text b { font-weight: normal; color: var(--rust); }
-.forced { margin: 0; padding: 0; text-align: center; font-style: italic; color: var(--ink-soft); }
+.disp-text { white-space: nowrap; color: var(--frame-text-soft); }
 .disp-bar {
-  position: relative; height: 0.6rem; border: var(--edge) solid var(--ink-soft); background: rgba(84, 67, 44, 0.35);
+  position: relative; flex: 1; height: 0.6rem; border: 1px solid var(--frame-trim); background: var(--frame-well);
   border-radius: 0.1rem; overflow: hidden;
 }
 .disp-fill { position: absolute; inset: 0 auto 0 0; background: linear-gradient(#a84a2c, var(--rust) 60%, #5d2113); }
-.disp-text { white-space: nowrap; }
-.special, .goodbye, .back-btn {
-  min-height: 2rem; padding: var(--s1) var(--s3); text-align: center;
-  border: var(--edge) solid var(--ink-soft); border-radius: 0.15rem; background: var(--paper-light);
+.forced { margin: 0; padding: 0; text-align: center; font-style: italic; color: var(--frame-text-soft); }
+.special, .goodbye, .back-btn, .service {
+  min-height: 2.2rem; padding: var(--s1) var(--s3); text-align: center; color: var(--frame-text);
+  border: var(--edge) solid var(--frame-trim); border-radius: 0.15rem; background: rgba(111, 106, 53, 0.12);
 }
+.services { display: flex; flex-direction: column; gap: var(--s1); }
+.goodbye:disabled { color: var(--frame-text-soft); border-color: var(--frame-text-soft); }
 .topics {
   flex: 1; min-height: 0; list-style: none; margin: 0; padding: var(--s1) 0;
-  border-top: 1px solid var(--ink-faint); border-bottom: 1px solid var(--ink-faint);
-  /* Scroll shadows: a dark fade at an edge with more beyond it, the cue that the list goes on. */
-  background:
-    linear-gradient(var(--paper), rgba(230, 217, 184, 0)) top / 100% 1.2rem no-repeat local,
-    linear-gradient(rgba(230, 217, 184, 0), var(--paper)) bottom / 100% 1.2rem no-repeat local,
-    radial-gradient(farthest-side at 50% 0, rgba(60, 40, 15, 0.45), transparent) top / 100% 0.8rem no-repeat scroll,
-    radial-gradient(farthest-side at 50% 100%, rgba(60, 40, 15, 0.45), transparent) bottom / 100% 0.8rem no-repeat scroll;
-  scrollbar-width: auto; scrollbar-color: var(--ink-soft) rgba(84, 67, 44, 0.15);
+  background: var(--frame-well); border: 1px solid var(--frame-trim);
+  scrollbar-width: auto; scrollbar-color: var(--frame-trim) transparent;
 }
-/* The typed filter over the topic list: the letters as typed, in the ink of the list. */
-.filter { padding: 0 var(--s1); font-style: italic; color: var(--ink-soft); border-top: 1px solid var(--ink-faint); }
 .topics::-webkit-scrollbar { width: 0.6rem; }
-.topics::-webkit-scrollbar-track { background: rgba(84, 67, 44, 0.15); }
-.topics::-webkit-scrollbar-thumb { background: var(--ink-soft); }
-.topics:last-child { border-bottom: 0; }
-.topic { display: block; width: 100%; padding: 0.12rem var(--s2); color: var(--link); }
-.topic:hover { color: var(--link-hi); background: rgba(176, 112, 42, 0.1); }
+.topics::-webkit-scrollbar-thumb { background: var(--frame-trim); }
+/* The typed filter over the topic list: the letters as typed. */
+.filter { padding: 0 var(--s1); font-style: italic; color: var(--frame-text-soft); }
+.topic { display: block; width: 100%; padding: 0.12rem var(--s2); color: var(--frame-link); }
+.topic:hover { background: var(--frame-select); }
+.frame button:focus-visible, .frame button:focus, .frame [data-nav]:focus {
+  outline: var(--edge) solid var(--focus); outline-offset: 0.08rem; background-color: var(--frame-select);
+}
+body[data-device="touch"] .frame button:focus { outline: none; background-color: transparent; }
 
 .persuade {
   position: absolute; inset: 0 0 auto 0; max-height: 100%; overflow-y: auto; padding: var(--s3) var(--s3);
   display: flex; flex-direction: column; gap: var(--s2); z-index: 2;
+  background: var(--frame-bg); border: var(--edge) solid var(--frame-trim-hi); border-radius: 0.2rem;
+  box-shadow: 0 0.3rem 1rem var(--frame-shadow);
 }
-.persuade h2 { margin: 0; font-size: var(--t-head); font-weight: normal; color: var(--rust); text-align: center; }
+.persuade h2 { margin: 0; font-size: var(--t-head); font-weight: normal; color: var(--frame-head); text-align: center; }
 .persuade .opts { display: flex; flex-direction: column; gap: var(--s1); }
 .opt {
   display: flex; justify-content: space-between; gap: var(--s3); padding: var(--s1) var(--s3);
-  border-bottom: 1px solid rgba(84, 67, 44, 0.3);
+  border-bottom: 1px solid rgba(111, 106, 53, 0.5);
 }
-.opt .cost { color: var(--ink-soft); }
-.opt:disabled { color: var(--ink-soft); font-style: italic; text-decoration: line-through; text-decoration-color: rgba(84, 67, 44, 0.5); }
-.opt:disabled .cost { color: var(--ink-soft); }
+.opt .cost { color: var(--frame-text-soft); }
+.opt:disabled { color: var(--frame-text-soft); font-style: italic; text-decoration: line-through; }
 
-/* Short and wide (the fold closed at 21:9): the side column narrows, the title tightens. */
+/* Tall (V5 unfolded) and short-wide (the fold closed at 21:9). */
 @media (max-aspect-ratio: 1/1) { .dialogue { height: 80vh; margin-top: 10vh; } }
 @media (min-aspect-ratio: 2/1) { .dialogue { width: min(80vw, 66rem); height: 92vh; margin-top: 0; } .title h1 { font-size: var(--t-head); } }

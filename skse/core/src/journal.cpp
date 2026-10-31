@@ -49,6 +49,42 @@ std::span<const gen::JournalObjectiveText> objectives(const gen::JournalStageTex
   return std::span(gen::kJournalObjectives).subspan(t.first_objective, t.objective_count);
 }
 
+const gen::JournalQuestText* quest_text(QuestId q) {
+  for (const auto& t : gen::kJournalQuests)
+    if (t.quest == q) return &t;
+  return nullptr;
+}
+
+Group group_of(const gen::JournalQuestText& t) {
+  if (t.line_group == "local" && !t.place.empty()) return {std::string(t.place), true};
+  return {std::string(t.line), false};
+}
+
+namespace {
+char lower(char c) { return c >= 'A' && c <= 'Z' ? char(c - 'A' + 'a') : c; }
+bool contains(std::string_view hay, std::string_view needle) {
+  if (needle.size() > hay.size()) return false;
+  for (std::size_t i = 0; i + needle.size() <= hay.size(); ++i) {
+    std::size_t k = 0;
+    while (k < needle.size() && lower(hay[i + k]) == lower(needle[k])) ++k;
+    if (k == needle.size()) return true;
+  }
+  return false;
+}
+}  // namespace
+
+bool matches(std::string_view text, std::string_view query) {
+  std::size_t i = 0;
+  while (i < query.size()) {
+    while (i < query.size() && (query[i] == ' ' || query[i] == '\t')) ++i;
+    std::size_t j = i;
+    while (j < query.size() && query[j] != ' ' && query[j] != '\t') ++j;
+    if (j > i && !contains(text, query.substr(i, j - i))) return false;
+    i = j;
+  }
+  return true;
+}
+
 std::optional<Notice> notify(Notices& n, NoticeCause cause, std::string_view quest, std::int32_t mark, double now) {
   for (const auto& x : n.recent)
     if (x.quest == quest && now - x.at >= 0 && now - x.at < kNoticeMerge) return std::nullopt;

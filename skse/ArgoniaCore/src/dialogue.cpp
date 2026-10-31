@@ -4,6 +4,8 @@
 // the frame it opens (the router's backstop) and our conversation opened for the same speaker. The view host keeps
 // each view's last push and logs it whole; ViewIntent is the one intent entry for every view (dialogue, journal,
 // chart, sitting), routed by type; the web-view binding (PrismaUI) is views.cpp's, behind Push() and ViewIntent.
+// Barter (1.12 §6): the window's Barter button hides our view, keeps the conversation and opens Skyrim's BarterMenu
+// for the speaker (Wind UI intercepts it and draws its barter window); when that menu closes, our window returns.
 #include "core.h"
 
 namespace argonia::plugin {
@@ -18,6 +20,63 @@ std::optional<std::string> SpeakerId(RE::Actor* actor) {
   if (!id) id = WorldId(actor);
   if (!id || !ac::talk::speaks(*c.store, *id)) return std::nullopt;
   return id;
+}
+
+// The open conversation's speaker, while they are still there.
+RE::Actor* TalkActor() {
+  auto ref = Get().talk_ref.get();
+  return ref ? ref->As<RE::Actor>() : nullptr;
+}
+
+// The window as the player sees it: the conversation's state and the speaker's service buttons. A merchant (a
+// vendor faction, which sets the BarterMenu's chest, hours and buy/sell list) offers Barter.
+ac::msg::DialogueState Dressed(ac::msg::DialogueState s) {
+  auto* a = TalkActor();
+  if (a && a->GetVendorFaction()) s.services.push_back(ac::msg::ServiceKind::barter);
+  return s;
+}
+
+bool bartering = false;  // our window is hidden behind the BarterMenu it opened; it returns when that menu closes
+
+// Barter chosen: our view hides (the conversation stays open) and the BarterMenu opens on the next frame.
+void OpenBarterFromDialogue() {
+  auto& c = Get();
+  auto* a = TalkActor();
+  if (!a || !a->GetVendorFaction()) {
+    SKSE::log::warn("dialogue: Barter refused; the speaker is gone or keeps no shop");
+    return;
+  }
+  bartering = true;
+  CloseView("dialogue");
+  SKSE::GetTaskInterface()->AddTask([h = c.talk_ref] {
+    auto r = h.get();
+    auto* actor = r ? r->As<RE::Actor>() : nullptr;
+    if (!actor) {
+      std::lock_guard l(Get().lock);
+      bartering = false;
+      SKSE::log::warn("dialogue: the speaker is gone before the BarterMenu opened");
+      return;
+    }
+    SKSE::log::info("dialogue: BarterMenu for {:08X} (vendor faction {:08X})", actor->GetFormID(),
+                    actor->GetVendorFaction()->GetFormID());
+    RE::BarterMenu::OpenMenu(actor);
+  });
+}
+
+// The BarterMenu closed over a conversation: our window comes back as it was.
+void ReturnFromBarter() {
+  auto& c = Get();
+  bartering = false;
+  if (!c.talk) return;
+  auto s = Session();
+  auto json = ac::msg::encode(Dressed(c.talk->view(s)));
+  if (!json) {
+    SKSE::log::error("dialogue: the window does not fit the schema: {}", json.error());
+    return;
+  }
+  SKSE::log::info("dialogue: back from the BarterMenu");
+  Push("dialogue", std::move(*json));
+  FactsChanged("barter closed");
 }
 
 // Opens the conversation for the pending speaker: the router's dialogue handler.
@@ -44,7 +103,7 @@ void OnDialogueSurface(ac::router::SurfaceId) {
   c.talk = std::move(*conv);
   c.talk_ref = ref ? ref->GetHandle() : RE::ObjectRefHandle{};
   for (const auto& n : c.talk->greeting_notes()) SKSE::log::info("{}", n);
-  auto json = ac::msg::encode(c.talk->view(s));
+  auto json = ac::msg::encode(Dressed(c.talk->view(s)));
   if (!json) {
     SKSE::log::error("dialogue: the window does not fit the schema: {}", json.error());
     return;
@@ -79,6 +138,10 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     if (ac::router::hides_hud_at_once(menu)) HudLoading(menu, e->opening);  // the load blocks the task queue
     if (ac::router::covers_hud(menu)) SKSE::GetTaskInterface()->AddTask([] { HudRefresh(); });
     if (!e->opening) {
+      if (menu == RE::BarterMenu::MENU_NAME) {
+        std::lock_guard l(Get().lock);
+        if (bartering) SKSE::GetTaskInterface()->AddTask([] { std::lock_guard l2(Get().lock); ReturnFromBarter(); });
+      }
       if (menu == RE::SleepWaitMenu::MENU_NAME || menu == RE::LoadingMenu::MENU_NAME) FactsChanged("time passed");
       return RE::BSEventNotifyControl::kContinue;
     }
@@ -155,6 +218,11 @@ std::string DialogueIntent(std::string_view json) {
   auto& c = Get();
   std::lock_guard l(c.lock);
   if (!c.talk) return R"({"error":"no conversation is open"})";
+  if (auto in = ac::msg::decode_intent(json))
+    if (const auto* sv = std::get_if<ac::msg::DialogueService>(&*in); sv && sv->service == ac::msg::ServiceKind::barter) {
+      OpenBarterFromDialogue();
+      return {};
+    }
   auto s = Session();
   auto r = c.talk->on_intent_text(json, s);
   for (const auto& n : r.notes) SKSE::log::info("{}", n);
@@ -167,7 +235,7 @@ std::string DialogueIntent(std::string_view json) {
   }
   std::string out;
   if (r.state)
-    if (auto j = ac::msg::encode(*r.state)) out = std::move(*j);
+    if (auto j = ac::msg::encode(Dressed(*r.state))) out = std::move(*j);
   if (!out.empty()) Push("dialogue", out);
   FactsChanged("topic heard");
   return out;

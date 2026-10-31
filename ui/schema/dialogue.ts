@@ -1,4 +1,5 @@
-// The dialogue window (1.2 §b, 1.3 §b): Morrowind-style topics, hyperlinked keywords, persuasion, disposition.
+// The dialogue window (1.2 §b, 1.3 §b, 1.12 §6): Morrowind-style topics, hyperlinked keywords, persuasion,
+// disposition and the service buttons (Barter hands to Wind UI's barter window and back).
 import { runs } from "./common.ts";
 import { bool, enumDef, int, intent, list, oneOf, opt, push, ref, str, struct } from "./types.ts";
 
@@ -41,12 +42,16 @@ export const Persuasion = struct("Persuasion", "The persuasion button and its ac
   options: list(ref(PersuasionOption)),
 });
 
-export const dialogueState = push("dialogue.state", 1, "The whole dialogue window, sent on open and after every change", {
+export const ServiceKind = enumDef("ServiceKind", "a service the speaker offers beside the topics (Morrowind's buttons)",
+  ["barter"]);
+
+export const dialogueState = push("dialogue.state", 2, "The whole dialogue window, sent on open and after every change", {
   speaker: ref(Speaker),
   entries: list(ref(DialogueEntry), "the conversation so far, oldest first"),
   topics: list(ref(TopicItem), "the topics this person can be asked, in display order"),
   disposition: ref(Disposition),
   persuasion: ref(Persuasion),
+  services: list(oneOf(ServiceKind), "the service buttons, in display order (barter: a merchant's vendor faction)"),
   canLeave: bool("whether Goodbye is offered (a forced conversation hides it)"),
 });
 
@@ -64,4 +69,9 @@ export const dialoguePersuade = intent("dialogue.persuade", 1, "A persuasion act
 
 export const dialogueGoodbye = intent("dialogue.goodbye", 1, "Goodbye was chosen", {});
 
-export const messages = [dialogueState, dialogueTopic, dialogueKeyword, dialoguePersuade, dialogueGoodbye];
+export const dialogueService = intent("dialogue.service", 1,
+  "A service button was chosen: Barter opens Skyrim's BarterMenu (Wind UI draws it), then the conversation returns", {
+    service: oneOf(ServiceKind),
+  });
+
+export const messages = [dialogueState, dialogueTopic, dialogueKeyword, dialoguePersuade, dialogueGoodbye, dialogueService];

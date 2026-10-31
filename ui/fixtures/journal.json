@@ -1,15 +1,528 @@
 {
  "screen": "journal",
- "doc": "Mock data for 1.2's L3 harness (journal). Quest ids from the world db; entry text is mock, not a record, except lf83: LF83's stages 10, 20 and 30 as the quest rows give them (journal_text.h), long enough to run into further leaves.",
+ "doc": "Mock data for the L3 harness (journal, 1.12 §6). quest.local.lf83 and its words are the records' (journal_text.h: stages 10, 20 and 30, the stage-20 directions); quest.mock.* ids and their text are mock, not records, there to fill the ribbons and the groups.",
  "states": {
-  "entries": {
+  "current": {
    "type": "journal.state",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "current",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [
+     {
+      "label": "Marsh Charter",
+      "kind": "questline",
+      "quests": [
+       {
+        "id": "quest.mock.charter-seal",
+        "name": "A Seal for the Charter House",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 19,
+         "hour": 9.5,
+         "text": "19th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 19,
+         "hour": 9.5,
+         "text": "19th of the Eighth Month, 201"
+        }
+       }
+      ]
+     },
+     {
+      "label": "Claywater Station",
+      "kind": "place",
+      "quests": [
+       {
+        "id": "quest.local.lf83",
+        "name": "The Well and the Landing",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 16,
+         "hour": 9.5,
+         "text": "16th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 17,
+         "hour": 9.5,
+         "text": "17th of the Eighth Month, 201"
+        }
+       },
+       {
+        "id": "quest.mock.ferry-toll",
+        "name": "The Toll at the Drowning Gate",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        }
+       }
+      ]
+     }
+    ],
+    "entries": [],
+    "matches": 3,
+    "quest": {
+     "id": "quest.mock.charter-seal",
+     "name": "A Seal for the Charter House",
+     "status": "active",
+     "group": "Marsh Charter",
+     "directions": "The charter house stands at the head of the Gideon road, past the second milestone, with a green door.",
+     "entries": [
+      {
+       "quest": "quest.mock.charter-seal",
+       "questName": "A Seal for the Charter House",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 19,
+        "hour": 9.5,
+        "text": "19th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "A clerk of the Marsh Charter wants a seal carried to the charter house at Gideon. The seal is in a lead box, and I am not to open it."
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "currentLf83": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "current",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [
+     {
+      "label": "Marsh Charter",
+      "kind": "questline",
+      "quests": [
+       {
+        "id": "quest.mock.charter-seal",
+        "name": "A Seal for the Charter House",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 19,
+         "hour": 9.5,
+         "text": "19th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 19,
+         "hour": 9.5,
+         "text": "19th of the Eighth Month, 201"
+        }
+       }
+      ]
+     },
+     {
+      "label": "Claywater Station",
+      "kind": "place",
+      "quests": [
+       {
+        "id": "quest.local.lf83",
+        "name": "The Well and the Landing",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 16,
+         "hour": 9.5,
+         "text": "16th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 17,
+         "hour": 9.5,
+         "text": "17th of the Eighth Month, 201"
+        }
+       },
+       {
+        "id": "quest.mock.ferry-toll",
+        "name": "The Toll at the Drowning Gate",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        }
+       }
+      ]
+     }
+    ],
+    "entries": [],
+    "matches": 3,
+    "quest": {
+     "id": "quest.local.lf83",
+     "name": "The Well and the Landing",
+     "status": "active",
+     "group": "Claywater Station",
+     "directions": "The clay cut is below the ford on the station bank: from the well, go about 45 yards west, outside the low stone walls, to where the river swings west under a bare clay bank and the water lies deep and dark. If the bank flattens into reeds, you have gone past it. Takes-The-Short-Weight lives in the round mud hut on the landing bank, about 30 yards north of the raft; in the morning she sits at the landing's fire, about 50 yards north of the raft.",
+     "entries": [
+      {
+       "quest": "quest.local.lf83",
+       "questName": "The Well and the Landing",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 17,
+        "hour": 9.5,
+        "text": "17th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "At Claywater Station, Livia Varinius told me she raised the station's charge to 2 drakes to pay a mason to re-line the cracked well in stone. Signs-For-The-Cargo told me the landing began charging walkers at the ford. The landing worked this ford before the well was dug. The landing will not haul stone for the station. Signs-For-The-Cargo says a crocodile has taken the landing's clay cut below the ford. The landing will hear terms only from whoever wins back the cut before the rains. I'm to kill the crocodile and bring back the clay basket that lies at the cut. The cut is below the ford on the station bank. From the well, I go about 45 yards west, outside the low stone walls, to where the river swings west under a bare clay bank and the water lies deep and dark. If the bank flattens into reeds, I have gone past it. Signs-For-The-Cargo says Takes-The-Short-Weight can tell what ails the station's water. She lives in the round mud hut on the landing bank, about 30 yards north of the raft. In the morning she sits at the landing's fire, about 50 yards north of the raft."
+        }
+       ]
+      },
+      {
+       "quest": "quest.local.lf83",
+       "questName": "The Well and the Landing",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 16,
+        "hour": 9.5,
+        "text": "16th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "I came to Claywater Station on the Blackwood Road. Travellers there pay Livia Varinius, the well-keeper, 2 drakes for the stop this season. Signs-For-The-Cargo, the landing's poler, now wants 1 drake from every walker who wades the ford. I'm to hear each keeper's side. Claywater Station is about 640 yards west of the signpost at Cartwright's Cross on the Blackwood Road, where the arms point to Gideon and to Leyawiin. Going west, a painted pole barrier stands in a field about 110 yards off the road on the right; that is the Drowning Gate. The station house roof shows about 100 yards on, ahead on the left. Livia Varinius keeps the well at the station house door, inside the low stone walls. Signs-For-The-Cargo poles the plank raft at the landing stage across the ford in the morning, about 65 yards north of the well. The round mud huts stand behind it on the far bank. If the road runs on into open marsh with no roofs in sight, I have passed it."
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "finished": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "finished",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [
+     {
+      "label": "Claywater Station",
+      "kind": "place",
+      "quests": [
+       {
+        "id": "quest.mock.lost-net",
+        "name": "The Lost Net",
+        "status": "complete",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 14,
+         "hour": 9.5,
+         "text": "14th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 15,
+         "hour": 9.5,
+         "text": "15th of the Eighth Month, 201"
+        }
+       },
+       {
+        "id": "quest.mock.reed-cutter",
+        "name": "The Reed-Cutter's Debt",
+        "status": "failed",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 12,
+         "hour": 9.5,
+         "text": "12th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 13,
+         "hour": 9.5,
+         "text": "13th of the Eighth Month, 201"
+        }
+       }
+      ]
+     }
+    ],
+    "entries": [],
+    "matches": 2,
+    "quest": {
+     "id": "quest.mock.lost-net",
+     "name": "The Lost Net",
+     "status": "complete",
+     "group": "Claywater Station",
+     "entries": [
+      {
+       "quest": "quest.mock.lost-net",
+       "questName": "The Lost Net",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 15,
+        "hour": 9.5,
+        "text": "15th of the Eighth Month, 201"
+       },
+       "kind": "complete",
+       "runs": [
+        {
+         "text": "I found the net caught on the roots under the clay bank and brought it back to the landing."
+        }
+       ]
+      },
+      {
+       "quest": "quest.mock.lost-net",
+       "questName": "The Lost Net",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 14,
+        "hour": 9.5,
+        "text": "14th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "A fisher at the landing lost a net to the current below the ford."
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "finishedFailed": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "finished",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [
+     {
+      "label": "Claywater Station",
+      "kind": "place",
+      "quests": [
+       {
+        "id": "quest.mock.lost-net",
+        "name": "The Lost Net",
+        "status": "complete",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 14,
+         "hour": 9.5,
+         "text": "14th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 15,
+         "hour": 9.5,
+         "text": "15th of the Eighth Month, 201"
+        }
+       },
+       {
+        "id": "quest.mock.reed-cutter",
+        "name": "The Reed-Cutter's Debt",
+        "status": "failed",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 12,
+         "hour": 9.5,
+         "text": "12th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 13,
+         "hour": 9.5,
+         "text": "13th of the Eighth Month, 201"
+        }
+       }
+      ]
+     }
+    ],
+    "entries": [],
+    "matches": 2,
+    "quest": {
+     "id": "quest.mock.reed-cutter",
+     "name": "The Reed-Cutter's Debt",
+     "status": "failed",
+     "group": "Claywater Station",
+     "entries": [
+      {
+       "quest": "quest.mock.reed-cutter",
+       "questName": "The Reed-Cutter's Debt",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 13,
+        "hour": 9.5,
+        "text": "13th of the Eighth Month, 201"
+       },
+       "kind": "fail",
+       "runs": [
+        {
+         "text": "The reed-cutter left Claywater Station in the night. The landing will not hear his name now."
+        }
+       ]
+      },
+      {
+       "quest": "quest.mock.reed-cutter",
+       "questName": "The Reed-Cutter's Debt",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 12,
+        "hour": 9.5,
+        "text": "12th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "A reed-cutter owes the landing three bundles and asks me to plead for more time."
+        }
+       ]
+      }
+     ]
+    }
+   }
+  },
+  "all": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "all",
     "page": 0,
     "pageCount": 2,
+    "groups": [],
     "entries": [
+     {
+      "quest": "quest.mock.reed-cutter",
+      "questName": "The Reed-Cutter's Debt",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 12,
+       "hour": 9.5,
+       "text": "12th of the Eighth Month, 201"
+      },
+      "kind": "progress",
+      "runs": [
+       {
+        "text": "A reed-cutter owes the landing three bundles and asks me to plead for more time."
+       }
+      ]
+     },
+     {
+      "quest": "quest.mock.reed-cutter",
+      "questName": "The Reed-Cutter's Debt",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 13,
+       "hour": 9.5,
+       "text": "13th of the Eighth Month, 201"
+      },
+      "kind": "fail",
+      "runs": [
+       {
+        "text": "The reed-cutter left Claywater Station in the night. The landing will not hear his name now."
+       }
+      ]
+     }
+    ],
+    "matches": 8
+   }
+  },
+  "searchAll": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "all",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [],
+    "entries": [
+     {
+      "quest": "quest.mock.reed-cutter",
+      "questName": "The Reed-Cutter's Debt",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 13,
+       "hour": 9.5,
+       "text": "13th of the Eighth Month, 201"
+      },
+      "kind": "fail",
+      "runs": [
+       {
+        "text": "The reed-cutter left Claywater Station in the night. The landing will not hear his name now."
+       }
+      ]
+     },
+     {
+      "quest": "quest.mock.lost-net",
+      "questName": "The Lost Net",
+      "date": {
+       "year": 201,
+       "month": 8,
+       "day": 15,
+       "hour": 9.5,
+       "text": "15th of the Eighth Month, 201"
+      },
+      "kind": "complete",
+      "runs": [
+       {
+        "text": "I found the net caught on the roots under the clay bank and brought it back to the landing."
+       }
+      ]
+     },
      {
       "quest": "quest.local.lf83",
       "questName": "The Well and the Landing",
@@ -23,14 +536,7 @@
       "kind": "progress",
       "runs": [
        {
-        "text": "Mock entry: the well-keeper and the poler at "
-       },
-       {
-        "text": "Claywater Station",
-        "topic": "topic.claywater-station"
-       },
-       {
-        "text": " each want the ford's fee."
+        "text": "I came to Claywater Station on the Blackwood Road. Travellers there pay Livia Varinius, the well-keeper, 2 drakes for the stop this season. Signs-For-The-Cargo, the landing's poler, now wants 1 drake from every walker who wades the ford. I'm to hear each keeper's side. Claywater Station is about 640 yards west of the signpost at Cartwright's Cross on the Blackwood Road, where the arms point to Gideon and to Leyawiin. Going west, a painted pole barrier stands in a field about 110 yards off the road on the right; that is the Drowning Gate. The station house roof shows about 100 yards on, ahead on the left. Livia Varinius keeps the well at the station house door, inside the low stone walls. Signs-For-The-Cargo poles the plank raft at the landing stage across the ford in the morning, about 65 yards north of the well. The round mud huts stand behind it on the far bank. If the road runs on into open marsh with no roofs in sight, I have passed it."
        }
       ]
      },
@@ -41,181 +547,118 @@
        "year": 201,
        "month": 8,
        "day": 17,
-       "hour": 14.25,
+       "hour": 9.5,
        "text": "17th of the Eighth Month, 201"
       },
       "kind": "progress",
       "runs": [
        {
-        "text": "Mock entry: I should hear the landing's terms before I choose a side."
+        "text": "At Claywater Station, Livia Varinius told me she raised the station's charge to 2 drakes to pay a mason to re-line the cracked well in stone. Signs-For-The-Cargo told me the landing began charging walkers at the ford. The landing worked this ford before the well was dug. The landing will not haul stone for the station. Signs-For-The-Cargo says a crocodile has taken the landing's clay cut below the ford. The landing will hear terms only from whoever wins back the cut before the rains. I'm to kill the crocodile and bring back the clay basket that lies at the cut. The cut is below the ford on the station bank. From the well, I go about 45 yards west, outside the low stone walls, to where the river swings west under a bare clay bank and the water lies deep and dark. If the bank flattens into reeds, I have gone past it. Signs-For-The-Cargo says Takes-The-Short-Weight can tell what ails the station's water. She lives in the round mud hut on the landing bank, about 30 yards north of the raft. In the morning she sits at the landing's fire, about 50 yards north of the raft."
        }
       ]
      }
     ],
-    "quests": [
-     {
-      "id": "quest.local.lf83",
-      "name": "The Well and the Landing",
-      "status": "active",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 16,
-       "hour": 9.5,
-       "text": "16th of the Eighth Month, 201"
-      },
-      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
-     },
-     {
-      "id": "quest.mock.done",
-      "name": "A Finished Errand",
-      "status": "complete",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 2,
-       "hour": 8,
-       "text": "2nd of the Eighth Month, 201"
-      }
-     }
-    ]
+    "matches": 4,
+    "search": "clay"
    }
   },
-  "filtered": {
+  "searchCurrent": {
    "type": "journal.state",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "current",
     "page": 0,
     "pageCount": 1,
-    "questFilter": "quest.local.lf83",
-    "entries": [
+    "groups": [
      {
-      "quest": "quest.local.lf83",
-      "questName": "The Well and the Landing",
-      "date": {
-       "year": 201,
-       "month": 8,
-       "day": 16,
-       "hour": 9.5,
-       "text": "16th of the Eighth Month, 201"
-      },
-      "kind": "progress",
-      "runs": [
+      "label": "Claywater Station",
+      "kind": "place",
+      "quests": [
        {
-        "text": "Mock entry: the well-keeper and the poler at "
-       },
-       {
-        "text": "Claywater Station",
-        "topic": "topic.claywater-station"
-       },
-       {
-        "text": " each want the ford's fee."
-       }
-      ]
-     },
-     {
-      "quest": "quest.local.lf83",
-      "questName": "The Well and the Landing",
-      "date": {
-       "year": 201,
-       "month": 8,
-       "day": 17,
-       "hour": 14.25,
-       "text": "17th of the Eighth Month, 201"
-      },
-      "kind": "progress",
-      "runs": [
-       {
-        "text": "Mock entry: I should hear the landing's terms before I choose a side."
+        "id": "quest.mock.ferry-toll",
+        "name": "The Toll at the Drowning Gate",
+        "status": "active",
+        "started": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        },
+        "last": {
+         "year": 201,
+         "month": 8,
+         "day": 18,
+         "hour": 9.5,
+         "text": "18th of the Eighth Month, 201"
+        }
        }
       ]
      }
     ],
-    "quests": [
-     {
-      "id": "quest.local.lf83",
-      "name": "The Well and the Landing",
-      "status": "active",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 16,
-       "hour": 9.5,
-       "text": "16th of the Eighth Month, 201"
-      },
-      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
-     },
-     {
-      "id": "quest.mock.done",
-      "name": "A Finished Errand",
-      "status": "complete",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 2,
-       "hour": 8,
-       "text": "2nd of the Eighth Month, 201"
-      }
-     }
-    ]
-   }
-  },
-  "questIndex": {
-   "type": "journal.state",
-   "v": 1,
-   "body": {
-    "tab": "quests",
-    "page": 0,
-    "pageCount": 1,
     "entries": [],
-    "quests": [
-     {
-      "id": "quest.local.lf83",
-      "name": "The Well and the Landing",
-      "status": "active",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 16,
-       "hour": 9.5,
-       "text": "16th of the Eighth Month, 201"
-      },
-      "directions": "Mock directions: the landing is on the east bank of the ford, below the station house."
-     },
-     {
-      "id": "quest.mock.done",
-      "name": "A Finished Errand",
-      "status": "complete",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 2,
-       "hour": 8,
-       "text": "2nd of the Eighth Month, 201"
+    "matches": 1,
+    "search": "toll",
+    "quest": {
+     "id": "quest.mock.ferry-toll",
+     "name": "The Toll at the Drowning Gate",
+     "status": "active",
+     "group": "Claywater Station",
+     "directions": "The Drowning Gate is the painted pole barrier about 110 yards off the Blackwood Road, west of Cartwright's Cross.",
+     "entries": [
+      {
+       "quest": "quest.mock.ferry-toll",
+       "questName": "The Toll at the Drowning Gate",
+       "date": {
+        "year": 201,
+        "month": 8,
+        "day": 18,
+        "hour": 9.5,
+        "text": "18th of the Eighth Month, 201"
+       },
+       "kind": "progress",
+       "runs": [
+        {
+         "text": "The ferryman at the Drowning Gate asks a toll of every walker. Signs-For-The-Cargo says the toll is new this season."
+        }
+       ]
       }
-     }
-    ]
+     ]
+    }
+   }
+  },
+  "topics": {
+   "type": "journal.state",
+   "v": 2,
+   "body": {
+    "tab": "topics",
+    "page": 0,
+    "pageCount": 1,
+    "groups": [],
+    "entries": [],
+    "matches": 0
    }
   },
   "empty": {
    "type": "journal.state",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "current",
     "page": 0,
     "pageCount": 1,
+    "groups": [],
     "entries": [],
-    "quests": []
+    "matches": 0
    }
   },
   "lf83": {
    "type": "journal.state",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "all",
     "page": 0,
     "pageCount": 1,
+    "groups": [],
     "entries": [
      {
       "quest": "quest.local.lf83",
@@ -269,40 +712,43 @@
       ]
      }
     ],
-    "quests": [
-     {
-      "id": "quest.local.lf83",
-      "name": "The Well and the Landing",
-      "status": "active",
-      "started": {
-       "year": 201,
-       "month": 8,
-       "day": 16,
-       "hour": 9.5,
-       "text": "16th of the Eighth Month, 201"
-      },
-      "directions": "Livia Varinius is at the well in the morning, at the counter by the station house door in the afternoon and at the stable at dusk; Signs-For-The-Cargo poles the raft in the morning and is at the drying racks behind it in the afternoon."
-     }
-    ]
+    "matches": 3
    }
   }
  },
  "intents": {
   "nextPage": {
    "type": "journal.page",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "all",
     "page": 1
    }
   },
-  "pickQuest": {
+  "finished": {
    "type": "journal.page",
-   "v": 1,
+   "v": 2,
    "body": {
-    "tab": "entries",
+    "tab": "finished",
+    "page": 0
+   }
+  },
+  "openQuest": {
+   "type": "journal.page",
+   "v": 2,
+   "body": {
+    "tab": "current",
     "page": 0,
-    "questFilter": "quest.local.lf83"
+    "quest": "quest.local.lf83"
+   }
+  },
+  "search": {
+   "type": "journal.page",
+   "v": 2,
+   "body": {
+    "tab": "all",
+    "page": 0,
+    "search": "c"
    }
   },
   "close": {

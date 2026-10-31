@@ -1,0 +1,85 @@
+# 1.12 §6 (lane 1.12-journal): the journal and the dialogue window in game. From first-place (Claywater Station),
+# LF83 reaches stage 10 the real way (Takes' greeting links the hook topic), the journal shows it under Current,
+# opened on its latest direction before its entries; Livia's window is in the frame style and its Barter button hands
+# to Skyrim's BarterMenu (Wind UI draws it) and back to the same conversation; the phone's B closes the journal;
+# then the ending (stage 92: a keeper dead, staged with `kill`, never the stage read) moves it under Finished.
+# The stills go to a `reader` (each step's `reader:` list). Touch B: the phone's touch controls send the pad's B
+# (infra/stream-client), so the pad's B here is the same input; a forced-fail run: expect `tab` "finished" at
+# journal-current and see it fail. Last step ends the quest: a save-changing item, last in its batch.
+id: journal-dialogue
+runner: 1
+crash_risk: medium
+batch_last: true
+scene: first-place
+steps:
+  - name: lf83-stage-10        # the quest begins the real way
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 0"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
+      - {wait: 2}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+  - name: dialogue-topics      # our dialogue window: the topics, a long answer, the frame style
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.topic","v":1,"body":{"topic":"topic.claywater-station"}}']}, {wait: 1.5}]
+    expect:
+      - {read: [core, Views], path: value, contains: "dialogue ready open"}
+      - {read: [core, ViewState, dialogue], path: value.v, eq: 2}
+      - {read: [core, ViewState, dialogue], path: value.body.entries.1.kind, eq: answer}
+    reader: [the dialogue window dark green-black with the gold-green trim (not parchment), the NPC text with underlined keywords, the topic list, Goodbye, every word in Pelagiad, no Nordic ornament]
+  - name: goodbye-takes
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
+    expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
+  - name: hud-notice           # the HUD's "Journal updated" notice from stage 10
+    expect: [{read: [core, ViewState, hud], path: value.body.notices, contains: "Journal updated", within: 8}]
+    reader: [the Journal updated notice on our HUD, Pelagiad]
+  - name: journal-current      # J: Current, LF83 under Claywater Station, opened on its latest direction
+    do: [{key: "J 120 engine"}, {wait: 2}]
+    expect:
+      - {read: [core, ViewState, journal], path: value.body.tab, eq: current}
+      - {read: [core, ViewState, journal], path: value.body.groups.0.label, eq: Claywater Station}
+      - {read: [core, ViewState, journal], path: value.body.quest.id, eq: quest.local.lf83}
+      - {read: [core, ViewState, journal], path: value.body.quest.directions, contains: "From the Blackwood Road"}
+    reader: [the paper book inside the dark frame window, ribbons Current Finished All entries Topics, The Well and the Landing under Claywater Station, Where next above the dated entry, no show on map, no statistics, Pelagiad]
+  - name: journal-touch-b      # the phone's B (the pad's B) closes the journal
+    do: [{pad: "B:100"}, {wait: 1}]
+    expect: [{read: [core, ViewState, journal], path: value, eq: null}]
+  - name: talk-livia           # a merchant: Barter is offered
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.services, contains: barter}]
+  - name: barter               # Barter: our window hides, the BarterMenu opens (Wind UI's barter window)
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.service","v":1,"body":{"service":"barter"}}']}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: BarterMenu}, within: 8}
+      - {read: [core, ViewState, dialogue], path: value, eq: null}
+    reader: [Wind UI's barter window with Livia's stock, our frames, Pelagiad, no Nordic ornament]
+  - name: barter-returns       # the BarterMenu closed: the same conversation is back
+    do: [{close_menu: BarterMenu}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: '"menu": "BarterMenu", "opening": false'}}
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 5}
+    reader: [the dialogue window back with Livia, the frame style]
+  - name: goodbye-livia
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
+    expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]
+  - name: lf83-ends            # a keeper dies (staged): the quest's own ending, stage 92
+    do: [{console: "ARG_Ref_ClaywaterStationLivia.kill"}, {wait: 3}]
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 92", within: 10}]
+  - name: journal-finished     # J, then the Finished ribbon: LF83 there, no longer under Current
+    do:
+      - {key: "J 120 engine"}
+      - {wait: 2}
+      - {call: [core, ViewIntent, '{"type":"journal.page","v":2,"body":{"tab":"finished","page":0}}']}
+      - {wait: 1}
+    expect:
+      - {read: [core, ViewState, journal], path: value.body.tab, eq: finished}
+      - {read: [core, ViewState, journal], path: value.body.groups.0.quests.0.id, eq: quest.local.lf83}
+      - {read: [core, ViewState, journal], path: value.body.quest.status, eq: failed}
+    reader: [The Well and the Landing under Finished marked Failed, its last entry first, the paper book in the frame]
+  - name: journal-closed
+    do: [{close_menu: journal}]
+    expect: [{read: [core, ViewState, journal], path: value, eq: null}]

@@ -16,7 +16,7 @@ import { discTransform, onDisc, REACH } from "../hud/minimap.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
 import { barLength, isLow, remember, render as hud, renderBars } from "../hud/render.ts";
-import { render as journal, turn } from "../journal/render.ts";
+import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 
 const root = new URL("../../../", import.meta.url);
@@ -42,7 +42,8 @@ function renders(screen: string, m: PushMessage): string[] {
 function programmatic(m: PushMessage): IntentMessage[] {
   const out: (IntentMessage | null)[] = [];
   if (m.type === "dialogue.state") out.push(backIntent(m.body));
-  if (m.type === "journal.state") out.push(turn(m.body, -1), turn(m.body, 1), { type: "view.close", v: 1, body: { view: "journal" } });
+  if (m.type === "journal.state") out.push(turn(m.body, -1), turn(m.body, 1), ribbonStep(m.body, -1), ribbonStep(m.body, 1),
+    searchIntent(m.body, "c"), searchIntent(m.body, ""), { type: "view.close", v: 1, body: { view: "journal" } });
   if (m.type === "sitting.state") out.push(sittingDone());
   if (m.type === "chart.state") out.push(panIntent(m.body.view), { type: "view.close", v: 1, body: { view: "chart" } });
   return out.filter((x): x is IntentMessage => x !== null);
@@ -79,11 +80,17 @@ test("each view shows what the push carried", () => {
     const s = (m as { body: JournalState }).body;
     const t = textOf(journal(s));
     for (const e of s.entries) assert.ok(t.includes(e.date.text) && t.includes(e.questName), name);
-    if (s.tab === "quests") for (const q of s.quests) {
-      assert.ok(t.includes(q.name), name);
-      if (q.directions) assert.ok(t.includes(q.directions), `${name}: directions`);
+    for (const g of s.groups) {
+      assert.ok(t.includes(g.label), `${name}: group ${g.label}`);
+      for (const q of g.quests) assert.ok(t.includes(q.name), `${name}: ${q.name}`);
     }
-    assert.ok(t.includes(`${s.page + 1} of ${s.pageCount}`), name);
+    if (s.quest) {
+      if (s.quest.directions) assert.ok(t.includes(s.quest.directions), `${name}: directions`);
+      for (const e of s.quest.entries) assert.ok(t.includes(e.date.text) && t.includes(e.runs[0].text), `${name}: entry`);
+    }
+    if (s.tab === "all") assert.ok(t.includes(`${s.page + 1} of ${s.pageCount}`), name);
+    for (const r of ["Current", "Finished", "All entries", "Topics"]) assert.ok(t.includes(r), `${name}: ribbon ${r}`);
+    if (s.search !== undefined) assert.ok(t.includes(`${s.matches} found`), `${name}: the count`);
   }
   for (const [name, m] of Object.entries(fx("hud").states)) {
     if (m.type !== "hud.state") continue;
@@ -281,4 +288,35 @@ test("the HUD's damage trail holds what was lost, a rise marks regeneration, and
   assert.match(hud({ ...(fx("hud").states.lowHealth as { body: HudState }).body }), /class="hud low"/);
   const calm = hud((fx("hud").states.play as { body: HudState }).body);
   assert.ok(calm.indexOf("data-bars") < calm.indexOf('class="vastei'), "vastei under the bars, in the top-left column");
+});
+
+// 1.12 §6's rulings on the journal: four ribbons, a failed quest marked, the opened quest's latest direction before
+// its dated entries, the search field carrying what was typed, and no statistics page or "show on map".
+test("the journal: ribbons, grouping, directions first, search, no map or statistics", () => {
+  const st = fx("journal").states as Record<string, { body: JournalState }>;
+  const lf = journal(st.currentLf83.body);
+  const dir = lf.indexOf('class="dir"'), first = lf.indexOf('class="entry');
+  assert.ok(dir > 0 && first > dir, "the latest direction comes before the entries");
+  const failed = journal(st.finishedFailed.body);
+  assert.match(failed, /class="quest failed[^"]*"[\s\S]*?Failed/, "the failed quest is marked");
+  assert.match(textOf(failed), /Failed\./, "its last entry says Failed");
+  assert.match(journal(st.searchAll.body), /value="clay"/, "the field shows the search");
+  assert.ok(textOf(journal(st.topics.body)).includes("Topics you hear"), "Topics is a placeholder");
+  for (const [name, m] of Object.entries(st)) {
+    const html = journal(m.body);
+    assert.doesNotMatch(html, /show on map|statistic|marker/i, `${name}: no map link, no statistics`);
+    for (const i of intentsIn(html)) ok(i, `${name}: intent`);
+  }
+  assert.deepEqual(searchIntent(st.currentLf83.body, "well"),
+    { type: "journal.page", v: 2, body: { tab: "current", page: 0, quest: "quest.local.lf83", search: "well" } });
+  assert.equal(turn(st.current.body, 1), null, "only the diary turns pages");
+});
+
+test("the dialogue window: frame style, Barter as a service, Goodbye", () => {
+  const st = fx("dialogue").states as Record<string, { body: DialogueState }>;
+  const html = dialogue(st.answer.body);
+  assert.match(html, /class="dialogue frame"/);
+  assert.doesNotMatch(html, /class="[^"]*\bpaper\b/, "no parchment");
+  assert.ok(intentsIn(html).some((i) => JSON.stringify(i) === JSON.stringify(fx("dialogue").intents.barter)), "Barter sends dialogue.service");
+  assert.ok(!dialogue(st.forced.body).includes("Barter"), "no Barter for a speaker without the service");
 });

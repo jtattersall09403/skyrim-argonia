@@ -88,11 +88,13 @@ void refusals() {
   CHECK(refused(decode(R"({"type":"dialogue.topic","v":1,"body":{"topic":7}})"), "dialogue.topic body.topic: want a string"));
   CHECK(refused(decode(R"({"type":"view.close","v":1,"body":{"view":"hud"}})"),
                 "view.close body.view: 'hud' is not one of dialogue, journal, chart"));
-  CHECK(refused(decode(R"({"type":"journal.page","v":1,"body":{"tab":"entries","page":-1}})"),
+  CHECK(refused(decode(R"({"type":"journal.page","v":2,"body":{"tab":"all","page":-1}})"),
                 "journal.page body.page: -1 is outside 0.."));
-  CHECK(refused(decode(R"({"type":"journal.page","v":1,"body":{"tab":"entries","page":1.5}})"), "want a whole number"));
-  CHECK(refused(decode(R"({"type":"journal.page","v":1,"body":{"tab":"entries","page":1,"questFilter":null}})"),
-                "journal.page body.questFilter: want a string"));
+  CHECK(refused(decode(R"({"type":"journal.page","v":2,"body":{"tab":"all","page":1.5}})"), "want a whole number"));
+  CHECK(refused(decode(R"({"type":"journal.page","v":2,"body":{"tab":"all","page":1,"quest":null}})"),
+                "journal.page body.quest: want a string"));
+  CHECK(refused(decode(R"({"type":"journal.page","v":1,"body":{"tab":"all","page":0}})"),
+                "journal.page version 1: this build speaks version 2"));
   CHECK(refused(decode(R"({"type":"chart.pan","v":1,"body":{"view":{"centreX":0,"centreY":0,"zoom":0}}})"),
                 "chart.pan body.view.zoom: 0 is outside 0.05..64"));
   CHECK(refused(decode(R"({"type":"hud.bars","v":1,"body":{"bars":[{"kind":"health","current":1,"max":2}]}})"),
@@ -118,11 +120,12 @@ void encode_refuses_what_decode_would() {
   CHECK(refused(msg::encode(d), "dialogue.state body.disposition.value: 101 is outside 0..100"));
   d.disposition.value = 50;
   auto ok = msg::encode(d);
-  CHECK(ok.has_value() && contains(*ok, R"("type":"dialogue.state","v":1)"));
+  CHECK(ok.has_value() && contains(*ok, R"("type":"dialogue.state","v":2)"));
   // An absent optional is omitted, never null.
-  msg::JournalPage page{msg::JournalTab::quests, 2, std::nullopt};
-  CHECK(*msg::encode(page) == R"({"type":"journal.page","v":1,"body":{"tab":"quests","page":2}})");
-  page.quest_filter = "quest.local.lf83";
+  msg::JournalPage page{msg::JournalTab::finished, 2, std::nullopt, std::nullopt};
+  CHECK(*msg::encode(page) == R"({"type":"journal.page","v":2,"body":{"tab":"finished","page":2}})");
+  page.quest = "quest.local.lf83";
+  page.search = "clay basket";
   auto back = msg::decode_intent(*msg::encode(page));
   CHECK(back && std::get<msg::JournalPage>(*back) == page);
 }

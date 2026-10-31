@@ -431,11 +431,16 @@ void OpenJournal(const ac::msg::JournalPage& at) {
         const char* full = quest ? quest->GetFullName() : nullptr;
         n.name = full && *full ? full : g.id;
       }
+    if (const auto* t = ac::journal::quest_text(q)) {  // the record's id and title where the plugin gives neither
+      if (n.id == std::to_string(q)) n.id = std::string(t->quest_id);
+      if (n.name == n.id || n.name == std::to_string(q)) n.name = std::string(t->title);
+    }
     return n;
   };
-  // The entry's words are the stage's log entry and directions from the quest rows (generated/journal_text.h).
-  auto json = ac::msg::encode(
-      ac::views::journal_state(c.state.log, name, ac::views::entry_text, ac::views::entry_directions, at));
+  // The entry's words are the stage's log entry and directions, its group the questline or place, from the quest
+  // rows (generated/journal_text.h); the ribbons, grouping, order and search are skse/core's (views::journal_state).
+  auto json = ac::msg::encode(ac::views::journal_state(c.state.log, name, ac::views::entry_text,
+                                                       ac::views::entry_directions, ac::views::entry_group, at));
   if (!json) {
     SKSE::log::error("views: the journal does not fit the schema: {}", json.error());
     return;
@@ -603,7 +608,7 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
   }
 };
 
-void OnJournalSurface(ac::router::SurfaceId) { OpenJournal({ac::msg::JournalTab::entries, 0, std::nullopt}); }
+void OnJournalSurface(ac::router::SurfaceId) { OpenJournal({ac::msg::JournalTab::current, 0, std::nullopt, std::nullopt}); }
 void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
 
 }  // namespace

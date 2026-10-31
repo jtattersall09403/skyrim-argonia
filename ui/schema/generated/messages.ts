@@ -2,18 +2,22 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "b326921c1ebf2671";
+export const schemaHash = "1c0f39ffc05ad872";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
 /** the band the record's variant text keys on (core_disposition_band) */
 export type DispositionBand = "low" | "mid" | "high";
-/** the page set the book shows */
-export type JournalTab = "entries" | "quests";
-/** what the entry records */
-export type JournalEntryKind = "progress" | "complete" | "fail";
+/** a service the speaker offers beside the topics (Morrowind's buttons) */
+export type ServiceKind = "barter";
+/** the ribbon the book is open at */
+export type JournalTab = "current" | "finished" | "all" | "topics";
+/** what a group of quests is named for (quest_line.group local: the place) */
+export type QuestGroupKind = "questline" | "place";
 /** a quest's standing in the index */
 export type QuestStatus = "active" | "complete" | "failed";
+/** what the entry records */
+export type JournalEntryKind = "progress" | "complete" | "fail";
 /** a bar of the HUD */
 export type BarKind = "health" | "stamina" | "magicka" | "breath" | "climb";
 /** how the stack colours an effect */
@@ -96,6 +100,8 @@ export interface DialogueState {
   disposition: Disposition;
   /** The persuasion button and its actions */
   persuasion: Persuasion;
+  /** the service buttons, in display order (barter: a merchant's vendor faction) */
+  services: ServiceKind[];
   /** whether Goodbye is offered (a forced conversation hides it) */
   canLeave: boolean;
 }
@@ -117,6 +123,11 @@ export interface DialoguePersuade {
 /** Goodbye was chosen */
 export interface DialogueGoodbye {
 }
+/** A service button was chosen: Barter opens Skyrim's BarterMenu (Wind UI draws it), then the conversation returns */
+export interface DialogueService {
+  /** a service the speaker offers beside the topics (Morrowind's buttons) */
+  service: ServiceKind;
+}
 /** A date on the game calendar, with ArgoniaCore's rendering of it */
 export interface GameDate {
   /** the era year */
@@ -129,6 +140,28 @@ export interface GameDate {
   hour: number;
   /** the date as the player reads it; views never format game dates */
   text: string;
+}
+/** One quest of a ribbon's list */
+export interface QuestIndexItem {
+  /** world db quest.id */
+  id: string;
+  /** the quest's name */
+  name: string;
+  /** a quest's standing in the index */
+  status: QuestStatus;
+  /** A date on the game calendar, with ArgoniaCore's rendering of it */
+  started: GameDate;
+  /** the date of its latest entry */
+  last: GameDate;
+}
+/** The quests of one questline or one place, most recently written first */
+export interface QuestGroup {
+  /** the questline's or the place's name (the quest records) */
+  label: string;
+  /** what a group of quests is named for (quest_line.group local: the place) */
+  kind: QuestGroupKind;
+  /** One quest of a ribbon's list */
+  quests: QuestIndexItem[];
 }
 /** One dated entry of the log */
 export interface JournalEntry {
@@ -143,42 +176,50 @@ export interface JournalEntry {
   /** the entry text, split at keyword spans (links join in 2.12) */
   runs: TextRun[];
 }
-/** One quest of the index */
-export interface QuestIndexItem {
+/** The quest the book is open at: its latest direction, then its entries */
+export interface OpenQuest {
   /** world db quest.id */
   id: string;
   /** the quest's name */
   name: string;
   /** a quest's standing in the index */
   status: QuestStatus;
-  /** A date on the game calendar, with ArgoniaCore's rendering of it */
-  started: GameDate;
-  /** where to go next in words, never a marker (quest_stage_directions) */
+  /** the questline or place it is listed under */
+  group: string;
+  /** where to go next in words, never a marker (the latest stage's directions) */
   directions?: string;
-}
-/** The open journal at one page */
-export interface JournalState {
-  /** the page set the book shows */
-  tab: JournalTab;
-  /** 0-based page of the tab */
-  page: number;
-  /** pages in the tab */
-  pageCount: number;
-  /** the quest id the entries are filtered to */
-  questFilter?: string;
-  /** this page's entries, oldest first */
+  /** its entries, newest first */
   entries: JournalEntry[];
-  /** the quest index, most recent first */
-  quests: QuestIndexItem[];
 }
-/** A page was turned, a tab chosen or a quest picked from the index */
-export interface JournalPage {
-  /** the page set the book shows */
+/** The open journal at one ribbon */
+export interface JournalState {
+  /** the ribbon the book is open at */
   tab: JournalTab;
-  /** 0-based page asked for */
+  /** 0-based page of the All entries diary */
   page: number;
-  /** filter the entries to this quest id */
-  questFilter?: string;
+  /** pages of the diary */
+  pageCount: number;
+  /** the typed search the tab is narrowed by, as typed */
+  search?: string;
+  /** Current or Finished: the quests matching the search, by group */
+  groups: QuestGroup[];
+  /** the quest opened from Current or Finished */
+  quest?: OpenQuest;
+  /** All entries: this page of the diary, oldest first */
+  entries: JournalEntry[];
+  /** entries (All entries) or quests (Current, Finished) the search matched */
+  matches: number;
+}
+/** A ribbon chosen, a page turned, a quest opened or the search typed */
+export interface JournalPage {
+  /** the ribbon the book is open at */
+  tab: JournalTab;
+  /** 0-based diary page asked for */
+  page: number;
+  /** open this quest id (Current or Finished) */
+  quest?: string;
+  /** narrow the tab to entries and quests containing these words */
+  search?: string;
 }
 /** One bar; its drawn length grows with max */
 export interface Bar {
@@ -404,8 +445,8 @@ export interface ViewClose {
 }
 
 export type PushMessage =
-  | { type: "dialogue.state"; v: 1; body: DialogueState }
-  | { type: "journal.state"; v: 1; body: JournalState }
+  | { type: "dialogue.state"; v: 2; body: DialogueState }
+  | { type: "journal.state"; v: 2; body: JournalState }
   | { type: "hud.state"; v: 1; body: HudState }
   | { type: "hud.bars"; v: 1; body: HudBars }
   | { type: "hud.minimap"; v: 1; body: HudMinimap }
@@ -416,7 +457,8 @@ export type IntentMessage =
   | { type: "dialogue.keyword"; v: 1; body: DialogueKeyword }
   | { type: "dialogue.persuade"; v: 1; body: DialoguePersuade }
   | { type: "dialogue.goodbye"; v: 1; body: DialogueGoodbye }
-  | { type: "journal.page"; v: 1; body: JournalPage }
+  | { type: "dialogue.service"; v: 1; body: DialogueService }
+  | { type: "journal.page"; v: 2; body: JournalPage }
   | { type: "chart.pan"; v: 1; body: ChartPan }
   | { type: "sitting.buy"; v: 1; body: SittingBuy }
   | { type: "sitting.done"; v: 1; body: SittingDone }
@@ -426,13 +468,14 @@ export type Direction = "push" | "intent";
 export type Result<T> = { ok: true; value: T } | { ok: false; error: string };
 
 export const messageTable: readonly { type: string; version: number; dir: Direction }[] = [
-  { type: "dialogue.state", version: 1, dir: "push" },
+  { type: "dialogue.state", version: 2, dir: "push" },
   { type: "dialogue.topic", version: 1, dir: "intent" },
   { type: "dialogue.keyword", version: 1, dir: "intent" },
   { type: "dialogue.persuade", version: 1, dir: "intent" },
   { type: "dialogue.goodbye", version: 1, dir: "intent" },
-  { type: "journal.state", version: 1, dir: "push" },
-  { type: "journal.page", version: 1, dir: "intent" },
+  { type: "dialogue.service", version: 1, dir: "intent" },
+  { type: "journal.state", version: 2, dir: "push" },
+  { type: "journal.page", version: 2, dir: "intent" },
   { type: "hud.state", version: 1, dir: "push" },
   { type: "hud.bars", version: 1, dir: "push" },
   { type: "hud.minimap", version: 1, dir: "push" },
@@ -477,20 +520,30 @@ function checkDispositionBand(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of low, mid, high");
   return DispositionBandValues.includes(x) ? null : bad(p, `'${x}' is not one of low, mid, high`);
 }
-const JournalTabValues: readonly string[] = ["entries", "quests"];
-function checkJournalTab(x: unknown, p: string): string | null {
-  if (typeof x !== "string") return bad(p, "want one of entries, quests");
-  return JournalTabValues.includes(x) ? null : bad(p, `'${x}' is not one of entries, quests`);
+const ServiceKindValues: readonly string[] = ["barter"];
+function checkServiceKind(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of barter");
+  return ServiceKindValues.includes(x) ? null : bad(p, `'${x}' is not one of barter`);
 }
-const JournalEntryKindValues: readonly string[] = ["progress", "complete", "fail"];
-function checkJournalEntryKind(x: unknown, p: string): string | null {
-  if (typeof x !== "string") return bad(p, "want one of progress, complete, fail");
-  return JournalEntryKindValues.includes(x) ? null : bad(p, `'${x}' is not one of progress, complete, fail`);
+const JournalTabValues: readonly string[] = ["current", "finished", "all", "topics"];
+function checkJournalTab(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of current, finished, all, topics");
+  return JournalTabValues.includes(x) ? null : bad(p, `'${x}' is not one of current, finished, all, topics`);
+}
+const QuestGroupKindValues: readonly string[] = ["questline", "place"];
+function checkQuestGroupKind(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of questline, place");
+  return QuestGroupKindValues.includes(x) ? null : bad(p, `'${x}' is not one of questline, place`);
 }
 const QuestStatusValues: readonly string[] = ["active", "complete", "failed"];
 function checkQuestStatus(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of active, complete, failed");
   return QuestStatusValues.includes(x) ? null : bad(p, `'${x}' is not one of active, complete, failed`);
+}
+const JournalEntryKindValues: readonly string[] = ["progress", "complete", "fail"];
+function checkJournalEntryKind(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of progress, complete, fail");
+  return JournalEntryKindValues.includes(x) ? null : bad(p, `'${x}' is not one of progress, complete, fail`);
 }
 const BarKindValues: readonly string[] = ["health", "stamina", "magicka", "breath", "climb"];
 function checkBarKind(x: unknown, p: string): string | null {
@@ -601,7 +654,7 @@ function checkPersuasion(x: unknown, p: string): string | null {
   return null;
 }
 function checkDialogueState(x: unknown, p: string): string | null {
-  const o = members(x, p, ["speaker","entries","topics","disposition","persuasion","canLeave"]);
+  const o = members(x, p, ["speaker","entries","topics","disposition","persuasion","services","canLeave"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["speaker"] === undefined) return bad(p + ".speaker", "missing");
@@ -614,6 +667,8 @@ function checkDialogueState(x: unknown, p: string): string | null {
   if ((e = checkDisposition(o["disposition"], p + ".disposition")) !== null) return e;
   if (o["persuasion"] === undefined) return bad(p + ".persuasion", "missing");
   if ((e = checkPersuasion(o["persuasion"], p + ".persuasion")) !== null) return e;
+  if (o["services"] === undefined) return bad(p + ".services", "missing");
+  if ((e = each(o["services"], p + ".services", (e0: unknown, i0: string) => checkServiceKind(e0, i0))) !== null) return e;
   if (o["canLeave"] === undefined) return bad(p + ".canLeave", "missing");
   if ((e = (typeof o["canLeave"] === "boolean" ? null : bad(p + ".canLeave", "want true or false"))) !== null) return e;
   return null;
@@ -648,6 +703,14 @@ function checkDialogueGoodbye(x: unknown, p: string): string | null {
   let e: string | null;
   return null;
 }
+function checkDialogueService(x: unknown, p: string): string | null {
+  const o = members(x, p, ["service"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["service"] === undefined) return bad(p + ".service", "missing");
+  if ((e = checkServiceKind(o["service"], p + ".service")) !== null) return e;
+  return null;
+}
 function checkGameDate(x: unknown, p: string): string | null {
   const o = members(x, p, ["year","month","day","hour","text"]);
   if (typeof o === "string") return o;
@@ -662,6 +725,34 @@ function checkGameDate(x: unknown, p: string): string | null {
   if ((e = real(o["hour"], 0, 24, p + ".hour")) !== null) return e;
   if (o["text"] === undefined) return bad(p + ".text", "missing");
   if ((e = (typeof o["text"] === "string" ? null : bad(p + ".text", "want a string"))) !== null) return e;
+  return null;
+}
+function checkQuestIndexItem(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","status","started","last"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = (typeof o["id"] === "string" ? null : bad(p + ".id", "want a string"))) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["status"] === undefined) return bad(p + ".status", "missing");
+  if ((e = checkQuestStatus(o["status"], p + ".status")) !== null) return e;
+  if (o["started"] === undefined) return bad(p + ".started", "missing");
+  if ((e = checkGameDate(o["started"], p + ".started")) !== null) return e;
+  if (o["last"] === undefined) return bad(p + ".last", "missing");
+  if ((e = checkGameDate(o["last"], p + ".last")) !== null) return e;
+  return null;
+}
+function checkQuestGroup(x: unknown, p: string): string | null {
+  const o = members(x, p, ["label","kind","quests"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["label"] === undefined) return bad(p + ".label", "missing");
+  if ((e = (typeof o["label"] === "string" ? null : bad(p + ".label", "want a string"))) !== null) return e;
+  if (o["kind"] === undefined) return bad(p + ".kind", "missing");
+  if ((e = checkQuestGroupKind(o["kind"], p + ".kind")) !== null) return e;
+  if (o["quests"] === undefined) return bad(p + ".quests", "missing");
+  if ((e = each(o["quests"], p + ".quests", (e0: unknown, i0: string) => checkQuestIndexItem(e0, i0))) !== null) return e;
   return null;
 }
 function checkJournalEntry(x: unknown, p: string): string | null {
@@ -680,8 +771,8 @@ function checkJournalEntry(x: unknown, p: string): string | null {
   if ((e = each(o["runs"], p + ".runs", (e0: unknown, i0: string) => checkTextRun(e0, i0))) !== null) return e;
   return null;
 }
-function checkQuestIndexItem(x: unknown, p: string): string | null {
-  const o = members(x, p, ["id","name","status","started","directions"]);
+function checkOpenQuest(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","status","group","directions","entries"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["id"] === undefined) return bad(p + ".id", "missing");
@@ -690,13 +781,15 @@ function checkQuestIndexItem(x: unknown, p: string): string | null {
   if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
   if (o["status"] === undefined) return bad(p + ".status", "missing");
   if ((e = checkQuestStatus(o["status"], p + ".status")) !== null) return e;
-  if (o["started"] === undefined) return bad(p + ".started", "missing");
-  if ((e = checkGameDate(o["started"], p + ".started")) !== null) return e;
+  if (o["group"] === undefined) return bad(p + ".group", "missing");
+  if ((e = (typeof o["group"] === "string" ? null : bad(p + ".group", "want a string"))) !== null) return e;
   if (o["directions"] !== undefined && (e = (typeof o["directions"] === "string" ? null : bad(p + ".directions", "want a string"))) !== null) return e;
+  if (o["entries"] === undefined) return bad(p + ".entries", "missing");
+  if ((e = each(o["entries"], p + ".entries", (e0: unknown, i0: string) => checkJournalEntry(e0, i0))) !== null) return e;
   return null;
 }
 function checkJournalState(x: unknown, p: string): string | null {
-  const o = members(x, p, ["tab","page","pageCount","questFilter","entries","quests"]);
+  const o = members(x, p, ["tab","page","pageCount","search","groups","quest","entries","matches"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["tab"] === undefined) return bad(p + ".tab", "missing");
@@ -705,22 +798,26 @@ function checkJournalState(x: unknown, p: string): string | null {
   if ((e = whole(o["page"], 0, MAX_SAFE, p + ".page")) !== null) return e;
   if (o["pageCount"] === undefined) return bad(p + ".pageCount", "missing");
   if ((e = whole(o["pageCount"], 1, MAX_SAFE, p + ".pageCount")) !== null) return e;
-  if (o["questFilter"] !== undefined && (e = (typeof o["questFilter"] === "string" ? null : bad(p + ".questFilter", "want a string"))) !== null) return e;
+  if (o["search"] !== undefined && (e = (typeof o["search"] === "string" ? null : bad(p + ".search", "want a string"))) !== null) return e;
+  if (o["groups"] === undefined) return bad(p + ".groups", "missing");
+  if ((e = each(o["groups"], p + ".groups", (e0: unknown, i0: string) => checkQuestGroup(e0, i0))) !== null) return e;
+  if (o["quest"] !== undefined && (e = checkOpenQuest(o["quest"], p + ".quest")) !== null) return e;
   if (o["entries"] === undefined) return bad(p + ".entries", "missing");
   if ((e = each(o["entries"], p + ".entries", (e0: unknown, i0: string) => checkJournalEntry(e0, i0))) !== null) return e;
-  if (o["quests"] === undefined) return bad(p + ".quests", "missing");
-  if ((e = each(o["quests"], p + ".quests", (e0: unknown, i0: string) => checkQuestIndexItem(e0, i0))) !== null) return e;
+  if (o["matches"] === undefined) return bad(p + ".matches", "missing");
+  if ((e = whole(o["matches"], 0, MAX_SAFE, p + ".matches")) !== null) return e;
   return null;
 }
 function checkJournalPage(x: unknown, p: string): string | null {
-  const o = members(x, p, ["tab","page","questFilter"]);
+  const o = members(x, p, ["tab","page","quest","search"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["tab"] === undefined) return bad(p + ".tab", "missing");
   if ((e = checkJournalTab(o["tab"], p + ".tab")) !== null) return e;
   if (o["page"] === undefined) return bad(p + ".page", "missing");
   if ((e = whole(o["page"], 0, MAX_SAFE, p + ".page")) !== null) return e;
-  if (o["questFilter"] !== undefined && (e = (typeof o["questFilter"] === "string" ? null : bad(p + ".questFilter", "want a string"))) !== null) return e;
+  if (o["quest"] !== undefined && (e = (typeof o["quest"] === "string" ? null : bad(p + ".quest", "want a string"))) !== null) return e;
+  if (o["search"] !== undefined && (e = (typeof o["search"] === "string" ? null : bad(p + ".search", "want a string"))) !== null) return e;
   return null;
 }
 function checkBar(x: unknown, p: string): string | null {
@@ -1015,6 +1112,7 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "dialogue.keyword": checkDialogueKeyword,
   "dialogue.persuade": checkDialoguePersuade,
   "dialogue.goodbye": checkDialogueGoodbye,
+  "dialogue.service": checkDialogueService,
   "journal.state": checkJournalState,
   "journal.page": checkJournalPage,
   "hud.state": checkHudState,

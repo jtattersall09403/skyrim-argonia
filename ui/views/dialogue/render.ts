@@ -1,6 +1,7 @@
-// The dialogue window (1.2 §b), render only: Morrowind's layout in our paper. The speaker's name heads the window;
-// the conversation scrolls on the left with hyperlinked keywords; on the right, disposition as Morrowind shows it
-// (a bar and its number), the persuasion button, the growing topic list and Goodbye.
+// The dialogue window (1.2 §b, 1.12 §6), render only: Morrowind's layout in the frame style (dark green-black, the
+// gold-green trim). The speaker's name heads the window; the conversation scrolls on the left with hyperlinked
+// keywords; on the right, disposition as Morrowind shows it (a bar and its number), the persuasion button, the
+// growing topic list, the service buttons (Barter: Skyrim's BarterMenu, drawn by Wind UI, then back) and Goodbye.
 import type { DialogueState, TextRun } from "../../schema/generated/messages.ts";
 import { esc, intentButton } from "../core/html.ts";
 
@@ -29,7 +30,7 @@ function persuasionPanel(s: DialogueState): string {
     return intentButton({ type: "dialogue.persuade", v: 1, body: { option: o.id } }, "opt",
       `<span>${esc(o.label)}</span>${cost}`, `data-key="persuade:${esc(o.id)}"${o.enabled ? "" : " disabled"}`);
   }).join("");
-  return `<div class="persuade paper" role="dialog" aria-label="Persuasion">
+  return `<div class="persuade" role="dialog" aria-label="Persuasion">
     <h2>Persuasion</h2><div class="opts">${opts}</div>
     <button type="button" class="back-btn" data-ui="persuade-close" data-key="persuade:close">Back</button></div>`;
 }
@@ -41,10 +42,14 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
       `data-key="topic:${esc(t.id)}"`)}</li>`).join("");
   const persuade = s.persuasion.available
     ? `<button type="button" class="special" data-ui="persuade-open" data-key="persuade">Persuasion</button>` : "";
+  const LABEL: Record<DialogueState["services"][number], string> = { barter: "Barter" };
+  const services = s.services.length
+    ? `<div class="services">${s.services.map((k) => intentButton({ type: "dialogue.service", v: 1, body: { service: k } },
+      "service", LABEL[k], `data-key="service:${k}"`)).join("")}</div>` : "";
   const goodbye = s.canLeave
     ? intentButton({ type: "dialogue.goodbye", v: 1, body: {} }, "goodbye", "Goodbye", `data-key="goodbye"`)
     : `<p class="forced">You cannot leave yet.</p>`;
-  return `<section class="dialogue paper" data-band="${d.band}" aria-label="${esc(s.speaker.name)}">
+  return `<section class="dialogue frame" data-band="${d.band}" aria-label="${esc(s.speaker.name)}">
   <header class="title"><h1>${esc(s.speaker.name)}</h1></header>
   <div class="cols">
     <div class="talk scroll" data-scroll="talk">${entries(s)}</div>
@@ -56,6 +61,7 @@ export function render(s: DialogueState, ui: DialogueUi = { persuading: false })
       ${persuade}
       ${ui.filter ? `<div class="filter" aria-live="polite">${esc(ui.filter)}</div>` : ""}
       <ul class="topics scroll" data-list="topics">${topics}</ul>
+      ${services}
       ${goodbye}
       ${ui.persuading && s.persuasion.available ? persuasionPanel(s) : ""}
     </aside>

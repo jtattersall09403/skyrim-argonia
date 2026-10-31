@@ -132,18 +132,24 @@ msg::HudMinimap minimap(const chart::Discovered& d, const std::vector<msg::Chart
 // The game date as the journal prints it ("16th of the Eighth Month, 201"); views never format dates.
 msg::GameDate date(const journal::GameDate& d);
 
-// The journal at one page of a tab. `name(quest)` is the quest's display name and its world id, `text(quest,
-// entry)` the log entry's text, `directions(quest, entry)` where to go next after that entry (an active quest's
-// index line shows its latest entry's); entries are paged `per_page` at a time, oldest first, optionally filtered
-// to one quest (by world id).
+// The journal at one ribbon (1.12 §6). `name(quest)` is the quest's display name and world id, `text(quest, entry)`
+// the log entry's text, `directions(quest, entry)` where to go next after that entry, `group(quest)` the questline
+// or place it is listed under. Current lists the active quests, Finished the complete and failed, each by group in
+// the order its most recent quest was written, most recent first; the quest picked (else the most recent listed)
+// opens on its latest direction (active only), then its entries newest first. All entries is the diary, oldest first, `per_page` a page.
+// The search keeps the quests whose name or any entry matches it, and the diary's entries that match (journal::
+// matches); Topics is 2.12's and empty.
 struct QuestNames {
   std::string id, name;
 };
 using EntryText = std::function<std::string(journal::QuestId, journal::EntryId)>;
 using Directions = std::function<std::optional<std::string>(journal::QuestId, journal::EntryId)>;
+using GroupOf = std::function<journal::Group(journal::QuestId)>;
 msg::JournalState journal_state(const journal::Log& log, const std::function<QuestNames(journal::QuestId)>& name,
-                                const EntryText& text, const Directions& directions, const msg::JournalPage& at,
-                                std::size_t per_page = 6);
+                                const EntryText& text, const Directions& directions, const GroupOf& group,
+                                const msg::JournalPage& at, std::size_t per_page = 6);
+// The records' group (journal::quest_text, group_of); a quest the table lacks is listed under "Other quests".
+journal::Group entry_group(journal::QuestId q);
 // The records' words (journal::stage_text): the stage's log entry ("" when the table lacks the stage) and its
 // directions (none when it gives none). What ArgoniaCore passes to journal_state.
 std::string entry_text(journal::QuestId q, journal::EntryId e);

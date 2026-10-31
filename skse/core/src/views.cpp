@@ -205,36 +205,63 @@ msg::GameDate date(const journal::GameDate& d) {
 }
 
 msg::JournalState journal_state(const journal::Log& log, const std::function<QuestNames(journal::QuestId)>& name,
-                                const EntryText& text, const Directions& directions, const msg::JournalPage& at,
-                                std::size_t per_page) {
+                                const EntryText& text, const Directions& directions, const GroupOf& group,
+                                const msg::JournalPage& at, std::size_t per_page) {
   msg::JournalState s;
   s.tab = at.tab;
-  s.quest_filter = at.quest_filter;
-  for (const auto& q : journal::index(log)) {
-    const auto n = name(q.quest);
-    std::optional<std::string> dir;
-    if (q.status == journal::Status::active && !q.entries.empty() && directions) {
-      const auto& last = log.entries[q.entries.back()];
-      dir = directions(last.quest, last.entry);
+  if (at.search && !at.search->empty()) s.search = at.search;
+  const std::string_view query = s.search ? std::string_view(*s.search) : std::string_view();
+  auto entry_of = [&](const journal::Entry& e, const QuestNames& n) {
+    return msg::JournalEntry{n.id, n.name, date(e.date), entry_kind(e.kind), {{text(e.quest, e.entry), std::nullopt}}};
+  };
+  s.page_count = 1;
+  if (s.tab == msg::JournalTab::current || s.tab == msg::JournalTab::finished) {
+    const bool current = s.tab == msg::JournalTab::current;
+    for (const auto& q : journal::index(log)) {  // most recently written first
+      if ((q.status == journal::Status::active) != current) continue;
+      const auto n = name(q.quest);
+      bool hit = journal::matches(n.name, query);
+      for (auto i : q.entries) hit = hit || journal::matches(text(log.entries[i].quest, log.entries[i].entry), query);
+      if (!hit) continue;
+      const auto g = group ? group(q.quest) : journal::Group{"Other quests", false};
+      auto it = std::find_if(s.groups.begin(), s.groups.end(), [&](const msg::QuestGroup& x) { return x.label == g.label; });
+      if (it == s.groups.end()) {
+        s.groups.push_back({g.label, g.place ? msg::QuestGroupKind::place : msg::QuestGroupKind::questline, {}});
+        it = s.groups.end() - 1;
+      }
+      it->quests.push_back({n.id, n.name, status(q.status), date(q.started), date(q.last)});
+      ++s.matches;
+      if (at.quest ? *at.quest == n.id : !s.quest) {  // the quest asked for, else the most recent listed
+        msg::OpenQuest o{n.id, n.name, status(q.status), g.label, std::nullopt, {}};
+        if (q.status == journal::Status::active && !q.entries.empty() && directions) {
+          const auto& last = log.entries[q.entries.back()];
+          o.directions = directions(last.quest, last.entry);
+        }
+        for (auto i = q.entries.rbegin(); i != q.entries.rend(); ++i) o.entries.push_back(entry_of(log.entries[*i], n));
+        s.quest = std::move(o);
+      }
     }
-    s.quests.push_back({n.id, n.name, status(q.status), date(q.started), std::move(dir)});
-  }
-  std::vector<const journal::Entry*> shown;
-  for (const auto& e : log.entries)
-    if (!at.quest_filter || name(e.quest).id == *at.quest_filter) shown.push_back(&e);
-  per_page = std::max<std::size_t>(per_page, 1);
-  const auto pages = std::max<std::size_t>(1, (shown.size() + per_page - 1) / per_page);
-  s.page_count = std::int64_t(pages);
-  s.page = std::clamp<std::int64_t>(at.page, 0, s.page_count - 1);
-  if (s.tab == msg::JournalTab::entries) {
+    if (at.quest && !s.quest && !s.groups.empty())  // asked for one not on this ribbon: open the most recent
+      return journal_state(log, name, text, directions, group, {at.tab, at.page, std::nullopt, at.search}, per_page);
+  } else if (s.tab == msg::JournalTab::all) {
+    std::vector<const journal::Entry*> shown;
+    for (const auto& e : log.entries)
+      if (journal::matches(text(e.quest, e.entry), query) || journal::matches(name(e.quest).name, query))
+        shown.push_back(&e);
+    s.matches = std::int64_t(shown.size());
+    per_page = std::max<std::size_t>(per_page, 1);
+    s.page_count = std::int64_t(std::max<std::size_t>(1, (shown.size() + per_page - 1) / per_page));
+    s.page = std::clamp<std::int64_t>(at.page, 0, s.page_count - 1);
     const auto from = std::size_t(s.page) * per_page;
-    for (std::size_t i = from; i < shown.size() && i < from + per_page; ++i) {
-      const auto& e = *shown[i];
-      const auto n = name(e.quest);
-      s.entries.push_back({n.id, n.name, date(e.date), entry_kind(e.kind), {{text(e.quest, e.entry), std::nullopt}}});
-    }
+    for (std::size_t i = from; i < shown.size() && i < from + per_page; ++i)
+      s.entries.push_back(entry_of(*shown[i], name(shown[i]->quest)));
   }
   return s;
+}
+
+journal::Group entry_group(journal::QuestId q) {
+  const auto* t = journal::quest_text(q);
+  return t ? journal::group_of(*t) : journal::Group{"Other quests", false};
 }
 
 std::string entry_text(journal::QuestId q, journal::EntryId e) {

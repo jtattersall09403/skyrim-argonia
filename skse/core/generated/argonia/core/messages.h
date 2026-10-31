@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "b326921c1ebf2671";
+inline constexpr std::string_view kSchemaHash = "1c0f39ffc05ad872";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -31,17 +31,25 @@ inline constexpr std::array<std::string_view, 3> kDialogueEntryKindNames{"greeti
 enum class DispositionBand : std::uint8_t { low, mid, high };
 inline constexpr std::array<std::string_view, 3> kDispositionBandNames{"low", "mid", "high"};
 
-// the page set the book shows
-enum class JournalTab : std::uint8_t { entries, quests };
-inline constexpr std::array<std::string_view, 2> kJournalTabNames{"entries", "quests"};
+// a service the speaker offers beside the topics (Morrowind's buttons)
+enum class ServiceKind : std::uint8_t { barter };
+inline constexpr std::array<std::string_view, 1> kServiceKindNames{"barter"};
 
-// what the entry records
-enum class JournalEntryKind : std::uint8_t { progress, complete, fail };
-inline constexpr std::array<std::string_view, 3> kJournalEntryKindNames{"progress", "complete", "fail"};
+// the ribbon the book is open at
+enum class JournalTab : std::uint8_t { current, finished, all, topics };
+inline constexpr std::array<std::string_view, 4> kJournalTabNames{"current", "finished", "all", "topics"};
+
+// what a group of quests is named for (quest_line.group local: the place)
+enum class QuestGroupKind : std::uint8_t { questline, place };
+inline constexpr std::array<std::string_view, 2> kQuestGroupKindNames{"questline", "place"};
 
 // a quest's standing in the index
 enum class QuestStatus : std::uint8_t { active, complete, failed };
 inline constexpr std::array<std::string_view, 3> kQuestStatusNames{"active", "complete", "failed"};
+
+// what the entry records
+enum class JournalEntryKind : std::uint8_t { progress, complete, fail };
+inline constexpr std::array<std::string_view, 3> kJournalEntryKindNames{"progress", "complete", "fail"};
 
 // a bar of the HUD
 enum class BarKind : std::uint8_t { health, stamina, magicka, breath, climb };
@@ -130,6 +138,7 @@ struct DialogueState {
   std::vector<TopicItem> topics;  // the topics this person can be asked, in display order
   Disposition disposition;  // Disposition as Morrowind shows it
   Persuasion persuasion;  // The persuasion button and its actions
+  std::vector<ServiceKind> services;  // the service buttons, in display order (barter: a merchant's vendor faction)
   bool can_leave = false;  // whether Goodbye is offered (a forced conversation hides it)
   bool operator==(const DialogueState&) const = default;
 };
@@ -157,6 +166,12 @@ struct DialogueGoodbye {
   bool operator==(const DialogueGoodbye&) const = default;
 };
 
+// A service button was chosen: Barter opens Skyrim's BarterMenu (Wind UI draws it), then the conversation returns
+struct DialogueService {
+  ServiceKind service{};  // a service the speaker offers beside the topics (Morrowind's buttons)
+  bool operator==(const DialogueService&) const = default;
+};
+
 // A date on the game calendar, with ArgoniaCore's rendering of it
 struct GameDate {
   std::int64_t year = 0;  // the era year
@@ -165,6 +180,24 @@ struct GameDate {
   double hour = 0;  // hour of the day
   std::string text;  // the date as the player reads it; views never format game dates
   bool operator==(const GameDate&) const = default;
+};
+
+// One quest of a ribbon's list
+struct QuestIndexItem {
+  std::string id;  // world db quest.id
+  std::string name;  // the quest's name
+  QuestStatus status{};  // a quest's standing in the index
+  GameDate started;  // A date on the game calendar, with ArgoniaCore's rendering of it
+  GameDate last;  // the date of its latest entry
+  bool operator==(const QuestIndexItem&) const = default;
+};
+
+// The quests of one questline or one place, most recently written first
+struct QuestGroup {
+  std::string label;  // the questline's or the place's name (the quest records)
+  QuestGroupKind kind{};  // what a group of quests is named for (quest_line.group local: the place)
+  std::vector<QuestIndexItem> quests;  // One quest of a ribbon's list
+  bool operator==(const QuestGroup&) const = default;
 };
 
 // One dated entry of the log
@@ -177,32 +210,36 @@ struct JournalEntry {
   bool operator==(const JournalEntry&) const = default;
 };
 
-// One quest of the index
-struct QuestIndexItem {
+// The quest the book is open at: its latest direction, then its entries
+struct OpenQuest {
   std::string id;  // world db quest.id
   std::string name;  // the quest's name
   QuestStatus status{};  // a quest's standing in the index
-  GameDate started;  // A date on the game calendar, with ArgoniaCore's rendering of it
-  std::optional<std::string> directions;  // where to go next in words, never a marker (quest_stage_directions)
-  bool operator==(const QuestIndexItem&) const = default;
+  std::string group;  // the questline or place it is listed under
+  std::optional<std::string> directions;  // where to go next in words, never a marker (the latest stage's directions)
+  std::vector<JournalEntry> entries;  // its entries, newest first
+  bool operator==(const OpenQuest&) const = default;
 };
 
-// The open journal at one page
+// The open journal at one ribbon
 struct JournalState {
-  JournalTab tab{};  // the page set the book shows
-  std::int64_t page = 0;  // 0-based page of the tab
-  std::int64_t page_count = 0;  // pages in the tab
-  std::optional<std::string> quest_filter;  // the quest id the entries are filtered to
-  std::vector<JournalEntry> entries;  // this page's entries, oldest first
-  std::vector<QuestIndexItem> quests;  // the quest index, most recent first
+  JournalTab tab{};  // the ribbon the book is open at
+  std::int64_t page = 0;  // 0-based page of the All entries diary
+  std::int64_t page_count = 0;  // pages of the diary
+  std::optional<std::string> search;  // the typed search the tab is narrowed by, as typed
+  std::vector<QuestGroup> groups;  // Current or Finished: the quests matching the search, by group
+  std::optional<OpenQuest> quest;  // the quest opened from Current or Finished
+  std::vector<JournalEntry> entries;  // All entries: this page of the diary, oldest first
+  std::int64_t matches = 0;  // entries (All entries) or quests (Current, Finished) the search matched
   bool operator==(const JournalState&) const = default;
 };
 
-// A page was turned, a tab chosen or a quest picked from the index
+// A ribbon chosen, a page turned, a quest opened or the search typed
 struct JournalPage {
-  JournalTab tab{};  // the page set the book shows
-  std::int64_t page = 0;  // 0-based page asked for
-  std::optional<std::string> quest_filter;  // filter the entries to this quest id
+  JournalTab tab{};  // the ribbon the book is open at
+  std::int64_t page = 0;  // 0-based diary page asked for
+  std::optional<std::string> quest;  // open this quest id (Current or Finished)
+  std::optional<std::string> search;  // narrow the tab to entries and quests containing these words
   bool operator==(const JournalPage&) const = default;
 };
 
@@ -407,7 +444,7 @@ struct Traits;
 template <>
 struct Traits<DialogueState> {
   static constexpr std::string_view type = "dialogue.state";
-  static constexpr std::uint32_t version = 1;
+  static constexpr std::uint32_t version = 2;
   static constexpr Direction dir = Direction::push;
 };
 template <>
@@ -435,15 +472,21 @@ struct Traits<DialogueGoodbye> {
   static constexpr Direction dir = Direction::intent;
 };
 template <>
+struct Traits<DialogueService> {
+  static constexpr std::string_view type = "dialogue.service";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<JournalState> {
   static constexpr std::string_view type = "journal.state";
-  static constexpr std::uint32_t version = 1;
+  static constexpr std::uint32_t version = 2;
   static constexpr Direction dir = Direction::push;
 };
 template <>
 struct Traits<JournalPage> {
   static constexpr std::string_view type = "journal.page";
-  static constexpr std::uint32_t version = 1;
+  static constexpr std::uint32_t version = 2;
   static constexpr Direction dir = Direction::intent;
 };
 template <>
@@ -502,18 +545,19 @@ struct Traits<ViewClose> {
 };
 
 using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 16> kMessages{{
-    {"dialogue.state", 1, Direction::push},
+inline constexpr std::array<MessageInfo, 17> kMessages{{
+    {"dialogue.state", 2, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
     {"dialogue.persuade", 1, Direction::intent},
     {"dialogue.goodbye", 1, Direction::intent},
-    {"journal.state", 1, Direction::push},
-    {"journal.page", 1, Direction::intent},
+    {"dialogue.service", 1, Direction::intent},
+    {"journal.state", 2, Direction::push},
+    {"journal.page", 2, Direction::intent},
     {"hud.state", 1, Direction::push},
     {"hud.bars", 1, Direction::push},
     {"hud.minimap", 1, Direction::push},
@@ -543,21 +587,29 @@ inline bool from_json(const json::Value& j, DispositionBand& out, const std::str
     if (*s == kDispositionBandNames[i]) { out = DispositionBand(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of low, mid, high");
 }
+inline json::Value to_json(ServiceKind v) { return json::Value::string(std::string(kServiceKindNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, ServiceKind& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of barter");
+  for (std::size_t i = 0; i < kServiceKindNames.size(); ++i)
+    if (*s == kServiceKindNames[i]) { out = ServiceKind(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of barter");
+}
 inline json::Value to_json(JournalTab v) { return json::Value::string(std::string(kJournalTabNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, JournalTab& out, const std::string& path, std::string& err) {
   const std::string* s = j.as_string();
-  if (!s) return json::fail(err, path, "want one of entries, quests");
+  if (!s) return json::fail(err, path, "want one of current, finished, all, topics");
   for (std::size_t i = 0; i < kJournalTabNames.size(); ++i)
     if (*s == kJournalTabNames[i]) { out = JournalTab(i); return true; }
-  return json::fail(err, path, "'" + *s + "' is not one of entries, quests");
+  return json::fail(err, path, "'" + *s + "' is not one of current, finished, all, topics");
 }
-inline json::Value to_json(JournalEntryKind v) { return json::Value::string(std::string(kJournalEntryKindNames[std::size_t(v)])); }
-inline bool from_json(const json::Value& j, JournalEntryKind& out, const std::string& path, std::string& err) {
+inline json::Value to_json(QuestGroupKind v) { return json::Value::string(std::string(kQuestGroupKindNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, QuestGroupKind& out, const std::string& path, std::string& err) {
   const std::string* s = j.as_string();
-  if (!s) return json::fail(err, path, "want one of progress, complete, fail");
-  for (std::size_t i = 0; i < kJournalEntryKindNames.size(); ++i)
-    if (*s == kJournalEntryKindNames[i]) { out = JournalEntryKind(i); return true; }
-  return json::fail(err, path, "'" + *s + "' is not one of progress, complete, fail");
+  if (!s) return json::fail(err, path, "want one of questline, place");
+  for (std::size_t i = 0; i < kQuestGroupKindNames.size(); ++i)
+    if (*s == kQuestGroupKindNames[i]) { out = QuestGroupKind(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of questline, place");
 }
 inline json::Value to_json(QuestStatus v) { return json::Value::string(std::string(kQuestStatusNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, QuestStatus& out, const std::string& path, std::string& err) {
@@ -566,6 +618,14 @@ inline bool from_json(const json::Value& j, QuestStatus& out, const std::string&
   for (std::size_t i = 0; i < kQuestStatusNames.size(); ++i)
     if (*s == kQuestStatusNames[i]) { out = QuestStatus(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of active, complete, failed");
+}
+inline json::Value to_json(JournalEntryKind v) { return json::Value::string(std::string(kJournalEntryKindNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, JournalEntryKind& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of progress, complete, fail");
+  for (std::size_t i = 0; i < kJournalEntryKindNames.size(); ++i)
+    if (*s == kJournalEntryKindNames[i]) { out = JournalEntryKind(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of progress, complete, fail");
 }
 inline json::Value to_json(BarKind v) { return json::Value::string(std::string(kBarKindNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, BarKind& out, const std::string& path, std::string& err) {
@@ -826,12 +886,13 @@ inline bool from_json(const json::Value& j, Persuasion& out, const std::string& 
 
 inline json::Value to_json(const DialogueState& v) {
   json::Object o;
-  o.reserve(6);
+  o.reserve(7);
   o.push_back({"speaker", to_json(v.speaker)});
   o.push_back({"entries", [&] { json::Array a0; a0.reserve(v.entries.size()); for (const auto& e0 : v.entries) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
   o.push_back({"topics", [&] { json::Array a0; a0.reserve(v.topics.size()); for (const auto& e0 : v.topics) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
   o.push_back({"disposition", to_json(v.disposition)});
   o.push_back({"persuasion", to_json(v.persuasion)});
+  o.push_back({"services", [&] { json::Array a0; a0.reserve(v.services.size()); for (const auto& e0 : v.services) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
   o.push_back({"canLeave", json::Value::boolean(v.can_leave)});
   return json::Value::object(std::move(o));
 }
@@ -878,6 +939,20 @@ inline bool from_json(const json::Value& j, DialogueState& out, const std::strin
   }
   if (const json::Value* f_persuasion = f.req("persuasion")) {
     if (!from_json(*f_persuasion, out.persuasion, path + ".persuasion", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_services = f.req("services")) {
+    {
+      const json::Array* a0 = (*f_services).as_array();
+      if (!a0) return json::fail(err, path + ".services", "want a list");
+      out.services.clear();
+      out.services.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.services.emplace_back();
+        if (!from_json((*a0)[i0], out.services.back(), path + ".services" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
   } else {
     return false;
   }
@@ -952,6 +1027,23 @@ inline bool from_json(const json::Value& j, DialogueGoodbye& out, const std::str
   return f.done();
 }
 
+inline json::Value to_json(const DialogueService& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"service", to_json(v.service)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, DialogueService& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_service = f.req("service")) {
+    if (!from_json(*f_service, out.service, path + ".service", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
 inline json::Value to_json(const GameDate& v) {
   json::Object o;
   o.reserve(5);
@@ -987,6 +1079,85 @@ inline bool from_json(const json::Value& j, GameDate& out, const std::string& pa
   }
   if (const json::Value* f_text = f.req("text")) {
     if (!json::read(*f_text, out.text, path + ".text", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const QuestIndexItem& v) {
+  json::Object o;
+  o.reserve(5);
+  o.push_back({"id", json::Value::string(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"status", to_json(v.status)});
+  o.push_back({"started", to_json(v.started)});
+  o.push_back({"last", to_json(v.last)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, QuestIndexItem& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_status = f.req("status")) {
+    if (!from_json(*f_status, out.status, path + ".status", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_started = f.req("started")) {
+    if (!from_json(*f_started, out.started, path + ".started", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_last = f.req("last")) {
+    if (!from_json(*f_last, out.last, path + ".last", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const QuestGroup& v) {
+  json::Object o;
+  o.reserve(3);
+  o.push_back({"label", json::Value::string(v.label)});
+  o.push_back({"kind", to_json(v.kind)});
+  o.push_back({"quests", [&] { json::Array a0; a0.reserve(v.quests.size()); for (const auto& e0 : v.quests) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, QuestGroup& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_label = f.req("label")) {
+    if (!json::read(*f_label, out.label, path + ".label", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_kind = f.req("kind")) {
+    if (!from_json(*f_kind, out.kind, path + ".kind", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_quests = f.req("quests")) {
+    {
+      const json::Array* a0 = (*f_quests).as_array();
+      if (!a0) return json::fail(err, path + ".quests", "want a list");
+      out.quests.clear();
+      out.quests.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.quests.emplace_back();
+        if (!from_json((*a0)[i0], out.quests.back(), path + ".quests" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
   } else {
     return false;
   }
@@ -1043,17 +1214,18 @@ inline bool from_json(const json::Value& j, JournalEntry& out, const std::string
   return f.done();
 }
 
-inline json::Value to_json(const QuestIndexItem& v) {
+inline json::Value to_json(const OpenQuest& v) {
   json::Object o;
-  o.reserve(5);
+  o.reserve(6);
   o.push_back({"id", json::Value::string(v.id)});
   o.push_back({"name", json::Value::string(v.name)});
   o.push_back({"status", to_json(v.status)});
-  o.push_back({"started", to_json(v.started)});
+  o.push_back({"group", json::Value::string(v.group)});
   if (v.directions) o.push_back({"directions", json::Value::string(*v.directions)});
+  o.push_back({"entries", [&] { json::Array a0; a0.reserve(v.entries.size()); for (const auto& e0 : v.entries) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
   return json::Value::object(std::move(o));
 }
-inline bool from_json(const json::Value& j, QuestIndexItem& out, const std::string& path, std::string& err) {
+inline bool from_json(const json::Value& j, OpenQuest& out, const std::string& path, std::string& err) {
   json::Fields f(j, path, err);
   if (!f.ok()) return false;
   if (const json::Value* f_id = f.req("id")) {
@@ -1071,8 +1243,8 @@ inline bool from_json(const json::Value& j, QuestIndexItem& out, const std::stri
   } else {
     return false;
   }
-  if (const json::Value* f_started = f.req("started")) {
-    if (!from_json(*f_started, out.started, path + ".started", err)) return false;
+  if (const json::Value* f_group = f.req("group")) {
+    if (!json::read(*f_group, out.group, path + ".group", err)) return false;
   } else {
     return false;
   }
@@ -1082,18 +1254,34 @@ inline bool from_json(const json::Value& j, QuestIndexItem& out, const std::stri
   } else {
     out.directions.reset();
   }
+  if (const json::Value* f_entries = f.req("entries")) {
+    {
+      const json::Array* a0 = (*f_entries).as_array();
+      if (!a0) return json::fail(err, path + ".entries", "want a list");
+      out.entries.clear();
+      out.entries.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.entries.emplace_back();
+        if (!from_json((*a0)[i0], out.entries.back(), path + ".entries" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
   return f.done();
 }
 
 inline json::Value to_json(const JournalState& v) {
   json::Object o;
-  o.reserve(6);
+  o.reserve(8);
   o.push_back({"tab", to_json(v.tab)});
   o.push_back({"page", json::Value::number(double(v.page))});
   o.push_back({"pageCount", json::Value::number(double(v.page_count))});
-  if (v.quest_filter) o.push_back({"questFilter", json::Value::string(*v.quest_filter)});
+  if (v.search) o.push_back({"search", json::Value::string(*v.search)});
+  o.push_back({"groups", [&] { json::Array a0; a0.reserve(v.groups.size()); for (const auto& e0 : v.groups) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  if (v.quest) o.push_back({"quest", to_json(*v.quest)});
   o.push_back({"entries", [&] { json::Array a0; a0.reserve(v.entries.size()); for (const auto& e0 : v.entries) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
-  o.push_back({"quests", [&] { json::Array a0; a0.reserve(v.quests.size()); for (const auto& e0 : v.quests) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"matches", json::Value::number(double(v.matches))});
   return json::Value::object(std::move(o));
 }
 inline bool from_json(const json::Value& j, JournalState& out, const std::string& path, std::string& err) {
@@ -1114,11 +1302,31 @@ inline bool from_json(const json::Value& j, JournalState& out, const std::string
   } else {
     return false;
   }
-  if (const json::Value* f_quest_filter = f.opt("questFilter")) {
-    out.quest_filter.emplace();
-    if (!json::read(*f_quest_filter, *out.quest_filter, path + ".questFilter", err)) return false;
+  if (const json::Value* f_search = f.opt("search")) {
+    out.search.emplace();
+    if (!json::read(*f_search, *out.search, path + ".search", err)) return false;
   } else {
-    out.quest_filter.reset();
+    out.search.reset();
+  }
+  if (const json::Value* f_groups = f.req("groups")) {
+    {
+      const json::Array* a0 = (*f_groups).as_array();
+      if (!a0) return json::fail(err, path + ".groups", "want a list");
+      out.groups.clear();
+      out.groups.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.groups.emplace_back();
+        if (!from_json((*a0)[i0], out.groups.back(), path + ".groups" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_quest = f.opt("quest")) {
+    out.quest.emplace();
+    if (!from_json(*f_quest, *out.quest, path + ".quest", err)) return false;
+  } else {
+    out.quest.reset();
   }
   if (const json::Value* f_entries = f.req("entries")) {
     {
@@ -1134,17 +1342,8 @@ inline bool from_json(const json::Value& j, JournalState& out, const std::string
   } else {
     return false;
   }
-  if (const json::Value* f_quests = f.req("quests")) {
-    {
-      const json::Array* a0 = (*f_quests).as_array();
-      if (!a0) return json::fail(err, path + ".quests", "want a list");
-      out.quests.clear();
-      out.quests.reserve(a0->size());
-      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
-        out.quests.emplace_back();
-        if (!from_json((*a0)[i0], out.quests.back(), path + ".quests" + "[" + std::to_string(i0) + "]", err)) return false;
-      }
-    }
+  if (const json::Value* f_matches = f.req("matches")) {
+    if (!json::read_int(*f_matches, out.matches, 0.0, json::kMaxSafeInt, path + ".matches", err)) return false;
   } else {
     return false;
   }
@@ -1153,10 +1352,11 @@ inline bool from_json(const json::Value& j, JournalState& out, const std::string
 
 inline json::Value to_json(const JournalPage& v) {
   json::Object o;
-  o.reserve(3);
+  o.reserve(4);
   o.push_back({"tab", to_json(v.tab)});
   o.push_back({"page", json::Value::number(double(v.page))});
-  if (v.quest_filter) o.push_back({"questFilter", json::Value::string(*v.quest_filter)});
+  if (v.quest) o.push_back({"quest", json::Value::string(*v.quest)});
+  if (v.search) o.push_back({"search", json::Value::string(*v.search)});
   return json::Value::object(std::move(o));
 }
 inline bool from_json(const json::Value& j, JournalPage& out, const std::string& path, std::string& err) {
@@ -1172,11 +1372,17 @@ inline bool from_json(const json::Value& j, JournalPage& out, const std::string&
   } else {
     return false;
   }
-  if (const json::Value* f_quest_filter = f.opt("questFilter")) {
-    out.quest_filter.emplace();
-    if (!json::read(*f_quest_filter, *out.quest_filter, path + ".questFilter", err)) return false;
+  if (const json::Value* f_quest = f.opt("quest")) {
+    out.quest.emplace();
+    if (!json::read(*f_quest, *out.quest, path + ".quest", err)) return false;
   } else {
-    out.quest_filter.reset();
+    out.quest.reset();
+  }
+  if (const json::Value* f_search = f.opt("search")) {
+    out.search.emplace();
+    if (!json::read(*f_search, *out.search, path + ".search", err)) return false;
+  } else {
+    out.search.reset();
   }
   return f.done();
 }
@@ -2012,8 +2218,8 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
   if (!body || !f.done()) return std::unexpected(err);
   if (type == "dialogue.state") {
     if constexpr (std::is_constructible_v<V, DialogueState>) {
-      if (v != 1)
-        return std::unexpected("dialogue.state version " + std::to_string(v) + ": this build speaks version 1");
+      if (v != 2)
+        return std::unexpected("dialogue.state version " + std::to_string(v) + ": this build speaks version 2");
       DialogueState m;
       if (!from_json(*body, m, "dialogue.state body", err)) return std::unexpected(err);
       return V{std::in_place_type<DialogueState>, std::move(m)};
@@ -2065,10 +2271,21 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("dialogue.goodbye: " + std::string(refuse));
     }
   }
+  if (type == "dialogue.service") {
+    if constexpr (std::is_constructible_v<V, DialogueService>) {
+      if (v != 1)
+        return std::unexpected("dialogue.service version " + std::to_string(v) + ": this build speaks version 1");
+      DialogueService m;
+      if (!from_json(*body, m, "dialogue.service body", err)) return std::unexpected(err);
+      return V{std::in_place_type<DialogueService>, std::move(m)};
+    } else {
+      return std::unexpected("dialogue.service: " + std::string(refuse));
+    }
+  }
   if (type == "journal.state") {
     if constexpr (std::is_constructible_v<V, JournalState>) {
-      if (v != 1)
-        return std::unexpected("journal.state version " + std::to_string(v) + ": this build speaks version 1");
+      if (v != 2)
+        return std::unexpected("journal.state version " + std::to_string(v) + ": this build speaks version 2");
       JournalState m;
       if (!from_json(*body, m, "journal.state body", err)) return std::unexpected(err);
       return V{std::in_place_type<JournalState>, std::move(m)};
@@ -2078,8 +2295,8 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
   }
   if (type == "journal.page") {
     if constexpr (std::is_constructible_v<V, JournalPage>) {
-      if (v != 1)
-        return std::unexpected("journal.page version " + std::to_string(v) + ": this build speaks version 1");
+      if (v != 2)
+        return std::unexpected("journal.page version " + std::to_string(v) + ": this build speaks version 2");
       JournalPage m;
       if (!from_json(*body, m, "journal.page body", err)) return std::unexpected(err);
       return V{std::in_place_type<JournalPage>, std::move(m)};
@@ -2197,7 +2414,7 @@ inline std::expected<std::string, std::string> encode(const DialogueState& m) {
   DialogueState check;
   std::string err;
   if (!detail::from_json(body, check, "dialogue.state body", err)) return std::unexpected(err);
-  return json::envelope("dialogue.state", 1, std::move(body));
+  return json::envelope("dialogue.state", 2, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const DialogueTopic& m) {
   json::Value body = detail::to_json(m);
@@ -2227,19 +2444,26 @@ inline std::expected<std::string, std::string> encode(const DialogueGoodbye& m) 
   if (!detail::from_json(body, check, "dialogue.goodbye body", err)) return std::unexpected(err);
   return json::envelope("dialogue.goodbye", 1, std::move(body));
 }
+inline std::expected<std::string, std::string> encode(const DialogueService& m) {
+  json::Value body = detail::to_json(m);
+  DialogueService check;
+  std::string err;
+  if (!detail::from_json(body, check, "dialogue.service body", err)) return std::unexpected(err);
+  return json::envelope("dialogue.service", 1, std::move(body));
+}
 inline std::expected<std::string, std::string> encode(const JournalState& m) {
   json::Value body = detail::to_json(m);
   JournalState check;
   std::string err;
   if (!detail::from_json(body, check, "journal.state body", err)) return std::unexpected(err);
-  return json::envelope("journal.state", 1, std::move(body));
+  return json::envelope("journal.state", 2, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const JournalPage& m) {
   json::Value body = detail::to_json(m);
   JournalPage check;
   std::string err;
   if (!detail::from_json(body, check, "journal.page body", err)) return std::unexpected(err);
-  return json::envelope("journal.page", 1, std::move(body));
+  return json::envelope("journal.page", 2, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const HudState& m) {
   json::Value body = detail::to_json(m);

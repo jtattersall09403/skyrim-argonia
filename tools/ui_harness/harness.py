@@ -66,7 +66,14 @@ MEASURE = r"""
     out.texts++;
     const f = parseFloat(cs.fontSize);
     if (f < out.minFont) { out.minFont = f; out.minFontAt = (el.className || el.tagName) + ": " + n.textContent.trim().slice(0, 30); }
-    if (r.left < -1 || r.top < -1 || r.right > W + 1 || r.bottom > H + 1) out.offscreen.push(n.textContent.trim().slice(0, 40));
+    // Off screen: a line box of the text outside the viewport that no scroller clips (text in CSS columns spans
+    // leaves its scroller hides; the journal's diary). The element's own box is the union of those lines.
+    const clips = [];
+    for (let p = el.parentElement; p && p.id !== "view"; p = p.parentElement)
+      if (/(auto|scroll|hidden)/.test(getComputedStyle(p).overflowY + getComputedStyle(p).overflowX)) clips.push(p.getBoundingClientRect());
+    const rg = document.createRange(); rg.selectNodeContents(n);
+    const lines = [...rg.getClientRects()].filter((q) => clips.every((c) => q.right > c.left && q.left < c.right && q.bottom > c.top && q.top < c.bottom));
+    if (lines.some((q) => q.left < -1 || q.top < -1 || q.right > W + 1 || q.bottom > H + 1)) out.offscreen.push(n.textContent.trim().slice(0, 40));
   }
   for (const b of document.querySelectorAll("#view button")) {
     const r = b.getBoundingClientRect();
@@ -132,8 +139,11 @@ def stills_for(view: str) -> list[tuple[str, list[str], dict]]:
         out.append(("prompt@gamepad", [json.dumps(st["prompt"])], {"device": "gamepad"}))
         out.append(("prompt@touch", [json.dumps(st["prompt"])], {"device": "touch"}))
         out.append(("effects@bright", [json.dumps(st["effects"])], {"bright": True}))
+    if view == "dialogue":
+        out.append(("answer+touch", [json.dumps(st["answer"])], {"first": ".topic", "device": "touch"}))  # focus hidden
     if view == "journal":
-        out.append(("questIndex+focus", [json.dumps(st["questIndex"])], {"first": ".qlink"}))
+        out.append(("current+focus", [json.dumps(st["current"])], {"first": ".qlink"}))
+        out.append(("current+touch", [json.dumps(st["current"])], {"first": ".qlink", "device": "touch"}))
         out.append(("lf83+turned", [json.dumps(st["lf83"])], {"keys": ["PageDown"]}))   # the second leaf
     return out
 
@@ -189,7 +199,7 @@ class Harness:
         p.evaluate("() => document.fonts.ready.then(() => true)")
         if opt.get("first"):
             p.focus(opt["first"])
-            p.evaluate("() => window.argonia.device('keyboard')")
+            p.evaluate(f"() => window.argonia.device('{opt.get('device') or 'keyboard'}')")
         for k in opt.get("keys", []):
             p.keyboard.press(k)
         m = p.evaluate(MEASURE)
@@ -216,13 +226,14 @@ class Harness:
         p.click(".special")
         p.click(".opt >> nth=0")
         p.keyboard.press("Escape")     # closes the persuasion panel
+        p.click(".service")            # Barter
         p.click(".goodbye")
         p.keyboard.press("Escape")     # closes the window
         p.evaluate("(m) => window.argonia.push(m)", json.dumps(d["states"]["forced"]))
         p.keyboard.press("Escape")     # a forced conversation cannot be left
         sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
-        want = [d["intents"]["topic"], d["intents"]["keyword"], d["intents"]["persuade"], d["intents"]["goodbye"],
-                d["intents"]["close"]]
+        want = [d["intents"]["topic"], d["intents"]["keyword"], d["intents"]["persuade"], d["intents"]["barter"],
+                d["intents"]["goodbye"], d["intents"]["close"]]
         if sent != want:
             fails.append(f"dialogue sent {sent}, want {want}")
         # The pad: focus walks the list with the d-pad's actions, A presses.
@@ -237,16 +248,26 @@ class Harness:
 
         j = fixtures("journal")
         p = self.open(vp, "journal")
-        p.evaluate("(m) => window.argonia.push(m)", json.dumps(j["states"]["entries"]))
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(j["states"]["all"]))
         p.click(".turn.next")
         p.keyboard.press("PageDown")
+        p.keyboard.press("/")          # the search field from anywhere; a typed letter is a search, not a turn
+        p.keyboard.press("c")
+        p.keyboard.press("ArrowDown")  # out of the field
         p.keyboard.press("Escape")
-        p.evaluate("(m) => window.argonia.push(m)", json.dumps(j["states"]["questIndex"]))
-        p.click(".qlink >> nth=0")
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(j["states"]["current"]))
+        p.click(".ribbon >> nth=1")
+        p.click(".qlink >> text=The Well and the Landing")
         sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
-        want = [j["intents"]["nextPage"], j["intents"]["nextPage"], j["intents"]["close"], j["intents"]["pickQuest"]]
+        want = [j["intents"]["nextPage"], j["intents"]["nextPage"], j["intents"]["search"], j["intents"]["close"],
+                j["intents"]["finished"], j["intents"]["openQuest"]]
         if sent != want:
             fails.append(f"journal sent {sent}, want {want}")
+        # Touch: B (the bridge's back, as the phone's B button sends it) closes the journal.
+        p.evaluate("() => { window.argoniaSent.length = 0; window.argonia.device('touch'); window.argonia.input('back'); }")
+        sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
+        if sent != [j["intents"]["close"]]:
+            fails.append(f"touch B sent {sent}, want the journal's close")
 
         sx = fixtures("sitting")
         p = self.open(vp, "sitting")
@@ -279,7 +300,7 @@ class Harness:
 # The view counts them as the text needs, offers Next when there is more, and the last leaf shows the page's end.
 JOURNAL = r"""
 () => {
-  const v = document.getElementById("view"), f = document.querySelector(".flow, .index");
+  const v = document.getElementById("view"), f = document.querySelector(".flow");
   if (!f) return { fails: [], leaves: 0 };
   const stride = f.clientWidth + (parseFloat(getComputedStyle(f).columnGap) || 0);
   const need = Math.max(1, Math.ceil((f.scrollWidth - 1) / stride)), n = Number(v.dataset.leaves || 0);
@@ -344,7 +365,7 @@ def run(smoke: bool, out: Path = OUT, shoot: bool = True) -> dict:
         for vp in (folded, desk):
             plan.append((vp, "dialogue", "threeHundredTopics", [json.dumps(st["dialogue"]["threeHundredTopics"])], {}))
         plan += [(folded, "hud", "play", [json.dumps(st["hud"]["play"])], {}),
-                 (folded, "journal", "entries", [json.dumps(st["journal"]["entries"])], {}),
+                 (folded, "journal", "currentLf83", [json.dumps(st["journal"]["currentLf83"])], {}),
                  (folded, "journal", "lf83", [json.dumps(st["journal"]["lf83"])], {})]
         if info["chart"]:
             plan.append((folded, "chart", "claywater", [json.dumps(st["chart"]["claywater"])], {}))

@@ -50,9 +50,10 @@ test("a message not in the schema is refused with the C++ twin's words", () => {
     [`{"type":"dialogue.topic","v":1,"body":{}}`, "dialogue.topic body.topic: missing"],
     [`{"type":"dialogue.topic","v":1,"body":{"topic":7}}`, "dialogue.topic body.topic: want a string"],
     [`{"type":"view.close","v":1,"body":{"view":"hud"}}`, "view.close body.view: 'hud' is not one of dialogue, journal, chart"],
-    [`{"type":"journal.page","v":1,"body":{"tab":"entries","page":-1}}`, "journal.page body.page: -1 is outside 0.."],
-    [`{"type":"journal.page","v":1,"body":{"tab":"entries","page":1.5}}`, "journal.page body.page: want a whole number"],
-    [`{"type":"journal.page","v":1,"body":{"tab":"entries","page":1,"questFilter":null}}`, "journal.page body.questFilter: want a string"],
+    [`{"type":"journal.page","v":2,"body":{"tab":"all","page":-1}}`, "journal.page body.page: -1 is outside 0.."],
+    [`{"type":"journal.page","v":2,"body":{"tab":"all","page":1.5}}`, "journal.page body.page: want a whole number"],
+    [`{"type":"journal.page","v":2,"body":{"tab":"all","page":1,"quest":null}}`, "journal.page body.quest: want a string"],
+    [`{"type":"journal.page","v":1,"body":{"tab":"all","page":0}}`, "journal.page version 1: this build speaks version 2"],
     [`{"type":"chart.pan","v":1,"body":{"view":{"centreX":0,"centreY":0,"zoom":0}}}`, "chart.pan body.view.zoom: 0 is outside 0.05..64"],
     [`{"type":"hud.bars","v":1,"body":{"bars":[{"kind":"health","current":1,"max":2}]}}`, "hud.bars body.bars[0].shown: missing"],
     [`[]`, "message: want an object"],
@@ -75,10 +76,10 @@ test("a view sends only what the schema holds", () => {
     /ArgoniaCore accepts intents only/);
   assert.match(refusal(encodeIntent({ type: "chart.pan", v: 1, body: { view: { centreX: NaN, centreY: 0, zoom: 1 } } })),
     /chart.pan body.view.centreX: want a number/);
-  const page: IntentMessage = { type: "journal.page", v: 1, body: { tab: "quests", page: 2, questFilter: undefined } };
+  const page: IntentMessage = { type: "journal.page", v: 2, body: { tab: "finished", page: 2, quest: undefined } };
   const out = encodeIntent(page);
   assert.ok(out.ok);
-  assert.equal(out.value, `{"type":"journal.page","v":1,"body":{"tab":"quests","page":2}}`);
+  assert.equal(out.value, `{"type":"journal.page","v":2,"body":{"tab":"finished","page":2}}`);
 });
 
 test("both twins come from one schema", () => {

@@ -25,6 +25,15 @@ int main() {
   CHECK(d1 < d2 && d2 < d3);
   CHECK(index({}).empty());
 
+  // The search (1.12 §6): every word, any case; an empty query matches.
+  CHECK(matches("The Clay Basket at the cut", "clay CUT") && matches("anything", "  ") && matches("x", ""));
+  CHECK(!matches("The clay basket", "clay well") && !matches("", "a"));
+  // The grouping: a local quest under its place; a questline's quest, or a local one with no place, under the line.
+  using T = argonia::core::gen::JournalQuestText;
+  CHECK((group_of(T{1, "q", "Q", "Local quests", "local", "Claywater Station"}) == Group{"Claywater Station", true}));
+  CHECK((group_of(T{1, "q", "Q", "Local quests", "local", ""}) == Group{"Local quests", false}));
+  CHECK((group_of(T{1, "q", "Q", "Marsh Charter", "faction", "Gideon"}) == Group{"Marsh Charter", false}));
+
   auto back = decode(encode(log));
   CHECK(back && *back == log);
   auto bad = encode(log);

@@ -48,6 +48,21 @@ std::vector<QuestLine> index(const Log& log);
 const gen::JournalStageText* stage_text(QuestId q, EntryId stage);
 std::span<const gen::JournalObjectiveText> objectives(const gen::JournalStageText& t);
 
+// The journal's grouping (1.12 §6): a quest is listed under its questline, or under its place when its questline is
+// the catch-all of local quests (quest_line.group "local"); a local quest with no place keeps the questline's name.
+// The quest's record (gen::kJournalQuests); null when the table lacks it.
+const gen::JournalQuestText* quest_text(QuestId q);
+struct Group {
+  std::string label;
+  bool place = false;  // named for a place, not a questline
+  bool operator==(const Group&) const = default;
+};
+Group group_of(const gen::JournalQuestText& t);
+
+// The journal's search (1.12 §6): every whitespace-separated word of `query` occurs in `text`, ignoring ASCII case.
+// An empty or all-space query matches everything.
+bool matches(std::string_view text, std::string_view query);
+
 // The "journal updated" notice (game-10 §2): an entry logged at a stage, or a clue found (an objective completed),
 // tells the player once, through the engine's own HUD notification and our HUD view's notice stack. A clue that
 // sets a stage and that stage's entry land within moments of each other: one notice for both (kNoticeMerge).

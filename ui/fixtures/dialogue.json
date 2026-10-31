@@ -1,10 +1,10 @@
 {
  "screen": "dialogue",
- "doc": "Mock data for 1.2's L3 harness (dialogue window). Lines and ids from the world db where they exist; 'mock' ids are not records.",
+ "doc": "Mock data for 1.2's L3 harness (dialogue window). Lines and ids from the world db where they exist; 'mock' ids are not records. Barter shows where the speaker is a merchant (answer, greeting).",
  "states": {
   "greeting": {
    "type": "dialogue.state",
-   "v": 1,
+   "v": 2,
    "body": {
     "speaker": {
      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
@@ -82,12 +82,15 @@
       }
      ]
     },
+    "services": [
+     "barter"
+    ],
     "canLeave": true
    }
   },
   "answer": {
    "type": "dialogue.state",
-   "v": 1,
+   "v": 2,
    "body": {
     "speaker": {
      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
@@ -178,12 +181,15 @@
       }
      ]
     },
+    "services": [
+     "barter"
+    ],
     "canLeave": true
    }
   },
   "lowDisposition": {
    "type": "dialogue.state",
-   "v": 1,
+   "v": 2,
    "body": {
     "speaker": {
      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
@@ -261,12 +267,13 @@
       }
      ]
     },
+    "services": [],
     "canLeave": true
    }
   },
   "forced": {
    "type": "dialogue.state",
-   "v": 1,
+   "v": 2,
    "body": {
     "speaker": {
      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
@@ -316,12 +323,13 @@
      "available": false,
      "options": []
     },
+    "services": [],
     "canLeave": false
    }
   },
   "threeHundredTopics": {
    "type": "dialogue.state",
-   "v": 1,
+   "v": 2,
    "body": {
     "speaker": {
      "id": "npc.imperial-fringe.claywater-station.landing-s-poler",
@@ -1575,6 +1583,7 @@
       }
      ]
     },
+    "services": [],
     "canLeave": true
    }
   }
@@ -1611,6 +1620,13 @@
    "v": 1,
    "body": {
     "view": "dialogue"
+   }
+  },
+  "barter": {
+   "type": "dialogue.service",
+   "v": 1,
+   "body": {
+    "service": "barter"
    }
   }
  }

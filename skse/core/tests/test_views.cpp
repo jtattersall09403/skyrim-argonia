@@ -168,23 +168,76 @@ void the_journal() {
   auto name = [](journal::QuestId q) { return QuestNames{"quest." + std::to_string(q), "Quest " + std::to_string(q)}; };
   auto text = [](journal::QuestId, journal::EntryId e) { return "entry " + std::to_string(e); };
   const Directions none;
-  auto s = journal_state(log, name, text, none, {msg::JournalTab::entries, 0, std::nullopt}, 6);
-  CHECK(s.page_count == 2 && s.entries.size() == 6 && s.entries[0].runs[0].text == "entry 10");
-  CHECK(s.entries[0].date.text == "16th of the Eighth Month, 201" && s.quests.size() == 2);
-  s = journal_state(log, name, text, none, {msg::JournalTab::entries, 9, std::nullopt}, 6);  // clamped to the last page
+  const GroupOf by_line = [](journal::QuestId q) { return journal::Group{q == 1 ? "Line A" : "Line B", false}; };
+  using P = msg::JournalPage;
+  // All entries: the diary, oldest first, paged; clamped to the last page.
+  auto s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::all, 0, {}, {}}, 6);
+  CHECK(s.page_count == 2 && s.entries.size() == 6 && s.entries[0].runs[0].text == "entry 10" && s.groups.empty());
+  CHECK(s.entries[0].date.text == "16th of the Eighth Month, 201" && s.matches == 8);
+  s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::all, 9, {}, {}}, 6);
   CHECK(s.page == 1 && s.entries.size() == 2);
-  s = journal_state(log, name, text, none, {msg::JournalTab::entries, 0, std::string("quest.2")}, 6);
-  CHECK(s.page_count == 1 && s.entries.size() == 1 && s.entries[0].quest == "quest.2");
+  // The search: every word, any case; it narrows the diary and the count.
+  s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::all, 0, {}, std::string("ENTRY 8")}, 6);
+  CHECK(s.matches == 1 && s.entries.size() == 1 && s.entries[0].runs[0].text == "entry 80" && s.search == "ENTRY 8");
+  s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::all, 0, {}, std::string("")}, 6);
+  CHECK(!s.search && s.matches == 8);
   CHECK(msg::encode(s).has_value());
   CHECK(date({201, 1, 1, 0}).text == "1st of the First Month, 201" && date({201, 3, 22, 0}).text.starts_with("22nd"));
   CHECK(date({201, 3, 13, 0}).text.starts_with("13th") && date({201, 3, 23, 0}).text.starts_with("23rd"));
   const journal::Log empty;
-  s = journal_state(empty, name, text, none, {msg::JournalTab::quests, 0, std::nullopt});
-  CHECK(s.page_count == 1 && s.entries.empty() && msg::encode(s).has_value());
+  s = journal_state(empty, name, text, none, by_line, P{msg::JournalTab::current, 0, {}, {}});
+  CHECK(s.page_count == 1 && s.groups.empty() && !s.quest && msg::encode(s).has_value());
+  s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::current, 0, {}, {}});
+  CHECK(s.groups.size() == 2 && s.groups[0].label == "Line B" && s.quest && s.quest->id == "quest.2" && !s.quest->directions);
+  s = journal_state(log, name, text, none, by_line, P{msg::JournalTab::topics, 0, {}, {}});
+  CHECK(s.groups.empty() && s.entries.empty() && !s.quest);  // 2.12 fills it
 }
 
-// LF83's words from the generated table (quest rows -> journal_text.h): an entry's text, the active quest's
-// directions from its latest stage, none once it has ended.
+// Current and Finished: grouped by questline or place, most recent first; a failed quest is Finished and marked;
+// a quest opens on its latest direction, then its entries newest first; the search keeps a quest by any entry.
+void the_journal_ribbons() {
+  journal::Log log;
+  journal::append(log, 1, 10, {201, 8, 16, 9});
+  journal::append(log, 2, 10, {201, 8, 17, 9});
+  journal::append(log, 3, 10, {201, 8, 18, 9});
+  journal::append(log, 1, 20, {201, 8, 19, 9});
+  journal::append(log, 4, 10, {201, 8, 20, 9});
+  journal::append(log, 4, 90, {201, 8, 21, 9}, journal::Kind::fail);
+  journal::append(log, 3, 40, {201, 8, 22, 9}, journal::Kind::complete);
+  auto name = [](journal::QuestId q) { return QuestNames{"quest." + std::to_string(q), "Quest " + std::to_string(q)}; };
+  auto text = [](journal::QuestId q, journal::EntryId e) { return "q" + std::to_string(q) + " entry " + std::to_string(e); };
+  const Directions dir = [](journal::QuestId q, journal::EntryId e) -> std::optional<std::string> {
+    return "go on from " + std::to_string(q) + "/" + std::to_string(e);
+  };
+  const GroupOf g = [](journal::QuestId q) {
+    return q == 2 ? journal::Group{"Marsh Charter", false} : journal::Group{"Claywater Station", true};
+  };
+  using P = msg::JournalPage;
+  auto s = journal_state(log, name, text, dir, g, P{msg::JournalTab::current, 0, {}, {}});
+  CHECK(s.groups.size() == 2 && s.matches == 2 && s.quest && s.quest->id == "quest.1");  // the most recent opens
+  CHECK(s.groups[0].label == "Claywater Station" && s.groups[0].kind == msg::QuestGroupKind::place);
+  CHECK(s.groups[0].quests.size() == 1 && s.groups[0].quests[0].id == "quest.1");  // written last: first
+  CHECK(s.groups[1].label == "Marsh Charter" && s.groups[1].kind == msg::QuestGroupKind::questline);
+  CHECK(s.groups[0].quests[0].last.day == 19 && s.groups[0].quests[0].started.day == 16);
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::current, 0, std::string("quest.1"), {}});
+  CHECK(s.quest && s.quest->directions == "go on from 1/20" && s.quest->group == "Claywater Station");
+  CHECK(s.quest && s.quest->entries.size() == 2 && s.quest->entries[0].runs[0].text == "q1 entry 20");  // newest first
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::finished, 0, {}, {}});
+  CHECK(s.groups.size() == 1 && s.groups[0].quests.size() == 2);
+  CHECK(s.groups[0].quests[0].id == "quest.3" && s.groups[0].quests[0].status == msg::QuestStatus::complete);
+  CHECK(s.groups[0].quests[1].id == "quest.4" && s.groups[0].quests[1].status == msg::QuestStatus::failed);
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::finished, 0, std::string("quest.4"), {}});
+  CHECK(s.quest && !s.quest->directions && s.quest->status == msg::QuestStatus::failed);  // an ended quest: none
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::finished, 0, std::string("quest.1"), {}});
+  CHECK(s.quest && s.quest->id == "quest.3");  // not on this ribbon: the most recent opens instead
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::current, 0, {}, std::string("Entry 20")});
+  CHECK(s.matches == 1 && s.groups.size() == 1 && s.groups[0].quests[0].id == "quest.1");
+  s = journal_state(log, name, text, dir, g, P{msg::JournalTab::current, 0, {}, std::string("no such words")});
+  CHECK(s.matches == 0 && s.groups.empty() && msg::encode(s).has_value());
+}
+
+// LF83's words and group from the generated table (quest rows -> journal_text.h): an entry's text, the active
+// quest's directions from its latest stage, none once it has ended; listed under its place, Claywater Station.
 void the_journal_text() {
   const auto lf83 = seam::key("quest.local.lf83");
   const auto* t10 = journal::stage_text(lf83, 10);
@@ -202,18 +255,28 @@ void the_journal_text() {
     CHECK(seam::key(r.quest_id) == r.quest);  // the generator's FNV-1a is quest_state::key
     CHECK(!r.log.empty() && !r.log.starts_with("[not yet written"));
   }
+  for (const auto& r : gen::kJournalQuests) CHECK(seam::key(r.quest_id) == r.quest && !r.title.empty());
+  CHECK((entry_group(lf83) == journal::Group{"Claywater Station", true}));
+  CHECK((entry_group(lf83 + 1) == journal::Group{"Other quests", false}));
 
   journal::Log log;
   journal::append(log, lf83, 10, {201, 8, 16, 9.0});
   journal::append(log, lf83, 20, {201, 8, 17, 9.0});
-  auto name = [](journal::QuestId) { return QuestNames{"quest.local.lf83", "Two Charges at Claywater"}; };
-  auto s = journal_state(log, name, entry_text, entry_directions, {msg::JournalTab::entries, 0, std::nullopt});
+  auto name = [](journal::QuestId) { return QuestNames{"quest.local.lf83", "The Well and the Landing"}; };
+  using P = msg::JournalPage;
+  auto s = journal_state(log, name, entry_text, entry_directions, entry_group, P{msg::JournalTab::all, 0, {}, {}});
   CHECK(s.entries.size() == 2 && s.entries[1].runs[0].text.starts_with("At Claywater Station, Livia Varinius told me"));
-  CHECK(s.quests.size() == 1 && s.quests[0].directions && s.quests[0].directions->starts_with("The clay cut is below"));
+  s = journal_state(log, name, entry_text, entry_directions, entry_group,
+                    P{msg::JournalTab::current, 0, std::string("quest.local.lf83"), {}});
+  CHECK(s.groups.size() == 1 && s.groups[0].label == "Claywater Station");
+  CHECK(s.quest && s.quest->directions && s.quest->directions->starts_with("The clay cut is below"));
   CHECK(msg::encode(s).has_value());
   journal::append(log, lf83, 40, {201, 8, 20, 9.0}, journal::Kind::complete);
-  s = journal_state(log, name, entry_text, entry_directions, {msg::JournalTab::quests, 0, std::nullopt});
-  CHECK(s.quests[0].status == msg::QuestStatus::complete && !s.quests[0].directions);
+  s = journal_state(log, name, entry_text, entry_directions, entry_group, P{msg::JournalTab::current, 0, {}, {}});
+  CHECK(s.groups.empty());
+  s = journal_state(log, name, entry_text, entry_directions, entry_group,
+                    P{msg::JournalTab::finished, 0, std::string("quest.local.lf83"), {}});
+  CHECK(s.groups.size() == 1 && s.groups[0].quests[0].status == msg::QuestStatus::complete && s.quest && !s.quest->directions);
 }
 
 void the_probe() {
@@ -242,6 +305,7 @@ int main() {
   chart_reveal();
   chart_marks();
   the_journal();
+  the_journal_ribbons();
   the_journal_text();
   the_probe();
   return TEST_MAIN_RESULT("views");
