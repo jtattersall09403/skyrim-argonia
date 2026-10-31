@@ -14,6 +14,7 @@ RULES = [
     (r"\bwhile\b[^\n]*\bkill\s+-0\b", "no poll loops: use job_guard.sh wait"),
     (START + r"tail\b[^|;&\n]*\s(-[a-zA-Z]*f\b|--follow|--pid)", "no tail -f or --pid: use job_guard.sh wait"),
     (START + r"git\s+checkout\s+--(\s|$)", "git checkout -- discards work: use the Edit tool"),
+    (START + r"git\s+checkout\s+(?!-b\b|-B\b|--detach\b|-q\s+--detach\b|-\s)[^\s;&|]*[./][^\s;&|]*", "git checkout <path> discards other lanes' edits (formid.jsonl is append-only, 2026-10-31): leave it, or commit your own paths"),
     (START + r"git\s+restore\b", "git restore discards work: use the Edit tool"),
     (START + r"git\s+stash\b", "git stash hides work from other lanes: commit or leave it"),
     (r"--autostash\b|rebase\.autoStash|merge\.autoStash", "autostash is a git stash of other lanes' work (2026-10-30): pull only on a clean tree, or commit by pathspec without pulling"),
