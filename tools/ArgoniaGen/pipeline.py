@@ -405,6 +405,8 @@ def check() -> int:
     from tools.argonia_world import db
     from tools.argonia_world.terrain import grass
     recs = json.loads((OUT / "check" / "a" / "argonia.json").read_text())["records"]
+    from tools.argonia_world.intermediate import loading_screen_errors
+    errs += [f"loading screens: {e}" for e in loading_screen_errors(json.loads((OUT / "vanilla-scan.json").read_text()), recs)]
     errs += [f"grass: {e}" for e in grass.check(grass.load_scan(OUT / "ltex-scan.json"), db.open(), recs)]
     try:
         got = sha256(world(data, OUT / "check" / "world", sample=True))

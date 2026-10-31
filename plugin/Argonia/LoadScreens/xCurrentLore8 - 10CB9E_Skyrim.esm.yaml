@@ -1,0 +1,11 @@
+FormKey: 10CB9E:Skyrim.esm
+EditorID: xCurrentLore8
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

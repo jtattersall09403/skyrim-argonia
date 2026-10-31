@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 900> kForms{{
+inline constexpr std::array<FormRow, 912> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -524,6 +524,18 @@ inline constexpr std::array<FormRow, 900> kForms{{
     {"death.vastei-pile", "Argonia.esm", "ACTI", 0x000860},
     {"document.station-water-ledger", "Argonia.esm", "BOOK", 0x00086F},
     {"document.the-three-mournings", "Argonia.esm", "BOOK", 0x000850},
+    {"fact.egg-tooth", "Argonia.esm", "LSCR", 0x000BFC},
+    {"fact.hist-hatching-pools", "Argonia.esm", "LSCR", 0x000BF5},
+    {"fact.hist-one-mind", "Argonia.esm", "LSCR", 0x000BF4},
+    {"fact.hist-spore-trees", "Argonia.esm", "LSCR", 0x000BF3},
+    {"fact.jel-no-tense", "Argonia.esm", "LSCR", 0x000BF9},
+    {"fact.naming-day", "Argonia.esm", "LSCR", 0x000BF6},
+    {"fact.rormasu", "Argonia.esm", "LSCR", 0x000BFB},
+    {"fact.teeba-hatsei", "Argonia.esm", "LSCR", 0x000BFD},
+    {"fact.travel-by-boat", "Argonia.esm", "LSCR", 0x000BF2},
+    {"fact.vastei-change", "Argonia.esm", "LSCR", 0x000BF8},
+    {"fact.wallowing", "Argonia.esm", "LSCR", 0x000BFA},
+    {"fact.xul-vaat", "Argonia.esm", "LSCR", 0x000BF7},
     {"faction.claywater-station", "Argonia.esm", "FACT", 0x0009C2},
     {"gate.blackwood-road", "Argonia.esm", "REFR", 0x000975},
     {"gate.tear-road", "Argonia.esm", "REFR", 0x000976},

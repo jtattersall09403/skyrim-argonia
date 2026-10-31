@@ -1,0 +1,11 @@
+FormKey: 0167B5:Skyrim.esm
+EditorID: TownDawnstar01
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

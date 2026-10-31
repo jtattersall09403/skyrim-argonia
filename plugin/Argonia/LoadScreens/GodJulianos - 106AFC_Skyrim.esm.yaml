@@ -1,0 +1,11 @@
+FormKey: 106AFC:Skyrim.esm
+EditorID: GodJulianos
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

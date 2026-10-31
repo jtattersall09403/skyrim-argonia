@@ -29,6 +29,8 @@ bool covers_hud(std::string_view menu_name) {
   return true;
 }
 
+bool hides_hud_at_once(std::string_view menu_name) { return covers_hud(menu_name) && menu_name == "Loading Menu"; }
+
 bool is_hud_mode(std::string_view m) {
   for (auto k : kHudModes)
     if (m == k) return true;

@@ -110,6 +110,9 @@ bool is_hud_mode(std::string_view member);
 // BarterMenu's header): any menu surface but those that sit over play (favourites, a message box, a quantity
 // prompt, a tutorial card). Unlisted menus (TrueHUD, the fader) never hide it.
 bool covers_hud(std::string_view menu_name);
+// A covering menu whose open blocks the main thread (the Loading Menu, ui-review run 050520: our HUD stayed drawn
+// over it because the deferred refresh ran only after the load): our HUD is hidden at once, inside the event.
+bool hides_hud_at_once(std::string_view menu_name);
 // One entry of HudElements as the adapter reads it.
 struct HudListEntry {
   bool same_object = false;  // == to one hidden clip's value (the same display object)

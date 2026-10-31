@@ -1,0 +1,11 @@
+FormKey: 10BFC4:Skyrim.esm
+EditorID: CreatureSpriggan
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

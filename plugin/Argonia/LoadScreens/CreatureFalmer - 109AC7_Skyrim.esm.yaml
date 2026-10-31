@@ -1,0 +1,11 @@
+FormKey: 109AC7:Skyrim.esm
+EditorID: CreatureFalmer
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

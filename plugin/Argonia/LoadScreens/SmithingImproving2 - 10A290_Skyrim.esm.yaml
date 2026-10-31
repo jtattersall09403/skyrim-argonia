@@ -1,0 +1,11 @@
+FormKey: 10A290:Skyrim.esm
+EditorID: SmithingImproving2
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

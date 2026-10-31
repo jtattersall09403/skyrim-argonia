@@ -1,0 +1,11 @@
+FormKey: 01E973:Skyrim.esm
+EditorID: MagicSoulTrap
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

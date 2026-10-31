@@ -1,0 +1,11 @@
+FormKey: 03A62C:Dragonborn.esm
+EditorID: DLC2SolstheimIntro
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

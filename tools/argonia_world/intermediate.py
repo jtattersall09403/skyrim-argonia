@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "LSCR", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -150,7 +150,43 @@ def quarantine_layers(alloc: Allocator, scan: dict, resolver: Resolver) -> list[
     for row in scan["musicTypes"]:
         shells[row["formKey"]] = {"type": "MUSC", "override": True, "edid": row["edid"], "formKey": row["formKey"],
                                   "flags": row["flags"], "tracks": [su.SILENT_MUSIC_TRACK]}  # silence only
-    return [starter, Layer("patch:quarantine", list(shells.values()))]
+    for row in scan.get("loadScreens", []):
+        # A vanilla or mod loading screen (Nordic art and words, run 050520): the master's id with a never-true
+        # condition, so the engine never picks it; ours (loading_screen_records) are the only ones left.
+        shells[row["formKey"]] = {"type": "LSCR", "override": True, "edid": row["edid"], "formKey": row["formKey"],
+                                  "conditions": never_cond}
+    return [starter, Layer("patch:quarantine", list(shells.values())), loading_screen_layer(alloc)]
+
+
+LOADING_SCREENS = ROOT / "data" / "loading-screens.json"
+
+
+def loading_screen_layer(alloc: Allocator) -> Layer:
+    """Our loading screens: one LSCR per row of data/loading-screens.json (a reviewed loading fact), no model and
+    no condition."""
+    records = []
+    for row in json.loads(LOADING_SCREENS.read_text(encoding="utf-8"))["screens"]:
+        fid = row["fact"]
+        edid = "ARG_Load_" + fid.removeprefix("fact.").replace("-", "_")
+        records.append({"type": "LSCR", "edid": edid, "formKey": alloc.form_key(edid, "LSCR", fid),
+                        "text": row["text"]})
+    return Layer("base:loading-screens", records)
+
+
+def loading_screen_errors(scan: dict, records: list[dict], mod: str = "Argonia.esm") -> list[str]:
+    """L1: every loaded LSCR other than ours is shelled with a never-true condition, and ours exist with text."""
+    by_key = {r["formKey"]: r for r in records if r["type"] == "LSCR"}
+    errs = []
+    for row in scan.get("loadScreens", []):
+        r = by_key.get(row["formKey"])
+        conds = (r or {}).get("conditions") or []
+        if not (r and r.get("override") and conds and all(c.get("function") == "GetGlobalValue" and c.get("value") == 1
+                                                          for c in conds)):
+            errs.append(f"{row['plugin']} {row['edid'] or row['formKey']}: not disabled")
+    ours = [r for r in by_key.values() if r["formKey"].endswith(":" + mod)]
+    if len(ours) < 3 or any(not r.get("text") or r.get("model") for r in ours):
+        errs.append(f"our loading screens: {len(ours)}, each needs text and no model")
+    return errs
 
 
 # --- the studio character's sheet records (0.4 §a; 2.1 fills the rest) ------------------------------------

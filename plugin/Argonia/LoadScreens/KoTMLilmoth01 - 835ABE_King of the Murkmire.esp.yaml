@@ -1,0 +1,11 @@
+FormKey: 835ABE:King of the Murkmire.esp
+EditorID: KoTMLilmoth01
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

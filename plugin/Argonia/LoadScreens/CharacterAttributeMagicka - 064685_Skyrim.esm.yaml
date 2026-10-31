@@ -1,0 +1,11 @@
+FormKey: 064685:Skyrim.esm
+EditorID: CharacterAttributeMagicka
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -122,6 +122,8 @@ static class QuestScan
         var musics = new Dictionary<FormKey, (string Edid, string[] Flags, int Tracks)>();
         // Every game setting of the masters (winning copy): the FormKey and kind the GMST overrides are written with.
         var settings = new SortedDictionary<string, object>(StringComparer.Ordinal);
+        // Every loading screen of the masters (winning copy): each is shelled with a never-true condition (0012).
+        var screens = new Dictionary<FormKey, string>();
         foreach (var plugin in plugins)
         {
             using var mod = Load.Open(data, plugin);
@@ -130,6 +132,7 @@ static class QuestScan
                     settings[id] = new { formKey = Load.Key(g.FormKey),
                                          kind = g switch { IGameSettingFloatGetter => "float", IGameSettingIntGetter => "int",
                                                            IGameSettingBoolGetter => "bool", _ => "string" } };
+            foreach (var l in mod.LoadScreens) screens[l.FormKey] = l.EditorID ?? "";
             foreach (var q in mod.Quests) quests[q.FormKey] = (q.EditorID ?? "", (int)q.Flags);
             foreach (var node in mod.StoryManagerQuestNodes) nodes[node.FormKey] = node.Quests.Select(n => n.Quest.FormKey).ToArray();
             foreach (var m in mod.MusicTypes)
@@ -150,7 +153,10 @@ static class QuestScan
             .Select(kv => (object)new { formKey = Load.Key(kv.Key), edid = kv.Value.Edid, plugin = kv.Key.ModKey.FileName.String,
                                         flags = kv.Value.Flags, tracks = kv.Value.Tracks })
             .ToList();
-        Load.WriteJson(outPath, new { plugins, quests = rows, musicTypes = music, gameSettings = settings });
+        var lscr = screens.OrderBy(kv => kv.Key.ModKey.FileName.String, StringComparer.Ordinal).ThenBy(kv => kv.Key.ID)
+            .Select(kv => (object)new { formKey = Load.Key(kv.Key), edid = kv.Value, plugin = kv.Key.ModKey.FileName.String })
+            .ToList();
+        Load.WriteJson(outPath, new { plugins, quests = rows, musicTypes = music, gameSettings = settings, loadScreens = lscr });
         Console.WriteLine($"quests: {rows.Count} self-starting vanilla quests, {music.Count} music types -> {outPath}");
         return 0;
     }

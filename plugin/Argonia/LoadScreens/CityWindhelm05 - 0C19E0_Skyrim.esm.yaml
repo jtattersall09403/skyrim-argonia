@@ -1,0 +1,11 @@
+FormKey: 0C19E0:Skyrim.esm
+EditorID: CityWindhelm05
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -108,7 +108,7 @@ static class QuestRecords
         return e;
     }
 
-    static Condition Condition(JsonElement c)
+    internal static Condition Condition(JsonElement c)
     {
         var fn = S(c, "function");
         ConditionData data = fn switch

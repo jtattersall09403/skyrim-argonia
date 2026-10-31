@@ -1,0 +1,11 @@
+FormKey: 10C619:Skyrim.esm
+EditorID: MQWindcallerTomb
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

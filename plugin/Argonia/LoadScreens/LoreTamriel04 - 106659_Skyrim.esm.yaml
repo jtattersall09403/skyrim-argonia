@@ -1,0 +1,11 @@
+FormKey: 106659:Skyrim.esm
+EditorID: LoreTamriel04
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

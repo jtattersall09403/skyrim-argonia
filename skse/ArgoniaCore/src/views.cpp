@@ -357,7 +357,10 @@ std::vector<ac::msg::Bar> Bars() {
 }
 
 // An engine sheet covering the screen (router::covers_hud): our HUD hides under it, as the vanilla HUD does.
+std::atomic<bool> g_loading_open{false};
+
 bool SheetOpen() {
+  if (g_loading_open) return true;
   auto* ui = RE::UI::GetSingleton();
   if (!ui) return false;
   for (const auto& r : ac::gen::kSurfaces)
@@ -490,6 +493,10 @@ void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
 }  // namespace
 
 void HudRefresh() { PushHudState(); }
+void HudLoading(bool open) {
+  g_loading_open = open;
+  PushHudState();
+}
 
 bool ViewsBound() { return g_api != nullptr; }
 

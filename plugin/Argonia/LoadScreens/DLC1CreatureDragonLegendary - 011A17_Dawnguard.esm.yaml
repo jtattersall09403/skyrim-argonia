@@ -1,0 +1,11 @@
+FormKey: 011A17:Dawnguard.esm
+EditorID: DLC1CreatureDragonLegendary
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

@@ -1,0 +1,53 @@
+{
+ "about": "Our loading screens (LSCR, decision 0012): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), no 3D model, on the Oblivion-like Loading Menu's paper. Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
+ "screens": [
+  {
+   "fact": "fact.travel-by-boat",
+   "text": "There are few roads in Black Marsh. The principal way to travel is by boat."
+  },
+  {
+   "fact": "fact.hist-spore-trees",
+   "text": "The Hist are giant spore trees that grow in the innermost swamps of Black Marsh."
+  },
+  {
+   "fact": "fact.hist-one-mind",
+   "text": "All Hist trees are joined at the root. They share one mind and speak to one another."
+  },
+  {
+   "fact": "fact.hist-hatching-pools",
+   "text": "Argonian eggs are usually incubated in pools of Hist sap so that the Hist can help with the hatching."
+  },
+  {
+   "fact": "fact.naming-day",
+   "text": "On their Naming Day a hatchling licks the Hist and is granted a name."
+  },
+  {
+   "fact": "fact.xul-vaat",
+   "text": "A xul-vaat, or grave-stake, pins a corpse into the mud so it does not float up when the marsh floods. The dead person's story is carved upon it."
+  },
+  {
+   "fact": "fact.vastei-change",
+   "text": "Change, or 'vastei', is perhaps the strongest driving force behind the Saxhleel. They hold that defying change is folly."
+  },
+  {
+   "fact": "fact.jel-no-tense",
+   "text": "Jel has no past or future tense, only the present. Argonians also express attitude through body movement."
+  },
+  {
+   "fact": "fact.wallowing",
+   "text": "Marsh-born Argonians enjoy wallowing in cool mud and basking in the sun. Wallowing keeps their scales from drying out. They do not worship the sun."
+  },
+  {
+   "fact": "fact.rormasu",
+   "text": "Crocodiles, known locally as rormasu, are common throughout Black Marsh."
+  },
+  {
+   "fact": "fact.egg-tooth",
+   "text": "Argonians hatch with an egg-tooth. A cracked egg-tooth on a newborn is seen as a good omen."
+  },
+  {
+   "fact": "fact.teeba-hatsei",
+   "text": "Teeba-Hatsei, or 'Hip and Tail Ball', is an Argonian sport played with hips, elbows and tails. Hands and feet may not strike the ball."
+  }
+ ]
+}

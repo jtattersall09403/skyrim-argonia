@@ -1,0 +1,11 @@
+FormKey: 10DE40:Skyrim.esm
+EditorID: xGuildJoinDarkBrotherhood
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

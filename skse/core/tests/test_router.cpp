@@ -124,6 +124,8 @@ void vanilla_hud_hidden() {
 void sheets_cover_the_hud() {
   CHECK(covers_hud("BarterMenu") && covers_hud("ContainerMenu") && covers_hud("InventoryMenu") && covers_hud("TweenMenu") && covers_hud("Book Menu"));
   CHECK(covers_hud("Journal Menu") && covers_hud("Sleep/Wait Menu"));
+  CHECK(covers_hud("Loading Menu") && hides_hud_at_once("Loading Menu"));  // run 050520: HUD over the load
+  CHECK(!hides_hud_at_once("BarterMenu") && !hides_hud_at_once("HUD Menu") && !hides_hud_at_once(""));
   CHECK(!covers_hud("FavoritesMenu") && !covers_hud("MessageBoxMenu") && !covers_hud("Quantity Menu"));
   CHECK(!covers_hud("TrueHUD") && !covers_hud("Fader Menu") && !covers_hud("HUD Menu") && !covers_hud(""));
 }

@@ -1,0 +1,11 @@
+FormKey: 000920:ccQDRSSE001-SurvivalMode.esl
+EditorID: Survival_Exhaustion02
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

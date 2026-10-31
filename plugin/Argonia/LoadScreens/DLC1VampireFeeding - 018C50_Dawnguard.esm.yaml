@@ -1,0 +1,11 @@
+FormKey: 018C50:Dawnguard.esm
+EditorID: DLC1VampireFeeding
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1

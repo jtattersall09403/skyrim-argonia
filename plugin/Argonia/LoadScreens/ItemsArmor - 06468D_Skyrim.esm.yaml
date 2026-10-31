@@ -1,0 +1,11 @@
+FormKey: 06468D:Skyrim.esm
+EditorID: ItemsArmor
+Description:
+  TargetLanguage: English
+  Value: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esm
+  ComparisonValue: 1
