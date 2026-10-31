@@ -1,6 +1,6 @@
 // The parchment chart's geometry (1.2 §e), pure: cells in the schema's cell units, pixels on the chart's master
 // canvas as out/chart/index.json gives them (x east, y south from the canvas's NW corner; cell y grows north).
-import type { CellKey, ChartView, IntentMessage } from "../../schema/generated/messages.ts";
+import type { CellKey, ChartPlayer, ChartView, IntentMessage } from "../../schema/generated/messages.ts";
 
 export type Rect = [number, number, number, number];
 export interface CellIndex {
@@ -8,6 +8,7 @@ export interface CellIndex {
   cells: Record<string, Rect>;                             // "x,y" -> [left, top, width, height] in master px
   // label: [x0, y0, x1, y1] of the chart's lettering; a city (lettered by the sketch) also has its name and cell
   places?: Record<string, { city: boolean; label: Rect | null; name?: string; cell?: [number, number] }>;
+  pins?: Record<string, string>;                           // a place kind -> its glyph's path (100-unit box)
 }
 
 // Where the view letters a place in screen px, or null. The chart's own lettering is kept where it reads (at least
@@ -24,7 +25,8 @@ export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: numbe
     return { left: cover[0], top: cover[1] + cover[3] / 2, cover };
   }
   const [px, py] = toPx(ix, x, y);
-  return { left: px * t.scale + t.tx + minPx * 0.6, top: py * t.scale + t.ty };
+  // Beside the place's marker (1.6rem across) when discovered, else beside a small ink dot.
+  return { left: px * t.scale + t.tx + minPx * (discovered ? 1.2 : 0.6), top: py * t.scale + t.ty };
 }
 
 // Label collisions. Each box is where a label sits on the sheet in screen px; `order` is the caller's priority
@@ -79,12 +81,13 @@ export function revealRects(ix: CellIndex, revealed: CellKey[]) {
   return { rects, unknown };
 }
 
-export const ZOOM_MIN = 1, ZOOM_MAX = 16;     // the schema allows 0.05..64; a chart below 1 or past 16 shows nothing new
+export const ZOOM_MIN = 1, ZOOM_MAX = 24;     // the schema allows 0.05..64; a chart below 1 or past 24 shows nothing new
 
-// Master px -> screen px for a view of a w x h viewport: zoom 1 fills the sheet (cover; ui-review2: contain left
-// the 16:9 sheet's sides blank parchment), so the chart pans along the shorter side.
+// Master px -> screen px for a view of a w x h viewport: zoom 1 fits the whole canvas in the sheet (contain: the
+// province top to bottom with nothing cut off, owner play test 1 item 9; paper shows at the sides); a closer zoom
+// pans along both sides.
 export function transform(ix: CellIndex, v: ChartView, w: number, h: number) {
-  const scale = (Math.max(w, h) / ix.size) * v.zoom;
+  const scale = (Math.min(w, h) / ix.size) * v.zoom;
   const [cx, cy] = toPx(ix, v.centreX, v.centreY);
   // The paper always fills the sheet: a centre near the edge stops at the edge; a canvas smaller than the sheet centres.
   const fit = (t: number, side: number) => {
@@ -92,6 +95,13 @@ export function transform(ix: CellIndex, v: ChartView, w: number, h: number) {
     return span <= side ? (side - span) / 2 : Math.min(0, Math.max(side - span, t));
   };
   return { scale, tx: fit(w / 2 - cx * scale, w), ty: fit(h / 2 - cy * scale, h) };
+}
+
+// Zooming in goes to the player (the zoom runs from the whole province down to the land round the player, 1.12 §5):
+// the new view is centred on the player at `factor` times the zoom. With no player it zooms about the centre.
+export function toward(v: ChartView, player: ChartPlayer | undefined, factor: number): ChartView {
+  const zoom = Math.round(Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, v.zoom * factor)) * 1000) / 1000;
+  return player && factor > 1 ? { centreX: player.x, centreY: player.y, zoom } : { ...v, zoom };
 }
 
 // A drag of (dx, dy) screen px, or a zoom by a factor about the centre: the new view, clamped to the canvas.

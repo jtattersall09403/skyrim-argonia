@@ -226,6 +226,7 @@ def progression(w: db.World) -> str:
     b += ["}};", "", *_constants(w, "progression"),
           "namespace units {  // tools/argonia_world/skyrim_units.py, the one home of Skyrim unit facts",
           f"inline constexpr double units_per_metre = {su.UNITS_PER_METRE!r};",
+          f"inline constexpr double cell_units = {num(su.CELL_UNITS)};",
           f"inline constexpr double weight_per_kg = {num(su.WEIGHT_PER_KG)};", "}  // namespace units"]
     return _wrap("progression", ["array", "cstddef", "cstdint", "string_view", "argonia/core/tables_sheet.h"], b)
 

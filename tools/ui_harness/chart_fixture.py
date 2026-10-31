@@ -1,4 +1,5 @@
-"""ui/fixtures/chart.json's positions, made from out/chart/index.json so the mock chart agrees with the real one.
+"""ui/fixtures/chart.json's states and hud.json's minimap states, made from out/chart/index.json so the mock chart
+agrees with the real one.
 
 The fixture's shape stays hand-written (the schema lane's); this sets every place's id and position, the revealed
 cells (a walk round Claywater Station: the cells within 6 of its cell) and the views, from the index.
@@ -15,7 +16,10 @@ ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "ui" / "fixtures" / "chart.json"
 INDEX = ROOT / "out" / "chart" / "index.json"
 HOME = "Claywater Station"
-WALK = 6  # cells each way round the home cell (a walk of a few minutes; the 2.W4 demo used a radius of 9)
+HOME_FORM = "0A000801"  # a stand-in map marker form id
+WALK = 2  # cells each way round each step of the walk
+PATH = 4  # the walk's steps east from the home cell (a few minutes on foot)
+HUD = ROOT / "ui" / "fixtures" / "hud.json"
 
 
 def units(ix: dict, px: float, py: float) -> tuple[float, float]:
@@ -31,48 +35,82 @@ def by_name(ix: dict, name: str) -> tuple[str, dict]:
     return hits[0]
 
 
+def walked(ix: dict, hx: int, hy: int) -> list[dict]:
+    """The cells within WALK of each step of a short walk east-north-east from the home cell (a walked path)."""
+    out: dict[str, dict] = {}
+    for s in range(PATH + 1):
+        cx, cy = hx + s, hy + s // 3
+        for dx in range(-WALK, WALK + 1):
+            for dy in range(-WALK, WALK + 1):
+                k = f"{cx + dx},{cy + dy}"
+                if dx * dx + dy * dy <= WALK * WALK and k in ix["cells"]:
+                    out[k] = {"x": cx + dx, "y": cy + dy}
+    return sorted(out.values(), key=lambda c: (c["x"], c["y"]))
+
+
 def made(fx: dict, ix: dict) -> dict:
+    """chart.json's states and hud.json's minimap states, from the index.
+
+    unexplored  the whole province, nothing revealed, the player at home;
+    whole       full zoom-out after the walk: the revealed path, Claywater's marker, the player at the walk's end;
+    walked      zoomed to the player before Claywater's discovery: the land revealed, no marker;
+    claywater   the same after its discovery: the marker shows."""
     fx = json.loads(json.dumps(fx))
     hid, home = by_name(ix, HOME)
     hx, hy = home["cell"]
     hu, hv = units(ix, *home["px"])
-    walk = [{"x": hx + dx, "y": hy + dy} for dx in range(-WALK, WALK + 1) for dy in range(-WALK, WALK + 1)
-            if dx * dx + dy * dy <= WALK * WALK and f"{hx + dx},{hy + dy}" in ix["cells"]]
+    walk = walked(ix, hx, hy)
+    place = {"id": HOME_FORM, "name": home["name"], "kind": home["kind"], "x": hu, "y": hv}
+    player = {"x": round(hx + PATH + 0.5, 2), "y": round(hy + PATH // 3 + 0.5, 2), "heading": 45}
     half = ix["size"] / 2
     cu, cv = units(ix, half, half)
-    for name, st in fx["states"].items():
-        b = st["body"]
-        for p in b["places"]:
-            pid, rec = by_name(ix, p["name"])
-            p["id"] = pid
-            p["kind"] = rec["kind"]
-            p["x"], p["y"] = units(ix, *rec["px"])
-            p["discovered"] = name == "claywater" and pid == hid
-        if name == "claywater":
-            b["revealed"] = walk
-            b["view"] = {"centreX": hu, "centreY": hv, "zoom": 4}
-        else:
-            b["revealed"] = []
-            b["view"] = {"centreX": cu, "centreY": cv, "zoom": 1}
+    close = {"centreX": player["x"], "centreY": player["y"], "zoom": 6}
+    states = {
+        "unexplored": ([], [], {**player, "x": hu, "y": hv, "heading": 0}, {"centreX": cu, "centreY": cv, "zoom": 1}),
+        "whole": (walk, [place], player, {"centreX": cu, "centreY": cv, "zoom": 1}),
+        "walked": (walk, [], player, close),
+        "claywater": (walk, [place], player, close),
+    }
+    fx["states"] = {name: {"type": "chart.state", "v": 2, "body": {
+        "worldspace": "argonia", "sketch": "chart.sketch", "revealed": r, "places": pl, "player": me, "view": v}}
+        for name, (r, pl, me, v) in states.items()}
     fx["intents"]["pan"]["body"]["view"] = {"centreX": round(hu + 3, 2), "centreY": round(hv - 1.5, 2), "zoom": 2}
-    fx["doc"] = ("Mock data for 1.2's L3 harness (parchment chart). Place ids, positions and the revealed cells are "
-                 "made from out/chart/index.json by tools/ui_harness/chart_fixture.py; the gate checks they agree.")
+    fx["doc"] = ("Mock data for the L3 harness (parchment chart, 1.12 §5). Positions, the walked cells and the "
+                 "views are made from out/chart/index.json by tools/ui_harness/chart_fixture.py; the gate checks they agree.")
     return fx
+
+
+def minimap_states(ix: dict) -> dict:
+    """hud.json's minimap pushes: the chart round the player after the walk, facing north and then 135 degrees."""
+    c = made({"states": {}, "intents": {"pan": {"body": {}}}}, ix)["states"]["claywater"]["body"]
+    me = c["player"]
+    reach = 5  # skse/core chart::kMinimapReach
+
+    def near(x: float, y: float) -> bool:
+        nx, ny = min(max(me["x"], x), x + 1), min(max(me["y"], y), y + 1)
+        return (nx - me["x"]) ** 2 + (ny - me["y"]) ** 2 <= reach * reach
+    rev = [k for k in c["revealed"] if near(k["x"], k["y"])]
+    pl = [p for p in c["places"] if (p["x"] - me["x"]) ** 2 + (p["y"] - me["y"]) ** 2 <= reach * reach]
+    return {f"minimap{h}": {"type": "hud.minimap", "v": 1, "body": {"map": {
+        "player": {**me, "heading": h}, "revealed": rev, "places": pl}}} for h in (0, 135)}
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
     a = ap.parse_args(argv)
-    fx = json.loads(FIXTURE.read_text())
-    want = made(fx, json.loads(INDEX.read_text()))
+    ix = json.loads(INDEX.read_text())
+    fx, hud = json.loads(FIXTURE.read_text()), json.loads(HUD.read_text())
+    want = made(fx, ix)
+    want_hud = {**hud, "states": {k: v for k, v in hud["states"].items() if not k.startswith("minimap")} | minimap_states(ix)}
     if a.check:
-        if want != fx:
-            print("ui/fixtures/chart.json disagrees with out/chart/index.json: run python -m tools.ui_harness.chart_fixture",
-                  file=sys.stderr)
+        if want != fx or want_hud != hud:
+            print("ui/fixtures/chart.json or hud.json disagrees with out/chart/index.json: run python -m "
+                  "tools.ui_harness.chart_fixture", file=sys.stderr)
             return 1
         return 0
     FIXTURE.write_text(json.dumps(want, indent=1) + "\n")
+    HUD.write_text(json.dumps(want_hud, indent=1, ensure_ascii=False) + "\n")
     return 0
 
 

@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "7ab8e13754f35387";
+inline constexpr std::string_view kSchemaHash = "b326921c1ebf2671";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -290,6 +290,14 @@ struct HudBars {
   bool operator==(const HudBars&) const = default;
 };
 
+// Where the player stands and faces, in the province
+struct ChartPlayer {
+  double x = 0;  // position in cell units
+  double y = 0;  // position in cell units
+  double heading = 0;  // degrees clockwise from north
+  bool operator==(const ChartPlayer&) const = default;
+};
+
 // One exterior cell of the worldspace grid
 struct CellKey {
   std::int64_t x = 0;  // cell grid x
@@ -297,15 +305,28 @@ struct CellKey {
   bool operator==(const CellKey&) const = default;
 };
 
-// A place drawn on the chart
+// A discovered place: its map marker, whose discovery has fired
 struct ChartPlace {
-  std::string id;  // world db place.id
-  std::string name;  // the name lettered on the chart
-  std::string kind;  // world db place.classification_class (settlement, ruin, ...)
+  std::string id;  // the map marker reference's form id, 8 hex digits
+  std::string name;  // the name lettered on the chart (the marker's name)
+  std::string kind;  // the marker's glyph kind (settlement, ruin, lair, ...; core chart::marker_kind)
   double x = 0;  // position in cell units
   double y = 0;  // position in cell units
-  bool discovered = false;  // false for a sketch-layer place the player has not reached
   bool operator==(const ChartPlace&) const = default;
+};
+
+// The HUD's minimap: the chart round the player
+struct Minimap {
+  std::optional<ChartPlayer> player;  // absent outside the province: the minimap hides
+  std::vector<CellKey> revealed;  // the revealed cells within the minimap's reach (core chart::near)
+  std::vector<ChartPlace> places;  // the discovered places within its reach
+  bool operator==(const Minimap&) const = default;
+};
+
+// The minimap alone, sent when the player's cell, place or facing moves
+struct HudMinimap {
+  Minimap map;  // The HUD's minimap: the chart round the player
+  bool operator==(const HudMinimap&) const = default;
 };
 
 // Where the chart is looking; kept by ArgoniaCore between openings
@@ -321,7 +342,8 @@ struct ChartState {
   std::string worldspace;  // world db worldspace id
   std::string sketch;  // the sketch layer image id the view loads
   std::vector<CellKey> revealed;  // every cell the player has uncovered
-  std::vector<ChartPlace> places;  // A place drawn on the chart
+  std::vector<ChartPlace> places;  // the discovered places only
+  std::optional<ChartPlayer> player;  // absent outside the province (an interior, another worldspace)
   ChartView view;  // Where the chart is looking; kept by ArgoniaCore between openings
   bool operator==(const ChartState&) const = default;
 };
@@ -437,9 +459,15 @@ struct Traits<HudBars> {
   static constexpr Direction dir = Direction::push;
 };
 template <>
+struct Traits<HudMinimap> {
+  static constexpr std::string_view type = "hud.minimap";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
 struct Traits<ChartState> {
   static constexpr std::string_view type = "chart.state";
-  static constexpr std::uint32_t version = 1;
+  static constexpr std::uint32_t version = 2;
   static constexpr Direction dir = Direction::push;
 };
 template <>
@@ -473,12 +501,12 @@ struct Traits<ViewClose> {
   static constexpr Direction dir = Direction::intent;
 };
 
-using Push = std::variant<DialogueState, JournalState, HudState, HudBars, ChartState, SittingState>;
+using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState>;
 using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalState, JournalPage, HudState, HudBars, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 15> kMessages{{
+inline constexpr std::array<MessageInfo, 16> kMessages{{
     {"dialogue.state", 1, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -488,7 +516,8 @@ inline constexpr std::array<MessageInfo, 15> kMessages{{
     {"journal.page", 1, Direction::intent},
     {"hud.state", 1, Direction::push},
     {"hud.bars", 1, Direction::push},
-    {"chart.state", 1, Direction::push},
+    {"hud.minimap", 1, Direction::push},
+    {"chart.state", 2, Direction::push},
     {"chart.pan", 1, Direction::intent},
     {"sitting.state", 1, Direction::push},
     {"sitting.buy", 1, Direction::intent},
@@ -1516,6 +1545,35 @@ inline bool from_json(const json::Value& j, HudBars& out, const std::string& pat
   return f.done();
 }
 
+inline json::Value to_json(const ChartPlayer& v) {
+  json::Object o;
+  o.reserve(3);
+  o.push_back({"x", json::Value::number(v.x)});
+  o.push_back({"y", json::Value::number(v.y)});
+  o.push_back({"heading", json::Value::number(v.heading)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, ChartPlayer& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_x = f.req("x")) {
+    if (!json::read_num(*f_x, out.x, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".x", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_y = f.req("y")) {
+    if (!json::read_num(*f_y, out.y, -(std::numeric_limits<double>::max)(), (std::numeric_limits<double>::max)(), path + ".y", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_heading = f.req("heading")) {
+    if (!json::read_num(*f_heading, out.heading, 0.0, 360.0, path + ".heading", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
 inline json::Value to_json(const CellKey& v) {
   json::Object o;
   o.reserve(2);
@@ -1541,13 +1599,12 @@ inline bool from_json(const json::Value& j, CellKey& out, const std::string& pat
 
 inline json::Value to_json(const ChartPlace& v) {
   json::Object o;
-  o.reserve(6);
+  o.reserve(5);
   o.push_back({"id", json::Value::string(v.id)});
   o.push_back({"name", json::Value::string(v.name)});
   o.push_back({"kind", json::Value::string(v.kind)});
   o.push_back({"x", json::Value::number(v.x)});
   o.push_back({"y", json::Value::number(v.y)});
-  o.push_back({"discovered", json::Value::boolean(v.discovered)});
   return json::Value::object(std::move(o));
 }
 inline bool from_json(const json::Value& j, ChartPlace& out, const std::string& path, std::string& err) {
@@ -1578,8 +1635,68 @@ inline bool from_json(const json::Value& j, ChartPlace& out, const std::string& 
   } else {
     return false;
   }
-  if (const json::Value* f_discovered = f.req("discovered")) {
-    if (!json::read(*f_discovered, out.discovered, path + ".discovered", err)) return false;
+  return f.done();
+}
+
+inline json::Value to_json(const Minimap& v) {
+  json::Object o;
+  o.reserve(3);
+  if (v.player) o.push_back({"player", to_json(*v.player)});
+  o.push_back({"revealed", [&] { json::Array a0; a0.reserve(v.revealed.size()); for (const auto& e0 : v.revealed) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"places", [&] { json::Array a0; a0.reserve(v.places.size()); for (const auto& e0 : v.places) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, Minimap& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_player = f.opt("player")) {
+    out.player.emplace();
+    if (!from_json(*f_player, *out.player, path + ".player", err)) return false;
+  } else {
+    out.player.reset();
+  }
+  if (const json::Value* f_revealed = f.req("revealed")) {
+    {
+      const json::Array* a0 = (*f_revealed).as_array();
+      if (!a0) return json::fail(err, path + ".revealed", "want a list");
+      out.revealed.clear();
+      out.revealed.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.revealed.emplace_back();
+        if (!from_json((*a0)[i0], out.revealed.back(), path + ".revealed" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_places = f.req("places")) {
+    {
+      const json::Array* a0 = (*f_places).as_array();
+      if (!a0) return json::fail(err, path + ".places", "want a list");
+      out.places.clear();
+      out.places.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.places.emplace_back();
+        if (!from_json((*a0)[i0], out.places.back(), path + ".places" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const HudMinimap& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"map", to_json(v.map)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, HudMinimap& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_map = f.req("map")) {
+    if (!from_json(*f_map, out.map, path + ".map", err)) return false;
   } else {
     return false;
   }
@@ -1617,11 +1734,12 @@ inline bool from_json(const json::Value& j, ChartView& out, const std::string& p
 
 inline json::Value to_json(const ChartState& v) {
   json::Object o;
-  o.reserve(5);
+  o.reserve(6);
   o.push_back({"worldspace", json::Value::string(v.worldspace)});
   o.push_back({"sketch", json::Value::string(v.sketch)});
   o.push_back({"revealed", [&] { json::Array a0; a0.reserve(v.revealed.size()); for (const auto& e0 : v.revealed) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
   o.push_back({"places", [&] { json::Array a0; a0.reserve(v.places.size()); for (const auto& e0 : v.places) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  if (v.player) o.push_back({"player", to_json(*v.player)});
   o.push_back({"view", to_json(v.view)});
   return json::Value::object(std::move(o));
 }
@@ -1665,6 +1783,12 @@ inline bool from_json(const json::Value& j, ChartState& out, const std::string& 
     }
   } else {
     return false;
+  }
+  if (const json::Value* f_player = f.opt("player")) {
+    out.player.emplace();
+    if (!from_json(*f_player, *out.player, path + ".player", err)) return false;
+  } else {
+    out.player.reset();
   }
   if (const json::Value* f_view = f.req("view")) {
     if (!from_json(*f_view, out.view, path + ".view", err)) return false;
@@ -1985,10 +2109,21 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("hud.bars: " + std::string(refuse));
     }
   }
+  if (type == "hud.minimap") {
+    if constexpr (std::is_constructible_v<V, HudMinimap>) {
+      if (v != 1)
+        return std::unexpected("hud.minimap version " + std::to_string(v) + ": this build speaks version 1");
+      HudMinimap m;
+      if (!from_json(*body, m, "hud.minimap body", err)) return std::unexpected(err);
+      return V{std::in_place_type<HudMinimap>, std::move(m)};
+    } else {
+      return std::unexpected("hud.minimap: " + std::string(refuse));
+    }
+  }
   if (type == "chart.state") {
     if constexpr (std::is_constructible_v<V, ChartState>) {
-      if (v != 1)
-        return std::unexpected("chart.state version " + std::to_string(v) + ": this build speaks version 1");
+      if (v != 2)
+        return std::unexpected("chart.state version " + std::to_string(v) + ": this build speaks version 2");
       ChartState m;
       if (!from_json(*body, m, "chart.state body", err)) return std::unexpected(err);
       return V{std::in_place_type<ChartState>, std::move(m)};
@@ -2120,12 +2255,19 @@ inline std::expected<std::string, std::string> encode(const HudBars& m) {
   if (!detail::from_json(body, check, "hud.bars body", err)) return std::unexpected(err);
   return json::envelope("hud.bars", 1, std::move(body));
 }
+inline std::expected<std::string, std::string> encode(const HudMinimap& m) {
+  json::Value body = detail::to_json(m);
+  HudMinimap check;
+  std::string err;
+  if (!detail::from_json(body, check, "hud.minimap body", err)) return std::unexpected(err);
+  return json::envelope("hud.minimap", 1, std::move(body));
+}
 inline std::expected<std::string, std::string> encode(const ChartState& m) {
   json::Value body = detail::to_json(m);
   ChartState check;
   std::string err;
   if (!detail::from_json(body, check, "chart.state body", err)) return std::unexpected(err);
-  return json::envelope("chart.state", 1, std::move(body));
+  return json::envelope("chart.state", 2, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ChartPan& m) {
   json::Value body = detail::to_json(m);

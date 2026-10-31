@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "7ab8e13754f35387";
+export const schemaHash = "b326921c1ebf2671";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -278,6 +278,15 @@ export interface HudBars {
   /** One bar; its drawn length grows with max */
   bars: Bar[];
 }
+/** Where the player stands and faces, in the province */
+export interface ChartPlayer {
+  /** position in cell units */
+  x: number;
+  /** position in cell units */
+  y: number;
+  /** degrees clockwise from north */
+  heading: number;
+}
 /** One exterior cell of the worldspace grid */
 export interface CellKey {
   /** cell grid x */
@@ -285,20 +294,32 @@ export interface CellKey {
   /** cell grid y */
   y: number;
 }
-/** A place drawn on the chart */
+/** A discovered place: its map marker, whose discovery has fired */
 export interface ChartPlace {
-  /** world db place.id */
+  /** the map marker reference's form id, 8 hex digits */
   id: string;
-  /** the name lettered on the chart */
+  /** the name lettered on the chart (the marker's name) */
   name: string;
-  /** world db place.classification_class (settlement, ruin, ...) */
+  /** the marker's glyph kind (settlement, ruin, lair, ...; core chart::marker_kind) */
   kind: string;
   /** position in cell units */
   x: number;
   /** position in cell units */
   y: number;
-  /** false for a sketch-layer place the player has not reached */
-  discovered: boolean;
+}
+/** The HUD's minimap: the chart round the player */
+export interface Minimap {
+  /** absent outside the province: the minimap hides */
+  player?: ChartPlayer;
+  /** the revealed cells within the minimap's reach (core chart::near) */
+  revealed: CellKey[];
+  /** the discovered places within its reach */
+  places: ChartPlace[];
+}
+/** The minimap alone, sent when the player's cell, place or facing moves */
+export interface HudMinimap {
+  /** The HUD's minimap: the chart round the player */
+  map: Minimap;
 }
 /** Where the chart is looking; kept by ArgoniaCore between openings */
 export interface ChartView {
@@ -317,8 +338,10 @@ export interface ChartState {
   sketch: string;
   /** every cell the player has uncovered */
   revealed: CellKey[];
-  /** A place drawn on the chart */
+  /** the discovered places only */
   places: ChartPlace[];
+  /** absent outside the province (an interior, another worldspace) */
+  player?: ChartPlayer;
   /** Where the chart is looking; kept by ArgoniaCore between openings */
   view: ChartView;
 }
@@ -385,7 +408,8 @@ export type PushMessage =
   | { type: "journal.state"; v: 1; body: JournalState }
   | { type: "hud.state"; v: 1; body: HudState }
   | { type: "hud.bars"; v: 1; body: HudBars }
-  | { type: "chart.state"; v: 1; body: ChartState }
+  | { type: "hud.minimap"; v: 1; body: HudMinimap }
+  | { type: "chart.state"; v: 2; body: ChartState }
   | { type: "sitting.state"; v: 1; body: SittingState };
 export type IntentMessage =
   | { type: "dialogue.topic"; v: 1; body: DialogueTopic }
@@ -411,7 +435,8 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "journal.page", version: 1, dir: "intent" },
   { type: "hud.state", version: 1, dir: "push" },
   { type: "hud.bars", version: 1, dir: "push" },
-  { type: "chart.state", version: 1, dir: "push" },
+  { type: "hud.minimap", version: 1, dir: "push" },
+  { type: "chart.state", version: 2, dir: "push" },
   { type: "chart.pan", version: 1, dir: "intent" },
   { type: "sitting.state", version: 1, dir: "push" },
   { type: "sitting.buy", version: 1, dir: "intent" },
@@ -821,6 +846,18 @@ function checkHudBars(x: unknown, p: string): string | null {
   if ((e = each(o["bars"], p + ".bars", (e0: unknown, i0: string) => checkBar(e0, i0))) !== null) return e;
   return null;
 }
+function checkChartPlayer(x: unknown, p: string): string | null {
+  const o = members(x, p, ["x","y","heading"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["x"] === undefined) return bad(p + ".x", "missing");
+  if ((e = real(o["x"], -Number.MAX_VALUE, Number.MAX_VALUE, p + ".x")) !== null) return e;
+  if (o["y"] === undefined) return bad(p + ".y", "missing");
+  if ((e = real(o["y"], -Number.MAX_VALUE, Number.MAX_VALUE, p + ".y")) !== null) return e;
+  if (o["heading"] === undefined) return bad(p + ".heading", "missing");
+  if ((e = real(o["heading"], 0, 360, p + ".heading")) !== null) return e;
+  return null;
+}
 function checkCellKey(x: unknown, p: string): string | null {
   const o = members(x, p, ["x","y"]);
   if (typeof o === "string") return o;
@@ -832,7 +869,7 @@ function checkCellKey(x: unknown, p: string): string | null {
   return null;
 }
 function checkChartPlace(x: unknown, p: string): string | null {
-  const o = members(x, p, ["id","name","kind","x","y","discovered"]);
+  const o = members(x, p, ["id","name","kind","x","y"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["id"] === undefined) return bad(p + ".id", "missing");
@@ -845,8 +882,25 @@ function checkChartPlace(x: unknown, p: string): string | null {
   if ((e = real(o["x"], -Number.MAX_VALUE, Number.MAX_VALUE, p + ".x")) !== null) return e;
   if (o["y"] === undefined) return bad(p + ".y", "missing");
   if ((e = real(o["y"], -Number.MAX_VALUE, Number.MAX_VALUE, p + ".y")) !== null) return e;
-  if (o["discovered"] === undefined) return bad(p + ".discovered", "missing");
-  if ((e = (typeof o["discovered"] === "boolean" ? null : bad(p + ".discovered", "want true or false"))) !== null) return e;
+  return null;
+}
+function checkMinimap(x: unknown, p: string): string | null {
+  const o = members(x, p, ["player","revealed","places"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["player"] !== undefined && (e = checkChartPlayer(o["player"], p + ".player")) !== null) return e;
+  if (o["revealed"] === undefined) return bad(p + ".revealed", "missing");
+  if ((e = each(o["revealed"], p + ".revealed", (e0: unknown, i0: string) => checkCellKey(e0, i0))) !== null) return e;
+  if (o["places"] === undefined) return bad(p + ".places", "missing");
+  if ((e = each(o["places"], p + ".places", (e0: unknown, i0: string) => checkChartPlace(e0, i0))) !== null) return e;
+  return null;
+}
+function checkHudMinimap(x: unknown, p: string): string | null {
+  const o = members(x, p, ["map"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["map"] === undefined) return bad(p + ".map", "missing");
+  if ((e = checkMinimap(o["map"], p + ".map")) !== null) return e;
   return null;
 }
 function checkChartView(x: unknown, p: string): string | null {
@@ -862,7 +916,7 @@ function checkChartView(x: unknown, p: string): string | null {
   return null;
 }
 function checkChartState(x: unknown, p: string): string | null {
-  const o = members(x, p, ["worldspace","sketch","revealed","places","view"]);
+  const o = members(x, p, ["worldspace","sketch","revealed","places","player","view"]);
   if (typeof o === "string") return o;
   let e: string | null;
   if (o["worldspace"] === undefined) return bad(p + ".worldspace", "missing");
@@ -873,6 +927,7 @@ function checkChartState(x: unknown, p: string): string | null {
   if ((e = each(o["revealed"], p + ".revealed", (e0: unknown, i0: string) => checkCellKey(e0, i0))) !== null) return e;
   if (o["places"] === undefined) return bad(p + ".places", "missing");
   if ((e = each(o["places"], p + ".places", (e0: unknown, i0: string) => checkChartPlace(e0, i0))) !== null) return e;
+  if (o["player"] !== undefined && (e = checkChartPlayer(o["player"], p + ".player")) !== null) return e;
   if (o["view"] === undefined) return bad(p + ".view", "missing");
   if ((e = checkChartView(o["view"], p + ".view")) !== null) return e;
   return null;
@@ -964,6 +1019,7 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "journal.page": checkJournalPage,
   "hud.state": checkHudState,
   "hud.bars": checkHudBars,
+  "hud.minimap": checkHudMinimap,
   "chart.state": checkChartState,
   "chart.pan": checkChartPan,
   "sitting.state": checkSittingState,

@@ -7,6 +7,8 @@
 // mapMenu (our chart: decision 0017's 1.2 §0 record says why it replaces FWMF's map), the HUD (always on; the
 // vanilla HUD's bars and compass hidden through the hudElements hook, router::kHudClips). The chart's revealed
 // cells: the player's exterior cell in ARG_Province is marked on every cell change (BGSActorCellEvent) and at load.
+// 1.12 §5: the chart and the HUD's minimap carry the player's marker and the discovered map markers (the engine's
+// CanTravelTo flag, refreshed on LocationDiscovery); map fast travel is switched off at every load.
 #include <set>
 #include "core.h"
 #include "prisma_api.h"
@@ -20,10 +22,12 @@
 #include <Windows.h>
 
 #include <algorithm>
+#include <cmath>
 
 #include <atomic>
 #include <chrono>
 #include <filesystem>
+#include <format>
 #include <fstream>
 #include <sstream>
 #include <thread>
@@ -116,9 +120,105 @@ void WriteLayout(const ac::msg::ChartView& v) {
 }
 
 // --- the chart ---------------------------------------------------------------------------------------------------
+// --- the chart's marks (1.12 §5) -----------------------------------------------------------------------------------
+// The player's marker: the player reference's position and facing, in the province's exterior only.
+std::optional<ac::msg::ChartPlayer> PlayerMark() {
+  auto* p = RE::PlayerCharacter::GetSingleton();
+  auto* cell = p ? p->GetParentCell() : nullptr;
+  auto* ws = p ? p->GetWorldspace() : nullptr;
+  if (!cell || !ws || !cell->IsExteriorCell()) return std::nullopt;
+  const char* edid = ws->GetFormEditorID();
+  if (!edid || std::string_view(edid) != ac::chart::kWorldspace) return std::nullopt;
+  const auto pos = p->GetPosition();
+  return ac::views::chart_player(pos.x, pos.y, p->GetAngleZ());
+}
+
+// The discovered places: Skyrim's own map markers of the province, each shown once the engine's discovery has set
+// its CanTravelTo flag (LocationDiscovery fires then; the flag lives in Skyrim's save, so it holds after a load).
+// The player's marker list is the engine's (PlayerCharacter::currentMapMarkers), so nothing is scanned.
+std::vector<ac::msg::ChartPlace> DiscoveredPlaces() {
+  std::vector<ac::msg::ChartPlace> out;
+  auto* p = RE::PlayerCharacter::GetSingleton();
+  if (!p) return out;
+  for (const auto& h : p->GetPlayerRuntimeData().currentMapMarkers) {
+    const auto ref = h.get();
+    if (!ref) continue;
+    auto* ws = ref->GetWorldspace();
+    const char* edid = ws ? ws->GetFormEditorID() : nullptr;
+    if (!edid || std::string_view(edid) != ac::chart::kWorldspace) continue;
+    const auto* x = ref->extraList.GetByType<RE::ExtraMapMarker>();
+    if (!x || !x->mapData) continue;
+    const auto* d = x->mapData;
+    const char* name = d->locationName.GetFullName();
+    const auto pos = ref->GetPosition();
+    if (auto place = ac::views::chart_place(ref->GetFormID(), name ? name : "", d->flags.underlying(),
+                                            d->type.underlying(), pos.x, pos.y))
+      out.push_back(std::move(*place));
+  }
+  return out;
+}
+
+// The HUD's minimap: pushed when the player has moved a twentieth of a cell or turned two degrees, or a place was
+// discovered; the places are re-read at a discovery and at a cell change, not every tick.
+std::optional<ac::msg::ChartPlayer> g_mm_at;
+std::string g_fast_travel = "fast-travel not yet set";  // ViewsReport's line
+std::vector<ac::msg::ChartPlace> g_mm_places;
+bool g_mm_stale = true;
+
+void PushMinimap(bool force = false) {
+  auto& c = Get();
+  if (!g_api) return;
+  const auto me = PlayerMark();
+  if (!force && !g_mm_stale && me.has_value() == g_mm_at.has_value() &&
+      (!me || (std::abs(me->x - g_mm_at->x) < 0.05 && std::abs(me->y - g_mm_at->y) < 0.05 &&
+               std::abs(std::remainder(me->heading - g_mm_at->heading, 360.0)) < 2)))
+    return;
+  if (g_mm_stale) g_mm_places = DiscoveredPlaces();
+  g_mm_stale = false;
+  g_mm_at = me;
+  if (auto json = ac::msg::encode(ac::views::minimap(c.state.chart, g_mm_places, me)))
+    Apply({{ac::views::OpKind::push, "hud", std::move(*json)}});  // the frequent update: not logged, as hud.bars
+}
+
+class DiscoverySink final : public RE::BSTEventSink<RE::LocationDiscovery::Event> {
+ public:
+  RE::BSEventNotifyControl ProcessEvent(const RE::LocationDiscovery::Event* e,
+                                        RE::BSTEventSource<RE::LocationDiscovery::Event>*) override {
+    if (e && e->mapMarkerData) {
+      const char* n = e->mapMarkerData->locationName.GetFullName();
+      SKSE::log::info("chart: discovered {} in {}", n ? n : "?", e->worldspaceID ? e->worldspaceID : "?");
+      SKSE::GetTaskInterface()->AddTask([] {
+        auto& c = Get();
+        std::lock_guard l(c.lock);
+        g_mm_stale = true;
+        PushMinimap(true);
+      });
+    }
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
+
+// No fast travel from any map, ever (1.12 §5, owner): the engine's own switch, Game.EnableFastTravel(false), at
+// every load and new game, so Skyrim's map and Wind UI's both refuse. In-world services travel by script, not the map.
+void FastTravelOff() {
+  auto* vm = RE::BSScript::Internal::VirtualMachine::GetSingleton();
+  if (!vm) {
+    g_fast_travel = "fast-travel no VM";
+    SKSE::log::error("chart: no VM; map fast travel is not switched off");
+    return;
+  }
+  RE::BSTSmartPointer<RE::BSScript::IStackCallbackFunctor> none;
+  const bool ok = vm->DispatchStaticCall(RE::BSFixedString("Game"), RE::BSFixedString("EnableFastTravel"),
+                                         RE::MakeFunctionArguments(false), none);
+  g_fast_travel = ok ? "fast-travel off" : "fast-travel dispatch refused";
+  SKSE::log::info("chart: map {}", g_fast_travel);
+}
+
 void OpenChart() {
-  // The revealed cells from the CHRT family; the view read on every opening (a restart reads the same file).
-  auto json = ac::msg::encode(ac::views::chart_state(Get().state.chart, ac::views::remembered_chart(ReadLayout())));
+  // The revealed cells from the CHRT family, the discovered markers and the player; the view read on every opening
+  // (a restart reads the same file).
+  auto json = ac::msg::encode(ac::views::chart_state(Get().state.chart, ac::views::remembered_chart(ReadLayout()),
+                                                     DiscoveredPlaces(), PlayerMark()));
   if (!json) {
     SKSE::log::error("views: the chart does not fit the schema: {}", json.error());
     return;
@@ -147,7 +247,12 @@ class CellSink final : public RE::BSTEventSink<RE::BGSActorCellEvent> {
  public:
   // Enter or leave: the player's parent cell is read, so a leave re-marks the cell already marked (a no-op).
   RE::BSEventNotifyControl ProcessEvent(const RE::BGSActorCellEvent* e, RE::BSTEventSource<RE::BGSActorCellEvent>*) override {
-    if (e) SKSE::GetTaskInterface()->AddTask([] { MarkPlayerCell("cell change"); });
+    if (e) SKSE::GetTaskInterface()->AddTask([] {
+      MarkPlayerCell("cell change");
+      auto& c = Get();
+      std::lock_guard l(c.lock);
+      g_mm_stale = true;  // a newly revealed cell, and the markers of the cell entered
+    });
     return RE::BSEventNotifyControl::kContinue;
   }
 };
@@ -366,6 +471,8 @@ bool SheetOpen() {
   if (!ui) return false;
   for (const auto& r : ac::gen::kSurfaces)
     if (ac::router::covers_hud(r.menu) && ui->IsMenuOpen(RE::BSFixedString(std::string(r.menu).c_str()))) return true;
+  for (auto w : ac::router::kWindowsOverHud)  // Wind UI's windows (MenuSink refreshes the HUD at their open and close)
+    if (ui->IsMenuOpen(RE::BSFixedString(std::string(w).c_str()))) return true;
   return false;
 }
 
@@ -566,12 +673,20 @@ void ViewsDataLoaded() {
   } else {
     c.router_log.push_back("refused: " + why);
   }
-  c.router_log.push_back("sinks: InputEvent (the journal key), BGSActorCellEvent (the chart's cells)");
+  static DiscoverySink discovery;
+  if (auto* src = RE::LocationDiscovery::GetEventSource()) src->AddEventSink(&discovery);
+  c.router_log.push_back("sinks: InputEvent (the journal key), BGSActorCellEvent (the chart's cells), "
+                         "LocationDiscovery (the chart's and minimap's markers)");
   if (!g_hud_loop.exchange(true))
     std::thread([] {
       for (;;) {
         std::this_thread::sleep_for(std::chrono::milliseconds(200));  // 5 bar updates a second, only on change
-        SKSE::GetTaskInterface()->AddTask([] { PushHudBars(); });
+        SKSE::GetTaskInterface()->AddTask([] {
+          PushHudBars();
+          auto& c = Get();
+          std::lock_guard l(c.lock);
+          if (!c.view_host.modal()) PushMinimap();
+        });
       }
     }).detach();
 }
@@ -582,6 +697,9 @@ void ViewsGameReady() {
   MarkPlayerCell("load");
   HideVanillaHud();
   PushHudState();
+  FastTravelOff();
+  g_mm_stale = true;
+  PushMinimap(true);
 }
 
 void JournalNotice(ac::journal::NoticeCause cause, std::string_view quest, std::int32_t mark) {
@@ -664,6 +782,16 @@ std::vector<std::string> ViewsReport() {
   out.push_back(std::string("bound ") + (g_api2 ? "v2" : g_api ? "v1" : "no"));
   out.push_back(g_vanilla_hud);
   out.push_back("chart revealed " + std::to_string(ac::chart::count(c.state.chart)));
+  // 1.12 §5's reads (the chart-minimap journey): the discovered markers, the player's marker, the minimap, fast travel.
+  out.push_back("chart places " + std::to_string(DiscoveredPlaces().size()));
+  if (const auto me = PlayerMark())
+    out.push_back(std::format("chart player {:.2f},{:.2f} heading {:.0f}", me->x, me->y, me->heading));
+  else
+    out.push_back("chart player none");
+  const auto mm = ac::views::minimap(c.state.chart, g_mm_places, g_mm_at);
+  out.push_back(std::format("minimap {} revealed {} places {} heading {:.0f}", g_mm_at ? "shown" : "hidden",
+                            mm.map.revealed.size(), mm.map.places.size(), g_mm_at ? g_mm_at->heading : 0.0));
+  out.push_back(g_fast_travel);
   for (const auto& s : ac::views::kViews)
     out.push_back(std::string(s.id) + (c.view_host.is_ready(s.id) ? " ready" : " loading") +
                   (c.view_host.is_open(s.id) ? " open" : " closed"));

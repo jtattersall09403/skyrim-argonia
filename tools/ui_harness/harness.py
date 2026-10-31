@@ -121,8 +121,8 @@ def stills_for(view: str) -> list[tuple[str, list[str], dict]]:
     st = fixtures(view)["states"]
     out = []
     for name, m in st.items():
-        if view == "hud" and m["type"] == "hud.bars":
-            out.append((name, [json.dumps(st["play"]), json.dumps(m)], {}))   # bars update a shown HUD
+        if view == "hud" and m["type"] in ("hud.bars", "hud.minimap"):
+            out.append((name, [json.dumps(st["play"]), json.dumps(m)], {}))   # bars and the minimap update a shown HUD
             continue
         out.append((name, [json.dumps(m)], {}))
     if view == "dialogue":
@@ -182,7 +182,7 @@ class Harness:
         p.evaluate("() => { window.argonia.errors.length = 0; }")
         for m in pushes:
             assert p.evaluate("(m) => window.argonia.push(m)", m), f"{view}.{name}: push refused"
-        if view == "chart":
+        if view == "chart" or any(json.loads(m)["type"] == "hud.minimap" for m in pushes):
             p.wait_for_function("() => document.body.dataset.ready === '1' || window.argonia.errors.length", timeout=20000)
         if opt.get("click"):
             p.click(opt["click"])

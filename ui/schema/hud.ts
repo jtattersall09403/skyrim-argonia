@@ -1,5 +1,7 @@
 // Our HUD (1.2 §d): souls-style bars that grow with stats, the sneak eye, the effect stack, the vastei plaque, the
-// place banner, the prompt with input glyphs, notices. No compass and no marker, ever. Boss bars join in 2.7.
+// place banner, the prompt with input glyphs, notices, and the minimap top right (1.12 §5): drawn from the chart's
+// data, with a compass rose that turns with the player. No compass bar and no quest marker, ever. Boss bars join in 2.7.
+import { CellKey, ChartPlace, ChartPlayer } from "./chart.ts";
 import { InputGlyph } from "./common.ts";
 import { bool, enumDef, int, list, num, oneOf, opt, push, ref, str, struct } from "./types.ts";
 
@@ -66,4 +68,14 @@ export const hudBars = push("hud.bars", 1, "The bars alone, the HUD's frequent u
   bars: list(ref(Bar)),
 });
 
-export const messages = [hudState, hudBars];
+export const Minimap = struct("Minimap", "The HUD's minimap: the chart round the player", {
+  player: opt(ref(ChartPlayer), "absent outside the province: the minimap hides"),
+  revealed: list(ref(CellKey), "the revealed cells within the minimap's reach (core chart::near)"),
+  places: list(ref(ChartPlace), "the discovered places within its reach"),
+});
+
+export const hudMinimap = push("hud.minimap", 1, "The minimap alone, sent when the player's cell, place or facing moves", {
+  map: ref(Minimap),
+});
+
+export const messages = [hudState, hudBars, hudMinimap];

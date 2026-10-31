@@ -1,6 +1,10 @@
-/* The chart: the parchment in a paper frame, the controls along the foot, the places' names only on focus. */
-#view { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--paper-dark); }  /* opaque: play never shows round the chart (ui-review3) */
-.chart { width: 100vw; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2); }
+/* The chart (1.12 §5): our own window in the frame style - the parchment inside a dark green-black pane with the
+   gold-green trim (provisional --frame-* tokens, theme.css) - the controls along the foot, the names on focus. */
+#view { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--frame-bg); }  /* opaque: play never shows round the chart (ui-review3) */
+.chart { width: 100vw; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--s2);
+  padding: calc(var(--s2) * 1.5); background: var(--frame-bg); border: 0.18rem solid var(--frame-trim);
+  box-shadow: inset 0 0 0 0.08rem var(--frame-trim-hi), inset 0 0 0 0.4rem var(--frame-bg), inset 0 0 0 0.48rem var(--frame-trim); }
+.chart .sheet { border: 0.12rem solid var(--frame-trim-hi); box-shadow: 0 0 0 0.25rem var(--frame-well), 0 0 0.8rem var(--frame-shadow); }
 /* .paper (theme.css) gives the sheet its mottle, which shows in the margins where the chart is narrower than the sheet. */
 .sheet { position: relative; flex: 1; min-height: 0; overflow: hidden; border: 1px solid var(--ink-soft); box-shadow: none; border-radius: 0;
   /* a fibre mottle over the paper tokens, so the margins are paper and not a gradient (inline noise, no texture file) */
@@ -17,10 +21,19 @@
   padding: 0 var(--s2); background: var(--paper-light); border: 1px solid var(--ink-soft); border-radius: 0.15rem;
 }
 .place:focus .pname, .place:hover .pname { display: block; }
+/* A discovered place's marker: the old map's glyph in ink on a paper halo. */
+.place .pin { position: absolute; inset: 0; width: 100%; height: 100%; fill: #2b2e1c;
+  filter: drop-shadow(0 0 0.08rem #f1e8cf) drop-shadow(0 0 0.12rem #f1e8cf); }
+/* The player's marker: an ink arrowhead in a paper ring, turned to the heading by the view. */
+.me { position: absolute; width: 1.7rem; height: 1.7rem; margin: -0.85rem 0 0 -0.85rem; pointer-events: none; z-index: 2; }
+.me svg { width: 100%; height: 100%; overflow: visible; }
+.me-ring { fill: rgba(241, 232, 207, 0.85); stroke: #8a2a1c; stroke-width: 1.6; }
+.me-arrow { fill: #8a2a1c; stroke: #2b1a12; stroke-width: 0.8; stroke-linejoin: round; }
 .place:focus { outline: var(--edge) solid var(--focus); background: rgba(176, 112, 42, 0.2); }
 .controls { display: flex; justify-content: flex-end; gap: var(--s2); }
-.zoom { min-width: 2.2rem; min-height: 2.2rem; text-align: center; font-size: var(--t-head);
-  border: var(--edge) solid var(--ink-soft); border-radius: 0.2rem; background: var(--paper-light); }
+.zoom { min-width: 2.2rem; min-height: 2.2rem; text-align: center; font-size: var(--t-head); color: var(--frame-head);
+  border: var(--edge) solid var(--frame-trim); border-radius: 0.2rem; background: var(--frame-well); }
+.controls [data-key="close"] { color: var(--frame-head); border-color: var(--frame-trim); background: var(--frame-well); }
 
 /* The view's own lettering, where the chart's drawn letters are too small to read: 1rem Pelagiad on a paper plate. */
 .labels { position: absolute; inset: 0; pointer-events: none; }
@@ -34,5 +47,6 @@
   transform: translateY(-50%); background: rgb(225, 212, 176); border-radius: 0.3rem; box-shadow: 0 0 0.3rem 0.25rem rgba(225, 212, 176, 0.9); }
 .label[data-discovered="false"] { color: #4a4630; }
 .label[hidden] { display: none; }
+.label.beside[data-discovered="true"]::before { display: none; }   /* the place's marker stands beside it */
 .label.beside::before { content: ""; position: absolute; left: -0.55rem; top: 50%; width: 0.4rem; height: 0.4rem;
   margin-top: -0.2rem; border-radius: 50%; background: #2b2e1c; box-shadow: 0 0 0 0.12rem #f1e8cf; }

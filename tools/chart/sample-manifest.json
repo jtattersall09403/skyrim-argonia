@@ -1,5 +1,5 @@
 {
  "sample": "tools/chart/sample.py features() at 512^2 (base, ink, revealed pixels + the index)",
- "sha256": "df2248432a8a2605cd6dd72f8b5ed3e6df7fe0c225120305652bedf633a41fb3",
- "measured": "2026-10-29 (the old chart style), Pillow 13.0.0 (FreeType 2.14.3), numpy 2.5.4; two in-process renders identical"
+ "sha256": "94f1fa8c347fa3faa264be29d38fb56da1d75aebb514f8af1744c13c0a8fed52",
+ "measured": "2026-10-31 (1.12 \u00a75: only the cities drawn; places marked by the view on discovery), Pillow 13.0.0 (FreeType 2.14.3), numpy 2.5.4"
 }

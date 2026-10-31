@@ -1,6 +1,9 @@
 // The parchment chart's revealed cells (1.2 §e): the exterior cells of the province the player has entered, as the
 // `chart` co-save family (CHRT). ArgoniaCore marks the player's cell on every cell change in ARG_Province; the
 // chart view masks its revealed layer by the set (views::chart_state). The set only grows.
+// 1.12 §5: the rules the chart and the HUD's minimap share. A place's marker shows once Skyrim's discovery has set its
+// map marker's CanTravelTo flag (the engine's own discovered state, kept in Skyrim's save: no state of ours); the
+// player's marker and facing come from the player reference in Skyrim units, made cell units here.
 #pragma once
 #include "argonia/core/cosave.h"
 #include "argonia/core/families.h"
@@ -10,6 +13,7 @@
 #include <map>
 #include <optional>
 #include <set>
+#include <string>
 #include <span>
 #include <string_view>
 #include <vector>
@@ -40,6 +44,30 @@ bool reveal(Discovered& d, Cell c);
 bool revealed(const Discovered& d, Cell c);
 std::size_t count(const Discovered& d);
 std::vector<Cell> cells(const Discovered& d);  // x then y, rising
+
+// --- 1.12 §5: markers, the player, the minimap's reach ---------------------------------------------------------
+
+// Skyrim's MapMarkerData flags: Visible alone is a marker known but not reached; discovery sets CanTravelTo with it.
+inline constexpr std::uint8_t kMarkerVisible = 1 << 0, kMarkerCanTravelTo = 1 << 1;
+bool marker_discovered(std::uint8_t flags);
+// A marker's type (Skyrim's MARKER_TYPE) as the chart's glyph kind (tools/chart/render.py PIN's keys); "civic" when
+// the type has no closer kind. The door, quest-target, player-set and you-are-here types are no place: "".
+std::string_view marker_kind(std::uint16_t type);
+
+struct Point {
+  double x = 0, y = 0;
+  bool operator==(const Point&) const = default;
+};
+// A position in Skyrim units as cell units (x east, y north; the cell's SW corner is its integer).
+Point cell_units(double x_units, double y_units);
+Cell cell_of(Point p);
+// The player's angle about z (radians, 0 north, clockwise, any turn) as degrees in [0, 360).
+double heading_deg(double angle_z);
+
+// The minimap's reach in cells from the player (a circle), and the revealed cells and points inside it.
+inline constexpr double kMinimapReach = 5;
+std::vector<Cell> near(const Discovered& d, Point centre, double reach = kMinimapReach);
+bool within(Point centre, Point p, double reach = kMinimapReach);
 
 inline constexpr std::uint32_t kChartType = cosave::fourcc("CHRT");
 inline constexpr std::uint32_t kChartVersion = 1;

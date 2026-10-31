@@ -135,6 +135,31 @@ void chart_reveal() {
   auto j = msg::encode(s);
   CHECK(j && j->find(R"("revealed":[{"x":-57,"y":11})") != std::string::npos);
   CHECK(chart_state({}, v).revealed.empty());
+  CHECK(!s.player && s.places.empty());
+}
+
+// 1.12 §5: a marker is a place only once discovered; the player's marker; the minimap carries what is in reach.
+void chart_marks() {
+  const double cu = 4096;
+  CHECK(!chart_place(0x0A000801, "Claywater Station", chart::kMarkerVisible, 3, 0, 0));  // known, not reached
+  CHECK(!chart_place(0x0A000801, "", 3, 3, 0, 0));
+  CHECK(!chart_place(0x0A000801, "door", 3, 61, 0, 0));
+  auto p = chart_place(0x0A000801, "Claywater Station", 3, 3, -58.5 * cu, 10.25 * cu);
+  CHECK(p && p->id == "0A000801" && p->kind == "settlement" && p->x == -58.5 && p->y == 10.25);
+  const auto me = chart_player(-58 * cu, 10 * cu, 3.14159265358979323846 * 0.75);
+  CHECK(me.x == -58 && me.y == 10 && me.heading == 135);
+  chart::Discovered d;
+  for (int x = -70; x <= -50; ++x) for (int y = 0; y <= 20; ++y) chart::reveal(d, {x, y});
+  const auto far = *chart_place(0x0A000802, "Far", 3, 1, -40 * cu, 10 * cu);
+  const auto m = minimap(d, {*p, far}, me);
+  CHECK(m.map.player == me && m.map.places == std::vector<msg::ChartPlace>{*p});
+  CHECK(!m.map.revealed.empty() && m.map.revealed.size() < 140);  // a disc of reach 5: about pi * 6^2 cells
+  for (const auto& c : m.map.revealed) CHECK(std::abs(c.x + 58) <= 6 && std::abs(c.y - 10) <= 6);
+  CHECK(minimap(d, {*p}, std::nullopt) == msg::HudMinimap{});
+  const auto s = chart_state(d, {-58, 10, 4}, {*p}, me);
+  auto j = msg::encode(s);
+  CHECK(j && j->find(R"("player":{"x":-58,"y":10,"heading":135})") != std::string::npos);
+  CHECK(msg::encode(m).has_value());
 }
 
 void the_journal() {
@@ -215,6 +240,7 @@ int main() {
   latch();
   chart_layout();
   chart_reveal();
+  chart_marks();
   the_journal();
   the_journal_text();
   the_probe();

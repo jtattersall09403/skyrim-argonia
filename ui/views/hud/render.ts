@@ -1,8 +1,11 @@
 // Our HUD (1.2 §d), render only. Souls-style bars whose drawn length grows with the stat's maximum, the sneak eye,
 // the effect stack, the vastei plaque, the place banner, the prompt with the glyph of the device in use, and the
-// notice stack. No compass and no marker, ever. The HUD sends no intents.
+// notice stack, and the minimap top right with its compass rose (1.12 §5; drawn by minimap.ts). No compass bar and no
+// quest marker, ever. The HUD sends no intents.
 import type { Bar, Effect, HudState, InputGlyph, Notice, PlaceBanner, Prompt } from "../../schema/generated/messages.ts";
 import { esc } from "../core/html.ts";
+import { ROSE } from "./minimap.ts";
+import { PLAYER_SVG } from "../chart/render.ts";
 
 // rem of bar per point of maximum, and the longest a bar may draw (the rest of the growth is CSS's max-width).
 export const REM_PER_POINT = 0.1;
@@ -112,6 +115,7 @@ export function render(s: HudState, mem: BarMemory = NONE): string {
     <div class="vastei${gain ? " up" : ""}">${VMARK}<span class="count">${s.vastei.carried}</span><span class="vlabel">Vastei</span>${gain}</div>
     ${s.notices.length ? `<ul class="notices">${s.notices.map(notice).join("")}</ul>` : ""}
   </div>
+  <div class="minimap" data-minimap hidden aria-label="Minimap"><canvas></canvas><div class="mm-me">${PLAYER_SVG}</div>${ROSE}</div>
   ${s.effects.length ? `<ul class="effects">${s.effects.map(effect).join("")}</ul>` : ""}
   ${sneak}
   ${s.banner ? banner(s.banner) : ""}

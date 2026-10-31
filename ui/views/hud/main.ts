@@ -1,8 +1,10 @@
-// The HUD in the browser: hud.state redraws the whole; hud.bars, the frequent update, redraws the bars alone.
+// The HUD in the browser: hud.state redraws the whole; hud.bars, the frequent update, redraws the bars alone;
+// hud.minimap redraws the minimap alone (minimap.ts).
 // The view remembers what the last push showed, for the damage trail and the regeneration glint (render.ts
 // `remember`); the trail falls to the fill TRAIL_HOLD ms after the last hit, by a CSS transition.
 import { start } from "../core/bridge.ts";
-import type { Bar } from "../../schema/generated/messages.ts";
+import type { Bar, Minimap } from "../../schema/generated/messages.ts";
+import { drawMinimap } from "./minimap.ts";
 import { type BarMemory, isLow, remember, render, renderBars } from "./render.ts";
 
 const root = document.getElementById("view")!;
@@ -10,6 +12,12 @@ const TRAIL_HOLD = 900, REGEN_HOLD = 700;
 let last: Partial<Record<Bar["kind"], number>> = {};
 let mem: BarMemory = { trail: {}, regen: new Set() };
 let fall: number | undefined, still: number | undefined;
+let map: Minimap | null = null;   // the last hud.minimap: a hud.state redraws the HUD, and the minimap from this
+const minimap = () => {
+  const el = root.querySelector<HTMLElement>("[data-minimap]");
+  if (el && map) drawMinimap(el, map).then(() => { document.body.dataset.ready = "1"; },
+    (e: Error) => window.argonia.errors.push(e.message));
+};
 
 function step(bars: Bar[]): void {
   const was = last;
@@ -35,9 +43,10 @@ function step(bars: Bar[]): void {
 }
 
 start({
-  accepts: ["hud.state", "hud.bars"],
+  accepts: ["hud.state", "hud.bars", "hud.minimap"],
   render(m) {
-    if (m.type === "hud.state") { step(m.body.bars); root.innerHTML = render(m.body, mem); return; }
+    if (m.type === "hud.state") { step(m.body.bars); root.innerHTML = render(m.body, mem); minimap(); return; }
+    if (m.type === "hud.minimap") { map = m.body.map; delete document.body.dataset.ready; minimap(); return; }
     if (m.type === "hud.bars") {
       const el = root.querySelector<HTMLElement>("[data-bars]");
       if (!el) return;                       // before any hud.state there is no HUD to update

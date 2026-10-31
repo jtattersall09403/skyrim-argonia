@@ -12,9 +12,10 @@ Three layers on one canvas (the master is MASTER^2 px, 2^12; the province fills 
 - ink       RGBA: the sketch, always shown: the coast and its hachure, the major rivers and roads, the province's
             land border, a compass rose, the seven cities drawn and labelled;
 - revealed  RGBA: what exploring fills in, masked per cell by the view: the land's warm tint, relief and 50 m
-            contours, the woods (crowns and stipple), the marsh tufts, the minor rivers and tracks, every other
-            place drawn and labelled (as the old chart showed land only where it was explored).
-The view stacks base, revealed (masked), ink. There is no player-position marker (C9).
+            contours, the woods (crowns and stipple), the marsh tufts, the minor rivers and tracks (as the old
+            chart showed land only where it was explored). No place but the cities is drawn: the view marks each
+            once Skyrim's discovery fires for it (1.12 §5).
+The view stacks base, revealed (masked), ink, then its own marks: the discovered places and the player.
 
 Ink weights are set for the 2048 copy (a desktop view) to match the old chart's screen weights: a master pixel is
 half an old css pixel. Every stroke is drawn at twice the size into 8-bit masks and box-reduced (antialiasing);
@@ -798,29 +799,18 @@ class Renderer:
         return layers
 
     def places(self):
-        s, u = self.size, self.u
-        halo, glyph, text = Pen(s), Pen(s), Pen(s)
+        """The index's places. Only the seven cities are drawn (the sketch's ink, with their ring labels); every other
+        place is left off the paper: the view draws its marker once Skyrim's discovery has fired for it (1.12 §5:
+        unmarked before, marked after), so the revealed layer never shows a place the player has not found."""
         out = {}
-        others = sorted((p for p in self.f.places if not p.city), key=lambda p: (-p.magnitude, p.kind, p.id))
-        for p in others:
-            x, y = self.px(p.x_m, p.y_m)
-            r = (12 + 1.5 * p.magnitude) * u
-            self.glyph(glyph, halo, PIN.get(p.kind, "pin-landmark"), x, y, 2 * r, 3 * u)
-            self.boxes.append((x - r, y - r, x + r, y + r))
-        for p in others:
-            x, y = self.px(p.x_m, p.y_m)
-            r = (12 + 1.5 * p.magnitude) * u
-            # names for the places of magnitude 2 and up, where there is room (the rest carry the glyph; the view
-            # names them on demand from index.places)
-            lab = None if p.magnitude < 2 else self.label(text, halo, p.name, x, y, 22 + 3 * p.magnitude, r + 4 * u,
-                                                          halo_w=4, required=False)
-            out[p.id] = (p, x, y, lab)
         for p in self.f.places:
             if p.city:
                 x, y = self.city_px[p.id]
                 out[p.id] = (p, x, y, self.label_ring[p.id])
-        layers = [(self.soft(halo.done(), 2 * u), PAPER, 0.75), (glyph.done(), INK, 0.95), (text.done(), INK, 0.95)]
-        return layers, out
+            else:
+                x, y = self.px(p.x_m, p.y_m)
+                out[p.id] = (p, x, y, None)
+        return [], out
 
     # -- the index --
     def make_index(self, places: dict) -> dict:

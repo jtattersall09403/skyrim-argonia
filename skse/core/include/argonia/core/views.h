@@ -115,7 +115,19 @@ msg::ChartView remembered_chart(std::optional<std::string_view> text);
 std::string chart_layout_text(const msg::ChartView& v);
 // The open chart: the sketch everywhere, the revealed layer through the cells of the CHRT family (x then y), the
 // view as remembered. Discovered places join with 2.W4.
-msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v);
+msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v,
+                            std::vector<msg::ChartPlace> places = {},
+                            std::optional<msg::ChartPlayer> player = std::nullopt);
+// One discovered map marker as the chart's place, or nothing: a marker not yet discovered (chart::marker_discovered),
+// of no place kind, or unnamed. `x_units, y_units` are the marker reference's position in Skyrim units.
+std::optional<msg::ChartPlace> chart_place(std::uint32_t form_id, std::string_view name, std::uint8_t flags,
+                                           std::uint16_t type, double x_units, double y_units);
+// The player in Skyrim units and radians as the chart's marker.
+msg::ChartPlayer chart_player(double x_units, double y_units, double angle_z);
+// The HUD's minimap: the revealed cells and discovered places within chart::kMinimapReach of the player, each in
+// the order given (cells x then y). Outside the province (no player) it carries nothing.
+msg::HudMinimap minimap(const chart::Discovered& d, const std::vector<msg::ChartPlace>& places,
+                        std::optional<msg::ChartPlayer> player);
 
 // The game date as the journal prints it ("16th of the Eighth Month, 201"); views never format dates.
 msg::GameDate date(const journal::GameDate& d);

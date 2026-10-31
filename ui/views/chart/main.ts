@@ -1,10 +1,11 @@
 // The chart in the browser: the three layers out/chart renders (base, revealed, ink; 2.W4 §c) stacked on a canvas,
-// the revealed layer masked to the cells chart.state lists, with a soft edge (the old chart's long fade).
+// the revealed layer masked to the cells chart.state lists, with a soft edge (the old chart's long fade); over them
+// the discovered places' markers and the player's, turned to the heading (1.12 §5).
 // Drag, pinch, the wheel, WASD, +/- and the pad's right stick and triggers move a local view while the gesture
 // lasts; when it settles the view is sent as chart.pan, and ArgoniaCore keeps it between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, type LabelBox, labelAt, placeLabels, pan, panIntent, revealRects, sketchCities, toPx, transform } from "./geom.ts";
+import { type CellIndex, type LabelBox, labelAt, placeLabels, pan, panIntent, revealRects, sketchCities, toPx, toward, transform } from "./geom.ts";
 import { render } from "./render.ts";
 
 declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex } }
@@ -96,9 +97,10 @@ function draw(): void {
   if (y0 > 0) strip(0, y0, 0, y0 + f, Math.max(0, x0), y0, Math.min(w, x1) - Math.max(0, x0), f);
   if (y1 < h) strip(0, y1, 0, y1 - f, Math.max(0, x0), y1 - f, Math.min(w, x1) - Math.max(0, x0), f);
   c.globalCompositeOperation = "source-over";
-  for (const el of root.querySelectorAll<HTMLElement>(".place")) {
+  for (const el of root.querySelectorAll<HTMLElement>(".place, .me")) {
     const [px, py] = toPx(ix, Number(el.dataset.x), Number(el.dataset.y));
     el.style.left = `${px * t.scale + t.tx}px`; el.style.top = `${py * t.scale + t.ty}px`;
+    if (el.dataset.heading !== undefined) el.style.transform = `rotate(${Number(el.dataset.heading)}deg)`;
   }
   const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
   // Pass 1: where each label wants to sit, measured with its text. Pass 2: collisions by priority.
@@ -148,6 +150,8 @@ const sheetSize = () => {
   return [c.clientWidth, c.clientHeight] as const;
 };
 const step = (dx: number, dy: number, f = 1) => { const [w, h] = sheetSize(); moved(pan(ix, view, w, h, dx, dy, f)); };
+// The zoom buttons and keys: in goes toward the player, out about the centre, down to the whole province.
+const zoom = (f: number) => moved(toward(view, state?.player, f));
 
 // Touch and mouse: one pointer drags, two pinch.
 const pts = new Map<number, { x: number; y: number }>();
@@ -182,7 +186,7 @@ start({
     if (m.type !== "chart.state") return;
     state = m.body; view = m.body.view;
     pushKey = `${state.sketch}|${JSON.stringify(state.revealed)}`;
-    root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))));
+    root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))), ix.pins);
     delete document.body.dataset.ready;
     layersFor(state.sketch).then((l) => { imgs = l; draw(); }, (e: Error) => window.argonia.errors.push(e.message));
     if (imgs) draw();
@@ -190,8 +194,8 @@ start({
   action(a) {
     const PAN = 0.12 * Math.min(...sheetSize());
     switch (a) {
-      case "zoomIn": step(0, 0, 1.5); return true;
-      case "zoomOut": step(0, 0, 1 / 1.5); return true;
+      case "zoomIn": zoom(1.5); return true;
+      case "zoomOut": zoom(1 / 1.5); return true;
       case "panUp": step(0, PAN); return true;
       case "panDown": step(0, -PAN); return true;
       case "panLeft": step(PAN, 0); return true;
@@ -200,5 +204,5 @@ start({
     }
   },
   back() { send({ type: "view.close", v: 1, body: { view: "chart" } }); },
-  local(el) { if (el.dataset.ui === "zoom-in") step(0, 0, 1.5); if (el.dataset.ui === "zoom-out") step(0, 0, 1 / 1.5); },
+  local(el) { if (el.dataset.ui === "zoom-in") zoom(1.5); if (el.dataset.ui === "zoom-out") zoom(1 / 1.5); },
 });

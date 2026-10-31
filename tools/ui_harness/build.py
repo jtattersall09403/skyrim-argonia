@@ -57,9 +57,12 @@ PAGE = """<!doctype html>
 
 def chart_index(src: Path) -> dict:
     """What the view needs of out/chart/index.json: the cell rects (without tile numbers), and per place whether the
-    sketch letters it (a city) and where the chart's own lettering sits, so the view can letter it larger."""
+    sketch letters it (a city) and where the chart's own lettering sits, so the view can letter it larger; and the
+    place glyphs' paths, so the view draws a discovered place's marker."""
     ix = json.loads(src.read_text())
+    glyphs = json.loads((ROOT / "tools" / "chart" / "glyphs.json").read_text())   # our own UI art (glyphs-SOURCE.md)
     return {"size": ix["size"], "cells": {k: v[2:6] for k, v in ix["cells"].items()},
+            "pins": {k: g["d"] for k, g in glyphs.items()},
             "places": {k: {"city": bool(p.get("city")), "label": p.get("label"),
                            **({"name": p["name"], "cell": p["cell"]} if p.get("city") else {})}
                        for k, p in ix.get("places", {}).items()}}
@@ -79,7 +82,9 @@ def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -
     for v in VIEWS:
         d = out / v
         shutil.copyfile(ROOT / f"ui/views/{v}/{v}.css", d / f"{v}.css")
-        pre = '<script src="assets/index.js"></script>' if v == "chart" else ""
+        # The chart's index; the HUD's minimap draws from the same chart (1.12 §5).
+        pre = {"chart": '<script src="assets/index.js"></script>',
+               "hud": '<script src="../chart/assets/index.js"></script>'}.get(v, "")
         (d / "index.html").write_text(PAGE.format(view=v, pre=pre))
     font = private() / "fonts" / "pelagiad" / "Pelagiad.ttf"
     (out / "fonts").mkdir(exist_ok=True)

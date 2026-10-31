@@ -100,7 +100,26 @@
 .notice.warning { border-left-color: var(--bar-health-hi); }
 
 /* ---- The effect stack, top right. ---- */
-.effects { position: absolute; right: 2.5vw; top: 3.5vh; margin: 0; padding: 0; list-style: none;
+/* The minimap (1.12 §5): pinned top right, a parchment disc in the frame's trim; the player's arrow fixed facing up,
+   the rose turned by the view so its N points north. The effects stack sits below it, clear of the phone's touch
+   controls in the bottom corners. */
+.hud { --mm: min(10rem, 24vh); }
+.minimap { position: absolute; right: 2.5vw; top: 3.5vh; width: var(--mm); height: var(--mm); border-radius: 50%;
+  background: #e8dcbc; box-shadow: 0 0 0 0.16rem var(--frame-trim), 0 0 0 0.28rem var(--frame-bg), 0 0 0 0.36rem var(--frame-trim-hi),
+  0 0.2rem 0.8rem var(--frame-shadow); }
+.minimap[hidden] { display: none; }
+.minimap canvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; }
+.mm-me { position: absolute; left: 50%; top: 50%; width: 1.3rem; height: 1.3rem; margin: -0.65rem 0 0 -0.65rem; }
+.mm-me svg { width: 100%; height: 100%; overflow: visible; }
+.mm-me .me-ring { fill: rgba(241, 232, 207, 0.85); stroke: #8a2a1c; stroke-width: 1.6; }
+.mm-me .me-arrow { fill: #8a2a1c; stroke: #2b1a12; stroke-width: 0.8; stroke-linejoin: round; }
+.rose { position: absolute; inset: -0.5rem; width: calc(100% + 1rem); height: calc(100% + 1rem); pointer-events: none; overflow: visible; }
+.rose-ring { fill: none; stroke: none; }
+.rose-n { fill: var(--frame-trim-hi); stroke: var(--frame-bg); stroke-width: 1; }
+.rose-tick { stroke: var(--frame-trim-hi); stroke-width: 2; }
+.rose-disc { fill: var(--frame-bg); stroke: var(--frame-trim-hi); stroke-width: 1; }
+.rose-letter { fill: none; stroke: var(--frame-head); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.effects { position: absolute; right: 2.5vw; top: calc(3.5vh + var(--mm) + 1.6rem); margin: 0; padding: 0; list-style: none;
   display: flex; flex-direction: column; align-items: flex-end; gap: var(--s1); }
 .fx { display: flex; align-items: center; gap: var(--s2); padding: 0.05rem var(--s2) 0.05rem 0.1rem; }
 .medal { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;

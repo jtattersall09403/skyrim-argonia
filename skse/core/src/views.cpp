@@ -123,13 +123,46 @@ std::string chart_layout_text(const msg::ChartView& v) {
   return t ? *t : std::string();
 }
 
-msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v) {
+msg::ChartState chart_state(const chart::Discovered& d, const msg::ChartView& v, std::vector<msg::ChartPlace> places,
+                            std::optional<msg::ChartPlayer> player) {
   msg::ChartState s;
   s.worldspace = "argonia";
   s.sketch = "chart.sketch";
   for (const auto& c : chart::cells(d)) s.revealed.push_back({c.x, c.y});
+  s.places = std::move(places);
+  s.player = player;
   s.view = v;
   return s;
+}
+
+std::optional<msg::ChartPlace> chart_place(std::uint32_t form_id, std::string_view name, std::uint8_t flags,
+                                           std::uint16_t type, double x_units, double y_units) {
+  const auto kind = chart::marker_kind(type);
+  if (!chart::marker_discovered(flags) || kind.empty() || name.empty()) return std::nullopt;
+  char id[9];
+  std::snprintf(id, sizeof id, "%08X", form_id);
+  const auto p = chart::cell_units(x_units, y_units);
+  const auto r = [](double n) { return std::round(n * 1000) / 1000; };
+  return msg::ChartPlace{id, std::string(name), std::string(kind), r(p.x), r(p.y)};
+}
+
+msg::ChartPlayer chart_player(double x_units, double y_units, double angle_z) {
+  const auto p = chart::cell_units(x_units, y_units);
+  const auto r = [](double n) { return std::round(n * 1000) / 1000; };
+  const double h = std::round(chart::heading_deg(angle_z) * 10) / 10;
+  return {r(p.x), r(p.y), h >= 360 ? 0 : h};
+}
+
+msg::HudMinimap minimap(const chart::Discovered& d, const std::vector<msg::ChartPlace>& places,
+                        std::optional<msg::ChartPlayer> player) {
+  msg::HudMinimap m;
+  if (!player) return m;
+  m.map.player = player;
+  const chart::Point at{player->x, player->y};
+  for (const auto& c : chart::near(d, at)) m.map.revealed.push_back({c.x, c.y});
+  for (const auto& p : places)
+    if (chart::within(at, {p.x, p.y})) m.map.places.push_back(p);
+  return m;
 }
 
 // --- the journal -------------------------------------------------------------------------------------------------

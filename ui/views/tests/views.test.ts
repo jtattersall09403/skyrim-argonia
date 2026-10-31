@@ -11,7 +11,8 @@ import {
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
-import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
+import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, toward, transform, ZOOM_MAX } from "../chart/geom.ts";
+import { discTransform, onDisc, REACH } from "../hud/minimap.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
 import { barLength, isLow, remember, render as hud, renderBars } from "../hud/render.ts";
@@ -30,6 +31,7 @@ function renders(screen: string, m: PushMessage): string[] {
     case "journal.state": return [journal(m.body)];
     case "hud.state": return [hud(m.body)];
     case "hud.bars": return [renderBars(m.body.bars)];
+    case "hud.minimap": return [];   // drawn on a canvas (minimap.ts); its geometry is tested below
     case "chart.state": return [chart(m.body)];
     case "sitting.state": return [sitting(m.body)];
   }
@@ -115,8 +117,11 @@ test("each view shows what the push carried", () => {
   for (const [name, m] of Object.entries(fx("chart").states)) {
     const s = (m as { body: ChartState }).body;
     const html = chart(s);
-    for (const p of s.places) assert.equal(html.includes(`data-place="${p.id}"`), p.discovered, `${name}: ${p.id}`);
-    assert.doesNotMatch(html, /player|marker/i, `${name}: no player marker (C9)`);
+    // Every pushed place is a discovered one and has its marker; nothing else is marked; no place travels.
+    assert.equal((html.match(/class="place"/g) ?? []).length, s.places.length, `${name}: one marker per discovered place`);
+    for (const p of s.places) assert.ok(html.includes(`data-place="${p.id}"`) && html.includes('class="pin"'), `${name}: ${p.id}`);
+    assert.equal(html.includes("data-player"), s.player !== undefined, `${name}: the player's marker`);
+    assert.doesNotMatch(html, /travel|quest/i, `${name}: no fast travel, no quest marker`);
   }
 });
 
@@ -204,10 +209,27 @@ test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoo
   assert.deepEqual(unknown, ["9,9"]);
   const v = { centreX: 0, centreY: 0, zoom: 1 };
   const t = transform(ix, v, 400, 200);
-  assert.equal(t.scale, 2);  // zoom 1 covers: the 400-wide sheet shows the 200 px canvas at 2x, no blank sides
-  assert.ok(t.tx <= 0 && t.tx + 200 * t.scale >= 400);
+  // zoom 1 contains: the whole 200 px canvas in the 200-tall sheet, top to bottom, nothing cut off (play test 1 item 9)
+  assert.equal(t.scale, 1);
+  assert.ok(t.ty === 0 && t.ty + 200 * t.scale <= 200 && t.tx === 100);
+  const tall = transform(ix, v, 300, 900);
+  assert.ok(tall.tx === 0 && tall.tx + 200 * tall.scale <= 300, "a tall sheet: the canvas fits its width");
   const far = pan(ix, v, 400, 200, 1e6, -1e6, 1000);
-  assert.equal(far.zoom, 16);
+  assert.equal(far.zoom, ZOOM_MAX);
+  // Zooming in goes to the player; out keeps the centre and stops at the whole province.
+  const me = { x: 1.5, y: -1, heading: 90 };
+  assert.deepEqual(toward(v, me, 1.5), { centreX: 1.5, centreY: -1, zoom: 1.5 });
+  assert.deepEqual(toward({ centreX: 1.5, centreY: -1, zoom: 1.2 }, me, 1 / 1.5), { centreX: 1.5, centreY: -1, zoom: 1 });
+  assert.deepEqual(toward(v, undefined, 2), { ...v, zoom: 2 });
+  // The minimap: the player at the disc's centre, the disc spans 2 * REACH cells, north turns with the heading.
+  const dt = discTransform(ix, { x: 0, y: 0, heading: 0 }, 100);
+  assert.equal(dt.scale, 100 / (2 * REACH * 32));
+  const north = { x: 0, y: 2 }, east = { x: 2, y: 0 };
+  const n0 = onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, north)!;
+  assert.ok(Math.abs(n0[0] - 50) < 1e-9 && n0[1] < 50, "facing north, north is up");
+  const e90 = onDisc(ix, { x: 0, y: 0, heading: 90 }, 100, east)!;
+  assert.ok(Math.abs(e90[0] - 50) < 1e-9 && e90[1] < 50, "facing east, east is up");
+  assert.equal(onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, { x: REACH + 1, y: 0 }), null, "past the rim");
   const [px, py] = toPx(ix, far.centreX, far.centreY);
   assert.ok(px >= 0 && px <= 200 && py >= 0 && py <= 200);
   ok(panIntent(pan(ix, v, 400, 200, 30, 10, 1.5)), "pan");
