@@ -41,7 +41,7 @@ Code read at a54c614. Stills read by a `reader`, not by this lane.
 - Cause: the wake task restores AVs to `GetPermanentActorValue` and sends `NotifyAnimationGraph("BleedoutStop")`, marked UNVERIFIED (skse/ArgoniaCore/src/life.cpp:316-320). The life state stays kBleedout. After `forceav health 5`, the permanent value is also the forced low base.
 - **Fix (code, life.cpp wake task, before `ResetActors`):**
   ```cpp
-  p->AsActorValueOwner()->ForceActorValue? -> no: use RestoreActorValue to the BASE: avo->GetBaseActorValue(av) (and clear the forced modifier: avo->SetActorValue? see note)
+  // restore to full: avo->RestoreActorValue(av, avo->GetPermanentActorValue(av)) stays (after the check fix below)
   if (p->AsActorState()->IsBleedingOut()) { p->SetLifeState(RE::ACTOR_LIFE_STATE::kAlive); p->NotifyAnimationGraph("BleedOutStop"); }
   SKSE::log::info("death: bleedout {}", p->AsActorState()->IsBleedingOut() ? "STILL ON" : "ended");
   ```
