@@ -964,7 +964,7 @@ def cmd_push(a):
     run("put", str(ini), "C:/argonia/MO2/ModOrganizer.ini")
     (out / "portable.txt").write_text("")
     run("put", str(out / "portable.txt"), "C:/argonia/MO2/portable.txt")
-    for f in ("housecarl.ps1", "skylink.ps1", "pad.ps1"):
+    for f in ("housecarl.ps1", "skylink.ps1", "pad.ps1", "padhost.ps1"):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")
     for f in ("stack.ps1", "grab.ps1", "splash.ps1", "display.ps1"):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")

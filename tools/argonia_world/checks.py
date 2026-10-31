@@ -163,3 +163,25 @@ def respawn_clearable(w) -> list[str]:
             for r in w.query("SELECT s.npc_id, s.respawn, n.home_place_id FROM npc_statblock s "
                              "JOIN npc n ON n.id = s.npc_id JOIN place_build_hostility h ON h.place_id = n.home_place_id "
                              "WHERE h.clearable = 1 AND s.respawn NOT IN ('untilCleared', 'never') ORDER BY 1")]
+
+
+ACTIVATOR_CLEARANCE_M = 1.2  # an activator nearer than this to another thing loses the crosshair to it (diag6 3)
+
+
+@check("activator-clearance", "build_ref")
+def activator_clearance(w) -> list[str]:
+    """In one cell, an activator ref (base ARG_ACTI_*) sits at least 1.2 m from every other ref the player activates
+    (a thing's ref): the LF83 mortar tub 0.9 m inside the well head took E for the well (diag6 3)."""
+    import math
+    refs = w.query("SELECT id, cell_id, base, x_m, y_m FROM build_ref WHERE thing_id IS NOT NULL "
+                   "AND x_m IS NOT NULL AND y_m IS NOT NULL ORDER BY cell_id, id")
+    out = []
+    for i, a in enumerate(refs):
+        for b in refs[i + 1:]:
+            if a[1] != b[1] or not any((r[2] or "").startswith("ARG_ACTI_") for r in (a, b)):
+                continue
+            d = math.hypot(a[3] - b[3], a[4] - b[4])
+            if d < ACTIVATOR_CLEARANCE_M:
+                out.append(f"build_ref {a[0]} and {b[0]}: {d:.2f} m apart in {a[1]}; an activator needs "
+                           f"{ACTIVATOR_CLEARANCE_M} m")
+    return out

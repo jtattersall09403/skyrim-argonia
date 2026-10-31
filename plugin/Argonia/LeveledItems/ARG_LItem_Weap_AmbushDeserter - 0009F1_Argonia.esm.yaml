@@ -1,0 +1,7 @@
+FormKey: 0009F1:Argonia.esm
+EditorID: ARG_LItem_Weap_AmbushDeserter
+Entries:
+- Data:
+    Level: 1
+    Reference: 000840:Argonia.esm
+    Count: 1

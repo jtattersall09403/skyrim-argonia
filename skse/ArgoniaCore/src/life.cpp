@@ -149,6 +149,7 @@ ac::life::Roster RosterNow() {
 // (template drops only, 76 §126), then back to its placement. Only roster actors are touched: never containers, so
 // placed treasure never refills, and never a `never` actor (the core rule leaves them out of `ids`).
 void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
+  std::size_t reset = 0;
   for (auto id : ids) {
     auto* a = RE::TESForm::LookupByID<RE::Actor>(id);
     if (!a) continue;
@@ -156,6 +157,7 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
       SKSE::log::info("respawn: {:08X} is disabled; not reset", id);
       continue;
     }
+    ++reset;
     if (a->IsDead()) a->Resurrect(true, true);  // (resetInventory, attach3D)
     else {  // a living roster actor is reset too: whole again, wherever the fight left it
       auto* avo = a->AsActorValueOwner();
@@ -175,7 +177,7 @@ void ResetActors(const std::vector<ac::respawn::ActorId>& ids) {
     } else
       SKSE::log::warn("respawn: {:08X} has no editor location; left where it stands", id);
   }
-  if (!ids.empty()) SKSE::log::info("respawn: {} actors reset", ids.size());
+  if (!ids.empty()) SKSE::log::info("respawn: {} of {} actors reset", reset, ids.size());
 }
 
 // --- saving ---------------------------------------------------------------------------------------------------
@@ -317,7 +319,15 @@ void OnDeathSurface(ac::router::SurfaceId) {
     auto* avo = p->AsActorValueOwner();
     for (auto av : {RE::ActorValue::kHealth, RE::ActorValue::kStamina, RE::ActorValue::kMagicka})
       avo->RestoreActorValue(av, avo->GetPermanentActorValue(av));
-    p->NotifyAnimationGraph("BleedoutStop");  // UNVERIFIED: the essential player's bleedout ends (S17a)
+    // The graph event alone left the life state at bleedout (diag6 4: the player woke unable to act); the engine's
+    // own way is the life state back to alive, then the graph out of its bleedout idle. The log line is the check.
+    if (auto* st = p->AsActorState(); st && st->IsBleedingOut()) {
+      p->SetLifeState(RE::ACTOR_LIFE_STATE::kAlive);
+      p->NotifyAnimationGraph("BleedOutStop");
+      avo->RestoreActorValue(RE::ActorValue::kHealth, avo->GetPermanentActorValue(RE::ActorValue::kHealth));
+      SKSE::log::info("death: bleedout {}", p->AsActorState()->IsBleedingOut() ? "STILL ON" : "ended");
+    } else
+      SKSE::log::info("death: bleedout ended (not bleeding out at the wake)");
     ResetActors(d.reset);
     c.health.clear();
     c.dying = false;

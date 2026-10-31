@@ -9,11 +9,12 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 393> kForms{{
+inline constexpr std::array<FormRow, 394> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"class.marsh-guide", "Argonia.esm", "CLAS", 0x000806},
     {"climate.black-marsh", "Argonia.esm", "CLMT", 0x000813},
     {"combat-style.melee-ambush", "Argonia.esm", "CSTY", 0x0009C5},
+    {"combat-style.sword-and-shield", "Argonia.esm", "CSTY", 0x0009F0},
     {"combat.carriers", "Argonia.esm", "PERK", 0x000855},
     {"creature-at.imperial-fringe.claywater-station.eco-crocodile", "Argonia.esm", "NPC_", 0x000876},
     {"death.vastei-pile", "Argonia.esm", "ACTI", 0x000860},

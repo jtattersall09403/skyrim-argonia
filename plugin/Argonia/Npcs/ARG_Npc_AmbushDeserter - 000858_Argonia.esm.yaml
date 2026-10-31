@@ -18,13 +18,7 @@ Perks:
 - Perk: 000856:Argonia.esm
   Rank: 1
   Fluff: 0x000000
-Items:
-- Item:
-    Item: 000840:Argonia.esm
-    Count: 1
-- Item:
-    Item: 00084E:Argonia.esm
-    Count: 1
+Items: []
 AIData:
   Aggression: VeryAggressive
   Confidence: Foolhardy
@@ -107,5 +101,7 @@ PlayerSkills:
     Value: 0
   - Key: Enchanting
     Value: 0
+CombatStyle: 0009F0:Argonia.esm
 Height: 1
 Weight: 50
+DefaultOutfit: 0009EF:Argonia.esm

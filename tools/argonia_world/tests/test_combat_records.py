@@ -84,5 +84,8 @@ def test_archetype_records(w):
     assert by["ECZN"]["minLevel"] == by["ECZN"]["maxLevel"] == 10  # soul contract C14
     npc = by["NPC_"]
     assert npc["level"] == 10 and npc["healthOffset"] == round(44.5 - 50)
-    assert npc["templateFlags"] == ["Traits"] and len(npc["items"]) == 2
+    assert npc["templateFlags"] == ["Traits"] and npc["items"] == []
+    # armed at spawn: the kit is the default outfit, equipped by the engine (diag6 6), and a humanoid combat style
+    assert npc["outfit"] == by["OTFT"]["formKey"] and len(by["OTFT"]["items"]) == 2
+    assert npc["combatStyle"] == by["CSTY"]["formKey"] and by["CSTY"]["edid"] == "ARG_CSTY_SwordAndShield"
     assert npc["perks"] == [by["PERK"]["formKey"]]

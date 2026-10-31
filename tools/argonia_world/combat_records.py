@@ -118,17 +118,36 @@ def archetype_records(alloc: Allocator, world, npc_id: str) -> list[dict]:
         edid = f"ARG_Armo_{items_records.slug(it.set)}_{items_records.slug(slot.id)}"
         shield = next(r for r in items_records.armour_set_records(alloc, world, it.set) if r["edid"] == edid)
         items.append(shield["formKey"])
+    # The kit is the default outfit, so the engine equips it at spawn and again at each reset (diag6 6: the deserter
+    # carried his sword and shield in Items, unequipped, and fought bare-handed).
+    # An OTFT holds armour and levelled lists only (vanilla's outfits carry their weapon in an LVLI), so the weapon
+    # goes in through a one-entry list.
+    lvli_edid = f"ARG_LItem_Weap_{base}"
+    lvli = {"type": "LVLI", "edid": lvli_edid, "formKey": alloc.form_key(lvli_edid, "LVLI", f"{npc_id}#weapon"),
+            "flags": [], "chanceNone": 0, "entries": [{"item": weapon, "level": 1, "count": 1}]}
+    otft_edid = f"ARG_Otft_{base}"
+    otft = {"type": "OTFT", "edid": otft_edid, "formKey": alloc.form_key(otft_edid, "OTFT", f"{npc_id}#outfit"),
+            "items": [lvli["formKey"], *items[1:]]}
+    style = combat_style(alloc, "sword-and-shield" if arch.shield else "melee-duel")
     ffa = world.get("npc_fight_flee_alarm", npc_id)
     rec = {"type": "NPC_", "edid": npc_edid, "formKey": alloc.form_key(npc_edid, "NPC_", npc_id), "name": npc.name,
            "race": arch.race_form, "template": arch.face_template, "templateFlags": ["Traits"],
            "class": _studio_class(alloc), "female": npc.sex == "female", "level": c["level"],
            "healthOffset": c["health_offset"], "aggression": "VeryAggressive" if ffa and ffa.fight >= 100 else "Aggressive",
            "confidence": "Foolhardy" if ffa and ffa.flee == 0 else "Average",
-           "height": su.NPC_DEFAULT_HEIGHT, "weight": su.NPC_DEFAULT_WEIGHT, "perks": [perk["formKey"]], "items": [{"item": i, "count": 1} for i in items]}
+           "height": su.NPC_DEFAULT_HEIGHT, "weight": su.NPC_DEFAULT_WEIGHT, "perks": [perk["formKey"]], "items": [],
+           "outfit": otft["formKey"], "combatStyle": style["formKey"]}
     from tools.argonia_world.place_build import respawns
     if respawns(world, npc_id):
         rec["flags"] = ["Respawn"]
-    return [perk, ecz, rec]
+    return [perk, ecz, lvli, otft, style, rec]
+
+
+def combat_style(alloc: Allocator, name: str) -> dict:
+    """Our CSTY `name` (place_build.COMBAT_STYLES), the record one archetype or many share."""
+    from tools.argonia_world.place_build import COMBAT_STYLES
+    cs = COMBAT_STYLES[name]
+    return {"type": "CSTY", "formKey": alloc.form_key(cs["edid"], "CSTY", "combat-style." + name), **cs}
 
 
 def home_clearable(world, npc_id: str) -> bool:
@@ -140,6 +159,12 @@ def home_clearable(world, npc_id: str) -> bool:
 
 def layer(alloc: Allocator, world) -> Layer:
     recs = [carrier_perk(alloc, world)]
+    seen = set()
     for a in world.rows("combat_archetype"):
-        recs += archetype_records(alloc, world, a.npc_id)
+        for r in archetype_records(alloc, world, a.npc_id):
+            if r["type"] == "CSTY":
+                if r["edid"] in seen:
+                    continue
+                seen.add(r["edid"])
+            recs.append(r)
     return Layer("base:combat", recs)

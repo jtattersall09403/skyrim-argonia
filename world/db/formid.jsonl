@@ -45,6 +45,7 @@
 {"editor_id":"ARG_Booth_Floor2","plugin":"Argonia.esm","form_id":2407,"record_type":"REFR"}
 {"editor_id":"ARG_Booth_Floor3","plugin":"Argonia.esm","form_id":2408,"record_type":"REFR"}
 {"editor_id":"ARG_CSTY_MeleeAmbush","plugin":"Argonia.esm","form_id":2501,"record_type":"CSTY","entity_key":"combat-style.melee-ambush"}
+{"editor_id":"ARG_CSTY_SwordAndShield","plugin":"Argonia.esm","form_id":2544,"record_type":"CSTY","entity_key":"combat-style.sword-and-shield"}
 {"editor_id":"ARG_CampSpot","plugin":"Argonia.esm","form_id":2143,"record_type":"ACTI","entity_key":"rest.camp-spot"}
 {"editor_id":"ARG_Class_marsh_guide","plugin":"Argonia.esm","form_id":2054,"record_type":"CLAS","entity_key":"class.marsh-guide"}
 {"editor_id":"ARG_Climate_black_marsh","plugin":"Argonia.esm","form_id":2067,"record_type":"CLMT","entity_key":"climate.black-marsh"}
@@ -61,6 +62,7 @@
 {"editor_id":"ARG_ImageSpace_marsh_mist","plugin":"Argonia.esm","form_id":2060,"record_type":"IMGS","entity_key":"image_space.mist"}
 {"editor_id":"ARG_ImageSpace_marsh_night","plugin":"Argonia.esm","form_id":2061,"record_type":"IMGS","entity_key":"image_space.night"}
 {"editor_id":"ARG_ImageSpace_marsh_storm","plugin":"Argonia.esm","form_id":2062,"record_type":"IMGS","entity_key":"image_space.storm"}
+{"editor_id":"ARG_LItem_Weap_AmbushDeserter","plugin":"Argonia.esm","form_id":2545,"record_type":"LVLI","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter#weapon"}
 {"editor_id":"ARG_LocType_Clearable","plugin":"Argonia.esm","form_id":2503,"record_type":"KYWD","entity_key":"hook.loc-clearable"}
 {"editor_id":"ARG_LocType_Dungeon","plugin":"Argonia.esm","form_id":2140,"record_type":"KYWD","entity_key":"hook.loc-dungeon"}
 {"editor_id":"ARG_LocType_Settlement","plugin":"Argonia.esm","form_id":2139,"record_type":"KYWD","entity_key":"hook.loc-settlement"}
@@ -89,6 +91,7 @@
 {"editor_id":"ARG_Npc_WellKeeper","plugin":"Argonia.esm","form_id":2182,"record_type":"NPC_","entity_key":"npc.imperial-fringe.claywater-station.well-keeper"}
 {"editor_id":"ARG_Npc_WellKeeper_Day0","plugin":"Argonia.esm","form_id":2180,"record_type":"PACK","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#work:0"}
 {"editor_id":"ARG_Npc_WellKeeper_Sleep","plugin":"Argonia.esm","form_id":2181,"record_type":"PACK","entity_key":"npc.imperial-fringe.claywater-station.well-keeper#sleep"}
+{"editor_id":"ARG_Otft_AmbushDeserter","plugin":"Argonia.esm","form_id":2543,"record_type":"OTFT","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter#outfit"}
 {"editor_id":"ARG_PG_DoorA","plugin":"Argonia.esm","form_id":2385,"record_type":"REFR"}
 {"editor_id":"ARG_PG_DoorAMarker","plugin":"Argonia.esm","form_id":2395,"record_type":"REFR"}
 {"editor_id":"ARG_PG_DoorB","plugin":"Argonia.esm","form_id":2386,"record_type":"REFR"}

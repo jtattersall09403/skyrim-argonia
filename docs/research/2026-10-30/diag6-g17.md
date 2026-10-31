@@ -74,3 +74,10 @@ Code read at a54c614. Stills read by a `reader`, not by this lane.
 - **Fix (journey, tests/journeys/menus-quit.yaml):** open the Journal from the pad in play, in the same pad call as the presses: `pad: "START:80 wait:1500 DOWN:80 wait:120 ... (x8) A:120 wait:1500 A:120"` (START opens the Journal on System). Keep the Esc step as its own check of the Esc route.
 - **Fix (tool, optional):** a `-Warm` button in pad.ps1 that works in menus (for example LS click) in place of the RightThumbY nudge.
 - **Re-prove:** menus-quit from system-tab, with the system-tab still showing pad glyphs.
+
+## Fixes built (diag6-fix lane, 2026-10-31)
+- **4 bleedout:** the wake task ends a bleedout the engine's way (`SetLifeState(kAlive)`, `BleedOutStop`, health restored) and logs `death: bleedout ended` or `STILL ON` (skse/ArgoniaCore/src/life.cpp). The journey expect and the `damageav` setup are game-18's.
+- **6 unarmed enemies:** every combat archetype's kit is now a default outfit (OTFT `ARG_Otft_*`) with a combat style by kit (`ARG_CSTY_SwordAndShield` or `ARG_CSTY_MeleeDuel`; tools/argonia_world/combat_records.py, place_build.COMBAT_STYLES, ArgoniaGen CombatRecords.Outfit). L1: tools/argonia_world/tests/test_hostile_armed.py.
+- **3 mortar tub:** moved to (321.6, 3061.4), 1.6 m from the well head and clear of Livia's spot, the silt and the water. L1: the `activator-clearance` named check (tools/argonia_world/checks.py).
+- **7 pad:** infra/gpu-box/padhost.ps1 plugs one pad per game session and serves sequences on the pipe `argonia-pad`; pad.ps1 is its client and starts it on the first call. No unplug between calls.
+- **5 logs:** `respawn: N of M actors reset` counts only the reset; dev-grow says `not found or not loaded` or `is dead`.

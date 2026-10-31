@@ -5,58 +5,23 @@
 # AXIS=v[,AXIS=v]:ms holds sticks (LX LY RX RY, -1..1) then centres them, +AXIS=v[,...]:ms sets them and keeps them
 # set through the next steps (also +LT=1 / +RT=1 a held trigger and +LB=1 a held button: a bash or parry is L1/L2 held
 # while R1 taps), -:ms centres the sticks and releases every held trigger and button, wait:ms pauses. Each step prints a timestamped line, the
-# journey's event record. The client DLL is Nefarius.ViGEm.Client (MIT, NuGet 1.21.256) in C:\argonia\tools\vigem.
-param([Parameter(Mandatory)][string]$Seq, [int]$Settle = 1500)
+# journey's event record. The pad itself lives in padhost.ps1, plugged once per game session and never unplugged
+# between calls (diag6 7: a pad hot-plugged inside a paused menu never went live); this script starts the host if none
+# runs and sends it the sequence.
+param([Parameter(Mandatory)][string]$Seq)
 $ErrorActionPreference = 'Stop'
-Add-Type -Path 'C:\argonia\tools\vigem\Nefarius.ViGEm.Client.dll'
-$client = New-Object Nefarius.ViGEm.Client.ViGEmClient
-$pad = $client.CreateXbox360Controller()
-$pad.Connect()
-Start-Sleep -Milliseconds $Settle   # the game notices a new pad on its next poll
-# Each call is a fresh hot-plug: the game's first read of a new pad only switches it to the pad, so a short first
-# press (RB to draw) was lost (diag3-g15). A small right-stick nudge does the switch before the sequence.
-$pad.SetAxisValue([Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbY, 6000); Start-Sleep -Milliseconds 120
-$pad.SetAxisValue([Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbY, 0); Start-Sleep -Milliseconds 300
-$B = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Button]
-$names = @{ A = $B::A; B = $B::B; X = $B::X; Y = $B::Y; LB = $B::LeftShoulder; RB = $B::RightShoulder; LS = $B::LeftThumb;
-            RS = $B::RightThumb; START = $B::Start; BACK = $B::Back; UP = $B::Up; DOWN = $B::Down; LEFT = $B::Left; RIGHT = $B::Right }
-$axes = @{ LX = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::LeftThumbX; LY = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::LeftThumbY
-           RX = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbX; RY = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Axis]::RightThumbY }
-$sl = [Nefarius.ViGEm.Client.Targets.Xbox360.Xbox360Slider]
-$held = @()
+function Open([int]$ms) {
+  $c = New-Object System.IO.Pipes.NamedPipeClientStream('.', 'argonia-pad', [System.IO.Pipes.PipeDirection]::InOut)
+  try { $c.Connect($ms); return $c } catch { $c.Dispose(); return $null }
+}
+$c = Open 300
+if (-not $c) {
+  Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy Bypass -File C:\argonia\infra\padhost.ps1'
+  $c = Open 15000
+  if (-not $c) { throw 'pad: the pad host did not come up in 15 s' }
+}
 try {
-  foreach ($step in ($Seq -split '\s+' | ? { $_ })) {
-    $what, $ms = $step -split ':', 2; $ms = [int]$ms
-    "$((Get-Date).ToString('HH:mm:ss.fff')) $step"
-    if ($what -eq 'wait') { Start-Sleep -Milliseconds $ms; continue }
-    if ($what -in 'LT', 'RT') {
-      $s = if ($what -eq 'LT') { $sl::LeftTrigger } else { $sl::RightTrigger }
-      $pad.SetSliderValue($s, 255); Start-Sleep -Milliseconds $ms; $pad.SetSliderValue($s, 0); continue
-    }
-    if ($what -eq '-') {
-      foreach ($k in $axes.Keys) { $pad.SetAxisValue($axes[$k], 0) }
-      $pad.SetSliderValue($sl::LeftTrigger, 0); $pad.SetSliderValue($sl::RightTrigger, 0)
-      foreach ($n in $held) { $pad.SetButtonState($names[$n], $false) }; $held = @()
-      Start-Sleep -Milliseconds $ms; continue
-    }
-    if ($what.StartsWith('+')) {   # sticks held across the following steps (a roll's direction while B is tapped)
-      foreach ($a in ($what.Substring(1) -split ',')) {
-        $k, $v = $a -split '='
-        if ($k -eq 'LT') { $pad.SetSliderValue($sl::LeftTrigger, [byte]([double]$v * 255)) }
-        elseif ($k -eq 'RT') { $pad.SetSliderValue($sl::RightTrigger, [byte]([double]$v * 255)) }
-        elseif ($names.ContainsKey($k)) { $pad.SetButtonState($names[$k], [double]$v -ne 0); $held += $k }
-        else { $pad.SetAxisValue($axes[$k], [int16]([double]$v * 32767)) }
-      }
-      Start-Sleep -Milliseconds $ms; continue
-    }
-    if ($what -match '=') {
-      $set = $what -split ','
-      foreach ($a in $set) { $k, $v = $a -split '='; $pad.SetAxisValue($axes[$k], [int16]([double]$v * 32767)) }
-      Start-Sleep -Milliseconds $ms
-      foreach ($a in $set) { $k, $v = $a -split '='; $pad.SetAxisValue($axes[$k], 0) }
-      continue
-    }
-    $pad.SetButtonState($names[$what], $true); Start-Sleep -Milliseconds $ms; $pad.SetButtonState($names[$what], $false)
-  }
-  Start-Sleep -Milliseconds 300
-} finally { $pad.Disconnect(); $client.Dispose() }
+  $w = New-Object System.IO.StreamWriter($c); $w.AutoFlush = $true; $r = New-Object System.IO.StreamReader($c)
+  $w.WriteLine($Seq)
+  while (($ln = $r.ReadLine()) -ne $null -and $ln -ne 'END') { $ln }
+} finally { $c.Dispose() }

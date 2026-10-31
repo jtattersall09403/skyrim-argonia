@@ -97,3 +97,9 @@ def test_season_is(w):
     w.update("condition_arg", cid, 0, value="wet-peak")
     errs = checks.run(w, ["season-is"])
     assert len(errs) == 1 and "'wet-peak' is not a season row" in errs[0]
+
+
+def test_activator_clearance(w):
+    w.update("build_ref", "ref.claywater-station.mortar-tub", x_m=323.6, y_m=3061.5)  # diag6 3: 0.9 m off the well
+    errs = checks.run(w, ["activator-clearance"])
+    assert any("ref.claywater-station.mortar-tub" in e and "ref.claywater-station.well:" in e for e in errs)

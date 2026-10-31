@@ -52,7 +52,7 @@ static class Generate
                 case "ALCH": ItemWriters.Write(mod, r); break;
                 case "PERK": PerkRecords.Write(mod, r); break;
                 case "PACK": PackageRecords.Write(mod, r, data); break;
-                case "NPC_" or "ECZN": CombatRecords.Write(mod, r); break;
+                case "NPC_" or "ECZN" or "OTFT": CombatRecords.Write(mod, r); break;
                 case "ACTI" or "GMST" or "LCTN": ActivatorRecords.Write(mod, r); break;
                 case "RACE" or "CSTY": RaceRecords.Write(mod, r, data); break;
                 case "FACT" or "MESG": SocialRecords.Write(mod, r); break;

@@ -27,6 +27,7 @@ static class CombatRecords
         {
             case "NPC_": Npc(mod, r); break;
             case "ECZN": Zone(mod, r); break;
+            case "OTFT": Outfit(mod, r); break;
             default: throw new InvalidDataException($"CombatRecords: {S(r, "type")}");
         }
     }
@@ -39,6 +40,17 @@ static class CombatRecords
         {
             EditorID = S(r, "edid"), MinLevel = (byte)I(r, "minLevel"), MaxLevel = (byte)I(r, "maxLevel"), Flags = flags,
         });
+    }
+
+    // OTFT: an archetype's kit as its default outfit, so the engine equips it at spawn and at each reset.
+    static void Outfit(SkyrimMod mod, JsonElement r)
+    {
+        var o = new Outfit(FK(S(r, "formKey")), Rel)
+        {
+            EditorID = S(r, "edid"), Items = new ExtendedList<IFormLinkGetter<IOutfitTargetGetter>>(),
+        };
+        foreach (var i in A(r, "items")) o.Items.Add(new FormLink<IOutfitTargetGetter>(FK(i.GetString()!)));
+        mod.Outfits.Add(o);
     }
 
     static void Npc(SkyrimMod mod, JsonElement r)

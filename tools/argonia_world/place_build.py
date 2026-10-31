@@ -56,6 +56,16 @@ COMBAT_STYLES = {
                      "avoidThreat": 0.2, "attackStaggered": 3.0, "powerAttackStaggered": 2.0,
                      "powerAttackBlocking": 2.5, "circle": 0.0, "fallback": 0.25, "flankDistance": 0.2,
                      "stalkTime": 0.3, "longRangeStrafe": 0.0, "flags": ["Dueling"]},
+    # A generated humanoid enemy (combat_records; diag6 6: the deserter had none). sword-and-shield: blocks and waits
+    # for an opening, presses a staggered target; melee-duel: one weapon, closes and trades. Our own numbers.
+    "sword-and-shield": {"edid": "ARG_CSTY_SwordAndShield", "offensive": 0.5, "defensive": 0.6, "groupOffensive": 0.5,
+                         "avoidThreat": 0.4, "attackStaggered": 2.0, "powerAttackStaggered": 1.5,
+                         "powerAttackBlocking": 1.0, "circle": 0.3, "fallback": 0.3, "flankDistance": 0.4,
+                         "stalkTime": 0.5, "longRangeStrafe": 0.0, "flags": ["Dueling"]},
+    "melee-duel": {"edid": "ARG_CSTY_MeleeDuel", "offensive": 0.7, "defensive": 0.3, "groupOffensive": 0.6,
+                   "avoidThreat": 0.3, "attackStaggered": 2.5, "powerAttackStaggered": 2.0,
+                   "powerAttackBlocking": 2.0, "circle": 0.2, "fallback": 0.2, "flankDistance": 0.3,
+                   "stalkTime": 0.4, "longRangeStrafe": 0.0, "flags": ["Dueling"]},
 }
 # A settlement's crime faction (lane w3-infra): the settlement faction seated at the place (place_faction_presence role
 # 'seat'), crime tracked, hidden from the player; its crime values are the Owing of the place's region in gold

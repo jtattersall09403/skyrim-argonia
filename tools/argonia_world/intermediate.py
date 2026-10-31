@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "LCTN", "WEAP", "ARMA", "ARMO", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "LCTN", "WEAP", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass

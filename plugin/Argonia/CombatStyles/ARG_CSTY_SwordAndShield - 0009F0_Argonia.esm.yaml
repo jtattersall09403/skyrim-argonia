@@ -1,0 +1,22 @@
+FormKey: 0009F0:Argonia.esm
+EditorID: ARG_CSTY_SwordAndShield
+OffensiveMult: 0.5
+DefensiveMult: 0.6
+GroupOffensiveMult: 0.5
+EquipmentScoreMultMelee: 1
+EquipmentScoreMultMagic: 1
+EquipmentScoreMultRanged: 1
+EquipmentScoreMultShout: 1
+EquipmentScoreMultUnarmed: 1
+EquipmentScoreMultStaff: 1
+AvoidThreatChance: 0.4
+Melee:
+  AttackStaggeredMult: 2
+  PowerAttackStaggeredMult: 1.5
+  PowerAttackBlockingMult: 1
+CloseRange:
+  CircleMult: 0.3
+  FallbackMult: 0.3
+  FlankDistance: 0.4
+  StalkTime: 0.5
+LongRangeStrafeMult: 0
