@@ -70,6 +70,11 @@ case "${1:-}" in
   machine|stop) ;;
   *) open_ssh ;;
 esac
+# No address (no such machine in its region, or stopped with a public address) fails here by name, not as ssh's
+# "Could not resolve hostname none" (paris-card2, 2026-10-31).
+case "${1:-}" in
+  ps|put|get|desktop|setup) a=$(ip); [[ "$a" =~ ^[0-9]+(\.[0-9]+){3}$ ]] || { echo "run.sh: $M has no address in $R (got '$a'): not running, or not named so" >&2; exit 3; } ;;
+esac
 case "${1:-}" in
   machine) echo "$M $(id)" ;;
   ip) ip ;;
