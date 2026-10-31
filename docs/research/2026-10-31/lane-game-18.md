@@ -30,6 +30,23 @@ ViewProbe "<n> focus" keeps the dialogue focus.
 - xLODGen restore and a Claywater still; `stack.py verify` 0 bad (tk-dodge); touch B on the journal.
 - Vastei pile still: the take-pile still shows a flat tan slab at the feet, unclear (re-judge after the deploy-5 run).
 
+## Round 4 (g18d, deploy 5) and the stop
+- world-sample: s02 cliff and s07 lake-bank now pass; red at s07-coast-sea (`swimming` false). Swimming is base
+  Skyrim (owner), so 4b9eef3 reads z <= 1.5 m instead (not yet run).
+- die-and-recover: pile 51, then the deserter killed the woken player again 7 s later INSIDE the die step's 10 s wait,
+  and a 1.2-vastei pile replaced it (log 02:53:21-28). 0bb02fb drops the wait (not yet run).
+- menus-quit: RB RB from Quests still logged no quit save (still not read).
+- Deploy 6 (fb563bb esc-book) failed at the skse build: ssh broke because argonia-play was stopped
+  ("User initiated", 03:00:35 GMT) mid-deploy, not by this lane. It was restarted for the next lane.
+
 ## Next lane
-1. Diag/build: Esc does not close the dialogue view (real play). 2. Diag: BookMenu crash on the ledger.
-3. grow-at-rest ten-blows aim with the armed deserter; ui-sweep favourite set. 4. The owed list above.
+1. ONE deploy at origin/main (fb563bb esc-book, 0bb02fb, 4b9eef3 and later). The YAML that `make plugin` rewrites
+   (the worldspace RecordData.yaml probe markers) must be committed if it changes.
+2. Batch: ui-probe (talk to Livia, then Esc closes with a goodbye; then Tab and B the same), lf83-components
+   (the ledger read with no crash), die-and-recover (51 back; reader on the pile still), world-sample once,
+   menus-quit (read 05/06 stills: Quit highlighted?).
+3. grow-at-rest ten-blows: the crosshair never finds the armed deserter (02: beside the player, 03: out of frame).
+   Drive it live: the deserter's position and heading after `_face`, then decide (STRIKE_UNITS, or pitch).
+4. ui-sweep favourites: Q opens nothing in g18b/g18c (it passed in g18a). Favourite an item in the inventory first,
+   driven live and with stills; then the barter steps (Livia, c745ef3).
+5. Owed: xLODGen restore and a Claywater still; `stack.py verify` 0 bad (tk-dodge); touch B on the journal.
