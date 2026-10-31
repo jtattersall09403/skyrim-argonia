@@ -377,6 +377,7 @@ void PushHudState() {
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
   s.vastei = {std::int64_t(c.state.prog.vastei), std::nullopt};
+  c.hud_vastei = s.vastei.carried;
   s.prompt = g_prompt;
   if (s.visible) ac::journal::show(c.journal_notices, Now());
   else ac::journal::hide(c.journal_notices, Now());
@@ -418,6 +419,9 @@ void PushHudBars() {
   auto& c = Get();
   std::lock_guard l(c.lock);
   if (!g_api || c.view_host.modal()) return;
+  // Vastei rides only in the full state: earned, lost at death, taken back or set, the HUD showed the old count until
+  // the next load or menu (1.11 in game: 180 held, 0 shown). A change pushes the state; the view draws its +N cue.
+  if (std::int64_t(c.state.prog.vastei) != c.hud_vastei) return PushHudState();
   auto bars = Bars();
   if (bars == c.hud_bars) return;
   c.hud_bars = bars;

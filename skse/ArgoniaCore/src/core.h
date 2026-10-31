@@ -53,6 +53,7 @@ struct Core {
   ac::views::Host view_host;
   ac::views::KeyLatch journal_key;
   std::vector<ac::msg::Bar> hud_bars;
+  std::int64_t hud_vastei = -1;  // the vastei the HUD last showed: a change pushes the HUD state (1.11)
   ac::journal::Notices journal_notices;  // the "journal updated" notices (game-10 §2): when, in skse/core journal
 };
 Core& Get();
