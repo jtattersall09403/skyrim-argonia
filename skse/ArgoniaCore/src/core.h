@@ -118,6 +118,9 @@ bool SuspendSaveFor(std::string_view why);
 
 // --- combat.cpp: the carriers, the pinned weapon skills, the roll lock (1.6) -------------------------------------
 void CombatDataLoaded();
+
+// --- magic.cpp: dependency mods' forms restated at data load (1.12) ---------------------------------------------
+void MagicDataLoaded();
 // Recompute and write on the main thread; `why` names the change for the log.
 void WriteCombat(std::string_view why);
 // The armour pieces an actor wears (heavy and light; clothing and medium's missing marker skipped), with the

@@ -73,6 +73,7 @@ void OnDataLoaded() {
   plugin::ViewsDataLoaded();
   plugin::LifeDataLoaded();
   plugin::CombatDataLoaded();
+  plugin::MagicDataLoaded();
 }
 
 void OnGameReady(const char* how) {

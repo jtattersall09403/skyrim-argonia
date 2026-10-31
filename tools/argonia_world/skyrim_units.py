@@ -132,6 +132,10 @@ PLAYER_SKILL_AV = {
 SKYRIM_SKILLS = ("OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor",
                  "Pickpocket", "Lockpicking", "Sneak", "Alchemy", "Speech", "Alteration", "Conjuration",
                  "Destruction", "Illusion", "Restoration", "Enchanting")
+# A magic effect's magic skill (MGEF DATA): the five Skyrim schools an effect can name, the heading Wind UI lists it
+# under (its sixth heading, "Other", takes the rest: windui.md, lane-1.12-magic.md). Our school -> the actor value
+# is SKILL_AV; a school outside these (Mysticism) leaves the effect under the school its mod gave it.
+MAGIC_SCHOOL_AVS = ("Alteration", "Conjuration", "Destruction", "Illusion", "Restoration")
 CLAS_WEIGHT_MAJOR, CLAS_WEIGHT_MINOR = 3, 1  # CLAS skill weights: relative, levelled NPCs only
 CLAS_MAX_TRAINING = 50  # the CK's default training cap
 

@@ -332,6 +332,28 @@ def mirrors(w: db.World) -> str:
     return _wrap("mirrors", ["array", "string_view"], b)
 
 
+def magic(w: db.World) -> str:
+    """Dependency mods' forms restated at data load (1.12, lane-1.12-magic.md): from mod_form. Each row's school is
+    resolved to the Skyrim actor value its effect's magic skill takes (skyrim_units; empty: no Skyrim school carries
+    it, so the mod's own stands)."""
+    rows = w.query("SELECT * FROM mod_form ORDER BY id")
+    b = ["struct ModFormRow {",
+         "  std::uint32_t local_id;          // the FormID within its plugin (the light/full index is the loader's)",
+         "  std::string_view plugin;", "  std::string_view form_type;        // SPEL, MGEF, BOOK, ...",
+         "  std::string_view name;             // empty: keep the mod's", "  std::string_view description;      // empty: keep the mod's",
+         "  std::optional<SkillId> school;     // MGEF: the Morrowind school", "  std::string_view school_av;        // its Skyrim actor value; empty: none",
+         "};", f"inline constexpr std::array<ModFormRow, {len(rows)}> kModForms{{{{"]
+    for r in rows:
+        local, plugin = r["id"].split(":", 1)
+        av = su.SKILL_AV.get(r["school"]) if r["school"] else None
+        if av is not None and av not in su.MAGIC_SCHOOL_AVS:
+            raise SystemExit(f"mod_form {r['id']}: school {r['school']} maps to {av}, not a magic school")
+        b.append(f"    {{0x{local}, {sv(plugin)}, {sv(r['form_type'])}, {sv(r['name'])}, {sv(r['description'])}, "
+                 f"{opt(r['school'], lambda s: f'SkillId::{ident(s)}')}, {sv(av)}}},")
+    b.append("}};")
+    return _wrap("magic", ["array", "cstddef", "cstdint", "optional", "string_view", "argonia/core/tables_sheet.h"], b)
+
+
 def fixture_topics(w: db.World) -> str:
     from tools.argonia_world import topic_tables
     text = _wrap("fixture_topics", ["array", "cstddef", "cstdint", "string_view"], topic_tables.render(w))
@@ -342,7 +364,7 @@ def fixture_topics(w: db.World) -> str:
 def render(w: db.World) -> dict[str, str]:
     out = {f"tables_{h}.h": f(w) for h, f in (("sheet", sheet), ("progression", progression),
                                               ("conditions", conditions), ("actions", actions),
-                                              ("combat", combat))}
+                                              ("combat", combat), ("magic", magic))}
     out["tables_mirrors.h"] = mirrors(w)
     out["fixture_topics.h"] = fixture_topics(w)
     from tools.argonia_world import forms_table  # 1.1 adapters: world id -> FormID

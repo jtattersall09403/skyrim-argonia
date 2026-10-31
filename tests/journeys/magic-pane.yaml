@@ -1,0 +1,35 @@
+# 1.12-magic (L4): Magic Expanded as ArgoniaCore restates it at data load (lane-1.12-magic.md), in a real place.
+# The renames reach the game's own name lookup (help), the old Skyrim names are gone, and Wind UI's magic pane opens
+# over a spread of the mod's spells (still: the headings, Marsh Squall, Viperbolt under Destruction, Recall and Dispel
+# under the mod's Alteration and Restoration, no Mysticism heading: Wind UI's are fixed in its DLL).
+# Magic.esp loads light at FE:012 on argonia-play-ie (Recall FE012A8E). Setup adds the spells (a cheat for the kit);
+# the test reads names the pass set, never names it sets itself.
+id: magic-pane
+runner: 1
+crash_risk: low
+scene: claywater
+steps:
+  - name: kit                 # setup: Recall, Mark, Marsh Squall, Viperbolt, Dispel, Absorb Health, Conjure Ghost, Fire Bite
+    do:
+      - {console: "player.addspell FE012A8E"}
+      - {console: "player.addspell FE012A8C"}
+      - {console: "player.addspell FE012972"}
+      - {console: "player.addspell FE01291F"}
+      - {console: "player.addspell FE012991"}
+      - {console: "player.addspell FE012999"}
+      - {console: "player.addspell FE01281E"}
+      - {console: "player.addspell FE012A0A"}
+    expect:
+      - {console: "player.hasspell FE012972", contains: ">> 1"}
+  - name: renamed             # the shout and snowstorm names are restated; the mod's own text no longer answers
+    expect:
+      - {log: {name: ArgoniaCore, contains: "magic: 11 renamed, 3 described, 8 moved school, 0 missing"}}
+      - {console: 'help "Marsh Squall" 4', contains: "Marsh Squall"}
+      - {console: 'help "Whiteout" 4', not_contains: "Whiteout"}
+      - {console: 'help "Unrelenting Force" 4', not_contains: "Unrelenting"}
+  - name: pane                # Wind UI's magic window opens by the engine route
+    do: [{key: "P 150 engine"}]
+    expect:
+      - {event: {kind: menu, match: MagicMenu}}
+  - name: close
+    do: [{key: "P 150 engine"}]

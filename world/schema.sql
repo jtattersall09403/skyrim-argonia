@@ -5268,6 +5268,25 @@ CREATE TABLE "spell" (
   "id" TEXT NOT NULL PRIMARY KEY
 );
 
+-- Home of a form of a dependency mod (a player's own download, data/dependencies.json) that Argonia restates at data
+-- load without editing or mastering its plugin (1.12; decisions 0003, 0012): a reviewed name or description in our
+-- words where the mod's own carries a Skyrim tell, and for a magic effect the Morrowind school it belongs to. The id
+-- is the immersion inventory's row id ("<local FormID, 6 hex>:<plugin>"). ArgoniaCore applies the rows at data load
+-- (skse/core magic, from tables_magic.h); a school whose skill has no Skyrim actor value (Mysticism) is recorded but
+-- the effect stays under the school its mod gave it (docs/research/2026-10-31/lane-1.12-magic.md).
+CREATE TABLE "mod_form" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "dependency" TEXT NOT NULL,
+  "form_type" TEXT NOT NULL CHECK ("form_type" IN ('SPEL', 'MGEF', 'BOOK', 'SCRL', 'WEAP', 'ARMO', 'MESG')),
+  "name" TEXT,
+  "description" TEXT,
+  "school" TEXT REFERENCES "skill"("id"),
+  "why" TEXT NOT NULL,
+  CHECK ("school" IS NULL OR "form_type" = 'MGEF'),
+  CHECK ("description" IS NULL OR "form_type" IN ('MGEF', 'MESG')),
+  CHECK ("name" IS NOT NULL OR "description" IS NOT NULL OR "school" IS NOT NULL)
+);
+
 -- Home of a crafting recipe. Migrated by 2.10 from world/sources/economy/, registries/resource-nodes.json; until then a key only.
 CREATE TABLE "recipe" (
   "id" TEXT NOT NULL PRIMARY KEY
