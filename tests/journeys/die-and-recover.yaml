@@ -37,6 +37,9 @@ steps:
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
       - {log: {name: ArgoniaCore, contains: "death: bleedout ended"}, within: 10}   # logged with the wake, inside this step (g18b)
   - name: woke-at-camp
+    do:                         # the camp is 1.2 units from where he killed the player: out of the way, or he kills again
+      - {console: '"{opp}".stopcombat'}   # at once and the second pile (1 vastei) replaces the 51 (g18c log: took the pile back, 1)
+      - {console: '"{opp}".disable'}
     expect:
       - {read: [core, GetVastei], path: value, eq: 0}
       - {read: [core, WakePoint], path: value, eq: {kept: wake}}
@@ -57,6 +60,8 @@ steps:
       - {read: [core, PileState], path: value, eq: ""}
   - name: second-death        # the pile is dropped again: one pile in the form map
     do:
+      - {console: '"{opp}".moveto player 0 300 0'}
+      - {console: '"{opp}".enable'}
       - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
       - {console: '"{opp}".startcombat player'}
       - {wait: 10}
