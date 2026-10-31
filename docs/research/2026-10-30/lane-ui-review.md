@@ -51,3 +51,48 @@ Pending at writing: job uireview4 queued behind game-18's slot; its stills and t
   main-menu step) and the phone sizes in game (the #17 stream harness).
 - Open MAJOR outside views: Disposition 0 for every speaker (see the table).
 - Terminate the clone fully when done (instance, volume, spot request, alarm); note its hours. No clone launched yet.
+
+## Lane ui-review2 (2026-10-31, 01:00-03:40 UTC): in game on argonia-play-2
+
+Clone `argonia-play-2` (i-068ccffaa6e41b5d6, g4dn.xlarge spot, launched 00:50 UTC from ami-0e0653a8c139a7441) is
+**left running** for the next UI lane (coordinator's call). Data was bare: `stack.ps1 on` laid 22573 files. Deploy:
+origin/main c745ef3 (trader + disp-fix) plus round 1 (f1c81b7); its DLL also carries an unproven ShowHUDMessage
+deferral, reverted in the repo (see the book crash). About 2.8 h so far, ~$0.75 at $0.26/h.
+
+Clone lessons: the snapshot-backed volume is cold, so a far `moveto` holds the main thread past the bridge's 3 s;
+the journey now waits 6 s after each moveto. A fresh worktree needs `tooling/worktree.sh` (links out/), but a view
+change needs the worktree's **own** out/ui (`tools/ui_harness/build.py`), then `stack.py stage` + `push` **and a
+lay** (`stack.ps1 on`): push alone left Data's chart/main.js at 00:18 (the chart re-shoot showed the old fit).
+
+Stills (for the owner's packet), 1920x1080:
+- `/home/ubuntu/wt-uir2/out/runs/ui-review/20261031T030023/01..20-*.png`: round 2 (HUD-under-sheets and notice fixed)
+- `/home/ubuntu/wt-uir2/out/runs/ui-review-nobook/20261031T031415/20..23-*.png`: sitting, loading
+- `/home/ubuntu/wt-uir2/out/runs/ui-review2-title/25-main-menu.png`: the title
+(out/runs is per worktree; copy them to the main tree's out/runs before the worktree is removed.)
+
+| Screen | State after the readers |
+|---|---|
+| Dialogue (Takes, Livia) | **PASS** (two readers). Disposition reads 25 and 45 (disp-fix holds). Owed outside views: no Persuasion button, because `talk.cpp:201` leaves persuasion unavailable until 2.5. MINOR: keywords linked only in places; service topic ungrouped; empty space in both panes. |
+| HUD notice | **FIXED, PASS**: the notice was raised in the conversation (HUD hidden) and expired before play. Notices now stop ageing while our HUD is hidden (`journal::hide/show`, L2 test). |
+| HUD over sheets | **FIXED, PASS**: our bars and plaque sat over Barter, Inventory and Container. Fix: `router::covers_hud` (L2), HUD pushed on sheet open and close; the registry's `Container Menu`/`Barter Menu` corrected to the engine names. |
+| Activation prompt ("E Talk") | OPEN MAJOR: vanilla white text, no plate. Our prompt exists (hud render.ts) but is not fed; the crosshair row is "restyled". Route: feed our prompt and hide the vanilla rollover clip. |
+| Journal | PASS |
+| Chart | OPEN MAJOR, fix written and not yet seen: zoom 1 now covers the sheet (geom.ts; `make ui` green). The re-shoot ran the stale lay. Next: lay, then re-shoot. |
+| Barter (Livia) | Works (her stock, 300 gold). Same Dear Diary component as inventory and container. |
+| Inventory, container, barter | OPEN MAJOR (theme): list text ~10 px in a condensed face; red knot ornament between the names; tri-colour bars with <> caps. Route: SkyUI config font sizes plus retheme's watermark list, done as an install-time recipe (0014). Not views. |
+| Tween | OPEN MAJOR (theme): dark vanilla sheet, small sans date and level text, <> level bar, an empty plate under the sheet. |
+| Book | OPEN MAJOR, **crash**: 4 of 4 runs crash at the book or its close (SkyrimSE+0EDC8C8, null read; BookMenu and HUDMenu on the stack; it follows "things: ledger read sets flag.lf83.ledger-read"). Not the harness: TAB close crashes as close_menu did. Not the engine notice: deferring ShowHUDMessage did not help. ui-sweep's book passes, but its scene has not started LF83. Next: diagnose MeetThing's read hook under the BookMenu open event when LF83 is live. |
+| Sitting | PASS (MINOR: cost unit, low-contrast disabled Buy) |
+| Loading | NOT SEEN: the still caught play after the load. Next: a still within the Loading Menu event. |
+| Title | OPEN MAJOR (theme): menu words in Skyrim's condensed caps, ~16 px, dim. Title art passes (no map or wordmark). |
+| Phones (folded and unfolded) | NOT RUN (time). Steps are written: `infra/stream-client/e2e/steps/ui-review-phone.json`. Run with `ARGONIA_PLAY=argonia-play-2 ARGONIA_DEVICE=v5-folded\|v5-unfolded infra/stream-client/e2e/drive.sh`; quit the game between shapes, and Sunshine must be on (the clone recipe disables it). |
+
+Commits: f1c81b7 (round 1), plus this hand-off with the journey's book-close and book-wait fixes.
+
+Next steps, in order:
+1. Lay the views (`stack.ps1 on`), re-shoot the chart.
+2. The book crash (above).
+3. The activation prompt onto our plate.
+4. The theme majors (item-list size, knot, Tween, title font) as one install-time theme pass.
+5. The phone sizes; the loading still.
+6. Terminate argonia-play-2 when the UI lanes finish: the instance, the spot request, alarm `argonia-play-2-idle`.

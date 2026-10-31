@@ -101,11 +101,12 @@ steps:
   - name: container-closed
     do: [{close_menu: ContainerMenu}]
   - name: book
-    do: [{console: '"{book}".activate player'}, {wait: 2}]
+    do: [{console: '"{book}".activate player'}, {wait: 5}]   # the page draws after the menu event (ui-review2 caught only the strip)
     expect: [{event: {kind: menu, match: Book Menu}}]
     reader: [the page in our palette, Pelagiad, no Nordic ornament]
-  - name: book-closed
-    do: [{close_menu: Book Menu}]
+  - name: book-closed         # the player's own close, as ui-sweep: close_menu on the 3D book crashed in BookMenu (ui-review2, twice)
+    do: [{key: "TAB 80"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "Book Menu", "opening": false'}}]
   - name: pending-level       # the fixture: a level pending
     do: [{call: [dev-grow, ARG_Ref_ClaywaterStationCrocodile, "1", "2000"]}]
     expect: [{read: [core, GetPendingLevels], path: value, ge: 1}]
