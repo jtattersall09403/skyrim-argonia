@@ -27,33 +27,34 @@
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6); }
 .row { display: flex; align-items: center; gap: var(--s2); }
 .bar {
-  position: relative; height: 0.66rem; max-width: 40vw; overflow: hidden;
-  background: linear-gradient(180deg, #070504, #17120b 55%, #0d0a06);
+  position: relative; height: 0.8rem; max-width: 40vw; overflow: hidden;
+  background: linear-gradient(180deg, #020101, #0b0805 60%, #120d08);
   border: 1px solid #050403; border-radius: 0.1rem;
   box-shadow: 0 0 0 0.07rem rgba(156, 130, 89, 0.85), 0 0 0 0.13rem rgba(0, 0, 0, 0.55),
-    inset 0 0.08rem 0.2rem rgba(0, 0, 0, 0.8);
+    inset 0 0.14rem 0.3rem rgba(0, 0, 0, 0.95), inset 0 -1px 0 rgba(156, 130, 89, 0.25);
 }
-.bar.health { height: 0.88rem; }
+.bar.health { height: 1.05rem; }
 .row.breath, .row.climb { margin-top: 0.18rem; }
 /* a faint tick every 50 points (5rem at 0.1rem a point), over the fill */
 .bar::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(90deg, transparent 0 calc(5rem - 1px), rgba(0, 0, 0, 0.45) calc(5rem - 1px) 5rem),
+  background: repeating-linear-gradient(90deg, transparent 0 calc(5rem - 1px), rgba(0, 0, 0, 0.22) calc(5rem - 1px) 5rem),
     linear-gradient(180deg, rgba(255, 255, 255, 0.10), transparent 35%); }
 .bar .trail, .bar .fill { position: absolute; inset: 0 auto 0 0; }
-.bar .trail { background: linear-gradient(180deg, rgba(255, 245, 220, 0.35), transparent 45%, rgba(0, 0, 0, 0.25)), var(--trail);
+.bar .trail { background: linear-gradient(180deg, rgba(255, 245, 220, 0.35), transparent 45%, rgba(0, 0, 0, 0.25)), var(--tr);
   box-shadow: inset -0.12rem 0 0 rgba(255, 236, 200, 0.75);
   transition: width 0.5s cubic-bezier(0.45, 0, 0.7, 1); }
 .bar .fill { transition: width 0.12s linear;
+  box-shadow: inset 0 1px 0 rgba(255, 245, 225, 0.7), inset 0 0.12rem 0.1rem rgba(255, 240, 210, 0.18), inset 0 -0.14rem 0.12rem rgba(0, 0, 0, 0.6), 0.08rem 0 0.25rem rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0, rgba(255, 255, 255, 0.10) 38%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.32) 100%),
     linear-gradient(90deg, var(--lo), var(--hi)); }
 /* the leading edge: a lit lip where the fill ends */
 .bar .fill::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 0.14rem;
   background: linear-gradient(90deg, transparent, rgba(255, 236, 200, 0.4)); }
-.bar.health { --lo: var(--bar-health); --hi: var(--bar-health-hi); }
-.bar.stamina { --lo: var(--bar-stamina); --hi: var(--bar-stamina-hi); }
-.bar.magicka { --lo: var(--bar-magicka); --hi: var(--bar-magicka-hi); }
-.bar.breath { --lo: var(--bar-breath); --hi: var(--bar-breath-hi); }
-.bar.climb { --lo: var(--bar-climb); --hi: var(--bar-climb-hi); }
+.bar.health { --lo: var(--bar-health); --hi: var(--bar-health-hi); --tr: #e3936c; }
+.bar.stamina { --lo: var(--bar-stamina); --hi: var(--bar-stamina-hi); --tr: #cfc98a; }
+.bar.magicka { --lo: var(--bar-magicka); --hi: var(--bar-magicka-hi); --tr: #a9c2dc; }
+.bar.breath { --lo: var(--bar-breath); --hi: var(--bar-breath-hi); --tr: #a6d6da; }
+.bar.climb { --lo: var(--bar-climb); --hi: var(--bar-climb-hi); --tr: #ecc888; }
 /* regenerating: a soft light runs along the fill toward its edge */
 .bar.regen .fill::before { content: ""; position: absolute; inset: 0;
   background: linear-gradient(90deg, transparent 0, rgba(255, 248, 225, 0.35) 50%, transparent 100%) no-repeat;
@@ -80,7 +81,7 @@
 .vmark path + path { stroke: var(--hud-trim-hi); stroke-width: 1.1; }
 .vastei .count { font-size: var(--t-head); line-height: 1.15; font-variant-numeric: tabular-nums; }
 .vastei .vlabel { color: var(--hud-text-soft); letter-spacing: 0.04em; }
-.vastei .gain { color: var(--bar-stamina-hi); animation: rise 1.6s ease-out both; }
+.vastei .gain { color: #b9d27e; animation: rise 1.6s ease-out both; }
 .vastei.up { border-color: var(--hud-trim-hi); animation: warm 1.6s ease-out both; }
 .vastei.up::after { content: ""; position: absolute; inset: 0; pointer-events: none;
   background: linear-gradient(105deg, transparent 35%, rgba(255, 236, 190, 0.35) 50%, transparent 65%) no-repeat;

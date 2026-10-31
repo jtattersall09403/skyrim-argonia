@@ -42,7 +42,7 @@ and a moss accent. No Nordic ornament (0006).
 | `--focus` | #b0702a | the focus ring (amber), seen on paper and over play |
 | `--bar-*` | health #7e2a1e, stamina #42622c, magicka #34506e (slate), breath #3a7884, climb #b07a26 | HUD bars |
 | `--bar-*-hi` | health #b65438, stamina #7d9450, magicka #6f8fae, breath #6cadb5, climb #d9a24e | a bar's lit tone at its leading edge |
-| `--trail` | #dba66e | the damage trail: what was just lost, warm amber with a lit end |
+| `--trail` | #dba66e | the trail's fallback; each bar's trail (`--tr` in hud.css) is a lighter, warmer step of its own fill |
 | `--hud-plate`, `--hud-trim` / `-hi`, `--hud-text` / `-soft` | ink-black at 74%; #9c8259 / #d4b27a; #f1e8cf / #cdbb8f | the HUD's dark lacquer plates, bronze hairlines and words (the HUD page) |
 | `--plate` | paper at 92% | a paper plaque over play (no longer used by the HUD, 1.11) |
 
@@ -89,11 +89,11 @@ two bronze rules.
 **Bars.** Health, stamina, magicka in that fixed order, told apart by colour and place (Dark Souls); breath and grip
 come and go below them with their name.
 - *Length* grows with the maximum: 0.1rem a point, at least 4rem, at most 40% of the width.
-- *Frame*: a black glass trough (a vertical dark gradient, an inner shadow), a bronze hairline, a black keyline; a
-  bronze spine with a lozenge head binds the three on the left. Health 0.88rem tall, the others 0.66rem.
-- *Fill*: the bar's hue at its root running to its lit tone (`--bar-*-hi`) at the leading edge, a top highlight
+- *Frame*: a recessed black trough (near-black, a deep inner shadow, a faint lower lip), a bronze hairline, a black keyline; a
+  bronze spine with a lozenge head binds the three on the left. Health 1.05rem tall, the others 0.8rem.
+- *Fill*: the bar's hue at its root running to its lit tone (`--bar-*-hi`) at the leading edge, a top highlight, a bevel (a light top line, a shaded base) and a shadow cast on the track
   and a lower shade for depth, and a lit lip at the edge. A faint tick every 50 points.
-- *Damage trail*: on a drop the fill falls at once and a warm amber segment with a lit end holds what was lost; 0.9 s after the
+- *Damage trail*: on a drop the fill falls at once and a lighter, warmer step of the bar's own colour, with a lit end, holds what was lost; 0.9 s after the
   last hit it falls to the fill over 0.5 s (main.ts; `remember` in render.ts). A second hit inside the hold keeps
   the trail at its first height, so a combo reads as one loss.
 - *Regeneration*: while a bar rises a soft light runs along its fill toward the edge; it stops 0.7 s after the last

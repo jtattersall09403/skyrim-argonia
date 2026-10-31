@@ -52,7 +52,7 @@ damage trail …" in `ui/views/tests/views.test.ts`; `make ui` green.
 ## The loop (L3; Playwright, 1920x1080, Magic V5 folded 2376x1060 and unfolded 2352x2172)
 
 Stills in `out/ui/l111/` (not committed): `r0` before, `r1`–`r3` rounds, `side-by-side-{calm,hit,vastei,notices}.png`
-(before left, after right, 1080p), `shoot.py` the loop script. Every still: harness judge clean (text size,
+(before left, after right, 1080p, half size; `side-by-side-hit-full.png` full size), `shoot.py` the loop script. Every still: harness judge clean (text size,
 offscreen, errors) and no box overlap among bars, vastei, notices, effects, eye, banner, prompt.
 
 | Round | Stills | Reader | Changed after |
@@ -60,6 +60,7 @@ offscreen, errors) and no box overlap among bars, vastei, notices, effects, eye,
 | 1 | 10 states x 3 | all six checks pass; weakest: trail tan like the bronze and reads as a second bar; hues still stock red/green/blue; banner wraps on the unfolded V5 | trail rust-ash with a fade; hues oxblood/moss/slate; softer edge lip; bars thicker; banner one line |
 | 2 | 10 x 3 | 1-3, 5, 6 pass; trail "partly": pale, reads as ghost more than loss | trail warm amber with a lit end |
 | 3 | play, fight, lowHealth, vasteiGain x 3 | all 12 pass all six checks; "a finished, modern HUD in its own style"; minor: one trail colour for both bars | none: stopped here, the remainder is polish for the L4 round |
+| 4 | play, fight, lowHealth, vasteiGain x 3 (after the coordinator's read: thicker, a recessed track, a bevelled fill, each bar's own trail) | all pass but depth "partly": the bevel subtle, bars 28 px at 1080p borderline for a phone, the stamina trail lime, a seam at the 50-point tick, +60 low contrast | all five taken: bars 20% thicker (health 1.05rem, 33 px at 1080p), a stronger bevel, the stamina trail warmer, the tick fainter, +60 brighter (r5, harness and overlap clean; not re-read) |
 
 ## Owed
 
