@@ -24,6 +24,15 @@ export function heartbeatStop(launchedMs, nowMs, beatUtc) {
   return !(beat > nowMs - STALE_MINUTES * 60e3)
 }
 
+/** Is an agent working on the machine (a deploy or batch over SSH, or the bridge's busy flag), by a fresh beat?
+ *  The night stop and the MAX_HOURS cap spare it: the 03:00 night stop cut a deploy mid-build (2026-10-31).
+ *  A stream alone does not count, so a forgotten stream still stops at night. */
+export function agentBusy(nowMs, beat) {
+  const t = beat?.utc ? Date.parse(beat.utc) : NaN
+  if (!(t > nowMs - 12 * 60e3)) return false
+  return (beat.why || []).some((w) => w === "agent ssh" || w === "agent job")
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
@@ -64,7 +73,8 @@ export default {
     if (s.state !== "running") return
     const hours = (Date.now() - Date.parse(s.launched)) / 3.6e6
     const beat = await heartbeat(env)
-    if (event.cron === env.NIGHT_STOP || hours > MAX_HOURS || heartbeatStop(Date.parse(s.launched), Date.now(), beat?.utc))
+    const capped = (event.cron === env.NIGHT_STOP || hours > MAX_HOURS) && !agentBusy(Date.now(), beat)
+    if (capped || heartbeatStop(Date.parse(s.launched), Date.now(), beat?.utc))
       await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
   },
 }
