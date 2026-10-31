@@ -11,7 +11,7 @@ scene: ui-props
 steps:
   - name: hud-open            # no compass, no marker: the vanilla HUD elements are hidden; turn the camera round
     do: [{wait: 2}, {pad: "+RX=1:2500 -:100"}]
-    expect: [{read: [core, Views], path: value, contains: "vanilla-hud hidden 4/4"}]
+    expect: [{read: [core, Views], path: value, contains: "vanilla-hud hidden 11/11"}]   # 11 clips since the HUD restyle hid the rest
     reader: [no compass and no quest marker anywhere in the HUD, our HUD bars in our palette]
   - name: tween
     do: [{key: "TAB 120"}, {wait: 2}]

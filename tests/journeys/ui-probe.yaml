@@ -27,7 +27,7 @@ steps:
   - name: hud                # the HUD is on in play: its state was pushed, the bars carry health; the vanilla bars and
     expect:                  # compass are hidden (the still shows ours alone)
       - {read: [core, ViewState, hud], path: value.body.bars, contains: "health"}
-      - {read: [core, Views], path: value, contains: "vanilla-hud hidden 4/4, 4 out of HudElements"}
+      - {read: [core, Views], path: value, contains: "vanilla-hud hidden 11/11, 11 out of HudElements"}
   - name: frames-closed      # the baseline: play, no view open (600 frames)
     expect:
       - {read: [frametime, 600], path: p50_ms, keep: closed_p50}

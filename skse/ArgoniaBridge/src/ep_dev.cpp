@@ -320,6 +320,11 @@ std::string dev_quit_to_menu(const Request&) {
     m->GetRuntimeData().resetGame = true;
     if (!open) q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
     q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
+    // game-21: the quit save was written but no MainMenu followed in 30 s. The Journal's show/hide in this frame may
+    // clear the flag again (not measured), so it is set once more on the next frame, after the UI queue has run.
+    SKSE::GetTaskInterface()->AddTask([] {
+      if (auto* main = RE::Main::GetSingleton()) main->GetRuntimeData().resetGame = true;
+    });
     return reply_ok("dev-quit-to-menu", JsonObject().boolean("reset_game", true).boolean("journal_was_open", open).done());
   });
 }
