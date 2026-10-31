@@ -387,8 +387,10 @@ class Bridge:
         """A real gamepad sequence on the virtual Xbox pad (infra/gpu-box/pad.ps1, ViGEm), capped at 3 s."""
         total = pad_duration_ms(seq)
         self.call("focus")  # the game's main window foreground first (lane input): a pad read off-focus is dropped
-        for f in ("pad.ps1", "padhost.ps1"):  # the client and the persistent pad host it starts once per session
-            _sh([self.machine.run, "put", str(REPO / "infra" / "gpu-box" / f), f"C:/argonia/infra/{f}"])
+        if not getattr(self, "_pad_pushed", False):  # the client and its pad host, sent once per Bridge (~3 s a put)
+            for f in ("pad.ps1", "padhost.ps1"):
+                _sh([self.machine.run, "put", str(REPO / "infra" / "gpu-box" / f), f"C:/argonia/infra/{f}"])
+            self._pad_pushed = True
         out = self.machine.desktop(f"& C:\\argonia\\infra\\pad.ps1 -Seq '{seq}'", wait=30)
         steps = [ln for ln in out.splitlines() if ln[:2].isdigit() and ":" in ln[:3]]
         if len(steps) != len(seq.split()):

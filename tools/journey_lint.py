@@ -104,6 +104,16 @@ def talk_ref(ref: str, vocab: dict | None) -> list[str]:
     return []
 
 
+def pad_seq(seq: str) -> list[str]:
+    """A pad sequence the bridge would refuse (malformed, or over the 3 s input cap) fails here, not in a game slot."""
+    from tools.bridge import BridgeError, pad_duration_ms
+    try:
+        pad_duration_ms(seq)
+    except BridgeError as e:
+        return [str(e)]
+    return []
+
+
 def lint(journey: dict, vocab: dict | None) -> list[str]:
     """Every error in a runnable journey, as `step <name>: <what>`."""
     errs = []
@@ -117,6 +127,8 @@ def lint(journey: dict, vocab: dict | None) -> list[str]:
                 found += read_call(v, vocab)
             elif k in ("talk", "strike"):
                 found += talk_ref(str(v), vocab)
+            elif k == "pad":
+                found += pad_seq(str(v))
         for e in s.get("expect", []):
             if "console" in e:
                 found += console_line(str(e["console"]), vocab)
