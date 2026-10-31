@@ -115,8 +115,10 @@ Get-Content $o -EA SilentlyContinue' ;;
     done
     # A spot instance reads "stopped" a few seconds before its spot request settles; a start in that gap fails
     # with IncorrectSpotRequestState (seen 2026-10-29), so retry for a minute.
+    # No spot capacity is said at once (exit 3), not after 4 minutes waiting for SSH (1.8, 2026-10-31).
     for i in $(seq 1 12); do
-      aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null 2>&1 && break
+      out=$(aws ec2 start-instances --region $R --instance-ids "$(id)" 2>&1) && break
+      grep -q InsufficientInstanceCapacity <<<"$out" && { echo "$M: no spot capacity in $R now" >&2; exit 3; }
       read -t 5 < /dev/zero 2>/dev/null || true
     done
     wait_ssh; echo "running at $(ip)" ;;
