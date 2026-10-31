@@ -214,4 +214,5 @@ Something they can **play**, that is:
 | 2026-10-30 | **Checks cover only what we built**: base-Skyrim behaviour is not checked (weather, swimming, enemies equipping and using their kit, NPC movement). The w3-weather-stills and water-swim checks are dropped; crash-prone checks run once, not three times. |
 | 2026-10-30 | **Claywater has a trader**: the station keeper (Livia, the well-keeper) is the place's general trader; her trade service is wired the native way (vendor faction, merchant chest, a barter topic in our dialogue). |
 | 2026-10-31 | **O-2 answered**: the owner is on the 20x subscription now. Open calls O-4, O-9, O-11, O-16 posted as issues #20–#23. |
+| 2026-10-31 | **O-9 (#21): armour pieces stay as base Skyrim has them** (no separate pauldrons or gauntlets); the owner will look for mods later. |
 

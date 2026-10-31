@@ -54,7 +54,7 @@ recommendation; the answer is recorded in the named record (or a new one) and th
 | ~~O-6~~ | ~~Nexus Premium~~ | — | **Answered 2026-10-29: held; the key is `NEXUS_API_KEY` in the secrets file** |
 | O-7 | Steam login on the GPU box (Steam Guard approval on the owner's phone, once) | 0.0 | Owner logs in through the stream once; then offline mode |
 | O-8 | Music source: CC-licensed, commissioned, or Fal-generated (AI clause interactions) | 2.16 | CC-licensed first, Fal for gaps |
-| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.7) | Accept paired pieces in separate slots |
+| O-9 | Split pauldrons/gauntlets if no sourced split meshes exist | 2.3 (asked in 1.7) | answered 2026-10-31: base Skyrim pieces as they are (#21) |
 | O-10 | The opening's scope (default: the Opening Work Camp near Stormhold / Alten Corimont, as in the old main quest) | 3.3 | Default |
 | O-11 | Voice: stay unvoiced text dialogue (old 0139/0143) | 1.7 | Yes |
 | O-12 | Old repo's GitHub Pages build exposes converted assets publicly (outside this repo's scope) | any time | Owner's choice; flagged only |
