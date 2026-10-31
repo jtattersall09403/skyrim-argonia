@@ -274,14 +274,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 11020.99
+    ge: 11252.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 11091.01
+    le: 11323.01
     within: 3
-  expected_ground_m: 157.875
+  expected_ground_m: 161.188
 - name: s02-probe-foot
   why: the foot two samples below the face
   do:
@@ -291,14 +291,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 6100.98
+    ge: 2460.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 6171.02
+    le: 2531.01
     within: 3
-  expected_ground_m: 87.62
+  expected_ground_m: 35.642
   reader:
   - the cliff reads as one rock face on a ramp, not a stair of terraces
   - no seam, crack or hard edge across the cell border

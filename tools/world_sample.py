@@ -294,8 +294,19 @@ def stop_2(w: World, g: Ground) -> dict:
     hi, lo = ((ar, ac), (br, bc)) if win[ar, ac] >= win[br, bc] else ((br, bc), (ar, ac))
     steep = float(abs(win[ar, ac] - win[br, bc]))
     clamp = lambda v: min(max(v, 0), su.QUADS_PER_CELL)  # noqa: E731
-    top = (clamp(hi[0] + (hi[0] - lo[0]) * 2), clamp(hi[1] + (hi[1] - lo[1]) * 2))
-    foot = (clamp(lo[0] + (lo[0] - hi[0]) * 2), clamp(lo[1] + (lo[1] - hi[1]) * 2))
+    def standable(start, away):
+        """The first vertex out along `away` (from 2 samples) whose slope is under 35 deg: the limiter spreads this
+        cell's cliff into an ~83 deg VHGT ramp several samples wide, and a probe set on it slides (game-18: the top
+        shelf read 3 to 47 m low after 4 s; quantize.py's limit)."""
+        last = None
+        for k in range(2, 3 * su.QUADS_PER_CELL):
+            rr, cc = start[0] + away[0] * k, start[1] + away[1] * k
+            last = (rr, cc)
+            if g.slope_deg(r_n + rr, c_w + cc) < 35.0:
+                return last
+        return last
+    top = standable(hi, (hi[0] - lo[0], hi[1] - lo[1]))
+    foot = standable(lo, (lo[0] - hi[0], lo[1] - hi[1]))
     s = new_stop(2, "cliff", "The steepest limited cliff", "the cliff ramp, seams, texture stretching", cell, w)
     s["cliff"] = {"step_m": round(steep, 2), "slope_deg": round(math.degrees(math.atan(steep / su.PROVINCE_SAMPLE_M)), 1)}
     s["steps"] = [arrive(s, False),
