@@ -2,7 +2,7 @@
 writes each device's steps and, after the runs, summary.json: per device its stills, the press-to-screen median
 from the page's own marker samples, and owner_estimate_ms = that median - the agents' own round trip (a few ms on
 the machine itself) + the owner's round trip and jitter from their logged real sessions.
-  feel.py steps <kind> <first-wait-ms> <out.json>          kind: touch | pad | desktop
+  feel.py steps <kind> <first-wait-ms> <out.json> [parts]  kind: touch | pad | desktop; parts: hud,menu,move,attack
   feel.py summarize <run-dir> [--metrics <dir>]            default ~/.argonia/stream-metrics
 """
 import glob
@@ -32,8 +32,16 @@ def med(values):
     return round(statistics.median(v), 1) if v else None
 
 
-def steps(kind, first_wait, out):
-    s = json.load(open(os.path.join(HERE, "steps", f"feel-{kind}.json")))
+PARTS = ("hud", "menu", "move", "attack")
+
+
+def steps(kind, first_wait, out, parts=PARTS):
+    """setup (the scene) + the named parts in order + end (the page's samples)."""
+    bad = [p for p in parts if p not in PARTS]
+    if bad:
+        raise SystemExit(f"unknown steps {bad}; known: {', '.join(PARTS)}")
+    f = json.load(open(os.path.join(HERE, "steps", f"feel-{kind}.json")))
+    s = f["setup"] + [x for p in PARTS if p in parts for x in f[p]] + f["end"]
     s = [{"wait": first_wait}] + [{"probe": FEEL} if x.get("probe") == "FEEL" else x for x in s]
     json.dump(s, open(out, "w"), indent=0)
 
@@ -104,7 +112,7 @@ def summarize(run_dir, metrics_dir):
 
 def main(argv):
     if argv[:1] == ["steps"]:
-        steps(argv[1], int(argv[2]), argv[3])
+        steps(argv[1], int(argv[2]), argv[3], argv[4].split(",") if len(argv) > 4 and argv[4] else PARTS)
     elif argv[:1] == ["summarize"]:
         m = argv[argv.index("--metrics") + 1] if "--metrics" in argv else os.path.expanduser("~/.argonia/stream-metrics")
         s = summarize(argv[1], m)

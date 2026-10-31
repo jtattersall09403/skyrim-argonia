@@ -60,3 +60,9 @@ def test_steps_fill_the_probe_and_first_wait(tmp_path):
         s = json.load(open(tmp_path / f"{kind}.json"))
         assert s[0] == {"wait": 60000} and s[-1]["probe"] == feel.FEEL
         assert any("scene" in x for x in s) and sum("shot" in x for x in s) >= 4
+
+
+def test_steps_subset(tmp_path):
+    feel.steps("pad", 4000, str(tmp_path / "s.json"), ["attack"])
+    s = json.load(open(tmp_path / "s.json"))
+    assert [x["shot"] for x in s if "shot" in x] == ["attack"] and any("scene" in x for x in s)

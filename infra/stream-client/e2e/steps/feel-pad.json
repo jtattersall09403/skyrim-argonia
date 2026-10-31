@@ -1,9 +1,8 @@
-[{"probe": "argonia.pad.unmappedPads"},
- {"scene": "plain-armed"}, {"wait": 2000}, {"shot": "hud"},
- {"probe": "__fakePad.press(9, 150)"}, {"wait": 1500}, {"shot": "menu"},
- {"probe": "__fakePad.press(1, 150)"}, {"wait": 1500}, {"shot": "menu-closed"},
- {"probe": "__fakePad.axis(1, -1)"}, {"wait": 1800}, {"probe": "__fakePad.axis(1, 0)"}, {"shot": "moved"},
- {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100},
- {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100},
- {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 300}, {"shot": "attack"},
- {"wait": 2500}, {"probe": "FEEL"}]
+{
+ "setup": [{"probe": "argonia.pad.unmappedPads"}, {"scene": "plain-armed"}],
+ "hud": [{"wait": 2000}, {"shot": "hud"}],
+ "menu": [{"probe": "__fakePad.press(9, 150)"}, {"wait": 1500}, {"shot": "menu"}, {"probe": "__fakePad.press(1, 150)"}, {"wait": 1500}, {"shot": "menu-closed"}],
+ "move": [{"probe": "__fakePad.axis(1, -1)"}, {"wait": 1800}, {"probe": "__fakePad.axis(1, 0)"}, {"shot": "moved"}],
+ "attack": [{"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 1100}, {"probe": "__fakePad.press(7, 150)"}, {"wait": 300}, {"shot": "attack"}],
+ "end": [{"wait": 2500}, {"probe": "FEEL"}]
+}
