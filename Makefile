@@ -28,6 +28,7 @@ lint:
 
 unit:
 	@$(PY) -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools infra/stream-client/e2e/test_feel.py; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
+	@node infra/cloudflare/test/spot.mjs >/dev/null $(FAIL)  # the play page's start retry and reclaim message (1.8)
 
 budget:
 	@python3 -m pytest -q tooling/tests/test_word_budget.py $(FAIL)
