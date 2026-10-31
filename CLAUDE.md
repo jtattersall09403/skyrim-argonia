@@ -4,9 +4,9 @@ Binding rules, one line each; the why lives in the linked record. Keep under 1,1
 
 ## Goal
 
-Elder Souls: Argonia is a free Skyrim SE total conversion set in Black Marsh, with Morrowind's soul, DS1
+Elder Souls: Argonia is a free Skyrim SE total conversion set in Black Marsh, with Morrowind's soul, DS1-style
 combat, climbing, swimming, boats and no Nordic element, built only from our own code and data
-([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)).
+([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on top of a mod stack - we don't reinvent the wheel, we use existing functionality from mods wherever possible to achieve our goals, and build what is genuinely new on top of that.
 
 ## Session start
 
