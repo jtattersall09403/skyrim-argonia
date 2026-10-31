@@ -55,8 +55,8 @@ steps:
     do: [{key: "T 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: Sleep/Wait Menu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
-  - name: sleep-wait-closed
-    do: [{key: "T 120"}, {wait: 1.5}]
+  - name: sleep-wait-closed   # the wait dialog closes on Tab (its "Tab No"), not on T (g18a)
+    do: [{key: "TAB 120"}, {wait: 1.5}]
     expect: [{event: {kind: menu, match: '"menu": "Sleep/Wait Menu", "opening": false'}}]
   - name: journal             # our journal view (or Dear Diary's, per the router)
     do: [{key: "J 120"}, {wait: 2}]
