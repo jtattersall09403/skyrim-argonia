@@ -84,7 +84,7 @@ Parts 2 to 4 depend on the batch's run time and first-pass green count: **[from 
 
 ## Your open calls
 None of these is answered in the owner brief or the decisions index. Reply with the call's number, for example 'O-11 yes'.
-- **O-2, subscription.** Stay on 5x, or move to 20x so Part 2's two tracks run at once? We suggest 20x from Part 4
+- ** subscription.** Stay on 5x, or move to 20x so Part 2's two tracks run at once? We suggest 20x from Part 4
   only. Costs are above.
 - **O-4, perks.** Hidden engine layer only, or a visible Morrowind-flavoured layer merged with vastei? We suggest
   hidden.
@@ -107,3 +107,6 @@ Blocker means you cannot do the action, or you see a Nordic element at the play 
 | 1 | | | | | | |
 | 2 | | | | | | |
 | 3 | | | | | | |
+
+
+**Open calls, each its own issue:** #20 perks (O-4), #21 pauldrons and gauntlets (O-9), #22 voice (O-11), #23 levels per rest (O-16). O-2 is answered (20x).
