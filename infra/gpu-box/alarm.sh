@@ -12,13 +12,9 @@ ID=$(aws ec2 describe-instances --region $R --filters "Name=tag:Name,Values=$NAM
   Name=instance-state-name,Values=pending,running,stopping,stopped --query 'Reservations[0].Instances[0].InstanceId' --output text)
 [ "$ID" != None ] || { echo "no machine $NAME" >&2; exit 1; }
 if [ "$NAME" = argonia-play ]; then
-  aws cloudwatch put-metric-alarm --region $R --alarm-name argonia-play-no-stream \
-    --alarm-description "Stop argonia-play after 30 minutes with under 20 MB out per 5 minutes (no stream client)" \
-    --namespace AWS/EC2 --metric-name NetworkOut --dimensions "Name=InstanceId,Value=$ID" \
-    --statistic Sum --period 300 --evaluation-periods 6 --threshold 20000000 \
-    --comparison-operator LessThanThreshold --treat-missing-data notBreaching \
-    --alarm-actions "arn:aws:automate:$R:ec2:stop"
-  echo "alarm argonia-play-no-stream set on $ID"
+  # No traffic alarm on the play machine (owner #26, 2026-10-31): the play switch's heartbeat and idle-stop.ps1 stop
+  # it when idle and spare agent work; the old no-stream alarm stopped the g6 mid-work.
+  echo "argonia-play: no alarm (the play switch's heartbeat stops it when idle)"
 else
   aws cloudwatch put-metric-alarm --region $R --alarm-name "$NAME-idle" \
     --alarm-description "Stop $NAME after 45 minutes under 3% CPU (headless clone; backstop to idle-stop.ps1)" \

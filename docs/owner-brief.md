@@ -219,4 +219,6 @@ Something they can **play**, that is:
 | 2026-10-31 | **O-16 (#23): one rest banks one pending level** (the old 76 text). |
 | 2026-10-31 | **#25: the agent may copy the game machine's image to Paris and Ireland** (permission added); used only if London has no g6/g5 when a machine is needed. |
 | 2026-10-31 | **O-4 (#20): perks stay invisible for now**, but keep a visible Morrowind-style perk layer possible later: nothing may block it (the engine perk layer stays intact and addressable; the sitting and vastei spending keep room for a perk choice). The owner decides after playing. |
+| 2026-10-31 | **#26: no traffic alarm on the play machine**; the play switch's heartbeat, idle-stop.ps1 and the night and 8 h stops stop it when idle. The argonia-play-no-stream alarm is deleted and alarm.sh no longer creates it. |
+| 2026-10-31 | **#27: the play machine moves to Paris now** (g6 spot placement score 9 vs London's 4–6), the play switch redeployed for the new region (owner's OK on #27). |
 
