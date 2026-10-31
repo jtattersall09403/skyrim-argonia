@@ -36,4 +36,4 @@ AMI=$(aws ec2 describe-images --region $R --owners self --filters Name=name,Valu
 # the agents' machine, the same type and image
 [ "$CLONE" = 0 ] || infra/gpu-box/clone.sh --region $R --from $PLAY --image $AMI argonia-play-2 $TYPE $AZ
 log "DONE: $PLAY up in $R"
-infra/gpu-box/run.sh --machine $PLAY stop
+[ "${STOP:-1}" = 0 ] || infra/gpu-box/run.sh --machine $PLAY stop  # STOP=0: a batch queued behind uses the warm machine at once
