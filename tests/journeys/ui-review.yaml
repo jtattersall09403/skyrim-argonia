@@ -68,7 +68,8 @@ steps:
     reader: [paper theme, Pelagiad, no Nordic ornament]
   - name: inventory-closed
     do: [{close_menu: InventoryMenu}]
-  - name: props-found
+  - name: props-found         # back at the road, where the scene placed the props
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationRoadIn"}, {wait: 3}]
     expect:
       - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: refs.0.ref, keep: chest}
       - {read: [refs, ARG_Book_StationWaterLedger, "1500"], path: refs.0.ref, keep: book}
