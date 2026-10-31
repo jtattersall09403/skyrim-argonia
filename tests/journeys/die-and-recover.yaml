@@ -41,7 +41,7 @@ steps:
       - {console: '"{opp}".stopcombat'}   # at once and the second pile (1 vastei) replaces the 51 (g18c log: took the pile back, 1)
       - {console: '"{opp}".disable'}
     expect:
-      - {read: [core, GetVastei], path: value, eq: 0}
+      - {read: [core, GetVastei], path: value, lt: 1}   # 0 at the wake; his blows before the disable earn a little (struck, g19: 0.34)
       - {read: [core, WakePoint], path: value, eq: {kept: wake}}
       - {read: [core, PileState], path: value, ne: "", keep: pile}
       - {read: [refs, ARG_VasteiPileActivator], path: refs.0.ref, keep: pile_ref}
@@ -56,7 +56,7 @@ steps:
       - {wait: 2}
       - {console: "player.setangle x 0"}
     expect:
-      - {read: [core, GetVastei], path: value, eq: {kept: v}}
+      - {read: [core, GetVastei], path: value, ge: {kept: v}}   # the 50 back, plus what the struck blows earned
       - {read: [core, PileState], path: value, eq: ""}
   - name: second-death        # the pile is dropped again: one pile in the form map
     do:

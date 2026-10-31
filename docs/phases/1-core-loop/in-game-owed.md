@@ -4,7 +4,7 @@ The one list of in-game checks still to pass before the 1.7 verdict. Journeys' s
 `python3 tools/run_batch.py --owed` (the source of truth; this file's journey table is its snapshot). Everything a
 journey does not cover is listed by hand below and ticked here when proven, with the commit or report.
 
-Snapshot: 2026-10-31 03:10 UTC (after lane game-18). `run_batch --owed` in game-18's worktree saw only that
+Snapshot: 2026-10-31 04:40 UTC (after lane game-19; report docs/research/2026-10-31/lane-game-19.md). Earlier: 03:10 UTC (after lane game-18). `run_batch --owed` in game-18's worktree saw only that
 worktree's history (7 passed, 16 failed, 8 never), so the table below is the hand count from game-17 plus game-18's runs.
 Report: `docs/research/2026-10-31/lane-game-18.md` (each journey's verdict and the next-lane list).
 
@@ -12,8 +12,8 @@ Report: `docs/research/2026-10-31/lane-game-18.md` (each journey's verdict and t
 
 | Status | Journeys |
 |---|---|
-| Passed | attributes, quest-board, smoke, fight-archetype (game-18), claywater-look, claywater-walk, combat-trial-a, cosave, croc-den, dialogue-intercept, fight-damage-builds, fight-lock-on, fight-roll-burden, first-place, lf83-endings, livia-sleep, quarantine, rest-is-the-only-save, rest-respawn, suspend-save, w3-crime, w3-interior-sun |
-| Failing (state in game-18's report) | die-and-recover (check fixed 0bb02fb, rerun owed), grow-at-rest (ten-blows aim), lf83-components (ledger crash, fixed fb563bb, rerun owed), menus-quit, ui-probe (Esc, fixed fb563bb, rerun owed), ui-sweep (favourites), world-sample (stops 1-7 lake; coast fixed 4b9eef3, rerun owed) |
+| Passed | lf83-components, ui-probe, grow-at-rest (game-19), attributes, quest-board, smoke, fight-archetype (game-18), claywater-look, claywater-walk, combat-trial-a, cosave, croc-den, dialogue-intercept, fight-damage-builds, fight-lock-on, fight-roll-burden, first-place, lf83-endings, livia-sleep, quarantine, rest-is-the-only-save, rest-respawn, suspend-save, w3-crime, w3-interior-sun |
+| Failing (state in game-19's report) | die-and-recover (take-pile passes; red at second-death), menus-quit (pad never reaches the vanilla Journal Menu), ui-sweep (favourites: no item selected), world-sample (s01-s08 pass; s09 push-west walks past the border) |
 | Drafts, not in the batch | rest-respawn-cleared; w4-veg-densest and water-budget |
 | Dropped | soak, w3-road-hops, nav-npc-walk, nav-sandbox-20, water-npc-swim |
 
