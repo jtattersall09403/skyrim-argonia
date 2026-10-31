@@ -65,8 +65,16 @@ def machine_name() -> str:
 
 
 def machine_index(name: str) -> int:
-    """argonia-play is 0, argonia-play-N is N: the local tunnel port is PORT + this, so machines never share one."""
-    return 0 if name == "argonia-play" else int(name.rsplit("-", 1)[1])
+    """argonia-play is 0, argonia-play-N is N, a named one (argonia-play-paris) a stable 50..99 from its name: the
+    local tunnel port is PORT + this, so machines never share one."""
+    if name == "argonia-play":
+        return 0
+    tail = name.rsplit("-", 1)[1]
+    if tail.isdigit():
+        return int(tail)
+    if not name.startswith("argonia-play-") or not tail.isalpha():
+        raise ValueError(f"no such game machine: {name}")
+    return 50 + int.from_bytes(__import__("hashlib").sha256(tail.encode()).digest()[:2], "big") % 50
 
 
 class BridgeError(Exception):
