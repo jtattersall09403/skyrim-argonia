@@ -14,8 +14,10 @@ export PATH="$HOME/.local/bin:$PATH"
 AMI=${1:?usage}; AR=${2:?usage}; TYPE=${3:?usage}; SUBNET=${4:?usage}; R=${5:-eu-west-2}
 SG=sg-0c73f686853568ced; PROFILE=argonia-play-ssm; NAME=${NAME:-argonia-play-new}  # NAME=... for the agents' machine
 log() { echo "[$(date -u +%T)] $*"; }
-log "waiting for $AMI in $AR"; aws ec2 wait image-available --region "$AR" --image-ids "$AMI" \
-  || aws ec2 wait image-available --region "$AR" --image-ids "$AMI"
+avail() {  # an image from a 150 GB disk takes ~1 h; each waiter gives up after 10 min
+  local i; for i in $(seq 1 12); do aws ec2 wait image-available --region "$1" --image-ids "$2" 2>/dev/null && return 0; done
+  echo "$2 not available in $1 after 2 h" >&2; return 1; }
+log "waiting for $AMI in $AR"; avail "$AR" "$AMI"
 if [ "$AR" != "$R" ]; then
   name=$(aws ec2 describe-images --region "$AR" --image-ids "$AMI" --query 'Images[0].Name' --output text)
   have=$(aws ec2 describe-images --region "$R" --owners self --filters "Name=name,Values=$name" --query 'Images[0].ImageId' --output text)
@@ -24,7 +26,7 @@ if [ "$AR" != "$R" ]; then
       --tag-specifications 'ResourceType=image,Tags=[{Key=project,Value=argonia}]' --query ImageId --output text)
     log "copying as $AMI"
   else AMI=$have; log "copy exists: $AMI"; fi
-  for i in 1 2 3 4; do aws ec2 wait image-available --region "$R" --image-ids "$AMI" && break; done
+  avail "$R" "$AMI"
 fi
 log "image $AMI available in $R"
 ID=$(aws ec2 describe-instances --region "$R" --filters "Name=tag:Name,Values=$NAME" \

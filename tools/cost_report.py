@@ -51,6 +51,7 @@ def aws() -> None:
 
 GP3_GB_MONTH = 0.0928  # eu-west-2 gp3, USD per GiB-month (AWS price list, 2026-10)
 IPV4_HOUR = 0.005  # public IPv4 while attached
+PLAY_BAR = 0.50  # the owner's ceiling for a game machine, $/h (owner-brief 2026-10-31, the machine bar)
 
 
 def machines() -> None:
@@ -80,7 +81,9 @@ def machines() -> None:
     for name, state, typ, price, gib in sorted(rows):
         disk = gib * GP3_GB_MONTH
         disks += disk
-        print(f"  {name:<16}{state:<9}{typ:<16}{price + IPV4_HOUR:6.3f}/h  {gib:4d} GiB {disk:6.2f}/month")
+        over = name.startswith("argonia-play") and price + IPV4_HOUR > PLAY_BAR
+        print(f"  {name:<16}{state:<9}{typ:<16}{price + IPV4_HOUR:6.3f}/h  {gib:4d} GiB {disk:6.2f}/month"
+              + (f"  OVER ${PLAY_BAR:.2f}/h: move with infra/gpu-box/play_move.sh (1.8)" if over else ""))
     print(f"  {'disks':<41}{disks:22.2f}/month")
 
 
