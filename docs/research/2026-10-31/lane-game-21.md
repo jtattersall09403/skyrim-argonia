@@ -30,7 +30,7 @@ The build VM restarted at 06:29 and killed the g4dn round, which had not produce
 ## Next (resume here)
 1. Wait for g21-lod. Then an SKSE-only deploy, `make deploy` with --no-plugin --no-papyrus --no-stage, to build 6a14cb8 and 8baf1e0.
 2. Then the load-screen still capture again, starting the grabs earlier, with a reader.
-3. Then re-run ui-sweep, menus-quit and die-and-recover. Then one all.yaml pass, crash-prone checks last. Update in-game-owed.md.
+3. Then re-run ui-sweep, menus-quit and die-and-recover. Then one all.yaml pass, crash-prone checks last. Update checks.md.
 4. Leave the machine running.
 
 ## London round (argonia-play-london, 11:15 to 11:30, after an SKSE-only deploy: DEPLOY OK in 219 s)

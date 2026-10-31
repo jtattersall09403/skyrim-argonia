@@ -40,7 +40,7 @@ lane's tuning; not touched).
   - The batch was stopped here for touchfix. Not re-run: ui-sweep, smoke, ui-probe, world-sample,
     die-and-recover, menus-quit, suspend-save.
   - Not done: the vastei pile still, the respawn-flag reads, the ArgoniaCore `respawn: roster of N` line, the
-  xLODGen still and the installer line, the crash items. Likewise the PROGRESS, in-game-owed.md and Outcomes L4
+  xLODGen still and the installer line, the crash items. Likewise the PROGRESS, checks.md and Outcomes L4
   edits.
 
 ## Other fixes

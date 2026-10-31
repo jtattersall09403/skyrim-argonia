@@ -39,7 +39,9 @@ A crash is a failure: the item is recorded with its crash, the game is relaunche
 goes on. Out: out/batch/<id>/<stamp>/summary.json, rewritten after every item: per item pass/fail, the failing step
 and its reason, seconds (and the scene apply's), private MB before and after, and whether the game was relaunched;
 the totals and the time per step class (launch, scene apply, steps). Each journey's own report sits beside it.
-Exit 0 every item passed, 1 any failed, 2 the game could not be launched again.
+Exit 0 every item passed, 1 any failed, 2 the game could not be launched again. At the end of every run the
+`journey:<id>` rows of the check ledgers (docs/phases/*/checks.md) are rewritten from it (tools/check_ledger.py
+update): a pass sets proven with its run dir, a fail sets owed with the failing run; dropped rows stay.
 """
 from __future__ import annotations
 
@@ -350,6 +352,8 @@ def main(argv=None) -> int:
     out = REPO / "out" / "batch" / batch["id"] / time.strftime("%Y%m%dT%H%M%S")
     s = Batch(Bridge(), batch, out, stills=not a.no_stills).run(start=a.only or a.start, only=bool(a.only))
     print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {out / 'summary.json'}")
+    from tools import check_ledger  # the check ledgers' journey rows follow the run (owner, 2026-10-31)
+    print(f"ledgers: {check_ledger.update(s)} rows rewritten (docs/phases/*/checks.md); commit them with the report")
     for f in s["failed"]:
         print("  FAIL " + f)
     if s.get("aborted"):

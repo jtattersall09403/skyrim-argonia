@@ -45,7 +45,7 @@ Answer the five verdict questions on #19.
 
 ## What our checks proved
 - The in-game batch: **[from batch]** (journeys passed of those run, and what failed). The last full snapshot,
-  before the fixes, was 18 passed, 14 failing, 3 drafts (`docs/phases/1-core-loop/in-game-owed.md`).
+  before the fixes, was 18 passed, 14 failing, 3 drafts (`docs/phases/1-core-loop/checks.md`).
 - The quest's stages, set by the real talks and items: **[from batch]**. In the last run first-place passed on
   its first try and the quest's four endings passed.
 - Respawn: the deserter respawns and the crocodile does not (proven, 3 runs).

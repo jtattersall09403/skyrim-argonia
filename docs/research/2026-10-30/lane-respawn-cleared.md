@@ -27,7 +27,7 @@ Brief: enemies in clearable places respawn after death or rest **until the whole
    creatures): kill one, rest, it is back and `GetLocationCleared` 0; kill all four, cleared log + 1; rest, none
    back. **Draft (`runner: 0`)**: no clearable place is built yet (only Claywater has `build_ref` rows); with
    `runner: 1` the `--dry` lint passes except the four `ARG_Ref_JungleRootHollow*` refs "not in our plugins".
-   Flip to `runner: 1` when the place is built. Listed in `in-game-owed.md`.
+   Flip to `runner: 1` when the place is built. Listed in `checks.md`.
 
 ## Gate and build
 
