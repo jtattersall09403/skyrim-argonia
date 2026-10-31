@@ -43,6 +43,8 @@ fi
 aws ec2 wait instance-running --region "$R" --instance-ids "$ID"
 run="$here/run.sh --machine $NAME"
 $run up  # waits for SSH
+# NO_TUNNEL=1: a pool standby: its cloudflared off from first boot (one tunnel, one machine: two split the stream)
+[ -z "${NO_TUNNEL:-}" ] || $run ps "Get-Service cloudflared* -EA SilentlyContinue | % { Stop-Service \$_.Name -Force -EA SilentlyContinue; Set-Service \$_.Name -StartupType Manual }"
 $run put "$here/gpu-bind.ps1" C:/argonia/infra/gpu-bind.ps1 >/dev/null
 if $run ps '& C:\argonia\infra\gpu-bind.ps1' | grep -q REBOOTING; then
   log "GPU bound on new hardware: rebooting"; read -t 60 < /dev/zero 2>/dev/null || true; $run up

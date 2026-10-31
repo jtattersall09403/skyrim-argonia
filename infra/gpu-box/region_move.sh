@@ -6,6 +6,8 @@
 set -euo pipefail
 cd /home/ubuntu/skyrim-argonia
 R=${1:?region}; AZ=${2:?az}; TYPE=${3:-g5.xlarge}; SRC_AMI=ami-07415d5dbbde06bc2
+PLAY=${PLAY:-argonia-play-next}   # the play machine's name (the pool's Ireland standby: PLAY=argonia-play-ie)
+CLONE=${CLONE:-1}                 # 0: no agents' clone (the pool, owner 2026-10-31: whoever needs a machine takes the best one)
 log() { echo "[$(date -u +%T)] $*"; }
 q=$(aws service-quotas get-service-quota --region $R --service-code ec2 --quota-code L-3819A6DF --query Quota.Value --output text)
 if [ "${q%.*}" -lt 8 ]; then
@@ -24,14 +26,14 @@ if [ "$SG" = None ]; then
   log "security group $SG"
 fi
 # machines.conf before any run.sh call on these names
-grep -q '^argonia-play-next ' infra/gpu-box/machines.conf || printf 'argonia-play-next   %s public\n' $R >> infra/gpu-box/machines.conf
-grep -q '^argonia-play-2 ' infra/gpu-box/machines.conf || printf 'argonia-play-2      %s public\n' $R >> infra/gpu-box/machines.conf
+grep -q "^$PLAY " infra/gpu-box/machines.conf || printf '%-19s %s public\n' $PLAY $R >> infra/gpu-box/machines.conf
+[ "$CLONE" = 0 ] || grep -q '^argonia-play-2 ' infra/gpu-box/machines.conf || printf 'argonia-play-2      %s public\n' $R >> infra/gpu-box/machines.conf
 # the London agents' machine keeps its disk under another name until retired
-aws ec2 create-tags --region eu-west-2 --resources i-051031ffad81280bb --tags Key=Name,Value=argonia-play-2-london-g6 || true
 SUBNET=$(aws ec2 describe-subnets --region $R --filters Name=vpc-id,Values=$VPC Name=availability-zone,Values=$AZ --query 'Subnets[0].SubnetId' --output text)
 # the owner's machine (copies the image, launches, binds the GPU, warms the disk)
-NAME=argonia-play-next SG=$SG infra/gpu-box/play_move.sh $SRC_AMI eu-west-2 $TYPE $SUBNET $R
+NAME=$PLAY SG=$SG NO_TUNNEL=1 infra/gpu-box/play_move.sh $SRC_AMI eu-west-2 $TYPE $SUBNET $R
 AMI=$(aws ec2 describe-images --region $R --owners self --filters Name=name,Values=argonia-play-20261031-london-g6-2xl --query 'Images[0].ImageId' --output text)
 # the agents' machine, the same type and image
-infra/gpu-box/clone.sh --region $R --from argonia-play-next --image $AMI argonia-play-2 $TYPE $AZ
-log "DONE: argonia-play-next and argonia-play-2 up in $R"
+[ "$CLONE" = 0 ] || infra/gpu-box/clone.sh --region $R --from $PLAY --image $AMI argonia-play-2 $TYPE $AZ
+log "DONE: $PLAY up in $R"
+infra/gpu-box/run.sh --machine $PLAY stop
