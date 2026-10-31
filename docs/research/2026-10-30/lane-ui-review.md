@@ -96,3 +96,25 @@ Next steps, in order:
 4. The theme majors (item-list size, knot, Tween, title font) as one install-time theme pass.
 5. The phone sizes; the loading still.
 6. Terminate argonia-play-2 when the UI lanes finish: the instance, the spot request, alarm `argonia-play-2-idle`.
+
+## Lane ui-review3 (2026-10-31, 03:30-04:30 UTC): argonia-play-2, three rounds
+
+Clone **left running** (hand-off at the context limit). ~3.7 h total since 00:50 UTC launch, ~$1.00 at $0.26/h.
+Stills (copied to the main tree): `out/runs/ui-review3/20261031T041616/` (round 3, final), `.../040203/` (round 2),
+`.../034534/` (round 1), `out/runs/ui-review3/25-main-menu.png` (the title from a fresh launch, not yet read).
+
+| Screen | State after the readers |
+|---|---|
+| Activation prompt | **FIXED**: our HUD's prompt fed from SKSE's CrosshairRefEvent (`views::prompt_from_activate_text`, L2; `GetActivateText` takes the activated ref) and the seven vanilla rollover clips hidden through the hudPrompt row (`router::kHudClips`, L2; Views line "hidden 11/11"). Log: Talk Livia Varinius, Open Blackwood, Pick Domica Redwort, Rest Camp. Round 2 reader saw the styled plate with keycap (name was the player's then; fixed). Round-3 reader: **PASS** (plate, real names, E or A glyph by device, no vanilla rollover text). |
+| Chart | **FIXED** (round 2 reader): full screen on an opaque paper backdrop. MINOR: the right quarter is empty sea, two labels (world-track content, 2.W4). |
+| Push without lay | **FIXED**: `stack.py push` runs `stack.ps1 on` when it changed a mod. |
+| Font (lists, title, Tween) | **FIXED at source**: `tools/ui_theme/build.py` makes the whole overlay; the font library had gone to `out/ui_theme/fonts`, never staged. Readers: lists and journal now a serif (Pelagiad). |
+| Item-list size | OPEN MAJOR: still ~12-13 px after `skyui/config.txt` entry 14→20, label 12→16 (built into the overlay). Next: check which config SkyUI reads under Dear Diary (it may be per-list sections, or `interface/skyui/` from another mod wins), measure in Data. |
+| Knot | OPEN MAJOR: a red knot ~14 px in the barter/container name plate at (226,865) between the two names. Not a bitmap (no red bitmap ≤64 px in any Dear Diary, Wood and Paper or SkyUI SWF): a vector shape, likely in bottombar/itemcard. Next: a DefineShape fill recolour/clear step in retheme. Also "X Take All" overprinted in the container footer (MAJOR). |
+| Tween | MINOR now: paper sheet, ~20 px text; a stray empty plate at (745-1190, 778-826) and a <> level bar remain. |
+| Loading | NOT SEEN: still gameplay with an interior coc and with a far moveto from indoors. Next: take the still inside the Loading Menu open event (a bridge-side screenshot on the event), not after the step's expect. |
+| Title | ui-review's pad quit fails (the pause list changed); a fresh `bridge.py launch` + `screenshot` gives the title still (25-main-menu.png, unread). |
+| Phones | NOT RUN. Sunshine on the clone not yet enabled; then `ARGONIA_PLAY=argonia-play-2 ARGONIA_DEVICE=v5-folded|v5-unfolded infra/stream-client/e2e/drive.sh infra/stream-client/e2e/steps/ui-review-phone.json`. |
+| Persuasion | owed to chunk 2.5 (talk.cpp:201). |
+
+Gate: skse, ui, unit green; lint red is `tools/world_sample.py:296` F841 (another lane's). Worktree `/home/ubuntu/wt-uir3`.
