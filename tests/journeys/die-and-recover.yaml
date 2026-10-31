@@ -30,8 +30,7 @@ steps:
   - name: die                 # the deserter's attacks; no death camera, no load
     do:
       - {console: "player.damageav health 39"}   # 44 -> 5; damageav, so the wake restores to full (diag6 §4)
-      - {console: '"{opp}".startcombat player'}
-      - {wait: 10}
+      - {console: '"{opp}".startcombat player'}   # no fixed wait: the expects poll, and a 10 s wait let him kill the woken player again (g18d)
     expect:
       - {log: {name: ArgoniaCore, contains: "death: fell"}, within: 20}
       - {log: {name: ArgoniaCore, contains: "death: woke"}, within: 10}
