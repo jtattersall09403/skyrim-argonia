@@ -217,3 +217,31 @@ def test_loading_menu_keeps_its_aspect(tmp_path):
     assert acts and acts[0].data == (b"\x96\x07\x00\x00Stage\x00\x1c\x96\x14\x00\x00scaleMode\x00\x00showAll\x00"
                                      b"\x4f\x00")
     assert movie.tags.index(acts[0]) < next(i for i, t in enumerate(movie.tags) if t.code == swf.SHOW_FRAME)
+
+
+def test_labels_sentence_case(tmp_path):
+    """Owner play test 10: the System page and pause hub labels in sentence case; short forms and mixed case kept."""
+    from tools.ui_theme import labels
+
+    assert labels.sentence_case("QUIT TO MAIN MENU") == "Quit to main menu"
+    assert labels.sentence_case("SYSTEM") == "System"
+    assert labels.sentence_case("SETTINGS") == "Settings"
+    assert labels.sentence_case("Save") == "Save"
+    for short in ("GB", "HP", "FLM", "LOD"):
+        assert labels.sentence_case(short) == short
+    table = "﻿$SYSTEM\tSYSTEM\r\n$Save\tSave\r\n$QUIT\tQUIT\r\nno tab\r\n"
+    raw = table.encode("utf-16-le")
+    root = tmp_path / "mod"
+    (root / "interface").mkdir(parents=True)
+    (root / labels.TABLE).write_bytes(raw)
+    assert labels.source([root], None) == raw
+    assert labels.write(raw, tmp_path / "out") == 2
+    out = (tmp_path / "out" / labels.TABLE).read_bytes()
+    assert out.startswith(b"\xff\xfe")
+    assert out.decode("utf-16").splitlines() == ["$SYSTEM\tSystem", "$Save\tSave", "$QUIT\tQuit", "no tab"]
+
+
+def test_scale_mode_covers_the_system_page():
+    """Owner play test 10: the pause hub and the Journal's System page keep their stage aspect (not squashed)."""
+    assert retheme.SCALE_MODE["interface/quest_journal.swf"] == "showAll"
+    assert retheme.SCALE_MODE["interface/tweenmenu.swf"] == "showAll"

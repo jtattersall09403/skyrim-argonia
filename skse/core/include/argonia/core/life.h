@@ -121,12 +121,15 @@ msg::SittingState view(const Sitting& sit);
 struct SittingReply {
   std::optional<msg::SittingState> state;  // the sitting to show; empty when it closed
   bool closed = false, save_now = false;   // closed: the level is taken and the rest save is due
+  int perk_points = 0;                     // the engine perk points to grant on the close (1.12 §4): one per level taken
   std::vector<std::string> notes;          // for the SKSE log
 };
 // sitting.buy or sitting.done as JSON, decoded by the schema twin; done (or any other closing) applies the sitting
 // to the STAT family: the sheet with its points and the new level, the vastei left, one pending level taken.
 SittingReply on_intent_text(Sitting& sit, std::string_view json, seam::State& s);
 void close(const Sitting& sit, seam::State& s);
+// The engine perk points a closed sitting grants (owner ruling, 1.12 "Perks"): one per level taken, never negative.
+int perk_points_for(int levels_taken);
 
 // A position in Skyrim units (a reference's GetPosition) as the core's metres; `cell` the cell or worldspace FormID.
 rest::Pos at_units(double x, double y, double z, std::uint32_t cell);
@@ -176,6 +179,9 @@ bool suspend_due(SuspendWhy why, double now_s, std::optional<double> last_save_s
 class QuitWatch {
  public:
   std::optional<SuspendWhy> on_menu(bool opening, bool quit_requested);
+  // The Journal's own QuitToMainMenu callback ran (ArgoniaCore wraps it, lane-1.12-system): the save is due now,
+  // before the engine's handler, whatever flags it sets; the menu closes that follow mid-quit add no second save.
+  std::optional<SuspendWhy> on_quit_called();
 
  private:
   bool saved_ = false;

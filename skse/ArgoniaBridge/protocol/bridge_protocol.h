@@ -44,6 +44,9 @@ std::string rest(const Request& r, std::size_t from = 0);
 std::optional<double> to_number(std::string_view s);
 // A form id as hex, with or without 0x: "0001A26F", "0x14".
 std::optional<std::uint32_t> to_form_id(std::string_view s);
+// A form key, "000840:Argonia.esm": the local id (hex, at most 6 digits) and its plugin, the same in every load order.
+struct FormKey { std::uint32_t local; std::string_view plugin; };
+std::optional<FormKey> to_form_key(std::string_view s);
 
 std::string json_escape(std::string_view s);
 // result_json must already be a JSON value (object, number, string literal).

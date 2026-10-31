@@ -6405,3 +6405,16 @@ CREATE TABLE "vegetation_region_budget" (
   "densest_cell_refs" INTEGER NOT NULL,
   "why" TEXT NOT NULL
 );
+
+-- == Perk text (1.12 §4; decision 0012: no vanilla perk text reaches the player) ==
+
+-- Home of our wording for a vanilla perk that can reach the player (a record of a skill's tree in Skyrim.esm or a
+-- DLC, with its rank chain): same meaning and every number unchanged, nothing Nordic. `formkey` is the master's
+-- FormKey (`0BEE97:Skyrim.esm`); Argonia.esm overrides that PERK with this name and description (the record
+-- otherwise a copy of the master's). `tree` is the skill's actor value editor ID, for grouping only.
+CREATE TABLE "perk_text" (
+  "formkey" TEXT NOT NULL PRIMARY KEY CHECK ("formkey" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:*.es[mp]'),
+  "tree" TEXT NOT NULL CHECK ("tree" GLOB 'AV*'),
+  "name" TEXT NOT NULL CHECK (length("name") > 0),
+  "description" TEXT NOT NULL CHECK (length("description") > 0)
+);

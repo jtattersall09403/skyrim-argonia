@@ -60,6 +60,12 @@ void numbers_and_form_ids() {
   CHECK(to_form_id("0001A26F") == 0x0001A26Fu);
   CHECK(to_form_id("0x14") == 0x14u);
   CHECK(!to_form_id("0x"));
+  {
+    const auto k = to_form_key("000840:Argonia.esm");  // dev-favorite's steel sword (game-22)
+    CHECK(k && k->local == 0x840u && k->plugin == "Argonia.esm");
+    CHECK(!to_form_key("ARG_Weap_SteelSword") && !to_form_key(":Argonia.esm") && !to_form_key("000840:"));
+    CHECK(!to_form_key("01000840:Argonia.esm"));  // a load-order id is not a local id
+  }
   CHECK(!to_form_id("123456789"));
   CHECK(!to_form_id("xyz"));
 }

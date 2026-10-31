@@ -90,6 +90,14 @@ std::optional<std::uint32_t> to_form_id(std::string_view s) {
   return v;
 }
 
+std::optional<FormKey> to_form_key(std::string_view s) {
+  const auto colon = s.find(':');
+  if (colon == std::string_view::npos || colon == 0 || colon > 6 || colon + 1 >= s.size()) return std::nullopt;
+  const auto local = to_form_id(s.substr(0, colon));
+  if (!local) return std::nullopt;
+  return FormKey{*local, s.substr(colon + 1)};
+}
+
 std::string json_number(double v) {
   if (!std::isfinite(v)) return "null";
   char buf[32];

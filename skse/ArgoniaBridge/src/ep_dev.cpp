@@ -22,7 +22,15 @@ namespace argonia::bridge {
 namespace {
 using namespace argonia::bridge::dev;
 
+// A form by its load-order id (0x00012EB7 or 8 hex digits), by its form key (`000D61:Argonia.esm`, the local id
+// and its plugin: the same in every load order; the immersion inventory's spelling), or by editor id (which misses
+// weapons and most item records at run time: the engine keeps no editor id for them, game-22).
 RE::TESForm* find_any(std::string_view s) {
+  if (s.find(':') != std::string_view::npos) {
+    auto* dh = RE::TESDataHandler::GetSingleton();
+    const auto k = to_form_key(s);
+    return k && dh ? dh->LookupForm(k->local, k->plugin) : nullptr;
+  }
   if (s.starts_with("0x") || s.starts_with("0X") || s.size() == 8)
     if (auto id = to_form_id(s)) return RE::TESForm::LookupByID(*id);
   return RE::TESForm::LookupByEditorID(s);
@@ -338,6 +346,7 @@ std::string dev_quit_to_menu(const Request&) {
 }
 
 // --- dev-favorite <form> ----------------------------------------------------------------------------------------
+// <form>: a form key (`000D61:Argonia.esm`) or a load-order form id; an editor id misses weapons (game-22).
 // Marks one carried item a favourite, as the inventory's F does (InventoryChanges::SetFavorite on its first extra
 // list). Setup for ui-sweep's FavoritesMenu step: Q opens nothing with no favourite (game-17), and favouriting by os
 // keys in the inventory did not take (game-18). DEV ONLY.

@@ -156,6 +156,9 @@ int main() {
   auto done = on_intent_text(sit, R"({"type":"sitting.done","v":1,"body":{}})", s);
   CHECK(done.closed && done.save_now && !done.state);
   CHECK(s.sheet.level == 2 && s.prog.pending_levels == 0);
+  CHECK(done.perk_points == 1);  // one perk point per level taken at the sitting (1.12 §4)
+  CHECK(perk_points_for(1) == 1 && perk_points_for(3) == 3 && perk_points_for(0) == 0 && perk_points_for(-1) == 0);
+  CHECK(on_intent_text(sit, R"({"type":"sitting.buy","v":1,"body":{"attribute":"strength"}})", s).perk_points == 0);
   CHECK_NEAR(s.prog.vastei, left, 1e-12);  // unspent vastei carries over
   CHECK(s.sheet.a[AttrId::endurance] == end_after);
 
@@ -226,6 +229,15 @@ int main() {
     CHECK(!q.on_menu(false, true));   // the Journal closes next: once per quit
     CHECK(!q.on_menu(true, false));   // a load clears the flag and the latch
     CHECK(q.on_menu(false, true) == SuspendWhy::quit);  // the next quit saves again
+  }
+  {
+    QuitWatch q;  // the Journal's QuitToMainMenu callback, wrapped: the save at the call, once per quit
+    CHECK(!q.on_menu(true, false));
+    CHECK(q.on_quit_called() == SuspendWhy::quit);
+    CHECK(!q.on_quit_called());
+    CHECK(!q.on_menu(false, true));   // the engine's flag and the Journal's close after it: no second save
+    CHECK(!q.on_menu(true, false));   // back at the main menu, a load: the latch clears
+    CHECK(q.on_quit_called() == SuspendWhy::quit);
   }
   CHECK(kRestSave != kSuspendSave);
 

@@ -14,7 +14,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from tools.ui_theme import fontlib, pex, retheme
+from tools.ui_theme import fontlib, labels, pex, retheme
 
 THEMED = ("dear-diary", "wood-and-paper")  # retheme's roots, lowest priority first
 CHECKED = ("dear-diary", "skyui", "wood-and-paper")
@@ -41,10 +41,17 @@ def main(argv=None) -> int:
     ap.add_argument("--mods", type=Path, required=True, help="the profile's mods folder")
     ap.add_argument("--ttf", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
+    ap.add_argument("--data", type=Path, default=Path.home() / "games" / "skyrimse" / "Data",
+                    help="the game's Data folder (its Interface BSA holds the label table)")
     a = ap.parse_args(argv)
     shutil.rmtree(a.out, ignore_errors=True)
     bad = retheme.main(["--mods", *[str(a.mods / m) for m in THEMED], "--ttf", str(a.ttf), "--out", str(a.out)])
     bad |= fontlib.main(["--ttf", str(a.ttf), "--out", str(a.out), "--check", *[str(a.mods / m) for m in CHECKED]])
+    raw = labels.source([a.mods / m for m in CHECKED], a.data)
+    if raw is None:
+        print(f"no {labels.TABLE} in the themed mods or {a.data / labels.BSA}")
+        return 1
+    print(f"{a.out / labels.TABLE}: {labels.write(raw, a.out)} labels in sentence case")
     src = next((a.mods / m / SKYUI_CONFIG for m in ("dear-diary", "skyui") if (a.mods / m / SKYUI_CONFIG).exists()), None)
     if src is None:
         print("no SkyUI config.txt under dear-diary or skyui")

@@ -4,6 +4,7 @@
 using System.Text.Json;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Binary.Parameters;
 using Mutagen.Bethesda.Skyrim;
 using Mutagen.Bethesda.Strings;
 
@@ -18,6 +19,44 @@ static class PerkRecords
     static bool B(JsonElement e, string k) => e.TryGetProperty(k, out var v) && v.GetBoolean();
     static IEnumerable<JsonElement> A(JsonElement e, string k) =>
         e.TryGetProperty(k, out var v) ? v.EnumerateArray() : Enumerable.Empty<JsonElement>();
+
+    static readonly Dictionary<string, ISkyrimModDisposableGetter> masters = new(StringComparer.OrdinalIgnoreCase);
+
+    // The master's string tables, extracted loose into out/strings-cache (found upward from the binary, else
+    // $ARGONIA_STRINGS): a copied perk's entry labels are localized strings the overlay must be able to read.
+    // Mutagen also asks for a Windows-style plugin listing (%LocalAppData%/Skyrim Special Edition/Plugins.txt) to find
+    // archives; on Linux it wants $LocalAppData, so an empty listing is made in a scratch directory and named.
+    static BinaryReadParameters StringsParams()
+    {
+        var dir = Environment.GetEnvironmentVariable("ARGONIA_STRINGS");
+        for (var d = new DirectoryInfo(AppContext.BaseDirectory); string.IsNullOrEmpty(dir) && d != null; d = d.Parent)
+            if (Directory.Exists(Path.Combine(d.FullName, "out", "strings-cache"))) dir = Path.Combine(d.FullName, "out", "strings-cache");
+        if (string.IsNullOrEmpty(dir)) throw new InvalidDataException("no out/strings-cache (extract the official string tables) and no $ARGONIA_STRINGS");
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable("LocalAppData")))
+        {
+            var lad = Path.Combine(Path.GetTempPath(), "argonia-localappdata");
+            Directory.CreateDirectory(Path.Combine(lad, "Skyrim Special Edition"));
+            File.WriteAllText(Path.Combine(lad, "Skyrim Special Edition", "Plugins.txt"), "");
+            Environment.SetEnvironmentVariable("LocalAppData", lad);
+        }
+        return new BinaryReadParameters { StringsParam = new StringsReadParameters { StringsFolderOverride = new Noggog.DirectoryPath(dir), TargetLanguage = Language.English } };
+    }
+
+    // 1.12 §4 (decision 0012): a master's skill-tree perk overridden with our name and description (perk_text), the
+    // record otherwise copied whole from the load order. The master's own strings live in its string tables, which are
+    // not read here, so the copy leaves Name and Description out and sets ours.
+    public static void Override(SkyrimMod mod, JsonElement r, string data)
+    {
+        var key = FormKey.Factory(S(r, "formKey"));
+        var file = key.ModKey.FileName.String;
+        if (!masters.TryGetValue(file, out var master))
+            masters[file] = master = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, file), Rel, StringsParams());
+        if (!master.Perks.TryGetValue(key, out var src)) throw new InvalidDataException($"no PERK {key} in {file}");
+        var p = (Perk)src.DeepCopy(new Perk.TranslationMask(true) { Name = false, Description = false });
+        p.Name = new TranslatedString(Language.English, S(r, "name"));
+        p.Description = new TranslatedString(Language.English, S(r, "description"));
+        mod.Perks.Add(p);
+    }
 
     public static void Write(SkyrimMod mod, JsonElement r)
     {

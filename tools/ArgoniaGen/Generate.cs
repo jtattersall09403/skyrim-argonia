@@ -50,6 +50,7 @@ static class Generate
                 case "BOOK": ItemWriters.Write(mod, r); break;
                 case "MISC": ItemWriters.Write(mod, r); break;
                 case "ALCH": ItemWriters.Write(mod, r); break;
+                case "PERK" when r.TryGetProperty("override", out var pv) && pv.GetBoolean(): PerkRecords.Override(mod, r, data); break;
                 case "PERK": PerkRecords.Write(mod, r); break;
                 case "LSCR": LoadScreenRecords.Write(mod, r); break;
                 case "PACK": PackageRecords.Write(mod, r, data); break;
@@ -132,6 +133,8 @@ static class Generate
     // ---- writers -----------------------------------------------------------------------------------------
     static void Glob(SkyrimMod mod, JsonElement r)
     {
+        // "float": a GLOB of type f (Custom Skills Framework reads level, ratio and colour as floats; a colour does not fit a short).
+        if (Os(r, "valueType") == "float") { mod.Globals.Add(new GlobalFloat(Key(r), Rel) { EditorID = S(r, "edid"), Data = F(r, "value") }); return; }
         var g = new GlobalShort(Key(r), Rel) { EditorID = S(r, "edid"), Data = (short)I(r, "value") };
         mod.Globals.Add(g);
     }

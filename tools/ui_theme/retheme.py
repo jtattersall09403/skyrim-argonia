@@ -41,7 +41,9 @@ CLEAR = {
 WALLPAPER = "textures/interface/objects/mainmenuwallpaper.dds"
 # Movies the engine stretches to the screen (exact fit): a 16:9 stage on the phone's near-square stream squashed the
 # loading fact sideways (owner play test 8; g21-load2, 2240x2068). `showAll` keeps the stage's aspect (1.9 §6).
-SCALE_MODE = {"interface/loadingmenu.swf": "showAll"}
+# The pause hub and the Journal's System page squashed their labels sideways the same way (owner play test 10).
+SCALE_MODE = {"interface/loadingmenu.swf": "showAll", "interface/tweenmenu.swf": "showAll",
+              "interface/quest_journal.swf": "showAll"}
 
 
 def winners(roots: list[Path]) -> dict[str, Path]:

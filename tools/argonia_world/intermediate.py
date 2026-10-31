@@ -284,6 +284,11 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     layers.append(hooks_records.layer(alloc))
     from tools.argonia_world import combat_records  # 1.6: the combat wiring's carrier perk and archetype
     layers.append(combat_records.layer(alloc, alloc.world))
+    from tools.argonia_world import csf_records  # 1.12 §4: the 13 Custom Skills Framework skills' globals and perks
+    layers.append(csf_records.layer(alloc, alloc.world))
+    # 1.12 §4: the skill-tree perks' own wording (world/db/perk_text) is NOT laid in the committed plugin: a PERK
+    # override deep-copies the vanilla record, which would put game data in git (0003). It is owed as an install-time
+    # override (0014) or a runtime name/description set in ArgoniaCore (lane-1.12-system).
     from tools.argonia_world import life_records  # native map P3, P4: rest spot, Vastei pile, game settings
     layers.append(life_records.layer(alloc, alloc.world, scan))
     from tools.argonia_world import quest_gen  # 1.4: the quests in the game, from their records

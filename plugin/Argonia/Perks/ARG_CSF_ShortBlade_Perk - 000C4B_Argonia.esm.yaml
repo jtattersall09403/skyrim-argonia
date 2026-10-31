@@ -1,0 +1,11 @@
+FormKey: 000C4B:Argonia.esm
+EditorID: ARG_CSF_ShortBlade_Perk
+Name:
+  TargetLanguage: English
+  Value: No perks yet
+Description:
+  TargetLanguage: English
+  Value: This skill has no perks yet.
+Level: 100
+NumRanks: 1
+Playable: True

@@ -420,6 +420,46 @@ class BleedoutSink final : public RE::BSTEventSink<RE::TESEnterBleedoutEvent> {
   }
 };
 
+// The quit to the main menu (lane-1.12-system; game-22's red). The Journal's Quit confirmation calls its
+// FxDelegate's "QuitToMainMenu" (quest_journal.swf). The menu watch below saves on the first menu close once the
+// engine's quitGame/resetGame flag is set, but the vanilla handler is not that flag (game-21: setting resetGame and
+// closing the Journal did not reach the main menu), so no close ever saw the flag and no save came (game-22: 1 log
+// line). The save now rides the callback itself: on the Journal's opening its registered QuitToMainMenu entry is
+// swapped for ours, which writes the suspend save on the main thread and then calls the engine's own handler.
+using FxCallback = RE::FxDelegateHandler::CallbackFn;
+FxCallback* g_vanilla_quit_to_menu = nullptr;
+
+void QuitToMainMenuWrapped(const RE::FxDelegateArgs& args) {
+  std::optional<ac::life::SuspendWhy> why;
+  {
+    auto& c = Get();
+    std::lock_guard l(c.lock);
+    why = c.quit_watch.on_quit_called();
+  }
+  SKSE::log::info("saves: the Journal's QuitToMainMenu called; suspend save {}", why ? "due" : "already written");
+  if (why && !SuspendCheck(*why, true)) SKSE::log::warn("saves: the quit's suspend save was refused (a load, sitting or death)");
+  if (g_vanilla_quit_to_menu) g_vanilla_quit_to_menu(args);
+}
+
+void WrapJournalQuit() {
+  auto* ui = RE::UI::GetSingleton();
+  auto menu = ui ? ui->GetMenu(RE::JournalMenu::MENU_NAME) : RE::GPtr<RE::IMenu>{};
+  if (!menu || !menu->fxDelegate) {
+    SKSE::log::warn("saves: the Journal Menu has no FxDelegate; the quit save rides the menu watch only");
+    return;
+  }
+  for (auto it = menu->fxDelegate->callbacks.begin(); it != menu->fxDelegate->callbacks.end(); ++it) {
+    if (std::string_view(it->first.c_str()) != "QuitToMainMenu") continue;
+    auto& cb = const_cast<RE::FxDelegate::CallbackDefn&>(it->second);
+    if (cb.callback == &QuitToMainMenuWrapped) return;  // this Journal is wrapped already
+    g_vanilla_quit_to_menu = cb.callback;
+    cb.callback = &QuitToMainMenuWrapped;
+    SKSE::log::info("saves: the Journal's QuitToMainMenu wrapped (the quit's suspend save)");
+    return;
+  }
+  SKSE::log::warn("saves: the Journal Menu registers no QuitToMainMenu; the quit save rides the menu watch only");
+}
+
 // The menus 1.5 watches: the quit (the suspend save, on the first menu close once the player confirmed Quit; never
 // on a menu opening), the Lockpicking Menu (an unlock is the player's).
 class LifeMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
@@ -428,6 +468,7 @@ class LifeMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     if (!e) return RE::BSEventNotifyControl::kContinue;
     const std::string_view menu = e->menuName.c_str();
     if (menu == RE::LockpickingMenu::MENU_NAME) Get().lockpicking = e->opening;
+    if (menu == RE::JournalMenu::MENU_NAME && e->opening) WrapJournalQuit();
     std::optional<ac::life::SuspendWhy> why;
     {
       auto& c = Get();
@@ -547,6 +588,22 @@ bool RestAt(RE::TESObjectREFR* spot) {
   return true;
 }
 
+// The sitting's perk points (1.12 §4): the engine's own count, which Wind UI's perk list spends ("Perk points %d").
+// The engine's level-up never becomes ready (character XP is off by data, P4), so Wind UI's LevelUpWindow, which
+// offers a ready level, has nothing to show; were it ever ready, the XP is cleared here and the sighting logged.
+static void GrantPerkPoints(int n) {
+  auto* p = Player();
+  if (!p || n <= 0) return;
+  auto& gs = p->GetGameStatsData();
+  gs.perkCount = static_cast<std::uint8_t>(std::min(255, int(gs.perkCount) + n));
+  SKSE::log::info("perks: {} perk point(s) granted at the sitting, {} to spend", n, int(gs.perkCount));
+  if (auto* sk = p->GetInfoRuntimeData().skills; sk && sk->data && sk->CanLevelUp()) {
+    SKSE::log::error("perks: the engine's level-up was ready (xp {:.1f} of {:.1f}); cleared, the sitting is the level-up",
+                     sk->data->xp, sk->data->levelThreshold);
+    sk->data->xp = 0;
+  }
+}
+
 std::string SittingIntent(std::string_view json) {
   auto& c = Get();
   std::lock_guard l(c.lock);
@@ -558,6 +615,7 @@ std::string SittingIntent(std::string_view json) {
     CloseView("sitting");
     MirrorAttributes();
     MirrorPools();
+    GrantPerkPoints(r.perk_points);
     WriteCombat("sitting closed");
     if (r.save_now) WriteSave(ac::life::kRestSave, "rest, after the sitting");
     FactsChanged("sitting closed");

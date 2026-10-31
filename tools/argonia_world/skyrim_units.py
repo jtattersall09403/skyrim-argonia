@@ -117,6 +117,18 @@ SKILL_AV = {
     "alteration": "Alteration", "conjuration": "Conjuration", "destruction": "Destruction",
     "illusion": "Illusion", "restoration": "Restoration", "mysticism": None,
 }
+# The player's 27 skills: the vanilla actor value (CommonLib ActorValue name) each mirrors for the sheet's display and
+# the engine's reads (1.3 §a; ArgoniaCore life::skill_mirrors, generated into tables_mirrors.h), or None: the skill is a
+# Custom Skills Framework skill (a CSF globals set, tools/argonia_world/csf_records.py). Not SKILL_AV: that one keys
+# the NPC classes' weights (Speech there, Speechcraft here; weapon skills fold into OneHanded/TwoHanded).
+PLAYER_SKILL_AV = {
+    "acrobatics": None, "alchemy": "Alchemy", "alteration": "Alteration", "athletics": None, "axe": None,
+    "block": "Block", "blunt": None, "conjuration": "Conjuration", "destruction": "Destruction",
+    "enchant": "Enchanting", "handToHand": None, "heavyArmor": "HeavyArmor", "illusion": "Illusion",
+    "lightArmor": "LightArmor", "longBlade": None, "marksman": None, "mediumArmor": None, "mercantile": None,
+    "mysticism": None, "restoration": "Restoration", "security": "Lockpicking", "shortBlade": None,
+    "smithing": "Smithing", "sneak": "Sneak", "spear": None, "speechcraft": "Speechcraft", "unarmored": None,
+}
 SKYRIM_SKILLS = ("OneHanded", "TwoHanded", "Archery", "Block", "Smithing", "HeavyArmor", "LightArmor",
                  "Pickpocket", "Lockpicking", "Sneak", "Alchemy", "Speech", "Alteration", "Conjuration",
                  "Destruction", "Illusion", "Restoration", "Enchanting")

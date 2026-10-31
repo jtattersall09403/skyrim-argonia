@@ -1,4 +1,5 @@
 #include "argonia/core/life.h"
+#include "argonia/core/tables_mirrors.h"
 
 #include <algorithm>
 #include <array>
@@ -15,17 +16,11 @@ constexpr std::string_view kWeaponClassPrefix = "weapon_class.";
 
 // 1.3 §a's table: fourteen skills on a vanilla actor value, the rest on Custom Skills Framework (no name yet).
 // Marksman is not mirrored: the vanilla weapon skills stay pinned at 0 (combat::pinned_vanilla_skills).
-constexpr std::array<SkillMirror, gen::kSkillIdCount> kSkillMirrors{{
-    {SkillId::acrobatics, ""},          {SkillId::alchemy, "Alchemy"},       {SkillId::alteration, "Alteration"},
-    {SkillId::athletics, ""},           {SkillId::axe, ""},                  {SkillId::block, "Block"},
-    {SkillId::blunt, ""},               {SkillId::conjuration, "Conjuration"}, {SkillId::destruction, "Destruction"},
-    {SkillId::enchant, "Enchanting"},   {SkillId::handToHand, ""},           {SkillId::heavyArmor, "HeavyArmor"},
-    {SkillId::illusion, "Illusion"},    {SkillId::lightArmor, "LightArmor"}, {SkillId::longBlade, ""},
-    {SkillId::marksman, ""},           {SkillId::mediumArmor, ""},          {SkillId::mercantile, ""},
-    {SkillId::mysticism, ""},           {SkillId::restoration, "Restoration"}, {SkillId::security, "Lockpicking"},
-    {SkillId::shortBlade, ""},          {SkillId::smithing, "Smithing"},     {SkillId::sneak, "Sneak"},
-    {SkillId::spear, ""},               {SkillId::speechcraft, "Speechcraft"},{SkillId::unarmored, ""},
-}};
+constexpr std::array<SkillMirror, gen::kSkillIdCount> kSkillMirrors = [] {  // tables_mirrors.h: the units module's map
+  std::array<SkillMirror, gen::kSkillIdCount> m{};
+  for (std::size_t i = 0; i < m.size(); ++i) m[i] = {SkillId(i), gen::kSkillMirrorAv[i]};
+  return m;
+}();
 
 constexpr std::array<std::string_view, 18> kVanillaSkills{
     "OneHanded", "TwoHanded", "Marksman", "Block", "Smithing", "HeavyArmor", "LightArmor", "Pickpocket", "Lockpicking",
@@ -211,6 +206,8 @@ void close(const Sitting& sit, seam::State& s) {
   s.prog.pending_levels = std::max(0, s.prog.pending_levels - int(gen::sitting::levels_per_sitting));
 }
 
+int perk_points_for(int levels_taken) { return std::max(0, levels_taken); }
+
 SittingReply on_intent_text(Sitting& sit, std::string_view json, seam::State& s) {
   SittingReply r;
   auto in = msg::decode_intent(json);
@@ -234,8 +231,10 @@ SittingReply on_intent_text(Sitting& sit, std::string_view json, seam::State& s)
     return r;
   }
   if (std::holds_alternative<msg::SittingDone>(*in)) {
+    const int pending_before = s.prog.pending_levels;
     close(sit, s);
     r.closed = r.save_now = true;
+    r.perk_points = perk_points_for(pending_before - s.prog.pending_levels);
     r.notes.push_back("sitting: closed at level " + std::to_string(s.sheet.level) + ", vastei " +
                       std::to_string(s.prog.vastei));
     return r;
@@ -310,6 +309,12 @@ std::optional<SuspendWhy> QuitWatch::on_menu(bool opening, bool quit_requested) 
     return std::nullopt;
   }
   if (opening || saved_) return std::nullopt;
+  saved_ = true;
+  return SuspendWhy::quit;
+}
+
+std::optional<SuspendWhy> QuitWatch::on_quit_called() {
+  if (saved_) return std::nullopt;
   saved_ = true;
   return SuspendWhy::quit;
 }

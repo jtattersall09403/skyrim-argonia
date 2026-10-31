@@ -1,0 +1,273 @@
+{"formkey":"005994:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Blood Healing","description":"Killing a person with a power attack bite restores all of your health."}
+{"formkey":"005995:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Unearthly Will","description":"Night Powers and Blood Magic cost 33% less to use."}
+{"formkey":"005996:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Poison Talons","description":"Melee blows add 20 points of poison damage."}
+{"formkey":"005997:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Night Cloak","description":"In combat a swarm of bats surrounds you and feeds on enemies within melee reach."}
+{"formkey":"005998:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Power of the Grave","description":"Gain 50 extra points of health, magicka and stamina as a Vampire Lord."}
+{"formkey":"00599A:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Vampiric Grip","description":"Blood Magic: Drag a creature to you from afar and choke it once it is near."}
+{"formkey":"00599B:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Detect All Creatures","description":"Night Power: Senses every creature, even dwarven automatons."}
+{"formkey":"00599C:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Mist Form","description":"Night Power: Become an invulnerable mist while health, magicka and stamina recover."}
+{"formkey":"00599E:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Supernatural Reflexes","description":"Night Power: The world slows around you while you move quicker."}
+{"formkey":"0059A4:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Bestial Strength","description":"Deal 25% extra damage in werewolf form."}
+{"formkey":"0059A5:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Animal Vigor","description":"Gain 100 extra points of health and stamina in beast form."}
+{"formkey":"0059A6:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Savage Feeding","description":"You can feed on most dead creatures. Feeding on a creature rather than a person grants only half the extended time."}
+{"formkey":"0059A7:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Gorging","description":"Feeding restores twice as much health."}
+{"formkey":"0059A8:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Totem of Terror","description":"The werewolf's Howl of Terror reaches creatures of even higher level."}
+{"formkey":"0059A9:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Totem of the Predator","description":"The werewolf's Totem of the Hunt howl reaches farther and shows whether targets are idle, searching or fighting."}
+{"formkey":"0059AA:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Totem of Pale Brothers","description":"The werewolf's Totem of Brotherhood howl calls pale wolves."}
+{"formkey":"0059AB:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Totem of the Moon","description":"The werewolf's Totem of Brotherhood howl summons fellow werewolves."}
+{"formkey":"007A3F:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Bestial Strength","description":"Deal 50% extra damage in werewolf form."}
+{"formkey":"008A70:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Corpse Curse","description":"Blood Magic: Leaves the target paralyzed."}
+{"formkey":"011CFA:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Bestial Strength","description":"Deal 75% extra damage in werewolf form."}
+{"formkey":"011CFB:Dawnguard.esm","tree":"AVHealRatePowerMod","name":"Bestial Strength","description":"Deal 100% extra damage in werewolf form."}
+{"formkey":"0153CD:Skyrim.esm","tree":"AVAlteration","name":"Alteration Dual Casting","description":"Casting an Alteration spell with both hands at once overcharges its effects into a stronger form."}
+{"formkey":"0153CE:Skyrim.esm","tree":"AVConjuration","name":"Conjuration Dual Casting","description":"Casting a Conjuration spell with both hands at once overcharges it so that it lasts longer."}
+{"formkey":"0153CF:Skyrim.esm","tree":"AVDestruction","name":"Destruction Dual Casting","description":"Casting a Destruction spell with both hands at once overcharges its effects into a stronger form."}
+{"formkey":"0153D0:Skyrim.esm","tree":"AVMysticism","name":"Illusion Dual Casting","description":"Casting an Illusion spell with both hands at once overcharges its effects into a stronger form."}
+{"formkey":"0153D1:Skyrim.esm","tree":"AVRestoration","name":"Restoration Dual Casting","description":"Casting a Restoration spell with both hands at once overcharges its effects into a stronger form."}
+{"formkey":"0153D2:Skyrim.esm","tree":"AVDestruction","name":"Impact","description":"Most destruction spells stagger an opponent when cast with both hands."}
+{"formkey":"016908:Dawnguard.esm","tree":"AVMagickaRateMod","name":"Summon Gargoyle","description":"Blood Magic: Conjure a gargoyle to fight at your side."}
+{"formkey":"018E6A:Skyrim.esm","tree":"AVPickpocket","name":"Light Fingers","description":"Gain a 40% pickpocketing bonus. Heavier and more valuable items lower your odds."}
+{"formkey":"018E6B:Skyrim.esm","tree":"AVPickpocket","name":"Light Fingers","description":"Gain a 60% pickpocketing bonus. Heavier and more valuable items lower your odds."}
+{"formkey":"018E6C:Skyrim.esm","tree":"AVPickpocket","name":"Light Fingers","description":"Gain an 80% pickpocketing bonus. Heavier and more valuable items lower your odds."}
+{"formkey":"018E6D:Skyrim.esm","tree":"AVPickpocket","name":"Light Fingers","description":"Gain a 100% pickpocketing bonus. Heavier and more valuable items lower your odds."}
+{"formkey":"03AF81:Skyrim.esm","tree":"AVOneHanded","name":"Brutal Strike","description":"Standing power attacks deal 25% bonus damage and may behead your enemies."}
+{"formkey":"03AF83:Skyrim.esm","tree":"AVTwoHanded","name":"Deep Wounds","description":"Greatsword blows carry a 10% chance of dealing critical damage."}
+{"formkey":"03AF84:Skyrim.esm","tree":"AVTwoHanded","name":"Skullcrusher","description":"Warhammer blows ignore 25% of armor."}
+{"formkey":"03AF9E:Skyrim.esm","tree":"AVTwoHanded","name":"Sweep","description":"A sideways power attack with a two-handed weapon strikes every target before you."}
+{"formkey":"03AFA6:Skyrim.esm","tree":"AVOneHanded","name":"Paralyzing Strike","description":"A backward power attack has a 25% chance to paralyze its target."}
+{"formkey":"03AFA7:Skyrim.esm","tree":"AVTwoHanded","name":"Warlord","description":"A backward power attack has a 25% chance to paralyze its target."}
+{"formkey":"03FFFA:Skyrim.esm","tree":"AVOneHanded","name":"Hack and Slash","description":"War axe blows inflict extra bleeding damage."}
+{"formkey":"051B12:Skyrim.esm","tree":"AVMarksman","name":"Hunter's Discipline","description":"You recover twice as many arrows from the fallen."}
+{"formkey":"051B17:Skyrim.esm","tree":"AVLightArmor","name":"Matching Set","description":"A further 25% armor bonus for a matching set of light armor."}
+{"formkey":"051B1B:Skyrim.esm","tree":"AVLightArmor","name":"Custom Fit","description":"Wear light armor on head, chest, hands and feet for a 25% armor bonus."}
+{"formkey":"051B1C:Skyrim.esm","tree":"AVLightArmor","name":"Unhindered","description":"Worn light armor has no weight and does not slow you."}
+{"formkey":"05218E:Skyrim.esm","tree":"AVSmithing","name":"Arcane Blacksmith","description":"Magical weapons and armor can be improved."}
+{"formkey":"052190:Skyrim.esm","tree":"AVSmithing","name":"Scalebone Smithing","description":"At a forge you can make scalebone armor and weapons, and improve them twice as well."}
+{"formkey":"052D50:Skyrim.esm","tree":"AVOneHanded","name":"Fighting Stance","description":"One-handed power attacks use 25% less stamina."}
+{"formkey":"052D51:Skyrim.esm","tree":"AVTwoHanded","name":"Champion's Stance","description":"Two-handed power attacks use 25% less stamina."}
+{"formkey":"052D52:Skyrim.esm","tree":"AVTwoHanded","name":"Devastating Blow","description":"Standing power attacks deal 25% bonus damage and may behead your enemies."}
+{"formkey":"053128:Skyrim.esm","tree":"AVAlteration","name":"Magic Resistance","description":"Turns aside 10% of a spell's effects."}
+{"formkey":"053129:Skyrim.esm","tree":"AVAlteration","name":"Magic Resistance","description":"Turns aside 20% of a spell's effects."}
+{"formkey":"05312A:Skyrim.esm","tree":"AVAlteration","name":"Magic Resistance","description":"Turns aside 30% of a spell's effects."}
+{"formkey":"0581DD:Skyrim.esm","tree":"AVConjuration","name":"Necromancy","description":"Reanimated undead last longer."}
+{"formkey":"0581DE:Skyrim.esm","tree":"AVConjuration","name":"Bound Souls","description":"Your reanimated undead gain 100 points of health."}
+{"formkey":"0581E1:Skyrim.esm","tree":"AVMysticism","name":"Animage","description":"Illusion spells affect animals of a higher level."}
+{"formkey":"0581E2:Skyrim.esm","tree":"AVMysticism","name":"Kindred Mage","description":"Illusion spells of every kind affect people of a higher level."}
+{"formkey":"0581E4:Skyrim.esm","tree":"AVRestoration","name":"Necromage","description":"Every spell works better against the undead."}
+{"formkey":"0581E7:Skyrim.esm","tree":"AVDestruction","name":"Augmented Flames","description":"Fire spells deal 25% extra damage."}
+{"formkey":"0581EA:Skyrim.esm","tree":"AVDestruction","name":"Augmented Frost","description":"Frost spells deal 25% extra damage."}
+{"formkey":"0581F4:Skyrim.esm","tree":"AVRestoration","name":"Recovery","description":"Magicka recovers 25% more quickly."}
+{"formkey":"0581F5:Skyrim.esm","tree":"AVRestoration","name":"Recovery","description":"Magicka recovers 50% more quickly."}
+{"formkey":"0581F7:Skyrim.esm","tree":"AVAlteration","name":"Atronach","description":"You absorb 30% of the magicka from every spell that strikes you."}
+{"formkey":"0581F8:Skyrim.esm","tree":"AVRestoration","name":"Regeneration","description":"Healing spells restore 50% more."}
+{"formkey":"0581F9:Skyrim.esm","tree":"AVRestoration","name":"Respite","description":"Healing spells restore stamina as well."}
+{"formkey":"0581FC:Skyrim.esm","tree":"AVAlteration","name":"Stability","description":"Alteration spells last longer."}
+{"formkey":"0581FD:Skyrim.esm","tree":"AVMysticism","name":"Quiet Casting","description":"No spell you cast, from any school of magic, makes a sound that others can hear."}
+{"formkey":"058200:Skyrim.esm","tree":"AVDestruction","name":"Augmented Shock","description":"Shock spells deal 25% extra damage."}
+{"formkey":"058201:Skyrim.esm","tree":"AVPickpocket","name":"Misdirection","description":"You can pickpocket weapons the target has equipped."}
+{"formkey":"058202:Skyrim.esm","tree":"AVPickpocket","name":"Night Thief","description":"+25% chance to pickpocket a sleeping target."}
+{"formkey":"058204:Skyrim.esm","tree":"AVPickpocket","name":"Cutpurse","description":"Lifting gold from pockets is 50% easier."}
+{"formkey":"058205:Skyrim.esm","tree":"AVPickpocket","name":"Perfect Touch","description":"You can pickpocket any item the target is wearing or holding."}
+{"formkey":"058208:Skyrim.esm","tree":"AVLockpicking","name":"Locksmith","description":"The pick begins near the point where the lock opens."}
+{"formkey":"058209:Skyrim.esm","tree":"AVLockpicking","name":"Unbreakable","description":"Your lockpicks never snap."}
+{"formkey":"05820A:Skyrim.esm","tree":"AVLockpicking","name":"Golden Touch","description":"Chests hold more gold."}
+{"formkey":"05820C:Skyrim.esm","tree":"AVSneak","name":"Light Step","description":"Pressure plates never trigger under your feet."}
+{"formkey":"058210:Skyrim.esm","tree":"AVSneak","name":"Backstab","description":"One-handed sneak attacks deal six times damage."}
+{"formkey":"058211:Skyrim.esm","tree":"AVSneak","name":"Assassin's Blade","description":"Dagger sneak attacks deal fifteen times normal damage in all."}
+{"formkey":"058213:Skyrim.esm","tree":"AVSneak","name":"Muffled Movement","description":"Armor makes 50% less noise."}
+{"formkey":"058214:Skyrim.esm","tree":"AVSneak","name":"Shadow Warrior","description":"Crouching halts combat briefly and sends distant opponents searching for their target."}
+{"formkey":"058215:Skyrim.esm","tree":"AVAlchemy","name":"Physician","description":"Any potion you brew that restores Health, Magicka or Stamina is 25% stronger."}
+{"formkey":"058216:Skyrim.esm","tree":"AVAlchemy","name":"Benefactor","description":"Beneficial potions you brew gain a further 25% in magnitude."}
+{"formkey":"058217:Skyrim.esm","tree":"AVAlchemy","name":"Poisoner","description":"The poisons you brew are 25% more effective."}
+{"formkey":"058218:Skyrim.esm","tree":"AVAlchemy","name":"Experimenter","description":"Eating an ingredient reveals its first two effects."}
+{"formkey":"05821D:Skyrim.esm","tree":"AVAlchemy","name":"Purity","description":"Potions you create lose every harmful effect, and poisons you create lose every beneficial one."}
+{"formkey":"058F61:Skyrim.esm","tree":"AVMarksman","name":"Keen Eye","description":"Pressing Block while aiming zooms your view in."}
+{"formkey":"058F62:Skyrim.esm","tree":"AVMarksman","name":"Power Shot","description":"50% of the time, arrows stagger every opponent but the largest."}
+{"formkey":"058F63:Skyrim.esm","tree":"AVMarksman","name":"Ranger","description":"You move faster with a bow drawn."}
+{"formkey":"058F64:Skyrim.esm","tree":"AVMarksman","name":"Bullseye","description":"15% chance to paralyze the target for a few seconds."}
+{"formkey":"058F66:Skyrim.esm","tree":"AVBlock","name":"Disarming Bash","description":"A power bash may knock the weapon from an enemy's hand."}
+{"formkey":"058F67:Skyrim.esm","tree":"AVBlock","name":"Power Bash","description":"You can perform a power bash."}
+{"formkey":"058F68:Skyrim.esm","tree":"AVBlock","name":"Deflect Arrows","description":"Arrows striking your shield do no harm."}
+{"formkey":"058F69:Skyrim.esm","tree":"AVBlock","name":"Elemental Protection","description":"A blocking shield cuts incoming fire, frost and shock damage by 50%."}
+{"formkey":"058F6A:Skyrim.esm","tree":"AVBlock","name":"Shield Charge","description":"A sprint with the shield raised bowls over most targets."}
+{"formkey":"058F6C:Skyrim.esm","tree":"AVHeavyArmor","name":"Tower of Strength","description":"Wearing only heavy armor, you stagger 50% less."}
+{"formkey":"058F6D:Skyrim.esm","tree":"AVHeavyArmor","name":"Conditioning","description":"Worn heavy armor has no weight and does not slow you."}
+{"formkey":"058F6E:Skyrim.esm","tree":"AVHeavyArmor","name":"Iron Knuckles","description":"Unarmed blows in heavy armor gauntlets add the gauntlets' armor rating as damage."}
+{"formkey":"058F6F:Skyrim.esm","tree":"AVHeavyArmor","name":"Well Fitted","description":"Wear heavy armor on head, chest, hands and feet for a 25% armor bonus."}
+{"formkey":"058F72:Skyrim.esm","tree":"AVSpeechcraft","name":"Bribery","description":"Guards can be bribed to overlook crimes."}
+{"formkey":"058F75:Skyrim.esm","tree":"AVSpeechcraft","name":"Allure","description":"Prices are 10% better when dealing with the opposite sex."}
+{"formkey":"058F79:Skyrim.esm","tree":"AVSpeechcraft","name":"Fence","description":"You can trade stolen goods to any merchant you have invested in."}
+{"formkey":"058F7A:Skyrim.esm","tree":"AVSpeechcraft","name":"Merchant","description":"Any merchant will buy any kind of item from you."}
+{"formkey":"058F7B:Skyrim.esm","tree":"AVSpeechcraft","name":"Investor","description":"You can invest 500 gold in a shopkeeper to raise the gold he carries for good."}
+{"formkey":"058F7C:Skyrim.esm","tree":"AVEnchanting","name":"Soul Wringer","description":"Soul gems give back more magicka when used to recharge."}
+{"formkey":"058F7D:Skyrim.esm","tree":"AVEnchanting","name":"Corpus Enchanter","description":"Armor enchantments for health, magicka and stamina are 25% more potent."}
+{"formkey":"058F7E:Skyrim.esm","tree":"AVEnchanting","name":"Insightful Enchanter","description":"Armor enchantments that affect skills are 25% more potent."}
+{"formkey":"058F7F:Skyrim.esm","tree":"AVEnchanting","name":"Extra Effect","description":"An item can carry two enchantments at once."}
+{"formkey":"058F80:Skyrim.esm","tree":"AVEnchanting","name":"Fire Enchanter","description":"Fire enchantments on weapons and armor are 25% more potent."}
+{"formkey":"058F81:Skyrim.esm","tree":"AVEnchanting","name":"Frost Enchanter","description":"Frost enchantments on weapons and armor are 25% more potent."}
+{"formkey":"058F82:Skyrim.esm","tree":"AVEnchanting","name":"Storm Enchanter","description":"Shock enchantments on weapons and armor are 25% more potent."}
+{"formkey":"059B76:Skyrim.esm","tree":"AVMysticism","name":"Master of the Mind","description":"Illusion spells can affect undead, daedra and automatons."}
+{"formkey":"059B77:Skyrim.esm","tree":"AVMysticism","name":"Hypnotic Gaze","description":"Calm spells affect opponents of a higher level. Stacks with Kindred Mage and Animage."}
+{"formkey":"059B78:Skyrim.esm","tree":"AVMysticism","name":"Aspect of Terror","description":"Fear spells affect opponents of a higher level. Stacks with Kindred Mage and Animage."}
+{"formkey":"05F56F:Skyrim.esm","tree":"AVOneHanded","name":"Bladesman","description":"Sword blows carry a 10% chance of dealing critical damage."}
+{"formkey":"05F592:Skyrim.esm","tree":"AVOneHanded","name":"Bone Breaker","description":"Mace blows ignore 25% of armor."}
+{"formkey":"05F594:Skyrim.esm","tree":"AVBlock","name":"Deadly Bash","description":"Bashes deal five times the damage."}
+{"formkey":"0640B3:Skyrim.esm","tree":"AVConjuration","name":"Mystic Binding","description":"Bound weapons strike harder."}
+{"formkey":"068BCC:Skyrim.esm","tree":"AVRestoration","name":"Ward Absorb","description":"A ward gives back magicka whenever a spell strikes it."}
+{"formkey":"079342:Skyrim.esm","tree":"AVOneHanded","name":"Armsman","description":"One-handed weapons deal 60% extra damage."}
+{"formkey":"079343:Skyrim.esm","tree":"AVOneHanded","name":"Armsman","description":"One-handed weapons deal 40% extra damage."}
+{"formkey":"079344:Skyrim.esm","tree":"AVOneHanded","name":"Armsman","description":"One-handed weapons deal 80% extra damage."}
+{"formkey":"079345:Skyrim.esm","tree":"AVOneHanded","name":"Armsman","description":"One-handed weapons deal twice the damage."}
+{"formkey":"079346:Skyrim.esm","tree":"AVTwoHanded","name":"Brute Force","description":"Two-handed weapons deal 40% extra damage."}
+{"formkey":"079347:Skyrim.esm","tree":"AVTwoHanded","name":"Brute Force","description":"Two-handed weapons deal 60% extra damage."}
+{"formkey":"079348:Skyrim.esm","tree":"AVTwoHanded","name":"Brute Force","description":"Two-handed weapons deal 80% extra damage."}
+{"formkey":"079349:Skyrim.esm","tree":"AVTwoHanded","name":"Brute Force","description":"Two-handed weapons deal twice the damage."}
+{"formkey":"07934A:Skyrim.esm","tree":"AVMarksman","name":"Overdraw","description":"Bows deal 40% extra damage."}
+{"formkey":"07934B:Skyrim.esm","tree":"AVMarksman","name":"Overdraw","description":"Bows deal 60% extra damage."}
+{"formkey":"07934D:Skyrim.esm","tree":"AVMarksman","name":"Overdraw","description":"Bows deal 80% extra damage."}
+{"formkey":"079354:Skyrim.esm","tree":"AVMarksman","name":"Overdraw","description":"Bows deal twice the damage."}
+{"formkey":"079355:Skyrim.esm","tree":"AVBlock","name":"Bulwark","description":"Your blocks are 25% more effective."}
+{"formkey":"079356:Skyrim.esm","tree":"AVBlock","name":"Bulwark","description":"Your blocks are 30% more effective."}
+{"formkey":"079357:Skyrim.esm","tree":"AVBlock","name":"Bulwark","description":"Your blocks are 35% more effective."}
+{"formkey":"079358:Skyrim.esm","tree":"AVBlock","name":"Bulwark","description":"Your blocks are 40% more effective."}
+{"formkey":"07935E:Skyrim.esm","tree":"AVHeavyArmor","name":"Juggernaut","description":"Heavy armor gives 40% more armor rating."}
+{"formkey":"079361:Skyrim.esm","tree":"AVHeavyArmor","name":"Juggernaut","description":"Heavy armor gives 60% more armor rating."}
+{"formkey":"079362:Skyrim.esm","tree":"AVHeavyArmor","name":"Juggernaut","description":"Heavy armor gives 80% more armor rating."}
+{"formkey":"079374:Skyrim.esm","tree":"AVHeavyArmor","name":"Juggernaut","description":"Heavy armor gives 100% more armor rating."}
+{"formkey":"079376:Skyrim.esm","tree":"AVLightArmor","name":"Agile Defender","description":"Light armor gives 40% more armor rating."}
+{"formkey":"079389:Skyrim.esm","tree":"AVLightArmor","name":"Agile Defender","description":"Light armor gives 60% more armor rating."}
+{"formkey":"079391:Skyrim.esm","tree":"AVLightArmor","name":"Agile Defender","description":"Light armor gives 80% more armor rating."}
+{"formkey":"079392:Skyrim.esm","tree":"AVLightArmor","name":"Agile Defender","description":"Light armor gives 100% more armor rating."}
+{"formkey":"096590:Skyrim.esm","tree":"AVPickpocket","name":"Extra Pockets","description":"You can carry 100 more."}
+{"formkey":"0A3F64:Skyrim.esm","tree":"AVRestoration","name":"Avoid Death","description":"Once each day, you are healed 250 points the moment your health drops below 10%."}
+{"formkey":"0BABE4:Skyrim.esm","tree":"AVOneHanded","name":"Armsman","description":"One-handed weapons deal 20% extra damage."}
+{"formkey":"0BABE8:Skyrim.esm","tree":"AVTwoHanded","name":"Brute Force","description":"Two-handed weapons deal 20% extra damage."}
+{"formkey":"0BABED:Skyrim.esm","tree":"AVMarksman","name":"Overdraw","description":"Bows deal 20% extra damage."}
+{"formkey":"0BCCAE:Skyrim.esm","tree":"AVBlock","name":"Bulwark","description":"Your blocks are 20% more effective."}
+{"formkey":"0BCD2A:Skyrim.esm","tree":"AVHeavyArmor","name":"Juggernaut","description":"Heavy armor gives 20% more armor rating."}
+{"formkey":"0BCD2B:Skyrim.esm","tree":"AVHeavyArmor","name":"Cushioned","description":"Heavy armor on head, chest, hands and feet halves falling damage."}
+{"formkey":"0BE123:Skyrim.esm","tree":"AVLightArmor","name":"Agile Defender","description":"Light armor gives 20% more armor rating."}
+{"formkey":"0BE124:Skyrim.esm","tree":"AVPickpocket","name":"Light Fingers","description":"Gain a 20% pickpocketing bonus. Heavier and more valuable items lower your odds."}
+{"formkey":"0BE125:Skyrim.esm","tree":"AVLockpicking","name":"Apprentice Locks","description":"Apprentice locks are far easier to pick."}
+{"formkey":"0BE126:Skyrim.esm","tree":"AVSneak","name":"Stealth","description":"Sneaking makes you 20% harder to detect."}
+{"formkey":"0BE127:Skyrim.esm","tree":"AVAlchemy","name":"Alchemist","description":"The potions and poisons you brew are 20% more potent."}
+{"formkey":"0BE128:Skyrim.esm","tree":"AVSpeechcraft","name":"Haggling","description":"Prices are 10% better whenever you buy or sell."}
+{"formkey":"0BEE97:Skyrim.esm","tree":"AVEnchanting","name":"Enchanter","description":"Newly made enchantments are 20% more potent."}
+{"formkey":"0C07C6:Skyrim.esm","tree":"AVSneak","name":"Stealth","description":"Sneaking makes you 25% harder to detect."}
+{"formkey":"0C07C7:Skyrim.esm","tree":"AVSneak","name":"Stealth","description":"Sneaking makes you 30% harder to detect."}
+{"formkey":"0C07C8:Skyrim.esm","tree":"AVSneak","name":"Stealth","description":"Sneaking makes you 35% harder to detect."}
+{"formkey":"0C07C9:Skyrim.esm","tree":"AVSneak","name":"Stealth","description":"Sneaking makes you 40% harder to detect."}
+{"formkey":"0C07CA:Skyrim.esm","tree":"AVAlchemy","name":"Alchemist","description":"The potions and poisons you brew are 40% more potent."}
+{"formkey":"0C07CB:Skyrim.esm","tree":"AVAlchemy","name":"Alchemist","description":"The potions and poisons you brew are 60% more potent."}
+{"formkey":"0C07CC:Skyrim.esm","tree":"AVAlchemy","name":"Alchemist","description":"The potions and poisons you brew are 80% more potent."}
+{"formkey":"0C07CD:Skyrim.esm","tree":"AVAlchemy","name":"Alchemist","description":"The potions and poisons you brew are twice as potent."}
+{"formkey":"0C07CE:Skyrim.esm","tree":"AVSpeechcraft","name":"Haggling","description":"Prices are 15% better whenever you buy or sell."}
+{"formkey":"0C07CF:Skyrim.esm","tree":"AVSpeechcraft","name":"Haggling","description":"Prices are 20% better whenever you buy or sell."}
+{"formkey":"0C07D0:Skyrim.esm","tree":"AVSpeechcraft","name":"Haggling","description":"Prices are 25% better whenever you buy or sell."}
+{"formkey":"0C07D1:Skyrim.esm","tree":"AVSpeechcraft","name":"Haggling","description":"Prices are 30% better whenever you buy or sell."}
+{"formkey":"0C1E90:Skyrim.esm","tree":"AVOneHanded","name":"Bladesman","description":"Sword blows carry a 15% chance of dealing more critical damage."}
+{"formkey":"0C1E91:Skyrim.esm","tree":"AVOneHanded","name":"Bladesman","description":"Sword blows carry a 20% chance of dealing even more critical damage."}
+{"formkey":"0C1E92:Skyrim.esm","tree":"AVOneHanded","name":"Bone Breaker","description":"Mace blows ignore 50% of armor."}
+{"formkey":"0C1E93:Skyrim.esm","tree":"AVOneHanded","name":"Bone Breaker","description":"Mace blows ignore 75% of armor."}
+{"formkey":"0C1E94:Skyrim.esm","tree":"AVTwoHanded","name":"Deep Wounds","description":"Greatsword blows carry a 15% chance of dealing more critical damage."}
+{"formkey":"0C1E95:Skyrim.esm","tree":"AVTwoHanded","name":"Deep Wounds","description":"Greatsword blows carry a 20% chance of dealing even more critical damage."}
+{"formkey":"0C1E96:Skyrim.esm","tree":"AVTwoHanded","name":"Skullcrusher","description":"Warhammer blows ignore 50% of armor."}
+{"formkey":"0C1E97:Skyrim.esm","tree":"AVTwoHanded","name":"Skullcrusher","description":"Warhammer blows ignore 75% of armor."}
+{"formkey":"0C3678:Skyrim.esm","tree":"AVOneHanded","name":"Hack and Slash","description":"War axe blows inflict more bleeding damage."}
+{"formkey":"0C3679:Skyrim.esm","tree":"AVOneHanded","name":"Hack and Slash","description":"War axe blows inflict even more bleeding damage."}
+{"formkey":"0C367C:Skyrim.esm","tree":"AVEnchanting","name":"Enchanter","description":"Newly made enchantments are 40% more potent."}
+{"formkey":"0C367D:Skyrim.esm","tree":"AVEnchanting","name":"Enchanter","description":"Newly made enchantments are 60% more potent."}
+{"formkey":"0C367E:Skyrim.esm","tree":"AVEnchanting","name":"Enchanter","description":"Newly made enchantments are 80% more potent."}
+{"formkey":"0C367F:Skyrim.esm","tree":"AVEnchanting","name":"Enchanter","description":"Newly made enchantments are 100% more potent."}
+{"formkey":"0C3680:Skyrim.esm","tree":"AVLockpicking","name":"Adept Locks","description":"Adept locks are far easier to pick."}
+{"formkey":"0C3681:Skyrim.esm","tree":"AVLockpicking","name":"Expert Locks","description":"Expert locks are far easier to pick."}
+{"formkey":"0C3682:Skyrim.esm","tree":"AVLockpicking","name":"Master Locks","description":"Master locks are far easier to pick."}
+{"formkey":"0C44B5:Skyrim.esm","tree":"AVMysticism","name":"Rage","description":"Frenzy spells affect opponents of a higher level. Stacks with Kindred Mage and Animage."}
+{"formkey":"0C44B7:Skyrim.esm","tree":"AVAlteration","name":"Apprentice Alteration","description":"Alteration spells of Apprentice level cost half the magicka."}
+{"formkey":"0C44B8:Skyrim.esm","tree":"AVAlteration","name":"Adept Alteration","description":"Alteration spells of Adept level cost half the magicka."}
+{"formkey":"0C44B9:Skyrim.esm","tree":"AVAlteration","name":"Expert Alteration","description":"Alteration spells of Expert level cost half the magicka."}
+{"formkey":"0C44BA:Skyrim.esm","tree":"AVAlteration","name":"Master Alteration","description":"Alteration spells of Master level cost half the magicka."}
+{"formkey":"0C44BB:Skyrim.esm","tree":"AVConjuration","name":"Apprentice Conjuration","description":"Conjuration spells of Apprentice level cost half the magicka."}
+{"formkey":"0C44BC:Skyrim.esm","tree":"AVConjuration","name":"Adept Conjuration","description":"Conjuration spells of Adept level cost half the magicka."}
+{"formkey":"0C44BD:Skyrim.esm","tree":"AVConjuration","name":"Expert Conjuration","description":"Conjuration spells of Expert level cost half the magicka."}
+{"formkey":"0C44BE:Skyrim.esm","tree":"AVConjuration","name":"Master Conjuration","description":"Conjuration spells of Master level cost half the magicka."}
+{"formkey":"0C44BF:Skyrim.esm","tree":"AVDestruction","name":"Apprentice Destruction","description":"Destruction spells of Apprentice level cost half the magicka."}
+{"formkey":"0C44C0:Skyrim.esm","tree":"AVDestruction","name":"Adept Destruction","description":"Destruction spells of Adept level cost half the magicka."}
+{"formkey":"0C44C1:Skyrim.esm","tree":"AVDestruction","name":"Expert Destruction","description":"Destruction spells of Expert level cost half the magicka."}
+{"formkey":"0C44C2:Skyrim.esm","tree":"AVDestruction","name":"Master Destruction","description":"Destruction spells of Master level cost half the magicka."}
+{"formkey":"0C44C3:Skyrim.esm","tree":"AVMysticism","name":"Apprentice Illusion","description":"Illusion spells of Apprentice level cost half the magicka."}
+{"formkey":"0C44C4:Skyrim.esm","tree":"AVMysticism","name":"Adept Illusion","description":"Illusion spells of Adept level cost half the magicka."}
+{"formkey":"0C44C5:Skyrim.esm","tree":"AVMysticism","name":"Expert Illusion","description":"Illusion spells of Expert level cost half the magicka."}
+{"formkey":"0C44C6:Skyrim.esm","tree":"AVMysticism","name":"Master Illusion","description":"Illusion spells of Master level cost half the magicka."}
+{"formkey":"0C44C7:Skyrim.esm","tree":"AVRestoration","name":"Apprentice Restoration","description":"Restoration spells of Apprentice level cost half the magicka."}
+{"formkey":"0C44C8:Skyrim.esm","tree":"AVRestoration","name":"Adept Restoration","description":"Restoration spells of Adept level cost half the magicka."}
+{"formkey":"0C44C9:Skyrim.esm","tree":"AVRestoration","name":"Expert Restoration","description":"Restoration spells of Expert level cost half the magicka."}
+{"formkey":"0C44CA:Skyrim.esm","tree":"AVRestoration","name":"Master Restoration","description":"Restoration spells of Master level cost half the magicka."}
+{"formkey":"0C5C05:Skyrim.esm","tree":"AVTwoHanded","name":"Limbsplitter","description":"Battle axe blows inflict extra bleeding damage."}
+{"formkey":"0C5C06:Skyrim.esm","tree":"AVTwoHanded","name":"Limbsplitter","description":"Battle axe blows inflict more bleeding damage."}
+{"formkey":"0C5C07:Skyrim.esm","tree":"AVTwoHanded","name":"Limbsplitter","description":"Battle axe blows inflict even more bleeding damage."}
+{"formkey":"0CB406:Skyrim.esm","tree":"AVOneHanded","name":"Critical Charge","description":"While sprinting you can make a one-handed power attack that deals double critical damage."}
+{"formkey":"0CB407:Skyrim.esm","tree":"AVTwoHanded","name":"Great Critical Charge","description":"While sprinting you can make a two-handed power attack that deals double critical damage."}
+{"formkey":"0CB40D:Skyrim.esm","tree":"AVSmithing","name":"Steel Smithing","description":"At a forge you can make Steel armor and weapons, and improve them twice as well."}
+{"formkey":"0CB40E:Skyrim.esm","tree":"AVSmithing","name":"Dwarven Smithing","description":"At a forge you can make Dwarven armor and weapons, and improve them twice as well."}
+{"formkey":"0CB40F:Skyrim.esm","tree":"AVSmithing","name":"Elven Smithing","description":"At a forge you can make Elven armor and weapons, and improve them twice as well."}
+{"formkey":"0CB410:Skyrim.esm","tree":"AVSmithing","name":"Orcish Smithing","description":"At a forge you can make Orcish armor and weapons, and improve them twice as well."}
+{"formkey":"0CB411:Skyrim.esm","tree":"AVSmithing","name":"Glass Smithing","description":"At a forge you can make Glass armor and weapons, and improve them twice as well."}
+{"formkey":"0CB412:Skyrim.esm","tree":"AVSmithing","name":"Ebony Smithing","description":"At a forge you can make Ebony armor and weapons, and improve them twice as well."}
+{"formkey":"0CB413:Skyrim.esm","tree":"AVSmithing","name":"Daedric Smithing","description":"At a forge you can make Daedric armor and weapons, and improve them twice as well."}
+{"formkey":"0CB414:Skyrim.esm","tree":"AVSmithing","name":"Advanced Armors","description":"At a forge you can make scaled and plate armor and improve it twice as well."}
+{"formkey":"0CB419:Skyrim.esm","tree":"AVConjuration","name":"Atromancy","description":"Conjured atronachs last twice as long."}
+{"formkey":"0CB41A:Skyrim.esm","tree":"AVConjuration","name":"Elemental Potency","description":"Conjured atronachs are 50% stronger."}
+{"formkey":"0D5F1C:Skyrim.esm","tree":"AVConjuration","name":"Twin Souls","description":"You may keep two atronachs or reanimated corpses at once."}
+{"formkey":"0D7999:Skyrim.esm","tree":"AVAlteration","name":"Mage Armor","description":"Protection spells such as Stoneflesh are twice as strong while you wear no armor."}
+{"formkey":"0D799A:Skyrim.esm","tree":"AVAlteration","name":"Mage Armor","description":"Protection spells such as Stoneflesh are 2.5 times as strong while you wear no armor."}
+{"formkey":"0D799B:Skyrim.esm","tree":"AVAlteration","name":"Mage Armor","description":"Protection spells such as Stoneflesh are three times as strong while you wear no armor."}
+{"formkey":"0D799C:Skyrim.esm","tree":"AVConjuration","name":"Oblivion Binding","description":"Blows from bound weapons banish summoned creatures and drive off raised undead."}
+{"formkey":"0D799E:Skyrim.esm","tree":"AVConjuration","name":"Soul Stealer","description":"Bound weapons place Soul Trap on whatever they hit."}
+{"formkey":"0D79A0:Skyrim.esm","tree":"AVPickpocket","name":"Keymaster","description":"Lifting keys from pockets almost never fails."}
+{"formkey":"0D8C33:Skyrim.esm","tree":"AVBlock","name":"Quick Reflexes","description":"Time slows when you block an enemy's power attack."}
+{"formkey":"0F2CA6:Skyrim.esm","tree":"AVAlteration","name":"Novice Alteration","description":"Alteration spells of Novice level cost half the magicka."}
+{"formkey":"0F2CA7:Skyrim.esm","tree":"AVConjuration","name":"Novice Conjuration","description":"Conjuration spells of Novice level cost half the magicka."}
+{"formkey":"0F2CA8:Skyrim.esm","tree":"AVDestruction","name":"Novice Destruction","description":"Destruction spells of Novice level cost half the magicka."}
+{"formkey":"0F2CA9:Skyrim.esm","tree":"AVMysticism","name":"Novice Illusion","description":"Illusion spells of Novice level cost half the magicka."}
+{"formkey":"0F2CAA:Skyrim.esm","tree":"AVRestoration","name":"Novice Restoration","description":"Restoration spells of Novice level cost half the magicka."}
+{"formkey":"0F392A:Skyrim.esm","tree":"AVLockpicking","name":"Novice Locks","description":"Novice locks are far easier to pick."}
+{"formkey":"0F392E:Skyrim.esm","tree":"AVDestruction","name":"Intense Flames","description":"Fire damage sends targets fleeing when their health runs low."}
+{"formkey":"0F3933:Skyrim.esm","tree":"AVDestruction","name":"Deep Freeze","description":"Frost damage holds targets rigid when their health runs low."}
+{"formkey":"0F3F0E:Skyrim.esm","tree":"AVDestruction","name":"Disintegrate","description":"Shock damage reduces targets to ash when their health runs low."}
+{"formkey":"1036F0:Skyrim.esm","tree":"AVSneak","name":"Deadly Aim","description":"Sneak attacks with a bow deal three times damage."}
+{"formkey":"103ADA:Skyrim.esm","tree":"AVMarksman","name":"Steady Hand","description":"Zooming in with a bow slows time 25%."}
+{"formkey":"103ADB:Skyrim.esm","tree":"AVMarksman","name":"Steady Hand","description":"Zooming in with a bow slows time 50%."}
+{"formkey":"105F19:Skyrim.esm","tree":"AVMarksman","name":"Quick Shot","description":"You draw a bow 30% faster."}
+{"formkey":"105F1C:Skyrim.esm","tree":"AVMarksman","name":"Critical Shot","description":"10% chance of a critical hit dealing extra damage."}
+{"formkey":"105F1E:Skyrim.esm","tree":"AVMarksman","name":"Critical Shot","description":"15% chance of a critical hit dealing 25% more critical damage."}
+{"formkey":"105F1F:Skyrim.esm","tree":"AVMarksman","name":"Critical Shot","description":"20% chance of a critical hit dealing 50% more critical damage."}
+{"formkey":"105F22:Skyrim.esm","tree":"AVLightArmor","name":"Wind Walker","description":"Light armor on head, chest, hands and feet makes stamina return 50% faster."}
+{"formkey":"105F23:Skyrim.esm","tree":"AVSneak","name":"Silent Roll","description":"Sprinting while sneaking makes you roll forward without a sound."}
+{"formkey":"105F24:Skyrim.esm","tree":"AVSneak","name":"Silence","description":"Walking and running no longer change how easily you are detected."}
+{"formkey":"105F26:Skyrim.esm","tree":"AVLockpicking","name":"Treasure Hunter","description":"You have a 50% greater chance of finding special treasure."}
+{"formkey":"105F28:Skyrim.esm","tree":"AVPickpocket","name":"Poisoned","description":"Slip poisons into enemies' pockets to hurt them unseen."}
+{"formkey":"105F29:Skyrim.esm","tree":"AVSpeechcraft","name":"Intimidation","description":"Intimidation works twice as well."}
+{"formkey":"105F2A:Skyrim.esm","tree":"AVAlchemy","name":"Experimenter","description":"Eating an ingredient reveals its first three effects."}
+{"formkey":"105F2B:Skyrim.esm","tree":"AVAlchemy","name":"Experimenter","description":"Eating an ingredient reveals all of its effects."}
+{"formkey":"105F2C:Skyrim.esm","tree":"AVAlchemy","name":"Snakeblood","description":"You resist all poisons by 50%."}
+{"formkey":"105F2E:Skyrim.esm","tree":"AVAlchemy","name":"Green Fingers","description":"Plants yield two ingredients when gathered."}
+{"formkey":"105F2F:Skyrim.esm","tree":"AVAlchemy","name":"Concentrated Poison","description":"A poison on a weapon lasts twice as many hits."}
+{"formkey":"105F30:Skyrim.esm","tree":"AVConjuration","name":"Summoner","description":"Atronachs can be summoned and undead raised twice as far from you."}
+{"formkey":"105F31:Skyrim.esm","tree":"AVConjuration","name":"Summoner","description":"Atronachs can be summoned and undead raised three times as far from you."}
+{"formkey":"105F32:Skyrim.esm","tree":"AVDestruction","name":"Rune Master","description":"Runes can be set five times as far off."}
+{"formkey":"105F33:Skyrim.esm","tree":"AVHeavyArmor","name":"Reflect Blows","description":"Heavy armor on head, chest, hands and feet gives a 10% chance to reflect melee damage back at the attacker."}
+{"formkey":"106253:Skyrim.esm","tree":"AVBlock","name":"Block Runner","description":"You move faster with a shield raised."}
+{"formkey":"106256:Skyrim.esm","tree":"AVOneHanded","name":"Dual Flurry","description":"Attacks with a weapon in each hand are 20% faster."}
+{"formkey":"106257:Skyrim.esm","tree":"AVOneHanded","name":"Dual Flurry","description":"Attacks with a weapon in each hand are 35% faster."}
+{"formkey":"106258:Skyrim.esm","tree":"AVOneHanded","name":"Dual Savagery","description":"Power attacks with a weapon in each hand deal 50% bonus damage."}
+{"formkey":"106259:Skyrim.esm","tree":"AVLockpicking","name":"Quick Hands","description":"You can pick locks without being noticed."}
+{"formkey":"107830:Skyrim.esm","tree":"AVLockpicking","name":"Wax Impression","description":"Picking a lock that has a key also gives you a copy of that key."}
+{"formkey":"107831:Skyrim.esm","tree":"AVLightArmor","name":"Deft Movement","description":"Light armor on head, chest, hands and feet gives a 10% chance to avoid all damage from a melee attack."}
+{"formkey":"107832:Skyrim.esm","tree":"AVHeavyArmor","name":"Matching Set","description":"A further 25% armor bonus for a matching set of heavy armor."}
+{"formkey":"108A44:Skyrim.esm","tree":"AVEnchanting","name":"Soul Siphon","description":"Killing blows against creatures, never against people, capture 5% of the victim's soul and recharge the weapon."}
+{"formkey":"1090A2:Skyrim.esm","tree":"AVSpeechcraft","name":"Persuasion","description":"Persuading others is 30% easier."}
+{"formkey":"1090A5:Skyrim.esm","tree":"AVSpeechcraft","name":"Master Trader","description":"Every merchant everywhere has 1000 more gold to trade with."}
+{"formkey":"10FCF8:Skyrim.esm","tree":"AVDestruction","name":"Augmented Flames","description":"Fire spells deal 50% extra damage."}
+{"formkey":"10FCF9:Skyrim.esm","tree":"AVDestruction","name":"Augmented Frost","description":"Frost spells deal 50% extra damage."}
+{"formkey":"10FCFA:Skyrim.esm","tree":"AVDestruction","name":"Augmented Shock","description":"Shock spells deal 50% extra damage."}

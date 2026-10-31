@@ -319,6 +319,19 @@ def combat(w: db.World) -> str:
     return _wrap("combat", ["array", "cstddef", "cstdint", "string_view"], b)
 
 
+def mirrors(w: db.World) -> str:
+    """Where each skill is mirrored in the engine (1.3 §a): a vanilla actor value name, or "" for a Custom Skills
+    Framework skill. In SkillId's order (the skill table's id order); the units module holds the map."""
+    ids = w.values("SELECT id FROM skill ORDER BY id")
+    if set(ids) != set(su.PLAYER_SKILL_AV):
+        raise SystemExit(f"skyrim_units.PLAYER_SKILL_AV differs from the skill table: "
+                         f"{sorted(set(ids) ^ set(su.PLAYER_SKILL_AV))}")
+    b = [f"inline constexpr std::array<std::string_view, {len(ids)}> kSkillMirrorAv{{"]
+    b += [f"    {sv(su.PLAYER_SKILL_AV[i])},  // {i}" for i in ids]
+    b.append("};")
+    return _wrap("mirrors", ["array", "string_view"], b)
+
+
 def fixture_topics(w: db.World) -> str:
     from tools.argonia_world import topic_tables
     text = _wrap("fixture_topics", ["array", "cstddef", "cstdint", "string_view"], topic_tables.render(w))
@@ -330,6 +343,7 @@ def render(w: db.World) -> dict[str, str]:
     out = {f"tables_{h}.h": f(w) for h, f in (("sheet", sheet), ("progression", progression),
                                               ("conditions", conditions), ("actions", actions),
                                               ("combat", combat))}
+    out["tables_mirrors.h"] = mirrors(w)
     out["fixture_topics.h"] = fixture_topics(w)
     from tools.argonia_world import forms_table  # 1.1 adapters: world id -> FormID
     out[forms_table.HEADER] = forms_table.render(w)

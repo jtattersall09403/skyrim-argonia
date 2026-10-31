@@ -1,0 +1,85 @@
+# 1.12 §4 and §7 (lane-1.12-system), the coordinator's L4 batch. Rows: "A perk taken in Wind UI's list with a point
+# from the sitting; Wind UI's level-up window never shows", "The system menu (settings, load, quit) opens from play by
+# pad, keyboard and touch", "Favourites or quick keys open by keyboard and pad with one set", "Quit to the main menu
+# from play writes the suspend save and reaches the main menu". Setup as grow-at-rest (the Blackwood Road's ambush
+# deserter, a camp spot at the player's marker, the pending level from dev-grow's landed blows); the sitting's close,
+# the perk point, the menus, the favourite and the quit are what is tested. The touch menu button and the click on a
+# perk in Wind UI's list have no runner action yet: their steps are reader stills (see the lane report).
+id: system-perks
+runner: 1
+crash_risk: high
+batch_last: true         # it ends at the main menu
+step_saves: false        # it counts saves
+scene: claywater-ambush
+steps:
+  - name: setup
+    do:
+      - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
+      - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {wait: 2}
+    expect:
+      - {read: [actors, "4000"], path: listed.0.ref, keep: opp}
+      - {read: [core, GetLevel], path: value, keep: lvl0}
+  - name: pending-level      # landed blows into ArgoniaCore's hit sink until one level is pending
+    do:
+      - {console: '"{opp}".setav health 2000'}
+      - {console: "player.setav health 3000"}
+      - {console: '"{opp}".moveto player 0 150 0'}
+      - {console: '"{opp}".startcombat player'}
+      - {call: [dev-grow, "{opp}", "1", "2000"]}
+      - {console: '"{opp}".stopcombat'}
+    expect:
+      - {read: [core, GetPendingLevels], path: value, eq: 1}
+      - {event: {kind: menu, match: LevelUp Menu, absent: true}}
+  - name: rest-opens-sitting
+    do:
+      - {console: '"{opp}".disable'}
+      - {rest: ARG_Ref_ClaywaterStationAmbushPlayer}
+    expect: [{read: [core, SittingOpen], path: value, eq: true, within: 10}]
+  - name: sitting-done-grants-perk-point
+    do: [{call: [core, ViewIntent, '{"type":"sitting.done","v":1,"body":{}}']}, {wait: 4}]
+    expect:
+      - {read: [core, SittingOpen], path: value, eq: false}
+      - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
+      - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
+      - {log: {name: ArgoniaCore, contains: "the engine's level-up was ready", absent: true}}
+      - {event: {kind: menu, match: LevelUp Menu, absent: true}}
+  - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
+    do: [{key: "TAB 120 engine"}, {wait: 2}, {key: "UP 120 engine"}, {wait: 2}]
+    reader: [Wind UI's stats or perk list shows "Perk points 1", no level-up window or "Level up" prompt, perk names and descriptions with no Nordic word (Nord, Skyrim, Dragonborn, Jarl, Thu'um, shout)]
+  - name: stats-closed
+    do: [{key: "ESC 120 engine"}, {wait: 1}, {key: "TAB 120 engine"}, {wait: 1.5}]
+  - name: system-by-keyboard  # Escape in play: the Journal's System page
+    do: [{key: "ESC 120 engine"}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: Journal Menu}}
+      - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu wrapped"}, within: 5}
+    reader: [the System page lists settings, load and quit, labels in sentence case ("Settings", "Quit"), not upper case, and not squashed sideways]
+  - name: system-keyboard-closed
+    do: [{close_menu: Journal Menu}, {wait: 2}]
+  - name: system-by-pad       # Start, then the right bumper to the System tab (last in the cycle)
+    do: [{pad: "START:120 wait:1500 RB:120 wait:600 RB:120 wait:600 RB:120 wait:600"}, {wait: 1}]
+    expect: [{event: {kind: menu, match: Journal Menu}}]
+    reader: [the System tab is selected and shows settings (Wind UI's page among them), load and quit]
+  - name: system-pad-closed
+    do: [{close_menu: Journal Menu}, {wait: 2}]
+  - name: favorite-one        # dev-favorite by the sword's form key (game-22: the editor id misses weapons)
+    do: [{call: [dev-favorite, "000840:Argonia.esm"]}, {wait: 1}]
+    expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]
+  - name: favorites-by-keyboard
+    do: [{key: "Q 120 engine"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: FavoritesMenu}}]
+  - name: favorites-keyboard-closed
+    do: [{key: "Q 120 engine"}, {wait: 1.5}]
+    expect: [{event: {kind: menu, match: '"menu": "FavoritesMenu", "opening": false'}}]
+  - name: favorites-by-pad    # the d-pad up opens the favourites on the pad
+    do: [{pad: "DPAD_UP:120"}, {wait: 2}]
+    expect: [{event: {kind: menu, match: FavoritesMenu}}]
+  - name: favorites-pad-closed
+    do: [{close_menu: FavoritesMenu}, {wait: 1.5}]
+  - name: quit-to-main-menu   # the Journal's own QuitToMainMenu (wrapped): the suspend save, then the main menu
+    do: [{call: [dev-quit-to-menu]}, {wait: 8}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu called; suspend save due"}, within: 15}
+      - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}
+      - {event: {kind: menu, match: MainMenu}, within: 30}
