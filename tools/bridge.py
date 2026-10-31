@@ -56,7 +56,7 @@ INPUT_CAP_MS = 3000  # kInputCapMs in the plugin
 RETRY_BACKOFF = (0.5, 1.0, 2.0)
 RETRY_TRIES = 3
 # Commands that change the game: a timed-out task stays queued and runs later, so a retry could do it twice.
-NO_RETRY = {"focus", "console", "teleport", "pad", "input", "key", "load", "save", "core-suspend", "crash", "booth", "dev-set",
+NO_RETRY = {"focus", "console", "teleport", "pad", "input", "key", "load", "save", "core-suspend", "crash", "booth", "dev-set", "dev-quit-to-menu",
             "dev-grow", "time", "weather", "trace", "nav", "launch"}
 
 

@@ -12,6 +12,9 @@
 //   trace start <frames> [var..]  arms a per-frame trace of the player (position, health, ghost or any named graph
 //   vocab                         the console/script function names and the av names, for the journey linter
 //   trace read [samples]          bool true = an i-frame); read gives the window (first/last i-frame frame)
+//   dev-quit-to-menu              the Journal's Quit to the main menu: Main::resetGame set, then the Journal closed
+//                                 (opened first when it is not), so ArgoniaCore's quit watch sees a menu close with
+//                                 the quit requested and writes the quit save (life.cpp LifeMenuSink)
 #include "bridge.h"
 #include "dev.h"
 #include "argonia/core/bridge_call.h"
@@ -303,7 +306,26 @@ std::string vocab(const Request&) {
   }, 10s);
 }
 
+// --- dev-quit-to-menu -------------------------------------------------------------------------------------------
+// The vanilla Journal's Quit sets Main::resetGame (CommonLib RE/M/Main.h RUNTIME_DATA, beside quitGame for the
+// desktop) and the Journal then closes; the engine returns to the main menu on its next frame. Driving the Journal's
+// Quit by keys was unreliable (game-20), so this does the same two things directly. DEV ONLY.
+std::string dev_quit_to_menu(const Request&) {
+  return on_main_thread("dev-quit-to-menu", [] {
+    auto* m = RE::Main::GetSingleton();
+    auto* ui = RE::UI::GetSingleton();
+    auto* q = RE::UIMessageQueue::GetSingleton();
+    if (!m || !ui || !q || !player_in_world()) return reply_error("dev-quit-to-menu", "no game in progress");
+    const bool open = ui->IsMenuOpen(RE::JournalMenu::MENU_NAME);
+    m->GetRuntimeData().resetGame = true;
+    if (!open) q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
+    q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
+    return reply_ok("dev-quit-to-menu", JsonObject().boolean("reset_game", true).boolean("journal_was_open", open).done());
+  });
+}
+
 const Register r_dev_set{"dev-set", &dev_set};
+const Register r_dev_quit{"dev-quit-to-menu", &dev_quit_to_menu};
 const Register r_dev_grow{"dev-grow", &dev_grow};
 const Register r_tdm{"tdm-target", &tdm_target};
 const Register r_refs{"refs", &refs};

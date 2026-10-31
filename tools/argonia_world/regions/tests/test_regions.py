@@ -101,3 +101,39 @@ def test_border_has_a_shell_every_cell_lists():
     assert border in {r["formKey"] for r in api.shell_records(w)}
     from tools.argonia_world.terrain import world as tw
     assert tw.document((0, 0, 0, 0), __import__("pathlib").Path("."), w)["borderRegion"] == border
+
+
+def test_border_listed_only_on_cells_inside_the_polygon():
+    # vanilla's rule (Skyrim.esm: 5,609 of 5,610 listed cells have a corner inside BorderRegionSkyrim's polygon);
+    # listing every cell let the player walk 2 km past the west edge (game-20 s09)
+    from tools.argonia_world import skyrim_units as su
+    runs = api.border_cell_runs()
+    x0, y0 = su.PROVINCE_CELL_SW
+    n = su.PROVINCE_CELLS
+    assert {(r["cx0"], r["cx1"]) for r in runs} == {(x0, x0 + n - 1)}
+    assert [r["cy"] for r in runs] == list(range(y0, y0 + n))
+    tri = [[0.0, 0.0], [4096.0 * 3, 0.0], [0.0, 4096.0 * 3]]  # a triangle: the diagonal cells straddle the edge
+    cells = {(cx, r["cy"]) for r in api.border_cell_runs(tri) for cx in range(r["cx0"], r["cx1"] + 1)}
+    assert (0, 0) in cells and (2, 0) in cells and (1, 1) in cells and (2, 2) not in cells and (-1, 0) not in cells
+
+
+def test_border_wall_closes_the_polygon():
+    # the native fallback: CollisionMarker boxes on every border edge, overlapping, no gap at the corners
+    import math
+    poly = api.border_polygon()
+    pieces = api.border_wall_pieces(poly)
+    assert len(pieces) == 4 * su.PROVINCE_CELLS
+    for e in range(4):
+        ps = [p for p in pieces if p["edge"] == e]
+        assert math.isclose(sum(p["length"] for p in ps), su.PROVINCE_CELLS * su.CELL_UNITS)
+    south = [p for p in pieces if p["edge"] == 0]  # SW -> SE: along +x, the box's x already runs east
+    assert all(math.isclose(p["yaw"], 0.0) and math.isclose(p["y"], poly[0][1]) for p in south)
+    west = [p for p in pieces if p["edge"] == 3]  # NW -> SW: along -y, yaw 90 turns the box's x to north-south
+    assert all(math.isclose(p["yaw"], 90.0) for p in west)
+
+    class A:
+        def form_key(self, e, t, k):
+            return "000800:Argonia.esm"
+    refs = api.border_wall_refs(A(), lambda x, y: 3.0)
+    assert {r["base"] for r in refs} == {"000021:Skyrim.esm"}
+    assert all(r["primitive"]["bounds"][0] >= r["primitive"]["bounds"][1] for r in refs)

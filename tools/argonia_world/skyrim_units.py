@@ -150,6 +150,14 @@ QUADRANT_VERTS = QUADS_PER_CELL // 2 + 1  # 17
 QUADRANTS = ("BottomLeft", "BottomRight", "TopLeft", "TopRight")
 
 
+def skyrim_to_province(x: float, y: float) -> tuple[float, float]:
+    """The inverse of province_to_skyrim: Skyrim units as province metres (x east, y south from the NW corner)."""
+    x0, y0 = PROVINCE_CELL_SW
+    span = (PROVINCE_SAMPLES - 1) * VERTEX_SPACING_UNITS
+    return ((x - x0 * CELL_UNITS) / VERTEX_SPACING_UNITS * PROVINCE_SAMPLE_M,
+            (y0 * CELL_UNITS + span - y) / VERTEX_SPACING_UNITS * PROVINCE_SAMPLE_M)
+
+
 def province_to_skyrim(x_m: float, y_south_m: float) -> tuple[float, float]:
     """An imported province position (x east, y south from the north-west corner, metres) as Skyrim units."""
     x0, y0 = PROVINCE_CELL_SW

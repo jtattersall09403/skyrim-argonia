@@ -6,16 +6,19 @@ engine reads a cell's regions from its XCLR list, and ArgoniaWorld.esm's cells c
 dependant. So ArgoniaWorld.esm holds one REGN **shell** per region (EditorID and worldspace only), and its cells'
 XCLR link the shells. Argonia.esm **overrides** each shell with the authored part: areas, weather list, object list
 and map name. That override is what plugin/ serialises and a reviewer reads. The closed border region has a shell too,
-and every cell's XCLR lists it beside its land region: the engine only holds the player at a border region the
-current cell lists (Skyrim.esm lists BorderRegionSkyrim in 5,610 cells' XCLR; ours linked none and the player walked
-16 m past the west edge, game-19 s09). The shells' ids sit in a reserved range of ArgoniaWorld.esm (REGION_SHELL_BASE,
+and the XCLR of every cell that overlaps the border polygon lists it beside its land region, and no other cell does:
+Skyrim.esm lists BorderRegionSkyrim in 5,610 of Tamriel's 11,187 cells, exactly the cells with a corner inside its
+173-point polygon (5,609 of 5,610; lane-border-quit 2026-10-31). Ours linked none (game-19 s09, 16 m past the west
+edge), then every cell, outside ones too (game-20 s09, 2 km past). The shells' ids sit in a reserved range of ArgoniaWorld.esm (REGION_SHELL_BASE,
 below the water's 0x100000) and are kept append-only in the formid table under that plugin, so a region that comes
 or goes never renumbers the rest.
 
     shell_keys(world, frozen)            {land_region id: shell FormKey}
     shell_records(world)                 the shells, for terrain/world.py's document
     cell_region_runs(world)              [{cy, cx0, cx1, region: shell FormKey}], for the XCLR
-    border_shell_key(world)              the border region's shell, which every cell's XCLR also lists
+    border_shell_key(world)              the border region's shell, which the inside cells' XCLR also list
+    border_wall_refs(alloc, z_at)        the invisible collision wall on the border polygon (CollisionMarker boxes)
+    border_cell_runs(polygon)            [{cy, cx0, cx1}]: the cells overlapping the border polygon (vanilla's rule)
     climate_form_key(alloc)              the CLMT the WRLD override links
     layers(alloc, world, wrld)           the Argonia.esm layer: REGN overrides and the border, CLMT, WTHR, IMGS,
                                          the WChance globals, the TimeScale override, the WRLD override
@@ -74,6 +77,39 @@ def border_shell_key(world) -> str | None:
     return keys[row[0]["id"]] if row else None
 
 
+def _inside(px: float, py: float, poly) -> bool:
+    c = False
+    for k in range(len(poly)):
+        (x1, y1), (x2, y2) = poly[k], poly[k - 1]
+        if (y1 > py) != (y2 > py) and px < (x2 - x1) * (py - y1) / (y2 - y1) + x1:
+            c = not c
+    return c
+
+
+def border_cell_runs(poly=None) -> list[dict]:
+    """The cells whose square overlaps the border polygon, as row runs: vanilla's rule (a cell lists the border
+    when a corner lies inside it). Corners are tested 1 unit inside the cell, so a cell that only touches the edge
+    from outside is not listed."""
+    poly = poly if poly is not None else border_polygon()
+    c = su.CELL_UNITS
+    xs, ys = [p[0] for p in poly], [p[1] for p in poly]
+    out = []
+    for cy in range(int(min(ys) // c) - 1, int(max(ys) // c) + 1):
+        row = []
+        for cx in range(int(min(xs) // c) - 1, int(max(xs) // c) + 1):
+            x0, y0 = cx * c, cy * c
+            pts = [(x0 + 1, y0 + 1), (x0 + c - 1, y0 + 1), (x0 + 1, y0 + c - 1), (x0 + c - 1, y0 + c - 1),
+                   (x0 + c / 2, y0 + c / 2)]
+            if any(_inside(px, py, poly) for px, py in pts):
+                row.append(cx)
+        for cx in row:
+            if out and out[-1]["cy"] == cy and out[-1]["cx1"] == cx - 1:
+                out[-1]["cx1"] = cx
+            else:
+                out.append({"cy": cy, "cx0": cx, "cx1": cx})
+    return out
+
+
 def rectangles(runs: list[dict]) -> list[tuple[int, int, int, int]]:
     """Row runs of one region merged down the rows into rectangles (cx0, cy0, cx1, cy1), cells inclusive."""
     open_: dict[tuple[int, int], list[int]] = {}
@@ -101,6 +137,53 @@ def area(cx0: int, cy0: int, cx1: int, cy1: int) -> list[list[float]]:
 def border_polygon() -> list[list[float]]:
     from tools.argonia_world.terrain.edges import border_polygon as bp
     return bp()
+
+
+# --- the border wall: the native fallback behind the border region -------------------------------------------
+# The engine's own invisible collision box: Skyrim.esm's CollisionMarker STAT (000021), placed with a box primitive
+# (XPRM type 1) and no XTRI, as Skyrim places 762 of its 2,142 collision refs (SkyHaven's exterior wall among them).
+# Reviewed under decision 0012 (lane-border-quit, 2026-10-31): no mesh, no sound, no text; nothing reaches the player
+# but the stop. One box per cell length along each polygon edge; the box's x half-size is the whole piece length, so
+# the pieces overlap whether the engine reads XPRM as half or full extents (not measured yet).
+COLLISION_MARKER = "000021:Skyrim.esm"
+WALL_HALF_THICK_UNITS = 64.0
+WALL_HALF_HEIGHT_UNITS = 16384.0  # ~234 m each way about the ground at the piece's centre
+PRIMITIVE_BOX = 1
+
+
+def border_wall_pieces(poly=None) -> list[dict]:
+    """[{edge, i, x, y, yaw, length}]: the wall's pieces in Skyrim units, centred on the polygon's edges, each at most
+    one cell long; yaw is the box's local x as a world-frame yaw (degrees clockwise from north) minus 90."""
+    import math
+    poly = poly if poly is not None else border_polygon()
+    out = []
+    for e in range(len(poly)):
+        (ax, ay), (bx, by) = poly[e], poly[(e + 1) % len(poly)]
+        dx, dy = bx - ax, by - ay
+        length = math.hypot(dx, dy)
+        n = max(1, math.ceil(length / su.CELL_UNITS - 1e-9))
+        bearing = math.degrees(math.atan2(dx, dy))  # clockwise from north (+y)
+        for i in range(n):
+            t = (i + 0.5) / n
+            out.append({"edge": e, "i": i, "x": ax + dx * t, "y": ay + dy * t, "yaw": (bearing - 90.0) % 360.0,
+                        "length": length / n})
+    return out
+
+
+def border_wall_refs(alloc, z_at) -> list[dict]:
+    """The wall's persistent REFRs (the WRLD override's persistent cell), each on the final ground at its centre."""
+    out = []
+    for p in border_wall_pieces():
+        xm, ym = su.skyrim_to_province(p["x"], p["y"])
+        side = (su.PROVINCE_SAMPLES - 1) * su.PROVINCE_SAMPLE_M
+        z = su.metres_to_units(max(z_at(min(max(xm, 0.0), side - 0.01), min(max(ym, 0.0), side - 0.01)), 0.0))
+        e = f"ARG_BorderWall_{p['edge']}_{p['i']:03d}"
+        out.append({"formKey": alloc.form_key(e, "REFR", f"border.wall.{p['edge']}.{p['i']}"), "edid": e,
+                    "base": COLLISION_MARKER, "pos": [su.rounded(p["x"], 2), su.rounded(p["y"], 2), su.rounded(z, 2)],
+                    "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(p["yaw"])], "persistent": True,
+                    "primitive": {"bounds": [su.rounded(p["length"], 2), WALL_HALF_THICK_UNITS,
+                                             WALL_HALF_HEIGHT_UNITS], "type": PRIMITIVE_BOX}})
+    return out
 
 
 # --- colours ---------------------------------------------------------------------------------------------------
@@ -324,7 +407,7 @@ def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
             from tools.argonia_world.place_build import GameGround
             from tools.argonia_world.routes import infra
             refs, bases, _ = infra.refs(alloc, world, resolver, GameGround().z)  # the final ground (f6177a7)
-            over["persistentRefs"] = refs
+            over["persistentRefs"] = refs + border_wall_refs(alloc, GameGround().z)
             recs += bases
         recs.append(over)
     return [Layer("base:regions", recs)]

@@ -52,8 +52,12 @@ static class LandWorld
         foreach (var run in root.TryGetProperty("cellRegions", out var cr) ? cr.EnumerateArray() : Enumerable.Empty<JsonElement>())
             for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)
                 xclr[(cx, run.GetProperty("cy").GetInt32())] = FK(S(run, "region"));
-        // the border region, listed by every cell: the engine holds the player only at a border its cell lists
+        // the border region, listed only by the cells overlapping its polygon (borderCells; vanilla's rule, regions/api.py)
         FormKey? border = root.TryGetProperty("borderRegion", out var br) && br.ValueKind == JsonValueKind.String ? FK(br.GetString()!) : null;
+        var borderCells = new HashSet<(int, int)>();
+        foreach (var run in root.TryGetProperty("borderCells", out var bc) ? bc.EnumerateArray() : Enumerable.Empty<JsonElement>())
+            for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)
+                borderCells.Add((cx, run.GetProperty("cy").GetInt32()));
 
         // block (32 x 32 cells) -> sub-block (8 x 8) -> cells, all in number order: the bytes never depend on the
         // order the shards were read in
@@ -71,7 +75,7 @@ static class LandWorld
                 water?.ApplyCell(c, x, y);
                 nav?.ApplyCell(c, x, y);
                 if (xclr.TryGetValue((x, y), out var reg)) c.Regions = new ExtendedList<IFormLinkGetter<IRegionGetter>> { new FormLink<IRegionGetter>(reg) };
-                if (border is { } bk) (c.Regions ??= new ExtendedList<IFormLinkGetter<IRegionGetter>>()).Add(new FormLink<IRegionGetter>(bk));
+                if (border is { } bk && borderCells.Contains((x, y))) (c.Regions ??= new ExtendedList<IFormLinkGetter<IRegionGetter>>()).Add(new FormLink<IRegionGetter>(bk));
                 int bx = x >> 5, by = y >> 5, sx = x >> 3, sy = y >> 3;  // floor division, as the engine's blocks
                 if (!blocks.TryGetValue((bx, by), out var subs)) blocks[(bx, by)] = subs = new();
                 if (!subs.TryGetValue((sx, sy), out var cells)) subs[(sx, sy)] = cells = new();

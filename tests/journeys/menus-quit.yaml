@@ -1,6 +1,6 @@
 # fixes-1's owed L4 (the menu lag; the quit save, 2.8 §c): a menu opened in play stays open (game-8: the suspend
-# save's spinner closed the Journal), no suspend save is written on an opening, and quitting from the Journal's System
-# tab (the player's own Quit and its confirmation, by keys) writes ArgoniaSuspend as the confirmation closes. The
+# save's spinner closed the Journal), no suspend save is written on an opening, and the Journal's Quit (dev-quit-to-menu: the
+# engine's resetGame and the Journal's close, as its confirmation does) writes ArgoniaSuspend as the Journal closes. The
 # journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
 id: menus-quit
 runner: 1
@@ -22,14 +22,14 @@ steps:
   - name: journal-closed
     do: [{close_menu: journal}]
     expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
-  - name: system-tab         # Escape in play: the vanilla Journal Menu on its System tab
+  - name: system-opens       # Escape in play: the vanilla Journal Menu (engine), then closed by the close keys
     do: [{key: "ESC 80"}, {wait: 2}]
     expect: [{event: {kind: menu, match: Journal Menu}}]
-  - name: quit-confirmed     # Esc opened the Journal on Quests; the host's pad is live in it (g18c still: pad glyphs), so
-    do:                      # RB twice to System, the d-pad to Quit, A, A on Yes (START opens our journal view instead)
-      - {pad: "RB:80 wait:300 RB:80 wait:300"}
-      - {pad: "DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120 DOWN:80 wait:120"}
-      - {pad: "A:120 wait:1500 A:120"}
+  - name: system-closed      # closed once with no quit asked (close_menu fails the step when it does not close)
+    do: [{close_menu: Journal Menu}, {wait: 2}]
+  - name: quit-confirmed     # the Journal's Quit by the dev bridge (game-20: the pad route through the System tab was
+    do:                      # unreliable): resetGame set and the Journal shown and closed, as the confirmation does
+      - {call: [dev-quit-to-menu]}
       - {wait: 8}
     expect:
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}

@@ -268,6 +268,17 @@ static class RegionWriters
                 Placement = new Placement { Position = new P3Float(a[0], a[1], a[2]), Rotation = new P3Float(o[0], o[1], o[2]) },
             };
             refr.Base.SetTo(FK(S(p, "base")));
+            if (p.TryGetProperty("primitive", out var pr))  // the border wall's collision boxes (regions/api.py)
+            {
+                var b = pr.GetProperty("bounds").EnumerateArray().Select(x => x.GetSingle()).ToArray();
+                refr.Primitive = new PlacedPrimitive
+                {
+                    Bounds = new P3Float(b[0], b[1], b[2]),
+                    Color = System.Drawing.Color.FromArgb(255, 255, 0),  // vanilla's (1, 1, 0), editor only
+                    Unknown = 0.15f,
+                    Type = (PlacedPrimitive.TypeEnum)pr.GetProperty("type").GetInt32(),
+                };
+            }
             refr.MajorRecordFlagsRaw |= (int)PlacedObject.DefaultMajorFlag.Persistent;
             ws.TopCell!.Persistent.Add(refr);
         }

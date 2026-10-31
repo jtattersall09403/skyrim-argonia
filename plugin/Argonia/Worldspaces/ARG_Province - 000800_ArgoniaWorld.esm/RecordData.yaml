@@ -1196,5 +1196,7439 @@ TopCell:
     Base: 000034:Skyrim.esm
     Placement:
       Position: -215040.03, 14336.02, 29883.97
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_000
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -251904, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_001
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -247808, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_002
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -243712, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_003
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -239616, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_004
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -235520, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 0009FF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_005
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -231424, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A00:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_006
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -227328, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A01:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_007
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -223232, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A02:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_008
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -219136, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A03:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_009
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -215040, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A04:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_010
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -210944, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A05:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_011
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -206848, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A06:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_012
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -202752, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A07:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_013
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -198656, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A08:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_014
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -194560, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A09:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_015
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -190464, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_016
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -186368, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_017
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -182272, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_018
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -178176, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_019
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -174080, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_020
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -169984, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A0F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_021
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -165888, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A10:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_022
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -161792, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A11:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_023
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -157696, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A12:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -153600, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A13:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_025
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -149504, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A14:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_026
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -145408, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A15:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_027
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -141312, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A16:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_028
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -137216, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A17:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_029
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -133120, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A18:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_030
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -129024, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A19:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_031
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -124928, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_032
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -120832, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_033
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -116736, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_034
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -112640, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_035
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -108544, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_036
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -104448, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A1F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_037
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -100352, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A20:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_038
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -96256, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A21:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_039
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -92160, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A22:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_040
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -88064, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A23:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_041
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -83968, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A24:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_042
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -79872, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A25:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_043
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -75776, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A26:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_044
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -71680, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A27:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_045
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -67584, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A28:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_046
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -63488, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A29:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_047
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -59392, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_048
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -55296, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_049
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -51200, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_050
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -47104, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_051
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -43008, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_052
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -38912, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A2F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_053
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -34816, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A30:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_054
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -30720, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A31:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_055
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -26624, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A32:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_056
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -22528, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A33:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_057
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -18432, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A34:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_058
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -14336, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A35:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_059
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -10240, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A36:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_060
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -6144, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A37:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_061
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -2048, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A38:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_062
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 2048, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A39:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_063
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 6144, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_064
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 10240, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_065
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 14336, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_066
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 18432, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_067
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 22528, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_068
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 26624, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A3F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_069
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 30720, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A40:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_070
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 34816, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A41:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_071
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 38912, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A42:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_072
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 43008, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A43:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_073
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 47104, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A44:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_074
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 51200, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A45:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_075
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 55296, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A46:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_076
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 59392, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A47:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_077
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 63488, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A48:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_078
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 67584, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A49:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_079
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 71680, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_080
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 75776, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_081
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 79872, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_082
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 83968, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_083
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 88064, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_084
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 92160, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A4F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_085
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 96256, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A50:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_086
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 100352, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A51:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_087
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 104448, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A52:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_088
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 108544, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A53:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_089
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 112640, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A54:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_090
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 116736, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A55:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_091
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 120832, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A56:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_092
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 124928, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A57:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_093
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 129024, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A58:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_094
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 133120, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A59:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_095
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 137216, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_096
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 141312, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_097
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 145408, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_098
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 149504, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_099
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 153600, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_100
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 157696, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A5F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_101
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 161792, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A60:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_102
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 165888, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A61:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_103
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 169984, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A62:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_104
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 174080, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A63:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_105
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 178176, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A64:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_106
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 182272, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A65:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_107
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 186368, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A66:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_108
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 190464, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A67:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_109
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 194560, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A68:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_110
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 198656, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A69:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_111
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 202752, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_112
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 206848, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_113
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 210944, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_114
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 215040, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_115
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 219136, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_116
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 223232, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A6F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_117
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 227328, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A70:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_118
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 231424, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A71:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_119
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 235520, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A72:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_120
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 239616, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A73:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_121
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 243712, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A74:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_122
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 247808, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A75:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_123
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 251904, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A76:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_124
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 256000, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A77:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_0_125
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 260096, -253952, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A78:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_000
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -251904, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A79:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_001
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -247808, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_002
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -243712, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_003
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -239616, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_004
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -235520, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_005
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -231424, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_006
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -227328, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A7F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_007
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -223232, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A80:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_008
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -219136, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A81:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_009
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -215040, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A82:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_010
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -210944, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A83:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_011
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -206848, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A84:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_012
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -202752, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A85:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_013
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -198656, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A86:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_014
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -194560, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A87:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_015
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -190464, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A88:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_016
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -186368, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A89:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_017
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -182272, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_018
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -178176, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_019
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -174080, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_020
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -169984, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_021
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -165888, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_022
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -161792, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A8F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_023
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -157696, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A90:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -153600, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A91:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_025
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -149504, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A92:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_026
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -145408, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A93:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_027
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -141312, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A94:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_028
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -137216, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A95:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_029
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -133120, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A96:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_030
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -129024, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A97:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_031
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -124928, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A98:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_032
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -120832, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A99:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_033
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -116736, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_034
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -112640, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_035
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -108544, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_036
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -104448, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_037
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -100352, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_038
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -96256, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000A9F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_039
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -92160, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_040
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -88064, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_041
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -83968, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_042
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -79872, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_043
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -75776, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_044
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -71680, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_045
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -67584, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_046
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -63488, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_047
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -59392, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_048
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -55296, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AA9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_049
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -51200, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_050
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -47104, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_051
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -43008, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_052
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -38912, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_053
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -34816, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_054
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -30720, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AAF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_055
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -26624, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_056
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -22528, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_057
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -18432, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_058
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -14336, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_059
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -10240, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_060
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -6144, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_061
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, -2048, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_062
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 2048, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_063
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 6144, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_064
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 10240, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AB9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_065
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 14336, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_066
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 18432, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_067
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 22528, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_068
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 26624, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_069
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 30720, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_070
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 34816, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ABF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_071
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 38912, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_072
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 43008, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_073
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 47104, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_074
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 51200, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_075
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 55296, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_076
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 59392, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_077
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 63488, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_078
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 67584, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_079
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 71680, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_080
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 75776, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AC9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_081
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 79872, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_082
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 83968, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_083
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 88064, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_084
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 92160, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_085
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 96256, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_086
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 100352, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ACF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_087
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 104448, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_088
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 108544, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_089
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 112640, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_090
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 116736, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_091
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 120832, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_092
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 124928, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_093
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 129024, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_094
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 133120, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_095
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 137216, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_096
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 141312, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AD9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_097
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 145408, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_098
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 149504, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_099
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 153600, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_100
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 157696, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_101
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 161792, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_102
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 165888, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000ADF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_103
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 169984, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_104
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 174080, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_105
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 178176, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_106
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 182272, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_107
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 186368, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_108
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 190464, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_109
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 194560, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_110
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 198656, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_111
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 202752, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_112
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 206848, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AE9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_113
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 210944, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AEA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_114
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 215040, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AEB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_115
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 219136, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AEC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_116
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 223232, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AED:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_117
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 227328, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AEE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_118
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 231424, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AEF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_119
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 235520, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_120
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 239616, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_121
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 243712, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_122
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 247808, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_123
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 251904, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_124
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 256000, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_1_125
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 262144, 260096, 0
+      Rotation: 0, 0, 4.712389
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_000
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 260096, 262144, 24
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_001
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 256000, 262144, 88
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_002
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 251904, 262144, 96
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AF9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_003
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 247808, 262144, 96
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_004
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 243712, 262144, 96
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_005
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 239616, 262144, 96
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_006
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 235520, 262144, 528
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_007
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 231424, 262144, 1136
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_008
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 227328, 262144, 1520
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000AFF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_009
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 223232, 262144, 2152
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B00:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_010
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 219136, 262144, 2600
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B01:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_011
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 215040, 262144, 3384
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B02:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_012
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 210944, 262144, 3648
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B03:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_013
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 206848, 262144, 2840
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B04:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_014
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 202752, 262144, 1464
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B05:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_015
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 198656, 262144, 784
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B06:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_016
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 194560, 262144, 872
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B07:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_017
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 190464, 262144, 1168
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B08:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_018
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 186368, 262144, 1488
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B09:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_019
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 182272, 262144, 5096
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_020
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 178176, 262144, 5520
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_021
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 174080, 262144, 7400
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_022
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 169984, 262144, 7520
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_023
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 165888, 262144, 7144
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 161792, 262144, 6960
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B0F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_025
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 157696, 262144, 6752
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B10:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_026
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 153600, 262144, 6440
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B11:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_027
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 149504, 262144, 6792
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B12:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_028
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 145408, 262144, 6632
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B13:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_029
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 141312, 262144, 6120
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B14:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_030
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 137216, 262144, 6016
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B15:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_031
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 133120, 262144, 6528
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B16:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_032
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 129024, 262144, 6856
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B17:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_033
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 124928, 262144, 7296
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B18:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_034
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 120832, 262144, 7656
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B19:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_035
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 116736, 262144, 7712
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_036
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 112640, 262144, 7968
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_037
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 108544, 262144, 7760
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_038
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 104448, 262144, 7320
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_039
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 100352, 262144, 6992
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_040
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 96256, 262144, 6400
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B1F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_041
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 92160, 262144, 5960
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B20:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_042
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 88064, 262144, 5624
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B21:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_043
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 83968, 262144, 5832
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B22:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_044
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 79872, 262144, 6008
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B23:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_045
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 75776, 262144, 6192
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B24:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_046
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 71680, 262144, 6008
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B25:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_047
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 67584, 262144, 6584
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B26:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_048
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 63488, 262144, 7320
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B27:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_049
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 59392, 262144, 8160
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B28:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_050
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 55296, 262144, 8704
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B29:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_051
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 51200, 262144, 11968
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_052
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 47104, 262144, 9656
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_053
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 43008, 262144, 10008
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_054
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 38912, 262144, 10544
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_055
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 34816, 262144, 10672
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_056
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 30720, 262144, 10536
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B2F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_057
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 26624, 262144, 10152
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B30:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_058
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 22528, 262144, 9848
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B31:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_059
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 18432, 262144, 9192
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B32:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_060
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 14336, 262144, 8912
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B33:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_061
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 10240, 262144, 8168
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B34:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_062
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 6144, 262144, 7408
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B35:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_063
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 2048, 262144, 6592
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B36:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_064
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -2048, 262144, 5776
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B37:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_065
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -6144, 262144, 4680
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B38:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_066
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -10240, 262144, 3864
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B39:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_067
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -14336, 262144, 5384
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_068
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -18432, 262144, 4744
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_069
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -22528, 262144, 5624
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_070
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -26624, 262144, 6640
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_071
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -30720, 262144, 7552
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_072
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -34816, 262144, 8976
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B3F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_073
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -38912, 262144, 7544
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B40:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_074
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -43008, 262144, 8536
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B41:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_075
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -47104, 262144, 9672
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B42:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_076
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -51200, 262144, 10320
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B43:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_077
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -55296, 262144, 11328
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B44:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_078
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -59392, 262144, 14776
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B45:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_079
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -63488, 262144, 15320
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B46:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_080
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -67584, 262144, 24488
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B47:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_081
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -71680, 262144, 15952
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B48:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_082
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -75776, 262144, 24472
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B49:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_083
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -79872, 262144, 25160
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_084
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -83968, 262144, 25592
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_085
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -88064, 262144, 25824
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_086
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -92160, 262144, 25528
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_087
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -96256, 262144, 25520
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_088
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -100352, 262144, 25888
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B4F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_089
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -104448, 262144, 25328
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B50:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_090
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -108544, 262144, 25504
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B51:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_091
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -112640, 262144, 25816
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B52:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_092
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -116736, 262144, 25808
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B53:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_093
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -120832, 262144, 25864
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B54:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_094
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -124928, 262144, 26104
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B55:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_095
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -129024, 262144, 25504
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B56:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_096
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -133120, 262144, 25072
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B57:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_097
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -137216, 262144, 26200
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B58:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_098
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -141312, 262144, 34856
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B59:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_099
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -145408, 262144, 35840
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_100
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -149504, 262144, 35816
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_101
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -153600, 262144, 35656
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_102
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -157696, 262144, 35632
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_103
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -161792, 262144, 36000
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_104
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -165888, 262144, 36480
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B5F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_105
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -169984, 262144, 44960
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B60:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_106
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -174080, 262144, 45536
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B61:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_107
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -178176, 262144, 45464
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B62:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_108
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -182272, 262144, 45200
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B63:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_109
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -186368, 262144, 44696
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B64:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_110
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -190464, 262144, 36720
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B65:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_111
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -194560, 262144, 36000
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B66:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_112
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -198656, 262144, 35552
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B67:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_113
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -202752, 262144, 35552
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B68:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_114
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -206848, 262144, 35624
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B69:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_115
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -210944, 262144, 35952
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_116
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -215040, 262144, 35800
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_117
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -219136, 262144, 36056
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_118
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -223232, 262144, 34880
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_119
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -227328, 262144, 26120
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_120
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -231424, 262144, 25536
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B6F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_121
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -235520, 262144, 25256
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B70:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_122
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -239616, 262144, 24304
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B71:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_123
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -243712, 262144, 15520
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B72:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_124
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -247808, 262144, 14968
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B73:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_2_125
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -251904, 262144, 15584
+      Rotation: 0, 0, 3.141593
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B74:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_000
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 260096, 16616
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B75:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_001
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 256000, 15640
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B76:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_002
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 251904, 13984
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B77:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_003
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 247808, 15192
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B78:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_004
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 243712, 17000
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B79:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_005
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 239616, 17400
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_006
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 235520, 17056
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_007
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 231424, 16728
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_008
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 227328, 16096
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_009
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 223232, 15272
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_010
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 219136, 14304
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B7F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_011
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 215040, 12464
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B80:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_012
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 210944, 13200
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B81:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_013
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 206848, 14200
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B82:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_014
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 202752, 14512
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B83:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_015
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 198656, 17208
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B84:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_016
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 194560, 15400
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B85:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_017
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 190464, 14312
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B86:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_018
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 186368, 14544
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B87:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_019
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 182272, 15152
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B88:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_020
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 178176, 15528
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B89:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_021
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 174080, 16688
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_022
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 169984, 17168
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_023
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 165888, 17320
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 161792, 16672
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_025
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 157696, 16152
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_026
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 153600, 17944
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B8F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_027
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 149504, 19352
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B90:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_028
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 145408, 20224
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B91:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_029
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 141312, 23336
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B92:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_030
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 137216, 27632
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B93:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_031
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 133120, 28736
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B94:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_032
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 129024, 28464
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B95:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_033
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 124928, 28928
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B96:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_034
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 120832, 27176
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B97:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_035
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 116736, 23968
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B98:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_036
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 112640, 21992
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B99:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_037
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 108544, 18296
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9A:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_038
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 104448, 15904
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9B:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_039
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 100352, 15568
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9C:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_040
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 96256, 15856
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9D:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_041
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 92160, 16760
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9E:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_042
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 88064, 15912
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000B9F:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_043
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 83968, 14928
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_044
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 79872, 13072
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_045
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 75776, 12352
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_046
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 71680, 9376
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_047
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 67584, 6152
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_048
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 63488, 3480
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_049
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 59392, 2488
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_050
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 55296, 2192
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_051
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 51200, 2352
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_052
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 47104, 2336
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BA9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_053
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 43008, 1816
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_054
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 38912, 2440
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_055
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 34816, 6320
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_056
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 30720, 10720
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_057
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 26624, 14000
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_058
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 22528, 15680
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BAF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_059
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 18432, 17464
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_060
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 14336, 18632
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_061
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 10240, 19192
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_062
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 6144, 17608
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_063
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, 2048, 15344
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_064
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -2048, 13008
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_065
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -6144, 12248
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_066
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -10240, 11800
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_067
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -14336, 12032
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_068
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -18432, 14352
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BB9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_069
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -22528, 17736
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_070
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -26624, 12144
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_071
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -30720, 11368
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_072
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -34816, 10560
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_073
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -38912, 9840
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_074
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -43008, 8480
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BBF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_075
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -47104, 7632
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_076
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -51200, 80
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_077
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -55296, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_078
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -59392, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_079
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -63488, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_080
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -67584, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_081
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -71680, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_082
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -75776, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_083
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -79872, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_084
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -83968, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BC9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_085
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -88064, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_086
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -92160, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_087
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -96256, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_088
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -100352, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_089
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -104448, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_090
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -108544, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BCF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_091
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -112640, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_092
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -116736, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_093
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -120832, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_094
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -124928, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_095
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -129024, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_096
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -133120, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_097
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -137216, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_098
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -141312, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_099
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -145408, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_100
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -149504, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BD9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_101
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -153600, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_102
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -157696, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_103
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -161792, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_104
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -165888, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_105
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -169984, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_106
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -174080, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BDF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_107
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -178176, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_108
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -182272, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_109
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -186368, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_110
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -190464, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_111
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -194560, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_112
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -198656, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_113
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -202752, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_114
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -206848, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_115
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -210944, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_116
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -215040, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BE9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_117
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -219136, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BEA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_118
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -223232, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BEB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_119
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -227328, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BEC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_120
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -231424, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BED:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_121
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -235520, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BEE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_122
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -239616, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BEF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_123
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -243712, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BF0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_124
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -247808, 0
+      Rotation: 0, 0, 1.570796
+  - MutagenObjectType: PlacedObject
+    FormKey: 000BF1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BorderWall_3_125
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000021:Skyrim.esm
+    Primitive:
+      Bounds: 4096, 64, 16384
+      Color: '#00FFFF00'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: -253952, -251904, 0
+      Rotation: 0, 0, 1.570796
   MajorFlags:
   - Persistent
