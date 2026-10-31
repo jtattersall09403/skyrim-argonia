@@ -242,6 +242,29 @@ std::optional<std::string> close_intent(std::string_view v, const CloseControl& 
   return std::nullopt;
 }
 
+namespace {
+std::string untagged_trimmed(std::string_view s) {
+  std::string out;
+  bool tag = false;
+  for (char ch : s) {
+    if (ch == '<') tag = true;
+    else if (ch == '>') tag = false;
+    else if (!tag && ch != '\r') out += ch;
+  }
+  const auto a = out.find_first_not_of(" \t"), b = out.find_last_not_of(" \t");
+  return a == std::string::npos ? std::string{} : out.substr(a, b - a + 1);
+}
+}  // namespace
+
+std::optional<PromptText> prompt_from_activate_text(std::string_view text, std::string_view name) {
+  const auto nl = text.find('\n');
+  PromptText p{untagged_trimmed(text.substr(0, nl)),
+               nl == std::string_view::npos ? std::string{} : untagged_trimmed(text.substr(nl + 1))};
+  if (p.verb.empty()) return std::nullopt;
+  if (p.target.empty()) p.target = untagged_trimmed(name);
+  return p;
+}
+
 bool ClosePressGuard::swallow(std::uint32_t key, bool down, bool up, bool modal_open) {
   const auto it = std::find(held_.begin(), held_.end(), key);
   if (down) {

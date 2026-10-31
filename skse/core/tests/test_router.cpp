@@ -91,15 +91,19 @@ void intents_reach_their_view() {
 
 // 1.2 §d: the vanilla bars and the compass are hidden through their rows; no restyled row's clip is.
 void vanilla_hud_hidden() {
-  CHECK((hidden_hud_clips() == std::vector<std::string_view>{"Health", "Magica", "Stamina", "CompassShoutMeterHolder"}));
-  bool bars = false, compass = false;
+  CHECK((hidden_hud_clips() == std::vector<std::string_view>{"Health", "Magica", "Stamina", "CompassShoutMeterHolder",
+                                                             "RolloverText", "RolloverInfoText", "RolloverNameInstance",
+                                                             "RolloverInfoInstance", "RolloverButton_tf",
+                                                             "RolloverGrayBar_mc", "ActivateButton_tf"}));
+  bool bars = false, compass = false, prompt = false;
   for (const auto& c : kHudClips) {
     CHECK(row(c.surface).kind == SurfaceKind::hud && row(c.surface).hook == HookId::hudElements);
     CHECK(row(c.surface).replacement != Replacement::restyled);
     bars |= c.surface == SurfaceId::hudBars;
     compass |= c.surface == SurfaceId::hudCompass;
+    prompt |= c.surface == SurfaceId::hudPrompt;
   }
-  CHECK(bars && compass);
+  CHECK(bars && compass && prompt);
   CHECK(row(SurfaceId::hudBars).replacement == Replacement::view && row(SurfaceId::hudBars).by == "hud");
 
   // game-10: the list held 22 entries and none matched by mark; any one of identity, mark or name takes it out.

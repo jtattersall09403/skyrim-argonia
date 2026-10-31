@@ -29,6 +29,13 @@ void close_press_is_consumed() {
   CHECK(!g.swallow(1, true, false, true) && !g.swallow(2, false, true, false));  // another button's release passes
 }
 
+void prompt_text() {
+  CHECK((prompt_from_activate_text("Talk", "Takes-the-Ledger") == PromptText{"Talk", "Takes-the-Ledger"}));
+  CHECK((prompt_from_activate_text("Take\nLedger", "x") == PromptText{"Take", "Ledger"}));
+  CHECK((prompt_from_activate_text("<font color='#FFFFFF'>Open</font>\r\n <b>Chest</b> ", "") == PromptText{"Open", "Chest"}));
+  CHECK(!prompt_from_activate_text("", "Chest") && !prompt_from_activate_text("<font></font>\nChest", "Chest"));
+}
+
 void close_controls() {
   const CloseControl esc{false, false, true, false}, tab{false, true, false, false}, b{true, false, false, false},
       m{false, false, false, true}, none{};
@@ -200,6 +207,7 @@ void the_probe() {
 int main() {
   close_press_is_consumed();
   close_controls();
+  prompt_text();
   the_table();
   push_waits_for_ready();
   one_modal();

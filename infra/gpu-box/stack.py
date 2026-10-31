@@ -968,6 +968,8 @@ def cmd_push(a):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")
     for f in ("stack.ps1", "grab.ps1", "splash.ps1", "display.ps1"):
         run("put", str(HERE / f), f"C:/argonia/infra/{f}")
+    if todo:  # a push alone left Data's chart/main.js stale (ui-review2): what changed is laid into Data at once
+        run("ps", r"if (Test-Path C:\argonia\stack-state\mode-on) { & C:\argonia\infra\stack.ps1 on | Out-Null }")
     print(f"pushed {len(todo)} changed of {len(names)} mods")
 
 

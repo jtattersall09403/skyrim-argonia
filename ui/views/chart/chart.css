@@ -1,6 +1,6 @@
 /* The chart: the parchment in a paper frame, the controls along the foot, the places' names only on focus. */
-#view { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
-.chart { width: 96vw; height: 94vh; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2); }
+#view { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--paper-dark); }  /* opaque: play never shows round the chart (ui-review3) */
+.chart { width: 100vw; height: 100vh; box-sizing: border-box; display: flex; flex-direction: column; gap: var(--s2); padding: var(--s2); }
 /* .paper (theme.css) gives the sheet its mottle, which shows in the margins where the chart is narrower than the sheet. */
 .sheet { position: relative; flex: 1; min-height: 0; overflow: hidden; border: 1px solid var(--ink-soft); box-shadow: none; border-radius: 0;
   /* a fibre mottle over the paper tokens, so the margins are paper and not a gradient (inline noise, no texture file) */

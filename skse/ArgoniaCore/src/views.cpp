@@ -37,6 +37,7 @@ std::map<std::string, prisma::View, std::less<>> g_ids;  // our view id -> Prism
 std::atomic<bool> g_hud_loop{false};
 ac::views::ClosePressGuard g_close_guard;  // under Get().lock
 std::string g_vanilla_hud = "vanilla-hud not yet hidden";  // ViewsReport's line: what the last hide found
+std::optional<ac::msg::Prompt> g_prompt;  // the crosshair's activation prompt; main thread only (CrosshairSink's task)
 
 double Now() {
   return std::chrono::duration<double>(std::chrono::steady_clock::now().time_since_epoch()).count();
@@ -238,17 +239,79 @@ void HideVanillaHud() {
   SKSE::log::info("views: {}", g_vanilla_hud);
 }
 
+void RegisterCrosshair();  // below, beside its sink
+void PushHudState();
+
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
     if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
       SKSE::GetTaskInterface()->AddTask([] {
         std::lock_guard l(Get().lock);
+        RegisterCrosshair();
         HideVanillaHud();
       });
     return RE::BSEventNotifyControl::kContinue;
   }
 };
+
+// --- the activation prompt (the hudPrompt row: our view; the vanilla rollover clips are hidden) ---------------------
+// The keyboard key bound to Activate, as the keycap's label (DirectInput scan codes of the letter rows).
+std::string ActivateKey() {
+  static constexpr std::string_view rows[] = {"QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"};
+  static constexpr std::uint32_t first[] = {0x10, 0x1E, 0x2C};
+  const auto* cm = RE::ControlMap::GetSingleton();
+  const auto* ue = RE::UserEvents::GetSingleton();
+  const auto k = cm && ue ? cm->GetMappedKey(ue->activate.c_str(), RE::INPUT_DEVICE::kKeyboard) : 0x12u;
+  for (int r = 0; r < 3; ++r)
+    if (k >= first[r] && k < first[r] + rows[r].size()) return std::string(1, rows[r][k - first[r]]);
+  return "E";
+}
+
+void SetPrompt(RE::TESObjectREFR* ref) {
+  std::optional<ac::msg::Prompt> next;
+  auto* base = ref ? ref->GetBaseObject() : nullptr;
+  RE::BSString text;
+  if (base && !ref->IsDisabled() && base->GetActivateText(ref, text)  /* the activated reference (passing the player named it: "Talk Prisoner") */) {
+    const char* name = ref->GetDisplayFullName();
+    if (auto p = ac::views::prompt_from_activate_text(text.c_str() ? text.c_str() : "", name ? name : ""))
+      next = ac::msg::Prompt{p->verb, p->target,
+                             {{ac::msg::InputDevice::keyboard, "key." + ActivateKey()},
+                              {ac::msg::InputDevice::gamepad, "pad.A"}}};
+  }
+  if (next == g_prompt) return;
+  SKSE::log::info("views: prompt {}", next ? next->verb + " " + next->target
+                                          : std::string(ref ? "none (no activate text)" : "none"));
+  g_prompt = std::move(next);
+  std::lock_guard l(Get().lock);
+  if (g_api) PushHudState();
+}
+
+class CrosshairSink final : public RE::BSTEventSink<SKSE::CrosshairRefEvent> {
+ public:
+  RE::BSEventNotifyControl ProcessEvent(const SKSE::CrosshairRefEvent* e, RE::BSTEventSource<SKSE::CrosshairRefEvent>*) override {
+    RE::ObjectRefHandle h = e && e->crosshairRef ? e->crosshairRef->CreateRefHandle() : RE::ObjectRefHandle{};
+    SKSE::GetTaskInterface()->AddTask([h] {
+      auto ref = h.get();
+      SetPrompt(ref.get());
+    });
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
+
+// Registered at bind and again at each HUD Menu opening until the source exists (it may not at bind).
+void RegisterCrosshair() {
+  static CrosshairSink crosshair;
+  static bool done = false;
+  if (done) return;
+  if (auto* src = SKSE::GetCrosshairRefEventSource()) {
+    src->AddEventSink(&crosshair);
+    done = true;
+    SKSE::log::info("views: crosshair sink registered (the activation prompt)");
+  } else {
+    SKSE::log::warn("views: no crosshair event source yet");
+  }
+}
 
 // --- the journal -------------------------------------------------------------------------------------------------
 void OpenJournal(const ac::msg::JournalPage& at) {
@@ -310,6 +373,7 @@ void PushHudState() {
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
   s.vastei = {std::int64_t(c.state.prog.vastei), std::nullopt};
+  s.prompt = g_prompt;
   if (s.visible) ac::journal::show(c.journal_notices, Now());
   else ac::journal::hide(c.journal_notices, Now());
   for (const auto& n : ac::journal::live(c.journal_notices, Now()))
@@ -464,6 +528,7 @@ void ViewsDataLoaded() {
   if (auto* idm = RE::BSInputDeviceManager::GetSingleton()) idm->PrependEventSink(&input);
   static CellSink cells;
   if (auto* p = RE::PlayerCharacter::GetSingleton()) p->AsBGSActorCellEventSource()->AddEventSink(&cells);
+  RegisterCrosshair();
   if (c.router.install(ac::router::HookId::hudElements, &why)) {
     static HudMenuSink hud;
     if (auto* ui = RE::UI::GetSingleton()) ui->AddEventSink<RE::MenuOpenCloseEvent>(&hud);

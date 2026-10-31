@@ -91,6 +91,15 @@ struct CloseControl {
 };
 std::optional<std::string> close_intent(std::string_view open_view, const CloseControl& c, bool conversation_open);
 
+// The activation prompt (1.2 §d, the hudPrompt row is our view): the engine's activate text for the crosshair's
+// reference ("Talk", "Take\nLedger", "<font color='#FFFFFF'>Open</font>\nChest") read into a verb and a target; the
+// target falls back to the reference's display name. Tags are dropped. Nothing when there is no verb.
+struct PromptText {
+  std::string verb, target;
+  bool operator==(const PromptText&) const = default;
+};
+std::optional<PromptText> prompt_from_activate_text(std::string_view activate_text, std::string_view display_name);
+
 class ClosePressGuard {
  public:
   // True when the adapter must hide this event from the game.

@@ -11,7 +11,7 @@ pytest.importorskip("fontTools")
 from fontTools.fontBuilder import FontBuilder  # noqa: E402
 from fontTools.pens.ttGlyphPen import TTGlyphPen  # noqa: E402
 
-from tools.ui_theme import fontlib, retheme, swf  # noqa: E402
+from tools.ui_theme import build, fontlib, retheme, swf  # noqa: E402
 from tools.ui_theme.palette import Palette, tokens  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -167,3 +167,11 @@ def test_title_svg_is_generated_from_its_source():
 
     assert (ROOT / "ui/title/argonia-title.svg").read_text() == title.svg()
     assert "ARGONIA" in title.svg() and "Skyrim" not in title.svg()
+
+
+def test_skyui_list_sizes_are_raised_and_a_changed_config_fails():
+    cfg = "defaults.entry.textFormat.size = 14\n  defaults.label.textFormat.size=12\ncolumns.x.size = 9\n"
+    out, missing = build.list_sizes(cfg)
+    assert "defaults.entry.textFormat.size = 20" in out and "defaults.label.textFormat.size=16" in out
+    assert "columns.x.size = 9" in out and missing == []
+    assert build.list_sizes("nothing here\n")[1] == list(build.LIST_SIZES)

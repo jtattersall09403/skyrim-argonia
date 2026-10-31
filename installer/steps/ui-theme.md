@@ -8,6 +8,10 @@ Needs: Python with the `py:` pins in `infra/build-vm/toolchain.lock` (numpy, pil
 Pelagiad (OFL) with its LICENSE.txt, which the installer fetches as `tools/chart fetch-font` does; Dear Diary (23010),
 Wood and Paper (44174) and the Oblivion-like Loading Menu (38708) laid as the profile's FOMOD choices record.
 
+0. **One command** for steps 1-2 plus the SkyUI list sizes (ui-review3: the font library had gone to a folder that
+   was never staged, so every menu kept Skyrim's condensed face; the item lists read ~10 px at 1080p):
+   `python -m tools.ui_theme.build --mods <mods> --ttf <Pelagiad.ttf> --out <mods>/argonia-theme` writes all of the
+   below and `interface/skyui/config.txt` (Dear Diary's, entry text 14 to 20, labels 12 to 16). Exit 1 as below.
 1. **Font library.**
    `python -m tools.ui_theme.fontlib --ttf <Pelagiad.ttf> --out <mods>/argonia-theme --check <mods>/dear-diary <mods>/skyui <mods>/wood-and-paper <mods>/oblivion-loading-menu`
    writes `interface/fonts_pelagiad.swf` and `interface/fontconfig.txt`. Exit 1 means a menu imports a font name the

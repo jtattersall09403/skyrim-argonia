@@ -74,11 +74,20 @@ struct HudClip {
   std::string_view clip;
 };
 inline constexpr std::string_view kHudRoot = "_root.HUDMovieBaseInstance";
-inline constexpr std::array<HudClip, 4> kHudClips{{
+inline constexpr std::array<HudClip, 11> kHudClips{{
     {SurfaceId::hudBars, "Health"},
     {SurfaceId::hudBars, "Magica"},
     {SurfaceId::hudBars, "Stamina"},
     {SurfaceId::hudCompass, "CompassShoutMeterHolder"},  // the compass and the shout meter share the holder
+    // the activation prompt's text, button and bar (ui-review3: "E Talk" in vanilla white, no plate): our HUD's
+    // prompt replaces them; a name the movie lacks is logged as missing on the Views line
+    {SurfaceId::hudPrompt, "RolloverText"},
+    {SurfaceId::hudPrompt, "RolloverInfoText"},
+    {SurfaceId::hudPrompt, "RolloverNameInstance"},
+    {SurfaceId::hudPrompt, "RolloverInfoInstance"},
+    {SurfaceId::hudPrompt, "RolloverButton_tf"},
+    {SurfaceId::hudPrompt, "RolloverGrayBar_mc"},
+    {SurfaceId::hudPrompt, "ActivateButton_tf"},
 }};
 // The clips to hide: those whose row is not restyled, in table order.
 std::vector<std::string_view> hidden_hud_clips();
