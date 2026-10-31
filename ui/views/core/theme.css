@@ -23,13 +23,26 @@
   --moss: #4b5a2a;        /* focus and selection */
   --focus: #b0702a;       /* the focus ring: amber, seen on paper and over play */
   /* the HUD over play */
-  --bar-health: #9a2f22;
-  --bar-stamina: #3f6e2c;
-  --bar-magicka: #2f4f96;
+  --bar-health: #7e2a1e;
+  --bar-stamina: #42622c;
+  --bar-magicka: #34506e;
   --bar-breath: #3a7884;
   --bar-climb: #b07a26;
+  /* each bar's lit tone: the fill runs from its hue at the root to this at the leading edge (1.11) */
+  --bar-health-hi: #b65438;
+  --bar-stamina-hi: #7d9450;
+  --bar-magicka-hi: #6f8fae;
+  --bar-breath-hi: #6cadb5;
+  --bar-climb-hi: #d9a24e;
+  --trail: #dba66e;       /* the damage trail: what was just lost, warm amber */
   --trough: rgba(18, 14, 8, 0.82);
   --plate: rgba(230, 217, 184, 0.92);
+  /* the HUD's own plates over play (1.11): dark lacquer with a bronze hairline, paper-light words */
+  --hud-plate: rgba(20, 16, 10, 0.74);
+  --hud-trim: #9c8259;
+  --hud-trim-hi: #d4b27a;
+  --hud-text: #f1e8cf;
+  --hud-text-soft: #cdbb8f;
   /* space and type (1rem is set from the device by scale.ts, the one place) */
   --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem;
   --t-body: 1rem; --t-head: 1.25rem; --t-title: 1.6rem; --t-banner: 2.6rem;

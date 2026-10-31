@@ -14,7 +14,7 @@ import { remFor } from "../core/scale.ts";
 import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, transform } from "../chart/geom.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
-import { barLength, render as hud, renderBars } from "../hud/render.ts";
+import { barLength, isLow, remember, render as hud, renderBars } from "../hud/render.ts";
 import { render as journal, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 
@@ -242,4 +242,21 @@ test("label collisions: by priority, a clashing label moves to a free spot or is
   const kept = crowd.filter((b) => s2.get(b.id)).map((b) => ({ ...b, x: b.x + s2.get(b.id)![0], y: b.y + s2.get(b.id)![1] }));
   for (let i = 0; i < kept.length; i++) for (let j = i + 1; j < kept.length; j++) assert.ok(!hits(kept[i], kept[j]), `${i}/${j}`);
   assert.ok(kept.length >= 3);
+});
+
+test("the HUD's damage trail holds what was lost, a rise marks regeneration, and low health is a quarter (1.11)", () => {
+  const h = (current: number): HudState["bars"] => [{ kind: "health", current, max: 100, shown: true }];
+  let s = remember({}, h(80), { trail: {}, regen: new Set() });
+  assert.deepEqual(s.mem.trail, {}, "the first push has no trail");
+  s = remember(s.last, h(50), s.mem);
+  assert.equal(s.mem.trail.health, 80, "a hit leaves the trail at what was held");
+  s = remember(s.last, h(30), s.mem);
+  assert.equal(s.mem.trail.health, 80, "a second hit keeps the trail at the first height");
+  assert.match(renderBars(h(30), s.mem), /data-trail="health" style="width:80\.0%"[^]*class="fill" style="width:30\.0%"/);
+  s = remember(s.last, h(40), { trail: {}, regen: s.mem.regen });
+  assert.ok(s.mem.regen.has("health") && renderBars(h(40), s.mem).includes("bar health regen"), "a rise regenerates");
+  assert.ok(isLow(h(25)) && !isLow(h(26)), "low at a quarter");
+  assert.match(hud({ ...(fx("hud").states.lowHealth as { body: HudState }).body }), /class="hud low"/);
+  const calm = hud((fx("hud").states.play as { body: HudState }).body);
+  assert.ok(calm.indexOf("data-bars") < calm.indexOf('class="vastei'), "vastei under the bars, in the top-left column");
 });
