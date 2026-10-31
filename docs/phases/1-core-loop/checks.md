@@ -138,3 +138,55 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Stop 13: the distant view's stills from a high point | 2.W4 §c | L4 | proven | journey:world-sample#s13 pass out/batch/adhoc/20261031T103633 |
 | Distant terrain (xLODGen) restored on the play machine and a Claywater still judged: no missing tiles | 2.W4 §c | L4 | owed | docs/research/2026-10-31/lane-game-21.md:27 |
 | The near-to-LOD hand-off, a clip | 2.W4 | L5 | owed | no clip made |
+
+## 1.8 A play machine you can rely on
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| The owner has ruled on the machine from an evidence-based call (interruption bands, placement scores, prices, latency), and it is built | 1.8, owner play test 12 | L6 | owed | reclaimed twice on 2026-10-31, the second at once on a retry (docs/research/2026-10-31/owner-playtest-1.md); on-demand ruled out by the owner |
+| A simulated spot interruption (the metadata mock) writes the suspend save | 1.8 | L4 | owed | not built |
+| The baked image boots to the Argonia menu with no first-boot fix by hand | 1.8 | L4 | owed | not built |
+| `machine_inventory.sh` shows nothing unarchived on London and on Paris | 1.8, docs/machine-moves.md | L4 | owed | London: 6 MO2 folders unarchived (docs/research/2026-10-31/lane-records.md) |
+| `saves.sh backup` succeeds at a stop | 1.8 | L4 | owed | "saves backup failed" at London's stop (docs/research/2026-10-31/lane-game-22.md) |
+| wake.yml's "play" comment starts the Paris machine | 1.8, #27 | L6 | owed | unproved until the owner's next "play" |
+
+## 1.9 The front door and loads
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | owed | black screen with the HUD, nothing works (docs/research/2026-10-31/owner-playtest-1.md) |
+| No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | owed | the owner saw it |
+| No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | owed | the owner saw it |
+| A reader over 3 load stills: our picture, our frame (no Celtic knot), readable unsquashed text, no HUD | owner play test 7, 8; game-22 reader | L4 | owed | knot frame from loadingmenu.swf (docs/research/2026-10-31/lane-game-22.md) |
+
+## 1.10 The player character
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| A reader over front, side and back full-body stills: an Argonian head, no Nord features, natural hair and tint | owner play test 6; game-22 reader | L4 | owed | a Nord head on an Argonian body; neon yellow-green hair |
+| The same from `argoniabase` and from a fresh base save | 1.10 | L4 | owed | — |
+
+## 1.11 Our HUD, rebuilt from the old game's
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| The old HUD's inventory: every element built or dropped with a reason | owner play test 5 | L1 | owed | not done |
+| A reader over calm, fight and low-health stills: no flat primary bars, vastei top left, nothing overlapping | owner play test 5 | L4 | owed | flat primary bars; vastei bottom right |
+| The owner says the HUD looks right | owner play test 5 | L6 | owed | — |
+
+## 1.12 Menus
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| The system menu (settings, load, quit) opens from play by pad, keyboard and touch | owner play test 11 | L4 | owed | the owner found no way to open it |
+| The pause menu: sentence-case labels and our proportions (a reader) | owner play test 10 | L4 | owed | all caps; squashed horizontally |
+| Favourites open by Q and D-up with a favourite set | game-22 | L4 | owed | `dev-favorite` misses weapons by editor id (docs/research/2026-10-31/lane-game-22.md) |
+
+## 1.13 The chart
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| Full zoom-out shows the whole province, nothing cut off | owner play test 9 | L4 | owed | bottom cut off |
+| The player marker shows at the player | owner play test 9 | L4 | owed | none |
+| The area around the player reveals as they explore, and holds after a save and load | owner play test 9 | L4 | owed | not revealed |
+| The chart's art is the old project's hand-drawn map (or its design) | owner note (tmp/owner-message.md) | L3 | owed | unconfirmed |

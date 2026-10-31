@@ -19,11 +19,21 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.4 | One quest through the journal | in progress (LF83 record, lines, QUST: 979cf55 7ccb595 dfc29b9; lf83-components green (lane-game-19.md); lf83-endings and quest-board green (lane-game-18.md); first-place green (lane-game-17.md); owed: the Part 1 batch in one pass) |
 | 1 | 1.5 | Grow, die, rest, save | in progress (life module L2: 4bfe537 f2582ea 0f3eaa4; sitting 48c12a6; rest-is-the-only-save, suspend-save, rest-respawn green (lane-game-17.md); grow-at-rest green once (lane-game-19.md); owed: die-and-recover (red at die, lane-game-21.md); rest-respawn-cleared (respawn until the place is wholly cleared, then never) when a clearable place is built) |
 | 1 | 1.6 | Fight on the tuned stack, wired to the sheet | in progress (wiring spec L1 dbf8da4; fight-damage-builds, fight-lock-on, fight-roll-burden, combat-trial-a, croc-den green (lane-game-17.md); fight-archetype green as our records only c413ce5 (lane-game-18.md); owed: the Part 1 batch in one pass) |
-| 1 | 1.7 | The first-place journey and the owner's verdict | in progress (packet drafted, docs/research/2026-10-30/verdict-packet-draft.md; waits on 1.2's and 1.5's reds and the distant terrain (2.W4)) |
+| 1 | 1.8 | A play machine you can rely on | todo |
+| 1 | 1.9 | The front door and loads | todo |
+| 1 | 1.10 | The player character | todo |
+| 1 | 1.11 | Our HUD, rebuilt from the old game's | todo |
+| 1 | 1.12 | Menus: the system menu, the pause menu, quit, favourites, touch | todo |
+| 1 | 1.13 | The chart | todo |
+| 1 | 1.14 | Death, the pile and respawn | todo |
+| 1 | 1.15 | The world track's close | todo |
+| 1 | 1.16 | The owed integration checks | todo |
+| 1 | 1.17 | Frame rate and the screen numbers | todo |
+| 1 | 1.7 | The first-place journey and the owner's verdict | in progress (packet drafted, docs/research/2026-10-30/verdict-packet-draft.md; waits on 1.8–1.17, the owner's first play test docs/research/2026-10-31/owner-playtest-1.md) |
 | 2 | 2.W1 | Terrain, apron and edges (the world track starts after 0.4, beside Part 1) | in progress (data: 82df321 0b9d5a7; world-sample green once on London, stops 1-3 first (lane-game-21.md); owed: stop 13, the distant view, after the xLODGen LOD is restored) |
 | 2 | 2.W2 | Water | in progress (designed water: 1aa04cc 44d5bae; world-sample stops 4-7 green (lane-game-19.md); water-swim dropped, swimming is base Skyrim (d66900f); water-budget a draft) |
 | 2 | 2.W3 | Regions, weather, light, roads and the route graph | in progress (data: aed4264 e279217 6b220f1; gates, landings, signposts 002dca4; w3-crime and w3-interior-sun green (lane-game-17.md); the border push (s09) green in world-sample's London run (lane-game-21.md); weather stills dropped (d66900f)) |
-| 2 | 2.W4 | Vegetation, navmesh and LOD | in progress (navmesh 08a88e5, load doors afdbae4, the chart 39a8eb46, vegetation done; LOD is xLODGen's (owner 2026-10-30): the terrain made on the retired machine was lost, regenerated on argonia-play-london (lod.sh archive, 8baf1e0); archived (fd21cee6d408), restored on argonia-play-london by deploy's lod.sh ensure (lane-game-22.md); owed: argonia-play's restore and a Claywater still; w4-veg-densest a draft) |
+| 2 | 2.W4 | Vegetation, navmesh and LOD | in progress (navmesh 08a88e5, load doors afdbae4, the chart 39a8eb46, vegetation done; LOD is xLODGen's (owner 2026-10-30): the terrain made on the retired machine was lost, regenerated on argonia-play-london (lod.sh archive, 8baf1e0); archived (lod/fd21cee6d408.tar), restored on argonia-play-london by deploy's lod.sh ensure (lane-game-22.md); owed: argonia-play's restore and a Claywater still; w4-veg-densest a draft) |
 | 2 | 2.W5 | The slice places, in two waves | todo |
 | 2 | 2.W5 wave 1 | Greenspring, The Broke Column, Riverwalk, Lighter Flotilla, two routes | todo |
 | 2 | 2.W5 wave 2 | the other eleven slice places | todo |

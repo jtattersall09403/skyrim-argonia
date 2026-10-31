@@ -12,7 +12,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - The planner reads [PLAN](docs/PLAN.md), [PROGRESS](docs/PROGRESS.md), [the schedule](docs/phases/README.md), the
   current part's README, chunk brief and check ledger, and the [decisions index](docs/decisions/README.md) line for what it touches.
-- Subagents read what their brief routes.
+- "Deliver <id>" runs one chunk by the [deliver skill](.claude/skills/deliver/SKILL.md); subagents read what their brief routes.
 - Parts run in order, chunks by dependency ([0023](docs/decisions/0023-five-parts-de-risk-first.md)); then the owner's ranking: world, story, combat, progression, UI ([0027](docs/decisions/0027-build-in-the-order-of-the-usps.md)); the world track runs beside all from 0.4.
 
 ## Never
@@ -51,7 +51,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Briefs come from `tooling/brief_template.py --write`; every field filled, Acceptance runnable or measured.
 - Shell commands run through rtk; a tool, hook or gate is added only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
 - One deliverable per context; at the context marker commit what is green and hand off.
-- One builder per place, plugin module or UI view at a time; no swarms.
+- One builder per place, plugin module or UI view; no swarms.
 - No `sleep` or polling; long jobs under `job_guard.sh` in the background; waits return within 270 s.
 - Return at most 25 lines; the full report goes to the report path.
 
@@ -60,10 +60,10 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Fast focused loops with eyes; the builder tests its feature and joins in one loop, each block at the cheapest proving level ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
 - In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch stands in for a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
 - Agents check fast and interactively, reading state and stills; never long playthroughs; what works becomes a journey ([0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)).
-- Reuse before harness; no time budgets, only measured cycle times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
+- Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
-- Prove the screenshot oracle is live; stop after 3 identical failures and diagnose; a crash is a failure.
+- Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
 - Batch game-machine checks; stop the machine when the batch ends.
 - Each in-game check a brief owes is a row in its part's `checks.md` ledger from the brief's writing; it closes only on the run or still that proved it.
 
@@ -82,6 +82,6 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Docs
 
-- The repo holds the current state, git the history: rewrite in place, delete the superseded.
+- The repo holds the current state, git the history: rewrite in place.
 - Decisions hold the why, chunk briefs the work (rewritten just in time, nothing dropped), PROGRESS the status, research the evidence.
 - Status moves in the commit that changes it (PROGRESS, check ledger, chunk brief); the planner checks them each tick and fixes any lag.

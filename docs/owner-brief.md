@@ -222,4 +222,6 @@ Something they can **play**, that is:
 | 2026-10-31 | **#26: no traffic alarm on the play machine**; the play switch's heartbeat, idle-stop.ps1 and the night and 8 h stops stop it when idle. The argonia-play-no-stream alarm is deleted and alarm.sh no longer creates it. |
 | 2026-10-31 | **#27: the play machine moves to Paris now** (g6 spot placement score 9 vs London's 4–6), the play switch redeployed for the new region (owner's OK on #27). |
 | 2026-10-31 | **Agents are woken by and act on GitHub issues and comments from the owner only** (the repo is public). The planner's reply watch, the inbox tool and the wake workflow count only the owner's login without the agent marker; anyone else's text is ignored. |
+| 2026-10-31 | **Round two runs one chunk per session, started by the owner with "deliver <id>"** (1.8–1.17, then 1.7; Part 1 README, the deliver skill). Agents do no substantive work between chunks; records move in the same commits as the work. The first play test's findings are in docs/research/2026-10-31/owner-playtest-1.md. |
+| 2026-10-31 | **The play machine must not be interrupted often; the owner will pay a bit more, not on-demand.** 1.8 makes an evidence-based call (interruption bands, placement scores, prices, latency) before anything is switched. |
 

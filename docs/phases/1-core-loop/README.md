@@ -76,7 +76,17 @@ the Status column below and `checks.md`.
 | 1.4 | [One quest through the journal](1.4-one-quest.md) | 1.3, 1.2 journal, 0.1 §i | 1.5 | in progress |
 | 1.5 | [Grow, die, rest, save](1.5-grow-die-rest-save.md) | 1.3 | 1.4 | in progress |
 | 1.6 | [Fight on the tuned stack, wired to the sheet](1.6-fight-on-the-stack.md) | 1.3 sheet | 1.4, 1.5 | in progress |
-| 1.7 | [The first-place journey and the owner's verdict](1.7-verdict.md) | all above | — | in progress |
+| 1.8 | [A play machine you can rely on](1.8-a-play-machine-you-can-rely-on.md) | — | 1.9–1.16 | todo |
+| 1.9 | [The front door and loads](1.9-the-front-door-and-loads.md) | — | 1.10 | todo |
+| 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | todo |
+| 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.13 | todo |
+| 1.12 | [Menus: the system menu, the pause menu, quit, favourites, touch](1.12-menus.md) | 1.11 (the theme's HUD pass) | 1.13 | todo |
+| 1.13 | [The chart](1.13-the-chart.md) | — | 1.11, 1.12 | todo |
+| 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.13 | todo |
+| 1.15 | [The world track's close](1.15-the-world-tracks-close.md) | 1.8 (the play machine) | 1.16 | todo |
+| 1.16 | [The owed integration checks](1.16-the-owed-integration-checks.md) | 1.9–1.14 | 1.15 | todo |
+| 1.17 | [Frame rate and the screen numbers](1.17-frame-rate-and-the-screen-numbers.md) | 1.8, 1.15 | — | todo |
+| 1.7 | [The first-place journey and the owner's verdict](1.7-verdict.md) | 1.1–1.6, 1.8–1.17 | — | in progress |
 
 ## Part 1 exit (the owner signs)
 
@@ -92,3 +102,47 @@ the Status column below and `checks.md`.
 - A **yes** opens Part 2's systems track (the world track is already running). A **no** triggers a re-plan on
   Skyrim: a written comparison of the options, costed.
 - The planner re-estimates Parts 2–4 from Part 1's measured cycle times.
+
+## Round two: from the first play test to the verdict (2026-10-31)
+
+The first round built every chunk 1.1–1.6 and the world track at L1–L3, and most of it in game. The owner's first
+play test ([owner-playtest-1.md](../../research/2026-10-31/owner-playtest-1.md)) and the ledger audit
+([ledger-audit.md](../../research/2026-10-31/ledger-audit.md): 56 proven, 38 owed, 9 dropped) left what 1.8–1.17
+do. Each is **one session's work**, taken one at a time by the owner, in this order:
+- first what stops play: 1.8 the machine, 1.9 loads, 1.10 the Nord head;
+- then what the owner sees: 1.11 the HUD, 1.12 menus, 1.13 the chart, 1.14 death;
+- then what proves the rest: 1.15 the world track, 1.16 the owed checks, 1.17 frame rate;
+- then 1.7, the packet and the verdict.
+
+Where two chunks touch the same view, the order above keeps one builder per view. 1.1–1.6 and 2.W1–2.W4 stay in progress until the Round-two chunk that closes their last owed row marks them done.
+
+### How a chunk session runs
+The owner starts a fresh session with **"deliver <id>"** (for example "deliver 1.8"). The session follows the
+[deliver skill](../../../.claude/skills/deliver/SKILL.md):
+1. read where things stand from the records;
+2. post the owner's calls first;
+3. run the loop on the chunk's `checks.md` rows until each is proven or ruled;
+4. move the brief, PROGRESS, this table and the ledger in the same commits as the work.
+A chunk that doesn't finish leaves its hand-off in the brief's Starting state.
+
+### The owner's follow-up notes (tmp/owner-message.md, owner-message-2.md): where each is answered
+| Note | Answered in |
+|---|---|
+| SkyLink AI's approach for our tools | 1.16 |
+| 98 dependency mods, slim if not needed | done: the stack is 70 mods (stack.py) |
+| Water "falls back to one level": designed levels only, drop stray puddles | 1.15 |
+| The hand-drawn map: the old repo's? | 1.13 |
+| Sample smartly; no long walks; no quest playthrough in game; headless playthrough only | the rules in CLAUDE.md and "How a chunk session runs" |
+| The Morrowind attributes and skills mod (nexus 60199) as a foundation, in our theme | 1.16 |
+| Permission requests | done (owner) |
+| Parallelism: whatever works best | done (owner-brief) |
+| World map finalised | 1.13 |
+| Livia to bed at night | proven (livia-sleep, checks.md 1.3) |
+| The crocodile in and working | proven (croc-den) |
+| Judging Black Marsh feel | the owner, at 1.7 |
+| Screen technology chosen for real | 1.17 |
+| The DS combat trial | proven (combat-trial-a, checks.md 1.6) |
+| The hour-long stability test: last, never a gate | [backlog](../backlog.md), P3 final |
+| Things said to be not built get built | 1.8–1.17 |
+| The faster machine: the owner tests at 45–53 fps before ruling | 1.17 |
+
