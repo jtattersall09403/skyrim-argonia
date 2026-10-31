@@ -140,6 +140,15 @@ def apply():
 NIGHT_STOP = "0 3 * * *"  # 03:00 UTC: 03:00 UK in winter, 04:00 in summer
 
 
+def play_region():
+    """argonia-play's region from machines.conf (#27)."""
+    for line in (pathlib.Path(__file__).resolve().parent / "machines.conf").read_text().splitlines():
+        f = line.split()
+        if f and f[0] == "argonia-play":
+            return f[1]
+    return "eu-west-2"
+
+
 def worker():
     import uuid
     src = (pathlib.Path(__file__).resolve().parents[1] / "cloudflare" / "play-switch.js").read_text()
@@ -147,6 +156,7 @@ def worker():
         {"type": "secret_text", "name": "AWS_KEY_ID", "text": env["AWS_SWITCH_KEY_ID"]},
         {"type": "secret_text", "name": "AWS_SECRET", "text": env["AWS_SWITCH_SECRET"]},
         {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP},
+        {"type": "plain_text", "name": "REGION", "text": play_region()},
         {"type": "secret_text", "name": "CF_TOKEN", "text": env["CLOUDFLARE_API_TOKEN"]},
         {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
         {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"},

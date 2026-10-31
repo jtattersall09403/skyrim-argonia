@@ -13,16 +13,18 @@
 set -euo pipefail
 case "${1:-}" in --machine) export ARGONIA_PLAY=$2; shift 2 ;; --machine=*) export ARGONIA_PLAY=${1#--machine=}; shift ;; esac
 M=${ARGONIA_PLAY:-argonia-play}
-case "$M" in argonia-play|argonia-play-[0-9]*) ;; *) echo "no such game machine: $M" >&2; exit 2 ;; esac
+case "$M" in argonia-play|argonia-play-[0-9a-z]*) ;; *) echo "no such game machine: $M" >&2; exit 2 ;; esac
 export PATH="$HOME/.local/bin:$PATH"
 here=$(cd "$(dirname "$0")" && pwd)
 KEY="$HOME/.argonia/keys/argonia-play"
-R=eu-west-2
+# Region and address from machines.conf (#27).
+read -r R ADDR < <(awk -v m="$M" '$1==m {print $2, $3; f=1} END {if (!f) print "eu-west-2 private"}' "$here/machines.conf")
+[ "$ADDR" = public ] && IPQ=PublicIpAddress || IPQ=PrivateIpAddress
 
 ip() {
   aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     Name=instance-state-name,Values=pending,running,stopping,stopped \
-    --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text
+    --query "Reservations[0].Instances[0].$IPQ" --output text
 }
 id() {
   aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \

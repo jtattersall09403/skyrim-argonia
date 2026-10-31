@@ -11,7 +11,6 @@
 // the Moonlight app, whose address changes at every start; CF_ACCESS_ID, CF_ACCESS_SECRET (an Access service
 // token) let the heartbeat read pass the sign-in gate. Deployed by infra/gpu-box/cloudflare_gate.py worker.
 
-const REGION = "eu-west-2"
 const NAME = "argonia-play"
 const MAX_HOURS = 8
 const STALE_MINUTES = 30
@@ -136,6 +135,7 @@ async function state(env) {
 
 // EC2 Query API with Signature Version 4 (WebCrypto; no dependencies).
 async function ec2(env, params) {
+  const REGION = env.REGION || "eu-west-2"   // machines.conf's region for argonia-play, bound by cloudflare_gate.py (#27)
   const host = `ec2.${REGION}.amazonaws.com`
   const q = new URLSearchParams({ ...params, Version: "2016-11-15" })
   const query = [...q.entries()].sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0))

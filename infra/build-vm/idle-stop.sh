@@ -86,11 +86,13 @@ fi
 rm -f "$STATE/last-active"
 logger -t argonia-idle-stop "stopping after $idle idle minutes"
 repo=$(cd "$(dirname "$0")/../.." && pwd)
-for m in $(aws ec2 describe-instances --region eu-west-2 \
-    --filters 'Name=tag:Name,Values=argonia-play-*' Name=instance-state-name,Values=running \
-    --query 'Reservations[].Instances[].Tags[?Key==`Name`].Value' --output text 2>/dev/null || true); do
-  logger -t argonia-idle-stop "stopping game machine $m"
-  timeout 300 "$repo/infra/gpu-box/run.sh" --machine "$m" stop >/dev/null 2>&1 || true
+for r in $(awk '!/^#/ && NF {print $2}' "$repo/infra/gpu-box/machines.conf" | sort -u); do
+  for m in $(aws ec2 describe-instances --region "$r" \
+      --filters 'Name=tag:Name,Values=argonia-play-*' Name=instance-state-name,Values=running \
+      --query 'Reservations[].Instances[].Tags[?Key==`Name`].Value' --output text 2>/dev/null || true); do
+    logger -t argonia-idle-stop "stopping game machine $m"
+    timeout 300 "$repo/infra/gpu-box/run.sh" --machine "$m" stop >/dev/null 2>&1 || true
+  done
 done
 id=$(aws ec2 describe-instances --region eu-west-2 \
   --filters Name=tag:Name,Values=argonia-build Name=instance-state-name,Values=running \
