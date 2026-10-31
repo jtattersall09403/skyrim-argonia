@@ -26,7 +26,7 @@ parse_gpu() {
     --gpu=*) gpu=1; shiftn=1; export ARGONIA_PLAY="${1#--gpu=}" ;;
   esac
   if [ $gpu = 1 ]; then
-    case "$ARGONIA_PLAY" in argonia-play|argonia-play-[0-9]*) ;; *) echo "no such game machine: $ARGONIA_PLAY" >&2; exit 2 ;; esac
+    case "$ARGONIA_PLAY" in argonia-play|argonia-play-[0-9a-z]*) ;; *) echo "no such game machine: $ARGONIA_PLAY" >&2; exit 2 ;; esac
     lock="$JOBS/gpu.lock"; [ "$ARGONIA_PLAY" = argonia-play ] || lock="$JOBS/gpu-$ARGONIA_PLAY.lock"
   fi
 }
