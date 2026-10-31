@@ -2134,6 +2134,7 @@
    "archive": "Oblivion-like Loading Menu 16x9-38708-1-0-1595839522.7z",
    "size_kb": 171210,
    "why": "paper loading screen (16:9)",
+   "dropped": "owner 2026-10-31: Skyrim's classic loading screens instead (a 3D model from our stack, our facts in our font); owner-brief 2026-10-31",
    "chunk": "1.2",
    "required": true,
    "profile": "play",

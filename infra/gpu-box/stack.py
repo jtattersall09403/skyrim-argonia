@@ -765,7 +765,7 @@ def cmd_stage(a):
         record[m["id"]] = {"fomod": taken} if taken else {}
     shutil.rmtree(work, ignore_errors=True)
     theme = REPO / "out" / "ui_theme" / THEME  # derived on the build VM (installer/steps/ui-theme.md), never committed
-    if theme.exists():  # above dear-diary, wood-and-paper and oblivion-loading-menu, so its fontconfig.txt wins
+    if theme.exists():  # above dear-diary and wood-and-paper, so its fontconfig.txt wins
         shutil.rmtree(mods / THEME, ignore_errors=True)
         shutil.copytree(theme, mods / THEME)
         names.append(THEME)

@@ -160,7 +160,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Loading `argoniabase` and two other saves reaches play (a state read: the player can move) | owner play test 3 | L4 | owed | black screen with the HUD, nothing works (docs/research/2026-10-31/owner-playtest-1.md) |
 | No scrolling tree/desert bar on the main menu or behind the loading screens | owner play test 1 | L4 | owed | the owner saw it |
 | No blank parchment screen between the Bethesda intro and the main menu | owner play test 2 | L4 | owed | the owner saw it |
-| A reader over 3 load stills: our picture, our frame (no Celtic knot), readable unsquashed text, no HUD | owner play test 7, 8; game-22 reader | L4 | owed | knot frame from loadingmenu.swf (docs/research/2026-10-31/lane-game-22.md) |
+| A reader over 3 load stills: Skyrim's classic layout with a 3D model from our stack (nothing Nordic), our fact in our font, readable unsquashed text at 16:9 and the phone's aspects, no HUD | owner play test 7, 8; owner-brief 2026-10-31 | L4 | owed | the Oblivion-like menu dropped (owner-brief 2026-10-31); models being chosen |
 
 ## 1.10 The player character
 

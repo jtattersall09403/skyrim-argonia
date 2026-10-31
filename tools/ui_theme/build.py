@@ -16,8 +16,8 @@ from pathlib import Path
 
 from tools.ui_theme import fontlib, pex, retheme
 
-THEMED = ("dear-diary", "wood-and-paper", "oblivion-loading-menu")  # retheme's roots, lowest priority first
-CHECKED = ("dear-diary", "skyui", "wood-and-paper", "oblivion-loading-menu")
+THEMED = ("dear-diary", "wood-and-paper")  # retheme's roots, lowest priority first
+CHECKED = ("dear-diary", "skyui", "wood-and-paper")
 SKYUI_CONFIG = "interface/skyui/config.txt"
 # SkyUI's item-list text (points). The config is only the fallback: SKI_ConfigMenu overrides it on every load from
 # its MCM font-size option, so the sizes players see come from pex.SIZES (ui-review4: config 30 changed nothing).
