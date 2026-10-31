@@ -89,3 +89,15 @@ def test_object_list_mixes_classes_by_share(monkeypatch):
     out = K.object_list(W(), {"x": 1, "y": 1})
     assert [o["density_per_ha"] for o in out] == [1.0, 1.0]  # 4/ha over half the cells, split over two forms
     assert all(o["conform"] for o in out)
+
+
+def test_border_has_a_shell_every_cell_lists():
+    # game-19 s09: the engine holds the player only at a border region the cell's XCLR lists (Skyrim.esm lists
+    # BorderRegionSkyrim in 5,610 cells); ours linked none and the player walked 16 m past the west edge.
+    from tools.argonia_world import db
+    w = db.open()
+    border = api.border_shell_key(w)
+    assert border and border.endswith(":ArgoniaWorld.esm")
+    assert border in {r["formKey"] for r in api.shell_records(w)}
+    from tools.argonia_world.terrain import world as tw
+    assert tw.document((0, 0, 0, 0), __import__("pathlib").Path("."), w)["borderRegion"] == border

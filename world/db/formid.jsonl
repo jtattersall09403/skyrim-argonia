@@ -426,6 +426,7 @@
 {"editor_id":"ARG_Ref_SignThornTearRoad369Arm0","plugin":"Argonia.esm","form_id":2493,"record_type":"REFR","entity_key":"sign.road.thorn-tear-road.369.arm0"}
 {"editor_id":"ARG_Ref_SignThornTearRoad369Arm1","plugin":"Argonia.esm","form_id":2494,"record_type":"REFR","entity_key":"sign.road.thorn-tear-road.369.arm1"}
 {"editor_id":"ARG_Region_border","plugin":"Argonia.esm","form_id":2100,"record_type":"REGN","entity_key":"land_region.border"}
+{"editor_id":"ARG_Region_borderShell","plugin":"ArgoniaWorld.esm","form_id":524335,"record_type":"REGN","entity_key":"land_region.border.shell"}
 {"editor_id":"ARG_Region_dunmer_north_coastal_lagoon","plugin":"ArgoniaWorld.esm","form_id":524288,"record_type":"REGN","entity_key":"land_region.dunmer-north.coastal-lagoon"}
 {"editor_id":"ARG_Region_dunmer_north_deep_sink_basin","plugin":"ArgoniaWorld.esm","form_id":524289,"record_type":"REGN","entity_key":"land_region.dunmer-north.deep-sink-basin"}
 {"editor_id":"ARG_Region_dunmer_north_interior_swamp","plugin":"ArgoniaWorld.esm","form_id":524290,"record_type":"REGN","entity_key":"land_region.dunmer-north.interior-swamp"}

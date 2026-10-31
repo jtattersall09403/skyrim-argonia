@@ -5,14 +5,17 @@ The split across the two plugins (decision 0031, the shell pattern agreed with t
 engine reads a cell's regions from its XCLR list, and ArgoniaWorld.esm's cells cannot link to Argonia.esm, their
 dependant. So ArgoniaWorld.esm holds one REGN **shell** per region (EditorID and worldspace only), and its cells'
 XCLR link the shells. Argonia.esm **overrides** each shell with the authored part: areas, weather list, object list
-and map name. That override is what plugin/ serialises and a reviewer reads. The closed border region links no cell,
-so it lives wholly in Argonia.esm. The shells' ids sit in a reserved range of ArgoniaWorld.esm (REGION_SHELL_BASE,
+and map name. That override is what plugin/ serialises and a reviewer reads. The closed border region has a shell too,
+and every cell's XCLR lists it beside its land region: the engine only holds the player at a border region the
+current cell lists (Skyrim.esm lists BorderRegionSkyrim in 5,610 cells' XCLR; ours linked none and the player walked
+16 m past the west edge, game-19 s09). The shells' ids sit in a reserved range of ArgoniaWorld.esm (REGION_SHELL_BASE,
 below the water's 0x100000) and are kept append-only in the formid table under that plugin, so a region that comes
 or goes never renumbers the rest.
 
     shell_keys(world, frozen)            {land_region id: shell FormKey}
     shell_records(world)                 the shells, for terrain/world.py's document
     cell_region_runs(world)              [{cy, cx0, cx1, region: shell FormKey}], for the XCLR
+    border_shell_key(world)              the border region's shell, which every cell's XCLR also lists
     climate_form_key(alloc)              the CLMT the WRLD override links
     layers(alloc, world, wrld)           the Argonia.esm layer: REGN overrides and the border, CLMT, WTHR, IMGS,
                                          the WChance globals, the TimeScale override, the WRLD override
@@ -39,15 +42,17 @@ def shell_keys(world, frozen: bool = True) -> dict[str, str]:
     """{land_region id: shell FormKey}, allocating new regions append-only unless frozen."""
     have = {r.editor_id: r.form_id for r in world.rows("formid", plugin=LAND_PLUGIN) if r.record_type == "REGN"}
     out = {}
-    for r in world.query("SELECT id, edid FROM land_region WHERE border = 0 ORDER BY id"):
-        if r["edid"] not in have:
+    for r in world.query("SELECT id, edid, border FROM land_region ORDER BY id"):
+        # the border's EditorID already names its Argonia.esm id (before it had a shell); its shell row takes a suffix
+        key = f"{r['edid']}Shell" if r["border"] else r["edid"]
+        if key not in have:
             if frozen:
                 raise KeyError(f"{r['edid']}: no shell id yet; run `make plugin` and commit the formid table")
             fid = max(have.values(), default=REGION_SHELL_BASE - 1) + 1
-            world.insert("formid", editor_id=r["edid"], plugin=LAND_PLUGIN, form_id=fid, record_type="REGN",
-                         entity_key=f"land_region.{r['id']}")
-            have[r["edid"]] = fid
-        out[r["id"]] = f"{have[r['edid']]:06X}:{LAND_PLUGIN}"
+            world.insert("formid", editor_id=key, plugin=LAND_PLUGIN, form_id=fid, record_type="REGN",
+                         entity_key=f"land_region.{r['id']}" + (".shell" if r["border"] else ""))
+            have[key] = fid
+        out[r["id"]] = f"{have[key]:06X}:{LAND_PLUGIN}"
     return out
 
 
@@ -61,6 +66,12 @@ def cell_region_runs(world) -> list[dict]:
     keys = shell_keys(world)
     return [{"cy": r["cy"], "cx0": r["cx0"], "cx1": r["cx1"], "region": keys[r["land_region_id"]]}
             for r in world.query("SELECT * FROM cell_region_run ORDER BY cy, cx0")]
+
+
+def border_shell_key(world) -> str | None:
+    keys = shell_keys(world)
+    row = world.query("SELECT id FROM land_region WHERE border = 1 ORDER BY id")
+    return keys[row[0]["id"]] if row else None
 
 
 def rectangles(runs: list[dict]) -> list[tuple[int, int, int, int]]:
@@ -251,8 +262,7 @@ def region_records(alloc, world, wrld_key: str) -> list[dict]:
     for reg in world.query("SELECT * FROM land_region ORDER BY id"):
         rid = reg["id"]
         if reg["border"]:
-            recs.append({"type": "REGN", "edid": reg["edid"], "formKey": alloc.form_key(reg["edid"], "REGN",
-                                                                                        f"land_region.{rid}"),
+            recs.append({"type": "REGN", "override": True, "edid": reg["edid"], "formKey": keys[rid],
                          "worldspace": wrld_key, "border": True, "areas": [{"falloff": 0, "points": border_polygon()}],
                          "mapName": "", "priority": PRIORITY})
             continue

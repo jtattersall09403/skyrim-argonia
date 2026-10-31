@@ -29,6 +29,10 @@ for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: 
 "$PY" -c 'import sys; n = open("out/ArgoniaWorld.esm", "rb").read().count(b"NAVM"); print(f"ArgoniaWorld.esm: {n} NAVM"); sys.exit(n == 0)' \
   || [ "${ARGONIA_NO_NAVMESH:-}" = 1 ] || { echo "out/ArgoniaWorld.esm has no navmesh: make navmesh (or ARGONIA_NO_NAVMESH=1)" >&2; exit 1; }
 step "machine up" "$run" up
+# Heartbeat (game-19's gap): idle-stop.ps1 counts the busy flag, which only commands refresh; a long single step
+# (stage push, skse build) could outlast it. Touch it every 5 min while the deploy runs; stopped on exit.
+( while sleep 300; do "$run" ps 'hostname' >/dev/null 2>&1 || true; done ) & hb=$!
+trap 'kill $hb 2>/dev/null || true' EXIT
 # the game down before the push: a running game holds argonia-views open and the tar unpack fails (game-17, after uireview)
 step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\bridge.ps1 -Cmd kill'
 if [ $stage = 1 ]; then step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push; fi

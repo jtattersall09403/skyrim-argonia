@@ -60,7 +60,8 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
             "loadOrder": LOAD_ORDER, "records": [wrld(cell_range)], "land": str(land_dir),
-            "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w)}
+            "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
+            "borderRegion": regions.border_shell_key(w)}
 
 
 def write(path: Path, cell_range: tuple[int, int, int, int], land_dir: Path) -> Path:
