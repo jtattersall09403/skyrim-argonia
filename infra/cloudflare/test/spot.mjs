@@ -16,3 +16,25 @@ assert.equal(reclaimed("running", "fulfilled"), false)
 assert.equal(reclaimed("stopped", null), false, "no read: no claim")
 assert.match(RECLAIMED_TEXT, /^AWS took the machine back; your game was saved/)
 console.log("spot message: 12 checks pass")
+
+// The start retry (owner #29): a settling refusal retries for two minutes from the first, then shows the error.
+import { startRetry, START_RETRY_MS } from "../play-switch.js"
+const spotErr = "EC2 StartInstances 400: <Code>IncorrectSpotRequestState</Code>"
+assert.equal(START_RETRY_MS, 120e3)
+assert.equal(startRetry(spotErr, 0, 1e6), true, "the first refusal: starting…")
+assert.equal(startRetry(spotErr, 1e6, 1e6 + 119e3), true, "within two minutes: keep trying")
+assert.equal(startRetry(spotErr, 1e6, 1e6 + 121e3), false, "past two minutes: show the error")
+assert.equal(startRetry("EC2 StartInstances 400: <Code>IncorrectInstanceState</Code>", 0, 1e6), true, "the instance still stopping")
+assert.equal(startRetry("EC2 StartInstances 403: <Code>UnauthorizedOperation</Code>", 0, 1e6), false, "a real fault: no retry")
+console.log("start retry: 5 checks pass")
+
+// The start page through the Worker, with EC2 stubbed: a settling refusal shows "Starting…" and sets the cookie.
+import worker from "../play-switch.js"
+const env = { AWS_KEY_ID: "k", AWS_SECRET: "s" }
+globalThis.fetch = async (u) => String(u).includes("StartInstances") ? new Response(spotErr, { status: 400 })
+  : new Response(String(u).includes("DescribeInstances") ? inst("stopped") : "", { status: 200 })
+let r = await worker.fetch(new Request("https://x/argonia/start"), env), body = await r.text()
+assert.match(body, /<h1>Starting…<\/h1>/); assert.match(r.headers.get("set-cookie"), /argoniaStartRetry=\d+/)
+r = await worker.fetch(new Request("https://x/argonia/start", { headers: { cookie: `argoniaStartRetry=${Date.now() - 130e3}` } }), env)
+assert.match(await r.text(), /did not start/, "past the window: the error")
+console.log("start page: 3 checks pass")

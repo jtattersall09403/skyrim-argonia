@@ -45,7 +45,7 @@ export default {
       if (s.state === "running" || s.state === "pending") await ec2(env, { Action: "StopInstances", "InstanceId.1": s.id })
       return page("Stopping the game machine", "It is switching off. Nothing is charged while it is off.", false)
     }
-    if (url.pathname === "/argonia/start") return startPage(env)
+    if (url.pathname === "/argonia/start") return startPage(env, request)
     // One sign-in only (owner, 2026-10-29): Moonlight-Web serves its default user to anyone without a session, and
     // only the owner gets past Access, but a stale or expired mlSession cookie makes it ask for a login instead.
     // So the cookie never reaches it.
@@ -63,7 +63,7 @@ export default {
     // Only a page load starts the machine: the heartbeat read and a stale tab's metrics posts must not
     // (a heartbeat check through the gate started it, 2026-10-29).
     if (url.pathname.startsWith("/argonia-metrics")) return json({ error: "the game machine is off" }, 503)
-    return startPage(env)
+    return startPage(env, request)
   },
 
   async scheduled(event, env) {
@@ -87,11 +87,36 @@ async function heartbeat(env) {
   } catch { return null }
 }
 
-async function startPage(env) {
+/** A Start refused while the spot request or the instance is still settling after a stop (owner #29): the page
+ *  says "starting…" and tries again at each reload (4 s) for up to START_RETRY_MS from the first refusal, which a
+ *  cookie carries; any other refusal, or one past the window, is shown as it is. */
+export const START_RETRY_MS = 120e3
+const SETTLING = /IncorrectSpotRequestState|IncorrectInstanceState|InsufficientInstanceCapacity/
+export function startRetry(error, firstMs, nowMs) {
+  if (!SETTLING.test(String(error))) return false
+  return !firstMs || nowMs - firstMs < START_RETRY_MS
+}
+const RETRY_COOKIE = "argoniaStartRetry"
+
+async function startPage(env, request) {
   const s = await state(env)
   if (s.ip) await syncHost(env, s.ip)
   if (s.state === "stopped") {
-    await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
+    const first = Number(/(?:^|;\s*)argoniaStartRetry=(\d+)/.exec(request?.headers.get("cookie") || "")?.[1]) || 0
+    try {
+      await ec2(env, { Action: "StartInstances", "InstanceId.1": s.id })
+    } catch (e) {
+      const now = Date.now()
+      if (!startRetry(e.message, first, now)) {
+        const res = page("The game machine did not start", `AWS said: ${String(e.message).replace(/<[^>]*>/g, " ").slice(0, 300)}`, false)
+        res.headers.append("set-cookie", `${RETRY_COOKIE}=; Path=/; Max-Age=0; Secure`)
+        return res
+      }
+      const res = page("Starting\u2026", s.reclaimed ? `${RECLAIMED_TEXT} AWS is still settling the machine; this page keeps trying for two minutes.`
+                                                   : "AWS is still settling the machine after its stop; this page keeps trying for two minutes.", true)
+      if (!first) res.headers.append("set-cookie", `${RETRY_COOKIE}=${now}; Path=/; Max-Age=300; Secure`)
+      return res
+    }
     if (s.reclaimed) return page("Starting the game machine", `${RECLAIMED_TEXT} Starting it again; if AWS has no room yet, this page keeps trying.`, true)
     return page("Starting the game machine", "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
   }
