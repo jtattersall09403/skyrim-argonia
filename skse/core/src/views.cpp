@@ -159,7 +159,7 @@ msg::HudMinimap minimap(const chart::Discovered& d, const std::vector<msg::Chart
   if (!player) return m;
   m.map.player = player;
   const chart::Point at{player->x, player->y};
-  for (const auto& c : chart::near(d, at)) m.map.revealed.push_back({c.x, c.y});
+  for (const auto& c : chart::cells_near(d, at)) m.map.revealed.push_back({c.x, c.y});
   for (const auto& p : places)
     if (chart::within(at, {p.x, p.y})) m.map.places.push_back(p);
   return m;

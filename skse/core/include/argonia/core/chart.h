@@ -66,7 +66,7 @@ double heading_deg(double angle_z);
 
 // The minimap's reach in cells from the player (a circle), and the revealed cells and points inside it.
 inline constexpr double kMinimapReach = 5;
-std::vector<Cell> near(const Discovered& d, Point centre, double reach = kMinimapReach);
+std::vector<Cell> cells_near(const Discovered& d, Point centre, double reach = kMinimapReach);
 bool within(Point centre, Point p, double reach = kMinimapReach);
 
 inline constexpr std::uint32_t kChartType = cosave::fourcc("CHRT");

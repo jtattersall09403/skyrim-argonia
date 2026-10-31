@@ -74,7 +74,7 @@ bool within(Point c, Point p, double reach) {
   return dx * dx + dy * dy <= reach * reach;
 }
 
-std::vector<Cell> near(const Discovered& d, Point c, double reach) {
+std::vector<Cell> cells_near(const Discovered& d, Point c, double reach) {
   // A cell is in reach when its nearest point is: the minimap's disc shows any cell it touches.
   std::vector<Cell> out;
   const auto lo = std::int32_t(std::floor(c.x - reach)), hi = std::int32_t(std::floor(c.x + reach));

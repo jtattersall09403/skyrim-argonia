@@ -595,7 +595,7 @@ static void GrantPerkPoints(int n) {
   auto* p = Player();
   if (!p || n <= 0) return;
   auto& gs = p->GetGameStatsData();
-  gs.perkCount = static_cast<std::uint8_t>(std::min(255, int(gs.perkCount) + n));
+  gs.perkCount = static_cast<std::uint8_t>((std::min)(255, int(gs.perkCount) + n));
   SKSE::log::info("perks: {} perk point(s) granted at the sitting, {} to spend", n, int(gs.perkCount));
   if (auto* sk = p->GetInfoRuntimeData().skills; sk && sk->data && sk->CanLevelUp()) {
     SKSE::log::error("perks: the engine's level-up was ready (xp {:.1f} of {:.1f}); cleared, the sitting is the level-up",

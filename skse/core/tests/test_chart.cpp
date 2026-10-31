@@ -58,13 +58,13 @@ int main() {
   // The minimap's reach: a circle; a cell counts when its nearest point is inside.
   Discovered m;
   for (int x = -10; x <= 10; ++x) for (int y = -10; y <= 10; ++y) reveal(m, {x, y});
-  auto in = near(m, {0.5, 0.5}, 2);
+  auto in = cells_near(m, {0.5, 0.5}, 2);
   CHECK(!in.empty());
   for (auto c : in) CHECK(within({0.5, 0.5}, {std::clamp(0.5, double(c.x), c.x + 1.0), std::clamp(0.5, double(c.y), c.y + 1.0)}, 2));
   CHECK(std::find(in.begin(), in.end(), Cell{2, 0}) != in.end());   // 1.5 away
   CHECK(std::find(in.begin(), in.end(), Cell{3, 0}) == in.end());   // 2.5 away
   CHECK(std::find(in.begin(), in.end(), Cell{2, 2}) == in.end());   // the corner: 1.5 * sqrt 2 > 2
-  CHECK(near(Discovered{}, {0, 0}).empty());
+  CHECK(cells_near(Discovered{}, {0, 0}).empty());
   CHECK(within({0, 0}, {3, 4}, 5) && !within({0, 0}, {3, 4.01}, 5));
   return TEST_MAIN_RESULT("core.chart");
 }
