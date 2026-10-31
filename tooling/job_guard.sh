@@ -77,9 +77,10 @@ case "$cmd" in
     parse_gpu "$@"; shift $shiftn
     name=$1; shift; [ "${1:-}" = "--" ] && shift
     if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
-    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane"
+    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine"
     [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
     if [ $gpu = 1 ]; then
+      echo "$ARGONIA_PLAY" > "$JOBS/$name.machine"  # stop ends the machine too (below)
       wait_s=${GPU_WAIT:-7200}; lane=${ARGONIA_LANE:-}; me=$(readlink -f "$0"); holder=$(cat "$lock.holder" 2>/dev/null || echo "?")
       # The holder file names the job inside the lock; `started` marks that this one got it (queued until then).
       setsid nohup bash -c 'echo "queued for '"$ARGONIA_PLAY"' behind '"$holder"' (up to '"$wait_s"' s)"
@@ -118,6 +119,20 @@ case "$cmd" in
   stop)  # the whole job (its setsid process group), never only the top pid: a bare kill left a job's script running (1.8)
     p=$(cat "$JOBS/$1.pid" 2>/dev/null) || { echo "no job $1" >&2; exit 2; }
     kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true
-    echo 143 > "$JOBS/$1.rc"; echo "stopped $1" ;;
+    echo 143 > "$JOBS/$1.rc"; echo "stopped $1"
+    # A machine job's machine stops with it, unless someone streams on it: a stopped job left argonia-play-ie running
+    # idle 40 min, its idle-stop held busy by the job's last SSH and busy flag (1.8, 2026-10-31).
+    if m=$(cat "$JOBS/$1.machine" 2>/dev/null) && [ -n "$m" ]; then
+      run="$(dirname "$(readlink -f "$0")")/../infra/gpu-box/run.sh"
+      r=$(awk -v m="$m" '$1==m {print $2}' "$(dirname "$run")/machines.conf"); r=${r:-eu-west-2}  # run.sh's default
+      st=$(aws ec2 describe-instances --region "$r" --filters "Name=tag:Name,Values=$m" \
+        --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null)
+      if [ "$st" != running ]; then :
+      elif "$run" --machine "$m" ps '. C:\argonia\infra\stream-activity.ps1; (Get-StreamActivity).streaming' 2>/dev/null | grep -q True; then
+        echo "$m: someone is streaming; left running"
+      else
+        "$run" --machine "$m" stop
+      fi
+    fi ;;
   *) sed -n '2,18p' "$0"; exit 2 ;;
 esac
