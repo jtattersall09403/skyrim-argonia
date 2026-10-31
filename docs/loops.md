@@ -100,7 +100,7 @@ prove it**, and the composition is checked only for what composition can break.
 | a journey inside the game | the journey runner: state, events, a still per step | L4 |
 | a place, a kit piece, an item or creature up close | bridge vantage stills and booth sheets, read by readers | L4 |
 | a transition, the LOD hand-off, feel (including side by side with DSR) | short clips, read frame by frame | L5 |
-| how play feels to the owner over the stream: touch and viewports on their phone, the GameSir pad, desktop mouse and keyboard, an estimate of their latency | `infra/stream-client/e2e/feel.sh` on the agents' machine (drive.mjs per device; owner's network delay from their logged sessions). On demand only: when the owner asks or a change can reach input, viewports or the stream; never in a regular batch | L4 |
+| how play feels to the owner over the stream: touch and viewports on their phone, the GameSir pad, desktop mouse and keyboard, an estimate of their latency | `infra/stream-client/e2e/feel.sh` on the agents' machine (drive.mjs per device; owner's network delay from their logged sessions). On demand only, and only what the change reaches (one device, one input, one screen: e.g. `--device v5-folded --steps menu`); the full sweep only when the owner asks; never in a regular batch | L4 |
 | frame cost on the composed world | bridge frame-time probes on the chosen GPU instance | L4 |
 | prose | the `text-review` skill (one reader, then the prose linter) | L1 |
 
