@@ -557,6 +557,16 @@ def apply_ini(m, data):
         print(f"  {m['id']}: set {', '.join(edit['set'])} in {edit['file']}")
 
 
+def apply_files(m, data):
+    """The row's own setting files: {"path": under the mod, "text": contents}, written beside the mod's files (1.12:
+    Wind UI's settings.json and vanilla.txt; its licence allows installers to lay "your own setting files")."""
+    for f in m.get("files", []):
+        out = data / f["path"]
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(f["text"])
+        print(f"  {m['id']}: wrote {f['path']}")
+
+
 def plugin_values(m, data, pick):
     """The row's `plugin_values` for the chosen set (decision 0014: a mod's setting made at install, never shipped):
     a GLOB's value and a quest script's int property, written into the staged plugin. For a mod with no ini whose
@@ -756,6 +766,7 @@ def cmd_stage(a):
             shutil.rmtree(src)
             prune(data, m)
             apply_ini(m, data)
+            apply_files(m, data)
             plugin_values(m, data, pick)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
             restaged.add(m["id"])

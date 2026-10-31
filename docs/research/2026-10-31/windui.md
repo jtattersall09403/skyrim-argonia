@@ -1,7 +1,7 @@
 # Wind UI (Nexus 196534): what it is, for 1.12
 
 Source: the mod's Nexus description, read 2026-10-31 (the owner's copy; the full text is kept privately in
-`argonia-private/work/research-2026-10-31/windui-nexus-page.md`). Facts marked **open** are 1.12 §1's to find in game.
+`argonia-private/work/research-2026-10-31/windui-nexus-page.md`). Facts marked **open** are 1.12 §1's to find in game; §1's answers are under "In game" below.
 
 ## What it is
 A UI-only SKSE mod (no plugin file, so no load-order slot) that turns Skyrim's menus into Morrowind's windows: inventory,
@@ -44,3 +44,47 @@ books, the main menu, loading screens, pad navigation, touch.
   chart and book.
 - **Permissions (open in the record):** the owner has read them as allowing our patch on top. 1.12 §1 writes them here
   in our words. The page notes that some of its assets belong to other authors.
+
+## In game (1.12 §1 probe, argonia-play-ie, 2026-10-31)
+
+Wind UI 1.3.0 Beta laid by `stack.py` (row `windui`), SKSE "loaded correctly" on 1.7.104. Stills and logs are in the
+private archive (`work/research-2026-10-31/windui-stills/`, `windui-probe-p112/`); the batch is
+`tests/journeys/batches/probe-1.12.sh` (its OS-route keys were lost: keys reach Wind UI only by the engine route).
+
+- **Technology.** One DLL drawing Dear ImGui over the game; no SWF, no plugin file. It registers its own menus
+  (`WindUIMenu`, `WindUIHud`) and intercepts `MenuOpenCloseEvent` for TweenMenu, InventoryMenu, MagicMenu, StatsMenu,
+  FavoritesMenu, ContainerMenu, BarterMenu, GiftMenu, Crafting Menu, Journal Menu and MapMenu. It yields to
+  ("goes over ours") Dialogue Menu, Book Menu, MessageBoxMenu, Tutorial Menu, Cursor Menu and RaceSex Menu. So the
+  dialogue window, books, message boxes, the HUD, the main menu, loading, sleep/wait and lockpicking stay ours or
+  Skyrim's.
+- **Where its look comes from.** Fonts through `interface/fontconfig.txt` (it took Pelagiad from our theme:
+  `$EverywhereMediumFont = "Pelagiad"`). Four pieces of frame art (`panel9`, `knot`, `cap_left`, `cap_right`) are drawn
+  from shapes in `interface/tweenmenu.swf` and `interface/inventory components/itemcard.swf` and cached as PNGs in
+  `SKSE/Plugins/WindUI/ArtCache/windui_100/` with a `stamp.txt` of each source's size and hash. Colours are fixed in the
+  DLL (black panes, grey-white text); nothing in `settings.json` themes it. So our retint acts on the SWF shapes it
+  reads (the install-time recipe in `tools/ui_theme`), never on Wind UI's files.
+- **Settings** (`SKSE/Plugins/WindUI/settings.json`, nlohmann JSON; keys `mwui_fov_world`, `mwui_fov_first`,
+  `mwui_magic_glow`, `mwui_grid_scroll`, `mwui_separate`, `mwui_map_style`, `mwui_figure`, `mwui_prebuild`,
+  `mwui_icons_live`, `mwui_icon_memory`, `mwui_perf_log`). Its settings page is added to Skyrim's System page (log:
+  "the WindUI page added to Settings").
+- **Shift for Skyrim's menus: off.** `SKSE/Plugins/WindUI/vanilla.txt` reading `off` gives "inventory intercept
+  installed (vanilla passthrough: off)". Laid by the `windui` row's `files`.
+- **Fast travel and the map.** `mwui_map_style: 1` (Skyrim) makes M and the taskbar's Map open Skyrim's MapMenu, which
+  our chart stands in for (ArgoniaCore's mapMenu surface: "chart ready open"). Wind UI's own map (Skyrim's LOD terrain,
+  local and world views, fast travel by click) is then not used. The engine-side refusal is 1.12 §5's.
+- **Show on map.** In Wind UI's journal window only; with map style Skyrim it would open our chart. J opens our
+  journal (the "Journal" user event), drawn over Wind UI's windows; the taskbar's Journal still toggles Wind UI's
+  journal window (no setting hides it).
+- **Pad.** None: in menu mode Start, the bumpers, the d-pad and A change nothing (the ImGui nav strings are the
+  library's). Start from play opened Skyrim's tween menu during the probe's first, frozen minute; engine-route keys
+  open Wind UI's menu mode. 1.12 builds the pad (§8).
+- **Mouse.** It draws Skyrim's own cursor ("the cursor was gone, shown again"); an OS SetCursorPos and posted
+  WM_ mouse messages did not move or click it, so it reads the game's cursor and input events.
+- **Its stats pane** groups skills Combat / Magic / Stealth from the 18 vanilla skills plus Custom Skills Framework
+  skills, shows perk points and level; vanilla skills we pin at 0 (One-handed, Two-handed, Archery) show. Its magic
+  pane groups spells under five hardcoded school names (Alteration, Conjuration, Destruction, Illusion,
+  Restoration), plus Powers, Shouts ("Voice" slot) and active effects.
+- **Our HUD** draws over Wind UI's windows (it should hide while `WindUIMenu` is open).
+- **Cost.** After the first load its map layers took 15.6 s ("made from 42 plugins"), and the first load froze 44 s
+  and 34 s in its explored-area check; a warm second launch was smooth.
+- **Its own words.** Its level-up window carries joke lines (cheese wheels, Sheogorath); the sitting replaces it.

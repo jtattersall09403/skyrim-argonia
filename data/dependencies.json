@@ -2155,7 +2155,18 @@
    "runtime": "SKSE/Plugins/WindUI.dll only (Dear ImGui drawn, no SWF, no plugin file); reads interface/fontconfig.txt fonts, tweenmenu.swf, map.swf and itemcard.swf art, SkyUI icons, Custom Skills Framework skills; settings in SKSE/Plugins/WindUI/settings.json",
    "conflicts": "replaces inventory, container and barter menus (Dear Diary's give way)",
    "linked_or_forked_by": "none: depended on as the player's own download",
-   "from": "1.12"
+   "from": "1.12",
+   "files": [
+    {
+     "path": "SKSE/Plugins/WindUI/settings.json",
+     "text": "{\"mwui_map_style\": 1}\n"
+    },
+    {
+     "path": "SKSE/Plugins/WindUI/vanilla.txt",
+     "text": "off\n"
+    }
+   ],
+   "settings_why": "map style Skyrim: M and the taskbar's Map open Skyrim's MapMenu, which our chart stands in for (no Wind UI map, no map fast travel); vanilla.txt 'off': Shift no longer opens Skyrim's menus (log: 'vanilla passthrough: off'), both proved in game 2026-10-31 (1.12 probe)"
   },
   {
    "id": "oblivion-loading-menu",
