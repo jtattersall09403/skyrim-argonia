@@ -1,93 +1,107 @@
-# Owner packet draft: the first-place verdict (1.7)
+# Owner packet draft: the morning packet for the first-place verdict (1.7)
 
-Draft, 2026-10-30. **Not posted.** The planner posts it through `owner_inbox.py` after game-13's batch
-(`tests/journeys/batches/all.yaml`). Lines marked **[from batch]** are filled from that batch; the rest is
-measured now.
+Draft, refreshed 2026-10-31. **Not posted.** The planner posts it through `owner_inbox.py` once tonight's last batch
+has run. Every number that depends on that batch is marked **[from batch]**. The rest is measured now. The verdict
+questions are on issue #19.
 
-## What to play
-- From the console, type **`bat first-place`**. Walk in from the road and talk to the people of the landing and
-  the station. Take the quest and follow the journal to its end at Claywater Station. It takes about 20 minutes.
-  Play it once on the phone and once on the Mac.
-- Play the **shaders-on** card in Moonlight. Then play the **shaders-off** card.
-- Reply on #16 with the machine you want. The numbers are below.
+## How to play
+- Open the play page and start the Moonlight card **Argonia (shaders on)**. Later play **Argonia (shaders off)**.
+  Tell us which looks and runs better (#16). Play once on the phone and once on the Mac.
+- In the game console, type `bat first-place`. It puts you on the road to **Claywater**, the landing and the
+  station. About 20 minutes.
+- What to try, in this order:
+  1. Walk in from the road and talk to **Livia**, the well-keeper. Ask her about the topics she offers.
+  2. Take the quest, *The Well and the Landing*, from the people there.
+  3. Follow the journal. It should tell you the next step by itself. Open it with the Back button on the pad, or with J.
+  4. Trade with Livia: ask to trade, then buy and sell something.
+  5. Fight the deserter on the road. Try the lock-on (R3) and a roll (B while moving).
+  6. Let him kill you, then get your vastei back from the pile where you fell.
+  7. Make camp and rest. Notice the level you can take, and that the deserter comes back.
+- Tell us anything that looked or sounded wrong. Use **Report here** in the studio to mark the place.
 
-## Five answers (reply yes, no or not yet, and why)
-- Does the place feel like Black Marsh up close?
-- Does it feel like Black Marsh from the road?
-- Does the talk feel like Morrowind?
-- Could you follow the quest from the journal alone?
-- Is this the game you want?
-- Is combat on the tuned stack good enough to carry on with? The Dark Souls map for it is chunk 2.7.
+Answer the five verdict questions on #19.
 
-Tell us anything that looked or sounded wrong. Mark the places with **Report here** in the studio.
+## What changed overnight
+- **The map and journal close properly.** B, Tab, M and the touch Close button all close the map. B closes the
+  journal without making you roll; B while moving still rolls.
+- **Favourites work.** Q on the keyboard and D-up on the pad open them once you have favourited something.
+- **Livia now trades.** She is Claywater's general trader, using Skyrim's own trading system.
+- **Dialogue and journal screens were redesigned** after we looked at them in game: the window sits lower so you
+  see the speaker, topics have more room, the journal names the quest on its own line and shows "Pages 1-2 of 6",
+  and the trading list is tidier. People now start with a sensible attitude (the bar was empty for everyone).
+- **Resting only resets our own people.** It used to reset about 2,930 Skyrim actors; now only Argonia's. The
+  deserter returns after a rest; the crocodile does not.
+- **After you die, you now wake up able to act,** so you can pick up the vastei pile. Whether this works in
+  play: **[from batch]**.
+- **Enemies are armed.** The deserter had his sword and shield in his bag but held nothing. He now wears them and
+  fights with them.
+- **The mortar tub** in the quest no longer sits under the well head, so you can use it.
+- **Two crashes are fixed.** Growing a level in a fight no longer crashes the game. The test tours no longer
+  crash the game when they travel between places.
+- **Phone:** touch buttons are held long enough to register (the journal closes, heavy attacks fire) and the
+  folded phone puts its buttons beside the picture, not over the health bars.
+- **Dark Souls Combat (combat groups B and B2) does not work on our setup.** Combat stays on the tuned set you
+  played; each Dark Souls move goes to that set or to our own build in 2.7.
 
 ## What our checks proved
-- The in-game batch: **[from batch]** (how many of the 30 checks passed, and what failed).
-- The quest's four stages, set by the real talks and items: **[from batch]**.
-- **Dark Souls Combat (combat groups B and B2) does not work on our setup.** The behaviour tool loads the mod, but
-  none of its moves reach the game. The other tool stops responding. Combat stays on the tuned set that you
-  played. Each Dark Souls move that the mod offered goes to that set or to our own build in 2.7.
-- **Memory over repeated loads:**
-  - a full save load grows the game by about 20 MB each time;
-  - the road into Claywater grows it by about 58 MB each time;
-  - reloading a single interior does not grow it.
-  The batch restarts the game before memory runs out. Whether that restart held: **[from batch]**.
+- The in-game batch: **[from batch]** (journeys passed of those run, and what failed). The last full snapshot,
+  before the fixes, was 18 passed, 14 failing, 3 drafts (`docs/phases/1-core-loop/in-game-owed.md`).
+- The quest's stages, set by the real talks and items: **[from batch]**. In the last run first-place passed on
+  its first try and the quest's four endings passed.
+- Respawn: the deserter respawns and the crocodile does not (proven, 3 runs).
+- **Memory over repeated loads:** a full save load grows the game by about 20 MB; the road into Claywater by about
+  58 MB; reloading one interior does not grow it. The batch restarts the game before memory runs out. Whether that
+  held: **[from batch]**.
 
 ## Frame rate (#16)
-- On the current machine (g4dn.xlarge), at Riverwood, with shaders on: 45 fps typical, 32 to 35 fps at the worst
-  1%. With shaders off: 53 fps typical, 40 fps at the worst 1%.
-- Our bar is 60 fps typical and 45 fps at the worst 1%. Both settings miss it.
-- At Claywater: **[from batch]**.
-- Stream delay from button to screen: not yet measured on this build. The bar is within 10 ms of your first
-  session (about 38 to 40 ms).
+- On the old machine (g4dn.xlarge) at Riverwood: shaders on 45 fps typical, 32 to 35 fps at the worst 1%; shaders
+  off 53 fps typical, 40 fps at the worst 1%. That is below your bar of a 60 fps median (50 acceptable), with 95% of frames at or above 45.
+- Claywater on the g4dn: **[from batch]**. On the g6.xlarge you approved: **[from batch]**; the move to it is not done yet.
+- Stream delay from button to screen: 35.6 ms median, measured on the build machine's emulated client. A real
+  device is for you to feel.
 
 ## For review
+- The quest's dialogue, *The Well and the Landing* (#14): its lines are in `world/db/quest_topic.jsonl`, its
+  journal entries in `world/db/quest_stage.jsonl`.
 - The combat wiring spec (1.6): [combat-wiring.md](combat-wiring.md).
-- The quest, *The Well and the Landing* (1.4): its record is `quest.local.lf83` in the world database. Its lines
-  are in `world/db/quest_topic.jsonl` and its journal entries in `world/db/quest_stage.jsonl`.
-
-## Things to look at closely
-- Claywater's block has 1,254 things that a player can meet. Each has a verdict: 1,246 keep, 6 restyle and
-  2 replace.
-- Two outdoor items need checking: the stable by the road (Riften's stable, which is to be replaced) and two
-  Skyrim plant names in the huts. You ruled that interiors may look Nordic, so the station house is fine.
-- Already fixed: 30 dry-stone walls and a woodpile carried Solstheim's ash and are now plain; the purple mountain
-  flower is now a Black Marsh redwort.
+- Claywater's block has 1,254 things a player can meet: 1,246 keep, 6 restyle, 2 replace. Two outdoor items need
+  your eye: the stable by the road (to be replaced) and two Skyrim plant names in the huts. Interiors may look
+  Nordic by your ruling.
+- Already fixed: 30 dry-stone walls and a woodpile that carried Solstheim's ash; the purple mountain flower is now
+  a Black Marsh redwort.
 
 ## Costs
-- AWS this month to date: **$369.56**, over the $100 a month bar. Most of it is the two machines' compute
-  ($280.55) and tax ($61.60). Both machines were running when this was drafted. The planner re-runs
-  `python3 tools/cost_report.py` when posting.
-- Claude usage: **$849 at list price in the last 24 hours** and $865 in the last 30 days. The transcripts on
-  this machine cover only the last week or so.
+- AWS this month to date: **$374.19** at 2026-10-31 (`python3 tools/cost_report.py`), over the $100 a month bar;
+  compute $283.55, tax $62.36, other $28.28. Three machines were running when this was drafted. Re-run in the
+  morning: **[from batch]**.
+- Claude usage (`python3 tooling/session_tokens.py`): **$506.64 at list price in the last 24 hours** and
+  **$1,010.46 in the last 30 days**. Re-run in the morning: **[from batch]**.
 
 ## Parts 2 to 4: the re-estimate
-Measured so far:
-- one deploy to the game machine takes 336 s;
-- one build of the game files takes 2:18 to 2:59;
-- the gate takes 1:44 to 1:46;
-- a game lane runs 41 to 123 minutes per session;
-- Parts 0 and 1 took 60 lane reports and 363 commits over 28 to 30 October.
+Measured so far: one deploy takes 336 s; one build of the game files 2:18 to 2:59; the gate 1:44 to 1:46; a game
+lane 41 to 123 minutes; Parts 0 and 1 took 60 lane reports and 363 commits over 28 to 30 October. The days for
+Parts 2 to 4 depend on the batch's run time and first-pass green count: **[from batch]**.
 
-Assumptions: each Part 2 chunk needs about one build lane and one game lane, as Part 1's did; checks run in one
-batch per game session.
+## Your open calls
+None of these is answered in the owner brief or the decisions index. Reply with the call's number, for example 'O-11 yes'.
+- **O-2, subscription.** Stay on 5x, or move to 20x so Part 2's two tracks run at once? We suggest 20x from Part 4
+  only. Costs are above.
+- **O-4, perks.** Hidden engine layer only, or a visible Morrowind-flavoured layer merged with vastei? We suggest
+  hidden.
+- **O-9, armour pieces.** If we find no split pauldron and gauntlet meshes, may paired pieces sit in separate
+  slots? We suggest yes.
+- **O-11, voice.** Keep dialogue as unvoiced text? We suggest yes.
+- **O-16, rest.** Should one rest bank one pending level, or all? We suggest one per rest.
 
-The number of days for Parts 2 to 4: **[from batch]**. The batch's run time and its first-pass green count set
-how many sessions each chunk needs.
+Already answered, so not asked: #16's machine move (g6.xlarge) and the frame bar; respawn; Nordic interiors.
 
-## Your open calls (none answered yet)
-- **O-2, subscription.** We are on 5x. Should we move to 20x so that Part 2's two tracks can run at once?
-  The cost numbers are in Costs above. We suggest 20x from Part 4 only.
-- **O-4, perks.** Should perks stay hidden as an engine layer only? The other option is a Morrowind-flavoured
-  perk layer that is shown to the player and merged with vastei. We suggest hidden.
-- **O-9, armour pieces.** If we cannot find split pauldron and gauntlet meshes, may paired pieces sit in separate
-  slots? Our suggestion is yes.
-- **O-11, voice.** Should dialogue stay as unvoiced text? Our suggestion is yes.
-- **O-16, rest.** When you rest, should it bank one pending level or all pending levels? We suggest one per rest.
-
-To reply, answer each call by its name, for example "O-11 yes".
+## Not fixed, and why
+Empty until the morning. You ruled that fixes come before deferrals. Anything not fixed tonight is listed here with the reason it could
+not be.
 
 ## Triage (for your findings)
+Blocker means you cannot do the action, or you see a Nordic element at the play camera. Polish means anything else.
+
 | # | Finding (your words) | Place or scene | Blocker or polish | Tag (P1 before-scale / P2 rolling / P3 final) | Owning chunk | Fix and status |
 |---|---|---|---|---|---|---|
 | 1 | | | | | | |
