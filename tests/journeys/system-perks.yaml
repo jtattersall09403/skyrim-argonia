@@ -77,7 +77,7 @@ steps:
     expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]
   - name: favorites-by-keyboard
     do: [{key: "Q 120 engine"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: FavoritesMenu}}]
+    expect: [{event: {kind: menu, match: WindUIMenu}}]   # Wind UI takes Q (its log: "favourites (Q): our inventory, Favorites tab"): no FavoritesMenu event
     # Wind UI holds the favourites (Q opens its windows on the Favorites tab, no close event; b112f): last before the quit.
     # The pad's favourites are Wind UI's Quick keys pane under the pad cursor (padcursor.cpp): the pad lane's row.
   - name: quit-to-main-menu   # the Journal's own QuitToMainMenu (wrapped): the suspend save, then the main menu
