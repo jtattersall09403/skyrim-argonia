@@ -69,3 +69,10 @@ skse/ArgoniaBridge is outside this lane's paths; or find what holds the camera i
 - Pauldrons and greaves of the steel set (Morrowind-only slots) show nothing when worn, because no base piece exists
   for them.
 - Weapon classes other than longBlade carry vanilla damage until 2.7 §b measures their motion values.
+
+## Third-person close stills (planner: first person dropped; proof5)
+`close()` in the batch sets noon, zooms with the wheel, freezes the camera (tfc) and turns the player. The reader's
+verdicts: bow PASS, clear; scimitar weak PASS; mace partly; sword FAIL (the turn took the player out of frame). A
+sandstorm weather fogged every frame, and the wheel zoom did not bring the camera close. The row stays owed. Next:
+force clear weather (`fw` to a clear WTHR), leave the setangle turn out, and use the bridge `booth`-style free-camera
+framing around the player. Pauldrons and greaves show nothing and were never in the kit.
