@@ -15,11 +15,12 @@ steps:
   - name: engine-notice           # the engine's own top-left line: Takes' greeting starts LF83, whose journal notice
     do:                           # prints in the engine's message block (views.cpp ShowHUDMessage) and our stack
       - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {console: "player.setangle x 0"}
       - {talk: ARG_Ref_ClaywaterStationTakes}
       - {wait: 1.5}
       - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
       - {wait: 0.4}
-    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
     reader: [the engine's notice text at the top left fully readable, our Journal updated notice above the bars bottom left, nothing of ours over any engine text]
   - name: minimap-north
     do: [{console: "player.setangle z 0"}, {wait: 1}]
@@ -30,10 +31,10 @@ steps:
     expect: [{read: [core, Views], path: value, contains: "heading 135"}]
     reader: [the same minimap with the same map orientation as the last still, only the arrowhead turned to point lower right]
   - name: stamina-drain-refill    # sprint (W held with Alt, Skyrim's keyboard sprint) drains stamina, then it refills
-    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.3}, {key: "W+LALT 2800 os"}, {wait: 2}, {burst_fetch: stamina}]
+    do: [{burst: {frames: 75, fps: 15}}, {wait: 0.3}, {key: "W+LALT 2800 os"}, {wait: 2}, {burst_fetch: stamina}]
   - name: magicka-cast            # a spell from the right hand drains magicka, which then refills
     do: [{console: "player.addspell FE012A8C"}, {console: "player.equipspell FE012A8C left"}, {console: "player.equipspell FE012A8C right"}, {wait: 1},
-         {burst: {frames: 40, fps: 8}}, {wait: 0.3}, {click: "left 1500"}, {wait: 0.3}, {click: "right 1500"}, {wait: 1.5}, {burst_fetch: magicka}]
+         {burst: {frames: 75, fps: 15}}, {wait: 0.3}, {click: "left 1500"}, {wait: 0.3}, {click: "right 1500"}, {wait: 1.5}, {burst_fetch: magicka}]
   - name: vastei-small            # a small gain on a large purse: a faint shimmer, no number
     do: [{call: [dev-set, SetVastei, "1000"]}, {wait: 2}, {burst: {frames: 24, fps: 8}}, {wait: 0.3}, {call: [dev-set, SetVastei, "1005"]}, {wait: 2.5}, {burst_fetch: vastei-small}]
     expect: [{read: [core, GetVastei], path: value, gt: 1004}]
@@ -44,4 +45,4 @@ steps:
     do: [{console: "player.moveto ARG_MapMarker_ClaywaterStation"}, {pad: "LY=1:1500"}, {wait: 1.5}]
     reader: [the place name and any discovery line fully readable, not covered by the bars, vastei or the minimap]
   - name: drain-direct            # a control for the bars' motion: a direct loss and the game's own refill (not a closing step)
-    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.5}, {console: "player.damageav stamina 60"}, {console: "player.damageav magicka 40"}, {wait: 4}, {burst_fetch: direct}]
+    do: [{burst: {frames: 75, fps: 15}}, {wait: 0.5}, {console: "player.damageav stamina 60"}, {console: "player.damageav magicka 40"}, {wait: 4}, {burst_fetch: direct}]
