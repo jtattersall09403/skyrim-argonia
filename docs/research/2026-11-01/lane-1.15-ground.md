@@ -162,22 +162,54 @@ Sample check on 32bb7cb: fit wet 0, bank 0, step-bank 0, **dry_edge 6** (cell 21
 limit), **overflow 2 cells** (−20,59 and −42,13: a padded/enclosed cell's 250 m ground beside a 40/72 m lake;
 bank role 3 at 254 m one vertex from the bed). Height fit 0.057 m, seams 0. Generate 174 s.
 
+## Session 4 (2026-11-01): padding cells measured, then the same (0034)
+
+`terrain/probes/vanilla_lake_padding.py` (Skyrim.esm, 15 largest inland levels, 323 cells, 16 s): the ground under
+the level is 74 components, but the largest holds 97 % of it (110,657 of 113,608 vertices). In padding cells (< 10 % wet,
+69 cells) 2,497 wet vertices join the main body and 227 do not. Their dry ground stands 0-8 units over the level.
+**The outline lies on cell lines for 5.9 % of its length** (2/32 = 6.25 % for a raster shape), so outlines are the
+body's shape, not cell squares.
+
+Done (pushed 52f2af7, dc744c6, 7738c4e, 5b2605a):
+- The natural flood is only the low ground 4-connected to the body's raster water (`generate.reach`, numpy run
+  labelling), and only inside cells that hold raster water. Padded and filled cells keep their ground as bank at
+  level + 0.3 (175 k low samples left dry). The 0_0_1_1 padded cells went from 0.9-1.0 wet to 0.0.
+- `limit`: where two waters' cones clash at the design slope (a 374 m tarn 117 m from a 40 m lake), the cones are
+  taken at `CLIFF_HARD_DEG` 80°. The 214 m wall at (−20,59) is gone, and overflow fell from 2 cells to 1 (−25,48:
+  a 327/67 m pair).
+- A dry cell's vertex stays bank under a sinkhole (the 6 dry-edge vertices of (21,20) were the
+  sinkhole-mouth-basin's disc). dry_edge is now 0.
+- Flats: each is fitted to the band its window's bounds allow (lo cone ≤ m ≤ hi cone at 0.8 × the limit). It
+  shrinks ×0.85 down to 0.3 r, then is terraced at the band's level; a note goes in `request`. A step's sloped
+  bed (role 2) is water, not town ground, in both the shaping and the check. The unshaped sites went 9 → 5.
+- Lattice (the materials lane's fault): `upsample` and the noise octaves are smoothed at half their spacing.
+  `check` now measures the ratio of the second difference on the 16-sample lines to off them: it went 3.14 → 2.45.
+  It fails above 1.5.
+
+Sample check on 5b2605a: fit wet 0, bank 0, step-bank 0, dry_edge 0; **5 sites unshaped**; **overflow 1 cell**;
+**lattice 2.45**. Generate 323 s under a load of 12 (170 s on a quieter VM). pytest terrain: 43 passed.
+
 ## Starting state (hand-off)
 
-Main is at 32bb7cb or later. Owed, in order:
+Main is at 5b2605a or later. Owed, in order:
 
-1. Overflow at (−20,59) and (−42,13): the lake raster is wet at 40/72 m one vertex from 250 m ground. Find which
-   bound holds the 254 m bank (probe values at the step; likely a site's `lo` or the shore `lo`) and let the limit
-   slope it. Then the 6 dry-edge vertices in (21,20) (role 1: a channel or a bowl at a dry corner).
-2. The 9 unshaped flats beside gorges: either level them to the reachable height (the cone from the water) or
-   judge only the pinned core in the check; decide from a render.
-3. Reader on the session-3 renders (/home/ubuntu/scratch-ground/s3/render, 32bb7cb): marsh PARTLY/PARTLY/PARTLY
-   (no plus; the lake is too open, a pale beach-like rim, the vibe board wants banks straight at trunks); river FAIL/
-   FAIL/PARTLY (an L-shaped pool with a square pool inside at top-centre, flat facets left); border gate PARTLY x3
-   (a diagonal lattice texture centre-left, terraced river banks); 0_0_1_1 PARTLY/FAIL/FAIL (**a rectangular lake
-   with grid-straight sides**). Likely cause to test first: the new filled and padded cells hold a level above
-   their own low ground, so the natural flood fills the whole cell to its edges (a square lake). Vanilla's padding
-   is only where the ground stands above the level: limit the natural flood in a cell with no raster water to the
-   ground connected to raster water (a flood fill from the wet raster, not a threshold), or pad only where the
-   ground stands above. Re-render and reader again after.
-4. q3 of the audit (cliff pieces on 52 % of steep cells) belongs to the cliff placement, not the mask.
+1. Lattice 2.45: the ratio is 1.16 on dry ground and 0.77 on the shore, but 2.35 on step slopes (role 2) and 3.18
+   on water-cell banks (role 3). Its source is the cell-edge bounds: `lo = vmax + 0.3` changes on the cell lines,
+   and the closed step banks are straight ridges along cell edges (3,794 closed steps, most of them from the solve's
+   `pad_ring`). Measure how vanilla's ground crosses a closed level change at a cell edge
+   (`vanilla_lake_cells.py` walls) before changing the rule.
+2. The 5 unshaped flats (`probes.unshaped_sites`): the terraced ones at 0.3 r still show std 1.3-5. The pins are
+   probably released by a later mouth's `prev` or moved by the clash cones. Print lo/hi in the core to find out.
+3. Overflow (−25,48)/(−26,47): a 327 m and a 67 m water a cell apart (`probes.cell_steps -25 47`). The same
+   clash, but with role 4/3 shore lo; check whether the shore lo needs the hard cones too.
+4. The reader on the session-4 renders (/home/ubuntu/scratch-ground/s4/render) is below. The water lane's pale
+   shallows wash is the render's water style, not the ground.
+   - Reader on the 7738c4e renders: marsh PARTLY x3 (a straight-sided slab, probably a site disc); river PARTLY/FAIL/PARTLY
+     (stair-step cell lines, rectangular shallows: the cell-edge bounds of item 1); border gate PARTLY x3 (a
+     rectangular lighter block in the river); 0_0_1_1 FAIL/FAIL/PARTLY.
+   - Re-read after 5b2605a: 0_0_1_1 PARTLY/PARTLY/PARTLY. The L-shaped pool is gone, but a near-square pool remains at
+     px 650-890, 640-835. The other three windows were pixel-identical to the first read: re-render them and confirm
+     the files are from 5b2605a before trusting that verdict.
+   - The remaining boxy pools are cells whose raster share is near 0 but which are fully wet, because a vertex
+     touching a raster cell admits the whole cell (`rawc`). Test admitting only the raster cells themselves.
+5. Sites' role-1 discs (deep_water bowls, sinkholes) may be the remaining whole-cell wet in (2,−1).
