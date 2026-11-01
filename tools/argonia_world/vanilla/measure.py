@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 
 import numpy as np
 
+from ..skyrim_units import CELL_UNITS, VERTEX_SPACING_UNITS
 from .load import ground, tamriel
 
 SEA = -14000.0
@@ -276,7 +277,7 @@ def ground_slope(t, x, y):
     a, b, c_, d = ground(t, x + 64, y), ground(t, x - 64, y), ground(t, x, y + 64), ground(t, x, y - 64)
     if None in (a, b, c_, d):
         return None
-    return math.degrees(math.atan(math.hypot((a - b) / 128, (c_ - d) / 128)))
+    return math.degrees(math.atan(math.hypot((a - b) / VERTEX_SPACING_UNITS, (c_ - d) / VERTEX_SPACING_UNITS)))
 
 
 def q5(t):
@@ -354,7 +355,7 @@ def q6(t):
         c = C[r[0]]
         lv = level(c, t)
         dz.append(r[4] - lv)
-        u, v = (r[2] - r[0][0] * 4096) / 128, (r[3] - r[0][1] * 4096) / 128
+        u, v = (r[2] - r[0][0] * CELL_UNITS) / VERTEX_SPACING_UNITS, (r[3] - r[0][1] * CELL_UNITS) / VERTEX_SPACING_UNITS
         ii, jj = np.nonzero(c["h"] < lv)
         dist.append(float(np.min(np.hypot(ii - v, jj - u))) * 128)
     dist = np.array(dist)
@@ -481,7 +482,7 @@ def q9(t):
     tree = Counter(r[0] for r in t["refs"] if sig(t, r[1]) == "TREE")
     ins, outs = defaultdict(list), defaultdict(list)
     for (x, y), c in C.items():
-        o = ins if inside(big, x * 4096 + 2048, y * 4096 + 2048) else outs
+        o = ins if inside(big, x * CELL_UNITS + CELL_UNITS // 2, y * CELL_UNITS + CELL_UNITS // 2) else outs
         o["h"].append(float(c["h"].mean()))
         o["relief"].append(float(c["h"].max() - c["h"].min()))
         o["refs"].append(refs.get((x, y), 0))

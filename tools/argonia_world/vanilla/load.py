@@ -18,6 +18,8 @@ from pathlib import Path
 
 import numpy as np
 
+from ..skyrim_units import CELL_UNITS, VERTEX_SPACING_UNITS
+
 TAMRIEL = 0x3C
 CACHE = Path.home() / ".cache" / "argonia-vanilla" / "tamriel.pkl"
 BASE_SIGS = {b"STAT", b"TREE", b"FLOR", b"MSTT", b"ACTI", b"DOOR", b"FURN", b"CONT", b"LIGH", b"MISC", b"SCOL",
@@ -143,7 +145,7 @@ def parse(path: Path) -> dict:
                 if b"NAME" in d and b"DATA" in d:
                     p = struct.unpack("<6f", d[b"DATA"][:24])
                     sc = struct.unpack("<f", d[b"XSCL"])[0] if b"XSCL" in d else 1.0
-                    pc = (int(np.floor(p[0] / 4096)), int(np.floor(p[1] / 4096)))  # persistent refs sit in one cell
+                    pc = (int(np.floor(p[0] / CELL_UNITS)), int(np.floor(p[1] / CELL_UNITS)))  # persistent refs sit in one cell
                     refs.append((pc, struct.unpack("<I", d[b"NAME"])[0], *p, sc,
                                  b"XTEL" in d, flags))
             i += 24 + size
@@ -171,11 +173,11 @@ def tamriel(rebuild: bool = False) -> dict:
 
 def ground(t: dict, x: float, y: float) -> float | None:
     """Bilinear ground height at world units (x, y); None outside LAND."""
-    cx, cy = int(np.floor(x / 4096)), int(np.floor(y / 4096))
+    cx, cy = int(np.floor(x / CELL_UNITS)), int(np.floor(y / CELL_UNITS))
     c = t["cells"].get((cx, cy))
     if not c or c["h"] is None:
         return None
-    u, v = (x - cx * 4096) / 128, (y - cy * 4096) / 128
+    u, v = (x - cx * CELL_UNITS) / VERTEX_SPACING_UNITS, (y - cy * CELL_UNITS) / VERTEX_SPACING_UNITS
     i, j = min(int(v), 31), min(int(u), 31)
     fu, fv = u - j, v - i
     h = c["h"]
