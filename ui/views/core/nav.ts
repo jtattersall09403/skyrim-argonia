@@ -55,15 +55,21 @@ export function installNav(h: NavHooks) {
     if (!cur || !all.includes(cur)) { focus(all[0]); return; }
     // Within a scrolling list, walk the list's order, so a long topic list moves one row at a time.
     // A row's side control (data-aside: the magic pane's left-hand "L") is not in the walk; from it, focus moves spatially.
-    const list = cur.closest<HTMLElement>("[data-list]");
-    if (list && dy !== 0 && !cur.hasAttribute("data-aside")) {
-      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((e) => !e.hasAttribute("data-aside"));
-      const i = items.indexOf(cur) + dy;
-      if (i >= 0 && i < items.length) { focus(items[i]); return; }
+    // Up and down from a side control walk from its row's main control (the magic pane's "L" sits beside the name).
+    const rowMain = (el: HTMLElement): HTMLElement => (el.hasAttribute("data-aside")
+      ? el.parentElement?.querySelector<HTMLElement>(`${FOCUSABLE.split(",").map((s) => s.trim() + ":not([data-aside])").join(",")}`) ?? el
+      : el);
+    const base = dy !== 0 ? rowMain(cur) : cur;
+    const list = base.closest<HTMLElement>("[data-list]");
+    if (list && dy !== 0) {
+      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((e) => !e.hasAttribute("data-aside") && visible(e));
+      const i = items.indexOf(base) + dy;
+      if (items.includes(base) && i >= 0 && i < items.length) { focus(items[i]); return; }
     }
     const others = all.filter((e) => e !== cur).map((el) => ({ el, r: el.getBoundingClientRect() }));
     const i = nearest(cur.getBoundingClientRect(), others, dx, dy);
-    if (i >= 0) focus(others[i].el);
+    // a vertical move never lands on a side control: it lands on that row's main control
+    if (i >= 0) focus(dy !== 0 ? rowMain(others[i].el) : others[i].el);
   };
 
   const focus = (el: HTMLElement): void => {
@@ -120,6 +126,7 @@ export function installNav(h: NavHooks) {
   };
   const controls = (window as { prismaUi?: { controls?: EventTarget } }).prismaUi?.controls;
   controls?.addEventListener("gamepadbuttondown", (e) => {
+    if (padLoop) return;  // the Gamepad API loop already reads the pad: one press, one action (in game: A readied twice)
     const a = PRISMA_BUTTONS[(e as CustomEvent<{ w3cButtonIndex: number }>).detail?.w3cButtonIndex];
     if (a) { h.device("gamepad"); input(a); }
   });

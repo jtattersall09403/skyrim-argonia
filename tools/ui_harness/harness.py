@@ -305,6 +305,15 @@ class Harness:
         want = [i["right"], i["left"], i["right"], i["left"], i["power"], i["close"]]
         if sent != want:
             fails.append(f"magic sent {sent}, want {want}")
+        # In game the pane opens with focus on Close (top right): the pad's down must land on a name, never an "L"
+        # (magic-pane in game, mpad: the walk went down the "L" column and A readied the left hand).
+        p.evaluate("() => document.querySelector('[data-key=\"close\"]').focus()")
+        for _ in range(4):
+            p.evaluate("() => window.argonia.input('down')")
+            k = p.evaluate("() => document.activeElement && document.activeElement.dataset.key")
+            if not k or k.startswith("l:"):
+                fails.append(f"magic: down from Close focused {k!r}, want a name (r: or v:)")
+                break
 
         if (self.out / "views" / "chart" / "assets" / "index.js").exists():
             c = fixtures("chart")
