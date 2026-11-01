@@ -3,12 +3,14 @@
 # autosaves and the quicksave). The machine's own role reads and writes pool/ only (owner issue #33).
 #   saves-sync.ps1 pull     at boot (task argonia-saves-pull), before anyone plays: fetch every file the bucket has
 #                           newer than this machine; never while the game runs
+#   saves-sync.ps1 push -SeedBefore <utc>   once, to seed the shared copy from a machine whose older saves are the
+#                           owner's: every file last written before <utc> goes up, whatever the agent list says
 #   saves-sync.ps1 push     every 5 minutes (task argonia-saves-push), before idle-stop's shutdown and on a spot
 #                           notice: upload every file newer here than in the bucket
 # Agents' saves stay home: files written while an agent job holds the machine with no stream (the busy flag, as
 # idle-stop counts it) are listed in state\saves-agent.txt and never pushed; nor are the per-build saves each deploy
 # makes on its own machine (argoniabase, ArgoniaWalk). Nothing is deleted on either side. Log: logs\saves-sync.log.
-param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd)
+param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd, [string]$SeedBefore)
 $ErrorActionPreference = 'Stop'
 $Bucket = 'argonia-saves-050977237313'; $Prefix = 'pool/'; $Region = 'eu-west-2'
 $Saves = 'C:\Users\Administrator\Documents\My Games\Skyrim Special Edition\Saves'
@@ -41,6 +43,13 @@ try {
     }
     Log "pulled $n of $($remote.Count)"
     exit 0
+  }
+  if ($SeedBefore) {
+    $cut = ([datetime]$SeedBefore).ToUniversalTime(); $n = 0
+    foreach ($f in @(Get-ChildItem $Saves -File -EA SilentlyContinue | ? { $_.Name -notmatch $Skip -and $_.LastWriteTimeUtc -lt $cut })) {
+      if (& $newer $f.LastWriteTimeUtc $remote[$f.Name]) { Write-S3Object -BucketName $Bucket -Key "$Prefix$($f.Name)" -File $f.FullName -Region $Region; $n++ }
+    }
+    Log "seeded $n files written before $SeedBefore"; exit 0
   }
   . C:\argonia\infra\stream-activity.ps1
   $busyFlag = (Test-Path "$State\busy") -and ((Get-Item "$State\busy").LastWriteTime -gt (Get-Date).AddMinutes(-15))
