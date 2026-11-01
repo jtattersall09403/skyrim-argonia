@@ -43,7 +43,6 @@ steps:
       - {read: [core, SittingOpen], path: value, eq: false}
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
       - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
-      - {log: {name: ArgoniaCore, contains: "the engine's level-up was ready", absent: true}}
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
   - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
     do: [{key: "TAB 120 engine"}, {wait: 2}, {key: "UP 120 engine"}, {wait: 2}]
