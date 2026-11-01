@@ -316,26 +316,37 @@ class Runner:
         {frames, fps} in the desktop session without waiting, while the step's next actions run; {burst_fetch: name}
         later copies the frames to out/<name>-NN.png."""
         frames, fps = int(arg.get("frames", 20)), float(arg.get("fps", 2))
-        if frames > 40 or frames / fps > 30:
-            raise StepFailed(f"burst {arg}: at most 40 frames over 30 s")
+        # over 4 fps or 40 frames, grab.ps1 records a video (x264) and cuts it into frames after
+        if frames > 900 or frames / fps > 30 or fps > 30:
+            raise StepFailed(f"burst {arg}: at most 30 s, at most 30 fps")
         m = self.b.machine
         env = dict(m.env, DESKTOP_JOB="burst", DESKTOP_WAIT="0")
-        m.ps(r"Remove-Item C:\argonia\logs\burst_*.png, C:\argonia\logs\desktop-burst.done -EA SilentlyContinue; exit 0", 60)
+        m.ps(r"Remove-Item C:\argonia\logs\burst_*.png, C:\argonia\logs\burst.mp4, C:\argonia\logs\desktop-burst.done -EA SilentlyContinue; exit 0", 60)
         # started, not awaited: the job's log does not exist yet, so run.sh's last line exits 1 (ignored)
         subprocess.run([m.run, "desktop", rf"& C:\argonia\infra\grab.ps1 C:\argonia\logs\burst.png -Frames {frames} -Fps {fps}"],
                        capture_output=True, timeout=90, env=env)
 
     def _burst_fetch(self, name):
         m = self.b.machine
-        for _ in range(40):
+        for _ in range(90):   # a fast clip is cut into frames after it ends
             out = m.ps(r"Test-Path C:\argonia\logs\desktop-burst.done", 60)
             if "True" in out:
                 break
             time.sleep(1)
-        listing = m.ps(r"(Get-ChildItem C:\argonia\logs\burst_*.png).Name", 60)
-        names = sorted(n.strip() for n in listing.splitlines() if n.strip().endswith(".png"))
-        for k, n in enumerate(names):
-            m.get(rf"C:\argonia\logs\{n}", self.out / f"{name}-{k:02d}.png")
+        # one zip, one copy: a copy per frame took ~2 s each (a 150-frame clip, five minutes)
+        m.ps(r"Remove-Item C:\argonia\logs\burst.zip -EA SilentlyContinue; $f = @(Get-ChildItem C:\argonia\logs\burst_*.png) + @(Get-ChildItem C:\argonia\logs\burst.mp4 -EA SilentlyContinue); if ($f) { Compress-Archive -Path $f.FullName -DestinationPath C:\argonia\logs\burst.zip -CompressionLevel NoCompression -Force }; exit 0", 120)
+        z = self.out / f"{name}.zip"
+        m.get(r"C:\argonia\logs\burst.zip", z)
+        import zipfile
+        names = []
+        if z.exists():
+            with zipfile.ZipFile(z) as zf:
+                names = sorted(n for n in zf.namelist() if n.endswith(".png"))
+                for k, n in enumerate(names):
+                    (self.out / f"{name}-{k:02d}.png").write_bytes(zf.read(n))
+                if "burst.mp4" in zf.namelist():
+                    (self.out / f"{name}.mp4").write_bytes(zf.read("burst.mp4"))
+            z.unlink()
         return {"frames": len(names)}
 
     def _wait(self, seconds):
