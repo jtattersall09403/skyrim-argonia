@@ -23,7 +23,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.9 | The front door and loads | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.10 | The player character | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (in game on argonia-play, docs/research/2026-10-31/owner-playtest-2.md; owed: the owner's look) |
-| 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | done (every row proven in game: out/batch/lane-1.12/20261101T055404, touch through the real stream; the owner's look is their play test) |
+| 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | in progress (ready for the owner's play: every agent row proven in game, out/batch/lane-1.12/20261101T055404; building: our magic pane with Morrowind's six schools; owed: the owner's look) |
 | 1 | 1.14 | Death, the pile and respawn | todo |
 | 1 | 1.15 | The world track's close | todo |
 | 1 | 1.16 | The owed integration checks | todo |
