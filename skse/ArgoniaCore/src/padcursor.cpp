@@ -405,11 +405,26 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       // left under it, open after the journal closed (pad112r step 20). Windows already up before (the taskbar's
       // Journal, a pane of ours) are left alone.
       const bool popped = !g.was_windows;
-      SKSE::GetTaskInterface()->AddTask([popped] {
-        if (!Open(kWindUIMenu) || (!Open(RE::JournalMenu::MENU_NAME) && !popped)) return;
-        if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
-        SKSE::log::info("pad: Wind UI's windows closed over the System page");
-      });
+      // Wind UI's windows can come up a few frames late (pad112s: open under our journal, seen when it closed), so the
+      // check runs each 50 ms for 1.5 s and hides them once.
+      std::thread([popped] {
+        for (int i = 0; i < 30; ++i) {
+          std::this_thread::sleep_for(std::chrono::milliseconds(50));
+          std::atomic<bool> done{false}, hid{false};
+          SKSE::GetTaskInterface()->AddTask([popped, &done, &hid] {
+            if (Open(kWindUIMenu) && (Open(RE::JournalMenu::MENU_NAME) || popped)) {
+              if (auto* q = RE::UIMessageQueue::GetSingleton())
+                q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
+              SKSE::log::info("pad: Wind UI's windows closed over the Journal Menu or our journal");
+              hid = true;
+            }
+            done = true;
+            done.notify_one();
+          });
+          done.wait(false);
+          if (hid) return;
+        }
+      }).detach();
       // It opens on its Quests tab (Skyrim's old quest log); the System pane and Esc want settings, load and quit: the
       // movie's own tab switch once it has loaded (J's opening is our journal's, closed by the router before this runs).
       std::thread([] {
