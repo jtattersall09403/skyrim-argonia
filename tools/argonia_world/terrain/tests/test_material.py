@@ -112,3 +112,31 @@ def test_material_gradient_table_matches_the_stops():
     rows = sorted(tuple(r) for r in db.open().query(f"SELECT {', '.join(cols)} FROM material_gradient"))
     want = sorted(tuple(r[c] for c in cols) for r in M.gradient_rows())
     assert rows == want  # run `terrain gradient` after a STOPS edit
+
+
+def test_nearest_wet_level_and_distance():
+    lev = np.full((40, 50), np.nan, np.float32)
+    lev[5, 5], lev[30, 45] = 1.0, 3.0
+    near, d = M.nearest_wet(lev)
+    yy, xx = np.mgrid[0:40, 0:50]
+    d1, d2 = np.hypot(yy - 5, xx - 5), np.hypot(yy - 30, xx - 45)
+    assert np.allclose(d, np.minimum(d1, d2), atol=1e-4)
+    assert (near[d1 < d2 - 0.5] == 1.0).all() and (near[d2 < d1 - 0.5] == 3.0).all()
+
+
+def test_vclr_draws_no_ring_at_the_waterline():
+    """The wet darkening falls monotonically from the water outward: no darker line on the shore than in it."""
+    n = 64
+    wet = np.clip(1.0 - np.arange(n) / 30.0, 0, 1)[None, :].repeat(8, 0).astype(np.float32)
+    dh = (np.arange(n) - 20.0)[None, :].repeat(8, 0).astype(np.float32) * 0.2
+    z = np.zeros_like(wet)
+    v = M.vclr(M.Window(np.zeros(wet.shape + (1,)), dh, z, z, wet))[..., 0].astype(int)
+    assert (np.diff(v[0]) >= 0).all()
+
+
+def test_rain_lifts_dry_ground_wetness():
+    m = mat(sources(shore()))
+    box = (PAD, PAD + N + 1, PAD, PAD + N + 1)
+    dry = m.window(*box).wet[:, 110:].mean()
+    m.water.rain[:] = 1.0
+    assert m.window(*box).wet[:, 110:].mean() > dry + 0.1

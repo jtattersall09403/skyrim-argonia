@@ -44,6 +44,7 @@ QS = QV - 1  # 16 quads per quadrant side
 MAX_ALPHA = 5  # base plus five: six textures a quadrant (the CK's practical limit; options §2)
 HALO = 64  # vertices of context a window reads around itself (the blurs' and the wetness's reach)
 MIN_W = 0.03
+NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
 INF = float("inf")
 
 
@@ -288,8 +289,9 @@ class Water:
     above local water" never steps at a cell edge. Beyond the province the sea (0 m) wherever the ground is below
     it."""
 
-    def __init__(self, level: np.ndarray, near: np.ndarray, pad: int):
+    def __init__(self, level: np.ndarray, near: np.ndarray, pad: int, rain: np.ndarray | None = None):
         self.level, self.near, self.pad = level, near, pad  # (C, C) [row from north, col from west]
+        self.rain = np.full(level.shape, RAIN_BASE) if rain is None else rain  # the climatology's R per cell
 
     @classmethod
     def load(cls, world, pad: int):
@@ -303,7 +305,7 @@ class Water:
             near = np.array([[sw.nearest_level(x0 + j, y0 + C - 1 - i) for j in range(C)] for i in range(C)])
         else:  # the fixture: the same rule on its own levels
             near = nearest_fill(cw.level)
-        return cls(cw.level, near, pad)
+        return cls(cw.level, near, pad, rain_field(cw))
 
     @classmethod
     def sea(cls, pad: int, n: int):
@@ -328,18 +330,76 @@ class Water:
         out = np.where(wet, lv, np.nan)
         return np.where(~inside & (h < 0.0), 0.0, out).astype(np.float32)
 
-    def local(self, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
-        """The nearest water's level per vertex, bilinear between cell centres (0 beyond the province)."""
+    def local(self, r0: int, r1: int, c0: int, c1: int, field: np.ndarray | None = None, beyond: float = 0.0) -> np.ndarray:
+        """The nearest water's level (or another per-cell field) per vertex, bilinear between cell centres
+        (`beyond` outside the province)."""
         pr, pc, inside, q, C = self._cells(r0, r1, c0, c1)
         fy = np.clip((pr - q / 2) / q, 0, C - 1)
         fx = np.clip((pc - q / 2) / q, 0, C - 1)
         i0, j0 = np.floor(fy).astype(int), np.floor(fx).astype(int)
         i1, j1 = np.minimum(i0 + 1, C - 1), np.minimum(j0 + 1, C - 1)
         ty, tx = (fy - i0)[:, None], (fx - j0)[None, :]
-        n = self.near
+        n = self.near if field is None else field
         v = ((n[i0][:, j0] * (1 - tx) + n[i0][:, j1] * tx) * (1 - ty)
              + (n[i1][:, j0] * (1 - tx) + n[i1][:, j1] * tx) * ty)
-        return np.where(inside, v, 0.0).astype(np.float32)
+        return np.where(inside, v, beyond).astype(np.float32)
+
+
+RAIN_BASE, RAIN_WINDWARD, RAIN_COAST = 0.5, 0.3, 0.2  # climatology §3 R
+# its 40 km coastal decay is for the real province; our 7.4 km province keeps the same share of the span (~1/4)
+RAIN_COAST_SPAN = 0.25
+RAIN_WET = 0.25  # the wetness R = 1 adds to bone-dry ground
+WIND_FROM = (-1.0, 1.0)  # (north, east) unit-ish: moist air comes off the Padomaic, south-east (climatology §4)
+
+
+def rain_field(cw) -> np.ndarray:
+    """The climatology's rain amplitude per cell (docs/design/research/world-terrain/black-marsh-climatology.md
+    §3): R = 0.5 + 0.3 windward + 0.2 exp(-dCoast / 40 km). dCoast from the solve's sea cells; windward where the
+    smoothed cell-mean ground rises into the south-east wind, peaking on mid-slopes (§2 orographic maximum)."""
+    from tools.argonia_world.terrain.grid import generated_ground
+    sea = (cw.wtype == 0) & np.isfinite(cw.level)
+    _, d = nearest_wet(np.where(sea, 0.0, np.nan))
+    coast = np.exp(-np.where(np.isfinite(d), d, 1e6) / (RAIN_COAST_SPAN * cw.level.shape[0]))
+    wind = np.zeros(cw.level.shape)
+    g = generated_ground()
+    if g.exists():
+        q, C = su.QUADS_PER_CELL, cw.level.shape[0]
+        h = np.asarray(np.load(g, mmap_mode="r")[q // 2::q, q // 2::q][:C, :C], np.float64)
+        h = box(box(h.astype(np.float32), 3), 3)  # ~400 m: the massif, not the bank
+        gy, gx = np.gradient(h, su.CELL_METRES)  # rows run south
+        rise = -(gy * -WIND_FROM[0] + gx * WIND_FROM[1]) / np.hypot(*WIND_FROM)  # rise along the wind's travel
+        mid = np.exp(-(((h - 300.0) / 250.0) ** 2))  # the mid-slope maximum (§2)
+        wind = np.clip(rise / 0.05, 0.0, 1.0) * (0.4 + 0.6 * mid)
+    return RAIN_BASE + RAIN_WINDWARD * wind + RAIN_COAST * coast
+
+
+def nearest_wet(lev: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Per vertex the level of the nearest finite vertex of `lev` and the distance to it in vertices (jump
+    flooding, vectorised; NaN and inf where the window has none)."""
+    R, Cn = lev.shape
+    sy = np.where(np.isfinite(lev), np.arange(R)[:, None], -1).astype(np.int32)
+    sx = np.where(np.isfinite(lev), np.arange(Cn)[None, :], -1).astype(np.int32)
+    yy, xx = np.mgrid[0:R, 0:Cn]
+    def dist(ay, ax):
+        return np.where(ay >= 0, (ay - yy) ** 2 + (ax - xx) ** 2, np.iinfo(np.int32).max)
+    if (sy >= 0).any():
+        k = 1 << int(np.ceil(np.log2(max(R, Cn))))
+        while k >= 1:
+            for dy in (-k, 0, k):
+                for dx in (-k, 0, k):
+                    if dy == dx == 0 or abs(dy) >= R or abs(dx) >= Cn:
+                        continue
+                    ys, yd = slice(max(dy, 0), R + min(dy, 0)), slice(max(-dy, 0), R + min(-dy, 0))
+                    xs, xd = slice(max(dx, 0), Cn + min(dx, 0)), slice(max(-dx, 0), Cn + min(-dx, 0))
+                    cy, cx = np.full_like(sy, -1), np.full_like(sx, -1)
+                    cy[yd, xd], cx[yd, xd] = sy[ys, xs], sx[ys, xs]
+                    better = dist(cy, cx) < dist(sy, sx)
+                    sy, sx = np.where(better, cy, sy), np.where(better, cx, sx)
+            k //= 2
+    has = sy >= 0
+    near = np.where(has, lev[np.maximum(sy, 0), np.maximum(sx, 0)], np.nan)
+    d = np.where(has, np.sqrt(dist(sy, sx).astype(np.float64)), np.inf)
+    return near.astype(np.float32), d.astype(np.float32)
 
 
 def nearest_fill(level: np.ndarray) -> np.ndarray:
@@ -437,15 +497,19 @@ class Material:
     def _keys(self, h, a0, a1, b0, b1) -> dict:
         lev = self.water.levels(a0, a1, b0, b1, h)
         wm = np.isfinite(lev).astype(np.float32)
-        # local water: the mean level of the water within ~60 m, else the nearest water cell's (solve.nearest_level)
-        lv = np.where(np.isfinite(lev), lev, 0.0).astype(np.float32)
-        r = 32
-        ws = box(box(wm, r // 2), r // 2)
+        # local water: the level of the nearest wet vertex (a per-vertex nearest, smoothed over ~30 m so two waters'
+        # levels meet in a slope, not a crease), easing into the nearest water cell's (solve.nearest_level) beyond
+        # NEAR_FAR vertices. A box mean switched to the cell rule at a fixed reach (a ring) and the cell rule alone
+        # is bilinear between cell centres (a lattice): the thin outlines of 2026-11-01.
         far = self.water.local(a0, a1, b0, b1)
-        local = np.where(ws > 1e-3, box(box(lv * wm, r // 2), r // 2) / np.maximum(ws, 1e-3), far)
-        # no exact per-cell level here: a cell-level step would print the cell edge into dh (mat2 boxes, 2026-11-01)
+        near, d = nearest_wet(lev)
+        t = np.clip((d - NEAR_FAR[0]) / (NEAR_FAR[1] - NEAR_FAR[0]), 0.0, 1.0)
+        local = box(box(np.where(np.isfinite(near), near * (1 - t) + far * t, far), 8), 8)
         dh = (h - local).astype(np.float32)
         wet = np.clip(0.65 * box(box(wm, 4), 4) + 0.35 * box(wm, 12) * 1.6, 0.0, 1.0)
+        # rainier ground reads wetter: the climatology's R (0.5 dry pole .. 1.0 windward coast) lifts dry ground
+        rain = self.water.local(a0, a1, b0, b1, self.water.rain, RAIN_BASE + RAIN_COAST)
+        wet = (wet + (1.0 - wet) * RAIN_WET * np.clip((rain - RAIN_BASE) / (1.0 - RAIN_BASE), 0.0, 1.0)).astype(np.float32)
         gy, gx = np.gradient(h, su.PROVINCE_SAMPLE_M)
         slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
         mag = np.maximum(np.hypot(gx, gy), 1e-6)
@@ -577,7 +641,9 @@ def vclr(win: Window, tint: np.ndarray | None = None) -> np.ndarray:
     """uint8 RGB: shade (steep and north faces darker, by up to 25 %) and wet (darker and a touch greener toward
     water, by up to 22 %), times the old ground tint."""
     shade = 1.0 - 0.18 * np.clip(win.slope / 50.0, 0, 1) - 0.07 * np.clip(win.north, 0, 1)
-    wetf = 1.0 - 0.22 * np.clip(win.wet, 0, 1) * (win.dh > -0.5)
+    # no cut at the waterline: a dry-side-only darkening peaked on the shore and drew a 1-3 px dark ring round every
+    # water (w4, w5 2026-11-01); under water the darkening is hidden by the water itself
+    wetf = 1.0 - 0.22 * np.clip(win.wet, 0, 1)
     f = (shade * wetf)[..., None] * np.array([1.0, 1.0, 0.96], dtype=np.float32)
     base = np.full(win.dh.shape + (3,), 255.0) if tint is None else tint.astype(np.float32)
     return np.clip(np.rint(base * f), 0, 255).astype(np.uint8)
