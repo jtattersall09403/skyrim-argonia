@@ -9,4 +9,4 @@ InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
   Min: -180
   Max: 180
-InitialTranslationOffset: -55.9, -1.4, -50.5
+InitialTranslationOffset: -48.9, -1.4, -10.5

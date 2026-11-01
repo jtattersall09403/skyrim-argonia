@@ -1,5 +1,5 @@
 {
- "about": "Our loading screens (LSCR, decision 0012), Skyrim's classic layout (owner, 2026-10-31): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), and a 3D model: a STAT of ours (ARG_LoadArt_<fact>) over a mesh from our stack (`mod` is its dependencies.json row; Black Marsh mods, then Tropical Skyrim, before vanilla; never Nordic), with its visible bounds (tools/navmesh/nif_bounds.py), its initial scale (75 units across at its largest, measured in game: 140 filled the screen (2026-11-01)), rotation (degrees x, y, z), rotation range (degrees the player may turn it) and translation (the bounds' centre moved to the screen centre measured in game, -60, 0, -45 (x+ is screen left)). Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
+ "about": "Our loading screens (LSCR, decision 0012), Skyrim's classic layout (owner, 2026-10-31): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), and a 3D model: a STAT of ours (ARG_LoadArt_<fact>) over a mesh from our stack (`mod` is its dependencies.json row; Black Marsh mods, then Tropical Skyrim, before vanilla; never Nordic), with its visible bounds (tools/navmesh/nif_bounds.py), its initial scale (75 units across at its largest, measured in game: 140 filled the screen (2026-11-01)), rotation (degrees x, y, z), rotation range (degrees the player may turn it) and translation (the bounds' centre moved to the screen centre measured in game, -53, 0, -5 (x+ is screen left; tuned from in-game stills, out/l112load/fix5)). Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
  "screens": [
   {
    "fact": "fact.travel-by-boat",
@@ -19,9 +19,9 @@
      180
     ],
     "translation": [
-     -57.0,
+     -50.0,
      -5.2,
-     -54.0
+     -14.0
     ],
     "bounds": {
      "centre": [
@@ -55,9 +55,9 @@
      180
     ],
     "translation": [
-     -63.7,
+     -56.7,
      2.5,
-     -61.3
+     -21.3
     ],
     "bounds": {
      "centre": [
@@ -91,9 +91,9 @@
      180
     ],
     "translation": [
-     -97.8,
+     -90.8,
      -3.4,
-     -17.3
+     22.7
     ],
     "bounds": {
      "centre": [
@@ -127,9 +127,9 @@
      180
     ],
     "translation": [
-     -55.9,
+     -48.9,
      -1.4,
-     -50.5
+     -10.5
     ],
     "bounds": {
      "centre": [
@@ -163,9 +163,9 @@
      180
     ],
     "translation": [
-     -60.3,
+     -53.3,
      -3.7,
-     -45.9
+     -5.9
     ],
     "bounds": {
      "centre": [
@@ -199,9 +199,9 @@
      180
     ],
     "translation": [
-     -56.5,
+     -49.5,
      -4.9,
-     -82.5
+     -42.5
     ],
     "bounds": {
      "centre": [
@@ -235,9 +235,9 @@
      180
     ],
     "translation": [
-     -101.4,
+     -94.4,
      71.0,
-     -100.7
+     -60.7
     ],
     "bounds": {
      "centre": [
@@ -271,9 +271,9 @@
      180
     ],
     "translation": [
-     -54.3,
+     -47.3,
      -10.0,
-     -110.2
+     -70.2
     ],
     "bounds": {
      "centre": [
@@ -307,9 +307,9 @@
      180
     ],
     "translation": [
-     -56.6,
+     -49.6,
      -5.6,
-     -67.5
+     -27.5
     ],
     "bounds": {
      "centre": [
@@ -343,9 +343,9 @@
      180
     ],
     "translation": [
-     -65.1,
+     -58.1,
      8.9,
-     -49.9
+     -9.9
     ],
     "bounds": {
      "centre": [
@@ -379,9 +379,9 @@
      180
     ],
     "translation": [
-     -57.1,
+     -50.1,
      -5.1,
-     -78.4
+     -38.4
     ],
     "bounds": {
      "centre": [
@@ -415,9 +415,9 @@
      180
     ],
     "translation": [
-     -57.8,
+     -50.8,
      1.2,
-     -57.2
+     -17.2
     ],
     "bounds": {
      "centre": [

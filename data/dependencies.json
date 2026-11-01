@@ -2089,6 +2089,10 @@
    "archive": "Dear Diary-23010-3-0-6-1635701683.zip",
    "size_kb": 18966,
    "why": "paper SkyUI menus",
+   "drop": [
+    "meshes/interface/intmenufogparticles.nif"
+   ],
+   "drop_why": "its fog mesh draws nothing behind loads (pure black in every loading still, out/l112load/fix3-fix5; its textures resolve from Skyrim - Textures5.bsa); vanilla's intmenufogparticles.nif (Skyrim - Meshes1.bsa), the drifting mist, reviewed under 0012 (no Nordic element), shows instead (1.12 lane loading)",
    "chunk": "1.2",
    "required": true,
    "profile": "play",

@@ -13,7 +13,7 @@ items:
   - chart-minimap
   - menus-look
   - items-look
-  # (1.12-loading: loading-look; added by that lane)
+  - loading-look
   # what the five lanes' changes can break among 1.12's proven rows
   - magic-pane
   - pad-panes
