@@ -6207,6 +6207,24 @@ CREATE TABLE "grass_source" (
 );
 
 -- Home of a painted LTEX's grass plan: every LTEX `land_cover_ltex` paints has one; no `ltex_grass` rows = bare.
+CREATE TABLE "material_gradient" (
+  "eco_class_id" TEXT NOT NULL REFERENCES "eco_class"("id"),
+  "stop" INTEGER NOT NULL,
+  "ltex_form_key" TEXT NOT NULL,
+  "dh_lo" REAL,
+  "dh_hi" REAL,
+  "slope_lo" REAL,
+  "slope_hi" REAL,
+  "wet_lo" REAL,
+  "wet_hi" REAL,
+  "noise_lo" REAL,
+  "noise_hi" REAL,
+  "weight" REAL NOT NULL,
+  "north" REAL NOT NULL,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("eco_class_id", "stop")
+);
+
 CREATE TABLE "ltex_grass_plan" (
   "ltex_form_key" TEXT NOT NULL PRIMARY KEY,
   "ltex_edid" TEXT NOT NULL,

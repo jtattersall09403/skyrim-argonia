@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "AMMO", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "LSCR", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "TXST", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "AMMO", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "LSCR", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -301,6 +301,8 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     layers.append(thing_hooks.layer(alloc, alloc.world))
     from tools.argonia_world.terrain import grass  # 2.W1: the painted ground grows only grass-source GRAS (0006)
     layers.append(grass.layer(alloc.world, grass.load_scan()))
+    from tools.argonia_world.terrain import texture_sets  # 1.15: the ground's LTEX re-pointed at BM&V's landscape pack
+    layers.append(texture_sets.layer(alloc, grass.load_scan()))
     order = load_order(data) + [regions_api.LAND_PLUGIN]  # ArgoniaWorld.esm, the generated ground (decision 0031)
     return {
         "schema": 1,

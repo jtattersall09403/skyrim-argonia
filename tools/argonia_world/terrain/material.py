@@ -205,16 +205,27 @@ CLASSES = tuple(STOPS)
 
 
 def gradient_rows() -> list[dict]:
-    """The `material_gradient` rows: one per class and stop."""
+    """The `material_gradient` rows: one per eco class and stop (the code-only `border` fallback has none)."""
     out = []
     for c, stops in STOPS.items():
+        if c == "border":
+            continue
         for i, s in enumerate(stops):
-            out.append({"eco_class": c, "stop": i, "ltex_edid": s.ltex, "ltex_form_key": TEX[s.ltex].form_key,
+            out.append({"eco_class_id": c, "stop": i, "ltex_form_key": TEX[s.ltex].form_key,
                         "dh_lo": _fin(s.dh[0]), "dh_hi": _fin(s.dh[1]), "slope_lo": _fin(s.slope[0]),
                         "slope_hi": _fin(s.slope[1]), "wet_lo": _fin(s.wet[0]), "wet_hi": _fin(s.wet[1]),
                         "noise_lo": _fin(s.noise[0]), "noise_hi": _fin(s.noise[1]), "weight": s.w,
                         "north": s.north, "why": s.why})
     return out
+
+
+def write_gradient(w) -> int:
+    """Replace `material_gradient` with gradient_rows() and save (`terrain gradient`)."""
+    for r in w.query("SELECT eco_class_id, stop FROM material_gradient"):
+        w.delete("material_gradient", *r)
+    n = w.insert_many("material_gradient", gradient_rows())
+    w.save()
+    return n
 
 
 def _fin(v: float):
@@ -270,39 +281,84 @@ def value_noise(r0: int, r1: int, c0: int, c1: int, period: int, seed: int) -> n
 
 
 # ---- inputs: water and regions ------------------------------------------------------------------------------
-class OldWater:
-    """The fixture until water/solve.py lands: the old body-level raster (-inf dry) and sea mask, province
-    space; the sea at 0 beyond it and in hollows below 0."""
+class Water:
+    """The solved water (the 1.15 contract): one level per cell from `cell_water` (via terrain/cellwater.py, which
+    falls back to its fixture while the table is empty), wet where the ground is below its cell's level; and the
+    local water level of every cell from `water/solve.nearest_level`, bilinear between cell centres so "height
+    above local water" never steps at a cell edge. Beyond the province the sea (0 m) wherever the ground is below
+    it."""
 
-    def __init__(self, level: np.ndarray | None, sea: np.ndarray | None, pad: int):
-        self.level, self.sea, self.pad = level, sea, pad
+    def __init__(self, level: np.ndarray, near: np.ndarray, pad: int):
+        self.level, self.near, self.pad = level, near, pad  # (C, C) [row from north, col from west]
 
     @classmethod
-    def load(cls, pad: int, root=None):
-        from tools.argonia_world.terrain.grid import data_root
-        p = (root or data_root()) / "hydrology-graph-bodies.npz"
-        if not p.exists():
-            return cls(None, None, pad)
-        z = np.load(p)
-        return cls(z["level"], z["sea"], pad)
+    def load(cls, world, pad: int):
+        from tools.argonia_world.terrain import cellwater
+        from tools.argonia_world.water import solve
+        cw = cellwater.load(world)
+        C = cw.level.shape[0]
+        x0, y0 = su.PROVINCE_CELL_SW
+        if cw.source == "cell_water":
+            sw = solve.load(world)
+            near = np.array([[sw.nearest_level(x0 + j, y0 + C - 1 - i) for j in range(C)] for i in range(C)])
+        else:  # the fixture: the same rule on its own levels
+            near = nearest_fill(cw.level)
+        return cls(cw.level, near, pad)
+
+    @classmethod
+    def sea(cls, pad: int, n: int):
+        """Synthetic grids (tests): every cell's water is the sea at 0 m."""
+        c = max(n // su.QUADS_PER_CELL, 1)
+        return cls(np.zeros((c, c)), np.zeros((c, c)), pad)
+
+    def _cells(self, r0, r1, c0, c1):
+        q, C = su.QUADS_PER_CELL, self.level.shape[0]
+        pr = np.arange(r0, r1) - self.pad
+        pc = np.arange(c0, c1) - self.pad
+        inside = ((pr >= 0) & (pr <= C * q))[:, None] & ((pc >= 0) & (pc <= C * q))[None, :]
+        return pr, pc, inside, q, C
 
     def levels(self, r0: int, r1: int, c0: int, c1: int, h: np.ndarray) -> np.ndarray:
         """Water level (m) per vertex, NaN where dry."""
-        out = np.where(h < 0, 0.0, np.nan).astype(np.float32)
-        if self.level is None:
-            return out
-        n = self.level.shape[0]
-        p = self.pad
-        ir0, ir1, ic0, ic1 = max(r0, p), min(r1, p + n), max(c0, p), min(c1, p + n)
-        if ir0 < ir1 and ic0 < ic1:
-            lv = np.asarray(self.level[ir0 - p:ir1 - p, ic0 - p:ic1 - p], dtype=np.float32)
-            sea = np.asarray(self.sea[ir0 - p:ir1 - p, ic0 - p:ic1 - p])
-            sub = out[ir0 - r0:ir1 - r0, ic0 - c0:ic1 - c0]
-            hh = h[ir0 - r0:ir1 - r0, ic0 - c0:ic1 - c0]
-            body = np.isfinite(lv) & (lv > hh)
-            sub[body] = lv[body]
-            sub[sea & (hh < 0.0)] = 0.0
-        return out
+        pr, pc, inside, q, C = self._cells(r0, r1, c0, c1)
+        i = np.clip(pr // q, 0, C - 1)[:, None]
+        j = np.clip(pc // q, 0, C - 1)[None, :]
+        lv = np.where(inside, self.level[i, j], np.nan)
+        wet = np.isfinite(lv) & (h < lv)
+        out = np.where(wet, lv, np.nan)
+        return np.where(~inside & (h < 0.0), 0.0, out).astype(np.float32)
+
+    def local(self, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
+        """The nearest water's level per vertex, bilinear between cell centres (0 beyond the province)."""
+        pr, pc, inside, q, C = self._cells(r0, r1, c0, c1)
+        fy = np.clip((pr - q / 2) / q, 0, C - 1)
+        fx = np.clip((pc - q / 2) / q, 0, C - 1)
+        i0, j0 = np.floor(fy).astype(int), np.floor(fx).astype(int)
+        i1, j1 = np.minimum(i0 + 1, C - 1), np.minimum(j0 + 1, C - 1)
+        ty, tx = (fy - i0)[:, None], (fx - j0)[None, :]
+        n = self.near
+        v = ((n[i0][:, j0] * (1 - tx) + n[i0][:, j1] * tx) * (1 - ty)
+             + (n[i1][:, j0] * (1 - tx) + n[i1][:, j1] * tx) * ty)
+        return np.where(inside, v, 0.0).astype(np.float32)
+
+
+def nearest_fill(level: np.ndarray) -> np.ndarray:
+    """Each cell's nearest water cell's level (Euclidean in cells), 0 where there is none: solve.nearest_level's
+    rule on an array."""
+    ii, jj = np.nonzero(np.isfinite(level))
+    if not len(ii):
+        return np.zeros(level.shape)
+    out = np.empty(level.shape)
+    vals = level[ii, jj]
+    for i in range(level.shape[0]):
+        d = (ii[None, :] - i) ** 2 + (jj[None, :] - np.arange(level.shape[1])[:, None]) ** 2
+        out[i] = vals[np.argmin(d, axis=1)]
+    return out
+
+
+WARP, WARP_PERIOD = 14.0, 96  # vertices: class borders meander by up to ~28 m over ~170 m
+APRON_INHERIT = float("inf")  # the apron carries on the nearest province class (a `border` class line read as a hard edge at the rim, mat3 2026-11-01)
+CLASS_BLEND = 12  # the class blend box radius (twice): ~25 vertices, ~45 m
 
 
 class Regions:
@@ -329,15 +385,25 @@ class Regions:
         return cls(np.full((span, span), CLASSES.index(eco), dtype=np.int8), pad, n)
 
     def at(self, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
+        """The class per vertex. The lookup is domain-warped by position-seeded noise (up to WARP vertices), so a
+        class border meanders instead of following cell edges (mat0's block borders, 2026-11-01); the apron takes
+        the nearest province cell's class out to APRON_INHERIT vertices, then `border`, along a warped line (mat3's
+        straight edge at the rim)."""
         q = su.QUADS_PER_CELL
-        pr = np.arange(r0, r1)[:, None] - self.pad
-        pc = np.arange(c0, c1)[None, :] - self.pad
-        cy = (self.n - pr) // q
-        cx = pc // q
+        wy = (value_noise(r0, r1, c0, c1, WARP_PERIOD, 11) * 0.7 + value_noise(r0, r1, c0, c1, WARP_PERIOD // 3, 12) * 0.3
+              - 0.5) * 2 * WARP
+        wx = (value_noise(r0, r1, c0, c1, WARP_PERIOD, 13) * 0.7 + value_noise(r0, r1, c0, c1, WARP_PERIOD // 3, 14) * 0.3
+              - 0.5) * 2 * WARP
+        pr = np.arange(r0, r1)[:, None] - self.pad + wy
+        pc = np.arange(c0, c1)[None, :] - self.pad + wx
+        cy = np.floor((self.n - pr) / q).astype(np.int64)
+        cx = np.floor(pc / q).astype(np.int64)
         span = self.grid.shape[0]
-        inside = (pr >= 0) & (pr <= self.n) & (pc >= 0) & (pc <= self.n)
+        out_r = np.maximum(np.maximum(-pr, pr - self.n), 0)
+        out_c = np.maximum(np.maximum(-pc, pc - self.n), 0)
+        near = np.hypot(out_r, out_c) <= APRON_INHERIT
         v = self.grid[np.clip(cy, 0, span - 1), np.clip(cx, 0, span - 1)]
-        return np.where(inside, v, CLASSES.index("border")).astype(np.int8)
+        return np.where(near, v, CLASSES.index("border")).astype(np.int8)
 
 
 # ---- the rule -----------------------------------------------------------------------------------------------
@@ -371,12 +437,13 @@ class Material:
     def _keys(self, h, a0, a1, b0, b1) -> dict:
         lev = self.water.levels(a0, a1, b0, b1, h)
         wm = np.isfinite(lev).astype(np.float32)
-        # local water: the mean level of the water within ~60 m, the sea (0) where none is near
+        # local water: the mean level of the water within ~60 m, else the nearest water cell's (solve.nearest_level)
         lv = np.where(np.isfinite(lev), lev, 0.0).astype(np.float32)
         r = 32
         ws = box(box(wm, r // 2), r // 2)
-        local = np.where(ws > 1e-3, box(box(lv * wm, r // 2), r // 2) / np.maximum(ws, 1e-3), 0.0)
-        local = np.where(np.isfinite(lev), lev, local)
+        far = self.water.local(a0, a1, b0, b1)
+        local = np.where(ws > 1e-3, box(box(lv * wm, r // 2), r // 2) / np.maximum(ws, 1e-3), far)
+        # no exact per-cell level here: a cell-level step would print the cell edge into dh (mat2 boxes, 2026-11-01)
         dh = (h - local).astype(np.float32)
         wet = np.clip(0.65 * box(box(wm, 4), 4) + 0.35 * box(wm, 12) * 1.6, 0.0, 1.0)
         gy, gx = np.gradient(h, su.PROVINCE_SAMPLE_M)
@@ -396,7 +463,7 @@ class Material:
         present = [int(c) for c in np.unique(cls)]
         out = np.zeros(cls.shape + (n_tex,), dtype=np.float32)
         for c in present:
-            m = box(box((cls == c).astype(np.float32), 8), 8)  # the class blend, ~30 m
+            m = box(box((cls == c).astype(np.float32), CLASS_BLEND), CLASS_BLEND)  # the class blend, ~45 m
             if not m.any():
                 continue
             wc = np.zeros_like(out)
@@ -413,7 +480,7 @@ class Material:
             out += wc * m[..., None]
         if self.roads:
             out = self._road(out, k, a0, b0)
-        out = box(box(out, 3), 3)  # the material blend, 6-11 vertices
+        out = box(box(out, 4), 4)  # the material blend, 8-17 vertices (a 3-box left 1-2 px waterline rings, mat0)
         out = np.where(out < MIN_W, 0.0, out)
         return (out / np.maximum(out.sum(axis=2, keepdims=True), 1e-6)).astype(np.float32)
 
@@ -528,9 +595,10 @@ PALETTE = {  # a false colour per texture: water family blues, mud browns, grass
 }
 
 
-def render_layer(mat: Material, window: tuple[int, int, int, int], shade: bool = True) -> np.ndarray:
-    """(r0, r1, c0, c1) grid window -> (rows, cols, 4) uint8 RGBA: the false-colour weight map times the VCLR."""
-    win = mat.window(*window)
+def layer_rgba(mat: Material, r0: int, r1: int, c0: int, c1: int, shade: bool = True) -> np.ndarray:
+    """Grid rows [r0, r1), columns [c0, c1) -> (rows, cols, 4) uint8 RGBA: the false-colour weight map times the
+    VCLR."""
+    win = mat.window(r0, r1, c0, c1)
     pal = np.array([PALETTE[t.edid] for t in TEXTURES], dtype=np.float32)
     rgb = np.tensordot(win.weights, pal, axes=([2], [0]))
     if shade:
@@ -539,3 +607,20 @@ def render_layer(mat: Material, window: tuple[int, int, int, int], shade: bool =
     out[..., :3] = np.clip(np.rint(rgb), 0, 255)
     out[..., 3] = 255
     return out
+
+
+_MAT: list = []
+
+
+def render_layer(w) -> np.ndarray:
+    """terrain/render.py's layer hook: its Window (province rows and columns) -> RGBA over the whole window."""
+    if not _MAT:
+        from tools.argonia_world import db
+        from tools.argonia_world.terrain.grid import Sources
+        world = w.world if w.world is not None else db.open()
+        src = Sources.load()
+        _MAT.append(Material(src, Water.load(world, src.pad), Regions.load(world, src.pad, src.n)))
+    mat = _MAT[0]
+    (r0, r1), (c0, c1) = w.rows, w.cols
+    p = mat.src.pad
+    return layer_rgba(mat, r0 + p, r1 + p, c0 + p, c1 + p)

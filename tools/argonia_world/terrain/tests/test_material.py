@@ -23,7 +23,7 @@ def shore():
 
 
 def mat(src, eco="flooded-forest"):
-    return M.Material(src, M.OldWater(None, None, PAD), M.Regions.uniform(eco, PAD, N), roads=False)
+    return M.Material(src, M.Water.sea(PAD, N), M.Regions.uniform(eco, PAD, N), roads=False)
 
 
 def test_texture_set_is_bmv_and_never_nordic():
@@ -42,7 +42,8 @@ def test_water_gradient_runs_bed_edge_land():
     dom = [M.TEXTURES[i].edid for i in row.argmax(axis=1)]
     first = {e: dom.index(e) for e in dict.fromkeys(dom)}
     assert first["LRiverBottom01"] < first["LRiverbedEdge01"] < first["LPineForest03"]
-    assert "LRiverMud01" in first  # the exposed wet mud between
+    mud = row[:, M.TEXTURES.index(M.TEX["LRiverMud01"])]
+    assert mud[first["LRiverbedEdge01"]:first["LPineForest03"] + 8].max() > 0.25  # the exposed wet mud between
 
 
 def test_blend_spans_many_vertices_never_one():
@@ -56,7 +57,7 @@ def test_class_border_blends():
     src = sources(np.full((N + 1, N + 1), 10.0))
     reg = M.Regions.uniform("flooded-forest", PAD, N)
     reg.grid[:, 2:] = M.CLASSES.index("northern-transition")
-    m = M.Material(src, M.OldWater(None, None, PAD), reg, roads=False)
+    m = M.Material(src, M.Water.sea(PAD, N), reg, roads=False)
     w = m.window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights
     assert np.abs(np.diff(w, axis=1)).max() < 0.2
 
@@ -102,3 +103,12 @@ def test_noise_is_position_seeded():
     a = M.value_noise(100, 140, 200, 260, 48, 1)
     b = M.value_noise(110, 140, 230, 260, 48, 1)
     assert np.array_equal(a[10:, 30:], b)
+
+
+def test_material_gradient_table_matches_the_stops():
+    from tools.argonia_world import db
+    cols = ("eco_class_id", "stop", "ltex_form_key", "dh_lo", "dh_hi", "slope_lo", "slope_hi", "wet_lo", "wet_hi",
+            "noise_lo", "noise_hi", "weight", "north", "why")
+    rows = sorted(tuple(r) for r in db.open().query(f"SELECT {', '.join(cols)} FROM material_gradient"))
+    want = sorted(tuple(r[c] for c in cols) for r in M.gradient_rows())
+    assert rows == want  # run `terrain gradient` after a STOPS edit

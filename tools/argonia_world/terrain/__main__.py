@@ -51,7 +51,8 @@ def cmd_build(a) -> int:
 
     from tools.argonia_world import db
     from tools.argonia_world.terrain import material as M
-    mat = M.Material(src, M.OldWater.load(src.pad), M.Regions.load(db.open(), src.pad, src.n))
+    w = db.open()
+    mat = M.Material(src, M.Water.load(w, src.pad), M.Regions.load(w, src.pad, src.n))
     st = B.build(src, mat, out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress)
     d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in st.__dict__.items()}
     d["cells_arg"] = "sample" if a.sample else a.cells
@@ -205,6 +206,7 @@ def main(argv=None) -> int:
     c = sub.add_parser("check")
     c.add_argument("--out", default=str(OUT))
     c.add_argument("--points", type=int, default=1000)
+    sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
     r = sub.add_parser("render")
     r.add_argument("--cells")
     r.add_argument("--sample", action="store_true")
@@ -212,6 +214,11 @@ def main(argv=None) -> int:
     r.add_argument("--layers")
     r.add_argument("--old", action="store_true", help="render the old sculpt, not the generated ground")
     a = p.parse_args(argv)
+    if a.cmd == "gradient":
+        from tools.argonia_world import db
+        from tools.argonia_world.terrain import material as M
+        print(f"material_gradient: {M.write_gradient(db.open())} rows")
+        return 0
     if a.cmd == "render":
         return cmd_render(a)
     if a.cmd == "world":

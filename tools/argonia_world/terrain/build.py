@@ -160,7 +160,7 @@ class Builder:
 
 def default_material(src: Sources):
     """A material for a synthetic grid (tests): the sea as the only water, one region class."""
-    return M.Material(src, M.OldWater(None, None, src.pad), M.Regions.uniform("flooded-forest", src.pad, src.n),
+    return M.Material(src, M.Water.sea(src.pad, src.n), M.Regions.uniform("flooded-forest", src.pad, src.n),
                       roads=False)
 
 

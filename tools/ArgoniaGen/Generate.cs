@@ -41,6 +41,7 @@ static class Generate
                 case "CLAS": Class(mod, r); break;
                 case "SPEL": Spell(mod, r); break;
                 case "LVLI": LevItem(mod, r); break;
+                case "TXST": TextureSets.Write(mod, r); break;
                 case "LTEX": LandTextures.Write(mod, r); break;
                 case "KYWD": ItemWriters.Write(mod, r, data); break;
                 case "WEAP": ItemWriters.Write(mod, r, data); break;

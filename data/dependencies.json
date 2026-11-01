@@ -3142,9 +3142,10 @@
     "meshes/vurt/vurt_morromushroom_01.nif",
     "meshes/vurt_shroom/vurt_shroom_big5.nif",
     "meshes/vurt_shroom/vurt_shroom_big6.nif",
-    "meshes/vurt_shroom/vurt_shroom_medium1.nif"
+    "meshes/vurt_shroom/vurt_shroom_medium1.nif",
+    "textures/texturepack/landscape/*"
    ],
-   "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name; flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
+   "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name, plus BM&V's landscape pack (textures/TEXTUREPACK/landscape, 118 files) that our TXST records point the ground's LTEX at (1.15 materials); flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
   },
   {
    "id": "tropical-skyrim-le",

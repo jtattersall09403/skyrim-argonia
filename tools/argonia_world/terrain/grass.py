@@ -68,7 +68,11 @@ def overrides(scan: dict, intended: dict[str, list[str]]) -> list[dict]:
     """The LTEX override records Argonia.esm needs: every field the winner's, the grass list the plan's."""
     ltex = {l["formKey"]: l for l in scan["ltex"]}
     out = []
+    from tools.argonia_world.terrain import texture_sets
+    ours = texture_sets.form_keys()  # the ground's own LTEX overrides carry their grass list (texture_sets.py)
     for fk, want in sorted(intended.items()):
+        if fk in ours:
+            continue
         w = ltex[fk]
         if w["grasses"] != want:
             out.append({"type": "LTEX", "override": True, "formKey": fk, "edid": w["edid"],
