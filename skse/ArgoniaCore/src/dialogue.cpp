@@ -28,11 +28,20 @@ RE::Actor* TalkActor() {
   return ref ? ref->As<RE::Actor>() : nullptr;
 }
 
+// The speaker's vendor faction (place_build.py writes one per npc_trade row). CommonLib's GetVendorFaction returns
+// the cached field read before it calculates, so the first call after load gives null (batch 20261101T012958:
+// Livia had no Barter): read the field again once the calculation has run.
+RE::TESFaction* VendorOf(RE::Actor* a) {
+  if (!a) return nullptr;
+  if (auto* f = a->GetVendorFaction()) return f;
+  return a->GetActorRuntimeData().vendorFaction;
+}
+
 // The window as the player sees it: the conversation's state and the speaker's service buttons. A merchant (a
 // vendor faction, which sets the BarterMenu's chest, hours and buy/sell list) offers Barter.
 ac::msg::DialogueState Dressed(ac::msg::DialogueState s) {
   auto* a = TalkActor();
-  if (a && a->GetVendorFaction()) s.services.push_back(ac::msg::ServiceKind::barter);
+  if (VendorOf(a)) s.services.push_back(ac::msg::ServiceKind::barter);
   return s;
 }
 
@@ -42,7 +51,7 @@ bool bartering = false;  // our window is hidden behind the BarterMenu it opened
 void OpenBarterFromDialogue() {
   auto& c = Get();
   auto* a = TalkActor();
-  if (!a || !a->GetVendorFaction()) {
+  if (!VendorOf(a)) {
     SKSE::log::warn("dialogue: Barter refused; the speaker is gone or keeps no shop");
     return;
   }
@@ -58,7 +67,7 @@ void OpenBarterFromDialogue() {
       return;
     }
     SKSE::log::info("dialogue: BarterMenu for {:08X} (vendor faction {:08X})", actor->GetFormID(),
-                    actor->GetVendorFaction()->GetFormID());
+                    VendorOf(actor) ? VendorOf(actor)->GetFormID() : 0);
     RE::BarterMenu::OpenMenu(actor);
   });
 }
