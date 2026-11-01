@@ -16,7 +16,7 @@ from tools.argonia_world.terrain import build, esm, world
 from tools.argonia_world.terrain.landcover import table
 from tools.argonia_world.terrain.tests.test_terrain import src
 from tools.argonia_world.terrain.water_regrade import Regrade
-from tools.argonia_world.water import layer, plan
+from tools.argonia_world.water import layer
 
 ROOT = Path(__file__).resolve().parents[4]
 GEN = ROOT / "tools" / "ArgoniaGen" / "bin" / "Release" / "net10.0" / "ArgoniaGen"
@@ -42,10 +42,10 @@ def test_water_written_and_read_back(tmp_path):
     wd.mkdir()
     (wd / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}))
     height = {"x": -62, "y": -62, "waterHeight": 512.5, "waterType": layer.type_key("fresh"), "refs": [
-        {"formKey": layer.ref_key(-62, -62, 0), "base": layer.plane_key("black"), "pos": [-253000.0, -253000.0, 700.0],
+        {"formKey": layer.ref_key(-62, -62, 0), "base": "01AC8D:Skyrim.esm", "pos": [-253000.0, -253000.0, 700.0],
          "rot": [0.0, 0.0, 0.5], "scale": 0.25}]}
     planes = {"x": -61, "y": -61, "refs": [
-        {"formKey": layer.ref_key(-61, -61, 0), "base": layer.plane_key("sea"), "pos": [-249000.0, -249000.0, 64.0],
+        {"formKey": layer.ref_key(-61, -61, 0), "base": "01AC8C:Skyrim.esm", "pos": [-249000.0, -249000.0, 64.0],
          "rot": [0.0, 0.0, 0.0], "scale": 1.0},
         {"formKey": layer.ref_key(-61, -61, 1), "base": "01B37E:Skyrim.esm", "pos": [-249100.0, -249050.0, 60.0],
          "rot": [0.0, 0.0, 1.5], "scale": 0.5}]}
@@ -62,11 +62,7 @@ def test_water_written_and_read_back(tmp_path):
     for fid, rec in want.items():
         assert watr[fid].first("EDID") == rec["edid"].encode() + b"\0"
         assert watr[fid].first("ANAM")[0] == rec["opacity"]
-    acti = {r.formid & 0xFFFFFF: r for r in by["ACTI"]}
-    for rec in (x for x in layer.records() if x["type"] == "ACTI"):
-        a = acti[int(rec["formKey"].split(":")[0], 16)]
-        assert a.first("MODL") == rec["model"].encode() + b"\0"
-        assert struct.unpack("<I", a.first("WNAM"))[0] & 0xFFFFFF == int(rec["waterType"].split(":")[0], 16)
+    assert not by.get("ACTI")  # no water planes (1.15)
     wrld = by["WRLD"][0]
     assert struct.unpack("<I", wrld.first("NAM2"))[0] & 0xFFFFFF == int(layer.type_key("sea").split(":")[0], 16)
     cells = {}
@@ -105,22 +101,6 @@ def test_regrade_raises_the_ground_only_to_its_floors():
     assert np.array_equal(s.classes(s.pad, s.pad + n, s.pad, s.pad + n), cls_before)  # heights only, never classes
     win = s.heights(s.pad + 38, s.pad + 42, s.pad + 49, s.pad + 52)  # a window sees the same floor
     assert win[2, 1] == pytest.approx(floors[i])
-
-
-def test_greedy_cover_tiles_a_diagonal_band_with_fewer_disjoint_squares():
-    req = np.zeros((32, 32), dtype=bool)
-    for k in range(32):
-        req[k, max(0, k - 2):k + 3] = True  # a diagonal channel five samples wide
-    ok = req.copy()
-    sq = plan.greedy_cover(req, ok)
-    cover = np.zeros(req.shape, dtype=int)
-    for r, c, h, w in sq:
-        assert h == w and ok[r:r + h, c:c + w].all()
-        cover[r:r + h, c:c + w] += 1
-    assert (cover[req] == 1).all() and cover.max() == 1  # every sample once, nothing outside the band
-    quad = []
-    plan.cover(req, ok, 0, 0, 32, 32, quad)
-    assert len(sq) < sum(len(plan.squares(plan.Plane(0, 0, *b, 0.0, ""))) for b in quad)
 
 
 def test_ref_keys_stay_in_the_reserved_range():

@@ -48,7 +48,8 @@ links:
 
 # The world database (decision 0030): the load with every constraint and the named checks; no tool reads world/ itself.
 world:
-	@python3 -m tools.argonia_world.db check && python3 tools/argonia_world/check_world_reads.py $(FAIL)
+	@python3 -m tools.argonia_world.db check && python3 tools/argonia_world/check_world_reads.py && \
+	  { [ ! -f $${ARGONIA_DATA:-$(HOME)/.argonia/data}/hydrology-graph-bodies.npz ] || $(PY) -m tools.argonia_world.water check; } $(FAIL)
 
 # out/world.sqlite for DuckDB, pandas or the sqlite3 shell.
 db:

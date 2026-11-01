@@ -1,4 +1,5 @@
-"""The water's records: four WATR types and four water-plane activators (intermediate records, README contract),
+"""The water's records: four WATR types (intermediate records, README contract; no water-plane activators since
+1.15: every cell's water is its own XCLW/XCWT, decision 0033 §1),
 and the per-cell stream `out/water/cells.jsonl` that the worldspace writer applies to each exterior CELL through
 `WaterRecords.ApplyCell` (agreed with the 2.W1 lane on 2026-10-29).
 
@@ -13,12 +14,11 @@ reader judges them good against reference stills); nothing is copied from a vani
 from __future__ import annotations
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.water.classify import WATER_TYPES
+from tools.argonia_world.water.solve import WATER_TYPES
 
 PLUGIN = "ArgoniaWorld.esm"
 WATER_BASE = 0x100000  # past the terrain's CELL/LAND range (0x810 + 2 x 262^2 = 0x22A30)
 REFS_PER_CELL = 256
-PLANE_MODEL = "Water\\Water1024.nif"
 PROVINCE_CELLS = su.PROVINCE_CELLS
 
 # name, opacity, shallow, deep, reflection colour, fog above near/far, fog under near/far, fog amounts
@@ -27,7 +27,7 @@ TYPES = {
     "brackish": ("Brackish Water", 60, [92, 104, 72], [30, 40, 26], [150, 160, 140], (0.0, 110.0), (0.0, 600.0),
                  (0.5, 0.9)),
     "fresh": ("Fresh Water", 35, [86, 118, 98], [22, 48, 42], [170, 190, 186], (0.0, 140.0), (0.0, 900.0), (0.35, 0.8)),
-    "black": ("Black Water", 90, [52, 44, 26], [14, 12, 6], [120, 116, 96], (0.0, 60.0), (0.0, 220.0), (0.7, 1.0)),
+    "blackwater": ("Black Water", 90, [52, 44, 26], [14, 12, 6], [120, 116, 96], (0.0, 60.0), (0.0, 220.0), (0.7, 1.0)),
 }
 
 
@@ -35,16 +35,8 @@ def type_edid(t: str) -> str:
     return f"ARG_WATR_{t}"
 
 
-def plane_edid(t: str) -> str:
-    return f"ARG_WaterPlane_{t}"
-
-
 def type_key(t: str) -> str:
     return f"{WATER_BASE + WATER_TYPES.index(t):06X}:{PLUGIN}"
-
-
-def plane_key(t: str) -> str:
-    return f"{WATER_BASE + len(WATER_TYPES) + WATER_TYPES.index(t):06X}:{PLUGIN}"
 
 
 def ref_key(cx: int, cy: int, k: int) -> str:
@@ -56,7 +48,7 @@ def ref_key(cx: int, cy: int, k: int) -> str:
 
 
 def records() -> list[dict]:
-    """The WATR and ACTI intermediate records (README contract; units and choices resolved here)."""
+    """The WATR intermediate records (README contract; units and choices resolved here)."""
     out = []
     for t in WATER_TYPES:
         name, op, shallow, deep, refl, fog_above, fog_under, amounts = TYPES[t]
@@ -64,7 +56,4 @@ def records() -> list[dict]:
                     "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
                     "reflectionColor": refl, "fogAbove": [fog_above[0], fog_above[1], amounts[0]],
                     "fogUnder": [fog_under[0], fog_under[1], amounts[1]]})
-    for t in WATER_TYPES:
-        out.append({"type": "ACTI", "formKey": plane_key(t), "edid": plane_edid(t), "layer": "base:water",
-                    "model": PLANE_MODEL, "bounds": [[-512, -512, 0], [512, 512, 0]], "waterType": type_key(t)})
     return out

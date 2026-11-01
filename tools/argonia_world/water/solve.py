@@ -18,8 +18,8 @@ The rules (each a pure function below, unit-tested in tests/test_solve.py):
    earlier water stage read, `hydrology-graph-bodies.npz`); a body the raster does not hold stands in the cell of
    its deepest sample. Levels: the sea at 0; a body below SNAP_LO_M at 0; **the snap rule** for the inland bodies
    between SNAP_LO_M and SNAP_HI_M (1,086 of them): each snaps to 0, the sea-level marsh it is (Argonia's lowland
-   is a tidal marsh plain: docs/design/world/50-hydrology-climate.md "Define sea level, tidal zones";
-   world/sources/lore/ Black Marsh is "a vast swamp" at the sea's edge), unless it shares a cell with a body that
+   is a tidal marsh plain: docs/design/world/50-hydrology-climate.md "Define sea level, tidal zones"),
+   unless it shares a cell with a body that
    stands at SNAP_HI_M or above: then the cell rule (3) gives it that body's level, its basin's. Bodies at
    SNAP_HI_M and above keep their `level_m`.
 2. Rivers. A reach's profile runs linearly from `level_from_m` to `level_to_m` along its centreline; each cell it
@@ -44,8 +44,10 @@ Vertex ranges along an edge run 0..32 west to east on the n and s edges and sout
 from __future__ import annotations
 
 import math
+import os
 import time
 from dataclasses import dataclass, field
+from pathlib import Path
 
 import numpy as np
 
@@ -64,6 +66,10 @@ MAX_DROP_M = stp.MAX_DROP_M  # the tallest falls piece
 LEVEL_TOL_M = 0.006  # the raster stores the graph's 2-decimal level as float32
 RESAMPLE_M = 1.0  # a reach's centreline is walked at this spacing
 MARSH = {"marsh-fringe", "marsh-deep", "swamp", "backswamp"}
+
+
+def data_root() -> Path:
+    return Path(os.environ.get("ARGONIA_DATA", str(Path.home() / ".argonia" / "data")))
 
 
 @dataclass(frozen=True)
@@ -281,7 +287,6 @@ def solve(w, raster=None) -> Result:
     """The whole province from the world database and the frozen body raster (level, sea)."""
     t0 = time.time()
     if raster is None:
-        from tools.argonia_world.water.field import data_root
         z = np.load(data_root() / "hydrology-graph-bodies.npz")
         raster = (z["level"], z["sea"])
     lev, sea = raster
@@ -402,13 +407,13 @@ def solve(w, raster=None) -> Result:
 
 def write(w, res: Result) -> None:
     """Replace cell_water and water_step, set every reach's cell_kind, and save."""
-    w.delete("water_step")
-    w.delete("cell_water")
+    for r in w.query("SELECT cx, cy, edge FROM water_step"):
+        w.delete("water_step", *r)
+    for r in w.query("SELECT cx, cy FROM cell_water"):
+        w.delete("cell_water", *r)
     w.insert_many("cell_water", ({"cx": cx, "cy": cy, "level_m": lv, "water_type": wt, "body_id": b,
                                   "reach_id": r} for (cx, cy), (lv, wt, b, r) in sorted(res.cells.items())))
     w.insert_many("water_step", (s.__dict__ for s in res.steps))
     for rid, k in sorted(res.reach_kind.items()):
         w.update("hydrology_reach", rid, cell_kind=k)
-    errs = w.save()
-    if errs:
-        raise RuntimeError("; ".join(errs[:5]))
+    w.save()  # raises on any failing check

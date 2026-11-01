@@ -188,7 +188,7 @@ def _water_stamp() -> str:
     for f in sorted(WATER.glob("*.py")):
         h.update(f.name.encode() + f.read_bytes())
     for t in sorted(n for n in w.values("SELECT name FROM sqlite_master WHERE type = 'table'")
-                    if n.startswith(("hydrology_", "water_"))):
+                    if n.startswith(("hydrology_", "water_", "cell_water"))):
         h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
     for f in (OUT / "pieces-index.json",):
         h.update(f.read_bytes() if f.exists() else b"-")
@@ -196,12 +196,14 @@ def _water_stamp() -> str:
 
 
 def water(into: Path, sample: bool) -> Path:
-    """The water plan (out/water, replanned only when its stamp changes), and for the sample its cells only."""
+    """The water stream (out/water: the solve's cell_water and water_step as XCLW/XCWT and step pieces, re-emitted
+    only when its stamp changes; `water check` proves the solve is current), and for the sample its cells only."""
     WATER_OUT.mkdir(parents=True, exist_ok=True)
     stamp = WATER_OUT / "water.stamp"
     now = _water_stamp()
     if not (stamp.exists() and stamp.read_text() == now and (WATER_OUT / "cells.jsonl").exists()):
-        run(sys.executable, "-m", "tools.argonia_world.water", "plan", "--out", WATER_OUT, capped=True)
+        run(sys.executable, "-m", "tools.argonia_world.water", "check", capped=True)
+        run(sys.executable, "-m", "tools.argonia_world.water", "emit", "--out", WATER_OUT, capped=True)
         stamp.write_text(now)
     if not sample:
         return WATER_OUT

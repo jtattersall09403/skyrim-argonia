@@ -1,13 +1,16 @@
-"""The water plan and its L1 checks (2.W2).
+"""The water solve and its L1 gate (1.15 §a, decision 0033 §1).
 
-    python3 -m tools.argonia_world.water plan [--out out/water] [--index out/pieces-index.json]
-        classify every body, reach and spring; step the rivers; build the water-level field; plan each cell
-        (default / height / planes) and the step pieces; run the L1 checks; write plan.json (summary, classes,
-        checks, the sample reach) and cells.jsonl (the per-cell stream WaterRecords.ApplyCell reads).
-        Exit 1 when a check fails.
-    python3 -m tools.argonia_world.water records    the WATR and ACTI intermediate records as JSON
+    python3 -m tools.argonia_world.water solve      solve every body and reach to one level per cell; write
+                                                    cell_water, water_step and hydrology_reach.cell_kind (db.py)
+    python3 -m tools.argonia_world.water check      re-solve in memory and check the database against it: every
+                                                    body with a cell or a recorded drop, one level per cell, every
+                                                    step with a chain. Exit 1 on a failure. (`make world`)
+    python3 -m tools.argonia_world.water emit [--out out/water] [--index out/pieces-index.json]
+                                                    the ESM writer's stream from the database: records.json (WATR),
+                                                    cells.jsonl (XCLW/XCWT and the step pieces as refs), plan.json
+    python3 -m tools.argonia_world.water records    the WATR intermediate records as JSON
 
-Reads the graph through db.py and the frozen arrays in $ARGONIA_DATA (memory-mapped where they are .npy).
+Reads the hydrology through db.py and the frozen body raster in $ARGONIA_DATA.
 """
 from __future__ import annotations
 
@@ -18,298 +21,153 @@ import sys
 import time
 from pathlib import Path
 
-import numpy as np
-
 ROOT = Path(__file__).resolve().parents[3]
-REGRADE_PASSES = 2
 
 
-def plan_province(log=print):
-    """The designed plan of the whole province: (graph, reach rules, steps, field, design, turned tiles, cells, the
-    ground it stands on, the regrade's floors and beds)."""
-    from tools.argonia_world.water import classify, design, field, model, oriented, plan, steps
+def _summary(res) -> dict:
+    from tools.argonia_world.water import solve as sv
+    return {
+        "cells": len(res.cells),
+        "byType": dict(sorted(collections.Counter(v[1] for v in res.cells.values()).items())),
+        "steps": dict(sorted(collections.Counter(s.chain for s in res.steps).items())),
+        "dryReaches": res.dry,
+        "reaches": dict(collections.Counter(res.reach_kind.values())),
+        "bodies": dict(collections.Counter(o.split(":")[0].split(" ")[0] for o in res.body_outcome.values())),
+        "contestedCells": res.contested,
+        "seconds": round(res.seconds, 2),
+        "snap": [sv.SNAP_LO_M, sv.SNAP_HI_M],
+    }
 
+
+def cmd_solve() -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world.water import solve as sv
+    w = db.open()
+    res = sv.solve(w)
+    sv.write(w, res)
+    print(json.dumps(_summary(res)))
+    return 0
+
+
+def cmd_check() -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world.water import solve as sv
+    from tools.argonia_world.water import steps as stp
     t0 = time.time()
-    g = model.load()
-    rules = classify.classify(g)
-    by_id = {r.id: (r.rule, r.water) for rs in rules.values() for r in rs}
-    reach_rule = {r.id: r.rule for r in rules["reaches"]}
-    wtypes = {rid: w for rid, (_, w) in by_id.items()}
-    st, _ = steps.plan(g, reach_rule)
-    inp = field.Inputs.load()
-    raw = inp.ground
-    # the whole plan stands on the ground as the LAND stores it (quantised and limited), not the refined field
-    inp.ground = game_ground(raw, {})
-    # the step-and-pool regrade: the beds carved first, then the design on the carved ground and the banks and
-    # sills its tiles ask for
-    beds = oriented.carve(g, st, inp.ground)
-    inp.ground = game_ground(raw, {}, {i: v[0] for i, v in beds.items()})
-    floors: dict = {}
-    for _ in range(REGRADE_PASSES):  # the banks a tile asks for change the field the next tiles stand on
-        f = field.build(g, inp, by_id, st)
-        design.design(g, f, inp.ground)
-        plan.shown_levels(f)
-        oriented.plan(g, st, f, inp.ground, wtypes, plan.LEAK_TOL_M, floors)
-        clamped = oriented.clamp_beds(beds, f)
-        del f
-        inp.ground = game_ground(raw, {i: v[0] for i, v in floors.items()}, {i: v[0] for i, v in beds.items()})
-        log(f"water plan: regrade {len(beds)} beds ({clamped} clamped to adjoining lower water), {len(floors)} banks and sills ({time.time() - t0:.0f} s)")
-    # the design and the plan on the regraded ground (the LAND's own)
-    ground = inp.ground
-    f = field.build(g, inp, by_id, st)
-    des = design.design(g, f, ground)
-    plan.shown_levels(f)
-    oplanes = oriented.plan(g, st, f, ground, wtypes, plan.LEAK_TOL_M)
-    cells = plan.plan_cells(f, ground, oplanes, greedy_over=0)
-    return g, reach_rule, st, f, des, oplanes, cells, ground, floors, beds
+    w = db.open()
+    res = sv.solve(w)
+    bad: list[str] = []
+    have = {(r[0], r[1]): (r[2], r[3], r[4], r[5]) for r in w.query(
+        "SELECT cx, cy, level_m, water_type, body_id, reach_id FROM cell_water")}
+    if have != res.cells:
+        diff = set(have.items()) ^ set(res.cells.items())
+        bad.append(f"cell_water is stale against the solve ({len(diff)} rows differ): run `water solve`")
+    two = len(w.query("SELECT cx, cy FROM cell_water GROUP BY cx, cy HAVING count(DISTINCT level_m) > 1"))
+    steps = w.query("SELECT cx, cy, edge, chain, upper_m, lower_m FROM water_step")
+    unchained = [tuple(s) for s in steps if s[3] not in stp.CHAINS and s[3] != "closed"]
+    if len(steps) != len(res.steps):
+        bad.append(f"water_step has {len(steps)} rows, the solve {len(res.steps)}: run `water solve`")
+    bodies = w.values("SELECT id FROM hydrology_body")
+    no_outcome = [b for b in bodies if b not in res.body_outcome]
+    kinds = {r[0]: r[1] for r in w.query("SELECT id, cell_kind FROM hydrology_reach")}
+    stale_kind = [r for r, k in res.reach_kind.items() if kinds.get(r) != k]
+    drops = sum(1 for o in res.body_outcome.values() if o.startswith("drop"))
+    print(f"water check: {len(bodies)} bodies, {len(bodies) - drops - len(no_outcome)} with cells, {drops} recorded "
+          f"drops, {len(no_outcome)} with neither; {len(have)} cells, {two} with two levels; {len(steps)} steps, "
+          f"{len(unchained)} without a chain; {len(res.dry)} dry reaches; {time.time() - t0:.1f} s")
+    if no_outcome:
+        bad.append(f"{len(no_outcome)} bodies with no outcome: {no_outcome[:5]}")
+    if two:
+        bad.append(f"{two} cells with two levels")
+    if unchained:
+        bad.append(f"{len(unchained)} steps without a chain: {unchained[:3]}")
+    if stale_kind:
+        bad.append(f"{len(stale_kind)} reaches' cell_kind stale: run `water solve`")
+    for b in bad:
+        print("water check red:", b)
+    return 1 if bad else 0
 
 
-def run_plan(out: Path, index_path: Path, write_db: bool = False) -> int:
+def cmd_emit(out: Path, index_path: Path) -> int:
+    """cells.jsonl for WaterRecords.ApplyCell: per water cell its height and type; per step its chain's pieces."""
+    from tools.argonia_world import db
     from tools.argonia_world import pieces as pz
     from tools.argonia_world import skyrim_units as su
-    from tools.argonia_world.water import budget, classify, design, field, layer, plan, steps
-
-    t0 = time.time()
-    g, reach_rule, st, f, des, oplanes, cells, ground, floors, beds = plan_province()
-    rules = classify.classify(g)
-    n = ground.shape[0]
-    pieces = steps.pieces(g, reach_rule, st)
-    # the pieces into their cells
-    for p in pieces:
-        x, y = int(p.east_m / field.MPP), int(p.south_m / field.MPP)
-        cx, cy = plan.cell_index(min(x, n - 1), min(y, n - 1), (n - 1) // plan.Q)
-        cells.setdefault((cx, cy), plan.CellPlan(cx, cy, "default")).pieces.append(p)
-    R = plan.realised(f, cells, n)
-    checks = {
-        "bodies": plan.check_bodies(g, f, R, ground, des),
-        "wet": plan.check_wet(f, R, ground),
-        "overlap": plan.check_overlap(cells, n),
-        "float": plan.check_float(f, cells, ground),
-        "walls": plan.check_walls(f, ground, pieces),
-        "sides": plan.check_sides(f, ground, pieces),
-        "steps": plan.check_steps(g, st),
-        "banks": plan.check_banks(g, st, ground, f.level),
-        "groundAs": "build.game_heights_m with the step-and-pool regrade (the LAND's own ground)",
-    }
-    # the pieces resolved through the piece index (vanilla kit, old 0064)
-    try:
-        resolver = pz.Resolver(pz.Index.load(index_path))
-        resolved = {k: resolver.resolve(m)[0] for k, (m, _, _) in steps.PIECES.items()}
-        checks["pieces"] = {k: {"kind": r.kind, "formKey": r.form_key, "edid": r.edid} for k, r in resolved.items()}
-        unresolved = [k for k, r in resolved.items() if r.kind != "base"]
-    except FileNotFoundError as e:
-        resolved, unresolved = {}, list(steps.PIECES)
-        checks["pieces"] = {"error": str(e)}
-    sample = plan.sample_reach(g, st)
-    sr = g.reaches[sample]
-    sample_pieces = [p for p in pieces if p.reach == sample]
-    out.mkdir(parents=True, exist_ok=True)
-    # cells.jsonl: one line per cell with water work, refs in Skyrim units with their FormKeys
-    lines, over = [], []
-    over_budget = budget.over(cells)
-    nplanes = 0
-    for (cx, cy), cp in sorted(cells.items(), key=lambda kv: (kv[0][1], kv[0][0])):
-        refs = []
-        for op in cp.oplanes:
-            x, y = su.province_to_skyrim(op.east_m, op.south_m)
-            refs.append({"base": layer.plane_key(op.wtype),
-                         "pos": [su.rounded(x, 2), su.rounded(y, 2), su.rounded(su.metres_to_units(op.level_m), 2)],
-                         "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(op.yaw_deg)],
-                         "scale": su.rounded(su.metres_to_units(op.side_m) / plan.PLANE_MESH_UNITS, 6)})
-        for p in cp.planes:
-            for r in plan.plane_refs(p):
-                refs.append({"base": layer.plane_key(p.wtype), **r})
-        nplanes += len(refs)
-        for p in cp.pieces:
-            if p.kind not in resolved or resolved[p.kind].kind != "base":
+    from tools.argonia_world.water import layer
+    from tools.argonia_world.water import solve as sv
+    from tools.argonia_world.water import steps as stp
+    w = db.open()
+    cw = sv.load(w)
+    resolver = pz.Resolver(pz.Index.load(index_path))
+    resolved = {k: resolver.resolve(m)[0] for k, (m, _, _) in stp.PIECES.items()}
+    unresolved = sorted(k for k, r in resolved.items() if r.kind != "base")
+    widths = {(r[0], r[1]): r[2] for r in w.query(
+        "SELECT c.cx, c.cy, r.width_m FROM cell_water c JOIN hydrology_reach r ON r.id = c.reach_id")}
+    lines: dict[tuple[int, int], dict] = {}
+    for (cx, cy), (lv, wt) in cw._cells.items():
+        lines[(cx, cy)] = {"x": cx, "y": cy, "waterHeight": su.rounded(su.metres_to_units(lv), 2),
+                           "waterType": layer.type_key(wt), "refs": []}
+    yaw = {"n": 0.0, "e": 90.0, "s": 180.0, "w": 270.0}
+    sample = None
+    for s in cw.steps():
+        if s.chain == "closed":
+            continue
+        ox, oy = su.cell_origin(s.cx, s.cy)
+        mid = (s.cross_lo + s.cross_hi) / 2 * su.VERTEX_SPACING_UNITS
+        x, y = {"n": (ox + mid, oy + su.CELL_UNITS), "s": (ox + mid, oy), "e": (ox + su.CELL_UNITS, oy + mid),
+                "w": (ox, oy + mid)}[s.edge]
+        width_m = widths.get((s.cx, s.cy)) or (s.cross_hi - s.cross_lo) * su.PROVINCE_SAMPLE_M
+        drop = s.upper_m - s.lower_m
+        line = lines.setdefault((s.cx, s.cy), {"x": s.cx, "y": s.cy, "refs": []})
+        for k in stp.CHAINS[s.chain]:
+            if resolved[k].kind != "base":
                 continue
-            _, w_units, h_units = steps.PIECES[p.kind]
-            size = su.metres_to_units(p.drop_m) / h_units if p.kind in ("falls", "mist") else \
-                su.metres_to_units(p.width_m) / w_units
-            x, y = su.province_to_skyrim(p.east_m, p.south_m)
-            refs.append({"base": resolved[p.kind].form_key,
-                         "pos": [su.rounded(x, 2), su.rounded(y, 2), su.rounded(su.metres_to_units(p.z_m), 2)],
-                         "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(p.yaw_deg)],
-                         "scale": su.rounded(min(10.0, max(0.1, size)), 4)})
-        if len(refs) > layer.REFS_PER_CELL:
-            over.append(f"({cx},{cy}): {len(refs)} refs")
-            refs = refs[:layer.REFS_PER_CELL]
-        for k, r in enumerate(refs):
+            _, wu, hu = stp.PIECES[k]
+            size = su.metres_to_units(drop) / hu if k in stp.SCALE_BY_DROP else su.metres_to_units(width_m) / wu
+            z = s.lower_m if k in stp.AT_FOOT else s.upper_m
+            line["refs"].append({"base": resolved[k].form_key,
+                                 "pos": [su.rounded(x, 2), su.rounded(y, 2), su.rounded(su.metres_to_units(z), 2)],
+                                 "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(yaw[s.edge])],
+                                 "scale": su.rounded(min(10.0, max(0.1, size)), 4)})
+        if sample is None and s.chain == "falls":
+            sample = s
+    over = []
+    for (cx, cy), line in lines.items():
+        if len(line["refs"]) > layer.REFS_PER_CELL:
+            over.append(f"({cx},{cy})")
+            line["refs"] = line["refs"][:layer.REFS_PER_CELL]
+        for k, r in enumerate(line["refs"]):
             r["formKey"] = layer.ref_key(cx, cy, k)
-        line = {"x": cx, "y": cy, "refs": refs}
-        if cp.mode == "height":
-            line["waterHeight"] = su.rounded(su.metres_to_units(cp.level_m), 2)
-            line["waterType"] = layer.type_key(cp.wtype)
-        lines.append(json.dumps(line, sort_keys=True, separators=(",", ":")))
-    (out / "cells.jsonl").write_text("".join(x + "\n" for x in lines), encoding="utf-8")
-    (out / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}, indent=1,
-                                                 sort_keys=True) + "\n", encoding="utf-8")
-    tables = {**design.rows(des), "water_regrade": regrade_rows(floors, beds, n)}
-    totals = design_totals(des, floors, beds, tables)
-    modes = collections.Counter(cp.mode for cp in cells.values())
-    per_cell = sorted((sum(len(plan.squares(p)) for p in cp.planes) + len(cp.oplanes) for cp in cells.values()),
-                      reverse=True)
-    summary = {
-        "classes": {k: dict(collections.Counter(r.cls for r in v)) for k, v in rules.items()},
-        "rules": {k: dict(collections.Counter(r.rule for r in v)) for k, v in rules.items()},
-        "waterTypes": {k: dict(collections.Counter(r.water for r in v)) for k, v in rules.items()},
-        "field": {"flooded": f.flooded, "empty": f.empty,
-                  "sources": {s: int((f.source == i).sum()) for i, s in
-                              enumerate(["dry", "body", "raster-rest", "sea", "reach", "shore", "hollow"])},
-                  "shoreFilled": f.shore_filled},
-        "cells": {"withWater": len(cells), "modes": dict(modes), "turnedStepPlanes": len(oplanes),
-                  "planeRefs": nplanes, "planesMaxPerCell": per_cell[0] if per_cell else 0,
-                  "planesP95PerCell": per_cell[len(per_cell) // 20] if per_cell else 0,
-                  "planeSides": dict(collections.Counter(str(s) for cp in cells.values() for p in cp.planes
-                                                         for _, _, s in plan.squares(p))),
-                  "overSlot": over, "overBudget": over_budget},
-        "design": totals,
-        "steps": {"reaches": len(st), "steps": sum(len(v) for v in st.values()),
-                  "pieces": dict(collections.Counter(p.kind for p in pieces))},
-        "sampleReach": {"id": sample, "kind": sr.kind, "river": sr.river, "lengthM": sr.length_m,
-                        "dropM": round(sr.level_from_m - sr.level_to_m, 3), "widthM": sr.width_m,
-                        "steps": [{"index": s.index, "fromM": round(s.s0, 2), "toM": round(s.s1, 2),
-                                   "levelM": round(s.level_m, 3)} for s in st[sample]],
-                        "pieces": [{"kind": p.kind, "eastM": round(p.east_m, 2), "southM": round(p.south_m, 2),
-                                    "zM": round(p.z_m, 3), "dropM": round(p.drop_m, 3), "yawDeg": round(p.yaw_deg, 1)}
-                                   for p in sample_pieces],
-                        "start": dict(zip(("eastM", "southM"), sr.points[0])),
-                        "skyrimStart": list(su.province_to_skyrim(*sr.points[0])),
-                        "banks": checks["banks"]["flagged"].get(sample)},
-        "checks": checks,
-        "records": layer.records(),
-        "seconds": round(time.time() - t0, 1),
-    }
-    (out / "plan.json").write_text(json.dumps(summary, indent=1, sort_keys=True, default=str) + "\n", encoding="utf-8")
-    fails = []
-    b = checks["bodies"]
-    if b["uncovered"]:
-        fails.append(f"bodies: {len(b['uncovered'])} kept bodies not realised, first {b['uncovered'][:5]}")
-    if checks["wet"]["unrealised"]:
-        fails.append(f"wet: {checks['wet']['unrealised']} wet samples have no water over them")
-    ov = checks["overlap"]
-    if ov["sameHeightOverlapSamples"] or ov["planesAtCellLevel"]:
-        fails.append(f"overlap: {ov}")
-    if checks["float"]["floatingSamples"]:
-        fails.append(f"float: {checks['float']}")
-    if checks["steps"]["violations"]:
-        fails.append(f"steps: {len(checks['steps']['violations'])} violations")
-    if unresolved:
-        fails.append(f"pieces unresolved: {unresolved}")
-    if over:
-        fails.append(f"cells over their FormID slot: {len(over)}")
-    if over_budget:
-        fails.append(f"cells over the plane budget {budget.BUDGET} (the design must change, nothing falls back): "
-                     f"{len(over_budget)}: {over_budget[:10]}")
-    if write_db:
-        write_tables(tables)
-        print(f"water plan: world db: {', '.join(f'{t} {len(r)}' for t, r in tables.items())} rows")
-    elif (stale := stale_tables(tables)):
-        fails.append(f"the world db's water design rows differ from the plan in {stale}: run "
-                     "`python -m tools.argonia_world.water plan --write-db` and commit the db rows")
-    print(f"water plan: {b['realised']} bodies realised, {b['droppedByDesign']} dropped by design, "
-          f"{len(b['uncovered'])} uncovered; {len(cells)} cells with water ({dict(modes)}); {nplanes} plane refs "
-          f"(max {summary['cells']['planesMaxPerCell']}, p95 {summary['cells']['planesP95PerCell']} per cell); "
-          f"{summary['steps']['steps']} steps on {len(st)} reaches; pieces {summary['steps']['pieces']}; "
-          f"{totals['basinsKept']} basins kept, {totals['basinsDropped']} dropped; {totals['regradedVertices']} regraded vertices; "
-          f"walls {checks['walls']['samples']}; open sides {checks['sides']['samples']} "
-          f"(reach {checks['sides']['bySource']['reach']}); banks flagged on {len(checks['banks']['flagged'])} reaches; "
-          f"sample reach {sample}; {summary['seconds']} s -> {out}")
-    for x in fails:
-        print("FAIL", x)
-    return 1 if fails else 0
-
-
-def game_ground(ground, floors: dict, ceilings: dict | None = None):
-    """The province's ground as the LAND will store it (terrain build.game_heights_m: quantised and limited, the
-    regrade applied), in row bands; the frozen array where the terrain grid is not there."""
-    from tools.argonia_world.terrain import build, grid
-    try:
-        src = grid.Sources.load()
-    except (FileNotFoundError, OSError) as e:
-        print(f"water plan: no terrain grid ({e}); float and banks use the refined heightfield")
-        return ground
-    src.regrade = regrade_from(floors, ground.shape[0], src.pad, ceilings)
-    n = ground.shape[0]
-    out = np.empty((n, n), dtype=np.float32)
-    band = 256
-    for r0 in range(0, n, band):
-        r1 = min(n, r0 + band)
-        out[r0:r1] = build.game_heights_m(src, src.pad + r0, src.pad + r1, src.pad, src.pad + n)
-    return out
-
-
-def regrade_from(floors: dict, n: int, pad: int, ceilings: dict | None = None):
-    from tools.argonia_world.terrain import water_regrade
-    return water_regrade.Regrade.from_flat(floors, n, pad, ceilings)
-
-
-def regrade_rows(floors: dict, beds: dict, n: int) -> list[dict]:
-    """The step-and-pool regrade's vertices for the world db's `water_regrade`."""
-    out = []
-    for i in sorted(beds):
-        y, x = divmod(i, n)
-        out.append({"x": x, "y": y, "kind": "bed", "z_m": beds[i][0] + 0.0, "entity_id": beds[i][1]})
-    for i in sorted(floors):
-        y, x = divmod(i, n)
-        z, rid, kind = floors[i]
-        out.append({"x": x, "y": y, "kind": kind, "z_m": z + 0.0, "entity_id": rid})
-    return out
-
-
-def design_totals(des, floors: dict, beds: dict, tables: dict) -> dict:
-    kept = [b for b in des.basins if b.outcome == "kept"]
-    dropped = [b for b in des.basins if b.outcome == "dropped"]
-    reasons = collections.Counter(b.reason.split(":")[0] for b in dropped)
-    return {"basinsKept": len(kept), "basinsDropped": len(dropped), "droppedBasinsByReason": dict(reasons),
-            "droppedAreaM2": round(sum(b.area_m2 for b in dropped)),
-            "keptAreaM2": round(sum(b.area_m2 for b in kept)),
-            "basinLevelRules": dict(collections.Counter(b.level_rule for b in kept)),
-            "basinsSpilled": des.spilled, "driedToMarshSamples": des.dried, "shoreGrownSamples": des.grown,
-            "droppedSamples": des.dropped_samples,
-            "bodyOutcomes": dict(collections.Counter(v[0] for v in des.body.values())),
-            "regradedVertices": len(floors) + len(beds),
-            "regradeByKind": {"bed": len(beds), **collections.Counter(v[2] for v in floors.values())},
-            "rows": {t: len(r) for t, r in tables.items()}}
-
-
-def write_tables(tables: dict) -> None:
-    """Replace the budget's tables' rows through db.py."""
-    from tools.argonia_world import db
-    w = db.open()
-    for t, rows in tables.items():
-        pk = w.table(t).pk
-        for r in w.query(f'SELECT {", ".join(chr(34) + k + chr(34) for k in pk)} FROM "{t}"'):
-            w.delete(t, *tuple(r))
-        w.insert_many(t, rows)
-    w.save(list(tables))
-
-
-def stale_tables(tables: dict) -> list[str]:
-    from tools.argonia_world import db
-    w = db.open()
-    bad = []
-    for t, rows in tables.items():
-        have = [dict(r) for r in w.query(f'SELECT * FROM "{t}"')]
-        cols = list(rows[0]) if rows else []
-        key = lambda r: tuple(str(r[c]) for c in cols)  # noqa: E731
-        if len(have) != len(rows) or sorted(map(key, have)) != sorted(map(key, rows)):
-            bad.append(t)
-    return bad
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "cells.jsonl").write_text("".join(json.dumps(v, separators=(",", ":")) + "\n" for _, v in
+                                             sorted(lines.items(), key=lambda kv: (kv[0][1], kv[0][0]))))
+    (out / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}, indent=1) + "\n")
+    plan = {"cells": len(lines), "pieces": sum(len(v["refs"]) for v in lines.values()), "unresolved": unresolved,
+            "overSlot": over}
+    if sample is not None:  # a falls step for the world sample's river stop
+        plan["sampleStep"] = {"cell": [sample.cx, sample.cy], "edge": sample.edge, "upperM": sample.upper_m,
+                              "lowerM": sample.lower_m, "chain": sample.chain}
+    (out / "plan.json").write_text(json.dumps(plan, indent=1) + "\n")
+    print(f"water emit: {plan['cells']} cells, {plan['pieces']} piece refs, unresolved {unresolved}, "
+          f"over slot {len(over)}")
+    return 1 if unresolved or over else 0
 
 
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="water", description=__doc__.split("\n")[0])
-    ap.add_argument("cmd", choices=["plan", "records"])
+    ap.add_argument("cmd", choices=["solve", "check", "emit", "records"])
     ap.add_argument("--out", default=str(ROOT / "out" / "water"))
     ap.add_argument("--index", default=str(ROOT / "out" / "pieces-index.json"))
-    ap.add_argument("--write-db", action="store_true", help="write the design's basin, body and regrade rows")
     a = ap.parse_args(argv)
     if a.cmd == "records":
         from tools.argonia_world.water import layer
         print(json.dumps(layer.records(), indent=1, sort_keys=True))
         return 0
-    return run_plan(Path(a.out), Path(a.index), a.write_db)
+    if a.cmd == "solve":
+        return cmd_solve()
+    if a.cmd == "check":
+        return cmd_check()
+    return cmd_emit(Path(a.out), Path(a.index))
 
 
 if __name__ == "__main__":
