@@ -2319,7 +2319,7 @@
    "version": "1.9.1",
    "archive": "Community Shaders 86492 1.9.1 2026-09-24T12-49Z lNkz9LIZ8.zip",
    "size_kb": 44085,
-   "why": "lighting, water and the features 2.W3 and 4.6 need; 1.15: its exponential height fog (volumetric) lays the low marsh mist, our override file",
+   "why": "lighting, water and the features 2.W3 and 4.6 need; 1.15: its exponential height fog (volumetric) lays the low marsh mist, our override file; volumetric lighting (god rays), cloud and terrain shadows, grass lighting: our override files",
    "chunk": "2.W3",
    "required": true,
    "profile": "play",
@@ -2336,6 +2336,22 @@
     {
      "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json",
      "text": "{\n \"enabled\": 1,\n \"disableVanillaFog\": 0,\n \"respectVanillaFogFade\": 1,\n \"originalFogColorAmount\": 1.0,\n \"fogHeight\": 350.0,\n \"fogHeightFalloff\": 0.35,\n \"fogDensity\": 0.012,\n \"startDistance\": 0.0,\n \"directionalInscatteringAnisotropy\": 0.6,\n \"directionalInscatteringMultiplier\": 1.0,\n \"volumetricFogEnabled\": 1,\n \"volumetricFogDistance\": 20000.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Argonia's low marsh fog: an exponential height fog over the water and wet ground, volumetric, coloured by the weather's own authored fog slots\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_VolumetricLighting.json",
+     "text": "{\n \"ExteriorEnabled\": true,\n \"ExteriorQuality\": 1,\n \"InteriorEnabled\": true,\n \"InteriorQuality\": 1,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"God rays and light shafts through canopy haze (vibe-01, vibe-06). Medium quality, not High: the quality is the 3D scattering texture size (High is 320x192x90 froxels), so Medium keeps the cost flat while shafts still show; raise only if the dawn stills show banding\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_CloudShadows.json",
+     "text": "{\n \"Opacity\": 0.5,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Cloud shadows drifting over the marsh at the CS default 0.5 (range 0-4; higher is darker): moving dapple at vanilla-range contrast, one texture sample per pixel so no cost cliff; kept explicit so a stack change cannot darken it\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_TerrainShadows.json",
+     "text": "{\n \"EnableTerrainShadow\": true,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Long hill shadows at dawn and dusk (montane haze belt). It reads a baked height map per worldspace (textures/heightmaps) and does nothing where none exists, so it costs nothing in the marsh until Argonia ships a height map of its own; no tunable beyond on/off in 1.9.1\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_GrassLighting.json",
+     "text": "{\n \"Glossiness\": 20.0,\n \"SpecularStrength\": 0.3,\n \"SubsurfaceScatteringAmount\": 1.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Backlit grass and reed glow so shafts land on a living ground: SSS amount 1.0 (CS default) and glossiness 20 (default), specular strength 0.3 under the 0.5 default so wet marsh grass does not glitter; pixel-shader terms only, no extra pass\"\n }\n}\n"
     }
    ]
   },
