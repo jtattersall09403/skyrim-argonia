@@ -452,9 +452,9 @@ def nearest_fill(level: np.ndarray) -> np.ndarray:
     return out
 
 
-WARP, WARP_PERIOD = 14.0, 96  # vertices: class borders meander by up to ~28 m over ~170 m
+WARP, WARP_PERIOD = 30.0, 160  # vertices: class borders meander by up to ~55 m over ~290 m (r1: ±14 left cell-straight edges)
 APRON_INHERIT = 0.0  # the apron is `border` alone, bare beyond the border polygon (audit §9); no province class runs into it
-TIE, TIE_PERIOD = 0.5, 24  # vertices: tied stops split into patches of ~45 m, broken at ~10 m
+TIE, TIE_PERIOD = 0.5, 14  # vertices: tied stops split into patches of ~25 m (r1 2026-11-01: 45 m read as cartoon blobs)
 CLASS_BLEND = 1  # the class blend box radius (twice): ~5 vertices, only where classes change (audit §4)
 
 
@@ -571,9 +571,9 @@ class Material:
         slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
         mag = np.maximum(np.hypot(gx, gy), 1e-6)
         north = np.where(np.hypot(gx, gy) > 0.05, -gy / mag, 0.0).astype(np.float32)  # rows run south: +gy rises south
-        n1 = value_noise(a0, a1, b0, b1, 48, 1)
-        n2 = value_noise(a0, a1, b0, b1, 16, 2)
-        noise = (0.65 * n1 + 0.35 * n2).astype(np.float32)
+        n1 = value_noise(a0, a1, b0, b1, 28, 1)
+        n2 = value_noise(a0, a1, b0, b1, 9, 2)
+        noise = (0.55 * n1 + 0.45 * n2).astype(np.float32)
         amp = np.clip(dh / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
         band = dh + (noise - 0.5) * 2 * amp
         return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise,
@@ -623,8 +623,8 @@ class Material:
         """A stop's own two-octave noise (cached in the window's keys)."""
         key = f"noise{seed}"
         if key not in k:
-            k[key] = (0.65 * value_noise(a0, a1, b0, b1, 40, 300 + seed)
-                      + 0.35 * value_noise(a0, a1, b0, b1, 14, 400 + seed)).astype(np.float32)
+            k[key] = (0.65 * value_noise(a0, a1, b0, b1, 22, 300 + seed)
+                      + 0.35 * value_noise(a0, a1, b0, b1, 8, 400 + seed)).astype(np.float32)
         return k[key]
 
     def _tie(self, t: int, a0, a1, b0, b1) -> np.ndarray:

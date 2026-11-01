@@ -116,10 +116,44 @@ vanilla's three stages. VCLR carries slope/aspect shade and wet darkening times 
   - Ours, owed: grey rock swathes (ROCK slope >= 34 on -12_63, -20_57); the apron render on -38_25 (layer_rgba
     draws per-vertex weights, not the quadrant bases the build writes); mud blobs on open water beds.
 
+## Session 5 (2026-11-01): rock patches, bed band, VCLR fit, render, build time
+
+- **Vanilla rock by slope (measured, Skyrim.esm, 9,500 LAND):** rock is the dominant texture on 9 % of
+  vertices under 10°, 20 % at 20–30° and 24–25 % over 34°. A steep cell carries 3 distinct dominant textures at
+  p50 and 6 at p90. Rock is a patch texture, not a threshold. `ROCK`/`CRAG` are now noise-gated patches on their
+  own noise field (`Stop.seed`; the seed is not in `material_gradient`). Land stops run on up steep ground. The
+  six windows read rock 0.05 / 0.26 / 0.33 / 0.46 / 0.50 at 20–30 / 30–34 / 34–45 / 45–60 / 60–90°. That is above
+  vanilla's 25 % because we have no snow.
+- **Bed band:** wet vertices beyond `SHORE_BAND` (3) vertices from dry ground read 2.5 m deeper per vertex, so
+  an open shallow bed takes the bed texture and never mud. Test `test_open_shallow_bed_takes_the_bed_not_mud`.
+- **VCLR:** the band straddles the line (`dshore`) and does not darken the open bed. It is 6 vertices wide, and
+  wet flats take 0.2. Six windows: p10 179, p50 255, 14.5 % under 200. `terrain check`'s sample: 203.5 / 255 /
+  9.3 %. Vanilla: 185 / 255 / 13.9 %. Session 4 read 147 / 20.7 %.
+- **Render:** `built_weights` draws the quadrant sets and seam fix the build writes, so the apron shows one
+  base per quadrant.
+- **Build time:** 20 s of the 24 s was `png.read` decoding the unused ground tint in every worker. It is now
+  cached (`~/.cache/argonia/png`). `nearest_wet` updates only the overlap. Sample build: 3.2 s at load 2.8, and
+  7.2 s at load ~10 with other lanes running. Check: layers_max 5, blend runs 1/2/4. Its fails are the ground lane's.
+- **Noise scale:** the patches are about half the old size: noise 28/9 vertices, rock 22/8, tie 14, class warp ±30 over 160.
+- **Reader verdicts:**
+  - Pass 1: 1 PASS of 6. -12_63: "flat green/rust blobs with grey patches; river banks have a good gradient".
+    -38_25: "worst: straight-edged rectangular texture zones".
+  - Pass 2, after the smaller patches and the wider warp: 2 PASS. -21_-26 PASS: "smooth gradient, no mud on open
+    bed". -38_25 FAIL: "hard straight-edged cell blocks". 0_0 FAIL: "dark green covers most of the land".
+  - Pass 3 tried a dry-side edge limit and a smoothed far level. It regressed to 1 PASS, and -21_-26 got "a wide
+    uniform light-blue shelf rings every shore". **Reverted.** The tree holds pass 2's state.
+
 ## Starting state
 
-- **Done:** e29ac9a (session 3) and the session 4 audit commit (material.py, build.py, check, tests, gradient rows).
-- **Owed here:** (1) render the apron from the quadrant bases; (2) the rock swathes: test the slope keys against
-  vanilla's rock share; (3) restrict under-water mud to near the line; (4) profile the 24 s build; (5) reader r2;
-  (6) `make plugin` and the in-game look (the planner's batch).
-- **Owed elsewhere:** the footprint rectangles and lattice (ground/water lanes); routes' cover read (routes lane).
+- **Done:** session 5's commits (material.py, png.py, test_material.py, material_gradient rows).
+- **Owed here:**
+  1. -38_25's cell-aligned zone seams. Suspected cause: dh from the per-cell water level (`Water.levels`/`local`).
+     Test it on one window before changing anything.
+  2. Too few visible textures per class on flat land. 0_0 is one dark-green swathe: flooded-forest needs 2–3
+     land stops in patches, not one plus a rare dirt.
+  3. Light-blue edge shelves on wide flats.
+  4. Readers still call the blobs cartoonish. The false-colour render may be part of that, so an in-game still
+     would settle it.
+  5. `make plugin` and the in-game look (the planner's batch).
+- **Owed elsewhere:** rectangular lakes, square cuts and translucent rectangles (ground/water lanes); routes'
+  cover read (routes lane).
