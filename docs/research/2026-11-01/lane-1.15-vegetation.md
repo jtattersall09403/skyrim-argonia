@@ -94,6 +94,19 @@ plugin, stack re-lay (bmv keep list: the rock meshes and their textures), `make 
 chart, then lod.sh. Pins: xLODGen beta 132, DynDOLOD 3.00 Alpha-217.
 
 ## Starting state
+- Session 4 (2026-11-01, climbable collision, climb-anything.md section 1): `object_form` gained `collision_layer` and
+  `collision_mass` (the NIF's first mass-0 bhkRigidBody, else the first; -1 = no body, NULL = not measured), read by
+  `vegetation collision --nifs ~/bmvtmp/out` (`forms.measure`; laid mods through the stack, BM&V rocks from the
+  unpacked archive). `forms.climbable` (rock: Static or Terrain; canopy, emergent, mangrove, palm: Static, Trees or
+  Terrain; mass 0; other roles are flora) now gates `lists.usable`, and `checks.climbable` makes every placed rock and
+  tree form red when its measured body is not climbable (share per role in checks.json `climbable_share`). Measured:
+  the 22 BM&V rock forms (our 20 STATs + 2 boulders) are all layer 1 mass 0, so none of ours dropped and the booth
+  stands (the 74 no-collision NIFs are in the 312 we did not pick); 8 KotM trees with no body and one mass-1 HTBM tree
+  dropped from the lists. Owed: 88 BM&V archive flora (31 canopy, 13 emergent, 6 palm, ...) are unmeasured (NULL;
+  trees admitted, counted `unmeasured`; rocks never): their NIFs are in the 9.6 GB vault tar, not unpacked. Sample:
+  15 checks, 14 green; the one red (northern-transition field 1.5 trees a cell, band 2.5) is not from this change:
+  the same sample with the filter off gives 1.8 on today's ground. `forms` (full re-read) clears the layers: run
+  `collision` after it.
 - Session 3 (2026-11-01, Skyrim.esm audit, decision 0034, audit sections 5 and 6): rocks sink by vanilla's medians
   (boulders 0.5 of their OBND height, cliff shells 0.7; were 0.38 and 0.25: `lists.SINK_*`); 25 % of boulders stand
   upright (`Rule.upright`, the cell-and-form seeded draw `up`, added last so older draws are unchanged; shells always

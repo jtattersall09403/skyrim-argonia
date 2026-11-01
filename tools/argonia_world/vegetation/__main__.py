@@ -14,6 +14,10 @@
     python3 -m tools.argonia_world.vegetation rocks --nifs <dir>
         our own STAT forms for chosen BM&V rock meshes (rocks.py): object_form rows with each NIF's bounds (<dir>
         holds meshes/... unpacked from BM&V's archive), then the lists rebuilt as `forms --lists-only`
+    python3 -m tools.argonia_world.vegetation collision --nifs <dir>
+        read each form's NIF collision layer and mass into object_form (forms.measure: a laid mod's file through
+        the stack, BM&V's from <dir>/meshes/...), then rebuild the lists as `forms --lists-only`; the lists admit
+        only climbable bodies (forms.climbable)
     python3 -m tools.argonia_world.vegetation booth --out <shards>
         write tests/journeys/rock-booth.yaml and tests/scenes/rock-booth.txt from six placed rocks (booth.py)
     python3 -m tools.argonia_world.vegetation check --out out/vegetation --land <dir> [--water ...]
@@ -109,6 +113,8 @@ def main(argv=None) -> int:
     bo.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
     ro = sub.add_parser("rocks")
     ro.add_argument("--nifs", required=True)
+    co = sub.add_parser("collision")
+    co.add_argument("--nifs", required=True)
     fo = sub.add_parser("forms")
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
@@ -127,6 +133,15 @@ def main(argv=None) -> int:
         from tools.argonia_world.vegetation import rocks
         w = db.open()
         print(f"rocks: {rocks.write(w, Path(a.nifs))} own STAT forms")
+        w.save()
+        a.lists_only, a.bmv_nifs = True, None
+        return _forms(a)
+    if a.cmd == "collision":
+        from tools.argonia_world import db
+        from tools.argonia_world.vegetation import forms
+        w = db.open()
+        for k, v in sorted(forms.measure(w, Path(a.nifs), forms.resolver()).items(), key=str):
+            print(f"collision {k[0]:10} layer {k[1]!s:7} {v}")
         w.save()
         a.lists_only, a.bmv_nifs = True, None
         return _forms(a)

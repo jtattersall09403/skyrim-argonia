@@ -15,7 +15,7 @@ import zlib
 from collections import defaultdict
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.vegetation import rocks
+from tools.argonia_world.vegetation import forms, rocks
 
 PICK = {"canopy": 12, "emergent": 6, "gallery": 6, "mangrove": 4, "palm": 8, "shrub": 12, "aquatic": 8,
         "mushroom": 8, "deadwood": 5, "rock": 8}
@@ -126,13 +126,17 @@ def admits(eco: str, f) -> bool:
 
 
 def usable(w) -> dict[str, list]:
-    """role -> usable forms (a mod supplies the mesh, an OBND known), BM&V first, then most placed by their mod."""
+    """role -> usable forms (a mod supplies the mesh, an OBND known; a rock or tree with a measured body that is not
+    climbable, or a rock never measured, dropped: forms.climbable), BM&V first, then most placed by their mod."""
     out = defaultdict(list)
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
                    "AND bound_z1 > bound_z0")
     for r in sorted(rows, key=lambda r: (r["mod"] != "bmv", -(r["placed_by_mod"] or 0), r["form_key"])):
         if r["role_id"] == "rock" and r["mesh_source"] in VANILLA_SHAPE:
             continue  # a vanilla rock's shape under another texture is still a vanilla rock (1.15 §e.2)
+        if r["collision_layer"] is not None or r["role_id"] == "rock":
+            if not forms.climbable(r["role_id"], r["collision_layer"], r["collision_mass"]):
+                continue  # no Static/Terrain/Trees mass-0 body: Free Climb cannot attach, the player cannot stand
         out[r["role_id"]].append(r)
     return out
 

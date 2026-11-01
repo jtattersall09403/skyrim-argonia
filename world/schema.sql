@@ -5666,7 +5666,10 @@ CREATE TABLE "region_class_role" (
 -- `python -m tools.argonia_world.vegetation forms`: its mesh, where the stack resolves that mesh (`mesh_source`:
 -- 'bmv' = BM&V's archive, laid by its dependency row's keep list; 'laid:<mod>' = a laid mod's file; 'vanilla' = no
 -- mod supplies it, never used), its OBND (game units) and how often its own mod places it. No Skyrim.esm form
--- remains (0006, 0012). `review` is the quarantine note (0012).
+-- remains (0006, 0012). `review` is the quarantine note (0012). `collision_layer` / `collision_mass` (1.15 climbable
+-- collision, climb-anything.md section 1): the NIF's bhkRigidBody layer (SkyrimLayer: 1 Static, 9 Trees, 13 Terrain,
+-- 15 NonCollidable) and mass, the first mass-0 body else the first; layer -1 = the mesh has no body; NULL = not measured
+-- (no readable NIF). Free Climb attaches only to Static, Terrain or Ground, and to Trees/props fixed bodies.
 CREATE TABLE "object_form" (
   "form_key" TEXT NOT NULL PRIMARY KEY,
   "edid" TEXT NOT NULL,
@@ -5683,7 +5686,9 @@ CREATE TABLE "object_form" (
   "bound_x1" INTEGER,
   "bound_y1" INTEGER,
   "bound_z1" INTEGER,
-  "placed_by_mod" INTEGER
+  "placed_by_mod" INTEGER,
+  "collision_layer" INTEGER,
+  "collision_mass" REAL
 );
 
 -- Home of a weather group of the imported regionFrequencies (coastal, marsh, jungle, uplands, firm lowland).

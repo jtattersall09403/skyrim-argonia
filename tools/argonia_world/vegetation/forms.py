@@ -152,3 +152,51 @@ def resolver():
     import tempfile
     from tools.navmesh.meshes import Resolver
     return Resolver(Path(tempfile.mkdtemp()))
+
+
+# ---- collision (1.15 climbable collision; docs/research/2026-11-01/climb-anything.md section 1) ----
+NO_BODY = -1
+STATIC, TREES, TERRAIN = 1, 9, 13
+CLIMBABLE_LAYERS = (STATIC, TREES, TERRAIN)  # Free Climb's `stable` set, the trunk/rock bodies we can place
+ROCK_LAYERS = (STATIC, TERRAIN)  # a rock must be Static or Terrain (a Trees-layer rock is not what vanilla builds)
+CLIMBABLE_ROLES = ("rock", "canopy", "emergent", "mangrove", "palm")  # big enough to climb; plants stay flora
+
+
+def body(data: bytes) -> tuple[int, float]:
+    """(SkyrimLayer, mass) of a NIF's bhkRigidBody (layer byte at body+4, mass float at body+180): the first mass-0
+    body, else the first; (NO_BODY, 0.0) when the mesh has none."""
+    from tools.navmesh.nif import Nif
+    n = Nif(data)
+    bodies = [(n.b[n.offsets[i] + 4], round(n.f(n.offsets[i] + 180), 3)) for i, t in enumerate(n.types)
+              if t in ("bhkRigidBody", "bhkRigidBodyT")]
+    if not bodies:
+        return NO_BODY, 0.0
+    return next((b for b in bodies if b[1] == 0), bodies[0])
+
+
+def climbable(role: str, layer: int | None, mass: float | None) -> bool:
+    """Whether a form of this role may stand where the player climbs it: Static/Terrain at mass 0 for a rock, those
+    or Trees at mass 0 for a tree; every other role is flora and always passes. NULL (not measured) fails."""
+    if role not in CLIMBABLE_ROLES:
+        return True
+    return layer in (ROCK_LAYERS if role == "rock" else CLIMBABLE_LAYERS) and (mass or 0) == 0
+
+
+def measure(w, nifs: Path | None, res=None) -> dict:
+    """Set collision_layer / collision_mass on every non-vanilla object_form row from its NIF: a laid mod's file
+    through the stack resolver `res`, BM&V's from `nifs` (<nifs>/meshes/... unpacked from its archive). Returns
+    counts per (role, layer) with 'unread' for a mesh no source supplied."""
+    files = {str(p.relative_to(nifs)).replace("\\", "/").lower(): p for p in nifs.rglob("*.nif")} if nifs else {}
+    n: Counter = Counter()
+    for r in w.query("SELECT form_key, role_id, model, mesh_source FROM object_form WHERE model IS NOT NULL"):
+        data = None
+        if r["mesh_source"] != "vanilla":
+            p = files.get(mesh_key(r["model"]))
+            data = p.read_bytes() if p else (res.read(r["model"]) if res else None)
+        if data is None:
+            layer = mass = None
+        else:
+            layer, mass = body(data)
+        w.update("object_form", r["form_key"], collision_layer=layer, collision_mass=mass)
+        n[(r["role_id"], "unread" if layer is None else layer)] += 1
+    return dict(n)

@@ -93,3 +93,22 @@ def test_navmesh_water_from_cell_water_levels():
     x0u, ytop = su.cell_origin(0, 0)[0], su.cell_origin(0, 0)[1] + su.CELL_UNITS
     lv = inputs.cell_levels((0, 0, 1, 0), (su.LAND_VERTS, 2 * su.LAND_VERTS - 1), x0u, ytop, CW())
     assert np.allclose(lv[:, :su.LAND_VERTS], su.metres_to_units(2.0)) and np.isneginf(lv[:, su.LAND_VERTS:]).all()
+
+
+def test_climbable_collision_by_role():
+    # Free Climb's stable set (climb-anything.md section 1): rock Static/Terrain, tree Static/Trees/Terrain, mass 0
+    assert forms.climbable("rock", 1, 0.0) and forms.climbable("rock", 13, 0.0)
+    assert not forms.climbable("rock", forms.NO_BODY, 0.0)  # 74 of 312 BM&V landscape rocks have no body
+    assert not forms.climbable("rock", 1, 1.0)  # IvyPine: a mass-1 body is dynamic
+    assert not forms.climbable("rock", None, None)  # never measured
+    assert forms.climbable("canopy", 9, 0.0) and forms.climbable("canopy", 1, 0.0)
+    assert not forms.climbable("canopy", 15, 0.0) and not forms.climbable("palm", forms.NO_BODY, 0.0)
+    assert forms.climbable("shrub", 15, 0.0) and forms.climbable("aquatic", forms.NO_BODY, 0.0)  # plants stay flora
+
+
+def test_lists_drop_forms_with_no_climbable_body():
+    from tools.argonia_world import db
+    w = db.open()
+    for r in w.query("SELECT o.form_key, f.role_id, f.collision_layer l, f.collision_mass m FROM land_region_object o "
+                     "JOIN object_form f USING (form_key)"):
+        assert forms.climbable(r["role_id"], r["l"], r["m"]) or (r["l"] is None and r["role_id"] != "rock"), r["form_key"]

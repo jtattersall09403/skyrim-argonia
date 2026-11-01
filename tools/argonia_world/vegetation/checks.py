@@ -26,7 +26,7 @@ import numpy as np
 
 from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.terrain import quantize
-from tools.argonia_world.vegetation import build, place
+from tools.argonia_world.vegetation import build, forms, place
 
 GROUND_TOL_M = 0.5
 SLOPE_TOL_DEG = 0.01
@@ -87,6 +87,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
     tree_wet = [0, 0]  # trees below the waterline, trees
     tree_far: list[float] = []  # dry trees' distance (units) to the nearest wet vertex of their cell
     n = 0
+    placed: set[str] = set()  # base forms placed anywhere
     by_cy: dict[int, list[dict]] = defaultdict(list)
     for c in build.read_cells(out):
         by_cy[c["y"]].append(c)
@@ -108,6 +109,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             refs = np.asarray([r[2:] for r in c["refs"]], dtype=np.float64)
             fids = [r[0] for r in c["refs"]]
             bases = [c["bases"][r[1]] for r in c["refs"]]
+            placed.update(bases)
             n += len(fids)
             counts[region].append(len(fids))
             is_tree = np.asarray([role.get(b) in TREE_ROLES for b in bases], dtype=bool)
@@ -184,8 +186,10 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
     res = {"refs": n, "sha256": h.hexdigest(), "province": stat(allc),
            "regions": {r: stat(v) for r, v in sorted(counts.items())}}
     fails["lists"] = lists(w)
+    fails["climbable"], share = climbable(w, placed)
+    res["climbable_share"] = share
     res["tree_counts"], fails["trees"] = tree_bands(trees, eco, tree_wet, tree_far)
-    for k in ("trees", "lists", "ground", "slope", "water", "road", "places", "budget", "ids"):
+    for k in ("trees", "lists", "climbable", "ground", "slope", "water", "road", "places", "budget", "ids"):
         f = fails.get(k, [])
         res[k] = {"failures": len(f), **({"fail": f[:FIRST]} if f else {})}
     log(f"vegetation checks: {n} refs, sha256 {res['sha256'][:12]}")
@@ -239,6 +243,27 @@ def readback(out: Path, esm: Path, gen: Path, env=None) -> dict:
     if bad:
         res["fail"] = bad[:FIRST]
     return res
+
+
+def climbable(w, placed: set[str]) -> tuple[list[str], dict]:
+    """1.15 climbable collision (climb-anything.md section 1): every placed rock, cliff shell and tree form has a
+    collision body Free Climb attaches to (forms.climbable: a rock Static or Terrain, a tree Static, Trees or Terrain,
+    mass 0). A measured body that fails, or a rock never measured, is red; a tree form never measured (its NIF is in
+    an archive not unpacked here) is counted as `unmeasured`, owed. The share per role is the report."""
+    errs, share = [], {}
+    for r in w.query("SELECT form_key, edid, role_id, collision_layer l, collision_mass m FROM object_form"):
+        if r["form_key"] not in placed or r["role_id"] not in forms.CLIMBABLE_ROLES:
+            continue
+        s = share.setdefault(r["role_id"], {"forms": 0, "climbable": 0, "unmeasured": 0})
+        s["forms"] += 1
+        if r["l"] is None and r["role_id"] != "rock":
+            s["unmeasured"] += 1
+        elif forms.climbable(r["role_id"], r["l"], r["m"]):
+            s["climbable"] += 1
+        else:
+            errs.append(f"{r['form_key']} {r['edid']} ({r['role_id']}): collision layer {r['l']} mass {r['m']}, "
+                        "not climbable")
+    return errs, share
 
 
 def lists(w) -> list[str]:
