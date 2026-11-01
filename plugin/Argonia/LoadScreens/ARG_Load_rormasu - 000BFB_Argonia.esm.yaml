@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: Crocodiles, known locally as rormasu, are common throughout Black Marsh.
 LoadingScreenNif: 000C07:Argonia.esm
-InitialScale: 0.24
+InitialScale: 1.2785
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
-  Min: -45
-  Max: 45
-InitialTranslationOffset: 0, 0, 0
+  Min: -180
+  Max: 180
+InitialTranslationOffset: -19.5, 16.6, -34.2

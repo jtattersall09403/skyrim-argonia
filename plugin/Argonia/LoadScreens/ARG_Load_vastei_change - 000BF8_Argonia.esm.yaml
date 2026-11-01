@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: Change, or 'vastei', is perhaps the strongest driving force behind the Saxhleel. They hold that defying change is folly.
 LoadingScreenNif: 000C04:Argonia.esm
-InitialScale: 0.6
+InitialScale: 1.2545
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
-  Min: -45
-  Max: 45
-InitialTranslationOffset: 0, 0, 0
+  Min: -180
+  Max: 180
+InitialTranslationOffset: -87.3, 132.5, -129

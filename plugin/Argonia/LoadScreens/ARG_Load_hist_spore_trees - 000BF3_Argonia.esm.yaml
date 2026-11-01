@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: The Hist are giant spore trees that grow in the innermost swamps of Black Marsh.
 LoadingScreenNif: 000BFF:Argonia.esm
-InitialScale: 0.015
+InitialScale: 0.0346
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
-  Min: -45
-  Max: 45
-InitialTranslationOffset: 0, 0, 0
+  Min: -180
+  Max: 180
+InitialTranslationOffset: -16.8, 4.6, -55.3

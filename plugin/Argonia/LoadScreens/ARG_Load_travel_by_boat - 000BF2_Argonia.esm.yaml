@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: There are few roads in Black Marsh. The principal way to travel is by boat.
 LoadingScreenNif: 000BFE:Argonia.esm
-InitialScale: 0.125
+InitialScale: 0.2945
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
-  Min: -45
-  Max: 45
-InitialTranslationOffset: 0, 0, 0
+  Min: -180
+  Max: 180
+InitialTranslationOffset: -4.4, -9.8, -41.8

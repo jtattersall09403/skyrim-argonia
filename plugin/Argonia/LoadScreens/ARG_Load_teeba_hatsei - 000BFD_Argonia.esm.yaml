@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: Teeba-Hatsei, or 'Hip and Tail Ball', is an Argonian sport played with hips, elbows and tails. Hands and feet may not strike the ball.
 LoadingScreenNif: 000C09:Argonia.esm
-InitialScale: 5
+InitialScale: 7.7348
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
-  Min: -45
-  Max: 45
-InitialTranslationOffset: 0, 0, 0
+  Min: -180
+  Max: 180
+InitialTranslationOffset: -5.9, 2.2, -47.8
