@@ -43,6 +43,14 @@ WHY = {
 }
 DEEP = ("rootland", "deep-sink-basin", "interior-swamp", "flooded-forest")
 UPLAND = ("northern-transition", "western-frontier")
+# Upland trees stand on any dry ground. The marsh palette bounds a tree to 6 m above the nearest water level (its
+# roots in the wet); in the hills that level is the sea's (0 m) and the ground stands 40-95 m over it, so every tree
+# was refused there (cells (-12,63), (-11,63): 0 trees, 145 shrubs) while the shrubs, which carry no such bound, were
+# not. Skyrim.esm's field (10 trees a cell, skyrim-does-it-this-way.md section 6) puts trees on hill and flat alike.
+UPLAND_DRY = ("canopy", "emergent", "palm", "gallery")
+# ... and the marsh palette's tree densities (BM&V lowland) put the dry hills at 20.8 trees a cell on the province
+# (vanilla's field 10, band 2.5-15, "lightly forested", blackwood-and-gloommire.md:13-14): halved, a measured ratio
+UPLAND_TREE_SCALE = 0.5
 COAST = ("coastal-lagoon", "tidal-delta")
 # role -> eco classes that admit it (None: all)
 ROLE_ECO = {"mangrove": COAST + ("deep-river-corridor",), "palm": COAST + UPLAND + ("deep-river-corridor",),
@@ -209,6 +217,8 @@ def build(w) -> dict:
                 t = tags(f)
                 q = m["per_ha"] * wt / (sum(wts) or 1.0)
                 lo, hi, mn, conform = m["wmin"], m["wmax"], 0, role == "rock"
+                if eco in UPLAND and role in UPLAND_DRY:
+                    lo, q = None, q * UPLAND_TREE_SCALE  # session 5: see UPLAND_DRY
                 if "sea" in t:
                     lo, hi = SEA_POSTURE
                 mx = m["slope"]

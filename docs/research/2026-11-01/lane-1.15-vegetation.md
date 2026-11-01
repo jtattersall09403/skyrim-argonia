@@ -94,6 +94,22 @@ plugin, stack re-lay (bmv keep list: the rock meshes and their textures), `make 
 chart, then lod.sh. Pins: xLODGen beta 132, DynDOLOD 3.00 Alpha-217.
 
 ## Starting state
+- Session 5 (2026-11-01, the plugin-check gate's vegetation reds): cause of the sample red was a rule, not the check:
+  the marsh palette bounds a tree to 6 m above the nearest water level, and on the northern hills that level is the
+  sea's (0 m) with the ground 40-95 m over it, so cells (-12,63) and (-11,63) held 0 trees and 145 shrubs (shrubs carry
+  no such bound). `lists.UPLAND_DRY` (canopy, emergent, palm, gallery in northern-transition and western-frontier) drops
+  that lower water bound; with it the province's northern-transition ran 20.8 trees a cell (band 2.5-15, vanilla field
+  10), so `lists.UPLAND_TREE_SCALE` 0.5 halves their density. Lists and budget rows regenerated (`forms --lists-only`,
+  `build --budget`). Sample on fresh LAND: northern-transition 7.8 trees a cell (6 cells), flooded-forest 32.5; 528 refs,
+  16 checks green; pytest vegetation 24 passed. Whole `make plugin-check` was not waited out (16 min and still in the
+  dotnet builds under shared load); its vegetation step is the same `build --sample` + checks, run alone. Province
+  (602107 refs, 15876 cells, 278 s) on LAND with 113 of 127 rows: northern-transition in band (trees green for it).
+  Remaining province reds: ground (`no LAND` rows -62: stale/partial LAND, the terrain lane still writing) and slope
+  (cy 23 stems at 41-71 deg: LAND older than the ground, same cause) are stale LAND; trees red for coastal-lagoon,
+  tidal-delta (7 cells) and deep-sink-basin (0-1.5 against 9-27) is a RULE: the palette's canopy posture there
+  (-1.5..1.0 m about the water) admits only the 1-2 m ground band, which the new relief (-6..+7 m in those cells)
+  leaves at 20-39 % of vertices after slope; owed to the next session (widen from the vanilla marsh posture, 0034).
+  A stale sample LAND also reads as "ground 126 m off": rebuild `terrain build --sample` after any ground rewrite.
 - Session 4 (2026-11-01, climbable collision, climb-anything.md section 1): `object_form` gained `collision_layer` and
   `collision_mass` (the NIF's first mass-0 bhkRigidBody, else the first; -1 = no body, NULL = not measured), read by
   `vegetation collision --nifs ~/bmvtmp/out` (`forms.measure`; laid mods through the stack, BM&V rocks from the
