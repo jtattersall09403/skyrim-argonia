@@ -34,10 +34,10 @@ steps:
     expect: [{event: {kind: menu, match: MapMenu}}, {read: [core, Views], path: value, contains: "chart ready open"}]
     reader: [our parchment chart in the dark green-black frame with gold-green trim, the player's red arrow at the player's place, warmer revealed land along the walked road, no quest or other markers]
   - name: chart-zoomed-out                    # the pad's zoom-out to the whole province: nothing cut off
-    do: [{key: "Minus 120"}, {key: "Minus 120"}, {key: "Minus 120"}, {key: "Minus 120"}, {key: "Minus 120"}, {wait: 1}]
+    do: [{pad: "LT:250 LT:250 LT:250 LT:250 LT:250 LT:250"}, {wait: 1}]   # the pad's trigger zooms out (the web view takes no engine keys)
     reader: [the whole province from its northern edge to its southern coast inside the sheet, nothing cut off at the top or bottom, the player's arrow shown]
   - name: no-fast-travel-from-the-map         # no place on the chart travels; the engine's switch is off too
-    do: [{key: "Enter 120"}, {wait: 2}]
+    do: [{pad: "A:150"}, {wait: 2}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}, {read: [core, Views], path: value, contains: "chart ready open"}]
   - name: chart-closed
     do: [{close_menu: MapMenu}]
