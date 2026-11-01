@@ -39,3 +39,16 @@ def test_relief_rows_cite():
             return [{"id": "dunmer-north.rootland", "region_id": "dunmer-north", "eco_class_id": "rootland"}]
     (row,) = G.relief_rows(W())
     assert row["summit_m"] == 96.0 and "shadowfen.md" in row["why"]
+
+
+def test_reach_keeps_only_joined_low_ground():
+    from tools.argonia_world.terrain.generate import reach
+    allowed = np.zeros((7, 9), bool)
+    allowed[1:4, 1:5] = True      # an L joined to the seed
+    allowed[3:6, 3] = True
+    allowed[5, 7] = True          # an isolated low patch (a padding cell's hollow)
+    seed = np.zeros_like(allowed)
+    seed[1, 1] = True
+    got = reach(seed, allowed)
+    assert got[5, 3] and got[1, 4] and not got[5, 7]
+    assert got.sum() == 12 + 2

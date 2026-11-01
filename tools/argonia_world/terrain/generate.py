@@ -43,6 +43,7 @@ PRIOR_SIGMA = 13  # samples (24 m): a Gaussian at this sigma passes < 1 % of a 1
 PRIOR_TOP_M = 120.0  # the prior's land summit (raw -86..122 m): u = prior / this, clipped 0..1
 BLEND_CELLS = 2.0  # sigma of the region-parameter blend across borders
 DESIGN_SLOPE_DEG = 75.0  # every 4-neighbour step at most tan(75) x 1.83 m = 6.8 m (the int8 limit is 82.9 deg)
+CLIFF_HARD_DEG = 80.0  # a forced cliff between two waters' cones: under the int8 limit (82.9 deg)
 CLIFF_DEG = 55.0  # designed slope past this is a cliff face: the cliff and climbable mask (cliff-u8.npy); Free Climb climbs normal.z <= 0.70, i.e. 45.6 deg walked to 55 deg, climbed past (docs/research/2026-11-01/climb-anything.md)
 LIP = math.tan(math.radians(DESIGN_SLOPE_DEG)) * MPP  # the limit's 4-neighbour step
 STEP_BED_M = 200 / su.UNITS_PER_METRE  # options §11: the bed crosses the edge 100-300 units (median 224) under the upper water
@@ -98,6 +99,7 @@ SHAPES = {"cave-mouth": "rise", "burrow": "rise", "grave-cut": "rise", "root-mou
           "stair-throat": "flat", "cellar-door": "flat", "trapdoor": "flat", "well-shaft": "flat", "none": "flat"}
 SITE_MIN_R = 12.0
 SITE_WIN = 1.7  # a site window in radii: holds the rim ring (1.0-1.3) under the warp (up to 1/0.74)
+FLAT_MIN_SCALE = 0.3  # a flat on a gorge lip shrinks (x0.85 a try) to no less than this share of its radius
 FLAT_CORE_M = 40.0  # the check's flat-core window is capped at this radius
 DEPRESSION_M, DEEP_M = 4.0, 3.0  # options §9: a sinkhole, a deep cell
 # a mouth is cut into the foot of a rise, never raised on a ring mound (skyrim-does-it-this-way.md §10: Skyrim.esm's
@@ -296,7 +298,15 @@ def majorant(a, lip):
 def limit(h: np.ndarray, lo: np.ndarray, hi: np.ndarray, lip: float) -> tuple[np.ndarray, np.ndarray]:
     """h held lip-Lipschitz (4-neighbour) inside the cones of the bounds lo <= h <= hi; returns (f, steep) where
     steep marks the samples the limit moved (the designed cliffs)."""
-    a, b = majorant(np.where(np.isfinite(lo), lo, -1e9), lip), minorant(np.where(np.isfinite(hi), hi, 1e9), lip)
+    lo_, hi_ = np.where(np.isfinite(lo), lo, -1e9), np.where(np.isfinite(hi), hi, 1e9)
+    a, b = majorant(lo_, lip), minorant(hi_, lip)
+    # where two waters' cones cannot both hold at the design slope (a tarn's bank above a lake's bed closer than the
+    # slope allows), the ground between is a cliff at CLIFF_HARD_DEG (still inside the int8 limit), not one wall
+    clash = a > b + 1e-6
+    if clash.any():
+        lh = math.tan(math.radians(CLIFF_HARD_DEG)) * MPP
+        a = np.where(clash, majorant(lo_, lh), a)
+        b = np.where(clash, minorant(hi_, lh), b)
     h = np.minimum(np.maximum(h, a), np.maximum(b, a))
     pins = np.zeros(h.shape, bool)
     dx, dy = np.abs(np.diff(h, axis=1)) > lip, np.abs(np.diff(h, axis=0)) > lip
@@ -363,6 +373,40 @@ class Inputs:
         for s in sites:
             s["request"] = reqs.get(s["place_id"])
         return cls(prior, region, rows, [cult[r["land_region_id"]] for r in rows], water, wet_level, roads, sites)
+
+
+def reach(seed: np.ndarray, allowed: np.ndarray) -> np.ndarray:
+    """The samples of `allowed` 4-connected to `seed` (seed itself always kept). Numpy only (no scipy): the
+    components of allowed-and-not-seed are labelled over their row runs (min-label propagation with pointer jumping
+    on the run graph), and a component touching the seed joins it."""
+    L = allowed & ~seed
+    got = seed.copy()
+    if not L.any():
+        return got
+    H, W = L.shape
+    start = L.copy()
+    start[:, 1:] &= ~L[:, :-1]
+    rid = np.cumsum(start.ravel()).reshape(H, W) - 1  # a run's id on each of its samples
+    nrun = int(start.sum())
+    v = L[:-1] & L[1:]
+    a, b = rid[:-1][v], rid[1:][v]
+    lab = np.arange(nrun)
+    while True:
+        old = lab
+        m = np.minimum(lab[a], lab[b])
+        lab = lab.copy()
+        np.minimum.at(lab, a, m)
+        np.minimum.at(lab, b, m)
+        lab = lab[lab]
+        if np.array_equal(lab, old):
+            break
+    touch = np.zeros_like(L)
+    touch[1:] |= seed[:-1]; touch[:-1] |= seed[1:]
+    touch[:, 1:] |= seed[:, :-1]; touch[:, :-1] |= seed[:, 1:]
+    keep = np.zeros(nrun, bool)
+    keep[lab[rid[L & touch]]] = True
+    got[L] = keep[lab[rid[L]]]
+    return got | seed
 
 
 def stamp_polyline(mask_val: np.ndarray, pts: np.ndarray, rad: float, value=True) -> None:
@@ -499,7 +543,13 @@ def generate(inp: Inputs, log=print) -> dict:
     foot &= ~edge_bank
     st["water"]["edge_bank_samples"] = int(edge_bank.sum())
     del ddry, run
-    flood = has & ~foot & ~edge_bank & (h < vmin + FREEBOARD_M)  # the band up to the bank goes under, not up to a ledge
+    # the natural flood: only ground joined to the body's own water lies under the level (Skyrim.esm, probes/
+    # vanilla_lake_padding.py: 97 % of the under-level ground of the 15 largest lakes is one component with the body,
+    # the outline lies on cell lines 5.9 % of its length, i.e. a raster shape, and a padding cell's other ground stands
+    # 0-8 units above the level); a padded or filled cell's low ground away from the water stays bank, never a square
+    low = has & ~edge_bank & (h < vmin + FREEBOARD_M)
+    flood = reach(foot, low) & ~foot
+    st["water"]["unjoined_low_samples"] = int((low & ~foot & ~flood).sum())
     foot |= flood
     st["water"]["natural_flood_samples"] = int(flood.sum())
     del ramp, fade, near, dd, near_t
@@ -537,6 +587,8 @@ def generate(inp: Inputs, log=print) -> dict:
     hi[foot] = np.minimum(vmin[foot] - FREEBOARD_M, bed[foot] + 0.0)
     h[foot] = np.minimum(h[foot], bed[foot])
     bank = has & ~foot
+    # a bank in a water cell stands just above the level (Skyrim.esm: a padding cell's dry ground 0-8 units above
+    # it, probes/vanilla_lake_padding.py); the ramp above brings it down to the body's outline at the shore grade
     lo[bank] = vmax[bank] + FREEBOARD_M
     role[foot], role[bank] = 1, 3
     shore = ~has & np.isfinite(dwet) & ~foot
@@ -614,7 +666,7 @@ def generate(inp: Inputs, log=print) -> dict:
     log(f"constraints {time.time() - t0:.1f}s")
 
     # 6. entrance sites
-    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank)
+    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch)  # a dry cell's vertex stays bank
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
 
     # 7. the slope limit inside the cones
@@ -692,6 +744,7 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[d
         win, wlo, whi, wro = h[sl], lo[sl], hi[sl], role[sl]
         disc = d <= 1.0
         facing = 0.0
+        scale = 1.0
         # a site overlapping an earlier one is shaped over it (the earlier core's pin released in this disc), and a
         # dry hollow is not held up by the shore grade
         # (a flat inside an earlier flat keeps the earlier ground: a district stands on its city)
@@ -702,7 +755,7 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[d
             wlo[prev], whi[prev] = -np.inf, np.inf
         if shape == "depression":
             wlo[disc & (wro == 4)] = -np.inf
-        fw0 = foot[sl] if shape == "flat" else np.zeros(disc.shape, bool)
+        fw0 = (foot[sl] | (wro == 2)) if shape == "flat" else np.zeros(disc.shape, bool)  # water and a step's sloped bed
         # a flat keeps its wet samples as water (no plate over a river: test_creature_dens, the audit's §10); a
         # mouth's disc is reserved as ground above any water sharing it
         if shape in ("rise", "bank"):
@@ -745,12 +798,37 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[d
             whi[inner] = np.where(sunk[inner], vmin[sl][inner] - FREEBOARD_M, np.inf)
             wro[inner] = np.where(sunk[inner], 1, 3)
         elif shape == "flat":
-            core = (d <= 0.6) & ~held & ~fw0
-            if not core.any():
-                core = (d <= 0.6) & ~fw0 if ((d <= 0.6) & ~fw0).any() else d <= 0.6
-            m = float(np.median(win[core]))
-            if np.isfinite(wlo[core]).any():
-                m = max(m, float(wlo[core][np.isfinite(wlo[core])].max()))
+            # a flat is levelled where it can be joined to the water beside it: a flat on a gorge's lip is re-sized
+            # to the ground that fits (vanilla's towns on steep ground stand on what the slope leaves: Skyrim.esm's
+            # entrance and settlement ground, audit §10, read in reverse: the level ground is cut where the rise allows)
+            # the band the ground already allows here: above every bank's cone, below every bed's cone (a step bank
+            # uphill, a lake beside), at the slope the limit will join it with
+            A = majorant(np.where(np.isfinite(wlo), wlo, -1e9), 0.8 * LIP)
+            B = minorant(np.where(np.isfinite(whi), whi, 1e9), 0.8 * LIP)
+            scale = 1.0
+            while True:
+                ds = d / scale
+                core = (ds <= 0.6) & ~held & ~fw0
+                if not core.any():
+                    core = (ds <= 0.6) & ~fw0 if ((ds <= 0.6) & ~fw0).any() else ds <= 0.6
+                m = float(np.median(win[core]))
+                if np.isfinite(wlo[core]).any():
+                    m = max(m, float(wlo[core][np.isfinite(wlo[core])].max()))
+                if (A[core] <= m + 0.01).all() and (m <= B[core] + 0.01).all():
+                    break
+                if scale <= FLAT_MIN_SCALE:  # the smallest flat: cut to the level the band allows (a terrace)
+                    lo_m, hi_m = float(A[core].max()), float(B[core].min())
+                    if lo_m <= hi_m:
+                        m = min(max(m, lo_m), hi_m)
+                        note = f"{note}; terraced at {m:.1f} m".strip("; ")
+                    break
+                scale *= 0.85
+            if scale < 1.0:
+                note = f"{note}; re-sized to {s['radius_m'] * scale:.0f} m: the ground beside it falls or rises too fast".strip("; ")
+                d = ds
+                disc = d <= 1.0
+                w = np.clip((1.0 - d) / 0.4, 0, 1)
+                w = w * w * (3 - 2 * w)
             wlo[core] = np.minimum(np.where(np.isfinite(wlo[core]), wlo[core], -np.inf), m)
             win[:] = np.where(held | fw0, keep, win * (1 - w) + m * w)
         else:  # deep water: a bowl under the cell's level
@@ -773,7 +851,7 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[d
         wlo[pin] = win[pin]
         whi[pin] = win[pin]
         out.append({"place_id": s["place_id"], "shape": shape, "x_m": round(cx * MPP, 2), "y_m": round(cy * MPP, 2),
-                    "radius_m": round(s["radius_m"], 2), "facing_deg": round(facing, 1), "request": note or None})
+                    "radius_m": round(s["radius_m"] * scale, 2), "facing_deg": round(facing, 1), "request": note or None})
     return out
 
 
@@ -842,7 +920,7 @@ def check(ground: np.ndarray, role: np.ndarray, water: CellWater, sites: list[di
         # a flat is judged on its warped core, capped at FLAT_CORE_M (a 228 m city is flat where it is built, not
         # across a whole hillside window)
         wd = site_dist(s["place_id"], yy, xx, s["y_m"] / MPP, s["x_m"] / MPP, s["radius_m"] / MPP)
-        own = (wd <= 0.4) & (np.hypot(yy - ci, xx - cj) <= FLAT_CORE_M / MPP) & (role[ci - r:ci + r + 1, cj - r:cj + r + 1] != 1)
+        own = (wd <= 0.4) & (np.hypot(yy - ci, xx - cj) <= FLAT_CORE_M / MPP) & ~np.isin(role[ci - r:ci + r + 1, cj - r:cj + r + 1], (1, 2))
         for o in sites:  # another site's disc inside this core is that site's ground (a mouth, a district)
             if o is not s and abs(o["x_m"] - s["x_m"]) < o["radius_m"] * SITE_WIN + s["radius_m"] and \
                     abs(o["y_m"] - s["y_m"]) < o["radius_m"] * SITE_WIN + s["radius_m"]:
