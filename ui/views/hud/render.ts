@@ -21,25 +21,18 @@ const BAR_NAME: Record<Bar["kind"], string> = {
 };
 
 // The bars' motion (owner look 1: the 5 Hz pushes redrew each bar, so it stepped, and the regeneration glint
-// restarted at every push, so it flashed). Like Skyrim's own meter, the fill eases toward the pushed value every frame,
-// and on a loss a pale trail holds where the bar was, then slides down after it; a rise carries the trail with it.
-// Pure: main.ts calls `tick` once a frame per bar and writes the two widths.
-export interface Meter { fill: number; trail: number; target: number; hold: number }
-export const FILL_TAU = 0.11;      // s: the fill's time constant (the 0.2 s between pushes reads as one glide)
-export const TRAIL_HOLD = 0.55;    // s the trail waits after a loss
-export const TRAIL_RATE = 2.2;     // 1/s: then it closes on the fill exponentially, never slower than TRAIL_MIN
-export const TRAIL_MIN = 12;       // %/s
-export const meter = (pct: number): Meter => ({ fill: pct, trail: pct, target: pct, hold: 0 });
-export function tick(m: Meter, target: number, dt: number): Meter {
-  let { fill, trail, hold } = m;
-  if (target < m.target - 1e-6) hold = TRAIL_HOLD;               // a new loss restarts the hold
-  fill += (target - fill) * (1 - Math.exp(-dt / FILL_TAU));
-  if (Math.abs(target - fill) < 0.02) fill = target;
-  if (fill >= trail) { trail = fill; hold = 0; }
-  else if (hold > 0) hold = Math.max(0, hold - dt);
-  else trail = Math.max(fill, trail - Math.max(TRAIL_MIN * dt, (trail - fill) * (1 - Math.exp(-dt * TRAIL_RATE))));
-  return { fill, trail, target, hold };
+// restarted at every push, so it flashed). Like Skyrim's own meter, the fill glides to each pushed value over the gap
+// between pushes, and on a loss a pale trail holds where the bar was, then slides down after it; a rise carries the
+// trail with it. CSS transitions on elements that persist (main.ts): the overlay view is unfocused and its JS timers
+// are throttled to about one a second (hud-look 20261101T142258: the fill moved in 1.25 s plateaus under a 16 ms
+// timer), while transitions run on the compositor. Pure: the transition each part takes for a push.
+export const FILL_GLIDE = "width 0.24s linear";                                  // just over the 0.2 s between pushes
+export const TRAIL_FOLLOW = "width 0.7s cubic-bezier(0.45, 0, 0.6, 1) 0.55s";  // held 0.55 s after the last loss
+export function motion(was: number | undefined, now: number): { fill: string; trail: string } {
+  return { fill: FILL_GLIDE, trail: was !== undefined && now < was ? TRAIL_FOLLOW : FILL_GLIDE };
 }
+export interface Meter { fill: number; trail: number }
+export const meter = (pct: number): Meter => ({ fill: pct, trail: pct });
 
 // The three standing bars are known by colour and place, as in Dark Souls; breath and grip come and go, so they
 // carry their name. Rendered once at the pushed value; main.ts moves the widths in place from then on.

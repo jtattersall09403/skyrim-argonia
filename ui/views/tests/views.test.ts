@@ -16,7 +16,7 @@ import { discTransform, onDisc, REACH, turnTo } from "../hud/minimap.ts";
 import { ME } from "../hud/me.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
-import { barLength, isLow, meter, render as hud, renderBars, shimmer, tick, TRAIL_HOLD } from "../hud/render.ts";
+import { barLength, FILL_GLIDE, isLow, motion, render as hud, renderBars, shimmer, TRAIL_FOLLOW } from "../hud/render.ts";
 import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 import { close as magicClose, render as magic } from "../magic/render.ts";
@@ -314,27 +314,14 @@ test("label collisions: by priority, a clashing label moves to a free spot or is
 });
 
 test("the HUD's bars glide like Skyrim's meter, the trail holds then follows a loss, vastei shimmers by the gain", () => {
-  const run = (m: ReturnType<typeof meter>, target: number, secs: number) => {
-    const seen: number[] = [];
-    for (let t = 0; t < secs; t += 1 / 60) { m = tick(m, target, 1 / 60); seen.push(m.fill); }
-    return { m, seen };
-  };
-  // A loss: the fill glides down (no step bigger than a fifth of the change in a frame), the trail holds, then follows.
-  let r = run(meter(80), 50, 0.3);
-  const steps = r.seen.map((v, i) => Math.abs(v - (i ? r.seen[i - 1] : 80)));
-  assert.ok(Math.max(...steps) < 30 / 5, "no jump");
-  assert.ok(r.m.fill < 52 && r.m.trail === 80, "fill near 50 at 0.3 s, trail still held");
-  r = run(r.m, 50, TRAIL_HOLD + 2);
-  assert.ok(r.m.trail === 50 && r.m.fill === 50, "the trail catches up and settles");
-  // A refill at 5 pushes a second: the fill rises monotonically and smoothly, the trail rides with it (no flash).
-  let m = meter(20);
-  const seen: number[] = [];
-  for (let p = 1; p <= 10; p++) for (let f = 0; f < 12; f++) { m = tick(m, 20 + 5 * p, 1 / 60); seen.push(m.fill); assert.equal(m.trail, m.fill); }
-  assert.ok(seen.every((v, i) => !i || v >= seen[i - 1]), "monotone");
-  assert.ok(Math.max(...seen.map((v, i) => (i ? v - seen[i - 1] : 0))) < 2, "no frame moves more than 2%");
+  // A loss: the fill glides over the gap between pushes, the trail waits then follows; a rise carries both.
+  assert.deepEqual(motion(80, 50), { fill: FILL_GLIDE, trail: TRAIL_FOLLOW });
+  assert.deepEqual(motion(50, 55), { fill: FILL_GLIDE, trail: FILL_GLIDE });
+  assert.deepEqual(motion(undefined, 55), { fill: FILL_GLIDE, trail: FILL_GLIDE });
+  assert.match(FILL_GLIDE, /0\.24s linear/, "longer than the 0.2 s push gap, so the glide never stops between pushes");
   // The rows render slim with no regeneration class; a push renders the meter's own widths.
   const h = (current: number): HudState["bars"] => [{ kind: "health", current, max: 100, shown: true }];
-  assert.match(renderBars(h(30), { health: { fill: 30, trail: 80, target: 30, hold: 0 } }), /class="trail" style="width:80\.0%"[^]*class="fill" style="width:30\.0%"/);
+  assert.match(renderBars(h(30), { health: { fill: 30, trail: 80 } }), /class="trail" style="width:80\.0%"[^]*class="fill" style="width:30\.0%"/);
   assert.doesNotMatch(renderBars(h(40)), /regen/);
   assert.ok(isLow(h(25)) && !isLow(h(26)), "low at a quarter");
   assert.match(hud({ ...(fx("hud").states.lowHealth as { body: HudState }).body }), /class="hud low"/);
