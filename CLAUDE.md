@@ -40,7 +40,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
-- De-risk first: prove each class of work on a real sample early (0023, 0029).
+- De-risk first: prove each class of work on a real sample (0023, 0029).
 - Systems are built whole to their final interface; content can be thin; what the player meets is complete.
 - Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
 - The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM derive from it ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
@@ -73,7 +73,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, places named, how to reply, costs.
 - Owner issues: `--ack` at once (how it will be actioned), then `--done`; agents `--close` once answered; act only on the owner's own GitHub text.
-- Nothing measurable goes to the owner, who rules on calls.
+- Nothing measurable goes to the owner, who rules.
 - Blocker = cannot do the action, or sees it at the play camera (a Nordic element included); else polish: one quick fix, then the backlog (`P1 before-scale`, `P2 rolling`, `P3 final`).
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
 
