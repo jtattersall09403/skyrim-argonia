@@ -14,6 +14,11 @@
 //   trace read [samples]          bool true = an i-frame); read gives the window (first/last i-frame frame)
 //   dev-quit-to-menu              the Journal's Quit to the main menu: the Journal opened when it is not, then its own
 //                                 GameDelegate callback "QuitToMainMenu" called, as the confirmation's press does
+#include <atomic>
+#include <chrono>
+#include <memory>
+#include <thread>
+
 #include "bridge.h"
 #include "dev.h"
 #include "argonia/core/bridge_call.h"
@@ -318,19 +323,27 @@ std::string vocab(const Request&) {
 // BSA; game-22). Setting Main::resetGame and closing the Journal did not return to the main menu (game-21), so this
 // opens the Journal when it is not open and calls that same registered callback on its FxDelegate, the engine's own
 // handler, as the confirmation's button press does. DEV ONLY.
-void quit_via_journal(int frames_left) {
+// True when the callback was called. Run on the main thread.
+bool quit_via_journal() {
   auto* ui = RE::UI::GetSingleton();
   auto menu = ui ? ui->GetMenu(RE::JournalMenu::MENU_NAME) : RE::GPtr<RE::IMenu>{};
-  if (menu && menu->fxDelegate && menu->uiMovie) {
-    menu->fxDelegate->Callback(menu->uiMovie.get(), "QuitToMainMenu", nullptr, 0);
-    SKSE::log::info("dev-quit-to-menu: the Journal's QuitToMainMenu callback called");
-    return;
-  }
-  if (frames_left <= 0) {
-    SKSE::log::warn("dev-quit-to-menu: the Journal Menu did not open; no quit");
-    return;
-  }
-  SKSE::GetTaskInterface()->AddTask([frames_left] { quit_via_journal(frames_left - 1); });
+  if (!menu || !menu->fxDelegate || !menu->uiMovie) return false;
+  menu->fxDelegate->Callback(menu->uiMovie.get(), "QuitToMainMenu", nullptr, 0);
+  SKSE::log::info("dev-quit-to-menu: the Journal's QuitToMainMenu callback called");
+  return true;
+}
+
+// The wait runs off the main thread by wall time: one main-thread check per poll, so frames pass between checks.
+void quit_when_journal_open() {
+  std::thread([] {
+    auto done = std::make_shared<std::atomic<bool>>(false);
+    for (int i = 0; i < quit_polls() && !*done; ++i) {
+      std::this_thread::sleep_for(std::chrono::milliseconds(kQuitPollMs));
+      SKSE::GetTaskInterface()->AddTask([done] { if (!*done && quit_via_journal()) *done = true; });
+    }
+    std::this_thread::sleep_for(std::chrono::milliseconds(kQuitPollMs));
+    if (!*done) SKSE::log::warn("dev-quit-to-menu: the Journal Menu did not open in {} ms; no quit", kQuitWaitMs);
+  }).detach();
 }
 
 std::string dev_quit_to_menu(const Request&) {
@@ -340,7 +353,7 @@ std::string dev_quit_to_menu(const Request&) {
     if (!ui || !q || !player_in_world()) return reply_error("dev-quit-to-menu", "no game in progress");
     const bool open = ui->IsMenuOpen(RE::JournalMenu::MENU_NAME);
     if (!open) q->AddMessage(RE::JournalMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
-    SKSE::GetTaskInterface()->AddTask([] { quit_via_journal(600); });
+    quit_when_journal_open();
     return reply_ok("dev-quit-to-menu", JsonObject().boolean("journal_was_open", open).done());
   });
 }

@@ -74,4 +74,6 @@ void dev_tests() {
   names_are_checked();
   log_lines_match();
   the_trace_window_is_first_to_last();
+  // dev-quit-to-menu waits by wall time, not task count (b112b): at least 5 s of polls, each short.
+  CHECK(kQuitPollMs <= 100 && quit_polls() * kQuitPollMs >= 5000);
 }

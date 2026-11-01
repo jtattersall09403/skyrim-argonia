@@ -34,6 +34,10 @@ std::variant<GrowCall, std::string> grow_call(const Request& r);
 
 // `ini <name:Section>`: an INI setting as the game holds it ("bShowCompass:Interface"); the name only.
 bool valid_ini_name(std::string_view s);
+// dev-quit-to-menu's wait for the Journal (b112b: 600 re-queued tasks ran in one task drain, under a frame, and gave
+// up 0.2 s before the Journal opened): polls by wall time, every kQuitPollMs, until kQuitWaitMs have passed.
+inline constexpr int kQuitPollMs = 50, kQuitWaitMs = 10000;
+inline int quit_polls() { return kQuitWaitMs / kQuitPollMs; }
 // `logfile <name> <text>`: an SKSE log beside ours ("CommunityShaders"); letters, digits, _ and spaces.
 bool valid_log_name(std::string_view s);
 // The lines of `text` that contain `needle`, and how many lines there are.
