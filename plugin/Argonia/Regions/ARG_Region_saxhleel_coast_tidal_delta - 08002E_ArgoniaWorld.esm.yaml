@@ -65,186 +65,306 @@ RegionAreas:
 Objects:
   Priority: 50
   Objects:
-  - Object: 01306D:Skyrim.esm
-    Density: 162.421
-    Clustering: 5
-    MaxSlope: 28
-    Flags:
-    - Tree
-    Radius: 770
-    MaxHeight: 280.12
+  - Object: 01A383:King of the Murkmire.esp
+    Density: 3.6364
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
     Unknown2: 0x000000000000
-  - Object: 018A02:Skyrim.esm
-    Density: 23.203
+  - Object: 01A385:King of the Murkmire.esp
+    Density: 3.6364
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 01A387:King of the Murkmire.esp
+    Density: 3.6364
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 01A389:King of the Murkmire.esp
+    Density: 3.6364
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 035B31:King of the Murkmire.esp
+    Density: 8.4375
     Clustering: 4
     MaxSlope: 20
-    Flags:
-    - Tree
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 04B016:Skyrim.esm
-    Density: 50.2732
-    Clustering: 5
-    MaxSlope: 14
-    Flags:
-    - Tree
-    Radius: 700
-    Unknown2: 0x000000000000
-  - Object: 04FF0F:Skyrim.esm
-    Density: 1
+  - Object: 03615B:King of the Murkmire.esp
+    Density: 0.25
     Clustering: 2
     MaxSlope: 35
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 051126:Skyrim.esm
-    Density: 50.2732
+  - Object: 03A588:King of the Murkmire.esp
+    Density: 0.5
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 055563:King of the Murkmire.esp
+    Density: 20.1093
     Clustering: 5
     MaxSlope: 14
-    Flags:
-    - Tree
     Radius: 700
     Unknown2: 0x000000000000
-  - Object: 0A7312:Skyrim.esm
-    Density: 9.7143
-    Clustering: 5
-    MaxSlope: 40
+  - Object: 0611CD:DepthsOfSkyrim.esp
+    Density: 3.6364
+    Clustering: 6
+    MaxSlope: 10
     Flags:
     - Tree
-    Radius: 514
+    Radius: 350
     Unknown2: 0x000000000000
-  - Object: 0A731C:Skyrim.esm
-    Density: 23.203
+  - Object: 089DAA:Black Marsh.esm
+    Density: 8.4375
     Clustering: 4
     MaxSlope: 20
     Flags:
     - Tree
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 0A7329:Skyrim.esm
-    Density: 9.7143
-    Clustering: 5
-    MaxSlope: 40
-    Flags:
-    - Tree
-    Radius: 514
-    Unknown2: 0x000000000000
-  - Object: 0AAE8D:Skyrim.esm
-    Density: 23.203
+  - Object: 089DAE:Black Marsh.esm
+    Density: 8.4375
     Clustering: 4
     MaxSlope: 20
     Flags:
     - Tree
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 0AAE8E:Skyrim.esm
-    Density: 50.2732
-    Clustering: 5
-    MaxSlope: 14
-    Flags:
-    - Tree
-    Radius: 700
-    Unknown2: 0x000000000000
-  - Object: 0AAE8F:Skyrim.esm
-    Density: 9.7143
-    Clustering: 5
-    MaxSlope: 40
-    Flags:
-    - Tree
-    Radius: 514
-    Unknown2: 0x000000000000
-  - Object: 0AAE90:Skyrim.esm
-    Density: 23.203
+  - Object: 089DB0:Black Marsh.esm
+    Density: 8.4375
     Clustering: 4
     MaxSlope: 20
     Flags:
     - Tree
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 0B8A57:Skyrim.esm
-    Density: 9.7143
+  - Object: 089DB1:Black Marsh.esm
+    Density: 16.8749
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 089DB2:Black Marsh.esm
+    Density: 16.8749
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 089DB3:Black Marsh.esm
+    Density: 16.8749
+    Clustering: 4
+    MaxSlope: 20
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0B75A1:Black Marsh.esm
+    Density: 7.2727
+    Clustering: 6
+    MaxSlope: 10
+    Flags:
+    - Tree
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 0D85A1:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0D85A4:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 0D864C:Black Marsh.esm
+    Density: 4.5333
     Clustering: 5
     MaxSlope: 40
     Flags:
     - Tree
     Radius: 514
     Unknown2: 0x000000000000
-  - Object: 0B8A64:Skyrim.esm
-    Density: 9.7143
-    Clustering: 5
-    MaxSlope: 40
+  - Object: 0EB91B:King of the Murkmire.esp
+    Density: 8.4375
+    Clustering: 4
+    MaxSlope: 20
     Flags:
     - Tree
-    Radius: 514
+    Radius: 980
     Unknown2: 0x000000000000
-  - Object: 0B8A65:Skyrim.esm
-    Density: 9.7143
-    Clustering: 5
-    MaxSlope: 40
-    Flags:
-    - Tree
-    Radius: 514
-    Unknown2: 0x000000000000
-  - Object: 0B8A69:Skyrim.esm
-    Density: 50.2732
+  - Object: 0F0AD2:King of the Murkmire.esp
+    Density: 20.1093
     Clustering: 5
     MaxSlope: 14
     Flags:
     - Tree
     Radius: 700
     Unknown2: 0x000000000000
-  - Object: 0B8A73:Skyrim.esm
-    Density: 50.2732
+  - Object: 11DC5A:Black Marsh.esm
+    Density: 7.2727
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 11DD7A:Black Marsh.esm
+    Density: 7.2727
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 350
+    Unknown2: 0x000000000000
+  - Object: 11FE7B:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 11FE7E:Black Marsh.esm
+    Density: 40.2185
+    Clustering: 5
+    MaxSlope: 14
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 120661:Black Marsh.esm
+    Density: 40.2185
+    Clustering: 5
+    MaxSlope: 14
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 12066E:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 14FAD6:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 155105:Black Marsh.esm
+    Density: 9.0667
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 155FE8:King of the Murkmire.esp
+    Density: 20.1093
     Clustering: 5
     MaxSlope: 14
     Flags:
     - Tree
     Radius: 700
     Unknown2: 0x000000000000
-  - Object: 0B8A75:Skyrim.esm
-    Density: 1
+  - Object: 155FE9:King of the Murkmire.esp
+    Density: 20.1093
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 15B1F3:King of the Murkmire.esp
+    Density: 20.1093
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 160445:King of the Murkmire.esp
+    Density: 20.1093
+    Clustering: 5
+    MaxSlope: 14
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 165614:King of the Murkmire.esp
+    Density: 0.5
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 165616:King of the Murkmire.esp
+    Density: 0.25
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 17BCFD:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 17BD18:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 17BD20:Black Marsh.esm
+    Density: 9.0667
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 18B96A:Black Marsh.esm
+    Density: 4.5333
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 196181:Black Marsh.esm
+    Density: 9.0667
+    Clustering: 5
+    MaxSlope: 40
+    Radius: 514
+    Unknown2: 0x000000000000
+  - Object: 1B32DC:Black Marsh.esm
+    Density: 40.2185
+    Clustering: 5
+    MaxSlope: 14
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 3A3F9C:King of the Murkmire.esp
+    Density: 20.1093
+    Clustering: 5
+    MaxSlope: 14
+    Flags:
+    - Tree
+    Radius: 700
+    Unknown2: 0x000000000000
+  - Object: 3B3484:King of the Murkmire.esp
+    Density: 0.5
     Clustering: 2
     MaxSlope: 35
     Flags:
     - Tree
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 0B91F0:Skyrim.esm
-    Density: 9.7143
+  - Object: 463248:King of the Murkmire.esp
+    Density: 20.1093
     Clustering: 5
-    MaxSlope: 40
+    MaxSlope: 14
     Flags:
     - Tree
-    Radius: 514
+    Radius: 700
     Unknown2: 0x000000000000
-  - Object: 0B927C:Skyrim.esm
-    Density: 162.421
-    Clustering: 5
-    MaxSlope: 28
-    Flags:
-    - Tree
-    Radius: 770
-    MaxHeight: 280.12
-    Unknown2: 0x000000000000
-  - Object: 0B927D:Skyrim.esm
-    Density: 162.421
-    Clustering: 5
-    MaxSlope: 28
-    Flags:
-    - Tree
-    Radius: 770
-    MaxHeight: 280.12
-    Unknown2: 0x000000000000
-  - Object: 0B927E:Skyrim.esm
-    Density: 162.421
-    Clustering: 5
-    MaxSlope: 28
-    Flags:
-    - Tree
-    Radius: 770
-    MaxHeight: 280.12
-    Unknown2: 0x000000000000
-  - Object: 0EF5A5:Skyrim.esm
-    Density: 50.2732
+  - Object: 46324A:King of the Murkmire.esp
+    Density: 20.1093
     Clustering: 5
     MaxSlope: 14
     Flags:
@@ -255,29 +375,23 @@ Weather:
   Priority: 50
   Weathers:
   - Weather: 10A234:Skyrim.esm
-    Chance: 15
+    Chance: 13
     Global: 000814:Argonia.esm
   - Weather: 10A236:Skyrim.esm
-    Chance: 15
+    Chance: 13
     Global: 000815:Argonia.esm
-  - Weather: 10A7A7:Skyrim.esm
-    Chance: 5
-    Global: 000835:Argonia.esm
-  - Weather: 00080F:Argonia.esm
-    Chance: 5
-    Global: 000817:Argonia.esm
-  - Weather: 10A242:Skyrim.esm
-    Chance: 26
-    Global: 000818:Argonia.esm
+  - Weather: 000E9E:Argonia.esm
+    Chance: 24
+    Global: 000EA0:Argonia.esm
   - Weather: 000810:Argonia.esm
-    Chance: 20
+    Chance: 17
     Global: 000819:Argonia.esm
-  - Weather: 000811:Argonia.esm
-    Chance: 7
-    Global: 00081A:Argonia.esm
   - Weather: 10A241:Skyrim.esm
-    Chance: 7
+    Chance: 12
     Global: 00081B:Argonia.esm
+  - Weather: 000E9F:Argonia.esm
+    Chance: 21
+    Global: 000EA1:Argonia.esm
 Map:
   Priority: 50
   Name:

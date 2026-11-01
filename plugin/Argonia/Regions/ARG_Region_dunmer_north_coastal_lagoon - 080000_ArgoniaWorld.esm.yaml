@@ -551,14 +551,86 @@ RegionAreas:
 Objects:
   Priority: 50
   Objects:
-  - Object: 04FF0F:Skyrim.esm
-    Density: 1
+  - Object: 000041:ArgonianLakeHouse.esl
+    Density: 2.2727
+    Clustering: 6
+    MaxSlope: 10
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0309F1:King of the Murkmire.esp
+    Density: 0.25
     Clustering: 2
     MaxSlope: 35
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 0B8A75:Skyrim.esm
-    Density: 1
+  - Object: 03A588:King of the Murkmire.esp
+    Density: 0.5
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 040337:King of the Murkmire.esp
+    Density: 0.25
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 0B75A1:Black Marsh.esm
+    Density: 4.5455
+    Clustering: 6
+    MaxSlope: 10
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0D85C2:Black Marsh.esm
+    Density: 2.2727
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 0D85C5:Black Marsh.esm
+    Density: 2.2727
+    Clustering: 6
+    MaxSlope: 10
+    Flags:
+    - Tree
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 11DC5A:Black Marsh.esm
+    Density: 4.5455
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 11DD75:Black Marsh.esm
+    Density: 2.2727
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 11DD7A:Black Marsh.esm
+    Density: 4.5455
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 165614:King of the Murkmire.esp
+    Density: 0.5
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
+    Unknown2: 0x000000000000
+  - Object: 17BD19:Black Marsh.esm
+    Density: 2.2727
+    Clustering: 6
+    MaxSlope: 10
+    Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 3B3484:King of the Murkmire.esp
+    Density: 0.5
     Clustering: 2
     MaxSlope: 35
     Flags:
@@ -569,29 +641,23 @@ Weather:
   Priority: 50
   Weathers:
   - Weather: 10A234:Skyrim.esm
-    Chance: 15
+    Chance: 13
     Global: 000814:Argonia.esm
   - Weather: 10A236:Skyrim.esm
-    Chance: 15
+    Chance: 13
     Global: 000815:Argonia.esm
-  - Weather: 10A7A7:Skyrim.esm
-    Chance: 5
-    Global: 000835:Argonia.esm
-  - Weather: 00080F:Argonia.esm
-    Chance: 5
-    Global: 000817:Argonia.esm
-  - Weather: 10A242:Skyrim.esm
-    Chance: 26
-    Global: 000818:Argonia.esm
+  - Weather: 000E9E:Argonia.esm
+    Chance: 24
+    Global: 000EA0:Argonia.esm
   - Weather: 000810:Argonia.esm
-    Chance: 20
+    Chance: 17
     Global: 000819:Argonia.esm
-  - Weather: 000811:Argonia.esm
-    Chance: 7
-    Global: 00081A:Argonia.esm
   - Weather: 10A241:Skyrim.esm
-    Chance: 7
+    Chance: 12
     Global: 00081B:Argonia.esm
+  - Weather: 000E9F:Argonia.esm
+    Chance: 21
+    Global: 000EA1:Argonia.esm
 Map:
   Priority: 50
   Name:

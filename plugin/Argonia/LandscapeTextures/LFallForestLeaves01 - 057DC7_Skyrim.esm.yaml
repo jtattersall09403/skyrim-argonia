@@ -1,0 +1,9 @@
+FormKey: 057DC7:Skyrim.esm
+EditorID: LFallForestLeaves01
+TextureSet: 000EB4:Argonia.esm
+MaterialType: 012F46:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 002896:Tropical Skyrim.esp
+Flags: []

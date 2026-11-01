@@ -1,0 +1,9 @@
+FormKey: 01CC43:Skyrim.esm
+EditorID: LReachMoss01
+TextureSet: 000EB8:Argonia.esm
+MaterialType: 012F46:Skyrim.esm
+HavokFriction: 2
+TextureSpecularExponent: 30
+Grasses:
+- 007608:Tropical Skyrim.esp
+Flags: []
