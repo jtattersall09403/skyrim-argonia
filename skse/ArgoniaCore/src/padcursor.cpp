@@ -38,7 +38,11 @@ struct State {
   bool held_left = false, held_right = false;  // a mouse button the pad holds down (A, X)
   bool release_left = false, release_right = false;  // A or X let go since the last tick
   std::deque<pad::Act> acts;  // button verdicts, acted on at the next tick
-  enum class After { none, wait, system } after = After::none;  // once the windows have closed
+  enum class After { none, wait, system, journal, map } after = After::none;  // once the windows have closed
+  // A pane of ours (journal, map, System) is opened with Wind UI's windows closed, so nothing is drawn over it; once it
+  // has opened and then closed again (B, Esc, its Close), the windows come back. 0 none, 1 waiting for it, 2 it is open.
+  int away = 0;
+  std::chrono::steady_clock::time_point away_since;
   int close_ticks = 0;        // ticks since a close was asked (a native close may already have done it)
   std::chrono::steady_clock::time_point last;
   bool was_windows = false;
@@ -163,9 +167,10 @@ void GoPane(int dir) {
       CursorTo({p.fx * s.w, p.fy * s.h});
       break;
     }
-    case pad::PaneKind::journal: Tap(RE::INPUT_DEVICE::kKeyboard, kJ); break;  // our journal (the Journal event)
-    case pad::PaneKind::map: Tap(RE::INPUT_DEVICE::kKeyboard, kM); break;      // MapMenu, which our chart stands in for
-    case pad::PaneKind::system: AskClose(State::After::system); break;         // Skyrim's System page, after the windows
+    // ours open only once Wind UI's windows are closed, so they are never drawn over (reader, 2026-11-01)
+    case pad::PaneKind::journal: AskClose(State::After::journal); break;  // our journal (the Journal event, J)
+    case pad::PaneKind::map: AskClose(State::After::map); break;          // MapMenu, which our chart stands in for (M)
+    case pad::PaneKind::system: AskClose(State::After::system); break;    // Skyrim's System page (Esc)
   }
 }
 
@@ -215,11 +220,33 @@ void Tick() {
     }
     g.close_ticks = 0;
     SKSE::log::info("pad: windows closed");
-    if (g.after == State::After::wait) Tap(RE::INPUT_DEVICE::kKeyboard, kT);
-    if (g.after == State::After::system) Tap(RE::INPUT_DEVICE::kKeyboard, kEsc);
+    switch (g.after) {
+      case State::After::wait: Tap(RE::INPUT_DEVICE::kKeyboard, kT); break;
+      case State::After::system: Tap(RE::INPUT_DEVICE::kKeyboard, kEsc); break;
+      case State::After::journal: Tap(RE::INPUT_DEVICE::kKeyboard, kJ); break;
+      case State::After::map: Tap(RE::INPUT_DEVICE::kKeyboard, kM); break;
+      case State::After::none: break;
+    }
+    if (g.after == State::After::system || g.after == State::After::journal || g.after == State::After::map) {
+      g.away = 1;
+      g.away_since = now;
+    }
     g.after = State::After::none;
     g.acts.clear();
     return;
+  }
+  if (g.away) {
+    const bool ours_open = Open(RE::MapMenu::MENU_NAME) || Open(RE::JournalMenu::MENU_NAME) ||
+                           (g_prisma && g_prisma->HasAnyActiveFocus());
+    const double s_away = std::chrono::duration<double>(now - g.away_since).count();
+    if (g.away == 1 && ours_open) g.away = 2;
+    if (Open(kWindUIMenu)) g.away = 0;  // the player opened them some other way
+    else if ((g.away == 2 && !ours_open) || (g.away == 1 && s_away > 3.0)) {
+      g.away = 0;
+      if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
+      SKSE::log::info("pad: back to Wind UI's windows");
+      return;
+    }
   }
   const auto ctx = ContextNow();
   if (ctx != pad::Context::windows) {
@@ -296,7 +323,7 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
         std::atomic<bool> done{false}, keep{true};
         SKSE::GetTaskInterface()->AddTask([&done, &keep] {
           Tick();
-          keep = g.was_windows || g.close_ticks != 0;
+          keep = g.was_windows || g.close_ticks != 0 || g.away != 0;
           done = true;
           done.notify_one();
         });
@@ -316,6 +343,15 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
 class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
+    if (e && e->opening && e->menuName == RE::JournalMenu::MENU_NAME) {
+      // Esc's System page: Wind UI pops its windows over it; they are closed the next frame (reader, 2026-11-01).
+      SKSE::GetTaskInterface()->AddTask([] {
+        if (!Open(RE::JournalMenu::MENU_NAME) || !Open(kWindUIMenu)) return;
+        if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
+        SKSE::log::info("pad: Wind UI's windows closed over the System page");
+      });
+      return RE::BSEventNotifyControl::kContinue;
+    }
     if (!e || !e->opening || e->menuName != RE::TweenMenu::MENU_NAME) return RE::BSEventNotifyControl::kContinue;
     SKSE::GetTaskInterface()->AddTask([] {
       if (!pad::tween_to_windows(Open(RE::TweenMenu::MENU_NAME), Open(kWindUIMenu))) return;

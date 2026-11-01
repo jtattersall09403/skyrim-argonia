@@ -31,17 +31,19 @@ steps:
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane journal"}}]
   - name: journal-closed-by-b    # nav.ts's B leaves our journal; the windows under it take the pad again
     do: [{pad: "B:150"}, {wait: 3}]
-    expect: [{log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
   - name: bumper-to-map          # the cycle goes on from the journal to our map
     do: [{pad: "RB:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane map"}}]
   - name: map-closed
-    do: [{close_menu: MapMenu}, {wait: 2}]      # the windows stay open under the map
+    do: [{close_menu: MapMenu}, {wait: 3}]      # the windows come back once the map closes
+    expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
   - name: bumper-to-system       # System last: the windows close and Skyrim's System page opens
     do: [{pad: "RB:150"}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane system"}}, {event: {kind: menu, match: Journal Menu}, within: 8}]
   - name: system-closed
-    do: [{close_menu: Journal Menu}, {wait: 1}, {pad: "START:150"}, {wait: 2}]
+    do: [{close_menu: Journal Menu}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
   - name: b-closes
     do: [{pad: "B:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 8}]
