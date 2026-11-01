@@ -90,6 +90,17 @@ send_scenes() {  # after the launch: a ref is named by its runtime id, the plugi
 }
 step "send ESMs and helpers" send_esms
 step "lod" "$here/lod.sh" ensure   # nothing lives only on a machine: the archived LOD for this ArgoniaWorld
+# The pad layout follows controlmap.py on every machine (b112b: argonia-play kept Select = Journal, so the pad's Select
+# opened the journal, not Wait): the machine's made controlmap.txt fetched, GAMEPLAY re-applied, sent back; the launch's
+# prepare lays it in Data (stack.ps1). No file there (a machine set up before controlmap.py) is left to setup.
+controls() {
+  local t; t=$(mktemp -d)
+  if "$run" get 'C:/argonia/controls/controlmap.txt' "$t/was.txt" 2>/dev/null; then
+    "$PY" "$here/controlmap.py" --remap "$t/was.txt" "$t/controlmap.txt" && "$run" put "$t/controlmap.txt" 'C:/argonia/controls/controlmap.txt'
+  else echo "controls: no C:\argonia\controls\controlmap.txt on the machine; setup makes it"; fi
+  rm -rf "$t"
+}
+step "controls" controls
 step "launch" "$PY" tools/bridge.py launch --fresh
 step "send scenes" send_scenes
 [ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }

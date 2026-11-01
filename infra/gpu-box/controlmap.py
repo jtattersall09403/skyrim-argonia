@@ -8,6 +8,7 @@ writes it with the gameplay gamepad column changed, for `C:\argonia\controls\con
 the output is committed (decision 0003).
 
     controlmap.py <Skyrim - Interface.bsa> <controlmap.txt>
+    controlmap.py --remap <controlmap.txt> <out.txt>   re-apply GAMEPLAY over a made file (deploy's "controls" step)
 """
 import struct
 import sys
@@ -82,6 +83,12 @@ def remap(text: str) -> str:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 4 and sys.argv[1] == "--remap":
+        with open(sys.argv[2], encoding="latin-1") as f:
+            made = f.read().replace("\r\n", "\n")
+        with open(sys.argv[3], "w", encoding="latin-1", newline="") as f:
+            f.write(remap(made))
+        raise SystemExit(0)
     if len(sys.argv) != 3:
         raise SystemExit(__doc__)
     vanilla = read_bsa_file(sys.argv[1], "interface\\controls\\pc", "controlmap.txt").decode("latin-1")

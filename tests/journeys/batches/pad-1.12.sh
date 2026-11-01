@@ -10,10 +10,7 @@ R=infra/gpu-box/run.sh
 PY=~/.argonia/venv/bin/python
 B="$PY tools/bridge.py"
 w() { $PY -c "import time, sys; time.sleep(float(sys.argv[1]))" "$1"; }  # a menu's open or close settling
-# the gamepad layout: Select is Wait (controlmap.py's remap over the machine's own made file; never committed)
-$R get 'C:/argonia/controls/controlmap.txt' $O/controlmap-was.txt && \
-  $PY -c "import sys; sys.path.insert(0,'infra/gpu-box'); import controlmap as c; t=open('$O/controlmap-was.txt',encoding='latin-1').read(); open('$O/controlmap.txt','w',encoding='latin-1',newline='').write(c.remap(t.replace(chr(13)+chr(10),chr(10))))" && \
-  $R put $O/controlmap.txt 'C:/argonia/controls/controlmap.txt'
+# the gamepad layout (Select = Wait) is laid by make deploy's controls step
 make deploy || exit 1
 # Wind UI's takeover on: a vanilla.txt left in Data from before e62ac40 turns it off (every menu Skyrim's)
 novanilla() { $R ps "Remove-Item -EA SilentlyContinue 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\WindUI\vanilla.txt'; Test-Path 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\WindUI\vanilla.txt'"; }
