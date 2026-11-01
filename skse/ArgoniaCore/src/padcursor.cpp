@@ -26,7 +26,7 @@ namespace pad = argonia::core::pad;
 
 constexpr std::string_view kWindUIMenu = "WindUIMenu";
 // Keyboard scan codes sent by the engine route (the user event comes from the ControlMap, as for a real key).
-constexpr std::uint32_t kTab = 0x0F, kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14;
+constexpr std::uint32_t kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14;
 
 prisma::Api1* g_prisma = nullptr;
 
@@ -202,9 +202,9 @@ void Tick() {
   g.last = now;
   if (g.close_ticks) {
     // A native close (B is Skyrim's Cancel in a menu) may already have closed the windows: Tab is sent only if they are
-    // still open three ticks on, so the toggle never reopens them. Then what was asked after the close.
+    // still open three ticks on (Esc is the menus' Cancel, as B; Tab left them open, pad112f). Then what was asked after the close.
     if (Open(kWindUIMenu)) {
-      if (++g.close_ticks == 4) Tap(RE::INPUT_DEVICE::kKeyboard, kTab);
+      if (++g.close_ticks == 4) Tap(RE::INPUT_DEVICE::kKeyboard, kEsc);  // Cancel: Tab did not close them (pad112f)
       if (g.close_ticks > 40) g.close_ticks = 0;  // never closed: give up quietly (the log says so)
       if (!g.close_ticks) SKSE::log::warn("pad: the windows did not close");
       return;

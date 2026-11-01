@@ -36,7 +36,7 @@ steps:
     do: [{pad: "RB:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane map"}}]
   - name: map-closed
-    do: [{close_menu: MapMenu}, {wait: 1}, {pad: "START:150"}, {wait: 2}]
+    do: [{close_menu: MapMenu}, {wait: 2}]      # the windows stay open under the map
   - name: bumper-to-system       # System last: the windows close and Skyrim's System page opens
     do: [{pad: "RB:150"}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane system"}}, {event: {kind: menu, match: Journal Menu}, within: 8}]
