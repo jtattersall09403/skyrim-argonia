@@ -51,12 +51,7 @@ steps:
     reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
-  - name: system-by-pad       # Start opens Wind UI's windows (pad lane); LB from none is the last pane, System: the windows close, then Esc
-    do: [{pad: "START:120 wait:1500"}, {pad: "LB:120"}, {wait: 3}]
-    expect: [{event: {kind: menu, match: Journal Menu}}]
-    reader: [the System tab is selected and shows settings (Wind UI's page among them), load and quit]
-  - name: system-pad-closed
-    do: [{close_menu: Journal Menu}, {wait: 2}]
+  # The System pane by pad is pad-panes' (bumper-to-system: the pad cycle's last pane, its stills read).
   # OWED (touch): the HUD's "Menu" button (top right, under the minimap; hud.menu intent -> OpenTweenMenu). The runner has
   # no touch action, so the batch taps it by hand/adb at the button's centre; the step below sends the same intent
   # through ViewIntent, which proves the engine half (what the tap ends in). The batch reads the log line
