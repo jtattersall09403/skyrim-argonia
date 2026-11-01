@@ -75,7 +75,11 @@ send_esms() {
   "$run" put out/gpu/papyrus/*.pex C:/argonia/ours/scripts/ >/dev/null  # one scp, not one per file (~3 s each)
   echo "$(ls out/gpu/papyrus/*.pex | wc -l) .pex sent"
   local ps  # the machine-side helpers too: a --no-stage deploy left an old stack.ps1 there (no compass line, game-6)
-  "$run" put "$here"/{stack.ps1,bridge.ps1,idle-stop.ps1,vanilla-data-files.txt} C:/argonia/infra/ >/dev/null
+  "$run" put "$here"/{stack.ps1,bridge.ps1,idle-stop.ps1,spot-watch.ps1,stream-activity.ps1,saves-sync.ps1,vanilla-data-files.txt} C:/argonia/infra/ >/dev/null
+  # the pool's saves (1.8 §7): pulled at boot, pushed every 5 minutes; registered here so every standby has them
+  "$run" ps '$r="C:\argonia\infra\saves-sync.ps1"
+if (-not (Get-ScheduledTask -TaskName argonia-saves-pull -EA SilentlyContinue)) { Register-ScheduledTask -TaskName argonia-saves-pull -Action (New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $r pull") -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null }
+if (-not (Get-ScheduledTask -TaskName argonia-saves-push -EA SilentlyContinue)) { Register-ScheduledTask -TaskName argonia-saves-push -Action (New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $r push") -Trigger (New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 5)) -User SYSTEM -RunLevel Highest | Out-Null }' >/dev/null
   # Moonlight's cards (owner, 2026-10-31: a machine from an old image still listed vanilla and souls-like): the
   # repo's apps.json and cards laid each deploy; Sunshine reads apps.json when a client asks for the list.
   "$run" put "$here"/{sunshine-apps.json,make-cards.ps1} C:/argonia/infra/ >/dev/null
@@ -104,4 +108,6 @@ step "controls" controls
 step "launch" "$PY" tools/bridge.py launch --fresh
 step "send scenes" send_scenes
 [ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }
+# the pool keeps one build (1.8 §7): tag what this machine now runs, so the play page and pool.py know who is behind
+"$PY" "$here/pool.py" stamp "${ARGONIA_PLAY:-argonia-play}" || echo "pool stamp failed (the play page may treat this machine as behind)" >&2
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"

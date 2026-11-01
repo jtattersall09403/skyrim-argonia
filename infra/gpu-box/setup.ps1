@@ -123,6 +123,16 @@ function Install-Stream {
     $tr = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 5)
     Register-ScheduledTask -TaskName argonia-idle-stop -Action $a -Trigger $tr -User SYSTEM -RunLevel Highest | Out-Null
   }
+  # The owner's saves follow them across the pool (saves-sync.ps1, 1.8 §7): pulled at boot, pushed every 5 minutes.
+  if (-not (Get-ScheduledTask -TaskName argonia-saves-pull -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\saves-sync.ps1 pull"
+    Register-ScheduledTask -TaskName argonia-saves-pull -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null
+  }
+  if (-not (Get-ScheduledTask -TaskName argonia-saves-push -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\saves-sync.ps1 push"
+    $tr = New-ScheduledTaskTrigger -Once -At (Get-Date).AddMinutes(5) -RepetitionInterval (New-TimeSpan -Minutes 5)
+    Register-ScheduledTask -TaskName argonia-saves-push -Action $a -Trigger $tr -User SYSTEM -RunLevel Highest | Out-Null
+  }
   # The spot interruption watcher (spot-watch.ps1, 1.8): on AWS's two-minute notice, the suspend save and
   # C:\argonia\state\interrupted.json. It polls every 5 s from boot, as SYSTEM.
   if (-not (Get-ScheduledTask -TaskName argonia-gpu-bind -ErrorAction SilentlyContinue)) {  # 1.8: new GPU hardware binds itself

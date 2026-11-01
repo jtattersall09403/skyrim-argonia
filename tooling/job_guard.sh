@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Long jobs in the background with a log, and a wait that returns within 270 s (CLAUDE.md). The idle-stop never
 # stops the machine while a job's pid is alive. 0.1 extends this; the interface stays.
-#   job_guard.sh run [--gpu[=<machine>]] <name> -- <command...>   start; --gpu takes that game machine's lock
-#     (default $ARGONIA_PLAY, else argonia-play; the job runs with ARGONIA_PLAY set to it, so run.sh, stack.py,
+#   job_guard.sh run [--gpu[=<machine>|=pick]] <name> -- <command...>   start; --gpu takes that game machine's lock
+#     (default $ARGONIA_PLAY, else argonia-play; =pick: the pool's choice, infra/gpu-box/pool.py pick, which in-game
+#     batches use; the job runs with ARGONIA_PLAY set to it, so run.sh, stack.py,
 #     skse_build.sh and bridge.py inside it drive that machine). Locks are per machine: two machines' jobs run side
 #     by side; a second job on one machine queues for the lock (up to $GPU_WAIT s, default 7200; GPU_WAIT=0 exits at
 #     once) and `status` shows it as queued behind the holder. argonia-play keeps the old gpu.lock.
@@ -24,6 +25,10 @@ parse_gpu() {
   gpu=0; shiftn=0
   case "${1:-}" in
     --gpu) gpu=1; shiftn=1; export ARGONIA_PLAY="${ARGONIA_PLAY:-argonia-play}" ;;
+    # the pool's pick (1.8 §7), the same rule as the owner's play page: never a machine someone streams on
+    --gpu=pick) gpu=1; shiftn=1
+      ARGONIA_PLAY=$("${PY:-python3}" "$(dirname "$(readlink -f "$0")")/../infra/gpu-box/pool.py" pick) || exit 2
+      echo "pool pick: $ARGONIA_PLAY" >&2; export ARGONIA_PLAY ;;
     --gpu=*) gpu=1; shiftn=1; export ARGONIA_PLAY="${1#--gpu=}" ;;
   esac
   if [ $gpu = 1 ]; then

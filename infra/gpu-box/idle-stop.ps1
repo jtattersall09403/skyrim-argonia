@@ -34,5 +34,7 @@ if ($Status) { "idle for $idle min (stops at $IdleMinutes)"; return }
 if ($idle -ge $IdleMinutes) {
   Remove-Item "$State\last-active" -EA SilentlyContinue
   Write-EventLog -LogName Application -Source 'Application' -EventId 1 -Message "argonia idle-stop after $idle min" -EA SilentlyContinue
+  # the owner's saves to the pool's shared copy first, so the other standby has them (1.8 §7)
+  powershell -ExecutionPolicy Bypass -File C:\argonia\infra\saves-sync.ps1 push
   Stop-Computer -Force
 }

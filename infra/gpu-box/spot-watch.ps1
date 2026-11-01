@@ -59,6 +59,8 @@ function Invoke-Poll([string]$base) {
   J ([ordered]@{ utc = (Get-Date).ToUniversalTime().ToString('o'); action = "$($n.action)"; time = "$($n.time)" }) |
     Set-Content $f -Encoding ASCII
   $r = Request-SuspendSave
+  # the saves to the pool's shared copy within the two minutes (1.8 §7); never from the drill's mock
+  if (-not $Drill) { powershell -ExecutionPolicy Bypass -File C:\argonia\infra\saves-sync.ps1 push }
   Write-EventLog -LogName Application -Source 'Application' -EventId 1 -EA SilentlyContinue `
     -Message "argonia spot-watch: notice $($n.action) at $($n.time); suspend save: $(J $r)"
   return "handled: $(J $r)"

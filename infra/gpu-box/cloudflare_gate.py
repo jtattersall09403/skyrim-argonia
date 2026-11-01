@@ -3,9 +3,12 @@
 the game machine, fronted by Cloudflare Access so only the owner's email gets in (one-time code by email).
 
   cloudflare_gate.py check       verify the token, the zone and the login methods; change nothing
-  cloudflare_gate.py apply       create or update the tunnel, its routes, DNS and the Access apps (idempotent)
-  cloudflare_gate.py worker      deploy the play switch (infra/cloudflare/play-switch.js) on play. and dcv., with
-                                 its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET in secrets.env
+  cloudflare_gate.py apply       create or update one tunnel per pool machine (machines.conf pool=), their hostnames
+                                 (play-<label>. ...), DNS and the Access apps (idempotent); tokens to secrets.env as
+                                 CLOUDFLARE_TUNNEL_TOKEN_<LABEL>; install one on its machine with `tunnel <machine>`
+  cloudflare_gate.py tunnel M    install machine M's own tunnel connector (cloudflared service) over run.sh
+  cloudflare_gate.py worker      deploy the play switch (infra/cloudflare/play-switch.js) on play., dcv. and sunshine.
+                                 with the pool and its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET
 
 Reads CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_DOMAIN and GATE_EMAIL from ~/.argonia/secrets.env and
 writes CLOUDFLARE_TUNNEL_TOKEN back there; nothing secret is printed. The machine opens no web port: cloudflared
@@ -74,25 +77,66 @@ def save_secret(key, value):
     SECRETS.write_text(text)
 
 
-def apply():
-    zid = zone_id()
-    tunnels = cf("GET", f"/accounts/{ACCT}/cfd_tunnel?name={TUNNEL}&is_deleted=false")
+def pool():
+    """The standby pool from machines.conf (1.8 §7): [(machine, label, region)] for each line with pool=<label>."""
+    out = []
+    for line in (pathlib.Path(__file__).resolve().parent / "machines.conf").read_text().splitlines():
+        f = line.split("#")[0].split()
+        lab = next((x[5:] for x in f[3:] if x.startswith("pool=")), None)
+        if f and lab:
+            out.append((f[0], lab, f[1]))
+    return out
+
+
+def origin(prefix, label):
+    """A pool machine's own hostname for a gated page: play-paris.<domain>. Only the Worker on play. uses it."""
+    return f"{prefix}-{label}.{DOMAIN}"
+
+
+def tunnel(zid, name, hosts, rules):
+    """Create or update one named tunnel with ROUTES on the given hostnames (rules: every host it answers, each
+    served as its prefix's route), CNAMEs to it for hosts ({prefix: host}), and return its connector token."""
+    tunnels = cf("GET", f"/accounts/{ACCT}/cfd_tunnel?name={name}&is_deleted=false")
     tid = tunnels[0]["id"] if tunnels else cf("POST", f"/accounts/{ACCT}/cfd_tunnel",
-                                               {"name": TUNNEL, "config_src": "cloudflare"})["id"]
-    save_secret("CLOUDFLARE_TUNNEL_TOKEN", cf("GET", f"/accounts/{ACCT}/cfd_tunnel/{tid}/token"))
+                                               {"name": name, "config_src": "cloudflare"})["id"]
     ingress = []
-    for prefix, (service, extra) in ROUTES.items():
-        host = f"{prefix}.{DOMAIN}"
+    for host in rules:
+        service, extra = ROUTES[host.split(".")[0].split("-")[0]]
         for path, svc in extra:
             ingress.append({"hostname": host, "path": path, "service": svc})
         rule = {"hostname": host, "service": service}
         if service.startswith("https://localhost"):
-            rule["originRequest"] = {"noTLSVerify": True}  # DCV's own self-signed certificate on localhost
+            rule["originRequest"] = {"noTLSVerify": True}  # DCV's and Sunshine's self-signed certificates on localhost
         ingress.append(rule)
     ingress.append({"service": "http_status:404"})
     cf("PUT", f"/accounts/{ACCT}/cfd_tunnel/{tid}/configurations", {"config": {"ingress": ingress}})
-    print("tunnel", TUNNEL, "routes:", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES))
+    for host in hosts.values():
+        rec = {"type": "CNAME", "name": host, "content": f"{tid}.cfargotunnel.com", "proxied": True}
+        have = cf("GET", f"/zones/{zid}/dns_records?name={host}")
+        if have:
+            cf("PUT", f"/zones/{zid}/dns_records/{have[0]['id']}", rec)
+        else:
+            cf("POST", f"/zones/{zid}/dns_records", rec)
+    print("tunnel", name, "routes:", ", ".join(rules))
+    return cf("GET", f"/accounts/{ACCT}/cfd_tunnel/{tid}/token")
 
+
+def apply():
+    zid = zone_id()
+    # play., dcv. and sunshine. are the owner's addresses; the Worker on them forwards each request to the pool
+    # machine in use, on that machine's own hostnames (play-paris., play-ireland., ...), one tunnel per machine, so
+    # an agent's machine and the owner's never share a connector (1.8 §7). The shared names keep a CNAME (a Worker
+    # route needs a proxied record) to the first machine's tunnel.
+    first = None
+    for name, label, _ in pool():
+        hosts = {p: origin(p, label) for p in ROUTES}
+        # the first tunnel also keeps the owner's names as before the pool: a machine still on that connector serves
+        # them if the Worker passes a request straight through (and the move to the pool never cut a live stream)
+        rules = list(hosts.values()) + ([f"{p}.{DOMAIN}" for p in ROUTES] if first is None else [])
+        tok = tunnel(zid, name, hosts, rules)
+        save_secret(f"CLOUDFLARE_TUNNEL_TOKEN_{label.upper()}", tok)
+        first = first or name
+    tid = cf("GET", f"/accounts/{ACCT}/cfd_tunnel?name={first}&is_deleted=false")[0]["id"]
     for prefix in ROUTES:
         host = f"{prefix}.{DOMAIN}"
         rec = {"type": "CNAME", "name": host, "content": f"{tid}.cfargotunnel.com", "proxied": True}
@@ -101,7 +145,7 @@ def apply():
             cf("PUT", f"/zones/{zid}/dns_records/{have[0]['id']}", rec)
         else:
             cf("POST", f"/zones/{zid}/dns_records", rec)
-    print("dns: CNAMEs to the tunnel")
+    print("dns: the owner's names on", first, "(the Worker forwards them)")
 
     policies = cf("GET", f"/accounts/{ACCT}/access/policies")
     pol = next((p for p in policies if p["name"] == "argonia-owner"), None)
@@ -109,8 +153,9 @@ def apply():
             "session_duration": "720h"}
     pid = cf("PUT", f"/accounts/{ACCT}/access/policies/{pol['id']}", body)["id"] if pol \
         else cf("POST", f"/accounts/{ACCT}/access/policies", body)["id"]
-    # The play switch reads the machine's heartbeat (/argonia-metrics/activity) on its schedule, with no person
-    # signed in: an Access service token, allowed on play. only. Its secret is shown once and kept in secrets.env.
+    # The play switch reads each machine's heartbeat (/argonia-metrics/activity) on its schedule and forwards the
+    # owner's requests to a machine's own hostnames, with no person signed in there: an Access service token. Its
+    # secret is shown once and kept in secrets.env.
     tokens = cf("GET", f"/accounts/{ACCT}/access/service_tokens")
     tok = next((x for x in tokens if x["name"] == "argonia-heartbeat"), None)
     if not tok or "CF_HEARTBEAT_ID" not in secrets():
@@ -124,29 +169,36 @@ def apply():
     hbid = cf("PUT", f"/accounts/{ACCT}/access/policies/{hb['id']}", body)["id"] if hb \
         else cf("POST", f"/accounts/{ACCT}/access/policies", body)["id"]
     apps = cf("GET", f"/accounts/{ACCT}/access/apps")
-    for prefix in ROUTES:
-        host = f"{prefix}.{DOMAIN}"
+    hosts = {f"{p}.{DOMAIN}": p == "play" for p in ROUTES}
+    hosts |= {origin(p, label): True for _, label, _ in pool() for p in ROUTES}
+    for host, token_ok in hosts.items():
         app = next((a for a in apps if a.get("domain") == host), None)
-        allow = [{"id": pid, "precedence": 1}] + ([{"id": hbid, "precedence": 2}] if prefix == "play" else [])
-        body = {"name": f"argonia {prefix}", "domain": host, "type": "self_hosted", "session_duration": "720h",
+        allow = [{"id": pid, "precedence": 1}] + ([{"id": hbid, "precedence": 2}] if token_ok else [])
+        body = {"name": f"argonia {host.split('.')[0]}", "domain": host, "type": "self_hosted", "session_duration": "720h",
                 "policies": allow, "app_launcher_visible": False}
         if app:
             cf("PUT", f"/accounts/{ACCT}/access/apps/{app['id']}", body)
         else:
             cf("POST", f"/accounts/{ACCT}/access/apps", body)
-    print("access: only the owner's email may sign in, sessions last 30 days; the heartbeat token reads play.")
+    print("access: only the owner's email signs in, sessions last 30 days; the switch's token reads play. and the machines' names.")
 
 
 NIGHT_STOP = "0 3 * * *"  # 03:00 UTC: 03:00 UK in winter, 04:00 in summer
 
 
-def play_region():
-    """argonia-play's region from machines.conf (#27)."""
-    for line in (pathlib.Path(__file__).resolve().parent / "machines.conf").read_text().splitlines():
-        f = line.split()
-        if f and f[0] == "argonia-play":
-            return f[1]
-    return "eu-west-2"
+def pool_binding():
+    """POOL for the Worker: each standby's name, label, region, type and zone id, read from AWS (the build role)."""
+    import subprocess
+    out = []
+    for name, label, region in pool():
+        aws = ["aws", "ec2", "--region", region, "--output", "text"]
+        typ, zone = subprocess.check_output(aws + ["describe-instances", "--filters", f"Name=tag:Name,Values={name}",
+            "Name=instance-state-name,Values=pending,running,stopping,stopped",
+            "--query", "Reservations[0].Instances[0].[InstanceType,Placement.AvailabilityZone]"], text=True).split()
+        az = subprocess.check_output(aws + ["describe-availability-zones", "--zone-names", zone,
+                                            "--query", "AvailabilityZones[0].ZoneId"], text=True).strip()
+        out.append({"name": name, "label": label, "region": region, "type": typ, "az": az})
+    return out
 
 
 def worker():
@@ -156,13 +208,13 @@ def worker():
         {"type": "secret_text", "name": "AWS_KEY_ID", "text": env["AWS_SWITCH_KEY_ID"]},
         {"type": "secret_text", "name": "AWS_SECRET", "text": env["AWS_SWITCH_SECRET"]},
         {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP},
-        {"type": "plain_text", "name": "REGION", "text": play_region()},
+        {"type": "plain_text", "name": "POOL", "text": json.dumps(pool_binding())},
+        {"type": "plain_text", "name": "DOMAIN", "text": DOMAIN},
         {"type": "secret_text", "name": "CF_TOKEN", "text": env["CLOUDFLARE_API_TOKEN"]},
         {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
         {"type": "plain_text", "name": "HOST_NAME", "text": f"{HOST_RECORD}.{DOMAIN}"},
         {"type": "secret_text", "name": "CF_ACCESS_ID", "text": env["CF_HEARTBEAT_ID"]},
-        {"type": "secret_text", "name": "CF_ACCESS_SECRET", "text": env["CF_HEARTBEAT_SECRET"]},
-        {"type": "plain_text", "name": "ACTIVITY_URL", "text": f"https://play.{DOMAIN}/argonia-metrics/activity"}]}
+        {"type": "secret_text", "name": "CF_ACCESS_SECRET", "text": env["CF_HEARTBEAT_SECRET"]}]}
     b = uuid.uuid4().hex
     body = (f"--{b}\r\nContent-Disposition: form-data; name=\"metadata\"\r\nContent-Type: application/json\r\n\r\n"
             f"{json.dumps(meta)}\r\n--{b}\r\nContent-Disposition: form-data; name=\"play-switch.js\"; "
@@ -186,5 +238,21 @@ def worker():
     print("play switch deployed on", ", ".join(f"{p}.{DOMAIN}" for p in ROUTES), "with schedules every 10 min and", NIGHT_STOP)
 
 
+def install_tunnel():
+    """Machine sys.argv[2]'s connector: cloudflared as a Windows service with its own tunnel's token (one tunnel per
+    machine, so two machines up at once never share one). The token goes over SSH, never printed."""
+    import subprocess
+    name = sys.argv[2]
+    label = next(lab for n, lab, _ in pool() if n == name)
+    tok = secrets()[f"CLOUDFLARE_TUNNEL_TOKEN_{label.upper()}"]
+    ps = ("$c='C:\\argonia\\cloudflared.exe'; "
+          "Get-ScheduledTask -EA SilentlyContinue | ? { $_.TaskName -like '*cloudflared*' } | Disable-ScheduledTask | Out-Null; "
+          "if (Get-Service cloudflared -EA SilentlyContinue) { Stop-Service cloudflared -Force -EA SilentlyContinue; & $c service uninstall 2>&1 | Out-Null; Start-Sleep 2 }; "
+          f"& $c service install {tok} 2>&1 | Out-Null; Set-Service cloudflared -StartupType Automatic; Start-Service cloudflared -EA SilentlyContinue; "
+          "(Get-Service cloudflared).Status")
+    run = pathlib.Path(__file__).resolve().parent / "run.sh"
+    print(name, "cloudflared:", subprocess.check_output([str(run), "--machine", name, "ps", ps], text=True).strip().splitlines()[-1])
+
+
 if __name__ == "__main__":
-    {"check": check, "apply": apply, "worker": worker}[sys.argv[1] if len(sys.argv) > 1 else "check"]()
+    {"check": check, "apply": apply, "worker": worker, "tunnel": install_tunnel}[sys.argv[1] if len(sys.argv) > 1 else "check"]()
