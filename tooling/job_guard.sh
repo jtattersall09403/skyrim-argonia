@@ -127,7 +127,9 @@ case "$cmd" in
     echo 143 > "$JOBS/$1.rc"; echo "stopped $1"
     # A machine job's machine stops with it, unless someone streams on it: a stopped job left argonia-play-ie running
     # idle 40 min, its idle-stop held busy by the job's last SSH and busy flag (1.8, 2026-10-31).
-    if m=$(cat "$JOBS/$1.machine" 2>/dev/null) && [ -n "$m" ]; then
+    # Only a job that had the machine stops it: a queued job never held it, and stopping one stopped the job running
+    # on it (the planner, 2026-11-01).
+    if [ -f "$JOBS/$1.started" ] && m=$(cat "$JOBS/$1.machine" 2>/dev/null) && [ -n "$m" ]; then
       run="$(dirname "$(readlink -f "$0")")/../infra/gpu-box/run.sh"
       r=$(awk -v m="$m" '$1==m {print $2}' "$(dirname "$run")/machines.conf"); r=${r:-eu-west-2}  # run.sh's default
       st=$(aws ec2 describe-instances --region "$r" --filters "Name=tag:Name,Values=$m" \
