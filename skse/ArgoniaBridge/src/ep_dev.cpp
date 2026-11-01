@@ -328,7 +328,12 @@ bool quit_via_journal() {
   auto* ui = RE::UI::GetSingleton();
   auto menu = ui ? ui->GetMenu(RE::JournalMenu::MENU_NAME) : RE::GPtr<RE::IMenu>{};
   if (!menu || !menu->fxDelegate || !menu->uiMovie) return false;
-  menu->fxDelegate->Callback(menu->uiMovie.get(), "QuitToMainMenu", nullptr, 0);
+  // FxDelegate's AS2 side (GameDelegate.call) sends the response id as the first argument, before the method's own
+  // parameters, and FxDelegate::Callback reads it: called with no arguments it read a null GFxValue and crashed the
+  // game (b112e: SkyrimSE.exe+117A8D2, rsi 0). One argument, response id 0 (no response wanted), as a press sends.
+  RE::GFxValue args[1];
+  args[0].SetNumber(0.0);
+  menu->fxDelegate->Callback(menu->uiMovie.get(), "QuitToMainMenu", args, 1);
   SKSE::log::info("dev-quit-to-menu: the Journal's QuitToMainMenu callback called");
   return true;
 }

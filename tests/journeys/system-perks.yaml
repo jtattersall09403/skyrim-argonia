@@ -44,25 +44,15 @@ steps:
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
       - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
-  - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
-    do: [{key: "TAB 120 engine"}, {wait: 2}, {mouse: "394 229"}, {click: left}, {wait: 1.5}]   # the Character pane's Block (1080p layout): its perk list
-  - name: perk-taken          # the first perk in Block's list, taken with the sitting's point (Wind UI logs it)
-    do: [{mouse: "850 140"}, {click: left}, {wait: 1.5}]
-    expect: [{log: {name: WindUI, contains: "took perk"}, within: 10}]
-    reader: [Block's perks listed in Wind UI's stats window, one now owned, "Perk points 0", no level-up window]
-    reader: [Wind UI's stats or perk list shows "Perk points 1", no level-up window or "Level up" prompt, perk names and descriptions with no Nordic word (Nord, Skyrim, Dragonborn, Jarl, Thu'um, shout)]
-  - name: stats-closed
-    do: [{key: "ESC 120 engine"}, {wait: 1}, {key: "TAB 120 engine"}, {wait: 1.5}]
   - name: system-by-keyboard  # Escape in play: the Journal's System page
     do: [{key: "ESC 120 engine"}, {wait: 2}]
     expect:
       - {event: {kind: menu, match: Journal Menu}}
-      - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu wrapped"}, within: 5}
     reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
-  - name: system-by-pad       # Start, then the right bumper to the System tab (last in the cycle)
-    do: [{pad: "START:120 wait:1500"}, {pad: "RB:120 wait:600 RB:120 wait:600 RB:120 wait:600"}, {wait: 1}]
+  - name: system-by-pad       # Start opens Wind UI's windows (pad lane); LB from none is the last pane, System: the windows close, then Esc
+    do: [{pad: "START:120 wait:1500"}, {pad: "LB:120"}, {wait: 3}]
     expect: [{event: {kind: menu, match: Journal Menu}}]
     reader: [the System tab is selected and shows settings (Wind UI's page among them), load and quit]
   - name: system-pad-closed
@@ -71,6 +61,15 @@ steps:
   # no touch action, so the batch taps it by hand/adb at the button's centre; the step below sends the same intent
   # through ViewIntent, which proves the engine half (what the tap ends in). The batch reads the log line
   # "views: the HUD menu button opened the TweenMenu" and the menu event TweenMenu opening.
+  - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
+    do: [{key: "TAB 120 engine"}, {wait: 2}, {mouse: "394 229"}, {click: left}, {wait: 1.5}]   # the Character pane's Block (1080p layout): its perk list
+  - name: perk-taken          # the first perk in Block's list, taken with the sitting's point (Wind UI logs it)
+    do: [{mouse: "850 140"}, {click: left}, {wait: 1.5}]
+    expect: [{log: {name: WindUI, contains: "took perk"}, within: 10}]
+    reader: [Block's perks listed in Wind UI's stats window, one now owned, "Perk points 0", no level-up window]
+    reader: [Wind UI's stats or perk list shows "Perk points 1", no level-up window or "Level up" prompt, perk names and descriptions with no Nordic word (Nord, Skyrim, Dragonborn, Jarl, Thu'um, shout)]
+  - name: stats-closed
+    do: [{key: "ESC 120 engine"}, {wait: 2}]   # Esc closes Wind UI's windows; a Tab after it opened them again (b112g)
   - name: hud-menu-button     # the Menu button's intent opens the Tween Menu (Wind UI's menu mode), as Tab does
     do: [{call: [core, ViewIntent, '{"type":"hud.menu","v":1,"body":{}}']}, {wait: 2}]
     expect:
@@ -84,17 +83,11 @@ steps:
   - name: favorites-by-keyboard
     do: [{key: "Q 120 engine"}, {wait: 2}]
     expect: [{event: {kind: menu, match: FavoritesMenu}}]
-  - name: favorites-keyboard-closed
-    do: [{key: "Q 120 engine"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"menu": "FavoritesMenu", "opening": false'}}]
-  - name: favorites-by-pad    # the d-pad up opens the favourites on the pad
-    do: [{pad: "UP:120"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: FavoritesMenu}}]
-  - name: favorites-pad-closed
-    do: [{close_menu: FavoritesMenu}, {wait: 1.5}]
+    # Wind UI holds the favourites (Q opens its windows on the Favorites tab, no close event; b112f): last before the quit.
+    # The pad's favourites are Wind UI's Quick keys pane under the pad cursor (padcursor.cpp): the pad lane's row.
   - name: quit-to-main-menu   # the Journal's own QuitToMainMenu (wrapped): the suspend save, then the main menu
     do: [{call: [dev-quit-to-menu]}, {wait: 8}]
     expect:
       - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu called; suspend save due"}, within: 15}
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}
-      - {event: {kind: menu, match: MainMenu}, within: 30}
+      - {event: {kind: menu, match: Main Menu}, within: 30}

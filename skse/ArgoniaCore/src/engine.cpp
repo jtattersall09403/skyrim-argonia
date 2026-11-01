@@ -265,12 +265,13 @@ void EnsurePerks() {
 }
 
 // The HUD's menu button (touch): the Tween Menu (Wind UI's menu mode) by the UI message queue, as the Tab key's gameplay
-// event does. Nothing while a pausing menu is already open (a second press must not stack a menu).
+// event does. Nothing while the Tween Menu is open (a second press must not stack it). Not WindUIMenu, which stays
+// open after its windows close, and not GameIsPaused, which stays true then too (b112g).
 bool OpenTweenMenu() {
   auto* ui = RE::UI::GetSingleton();
   auto* q = RE::UIMessageQueue::GetSingleton();
   if (!ui || !q) return false;
-  if (ui->GameIsPaused() || ui->IsMenuOpen(RE::TweenMenu::MENU_NAME)) {
+  if (ui->IsMenuOpen(RE::TweenMenu::MENU_NAME)) {
     SKSE::log::info("views: the HUD menu button ignored (a menu is open)");
     return true;
   }

@@ -30,4 +30,4 @@ steps:
     expect:   # lane-1.12-system: the save rides the Journal's own QuitToMainMenu callback (wrapped), not the flag
       - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu called; suspend save due"}, within: 15}
       - {log: {name: ArgoniaCore, contains: "saves: ArgoniaSuspend written (quit)"}, within: 15}
-      - {event: {kind: menu, match: MainMenu}, within: 30}
+      - {event: {kind: menu, match: Main Menu}, within: 30}
