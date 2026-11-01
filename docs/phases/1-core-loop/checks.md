@@ -141,6 +141,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | 200 path requests succeed on the new navmesh; the densest cell's frame time within the bar | 1.15 §e | L4 | owed | no run on record |
 | Claywater re-seated: claywater-walk and claywater-look green on the frozen ground | 1.15 §f | L4 | owed | journey:claywater-walk; journey:claywater-look |
 | Rocks sunk and conforming: a booth sheet of six rocks on a slope | 1.15 §e | L4 | owed | no sheet on record |
+| Creature encounters between places: three stretches walked day and night, creatures seen and attacks counted against the band; each big predator at its den | 1.15 §g | L4 | owed | no journey yet (creature-walk, the encounters lane writes it) |
 
 ## 1.8 A play machine you can rely on
 
