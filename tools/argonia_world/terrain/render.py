@@ -54,6 +54,24 @@ class Window:
         return ~np.isnan(self.level) & (self.ground < self.level)
 
 
+MIN_PX = 1000  # a render's long side, so a reader can judge it
+MIN_CELLS = 8  # a window narrower than this is widened about its centre (the 1-2 cell samples read in context)
+
+
+def widen(cells: tuple[int, int, int, int], k: int = MIN_CELLS) -> tuple[int, int, int, int]:
+    x0, y0, x1, y1 = cells
+    if x1 - x0 + 1 < k:
+        x0 = (x0 + x1) // 2 - k // 2 + 1
+        x1 = x0 + k - 1
+    if y1 - y0 + 1 < k:
+        y0 = (y0 + y1) // 2 - k // 2 + 1
+        y1 = y0 + k - 1
+    lo, hi = CX0, CX0 + C - 1  # shifted inside the province (CX0 = CY0), not clipped
+    dx = max(lo - x0, 0) - max(x1 - hi, 0)
+    dy = max(lo - y0, 0) - max(y1 - hi, 0)
+    return x0 + dx, y0 + dy, x1 + dx, y1 + dy
+
+
 def window(ground: np.ndarray, water: CellWater, cells: tuple[int, int, int, int], world=None) -> Window:
     lo, hi = CX0, CX0 + C - 1  # the province only: the apron is grid.py's, not the generator's
     x0, y0, x1, y1 = (min(max(v, lo), hi) for v in cells)
@@ -143,6 +161,9 @@ def render(w: Window, path: Path, layers=None, scale: int = 1) -> dict:
     draw_steps(rgb, w)
     if scale > 1:
         rgb = rgb[::scale, ::scale]
+    up = max(1, -(-MIN_PX // max(rgb.shape[:2])))  # nearest-neighbour up to MIN_PX on the long side (the reader)
+    if up > 1:
+        rgb = np.repeat(np.repeat(rgb, up, 0), up, 1)
     png.write(path, rgb)
     return {"path": str(path), "cells": [w.x0, w.y0, w.x1, w.y1], "layers": drawn,
             "wet_samples": int(w.wet.sum()), "ground_m": [round(float(w.ground.min()), 2), round(float(w.ground.max()), 2)]}

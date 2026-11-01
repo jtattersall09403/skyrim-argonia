@@ -324,7 +324,8 @@ def generate(inp: Inputs, log=print) -> dict:
     bord = np.array([c in BORDER_CULTURES for c in inp.culture] + [False], np.float64)
     bw = upsample(blur(bord[inp.region], BLEND_CELLS))
     ii, jj = np.mgrid[0:N + 1, 0:N + 1]
-    dist_nw = np.minimum(ii, jj) * MPP
+    ks = 200.0  # samples: a soft minimum of the distances to the N and W borders (no kink on the diagonal)
+    dist_nw = -ks * np.logaddexp(-ii / ks, -jj / ks) * MPP
     t = np.clip(1 - dist_nw / BORDER_RANGE[2], 0, 1)
     rng = bw * t * t * (3 - 2 * t)  # 1 at the N/NW border inside the border cultures, 0 a band's width in
     summit = summit + (BORDER_RANGE[1] - summit) * rng
@@ -363,13 +364,43 @@ def generate(inp: Inputs, log=print) -> dict:
         f = t - i0
         rows_ = g[i0] * (1 - f)[:, None] + g[i0 + 1] * f[:, None]
         noise += amp * (rows_[:, i0] * (1 - f)[None] + rows_[:, i0 + 1] * f[None])
-    dwet, near_lvl = chamfer(foot, SHORE_FAR, np.where(foot, vmin, np.nan))
+    # the nearest raster water's level and type ride the chamfer together (type x 1e4 + level + 1e3)
+    tw = np.pad(np.repeat(np.repeat(inp.water.wtype, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge").astype(np.float64)
+    dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
+    near_t = np.floor(near_code / 1e4)
+    near_lvl = near_code - near_t * 1e4 - 1e3
+    del near_code
     away = np.clip(np.where(np.isfinite(dwet), dwet, SHORE_FAR) / SHORE_FAR, 0, 1)
     # the land stands on its water (never below the base plus its floor) and rises to the region's absolute band
     h = np.maximum(base + floor, relief) + noise * rough * away
     h = h * (1 - 0.5 * ero) + blur(h, 4) * 0.5 * ero
     del noise
     log(f"noise+erosion {time.time() - t0:.1f}s")
+
+    # the shore: the ground beside the water rises from under it at the type's grade (the mangrove coast flat, the
+    # upland tarn steep), faded out by SHORE_FAR so the land beyond keeps its relief; inside a water cell the ground
+    # that falls below the cell's water is the natural flood and counts as wet (a partly-wet cell is no plateau)
+    sgn = np.zeros((N + 1, N + 1))
+    for i, n in enumerate(TYPES):
+        sgn[near_t == i] = SHORE_GRADE[n]
+    dd = np.where(np.isfinite(dwet), dwet, SHORE_FAR)
+    ramp = near_lvl - FREEBOARD_M + sgn * dd * MPP
+    fade = np.clip(2.0 - 2.0 * dd / SHORE_FAR, 0, 1)
+    fade = fade * fade * (3 - 2 * fade)
+    near = np.isfinite(dwet) & ~foot
+    h = np.where(near, h - np.maximum(h - ramp, 0) * fade, h)
+    flood = has & ~foot & (h < vmin + FREEBOARD_M)  # the band up to the bank goes under, not up to a ledge
+    foot |= flood
+    st["water"]["natural_flood_samples"] = int(flood.sum())
+    del ramp, fade, near, dd, near_t
+    # the shore beyond the water cells rises from the water as now flooded (its nearest wet sample and level)
+    dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
+    near_t = np.floor(near_code / 1e4)
+    near_lvl = near_code - near_t * 1e4 - 1e3
+    sgn[:] = 0
+    for i, n in enumerate(TYPES):
+        sgn[near_t == i] = SHORE_GRADE[n]
+    del tw, near_code, near_t
 
     # 4. roads: flat across, smooth along
     road = np.zeros((N + 1, N + 1), bool)
@@ -403,7 +434,7 @@ def generate(inp: Inputs, log=print) -> dict:
     lo[bank] = vmax[bank] + FREEBOARD_M
     role[foot], role[bank] = 1, 3
     shore = ~has & np.isfinite(dwet) & ~foot
-    shore_lo = near_lvl + FREEBOARD_M + sg * np.where(np.isfinite(dwet), dwet, 0) * MPP
+    shore_lo = near_lvl + FREEBOARD_M + sgn * np.where(np.isfinite(dwet), dwet, 0) * MPP
     lo[shore] = np.maximum(lo[shore], shore_lo[shore])
     role[shore] = 4
     # steps: the vanilla join
@@ -579,6 +610,11 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[d
             bowl = np.where(np.isnan(bowl), win, bowl)
             win[:] = np.where(wro == 3, win, np.minimum(win, win * (1 - w) + bowl * w))
         win[:] = np.minimum(np.maximum(win, wlo), np.maximum(whi, wlo))
+        # the shaped core pinned (lo = hi) so the slope limit cannot re-slope it (a flat on a hillside, a mound top)
+        core = d <= (0.6 if shape == "flat" else 0.35)
+        pin = core & ~sbank[sl]
+        wlo[pin] = win[pin]
+        whi[pin] = win[pin]
         out.append({"place_id": s["place_id"], "shape": shape, "x_m": round(cx * MPP, 2), "y_m": round(cy * MPP, 2),
                     "radius_m": round(s["radius_m"], 2), "facing_deg": round(facing, 1), "request": note or None})
     return out

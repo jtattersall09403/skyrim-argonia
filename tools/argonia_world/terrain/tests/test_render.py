@@ -30,6 +30,6 @@ def test_render_window(tmp_path):
     win = render.window(g, w, (cw.CX0, cw.CY0, cw.CX0 + 1, cw.CY0))
     out = render.render(win, tmp_path / "w.png", layers=[])
     img = png.read(tmp_path / "w.png")
-    assert img.shape == (33, 65, 3)
+    assert img.shape == (33 * 16, 65 * 16, 3)  # nearest-neighbour up to MIN_PX on the long side
     assert out["wet_samples"] == 10 * 64
-    assert (img[cw.Q - 15, cw.Q] == render.STEP_RGB).all()  # the step drawn on the east edge
+    assert (img[(cw.Q - 15) * 16, cw.Q * 16] == render.STEP_RGB).all()  # the step drawn on the east edge

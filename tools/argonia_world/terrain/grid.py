@@ -34,6 +34,8 @@ N = su.PROVINCE_SAMPLES - 1  # 4032 quads across the province
 CX0, CY0 = su.PROVINCE_CELL_SW
 PAD = su.APRON_CELLS * Q  # 2176
 APRON_BLEND_M = 1200.0  # old 0067 §1's join width
+EDGE_SMOOTH = 64  # samples: the along-edge blur of the border offset the apron carries out
+EDGE_SMOOTH_M = 60.0  # metres out from the border by which the carried offset is the smoothed one
 TINT_STEP = 4  # ground-tint.png: one pixel per 4 samples
 
 
@@ -113,6 +115,36 @@ class Sources:
         d = np.hypot((r - self.pad) - pr, (c - self.pad) - pc) * su.PROVINCE_SAMPLE_M
         return pr, pc, d
 
+    @cached_property
+    def _edge_tables(self) -> dict:
+        """Per border side, (raw, smooth) of the province ground minus the apron along the edge; smooth is blurred
+        along the edge (sigma EDGE_SMOOTH samples) so the edge's own detail does not extrude into streaks."""
+        p, n = self.pad, self.n
+        g, a = self.ground, self.apron
+        sides = {"n": g[0, :] - a[p, p:p + n + 1], "s": g[n, :] - a[p + n, p:p + n + 1],
+                 "w": g[:, 0] - a[p:p + n + 1, p], "e": g[:, n] - a[p:p + n + 1, p + n]}
+        out = {}
+        k = np.exp(-0.5 * (np.arange(-3 * EDGE_SMOOTH, 3 * EDGE_SMOOTH + 1) / EDGE_SMOOTH) ** 2)
+        k /= k.sum()
+        for key, v in sides.items():
+            v = np.asarray(v, np.float64)
+            pad = np.pad(v, 3 * EDGE_SMOOTH, mode="reflect")
+            out[key] = (v, np.convolve(pad, k, mode="valid"))
+        return out
+
+    def _edge_offset(self, pr: np.ndarray, pc: np.ndarray, d: np.ndarray) -> np.ndarray:
+        """The ground-minus-apron offset carried out from the nearest edge point: the raw edge at the border,
+        easing to the along-edge smoothed edge by EDGE_SMOOTH_M out (the materials lane's apron streaks)."""
+        t = self._edge_tables
+        n = self.n
+        raw = np.empty(pr.shape, np.float64)
+        smo = np.empty(pr.shape, np.float64)
+        for key, m, idx in (("w", pc == 0, pr), ("e", pc == n, pr), ("n", pr == 0, pc), ("s", pr == n, pc)):
+            raw[m], smo[m] = t[key][0][idx[m]], t[key][1][idx[m]]
+        s = np.clip(d / EDGE_SMOOTH_M, 0.0, 1.0)
+        s = s * s * (3.0 - 2.0 * s)
+        return raw + (smo - raw) * s
+
     @staticmethod
     def _w(d: np.ndarray) -> np.ndarray:
         t = np.clip(d / APRON_BLEND_M, 0.0, 1.0)
@@ -140,7 +172,7 @@ class Sources:
         rr, cc = np.nonzero(~inside)
         rr, cc = rr + r0, cc + c0
         pr, pc, d = self._edge(rr, cc)
-        edge = self.ground[pr, pc].astype(np.float64) - self.apron[pr + p, pc + p]
+        edge = self._edge_offset(pr, pc, d)
         out[rr - r0, cc - c0] = self.apron[rr, cc] + edge * self._w(d)
         return out
 

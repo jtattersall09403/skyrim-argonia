@@ -239,7 +239,7 @@ def cmd_render(a) -> int:
     layers = a.layers.split(",") if a.layers else None
     for c in wins:
         name = "_".join(str(v) for v in c) + ".png"
-        print(json.dumps(render.render(render.window(ground, water, c, w), Path(a.out) / name, layers) | {"water": water.source}))
+        print(json.dumps(render.render(render.window(ground, water, render.widen(c), w), Path(a.out) / name, layers) | {"water": water.source}))
     return 0
 
 
