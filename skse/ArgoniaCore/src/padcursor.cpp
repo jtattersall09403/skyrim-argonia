@@ -401,8 +401,12 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
     if (e && e->opening && e->menuName == RE::JournalMenu::MENU_NAME) {
       // Esc's System page: Wind UI pops its windows over it; they are closed the next frame (reader, 2026-11-01).
-      SKSE::GetTaskInterface()->AddTask([] {
-        if (!Open(RE::JournalMenu::MENU_NAME) || !Open(kWindUIMenu)) return;
+      // J's opening too: the router swaps the Journal Menu for our journal, and the windows Wind UI popped for it were
+      // left under it, open after the journal closed (pad112r step 20). Windows already up before (the taskbar's
+      // Journal, a pane of ours) are left alone.
+      const bool popped = !g.was_windows;
+      SKSE::GetTaskInterface()->AddTask([popped] {
+        if (!Open(kWindUIMenu) || (!Open(RE::JournalMenu::MENU_NAME) && !popped)) return;
         if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
         SKSE::log::info("pad: Wind UI's windows closed over the System page");
       });
