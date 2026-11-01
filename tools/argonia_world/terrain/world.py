@@ -54,6 +54,16 @@ def wrld(cell_range: tuple[int, int, int, int]) -> dict:
     }
 
 
+def _base_order(base: list[str], extra: list[str]) -> list[str]:
+    """LOAD_ORDER with the creature mods' own masters (Update.esm, the DLC: creatures/records.base_masters) in
+    their MAST order; the writer takes as masters only those a record names."""
+    out = [m for m in base if m not in extra]
+    for i, m in enumerate(LOAD_ORDER):
+        if m not in out:
+            out.insert(i, m)
+    return out
+
+
 def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) -> dict:
     """The WRLD intermediate, the REGN shells and the cells' region runs (XCLR; 2.W3's regions/api.py)."""
     from tools.argonia_world import db
@@ -67,7 +77,7 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
-            "loadOrder": LOAD_ORDER + extra, "extraMasters": extra,
+            "loadOrder": _base_order(creatures.base_masters(w), extra) + extra, "extraMasters": extra,
             "records": [wrld(cell_range)], "land": str(land_dir),
             "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
             "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs(),

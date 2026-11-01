@@ -51,6 +51,15 @@ def water_level(s: actors.Scan, a: actors.Achr) -> float:
     return -1e9 if w is None or abs(w) > 1e6 else w
 
 
+def _levels(f: int, name: str, own: int) -> dict:
+    """Decision 0035's facts of a mod's own form (levelled.py)."""
+    if f >> 24 != own:
+        return {}
+    from tools.argonia_world.creatures import levelled
+    fk = f"{f & 0xFFFFFF:06X}:{name}"
+    return {"pc_level_mult": levelled.scales(fk), "death_item_levelled": levelled.death_item_levelled(fk)}
+
+
 def run(skyrim_races: dict[int, actors.Race] | None = None) -> dict:
     res = {}
     for mod, name in PLUGINS:
@@ -79,7 +88,7 @@ def run(skyrim_races: dict[int, actors.Race] | None = None) -> dict:
             "new_races": sorted({r.edid for f, r in s.races.items() if f >> 24 == own}),
             "forms": [{"form": f"{f & 0xFFFFFF:06X}:{name}" if f >> 24 == own else f"{f:08X}", "edid": n.edid,
                        "name": n.name, "race": re, "aggression": n.aggression, "confidence": n.confidence,
-                       "level": n.level, "placed": len(placed.get(f, []))} for f, (n, re) in sorted(cr.items())],
+                       "level": n.level, **_levels(f, name, own), "placed": len(placed.get(f, []))} for f, (n, re) in sorted(cr.items())],
             "achr_exterior": len(ext), "achr_interior": sum(1 for v in placed.values() for a in v if a.world is None),
             "exterior_in_water": wet, "exterior_grouped": grouped,
             "worlds": dict(Counter(s.worlds.get(a.world, hex(a.world)) for a in ext)),

@@ -57,7 +57,8 @@ def _check(a) -> int:
         boxes = [tuple(v[i:i + 4]) for i in range(0, len(v), 4)]
     src, cw = Sources.load(), solve.load(w)
     run = build.run(w, src, cw, build.sample_cells(boxes), Path(a.out), veg=ROOT / "out" / "terrain" / "vegetation")
-    res = {"classes": checks.classes(w), "levels": checks.levels(w), **checks.refs(run, src, cw)}
+    res = {"classes": checks.classes(w), "levels": checks.levels(w), "unlevelled": checks.unlevelled(w, run),
+           **checks.refs(run, src, cw)}
     res["seconds"] = round(time.time() - t0, 1)
     (Path(a.out) / "checks.json").write_text(json.dumps(res, indent=1, default=str) + "\n")
     bad = [k for k, v in res.items() if isinstance(v, dict) and v.get("fail")]
@@ -65,9 +66,12 @@ def _check(a) -> int:
     print(f"refs {res['habitat']['refs']} on their habitat; dens {res['dens']['dens']} with a predator beside; "
           f"lists {res['levels']['lists']} at their band's fixed level; no-spawn violations "
           f"{len(res['no_spawn']['fail'] or [])}")
+    u = res["unlevelled"]
+    print(f"unlevelled (0035): {u['entries']} list entries at level 1, {u['fixed_forms']} scaling mod forms as "
+          f"{u['actors']} fixed copies, zones min = max")
     for k in bad:
         print(f"creatures check red: {k}: {res[k]['fail']}")
-    print(f"creatures checks: {5 - len(bad)} green, {len(bad)} red ({res['seconds']} s)")
+    print(f"creatures checks: {6 - len(bad)} green, {len(bad)} red ({res['seconds']} s)")
     return 1 if bad else 0
 
 
@@ -85,7 +89,7 @@ def _build(a) -> int:
         x0, y0 = su.PROVINCE_CELL_SW
         cells = [(x, y) for y in range(y0, y0 + su.PROVINCE_CELLS) for x in range(x0, x0 + su.PROVINCE_CELLS)]
     r = build.run(w, Sources.load(), solve.load(w), cells, None, log=lambda s: None, veg=Path(a.veg) if a.veg else None)
-    n = records.write_shards(r["refs"], Path(a.out))
+    n = records.write_shards(r["refs"], Path(a.out), records.fixed_forms(w))
     print(f"creatures build: {n} refs in {len(cells)} cells ({r['summary']['seconds']} s)")
     return 0
 
@@ -111,7 +115,15 @@ def _readback(a) -> int:
           f"{sum(want.values())} planned in {len(want)}")
     for b in bad[:5]:
         print(f"creatures readback red: {b}")
-    return 1 if bad else 0
+    from tools.argonia_world import db
+    from tools.argonia_world.creatures import levelled
+    w = db.open()
+    lv = levelled.check(Path(a.esm), {r["form_key"] for r in w.query("SELECT form_key FROM creature_form "
+                                                                      "WHERE pc_level_mult")})
+    print(f"creatures unlevelled (0035, the plugin's own records): {lv['records']}")
+    for b in lv["fail"] or []:
+        print(f"creatures unlevelled red: {b}")
+    return 1 if bad or lv["fail"] else 0
 
 
 def main(argv=None) -> int:

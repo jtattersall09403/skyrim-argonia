@@ -6608,7 +6608,9 @@ CREATE TABLE "region_mist" (
 
 -- Home of a dependency mod's creature form (NPC_) that stands for one of our creature kinds: the mod's own record,
 -- race and behaviour (route 1 data), joined to its `creature` row. form_key is "<local FormID 6 hex>:<plugin>".
--- Written by `python -m tools.argonia_world.creatures seed` from creatures/roster.py's FORMS.
+-- Written by `python -m tools.argonia_world.creatures seed` from creatures/roster.py's FORMS. pc_level_mult: the
+-- mod's stats scale with the player; death_item_levelled: its death item reaches a levelled entry above 1. Either
+-- way our plugin carries its own fixed-level copy (decision 0035, creatures/levelled.py).
 CREATE TABLE "creature_form" (
   "form_key" TEXT NOT NULL PRIMARY KEY,
   "creature_id" TEXT NOT NULL REFERENCES "creature"("id"),
@@ -6616,6 +6618,8 @@ CREATE TABLE "creature_form" (
   "edid" TEXT NOT NULL,
   "race" TEXT NOT NULL,
   "aggression" INTEGER NOT NULL CHECK ("aggression" BETWEEN 0 AND 3),
+  "pc_level_mult" BOOLEAN NOT NULL CHECK ("pc_level_mult" IN (0, 1)),
+  "death_item_levelled" BOOLEAN NOT NULL CHECK ("death_item_levelled" IN (0, 1)),
   "why" TEXT NOT NULL
 );
 

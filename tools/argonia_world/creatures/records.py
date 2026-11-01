@@ -4,15 +4,20 @@ Skyrim.esm's own method (measured 2026-11-01, docs/research/2026-11-01/lane-1.15
 wilderness spawn is an ACHR whose base is an NPC_ templated on an LVLN (TPLT; ACBS template flags 0x0FFF on 135 of
 the 451 such NPC_, 0x1FFF on 40; RNAM the placeholder FoxRace on all 451), the LVLN flagged "calculate from all
 levels <= PC" and "for each item in count" (LVLF 3 on 415 of 527), and an XEZN naming the encounter zone whose
-min and max level fix what the list yields. Ours: one LVLN and one templated NPC_ per creature_list row, every
-entry at its band's level; one ECZN per encounter_zone row with min = max (the band's fixed level, never the
+min and max level fix what the list yields. Ours (decision 0035: nothing is levelled against the player): one LVLN
+(LVLF 2, "for each item in count" only) and one templated NPC_ (the band's fixed level, CalcMin = CalcMax) per
+creature_list row, every entry at level 1; a mod creature whose record scales (creature_form.pc_level_mult) or
+whose death item is levelled is listed as our own copy of it at the band's fixed level (`actors`: the mod's AI,
+model, sounds and spells kept, ACBS fixed, the death item swapped for a level-1 copy of its list); one ECZN per encounter_zone row with min = max (the band's fixed level, never the
 player's); the den's own marker a REFR of XMarkerHeading; the predator beside it an ACHR of the mod's own NPC_.
 
 Ids are computed, never allocated (as the grid's, 0031 §3): a list's index in roster.CLASSES x BANDS x MEDIUM,
 so a class appended to the roster appends ids; a ref's id from its cell's grid position and its order in the cell.
 
     world.json "creatures": {"lists": [{"formKey", "edid", "entries": [[FormKey, level, count]]}],
-                             "templates": [{"formKey", "edid", "list", "race"}],
+                             "templates": [{"formKey", "edid", "list", "race", "level"}],
+                             "actors": [{"formKey", "edid", "source", "level", "deathItem"}],
+                             "plugins": {plugin: path}, the masters' own files (the copies' source records),
                              "zones": [{"formKey", "edid", "minLevel", "maxLevel", "neverResets"}],
                              "afflictions": [{"mgef", "spel", "kind", "name", "edid",
                                               "effects": [{"av", "archetype", "magnitude", "duration"}]}]}
@@ -37,6 +42,8 @@ REF_SLOT = 64  # ids per province cell; the province's busiest cell holds 9 (mea
 PLACEHOLDER_RACE = "109C7C:Skyrim.esm"  # FoxRace: Skyrim.esm's RNAM on every NPC_ templated on an LVLN (451 of 451)
 DEN_MARKER = "000034:Skyrim.esm"  # XMarkerHeading: an editor marker, never drawn in game
 ZONE_KINDS = ("wild", "clearable")
+ACTOR_BASE = 0x0D4000  # our fixed-level copies of scaling mod creatures (0035): form index x bands + band
+FIXED_ITEM_BASE = 0x0D6000  # our level-1 copies of levelled death-item lists (CreatureRecords.cs allocates in order)
 SPELL_BASE = 0x0D3000  # our afflictions: MGEF at SPELL_BASE + 2i (a second effect's at + 0x800), SPEL at + 2i + 1
 #                        (i: the roster.AFFLICTIONS order)
 
@@ -125,33 +132,80 @@ def masters(w) -> list[str]:
     return [p for p in order if p in used] + sorted(used - set(order))
 
 
+def fixed_forms(w) -> list[str]:
+    """The mod forms our plugin copies at a fixed level (0035), in form-key order (their ids' order)."""
+    return [r["form_key"] for r in w.query("SELECT form_key FROM creature_form WHERE pc_level_mult OR "
+                                           "death_item_levelled ORDER BY form_key")]
+
+
+def actor_key(w, form_key: str, band: str) -> str:
+    """The NPC_ a list or den names for a mod form in a band: the mod's own, or our fixed copy."""
+    fixed = fixed_forms(w)
+    if form_key not in fixed:
+        return form_key
+    return f"{ACTOR_BASE + fixed.index(form_key) * len(ro.BANDS) + list(ro.BANDS).index(band):06X}:{PLUGIN}"
+
+
+def actors(w) -> list[dict]:
+    lv = {r["band"]: r["level"] for r in w.query("SELECT band, level FROM danger_band_level")}
+    out = []
+    for r in w.query("SELECT * FROM creature_form WHERE pc_level_mult OR death_item_levelled ORDER BY form_key"):
+        for b in ro.BANDS:
+            out.append({"formKey": actor_key(w, r["form_key"], b), "edid": f"ARG_Cr_{r['edid']}_{b}",
+                        "source": r["form_key"], "level": lv[b], "deathItem": bool(r["death_item_levelled"])})
+    return out
+
+
+def plugins(w) -> dict[str, str]:
+    from tools.argonia_world.creatures import levelled
+    return {p: str(levelled._path(p)) for p in masters(w)}
+
+
+def base_masters(w) -> list[str]:
+    """The masters of the mods the lists name, in their own MAST order: our fixed death-item lists name their
+    items (Skyrim.esm's, Dragonborn.esm's), so these go on the load order the writer sorts masters against."""
+    from tools.argonia_world.creatures import levelled
+    out: list[str] = []
+    for p in masters(w):
+        for m in levelled._plugin(p)[0]:
+            if m not in out:
+                out.append(m)
+    return out
+
+
 def document(w) -> dict:
     ents: dict[str, list] = {}
+    band = {r["id"]: r["band"] for r in w.query("SELECT id, band FROM creature_list")}
+    lv = {r["band"]: r["level"] for r in w.query("SELECT band, level FROM danger_band_level")}
     for r in w.query("SELECT list_id, form_key, level, count FROM creature_list_entry ORDER BY list_id, form_key"):
-        ents.setdefault(r["list_id"], []).append([r["form_key"], r["level"], r["count"]])
+        ents.setdefault(r["list_id"], []).append([actor_key(w, r["form_key"], band[r["list_id"]]), r["level"],
+                                                  r["count"]])
     lists, templates = [], []
     for r in w.query("SELECT id FROM creature_list ORDER BY id"):
         lid = r["id"]
         name = _camel(lid.split(".", 1)[1])
         lists.append({"formKey": list_key(lid), "edid": f"ARG_LCr_{name}", "entries": ents[lid]})
         templates.append({"formKey": template_key(lid), "edid": f"ARG_Enc_{name}", "list": list_key(lid),
-                          "race": PLACEHOLDER_RACE})
+                          "race": PLACEHOLDER_RACE, "level": lv[band[lid]]})
     zones = [{"formKey": zone_key(r["id"]), "edid": f"ARG_Zone_{_camel(r['id'].split('.', 1)[1])}",
               "minLevel": r["min_level"], "maxLevel": r["max_level"], "neverResets": bool(r["never_resets"])}
              for r in w.query("SELECT * FROM encounter_zone ORDER BY id")]
-    return {"lists": lists, "templates": templates, "zones": zones, "afflictions": afflictions()}
+    return {"lists": lists, "templates": templates, "actors": actors(w), "plugins": plugins(w), "zones": zones,
+            "afflictions": afflictions()}
 
 
-def base_of(r: dict, first_form: dict[str, str] | None = None) -> tuple[str, str]:
-    """(signature, base FormKey) of one planned ref (place.plan_cell's kinds)."""
+def base_of(r: dict, fixed: list[str] | None = None) -> tuple[str, str]:
+    """(signature, base FormKey) of one planned ref (place.plan_cell's kinds); fixed: fixed_forms."""
     if r["kind"] == "spawn":
         return "ACHR", template_key(r["base"])
     if r["kind"] == "den":
         return "REFR", DEN_MARKER
-    return "ACHR", r["base"]  # the predator: the mod's own NPC_
+    if fixed and r["base"] in fixed:  # the predator: the mod's own NPC_, or our fixed copy (0035)
+        return "ACHR", f"{ACTOR_BASE + fixed.index(r['base']) * len(ro.BANDS) + list(ro.BANDS).index(r['band']):06X}:{PLUGIN}"
+    return "ACHR", r["base"]
 
 
-def write_shards(refs: list[dict], out: Path) -> int:
+def write_shards(refs: list[dict], out: Path, fixed: list[str] | None = None) -> int:
     """The planner's refs as the splice's shards (one file per cell row); returns the ref count."""
     out.mkdir(parents=True, exist_ok=True)
     for f in out.glob("cy*.jsonl.gz"):
@@ -160,7 +214,7 @@ def write_shards(refs: list[dict], out: Path) -> int:
     for r in refs:
         cx, cy = r["cell"]
         row = cells.setdefault((cx, cy), [])
-        sig, base = base_of(r)
+        sig, base = base_of(r, fixed)
         row.append([ref_id(cx, cy, len(row)), sig, base, zone_key(r["zone"]) if sig == "ACHR" else None,
                     r["x"], r["y"], r["z"], 0.0, 0.0, r["rz"]])
     rows: dict[int, list] = {}

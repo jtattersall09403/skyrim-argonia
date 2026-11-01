@@ -60,7 +60,7 @@ static class LandWorld
                 Model = new Model { File = S(r, "model") },
             });
         }
-        if (root.TryGetProperty("creatures", out var cr0)) CreatureRecords.Add(mod, cr0);  // 1.15 §g: LVLN, NPC_, ECZN
+        if (root.TryGetProperty("creatures", out var cr0)) CreatureRecords.Add(mod, cr0, data);  // 1.15 §g: LVLN, NPC_, ECZN
         var xclr = new Dictionary<(int, int), FormKey>();
         foreach (var run in root.TryGetProperty("cellRegions", out var cr) ? cr.EnumerateArray() : Enumerable.Empty<JsonElement>())
             for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)

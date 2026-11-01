@@ -2,7 +2,7 @@
 
 The mod forms are read from the laid stack (inventory.py; nothing of the mods enters git, only form keys). The
 lists and zones are derived here from the rows: one list per region class, band and medium whose every entry is
-at the band's fixed level; one wild and one clearable zone per band.
+at level 1 (decision 0035: the band picks the list, the player's level never gates an entry); one wild and one clearable zone per band.
 """
 from __future__ import annotations
 
@@ -67,7 +67,8 @@ def seed(w, inv: dict) -> dict[str, int]:
         for plugin, edid in forms:
             f = keys[(plugin, edid)]
             w.insert("creature_form", form_key=f["form"], creature_id=cid, mod=plugin, edid=edid, race=f["race"],
-                     aggression=f["aggression"], why=f"{plugin}'s own {edid} ({f['race']}) stands for {crows[cid]['name']}")
+                     aggression=f["aggression"], pc_level_mult=f["pc_level_mult"],
+                     death_item_levelled=f["death_item_levelled"], why=f"{plugin}'s own {edid} ({f['race']}) stands for {crows[cid]['name']}")
             forms_of.setdefault(cid, []).append(f["form"])
         hab = f"{crows[cid]['habitat_ground']}; water: {crows[cid]['habitat_water']}"
         for c in classes:
@@ -98,7 +99,7 @@ def seed(w, inv: dict) -> dict[str, int]:
                 lid = f"lvln.{c}.{b}.{m}"
                 w.insert("creature_list", id=lid, region_class=c, band=b, medium=m, level=lv[b], chance_none=0)
                 for f in ents:
-                    w.insert("creature_list_entry", list_id=lid, form_key=f, level=lv[b], count=1)
+                    w.insert("creature_list_entry", list_id=lid, form_key=f, level=1, count=1)  # 0035
     for b in ro.BANDS:
         w.insert("encounter_zone", id=f"eczn.wild.{b}", band=b, kind="wild", min_level=lv[b], max_level=lv[b],
                  never_resets=False, respawn="onRest", why="the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)")
