@@ -57,7 +57,7 @@
 {"place_id":"place.dunmer-north.the-crown-terrace","shape":"flat","x_m":6248.5,"y_m":298.9,"radius_m":35.0,"facing_deg":0.0,"request":"dry-rise"}
 {"place_id":"place.dunmer-north.the-crystal-prospectors","shape":"flat","x_m":1231.1,"y_m":474.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-delta-byre","shape":"flat","x_m":6215.6,"y_m":1461.4,"radius_m":23.49,"facing_deg":0.0,"request":"re-sized to 23 m: the ground beside it falls or rises too fast"}
-{"place_id":"place.dunmer-north.the-diggings-ladder","shape":"flat","x_m":1423.0,"y_m":1280.4,"radius_m":12.26,"facing_deg":0.0,"request":"terraced at 415.8 m; re-sized to 12 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.dunmer-north.the-diggings-ladder","shape":"flat","x_m":1423.0,"y_m":1280.4,"radius_m":12.26,"facing_deg":0.0,"request":"terraced at 410.4 m; re-sized to 12 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.dunmer-north.the-divers-landing","shape":"deep_water","x_m":2341.46,"y_m":100.53,"radius_m":45.0,"facing_deg":0.0,"request":"moved 12 m to water"}
 {"place_id":"place.dunmer-north.the-drawdown-flats","shape":"depression","x_m":2119.4,"y_m":266.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-dres-rows","shape":"flat","x_m":6835.2,"y_m":1669.7,"radius_m":39.92,"facing_deg":0.0,"request":"re-sized to 40 m: the ground beside it falls or rises too fast"}
@@ -485,7 +485,7 @@
 {"place_id":"place.naga-kur-deeps.naga-highway-camp-active-south","shape":"flat","x_m":2190.7,"y_m":5096.9,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.naga-kur-deeps.naga-village-raiding","shape":"flat","x_m":1384.6,"y_m":5974.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.naga-kur-deeps.naga-village-settled","shape":"flat","x_m":934.9,"y_m":5897.5,"radius_m":115.0,"facing_deg":0.0,"request":"dry-rise"}
-{"place_id":"place.naga-kur-deeps.necropolis-nightbound","shape":"rise","x_m":2283.9,"y_m":4131.8,"radius_m":115.0,"facing_deg":193.7}
+{"place_id":"place.naga-kur-deeps.necropolis-nightbound","shape":"rise","x_m":2283.9,"y_m":4131.8,"radius_m":115.0,"facing_deg":193.8}
 {"place_id":"place.naga-kur-deeps.poacher-camp-egg","shape":"flat","x_m":2311.3,"y_m":4932.4,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.naga-kur-deeps.portage-slipway-narrows-deeps","shape":"flat","x_m":1403.1,"y_m":5173.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.naga-kur-deeps.raft-village-lashed","shape":"deep_water","x_m":2202.55,"y_m":4454.45,"radius_m":65.0,"facing_deg":0.0,"request":"moved 20 m to water"}
@@ -546,7 +546,7 @@
 {"place_id":"place.saxhleel-coast.east-estuary-rootworm-station","shape":"bank","x_m":5149.0,"y_m":4584.3,"radius_m":45.0,"facing_deg":18.1}
 {"place_id":"place.saxhleel-coast.estuary-keepers-lodge","shape":"flat","x_m":5555.4,"y_m":3676.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.gap-reef","shape":"deep_water","x_m":5206.6,"y_m":4142.8,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.saxhleel-coast.jungle-root-hollow","shape":"rise","x_m":3712.0,"y_m":4566.0,"radius_m":45.0,"facing_deg":4.3}
+{"place_id":"place.saxhleel-coast.jungle-root-hollow","shape":"rise","x_m":3712.0,"y_m":4566.0,"radius_m":45.0,"facing_deg":3.5}
 {"place_id":"place.saxhleel-coast.lagoon-submerged-xanmeer","shape":"deep_water","x_m":4477.3,"y_m":5420.5,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.mangrove-air-pocket","shape":"deep_water","x_m":4422.5,"y_m":4630.8,"radius_m":25.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.oliis-coast-lay-by","shape":"flat","x_m":5122.3,"y_m":4800.8,"radius_m":45.0,"facing_deg":0.0}

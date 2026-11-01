@@ -23,7 +23,9 @@ LAYERS: dict[str, str] = {
     "material": "tools.argonia_world.terrain.material:render_layer",  # the materials lane
     "placements": "tools.argonia_world.vegetation.render:render_layer",  # the vegetation lane
 }
-WATER_RGB = {"sea": (40, 80, 120), "brackish": (70, 100, 95), "blackwater": (45, 50, 35), "fresh": (60, 120, 150)}
+# the vibe board's dark calm water (docs/design/world/vibe-board.md): blue-teal sea and fresh water, opaque
+# olive-brown brackish marsh, black water; drawn nearly opaque and unshaded (a flat calm surface), never a pale wash
+WATER_RGB = {"sea": (26, 52, 66), "brackish": (44, 50, 32), "blackwater": (20, 22, 16), "fresh": (28, 60, 68)}
 STEP_RGB = (230, 40, 30)
 CLOSED_RGB = (250, 160, 20)
 
@@ -108,7 +110,7 @@ def base_rgb(w: Window) -> np.ndarray:
     wet = w.wet
     if wet.any():
         depth = np.where(wet, w.level - h, 0)
-        k = np.clip(depth / 6.0, 0, 1)[..., None] * 0.5 + 0.45
+        k = np.clip(depth / 3.0, 0, 1)[..., None] * 0.12 + 0.82  # the bed shows faintly only at the very edge
         col = np.zeros_like(rgb)
         for i, name in enumerate(TYPES):
             col[w.wtype == i] = WATER_RGB[name]

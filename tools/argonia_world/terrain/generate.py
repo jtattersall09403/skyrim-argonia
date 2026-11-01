@@ -552,10 +552,9 @@ def generate(inp: Inputs, log=print) -> dict:
     # ... and only inside the cells that hold the body's raster water: a padded or filled cell (water/solve.py
     # pad_ring, fill_enclosed) keeps all its ground as bank, as vanilla's padding cells stand above their level
     # (else one wet sample floods every low padded cell beside it: the square and L-shaped pools of 0_0_1_1)
-    rawc = np.zeros((N + 1, N + 1), bool)
-    for a_ in (lo_c, hi_c):
-        for b_ in (lo_c, hi_c):
-            rawc |= blocks[a_][:, b_]
+    # ... and only a raster cell's own samples (a vertex merely touching one admitted the whole neighbour: the
+    # boxy pools; Skyrim.esm's outlines follow the lake's shape, on cell lines 5.9 % of their length)
+    rawc = blocks[hi_c][:, hi_c]
     low = has & ~edge_bank & rawc & (h < vmin + FREEBOARD_M)
     flood = reach(foot, low) & ~foot
     st["water"]["unjoined_low_samples"] = int((low & ~foot & ~flood).sum())
@@ -614,6 +613,13 @@ def generate(inp: Inputs, log=print) -> dict:
         r_north = (C - 1 - (s.cy - CY0)) * Q
         c_west = (s.cx - CX0) * Q
         if s.cross_lo < 0:
+            # a closed step whose upper cell holds no raster water (a pad_ring or filled cell beside another level)
+            # needs no edge bank: that cell's ground is all bank above its level already (lo = vmax + freeboard),
+            # and pinning its edge drew the straight ridges along cell lines (probes/vanilla_level_edges.py: 18 of
+            # Skyrim.esm's 77 level edges are closed, the upper water stopping a median 9 vertices short of them)
+            ui, uj = C - 1 - (s.cy - CY0), s.cx - CX0
+            if not blocks[ui, uj] and not pad_wet_edge(s, foot):
+                continue
             s = type(s)(s.cx, s.cy, s.edge, s.upper_m, s.lower_m, Q + 1, Q, s.chain)  # closed: banks only
         drop = s.upper_m - s.lower_m
         k = int(min(Q - 1, max(1, math.ceil(drop / (0.8 * lip)))))  # 1-5 vertices, longer for a big drop
@@ -690,6 +696,17 @@ def generate(inp: Inputs, log=print) -> dict:
     log(f"limit {time.time() - t0:.1f}s")
     return {"ground": f.astype(np.float32), "cliff": cliff.astype(np.uint8), "role": role, "lo": lo, "hi": hi,
             "sites": sites, "stats": st}
+
+
+def pad_wet_edge(s, foot) -> bool:
+    """Whether the lower water's footprint reaches a closed step's edge (then its bank is kept even when the upper
+    cell holds no raster water: the upper plane would show over the lower water's ground there)."""
+    r_n, c_w = (C - 1 - (s.cy - CY0)) * Q, (s.cx - CX0) * Q
+    if s.edge in ("e", "w"):
+        e0 = c_w + (Q if s.edge == "e" else 0)
+        return bool(foot[r_n:r_n + Q + 1, max(e0 - 1, 0):e0 + 2].any())
+    e0 = r_n + (0 if s.edge == "n" else Q)
+    return bool(foot[max(e0 - 1, 0):e0 + 2, c_w:c_w + Q + 1].any())
 
 
 def site_dist(place_id: str, yy, xx, cy: float, cx: float, rad: float) -> np.ndarray:
