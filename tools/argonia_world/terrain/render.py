@@ -106,7 +106,12 @@ def base_rgb(w: Window) -> np.ndarray:
     low, mid, top = np.array([95, 120, 70.0]), np.array([150, 125, 90.0]), np.array([200, 200, 200.0])
     tint = np.where(t < 0.5, low + (mid - low) * (t / 0.5), mid + (top - mid) * ((t - 0.5) / 0.5))
     shade = hillshade(h)[..., None]
-    rgb = tint * (0.35 + 0.75 * shade)
+    return np.clip(tint * (0.35 + 0.75 * shade), 0, 255)
+
+
+def water_over(rgb: np.ndarray, w: Window) -> np.ndarray:
+    """The water drawn last, over every layer (a material layer's bed colour under it read as a pale wash)."""
+    h = w.ground
     wet = w.wet
     if wet.any():
         depth = np.where(wet, w.level - h, 0)
@@ -159,6 +164,7 @@ def render(w: Window, path: Path, layers=None, scale: int = 1) -> dict:
         a = ov[..., 3:4] / 255.0
         rgb = rgb * (1 - a) + ov[..., :3] * a
         drawn.append(name)
+    rgb = water_over(rgb, w)
     rgb = rgb.astype(np.uint8)
     draw_steps(rgb, w)
     if scale > 1:
