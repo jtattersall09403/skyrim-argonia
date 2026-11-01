@@ -2177,13 +2177,9 @@
     {
      "path": "SKSE/Plugins/WindUI/settings.json",
      "text": "{\"mwui_map_style\": 1}\n"
-    },
-    {
-     "path": "SKSE/Plugins/WindUI/vanilla.txt",
-     "text": "off\n"
     }
    ],
-   "settings_why": "map style Skyrim: M and the taskbar's Map open Skyrim's MapMenu, which our chart stands in for (no Wind UI map, no map fast travel); vanilla.txt 'off': Shift no longer opens Skyrim's menus (log: 'vanilla passthrough: off'), both proved in game 2026-10-31 (1.12 probe)"
+   "settings_why": "map style Skyrim: M and the taskbar's Map open Skyrim's MapMenu, which our chart stands in for (no Wind UI map, no map fast travel), proved in game 2026-10-31. No vanilla.txt: a vanilla.txt reading 'off' turns Wind UI's takeover off altogether (log 'vanilla passthrough: off', then no 'menu opened'; without it 'menu opened (inventory)', argonia-play 2026-11-01), so Shift-for-Skyrim's-menus has no switch and stays (a known limit)."
   },
   {
    "id": "oblivion-loading-menu",

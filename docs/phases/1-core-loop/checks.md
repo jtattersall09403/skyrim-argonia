@@ -175,7 +175,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| Wind UI's facts in windui.md: what it replaces, pad support, where frames come from, Shift, fast travel and show-on-map switched off | 1.12 §1 | L4 | proven | docs/research/2026-10-31/windui.md "In game" (b08b2ba; probe on argonia-play-ie, log "vanilla passthrough: off", "chart ready open") |
+| Wind UI's facts in windui.md: what it replaces, pad support, where frames come from, Shift, fast travel and show-on-map switched off | 1.12 §1 | L4 | proven | docs/research/2026-10-31/windui.md "In game" (probes on argonia-play-ie and argonia-play: "chart ready open"; Shift has no switch, a known limit) |
 | Our chart and our book open as our own windows in the frame style, standing in for Wind UI's map and journal on the same keys (the §2 fallback: the probe found no route inside its windows), and take the pad's focus | 1.12 §2 | L4 | owed | route chosen (windui.md "In game") |
 | The system menu (settings, load, quit) opens from play by pad, keyboard and touch | owner play test 11 | L4 | owed | the owner found no way to open it |
 | Every pane, the journal and the map open, cycle and close by pad, keyboard and touch, one run each | 1.12 §8 | L4 | owed | not started |
