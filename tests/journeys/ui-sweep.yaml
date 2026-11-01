@@ -44,7 +44,7 @@ steps:
   - name: favorite-one        # Favorites opens only with a favourite (game-17); set natively, as the inventory's F does (game-18: the os keys did not take)
     do:
       - {console: "player.additem ARG_Weap_SteelSword 1"}
-      - {call: [dev-favorite, ARG_Weap_SteelSword]}
+      - {call: [dev-favorite, "000840:Argonia.esm"]}   # the kit sword by form key: an editor id misses weapons (ep_dev.cpp)
       - {wait: 1}
   - name: favorites
     do: [{key: "Q 120"}, {wait: 2}]
@@ -93,9 +93,17 @@ steps:
   - name: book-closed
     do: [{key: "ESC 80"}, {wait: 1.5}]
   - name: lockpicking
-    do: [{console: '"{lockbox}".lock 25'}, {console: '"{lockbox}".activate player'}, {wait: 2}]
+    # the game's own activation (a script's activate skips the lock): the crate before the player, the activate key
+    do:
+      - {console: '"{lockbox}".lock 25'}
+      - {console: 'player.setangle x 20'}
+      - {console: 'player.setangle z 90'}
+      - {console: '"{lockbox}".moveto player 110 0 0'}
+      - {wait: 1}
+      - {key: "E 120 engine"}
+      - {wait: 3}
     expect: [{event: {kind: menu, match: Lockpicking Menu}}]
-    reader: [the lock in our palette, every word in Pelagiad, no Nordic ornament]
+    reader: [the lock with its words in the frame style (warm light text on dark), every word in Pelagiad, no Nordic ornament]
   - name: lockpicking-closed
     do: [{key: "ESC 80"}, {wait: 1.5}]
   - name: barter-talk         # lane trader: Livia, the station's general trader, in her hours (08:00-20:00)

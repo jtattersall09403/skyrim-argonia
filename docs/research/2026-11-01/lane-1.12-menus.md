@@ -90,3 +90,16 @@ Batches (argonia-play-ie / argonia-play, pool pick, this tree deployed each time
 - The tuning pass on FrameMovie for Settings and Load (and the MCM list), then message box and lockpicking stills.
 - One reader over the whole sweep, then close the sweep row.
 - Tab: closed. The reader of 151959's burst saw play in frames 00-30 and Wind UI in 31-39, with no Dear Diary picker in any frame. Feel notes for the hud/items lanes: the windows snap in with no ease, the Map pane pops a frame late, and stale toasts are clipped by the Map pane.
+
+### Round-1 preparation (no machine; the coordinator runs look-1.yaml)
+- The run-time colour transform is off (`kTint = false` in menus.cpp FrameMovie). The guessed maps gave teal paper and
+  then dark text on dark. The tab bar is still hidden. Settings, Load, message boxes and lockpicking therefore show
+  Dear Diary's paper until there is a measured restyle. Two routes: an install-time recipe in tools/ui_theme (recolour
+  the journal's and the MCM's BG bitmaps and the text colours, checked by L3 stills), or our own Settings and Load
+  views. This needs a decision and is the sweep row's remaining blocker.
+- Lockpicking (menus-look and ui-sweep): the game's own activation. A script's `activate` skips the lock, so the step
+  locks the crate, sets it 110 units in front of the player at heading 90, and presses E.
+- ui-sweep favorite-one: the kit sword by form key 000840:Argonia.esm, since dev-favorite misses weapons by editor ID
+  (ep_dev.cpp). The record is on main.
+- The message-box step is kept (`core MessageBox`). Its expectation is the menu event only.
+- `run_batch.py --dry tests/journeys/batches/look-1.yaml`: all 8 journeys ok.

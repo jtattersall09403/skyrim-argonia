@@ -164,8 +164,12 @@ bool FrameMovie(std::string_view menu_name, const char* path, bool tabs) {
   menu.VisitMembers([&kids](const char* name, const RE::GFxValue& v) {
     if (v.IsDisplayObject()) kids.emplace_back(name, v);
   });
+  // Off (coordinator, round 1): two passes of guessed maps gave teal paper, then dark text on dark; the System page,
+  // message boxes and lockpicking wait for a measured restyle (an install-time recipe) or our own views.
+  constexpr bool kTint = false;
   bool ok = !kids.empty();
   int n = 0;
+  if (kTint) {
   for (auto& [name, clip] : kids) {
     const bool bg = name == "Background";
     ok = Tint(mv, clip, bg ? zero : mul, bg ? flat : add) && ok;
@@ -173,9 +177,12 @@ bool FrameMovie(std::string_view menu_name, const char* path, bool tabs) {
     if (bg) hidden += hidden.empty() ? "Background flat" : ",Background flat";
   }
   if (kids.empty()) ok = Tint(mv, menu, mul, add);  // no children seen: the whole movie
+  } else {
+    ok = false;
+  }
   hidden += ", " + std::to_string(n) + " children";
-  SKSE::log::info("menus: {} in the frame style (tabs hidden: {}; colour {}; {} has {})", menu_name,
-                  hidden.empty() ? "none" : hidden, ok ? "set" : "refused", path, members);
+  SKSE::log::info("menus: {} restyle (tabs hidden: {}; colour {}; {} has {})", menu_name,
+                  hidden.empty() ? "none" : hidden, ok ? "set" : (kTint ? "refused" : "off"), path, members);
   return ok;
 }
 

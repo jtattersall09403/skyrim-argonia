@@ -55,7 +55,7 @@ steps:
     do: [{call: [core, ViewIntent, '{"type":"system.pick","v":1,"body":{"action":"settings"}}']}, {wait: 3}]
     expect:
       - {log: {name: ArgoniaCore, contains: "menus: the System page's SETTINGS pressed"}, within: 5}
-      - {log: {name: ArgoniaCore, contains: "Journal Menu in the frame style (tabs hidden: QuestsTab"}, within: 5}
+      - {log: {name: ArgoniaCore, contains: "Journal Menu restyle (tabs hidden: QuestsTab"}, within: 5}
     reader: [the game's settings list (gameplay, display, audio and the rest) on a dark green-black ground with warm light words (the frame style), no parchment page, no Quests or stats tab]
   - name: settings-back      # Esc backs out to the page's main list: our System pane again
     do: [{key: "ESC 120 engine"}, {wait: 3}]
@@ -106,10 +106,18 @@ steps:
   - name: book-closed
     do: [{close_menu: Book Menu}, {wait: 2}]
   - name: lockpicking
-    do: [{console: '"{lockbox}".lock 25'}, {console: '"{lockbox}".activate player'}, {wait: 3}]
+    # the game's own activation (a script's activate skips the lock, 151959): the crate set in front of the player, who
+    # faces it (heading 90 = +x) and presses the activate key
+    do:
+      - {console: '"{lockbox}".lock 25'}
+      - {console: 'player.setangle x 20'}
+      - {console: 'player.setangle z 90'}
+      - {console: '"{lockbox}".moveto player 110 0 0'}
+      - {wait: 1}
+      - {key: "E 120 engine"}
+      - {wait: 3}
     expect:
       - {event: {kind: menu, match: Lockpicking Menu}}
-      - {log: {name: ArgoniaCore, contains: "menus: Lockpicking Menu in the frame style"}, within: 5}
     reader: [the lock in close-up with its words (lock level, lockpicks) in warm light text on dark (the frame style), nothing of parchment]
   - name: lockpicking-closed
     do: [{key: "ESC 120 engine"}, {wait: 2}]
@@ -117,7 +125,6 @@ steps:
     do: [{call: [core, MessageBox, "The tide is out."]}, {wait: 3}]
     expect:
       - {event: {kind: menu, match: MessageBoxMenu}}
-      - {log: {name: ArgoniaCore, contains: "menus: MessageBoxMenu in the frame style"}, within: 5}
     reader: [one small message box reading "The tide is out." with an OK button, a dark green-black ground with warm light words (the frame style), no parchment]
   - name: message-box-closed
     do: [{close_menu: MessageBoxMenu}, {wait: 2}]
