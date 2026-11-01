@@ -12,6 +12,7 @@ the climate. Evidence for each Tropical Skyrim form: its TREE override's model i
 read 2026-10-29; docs/research/journals/regions-roads.md).
 
     python3 -m tools.argonia_world.regions.migrate --weather W.json --overrides O.json --palettes P.json
+    python3 -m tools.argonia_world.regions.migrate --weathers-1-15     the 1.15 weather set (regions/weather_seed.py)
 """
 from __future__ import annotations
 
@@ -316,7 +317,103 @@ def write(w, rows: dict[str, list[dict]]) -> dict[str, int]:
     return counts
 
 
+def regime_of(eco: dict, shares: dict[str, int]) -> tuple[str, str]:
+    """(regime, why) for a land region from its ecological class and its old raster classes' cell shares."""
+    from tools.argonia_world.regions import weather_seed as S
+    total = sum(shares.values()) or 1
+    mount = sum(n for c, n in shares.items() if c in S.MOUNTAIN_CLASSES) / total
+    if mount >= 0.5:
+        return "montane", f"border mountains and upland hills are {mount:.0%} of its cells: the montane belt (climatology §4)"
+    if eco["weather_group_id"] == "coastal":
+        return "sea_fog", "open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"
+    if eco["misty"]:
+        return "radiation", f"{eco['name']}: wet inland ground and water, dawn radiation mist (climatology §2, §4)"
+    return "none", f"{eco['name']}: firm ground of the dry NW pole, best visibility (climatology §4)"
+
+
+def _clear(w, table: str) -> None:
+    pk = w.table(table).pk
+    for r in w.query(f'SELECT {", ".join(chr(34) + k + chr(34) for k in pk)} FROM "{table}"'):
+        w.delete(table, *r)
+
+
+def weathers_1_15(w) -> dict[str, int]:
+    """1.15 §d: the authored weather set, untinted image spaces, the group realisations, the mist regimes and every
+    land region's mist row and weather list (synoptic entries by season global, the regime's mist by hour global)."""
+    from tools.argonia_world.regions import weather_seed as S
+    from tools.argonia_world.regions.classify import weather_list
+    n = defaultdict(int)
+    for iid, edid, tpl, sat, bri, con, why in S.IMAGES:
+        w.upsert("image_space", id=iid, edid=edid, template_form_key=tpl, saturation=sat, brightness=bri,
+                 contrast=con, tint="FFFFFF", tint_amount=0.0, why=why)
+        n["image_space"] += 1
+    for (iid,) in w.query("SELECT id FROM image_space"):
+        if iid not in {i[0] for i in S.IMAGES}:
+            w.delete("image_space", iid)
+    for wid, (edid, tpl, st, dn, df, nn, nf, im_d, im_a, im_n, why) in S.WEATHERS.items():
+        w.upsert("weather", id=wid, edid=edid, template_form_key=TS[tpl][0], weather_state_id=st,
+                 fog_day_near_m=dn, fog_day_far_m=df, fog_night_near_m=nn, fog_night_far_m=nf, image_day_id=im_d,
+                 image_dawn_id=im_a, image_night_id=im_n, why=why)
+        w.delete("weather_colour", weather_id=wid)
+        for slot, cols in S.P[wid].items():
+            for tod, hexv in zip(S.TOD, cols):
+                w.insert("weather_colour", weather_id=wid, slot=slot, tod=tod, rgb=hexv,
+                         why=f"{S.ROLE[slot]}; {S.WHY_SLOT[wid]}")
+                n["weather_colour"] += 1
+        c, wind, cs, gl, dmg, pin, pout, th, fdp, fnp, fdm, fnm, swhy = S.SKY[wid]
+        w.upsert("weather_sky", weather_id=wid, classification=c, wind=wind, cloud_speed=cs, sun_glare=gl,
+                 sun_damage=dmg, precip_fade_in=pin, precip_fade_out=pout, thunder=th, fog_day_power=fdp,
+                 fog_night_power=fnp, fog_day_max=fdm, fog_night_max=fnm, why=swhy)
+        n["weather"] += 1
+    _clear(w, "land_region_weather")
+    _clear(w, "weather_realisation")
+    for gid, states in S.REALISE.items():
+        for st, ws in states.items():
+            for wid in ws:
+                w.insert("weather_realisation", weather_group_id=gid, weather_state_id=st, weather_id=wid,
+                         share=round(1 / len(ws), 4))
+                n["weather_realisation"] += 1
+    _clear(w, "mist_regime_season")
+    for rid, (wid, h0, h1, glob, why, seasons) in S.REGIMES.items():
+        w.upsert("mist_regime", id=rid, weather_id=wid, first_hour=h0, end_hour=h1, **{"global": glob}, why=why)
+        for sid, (ch, swhy) in seasons.items():
+            w.insert("mist_regime_season", regime_id=rid, season_id=sid, chance=ch, why=swhy)
+    regimes = {r["id"]: dict(r) for r in w.query("SELECT * FROM mist_regime")}
+    _clear(w, "region_mist")
+    for reg in w.query("SELECT l.id, l.border, e.id eco, e.name, e.weather_group_id, e.misty FROM land_region l "
+                       "LEFT JOIN eco_class e ON e.id = l.eco_class_id ORDER BY l.id"):
+        if reg["border"]:
+            w.insert("region_mist", land_region_id=reg["id"], regime="none", hours=None,
+                     why="the closed border: no weather list, no mist")
+            n["region_mist"] += 1
+            continue
+        shares = dict(w.query("SELECT region_class_id, cells FROM land_region_class_share WHERE land_region_id = ?",
+                              reg["id"]))
+        regime, why = regime_of(dict(reg), shares)
+        rm = regimes.get(regime)
+        w.insert("region_mist", land_region_id=reg["id"], regime=regime,
+                 hours=f"{rm['first_hour']:02d}-{rm['end_hour']:02d}" if rm else None, why=why)
+        n["region_mist"] += 1
+        for wid, chance, glob in weather_list(w, reg["weather_group_id"]):
+            w.insert("land_region_weather", land_region_id=reg["id"], weather_id=wid, chance=chance,
+                     season_global=glob)
+            n["land_region_weather"] += 1
+        if rm:
+            peak = max(r[0] for r in S.REGIMES[regime][5].values())
+            w.insert("land_region_weather", land_region_id=reg["id"], weather_id=rm["weather_id"], chance=peak,
+                     season_global=rm["global"])
+            n["land_region_weather"] += 1
+    return dict(n)
+
+
 def main(argv: list[str]) -> int:
+    if argv[:1] == ["--weathers-1-15"]:
+        w = db.open()
+        counts = weathers_1_15(w)
+        w.save()
+        for t, k in counts.items():
+            print(f"{k:6} {t}")
+        return 0
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--weather", required=True)
     ap.add_argument("--overrides", required=True)

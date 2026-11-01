@@ -5725,7 +5725,8 @@ CREATE TABLE "season_factor" (
   PRIMARY KEY ("season_id", "weather_state_id")
 );
 
--- Home of an image space of ours (IMGS): the humid green-gold marsh light, as cinematic and tint values.
+-- Home of an image space of ours (IMGS): one per weather look, saturation and contrast with a why. The tint is
+-- off (owner 2026-11-01: the yellow-green tint goes; the colour is the weather's authored slots, not a screen wash).
 CREATE TABLE "image_space" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "edid" TEXT NOT NULL UNIQUE,
@@ -5734,12 +5735,13 @@ CREATE TABLE "image_space" (
   "brightness" REAL NOT NULL,
   "contrast" REAL NOT NULL,
   "tint" TEXT NOT NULL CHECK (length("tint") = 6),
-  "tint_amount" REAL NOT NULL CHECK ("tint_amount" BETWEEN 0 AND 1),
+  "tint_amount" REAL NOT NULL CHECK ("tint_amount" BETWEEN 0 AND 0.03),
   "why" TEXT NOT NULL
 );
 
 -- Home of a weather a region may draw: a vanilla WTHR that Tropical Skyrim restyles (form_key), or one of ours
--- (template_form_key duplicated, then fog and image spaces set here).
+-- (template_form_key duplicated for its references only: clouds, precipitation, sounds; colours in weather_colour,
+-- fog distances here, the sky's motion and fog curve in weather_sky).
 CREATE TABLE "weather" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "edid" TEXT NOT NULL UNIQUE,
@@ -5750,12 +5752,66 @@ CREATE TABLE "weather" (
   "fog_day_far_m" REAL,
   "fog_night_near_m" REAL,
   "fog_night_far_m" REAL,
-  "fog_tint" TEXT CHECK ("fog_tint" IS NULL OR length("fog_tint") = 6),
   "image_day_id" TEXT REFERENCES "image_space"("id"),
   "image_dawn_id" TEXT REFERENCES "image_space"("id"),
   "image_night_id" TEXT REFERENCES "image_space"("id"),
   "why" TEXT NOT NULL,
   CHECK (("form_key" IS NULL) <> ("template_form_key" IS NULL))
+);
+
+-- Home of one authored colour of one of our weathers (1.15 §d; owner 2026-11-01: every slot authored, never
+-- derived): a WTHR NAM0 slot, or a directional-ambient face (dalcUp, dalcSide, dalcDown), at a time of day.
+-- The make-world check weather-slots refuses a colour that is a scaled copy of another of the weather's colours
+-- or, within one time of day, a mix of two others. Black (000000) is "off" (stars by day, sun glare at night).
+CREATE TABLE "weather_colour" (
+  "weather_id" TEXT NOT NULL REFERENCES "weather"("id"),
+  "slot" TEXT NOT NULL CHECK ("slot" IN ('skyUpper', 'fogNear', 'unknown', 'ambient', 'sunlight', 'sun', 'stars',
+    'skyLower', 'horizon', 'effectLighting', 'cloudLodDiffuse', 'cloudLodAmbient', 'fogFar', 'skyStatics',
+    'waterMultiplier', 'sunGlare', 'moonGlare', 'dalcUp', 'dalcSide', 'dalcDown')),
+  "tod" TEXT NOT NULL CHECK ("tod" IN ('sunrise', 'day', 'sunset', 'night')),
+  "rgb" TEXT NOT NULL CHECK (length("rgb") = 6),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("weather_id", "slot", "tod")
+);
+
+-- Home of one of our weathers' sky behaviour (was api.py's per-state table): classification, wind, cloud speed,
+-- sun glare and damage, precipitation fades, thunder, and the fog curve (power, max) by day and by night.
+CREATE TABLE "weather_sky" (
+  "weather_id" TEXT NOT NULL PRIMARY KEY REFERENCES "weather"("id"),
+  "classification" TEXT NOT NULL CHECK ("classification" IN ('Pleasant', 'Cloudy', 'Rainy')),
+  "wind" REAL NOT NULL CHECK ("wind" BETWEEN 0 AND 1),
+  "cloud_speed" REAL NOT NULL,
+  "sun_glare" REAL NOT NULL CHECK ("sun_glare" BETWEEN 0 AND 1),
+  "sun_damage" REAL NOT NULL CHECK ("sun_damage" BETWEEN 0 AND 1),
+  "precip_fade_in" REAL NOT NULL,
+  "precip_fade_out" REAL NOT NULL,
+  "thunder" REAL NOT NULL CHECK ("thunder" BETWEEN 0 AND 1),
+  "fog_day_power" REAL NOT NULL CHECK ("fog_day_power" > 0),
+  "fog_night_power" REAL NOT NULL CHECK ("fog_night_power" > 0),
+  "fog_day_max" REAL NOT NULL CHECK ("fog_day_max" BETWEEN 0 AND 1),
+  "fog_night_max" REAL NOT NULL CHECK ("fog_night_max" BETWEEN 0 AND 1),
+  "why" TEXT NOT NULL
+);
+
+-- Home of a mist regime's realisation (1.15 §d.3; climatology §2–§4): the weather it draws, the hours of the day
+-- it may be drawn in [first_hour, end_hour), and the chance global ArgoniaCore's weather rule sets in those hours.
+CREATE TABLE "mist_regime" (
+  "id" TEXT NOT NULL PRIMARY KEY CHECK ("id" IN ('radiation', 'sea_fog', 'montane')),
+  "weather_id" TEXT NOT NULL UNIQUE REFERENCES "weather"("id"),
+  "first_hour" INTEGER NOT NULL CHECK ("first_hour" BETWEEN 0 AND 23),
+  "end_hour" INTEGER NOT NULL CHECK ("end_hour" BETWEEN 1 AND 24),
+  "global" TEXT NOT NULL UNIQUE,
+  "why" TEXT NOT NULL,
+  CHECK ("first_hour" < "end_hour")
+);
+
+-- Home of a mist regime's chance in a season (inside its hours; 0 outside them).
+CREATE TABLE "mist_regime_season" (
+  "regime_id" TEXT NOT NULL REFERENCES "mist_regime"("id"),
+  "season_id" TEXT NOT NULL REFERENCES "season"("id"),
+  "chance" INTEGER NOT NULL CHECK ("chance" BETWEEN 0 AND 100),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("regime_id", "season_id")
 );
 
 -- Home of which weathers realise a state in a group, and each one's share of the state's weight.

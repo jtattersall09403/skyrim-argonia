@@ -1,0 +1,48 @@
+{"land_region_id":"border","regime":"none","why":"the closed border: no weather list, no mist"}
+{"land_region_id":"dunmer-north.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"dunmer-north.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"dunmer-north.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"dunmer-north.northern-transition","regime":"montane","hours":"05-20","why":"border mountains and upland hills are 70% of its cells: the montane belt (climatology §4)"}
+{"land_region_id":"dunmer-north.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"dunmer-north.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"hist-heartland.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"hist-heartland.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"hist-heartland.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"hist-heartland.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"hist-heartland.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"hist-heartland.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"hist-heartland.western-frontier","regime":"montane","hours":"05-20","why":"border mountains and upland hills are 100% of its cells: the montane belt (climatology §4)"}
+{"land_region_id":"imperial-fringe.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"imperial-fringe.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-fringe.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-fringe.western-frontier","regime":"montane","hours":"05-20","why":"border mountains and upland hills are 74% of its cells: the montane belt (climatology §4)"}
+{"land_region_id":"imperial-penal-south.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"imperial-penal-south.deep-river-corridor","regime":"radiation","hours":"04-09","why":"deep river corridor: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-penal-south.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-penal-south.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-penal-south.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-penal-south.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"imperial-penal-south.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"mercantile-coast.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"mercantile-coast.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"mercantile-coast.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"mercantile-coast.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"mercantile-coast.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"mercantile-coast.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"mercantile-coast.western-frontier","regime":"montane","hours":"05-20","why":"border mountains and upland hills are 100% of its cells: the montane belt (climatology §4)"}
+{"land_region_id":"naga-kur-deeps.deep-river-corridor","regime":"radiation","hours":"04-09","why":"deep river corridor: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"naga-kur-deeps.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"naga-kur-deeps.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"naga-kur-deeps.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"naga-kur-deeps.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"pirate-freeholds.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"pirate-freeholds.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"pirate-freeholds.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"pirate-freeholds.rootland","regime":"radiation","hours":"04-09","why":"rootland: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"pirate-freeholds.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"pirate-freeholds.western-frontier","regime":"montane","hours":"05-20","why":"border mountains and upland hills are 100% of its cells: the montane belt (climatology §4)"}
+{"land_region_id":"saxhleel-coast.coastal-lagoon","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}
+{"land_region_id":"saxhleel-coast.deep-sink-basin","regime":"radiation","hours":"04-09","why":"deep sink basin: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"saxhleel-coast.flooded-forest","regime":"radiation","hours":"04-09","why":"flooded forest: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"saxhleel-coast.interior-swamp","regime":"radiation","hours":"04-09","why":"interior swamp: wet inland ground and water, dawn radiation mist (climatology §2, §4)"}
+{"land_region_id":"saxhleel-coast.tidal-delta","regime":"sea_fog","hours":"03-11","why":"open coast and estuary: advection sea fog (climatology §2, §4 'sea fog up estuaries')"}

@@ -195,3 +195,113 @@ def activator_clearance(w) -> list[str]:
                 out.append(f"build_ref {a[0]} and {b[0]}: {d:.2f} m apart in {a[1]}; an activator needs "
                            f"{ACTIVATOR_CLEARANCE_M} m")
     return out
+
+
+# -- weather (1.15 §d; owner 2026-11-01: every colour slot authored, never derived; the tint goes) ---------------
+SLOT_TOL = 0.5  # a scaled or mixed copy rounded to bytes is within half a byte per channel of the formula
+
+
+def _rgb(h: str) -> tuple[int, int, int]:
+    return int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
+
+
+def derived_colours(cols: dict[tuple[str, str], tuple[int, int, int]]) -> list[str]:
+    """For one weather's {(slot, tod): rgb}: every colour that is a scaled copy (k in [0.05, 20], k = 1 included) of
+    another colour of the same slot or the same time of day (the old ladder's two paths), or, within one time of day, a mix (t in (0.02, 0.98)) of two others. Black is
+    "off" and never a source or a copy."""
+    live = {k: v for k, v in cols.items() if any(v)}
+    keys = sorted(live)
+    out = []
+    for a in keys:
+        A = live[a]
+        for b in keys:
+            if b == a or (b[0] != a[0] and b[1] != a[1]):  # a copy path: the same slot or the same time of day
+                continue
+            B = live[b]
+            k = sum(x * y for x, y in zip(A, B)) / sum(y * y for y in B)
+            if 0.05 <= k <= 20 and max(abs(x - k * y) for x, y in zip(A, B)) <= SLOT_TOL:
+                out.append(f"{a[0]}@{a[1]} is {b[0]}@{b[1]} x {k:.3f}")
+                break
+        else:
+            same = [b for b in keys if b != a and b[1] == a[1]]
+            for i, b in enumerate(same):
+                B = live[b]
+                for c in same[i + 1:]:
+                    C = live[c]
+                    d = [y - x for x, y in zip(B, C)]
+                    dd = sum(x * x for x in d)
+                    if not dd:
+                        continue
+                    t = sum((x - y) * z for x, y, z in zip(A, B, d)) / dd
+                    if 0.02 < t < 0.98 and max(abs(x - (y + t * z)) for x, y, z in zip(A, B, d)) <= SLOT_TOL:
+                        out.append(f"{a[0]}@{a[1]} is a mix of {b[0]} and {c[0]} (t {t:.2f})")
+                        break
+                else:
+                    continue
+                break
+    return out
+
+
+@check("weather-slots", "weather", "weather_colour", "weather_sky")
+def weather_slots(w) -> list[str]:
+    """Each of our weathers (a template weather) has every slot at every time of day, a sky row, fog near above 0
+    unless it is the true mist (the radiation regime's weather), and no colour derived from another."""
+    from tools.argonia_world.regions.weather_seed import ROLE, TOD
+    out = []
+    mist = set(w.values("SELECT weather_id FROM mist_regime WHERE id = 'radiation'")) if "mist_regime" in w.tables \
+        else set()
+    for r in w.query("SELECT * FROM weather WHERE template_form_key IS NOT NULL ORDER BY id"):
+        wid = r["id"]
+        cols = {(c["slot"], c["tod"]): _rgb(c["rgb"])
+                for c in w.query("SELECT slot, tod, rgb FROM weather_colour WHERE weather_id = ?", wid)}
+        missing = [f"{s}@{t}" for s in ROLE for t in TOD if (s, t) not in cols]
+        if missing:
+            out.append(f"weather {wid}: {len(missing)} slots not authored ({', '.join(missing[:4])}...)")
+        if not w.query("SELECT 1 FROM weather_sky WHERE weather_id = ?", wid):
+            out.append(f"weather {wid}: no weather_sky row")
+        if wid not in mist and not ((r["fog_day_near_m"] or 0) > 0 and (r["fog_night_near_m"] or 0) > 0):
+            out.append(f"weather {wid}: fog near is 0 but it is not the true mist")
+        out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
+    return out
+
+
+@check("image-tint", "image_space")
+def image_tint(w) -> list[str]:
+    """No image space washes the screen: tint amount at most 0.03 (owner 2026-11-01: the yellow-green tint goes)."""
+    return [f"image_space {r[0]}: tint amount {r[1]}" for r in
+            w.query("SELECT id, tint_amount FROM image_space WHERE tint_amount > 0.03 ORDER BY id")]
+
+
+@check("region-weather", "land_region", "land_region_weather", "region_mist", "season")
+def region_weather(w) -> list[str]:
+    """Every land region has a region_mist row; every non-border region a weather list whose every entry carries a
+    season global, a different list in each season (the chance globals), and its regime's mist weather."""
+    from tools.argonia_world.regions import season as S
+    out = []
+    ch = S.chances(w)
+    ch.update({g: v for g, _, _, v in S.mist(w)} if "mist_regime" in w.tables else {})
+    seasons = S.order(w)
+    wins = S.windows(w)
+    out += [f"season {s}: {b - a} days, under a 7-day skip" for s, a, b in wins if b - a < 7]
+    for r in w.query("SELECT l.id, l.border, m.regime FROM land_region l LEFT JOIN region_mist m "
+                     "ON m.land_region_id = l.id ORDER BY l.id"):
+        if r["regime"] is None:
+            out.append(f"land_region {r['id']}: no region_mist row")
+        if r["border"]:
+            continue
+        lst = w.query("SELECT weather_id, season_global FROM land_region_weather WHERE land_region_id = ?", r["id"])
+        if not lst:
+            out.append(f"land_region {r['id']}: no weather list")
+            continue
+        out += [f"land_region {r['id']}: {x['weather_id']} has no season global" for x in lst if not x["season_global"]]
+        by = {s: tuple(ch.get(x["season_global"], {}).get(s) for x in lst) for s in seasons}
+        if len(set(by.values())) < len(seasons):
+            out.append(f"land_region {r['id']}: two seasons draw the same list")
+        for s, v in by.items():
+            if not any(x for x in v if x):
+                out.append(f"land_region {r['id']}: nothing to draw in season {s}")
+        if r["regime"] and r["regime"] != "none":
+            mw = w.values("SELECT weather_id FROM mist_regime WHERE id = ?", r["regime"])
+            if not mw or mw[0] not in {x["weather_id"] for x in lst}:
+                out.append(f"land_region {r['id']}: regime {r['regime']} has no mist weather in its list")
+    return out

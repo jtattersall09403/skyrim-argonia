@@ -1,0 +1,3 @@
+{"id":"montane","weather_id":"montane-haze","first_hour":5,"end_hour":20,"global":"ARG_WMist_montane","why":"the cloud-forest belt clings to the massif through the day, thick in rain, clear on settled days (climatology §2 altitude, §4; 55 §97)"}
+{"id":"radiation","weather_id":"mist","first_hour":4,"end_hour":9,"global":"ARG_WMist_radiation","why":"radiation mist forms on clear calm nights over wet ground and burns off after dawn (climatology §2; the day's sunrise ends 07:00, the mist two hours later)"}
+{"id":"sea_fog","weather_id":"sea-fog","first_hour":3,"end_hour":11,"global":"ARG_WMist_sea_fog","why":"advection fog rolls in overnight on the sea breeze's reversal and lifts by late morning (climatology §2, §3 exp(-dCoast/8))"}
