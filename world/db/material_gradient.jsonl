@@ -1,66 +1,66 @@
 {"eco_class_id":"coastal-lagoon","stop":0,"ltex_form_key":"06B4C6:Skyrim.esm","dh_hi":-2.5,"weight":1.0,"north":0.0,"why":"shoreline A10: the shelf"}
-{"eco_class_id":"coastal-lagoon","stop":1,"ltex_form_key":"06B3CF:Skyrim.esm","dh_lo":-2.5,"dh_hi":1.2,"wet_hi":0.75,"weight":1.0,"north":0.0,"why":"shoreline A1: wave-sorted sand"}
-{"eco_class_id":"coastal-lagoon","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"coastal-lagoon","stop":3,"ltex_form_key":"075067:Skyrim.esm","dh_lo":0.8,"dh_hi":6.0,"noise_lo":0.25,"weight":1.0,"north":0.0,"why":"shoreline A6: marsh above the mud"}
+{"eco_class_id":"coastal-lagoon","stop":1,"ltex_form_key":"06B3CF:Skyrim.esm","dh_lo":-2.5,"dh_hi":3.6555761816364414,"wet_hi":0.75,"weight":1.0,"north":0.0,"why":"shoreline A1: wave-sorted sand"}
+{"eco_class_id":"coastal-lagoon","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"coastal-lagoon","stop":3,"ltex_form_key":"075067:Skyrim.esm","dh_lo":3.6555761816364414,"dh_hi":6.0,"noise_lo":0.25,"weight":1.0,"north":0.0,"why":"shoreline A6: marsh above the mud"}
 {"eco_class_id":"coastal-lagoon","stop":4,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":4.0,"weight":1.0,"north":0.0,"why":"shoreline A3: mangrove-forest floor inland"}
 {"eco_class_id":"coastal-lagoon","stop":5,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
-{"eco_class_id":"deep-river-corridor","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"deep-river-corridor","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"deep-river-corridor","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"deep-river-corridor","stop":3,"ltex_form_key":"057DC7:Skyrim.esm","dh_lo":1.5,"noise_hi":0.5,"weight":1.0,"north":0.0,"why":"gallery forest litter"}
-{"eco_class_id":"deep-river-corridor","stop":4,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":1.5,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"rooty banks"}
+{"eco_class_id":"deep-river-corridor","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"deep-river-corridor","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"deep-river-corridor","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"deep-river-corridor","stop":3,"ltex_form_key":"057DC7:Skyrim.esm","dh_lo":1.8277880908182207,"noise_hi":0.5,"weight":1.0,"north":0.0,"why":"gallery forest litter"}
+{"eco_class_id":"deep-river-corridor","stop":4,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":1.8277880908182207,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"rooty banks"}
 {"eco_class_id":"deep-river-corridor","stop":5,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
-{"eco_class_id":"deep-sink-basin","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"deep-sink-basin","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"deep-sink-basin","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"deep-sink-basin","stop":3,"ltex_form_key":"075069:Skyrim.esm","dh_lo":0.4,"dh_hi":4.0,"weight":1.0,"north":0.0,"why":"shoreline A8: muck round the sink"}
+{"eco_class_id":"deep-sink-basin","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"deep-sink-basin","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"deep-sink-basin","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"deep-sink-basin","stop":3,"ltex_form_key":"075069:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":4.0,"weight":1.0,"north":0.0,"why":"shoreline A8: muck round the sink"}
 {"eco_class_id":"deep-sink-basin","stop":4,"ltex_form_key":"057DC7:Skyrim.esm","dh_lo":2.5,"weight":1.0,"north":0.0,"why":"litter on the basin rim"}
 {"eco_class_id":"deep-sink-basin","stop":5,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
-{"eco_class_id":"flooded-forest","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"flooded-forest","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"flooded-forest","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"flooded-forest","stop":3,"ltex_form_key":"057DC7:Skyrim.esm","dh_lo":0.6,"dh_hi":8.0,"noise_hi":0.55,"weight":1.0,"north":0.0,"why":"shoreline A8: submerged and wet litter"}
-{"eco_class_id":"flooded-forest","stop":4,"ltex_form_key":"013876:Skyrim.esm","dh_lo":1.5,"weight":1.1,"north":0.0,"why":"BM&V's swamp forest floor (its most painted ground)"}
+{"eco_class_id":"flooded-forest","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"flooded-forest","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"flooded-forest","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"flooded-forest","stop":3,"ltex_form_key":"057DC7:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":8.0,"noise_hi":0.55,"weight":1.0,"north":0.0,"why":"shoreline A8: submerged and wet litter"}
+{"eco_class_id":"flooded-forest","stop":4,"ltex_form_key":"013876:Skyrim.esm","dh_lo":1.8277880908182207,"weight":1.1,"north":0.0,"why":"BM&V's swamp forest floor (its most painted ground)"}
 {"eco_class_id":"flooded-forest","stop":5,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":2.0,"noise_lo":0.6,"weight":1.0,"north":0.0,"why":"rooty patches (BM&V roots-in-mudbank)"}
-{"eco_class_id":"interior-swamp","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"interior-swamp","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"interior-swamp","stop":2,"ltex_form_key":"075069:Skyrim.esm","dh_lo":-0.3,"dh_hi":2.5,"wet_lo":0.15,"weight":1.0,"north":0.0,"why":"shoreline A8: muck margin"}
-{"eco_class_id":"interior-swamp","stop":3,"ltex_form_key":"075067:Skyrim.esm","dh_lo":1.0,"noise_hi":0.6,"weight":1.0,"north":0.0,"why":"shoreline A9: reed and marsh grass"}
+{"eco_class_id":"interior-swamp","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"interior-swamp","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"interior-swamp","stop":2,"ltex_form_key":"075069:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":4.3277880908182205,"wet_lo":0.15,"weight":1.0,"north":0.0,"why":"shoreline A8: muck margin"}
+{"eco_class_id":"interior-swamp","stop":3,"ltex_form_key":"075067:Skyrim.esm","dh_lo":1.8277880908182207,"noise_hi":0.6,"weight":1.0,"north":0.0,"why":"shoreline A9: reed and marsh grass"}
 {"eco_class_id":"interior-swamp","stop":4,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":2.5,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"shoreline A8: swamp-forest floor"}
 {"eco_class_id":"interior-swamp","stop":5,"ltex_form_key":"01CC43:Skyrim.esm","slope_lo":18.0,"weight":1.0,"north":0.0,"why":"moss on the few banks"}
-{"eco_class_id":"karst-cavern-belt","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"karst-cavern-belt","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"karst-cavern-belt","stop":2,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":0.8,"weight":1.0,"north":0.0,"why":"forest floor over limestone"}
+{"eco_class_id":"karst-cavern-belt","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"karst-cavern-belt","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"karst-cavern-belt","stop":2,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":1.8277880908182207,"weight":1.0,"north":0.0,"why":"forest floor over limestone"}
 {"eco_class_id":"karst-cavern-belt","stop":3,"ltex_form_key":"01CC43:Skyrim.esm","slope_lo":12.0,"slope_hi":34.0,"weight":1.0,"north":0.5,"why":"moss on karst"}
 {"eco_class_id":"karst-cavern-belt","stop":4,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
 {"eco_class_id":"karst-cavern-belt","stop":5,"ltex_form_key":"02C6C6:Skyrim.esm","slope_lo":26.0,"slope_hi":38.0,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"broken limestone"}
-{"eco_class_id":"northern-transition","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"northern-transition","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"northern-transition","stop":2,"ltex_form_key":"021711:Skyrim.esm","dh_lo":0.8,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"red earth of the drier north (Dunmer border)"}
-{"eco_class_id":"northern-transition","stop":3,"ltex_form_key":"01342A:Skyrim.esm","dh_lo":0.8,"dh_hi":120.0,"noise_hi":0.6,"weight":1.0,"north":0.0,"why":"grass of the transition"}
+{"eco_class_id":"northern-transition","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"northern-transition","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"northern-transition","stop":2,"ltex_form_key":"021711:Skyrim.esm","dh_lo":1.8277880908182207,"noise_lo":0.5,"weight":1.0,"north":0.0,"why":"red earth of the drier north (Dunmer border)"}
+{"eco_class_id":"northern-transition","stop":3,"ltex_form_key":"01342A:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":120.0,"noise_hi":0.6,"weight":1.0,"north":0.0,"why":"grass of the transition"}
 {"eco_class_id":"northern-transition","stop":4,"ltex_form_key":"02C6C6:Skyrim.esm","slope_lo":24.0,"slope_hi":38.0,"weight":1.0,"north":0.0,"why":"scree below the ranges"}
 {"eco_class_id":"northern-transition","stop":5,"ltex_form_key":"000AE4:Skyrim.esm","slope_lo":36.0,"weight":1.3,"north":0.0,"why":"bare rock of the Velothi foothills"}
-{"eco_class_id":"rootland","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"rootland","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"rootland","stop":2,"ltex_form_key":"013876:Skyrim.esm","dh_lo":0.8,"weight":1.1,"north":0.0,"why":"root-bound forest floor"}
-{"eco_class_id":"rootland","stop":3,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":0.8,"noise_lo":0.55,"weight":1.0,"north":0.0,"why":"roots in mud bank"}
+{"eco_class_id":"rootland","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"rootland","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"rootland","stop":2,"ltex_form_key":"013876:Skyrim.esm","dh_lo":1.8277880908182207,"weight":1.1,"north":0.0,"why":"root-bound forest floor"}
+{"eco_class_id":"rootland","stop":3,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":1.8277880908182207,"noise_lo":0.55,"weight":1.0,"north":0.0,"why":"roots in mud bank"}
 {"eco_class_id":"rootland","stop":4,"ltex_form_key":"01CC43:Skyrim.esm","slope_lo":14.0,"weight":1.0,"north":0.5,"why":"moss on rises"}
 {"eco_class_id":"rootland","stop":5,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
-{"eco_class_id":"seasonal-floodplain","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"seasonal-floodplain","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"seasonal-floodplain","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"seasonal-floodplain","stop":3,"ltex_form_key":"01342A:Skyrim.esm","dh_lo":0.8,"weight":1.0,"north":0.0,"why":"BM&V's mossy grass on the flood flats"}
-{"eco_class_id":"seasonal-floodplain","stop":4,"ltex_form_key":"075067:Skyrim.esm","dh_lo":0.8,"dh_hi":3.0,"wet_lo":0.2,"weight":1.0,"north":0.0,"why":"wet marsh grass near the channel"}
+{"eco_class_id":"seasonal-floodplain","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"seasonal-floodplain","stop":1,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"seasonal-floodplain","stop":2,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"seasonal-floodplain","stop":3,"ltex_form_key":"01342A:Skyrim.esm","dh_lo":1.8277880908182207,"weight":1.0,"north":0.0,"why":"BM&V's mossy grass on the flood flats"}
+{"eco_class_id":"seasonal-floodplain","stop":4,"ltex_form_key":"075067:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":4.8277880908182205,"wet_lo":0.2,"weight":1.0,"north":0.0,"why":"wet marsh grass near the channel"}
 {"eco_class_id":"seasonal-floodplain","stop":5,"ltex_form_key":"057DCF:Skyrim.esm","dh_lo":3.0,"noise_lo":0.6,"weight":1.0,"north":0.0,"why":"levee floor"}
 {"eco_class_id":"tidal-delta","stop":0,"ltex_form_key":"06B4C6:Skyrim.esm","dh_hi":-2.5,"weight":1.0,"north":0.0,"why":"shoreline A4: delta front"}
-{"eco_class_id":"tidal-delta","stop":1,"ltex_form_key":"06B3CF:Skyrim.esm","dh_lo":-2.5,"dh_hi":0.6,"noise_lo":0.45,"weight":1.0,"north":0.0,"why":"shoreline A4: sand bars"}
-{"eco_class_id":"tidal-delta","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":0.6,"dh_hi":2.2,"slope_hi":14.0,"wet_lo":0.2,"weight":1.2,"north":0.0,"why":"shoreline A2/A6/A8: sheltered water leaves mud"}
-{"eco_class_id":"tidal-delta","stop":3,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"tidal-delta","stop":4,"ltex_form_key":"075067:Skyrim.esm","dh_lo":0.6,"dh_hi":5.0,"weight":1.0,"north":0.0,"why":"shoreline A4: marsh on the flanks"}
-{"eco_class_id":"tidal-delta","stop":5,"ltex_form_key":"06DD55:Skyrim.esm","dh_lo":3.0,"weight":1.0,"north":0.0,"why":"shoreline A1: grassed bar tops"}
-{"eco_class_id":"western-frontier","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-1.0,"weight":1.0,"north":0.0,"why":"granularity research: submerged stage"}
-{"eco_class_id":"western-frontier","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-0.6,"dh_hi":0.5,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"granularity research: waterline band"}
-{"eco_class_id":"western-frontier","stop":2,"ltex_form_key":"0137CC:Skyrim.esm","dh_lo":0.8,"dh_hi":260.0,"slope_hi":26.0,"weight":1.0,"north":0.0,"why":"upland forest (Kinabalu cloud forest, mountain synthesis)"}
-{"eco_class_id":"western-frontier","stop":3,"ltex_form_key":"01CC43:Skyrim.esm","dh_lo":0.8,"slope_lo":14.0,"slope_hi":34.0,"noise_lo":0.35,"weight":1.0,"north":0.6,"why":"moss bands on the flanks (options §8)"}
+{"eco_class_id":"tidal-delta","stop":1,"ltex_form_key":"06B3CF:Skyrim.esm","dh_lo":-2.5,"dh_hi":3.6555761816364414,"noise_lo":0.45,"weight":1.0,"north":0.0,"why":"shoreline A4: sand bars"}
+{"eco_class_id":"tidal-delta","stop":2,"ltex_form_key":"0132E9:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":0.0,"noise_hi":0.5,"weight":1.2,"north":0.0,"why":"audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud"}
+{"eco_class_id":"tidal-delta","stop":3,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"tidal-delta","stop":4,"ltex_form_key":"075067:Skyrim.esm","dh_lo":3.6555761816364414,"dh_hi":5.0,"weight":1.0,"north":0.0,"why":"shoreline A4: marsh on the flanks"}
+{"eco_class_id":"tidal-delta","stop":5,"ltex_form_key":"06DD55:Skyrim.esm","dh_lo":3.6555761816364414,"weight":1.0,"north":0.0,"why":"shoreline A1: grassed bar tops"}
+{"eco_class_id":"western-frontier","stop":0,"ltex_form_key":"013184:Skyrim.esm","dh_hi":-5.483364272454662,"weight":1.0,"north":0.0,"why":"audit §4: LRiverBottom01 below -384 u"}
+{"eco_class_id":"western-frontier","stop":1,"ltex_form_key":"01301F:Skyrim.esm","dh_lo":-5.483364272454662,"dh_hi":1.8277880908182207,"slope_hi":30.0,"weight":1.3,"north":0.0,"why":"audit §4: LRiverbedEdge01 from -384 u to +128 u"}
+{"eco_class_id":"western-frontier","stop":2,"ltex_form_key":"0137CC:Skyrim.esm","dh_lo":1.8277880908182207,"dh_hi":260.0,"slope_hi":26.0,"weight":1.0,"north":0.0,"why":"upland forest (Kinabalu cloud forest, mountain synthesis)"}
+{"eco_class_id":"western-frontier","stop":3,"ltex_form_key":"01CC43:Skyrim.esm","dh_lo":1.8277880908182207,"slope_lo":14.0,"slope_hi":34.0,"noise_lo":0.35,"weight":1.0,"north":0.6,"why":"moss bands on the flanks (options §8)"}
 {"eco_class_id":"western-frontier","stop":4,"ltex_form_key":"01CC45:Skyrim.esm","slope_lo":34.0,"weight":1.4,"north":0.3,"why":"options §8: steep ground is rock"}
 {"eco_class_id":"western-frontier","stop":5,"ltex_form_key":"000AE4:Skyrim.esm","dh_lo":220.0,"slope_lo":26.0,"weight":1.2,"north":0.0,"why":"bare rock of the summits (border ranges)"}

@@ -11,18 +11,23 @@ Replaces paint.py and the land-cover raster as the paint source. For every LAND 
 
 Each region class (`eco_class`, from `cell_region_run`; the apron is `border`) has 4-6 stops (`STOPS`, the
 `material_gradient` rows): an LTEX and soft ranges on the keys. A stop's weight is the product of smooth
-trapezoids, so every transition is a gradient of the keys, never a class edge. Upland stops read a band height
-`dh + noise * amp` (amp grows with height), so mountainsides break into bands and patches (options §8). The
-classes blend over ~30 m (a double box over the per-cell class map), the stop weights are smoothed again over
-~12 m (a double 3-vertex box: a blend spans 6-11 vertices), and weights under 3 % are dropped.
+trapezoids with narrow shoulders, then one 3-vertex box: a blend spans 1-5 vertices, as vanilla's painted strokes
+(Skyrim.esm audit, skyrim-does-it-this-way.md §4: a 0.02-0.98 run is 1 vertex at p50, 5 at p90). Upland stops read a
+band height `dh + noise * amp` (amp grows with height), so mountainsides break into bands and patches (options §8).
+Classes blend over ~5 vertices where they change, and weights under 3 % are dropped. The water edge is vanilla's:
+bed below -384 u, mud and edge from -384 u to the line, the edge on to +128 u, then land (no mud above the water);
+sea shores run the beach to +256 u (§4).
+
+The apron beyond the border polygon is bare, as vanilla's far ground (§9): the `border` class alone, no province
+blend, and one base texture per quadrant (no alpha layers).
 
 Quadrants (`quadrant_sets`): each LAND quadrant keeps its base plus up to `MAX_ALPHA` alpha layers by total
 weight, ties broken toward the textures its neighbours keep. The seam fix: a vertex's weights are restricted to
 the textures kept by every quadrant that shares it (1, 2 or 4) and renormalised, so the two sides of a quadrant
 or cell seam composite the same weights and nothing drops out at the seam.
 
-VCLR (`vclr`): shade from slope and aspect (north faces darker) and wet (darker toward water), multiplied into
-the old ground tint.
+VCLR (`vclr`): white by default; darkened only in a band within 256 u of water (to ~150) and on wet flats (§4:
+vanilla's VCLR is p50 255 and its steep ground is not darker). build.py no longer multiplies the old ground tint in.
 
 Lore and research behind the stops: `docs/design/research/world-terrain/tropical-shoreline-materials.md`
 (A1-A10: exposure sorts sediment; sheltered shores are mud, mangrove fringe is dark organic mud),
@@ -41,7 +46,7 @@ from tools.argonia_world import skyrim_units as su
 
 QV = su.QUADRANT_VERTS  # 17
 QS = QV - 1  # 16 quads per quadrant side
-MAX_ALPHA = 5  # base plus five: six textures a quadrant (the CK's practical limit; options §2)
+MAX_ALPHA = 6  # base plus six: Skyrim.esm's quadrants run to base + 6 and 6 is the commonest count (audit §4)
 HALO = 64  # vertices of context a window reads around itself (the blurs' and the wetness's reach)
 MIN_W = 0.03
 NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
@@ -113,92 +118,97 @@ class Stop:
     why: str = ""
 
 
-SOFT = {"dh": 0.8, "slope": 5.0, "wet": 0.12, "noise": 0.12}
-# the shared water edge: bed, mud, waterline (vanilla's three stages)
-BED = Stop("LRiverBottom01", dh=(-INF, -1.0), why="granularity research: submerged stage")
-EDGE = Stop("LRiverbedEdge01", dh=(-0.6, 0.5), slope=(-INF, 30), w=1.3, why="granularity research: waterline band")
-MUD = Stop("LRiverMud01", dh=(0.6, 2.2), slope=(-INF, 14), wet=(0.2, INF), w=1.2,
-           why="shoreline A2/A6/A8: sheltered water leaves mud")
+SOFT = {"dh": 0.25, "slope": 2.0, "wet": 0.05, "noise": 0.04}  # narrow shoulders: blends of 1-5 vertices (audit §4)
+# the water edge, as Skyrim.esm paints it (skyrim-does-it-this-way.md §4): bed below -384 u; mud and edge from -384 u
+# to the line; the edge on to +128 u (one vertex above); land from there. No mud band above the water.
+BED_M = -su.units_to_metres(384)
+EDGE_TOP_M = su.units_to_metres(128)  # 1.83 m
+BEACH_TOP_M = su.units_to_metres(256)  # 3.66 m: sea shores run the beach to +256 u (§4)
+BED = Stop("LRiverBottom01", dh=(-INF, BED_M), why="audit §4: LRiverBottom01 below -384 u")
+EDGE = Stop("LRiverbedEdge01", dh=(BED_M, EDGE_TOP_M), slope=(-INF, 30), w=1.3,
+            why="audit §4: LRiverbedEdge01 from -384 u to +128 u")
+MUD = Stop("LRiverMud01", dh=(BED_M, 0.0), noise=(-INF, 0.5), w=1.2,
+           why="audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud")
+L = EDGE_TOP_M  # land begins one vertex above the line
+S = BEACH_TOP_M  # on the sea, above the beach
 ROCK = Stop("LReachMossyRocks01", slope=(34, INF), w=1.4, north=0.3, why="options §8: steep ground is rock")
 
 STOPS: dict[str, tuple[Stop, ...]] = {
     "coastal-lagoon": (
         Stop("LCoastOceanFloor01", dh=(-INF, -2.5), why="shoreline A10: the shelf"),
-        Stop("LCoastBeach01", dh=(-2.5, 1.2), wet=(-INF, 0.75), why="shoreline A1: wave-sorted sand"),
+        Stop("LCoastBeach01", dh=(-2.5, S), wet=(-INF, 0.75), why="shoreline A1: wave-sorted sand"),
         MUD,
-        Stop("LFrozenMarshGrass01", dh=(0.8, 6), noise=(0.25, INF), why="shoreline A6: marsh above the mud"),
+        Stop("LFrozenMarshGrass01", dh=(S, 6), noise=(0.25, INF), why="shoreline A6: marsh above the mud"),
         Stop("LFallForestDirt01", dh=(4, INF), why="shoreline A3: mangrove-forest floor inland"),
         ROCK),
     "tidal-delta": (
         Stop("LCoastOceanFloor01", dh=(-INF, -2.5), why="shoreline A4: delta front"),
-        Stop("LCoastBeach01", dh=(-2.5, 0.6), noise=(0.45, INF), why="shoreline A4: sand bars"),
+        Stop("LCoastBeach01", dh=(-2.5, S), noise=(0.45, INF), why="shoreline A4: sand bars"),
         MUD, EDGE,
-        Stop("LFrozenMarshGrass01", dh=(0.6, 5), why="shoreline A4: marsh on the flanks"),
-        Stop("LCoastBeachGrass01", dh=(3, INF), why="shoreline A1: grassed bar tops"),
+        Stop("LFrozenMarshGrass01", dh=(S, 5), why="shoreline A4: marsh on the flanks"),
+        Stop("LCoastBeachGrass01", dh=(S, INF), why="shoreline A1: grassed bar tops"),
     ),
     "flooded-forest": (
         BED, MUD, EDGE,
-        Stop("LFallForestLeaves01", dh=(0.6, 8), noise=(-INF, 0.55), why="shoreline A8: submerged and wet litter"),
-        Stop("LPineForest03", dh=(1.5, INF), w=1.1, why="BM&V's swamp forest floor (its most painted ground)"),
+        Stop("LFallForestLeaves01", dh=(L, 8), noise=(-INF, 0.55), why="shoreline A8: submerged and wet litter"),
+        Stop("LPineForest03", dh=(L, INF), w=1.1, why="BM&V's swamp forest floor (its most painted ground)"),
         Stop("LFallForestDirt01", dh=(2, INF), noise=(0.6, INF), why="rooty patches (BM&V roots-in-mudbank)"),
     ),
     "interior-swamp": (
         BED, MUD,
-        Stop("LFrozenMarshLichen01", dh=(-0.3, 2.5), wet=(0.15, INF), why="shoreline A8: muck margin"),
-        Stop("LFrozenMarshGrass01", dh=(1, INF), noise=(-INF, 0.6), why="shoreline A9: reed and marsh grass"),
+        Stop("LFrozenMarshLichen01", dh=(L, 2.5 + L), wet=(0.15, INF), why="shoreline A8: muck margin"),
+        Stop("LFrozenMarshGrass01", dh=(L, INF), noise=(-INF, 0.6), why="shoreline A9: reed and marsh grass"),
         Stop("LFallForestDirt01", dh=(2.5, INF), noise=(0.5, INF), why="shoreline A8: swamp-forest floor"),
         Stop("LReachMoss01", slope=(18, INF), why="moss on the few banks"),
     ),
     "deep-sink-basin": (
         BED, MUD, EDGE,
-        Stop("LFrozenMarshLichen01", dh=(0.4, 4), why="shoreline A8: muck round the sink"),
+        Stop("LFrozenMarshLichen01", dh=(L, 4), why="shoreline A8: muck round the sink"),
         Stop("LFallForestLeaves01", dh=(2.5, INF), why="litter on the basin rim"),
         ROCK),
     "deep-river-corridor": (
         BED, EDGE, MUD,
-        Stop("LFallForestLeaves01", dh=(1.5, INF), noise=(-INF, 0.5), why="gallery forest litter"),
-        Stop("LFallForestDirt01", dh=(1.5, INF), noise=(0.5, INF), why="rooty banks"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(-INF, 0.5), why="gallery forest litter"),
+        Stop("LFallForestDirt01", dh=(L, INF), noise=(0.5, INF), why="rooty banks"),
         ROCK),
     "rootland": (
         BED, EDGE,
-        Stop("LPineForest03", dh=(0.8, INF), w=1.1, why="root-bound forest floor"),
-        Stop("LFallForestDirt01", dh=(0.8, INF), noise=(0.55, INF), why="roots in mud bank"),
+        Stop("LPineForest03", dh=(L, INF), w=1.1, why="root-bound forest floor"),
+        Stop("LFallForestDirt01", dh=(L, INF), noise=(0.55, INF), why="roots in mud bank"),
         Stop("LReachMoss01", slope=(14, INF), north=0.5, why="moss on rises"),
         ROCK),
     "seasonal-floodplain": (
         BED, MUD, EDGE,
-        Stop("LFieldGrass02", dh=(0.8, INF), why="BM&V's mossy grass on the flood flats"),
-        Stop("LFrozenMarshGrass01", dh=(0.8, 3), wet=(0.2, INF), why="wet marsh grass near the channel"),
+        Stop("LFieldGrass02", dh=(L, INF), why="BM&V's mossy grass on the flood flats"),
+        Stop("LFrozenMarshGrass01", dh=(L, 3 + L), wet=(0.2, INF), why="wet marsh grass near the channel"),
         Stop("LFallForestDirt01", dh=(3, INF), noise=(0.6, INF), why="levee floor"),
     ),
     "northern-transition": (
         BED, EDGE,
-        Stop("LReachDirt01", dh=(0.8, INF), noise=(0.5, INF), why="red earth of the drier north (Dunmer border)"),
-        Stop("LFieldGrass02", dh=(0.8, 120), noise=(-INF, 0.6), why="grass of the transition"),
+        Stop("LReachDirt01", dh=(L, INF), noise=(0.5, INF), why="red earth of the drier north (Dunmer border)"),
+        Stop("LFieldGrass02", dh=(L, 120), noise=(-INF, 0.6), why="grass of the transition"),
         Stop("LTundraRocks01", slope=(24, 38), why="scree below the ranges"),
         Stop("LRocks01", slope=(36, INF), w=1.3, why="bare rock of the Velothi foothills"),
     ),
     "western-frontier": (
         BED, EDGE,
-        Stop("LPineForest02", dh=(0.8, 260), slope=(-INF, 26), why="upland forest (Kinabalu cloud forest, mountain synthesis)"),
-        Stop("LReachMoss01", dh=(0.8, INF), slope=(14, 34), north=0.6, noise=(0.35, INF),
+        Stop("LPineForest02", dh=(L, 260), slope=(-INF, 26), why="upland forest (Kinabalu cloud forest, mountain synthesis)"),
+        Stop("LReachMoss01", dh=(L, INF), slope=(14, 34), north=0.6, noise=(0.35, INF),
              why="moss bands on the flanks (options §8)"),
         ROCK,
         Stop("LRocks01", dh=(220, INF), slope=(26, INF), w=1.2, why="bare rock of the summits (border ranges)"),
     ),
     "karst-cavern-belt": (
         BED, EDGE,
-        Stop("LFallForestDirt01", dh=(0.8, INF), why="forest floor over limestone"),
+        Stop("LFallForestDirt01", dh=(L, INF), why="forest floor over limestone"),
         Stop("LReachMoss01", slope=(12, 34), north=0.5, why="moss on karst"),
         ROCK,
         Stop("LTundraRocks01", slope=(26, 38), noise=(0.5, INF), why="broken limestone"),
     ),
     "border": (
-        Stop("LCoastOceanFloor01", dh=(-INF, -3), why="the apron's sea"),
-        EDGE,
-        Stop("LPineForest03", dh=(0.8, 200), why="the apron's forest"),
-        Stop("LReachMoss01", slope=(16, 36), north=0.5, why="moss on the apron's slopes"),
-        ROCK,
+        Stop("LCoastOceanFloor01", dh=(-INF, 0), why="the apron's sea (bare far ground, audit §9)"),
+        Stop("LPineForest03", dh=(0, 200), why="the apron's forest"),
+        Stop("LRocks01", slope=(34, INF), w=1.4, why="the apron's steep ground"),
         Stop("LRocks01", dh=(200, INF), w=1.2, why="the apron's ranges"),
     ),
 }
@@ -417,8 +427,9 @@ def nearest_fill(level: np.ndarray) -> np.ndarray:
 
 
 WARP, WARP_PERIOD = 14.0, 96  # vertices: class borders meander by up to ~28 m over ~170 m
-APRON_INHERIT = float("inf")  # the apron carries on the nearest province class (a `border` class line read as a hard edge at the rim, mat3 2026-11-01)
-CLASS_BLEND = 12  # the class blend box radius (twice): ~25 vertices, ~45 m
+APRON_INHERIT = 0.0  # the apron is `border` alone, bare beyond the border polygon (audit §9); no province class runs into it
+TIE, TIE_PERIOD = 0.5, 24  # vertices: tied stops split into patches of ~45 m, broken at ~10 m
+CLASS_BLEND = 1  # the class blend box radius (twice): ~5 vertices, only where classes change (audit §4)
 
 
 class Regions:
@@ -475,6 +486,8 @@ class Window:
     slope: np.ndarray
     north: np.ndarray
     wet: np.ndarray
+    dwater: np.ndarray | None = None  # vertices to the nearest wet vertex (0 in water)
+    apron: np.ndarray | None = None  # bool: beyond the border polygon
 
 
 class Material:
@@ -492,7 +505,15 @@ class Material:
         k = self._keys(h, a0, a1, b0, b1)
         w = self._weights(k, a0, a1, b0, b1)
         s = (slice(r0 - a0, r1 - a0), slice(c0 - b0, c1 - b0))
-        return Window(w[s], k["dh"][s], k["slope"][s], k["north"][s], k["wet"][s])
+        return Window(w[s], k["dh"][s], k["slope"][s], k["north"][s], k["wet"][s], k["dwater"][s],
+                      self.apron(r0, r1, c0, c1))
+
+    def apron(self, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
+        """Vertices beyond the border polygon (the province square): the bare far ground (audit §9)."""
+        p, n = self.regions.pad, self.regions.n
+        r = np.arange(r0, r1)[:, None] - p
+        c = np.arange(c0, c1)[None, :] - p
+        return (r < 0) | (r > n) | (c < 0) | (c > n)
 
     def _keys(self, h, a0, a1, b0, b1) -> dict:
         lev = self.water.levels(a0, a1, b0, b1, h)
@@ -519,34 +540,49 @@ class Material:
         noise = (0.65 * n1 + 0.35 * n2).astype(np.float32)
         amp = np.clip(dh / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
         band = dh + (noise - 0.5) * 2 * amp
-        return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise}
+        return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise,
+                "dwater": d.astype(np.float32)}
 
     def _weights(self, k, a0, a1, b0, b1) -> np.ndarray:
         n_tex = len(TEXTURES)
         cls = self.regions.at(a0, a1, b0, b1)
+        apron = self.apron(a0, a1, b0, b1)
         present = [int(c) for c in np.unique(cls)]
         out = np.zeros(cls.shape + (n_tex,), dtype=np.float32)
+        ties: dict[int, np.ndarray] = {}
         for c in present:
-            m = box(box((cls == c).astype(np.float32), CLASS_BLEND), CLASS_BLEND)  # the class blend, ~45 m
+            raw = (cls == c).astype(np.float32)
+            m = np.where(apron, raw, box(box(raw, CLASS_BLEND), CLASS_BLEND))  # the class blend; none in the apron
             if not m.any():
                 continue
             wc = np.zeros_like(out)
             for s in STOPS[CLASSES[c]]:
-                x = k["band"] if s.dh[0] > 2 else k["dh"]
+                x = k["band"] if s.dh[0] > 5 else k["dh"]
                 f = (ramp(x, *s.dh, SOFT["dh"]) * ramp(k["slope"], *s.slope, SOFT["slope"])
                      * ramp(k["wet"], *s.wet, SOFT["wet"]) * ramp(k["noise"], *s.noise, SOFT["noise"]))
                 f = f * s.w * (1.0 + s.north * k["north"])
                 wc[..., self.index[s.ltex]] += f.astype(np.float32)
-            tot = wc.sum(axis=2, keepdims=True)
+            # one texture rules each vertex, as a painted stroke (audit §4: no sustained 30/70 mixes); where stops
+            # tie, a per-texture noise breaks the tie in patches, never in a straight line
+            tot = wc.sum(axis=2)
             fb = self.index[STOPS[CLASSES[c]][-2].ltex]  # a vertex no stop covers takes the class's land stop
-            wc = np.where(tot > 1e-4, wc / np.maximum(tot, 1e-4), 0.0)
-            wc[..., fb] += (tot[..., 0] <= 1e-4)
-            out += wc * m[..., None]
+            for t in {self.index[s.ltex] for s in STOPS[CLASSES[c]]}:
+                if t not in ties:
+                    ties[t] = self._tie(t, a0, a1, b0, b1)
+                wc[..., t] *= 1.0 + TIE * (ties[t] - 0.5)
+            win = np.where(tot > 1e-4, np.argmax(wc, axis=2), fb)
+            out += (win[..., None] == np.arange(n_tex)) * m[..., None]
         if self.roads:
             out = self._road(out, k, a0, b0)
-        out = box(box(out, 4), 4)  # the material blend, 8-17 vertices (a 3-box left 1-2 px waterline rings, mat0)
+        # the material blend: a 2x2 mean over the one-hot strokes, so a texture's edge is one part-weighted vertex, two
+        # where it runs diagonally (audit §4: a 0.02-0.98 run is 1 vertex at p50, 5 at p90; ours ran 6-17)
+        out = np.pad(out, ((0, 1), (0, 1), (0, 0)), mode="edge")
+        out = 0.25 * (out[:-1, :-1] + out[1:, :-1] + out[:-1, 1:] + out[1:, 1:])
         out = np.where(out < MIN_W, 0.0, out)
         return (out / np.maximum(out.sum(axis=2, keepdims=True), 1e-6)).astype(np.float32)
+
+    def _tie(self, t: int, a0, a1, b0, b1) -> np.ndarray:
+        return value_noise(a0, a1, b0, b1, TIE_PERIOD, 100 + t) * 0.7 + value_noise(a0, a1, b0, b1, TIE_PERIOD // 4, 200 + t) * 0.3
 
     def _road(self, w, k, a0, b0):
         from tools.argonia_world.routes import paint as road_paint
@@ -564,10 +600,11 @@ class Material:
 
 
 # ---- quadrants: the kept sets and the seam fix ------------------------------------------------------------------
-def quadrant_sets(w: np.ndarray, max_alpha: int = MAX_ALPHA):
+def quadrant_sets(w: np.ndarray, max_alpha: int = MAX_ALPHA, bare: np.ndarray | None = None):
     """Weights (rows, cols, n) over whole quadrants (rows and cols = 16k + 1, the window's corner on a quadrant
     corner) -> (the restricted weights, keep[qy][qx] lists, base first). A vertex's weights keep only the
-    textures every quadrant sharing it keeps, renormalised (the seam fix)."""
+    textures every quadrant sharing it keeps, renormalised (the seam fix). A quadrant whose centre is `bare` (the
+    apron) keeps its base alone: vanilla's far ground has no alpha layers (audit §9)."""
     R, C, n = w.shape
     qy, qx = (R - 1) // QS, (C - 1) // QS
     tot = np.zeros((qy, qx, n), dtype=np.float64)
@@ -583,13 +620,20 @@ def quadrant_sets(w: np.ndarray, max_alpha: int = MAX_ALPHA):
     score = tot + 0.15 * nb
     keep = [[None] * qx for _ in range(qy)]
     allowed = np.ones((R, C, n), dtype=bool)
+    is_bare = [[bare is not None and bool(bare[i * QS + QS // 2, j * QS + QS // 2]) for j in range(qx)] for i in range(qy)]
     for i in range(qy):
         for j in range(qx):
             order = [int(t) for t in np.argsort(-score[i, j], kind="stable") if tot[i, j, t] > 0]
             if not order:
                 order = [int(np.argmax(score[i, j]))]
             base = int(np.argmax(tot[i, j]))
-            ks = [base] + [t for t in order if t != base][:max_alpha]
+            if is_bare[i][j]:
+                ks = [base]
+            else:  # a bare neighbour's base comes first, so the seam they share composites the same
+                must = list(dict.fromkeys(int(np.argmax(tot[a, b])) for a in range(max(i - 1, 0), min(i + 2, qy))
+                                          for b in range(max(j - 1, 0), min(j + 2, qx)) if is_bare[a][b]))
+                rest = [t for t in must if t != base] + [t for t in order if t != base and t not in must]
+                ks = [base] + rest[:max_alpha]
             keep[i][j] = ks
             m = np.zeros(n, dtype=bool)
             m[ks] = True
@@ -636,16 +680,40 @@ def composite(base: int, layers: list[tuple[int, np.ndarray]], n: int) -> np.nda
     return out
 
 
+def blend_runs(w: np.ndarray, lo: float = 0.02, hi: float = 0.98) -> np.ndarray:
+    """(rows, cols, n) weights -> the length of every run of vertices strictly between lo and hi along rows and
+    columns, per texture: the audit's blend width (skyrim-does-it-this-way.md §4: p50 1, p90 5). Runs that touch
+    the array's edge are left out (their length is unknown)."""
+    out = []
+    mid = (w > lo) & (w < hi)
+    for m in (mid, np.swapaxes(mid, 0, 1)):
+        x = np.moveaxis(m, 2, 1).reshape(-1, m.shape[1]).astype(np.int8)
+        p = np.pad(x, ((0, 0), (1, 1)))
+        d = np.diff(p, axis=1)
+        r, st = np.nonzero(d == 1)
+        _, en = np.nonzero(d == -1)
+        ok = (st > 0) & (en < x.shape[1])
+        out.append((en - st)[ok])
+    return np.concatenate(out) if out else np.zeros(0, int)
+
+
 # ---- vertex colour --------------------------------------------------------------------------------------------
+WATER_BAND_V = 256 / su.VERTEX_SPACING_UNITS  # 256 u in vertices: 2
+WATER_DARK = 0.42  # to ~150/255 at the line (audit §4: the darkest band, within 256 u of water, p10 149)
+FLAT_DARK = 0.12  # wet flats a little darker
+
+
 def vclr(win: Window, tint: np.ndarray | None = None) -> np.ndarray:
-    """uint8 RGB: shade (steep and north faces darker, by up to 25 %) and wet (darker and a touch greener toward
-    water, by up to 22 %), times the old ground tint."""
-    shade = 1.0 - 0.18 * np.clip(win.slope / 50.0, 0, 1) - 0.07 * np.clip(win.north, 0, 1)
-    # no cut at the waterline: a dry-side-only darkening peaked on the shore and drew a 1-3 px dark ring round every
-    # water (w4, w5 2026-11-01); under water the darkening is hidden by the water itself
-    wetf = 1.0 - 0.22 * np.clip(win.wet, 0, 1)
-    f = (shade * wetf)[..., None] * np.array([1.0, 1.0, 0.96], dtype=np.float32)
+    """uint8 RGB, white by default (audit §4: p50 255, 13.9 % under 200; steep ground is not darker, so no slope or
+    aspect term): darker within 256 u of water, falling monotonically from the line (no ring, w4/w5 2026-11-01),
+    and a little on wet flats; times the old ground tint, which the apron does not take (§9)."""
+    d = win.dwater if win.dwater is not None else np.where(win.wet >= 0.99, 0.0, INF)
+    band = np.clip(1.0 - d / (WATER_BAND_V + 1.0), 0.0, 1.0)
+    flat = np.clip((win.wet - 0.6) / 0.4, 0, 1) * (1.0 - np.clip((win.slope - 3.0) / 5.0, 0, 1))
+    f = np.minimum(1.0 - WATER_DARK * band, 1.0 - FLAT_DARK * flat)[..., None] * np.array([1.0, 1.0, 0.96], dtype=np.float32)
     base = np.full(win.dh.shape + (3,), 255.0) if tint is None else tint.astype(np.float32)
+    if win.apron is not None and tint is not None:
+        base = np.where(win.apron[..., None], 255.0, base)
     return np.clip(np.rint(base * f), 0, 255).astype(np.uint8)
 
 

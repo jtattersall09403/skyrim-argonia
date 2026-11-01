@@ -31,7 +31,7 @@ def test_texture_set_is_bmv_and_never_nordic():
         assert t.bmv.startswith("TEXTUREPACK\\landscape\\") and t.form_key.endswith(":Skyrim.esm")
         assert not any(k in t.edid.lower() for k in ("snow", "glacier", "ice", "volcanic"))
     for c, stops in M.STOPS.items():
-        assert 4 <= len({s.ltex for s in stops}) <= 6, c
+        assert (2 if c == "border" else 4) <= len({s.ltex for s in stops}) <= 6, c  # the apron is bare (audit §9)
         assert all(s.ltex in M.TEX and s.why for s in stops), c
 
 
@@ -42,15 +42,19 @@ def test_water_gradient_runs_bed_edge_land():
     dom = [M.TEXTURES[i].edid for i in row.argmax(axis=1)]
     first = {e: dom.index(e) for e in dict.fromkeys(dom)}
     assert first["LRiverBottom01"] < first["LRiverbedEdge01"] < first["LPineForest03"]
-    mud = row[:, M.TEXTURES.index(M.TEX["LRiverMud01"])]
-    assert mud[first["LRiverbedEdge01"]:first["LPineForest03"] + 8].max() > 0.25  # the exposed wet mud between
+    # vanilla's sequence (audit §4): the edge carries on to +128 u above the line, and no mud lies above the water
+    i, e = (M.TEXTURES.index(M.TEX[t]) for t in ("LRiverMud01", "LRiverbedEdge01"))
+    dh = win.dh[N // 2]
+    assert row[(dh > 0.3) & (dh < M.EDGE_TOP_M - 0.3), e].min() > 0.5
+    assert row[dh > 0.3, i].max() < 0.1
+    assert row[dh > M.EDGE_TOP_M + 0.4, e].max() < 0.1
 
 
-def test_blend_spans_many_vertices_never_one():
+def test_blends_are_vanilla_brush_widths():
+    """Skyrim.esm's blends run 1 vertex at p50 and 5 at p90 (audit §4); ours ran 6-17."""
     src = sources(shore())
-    w = mat(src).window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights
-    step = max(np.abs(np.diff(w, axis=0)).max(), np.abs(np.diff(w, axis=1)).max())
-    assert step < 0.35  # a one-vertex blend jumps by ~1
+    runs = M.blend_runs(mat(src).window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights)
+    assert len(runs) and np.percentile(runs, 50) <= 2 and np.percentile(runs, 90) <= 5
 
 
 def test_class_border_blends():
@@ -59,7 +63,8 @@ def test_class_border_blends():
     reg.grid[:, 2:] = M.CLASSES.index("northern-transition")
     m = M.Material(src, M.Water.sea(PAD, N), reg, roads=False)
     w = m.window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights
-    assert np.abs(np.diff(w, axis=1)).max() < 0.2
+    runs = M.blend_runs(w)
+    assert len(runs) and np.percentile(runs, 90) <= 5  # blended where classes change, over a few vertices (audit §4)
 
 
 def test_seam_fix_and_layer_count():
@@ -95,7 +100,9 @@ def test_build_writes_at_most_six_layers_and_matching_seams(tmp_path):
                   for l in qd["layers"]]
         return M.composite(fk[qd["base"]], layers, n)
     for (x, y), c in cells.items():
-        if (x + 1, y) in cells:  # this cell's BottomRight east edge = the neighbour's BottomLeft west edge
+        # this cell's BottomRight east edge = the neighbour's BottomLeft west edge; the apron's bare quadrants (base
+        # alone, audit §9) meet edge to edge as vanilla's far ground does
+        if (x + 1, y) in cells and src.in_province(x, y) and src.in_province(x + 1, y):
             assert np.abs(comp(c, 1)[:, -1] - comp(cells[(x + 1, y)], 0)[:, 0]).max() < 0.03
 
 
@@ -130,8 +137,27 @@ def test_vclr_draws_no_ring_at_the_waterline():
     wet = np.clip(1.0 - np.arange(n) / 30.0, 0, 1)[None, :].repeat(8, 0).astype(np.float32)
     dh = (np.arange(n) - 20.0)[None, :].repeat(8, 0).astype(np.float32) * 0.2
     z = np.zeros_like(wet)
-    v = M.vclr(M.Window(np.zeros(wet.shape + (1,)), dh, z, z, wet))[..., 0].astype(int)
+    d = np.clip(np.arange(n) - 20.0, 0, None)[None, :].repeat(8, 0).astype(np.float32)
+    v = M.vclr(M.Window(np.zeros(wet.shape + (1,)), dh, z, z, wet, d))[..., 0].astype(int)
     assert (np.diff(v[0]) >= 0).all()
+    assert v[0, 20] < 160 and (v[0, 24:] == 255).all()  # dark at the line, white beyond 256 u (audit §4)
+
+
+def test_steep_ground_is_not_darker():
+    """Vanilla's steep ground is not darker (audit §4: p10 198 against 165 flat): no slope or aspect shade."""
+    s = np.full((4, 4), 60.0, np.float32)
+    far = np.full((4, 4), 99.0, np.float32)
+    v = M.vclr(M.Window(np.zeros((4, 4, 1)), far, s, np.ones_like(s), np.zeros_like(s), far))
+    assert (v[..., 0] == 255).all()
+
+
+def test_apron_is_bare():
+    """Beyond the border polygon: the border class alone and one base texture per quadrant (audit §9)."""
+    src = sources(shore())
+    m = mat(src)
+    w = m.window(0, 2 * M.QS + 1, 0, 2 * M.QS + 1).weights
+    _, keep = M.quadrant_sets(w, bare=m.apron(0, 2 * M.QS + 1, 0, 2 * M.QS + 1))
+    assert all(len(k) == 1 for row in keep for k in row)
 
 
 def test_rain_lifts_dry_ground_wetness():

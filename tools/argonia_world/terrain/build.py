@@ -2,7 +2,7 @@
 
 For each row of cells (Skyrim cy) the builder reads a window of grid rows with a halo, quantises and limits the
 heights (quantize.py), computes normals from the limited heights across cell edges, paints the ground's material
-into quadrant layers and the shade, wet and tint into vertex colours (material.py), and writes one JSON line per cell to
+into quadrant layers and the water-band shade into vertex colours (material.py), and writes one JSON line per cell to
 `<out>/land/cy<+NNN>.jsonl.gz` (gzip with no timestamp, so the bytes are stable). Nothing whole-grid is held.
 
 A cell line (the LAND contract for ArgoniaGen's Land.cs; every array base64, [y][x] with y from the south):
@@ -123,7 +123,7 @@ class Builder:
         # material: weights over the row plus one quadrant each side, so the seam fix sees every neighbour
         wq, keep = self.material_row(north, south, c_lo, c_hi)
         win = self.mat.window(north, south + 1, c_lo, c_hi + 1)
-        tint = M.vclr(win, src.tint_rgb(north, south + 1, c_lo, c_hi + 1))
+        tint = M.vclr(win)  # white but near water: the old ground tint is not how Skyrim.esm colours (audit §4, p50 255)
         for cx in range(x0, x1 + 1):
             a, b = src.cell_cols(cx)
             inside = src.in_province(cx, cy)
@@ -171,7 +171,8 @@ class Builder:
         a0, a1, b0, b1 = max(r0, 0), min(r1, size), max(c0, 0), min(c1, size)
         w = self.mat.window(a0, a1, b0, b1).weights
         w = np.pad(w, ((a0 - r0, r1 - a1), (b0 - c0, c1 - b1), (0, 0)), mode="edge")
-        return M.quadrant_sets(w)
+        bare = np.pad(self.mat.apron(a0, a1, b0, b1), ((a0 - r0, r1 - a1), (b0 - c0, c1 - b1)), mode="edge")
+        return M.quadrant_sets(w, bare=bare)  # the apron's quadrants keep their base alone (audit §9)
 
 
 def default_material(src: Sources):

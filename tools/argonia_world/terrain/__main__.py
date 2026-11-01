@@ -70,22 +70,23 @@ def cmd_build(a) -> int:
     return 0
 
 
-BLEND_STEP_MAX = 0.5  # a 10-20 m blend changes a weight by ~0.1-0.2 a vertex; a one-vertex edge by ~1
+BLEND_RUN_MAX = (2.0, 5.0)  # p50, p90 vertices of a 0.02-0.98 run; Skyrim.esm's are 1 and 5 (audit §4)
 
 
-def _blend_step(c: dict) -> float:
+def _blend_runs(c: dict) -> np.ndarray:
+    """A cell's composited weights (its four quadrants stitched, 33 x 33) -> its blend run lengths."""
     import base64
     from tools.argonia_world.terrain import material as M
     fk = {t.form_key: i for i, t in enumerate(M.TEXTURES)}
-    out = 0.0
-    for q in c["quads"]:
+    w = np.zeros((2 * M.QS + 1, 2 * M.QS + 1, len(fk)))
+    for qi, q in enumerate(c["quads"]):
         if q["base"] not in fk:
-            continue
+            return np.zeros(0, int)
         layers = [(fk[lay["ltex"]], np.frombuffer(base64.b64decode(lay["alpha"]), np.uint8).reshape(M.QV, M.QV))
                   for lay in q["layers"]]
-        w = M.composite(fk[q["base"]], layers, len(fk))
-        out = max(out, float(np.abs(np.diff(w, axis=0)).max()), float(np.abs(np.diff(w, axis=1)).max()))
-    return out
+        qy, qx = divmod(qi, 2)
+        w[qy * M.QS:qy * M.QS + M.QV, qx * M.QS:qx * M.QS + M.QV] = M.composite(fk[q["base"]], layers, len(fk))
+    return M.blend_runs(w)
 
 
 def _decode_m(c: dict) -> np.ndarray:
@@ -127,7 +128,7 @@ def cmd_check(a) -> int:
     all_max = all_max_nolim = 0.0
     limited_v = 0
     max_layers = 0
-    blend_step = 0.0  # the largest change of any texture's weight between neighbouring vertices
+    runs, lum, apron_layers = [], [], 0  # blend run lengths and VCLR luminance (province), the apron's alpha layers
     prev: dict[int, tuple[np.ndarray, np.ndarray]] = {}  # x -> the north row's south edge (heights, normals)
     for cy in sorted(built, reverse=True):  # north to south, the order build wrote
         row = {}
@@ -138,7 +139,12 @@ def cmd_check(a) -> int:
                 n = B.unpack(c)["vnml"]
                 row[c["x"]] = (h, n)
                 max_layers = max([max_layers] + [len(q["layers"]) for q in c["quads"]])
-                blend_step = max(blend_step, _blend_step(c))
+                if src.in_province(c["x"], cy):
+                    runs.append(_blend_runs(c))
+                    v = B.unpack(c)["vclr"].astype(np.float64)
+                    lum.append((0.299 * v[..., 0] + 0.587 * v[..., 1] + 0.114 * v[..., 2]).ravel())
+                else:
+                    apron_layers = max([apron_layers] + [len(q["layers"]) for q in c["quads"]])
                 if src.in_province(c["x"], cy):
                     hm = h * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE
                     north, south = src.cell_rows(cy)
@@ -178,7 +184,13 @@ def cmd_check(a) -> int:
     }
     res["seams"] = {"edges": edges, "height": seam_h, "normal": seam_n}
     res["layers_max"] = max_layers
-    res["blend_max_step"] = round(blend_step, 3)
+    runs = np.concatenate(runs) if runs else np.zeros(0, int)
+    lum = np.concatenate(lum) if lum else np.zeros(0)
+    res["blend_runs"] = {"n": int(runs.size), **{f"p{p}": float(np.percentile(runs, p)) if runs.size else 0.0
+                                               for p in (10, 50, 90)}}
+    res["vclr"] = {f"p{p}": round(float(np.percentile(lum, p)), 1) if lum.size else 0.0 for p in (10, 50)}
+    res["vclr"]["under_200"] = round(float((lum < 200).mean()), 3) if lum.size else 0.0
+    res["apron_layers_max"] = apron_layers
     res["overflow"] = {k: stats[k] for k in stats if k.startswith(("overflow", "limited", "max_limit", "limit_hist"))}
     res["cells"] = {k: stats[k] for k in ("cells", "province_cells", "apron_cells", "apron_skipped")}
     if res["heights"]["max_error_m"] > HEIGHT_TOL_M:
@@ -187,8 +199,11 @@ def cmd_check(a) -> int:
         fails.append(f"seams: {seam_h} height, {seam_n} normal")
     if max_layers > su.LAND_QUADRANT_LAYERS:
         fails.append(f"{max_layers} layers in a quadrant")
-    if blend_step > BLEND_STEP_MAX:
-        fails.append(f"a one-vertex blend: a texture's weight jumps {blend_step:.2f} between neighbouring vertices")
+    if runs.size and (res["blend_runs"]["p50"] > BLEND_RUN_MAX[0] or res["blend_runs"]["p90"] > BLEND_RUN_MAX[1]):
+        fails.append(f"blends wider than Skyrim's: p50 {res['blend_runs']['p50']}, p90 {res['blend_runs']['p90']} "
+                     f"vertices (at most {BLEND_RUN_MAX})")
+    if apron_layers:
+        fails.append(f"{apron_layers} alpha layers in an apron quadrant: the far ground is bare (audit §9)")
     from tools.argonia_world.terrain.grid import generated_ground
     gg = generated_ground()
     if gg.exists():  # 1.15: the generated ground's fit, entrance and overflow checks
