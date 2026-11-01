@@ -12,7 +12,7 @@ dependant).
                   "cameraPitch"}, "topCell": {"formKey"}}],
      "land": the shard directory build.py wrote,
      "regions": [{"type": "REGN", "formKey", "edid"}] the shells, "statics": [{"type": "STAT", "formKey", "edid",
-     "model", "bounds": [[x0, y0, z0], [x1, y1, z1]]}] (vegetation/rocks.py), "cellRegions": [{"cy", "cx0", "cx1", "region"}]}
+     "model", "bounds": [[x0, y0, z0], [x1, y1, z1]]}] (vegetation/rocks.py), "creatures" (creatures/records.py), "cellRegions": [{"cy", "cx0", "cx1", "region"}]}
 """
 from __future__ import annotations
 
@@ -58,17 +58,21 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
     """The WRLD intermediate, the REGN shells and the cells' region runs (XCLR; 2.W3's regions/api.py)."""
     from tools.argonia_world import db
     from tools.argonia_world.regions import api as regions
+    from tools.argonia_world.creatures import records as creatures
     from tools.argonia_world.vegetation import rocks
 
     w = world if world is not None else db.open()
+    used = set(rocks.masters(w)) | set(creatures.masters(w))  # the planner's ruling (2026-11-01): one plugin for the world's placements
+    extra = [p for p in rocks.stack_order() if p in used] + sorted(used - set(rocks.stack_order()))
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
-            "loadOrder": LOAD_ORDER + rocks.masters(w), "extraMasters": rocks.masters(w),
+            "loadOrder": LOAD_ORDER + extra, "extraMasters": extra,
             "records": [wrld(cell_range)], "land": str(land_dir),
             "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
             "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs(),
-            "statics": rocks.records(w)}  # 1.15: our STATs naming BM&V's unrecorded rock meshes
+            "statics": rocks.records(w),  # 1.15: our STATs naming BM&V's unrecorded rock meshes
+            "creatures": creatures.document(w)}  # 1.15 §g: the lists, their templates and the zones
 
 
 def write(path: Path, cell_range: tuple[int, int, int, int], land_dir: Path) -> Path:

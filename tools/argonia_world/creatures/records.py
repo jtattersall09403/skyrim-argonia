@@ -1,0 +1,181 @@
+"""The creature records of ArgoniaWorld.esm (1.15 §g.3), the Skyrim way: what ArgoniaGen writes.
+
+Skyrim.esm's own method (measured 2026-11-01, docs/research/2026-11-01/lane-1.15-creatures.md "The records"): a
+wilderness spawn is an ACHR whose base is an NPC_ templated on an LVLN (TPLT; ACBS template flags 0x0FFF on 135 of
+the 451 such NPC_, 0x1FFF on 40; RNAM the placeholder FoxRace on all 451), the LVLN flagged "calculate from all
+levels <= PC" and "for each item in count" (LVLF 3 on 415 of 527), and an XEZN naming the encounter zone whose
+min and max level fix what the list yields. Ours: one LVLN and one templated NPC_ per creature_list row, every
+entry at its band's level; one ECZN per encounter_zone row with min = max (the band's fixed level, never the
+player's); the den's own marker a REFR of XMarkerHeading; the predator beside it an ACHR of the mod's own NPC_.
+
+Ids are computed, never allocated (as the grid's, 0031 §3): a list's index in roster.CLASSES x BANDS x MEDIUM,
+so a class appended to the roster appends ids; a ref's id from its cell's grid position and its order in the cell.
+
+    world.json "creatures": {"lists": [{"formKey", "edid", "entries": [[FormKey, level, count]]}],
+                             "templates": [{"formKey", "edid", "list", "race"}],
+                             "zones": [{"formKey", "edid", "minLevel", "maxLevel", "neverResets"}],
+                             "afflictions": [{"mgef", "spel", "kind", "name", "edid",
+                                              "effects": [{"av", "archetype", "magnitude", "duration"}]}]}
+    shards cy<+NNN>.jsonl.gz: {"x", "y", "refs": [[local id, "ACHR"|"REFR", base FormKey, zone FormKey|null,
+                                                     x, y, z, rx, ry, rz]]}
+"""
+from __future__ import annotations
+
+import gzip
+import json
+from pathlib import Path
+
+from tools.argonia_world import skyrim_units as su
+from tools.argonia_world.creatures import roster as ro
+
+PLUGIN = "ArgoniaWorld.esm"
+LIST_BASE = 0x0D0000  # ArgoniaWorld.esm: past the rock STATs (0x0C0000), below the water (0x100000)
+TEMPLATE_BASE = 0x0D1000
+ZONE_BASE = 0x0D2000
+REF_BASE = 0xE00000  # past the vegetation's refs (0x620000 + 126^2 x 512 = 0xDE0800)
+REF_SLOT = 64  # ids per province cell; the province's busiest cell holds 9 (measured, report)
+PLACEHOLDER_RACE = "109C7C:Skyrim.esm"  # FoxRace: Skyrim.esm's RNAM on every NPC_ templated on an LVLN (451 of 451)
+DEN_MARKER = "000034:Skyrim.esm"  # XMarkerHeading: an editor marker, never drawn in game
+ZONE_KINDS = ("wild", "clearable")
+SPELL_BASE = 0x0D3000  # our afflictions: MGEF at SPELL_BASE + 2i (a second effect's at + 0x800), SPEL at + 2i + 1
+#                        (i: the roster.AFFLICTIONS order)
+
+# The afflictions the mods ship as their own SPEL (read 2026-11-01 from the laid plugins: SPIT type 1 disease,
+# 5 poison, or the creature's own attack spell): used as they are (route 1).
+MOD_SPELLS = {
+    "disease.swamp-rot": "265A22:King of the Murkmire.esp",  # DiseaseSwampRot (SPIT 1)
+    "disease.swamp-fever": "265A1D:King of the Murkmire.esp",  # DiseaseSwampFever (SPIT 1)
+    "poison.adder-venom": "92C99E:Here There Be Monsters - Curse of Cipactli.esp",  # mihailsnakepoisonVIPER (SPIT 5)
+    "poison.centipede-numb": "000B16:King of the Murkmire.esp",  # mihailgiantcentipede_poisonspit_spell
+}
+# Ours where no mod ships one: Skyrim.esm's own shapes, measured 2026-11-01 (vanilla/afflictions in the report):
+# a disease is SPIT 1, constant effect, contact, one PeakValueModifier (archetype 34) of 25 points (Brain Rot,
+# Bone Break Fever) or a regen multiplier of 2.5 (Rattles: stamina rate); a creature poison is SPIT 5, contact, a
+# ValueModifier (archetype 0) of 5 points for 5 s (crChaurusPoisonBite01). (actor value, archetype, magnitude, s)
+OUR_EFFECTS = {
+    "disease.blood-rot": [("StaminaRate", "PeakValueModifier", 2.5, 0)],  # as Rattles: stamina regenerates slowly
+    "disease.the-droops": [("CarryWeight", "PeakValueModifier", 25.0, 0)],  # carry weight lowered
+    "disease.rust-chancre": [("DamageResist", "PeakValueModifier", 25.0, 0)],  # armour lowered
+    "disease.greenspore": [("Health", "PeakValueModifier", 25.0, 0)],  # as Sanguinare's: health lowered
+    "poison.wasp-sting": [("Stamina", "ValueModifier", 5.0, 5)],  # damage stamina over time
+    "poison.frog-breath": [("Health", "ValueModifier", 5.0, 5), ("SpeedMult", "ValueModifier", 25.0, 5)],
+    "poison.voriplasm-acid": [("Health", "ValueModifier", 7.0, 7), ("DamageResist", "ValueModifier", 25.0, 7)],
+}
+
+
+def spell_form(aid: str) -> str:
+    """The SPEL a creature's attack carries for one affliction: the mod's own, else ours."""
+    if aid in MOD_SPELLS:
+        return MOD_SPELLS[aid]
+    return f"{SPELL_BASE + 2 * list(ro.AFFLICTIONS).index(aid) + 1:06X}:{PLUGIN}"
+
+
+def afflictions() -> list[dict]:
+    out = []
+    for i, (aid, (kind, name, _eff, _src)) in enumerate(ro.AFFLICTIONS.items()):
+        if aid in MOD_SPELLS:
+            continue
+        if aid not in OUR_EFFECTS:
+            raise KeyError(f"{aid}: neither a mod's spell nor ours")
+        out.append({"mgef": f"{SPELL_BASE + 2 * i:06X}:{PLUGIN}", "spel": spell_form(aid), "kind": kind, "name": name,
+                    "edid": f"ARG_{'Dis' if kind == 'disease' else 'Poi'}{_camel(aid.split('.', 1)[1])}",
+                    "effects": [{"av": av, "archetype": a, "magnitude": m, "duration": d}
+                                for av, a, m, d in OUR_EFFECTS[aid]]})
+    return out
+
+
+def _camel(s: str) -> str:
+    return "".join(p[:1].upper() + p[1:] for p in s.replace(".", "-").split("-"))
+
+
+def list_index(lid: str) -> int:
+    _, cls, band, medium = lid.split(".")
+    return (list(ro.CLASSES).index(cls) * len(ro.BANDS) + list(ro.BANDS).index(band)) * len(ro.MEDIUM) \
+        + list(ro.MEDIUM).index(medium)
+
+
+def list_key(lid: str) -> str:
+    return f"{LIST_BASE + list_index(lid):06X}:{PLUGIN}"
+
+
+def template_key(lid: str) -> str:
+    return f"{TEMPLATE_BASE + list_index(lid):06X}:{PLUGIN}"
+
+
+def zone_key(zid: str) -> str:
+    _, kind, band = zid.split(".")
+    return f"{ZONE_BASE + ZONE_KINDS.index(kind) * len(ro.BANDS) + list(ro.BANDS).index(band):06X}:{PLUGIN}"
+
+
+def ref_id(cx: int, cy: int, k: int) -> int:
+    x0, y0 = su.PROVINCE_CELL_SW
+    i = (cy - y0) * su.PROVINCE_CELLS + (cx - x0)
+    if not (0 <= i < su.PROVINCE_CELLS ** 2) or not (0 <= k < REF_SLOT):
+        raise ValueError(f"cell ({cx},{cy}) creature ref {k}: outside the reserved range")
+    return REF_BASE + i * REF_SLOT + k
+
+
+def masters(w) -> list[str]:
+    """The plugins whose NPC_ the lists and dens name, in the stack's plugin order (planner, 2026-11-01:
+    ArgoniaWorld.esm takes them as masters, as it does the rocks' plugins)."""
+    deps = json.loads((Path(__file__).resolve().parents[3] / "data" / "dependencies.json").read_text(encoding="utf-8"))
+    order = [p if isinstance(p, str) else p["file"] for p in deps["plugins"]]
+    used = {r["p"] for r in w.query("SELECT DISTINCT substr(form_key, 8) AS p FROM creature_list_entry")}
+    used |= {r["p"] for r in w.query("SELECT DISTINCT substr(form_key, 8) AS p FROM creature_form")}
+    return [p for p in order if p in used] + sorted(used - set(order))
+
+
+def document(w) -> dict:
+    ents: dict[str, list] = {}
+    for r in w.query("SELECT list_id, form_key, level, count FROM creature_list_entry ORDER BY list_id, form_key"):
+        ents.setdefault(r["list_id"], []).append([r["form_key"], r["level"], r["count"]])
+    lists, templates = [], []
+    for r in w.query("SELECT id FROM creature_list ORDER BY id"):
+        lid = r["id"]
+        name = _camel(lid.split(".", 1)[1])
+        lists.append({"formKey": list_key(lid), "edid": f"ARG_LCr_{name}", "entries": ents[lid]})
+        templates.append({"formKey": template_key(lid), "edid": f"ARG_Enc_{name}", "list": list_key(lid),
+                          "race": PLACEHOLDER_RACE})
+    zones = [{"formKey": zone_key(r["id"]), "edid": f"ARG_Zone_{_camel(r['id'].split('.', 1)[1])}",
+              "minLevel": r["min_level"], "maxLevel": r["max_level"], "neverResets": bool(r["never_resets"])}
+             for r in w.query("SELECT * FROM encounter_zone ORDER BY id")]
+    return {"lists": lists, "templates": templates, "zones": zones, "afflictions": afflictions()}
+
+
+def base_of(r: dict, first_form: dict[str, str] | None = None) -> tuple[str, str]:
+    """(signature, base FormKey) of one planned ref (place.plan_cell's kinds)."""
+    if r["kind"] == "spawn":
+        return "ACHR", template_key(r["base"])
+    if r["kind"] == "den":
+        return "REFR", DEN_MARKER
+    return "ACHR", r["base"]  # the predator: the mod's own NPC_
+
+
+def write_shards(refs: list[dict], out: Path) -> int:
+    """The planner's refs as the splice's shards (one file per cell row); returns the ref count."""
+    out.mkdir(parents=True, exist_ok=True)
+    for f in out.glob("cy*.jsonl.gz"):
+        f.unlink()
+    cells: dict[tuple[int, int], list] = {}
+    for r in refs:
+        cx, cy = r["cell"]
+        row = cells.setdefault((cx, cy), [])
+        sig, base = base_of(r)
+        row.append([ref_id(cx, cy, len(row)), sig, base, zone_key(r["zone"]) if sig == "ACHR" else None,
+                    r["x"], r["y"], r["z"], 0.0, 0.0, r["rz"]])
+    rows: dict[int, list] = {}
+    for (cx, cy), rr in sorted(cells.items()):
+        rows.setdefault(cy, []).append({"x": cx, "y": cy, "refs": rr})
+    for cy, cc in rows.items():
+        with gzip.open(out / f"cy{cy:+04d}.jsonl.gz", "wt") as f:
+            for c in cc:
+                f.write(json.dumps(c, sort_keys=True) + "\n")
+    return len(refs)
+
+
+def read_cells(out: Path):
+    for p in sorted(out.glob("cy*.jsonl.gz")):
+        with gzip.open(p, "rt") as f:
+            for line in f:
+                if line.strip():
+                    yield json.loads(line)

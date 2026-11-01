@@ -80,3 +80,28 @@ def test_blocked_mask_radius():
     m = build.blocked_mask(0, 0, np.array([[float(x), float(y)]]), np.array([10.0]))
     assert m[16, 16] and not m[0, 0]
     assert m.sum() < (2 * 10 / (su.VERTEX_SPACING_UNITS / su.UNITS_PER_METRE) + 1) ** 2 + 1
+
+
+def test_water_classes_keep_full_density_on_water():
+    """A delta or river-corridor water cell takes its band's density; elsewhere Skyrim's open-water cut applies."""
+    h = np.full((33, 33), -5.0)  # a cell wholly 5 m under water
+    lists = {(c, "D2", "water"): ["fish"] for c in ("x", "tidal-delta")}
+    r = pl.Rules(lists, {k: f"lvln.{'.'.join(k)}" for k in lists}, {"fish": FISH}, {}, {}, {"D2": 3.0})
+    n = {c: sum(len([s for s in pl.plan_cell(cx, 0, h, 0.0, c, "D2", r) if s["kind"] == "spawn"]) for cx in range(200))
+         for c in ("x", "tidal-delta")}
+    assert n["tidal-delta"] > 5 * n["x"]
+
+
+def test_hostile_lists_wait_in_cover_the_rest_in_the_open():
+    h = np.full((33, 33), 5.0)  # dry flat land
+    x0, y0 = pl.vertex_xy(3, 4, 0, 0)
+    bush = np.array([[x0 + k, y0 - k] for k in range(5)], np.float32)  # a thicket at the cell's north-west corner
+    cov = pl.cover_counts(3, 4, bush)
+    assert cov[0, 0] >= pl.COVER_MIN and cov[-1, -1] == 0
+    r = rules(spawns={"D2": 6.0}, dens={})
+    r.lists = {("x", "D2", "land"): ["rat"]}
+    for hostile, want in ((True, "bush"), (False, "open")):
+        r.hostile = {"rat": hostile}
+        got = [s for s in pl.plan_cell(3, 4, h, 0.0, "x", "D2", r, None, cov) if s["kind"] == "spawn"]
+        assert got and all(s["cover"] == want and s["ambush"] is hostile for s in got)
+        assert all(bool(cov[s["i"], s["j"]] >= pl.COVER_MIN) == hostile for s in got)

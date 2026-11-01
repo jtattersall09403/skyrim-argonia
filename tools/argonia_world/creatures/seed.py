@@ -6,7 +6,7 @@ at the band's fixed level; one wild and one clearable zone per band.
 """
 from __future__ import annotations
 
-from tools.argonia_world.creatures import roster as ro
+from tools.argonia_world.creatures import records, roster as ro
 
 TABLES = ("creature", "creature_band", "creature_form", "creature_region_class", "creature_spawn_rule",
           "danger_band_level", "creature_affliction", "danger_band_effect", "creature_list", "creature_list_entry",
@@ -87,7 +87,7 @@ def seed(w, inv: dict) -> dict[str, int]:
         w.insert("creature_affliction", id=a, kind=kind, name=name, effect=eff, source=src)
     for b, cid, a, carrier, ch, why in ro.EFFECTS:
         w.insert("danger_band_effect", band=b, creature_id=cid, affliction_id=a, carrier=carrier, chance=ch,
-                 spell_form=None, why=why)
+                 spell_form=records.spell_form(a), why=why)
     for c in ro.CLASSES:
         for b in ro.BANDS:
             for m in ro.MEDIUM:

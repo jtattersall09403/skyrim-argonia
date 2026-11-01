@@ -85,11 +85,16 @@ def records(w) -> list[dict]:
             for r in rows]
 
 
+def stack_order() -> list[str]:
+    """The stack's plugin order (data/dependencies.json)."""
+    import json
+    deps = json.loads((Path(__file__).resolve().parents[3] / "data" / "dependencies.json").read_text(encoding="utf-8"))
+    return [p if isinstance(p, str) else p["file"] for p in deps["plugins"]]
+
+
 def masters(w) -> list[str]:
     """The plugins whose forms the region lists place, in the stack's plugin order: ArgoniaWorld.esm's REFRs are
     spliced in after Mutagen writes it (VegetationRecords.cs), so it names them as masters up front."""
-    import json
-    deps = json.loads((Path(__file__).resolve().parents[3] / "data" / "dependencies.json").read_text(encoding="utf-8"))
-    order = [p if isinstance(p, str) else p["file"] for p in deps["plugins"]]
+    order = stack_order()
     used = {r["p"] for r in w.query("SELECT DISTINCT substr(form_key, 8) AS p FROM land_region_object")} - {PLUGIN}
     return [p for p in order if p in used] + sorted(used - set(order))

@@ -7,7 +7,7 @@
                          code or inputs change) and print its sha256
     pipeline.py ids      `plugin` without rebuilding out/ArgoniaWorld.esm (built only when missing): Argonia.esm, its
                          YAML and the FormIDs it allocates, over the master already there
-    pipeline.py vegetation  (2.W4 §a; `plugin` and the gate's sample build already include it) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
+    pipeline.py vegetation  (2.W4 §a and 1.15 §g's creatures; `plugin` and the gate's sample build already include it) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
                          (tools/argonia_world/vegetation; its L1 checks and the spliced plugin's read-back)
     pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
@@ -323,6 +323,15 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
         run(*(CAP if CAP else []), GEN, "vegetation", "--in", esm, "--veg", vdir, "--out", tmp)
         tmp.replace(esm)
         print(run(sys.executable, "-m", "tools.argonia_world.vegetation", "readback", "--out", vdir, "--esm", esm,
+                  "--gen", GEN).strip())
+    if veg:  # 1.15 §g, with the vegetation (both place on every cell): the spawn ACHRs and dens (CreatureRecords.cs)
+        cdir = into / "creatures"
+        run(sys.executable, "-m", "tools.argonia_world.creatures", "build", "--out", cdir, "--veg", vdir,
+            *(["--sample"] if sample else []), capped=True)
+        tmp = esm.with_suffix(".cr.esm")
+        run(*(CAP if CAP else []), GEN, "creatures", "--in", esm, "--refs", cdir, "--out", tmp)
+        tmp.replace(esm)
+        print(run(sys.executable, "-m", "tools.argonia_world.creatures", "readback", "--out", cdir, "--esm", esm,
                   "--gen", GEN).strip())
     return esm
 

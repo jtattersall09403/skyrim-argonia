@@ -100,7 +100,13 @@ static class VegetationRecords
         return null;
     }
 
-    public static int Run(string inPath, string vegDir, string outPath)
+    public static int Run(string inPath, string vegDir, string outPath) =>
+        Splice(inPath, outPath, "vegetation", (masters, own) => (Load(vegDir, masters, own, out var n), n));
+
+    /// The plugin at inPath with each cell's records (bytes from `load`, given the plugin's masters and its own
+    /// load index) appended to that cell's Temporary group; every group above grown and HEDR's count raised.
+    public static int Splice(string inPath, string outPath, string label,
+                             Func<IReadOnlyList<string>, uint, (Dictionary<(int, int), byte[]>, long)> load)
     {
         var b = File.ReadAllBytes(inPath);
         if (Tag(b, 0) != "TES4") throw new InvalidDataException($"{inPath}: not a plugin");
@@ -113,7 +119,7 @@ static class VegetationRecords
             if (Tag(b, p) == "MAST") masters.Add(Encoding.ASCII.GetString(b, p + 6, len).TrimEnd('\0'));
             p += 6 + len;
         }
-        var cells = Load(vegDir, masters, (uint)masters.Count << 24, out var n);
+        var (cells, n) = load(masters, (uint)masters.Count << 24);
         // pass 1: what each group gains, and where each cell's REFRs go (its Temporary group's offset)
         var gain = new Dictionary<int, long>();
         var insert = new Dictionary<int, byte[]>();
@@ -149,7 +155,7 @@ static class VegetationRecords
         }
         Walk(tesEnd, b.Length);
         if (placed != cells.Count)
-            throw new InvalidDataException($"vegetation: {cells.Count - placed} cells have no Temporary group in {inPath}");
+            throw new InvalidDataException($"{label}: {cells.Count - placed} cells have no Temporary group in {inPath}");
         // pass 2: the copy, sizes grown, REFRs at each Temporary group's end
         Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(outPath))!);
         using var fo = new FileStream(outPath, FileMode.Create, FileAccess.Write, FileShare.None, 1 << 20);
@@ -179,7 +185,7 @@ static class VegetationRecords
             }
         }
         Copy(tesEnd, b.Length);
-        Console.WriteLine($"vegetation: {outPath}: {n} REFRs spliced into {placed} cells");
+        Console.WriteLine($"{label}: {outPath}: {n} records spliced into {placed} cells");
         return 0;
     }
 
@@ -200,16 +206,24 @@ static class VegetationRecords
                         foreach (var r in c.Temporary)
                         {
                             var id = r.FormKey.ID;
-                            if (r is IPlacedObjectGetter p && id >= first && id <= last)
+                            if (id < first || id > last) continue;
+                            if (r is IPlacedObjectGetter p)
                             {
                                 _ = p.Base.FormKey;
                                 _ = p.Placement?.Position;
                                 k++;
                             }
+                            else if (r is IPlacedNpcGetter a)  // the creatures' ACHRs (CreatureRecords.cs)
+                            {
+                                _ = a.Base.FormKey;
+                                _ = a.EncounterZone.FormKey;
+                                _ = a.Placement?.Position;
+                                k++;
+                            }
                         }
                         if (k > 0 && c.Grid is { } g) { w.WriteLine($"{{\"x\":{g.Point.X},\"y\":{g.Point.Y},\"n\":{k}}}"); total += k; }
                     }
-        Console.WriteLine($"vegcheck: {total} vegetation REFRs read back");
+        Console.WriteLine($"vegcheck: {total} refs in the range read back");
         return 0;
     }
 }

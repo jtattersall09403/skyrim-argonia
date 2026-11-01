@@ -1,6 +1,6 @@
 # Lane 1.15-creatures: report
 
-Brief: [briefs/1.15-creatures.md](briefs/1.15-creatures.md). Session 1, 2026-11-01.
+Brief: [briefs/1.15-creatures.md](briefs/1.15-creatures.md). Sessions 1 and 2, 2026-11-01.
 
 ## The vanilla measurement
 
@@ -20,8 +20,13 @@ are cached at ~/.cache/argonia-vanilla/actors.pkl; the Tamriel cache is load.py'
 - **Dens.** 32% of creature refs stand within 60 m of a door, and the door distance runs 15 / 93 / 185 m at
   p10 / p50 / p90.
 - **Hostility.** 25% of refs are hostile overall: open 19%, forest 22%, shore 29%, water 57%.
-- **Not usable yet.** Distance to a named cell is useless because most Tamriel cells carry an editor ID. Road
-  distance and day/night packages are not measured yet (owed).
+- **Not usable.** Distance to a named cell is useless because most Tamriel cells carry an editor ID.
+- **Roads and day/night** (`python3 -m tools.argonia_world.vanilla.creature_habits`, 28 s uncached). Of 2,925
+  creature ACHRs, 7.8% stand within 512 units (7 m) of a road vertex; the distance runs 10.6 / 84.7 / 117 m at
+  p10 / p50 / p90, and 42% have no road in their 3 x 3 cells. Roads are LTEX LDirtPath01, LDirtSnowPath01 and
+  LSnowCobble01 at opacity 0.5 or more. All 206 creature NPC_ behind the refs are all-day: 10 have a sleep package
+  beside unscheduled ones, 2 have a scheduled package, and 114 have none. **Rule:** no day/night split and no road
+  attraction. Our no-spawn radii already keep spawns off settled ground.
 - **Verdict.** We use the same method. We differ deliberately in one way: our levels are fixed per band, never
   scaled to the player (76 §128).
 
@@ -40,7 +45,17 @@ not committed.
 | Tropical Skyrim Birds | 42 (42) | 495 | 0 | 261 |
 
 The modders group their creatures heavily: Cipactli places 73% of its exterior refs grouped. Water creatures sit
-in water. Slope, tree distance and day/night packages per mod are owed.
+in water. Habits per mod, measured in each mod's own worldspace (creature_habits.py):
+
+| Plugin | Refs | Slope p50 / p90 / max (deg) | Tree distance p10 / p50 / p90 (m) | Day/night |
+|---|---|---|---|---|
+| King of the Murkmire | 589 | 5.1 / 10.6 / 39.1 | 3.4 / 6.5 / 30.2 | all-day |
+| Black Marsh.esm | 750 | 0.0 / 10.3 / 78.9 | 1.5 / 6.8 / 20.9 | all-day |
+| HTBM Curse of Cipactli | 565 | 3.6 / 17.4 / 65.0 | 3.3 / 9.9 / 39.6 | all-day |
+
+The modders stand creatures near trees (6.5–9.9 m at the median) and on gentle ground (p90 10–17 degrees). Both
+habits support the cover rule below: 8 m is their median tree distance. The slope caps in creature_spawn_rule
+(30–90 degrees) are not tightened, because the mods' maxima reach 39–79 degrees.
 
 74 mod forms are joined to 34 creature kinds (`creature_form`). Seven new kinds come from the lore, each with a
 fact id in its `why_here`: singing frog, dragon frog, burglar crab, marsh turtle, giant centipede, giant snail and
@@ -65,6 +80,13 @@ critters, and medusa is placed by its place record.
   the nearest place alone, which made whole dungeon surrounds D5 and empty.
 - **Dens.** A den marker carries its creature (the first mod form) within 6 m.
 - **Zones.** Each band has a wild zone (onRest) and a clearable zone (untilCleared).
+- **Water classes** (session 2). On tidal-delta and deep-river-corridor cells, water is the creatures' home. Skyrim's
+  open-water cut (×0.09 count, 0.1 medium weight) does not apply there. Before this change those classes had 19
+  refs in 50 cells and 9 in 45.
+- **Cover and ambush** (session 2). A vertex is bush when 3 or more vegetation stems lie within 8 m. That is 60% of
+  a vanilla forested cell's p95 stem density, and 8 m is the mods' median tree distance. A list whose entries are
+  mostly hostile spawns in the bush; this is the ambush point, after 74-ecology's ambushers. Other lists spawn in
+  the open. On the 1.15 sample: 99 bush, 4 open, and 21 untagged where the medium has no such vertex.
 
 ## Counts
 
@@ -79,7 +101,26 @@ Province refs by medium: land 3,943, shore 1,648, water 547.
 
 Afflictions are in `creature_affliction` (6 diseases from fauna-hazards "Diseases", plus 5 poisons). The band →
 creature → affliction rows are in `danger_band_effect` (21 rows). Their `spell_form` is NULL everywhere: the mods'
-own SPEL forms have not been read yet (owed).
+`spell_form` is now set on every row (records.spell_form). Four afflictions use the mods' own SPEL: Swamp Rot and
+Swamp Fever (KotM DiseaseSwampRot / DiseaseSwampFever), Adder Venom (Cipactli mihailsnakepoisonVIPER) and
+Centipede Numbing (KotM mihailgiantcentipede_poisonspit_spell). The other seven are ours, in ArgoniaWorld.esm at
+0x0D3000+. Each is one MGEF per actor value plus a SPEL, copying Skyrim.esm's own shapes. Diseases are SPIT 1,
+constant, contact, PeakValueModifier 25 or a regen ×2.5 (Rattles). Poisons are SPIT 5, contact, ValueModifier
+5–7 points over 5–7 s (crChaurusPoisonBite). Why: no mod ships these afflictions.
+
+## The records (session 2)
+
+ArgoniaWorld.esm holds the creature records, with KotM, Cipactli, Black Marsh.esm and TS Birds as masters (the
+planner's ruling). records.py turns the rows into world.json's "creatures" section and into the splice shards:
+- LandWorld.cs → CreatureRecords.Add writes 81 LVLN (LVLF 3, entries at the band level), 81 NPC_ templated on them
+  (template flags 0x1FFF, RNAM FoxRace: Skyrim.esm's shape for all 451 of its LVLN-templated NPC_) and 10 ECZN
+  (min = max).
+- `ArgoniaGen creatures` splices spawn and predator ACHRs (NAME, XEZN, DATA) and den REFRs (XMarkerHeading) into
+  each cell's Temporary group, through VegetationRecords.Splice.
+- `creatures readback` compares the count per cell through Mutagen with the planner's.
+
+Ids are computed, never allocated: lists at 0x0D0000, templates 0x0D1000, zones 0x0D2000, refs 0xE00000 +
+cell × 64.
 
 ## What 1.14 must read
 
@@ -89,27 +130,22 @@ own SPEL forms have not been read yet (owed).
 
 ## Starting state (hand-off)
 
-**Done.** These are green:
-- the measurement;
-- the inventory;
-- the schema: 10 tables, seeded;
-- the planner;
-- `creatures check`: 5 checks green on the sample in 15 s;
-- `pytest tools/argonia_world/creatures`: 7 passed;
-- `db check`;
-- `tests/journeys/creature-walk.yaml`: 14 steps, `--dry` ok. It is generated by
-  `python3 -m tools.argonia_world.creatures.journey` from out/creatures/spawns.jsonl.
+**Done (session 2).**
+- The records: ArgoniaGen and the pipeline stage are built, `dotnet build` has 0 errors, and readback is wired.
+- Sourcing register rows exist for the 4 mods' 74 forms.
+- The checks.md 1.15 §g row's evidence is journey:creature-walk.
+- Habits are measured (creature_habits.py). The rules: no day/night split, no road rule, slope caps kept.
+- Cover and ambush points are built.
+- Afflictions are realised (spell_form set; 7 MGEF/SPEL of ours).
+- Water classes have a full density rule.
+- `pytest tools/argonia_world/creatures` passes 9 tests. `creatures check` is 5 green on the sample in 8.9 s.
 
 **Owed.**
-1. ArgoniaGen records. This needs NPC_ templates over each LVLN, plus LVLN, ECZN and ACHR (with XEZN) spliced in
-   the way VegetationRecords.cs does it, and a pipeline stage. Open question: ArgoniaWorld.esm would need KotM,
-   Cipactli, BM and Birds as masters, or a separate ArgoniaCreatures.esp. Rule on that first. `make plugin-check`
-   is not yet run.
-2. Sourcing register rows for every mod creature form (data/sourcing-register.json).
-3. A row in the checks.md ledger for creature-walk.
-4. The mod-placement habits not yet measured: slope, tree distance, day/night packages. Also roads and vanilla
-   day/night.
-5. Bush/open cover from the vegetation density, and ambush points by hostility.
-6. Afflictions realised as the mods' SPEL forms where they exist.
-7. Thin classes: tidal-delta (19 refs) and deep-river-corridor (9) are few in the province. Check their cells'
-   bands and lists.
+1. `make plugin-check` with the creature stage: see the return line. Re-pin
+   tools/argonia_world/terrain/sample-manifest.json deliberately once the sample hash changes for the creature
+   records.
+2. (Done.) Province after the water-class rule took 22 s: 6,115 refs. Tidal-delta now has 36 refs in 50 cells and
+   deep-river-corridor 33 in 45, about 0.7 per cell, which is their D2–D3 band's value. Cover: 1,501 bush and 679
+   open. The rest are untagged, because the province vegetation shards are partial while terrain rebuilds.
+3. The L4 checks are owed to the round's batch: creature-walk, and the first load with the ESP masters.
+4. 1.14 applies the afflictions on hit (the spell_form is data). The creatures carry no spell yet.

@@ -1078,5 +1078,41 @@
     "used_by": "tools/argonia_world/vegetation/rocks.py (ROCKS: the mesh paths, FormIDs 0x0C0000+ in ArgoniaWorld.esm), world/db/object_form.jsonl (OBND from each NIF), tools/ArgoniaGen/LandWorld.cs (the STATs)",
     "notes": "1.15 planner ruling: BM&V ships 312 rock meshes with no record and only 2 boulder forms; our STAT names the mesh path only (route 1 data)",
     "linked_or_forked_by": "linked: our record names the path; the player's BM&V supplies the mesh; no mesh is committed or shipped (0003)"
+  },
+  {
+    "name": "Black Marsh.esm: 8 creature NPC_ forms in our levelled lists and dens (1.15 §g)",
+    "source_url": "https://www.moddb.com/mods/black-marsh-valenwood",
+    "version": "the manifest's row (data/dependencies.json); the forms in world/db/creature_form.jsonl",
+    "licence": "as the mod's own row in this register",
+    "used_by": "world/db/creature_form.jsonl and creature_list_entry.jsonl, tools/argonia_world/creatures/records.py (ArgoniaWorld.esm's LVLN entries and den ACHRs), tools/ArgoniaGen/CreatureRecords.cs",
+    "notes": "forms: 0AncientTree (07A60C, marsh-giant); 0Forestspider (07A610, hoarvor); 0GiantLeech (07F934, giant-leech); 0wolfdrake (06B1E1, bog-dog); Leech (084AD6, giant-leech); RestlessDead (0AA65E, wisp); SoM_I5K0Dreugh (4506AB, dreugh); Turtle (17BC86, haj-mota)",
+    "linked_or_forked_by": "linked: our LVLN and ACHR name the mod's own NPC_ by FormID (the mod is a master of ArgoniaWorld.esm, planner 2026-11-01); nothing of the mod is committed or shipped (0003)"
+  },
+  {
+    "name": "Here There Be Monsters - Curse of Cipactli.esp: 26 creature NPC_ forms in our levelled lists and dens (1.15 §g)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35929?tab=files&file_id=576886",
+    "version": "the manifest's row (data/dependencies.json); the forms in world/db/creature_form.jsonl",
+    "licence": "as the mod's own row in this register",
+    "used_by": "world/db/creature_form.jsonl and creature_list_entry.jsonl, tools/argonia_world/creatures/records.py (ArgoniaWorld.esm's LVLN entries and den ACHRs), tools/ArgoniaGen/CreatureRecords.cs",
+    "notes": "forms: CIPHTBMBloodFlies (0FA8D3, fleshfly); CIPHTBMBogBlight (9133A1, bog-blight); CIPHTBMBogBlightF (9184D4, bog-blight); CIPHTBMCentipede (0F57AD, giant-centipede); CIPHTBMCrocodile (0A5B59, crocodile); CIPHTBMCrocodileSalt (0A5B5B, crocodile); CIPHTBMFrogBlue (0B8A73, singing-frog); CIPHTBMFrogGreen (0B8A78, singing-frog); CIPHTBMFrogRed (0B8A77, dragon-frog); CIPHTBMGallimimus (1979FC, fellrunner); CIPHTBMHackwing (744E51, hackwing); CIPHTBMHackwing2 (0B3952, hackwing); CIPHTBMMireGaunt (0FA8CF, miregaunt); CIPHTBMMosquito (0F578C, giant-wasp); CIPHTBMMudRunner (0F5797, fellrunner); CIPHTBMSeaDrake (0F57BC, sea-drake); CIPHTBMSnake1 (0F579A, moon-adder); CIPHTBMSnake2 (0F579E, moon-adder); CIPHTBMSwampJellyBetty (1ABE3F, swamp-jelly); CIPHTBMSwampJellyBull (1ABE40, swamp-jelly); CIPHTBMSwampJellyCalf (1ABE41, swamp-jelly); CIPHTBMSwampRat (0A5B50, marsh-rat); CIPHTBMTurtleFemale (0123CB, marsh-turtle); CIPHTBMTurtleMale (36A1FF, marsh-turtle); CIPHTBMTurtleYoung (018349, marsh-turtle); CIPHTBMWamasu (00660C, wamasu)",
+    "linked_or_forked_by": "linked: our LVLN and ACHR name the mod's own NPC_ by FormID (the mod is a master of ArgoniaWorld.esm, planner 2026-11-01); nothing of the mod is committed or shipped (0003)"
+  },
+  {
+    "name": "King of the Murkmire.esp: 33 creature NPC_ forms in our levelled lists and dens (1.15 §g)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/190459?tab=files&file_id=822292",
+    "version": "the manifest's row (data/dependencies.json); the forms in world/db/creature_form.jsonl",
+    "licence": "as the mod's own row in this register",
+    "used_by": "world/db/creature_form.jsonl and creature_list_entry.jsonl, tools/argonia_world/creatures/records.py (ArgoniaWorld.esm's LVLN entries and den ACHRs), tools/ArgoniaGen/CreatureRecords.cs",
+    "notes": "forms: ALPAAlit01 (000903, alit); ArgoniaEncGiantSnail02 (0009E2, giant-snail); ArgoniaEncLargeSnail01 (0009DE, giant-snail); ArgoniaEncLargeSnail02 (0009DF, giant-snail); ArgoniaEncSnail01 (0009DC, jassa-red-slug); ArgoniaEncSnail02 (0009DB, jassa-red-slug); EncCrocodileBlackMarsh01 (000A04, crocodile); EncCrocodileBlackMarsh02 (4E5712, crocodile); EncMudcrabGiantBlackMarsh (265A26, burglar-crab); EncMudcrabLargeBlackMarsh (265A25, burglar-crab); EncMudcrabMediumBlackMarsh (265A23, burglar-crab); EncSlaughterfishBlackMarsh (2608B2, slaughterfish); FrogBlue01 (000A17, singing-frog); FrogBlue01Giant (01A7F9, death-hopper); FrogBrown01 (000A1B, dragon-frog); FrogBrown01Giant (01A7FA, death-hopper); FrogGreen01 (000A13, singing-frog); FrogGreen01Giant (01A7FB, death-hopper); FrogRed01 (000A1A, dragon-frog); FrogRed01Giant (01A7FC, death-hopper); GiantCentipede01 (000B15, giant-centipede); GiantSnakeBlue01 (00FF15, kaj-thux); GiantSnakeBrown01 (000C1E, kaj-thux); GiantSnakeGreen01 (000B76, kaj-thux); GiantSnakeRed01 (000C31, kaj-thux); KotuGava01 (00097F, kotu-gava); KotuGava01Large (000981, kotu-gava); KotuGava02 (000906, kotu-gava); KotuGava02Large (0008F6, kotu-gava); Voriplasm01 (000C7C, voriplasm); Voriplasm02 (000C8E, voriplasm); Voriplasm03 (000C92, voriplasm); Wamasu01 (000823, wamasu)",
+    "linked_or_forked_by": "linked: our LVLN and ACHR name the mod's own NPC_ by FormID (the mod is a master of ArgoniaWorld.esm, planner 2026-11-01); nothing of the mod is committed or shipped (0003)"
+  },
+  {
+    "name": "Tropical Skyrim -- Birds.esp: 7 creature NPC_ forms in our levelled lists and dens (1.15 §g)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78044?tab=files&file_id=328450",
+    "version": "the manifest's row (data/dependencies.json); the forms in world/db/creature_form.jsonl",
+    "licence": "as the mod's own row in this register",
+    "used_by": "world/db/creature_form.jsonl and creature_list_entry.jsonl, tools/argonia_world/creatures/records.py (ArgoniaWorld.esm's LVLN entries and den ACHRs), tools/ArgoniaGen/CreatureRecords.cs",
+    "notes": "forms: 01BOSActorKingfisher (014EDB, marsh-bird); 01BOSActorRaven (014EC0, crow); 01BOSActorSeagull (004EBB, marsh-bird); 01BOSCrow1 (003E86, crow); 01BOSGreycrow (004950, crow); 01BOSOystercatcher (00FD62, marsh-bird); 01BOSPectoralSandpiper (00FD61, marsh-bird)",
+    "linked_or_forked_by": "linked: our LVLN and ACHR name the mod's own NPC_ by FormID (the mod is a master of ArgoniaWorld.esm, planner 2026-11-01); nothing of the mod is committed or shipped (0003)"
   }
 ]

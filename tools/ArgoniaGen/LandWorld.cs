@@ -60,6 +60,7 @@ static class LandWorld
                 Model = new Model { File = S(r, "model") },
             });
         }
+        if (root.TryGetProperty("creatures", out var cr0)) CreatureRecords.Add(mod, cr0);  // 1.15 §g: LVLN, NPC_, ECZN
         var xclr = new Dictionary<(int, int), FormKey>();
         foreach (var run in root.TryGetProperty("cellRegions", out var cr) ? cr.EnumerateArray() : Enumerable.Empty<JsonElement>())
             for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)
@@ -114,7 +115,7 @@ static class LandWorld
             .WithLoadOrder(loadOrder.Append(modKey))
             .WithDataFolder(data)
             .WithExtraIncludedMasters((root.TryGetProperty("extraMasters", out var em) ? em.EnumerateArray() : Enumerable.Empty<JsonElement>())
-                .Select(e => ModKey.FromFileName(e.GetString()!)).ToArray())  // the vegetation splice's bases (vegetation/rocks.py)
+                .Select(e => ModKey.FromFileName(e.GetString()!)).ToArray())  // the vegetation and creature splices' bases (vegetation/rocks.py, creatures/records.py)
             .SingleThread()  // the parallel writer buffers every block in memory: 3.2 GB peak against 0.95 GB here
             .Write();
         Console.WriteLine($"world: {outPath}: 1 WRLD, {mod.Regions.Count} REGN shells, {n} cells with LAND");

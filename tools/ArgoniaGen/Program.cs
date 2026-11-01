@@ -7,6 +7,7 @@
 //   ltex       --data <dir> --plugins a.esm,b.esp --out <json>   every LTEX's winning copy and every GRAS (LandTextures.cs)
 //   world      --in <json> --land <dir> --data <dir> --out <ArgoniaWorld.esm> [--water <dir>] [--navmesh <dir>]   the generated ground (LandWorld.cs), its water (WaterRecords.cs) and navmesh (NavmeshRecords.cs)
 //   vegetation --in <ArgoniaWorld.esm> --veg <dir> --out <esm>   the vegetation REFRs spliced into each cell's Temporary group (VegetationRecords.cs)
+//   creatures  --in <ArgoniaWorld.esm> --refs <dir> --out <esm>   the creature ACHRs and den REFRs spliced in (CreatureRecords.cs)
 //   vegcheck   --in <esm> --first <hex> --last <hex> --out <jsonl>   its Mutagen read-back: vegetation REFRs per cell
 //   perks      --in <perk_text.jsonl> --data <dir> --out <ArgoniaPerks.esp>   the skill-tree perks' reworded names, derived at install (PerkRecords.Plugin)
 //   links      --data <dir> --order <file> --check a.esm,b.esm [--ours <dir>]   every FormLink and master resolved in the game's order (LinkCheck.cs)
@@ -51,6 +52,10 @@ try
             return VegetationRecords.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                          Opt("--veg") ?? throw new ArgumentException("missing --veg"),
                                          Opt("--out") ?? throw new ArgumentException("missing --out"));
+        case "creatures":
+            return CreatureRecords.Run(Opt("--in") ?? throw new ArgumentException("missing --in"),
+                                       Opt("--refs") ?? throw new ArgumentException("missing --refs"),
+                                       Opt("--out") ?? throw new ArgumentException("missing --out"));
         case "vegcheck":
             return VegetationRecords.Check(Opt("--in") ?? throw new ArgumentException("missing --in"),
                                            Convert.ToUInt32(Opt("--first") ?? "0", 16), Convert.ToUInt32(Opt("--last") ?? "FFFFFF", 16),

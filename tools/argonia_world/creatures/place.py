@@ -24,7 +24,7 @@ from __future__ import annotations
 
 import math
 import zlib
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import numpy as np
 
@@ -33,7 +33,17 @@ from tools.argonia_world import skyrim_units as su
 SEED = 0xC4EA
 WATER_WEIGHT = 0.1
 WATER_CELL = 0.09  # Skyrim.esm: a cell more than half under water holds 8.7 creature refs per 100, a shore cell 105
+# The classes whose water is the creatures' home (74-ecology: the delta's mudflats and channels, the river corridor's
+# deep reaches): Skyrim's open-water cut (WATER_CELL, WATER_WEIGHT: its lakes and sea hold few creatures) does not
+# apply; their water and shore cells take the band's full density (before: tidal-delta 19 refs in 50 cells,
+# deep-river-corridor 9 in 45, province run of 2026-11-01).
+WATER_CLASSES = frozenset({"tidal-delta", "deep-river-corridor"})
 DEN_BESIDE_M = 6.0
+# Cover: a vertex with COVER_MIN vegetation stems within COVER_R_M is bush, else open. 3 stems in 8 m (201 m2) is
+# 60 % of the stem density of a vanilla forested cell at its p95 (83 stems per 3,422 m2 cell; vegetation/place.py
+# VANILLA_P95): where a body can be hidden from the path.
+COVER_R_M = 8.0
+COVER_MIN = 3
 STEP_M = su.VERTEX_SPACING_UNITS / su.UNITS_PER_METRE
 U = su.UNITS_PER_METRE
 
@@ -64,6 +74,13 @@ class Rules:
     first_form: dict[str, str]
     dens: dict[tuple[str, str], list[tuple[str, float]]]  # (class, band) -> [(creature, dens per 100 cells)]
     spawns: dict[str, float]  # band -> per cell
+    hostile: dict[str, bool] = field(default_factory=dict)  # creature -> hostile (74-ecology's hostility column)
+
+    def ambush(self, key) -> bool:
+        """A list whose entries are mostly hostile waits in cover (74-ecology: the crocodile ambushes from the bank,
+        the death hopper from under the surface, the giant snake from its reedbed coil); the rest stand in the open."""
+        cs = self.lists[key]
+        return sum(self.hostile.get(c, False) for c in cs) * 2 > len(cs)
 
     def list_medium(self, key) -> Medium:
         """The strictest rule over a list's entries (every entry's habitat must allow the point)."""
@@ -95,7 +112,8 @@ def load_rules(w) -> Rules:
     for r in w.query("SELECT creature_id, form_key FROM creature_form ORDER BY rowid"):
         first.setdefault(r["creature_id"], r["form_key"])
     spawns = {r["band"]: r["spawns_per_cell"] for r in w.query("SELECT * FROM danger_band_level")}
-    return Rules(lists, ids, med, first, dens, spawns)
+    hostile = {r["id"]: r["hostility"] == "hostile" for r in w.query("SELECT id, hostility FROM creature")}
+    return Rules(lists, ids, med, first, dens, spawns, hostile)
 
 
 def slope_deg(h: np.ndarray) -> np.ndarray:
@@ -118,8 +136,20 @@ def vertex_xy(cx: int, cy: int, i: np.ndarray, j: np.ndarray) -> tuple[np.ndarra
     return x, y
 
 
+def cover_counts(cx: int, cy: int, stems: np.ndarray | None) -> np.ndarray | None:
+    """Stems (n x 2 units, the cell's vegetation refs) within COVER_R_M of each of the cell's 33 x 33 vertices."""
+    if stems is None:
+        return None
+    ii, jj = np.mgrid[0:su.QUADS_PER_CELL + 1, 0:su.QUADS_PER_CELL + 1]
+    x, y = vertex_xy(cx, cy, ii, jj)
+    if not len(stems):
+        return np.zeros(ii.shape, int)
+    d2 = (x[..., None] - stems[:, 0]) ** 2 + (y[..., None] - stems[:, 1]) ** 2
+    return (d2 < (COVER_R_M * U) ** 2).sum(-1)
+
+
 def plan_cell(cx: int, cy: int, h: np.ndarray, level: float, cls: str, band: str, rules: Rules,
-              blocked: np.ndarray | None = None) -> list[dict]:
+              blocked: np.ndarray | None = None, cover: np.ndarray | None = None) -> list[dict]:
     """The spawn refs of one cell. h: 33 x 33 ground metres (row 0 north); level: the cell's water (its own, or
     the nearest water's level on a dry cell); blocked: vertices inside a no-spawn radius."""
     rng = rng_for(cx, cy)
@@ -133,7 +163,8 @@ def plan_cell(cx: int, cy: int, h: np.ndarray, level: float, cls: str, band: str
         k = (cls, band, m)
         if k in rules.lists:
             masks[m] = rules.list_medium(k).mask(depth, slope, m) & free
-    weights = {m: v.sum() * (WATER_WEIGHT if m == "water" else 1.0) for m, v in masks.items()}
+    wet = cls in WATER_CLASSES
+    weights = {m: v.sum() * (WATER_WEIGHT if m == "water" and not wet else 1.0) for m, v in masks.items()}
     tot = sum(weights.values())
 
     def put(kind, base, m, mask, extra=None, near=None):
@@ -159,10 +190,18 @@ def plan_cell(cx: int, cy: int, h: np.ndarray, level: float, cls: str, band: str
     if tot > 0:
         ms = list(weights)
         pr = np.array([weights[m] for m in ms], float) / tot
-        e = rules.spawns[band] * (WATER_CELL if (depth > 0).mean() > 0.5 else 1.0)
+        e = rules.spawns[band] * (WATER_CELL if (depth > 0).mean() > 0.5 and not wet else 1.0)
         for _ in range(_count(rng, e)):
             m = ms[int(rng.choice(len(ms), p=pr))]
-            put("spawn", rules.list_ids[(cls, band, m)], m, masks[m])
+            mask = masks[m]
+            tag = {}
+            if cover is not None:  # bush or open by the vegetation; a hostile list waits in the bush (an ambush point)
+                amb = rules.ambush((cls, band, m))
+                pick = mask & ((cover >= COVER_MIN) if amb else (cover < COVER_MIN))
+                if pick.any():
+                    mask = pick
+                    tag = {"cover": "bush" if amb else "open", "ambush": amb}
+            put("spawn", rules.list_ids[(cls, band, m)], m, mask, tag)
     for cid, per100 in rules.dens.get((cls, band), []):
         if rng.random() >= per100 / 100.0:
             continue

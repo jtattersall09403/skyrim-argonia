@@ -62,8 +62,18 @@ def blocked_mask(cx: int, cy: int, P: np.ndarray, R: np.ndarray) -> np.ndarray:
     return m
 
 
-def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=print) -> dict:
+def stems(veg: Path | None) -> dict[tuple[int, int], np.ndarray] | None:
+    """The vegetation's stems per cell (x, y units) from its shards (vegetation/build.py), or None."""
+    if veg is None or not any(veg.glob("cy*.jsonl.gz")):
+        return None
+    from tools.argonia_world.vegetation import build as vb
+    return {(c["x"], c["y"]): np.array([[r[2], r[3]] for r in c["refs"]], np.float32).reshape(-1, 2)
+            for c in vb.read_cells(veg)}
+
+
+def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=print, veg: Path | None = None) -> dict:
     t0 = time.time()
+    st = stems(veg)
     rules = pl.load_rules(w)
     cls = cell_classes(w)
     pp = places(w)
@@ -82,10 +92,12 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
         h = src.heights(r0, r1 + 1, c0, c1 + 1)
         lv = cw.level(cx, cy)
         level = lv if lv is not None else cw.nearest_level(cx, cy)
-        refs += pl.plan_cell(cx, cy, h, level, c, band, rules, blocked_mask(cx, cy, P, R))
+        cov = None if st is None else pl.cover_counts(cx, cy, st.get((cx, cy), np.zeros((0, 2), np.float32)))
+        refs += pl.plan_cell(cx, cy, h, level, c, band, rules, blocked_mask(cx, cy, P, R), cov)
     summ = {"cells": len(cells), "skipped": skipped, "refs": len(refs),
             "by_kind": _count(refs, "kind"), "by_medium": _count(refs, "medium"), "by_band": _count(refs, "band"),
-            "by_class": _count(refs, "class"), "seconds": round(time.time() - t0, 1)}
+            "by_class": _count(refs, "class"), "by_cover": _count([r for r in refs if "cover" in r], "cover"),
+            "seconds": round(time.time() - t0, 1)}
     if out:
         out.mkdir(parents=True, exist_ok=True)
         with (out / "spawns.jsonl").open("w") as f:
