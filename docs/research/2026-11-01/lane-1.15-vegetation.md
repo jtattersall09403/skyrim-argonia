@@ -151,3 +151,15 @@ chart, then lod.sh. Pins: xLODGen beta 132, DynDOLOD 3.00 Alpha-217.
   - The first load of ArgoniaWorld.esm with ESP masters.
   - `make navmesh` on the whole province.
   - Coast rocks: none listed, because the coast dossiers ground none (wet rocks, rule 5, need a wet family).
+- Session 6 (2026-11-01, marsh trees, golden rule 0034): measured Skyrim.esm's Morthal-marsh TREE refs (159 cells with
+  their own water level, 1,465 refs) against their cell's water: p5 -0.02, p10 0.17, p50 2.0, p90 4.8, p99 8.8 m above
+  it, 7.5 % with the ground under the water, bases p10 0.4 m under the ground (Riften shore: p50 4.4, p90 13 m). Rules
+  (`lists.py`): marsh canopy/emergent/palm/gallery stand -6..+1.2 m about the water, cypress-named forms -6..+2.0
+  (no mangrove form exists in the pool: the palette's 650 a ha mangrove served nothing and hid that the delta had no
+  trees); slope 38 for marsh trees; per-class tree density `MARSH_TREE_HA_BY` (lagoon 170, sink 90, delta 68, rootland
+  100, corridor 80, others 52 a ha) tops up or scales the palette's, because a lagoon or sink cell is mostly water
+  deeper than a tree stands in. Check (`checks.py`): a cell with under a quarter of its vertices within 2 m under the
+  water is open water, not a marsh cell, and is left out of a region's mean; a region of under 10 such cells is
+  reported, not failed. Province (out/terrain/land, 641652 refs, 107 s): 16 checks green; lagoon 12-25, sink 10-27,
+  delta 8-27 trees a cell (band 9-27), rootland 19-34; trees in water 18.1 % (vanilla 5.8 %), dry p10 215 u (198).
+  Open: the in-water share is 3x vanilla's. Sample 564 refs, green; pytest vegetation 24 passed.

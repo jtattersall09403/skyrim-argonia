@@ -21,7 +21,7 @@ PICK = {"canopy": 12, "emergent": 6, "gallery": 6, "mangrove": 4, "palm": 8, "sh
         "mushroom": 8, "deadwood": 5, "rock": 8}
 CORE = 3
 FAUNA = "lore topics/fauna-hazards.md:92-95 (Flora: cypress, mangrove, bamboo, palms, ferns, lucan mold)"
-AUDIT = "docs/design/research/vegetation/regional-variety-audit-2026-09-08.md"
+AUDIT = "research/vegetation/regional-variety-audit-2026-09-08.md"
 ROCKS = "docs/design/research/vegetation/rock-placement-rules.md rule 1"
 # eco class -> (the ecology's grounding, {role: why})
 WHY = {
@@ -52,6 +52,25 @@ UPLAND_DRY = ("canopy", "emergent", "palm", "gallery")
 # (vanilla's field 10, band 2.5-15, "lightly forested", blackwood-and-gloommire.md:13-14): halved, a measured ratio
 UPLAND_TREE_SCALE = 0.5
 COAST = ("coastal-lagoon", "tidal-delta")
+# Marsh trees (session 6, golden rule 0034): Skyrim.esm's Morthal-marsh trees (159 cells with their own water level,
+# 1,465 TREE refs) stand p5 -0.02, p10 0.17, p50 2.0, p90 4.8, p99 8.8 m above their cell's water, 7.5 % with the
+# ground under the waterline, their bases p10 0.4 m under the ground; Riften shore p50 4.4 m, p90 13 m. So a tree
+# is placed from the water's edge to 6 m above it (the old palette's band, -1.5..1.0, left only the 1-2 m ground
+# of our relief); the owner's vibe board (vibe-01/05/07) puts mangrove and cypress trunks IN the water, so those
+# forms may stand to 1.5 m under it. (water min/max: depth over the ground, minus the height above the table.)
+MARSH = DEEP + COAST + ("deep-river-corridor",)
+MARSH_TREE = {"canopy": (-6.0, 1.2), "emergent": (-6.0, 1.2), "palm": (-6.0, 1.2), "gallery": (-6.0, 1.2)}
+# ... and a marsh class's palette often has no canopy at all (dunmer-north coastal-lagoon: deadwood only; palms
+# 0.17 a ha elsewhere) against Skyrim.esm's marsh 18 trees a cell (52 a ha, skyrim-does-it-this-way.md section 6):
+# the canopy role tops the class's trees up to this many a ha (as placed, before the posture and slope refuse some)
+MARSH_TREE_HA = 52.0
+# ... per class, scaled by what the window measurements showed the ground refuses: a tree stands in at most 2 m of
+# water, and a lagoon or sink cell is mostly deeper (window means before the scale: lagoon 5.4, sink 4.5-6.6,
+# delta 34 trees a cell against the band 9-27)
+MARSH_TREE_HA_BY = {"coastal-lagoon": 170.0, "deep-sink-basin": 90.0, "tidal-delta": 68.0, "rootland": 100.0, "deep-river-corridor": 80.0}
+TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery")
+IN_WATER_TREE = (-6.0, 2.0)  # mangrove and cypress: trunks and roots in the water, and on the bank
+IN_WATER_NAMES = ("mangrove", "cypress")
 # role -> eco classes that admit it (None: all)
 ROLE_ECO = {"mangrove": COAST + ("deep-river-corridor",), "palm": COAST + UPLAND + ("deep-river-corridor",),
             "rock": UPLAND + ("deep-river-corridor",), "mushroom": DEEP + ("deep-river-corridor",)}
@@ -200,6 +219,19 @@ def build(w) -> dict:
         mix = role_mix(w, rid)
         for role, (q, cl, rad, sl, lo, hi) in EXTRA.get(eco, {}).items():
             mix.setdefault(role, {"per_ha": q, "clust": cl, "rad": rad, "slope": sl, "wmin": lo, "wmax": hi})
+        if eco in MARSH:
+            # roles the palette lists but no form of ours serves (the delta's mangrove, 650 a ha) count for nothing
+            real = [r for r in TREE_ROLES if r in mix and any(admits(eco, f) for f in pool.get(r, ()))]
+            have = sum(mix[r]["per_ha"] for r in real)
+            want = MARSH_TREE_HA_BY.get(eco, MARSH_TREE_HA)
+            for r in real:  # a slope bound of 14 degrees (the delta's) refused the coast's banks: trees take 38
+                mix[r]["slope"] = max(mix[r]["slope"], 38)
+            if have < want:
+                c = mix.setdefault("canopy", {"per_ha": 0.0, "clust": 3, "rad": 8.0, "slope": 30, "wmin": None, "wmax": None})
+                c["per_ha"] += want - have
+            elif eco in MARSH_TREE_HA_BY:  # the palette's own trees overshoot: scaled down to the class's number
+                for r in real:
+                    mix[r]["per_ha"] *= want / have
         if "rock" in mix and eco in ROCK_HA:
             mix["rock"]["per_ha"] = ROCK_HA[eco]
         ground, _ = WHY[eco]
@@ -219,6 +251,11 @@ def build(w) -> dict:
                 lo, hi, mn, conform = m["wmin"], m["wmax"], 0, role == "rock"
                 if eco in UPLAND and role in UPLAND_DRY:
                     lo, q = None, q * UPLAND_TREE_SCALE  # session 5: see UPLAND_DRY
+                if eco in MARSH and role in MARSH_TREE:
+                    lo, hi = MARSH_TREE[role]
+                if eco in MARSH and (role == "mangrove" or (role in MARSH_TREE and any(
+                        n in f["model"].lower() or n in f["edid"].lower() for n in IN_WATER_NAMES))):
+                    lo, hi = IN_WATER_TREE
                 if "sea" in t:
                     lo, hi = SEA_POSTURE
                 mx = m["slope"]

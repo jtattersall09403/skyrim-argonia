@@ -41,6 +41,9 @@ ECO_BAND = {"deep-river-corridor": "forest", "flooded-forest": "forest", "interi
             "rootland": "forest", "deep-sink-basin": "marsh", "coastal-lagoon": "marsh", "tidal-delta": "marsh",
             "northern-transition": "field", "western-frontier": "field"}
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")
+STAND_DEPTH_M, STAND_SHARE = 2.0, 0.25  # a cell counts toward its tree band when a quarter of its vertices lie
+# within 2 m under the water (the cypress band's depth) or above it
+BAND_MIN_CELLS = 10  # a region of fewer standable cells is a handful of cells of one coast, not a stand: reported only
 BAND_LO, BAND_HI = 0.5, 1.5  # a region's mean trees per cell within these multiples of its band's mean
 BAND_LO_FIELD = 0.25  # the hills are "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14), and the rocky
 #                       north is rock-dominated: a field region may hold down to a quarter of vanilla's field mean
@@ -113,7 +116,6 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             n += len(fids)
             counts[region].append(len(fids))
             is_tree = np.asarray([role.get(b) in TREE_ROLES for b in bases], dtype=bool)
-            trees[region].append(int(is_tree.sum()))
             if len(fids) > place.CAP:
                 fails["budget"].append(f"({cx},{cy}): {len(fids)} refs over the cap {place.CAP}")
             for k, f in enumerate(fids):
@@ -146,6 +148,10 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
                 lv = cw.level(cx, cy)
                 L = np.full(L.shape, -np.inf if lv is None else lv)
                 T = np.full(T.shape, cw.nearest_level(cx, cy))
+            # a tree band is Skyrim.esm's marsh cells with ground to stand on: a cell of open water (a lagoon's
+            # sea floor) is no marsh cell, so it is left out of the mean (session 6)
+            if (H[(cx, cy)] >= L - STAND_DEPTH_M).mean() >= STAND_SHARE:
+                trees[region].append(int(is_tree.sum()))
             depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
             wet_v = np.argwhere(L > H[(cx, cy)])
@@ -208,7 +214,7 @@ def tree_bands(trees: dict[str, list[int]], eco: dict[str, str], wet: list[int],
             m = TREE_BANDS[band][0]
             row["vanilla_mean"] = m
             lo = (BAND_LO_FIELD if band == "field" else BAND_LO) * m
-            if not (lo <= a.mean() <= BAND_HI * m):
+            if len(v) >= BAND_MIN_CELLS and not (lo <= a.mean() <= BAND_HI * m):
                 errs.append(f"{r} ({band}): {a.mean():.1f} trees per cell outside {lo:.1f}-{BAND_HI * m:.1f} "
                             f"(vanilla mean {m:g})")
         rep[r] = row

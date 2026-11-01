@@ -139,7 +139,7 @@ def test_a_quarter_of_boulders_stand_upright():
 def test_tree_band_check_flags_a_thin_forest_and_passes_a_marsh():
     from tools.argonia_world.vegetation import checks
     eco = {"a": "flooded-forest", "b": "deep-sink-basin"}
-    rep, errs = checks.tree_bands({"a": [3, 5, 4], "b": [15, 20, 19]}, eco, [1, 20], [300.0, 500.0])
+    rep, errs = checks.tree_bands({"a": [3, 5, 4] * 4, "b": [15, 20, 19]}, eco, [1, 20], [300.0, 500.0])
     assert len(errs) == 1 and errs[0].startswith("a (forest)")
     assert rep["regions"]["b"]["band"] == "marsh" and rep["in_water_share"] == 0.05
 
