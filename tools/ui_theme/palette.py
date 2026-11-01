@@ -123,3 +123,52 @@ class FramePalette(Palette):
         res = rgba.copy()
         res[..., :3] = np.clip(np.rint(out * 255), 0, 255).astype(np.uint8)
         return res
+
+    def text(self, rgb: tuple[int, int, int]) -> tuple[int, int, int]:
+        """A text field's colour on the frame ground: dark ink and grey become the body text, white the title text,
+        so every field reads light (DESIGN.md: frame-text, frame-head)."""
+        lum = float(luma(np.array(rgb, np.float32) / 255))
+        key = "frame-head" if lum > 0.9 else "frame-text"
+        return tuple(int(round(v * 255)) for v in self.t[key])
+
+    def edge(self, rgba: np.ndarray) -> np.ndarray:
+        """The System pane's panel edge drawn on a bare sheet (message box, lockpicking): a lit trim rule inset from
+        the opaque bounds, a fainter inner rule, and a lozenge at each corner."""
+        out = rgba.copy()
+        ys, xs = np.nonzero(rgba[..., 3] > 128)
+        if len(xs) == 0:
+            return out
+        x0, x1, y0, y1 = xs.min(), xs.max(), ys.min(), ys.max()
+        hi = np.rint(self.t["frame-trim-hi"] * 255).astype(np.uint8)
+        lo = np.rint(self.t["frame-trim"] * 255).astype(np.uint8)
+
+        def rule(k: int, w: int, c: np.ndarray) -> None:
+            a, b, c0, c1 = y0 + k, y1 - k, x0 + k, x1 - k
+            if b - a < 2 * w or c1 - c0 < 2 * w:
+                return
+            for sl in ((slice(a, a + w), slice(c0, c1 + 1)), (slice(b - w + 1, b + 1), slice(c0, c1 + 1)),
+                       (slice(a, b + 1), slice(c0, c0 + w)), (slice(a, b + 1), slice(c1 - w + 1, c1 + 1))):
+                out[sl][..., :3] = c
+                out[sl][..., 3] = 255
+
+        rule(2, 8, lo)  # the band, as heavy as the large pages' painted frames
+        rule(3, 2, hi)  # its lit edge
+        rule(8, 1, hi)
+        rule(14, 2, lo)  # the inner rule
+        r = 9
+        yy, xx = np.mgrid[-r:r + 1, -r:r + 1]
+        diamond = (np.abs(yy) + np.abs(xx)) <= r
+        for cy, cx in ((y0 + 6, x0 + 6), (y0 + 6, x1 - 6), (y1 - 6, x0 + 6), (y1 - 6, x1 - 6)):
+            ya, xa = max(cy - r, 0), max(cx - r, 0)
+            sub = out[ya:cy + r + 1, xa:cx + r + 1]
+            m = diamond[ya - (cy - r):ya - (cy - r) + sub.shape[0], xa - (cx - r):xa - (cx - r) + sub.shape[1]]
+            sub[m, :3] = hi
+            sub[m, 3] = 255
+        return out
+
+
+class EdgedFramePalette(FramePalette):
+    """FramePalette with the panel edge added: for the sheets whose own art carries no frame."""
+
+    def apply(self, rgba: np.ndarray) -> np.ndarray:
+        return self.edge(super().apply(rgba))

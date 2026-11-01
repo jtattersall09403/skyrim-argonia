@@ -116,3 +116,9 @@ Batches (argonia-play-ie / argonia-play, pool pick, this tree deployed each time
   after the read.
 - Not done off-game: text colours set by the movies' own fields and PlaceObject transforms are not recoloured. If the
   game shows dark text on the dark ground, the next fix is the EditText colours in the FRAME movies. Owner checks it in game.
+- Part 3b: the text fields' own colours in the FRAME movies now map to frame-text (white to frame-head)
+  (retheme.recolour_text). The message box and lockpicking sheets get the panel edge: an 8 px trim band with a lit
+  rule, an inner rule and corner lozenges (EdgedFramePalette). Stills draw text in each movie's recoloured field
+  colour. Reader on the final five: all pass on ground, trim and text. The message box and lockpicking frames were
+  hairline-weak at first, so the band was thickened after the read. Left: PlaceObject colour transforms, if any,
+  are not touched; the owner's in-game check settles it.

@@ -258,3 +258,14 @@ def test_scale_mode_covers_the_system_page():
     """Owner play test 10: the pause hub and the Journal's System page keep their stage aspect (not squashed)."""
     assert retheme.SCALE_MODE["interface/quest_journal.swf"] == "showAll"
     assert retheme.SCALE_MODE["interface/tweenmenu.swf"] == "showAll"
+
+
+def test_frame_text_fields_and_edge(tmp_path):
+    from tools.ui_theme.palette import EdgedFramePalette
+    f = FramePalette()
+    assert f.text((0, 0, 0)) == tokens()["frame-text"] and f.text((255, 255, 255)) == tokens()["frame-head"]
+    sheet = np.zeros((60, 80, 4), np.uint8)
+    sheet[5:55, 5:75] = [170, 160, 145, 255]
+    out = EdgedFramePalette().apply(sheet)
+    assert tuple(out[30, 8, :3]) == tokens()["frame-trim-hi"]  # the lit rule inset from the sheet's bounds
+    assert np.abs(out[30, 40, :3].astype(int) - np.array(tokens()["frame-ground"])).max() < 16

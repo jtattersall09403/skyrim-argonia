@@ -25,7 +25,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.ui_theme import swf
-from tools.ui_theme.palette import FramePalette, Palette
+from tools.ui_theme.palette import EdgedFramePalette, FramePalette, Palette
 
 SCOPE = ("interface/deardiary/*_bg.swf", "interface/loadingmenu.swf")
 # SWFs whose vector shapes (DefineShape fills and lines) are recoloured too: the menus and SkyUI's lists, plates and
@@ -39,6 +39,8 @@ FRAME = ("interface/quest_journal.swf", "interface/deardiary/quest_journal/*_bg.
          "interface/skyui/configpanel.swf", "interface/deardiary/configpanel/*_bg.swf",
          "interface/messagebox.swf", "interface/deardiary/messagebox/*_bg.swf",
          "interface/lockpickingmenu.swf", "interface/deardiary/lockpickingmenu/*_bg.swf")
+# Of those, the sheets whose own art has no frame: they take the System pane's panel edge too.
+EDGED = ("interface/deardiary/messagebox/*_bg.swf", "interface/deardiary/lockpickingmenu/*_bg.swf")
 EMBEDDERS = "interface/*.swf"  # menu SWFs carrying copies of the BG bitmaps (fallbacks): matched by their pixels
 # Nordic marks (0006), by path and the bitmap's measured size (w, h); cleared to transparent, not recoloured.
 CLEAR = {
@@ -92,6 +94,37 @@ def recolour_shapes(movie: swf.Movie, palette: Palette) -> int:
     return n
 
 
+def edit_text_colour(data: bytes) -> int | None:
+    """The offset of a DefineEditText's RGBA text colour, or None when it sets none."""
+    nbits = data[2] >> 3
+    p = 2 + (5 + 4 * nbits + 7) // 8
+    f1, f2 = data[p], data[p + 1]
+    p += 2
+    if f1 & 1:  # HasFont: the font id
+        p += 2
+    if f2 & 0x80:  # HasFontClass: a string
+        p = data.index(0, p) + 1
+    if f1 & 1:  # the font height
+        p += 2
+    return p if f1 & 4 else None
+
+
+def recolour_text(movie: swf.Movie, palette: FramePalette) -> int:
+    """Every text field's own colour moved onto the frame text tokens in place, alpha kept; the count."""
+    n = 0
+    for k, tag in enumerate(movie.tags):
+        if tag.code != DEFINE_EDIT_TEXT or (o := edit_text_colour(tag.data)) is None:
+            continue
+        data = bytearray(tag.data)
+        data[o:o + 3] = bytes(palette.text(tuple(data[o:o + 3])))
+        movie.tags[k] = swf.Tag(tag.code, bytes(data), tag.long)
+        n += 1
+    return n
+
+
+DEFINE_EDIT_TEXT = 37
+
+
 def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str | None = None
             ) -> tuple[bytes | None, list[str]]:
     """The movie with each bitmap decide(bitmap) returns a treatment for replaced, its vector colours mapped when
@@ -104,6 +137,9 @@ def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str 
         changed = True
     if palette is not None and (n := recolour_shapes(movie, palette)):
         notes.append(f"recoloured {n} shape colours")
+        changed = True
+    if isinstance(palette, FramePalette) and (n := recolour_text(movie, palette)):
+        notes.append(f"recoloured {n} text field colours")
         changed = True
     for k, bm in swf.bitmaps(movie):
         verdict = decide(bm)
@@ -124,6 +160,7 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None, frame:
     files = winners(roots)
     frame = frame or FramePalette()
     light = palette
+    edged = EdgedFramePalette()
     report: dict = {"files": {}, "warnings": []}
     seen: dict[str, bool] = {}  # pixel digest of every in-scope bitmap, from every root -> cleared?
     for root in roots:
@@ -138,7 +175,9 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None, frame:
         if in_scope:
             want = CLEAR.get(rel)
 
-            def decide(bm, want=want, rel=rel, palette=palette):
+            bg_palette = edged if any(fnmatch(rel, e) for e in EDGED) else palette
+
+            def decide(bm, want=want, rel=rel, palette=bg_palette):
                 if want and (bm.rgba.shape[1], bm.rgba.shape[0]) != want[0]:
                     report["warnings"].append(f"{rel}: expected {want[0]} for {want[1]}, found {bm.rgba.shape[1::-1]}")
                 return palette, bool(want)
