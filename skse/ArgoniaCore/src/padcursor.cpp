@@ -46,6 +46,7 @@ struct State {
   int close_ticks = 0;        // ticks since a close was asked (a native close may already have done it)
   std::chrono::steady_clock::time_point last;
   bool was_windows = false;
+  bool esc_close = false;  // the queued close is the keyboard's Esc: no opening guard (that is for the pad's Start)
   std::chrono::steady_clock::time_point opened;  // when the windows last opened
 } g;
 
@@ -190,7 +191,7 @@ void Do(pad::Act a) {
     case pad::Act::click_left: MouseButton(false, true); break;
     case pad::Act::click_right: MouseButton(true, true); break;
     case pad::Act::close:
-      if (pad::close_allowed(std::chrono::duration<double>(std::chrono::steady_clock::now() - g.opened).count()))
+      if (std::exchange(g.esc_close, false) || pad::close_allowed(std::chrono::duration<double>(std::chrono::steady_clock::now() - g.opened).count()))
         AskClose(State::After::none);
       break;
     case pad::Act::wait_rest: AskClose(State::After::wait); break;
@@ -304,6 +305,20 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
     if (!evs) return RE::BSEventNotifyControl::kContinue;
     const auto ctx = ContextNow();
     for (auto* e = *evs; e; e = e->next) {
+      // Esc in Wind UI's windows closes them back to play (the input map): ImGui does not consume it, so its Pause
+      // event would also open the System page (system-perks, 04:57:20). The press is swallowed and we close them.
+      if (e->GetDevice() == RE::INPUT_DEVICE::kKeyboard && ctx == pad::Context::windows) {
+        auto* kb = e->AsButtonEvent();
+        if (kb && kb->GetIDCode() == kEsc) {
+          const_cast<RE::BSFixedString&>(kb->QUserEvent()) = "";
+          if (kb->IsDown()) {
+            SKSE::log::info("pad: Esc in the windows: closed to play");
+            g.acts.push_back(pad::Act::close);
+            g.esc_close = true;
+          }
+        }
+        continue;
+      }
       if (e->GetDevice() != RE::INPUT_DEVICE::kGamepad) continue;
       if (auto* t = e->AsThumbstickEvent()) {
         pad::Vec v{t->xValue, t->yValue};
@@ -428,7 +443,7 @@ void PadCursorInstall() {
     return;
   }
   static PadSink sink;
-  mgr->AddEventSink(&sink);
+  mgr->PrependEventSink(&sink);  // before the game's own sinks: a swallowed Esc never reaches the Journal Menu
   SKSE::log::info("pad: cursor ready (Wind UI's menu mode; PrismaUI {})", g_prisma ? "bound" : "absent");
 }
 

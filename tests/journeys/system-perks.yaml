@@ -44,10 +44,11 @@ steps:
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
       - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
-  - name: system-by-keyboard  # Escape in play: the Journal's System page
-    do: [{key: "ESC 120 engine"}, {wait: 2}]
+  - name: system-by-keyboard  # Escape in play: the Journal Menu, on its System tab (padcursor's switch)
+    do: [{key: "ESC 120 engine"}, {wait: 4}]
     expect:
       - {event: {kind: menu, match: Journal Menu}}
+      - {log: {name: ArgoniaCore, contains: "System page (switched;"}, within: 8}
     reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
@@ -63,8 +64,12 @@ steps:
     expect: [{log: {name: WindUI, contains: "took perk"}, within: 10}]
     reader: [Block's perks listed in Wind UI's stats window, one now owned, "Perk points 0", no level-up window]
     reader: [Wind UI's stats or perk list shows "Perk points 1", no level-up window or "Level up" prompt, perk names and descriptions with no Nordic word (Nord, Skyrim, Dragonborn, Jarl, Thu'um, shout)]
-  - name: stats-closed
-    do: [{key: "ESC 120 engine"}, {wait: 2}]   # Esc closes Wind UI's windows; a Tab after it opened them again (b112g)
+  - name: stats-closed        # Esc in Wind UI's windows closes them to play, never the System page (padcursor swallows it)
+    do: [{key: "ESC 120 engine"}, {wait: 2}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "pad: Esc in the windows: closed to play"}, within: 5}
+      - {log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 5}
+      - {event: {kind: menu, match: Journal Menu, absent: true}}
   - name: hud-menu-button     # the Menu button's intent opens the Tween Menu (Wind UI's menu mode), as Tab does
     do: [{call: [core, ViewIntent, '{"type":"hud.menu","v":1,"body":{}}']}, {wait: 2}]
     expect:
@@ -72,6 +77,7 @@ steps:
       - {event: {kind: menu, match: TweenMenu}, within: 5}
   - name: hud-menu-closed
     do: [{close_menu: WindUIMenu}, {wait: 1.5}]   # the tween is swapped for Wind UI's windows: close those
+    expect: [{log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 5}]
   - name: favorite-one        # dev-favorite by the sword's form key (game-22: the editor id misses weapons)
     do: [{call: [dev-favorite, "000840:Argonia.esm"]}, {wait: 1}]
     expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]
