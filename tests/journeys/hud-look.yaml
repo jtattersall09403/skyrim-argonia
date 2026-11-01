@@ -12,9 +12,15 @@ steps:
     do: [{pad: "LY=1:600"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "minimap shown"}]
     reader: [the health stamina and magicka bars slim and dark-filled in a thin dark bezel with a gold-green hairline at the bottom left, vastei's small plate under them, a small square parchment minimap at the top right with the gilt arrowhead at its centre, nothing overlapping]
-  - name: engine-notice           # the engine's own top-left notification: nothing of ours may cover it
-    do: [{console: "player.additem 0000000F 25"}, {wait: 0.6}]
-    reader: [the engine's notice text at the top left is fully readable, no bar plate or minimap over it]
+  - name: engine-notice           # the engine's own top-left line: Takes' greeting starts LF83, whose journal notice
+    do:                           # prints in the engine's message block (views.cpp ShowHUDMessage) and our stack
+      - {console: "player.moveto ARG_Ref_ClaywaterStationTakes 0 -120 0"}
+      - {talk: ARG_Ref_ClaywaterStationTakes}
+      - {wait: 1.5}
+      - {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}
+      - {wait: 0.4}
+    expect: [{console: "GetStage ARG_Q_LF83", contains: ">> 10", within: 8}]
+    reader: [the engine's notice text at the top left fully readable, our Journal updated notice above the bars bottom left, nothing of ours over any engine text]
   - name: minimap-north
     do: [{console: "player.setangle z 0"}, {wait: 1}]
     expect: [{read: [core, Views], path: value, contains: "heading 0"}]
@@ -23,11 +29,11 @@ steps:
     do: [{console: "player.setangle z 135"}, {wait: 1}]
     expect: [{read: [core, Views], path: value, contains: "heading 135"}]
     reader: [the same minimap with the same map orientation as the last still, only the arrowhead turned to point lower right]
-  - name: stamina-drain-refill    # three rolls drain stamina, then it refills by itself; a burst at 8 fps
-    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.5}, {pad: "+LX=0,LY=1:300 B:100 wait:700 B:100 wait:700 B:100 wait:700 -:300"}, {wait: 3}, {burst_fetch: stamina}]
+  - name: stamina-drain-refill    # sprint (W held with Alt, Skyrim's keyboard sprint) drains stamina, then it refills
+    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.3}, {key: "W+LALT 2800 os"}, {wait: 2}, {burst_fetch: stamina}]
   - name: magicka-cast            # a spell from the right hand drains magicka, which then refills
-    do: [{console: "player.addspell FE012A8C"}, {console: "player.equipspell FE012A8C right"}, {wait: 1},
-         {burst: {frames: 40, fps: 8}}, {wait: 0.5}, {pad: "RT:1500"}, {wait: 3}, {burst_fetch: magicka}]
+    do: [{console: "player.addspell FE012A8C"}, {console: "player.equipspell FE012A8C left"}, {console: "player.equipspell FE012A8C right"}, {wait: 1},
+         {burst: {frames: 40, fps: 8}}, {wait: 0.3}, {click: "left 1500"}, {wait: 0.3}, {click: "right 1500"}, {wait: 1.5}, {burst_fetch: magicka}]
   - name: vastei-small            # a small gain on a large purse: a faint shimmer, no number
     do: [{call: [dev-set, SetVastei, "1000"]}, {wait: 2}, {burst: {frames: 24, fps: 8}}, {wait: 0.3}, {call: [dev-set, SetVastei, "1005"]}, {wait: 2.5}, {burst_fetch: vastei-small}]
     expect: [{read: [core, GetVastei], path: value, gt: 1004}]

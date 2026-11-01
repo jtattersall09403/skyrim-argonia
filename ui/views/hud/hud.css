@@ -34,12 +34,12 @@
 .bar.health { height: 0.36rem; }
 .row.breath, .row.climb { margin-top: 0.12rem; }
 .bar .trail, .bar .fill { position: absolute; inset: 0 auto 0 0; }
-.bar .trail { background: var(--tr); opacity: 0.55; }
+.bar .trail { background: var(--tr); opacity: 0.4; top: 22%; bottom: 22%; }   /* a thin ghost, as Skyrim's */
 .bar .fill { background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0, rgba(255, 255, 255, 0.04) 45%, rgba(0, 0, 0, 0.25) 100%),
     linear-gradient(90deg, var(--lo), var(--hi)); box-shadow: 1px 0 0 rgba(0, 0, 0, 0.6); }
-.bar.health { --lo: var(--b-health); --hi: var(--b-health-hi); --tr: #c79a7a; }
-.bar.stamina { --lo: var(--b-stamina); --hi: var(--b-stamina-hi); --tr: #b9b98a; }
-.bar.magicka { --lo: var(--b-magicka); --hi: var(--b-magicka-hi); --tr: #9fb2c8; }
+.bar.health { --lo: var(--b-health); --hi: var(--b-health-hi); --tr: #b0503a; }
+.bar.stamina { --lo: var(--b-stamina); --hi: var(--b-stamina-hi); --tr: #b3963f; }
+.bar.magicka { --lo: var(--b-magicka); --hi: var(--b-magicka-hi); --tr: #b3963f; }
 .bar.breath { --lo: var(--b-breath); --hi: var(--b-breath-hi); --tr: #a6c6c8; }
 .bar.climb { --lo: var(--b-climb); --hi: var(--b-climb-hi); --tr: #d2b88a; }
 /* low health: the frame warms to red clay, slowly; the fill itself never flashes */
@@ -84,8 +84,8 @@
    only the player's arrow turns, to the camera's heading, eased between pushes. An N on the top edge. ---- */
 .hud { --mm: min(7.5rem, 17vh); }
 .minimap { position: absolute; right: 2.5vw; top: 3.5vh; width: var(--mm); height: var(--mm); background: #d9cba4;
-  border: 1px solid #050403; box-shadow: 0 0 0 1px var(--frame-trim), 0 0 0 3px var(--frame-bg), 0 0 0 4px var(--frame-trim-hi),
-  0 0.15rem 0.6rem var(--frame-shadow); }
+  border: 1px solid #050403; box-shadow: inset 0 0 0.6rem rgba(40, 28, 12, 0.55), 0 0 0 1px var(--frame-trim), 0 0 0 4px var(--frame-ground), 0 0 0 5px var(--frame-trim-hi),
+  0 0.15rem 0.6rem rgba(0, 0, 0, 0.7); }
 .minimap[hidden] { display: none; }
 .minimap canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .mm-me { position: absolute; left: 50%; top: 50%; width: 1rem; height: 1rem; margin: -0.5rem 0 0 -0.5rem;

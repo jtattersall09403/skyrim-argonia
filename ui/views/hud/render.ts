@@ -28,8 +28,13 @@ const BAR_NAME: Record<Bar["kind"], string> = {
 // timer), while transitions run on the compositor. Pure: the transition each part takes for a push.
 export const FILL_GLIDE = "width 0.24s linear";                                  // just over the 0.2 s between pushes
 export const TRAIL_FOLLOW = "width 0.7s cubic-bezier(0.45, 0, 0.6, 1) 0.55s";  // held 0.55 s after the last loss
-export function motion(was: number | undefined, now: number): { fill: string; trail: string } {
-  return { fill: FILL_GLIDE, trail: was !== undefined && now < was ? TRAIL_FOLLOW : FILL_GLIDE };
+// A rise inside the trail's hold and follow (a regen tick right after a hit) leaves the trail alone: in run
+// 20261101T150046 the first regen push switched the trail to the fill's glide and it jumped down mid-hold. `sinceLoss`
+// is seconds since the last loss, read from a timestamp at the push (no timer). null: leave that part as it is.
+export const TRAIL_SPAN = 1.3;   // s: the hold plus the follow
+export function motion(was: number | undefined, now: number, sinceLoss = Infinity): { fill: string; trail: string | null } {
+  if (was !== undefined && now < was) return { fill: FILL_GLIDE, trail: TRAIL_FOLLOW };
+  return { fill: FILL_GLIDE, trail: sinceLoss < TRAIL_SPAN ? null : FILL_GLIDE };
 }
 export interface Meter { fill: number; trail: number }
 export const meter = (pct: number): Meter => ({ fill: pct, trail: pct });

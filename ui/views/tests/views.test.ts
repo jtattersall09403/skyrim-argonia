@@ -317,6 +317,7 @@ test("the HUD's bars glide like Skyrim's meter, the trail holds then follows a l
   // A loss: the fill glides over the gap between pushes, the trail waits then follows; a rise carries both.
   assert.deepEqual(motion(80, 50), { fill: FILL_GLIDE, trail: TRAIL_FOLLOW });
   assert.deepEqual(motion(50, 55), { fill: FILL_GLIDE, trail: FILL_GLIDE });
+  assert.deepEqual(motion(50, 52, 0.4), { fill: FILL_GLIDE, trail: null }, "a regen tick in the hold leaves the trail");
   assert.deepEqual(motion(undefined, 55), { fill: FILL_GLIDE, trail: FILL_GLIDE });
   assert.match(FILL_GLIDE, /0\.24s linear/, "longer than the 0.2 s push gap, so the glide never stops between pushes");
   // The rows render slim with no regeneration class; a push renders the meter's own widths.

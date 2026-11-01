@@ -8,6 +8,7 @@ $R up || exit $?
 PY=~/.argonia/venv/bin/python
 [ -n "${NO_DEPLOY:-}" ] || make deploy || exit 1
 $PY tools/run_journey.py tests/journeys/hud-look.yaml; rc=$?
+$PY tools/run_journey.py tests/journeys/hud-minimap-edge.yaml || rc=1
 echo "journey rc=$rc"
 [ -n "${KEEP_UP:-}" ] || $R stop
 exit $rc

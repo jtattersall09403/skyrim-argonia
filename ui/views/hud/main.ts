@@ -12,6 +12,8 @@ const root = document.getElementById("view")!;
 type Kind = Bar["kind"];
 const meters: Partial<Record<Kind, Meter>> = {};
 const targets: Partial<Record<Kind, number>> = {};
+const lost: Partial<Record<Kind, number>> = {};   // when each bar last fell (s), for the trail's span
+const f0 = fillPct;
 let map: Minimap | null = null;   // the last hud.minimap: a hud.state redraws the HUD, and the minimap from this
 const minimap = () => {
   const el = root.querySelector<HTMLElement>("[data-minimap]");
@@ -28,13 +30,15 @@ function take(bars: Bar[]): void {
   const have = [...el.querySelectorAll<HTMLElement>("[data-kind]")].map((r) => r.dataset.kind).join();
   if (have !== shown.map((b) => b.kind).join()) el.innerHTML = renderBars(shown, meters);
   for (const b of shown) {
-    const f = fillPct(b), mv = motion(targets[b.kind], f);
+    const t = performance.now() / 1000, was = targets[b.kind];
+    if (was !== undefined && f0(b) < was) lost[b.kind] = t;
+    const f = fillPct(b), mv = motion(was, f, t - (lost[b.kind] ?? -Infinity));
     targets[b.kind] = f;
     meters[b.kind] = meter(f);
     const bar = el.querySelector<HTMLElement>(`[data-kind="${b.kind}"] .bar`)!;
     const fill = bar.querySelector<HTMLElement>(".fill")!, trail = bar.querySelector<HTMLElement>(".trail")!;
-    fill.style.transition = mv.fill; trail.style.transition = mv.trail;
-    fill.style.width = `${f.toFixed(2)}%`; trail.style.width = `${f.toFixed(2)}%`;
+    fill.style.transition = mv.fill; fill.style.width = `${f.toFixed(2)}%`;
+    if (mv.trail) { trail.style.transition = mv.trail; trail.style.width = `${f.toFixed(2)}%`; }
     bar.style.width = `${barLength(b).toFixed(2)}rem`;
     bar.setAttribute("aria-valuenow", String(Math.round(b.current)));
     bar.setAttribute("aria-valuemax", String(Math.round(b.max)));
