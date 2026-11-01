@@ -83,3 +83,43 @@ class Palette:
         res = rgba.copy()
         res[..., :3] = np.clip(np.rint(out * 255), 0, 255).astype(np.uint8)
         return res
+
+
+class FramePalette(Palette):
+    """The frame style (DESIGN.md, 1.12 §3) for the Dear Diary pages our System pane hands over: Settings and Load
+    (the Journal's System page), the Mod configuration pages, message boxes and lockpicking (owner look 1).
+
+    The page is inverted onto the frame tokens: the paper becomes the frame ground, the ink the frame text, the sheet's
+    rim the gold-green trim. The saturated wood and leather frames take Wind UI's trim ramp by luminance (ground,
+    trim, lit trim), so they read as the filigree rule rather than as light text.
+    """
+
+    def __init__(self, t: dict[str, tuple[int, int, int]] | None = None):
+        t = t or tokens()
+        need = ("frame-ground", "frame-trim", "frame-trim-hi", "frame-text", "frame-text-soft", "frame-head")
+        missing = [k for k in need if k not in t]
+        if missing:
+            raise KeyError(f"theme.css lacks {missing}")
+        self.t = {k: np.array(v, np.float32) / 255 for k, v in t.items()}
+        g = self.t["frame-ground"]
+        # the art carries no ink (the text is the movies' own fields): the paper (luminance 0.4-0.7) flattens to the
+        # ground with a faint mottle, and its drop shadow stays dark, so nothing outshines the pane
+        self.stops = [(0.00, g * 0.4), (0.30, g * 0.8), (0.45, g), (0.60, g * 1.15), (1.00, g * 1.4)]
+        self.trim = [(0.00, g), (0.06, self.t["frame-trim"]), (0.22, self.t["frame-trim-hi"]), (0.60, self.t["frame-trim-hi"]),
+                     (1.00, self.t["frame-trim-hi"])]
+
+    def apply(self, rgba: np.ndarray) -> np.ndarray:
+        rgb = rgba[..., :3].astype(np.float32) / 255
+        lum = luma(rgb)
+        _h, s, _v = hsv(rgb)
+        page = self.tone(lum)
+        xs = np.array([k[0] for k in self.trim], np.float32)
+        trim = np.stack([np.interp(lum, xs, np.array([k[1][c] for k in self.trim], np.float32)) for c in range(3)], -1)
+        # the wood frames are dark and saturated (value 0.2-0.35, saturation from 0.5); the paper's stains are
+        # bright or weak and stay page
+        w = np.clip((s - 0.45) / 0.12, 0, 1) * np.clip((0.28 - lum) / 0.08, 0, 1)
+        w = (w * w * (3 - 2 * w))[..., None]
+        out = page * (1 - w) + trim * w
+        res = rgba.copy()
+        res[..., :3] = np.clip(np.rint(out * 255), 0, 255).astype(np.uint8)
+        return res

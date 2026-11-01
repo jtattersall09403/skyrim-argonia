@@ -12,7 +12,7 @@ from fontTools.fontBuilder import FontBuilder  # noqa: E402
 from fontTools.pens.ttGlyphPen import TTGlyphPen  # noqa: E402
 
 from tools.ui_theme import build, fontlib, retheme, swf  # noqa: E402
-from tools.ui_theme.palette import Palette, tokens  # noqa: E402
+from tools.ui_theme.palette import FramePalette, Palette, tokens  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[3]
 
@@ -158,7 +158,20 @@ def test_retheme_overlay(tmp_path):
     want = Palette().apply(paper)
     assert (first("interface/deardiary/inventory/inventorylists_bg.swf") == want).all()
     assert (first("interface/deardiary/map/map_bonus_bg.swf")[..., 3] == 0).all()
-    assert (first("interface/skyui/configpanel.swf") == want).all()
+    # the Mod configuration pages are a page our System pane hands over: the frame style, not the light sheet
+    assert (first("interface/skyui/configpanel.swf") == FramePalette().apply(paper)).all()
+
+
+def test_frame_palette_puts_the_handed_over_pages_on_the_frame_ground():
+    t = tokens()
+    px = np.array([[[170, 160, 145, 255],    # Dear Diary's paper
+                    [74, 40, 26, 200]]], np.uint8)  # its wood frame (hue 18, saturation 0.65, value 0.29)
+    out = FramePalette().apply(px)
+    assert (out[..., 3] == px[..., 3]).all()
+    assert np.abs(out[0, 0, :3].astype(int) - np.array(t["frame-ground"])).max() < 16  # paper onto the ground
+    assert out[0, 1, :3].astype(int).sum() > out[0, 0, :3].astype(int).sum()  # the frame lifts toward the trim
+    assert retheme.framed("interface/deardiary/messagebox/messagebox_bg.swf")
+    assert retheme.framed("interface/lockpickingmenu.swf") and not retheme.framed("interface/inventorymenu.swf")
 
 
 def test_title_svg_is_generated_from_its_source():

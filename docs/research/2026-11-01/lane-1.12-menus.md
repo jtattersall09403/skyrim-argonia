@@ -103,3 +103,16 @@ Batches (argonia-play-ie / argonia-play, pool pick, this tree deployed each time
   (ep_dev.cpp). The record is on main.
 - The message-box step is kept (`core MessageBox`). Its expectation is the menu event only.
 - `run_batch.py --dry tests/journeys/batches/look-1.yaml`: all 8 journeys ok.
+
+## Part 3 (2026-11-01): the handed-over pages recoloured at install
+- The run-time colour transform (menus.cpp Tint/kTint) is removed; FrameMovie now only hides the tab bar and logs.
+- tools/ui_theme/palette.py FramePalette and retheme.py FRAME: Settings and Load (quest_journal.swf and its BG), the
+  MCM pages (skyui/configpanel.swf and configpanel BGs), messagebox and lockpickingmenu (movies, BGs, shapes and
+  embedded copies) take the frame style at deploy: the paper flattens to frame-ground, the wood frames take the
+  trim ramp (frame-trim to frame-trim-hi). Test: test_frame_palette_puts_the_handed_over_pages_on_the_frame_ground.
+- L3 stills (tools/ui_theme/frame_stills.py, mock layout): out/ui_theme/stills-frame/{settings,load,mcm,messagebox,
+  lockpicking}.png in wt-menus3. Reader: all five read as one dark-pane family; settings, load and mcm pass;
+  message box and lockpicking have only a thin edge (their art carries no frame). The trim was dull, so it was lifted
+  after the read.
+- Not done off-game: text colours set by the movies' own fields and PlaceObject transforms are not recoloured. If the
+  game shows dark text on the dark ground, the next fix is the EditText colours in the FRAME movies. Owner checks it in game.

@@ -25,13 +25,20 @@ from pathlib import Path
 import numpy as np
 
 from tools.ui_theme import swf
-from tools.ui_theme.palette import Palette
+from tools.ui_theme.palette import FramePalette, Palette
 
 SCOPE = ("interface/deardiary/*_bg.swf", "interface/loadingmenu.swf")
 # SWFs whose vector shapes (DefineShape fills and lines) are recoloured too: the menus and SkyUI's lists, plates and
 # icons; ui-review4 found the barter and container name plates' red knot drawn as a shape, not a bitmap.
 SHAPES = ("interface/*.swf", "interface/skyui/*.swf", "interface/deardiary/*_bg.swf")
 NO_SHAPES = ("interface/fonts_*.swf",)
+# The pages our System pane hands over (owner look 1): Settings and Load (the Journal's System page; the Journal's
+# quests are our paper book, so this movie shows nothing else), the Mod configuration pages, message boxes and
+# lockpicking. Their art, shapes and embedded copies take the frame style (FramePalette), not the light sheet.
+FRAME = ("interface/quest_journal.swf", "interface/deardiary/quest_journal/*_bg.swf",
+         "interface/skyui/configpanel.swf", "interface/deardiary/configpanel/*_bg.swf",
+         "interface/messagebox.swf", "interface/deardiary/messagebox/*_bg.swf",
+         "interface/lockpickingmenu.swf", "interface/deardiary/lockpickingmenu/*_bg.swf")
 EMBEDDERS = "interface/*.swf"  # menu SWFs carrying copies of the BG bitmaps (fallbacks): matched by their pixels
 # Nordic marks (0006), by path and the bitmap's measured size (w, h); cleared to transparent, not recoloured.
 CLEAR = {
@@ -109,8 +116,14 @@ def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str 
     return (movie.to_bytes() if changed else None), notes
 
 
-def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None) -> dict:
+def framed(rel: str) -> bool:
+    return any(fnmatch(rel, s) for s in FRAME)
+
+
+def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None, frame: Palette | None = None) -> dict:
     files = winners(roots)
+    frame = frame or FramePalette()
+    light = palette
     report: dict = {"files": {}, "warnings": []}
     seen: dict[str, bool] = {}  # pixel digest of every in-scope bitmap, from every root -> cleared?
     for root in roots:
@@ -120,16 +133,17 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None) -> dic
                 for _k, bm in swf.bitmaps(swf.read(p.read_bytes())):
                     seen[digest(bm.rgba)] = rel in CLEAR
     for rel, p in sorted(files.items()):
+        palette = frame if framed(rel) else light
         in_scope = any(fnmatch(rel, s) for s in SCOPE)
         if in_scope:
             want = CLEAR.get(rel)
 
-            def decide(bm, want=want, rel=rel):
+            def decide(bm, want=want, rel=rel, palette=palette):
                 if want and (bm.rgba.shape[1], bm.rgba.shape[0]) != want[0]:
                     report["warnings"].append(f"{rel}: expected {want[0]} for {want[1]}, found {bm.rgba.shape[1::-1]}")
                 return palette, bool(want)
         elif fnmatch(rel, EMBEDDERS) and p.suffix.lower() == ".swf":
-            def decide(bm):
+            def decide(bm, palette=palette):
                 c = seen.get(digest(bm.rgba))
                 return None if c is None else (palette, c)
         elif any(fnmatch(rel, s) for s in SHAPES):
@@ -151,7 +165,7 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None) -> dic
 
         dest = out / WALLPAPER
         dest.parent.mkdir(parents=True, exist_ok=True)
-        title.wallpaper(ttf, palette).save(dest, pixel_format="DXT1")
+        title.wallpaper(ttf, light).save(dest, pixel_format="DXT1")
         report["files"][WALLPAPER] = {"from": "ui/title/title.py", "bitmaps": ["generated 2048x2048 DXT1"]}
     return report
 
