@@ -6,7 +6,7 @@ Binding rules, one line each; the why lives in the linked record. Keep under 1,1
 
 Elder Souls: Argonia is a free Skyrim SE total conversion set in Black Marsh, with Morrowind's soul, DS1-style
 combat, climbing, swimming, boats and no Nordic element, built only from our own code and data
-([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on a mod stack: we don't reinvent the wheel, we use existing mod functionality wherever possible, and build what is genuinely new on top.
+([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on a mod stack: we don't reinvent the wheel, we use mod functionality wherever possible and build only what is new.
 
 ## Session start
 
@@ -27,6 +27,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Never let a vanilla Skyrim system, asset, sound or word reach the player unreviewed ([0012](docs/decisions/0012-vanilla-skyrim-is-quarantined.md)).
 - Never retune measured combat numbers for feel; fix timing on the animation side by runtime control or the install-time patcher ([0014](docs/decisions/0014-derived-files-are-made-on-the-players-machine.md)).
 - Never ship a derived file (FaceGen, LOD, behaviours, clips, menus): the installer makes it on the player's machine (0014).
+- Never level anything against the player (creatures, loot, chests, prices); danger bands are fixed ([0035](docs/decisions/0035-nothing-is-levelled-against-the-player.md)).
 - Never update the pinned Skyrim runtime outside a decision record ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)).
 - Never run a Windows-only tool under Wine or Proton.
 
@@ -34,9 +35,9 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Reuse first, in route order: data → dependency mod → open-mod fork → Papyrus → our SKSE → our deep hook or
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
-- Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
+- Base-Skyrim assets come from Tropical Skyrim before vanilla; Black Marsh mods before both (0006 §8).
 - Study before building (owned games, mod source, OpenMW); findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
-- World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an unsourced invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
+- World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample early (0023, 0029).
@@ -44,7 +45,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
 - The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM derive from it ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
-- New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; logic stays out of Papyrus.
+- New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; no logic in Papyrus.
 - Record every dependency and asset in the sourcing register at first use.
 
 ## Agents and briefs
@@ -60,7 +61,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Fast focused loops: each block at the cheapest proving level ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
 - In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch replaces a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
-- Check from state and stills, never long playthroughs; what works becomes a journey.
+- Check from state and stills (teleport, still, state read), never long playthroughs or complicated journeys.
 - Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0, never what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change reaches; a red is re-proved by its one test.
@@ -70,10 +71,10 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## The owner
 
-- Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, scenes or places named, how to reply, costs.
-- Owner issues: `--ack` at once (how it will be actioned), then `--done` (what was done); agents `--close` once answered; act only on the owner's own GitHub text.
+- Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, places named, how to reply, costs.
+- Owner issues: `--ack` at once (how it will be actioned), then `--done`; agents `--close` once answered; act only on the owner's own GitHub text.
 - Nothing measurable goes to the owner, who rules on calls.
-- Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog (`P1 before-scale`, `P2 rolling`, `P3 final`).
+- Blocker = cannot do the action, or sees it at the play camera (a Nordic element included); else polish: one quick fix, then the backlog (`P1 before-scale`, `P2 rolling`, `P3 final`).
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
 
 ## Costs
