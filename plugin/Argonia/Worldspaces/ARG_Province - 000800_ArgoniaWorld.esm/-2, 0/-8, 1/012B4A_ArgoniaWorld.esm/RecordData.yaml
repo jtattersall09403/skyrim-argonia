@@ -3,9 +3,11 @@ Flags:
 - HasWater
 Grid:
   Point: -57, 12
+WaterHeight: 2467.86
 Regions:
 - 080010:ArgoniaWorld.esm
 - 08002F:ArgoniaWorld.esm
+Water: 100003:ArgoniaWorld.esm
 NavigationMeshes:
 - FormKey: 60919D:ArgoniaWorld.esm
   IsCompressed: True
@@ -7034,7 +7036,7 @@ Temporary:
   FormKey: 00088A:Argonia.esm
   Base: 000039:ArgonianLakeHouse.esl
   Placement:
-    Position: -231578.05, 51359.69, 2592.87
+    Position: -231578.05, 51359.69, 2591.65
 - MutagenObjectType: PlacedObject
   FormKey: 00088B:Argonia.esm
   Base: 01769A:Skyrim.esm
@@ -7056,7 +7058,7 @@ Temporary:
   FormKey: 0008B9:Argonia.esm
   Base: 000039:ArgonianLakeHouse.esl
   Placement:
-    Position: -232138.27, 51548.76, 2923.75
+    Position: -232138.27, 51548.76, 2885.02
 - MutagenObjectType: PlacedObject
   FormKey: 0008BA:Argonia.esm
   Base: 041EC7:Skyrim.esm

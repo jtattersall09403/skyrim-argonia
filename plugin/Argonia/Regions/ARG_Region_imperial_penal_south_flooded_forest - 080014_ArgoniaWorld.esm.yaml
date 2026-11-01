@@ -215,22 +215,10 @@ Objects:
     - Tree
     Radius: 420
     Unknown2: 0x000000000000
-  - Object: 035B37:King of the Murkmire.esp
+  - Object: 035B36:King of the Murkmire.esp
     Density: 0.0538
     Clustering: 2
-    MaxSlope: 30
-    Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 035B39:King of the Murkmire.esp
-    Density: 0.0538
-    Clustering: 2
-    MaxSlope: 30
-    Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 035B3B:King of the Murkmire.esp
-    Density: 0.0538
-    Clustering: 2
-    MaxSlope: 30
+    MaxSlope: 38
     Radius: 980
     Unknown2: 0x000000000000
   - Object: 03A57B:King of the Murkmire.esp
@@ -251,13 +239,19 @@ Objects:
     MaxSlope: 35
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 055568:King of the Murkmire.esp
+  - Object: 03B03F:King of the Murkmire.esp
+    Density: 0.0538
+    Clustering: 2
+    MaxSlope: 38
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 055564:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
     Radius: 1244
     Unknown2: 0x000000000000
-  - Object: 055576:King of the Murkmire.esp
+  - Object: 05556D:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
@@ -323,7 +317,39 @@ Objects:
     - Tree
     Radius: 420
     Unknown2: 0x000000000000
-  - Object: 0EB91F:King of the Murkmire.esp
+  - Object: 0E67B3:King of the Murkmire.esp
+    Density: 0.0538
+    Clustering: 2
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 980
+    Unknown2: 0x000000000000
+  - Object: 0EB922:King of the Murkmire.esp
+    Density: 3.3255
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0EB923:King of the Murkmire.esp
+    Density: 3.3255
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0EB926:King of the Murkmire.esp
+    Density: 3.3255
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1244
+    Unknown2: 0x000000000000
+  - Object: 0F0ACA:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
@@ -376,14 +402,8 @@ Objects:
   - Object: 12066A:Black Marsh.esm
     Density: 0.1076
     Clustering: 2
-    MaxSlope: 30
-    Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 13FA24:King of the Murkmire.esp
-    Density: 3.3255
-    Clustering: 4
     MaxSlope: 38
-    Radius: 1244
+    Radius: 980
     Unknown2: 0x000000000000
   - Object: 142931:King of the Murkmire.esp
     Density: 0.25
@@ -400,16 +420,8 @@ Objects:
   - Object: 1555CB:Black Marsh.esm
     Density: 0.1076
     Clustering: 2
-    MaxSlope: 30
-    Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 155FE5:King of the Murkmire.esp
-    Density: 3.3255
-    Clustering: 4
     MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1244
+    Radius: 980
     Unknown2: 0x000000000000
   - Object: 156009:King of the Murkmire.esp
     Density: 24.3333
@@ -435,13 +447,7 @@ Objects:
     - Tree
     Radius: 477
     Unknown2: 0x000000000000
-  - Object: 1573A0:King of the Murkmire.esp
-    Density: 3.3255
-    Clustering: 4
-    MaxSlope: 38
-    Radius: 1244
-    Unknown2: 0x000000000000
-  - Object: 15B1E0:King of the Murkmire.esp
+  - Object: 15B1E6:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
@@ -449,7 +455,7 @@ Objects:
     - Tree
     Radius: 1244
     Unknown2: 0x000000000000
-  - Object: 15B1E1:King of the Murkmire.esp
+  - Object: 15B1E8:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
@@ -457,7 +463,7 @@ Objects:
     - Tree
     Radius: 1244
     Unknown2: 0x000000000000
-  - Object: 15B1E2:King of the Murkmire.esp
+  - Object: 15B1EA:King of the Murkmire.esp
     Density: 3.3255
     Clustering: 4
     MaxSlope: 38
@@ -522,7 +528,7 @@ Objects:
   - Object: 1B32E4:Black Marsh.esm
     Density: 0.1076
     Clustering: 2
-    MaxSlope: 30
+    MaxSlope: 38
     Radius: 980
     Unknown2: 0x000000000000
   - Object: 1D3CC3:Black Marsh.esm
