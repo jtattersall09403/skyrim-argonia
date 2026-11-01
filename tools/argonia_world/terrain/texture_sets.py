@@ -15,7 +15,7 @@ from __future__ import annotations
 from tools.argonia_world.intermediate import Layer
 from tools.argonia_world.terrain import material as M
 
-PREFIX = "ArgGroundTxst"
+PREFIX = "ARG_GroundTxst"  # formids.EDID: every new Argonia EditorID is ARG_
 
 
 def form_keys() -> set[str]:

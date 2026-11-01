@@ -5,6 +5,8 @@
                          (out/), serialise it with Spriggit into plugin/Argonia/; build the generated ground,
                          out/ArgoniaWorld.esm (decision 0031: never serialised; the terrain is rebuilt only when its
                          code or inputs change) and print its sha256
+    pipeline.py ids      `plugin` without rebuilding out/ArgoniaWorld.esm (built only when missing): Argonia.esm, its
+                         YAML and the FormIDs it allocates, over the master already there
     pipeline.py vegetation  (2.W4 §a; `plugin` and the gate's sample build already include it) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
                          (tools/argonia_world/vegetation; its L1 checks and the spliced plugin's read-back)
     pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
@@ -146,7 +148,11 @@ def trees_equal(a: Path, b: Path) -> list[str]:
 # --- ArgoniaWorld.esm, the generated ground (decision 0031) ----------------------------------------------------
 TERRAIN = ROOT / "tools" / "argonia_world" / "terrain"
 WORLD_ESM = "ArgoniaWorld.esm"
-WORLD_ENV = {"DOTNET_GCHeapHardLimit": "0x60000000", "DOTNET_GCConserveMemory": "9"}  # 1.1 GB peak measured
+# The world step holds every LAND, the water steps and the province NAVM in Mutagen's worldspace before the write:
+# measured 2026-11-01 on the whole province (15,876 cells, navmesh in) 2.82 GB peak RSS in 2:05 (lane-1.15-pipeline);
+# the old 1.5 GB heap limit was the "Out of memory". 4 GB heap under a 5 GB scope: about 1.8x headroom on the 15 GB VM.
+WORLD_ENV = {"DOTNET_GCHeapHardLimit": "0x100000000", "DOTNET_GCConserveMemory": "9"}
+WORLD_CAP = [*CAP[:-1], "MemoryMax=5G"] if CAP else []
 
 
 def _terrain_stamp() -> str:
@@ -305,7 +311,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     wdir = water(into, sample)
     esm = into / "esm" / WORLD_ESM
     esm.parent.mkdir(parents=True, exist_ok=True)
-    full = (CAP if CAP else []) + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
+    full = WORLD_CAP + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
                                    "--data", str(data), "--out", str(esm), "--water", str(wdir),
                                    *(["--navmesh", str(nav)] if nav else [])]
     r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
@@ -373,9 +379,11 @@ def skip_plugin(now: str, stamp: str | None, esms_exist: bool) -> bool:
     return esms_exist and stamp is not None and stamp.strip() == now
 
 
-def plugin(force: bool = False) -> int:
+def plugin(force: bool = False, world: bool = True) -> int:
+    """`world=False` (`pipeline.py ids`, `make plugin-ids`): Argonia.esm and its new FormIDs over the existing
+    out/ArgoniaWorld.esm (built when missing), without the whole-province world build; the stamp is left unwritten."""
     data = data_dir()
-    if not force:
+    if not force and world:
         now = input_hash(data)
         stamp = PLUGIN_STAMP.read_text() if PLUGIN_STAMP.exists() else None
         if skip_plugin(now, stamp, (OUT / "Argonia.esm").exists() and (OUT / WORLD_ESM).exists()):
@@ -384,7 +392,7 @@ def plugin(force: bool = False) -> int:
     PLUGIN_STAMP.unlink(missing_ok=True)
     build_tool()
     scans(data)
-    master_world(data, rebuild=True)  # first: Argonia.esm's place cells override its cells
+    master_world(data, rebuild=world)  # first: Argonia.esm's place cells override its cells
     esm, yaml = generate(data, OUT / "build", frozen=False)
     shutil.copyfile(esm, OUT / "Argonia.esm")
     shutil.rmtree(YAML, ignore_errors=True)
@@ -392,7 +400,8 @@ def plugin(force: bool = False) -> int:
     from tools.argonia_world import forms_table; forms_table.write()  # the allocator may have added rows (1.1)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
-    PLUGIN_STAMP.write_text(input_hash(data))  # after success, over the tree the build left (the allocator's rows included)
+    if world:
+        PLUGIN_STAMP.write_text(input_hash(data))  # after success, over the tree the build left (the allocator's rows included)
     return 0
 
 
@@ -547,5 +556,5 @@ def vegetation_world() -> int:
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    sys.exit(plugin() if cmd == "plugin" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
+    sys.exit(plugin() if cmd == "plugin" else plugin(force=True, world=False) if cmd == "ids" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
              else vegetation_world() if cmd == "vegetation" else (print(__doc__) or 2))

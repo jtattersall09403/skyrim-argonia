@@ -6,7 +6,7 @@ PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
 FAIL = || { echo $@ >> $(RED); exit 1; }
 
-.PHONY: check check-run hooks plugin db chart navmesh ui-stills deploy $(PARTS)
+.PHONY: check check-run hooks plugin plugin-ids db chart navmesh ui-stills deploy $(PARTS)
 
 # One gate at a time on this VM: two lanes' checks at once share $(RED) and out/check/, and thrash the CPU (2026-10-30).
 check:
@@ -77,6 +77,9 @@ immersion:
 # One build at a time: two lanes' parallel builds raced on out/ (2026-10-29); the second waits for the lock.
 plugin:
 	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py plugin
+
+plugin-ids:  # Argonia.esm and its new FormIDs over the existing out/ArgoniaWorld.esm, no province world build
+	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py ids
 
 # FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
 plugin-check:
