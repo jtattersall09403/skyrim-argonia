@@ -1,0 +1,10 @@
+{"id":"eczn.clearable.D1","band":"D1","kind":"clearable","min_level":1,"max_level":1,"never_resets":false,"respawn":"untilCleared","why":"resets until the place is cleared, then never (1.14 sets never-resets on clearing)"}
+{"id":"eczn.clearable.D2","band":"D2","kind":"clearable","min_level":10,"max_level":10,"never_resets":false,"respawn":"untilCleared","why":"resets until the place is cleared, then never (1.14 sets never-resets on clearing)"}
+{"id":"eczn.clearable.D3","band":"D3","kind":"clearable","min_level":20,"max_level":20,"never_resets":false,"respawn":"untilCleared","why":"resets until the place is cleared, then never (1.14 sets never-resets on clearing)"}
+{"id":"eczn.clearable.D4","band":"D4","kind":"clearable","min_level":35,"max_level":35,"never_resets":false,"respawn":"untilCleared","why":"resets until the place is cleared, then never (1.14 sets never-resets on clearing)"}
+{"id":"eczn.clearable.D5","band":"D5","kind":"clearable","min_level":50,"max_level":50,"never_resets":false,"respawn":"untilCleared","why":"resets until the place is cleared, then never (1.14 sets never-resets on clearing)"}
+{"id":"eczn.wild.D1","band":"D1","kind":"wild","min_level":1,"max_level":1,"never_resets":false,"respawn":"onRest","why":"the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)"}
+{"id":"eczn.wild.D2","band":"D2","kind":"wild","min_level":10,"max_level":10,"never_resets":false,"respawn":"onRest","why":"the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)"}
+{"id":"eczn.wild.D3","band":"D3","kind":"wild","min_level":20,"max_level":20,"never_resets":false,"respawn":"onRest","why":"the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)"}
+{"id":"eczn.wild.D4","band":"D4","kind":"wild","min_level":35,"max_level":35,"never_resets":false,"respawn":"onRest","why":"the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)"}
+{"id":"eczn.wild.D5","band":"D5","kind":"wild","min_level":50,"max_level":50,"never_resets":false,"respawn":"onRest","why":"the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)"}

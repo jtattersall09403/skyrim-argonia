@@ -1,0 +1,11 @@
+{"id":"disease.blood-rot","kind":"disease","name":"Blood Rot","effect":"stamina regenerates slowly","source":"FH Diseases"}
+{"id":"disease.greenspore","kind":"disease","name":"Greenspore","effect":"health lowered","source":"FH Diseases"}
+{"id":"disease.rust-chancre","kind":"disease","name":"Rust Chancre","effect":"armour lowered","source":"FH Diseases"}
+{"id":"disease.swamp-fever","kind":"disease","name":"Swamp Fever","effect":"magicka lowered","source":"FH Diseases"}
+{"id":"disease.swamp-rot","kind":"disease","name":"Swamp Rot","effect":"health regenerates slowly","source":"FH Diseases: killed a Maran mission in a month"}
+{"id":"disease.the-droops","kind":"disease","name":"The Droops","effect":"carry weight lowered","source":"FH Diseases"}
+{"id":"poison.adder-venom","kind":"poison","name":"Adder Venom","effect":"damage health over time","source":"74-ecology moon-adder"}
+{"id":"poison.centipede-numb","kind":"poison","name":"Centipede Numbing","effect":"slows","source":"the mods' giant centipede bite"}
+{"id":"poison.frog-breath","kind":"poison","name":"Dragon-Frog Breath","effect":"damage health, slows","source":"LF fact.dragon-frog-poison-breath"}
+{"id":"poison.voriplasm-acid","kind":"poison","name":"Voriplasm Acid","effect":"damage health and armour","source":"FH Voriplasm: strips to the bone"}
+{"id":"poison.wasp-sting","kind":"poison","name":"Wasp Sting","effect":"damage stamina over time","source":"FH: giant wasps the size of ponies"}

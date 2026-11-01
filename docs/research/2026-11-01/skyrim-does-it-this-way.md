@@ -209,3 +209,10 @@ sampled across them).
 water. **Verdict: differs. Change (ground):** a mouth is set at the foot of a rise. If the ground does not rise
 ≥ ~550 u (8 m) within 1,024 u (15 m) on the mouth's back side, raise a one-sided hill behind it. Dress it with a
 cave-mouth piece, 2–6 cliff shells and rock piles. No ring mound.
+
+## Creature encounters (1.15 §g)
+
+Measured by `tools/argonia_world/vanilla/creatures.py`; numbers and verdicts in
+[lane-1.15-creatures.md](lane-1.15-creatures.md) "The vanilla measurement". *Ours:* the same method: levelled
+lists at fixed band levels, chance none 0, wild and clearable encounter zones, about one ref per occupied land cell,
+a tenth of that on open water, predators beside their dens.

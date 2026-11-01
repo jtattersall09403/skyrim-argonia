@@ -6602,3 +6602,117 @@ CREATE TABLE "region_mist" (
   "regime" TEXT NOT NULL CHECK ("regime" IN ('radiation','sea_fog','montane','none')),
   "why" TEXT
 );
+
+-- == Creature encounters (1.15 §g; decision 0034: Skyrim.esm's own method, measured in
+-- tools/argonia_world/vanilla/creatures.py and docs/research/2026-11-01/lane-1.15-creatures.md) ==
+
+-- Home of a dependency mod's creature form (NPC_) that stands for one of our creature kinds: the mod's own record,
+-- race and behaviour (route 1 data), joined to its `creature` row. form_key is "<local FormID 6 hex>:<plugin>".
+-- Written by `python -m tools.argonia_world.creatures seed` from creatures/roster.py's FORMS.
+CREATE TABLE "creature_form" (
+  "form_key" TEXT NOT NULL PRIMARY KEY,
+  "creature_id" TEXT NOT NULL REFERENCES "creature"("id"),
+  "mod" TEXT NOT NULL,
+  "edid" TEXT NOT NULL,
+  "race" TEXT NOT NULL,
+  "aggression" INTEGER NOT NULL CHECK ("aggression" BETWEEN 0 AND 3),
+  "why" TEXT NOT NULL
+);
+
+-- Home of where a creature kind lives in the wild by exterior region class (the suffix of land_region.id), with
+-- the lore or ecology reason it is there. The ambient lists are built from these rows.
+CREATE TABLE "creature_region_class" (
+  "creature_id" TEXT NOT NULL REFERENCES "creature"("id"),
+  "region_class" TEXT NOT NULL,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("creature_id", "region_class")
+);
+
+-- Home of the rule that places a creature kind's spawn points: the medium (water: swims, needs min_depth_m of
+-- water; shore: within shore_above_m above the water to max_depth_m in it; land: dry ground), the steepest ground,
+-- the group, the den (a den marker with the creature beside it) and its share of a cell's spawn points.
+CREATE TABLE "creature_spawn_rule" (
+  "creature_id" TEXT NOT NULL PRIMARY KEY REFERENCES "creature"("id"),
+  "medium" TEXT NOT NULL CHECK ("medium" IN ('water', 'shore', 'land')),
+  "min_depth_m" REAL NOT NULL,
+  "max_depth_m" REAL NOT NULL,
+  "shore_above_m" REAL NOT NULL,
+  "max_slope_deg" REAL NOT NULL,
+  "group_min" INTEGER NOT NULL CHECK ("group_min" >= 1),
+  "group_max" INTEGER NOT NULL CHECK ("group_max" >= "group_min"),
+  "den" BOOLEAN NOT NULL CHECK ("den" IN (0, 1)),
+  "dens_per_100_cells" REAL NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- Home of a danger band's fixed actor level and its encounter zone levels (never scaled to the player: 76 §128).
+CREATE TABLE "danger_band_level" (
+  "band" TEXT NOT NULL PRIMARY KEY REFERENCES "danger_band"("id"),
+  "level" INTEGER NOT NULL CHECK ("level" >= 1),
+  "spawns_per_cell" REAL NOT NULL,
+  "why" TEXT NOT NULL
+);
+
+-- Home of a disease or poison a creature's bite, sting or touch carries (fauna-hazards.md "Diseases").
+CREATE TABLE "creature_affliction" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('disease', 'poison')),
+  "name" TEXT NOT NULL,
+  "effect" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);
+
+-- Home of which affliction a creature carries in a band: band -> creature -> affliction. spell_form is the mod's
+-- own SPEL when it has one ("<local FormID>:<plugin>"), else NULL (ours, written by ArgoniaGen).
+CREATE TABLE "danger_band_effect" (
+  "band" TEXT NOT NULL REFERENCES "danger_band"("id"),
+  "creature_id" TEXT NOT NULL REFERENCES "creature"("id"),
+  "affliction_id" TEXT NOT NULL REFERENCES "creature_affliction"("id"),
+  "carrier" TEXT NOT NULL CHECK ("carrier" IN ('bite', 'sting', 'touch', 'breath')),
+  "chance" REAL NOT NULL CHECK ("chance" > 0 AND "chance" <= 1),
+  "spell_form" TEXT,
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("band", "creature_id", "affliction_id")
+);
+
+-- Home of one of our levelled actor lists (LVLN): one per region class, band and medium, every entry at the band's
+-- level (fixed; chance none 0, as every one of Skyrim.esm's 72 creature lists). Derived by `creatures seed`.
+CREATE TABLE "creature_list" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "region_class" TEXT NOT NULL,
+  "band" TEXT NOT NULL REFERENCES "danger_band"("id"),
+  "medium" TEXT NOT NULL CHECK ("medium" IN ('water', 'shore', 'land')),
+  "level" INTEGER NOT NULL,
+  "chance_none" INTEGER NOT NULL CHECK ("chance_none" BETWEEN 0 AND 100)
+);
+
+-- Home of one entry of a creature list: a mod form at the list's level.
+CREATE TABLE "creature_list_entry" (
+  "list_id" TEXT NOT NULL REFERENCES "creature_list"("id"),
+  "form_key" TEXT NOT NULL REFERENCES "creature_form"("form_key"),
+  "level" INTEGER NOT NULL,
+  "count" INTEGER NOT NULL CHECK ("count" >= 1),
+  PRIMARY KEY ("list_id", "form_key")
+);
+
+-- Home of an encounter zone (ECZN): one per band for the wild, one per band for clearable places. The reset rule
+-- is data: `wild` resets on the cell reset; `clearable` resets until the place is cleared, then never (1.14's
+-- runtime sets the never-resets flag on clearing, core_respawn_class untilCleared).
+CREATE TABLE "encounter_zone" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "band" TEXT NOT NULL REFERENCES "danger_band"("id"),
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('wild', 'clearable')),
+  "min_level" INTEGER NOT NULL,
+  "max_level" INTEGER NOT NULL,
+  "never_resets" BOOLEAN NOT NULL CHECK ("never_resets" IN (0, 1)),
+  "respawn" TEXT NOT NULL REFERENCES "core_respawn_class"("id"),
+  "why" TEXT NOT NULL
+);
+
+-- Home of the no-spawn radius around a place by its class (place.classification_class): no wild spawn point
+-- stands within it (74-ecology placement rule 3: no ambient life inside a settlement).
+CREATE TABLE "place_no_spawn" (
+  "place_class" TEXT NOT NULL PRIMARY KEY,
+  "radius_m" REAL NOT NULL CHECK ("radius_m" >= 0),
+  "why" TEXT NOT NULL
+);

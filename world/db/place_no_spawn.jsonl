@@ -1,0 +1,10 @@
+{"place_class":"camp","radius_m":60.0,"why":"a camp's fire and sleepers"}
+{"place_class":"civic","radius_m":120.0,"why":"a civic place is inside or beside a settlement"}
+{"place_class":"lair","radius_m":25.0,"why":"the lair's own residents are placed by its record (den sockets)"}
+{"place_class":"lone","radius_m":40.0,"why":"a hermit's hut or lone house"}
+{"place_class":"martial","radius_m":110.0,"why":"a fort's guarded ground"}
+{"place_class":"ruin","radius_m":25.0,"why":"the ruin's own residents are placed by its record"}
+{"place_class":"sacred","radius_m":60.0,"why":"a shrine's tended ground"}
+{"place_class":"settlement","radius_m":150.0,"why":"74-ecology rule 3: no wild creature inside a settlement's boundary"}
+{"place_class":"transit","radius_m":60.0,"why":"a ferry stage, relay or toll: people wait there"}
+{"place_class":"works","radius_m":90.0,"why":"worked ground: people at work, kept animals only"}
