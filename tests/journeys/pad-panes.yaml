@@ -57,6 +57,7 @@ steps:
     expect: [{log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}]
   - name: keyboard-tab-closes
     do: [{key: "TAB 120"}, {wait: 2}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: Tab in the windows: closed to play"}, within: 5}]
   - name: keyboard-journal
     do: [{key: "J 120"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]

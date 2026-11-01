@@ -26,7 +26,7 @@ namespace pad = argonia::core::pad;
 
 constexpr std::string_view kWindUIMenu = "WindUIMenu";
 // Keyboard scan codes sent by the engine route (the user event comes from the ControlMap, as for a real key).
-constexpr std::uint32_t kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14;
+constexpr std::uint32_t kTab = 0x0F, kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14;
 
 prisma::Api1* g_prisma = nullptr;
 
@@ -309,10 +309,10 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
       // event would also open the System page (system-perks, 04:57:20). The press is swallowed and we close them.
       if (e->GetDevice() == RE::INPUT_DEVICE::kKeyboard && ctx == pad::Context::windows) {
         auto* kb = e->AsButtonEvent();
-        if (kb && kb->GetIDCode() == kEsc) {
+        if (kb && (kb->GetIDCode() == kEsc || kb->GetIDCode() == kTab)) {  // Tab left them open (pad112t)
           const_cast<RE::BSFixedString&>(kb->QUserEvent()) = "";
           if (kb->IsDown()) {
-            SKSE::log::info("pad: Esc in the windows: closed to play");
+            SKSE::log::info("pad: {} in the windows: closed to play", kb->GetIDCode() == kEsc ? "Esc" : "Tab");
             g.acts.push_back(pad::Act::close);
             g.esc_close = true;
           }
