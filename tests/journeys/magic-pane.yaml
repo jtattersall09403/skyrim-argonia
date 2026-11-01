@@ -46,11 +46,15 @@ steps:
       - {read: [core, Views], path: value, contains: "magic right Recall"}
       - {log: {name: ArgoniaCore, contains: "magic: Recall (FE012A8E) readied right"}, within: 5}
     reader: [the pane titled Right Recall, Recall's row washed blue with an R mark]
+  - name: pad-ready           # the pad inside our pane: the d-pad walks the spell list, A readies the focused spell
+    do: [{pad: "DOWN:120 -:200 DOWN:120 -:200 DOWN:120 -:200 DOWN:120 -:200"}, {pad: "A:150"}, {wait: 1.5}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "readied right"}, within: 5}
+    reader: [our magic pane with the focus ring on a spell row moved down the list, that spell now the right hand's]
   - name: close               # Esc closes the pane to play
     do: [{key: "ESC 150 engine"}, {wait: 2}]
     expect:
       - {read: [core, Views], path: value, contains: "magic ready closed"}
-      - {read: [core, Views], path: value, contains: "magic right Recall"}
     reader: [play, no menu or window open]
   - name: talk-livia          # the trader at Claywater Station
     do:
