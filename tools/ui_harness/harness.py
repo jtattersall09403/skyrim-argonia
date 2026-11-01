@@ -141,6 +141,8 @@ def stills_for(view: str) -> list[tuple[str, list[str], dict]]:
         out.append(("effects@bright", [json.dumps(st["effects"])], {"bright": True}))
     if view == "dialogue":
         out.append(("answer+touch", [json.dumps(st["answer"])], {"first": ".topic", "device": "touch"}))  # focus hidden
+    if view == "magic":
+        out.append(("kit+focus", [json.dumps(st["kit"])], {"first": '[data-key="r:FE012A8E"]'}))
     if view == "journal":
         out.append(("current+focus", [json.dumps(st["current"])], {"first": ".qlink"}))
         out.append(("current+touch", [json.dumps(st["current"])], {"first": ".qlink", "device": "touch"}))
@@ -285,6 +287,24 @@ class Harness:
         want = [sx["intents"]["buyStrength"], sx["intents"]["rise"], sx["intents"]["rise"]]
         if sent != want:
             fails.append(f"sitting sent {sent}, want {want}")
+
+        # Our magic pane (lane-1.12-magicpane): a click on Recall's name readies it right, its "L" left; the pad walks
+        # the list down from Mark to Recall and A presses; the "L" is to the right of its name; Escape closes.
+        mx = fixtures("magic")
+        p = self.open(vp, "magic")
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(mx["states"]["kit"]))
+        p.click('[data-key="r:FE012A8E"]')
+        p.click('[data-key="l:FE012A8E"]')
+        p.evaluate("""() => document.querySelector('[data-key="r:FE012A8C"]').focus()""")
+        for a in ("down", "accept", "right", "accept"):
+            p.evaluate(f"() => window.argonia.input('{a}')")
+        p.click('[data-key="v:000E40C9"]')
+        p.keyboard.press("Escape")
+        sent = [json.loads(s) for s in p.evaluate("() => window.argoniaSent")]
+        i = mx["intents"]
+        want = [i["right"], i["left"], i["right"], i["left"], i["power"], i["close"]]
+        if sent != want:
+            fails.append(f"magic sent {sent}, want {want}")
 
         if (self.out / "views" / "chart" / "assets" / "index.js").exists():
             c = fixtures("chart")

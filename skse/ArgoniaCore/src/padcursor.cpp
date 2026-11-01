@@ -26,7 +26,7 @@ namespace pad = argonia::core::pad;
 
 constexpr std::string_view kWindUIMenu = "WindUIMenu";
 // Keyboard scan codes sent by the engine route (the user event comes from the ControlMap, as for a real key).
-constexpr std::uint32_t kTab = 0x0F, kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14;
+constexpr std::uint32_t kTab = 0x0F, kEsc = 0x01, kJ = 0x24, kM = 0x32, kT = 0x14, kP = 0x19;
 
 prisma::Api1* g_prisma = nullptr;
 
@@ -38,7 +38,7 @@ struct State {
   bool held_left = false, held_right = false;  // a mouse button the pad holds down (A, X)
   bool release_left = false, release_right = false;  // A or X let go since the last tick
   std::deque<pad::Act> acts;  // button verdicts, acted on at the next tick
-  enum class After { none, wait, system, journal, map } after = After::none;  // once the windows have closed
+  enum class After { none, wait, system, journal, map, magic } after = After::none;  // once the windows have closed
   // A pane of ours (journal, map, System) is opened with Wind UI's windows closed, so nothing is drawn over it; once it
   // has opened and then closed again (B, Esc, its Close), the windows come back. 0 none, 1 waiting for it, 2 it is open.
   int away = 0;
@@ -137,6 +137,12 @@ bool OurViewOpen() {
   return c.view_host.modal().has_value();
 }
 
+bool MagicPaneOpen() {
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  return c.view_host.modal() == std::optional<std::string>("magic");
+}
+
 pad::Context ContextNow() {
   if (!Open(kWindUIMenu)) return pad::Context::play;  // play or Skyrim's own menus: the controlmap acts
   if ((g_prisma && g_prisma->HasAnyActiveFocus()) || OurViewOpen()) return pad::Context::view;
@@ -179,6 +185,7 @@ void GoPane(int dir) {
     // ours open only once Wind UI's windows are closed, so they are never drawn over (reader, 2026-11-01)
     case pad::PaneKind::journal: AskClose(State::After::journal); break;  // our journal (the Journal event, J)
     case pad::PaneKind::map: AskClose(State::After::map); break;          // MapMenu, which our chart stands in for (M)
+    case pad::PaneKind::magic: AskClose(State::After::magic); break;      // MagicMenu, our magic pane (P)
     case pad::PaneKind::system: AskClose(State::After::system); break;    // Skyrim's System page (Esc)
   }
 }
@@ -238,9 +245,11 @@ void Tick() {
       case State::After::system: Tap(RE::INPUT_DEVICE::kKeyboard, kEsc); break;
       case State::After::journal: Tap(RE::INPUT_DEVICE::kKeyboard, kJ); break;
       case State::After::map: Tap(RE::INPUT_DEVICE::kKeyboard, kM); break;
+      case State::After::magic: Tap(RE::INPUT_DEVICE::kKeyboard, kP); break;
       case State::After::none: break;
     }
-    if (g.after == State::After::system || g.after == State::After::journal || g.after == State::After::map) {
+    if (g.after == State::After::system || g.after == State::After::journal || g.after == State::After::map ||
+        g.after == State::After::magic) {
       g.away = 1;
       g.away_since = now;
     }
@@ -258,7 +267,9 @@ void Tick() {
     else if (g.away == 2 && !g.away_closed.time_since_epoch().count()) g.away_closed = now;
     const bool left = g.away == 2 && g.away_closed.time_since_epoch().count() &&
                       std::chrono::duration<double>(now - g.away_closed).count() > 0.5;
-    if (Open(kWindUIMenu)) g.away = 0;  // the player opened them some other way
+    // The player opened them some other way; not the windows Wind UI pops as P's MagicMenu opens under our magic pane
+    // (hidden by the MagicMenu watcher below; pad-panes mp7 lost the way back to the windows to them).
+    if (Open(kWindUIMenu) && !MagicPaneOpen() && s_away > 1.5) g.away = 0;
     else if (left || (g.away == 1 && s_away > 5.0)) {
       g.away_closed = {};
       g.away = 0;
@@ -441,6 +452,28 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       std::thread([] {
         std::this_thread::sleep_for(std::chrono::milliseconds(400));
         SKSE::GetTaskInterface()->AddTask([] { SystemTab(); });
+      }).detach();
+      return RE::BSEventNotifyControl::kContinue;
+    }
+    if (e && e->opening && e->menuName == RE::MagicMenu::MENU_NAME) {
+      // P: Wind UI takes MagicMenu into its windows, and the router has swapped it for our magic pane; the windows are
+      // hidden while our pane is open (they can come up a few frames late, so each 50 ms for 1.5 s, as for J).
+      std::thread([] {
+        int hidden = 0;
+        for (int i = 0; i < 30; ++i) {
+          std::this_thread::sleep_for(std::chrono::milliseconds(50));
+          std::atomic<bool> done{false};
+          SKSE::GetTaskInterface()->AddTask([&done, &hidden] {
+            if (Open(kWindUIMenu) && MagicPaneOpen())
+              if (auto* q = RE::UIMessageQueue::GetSingleton()) {
+                q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
+                if (!hidden++) SKSE::log::info("pad: Wind UI's windows hidden under our magic pane");
+              }
+            done = true;
+            done.notify_one();
+          });
+          done.wait(false);
+        }
       }).detach();
       return RE::BSEventNotifyControl::kContinue;
     }

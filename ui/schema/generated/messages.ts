@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "1c0f39ffc05ad872";
+export const schemaHash = "f215a3bcbe14d3e8";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -30,8 +30,12 @@ export type NoticeKind = "info" | "journal" | "discovery" | "warning";
 export type AttributeId = "agility" | "endurance" | "intelligence" | "personality" | "speed" | "strength" | "willpower";
 /** why the next point of an attribute cannot be bought */
 export type SittingRefusal = "noPendingLevel" | "atCapThisSitting" | "atPurchaseCap" | "tooDear";
+/** one of Morrowind's six schools of magic */
+export type MagicSchool = "alteration" | "conjuration" | "destruction" | "illusion" | "mysticism" | "restoration";
+/** where a readied spell or power goes */
+export type Hand = "left" | "right" | "voice";
 /** a view the player can close */
-export type ViewId = "dialogue" | "journal" | "chart";
+export type ViewId = "dialogue" | "journal" | "chart" | "magic";
 
 /** The person the player is talking to */
 export interface Speaker {
@@ -438,6 +442,64 @@ export interface SittingBuy {
 /** The player rose from the sitting; unspent vastei carries over */
 export interface SittingDone {
 }
+/** A power or lesser power the player has */
+export interface MagicPower {
+  /** the power's form id, 8 hex digits */
+  id: string;
+  /** the power's name */
+  name: string;
+  /** readied in the voice slot */
+  readied: boolean;
+}
+/** One spell the player knows */
+export interface MagicSpell {
+  /** the spell's form id, 8 hex digits */
+  id: string;
+  /** the spell's name as the game has it (our restated name where mod_form gives one) */
+  name: string;
+  /** magicka to cast, the engine's figure for the player now */
+  cost: number;
+  /** the chance to cast, percent; absent: Skyrim has none */
+  chance?: number;
+  /** readied in the left hand */
+  left: boolean;
+  /** readied in the right hand */
+  right: boolean;
+}
+/** One school's heading and its spells, by name */
+export interface MagicGroup {
+  /** one of Morrowind's six schools of magic */
+  school: MagicSchool;
+  /** the heading as the player reads it */
+  name: string;
+  /** by name; empty when the player knows none of the school */
+  spells: MagicSpell[];
+}
+/** An effect on the player now */
+export interface MagicActive {
+  /** the effect's name */
+  name: string;
+  /** its magnitude and time left, as ArgoniaCore words them */
+  detail?: string;
+}
+/** The open magic pane */
+export interface MagicState {
+  /** by name */
+  powers: MagicPower[];
+  /** the six schools, always, in Morrowind's order */
+  groups: MagicGroup[];
+  /** the active effects shown in the game's UI, by name */
+  effects: MagicActive[];
+  /** one line about the last pick (a refusal), as ArgoniaCore words it */
+  notice?: string;
+}
+/** The player readied a spell in a hand, or a power */
+export interface MagicEquip {
+  /** the spell's or power's form id, 8 hex digits */
+  spell: string;
+  /** where a readied spell or power goes */
+  hand: Hand;
+}
 /** The player closed a view (Escape, the pad's B, the close button) */
 export interface ViewClose {
   /** a view the player can close */
@@ -451,7 +513,8 @@ export type PushMessage =
   | { type: "hud.bars"; v: 1; body: HudBars }
   | { type: "hud.minimap"; v: 1; body: HudMinimap }
   | { type: "chart.state"; v: 2; body: ChartState }
-  | { type: "sitting.state"; v: 1; body: SittingState };
+  | { type: "sitting.state"; v: 1; body: SittingState }
+  | { type: "magic.state"; v: 1; body: MagicState };
 export type IntentMessage =
   | { type: "dialogue.topic"; v: 1; body: DialogueTopic }
   | { type: "dialogue.keyword"; v: 1; body: DialogueKeyword }
@@ -462,6 +525,7 @@ export type IntentMessage =
   | { type: "chart.pan"; v: 1; body: ChartPan }
   | { type: "sitting.buy"; v: 1; body: SittingBuy }
   | { type: "sitting.done"; v: 1; body: SittingDone }
+  | { type: "magic.equip"; v: 1; body: MagicEquip }
   | { type: "view.close"; v: 1; body: ViewClose };
 export type Message = PushMessage | IntentMessage;
 export type Direction = "push" | "intent";
@@ -484,6 +548,8 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "sitting.state", version: 1, dir: "push" },
   { type: "sitting.buy", version: 1, dir: "intent" },
   { type: "sitting.done", version: 1, dir: "intent" },
+  { type: "magic.state", version: 1, dir: "push" },
+  { type: "magic.equip", version: 1, dir: "intent" },
   { type: "view.close", version: 1, dir: "intent" },
 ];
 
@@ -575,10 +641,20 @@ function checkSittingRefusal(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear");
   return SittingRefusalValues.includes(x) ? null : bad(p, `'${x}' is not one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear`);
 }
-const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart"];
+const MagicSchoolValues: readonly string[] = ["alteration", "conjuration", "destruction", "illusion", "mysticism", "restoration"];
+function checkMagicSchool(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of alteration, conjuration, destruction, illusion, mysticism, restoration");
+  return MagicSchoolValues.includes(x) ? null : bad(p, `'${x}' is not one of alteration, conjuration, destruction, illusion, mysticism, restoration`);
+}
+const HandValues: readonly string[] = ["left", "right", "voice"];
+function checkHand(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of left, right, voice");
+  return HandValues.includes(x) ? null : bad(p, `'${x}' is not one of left, right, voice`);
+}
+const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart", "magic"];
 function checkViewId(x: unknown, p: string): string | null {
-  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart");
-  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart`);
+  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart, magic");
+  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart, magic`);
 }
 function checkSpeaker(x: unknown, p: string): string | null {
   const o = members(x, p, ["id","name"]);
@@ -1097,6 +1173,79 @@ function checkSittingDone(x: unknown, p: string): string | null {
   let e: string | null;
   return null;
 }
+function checkMagicPower(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","readied"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = (typeof o["id"] === "string" ? null : bad(p + ".id", "want a string"))) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["readied"] === undefined) return bad(p + ".readied", "missing");
+  if ((e = (typeof o["readied"] === "boolean" ? null : bad(p + ".readied", "want true or false"))) !== null) return e;
+  return null;
+}
+function checkMagicSpell(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","cost","chance","left","right"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = (typeof o["id"] === "string" ? null : bad(p + ".id", "want a string"))) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["cost"] === undefined) return bad(p + ".cost", "missing");
+  if ((e = whole(o["cost"], 0, MAX_SAFE, p + ".cost")) !== null) return e;
+  if (o["chance"] !== undefined && (e = whole(o["chance"], 0, 100, p + ".chance")) !== null) return e;
+  if (o["left"] === undefined) return bad(p + ".left", "missing");
+  if ((e = (typeof o["left"] === "boolean" ? null : bad(p + ".left", "want true or false"))) !== null) return e;
+  if (o["right"] === undefined) return bad(p + ".right", "missing");
+  if ((e = (typeof o["right"] === "boolean" ? null : bad(p + ".right", "want true or false"))) !== null) return e;
+  return null;
+}
+function checkMagicGroup(x: unknown, p: string): string | null {
+  const o = members(x, p, ["school","name","spells"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["school"] === undefined) return bad(p + ".school", "missing");
+  if ((e = checkMagicSchool(o["school"], p + ".school")) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["spells"] === undefined) return bad(p + ".spells", "missing");
+  if ((e = each(o["spells"], p + ".spells", (e0: unknown, i0: string) => checkMagicSpell(e0, i0))) !== null) return e;
+  return null;
+}
+function checkMagicActive(x: unknown, p: string): string | null {
+  const o = members(x, p, ["name","detail"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["detail"] !== undefined && (e = (typeof o["detail"] === "string" ? null : bad(p + ".detail", "want a string"))) !== null) return e;
+  return null;
+}
+function checkMagicState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["powers","groups","effects","notice"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["powers"] === undefined) return bad(p + ".powers", "missing");
+  if ((e = each(o["powers"], p + ".powers", (e0: unknown, i0: string) => checkMagicPower(e0, i0))) !== null) return e;
+  if (o["groups"] === undefined) return bad(p + ".groups", "missing");
+  if ((e = each(o["groups"], p + ".groups", (e0: unknown, i0: string) => checkMagicGroup(e0, i0))) !== null) return e;
+  if (o["effects"] === undefined) return bad(p + ".effects", "missing");
+  if ((e = each(o["effects"], p + ".effects", (e0: unknown, i0: string) => checkMagicActive(e0, i0))) !== null) return e;
+  if (o["notice"] !== undefined && (e = (typeof o["notice"] === "string" ? null : bad(p + ".notice", "want a string"))) !== null) return e;
+  return null;
+}
+function checkMagicEquip(x: unknown, p: string): string | null {
+  const o = members(x, p, ["spell","hand"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["spell"] === undefined) return bad(p + ".spell", "missing");
+  if ((e = (typeof o["spell"] === "string" ? null : bad(p + ".spell", "want a string"))) !== null) return e;
+  if (o["hand"] === undefined) return bad(p + ".hand", "missing");
+  if ((e = checkHand(o["hand"], p + ".hand")) !== null) return e;
+  return null;
+}
 function checkViewClose(x: unknown, p: string): string | null {
   const o = members(x, p, ["view"]);
   if (typeof o === "string") return o;
@@ -1123,6 +1272,8 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "sitting.state": checkSittingState,
   "sitting.buy": checkSittingBuy,
   "sitting.done": checkSittingDone,
+  "magic.state": checkMagicState,
+  "magic.equip": checkMagicEquip,
   "view.close": checkViewClose,
 };
 

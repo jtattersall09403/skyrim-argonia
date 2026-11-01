@@ -294,7 +294,7 @@ msg::DialogueState probe_dialogue(std::string speaker_id, std::string speaker_na
 
 std::optional<std::string> close_intent(std::string_view v, const CloseControl& c, bool conversation_open) {
   const bool any = c.cancel || c.tween || c.journal;
-  if ((v == "journal" && any) || (v == "chart" && (any || c.quick_map)))
+  if ((v == "journal" && any) || (v == "chart" && (any || c.quick_map)) || (v == "magic" && (any || c.quick_magic)))
     return R"({"type":"view.close","v":1,"body":{"view":")" + std::string(v) + R"("}})";
   if (v == "dialogue" && any)
     return conversation_open ? std::string(R"({"type":"dialogue.goodbye","v":1,"body":{}})")

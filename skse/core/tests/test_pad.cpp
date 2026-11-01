@@ -88,13 +88,15 @@ int main() {
   const auto& ps = panes();
   CHECK(ps.size() >= 4);
   CHECK(ps.back().kind == PaneKind::system);
-  int journal = -1, map = -1;
+  int journal = -1, map = -1, magic = -1;
   for (int i = 0; i < static_cast<int>(ps.size()); ++i) {
+    if (ps[i].kind == PaneKind::magic) magic = i;
     if (ps[i].kind == PaneKind::journal) journal = i;
     if (ps[i].kind == PaneKind::map) map = i;
     if (ps[i].kind == PaneKind::window) CHECK(ps[i].fx > 0 && ps[i].fx < 1 && ps[i].fy > 0 && ps[i].fy < 1);
   }
   CHECK(journal >= 0 && map >= 0);
+  CHECK(magic == 2 && ps[2].name == "magic");  // ours, where Wind UI's magic window was (after stats, inventory)
   const int n = static_cast<int>(ps.size());
   CHECK(next_pane(-1, 1) == 0);
   CHECK(next_pane(-1, -1) == n - 1);

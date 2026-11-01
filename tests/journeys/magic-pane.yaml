@@ -1,7 +1,8 @@
 # 1.12-magic (L4): Magic Expanded as ArgoniaCore restates it at data load (lane-1.12-magic.md), in a real place.
-# The renames reach the game's own name lookup (help), the old Skyrim names are gone, and Wind UI's magic pane opens
-# over a spread of the mod's spells (still: the headings, Marsh Squall, Viperbolt under Destruction, Recall and Dispel
-# under the mod's Alteration and Restoration, no Mysticism heading: Wind UI's are fixed in its DLL).
+# The renames reach the game's own name lookup, the old Skyrim names are gone, and P opens OUR magic pane
+# (lane-1.12-magicpane), not Wind UI's magic window: Powers, then Morrowind's six schools with Mysticism listing Mark
+# and Recall; a spell readied in the right hand is read back from the engine; Esc closes to play. Then Livia's Barter
+# shows Magic Expanded's tomes, added to her merchant chest at data load (trade_class_mod_stock).
 # Magic.esp loads light at FE:012 on argonia-play-ie (Recall FE012A8E). Setup adds the spells (a cheat for the kit);
 # the test reads names the pass set, never names it sets itself.
 id: magic-pane
@@ -30,9 +31,39 @@ steps:
       - {read: [inventory, player], path: items, contains: "Spell Tome: Numbing Blow"}
       - {read: [inventory, player], path: items, not_contains: "Whiteout"}
       - {read: [inventory, player], path: items, not_contains: "Arctic"}
-  - name: pane                # Wind UI's magic window opens by the engine route
-    do: [{key: "P 150 engine"}]
+  - name: pane                # P (MagicMenu) opens our pane; Wind UI's windows are kept out of view
+    do: [{key: "P 150 engine"}, {wait: 2}]
     expect:
       - {event: {kind: menu, match: MagicMenu}}
-  - name: close
-    do: [{key: "P 150 engine"}]
+      - {read: [core, Views], path: value, contains: "magic ready open"}
+      - {read: [core, ViewState, magic], path: value.body.groups.4.name, eq: Mysticism}
+      - {read: [core, ViewState, magic], path: value.body.groups.4.spells, contains: "'name': 'Mark'"}
+      - {read: [core, ViewState, magic], path: value.body.groups.4.spells, contains: "'name': 'Recall'"}
+    reader: [our magic pane in the dark green-black frame, Powers then the headings Alteration Conjuration Destruction Illusion Mysticism Restoration, Mark and Recall under Mysticism with their costs, no Wind UI window over or around it]
+  - name: ready-right         # the pane's own intent (the name's button, as the L3 wiring clicks it): Recall to the right hand
+    do: [{call: [core, ViewIntent, '{"type":"magic.equip","v":1,"body":{"spell":"FE012A8E","hand":"right"}}']}, {wait: 1}]
+    expect:
+      - {read: [core, Views], path: value, contains: "magic right Recall"}
+      - {log: {name: ArgoniaCore, contains: "magic: Recall (FE012A8E) readied right"}, within: 5}
+    reader: [the pane titled Right Recall, Recall's row washed blue with an R mark]
+  - name: close               # Esc closes the pane to play
+    do: [{key: "ESC 150 engine"}, {wait: 2}]
+    expect:
+      - {read: [core, Views], path: value, contains: "magic ready closed"}
+      - {read: [core, Views], path: value, contains: "magic right Recall"}
+    reader: [play, no menu or window open]
+  - name: talk-livia          # the trader at Claywater Station
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {wait: 2}
+    expect: [{read: [core, ViewState, dialogue], path: value.body.services, contains: barter}]
+  - name: barter-tomes        # Barter (Wind UI's barter window) lists Magic Expanded's tomes, Mark and Recall among them
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.service","v":1,"body":{"service":"barter"}}']}, {wait: 3}]
+    expect:
+      - {event: {kind: menu, match: BarterMenu}, within: 8}
+      - {read: [core, Views], path: value, contains: "magic stock 13/13"}  # every tome row on Livia's chest
+    reader: [Wind UI's barter window with Livia's stock, among it Spell Tome Mark, Spell Tome Recall and other spell tomes with their prices]
+  - name: barter-close
+    do: [{close_menu: WindUIMenu}, {wait: 2}, {call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}]

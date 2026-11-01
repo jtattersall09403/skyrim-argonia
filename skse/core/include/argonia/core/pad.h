@@ -85,8 +85,8 @@ int scroll_step(Scroll& s, double stick_y, double dt, const Tuning& t = {});
 double nudge_px(double screen_h, const Tuning& t = {});
 
 // The panes the bumpers cycle, in order (owner: System last). Wind UI's windows are cursor anchors (fractions of the
-// screen at its default layout); journal and map open our views; system opens Skyrim's System page.
-enum class PaneKind { window, journal, map, system };
+// screen at its default layout); magic, journal and map open our views; system opens Skyrim's System page.
+enum class PaneKind { window, journal, map, system, magic };
 struct Pane {
   std::string_view name;
   PaneKind kind = PaneKind::window;

@@ -54,9 +54,10 @@ export function installNav(h: NavHooks) {
     const cur = document.activeElement as HTMLElement | null;
     if (!cur || !all.includes(cur)) { focus(all[0]); return; }
     // Within a scrolling list, walk the list's order, so a long topic list moves one row at a time.
+    // A row's side control (data-aside: the magic pane's left-hand "L") is not in the walk; from it, focus moves spatially.
     const list = cur.closest<HTMLElement>("[data-list]");
-    if (list && dy !== 0) {
-      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)];
+    if (list && dy !== 0 && !cur.hasAttribute("data-aside")) {
+      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((e) => !e.hasAttribute("data-aside"));
       const i = items.indexOf(cur) + dy;
       if (i >= 0 && i < items.length) { focus(items[i]); return; }
     }

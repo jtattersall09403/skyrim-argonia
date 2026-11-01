@@ -289,7 +289,7 @@ std::string ViewIntent(std::string_view json) {
     return {};
   }
   if (*view == "dialogue") return DialogueIntent(json);
-  if ((*view == "journal" || *view == "chart") && closing) {
+  if ((*view == "journal" || *view == "chart" || *view == "magic") && closing) {
     CloseView(*view);
     return {};
   }
@@ -297,6 +297,8 @@ std::string ViewIntent(std::string_view json) {
     if (const auto* p = std::get_if<ac::msg::JournalPage>(&*m)) return JournalIntent(*p);
   if (m)
     if (const auto* p = std::get_if<ac::msg::ChartPan>(&*m)) return ChartIntent(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::MagicEquip>(&*m)) return MagicIntent(*p);
   if (*view == "sitting") return SittingIntent(json);
   if (*view == "hud") return OpenTweenMenu() ? std::string{} : R"({"error":"the Tween Menu could not open"})";
   SKSE::log::warn("views: no host for the {} view's intents yet", *view);

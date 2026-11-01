@@ -46,6 +46,12 @@ void close_controls() {
   CHECK(close_intent("journal", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"journal"}})");
   CHECK(!close_intent("journal", m, false) && close_intent("chart", m, false));
   CHECK(!close_intent("sitting", esc, false) && !close_intent("hud", esc, false));
+  // Our magic pane closes as the journal does, and on P (Quick Magic) again, as the chart on M.
+  CloseControl p;
+  p.quick_magic = true;
+  CHECK(close_intent("magic", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"magic"}})");
+  CHECK(close_intent("magic", b, false) && close_intent("magic", tab, false) && close_intent("magic", p, false));
+  CHECK(!close_intent("magic", m, false) && !close_intent("chart", p, false) && !close_intent("journal", p, false));
 }
 
 void the_table() {
@@ -58,6 +64,7 @@ void the_table() {
   CHECK(spec("hud") && !spec("hud")->modal);
   CHECK(spec("dialogue") && spec("dialogue")->modal);
   CHECK(!spec("inventory"));
+  CHECK(spec("magic") && spec("magic")->modal);
 }
 
 void push_waits_for_ready() {

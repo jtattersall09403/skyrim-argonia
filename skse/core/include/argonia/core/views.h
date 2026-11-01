@@ -27,12 +27,13 @@ struct Spec {
   bool modal;  // takes focus and pauses; one modal at a time
   int order;
 };
-inline constexpr std::array<Spec, 5> kViews{{
+inline constexpr std::array<Spec, 6> kViews{{
     {"hud", "argonia/hud/index.html", false, 0},
     {"dialogue", "argonia/dialogue/index.html", true, 10},
     {"journal", "argonia/journal/index.html", true, 10},
     {"chart", "argonia/chart/index.html", true, 10},
     {"sitting", "argonia/sitting/index.html", true, 10},
+    {"magic", "argonia/magic/index.html", true, 10},  // our magic pane, for Wind UI's magic window (1.12)
 }};
 const Spec* spec(std::string_view id);
 inline constexpr std::string_view kPushFunction = "argoniaPush";      // bridge.ts: window.argoniaPush(text)
@@ -87,7 +88,7 @@ class KeyLatch {
 // on the chart) sends to the open modal view, or nothing when that view does not close by it. The dialogue view says
 // goodbye when a conversation is open (the probe's window, with none, just closes); sitting stands by its own intent.
 struct CloseControl {
-  bool cancel = false, tween = false, journal = false, quick_map = false;
+  bool cancel = false, tween = false, journal = false, quick_map = false, quick_magic = false;
 };
 std::optional<std::string> close_intent(std::string_view open_view, const CloseControl& c, bool conversation_open);
 

@@ -5307,6 +5307,21 @@ CREATE TABLE "trade_class_stock" (
   PRIMARY KEY ("trade_class_id", "ord")
 );
 
+-- Home of a trade class's stock from a dependency mod (1.12, lane-1.12-magicpane): a form of the player's own copy of
+-- the mod (data/dependencies.json), named as the immersion inventory names it ("<local FormID, 6 hex>:<plugin>",
+-- reviewed there, decision 0012), added to each trader's merchant chest of the class at data load by ArgoniaCore
+-- (skse/core magic, from tables_magic.h), so our plugin never masters the mod's (0003). A form whose plugin is not
+-- loaded is skipped. The engine prices it.
+CREATE TABLE "trade_class_mod_stock" (
+  "trade_class_id" TEXT NOT NULL REFERENCES "trade_class"("id") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "form" TEXT NOT NULL CHECK ("form" GLOB '[0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F][0-9A-F]:?*'),
+  "dependency" TEXT NOT NULL,
+  "count" INTEGER NOT NULL CHECK ("count" > 0),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("trade_class_id", "ord")
+);
+
 -- Home of a person's barter terms (Morrowind's barter gold; Skyrim's vendor faction): the gold in their merchant
 -- chest and the hours they trade (HH:MM, game time). Their stock is their trade class's (npc.trade_class).
 CREATE TABLE "npc_trade" (

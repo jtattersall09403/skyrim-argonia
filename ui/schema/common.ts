@@ -21,6 +21,6 @@ export const InputGlyph = struct("InputGlyph", "The glyph for one input on one d
   glyph: str("the glyph id in the symbol set (Skyrim's own, extracted at install, decision 0017 §5)"),
 });
 
-export const ViewId = enumDef("ViewId", "a view the player can close", ["dialogue", "journal", "chart"]);
+export const ViewId = enumDef("ViewId", "a view the player can close", ["dialogue", "journal", "chart", "magic"]);
 
 export const runs = (doc: string) => list(ref(TextRun), doc);

@@ -567,7 +567,8 @@ void CloseByControl(const RE::ButtonEvent& b, const RE::UserEvents& ue) {
   // Esc's gameplay event is Pause on this control map (logged "closed by Pause (1)", g19); it is the Journal key's
   // class (the System menu), and under PrismaUI's focus menu the press carries no Cancel, so it counts as Journal.
   const ac::views::CloseControl c{b.QUserEvent() == ue.cancel, game == ue.tweenMenu.c_str(),
-                                  game == ue.journal.c_str() || game == ue.pause.c_str(), game == ue.quickMap.c_str()};
+                                  game == ue.journal.c_str() || game == ue.pause.c_str(), game == ue.quickMap.c_str(),
+                                  game == ue.quickMagic.c_str()};
   auto intent = ac::views::close_intent(*open, c, conversation);
   if (!intent) return;
   SKSE::log::info("views: {} closed by {} ({})", *open, game.empty() ? b.QUserEvent().c_str() : std::string(game).c_str(),
@@ -610,6 +611,7 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
 
 void OnJournalSurface(ac::router::SurfaceId) { OpenJournal({ac::msg::JournalTab::current, 0, std::nullopt, std::nullopt}); }
 void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
+void OnMagicSurface(ac::router::SurfaceId) { OpenMagic(); }
 
 }  // namespace
 
@@ -661,7 +663,8 @@ void ViewsDataLoaded() {
   }
   std::string why;
   for (auto [s, h] : {std::pair{ac::router::SurfaceId::journalMenu, &OnJournalSurface},
-                      std::pair{ac::router::SurfaceId::mapMenu, &OnMapSurface}}) {
+                      std::pair{ac::router::SurfaceId::mapMenu, &OnMapSurface},
+                      std::pair{ac::router::SurfaceId::magicMenu, &OnMagicSurface}}) {
     if (c.router.handle(s, h, &why)) c.router_log.push_back("handler " + std::string(ac::router::name(s)));
     else c.router_log.push_back("refused: " + why);
   }
@@ -703,6 +706,7 @@ void ViewsGameReady() {
   HideVanillaHud();
   PushHudState();
   FastTravelOff();
+  MagicGameReady();
   g_mm_stale = true;
   PushMinimap(true);
 }
@@ -737,6 +741,9 @@ void CloseView(std::string_view view) {
         q->AddMessage(RE::MapMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
         SKSE::log::info("views: chart closed; MapMenu hidden");
       }
+  if (view == "magic")  // likewise MagicMenu, should the router's hide at its opening not have taken
+    if (auto* ui = RE::UI::GetSingleton(); ui && ui->IsMenuOpen(RE::MagicMenu::MENU_NAME))
+      if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::MagicMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
 }
 
 void CloseAllViews() {
@@ -797,6 +804,7 @@ std::vector<std::string> ViewsReport() {
   out.push_back(std::format("minimap {} revealed {} places {} heading {:.0f}", g_mm_at ? "shown" : "hidden",
                             mm.map.revealed.size(), mm.map.places.size(), g_mm_at ? g_mm_at->heading : 0.0));
   out.push_back(g_fast_travel);
+  for (auto& line : MagicReport()) out.push_back(std::move(line));
   for (const auto& s : ac::views::kViews)
     out.push_back(std::string(s.id) + (c.view_host.is_ready(s.id) ? " ready" : " loading") +
                   (c.view_host.is_open(s.id) ? " open" : " closed"));

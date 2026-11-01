@@ -26,8 +26,15 @@ steps:
   - name: triggers-and-right-stick-scroll
     do: [{pad: "RT:200"}, {pad: "LT:200"}, {pad: "RY=-1:600"}, {wait: 1}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: wheel down (trigger)"}}, {log: {name: ArgoniaCore, contains: "pad: wheel up (trigger)"}}, {log: {name: ArgoniaCore, contains: "by the right stick"}}]
+  - name: bumper-to-magic        # third pane: our magic pane where Wind UI's magic window was (lane-1.12-magicpane)
+    do: [{pad: "RB:150"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: pane magic"}}, {read: [core, Views], path: value, contains: "magic ready open", within: 5}]
+    reader: [our magic pane alone, the six school headings, no Wind UI window over or around it]
+  - name: magic-closed-by-b      # B leaves it; the windows come back under the pad
+    do: [{pad: "B:150"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
   - name: bumper-to-journal
-    do: [{pad: "RB:150"}, {wait: 1}, {pad: "RB:150"}, {wait: 2}]
+    do: [{pad: "RB:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane journal"}}]
   - name: journal-closed-by-b    # nav.ts's B leaves our journal; the windows under it take the pad again
     do: [{pad: "B:150"}, {wait: 3}]

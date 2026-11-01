@@ -123,6 +123,10 @@ void CombatDataLoaded();
 
 // --- magic.cpp: dependency mods' forms restated at data load (1.12) ---------------------------------------------
 void MagicDataLoaded();
+void MagicGameReady();  // the mod stock topped up on the merchant chests at each load
+void OpenMagic(std::optional<std::string> notice = std::nullopt);  // our magic pane (under Get().lock)
+std::string MagicIntent(const ac::msg::MagicEquip& m);
+std::vector<std::string> MagicReport();
 // Recompute and write on the main thread; `why` names the change for the log.
 void WriteCombat(std::string_view why);
 // The armour pieces an actor wears (heavy and light; clothing and medium's missing marker skipped), with the

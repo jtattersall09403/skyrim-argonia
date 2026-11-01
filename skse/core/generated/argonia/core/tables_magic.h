@@ -63,4 +63,26 @@ inline constexpr std::array<ModFormRow, 41> kModForms{{
     {0x000AC3, "Magic.esp", "MGEF", "Powerful Force", "", std::nullopt, ""},
 }};
 
+struct ModStockRow {
+  std::string_view npc;              // world db npc.id of the trader
+  std::uint32_t local_id;
+  std::string_view plugin;
+  std::int32_t count;
+};
+inline constexpr std::array<ModStockRow, 13> kModStock{{
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x00081F, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000813, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000834, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000833, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000868, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x00086B, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x00089F, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x0008A1, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000804, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000803, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000811, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x00085A, "Magic.esp", 1},
+    {"npc.imperial-fringe.claywater-station.well-keeper", 0x000859, "Magic.esp", 1},
+}};
+
 }  // namespace argonia::core::gen

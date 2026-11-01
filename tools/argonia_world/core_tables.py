@@ -351,6 +351,17 @@ def magic(w: db.World) -> str:
         b.append(f"    {{0x{local}, {sv(plugin)}, {sv(r['form_type'])}, {sv(r['name'])}, {sv(r['description'])}, "
                  f"{opt(r['school'], lambda s: f'SkillId::{ident(s)}')}, {sv(av)}}},")
     b.append("}};")
+    # Each trader's dependency-mod stock (trade_class_mod_stock, by the trader's trade class): ArgoniaCore adds it to
+    # the trader's merchant chest at data load, found through their vendor faction.
+    stock = w.query("SELECT t.npc_id, s.form, s.count FROM trade_class_mod_stock s JOIN npc n ON n.trade_class = "
+                    "s.trade_class_id JOIN npc_trade t ON t.npc_id = n.id ORDER BY t.npc_id, s.trade_class_id, s.ord")
+    b += ["", "struct ModStockRow {", "  std::string_view npc;              // world db npc.id of the trader",
+          "  std::uint32_t local_id;", "  std::string_view plugin;", "  std::int32_t count;", "};",
+          f"inline constexpr std::array<ModStockRow, {len(stock)}> kModStock{{{{"]
+    for r in stock:
+        local, plugin = r["form"].split(":", 1)
+        b.append(f"    {{{sv(r['npc_id'])}, 0x{local}, {sv(plugin)}, {r['count']}}},")
+    b.append("}};")
     return _wrap("magic", ["array", "cstddef", "cstdint", "optional", "string_view", "argonia/core/tables_sheet.h"], b)
 
 

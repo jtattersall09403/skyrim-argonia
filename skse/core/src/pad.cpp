@@ -116,7 +116,7 @@ const std::vector<Pane>& panes() {
   static const std::vector<Pane> p = {
       {"stats", PaneKind::window, 0.28, 0.25},
       {"inventory", PaneKind::window, 0.28, 0.70},
-      {"magic", PaneKind::window, 0.77, 0.33},
+      {"magic", PaneKind::magic},  // our magic pane where Wind UI's magic window was (lane-1.12-magicpane)
       {"journal", PaneKind::journal},
       {"map", PaneKind::map},
       {"system", PaneKind::system},

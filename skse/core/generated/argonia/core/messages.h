@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "1c0f39ffc05ad872";
+inline constexpr std::string_view kSchemaHash = "f215a3bcbe14d3e8";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -75,9 +75,17 @@ inline constexpr std::array<std::string_view, 7> kAttributeIdNames{"agility", "e
 enum class SittingRefusal : std::uint8_t { noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear };
 inline constexpr std::array<std::string_view, 4> kSittingRefusalNames{"noPendingLevel", "atCapThisSitting", "atPurchaseCap", "tooDear"};
 
+// one of Morrowind's six schools of magic
+enum class MagicSchool : std::uint8_t { alteration, conjuration, destruction, illusion, mysticism, restoration };
+inline constexpr std::array<std::string_view, 6> kMagicSchoolNames{"alteration", "conjuration", "destruction", "illusion", "mysticism", "restoration"};
+
+// where a readied spell or power goes
+enum class Hand : std::uint8_t { left, right, voice };
+inline constexpr std::array<std::string_view, 3> kHandNames{"left", "right", "voice"};
+
 // a view the player can close
-enum class ViewId : std::uint8_t { dialogue, journal, chart };
-inline constexpr std::array<std::string_view, 3> kViewIdNames{"dialogue", "journal", "chart"};
+enum class ViewId : std::uint8_t { dialogue, journal, chart, magic };
+inline constexpr std::array<std::string_view, 4> kViewIdNames{"dialogue", "journal", "chart", "magic"};
 
 // The person the player is talking to
 struct Speaker {
@@ -432,6 +440,56 @@ struct SittingDone {
   bool operator==(const SittingDone&) const = default;
 };
 
+// A power or lesser power the player has
+struct MagicPower {
+  std::string id;  // the power's form id, 8 hex digits
+  std::string name;  // the power's name
+  bool readied = false;  // readied in the voice slot
+  bool operator==(const MagicPower&) const = default;
+};
+
+// One spell the player knows
+struct MagicSpell {
+  std::string id;  // the spell's form id, 8 hex digits
+  std::string name;  // the spell's name as the game has it (our restated name where mod_form gives one)
+  std::int64_t cost = 0;  // magicka to cast, the engine's figure for the player now
+  std::optional<std::int64_t> chance;  // the chance to cast, percent; absent: Skyrim has none
+  bool left = false;  // readied in the left hand
+  bool right = false;  // readied in the right hand
+  bool operator==(const MagicSpell&) const = default;
+};
+
+// One school's heading and its spells, by name
+struct MagicGroup {
+  MagicSchool school{};  // one of Morrowind's six schools of magic
+  std::string name;  // the heading as the player reads it
+  std::vector<MagicSpell> spells;  // by name; empty when the player knows none of the school
+  bool operator==(const MagicGroup&) const = default;
+};
+
+// An effect on the player now
+struct MagicActive {
+  std::string name;  // the effect's name
+  std::optional<std::string> detail;  // its magnitude and time left, as ArgoniaCore words them
+  bool operator==(const MagicActive&) const = default;
+};
+
+// The open magic pane
+struct MagicState {
+  std::vector<MagicPower> powers;  // by name
+  std::vector<MagicGroup> groups;  // the six schools, always, in Morrowind's order
+  std::vector<MagicActive> effects;  // the active effects shown in the game's UI, by name
+  std::optional<std::string> notice;  // one line about the last pick (a refusal), as ArgoniaCore words it
+  bool operator==(const MagicState&) const = default;
+};
+
+// The player readied a spell in a hand, or a power
+struct MagicEquip {
+  std::string spell;  // the spell's or power's form id, 8 hex digits
+  Hand hand{};  // where a readied spell or power goes
+  bool operator==(const MagicEquip&) const = default;
+};
+
 // The player closed a view (Escape, the pad's B, the close button)
 struct ViewClose {
   ViewId view{};  // a view the player can close
@@ -538,18 +596,30 @@ struct Traits<SittingDone> {
   static constexpr Direction dir = Direction::intent;
 };
 template <>
+struct Traits<MagicState> {
+  static constexpr std::string_view type = "magic.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<MagicEquip> {
+  static constexpr std::string_view type = "magic.equip";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<ViewClose> {
   static constexpr std::string_view type = "view.close";
   static constexpr std::uint32_t version = 1;
   static constexpr Direction dir = Direction::intent;
 };
 
-using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, ViewClose>;
+using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState, MagicState>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, MagicEquip, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, MagicState, MagicEquip, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 17> kMessages{{
+inline constexpr std::array<MessageInfo, 19> kMessages{{
     {"dialogue.state", 2, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -566,6 +636,8 @@ inline constexpr std::array<MessageInfo, 17> kMessages{{
     {"sitting.state", 1, Direction::push},
     {"sitting.buy", 1, Direction::intent},
     {"sitting.done", 1, Direction::intent},
+    {"magic.state", 1, Direction::push},
+    {"magic.equip", 1, Direction::intent},
     {"view.close", 1, Direction::intent},
 }};
 
@@ -675,13 +747,29 @@ inline bool from_json(const json::Value& j, SittingRefusal& out, const std::stri
     if (*s == kSittingRefusalNames[i]) { out = SittingRefusal(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of noPendingLevel, atCapThisSitting, atPurchaseCap, tooDear");
 }
+inline json::Value to_json(MagicSchool v) { return json::Value::string(std::string(kMagicSchoolNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, MagicSchool& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of alteration, conjuration, destruction, illusion, mysticism, restoration");
+  for (std::size_t i = 0; i < kMagicSchoolNames.size(); ++i)
+    if (*s == kMagicSchoolNames[i]) { out = MagicSchool(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of alteration, conjuration, destruction, illusion, mysticism, restoration");
+}
+inline json::Value to_json(Hand v) { return json::Value::string(std::string(kHandNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, Hand& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of left, right, voice");
+  for (std::size_t i = 0; i < kHandNames.size(); ++i)
+    if (*s == kHandNames[i]) { out = Hand(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of left, right, voice");
+}
 inline json::Value to_json(ViewId v) { return json::Value::string(std::string(kViewIdNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, ViewId& out, const std::string& path, std::string& err) {
   const std::string* s = j.as_string();
-  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart");
+  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart, magic");
   for (std::size_t i = 0; i < kViewIdNames.size(); ++i)
     if (*s == kViewIdNames[i]) { out = ViewId(i); return true; }
-  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart");
+  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart, magic");
 }
 
 inline json::Value to_json(const Speaker& v) {
@@ -2184,6 +2272,231 @@ inline bool from_json(const json::Value& j, SittingDone& out, const std::string&
   return f.done();
 }
 
+inline json::Value to_json(const MagicPower& v) {
+  json::Object o;
+  o.reserve(3);
+  o.push_back({"id", json::Value::string(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"readied", json::Value::boolean(v.readied)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicPower& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_readied = f.req("readied")) {
+    if (!json::read(*f_readied, out.readied, path + ".readied", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const MagicSpell& v) {
+  json::Object o;
+  o.reserve(6);
+  o.push_back({"id", json::Value::string(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"cost", json::Value::number(double(v.cost))});
+  if (v.chance) o.push_back({"chance", json::Value::number(double(*v.chance))});
+  o.push_back({"left", json::Value::boolean(v.left)});
+  o.push_back({"right", json::Value::boolean(v.right)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicSpell& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_cost = f.req("cost")) {
+    if (!json::read_int(*f_cost, out.cost, 0.0, json::kMaxSafeInt, path + ".cost", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_chance = f.opt("chance")) {
+    out.chance.emplace();
+    if (!json::read_int(*f_chance, *out.chance, 0.0, 100.0, path + ".chance", err)) return false;
+  } else {
+    out.chance.reset();
+  }
+  if (const json::Value* f_left = f.req("left")) {
+    if (!json::read(*f_left, out.left, path + ".left", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_right = f.req("right")) {
+    if (!json::read(*f_right, out.right, path + ".right", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const MagicGroup& v) {
+  json::Object o;
+  o.reserve(3);
+  o.push_back({"school", to_json(v.school)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"spells", [&] { json::Array a0; a0.reserve(v.spells.size()); for (const auto& e0 : v.spells) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicGroup& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_school = f.req("school")) {
+    if (!from_json(*f_school, out.school, path + ".school", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_spells = f.req("spells")) {
+    {
+      const json::Array* a0 = (*f_spells).as_array();
+      if (!a0) return json::fail(err, path + ".spells", "want a list");
+      out.spells.clear();
+      out.spells.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.spells.emplace_back();
+        if (!from_json((*a0)[i0], out.spells.back(), path + ".spells" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const MagicActive& v) {
+  json::Object o;
+  o.reserve(2);
+  o.push_back({"name", json::Value::string(v.name)});
+  if (v.detail) o.push_back({"detail", json::Value::string(*v.detail)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicActive& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_detail = f.opt("detail")) {
+    out.detail.emplace();
+    if (!json::read(*f_detail, *out.detail, path + ".detail", err)) return false;
+  } else {
+    out.detail.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const MagicState& v) {
+  json::Object o;
+  o.reserve(4);
+  o.push_back({"powers", [&] { json::Array a0; a0.reserve(v.powers.size()); for (const auto& e0 : v.powers) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"groups", [&] { json::Array a0; a0.reserve(v.groups.size()); for (const auto& e0 : v.groups) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"effects", [&] { json::Array a0; a0.reserve(v.effects.size()); for (const auto& e0 : v.effects) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  if (v.notice) o.push_back({"notice", json::Value::string(*v.notice)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_powers = f.req("powers")) {
+    {
+      const json::Array* a0 = (*f_powers).as_array();
+      if (!a0) return json::fail(err, path + ".powers", "want a list");
+      out.powers.clear();
+      out.powers.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.powers.emplace_back();
+        if (!from_json((*a0)[i0], out.powers.back(), path + ".powers" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_groups = f.req("groups")) {
+    {
+      const json::Array* a0 = (*f_groups).as_array();
+      if (!a0) return json::fail(err, path + ".groups", "want a list");
+      out.groups.clear();
+      out.groups.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.groups.emplace_back();
+        if (!from_json((*a0)[i0], out.groups.back(), path + ".groups" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_effects = f.req("effects")) {
+    {
+      const json::Array* a0 = (*f_effects).as_array();
+      if (!a0) return json::fail(err, path + ".effects", "want a list");
+      out.effects.clear();
+      out.effects.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.effects.emplace_back();
+        if (!from_json((*a0)[i0], out.effects.back(), path + ".effects" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_notice = f.opt("notice")) {
+    out.notice.emplace();
+    if (!json::read(*f_notice, *out.notice, path + ".notice", err)) return false;
+  } else {
+    out.notice.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const MagicEquip& v) {
+  json::Object o;
+  o.reserve(2);
+  o.push_back({"spell", json::Value::string(v.spell)});
+  o.push_back({"hand", to_json(v.hand)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, MagicEquip& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_spell = f.req("spell")) {
+    if (!json::read(*f_spell, out.spell, path + ".spell", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_hand = f.req("hand")) {
+    if (!from_json(*f_hand, out.hand, path + ".hand", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
 inline json::Value to_json(const ViewClose& v) {
   json::Object o;
   o.reserve(1);
@@ -2392,6 +2705,28 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("sitting.done: " + std::string(refuse));
     }
   }
+  if (type == "magic.state") {
+    if constexpr (std::is_constructible_v<V, MagicState>) {
+      if (v != 1)
+        return std::unexpected("magic.state version " + std::to_string(v) + ": this build speaks version 1");
+      MagicState m;
+      if (!from_json(*body, m, "magic.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<MagicState>, std::move(m)};
+    } else {
+      return std::unexpected("magic.state: " + std::string(refuse));
+    }
+  }
+  if (type == "magic.equip") {
+    if constexpr (std::is_constructible_v<V, MagicEquip>) {
+      if (v != 1)
+        return std::unexpected("magic.equip version " + std::to_string(v) + ": this build speaks version 1");
+      MagicEquip m;
+      if (!from_json(*body, m, "magic.equip body", err)) return std::unexpected(err);
+      return V{std::in_place_type<MagicEquip>, std::move(m)};
+    } else {
+      return std::unexpected("magic.equip: " + std::string(refuse));
+    }
+  }
   if (type == "view.close") {
     if constexpr (std::is_constructible_v<V, ViewClose>) {
       if (v != 1)
@@ -2520,6 +2855,20 @@ inline std::expected<std::string, std::string> encode(const SittingDone& m) {
   std::string err;
   if (!detail::from_json(body, check, "sitting.done body", err)) return std::unexpected(err);
   return json::envelope("sitting.done", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const MagicState& m) {
+  json::Value body = detail::to_json(m);
+  MagicState check;
+  std::string err;
+  if (!detail::from_json(body, check, "magic.state body", err)) return std::unexpected(err);
+  return json::envelope("magic.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const MagicEquip& m) {
+  json::Value body = detail::to_json(m);
+  MagicEquip check;
+  std::string err;
+  if (!detail::from_json(body, check, "magic.equip body", err)) return std::unexpected(err);
+  return json::envelope("magic.equip", 1, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ViewClose& m) {
   json::Value body = detail::to_json(m);

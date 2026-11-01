@@ -1,0 +1,1029 @@
+{
+ "screen": "magic",
+ "doc": "Mock data for our magic pane's L3 harness (lane-1.12-magicpane): Morrowind's layout, powers then the six schools (Mysticism with Mark and Recall), the active effects. Ids are Magic.esp's at FE:012 on argonia-play-ie where the spell is Magic Expanded's.",
+ "states": {
+  "kit": {
+   "type": "magic.state",
+   "v": 1,
+   "body": {
+    "powers": [
+     {
+      "id": "000E40C9",
+      "name": "Histskin",
+      "readied": true
+     }
+    ],
+    "groups": [
+     {
+      "school": "alteration",
+      "name": "Alteration",
+      "spells": [
+       {
+        "id": "FE01299C",
+        "name": "Oakflesh",
+        "cost": 41,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0129D0",
+        "name": "Water Walking",
+        "cost": 143,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "conjuration",
+      "name": "Conjuration",
+      "spells": [
+       {
+        "id": "FE0129D3",
+        "name": "Bound Shield",
+        "cost": 206,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE01281E",
+        "name": "Conjure Ghost",
+        "cost": 117,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "destruction",
+      "name": "Destruction",
+      "spells": [
+       {
+        "id": "FE012A0A",
+        "name": "Fire Bite",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "00012FCD",
+        "name": "Flames",
+        "cost": 14,
+        "left": true,
+        "right": false
+       },
+       {
+        "id": "FE012972",
+        "name": "Marsh Squall",
+        "cost": 386,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE01291F",
+        "name": "Viperbolt",
+        "cost": 98,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "illusion",
+      "name": "Illusion",
+      "spells": [
+       {
+        "id": "FE012A55",
+        "name": "Blind",
+        "cost": 56,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "mysticism",
+      "name": "Mysticism",
+      "spells": [
+       {
+        "id": "FE012999",
+        "name": "Absorb Health",
+        "cost": 148,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012991",
+        "name": "Dispel",
+        "cost": 554,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012A8C",
+        "name": "Mark",
+        "cost": 500,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012A8E",
+        "name": "Recall",
+        "cost": 250,
+        "left": false,
+        "right": true
+       },
+       {
+        "id": "FE012966",
+        "name": "Spelldrinker",
+        "cost": 236,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "restoration",
+      "name": "Restoration",
+      "spells": [
+       {
+        "id": "00012FCC",
+        "name": "Healing",
+        "cost": 12,
+        "left": false,
+        "right": false
+       }
+      ]
+     }
+    ],
+    "effects": [
+     {
+      "name": "Fortify Health",
+      "detail": "10 pts, 54 s"
+     },
+     {
+      "name": "Water Breathing"
+     },
+     {
+      "name": "Resist Disease",
+      "detail": "50 pts"
+     }
+    ]
+   }
+  },
+  "fresh": {
+   "type": "magic.state",
+   "v": 1,
+   "body": {
+    "powers": [],
+    "groups": [
+     {
+      "school": "alteration",
+      "name": "Alteration",
+      "spells": []
+     },
+     {
+      "school": "conjuration",
+      "name": "Conjuration",
+      "spells": []
+     },
+     {
+      "school": "destruction",
+      "name": "Destruction",
+      "spells": [
+       {
+        "id": "00012FCD",
+        "name": "Flames",
+        "cost": 14,
+        "left": false,
+        "right": true
+       }
+      ]
+     },
+     {
+      "school": "illusion",
+      "name": "Illusion",
+      "spells": []
+     },
+     {
+      "school": "mysticism",
+      "name": "Mysticism",
+      "spells": []
+     },
+     {
+      "school": "restoration",
+      "name": "Restoration",
+      "spells": [
+       {
+        "id": "00012FCC",
+        "name": "Healing",
+        "cost": 12,
+        "left": true,
+        "right": false
+       }
+      ]
+     }
+    ],
+    "effects": []
+   }
+  },
+  "many": {
+   "type": "magic.state",
+   "v": 1,
+   "body": {
+    "powers": [
+     {
+      "id": "000E40C9",
+      "name": "Histskin",
+      "readied": true
+     },
+     {
+      "id": "000E52F1",
+      "name": "Tail Lash",
+      "readied": false
+     }
+    ],
+    "groups": [
+     {
+      "school": "alteration",
+      "name": "Alteration",
+      "spells": [
+       {
+        "id": "FE000000",
+        "name": "Ash Alteration I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000001",
+        "name": "Bog Alteration I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000002",
+        "name": "Coral Alteration I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000003",
+        "name": "Drift Alteration I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000004",
+        "name": "Ember Alteration I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000005",
+        "name": "Fen Alteration I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000006",
+        "name": "Gale Alteration I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000007",
+        "name": "Hist Alteration I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000008",
+        "name": "Ivy Alteration I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000009",
+        "name": "Jade Alteration I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00000A",
+        "name": "Kelp Alteration I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00000B",
+        "name": "Lantern Alteration I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "conjuration",
+      "name": "Conjuration",
+      "spells": [
+       {
+        "id": "FE000028",
+        "name": "Ash Conjuration I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000029",
+        "name": "Bog Conjuration I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002A",
+        "name": "Coral Conjuration I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002B",
+        "name": "Drift Conjuration I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002C",
+        "name": "Ember Conjuration I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002D",
+        "name": "Fen Conjuration I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002E",
+        "name": "Gale Conjuration I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00002F",
+        "name": "Hist Conjuration I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000030",
+        "name": "Ivy Conjuration I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000031",
+        "name": "Jade Conjuration I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000032",
+        "name": "Kelp Conjuration I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000033",
+        "name": "Lantern Conjuration I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "destruction",
+      "name": "Destruction",
+      "spells": [
+       {
+        "id": "FE000050",
+        "name": "Ash Destruction I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000051",
+        "name": "Bog Destruction I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000052",
+        "name": "Coral Destruction I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000053",
+        "name": "Drift Destruction I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000054",
+        "name": "Ember Destruction I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000055",
+        "name": "Fen Destruction I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000056",
+        "name": "Gale Destruction I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000057",
+        "name": "Hist Destruction I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000058",
+        "name": "Ivy Destruction I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000059",
+        "name": "Jade Destruction I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00005A",
+        "name": "Kelp Destruction I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00005B",
+        "name": "Lantern Destruction I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "illusion",
+      "name": "Illusion",
+      "spells": [
+       {
+        "id": "FE000078",
+        "name": "Ash Illusion I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000079",
+        "name": "Bog Illusion I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007A",
+        "name": "Coral Illusion I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007B",
+        "name": "Drift Illusion I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007C",
+        "name": "Ember Illusion I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007D",
+        "name": "Fen Illusion I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007E",
+        "name": "Gale Illusion I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE00007F",
+        "name": "Hist Illusion I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000080",
+        "name": "Ivy Illusion I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000081",
+        "name": "Jade Illusion I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000082",
+        "name": "Kelp Illusion I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE000083",
+        "name": "Lantern Illusion I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "mysticism",
+      "name": "Mysticism",
+      "spells": [
+       {
+        "id": "FE0000A0",
+        "name": "Ash Mysticism I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A1",
+        "name": "Bog Mysticism I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A2",
+        "name": "Coral Mysticism I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A3",
+        "name": "Drift Mysticism I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A4",
+        "name": "Ember Mysticism I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A5",
+        "name": "Fen Mysticism I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A6",
+        "name": "Gale Mysticism I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A7",
+        "name": "Hist Mysticism I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A8",
+        "name": "Ivy Mysticism I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000A9",
+        "name": "Jade Mysticism I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000AA",
+        "name": "Kelp Mysticism I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000AB",
+        "name": "Lantern Mysticism I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "restoration",
+      "name": "Restoration",
+      "spells": [
+       {
+        "id": "FE0000C8",
+        "name": "Ash Restoration I",
+        "cost": 10,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000C9",
+        "name": "Bog Restoration I",
+        "cost": 17,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CA",
+        "name": "Coral Restoration I",
+        "cost": 24,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CB",
+        "name": "Drift Restoration I",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CC",
+        "name": "Ember Restoration I",
+        "cost": 38,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CD",
+        "name": "Fen Restoration I",
+        "cost": 45,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CE",
+        "name": "Gale Restoration I",
+        "cost": 52,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000CF",
+        "name": "Hist Restoration I",
+        "cost": 59,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000D0",
+        "name": "Ivy Restoration I",
+        "cost": 66,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000D1",
+        "name": "Jade Restoration I",
+        "cost": 73,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000D2",
+        "name": "Kelp Restoration I",
+        "cost": 80,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0000D3",
+        "name": "Lantern Restoration I",
+        "cost": 87,
+        "left": false,
+        "right": false
+       }
+      ]
+     }
+    ],
+    "effects": [
+     {
+      "name": "Fortify Health",
+      "detail": "10 pts, 54 s"
+     },
+     {
+      "name": "Water Breathing"
+     },
+     {
+      "name": "Resist Disease",
+      "detail": "50 pts"
+     },
+     {
+      "name": "Fortify Health",
+      "detail": "10 pts, 54 s"
+     },
+     {
+      "name": "Water Breathing"
+     },
+     {
+      "name": "Resist Disease",
+      "detail": "50 pts"
+     },
+     {
+      "name": "Fortify Health",
+      "detail": "10 pts, 54 s"
+     },
+     {
+      "name": "Water Breathing"
+     },
+     {
+      "name": "Resist Disease",
+      "detail": "50 pts"
+     }
+    ]
+   }
+  },
+  "refused": {
+   "type": "magic.state",
+   "v": 1,
+   "body": {
+    "powers": [
+     {
+      "id": "000E40C9",
+      "name": "Histskin",
+      "readied": true
+     }
+    ],
+    "groups": [
+     {
+      "school": "alteration",
+      "name": "Alteration",
+      "spells": [
+       {
+        "id": "FE01299C",
+        "name": "Oakflesh",
+        "cost": 41,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE0129D0",
+        "name": "Water Walking",
+        "cost": 143,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "conjuration",
+      "name": "Conjuration",
+      "spells": [
+       {
+        "id": "FE0129D3",
+        "name": "Bound Shield",
+        "cost": 206,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE01281E",
+        "name": "Conjure Ghost",
+        "cost": 117,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "destruction",
+      "name": "Destruction",
+      "spells": [
+       {
+        "id": "FE012A0A",
+        "name": "Fire Bite",
+        "cost": 31,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "00012FCD",
+        "name": "Flames",
+        "cost": 14,
+        "left": true,
+        "right": false
+       },
+       {
+        "id": "FE012972",
+        "name": "Marsh Squall",
+        "cost": 386,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE01291F",
+        "name": "Viperbolt",
+        "cost": 98,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "illusion",
+      "name": "Illusion",
+      "spells": [
+       {
+        "id": "FE012A55",
+        "name": "Blind",
+        "cost": 56,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "mysticism",
+      "name": "Mysticism",
+      "spells": [
+       {
+        "id": "FE012999",
+        "name": "Absorb Health",
+        "cost": 148,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012991",
+        "name": "Dispel",
+        "cost": 554,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012A8C",
+        "name": "Mark",
+        "cost": 500,
+        "left": false,
+        "right": false
+       },
+       {
+        "id": "FE012A8E",
+        "name": "Recall",
+        "cost": 250,
+        "left": false,
+        "right": true
+       },
+       {
+        "id": "FE012966",
+        "name": "Spelldrinker",
+        "cost": 236,
+        "left": false,
+        "right": false
+       }
+      ]
+     },
+     {
+      "school": "restoration",
+      "name": "Restoration",
+      "spells": [
+       {
+        "id": "00012FCC",
+        "name": "Healing",
+        "cost": 12,
+        "left": false,
+        "right": false
+       }
+      ]
+     }
+    ],
+    "effects": [
+     {
+      "name": "Fortify Health",
+      "detail": "10 pts, 54 s"
+     },
+     {
+      "name": "Water Breathing"
+     },
+     {
+      "name": "Resist Disease",
+      "detail": "50 pts"
+     }
+    ],
+    "notice": "Histskin is a power: it is readied, not held in a hand."
+   }
+  }
+ },
+ "intents": {
+  "right": {
+   "type": "magic.equip",
+   "v": 1,
+   "body": {
+    "spell": "FE012A8E",
+    "hand": "right"
+   }
+  },
+  "left": {
+   "type": "magic.equip",
+   "v": 1,
+   "body": {
+    "spell": "FE012A8E",
+    "hand": "left"
+   }
+  },
+  "power": {
+   "type": "magic.equip",
+   "v": 1,
+   "body": {
+    "spell": "000E40C9",
+    "hand": "voice"
+   }
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "magic"
+   }
+  }
+ }
+}

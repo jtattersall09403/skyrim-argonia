@@ -326,11 +326,11 @@
    "kind": "menu",
    "menu": "MagicMenu",
    "inventory": "interface/magicmenu.swf",
-   "replacement": "restyled",
-   "by": "dearDiary",
+   "replacement": "view",
+   "by": "magic",
    "hook": "menuOpenClose",
-   "chunk": "1.2 §a",
-   "note": ""
+   "chunk": "1.12",
+   "note": "our magic pane (Morrowind's six schools); Wind UI's magic window, which takes MagicMenu, is hidden while it is open"
   },
   {
    "id": "containerMenu",

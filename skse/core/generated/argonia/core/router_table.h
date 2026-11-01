@@ -69,7 +69,7 @@ inline constexpr std::array<SurfaceRow, 41> kSurfaces{{
     {SurfaceKind::notification, "", "", Replacement::suppressed, "", HookId::notifications, "1.3"},  // skillNotice
     {SurfaceKind::notification, "", "", Replacement::view, "hud", HookId::notifications, "1.2 §d"},  // engineMessage
     {SurfaceKind::menu, "InventoryMenu", "interface/inventorymenu.swf", Replacement::restyled, "dearDiary", HookId::menuOpenClose, "1.2 §a"},  // inventoryMenu
-    {SurfaceKind::menu, "MagicMenu", "interface/magicmenu.swf", Replacement::restyled, "dearDiary", HookId::menuOpenClose, "1.2 §a"},  // magicMenu
+    {SurfaceKind::menu, "MagicMenu", "interface/magicmenu.swf", Replacement::view, "magic", HookId::menuOpenClose, "1.12"},  // magicMenu
     {SurfaceKind::menu, "ContainerMenu", "interface/containermenu.swf", Replacement::restyled, "dearDiary", HookId::menuOpenClose, "1.2 §a"},  // containerMenu
     {SurfaceKind::menu, "BarterMenu", "interface/bartermenu.swf", Replacement::restyled, "dearDiary", HookId::menuOpenClose, "1.2 §a"},  // barterMenu
     {SurfaceKind::menu, "GiftMenu", "interface/giftmenu.swf", Replacement::restyled, "dearDiary", HookId::menuOpenClose, "1.2 §a"},  // giftMenu

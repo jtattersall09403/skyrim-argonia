@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   encodeIntent, messageTable, type ChartState, type DialogueState, type HudState, type IntentMessage,
-  type JournalState, type PushMessage, type SittingState,
+  type JournalState, type MagicState, type PushMessage, type SittingState,
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
@@ -18,11 +18,12 @@ import { backIntent, filterTopics, render as dialogue } from "../dialogue/render
 import { barLength, isLow, remember, render as hud, renderBars } from "../hud/render.ts";
 import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
+import { close as magicClose, render as magic } from "../magic/render.ts";
 
 const root = new URL("../../../", import.meta.url);
 type Fixture = { states: Record<string, PushMessage>; intents: Record<string, IntentMessage> };
 const fx = (s: string): Fixture => JSON.parse(readFileSync(new URL(`ui/fixtures/${s}.json`, root), "utf8"));
-const screens = ["dialogue", "journal", "hud", "chart", "sitting"] as const;
+const screens = ["dialogue", "journal", "hud", "chart", "sitting", "magic"] as const;
 
 // Every HTML a push can produce (the dialogue's with the persuasion panel open as well), keyed by fixture state.
 function renders(screen: string, m: PushMessage): string[] {
@@ -34,6 +35,7 @@ function renders(screen: string, m: PushMessage): string[] {
     case "hud.minimap": return [];   // drawn on a canvas (minimap.ts); its geometry is tested below
     case "chart.state": return [chart(m.body)];
     case "sitting.state": return [sitting(m.body)];
+    case "magic.state": return [magic(m.body)];
   }
   throw new Error(`${screen}: no view renders ${(m as PushMessage).type}`);
 }
@@ -45,6 +47,7 @@ function programmatic(m: PushMessage): IntentMessage[] {
   if (m.type === "journal.state") out.push(turn(m.body, -1), turn(m.body, 1), ribbonStep(m.body, -1), ribbonStep(m.body, 1),
     searchIntent(m.body, "c"), searchIntent(m.body, ""), { type: "view.close", v: 1, body: { view: "journal" } });
   if (m.type === "sitting.state") out.push(sittingDone());
+  if (m.type === "magic.state") out.push(magicClose());
   if (m.type === "chart.state") out.push(panIntent(m.body.view), { type: "view.close", v: 1, body: { view: "chart" } });
   return out.filter((x): x is IntentMessage => x !== null);
 }
@@ -121,6 +124,28 @@ test("each view shows what the push carried", () => {
     }
     assert.equal(intentsIn(html).filter((i) => (i as IntentMessage).type === "sitting.done").length, 1, name);
   }
+  // Our magic pane: Powers, then Morrowind's six schools in order (Mysticism among them), every spell with its cost,
+  // a right-hand and a left-hand equip per spell and a voice equip per power, the active effects, the notice.
+  for (const [name, m] of Object.entries(fx("magic").states)) {
+    const s = (m as { body: MagicState }).body;
+    const html = magic(s), t = textOf(html);
+    const heads = [...html.matchAll(/<h3 class="shead">([^<]*)<\/h3>/g)].map((x) => x[1]);
+    assert.deepEqual(heads, ["Alteration", "Conjuration", "Destruction", "Illusion", "Mysticism", "Restoration"], name);
+    assert.ok(t.indexOf("Powers") < t.indexOf("Alteration"), `${name}: Powers first`);
+    const sent = intentsIn(html) as IntentMessage[];
+    for (const g of s.groups) for (const sp of g.spells) {
+      assert.ok(t.includes(sp.name) && t.includes(String(sp.cost)), `${name}: ${sp.name}`);
+      for (const hand of ["right", "left"]) assert.ok(sent.some((i) => JSON.stringify(i) === JSON.stringify({ type: "magic.equip", v: 1, body: { spell: sp.id, hand } })), `${name}: ${sp.id} ${hand}`);
+    }
+    for (const p of s.powers) assert.ok(sent.some((i) => JSON.stringify(i).includes(`"spell":"${p.id}","hand":"voice"`)), `${name}: ${p.id}`);
+    for (const e of s.effects) assert.ok(t.includes(e.name), `${name}: ${e.name}`);
+    if (s.notice) assert.ok(t.includes(s.notice), name);
+  }
+  const kit = (fx("magic").states.kit as { body: MagicState }).body;
+  const kt = textOf(magic(kit));
+  const mys = textOf(magic(kit).split('<li class="school mysticism">')[1].split('<li class="school restoration">')[0]);
+  assert.ok(mys.startsWith("Mysticism") && mys.includes("Mark 500") && mys.includes("Recall R 250"), `Mark and Recall under Mysticism: ${mys}`);
+  assert.ok(kt.includes("Left Flames") && kt.includes("Right Recall") && kt.includes("Power Histskin"), "the readied hands");
   for (const [name, m] of Object.entries(fx("chart").states)) {
     const s = (m as { body: ChartState }).body;
     const html = chart(s);
