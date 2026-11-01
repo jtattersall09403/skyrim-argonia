@@ -370,6 +370,7 @@ void SystemTab() {
   RE::GFxValue before;
   menu->uiMovie->GetVariable(&before, "_root.QuestJournalFader.Menu_mc.iCurrentTab");
   const bool r = menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.RestoreSavedSettings", nullptr, args, 2);
+  args[1].SetBoolean(true);  // SwitchPageToFront(aiTab, abForceFade): the page faded in, not left at the Quests fade
   menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.SwitchPageToFront", nullptr, args, 2);
   RE::GFxValue after;
   const bool read = menu->uiMovie->GetVariable(&after, "_root.QuestJournalFader.Menu_mc.iCurrentTab");
