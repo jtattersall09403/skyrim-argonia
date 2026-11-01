@@ -47,16 +47,21 @@
      owner's reference (tmp/image.png): dark green-black panes, gold-green filigree trim, warm serif text, a
      Morrowind-blue selection moved to marsh teal. The dialogue window, the System pane, message boxes and the
      frames around the chart and the book use these. */
-  --frame-ground: #0e130d;                  /* the pane ground, solid: Wind UI's art ramp starts here */
-  --frame-bg: rgba(14, 19, 13, 0.95);       /* a pane's ground */
-  --frame-well: rgba(8, 11, 8, 0.9);        /* an inset list or text well inside a pane */
-  --frame-trim: #6f6a35;                    /* the gold-green filigree line */
+  --frame-ground: #0d150f;                  /* the pane ground, solid: Wind UI's art ramp starts here */
+  --frame-bg: rgba(13, 21, 15, 0.95);       /* a pane's ground */
+  --frame-well: rgba(7, 12, 8, 0.9);        /* an inset list or text well inside a pane */
+  --frame-trim: #8a8a4a;                    /* the gold-green filigree line */
   --frame-trim-hi: #b5a862;                 /* its lit edge, a title's ornament */
   --frame-text: #d9cfa6;                    /* body text */
   --frame-text-soft: #a39a74;               /* labels, secondary text */
   --frame-head: #e6dcb2;                    /* titles */
-  --frame-link: #8fb7c0;                    /* hyperlinked keywords on a dark pane (marsh teal, lit) */
-  --frame-select: rgba(143, 183, 192, 0.16);/* a selected row's wash */
+  --frame-link: #c9b36a;                    /* keywords on a dark pane: warm gold; blue only marks the selected row */
+  --frame-select: rgba(80, 110, 160, 0.28);/* a selected row's wash */
+  /* our own corner filigree (UI art): a double rounded rule, a lozenge and two tendrils, 32px, one per corner */
+  --frame-corner-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='' fill='none' stroke='%23b5a862' stroke-width='1.4'%3E%3Cpath d='M2 30V8Q2 2 8 2H30'/%3E%3Cpath d='M6 22V10Q6 6 10 6H22'/%3E%3Cpath d='M10 14l4-4 4 4-4 4z' fill='%238a8a4a'/%3E%3Cpath d='M14 18q2 6 8 6M18 14q6 2 6 8' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+  --frame-corner-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='translate%2832 0%29 scale%28-1 1%29' fill='none' stroke='%23b5a862' stroke-width='1.4'%3E%3Cpath d='M2 30V8Q2 2 8 2H30'/%3E%3Cpath d='M6 22V10Q6 6 10 6H22'/%3E%3Cpath d='M10 14l4-4 4 4-4 4z' fill='%238a8a4a'/%3E%3Cpath d='M14 18q2 6 8 6M18 14q6 2 6 8' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+  --frame-corner-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='translate%2832 32%29 scale%28-1 -1%29' fill='none' stroke='%23b5a862' stroke-width='1.4'%3E%3Cpath d='M2 30V8Q2 2 8 2H30'/%3E%3Cpath d='M6 22V10Q6 6 10 6H22'/%3E%3Cpath d='M10 14l4-4 4 4-4 4z' fill='%238a8a4a'/%3E%3Cpath d='M14 18q2 6 8 6M18 14q6 2 6 8' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
+  --frame-corner-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg transform='translate%280 32%29 scale%281 -1%29' fill='none' stroke='%23b5a862' stroke-width='1.4'%3E%3Cpath d='M2 30V8Q2 2 8 2H30'/%3E%3Cpath d='M6 22V10Q6 6 10 6H22'/%3E%3Cpath d='M10 14l4-4 4 4-4 4z' fill='%238a8a4a'/%3E%3Cpath d='M14 18q2 6 8 6M18 14q6 2 6 8' stroke-width='1'/%3E%3C/g%3E%3C/svg%3E");
   --frame-shadow: rgba(0, 0, 0, 0.6);
   /* space and type (1rem is set from the device by scale.ts, the one place) */
   --s1: 0.25rem; --s2: 0.5rem; --s3: 0.75rem; --s4: 1rem; --s6: 1.5rem; --s8: 2rem;
@@ -124,3 +129,4 @@ body.backdrop {
   background: radial-gradient(ellipse at 30% 40%, #5d6b4a, #2d3524 60%, #1a1f15);
 }
 body.backdrop.bright { background: linear-gradient(#cfd6c4, #9aa585 55%, #6e7a58); }
+

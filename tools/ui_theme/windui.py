@@ -25,11 +25,12 @@ import numpy as np
 from tools.ui_theme import swf
 from tools.ui_theme.palette import tokens
 
-SOURCES = ("interface/inventory components/itemcard.swf", "interface/tweenmenu.swf")
+SOURCES = ("interface/inventory components/itemcard.swf", "interface/tweenmenu.swf", "interface/quest_journal.swf")
 BSA = "Skyrim - Interface.bsa"
 # shape character id -> what it is; cleared, not recoloured
 KNOTS = {
     "interface/inventory components/itemcard.swf": {78: "the knot (Nordic interlace, 30x32)"},
+    "interface/quest_journal.swf": {},
     "interface/tweenmenu.swf": {48: "the tall rule's interlace foot", 53: "the right rule's knot end",
                                 55: "the left rule's knot end", 57: "the drop rule's interlace head"},
 }
@@ -40,10 +41,21 @@ KNOTS = {
 # and a small solid lozenge at each corner, all in the lit trim.
 FRAMES = {"interface/inventory components/itemcard.swf": (32, 64, 111, 144, 202, 216, 219)}
 TW = 20  # twips per pixel
+# Dear Diary's System page level bar (quest_journal #284, 612x22): a box between two knotted end caps. Redrawn as the
+# box alone, a double rule in the ink, over 43%-74.5% of its width (measured from its outline), bounds kept.
+BARS = {"interface/quest_journal.swf": {284: (0.43, 0.745)}}
 
 
 def _poly(pts: list[tuple[int, int]]) -> list[tuple[int, int]]:
     return pts + [pts[0]]
+
+
+def bar_contours(xmin: int, xmax: int, ymin: int, ymax: int, span: tuple[float, float]) -> list[list[tuple[int, int]]]:
+    """One ring (outer path, reversed inner path) around the bar's box, 1.2 px thick."""
+    a, b = xmin + int((xmax - xmin) * span[0]), xmin + int((xmax - xmin) * span[1])
+    t, y0, y1 = int(1.2 * TW), ymin + 3 * TW, ymax - 3 * TW
+    return [_poly([(a, y0), (b, y0), (b, y1), (a, y1)]),
+            _poly([(a + t, y0 + t), (a + t, y1 - t), (b - t, y1 - t), (b - t, y0 + t)])]
 
 
 def frame_contours(xmin: int, xmax: int, ymin: int, ymax: int) -> list[list[tuple[int, int]]]:
@@ -61,12 +73,12 @@ def frame_contours(xmin: int, xmax: int, ymin: int, ymax: int) -> list[list[tupl
     return polys
 
 
-def define_frame(cid: int, bounds: tuple[int, int, int, int], rgb) -> swf.Tag:
-    """A DefineShape3 of frame_contours in one solid fill (fill style 1 on the right of each edge)."""
+def define_frame(cid: int, bounds: tuple[int, int, int, int], rgb, contours=None) -> swf.Tag:
+    """A DefineShape3 of the contours (default frame_contours) in one solid fill (fill style 1 right of each edge)."""
     w = swf.BitWriter()
     body = bytearray(struct.pack("<H", cid) + swf.rect(*bounds) + bytes([1, 0x00, *[int(v) for v in rgb], 255, 0]))
     body.append(0x10)  # 1 fill bit, 0 line bits
-    for poly in frame_contours(*bounds):
+    for poly in contours if contours is not None else frame_contours(*bounds):
         x0, y0 = poly[0]
         w.u(0, 1)
         w.u(0b00101, 5)  # fill1 + move
@@ -87,12 +99,13 @@ def define_frame(cid: int, bounds: tuple[int, int, int, int], rgb) -> swf.Tag:
     return swf.Tag(32, bytes(body) + w.flush(), True)
 
 
-def redraw_frames(movie: swf.Movie, ids, rgb) -> list[int]:
+def redraw_frames(movie: swf.Movie, ids, rgb, bars: dict | None = None) -> list[int]:
     done = []
+    bars = bars or {}
     for k, tag in enumerate(movie.tags):
-        if tag.code in swf.SHAPE_TAGS and (cid := struct.unpack_from("<H", tag.data)[0]) in ids:
+        if tag.code in swf.SHAPE_TAGS and (cid := struct.unpack_from("<H", tag.data)[0]) in set(ids) | set(bars):
             bounds = swf.read_rect(swf.BitReader(tag.data, 2))
-            movie.tags[k] = define_frame(cid, bounds, rgb)
+            movie.tags[k] = define_frame(cid, bounds, rgb, bar_contours(*bounds, bars[cid]) if cid in bars else None)
             done.append(cid)
     return done
 
@@ -163,8 +176,8 @@ def run(roots: list[Path], game_data: Path | None, out: Path, stops=None) -> tup
             warnings.append(f"{rel}: not found in the mods or the game's {BSA}")
             continue
         movie = swf.read(got[0])
-        n, cleared = retint(movie, KNOTS[rel], stops)
-        framed = redraw_frames(movie, FRAMES.get(rel, ()), stops[-1][1])
+        n, cleared = (0, []) if rel in BARS else retint(movie, KNOTS[rel], stops)
+        framed = redraw_frames(movie, FRAMES.get(rel, ()), tokens()["ink"] if rel in BARS else stops[-1][1], BARS.get(rel))
         missing = set(KNOTS[rel]) - set(cleared)
         if missing:
             warnings.append(f"{rel}: knot shapes {sorted(missing)} not found (a changed file?)")
