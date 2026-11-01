@@ -21,11 +21,15 @@ steps:
       - {console: "player.addspell FE012A0A"}
     expect:
       - {console: "player.hasspell FE012972", contains: ">> 1"}
-  - name: renamed             # the shout and snowstorm names are restated; the mod's own text no longer answers
+  - name: renamed             # the restated names reach the item lookup: the renamed tomes carry our names, not the mod's
+    do:                       # (a cheap read: `help` over the load order outran the bridge's 3 s main-thread budget)
+      - {console: "player.additem Magic.esp|0x89D 1"}
+      - {console: "player.additem Magic.esp|0x88E 1"}
     expect:
-      - {console: 'help "Marsh Squall" 4', contains: "Marsh Squall"}
-      - {console: 'help "Whiteout" 4', not_contains: "Whiteout"}
-      - {console: 'help "Unrelenting Force" 4', not_contains: "Unrelenting"}
+      - {read: [inventory, player], path: items, contains: "Spell Tome: Marsh Squall"}
+      - {read: [inventory, player], path: items, contains: "Spell Tome: Numbing Blow"}
+      - {read: [inventory, player], path: items, not_contains: "Whiteout"}
+      - {read: [inventory, player], path: items, not_contains: "Arctic"}
   - name: pane                # Wind UI's magic window opens by the engine route
     do: [{key: "P 150 engine"}]
     expect:
