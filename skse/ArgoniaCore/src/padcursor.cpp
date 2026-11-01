@@ -128,9 +128,17 @@ bool Open(std::string_view menu) {
   return ui && ui->IsMenuOpen(RE::BSFixedString(menu));
 }
 
+// One of our modal views (journal, chart) is open: the view host's own record, not PrismaUI's focus (pad112k: the
+// journal opened without focus read as closed, and the windows came back over it).
+bool OurViewOpen() {
+  auto& c = Get();
+  std::lock_guard l(c.lock);
+  return c.view_host.modal().has_value();
+}
+
 pad::Context ContextNow() {
   if (!Open(kWindUIMenu)) return pad::Context::play;  // play or Skyrim's own menus: the controlmap acts
-  if (g_prisma && g_prisma->HasAnyActiveFocus()) return pad::Context::view;
+  if ((g_prisma && g_prisma->HasAnyActiveFocus()) || OurViewOpen()) return pad::Context::view;
   for (auto m : {RE::MessageBoxMenu::MENU_NAME, RE::DialogueMenu::MENU_NAME, RE::BookMenu::MENU_NAME,
                  RE::SleepWaitMenu::MENU_NAME, RE::LockpickingMenu::MENU_NAME, RE::JournalMenu::MENU_NAME})
     if (Open(m)) return pad::Context::other_menu;
@@ -236,12 +244,11 @@ void Tick() {
     return;
   }
   if (g.away) {
-    const bool ours_open = Open(RE::MapMenu::MENU_NAME) || Open(RE::JournalMenu::MENU_NAME) ||
-                           (g_prisma && g_prisma->HasAnyActiveFocus());
+    const bool ours_open = Open(RE::MapMenu::MENU_NAME) || Open(RE::JournalMenu::MENU_NAME) || OurViewOpen();
     const double s_away = std::chrono::duration<double>(now - g.away_since).count();
     if (g.away == 1 && ours_open) g.away = 2;
     if (Open(kWindUIMenu)) g.away = 0;  // the player opened them some other way
-    else if ((g.away == 2 && !ours_open) || (g.away == 1 && s_away > 3.0)) {
+    else if ((g.away == 2 && !ours_open) || (g.away == 1 && s_away > 5.0)) {
       g.away = 0;
       if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
       SKSE::log::info("pad: back to Wind UI's windows");
