@@ -3,7 +3,7 @@
 // and the player. Owner look 1: a small square, north always up; only the player's arrow turns, to the camera's
 // heading (the push's heading is the camera's yaw). No quest or other markers, ever. Pure geometry here (tested); the drawing below it.
 import type { ChartPlace, ChartPlayer, Minimap } from "../../schema/generated/messages.ts";
-import { type CellIndex, revealRects, toPx } from "../chart/geom.ts";
+import { type CellIndex, revealDiscs, toPx } from "../chart/geom.ts";
 import { PIN } from "../chart/render.ts";
 
 export const REACH = 5;   // cells from the player to the square's edge (skse/core chart::kMinimapReach)
@@ -71,21 +71,23 @@ export async function drawMinimap(el: HTMLElement, m: Minimap): Promise<void> {
   };
   c.save();
   c.clearRect(0, 0, canvas.width, canvas.height);
+  // Only the seen land (as the chart, c790dd7): every layer drawn, then kept through a soft disc about each revealed
+  // cell (geom.ts revealDiscs); the rest is the blank paper behind the canvas.
   onto(c);
   c.drawImage(L.base, 0, 0, ix.size, ix.size);
-  // The revealed layer through the cells in reach, with a soft edge, then the sketch's ink over all.
+  c.drawImage(L.revealed, 0, 0, ix.size, ix.size);
+  c.drawImage(L.ink, 0, 0, ix.size, ix.size);
+  c.globalCompositeOperation = "destination-in";
   const r = document.createElement("canvas"); r.width = r.height = canvas.width;
   const g = r.getContext("2d")!;
   onto(g);
-  if ("filter" in g) g.filter = `blur(${Math.max(1, Math.round(ix.cells["0,0"][2] * t.scale * dpr * 0.25))}px)`;
-  g.fillStyle = "#fff";
-  for (const [x, y, w, h] of revealRects(ix, m.revealed).rects) g.fillRect(x, y, w, h);
-  if ("filter" in g) g.filter = "none";
-  g.globalCompositeOperation = "source-in";
-  g.drawImage(L.revealed, 0, 0, ix.size, ix.size);
+  for (const [x, y, rad] of revealDiscs(ix, m.revealed)) {
+    const grad = g.createRadialGradient(x, y, 0, x, y, rad);
+    grad.addColorStop(0, "rgba(255,255,255,1)"); grad.addColorStop(0.55, "rgba(255,255,255,1)"); grad.addColorStop(1, "rgba(255,255,255,0)");
+    g.fillStyle = grad; g.beginPath(); g.arc(x, y, rad, 0, 2 * Math.PI); g.fill();
+  }
   c.setTransform(1, 0, 0, 1, 0, 0); c.drawImage(r, 0, 0);
-  onto(c);
-  c.drawImage(L.ink, 0, 0, ix.size, ix.size);
+  c.globalCompositeOperation = "source-over";
   // The discovered places, upright: their glyphs at a fixed size on paper halos.
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   const rem = parseFloat(getComputedStyle(document.documentElement).fontSize), k = (1.1 * rem) / 100;
