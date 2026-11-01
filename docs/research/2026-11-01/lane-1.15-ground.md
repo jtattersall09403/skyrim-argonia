@@ -127,12 +127,57 @@ Uncommitted in ~/wt-1.15-ground (generate.py), measured but not green:
 
 Result: fit 0/0/0, but **3 overflow cells** (the edge bank against step beds) and **9 sites unshaped**. The check still measures an unwarped disc and a flat core std < 1 over 228 m city radii (stormhold, helstrom, gideon), and that test is wrong for big sites.
 
+## Session 3 (2026-11-01): measured in Skyrim.esm, then the same (decision 0034)
+
+`terrain/probes/vanilla_lake_cells.py` reads Skyrim.esm's Tamriel CELL XCLW + LAND VHGT. Inland levels carried by
+4+ connected cells (top 15 bodies, 323 cells): every cell the body touches carries the level, including 10 cells
+with no ground under it and 59 under 10 % wet. Lake Ilinalta (level 600 u, 51 cells, x −12..0, y −16..−12): median
+wet share 0.48, 4 all-dry cells, 6 under 10 % wet, **0 enclosed holes**. Over all 15 bodies: 6 enclosed non-body
+cells, 1 with ground under the level. The planner's audit (skyrim-does-it-this-way.md §2) agrees: 23 of 510
+explicit-level cells have no wet vertex (a padding ring).
+
+Done (pushed 32bb7cb):
+- `water/solve.py`: `fill_enclosed` (938 enclosed dry cells take their ring's level) and `pad_ring` (every cell beside
+  water takes the lowest neighbouring level, so no water stops on a cell edge; lowest, so a tall bank never stands
+  beside a lower bed). Now 13,359 cells, 4,081 steps (3,794 closed); `water check` green; tests 15 passed.
+- Shore and bed profiles from the audit §1: Morthal for brackish and blackwater, Solitude for the sea, Ilinalta for
+  fresh (`SHORE_RISE_U`, `BED_DEPTH_U`); the forced lowest-third pool in empty water cells removed (the square
+  pools).
+- `edge_bank`: never within 6 samples of a step's channel and slope band; every vertex shared with a dry cell is
+  bank; a closed step's lower side keeps a bank band over the shore run of its drop. `cellwater.from_solve` reads a
+  closed step's range as −1 (it was 0..0, which made vertex 0 a channel).
+- Sites: `site_dist` (warped falloff) is shared by shaping and check; windows at 1.7 r; a flat's check core is
+  capped at 40 m and leaves out other sites' discs and wet samples; flats run largest first, a flat inside an
+  earlier one keeps its ground; **a flat keeps its wet samples as water** (Claywater; test_creature_dens green); a
+  mouth is cut into a one-sided rise (§10: 553 u over 1,024 u behind the door, shape `rise`, checked at 75 %); a pin
+  no 0.8 × 75° slope can join to the water beside it is left to the limit.
+- New check `dry_edge_below_water`; `CLIFF_DEG` 55 (climb-anything.md).
+- `region_relief` table (47 rows, `terrain relief`; generate reads it), `entrance_site` (567 rows, written by
+  generate), pipeline.py `ground()` runs `terrain generate` when its stamp is stale, and the terrain stamp includes it.
+- `world_sample.py` reads `sampleStep`; test_world_sample: 9 passed, 1 red not ours (`tests/scenes/world-panel.txt`
+  has `cow ARG_Province 26 -17`, the sample lane's panel.py).
+
+Sample check on 32bb7cb: fit wet 0, bank 0, step-bank 0, **dry_edge 6** (cell 21,20, role 1), **9 sites unshaped**
+(flats beside gorges: swampmoth-town, stillrise-village, the-tide-fair, ...: the unpinned core is sloped by the
+limit), **overflow 2 cells** (−20,59 and −42,13: a padded/enclosed cell's 250 m ground beside a 40/72 m lake;
+bank role 3 at 254 m one vertex from the bed). Height fit 0.057 m, seams 0. Generate 174 s.
+
 ## Starting state (hand-off)
 
-Main is at 96e7247 (the footprint, ramp, apron, pins and large renders). Owed, in order:
+Main is at 32bb7cb or later. Owed, in order:
 
-1. Edge bank: find the 3 overflow cells (`probes.ground_big_steps 14`); exclude step-channel vertices from `edge_bank`. Add the check the planner asked for: every vertex of a dry cell next to a water cell, and every closed-bank vertex, stands above that neighbour's level.
-2. Sites: make `check` use the same warped falloff (factor the warp into a helper). For a flat site, judge the std over a core capped at 40 m. Then re-render w4 (`-12_63`) and w5 (`0_0_1_1`) and the marsh large, and run a reader.
-3. Write `region_relief` and `entrance_site` to the DB through db.py (the pattern is `terrain gradient`).
-4. The ArgoniaGen pipeline.py terrain stage, and `tools/world_sample.py` regenerated on `sampleStep`.
-5. If the plus persists after (1), the water lane's partition is the cause: report it to them.
+1. Overflow at (−20,59) and (−42,13): the lake raster is wet at 40/72 m one vertex from 250 m ground. Find which
+   bound holds the 254 m bank (probe values at the step; likely a site's `lo` or the shore `lo`) and let the limit
+   slope it. Then the 6 dry-edge vertices in (21,20) (role 1: a channel or a bowl at a dry corner).
+2. The 9 unshaped flats beside gorges: either level them to the reachable height (the cone from the water) or
+   judge only the pinned core in the check; decide from a render.
+3. Reader on the session-3 renders (/home/ubuntu/scratch-ground/s3/render, 32bb7cb): marsh PARTLY/PARTLY/PARTLY
+   (no plus; the lake is too open, a pale beach-like rim, the vibe board wants banks straight at trunks); river FAIL/
+   FAIL/PARTLY (an L-shaped pool with a square pool inside at top-centre, flat facets left); border gate PARTLY x3
+   (a diagonal lattice texture centre-left, terraced river banks); 0_0_1_1 PARTLY/FAIL/FAIL (**a rectangular lake
+   with grid-straight sides**). Likely cause to test first: the new filled and padded cells hold a level above
+   their own low ground, so the natural flood fills the whole cell to its edges (a square lake). Vanilla's padding
+   is only where the ground stands above the level: limit the natural flood in a cell with no raster water to the
+   ground connected to raster water (a flood fill from the wet raster, not a threshold), or pad only where the
+   ground stands above. Re-render and reader again after.
+4. q3 of the audit (cliff pieces on 52 % of steep cells) belongs to the cliff placement, not the mask.
