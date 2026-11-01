@@ -35,6 +35,10 @@ def ground_sources():
     """terrain/grid.Sources.load without the ground tint (the navmesh reads heights and cover only; the tint's PNG
     decode is 9 of the 11 s a small box takes)."""
     from tools.argonia_world.terrain import grid, place_ground, water_regrade
+    if (ROOT / "out" / "terrain" / "ground-f32.npy").exists():  # 1.15: the rebuilt ground, as Sources.load reads it
+        s = grid.Sources.load()
+        s.tint = None
+        return s
     r = grid.data_root() / "terrain"
     return grid.Sources(ground=np.load(r / "refined-height-f32.npy", mmap_mode="r"),
                         apron=np.load(r / "apron-source-near.npy", mmap_mode="r"),

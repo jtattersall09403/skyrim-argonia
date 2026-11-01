@@ -10,6 +10,7 @@ places, the road and the built places.
     places     no ref inside a built place's footprint (its refs' bounds plus the margin)
     budget     no cell over the cap; the counts per region and cell (max, p95)
     ids        every FormID in its cell's reserved slot, none twice
+    lists      the object lists: no vanilla form or rock shape, every rock sunk by its OBND, a why, BM&V everywhere
     sha256     of the shards' bytes (two builds compare it: determinism)
 """
 from __future__ import annotations
@@ -104,7 +105,9 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             if (u < 0).any() or (u >= su.CELL_UNITS).any() or (v < 0).any() or (v >= su.CELL_UNITS).any():
                 fails["ids"].append(f"({cx},{cy}): a ref outside its cell")
             za, zb, gx, gy, i, j = place.ground_at(H[(cx, cy)], u, v)
-            off = np.maximum(np.abs(z - za), np.abs(z - zb))
+            sunk = np.asarray([rules[(region, b)].sink_m if (region, b) in rules else 0.0 for b in bases]) * refs[:, 6]
+            zg = z + sunk  # the ground under a sunk rock's pivot
+            off = np.maximum(np.abs(zg - za), np.abs(zg - zb))
             for k in np.nonzero(off > GROUND_TOL_M)[0][:FIRST]:
                 fails["ground"].append(f"{fids[k]:06X} ({cx},{cy}): {off[k]:.2f} m off the LAND")
             sl = place.slope_deg(gx, gy)
@@ -115,7 +118,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             rr = np.clip((np.arange(n_, s_ + 1) - src.pad) // place.TABLE_STEP, 0, table.shape[0] - 1)
             cc = np.clip((np.arange(a, a + 33) - src.pad) // place.TABLE_STEP, 0, table.shape[1] - 1)
             T = table[np.ix_(rr, cc)][::-1].astype(np.float64)
-            depth = place.depth_at(L, i, j, z)
+            depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
             on_paint = painted[i, j] | painted[i, j + 1] | painted[i + 1, j] | painted[i + 1, j + 1]
             road_d = [(half, place.seg_dist(pr, pc, seg)) for half, seg in build.roads_near(segs, n_, a, s_, a + 32)]
@@ -147,7 +150,8 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
         return {"cells": len(v), "refs": int(a.sum()), "max": int(a.max()), "p95": round(float(np.percentile(a, 95)), 1)}
     res = {"refs": n, "sha256": h.hexdigest(), "province": stat(allc),
            "regions": {r: stat(v) for r, v in sorted(counts.items())}}
-    for k in ("ground", "slope", "water", "road", "places", "budget", "ids"):
+    fails["lists"] = lists(w)
+    for k in ("lists", "ground", "slope", "water", "road", "places", "budget", "ids"):
         f = fails.get(k, [])
         res[k] = {"failures": len(f), **({"fail": f[:FIRST]} if f else {})}
     log(f"vegetation checks: {n} refs, sha256 {res['sha256'][:12]}")
@@ -179,3 +183,28 @@ def readback(out: Path, esm: Path, gen: Path, env=None) -> dict:
     if bad:
         res["fail"] = bad[:FIRST]
     return res
+
+
+def lists(w) -> list[str]:
+    """The object lists' L1 (1.15 §e): no Skyrim.esm form, no form whose mesh no mod supplies, no rock with a
+    vanilla shape; every rock sunk (sink_frac > 0, OBND known); every row with a why; BM&V forms in every list."""
+    from tools.argonia_world.vegetation import lists as L
+    errs = []
+    for r in w.query("SELECT o.land_region_id, o.form_key, o.why, f.role_id, f.mesh_source, f.bound_z1, "
+                     "f.bound_z0, v.sink_frac FROM land_region_object o JOIN object_form f USING (form_key) "
+                     "LEFT JOIN vegetation_form v USING (form_key)"):
+        where = f"{r['land_region_id']} {r['form_key']}"
+        if r["form_key"].endswith(":Skyrim.esm") or r["mesh_source"] in (None, "vanilla"):
+            errs.append(f"{where}: a vanilla form or mesh (retired)")
+        if r["role_id"] == "rock" and (r["mesh_source"] in L.VANILLA_SHAPE or not r["sink_frac"]
+                                       or r["bound_z1"] is None or r["bound_z1"] <= r["bound_z0"]):
+            errs.append(f"{where}: a rock not sunk by its bounding box, or of a vanilla shape")
+        if r["sink_frac"] is None:
+            errs.append(f"{where}: no vegetation_form row")
+        if not (r["why"] or "").strip():
+            errs.append(f"{where}: no why")
+    for r in w.query("SELECT l.id, (SELECT count(*) FROM land_region_object o JOIN object_form f USING (form_key) "
+                     "WHERE o.land_region_id = l.id AND f.mod = 'bmv') n FROM land_region l WHERE border = 0"):
+        if not r["n"]:
+            errs.append(f"{r['id']}: no BM&V form in its object list")
+    return errs

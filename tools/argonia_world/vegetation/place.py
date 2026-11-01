@@ -28,6 +28,9 @@ Per cell and form (seeded by the cell and the form, so a cell rebuilds alone and
   (routes/paint.py's segments), nor in a quad with a painted BC_ROAD or TRACK corner (the imported paint too).
 - **Place exclusion:** no stem inside a built place's footprint: the bounds of its exterior build_refs plus
   PLACE_MARGIN_M.
+- **Sinking (1.15 §e.2):** a form with a sink fraction (rocks: vegetation_form.sink_frac) has its pivot set
+  scale x (OBND bottom + sink_frac x OBND height) below the ground, so its open bottom is under the ground; a rock
+  conforms to the quad's slope (ConformToSlope), so the buried plane follows the hill.
 - **Spacing:** no two stems of a cell closer than MIN_SPACING_M (trunk on trunk), first come first kept in the
   forms' order.
 - **Budget:** each stem carries a uniform draw u; a region keeps the stems with u < keep (its budget row). Keep is
@@ -79,6 +82,16 @@ class Rule:
     water_max: float | None
     conform: bool
     scale: tuple[float, float]
+    sink_m: float = 0.0  # metres at scale 1 the pivot is set below the ground: OBND bottom + sink_frac x height
+
+    @staticmethod
+    def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
+        """A sunk form's pivot offset (metres at scale 1): its OBND bottom (z0, units, below the pivot when
+        negative) set sink_frac of its height under the ground. 0 for a form that is not sunk (flora's roots are
+        modelled below the pivot already)."""
+        if not sink_frac or bound_z1 is None or bound_z0 is None:
+            return 0.0
+        return (bound_z0 + sink_frac * (bound_z1 - bound_z0)) / su.UNITS_PER_METRE
 
     @property
     def dry_only(self) -> bool:
@@ -284,7 +297,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
             kept_v.append(pv)
             yaw = float(c["yaw"][k])
             rx, ry = conform_rot(float(gx[k]), float(gy[k]), yaw) if rule.conform else (0.0, 0.0)
-            for key, val in (("form", fi), ("u", pu), ("v", pv), ("z", float(z[k])), ("rx", rx), ("ry", ry),
+            zk = float(z[k]) - float(c["scale"][k]) * rule.sink_m  # a rock's bottom under the ground (1.15 §e.2)
+            for key, val in (("form", fi), ("u", pu), ("v", pv), ("z", zk), ("rx", rx), ("ry", ry),
                              ("rz", yaw), ("scale", float(c["scale"][k])), ("thin", float(c["thin"][k]))):
                 cols[key].append(val)
     return {k: np.asarray(v, dtype=np.int64 if k == "form" else np.float64) for k, v in cols.items()}

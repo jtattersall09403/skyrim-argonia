@@ -5661,15 +5661,29 @@ CREATE TABLE "region_class_role" (
   PRIMARY KEY ("region_class_id", "role_id")
 );
 
--- Home of a vanilla base form an object list may name: the vanilla record Tropical Skyrim (SSE 78044) replaces in
--- place, what it becomes there, and its quarantine review (decision 0012).
+-- Home of a base form an object list may name (1.15 §e.1): a Black Marsh mod's own TREE, FLOR or STAT (BM&V first,
+-- then King of the Murkmire, HTBM, Depths of Skyrim, Mud Mother Grove), read from its plugin by
+-- `python -m tools.argonia_world.vegetation forms`: its mesh, where the stack resolves that mesh (`mesh_source`:
+-- 'bmv' = BM&V's archive, laid by its dependency row's keep list; 'laid:<mod>' = a laid mod's file; 'vanilla' = no
+-- mod supplies it, never used), its OBND (game units) and how often its own mod places it. No Skyrim.esm form
+-- remains (0006, 0012). `review` is the quarantine note (0012).
 CREATE TABLE "object_form" (
   "form_key" TEXT NOT NULL PRIMARY KEY,
   "edid" TEXT NOT NULL,
-  "record_type" TEXT NOT NULL CHECK ("record_type" IN ('TREE', 'STAT')),
+  "record_type" TEXT NOT NULL CHECK ("record_type" IN ('TREE', 'FLOR', 'STAT')),
   "role_id" TEXT NOT NULL REFERENCES "object_role"("id"),
   "ts_model" TEXT,
-  "review" TEXT NOT NULL
+  "review" TEXT NOT NULL,
+  "mod" TEXT,
+  "model" TEXT,
+  "mesh_source" TEXT,
+  "bound_x0" INTEGER,
+  "bound_y0" INTEGER,
+  "bound_z0" INTEGER,
+  "bound_x1" INTEGER,
+  "bound_y1" INTEGER,
+  "bound_z1" INTEGER,
+  "placed_by_mod" INTEGER
 );
 
 -- Home of a weather group of the imported regionFrequencies (coastal, marsh, jungle, uplands, firm lowland).
@@ -5896,6 +5910,7 @@ CREATE TABLE "land_region_object" (
   "water_min_m" REAL,
   "water_max_m" REAL,
   "conform" BOOLEAN NOT NULL CHECK ("conform" IN (0, 1)),
+  "why" TEXT NOT NULL,
   PRIMARY KEY ("land_region_id", "form_key"),
   CHECK ("min_slope_deg" <= "max_slope_deg")
 );
@@ -6477,11 +6492,14 @@ CREATE TABLE "build_ground" (
 -- == Vegetation (2.W4 §a, our own placement from the region rules; tools/argonia_world/vegetation) ==
 
 -- Home of a region-object form's scale range (the RDOT's size variance): the placement draws each stem's scale
--- uniformly in [scale_min, scale_max]. Our numbers, by the form's role, until the L4 stills judge them.
+-- uniformly in [scale_min, scale_max]. Our numbers, by the form's role, until the L4 stills judge them. `sink_frac`
+-- (1.15 §e.2): the share of the form's OBND height set below the ground (its bottom at ground - sink_frac x height x
+-- scale), so no open bottom shows; 0 for flora (docs/design/research/vegetation/rock-placement-rules.md rule 1).
 CREATE TABLE "vegetation_form" (
   "form_key" TEXT NOT NULL PRIMARY KEY REFERENCES "object_form"("form_key"),
   "scale_min" REAL NOT NULL CHECK ("scale_min" > 0),
   "scale_max" REAL NOT NULL,
+  "sink_frac" REAL NOT NULL CHECK ("sink_frac" >= 0 AND "sink_frac" < 1),
   "why" TEXT NOT NULL,
   CHECK ("scale_min" <= "scale_max")
 );

@@ -35,6 +35,8 @@ def shard_name(cy: int) -> str:
 # --- the rules -------------------------------------------------------------------------------------------------
 def load_rules(w) -> dict[str, list[Rule]]:
     scale = {r["form_key"]: (r["scale_min"], r["scale_max"]) for r in w.query("SELECT * FROM vegetation_form")}
+    sink = {r["form_key"]: Rule.sink_of(r["sink_frac"], r["bound_z0"], r["bound_z1"]) for r in w.query(
+        "SELECT v.form_key, v.sink_frac, f.bound_z0, f.bound_z1 FROM vegetation_form v JOIN object_form f USING (form_key)")}
     out: dict[str, list[Rule]] = defaultdict(list)
     for r in w.query("SELECT * FROM land_region_object ORDER BY land_region_id, form_key"):
         if r["form_key"] not in scale:
@@ -42,7 +44,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
         out[r["land_region_id"]].append(Rule(
             r["form_key"], r["density_per_ha"], r["clustering"], r["radius_m"], r["min_slope_deg"],
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
-            bool(r["conform"]), scale[r["form_key"]]))
+            bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]]))
     return dict(out)
 
 
@@ -97,6 +99,14 @@ def roads_near(segs, r0, c0, r1, c1):
         if k.any():
             out.append((half, seg[k]))
     return out
+
+
+def cell_water(w):
+    """water/solve.py's per-cell levels once the water lane has written cell_water; None before (the old field)."""
+    if not w.values("SELECT count(*) FROM cell_water")[0]:
+        return None
+    from tools.argonia_world.water import solve
+    return solve.load(w)
 
 
 # --- the water table -------------------------------------------------------------------------------------------
@@ -170,6 +180,7 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
     feet = footprints(w, src.pad)
     segs = road_segments(w)
     table = water_table(src, cells_path)
+    cw = cell_water(w)
     log(f"vegetation: rules for {len(rules)} regions, water table {table.shape} ({time.time() - t0:.0f} s)")
     todo = [c for c in province_cells(cells) if region.get(c) in rules]
     rows_by_cy: dict[int, list[int]] = defaultdict(list)
@@ -206,7 +217,12 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
             for cx in rows_by_cy[cy]:
                 a, _ = src.cell_cols(cx)
                 win = (slice(n_ - r0, s_ - r0 + 1), slice(a - c0, a - c0 + Q + 1))
-                ci = place.CellInputs(cx, cy, H[win][::-1], L[win][::-1], T[win][::-1], painted[win][::-1],
+                Lc, Tc = L[win][::-1], T[win][::-1]
+                if cw is not None:  # 1.15: one water level per cell (water/solve.py), the table its nearest level
+                    lv = cw.level(cx, cy)
+                    Lc = np.full(Lc.shape, -np.inf if lv is None else lv)
+                    Tc = np.full(Tc.shape, cw.nearest_level(cx, cy))
+                ci = place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
                                       south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
                                       footprints=near(feet, n_, a, s_, a + Q))
                 placed[(cx, cy)] = place.place_cell(ci, rules[region[(cx, cy)]])

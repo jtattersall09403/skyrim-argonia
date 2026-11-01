@@ -6,6 +6,13 @@
         summary.json, then run the L1 checks against the LAND shards in --land (when given). --budget (whole
         province only): compute each region's keep and write the vegetation_region_budget rows.
         Exit 1 when a check fails.
+    python3 -m tools.argonia_world.vegetation forms --bmv-nifs <list> [--lists-only]
+        read the Black Marsh mods' TREE/FLOR/STAT from the laid stack into object_form (every Skyrim.esm form
+        dropped; --bmv-nifs: BM&V's archive file list, `unrar lb` of the vault's Data1/Data2.rar), then build the
+        region object lists (lists.py) and set BM&V's dependency keep list to the meshes they use.
+        --lists-only: rebuild the lists from the object_form rows already in the world (no stack needed)
+    python3 -m tools.argonia_world.vegetation booth --out <shards>
+        write tests/journeys/rock-booth.yaml and tests/scenes/rock-booth.txt from six placed rocks (booth.py)
     python3 -m tools.argonia_world.vegetation check --out out/vegetation --land <dir> [--water ...]
     python3 -m tools.argonia_world.vegetation readback --out out/vegetation --esm <ArgoniaWorld.esm> --gen <ArgoniaGen>
         the spliced plugin read back through Mutagen: ref counts per cell equal the shards'; prints its sha256
@@ -43,6 +50,46 @@ def _check(a) -> int:
     return 1 if bad else 0
 
 
+ROLES = {"mushroom": "mushrooms, small to giant: the deep marsh's strangeness (owner, 2026-11-01)",
+         "aquatic": "lily pads, reeds, kelp and coral: plants standing in water"}
+DEPS = ROOT / "data" / "dependencies.json"
+
+
+def set_bmv_keep(paths: list[str]) -> int:
+    """BM&V's dependency row: its keep list = the non-flora meshes it had plus the flora meshes the lists use."""
+    deps = json.loads(DEPS.read_text(encoding="utf-8"))
+    row = next(d for d in deps["mods"] if d.get("id") == "bmv")
+    flora = ("meshes/landscape/", "meshes/trdata/", "meshes/vurt", "meshes/sheogorad/plants", "meshes/landscaping/")
+    old = [k for k in row["keep"] if not k.startswith(flora) or k == "meshes/trdata/mushrooms/tr_oth_tallmush01.nif"
+           or k == "meshes/landscape/trees/reedsmall2.nif"]
+    row["keep"] = old + sorted(set(paths) - set(old))
+    DEPS.write_text(json.dumps(deps, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    return len(row["keep"])
+
+
+def _forms(a) -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world.vegetation import forms, lists
+    w = db.open()
+    for k, v in ROLES.items():
+        if not w.get("object_role", k):
+            w.insert("object_role", id=k, about=v)
+    if not a.lists_only:
+        if not a.bmv_nifs:
+            print("vegetation forms: --bmv-nifs is required (or --lists-only)", file=sys.stderr)
+            return 2
+        nifs = set(Path(a.bmv_nifs).read_text(encoding="utf-8").split())
+        n = forms.write(w, forms.inventory(resolver=forms.resolver()), nifs)
+        for k, v in sorted(n.items()):
+            print(f"object_form {k[0]:22} {k[1]:8} {v}")
+    rep = lists.build(w)
+    w.save()
+    print(f"bmv keep list: {set_bmv_keep(lists.bmv_keep(w))} paths")
+    for rid, c in sorted(rep.items()):
+        print(f"{rid:44} " + " ".join(f"{m}={n}" for m, n in sorted(c.items())))
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="vegetation")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -55,10 +102,23 @@ def main(argv=None) -> int:
     rb.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
     rb.add_argument("--esm", required=True)
     rb.add_argument("--gen", required=True)
+    bo = sub.add_parser("booth")
+    bo.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
+    fo = sub.add_parser("forms")
+    fo.add_argument("--bmv-nifs")
+    fo.add_argument("--lists-only", action="store_true")
     b.add_argument("--sample", action="store_true")
     b.add_argument("--cells")
     b.add_argument("--budget", action="store_true")
     a = p.parse_args(argv)
+    if a.cmd == "booth":
+        from tools.argonia_world import db
+        from tools.argonia_world.vegetation import booth
+        for d in booth.write(Path(a.out), db.open()):
+            print(f"booth: {d['edid']} {d['fid']:06X} cell {d['cell']} tilt {d['tilt']:.3f} rad")
+        return 0
+    if a.cmd == "forms":
+        return _forms(a)
     if a.cmd == "readback":
         from tools.argonia_world.vegetation import checks
         res = checks.readback(Path(a.out), Path(a.esm), Path(a.gen))

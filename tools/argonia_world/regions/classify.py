@@ -260,9 +260,9 @@ def build(w, f: dict) -> dict:
             w.insert("land_region_class_share", land_region_id=rid, region_class_id=rc, cells=n)
         for wid, chance, glob in weather_list(w, group[ec]):
             w.insert("land_region_weather", land_region_id=rid, weather_id=wid, chance=chance, season_global=glob)
-        for o in object_list(w, share[rid]):
-            w.insert("land_region_object", land_region_id=rid, **o)
     w.insert_many("cell_region_run", runs(grid))
+    from tools.argonia_world.vegetation import lists  # 1.15 §e.1: the object lists from the Black Marsh mods' forms
+    lists.build(w)
     return {"loo": loo, "regions": len(cells), "classes": Counter(v for row in cls for v in row)}
 
 

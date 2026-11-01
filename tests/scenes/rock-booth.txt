@@ -1,0 +1,3 @@
+; Rock booth (1.15 §e.2): noon, clear, so the stills read the rock's base and shadow line; sets nothing it tests
+set gamehour to 12
+fw ARG_Weather_tannin_haze
