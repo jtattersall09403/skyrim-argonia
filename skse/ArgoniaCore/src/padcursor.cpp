@@ -387,6 +387,17 @@ void SystemTab() {
   const bool r = menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.RestoreSavedSettings", nullptr, args, 2);
   args[1].SetBoolean(true);  // SwitchPageToFront(aiTab, abForceFade): the page faded in, not left at the Quests fade
   menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.SwitchPageToFront", nullptr, args, 2);
+  // The bottom bar's hints belong to the page in front: a real tab change ends the old page and starts the new one
+  // (quest_journal.swf: each page's startPage fills buttonPanel, Quests' with "Toggle Active" and "Show on Map"), so
+  // the Quests page is ended and the System page started, as the movie's own tab change does.
+  RE::GFxValue pages, quests, system;
+  bool refreshed = false;
+  if (menu->uiMovie->GetVariable(&pages, "_root.QuestJournalFader.Menu_mc.PageArray") && pages.IsArray() &&
+      pages.GetArraySize() > 2 && pages.GetElement(0, &quests) && pages.GetElement(2, &system)) {
+    if (quests.IsObject()) quests.Invoke("endPage");
+    refreshed = system.IsObject() && system.Invoke("startPage");
+  }
+  SKSE::log::info("pad: the System page's own button hints {}", refreshed ? "started" : "not started (no PageArray)");
   RE::GFxValue after;
   const bool read = menu->uiMovie->GetVariable(&after, "_root.QuestJournalFader.Menu_mc.iCurrentTab");
   const double tab = read && after.IsNumber() ? after.GetNumber() : -1;

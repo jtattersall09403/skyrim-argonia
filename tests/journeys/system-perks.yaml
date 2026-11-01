@@ -49,6 +49,7 @@ steps:
     expect:
       - {event: {kind: menu, match: Journal Menu}}
       - {log: {name: ArgoniaCore, contains: "System page (switched;"}, within: 8}
+      - {log: {name: ArgoniaCore, contains: "page's own button hints started"}, within: 8}
     reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
