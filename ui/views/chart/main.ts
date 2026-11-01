@@ -123,7 +123,13 @@ function draw(): void {
   }
   // Major cities first, then the rest; the larger plate (the bigger drawn name) first within each.
   boxes.sort((a, b) => Number(b.city) - Number(a.city) || b.w * b.h - a.w * a.h);
-  const spots = placeLabels(boxes, w, h);
+  // The pins and the player's marker stay where they are: the labels move round them.
+  const marks: LabelBox[] = [];
+  for (const el of root.querySelectorAll<HTMLElement>(".place:not([hidden]), .me")) {
+    const r = el.offsetWidth / 2;
+    marks.push({ id: "", x: parseFloat(el.style.left) - r, y: parseFloat(el.style.top) - r, w: 2 * r, h: 2 * r });
+  }
+  const spots = placeLabels(boxes, w, h, 2, marks);
   for (const b of boxes) {
     const spot = spots.get(b.id) ?? null;
     b.el.hidden = spot === null;

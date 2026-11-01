@@ -32,12 +32,14 @@ export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: numbe
 // Label collisions. Each box is where a label sits on the sheet in screen px; `order` is the caller's priority
 // (major cities first). A label keeps its own spot when free; otherwise it tries the offsets round its anchor (above,
 // below, and the four diagonals, then two steps out) and takes the first that is on the sheet and clear of every box
-// already placed. A label with no free spot is dropped (null): at a closer zoom it separates from its neighbour.
+// already placed, and of every obstacle (a place's pin, the player's marker: a label never covers them). A label
+// with no free spot is dropped (null): at a closer zoom it separates from its neighbour.
 export interface LabelBox { id: string; x: number; y: number; w: number; h: number }
 export const hits = (a: LabelBox, b: LabelBox, gap = 0): boolean =>
   a.x < b.x + b.w + gap && b.x < a.x + a.w + gap && a.y < b.y + b.h + gap && b.y < a.y + a.h + gap;
-export function placeLabels(boxes: LabelBox[], sheetW: number, sheetH: number, gap = 2): Map<string, [number, number] | null> {
-  const placed: LabelBox[] = [], out = new Map<string, [number, number] | null>();
+export function placeLabels(boxes: LabelBox[], sheetW: number, sheetH: number, gap = 2,
+  obstacles: LabelBox[] = []): Map<string, [number, number] | null> {
+  const placed: LabelBox[] = [...obstacles], out = new Map<string, [number, number] | null>();
   for (const b of boxes) {
     const offsets: [number, number][] = [[0, 0], [0, -b.h], [0, b.h], [b.w / 2, -b.h], [b.w / 2, b.h], [-b.w / 2, -b.h],
       [-b.w / 2, b.h], [0, -2 * b.h], [0, 2 * b.h]];

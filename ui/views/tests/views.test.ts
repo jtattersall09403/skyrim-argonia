@@ -262,6 +262,10 @@ test("label collisions: by priority, a clashing label moves to a free spot or is
   assert.ok(moved && (moved[0] !== 0 || moved[1] !== 0));
   const at = boxes.map((b) => ({ ...b, x: b.x + (spots.get(b.id)?.[0] ?? 0), y: b.y + (spots.get(b.id)?.[1] ?? 0) }));
   assert.ok(!hits(at[0], at[1]));
+  // A place's pin is an obstacle: the label over it moves off it.
+  const pin = { id: "", x: 100, y: 100, w: 20, h: 20 };
+  const off = placeLabels([{ id: "claywater", x: 95, y: 95, w: 120, h: 30 }], 400, 300, 2, [pin]).get("claywater")!;
+  assert.ok(off && !hits({ id: "c", x: 95 + off[0], y: 95 + off[1], w: 120, h: 30 }, pin));
   // Boxed in on a sheet too small for any candidate: dropped, never overlapping.
   const tight = placeLabels([{ id: "a", x: 0, y: 0, w: 100, h: 30 }, { id: "b", x: 0, y: 0, w: 100, h: 30 }], 100, 30);
   assert.equal(tight.get("b"), null);
