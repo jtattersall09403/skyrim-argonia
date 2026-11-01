@@ -24,7 +24,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.10 | The player character | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (in game on argonia-play, docs/research/2026-10-31/owner-playtest-2.md; owed: the owner's look) |
 | 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | in progress (the owner's look 1: all 18 findings built, e2c03d5 on both standbys; 11 proven in game, 7 with the owner, #34) |
-| 1 | 1.15 | The world, rebuilt | todo |
+| 1 | 1.15 | The world, rebuilt | in progress (six lanes launched 2026-11-01, briefs docs/research/2026-11-01/briefs/1.15-common.md) |
 | 1 | 1.14 | Death, the pile and respawn | todo |
 | 1 | 1.16 | The owed integration checks | todo |
 | 1 | 1.17 | Frame rate and the screen numbers | todo |

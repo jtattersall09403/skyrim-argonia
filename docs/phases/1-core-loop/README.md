@@ -66,7 +66,7 @@ pool either the owner or an agent takes. Status: [PROGRESS](../../PROGRESS.md), 
 | 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | done |
 | 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.14 | in progress |
 | 1.12 | [The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device](1.12-the-in-game-ui.md) | 1.11 (the HUD it restyles) | 1.14 | in progress |
-| 1.15 | [The world, rebuilt](1.15-the-world-tracks-close.md) | 1.8 (the play machine); decision 0033 | 1.14, 1.16 | todo |
+| 1.15 | [The world, rebuilt](1.15-the-world-tracks-close.md) | 1.8 (the play machine); decision 0033 | 1.14, 1.16 | in progress |
 | 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.11, 1.12, 1.15 | todo |
 | 1.16 | [The owed integration checks](1.16-the-owed-integration-checks.md) | 1.9–1.14 | 1.15 | todo |
 | 1.17 | [Frame rate and the screen numbers](1.17-frame-rate-and-the-screen-numbers.md) | 1.8, 1.15 | — | todo |
