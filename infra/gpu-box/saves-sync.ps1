@@ -5,15 +5,16 @@
 #                           newer than this machine; never while the game runs
 #   saves-sync.ps1 push -SeedBefore <utc>   once, to seed the shared copy from a machine whose older saves are the
 #                           owner's: every file last written before <utc> goes up, whatever the agent list says
+#   saves-sync.ps1 pull -SavesDir <dir>   the same pull into another folder (a check that never touches the game)
 #   saves-sync.ps1 push     every 5 minutes (task argonia-saves-push), before idle-stop's shutdown and on a spot
 #                           notice: upload every file newer here than in the bucket
 # Agents' saves stay home: files written while an agent job holds the machine with no stream (the busy flag, as
 # idle-stop counts it) are listed in state\saves-agent.txt and never pushed; nor are the per-build saves each deploy
 # makes on its own machine (argoniabase, ArgoniaWalk). Nothing is deleted on either side. Log: logs\saves-sync.log.
-param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd, [string]$SeedBefore)
+param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd, [string]$SeedBefore, [string]$SavesDir)
 $ErrorActionPreference = 'Stop'
 $Bucket = 'argonia-saves-050977237313'; $Prefix = 'pool/'; $Region = 'eu-west-2'
-$Saves = 'C:\Users\Administrator\Documents\My Games\Skyrim Special Edition\Saves'
+$Saves = if ($SavesDir) { $SavesDir } else { 'C:\Users\Administrator\Documents\My Games\Skyrim Special Edition\Saves' }
 $State = 'C:\argonia\state'; $Log = 'C:\argonia\logs\saves-sync.log'
 $Skip = '^(argoniabase|ArgoniaWalk)'
 $AgentList = "$State\saves-agent.txt"
@@ -31,7 +32,7 @@ try {
   }
   $newer = { param($local, $r) -not $r -or $local -gt $r.LastModified.ToUniversalTime().AddSeconds(2) }
   if ($Cmd -eq 'pull') {
-    if (Get-Process SkyrimSE -EA SilentlyContinue) { Log 'the game is running: no pull'; exit 0 }
+    if (-not $SavesDir -and (Get-Process SkyrimSE -EA SilentlyContinue)) { Log 'the game is running: no pull'; exit 0 }
     $n = 0
     foreach ($k in @($remote.Keys)) {
       if (-not $k -or $k -match $Skip -or $k -match '[\\/]') { continue }
