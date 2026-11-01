@@ -24,20 +24,20 @@ AUDIT = "docs/design/research/vegetation/regional-variety-audit-2026-09-08.md"
 ROCKS = "docs/design/research/vegetation/rock-placement-rules.md rule 1"
 # eco class -> (the ecology's grounding, {role: why})
 WHY = {
-    "coastal-lagoon": ("world/sources/lore/regions/murkmire.md:23 (the mangrove wall); " + AUDIT + " row 4 (strand "
+    "coastal-lagoon": ("lore regions/murkmire.md:23 (the mangrove wall); " + AUDIT + " row 4 (strand "
                        "palms landward of the mangrove)", {}),
-    "tidal-delta": ("world/sources/lore/regions/waters.md:31 (a river mouth screened by mangroves); " + AUDIT +
+    "tidal-delta": ("lore regions/waters.md:31 (a river mouth screened by mangroves); " + AUDIT +
                     " row 3", {}),
-    "flooded-forest": ("world/sources/lore/regions/blackwood-and-gloommire.md:34 (reeds to the chin); " + FAUNA, {}),
+    "flooded-forest": ("lore regions/blackwood-and-gloommire.md:34 (reeds to the chin); " + FAUNA, {}),
     "interior-swamp": (AUDIT + " row 7; " + FAUNA, {}),
     "rootland": (AUDIT + " row 6 (giant fungus landmarks, tall mushroom stalks); docs/owner-brief.md 2026-11-01 "
                  "(deep-marsh strangeness from flora variety, giant mushrooms)", {}),
     "deep-sink-basin": ("docs/owner-brief.md 2026-11-01 (giant mushrooms in the deep marsh); " + AUDIT + " row 12 "
                         "(lily pads on standing water)", {}),
-    "deep-river-corridor": (AUDIT + " row 5 (a river wall of tall trees); world/sources/lore/regions/waters.md:28",
+    "deep-river-corridor": (AUDIT + " row 5 (a river wall of tall trees); lore regions/waters.md:28",
                             {}),
     "northern-transition": (AUDIT + " row 1 (the north 'more temperate', the only rocky ground); " + ROCKS, {}),
-    "western-frontier": ("world/sources/lore/regions/blackwood-and-gloommire.md:13-14 (steep, lightly forested "
+    "western-frontier": ("lore regions/blackwood-and-gloommire.md:13-14 (steep, lightly forested "
                          "hills); " + ROCKS, {}),
 }
 DEEP = ("rootland", "deep-sink-basin", "interior-swamp", "flooded-forest")
