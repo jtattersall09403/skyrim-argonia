@@ -191,25 +191,30 @@ Sample check on 5b2605a: fit wet 0, bank 0, step-bank 0, dry_edge 0; **5 sites u
 
 ## Starting state (hand-off)
 
-Main is at 5b2605a or later. Owed, in order:
+Main is at 46e9ca5 or later. Session 5 (sample, `terrain check`): lattice 2.45 -> 2.20, bank role 3.24 -> 2.87 x;
+wet/bank/step-bank/dry-edge 0; overflow 1 cell; 5 sites unshaped; steps joined 4,081 -> 3,120. Probes added:
+`vanilla_level_edges.py` (Skyrim.esm: 77 level edges >64 u, 18 fully closed, 76 % of an edge's vertices at/above
+the upper level at the median, the upper water a median 9 vertices short, the edge's spread 1.09 x that 4 vertices
+in), `lattice_roles.py`, `lattice_banks.py`. Done: the flood takes only raster cells' own samples (`rawc`); closed
+steps whose upper cell has no raster water and no lower footprint at the edge get no bank; a two-level line's bank
+bound spreads at 30 deg, capped by the water cones, and stays off site windows; the render draws water last and dark.
+Tried and reverted (each measured): edge bank raised by the upper cell's relief (lattice 3.09, 6 overflow); a
+bank spread over all banks (16-21 unshaped, 39 overflow); flat pins kept from later mouths (rises lost their shape).
+Owed, in order:
 
-1. Lattice 2.45: the ratio is 1.16 on dry ground and 0.77 on the shore, but 2.35 on step slopes (role 2) and 3.18
-   on water-cell banks (role 3). Its source is the cell-edge bounds: `lo = vmax + 0.3` changes on the cell lines,
-   and the closed step banks are straight ridges along cell edges (3,794 closed steps, most of them from the solve's
-   `pad_ring`). Measure how vanilla's ground crosses a closed level change at a cell edge
-   (`vanilla_lake_cells.py` walls) before changing the rule.
-2. The 5 unshaped flats (`probes.unshaped_sites`): the terraced ones at 0.3 r still show std 1.3-5. The pins are
-   probably released by a later mouth's `prev` or moved by the clash cones. Print lo/hi in the core to find out.
-3. Overflow (−25,48)/(−26,47): a 327 m and a 67 m water a cell apart (`probes.cell_steps -25 47`). The same
-   clash, but with role 4/3 shore lo; check whether the shore lo needs the hard cones too.
-4. The reader on the session-4 renders (/home/ubuntu/scratch-ground/s4/render) is below. The water lane's pale
-   shallows wash is the render's water style, not the ground.
-   - Reader on the 7738c4e renders: marsh PARTLY x3 (a straight-sided slab, probably a site disc); river PARTLY/FAIL/PARTLY
-     (stair-step cell lines, rectangular shallows: the cell-edge bounds of item 1); border gate PARTLY x3 (a
-     rectangular lighter block in the river); 0_0_1_1 FAIL/FAIL/PARTLY.
-   - Re-read after 5b2605a: 0_0_1_1 PARTLY/PARTLY/PARTLY. The L-shaped pool is gone, but a near-square pool remains at
-     px 650-890, 640-835. The other three windows were pixel-identical to the first read: re-render them and confirm
-     the files are from 5b2605a before trusting that verdict.
-   - The remaining boxy pools are cells whose raster share is near 0 but which are fully wet, because a vertex
-     touching a raster cell admits the whole cell (`rawc`). Test admitting only the raster cells themselves.
-5. Sites' role-1 discs (deep_water bowls, sinkholes) may be the remaining whole-cell wet in (2,−1).
+1. Lattice 2.20: the bank excess is now 35 % beside dry cells (8 x; the bank lo `vmax + 0.3` is flat while the dry
+   cell's `shore_lo` rises with distance, so the bound switches formula on the line: try `lo[bank] = max(vmax + 0.3,
+   shore_lo)`), 38 % on two-level lines, 26 % on same-level lines.
+2. Unshaped 5: hangs-above-the-water, the-diggings-ladder, the-standing-bid, the-eight-steps, the-knapping-floor.
+   The pin is dropped where `win > reach_` (no slope joins it to water) and the limit then moves it. Pins hold at
+   the end (`limit` re-applies lo = hi), so the cause is the dropped pins, not the clash cones.
+3. Overflow (-25,48): a 326.88 m water directly north of a 67.15 m one; the dry shore cell between has 52.9 m
+   single-vertex steps. 260 m over one cell is past 75 deg, so the ground cannot solve it: water/solve.py must
+   chain the drop over several cells (a falls chain) or a dry gully.
+4. Reader on /home/ubuntu/scratch-ground/s5/render (ground at 75ae684, renders 21:38-21:39): 0_0_1_1 PARTLY/FAIL/
+   FAIL (a rectangular pool at px 640-905, 640-850; capsule islands); -38_25_-22_40 PARTLY/FAIL/PARTLY; -20_57_-19_58
+   PARTLY/FAIL/PARTLY; -12_63 PARTLY/PARTLY/PASS; -21_-26 FAIL/PARTLY/PARTLY. The PALE BLUE in every render is the
+   material layer painting a bed on DRY ground with no cell water (0_0_1_1: ground 35-39 m, level NaN), not water:
+   the materials lane's `dh` comes from the raster, not `cell_water`. Hillshade barely shows under the material.
+5. test_world_sample: 2 red, not ours (world-sample.yaml stale at cell -34,46; the cow scene). The province run is
+   not done this session.
