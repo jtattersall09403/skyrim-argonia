@@ -7,6 +7,7 @@
 // Barter (1.12 §6): the window's Barter button hides our view, keeps the conversation and opens Skyrim's BarterMenu
 // for the speaker (Wind UI intercepts it and draws its barter window); when that menu closes, our window returns.
 #include "core.h"
+#include <chrono>
 
 namespace argonia::plugin {
 
@@ -46,6 +47,11 @@ ac::msg::DialogueState Dressed(ac::msg::DialogueState s) {
 }
 
 constexpr std::string_view kWindUIMenu = "WindUIMenu";  // Wind UI's one menu: its barter window among its panes
+// The press that closed Wind UI's barter window (the pad's B, Esc) can reach our window as it comes back, a frame
+// later: a close inside this grace after the return is that same press, not the player's (b112d: "back from the
+// BarterMenu" then "dialogue: closed" 116 ms later). Goodbye by name still works: only view.close is held.
+constexpr auto kReturnGrace = std::chrono::milliseconds(400);
+std::chrono::steady_clock::time_point returned_at{};
 bool bartering = false;  // our window is hidden behind the BarterMenu it opened; it returns when that menu closes
 
 // Barter chosen: our view hides (the conversation stays open) and the BarterMenu opens on the next frame.
@@ -85,6 +91,7 @@ void ReturnFromBarter() {
     return;
   }
   SKSE::log::info("dialogue: back from the BarterMenu");
+  returned_at = std::chrono::steady_clock::now();
   Push("dialogue", std::move(*json));
   FactsChanged("barter closed");
 }
@@ -241,6 +248,12 @@ std::string DialogueIntent(std::string_view json) {
       OpenBarterFromDialogue();
       return {};
     }
+  if (auto in = ac::msg::decode_intent(json); in && std::holds_alternative<ac::msg::ViewClose>(*in) &&
+      std::chrono::steady_clock::now() - returned_at < kReturnGrace) {
+    SKSE::log::info("dialogue: a close {} ms after the barter's return held (the press that closed the barter)",
+                    std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - returned_at).count());
+    return {};
+  }
   auto s = Session();
   auto r = c.talk->on_intent_text(json, s);
   for (const auto& n : r.notes) SKSE::log::info("{}", n);

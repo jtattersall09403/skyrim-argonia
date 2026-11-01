@@ -45,7 +45,11 @@ steps:
       - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
   - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
-    do: [{key: "TAB 120 engine"}, {wait: 2}, {key: "UP 120 engine"}, {wait: 2}]
+    do: [{key: "TAB 120 engine"}, {wait: 2}, {mouse: "394 229"}, {click: left}, {wait: 1.5}]   # the Character pane's Block (1080p layout): its perk list
+  - name: perk-taken          # the first perk in Block's list, taken with the sitting's point (Wind UI logs it)
+    do: [{mouse: "850 140"}, {click: left}, {wait: 1.5}]
+    expect: [{log: {name: WindUI, contains: "took perk"}, within: 10}]
+    reader: [Block's perks listed in Wind UI's stats window, one now owned, "Perk points 0", no level-up window]
     reader: [Wind UI's stats or perk list shows "Perk points 1", no level-up window or "Level up" prompt, perk names and descriptions with no Nordic word (Nord, Skyrim, Dragonborn, Jarl, Thu'um, shout)]
   - name: stats-closed
     do: [{key: "ESC 120 engine"}, {wait: 1}, {key: "TAB 120 engine"}, {wait: 1.5}]
@@ -84,7 +88,7 @@ steps:
     do: [{key: "Q 120 engine"}, {wait: 1.5}]
     expect: [{event: {kind: menu, match: '"menu": "FavoritesMenu", "opening": false'}}]
   - name: favorites-by-pad    # the d-pad up opens the favourites on the pad
-    do: [{pad: "DPAD_UP:120"}, {wait: 2}]
+    do: [{pad: "UP:120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: FavoritesMenu}}]
   - name: favorites-pad-closed
     do: [{close_menu: FavoritesMenu}, {wait: 1.5}]
