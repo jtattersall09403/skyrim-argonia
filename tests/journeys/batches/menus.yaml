@@ -1,0 +1,9 @@
+# lane 1.12-menus' in-game batch (owner look 1): the sweep with the Tab burst, then the pad's panes and the quit,
+# whose System steps now meet our System pane. Run: tests/journeys/batches/menus.sh
+id: menus
+relaunch_mb: 6000
+relaunch_every: 0
+items:
+  - menus-look
+  - pad-panes
+  - menus-quit

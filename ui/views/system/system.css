@@ -1,0 +1,28 @@
+/* Our System pane (lane 1.12-menus): one small frame-style window (the --frame-* tokens; DESIGN.md), centred over play,
+   as Morrowind's options window: the title bar, then the entries as full-width buttons. */
+body { display: flex; align-items: center; justify-content: center; }
+#view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+.window {
+  width: min(92vw, 26rem); display: flex; flex-direction: column; gap: var(--s3);
+  padding: var(--s2) var(--s4) var(--s4); color: var(--frame-text); background: var(--frame-ground);
+  border: var(--edge) solid var(--frame-trim); border-radius: 0.3rem;
+  box-shadow: 0 0.4rem 1.6rem var(--frame-shadow), inset 0 0 0 0.3rem var(--frame-bg),
+    inset 0 0 0 calc(0.3rem + 1px) var(--frame-trim);
+}
+.bar { display: flex; align-items: center; gap: var(--s4); padding: var(--s1) var(--s1) var(--s2);
+  border-bottom: 1px solid var(--frame-trim); }
+.bar h1 { flex: 1; margin: 0; font-size: var(--t-title); font-weight: normal; letter-spacing: 0.08em; color: var(--frame-head); }
+.window .close {
+  min-height: 2.2rem; padding: 0 var(--s3); color: var(--frame-text); background: transparent;
+  border: var(--edge) solid var(--frame-trim); border-radius: 0.15rem;
+}
+.entries { list-style: none; margin: 0; padding: var(--s2); display: flex; flex-direction: column; gap: var(--s2);
+  background: var(--frame-well); border: 1px solid var(--frame-trim); border-radius: 0.15rem; }
+.entry {
+  display: flex; align-items: center; justify-content: center; width: 100%; min-height: 2.75rem; padding: 0 var(--s3); text-align: center; font: inherit; font-size: var(--t-body);
+  color: var(--frame-text); background: transparent; border: 1px solid transparent; border-radius: 0.15rem;
+}
+.entry:hover, .entry:focus-visible, .entry:focus { color: var(--frame-head); background: var(--frame-select);
+  border-color: var(--frame-trim); outline: none; }
+.entry.off { color: var(--frame-text-soft); opacity: 0.6; }

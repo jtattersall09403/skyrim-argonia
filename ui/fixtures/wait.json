@@ -1,0 +1,42 @@
+{
+ "screen": "wait",
+ "doc": "Mock data for our wait window's L1/L3 checks (lane 1.12-menus): waiting in the open, sleeping in a bed.",
+ "states": {
+  "wait": {
+   "type": "wait.state",
+   "v": 1,
+   "body": {
+    "mode": "wait",
+    "now": "10:09 in the morning, Sundas, the 17th of Last Seed",
+    "hours": 1,
+    "max": 24
+   }
+  },
+  "sleep": {
+   "type": "wait.state",
+   "v": 1,
+   "body": {
+    "mode": "sleep",
+    "now": "9:40 at night, Morndas, the 18th of Last Seed",
+    "hours": 8,
+    "max": 24
+   }
+  }
+ },
+ "intents": {
+  "wait3": {
+   "type": "wait.pick",
+   "v": 1,
+   "body": {
+    "hours": 3
+   }
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "wait"
+   }
+  }
+ }
+}

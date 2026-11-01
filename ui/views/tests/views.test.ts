@@ -19,11 +19,13 @@ import { barLength, isLow, remember, render as hud, renderBars } from "../hud/re
 import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 import { close as magicClose, render as magic } from "../magic/render.ts";
+import { close as systemClose, render as system } from "../system/render.ts";
+import { clamp as waitClamp, close as waitClose, render as wait } from "../wait/render.ts";
 
 const root = new URL("../../../", import.meta.url);
 type Fixture = { states: Record<string, PushMessage>; intents: Record<string, IntentMessage> };
 const fx = (s: string): Fixture => JSON.parse(readFileSync(new URL(`ui/fixtures/${s}.json`, root), "utf8"));
-const screens = ["dialogue", "journal", "hud", "chart", "sitting", "magic"] as const;
+const screens = ["dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait"] as const;
 
 // Every HTML a push can produce (the dialogue's with the persuasion panel open as well), keyed by fixture state.
 function renders(screen: string, m: PushMessage): string[] {
@@ -36,6 +38,8 @@ function renders(screen: string, m: PushMessage): string[] {
     case "chart.state": return [chart(m.body)];
     case "sitting.state": return [sitting(m.body)];
     case "magic.state": return [magic(m.body)];
+    case "system.state": return [system(m.body)];
+    case "wait.state": return [wait(m.body), wait(m.body, 1), wait(m.body, 3), wait(m.body, m.body.max)];
   }
   throw new Error(`${screen}: no view renders ${(m as PushMessage).type}`);
 }
@@ -48,6 +52,8 @@ function programmatic(m: PushMessage): IntentMessage[] {
     searchIntent(m.body, "c"), searchIntent(m.body, ""), { type: "view.close", v: 1, body: { view: "journal" } });
   if (m.type === "sitting.state") out.push(sittingDone());
   if (m.type === "magic.state") out.push(magicClose());
+  if (m.type === "system.state") out.push(systemClose());
+  if (m.type === "wait.state") out.push(waitClose());
   if (m.type === "chart.state") out.push(panIntent(m.body.view), { type: "view.close", v: 1, body: { view: "chart" } });
   return out.filter((x): x is IntentMessage => x !== null);
 }
@@ -372,4 +378,23 @@ test("chart look 1: the seen land is a disc about each revealed cell; the pyrami
   for (let i = 0; i < 120; i++) v = glide(v, b, 16);
   assert.deepEqual(v, b);
   assert.ok(ZOOM_MAX <= 8, "past the largest render's pixels the chart goes soft");
+});
+
+test("our System pane lists settings, load and the two quits, never Quests; our wait window sends its hours", () => {
+  for (const [name, m] of Object.entries(fx("system").states)) {
+    if (m.type !== "system.state") continue;
+    const html = system(m.body), t = textOf(html);
+    for (const e of ["Settings", "Load", "Quit to the main menu", "Quit to the desktop"]) assert.ok(t.includes(e), `${name}: ${e}`);
+    assert.ok(!/quest/i.test(t), `${name}: no Quests entry (quests live only in the journal)`);
+    assert.equal(/data-key="load" disabled/.test(html), !m.body.canLoad, `${name}: Load off iff no save`);
+  }
+  for (const [name, m] of Object.entries(fx("wait").states)) {
+    if (m.type !== "wait.state") continue;
+    const t = textOf(wait(m.body, 3));
+    assert.ok(t.includes(m.body.now) && t.includes(m.body.mode === "sleep" ? "Sleep 3 hours" : "Wait 3 hours"), name);
+    assert.ok(intentsIn(wait(m.body, 3)).some((i) => JSON.stringify(i) === JSON.stringify({ type: "wait.pick", v: 1, body: { hours: 3 } })), name);
+    assert.equal(waitClamp(0, m.body.max), 1);
+    assert.equal(waitClamp(99, m.body.max), m.body.max);
+    assert.ok(textOf(wait(m.body, 1)).includes("1 hour") && !textOf(wait(m.body, 1)).includes("1 hours"), name);
+  }
 });

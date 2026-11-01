@@ -797,6 +797,7 @@ void CloseView(std::string_view view) {
         q->AddMessage(RE::MapMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
         SKSE::log::info("views: chart closed; MapMenu hidden");
       }
+  if (view == "system" || view == "wait") MenusViewClosed(view);  // the engine menu under it (menus.cpp)
   if (view == "magic")  // likewise MagicMenu, should the router's hide at its opening not have taken
     if (auto* ui = RE::UI::GetSingleton(); ui && ui->IsMenuOpen(RE::MagicMenu::MENU_NAME))
       if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::MagicMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);

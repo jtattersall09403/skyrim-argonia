@@ -46,6 +46,7 @@ struct State {
   int close_ticks = 0;        // ticks since a close was asked (a native close may already have done it)
   std::chrono::steady_clock::time_point last;
   bool was_windows = false;
+  bool taskbar_journal = false;  // a click on Wind UI's taskbar Journal: our paper book instead of its window
   bool esc_close = false;  // the queued close is the keyboard's Esc: no opening guard (that is for the pad's Start)
   std::chrono::steady_clock::time_point opened;  // when the windows last opened
 } g;
@@ -293,6 +294,10 @@ void Tick() {
     SKSE::log::info("pad: windows open, the pad drives the cursor");
   }
   g.was_windows = true;
+  if (std::exchange(g.taskbar_journal, false)) {
+    AskClose(State::After::journal);
+    return;
+  }
   while (!g.acts.empty()) {  // events are sent here, never inside the input sink's own dispatch
     auto a = g.acts.front();
     g.acts.pop_front();
@@ -326,6 +331,26 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
             SKSE::log::info("pad: {} in the windows: closed to play", kb->GetIDCode() == kEsc ? "Esc" : "Tab");
             g.acts.push_back(pad::Act::close);
             g.esc_close = true;
+          }
+        }
+        continue;
+      }
+      // Wind UI's taskbar Journal toggles its own journal window (owner look 1: "not the paper book"; no setting hides
+      // it). A left click there (the mouse, the pad's A, a tap) is taken from Wind UI and opens our book, as J does.
+      if (e->GetDevice() == RE::INPUT_DEVICE::kMouse && ctx == pad::Context::windows) {
+        auto* mb = e->AsButtonEvent();
+        if (mb && mb->GetIDCode() == 0 && (mb->IsDown() || mb->IsUp() || mb->IsHeld())) {
+          const auto s = ScreenSize();
+          const auto at = CursorAt();
+          if (pad::on_taskbar_journal(at, s.w, s.h)) {
+            if (mb->IsDown()) {
+              SKSE::log::info("pad: Wind UI's taskbar Journal at {:.0f},{:.0f}: our journal instead", at.x, at.y);
+              g.taskbar_journal = true;
+            }
+            const_cast<RE::BSFixedString&>(mb->QUserEvent()) = "";
+            auto& rd = const_cast<RE::ButtonEvent*>(mb)->GetRuntimeData();
+            rd.value = 0.0f;  // neither down nor up: Wind UI never sees the press
+            rd.heldDownSecs = 0.0f;
           }
         }
         continue;
@@ -478,6 +503,14 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       return RE::BSEventNotifyControl::kContinue;
     }
     if (!e || !e->opening || e->menuName != RE::TweenMenu::MENU_NAME) return RE::BSEventNotifyControl::kContinue;
+    // Dear Diary's tween (its centre picker) drew for the frames until the swap below took (owner look 1: "starts to
+    // bring up the dear diary UI before cutting to Wind UI"). Its movie is hidden now, in the opening event, before it
+    // first draws; the menu itself still opens, so Wind UI's takeover and the swap run as before.
+    if (auto* ui = RE::UI::GetSingleton())
+      if (auto m = ui->GetMenu(RE::TweenMenu::MENU_NAME); m && m->uiMovie) {
+        m->uiMovie->SetVisible(false);
+        SKSE::log::info("pad: Dear Diary's tween hidden at its opening");
+      }
     SKSE::GetTaskInterface()->AddTask([] {
       if (!pad::tween_to_windows(Open(RE::TweenMenu::MENU_NAME), Open(kWindUIMenu))) return;
       auto* q = RE::UIMessageQueue::GetSingleton();

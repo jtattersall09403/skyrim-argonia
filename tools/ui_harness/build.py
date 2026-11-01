@@ -19,7 +19,7 @@ from pathlib import Path
 from tools.chart import pyramid
 
 ROOT = Path(__file__).resolve().parents[2]
-VIEWS = ("dialogue", "journal", "hud", "chart", "sitting", "magic")
+VIEWS = ("dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait")
 OUT = ROOT / "out" / "ui" / "views"
 NPM = Path.home() / ".argonia" / "npm"
 CHART_LAYER_PX = 2048

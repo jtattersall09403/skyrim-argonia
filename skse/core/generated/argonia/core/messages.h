@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "f215a3bcbe14d3e8";
+inline constexpr std::string_view kSchemaHash = "303778da3f03cb36";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -83,9 +83,17 @@ inline constexpr std::array<std::string_view, 6> kMagicSchoolNames{"alteration",
 enum class Hand : std::uint8_t { left, right, voice };
 inline constexpr std::array<std::string_view, 3> kHandNames{"left", "right", "voice"};
 
+// what the player picked on the System pane
+enum class SystemAction : std::uint8_t { settings, load, quitToMainMenu, quitToDesktop };
+inline constexpr std::array<std::string_view, 4> kSystemActionNames{"settings", "load", "quitToMainMenu", "quitToDesktop"};
+
+// the engine's mode for the Sleep/Wait Menu
+enum class WaitMode : std::uint8_t { wait, sleep };
+inline constexpr std::array<std::string_view, 2> kWaitModeNames{"wait", "sleep"};
+
 // a view the player can close
-enum class ViewId : std::uint8_t { dialogue, journal, chart, magic };
-inline constexpr std::array<std::string_view, 4> kViewIdNames{"dialogue", "journal", "chart", "magic"};
+enum class ViewId : std::uint8_t { dialogue, journal, chart, magic, system, wait };
+inline constexpr std::array<std::string_view, 6> kViewIdNames{"dialogue", "journal", "chart", "magic", "system", "wait"};
 
 // The person the player is talking to
 struct Speaker {
@@ -490,6 +498,33 @@ struct MagicEquip {
   bool operator==(const MagicEquip&) const = default;
 };
 
+// The open System pane
+struct SystemState {
+  bool can_load = false;  // a save exists to load (the engine's Load entry is enabled)
+  bool operator==(const SystemState&) const = default;
+};
+
+// The player picked an entry on the System pane
+struct SystemPick {
+  SystemAction action{};  // what the player picked on the System pane
+  bool operator==(const SystemPick&) const = default;
+};
+
+// The open wait window
+struct WaitState {
+  WaitMode mode{};  // the engine's mode for the Sleep/Wait Menu
+  std::string now;  // the time of day and date as the player reads it (ArgoniaCore words it; views never format game dates)
+  std::int64_t hours = 0;  // the hours the window opens on
+  std::int64_t max = 0;  // the most hours one wait may take (Dear Diary's config cap, the engine's)
+  bool operator==(const WaitState&) const = default;
+};
+
+// The player chose to wait or sleep this many hours
+struct WaitPick {
+  std::int64_t hours = 0;  // hours, within the window's max
+  bool operator==(const WaitPick&) const = default;
+};
+
 // The player closed a view (Escape, the pad's B, the close button)
 struct ViewClose {
   ViewId view{};  // a view the player can close
@@ -608,18 +643,42 @@ struct Traits<MagicEquip> {
   static constexpr Direction dir = Direction::intent;
 };
 template <>
+struct Traits<SystemState> {
+  static constexpr std::string_view type = "system.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<SystemPick> {
+  static constexpr std::string_view type = "system.pick";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
+struct Traits<WaitState> {
+  static constexpr std::string_view type = "wait.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<WaitPick> {
+  static constexpr std::string_view type = "wait.pick";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<ViewClose> {
   static constexpr std::string_view type = "view.close";
   static constexpr std::uint32_t version = 1;
   static constexpr Direction dir = Direction::intent;
 };
 
-using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState, MagicState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, MagicEquip, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, MagicState, MagicEquip, ViewClose>;
+using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState, MagicState, SystemState, WaitState>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, MagicEquip, SystemPick, WaitPick, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, MagicState, MagicEquip, SystemState, SystemPick, WaitState, WaitPick, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 19> kMessages{{
+inline constexpr std::array<MessageInfo, 23> kMessages{{
     {"dialogue.state", 2, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -638,6 +697,10 @@ inline constexpr std::array<MessageInfo, 19> kMessages{{
     {"sitting.done", 1, Direction::intent},
     {"magic.state", 1, Direction::push},
     {"magic.equip", 1, Direction::intent},
+    {"system.state", 1, Direction::push},
+    {"system.pick", 1, Direction::intent},
+    {"wait.state", 1, Direction::push},
+    {"wait.pick", 1, Direction::intent},
     {"view.close", 1, Direction::intent},
 }};
 
@@ -763,13 +826,29 @@ inline bool from_json(const json::Value& j, Hand& out, const std::string& path, 
     if (*s == kHandNames[i]) { out = Hand(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of left, right, voice");
 }
+inline json::Value to_json(SystemAction v) { return json::Value::string(std::string(kSystemActionNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, SystemAction& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of settings, load, quitToMainMenu, quitToDesktop");
+  for (std::size_t i = 0; i < kSystemActionNames.size(); ++i)
+    if (*s == kSystemActionNames[i]) { out = SystemAction(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of settings, load, quitToMainMenu, quitToDesktop");
+}
+inline json::Value to_json(WaitMode v) { return json::Value::string(std::string(kWaitModeNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, WaitMode& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of wait, sleep");
+  for (std::size_t i = 0; i < kWaitModeNames.size(); ++i)
+    if (*s == kWaitModeNames[i]) { out = WaitMode(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of wait, sleep");
+}
 inline json::Value to_json(ViewId v) { return json::Value::string(std::string(kViewIdNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, ViewId& out, const std::string& path, std::string& err) {
   const std::string* s = j.as_string();
-  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart, magic");
+  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart, magic, system, wait");
   for (std::size_t i = 0; i < kViewIdNames.size(); ++i)
     if (*s == kViewIdNames[i]) { out = ViewId(i); return true; }
-  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart, magic");
+  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart, magic, system, wait");
 }
 
 inline json::Value to_json(const Speaker& v) {
@@ -2497,6 +2576,92 @@ inline bool from_json(const json::Value& j, MagicEquip& out, const std::string& 
   return f.done();
 }
 
+inline json::Value to_json(const SystemState& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"canLoad", json::Value::boolean(v.can_load)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SystemState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_can_load = f.req("canLoad")) {
+    if (!json::read(*f_can_load, out.can_load, path + ".canLoad", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const SystemPick& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"action", to_json(v.action)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, SystemPick& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_action = f.req("action")) {
+    if (!from_json(*f_action, out.action, path + ".action", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const WaitState& v) {
+  json::Object o;
+  o.reserve(4);
+  o.push_back({"mode", to_json(v.mode)});
+  o.push_back({"now", json::Value::string(v.now)});
+  o.push_back({"hours", json::Value::number(double(v.hours))});
+  o.push_back({"max", json::Value::number(double(v.max))});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, WaitState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_mode = f.req("mode")) {
+    if (!from_json(*f_mode, out.mode, path + ".mode", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_now = f.req("now")) {
+    if (!json::read(*f_now, out.now, path + ".now", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_hours = f.req("hours")) {
+    if (!json::read_int(*f_hours, out.hours, 1.0, 24.0, path + ".hours", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_max = f.req("max")) {
+    if (!json::read_int(*f_max, out.max, 1.0, 24.0, path + ".max", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const WaitPick& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"hours", json::Value::number(double(v.hours))});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, WaitPick& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_hours = f.req("hours")) {
+    if (!json::read_int(*f_hours, out.hours, 1.0, 24.0, path + ".hours", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
 inline json::Value to_json(const ViewClose& v) {
   json::Object o;
   o.reserve(1);
@@ -2727,6 +2892,50 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("magic.equip: " + std::string(refuse));
     }
   }
+  if (type == "system.state") {
+    if constexpr (std::is_constructible_v<V, SystemState>) {
+      if (v != 1)
+        return std::unexpected("system.state version " + std::to_string(v) + ": this build speaks version 1");
+      SystemState m;
+      if (!from_json(*body, m, "system.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<SystemState>, std::move(m)};
+    } else {
+      return std::unexpected("system.state: " + std::string(refuse));
+    }
+  }
+  if (type == "system.pick") {
+    if constexpr (std::is_constructible_v<V, SystemPick>) {
+      if (v != 1)
+        return std::unexpected("system.pick version " + std::to_string(v) + ": this build speaks version 1");
+      SystemPick m;
+      if (!from_json(*body, m, "system.pick body", err)) return std::unexpected(err);
+      return V{std::in_place_type<SystemPick>, std::move(m)};
+    } else {
+      return std::unexpected("system.pick: " + std::string(refuse));
+    }
+  }
+  if (type == "wait.state") {
+    if constexpr (std::is_constructible_v<V, WaitState>) {
+      if (v != 1)
+        return std::unexpected("wait.state version " + std::to_string(v) + ": this build speaks version 1");
+      WaitState m;
+      if (!from_json(*body, m, "wait.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<WaitState>, std::move(m)};
+    } else {
+      return std::unexpected("wait.state: " + std::string(refuse));
+    }
+  }
+  if (type == "wait.pick") {
+    if constexpr (std::is_constructible_v<V, WaitPick>) {
+      if (v != 1)
+        return std::unexpected("wait.pick version " + std::to_string(v) + ": this build speaks version 1");
+      WaitPick m;
+      if (!from_json(*body, m, "wait.pick body", err)) return std::unexpected(err);
+      return V{std::in_place_type<WaitPick>, std::move(m)};
+    } else {
+      return std::unexpected("wait.pick: " + std::string(refuse));
+    }
+  }
   if (type == "view.close") {
     if constexpr (std::is_constructible_v<V, ViewClose>) {
       if (v != 1)
@@ -2869,6 +3078,34 @@ inline std::expected<std::string, std::string> encode(const MagicEquip& m) {
   std::string err;
   if (!detail::from_json(body, check, "magic.equip body", err)) return std::unexpected(err);
   return json::envelope("magic.equip", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const SystemState& m) {
+  json::Value body = detail::to_json(m);
+  SystemState check;
+  std::string err;
+  if (!detail::from_json(body, check, "system.state body", err)) return std::unexpected(err);
+  return json::envelope("system.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const SystemPick& m) {
+  json::Value body = detail::to_json(m);
+  SystemPick check;
+  std::string err;
+  if (!detail::from_json(body, check, "system.pick body", err)) return std::unexpected(err);
+  return json::envelope("system.pick", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const WaitState& m) {
+  json::Value body = detail::to_json(m);
+  WaitState check;
+  std::string err;
+  if (!detail::from_json(body, check, "wait.state body", err)) return std::unexpected(err);
+  return json::envelope("wait.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const WaitPick& m) {
+  json::Value body = detail::to_json(m);
+  WaitPick check;
+  std::string err;
+  if (!detail::from_json(body, check, "wait.pick body", err)) return std::unexpected(err);
+  return json::envelope("wait.pick", 1, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ViewClose& m) {
   json::Value body = detail::to_json(m);

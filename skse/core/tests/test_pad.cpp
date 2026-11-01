@@ -28,6 +28,12 @@ int main() {
   CHECK(!tween_to_windows(false, false)); // closed already
   CHECK(!tween_to_windows(false, true));
 
+  // Wind UI's taskbar Journal (1.12 look 1): its cell at 1080p, not Quick Keys' or Map's; scaled with the height.
+  CHECK(on_taskbar_journal({1138, 1037}, 1920, 1080));
+  CHECK(!on_taskbar_journal({1000, 1037}, 1920, 1080) && !on_taskbar_journal({1243, 1037}, 1920, 1080));
+  CHECK(!on_taskbar_journal({1138, 900}, 1920, 1080));
+  CHECK(on_taskbar_journal({1280 + 80, 720 - 30}, 2560, 720) && !on_taskbar_journal({1280 + 170, 720 - 30}, 2560, 720));
+
   CHECK(!close_allowed(0.1));  // the opening Start's echo
   CHECK(close_allowed(0.5));
   CHECK(close_allowed(30));

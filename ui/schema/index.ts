@@ -5,10 +5,12 @@ import * as hud from "./hud.ts";
 import * as journal from "./journal.ts";
 import * as magic from "./magic.ts";
 import * as sitting from "./sitting.ts";
+import * as system from "./system.ts";
 import type { MessageDef } from "./types.ts";
 import * as view from "./view.ts";
 
 export const messages: readonly MessageDef[] = [
   ...dialogue.messages, ...journal.messages, ...hud.messages, ...chart.messages, ...sitting.messages, ...magic.messages,
+  ...system.messages,
   ...view.messages,
 ];

@@ -168,6 +168,7 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
           });
       }
       if (menu == RE::SleepWaitMenu::MENU_NAME || menu == RE::LoadingMenu::MENU_NAME) FactsChanged("time passed");
+      if (menu == RE::SleepWaitMenu::MENU_NAME || menu == RE::JournalMenu::MENU_NAME) MenusMenuClosed(menu);
       return RE::BSEventNotifyControl::kContinue;
     }
     auto& c = Get();
@@ -191,7 +192,15 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     }
     // Escape opens the Journal Menu too (its System tab: save, settings, quit, until 3.1); only the journal key's
     // opening is ours to replace.
-    if (menu == RE::JournalMenu::MENU_NAME && !JournalKeyTaken()) return RE::BSEventNotifyControl::kContinue;
+    // Since 1.12 look 1 that System page is ours: Dear Diary's movie is hidden and our System pane stands over it.
+    if (menu == RE::JournalMenu::MENU_NAME && !JournalKeyTaken()) {
+      SystemMenuOpened();
+      return RE::BSEventNotifyControl::kContinue;
+    }
+    if (menu == RE::SleepWaitMenu::MENU_NAME) {  // T, the pad's Select: our wait window over the hidden menu
+      WaitMenuOpened();
+      return RE::BSEventNotifyControl::kContinue;
+    }
     const auto v = c.router.on_menu(menu);
     if (!v.note.empty()) SKSE::log::info("router: {}", v.note);
     if (v.action == ac::router::Action::block)
@@ -289,7 +298,7 @@ std::string ViewIntent(std::string_view json) {
     return {};
   }
   if (*view == "dialogue") return DialogueIntent(json);
-  if ((*view == "journal" || *view == "chart" || *view == "magic") && closing) {
+  if ((*view == "journal" || *view == "chart" || *view == "magic" || *view == "system" || *view == "wait") && closing) {
     CloseView(*view);
     return {};
   }
@@ -299,6 +308,10 @@ std::string ViewIntent(std::string_view json) {
     if (const auto* p = std::get_if<ac::msg::ChartPan>(&*m)) return ChartIntent(*p);
   if (m)
     if (const auto* p = std::get_if<ac::msg::MagicEquip>(&*m)) return MagicIntent(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::SystemPick>(&*m)) return SystemIntent(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::WaitPick>(&*m)) return WaitIntent(*p);
   if (*view == "sitting") return SittingIntent(json);
   if (*view == "hud") return OpenTweenMenu() ? std::string{} : R"({"error":"the Tween Menu could not open"})";
   SKSE::log::warn("views: no host for the {} view's intents yet", *view);

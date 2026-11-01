@@ -204,6 +204,17 @@ msg::GameDate date(const journal::GameDate& d) {
   return out;
 }
 
+std::string wait_now(const journal::GameDate& d) {
+  const int minutes = static_cast<int>(d.hour * 60.0 + 0.5) % (24 * 60);
+  const int h24 = minutes / 60, m = minutes % 60;
+  const int h12 = h24 % 12 == 0 ? 12 : h24 % 12;
+  const char* part = h24 < 5 ? "at night" : h24 < 12 ? "in the morning" : h24 < 18 ? "in the afternoon" : h24 < 21 ? "in the evening" : "at night";
+  char clock[16];
+  std::snprintf(clock, sizeof clock, "%d:%02d", h12, m);
+  const auto t = date(d).text;  // "17th of the Second Seed Month, 201"
+  return std::string(clock) + " " + part + ", the " + t.substr(0, t.rfind(','));
+}
+
 msg::JournalState journal_state(const journal::Log& log, const std::function<QuestNames(journal::QuestId)>& name,
                                 const EntryText& text, const Directions& directions, const GroupOf& group,
                                 const msg::JournalPage& at, std::size_t per_page) {
@@ -294,7 +305,8 @@ msg::DialogueState probe_dialogue(std::string speaker_id, std::string speaker_na
 
 std::optional<std::string> close_intent(std::string_view v, const CloseControl& c, bool conversation_open) {
   const bool any = c.cancel || c.tween || c.journal;
-  if ((v == "journal" && any) || (v == "chart" && (any || c.quick_map)) || (v == "magic" && (any || c.quick_magic)))
+  if ((v == "journal" && any) || (v == "chart" && (any || c.quick_map)) || (v == "magic" && (any || c.quick_magic)) ||
+      ((v == "system" || v == "wait") && any))
     return R"({"type":"view.close","v":1,"body":{"view":")" + std::string(v) + R"("}})";
   if (v == "dialogue" && any)
     return conversation_open ? std::string(R"({"type":"dialogue.goodbye","v":1,"body":{}})")

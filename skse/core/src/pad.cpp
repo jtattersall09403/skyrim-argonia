@@ -124,6 +124,12 @@ const std::vector<Pane>& panes() {
   return p;
 }
 
+bool on_taskbar_journal(Vec at, double w, double h) {
+  const double k = h / 1080.0;
+  const double x0 = w / 2 + 120 * k, x1 = w / 2 + 239 * k, y0 = h - 73 * k, y1 = h - 18 * k;
+  return at.x >= x0 && at.x <= x1 && at.y >= y0 && at.y <= y1;
+}
+
 int next_pane(int at, int dir) {
   const int n = static_cast<int>(panes().size());
   if (at < 0 || at >= n) return dir >= 0 ? 0 : n - 1;

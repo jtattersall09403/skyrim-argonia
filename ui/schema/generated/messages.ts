@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "f215a3bcbe14d3e8";
+export const schemaHash = "303778da3f03cb36";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -34,8 +34,12 @@ export type SittingRefusal = "noPendingLevel" | "atCapThisSitting" | "atPurchase
 export type MagicSchool = "alteration" | "conjuration" | "destruction" | "illusion" | "mysticism" | "restoration";
 /** where a readied spell or power goes */
 export type Hand = "left" | "right" | "voice";
+/** what the player picked on the System pane */
+export type SystemAction = "settings" | "load" | "quitToMainMenu" | "quitToDesktop";
+/** the engine's mode for the Sleep/Wait Menu */
+export type WaitMode = "wait" | "sleep";
 /** a view the player can close */
-export type ViewId = "dialogue" | "journal" | "chart" | "magic";
+export type ViewId = "dialogue" | "journal" | "chart" | "magic" | "system" | "wait";
 
 /** The person the player is talking to */
 export interface Speaker {
@@ -500,6 +504,32 @@ export interface MagicEquip {
   /** where a readied spell or power goes */
   hand: Hand;
 }
+/** The open System pane */
+export interface SystemState {
+  /** a save exists to load (the engine's Load entry is enabled) */
+  canLoad: boolean;
+}
+/** The player picked an entry on the System pane */
+export interface SystemPick {
+  /** what the player picked on the System pane */
+  action: SystemAction;
+}
+/** The open wait window */
+export interface WaitState {
+  /** the engine's mode for the Sleep/Wait Menu */
+  mode: WaitMode;
+  /** the time of day and date as the player reads it (ArgoniaCore words it; views never format game dates) */
+  now: string;
+  /** the hours the window opens on */
+  hours: number;
+  /** the most hours one wait may take (Dear Diary's config cap, the engine's) */
+  max: number;
+}
+/** The player chose to wait or sleep this many hours */
+export interface WaitPick {
+  /** hours, within the window's max */
+  hours: number;
+}
 /** The player closed a view (Escape, the pad's B, the close button) */
 export interface ViewClose {
   /** a view the player can close */
@@ -514,7 +544,9 @@ export type PushMessage =
   | { type: "hud.minimap"; v: 1; body: HudMinimap }
   | { type: "chart.state"; v: 2; body: ChartState }
   | { type: "sitting.state"; v: 1; body: SittingState }
-  | { type: "magic.state"; v: 1; body: MagicState };
+  | { type: "magic.state"; v: 1; body: MagicState }
+  | { type: "system.state"; v: 1; body: SystemState }
+  | { type: "wait.state"; v: 1; body: WaitState };
 export type IntentMessage =
   | { type: "dialogue.topic"; v: 1; body: DialogueTopic }
   | { type: "dialogue.keyword"; v: 1; body: DialogueKeyword }
@@ -526,6 +558,8 @@ export type IntentMessage =
   | { type: "sitting.buy"; v: 1; body: SittingBuy }
   | { type: "sitting.done"; v: 1; body: SittingDone }
   | { type: "magic.equip"; v: 1; body: MagicEquip }
+  | { type: "system.pick"; v: 1; body: SystemPick }
+  | { type: "wait.pick"; v: 1; body: WaitPick }
   | { type: "view.close"; v: 1; body: ViewClose };
 export type Message = PushMessage | IntentMessage;
 export type Direction = "push" | "intent";
@@ -550,6 +584,10 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "sitting.done", version: 1, dir: "intent" },
   { type: "magic.state", version: 1, dir: "push" },
   { type: "magic.equip", version: 1, dir: "intent" },
+  { type: "system.state", version: 1, dir: "push" },
+  { type: "system.pick", version: 1, dir: "intent" },
+  { type: "wait.state", version: 1, dir: "push" },
+  { type: "wait.pick", version: 1, dir: "intent" },
   { type: "view.close", version: 1, dir: "intent" },
 ];
 
@@ -651,10 +689,20 @@ function checkHand(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of left, right, voice");
   return HandValues.includes(x) ? null : bad(p, `'${x}' is not one of left, right, voice`);
 }
-const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart", "magic"];
+const SystemActionValues: readonly string[] = ["settings", "load", "quitToMainMenu", "quitToDesktop"];
+function checkSystemAction(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of settings, load, quitToMainMenu, quitToDesktop");
+  return SystemActionValues.includes(x) ? null : bad(p, `'${x}' is not one of settings, load, quitToMainMenu, quitToDesktop`);
+}
+const WaitModeValues: readonly string[] = ["wait", "sleep"];
+function checkWaitMode(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of wait, sleep");
+  return WaitModeValues.includes(x) ? null : bad(p, `'${x}' is not one of wait, sleep`);
+}
+const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart", "magic", "system", "wait"];
 function checkViewId(x: unknown, p: string): string | null {
-  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart, magic");
-  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart, magic`);
+  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart, magic, system, wait");
+  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart, magic, system, wait`);
 }
 function checkSpeaker(x: unknown, p: string): string | null {
   const o = members(x, p, ["id","name"]);
@@ -1246,6 +1294,44 @@ function checkMagicEquip(x: unknown, p: string): string | null {
   if ((e = checkHand(o["hand"], p + ".hand")) !== null) return e;
   return null;
 }
+function checkSystemState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["canLoad"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["canLoad"] === undefined) return bad(p + ".canLoad", "missing");
+  if ((e = (typeof o["canLoad"] === "boolean" ? null : bad(p + ".canLoad", "want true or false"))) !== null) return e;
+  return null;
+}
+function checkSystemPick(x: unknown, p: string): string | null {
+  const o = members(x, p, ["action"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["action"] === undefined) return bad(p + ".action", "missing");
+  if ((e = checkSystemAction(o["action"], p + ".action")) !== null) return e;
+  return null;
+}
+function checkWaitState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["mode","now","hours","max"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["mode"] === undefined) return bad(p + ".mode", "missing");
+  if ((e = checkWaitMode(o["mode"], p + ".mode")) !== null) return e;
+  if (o["now"] === undefined) return bad(p + ".now", "missing");
+  if ((e = (typeof o["now"] === "string" ? null : bad(p + ".now", "want a string"))) !== null) return e;
+  if (o["hours"] === undefined) return bad(p + ".hours", "missing");
+  if ((e = whole(o["hours"], 1, 24, p + ".hours")) !== null) return e;
+  if (o["max"] === undefined) return bad(p + ".max", "missing");
+  if ((e = whole(o["max"], 1, 24, p + ".max")) !== null) return e;
+  return null;
+}
+function checkWaitPick(x: unknown, p: string): string | null {
+  const o = members(x, p, ["hours"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["hours"] === undefined) return bad(p + ".hours", "missing");
+  if ((e = whole(o["hours"], 1, 24, p + ".hours")) !== null) return e;
+  return null;
+}
 function checkViewClose(x: unknown, p: string): string | null {
   const o = members(x, p, ["view"]);
   if (typeof o === "string") return o;
@@ -1274,6 +1360,10 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "sitting.done": checkSittingDone,
   "magic.state": checkMagicState,
   "magic.equip": checkMagicEquip,
+  "system.state": checkSystemState,
+  "system.pick": checkSystemPick,
+  "wait.state": checkWaitState,
+  "wait.pick": checkWaitPick,
   "view.close": checkViewClose,
 };
 

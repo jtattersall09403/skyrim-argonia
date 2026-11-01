@@ -27,7 +27,7 @@ struct Spec {
   bool modal;  // takes focus and pauses; one modal at a time
   int order;
 };
-inline constexpr std::array<Spec, 7> kViews{{
+inline constexpr std::array<Spec, 9> kViews{{
     {"hud", "argonia/hud/index.html", false, 0},
     {"dialogue", "argonia/dialogue/index.html", true, 10},
     {"journal", "argonia/journal/index.html", true, 10},
@@ -36,6 +36,8 @@ inline constexpr std::array<Spec, 7> kViews{{
     {"magic", "argonia/magic/index.html", true, 10},  // our magic pane, for Wind UI's magic window (1.12)
     // the map pane among Wind UI's windows (1.12 look 1): the chart docked and display-only, shown while they are open
     {"chartpane", "argonia/chart/pane.html", false, 5},
+    {"system", "argonia/system/index.html", true, 10},  // our System pane, for Dear Diary's System page (Esc)
+    {"wait", "argonia/wait/index.html", true, 10},      // our wait window, over the hidden Sleep/Wait Menu (T)
 }};
 const Spec* spec(std::string_view id);
 inline constexpr std::string_view kPushFunction = "argoniaPush";      // bridge.ts: window.argoniaPush(text)
@@ -134,6 +136,9 @@ msg::HudMinimap minimap(const chart::Discovered& d, const std::vector<msg::Chart
 
 // The game date as the journal prints it ("16th of the Eighth Month, 201"); views never format dates.
 msg::GameDate date(const journal::GameDate& d);
+// The wait window's "now" (lane 1.12-menus): the hour in words and the journal's date, e.g. "10:09 in the morning,
+// the 17th of the Second Seed Month" (never the engine's "4E 201" string: views never format game dates).
+std::string wait_now(const journal::GameDate& d);
 
 // The journal at one ribbon (1.12 §6). `name(quest)` is the quest's display name and world id, `text(quest, entry)`
 // the log entry's text, `directions(quest, entry)` where to go next after that entry, `group(quest)` the questline

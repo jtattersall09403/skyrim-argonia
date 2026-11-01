@@ -36,6 +36,15 @@ void prompt_text() {
   CHECK(!prompt_from_activate_text("", "Chest") && !prompt_from_activate_text("<font></font>\nChest", "Chest"));
 }
 
+void wait_words() {
+  using argonia::core::journal::GameDate;
+  const auto t = wait_now(GameDate{201, 2, 17, 10.15});
+  CHECK(t.rfind("10:09 in the morning, the 17th of the ", 0) == 0);
+  CHECK(t.find("201") == std::string::npos && t.find("4E") == std::string::npos);
+  CHECK(wait_now(GameDate{201, 2, 1, 0.0}).rfind("12:00 at night", 0) == 0);
+  CHECK(wait_now(GameDate{201, 2, 1, 13.5}).rfind("1:30 in the afternoon", 0) == 0);
+}
+
 void close_controls() {
   const CloseControl esc{false, false, true, false}, tab{false, true, false, false}, b{true, false, false, false},
       m{false, false, false, true}, none{};
@@ -305,6 +314,7 @@ void the_probe() {
 int main() {
   close_press_is_consumed();
   close_controls();
+  wait_words();
   prompt_text();
   the_table();
   push_waits_for_ready();

@@ -481,7 +481,7 @@ class Runner:
             view_ok = view is None or f"{view} ready closed" in json.dumps(self.b.call("core", "Views"))
             evs = (self.b.call("events", last, "menu") or {}).get("events") or []
             # the router hides MapMenu as the chart opens (its close event comes then): the chart closed is the map closed
-            menu_ok = menu in ("journal", "MapMenu") or any((e.get("data") or {}).get("menu") == menu
+            menu_ok = menu in ("journal", "MapMenu", "system", "wait") or any((e.get("data") or {}).get("menu") == menu
                                                and not (e.get("data") or {}).get("opening") for e in evs)
             if view_ok and menu_ok:
                 self.calls.append({"call": ["close_menu", menu], "result": [key, route]})
@@ -712,7 +712,7 @@ def _form_id(text) -> int | None:
 
 TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a cell and fade
 STRIKE_UNITS = 80  # inside a sword's reach
-MENU_VIEWS = {"journal": "journal", "MapMenu": "chart"}  # a menu name and our view that stands for or over it
+MENU_VIEWS = {"journal": "journal", "MapMenu": "chart", "system": "system", "wait": "wait"}  # a menu name and our view that stands for or over it
 CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order; pad B closes our journal (game-16, live)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,

@@ -97,4 +97,9 @@ const std::vector<Pane>& panes();
 // The next pane index from `at` in direction +1 / -1, wrapping. An `at` of -1 (none yet) gives the first (or last).
 int next_pane(int at, int dir);
 
+// Wind UI's taskbar Journal (1.12 look 1): the cell its "Journal" entry takes on the bottom-centre taskbar, measured
+// at 1920x1080 (out/menus/probe/01-tab.png: x 1080-1199, y 1007-1062, from Quick Keys' end to Map's start) and scaled
+// with the screen height about the bottom centre, as Wind UI scales its taskbar. True when `at` is inside it.
+bool on_taskbar_journal(Vec at, double screen_w, double screen_h);
+
 }  // namespace argonia::core::pad
