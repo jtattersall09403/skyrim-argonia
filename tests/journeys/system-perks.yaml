@@ -71,7 +71,7 @@ steps:
       - {log: {name: ArgoniaCore, contains: "views: the HUD menu button opened the TweenMenu"}, within: 5}
       - {event: {kind: menu, match: TweenMenu}, within: 5}
   - name: hud-menu-closed
-    do: [{close_menu: TweenMenu}, {wait: 1.5}]
+    do: [{close_menu: WindUIMenu}, {wait: 1.5}]   # the tween is swapped for Wind UI's windows: close those
   - name: favorite-one        # dev-favorite by the sword's form key (game-22: the editor id misses weapons)
     do: [{call: [dev-favorite, "000840:Argonia.esm"]}, {wait: 1}]
     expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]
