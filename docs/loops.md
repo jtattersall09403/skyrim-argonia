@@ -53,6 +53,12 @@ prove it**, and the composition is checked only for what composition can break.
      same scene (L6).
    - **The deployed build.** Nothing plays on a real place's long-lived state, or on the owner's save, as an
      agent gate.
+   - **An agent drives it (decision 0036, owner 2026-11-01).** A `driver` agent runs the round's batch through the
+     bridge and console and judges each result before the next step: it waits longer when a load has not settled,
+     retakes a blank or unchanged capture, moves the camera when the subject is out of frame. The YAML is the plan
+     and the replay, never the only way; a script that fails on timing is the driver's to fix on the spot, not a
+     verdict on the game. Keep every check simple: teleport, settle, still, state read; no walks, no fights; a mod's
+     own behaviour is not retested. Stills first; a clip or a temporal strip only where the brief says why.
 6. **A clip (L5) needs a reason no lower level can give**, written in the brief. A feature with no such join
    films nothing.
 7. **Measure everything, diagnose all, fix once, re-measure.**

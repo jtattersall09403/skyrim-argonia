@@ -22,6 +22,14 @@ Decisions 0021 and 0022; chunk 0.3 §c and §d. A check in game starts from the 
 - Name the place by what it is (`plain-armed`, `argonia-water`). Prefer an open floor where movement is measured:
   QASmoke's pillars stopped rolls at 2 to 80 units (2026-10-30).
 
+## Before writing a journey (decision 0036, owner 2026-11-01)
+
+Keep it simple and smart. The lightest check that gives confidence: teleport, settle, still, state read; no walks,
+no fights, no long input sequences; a mod's own behaviour is never retested. A `driver` agent runs it and adjusts
+(waits longer, retakes a blank still, moves the camera), so write the steps as the plan, with the evidence wanted
+named per step (a still; a clip or temporal strip only with the reason). A journey the owner called complicated
+is a defect in the check.
+
 ## A journey: `tests/journeys/<id>.yaml`
 
 ```yaml
