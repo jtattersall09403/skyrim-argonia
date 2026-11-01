@@ -142,3 +142,18 @@ def test_tree_band_check_flags_a_thin_forest_and_passes_a_marsh():
     rep, errs = checks.tree_bands({"a": [3, 5, 4], "b": [15, 20, 19]}, eco, [1, 20], [300.0, 500.0])
     assert len(errs) == 1 and errs[0].startswith("a (forest)")
     assert rep["regions"]["b"]["band"] == "marsh" and rep["in_water_share"] == 0.05
+
+
+def test_a_window_builds_the_same_twice():
+    """Determinism: placing a window of cells twice (the second in reverse cell order, so no draw can lean on call
+    order or shared state) gives identical stems, conforming rocks and clumps included."""
+    rules = [rule(), rule(form_key="000002:Skyrim.esm", conform=True, upright=0.5, density_per_ha=20.0),
+             rule(form_key="000003:Skyrim.esm", clustering=4, radius_m=8.0, density_per_ha=9.0)]
+    H = 10.0 + np.add.outer(np.arange(V), np.arange(V)) * 0.05
+    cells = [(cx, cy) for cx in range(-9, -7) for cy in range(1, 3)]
+    a = {c: place.place_cell(cell(H=H, cx=c[0], cy=c[1]), rules) for c in cells}
+    b = {c: place.place_cell(cell(H=H, cx=c[0], cy=c[1]), rules) for c in reversed(cells)}
+    assert sum(len(a[c]["u"]) for c in cells) > 0
+    for c in cells:
+        for k in a[c]:
+            assert np.array_equal(a[c][k], b[c][k]), (c, k)
