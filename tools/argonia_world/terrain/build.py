@@ -15,6 +15,8 @@ from __future__ import annotations
 import base64
 import gzip
 import json
+import multiprocessing as mp
+import os
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -51,6 +53,20 @@ class Stats:
 
     def add_layers(self, n: int) -> None:
         self.layers_hist[n] = self.layers_hist.get(n, 0) + 1
+
+    def merge(self, o: "Stats") -> None:
+        """Fold another worker's stats in: counters add, maxima take the max, histograms add per bucket."""
+        for k, v in o.__dict__.items():
+            if k == "seconds":
+                continue
+            if isinstance(v, dict):
+                d = getattr(self, k)
+                for i, n in v.items():
+                    d[i] = d.get(i, 0) + n
+            elif k.startswith("max_") or k.endswith("_max_step_m"):
+                setattr(self, k, max(getattr(self, k), v))
+            else:
+                setattr(self, k, getattr(self, k) + v)
 
 
 def b64(a: np.ndarray) -> str:
@@ -168,8 +184,33 @@ def shard_name(cy: int) -> str:
     return f"cy{cy:+04d}.jsonl.gz"
 
 
-def build(src: Sources, mat, out: Path, cells=None, progress=None, **kw) -> Stats:
-    """Every cell of the grid, or of `cells`: one box (x0, y0, x1, y1) or a list of boxes (the gate's sample)."""
+def write_row(b: Builder, boxes, land: Path, cy: int) -> None:
+    spans = sorted({(bx[0], bx[2]) for bx in boxes if bx[1] <= cy <= bx[3]})
+    lines = [json.dumps(c, separators=(",", ":"), sort_keys=True) for x0, x1 in spans for c in b.row(cy, x0, x1)]
+    if lines:
+        with open(land / shard_name(cy), "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
+            z.write(("\n".join(lines) + "\n").encode("ascii"))
+
+
+_WORKER: dict = {}
+
+
+def _worker_init(factory, boxes, land, kw) -> None:
+    src, mat = factory()  # this process's own memory maps and database connection
+    _WORKER.update(b=Builder(src, mat, **kw), boxes=boxes, land=land)
+
+
+def _worker_row(cy: int):
+    b = _WORKER["b"]
+    b.stats = Stats()
+    write_row(b, _WORKER["boxes"], _WORKER["land"], cy)
+    return cy, b.stats
+
+
+def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1, factory=None, **kw) -> Stats:
+    """Every cell of the grid, or of `cells`: one box (x0, y0, x1, y1) or a list of boxes (the gate's sample).
+    jobs > 1 (0 = every CPU) splits the rows over forked workers, each calling `factory() -> (src, mat)` for its own
+    sources; the files and stats are the single process's."""
     t0 = time.time()
     b = Builder(src, mat, **kw)
     gx0, gy0, gx1, gy1 = src.cell_range
@@ -181,15 +222,23 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, **kw) -> Stat
     land.mkdir(parents=True, exist_ok=True)
     for old in land.glob("cy*.jsonl.gz"):
         old.unlink()
-    for cy in range(max(bx[3] for bx in boxes), min(bx[1] for bx in boxes) - 1, -1):  # north to south: the
-        # grid's row order, so the memory maps read forward
-        spans = sorted({(bx[0], bx[2]) for bx in boxes if bx[1] <= cy <= bx[3]})
-        lines = [json.dumps(c, separators=(",", ":"), sort_keys=True) for x0, x1 in spans for c in b.row(cy, x0, x1)]
-        if lines:
-            with open(land / shard_name(cy), "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
-                z.write(("\n".join(lines) + "\n").encode("ascii"))
-        if progress:
-            progress(cy, b.stats)
+    rows = list(range(max(bx[3] for bx in boxes), min(bx[1] for bx in boxes) - 1, -1))  # north to south: the
+    # grid's row order, so the memory maps read forward
+    jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(rows)))
+    if jobs > 1 and factory is None:
+        jobs = 1
+    if jobs == 1:
+        for cy in rows:
+            write_row(b, boxes, land, cy)
+            if progress:
+                progress(cy, b.stats)
+    else:
+        ctx = mp.get_context("fork")
+        with ctx.Pool(jobs, initializer=_worker_init, initargs=(factory, boxes, land, kw)) as pool:
+            for cy, st in pool.imap(_worker_row, rows):  # in row order; each worker holds its own maps
+                b.stats.merge(st)
+                if progress:
+                    progress(cy, b.stats)
     b.stats.seconds = round(time.time() - t0, 1)
     return b.stats
 

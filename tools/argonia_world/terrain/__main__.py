@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -51,9 +52,16 @@ def cmd_build(a) -> int:
 
     from tools.argonia_world import db
     from tools.argonia_world.terrain import material as M
-    w = db.open()
-    mat = M.Material(src, M.Water.load(w, src.pad), M.Regions.load(w, src.pad, src.n))
-    st = B.build(src, mat, out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress)
+
+    def factory():
+        s = src if os.getpid() == parent else Sources.load(apron=not a.no_apron)
+        w = db.open()
+        return s, M.Material(s, M.Water.load(w, s.pad), M.Regions.load(w, s.pad, s.n))
+
+    parent = os.getpid()
+    src, mat = factory()
+    st = B.build(src, mat, out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress,
+                 jobs=os.cpu_count() or 1 if a.jobs is None else a.jobs, factory=factory)
     d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in st.__dict__.items()}
     d["cells_arg"] = "sample" if a.sample else a.cells
     d["apron"] = not a.no_apron
@@ -251,6 +259,7 @@ def main(argv=None) -> int:
     b.add_argument("--out", default=str(OUT))
     b.add_argument("--no-apron", action="store_true")
     b.add_argument("--sample", action="store_true")
+    b.add_argument("--jobs", type=int, help="worker processes (default every CPU; 1 = one process)")
     w = sub.add_parser("world")
     w.add_argument("--out", default=str(OUT))
     c = sub.add_parser("check")
