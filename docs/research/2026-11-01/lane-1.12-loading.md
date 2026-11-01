@@ -48,4 +48,9 @@ mist" (L5). **Still owed.** The record fix is committed. No in-game clip has sho
 - Built and on main: size and centre, the ±180 turn, the vanilla fog mesh, and the loading-look journey.
 - Not proved: all of it in game. The last tuning step (target z -45 to -5, x -60 to -53) comes from a still and has
   not been re-shot.
-- Not built: the slow turn and drift (route 6, above). Forcing a screen through the INI didn't work (above).
+- **Built since (route 6):** ArgoniaCore hooks MistMenu::AdvanceMovie (vfunc 5) and, inside the menu's own call
+  after the engine's frame, turns loadScreenModel at 8 deg/s and breathes its scale +-4 % over 20 s
+  (skse/core loadscreen, L2 test core.loadscreen). A drag (mouse buttons, or angleZ changing) holds it for that
+  screen. ArgoniaCore compiles on argonia-play-ie (SKSE-TARGET OK). Unproven in game: whether AdvanceMovie runs
+  during a load, and whether the engine re-sets the model each frame.
+- **The owner will see:** the main menu's fog changes too, because Dear Diary's fog mesh is dropped everywhere. Forcing a screen through the INI didn't work (above).

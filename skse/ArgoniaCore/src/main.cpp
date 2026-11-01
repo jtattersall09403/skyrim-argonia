@@ -6,6 +6,7 @@
 #include "argonia/core/version.h"
 
 namespace argonia::plugin { void PadCursorInstall(); }  // padcursor.cpp: the pad on Wind UI's windows (1.12 §8)
+namespace argonia::plugin { void LoadScreenInstall(); }  // loadscreen.cpp: the loading screen's slow turn (1.12)
 namespace plugin = argonia::plugin;
 namespace ac = argonia::core;
 
@@ -76,6 +77,7 @@ void OnDataLoaded() {
   plugin::CombatDataLoaded();
   plugin::MagicDataLoaded();
   plugin::PadCursorInstall();
+  plugin::LoadScreenInstall();
 }
 
 void OnGameReady(const char* how) {
