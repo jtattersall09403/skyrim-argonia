@@ -199,4 +199,22 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The 1.4 quest under Current with its latest direction first, and under Finished once complete | 1.12 §6 | L4 | proven | journey:journal-dialogue pass out/batch/lane-1.12/20261101T102417/05-journal-dialogue-1-20261101T103412 |
 | The dialogue window in the frame style; Barter opens Wind UI's barter window and returns | 1.12 §6 | L4 | proven | journey:journal-dialogue pass out/batch/lane-1.12/20261101T102417/05-journal-dialogue-1-20261101T103412 |
 | Touch on the phone: the pad overlay's Start opens the windows, its bumpers cycle to our journal, B closes, Back is wait | 1.12 §8 | L4 | proven | infra/stream-client/e2e/steps/ui-1.12-touch.json on the V5 folded through the real stream (Chrome's mobile emulation: real touch events), stills out/touch112/ (t2 windows, t3 journal, t4-t5 closed, t8 wait); a tap on the HUD reaches no view, so the HUD has no button (removed) |
+| A vastei gain shows a shimmer on the bar scaled to the gain (faint for a little, strong for a lot); no "+N" | owner look 1 (tmp/menus-feedback.md) | L5 | owed | lane 1.12-hud (L5: a shimmer is motion) |
+| The health, stamina and magicka bars: slim, darker fills, in tmp/image.png's style; each drains and fills smoothly with a trailing catch-up like Skyrim's stamina bar; nothing flashes while one refills | owner look 1 (tmp/menus-feedback.md) | L5 | owed | lane 1.12-hud (L5: smoothness and flashing only show in motion) |
+| Nothing on the HUD covers the top-left notices or the location name | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-hud |
+| The HUD's minimap: small and square at the top right, drawn from our parchment chart, north up, with the player marker turning as the camera turns | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-hud (the chart and marker from lane 1.12-chart) |
+| The map in game is the old project's parchment chart with the province outline added, beside the old repo's render | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-chart |
+| The land around the player is revealed on the map in game, and the rest is hidden | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-chart |
+| The player marker is Morrowind's style of marker at a modest size, on the map and the minimap | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-chart |
+| Zoomed in, the chart stays sharp; panning and zooming are smooth | owner look 1 (tmp/menus-feedback.md) | L5 | owed | lane 1.12-chart (L5: smoothness only shows in motion) |
+| Leaving the map returns the camera as it was: no first-person hands in third person | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-chart |
+| The map is a pane in the pause menu beside the inventory, stats and magic | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-chart |
+| Tab opens Wind UI's panes with no Dear Diary menu showing first | owner look 1 (tmp/menus-feedback.md) | L5 | owed | lane 1.12-menus (L5: a flash between two screens) |
+| Esc opens our system menu in the frame style, with no Quests entry (quests live only in the journal) | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-menus |
+| Wait, and every other screen the player meets in play, is in the frame style, never Dear Diary's: one sweep at the play camera read by a reader | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-menus |
+| The journal opened from the pause menu is the paper book, the same as on J | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-menus |
+| Item icons show in Wind UI's inventory | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-items |
+| An equipped sword is visible in the character's hand in play | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-items |
+| The starting inventory holds more to try: two more melee weapons, a bow, arrows and a set of armour | owner look 1 (tmp/menus-feedback.md) | L4 | owed | lane 1.12-items |
+| The loading screens: the model large and central, turning slowly with a slow pan and zoom, under a drifting mist | owner look 1 (tmp/menus-feedback.md) | L5 | owed | lane 1.12-loading (L5: motion) |
 | The owner's look at the in-game UI on their devices, in the 1.7 packet | 1.2 §a | L6 | owed | the owner's play test, issue #32 |

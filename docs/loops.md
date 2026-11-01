@@ -65,7 +65,9 @@ prove it**, and the composition is checked only for what composition can break.
    - One finding at a time is the anti-pattern.
 8. **Eyes live in the lane that builds the thing.** Stills and clips go to `reader` agents, never the planner.
    A builder may look at its own stills. Every reader carries the **feel question** beside its checklist:
-   "does this feel like the game; what jars?" **Numbers alone never close a visual change.**
+   "does this feel like the game; what jars?" **Numbers alone never close a visual change.** A screen the player
+   meets (ours, Wind UI's or the engine's) closes only on an in-game still at the play camera; an off-game still
+   never closes it alone (1.12's off-game design loop passed what the owner then found broken, 2026-11-01).
 9. **The harness is tested before a lane uses it.**
    - A change to the bridge, a runner, a scene or the reader brief carries its own test, plus a dry run on a
      known-green scene.
