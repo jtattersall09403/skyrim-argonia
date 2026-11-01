@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: Argonian eggs are usually incubated in pools of Hist sap so that the Hist can help with the hatching.
 LoadingScreenNif: 000C01:Argonia.esm
-InitialScale: 0.0707
+InitialScale: 0.0379
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
   Min: -180
   Max: 180
-InitialTranslationOffset: -2.3, -2.6, -35.2
+InitialTranslationOffset: -55.9, -1.4, -50.5

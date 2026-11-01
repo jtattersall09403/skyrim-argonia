@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: Argonians hatch with an egg-tooth. A cracked egg-tooth on a newborn is seen as a good omen.
 LoadingScreenNif: 000C08:Argonia.esm
-InitialScale: 15.0538
+InitialScale: 8.0645
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
   Min: -180
   Max: 180
-InitialTranslationOffset: -4.5, -9.5, -87.3
+InitialTranslationOffset: -57.1, -5.1, -78.4

@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: On their Naming Day a hatchling licks the Hist and is granted a name.
 LoadingScreenNif: 000C02:Argonia.esm
-InitialScale: 6.5421
+InitialScale: 3.5047
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
   Min: -180
   Max: 180
-InitialTranslationOffset: -10.6, -6.8, -26.7
+InitialTranslationOffset: -60.3, -3.7, -45.9

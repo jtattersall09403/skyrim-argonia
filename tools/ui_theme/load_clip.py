@@ -63,7 +63,9 @@ def main(argv=None) -> int:
         b.machine.desktop("; ".join(r"Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-File',"
                                     rf"'C:\argonia\logs\grab{n}.ps1','{k}'" for k in range(a.loops)), wait=60)
         time.sleep(1.5)  # a still or two of play before the door
-        if door.startswith("moveto="):
+        if door.startswith("save="):
+            b.call("load", door[5:], timeout=300)
+        elif door.startswith("moveto="):
             b.call("console", f"player.moveto {door[7:]}", timeout=120)
         else:
             b.call("console", f"{door}.activate player", timeout=120)

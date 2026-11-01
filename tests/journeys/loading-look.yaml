@@ -1,0 +1,30 @@
+# 1.12 owner look 1, lane 1.12-loading (ledger row "The loading screens: the model large and central, turning slowly
+# with a slow pan and zoom, under a drifting mist", L5). From `bat first-place` (Claywater Station road) on the base
+# save. The scene sets nothing about loading screens. The player goes through a real door (B1, into its house), and
+# then back out to the road (an exterior load, the longer one). A fast burst records each load. A reader judges
+# each clip against the row and the feel question. The round's setup forces the screens: before launch, set
+# [Interface] sForcedLoadScreenEditorID in Documents\My Games\Skyrim Special Edition\Skyrim.ini (the bridge's setini
+# faults on it). Without that, the engine picks among our 12 screens at random.
+id: loading-look
+runner: 1
+crash_risk: low
+scene: first-place
+steps:
+  - name: door-in                             # a door load into the house: the burst runs through the black and the screen
+    do:
+      - {burst: {frames: 90, fps: 15}}
+      - {wait: 1}
+      - {console: "ARG_Ref_ClaywaterStationB1Door.activate player"}
+      - {wait: 6}
+      - {burst_fetch: loading-door-in}
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]
+    reader: [our loading screen with a Black Marsh model large and near the centre of the screen above the fact text, the model not cut off by the screen edge, a mist drifting over it, the model turning or the view slowly panning or zooming across the frames, the fact text readable in its parchment box]
+  - name: road-out                            # an exterior load back to the road: a longer screen
+    do:
+      - {burst: {frames: 90, fps: 15}}
+      - {wait: 1}
+      - {console: "player.moveto ARG_Ref_ClaywaterStationRoadIn"}
+      - {wait: 6}
+      - {burst_fetch: loading-road-out}
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    reader: [our loading screen with a Black Marsh model large and near the centre of the screen above the fact text, the model not cut off by the screen edge, a mist drifting over it, the model turning or the view slowly panning or zooming across the frames, the fact text readable in its parchment box]

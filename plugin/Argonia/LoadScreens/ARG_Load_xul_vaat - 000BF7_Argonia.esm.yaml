@@ -4,9 +4,9 @@ Description:
   TargetLanguage: English
   Value: A xul-vaat, or grave-stake, pins a corpse into the mud so it does not float up when the marsh floods. The dead person's story is carved upon it.
 LoadingScreenNif: 000C03:Argonia.esm
-InitialScale: 1.0219
+InitialScale: 0.5474
 InitialRotation: -10, 0, 30
 RotationOffsetConstraints:
   Min: -180
   Max: 180
-InitialTranslationOffset: -3.5, -9.2, -94.9
+InitialTranslationOffset: -56.5, -4.9, -82.5
