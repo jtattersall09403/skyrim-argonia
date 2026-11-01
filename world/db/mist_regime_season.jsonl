@@ -1,9 +1,9 @@
 {"regime_id":"montane","season_id":"dry","chance":20,"why":"subsidence clears the belt on settled days"}
-{"regime_id":"montane","season_id":"hatching","chance":35,"why":"convection returns"}
-{"regime_id":"montane","season_id":"wet","chance":50,"why":"windward mid-slope rain maximum"}
-{"regime_id":"radiation","season_id":"dry","chance":60,"why":"peaks in the dry/recession season (climatology §2, §3 'heaviest dawn mist')"}
-{"regime_id":"radiation","season_id":"hatching","chance":45,"why":"the turn: nights still often clear"}
-{"regime_id":"radiation","season_id":"wet","chance":25,"why":"monsoon nights are cloudy; fewer calm clear nights"}
-{"regime_id":"sea_fog","season_id":"dry","chance":35,"why":"warm air over cooler shelf water in the dry season"}
-{"regime_id":"sea_fog","season_id":"hatching","chance":30,"why":"the transition"}
+{"regime_id":"montane","season_id":"hatching","chance":30,"why":"convection returns"}
+{"regime_id":"montane","season_id":"wet","chance":35,"why":"windward mid-slope rain maximum"}
+{"regime_id":"radiation","season_id":"dry","chance":35,"why":"peaks in the dry/recession season (climatology §2, §3 'heaviest dawn mist'); Falkreath's Fog 35 is vanilla's top (skyrim-does-it-this-way §7)"}
+{"regime_id":"radiation","season_id":"hatching","chance":32,"why":"the turn: nights still often clear"}
+{"regime_id":"radiation","season_id":"wet","chance":28,"why":"monsoon nights are cloudy; vanilla's marsh FogMA 28 is the floor (§7)"}
+{"regime_id":"sea_fog","season_id":"dry","chance":30,"why":"warm air over cooler shelf water in the dry season"}
+{"regime_id":"sea_fog","season_id":"hatching","chance":25,"why":"the transition"}
 {"regime_id":"sea_fog","season_id":"wet","chance":20,"why":"rain and squalls mix the air"}

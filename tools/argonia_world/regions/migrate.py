@@ -339,9 +339,9 @@ def _clear(w, table: str) -> None:
 
 def weathers_1_15(w) -> dict[str, int]:
     """1.15 §d: the authored weather set, untinted image spaces, the group realisations, the mist regimes and every
-    land region's mist row and weather list (synoptic entries by season global, the regime's mist by hour global)."""
+    land region's mist row and weather list (1-6 entries summing to 100, each by season global; no hour gate)."""
     from tools.argonia_world.regions import weather_seed as S
-    from tools.argonia_world.regions.classify import weather_list
+    from tools.argonia_world.regions.season import region_list
     n = defaultdict(int)
     for iid, edid, tpl, sat, bri, con, why in S.IMAGES:
         w.upsert("image_space", id=iid, edid=edid, template_form_key=tpl, saturation=sat, brightness=bri,
@@ -374,34 +374,29 @@ def weathers_1_15(w) -> dict[str, int]:
                          share=round(1 / len(ws), 4))
                 n["weather_realisation"] += 1
     _clear(w, "mist_regime_season")
-    for rid, (wid, h0, h1, glob, why, seasons) in S.REGIMES.items():
-        w.upsert("mist_regime", id=rid, weather_id=wid, first_hour=h0, end_hour=h1, **{"global": glob}, why=why)
+    for rid, (wid, why, seasons) in S.REGIMES.items():
+        w.upsert("mist_regime", id=rid, weather_id=wid, why=why)
         for sid, (ch, swhy) in seasons.items():
             w.insert("mist_regime_season", regime_id=rid, season_id=sid, chance=ch, why=swhy)
-    regimes = {r["id"]: dict(r) for r in w.query("SELECT * FROM mist_regime")}
     _clear(w, "region_mist")
-    for reg in w.query("SELECT l.id, l.border, e.id eco, e.name, e.weather_group_id, e.misty FROM land_region l "
-                       "LEFT JOIN eco_class e ON e.id = l.eco_class_id ORDER BY l.id"):
+    regions = w.query("SELECT l.id, l.border, e.id eco, e.name, e.weather_group_id, e.misty FROM land_region l "
+                      "LEFT JOIN eco_class e ON e.id = l.eco_class_id ORDER BY l.id")
+    for reg in regions:
         if reg["border"]:
-            w.insert("region_mist", land_region_id=reg["id"], regime="none", hours=None,
+            w.insert("region_mist", land_region_id=reg["id"], regime="none",
                      why="the closed border: no weather list, no mist")
-            n["region_mist"] += 1
-            continue
-        shares = dict(w.query("SELECT region_class_id, cells FROM land_region_class_share WHERE land_region_id = ?",
-                              reg["id"]))
-        regime, why = regime_of(dict(reg), shares)
-        rm = regimes.get(regime)
-        w.insert("region_mist", land_region_id=reg["id"], regime=regime,
-                 hours=f"{rm['first_hour']:02d}-{rm['end_hour']:02d}" if rm else None, why=why)
+        else:
+            shares = dict(w.query("SELECT region_class_id, cells FROM land_region_class_share WHERE "
+                                  "land_region_id = ?", reg["id"]))
+            regime, why = regime_of(dict(reg), shares)
+            w.insert("region_mist", land_region_id=reg["id"], regime=regime, why=why)
         n["region_mist"] += 1
-        for wid, chance, glob in weather_list(w, reg["weather_group_id"]):
+    for reg in regions:  # region_mist decides each list's mist weather and chance (season.group_lists)
+        if reg["border"]:
+            continue
+        for wid, chance, glob in region_list(w, reg["weather_group_id"]):
             w.insert("land_region_weather", land_region_id=reg["id"], weather_id=wid, chance=chance,
                      season_global=glob)
-            n["land_region_weather"] += 1
-        if rm:
-            peak = max(r[0] for r in S.REGIMES[regime][5].values())
-            w.insert("land_region_weather", land_region_id=reg["id"], weather_id=rm["weather_id"], chance=peak,
-                     season_global=rm["global"])
             n["land_region_weather"] += 1
     return dict(n)
 

@@ -22,6 +22,17 @@ VHGT_STEP_UNITS = 8  # one VHGT signed byte step
 CELL_METRES = CELL_UNITS / UNITS_PER_METRE  # 58.49 m
 
 
+# --- weather fog (Skyrim.esm measured, docs/research/2026-11-01/skyrim-does-it-this-way.md §7) -------------------
+# classification -> (near max, (day far p10, p90), (night far low, high)) in units, over 84 WTHR: pleasant p10/p90;
+# cloudy and fog p10/p90 by day and the named fogs' nights (SkyrimFog 15,000 to FogMA/CO/FF 35,000); rain p10/p90.
+# Near: p90 1,200 (pleasant; OvercastRain 1,000-1,200).
+FOG_RANGES_U = {
+    "Pleasant": (1200, (50_000, 100_000), (40_000, 50_000)),
+    "Cloudy": (1200, (9_000, 50_000), (15_000, 35_000)),
+    "Rainy": (1200, (15_000, 39_000), (10_000, 31_000)),
+}
+FOG_THICKEST_U = (25_000, 15_000)  # SkyrimFog, vanilla's thickest fog: day far, night far
+
 def metres_to_units(m: float) -> float:
     return m * UNITS_PER_METRE
 

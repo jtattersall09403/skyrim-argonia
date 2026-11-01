@@ -242,14 +242,32 @@ def derived_colours(cols: dict[tuple[str, str], tuple[int, int, int]]) -> list[s
     return out
 
 
+def fog_outside_vanilla(w, r, fog: bool) -> list[str]:
+    """Where a weather's fog distances leave Skyrim.esm's measured ranges for its classification (decision 0034;
+    skyrim-does-it-this-way §7), and, for a mist regime's weather, where it is thicker than SkyrimFog."""
+    from tools.argonia_world import skyrim_units as su
+    sky = w.query("SELECT classification FROM weather_sky WHERE weather_id = ?", r["id"])
+    if not sky or sky[0]["classification"] not in su.FOG_RANGES_U:
+        return []
+    near_max, day, night = su.FOG_RANGES_U[sky[0]["classification"]]
+    u = {k: su.metres_to_units(r[f"fog_{k}_m"] or 0) for k in ("day_near", "day_far", "night_near", "night_far")}
+    out = [f"fog {k} {u[k]:,.0f} u above vanilla's {near_max:,}" for k in ("day_near", "night_near") if u[k] > near_max]
+    for k, (lo, hi) in (("day_far", day), ("night_far", night)):
+        if fog:
+            lo = max(lo, su.FOG_THICKEST_U[0 if k == "day_far" else 1])
+        if not lo <= u[k] <= hi:
+            out.append(f"fog {k} {u[k]:,.0f} u outside vanilla's {sky[0]['classification']} {lo:,}-{hi:,}")
+    return out
+
+
 @check("weather-slots", "weather", "weather_colour", "weather_sky")
 def weather_slots(w) -> list[str]:
-    """Each of our weathers (a template weather) has every slot at every time of day, a sky row, fog near above 0
-    unless it is the true mist (the radiation regime's weather), and no colour derived from another."""
+    """Each of our weathers (a template weather) has every slot at every time of day, a sky row, fog distances inside
+    Skyrim.esm's measured ranges for its class (a mist regime's fog no thicker than SkyrimFog), and no colour derived
+    from another."""
     from tools.argonia_world.regions.weather_seed import ROLE, TOD
     out = []
-    mist = set(w.values("SELECT weather_id FROM mist_regime WHERE id = 'radiation'")) if "mist_regime" in w.tables \
-        else set()
+    fogs = set(w.values("SELECT weather_id FROM mist_regime")) if "mist_regime" in w.tables else set()
     for r in w.query("SELECT * FROM weather WHERE template_form_key IS NOT NULL ORDER BY id"):
         wid = r["id"]
         cols = {(c["slot"], c["tod"]): _rgb(c["rgb"])
@@ -259,8 +277,7 @@ def weather_slots(w) -> list[str]:
             out.append(f"weather {wid}: {len(missing)} slots not authored ({', '.join(missing[:4])}...)")
         if not w.query("SELECT 1 FROM weather_sky WHERE weather_id = ?", wid):
             out.append(f"weather {wid}: no weather_sky row")
-        if wid not in mist and not ((r["fog_day_near_m"] or 0) > 0 and (r["fog_night_near_m"] or 0) > 0):
-            out.append(f"weather {wid}: fog near is 0 but it is not the true mist")
+        out += [f"weather {wid}: {e}" for e in fog_outside_vanilla(w, r, wid in fogs)]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
     return out
 
@@ -274,25 +291,37 @@ def image_tint(w) -> list[str]:
 
 @check("region-weather", "land_region", "land_region_weather", "region_mist", "season")
 def region_weather(w) -> list[str]:
-    """Every land region has a region_mist row; every non-border region a weather list whose every entry carries a
-    season global, a different list in each season (the chance globals), and its regime's mist weather."""
+    """Every land region has a region_mist row; every non-border region a weather list of 1-6 entries whose chances
+    sum to 100 in the base list and in every season (skyrim-does-it-this-way §7), every entry carrying a season global,
+    a different list in each season, its regime's mist weather, and in a marsh list fog at 28-35 % (§7)."""
     from tools.argonia_world.regions import season as S
     out = []
     ch = S.chances(w)
-    ch.update({g: v for g, _, _, v in S.mist(w)} if "mist_regime" in w.tables else {})
     seasons = S.order(w)
     wins = S.windows(w)
     out += [f"season {s}: {b - a} days, under a 7-day skip" for s, a, b in wins if b - a < 7]
-    for r in w.query("SELECT l.id, l.border, m.regime FROM land_region l LEFT JOIN region_mist m "
-                     "ON m.land_region_id = l.id ORDER BY l.id"):
+    for r in w.query("SELECT l.id, l.border, m.regime, e.weather_group_id g FROM land_region l LEFT JOIN region_mist m "
+                     "ON m.land_region_id = l.id LEFT JOIN eco_class e ON e.id = l.eco_class_id ORDER BY l.id"):
         if r["regime"] is None:
             out.append(f"land_region {r['id']}: no region_mist row")
         if r["border"]:
             continue
-        lst = w.query("SELECT weather_id, season_global FROM land_region_weather WHERE land_region_id = ?", r["id"])
+        lst = w.query("SELECT x.weather_id, x.chance, x.season_global, y.weather_state_id st FROM land_region_weather x "
+                      "JOIN weather y ON y.id = x.weather_id WHERE x.land_region_id = ?", r["id"])
         if not lst:
             out.append(f"land_region {r['id']}: no weather list")
             continue
+        if not 1 <= len(lst) <= 6:
+            out.append(f"land_region {r['id']}: {len(lst)} entries, vanilla's lists hold 1-6")
+        if sum(x["chance"] for x in lst) != 100:
+            out.append(f"land_region {r['id']}: chances sum to {sum(x['chance'] for x in lst)}, not 100")
+        for s in seasons:
+            tot = sum(ch.get(x["season_global"], {}).get(s, 0) for x in lst)
+            if tot != 100:
+                out.append(f"land_region {r['id']}: season {s} chances sum to {tot}, not 100")
+            fog = sum(ch.get(x["season_global"], {}).get(s, 0) for x in lst if x["st"] == "ground-mist")
+            if r["g"] == "marsh" and not 28 <= fog <= 35:
+                out.append(f"land_region {r['id']}: season {s} fog {fog} %, vanilla's marsh lists hold 28-35")
         out += [f"land_region {r['id']}: {x['weather_id']} has no season global" for x in lst if not x["season_global"]]
         by = {s: tuple(ch.get(x["season_global"], {}).get(s) for x in lst) for s in seasons}
         if len(set(by.values())) < len(seasons):

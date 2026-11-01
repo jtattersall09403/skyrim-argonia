@@ -31,22 +31,5 @@ int main() {
   CHECK(on_day(-1, 1, std::nullopt).error() == DateError::bad_month);
   CHECK(on_day(1, 29, Season::wet).error() == DateError::bad_day);
   CHECK(on_day(0, 0, std::nullopt).error() == DateError::bad_day);
-  // mist regimes: their chance inside their hours, 0 outside; radiation mist is a dawn weather and peaks in the dry
-  CHECK(!gen::kMistRegimes.empty());
-  for (const auto& m : gen::kMistRegimes) {
-    for (auto s : {Season::dry, Season::hatching, Season::wet}) {
-      const auto in = mist_settings(s, m.first_hour + 0.5), out = mist_settings(s, m.end_hour + 0.01);
-      for (std::size_t i = 0; i < in.size(); ++i)
-        if (in[i].global == m.global) {
-          CHECK(in[i].value == m.chance[static_cast<std::size_t>(s)]);
-          CHECK(out[i].value == 0);
-        }
-    }
-    if (m.global == "ARG_WMist_radiation") {
-      CHECK(m.first_hour <= 6 && m.end_hour <= 10);
-      CHECK(m.chance[static_cast<std::size_t>(Season::dry)] > m.chance[static_cast<std::size_t>(Season::wet)]);
-    }
-  }
-  CHECK(mist_settings(Season::dry, 12.0).size() == gen::kMistRegimes.size());
   return argonia::test::failures;
 }

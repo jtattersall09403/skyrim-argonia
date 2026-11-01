@@ -29,9 +29,4 @@ struct DayChange { Season season; std::vector<Setting> write; };
 enum class DateError { bad_month, bad_day };
 std::expected<DayChange, DateError> on_day(int month, int day, std::optional<Season> last);
 
-// The mist regimes (1.15 §d.3; region_mist): each ARG_WMist_* global holds its regime's chance for the season inside
-// the regime's hours and 0 outside, so a region's mist weather is drawn only at its hours (radiation mist at dawn).
-// `hour` is GameHour (0..24); the full set every call, so a load or a long wait converges in one call.
-std::vector<Setting> mist_settings(Season s, double hour);
-
 }  // namespace argonia::core::weather

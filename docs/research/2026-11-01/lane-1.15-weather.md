@@ -15,25 +15,31 @@ L4 is owed to the planner's batch (the panel's dawn stills).
   weather, each slot given its own hue character, residual copy-path coincidences nudged a few units (stated in
   the seed's docstring).
 - The LADDER and the one-tint derivation are gone from `regions/api.py`; the sky's motion and fog curve moved from
-  the per-state table to `weather_sky`. Fog near > 0 for all but the true mist (mist 0/150 m).
+  the per-state table to `weather_sky`. Fog distances: see below.
 - Image spaces: 10, tint amount 0 (CHECK caps it at 0.03); saturation and contrast per weather with a why.
 
 ## Mist regimes (`region_mist`, 48 rows)
 Rule (`migrate.regime_of`): mountains and hills >= half the cells -> montane; coastal group -> sea_fog; misty eco
-class -> radiation; else none; border -> none. Result: radiation 29, sea_fog 13, montane 5, border none. No region
-falls to none today (the north's transition is 70% mountains/hills).
-Realised as one weather-list entry per region (`ARG_Weather_mist` / `_sea_fog` / `_montane_haze`) whose global
-`ARG_WMist_<regime>` the SKSE rule sets to the season's chance inside the regime's hours (radiation 04–09, sea fog
-03–11, montane 05–20) and 0 outside; `mist_regime`, `mist_regime_season` hold hours, chances and whys.
+class -> radiation; else none; border -> none. Result: radiation 29, sea_fog 13, montane 5, border none.
+Realised the vanilla way (skyrim-does-it-this-way §7, session 2): the region's mist weather (`mist` / `sea-fog` /
+`montane-haze`) sits in its list at the regime's season chance (`mist_regime_season`), ungated by hour; its own fog
+curve does the dawn work. Radiation 35/32/28 (dry/hatching/wet: marsh lists hold fog at 28–35 % as
+WeatherTundraMarshNoPrecip's FogMA 28 and Falkreath's Fog 35), sea fog 30/25/20, montane 20/30/35. The hour-gated
+`ARG_WMist_*` globals, `mist_regime`'s hours and global, `region_mist.hours` and the C++ `mist_settings` rule are gone.
 
-## Seasons
-Kept the existing per-(group, weather) `ARG_WChance_*` globals rather than one `ARG_Season_*` per season: an RDWT
-global *replaces* the entry's chance, so a 0/1 season global would flatten every chance to 1. Every entry carries
-a global (418 entries). Check `region-weather`: each region's list differs in every season, nothing empty, every
-season window >= 7 days (128/54/183).
-L2: `skse/core` `mist_settings(Season, hour)` with tests in test_weather.cpp (in hours = chance, outside = 0,
-radiation is a dawn regime peaking dry); adapter `ArgoniaCore/src/engine.cpp` SeasonCheck writes them (Windows
-build not run here).
+## Seasons and lists
+Each region list: the group's synoptic weathers (`REALISE`, at most five) plus its mist weather = 6 entries (282 rows),
+chances summing to exactly 100 in the base list and in every season (largest remainder, `season.group_lists`).
+Seasons stay on per-(group, weather) `ARG_WChance_*` globals, the one thing a global carries (seasons are new to
+vanilla, §7); a group whose regions draw two mist regimes is refused. The ground-mist state's vanilla fog forms
+(FogMA, FogCO...) left the region lists; the mist weathers realise it.
+
+## Fog distances (session 2, §7)
+Inside Skyrim.esm's measured ranges per classification (`skyrim_units.FOG_RANGES_U`, `checks.fog_outside_vanilla`
+in `weather-slots`), a mist regime's fog no thicker than SkyrimFog (>= 25,000 u day, 15,000 u night).
+Metres, day near/far, night near/far: mist 0/360/0/215; sea-fog 4/450/2/300; montane-haze 15/700/10/480;
+monsoon-overcast 15/700/10/480; tannin-haze 15/700/10/480 (Cloudy: its 1,100 m day far was over the 50,000 u p90);
+clear-dry 15/1400/5/700; wet-rain 15/400/10/280; squall and storm unchanged.
 
 ## Community Shaders (pinned 1.9.1)
 Its Exponential Height Fog (v1.9.1 source, src/Features/ExponentialHeightFog.*) with volumetric fog. Laid by the
@@ -45,7 +51,8 @@ units, falloff 0.35, density 0.012). Per-weather CS settings exist (`CommunitySh
 
 ## Checks (all in `make world`)
 `weather-slots` (0 derived; scaled copy along the same slot or same time of day, or a mix within a time of day, to
-half a byte), `image-tint` (0 above 0.03), `region-weather` (as above). Measured: 0 / 0 / 0.
+half a byte; fog inside vanilla's ranges), `image-tint` (0 above 0.03), `region-weather` (1–6 entries, 100 in the
+base list and every season, marsh fog 28–35 %, every season different, season windows >= 7 days). Measured: 0 / 0 / 0.
 
 ## What the panel's dawn stills must show
 At 06:30 under the region's dawn weather (`python3 -m tools.argonia_world.regions.panel_weather`): radiation regions
@@ -55,7 +62,9 @@ tab lists Argonia_ExponentialHeightFog.
 
 ## Starting state
 - Done: schema (`weather_colour`, `weather_sky`, `mist_regime`, `mist_regime_season`, tint CHECK, fog_tint dropped),
-  rows via `migrate.py --weathers-1-15`, api.py, season.py tables, C++ rule and tests, CS override, panel table.
-- Owed: `make plugin` to allocate the six new WTHR, four IMGS and three ARG_WMist GLOB form ids; the L4 dawn and
-  noon stills; tuning of colours and CS numbers from those stills; the hourly mist only refreshes when ArgoniaCore's
-  facts change (load, wait, sleep...), not on a game-hour tick — add an hour tick if the stills show it is late.
+  rows via `migrate.py --weathers-1-15`, api.py, season.py tables, CS override, panel table; session 2 applied the
+  Skyrim.esm audit (§7): fog inside vanilla's ranges, lists of 6 summing to 100 per season, marsh fog 28–35 %,
+  hour gate and its C++ removed. Measured: `make world` green (weather-slots 0, image-tint 0, region-weather 0);
+  regions pytest 18 passed; skse/check.sh 36/36.
+- Owed: `make plugin` to allocate the six new WTHR and four IMGS form ids (the WChance globals for the mist weathers
+  are new names too); the L4 dawn and noon stills (`panel_weather`); tuning of colours and CS numbers from them.

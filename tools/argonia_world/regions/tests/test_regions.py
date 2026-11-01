@@ -159,3 +159,38 @@ def test_border_wall_closes_the_polygon():
     refs = api.border_wall_refs(A(), lambda x, y: 3.0)
     assert {r["base"] for r in refs} == {"000021:Skyrim.esm"}
     assert all(r["primitive"]["bounds"][0] >= r["primitive"]["bounds"][1] for r in refs)
+
+
+def test_hundred_sums_to_exactly_100():
+    from tools.argonia_world.regions.season import hundred
+    for raw in ({"a": 1, "b": 1, "c": 1}, {"a": 35, "b": 13.3, "c": 51.7}, {"a": 0.2, "b": 7}):
+        assert sum(hundred(raw).values()) == 100
+    assert hundred({"a": 0}) == {"a": 0}
+
+
+def test_fog_check_holds_vanilla_ranges():
+    """The old mist (180/120 m, below SkyrimFog) and the old clear-dry (3,800 m day far) fail; the seed passes."""
+    from tools.argonia_world import checks as C
+    from tools.argonia_world.regions import weather_seed as S
+
+    class W:
+        def __init__(self, cls):
+            self.cls = cls
+
+        def query(self, *_):
+            return [{"classification": self.cls}]
+
+    def row(wid, dn, df, nn, nf):
+        return {"id": wid, "fog_day_near_m": dn, "fog_day_far_m": df, "fog_night_near_m": nn, "fog_night_far_m": nf}
+
+    assert C.fog_outside_vanilla(W("Cloudy"), row("mist", 0, 180, 0, 120), True)
+    assert C.fog_outside_vanilla(W("Pleasant"), row("clear-dry", 60, 3800, 20, 1400), False)
+    for wid, v in S.WEATHERS.items():
+        assert not C.fog_outside_vanilla(W(S.SKY[wid][0]), row(wid, *v[3:7]), wid in ("mist", "sea-fog",
+                                                                                      "montane-haze")), wid
+
+
+def test_regimes_hold_marsh_fog_in_vanilla_band():
+    from tools.argonia_world.regions import weather_seed as S
+    assert all(28 <= c <= 35 for c, _ in S.REGIMES["radiation"][2].values())
+    assert all(sum(map(len, st.values())) <= 5 for st in S.REALISE.values())  # + the mist weather: <= 6 entries

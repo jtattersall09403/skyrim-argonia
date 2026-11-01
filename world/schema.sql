@@ -5807,19 +5807,16 @@ CREATE TABLE "weather_sky" (
   "why" TEXT NOT NULL
 );
 
--- Home of a mist regime's realisation (1.15 §d.3; climatology §2–§4): the weather it draws, the hours of the day
--- it may be drawn in [first_hour, end_hour), and the chance global ArgoniaCore's weather rule sets in those hours.
+-- Home of a mist regime's realisation (1.15 §d.3; climatology §2–§4): the fog weather a region's list carries at
+-- the season's chance (mist_regime_season), ungated by hour as vanilla's fog entries are (skyrim-does-it-this-way §7);
+-- the weather's own fog curve does the dawn work.
 CREATE TABLE "mist_regime" (
   "id" TEXT NOT NULL PRIMARY KEY CHECK ("id" IN ('radiation', 'sea_fog', 'montane')),
   "weather_id" TEXT NOT NULL UNIQUE REFERENCES "weather"("id"),
-  "first_hour" INTEGER NOT NULL CHECK ("first_hour" BETWEEN 0 AND 23),
-  "end_hour" INTEGER NOT NULL CHECK ("end_hour" BETWEEN 1 AND 24),
-  "global" TEXT NOT NULL UNIQUE,
-  "why" TEXT NOT NULL,
-  CHECK ("first_hour" < "end_hour")
+  "why" TEXT NOT NULL
 );
 
--- Home of a mist regime's chance in a season (inside its hours; 0 outside them).
+-- Home of a mist regime's chance in a season: its fog weather's share of the region's list (the rest is the synoptic weathers).
 CREATE TABLE "mist_regime_season" (
   "regime_id" TEXT NOT NULL REFERENCES "mist_regime"("id"),
   "season_id" TEXT NOT NULL REFERENCES "season"("id"),
@@ -6586,6 +6583,5 @@ CREATE TABLE "entrance_site" (
 CREATE TABLE "region_mist" (
   "land_region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "land_region"("id"),
   "regime" TEXT NOT NULL CHECK ("regime" IN ('radiation','sea_fog','montane','none')),
-  "hours" TEXT,
   "why" TEXT
 );

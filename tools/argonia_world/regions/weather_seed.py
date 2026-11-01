@@ -35,24 +35,26 @@ ROLE = {
 
 # id -> (EditorID, template weather id (references only), state, fog m: day near, day far, night near, night far,
 #        image day, image dawn, image night, why)
+# Fog distances sit inside Skyrim.esm's measured ranges for the weather's class and time of day
+# (skyrim-does-it-this-way §7; checks.weather_fog): the mist no thicker than SkyrimFog (>= 25,000 u day, 15,000 u night).
 WEATHERS = {
-    "clear-dry": ("ARG_Weather_clear_dry", "clear-ff", "clear-humid", 60, 3800, 20, 1400, "day", "dawn", "night",
+    "clear-dry": ("ARG_Weather_clear_dry", "clear-ff", "clear-humid", 15, 1400, 5, 700, "day", "dawn", "night",
                   "dry-season subsidence clear: the NW dry pole's best visibility, a pale hot sky over olive haze "
                   "(climatology §4 NW border; 55 §98 cloudless days belong to dry spells)"),
-    "monsoon-overcast": ("ARG_Weather_monsoon_overcast", "cloudy-ma", "monsoon-downpour", 50, 1600, 20, 800,
+    "monsoon-overcast": ("ARG_Weather_monsoon_overcast", "cloudy-ma", "monsoon-downpour", 15, 700, 10, 480,
                          "overcast", "overcast", "night",
                          "a monsoon break day under a full deck: flat bright light, no rain (55 §98 coverage ladder)"),
-    "wet-rain": ("ARG_Weather_wet_rain", "rain-ma", "monsoon-downpour", 20, 700, 10, 400, "rain", "rain", "night",
+    "wet-rain": ("ARG_Weather_wet_rain", "rain-ma", "monsoon-downpour", 15, 400, 10, 280, "rain", "rain", "night",
                  "wet-season rain: a wall of grey-green water over the interior (55 §98; climatology §2 monsoon)"),
-    "mist": ("ARG_Weather_mist", "fog-ma", "ground-mist", 0, 150, 0, 100, "mist", "mist", "night",
+    "mist": ("ARG_Weather_mist", "fog-ma", "ground-mist", 0, 360, 0, 215, "mist", "mist", "night",
              "radiation mist: pooled over inland water and wet ground after a clear calm night, burning off after "
              "dawn (climatology §2, §4 interior basins; 55 §97)"),
-    "sea-fog": ("ARG_Weather_sea_fog", "fog-co", "ground-mist", 4, 260, 2, 180, "seafog", "seafog", "night",
+    "sea-fog": ("ARG_Weather_sea_fog", "fog-co", "ground-mist", 4, 450, 2, 300, "seafog", "seafog", "night",
                 "advection sea fog on the open coast and up the estuaries (climatology §2, §3 exp(-dCoast/8))"),
-    "montane-haze": ("ARG_Weather_montane_haze", "cloudy-ff", "ground-mist", 30, 900, 15, 500, "montane", "dawn",
+    "montane-haze": ("ARG_Weather_montane_haze", "cloudy-ff", "ground-mist", 15, 700, 10, 480, "montane", "dawn",
                      "night", "the montane cloud-forest belt's haze on the border ranges, summits clear above it "
                      "(climatology §2 altitude, §4 border mountains; 55 §97)"),
-    "tannin-haze": ("ARG_Weather_tannin_haze", "clear-ma", "dry-haze", 40, 1100, 15, 600, "haze", "dawn", "night",
+    "tannin-haze": ("ARG_Weather_tannin_haze", "clear-ma", "dry-haze", 15, 700, 10, 480, "haze", "dawn", "night",
                     "dry-season tannin haze: a brown-gold air over peat water (climatology §4 dry haze)"),
     "squall": ("ARG_Weather_squall", "storm-rain", "sea-squall", 10, 450, 5, 280, "storm", "storm", "night",
                "a sea squall on the Padomaic coast and the delta (climatology §3 storm exposure, §4)"),
@@ -320,43 +322,45 @@ P["storm"] = {
     "dalcDown": ("2B2B1F", "38352D", "2D231D", "080803"),
 }
 
-# the realisations of each group's states after 1.15 (the regime mists leave the synoptic lists; our clear-dry,
-# monsoon-overcast and wet-rain join them). Group -> state -> [weather ids].
+# the realisations of each group's synoptic states after 1.15: at most five weathers a group, so with the region's
+# mist weather a list holds 1-6 entries as vanilla's do (skyrim-does-it-this-way §7: p50 3, max 6). The ground-mist
+# state is realised by the region's mist regime (REGIMES), not here. Group -> state -> [weather ids].
 REALISE = {
-    "coastal": {"clear-humid": ["clear-co", "cloudy-co", "clear-dry"], "ground-mist": ["fog-vt"],
-                "monsoon-downpour": ["rain", "wet-rain", "monsoon-overcast"], "sea-squall": ["squall"],
-                "storm": ["storm", "storm-rain"]},
-    "marsh": {"clear-humid": ["clear-ma", "cloudy-ma"], "dry-haze": ["tannin-haze"], "ground-mist": ["fog-ma"],
-              "monsoon-downpour": ["rain", "wet-rain", "monsoon-overcast"], "storm": ["storm"]},
-    "jungle": {"clear-humid": ["clear", "cloudy"], "dry-haze": ["tannin-haze"], "ground-mist": ["fog"],
-               "monsoon-downpour": ["rain", "wet-rain", "monsoon-overcast"], "storm": ["storm", "storm-rain"]},
+    "coastal": {"clear-humid": ["clear-co", "cloudy-co"], "monsoon-downpour": ["wet-rain"], "sea-squall": ["squall"],
+                "storm": ["storm-rain"]},
+    "marsh": {"clear-humid": ["cloudy-ma", "clear-ma"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
+              "storm": ["storm"]},
+    "jungle": {"clear-humid": ["cloudy", "clear"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
+               "storm": ["storm"]},
     "uplands": {"clear-humid": ["clear-ff", "cloudy-ff", "clear-dry"], "dry-haze": ["tannin-haze"],
-                "ground-mist": ["fog-ff"], "monsoon-downpour": ["rain-ff", "wet-rain"], "storm": ["storm-rain"]},
+                "storm": ["storm-rain"]},
     "lowland": {"clear-humid": ["clear-ff", "cloudy-ma", "clear-dry"], "dry-haze": ["tannin-haze"],
-                "ground-mist": ["fog-ma"], "monsoon-downpour": ["rain", "wet-rain", "monsoon-overcast"],
-                "storm": ["storm"]},
+                "monsoon-downpour": ["wet-rain"]},
 }
 
-# the mist regimes: id -> (weather, first hour, end hour, global, why, {season: (chance, why)})
+# the mist regimes: id -> (weather, why, {season: (chance, why)}). The chance is the fog weather's share of the
+# region's list in that season, ungated by hour: vanilla gates no entry by hour and its fog weather carries its own
+# time-of-day fog (skyrim-does-it-this-way §7); marsh lists hold fog at 28-35 % as WeatherTundraMarshNoPrecip's
+# FogMA 28 and Falkreath's Fog 35 do (§7). Only the seasonal shift rides a global (seasons are new to vanilla, §7).
 REGIMES = {
-    "radiation": ("mist", 4, 9, "ARG_WMist_radiation",
-                  "radiation mist forms on clear calm nights over wet ground and burns off after dawn (climatology §2; "
-                  "the day's sunrise ends 07:00, the mist two hours later)",
-                  {"dry": (60, "peaks in the dry/recession season (climatology §2, §3 'heaviest dawn mist')"),
-                   "hatching": (45, "the turn: nights still often clear"),
-                   "wet": (25, "monsoon nights are cloudy; fewer calm clear nights")}),
-    "sea_fog": ("sea-fog", 3, 11, "ARG_WMist_sea_fog",
-                "advection fog rolls in overnight on the sea breeze's reversal and lifts by late morning "
-                "(climatology §2, §3 exp(-dCoast/8))",
-                {"dry": (35, "warm air over cooler shelf water in the dry season"),
-                 "hatching": (30, "the transition"),
+    "radiation": ("mist",
+                  "radiation mist forms on clear calm nights over wet ground and burns off after dawn (climatology §2); "
+                  "its fog curve (thick at night and dawn, lifting by day) does the dawn work",
+                  {"dry": (35, "peaks in the dry/recession season (climatology §2, §3 'heaviest dawn mist'); "
+                                "Falkreath's Fog 35 is vanilla's top (skyrim-does-it-this-way §7)"),
+                   "hatching": (32, "the turn: nights still often clear"),
+                   "wet": (28, "monsoon nights are cloudy; vanilla's marsh FogMA 28 is the floor (§7)")}),
+    "sea_fog": ("sea-fog",
+                "advection fog rolls in on the sea breeze's reversal (climatology §2, §3 exp(-dCoast/8))",
+                {"dry": (30, "warm air over cooler shelf water in the dry season"),
+                 "hatching": (25, "the transition"),
                  "wet": (20, "rain and squalls mix the air")}),
-    "montane": ("montane-haze", 5, 20, "ARG_WMist_montane",
-                "the cloud-forest belt clings to the massif through the day, thick in rain, clear on settled days "
+    "montane": ("montane-haze",
+                "the cloud-forest belt clings to the massif, thick in rain, clear on settled days "
                 "(climatology §2 altitude, §4; 55 §97)",
                 {"dry": (20, "subsidence clears the belt on settled days"),
-                 "hatching": (35, "convection returns"),
-                 "wet": (50, "windward mid-slope rain maximum")}),
+                 "hatching": (30, "convection returns"),
+                 "wet": (35, "windward mid-slope rain maximum")}),
 }
 
 # land region -> regime rule (1.15 §d.3): mountains and hills at least half the region's cells: montane; a coastal
