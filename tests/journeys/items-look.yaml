@@ -1,0 +1,69 @@
+# 1.12 owner look 1, lane 1.12-items (L4 stills): each kit weapon readied is visibly in the hand at the play camera
+# (third person only: the owner plays third person, owner-brief 2026-10-29). Fixed: an Argonia\ mesh path that
+# nothing makes left the steel sword invisible; items now wear their base-game record's look
+# (docs/research/2026-11-01/lane-1.12-items.md). The kit is the new game's (start.json player.kit), never added here.
+# Step 0 sets only the view: noon, clear weather (Skyrim.esm SkyrimClear 0x81A: a dev view, not the player's sky; our
+# own weathers are all haze or storm). The bridge's booth frames placed objects, never the player, so the vantage is
+# the free camera (tfc) from the play camera's own spot, flown in close behind the weapon (right) side by keys; no
+# turn of the player.
+id: items-look
+runner: 1
+save: ArgoniaWalk
+crash_risk: low
+steps:
+  - name: view
+    do: [{console: "set gamehour to 12"}, {console: "fw 0000081A"}, {pad: "LY=1:400"}, {wait: 3}]
+    expect:
+      - {console: "player.GetItemCount ARG_Weap_SteelSword", contains: ">> 1"}
+      - {console: "player.GetItemCount ARG_Weap_HuntingBow", contains: ">> 1"}
+  - name: sword
+    do:
+      - {console: "player.equipitem ARG_Weap_SteelSword"}
+      - {wait: 2}
+      - {key: "R 150"}
+      - {wait: 3}
+      - {console: "tfc"}
+      - {key: "W 450"}
+      - {key: "D 250"}
+      - {wait: 1}
+    expect: [{console: "player.IsWeaponOut", contains: ">> 2"}]
+    reader: [a weapon is visibly in the hand: a straight steel sword held in the Argonian's right hand, large enough to judge, in daylight]
+  - name: sword-back
+    do: [{console: "tfc"}, {wait: 1}]
+  - name: mace
+    do:
+      - {console: "player.equipitem ARG_Weap_SteelMace"}
+      - {wait: 2}
+      - {console: "tfc"}
+      - {key: "W 450"}
+      - {key: "D 250"}
+      - {wait: 1}
+    expect: [{console: "player.IsWeaponOut", contains: ">> 2"}]
+    reader: [a weapon is visibly in the hand: a flanged steel mace held in the Argonian's right hand, large enough to judge, in daylight]
+  - name: mace-back
+    do: [{console: "tfc"}, {wait: 1}]
+  - name: scimitar
+    do:
+      - {console: "player.equipitem ARG_Weap_SteelScimitar"}
+      - {wait: 2}
+      - {console: "tfc"}
+      - {key: "W 450"}
+      - {key: "D 250"}
+      - {wait: 1}
+    expect: [{console: "player.IsWeaponOut", contains: ">> 2"}]
+    reader: [a weapon is visibly in the hand: a curved scimitar held in the Argonian's right hand, large enough to judge, in daylight]
+  - name: scimitar-back
+    do: [{console: "tfc"}, {wait: 1}]
+  - name: bow
+    do:
+      - {console: "player.equipitem ARG_Weap_HuntingBow"}
+      - {console: "player.equipitem ARG_Ammo_SteelFlightArrow"}
+      - {wait: 2}
+      - {console: "tfc"}
+      - {key: "W 450"}
+      - {key: "D 250"}
+      - {wait: 1}
+    expect: [{console: "player.IsWeaponOut", contains: ">> 2"}]
+    reader: [a weapon is visibly in the hand: a hunting bow held in the Argonian's left hand, large enough to judge, in daylight]
+  - name: bow-back
+    do: [{console: "tfc"}, {wait: 1}]
