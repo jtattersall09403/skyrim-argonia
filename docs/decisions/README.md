@@ -38,6 +38,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0031](0031-the-generated-world-is-its-own-master.md) The generated ground (WRLD, exterior CELL and LAND, later other bulk world outputs) is `ArgoniaWorld.esm`, a master of `Argonia.esm`, built by `make plugin` and checked by hash, never serialised to YAML
 - [0032](0032-every-world-call-is-grounded-in-the-lore.md) Every world call is grounded in the lore dossiers and the imported old research record
 - [0033](0033-the-world-is-rebuilt-water-first.md) The world is rebuilt water-first, by rule, from the lore, once (supersedes 2.W1 and 2.W2's methods; amends 0028's palette)
+- [0034](0034-ask-how-bethesda-did-it-and-do-the-same.md) Before any rule of ours: ask how Bethesda solved it in Skyrim, measure it, do the same (a golden rule for every system)
 - [0029](0029-part-0-is-one-sequence-not-spikes.md) Part 0 is one sequence, not spikes: our stack, the agent's hands (SkyLink as the bridge), the pipeline and the first block; scenes are a save plus batch files; journeys read state and keep stills; no installer until release; no time budgets; a Starting state is the state now
 - [0027](0027-build-in-the-order-of-the-usps.md) Build in the order of what makes Argonia worth playing: world and places, then story and people; combat rides the tuned stack until its map (2.7); the UI in two stages; the world track starts after G4; tools just in time
 

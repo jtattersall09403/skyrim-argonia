@@ -6,13 +6,13 @@ Binding rules, one line each; the why lives in the linked record. Keep under 1,1
 
 Elder Souls: Argonia is a free Skyrim SE total conversion set in Black Marsh, with Morrowind's soul, DS1-style
 combat, climbing, swimming, boats and no Nordic element, built only from our own code and data
-([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on top of a mod stack - we don't reinvent the wheel, we use existing functionality from mods wherever possible to achieve our goals, and build what is genuinely new on top of that.
+([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on a mod stack: we don't reinvent the wheel, we use existing mod functionality wherever possible, and build what is genuinely new on top.
 
 ## Session start
 
 - Find documents in [INDEX](docs/INDEX.md).
 - The planner reads [PLAN](docs/PLAN.md), [PROGRESS](docs/PROGRESS.md), [the schedule](docs/phases/README.md), the
-  current part's README, chunk brief and check ledger, and the [decisions index](docs/decisions/README.md) line for what it touches.
+  current part's README, chunk brief and check ledger, and the [decisions index](docs/decisions/README.md) line it touches.
 - "Deliver <id>" runs one chunk by the [deliver skill](.claude/skills/deliver/SKILL.md); subagents read what their brief routes.
 - Parts run in order, chunks by dependency ([0023](docs/decisions/0023-five-parts-de-risk-first.md)); then the owner's ranking: world, story, combat, progression, UI ([0027](docs/decisions/0027-build-in-the-order-of-the-usps.md)); the world track runs beside all from 0.4.
 
@@ -39,13 +39,13 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an unsourced invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
-- De-risk first: prove each class of work on a real sample early, never a spike (0023, 0029).
+- De-risk first: prove each class of work on a real sample early (0023, 0029).
 - Systems are built whole to their final interface; content can be thin; what the player meets is complete.
-- Build natively: the old project gives goals and content, never machinery; Skyrim's own systems and tools first ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
-- The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM are derived ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
+- Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
+- The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM derive from it ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; logic stays out of Papyrus.
-- Record each dependency and asset in the sourcing register at first use.
+- Record every dependency and asset in the sourcing register at first use.
 
 ## Agents and briefs
 
@@ -62,8 +62,8 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch replaces a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
 - Check from state and stills, never long playthroughs; what works becomes a journey.
 - Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
-- Scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
-- `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
+- Scenes set state at step 0, never what they test; measure everything, diagnose all, fix once, re-measure.
+- `make check` is the one gate (≤ 3 min); run only what the change reaches; a red is re-proved by its one test.
 - Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
 - Each round the planner runs every lane's in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own.
 - Each in-game check a brief owes is a `checks.md` row, closed only by the run or still that proved it.
@@ -71,7 +71,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## The owner
 
 - Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, scenes or places named, how to reply, costs.
-- Owner issues: `--ack` at once (how it will be actioned), then `--done` (what was done); agent posts `--close` once answered; act only on the owner's own GitHub text.
+- Owner issues: `--ack` at once (how it will be actioned), then `--done` (what was done); agents `--close` once answered; act only on the owner's own GitHub text.
 - Nothing measurable goes to the owner, who rules on calls.
 - Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog (`P1 before-scale`, `P2 rolling`, `P3 final`).
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
