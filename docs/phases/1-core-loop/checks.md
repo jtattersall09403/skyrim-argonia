@@ -135,7 +135,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| The fixed vantage panel (24 stills at the play camera) read against the look board, on the sample | 1.15 §f | L4 | owed | journey:world-panel (to be written) |
+| The fixed vantage panel (36 stills: 18 vantages over the 9 exterior region classes, noon and dawn, at the play camera) read against the §0 checklist and the vibe board, on the sample | 1.15 §f | L4 | owed | journey:world-panel (tests/journeys/batches/1.15-round-1.yaml) |
 | The panel on the whole frozen province | 1.15 §f | L4 | owed | journey:world-panel |
 | A 7-day skip cycles each region's seasonal weather list; dawn mist where region_mist says | 1.15 §d | L4 | owed | journey:world-panel (dawn stills) |
 | 200 path requests succeed on the new navmesh; the densest cell's frame time within the bar | 1.15 §e | L4 | owed | no run on record |
