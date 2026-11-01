@@ -89,4 +89,4 @@ Batches (argonia-play-ie / argonia-play, pool pick, this tree deployed each time
 ### Left for the next agent
 - The tuning pass on FrameMovie for Settings and Load (and the MCM list), then message box and lockpicking stills.
 - One reader over the whole sweep, then close the sweep row.
-- The Tab row: close it if 151959's burst reader is clean (see the report's return).
+- Tab: closed. The reader of 151959's burst saw play in frames 00-30 and Wind UI in 31-39, with no Dear Diary picker in any frame. Feel notes for the hud/items lanes: the windows snap in with no ease, the Map pane pops a frame late, and stale toasts are clipped by the Map pane.
