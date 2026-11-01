@@ -64,7 +64,7 @@ def made(fx: dict, ix: dict) -> dict:
     player = {"x": round(hx + PATH + 0.5, 2), "y": round(hy + PATH // 3 + 0.5, 2), "heading": 45}
     half = ix["size"] / 2
     cu, cv = units(ix, half, half)
-    close = {"centreX": player["x"], "centreY": player["y"], "zoom": 6}
+    close = {"centreX": player["x"], "centreY": player["y"], "zoom": 4}  # under ZOOM_MAX (8) by the zoom step
     states = {
         "unexplored": ([], [], {**player, "x": hu, "y": hv, "heading": 0}, {"centreX": cu, "centreY": cv, "zoom": 1}),
         "whole": (walk, [place], player, {"centreX": cu, "centreY": cv, "zoom": 1}),

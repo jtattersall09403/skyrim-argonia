@@ -9,6 +9,7 @@ export interface CellIndex {
   // label: [x0, y0, x1, y1] of the chart's lettering; a city (lettered by the sketch) also has its name and cell
   places?: Record<string, { city: boolean; label: Rect | null; name?: string; cell?: [number, number] }>;
   pins?: Record<string, string>;                           // a place kind -> its glyph's path (100-unit box)
+  pyramid?: { tile: number; levels: number[] };            // the tile pyramid (tools/chart/pyramid.py): level sides
 }
 
 // Where the view letters a place in screen px, or null. The chart's own lettering is kept where it reads (at least
@@ -83,7 +84,48 @@ export function revealRects(ix: CellIndex, revealed: CellKey[]) {
   return { rects, unknown };
 }
 
-export const ZOOM_MIN = 1, ZOOM_MAX = 24;     // the schema allows 0.05..64; a chart below 1 or past 24 shows nothing new
+// The schema allows 0.05..64. Past ZOOM_MAX the largest render's pixels would show (1.12 look 1: "too low resolution
+// when you zoom in"): 8 keeps an 8192-px render at about one pixel per screen pixel on a 1080p sheet.
+export const ZOOM_MIN = 1, ZOOM_MAX = 8;
+
+// The land the player has seen (1.12 look 1, the owner: the discovered land round the player): every cell stood in
+// uncovers a soft disc REVEAL cells in radius about it, as Morrowind's map fills in round where you walk. A cell is
+// about 58 m, so the disc is some 230 m across the land each way.
+export const REVEAL = 4;
+// The discs in master px: [centre x, centre y, radius]; the view fades each from full inside to none at the rim.
+export function revealDiscs(ix: CellIndex, revealed: CellKey[], radius = REVEAL): [number, number, number][] {
+  const [, , w] = ix.cells["0,0"];
+  return revealed.map((c) => { const [x, y] = toPx(ix, c.x + 0.5, c.y + 0.5); return [x, y, (radius + 0.5) * w]; });
+}
+
+// The pyramid level to draw at a scale (screen px per master px, times the device ratio): the smallest level whose
+// pixels are at least one to a screen pixel, else the largest.
+export function levelFor(levels: number[], size: number, scale: number): number {
+  for (const s of levels) if (s >= size * scale * 0.95) return s;
+  return levels[levels.length - 1];
+}
+// The tiles of a level that a w x h viewport shows under transform t: [column, row].
+export function visibleTiles(level: number, tile: number, size: number, t: { scale: number; tx: number; ty: number },
+  w: number, h: number): [number, number][] {
+  const k = (tile * size) / level * t.scale, n = level / tile, out: [number, number][] = [];   // a tile's screen side
+  const c0 = Math.max(0, Math.floor(-t.tx / k)), c1 = Math.min(n - 1, Math.floor((w - t.tx) / k));
+  const r0 = Math.max(0, Math.floor(-t.ty / k)), r1 = Math.min(n - 1, Math.floor((h - t.ty) / k));
+  for (let r = r0; r <= r1; r++) for (let c = c0; c <= c1; c++) out.push([c, r]);
+  return out;
+}
+
+// One frame of the glide toward a target view (1.12 look 1: pan and zoom smooth on every device): the centre moves
+// and the zoom scales a share 1 - e^(-dt/TAU) of the way, so a key's step, a trigger's repeat or a stick glides
+// rather than jumps. Returns the target once within a hair of it.
+export const TAU_MS = 90;
+export function glide(v: ChartView, target: ChartView, dtMs: number): ChartView {
+  const a = 1 - Math.exp(-Math.max(0, dtMs) / TAU_MS);
+  const zoom = Math.exp(Math.log(v.zoom) + (Math.log(target.zoom) - Math.log(v.zoom)) * a);
+  const next = { centreX: v.centreX + (target.centreX - v.centreX) * a, centreY: v.centreY + (target.centreY - v.centreY) * a, zoom };
+  const near = Math.abs(next.centreX - target.centreX) < 1e-3 && Math.abs(next.centreY - target.centreY) < 1e-3 &&
+    Math.abs(next.zoom / target.zoom - 1) < 1e-3;
+  return near ? { ...target } : next;
+}
 
 // Master px -> screen px for a view of a w x h viewport: zoom 1 fits the whole canvas in the sheet (contain: the
 // province top to bottom with nothing cut off, owner play test 1 item 9; paper shows at the sides); a closer zoom

@@ -11,7 +11,7 @@ import {
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
-import { type CellIndex, hits, labelAt, placeLabels, pan, panIntent, revealRects, toPx, toUnits, toward, transform, ZOOM_MAX } from "../chart/geom.ts";
+import { type CellIndex, glide, hits, labelAt, levelFor, placeLabels, pan, panIntent, REVEAL, revealDiscs, revealRects, toPx, toUnits, toward, transform, visibleTiles, ZOOM_MAX } from "../chart/geom.ts";
 import { discTransform, onDisc, REACH } from "../hud/minimap.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
@@ -348,4 +348,28 @@ test("the dialogue window: frame style, Barter as a service, Goodbye", () => {
   assert.doesNotMatch(html, /class="[^"]*\bpaper\b/, "no parchment");
   assert.ok(intentsIn(html).some((i) => JSON.stringify(i) === JSON.stringify(fx("dialogue").intents.barter)), "Barter sends dialogue.service");
   assert.ok(!dialogue(st.forced.body).includes("Barter"), "no Barter for a speaker without the service");
+});
+
+test("chart look 1: the seen land is a disc about each revealed cell; the pyramid level fits the zoom; the glide settles", () => {
+  const cells: CellIndex["cells"] = {};
+  for (let x = -2; x <= 2; x++) for (let y = -2; y <= 2; y++) cells[`${x},${y}`] = [100 + 32 * x, 100 - 32 * y, 32, 32];
+  const ix: CellIndex = { size: 200, cells };
+  // one cell stood in uncovers REVEAL cells round it (1.12's single cell was 7 px on the whole chart: never seen)
+  assert.deepEqual(revealDiscs(ix, [{ x: 0, y: 0 }]), [[116, 116, (REVEAL + 0.5) * 32]]);
+  assert.ok(REVEAL >= 3);
+  // the level: the smallest whose pixels reach one per screen pixel, else the largest
+  assert.equal(levelFor([1024, 2048, 4096], 4096, 0.22), 1024);
+  assert.equal(levelFor([1024, 2048, 4096], 4096, 0.45), 2048);
+  assert.equal(levelFor([1024, 2048, 4096], 4096, 8 * 0.22), 4096);
+  // the tiles a view shows: the whole chart at scale 1 in its own size is every tile; a corner view is one
+  assert.equal(visibleTiles(1024, 512, 200, { scale: 1, tx: 0, ty: 0 }, 200, 200).length, 4);
+  assert.deepEqual(visibleTiles(1024, 512, 200, { scale: 4, tx: 0, ty: 0 }, 100, 100), [[0, 0]]);
+  // the glide: part way after one frame, at the target after a while, never past it
+  const a = { centreX: 0, centreY: 0, zoom: 1 }, b = { centreX: 10, centreY: -4, zoom: 4 };
+  const one = glide(a, b, 16);
+  assert.ok(one.centreX > 0 && one.centreX < 10 && one.zoom > 1 && one.zoom < 4);
+  let v = a;
+  for (let i = 0; i < 120; i++) v = glide(v, b, 16);
+  assert.deepEqual(v, b);
+  assert.ok(ZOOM_MAX <= 8, "past the largest render's pixels the chart goes soft");
 });

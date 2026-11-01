@@ -27,13 +27,15 @@ struct Spec {
   bool modal;  // takes focus and pauses; one modal at a time
   int order;
 };
-inline constexpr std::array<Spec, 6> kViews{{
+inline constexpr std::array<Spec, 7> kViews{{
     {"hud", "argonia/hud/index.html", false, 0},
     {"dialogue", "argonia/dialogue/index.html", true, 10},
     {"journal", "argonia/journal/index.html", true, 10},
     {"chart", "argonia/chart/index.html", true, 10},
     {"sitting", "argonia/sitting/index.html", true, 10},
     {"magic", "argonia/magic/index.html", true, 10},  // our magic pane, for Wind UI's magic window (1.12)
+    // the map pane among Wind UI's windows (1.12 look 1): the chart docked and display-only, shown while they are open
+    {"chartpane", "argonia/chart/pane.html", false, 5},
 }};
 const Spec* spec(std::string_view id);
 inline constexpr std::string_view kPushFunction = "argoniaPush";      // bridge.ts: window.argoniaPush(text)

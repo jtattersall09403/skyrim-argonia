@@ -58,13 +58,16 @@ void the_table() {
   std::set<std::string_view> ids;
   for (const auto& s : kViews) {
     ids.insert(s.id);
-    CHECK(s.page == "argonia/" + std::string(s.id) + "/index.html");
+    // each view its own page, but the map pane: the chart's page laid out docked (pane.html, 1.12 look 1)
+    CHECK(s.page == (s.id == "chartpane" ? std::string("argonia/chart/pane.html")
+                                         : "argonia/" + std::string(s.id) + "/index.html"));
   }
   CHECK(ids.size() == kViews.size());
   CHECK(spec("hud") && !spec("hud")->modal);
   CHECK(spec("dialogue") && spec("dialogue")->modal);
   CHECK(!spec("inventory"));
   CHECK(spec("magic") && spec("magic")->modal);
+  CHECK(spec("chartpane") && !spec("chartpane")->modal);  // display only: never takes the focus from Wind UI
 }
 
 void push_waits_for_ready() {

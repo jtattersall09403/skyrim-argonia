@@ -72,6 +72,21 @@ void Apply(const std::vector<ac::views::Op>& ops) {
   }
 }
 
+// The map pane (1.12 look 1, the owner: our map as one of the panes beside the inventory, stats and magic): while
+// Wind UI's pause windows are open, the chart shows docked in the space they leave (chart/pane.html lays it out);
+// never over its trade, container or crafting windows. Display only: the full chart opens by the taskbar's Map, M or
+// the pad's pane cycle.
+bool ChartPaneWanted() {
+  auto* ui = RE::UI::GetSingleton();
+  if (!ui || !ui->IsMenuOpen(RE::BSFixedString("WindUIMenu"))) return false;
+  for (auto m : {RE::ContainerMenu::MENU_NAME, RE::BarterMenu::MENU_NAME, RE::GiftMenu::MENU_NAME,
+                 RE::CraftingMenu::MENU_NAME})
+    if (ui->IsMenuOpen(m)) return false;
+  return true;
+}
+void OpenChart();
+void ShowChartPane();
+
 void OnDomReady(prisma::View h) {
   SKSE::GetTaskInterface()->AddTask([h] {
     auto& c = Get();
@@ -80,6 +95,7 @@ void OnDomReady(prisma::View h) {
     if (!id) return;
     SKSE::log::info("views: {} ready", *id);
     Apply(c.view_host.ready(*id));
+    if (*id == "chartpane" && !ChartPaneWanted()) Apply({{ac::views::OpKind::hide, "chartpane", {}}});
   });
 }
 
@@ -226,6 +242,20 @@ void OpenChart() {
   Push("chart", std::move(*json));
 }
 
+// The map pane: the chart's state pushed to the docked view and shown while Wind UI's windows want it, else hidden.
+void ShowChartPane() {
+  if (!ChartPaneWanted()) {
+    Apply({{ac::views::OpKind::hide, "chartpane", {}}});
+    return;
+  }
+  auto json = ac::msg::encode(ac::views::chart_state(Get().state.chart, ac::views::remembered_chart(ReadLayout()),
+                                                     DiscoveredPlaces(), PlayerMark()));
+  if (!json) return;
+  Push("chartpane", std::move(*json));
+  Apply({{ac::views::OpKind::show, "chartpane", {}}});
+  SKSE::log::info("views: the map pane shown beside Wind UI's windows");
+}
+
 // The player's cell, if it is an exterior cell of ARG_Province, joins the revealed set (logged when new).
 void MarkPlayerCell(std::string_view why) {
   auto* p = RE::PlayerCharacter::GetSingleton();
@@ -351,6 +381,11 @@ void PushHudState(std::optional<std::int64_t> gained = std::nullopt);
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
+    if (e && e->menuName == RE::BSFixedString("WindUIMenu"))
+      SKSE::GetTaskInterface()->AddTask([] {
+        std::lock_guard l(Get().lock);
+        ShowChartPane();
+      });
     if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
       SKSE::GetTaskInterface()->AddTask([] {
         std::lock_guard l(Get().lock);
@@ -576,6 +611,16 @@ void CloseByControl(const RE::ButtonEvent& b, const RE::UserEvents& ue) {
   SKSE::GetTaskInterface()->AddTask([i = std::move(*intent)] { ViewIntent(i); });
 }
 
+// The map key opens our chart only in the world: no view of ours and no menu that pauses the game is open.
+bool ChartKeyOpens() {
+  {
+    std::lock_guard l(Get().lock);
+    if (Get().view_host.modal()) return false;
+  }
+  auto* ui = RE::UI::GetSingleton();
+  return ui && !ui->GameIsPaused() && !ui->IsMenuOpen(RE::MapMenu::MENU_NAME);
+}
+
 // --- the journal key ---------------------------------------------------------------------------------------------
 class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
  public:
@@ -604,6 +649,17 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
         if (b->IsUp()) const_cast<RE::ButtonEvent*>(b)->GetRuntimeData().heldDownSecs = 3600.0f;
       }
       if (b->IsDown() && !swallow) CloseByControl(*b, *ue);
+      // The map key in the world opens our chart directly and never the engine's MapMenu (1.12 look 1): the MapMenu
+      // switched the camera to the world map and, hidden under the chart, handed it back with the first-person hands
+      // in third person. The press loses its user event, so the menu controls never open MapMenu.
+      if (b->IsDown() && !swallow && b->QUserEvent() == ue->quickMap && ChartKeyOpens()) {
+        const_cast<RE::BSFixedString&>(b->QUserEvent()) = "";
+        SKSE::log::info("views: the map key opens the chart (MapMenu never opens)");
+        SKSE::GetTaskInterface()->AddTask([] {
+          std::lock_guard l(Get().lock);
+          OpenChart();
+        });
+      }
     }
     return RE::BSEventNotifyControl::kContinue;
   }

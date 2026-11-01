@@ -31,7 +31,7 @@ steps:
     expect: [{moved: {gt: 900}}, {log: {name: ArgoniaCore, contains: "revealed (cell change)"}, within: 10}]
   - name: chart-open                          # M opens our chart; the push carries the player
     do: [{key: "M 120"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: MapMenu}}, {read: [core, Views], path: value, contains: "chart ready open"}]
+    expect: [{log: {name: ArgoniaCore, contains: "the map key opens the chart"}, within: 6}, {read: [core, Views], path: value, contains: "chart ready open"}]   # MapMenu never opens (1.12 look 1)
     reader: [our parchment chart in the dark green-black frame with gold-green trim, the player's red arrow at the player's place, warmer revealed land along the walked road, no quest or other markers]
   - name: chart-zoomed-in                     # the reveal is a few cells of ~126 across: seen zoomed in at the player
     do: [{pad: "RT:250 RT:250 RT:250 RT:250 RT:250 RT:250 RT:250 RT:250"}, {wait: 1}]
@@ -43,7 +43,7 @@ steps:
     do: [{pad: "A:150"}, {wait: 2}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}, {read: [core, Views], path: value, contains: "chart ready open"}]
   - name: chart-closed
-    do: [{close_menu: MapMenu}]
+    do: [{key: "M 120"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]
   - name: reveal-holds-after-save-and-load    # the CHRT family: the count after the load is the count before it
     do: [{console: "save chartminimap"}, {wait: 3}, {console: "load chartminimap"}, {wait: 15}]
@@ -59,4 +59,4 @@ steps:
     expect: [{read: [core, Views], path: value, contains: "chart ready open"}]
     reader: [our chart now marks Claywater Station by its name, the player's arrow beside it, no other place marked]
   - name: chart-with-the-place-closed
-    do: [{close_menu: MapMenu}]
+    do: [{key: "M 120"}, {wait: 2}]

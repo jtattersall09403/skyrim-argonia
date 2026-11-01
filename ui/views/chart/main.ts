@@ -1,89 +1,135 @@
-// The chart in the browser: the three layers out/chart renders (base, revealed, ink; 2.W4 §c) stacked on a canvas,
-// the revealed layer masked to the cells chart.state lists, with a soft edge (the old chart's long fade); over them
-// the discovered places' markers and the player's, turned to the heading (1.12 §5).
-// Drag, pinch, the wheel, WASD, +/- and the pad's right stick and triggers move a local view while the gesture
-// lasts; when it settles the view is sent as chart.pan, and ArgoniaCore keeps it between openings.
+// The chart in the browser (1.12 §5, look 1): the render's tile pyramid (tools/chart/pyramid.py) drawn on one canvas
+// the size of the sheet, from the level nearest one pixel to one at the zoom, so it stays sharp close in and draws
+// only what shows. Two flattened layers: `sketch` everywhere (the coast, rivers, roads and cities over the paper) and
+// `full` (the explored land's tint, woods, marsh and tracks) through a soft mask of the land the player has seen.
+// Over them the discovered places' markers and the player's, turned to the heading.
+// Drag, pinch, the wheel, WASD, +/- and the pad's right stick and triggers move a target view; each frame the view
+// glides toward it (geom.ts glide), and when it settles the view is sent as chart.pan, kept between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, type LabelBox, labelAt, placeLabels, pan, panIntent, revealRects, sketchCities, toPx, toward, transform } from "./geom.ts";
+import { type CellIndex, type LabelBox, glide, labelAt, levelFor, placeLabels, pan, panIntent, revealDiscs, sketchCities, toPx,
+  toward, transform, visibleTiles, ZOOM_MAX, ZOOM_MIN } from "./geom.ts";
 import { render } from "./render.ts";
 
-declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex } }
+declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex; ARGONIA_CHART_PANE?: boolean } }
+// The map pane (pane.html): the same chart docked beside Wind UI's windows, display only, close in round the player.
+const PANE = window.ARGONIA_CHART_PANE === true;
+if (PANE) document.body.classList.add("pane");
+const PANE_ZOOM = 8;   // the pane is short: close in, the land round the player
 
 const root = document.getElementById("view")!;
 const ix = window.ARGONIA_CHART_INDEX;
-// The sketch ids the bundle knows: each names the folder of its three layers (made at install, decision 0014).
-const SKETCHES: Record<string, string> = { "chart.sketch": "assets" };
+const PYR = ix.pyramid ?? { tile: 512, levels: [1024] };
+// The sketch ids the bundle knows: each names the folder of its tiles (made at install, decision 0014).
+const SKETCHES: Record<string, string> = { "chart.sketch": "assets/t" };
 
-const load = (src: string) => new Promise<HTMLImageElement>((ok, bad) => {
-  const i = new Image(); i.onload = () => ok(i); i.onerror = () => bad(new Error(`chart: cannot load ${src}`)); i.src = src;
-});
-const layers = new Map<string, Promise<{ base: HTMLImageElement; revealed: HTMLImageElement; ink: HTMLImageElement }>>();
-function layersFor(id: string) {
-  if (!layers.has(id)) {
-    const dir = SKETCHES[id];
-    if (!dir) return Promise.reject(new Error(`chart: unknown sketch '${id}'`));
-    layers.set(id, Promise.all(["base", "revealed", "ink"].map((n) => load(`${dir}/${n}-2048.png`)))
-      .then(([base, revealed, ink]) => ({ base, revealed, ink })));
+// Tiles load on first sight and stay; a tile not yet loaded is drawn from the nearest coarser level that is.
+const tiles = new Map<string, HTMLImageElement | null>();   // null: loading
+function tileImg(dir: string, layer: string, level: number, c: number, r: number): HTMLImageElement | undefined {
+  const k = `${dir}/${layer}/${level}/${c}-${r}`;
+  const have = tiles.get(k);
+  if (have) return have;
+  if (have === undefined) {
+    tiles.set(k, null);
+    const i = new Image();
+    i.onload = () => { tiles.set(k, i); drawSoon(); };
+    i.onerror = () => window.argonia.errors.push(`chart: cannot load ${k}.png`);
+    i.src = `${k}.png`;
   }
-  return layers.get(id)!;
+  return undefined;
 }
 
 let state: ChartState | null = null;
 let view: ChartView = { centreX: 0, centreY: 0, zoom: 1 };
-let masked: HTMLCanvasElement | null = null;
-let maskedFor = "";
+let target: ChartView = view;
+let mask: HTMLCanvasElement | null = null;   // the seen land, one canvas over the whole chart
+let maskFor = "";
 let pushKey = "";          // the sketch and revealed cells of the last push: the mask is rebuilt only when they change
-let frame = 0;
-// Pointer events can outrun the frame rate: draw at most once a frame.
-const drawSoon = () => { if (!frame) frame = requestAnimationFrame(() => { frame = 0; draw(); }); };
-let imgs: { base: HTMLImageElement; revealed: HTMLImageElement; ink: HTMLImageElement } | null = null;
+let frame = 0, lastT = 0, checked = false;
+const drawSoon = () => { if (!frame) frame = requestAnimationFrame(tick); };
+function tick(t: number): void {
+  frame = 0;
+  const dt = lastT ? Math.min(100, t - lastT) : 16;
+  lastT = t;
+  if (!dragging) view = glide(view, target, dt);
+  draw();
+  if (view.centreX !== target.centreX || view.centreY !== target.centreY || view.zoom !== target.zoom) drawSoon();
+  else lastT = 0;
+}
 
-// The revealed layer through the cells: one mask pixel per cell, smoothed up in two steps (a soft edge about a
-// cell wide), then the layer drawn "source-in".
-function mask(revealed: HTMLImageElement, s: ChartState): HTMLCanvasElement {
-  const n = Math.round(ix.size / ix.cells["0,0"][2]);
-  const small = document.createElement("canvas"); small.width = small.height = n;
-  const c = small.getContext("2d")!;
-  c.fillStyle = "#fff";
-  const { rects, unknown } = revealRects(ix, s.revealed);
-  if (unknown.length) window.argonia.errors.push(`chart: ${unknown.length} revealed cells not in the index`);
-  const k = n / ix.size;
-  for (const [x, y, w, h] of rects) c.fillRect(x * k, y * k, w * k, h * k);
-  let src: HTMLCanvasElement = small;
-  for (const side of [n * 4, revealed.width]) {
-    const up = document.createElement("canvas"); up.width = up.height = side;
-    const u = up.getContext("2d")!; u.imageSmoothingEnabled = true; u.imageSmoothingQuality = "high";
-    // The old chart's long, gradual fade (2.W4's demo blurs 20 master px); a web view without canvas filters keeps
-    // the bilinear edge alone.
-    if (side !== n * 4 && "filter" in u) u.filter = `blur(${Math.round(side / 256)}px)`;
-    u.drawImage(src, 0, 0, side, side); src = up;
+// The seen land: a soft disc about each revealed cell (geom.ts revealDiscs), full inside and fading to nothing at the
+// rim (the old chart's long fade), on a canvas of MASK px a side over the whole chart.
+const MASK = 1024;
+function buildMask(s: ChartState): HTMLCanvasElement {
+  const m = document.createElement("canvas"); m.width = m.height = MASK;
+  const c = m.getContext("2d")!;
+  const k = MASK / ix.size;
+  const unknown = s.revealed.filter((r) => !ix.cells[`${r.x},${r.y}`]);
+  if (unknown.length) console.warn(`chart: ${unknown.length} revealed cells not in the index`);
+  for (const [x, y, rad] of revealDiscs(ix, s.revealed)) {
+    const g = c.createRadialGradient(x * k, y * k, 0, x * k, y * k, rad * k);
+    g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.55, "rgba(255,255,255,1)"); g.addColorStop(1, "rgba(255,255,255,0)");
+    c.fillStyle = g;
+    c.beginPath(); c.arc(x * k, y * k, rad * k, 0, 2 * Math.PI); c.fill();
   }
-  const u = src.getContext("2d")!;
-  u.globalCompositeOperation = "source-in";
-  u.drawImage(revealed, 0, 0);
-  return src;
+  return m;
+}
+
+let seen: HTMLCanvasElement | null = null;   // the explored layer through the mask, the sheet's size
+function layer(c: CanvasRenderingContext2D, dir: string, name: string, level: number, t: { scale: number; tx: number; ty: number },
+  w: number, h: number): void {
+  const T = PYR.tile, side = (T * ix.size) / level;   // a tile's side in master px
+  for (const [col, row] of visibleTiles(level, T, ix.size, t, w, h)) {
+    const x = t.tx + col * side * t.scale, y = t.ty + row * side * t.scale, d = side * t.scale;
+    const img = tileImg(dir, name, level, col, row);
+    if (img) { c.drawImage(img, x, y, d + 0.5, d + 0.5); continue; }   // half a px over: no seams between tiles
+    // not loaded yet: the part of a coarser loaded tile that covers it
+    for (const lv of PYR.levels.filter((l) => l < level).reverse()) {
+      const f = level / lv, pc = Math.floor(col / f), pr = Math.floor(row / f);
+      const up = tileImg(dir, name, lv, pc, pr);
+      if (!up) continue;
+      const sub = T / f;
+      c.drawImage(up, (col - pc * f) * sub, (row - pr * f) * sub, sub, sub, x, y, d + 0.5, d + 0.5);
+      break;
+    }
+  }
 }
 
 function draw(): void {
-  if (!state || !imgs) return;
+  if (!state) return;
   const canvas = root.querySelector<HTMLCanvasElement>("canvas.layers");
   if (!canvas) return;
   const w = canvas.clientWidth, h = canvas.clientHeight, dpr = window.devicePixelRatio || 1;
   if (canvas.width !== Math.round(w * dpr)) canvas.width = Math.round(w * dpr);
   if (canvas.height !== Math.round(h * dpr)) canvas.height = Math.round(h * dpr);
-  if (maskedFor !== pushKey) { masked = mask(imgs.revealed, state); maskedFor = pushKey; }
+  if (maskFor !== pushKey) { mask = buildMask(state); maskFor = pushKey; }
+  const dir = SKETCHES[state.sketch];
+  if (!dir) { window.argonia.errors.push(`chart: unknown sketch '${state.sketch}'`); return; }
   const t = transform(ix, view, w, h);
+  const level = levelFor(PYR.levels, ix.size, t.scale * dpr);
   const c = canvas.getContext("2d")!;
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
-  c.clearRect(0, 0, canvas.width, canvas.height);   // the margins show the sheet's paper (the theme's .paper mottle)
+  c.clearRect(0, 0, w, h);   // the margins show the sheet's paper (the theme's .paper mottle)
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
-  c.setTransform(dpr * t.scale, 0, 0, dpr * t.scale, dpr * t.tx, dpr * t.ty);
-  c.drawImage(imgs.base, 0, 0, ix.size, ix.size);
-  c.drawImage(masked!, 0, 0, ix.size, ix.size);
-  c.drawImage(imgs.ink, 0, 0, ix.size, ix.size);
+  layer(c, dir, "sketch", level, t, w, h);
+  if (state.revealed.length && mask) {
+    seen ??= document.createElement("canvas");
+    if (seen.width !== canvas.width || seen.height !== canvas.height) { seen.width = canvas.width; seen.height = canvas.height; }
+    const s = seen.getContext("2d")!;
+    s.setTransform(dpr, 0, 0, dpr, 0, 0);
+    s.globalCompositeOperation = "source-over";
+    s.clearRect(0, 0, w, h);
+    s.imageSmoothingEnabled = true;
+    layer(s, dir, "full", level, t, w, h);
+    s.globalCompositeOperation = "destination-in";
+    s.drawImage(mask, t.tx, t.ty, ix.size * t.scale, ix.size * t.scale);
+    s.globalCompositeOperation = "source-over";
+    c.setTransform(1, 0, 0, 1, 0, 0);
+    c.drawImage(seen, 0, 0);
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    if (!checked) selfCheck(s, t, dpr, w, h);
+  }
   // Where the sheet is wider than the chart, feather the chart's straight edges into the paper (destination-out).
-  c.setTransform(dpr, 0, 0, dpr, 0, 0);
   const x0 = t.tx, x1 = t.tx + ix.size * t.scale, y0 = t.ty, y1 = t.ty + ix.size * t.scale;
   const f = Math.max(24, 3 * parseFloat(getComputedStyle(document.documentElement).fontSize));
   c.globalCompositeOperation = "destination-out";
@@ -144,28 +190,59 @@ function draw(): void {
   document.body.dataset.ready = "1";
 }
 
-let settle = 0;
-function moved(next: ChartView, now = false): void {
-  view = next; draw();
+// The reveal's own proof in game (1.12 look 1: 1.12's journey read the native log, never the pixels). The tiles are
+// file images, which may taint the sheet for reading back, so the proof reads canvases of our own making: the mask
+// must be opaque at the player and clear far from every revealed cell, and the web view must honour the
+// "destination-in" the explored layer is cut with (a solid square cut by the mask's left half keeps only that half).
+// The verdict goes to the console, which ArgoniaCore logs ("views: chart console: chart: reveal ...").
+function selfCheck(_s: CanvasRenderingContext2D, _t: { scale: number; tx: number; ty: number }, dpr: number, _w: number, _h: number): void {
+  const p = state?.player;
+  if (!p || !mask) return;
+  checked = true;
+  const k = MASK / ix.size;
+  const alpha = (cv: HTMLCanvasElement, x: number, y: number) => {
+    try { return cv.getContext("2d")!.getImageData(Math.round(x), Math.round(y), 1, 1).data[3]; } catch { return -1; }
+  };
+  const [mx, my] = toPx(ix, p.x, p.y);
+  const here = alpha(mask, mx * k, my * k);
+  const far = alpha(mask, mx * k < MASK / 2 ? MASK - 1 : 0, my * k < MASK / 2 ? MASK - 1 : 0);
+  const probe = document.createElement("canvas"); probe.width = 8; probe.height = 4;
+  const half = document.createElement("canvas"); half.width = 8; half.height = 4;
+  half.getContext("2d")!.fillRect(0, 0, 4, 4);
+  const q = probe.getContext("2d")!;
+  q.fillStyle = "#c00"; q.fillRect(0, 0, 8, 4);
+  q.globalCompositeOperation = "destination-in"; q.drawImage(half, 0, 0); q.globalCompositeOperation = "source-over";
+  const cut = alpha(probe, 1, 1) === 255 && alpha(probe, 6, 1) === 0;
+  const verdict = here > 200 && far === 0 && cut ? "ok" : "FAIL";
+  console.warn(`chart: reveal ${verdict} (mask ${here} at the player, ${far} far; destination-in ${cut ? "honoured" : "NOT honoured"}; ` +
+    `${state!.revealed.length} cells, level ${levelFor(PYR.levels, ix.size, _t.scale * dpr)})`);
+}
+
+// A move sets the target; the frame loop glides to it. The view is sent once it has settled.
+let settle = 0, dragging = false;
+function aim(next: ChartView, now = false): void {
+  target = next; drawSoon();
   clearTimeout(settle);
-  const go = () => send(panIntent(view));
+  if (PANE) return;   // the pane never moves the chart's remembered view
+  const go = () => send(panIntent(target));
   if (now) go(); else settle = window.setTimeout(go, 300);
 }
 const sheetSize = () => {
   const c = root.querySelector<HTMLCanvasElement>("canvas.layers")!;
   return [c.clientWidth, c.clientHeight] as const;
 };
-const step = (dx: number, dy: number, f = 1) => { const [w, h] = sheetSize(); moved(pan(ix, view, w, h, dx, dy, f)); };
-// The zoom buttons and keys: in goes toward the player, out about the centre, down to the whole province.
-const zoom = (f: number) => moved(toward(view, state?.player, f));
+const step = (dx: number, dy: number, f = 1) => { const [w, h] = sheetSize(); aim(pan(ix, target, w, h, dx, dy, f)); };
+// The zoom buttons, keys and triggers: in goes toward the player, out about the centre, down to the whole province.
+const zoom = (f: number) => aim(toward(target, state?.player, f));
 
-// Touch and mouse: one pointer drags, two pinch.
+// Touch and mouse: one pointer drags (the chart follows the hand at once), two pinch.
 const pts = new Map<number, { x: number; y: number }>();
 let pinch0 = 0;
 root.addEventListener("pointerdown", (e) => {
   if (!(e.target as HTMLElement).closest("canvas")) return;
-  (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
   pts.set(e.pointerId, { x: e.clientX, y: e.clientY });
+  dragging = true; target = view;
   if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch0 = Math.hypot(a.x - b.x, a.y - b.y); }
 });
 root.addEventListener("pointermove", (e) => {
@@ -178,27 +255,34 @@ root.addEventListener("pointermove", (e) => {
     if (pinch0 > 0) view = pan(ix, view, w, h, 0, 0, d / pinch0);
     pinch0 = d;
   }
+  target = view;
   drawSoon();
 });
-const up = (e: PointerEvent) => { if (pts.delete(e.pointerId) && pts.size === 0) moved(view, true); };
+const up = (e: PointerEvent) => { if (pts.delete(e.pointerId) && pts.size === 0) { dragging = false; aim(view, true); } };
 root.addEventListener("pointerup", up);
 root.addEventListener("pointercancel", up);
 root.addEventListener("wheel", (e) => { e.preventDefault(); step(0, 0, e.deltaY < 0 ? 1.25 : 0.8); }, { passive: false });
 window.addEventListener("resize", drawSoon);
 
+const clampZoom = (v: ChartView): ChartView => ({ ...v, zoom: Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, v.zoom)) });
+
 start({
   accepts: ["chart.state"],
   render(m) {
     if (m.type !== "chart.state") return;
-    state = m.body; view = m.body.view;
-    pushKey = `${state.sketch}|${JSON.stringify(state.revealed)}`;
+    state = m.body;
+    view = target = clampZoom(PANE && m.body.player ? { centreX: m.body.player.x, centreY: m.body.player.y, zoom: PANE_ZOOM } : m.body.view);
+    const key = `${state.sketch}|${JSON.stringify(state.revealed)}`;
+    if (key !== pushKey) { pushKey = key; checked = false; }
     root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))), ix.pins);
     delete document.body.dataset.ready;
-    layersFor(state.sketch).then((l) => { imgs = l; draw(); }, (e: Error) => window.argonia.errors.push(e.message));
-    if (imgs) draw();
+    // the whole province's smallest level first, so the first frame is never empty
+    for (let r = 0; r < PYR.levels[0] / PYR.tile; r++) for (let c = 0; c < PYR.levels[0] / PYR.tile; c++)
+      for (const l of ["sketch", "full"]) tileImg(SKETCHES[state.sketch] ?? "", l, PYR.levels[0], c, r);
+    drawSoon();
   },
   action(a) {
-    const PAN = 0.12 * Math.min(...sheetSize());
+    const PAN = 0.18 * Math.min(...sheetSize());
     switch (a) {
       case "zoomIn": zoom(1.5); return true;
       case "zoomOut": zoom(1 / 1.5); return true;
@@ -209,6 +293,6 @@ start({
       default: return false;
     }
   },
-  back() { send({ type: "view.close", v: 1, body: { view: "chart" } }); },
+  back() { if (!PANE) send({ type: "view.close", v: 1, body: { view: "chart" } }); },
   local(el) { if (el.dataset.ui === "zoom-in") zoom(1.5); if (el.dataset.ui === "zoom-out") zoom(1 / 1.5); },
 });

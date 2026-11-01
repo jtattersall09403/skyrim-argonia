@@ -332,7 +332,7 @@
     "view": {
      "centreX": -52.5,
      "centreY": 12.5,
-     "zoom": 6
+     "zoom": 4
     }
    }
   },
@@ -493,7 +493,7 @@
     "view": {
      "centreX": -52.5,
      "centreY": 12.5,
-     "zoom": 6
+     "zoom": 4
     }
    }
   }

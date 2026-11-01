@@ -17,9 +17,9 @@ export const pinSvg = (kind: string, paths: Record<string, string> = {}): string
     : `<circle cx="50" cy="50" r="30"/>`}</svg>`;
 };
 
-// The player's marker in our style: an ink arrowhead with a paper rim, pointing the way the player faces.
-export const PLAYER_SVG = `<svg viewBox="-12 -12 24 24" aria-hidden="true"><circle r="10.5" class="me-ring"/>
-  <path d="M0 -9 L6.5 7 L0 3.5 L-6.5 7Z" class="me-arrow"/></svg>`;
+// The player's marker: ui/views/core/player-marker.svg (our gilt arrowhead in the likeness of Morrowind's, 1.12 look 1),
+// inlined so the page needs no fetch; it points north and the view turns it to the heading.
+export const PLAYER_SVG = `<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"> <defs> <linearGradient id="pmL" x1="0" y1="0" x2="1" y2="1"> <stop offset="0" stop-color="#f6e2a0"/><stop offset="1" stop-color="#b8892f"/> </linearGradient> <linearGradient id="pmR" x1="1" y1="0" x2="0" y2="1"> <stop offset="0" stop-color="#a87a28"/><stop offset="1" stop-color="#5e4114"/> </linearGradient> </defs> <g stroke="#1d1308" stroke-width="1.6" stroke-linejoin="round"> <path d="M16 2 L27 28 L16 21 L5 28 Z" fill="#2a1c0a"/> </g> <path d="M16 3.6 L16 20.2 L6.6 26.2 Z" fill="url(#pmL)"/> <path d="M16 3.6 L25.4 26.2 L16 20.2 Z" fill="url(#pmR)"/> <path d="M16 3.6 L16 20.2" stroke="#fff3c4" stroke-width="0.6" opacity="0.7"/> </svg>`;
 
 export function render(s: ChartState, cities: { id: string; name: string; x: number; y: number }[] = [],
   pins: Record<string, string> = {}): string {
@@ -32,7 +32,7 @@ export function render(s: ChartState, cities: { id: string; name: string; x: num
       data-x="${p.x}" data-y="${p.y}" aria-label="${esc(p.name)}">${pinSvg(p.kind, pins)}<span class="pname">${esc(p.name)}</span></button>`).join("");
   const me = s.player
     ? `<div class="me" data-player data-x="${s.player.x}" data-y="${s.player.y}" data-heading="${s.player.heading}" aria-label="You">${PLAYER_SVG}</div>` : "";
-  return `<section class="chart frame" aria-label="Chart" data-worldspace="${esc(s.worldspace)}" data-sketch="${esc(s.sketch)}">
+  return `<section class="chart frame" aria-label="Chart" data-title="Map" data-worldspace="${esc(s.worldspace)}" data-sketch="${esc(s.sketch)}">
   <div class="sheet paper"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${places}${me}</div></div>
   <div class="controls">
     <button type="button" class="zoom" data-ui="zoom-in" data-key="zoom-in" aria-label="Zoom in">+</button>

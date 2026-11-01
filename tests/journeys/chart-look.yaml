@@ -1,0 +1,52 @@
+# 1.12 owner look 1, lane 1.12-chart (ledger rows "the map in game is the old project's parchment chart", "the land
+# around the player is revealed", "the player marker is Morrowind's style", "zoomed in sharp; pan and zoom smooth",
+# "leaving the map returns the camera as it was", "the map is a pane in the pause menu"). From `bat claywater` on the
+# base save, at the play camera. The scene sets no reveal, no zoom and no camera: the walk reveals, the keys and the
+# pad open, zoom, pan and close. Judged by the view's own pixel proof ("chart: reveal ok", logged through
+# ArgoniaCore's console hook), the map key's log line, ArgoniaCore's Views read, and a still (or a burst) per look,
+# each read by a reader with the row's claim and the feel question.
+id: chart-look
+runner: 1
+crash_risk: low
+scene: claywater
+steps:
+  - name: before-third-person                 # the play camera before the map: the camera to compare after it
+    do: [{wait: 2}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    reader: [the third-person play camera behind the player's Argonian on the road, no first-person hands or arms in front of the camera]
+  - name: walk                                # the pad walks the road; each new cell joins the seen land
+    do: [{pad: "LY=1:3000"}, {pad: "LY=1:3000"}, {pad: "LY=1:3000"}]
+    expect: [{moved: {gt: 900}}, {log: {name: ArgoniaCore, contains: "revealed (cell change)"}, within: 10}]
+  - name: chart-open                          # M opens our chart directly; the engine's MapMenu never opens
+    do: [{key: "M 120"}, {wait: 4}]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "the map key opens the chart (MapMenu never opens)"}, within: 6}
+      - {read: [core, Views], path: value, contains: "chart ready open"}
+      - {log: {name: ArgoniaCore, contains: "chart: reveal ok"}, within: 10}
+    reader: [the old project's parchment chart in the dark frame, the whole province with its coast and cities, a warm explored patch round the player with contours tree and marsh marks, the rest plain paper, a small gilt arrowhead marker at the player about the height of a lower-case letter, no red ring]
+  - name: chart-zoomed-in                     # the triggers zoom toward the player: the largest render, one pixel to one
+    do: [{pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 2}]
+    reader: [the chart close in round the player, its lines crisp and thin with no blur or blocky pixels, the explored land's contours and marks clear, the gilt marker small at the player]
+  - name: chart-motion                        # L5: a burst of 40 frames at 10 fps while the right stick pans and the triggers zoom
+    do:
+      - {burst: {frames: 40, fps: 10}}
+      - {wait: 0.5}
+      - {pad: "RX=1:1200"}
+      - {pad: "LT:200"}
+      - {wait: 0.3}
+      - {pad: "LT:200"}
+      - {pad: "RY=-1:1000"}
+      - {pad: "RT:200"}
+      - {wait: 1}
+      - {burst_fetch: chart-motion}
+  - name: chart-closed                        # M again closes it; the play camera comes back as it was
+    do: [{key: "M 120"}, {wait: 3}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]
+    reader: [the same third-person play camera as before the map, the player's Argonian seen from behind, no first-person hands or arms in front of the camera]
+  - name: windows-with-the-map-pane           # Tab: Wind UI's character, magic and inventory windows, and our map pane beside them
+    do: [{key: "TAB 150 engine"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "the map pane shown beside Wind UI's windows"}, within: 6}]
+    reader: [Wind UI's character magic and inventory windows with a fourth window titled Map in the lower right showing the parchment chart close round the player and the gilt marker, the map window not covering the others]
+  - name: windows-closed
+    do: [{key: "TAB 150 engine"}, {wait: 2}]
+    reader: [the third-person play camera, no window and no map pane left on screen, no first-person hands]

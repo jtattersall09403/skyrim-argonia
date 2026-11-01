@@ -31,7 +31,7 @@ steps:
     do: [{key: "I 120"}, {wait: 1}]
   - name: map
     do: [{key: "M 120"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: MapMenu}}]
+    expect: [{read: [core, Views], path: value, contains: "chart ready open"}]   # M opens our chart; MapMenu never opens (1.12 look 1)
   - name: map-closed
     do: [{close_menu: MapMenu}]   # M left the map open and J then met it (game-16)
   - name: journal        # J opens our journal view (1.2), which replaced the vanilla Journal Menu

@@ -16,6 +16,8 @@ import shutil
 import subprocess
 from pathlib import Path
 
+from tools.chart import pyramid
+
 ROOT = Path(__file__).resolve().parents[2]
 VIEWS = ("dialogue", "journal", "hud", "chart", "sitting", "magic")
 OUT = ROOT / "out" / "ui" / "views"
@@ -68,6 +70,19 @@ def chart_index(src: Path) -> dict:
                        for k, p in ix.get("places", {}).items()}}
 
 
+def pyramid_sources(chart_dir: Path) -> dict[str, Path]:
+    """The largest render of each flattened layer: an 8192-px render in out/chart8k when one was made (`python -m
+    tools.chart render --size 8192 --out out/chart8k`), else the chart's own largest copy."""
+    out = {}
+    for layer in ("sketch", "full"):
+        for d in (ROOT / "out" / "chart8k", chart_dir):
+            found = sorted(d.glob(f"{layer}-*.png"), key=lambda p: int(p.stem.split("-")[1]))
+            if found:
+                out[layer] = found[-1]
+                break
+    return out
+
+
 def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -> dict:
     exe = esbuild()
     out.mkdir(parents=True, exist_ok=True)
@@ -86,6 +101,8 @@ def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -
         pre = {"chart": '<script src="assets/index.js"></script>',
                "hud": '<script src="../chart/assets/index.js"></script>'}.get(v, "")
         (d / "index.html").write_text(PAGE.format(view=v, pre=pre))
+        if v == "chart":   # the map pane among Wind UI's windows (1.12 look 1): the same view, docked and display-only
+            (d / "pane.html").write_text(PAGE.format(view=v, pre='<script>window.ARGONIA_CHART_PANE=true</script>' + pre))
     font = private() / "fonts" / "pelagiad" / "Pelagiad.ttf"
     (out / "fonts").mkdir(exist_ok=True)
     have_font = font.exists()
@@ -98,8 +115,9 @@ def build(out: Path = OUT, chart_dir: Path | None = None, minify: bool = True) -
         a.mkdir(parents=True, exist_ok=True)
         for n in ("base", "revealed", "ink"):
             shutil.copyfile(chart_dir / f"{n}-{CHART_LAYER_PX}.png", a / f"{n}-{CHART_LAYER_PX}.png")
-        (a / "index.js").write_text("window.ARGONIA_CHART_INDEX=" + json.dumps(chart_index(chart_dir / "index.json"),
-                                                                                separators=(",", ":")) + ";\n")
+        ix = chart_index(chart_dir / "index.json")
+        ix["pyramid"] = pyramid.tiles(pyramid_sources(chart_dir), a / "t")   # the chart view's tiles (1.12 look 1)
+        (a / "index.js").write_text("window.ARGONIA_CHART_INDEX=" + json.dumps(ix, separators=(",", ":")) + ";\n")
     return {"out": str(out), "font": have_font, "chart": have_chart}
 
 
