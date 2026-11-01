@@ -23,9 +23,9 @@ or goes never renumbers the rest.
     layers(alloc, world, wrld)           the Argonia.esm layer: REGN overrides and the border, CLMT, WTHR, IMGS,
                                          the WChance globals, the TimeScale override, the WRLD override
 
-Weather and image-space numbers are ours (decision 0003: no vanilla or Tropical Skyrim values are copied). They are
-starting points for the look tuning (4.6), not a measurement: our fog tint and image tints, spread over the times
-of day and the WTHR colour slots by the fixed ladder below. Only references (cloud texture paths, precipitation,
+Weather and image-space numbers are ours (decision 0003: no vanilla or Tropical Skyrim values are copied): every
+colour slot of every weather authored per time of day in weather_colour (1.15 §d; owner 2026-11-01: never derived,
+the image-space tint off), the sky's motion and fog curve in weather_sky. Only references (cloud texture paths, precipitation,
 sounds, sky statics, the lens flare) come from each weather's template, and the C# writer reads those from the master.
 """
 from __future__ import annotations
@@ -191,62 +191,24 @@ def rgb(hex6: str) -> list[int]:
     return [int(hex6[i:i + 2], 16) for i in (0, 2, 4)]
 
 
-def mix(a, b, t: float) -> list[float]:
-    return [x + (y - x) * t for x, y in zip(a, b)]
-
-
-def scale(c, k: float) -> list[int]:
-    return [max(0, min(255, round(v * k))) for v in c]
-
-
-# slot -> brightness at (sunrise, day, sunset, night) over the time-of-day base colour
-LADDER = {
-    "skyUpper": (0.70, 0.80, 0.70, 0.15), "skyLower": (0.90, 1.00, 0.90, 0.20), "horizon": (1.00, 1.05, 1.00, 0.22),
-    "fogNear": (0.90, 1.00, 0.90, 0.20), "fogFar": (0.85, 0.95, 0.85, 0.18), "ambient": (0.60, 0.75, 0.60, 0.25),
-    "unknown": (0.60, 0.75, 0.60, 0.25), "sunlight": (1.10, 1.20, 1.10, 0.30), "sun": (1.30, 1.40, 1.30, 0.40),
-    "effectLighting": (1.00, 1.00, 1.00, 0.40), "cloudLodDiffuse": (0.90, 1.00, 0.90, 0.20),
-    "cloudLodAmbient": (0.50, 0.60, 0.50, 0.15), "skyStatics": (0.90, 1.00, 0.90, 0.30),
-    "waterMultiplier": (1.00, 1.00, 1.00, 0.50), "sunGlare": (1.20, 1.30, 1.20, 0.00),
-    "moonGlare": (0.00, 0.00, 0.00, 0.60),
-}
-WHITE = [255, 255, 255]
-STARS = {"sunrise": [0, 0, 0], "day": [0, 0, 0], "sunset": [0, 0, 0], "night": [200, 210, 190]}
-# state -> (flags, wind 0..1, cloud x/y speed, sun glare, sun damage, precipitation fade in/out, thunder freq)
-STATE = {
-    "clear-humid": ("Pleasant", 0.15, 0.02, 0.8, 1.0, (0.0, 0.0), 0.0),
-    "ground-mist": ("Cloudy", 0.05, 0.01, 0.2, 0.0, (0.0, 0.0), 0.0),
-    "dry-haze": ("Cloudy", 0.20, 0.02, 0.5, 0.5, (0.0, 0.0), 0.0),
-    "monsoon-downpour": ("Rainy", 0.55, 0.05, 0.0, 0.0, (0.2, 0.9), 0.0),
-    "sea-squall": ("Rainy", 0.80, 0.08, 0.0, 0.0, (0.1, 0.9), 0.3),
-    "storm": ("Rainy", 0.70, 0.07, 0.0, 0.0, (0.1, 0.9), 0.6),
-}
 LIGHTNING = [214, 230, 190]  # a green-white flash, not blue
+DALC = {"dalcUp": ("zPlus",), "dalcSide": ("xPlus", "xMinus", "yPlus", "yMinus"), "dalcDown": ("zMinus",)}
 
 
-def tod_base(fog, images: dict, w) -> dict[str, list[float]]:
-    """The base colour at each time of day: our fog tint carried towards the image space's tint."""
-    tint = {t: rgb(images[i]["tint"]) for t, i in
-            (("sunrise", w["image_dawn_id"]), ("day", w["image_day_id"]), ("sunset", w["image_dawn_id"]),
-             ("night", w["image_night_id"]))}
-    return {"sunrise": mix(fog, tint["sunrise"], 0.6), "day": mix(fog, tint["day"], 0.5),
-            "sunset": mix(fog, tint["sunset"], 0.6), "night": tint["night"]}
-
-
-def weather_colours(fog_hex: str, images: dict, w) -> dict[str, dict[str, list[int]]]:
-    base = tod_base(rgb(fog_hex), images, w)
-    out = {slot: {t: scale(base[t], k[n]) for n, t in enumerate(TOD)} for slot, k in LADDER.items()}
-    out["stars"] = STARS
+def weather_colours(world, wid: str) -> dict[str, dict[str, list[int]]]:
+    """{slot: {time of day: rgb}}: the weather's authored colours (weather_colour), every slot read, none derived."""
+    out: dict[str, dict[str, list[int]]] = {}
+    for r in world.query("SELECT slot, tod, rgb FROM weather_colour WHERE weather_id = ? ORDER BY slot, tod", wid):
+        out.setdefault(r["slot"], {})[r["tod"]] = rgb(r["rgb"])
     return out
 
 
 def ambient(colours: dict) -> dict[str, dict]:
-    """Directional ambient per time of day: the ambient slot from above, a little darker from below and the sides."""
+    """Directional ambient per time of day from the authored faces (dalcUp, dalcSide, dalcDown)."""
     out = {}
     for t in TOD:
-        a = colours["ambient"][t]
-        side, below = scale(a, 0.85), scale(a, 0.6)
-        out[t] = {"xPlus": side, "xMinus": side, "yPlus": side, "yMinus": side, "zPlus": a, "zMinus": below,
-                  "specular": [0, 0, 0], "scale": 1.0}
+        face = {k: colours[slot][t] for slot, ks in DALC.items() for k in ks}
+        out[t] = dict(face, specular=[0, 0, 0], scale=1.0)
     return out
 
 
@@ -280,24 +242,28 @@ IMGS_HDR = {"eyeAdaptSpeed": 1.0, "eyeAdaptStrength": 0.3, "bloomBlurRadius": 4.
 
 def _weather_records(alloc, world, images: dict) -> list[dict]:
     recs = []
-    for w in world.query("SELECT * FROM weather WHERE template_form_key IS NOT NULL ORDER BY id"):
-        flags, wind, cloud, glare, damage, (pin, pout), thunder = STATE[w["weather_state_id"]]
-        col = weather_colours(w["fog_tint"], images, w)
+    for w in world.query("SELECT w.*, s.* FROM weather w JOIN weather_sky s ON s.weather_id = w.id "
+                         "WHERE w.template_form_key IS NOT NULL ORDER BY w.id"):
+        allc = weather_colours(world, w["id"])
+        col = {k: v for k, v in allc.items() if k not in DALC}
+        thunder = w["thunder"]
         recs.append({
             "type": "WTHR", "edid": w["edid"], "formKey": weather_key(alloc, w), "template": w["template_form_key"],
-            "flags": [flags], "colours": col, "ambient": ambient(col),
+            "flags": [w["classification"]], "colours": col, "ambient": ambient(allc),
             "fog": {"dayNear": su.rounded(su.metres_to_units(w["fog_day_near_m"]), 2),
                     "dayFar": su.rounded(su.metres_to_units(w["fog_day_far_m"]), 2),
                     "nightNear": su.rounded(su.metres_to_units(w["fog_night_near_m"]), 2),
                     "nightFar": su.rounded(su.metres_to_units(w["fog_night_far_m"]), 2),
-                    "dayPower": 1.0, "nightPower": 1.0, "dayMax": 1.0, "nightMax": 1.0},
+                    "dayPower": w["fog_day_power"], "nightPower": w["fog_night_power"],
+                    "dayMax": w["fog_day_max"], "nightMax": w["fog_night_max"]},
             "images": {"sunrise": images[w["image_dawn_id"]]["formKey"], "day": images[w["image_day_id"]]["formKey"],
                        "sunset": images[w["image_dawn_id"]]["formKey"],
                        "night": images[w["image_night_id"]]["formKey"]},
-            "clouds": {"speed": cloud, "colours": col["cloudLodDiffuse"],
+            "clouds": {"speed": w["cloud_speed"], "colours": col["cloudLodDiffuse"],
                        "alpha": {"sunrise": 1.0, "day": 1.0, "sunset": 1.0, "night": 1.0}},
-            "windSpeed": wind, "transDelta": 4.0, "sunGlare": glare, "sunDamage": damage,
-            "precipitationFadeIn": pin, "precipitationFadeOut": pout, "thunderFrequency": thunder,
+            "windSpeed": w["wind"], "transDelta": 4.0, "sunGlare": w["sun_glare"], "sunDamage": w["sun_damage"],
+            "precipitationFadeIn": w["precip_fade_in"], "precipitationFadeOut": w["precip_fade_out"],
+            "thunderFrequency": thunder,
             "thunderFadeIn": 0.2 if thunder else 0.0, "thunderFadeOut": 0.9 if thunder else 0.0,
             "lightning": LIGHTNING, "windDirection": 0.0, "windDirectionRange": 0.25,  # fractions of a turn
         })

@@ -66,16 +66,38 @@ def test_area_is_the_cells_outline_in_units():
     assert pts[0] == [-su.CELL_UNITS, 2 * su.CELL_UNITS] and pts[2] == [su.CELL_UNITS, 3 * su.CELL_UNITS]
 
 
-def test_weather_colours_stay_in_bytes_and_night_is_darker():
-    images = {i: {"tint": t} for i, t in (("d", "C8BC6A"), ("a", "D8A458"), ("n", "5A7A4E"))}
-    col = api.weather_colours("8C9A6E", images, {"image_day_id": "d", "image_dawn_id": "a", "image_night_id": "n"})
-    assert set(api.LADDER) <= set(col)
-    for slot in col.values():
-        for c in slot.values():
-            assert all(0 <= v <= 255 for v in c)
-    assert sum(col["skyUpper"]["night"]) < sum(col["skyUpper"]["day"])
+def test_slot_check_catches_the_old_ladder_and_passes_authored():
+    from tools.argonia_world.checks import derived_colours
+    base = (140, 154, 110)
+    ladder = {(slot, "day"): tuple(round(v * k) for v in base) for slot, k in (("a", 0.7), ("b", 1.0), ("c", 1.2))}
+    assert derived_colours(ladder)  # a scaled copy
+    mixed = {("a", "day"): (100, 120, 80), ("b", "day"): (200, 100, 60), ("c", "day"): (150, 110, 70)}
+    assert derived_colours(mixed)  # c is halfway between a and b
+    assert not derived_colours({("a", "day"): (100, 120, 80), ("b", "day"): (90, 140, 70), ("s", "day"): (0, 0, 0)})
+
+
+def test_seed_palettes_author_every_slot_and_none_is_derived():
+    from tools.argonia_world.checks import _rgb, derived_colours
+    from tools.argonia_world.regions import weather_seed as S
+    assert set(S.P) == set(S.WEATHERS) == set(S.SKY) == set(S.WHY_SLOT)
+    for wid, pal in S.P.items():
+        assert set(pal) == set(S.ROLE), wid
+        assert not derived_colours({(s, t): _rgb(h) for s, r in pal.items() for t, h in zip(S.TOD, r)}), wid
+        assert sum(_rgb(pal["skyUpper"][3])) < sum(_rgb(pal["skyUpper"][1]))  # night darker than day
+
+
+def test_regime_rule():
+    eco = {"name": "x", "weather_group_id": "marsh", "misty": 1}
+    assert M.regime_of(eco, {"border-mountains": 6, "firm-lowland": 4})[0] == "montane"
+    assert M.regime_of(dict(eco, weather_group_id="coastal"), {"ocean": 3})[0] == "sea_fog"
+    assert M.regime_of(eco, {"fringe-marsh": 3})[0] == "radiation"
+    assert M.regime_of(dict(eco, misty=0), {"firm-lowland": 3})[0] == "none"
+
+
+def test_ambient_reads_the_authored_faces():
+    col = {s: {t: [i, i + 1, i + 2] for t in api.TOD} for i, s in enumerate(("dalcUp", "dalcSide", "dalcDown"))}
     amb = api.ambient(col)
-    assert amb["day"]["zPlus"] == col["ambient"]["day"] and sum(amb["day"]["zMinus"]) < sum(amb["day"]["zPlus"])
+    assert amb["day"]["zPlus"] == [0, 1, 2] and amb["day"]["xMinus"] == [1, 2, 3] and amb["night"]["zMinus"] == [2, 3, 4]
 
 
 def test_object_list_mixes_classes_by_share(monkeypatch):

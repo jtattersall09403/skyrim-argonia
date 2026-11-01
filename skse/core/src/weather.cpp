@@ -23,6 +23,16 @@ std::vector<Setting> settings(Season s) {
   return out;
 }
 
+std::vector<Setting> mist_settings(Season s, double hour) {
+  std::vector<Setting> out;
+  out.reserve(gen::kMistRegimes.size());
+  for (const auto& m : gen::kMistRegimes) {
+    const bool in = hour >= m.first_hour && hour < m.end_hour;
+    out.push_back({m.global, in ? m.chance[static_cast<std::size_t>(s)] : std::uint8_t{0}});
+  }
+  return out;
+}
+
 std::expected<DayChange, DateError> on_day(int month, int day, std::optional<Season> last) {
   if (month < 0 || month >= static_cast<int>(gen::kMonthDays.size())) return std::unexpected(DateError::bad_month);
   const auto d = day_of_year(month, day);

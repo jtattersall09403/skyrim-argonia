@@ -9,7 +9,9 @@ steps:
       generated data (one on the ground beside water of the class's kind, one from the class's highest point with a
       long view), fixed by cell and position in the scene and never moved after the first run
   - at each vantage, two stills: noon (clear, the region's commonest weather) and dawn (06:30, the region's mist
-      regime), first person, the HUD hidden; the dawn still proves region_mist, the noon still the materials and water
+      regime), first person; the weather and hour per region come from
+      `python3 -m tools.argonia_world.regions.panel_weather` (noon 12:00 the commonest dry-season clear; dawn 06:30
+      the region_mist regime's weather: ARG_Weather_mist, _sea_fog or _montane_haze), the HUD hidden; the dawn still proves region_mist, the noon still the materials and water
   - do: `console: {line: "cow ARG_Province x y", settle: 60}`, `teleport pos`, `set gamehour`, `fw <weather>`, wait
       14 s for the load and the grass, the still
   - read: [the player's cell and worldspace (the teleport landed), frame_time_ms at the densest vantage]

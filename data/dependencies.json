@@ -2319,7 +2319,7 @@
    "version": "1.9.1",
    "archive": "Community Shaders 86492 1.9.1 2026-09-24T12-49Z lNkz9LIZ8.zip",
    "size_kb": 44085,
-   "why": "lighting, water and the features 2.W3 and 4.6 need",
+   "why": "lighting, water and the features 2.W3 and 4.6 need; 1.15: its exponential height fog (volumetric) lays the low marsh mist, our override file",
    "chunk": "2.W3",
    "required": true,
    "profile": "play",
@@ -2331,7 +2331,13 @@
    "permission_evidence": "Nexus description 'Open Source (GPL-3.0)'; gh GPL-3.0",
    "runtime": "loads on 1.7.104.0 (CommunityShaders.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "files": [
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json",
+     "text": "{\n \"enabled\": 1,\n \"disableVanillaFog\": 0,\n \"respectVanillaFogFade\": 1,\n \"originalFogColorAmount\": 1.0,\n \"fogHeight\": 350.0,\n \"fogHeightFalloff\": 0.35,\n \"fogDensity\": 0.012,\n \"startDistance\": 0.0,\n \"directionalInscatteringAnisotropy\": 0.6,\n \"directionalInscatteringMultiplier\": 1.0,\n \"volumetricFogEnabled\": 1,\n \"volumetricFogDistance\": 20000.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Argonia's low marsh fog: an exponential height fog over the water and wet ground, volumetric, coloured by the weather's own authored fog slots\"\n }\n}\n"
+    }
+   ]
   },
   {
    "id": "tropical-skyrim-sse",

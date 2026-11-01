@@ -48,6 +48,10 @@ void SeasonCheck() {
     if (g) g->value = static_cast<float>(w.value);
     else SKSE::log::warn("weather: global {} not found", w.global);
   }
+  for (const auto& w : ac::weather::mist_settings(change->season, d->hour)) {  // the mist regimes' hours (1.15)
+    if (auto* g = RE::TESForm::LookupByEditorID<RE::TESGlobal>(w.global)) g->value = static_cast<float>(w.value);
+    else SKSE::log::warn("weather: global {} not found", w.global);
+  }
   if (!change->write.empty()) SKSE::log::info("weather: season {}, {} globals written", static_cast<int>(change->season), change->write.size());
   c.season = change->season;
   if (turned) FactsChanged("season");
