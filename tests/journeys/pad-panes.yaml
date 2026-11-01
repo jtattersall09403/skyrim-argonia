@@ -40,7 +40,7 @@ steps:
     expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
   - name: bumper-to-system       # System last: the windows close and Skyrim's System page opens
     do: [{pad: "RB:150"}, {wait: 3}]
-    expect: [{log: {name: ArgoniaCore, contains: "pad: pane system"}}, {event: {kind: menu, match: Journal Menu}, within: 8}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: pane system"}}, {event: {kind: menu, match: Journal Menu}, within: 8}, {log: {name: ArgoniaCore, contains: "System page (switched)"}, within: 8}]
   - name: system-closed
     do: [{close_menu: Journal Menu}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: back to Wind UI's windows"}, within: 8}]
@@ -64,7 +64,7 @@ steps:
     do: [{close_menu: journal}]
   - name: keyboard-system
     do: [{key: "ESC 80"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: Journal Menu}}]
+    expect: [{event: {kind: menu, match: Journal Menu}}, {log: {name: ArgoniaCore, contains: "System page (switched)"}, within: 8}]
   - name: keyboard-system-closed
     do: [{close_menu: Journal Menu}]
   - name: touch

@@ -356,6 +356,19 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
   }
 };
 
+// The Journal Menu's System page (index 2 of its PageArray: Quests, General stats, System).
+void SystemTab() {
+  auto* ui = RE::UI::GetSingleton();
+  if (!ui || !Open(RE::JournalMenu::MENU_NAME)) return;
+  auto menu = ui->GetMenu(RE::JournalMenu::MENU_NAME);
+  if (!menu || !menu->uiMovie) return;
+  RE::GFxValue args[2];
+  args[0].SetNumber(2);
+  args[1].SetBoolean(true);
+  const bool ok = menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.SwitchPageToFront", nullptr, args, 2);
+  SKSE::log::info("pad: the Journal Menu to its System page ({})", ok ? "switched" : "the movie refused");
+}
+
 // Tab, the pad's Start and the HUD's Menu button all open TweenMenu; Wind UI does not always take it, so the next
 // frame swaps an untaken tween for InventoryMenu, which Wind UI takes into its full menu mode (coordinator, 1.12 §8).
 class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
@@ -368,6 +381,12 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
         if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
         SKSE::log::info("pad: Wind UI's windows closed over the System page");
       });
+      // It opens on its Quests tab (Skyrim's old quest log); the System pane and Esc want settings, load and quit: the
+      // movie's own tab switch once it has loaded (J's opening is our journal's, closed by the router before this runs).
+      std::thread([] {
+        std::this_thread::sleep_for(std::chrono::milliseconds(150));
+        SKSE::GetTaskInterface()->AddTask([] { SystemTab(); });
+      }).detach();
       return RE::BSEventNotifyControl::kContinue;
     }
     if (!e || !e->opening || e->menuName != RE::TweenMenu::MENU_NAME) return RE::BSEventNotifyControl::kContinue;
