@@ -33,6 +33,9 @@ steps:
     do: [{key: "M 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: MapMenu}}, {read: [core, Views], path: value, contains: "chart ready open"}]
     reader: [our parchment chart in the dark green-black frame with gold-green trim, the player's red arrow at the player's place, warmer revealed land along the walked road, no quest or other markers]
+  - name: chart-zoomed-in                     # the reveal is a few cells of ~126 across: seen zoomed in at the player
+    do: [{pad: "RT:250 RT:250 RT:250 RT:250 RT:250 RT:250 RT:250 RT:250"}, {wait: 1}]
+    reader: [the chart close in at the player's arrow, the walked road's cells warmer and inked against the faded unrevealed land around them]
   - name: chart-zoomed-out                    # the pad's zoom-out to the whole province: nothing cut off
     do: [{pad: "LT:250 LT:250 LT:250 LT:250 LT:250 LT:250"}, {wait: 1}]   # the pad's trigger zooms out (the web view takes no engine keys)
     reader: [the whole province from its northern edge to its southern coast inside the sheet, nothing cut off at the top or bottom, the player's arrow shown]

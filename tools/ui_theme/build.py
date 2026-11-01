@@ -55,6 +55,9 @@ def main(argv=None) -> int:
         print(f"no {labels.TABLE} in the themed mods or {a.data / labels.BSA}")
         return 1
     print(f"{a.out / labels.TABLE}: {labels.write(raw, a.out)} labels in sentence case")
+    sky = labels.skyui_source(a.mods / "skyui")  # SkyUI's own labels on the System page ("MOD CONFIGURATION")
+    if sky is not None:
+        print(f"{a.out / labels.SKYUI_TABLE}: {labels.write_table(sky, a.out, labels.SKYUI_TABLE)} labels in sentence case")
     src = next((a.mods / m / SKYUI_CONFIG for m in ("dear-diary", "skyui") if (a.mods / m / SKYUI_CONFIG).exists()), None)
     if src is None:
         print("no SkyUI config.txt under dear-diary or skyui")

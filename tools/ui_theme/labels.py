@@ -67,3 +67,27 @@ def write(raw: bytes, out: Path) -> int:
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_bytes(b"\xff\xfe" + text.encode("utf-16-le"))
     return n
+
+
+SKYUI_TABLE = "interface/translations/skyui_se_english.txt"  # SkyUI's own labels ("MOD CONFIGURATION"), in its BSA
+SKYUI_BSA = "SkyUI_SE.bsa"
+
+
+def skyui_source(skyui: Path) -> bytes | None:
+    """SkyUI's English table: a loose file in the skyui mod, else its BSA's (the player's own download)."""
+    if (skyui / SKYUI_TABLE).is_file():
+        return (skyui / SKYUI_TABLE).read_bytes()
+    if (skyui / SKYUI_BSA).is_file():
+        from tools.navmesh import bsa  # noqa: PLC0415 - only the install run reads the archive
+
+        return bsa.Archive(bsa.local(skyui / SKYUI_BSA)).get(SKYUI_TABLE)
+    return None
+
+
+def write_table(raw: bytes, out: Path, table: str) -> int:
+    """`write` for any UTF-16 translation table at its own path (the loose file wins over the BSA's)."""
+    text, n = relabel(raw.decode("utf-16"))
+    dest = out / table
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_bytes(b"\xff\xfe" + text.encode("utf-16-le"))
+    return n
