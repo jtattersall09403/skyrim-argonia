@@ -74,10 +74,11 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
     w = world if world is not None else db.open()
     used = set(rocks.masters(w)) | set(creatures.masters(w))  # the planner's ruling (2026-11-01): one plugin for the world's placements
     extra = [p for p in rocks.stack_order() if p in used] + sorted(used - set(rocks.stack_order()))
+    base = _base_order(creatures.base_masters(w), extra)  # a master's own masters are ours too (the links check)
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
-            "loadOrder": _base_order(creatures.base_masters(w), extra) + extra, "extraMasters": extra,
+            "loadOrder": base + extra, "extraMasters": [m for m in base if m not in LOAD_ORDER] + extra,
             "records": [wrld(cell_range)], "land": str(land_dir),
             "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
             "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs(),
