@@ -12,10 +12,11 @@ import {
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
 import { type CellIndex, glide, hits, labelAt, levelFor, placeLabels, pan, panIntent, REVEAL, revealDiscs, revealRects, toPx, toUnits, toward, transform, visibleTiles, ZOOM_MAX } from "../chart/geom.ts";
-import { discTransform, onDisc, REACH } from "../hud/minimap.ts";
+import { discTransform, onDisc, REACH, turnTo } from "../hud/minimap.ts";
+import { ME } from "../hud/me.ts";
 import { render as chart } from "../chart/render.ts";
 import { backIntent, filterTopics, render as dialogue } from "../dialogue/render.ts";
-import { barLength, isLow, remember, render as hud, renderBars } from "../hud/render.ts";
+import { barLength, isLow, meter, render as hud, renderBars, shimmer, tick, TRAIL_HOLD } from "../hud/render.ts";
 import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 import { close as magicClose, render as magic } from "../magic/render.ts";
@@ -259,15 +260,19 @@ test("chart geometry: cells map to the index's rects, a pan stays in bounds, zoo
   assert.deepEqual(toward(v, me, 1.5), { centreX: 1.5, centreY: -1, zoom: 1.5 });
   assert.deepEqual(toward({ centreX: 1.5, centreY: -1, zoom: 1.2 }, me, 1 / 1.5), { centreX: 1.5, centreY: -1, zoom: 1 });
   assert.deepEqual(toward(v, undefined, 2), { ...v, zoom: 2 });
-  // The minimap: the player at the disc's centre, the disc spans 2 * REACH cells, north turns with the heading.
+  // The minimap (owner look 1): the player at the square's centre, 2 * REACH cells across, north up whatever the
+  // heading; the arrow turns the shorter way.
   const dt = discTransform(ix, { x: 0, y: 0, heading: 0 }, 100);
   assert.equal(dt.scale, 100 / (2 * REACH * 32));
-  const north = { x: 0, y: 2 }, east = { x: 2, y: 0 };
-  const n0 = onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, north)!;
-  assert.ok(Math.abs(n0[0] - 50) < 1e-9 && n0[1] < 50, "facing north, north is up");
-  const e90 = onDisc(ix, { x: 0, y: 0, heading: 90 }, 100, east)!;
-  assert.ok(Math.abs(e90[0] - 50) < 1e-9 && e90[1] < 50, "facing east, east is up");
-  assert.equal(onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, { x: REACH + 1, y: 0 }), null, "past the rim");
+  const north = { x: 0, y: 2 };
+  for (const heading of [0, 90, 225]) {
+    const n = onDisc(ix, { x: 0, y: 0, heading }, 100, north)!;
+    assert.ok(Math.abs(n[0] - 50) < 1e-9 && n[1] < 50, `north is up facing ${heading}`);
+  }
+  assert.ok(onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, { x: REACH - 0.1, y: REACH - 0.1 }), "a corner is inside the square");
+  assert.equal(onDisc(ix, { x: 0, y: 0, heading: 0 }, 100, { x: REACH + 1, y: 0 }), null, "past the edge");
+  assert.equal(turnTo(359, 1), 361, "359 to 1 turns 2 degrees forward");
+  assert.equal(turnTo(10, 350), -10, "10 to 350 turns 20 degrees back");
   const [px, py] = toPx(ix, far.centreX, far.centreY);
   assert.ok(px >= 0 && px <= 200 && py >= 0 && py <= 200);
   ok(panIntent(pan(ix, v, 400, 200, 30, 10, 1.5)), "pan");
@@ -308,21 +313,42 @@ test("label collisions: by priority, a clashing label moves to a free spot or is
   assert.ok(kept.length >= 3);
 });
 
-test("the HUD's damage trail holds what was lost, a rise marks regeneration, and low health is a quarter (1.11)", () => {
+test("the HUD's bars glide like Skyrim's meter, the trail holds then follows a loss, vastei shimmers by the gain", () => {
+  const run = (m: ReturnType<typeof meter>, target: number, secs: number) => {
+    const seen: number[] = [];
+    for (let t = 0; t < secs; t += 1 / 60) { m = tick(m, target, 1 / 60); seen.push(m.fill); }
+    return { m, seen };
+  };
+  // A loss: the fill glides down (no step bigger than a fifth of the change in a frame), the trail holds, then follows.
+  let r = run(meter(80), 50, 0.3);
+  const steps = r.seen.map((v, i) => Math.abs(v - (i ? r.seen[i - 1] : 80)));
+  assert.ok(Math.max(...steps) < 30 / 5, "no jump");
+  assert.ok(r.m.fill < 52 && r.m.trail === 80, "fill near 50 at 0.3 s, trail still held");
+  r = run(r.m, 50, TRAIL_HOLD + 2);
+  assert.ok(r.m.trail === 50 && r.m.fill === 50, "the trail catches up and settles");
+  // A refill at 5 pushes a second: the fill rises monotonically and smoothly, the trail rides with it (no flash).
+  let m = meter(20);
+  const seen: number[] = [];
+  for (let p = 1; p <= 10; p++) for (let f = 0; f < 12; f++) { m = tick(m, 20 + 5 * p, 1 / 60); seen.push(m.fill); assert.equal(m.trail, m.fill); }
+  assert.ok(seen.every((v, i) => !i || v >= seen[i - 1]), "monotone");
+  assert.ok(Math.max(...seen.map((v, i) => (i ? v - seen[i - 1] : 0))) < 2, "no frame moves more than 2%");
+  // The rows render slim with no regeneration class; a push renders the meter's own widths.
   const h = (current: number): HudState["bars"] => [{ kind: "health", current, max: 100, shown: true }];
-  let s = remember({}, h(80), { trail: {}, regen: new Set() });
-  assert.deepEqual(s.mem.trail, {}, "the first push has no trail");
-  s = remember(s.last, h(50), s.mem);
-  assert.equal(s.mem.trail.health, 80, "a hit leaves the trail at what was held");
-  s = remember(s.last, h(30), s.mem);
-  assert.equal(s.mem.trail.health, 80, "a second hit keeps the trail at the first height");
-  assert.match(renderBars(h(30), s.mem), /data-trail="health" style="width:80\.0%"[^]*class="fill" style="width:30\.0%"/);
-  s = remember(s.last, h(40), { trail: {}, regen: s.mem.regen });
-  assert.ok(s.mem.regen.has("health") && renderBars(h(40), s.mem).includes("bar health regen"), "a rise regenerates");
+  assert.match(renderBars(h(30), { health: { fill: 30, trail: 80, target: 30, hold: 0 } }), /class="trail" style="width:80\.0%"[^]*class="fill" style="width:30\.0%"/);
+  assert.doesNotMatch(renderBars(h(40)), /regen/);
   assert.ok(isLow(h(25)) && !isLow(h(26)), "low at a quarter");
   assert.match(hud({ ...(fx("hud").states.lowHealth as { body: HudState }).body }), /class="hud low"/);
-  const calm = hud((fx("hud").states.play as { body: HudState }).body);
-  assert.ok(calm.indexOf("data-bars") < calm.indexOf('class="vastei'), "vastei under the bars, in the top-left column");
+  // Vastei: no "+N"; the shimmer grows with the gain, faint for a few on a large purse.
+  const small = shimmer(5, 1005), big = shimmer(800, 900);
+  assert.ok(small >= 0.15 && small < 0.35 && big > 0.8 && big <= 1, `${small} ${big}`);
+  assert.equal(shimmer(undefined, 10), 0);
+  const play = (fx("hud").states.play as { body: HudState }).body;
+  const up = hud({ ...play, vastei: { carried: 900, gained: 800 } });
+  assert.ok(!/\+800/.test(up) && /data-glow="0\.\d+"/.test(up), "a shimmer, no number");
+  assert.ok(up.indexOf("data-bars") < up.indexOf('class="vastei'), "vastei under the bars");
+  // The minimap's arrow is lane 1.12-chart's shared drawing.
+  const file = readFileSync(new URL("../core/player-marker.svg", import.meta.url), "utf8");
+  for (const d of file.match(/ d="[^"]+"/g)!) assert.ok(ME.includes(d), d);
 });
 
 // 1.12 §6's rulings on the journal: four ribbons, a failed quest marked, the opened quest's latest direction before

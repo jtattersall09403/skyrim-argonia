@@ -1,35 +1,35 @@
 // The HUD's minimap (1.12 §5): the parchment chart round the player, drawn from the chart's own layers and index
 // (the chart view's assets) and the hud.minimap push: the revealed cells in reach, the discovered places in reach
-// and the player. The map turns so the player faces up; the compass rose turns with it, its N toward the north.
-// No quest or other markers, ever. Pure geometry here (tested); the drawing below it.
+// and the player. Owner look 1: a small square, north always up; only the player's arrow turns, to the camera's
+// heading (the push's heading is the camera's yaw). No quest or other markers, ever. Pure geometry here (tested); the drawing below it.
 import type { ChartPlace, ChartPlayer, Minimap } from "../../schema/generated/messages.ts";
 import { type CellIndex, revealRects, toPx } from "../chart/geom.ts";
 import { PIN } from "../chart/render.ts";
 
-export const REACH = 5;   // cells from the player to the disc's rim (skse/core chart::kMinimapReach)
+export const REACH = 5;   // cells from the player to the square's edge (skse/core chart::kMinimapReach)
 
-// The disc's transform: master px -> disc px, about the player, turned by -heading so the facing is up.
+// The square's transform: master px -> minimap px, centred on the player, north up (never turned).
 export function discTransform(ix: CellIndex, me: ChartPlayer, side: number, reach = REACH) {
   const cell = ix.cells["0,0"][2];
   const scale = side / (2 * reach * cell);
   const [px, py] = toPx(ix, me.x, me.y);
-  return { scale, px, py, rot: (-me.heading * Math.PI) / 180, cx: side / 2, cy: side / 2 };
+  return { scale, px, py, rot: 0, cx: side / 2, cy: side / 2 };
 }
 
-// Where a place sits on the disc (disc px), or null outside the rim.
+// The arrow's turn toward a new heading by the shorter way round, so 359 -> 1 turns 2 degrees, not back 358.
+export function turnTo(shown: number, heading: number): number {
+  return shown + ((((heading - shown) % 360) + 540) % 360) - 180;
+}
+
+// Where a place sits on the square (minimap px), or null outside it.
 export function onDisc(ix: CellIndex, me: ChartPlayer, side: number, p: Pick<ChartPlace, "x" | "y">, reach = REACH) {
   const t = discTransform(ix, me, side, reach);
   const [qx, qy] = toPx(ix, p.x, p.y);
   const dx = (qx - t.px) * t.scale, dy = (qy - t.py) * t.scale;
   const c = Math.cos(t.rot), s = Math.sin(t.rot);
   const x = t.cx + dx * c - dy * s, y = t.cy + dx * s + dy * c;
-  return Math.hypot(x - t.cx, y - t.cy) <= side / 2 ? [x, y] as [number, number] : null;
+  return x >= 0 && x <= side && y >= 0 && y <= side ? [x, y] as [number, number] : null;
 }
-
-// The compass rose, our own drawing: a ring, four ticks and the N (drawn, not text); the view turns it by -heading.
-export const ROSE = `<svg class="rose" viewBox="-50 -50 100 100" aria-hidden="true"><circle r="46" class="rose-ring"/>
-  <path d="M0 -46 L5 -30 L0 -34 L-5 -30Z" class="rose-n"/><path d="M46 0 L36 0 M0 46 L0 36 M-46 0 L-36 0" class="rose-tick"/>
-  <circle cy="-30" r="6.5" class="rose-disc"/><path d="M-2.6 -27 L-2.6 -33 L2.6 -27 L2.6 -33" class="rose-letter"/></svg>`;
 
 type Layers = { base: HTMLImageElement; revealed: HTMLImageElement; ink: HTMLImageElement };
 let layers: Promise<Layers> | null = null;
@@ -42,14 +42,21 @@ function layersOnce(): Promise<Layers> {
   return layers;
 }
 
+let shown = 0;   // the arrow's drawn angle, unwrapped, so its transition always takes the shorter way
+
 // Draws the minimap into its element (rendered by render.ts) from the last push; resolves once drawn.
 export async function drawMinimap(el: HTMLElement, m: Minimap): Promise<void> {
   const ix = (window as unknown as { ARGONIA_CHART_INDEX?: CellIndex }).ARGONIA_CHART_INDEX;
   el.hidden = !m.player || !ix;
   if (!m.player || !ix) return;
   const me = m.player;
-  const rose = el.querySelector<HTMLElement>(".rose");
-  if (rose) rose.style.transform = `rotate(${-me.heading}deg)`;
+  const arrow = el.querySelector<HTMLElement>(".mm-me");
+  if (arrow) {   // a CSS transition carries the arrow between the pushes (0.2 s apart) so it turns smoothly
+    shown = turnTo(shown, me.heading);
+    arrow.style.transform = `rotate(${shown}deg)`;
+    // a new element (a hud.state redraw) takes its angle at once, then turns smoothly from there
+    if (!arrow.classList.contains("turning")) setTimeout(() => arrow.classList.add("turning"), 30);
+  }
   el.dataset.heading = String(me.heading);
   const L = await layersOnce();
   const canvas = el.querySelector<HTMLCanvasElement>("canvas")!;
@@ -63,7 +70,7 @@ export async function drawMinimap(el: HTMLElement, m: Minimap): Promise<void> {
     g.imageSmoothingEnabled = true; g.imageSmoothingQuality = "high";
   };
   c.save();
-  c.beginPath(); c.arc(t.cx * dpr, t.cy * dpr, (side / 2) * dpr, 0, 2 * Math.PI); c.clip();
+  c.clearRect(0, 0, canvas.width, canvas.height);
   onto(c);
   c.drawImage(L.base, 0, 0, ix.size, ix.size);
   // The revealed layer through the cells in reach, with a soft edge, then the sketch's ink over all.

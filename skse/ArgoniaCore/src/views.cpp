@@ -184,10 +184,14 @@ bool g_mm_stale = true;
 void PushMinimap(bool force = false) {
   auto& c = Get();
   if (!g_api) return;
-  const auto me = PlayerMark();
+  auto me = PlayerMark();
+  // Owner look 1: the minimap's arrow faces the way the camera looks, not the body (PlayerCamera::yaw: the target's
+  // heading plus the state's offset, radians), so a third-person look round turns it.
+  if (auto* cam = RE::PlayerCamera::GetSingleton(); me && cam)
+    me->heading = std::round(ac::chart::heading_deg(cam->GetRuntimeData2().yaw) * 10) / 10;
   if (!force && !g_mm_stale && me.has_value() == g_mm_at.has_value() &&
       (!me || (std::abs(me->x - g_mm_at->x) < 0.05 && std::abs(me->y - g_mm_at->y) < 0.05 &&
-               std::abs(std::remainder(me->heading - g_mm_at->heading, 360.0)) < 2)))
+               std::abs(std::remainder(me->heading - g_mm_at->heading, 360.0)) < 1)))
     return;
   if (g_mm_stale) g_mm_places = DiscoveredPlaces();
   g_mm_stale = false;

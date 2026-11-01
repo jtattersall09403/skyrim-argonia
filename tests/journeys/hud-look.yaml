@@ -1,0 +1,41 @@
+# 1.12 owner look 1, lane 1.12-hud (L4 stills, L5 bursts): the bars, vastei's shimmer, the layout against the engine's
+# own top-left notices and the location line, and the square north-up minimap, from `bat claywater` at the play camera.
+# Reason for L5 (docs/loops.md): a bar's glide, its trail and any flashing, and vastei's shimmer, show only in motion;
+# each burst is read frame by frame. The scene sets nothing tested: the drains are real actions (rolls, a cast), the
+# refill is the game's own regeneration; vastei is set through dev-set (the shimmer is under test, not the earning).
+id: hud-look
+runner: 1
+crash_risk: low
+scene: claywater
+steps:
+  - name: arrived
+    do: [{pad: "LY=1:600"}, {wait: 2}]
+    expect: [{read: [core, Views], path: value, contains: "minimap shown"}]
+    reader: [the health stamina and magicka bars slim and dark-filled in a thin dark bezel with a gold-green hairline at the bottom left, vastei's small plate under them, a small square parchment minimap at the top right with the gilt arrowhead at its centre, nothing overlapping]
+  - name: engine-notice           # the engine's own top-left notification: nothing of ours may cover it
+    do: [{console: "player.additem 0000000F 25"}, {wait: 0.6}]
+    reader: [the engine's notice text at the top left is fully readable, no bar plate or minimap over it]
+  - name: minimap-north
+    do: [{console: "player.setangle z 0"}, {wait: 1}]
+    expect: [{read: [core, Views], path: value, contains: "heading 0"}]
+    reader: [the square minimap at the top right, its N tab on the top edge, the arrowhead pointing up]
+  - name: minimap-turned          # the body and camera turned: the map stays north up, only the arrow turns
+    do: [{console: "player.setangle z 135"}, {wait: 1}]
+    expect: [{read: [core, Views], path: value, contains: "heading 135"}]
+    reader: [the same minimap with the same map orientation as the last still, only the arrowhead turned to point lower right]
+  - name: stamina-drain-refill    # three rolls drain stamina, then it refills by itself; a burst at 8 fps
+    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.5}, {pad: "+LX=0,LY=1:300 B:100 wait:700 B:100 wait:700 B:100 wait:700 -:300"}, {wait: 3}, {burst_fetch: stamina}]
+  - name: magicka-cast            # a spell from the right hand drains magicka, which then refills
+    do: [{console: "player.addspell FE012A8C"}, {console: "player.equipspell FE012A8C right"}, {wait: 1},
+         {burst: {frames: 40, fps: 8}}, {wait: 0.5}, {pad: "RT:1500"}, {wait: 3}, {burst_fetch: magicka}]
+  - name: vastei-small            # a small gain on a large purse: a faint shimmer, no number
+    do: [{call: [dev-set, SetVastei, "1000"]}, {wait: 2}, {burst: {frames: 24, fps: 8}}, {wait: 0.3}, {call: [dev-set, SetVastei, "1005"]}, {wait: 2.5}, {burst_fetch: vastei-small}]
+    expect: [{read: [core, GetVastei], path: value, gt: 1004}]
+  - name: vastei-large            # a haul: a strong shimmer, no number
+    do: [{burst: {frames: 24, fps: 8}}, {wait: 0.3}, {call: [dev-set, SetVastei, "1805"]}, {wait: 2.5}, {burst_fetch: vastei-large}]
+    expect: [{read: [core, GetVastei], path: value, gt: 1804}]
+  - name: location-line           # reaching a place: the engine's discovery line and our banner, nothing of ours over them
+    do: [{console: "player.moveto ARG_MapMarker_ClaywaterStation"}, {pad: "LY=1:1500"}, {wait: 1.5}]
+    reader: [the place name and any discovery line fully readable, not covered by the bars, vastei or the minimap]
+  - name: drain-direct            # a control for the bars' motion: a direct loss and the game's own refill (not a closing step)
+    do: [{burst: {frames: 40, fps: 8}}, {wait: 0.5}, {console: "player.damageav stamina 60"}, {console: "player.damageav magicka 40"}, {wait: 4}, {burst_fetch: direct}]

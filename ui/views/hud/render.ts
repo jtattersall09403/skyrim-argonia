@@ -1,12 +1,11 @@
 // Our HUD (1.2 §d), render only. Souls-style bars whose drawn length grows with the stat's maximum, the sneak eye,
 // the effect stack, the vastei plaque, the place banner, the prompt with the glyph of the device in use, and the
-// notice stack, and the minimap top right with its compass rose (1.12 §5; drawn by minimap.ts). No compass bar and no
+// notice stack, and the square minimap top right, north up (1.12 §5; drawn by minimap.ts). No compass bar and no
 // quest marker, ever. No button: a tap on the stream never reaches the unfocused HUD view (the V5 touch run,
 // docs/research/2026-11-01/1.12.md), so the phone's pad overlay's Start opens the windows; hud.menu stays for a later HUD.
 import type { Bar, Effect, HudState, InputGlyph, Notice, PlaceBanner, Prompt } from "../../schema/generated/messages.ts";
 import { esc } from "../core/html.ts";
-import { ROSE } from "./minimap.ts";
-import { PLAYER_SVG } from "../chart/render.ts";
+import { ME } from "./me.ts";
 
 // rem of bar per point of maximum, and the longest a bar may draw (the rest of the growth is CSS's max-width).
 export const REM_PER_POINT = 0.1;
@@ -21,39 +20,36 @@ const BAR_NAME: Record<Bar["kind"], string> = {
   health: "Health", stamina: "Stamina", magicka: "Magicka", breath: "Breath", climb: "Grip",
 };
 
-// What the view remembers between pushes (main.ts keeps it): the damage trail's percentage per bar, and the bars
-// now regenerating. The render stays a pure function of the push and this memory.
-export interface BarMemory { trail: Partial<Record<Bar["kind"], number>>; regen: ReadonlySet<Bar["kind"]>; }
-const NONE: BarMemory = { trail: {}, regen: new Set() };
-
-// One step of that memory, pure: a drop leaves the trail at the highest value just held (Dark Souls' lag), a rise
-// marks the bar regenerating, and a bar not drawn forgets. `last` is each bar's fill percentage at the last push.
-export function remember(last: Partial<Record<Bar["kind"], number>>, bars: Bar[], mem: BarMemory):
-  { last: Partial<Record<Bar["kind"], number>>; mem: BarMemory } {
-  const nextLast: Partial<Record<Bar["kind"], number>> = {}, trail: BarMemory["trail"] = {}, regen = new Set<Bar["kind"]>();
-  for (const b of bars) {
-    if (!b.shown) continue;
-    const f = fillPct(b), was = last[b.kind];
-    nextLast[b.kind] = f;
-    const held = mem.trail[b.kind];
-    if (was !== undefined && f < was) trail[b.kind] = Math.max(held ?? was, was);
-    else if (held !== undefined && held > f) trail[b.kind] = held;
-    if (was !== undefined && f > was) regen.add(b.kind);
-    else if (was !== undefined && f === was && mem.regen.has(b.kind)) regen.add(b.kind);
-  }
-  return { last: nextLast, mem: { trail, regen } };
+// The bars' motion (owner look 1: the 5 Hz pushes redrew each bar, so it stepped, and the regeneration glint
+// restarted at every push, so it flashed). Like Skyrim's own meter, the fill eases toward the pushed value every frame,
+// and on a loss a pale trail holds where the bar was, then slides down after it; a rise carries the trail with it.
+// Pure: main.ts calls `tick` once a frame per bar and writes the two widths.
+export interface Meter { fill: number; trail: number; target: number; hold: number }
+export const FILL_TAU = 0.11;      // s: the fill's time constant (the 0.2 s between pushes reads as one glide)
+export const TRAIL_HOLD = 0.55;    // s the trail waits after a loss
+export const TRAIL_RATE = 2.2;     // 1/s: then it closes on the fill exponentially, never slower than TRAIL_MIN
+export const TRAIL_MIN = 12;       // %/s
+export const meter = (pct: number): Meter => ({ fill: pct, trail: pct, target: pct, hold: 0 });
+export function tick(m: Meter, target: number, dt: number): Meter {
+  let { fill, trail, hold } = m;
+  if (target < m.target - 1e-6) hold = TRAIL_HOLD;               // a new loss restarts the hold
+  fill += (target - fill) * (1 - Math.exp(-dt / FILL_TAU));
+  if (Math.abs(target - fill) < 0.02) fill = target;
+  if (fill >= trail) { trail = fill; hold = 0; }
+  else if (hold > 0) hold = Math.max(0, hold - dt);
+  else trail = Math.max(fill, trail - Math.max(TRAIL_MIN * dt, (trail - fill) * (1 - Math.exp(-dt * TRAIL_RATE))));
+  return { fill, trail, target, hold };
 }
 
 // The three standing bars are known by colour and place, as in Dark Souls; breath and grip come and go, so they
-// carry their name.
+// carry their name. Rendered once at the pushed value; main.ts moves the widths in place from then on.
 const NAMED = new Set<Bar["kind"]>(["breath", "climb"]);
-const bar = (b: Bar, mem: BarMemory): string => {
-  const f = fillPct(b), t = Math.max(f, mem.trail[b.kind] ?? f);
-  const cls = [b.kind, mem.regen.has(b.kind) && f < 100 ? "regen" : "", b.kind === "health" && isLow([b]) ? "low" : ""]
-    .filter(Boolean).join(" ");
-  return `<div class="row ${b.kind}"><div class="bar ${cls}" style="width:${barLength(b).toFixed(2)}rem"
+const bar = (b: Bar, m?: Meter): string => {
+  const f = m?.fill ?? fillPct(b), t = Math.max(f, m?.trail ?? f);
+  const cls = [b.kind, b.kind === "health" && isLow([b]) ? "low" : ""].filter(Boolean).join(" ");
+  return `<div class="row ${b.kind}" data-kind="${b.kind}"><div class="bar ${cls}" style="width:${barLength(b).toFixed(2)}rem"
   role="meter" aria-label="${BAR_NAME[b.kind]}" aria-valuenow="${Math.round(b.current)}" aria-valuemax="${Math.round(b.max)}">
-  <div class="trail" data-trail="${b.kind}" style="width:${t.toFixed(1)}%"></div><div class="fill" style="width:${f.toFixed(1)}%"></div></div>${NAMED.has(b.kind) ? `<span class="bar-name">${BAR_NAME[b.kind]}</span>` : ""}</div>`;
+  <div class="trail" style="width:${t.toFixed(1)}%"></div><div class="fill" style="width:${f.toFixed(1)}%"></div></div>${NAMED.has(b.kind) ? `<span class="bar-name">${BAR_NAME[b.kind]}</span>` : ""}</div>`;
 };
 
 // The sneak eye, our own drawing: the lids part as detection rises; a word beside it for the folded phone.
@@ -97,26 +93,36 @@ const banner = (b: PlaceBanner): string => `<div class="banner${b.firstVisit ? "
 
 const notice = (n: Notice): string => `<li class="notice ${n.kind}" data-id="${esc(n.id)}">${esc(n.text)}</li>`;
 
-export function renderBars(bars: Bar[], mem: BarMemory = NONE): string {
-  return bars.filter((b) => b.shown).map((b) => bar(b, mem)).join("");
+export function renderBars(bars: Bar[], meters: Partial<Record<Bar["kind"], Meter>> = {}): string {
+  return bars.filter((b) => b.shown).map((b) => bar(b, meters[b.kind])).join("");
+}
+
+// Vastei's shimmer (owner look 1: no "+N"): a light that runs across the plate once, its strength growing with the
+// gain against what was carried before, so a few vastei on a big purse glint faintly and a haul flares. 0..1.
+export function shimmer(gained: number | undefined, carried: number): number {
+  if (gained === undefined || gained <= 0) return 0;
+  const before = Math.max(0, carried - gained);
+  const share = gained / Math.max(before + gained, 1);          // the share of the purse just won
+  const size = Math.log10(1 + gained) / 3;                      // and its size: 1000 vastei is the full flare
+  return Math.round(Math.min(1, Math.max(0.15, 0.5 * share + 0.5 * size)) * 100) / 100;
 }
 
 // The vastei mark: our own drawing, a scale-plate lozenge with a centre line.
 const VMARK = `<svg class="vmark" viewBox="-8 -10 16 20" aria-hidden="true"><path d="M0 -9 L7 0 L0 9 L-7 0Z"/><path d="M0 -5 L0 5"/></svg>`;
 
-export function render(s: HudState, mem: BarMemory = NONE): string {
+export function render(s: HudState, meters: Partial<Record<Bar["kind"], Meter>> = {}): string {
   if (!s.visible) return `<div class="hud hidden"></div>`;
   const sneak = s.sneak.sneaking
     ? `<div class="sneak" data-eye="${s.sneak.eye}">${eye(s.sneak.eye)}<span class="sneak-word">${sneakWord(s.sneak.eye)}</span></div>` : "";
-  const gain = s.vastei.gained !== undefined && s.vastei.gained > 0 ? `<span class="gain">+${s.vastei.gained}</span>` : "";
+  const glow = shimmer(s.vastei.gained, s.vastei.carried);
   return `<div class="hud${isLow(s.bars) ? " low" : ""}">
   <div class="vignette" aria-hidden="true"></div>
   <div class="corner">
-    <div class="bars" data-bars>${renderBars(s.bars, mem)}</div>
-    <div class="vastei${gain ? " up" : ""}">${VMARK}<span class="count">${s.vastei.carried}</span><span class="vlabel">Vastei</span>${gain}</div>
     ${s.notices.length ? `<ul class="notices">${s.notices.map(notice).join("")}</ul>` : ""}
+    <div class="bars" data-bars>${renderBars(s.bars, meters)}</div>
+    <div class="vastei${glow ? " up" : ""}"${glow ? ` data-glow="${glow}" style="--glow:${glow}"` : ""}>${VMARK}<span class="count">${s.vastei.carried}</span><span class="vlabel">Vastei</span></div>
   </div>
-  <div class="minimap" data-minimap hidden aria-label="Minimap"><canvas></canvas><div class="mm-me">${PLAYER_SVG}</div>${ROSE}</div>
+  <div class="minimap" data-minimap hidden aria-label="Minimap"><canvas></canvas><div class="mm-me">${ME}</div><span class="mm-n">N</span></div>
   ${s.effects.length ? `<ul class="effects">${s.effects.map(effect).join("")}</ul>` : ""}
   ${sneak}
   ${s.banner ? banner(s.banner) : ""}
