@@ -137,8 +137,10 @@ def pick():
             b = beat(m) if m["state"] == "running" else None
             if not streamed(b) and not locked(m["name"]):
                 free.append((0, 0, m))     # warm and free: no boot to wait for
-        elif m["state"] == "stopped":
+        elif m["state"] == "stopped" and not locked(m["name"]):   # a queued job's machine is not free either
             free.append((1, -(score(m) or 0), m))
+    if not free:   # every standby busy: queue behind the job that will finish first is unknowable; take the best score
+        free = [(2, -(score(m) or 0), m) for m in ms if not streamed(beat(m) if m["state"] == "running" else None)]
     if not free:
         sys.exit("pool: every standby is streamed on or busy with another job")
     print(sorted(free, key=lambda x: (x[0], x[1]))[0][2]["name"])

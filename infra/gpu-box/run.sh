@@ -128,6 +128,13 @@ Get-Content $o -EA SilentlyContinue' ;;
     wait_ssh; echo "running at $(ip)" ;;
   start) aws ec2 start-instances --region $R --instance-ids "$(id)" >/dev/null; wait_ssh; echo "running at $(ip)" ;;
   # stop names its machine first: GPU_NAME=... (not ARGONIA_PLAY) once stopped argonia-play silently (1.8, 2026-10-31)
-  stop) echo "stopping $M ($R)"; "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo "stopping $M" ;;
+  stop)
+    # a job queued for this machine starts it again at once: leave it up (a batch's closing stop, then the next
+    # lane's `up`, cost a stop and boot and risked spot capacity, 1.12 look 1, 2026-11-01)
+    for q in "$HOME"/.argonia/jobs/*.log; do n=$(basename "$q" .log)
+      if head -1 "$q" 2>/dev/null | grep -q "^queued for $M " && [ ! -f "${q%.log}.started" ] && [ ! -f "${q%.log}.rc" ] \
+         && kill -0 "$(cat "${q%.log}.pid" 2>/dev/null || echo 0)" 2>/dev/null; then
+        echo "not stopping $M: job $n is queued for it"; exit 0; fi; done
+    echo "stopping $M ($R)"; "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo "stopping $M" ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
 esac
