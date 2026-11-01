@@ -23,9 +23,19 @@ Stills and logs in `out/pad112/{p1080,folded,unfolded}/` and `out/runs/pad-panes
 | pad-panes journey | FAIL at step 1 (same cause) | same | same |
 Not proven: X right-click, triggers/right-stick wheel, journal/map/System panes (journey stops at step 1).
 
+## Rerun (pad112j, 1080p): pad-panes PASS, 21 of 21 steps in 225.5 s
+`out/runs/pad-panes/20261101T011645/`. Start opens Wind UI's windows, the left stick moves the cursor, A clicks, X
+right-clicks, the triggers and right stick turn the wheel, the bumpers cycle stats, inventory, magic, our journal, our
+map and System (last), B closes, Select waits; the same panes by keyboard (Tab, J, Esc). Touch stays owed (stream client).
+Fixes behind it:
+- **Tween swap** (padcursor.cpp TweenSink, rule `pad::tween_to_windows`): Wind UI does not take TweenMenu early in a
+  session, so a frame after it opens untaken it is hidden and InventoryMenu shown (log "pad: tween -> Wind UI's windows").
+  This covers Tab, Start and the HUD's Menu button.
+- **Close by Esc, not Tab:** Tab left the windows open (pad112f).
+- **Close guard** (`pad::close_allowed`, 0.5 s): the Start that opened the windows cannot close them.
+- **No nav.ts change needed:** B leaves our journal back to the windows, and the bumpers carry on to the map.
+
 ## Open
-- Start -> Wind UI: with vanilla.txt removed (Test-Path False) the tween is still Skyrim's on open. Needs the
-  Wind UI-takeover owner (1.12 §1) to say what opens its menu mode; then pad-panes re-runs.
 - In a focused PrismaUI view the cursor yields; LB/RB there are nav.ts's, so cycling on from journal to map is the
   views' (nav.ts) job.
 
