@@ -8,6 +8,7 @@ items:
   - chart-minimap
   - magic-pane
   - pad-panes
+  - ui-handoffs
   - journal-dialogue
   - system-perks
   - menus-quit
