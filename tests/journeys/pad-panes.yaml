@@ -29,8 +29,8 @@ steps:
   - name: bumper-to-journal
     do: [{pad: "RB:150"}, {wait: 1}, {pad: "RB:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane journal"}}]
-  - name: journal-closed-by-b    # nav.ts's B leaves our journal; Start brings the windows back
-    do: [{pad: "B:150"}, {wait: 2}, {pad: "START:150"}, {wait: 2}]
+  - name: journal-closed-by-b    # nav.ts's B leaves our journal; the windows under it take the pad again
+    do: [{pad: "B:150"}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}]
   - name: bumper-to-map          # the cycle goes on from the journal to our map
     do: [{pad: "RB:150"}, {wait: 2}]
