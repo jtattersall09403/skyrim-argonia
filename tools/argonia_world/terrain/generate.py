@@ -49,6 +49,7 @@ LIP = math.tan(math.radians(DESIGN_SLOPE_DEG)) * MPP  # the limit's 4-neighbour 
 STEP_BED_M = 200 / su.UNITS_PER_METRE  # options §11: the bed crosses the edge 100-300 units (median 224) under the upper water
 FREEBOARD_M = 0.3  # a bank stands this far above its water; a bed at least this far below
 RIFFLE_M = 0.5  # water/solve.py: a smaller drop is no step
+BANK_SPREAD_DEG = 30.0  # a two-level line's bank bound spreads into the banks beside it at this slope
 STEP_CLEAR = 6  # samples: the edge bank keeps this far from a step's channel and slope band
 SHORE_FAR = 40  # samples: the shore grade reaches this far from the water
 # shore grade (rise per metre) by water type: the mangrove coast flat, the upland tarn steep
@@ -676,6 +677,22 @@ def generate(inp: Inputs, log=print) -> dict:
         h[e] = np.maximum(h[e], z)
         role[e] = 3
         sbank[e] = True
+    # a bank vertex on a line where two levels meet stands above the upper water (its plane covers the vertex), and
+    # the lower cell's bank beside it was held only above the lower water: a one-vertex ridge along the cell line
+    # (probes/lattice_banks.py: 10 x the off-line second difference, 66 % of the lattice). Skyrim.esm's ground rises
+    # to such an edge from both sides (probes/vanilla_level_edges.py), so that bound spreads over the banks either
+    # side at BANK_SPREAD_DEG, capped by the water's own cones (no wall over a bed)
+    two = (role == 3) & (np.nan_to_num(vmax - vmin, nan=0.0) > RIFFLE_M)
+    spread = majorant(np.where(two, lo, -1e9), math.tan(math.radians(BANK_SPREAD_DEG)) * MPP)
+    spread = np.minimum(spread, minorant(np.where(np.isfinite(hi), hi, 1e9), 0.8 * lip))
+    ok_ = (role == 3) & ~chan & (spread > lo)
+    for s_ in inp.sites:  # an entrance site keeps the band it is shaped in (a raised bank under a flat terraces it)
+        r_ = int(math.ceil(s_["radius_m"] * SITE_WIN / MPP)) + 2
+        ci_, cj_ = int(round(s_["y_m"] / MPP)), int(round(s_["x_m"] / MPP))
+        ok_[max(ci_ - r_, 0):ci_ + r_ + 1, max(cj_ - r_, 0):cj_ + r_ + 1] = False
+    lo[ok_] = spread[ok_]
+    st["water"]["two_level_spread_samples"] = int(ok_.sum())
+    del two, spread, ok_
     st["steps_joined"] = nstep
     h = np.minimum(np.maximum(h, lo), hi)
     log(f"constraints {time.time() - t0:.1f}s")
