@@ -1,0 +1,199 @@
+"""The world panel (1.15 §0, §f; decision 0033 §5): two fixed vantages per exterior region class, picked once from the
+generated data and written as a runnable scene and journey, the in-game oracle of the rebuilt world.
+
+Per eco class (`eco_class` rows with land regions in `cell_region_run`):
+- **shore**: on dry ground (0.3 to 3 m above its cell's solved water, `cell_water`) within 4 samples of water of the
+  class's commonest water type, the candidate nearest the class's centroid, facing the water;
+- **high**: the class's highest ground sample, facing the compass direction whose ground 300 to 1500 m out is lowest
+  (the longest view).
+Each still pair is noon and dawn under the land region's weathers (`regions.panel_weather`). The vantages are fixed
+by cell and position once written; `--write` refuses to move them (pass `--force` after a ruling).
+
+    python3 -m tools.argonia_world.panel            prints the vantages as JSON lines
+    python3 -m tools.argonia_world.panel --write    writes tests/scenes/world-panel.txt and tests/journeys/world-panel.yaml
+"""
+from __future__ import annotations
+
+import json
+import math
+import sys
+from pathlib import Path
+
+import numpy as np
+
+from tools.argonia_world import db
+from tools.argonia_world import skyrim_units as su
+
+ROOT = Path(__file__).resolve().parents[2]
+SCENE = ROOT / "tests" / "scenes" / "world-panel.txt"
+JOURNEY = ROOT / "tests" / "journeys" / "world-panel.yaml"
+N = su.PROVINCE_SAMPLES - 1          # 4032
+Q = su.QUADS_PER_CELL                 # 32
+C = su.PROVINCE_CELLS                 # 126
+CX0, CY0 = su.PROVINCE_CELL_SW
+MPP = su.PROVINCE_SAMPLE_M
+SHORE_LO_M, SHORE_HI_M, SHORE_REACH = 0.3, 3.0, 4  # dry ground just above the water, within 4 samples (7 m) of it
+VIEW_NEAR_M, VIEW_FAR_M = 300.0, 1500.0
+EDGE_CELLS = 3                        # a vantage stays 3 cells inside the province edge (no apron seam in frame)
+EYE_M = 1.0                           # the player is dropped this far above the ground and falls to it
+LAND_TOL_UNITS = 300                  # the teleport landed: the player within this of the vantage in x and y
+
+
+def _dilate(m: np.ndarray, r: int) -> np.ndarray:
+    out = m.copy()
+    for dy in range(-r, r + 1):
+        for dx in range(-r, r + 1):
+            if dy or dx:
+                out |= np.roll(np.roll(m, dy, 0), dx, 1)
+    return out
+
+
+def _cell_rasters(w):
+    """Per cell (row 0 north): eco class index, land region id, water level (NaN none), water type."""
+    cls = np.full((C, C), "", object)
+    reg = np.full((C, C), "", object)
+    eco = {r["id"]: r["eco_class_id"] for r in w.query("SELECT id, eco_class_id FROM land_region WHERE border = 0")}
+    for r in w.query("SELECT * FROM cell_region_run"):
+        i = C - 1 - (r["cy"] - CY0)
+        if 0 <= i < C and eco.get(r["land_region_id"]):
+            a, b = max(r["cx0"] - CX0, 0), min(r["cx1"] - CX0 + 1, C)
+            cls[i, a:b] = eco[r["land_region_id"]]
+            reg[i, a:b] = r["land_region_id"]
+    lev = np.full((C, C), np.nan, np.float32)
+    typ = np.full((C, C), "", object)
+    for r in w.query("SELECT cx, cy, level_m, water_type FROM cell_water"):
+        i, j = C - 1 - (r["cy"] - CY0), r["cx"] - CX0
+        if 0 <= i < C and 0 <= j < C:
+            lev[i, j], typ[i, j] = r["level_m"], r["water_type"]
+    return cls, reg, lev, typ
+
+
+def _up(a: np.ndarray) -> np.ndarray:
+    """A (126, 126) cell raster as the (4033, 4033) sample raster (the last row and column repeat their neighbour)."""
+    s = np.repeat(np.repeat(a, Q, 0), Q, 1)
+    return np.pad(s, ((0, 1), (0, 1)), mode="edge")
+
+
+def _yaw(dx_m: float, dy_south_m: float) -> float:
+    """Skyrim heading (0 north, clockwise) of a province direction (x east, y south)."""
+    return math.degrees(math.atan2(dx_m, -dy_south_m)) % 360
+
+
+def vantages(w=None, ground: np.ndarray | None = None) -> list[dict]:
+    from tools.argonia_world.terrain.grid import Sources
+    from tools.argonia_world.regions import panel_weather
+
+    w = w if w is not None else db.open()
+    g = np.asarray(ground if ground is not None else Sources.load().ground, np.float32)
+    cls, reg, lev, typ = _cell_rasters(w)
+    weather = {r["land_region"]: r for r in panel_weather.table(w)}
+    level = _up(lev)
+    wet = g < level                                    # NaN level compares False: no water
+    rows, cols = np.mgrid[0:N + 1, 0:N + 1]
+    inner = np.zeros_like(wet)
+    inner[EDGE_CELLS * Q:N + 1 - EDGE_CELLS * Q, EDGE_CELLS * Q:N + 1 - EDGE_CELLS * Q] = True
+    out = []
+    for k in sorted({c for c in cls.ravel() if c}):
+        in_cls = _up(cls == k) & inner
+        kinds = typ[(cls == k) & (typ != "")]
+        if not kinds.size:
+            continue
+        kind = max(sorted(set(kinds)), key=lambda t: int((kinds == t).sum()))
+        near = _dilate(wet & _up(typ == kind), SHORE_REACH)
+        klev = _up(np.where(typ == kind, lev, np.nan))  # the cell's own water, where it is of the kind
+        above = g - klev
+        cand = in_cls & near & ~wet & (above >= SHORE_LO_M) & (above <= SHORE_HI_M)
+        cy_, cx_ = rows[in_cls].mean(), cols[in_cls].mean()
+        picks = []
+        if cand.any():
+            rr, cc = np.nonzero(cand)
+            n = int(np.argmin((rr - cy_) ** 2 + (cc - cx_) ** 2))
+            r, c = int(rr[n]), int(cc[n])
+            win = wet[max(r - 8, 0):r + 9, max(c - 8, 0):c + 9]
+            wy, wx = np.nonzero(win)
+            dy = (wy + max(r - 8, 0)).mean() - r
+            dx = (wx + max(c - 8, 0)).mean() - c
+            picks.append(("shore", r, c, _yaw(dx, dy)))
+        hg = np.where(in_cls, g, -np.inf)
+        r, c = (int(v) for v in np.unravel_index(int(np.argmax(hg)), hg.shape))
+        best = None
+        for deg in range(0, 360, 45):
+            sx, sy = math.sin(math.radians(deg)), -math.cos(math.radians(deg))  # sy: south positive
+            d = np.arange(VIEW_NEAR_M, VIEW_FAR_M, 50.0) / MPP
+            pr = np.clip(np.rint(r + sy * d).astype(int), 0, N)
+            pc = np.clip(np.rint(c + sx * d).astype(int), 0, N)
+            m = float(g[pr, pc].mean())
+            if best is None or m < best[0]:
+                best = (m, float(deg))
+        picks.append(("high", r, c, best[1]))
+        for view, r, c, yaw in picks:
+            x_m, y_m = c * MPP, r * MPP
+            x, y = su.province_to_skyrim(x_m, y_m)
+            z_m = float(g[r, c])
+            ci, cj = min(r // Q, C - 1), min(c // Q, C - 1)
+            lr = reg[ci, cj]
+            wx_ = weather.get(lr)
+            out.append({"id": f"{k}-{view}", "eco_class": k, "view": view, "water_type": kind,
+                        "land_region": lr, "cell": [CX0 + cj, CY0 + (C - 1 - ci)],
+                        "x_m": round(x_m, 2), "y_m": round(y_m, 2), "ground_m": round(z_m, 2),
+                        "water_m": None if math.isnan(lev[ci, cj]) else round(float(lev[ci, cj]), 2),
+                        "pos": [round(x), round(y), round((z_m + EYE_M) * su.UNITS_PER_METRE)], "yaw_deg": round(yaw),
+                        "noon": wx_["noon"]["edid"] if wx_ else None, "dawn": wx_["dawn"]["edid"] if wx_ else None})
+    return out
+
+
+def scene_text(vs: list[dict]) -> str:
+    v = vs[0]
+    lines = ["; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage's cell, staged last",
+             "set gamehour to 12", f"cow ARG_Province {v['cell'][0]} {v['cell'][1]}"]
+    return "\r\n".join(lines) + "\r\n"
+
+
+def journey_text(vs: list[dict]) -> str:
+    head = ("# The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`\n"
+            "# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the\n"
+            "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
+            "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD\n"
+            "# hidden. Read by a `reader` against docs/design/world/look-board.md with the 1.15 §0 checklist; each step\n"
+            "# checks only that the teleport landed. Never move a vantage after the first run.\n")
+    steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"key": "F 300"}, {"wait": 2},
+                                                    {"console": {"line": "tm", "settle": 10}}],
+              "expect": [{"console": "IsPC1stPerson", "contains": "1.00"}]}]
+    for v in vs:
+        x, y, z = v["pos"]
+        land = [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
+                {"read": ["player"], "path": "pos.0", "gt": x - LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.0", "lt": x + LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.1", "gt": y - LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.1", "lt": y + LAND_TOL_UNITS}]
+        for when, hour in (("noon", 12), ("dawn", 6.5)):
+            do = [{"console": {"line": f"cow ARG_Province {v['cell'][0]} {v['cell'][1]}", "settle": 60}},
+                  {"teleport": f"pos {x} {y} {z}"}, {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
+                  {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
+            if v[when]:
+                do.append({"console": f"fw {v[when]}"})
+            do += [{"wait": 10}, {"wait": 4}]
+            steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": land})
+    j = {"id": "world-panel", "runner": 1, "crash_risk": "medium", "scene": "world-panel", "steps": steps}
+    return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
+
+
+def main(argv: list[str]) -> int:
+    vs = vantages()
+    if "--write" not in argv:
+        for v in vs:
+            print(json.dumps(v))
+        return 0
+    if JOURNEY.is_file() and "--force" not in argv and '"runner": 1' in JOURNEY.read_text():
+        old = [s["name"] for s in json.loads(JOURNEY.read_text().split("\n", 6)[-1])["steps"]]
+        if old != ["first-person-no-hud"] + [f"{v['id']}-{t}" for v in vs for t in ("noon", "dawn")]:
+            print("world-panel: the vantages are fixed; pass --force after a ruling", file=sys.stderr)
+            return 1
+    SCENE.write_bytes(scene_text(vs).encode())
+    JOURNEY.write_text(journey_text(vs))
+    print(f"{len(vs)} vantages -> {SCENE.relative_to(ROOT)}, {JOURNEY.relative_to(ROOT)}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

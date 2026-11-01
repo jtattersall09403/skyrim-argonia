@@ -1,18 +1,2416 @@
-# Draft (1.15 §0, §f): the fixed vantage panel, the in-game oracle of the rebuilt world (decision 0033 §5). Turned
-# into steps by the 1.15 session once the sample's cells exist. 24 stills at the play camera, read by a `reader`
-# against the look board (docs/design/world/look-board.md) with the 1.15 §0 checklist and the feel question.
-id: world-panel
-status: draft, owed L4
-scenes: [world-panel]
-steps:
-  - for each of the 12 region classes (world/db/land_region.jsonl eco classes): two vantages chosen at L1 from the
-      generated data (one on the ground beside water of the class's kind, one from the class's highest point with a
-      long view), fixed by cell and position in the scene and never moved after the first run
-  - at each vantage, two stills: noon (clear, the region's commonest weather) and dawn (06:30, the region's mist
-      regime), first person; the weather and hour per region come from
-      `python3 -m tools.argonia_world.regions.panel_weather` (noon 12:00 the commonest dry-season clear; dawn 06:30
-      the region_mist regime's weather: ARG_Weather_mist, _sea_fog or _montane_haze), the HUD hidden; the dawn still proves region_mist, the noon still the materials and water
-  - do: `console: {line: "cow ARG_Province x y", settle: 60}`, `teleport pos`, `set gamehour`, `fw <weather>`, wait
-      14 s for the load and the grass, the still
-  - read: [the player's cell and worldspace (the teleport landed), frame_time_ms at the densest vantage]
-  - expect: every step only checks the teleport landed; the stills decide, by the reader
+# The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`
+# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the
+# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the
+# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD
+# hidden. Read by a `reader` against docs/design/world/look-board.md with the 1.15 §0 checklist; each step
+# checks only that the teleport landed. Never move a vantage after the first run.
+{
+ "id": "world-panel",
+ "runner": 1,
+ "crash_risk": "medium",
+ "scene": "world-panel",
+ "steps": [
+  {
+   "name": "first-person-no-hud",
+   "do": [
+    {
+     "wait": 10
+    },
+    {
+     "key": "F 300"
+    },
+    {
+     "wait": 2
+    },
+    {
+     "console": {
+      "line": "tm",
+      "settle": 10
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "IsPC1stPerson",
+     "contains": "1.00"
+    }
+   ]
+  },
+  {
+   "name": "coastal-lagoon-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 26 -17",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 109056 -66176 91"
+    },
+    {
+     "console": "player.setangle z 93"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyCO"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 108756
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 109356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -66476
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -65876
+    }
+   ]
+  },
+  {
+   "name": "coastal-lagoon-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 26 -17",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 109056 -66176 91"
+    },
+    {
+     "console": "player.setangle z 93"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_sea_fog"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 108756
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 109356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -66476
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -65876
+    }
+   ]
+  },
+  {
+   "name": "coastal-lagoon-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -54 -22",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -221056 -86016 4525"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyCO"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -221356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -220756
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -86316
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -85716
+    }
+   ]
+  },
+  {
+   "name": "coastal-lagoon-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -54 -22",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -221056 -86016 4525"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_sea_fog"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -221356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -220756
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -86316
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -85716
+    }
+   ]
+  },
+  {
+   "name": "deep-river-corridor-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -31 -36",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -126848 -144640 91"
+    },
+    {
+     "console": "player.setangle z 10"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -127148
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -126548
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -144940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -144340
+    }
+   ]
+  },
+  {
+   "name": "deep-river-corridor-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -31 -36",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -126848 -144640 91"
+    },
+    {
+     "console": "player.setangle z 10"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -127148
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -126548
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -144940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -144340
+    }
+   ]
+  },
+  {
+   "name": "deep-river-corridor-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -29 -27",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -116224 -110464 493"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -116524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -115924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -110764
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -110164
+    }
+   ]
+  },
+  {
+   "name": "deep-river-corridor-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -29 -27",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -116224 -110464 493"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -116524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -115924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -110764
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -110164
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -17 -7",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -69632 -25600 666"
+    },
+    {
+     "console": "player.setangle z 137"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -69932
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -69332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -25900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -25300
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -17 -7",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -69632 -25600 666"
+    },
+    {
+     "console": "player.setangle z 137"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -69932
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -69332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -25900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -25300
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -40 53",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -163840 218240 37414"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -164140
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -163540
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 217940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 218540
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -40 53",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -163840 218240 37414"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -164140
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -163540
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 217940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 218540
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 6",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -6272 24704 1008"
+    },
+    {
+     "console": "player.setangle z 11"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudy"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -6572
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -5972
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 24404
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 25004
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 6",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -6272 24704 1008"
+    },
+    {
+     "console": "player.setangle z 11"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -6572
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -5972
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 24404
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 25004
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -55 -21",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -224896 -82944 5889"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudy"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -225196
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -224596
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -83244
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -82644
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -55 -21",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -224896 -82944 5889"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -225196
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -224596
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -83244
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -82644
+    }
+   ]
+  },
+  {
+   "name": "interior-swamp-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -16 -33",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -65536 -131072 133"
+    },
+    {
+     "console": "player.setangle z 317"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -65836
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -65236
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -131372
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -130772
+    }
+   ]
+  },
+  {
+   "name": "interior-swamp-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -16 -33",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -65536 -131072 133"
+    },
+    {
+     "console": "player.setangle z 317"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -65836
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -65236
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -131372
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -130772
+    }
+   ]
+  },
+  {
+   "name": "interior-swamp-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 26 22",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 107008 93440 2801"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 106708
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 107308
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 93140
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 93740
+    }
+   ]
+  },
+  {
+   "name": "interior-swamp-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 26 22",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 107008 93440 2801"
+    },
+    {
+     "console": "player.setangle z 135"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 106708
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 107308
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 93140
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 93740
+    }
+   ]
+  },
+  {
+   "name": "northern-transition-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 54",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -4224 221312 641"
+    },
+    {
+     "console": "player.setangle z 254"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -4524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -3924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 221012
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 221612
+    }
+   ]
+  },
+  {
+   "name": "northern-transition-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 54",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -4224 221312 641"
+    },
+    {
+     "console": "player.setangle z 254"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_montane_haze"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -4524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -3924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 221012
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 221612
+    }
+   ]
+  },
+  {
+   "name": "northern-transition-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -44 60",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -178176 249856 44573"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -178476
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -177876
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 249556
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 250156
+    }
+   ]
+  },
+  {
+   "name": "northern-transition-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -44 60",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -178176 249856 44573"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_montane_haze"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -178476
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -177876
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 249556
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 250156
+    }
+   ]
+  },
+  {
+   "name": "rootland-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -16 -3",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -64512 -12032 1191"
+    },
+    {
+     "console": "player.setangle z 324"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -64812
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -64212
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -12332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -11732
+    }
+   ]
+  },
+  {
+   "name": "rootland-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -16 -3",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -64512 -12032 1191"
+    },
+    {
+     "console": "player.setangle z 324"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -64812
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -64212
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -12332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -11732
+    }
+   ]
+  },
+  {
+   "name": "rootland-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -6 -4",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -23424 -12288 3115"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -23724
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -23124
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -12588
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -11988
+    }
+   ]
+  },
+  {
+   "name": "rootland-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -6 -4",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -23424 -12288 3115"
+    },
+    {
+     "console": "player.setangle z 225"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -23724
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -23124
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -12588
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -11988
+    }
+   ]
+  },
+  {
+   "name": "tidal-delta-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 25 -12",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 103936 -45056 91"
+    },
+    {
+     "console": "player.setangle z 68"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyCO"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 103636
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 104236
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -45356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -44756
+    }
+   ]
+  },
+  {
+   "name": "tidal-delta-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 25 -12",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 103936 -45056 91"
+    },
+    {
+     "console": "player.setangle z 68"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_sea_fog"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 103636
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 104236
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -45356
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -44756
+    }
+   ]
+  },
+  {
+   "name": "tidal-delta-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 25 -14",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 105600 -57216 618"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyCO"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 105300
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 105900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -57516
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -56916
+    }
+   ]
+  },
+  {
+   "name": "tidal-delta-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 25 -14",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 105600 -57216 618"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_sea_fog"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 105300
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 105900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -57516
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -56916
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -41 13",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -167040 54784 5265"
+    },
+    {
+     "console": "player.setangle z 223"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyFF"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -167340
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -166740
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 54484
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 55084
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -41 13",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -167040 54784 5265"
+    },
+    {
+     "console": "player.setangle z 223"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_montane_haze"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -167340
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -166740
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 54484
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 55084
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -51 36",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -208640 147712 40299"
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyFF"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -208940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -208340
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 147412
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 148012
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -51 36",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -208640 147712 40299"
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_montane_haze"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -208940
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -208340
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 147412
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 148012
+    }
+   ]
+  }
+ ]
+}

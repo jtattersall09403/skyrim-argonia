@@ -1,0 +1,12 @@
+# 1.15 round 1's in-game batch (1.15 §0, §f): the world panel, the vegetation lane's rock booth, then the Claywater
+# walk and look last: crash-prone, and expected red until the places are re-seated on the generated ground (they
+# measure the gap). One deploy of main, run by the planner:
+#   tooling/job_guard.sh run --gpu=<machine> 1.15-round-1 -- python3 tools/run_batch.py tests/journeys/batches/1.15-round-1.yaml
+id: 1.15-round-1
+relaunch_mb: 6000
+relaunch_every: 0
+items:
+  - world-panel
+  - rock-booth
+  - claywater-walk
+  - claywater-look

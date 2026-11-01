@@ -120,8 +120,12 @@ def test_shallows_den_sits_in_water_at_least_2_5_m_deep():
     w = db.open()
     shallows = w.get("build_ref", "ref.claywater-station.crocodile-den-shallows")
     assert shallows.z_m is None  # the generator places it on the ground
+    from tools.argonia_world.water import solve  # the solved cell water (1.15), not the old plan's 32.84 m
+    i, j = solve.cell_of(shallows.x_m, shallows.y_m)
+    water_m = solve.load(w).level(solve.CX0 + i, solve.CY0 + j)
+    assert water_m is not None, "the den's cell has no water"
     floor_there = pb.GameGround().z(shallows.x_m, shallows.y_m)
-    assert WATER_M - floor_there >= POOL_DEPTH_M, floor_there
+    assert water_m - floor_there >= POOL_DEPTH_M, (water_m, floor_there)
     p = w.get("build_person", CROC)
     raft = w.get("build_ref", "ref.claywater-station.raft")  # the ford stays outside its territory
     assert math.hypot(shallows.x_m - raft.x_m, shallows.y_m - raft.y_m) > p.sandbox_radius_m
