@@ -131,6 +131,7 @@ std::vector<std::string> MagicReport();
 // --- menus.cpp: our System pane over Esc's Journal Menu, our wait window over the Sleep/Wait Menu (1.12 look 1) --
 void SystemMenuOpened();  // Esc's Journal Menu opened (under Get().lock, the menu event): hidden, our pane over it
 void WaitMenuOpened();    // the Sleep/Wait Menu opened: hidden, our wait window over it
+void FrameMenuOpened(std::string_view menu);  // a message box or lockpicking opened: put in the frame style
 std::string SystemIntent(const ac::msg::SystemPick& p);
 std::string WaitIntent(const ac::msg::WaitPick& p);
 void MenusViewClosed(std::string_view view);  // our System pane or wait window closed (CloseView)

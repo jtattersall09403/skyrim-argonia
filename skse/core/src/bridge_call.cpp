@@ -21,6 +21,9 @@ constexpr std::array kNatives{
     // Bridge only, no Papyrus twin: the 1.2 §0 probe's window (its fixture, never what the probe measures) and the
     // views' binding state.
     Native{"ViewProbe", true, R::Json},         Native{"Views", false, R::TextList},
+    // An engine message box with the given words (Debug.MessageBox's route, as a script shows one): the frame-style
+    // sweep's sample (lane 1.12-menus); it sets no game state.
+    Native{"MessageBox", true, R::Text},
 };
 
 std::string wrap(std::string_view native, json::Value v) {

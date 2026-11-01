@@ -13,27 +13,27 @@ steps:
     do: [{wait: 2}, {pad: "+RX=1:2500 -:100"}]
     expect: [{read: [core, Views], path: value, contains: "vanilla-hud hidden 11/11"}]   # 11 clips since the HUD restyle hid the rest
     reader: [no compass and no quest marker anywhere in the HUD, our HUD bars in our palette]
-  - name: tween
+  - name: tween               # Tab: Dear Diary's tween is hidden at its opening and Wind UI's windows take over
     do: [{key: "TAB 120"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: TweenMenu}}]
-    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+    expect: [{event: {kind: menu, match: TweenMenu}}, {log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 5}]
+    reader: [Wind UI's windows in the frame style, every word in Pelagiad, no Nordic ornament, no Dear Diary centre picker]
   - name: tween-closed
     do: [{key: "TAB 120"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"menu": "TweenMenu", "opening": false'}}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: Tab in the windows: closed to play"}, within: 5}]
   - name: inventory
     do: [{key: "I 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: InventoryMenu}}]
-    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+    reader: [Wind UI's windows in the frame style, every word in Pelagiad, no Nordic ornament]
   - name: inventory-closed
-    do: [{key: "I 120"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"menu": "InventoryMenu", "opening": false'}}]
+    do: [{key: "I 120"}, {wait: 1.5}]      # Wind UI takes I into its windows; I again closes them (the windows' close)
+    expect: [{log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 5}]
   - name: magic
     do: [{key: "P 120"}, {wait: 2}]
     expect: [{event: {kind: menu, match: MagicMenu}}]
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: magic-closed
     do: [{key: "P 120"}, {wait: 1.5}]
-    expect: [{event: {kind: menu, match: '"menu": "MagicMenu", "opening": false'}}]
+    expect: [{read: [core, Views], path: value, contains: "magic ready closed", within: 5}]   # P opens our magic pane (lane-1.12-magicpane)
   - name: map
     do: [{key: "M 120"}, {wait: 2}]
     expect: [{read: [core, Views], path: value, contains: "chart ready open"}]   # M opens our chart; MapMenu never opens (1.12 look 1)
@@ -66,12 +66,12 @@ steps:
     reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
   - name: journal-closed
     do: [{close_menu: journal}]
-  - name: system-tab          # Escape in play: the vanilla Journal Menu's System tab (the MCM lives under it)
+  - name: system-tab          # Escape in play: our System pane over the hidden Journal Menu (Settings hands over to it)
     do: [{key: "ESC 80"}, {wait: 2}]
-    expect: [{event: {kind: menu, match: Journal Menu}}]
-    reader: [the sheet in our palette (warm paper, moss or near-black frame, red-clay accents), every word in Pelagiad, no Nordic ornament, the Argonia title where a title shows]
+    expect: [{event: {kind: menu, match: Journal Menu}}, {read: [core, Views], path: value, contains: "system ready open", within: 5}]
+    reader: [one small window in the frame style titled System, Settings, Load and the two quits, every word in Pelagiad, no Quests entry, no parchment]
   - name: system-closed
-    do: [{key: "ESC 80"}, {wait: 1.5}]
+    do: [{close_menu: system}, {wait: 1.5}]
   - name: mcm
     owed: the pad path into System > Mod Configuration (its list position under the SkyUI tab)
   - name: props-found

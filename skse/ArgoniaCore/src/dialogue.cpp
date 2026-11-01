@@ -197,6 +197,9 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       SystemMenuOpened();
       return RE::BSEventNotifyControl::kContinue;
     }
+    if (menu == RE::MessageBoxMenu::MENU_NAME || menu == RE::LockpickingMenu::MENU_NAME) {  // the frame style (look 1)
+      FrameMenuOpened(menu);  // and on to the router, as before
+    }
     if (menu == RE::SleepWaitMenu::MENU_NAME) {  // T, the pad's Select: our wait window over the hidden menu
       WaitMenuOpened();
       return RE::BSEventNotifyControl::kContinue;

@@ -52,6 +52,8 @@ struct State {
 } g;
 
 std::atomic<bool> g_loop{false};
+std::atomic<bool> g_start_held{false};                 // the pad's Start is down (set by the input sink)
+std::chrono::steady_clock::time_point g_tween_at;      // the tween's last opening (the regression's log)
 
 void Send(RE::InputEvent* ev) {
   auto* mgr = RE::BSInputDeviceManager::GetSingleton();
@@ -366,6 +368,7 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
       if (!b) continue;
       pad::Button which{};
       if (!pad::button_from_code(b->GetIDCode(), which)) continue;
+      if (which == pad::Button::Start) g_start_held = b->IsPressed();
       if (b->IsUp()) {  // A and X let go: the mouse button too, at the next tick (a held A drags a window)
         if (which == pad::Button::A) g.release_left = true;
         if (which == pad::Button::X) g.release_right = true;
@@ -502,6 +505,10 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       }).detach();
       return RE::BSEventNotifyControl::kContinue;
     }
+    if (e && !e->opening && e->menuName == kWindUIMenu && g_tween_at.time_since_epoch().count()) {
+      const auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - g_tween_at).count();
+      if (ms < 2000) SKSE::log::warn("pad: Wind UI's windows closed {} ms after the tween opened (start held: {})", ms, g_start_held.load());
+    }
     if (!e || !e->opening || e->menuName != RE::TweenMenu::MENU_NAME) return RE::BSEventNotifyControl::kContinue;
     // Dear Diary's tween (its centre picker) drew for the frames until the swap below took (owner look 1: "starts to
     // bring up the dear diary UI before cutting to Wind UI"). Its movie is hidden now, in the opening event, before it
@@ -511,14 +518,32 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
         m->uiMovie->SetVisible(false);
         SKSE::log::info("pad: Dear Diary's tween hidden at its opening");
       }
-    SKSE::GetTaskInterface()->AddTask([] {
-      if (!pad::tween_to_windows(Open(RE::TweenMenu::MENU_NAME), Open(kWindUIMenu))) return;
-      auto* q = RE::UIMessageQueue::GetSingleton();
-      if (!q) return;
-      q->AddMessage(RE::TweenMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
-      q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
-      SKSE::log::info("pad: tween -> Wind UI's windows");
-    });
+    // The swap waits for the pad's Start to be let go: Wind UI's windows opened under a held Start were closed by its
+    // release the same frame (pad-panes start-opens-windows, out/batch/menus/20261101T135219: open 14.378, closed
+    // 14.393). The tween no longer draws, so the wait shows nothing; the swap runs within 1 s whatever happens.
+    g_tween_at = std::chrono::steady_clock::now();
+    std::thread([] {
+      for (int i = 0; i < 60; ++i) {
+        std::atomic<bool> done{false}, swapped{false};
+        SKSE::GetTaskInterface()->AddTask([i, &done, &swapped] {
+          if (!g_start_held || i == 59) {
+            swapped = true;
+            if (pad::tween_to_windows(Open(RE::TweenMenu::MENU_NAME), Open(kWindUIMenu)))
+              if (auto* q = RE::UIMessageQueue::GetSingleton()) {
+                q->AddMessage(RE::TweenMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
+                q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
+                SKSE::log::info("pad: tween -> Wind UI's windows ({} ms after its opening{})", i * 16,
+                                i ? ", once Start was let go" : "");
+              }
+          }
+          done = true;
+          done.notify_one();
+        });
+        done.wait(false);
+        if (swapped) return;
+        std::this_thread::sleep_for(std::chrono::milliseconds(16));
+      }
+    }).detach();
     return RE::BSEventNotifyControl::kContinue;
   }
 };

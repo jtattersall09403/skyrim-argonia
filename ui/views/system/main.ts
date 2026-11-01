@@ -10,6 +10,8 @@ start({
   render(m) {
     if (m.type !== "system.state") return;
     root.innerHTML = render(m.body);
+    // the first entry holds the focus at the opening, so the pad and the arrows start on a marked row (reader polish)
+    root.querySelector<HTMLElement>(".entry:not([disabled])")?.focus({ preventScroll: true });
   },
   back() { send(close()); },
 });

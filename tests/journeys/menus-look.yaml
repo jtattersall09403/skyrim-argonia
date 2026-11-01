@@ -15,10 +15,10 @@ steps:
     reader: [the play camera, our HUD, nothing of a menu on screen]
   - name: tab-burst          # 20 frames a second over 2 s from just before Tab: no Dear Diary picker in any frame
     do:
-      - {burst: {frames: 40, fps: 10}}
+      - {burst: {frames: 40, fps: 8}}       # 5 s: Wind UI took 1.8 s to draw after the tween (20261101T143721)
       - {wait: 2}
       - {key: "TAB 120 engine"}
-      - {wait: 3}
+      - {wait: 5}
       - {burst_fetch: tab}
     expect:
       - {log: {name: ArgoniaCore, contains: "pad: Dear Diary's tween hidden at its opening"}, within: 5}
@@ -53,14 +53,23 @@ steps:
     reader: [one small window in the frame style (green-black pane, gold-green trim, warm text) titled System, entries Settings, Load, Quit to the main menu, Quit to the desktop, a Close button, no Quests entry, nothing of Dear Diary's parchment journal behind or around it]
   - name: system-settings    # Settings: the engine's own settings page
     do: [{call: [core, ViewIntent, '{"type":"system.pick","v":1,"body":{"action":"settings"}}']}, {wait: 3}]
-    expect: [{log: {name: ArgoniaCore, contains: "menus: the System page's SETTINGS pressed"}, within: 5}]
-    reader: [the game's settings list (gameplay, display, audio and the rest), what frames it]
+    expect:
+      - {log: {name: ArgoniaCore, contains: "menus: the System page's SETTINGS pressed"}, within: 5}
+      - {log: {name: ArgoniaCore, contains: "Journal Menu in the frame style (tabs hidden: QuestsTab"}, within: 5}
+    reader: [the game's settings list (gameplay, display, audio and the rest) on a dark green-black ground with warm light words (the frame style), no parchment page, no Quests or stats tab]
   - name: settings-back      # Esc backs out to the page's main list: our System pane again
     do: [{key: "ESC 120 engine"}, {wait: 3}]
     expect:
       - {log: {name: ArgoniaCore, contains: "menus: back at the System page's main list"}, within: 6}
       - {read: [core, Views], path: value, contains: "system ready open", within: 5}
     reader: [our System pane again, no Dear Diary System list or Quests tab]
+  - name: system-load        # Load: the engine's own save list, in the frame style too
+    do: [{call: [core, ViewIntent, '{"type":"system.pick","v":1,"body":{"action":"load"}}']}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "menus: the System page's LOAD pressed"}, within: 5}]
+    reader: [the save list on a dark green-black ground with warm light words (the frame style), no parchment page, no Quests or stats tab]
+  - name: load-back
+    do: [{key: "ESC 120 engine"}, {wait: 3}]
+    expect: [{read: [core, Views], path: value, contains: "system ready open", within: 6}]
   - name: system-closed
     do: [{close_menu: system}, {wait: 2}]
     expect: [{event: {kind: menu, match: '"menu": "Journal Menu", "opening": false'}, within: 5}]
@@ -98,10 +107,20 @@ steps:
     do: [{close_menu: Book Menu}, {wait: 2}]
   - name: lockpicking
     do: [{console: '"{lockbox}".lock 25'}, {console: '"{lockbox}".activate player'}, {wait: 3}]
-    expect: [{event: {kind: menu, match: Lockpicking Menu}}]
-    reader: [the lock in close-up with its words (lock level, lockpicks), what frames them and in which style]
+    expect:
+      - {event: {kind: menu, match: Lockpicking Menu}}
+      - {log: {name: ArgoniaCore, contains: "menus: Lockpicking Menu in the frame style"}, within: 5}
+    reader: [the lock in close-up with its words (lock level, lockpicks) in warm light text on dark (the frame style), nothing of parchment]
   - name: lockpicking-closed
     do: [{key: "ESC 120 engine"}, {wait: 2}]
+  - name: message-box        # an engine message box (Debug.MessageBox, the scripts' own route): the frame style
+    do: [{call: [core, MessageBox, "The tide is out."]}, {wait: 3}]
+    expect:
+      - {event: {kind: menu, match: MessageBoxMenu}}
+      - {log: {name: ArgoniaCore, contains: "menus: MessageBoxMenu in the frame style"}, within: 5}
+    reader: [one small message box reading "The tide is out." with an OK button, a dark green-black ground with warm light words (the frame style), no parchment]
+  - name: message-box-closed
+    do: [{close_menu: MessageBoxMenu}, {wait: 2}]
   - name: rest-sitting       # rest at the camp spot: the sitting, ours
     do: [{rest: ARG_Ref_ClaywaterStationRoadIn}]
     expect: [{read: [core, SittingOpen], path: value, eq: true, within: 10}]

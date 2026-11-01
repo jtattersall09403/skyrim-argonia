@@ -4,6 +4,8 @@ id: menus
 relaunch_mb: 6000
 relaunch_every: 0
 items:
-  - menus-look
   - pad-panes
+  - system-perks
+  - ui-sweep
+  - menus-look
   - menus-quit

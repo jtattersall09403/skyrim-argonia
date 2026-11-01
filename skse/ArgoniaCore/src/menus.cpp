@@ -72,19 +72,25 @@ void PushSystem() {
 // While a page of the Journal Menu is shown: back at the page's main list (the state it had when we handed over), the
 // movie hides and our pane returns; the Journal Menu closed (the page's own quit or load), nothing more is ours.
 void WatchDelegated(double main_state) {
+  // Load leaves the main list a few frames after its press (the save list is read first: state 0 -> 0 at the press,
+  // menus-look 20261101T143721), so the page counts as back only once it has left the main list, or after 3 s.
   std::thread([main_state] {
+    bool left = false;
     for (int i = 0; i < 20 * 60 * 30; ++i) {  // at most half an hour on a page
       std::this_thread::sleep_for(std::chrono::milliseconds(50));
       std::atomic<int> verdict{0};  // 0 waiting, 1 stop
       std::atomic<bool> done{false};
-      SKSE::GetTaskInterface()->AddTask([main_state, &verdict, &done] {
+      SKSE::GetTaskInterface()->AddTask([main_state, i, &left, &verdict, &done] {
+        RE::GFxValue page;
+        const bool at_main = SystemPage(page) && PageState(page) == main_state;
+        if (!at_main) left = true;
         if (!g.delegated || !IsOpen(RE::JournalMenu::MENU_NAME)) {
           g.delegated = g.system_open = false;
           verdict = 1;
-        } else if (RE::GFxValue page; SystemPage(page) && PageState(page) == main_state) {
+        } else if (at_main && (left || i >= 60)) {
           SetMovieVisible(RE::JournalMenu::MENU_NAME, false);
           g.delegated = false;
-          SKSE::log::info("menus: back at the System page's main list; our System pane again");
+          SKSE::log::info("menus: back at the System page's main list; our System pane again ({})", left ? "left and back" : "never left it");
           std::lock_guard l(Get().lock);
           PushSystem();
           verdict = 1;
@@ -96,6 +102,81 @@ void WatchDelegated(double main_state) {
       if (verdict) return;
     }
   }).detach();
+}
+
+// Settings and Load are Dear Diary's System page: parchment, with the Quests and stats tabs over it (owner look 1: quests
+// live only in the journal). Handed over, the page is put in the frame style: the tab bar is hidden and the whole movie
+// is colour-transformed so the paper becomes the frame ground and the ink the frame text (theme.css: paper #e6d9b8 ->
+// frame-ground #0d150f, ink #2a2015 -> frame-text #d9cfa6, per channel out = in * m + a). AS2's own Color object does
+// it, so nothing of Dear Diary's files is touched.
+// One display object's AS2 colour transform (Color.setTransform: the multiplier in percent, the offset -255..255).
+bool Tint(RE::GFxMovieView* mv, const RE::GFxValue& clip, const double (&mul)[3], const double (&add)[3]) {
+  RE::GFxValue color, args[1], tr;
+  args[0] = clip;
+  mv->CreateObject(&color, "Color", args, 1);
+  mv->CreateObject(&tr);
+  const char* keys[3][2] = {{"ra", "rb"}, {"ga", "gb"}, {"ba", "bb"}};
+  for (int c = 0; c < 3; ++c) {
+    tr.SetMember(keys[c][0], RE::GFxValue(mul[c] * 100.0));
+    tr.SetMember(keys[c][1], RE::GFxValue(add[c]));
+  }
+  tr.SetMember("aa", RE::GFxValue(100.0));
+  tr.SetMember("ab", RE::GFxValue(0.0));
+  return color.IsObject() && color.Invoke("setTransform", nullptr, &tr, 1);
+}
+
+bool FrameMovie(std::string_view menu_name, const char* path, bool tabs) {
+  auto m = MenuOf(menu_name);
+  if (!m || !m->uiMovie) return false;
+  auto* mv = m->uiMovie.get();
+  RE::GFxValue menu;
+  if (!mv->GetVariable(&menu, path) || !menu.IsDisplayObject()) {
+    SKSE::log::warn("menus: no {} on {}; left as it is", path, menu_name);
+    return false;
+  }
+  std::string members, hidden;
+  menu.VisitMembers([&members](const char* name, const RE::GFxValue&) { members += (members.empty() ? "" : ",") + std::string(name); });
+  if (tabs)
+    for (const char* tab : {"QuestsTab", "StatsTab", "SystemTab", "previousTabButton", "nextTabButton"}) {  // the tab bar
+      RE::GFxValue clip;
+      if (menu.GetMember(tab, &clip) && clip.IsDisplayObject()) {
+        RE::GFxValue::DisplayInfo info;
+        info.SetVisible(false);
+        clip.SetDisplayInfo(info);
+        hidden += (hidden.empty() ? "" : ",") + std::string(tab);
+      }
+    }
+  // per channel: m = (ground - text) / (paper - ink), a = text - m * ink. The paper and ink are Dear Diary's themed
+  // page as drawn (measured from the first frame-style still, menus-look 20261101T143721 09: the page read (70,100,105)
+  // through the token guess, so the page itself is about (170,138,87)), the ground and text the frame tokens.
+  constexpr double paper[3] = {170, 138, 87}, ink[3] = {35, 28, 20}, ground[3] = {0x14, 0x1e, 0x17},
+                   text[3] = {0xd9, 0xcf, 0xa6};
+  double mul[3], add[3];
+  for (int c = 0; c < 3; ++c) {
+    mul[c] = (ground[c] - text[c]) / (paper[c] - ink[c]);
+    add[c] = std::clamp(text[c] - mul[c] * ink[c], -255.0, 255.0);
+  }
+  // Each child separately (a parent's transform would multiply into the Background's flat one): the Background (the
+  // Journal's full-screen dimmer with the page's frame, which the inversion would turn light) is drawn flat in the
+  // frame ground with its own alpha kept; every other child is inverted to the frame's ground and text.
+  constexpr double zero[3] = {0, 0, 0}, flat[3] = {0x0d, 0x15, 0x0f};
+  std::vector<std::pair<std::string, RE::GFxValue>> kids;
+  menu.VisitMembers([&kids](const char* name, const RE::GFxValue& v) {
+    if (v.IsDisplayObject()) kids.emplace_back(name, v);
+  });
+  bool ok = !kids.empty();
+  int n = 0;
+  for (auto& [name, clip] : kids) {
+    const bool bg = name == "Background";
+    ok = Tint(mv, clip, bg ? zero : mul, bg ? flat : add) && ok;
+    ++n;
+    if (bg) hidden += hidden.empty() ? "Background flat" : ",Background flat";
+  }
+  if (kids.empty()) ok = Tint(mv, menu, mul, add);  // no children seen: the whole movie
+  hidden += ", " + std::to_string(n) + " children";
+  SKSE::log::info("menus: {} in the frame style (tabs hidden: {}; colour {}; {} has {})", menu_name,
+                  hidden.empty() ? "none" : hidden, ok ? "set" : "refused", path, members);
+  return ok;
 }
 
 // Settings or Load: the page's own category press for the entry whose label names it, with the movie shown again.
@@ -123,6 +204,7 @@ void Delegate(std::string_view want) {
     ev.SetMember("index", RE::GFxValue(idx));
     const double main_state = PageState(page);
     g.delegated = true;
+    FrameMovie(RE::JournalMenu::MENU_NAME, "_root.QuestJournalFader.Menu_mc", true);
     m->uiMovie->SetVisible(true);
     const bool ok = page.Invoke("onCategoryButtonPress", nullptr, &ev, 1);
     SKSE::log::info("menus: the System page's {} pressed (entry {} '{}', index {}, state {} -> {}){}", want, i, t, idx,
@@ -198,6 +280,15 @@ std::string SystemIntent(const ac::msg::SystemPick& p) {
       return {};
   }
   return {};
+}
+
+// --- message boxes and lockpicking ------------------------------------------------------------------------------
+
+// Dear Diary's paper message box and the lockpicking words (DESIGN.md: frame style): the same colour transform as the
+// System page's, on the movie's root, a frame after the opening (the movie has loaded its art by then).
+void FrameMenuOpened(std::string_view menu) {
+  std::string name(menu);
+  SKSE::GetTaskInterface()->AddTask([name] { FrameMovie(name, "_root", false); });
 }
 
 // --- T -----------------------------------------------------------------------------------------------------------

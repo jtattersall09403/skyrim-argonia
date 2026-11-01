@@ -12,13 +12,14 @@ int main() {
   CHECK(!refuse("GetVastei", false));
   CHECK(!refuse("KnowsTopic", true));
   CHECK(!refuse("ViewIntent", true));
+  CHECK(!refuse("MessageBox", true));
   CHECK(!refuse("SittingIntent", true));
   CHECK(refuse("KnowsTopic", false));       // missing arg
   CHECK(refuse("GetVastei", true));         // extra arg
   for (auto setter : {"SetVastei", "SetAttribute", "GrantTopic", "SetFlag", "ChangeDisposition", "GiveItem",
                       "RestAt", "TakeVastei", "OpenDialogue", "WatchQuest", "AddJournalEntry", "SuspendSave", ""})
     CHECK(refuse(setter, false) && refuse(setter, true));
-  CHECK(natives().size() == 23);  // 21 of ArgoniaCore.psc, plus the bridge-only ViewProbe and Views (1.2 §0)
+  CHECK(natives().size() == 24);  // 21 of ArgoniaCore.psc, plus the bridge-only ViewProbe and Views (1.2 §0)
   CHECK(!refuse("ViewProbe", true) && !refuse("Views", false));
   CHECK(find("Families") && find("Families")->returns == Returns::TextList);
 

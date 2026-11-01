@@ -341,6 +341,10 @@ std::expected<std::string, std::string> BridgeCall(std::string_view native, cons
   if (n == "Version") return bc::encode_text(n, Str(Version(nullptr)));
   if (n == "SaveCount") return bc::encode_number(n, SaveCount(nullptr));
   if (n == "ViewIntent") return bc::encode_json(n, Str(ViewIntentNative(nullptr, a)));
+  if (n == "MessageBox") {
+    RE::DebugMessageBox(a.c_str());
+    return bc::encode_text(n, Str(a));
+  }
   if (n == "ViewState") return bc::encode_json(n, Str(ViewState(nullptr, a)));
   if (n == "GetAttribute") return bc::encode_number(n, GetAttribute(nullptr, a));
   if (n == "Families") return list(Families(nullptr));

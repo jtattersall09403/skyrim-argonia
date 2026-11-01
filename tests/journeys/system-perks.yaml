@@ -44,15 +44,15 @@ steps:
       - {read: [core, GetLevel], path: value, eq: {kept: lvl0, plus: 1}}
       - {log: {name: ArgoniaCore, contains: "perks: 1 perk point(s) granted at the sitting"}, within: 10}
       - {event: {kind: menu, match: LevelUp Menu, absent: true}}
-  - name: system-by-keyboard  # Escape in play: the Journal Menu, on its System tab (padcursor's switch)
+  - name: system-by-keyboard  # Escape in play: our System pane over the hidden Journal Menu (lane 1.12-menus)
     do: [{key: "ESC 120 engine"}, {wait: 4}]
     expect:
       - {event: {kind: menu, match: Journal Menu}}
-      - {log: {name: ArgoniaCore, contains: "System page (switched;"}, within: 8}
-      - {log: {name: ArgoniaCore, contains: "page's own button hints started"}, within: 8}
-    reader: [the System page lists settings, load and quit, labels in sentence case (Settings, Quit), not upper case, and not squashed sideways]
+      - {log: {name: ArgoniaCore, contains: "menus: Esc's Journal Menu hidden; our System pane opens"}, within: 8}
+      - {read: [core, Views], path: value, contains: "system ready open", within: 5}
+    reader: [our System pane in the frame style lists Settings, Load and the two quits in sentence case, no Quests entry, not squashed sideways]
   - name: system-keyboard-closed
-    do: [{close_menu: Journal Menu}, {wait: 2}]
+    do: [{close_menu: system}, {wait: 2}]
   # The System pane by pad is pad-panes' (bumper-to-system: the pad cycle's last pane, its stills read).
   - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
     do: [{key: "TAB 120 engine"}, {wait: 2}, {mouse: "394 229"}, {click: left}, {wait: 1.5}]   # the Character pane's Block (1080p layout): its perk list
