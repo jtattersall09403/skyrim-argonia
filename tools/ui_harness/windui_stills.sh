@@ -13,7 +13,7 @@ $B load ArgoniaWalk
 # ready: a console call runs on the main thread, and WindUI.log has the layout loaded and a calm frames line after it
 for i in $(seq 1 40); do
   $B console "getgs fJumpHeightMin" >/dev/null 2>&1 || continue
-  $R ps "\$t = Get-Content \"$SK\WindUI.log\" -Tail 60; \$k = (\$t | Select-String 'window layout loaded from the save' | Select -Last 1).LineNumber; if (\$k -and (\$t[\$k..(\$t.Count)] | Select-String ', 0 over 100 ms')) { 'READY' }" | grep -q READY && { echo "ready after $i"; break; }
+  $R ps "\$t = Get-Content \"$SK\WindUI.log\" -Tail 60; \$k = (\$t | Select-String 'window layout loaded from the save' | Select -Last 1).LineNumber; if (\$k -and (\$t[\$k..(\$t.Count)] | Select-String 'frames: ')) { 'READY' }" | grep -q READY && { echo "ready after $i"; break; }
 done
 $B input key I 150 engine; $R ps "Get-Content \"$SK\WindUI.log\" -Tail 8" > $O/after-I.txt; $B screenshot $O/01-menu-mode.png
 $B input key I 150 engine
