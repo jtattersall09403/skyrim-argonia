@@ -5,7 +5,7 @@ body { display: flex; align-items: center; justify-content: center; }
 
 .window {
   width: min(94vw, 68rem); height: 92vh; display: flex; flex-direction: column; gap: var(--s2);
-  padding: var(--s2) var(--s4) var(--s4); color: var(--frame-text); background: var(--frame-bg);
+  padding: var(--s2) var(--s4) var(--s4); color: var(--frame-text); background: #0e130d;  /* opaque: nothing behind ghosts through */
   border: var(--edge) solid var(--frame-trim); border-radius: 0.3rem;
   box-shadow: 0 0.4rem 1.6rem var(--frame-shadow), inset 0 0 0 0.3rem var(--frame-bg),
     inset 0 0 0 calc(0.3rem + 1px) var(--frame-trim);
@@ -28,6 +28,7 @@ body[data-device="touch"] .sfield:focus { outline: none; border-color: var(--fra
 }
 .ribbons { display: flex; gap: var(--s2); padding: 0 var(--s6); margin-bottom: calc(-1 * var(--s2) - var(--edge)); z-index: 1; }
 .ribbon {
+  /* opaque, as the window */
   min-height: 2.2rem; min-width: 7rem; padding: var(--s1) var(--s4); text-align: center; color: var(--frame-text);
   background: linear-gradient(#2c3a24, #1c2617); border: 1px solid var(--frame-trim); border-bottom: 0;
   border-radius: 0.2rem 0.2rem 0 0;
@@ -43,7 +44,8 @@ body[data-device="touch"] .sfield:focus { outline: none; border-color: var(--fra
 }
 .leaves { position: relative; height: 100%; display: flex; gap: 4.5rem; }
 .leaf { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; }
-.leaf.right { display: block; height: 100%; overflow-y: auto; padding-right: var(--s2); }
+.leaf.right { display: flex; flex-direction: column; }
+.flow.qflow { column-count: 1; column-gap: 0; }  /* whole-pixel leaves: a fractional gap drifted the last line 2 px */
 .spread.all .leaves { flex-direction: column; }
 .flow { flex: 1; min-height: 0; column-count: 2; column-gap: 4.5rem; column-fill: auto; overflow: hidden; }
 
@@ -63,10 +65,11 @@ body[data-device="touch"] .sfield:focus { outline: none; border-color: var(--fra
 .under { margin: 0 0 var(--s3); color: var(--ink-soft); font-style: italic; }
 .dir { margin: 0 0 var(--s4); padding: var(--s2) var(--s3); border-left: 0.2rem solid var(--moss);
   background: rgba(75, 90, 42, 0.1); }
-.dir h3 { margin: 0; font-size: var(--t-body); font-weight: normal; color: var(--moss); letter-spacing: 0.05em; }
+.dir h3 { break-after: avoid; margin: 0; font-size: var(--t-body); font-weight: normal; color: var(--moss); letter-spacing: 0.05em; }
 .dir p { margin: 0; }
 
-.entry { break-inside: avoid; margin: 0 0 var(--s4); }
+.entry { margin: 0 0 var(--s4); }
+.entry p { orphans: 2; widows: 2; }
 .entry p { margin: 0; }
 .date { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); }
 .qname { display: block; margin-bottom: 0.4rem; color: var(--rust); font-style: italic; }
@@ -85,3 +88,4 @@ body[data-device="touch"] .sfield:focus { outline: none; border-color: var(--fra
 
 /* Tall (the V5 unfolded, near square): one leaf above the other would waste the width; the spread keeps two. */
 @media (min-aspect-ratio: 2/1) { .window { width: min(86vw, 74rem); height: 96vh; } .spread { padding: var(--s4) var(--s6); } }
+.qpage > :last-child, .flow > .entry:last-child { margin-bottom: 0; }  /* the last line ends on its leaf */

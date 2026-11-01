@@ -35,8 +35,8 @@ body { display: flex; align-items: center; justify-content: center; }
 .entry.notice p { color: var(--frame-text-soft); font-style: italic; }
 .entry:not(.last) { color: var(--frame-text-soft); }
 .asked { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--frame-trim-hi); }
-.kw {
-  display: inline; color: var(--frame-link); text-decoration: underline; text-decoration-thickness: 0.06em;
+.kw { /* keywords: a marsh teal set apart from the cream text and gold titles (reader 1.12-ingame) */
+  display: inline; color: #8fd0c8; text-decoration: underline; text-decoration-thickness: 0.08em;
   text-underline-offset: 0.14em;
 }
 .kw:hover { color: var(--frame-head); }

@@ -83,7 +83,9 @@ export function render(s: JournalState): string {
     const list = s.groups.length
       ? `<ul class="groups scroll" data-list="quests">${s.groups.map((g) => group(s, g)).join("")}</ul>` : empty(s);
     const right = s.quest ? opened(s.quest) : "";
-    leaves = `<div class="leaf left">${list}</div><div class="leaf right scroll" data-scroll="quest">${right}</div>`;
+    // The opened quest flows down its leaf into further leaves (one CSS column each), turned like the diary's.
+    leaves = `<div class="leaf left">${list}</div><div class="leaf right"><div class="flow qflow">${right}</div></div>`;
+    pager = `<div class="pager">${turnButton("prev", -1, "Previous")}<span class="folio"></span>${turnButton("next", -1, "Next")}</div>`;
   } else if (s.tab === "all") {
     const body = s.entries.length ? s.entries.map((e, i) => entry(e, s.entries[i - 1], true)).join("") : empty(s);
     leaves = `<div class="flow">${body}</div>`;

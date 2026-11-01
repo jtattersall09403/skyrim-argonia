@@ -32,7 +32,9 @@ function show(i: number): void {
   const folio = root.querySelector<HTMLElement>(".folio");
   if (folio) {  // the page as ArgoniaCore counts it, and the leaf within it when it has more than one
     folio.dataset.page ??= folio.textContent ?? "";
-    folio.textContent = leaves() > 1 ? `Pages ${2 * leaf + 1}–${2 * leaf + 2} of ${2 * leaves()}` : folio.dataset.page;
+    const one = f?.classList.contains("qflow");  // one column a leaf: the opened quest
+    folio.textContent = leaves() <= 1 ? folio.dataset.page
+      : one ? `Page ${leaf + 1} of ${leaves()}` : `Pages ${2 * leaf + 1}–${2 * leaf + 2} of ${2 * leaves()}`;
   }
   for (const b of root.querySelectorAll<HTMLButtonElement>(".turn")) {
     const back = b.dataset.dir === "prev";
@@ -44,6 +46,7 @@ function show(i: number): void {
 function step(dir: -1 | 1): boolean {
   if (!state) return false;
   if (state.tab !== "all") {
+    if (dir < 0 ? leaf > 0 : leaf + 1 < leaves()) { show(leaf + dir); return true; }  // the opened quest's leaves
     const m = ribbonStep(state, dir);
     if (m) send(m);
     return m !== null;
@@ -90,6 +93,7 @@ start({
     state = m.body;
     root.innerHTML = render(state);
     show(startAtEnd ? Number.MAX_SAFE_INTEGER : 0);
+    requestAnimationFrame(() => show(leaf));  // counted again once the new spread is laid out
     startAtEnd = false;
     const f = field();
     if (focused && f) {
