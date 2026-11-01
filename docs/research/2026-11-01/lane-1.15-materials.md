@@ -61,21 +61,49 @@ vanilla's three stages. VCLR carries slope/aspect shade and wet darkening times 
   - mat2: "mostly sensible gradients, spoiled by hard polygon/rectangle outlines and a flat pale blob"
   - mat1: "clean and natural, and only the sub-water shallow gradient (mid/light blue band) is missing"
 
+## Session 3 (2026-11-01): outlines, rain, normal maps, retirements
+
+- **The thin outlines, by cause (measured on w4, w5 of SAMPLE_1_15):**
+  - *VCLR waterline cut (ours, fixed).* The wet shade applied only where `dh > -0.5`, so it peaked on the shore: ring
+    pixels had VCLR 208–217 against 227–247 either side. The shade is now continuous (`vclr`). Reader: w5 rings
+    17+ → 2–3, w4 6 → 3–4.
+  - *The far-switch ring and cell lattice (ours, fixed).* Local water was a 60 m box mean switching to the cell
+    rule at a fixed reach. It is now the nearest wet vertex's level (`nearest_wet`, jump flooding), smoothed ~30 m,
+    easing into `nearest_level` over 40–64 vertices. Reader: w4's wedge lake became a smooth blob.
+  - *The solve's one-level footprint (not ours).* Of the wet-mask edge, 103 px (w4) and 355 px (w5) are cuts where
+    dry ground lies below the neighbouring cell's level. These are w5's rectangles, for the water and ground lanes.
+    The ground lane's footprint fix (96e7247) landed after these renders.
+- **Rain:** `rain_field` is climatology §3 R = 0.5 + 0.3 windward + 0.2 coast. The wind is from the south-east
+  (§4), with a mid-slope maximum. The 40 km coastal decay is scaled to a quarter of the 7.4 km province. Province
+  percentiles 0/10/50/90/100 are 0.55/0.63/0.70/0.86/0.97 (1.3 s). It lifts dry wetness by up to 0.25.
+- **Normal maps: none (TX01 empty).** Black Marsh.esm's own landscape TXSTs leave TX01 empty on 8 of 11, and the
+  other 3 name the diffuse. Tropical Skyrim ships `_n` for all 19 slots, but each is drawn to TS's own diffuse.
+  The in-game look is the planner's batch check.
+- **Measured:** `build --sample`: 3.7 s, layers {0:5, 1:14, 2:19, 3:12, 4:1, 5:9}. `check`: layers_max 5,
+  blend_max_step 0.145 (was 0.396). Its 2 fails are the ground lane's place sites. pytest terrain: 34 passed (3
+  new). Render per window: 0.1–9 s (w0 9 s, w4 5 s).
+- **Reader pass 4 (r4, ≥1,000 px), not yet met:**
+  - w3 PASS.
+  - w0 FAIL: "a diagonal stair-stepped dark edge along the bank".
+  - w1 FAIL: "flat deep navy", all sea.
+  - w2: "swathe of deep blue, gradient visible".
+  - w4 FAIL: "rectangular pond, 3–4 rings, grey band x 0–190".
+  - w5 FAIL: "lattice of straight brown/orange bands, square blue rectangles, wedges, perfect circles".
+- **Land-cover raster:** not retired, by measurement. Routes `Surface` reads it for existing roads and tracks. A
+  swap to `routes/paint` agrees on 3,081 of 6,749 road and 2,316 of 20,896 track search cells (paths are not in
+  the paint), which changes the route search. That is for the routes lane, not a small edit. Navmesh reads it
+  only on its old-sculpt fallback, and `grid.Sources` loads it (ground lane).
+
 ## Starting state
 
-- **Done this session:** the world-reads guard fix (14e389b). Water from the solve (`material.Water`: cell levels
-  via `terrain/cellwater.py`, local level via `solve.nearest_level` bilinear between cell centres; OldWater gone).
-  The class warp and the apron inheritance. `render_layer(w)` now takes render.py's Window (`layer_rgba` for grid
-  windows). TXST + LTEX overrides: `terrain/texture_sets.py` and `ArgoniaGen/TextureSets.cs`, with the grass
-  layer leaving those LTEX to it; tests are in `test_texture_sets.py`. The `material_gradient` table (66 rows,
-  `terrain gradient` writes it; a test keeps it equal to STOPS). The bmv `keep` in `data/dependencies.json`
-  now holds `textures/texturepack/landscape/*` (stack.py reads that row; stack.py itself is unchanged). The BM&V
-  sourcing-register row names the 19 files.
-- **Owed:**
-  1. The water-outline diagnosis above, then a 4th reader pass on the four windows. The render script is in the
-     scratchpad: four 10×10-cell windows around world.SAMPLE through `material.layer_rgba`.
-  2. The apron streaks: the ground lane (`grid.py` `_edge` clamp).
-  3. The climatology rainfall field in `wet`.
-  4. TXST normal maps: BM&V ships none. Decide whether to name TS's or vanilla's `_n` (needs the file list).
-  5. A full `make plugin` with the texture-set layer, and the in-game look (the planner's batch).
-  6. Retire the land-cover raster from vegetation, routes and navmesh (their lanes).
+- **Done:** e29ac9a (material.py `nearest_wet`, `rain_field`, continuous VCLR wet shade; texture_sets why; 3 tests).
+- **Diagnosed, owed elsewhere:** the footprint rectangles (water/ground fit); routes' cover read (routes lane);
+  `grid.Sources.cover` (ground lane).
+- **Owed here:**
+  1. Re-render on the ground after 96e7247. The script is the scratchpad `r6.py`: render.render with nearest-neighbour
+     upscaling.
+  2. w5's straight brown/orange lattice and perfect circles. Check the road paint (`_road`) and the place edits
+     before the stops.
+  3. The w4 left grey band and w0's stair-step bank.
+  4. Fifth reader pass.
+  5. `make plugin` and the in-game look (the planner's batch).
