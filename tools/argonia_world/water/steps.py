@@ -15,6 +15,7 @@ from __future__ import annotations
 import math
 from dataclasses import dataclass
 
+from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.water.model import Graph, Reach
 
 STEP_MAX_M = 0.5  # the largest drop between two steps of a graded reach (a riffle's line of white water)
@@ -31,6 +32,21 @@ PIECES = {
 }
 CASCADE_DROP_M = 0.75  # a step at least this tall takes the sloped waterfall body instead of the rapids line
 FALLS_STEP_M = 3.0  # a step at least this tall takes the tall waterfall body (the graph's fallDropM)
+
+# 1.15 solve: the piece chain at a cell-edge step, sized to the drop (world-rebuild-options.md §11: across Skyrim.esm's
+# 60 stepped edges with pieces, FXrapidsFallsLine01 in 41, FxRapidsRingHeavy 37, FXWaterfallBodySlope 30,
+# FXWaterfallSkirtSlope 33, a mist blast at the foot). Entries name base records; pieces.py resolves the meshes.
+CHAINS = {
+    "rapids": ("FXrapidsFallsLine01", "FxRapidsRingHeavy"),
+    "cascade": ("FXrapidsFallsLine01", "FXWaterfallBodySlope", "FXWaterfallSkirtSlope", "FxRapidsRingHeavy"),
+    "falls": ("FXWaterfallBodyTall", "FXWaterfallSkirtSlope", "FXWaterfallMistBlast"),
+}
+MAX_DROP_M = 1468.0 / su.UNITS_PER_METRE  # the tall waterfall body's height (PIECES["falls"]): the largest one-edge drop, 20.96 m
+
+
+def chain_for(drop: float) -> str:
+    """The chain id of a cell-edge step of this drop (metres)."""
+    return piece_for(drop)
 
 
 @dataclass(frozen=True)

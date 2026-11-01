@@ -5480,7 +5480,8 @@ CREATE TABLE "hydrology_reach" (
   "terrain_precondition_face_min_slope" REAL,
   "terrain_precondition_lip_notch" BOOLEAN,
   "origin" TEXT,
-  "feeder" TEXT
+  "feeder" TEXT,
+  "cell_kind" TEXT CHECK ("cell_kind" IN ('water','dry'))  -- 1.15 water solve: 'dry' = a dressed dry gully (bed pieces, no water)
 );
 
 -- Home of a river's reaches, headwater (ord 0) to mouth.
@@ -6451,4 +6452,48 @@ CREATE TABLE "perk_text" (
   "tree" TEXT NOT NULL CHECK ("tree" GLOB 'AV*'),
   "name" TEXT NOT NULL CHECK (length("name") > 0),
   "description" TEXT NOT NULL CHECK (length("description") > 0)
+);
+
+-- 1.15 (decision 0033): one water level per exterior cell, the vanilla way (XCLW/XCWT). Written by
+-- tools/argonia_world/water/solve.py; a cell absent has no water.
+CREATE TABLE "cell_water" (
+  "cx" INTEGER NOT NULL,
+  "cy" INTEGER NOT NULL,
+  "level_m" REAL NOT NULL,
+  "water_type" TEXT NOT NULL CHECK ("water_type" IN ('sea','brackish','blackwater','fresh')),
+  "body_id" TEXT REFERENCES "hydrology_body"("id"),
+  "reach_id" TEXT REFERENCES "hydrology_reach"("id"),
+  PRIMARY KEY ("cx", "cy")
+);
+
+-- 1.15: a river step at a cell edge, from (cx,cy) across edge to its neighbour (world-rebuild-options.md §11).
+CREATE TABLE "water_step" (
+  "cx" INTEGER NOT NULL,
+  "cy" INTEGER NOT NULL,
+  "edge" TEXT NOT NULL CHECK ("edge" IN ('n','e','s','w')),
+  "upper_m" REAL NOT NULL,
+  "lower_m" REAL NOT NULL,
+  "cross_lo" INTEGER NOT NULL CHECK ("cross_lo" BETWEEN 0 AND 32),
+  "cross_hi" INTEGER NOT NULL CHECK ("cross_hi" BETWEEN 0 AND 32),
+  "chain" TEXT NOT NULL,                       -- the piece chain id (water/steps.py), or 'closed'
+  PRIMARY KEY ("cx", "cy", "edge")
+);
+
+-- 1.15: where a place's entrance sits on the ground (ground lane fills it).
+CREATE TABLE "entrance_site" (
+  "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "shape" TEXT NOT NULL CHECK ("shape" IN ('mound','bank','depression','flat','deep_water')),
+  "x_m" REAL,
+  "y_m" REAL,
+  "radius_m" REAL,
+  "facing_deg" REAL,
+  "request" TEXT
+);
+
+-- 1.15: a land region's mist regime (weather lane fills it).
+CREATE TABLE "region_mist" (
+  "land_region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "land_region"("id"),
+  "regime" TEXT NOT NULL CHECK ("regime" IN ('radiation','sea_fog','montane','none')),
+  "hours" TEXT,
+  "why" TEXT
 );
