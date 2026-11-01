@@ -8,7 +8,5 @@ BodyTemplate:
   - 0x8000000
   ArmorType: HeavyArmor
   ActsLike44: True
-Armature:
-- 00084B:Argonia.esm
 Value: 55
 Weight: 2.5

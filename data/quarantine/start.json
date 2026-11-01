@@ -68,6 +68,45 @@
   "race": "013740:Skyrim.esm",
   "preset": "0B2E10:Skyrim.esm",
   "presetEdid": "ArgonianMalePreset06",
-  "why": "the Player NPC_ (Skyrim.esm 0x7) starts every new game as ArgonianRace with the race's own preset face: its head parts (the race defaults, the preset's eyes, brows, scars and horn/frill set), feather colour, morphs and tints (dark green scales, black frills); the race's default face texture so the head's scales match the body's; no console setrace (1.10). The engine builds the player's face at run time; no FaceGen is shipped (0014)"
+  "why": "the Player NPC_ (Skyrim.esm 0x7) starts every new game as ArgonianRace with the race's own preset face: its head parts (the race defaults, the preset's eyes, brows, scars and horn/frill set), feather colour, morphs and tints (dark green scales, black frills); the race's default face texture so the head's scales match the body's; no console setrace (1.10). The engine builds the player's face at run time; no FaceGen is shipped (0014)",
+  "kit": [
+   {
+    "item": "item.steel-sword",
+    "count": 1
+   },
+   {
+    "item": "item.steel-mace",
+    "count": 1
+   },
+   {
+    "item": "item.steel-scimitar",
+    "count": 1
+   },
+   {
+    "item": "item.hunting-bow",
+    "count": 1
+   },
+   {
+    "item": "item.steel-flight-arrow",
+    "count": 40
+   },
+   {
+    "item": "item.imperial-light-cuirass",
+    "count": 1
+   },
+   {
+    "item": "item.imperial-light-boots",
+    "count": 1
+   },
+   {
+    "item": "item.imperial-light-gauntlets",
+    "count": 1
+   },
+   {
+    "item": "item.imperial-light-helmet",
+    "count": 1
+   }
+  ],
+  "kitWhy": "the starting kit (owner look 1, 1.12): a sword, a mace, a scimitar, a hunting bow and arrows, and the Imperial light set (the steel helmet's horns read Nordic), in place of the master Player's items; every piece wears its base-game record's look (items_records.look)"
  }
 }

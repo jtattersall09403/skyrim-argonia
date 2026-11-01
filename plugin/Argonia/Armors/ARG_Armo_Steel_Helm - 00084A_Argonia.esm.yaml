@@ -3,12 +3,24 @@ EditorID: ARG_Armo_Steel_Helm
 Name:
   TargetLanguage: English
   Value: Steel Helmet
+WorldModel:
+  Male:
+    Model:
+      File: Armor\Steel\HelmetSteelGO.nif
+      Data: 0x020000000400000000000000E0CF3A9564647300C465525633B48CC264647300C46552566BBB96D164647300262C333B89E5855B64647300C4655256
+  Female:
+    Model:
+      File: Armor\Steel\HelmetSteelGO.nif
+      Data: 0x020000000400000000000000E0CF3A9564647300C465525633B48CC264647300C46552566BBB96D164647300262C333B89E5855B64647300C4655256
 BodyTemplate:
   FirstPersonFlags:
   - Head
   ArmorType: HeavyArmor
   ActsLike44: True
 Armature:
-- 000849:Argonia.esm
+- 106EB2:Skyrim.esm
+- 109C6F:Skyrim.esm
+- 106EB3:Skyrim.esm
+- 0179B2:Skyrim.esm
 Value: 125
 Weight: 3

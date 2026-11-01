@@ -75,52 +75,31 @@ Perks:
   Fluff: 0x000000
 Items:
 - Item:
-    Item: 00000A:Skyrim.esm
-    Count: 10
-- Item:
-    Item: 00000F:Skyrim.esm
-    Count: 140
-- Item:
-    Item: 012EB6:Skyrim.esm
+    Item: 000840:Argonia.esm
     Count: 1
 - Item:
-    Item: 012EB7:Skyrim.esm
+    Item: 000E8F:Argonia.esm
     Count: 1
 - Item:
-    Item: 013790:Skyrim.esm
+    Item: 000E90:Argonia.esm
     Count: 1
 - Item:
-    Item: 01397D:Skyrim.esm
-    Count: 23
-- Item:
-    Item: 01397E:Skyrim.esm
+    Item: 000E91:Argonia.esm
     Count: 1
 - Item:
-    Item: 01D4EC:Skyrim.esm
-    Count: 2
+    Item: 000E92:Argonia.esm
+    Count: 40
 - Item:
-    Item: 039B4A:Skyrim.esm
-    Count: 2
-- Item:
-    Item: 03B562:Skyrim.esm
+    Item: 000E93:Argonia.esm
     Count: 1
 - Item:
-    Item: 03EADD:Skyrim.esm
-    Count: 5
-- Item:
-    Item: 03EAE0:Skyrim.esm
-    Count: 5
-- Item:
-    Item: 03EAE5:Skyrim.esm
-    Count: 5
-- Item:
-    Item: 03EB2A:Skyrim.esm
+    Item: 000E94:Argonia.esm
     Count: 1
 - Item:
-    Item: 03EB33:Skyrim.esm
+    Item: 000E95:Argonia.esm
     Count: 1
 - Item:
-    Item: 0F86FE:Skyrim.esm
+    Item: 000E96:Argonia.esm
     Count: 1
 AIData:
   EnergyLevel: 50

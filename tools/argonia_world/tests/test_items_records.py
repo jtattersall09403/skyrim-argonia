@@ -55,7 +55,7 @@ def test_every_mapped_subkind_names_a_real_class(world):
 
 
 def test_sword_comes_from_its_row_and_carries_the_long_blade_keyword(world, alloc, recs):
-    [w] = recs["WEAP"]
+    [w] = [r for r in recs["WEAP"] if r["edid"] == "ARG_Weap_SteelSword"]
     it = world.get("item", ir.SWORD)
     assert it.subkind == "straightSword"
     assert (w["name"], w["value"], w["weight"]) == (it.name, it.value, su.kg_to_weight(it.weight_kg))
@@ -64,20 +64,24 @@ def test_sword_comes_from_its_row_and_carries_the_long_blade_keyword(world, allo
     assert world.get("skill", lb.skill).id == "longBlade"
     assert w["animation"] == "OneHandSword"
     assert w["equipSlot"] == su.EQUIP_EITHER_HAND  # none crashed the Container Menu (game-8)
-    assert w["model"].endswith("steel-sword.nif") and "/" not in w["model"]
+    assert w["template"] == "Skyrim.esm:SteelSword" and "model" not in w  # 1.12: its look is the base record's
 
 
-def test_armour_set_is_seven_pairs_in_the_morrowind_slots(world, recs):
+def test_armour_set_is_seven_pieces_in_the_morrowind_slots(world, alloc):
+    """Seven ARMO in the Morrowind slots; a piece with a base-game record wears its armatures (template), a stand-in
+    slot none (never another slot's mesh)."""
+    armo = [r for r in ir.armour_set_records(alloc, world) if r["type"] == "ARMO"]
     assert {s.id: s.biped_slot for s in world.rows("armour_slot")} == SLOTS
-    armo, arma = recs["ARMO"], recs["ARMA"]
-    assert len(armo) == len(arma) == 7
+    assert len(armo) == 7
     assert sorted(a["biped"] for a in armo) == sorted(su.biped_mask(n) for n in SLOTS.values())
-    addons = {a["formKey"]: a for a in arma}
     st = world.get("item_set", ir.ARMOUR_SET)
+    stand_in = {su.biped_mask(s.biped_slot) for s in world.rows("armour_slot") if s.stand_in}
     for a in armo:
-        [ad] = [addons[k] for k in a["armatures"]]
-        assert ad["biped"] == a["biped"] and ad["race"] == su.DEFAULT_RACE
         assert a["armorType"] == su.ARMOR_TYPE[st.armour_class]
+        if a["biped"] in stand_in:
+            assert "template" not in a and a["armatures"] == []
+        else:
+            assert a["template"].startswith("Skyrim.esm:ArmorSteel") or a["armatures"]
     real = {r.name: r for r in world.rows("item", set=ir.ARMOUR_SET, kind="armour")}
     for slot in world.rows("armour_slot"):
         m = [a for a in armo if a["biped"] == su.biped_mask(slot.biped_slot)]
@@ -135,6 +139,40 @@ def test_potion_effect_is_the_rows_effect(world, recs):
     m = world.get("effect_skyrim_mgef", rows[0].effect_id)
     assert p["effects"][0] == {"effect": f"{m.form_id:06X}:{m.plugin}", "magnitude": rows[0].magnitude, "area": 0,
                                "duration": round(rows[0].duration_seconds)}
+
+
+def test_template_reads_value_from(world):
+    t = lambda i: ir.template(world, world.get("item", i))  # noqa: E731
+    assert t("item.steel-sword") == "Skyrim.esm:SteelSword"
+    assert t("item.steel-claw") == "Skyrim.esm:SteelDagger"  # an analogue's base record
+    assert t("item.steel-dagger-of-chills") == "Skyrim.esm:SteelDagger"  # a premium item's own row's
+
+
+def test_no_item_record_names_a_mesh_nothing_supplies():
+    """1.12 (owner look 1): an `Argonia\\...nif` path nothing makes left the sword and its icon invisible. Every
+    model an item record of the committed plugin names is a base-game path (no Argonia\\ root), and every weapon
+    has a first-person model."""
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[3] / "plugin" / "Argonia"
+    files = [p for d in ("Weapons", "Ammunitions", "Armors", "ArmorAddons", "Books", "Ingestibles", "MiscItems")
+             for p in (root / d).glob("*.yaml")]
+    assert files
+    for p in files:
+        t = p.read_text()
+        assert "File: Argonia\\" not in t and "File: Argonia/" not in t, p.name
+    for p in (root / "Weapons").glob("*.yaml"):
+        t = p.read_text()
+        assert "\nModel:\n  File: " in "\n" + t and "FirstPersonModel:" in t, p.name
+
+
+def test_kit_is_weapons_ammunition_and_armour(world, alloc):
+    import json
+    from tools.argonia_world.intermediate import QUARANTINE
+    kit = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]["kit"]
+    kinds = [(world.get("item", k["item"]).kind, world.get("item", k["item"]).subkind) for k in kit]
+    assert sum(1 for k, s in kinds if k == "weapon" and s not in ("arrow", "longbow", "shortbow")) >= 3
+    assert any(s in ("longbow", "shortbow") for _, s in kinds) and any(s == "arrow" for _, s in kinds)
+    assert {s for k, s in kinds if k == "armour"} >= {"cuirass", "boots", "gauntlets", "helmet"}
 
 
 def test_biped_mask_rejects_out_of_range():

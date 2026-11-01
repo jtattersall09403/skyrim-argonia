@@ -37,6 +37,7 @@ def test_the_player_layer_comes_from_start_json():
     player = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]
     (rec,) = player_layer(player).records
     assert rec == {"type": "NPC_", "override": True, "edid": "Player", "formKey": "000007:Skyrim.esm",
-                   "race": ARGONIAN_RACE, "preset": "0B2E10:Skyrim.esm", "presetEdid": "ArgonianMalePreset06"}
+                   "race": ARGONIAN_RACE, "preset": "0B2E10:Skyrim.esm", "presetEdid": "ArgonianMalePreset06",
+                   "items": []}
     with pytest.raises(ValueError):
         player_layer(dict(player, formKey="000014:Skyrim.esm"))

@@ -19,6 +19,7 @@
 {"editor_id":"ARG_ACTI_SignArmTheTeethOfSithis","plugin":"Argonia.esm","form_id":2459,"record_type":"ACTI","entity_key":"infra.sign-arm.The Teeth of Sithis"}
 {"editor_id":"ARG_ACTI_SignArmThorn","plugin":"Argonia.esm","form_id":2430,"record_type":"ACTI","entity_key":"infra.sign-arm.Thorn"}
 {"editor_id":"ARG_Alch_HealingDraught","plugin":"Argonia.esm","form_id":2129,"record_type":"ALCH","entity_key":"item.healing-draught"}
+{"editor_id":"ARG_Ammo_SteelFlightArrow","plugin":"Argonia.esm","form_id":3730,"record_type":"AMMO","entity_key":"item.steel-flight-arrow"}
 {"editor_id":"ARG_Arma_Steel_Boots","plugin":"Argonia.esm","form_id":2113,"record_type":"ARMA","entity_key":"item.steel-boots#boots"}
 {"editor_id":"ARG_Arma_Steel_Cuirass","plugin":"Argonia.esm","form_id":2115,"record_type":"ARMA","entity_key":"item.steel-cuirass#cuirass"}
 {"editor_id":"ARG_Arma_Steel_Gauntlets","plugin":"Argonia.esm","form_id":2117,"record_type":"ARMA","entity_key":"item.steel-gauntlets#gauntlets"}
@@ -26,6 +27,10 @@
 {"editor_id":"ARG_Arma_Steel_Helm","plugin":"Argonia.esm","form_id":2121,"record_type":"ARMA","entity_key":"item.steel-helmet#helm"}
 {"editor_id":"ARG_Arma_Steel_Pauldrons","plugin":"Argonia.esm","form_id":2123,"record_type":"ARMA","entity_key":"item.steel-gauntlets#pauldrons"}
 {"editor_id":"ARG_Arma_Steel_Shield","plugin":"Argonia.esm","form_id":2125,"record_type":"ARMA","entity_key":"item.steel-shield#shield"}
+{"editor_id":"ARG_Armo_Imperial_Boots","plugin":"Argonia.esm","form_id":3731,"record_type":"ARMO","entity_key":"item.imperial-light-boots#boots"}
+{"editor_id":"ARG_Armo_Imperial_Cuirass","plugin":"Argonia.esm","form_id":3732,"record_type":"ARMO","entity_key":"item.imperial-light-cuirass#cuirass"}
+{"editor_id":"ARG_Armo_Imperial_Gauntlets","plugin":"Argonia.esm","form_id":3733,"record_type":"ARMO","entity_key":"item.imperial-light-gauntlets#gauntlets"}
+{"editor_id":"ARG_Armo_Imperial_Helm","plugin":"Argonia.esm","form_id":3734,"record_type":"ARMO","entity_key":"item.imperial-light-helmet#helm"}
 {"editor_id":"ARG_Armo_Steel_Boots","plugin":"Argonia.esm","form_id":2114,"record_type":"ARMO","entity_key":"item.steel-boots#boots"}
 {"editor_id":"ARG_Armo_Steel_Cuirass","plugin":"Argonia.esm","form_id":2116,"record_type":"ARMO","entity_key":"item.steel-cuirass#cuirass"}
 {"editor_id":"ARG_Armo_Steel_Gauntlets","plugin":"Argonia.esm","form_id":2118,"record_type":"ARMO","entity_key":"item.steel-gauntlets#gauntlets"}
@@ -1708,6 +1713,9 @@
 {"editor_id":"ARG_WeapClass_Marksman","plugin":"Argonia.esm","form_id":2109,"record_type":"KYWD","entity_key":"weapon_class.marksman"}
 {"editor_id":"ARG_WeapClass_ShortBlade","plugin":"Argonia.esm","form_id":2110,"record_type":"KYWD","entity_key":"weapon_class.shortBlade"}
 {"editor_id":"ARG_WeapClass_Spear","plugin":"Argonia.esm","form_id":2111,"record_type":"KYWD","entity_key":"weapon_class.spear"}
+{"editor_id":"ARG_Weap_HuntingBow","plugin":"Argonia.esm","form_id":3729,"record_type":"WEAP","entity_key":"item.hunting-bow"}
+{"editor_id":"ARG_Weap_SteelMace","plugin":"Argonia.esm","form_id":3727,"record_type":"WEAP","entity_key":"item.steel-mace"}
+{"editor_id":"ARG_Weap_SteelScimitar","plugin":"Argonia.esm","form_id":3728,"record_type":"WEAP","entity_key":"item.steel-scimitar"}
 {"editor_id":"ARG_Weap_SteelSword","plugin":"Argonia.esm","form_id":2112,"record_type":"WEAP","entity_key":"item.steel-sword"}
 {"editor_id":"ARG_Weather_mist","plugin":"Argonia.esm","form_id":2063,"record_type":"WTHR","entity_key":"weather.mist"}
 {"editor_id":"ARG_Weather_squall","plugin":"Argonia.esm","form_id":2064,"record_type":"WTHR","entity_key":"weather.squall"}

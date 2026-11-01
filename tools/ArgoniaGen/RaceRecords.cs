@@ -62,6 +62,13 @@ static class RaceRecords
         var fac = p.Factions.OrderBy(f => f.Faction.FormKey.ModKey.FileName.String).ThenBy(f => f.Faction.FormKey.ID).ToList();
         p.Factions.Clear(); p.Factions.AddRange(fac);
         if (p.ActorEffect is { } sp) { var s = sp.OrderBy(k => k.FormKey.ModKey.FileName.String).ThenBy(k => k.FormKey.ID).ToList(); sp.Clear(); sp.AddRange(s); }
+        // The inventory is the starting kit (start.json `player.kit`, 1.12), not the master's engine test kit.
+        if (r.TryGetProperty("items", out var kit) && kit.ValueKind == JsonValueKind.Array)
+        {
+            p.Items = new Noggog.ExtendedList<ContainerEntry>();
+            foreach (var e in kit.EnumerateArray())
+                p.Items.Add(new ContainerEntry { Item = new ContainerItem { Item = new FormLink<IItemGetter>(FK(S(e, "item"))), Count = e.GetProperty("count").GetInt32() } });
+        }
         if (p.Items is { } it) { var s = it.OrderBy(e => e.Item.Item.FormKey.ModKey.FileName.String).ThenBy(e => e.Item.Item.FormKey.ID).ToList(); it.Clear(); it.AddRange(s); }
         if (p.PlayerSkills is { } ps) ps.Unused2 = new byte[ps.Unused2.Length];  // the pad byte Spriggit writes as 0
         mod.Npcs.Add(p);

@@ -1,5 +1,7 @@
 // The item family's writers (1.3 §c; tools/argonia_world/items_records.py writes their intermediate): KYWD (the
-// weapon class keywords), WEAP, ARMO, ARMA, CONT, BOOK, ALCH. As Generate.cs: no unit maths and no choices; every
+// weapon class keywords), WEAP, AMMO, ARMO, ARMA, CONT, BOOK, ALCH. A record with a `template` (a base-game
+// record, "Skyrim.esm:<EditorID>") wears that record's look: its meshes, first-person model, armatures and sounds,
+// read from the master in Data (1.12: an invented mesh path left the sword and its inventory icon invisible). As Generate.cs: no unit maths and no choices; every
 // number, mask, path and link arrives resolved. Combat numbers (damage, armour rating) are not written: they are
 // ArgoniaCore's, from the sets' scales.
 using System.Text.Json;
@@ -16,12 +18,31 @@ static class ItemWriters
 {
     const SkyrimRelease Rel = SkyrimRelease.SkyrimSE;
 
-    public static void Write(SkyrimMod mod, JsonElement r)
+    static readonly Dictionary<string, ISkyrimModDisposableGetter> masters = new(StringComparer.OrdinalIgnoreCase);
+    static string data = "";
+
+    // The base-game record a `template` names, by EditorID (the masters are read as overlays, once).
+    static T Template<T>(JsonElement r, Func<ISkyrimModGetter, IEnumerable<T>> group) where T : IMajorRecordGetter
     {
+        var t = S(r, "template");
+        var i = t.IndexOf(':');
+        var file = t[..i];
+        if (!masters.TryGetValue(file, out var m))
+            masters[file] = m = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, file), Rel);
+        return group(m).FirstOrDefault(x => x.EditorID == t[(i + 1)..])
+            ?? throw new InvalidDataException($"{S(r, "edid")}: no {typeof(T).Name} {t}");
+    }
+
+    static bool Has(JsonElement r, string k) => r.TryGetProperty(k, out var v) && v.ValueKind == JsonValueKind.String;
+
+    public static void Write(SkyrimMod mod, JsonElement r, string dataDir)
+    {
+        data = dataDir;
         switch (S(r, "type"))
         {
             case "KYWD": mod.Keywords.Add(new Keyword(Key(r), Rel) { EditorID = S(r, "edid") }); break;
             case "WEAP": mod.Weapons.Add(Weapon(r)); break;
+            case "AMMO": mod.Ammunitions.Add(Ammo(r)); break;
             case "ARMA": mod.ArmorAddons.Add(Addon(r)); break;
             case "ARMO": mod.Armors.Add(Armour(r)); break;
             case "CONT": mod.Containers.Add(Container(r)); break;
@@ -48,8 +69,8 @@ static class ItemWriters
         {
             EditorID = S(r, "edid"),
             Name = T(r, "name"),
-            Model = M(r, "model"),
-            BasicStats = new WeaponBasicStats { Value = (uint)I(r, "value"), Weight = F(r, "weight"), Damage = (ushort)I(r, "damage") },
+            Model = Has(r, "model") ? M(r, "model") : null,
+            BasicStats = new WeaponBasicStats { Value = (uint)I(r, "value"), Weight = F(r, "weight"), Damage = r.TryGetProperty("damage", out var d) ? (ushort)d.GetInt32() : (ushort)0 },
             Data = new WeaponData
             {
                 AnimationType = Enum.Parse<WeaponAnimationType>(S(r, "animation")),
@@ -60,7 +81,48 @@ static class ItemWriters
         };
         foreach (var k in A(r, "keywords")) w.Keywords.Add(new FormLink<IKeywordGetter>(FK(k.GetString()!)));
         w.EquipmentType.SetTo(FK(S(r, "equipSlot")));  // none crashed the Container Menu (game-8)
+        if (Has(r, "template"))
+        {
+            var t = Template(r, m => m.Weapons);
+            w.Model = t.Model?.DeepCopy();
+            w.FirstPersonModel.SetTo(t.FirstPersonModel.FormKeyNullable);  // the 1st-person static; none shows nothing in hand
+            w.PickUpSound.SetTo(t.PickUpSound.FormKeyNullable);
+            w.PutDownSound.SetTo(t.PutDownSound.FormKeyNullable);
+            w.ImpactDataSet.SetTo(t.ImpactDataSet.FormKeyNullable);
+            w.AttackSound.SetTo(t.AttackSound.FormKeyNullable);
+            w.AttackSound2D.SetTo(t.AttackSound2D.FormKeyNullable);
+            w.AttackLoopSound.SetTo(t.AttackLoopSound.FormKeyNullable);
+            w.AttackFailSound.SetTo(t.AttackFailSound.FormKeyNullable);
+            w.IdleSound.SetTo(t.IdleSound.FormKeyNullable);
+            w.EquipSound.SetTo(t.EquipSound.FormKeyNullable);
+            w.UnequipSound.SetTo(t.UnequipSound.FormKeyNullable);
+            w.BlockBashImpact.SetTo(t.BlockBashImpact.FormKeyNullable);
+            w.AlternateBlockMaterial.SetTo(t.AlternateBlockMaterial.FormKeyNullable);
+            w.DetectionSoundLevel = t.DetectionSoundLevel;
+            if (!r.TryGetProperty("damage", out _)) w.BasicStats!.Damage = t.BasicStats?.Damage ?? 0;  // the class's numbers are owed
+        }
+        if (w.Model is null) throw new InvalidDataException($"WEAP {w.EditorID}: no model");
         return w;
+    }
+
+    // An arrow: its base-game record's look, projectile, damage and flags; our name, weight and value.
+    static Ammunition Ammo(JsonElement r)
+    {
+        var t = Template(r, m => m.Ammunitions);
+        var a = new Ammunition(Key(r), Rel)
+        {
+            EditorID = S(r, "edid"),
+            Name = T(r, "name"),
+            Model = t.Model?.DeepCopy(),
+            Value = (uint)I(r, "value"),
+            Weight = F(r, "weight"),
+            Damage = t.Damage,
+            Flags = t.Flags,
+        };
+        a.Projectile.SetTo(t.Projectile.FormKey);
+        a.PickUpSound.SetTo(t.PickUpSound.FormKeyNullable);
+        a.PutDownSound.SetTo(t.PutDownSound.FormKeyNullable);
+        return a;
     }
 
     static ArmorAddon Addon(JsonElement r)
@@ -86,10 +148,20 @@ static class ItemWriters
             BodyTemplate = new BodyTemplate
             {
                 FirstPersonFlags = (BipedObjectFlag)I(r, "biped"),
-                ArmorType = Enum.Parse<ArmorType>(S(r, "armorType")),
+                ArmorType = Has(r, "armorType") ? Enum.Parse<ArmorType>(S(r, "armorType")) : ArmorType.Clothing,
             },
         };
         foreach (var x in A(r, "armatures")) a.Armature.Add(new FormLink<IArmorAddonGetter>(FK(x.GetString()!)));
+        if (Has(r, "template"))
+        {
+            var t = Template(r, m => m.Armors);
+            foreach (var x in t.Armature) a.Armature.Add(new FormLink<IArmorAddonGetter>(x.FormKey));
+            a.WorldModel = t.WorldModel is { } wm ? new GenderedItem<ArmorModel?>(wm.Male?.DeepCopy(), wm.Female?.DeepCopy()) : null;
+            a.PickUpSound.SetTo(t.PickUpSound.FormKeyNullable);
+            a.PutDownSound.SetTo(t.PutDownSound.FormKeyNullable);
+            if (!Has(r, "armorType") && t.BodyTemplate is { } bt) a.BodyTemplate!.ArmorType = bt.ArmorType;  // Morrowind's medium: the engine has none
+        }
+        else if (!Has(r, "armorType")) throw new InvalidDataException($"ARMO {S(r, "edid")}: no armour type");
         return a;
     }
 

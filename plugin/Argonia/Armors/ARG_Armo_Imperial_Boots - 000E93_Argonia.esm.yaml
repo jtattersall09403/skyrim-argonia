@@ -1,0 +1,18 @@
+FormKey: 000E93:Argonia.esm
+EditorID: ARG_Armo_Imperial_Boots
+Name:
+  TargetLanguage: English
+  Value: Imperial Light Boots
+WorldModel:
+  Male:
+    Model:
+      File: Armor\Imperial\M\BootsLightGND.nif
+      Data: 0x0200000002000000000000009208AA6764647300E89DF671C40A85DA64647300E89DF671
+BodyTemplate:
+  FirstPersonFlags:
+  - Feet
+  ActsLike44: True
+Armature:
+- 013ED1:Skyrim.esm
+Value: 15
+Weight: 0.83

@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1557> kForms{{
+inline constexpr std::array<FormRow, 1561> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -656,9 +656,13 @@ inline constexpr std::array<FormRow, 1557> kForms{{
     {"infra.sign-arm.The Teeth of Sithis", "Argonia.esm", "ACTI", 0x00099B},
     {"infra.sign-arm.Thorn", "Argonia.esm", "ACTI", 0x00097E},
     {"item.healing-draught", "Argonia.esm", "ALCH", 0x000851},
+    {"item.hunting-bow", "Argonia.esm", "WEAP", 0x000E91},
     {"item.lf83.clay-basket", "Argonia.esm", "MISC", 0x00086E},
     {"item.lf83.well-silt", "Argonia.esm", "MISC", 0x000872},
     {"item.lf83.well-water", "Argonia.esm", "MISC", 0x000873},
+    {"item.steel-flight-arrow", "Argonia.esm", "AMMO", 0x000E92},
+    {"item.steel-mace", "Argonia.esm", "WEAP", 0x000E8F},
+    {"item.steel-scimitar", "Argonia.esm", "WEAP", 0x000E90},
     {"item.steel-sword", "Argonia.esm", "WEAP", 0x000840},
     {"land_region.border", "Argonia.esm", "REGN", 0x000834},
     {"land_region.border.shell", "ArgoniaWorld.esm", "REGN", 0x08002F},

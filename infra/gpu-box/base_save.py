@@ -9,7 +9,7 @@ itself is the black holding cell). Never committed. DEV ONLY.
 The new game is started by the console's `coc ARG_HoldingCell` at the main menu, which begins a new game with the
 start-game-enabled quests running and the player placed in the cell. Our start quest's own move (0.4 §b,
 ARG_StartQuestScript) needs its compiled script; until the Creation Kit is installed (owner issue #15) the coc is the
-move. The coc's test kit is removed. The player is Argonian from our plugin's Player override (start.json `player`, 1.10);
+move. The coc's test kit is removed and our starting kit given (the Player override's items). The player is Argonian from our plugin's Player override (start.json `player`, 1.10);
 no setrace. The class and birthsign records wait for 1.3's setters.
 """
 import argparse
@@ -69,9 +69,15 @@ def main(argv=None):
         raise SystemExit(f"the new game did not reach {cell}")
     time.sleep(3)
     out = {"cell": cell, "new_game_s": round(time.monotonic() - t0, 1)}
-    # A coc from the main menu hands the player the engine's test kit (iron armour, a sword, potions, 96.5 kg): not
-    # our start, and it put a sheet-less studio character (carry 30 kg) at the overloaded tier, so no roll (game-6).
+    # A coc from the main menu adds the engine's test kit (iron armour, a sword, potions, 96.5 kg) on top of the
+    # Player record's items: not our start, and it overloaded the studio character (game-6). So the inventory is
+    # emptied and our starting kit (start.json `player.kit`, the Player override's items, 1.12) given again, as a new
+    # game from the main menu has it.
     b.call("console", "player.removeallitems")
+    from tools.argonia_world import db, items_records
+    world = db.open()
+    for k in start["player"].get("kit", []):
+        b.call("console", f"player.additem {items_records.kit_edid(world, k['item'])} {k.get('count', 1)}")
     out["carried_kg"] = b.call("console", "player.getav inventoryweight")["output"].strip()
     # The race and face come from our plugin's Player override (start.json `player`, 1.10); a console setrace kept
     # the Nord default's head, hair and tints on an Argonian body (owner play test 1, item 6), so none is run.

@@ -3,12 +3,17 @@ EditorID: ARG_Armo_Steel_Boots
 Name:
   TargetLanguage: English
   Value: Steel Boots
+WorldModel:
+  Male:
+    Model:
+      File: Armor\Steel\BootsSteelGO.nif
+      Data: 0x0200000004000000000000004576E85B64647300C4655256653941A364647300C46552566BBB96D164647300262C333BDF68483A64647300C4655256
 BodyTemplate:
   FirstPersonFlags:
   - Feet
   ArmorType: HeavyArmor
   ActsLike44: True
 Armature:
-- 000841:Argonia.esm
+- 0179AD:Skyrim.esm
 Value: 55
 Weight: 3.5

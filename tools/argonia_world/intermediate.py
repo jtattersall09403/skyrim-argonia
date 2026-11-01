@@ -27,7 +27,7 @@ ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out" / "intermediate" / "argonia.json"
 QUARANTINE = ROOT / "data" / "quarantine"
 KIND_ORDER = ("base", "place", "population", "quest", "patch")
-TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "LSCR", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
+TYPE_ORDER = ("GMST", "GLOB", "MUSC", "STAT", "LTEX", "CLAS", "RACE", "CSTY", "FACT", "SPEL", "LVLI", "KYWD", "FLST", "LCTN", "WEAP", "AMMO", "ARMA", "ARMO", "OTFT", "CONT", "BOOK", "MISC", "ALCH", "ACTI", "PERK", "MESG", "ECZN", "PACK", "NPC_", "QUST", "LSCR", "CELL", "IMGS", "WTHR", "CLMT", "REGN", "WRLD")
 
 
 @dataclass
@@ -236,10 +236,11 @@ def sheet_layer(alloc: Allocator, world, studio: dict) -> Layer:
 
 
 # --- the player character (1.10) --------------------------------------------------------------------------
-def player_layer(player: dict) -> Layer:
+def player_layer(player: dict, items: list[dict] = ()) -> Layer:
     """Skyrim.esm's Player NPC_ overridden to start Argonian: the race and one of the race's own face presets,
     copied whole by ArgoniaGen (RaceRecords.Player). Nothing Nordic carries over (decision 0006); the engine
-    builds the face at run time (0014)."""
+    builds the face at run time (0014). Its inventory is the starting kit (``items``, from start.json's ``kit``),
+    in place of the master's engine test kit (iron armour, a sword, potions)."""
     for k in ("formKey", "race", "preset", "presetEdid"):
         if not player.get(k):
             raise ValueError(f"start.json player: no {k}")
@@ -247,7 +248,7 @@ def player_layer(player: dict) -> Layer:
         raise ValueError(f"start.json player: {player['formKey']} is not Skyrim.esm's Player")
     return Layer("base:player", [{"type": "NPC_", "override": True, "edid": "Player", "formKey": player["formKey"],
                                   "race": player["race"], "preset": player["preset"],
-                                  "presetEdid": player["presetEdid"]}])
+                                  "presetEdid": player["presetEdid"], "items": list(items)}])
 
 
 # --- the load order --------------------------------------------------------------------------------------
@@ -272,14 +273,17 @@ def build(data: Path, scan: dict, index: Index, alloc: Allocator, extra: list[La
     resolver = Resolver(index)
     studio = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["studio"]
     player = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]
-    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio), player_layer(player)] \
+    from tools.argonia_world import items_records  # 1.3 §c: the item records of the carry rung; 1.12: the kit
+    kit = player.get("kit", [])
+    items_layer = items_records.layer(alloc, alloc.world, kit)  # first, so the kit's records have their ids
+    layers = quarantine_layers(alloc, scan, resolver) + [sheet_layer(alloc, alloc.world, studio),
+                                                         player_layer(player, items_records.kit_entries(alloc, alloc.world, kit))] \
         + list(extra)
     layers += regions_api.layers(alloc, alloc.world, regions_api.wrld_record(), resolver)  # 2.W3: regions, weather, climate
     from tools.argonia_world import fixtures, place_build  # 0.4 §d: the built places; the studio's fixture cells
     layers += place_build.layers(alloc, alloc.world, resolver, regions_api.wrld_record()["formKey"])
     layers.append(fixtures.layer(alloc, resolver))
-    from tools.argonia_world import items_records  # 1.3 §c: the item records of the carry rung
-    layers.append(items_records.layer(alloc, alloc.world))
+    layers.append(items_layer)
     from tools.argonia_world import hooks_records  # native map P3: the dialogue intercept perk
     layers.append(hooks_records.layer(alloc))
     from tools.argonia_world import combat_records  # 1.6: the combat wiring's carrier perk and archetype

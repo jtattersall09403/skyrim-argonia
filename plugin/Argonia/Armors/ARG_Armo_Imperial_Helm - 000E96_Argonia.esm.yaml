@@ -1,0 +1,20 @@
+FormKey: 000E96:Argonia.esm
+EditorID: ARG_Armo_Imperial_Helm
+Name:
+  TargetLanguage: English
+  Value: Imperial Light Helmet
+WorldModel:
+  Male:
+    Model:
+      File: Armor\Imperial\M\HelmetLightGND.nif
+      Data: 0x020000000200000000000000ECF865C864647300E89DF6716F0384D664647300E89DF671
+BodyTemplate:
+  FirstPersonFlags:
+  - Head
+  ActsLike44: True
+Armature:
+- 013ED6:Skyrim.esm
+- 0BE466:Skyrim.esm
+- 0BE467:Skyrim.esm
+Value: 35
+Weight: 1.14

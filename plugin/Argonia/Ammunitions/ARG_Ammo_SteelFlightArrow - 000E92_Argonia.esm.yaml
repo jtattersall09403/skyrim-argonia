@@ -1,0 +1,16 @@
+FormKey: 000E92:Argonia.esm
+EditorID: ARG_Ammo_SteelFlightArrow
+Name:
+  TargetLanguage: English
+  Value: Steel Flight Arrow
+Model:
+  File: Weapons\Steel\SteelArrow.nif
+  Data: 0x020000000400000000000000DDB797906464730014F240E62E00BAF66464730014F240E6B8EC307B64647300262C333B9451B36F6464730014F240E6
+PickUpSound: 03E7B7:Skyrim.esm
+PutDownSound: 03E877:Skyrim.esm
+Projectile: 03BE12:Skyrim.esm
+Flags:
+- NonBolt
+Damage: 10
+Value: 2
+Weight: 0.05

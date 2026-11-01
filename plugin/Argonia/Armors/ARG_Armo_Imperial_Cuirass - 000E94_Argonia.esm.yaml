@@ -1,0 +1,18 @@
+FormKey: 000E94:Argonia.esm
+EditorID: ARG_Armo_Imperial_Cuirass
+Name:
+  TargetLanguage: English
+  Value: Imperial Light Cuirass
+WorldModel:
+  Male:
+    Model:
+      File: Armor\Imperial\M\CuirassLightGND.nif
+      Data: 0x0200000002000000000000007A669C4564647300E89DF671491D28E664647300E89DF671
+BodyTemplate:
+  FirstPersonFlags:
+  - Body
+  ActsLike44: True
+Armature:
+- 013ED3:Skyrim.esm
+Value: 75
+Weight: 1.95
