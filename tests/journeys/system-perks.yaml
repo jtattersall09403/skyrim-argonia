@@ -16,6 +16,7 @@ steps:
     do:
       - {console: "ARG_Ref_ClaywaterStationAmbushPlayer.placeatme ARG_CampSpot 1"}
       - {console: "player.additem ARG_Weap_SteelSword 1"}
+      - {console: "player.equipitem ARG_Weap_SteelSword"}   # dev-grow's blows train the equipped weapon's class: the base save's iron sword has none (b112)
       - {wait: 2}
     expect:
       - {read: [actors, "4000"], path: listed.0.ref, keep: opp}

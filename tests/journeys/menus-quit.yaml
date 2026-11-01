@@ -1,4 +1,5 @@
-# fixes-1's owed L4 (the menu lag; the quit save, 2.8 §c): a menu opened in play stays open (game-8: the suspend
+# fixes-1's owed L4 (the menu lag; the quit save, 2.8 §c). Tab now hands the Tween Menu to Wind UI's windows (padcursor.cpp,
+# by design), so the quit runs from Esc's System page (the Journal Menu). A menu opened in play stays open (game-8: the suspend
 # save's spinner closed the Journal), no suspend save is written on an opening, and the Journal's Quit (dev-quit-to-menu: the
 # engine's resetGame and the Journal's close, as its confirmation does) writes ArgoniaSuspend as the Journal closes. The
 # journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
@@ -9,21 +10,14 @@ batch_last: true         # it ends at the main menu or changes the saves: last i
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)
 scene: first-place
 steps:
-  - name: tween-stays        # Tab opens the pause hub; 5 s on it is still open, and no save was written
-    do: [{key: "TAB 120"}, {wait: 5}]
-    expect:
-      - {event: {kind: menu, match: TweenMenu}}
-      - {event: {kind: menu, match: '"opening": false', absent: true}}
-  - name: tween-closed
-    do: [{key: "TAB 120"}, {wait: 1.5}]
   - name: journal-stays      # our journal (J), 5 s open, still open
-    do: [{key: "J 120"}, {wait: 5}]
+    do: [{key: "J 120 engine"}, {wait: 5}]
     expect: [{read: [core, Views], path: value, contains: "journal ready open"}]
   - name: journal-closed
     do: [{close_menu: journal}]
     expect: [{read: [core, Views], path: value, contains: "journal ready closed"}]
   - name: system-opens       # Escape in play: the vanilla Journal Menu (engine), then closed by the close keys
-    do: [{key: "ESC 80"}, {wait: 2}]
+    do: [{key: "ESC 120 engine"}, {wait: 2}]
     expect:
       - {event: {kind: menu, match: Journal Menu}}
       - {log: {name: ArgoniaCore, contains: "saves: the Journal's QuitToMainMenu wrapped"}, within: 5}
