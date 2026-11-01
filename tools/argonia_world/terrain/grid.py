@@ -70,8 +70,9 @@ class Sources:
             cover=np.load(r / "terrain" / "landcover-i16.npy", mmap_mode="r"),
             tint=png.read(tint) if tint.exists() else None,
             pad=PAD if apron else 0,
-            regrade=water_regrade.Regrade.load(PAD if apron else 0),
-            edits=place_ground.Edits.load(PAD if apron else 0),
+            # the generated ground carries its water and sites: the old regrade and place edits are gone (1.15 §b)
+            regrade=None if gen.exists() else water_regrade.Regrade.load(PAD if apron else 0),
+            edits=None if gen.exists() else place_ground.Edits.load(PAD if apron else 0),
         )
 
     @property

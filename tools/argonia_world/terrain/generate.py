@@ -86,7 +86,8 @@ SHAPES = {"cave-mouth": "mound", "burrow": "mound", "grave-cut": "mound", "root-
           "stair-throat": "flat", "cellar-door": "flat", "trapdoor": "flat", "well-shaft": "flat", "none": "flat"}
 SITE_MIN_R = 12.0
 MOUND_M, DEPRESSION_M, DEEP_M = 6.0, 4.0, 3.0  # options §9: a mound or bank for a mouth, a sinkhole, a deep cell
-BANK_WATER_M = 40.0  # a mouth within this of water is cut into the bank, not a mound
+BANK_WATER_M = 40.0
+DEEP_SEEK_M = 150.0  # an underwater entry looks this far for water under it  # a mouth within this of water is cut into the bank, not a mound
 
 
 def relief_rows(world) -> list[dict]:
@@ -167,18 +168,16 @@ def chamfer(src: np.ndarray, far: int, val: np.ndarray | None = None):
     for _ in range(far):
         changed = False
         for dy, dx, w in ((1, 0, 1), (-1, 0, 1), (0, 1, 1), (0, -1, 1), (1, 1, s2), (1, -1, s2), (-1, 1, s2), (-1, -1, s2)):
-            sh = np.full_like(d, np.inf)
             ys, yd = (slice(0, -dy), slice(dy, None)) if dy > 0 else (slice(-dy, None), slice(0, dy or None))
             xs, xd = (slice(0, -dx), slice(dx, None)) if dx > 0 else (slice(-dx, None), slice(0, dx or None))
-            sh[yd, xd] = d[ys, xs] + w
-            better = sh < d
+            cand = d[ys, xs] + w
+            tgt = d[yd, xd]
+            better = cand < tgt
             if better.any():
                 changed = True
-                d[better] = sh[better]
+                np.copyto(tgt, cand, where=better)
                 if v is not None:
-                    vs = np.full_like(v, np.nan)
-                    vs[yd, xd] = v[ys, xs]
-                    v[better] = vs[better]
+                    np.copyto(v[yd, xd], v[ys, xs], where=better)
         if not changed:
             break
     d[d > far] = np.inf
@@ -218,8 +217,21 @@ def limit(h: np.ndarray, lo: np.ndarray, hi: np.ndarray, lip: float) -> tuple[np
     """h held lip-Lipschitz (4-neighbour) inside the cones of the bounds lo <= h <= hi; returns (f, steep) where
     steep marks the samples the limit moved (the designed cliffs)."""
     a, b = majorant(np.where(np.isfinite(lo), lo, -1e9), lip), minorant(np.where(np.isfinite(hi), hi, 1e9), lip)
-    m = (minorant(h, lip) + majorant(h, lip)) / 2  # the L-infinity-closest lip-Lipschitz ground
-    f = np.minimum(np.maximum(m, a), np.maximum(b, a))
+    h = np.minimum(np.maximum(h, a), np.maximum(b, a))
+    pins = np.zeros(h.shape, bool)
+    dx, dy = np.abs(np.diff(h, axis=1)) > lip, np.abs(np.diff(h, axis=0)) > lip
+    pins[:, 1:] |= dx
+    pins[:, :-1] |= dx
+    pins[1:] |= dy
+    pins[:-1] |= dy
+    if not pins.any():
+        return h, pins
+    m = (minorant(h, lip) + majorant(h, lip)) / 2  # quantize.py's method: pin the steep pairs to m, cone the rest
+    lo_c = majorant(np.where(pins, m, -1e9), lip)
+    hi_c = minorant(np.where(pins, m, 1e9), lip)
+    f = np.minimum(np.maximum(h, lo_c), hi_c)
+    # the water's bounds win: where a bank and a bed are closer than the slope allows (a fall), the step is a cliff
+    f = np.minimum(np.maximum(f, np.where(np.isfinite(lo), lo, -1e9)), np.maximum(np.where(np.isfinite(hi), hi, 1e9), lo))
     return f, np.abs(f - h) > 0.05
 
 
@@ -353,7 +365,8 @@ def generate(inp: Inputs, log=print) -> dict:
         noise += amp * (rows_[:, i0] * (1 - f)[None] + rows_[:, i0 + 1] * f[None])
     dwet, near_lvl = chamfer(foot, SHORE_FAR, np.where(foot, vmin, np.nan))
     away = np.clip(np.where(np.isfinite(dwet), dwet, SHORE_FAR) / SHORE_FAR, 0, 1)
-    h = base + relief + noise * rough * away
+    # the land stands on its water (never below the base plus its floor) and rises to the region's absolute band
+    h = np.maximum(base + floor, relief) + noise * rough * away
     h = h * (1 - 0.5 * ero) + blur(h, 4) * 0.5 * ero
     del noise
     log(f"noise+erosion {time.time() - t0:.1f}s")
@@ -378,8 +391,8 @@ def generate(inp: Inputs, log=print) -> dict:
     dp = np.zeros((N + 1, N + 1))
     for i, n in enumerate(TYPES):
         sg[tsamp == i], bg[tsamp == i], dp[tsamp == i] = SHORE_GRADE[n], BED_GRADE[n], DEPTH_M[n]
-    din, _ = chamfer(~foot & np.ones_like(foot), 64)
-    din = np.where(foot, np.minimum(np.where(np.isfinite(din), din, 64), 64), 0)
+    din, _ = chamfer(~foot, 32)
+    din = np.where(foot, np.where(np.isfinite(din), din, 32), 0)
     lo = np.full((N + 1, N + 1), -np.inf)
     hi = np.full((N + 1, N + 1), np.inf)
     role = np.zeros((N + 1, N + 1), np.uint8)  # 0 dry, 1 wet, 2 step slope, 3 bank of a water cell, 4 shore
@@ -395,16 +408,39 @@ def generate(inp: Inputs, log=print) -> dict:
     role[shore] = 4
     # steps: the vanilla join
     nstep = 0
+    banks = []
+    chan = np.zeros((N + 1, N + 1), bool)
+    sbank = np.zeros((N + 1, N + 1), bool)  # the closed banks along step edges: nothing later opens them
+    chan0 = np.zeros((N + 1, N + 1), bool)  # the vertices where a channel crosses its own edge
     for s in inp.water.steps:
         r_north = (C - 1 - (s.cy - CY0)) * Q
         c_west = (s.cx - CX0) * Q
         if s.cross_lo < 0:
-            continue
+            s = type(s)(s.cx, s.cy, s.edge, s.upper_m, s.lower_m, Q + 1, Q, s.chain)  # closed: banks only
         drop = s.upper_m - s.lower_m
-        k = int(min(5, max(1, math.ceil(drop / lip))))
+        k = int(min(Q - 1, max(1, math.ceil(drop / (0.8 * lip)))))  # 1-5 vertices, longer for a big drop
         edge_bed = s.upper_m - STEP_BED_M
         end_bed = s.lower_m - FREEBOARD_M - 0.2
+        # the banks closed above the upper water along the whole edge outside the channel (options §11)
+        jj = np.arange(Q + 1)
+        out_ = (jj < s.cross_lo) | (jj > s.cross_hi)
+        if s.edge in ("e", "w"):
+            esel = (r_north + Q - jj[out_], np.full(out_.sum(), c_west + (Q if s.edge == "e" else 0)))
+        else:
+            esel = (np.full(out_.sum(), r_north + (0 if s.edge == "n" else Q)), c_west + jj[out_])
+        banks.append((esel, s.upper_m + FREEBOARD_M))
         j = np.arange(s.cross_lo, s.cross_hi + 1)
+        for kk in range(1, k + 1):  # the lower cell's band beside the edge is a graded slope, not held wet
+            if s.edge in ("e", "w"):
+                col = c_west + (Q + kk if s.edge == "e" else -kk)
+                band = (r_north + Q - jj, np.full(Q + 1, col)) if 0 <= col <= N else None
+            else:
+                row = r_north + (-kk if s.edge == "n" else Q + kk)
+                band = (np.full(Q + 1, row), c_west + jj) if 0 <= row <= N else None
+            if band is not None:
+                held = role[band] == 1
+                hi[band] = np.where(held, np.inf, hi[band])
+                role[band] = np.where(held, 2, role[band])
         for kk in range(0, k + 1):
             z = edge_bed + (end_bed - edge_bed) * kk / k
             if s.edge in ("e", "w"):
@@ -419,17 +455,29 @@ def generate(inp: Inputs, log=print) -> dict:
                     continue
                 cols = c_west + j
                 sel = (np.full_like(cols, row), cols)
-            h[sel] = z
+            first = ~chan[sel]  # a vertex two channels share keeps the lower bed
+            h[sel] = np.where(first, z, np.minimum(h[sel], z))
+            hi[sel] = np.where(first, z + 0.01, np.minimum(hi[sel], z + 0.01))
+            chan[sel] = True
+            if kk == 0:
+                chan0[sel] = True
             lo[sel] = -np.inf
-            hi[sel] = z + 0.01
-            role[sel] = np.where(z < vmin[sel] - 1e-3, 1, 2)
         nstep += 1
+    role[chan] = np.where(hi[chan] < vmin[chan], 1, 2)
+    for esel, z in banks:  # the banks closed above the upper water, after every channel (a corner may be one)
+        keep = ~chan0[esel]
+        e = (esel[0][keep], esel[1][keep])
+        lo[e] = np.maximum(np.where(np.isfinite(lo[e]), lo[e], -np.inf), z)
+        hi[e] = np.inf
+        h[e] = np.maximum(h[e], z)
+        role[e] = 3
+        sbank[e] = True
     st["steps_joined"] = nstep
     h = np.minimum(np.maximum(h, lo), hi)
     log(f"constraints {time.time() - t0:.1f}s")
 
     # 6. entrance sites
-    sites = shape_sites(h, lo, hi, role, inp)
+    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank)
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("mound", "bank", "depression", "flat", "deep_water")}
 
     # 7. the slope limit inside the cones
@@ -446,46 +494,93 @@ def generate(inp: Inputs, log=print) -> dict:
             "sites": sites, "stats": st}
 
 
-def shape_sites(h, lo, hi, role, inp: Inputs) -> list[dict]:
-    """One entrance site per dungeon record, shaped in place (options §9): a mound, or a bank cut where water is
-    near, for a mouth; a depression for a sinkhole; flat landmark ground; a deep-water bowl for an underwater entry."""
+def rim_plane(win: np.ndarray, d: np.ndarray, yy: np.ndarray, xx: np.ndarray) -> np.ndarray:
+    """The plane through the ring 1.0-1.3 r about a site (least squares), over the window: what the site is
+    shaped against, so a mound on a hillside is a mound and not the hill."""
+    ring = (d > 1.0) & (d <= 1.3)
+    if ring.sum() < 3:
+        return np.full(win.shape, float(win.mean()))
+    A = np.stack([yy[ring], xx[ring], np.ones(ring.sum())], 1).astype(np.float64)
+    k, *_ = np.linalg.lstsq(A, win[ring], rcond=None)
+    return k[0] * yy + k[1] * xx + k[2]
+
+
+def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank) -> list[dict]:
+    """One entrance site per dungeon record, reserved and shaped in place (options §9): a mound, or a bank cut where
+    water is near, for a mouth; a depression for a sinkhole; flat landmark ground; a deep-water bowl for an
+    underwater entry. A dry-shaped site standing in water is reserved as ground (its disc becomes bank above the
+    water); an underwater entry with no water under it moves to the nearest wet sample within DEEP_SEEK_M, else
+    becomes a bank mouth (both written to the row's request note)."""
     out = []
-    wl = inp.water.level
-    for s in inp.sites:
+    order = {"flat": 0, "deep_water": 1, "depression": 2}  # the broad shapes first, the mouths on top
+    for s in sorted(inp.sites, key=lambda s: (order.get(SHAPES.get(s["entrance"], "flat"), 3), s["place_id"])):
         shape = SHAPES.get(s["entrance"], "flat")
+        note = s["request"] or ""
         if shape == "mound" and s["water_m"] is not None and s["water_m"] < BANK_WATER_M:
             shape = "bank"
         cx, cy = s["x_m"] / MPP, s["y_m"] / MPP
         rad = s["radius_m"] / MPP
+        if shape == "deep_water":
+            ci, cj = int(round(cy)), int(round(cx))
+            if not (0 <= ci <= N and 0 <= cj <= N and foot[ci, cj] and not sbank[ci, cj]):
+                k = int(DEEP_SEEK_M / MPP)
+                r0, c0 = max(ci - k, 0), max(cj - k, 0)
+                sub = foot[r0:ci + k + 1, c0:cj + k + 1]
+                if sub.any():
+                    yy, xx = np.nonzero(sub)
+                    i = int(np.argmin((yy + r0 - cy) ** 2 + (xx + c0 - cx) ** 2))
+                    cy, cx = float(yy[i] + r0), float(xx[i] + c0)
+                    note = f"{note}; moved {np.hypot(cy - s['y_m'] / MPP, cx - s['x_m'] / MPP) * MPP:.0f} m to water".strip("; ")
+                else:
+                    shape, note = "bank", f"{note}; no water within {DEEP_SEEK_M:.0f} m: a bank mouth".strip("; ")
         r = int(math.ceil(rad * 1.5))
-        r0, r1 = max(int(cy) - r, 0), min(int(cy) + r + 1, N + 1)
-        c0, c1 = max(int(cx) - r, 0), min(int(cx) + r + 1, N + 1)
-        if r0 >= r1 or c0 >= c1:
-            continue
+        ci, cj = min(max(int(round(cy)), 0), N), min(max(int(round(cx)), 0), N)
+        r0, r1 = max(ci - r, 0), min(ci + r + 1, N + 1)
+        c0, c1 = max(cj - r, 0), min(cj + r + 1, N + 1)
         yy, xx = np.mgrid[r0:r1, c0:c1]
         d = np.hypot(yy - cy, xx - cx) / rad
-        w = np.clip(1 - d, 0, 1)
+        w = np.clip((1.0 - d) / 0.4, 0, 1)  # full inside 0.6 r, ramped to the rim
         w = w * w * (3 - 2 * w)
-        win = h[r0:r1, c0:c1]
-        ci, cj = min(max(int(round(cy)), 0), N), min(max(int(round(cx)), 0), N)
-        cell = (min(ci // Q, C - 1), min(cj // Q, C - 1))
+        sl = (slice(r0, r1), slice(c0, c1))
+        win, wlo, whi, wro = h[sl], lo[sl], hi[sl], role[sl]
+        disc = d <= 1.0
         facing = 0.0
+        if shape not in ("deep_water", "depression"):  # reserve the disc as ground above any water sharing it
+            wet = disc & ~np.isnan(vmax[sl])
+            whi[wet] = np.inf
+            wlo[wet] = np.maximum(np.where(np.isfinite(wlo[wet]), wlo[wet], -np.inf), vmax[sl][wet] + FREEBOARD_M)
+            wro[wet] = 3
+            win[:] = np.maximum(win, np.where(np.isfinite(wlo), wlo, -np.inf))
+        plane = rim_plane(win, d, yy, xx)
         if shape in ("mound", "bank"):
-            win += MOUND_M * w
+            win[:] = np.maximum(win, plane + MOUND_M * w)
             gy, gx = np.gradient(win)
             facing = float(np.degrees(np.arctan2(gx[ci - r0, cj - c0], -gy[ci - r0, cj - c0])) % 360)
-        elif shape == "depression":
-            win -= DEPRESSION_M * w
+        elif shape == "depression":  # a sinkhole: in a water cell its floor floods (it joins the cell's water)
+            win[:] = np.minimum(win, win * (1 - w) + (plane - DEPRESSION_M) * w)
+            inner = disc & ~np.isnan(vmin[sl]) & ~sbank[sl]
+            sunk = inner & (win < vmin[sl])
+            wlo[inner] = np.where(sunk[inner], -np.inf, vmax[sl][inner] + FREEBOARD_M)
+            whi[inner] = np.where(sunk[inner], vmin[sl][inner] - FREEBOARD_M, np.inf)
+            wro[inner] = np.where(sunk[inner], 1, 3)
         elif shape == "flat":
-            m = float(win[d <= 1].mean()) if (d <= 1).any() else float(win[ci - r0, cj - c0])
+            core = d <= 0.6
+            m = float(np.median(win[core]))
+            if np.isfinite(wlo[core]).any():
+                m = max(m, float(wlo[core][np.isfinite(wlo[core])].max()))
+            wlo[core] = np.minimum(np.where(np.isfinite(wlo[core]), wlo[core], -np.inf), m)
             win[:] = win * (1 - w) + m * w
         else:  # deep water: a bowl under the cell's level
-            lev = wl[cell]
-            if not np.isnan(lev):
-                win[:] = np.minimum(win, win * (1 - w) + (lev - DEEP_M - 0.5) * w)
-        h[r0:r1, c0:c1] = np.minimum(np.maximum(win, lo[r0:r1, c0:c1]), hi[r0:r1, c0:c1])
-        out.append({"place_id": s["place_id"], "shape": shape, "x_m": round(s["x_m"], 2), "y_m": round(s["y_m"], 2),
-                    "radius_m": round(s["radius_m"], 2), "facing_deg": round(facing, 1), "request": s["request"]})
+            bowl = vmin[sl] - DEEP_M - 0.5  # under the lowest water sharing each vertex
+            inner = (d <= 0.5) & ~np.isnan(bowl) & (wro != 3)  # a closed bank stays closed
+            whi[inner] = np.minimum(whi[inner], bowl[inner])
+            wlo[inner] = -np.inf
+            wro[inner] = 1
+            bowl = np.where(np.isnan(bowl), win, bowl)
+            win[:] = np.where(wro == 3, win, np.minimum(win, win * (1 - w) + bowl * w))
+        win[:] = np.minimum(np.maximum(win, wlo), np.maximum(whi, wlo))
+        out.append({"place_id": s["place_id"], "shape": shape, "x_m": round(cx * MPP, 2), "y_m": round(cy * MPP, 2),
+                    "radius_m": round(s["radius_m"], 2), "facing_deg": round(facing, 1), "request": note or None})
     return out
 
 
@@ -497,3 +592,61 @@ def write(res: dict, out: Path = OUT) -> dict:
     (out / "entrance-sites.json").write_text(json.dumps(res["sites"], indent=0) + "\n")
     (out / "generate.json").write_text(json.dumps(res["stats"], indent=1, sort_keys=True) + "\n")
     return res["stats"]
+
+
+def check(ground: np.ndarray, role: np.ndarray, water: CellWater, sites: list[dict]) -> dict:
+    """L1: every cell water fits its ground (no wet vertex at or above the lowest water sharing it; no bank of a
+    water cell below the highest; no bank below the upper water at a step outside its channel); every site shaped."""
+    g = np.asarray(ground, np.float64)
+    vmin, vmax = vertex_levels(water.level)
+    wet_bad = (role == 1) & ~(g < vmin)  # NaN (wet with no water over it) counts
+    bank_bad = (role == 3) & ~(g > vmax)
+    step_bad = 0
+    chan_v = set()
+    for s in water.steps:
+        if s.cross_lo < 0:
+            continue
+        rn, cw_ = (C - 1 - (s.cy - CY0)) * Q, (s.cx - CX0) * Q
+        for j in range(s.cross_lo, s.cross_hi + 1):
+            chan_v.add((rn + Q - j, cw_ + (Q if s.edge == "e" else 0)) if s.edge in ("e", "w")
+                       else (rn + (0 if s.edge == "n" else Q), cw_ + j))
+    for s in water.steps:
+        rn, cw_ = (C - 1 - (s.cy - CY0)) * Q, (s.cx - CX0) * Q
+        j = np.arange(Q + 1)
+        if s.edge in ("e", "w"):
+            col = cw_ + (Q if s.edge == "e" else 0)
+            z = g[rn + Q - j, col]
+        else:
+            z = g[rn + (0 if s.edge == "n" else Q), cw_ + j]
+        chan = (j >= s.cross_lo) & (j <= s.cross_hi) if s.cross_lo >= 0 else np.zeros(Q + 1, bool)
+        pts = [(rn + Q - jv, col) for jv in j] if s.edge in ("e", "w") else [(rn + (0 if s.edge == "n" else Q), cw_ + jv) for jv in j]
+        other = np.array([p in chan_v for p in pts])
+        step_bad += int((~chan & ~other & (z < s.upper_m)).sum())
+    site_bad = []
+    for s in sites:
+        ci, cj = int(round(s["y_m"] / MPP)), int(round(s["x_m"] / MPP))
+        r = int(s["radius_m"] / MPP)
+        if not (r <= ci <= N - r and r <= cj <= N - r):
+            continue
+        win = g[ci - r:ci + r + 1, cj - r:cj + r + 1]
+        yy, xx = np.mgrid[ci - r:ci + r + 1, cj - r:cj + r + 1]
+        rr = int(r * 1.3) + 1
+        if not (rr <= ci <= N - rr and rr <= cj <= N - rr):
+            continue
+        big = g[ci - rr:ci + rr + 1, cj - rr:cj + rr + 1]
+        by, bx = np.mgrid[ci - rr:ci + rr + 1, cj - rr:cj + rr + 1]
+        bd = np.hypot(by - s["y_m"] / MPP, bx - s["x_m"] / MPP) / (s["radius_m"] / MPP)
+        rel = float(g[ci, cj] - rim_plane(big, bd, by, bx)[rr, rr])
+        inner = win[np.hypot(yy - ci, xx - cj) <= 0.4 * r]
+        c = float(g[ci, cj])
+        lev = vmin[ci, cj]
+        ok = {"mound": rel >= 2.0, "bank": rel >= 2.0, "depression": rel <= -1.5,
+              "flat": float(inner.std()) < 1.0,
+              "deep_water": not np.isnan(lev) and lev - c >= DEEP_M}[s["shape"]]
+        if not ok:
+            site_bad.append((s["place_id"], s["shape"], int(role[ci, cj])))
+    return {"wet_above_water": int(wet_bad.sum()), "bank_below_water": int(bank_bad.sum()),
+            "step_bank_below_upper": step_bad, "sites": len(sites), "sites_unshaped": len(site_bad),
+            "sites_unshaped_by": {f"{k[0]}/role{k[1]}": n for k, n in
+                                  sorted(__import__("collections").Counter((b[1], b[2]) for b in site_bad).items())},
+            "sites_unshaped_ids": [b[0] for b in site_bad[:20]]}

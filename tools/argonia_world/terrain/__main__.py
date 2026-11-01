@@ -84,6 +84,18 @@ def _decode_m(c: dict) -> np.ndarray:
     return quantize.decode(c["offset"], B.unpack(c)["vhgt"]) * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE
 
 
+def _built_cells(out: Path, src) -> set[tuple[int, int]]:
+    cells = set()
+    for p in sorted((out / "land").glob("cy*.jsonl.gz")):
+        cy = int(p.name[2:6])
+        with __import__("gzip").open(p, "rt", encoding="ascii") as f:
+            for line in f:
+                x = int(line[line.index('"x":') + 4:].split(",")[0].split("}")[0])
+                if src.in_province(x, cy):
+                    cells.add((x, cy))
+    return cells
+
+
 def cmd_check(a) -> int:
     out = Path(a.out)
     stats = json.loads((out / "stats.json").read_text())
@@ -96,10 +108,10 @@ def cmd_check(a) -> int:
     built = sorted(int(p.name[2:6]) for p in (out / "land").glob("cy*.jsonl.gz"))
     rng = np.random.default_rng(20261029)
     pts: dict[tuple[int, int], list[tuple[int, int]]] = {}
-    span = src.n // su.QUADS_PER_CELL
     x0, y0 = su.PROVINCE_CELL_SW
+    built_cells = sorted(_built_cells(out, src))  # draw among the built province cells (a sample builds a few)
     for _ in range(a.points):
-        cx, cy = int(rng.integers(x0, x0 + span)), int(rng.integers(y0, y0 + span))
+        cx, cy = built_cells[int(rng.integers(0, len(built_cells)))]
         pts.setdefault((cx, cy), []).append((int(rng.integers(0, su.LAND_VERTS)), int(rng.integers(0, su.LAND_VERTS))))
 
     seam_h = seam_n = edges = 0
@@ -169,11 +181,49 @@ def cmd_check(a) -> int:
         fails.append(f"{max_layers} layers in a quadrant")
     if blend_step > BLEND_STEP_MAX:
         fails.append(f"a one-vertex blend: a texture's weight jumps {blend_step:.2f} between neighbouring vertices")
+    from tools.argonia_world.terrain.grid import generated_ground
+    gg = generated_ground()
+    if gg.exists():  # 1.15: the generated ground's fit, entrance and overflow checks
+        from tools.argonia_world import db
+        from tools.argonia_world.terrain import cellwater
+        from tools.argonia_world.terrain import generate as G
+        fit = G.check(np.load(gg, mmap_mode="r"), np.load(gg.with_name("role-u8.npy")), cellwater.load(db.open()),
+                      json.loads(gg.with_name("entrance-sites.json").read_text()))
+        res["fit"] = fit
+        for k in ("wet_above_water", "bank_below_water", "step_bank_below_upper", "sites_unshaped"):
+            if fit[k]:
+                fails.append(f"fit: {fit[k]} {k}")
+        ov = stats.get("overflow_cells", 0)
+        if ov:
+            fails.append(f"overflow: {ov} cells")
     res["fails"] = fails
     (out / "probe-points.json").write_text(json.dumps(probes, indent=0) + "\n")  # the L4 heights scene reads these
     (out / "check.json").write_text(json.dumps(res, indent=1, sort_keys=True) + "\n")
     print(json.dumps(res, indent=1, sort_keys=True))
     return 1 if fails else 0
+
+
+def cmd_generate(a) -> int:
+    import time
+
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain import generate as G
+
+    t0 = time.time()
+    w = db.open()
+    res = G.generate(G.Inputs.load(w))
+    st = G.write(res)  # the contract's out/terrain/ground-f32.npy; LAND and its stats go to --out
+    print(f"generated the province in {time.time() - t0:.1f} s", flush=True)
+    print(json.dumps(st, sort_keys=True))
+    if a.sample:
+        src = Sources.load()
+        from tools.argonia_world.terrain.landcover import table as tbl
+        out = Path(a.out)
+        stt = B.build(src, tbl(w), out, cells=world.SAMPLE_1_15)
+        d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in stt.__dict__.items()}
+        d["cells_arg"], d["apron"] = "sample-1.15", True
+        (out / "stats.json").write_text(json.dumps(d, indent=1, sort_keys=True) + "\n")
+    return 0
 
 
 def cmd_render(a) -> int:
@@ -207,6 +257,9 @@ def main(argv=None) -> int:
     c.add_argument("--out", default=str(OUT))
     c.add_argument("--points", type=int, default=1000)
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
+    gp = sub.add_parser("generate")
+    gp.add_argument("--sample", action="store_true", help="then build the 1.15 sample windows' LAND")
+    gp.add_argument("--out", default=str(OUT))
     r = sub.add_parser("render")
     r.add_argument("--cells")
     r.add_argument("--sample", action="store_true")
@@ -219,6 +272,8 @@ def main(argv=None) -> int:
         from tools.argonia_world.terrain import material as M
         print(f"material_gradient: {M.write_gradient(db.open())} rows")
         return 0
+    if a.cmd == "generate":
+        return cmd_generate(a)
     if a.cmd == "render":
         return cmd_render(a)
     if a.cmd == "world":
