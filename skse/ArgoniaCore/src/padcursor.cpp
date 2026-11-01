@@ -213,7 +213,10 @@ void Tick() {
   }
   const auto ctx = ContextNow();
   if (ctx != pad::Context::windows) {
-    if (g.was_windows) ReleaseButtons();
+    if (g.was_windows) {
+      ReleaseButtons();
+      SKSE::log::info("pad: windows closed");
+    }
     g.was_windows = false;
     g.acts.clear();
     return;

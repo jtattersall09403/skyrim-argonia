@@ -15,7 +15,10 @@ $R get 'C:/argonia/controls/controlmap.txt' $O/controlmap-was.txt && \
   $PY -c "import sys; sys.path.insert(0,'infra/gpu-box'); import controlmap as c; t=open('$O/controlmap-was.txt',encoding='latin-1').read(); open('$O/controlmap.txt','w',encoding='latin-1',newline='').write(c.remap(t.replace(chr(13)+chr(10),chr(10))))" && \
   $R put $O/controlmap.txt 'C:/argonia/controls/controlmap.txt'
 make deploy || exit 1
-size() { $B kill; $R desktop "\$env:SUNSHINE_CLIENT_WIDTH='$1'; \$env:SUNSHINE_CLIENT_HEIGHT='$2'; & C:\\argonia\\infra\\sunshine-prep.ps1"; $B launch; }
+# Wind UI's takeover on: a vanilla.txt left in Data from before e62ac40 turns it off (every menu Skyrim's)
+novanilla() { $R ps "Remove-Item -EA SilentlyContinue 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\WindUI\vanilla.txt'; Test-Path 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\SKSE\Plugins\WindUI\vanilla.txt'"; }
+novanilla; $B kill; $B launch
+size() { $B kill; $R desktop "\$env:SUNSHINE_CLIENT_WIDTH='$1'; \$env:SUNSHINE_CLIENT_HEIGHT='$2'; & C:\\argonia\\infra\\sunshine-prep.ps1"; novanilla; $B launch; }
 probe() {  # the dev mouse's routes: which one moves Wind UI's cursor (stills), then each pad button
   local p=$O/$1; mkdir -p $p
   $B load ArgoniaWalk; w 3

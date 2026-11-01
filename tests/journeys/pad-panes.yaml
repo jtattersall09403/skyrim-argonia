@@ -23,7 +23,7 @@ steps:
     expect: [{log: {name: ArgoniaCore, contains: "pad: right down"}}]
   - name: bumper-cycles-windows
     do: [{pad: "RB:150"}, {wait: 1}, {pad: "RB:150"}, {wait: 1}]
-    expect: [{log: {name: ArgoniaCore, contains: "pad: pane magic (next)"}}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: pane inventory (next)"}}]
   - name: triggers-and-right-stick-scroll
     do: [{pad: "RT:200"}, {pad: "LT:200"}, {pad: "RY=-1:600"}, {wait: 1}]
   - name: bumper-to-journal

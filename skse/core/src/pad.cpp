@@ -107,11 +107,12 @@ int scroll_step(Scroll& s, double y, double dt, const Tuning& t) {
 double nudge_px(double screen_h, const Tuning& t) { return t.nudge_px * scale(screen_h); }
 
 const std::vector<Pane>& panes() {
-  // Wind UI's windows at its default layout (1.12 §8 stills), then ours, System last (owner).
+  // Wind UI's windows at its default layout, measured on 1080p stills (out/pad112/p1080/08-a.png: Character
+  // 40-1030 x 35-500, Inventory 40-1030 x 535-990, Magic 1078-1878 x 35-675), then ours, System last (owner).
   static const std::vector<Pane> p = {
-      {"stats", PaneKind::window, 0.17, 0.30},
-      {"magic", PaneKind::window, 0.17, 0.72},
-      {"inventory", PaneKind::window, 0.66, 0.62},
+      {"stats", PaneKind::window, 0.28, 0.25},
+      {"inventory", PaneKind::window, 0.28, 0.70},
+      {"magic", PaneKind::window, 0.77, 0.33},
       {"journal", PaneKind::journal},
       {"map", PaneKind::map},
       {"system", PaneKind::system},
