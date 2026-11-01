@@ -967,11 +967,5 @@
    }
   }
  },
- "intents": {
-  "menu": {
-   "type": "hud.menu",
-   "v": 1,
-   "body": {}
-  }
- }
+ "intents": {}
 }

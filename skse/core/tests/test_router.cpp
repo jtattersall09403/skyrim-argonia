@@ -82,7 +82,6 @@ void death_runs_its_flow() {
 void intents_reach_their_view() {
   CHECK(intent_view(R"({"type":"sitting.buy","v":1,"body":{"attribute":"endurance"}})").value_or("") == "sitting");
   CHECK(intent_view(R"({"type":"sitting.done","v":1,"body":{}})").value_or("") == "sitting");
-  CHECK(intent_view(R"({"type":"hud.menu","v":1,"body":{}})").value_or("") == "hud");  // 1.12 §7: the touch Menu button
   CHECK(intent_view(R"({"type":"dialogue.goodbye","v":1,"body":{}})").value_or("") == "dialogue");
   CHECK(intent_view(R"({"type":"view.close","v":1,"body":{"view":"journal"}})").value_or("") == "journal");
   CHECK(!intent_view(R"({"type":"sitting.state","v":1,"body":{}})"));  // a push is never an intent

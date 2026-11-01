@@ -54,10 +54,6 @@ steps:
   - name: system-keyboard-closed
     do: [{close_menu: Journal Menu}, {wait: 2}]
   # The System pane by pad is pad-panes' (bumper-to-system: the pad cycle's last pane, its stills read).
-  # OWED (touch): the HUD's "Menu" button (top right, under the minimap; hud.menu intent -> OpenTweenMenu). The runner has
-  # no touch action, so the batch taps it by hand/adb at the button's centre; the step below sends the same intent
-  # through ViewIntent, which proves the engine half (what the tap ends in). The batch reads the log line
-  # "views: the HUD menu button opened the TweenMenu" and the menu event TweenMenu opening.
   - name: stats-pane          # Wind UI's stats window: "Perk points 1", the reworded perk text; no level-up window
     do: [{key: "TAB 120 engine"}, {wait: 2}, {mouse: "394 229"}, {click: left}, {wait: 1.5}]   # the Character pane's Block (1080p layout): its perk list
   - name: perk-taken          # the first perk in Block's list, taken with the sitting's point (Wind UI logs it)
@@ -71,14 +67,7 @@ steps:
       - {log: {name: ArgoniaCore, contains: "pad: Esc in the windows: closed to play"}, within: 5}
       - {log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 5}
       - {event: {kind: menu, match: Journal Menu, absent: true}}
-  - name: hud-menu-button     # the Menu button's intent opens the Tween Menu (Wind UI's menu mode), as Tab does
-    do: [{call: [core, ViewIntent, '{"type":"hud.menu","v":1,"body":{}}']}, {wait: 2}]
-    expect:
-      - {log: {name: ArgoniaCore, contains: "views: the HUD menu button opened the TweenMenu"}, within: 5}
-      - {event: {kind: menu, match: TweenMenu}, within: 5}
-  - name: hud-menu-closed
-    do: [{close_menu: WindUIMenu}, {wait: 1.5}]   # the tween is swapped for Wind UI's windows: close those
-    expect: [{log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 5}]
+  # No HUD menu button: a tap on the stream never reaches the HUD view; touch opens the windows by the pad overlay's Start (the V5 touch run).
   - name: favorite-one        # dev-favorite by the sword's form key (game-22: the editor id misses weapons)
     do: [{call: [dev-favorite, "000840:Argonia.esm"]}, {wait: 1}]
     expect: [{event: {kind: menu, match: FavoritesMenu, absent: true}}]

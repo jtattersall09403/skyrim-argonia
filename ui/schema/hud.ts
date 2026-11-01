@@ -78,6 +78,6 @@ export const hudMinimap = push("hud.minimap", 1, "The minimap alone, sent when t
   map: ref(Minimap),
 });
 
-export const hudMenu = intent("hud.menu", 1, "The player pressed the on-screen menu button (touch): open the Tween Menu, as Tab does", {});
+// No HUD intent: a tap on the stream never reaches the unfocused HUD view (1.12 touch run); the phone pad overlay's Start opens the windows.
 
-export const messages = [hudState, hudBars, hudMinimap, hudMenu];
+export const messages = [hudState, hudBars, hudMinimap];

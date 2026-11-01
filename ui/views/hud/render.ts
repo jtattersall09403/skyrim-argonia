@@ -1,9 +1,10 @@
 // Our HUD (1.2 §d), render only. Souls-style bars whose drawn length grows with the stat's maximum, the sneak eye,
 // the effect stack, the vastei plaque, the place banner, the prompt with the glyph of the device in use, and the
 // notice stack, and the minimap top right with its compass rose (1.12 §5; drawn by minimap.ts). No compass bar and no
-// quest marker, ever. The HUD sends one intent: hud.menu, the touch player\'s Menu button under the minimap (opens the Tween Menu).
+// quest marker, ever. No button: a tap on the stream never reaches the unfocused HUD view (the V5 touch run,
+// docs/research/2026-11-01/1.12.md), so the phone's pad overlay's Start opens the windows; hud.menu stays for a later HUD.
 import type { Bar, Effect, HudState, InputGlyph, Notice, PlaceBanner, Prompt } from "../../schema/generated/messages.ts";
-import { esc, intentButton } from "../core/html.ts";
+import { esc } from "../core/html.ts";
 import { ROSE } from "./minimap.ts";
 import { PLAYER_SVG } from "../chart/render.ts";
 
@@ -116,7 +117,6 @@ export function render(s: HudState, mem: BarMemory = NONE): string {
     ${s.notices.length ? `<ul class="notices">${s.notices.map(notice).join("")}</ul>` : ""}
   </div>
   <div class="minimap" data-minimap hidden aria-label="Minimap"><canvas></canvas><div class="mm-me">${PLAYER_SVG}</div>${ROSE}</div>
-  ${intentButton({ type: "hud.menu", v: 1, body: {} }, "menu-btn", "Menu")}
   ${s.effects.length ? `<ul class="effects">${s.effects.map(effect).join("")}</ul>` : ""}
   ${sneak}
   ${s.banner ? banner(s.banner) : ""}

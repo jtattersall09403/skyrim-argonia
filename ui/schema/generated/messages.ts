@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "54cf2f0e7c4cfa95";
+export const schemaHash = "1c0f39ffc05ad872";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -362,9 +362,6 @@ export interface HudMinimap {
   /** The HUD's minimap: the chart round the player */
   map: Minimap;
 }
-/** The player pressed the on-screen menu button (touch): open the Tween Menu, as Tab does */
-export interface HudMenu {
-}
 /** Where the chart is looking; kept by ArgoniaCore between openings */
 export interface ChartView {
   /** centre in cell units */
@@ -462,7 +459,6 @@ export type IntentMessage =
   | { type: "dialogue.goodbye"; v: 1; body: DialogueGoodbye }
   | { type: "dialogue.service"; v: 1; body: DialogueService }
   | { type: "journal.page"; v: 2; body: JournalPage }
-  | { type: "hud.menu"; v: 1; body: HudMenu }
   | { type: "chart.pan"; v: 1; body: ChartPan }
   | { type: "sitting.buy"; v: 1; body: SittingBuy }
   | { type: "sitting.done"; v: 1; body: SittingDone }
@@ -483,7 +479,6 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "hud.state", version: 1, dir: "push" },
   { type: "hud.bars", version: 1, dir: "push" },
   { type: "hud.minimap", version: 1, dir: "push" },
-  { type: "hud.menu", version: 1, dir: "intent" },
   { type: "chart.state", version: 2, dir: "push" },
   { type: "chart.pan", version: 1, dir: "intent" },
   { type: "sitting.state", version: 1, dir: "push" },
@@ -1005,12 +1000,6 @@ function checkHudMinimap(x: unknown, p: string): string | null {
   if ((e = checkMinimap(o["map"], p + ".map")) !== null) return e;
   return null;
 }
-function checkHudMenu(x: unknown, p: string): string | null {
-  const o = members(x, p, []);
-  if (typeof o === "string") return o;
-  let e: string | null;
-  return null;
-}
 function checkChartView(x: unknown, p: string): string | null {
   const o = members(x, p, ["centreX","centreY","zoom"]);
   if (typeof o === "string") return o;
@@ -1129,7 +1118,6 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "hud.state": checkHudState,
   "hud.bars": checkHudBars,
   "hud.minimap": checkHudMinimap,
-  "hud.menu": checkHudMenu,
   "chart.state": checkChartState,
   "chart.pan": checkChartPan,
   "sitting.state": checkSittingState,
