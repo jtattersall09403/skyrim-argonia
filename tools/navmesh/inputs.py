@@ -6,7 +6,8 @@
                       water.f32   the water surface over a sample whose ground is below it, else NaN, in units:
                                   the worldspace default (0) under every cell, a cell's own water height over its
                                   window, then every water plane over its footprint (out/water/cells.jsonl, what
-                                  ArgoniaWorld.esm places; 2.W2)
+                                  ArgoniaWorld.esm places; 2.W2); 1.15: one level per cell from cell_water
+                                  (water/solve.py) once the water lane has written it
                       flags.u8    bit 0: the painted road (routes/paint.py's BC_ROAD and TRACK, 2.W3)
 
                       objects.f32 the placed objects' collision over the box (placed.py: the built places'
@@ -56,8 +57,49 @@ def window(src, box, border: int = params.BORDER_SAMPLES) -> tuple[int, int, int
     return north - border, south + border + 1, west - border, east + border + 1
 
 
+_SOLVED: list = []
+
+
+def solved_water():
+    """water/solve.py's CellWater once the water lane has written cell_water (1.15), else None (the old field)."""
+    if not _SOLVED:
+        from tools.argonia_world import db
+        w = db.open()
+        if w.values("SELECT count(*) FROM cell_water")[0]:
+            from tools.argonia_world.water import solve
+            _SOLVED.append(solve.load(w))
+        else:
+            _SOLVED.append(None)
+    return _SOLVED[0]
+
+
+def cell_levels(box, shape, x0u: float, ytop: float, cw) -> np.ndarray:
+    """1.15: one water level per cell (cell_water, metres -> units) over its window; -inf where a cell has none."""
+    rows, cols = shape
+    step = su.VERTEX_SPACING_UNITS
+    level = np.full(shape, -np.inf, np.float32)
+    bx0, by0, bx1, by1 = box
+    for cy in range(by0 - 1, by1 + 2):
+        for cx in range(bx0 - 1, bx1 + 2):
+            lv = cw.level(cx, cy)
+            if lv is None:
+                continue
+            cx0, cy0 = su.cell_origin(cx, cy)
+            ca = int(round((cx0 - x0u) / step))
+            ra = int(round((ytop - (cy0 + su.CELL_UNITS)) / step))
+            a0, a1 = max(ca, 0), min(ca + su.LAND_VERTS, cols)
+            b0, b1 = max(ra, 0), min(ra + su.LAND_VERTS, rows)
+            if a0 < a1 and b0 < b1:
+                level[b0:b1, a0:a1] = np.maximum(level[b0:b1, a0:a1], np.float32(su.metres_to_units(lv)))
+    return level
+
+
 def water_levels(box, r0: int, c0: int, shape, x0u: float, ytop: float, cells_path: Path = WATER_CELLS) -> np.ndarray:
-    """The water surface over every sample of the window (units): default, cell heights, then planes."""
+    """The water surface over every sample of the window (units). 1.15: the solved per-cell levels (cell_water,
+    water/solve.py) when the default water file is asked for and cell_water has rows; else the old field: the
+    default, cell heights, then planes from `cells_path`."""
+    if Path(cells_path).resolve() == WATER_CELLS.resolve() and (cw := solved_water()) is not None:
+        return cell_levels(box, shape, x0u, ytop, cw)
     rows, cols = shape
     step = su.VERTEX_SPACING_UNITS
     level = np.zeros(shape, np.float32)  # the worldspace default water (terrain/world.py DEFAULT_WATER_UNITS)

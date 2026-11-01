@@ -11,7 +11,8 @@ dependant).
                   "boundsMin", "boundsMax" (cells), "map": {"usable", "nw", "se", "cameraMin", "cameraMax",
                   "cameraPitch"}, "topCell": {"formKey"}}],
      "land": the shard directory build.py wrote,
-     "regions": [{"type": "REGN", "formKey", "edid"}] the shells, "cellRegions": [{"cy", "cx0", "cx1", "region"}]}
+     "regions": [{"type": "REGN", "formKey", "edid"}] the shells, "statics": [{"type": "STAT", "formKey", "edid",
+     "model", "bounds": [[x0, y0, z0], [x1, y1, z1]]}] (vegetation/rocks.py), "cellRegions": [{"cy", "cx0", "cx1", "region"}]}
 """
 from __future__ import annotations
 
@@ -57,14 +58,17 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
     """The WRLD intermediate, the REGN shells and the cells' region runs (XCLR; 2.W3's regions/api.py)."""
     from tools.argonia_world import db
     from tools.argonia_world.regions import api as regions
+    from tools.argonia_world.vegetation import rocks
 
     w = world if world is not None else db.open()
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
             "description": "The generated ground of Black Marsh: the worldspace, every exterior cell and its LAND "
                            "(decision 0031). Built, never edited.",
-            "loadOrder": LOAD_ORDER, "records": [wrld(cell_range)], "land": str(land_dir),
+            "loadOrder": LOAD_ORDER + rocks.masters(w), "extraMasters": rocks.masters(w),
+            "records": [wrld(cell_range)], "land": str(land_dir),
             "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
-            "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs()}
+            "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs(),
+            "statics": rocks.records(w)}  # 1.15: our STATs naming BM&V's unrecorded rock meshes
 
 
 def write(path: Path, cell_range: tuple[int, int, int, int], land_dir: Path) -> Path:

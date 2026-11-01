@@ -30,6 +30,7 @@ static class VegetationRecords
     static Dictionary<(int, int), byte[]> Load(string dir, IReadOnlyList<string> masters, uint own, out long n)
     {
         var mi = masters.Select((m, i) => (m, i)).ToDictionary(t => t.m, t => (uint)t.i, StringComparer.OrdinalIgnoreCase);
+        mi.TryAdd("ArgoniaWorld.esm", (uint)masters.Count);  // the plugin's own records (vegetation/rocks.py's STATs)
         var outp = new Dictionary<(int, int), byte[]>();
         n = 0;
         foreach (var path in Directory.GetFiles(dir, "cy*.jsonl.gz").Order(StringComparer.Ordinal))

@@ -87,9 +87,11 @@ def mesh_source(f: Form, bmv_nifs: set[str]) -> str:
 
 def write(w, inv: list[Form], bmv_nifs: set[str]) -> dict:
     """Replace object_form with the inventory (every Skyrim.esm form dropped); returns counts per (mod, source)."""
-    for t in ("land_region_object", "vegetation_form", "object_form"):
+    for t in ("land_region_object", "vegetation_form"):
         w.con.execute(f'DELETE FROM "{t}"')
         w.dirty.add(t)
+    w.con.execute("DELETE FROM object_form WHERE form_key NOT LIKE '%:ArgoniaWorld.esm'")  # keep our rocks.py STATs
+    w.dirty.add("object_form")
     n = Counter()
     for f in inv:
         src = mesh_source(f, bmv_nifs)

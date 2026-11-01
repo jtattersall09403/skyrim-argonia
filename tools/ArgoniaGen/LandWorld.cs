@@ -48,6 +48,18 @@ static class LandWorld
         // the REGN shells and each cell's XCLR (regions/api.py: Argonia.esm overrides the shells with the authored part)
         foreach (var g in root.TryGetProperty("regions", out var rg) ? rg.EnumerateArray() : Enumerable.Empty<JsonElement>())
             mod.Regions.Add(RegionWriters.Shell(g, ws.FormKey));
+        // 1.15: our STATs naming BM&V's unrecorded rock meshes (vegetation/rocks.py; the OBND is the NIF's vertex box)
+        foreach (var r in root.TryGetProperty("statics", out var st) ? st.EnumerateArray() : Enumerable.Empty<JsonElement>())
+        {
+            var b = r.GetProperty("bounds");
+            P3Int16 P(JsonElement v) => new((short)v[0].GetInt32(), (short)v[1].GetInt32(), (short)v[2].GetInt32());
+            mod.Statics.Add(new Static(FK(S(r, "formKey")), Rel)
+            {
+                EditorID = S(r, "edid"),
+                ObjectBounds = new ObjectBounds { First = P(b[0]), Second = P(b[1]) },
+                Model = new Model { File = S(r, "model") },
+            });
+        }
         var xclr = new Dictionary<(int, int), FormKey>();
         foreach (var run in root.TryGetProperty("cellRegions", out var cr) ? cr.EnumerateArray() : Enumerable.Empty<JsonElement>())
             for (var cx = run.GetProperty("cx0").GetInt32(); cx <= run.GetProperty("cx1").GetInt32(); cx++)
@@ -101,6 +113,8 @@ static class LandWorld
             .ToPath(outPath)
             .WithLoadOrder(loadOrder.Append(modKey))
             .WithDataFolder(data)
+            .WithExtraIncludedMasters((root.TryGetProperty("extraMasters", out var em) ? em.EnumerateArray() : Enumerable.Empty<JsonElement>())
+                .Select(e => ModKey.FromFileName(e.GetString()!)).ToArray())  // the vegetation splice's bases (vegetation/rocks.py)
             .SingleThread()  // the parallel writer buffers every block in memory: 3.2 GB peak against 0.95 GB here
             .Write();
         Console.WriteLine($"world: {outPath}: 1 WRLD, {mod.Regions.Count} REGN shells, {n} cells with LAND");

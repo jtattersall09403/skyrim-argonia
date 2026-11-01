@@ -66,3 +66,30 @@ def test_render_layer_colours_by_role(tmp_path):
         g.write(json.dumps(line) + "\n")
     out = layer.render_layer((0, 0, 0, 0), out=tmp_path, world=W())
     assert out["role"] == ["rock"] and tuple(out["rgb"][0]) == layer.COLOURS["rock"]
+
+
+def test_own_rock_forms_vary_by_region_family():
+    from tools.argonia_world.vegetation import rocks
+    az = f(role_id="rock", model=rocks.ROCKS[0][1], bound_z1=200)
+    al = f(role_id="rock", model=rocks.ROCKS[10][1], bound_z1=200)
+    assert lists.admits("northern-transition", az) and not lists.admits("western-frontier", az)
+    assert lists.admits("western-frontier", al) and not lists.admits("northern-transition", al)
+    assert len({i for i, _, _ in rocks.ROCKS}) == len(rocks.ROCKS)  # one FormID each, appended only
+    assert rocks.form_key(0) == "0C0000:ArgoniaWorld.esm" and rocks.edid(rocks.ROCKS[0][1]) == "ARG_Rock_az_rock02"
+
+
+def test_pick_below_the_core_rotates_by_packet():
+    pool = list(range(8))
+    a, b = lists.pick(pool, 2, "hist-heartland"), lists.pick(pool, 2, "saxhleel-coast")
+    assert len(a) == len(b) == 2 and a != b
+
+
+def test_navmesh_water_from_cell_water_levels():
+    from tools.navmesh import inputs
+
+    class CW:
+        def level(self, cx, cy):
+            return 2.0 if (cx, cy) == (0, 0) else None
+    x0u, ytop = su.cell_origin(0, 0)[0], su.cell_origin(0, 0)[1] + su.CELL_UNITS
+    lv = inputs.cell_levels((0, 0, 1, 0), (su.LAND_VERTS, 2 * su.LAND_VERTS - 1), x0u, ytop, CW())
+    assert np.allclose(lv[:, :su.LAND_VERTS], su.metres_to_units(2.0)) and np.isneginf(lv[:, su.LAND_VERTS:]).all()

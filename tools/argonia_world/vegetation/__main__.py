@@ -11,6 +11,9 @@
         dropped; --bmv-nifs: BM&V's archive file list, `unrar lb` of the vault's Data1/Data2.rar), then build the
         region object lists (lists.py) and set BM&V's dependency keep list to the meshes they use.
         --lists-only: rebuild the lists from the object_form rows already in the world (no stack needed)
+    python3 -m tools.argonia_world.vegetation rocks --nifs <dir>
+        our own STAT forms for chosen BM&V rock meshes (rocks.py): object_form rows with each NIF's bounds (<dir>
+        holds meshes/... unpacked from BM&V's archive), then the lists rebuilt as `forms --lists-only`
     python3 -m tools.argonia_world.vegetation booth --out <shards>
         write tests/journeys/rock-booth.yaml and tests/scenes/rock-booth.txt from six placed rocks (booth.py)
     python3 -m tools.argonia_world.vegetation check --out out/vegetation --land <dir> [--water ...]
@@ -104,6 +107,8 @@ def main(argv=None) -> int:
     rb.add_argument("--gen", required=True)
     bo = sub.add_parser("booth")
     bo.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
+    ro = sub.add_parser("rocks")
+    ro.add_argument("--nifs", required=True)
     fo = sub.add_parser("forms")
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
@@ -117,6 +122,14 @@ def main(argv=None) -> int:
         for d in booth.write(Path(a.out), db.open()):
             print(f"booth: {d['edid']} {d['fid']:06X} cell {d['cell']} tilt {d['tilt']:.3f} rad")
         return 0
+    if a.cmd == "rocks":
+        from tools.argonia_world import db
+        from tools.argonia_world.vegetation import rocks
+        w = db.open()
+        print(f"rocks: {rocks.write(w, Path(a.nifs))} own STAT forms")
+        w.save()
+        a.lists_only, a.bmv_nifs = True, None
+        return _forms(a)
     if a.cmd == "forms":
         return _forms(a)
     if a.cmd == "readback":

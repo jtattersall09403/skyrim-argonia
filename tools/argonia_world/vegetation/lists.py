@@ -15,9 +15,10 @@ import zlib
 from collections import defaultdict
 
 from tools.argonia_world import skyrim_units as su
+from tools.argonia_world.vegetation import rocks
 
 PICK = {"canopy": 12, "emergent": 6, "gallery": 6, "mangrove": 4, "palm": 8, "shrub": 12, "aquatic": 8,
-        "mushroom": 8, "deadwood": 5, "rock": 6}
+        "mushroom": 8, "deadwood": 5, "rock": 8}
 CORE = 3
 FAUNA = "lore topics/fauna-hazards.md:92-95 (Flora: cypress, mangrove, bamboo, palms, ferns, lucan mold)"
 AUDIT = "docs/design/research/vegetation/regional-variety-audit-2026-09-08.md"
@@ -60,6 +61,12 @@ EXTRA = {
     "northern-transition": {"rock": (6.0, 3, 9.0, 70, -60.0, 0.2)},
     "western-frontier": {"rock": (5.0, 3, 9.0, 70, -60.0, 0.2)},
 }
+# rocks a hectare, the research's target (the palette's border-mountains 516/ha was the old renderer's scale):
+# rock-placement-rules.md rule 4, Clark-Evans R 0.32-0.58 at a mean nearest neighbour of 7-15 m gives
+# (R / 2nn)^2 = 3-7 a ha on rocky ground; 16f-ledger.md:109 3 a ha on firm lowland
+ROCK_HA = {"northern-transition": 6.0, "western-frontier": 5.0, "deep-river-corridor": 3.0}
+BOULDER_SLOPE = 45  # rule 3: boulders and piles stand on 10-35 deg (p25-p75); the gate is p75 + 10
+CLIFFS, CLIFF_HA = 2, 0.4  # cliff shells: at most two forms a list, each this sparse (a landmark face, not a field)
 SEA = ("kelp", "coral", "seaweed")  # sea-floor aquatic: only on the coast, in deeper water
 SEA_POSTURE = (1.5, 25.0)
 GIANT_M = 6.0  # a mushroom taller than this is a giant (landmark) one: deep marsh only, sparse
@@ -103,6 +110,9 @@ def admits(eco: str, f) -> bool:
         return False
     if "cliff" in t and eco not in UPLAND:
         return False
+    fam = rocks.family(f["model"]) if f["role_id"] == "rock" else None
+    if fam and eco not in rocks.FAMILY_ECO[fam]:
+        return False  # our own BM&V rock forms vary by region (rocks.py's families)
     return eco in ROLE_ECO.get(f["role_id"], (eco,))
 
 
@@ -121,6 +131,9 @@ def usable(w) -> dict[str, list]:
 def pick(pool: list, n: int, packet: str) -> list:
     if len(pool) <= n:
         return list(pool)
+    if n <= CORE:  # too few to hold a core: a packet's own rotation
+        k = zlib.crc32(packet.encode()) % len(pool)
+        return (pool[k:] + pool[:k])[:n]
     core, rest = pool[:CORE], pool[CORE:]
     k = zlib.crc32(packet.encode()) % len(rest)
     rest = rest[k:] + rest[:k]
@@ -166,24 +179,34 @@ def build(w) -> dict:
         mix = role_mix(w, rid)
         for role, (q, cl, rad, sl, lo, hi) in EXTRA.get(eco, {}).items():
             mix.setdefault(role, {"per_ha": q, "clust": cl, "rad": rad, "slope": sl, "wmin": lo, "wmax": hi})
+        if "rock" in mix and eco in ROCK_HA:
+            mix["rock"]["per_ha"] = ROCK_HA[eco]
         ground, _ = WHY[eco]
         counts: dict[str, int] = defaultdict(int)
         for role in sorted(mix):
             m = mix[role]
-            forms = pick([f for f in pool.get(role, ()) if admits(eco, f)], PICK.get(role, 4), packet)
+            ok = [f for f in pool.get(role, ()) if admits(eco, f)]
+            forms = pick([f for f in ok if "cliff" not in tags(f)], PICK.get(role, 4), packet)
+            wts = [2.0 if i < CORE else 1.0 for i in range(len(forms))]
+            cliffs = pick([f for f in ok if "cliff" in tags(f)], CLIFFS, packet)
+            forms, wts = forms + cliffs, wts + [0.0] * len(cliffs)
             if not forms:
                 continue
-            wts = [2.0 if i < CORE else 1.0 for i in range(len(forms))]
             for f, wt in zip(forms, wts):
                 t = tags(f)
-                q = m["per_ha"] * wt / sum(wts)
+                q = m["per_ha"] * wt / (sum(wts) or 1.0)
                 lo, hi, mn, conform = m["wmin"], m["wmax"], 0, role == "rock"
                 if "sea" in t:
                     lo, hi = SEA_POSTURE
+                mx = m["slope"]
+                if role == "rock":  # rock-placement-rules.md rule 5: only wet rocks stand in water; ours are dry
+                    lo, hi = None, None
+                    mx = 70 if "cliff" in t else BOULDER_SLOPE
+                    conform = "cliff" not in t  # rule 2: a cliff shell takes ~0.12 of the pitch: buried upright
                 if "giant" in t:
                     q = min(q, 0.6)  # a landmark, not a stand
                 if "cliff" in t:
-                    q, mn = min(q, 0.8), 25
+                    q, mn = CLIFF_HA, 28  # rock-placement-rules.md rule 3: cliff pieces need >= 28 deg
                 if q < 0.01:
                     continue
                 why = (f"{role} in {eco}: {ground}"
@@ -191,7 +214,7 @@ def build(w) -> dict:
                        + (" [cliff shell: uplands, steep ground]" if "cliff" in t else ""))
                 w.insert("land_region_object", land_region_id=rid, form_key=f["form_key"],
                          density_per_ha=round(q, 4), clustering=m["clust"] if m["rad"] >= 1 else 1,
-                         min_slope_deg=mn, max_slope_deg=max(mn, m["slope"]), min_height_m=None,
+                         min_slope_deg=mn, max_slope_deg=max(mn, mx), min_height_m=None,
                          max_height_m=None, radius_m=m["rad"], water_min_m=lo, water_max_m=hi, conform=conform,
                          why=why)
                 used[f["form_key"]] = f

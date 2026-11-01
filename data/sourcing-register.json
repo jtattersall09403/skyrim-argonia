@@ -1033,5 +1033,50 @@
     "used_by": "infra/gpu-box/lod.ps1 (linked into Data for the run; its Meshes and Textures copied into the generated mod on the machine)",
     "notes": "Needed by TexGen and DynDOLOD while they run; the FOMOD's required core only",
     "linked_or_forked_by": "run as a tool on the machine (C:\\argonia\\tools); nothing of it or its output is committed or shipped; the output is made on the player's machine (decision 0014 §4)"
+  },
+  {
+    "name": "Black Marsh & Valenwood: its landscape forms in the region object lists (62 forms; roles aquatic, canopy, emergent, gallery, mushroom, palm, rock, shrub)",
+    "source_url": "https://www.moddb.com/mods/black-marsh-valenwood",
+    "version": "the manifest's bmv row (data/dependencies.json)",
+    "licence": "none stated (see the mod's own row)",
+    "used_by": "world/db/land_region_object.jsonl and object_form.jsonl (tools/argonia_world/vegetation/lists.py), placed by our rule placer into ArgoniaWorld.esm as REFRs (vegetation/build.py, VegetationRecords.cs)",
+    "notes": "1.15 vegetation: the mod's own TREE/FLOR/STAT records and meshes, referenced by FormKey; every vanilla-mesh and Nordic form dropped (0006, 0012)",
+    "linked_or_forked_by": "linked: the player's own download supplies records and meshes; nothing of it is committed or shipped (0003)"
+  },
+  {
+    "name": "King of the Murkmire: its landscape forms in the region object lists (147 forms; roles aquatic, canopy, deadwood, emergent, gallery, mushroom, palm, rock, shrub)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/190459",
+    "version": "the manifest's king-of-the-murkmire row (data/dependencies.json)",
+    "licence": "free for free mods that do not make use of AI; no plugin redistribution (see the mod's own row)",
+    "used_by": "world/db/land_region_object.jsonl and object_form.jsonl (tools/argonia_world/vegetation/lists.py), placed by our rule placer into ArgoniaWorld.esm as REFRs (vegetation/build.py, VegetationRecords.cs)",
+    "notes": "1.15 vegetation: the mod's own TREE/FLOR/STAT records and meshes, referenced by FormKey; every vanilla-mesh and Nordic form dropped (0006, 0012)",
+    "linked_or_forked_by": "linked: the player's own download supplies records and meshes; nothing of it is committed or shipped (0003)"
+  },
+  {
+    "name": "Mud Mother Grove: its landscape forms in the region object lists (3 forms; roles aquatic, emergent)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/146557",
+    "version": "the manifest's mud-mother-grove row (data/dependencies.json)",
+    "licence": "see the mod's own row",
+    "used_by": "world/db/land_region_object.jsonl and object_form.jsonl (tools/argonia_world/vegetation/lists.py), placed by our rule placer into ArgoniaWorld.esm as REFRs (vegetation/build.py, VegetationRecords.cs)",
+    "notes": "1.15 vegetation: the mod's own TREE/FLOR/STAT records and meshes, referenced by FormKey; every vanilla-mesh and Nordic form dropped (0006, 0012)",
+    "linked_or_forked_by": "linked: the player's own download supplies records and meshes; nothing of it is committed or shipped (0003)"
+  },
+  {
+    "name": "Depths of Skyrim: its landscape forms in the region object lists (1 forms; roles aquatic)",
+    "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/26913",
+    "version": "the manifest's depths-of-skyrim row (data/dependencies.json)",
+    "licence": "see the mod's own row",
+    "used_by": "world/db/land_region_object.jsonl and object_form.jsonl (tools/argonia_world/vegetation/lists.py), placed by our rule placer into ArgoniaWorld.esm as REFRs (vegetation/build.py, VegetationRecords.cs)",
+    "notes": "1.15 vegetation: the mod's own TREE/FLOR/STAT records and meshes, referenced by FormKey; every vanilla-mesh and Nordic form dropped (0006, 0012)",
+    "linked_or_forked_by": "linked: the player's own download supplies records and meshes; nothing of it is committed or shipped (0003)"
+  },
+  {
+    "name": "Black Marsh & Valenwood: 20 unrecorded rock meshes under our own STAT records (az 5, gl 5, al 5, landscaping 5)",
+    "source_url": "https://www.moddb.com/mods/black-marsh-valenwood",
+    "version": "the manifest's bmv row (data/dependencies.json); the meshes in its keep list",
+    "licence": "none stated (see the mod's own row); the landscaping/rocks/from_online_resource meshes are a third-party resource BM&V bundles, origin not stated",
+    "used_by": "tools/argonia_world/vegetation/rocks.py (ROCKS: the mesh paths, FormIDs 0x0C0000+ in ArgoniaWorld.esm), world/db/object_form.jsonl (OBND from each NIF), tools/ArgoniaGen/LandWorld.cs (the STATs)",
+    "notes": "1.15 planner ruling: BM&V ships 312 rock meshes with no record and only 2 boulder forms; our STAT names the mesh path only (route 1 data)",
+    "linked_or_forked_by": "linked: our record names the path; the player's BM&V supplies the mesh; no mesh is committed or shipped (0003)"
   }
 ]

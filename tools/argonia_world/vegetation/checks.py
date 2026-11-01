@@ -59,6 +59,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
     feet = build.footprints(w, src.pad)
     segs = build.road_segments(w)
     table = build.water_table(src, water)
+    cw = build.cell_water(w)  # the placer's posture: one level per cell (water/solve.py) once cell_water has rows
     h = hashlib.sha256()
     for p in sorted(out.glob("cy*.jsonl.gz")):
         h.update(p.name.encode())
@@ -118,6 +119,10 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             rr = np.clip((np.arange(n_, s_ + 1) - src.pad) // place.TABLE_STEP, 0, table.shape[0] - 1)
             cc = np.clip((np.arange(a, a + 33) - src.pad) // place.TABLE_STEP, 0, table.shape[1] - 1)
             T = table[np.ix_(rr, cc)][::-1].astype(np.float64)
+            if cw is not None:
+                lv = cw.level(cx, cy)
+                L = np.full(L.shape, -np.inf if lv is None else lv)
+                T = np.full(T.shape, cw.nearest_level(cx, cy))
             depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
             on_paint = painted[i, j] | painted[i, j + 1] | painted[i + 1, j] | painted[i + 1, j + 1]
