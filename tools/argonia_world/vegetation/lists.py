@@ -19,7 +19,7 @@ from tools.argonia_world import skyrim_units as su
 PICK = {"canopy": 12, "emergent": 6, "gallery": 6, "mangrove": 4, "palm": 8, "shrub": 12, "aquatic": 8,
         "mushroom": 8, "deadwood": 5, "rock": 6}
 CORE = 3
-FAUNA = "world/sources/lore/topics/fauna-hazards.md:92-95 (Flora: cypress, mangrove, bamboo, palms, ferns, lucan mold)"
+FAUNA = "lore topics/fauna-hazards.md:92-95 (Flora: cypress, mangrove, bamboo, palms, ferns, lucan mold)"
 AUDIT = "docs/design/research/vegetation/regional-variety-audit-2026-09-08.md"
 ROCKS = "docs/design/research/vegetation/rock-placement-rules.md rule 1"
 # eco class -> (the ecology's grounding, {role: why})
