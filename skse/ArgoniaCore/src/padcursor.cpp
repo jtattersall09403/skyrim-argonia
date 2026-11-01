@@ -42,7 +42,7 @@ struct State {
   // A pane of ours (journal, map, System) is opened with Wind UI's windows closed, so nothing is drawn over it; once it
   // has opened and then closed again (B, Esc, its Close), the windows come back. 0 none, 1 waiting for it, 2 it is open.
   int away = 0;
-  std::chrono::steady_clock::time_point away_since;
+  std::chrono::steady_clock::time_point away_since, away_closed;
   int close_ticks = 0;        // ticks since a close was asked (a native close may already have done it)
   std::chrono::steady_clock::time_point last;
   bool was_windows = false;
@@ -247,8 +247,15 @@ void Tick() {
     const bool ours_open = Open(RE::MapMenu::MENU_NAME) || Open(RE::JournalMenu::MENU_NAME) || OurViewOpen();
     const double s_away = std::chrono::duration<double>(now - g.away_since).count();
     if (g.away == 1 && ours_open) g.away = 2;
+    // The Journal Menu hands over to our journal a few frames later (pad112l: the gap read as "closed"): a pane counts
+    // as left only once nothing of ours has been open for half a second.
+    if (ours_open) g.away_closed = {};
+    else if (g.away == 2 && !g.away_closed.time_since_epoch().count()) g.away_closed = now;
+    const bool left = g.away == 2 && g.away_closed.time_since_epoch().count() &&
+                      std::chrono::duration<double>(now - g.away_closed).count() > 0.5;
     if (Open(kWindUIMenu)) g.away = 0;  // the player opened them some other way
-    else if ((g.away == 2 && !ours_open) || (g.away == 1 && s_away > 5.0)) {
+    else if (left || (g.away == 1 && s_away > 5.0)) {
+      g.away_closed = {};
       g.away = 0;
       if (auto* q = RE::UIMessageQueue::GetSingleton()) q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
       SKSE::log::info("pad: back to Wind UI's windows");
