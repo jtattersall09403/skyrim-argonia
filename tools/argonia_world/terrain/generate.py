@@ -549,7 +549,14 @@ def generate(inp: Inputs, log=print) -> dict:
     # vanilla_lake_padding.py: 97 % of the under-level ground of the 15 largest lakes is one component with the body,
     # the outline lies on cell lines 5.9 % of its length, i.e. a raster shape, and a padding cell's other ground stands
     # 0-8 units above the level); a padded or filled cell's low ground away from the water stays bank, never a square
-    low = has & ~edge_bank & (h < vmin + FREEBOARD_M)
+    # ... and only inside the cells that hold the body's raster water: a padded or filled cell (water/solve.py
+    # pad_ring, fill_enclosed) keeps all its ground as bank, as vanilla's padding cells stand above their level
+    # (else one wet sample floods every low padded cell beside it: the square and L-shaped pools of 0_0_1_1)
+    rawc = np.zeros((N + 1, N + 1), bool)
+    for a_ in (lo_c, hi_c):
+        for b_ in (lo_c, hi_c):
+            rawc |= blocks[a_][:, b_]
+    low = has & ~edge_bank & rawc & (h < vmin + FREEBOARD_M)
     flood = reach(foot, low) & ~foot
     st["water"]["unjoined_low_samples"] = int((low & ~foot & ~flood).sum())
     foot |= flood
