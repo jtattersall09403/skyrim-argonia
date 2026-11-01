@@ -243,3 +243,13 @@ def test_dry_ground_is_never_a_bed():
     win = M.Material(src, water, M.Regions.uniform("flooded-forest", PAD, N), roads=False).window(
         PAD, PAD + N + 1, PAD, PAD + N + 1)
     assert (win.dh >= 0).all()
+
+
+def test_dry_ground_with_no_water_in_reach_is_land():
+    """Ground at 36 m, 'near' level 35 m read through the raster, no cell carrying a level in the window: no
+    bed/edge/mud band (0_0_1_1, 2026-11-01)."""
+    src = sources(np.full((N + 1, N + 1), 36.0, np.float32))
+    water = M.Water(np.full((4, 4), np.nan), np.full((4, 4), 35.0), PAD)
+    win = M.Material(src, water, M.Regions.uniform("flooded-forest", PAD, N), roads=False).window(
+        PAD, PAD + N + 1, PAD, PAD + N + 1)
+    assert (win.dh >= M.FAR_DH).all()

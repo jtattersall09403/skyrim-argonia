@@ -50,6 +50,7 @@ MAX_ALPHA = 6  # base plus six: Skyrim.esm's quadrants run to base + 6 and 6 is 
 HALO = 64  # vertices of context a window reads around itself (the blurs' and the wetness's reach)
 MIN_W = 0.03
 SHORE_BAND, SHORE_DROP = 3.0, 2.5  # vertices of bed band under the edge (~384 u, audit §4), metres deeper a vertex beyond
+FAR_DH = 8.0  # m: dry ground beyond NEAR_FAR of any water reads at least this high, above every water-edge stop (top 6 m)
 NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
 INF = float("inf")
 
@@ -561,6 +562,11 @@ class Material:
         dh = (h - local).astype(np.float32)
         # dry ground is never below its water: a dry hollow under a nearby level read as a riverbed (-38_25)
         dh = np.where(np.isfinite(lev), dh, np.maximum(dh, 0.0)).astype(np.float32)
+        # dry ground with no water in reach is land, not bank: its height above the cell-rule level (a water far off,
+        # read through the raster) never lands in the bed/edge/mud bands (0_0_1_1: bed texture at 35-39 m, no level).
+        # The band height keeps the true height above that level for the upland stops.
+        dh_up = dh
+        dh = np.where(np.isfinite(lev), dh, np.maximum(dh, FAR_DH * t)).astype(np.float32)
         # the bed band: mud and the edge texture lie only under the edge, within SHORE_BAND vertices of dry ground;
         # farther out the bed reads deeper (SHORE_DROP m a vertex), so an open shallow bed takes the bed texture,
         # never mud blobs (r1, 2026-11-01: mud on open water beds)
@@ -585,8 +591,8 @@ class Material:
         n1 = value_noise(a0, a1, b0, b1, 28, 1)
         n2 = value_noise(a0, a1, b0, b1, 9, 2)
         noise = (0.55 * n1 + 0.45 * n2).astype(np.float32)
-        amp = np.clip(dh / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
-        band = dh + (hs - h) + (noise - 0.5) * 2 * amp
+        amp = np.clip(dh_up / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
+        band = dh_up + (hs - h) + (noise - 0.5) * 2 * amp
         return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise,
                 "dwater": d.astype(np.float32), "dshore": dshore}
 
