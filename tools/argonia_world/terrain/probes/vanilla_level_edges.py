@@ -65,7 +65,7 @@ def main():
                 closed += 1
             under = strip < hu
             if under.any():
-                first = np.where(under.any(axis=0), under.argmax(axis=0), 99)  # not used
+                _ = np.where(under.any(axis=0), under.argmax(axis=0), 99)  # kept for the next probe
                 d = np.array([np.argmax(r) if r.any() else 16 for r in under])  # per edge row: vertices to water
                 dist.append(float(d.mean()))
                 reach.append(float((d == 0).mean()))
