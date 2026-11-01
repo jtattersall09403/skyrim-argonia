@@ -140,7 +140,7 @@ def test_vclr_draws_no_ring_at_the_waterline():
     d = np.clip(np.arange(n) - 20.0, 0, None)[None, :].repeat(8, 0).astype(np.float32)
     v = M.vclr(M.Window(np.zeros(wet.shape + (1,)), dh, z, z, wet, d))[..., 0].astype(int)
     assert (np.diff(v[0]) >= 0).all()
-    assert v[0, 20] < 160 and (v[0, 24:] == 255).all()  # dark at the line, white beyond 256 u (audit §4)
+    assert v[0, 20] < 160 and (v[0, 27:] == 255).all()  # dark at the line, white 7 vertices out (fitted to §4)
 
 
 def test_steep_ground_is_not_darker():
@@ -166,3 +166,34 @@ def test_rain_lifts_dry_ground_wetness():
     dry = m.window(*box).wet[:, 110:].mean()
     m.water.rain[:] = 1.0
     assert m.window(*box).wet[:, 110:].mean() > dry + 0.1
+
+
+def test_open_shallow_bed_takes_the_bed_not_mud():
+    """Mud and the edge lie only in the band under the edge; a wide shallow bed is the bed texture (r1 mud blobs)."""
+    g = np.full((N + 1, N + 1), -2.0, np.float32)  # 2 m deep: above -384 u, so by depth alone all mud and edge
+    g[:, :20] = 3.0
+    win = mat(sources(g)).window(PAD, PAD + N + 1, PAD, PAD + N + 1)
+    dom = win.weights.argmax(axis=2)
+    bed, sea, mud = (M.TEXTURES.index(M.TEX[t]) for t in ("LRiverBottom01", "LCoastOceanFloor01", "LRiverMud01"))
+    assert np.isin(dom[:, 40:], (bed, sea)).mean() > 0.95  # the synthetic rim's warped border class is sea floor
+    assert (dom[:, 40:] == mud).sum() == 0
+
+
+def test_steep_ground_is_rock_in_patches_not_a_swathe():
+    """Skyrim.esm: rock dominates ~25 % of slopes over 34° (options §8): ours is patches, not the whole face."""
+    xx = np.mgrid[0:N + 1, 0:N + 1][1].astype(np.float32)
+    g = 20.0 + xx * 1.6  # ~42° everywhere
+    w = M.Material(sources(g), M.Water.sea(PAD, N), M.Regions.uniform("western-frontier", PAD, N), roads=False)
+    dom = w.window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights.argmax(axis=2)
+    rocks = [M.TEXTURES.index(M.TEX[t]) for t in ("LReachMossyRocks01", "LRocks01", "LTundraRocks01")]
+    share = np.isin(dom, rocks).mean()
+    assert 0.1 < share < 0.6, share
+    assert len(np.unique(dom)) >= 2
+
+
+def test_render_draws_the_quadrant_bases_the_build_writes():
+    src = sources(shore())
+    m = mat(src)
+    w = M.built_weights(m, 3, 2 * M.QS + 3, 0, 2 * M.QS)  # not on a quadrant corner: widened and cut back
+    assert w.shape[:2] == (2 * M.QS, 2 * M.QS)
+    assert ((w > 0).sum(axis=2) == 1).all()  # the apron's quadrants: one base, no blend

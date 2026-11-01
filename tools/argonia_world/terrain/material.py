@@ -49,6 +49,7 @@ QS = QV - 1  # 16 quads per quadrant side
 MAX_ALPHA = 6  # base plus six: Skyrim.esm's quadrants run to base + 6 and 6 is the commonest count (audit §4)
 HALO = 64  # vertices of context a window reads around itself (the blurs' and the wetness's reach)
 MIN_W = 0.03
+SHORE_BAND, SHORE_DROP = 3.0, 2.5  # vertices of bed band under the edge (~384 u, audit §4), metres deeper a vertex beyond
 NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
 INF = float("inf")
 
@@ -116,6 +117,7 @@ class Stop:
     w: float = 1.0
     north: float = 0.0  # weight gain on north faces (moss), loss on south
     why: str = ""
+    seed: int = 0  # 0: the shared noise; else the stop's own field (rock patches never follow the litter patches)
 
 
 SOFT = {"dh": 0.25, "slope": 2.0, "wet": 0.05, "noise": 0.04}  # narrow shoulders: blends of 1-5 vertices (audit §4)
@@ -131,7 +133,14 @@ MUD = Stop("LRiverMud01", dh=(BED_M, 0.0), noise=(-INF, 0.5), w=1.2,
            why="audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud")
 L = EDGE_TOP_M  # land begins one vertex above the line
 S = BEACH_TOP_M  # on the sea, above the beach
-ROCK = Stop("LReachMossyRocks01", slope=(34, INF), w=1.4, north=0.3, why="options §8: steep ground is rock")
+# Rock is a patch texture on steep ground, never the whole of it: Skyrim.esm's dominant texture on slopes over 34°
+# is rock on 24-25 % of vertices (9 % under 10°, 20 % at 20-30°), the rest the area's ground and snow; a steep
+# cell carries 3 distinct dominant textures at p50, 6 at p90 (measured 2026-11-01, 9,500 LAND; options §8). Without
+# snow our rock share on >34° aims at ~35-45 %: patches by the stop's own noise, a little more as it steepens.
+ROCK = Stop("LReachMossyRocks01", slope=(28, INF), noise=(0.5, INF), w=1.4, north=0.3, seed=7,
+            why="Skyrim.esm: rock on ~25 % of slopes over 34°, in patches (options §8)")
+CRAG = Stop("LReachMossyRocks01", slope=(48, INF), noise=(0.38, INF), w=1.4, north=0.3, seed=7,
+            why="Skyrim.esm: the steepest faces carry rock a little more often")
 
 STOPS: dict[str, tuple[Stop, ...]] = {
     "coastal-lagoon": (
@@ -165,18 +174,18 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         BED, MUD, EDGE,
         Stop("LFrozenMarshLichen01", dh=(L, 4), why="shoreline A8: muck round the sink"),
         Stop("LFallForestLeaves01", dh=(2.5, INF), why="litter on the basin rim"),
-        ROCK),
+        ROCK, CRAG),
     "deep-river-corridor": (
         BED, EDGE, MUD,
         Stop("LFallForestLeaves01", dh=(L, INF), noise=(-INF, 0.5), why="gallery forest litter"),
         Stop("LFallForestDirt01", dh=(L, INF), noise=(0.5, INF), why="rooty banks"),
-        ROCK),
+        ROCK, CRAG),
     "rootland": (
         BED, EDGE,
         Stop("LPineForest03", dh=(L, INF), w=1.1, why="root-bound forest floor"),
         Stop("LFallForestDirt01", dh=(L, INF), noise=(0.55, INF), why="roots in mud bank"),
         Stop("LReachMoss01", slope=(14, INF), north=0.5, why="moss on rises"),
-        ROCK),
+        ROCK, CRAG),
     "seasonal-floodplain": (
         BED, MUD, EDGE,
         Stop("LFieldGrass02", dh=(L, INF), why="BM&V's mossy grass on the flood flats"),
@@ -187,23 +196,24 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         BED, EDGE,
         Stop("LReachDirt01", dh=(L, INF), noise=(0.5, INF), why="red earth of the drier north (Dunmer border)"),
         Stop("LFieldGrass02", dh=(L, 120), noise=(-INF, 0.6), why="grass of the transition"),
-        Stop("LTundraRocks01", slope=(24, 38), why="scree below the ranges"),
-        Stop("LRocks01", slope=(36, INF), w=1.3, why="bare rock of the Velothi foothills"),
+        Stop("LTundraRocks01", slope=(24, INF), noise=(0.6, INF), seed=8, w=1.2, why="scree patches below the ranges"),
+        Stop("LRocks01", slope=(34, INF), noise=(0.58, INF), seed=7, w=1.4, why="bare rock of the Velothi foothills, in patches"),
     ),
     "western-frontier": (
         BED, EDGE,
-        Stop("LPineForest02", dh=(L, 260), slope=(-INF, 26), why="upland forest (Kinabalu cloud forest, mountain synthesis)"),
-        Stop("LReachMoss01", dh=(L, INF), slope=(14, 34), north=0.6, noise=(0.35, INF),
+        Stop("LPineForest02", dh=(L, 260), slope=(-INF, 40), why="upland forest (Kinabalu cloud forest, mountain synthesis)"),
+        Stop("LReachMoss01", dh=(L, INF), slope=(14, INF), north=0.6, noise=(0.35, INF),
              why="moss bands on the flanks (options §8)"),
         ROCK,
-        Stop("LRocks01", dh=(220, INF), slope=(26, INF), w=1.2, why="bare rock of the summits (border ranges)"),
+        Stop("LRocks01", dh=(220, INF), slope=(26, INF), noise=(0.5, INF), seed=7, w=1.2,
+             why="bare rock of the summits (border ranges), in patches"),
     ),
     "karst-cavern-belt": (
         BED, EDGE,
         Stop("LFallForestDirt01", dh=(L, INF), why="forest floor over limestone"),
-        Stop("LReachMoss01", slope=(12, 34), north=0.5, why="moss on karst"),
+        Stop("LReachMoss01", slope=(12, INF), north=0.5, why="moss on karst"),
         ROCK,
-        Stop("LTundraRocks01", slope=(26, 38), noise=(0.5, INF), why="broken limestone"),
+        Stop("LTundraRocks01", slope=(26, INF), noise=(0.62, INF), seed=8, why="broken limestone"),
     ),
     "border": (
         Stop("LCoastOceanFloor01", dh=(-INF, 0), why="the apron's sea (bare far ground, audit §9)"),
@@ -213,6 +223,16 @@ STOPS: dict[str, tuple[Stop, ...]] = {
     ),
 }
 CLASSES = tuple(STOPS)
+
+
+def _fallback(stops) -> str:
+    """The class's plain land stop (open above, any slope, no patch noise): what a vertex no stop covers takes."""
+    land = [s for s in stops if s.dh[1] == INF and s.dh[0] >= 0 and s.slope[0] == -INF and not s.seed]
+    plain = [s for s in land if s.noise == (-INF, INF)]
+    return (plain or land or [s for s in stops if s.dh[1] == INF] or list(stops))[0].ltex
+
+
+FALLBACK = {c: _fallback(st) for c, st in STOPS.items()}
 
 
 def gradient_rows() -> list[dict]:
@@ -389,9 +409,11 @@ def nearest_wet(lev: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     R, Cn = lev.shape
     sy = np.where(np.isfinite(lev), np.arange(R)[:, None], -1).astype(np.int32)
     sx = np.where(np.isfinite(lev), np.arange(Cn)[None, :], -1).astype(np.int32)
-    yy, xx = np.mgrid[0:R, 0:Cn]
+    yy, xx = np.mgrid[0:R, 0:Cn].astype(np.int32)
+    big = np.iinfo(np.int32).max
     def dist(ay, ax):
-        return np.where(ay >= 0, (ay - yy) ** 2 + (ax - xx) ** 2, np.iinfo(np.int32).max)
+        return np.where(ay >= 0, (ay - yy) ** 2 + (ax - xx) ** 2, big)
+    bd = dist(sy, sx)
     if (sy >= 0).any():
         k = 1 << int(np.ceil(np.log2(max(R, Cn))))
         while k >= 1:
@@ -401,14 +423,18 @@ def nearest_wet(lev: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
                         continue
                     ys, yd = slice(max(dy, 0), R + min(dy, 0)), slice(max(-dy, 0), R + min(-dy, 0))
                     xs, xd = slice(max(dx, 0), Cn + min(dx, 0)), slice(max(-dx, 0), Cn + min(-dx, 0))
-                    cy, cx = np.full_like(sy, -1), np.full_like(sx, -1)
-                    cy[yd, xd], cx[yd, xd] = sy[ys, xs], sx[ys, xs]
-                    better = dist(cy, cx) < dist(sy, sx)
-                    sy, sx = np.where(better, cy, sy), np.where(better, cx, sx)
+                    # only the overlap can improve: candidate seeds from the shifted window, compared in place
+                    cy, cx = sy[ys, xs].copy(), sx[ys, xs].copy()
+                    dd = np.where(cy >= 0, (cy - yy[yd, xd]) ** 2 + (cx - xx[yd, xd]) ** 2, big)
+                    better = dd < bd[yd, xd]
+                    if better.any():
+                        sy[yd, xd] = np.where(better, cy, sy[yd, xd])
+                        sx[yd, xd] = np.where(better, cx, sx[yd, xd])
+                        bd[yd, xd] = np.where(better, dd, bd[yd, xd])
             k //= 2
     has = sy >= 0
     near = np.where(has, lev[np.maximum(sy, 0), np.maximum(sx, 0)], np.nan)
-    d = np.where(has, np.sqrt(dist(sy, sx).astype(np.float64)), np.inf)
+    d = np.where(has, np.sqrt(bd.astype(np.float64)), np.inf)
     return near.astype(np.float32), d.astype(np.float32)
 
 
@@ -488,6 +514,7 @@ class Window:
     wet: np.ndarray
     dwater: np.ndarray | None = None  # vertices to the nearest wet vertex (0 in water)
     apron: np.ndarray | None = None  # bool: beyond the border polygon
+    dshore: np.ndarray | None = None  # vertices to the nearest dry vertex (0 on dry ground)
 
 
 class Material:
@@ -506,7 +533,7 @@ class Material:
         w = self._weights(k, a0, a1, b0, b1)
         s = (slice(r0 - a0, r1 - a0), slice(c0 - b0, c1 - b0))
         return Window(w[s], k["dh"][s], k["slope"][s], k["north"][s], k["wet"][s], k["dwater"][s],
-                      self.apron(r0, r1, c0, c1))
+                      self.apron(r0, r1, c0, c1), k["dshore"][s])
 
     def apron(self, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
         """Vertices beyond the border polygon (the province square): the bare far ground (audit §9)."""
@@ -527,6 +554,15 @@ class Material:
         t = np.clip((d - NEAR_FAR[0]) / (NEAR_FAR[1] - NEAR_FAR[0]), 0.0, 1.0)
         local = box(box(np.where(np.isfinite(near), near * (1 - t) + far * t, far), 8), 8)
         dh = (h - local).astype(np.float32)
+        # the bed band: mud and the edge texture lie only under the edge, within SHORE_BAND vertices of dry ground;
+        # farther out the bed reads deeper (SHORE_DROP m a vertex), so an open shallow bed takes the bed texture,
+        # never mud blobs (r1, 2026-11-01: mud on open water beds)
+        wetv = np.isfinite(lev)
+        dshore = np.where(wetv, INF, 0.0).astype(np.float32)
+        if wetv.any() and not wetv.all():
+            _, dshore = nearest_wet(np.where(wetv, np.nan, 0.0))
+            dshore = np.where(wetv, dshore, 0.0).astype(np.float32)
+            dh = np.where(wetv, dh - np.maximum(dshore - SHORE_BAND, 0.0) * SHORE_DROP, dh).astype(np.float32)
         wet = np.clip(0.65 * box(box(wm, 4), 4) + 0.35 * box(wm, 12) * 1.6, 0.0, 1.0)
         # rainier ground reads wetter: the climatology's R (0.5 dry pole .. 1.0 windward coast) lifts dry ground
         rain = self.water.local(a0, a1, b0, b1, self.water.rain, RAIN_BASE + RAIN_COAST)
@@ -541,7 +577,7 @@ class Material:
         amp = np.clip(dh / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
         band = dh + (noise - 0.5) * 2 * amp
         return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise,
-                "dwater": d.astype(np.float32)}
+                "dwater": d.astype(np.float32), "dshore": dshore}
 
     def _weights(self, k, a0, a1, b0, b1) -> np.ndarray:
         n_tex = len(TEXTURES)
@@ -558,14 +594,15 @@ class Material:
             wc = np.zeros_like(out)
             for s in STOPS[CLASSES[c]]:
                 x = k["band"] if s.dh[0] > 5 else k["dh"]
+                nz = k["noise"] if not s.seed else self._noise(k, s.seed, a0, a1, b0, b1)
                 f = (ramp(x, *s.dh, SOFT["dh"]) * ramp(k["slope"], *s.slope, SOFT["slope"])
-                     * ramp(k["wet"], *s.wet, SOFT["wet"]) * ramp(k["noise"], *s.noise, SOFT["noise"]))
+                     * ramp(k["wet"], *s.wet, SOFT["wet"]) * ramp(nz, *s.noise, SOFT["noise"]))
                 f = f * s.w * (1.0 + s.north * k["north"])
                 wc[..., self.index[s.ltex]] += f.astype(np.float32)
             # one texture rules each vertex, as a painted stroke (audit §4: no sustained 30/70 mixes); where stops
             # tie, a per-texture noise breaks the tie in patches, never in a straight line
             tot = wc.sum(axis=2)
-            fb = self.index[STOPS[CLASSES[c]][-2].ltex]  # a vertex no stop covers takes the class's land stop
+            fb = self.index[FALLBACK[CLASSES[c]]]  # a vertex no stop covers takes the class's land stop
             for t in {self.index[s.ltex] for s in STOPS[CLASSES[c]]}:
                 if t not in ties:
                     ties[t] = self._tie(t, a0, a1, b0, b1)
@@ -580,6 +617,15 @@ class Material:
         out = 0.25 * (out[:-1, :-1] + out[1:, :-1] + out[:-1, 1:] + out[1:, 1:])
         out = np.where(out < MIN_W, 0.0, out)
         return (out / np.maximum(out.sum(axis=2, keepdims=True), 1e-6)).astype(np.float32)
+
+    @staticmethod
+    def _noise(k: dict, seed: int, a0, a1, b0, b1) -> np.ndarray:
+        """A stop's own two-octave noise (cached in the window's keys)."""
+        key = f"noise{seed}"
+        if key not in k:
+            k[key] = (0.65 * value_noise(a0, a1, b0, b1, 40, 300 + seed)
+                      + 0.35 * value_noise(a0, a1, b0, b1, 14, 400 + seed)).astype(np.float32)
+        return k[key]
 
     def _tie(self, t: int, a0, a1, b0, b1) -> np.ndarray:
         return value_noise(a0, a1, b0, b1, TIE_PERIOD, 100 + t) * 0.7 + value_noise(a0, a1, b0, b1, TIE_PERIOD // 4, 200 + t) * 0.3
@@ -698,9 +744,13 @@ def blend_runs(w: np.ndarray, lo: float = 0.02, hi: float = 0.98) -> np.ndarray:
 
 
 # ---- vertex colour --------------------------------------------------------------------------------------------
-WATER_BAND_V = 256 / su.VERTEX_SPACING_UNITS  # 256 u in vertices: 2
+# the band falls from the line over 6 vertices either side and wet flats take 0.2: the six sample windows read
+# p10 179, p50 255, 14.5 % under 200 and `terrain check`'s built sample 203.5 / 255 / 9.3 %, against Skyrim.esm's
+# 185 / 255 / 13.9 % (audit §4; fitted 2026-11-01: 2 vertices read 221 / 7.3 % on the windows, darkening the whole
+# bed read 147 / 20.7 %)
+WATER_BAND_V = 6.0
 WATER_DARK = 0.42  # to ~150/255 at the line (audit §4: the darkest band, within 256 u of water, p10 149)
-FLAT_DARK = 0.12  # wet flats a little darker
+FLAT_DARK = 0.2  # wet flats a little darker
 
 
 def vclr(win: Window, tint: np.ndarray | None = None) -> np.ndarray:
@@ -708,9 +758,12 @@ def vclr(win: Window, tint: np.ndarray | None = None) -> np.ndarray:
     aspect term): darker within 256 u of water, falling monotonically from the line (no ring, w4/w5 2026-11-01),
     and a little on wet flats; times the old ground tint, which the apron does not take (§9)."""
     d = win.dwater if win.dwater is not None else np.where(win.wet >= 0.99, 0.0, INF)
+    if win.dshore is not None:  # the band straddles the waterline: the open bed is not darkened (vanilla p10 185)
+        d = d + np.maximum(win.dshore - 1.0, 0.0)
     band = np.clip(1.0 - d / (WATER_BAND_V + 1.0), 0.0, 1.0)
     flat = np.clip((win.wet - 0.6) / 0.4, 0, 1) * (1.0 - np.clip((win.slope - 3.0) / 5.0, 0, 1))
-    f = np.minimum(1.0 - WATER_DARK * band, 1.0 - FLAT_DARK * flat)[..., None] * np.array([1.0, 1.0, 0.96], dtype=np.float32)
+    g = np.minimum(1.0 - WATER_DARK * band, 1.0 - FLAT_DARK * flat)[..., None]
+    f = g * (1.0 - (1.0 - g) * np.array([0.0, 0.0, 0.1], dtype=np.float32))  # a touch cooler where darkened only
     base = np.full(win.dh.shape + (3,), 255.0) if tint is None else tint.astype(np.float32)
     if win.apron is not None and tint is not None:
         base = np.where(win.apron[..., None], 255.0, base)
@@ -734,13 +787,31 @@ def layer_rgba(mat: Material, r0: int, r1: int, c0: int, c1: int, shade: bool = 
     VCLR."""
     win = mat.window(r0, r1, c0, c1)
     pal = np.array([PALETTE[t.edid] for t in TEXTURES], dtype=np.float32)
-    rgb = np.tensordot(win.weights, pal, axes=([2], [0]))
+    rgb = np.tensordot(built_weights(mat, r0, r1, c0, c1), pal, axes=([2], [0]))
     if shade:
         rgb = rgb * (vclr(win).astype(np.float32) / 255.0)
     out = np.empty(rgb.shape[:2] + (4,), dtype=np.uint8)
     out[..., :3] = np.clip(np.rint(rgb), 0, 255)
     out[..., 3] = 255
     return out
+
+
+def built_weights(mat: Material, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
+    """The weights the build writes over rows [r0, r1), columns [c0, c1): the window widened to whole quadrants (a
+    quadrant corner sits where (index - pad) % 16 == 0), each quadrant's kept set and the seam fix applied
+    (quadrant_sets), the apron's quadrants one base each (audit §9), then cut back. The render draws these, not the
+    raw per-vertex weights (the apron on -38_25, 2026-11-01)."""
+    p, size = mat.regions.pad, mat.src.size
+    a0 = r0 - (r0 - p) % QS
+    b0 = c0 - (c0 - p) % QS
+    a1 = r1 - 1 + (-(r1 - 1 - p)) % QS + 1
+    b1 = c1 - 1 + (-(c1 - 1 - p)) % QS + 1
+    g0, g1, h0, h1 = max(a0, 0), min(a1, size), max(b0, 0), min(b1, size)
+    padw = ((g0 - a0, a1 - g1), (h0 - b0, b1 - h1))
+    w = np.pad(mat.window(g0, g1, h0, h1).weights, padw + ((0, 0),), mode="edge")
+    bare = np.pad(mat.apron(g0, g1, h0, h1), padw, mode="edge")
+    wr, _ = quadrant_sets(w, bare=bare)
+    return wr[r0 - a0:r1 - a0, c0 - b0:c1 - b0]
 
 
 _MAT: list = []

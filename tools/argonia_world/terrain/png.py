@@ -12,7 +12,27 @@ _CHANNELS = {0: 1, 2: 3, 4: 2, 6: 4}
 
 
 def read(path: Path) -> np.ndarray:
+    """The decoded image. Sub/Average/Paeth rows decode one pixel at a time (~20 s for the 3k ground tint), so the
+    array is cached under ~/.cache/argonia/png keyed by the file's bytes (every build worker loaded it, 2026-11-01)."""
+    import hashlib
+    import os
     b = Path(path).read_bytes()
+    cache = Path(os.environ.get("XDG_CACHE_HOME", Path.home() / ".cache")) / "argonia" / "png"
+    hit = cache / (hashlib.sha256(b).hexdigest()[:32] + ".npy")
+    if hit.exists():
+        return np.load(hit)
+    out = _decode(path, b)
+    try:
+        cache.mkdir(parents=True, exist_ok=True)
+        tmp = hit.with_suffix(f".{os.getpid()}.npy")
+        np.save(tmp, out)
+        tmp.replace(hit)
+    except OSError:  # a read-only home: decode every time
+        pass
+    return out
+
+
+def _decode(path: Path, b: bytes) -> np.ndarray:
     if b[:8] != b"\x89PNG\r\n\x1a\n":
         raise ValueError(f"{path}: not a PNG")
     i, idat, head = 8, [], None
