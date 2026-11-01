@@ -145,15 +145,16 @@ vanilla's three stages. VCLR carries slope/aspect shade and wet darkening times 
 
 ## Starting state
 
-- **Done:** session 5's commits (material.py, png.py, test_material.py, material_gradient rows).
-- **Owed here:**
-  1. -38_25's cell-aligned zone seams. Suspected cause: dh from the per-cell water level (`Water.levels`/`local`).
-     Test it on one window before changing anything.
-  2. Too few visible textures per class on flat land. 0_0 is one dark-green swathe: flooded-forest needs 2–3
-     land stops in patches, not one plus a rare dirt.
-  3. Light-blue edge shelves on wide flats.
-  4. Readers still call the blobs cartoonish. The false-colour render may be part of that, so an in-game still
-     would settle it.
-  5. `make plugin` and the in-game look (the planner's batch).
-- **Owed elsewhere:** rectangular lakes, square cuts and translucent rectangles (ground/water lanes); routes'
-  cover read (routes lane).
+- **Done (session 6):** -38_25's seams tested on the window. Local water was refuted (`local` is smooth at cell
+  lines: 2nd difference 0.003 vs 0.012 off them). The causes were the ground and dry hollows. First, the
+  source heights are piecewise linear every 16 vertices, so their 2nd difference is 0.84 on those lines against
+  0.05 off them, and slope-gated stops switched there. The slope keys now read a 16-vertex tent (`SLOPE_R`).
+  Second, dry ground under a nearby level had dh down to -28 m and took the riverbed. Dry dh is now clamped at 0
+  or above. Flooded-forest has 5 land stops, each on its own noise: on 0_0 the shares are 28/25/24/17/4 %.
+  The tests are `test_no_texture_boundary_runs_along_a_cell_edge` (fails with SLOPE_R=0),
+  `test_flooded_forest_floor_is_patches_not_a_swathe` and `test_dry_ground_is_never_a_bed`.
+- **Owed here:** light-blue edge shelves on wide flats; the "cartoonish blobs" read, which the in-game stills
+  decide; `make plugin` and the in-game look (the planner's batch).
+- **Owed elsewhere:** the ground's straight cliffs on -38_25 (35° bands along cell columns): material follows
+  them, so the ground lane must fix them. Also rectangular lakes, square cuts and translucent rectangles
+  (ground and water lanes), and the routes' cover read (routes lane).

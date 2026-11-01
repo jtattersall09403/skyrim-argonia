@@ -31,7 +31,8 @@ def test_texture_set_is_bmv_and_never_nordic():
         assert t.bmv.startswith("TEXTUREPACK\\landscape\\") and t.form_key.endswith(":Skyrim.esm")
         assert not any(k in t.edid.lower() for k in ("snow", "glacier", "ice", "volcanic"))
     for c, stops in M.STOPS.items():
-        assert (2 if c == "border" else 4) <= len({s.ltex for s in stops}) <= 6, c  # the apron is bare (audit §9)
+        land = {s.ltex for s in stops} - {M.BED.ltex, M.MUD.ltex, M.EDGE.ltex}  # the water family is shared
+        assert (2 if c == "border" else 2) <= len(land) <= 6, c  # the apron is bare (audit §9)
         assert all(s.ltex in M.TEX and s.why for s in stops), c
 
 
@@ -197,3 +198,48 @@ def test_render_draws_the_quadrant_bases_the_build_writes():
     w = M.built_weights(m, 3, 2 * M.QS + 3, 0, 2 * M.QS)  # not on a quadrant corner: widened and cut back
     assert w.shape[:2] == (2 * M.QS, 2 * M.QS)
     assert ((w > 0).sum(axis=2) == 1).all()  # the apron's quadrants: one base, no blend
+
+
+def _longest_seam_on_cell_lines(dom, pad):
+    """The longest run of vertices along any cell line (index - pad = 32k) where the dominant texture changes
+    across it."""
+    best = 0
+    for f in (dom, dom.T):
+        for i in range(1, f.shape[0] - 1):
+            if (i - pad) % su.QUADS_PER_CELL:
+                continue
+            d = (f[i - 1] != f[i]) | (f[i] != f[i + 1])
+            p = np.diff(np.r_[0, d.astype(int), 0])
+            best = max(best, int((np.nonzero(p == -1)[0] - np.nonzero(p == 1)[0]).max(initial=0)))
+    return best
+
+
+def test_no_texture_boundary_runs_along_a_cell_edge():
+    """Ground piecewise linear between samples 16 vertices apart (as the source is) steps the raw slope along
+    straight lines; the slope keys read it smoothed, so no zone boundary follows a cell edge (-38_25, 2026-11-01)."""
+    yy, xx = np.mgrid[0:N + 1, 0:N + 1].astype(np.float32)
+    k = np.sin(xx[::16, ::16] / 9.0) * np.cos(yy[::16, ::16] / 7.0) * 18 + 30  # coarse samples
+    i, f = np.divmod(np.arange(N + 1), 16)
+    i1 = np.minimum(i + 1, k.shape[0] - 1)
+    t = (f / 16.0)
+    rows = k[i] * (1 - t)[:, None] + k[i1] * t[:, None]
+    g = rows[:, i] * (1 - t)[None, :] + rows[:, i1] * t[None, :]
+    win = mat(sources(g), "western-frontier").window(PAD, PAD + N + 1, PAD, PAD + N + 1)
+    assert _longest_seam_on_cell_lines(win.weights.argmax(axis=2), 0) <= 8
+
+
+def test_flooded_forest_floor_is_patches_not_a_swathe():
+    yy, xx = np.mgrid[0:N + 1, 0:N + 1].astype(np.float32)
+    g = 4.0 + 0.5 * np.sin(xx / 11.0) * np.cos(yy / 13.0)  # a low wooded flat
+    dom = mat(sources(g)).window(PAD, PAD + N + 1, PAD, PAD + N + 1).weights.argmax(axis=2)
+    _, n = np.unique(dom, return_counts=True)
+    assert len(n) >= 4 and n.max() / n.sum() <= 0.5, n
+
+
+def test_dry_ground_is_never_a_bed():
+    """A dry hollow below a nearby water's level takes land, not the riverbed (-38_25, 2026-11-01)."""
+    src = sources(np.full((N + 1, N + 1), 5.0, np.float32))
+    water = M.Water(np.zeros((4, 4)), np.full((4, 4), 20.0), PAD)
+    win = M.Material(src, water, M.Regions.uniform("flooded-forest", PAD, N), roads=False).window(
+        PAD, PAD + N + 1, PAD, PAD + N + 1)
+    assert (win.dh >= 0).all()

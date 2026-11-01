@@ -159,9 +159,13 @@ STOPS: dict[str, tuple[Stop, ...]] = {
     ),
     "flooded-forest": (
         BED, MUD, EDGE,
-        Stop("LFallForestLeaves01", dh=(L, 8), noise=(-INF, 0.55), why="shoreline A8: submerged and wet litter"),
-        Stop("LPineForest03", dh=(L, INF), w=1.1, why="BM&V's swamp forest floor (its most painted ground)"),
-        Stop("LFallForestDirt01", dh=(2, INF), noise=(0.6, INF), why="rooty patches (BM&V roots-in-mudbank)"),
+        # five land stops, each on its own noise, so no one covers more than about half a window (audit §4: vanilla
+        # forest floors carry 4-6 textures; r 2026-11-01: 0_0 read as one dark-green swathe)
+        Stop("LPineForest03", dh=(L, INF), why="BM&V's swamp forest floor (its most painted ground)"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.54, INF), seed=21, w=1.3, why="shoreline A8: wet litter"),
+        Stop("LFallForestDirt01", dh=(1, INF), noise=(0.56, INF), seed=22, w=1.35, why="rooty patches (BM&V roots-in-mudbank)"),
+        Stop("LFrozenMarshLichen01", dh=(L, 3), noise=(0.5, INF), seed=23, w=1.4, why="shoreline A8: muck in the hollows"),
+        Stop("LReachMoss01", dh=(1, INF), noise=(0.6, INF), seed=24, w=1.45, why="moss on raised roots and hummocks"),
     ),
     "interior-swamp": (
         BED, MUD,
@@ -455,6 +459,7 @@ def nearest_fill(level: np.ndarray) -> np.ndarray:
 WARP, WARP_PERIOD = 30.0, 160  # vertices: class borders meander by up to ~55 m over ~290 m (r1: ±14 left cell-straight edges)
 APRON_INHERIT = 0.0  # the apron is `border` alone, bare beyond the border polygon (audit §9); no province class runs into it
 TIE, TIE_PERIOD = 0.5, 14  # vertices: tied stops split into patches of ~25 m (r1 2026-11-01: 45 m read as cartoon blobs)
+SLOPE_R = 8  # box radius (twice) of the ground the slope keys read: one source-sample span (16 vertices)
 CLASS_BLEND = 1  # the class blend box radius (twice): ~5 vertices, only where classes change (audit §4)
 
 
@@ -554,6 +559,8 @@ class Material:
         t = np.clip((d - NEAR_FAR[0]) / (NEAR_FAR[1] - NEAR_FAR[0]), 0.0, 1.0)
         local = box(box(np.where(np.isfinite(near), near * (1 - t) + far * t, far), 8), 8)
         dh = (h - local).astype(np.float32)
+        # dry ground is never below its water: a dry hollow under a nearby level read as a riverbed (-38_25)
+        dh = np.where(np.isfinite(lev), dh, np.maximum(dh, 0.0)).astype(np.float32)
         # the bed band: mud and the edge texture lie only under the edge, within SHORE_BAND vertices of dry ground;
         # farther out the bed reads deeper (SHORE_DROP m a vertex), so an open shallow bed takes the bed texture,
         # never mud blobs (r1, 2026-11-01: mud on open water beds)
@@ -567,7 +574,11 @@ class Material:
         # rainier ground reads wetter: the climatology's R (0.5 dry pole .. 1.0 windward coast) lifts dry ground
         rain = self.water.local(a0, a1, b0, b1, self.water.rain, RAIN_BASE + RAIN_COAST)
         wet = (wet + (1.0 - wet) * RAIN_WET * np.clip((rain - RAIN_BASE) / (1.0 - RAIN_BASE), 0.0, 1.0)).astype(np.float32)
-        gy, gx = np.gradient(h, su.PROVINCE_SAMPLE_M)
+        # slope, aspect and the band read the ground smoothed over a 16-vertex tent: the source heights are
+        # piecewise linear between samples 16 vertices apart, so the raw slope steps along straight lines every
+        # half cell and slope-gated stops switched there (the cell-aligned seams on -38_25, 2026-11-01)
+        hs = box(box(h, SLOPE_R), SLOPE_R)
+        gy, gx = np.gradient(hs, su.PROVINCE_SAMPLE_M)
         slope = np.degrees(np.arctan(np.hypot(gx, gy))).astype(np.float32)
         mag = np.maximum(np.hypot(gx, gy), 1e-6)
         north = np.where(np.hypot(gx, gy) > 0.05, -gy / mag, 0.0).astype(np.float32)  # rows run south: +gy rises south
@@ -575,7 +586,7 @@ class Material:
         n2 = value_noise(a0, a1, b0, b1, 9, 2)
         noise = (0.55 * n1 + 0.45 * n2).astype(np.float32)
         amp = np.clip(dh / 20.0, 0.0, 1.0) * 14.0  # bands break up with height, never at the water's edge
-        band = dh + (noise - 0.5) * 2 * amp
+        band = dh + (hs - h) + (noise - 0.5) * 2 * amp
         return {"h": h, "dh": dh, "band": band, "wet": wet, "slope": slope, "north": north, "noise": noise,
                 "dwater": d.astype(np.float32), "dshore": dshore}
 
