@@ -157,7 +157,7 @@ def _terrain_stamp() -> str:
     from tools.argonia_world.terrain import vault
     from tools.argonia_world.terrain.landcover import table
     h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
-    for f in sorted(TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "paint.py", "png.py",
+    for f in sorted(TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py", "png.py",
                                           "place_ground.py", "quantize.py", "world.py")):  # what the cell lines depend on
         h.update(f.name.encode() + f.read_bytes())
     roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads

@@ -2,7 +2,7 @@
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.terrain import build, paint, quantize
+from tools.argonia_world.terrain import build, material, quantize
 from tools.argonia_world.terrain.grid import Sources
 from tools.argonia_world.terrain.landcover import SEED, table
 
@@ -48,8 +48,8 @@ def test_build_seams_heights_and_layers(tmp_path):
 
 def test_layers_composite_to_the_weights():
     w = np.random.default_rng(2).random((17, 17, 4))
-    base, layers = paint.quadrant_layers(w)
-    got = paint.composite(base, layers, 4)
+    base, layers = material.quadrant_layers(w / w.sum(axis=2, keepdims=True), [0, 1, 2, 3])
+    got = material.composite(base, layers, 4)
     assert np.abs(got - w / w.sum(axis=2, keepdims=True)).max() < 0.02
 
 

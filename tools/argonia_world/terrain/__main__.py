@@ -25,7 +25,6 @@ from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.terrain import build as B
 from tools.argonia_world.terrain import quantize, vault, world
 from tools.argonia_world.terrain.grid import Sources
-from tools.argonia_world.terrain.landcover import table
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "out" / "terrain"
@@ -51,13 +50,33 @@ def cmd_build(a) -> int:
             print(f"  row {cy:+d}: {st.cells} cells", flush=True)
 
     from tools.argonia_world import db
-    st = B.build(src, table(db.open()), out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress)
+    from tools.argonia_world.terrain import material as M
+    mat = M.Material(src, M.OldWater.load(src.pad), M.Regions.load(db.open(), src.pad, src.n))
+    st = B.build(src, mat, out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress)
     d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in st.__dict__.items()}
     d["cells_arg"] = "sample" if a.sample else a.cells
     d["apron"] = not a.no_apron
     (out / "stats.json").write_text(json.dumps(d, indent=1, sort_keys=True) + "\n")
     print(json.dumps(d, sort_keys=True))
     return 0
+
+
+BLEND_STEP_MAX = 0.5  # a 10-20 m blend changes a weight by ~0.1-0.2 a vertex; a one-vertex edge by ~1
+
+
+def _blend_step(c: dict) -> float:
+    import base64
+    from tools.argonia_world.terrain import material as M
+    fk = {t.form_key: i for i, t in enumerate(M.TEXTURES)}
+    out = 0.0
+    for q in c["quads"]:
+        if q["base"] not in fk:
+            continue
+        layers = [(fk[lay["ltex"]], np.frombuffer(base64.b64decode(lay["alpha"]), np.uint8).reshape(M.QV, M.QV))
+                  for lay in q["layers"]]
+        w = M.composite(fk[q["base"]], layers, len(fk))
+        out = max(out, float(np.abs(np.diff(w, axis=0)).max()), float(np.abs(np.diff(w, axis=1)).max()))
+    return out
 
 
 def _decode_m(c: dict) -> np.ndarray:
@@ -87,6 +106,7 @@ def cmd_check(a) -> int:
     all_max = all_max_nolim = 0.0
     limited_v = 0
     max_layers = 0
+    blend_step = 0.0  # the largest change of any texture's weight between neighbouring vertices
     prev: dict[int, tuple[np.ndarray, np.ndarray]] = {}  # x -> the north row's south edge (heights, normals)
     for cy in sorted(built, reverse=True):  # north to south, the order build wrote
         row = {}
@@ -97,6 +117,7 @@ def cmd_check(a) -> int:
                 n = B.unpack(c)["vnml"]
                 row[c["x"]] = (h, n)
                 max_layers = max([max_layers] + [len(q["layers"]) for q in c["quads"]])
+                blend_step = max(blend_step, _blend_step(c))
                 if src.in_province(c["x"], cy):
                     hm = h * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE
                     north, south = src.cell_rows(cy)
@@ -136,6 +157,7 @@ def cmd_check(a) -> int:
     }
     res["seams"] = {"edges": edges, "height": seam_h, "normal": seam_n}
     res["layers_max"] = max_layers
+    res["blend_max_step"] = round(blend_step, 3)
     res["overflow"] = {k: stats[k] for k in stats if k.startswith(("overflow", "limited", "max_limit", "limit_hist"))}
     res["cells"] = {k: stats[k] for k in ("cells", "province_cells", "apron_cells", "apron_skipped")}
     if res["heights"]["max_error_m"] > HEIGHT_TOL_M:
@@ -144,6 +166,8 @@ def cmd_check(a) -> int:
         fails.append(f"seams: {seam_h} height, {seam_n} normal")
     if max_layers > su.LAND_QUADRANT_LAYERS:
         fails.append(f"{max_layers} layers in a quadrant")
+    if blend_step > BLEND_STEP_MAX:
+        fails.append(f"a one-vertex blend: a texture's weight jumps {blend_step:.2f} between neighbouring vertices")
     res["fails"] = fails
     (out / "probe-points.json").write_text(json.dumps(probes, indent=0) + "\n")  # the L4 heights scene reads these
     (out / "check.json").write_text(json.dumps(res, indent=1, sort_keys=True) + "\n")
