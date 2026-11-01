@@ -221,7 +221,11 @@ void Tick() {
     // A native close (B is Skyrim's Cancel in a menu) may already have closed the windows: Tab is sent only if they are
     // still open three ticks on (Esc is the menus' Cancel, as B; Tab left them open, pad112f). Then what was asked after the close.
     if (Open(kWindUIMenu)) {
-      if (++g.close_ticks == 4) Tap(RE::INPUT_DEVICE::kKeyboard, kEsc);  // Cancel: Tab did not close them (pad112f)
+      // Wind UI's menu hidden by the UI queue: Tab left it open (pad112f), and Esc there also opened the System page
+      // (pad112m), which then hid our journal's opening.
+      if (++g.close_ticks == 4)
+        if (auto* q = RE::UIMessageQueue::GetSingleton())
+          q->AddMessage(RE::BSFixedString(kWindUIMenu), RE::UI_MESSAGE_TYPE::kHide, nullptr);
       if (g.close_ticks > 40) g.close_ticks = 0;  // never closed: give up quietly (the log says so)
       if (!g.close_ticks) SKSE::log::warn("pad: the windows did not close");
       return;
