@@ -154,7 +154,8 @@ def journey_text(vs: list[dict]) -> str:
             "# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the\n"
             "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
             "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD\n"
-            "# hidden. Read by a `reader` against docs/design/world/look-board.md with the 1.15 §0 checklist; each step\n"
+            "# hidden. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
+            "# vibe check (not the bar); each step\n"
             "# checks only that the teleport landed. Never move a vantage after the first run.\n")
     steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"key": "F 300"}, {"wait": 2},
                                                     {"console": {"line": "tm", "settle": 10}}],
@@ -185,7 +186,7 @@ def main(argv: list[str]) -> int:
             print(json.dumps(v))
         return 0
     if JOURNEY.is_file() and "--force" not in argv and '"runner": 1' in JOURNEY.read_text():
-        old = [s["name"] for s in json.loads(JOURNEY.read_text().split("\n", 6)[-1])["steps"]]
+        old = [s["name"] for s in json.loads("".join(ln for ln in JOURNEY.read_text().splitlines(True) if not ln.startswith("#")))["steps"]]
         if old != ["first-person-no-hud"] + [f"{v['id']}-{t}" for v in vs for t in ("noon", "dawn")]:
             print("world-panel: the vantages are fixed; pass --force after a ruling", file=sys.stderr)
             return 1
