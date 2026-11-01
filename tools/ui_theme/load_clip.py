@@ -24,8 +24,8 @@ REMOTE = r"C:\argonia\logs\load-clip"
 
 def grab_loop(count: int, remote: str) -> str:
     """PowerShell that grabs `count` stills, as fast as grab.ps1 allows, named by index and seconds since start."""
-    return (f"$t0 = Get-Date; for ($i = 0; $i -lt {count}; $i++) {{ "
-            f"$s = '{{0:D3}}-{{1:N1}}s' -f $i, ((Get-Date) - $t0).TotalSeconds; "
+    return (f"$t0 = Get-Date -Hour 0 -Minute 0 -Second 0 -Millisecond 0; for ($i = 0; $i -lt {count}; $i++) {{ "
+            f"$s = '{{1:00000.0}}s-{{2}}-{{0:D3}}' -f $i, ((Get-Date) - $t0).TotalSeconds, $args[0]; "
             f"& {HELPER_REMOTE} -Cmd grab -Out \"{remote}\\$s.png\" | Out-Null }}")
 
 
@@ -44,7 +44,8 @@ def to_gif(frames: list[Path], out: Path, width: int = 960) -> int:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--load", action="append", required=True, help="<door ref EditorID>:<LSCR EditorID or ->")
-    ap.add_argument("--count", type=int, default=40)
+    ap.add_argument("--count", type=int, default=40, help="grabs per loop")
+    ap.add_argument("--loops", type=int, default=3, help="grab loops side by side (each grab takes ~1 s)")
     ap.add_argument("--out", type=Path, default=REPO / "out" / "load-clip")
     a = ap.parse_args(argv)
     b = Bridge()
@@ -59,12 +60,15 @@ def main(argv=None) -> int:
         local.write_text(grab_loop(a.count, remote))
         b.machine.ps(f"Remove-Item -Recurse -Force {remote}* -ErrorAction SilentlyContinue; New-Item -ItemType Directory {remote} | Out-Null")
         _sh([b.machine.run, "put", str(local), f"C:/argonia/logs/grab{n}.ps1"], env=b.machine.env)
-        b.machine.desktop(r"Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-File',"
-                          rf"'C:\argonia\logs\grab{n}.ps1'", wait=60)
+        b.machine.desktop("; ".join(r"Start-Process powershell -WindowStyle Hidden -ArgumentList '-ExecutionPolicy','Bypass','-File',"
+                                    rf"'C:\argonia\logs\grab{n}.ps1','{k}'" for k in range(a.loops)), wait=60)
         time.sleep(1.5)  # a still or two of play before the door
-        b.call("console", f"{door}.activate player", timeout=120)
+        if door.startswith("moveto="):
+            b.call("console", f"player.moveto {door[7:]}", timeout=120)
+        else:
+            b.call("console", f"{door}.activate player", timeout=120)
         time.sleep(4)
-        b.machine.ps(f"$n=0; while ((Get-ChildItem {remote}).Count -lt {a.count} -and $n -lt 120) {{ Start-Sleep 1; $n++ }}; "
+        b.machine.ps(f"$n=0; while ((Get-ChildItem {remote}).Count -lt {a.count * a.loops} -and $n -lt 120) {{ Start-Sleep 1; $n++ }}; "
                      f"Compress-Archive -Force {remote}\\*.png {remote}.zip", timeout=200)
         d = a.out / f"load{n}"
         d.mkdir(exist_ok=True)
