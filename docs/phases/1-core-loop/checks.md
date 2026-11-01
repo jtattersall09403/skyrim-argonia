@@ -85,6 +85,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The stream latency measured on the owner's own device, printed on the packet | 1.7, Part 1 exit | L6 | owed | the packet |
 | The owner plays `bat first-place` and gives the five answers | 1.7, 1.2, 1.4, 1.6, Part 1 exit | L6 | owed | the packet |
 | The 60-minute soak | 1.7 | L4 | dropped | owner-brief:2026-10-30 |
+| The owner's look at the in-game UI on their devices, in the 1.7 packet | 1.2 §a, 1.12 (moved: the owner's goal, 2026-11-01) | L6 | owed | the owner's play test, issue #32 |
 
 ## 2.W1 Terrain, apron and edges
 
@@ -199,4 +200,3 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The 1.4 quest under Current with its latest direction first, and under Finished once complete | 1.12 §6 | L4 | proven | journey:journal-dialogue pass out/batch/lane-1.12/20261101T094328/05-journal-dialogue-1-20261101T095322 |
 | The dialogue window in the frame style; Barter opens Wind UI's barter window and returns | 1.12 §6 | L4 | proven | journey:journal-dialogue pass out/batch/lane-1.12/20261101T094328/05-journal-dialogue-1-20261101T095322 |
 | Touch on the phone: the pad overlay's Start opens the windows, its bumpers cycle to our journal, B closes, Back is wait | 1.12 §8 | L4 | proven | infra/stream-client/e2e/steps/ui-1.12-touch.json on the V5 folded through the real stream (Chrome's mobile emulation: real touch events), stills out/touch112/ (t2 windows, t3 journal, t4-t5 closed, t8 wait); a tap on the HUD reaches no view, so the HUD has no button (removed) |
-| The owner's look at the in-game UI on their devices, in the 1.7 packet | 1.2 §a | L6 | owed | the owner's play test (issue #32) |
