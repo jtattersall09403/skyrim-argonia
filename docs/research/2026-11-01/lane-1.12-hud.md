@@ -43,3 +43,15 @@ Brief: `docs/research/2026-11-01/briefs/1.12-hud.md`. Journey `tests/journeys/hu
   the revealed-area model, the minimap must follow (it imports `revealRects` from `chart/geom.ts`).
 - The three rolls drained no visible stamina in runs 1-2; the `drain-direct` step (damageav) is the control.
 - Grab bursts at 8 fps sometimes show a PowerShell window over frames (magicka-16..18, run 1).
+
+## Run 3 (20261101T150046, CSS transitions, minimap mask 578bf80) and what is left red
+- Bars: slim dark style PASS (reader). Direct loss (damageav): the fill glides over ~3 frames (magicka x 478, 448,
+  393, 355), the pale trail holds to frame 06 then follows, gone by 11; the refill rises gradually; no flash. The reader
+  calls the trail's follow stepped (holds ~4 frames, then one jump) and the trail slab too pale/heavy. Owed: a softer
+  trail tone and a re-read at a steadier capture rate.
+- The real actions drained nothing in three runs: three pad rolls and an RT cast left stamina and magicka full in every
+  frame. Either the inputs did not perform the actions (the roll/cast bindings on the virtual pad) or those actions
+  cost nothing in the current combat stack; this lane cannot tell which. Outside this lane's paths (combat/input).
+- Minimap: square, north up, only the arrow turns PASS; seen-land-only not confirmed (labels to the edges): owed.
+- Vastei: PASS again (small faint 01-04, large peak 05-06).
+- Gate: plugin-check's earlier red was a race with a concurrent deploy in the same worktree; alone it is green.
