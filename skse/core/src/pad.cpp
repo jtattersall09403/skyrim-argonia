@@ -27,6 +27,8 @@ Act on_button(Context c, Button b) {
 
 bool tween_to_windows(bool tween_open, bool windui_open) { return tween_open && !windui_open; }
 
+bool close_allowed(double since) { return since >= kCloseGuardS; }
+
 bool button_from_name(std::string_view n, Button& out) {
   struct Row {
     std::string_view name;

@@ -42,6 +42,7 @@ struct State {
   int close_ticks = 0;        // ticks since a close was asked (a native close may already have done it)
   std::chrono::steady_clock::time_point last;
   bool was_windows = false;
+  std::chrono::steady_clock::time_point opened;  // when the windows last opened
 } g;
 
 std::atomic<bool> g_loop{false};
@@ -175,7 +176,10 @@ void Do(pad::Act a) {
   switch (a) {
     case pad::Act::click_left: MouseButton(false, true); break;
     case pad::Act::click_right: MouseButton(true, true); break;
-    case pad::Act::close: AskClose(State::After::none); break;
+    case pad::Act::close:
+      if (pad::close_allowed(std::chrono::duration<double>(std::chrono::steady_clock::now() - g.opened).count()))
+        AskClose(State::After::none);
+      break;
     case pad::Act::wait_rest: AskClose(State::After::wait); break;
     case pad::Act::next_pane: GoPane(1); break;
     case pad::Act::prev_pane: GoPane(-1); break;
@@ -227,7 +231,10 @@ void Tick() {
     g.acts.clear();
     return;
   }
-  if (!g.was_windows) SKSE::log::info("pad: windows open, the pad drives the cursor");
+  if (!g.was_windows) {
+    g.opened = now;
+    SKSE::log::info("pad: windows open, the pad drives the cursor");
+  }
   g.was_windows = true;
   while (!g.acts.empty()) {  // events are sent here, never inside the input sink's own dispatch
     auto a = g.acts.front();

@@ -44,6 +44,11 @@ Act on_button(Context c, Button b);
 // still open and Wind UI's menu mode is not, the tween is closed and InventoryMenu opened (its full menu mode).
 bool tween_to_windows(bool tween_open, bool windui_open);
 
+// The Start that opened the windows (through the tween swap) can reach them once they are open, a frame later, as a
+// close (pad112g: opened and shut in 0.6 s). A close this soon after the windows opened is that press: ignored.
+inline constexpr double kCloseGuardS = 0.5;
+bool close_allowed(double seconds_since_open);
+
 // Button name from the Xbox name used by the bridge's pad (A B X Y LB RB LS RS START BACK UP DOWN LEFT RIGHT LT RT).
 bool button_from_name(std::string_view name, Button& out);
 // Skyrim's gamepad id code (BSWin32GamepadDevice::Key) to a button; false for an unknown code.

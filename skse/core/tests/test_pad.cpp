@@ -28,6 +28,10 @@ int main() {
   CHECK(!tween_to_windows(false, false)); // closed already
   CHECK(!tween_to_windows(false, true));
 
+  CHECK(!close_allowed(0.1));  // the opening Start's echo
+  CHECK(close_allowed(0.5));
+  CHECK(close_allowed(30));
+
   Button b{};
   CHECK(button_from_name("START", b) && b == Button::Start);
   CHECK(button_from_name("RT", b) && b == Button::RT);
