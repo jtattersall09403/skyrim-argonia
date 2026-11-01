@@ -16,5 +16,4 @@ steps:
     do: [{burst: {frames: 30, fps: 5}}, {wait: 1}, {key: "J 120 engine"}, {wait: 2.5}, {close_menu: journal}, {burst_fetch: journal}]
   - name: map-open-close         # M opens our chart, closed by its own control
     do: [{burst: {frames: 30, fps: 5}}, {wait: 1}, {key: "M 120 engine"}, {wait: 2.5}, {close_menu: MapMenu}, {burst_fetch: map}]
-  - name: pad-cycle              # Start, the bumpers through the windows to our journal and map, B
-    do: [{burst: {frames: 40, fps: 5}}, {pad: "START:150"}, {wait: 1.5}, {pad: "RB:150 -:600 RB:150 -:600 RB:150"}, {wait: 1.5}, {pad: "RB:150 -:900 RB:150"}, {wait: 1.5}, {pad: "B:150"}, {wait: 1}, {burst_fetch: padcycle}]
+  # The pad's cycle is pad-panes' (its stills); a burst beside the pad's own desktop job collided (final2).
