@@ -23,22 +23,28 @@ steps:
       - {log: {name: ArgoniaCore, contains: "the map key opens the chart (MapMenu never opens)"}, within: 6}
       - {read: [core, Views], path: value, contains: "chart ready open"}
       - {log: {name: ArgoniaCore, contains: "chart: reveal ok"}, within: 10}
-    reader: [the old project's parchment chart in the dark frame, the whole province with its coast and cities, a warm explored patch round the player with contours tree and marsh marks, the rest plain paper, a small gilt arrowhead marker at the player about the height of a lower-case letter, no red ring]
+    reader: [the old project's parchment chart in the dark frame, the whole province with its coast and cities, a warm explored patch round the player with contours tree and marsh marks, the land beyond it blank parchment with no coast, river or city drawn, a small gilt arrowhead marker at the player about the height of a lower-case letter, no red ring]
   - name: chart-zoomed-in                     # the triggers zoom toward the player: the largest render, one pixel to one
     do: [{pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 2}]
     reader: [the chart close in round the player, its lines crisp and thin with no blur or blocky pixels, the explored land's contours and marks clear, the gilt marker small at the player]
-  - name: chart-motion                        # L5: a burst of 40 frames at 10 fps while the right stick pans and the triggers zoom
+  - name: chart-motion                        # L5: 40 frames at 4 fps while the d-pad pans and the triggers zoom; the view logs each input and each glide's frames
     do:
-      - {burst: {frames: 40, fps: 10}}
-      - {wait: 0.5}
-      - {pad: "RX=1:1200"}
-      - {pad: "LT:200"}
-      - {wait: 0.3}
-      - {pad: "LT:200"}
-      - {pad: "RY=-1:1000"}
-      - {pad: "RT:200"}
+      - {burst: {frames: 40, fps: 4}}
+      - {wait: 3}
+      - {pad: "RIGHT:150"}
       - {wait: 1}
+      - {pad: "RIGHT:150"}
+      - {wait: 1}
+      - {pad: "LT:200"}
+      - {wait: 1}
+      - {pad: "UP:150"}
+      - {wait: 1}
+      - {pad: "RT:200"}
+      - {wait: 2}
       - {burst_fetch: chart-motion}
+    expect:
+      - {log: {name: ArgoniaCore, contains: "chart: input right"}, within: 20}
+      - {log: {name: ArgoniaCore, contains: "chart: glide "}, within: 20}
   - name: chart-closed                        # M again closes it; the play camera comes back as it was
     do: [{key: "M 120"}, {wait: 3}]
     expect: [{read: [core, Views], path: value, contains: "chart ready closed"}]

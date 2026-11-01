@@ -547,12 +547,12 @@ class Renderer:
             keep = on[t]
             for piece in dashes(p, (24 * u, 10 * u)):
                 if keep[int(np.argmin(np.hypot(*(p - piece[0]).T)))]:
-                    line(pen, piece, 3.2 * u)
+                    line(pen, piece, 5.0 * u)   # bolder (1.12 look 1: "more province outline")
         border = pen.done()
-        rb = max(1, int(12 * u))
+        rb = max(1, int(18 * u))
         band = self.banded(2 * (rb + 1) + 2, lambda e0, e1: {"b": np.clip(blur(
             border[e0:e1].astype(np.float32) / 255, rb, 2) * 4, 0, 1) * (land[e0:e1] & inside[e0:e1])}, ("b",))["b"]
-        layers.append((band, LANE_INK, 0.14))
+        layers.append((band, LANE_INK, 0.3))
         layers.append((border, LANE_INK, 0.9))
         del pen, band
 

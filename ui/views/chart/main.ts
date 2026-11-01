@@ -45,16 +45,25 @@ let target: ChartView = view;
 let mask: HTMLCanvasElement | null = null;   // the seen land, one canvas over the whole chart
 let maskFor = "";
 let pushKey = "";          // the sketch and revealed cells of the last push: the mask is rebuilt only when they change
-let frame = 0, lastT = 0, checked = false;
+let frame = 0, lastT = 0, checked = false, glideFrames = 0, glideMax = 0, glideStart = 0;
 const drawSoon = () => { if (!frame) frame = requestAnimationFrame(tick); };
 function tick(t: number): void {
   frame = 0;
   const dt = lastT ? Math.min(100, t - lastT) : 16;
   lastT = t;
+  const was = view;
   if (!dragging) view = glide(view, target, dt);
   draw();
+  // the motion's own measure (1.12 look 1, smooth on every device): frames drawn per glide and the largest step
+  const [w0, h0] = sheetSize(), t0 = transform(ix, was, w0, h0), t1 = transform(ix, view, w0, h0);
+  const stepPx = Math.max(Math.abs(t1.tx - t0.tx), Math.abs(t1.ty - t0.ty), Math.abs(t1.scale / t0.scale - 1) * w0 / 2);
+  if (stepPx > 0.01) { glideFrames++; glideMax = Math.max(glideMax, stepPx); glideStart ||= t; }
   if (view.centreX !== target.centreX || view.centreY !== target.centreY || view.zoom !== target.zoom) drawSoon();
-  else lastT = 0;
+  else {
+    lastT = 0;
+    if (glideFrames > 1) console.warn(`chart: glide ${glideFrames} frames in ${Math.round(t - glideStart)} ms, largest step ${glideMax.toFixed(1)} px`);
+    glideFrames = 0; glideMax = 0; glideStart = 0;
+  }
 }
 
 // The seen land: a soft disc about each revealed cell (geom.ts revealDiscs), full inside and fading to nothing at the
@@ -73,6 +82,17 @@ function buildMask(s: ChartState): HTMLCanvasElement {
     c.beginPath(); c.arc(x * k, y * k, rad * k, 0, 2 * Math.PI); c.fill();
   }
   return m;
+}
+
+// Whether the seen land covers a point in cell units (the mask is our own canvas, so it reads back in game).
+let maskData: Uint8ClampedArray | null = null, maskDataFor = "";
+function seenAt(u: number, v: number): boolean {
+  if (!mask) return false;
+  if (maskDataFor !== maskFor) { try { maskData = mask.getContext("2d")!.getImageData(0, 0, MASK, MASK).data; } catch { maskData = null; } maskDataFor = maskFor; }
+  if (!maskData) return true;
+  const [x, y] = toPx(ix, u, v), k = MASK / ix.size;
+  const i = Math.round(y * k), j = Math.round(x * k);
+  return i >= 0 && j >= 0 && i < MASK && j < MASK && maskData[(i * MASK + j) * 4 + 3] > 128;
 }
 
 let seen: HTMLCanvasElement | null = null;   // the explored layer through the mask, the sheet's size
@@ -111,7 +131,8 @@ function draw(): void {
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   c.clearRect(0, 0, w, h);   // the margins show the sheet's paper (the theme's .paper mottle)
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
-  layer(c, dir, "sketch", level, t, w, h);
+  // Unexplored land is blank parchment (1.12 look 1, the owner's ruling: the land revealed round where the player has
+  // been): every layer, coast, rivers, roads and cities included, shows only through the seen land's soft mask.
   if (state.revealed.length && mask) {
     seen ??= document.createElement("canvas");
     if (seen.width !== canvas.width || seen.height !== canvas.height) { seen.width = canvas.width; seen.height = canvas.height; }
@@ -154,7 +175,8 @@ function draw(): void {
   for (const el of root.querySelectorAll<HTMLElement>(".label")) {
     const at = labelAt(ix, t, el.dataset.label!, Number(el.dataset.x), Number(el.dataset.y),
       el.dataset.discovered === "true", rem * 0.75);
-    el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0;   // the sheet clips the rest
+    el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0 ||   // the sheet clips the rest
+      (el.dataset.discovered !== "true" && !seenAt(Number(el.dataset.x), Number(el.dataset.y)));   // fog hides a city's name
     el.style.transform = "";
     if (!at || el.hidden) continue;
     el.style.left = `${at.left}px`; el.style.top = `${at.top}px`;
@@ -283,7 +305,13 @@ start({
   },
   action(a) {
     const PAN = 0.18 * Math.min(...sheetSize());
+    if (!PANE && a !== "accept") console.warn(`chart: input ${a}`);
     switch (a) {
+      // the d-pad pans too: in game PrismaUI passes the pad's buttons but not its right stick
+      case "up": step(0, PAN); return true;
+      case "down": step(0, -PAN); return true;
+      case "left": step(PAN, 0); return true;
+      case "right": step(-PAN, 0); return true;
       case "zoomIn": zoom(1.5); return true;
       case "zoomOut": zoom(1 / 1.5); return true;
       case "panUp": step(0, PAN); return true;
