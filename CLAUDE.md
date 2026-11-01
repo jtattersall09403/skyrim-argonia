@@ -34,7 +34,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Reuse first, in route order: data → dependency mod → open-mod fork → Papyrus → our SKSE → our deep hook or
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
 - Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
-- Study before building (owned games, mod source, OpenMW, ports); findings go to `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
+- Study before building (owned games, mod source, OpenMW); findings go to `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample early, never a spike (0023, 0029).
@@ -50,20 +50,21 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Model and effort live only in `.claude/agents/` frontmatter.
 - Briefs come from `tooling/brief_template.py --write`; every field filled, Acceptance runnable or measured.
 - Shell commands run through rtk; add a tool, hook or gate only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
-- One deliverable per context, one builder per place, plugin module or UI view; commit and hand off at the context marker; return ≤ 25 lines (report at its path).
+- One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
 - Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods), not just health.
 
 ## Testing and the gate
 
-- Fast focused loops: the builder tests its feature and joins in one loop, each block at the cheapest proving level ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
+- Fast focused loops: each block at the cheapest proving level ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
 - In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch replaces a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
-- Check interactively from state and stills, never long playthroughs; what works becomes a journey.
+- Check from state and stills, never long playthroughs; what works becomes a journey.
 - Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0 and never set what they test; measure everything, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change can reach; a red is re-proved by its one test.
-- Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure; batch game-machine checks.
-- Each in-game check a brief owes is a `checks.md` row from the brief's writing, closed only by the run or still that proved it.
+- Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
+- Each round the planner runs every lane's in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own.
+- Each in-game check a brief owes is a `checks.md` row, closed only by the run or still that proved it.
 
 ## The owner
 

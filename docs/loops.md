@@ -75,11 +75,14 @@ prove it**, and the composition is checked only for what composition can break.
    - The screenshot oracle is proved live (two frames differ).
    - Three identical failures stop the loop for diagnosis.
    - A crash is a failure.
-10. **GPU-box batching.**
-    - A lane holds the GPU-box lock for its whole loop pass: start once, apply each scene, run every L4 and L5
-      row of the pass, stop. Other lanes queue.
-    - If the queue is measured to be the bottleneck and the budget allows, the planner adds a second GPU box
-      (decision 0008).
+10. **One batch per round, for every lane** (owner, 2026-10-30; restated 2026-11-01).
+    - Lanes build and test off-game in parallel, add their in-game checks as journeys to the round's batch file
+      (`tests/journeys/batches/<round>.yaml`), push to main and hand back "ready". They never run or queue their
+      own game-machine jobs.
+    - The planner deploys main once (`make pool-deploy`), runs the whole batch (crash-prone and save-changing items
+      last, split across the pool's machines when that is faster), and hands each lane its run directory. The lanes
+      diagnose in parallel from their stills, fix together, and the next round checks again.
+    - Five lanes each deploying and queuing their own batches spent most of 1.12 look 1 waiting (2026-11-01).
 11. **The planner watches the loops run.**
     - At every check-in it reads each lane's timeline and judges elapsed time against what the step should
       cost.

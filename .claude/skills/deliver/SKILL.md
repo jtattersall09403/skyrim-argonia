@@ -35,8 +35,9 @@ by the owner only, ack each at once, and record each ruling in the owner brief.
 4. **Check again, once.** Repeat only for what is still red. After 3 identical failures, stop and diagnose.
 
 Game machines:
-- Take the pool's pick: `tooling/job_guard.sh run --gpu=pick <name> -- <batch>` (`infra/gpu-box/pool.py pick`:
-  never a machine the owner streams on).
+- One batch per round (docs/loops.md rule 10): when lanes run beside you, your in-game checks are journeys in the
+  round's batch file, which the planner runs on one deploy of main; you never run or queue your own. Alone on the
+  chunk, you are that planner: one deploy, one batch per round, on `--gpu=pick` (never a machine the owner streams on).
 - Before telling the owner a build is ready to play: `tooling/job_guard.sh run pool-deploy -- make pool-deploy`
   (main onto every standby that is behind), and `infra/gpu-box/pool.py status` shows every standby current.
 - Work in your own worktree (`tooling/worktree.sh`).
