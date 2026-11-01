@@ -35,8 +35,10 @@ by the owner only, ack each at once, and record each ruling in the owner brief.
 4. **Check again, once.** Repeat only for what is still red. After 3 identical failures, stop and diagnose.
 
 Game machines:
-- Use one machine that isn't the owner's (`infra/gpu-box/machines.conf`; never argonia-play while the owner may
-  be playing).
+- Take the pool's pick: `tooling/job_guard.sh run --gpu=pick <name> -- <batch>` (`infra/gpu-box/pool.py pick`:
+  never a machine the owner streams on).
+- Before telling the owner a build is ready to play: `tooling/job_guard.sh run pool-deploy -- make pool-deploy`
+  (main onto every standby that is behind), and `infra/gpu-box/pool.py status` shows every standby current.
 - Work in your own worktree (`tooling/worktree.sh`).
 - Long jobs run under `job_guard.sh` in the background.
 - Stop the machine when the batch ends.

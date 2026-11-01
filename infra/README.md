@@ -21,12 +21,19 @@ capacity was); traffic between them crosses AZs at about $0.01/GB.
 - Every machine tool takes the target: `ARGONIA_PLAY=argonia-play-2`, or `--machine argonia-play-2` on `run.sh`,
   `stack.py`, `skse_build.sh` and `tools/bridge.py`; the default is `argonia-play`. `run.sh machine` prints which.
 - `tooling/job_guard.sh run --gpu=argonia-play-2 …` takes that machine's lock and runs the job with `ARGONIA_PLAY`
-  set; bare `--gpu` is `$ARGONIA_PLAY`, else `argonia-play` (its old `gpu.lock`). Locks are per machine.
+  set; bare `--gpu` is `$ARGONIA_PLAY`, else `argonia-play` (its old `gpu.lock`); `--gpu=pick` is the pool's choice
+  (`pool.py pick`), which in-game batches use. Locks are per machine.
 - Per machine on the build VM: saves go to `saves/<name>/` in the bucket (argonia-play keeps `saves/`), stack.py's
   push record and menu still to `~/.argonia/stack/{push,stills}-<name>`, the bridge's tunnel port to 47615 + N.
 - `infra/gpu-box/clone.sh argonia-play-N` makes one: an image of the source with `--no-reboot` (reused for later
   clones), a spot launch, then the tunnel connector off and the Windows name `ARGONIA-PLAY-N`.
-- The owner's gate, play switch and alarm serve `argonia-play` only.
+- **The pool** (1.8 §7): the standbys marked `pool=<label>` in machines.conf (Paris `argonia-play`, Ireland
+  `argonia-play-ie`), kept stopped and on one build. `pool.py status` shows each one's state, build (current or
+  BEHIND main), spot placement score and who holds it; `make pool-deploy` brings every one that is behind to main;
+  deploy.sh tags `argonia-build`/`argonia-build-utc` on the instance at DEPLOY OK. Each has its own tunnel (named as
+  the machine) and hostnames `play-<label>.`, `dcv-<label>.`, `sunshine-<label>.` behind Access. The owner's saves
+  follow through `s3://argonia-saves-…/pool/` (saves-sync.ps1: pulled at boot, pushed every 5 min, before
+  idle-stop's shutdown and on a spot notice; agents' saves stay home).
 
 **Cost (2026-10-29, London spot):** a running g4dn.xlarge game machine is **$0.251/h** ($0.246 spot + $0.005
 IPv4); a g6.xlarge $0.292/h. Each one also costs **$13.92/month** for its 150 GiB disk whether running or not;
@@ -63,13 +70,18 @@ the clones, or make them per batch and delete them after (then a clone costs onl
   1.7.104.0), depots 489831 manifest 4940892828028256588, 489832 manifest 5728778377666085157, 489833 manifest
   4886117324142477814.
 - The sign-in gate: Cloudflare (owner's account), domain bought 2026-10-28 (~$10/year, outside the AWS budget);
-  a named tunnel `argonia-play` behind Access, owner's email only. Token and tunnel token in `secrets.env`.
-- The play switch: Cloudflare Worker `argonia-play-switch` on `play.`/`dcv.` (behind Access; workers.dev off),
-  schedules every 10 min and 03:00 UTC; IAM user `argonia-play-switch` (describe, start and stop `argonia-play`
-  only; key in `secrets.env`). It stops the machine when its heartbeat (`/argonia-metrics/activity`, read with
-  the Access service token `argonia-heartbeat`) is missing for 30 minutes after a start. The AWS alarm
+  one named tunnel per pool machine behind Access, owner's email only (`cloudflare_gate.py apply`, then
+  `cloudflare_gate.py tunnel <machine>` installs its connector). Tokens in `secrets.env`.
+- The play switch: Cloudflare Worker `argonia-play-switch` on `play.`/`dcv.`/`sunshine.` (behind Access; workers.dev
+  off), schedules every 10 min and 03:00 UTC. A page load goes to this browser's machine if up, else a running one
+  no agent job holds, else it starts the stopped standby with the newest build and the best spot placement score,
+  falling back to the other; it forwards to that machine's own hostnames with the Access service token
+  `argonia-heartbeat`. IAM user `argonia-play-switch` (describe; start and stop instances tagged `argonia-pool`;
+  spot placement scores, owner issue #33; key in `secrets.env`). It stops any pool machine whose heartbeat
+  (`/argonia-metrics/activity`) is missing for 30 minutes after a start, past 8 h, and at 03:00. The AWS alarm
   `argonia-play-no-stream` is kept with its actions off; the build role may manage that one alarm.
-- The machine role `argonia-play-ssm`: SSM core plus S3 read of `nvidia-gaming` and `dcv-license.eu-west-2`.
+- The machine role `argonia-play-ssm`: SSM core plus S3 read of `nvidia-gaming` and `dcv-license.eu-west-2`, and
+  read/write of the saves bucket's `pool/` (inline policy `pool-saves`, owner issue #33).
 
 ## Setup scripts
 
