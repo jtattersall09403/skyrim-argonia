@@ -1,4 +1,4 @@
-# Part 1 check ledger (1.1 to 1.7, and the world track's 2.W1 to 2.W4)
+# Part 1 check ledger (1.1 to 1.17, and the world track's 2.W1 to 2.W4)
 
 Every check from the running game (L4 to L6) that a Part 1 or 2.W1–2.W4 brief owes, with what proved it. It
 replaces the hand-made in-game-owed list. The format is fixed (`tools/check_ledger.py` checks it in `make check`;
@@ -93,7 +93,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Stop 1: heights on the road in at Claywater match the heightfield within 0.5 m | 2.W1 §a, 0.4 §d | L4 | proven | journey:world-sample#s01 pass out/batch/adhoc/20261031T103633 |
 | Stop 2: the steepest limited cliff | 2.W1 §a | L4 | proven | journey:world-sample#s02 pass out/batch/adhoc/20261031T103633 |
 | Stop 3: a four-cell corner on a slope | 2.W1 §a | L4 | proven | journey:world-sample#s03 pass out/batch/adhoc/20261031T103633 |
-| A reader finds no obvious texture tiling in the sample's vantage stills | 2.W1 §a | L4 | owed | no reader report on record |
+| A reader finds no obvious texture tiling in the sample's vantage stills | 2.W1 §a | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
 | Stop 9: the player cannot leave by a border segment or an exit gate; the closed-road message | 2.W1 §b, 2.W3 §b | L4 | proven | journey:world-sample#s09 pass out/batch/adhoc/20261031T103633 |
 
 ## 2.W2 Water
@@ -104,8 +104,8 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Stop 5: a waterfall seated on its step | 2.W2 | L4 | proven | journey:world-sample#s05 pass out/batch/adhoc/20261031T103633 |
 | Stop 6: a marsh basin at its designed level | 2.W2 | L4 | proven | journey:world-sample#s06 pass out/batch/adhoc/20261031T103633 |
 | Stop 7: a lake shore and a coast, the apron through the haze | 2.W2, 2.W1 §b | L4 | proven | journey:world-sample#s07 pass out/batch/adhoc/20261031T103633 |
-| The plane budget's frame time in game | 2.W2 | L4 | owed | journey:water-budget (draft, not in the batch) |
-| Mist stills | 2.W2 | L4 | owed | no run on record |
+| The plane budget's frame time in game | 2.W2 | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
+| Mist stills | 2.W2 | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
 | The player swims (water-swim) and NPCs swim | 2.W2 | L4 | dropped | owner-brief:2026-10-30 (base-Skyrim behaviour is not checked) |
 
 ## 2.W3 Regions, weather, light and roads
@@ -117,19 +117,30 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | A reader panel on 12 weather stills | 2.W3 §a | L4 | dropped | owner-brief:2026-10-30 (w3-weather-stills dropped) |
 | The interior sun at four hours in two interiors | 2.W3 | L4 | proven | journey:w3-interior-sun pass out/batch/g17/20261030T225900 |
 | Each road leg end to end by teleport hops | 2.W3 §b | L4 | dropped | owner-brief:2026-10-30 (the road walk dropped; 2.W3's Outcome names w3-road-hops) |
-| Tear Road Stage against the traced Tear road's exit (3.4 km apart) | 2.W3 | L4 | owed | docs/phases/1-core-loop/2.W3-regions-roads.md:84 |
+| Tear Road Stage against the traced Tear road's exit (3.4 km apart) | 2.W3 | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
 
 ## 2.W4 Vegetation, navmesh and LOD
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
 | Stop 8: the densest vegetation cell's frame time against the bar | 2.W4 §a | L4 | proven | journey:world-sample#s08 pass out/batch/adhoc/20261031T103633 |
-| The densest 10 cells' frame time and a reader on 20 vantage stills: no Nordic flora, no vanilla rocks | 2.W4 §a | L4 | owed | journey:w4-veg-densest (draft, not in the batch) |
+| The densest 10 cells' frame time and a reader on 20 vantage stills: no Nordic flora, no vanilla rocks | 2.W4 §a | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
 | Stop 12: 20 path requests across the block, a door link and a swim path | 2.W4 §b | L4 | proven | journey:world-sample#s12 pass out/batch/adhoc/20261031T103633 |
 | 20 NPCs on sandbox packages never stand still for 60 s | 2.W4 §b | L4 | dropped | owner-brief:2026-10-30 (NPC movement is not checked in game) |
 | Stop 13: the distant view's stills from a high point | 2.W4 §c | L4 | proven | journey:world-sample#s13 pass out/batch/adhoc/20261031T103633 |
-| Distant terrain (xLODGen) restored on the play machine and a Claywater still judged: no missing tiles | 2.W4 §c | L4 | owed | docs/research/2026-10-31/lane-game-21.md:27 |
-| The near-to-LOD hand-off, a clip | 2.W4 | L5 | owed | no clip made |
+| Distant terrain (xLODGen) restored on the play machine and a Claywater still judged: no missing tiles | 2.W4 §c | L4 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
+| The near-to-LOD hand-off, a clip | 2.W4 | L5 | dropped | owner-brief:2026-11-01 (decision 0033: the world is rebuilt by 1.15) |
+
+## 1.15 The world, rebuilt
+
+| Check | From | Level | Status | Evidence |
+|---|---|---|---|---|
+| The fixed vantage panel (24 stills at the play camera) read against the look board, on the sample | 1.15 §f | L4 | owed | journey:world-panel (to be written) |
+| The panel on the whole frozen province | 1.15 §f | L4 | owed | journey:world-panel |
+| A 7-day skip cycles each region's seasonal weather list; dawn mist where region_mist says | 1.15 §d | L4 | owed | journey:world-panel (dawn stills) |
+| 200 path requests succeed on the new navmesh; the densest cell's frame time within the bar | 1.15 §e | L4 | owed | no run on record |
+| Claywater re-seated: claywater-walk and claywater-look green on the frozen ground | 1.15 §f | L4 | owed | journey:claywater-walk; journey:claywater-look |
+| Rocks sunk and conforming: a booth sheet of six rocks on a slope | 1.15 §e | L4 | owed | no sheet on record |
 
 ## 1.8 A play machine you can rely on
 

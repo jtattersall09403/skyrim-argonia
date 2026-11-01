@@ -1,0 +1,1253 @@
+<!-- imported unchanged from elder-souls-argonia docs/research/placement-settlements/settlement-kit-sourcing-log.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# Settlement kit sourcing log — Phase 11 Part 0 item 6b
+
+**Delivered 2026-09-02** against decision
+[0041](../../old-decisions/0041-phase11-settlement-decisions.md) Part 0 item 6b, from
+the gap list in [settlement-asset-inventory.md](settlement-asset-inventory.md)
+(that file and its JSON twin are owned by the inventory agent — this log records
+only what was *downloaded, registered and kitted*).
+
+Archives live in the vault (`mod-sources/archives/`), never in git; a folder
+missing on this machine is fetched with `bash
+tooling/bootstrap/vault-pull.sh mod-sources/<folder>` (see
+tooling/bootstrap/README.md). Every pool
+below is credited in the root [README](../../../README.md) § Credits and checked
+mechanically by `python3 -m worldgen.check_credits`.
+
+## What was downloaded
+
+| Mod | Nexus | Version | sha256 (first 16) | Pool | Verdict |
+|---|---|---|---|---|---|
+| Mud Mother Grove — An Argonian Mud Hut (GeminiVoid) | SSE 146557 | 1.5.1 | `7ac552437eeac11f` | `mudmother` | **the find of the pass** — 62 meshes incl. `MudHut01`, `ThatchRoofing`, `RoundFloor01`, woven furniture/fences, tents, carapace oven, fish rack, totem, bone chime, Sithis shrine and **`HistTree` (27 × 28 × 22 m)**. **2026-09-24:** the hut (`mudhut01`), its interior (`mudhut01intnew`) and the `mudmother-hut-int` shell retire once King of the Murkmire's mud houses are kitted (they have windows and six interiors); the pool's other 57 pieces stay, 6 kits depend on them ([building-asset-breadth.md](building-asset-breadth.md) §5) |
+| Skyrim Ferries (Mharlek1; meshes by yamadori) | SSE 109843 | 1.4.1 | `2fb9aae7ba870042` | `ferries` | 89 meshes; `plank_ferry_swamp_01/03` + `rowboat_ferry_swamp_01` are our first keel-less hulls. **Caution:** `plank_ferry_swamp_02/04/05/06` are editor markers with no geometry |
+| RowBoats and Oars of Skyrim (PraedythXVI) | SSE 35341 | Final | `9edfe3ebe786a00f` | `rowboats` | 3 meshes (rowboat, animated rowboat, oar) — keeled, so **Imperial fringe only** |
+| Creation Club Ayleid Ruin Resources (SarthesArai) | SSE 83999 | 1.0 | `03f9203f14744f48` | `ayleidcc` | 68 meshes, **all interior modules** — does *not* close the stepped-pyramid exterior gap |
+| Xalfek — An Argonian Home (DexMods) | SSE 55595 | 1.0 | `e341443b7de89f1a` | `xalfek` | 72 interior prop/furniture meshes (bundled modder resources) |
+| Darkwater Den (Elianora) | classic 52630 | 1.2 | `60a2ec29e6348b13` | `darkwater` | 123 organic-interior clutter meshes (bundled modder resources) |
+| Marsh-Rest (Konrann) | classic 50111 | 1.01 | `bea64fc2e213a1e8` | *none* | **Downloaded, deliberately not registered:** ESP-only player home built entirely from vanilla assets. It contributes no meshes, so it gets no pool and no credit line. |
+
+Full metadata (file ids, sizes, hashes, upload names) is cached in the vault at
+`mod-sources/api/<modId>-mod.json` / `-files.json`.
+
+## Gap status after this pass
+
+| # | Gap | Status |
+|---|---|---|
+| 1 | No modular mud-hut kit | **closed enough for v1** — one mud shell plus thatch, deck, fences, tents, furniture and props that read as one culture. Still a *shell*, not a modular wall kit; instance variety must come from dressing and rotation |
+| 2 | No stepped-pyramid xanmeer exteriors | **still open** — CC Ayleid is interior-only. Check the vault's own xanmeer mod before buying anything else |
+| 3 | No Argonian cultural props | **largely closed** — totem, bone chime, painted urn, pottery, woven furniture, carapace oven, fish rack, Sithis shrine. **Grave-stakes remain absent** |
+| 4 | No rafts or canoes | **closed for rafts, open for canoes** — 2 poled plank rafts + 1 swamp rowboat. No dugout or twin-hulled platform canoe |
+| 5 | No Hist tree asset | **closed** — `mudmother:gv_meshes/argoniannest/histtree` |
+| 6 | Thin working/industrial props | **partly** — fish rack and carapace oven only; no saltern, kiln or reed-cutting gear |
+| 9 | BM&V archived | **not a blocker** — `RarSource` pulls single members from `Data1.rar`/`Data2.rar` on demand (~0.1 s each), so no bulk extraction was needed or done |
+
+## The kits
+
+Three configs, not one, because
+[material-culture.md](../../../../world/sources/lore/topics/material-culture.md)
+forbids blending the building cultures in a settlement — separate kits make the
+blend impossible by construction rather than by a placement rule:
+
+| Kit | Culture | Assets | GLB |
+|---|---|---|---|
+| `settlement-mud-v1` | Shadowfen mud/wattle | 33 | 19.2 MB |
+| `settlement-stilt-v1` | Murkmire reed/stilt (passerelles + shackkit) | 26 | 14.0 MB |
+| `settlement-imperial-v1` | Imperial/foreign stone-timber | 29 | 23.2 MB |
+
+Configs: `tooling/asset-pipeline/pipeline/config/kits/settlement-*-v1.json`.
+Outputs land in `tooling/asset-pipeline/output/kits/` (gitignored — rebuild with
+`bash tooling/repo-standards/kit_build.sh <id>`).
+
+### Vet results, and how to read them
+
+`python3 -m pipeline.vet_kit output/kits/<kit>.kit.json` is clean apart from:
+
+- **one untextured material** on `argonianbonechime01` (an anonymous sub-mesh);
+- ~30 **"pivot above base"** findings across all three kits. These are
+  **expected and not defects**: `vet_kit` was written for flora, which is
+  bottom-anchored to terrain. Architecture kit pieces snap to the 3.64 m grid
+  around a *centred* pivot — a dock straight and a passerelle section are
+  *supposed* to have their origin mid-height. The settlement compiler must place
+  kit pieces by grid transform, never by the flora bottom-anchor path.
+
+Excluded after vetting, with reasons recorded in each config's description:
+`wovenfence01` and `argonianbonechime02` (no renderable geometry),
+`chitinchair01` (needs Dragonborn DLC textures the vault does not hold),
+`plank_ferry_swamp_02/04/05/06` (editor markers).
+
+## Rounds 2–5 (owner-driven, 2026-09-02)
+
+Owner rulings that unblocked this: **"no porting to other games" clauses are
+APPROVED** — we are a standalone Skyrim conversion for private personal use,
+credited as such. Owner **selectivity directive**: take only what closes a
+recorded gap or beats what we hold; every mod taken is a permanent
+credit/provenance/pipeline liability. "Nice but redundant" is a skip.
+
+### Sourced (registered as pools, credited in root README)
+
+| Mod | Nexus | Ver | sha256 (16) | Pool | Why it earned its place |
+|---|---|---|---|---|---|
+| **Here There Be Monsters — Sign of Cipactli** (Araanim) | SSE 35933 | 2.92 | `c44da49e52ae68d4` | `htbm` | **The find of the whole pass.** 1,579 registered meshes incl. purpose-built *Black Marsh* content: Argonian bamboo huts + interiors + door, wicker furniture family, Kothringi stilt platform and Tamu wood dock/plank family, and a 57-piece xanmeer ruin set with the ORNAMENT the Ayleid kit lacks (feathered-serpent and serpent-sigil statues, goddess statue, gargoyle, runic stone, totems, skull stack) |
+| ↳ Wamasu static: HTBM scales kitted (2026-10-04, for `place.dunmer-north.the-wamasu-shrine`) | SSE 35933 | 2.92 | `clutter/wamasuscales.nif` sha256 `0cd68b55a98f42fc…`, `clutter/wamasustormscales.nif` sha256 `87318c8c27a417ba…` | `htbm` | **Kitted** in `ruin-monumental-v1` as ground clutter (0.62 × 0.63 × 0.19 m, no collider). The rigged `actors/wamasu.nif` stays creature-only; the Mihail wamasu (Nexus 158860) stays deferred per decision 0030. |
+| ↳ Wamasu shrine leavings: ash (2026-10-04, for `place.dunmer-north.the-wamasu-shrine`) | vanilla Skyrim | n/a | `effects/ashpile01.nif` sha256 `4087460617bc796f…` (textures `fxdustpile*.dds`) | `vanilla` | **Kitted** in `ruin-monumental-v1`: ash pile 1.96 × 1.99 × 0.20 m (no collider; hidden `Box01` dropped). `meshes/effects/ashpile01.nif` added to `asset_taxonomy.CONTENT_EFFECT_PREFIXES` so it earns a registry row. Vanilla: no credit line. |
+| **Ayleid Ruins Building Kit -Resources-** (Imperial Society) | classic 90667 | 001 | `5f465b70c2f04cca` | `ayleidkit` | 85 **exterior** monumental pieces — blocks, quad blocks, stairs, statue walls, bridges, towers. Unblocked by the clause ruling |
+| **Skyfall's Sleeping Hist Tree Overhaul** (Skyfall515 et al.) | SSE 116792 | 1.4 | `1b7f3e3149f2db87` | `histtree` | A second hero-Hist mesh (18×24×16 m) + Hist flowers, **rock cairns and a rune circle** — the closest thing to grave-stakes anyone has |
+| **Script free ship sailing** (ElstarTomas; canoe by FrankFamily) | classic 67727 | 2.3 | `f13d0875fcc258bf` | `canoe` | `canoe1.nif` — the only genuine canoe mesh located anywhere. Unblocked by the clause ruling |
+| **Solitude (ghost) Ferry** (Syntia) | classic 89948 | 1.1.00 | `5345ab860dbd0d3a` | `ferryraft` | `ferryraft01.nif` — an actual poled raft. The owner's lead paid off, though the mod is not what its name suggests |
+| **Ships and boats of Tamriel** (ThatShipGuy) | SSE 41653 | 1.2 | `1bd5c3fac0d5c032` | `sbot` | The two **flat-bottomed Cyrodiilic ferries** + rowboat for the Imperial fringe; wrecks and ship interiors as a bonus. Also supplies Bretic textures other pools reference. 2026-09-23: v1.2 omits the rope and sail diffuse textures (`shipcyrodiilicrope01.dds`, `shipcyrodiilicsails01.dds`); v1.1 was fetched with the Nexus key and those two files copied into the vault (credit line updated) |
+| **Depths of Skyrim** (TheBlackpixel) + **Mesh fixes** (Gobsnek) | SSE 26913 + 174995 | 1.1.7 / 1.0.0 | `45256b8e537d48e1` / `81b0e11d6b49e9d1` | `depths` | Reef/bed flora for the drowned layer. **The 174995 fixed meshes are overlaid over the base at unpack time**, so the pool only ever exposes the corrected versions |
+| **SIRENROOT — Deluge of Deceit** (Everglaid) | SSE 70917 | 1.30 | `c1ba1454928262e3` | `sirenroot` | Free-standing broken/hollow ruin blocks and **walkable rubble floors** — a submerged ruin the player can stand in — plus water-caustic meshes |
+
+### Evaluated and skipped (all downloaded and opened — verdicts are from mesh lists, not descriptions)
+
+| Mod | Nexus | Verdict |
+|---|---|---|
+| **Hovelmud** (owner lead) | SSE 63329 | **Not a mud hut.** It is Stroti's *Mushroom House* kit — fungal/Telvanni idiom, which material-culture puts off-limits inland, and BM&V already bundles the same Stroti mushroom material. **Retired 2026-09-24**: a duplicate of the mushroom set BM&V ships twice (`architecture/mushroom house`, `stroti/mushroom house`) and off-culture; no pool, no kit ([building-asset-breadth.md](building-asset-breadth.md) §5) |
+| Sailboats — Script Free Sailing EXPANDED | SSE 40057 | 8 hulls, all keeled and sailed. The canoe the research promised is **not** in v2.0 — it is in 67727, which we took |
+| Boats — Operational Animated Travel (owner lead) | SSE 110882 | 3 unique meshes, all vicn "boat carrier" rigs around the vanilla rowboat. It is a travel-script mod |
+| Cyrodiil Ship and boat resource | classic 59426 | Rowboat + 2 broken variants + an Imperial ship — all superseded by SBOT |
+| L.V.X Magick's — Boats (owner lead) | SSE 36149 | 31 meshes, but every one is a variant/retexture of the vanilla keeled rowboat plus sailboats. A rowboat "construction kit" is the only novel item; noted as a fallback if a custom hull is ever needed |
+| Various Immersive Rowboats | SSE 98215 | 3 vanilla-path replacers |
+| Of Ships and Boats | SSE 57673 | 578 MB for 4 meshes, all large ships |
+| DK's Lore-Friendly Ships and Boats Vol. 1 | classic 75965 | 4 Nord ships; SBOT is the same author's superset |
+| Underwater Treasure (owner lead) | SSE 17267 | **ESP only, zero meshes.** Design note worth routing to the quest side: it scatters underwater chests across sea, rivers and lakes as pure diegetic discovery with no markers — exactly the §12.3b "reward for effort" pattern for our drowned layer |
+| Wreck of the Crown Petone (owner lead "northern Argonian settlement") | classic 86156 | Mislabelled: a Jokerine NPC/quest mod on a vanilla shipwreck. No reusable statics |
+| Marsh-Rest (round 1) | classic 50111 | ESP-only, vanilla assets |
+
+### The systematic boat sweep
+
+Swept Nexus v2 GraphQL over both game domains for raft, canoe, punt, skiff,
+barge, coracle, dugout, boat, ship, rowboat and fishing boat, ranked by
+endorsements, then **downloaded and opened the six credible shortlist entries**
+rather than judging from descriptions. Conclusion, stated plainly:
+
+- **The Nexus boat scene is almost entirely retextures and replacers of one
+  vanilla keeled rowboat.** `canoe`, `dugout`, `punt`, `skiff`, `coracle` and
+  `barge` return *zero* mod names in either domain.
+- The only genuinely keel-less or flat-bottomed hulls in existence, all now in
+  the vault: `canoe1` (67727), `ferryraft01` (89948), the two Cyrodiilic
+  ferries (41653), and `plank_ferry_swamp_01/03` (109843).
+- **Twin-hulled platform canoes and reed boats do not exist.** That sub-gap has
+  no Nexus answer and needs an owner steer if it must be closed.
+
+**Tropical Skyrim tropicalised-boat check (owner idea, free):** it ships **no
+boat or ship meshes and no boat textures at all** — the only "ship" file in the
+whole mod is `textures/architecture/whiterun/wrshippanel01.dds`, a building
+panel. The free-win does not exist; background moorings must use the sourced
+hulls. (Consistent with the inventory's note that Tropical Skyrim contains no
+architecture meshes, only textures.)
+
+### Blocked, recorded rather than skipped silently
+
+- **Both r/skyrimmods threads are unreachable from this VM.** `reddit.com`,
+  `old.reddit.com`, `api.reddit.com` and the `.json` endpoint all return 403,
+  from the fetch tool and from curl, for both the "Best mods for Argonians" and
+  "Looking for Argonian based mods" threads. Covered the *intent* instead with a
+  ~60-term Nexus API sweep plus a web search of the thread's contents. If the
+  owner wants them covered literally, they will need to paste the text.
+- **"Argonian Exports" (Steam Workshop 189297755, ServoBilly)** — removed from
+  the Workshop for guideline violations; renders only for its uploader. No Nexus
+  mirror exists under the mod name, the vessel name ("Saxheel") or the author.
+  Payload was ~2 props (an Argonian urn, an "earthen door") we already better.
+
+### What the Argonian mod scene actually contains
+
+Worth recording so nobody sweeps it again: **essentially all of it is race,
+body, texture, hair, tail, follower and armour content.** Architecture and props
+exist in exactly three places — the Xanmeer Tileset (held), Mud Mother Grove
+(held) and Here There Be Monsters (now held). Equipment finds were recorded to
+[90-asset-strategy §75.1](../../world/90-asset-strategy.md) rather than sourced,
+per the owner's Phase-11 scope rule.
+
+### Gap status after rounds 2–5
+
+| # | Gap | Status |
+|---|---|---|
+| 1 | Mud-hut / dwelling variety | **open** (corrected 2026-09-24): argonian-mud has 3 shells, below decision 0098's village row (≥ 4). King of the Murkmire's mudhuts (about 8 more shells) close it once extracted and kitted ([polish backlog](../../phases/P-polish/backlog.md) Item 33.4-8; [building-asset-breadth.md](building-asset-breadth.md) §3). The 25 % quota this row cited is retired (0098) |
+| 2 | Xanmeer exteriors and ornament | **closed** — Ayleid kit for massing (blocks/stairs/statue walls), HTBM for ornament (serpent statues, goddess, gargoyle, runic stone, pyramids) |
+| 3 | Grave-stakes / burial markers | **substitute found, exact asset still absent** — Skyfall's rock cairns and rune circle. No staked-dead mesh exists on Nexus |
+| 4 | Argonian cultural props | **closed** — Mud Mother Grove + HTBM wicker family + xanmeer urns/pots |
+| 5 | Hist tree | **closed with variants** — two distinct hero-Hist meshes (Mud Mother Grove, Skyfall) + flowers + LOD |
+| 6 | Working/industrial props | **still open** — a fish rack and carapace oven only. No saltern, kiln or reed-cutting gear exists |
+| 7 | Rafts / canoes | **closed for rafts and canoes** (canoe1, ferryraft01, 2 ferries, 2 plank rafts); **twin-hulled platform canoes and reed boats remain impossible to source** |
+| — | Drowned / underwater layer | **newly served** — reef flora, walkable submerged rubble, water caustics |
+
+## Pipeline changes this required
+
+- `pipeline/bsa.py` now reads **BSA v105** (SSE): 24-byte folder records and
+  LZ4-frame blocks. Three of the seven mods ship v105 archives, so this was a
+  root-cause fix rather than an unpack-by-hand workaround. Adds an `lz4`
+  dependency, imported only on the v105 path.
+- `pipeline/build_kit.py` resolves extracted-directory pools from one table
+  instead of an `if` per mod.
+- `pipeline/bsa.py` also reads **v103** (Oblivion-era) archives, which some
+  classic-Skyrim mods still ship.
+- `pipeline/build_kit.py` gained a **sibling-texture-pool** table: SIRENROOT is
+  a Creation Club *Ayleid* resource whose ruin blocks reference CC texture paths
+  it does not ship but our two Ayleid pools do, and Depths of Skyrim references
+  Bretic ship textures that SBOT ships. Without it those pieces export as grey
+  slabs. Both pools are credited in every case.
+- Mud Mother Grove's `Data/` wrapper is **flattened at unpack time**. Nested
+  layouts silently export every material untextured, because Blender resolves a
+  NIF's texture paths relative to the folder above `meshes/` — this cost a full
+  rebuild to find and is now written into the pipeline README.
+
+---
+
+# Entry 2 — Phase 11 Part 4: the Imperial civic tier (Gideon) and tropicalisation
+
+**Delivered 2026-09-03**, against the findings in
+[phase11-vibe-sheet-asset-audit.md](../phase11/phase11-vibe-sheet-asset-audit.md) §4 (S1,
+S2) and §5 (T1, T2). Answers the owner's note that Gideon, Archon and Alten
+Corimont all read as the same Nordic thatch village.
+
+## What was downloaded
+
+| Mod | Nexus | Version | Archive sha256 | Pool | Verdict |
+|---|---|---|---|---|---|
+| Morrowind Imperial Keep Set (Remodeled) (Tesak1243) | SSE 133090 | 1.0 | `d22974919cdd3d6cea25f2b0b0851f2cb636a7569b7c3d1f8ae7b34c8584b9c0` | `mwkeep` | **164 meshes, all architecture.** A complete Morrowind-Imperial fort language: curtain walls with gate/corner/destroyed variants, wall stairs, big+small stackable towers (base/shaft/top), two keep blocks, guard towers, foundations, plaza, low stone yard walls, ledges and steps, river bridges and stone docks, stables, civic clutter, rubble variants, plus interior hall/room/spiral-stair modules and 8 animated doors |
+| Morrowind Hlaalu Architecture (Angelio, uploaded by Kai4304) | SSE 157997 | v2.0 | `c32811d704f25d33fe421e20d1258a965232c6fafc530a2f99d95c1f74c8cad7` | `hlaalu` | **127 meshes.** Premade and modular Hlaalu houses, a base/middle/top tower stack, yard/street walls with broken variants, steps, awnings, fences, stone blocks, small bridges, dockside cranes and lamp posts. Bundles other credited resources (Tamriel-Rebuilt-style walls, Oaristys props) and a `MorrowindImperialFort/` folder that duplicates 133090 |
+| King of the Murkmire (pancake0723) | SSE 190459 | 1.0.2 (Main, file 803646) | `7bf18067157130d47058ce20f0bc15759f5df71b6f81eb05079b8dba720a5ff2` | `kotm` (own meshes) and `mwkeep` (the `tesak1243/` keep set it re-bundles), split by model path (`mine_assemblies.PLUGIN_PATH_POOLS`) | Plugin `King of the Murkmire.esp` (44 MB, sha256 `9fb7c467eb053e18c4680c8be1719dc8252c95fdd5c9cf9894c8573e830ef31d`) and `King of the Murkmire.bsa` (837 MB, sha256 `fa64a2215d767b98772b7f7a864901495c3a4ffb4218a52ff2b47fb8486d36d6`), both kept in the vault's `extracted/Kotm BSA Test/`; the BSA's meshes and textures were unpacked beside them into a Data root on 2026-09-24 (3,018 files: 2,292 meshes + 726 textures, every mesh and texture entry of the BSA, counted with `find -type f` 2026-09-24; registry pool `kotm`, 2096 rows, `tesak1243/` left to `mwkeep`). 133090 ships no plugin and no Nexus mod requires it; this one places 318 exterior `mwimparch*` refs (62 pieces, 14 curtain-wall refs) in its own ArgoniaWorld with its own LAND, under 133090's model paths (registered 2026-09-23, 16h K8). Owner ruling 2026-09-24: permission is held from every mod author in the pool, KotM included, so it is an asset source. 692 of the BSA's 2,292 meshes name textures found neither in the BSA nor in vanilla Skyrim: they sit in the SE/AE `_ResourcePack.bsa`, the Creation Club and the DLC archives, none in the vault (OPEN, owner decision in the 16h brief; [KotM adoption plan](king-of-the-murkmire-adoption-plan.md) § 5.1). The pool bundles other authors' work: every sub-family taken gets its own row below with its origin mod, credit and licence note (plan § 4.3 folder-to-origin table) before it ships. Sub-family rows below. Three Reimperialized plugins (133861/134592/134616, TheLootist) place the set under re-pathed keys and are in the vault unregistered |
+| ↳ KotM `argonia/mudhuts/` mud houses | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | **Taken 2026-09-24 into `settlement-mud-v1`:** eight shells (`mudhut01`, `mudhut02`, `mudhut03`, `smpodext01`, `smpodext02`, `lizardhouse`, `manorext`, `shed`), the doorway piece `smpodextdoor`, doors `door01`/`door02`, `window01`/`window02`, `mudhutchimney`, `stairs01`/`stairs02`, `overhang01`/`overhang03`. Provenance: KotM author's own work per its description ("much meshwork done by me"); the credits name no other author for this folder. Its mud texture `_resourcepack/landscape/desertcracked01` comes from Bethesda's `_ResourcePack.bsa`, which KotM requires and does not ship; that archive is not in the vault, so every shell but `lizardhouse` and `manorext` (own `argonia/landscape/rivermud`) builds without its mud texture: OPEN, reason: the file is Bethesda game content (Anniversary-era free resource pack) obtainable only from the owner's game install, not from Nexus. The doors and stairs use vanilla `dungeons/dryoakpost01`; `window01` also uses Creation Club `bgssse025` amber, not in the vault either. **Resolved 2026-09-26 (16k fix round 2, planner ruling (b)):** `settlement-mud-v1` `textureAliases` redirect every missing path to a texture KotM ships or its own meshes already pair with (cracked mud -> KotM `argonia/landscape/rivermud`, light trim -> `argonia/landscape/dirt02`, amber -> `argonia/misc/vakkastone_d`, Dragonborn Raven Rock planks -> `dungeons/rottingwood01`, Telvanni mushroom details -> rivermud, `shinydull` -> KotM `cubemaps/chitin_e_ebony`); the published kit's `texturesMissing` fell from 11 to 2 (`amber_n`, `amber_bl`, accepted with reasons). The build now refuses an unresolved diffuse a kit config does not accept (`build_kit.unresolved_diffuse_errors`). **Re-aliased 2026-10-04 (16k walk 11):** cracked mud -> Tropical Skyrim `landscape/rivermud` (+ `_n`), light trim -> Tropical Skyrim `landscape/dirtcliffs/dirtcliffs01` (Nexus 33017, credited in README § Credits): KotM rivermud (mean RGB 41,40,30) rendered mudhut02/smpodext02 near-black; the Tropical pair (85,68,47 and 101,70,41) matches KotM lizardhut_d (87,78,48); look judge PASS on mudhut01/02/03 and smpodext02. Creation Club and `_ResourcePack` content is excluded by the owner, never pulled. |
+| ↳ KotM `argonia/mudhuts/tamu_wooddock*` | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | Not taken. Provenance per KotM credits: tamu75, Wood Dock Resource (Nexus LE 63982). |
+| ↳ KotM `argonia/blackwood/` walkways and docks | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | **Taken 2026-09-27 into `settlement-stilt-v1`** (16k walk 2, kit plan item 33.3): `walkway01`–`07`, `walkwaystairs`, `docks3way`, `docks4way`, `dockscentre`, `dockscentrealt`, `dockscentrenopost`, `dockscentresmall`, `dockscorner`, `docksend`, `docksendnopost`, `dockspilings`, `dockspilingsdamage` (19 pieces, collision mesh). Lore: Murkmire stilt platforms joined by walkways (world/sources/lore/topics/material-culture.md, Murkmire). The `docks*` meshes are BM&V's `sheogorad/dagon fel/` jetty set re-pathed (same sizes, same editor naming; they name BM&V's `textures/sheogorad/dagon fel/woodpostend03.dds`, which KotM does not ship), so the build reads BM&V's Data2.rar as KotM's sibling texture source (`build_kit.pool_sources`); `docks-v1` already carries the BM&V copies. KotM places all 19 at scale 1.0 (docksendnopost 26 of 33 refs, the rest 1.07–1.1). Kit 14.9 MB → 16.7 MB published. |
+| ↳ KotM `argonia/blackwood/sign`, `signinn` hanging shop signs | SSE 190459 | 1.0.2 | (BSA above); `sign.nif` sha256 `ddd61fcf885352091ac4774943e672b42886239ff51ab1b6243b4b8f034e7850`, `signinn.nif` sha256 `366ec0bdb7c62293060f47e673173dd69afd2af4f56075b58e635b1413a49824` | `kotm` | **Taken 2026-10-01 into `settlement-mud-v1`**, with the vanilla bracket post `clutter/signage/whiterun/signwrpost01` they hang from. Source: vault `king-of-the-murkmire-190459/extracted/meshes/argonia/blackwood/`. Both are vanilla hanging shop signs re-textured (nodes `SignRTBlacksmith01` with `Ring01`–`03`, `SignRTBeeandBarb01`; a hinge constraint, no post of their own). `King of the Murkmire.esp` names neither mesh (no `blackwood\sign*.nif` model path in the plugin), so KotM places them nowhere and the mounts miner finds no pair for them; their host is the vanilla design pair `signwrpost01` → `signwr*` (mounts record, 2.39 m up the post). Their frame texture `textures/dwarvenmilitary/blackwoodfarm/bwcs(_n).dds` is in no vault file (find by name, 2026-10-01): aliased to `architecture/riften/riftencanalwood01`, the wood these meshes already carry. |
+| ↳ KotM `argonia/mudholes`, `argonia/hotmudbubbling`, `argonia/stalactites/stal1`–`stal8` (no `stal4` in the archive) (16k walk 12, Helstrom Rootworm station) | SSE 190459 | 1.0.2 | (BSA above); sha256 first 16: `mudholes.nif` `c425d685c524c64f`, `hotmudbubbling.nif` `9cc38546a5d82ae7`, `stal1` `3eae1e485ef1e4b0`, `stal2` `af15b14c0b8406c3`, `stal3` `93cb5fa4ccca3f6d`, `stal5` `7d3065a0311e6a6b`, `stal6` `3413dba0df426b58`, `stal7` `648b09282437139a`, `stal8` `24bf4c1cbf66997b` | `kotm` | **Taken 2026-10-06 into `dungeon-root-v1`.** Source: vault `king-of-the-murkmire-190459/extracted/meshes/argonia/`. `hotmudbubbling` is all effect-shader cards: built `"effect": "additive"`, collision none; its Dawnguard texture `dlc01/clutter/wavyturbulence01` (absent from the vault) is aliased to `effects/fxfluidstream01`, the NIF's other card texture. The stalactites' Creation Club `ayleidruins/cave08(_n)` is aliased to `dungeons/caves/cavebasewall01(_n)`, as in `interior-kotm-v1`. |
+| ↳ Vanilla `landscape/rocks/rockcaveentrance01` | Skyrim.esm (vanilla) | — | `skyrim-source` vanilla archives (mesh manifest) | `vanilla` | **Taken 2026-10-06 into `dungeon-root-v1`** (16k walk 12, Helstrom Rootworm station): a second cave-mouth silhouette beside `rockcaveentrance02`. |
+| ↳ KotM `argonia/trees/hist trees/histtree03` | SSE 190459 | 1.0.2 | (BSA above); `histtree03.nif` sha256 `cfab9789de4d9cf1834b8f903e4a12fdfdd0a5fb14931e99bc9824bd9f3b1f7b` | `kotm` | **In `settlement-root-v1`** (16k walk 12). Source: vault `king-of-the-murkmire-190459/extracted/meshes/argonia/trees/hist trees/`. The kit manifest carries no per-asset hash; the hash is of the vault NIF. |
+| ↳ KotM interior cells `KeebaHouseCrafter`, `KeebaHouseTreeminder`, `KeebaHouseSnailMinder` (16k interiors r8) | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | **OPEN, reason: the meshes are Bethesda archive content absent from the vault (owner Creation Club / SE-AE install question, row above).** Searched 2026-09-26 by directory listing of the whole vault: no `_ResourcePack.bsa` and no `_resourcepack/` folder (`modularrug01`/`02`, `desertgrasscluster01`-`03`), no `cc*.bsa`; the one `creationclub/bgssse001/` folder (KotM `textures/creationclub/bgssse001/rods/`) lacks `fangofhaynekhtnamet.dds`, the only diffuse of `boneflute01` (its mesh IS in the vault, `argonia/clutter/boneflute01.nif`); `dlc01/clutter/*bowl*`, `_byoh/clutter/food/milkjug01`, `_byoh/clutter/wine/winebottle04`, `creationclub/_shared/dungeons/root/clutter/rootclusterlarge02` are in no vault file and not in `skyrim-source/manifest-skyrim-meshes.txt`. Nexus search once for a free-standing rug modder's resource: Detailed Rugs (SSE 9030), RUGNAROK SE (SSE 5436), Norse rugs (SSE 1069) are replacers, none in the modder's-resource category, none downloaded. Effect on the claim rule (`blueprint_interiors.bundle_sourcing`): Crafter 2, Treeminder 9, SnailMinder 10 references need a mesh the vault holds nowhere, so none of the three is claimable. |
+| ↳ KotM Lilmoth, Alten and RootWhisper interior cells (30 cells behind `house1`, `house2`, `house4`, `hausneu01`/`02`, `roundhut02`/`03`, `shiveringhouse_02`, `walkway01`; 16k walk 3 lane L14, 2026-09-28) | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | **Taken 2026-09-28 into `interior-kotm-v1`:** 83 of the 105 KotM meshes these cells reference (interior shells `house1in`, `house2in`, `house4in`, `hausneu01innen`, `roundhut02int`, `shiveringhouse_01_inside`, partitions, furniture, clutter, the kapok, palmoke, Hist and cypress-debris trees the RootWhisper huts stand around); their 245 vanilla gaps went into `interior-farmhouse-v1`. **OPEN, reason: Bethesda archive content absent from the vault (owner Creation Club / SE-AE install question, rows above).** Left out: 22 KotM meshes held in the vault whose only diffuse sits in an absent archive (Creation Club `bgssse001` fish, rod and `fangofhaynekhtnamet` weapon textures, `bgssse037` ingredients, AE `_resourcepack/landscape/trees/` palm, snow-gum and willow, `_byoh/clutter/food/`, Dragonborn `dlc2darkelffurniture01` and `telinsideblob01`, and `textures/argonia/curse of immortals/turtle-shell-nor.dds` which the KotM BSA references but does not ship), listed by name in the kit config's `textureNote`; and 14 meshes in no vault file and not in `skyrim-source/manifest-skyrim-meshes.txt` (`_byoh/clutter/food/milkjug01`, `_byoh/clutter/wine/winebottle03`/`04`, `_byoh/furniture/craftingworkbench01`, `draftingtable01`, `_resourcepack/clutter/modular/modularrug01`/`02`, `creationclub/bgssse001/critters/fish/fishcuckoocatfish01inv`, `fishdagon01inv`, `fishvampire01inv`, `dlc01/clutter/dlc01bonemealbowlfull`, `dlc01soulgembowlempty`, `dlc02/clutter/dlc2darkelflantern04`/`05`, `expspidercraftingchest`). Search 2026-09-28: `blueprint_interiors.vault_holds_mesh` over every registry pool and the vanilla mesh manifest for the meshes; `build_kit`'s texture resolution over every pool, the vanilla archives and Tropical Skyrim for the textures (the `unresolved diffuse` refusals, /tmp/l14/build1.log). Effect: the 30 cells still fail `bundle_sourcing` on 1 to 15 `no-kit-asset` references each, all clutter or furniture, so each needs a stand-in record under `world/sources/placement/kit-interiors/substitutions/` (the KeebaHouse route) before it is claimable. |
+| ↳ The same 30 KotM cells: stand-ins and absent-master classes (16k walk 3 lane L17, 2026-09-28) | SSE 190459 | 1.0.2 | (BSA above) | `kotm` | **Stand-ins written 2026-09-28:** 173 rows in 29 new records under `world/sources/placement/kit-interiors/substitutions/`, each a published vanilla (`interior-farmhouse-v1`) or KotM (`interior-kotm-v1`) piece of the same object and near size (the base record's OBND against the kit manifest `sizeM`); the fish-gear rows reuse the `KeebaHouseFisher` pieces from `works-v1`. 37 absent-master forms gained a class row in `absent-master-classes.json` (Dragonborn books and Boar Tusk, Hearthfire food and building materials, Fishing rod and crab items, eight Rare Curios ingredients), each citing the UESP list page (`Skyrim:Books`, `Skyrim:Food`, `Skyrim:Ingredients`, `Skyrim:Miscellaneous_Items`, `Skyrim:Fishing_Items`) fetched through the API. **OPEN, reasons:** (a) 22 forms have no written source, so they stay unclassed and keep 27 of the 30 cells from fitting: `Dawnguard.esm` 093F5, 178B6; `Dragonborn.esm` 20008, 2000A, 2000B, 2000C, 28B3E, 29EC4, 2A6D3; `HearthFires.esm` 009CC, 0283F, 03F31, 10463, 10468, 110CC; `ccBGSSSE001-Fish.esm` 008F5, 00D67, 00D6B, 00D72, 00D73, 00D74, 33A3F. Search: the rendered UESP pages `Skyrim:Ingredients`, `Food`, `Books`, `Miscellaneous_Items`, `Fishing_Items`, `Rare_Curios`, `Weapons`, `Arrows`, `Keys`, `Scrolls`, `Soul_Gems`, `Gems`, `Ore`, `Jewelry`, `Potions`, `Dragonborn_Items`, `Dawnguard_Items`, `Hearthfire_Items`; UESP's search API returns no hits for any query; none of the 172 plugins in the vault overrides any of the 22 forms (a full record scan). They are statics or furniture, which UESP does not list by form id, so a class needs a planner ruling like place-diag P9's. (b) Missing references with no same-object piece in any published interior kit, left as gaps: `argonia/furniture/crateopen01` (class furniture; every published crate is clutter), `prvti/argonian/argknife`, `argbonedagger`, `argonianweapons/argonianspearsquiver`, `dlc02/clutter/expspidercraftingchest`, `creationclub/bgssse037/.../redwort01` (an 8 m flower bed, `KeebaHouseElder`), and the unresolved Hearthfire nails, hinges, locks, iron fittings, clay, flour, butter, mudcrab legs and dumplings, the fishing rod, crab meat and cakes, and the Curios marshmerrow, redwort, saltrice, kresh fiber, hackle-lo, chokeberry and red kelp. (c) The RootWhisper cells, `LilmothFishery`, `LilmothDistilleryInt` and `LilmothBakeryInt` also miss KotM trees and `caen/mounted fish/` meshes, which the taxonomy classes `misc`; that is kit work. |
+| ↳ Absent-master forms classed by placement; crates, trees and the older Keeba stand-ins (16k walk 3 lane L18, 2026-09-28) | — | — | — | all pools | **Classed 2026-09-28:** the 239 absent-master forms with no written source (the 22 of the L17 row among them) now carry a `classedBy: placement` row in `absent-master-classes.json`, written by `python3 -m worldgen.export_interior_bundle --class-absent-by-placement` (planner ruling R45): 86 clutter, 6 furniture, 147 fixture. A form resting on any surface piece is clutter; a floor form is furniture when the author set a piece more than 0.6 m above it, else clutter; a form that only hangs is a fixture, which no stand-in may replace. A `TREE` base is now `vegetation` (R46) and a crate mesh is clutter (R47). The Keeba stand-ins that drew a different object were re-mapped or removed (R48): the scrolls, papers, stew, bog brew, amber and canis root rows now draw the same object; the clay, marshmerrow, charm ball, moss and redwort rows are gaps again. **OPEN, reasons:** (a) no stand-in is written for a placement-classed form: a form in an absent master has no bounds and no name, so neither the same-object rule nor a size can be read; a clutter or furniture drop does not keep a cell from fitting; a fixture does, since no stand-in may replace one. (b) `argonia/furniture/crateopen01` (21 references, 4 of them in otherwise claimable Lilmoth and Alten cells) has no published crate within twice its size (0.43 × 0.63 × 0.33 m; the nearest, `cratesmall02`, is 0.78 × 1.19 × 0.61 m); `vanilla:clutter/common/crateopen01` has the same bounds and is in the vault, so it is a kit row for `interior-farmhouse-v1`. (c) `RootWhisperHouseCarpenter`, `RootWhisperHouseTreeminder` and `KolskeggrMinePavosHouse` are blocked on vegetation alone: kit work. (d) `CIPHTBMHutInteriorGreatHouse` misses three hanging Dragonborn forms (39BB5, 39BBB, 39BBC), now fixtures. |
+| ↳ Hung forms need a wall; the open crate, hagraven balls and hanging moss (16k walk 3 lane L16, 2026-09-28) | Skyrim.esm (vanilla) | — | `skyrim-source` vanilla archives (mesh manifest) | `vanilla` | **Taken 2026-09-28 into `interior-farmhouse-v1`:** `vanilla:clutter/common/crateopen01` (the same object and bounds as KotM `argonia/furniture/crateopen01`, planner ruling in brief L16), `clutter/hagraven/hagravenhangingball01`/`02` and `plants/hangingmoss01` (KeebaHouseElder places them). KotM's 21 open-crate references now draw the vanilla crate through same-object stand-in rows in 9 cell records (`AltenBunkhouse`, `AltenGeneralStore`, `LilmothApothecary01`, `LilmothBakeryInt`, `LilmothDistilleryInt`, `LilmothGlassFoundry`, `LilmothIronworks`, `LilmothOliisIronFoundryInt`, `LilmothTaverna`). R49: a placement-classed form is a fixture only when every reference hangs within 0.3 m of a wall or room-shell face, else clutter; the re-run moved 146 of 147 fixtures to clutter (1 fixture, 232 clutter, 6 furniture). **OPEN, reason: an owner-level asset rule.** `KeebaHouseElder` still fails on one reference, the Creation Club `redwort01` flower bed (no CC assets, owner rule), which has no same-object piece in any kit. |
+| Jet's building kits (Jet4571 & Elianora, "Building kits and other items") | LE 58262 | not downloaded separately | none | none yet | **Usable, author permission held by the owner 2026-09-24.** Not downloaded as its own archive; 292 of its meshes ship inside BM&V at `architecture/jets/` (farmhouse 235, riften 19, whiterun 38). Modular farmhouse walls, roofs, chimney stack, porch set, stairs (building-depth-and-variety.md §3). No placement evidence: its sample plugin is not in the vault |
+
+Permissions checked via `/v1/games/skyrimspecialedition/mods/{id}.json`: both
+`published` + `available`, both category 82 (modder's resources), credit
+required, no clause forbidding use in a public non-commercial work. Archives
+live in the vault at `mod-sources/morrowind-imperial-keep-133090/` and
+`mod-sources/morrowind-hlaalu-157997/`; both ship a `Data/` wrapper, flattened
+at unpack time so `meshes/` and `textures/` are siblings (the failure mode
+recorded in entry 1).
+
+## Kits built
+
+| Kit | Pieces | GLB | Notes |
+|---|---|---|---|
+| `imperial-keep` | **88** of 164 | 20.6 MB | Exterior silhouette set only — interior hall/room modules and the animated doors are left in the pool for a later interiors pass. 0 textures missing, 0 conversion failures |
+| `hlaalu-domestic` | **68** of 127 | 21.1 MB | The `Ruins/`, `Winterhold/`, `Seaview/`, `Sheogorad Ressource/` and `Redoran/` folders are Nordic or interior filler and are excluded. 0 textures missing, 0 conversion failures |
+
+Neither kit is tropicalised: the sets are Morrowind slate-and-ashlar, which
+reads correctly in a hot climate, and the damp/vine pass belongs to scatter.
+
+New inventory families `arch.imperial.morrowind-keep` and
+`arch.imperial.hlaalu-domestic`; new catalogue aliases `imperial-keep` and
+`hlaalu-domestic`. **Applying them to records is a separate job** — the
+catalogue's imperial-fringe records still name `vanilla-farmhouse` (audit
+proposal D1 / change-list item 7).
+
+## Tropicalisation — the mechanism (audit T1/T2)
+
+Tropical Skyrim ships **no architecture meshes**; its tropicalisation of the
+farmhouse/dock/bridge/city sets is textures under **vanilla filenames**. So the
+fix is a build-config key, not a parallel kit family:
+
+- **`textureOverlayPools: ["tropical"]`** (new, `pipeline/build_kit.py`) inserts
+  the overlay pool's own texture directory **ahead of the vanilla fallback** in
+  every pool's search order. A pool's *own* textures still win, so a sourced mod
+  keeps its authored look and only the pieces that would have fallen back on
+  vanilla art get tropicalised; for the `vanilla` pool itself that is the whole
+  kit. Deterministic, zero catalogue edits, and removing the key rebuilds the
+  un-overlaid kit byte-for-byte.
+- **`textureAliases`** (existing key) re-points the shack kit's four
+  `clutter/stockade` plank/wood diffuse+normal files — which Tropical does not
+  cover, and which 422 alias uses depend on — at Tropical's farmhouse
+  `woodwall01`/`woodpost02`. Re-pointing an existing texture, not new art.
+
+Applied to and rebuilt: **`settlement-imperial-v1`** (farmhouse + Solitude dock
+family) and **`settlement-stilt-v1`** (vanilla shack kit). `settlement-mud-v1`
+was **not** overlaid — it contains no vanilla-pool assets, so the key would be a
+no-op. There is no `bridges` kit yet; the vanilla bridge meshes are aliased in
+the catalogue but not yet in any kit, so tropicalising them is deferred to
+whichever kit first carries them.
+
+**Mountain variant:** no `vanilla-farmhouse-mountain` alias was added. Only 42
+live records sit in `border mountains`, nothing in the pipeline consumes a
+second kit id, and the un-tropicalised look is simply the **same kit built
+without `textureOverlayPools`** — i.e. it is a build variant, not an asset
+family. Add the alias only when a compiler actually needs to select between two
+built GLBs.
+
+### SUPERSEDED 2026-09-09 — the key became the default
+
+The per-kit key above is the mechanism that failed. An audit of all 22 built
+kit configs found **seven carrying vanilla-backed pieces with no overlay key**,
+including `route-structures-v1` — 4,147 placed pieces of Whiterun castle stair
+and Nordic stone bridge on graded roads across a tropical marsh. Two claims in
+the section above were also wrong when measured: `settlement-mud-v1` does carry
+a vanilla asset (`ruinswooddoorload01`) and the overlay changes **11** of its
+textures, because its Mud Mother meshes name vanilla texture paths; and
+`hlaalu-domestic`/`imperial-keep`, both "mod-pool only", change 10 and 2.
+
+Owner ruling 2026-09-09 — *"if something ever calls for a vanilla asset, we use
+the tropicalised versions everywhere by default, unless there is an explicit
+recorded reason not to"*. Delivered as:
+
+- `build_kit.vanilla_texture_roots()` — Tropical's directory sits ahead of
+  `Skyrim - Textures.bsa` in **every** pool's fallback, for every kit, with no
+  config key. `build.assemble_data_root` does the same for the character and
+  (Phase 13) creature builds.
+- `untropicalisedReason` — the only way out, a written reason of ≥40 chars;
+  a reasonless opt-out **raises**, and the kit must also be named in
+  `UNTROPICALISED` in `pipeline/test_tropical_default.py` (CI gate
+  `cd tooling/asset-pipeline && python3 -m pytest pipeline/test_tropical_default.py`, "named, never silent"). The allowlist is currently
+  **empty**.
+- `textureOverlayPools: ["tropical"]` now **raises** — the general overlay
+  mechanism stays for other retexture pools, but naming tropical there reads as
+  if the kits without it opted out. The key was stripped from the five configs
+  that carried it; their builds are unchanged.
+
+**Interior kits: no exception was needed, and that is measured, not assumed.**
+Tropical repaints climate surfaces. Of the 13 textures the default changes in
+`mudmother-hut-int`, every one is structural (bark, wood post, river mud,
+Whiterun interior beam, Riften log detail, hearth clutter); not one is a sack,
+brazier or piece of woven furniture. `vanilla-imperial-int` and
+`bmv-treehouse-int` change **nothing** — Tropical repaints no Imperial dungeon
+interior stone at all.
+
+**What Tropical covers, per kit** (textures the default supplies; measured by
+resolving every kit's referenced textures against the pool search order):
+`route-structures-v1` 37, `works-v1` 28, `settlement-imperial-v1` 19,
+`enclosure-v1` 14, `mudmother-hut-int` 13, `settlement-mud-v1` 11,
+`vanilla-farmhouse-int` 11, `hlaalu-domestic` 10, `htbm-hut-int` 10,
+`settlement-stilt-v1` 7, `docks-v1` 6, `underwater-v1` 6, `dungeon-root-v1` 4,
+`flora-province-v1` 4, `watercraft-v1` 4, `imperial-keep` 2,
+`settlement-root-v1` 2; **zero** for `bmv-treehouse-int`,
+`groundcover-province-v1`, `ruin-monumental-v1`, `vanilla-imperial-int`,
+`xanmeer-interior-v1`.
+
+**Files Tropical does not repaint, named.** `clutter/stockade` (the standing
+case) — `route-structures-v1` gained the same `textureAliases` redirect
+`works-v1`, `enclosure-v1` and `settlement-stilt-v1` already used, so a
+scaffold on a route now reads like a scaffold in a works yard;
+`stockadeextra01` has no stand-in and stays vanilla. `farmhouse/rope01`,
+`stonewall02_n` (the diffuse *is* repainted — a normal map carries no colour),
+`clutter/containers/miscbag*`, `dungeons/ships/shipwood*`,
+`dungeons/nordic/ruinswooddoor01`, `plants/swampfungalpods01`,
+`landscape/grass/coastkelpgrass01`. Tropical ships no `textures/effects/` at
+all, so `export_waterfall_fx_textures` is vanilla by necessity. Its 40
+wild-fauna skins overlap the character and weapon builds by **0 of 30**
+referenced textures.
+
+**Open, needs an owner call:** `worldgen/build_ground_materials.py` slot
+`peat_slope` reads `textures/landscape/frozenmarshdirtslopes01.dds` from the
+vanilla BSA (`kind="bsa"`, the table's only such slot) and hue-shifts it with
+tint `(14, 1.08, 1.0)`. Tropical **does** ship that exact file. Switching the
+slot to `kind="ts"` and dropping the tint is the consistent answer, but the
+tint was tuned in an owner-reviewed round and the ground set is a visual
+decision, so it is queued rather than changed. Row in
+[docs/phases/P-polish/backlog.md](../../phases/P-polish/backlog.md).
+
+## Still open from the audit
+
+- Red Cyrodiil pantile roofs (audit §4) — treat as a texture problem; Rally's
+  City Roofs / Better Towns Textures not yet evaluated.
+- The record-level alias swaps (audit D1, change-list items 4–7).
+- **Loom: DROPPED from the station classes (planner ruling 2026-09-27,
+  16k walk 2 integration).** No loom mesh exists in the vault: the vanilla
+  mesh manifest (`skyrim-source/manifest-skyrim-meshes.txt`) has none under
+  `furniture/` or `clutter/`, and `find -iname "*loom*"` over the whole local
+  vault returns nothing (searched 2026-09-27). No place built so far needs
+  one, so `socket-vocabulary.json` `stationClasses` carries no `loom`. When a
+  place needs a loom, the class is added then, with the Nexus search run and
+  its outcome recorded here in the same change.
+- **Done 2026-09-03:** the vibe sheets were re-rendered from the overlaid kits
+  (Gideon rebuilt on `imperial-keep` + `hlaalu-domestic`; Archon's farmhouse
+  dropped; Alten Corimont tropicalised). The montage step is now a committed
+  tool — `tooling/asset-pipeline/pipeline/vibe_sheet.py` with the frame/caption
+  spec in `pipeline/config/vibe-sheets.json` — so the sheets are reproducible
+  rather than one-off.
+
+## Entry 3 — the three kits the deliverability audit named (2026-09-04)
+
+**Nothing was downloaded.** All three are *packaging* jobs against pools already
+in the vault, exactly as
+[place-asset-deliverability-audit.md](place-asset-deliverability-audit.md) §6
+predicted. No new pool, so no new credit line is due; BM&V (ModDB), Here There
+Be Monsters — Curse of Cipactli (SSE 35933) and Mud Mother Grove (SSE 146557)
+are already credited in the root README.
+
+| Kit | Assets | Built from | Delivers |
+|---|---|---|---|
+| `dungeon-root-v1` | 124 | BM&V `philscaves` (46) + `citebosmer` **interior** modules (41) + `telvanni` root/interior (12); HTBM Hist roots (15); Mud Mother ritual/light (10) | `INTERIOR_FAMILIES` **`root-cavern`** and **`hist-sanctum`** outright; backs `dwelling` / `civic-hall` inside grown-root settlements |
+| `settlement-root-v1` | 140 | BM&V `citebosmer` trunk-houses (42) + the **complete** `passerelles` walkway system (52) + `kiosque` (8) + host trees (15); HTBM roots (7); Mud Mother props (17) | `hist-grove-capital`, `hist-village` canopy tiers, `hammock-crown-terrace`, every elevated walkway |
+| `works-v1` | 85 | vanilla forge/smelter/racks/carts/mine timbers/stockade scaffold/water wheels/dock + Mud Mother oven, racks, fences | the whole works taxonomy branch (`shipyard`, `salt-pans`, `paddy-works`, `clay-pit-and-kiln`, `portage-slipway`, `bog-iron-bloomery`, `works-town`, `crystal-diggings`) |
+
+**Each set is packaged in its OWN snap logic**, written into the new `snapLogic`
+key of each kit config (ignored by the builder, read by whoever lays pieces
+out). The three that matter:
+
+- **`passerelles`** encodes its grid in its filenames: `passl<len>[h<rise>]<d|i>01`
+  — `len` and `rise` are Bethesda units, `d`/`i` the two authored handrail sides,
+  which must stay consistent along a run. Measured against the built manifest:
+  `l64/128/256/512` → 1.07 / 1.98 / 3.80 / 7.44 m of deck (3.03 m wide), `h64` →
+  +0.92 m, `h128` → +1.82 m. Arcs come in three fixed radii (448 / 576 / 1280 u)
+  and chain only with their own radius; `passl256h64startd01` is the authored
+  start of a climb.
+- **`citebosmer` interiors** stack by storey code — `rc` ground, `et` upper, `ss`
+  basement — one floor shell per storey with `intwall`/`intwindow` panels
+  substituted round the perimeter and the `gland` trapdoor family as the stair.
+  `15v`/`45v` are the champ house's authored wall tilts: pick one family per shell.
+- **`philscaves`** is a two-tier Morrowind-style cave set (`small` and `srooms`)
+  that butts end-to-end at open faces; cross tiers only through `srooms/connect`.
+
+**Two build fixes were needed.** (1) BM&V's Telvanni pieces UV Dragonborn paths
+(`textures/dlc02/architecture/telvannitower/*`) and **the vault holds no DLC**, so
+all twelve exported grey; `dungeon-root-v1` `textureAliases` redirects those (plus
+two Earrindo and two Stroti wood paths BM&V also fails to ship) to BM&V's own
+Bosmer bark `eressea/architecture/citesylvestrepactevert/bark0143`. That *is* the
+audit's "retexture the Telvanni silhouette to root", done as a config alias rather
+than new art. All three kits now report **zero missing textures**. (2)
+`housetroncbalcon001` carries no exportable geometry (editor marker) and is
+excluded; `housetroncbalcon15v001` is the usable trunk balcony.
+
+`works-v1` is tropicalised (`textureOverlayPools: ["tropical"]` + the same
+`clutter/stockade` alias redirect as `settlement-stilt-v1`) because nearly every
+piece is vanilla-backed. The two root kits are **not** — they contain no
+vanilla-pool assets, so the overlay would be a no-op.
+
+**Still not deliverable, and not sourceable:** kiln, saltern, sluice-gate,
+pithead winding gear and hull-on-stocks meshes. `works-v1` is the agreed
+substitution vocabulary for them (audit §5.4) — smelter+coal+firewood reads as
+the kiln, `walkwaycwallgate01/02` as the sluice, scaffold + `minewoodbeam`
+rollers + dock steps as the slipway. Place prose must be written in those terms.
+Grave-stakes remains a permanent gap. `settlement-dunmer-v1` (shortlist #3) is
+**not** built — still a Part 6 prerequisite.
+
+Registered as inventory families `arch.argonian-root.dungeon-interior`,
+`arch.argonian-root.settlement` and `prop.neutral.works-and-industry`; catalogue
+alias slugs `dungeon-root`, `settlement-root`, `works-props` now point at them,
+and `worldgen.catalogue` gained a check that every alias **target** exists in the
+inventory (slug presence alone was checked before, so dangling targets survived).
+
+
+## 2026-09-04 — orphan pools and the boat/dock/xanmeer-interior round
+
+Three mods sat in the vault with no `Pool` row, so nothing in the world could
+reach them and a sourcing sweep could not see them. All three registered,
+credited in the root README with archive sha256s, and their extracted trees
+normalised to Bethesda data roots (`meshes/` at the root of `extracted/`; the
+FOMOD and resource wrappers moved to `fomod-source/` / `resource-source/`
+siblings, which is why `build_kit`'s `dir_pools` needs no special case):
+
+| Pool | Mod | Meshes | Outcome |
+|---|---|---:|---|
+| `sailboats` | Sailboats — Script Free Sailing EXPANDED SSE (SSE 40057, Araanim) | 8 | eight keeled sailing hulls incl. furled-sail variants → `watercraft-v1` |
+| `impships` | Cyrodiil Ship and boat resource (classic 59426, Markus Liberty/Tellmann, Beyond Skyrim) | 5 | galleon hull + separate masts + rowboat with two broken variants; **closes the shipyard hull-on-stocks gap** |
+| `boatsanim` | Boats — Operational Animated Travel (SSE 110882, Enneal; Vicn meshes) | 4 | registered and credited, **not kitted**: an editor marker is baked into each hull |
+
+`impships` duplicates meshes BM&V already bundles from the same resource; the
+kit takes BM&V's copies because those carry plugin dimensions, and both sources
+are credited.
+
+| `vanilla-farmhouse-int` | vanilla Skyrim, `meshes/architecture/farmhouse/interior/` (already credited; no download) | 76 | the interior tileset against which the farmhouse shells were authored — cottage (`farmint`), second cottage (`farmint2`), inn, longhouse-with-loft and the `farmb` cellar, plus the two exterior load doors. Built 2026-09-05 to satisfy the owner rule that a building with an interior needs a door to a LINKED interior kit; `interiors_index.TILESET_RULES` already named it |
+| `vanilla-imperial-int` | vanilla Skyrim, `meshes/dungeons/imperial/` rooms/halls/doors (already credited; no download) | 65 | the walkable Imperial fort/keep interior, not a cave set: small and large room grids, their corridor tiers and the hinged/load doors. Serves the `vanilla:architecture/imperial/`, `mwkeep:` and `hlaalu:` shells. Solitude's interior set was rejected — Nordic city-house grammar behind an Imperial or Hlaalu front |
+| `htbm-hut-int` | Here There Be Monsters — Curse of Cipactli (already credited; no download), `Architecture/Villages/` | 9 | BUILT 2026-09-07. The bamboo huts' own `_Int` rooms — the halves their author made to sit inside `bamboohut01`, `bamboohut02` and the Kothringi hut — with the hut door leaf and the mod's wicker furniture. A 2026-09-07 audit found the five blueprints naming these meshes as 36 parcels' interiors while no kit config packaged them, so the door link they promised could not be loaded; `interiors_index.TILESET_RULES` now names the kit |
+| `mudmother-hut-int` | Mud Mother Grove (already credited; no download), `GV_Meshes/ArgonianNest/` | 24 | BUILT 2026-09-07. `MudHut01IntNew`, the room authored to sit inside `mudhut01`, with the indoor shelving, floor seating, hearth, pottery, lights and wall cloths from the same folder; everything `settlement-mud-v1` already packages is left out. Same audit: 14 parcels named the mesh, no kit built it |
+
+Kits built this round: `docks-v1` (47), `watercraft-v1` (45),
+`xanmeer-interior-v1` (68); and, 2026-09-05, `vanilla-farmhouse-int` (76) and
+`vanilla-imperial-int` (65); and, 2026-09-07, `htbm-hut-int` (9) and
+`mudmother-hut-int` (24). Full set-by-set reasoning, including what was
+deliberately skipped, is the "Packaging decisions 2026-09-04" table in
+[world/sources/assets/README.md](../../../../world/sources/assets/README.md).
+
+Tooling fix in the same pass: `pipeline/vault_inventory.py` only recognised a
+rigged actor when its skeleton sat in a creature *sub*-folder, so HTBM's 91-mesh
+`actors/` set — the richest rigged-creature pool we own, with 30+ skeletons —
+reported as unrigged clutter. Fixed; four `creatures.json` entries moved onto
+authored HTBM rigs (frog/toad for `death-hopper`, `Wamasu` for wamasu and
+haynekhtnamet, `SeaDrake` for sea-drake).
+
+No House **Dres** architecture exists in the vault: BM&V's `trdata` tree is
+landscape only, and the Dunmer sets present are Telvanni, Redoran, Velothi and
+stronghold. Thorn's Dunmer quarter keeps `hlaalu-domestic`.
+
+
+## Interior kits from the door manifest (2026-09-07)
+
+Built from `world/sources/placement/exterior-interior-links.json` (see
+[exterior-interior-linking-in-skyrim-mods.md](exterior-interior-linking-in-skyrim-mods.md)),
+so each kit's pieces are the models the mod's own interior cells place, never a
+guess from a filename.
+
+| Kit | Pieces | Evidence | Note |
+| --- | --- | --- | --- |
+| `htbm-hut-int` | 15 | HTBM cells `CIPHTBMHutInterior01`–`17` + `…GreatHouse`, linked to `bamboohut01/02` | added the vanilla hearth, brazier, hay, barrel and cellar trapdoor the mod's hut cells actually place |
+| `mudmother-hut-int` | 64 | `ArgonianLakeHouse.esl` cell `00MudHut01`, linked to `mudhut01` | was 24 pieces of the pool's own dressing; the cell places 60 distinct models, including woven furniture, a Sithis shrine, a fish rack and vanilla sacks/beams |
+| `bmv-treehouse-int` | 16 | `Valenwood.esp` cell `01treeint`, linked to `housegland001`, `housechamp001`, `kiosk01` | NEW. The grown tree-house interior family; no new pool, so no new credit line |
+
+True gaps (a shell we use for which the mods ship **no** interior at all):
+`XanmeerResources.esp`, `igs_tileset_ayleid.esp` and `Mudmound.esp` are
+resource packs with **no placements**, so nothing in them can be linked. The
+xanmeer and Ayleid exteriors keep the fallback path rule and warn.
+`DarkwaterDen.esp` and `ArgonianHome.esp` have load doors, but they open out of
+a cave mouth and a rock face rather than a building shell, so there is no
+exterior mesh to which the interior can attach.
+
+## Sourcing-gap register
+
+Every asset gap found by any agent, in any phase, gets a row here the moment it
+is found — so a gap can never be quietly left. **A gap is filled in the same
+session it is found, unless a reason for deferring it is recorded in its row**
+(owner ruling 2026-09-05): the register is a record of work done, not a backlog.
+`OPEN` means nobody has looked
+yet or the search is unfinished; `SOURCED` means a piece is in a kit config,
+built, credited and hashed; `NO SOURCE FOUND` means the vault and Nexus were
+both searched and the thing genuinely does not exist as an asset, in which case
+the design must change to something we can deliver.
+
+| # | Gap | Found by | Candidate chosen | Status | Date |
+|---|---|---|---|---|---|
+| G1 | Stand-alone Hist **trunk column** (3–8 m across, 15–30 m tall, no dwelling built in) that stands alone and accepts walkways/tap lines — for Nine-Trunks and every future grove or ruined-trunk composition. Everything held was a whole tree with a crown (HTBM Hist 64 × 45 × 54 m, Mud Mother Grove Hist 27 × 28 × 22 m) or the 206 m `treegiant01` host with its 44 m `treegiantrootbase01` flare | Phase 11 Part 6 | **`tropical:landscape/trees/anvilgianttrunk`** — 10.52 × 10.52 × 56.39 m, 784 tris, crownless column; with `anvil_palm_trunk` (17.94 × 16.61 × 33.74 m) as the stouter buttressed form and `anvil_root01` (14.43 × 10.30 × 6.20 m) as the authored root-flare skirt. Same author, same set, already composited together in `flora-province-v1`. Rejected on measurement: BM&V `vurt1bark`/`vurt2bark` (20.9 × 9.2 × 13.6 / 14.3 × 22.8 × 17.9 m — fallen, not columns), `gkbtreeaspenlog1`, `treepinestump` (both under 5 m) | **SOURCED** — vault, no download needed; joined `settlement-root-v1` | 2026-09-05 |
+| G2 | Focal object for an **Argonian underwater shrine** (sunken shrine to Xhon-Mehl the Fisher, Lilmoth's drowned quarter): a statue/altar/idol reading Argonian — not Imperial, not Daedric, not Sithis (the mud kit's `sithisshrine` is the wrong Argonian culture for Murkmire) — that survives submersion | Phase 11 Part 6 | **`htbm:…/architecture/ruins/xanmeer/totem02`** — 0.40 × 0.49 × 2.07 m standing carved totem, the focal idol; plus `totem03` (1.11 × 1.29 × 1.56 m squat altar-height idol block), `runicstone` (1.19 × 0.65 × 1.14 m inscribed marker) and `serpentsigilstatue` (1.38 × 0.44 × 0.63 m serpent-sigil plaque). All four carry HTBM's own `architecture/xanmeer` textures, i.e. the Argonian ruin set. Rejected: `statuegoddess` and `totem01` carry `here there be monsters - the call of cthulhu` textures (different culture); `serpentsigilstone` is a 0.14 m decal; `serpentstatue` is a 0.62 m cube. All four picks are opaque stone, so submersion raises no alpha/foliage problem | **SOURCED** — vault, no download needed; joined `underwater-v1`, and they are also the dry-land shrine dressing for `settlement-stilt-v1` | 2026-09-05 |
+| G3 | A **nailed notice / licence board** readable at arm's length (the countersigned tapping licence on the Licensed Stage rail; every future toll post, price list and register board — Alten Corimont's nailed-up price list is the same need) | Round A follow-up 2026-09-05 (Licensed Stage redesign) | **`bmv:advertising_board`** — 1.56 × 1.39 × 2.47 m, 1,894 tris: a freestanding roofed notice pane on two posts, whose posted papers are part of the authored mesh (`infopanel_papers` / `advertising_board_papers.dds`), so no paper has to be jammed onto a blank board. Pane centre sits ~1.6 m up — eye height, readable at arm's length. Its `meshes/architecture/Advertising Board readme.txt` records it as built from scratch (inspired by Stroti's Oblivion miscellaneous resource), panel/paper/metal/post textures by its author, roof from vanilla Riften shingles, window/wood-end/stall-roof from Beyond Skyrim: Bruma — i.e. a bundled modder's resource inside the already-credited BM&V pool. Rejected on measurement: `bmv:manny_gf/alikr/manny_gf_cont_alikrnoticeboard` is a 0.68 × 0.46 × 2.19 m single-`Box001` container proxy with no board geometry; `bmv:architecture/phitt/additional/board` (3.39 × 0.24 × 2.91 m) is a Dunmer painted broadsheet hoarding (`TamikaVineyards01`), wrong culture and too large for arm's length; the Jokerine blank inn signs (0.25 × 1.40 × 1.43 m panel, 0.28 × 1.87 × 3.98 m on-post) are hanging *shop* signs with no paper — nailing a `note01` to one would be a composite nobody authored; vanilla `clutter/signage` is shop/road signs only and `roadsignpost` (0.26 × 0.24 × 3.64 m) is a bare post. | **SOURCED** — vault, no download needed; joined `works-v1` (assetRef `bmv:advertising_board`) | 2026-09-05 |
+| G4 | A **covered Ayleid stair or gateway that ships a door** — Mazzatun's stair throat, the way down into the xanmeer and every future stepped-pyramid entrance. `ayleidkit:…/exterior/arstairscenter01` measures as an enclosed flight with an inside, but no mined assembly in any of Skyrim, BM&V, Valenwood or HTBM puts a door part against it. `ruin-monumental-v1` ships no composite that does. The interiors index therefore derives no doorway. Under the 2026-09-05 ruling the throat may not carry a door at all | Stream A2, Phase 11 Part 7 doors pass 2026-09-05 | not a gap: the piece is massing, measured | **CLOSED — no door piece needed.** Re-measured 2026-09-05 with the front-face criterion: `arstairscenter01` never had an inside. Its ring of "walls" is the outside of a solid stair block seen from within (`frontFaceFraction` 0.00), so it is now `interior: none` — massing, which is correct for a stepped throat. Mazzatun's stair throat is a solid rather than a room and needs no door | 2026-09-05 |
+| G5 | An **Imperial keep guard tower with a shipped door** — Lilmoth's north gate tower and every future Imperial gatehouse that a player is meant to enter. `mwkeep:…/mwimparchguardtower01` is a tileset piece with an inside; the MW Imperial Architecture set was mined with no door part placed against it in any worldspace we hold | Stream A2, 2026-09-05 | no download: the doors were in the meshes | **CLOSED — entrance derived from the shell's own mesh.** `mwimparchguardtower01` re-measured as a closed prop (`frontFaceFraction` 0.00) with no door evidence, so it is `interior: none`. The pieces of the set that ARE buildings now carry doorways found by the leaf pass — the shut door is modelled into the shell: `mwimparchkeep01`, `mwimparchkeep02` and the `towerbg`/`towersm` bases and tops. The stables (`mwimparchstableendl01`, `mwimparchstableendr01`, `mwimparchstablestraight01`) carry `open-front` entrances, their mouths measured at 2.1 m | 2026-09-05 |
+| G6 | A **BM&V stilt-house shell with a shipped door** — Lilmoth's council hall and the Pus-house tower, plus the whole stilt-village family beyond them: `bmv:architecture/stilthouse/stilthouseext` is the only large stilt hall that we hold and derives no doorway | Stream A2, 2026-09-05 | no download: BM&V ships `stilthousedooranim` | **CLOSED — entrance measured, no design change.** `bmv:architecture/stilthouse/stilthouseext` carries two `open-front` entrances (6.10 m at bearing 225°, 5.35 m at 142.5°): the hall's veranda side is the way in. The first probe missed them because the plan centroid of a house-plus-veranda lands on the deck, outside the room; the one-metre retry lattice stands the eye inside the hall and reads them. `composite:stilt/stilthouse-with-door` was also authored (shell + `stilthousedooranim`, the only other architectural mesh in that folder, at the shared origin). The council hall keeps its size | 2026-09-05 |
+| G7 | A **Bosmer kiosk or market stall with a shipped door**, or a decision that a kiosk has no interior at all — Lilmoth's tariff bell and quay lamp both use `bmv:…/passerelles/kiosque/kiosk01`, which the index reads as enclosed but to which no assembly fits a door | Stream A2, 2026-09-05 | no download: `kioskaccesd01`, `kioskaccesi01` | **CLOSED — the set ships its own way in.** `bmv:…/passerelles/kiosque/` contains `kioskaccesd01` and `kioskaccesi01`, access thresholds authored in `kiosk01`'s own frame. Measured, their plan centres sit in the kiosk's two ring gaps to within 0.11 m and 0.02 m of the wall radius, heads 2.61 m above its floor — a fit, not a name match. `kiosk01` now derives two `door-piece` doorways; `composite:root/kiosk-with-access` / `composite:stilt/kiosk-with-access` package the three pieces as the set intends. No owner call needed: a kiosk is entered | 2026-09-05 |
+| G8 | The **hut interiors the blueprints already promised were never packaged**: 50 parcels across the five blueprints named `htbm:…/villages/argonian/bamboohut01_int`, `bamboohut02_int` and `mudmother:…/mudhut01intnew` as their doors' interiors, but those meshes sat in no kit config and no built kit, so nothing could be loaded behind the door | Interiors audit 2026-09-07 | no download: both meshes' pools (HTBM, Mud Mother Grove) are already credited and hashed; the `_int` rooms are the halves their own authors made to fit the shells | **BUILT** — `htbm-hut-int` (9 pieces: three `_Int` rooms, `bamboohutdoor01`, five wicker furnishings) and `mudmother-hut-int` (24: `mudhut01intnew` plus the indoor shelving, seating, hearth, pottery, lights and wall cloths from the same folder). `interiors_index.TILESET_RULES` now names both, so the shells resolve to a kit rather than to a loose mesh id | 2026-09-07 |
+| G9 | A **Mud Mother lantern hung on the Hist tree** (`mudmother:gv_meshes/argoniannest/argonianlanterns03` on `mudmother:gv_meshes/argoniannest/histtree`), reported in round 2 as a missing mount pair: the lantern measured `containedShare` 0.0 and the tree `n` 0 | 16h part 1 round 2 mount mine | not a gap: both meshes are in our kits and placed together in the Mud Mother plugin | **CLOSED — miner defect, not a sourcing gap.** Every placed Hist tree is scaled 0.77, and `worldgen/mine_mounts.py` dropped every reference whose scale was not 1.0, so the tree never entered the containment test. The miner now admits scaled parents and tests the child at the parent's unscaled size (round 3, lane J): `argonianlanterns03` measures `containedShare` 1.0 (n 3) and is classed `wall`. No mount pair is emitted, by the rule rather than by a defect: the three lanterns hang at three different points on the tree (offset spread 8.4 m against the 0.3 m single-offset gate) | 2026-09-23 |
+| G10 | A **plain road-sign board** (no Skyrim town lettering) to hang on vanilla `roadsignpost` at Black Marsh junctions | 16k kits lane 2026-09-26 | **Hanas Blank Roadsigns - Resource** (Hanaisse, Nexus skyrim 33392, v1.0, file 1000017846, archive `Hanas Blank Roadsigns-33392-1-0.7z` sha256 `52858bd11e775a30b2468f38d17269dde77801a385fb7d263f1efd0213582f84`; licence: "This is a resource. Use it freely in your mods and please give credit."). It is the origin of BM&V's six blank boards `roadsign{small,medium,large}01{l,r}` (same names; they UV its `textures/hana/signs/*`, which BM&V's Data2.rar lacks, so the build had substituted lettered boards). Landed in the vault at `mod-sources/hanas-blank-roadsigns-33392/extracted` (folders lower-cased), wired as the `bmv` pool's texture sibling in `build_kit.pool_sources`, and the six boards published in `works-v1`. Nexus search 2026-09-26 (v2 GraphQL, name WILDCARD, skyrim + skyrimspecialedition: road sign 49+21, signpost 6+2, sign post 23+3, blank sign 1+2, roadsign 7+6, signs 168+73; full result list `tooling/.reports/16k/fix2-kits-r2-nexus-signs.json`): the other blank candidates were Liam's Blank Signs Texture Resource (skyrim 93613, textures only) and Unreadable Roadsigns (SSE 134708, a retexture of the lettered vanilla boards); no Black-Marsh-lettered board exists. Open: no mined pair hangs the boards on `roadsignpost` (BM&V's plugin placements are the evidence to mine) | DONE (boards); mount pair OPEN | 2026-09-26 |
+| G11 | **Fishing nets, cook pots and baskets** for the Argonian landing and hut yards | 16k kits lane 2026-09-26 | `shores:shoresofskyrim/fishnet01` (Shores of Skyrim, already a credited pool); vanilla `clutter/woodfires/spitpotopen01`, `spitpotopenloose01`, `clutter/kitchen/castironpotmedium01`, `clutter/basket05`, `basket06`; KotM `argonia/clutter/saxhleelmetalpot01`, `basket01`, `basket02`, `basketcontainer` (credited pool). All in works-v1, built, compressed, published | SOURCED | 2026-09-26 |
+| G12 | A **small timber stable for a river outpost paddock** (Claywater, walk 3: the MW keep stone stable reads as a castle stable) | 16k walk-3 L4 2026-09-28 | KotM `argonia/blackwood/stable.nif` measured on its geometry: 9.31 × 6.81 × 10.69 m, 4,376 tris, a roofed deck 0.87 m above the pivot on eleven stilts reaching 7.6 m below it, open on all sides, no stalls, no ramp; KotM's own STATs for it are `MurkmirePlatformBase01`/`01B` (0x08157337, 0x08040a9f), placed 6 times at scale 1.42–1.56 as the platform under Lilmoth's stable walls (`redruin1`), 4 exterior (ArgoniaWorld 0,-48 / 0,-47 / -3,-47 / -2,-46) and 2 inside `LilmothStablesInt` / `LilmothApothecary01`. It is a stilt platform, not a stable. Render: `tooling/.reports/16k/walk3/l4-renders/kotm__argonia_blackwood_stable.png` | **OPEN — no small stable found.** Reason: the one KotM mesh named stable is a platform; the vault's other stable pieces are the MW keep set (keep class, R1) and vanilla city stables (`wrhousestables01`, town). A mod-scene search for a small timber stable/horse shelter is the next step (planner call on the brief) | 2026-09-28 |
+| G13 | **Hanging exterior lanterns** for porches and eaves (Claywater, walk 3: candle sconces outside) | 16k walk-3 L4 2026-09-28 | KotM `argonia/clutter/townlantern04.nif` (STAT `ALPAClutterLantern01` 0x080cc2ad): a 0.53 × 0.51 × 0.75 m paper lantern (`yumihari_chouchin`), placed 19 times, all inside (SeekhatSmithyHut, RootWhisperHouseCarpenter, KeebaHouseElder, LilmothBakeryInt …) standing on tables and shelves, never hung, never outside. KotM `saxhleellantern01.nif` / `02.nif`: no STAT in the plugin (never placed) and their textures (`textures/argonia/curse of immortals/denglong03*.dds`, `tex_0003_0*.dds`, `textures/akavir/chinaland/tex_0999_0*.dds`) are absent from KotM's archive and the whole vault; they come from **Akavir. The curse of the immortals** (Nexus SSE 107667, stalker992; main file 628850, 6.8 GB). What KotM does hang outside: vanilla `candlelanternwithcandle01` (11 exterior refs) and xanmeer sconces; Mud Mother hangs `argonianlanterns03` from its Hist tree (3 refs) and `argonianlanterns04` from `archwaysticks` (1), both already in settlement-mud-v1 with mined pairs | **OPEN — not downloaded.** Reason: R1 gives townlantern04 (interior-only) and the saxhleel lanterns (unplaced) no exterior licence, so 6.8 GB for two lanterns no rule lets us place outside waits on the planner; permissions of 107667 unchecked | 2026-09-28 |
+| G14 | A **bird perch** (a standing post-and-crossbar or roost a tame bird or a fishing bird sits on) for a water village's landing (Riverwalk; dressing.md § 4) | 16k walk-9 dressing lane 2026-10-01 | none. Vault: `manifest-skyrim-meshes.txt` holds only birds and bird effects (`critters/birds/smallbird01`, `effects/fxbirdoprey02`, `fxbirdoprey02nonest`, `fxbirdflockfleepine`, `actors/character/fxnocturnalbird*`) and the dragon perch effect `effects/trailerfx/tfxdragonperch`; no mod in `mod-sources/` (directory listing, 42 pools) carries a perch, roost or cage folder. Nexus SSE (v2 GraphQL name search with the owner's key, 2026-10-01; raw in tooling/.reports/16k/walk9/dressing-nexus-perch.txt): "bird perch", "birdcage", "bird cage", "birdhouse", "aviary", "dovecote", "hawk perch" 0 hits; "perch" 7 (bar counters, inns, player homes, Paarthurnax's nest); "roost" 15 and "pigeon" 26 (creature mods: Mihail's roosters and pigeons, scripted actors, not statics); "falconry" 2 (follower creature mods 51875, 75107); "cage" 25 (prison and hanging cages, JS Common Cages 68236: a hanging cage is a gibbet, not a perch) | NO SOURCE FOUND (exists nowhere; dropped from the place-build dressing table § 4, walk-9 follow-up): Riverwalk's landing carries its fish rack and nets; a perch returns only if a static is published | 2026-10-01 |
+| G15 | **Yard dressing a road station and a Hist village lacked** (dressing.md § 4): chopping block, beehive, outdoor table, graves, market stall, an outdoor hide rack | 16k walk-9 dressing lane 2026-10-01 | works-v1 gained `vanilla:clutter/chopping block/choppingblock01`, `vanilla:clutter/exteriorwoodenfurniture/exteriorwoodentable01`, `vanilla:clutter/burialcairn/burialcairn02`, `vanilla:architecture/riften/rtmarketstall01`, `vanilla:furniture/tanningrackmarker` (Skyrim.esm, vanilla) and `kotm:argonia/clutter/beehive` (King of the Murkmire, already credited in README § Credits; `meshes/argonia/clutter/beehive.nif` sha256 c4c3b4e63014520699e392bfaabf07c3ed2246fc8fa3a3693f446b788c5741f7; its AE `_resourcepack` bark takes KotM's own LOD copy, works-v1 `textureAliasReasons`). Rejected: vanilla `beehive01` (burnable, flames in its NIF), `burialcairn01`/`03` (licensed keep, ruin and wild only), `largerainbarrel01`, `wrherbdryingrack01`, mudmother `sithisshrine` and `fishracksmall` (placed indoors only), `bmv:advertising_board` and htbm `farmhouseline` (placed by no plugin), htbm `orcawning01`/`orcawninghalf01` (pavilions, not awnings) | SOURCED for the six; rain butt, outdoor herb rack, notice board and washing line have no exterior-licensed piece (the notice board and line wait on a planner ruling on resource-only pieces under R1) | 2026-10-01 |
+| G16 | **Road furniture between places** (16k type 10, `road-dressing.md`): verge rocks a place can seat, cairns, burial cairns, an unlit pull-off fire ring, a milestone, a broken cart | 16k walk-9 type-10 lane 2026-10-01 | new kit `route-dressing-v1` (Skyrim.esm, vanilla, 26 pieces, full LOD chain, 2.7 MB published): `landscape/rocks/rock{s01-03,m01-04,l01,l02,l04}`, `rockpile{s01-03,m01,m02}`, `wetrocks/rock{m02,l01,pilem02}wet`, `cairns/rockcairn01-04`, `clutter/burialcairn/burialcairn01-03`, `clutter/woodfires/campfire01landoff`. The same rocks in `flora-province-v1` ship one LOD level, which a place cannot stand (`lod_tiers_can_meet`). Milestone: Skyrim.esm sets none beside its roads (`vanilla-roadside-dressing.json`, 54 km mined), no file in the vault manifest or the 46 `mod-sources` pools is one (name scan for mile, waystone, marker, obelisk, roadstone; KotM `xanmeer/exterior/obelisk.nif` is a xanmeer obelisk, not a road marker). Broken cart: `clutter/quest/dbbrokencart01.nif` and `clutter/helgen/burntrubblecart01.nif` are in the vault; not kitted, because the first stretch has stairs and plank crossings and carries no wheeled traffic | SOURCED for the road furniture; milestone NO SOURCE FOUND and not a vanilla road practice (nothing to design round); broken cart held, kitted by the first type-10 stretch with cart traffic | 2026-10-01 |
+| G17 | **Rain barrel, outdoor herb rack, awning** (dressing.md § 4, G15's open three) | 16k walk-9 dressing follow-up 2026-10-01 | Awning: htbm `orcawning01` added to `settlement-stilt-v1` (Here There Be Monsters, already credited; 20.2 MB published), placed at scale 0.65 as HTBM places it. Rain barrel: `largerainbarrel01` measures 4.05 x 4.42 x 5.46 m (a cistern); the vanilla mesh listing holds no other rain barrel (`barrel01`, `barrel02` closed; `bucket01`, `horsetrough01`), so `barrel01` stands under the eave. Open barrels found in the pool: KotM `loliceptresource/barrel/rugopenbarrel` (1.39 m) and `miscbarrelopen01` (1.72 m), in `interior-kotm-v1`, placed by no plugin, no sink row. Herb rack: `wrherbdryingrack01` hangs by four corner chains from interior lofts and roofs only (mounts miner, 7 refs), no exterior host in the pool | SOURCED for the awning; rain barrel served by `barrel01`; herb rack NO EXTERIOR HOST (dropped) | 2026-10-01 |
+| G18 | **Bloomery pieces for a bog-iron works** (type 7, `works-v1`) | 16k walk-9 Bog Iron Workings lane 2026-10-01 | `vanilla:furniture/smeltermarker` (Skyrim - Meshes.bsa; Skyrim.esm `CraftingSmelterMarker1`, 25 refs in exterior towns and wild) and King of the Murkmire's bundled `oaristys/forge` set (`coalpile`, `orestack_iron`, `orebucket_iron`, `ingotsiron01`; archive sha256 `7bf18067157130d47058ce20f0bc15759f5df71b6f81eb05079b8dba720a5ff2`, credited in the README KotM line) | FOUND, kitted | 2026-10-01 |
+| G19 | A **marker buoy** (net float, cork float or lobster-pot buoy) riding on the sea over a pearl-diving bed, and a **tally book** for the Pearl Lots divers (type 7, `watercraft-v1`, `works-v1`) | 16k walk-11 Pearl Lots kit lane 2026-10-04 | Buoy: there is none. In the vault, `skyrim-source/manifest-skyrim-meshes.txt` (23,424 rows, `clutter/*` walked) has no buoy or float. KotM `argonia/{clutter,tradeship,jboydswhaleparts}`, Shores of Skyrim, dk-boats, cyrodiil-ship-boat and of-ships-and-boats hold no float either (tooling/.reports/find/pearl-lots-sourcing.md). On Nexus, the SSE name search over the v2 API covered buoy, bobber, fishing float, net float, lobster, fishing net, fishing, fisherman, harbor, harbour, nautical, pirate, docks, coastal, seaside, fishing village, harbor clutter, dock clutter and modders resource. It found Buoyant Armiger armour, Veiltail Lobsterfish creatures, CS' Fishing Nets (96720, a script framework), Thinner Fishing Net (109718, a retexture), Skaal Fishing Camp (14450) and Riften Fishing Shack (4046, player homes); none is a float mesh resource, and Creation Club Fishing is excluded (line 207). Stand-in: vanilla `clutter/barrel01` published under its own id `vanilla:clutter/barrel01-keg-buoy` (`variantOf`, the same mesh untouched, no collider), an upright keg riding 40 % above the surface (assetPlacement water row). Book: vanilla `clutter/books/book01/character assets/journalbasic` (0.26 x 0.36 x 0.03 m, a plain leather journal lying flat) joins works-v1 | Buoy: NO SOURCE (stand-in kitted); book: FOUND, kitted | 2026-10-04 |
+
+G3 needed no purchase either: BM&V is already a registered pool and already
+credited, and its README credit line was extended in the same change to name the
+notice board. The pick was made from a throwaway probe kit,
+`pipeline/config/kits/probe-notice.json`, built over all eight candidates;
+`works-v1` was rebuilt (86 assets, 37.0 MB) and `vet_kit` reports nothing
+against the board (pivot 0.04 m above base, so it stands where it is placed).
+
+Neither of G1/G2 needed a Nexus purchase: both mods were already in the vault, both
+already have `Pool` rows, and both are credited in the root README (Tropical
+Skyrim SSE-classic 33017, Soolie; Here There Be Monsters — Sign of Cipactli SSE
+35933, Araanim, v2.92 — archive sha256s recorded with those mods' original
+rows above and in `mod-sources/SOURCES.json`). The credit lines were extended in
+the same change to name the new files.
+
+**How the picks were made.** A throwaway probe kit,
+`pipeline/config/kits/probe-gapfill.json`, was built with every candidate from
+both gaps so each was measured as actual geometry — bounding box, triangle
+count, alpha mode — rather than judged on its filename. The rejections above are
+all measurement or texture-set findings, not guesses. Culture was decided by
+reading each NIF's own texture references: a mesh that asks for
+`architecture/xanmeer/…` belongs to the Argonian set; one that asks for
+`the call of cthulhu/…` is a borrowed piece from a different mod in the same
+author's series and does not read Argonian at all. Delete `probe-gapfill.json`
+if a later pass finds it unhelpful; it is documentation of the choice, not a
+shipping kit.
+
+**How a blueprint references them.** By registry `assetRef` id, exactly as
+written in the kit configs:
+
+| Purpose | `assetRef` | Kit | Placement note |
+|---|---|---|---|
+| Hist trunk column | `tropical:landscape/trees/anvilgianttrunk` | `settlement-root-v1` | uniform scale ≈ 0.35–0.5 for the 3–8 m × 15–30 m brief (0.45 → 4.7 m across × 25 m tall); origin at the base, +Z up, so it sits on the ground plane with no offset |
+| Stout/buttressed trunk | `tropical:landscape/trees/anvil_palm_trunk` | `settlement-root-v1` | ≈ 0.3 for a short heavy bole (5.4 m × 10 m) |
+| Root flare at a trunk base | `tropical:landscape/trees/anvil_root01` | `settlement-root-v1` | same scale as the trunk it skirts |
+| Shrine focal idol | `htbm:here there be monsters - curse of cipactli/architecture/ruins/xanmeer/totem02` | `underwater-v1` | scale 1; 2.07 m tall reads at swimming eye height |
+| Altar block / secondary idol | `htbm:…/xanmeer/totem03` | `underwater-v1` | scale 1 |
+| Inscribed marker stone | `htbm:…/xanmeer/runicstone` | `underwater-v1` | scale 1 |
+| Serpent-sigil plaque | `htbm:…/xanmeer/serpentsigilstatue` | `underwater-v1` | flat piece; set against a wall or slab, not free-standing |
+
+The full snap and scaling rules live where a kit agent will look for them: the
+`trunkColumns` entry in `settlement-root-v1.json`'s `snapLogic`, and the
+`underwater-v1.json` description.
+
+### Region classes of architecture (2026-10-03)
+
+Architecture rows of the asset registry carry `regionClasses` from the rules
+in `world/sources/assets/architecture-regions.json` (460 rows tagged: Argonian
+sets, the Cipactli set, the KotM-placed MW Imperial keep set and Imperial
+sets). The groups below are `[]`, each OPEN with its reason:
+
+| Group | Rows | Status and reason |
+|---|---|---|
+| `skyrim-and-other-provinces` (nordic, reach, dwemer, falmer, breton, redguard, bosmer, dunmer) | 3,993 | OPEN: their plugins place them in Skyrim, Valenwood, Morrowind or High Rock worldspaces; no dossier puts that culture's building in a Black Marsh land. Next step: a per-piece cell miner over KotM's ArgoniaWorld and BM&V's BlackMarsh worldspaces, mapping each placed reference to a region class |
+| `no-culture` | 1,894 | OPEN: the taxonomy names no culture for the set (largest: BM&V `jets`, `seaview`, `stroti/*`; vanilla farmhouse, Sovngarde) and no Black Marsh placement is recorded for it. Same next step |
+
+## Later rows
+
+### 2026-09-05 — phitt Aldredanyia marsh house (BM&V), stream A1
+
+**Outcome: CLOSED, no download needed.** The kit-assembly mine
+([kit-assemblies-evidence.md](kit-assemblies-evidence.md)) found the strongest
+authored assembly in the whole mod set on a house form no kit of ours carried:
+`house03` with `overhang05` and four `window` pieces, all placed at the same
+offsets 27 times. Checked against the registry first, per the asset-aware rule:
+all three meshes are already in the `bmv` pool
+(`bmv:architecture/phitt/aldredanyia/{house03,overhang05,window}`), from Black
+Marsh and Valenwood, which is already downloaded, hashed and credited in the
+root README. Nothing to source.
+
+Kit chosen by reading the kit descriptions against the pieces' own culture:
+`hlaalu-domestic` (the Dunmer/Imperial-fringe domestic tier under the Imperial
+keep masonry). `settlement-imperial-v1` was rejected — it is the vanilla
+farmhouse and Solitude dock layer, whereas Phitt's Aldredanyia set is neither. The
+three pieces are added as single assets and as
+`composite:phitt/marsh-house-03`; the kit's `snapLogic.assemblies` records that
+they are never composited with the Hlaalu or Hammerfell pieces, which are
+separate authored systems.
+
+**Left open:** `house03` has no door piece in the mine, so the composite still
+reads as a shell with no doorway. Its entrance is not a repeated authored
+placement anywhere in Black Marsh, so there is nothing to measure; a door will
+have to be chosen by design when the form is first placed.
+
+### 2026-09-07 — road-spanning gates, walls and fences (`enclosure-v1`)
+
+**Owner ruling 2026-09-07:** *"I don't believe there is only one road-spanning
+gate available to us across vanilla + Tropical Skyrim + all the mods we have.
+Just because something isn't in the built kits doesn't mean it isn't available.
+Source and resolve."* He was right. Nothing was downloaded — every piece below
+was already in the vault and already credited; what was missing was that anyone
+had **measured** it.
+
+**Method.** Directory reads of every architecture tree in the registries (never
+a keyword search of mesh files), then two throwaway probe kits
+(`probe-enclosure`, `probe-enclosure2`, 119 pieces) built with
+`pipeline.build_kit`, then an aperture measurement on the built GLBs: for each
+piece, horizontal rays are fired through it along its short axis at 4 cm
+lateral steps and at 0.3 / 1.0 / 1.8 / 2.2 / 3.0 / 4.0 m above its own ground
+plane, and the widest run of rays that passes clean is its **clear span at that
+height**. A gate that only clears its width at ankle height is a shut gate, and
+the numbers say so. Pass marks are module 97 C3: road/spine 4.3 m, track 2.5 m,
+footpath 1.2 m, nothing under 1.3 m for two characters abreast.
+
+#### Candidates, measured
+
+Clear span is the width held from 0.3 m to 2.2 m unless noted.
+
+| Piece | Pool | Clear span | Height | Class | Verdict |
+|---|---|---|---|---|---|
+| `newcastle/wall/1024/1024wallgate01` | bmv | **5.52 m** | 20.03 m | **spine** | **chosen** — the only modular curtain-wall gate in the vault that clears a 4.3 m road |
+| `newcastle/wall/1024/1024arch01` | bmv | **8.96 m** | 17.30 m | **spine** | **chosen** — free-standing triumphal arch, spans a way with no wall |
+| `architecture/whiterun/wrcitywalls/wrwallmaingate01` | vanilla | 15.23 m | 26.09 m | spine | rejected — a unique Whiterun city façade 10.8 × 22.7 m, not a module; its "opening" is the courtyard mouth |
+| `architecture/windhelm/whgate3` | vanilla | 8.09 m | 13.64 m | spine | rejected on culture — Windhelm's grey Nordic masonry, and Tropical ships no retexture for it |
+| `architecture/riften/rtnorthgate01` | vanilla | 4.60 m | 18.19 m | spine | rejected — unique Riften piece 13 × 15 m with its own bridge geometry; nothing joins it |
+| `hlaalu/hammerfell/misc walls/stonewallgatearc001` | hlaalu | 4.53 m | 8.00 m | **spine** | already kitted in `hlaalu-domestic` — the Dunmer/Hammerfell arch, and it passes the spine |
+| `newcastle/wall/1024/1024wallgate02` | bmv | 2.28 m | 20.03 m | track | **chosen** as the postern in the same wall |
+| `redoran/custom/redoranwallgate` | bmv | 3.52 m | 10.11 m | track | **chosen** — the Dunmer compound gate |
+| `ruins/legion/redruingate` | htbm | 3.92 m | 14.30 m | track | **chosen** — the ancient/ruined gate |
+| `dungeons/imperial/exterior/impextwallgate01` (and the Helgen twin) | vanilla | 4.05 m | 8.12 m | track | rejected on culture — vanilla Nordic fort masonry; module 90 §74.1a-bis makes `mwkeep` the province's Imperial language |
+| `mwkeep/exterior/walls/mwimparchwallgate01` | mwkeep | 3.20 m | 13.06 m | track | already kitted in `imperial-keep`; **track class, not a road gate** — this is why the province looked gateless |
+| `hlaalu/hammerfell/trgmlcwallenterb` | hlaalu | 3.16 m | 3.73 m | track | already kitted in `hlaalu-domestic` |
+| `ruins/legion/0mjy_aztecportal` | htbm | 3.13 m | 4.34 m | track | **chosen** — but 0.11 m thick: a frame set into a mass, never free-standing |
+| `ayleidruins/exterior/ararch01 / 02 / 03` | ayleidkit | 2.96 m | 20.79 / 19.29 / 15.06 m | track | **chosen** — a graded set of free-standing arches for a processional way |
+| `architecture/solitude/spatiowallentrance` | vanilla | 4.08 m | 11.39 m | track | rejected — a Solitude-specific wall entrance that only meets Solitude's own curved wall |
+| `hlaalu/winterhold/whcitygate02tgc` | hlaalu | 3.72 m | 21.30 m | track | rejected — one 44 m unique piece, gate and wall fused; nothing modular to run off it |
+| `architecture/farmhouse/walkway/walkwaycwallgate01` | vanilla | 6.69 m | 10.13 m | spine | kept where it is (`works-v1`, read as a sluice gate); see "what to re-place" below |
+| `villages/argonian/stonewallarch01` | htbm | 1.72 m | 5.39 m | footpath | **chosen** — the only enclosure piece authored in an Argonian idiom |
+| `gv_meshes/argoniannest/archwaysticks` | mudmother | 1.57 m | 2.73 m | footpath | already kitted in `settlement-mud-v1` |
+| `clutter/stockade/stockadewallwalkway01` | vanilla | 1.33 m | 2.68 m | footpath | **chosen** as a sally port under the palisade walk |
+| `wrfarmfence/wrfencestrgate01` | vanilla | 1.41 m (1.13 m at waist) | 1.51 m | footpath | **chosen** — the field gate, not a road gate |
+| `clutter/stockade/stockadegate01` | vanilla | 2.28 m at 0.3 m, **0.20 m at 1.0–2.6 m** | 4.23 m | none | **chosen only as a SHUT gate** — the leaf is modelled closed; a player cannot walk through it |
+| `newcastle/wall/512/512wallgate01` | bmv | **0.24 m** | 20.03 m | none | rejected on geometry — same defect, leaf modelled shut |
+| `dungeons/imperial/portculliskit/portimpgate01` | vanilla | 0.28 m | 5.41 m | none | rejected — the portcullis grate itself, an animated part with no frame |
+| `architecture/markarth/mrkfrontwallintgate01` | vanilla | 0.64 m | 9.83 m | none | rejected on geometry — the arch is filled by its own gate mass |
+| `architecture/riften/rtmaingate01`, `walls/rtsouthgate01` | vanilla | 0.00 m | — | none | rejected — door leaf and wall block, not openings |
+| `architecture/solitude/smaingate` | vanilla | 2.60 m at 1.0 m, 0.08 m above | 29.68 m | none | rejected on geometry — the lintel drops below head height across the span |
+| `phitt/stronghold/entrance`, `fort00/01` | bmv | 1.81 m / ≤0.83 m | — | footpath / none | rejected as gates — the stronghold pieces are building shells, not wall runs |
+| `largecastle/1sov castlegatehouse` | bmv | 1.76 m | 7.03 m | footpath | rejected — the passage closes to 0 m above 2.2 m; a low gatehouse tunnel |
+| `xanmeer/exterior/xanmeer_exterior_wall`, `wallstraight` (htbm) | xanmeer, htbm | 0.00 m | — | — | wall modules with no gate anywhere in either set — recorded as a **standing gap**: the Xanmeer tilesets have no authored gate, and one may not be faked from two wall halves |
+
+#### Wall, palisade and fence runs chosen
+
+| Family | Run pieces | Module | Co-placement evidence |
+|---|---|---|---|
+| newcastle curtain wall (imperial/civic) | `1024wall01/02`, corners 2/3/4-way, `1024wallround01`, towers `01a/01b`, `1024wallstair01`, `512wall01a/02`, `512pillar01`, `256wall01/02`, `256wallendcap`, ledge run, `ramp01`, `1024wallslope256`, guardhouse + its door | 14.57 / 7.28 / 3.64 m, 20.03 m tall | none mined (the set's cells are outside the placement mine) — module taken from the measured geometry |
+| Whiterun farm fence (imperial rural) | `wrfencebasestr01`, `wrfencestr01`, `wrfencebaseend01`, `wrfencebasecor01`, `wrfencecor01`, `wrfencebase4way01`, `wrfence4way01`, `wrfencebasesupport01` | footing chains at 3.64 m; rail sits 1.17 m above the footing | vanilla:t0045 (19), t0460/t0461 (6 each), t0287 (8) — the one composite in the kit |
+| Redoran compound (dunmer) | `redoranwall`, `redoranwallcorner`, `redoranwalldivider` | 3.64 m, 8.88 m tall; corner 5.46 m | none mined; measured |
+| Argonian village wall | `stonewallcurve01/02`, `stonewallpillar01` | 4.44 / 5.13 m curved, 2.49 m tall | none mined; measured |
+| stockade palisade (neutral/frontier) | `stockadewallstraight01`, `wallcornerin01`, `wallcornerout01`, `stockadetower01`, `stockadebarricade01`, `stockadepike01` | 6.01 m, 4.19 m tall | vanilla:t0134/t0288 chain the scaffold, not the wall; the wall module is measured |
+
+#### What was built
+
+`enclosure-v1` (55 assets, one composite), tropicalised, with the same
+`clutter/stockade` texture aliases `works-v1` uses. It is deliberately a
+**cross-culture vocabulary kit with per-family snap rules** rather than six
+additions to six settlement kits: enclosure is rare and cultural (module 97
+C10), it is placed by the route/terminal side of the compiler rather than by a
+district, and keeping the six families in one config with an explicit
+never-mix rule is the only place a future agent will look for "what gate goes
+on this way". No family is mixed with another; the rule is written into
+`snapLogic`.
+
+#### Two pieces held out of the kit (2026-09-07)
+
+`bmv:architecture/newcastle/buildings/guardhouse` and its loose
+`newcastle/door/guardhousedoor` were built into the first cut and are now
+removed. The guardhouse is a **building** with a matched interior
+(`guardhouseint`), not an enclosure piece; the interiors probe derives no
+doorway from its shell (the ring at 1.1 m matches the wall all the way round),
+and the door is a separate mesh authored at its own origin, dead centre of the
+guardhouse's plan, so nothing in the geometry says where its author hung it.
+The placement mine holds no newcastle cells, so there is no template to read it
+off either. Composing the two would be guessing, which the kit rule forbids.
+A gatehouse for the newcastle wall is therefore a **sourcing gap**: either mine
+the mod's own cells for the door offset, or take a gatehouse from a set that
+ships one whole.
+
+**Plugin-link decision (2026-09-08): solid mass.** The exhaustive
+`worldgen.mine_door_links` output includes both `Black Marsh.esm` and `Black
+Marsh North.esp` (and records their archive hashes), but its `shells` table has
+no `01randomhouse`, `newcastle/buildings/guardhouse`, or
+`newcastle/door/guardhousedoor` row. In other words, neither shipped plugin
+ever supplies the exterior-door `XTEL` link needed to locate that loose leaf
+on this shell. The similarly named `guardhouseint` mesh is evidence that an
+interior model exists, not evidence of an enterable placed assembly. We keep
+the shell available only as a non-enterable building mass and keep both it and
+the loose door out of `enclosure-v1`; a future enterable use needs a new,
+source-backed door placement rather than a guessed composite.
+
+#### Blueprints re-placed onto the kit
+
+`place.dunmer-north.mazzatun` spanned BOTH its ways with
+`vanilla:architecture/farmhouse/walkway/walkwaycwallgate02`, the Nordic timber
+walkway gate — a farm sluice piece read as a city gate. Both are now
+**`bmv:architecture/redoran/custom/redoranwallgate`** (3.52 m clear at track
+class, 10.11 m to the parapet), which passes the 3 m haul road and the 2.5 m
+ridge track alike. Mazzatun is Xit-Xaht, an **Argonian** tribe, and the kit's
+Argonian family clears 1.72 m — a footpath, not the cart ways these gates
+carry — so the Argonian idiom has no gate for this job anywhere in the vault.
+That stays a standing gap. The Redoran reading is the record's own: the
+Xit-Xaht raid their Dunmer neighbours for labour, and the masonry across the
+road is taken the same way the people are. Reasoning and the old→new pieces are
+in the Mazzatun design record §13.
+
+## 2026-09-09 — flora kit: understory breadth (CLOSED, kit rebuilt)
+
+Decision 0048 raised every region class to at least six distinct understory
+species, but could not give nine of fourteen classes a species of their *own*.
+The reason is not a shortage of meshes; it is that **the built flora kit is
+full**. `flora-province-v1.glb` ships 81 assets and the palettes already place
+78 of them; the three spare are trees.
+
+The held stock exists and is named in the registries:
+`bmv:landscape/trees/reedlarge1 / reedmed1 / reedsmall1 / reedsmall2` (four
+unused reed sizes against the single `vurt_reeds` doing all the work),
+`bmv:landscape/plants/espfernbraken01–06st` and `espfernbrakencluster01–06`
+(twelve bracken variants against one `braken` in use),
+`bmv:landscape/plants/bigshrub(colorful)`, `bigshrub-b(colorful)` and
+`bigshrub-c(colorful)` (three colour variants against the one `bigshrub2` in use),
+`bmv:landscape/trees/gkblillipad` (a second lilypad),
+`depths:landscape/grass/tbp_seaweed01/02/06`,
+`depths:landscape/grass/waterkelptall02/03`,
+`vanilla:landscape/grass/watercoralgrass01`,
+`vanilla:landscape/plants/kelpshortstatic01`,
+`vanilla:plants/floraswampfungalpod01/02` and `floramushroom01–06`.
+
+**Why it is open rather than done in the same session.** Adding any of them is
+not a data edit: each needs a row in `pipeline/config/kits/flora-province-v1.json`
+with a reviewed `placement` object, then `python3 -m pipeline.build_kit --kit
+flora-province-v1` (Wine + Blender + PyNifly) and `python3 -m pipeline.vet_kit`,
+then `compile_scatter`. Several of the candidates have no measured
+`sizeM` in the registry at all (`reedlarge1` records 0,0,0), so the placement
+policies cannot be written from the record as it stands. They need the kit
+build's own measurement, which is the same run. That is a pipeline job to
+sequence with the scatter rollout, not a deferral of judgement.
+
+`worldgen/test_vegetation_ladder.py::test_palette_species_are_all_in_the_shipped_flora_kit`
+fails if a palette reaches for a species the kit does not carry, so this cannot
+be half-done by accident.
+
+### Closed the same day: the build supplied the measurements
+
+The circularity above resolved by building. The kit build is what measures a
+mesh, so the policies could be written straight off its output. The flora kit
+was rebuilt through `pipeline.build_kit` (Wine + Blender + PyNifly, ~10 min)
+from **81 to 108 assets**. Every measurement quoted below comes from that run
+rather than from a registry guess.
+
+Twenty-seven meshes went in and eight were rejected, on the geometry:
+
+* **Reeds.** `reedlarge1` (8.27 × 7.09 × 2.81 m, 12 tris), `reedmed1`
+  (6.37 × 5.97 × 2.81 m, 12), `reedsmall1` (1.54 × 1.30 × 2.40 m, 4),
+  `reedsmall2` (1.13 × 1.30 × 2.40 m, 4). Wide, near-free card beds. The
+  fringe marsh, the river corridor and the mangrove now each have their own,
+  so `vurt_reeds` is no longer every reed bed in Black Marsh.
+* **Bracken, all twelve.** Six single stands (0.68–1.88 m, 6–240 tris) and
+  six modelled clusters (2.0–3.3 m wide, 336–1424 tris). Taken on
+  the texture, not the name: the diffuse averages hue 101° and 94°, saturation
+  0.35–0.40, value 0.54 across its opaque texels. Those are live green
+  fronds, not the rust-brown of dead temperate bracken.
+* **Shrub colour variants** `bigshrub-b(colorful)` and `-c(colorful)`.
+  Identical 5.22 × 5.35 × 3.19 m geometry to the shrub in use, 912 tris.
+  They give variety of hue but not of silhouette. They are recorded as such.
+* **Aquatics.** `gkblillipad` (0.938 × 0.814 × 2.334 m, 6 tris, origin at the
+  top of the mesh: pads at the water plane with the stems trailing 2.334 m
+  below it. That is measured identical to the `gkblillipad2` already in use,
+  down to the origin offset. The difference is the pad texture, lillipads2
+  against lillipads3, so it is recorded as a hue variant and placed in the
+  same lilypad role),
+  `tbp_seaweed06` and `06var1` (7.39 × 6.74 × 4.21 m), `waterkelptall02/03`
+  (1.52 × 1.43 × 3.98 m), `kelpshortstatic01` (0.73 × 0.79 × 1.36 m),
+  `watercoralgrass01` (1.42 × 1.17 × 1.26 m).
+* **Fungi.** `floraswampfungalpod01` (1.37 × 1.07 × 0.43 m) and `02`
+  (0.51 × 0.65 × 0.29 m), on the marsh and swamp floor.
+
+**Rejected on measurement.** `tbp_seaweed01` (5.2 × 5.2 × **29.26 m**) and
+`tbp_seaweed02` (13.0 × 12.5 × **42.64 m**) are giant-kelp columns taller than
+our canopy, standing in water that the province does not carry.
+`floramushroom01–06` measure 2.6 × 2.0 × 0.55 m: flat sheets at 2.2–2.8 k tris
+apiece, drawing from `textures/architecture/farmhouse/`. That is a
+surface-applied shelf fungus rather than a free-standing floor plant, so it
+would lie on the ground like a decal.
+
+**Placement policy.** `flora-province-v1` carries the kit-level `direct`
+policy in `pipeline/config/placement-policies.json`. Every one of the 27 is a
+ground-contact plant that the policy already describes, so none needed a
+per-asset override. The manifest's `trunkSolids.fitter` provenance marker is
+intact and the round-11 collider gate is green.
+
+Credits: all three pools (`bmv`, `depths`, `vanilla`) were already credited in
+the root README and `worldgen.check_credits` passes, so this change needed no
+new credit row.
+
+
+## 2026-09-09 — the Argonian cart gate: searched, measured, still no candidate (gap plan B8)
+
+B8 asked for the step the earlier pass could not take: an authenticated search
+of the Nexus index for an Argonian / Black Marsh / marsh-culture gate whose
+**measured** opening clears the 3.5 m cart width, so that Mazzatun and Lilmoth
+need not keep wearing Redoran and Imperial masonry.
+
+**The search actually run.** Nexus's public REST API has no text search, so the
+index was queried through the site's own GraphQL endpoint
+(`api-router.nexusmods.com/graphql`, `mods(filter:…)`): 45 name-wildcard
+queries and 12 description `MATCHES` queries, unfiltered by game and then per
+game across Skyrim SE, Skyrim classic, Oblivion and Morrowind. Terms covered
+the culture (argonian, saxhleel, kothringi, naga, black marsh, hist, lilmoth,
+mazzatun), the material vocabulary (reed, thatch, wicker, bamboo, stilt,
+mangrove, palisade, shanty, primitive) and the Xanmeer/Mesoamerican register
+(xanmeer, mayan, aztec, mesoamerican, tribal village, jungle resource). Mod
+pages that looked plausible were pulled with the owner's premium key
+(`api.nexusmods.com/v1/games/<game>/mods/<id>.json`) and read for their own
+contents list rather than their title.
+
+**One genuinely new lead, downloaded and measured — and it fails on geometry.**
+
+| Source | Nexus | sha256 (first 16) | Measured | Verdict |
+|---|---|---|---|---|
+| Argonian Dungeons — Tileset (Reekus), "free to use in ANY mod for ANY purpose" | Oblivion 52204 v1.1, file 1000032391 | `8f333b5c037fe791` | see below | **rejected on scale, not registered** |
+
+This is the only Argonian-idiom architecture set on Nexus that we did not
+already hold, and it advertises "3 entrances, 7 walls". PyNifly cannot read
+Oblivion NIFs (`gameSkeletons['']` KeyError), so the meshes were parsed with
+pyffi and measured with the same aperture method as the 2026-09-07 pass —
+rays along the short axis at 4 cm steps, at 0.3 / 1.0 / 1.8 / 2.2 / 3.0 /
+4.0 m above the piece's own ground plane, Bethesda units × 0.0142875:
+
+| Mesh | Bounding box (m) | Widest clear span |
+|---|---|---|
+| `ArgDungeonEntrance` | 1.08 × 0.71 × **0.55** | 0.04 m at 0.3 m, nothing above |
+| `ArgDungeonEntrance02` | 0.82 × 1.11 × **0.92** | 0.44 m at 0.3 m, nothing above |
+| `ArgDungeonEntrance02a` | 0.82 × 0.65 × **0.92** | 0.04 m at 0.3 m, nothing above |
+| `Argonian_Canopy` | 8.11 × 8.95 × 13.71 | 1.12 m |
+| `ArgDungeonInt_Hallway` (scale check) | 7.53 × 3.96 × **2.14** | 0.96 m at 1.0 m |
+| `ArgDungeonInt_Wall` (scale check) | 1.93 × 0.26 × **1.78** | — |
+
+The set is authored **sub-scale and internally inconsistent**: a doorway 0.55 m
+tall, a corridor wall shorter than a player, next to an 13.7 m canopy. Its
+author expected each reference to carry its own scale multiplier in the CS. A
+gate only becomes a gate here by picking a number — which is deciding on the
+label, not the geometry, and is exactly what the 2026-09-04 ruling forbids. The
+archive is not registered and no credit line was added, because nothing from it
+is relied upon.
+
+*Lead for a later pass, not a deferral of this one:* the same set carries 62
+Argonian decoration/clutter meshes (obelisks, murals, lanterns, crests,
+pedestals) under a blanket any-purpose licence. Whoever dresses Argonian
+interiors should re-open Oblivion 52204 — with the scale caveat above measured
+and in hand.
+
+**The vault re-checked for anything the last pass missed.** The HTBM Xanmeer
+pieces named `WallFree01/02` and `WallCorner01/02` had never been measured (the
+2026-09-07 table names only `wallstraight` and `xanmeer_exterior_wall`). They
+are solid: clear spans of 0.04–0.16 m at every height, i.e. surface relief on a
+closed mass. `dweclutterarchsmall01` (1.72 m) and `orcawningfull01` (1.52 m)
+confirm the earlier finding at footpath width. The Argonian family's best
+opening remains **`htbm:villages/argonian/stonewallarch01` at 1.72 m**.
+
+**Conclusion — OPEN, with the reason written down.** No Argonian, marsh,
+Hist-culture or Mesoamerican-flavoured gate with a measured ≥3.5 m opening
+exists in the vault, in the mods we hold, or on Nexus across four Elder Scrolls
+games. The Xanmeer tilesets ship no gate at all, and one may not be faked from
+two wall halves. **Mazzatun keeps `bmv:architecture/redoran/custom/redoranwallgate`
+(3.52 m clear; `place.dunmer-north.mazzatun.json:3274` and `:3925`) and Lilmoth
+keeps `mwkeep:…/exterior/walls/mwimparchwallgate01` (3.20 m;
+`place.mercantile-coast.lilmoth.json:759`)**, both for the reasons already in
+their design records — Xit-Xaht masonry taken off the Dunmer along with the
+labour, and Lilmoth's Imperial waterfront. This is a shortage of authored
+Argonian *enclosure* geometry in the modding scene, not an unfinished search.
+
+**A defect found alongside it.** Lilmoth's north gate is the province's Imperial
+front door and clears **3.20 m** — track class under module 97 C3, below the
+3.5 m cart width and below the 4.3 m spine mark. The two spine-class gates we
+own (`bmv:…/newcastle/wall/1024/1024wallgate01`, 5.52 m, and `1024arch01`,
+8.96 m) are the same imperial-civic newcastle vocabulary that `mwkeep` sits
+beside, so this is a swap inside one culture rather than a sourcing job.
+Whoever next owns `place.mercantile-coast.lilmoth.json` should decide it
+deliberately; it is not changed here because that file belongs to another agent.
+
+**What would close it, for the next agent.** A single authored piece is all
+that is needed: an Argonian/marsh gate module ≥3.5 m clear from 0.3 m to 2.2 m,
+with a wall run it was designed to meet. If one ever appears, the swap is two
+`enclosure-v1` rows plus the `gate` asset id in
+`place.dunmer-north.mazzatun.json` and `place.mercantile-coast.lilmoth.json`; both
+blueprints already span their ways with a single gate asset, so nothing else in
+the compile changes.
+
+## 2026-09-09 — the route span kit: CLOSED from the vault, no download needed
+
+**The gap.** `route-structures-v1` has a piece for climbing and none for
+spanning. Its only road-spanning asset is
+`vanilla:architecture/whiterun/wrterrain/wrbridgestone01`, measured at **4.216 m
+run × 4.047 m wide × 1.302 m thick, riseM 0.0**, and the compiler tiles it. From
+`world/sources/routes/route-structures.json`: **211 spanning structures,
+17,094 m**, shortest **23.6 m**, median **70.0 m**, longest **389.6 m**
+(`structure.road-gideon-blackwood-road.34`, ~93 slabs). There was no pier, no
+abutment, no parapet and no end cap anywhere in the kit.
+
+**Searched, in order: the vault first.** `vault-inventory.md`, then the
+per-pool registries by *directory* (never by keyword), then — the decisive
+step — the authors' own co-placement offsets in
+`world/sources/placement/kit-assemblies-mined.json`. Nothing needed to be
+downloaded; two authored span systems were already in the vault at 0% packaged.
+
+**What was found, measured (built manifest `[x, plan-y, vertical-z]`):**
+
+| Piece | Role | sizeM | Authored offset (mined) |
+|---|---|---|---|
+| `vanilla:dungeons/nordic/exterior/nortmpextplattowerbridge01` | deck module | 2.873 × **5.462** × 1.479 | self-chains at **5.46 m** (`vanilla:t0029`, n=25); 10.92 m skipping one (`t1941`) |
+| `…/nortmpextplattower01` | pier | 3.475 × 5.047 × **26.825**, pivot at deck level (21.848 m of shaft below) | sits **2.73 m** from a deck pivot = under a deck joint (`t0038`, n=22) |
+| `…/nortmpextplattower02` | wide pier | 3.475 × 7.283 × 26.810 | 3.19 m from a deck pivot (`t0531`, n=6) |
+| `…/nortmpextplattowerbridgeendcap01` | abutment | 2.788 × **0.963** × 1.366 | deck's own 2.79 m width |
+| `…/nortmpextplattowerbridgefree01` | unsupported deck | 3.475 × 3.731 × 3.593 | 2.27 m from a deck pivot (`t0150`, n=12) |
+| `…/nortmpextplatshaftbot01` | pier foot | 7.283 × 7.283 × 0.455 | — |
+| `…/nortmpextplatstairmid02` + `staircapl01`/`capr01` | approach flight | 7.283 × 10.791 × **7.306** (34.1°) | caps at ±3.64 m (`t0054`, n=19) |
+| `bmv:architecture/huts/exterior/bridge01` | legged timber span | 2.284 × **4.977** × 3.134, pivot on the ground | repeated at 9.70 m (`bmv-blackmarsh:t0076`, n=13) — **4.72 m more than the piece is long, so two separate spans, NOT a chain** |
+| `…/huts/exterior/steps02` | its approach | 2.284 × 4.968 × 3.156 | 9.71 m from a `bridge01` (`t0277`) |
+| `vanilla:landscape/bridges/bridgeshort01` / `bridgenarrow01` | whole bridge | 7.451 / 4.832 × **23.435** × 16.157 | none — never placed end to end |
+| `…/bridge01` / `bridgelong01` | whole bridge | 9.133 × **42.084** / **52.188** × 17.211 | none |
+| `vanilla:dungeons/nordic/exterior/dragonbridge01` | landmark | 73.321 × 15.050 × 42.839 | none |
+
+**Packaged as `route-spans-v1`** (`tooling/asset-pipeline/pipeline/config/kits/route-spans-v1.json`,
+policy `route-structure`): 18 assets, **30 s** build, 12.0 MB GLB;
+`measure_footprints` 7 s, `measure_connectors` 0.1 s → **20 co-placement
+connectors**, so the authors' spacing is now measured data the `abuts-snap`
+check can hold a chain to, not prose. Three families, nothing mixed:
+`nordic-viaduct` (deck + pier + foot + end cap + approach flight),
+`marsh-timber` (single legged span + its steps), `stone-arch` (five whole
+bridges, placed one per crossing, never tiled). All vanilla or BM&V — both
+already credited in root `README.md`, no new hash.
+
+**Rejected, with the measurement.** `mwkeep:…/keep/exterior/bridges/mwimparchbridge01`
+(7.28 × 4.78 × 13.06) and `02` (8.71 × 4.89 × 13.06) are already in
+`imperial-keep`, but no plugin in the mined sets places them, so there is no
+authored evidence either may be chained; their connectors are `bounds`-only.
+`vanilla:dungeons/imperial/exterior/impextbridge01` is 3.03 × 8.83 × 2.09 with
+`impextarchsupport01` (4.78 × 1.64 × 6.34) beside it, but again no mined
+end-to-end template — the HTBM retexture chains it at ~2 m and ~4 m inside a
+ruin, which is not a road crossing.
+
+**Still open (one line, evidenced).** The Nordic viaduct deck is **2.873 m**
+wide against wrbridgestone01's 4.047 m — a one-cart deck, below the 3.5 m cart
+width module 97 C3 sets for a spine. No wider modular deck with an authored
+pier exists in the vault. Whoever wires the family into
+`compile_route_structures.FAMILIES` should decide deliberately whether a trunk
+road's viaduct may be one cart wide, or whether the two-lane crossings drop to
+`stone-arch` singles at ≤52 m.
+
+### 2026-09-09 (2) — the span kit wired in, and what the measurements changed
+
+The inventory above closed the sourcing. This entry closes the wiring: the
+compiler now has a vocabulary for a pier, an abutment and a piece anchored to
+the deck line. The pieces are placed on the ground. Decision
+[0051](../../old-decisions/0051-route-span-systems.md) records the calls.
+
+**Two candidates the inventory recommended are rejected, on their own numbers.**
+`vanilla:architecture/windhelm/windhelmbridge2` and
+`vanilla:architecture/solitude/sbridge01` were held out as the pieces that would
+cover 185 of 204 crossings as one authored object. Their registry extents say
+otherwise: windhelmbridge2 is **145.127 m of span at 32.9 m wide**, sbridge01
+**92.442 m at 30.923 m**. Those are city bridges with towers and buildings on
+them, four to six times the 5.0 m running surface `grade_routes.FLAT_WIDTH_M`
+gives a trunk road. Neither is a road crossing and neither is packaged. The
+monolith ladder therefore stops where vanilla's free-standing landscape bridges
+stop, at 52.188 m.
+
+**One family was added, the best-evidenced in the kit.** The
+`stockade-trestle`: `stockadescaffoldbase4sided01` self-stacked in 2.731 m
+storeys (`vanilla:t0019`, n=28) and set side by side at 3.63 m (`t0159`, n=11);
+the plates `top0sided01` (`t0474`, n=6; `t0061`, n=17), `top2sided01`
+(`t0230`, n=9) and `top3sided01` (`t0475`, n=6) on the base at +2.73 m; plates
+tiled end to end at 3.64 m (`t0100`, n=14). Every join, parapet included, is
+vanilla's own. It replaces `stockadescaffoldbridge01/02/narrow` as the freehold
+deck: **no template in any mined set places any `stockadescaffoldbridge*`
+against a scaffold base or against another bridge piece**, so chaining them was
+a guessed combination. `route-spans-v1` is rebuilt at **22 assets, 13.4 MB GLB,
+33 co-placement and 56 bounds connectors**.
+
+**The same test caught a second guessed chain.** `dunmer-stone` was chaining
+`hlaalu:…/hammerfell/trgmbridge02` up to 29 pieces deep across a crossing. No
+mined template places two `trgmbridge` pieces end to end either. They stay as
+the family's flight landing, one piece at a time, which needs no pairing
+evidence. Dunmer-north crossings now use the same stone arch or viaduct as
+every other stone way.
+
+**What the province measures after the change** (`world/sources/sites/route-structures.md`,
+regenerate with `python3 -m worldgen.compile_route_structures`): 204 crossings,
+4,531 pieces, **841 piers, every one of them standing on the ground beneath
+it**, deepest trestle foundation buried 2.73 m, which is one storey by
+construction. No deck anywhere in the province sits more than 0.19 m under the
+ground, against 8.25 m before the deck line was changed from a chord to a taut
+profile.
+
+**Open, evidenced.** One crossing,
+`structure.hist-heartland-alten-markmont.2`, wants a deck 5.4 m above ground.
+The BM&V passerelle set ships no pier, only posts 1.516 m long. Recorded in the
+route-structures report and in the polish backlog.
+
+## 16f round 2 — 3D ground cover (2026-09-18)
+
+The owner saw ground cover that reads as flat. It measures flat: 34 of the 61
+species in the ring kit are crossed-quad cards of twelve triangles or fewer,
+because every Vurt/Tamira `landscape/grass/` family in the vault is a
+billboard whatever its filename suggests (max 84 triangles, median 31). We
+never make art, so the fix was sourcing. Survey and rejections:
+[3D ground cover research](../vegetation/groundcover-system.md) §2 and the
+Nexus table in the research pass that preceded this row.
+
+| Mod | Nexus | File | sha256 | Taken | Permission, as the mod's own description states it |
+|---|---|---|---|---|---|
+| DrJacopo's - 3D Landscapes and Grass Library (DrJacopo / JonnyWang13) | SSE 80687 | `DrJacopos - 3D Grass Library - Meshes-80687-16-53-1763626250.zip` (11.7 MB); textures `Cathedral - 3D Landscapes-80687-16-41-1730160308.zip` (403 MB) and `Cathedral - 3D Grass Library - Resource Textures-80687-16-51-1738912342.zip` (1.76 GB) | `5026606faae2b72cc796242dbc2e3f13d0a22133f9afafe6e2a9a71ecb298c68`; textures `97033963747cf55bec36bd5d6ccb47812fecc268a5ed8720029eb379c3e89c8a` and `30f786263287501971e46fd39be42b5a03c3fc3fbfe6ade410c612144514832a` | eleven modelled species: two complex grasses, the Icelandic and Tyrolian tussocks, coastal grass in two heights, three ferns, nettle and veratrum | "The 'Library' is a resource for other mods. Mod Authors, please read carefully. You will include these textures in your mod. Your mod must require the main file from this page." The last line is a load-order instruction for players running the Skyrim mod; the page is published as a modder's resource. |
+| Hoddminir Plants and Trees (Ztree and Elinen) | classic 38651 | `Hoddminir Plants and trees 1024-38651-3-0.zip` (204 MB) | `42e6127a06c2c277fc98eecae097238aff2b59edb6dcd69db13a8d7169321b47` | four modelled species: `FernLarge01`, `braken`, `LadyMantle`, `Celandine` | "You can use this resource but I ask that you give me, Ztree, Vurt, SparrowPrince and Ga-Knomboe Boy credit. Users can not use the new models in these files for any mods that are being sold." This project is free; all five names are in the README credit row. |
+
+Rejected and why: **3D Grass for Vanilla** (SSE 122363, FiberianHufky96) was
+downloaded and then dropped: its one worthwhile mesh, `ferngrass01`, is
+byte-identical geometry to DrJacopo's `SwordFern05` — 254 triangles, the same
+0.877 x 0.948 x 1.175 m bounds — so kitting it would have been the same plant
+twice under two credits. The archive stays in the vault; the pool is retired
+from the registry. **Skyrim 3D Trees and Plants** (SSE 12371, Mathy79) asks for
+per-use permission, so it is out. **Origins Of Forest** (45719) and **Freak's
+Floral Fields** (125349) build on the DrJacopo library we now hold, and
+**Grass Enrichment Project** (175168) on Hoddminir's, so all three are
+redundant rather than refused.
+
+Two more species needed no download at all. Vanilla's own `landscape/plants/`
+clumps were never kitted: `swordferncluster01` (1,424 triangles) and
+`floraspikygrass02` (2,298) were in the vault the whole time. And Tropical
+Skyrim ships the same plant twice, but the modelled one is the wrong size for
+this tier: `Plants/Tamira/New Plants/GrassPlant01` is 778 triangles at 4.25 x
+4.25 x 2.41 m, a shrub rather than ankle-height cover, so the ring keeps the
+128-triangle card `Landscape/grass/GrassPlant01` and SWAMP_GRASS gains a third
+species (`TyrolianGrassTallDrJ`) instead. Hoddminir's `FernLarge01` is out for
+the same reason, at 3.67 m across against the ring's 3.3 m ceiling.
+
+Texture resolution for the DrJacopo pool: the 7.6 GB seasonal texture set
+unpacks to `resource-textures/` beside the pool rather than inside it, so it
+does not swamp the pool's Data root. The 41 files the kitted meshes reference
+and the pool's own `textures/` lacks are symlinked into
+`extracted/textures/landscape/` and `…/landscape/grass/`, which is what
+`build_kit.pool_sources` expects: a pool's `extracted/` must be a Bethesda
+Data root with `meshes/` and `textures/` as siblings; the Blender importer
+resolves a NIF's texture paths against the folder above `meshes/`.
+
+## 16f round 2 addendum: the sea bed (2026-09-18)
+
+The owner's walk found the sea bed bare. What stood on it was flat. Two mods
+close the gap; a third was surveyed and rejected.
+
+| Mod (author) | Nexus | Archive | sha256 | Taken | Permission |
+|---|---|---|---|---|---|
+| Seashells (Jokerine; SSE conversion by Rusey) | SSE 4492 | `Seashells SSE-4492-3-0.7z` (9,803,037 B) | `b561bd0a1ead01c007febb708b6279d80a37c7c8efa8655f800874fbc5c61c68` | `coral`, `coral_spiky`, `starfish`, `sponge`, `conch`, `sanddollar`, `clam_large`, six scallops: 13 of the 45 meshes in `Seashells.bsa`, extracted to `extracted/meshes|textures` with `pipeline.bsa` | **CLOSED 2026-09-18: the owner read the mod page and confirmed the terms are credit only** ("yes this is fine", 16f round 3). Nexus exposes no permission field on either API (the GraphQL `Mod` type has 38 fields and carries no licence among them; the v1 mod JSON carries no permission block), so the confirmation was a human page read. Credit is given in the root README. |
+| Shores of Skyrim, Base Object Swapper, Part Two CC Attribution Files (FrankBlack) | SSE 140081 | `b) Shores of Skyrim Part Two CC Attribution Files-140081-1-4-1741221118.rar` (80,295,535 B) | `44307f926585bc24ffa7a5ef5b09b63e450edca87dd255c48e0ea59856ee6934` | `ShoreRock01-12`, `SeaShell02`, `SeaShell03`, `SnailShell01`. The `data/` wrapper was flattened so `extracted/` is a Bethesda Data root | **CC-BY**, self-declared: the file is titled "Part Two CC Attribution Files" and its description reads "This part of the mod contains files you can use for your own mod". |
+
+Measured after the kit build, because the file sizes misled the survey: the
+twelve shore rocks are **0.07–0.16 m** meshes: shingle, not the small
+boulders 15–29 KB suggested, so the stone band scales them 3–6x. Jokerine's
+pieces are collectable clutter at hand-prop size for the same reason: a
+scallop is 0.19 m and is placed at 0.8–1.6x, a coral 0.22–0.32 m and placed at
+2.5–9x. `ShoreRock05` is dropped from the stone band: the kit measures an open
+back at 112.5 degrees on it, so it is a cliff shell, not a free-standing rock.
+
+Not taken: **Starfish on Shores** (SSE 160829, Mihail), three 98 KB starfish.
+Jokerine's starfish covers the need from a mod whose permission is the more
+likely yes, while Mihail is known to restrict reuse. The archive stays in the
+vault unused, so it carries no credit obligation.
+
+Hard gap, recorded rather than substituted: **sea urchins and anemones exist
+in no Skyrim SE asset anywhere.** 29 index queries over the Nexus GraphQL
+router returned zero, against an empty vault registry. There is likewise no
+coral-reef static mod for SSE at all, which is why the reef is Jokerine's two
+meshes rather than a purpose-built set.
+
+## Designed-sink swaps (Phase 16h, 2026-09-22)
+
+An asset the makers never placed can borrow a measured twin's ground contact
+when the two ship **the same mesh path**, which is identity rather than a
+choice of substitute. `pipeline/placement_metadata.py` resolves those
+automatically and records the evidence as `swap:<assetId>`; every swap it made
+is listed here.
+
+| Asset with no placements | Twin measured instead | Why the swap is the same mesh |
+|---|---|---|
+| `vanilla:landscape/grass/waterkelpshort01` | `bmv:landscape/grass/waterkelpshort01` (p50 0.0245 m) | Black Marsh & Valenwood ships a copy of the vanilla kelp under the identical path `landscape/grass/waterkelpshort01.nif`, and places it; the vanilla pool's own copy is never placed in `Skyrim.esm`. |
+
+## Lanterns and signs: what vanilla actually hangs (Phase 16h, 2026-09-23)
+
+Mined from `Skyrim.esm` (every exterior and interior cell, `worldgen.esp_index`)
+after the anchorClass rewrite found no lantern-on-post and no sign-on-wall pair
+in our 21 published kits (history: the count at that mine): only one kit asset is wall-class on plugin evidence
+(`bmv:architecture/citebosmer/houses/houseglandacceslatd01`), and our lantern
+and banner meshes hang on buildings we do not ship.
+
+Lanterns and sconces, by placement count, with the piece they hang on:
+
+| Vanilla mesh | Placements | Hangs on (count) |
+|---|---|---|
+| `clutter/ruins/ruinwallsconce01.nif` | 470 | `dungeons/nordic/bgrooms/norrmbgwallside01` (17) |
+| `clutter/imperial/impwallsconcecandle01.nif` | 337 | `dungeons/ship/katariah/shipkatariahwoodwall01` (13), `dungeons/imperial/clutterkits/impfreewall01` (9), `dungeons/imperial/tower/imptowerinwall01` (7) |
+| `clutter/imperial/impwallsconce02candleon01.nif` | 297 | `dungeons/riften/ratwaybarrel/riftenrwroombwallv01` (16), `architecture/solitude/interiors/smdawallsol01` (16) |
+| `clutter/common/removabletorchsconce01.nif` | 246 | `clutter/stockade/stockadescaffoldtoppost01` (7), `dungeons/nordic/rubble/norvinewall01` (7) |
+| `clutter/common/candlelantern01.nif` | 679 | nothing: it stands on tables and shelves (tankard 151, shelf 125) |
+
+Signs, by placement count, with the piece they hang on:
+
+| Vanilla mesh | Placements | Hangs on (count) |
+|---|---|---|
+| `clutter/signage/roadsigns/roadsignriften01.nif` | 43 | `clutter/signage/roadsigns/roadsignpost.nif` (43) |
+| `clutter/signage/roadsigns/roadsignwhiterun01.nif` | 42 | `roadsignpost.nif` (42) |
+| `clutter/signage/roadsigns/roadsignwindhelm01.nif` | 28 | `roadsignpost.nif` (28) |
+| `clutter/signage/roadsigns/roadsignsolitude01.nif` | 26 | `roadsignpost.nif` (26) |
+| `clutter/signage/roadsigns/roadsignmarkarth01.nif` | 25 | `roadsignpost.nif` (25) |
+| `clutter/signage/whiterun/signwrpost01.nif` (the bracket) | 8 | carries shop signs: `signtg03blackbriarmeadery` (4), `signwrhonningbrewmeadery01` (4) |
+
+What the evidence says, against what was asked for: vanilla hangs its **lights
+on walls** (a bracket sconce, never a lantern on a post — the only post-lit
+mesh is `architecture/riften/rtlamppost01`, placed 4 times and carrying its own
+post) and its **signs on posts** (`roadsignpost`, 100 % of every directional
+plate). There is no vanilla lantern-on-post and no vanilla sign-on-wall to
+source. The two sourceable pairs are therefore a sconce on an imperial wall and
+a sign plate on a road-sign post; each plate is lettered with a Skyrim place
+name, so a sign needs an unlettered plate or a new one. That choice is open.
+
+## Tropical Skyrim (skyrim 33017): all four files, v1.1 applied (Phase 16h, 2026-09-24)
+
+Status: CLOSED; no new mod, no new credit line.
+
+- **Files.** All four Nexus files are in the vault folder
+  `mod-sources/tropical-skyrim-33017/`: main 1000016188 (`main.zip`),
+  update 1000017932 (v1.1), the one-texture fix 1000016632 and Less Bloom
+  Option 1000016119 (`extra_1000016119.bin`, 1,602,819 B, sha256
+  75327a0368f2489528dcd0c5a941e83d4291368de00f5a4db116274f5921d255; one
+  `.esp`, no textures). Hashes in the folder's `SHA256SUMS`.
+- **v1.1 applied to `extracted/`.** The update's plugin
+  (`Tropical Skyrim.esp`, 1,992,588 B, sha256 e10cfa5e…8830) and its two
+  trunk meshes under `meshes/landscape/trees/tropical/`
+  (`anvil_palm_trunk.nif` 822,418 B, sha256 d57c6a7d…8aa4;
+  `anvilgianttrunk.nif` 1,198,599 B, sha256 ed6dcfac…8f58) replace the
+  v1.0 files, which stay beside them as `*.v1_0`; the update readme is
+  `Readme-v1_1-update.txt`. The update's archive uses Deflate64, which
+  Python's `zipfile` and `bsdtar` cannot read; Info-ZIP `unzip` can.
+- **The fix unpacked.** `textures/cubemaps/glacierice_e.dds` (4,304 B,
+  sha256 3cf57647…dcbe).
+- **Coverage, measured.** 108 changed diffuse maps (Whiterun 46,
+  Solitude 28, Riften 12, farmhouse 9, caves 11, ridgedstone 3,
+  Windhelm 1); Markarth, Winterhold, forts, Nordic and Dwemer ruins have
+  none; 180 of its 368 architecture files are vanilla copies
+  ([building-asset-breadth.md](building-asset-breadth.md) §2). The v1.1
+  update changes no texture.
+- **Permission.** The mod page says "you MUST contact me and obtain
+  permission before ... using its contents in your own mod." Covered by
+  the owner's statement of 2026-09-24 that permission is held from every
+  author in the pool (16h § Owner check-ins).
+- **Project Rainforest SE (skyrimspecialedition 20636).** The vault
+  archive `pr-base-loose.7z` (file 74798, BASE Loose 1.5) had its 261
+  architecture and dungeon textures extracted on 2026-09-24. Its Windhelm
+  street and ground maps (6 diffuse) and caves (12 diffuse) are real
+  repaints; its nordic, imperial, dwemer, mines and Riften-dungeon files
+  are vanilla copies. It becomes a second overlay behind Tropical in 16h
+  part 2 item 37.
+
+## 2026-09-25 — owner rulings: tropical retextures and KotM
+
+- **SCO Tropical Edition v2 (skyrim 69382) and New Windhelm summer and
+  tropical edition v2 (skyrim 63649): permission held** (owner
+  2026-09-25). They may be downloaded and used. Status OPEN until the
+  download lands: queued as [polish backlog](../../phases/P-polish/backlog.md) Item 38, with the families they
+  cover (Markarth, Windhelm, Winterhold, High Hrothgar, Imperial forts,
+  caves; all of Windhelm).
+- **King of the Murkmire (SSE 190459), the "no AI" clause:** it concerns
+  creating art, not coding (owner 2026-09-25). Our use, the assets
+  unchanged and no generated art, is within the permission. The owner
+  decision is closed.
+
+
+## 2026-10-04 — plank and Dagon Fel kits (walk 11 places-b, owner item 6b)
+
+No download: every piece is in pools already held and credited (KotM 190459 sha256 `7bf18067…`, HTBM 35933, BM&V Data1/Data2.rar).
+
+| Kit | Pieces | Texture aliases (mean RGB from → to) | Not taken, why |
+|---|---|---|---|
+| `settlement-plank-v1` (new) | KotM `argonia/blackwood` 50 (thatchhouse01–08, roundhut01–03, house1–5, house3under, hausneu01–03, shiveringhouse_02, house04/05platform, stable, watchtower01, walkway01–07, walkwaystairs, plankwall×5, wall01, walldoor01, shackdoor, doorframe/b, housewindow, mudhuts door02), HTBM villages 16, 7 door composites | windhelm whwoodboards02 49,45,39 → riften riftencanalwood01 111,90,62; dungeons dryoakpost01 48,47,37 → farmhouse woodpost02 125,111,82; dungeons rottingwood01 66,64,59 → farmhouse woodwall01 126,99,69; `_resourcepack` desertcracked01 → Tropical rivermud 85,68,47; `_resourcepack` ceramic01natural/teal → KotM `lod/ceramic01*_dlod` 105,86,63 / 29,92,88 | HTBM beehive01 (Oblivion-era PFlames block, bsVersion 100, the fire miner refuses it); swamp house (already in the stilt kit); blackwood docks (docks-v1); windmill and waterwheels (works) |
+| `settlement-dagonfel-v1` (new) | BM&V `sheogorad/dagon fel` shack01–05, shackdoor, dagonfeldoor, doorframe, skyway, awnings L/S, chimneys small/tall | shackwood/_down 64,64,55 → riftencanalwood01; wall 56,56,46 → woodwall01; woodpost02 63,61,49 and woodpostend03 → farmhouse woodpost02 | housetall01/02, nordhouse01 (Nord forms) |
+
+## 2026-10-04 — dragon eggs into `interior-kotm-v1` (walk 11 places-a, Gang Ground clutch)
+
+No download: KotM 190459 (sha256 `7bf18067…`) is already held and credited. `kotm:argonia/argonianeggs/dragoneggs1-5` (0.35 x 0.35 x 0.45 m, one texture each: blackegg, paleegg, crimsonegg, blueegg, brownegg) join the kit; the textures resolve in the archive, so no alias. `creaturenest01hay` is not taken: its frond lining's diffuse is the AE `_ResourcePack` palmtreetall01, absent from the vault, and no other palm atlas shares its UV layout; the clutch sits in vanilla haymound02. Published bytes added: 112,328 (five part GLBs) + 356,364 (five KTX2 textures) = 468,692 B.
+
+## 2026-10-06 — Helstrom's big-room cells into `interior-kotm-v1` (16k walk 12)
+
+No download: 97 meshes the Coatepec, Xocei Tluthek, RootWhisper Xul Thuxis / Vakka Bok and Huluxinoag Roots cells reference join the kit from held, credited archives: KotM 190459 (56), Here There Be Monsters (6), vanilla (35); list in the kit config. 13 diffuses that sit only in absent Creation Club, AE `_ResourcePack`, `_byoh` or Dragonborn archives are aliased (`textureAliases`, see `textureNote`); `leveranimatingmetal` is left out (its texture fails to resolve). Dragonborn's `dlc2coinpile01`/`02` (7 Coatepec activators) are not taken: `substitutions/CIPHTBMCoatepec.json` uses vanilla `clutter/coin01` in their place, as no published kit holds a clutter coin pile. `water/water2048` is an interior water surface (listed drop, Phase 12). Seven new assets have no designed-sink row (no plugin placement): HTBM `xanmeerbanner01`, KotM `deadrootlarge05`, `extrarootramp01`/`02`, `hist_root11`, vanilla `dbstainglass01`, `writetablestanding`. **SOURCED.**
+
+## 2026-10-04 — one-piece climbing root for Gang Ground (walk 11 places-a): CLOSED, the pair stays
+
+| Need | Searched | Result | Status |
+|---|---|---|---|
+| One grown root spanning the opening-work-camp strand to the bluff lip (foot on the strand, top on the lip, rise 7 m or more) | The 20 published root and trunk meshes (C2e, none spans alone); King of the Murkmire's five Xanmeer ceiba roots `fen_tv_ceiba_roots_01_b`, `02b`, `03b`, `04b`, `05`, measured from their NIFs (`tooling/.reports/16k/walk11/places-a/gang-ground-finish-2.md`). `03b`, the best fit (12.2 m long, 8.15 m rise, 42 degree lean), was kitted into `settlement-root-v1` with its Creation Club `rootcavefloor01` texture aliased to `crackedbark` and swept: 0 poses on the single-span bars, 2 joint poses in 1.8 M on relaxed bars, neither reaching a 7 m rise (`gang-ground-finish-3.md`). The look judge read it as a braid of 8 or more separate strands with a splintered 1.5-2 m end, not one walkable log | No single pose spans strand to lip: the mesh fans 7.7 m wide and its own lean puts the tip about 9 m out from the bluff face, past the strand | **CLOSED** (planner ruling, walk 11): the two-piece `hist_root05` pair (k-root, k-root2) stays; `03b` and its alias rows are taken back out of `settlement-root-v1`. The other four ceiba roots need the same `crackedbark` alias if they ever join a kit |
+
+## 2026-10-04 — washing line with hung cloth for the Lighter Flotilla (walk 11 new-places-w3): CLOSED, not used
+
+| Need | Searched | Result | Status |
+|---|---|---|---|
+| A line strung with drying cloth for the moored hulls (record `thing-laundry`) | All 31 published kits; the vault mesh manifest (clutter, architecture); KotM `argonia` (clutter, mudhuts), HTBM `Villages/Argonian`, MudMother `argoniannest` (`tooling/.reports/16k/walk11/new-places-w3/flotilla/laundry-sourcing.md`). Nexus v1 API mods SSE 2011, 92814, LE 58084, SSE 57346; web search for clothesline and laundry resources (`laundry-nexus.md` beside it) | No vault mesh carries cloth: HTBM `farmhouseline` is the bare rope frame, KotM `buntingline01` is pennants. Found: Immersive Laundry SSE (nexusmods.com/skyrimspecialedition/mods/2011, Nerd of Prey; meshes InsanitySorrow, Tamira, Rusey), from the resource Insanity's Washing Stuffs (TES Alliance file 1325, InsanitySorrow): 7 line statics, 42 cloth variants | **CLOSED, not used**: the licence of Insanity's Washing Stuffs (via Immersive Laundry, SSE 2011) forbids re-host ("Please do not re-host this file without my explicit permission"), and shipping its converted meshes on GitHub Pages is re-hosting; the Nexus permission box of mod 2011 was unreadable (403). Nothing downloaded; the Flotilla record is rewritten without the line |
+
+## 2026-10-06 — dark wet mud ground paint for Helstrom's Rootworm station (walk 12 city kit item 10): CLOSED from the vault
+
+| Need | Searched | Result | Status |
+|---|---|---|---|
+| A dark, wet mud the place ground paint can lay over a station floor | Vault `mod-sources/cc0-ground-textures/` (Ground024/026/037/040/050/051/054, `mud_forest_diff_1k.jpg`, `aerial_mud_1_diff_1k.jpg`); paint samples only the terrain array (`textures/ground/bmv-v1/materials.json`) | Mean luminance (sRGB 0-255): Ground051 85.9, Ground040 92.4, Ground024 106.5, Ground050 138.5, Ground054 141.1, Ground037 148.0, Ground026 167.7; `mud_forest` 44.6 and `aerial_mud_1` 58.4 are darker but not in the array, and adding a layer rebuilds the shared terrain set | **CLOSED**: ambientCG Ground051 (ambientcg.com/view?id=Ground051, CC0, zip sha256 `884f8d718e12715d2eb2ca332541e5a743a3f1606557775bd980b748008cf7fe`), already layer 4 `black_mud` and credited; registered as paint kind `mud` in `world/sources/vocab/ground-paint.json`, no new download |
+| A service board family for the Argonian pools (inn, trader, smith, stable; walk 12 lane A3, owner: "use the Tropical Skyrim versions") | Tropical Skyrim (skyrim 33017) `main.zip` mesh listing (Landscape, Plants, Terrain, actors); Hana's Blank Roadsigns (skyrim 33392) 7z listing (`meshes/hana/signs/`: seven road boards); the vault mesh manifest `meshes/clutter/signage/` (74 entries, Riften, Windhelm, Whiterun, Solitude, generic, inns, Riverwood); mod-sources sign dirs (KotM, Curse of Cipactli, MudMother, HistTree, HovelMud); web search for blank trade-sign resources | Tropical Skyrim ships no sign mesh; Hana's boards are the road arms BM&V already uses. KotM `argonia/blackwood/sign` and `signinn` are the only Black Marsh trade boards; vanilla Riften has `signrtblacksmith01`, `signrtstables01` (both in settlement-mud-v1), `signrtalchemyshop01`, `signrtfishery01`, `signrtpawnshop`. Nexus candidates if a trade lacks a board: Willybach's Generic Signs (skyrim 98360), Jokerine's Misc Resources (skyrim 53022); licences unread | **CLOSED from the vault**: the Argonian family is KotM's two boards plus the Riften set (dressing.md § 3); `signinn` and the three Riften boards join settlement-mud-v1 by a per-asset kit merge at their first use; nothing downloaded |
+| 119 KotM interior meshes (Coatepec, Xocei Tluthek, Root Whisper, Huluxinoag, Teeth of Sithis, Lilmoth interiors) refused by export_interior_bundle as in no published kit | Vault KotM extract (King of the Murkmire - Main 190459 1.0.2, same archive and hash as the exterior kits); plugin cell data | Added to interior-kotm-v1 (599 assets), rebuilt, published 40.3 MB packed; credit in README Credits | CLOSED 2026-10-06 |
+
+## 2026-10-09 — underwater swim stroke and dive clip for the player (walk 12 part 2 lane S2): OPEN, permissions unread
+
+| Need | Searched | Result | Status |
+|---|---|---|---|
+| An underwater stroke and a dive-entry clip (Skyrim HKX) for the humanoid/Argonian player | Vault animation inventory (`output/skyrim-animation-inventory/clean_17_swim.txt`, `09_swim_water.txt`, `all-character-hkx.txt`); vault `mod-sources/{archives,extracted}`; repo swim docs; Nexus SE web search and API metadata for 8 mods (`tooling/.reports/16k/walk12/part2/lanes/S2-dive-sourcing.md`) | Vault: vanilla surface swim only (swimidle/forward/backward/left/right, swim_getup). Nexus: Stronger Swimming Animations SE (32625, Artsick, file 405949 "Underwater Animations", HKX, no scripts); Sprint Swimming (67028) / Sprint Swim Redux (156417) dolphin kick, clips only; Simple Diving System (154534, tsptds, file 669995, 4 dive-entry clips) | **OPEN**: the Permissions panels of 32625, 154534 and 156417 returned 403 and the download was refused to the research agent; next: read the panels, download 405949 and 669995 with the owner key, list the HKX, check the skeleton against `rig-skyrim-humanoid`, then hash, credit and convert |
+
+## 2026-10-09 — round burrow / tunnel-mouth mesh for Helstrom Nexus Burrow (walk 12 part 2): CLOSED, none found
+
+| Need | Searched | Result | Status |
+|---|---|---|---|
+| A Skyrim SE mesh of a round burrow, tunnel mouth or dug shaft opening (~4-5 m bore), permission-compatible | Vault `mod-sources/` directory listing (all 60+ mod folders; found: `burrow`, `tunnel`, `mouth`, `cave`, `mine`, `shaft` patterns in mod names and filenames; Ayleid dungeon secrettunnel meshes only; no burrow/tunnel-mouth piece); vault `manifest-skyrim-meshes.txt`; Nexus SSE API search (queries: `burrow`, `tunnel entrance`, `cave entrance`, `dug shaft`; API returns empty or malformed responses) | Vault: zero burrow/tunnel-mouth static meshes. Nexus: API search unresolved (v1 endpoint returned error responses); manual web search deferred (HTTP 403 on MediaWiki fetches). Vanilla Skyrim: `landscape/rocks/rockcaveentrance01` and `rockcaveentrance02` are generic cave openings, already kitted to `dungeon-root-v1` 2026-10-06; neither is a narrow burrow bore | **CLOSED**: no round burrow or discrete tunnel-mouth mesh found in the vault. Vanilla cave entrances (rockcaveentrance01/02) serve as fallback. No Nexus purchase needed; tunnel entrances can be composed from existing root/log pieces if a place needs a burrowing opening. |

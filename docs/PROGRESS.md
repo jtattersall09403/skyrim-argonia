@@ -24,15 +24,15 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.10 | The player character | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (in game on argonia-play, docs/research/2026-10-31/owner-playtest-2.md; owed: the owner's look) |
 | 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | in progress (the owner's look 1: all 18 findings built, e2c03d5 on both standbys; 11 proven in game, 7 with the owner, #34) |
+| 1 | 1.15 | The world, rebuilt | todo |
 | 1 | 1.14 | Death, the pile and respawn | todo |
-| 1 | 1.15 | The world track's close | todo |
 | 1 | 1.16 | The owed integration checks | todo |
 | 1 | 1.17 | Frame rate and the screen numbers | todo |
 | 1 | 1.7 | The first-place journey and the owner's verdict | in progress (packet drafted, docs/research/2026-10-30/verdict-packet-draft.md; waits on 1.8–1.17, the owner's first play test docs/research/2026-10-31/owner-playtest-1.md) |
-| 2 | 2.W1 | Terrain, apron and edges (the world track starts after 0.4, beside Part 1) | in progress (data: 82df321 0b9d5a7; world-sample green once on London, stops 1-3 first (lane-game-21.md); owed: stop 13, the distant view, after the xLODGen LOD is restored) |
-| 2 | 2.W2 | Water | in progress (designed water: 1aa04cc 44d5bae; world-sample stops 4-7 green (lane-game-19.md); water-swim dropped, swimming is base Skyrim (d66900f); water-budget a draft) |
-| 2 | 2.W3 | Regions, weather, light, roads and the route graph | in progress (data: aed4264 e279217 6b220f1; gates, landings, signposts 002dca4; w3-crime and w3-interior-sun green (lane-game-17.md); the border push (s09) green in world-sample's London run (lane-game-21.md); weather stills dropped (d66900f)) |
-| 2 | 2.W4 | Vegetation, navmesh and LOD | in progress (navmesh 08a88e5, load doors afdbae4, the chart 39a8eb46, vegetation done; LOD is xLODGen's (owner 2026-10-30): the terrain made on the retired machine was lost, regenerated on argonia-play-london (lod.sh archive, 8baf1e0); archived (lod/fd21cee6d408.tar), restored on argonia-play-london by deploy's lod.sh ensure (lane-game-22.md); restored on argonia-play (Paris) by deploy's lod.sh ensure, 20601 files (docs/research/2026-10-31/paris-deploy-1.8.log); owed: a Claywater still; w4-veg-densest a draft) |
+| 2 | 2.W1 | Terrain, apron and edges | dropped (decision 0033: superseded by 1.15, the world rebuilt; the proven rows stand in docs/phases/1-core-loop/checks.md) |
+| 2 | 2.W2 | Water | dropped (decision 0033: superseded by 1.15, the world rebuilt; the proven rows stand in docs/phases/1-core-loop/checks.md) |
+| 2 | 2.W3 | Regions, weather, light, roads and the route graph | dropped (decision 0033: superseded by 1.15, the world rebuilt; the proven rows stand in docs/phases/1-core-loop/checks.md) |
+| 2 | 2.W4 | Vegetation, navmesh and LOD | dropped (decision 0033: superseded by 1.15, the world rebuilt; the proven rows stand in docs/phases/1-core-loop/checks.md) |
 | 2 | 2.W5 | The slice places, in two waves | todo |
 | 2 | 2.W5 wave 1 | Greenspring, The Broke Column, Riverwalk, Lighter Flotilla, two routes | todo |
 | 2 | 2.W5 wave 2 | the other eleven slice places | todo |

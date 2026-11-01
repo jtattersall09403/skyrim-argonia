@@ -21,11 +21,11 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
   ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md)); never bypass the no-assets guard.
 - Never make art beyond UI and minor Fal-made 2D elements ([0006](docs/decisions/0006-black-marsh-immersion-no-nordic-element-survives.md)).
 - Never take FromSoftware data, animations or code into Argonia: measure DSR, write our numbers ([0004](docs/decisions/0004-ds1-remastered-is-the-combat-oracle.md)).
-- Never port the old project's combat code, constants or animation choices; the combat map gives each DS1 behaviour a tuned mod or our own build ([0019](docs/decisions/0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md)).
+- Never port the old project's combat code, constants or animation choices ([0019](docs/decisions/0019-combat-maps-each-ds1-behaviour-to-a-tuned-mod-or-our-own-ds1-build.md)).
 - Never bypass DRM, anti-cheat or ownership checks; DSR offline only while anything is loaded.
 - Never let a vanilla Skyrim system, asset, sound or word reach the player unreviewed ([0012](docs/decisions/0012-vanilla-skyrim-is-quarantined.md)).
 - Never retune measured combat numbers for feel; fix timing on the animation side by runtime control or the install-time patcher ([0014](docs/decisions/0014-derived-files-are-made-on-the-players-machine.md)).
-- Never ship a derived file (FaceGen, LOD, behaviours, edited clips or menus): the installer makes it on the player's machine (0014).
+- Never ship a derived file (FaceGen, LOD, behaviours, clips, menus): the installer makes it on the player's machine (0014).
 - Never update the pinned Skyrim runtime outside a decision record ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)).
 - Never run a Windows-only tool under Wine or Proton.
 
@@ -34,12 +34,13 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Reuse first, in route order: data → dependency mod → open-mod fork → Papyrus → our SKSE → our deep hook or
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
 - Base-Skyrim assets come from Tropical Skyrim SSE before vanilla; Black Marsh mods before both (0006 §8).
-- Study before building (owned games, mod source, OpenMW); findings go to `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
+- Study before building (owned games, mod source, OpenMW); findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
+- World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an unsourced invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample early, never a spike (0023, 0029).
 - Systems are built whole to their final interface; content can be thin; what the player meets is complete.
-- Build natively the Skyrim way: the old project gives goals and content, never machinery; Skyrim's own systems and tools first ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
+- Build natively: the old project gives goals and content, never machinery; Skyrim's own systems and tools first ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)).
 - The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM are derived ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; logic stays out of Papyrus.

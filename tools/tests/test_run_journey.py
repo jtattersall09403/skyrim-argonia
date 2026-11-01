@@ -87,6 +87,36 @@ def test_pass_keeps_a_still_per_step(tmp_path):
     assert (tmp_path / "out" / "01-walk.png").exists() and (tmp_path / "out" / "02-draw.png").exists()
 
 
+def test_console_settle_waits_out_a_busy_main_thread(tmp_path, monkeypatch):
+    """A worldspace load holds the main thread past the bridge's retries: `settle` keeps sending until it runs."""
+    fake, calls = Fake(), []
+    real = fake.call
+
+    def busy_twice(cmd, *args):
+        if cmd == "console" and args[0].startswith("cow "):
+            calls.append(args)
+            if len(calls) < 3:
+                raise BridgeError("console: main thread did not run the task within 3000 ms")
+        return real(cmd, *args)
+    fake.call = busy_twice
+    step = {"name": "arrive", "do": [{"console": {"line": "cow BlackMarsh 1 1", "settle": 30}}]}
+    rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [step]), "base")
+    assert rep["passed"] and len(calls) == 3
+    # without settle the first busy reply fails the step
+    fake2, n = Fake(), [0]
+    real2 = fake2.call
+
+    def busy_once(cmd, *args):
+        if cmd == "console" and args[0].startswith("cow "):
+            n[0] += 1
+        if n[0] == 1:
+            raise BridgeError("console: main thread did not run the task within 3000 ms")
+        return real2(cmd, *args)
+    fake2.call = busy_once
+    rep = rj.Runner(fake2, tmp_path / "out2").run(journey(tmp_path, [{"name": "arrive", "do": [{"console": "cow BlackMarsh 1 1"}]}]), "base")
+    assert not rep["passed"]
+
+
 def test_broken_step_fails_readably_with_its_still(tmp_path):
     bad = {"name": "stand", "expect": [{"moved": {"gt": 100}, "within": 0}]}
     rep = rj.Runner(Fake(), tmp_path / "out").run(journey(tmp_path, [bad, WALK]), "base")

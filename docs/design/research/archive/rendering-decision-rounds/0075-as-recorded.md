@@ -1,0 +1,198 @@
+<!-- imported unchanged from elder-souls-argonia docs/research/archive/rendering-decision-rounds/0075-as-recorded.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
+# 0075 — LOD is a ladder stepped from the camera; a copy's edge closes only against a copy that exists
+
+Evidence: decision 0075 as it stood before it was rewritten as one current document; the record itself is [0075](../../../old-decisions/0075-lod-is-a-ladder-stepped-from-the-camera.md).
+
+**Date:** 2026-09-18 · **Phase:** 16f round 5 · **Status:** accepted (owner
+steers in session: "just have one system that works"; instant swaps are
+fine; "how does Skyrim do it? copy their approach"; audit every scatter
+type's levels; bring the water reflections in a little).
+
+The owner's fifth walk found trees, palms, large plants and rocks fading
+OUT as they were approached, vanishing at a certain range and dissolving
+back in close up, palms gone for good, crowns drawn before trunks, rocks
+half-drawn — after four rounds of fixes to the same mechanism. The evidence
+is in the [16f ledger §18](../phase16-evidence/16f-ledger.md).
+
+1. **The rule is Skyrim's: a hard step between levels by camera distance,
+   a fade only where something vanishes.** Skyrim holds full models inside
+   the loaded cell grid, swaps to LOD meshes and tree cards beyond it by
+   fixed distance bands. Small objects alpha-fade out at the far end by
+   size. There is no dissolve between levels. Ours is the same: a species has
+   a LADDER of camera-distance intervals tiling [0, draw distance), one kit
+   level each (`lodLadder`); the shader keeps the level whose interval holds
+   the live camera distance (`step`). The only dither is the vanish at
+   the end of a ladder that ends inside the loaded world (a rock at 70 m, a
+   fern at 100 m). Land trees never take that edge. The crossfade of rounds
+   2–4 is gone from the scatter; the ground ring keeps its tile-band dither
+   because every tier copy exists there at once, so its partition is exact by
+   construction. The owner reports it right.
+2. **A copy's edge closes only against a copy that was emitted.** The
+   rebuild emits an instance into every rung the camera could reach before
+   the next rebuild (`lodCopies`, rung ± `LOD_MARGIN_M` = 24 m); a copy's
+   inner edge is its rung's `lo` only if the rung below was emitted, its
+   outer edge `hi` only if the rung above was, else OPEN. So the emitted
+   copies always tile the whole distance line and one alone is kept at any
+   camera distance, whatever the rebuild timing: outrun it and the level is
+   wrong for a few metres, never absent. Rounds 2–4 had three defects in
+   this one place, which is why each fix moved the symptom: (a) the copies
+   were chosen from the CHARACTER's position and faded from the CAMERA's,
+   5.8 m apart, against 10 m bands and a 21 m reach; (b) rungs resolving to
+   the same kit level were MERGED into one band that kept the ring edge, so
+   every rock (one level, three rungs) dissolved at its inner ring with
+   nothing behind it — measured 6–94 % of pixels over 10 m. It dissolved again at
+   33–25 m with the camera ahead of the character; (c) correctness depended
+   on a rebuild landing within 16 m. The gate now walks real ladders (rock,
+   palm, jungle tree, carded shrub, kelp) with the rebuild cadence, the
+   camera 5.8 m ahead of the character and behind it, a sprint that overruns
+   the throttle and a rebuild that never lands. It requires one copy per pixel every frame and
+   holds the round-4 rule red.
+3. **An identical level is not a level.** The builder's decimation floors at
+   ~300 triangles a part, so every palm (60–256 triangles a part) and about
+   half the land kit (86 of 159 assets, all 16 aquatic plants, 20 of 25
+   shrubs, 24 of 49 trees) shipped two or three byte-identical mesh levels
+   and stepped the same geometry against itself at two rings. `floraKit.ts`
+   drops a level that is not smaller than the one before; `build_kit.py`
+   no longer exports one. The shipped kit is unchanged this round (the
+   runtime rule covers it); the backlog row records the bytes.
+4. **Every scatter type's chain is audited from the shipped kit**
+   (`pipeline/kit_lod_audit.py`, both kits): rocks are correct by design
+   (one level, no card, 41 of 41); every land asset outside rocks carries a
+   textured card (118 of 118); no level lacks a part its base has (so the
+   "crown before trunk" was the emission, not the kit). The underwater kit
+   carries no cards by design (its ladders end at 120 m under water that
+   hides anything past a few dozen metres) and is exempt by name.
+5. **Screen-space water reflections stop at 260 m** (fade from 160 m; they
+   were 260–420 m, before that 1.2 km). The march is per water pixel inside
+   the range, so the range is frame time.
+
+6. **An alpha-tested part is never drawn decimated; the ladder for a plant
+   is "full model, then card".** The owner's second walk of the round (the
+   same day) found leaves, twigs and trunk strips vanishing at the middle
+   distance and returning close up. Every plant part in the kit is dozens
+   to hundreds of small separate islands of triangles (median 2–16 each:
+   leaf cards, twig cards, bark strips); collapse decimation shreds them
+   into slivers with scrambled UVs, so the builder's 0.35 and 0.12 levels
+   were largely empty. `floraKit.ts` gives an alpha-tested part its base
+   geometry at every mesh level (the identical-level rule then folds the
+   chain); `build_kit.py` exports no decimated level for an alpha-tested
+   asset. Only an opaque part (none in the land kit) still steps down
+   through decimation. The cost is triangles inside the card ring (100–260 m
+   by height); the owner's frame numbers decide whether the card ring
+   moves nearer.
+7. **Rocks are seated as round 4 seated them, and a boulder or pile whose
+   lower half still hangs is cut.** The owner's walk found a pile hanging
+   1.3 m off a 30° slope at 1.59 km E / 2.30 km S; measured by their real
+   vertices (`rock_mesh_census.py`) the round-4 plane rule left such rocks
+   standing. One attempt seated every rock by its own underside; it sank
+   nearly every rock too deep and refused a quarter of them. The owner
+   reverted it the same day ("we were nearly there; now we've overcorrected").
+   What stands: the base-plane seating, cap and sink composition of 0073
+   are untouched; `rock_bottom_profiles.py` mines each rock's lower half
+   (one vertex per 0.25 m voxel, both kits) into
+   `world/sources/placement/rock-bottom-profiles.json`;
+   `compile_scatter.cut_hanging_rocks` poses that set exactly as the bundle
+   will carry the rock (after encoding) and drops any boulder or pile whose
+   lower half stands more than 0.75 m off the ground anywhere under it: 792
+   of 18,517, the owner's pile among them, 17,725 standing. Cliff shells are
+   never cut: their hollow sits against the hill, the owner judged them right
+   as placed. The measure would call 84 % of them "hanging" (the shell
+   over the falling slope). Wrong turns recorded so nobody repeats them:
+   bearing bins from the pivot (a leaning slab "demands" 10 m on flat
+   ground), down-facing normals (miss the pile), a profile taken before
+   posing (a tilted slab's face hangs 2.9 m over falling ground) and
+   seating on the underside at all (Skyrim's rocks show their bellies on
+   hillsides; burying them to hide that is the overcorrection).
+
+## Consequences
+
+- `rock_mesh_census.py` reports what the cut counts (boulders and piles
+  hanging past 0.75 m, cliff shells separately); `rock_census.py` keeps the
+  float, tilt, scale, swallow and open-back checks.
+- One mechanism, three exported functions, one attribute layout; the
+  ground ring and the scatter share the shader. Phase 14 locks the ring
+  distances as a table; nothing else moves.
+- Frame time: the collapsed extra copies cost vertex work only (a zero-area
+  triangle raises no fragment); the identical-level dedupe removes the
+  double-drawn dithered pairs the palms paid before.
+- A future kit build ships fewer bytes for free (3); the underwater kit's
+  rocks, which carry decimated levels against the 0071 rule, are corrected
+  at the same rebuild (backlog row).
+
+## Addendum 2026-09-20 (decision 0082)
+
+Every instance is emitted into every rung of its ladder, both band edges
+closed, when its cell is built; the per-pixel Bayer choice of one copy is
+unchanged. The `lodCopies` margin (emit only the rungs within reach of the
+next rebuild) is retired with the rebuild itself; rungs a cell cannot need
+at its distance are switched off per cell, never re-emitted.
+
+## Addendum 2026-09-21 (owner: "jump between rungs, no gradual fade")
+
+Every rung edge and every ground-cover tier edge is a hard step: `LOD_BAND_M`
+is 0 and `TIER_BAND_M` is all zeroes, so `esLodRamp` degenerates to `step()`
+and the partition between the outgoing and incoming copy stays exact.
+The vanish at the end of a ladder is the same hard step (`LOD_CULL_BAND_M`
+0 since walk 12: at 8 m every plant near its draw distance stood
+half-dissolved in front of a still camera), and `lodRings` no longer widens a
+rung to fit a band — it only holds the ladder in order.
+
+## Addendum 2026-09-27 (owner walk 2: "big trees switch to cards too close in medium and high")
+
+The mid reach (the folded reach and ring 1) is quality-band aware
+(`LOD_REACH_BY_BAND` in `floraKit.ts`): low keeps height × 5 in 50–140 m
+(folded 30–140), medium is height × 7 in 60–200 m (folded 40–200), high is
+height × 9 in 80–280 m (folded 50–280). A single-level tree's folded reach
+and cap are multiplied by `treeReachBoost` = clamp(√(1500 / full-mesh
+triangles), 1, 2.4), so light trees hold their mesh further at the same
+triangle cost (the 380-triangle 19 m aspen: 211 m in medium).
+
+## Addendum 2026-09-29 (owner walk 5: tier fades, bushes too close, big trees hold mesh further)
+
+- **Rung edges cross-fade in time, not in distance** (`lodFade.ts`,
+  `LOD_FADE_S` 0.4 s, `LOD_FADE_SAMPLES` 8). The edge stays a hard step in
+  distance; each copy's factor is that step averaged over the camera's last
+  0.4 s of positions (the `esLodHist` uniform, offsets from `esLodViewPos`).
+  The two copies of a plant hold the same factor, so the screen-door
+  partition is exact every frame (coverage never dips), both copies are drawn
+  only for 0.4 s after a crossing, and a still camera draws one copy (the
+  2026-09-21 "no smearing" ruling holds). An all-zero history is the old
+  rule, which is what ground cover still runs (its `TIER_BAND_M` dither is
+  the fade the owner kept, 2026-09-22). Tested in `lodFadeTemporal.test.ts`.
+- **A species' ladder follows the mesh levels its kit carries**
+  (`floraKit.speciesRings`). One level: the folded reach above. Two or three
+  (round 13's part-aware tiers, `lodTiers` in the manifest): screen-space
+  hand-over at a 1080 px, 60° reference view (`HANDOVER_PX`, low/medium/high
+  [370, 320, 240] / [320, 200, 160] / [280, 170, 110] px), never nearer than
+  round 13 validated (mid clamp(2.5 h, 18, 60) m, far clamp(5 h, 50, 140) m)
+  and (a non-tree) never carding nearer than the folded ladder. `folded` is
+  now "one mesh level after the dedupe", so tiers draw.
+- **Every tree cards by one rule, by screen size, mesh reach or fog** (owner
+  walk 12; `treeCardDistance`), single-level or multi-level: card distance =
+  min(distanceAtPx(h x crownBulk, `CARD_PX`), `TREE_MESH_MAX_M`, fog hide
+  distance), with `CARD_PX` 20 px in every band, `TREE_MESH_MAX_M` low 250 /
+  medium 400 / high 600 m (decision 0084's frame budget, sized with
+  `__measure__/vegGate.measure.test.ts` at the pod tree views, walk 12 F7),
+  crownBulk = max(1, footprint / height), and the fog hide distance where
+  transmittance exp(-extinction x d) falls to 0.35 (infinite with no fog;
+  the studio feeds 3 / the weather's sight distance, snapped, none above
+  6 km). Medium cards the 6.3 m gkb jungle tree at ~295 m and every tree over
+  ~9 m at 400 m (a 30 m tree is then ~70 px tall). Every tree of 6 m or more
+  is a mesh through the 100-150 m band the owner judged. Shrubs and small
+  plants keep their rings.
+- **Non-tree plants hold their full mesh by size class** (not scaled by the
+  draw scale): small plants 35 / 45 / 65 m (low / medium / high,
+  `SMALL_PLANT_TOP_TIER_M`); LARGE plants (height or half the widest
+  footprint >= 2.5 m, `isLargePlant`) 80 / 100 / 260 m
+  (`LARGE_PLANT_TOP_TIER_M`), drawn as cards to 1.5x that
+  (`plantDrawDistance`).
+- The band-coverage invariant (every distance kept by exactly one rung, for
+  every species shape and preset) is `ladderCoverage.test.ts`.
+
+## Shadows (walk 12): stable cascades, continuous sun
+
+| Rule | Where |
+|---|---|
+| The CSM light direction follows the sun every frame; there is no stepped shadow sun. | `WorldSky.tsx` `stabiliseCascades` |
+| Each cascade's shadow camera covers the fixed bounding sphere of its frustum slice (`cascadeSphere(near, far, fov, aspect)`), so its extent and texel size do not change as the camera turns; the fade margin is added to the radius. | `game-core/render/stableShadow.ts` |
+| The cascade origin is snapped to whole texels (`2 * radius / mapSize`, `snapToTexel`) in a rotation-only light basis anchored at the world origin, so camera motion slides the map by whole texels only. | `stableShadow.ts`, `stableShadow.test.ts` |

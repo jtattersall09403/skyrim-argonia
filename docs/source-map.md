@@ -42,7 +42,10 @@ permission evidence), the old kit manifests used by the kit-id mapper (0.4).
 - `docs/quests/` in full (00-overview, 20-world-provisions, 30-main-quest, 40-factions, 60-writing-and-lore,
   85-condition-vocabulary…).
 - `docs/standards/text/` (style guide) and `docs/standards/by-task.md`, `engineering.md` (for reference).
-- `docs/research/combat-and-systems/` (dark-souls-poise-mechanics, stats-progression-reference-games,
+- `docs/research/` in full (world-terrain, rendering, vegetation, placement-settlements, lore, lore-facts-audit,
+  phase11, phase16, quests-and-cast, text-and-voice, dialogue, archive) as `docs/design/research/`: the evidence the
+  design modules cite (decision 0032). Not the old ways-of-working folders (agent-ops, agents, engine,
+  infrastructure, process, ui) and never the Bethesda text corpus (`text-and-voice/morrowind-dialogue-corpus.md`).
   botw-climbing-system, skyrim-climbing-mod-survey, swim-climb-boat-implementation, player-boats-as-horses,
   source-game-systems-crosscheck, slice-systems-checklist), `docs/research/lore/creature-asset-availability.md`.
 - `docs/phases/2-slice/` (2.1–2.15 briefs and outcomes) for design intent; the old repo's `docs/phases/P-polish/backlog.md`

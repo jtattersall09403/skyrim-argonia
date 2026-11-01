@@ -1,0 +1,75 @@
+# BM&V look 6/10: vantage stills across Black Marsh & Valenwood's own Black Marsh worldspaces (BlackMarsh, BlackMarsh2)
+# for the owner's mood board (2026-11-01): named cells and reference-dense open cells at four times of day, first
+# person. The stills are the deliverable; a step only needs the teleport to land. Six teleports per fresh process (each
+# worldspace load keeps ~300 MB; the engine passed 6 GB after five) and `settle` on every console line (a load holds the
+# main thread past the bridge's retries). A reference run on a dependency's worldspace, never a check of our work.
+id: bmv-look-6
+runner: 1
+crash_risk: high
+relaunch_before: true
+scene: holding
+steps:
+- name: murkmire-evening
+  do:
+  - wait: 10
+  - wait: 10
+  - key: F 100
+  - wait: 2
+  - console:
+      line: set gamehour to 17.5
+      settle: 60
+  - console:
+      line: coc Murkmire
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: temple-2-night
+  do:
+  - console:
+      line: set gamehour to 21.5
+      settle: 60
+  - console:
+      line: coc temple2
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: tribe-dawn
+  do:
+  - console:
+      line: set gamehour to 6.5
+      settle: 60
+  - console:
+      line: coc TRIBE
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: bm-10-m5-dawn
+  do:
+  - console:
+      line: set gamehour to 6.5
+      settle: 60
+  - console:
+      line: cow BlackMarsh 10 -5
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: bm-16-m5-evening
+  do:
+  - console:
+      line: set gamehour to 17.5
+      settle: 60
+  - console:
+      line: cow BlackMarsh 16 -5
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: bm-1-m1-dawn
+  do:
+  - console:
+      line: set gamehour to 6.5
+      settle: 60
+  - console:
+      line: cow BlackMarsh 1 -1
+      settle: 60
+  - wait: 10
+  - wait: 4

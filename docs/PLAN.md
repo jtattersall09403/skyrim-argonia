@@ -135,14 +135,14 @@ column is Part 1's thread; "whole" is the chunk that completes it.
 
 | System | Design source | Route | Deps / references | Our component | First rung → whole |
 |---|---|---|---|---|---|
-| Worldspace terrain (126×126 cells) + apron | old heightfield, 0067 apron | 1 | — | tools + ArgoniaGen | 0.4 → 2.W1 |
-| Rivers, lakes, waterfalls, sea | hydrology graph, 0064 waterfalls vanilla kit | 1 (+5 if needed) | vanilla water records/meshes | water planner | 2.W2 (its first step is the stepped-river proof) |
-| Navmesh | the world's own collision (0026 §4) | 1 (+CK check and fallback) | DotRecast + Mutagen; tes4skyrim as the binary spec | navmesh job | 0.4 → 2.W4 |
-| LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (on the game machine) | lod job | 2.W4 |
-| Regions, weather, climate, sky | climate/weather-states, star catalogue; 0028 | 1 | Tropical Skyrim's weathers; Community Shaders | ArgoniaGen (REGN, WTHR, CLMT) | 2.W3 |
-| Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 |
+| Worldspace terrain (126×126 cells) + apron | the Tamriel prior, the lore dossiers, the water solve (0033) | 1 | — | the terrain generator + ArgoniaGen | 0.4 → 1.15 (frozen) |
+| Rivers, lakes, waterfalls, sea | hydrology graph; one level per cell joined as vanilla joins its steps (0033) | 1 | vanilla water records, rapids and falls meshes | the water solve | 1.15 |
+| Navmesh | the world's own collision (0026 §4) | 1 (+CK check and fallback) | DotRecast + Mutagen; tes4skyrim as the binary spec | navmesh job | 0.4 → 1.15 |
+| LOD, distant terrain, the map image | — | 1 | xLODGen, DynDOLOD (on the game machine) | lod job | 1.15 |
+| Regions, weather, climate, mist | climate/weather-states, the look board; 0028, 0033 §4 | 1 | Tropical Skyrim's weathers, BM&V's look; Community Shaders | ArgoniaGen (REGN, WTHR, CLMT, IMGS) | 2.W3 → 1.15 |
+| Roads, routes, the route graph | routes/*.json | 1 | — | route generator | 2.W3 (stands; re-emitted by 1.15) |
 | Places, interiors, doors | blueprints, 0114 interior manifest | 1 | BM&V, Xanmeer, KotM, others; **Tropical Skyrim SSE** for any base-Skyrim asset | piece resolver, `world-builder`, rebuilt natively (0026) | 0.4 → 2.W5 → 4.2, 4.4 |
-| Vegetation | flora rules as region object lists (0028) | 1 | **Tropical Skyrim SSE (78044)** over the vanilla forms; the CK's region generator | region records; the generator job | 2.W3 → 2.W4 |
+| Vegetation | flora rules as region object lists (0028); BM&V's trees and plants (0033 §3) | 1 | **BM&V** and **Tropical Skyrim SSE (78044)** | region records; our placer | 2.W3 → 1.15 |
 | The studio: scenes, the bridge, the journey runner | old 0149, 0155, 0156; 0022, 0029 | 5 | the console, SkyLink AI's design as the method (its plugin does not load on 1.7.104) | `tools/bridge.py`, `ArgoniaBridge` (dev only) carrying the whole endpoint list, `tools/run_journey.py` | 0.3 |
 | Game state, co-save, message schema, menu router | old 2.1 seam | 5 | — | ArgoniaCore | 1.1 |
 | Where each rule lives | the goals list (old designs as goals, 0026) | 1 → 5 | Skyrim's native systems, tes4skyrim's runtimes, PLAN §4 mods | the native map, `skse/core/` for what is left | 1.1 §a |
@@ -190,7 +190,7 @@ close; nothing is estimated in advance (decision 0029 §6).
 | Part | What | Ends when the owner can say | Owner involvement |
 |---|---|---|---|
 | [0 Foundation](phases/0-foundation/README.md) | first: can vanilla Skyrim be played through the stream (G0); then the repo, toolchain and import; our stack on the game machine; the agent's hands (SkyLink, our SKSE build, scenes, the journey runner, the timed loop); the pipeline, the quarantine, the inventory and the Claywater block walked in game | "I dropped into Claywater on my phone and walked around" | the play sessions, O-1, O-3, O-5, O-17 |
-| [1 The first place](phases/1-core-loop/README.md) | Claywater Station complete: talk, carry, one quest through the journal, grow, die, rest, save, fight on the tuned stack; the world track (2.W1–2.W4) starts beside it after 0.4 | "this is the game I want; it is worth building" | the verdict packet; O-4, O-9, O-11, O-16 |
+| [1 The first place](phases/1-core-loop/README.md) | Claywater Station complete: talk, carry, one quest through the journal, grow, die, rest, save, fight on the tuned stack; the world track starts beside it after 0.4 and is rebuilt whole in 1.15 (decision 0033) | "this is the game I want; it is worth building" | the verdict packet; O-4, O-9, O-11, O-16 |
 | [2 The slice](phases/2-slice/README.md) | world track: the whole worldspace and the slice places; systems track: every system whole, people, dialogue and quests first, then combat's map, progression, the UI's second stage | "I played the slice in the studio; every system is real; the world is leg-work" | wave and world walks, a packet per few systems, the playthrough, O-8 |
 | [3 The game shell](phases/3-shell/README.md) | main menu, settings, controls, character creation, the opening, install paths, first playable | "I started a new game and reached the open world; a stranger installed it" | the opening (hands-on), O-10, O-13, O-20 |
 | [4 Build out sideways](phases/4-buildout/README.md) | before scale, region packets, narrative lines, interiors, systems depth, final look and release | "the whole province is populated, every quest completes, and it is released" | cities (hands-on), a walk per region, O-2, O-18 |

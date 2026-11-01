@@ -12,6 +12,13 @@ it writes depends on the clock, so a second run leaves `git status` unchanged.
   private/old-mined/**                 plugin-mined placement tables (gitignored: retail-derived, decision 0003)
   world/IMPORTED_FROM.md               every source path -> destination, and every missing path
 
+Re-running after 0.1 (2026-11-01): this repo has since rewritten some imported files in place
+(docs/design/world/98-data-model.md, docs/design/quests/85-condition-vocabulary.md, world/schemas/families.json,
+world/sources/hydrology/README.md) and retired most of world/sources/ into world/db (decision 0030). A full
+re-run reverts all of that, so after a re-run (to refresh the old research record, decision 0032): restore those
+four paths from HEAD, delete the untracked files the run recreated under world/, and keep only the
+docs/design/research and IMPORTED_FROM.md changes. Links are rewritten only by the full run.
+
 Never copied (decision 0003): Bethesda text corpora (the Morrowind exemplar and corpus files and
 any Morrowind-named UESP-fetched note), anything whose extension this repo's .gitignore names, any
 binary, apps/, lanes/, tooling/, packages/ code other than the rule packages, and any file over
@@ -73,14 +80,17 @@ DESIGN = [
     ("docs/standards/text", "standards/text"),
     ("docs/standards/by-task.md", "standards/by-task.md"),
     ("docs/standards/engineering.md", "standards/engineering.md"),
-    ("docs/research/combat-and-systems", "research/combat-and-systems"),
-    ("docs/research/lore/creature-asset-availability.md", "research/lore/creature-asset-availability.md"),
+    ("docs/research", "research"),  # whole, less DESIGN_EXCLUDE (decision 0032)
     ("docs/phases/2-slice", "phases/2-slice"),
     ("packages/game-core/src/stats/README.md", "stats/README.md"),
     ("docs/decisions", "old-decisions"),
     ("docs/research/combat-and-systems/slice-systems-checklist.md", "slice-systems-checklist.md"),
 ]
 DESIGN_KEEP = {"README.md", "goals.md"}
+# the old repo's ways of working and the Bethesda corpus never come over as design evidence (0032, 0003)
+DESIGN_EXCLUDE_DIRS = ("docs/research/agent-ops/", "docs/research/agents/", "docs/research/engine/",
+                       "docs/research/infrastructure/", "docs/research/process/", "docs/research/ui/")
+DESIGN_EXCLUDE_FILES = {"docs/research/text-and-voice/morrowind-dialogue-corpus.md": "Bethesda text corpus (0003, O-21)"}
 # source-map §1: the schemas
 SCHEMA_SRC = "packages/world-schema/schemas"
 FAMILIES_SRC = "packages/world-schema/families.json"
@@ -245,6 +255,12 @@ class Importer:
                 self.dir_map.append((old_rel, f"docs/design/{new_rel}"))
             for p in files:
                 rel = self.rel(p)
+                if rel.startswith(DESIGN_EXCLUDE_DIRS):
+                    self.excluded.append((rel, "the old repo's ways of working, not design evidence (0032)"))
+                    continue
+                if rel in DESIGN_EXCLUDE_FILES:
+                    self.excluded.append((rel, DESIGN_EXCLUDE_FILES[rel]))
+                    continue
                 if not self.ext_ok(p):
                     self.excluded.append((rel, f"extension {p.suffix or '(none)'} is not text (image, binary or ignored)"))
                     continue

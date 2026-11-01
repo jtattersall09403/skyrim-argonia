@@ -32,39 +32,24 @@ a whole system is noted in that system's Part 2 brief, never built now.
 **The world track runs beside this part.** 2.W1–2.W4 start as soon as 0.4 passes and load the build VM;
 this part loads the GPU box. They share nothing but the pipeline (0.4 §a).
 
-## The world track's in-game sample (owner, 2026-10-29: "sample smartly")
+## The world track
 
-2.W1–2.W4 prove their data at L1 on every cell; in game they are checked by **one small sample chosen to hit the
-likely pitfalls**, not by walks of the whole province. One journey, `world-sample`, run once per world-track
-change set on one machine, a still per stop and a state read where a number decides:
+2.W1–2.W4 built the first world at L1–L3 and proved most of their sample in game; the owner's play found it
+broken in every class at once, and decision [0033](../../decisions/0033-the-world-is-rebuilt-water-first.md)
+rebuilds it in **1.15** (water-first, by rule, from the lore, once). Their proven rows stand as history in
+`checks.md`; their owed rows are dropped under 0033; what they built that stands (the hydrology tables, the
+regions, roads and route graph, the placer, the navmesh and LOD jobs, the ESM writer) is carried by 1.15. The
+in-game oracle is 1.15's fixed vantage panel (`world-panel`, 24 stills at the play camera read against the
+owner's look board), not the old 13-stop sample.
 
-| # | Stop | Catches |
-|---|---|---|
-| 1 | Claywater block, on the road in | heights vs heightfield (probe), grass on the paint, region trees, road surface |
-| 2 | The steepest limited cliff (2.W1's worst cell) | the cliff ramp, seams, texture stretching |
-| 3 | A cell corner where four cells meet on a slope | seams in height, normals and texture |
-| 4 | One stepped river reach with rapids | step lines hidden, z-fighting, flow look |
-| 5 | One waterfall | the falls piece seated on the step |
-| 6 | One marsh basin | the designed marsh level, no floating or missing water |
-| 7 | One lake shore and one coast | banks, the sea default at 0, the apron through the haze |
-| 8 | The densest vegetation cell | frame time against the 0.2 §d bar, no Nordic flora (incl. the three vanilla rocks) |
-| 9 | One border segment and one exit gate | the player cannot leave; the closed-road message |
-| 10 | One signpost at a junction | sign text and arms |
-| 11 | Weather: a 7-day skip at the Claywater block | the region's weather cycles; the light is green-gold |
-| 12 | Navmesh: an NPC walks Claywater, 20 random path requests across the block and one swim | walkable ground, door and water links |
-| 13 | A distant view from a high point | terrain and tree LOD, no missing tiles |
-
-A failing stop is diagnosed, the whole class fixed once at L1, and the stop re-run; a new stop is added only after
-a defect the sample missed (0011 §2). The briefs' longer owed lists (1,000 probe points, 30 step stills, 200 paths)
-are met by the L1 checks plus this sample.
-
-## Starting state (2026-10-31)
+## Starting state (2026-11-01)
 
 Part 0 is not closed: 0.2–0.4 are in progress (the g6 frame times, the timed loop row and the owner's Claywater walk
 are owed) and Part 1 runs beside them. Every chunk here is built at L1–L3; in game, most journeys have passed at
-least once and the reds are listed in each PROGRESS row. Game machines are named in `infra/gpu-box/machines.conf`:
-argonia-play (the play machine, Paris) and argonia-play-london (agents' checks). Status: [PROGRESS](../../PROGRESS.md),
-the Status column below and `checks.md`.
+least once and the reds are listed in each PROGRESS row. The world is being rebuilt (1.15, decision 0033).
+Game machines are named in `infra/gpu-box/machines.conf`: argonia-play (Paris) and argonia-play-ie (Ireland), a
+pool either the owner or an agent takes. Status: [PROGRESS](../../PROGRESS.md), the Status column below and
+`checks.md`.
 
 ## Chunk table
 
@@ -81,8 +66,8 @@ the Status column below and `checks.md`.
 | 1.10 | [The player character](1.10-the-player-character.md) | — | 1.9 | done |
 | 1.11 | [Our HUD, rebuilt from the old game's](1.11-our-hud.md) | 1.9 (loads) | 1.14 | in progress |
 | 1.12 | [The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device](1.12-the-in-game-ui.md) | 1.11 (the HUD it restyles) | 1.14 | in progress |
-| 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.11, 1.12 | todo |
-| 1.15 | [The world track's close](1.15-the-world-tracks-close.md) | 1.8 (the play machine) | 1.16 | todo |
+| 1.15 | [The world, rebuilt](1.15-the-world-tracks-close.md) | 1.8 (the play machine); decision 0033 | 1.14, 1.16 | todo |
+| 1.14 | [Death, the pile and respawn](1.14-death-and-the-pile.md) | — | 1.11, 1.12, 1.15 | todo |
 | 1.16 | [The owed integration checks](1.16-the-owed-integration-checks.md) | 1.9–1.14 | 1.15 | todo |
 | 1.17 | [Frame rate and the screen numbers](1.17-frame-rate-and-the-screen-numbers.md) | 1.8, 1.15 | — | todo |
 | 1.7 | [The first-place journey and the owner's verdict](1.7-verdict.md) | 1.1–1.6, 1.8–1.17 | — | in progress |
@@ -109,11 +94,13 @@ play test ([owner-playtest-1.md](../../research/2026-10-31/owner-playtest-1.md))
 ([ledger-audit.md](../../research/2026-10-31/ledger-audit.md): 56 proven, 38 owed, 9 dropped) left what 1.8–1.17
 do. Each is **one session's work**, taken one at a time by the owner, in this order:
 - first what stops play: 1.8 the machine, 1.9 loads, 1.10 the Nord head;
-- then what the owner sees: 1.11 the HUD, 1.12 the in-game UI (menus, the chart, the journal, dialogue, every device), 1.14 death;
-- then what proves the rest: 1.15 the world track, 1.16 the owed checks, 1.17 frame rate;
+- then what the owner sees: 1.11 the HUD, 1.12 the in-game UI (menus, the chart, the journal, dialogue, every device);
+- then **1.15 the world, rebuilt** (owner, 2026-11-01: before death, since the world is the first priority and
+  death does not touch it), then 1.14 death;
+- then what proves the rest: 1.16 the owed checks, 1.17 frame rate;
 - then 1.7, the packet and the verdict.
 
-Where two chunks touch the same view, the order above keeps one builder per view. 1.1–1.6 and 2.W1–2.W4 stay in progress until the Round-two chunk that closes their last owed row marks them done.
+Where two chunks touch the same view, the order above keeps one builder per view. 1.1–1.6 stay in progress until the Round-two chunk that closes their last owed row marks them done; 2.W1–2.W4 are dropped under 0033 and 1.15 carries what stands.
 
 ### How a chunk session runs
 The owner starts a fresh session with **"deliver <id>"** (for example "deliver 1.8"). The session follows the
@@ -129,7 +116,7 @@ A chunk that doesn't finish leaves its hand-off in the brief's Starting state.
 |---|---|
 | SkyLink AI's approach for our tools | 1.16 |
 | 98 dependency mods, slim if not needed | done: the stack is 70 mods (stack.py) |
-| Water "falls back to one level": designed levels only, drop stray puddles | 1.15 |
+| Water "falls back to one level": designed levels only, drop stray puddles | 1.15 (one level per cell, decision 0033) |
 | The hand-drawn map: the old repo's? | 1.12 |
 | Sample smartly; no long walks; no quest playthrough in game; headless playthrough only | the rules in CLAUDE.md and "How a chunk session runs" |
 | The Morrowind attributes and skills mod (nexus 60199) as a foundation, in our theme | 1.16 |

@@ -121,8 +121,8 @@ def lint(journey: dict, vocab: dict | None) -> list[str]:
         found = []
         for a in s.get("do", []):
             (k, v), = a.items()
-            if k == "console":
-                found += console_line(str(v), vocab)
+            if k == "console":  # a line, or {line, settle} (the runner waits out a busy main thread)
+                found += console_line(str(v["line"] if isinstance(v, dict) else v), vocab)
             elif k == "call" and isinstance(v, list):
                 found += read_call(v, vocab)
             elif k in ("talk", "strike"):

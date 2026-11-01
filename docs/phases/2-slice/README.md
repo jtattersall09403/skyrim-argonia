@@ -27,8 +27,8 @@ the booth) come from 0.3 and 0.4.
 The tracks run side by side because they load different machines, and the world track starts first (after 0.4,
 beside Part 1), because the world is the first priority and the longest track (decision 0027). The systems track
 runs in the order of the priorities: people, dialogue and quests first, then the sheet and items they need whole,
-then combat's map, progression, the UI's second stage, and the rest. The **world track** (2.W) is mostly generators
-and L1 checks on the build VM. The **systems track** (2.1–2.17) is mostly L2 and L4 work on the GPU box. They
+then combat's map, progression, the UI's second stage, and the rest. The **world track** (2.W) built its first world in 2.W1–2.W4, superseded by 1.15's rebuild (decision 0033); from
+2.W5 it is places on the frozen world. The **systems track** (2.1–2.17) is mostly L2 and L4 work on the GPU box. They
 meet at the places: the systems that need people (2.4 onwards) wait for wave 1, and 2.17 waits for wave 2.
 
 **How a systems brief is written.**
@@ -50,11 +50,11 @@ meet at the places: the systems that need people (2.4 onwards) wait for wave 1, 
 
 | Id | Chunk | Depends on | Lane-able beside | Status |
 |---|---|---|---|---|
-| 2.W1 | [Terrain, apron and edges](../1-core-loop/2.W1-terrain.md) | 0.4 (it starts beside Part 1; decision 0027 §2) | Part 1, systems track | in progress |
-| 2.W2 | [Water](../1-core-loop/2.W2-water.md) | 2.W1 | systems track | in progress |
-| 2.W3 | [Regions, weather, light, roads and the route graph](../1-core-loop/2.W3-regions-roads.md) | 2.W1 | 2.W2 | in progress |
-| 2.W4 | [Vegetation, navmesh and LOD](../1-core-loop/2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | systems track | in progress |
-| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 2.W1–2.W4 (navmesh at least, for wave 1) | systems track | todo |
+| 2.W1 | [Terrain, apron and edges](../1-core-loop/2.W1-terrain.md) | 0.4 | — | dropped |
+| 2.W2 | [Water](../1-core-loop/2.W2-water.md) | 2.W1 | — | dropped |
+| 2.W3 | [Regions, weather, light, roads and the route graph](../1-core-loop/2.W3-regions-roads.md) | 2.W1 | — | dropped |
+| 2.W4 | [Vegetation, navmesh and LOD](../1-core-loop/2.W4-vegetation-navmesh-lod.md) | 2.W2, 2.W3 | — | dropped |
+| 2.W5 | [The slice places, in two waves](2.W5-slice-places.md) | 1.15 (the frozen world; decision 0033) | systems track | todo |
 | 2.W6 | [Performance and the world walk](2.W6-performance-walk.md) | 2.W5 wave 2 | systems track | todo |
 | 2.4 | [People](2.4-people.md) | Part 1 exit, 2.W5 wave 1 | 2.1, 2.3 | todo |
 | 2.5 | [Dialogue](2.5-dialogue.md) | 2.4 | 2.3 | todo |

@@ -1,0 +1,16 @@
+# Draft (1.15 §0, §f): the fixed vantage panel, the in-game oracle of the rebuilt world (decision 0033 §5). Turned
+# into steps by the 1.15 session once the sample's cells exist. 24 stills at the play camera, read by a `reader`
+# against the look board (docs/design/world/look-board.md) with the 1.15 §0 checklist and the feel question.
+id: world-panel
+status: draft, owed L4
+scenes: [world-panel]
+steps:
+  - for each of the 12 region classes (world/db/land_region.jsonl eco classes): two vantages chosen at L1 from the
+      generated data (one on the ground beside water of the class's kind, one from the class's highest point with a
+      long view), fixed by cell and position in the scene and never moved after the first run
+  - at each vantage, two stills: noon (clear, the region's commonest weather) and dawn (06:30, the region's mist
+      regime), first person, the HUD hidden; the dawn still proves region_mist, the noon still the materials and water
+  - do: `console: {line: "cow ARG_Province x y", settle: 60}`, `teleport pos`, `set gamehour`, `fw <weather>`, wait
+      14 s for the load and the grass, the still
+  - read: [the player's cell and worldspace (the teleport landed), frame_time_ms at the densest vantage]
+  - expect: every step only checks the teleport landed; the stills decide, by the reader

@@ -1,0 +1,75 @@
+# BM&V look 5/10: vantage stills across Black Marsh & Valenwood's own Black Marsh worldspaces (BlackMarsh, BlackMarsh2)
+# for the owner's mood board (2026-11-01): named cells and reference-dense open cells at four times of day, first
+# person. The stills are the deliverable; a step only needs the teleport to land. Six teleports per fresh process (each
+# worldspace load keeps ~300 MB; the engine passed 6 GB after five) and `settle` on every console line (a load holds the
+# main thread past the bridge's retries). A reference run on a dependency's worldspace, never a check of our work.
+id: bmv-look-5
+runner: 1
+crash_risk: high
+relaunch_before: true
+scene: holding
+steps:
+- name: bandit-camp-dawn
+  do:
+  - wait: 10
+  - wait: 10
+  - key: F 100
+  - wait: 2
+  - console:
+      line: set gamehour to 6.5
+      settle: 60
+  - console:
+      line: coc BANDITCAMP1
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: pyramid-noon
+  do:
+  - console:
+      line: set gamehour to 12
+      settle: 60
+  - console:
+      line: coc pyramid
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: dwarven-evening
+  do:
+  - console:
+      line: set gamehour to 17.5
+      settle: 60
+  - console:
+      line: coc DWARVEN
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: murkwood-ext-night
+  do:
+  - console:
+      line: set gamehour to 21.5
+      settle: 60
+  - console:
+      line: coc Murkwoodext
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: dock-5-dawn
+  do:
+  - console:
+      line: set gamehour to 6.5
+      settle: 60
+  - console:
+      line: coc dock5
+      settle: 60
+  - wait: 10
+  - wait: 4
+- name: helstrom-noon
+  do:
+  - console:
+      line: set gamehour to 12
+      settle: 60
+  - console:
+      line: coc Helstrom
+      settle: 60
+  - wait: 10
+  - wait: 4

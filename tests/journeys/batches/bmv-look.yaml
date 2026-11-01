@@ -1,0 +1,16 @@
+# the BM&V mood-board stills (owner, 2026-11-01): ten short parts, each a fresh process. Run:
+#   tooling/job_guard.sh run --gpu=<machine> bmv-look -- python3 tools/run_batch.py tests/journeys/batches/bmv-look.yaml
+id: bmv-look
+relaunch_mb: 6000
+relaunch_every: 0
+items:
+  - bmv-look-1
+  - bmv-look-2
+  - bmv-look-3
+  - bmv-look-4
+  - bmv-look-5
+  - bmv-look-6
+  - bmv-look-7
+  - bmv-look-8
+  - bmv-look-9
+  - bmv-look-10

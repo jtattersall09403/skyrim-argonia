@@ -2,8 +2,8 @@
 
 Commit `b581910f0f87d8da88eaa9876d238cdc5d709e78` of the owner's private repo (read-only source). Written by `tools/import_old.py`; do not edit by hand. Data files are byte-identical; each design doc under `docs/design/` carries a source header line, and only relative links to other imported files were rewritten.
 
-- Files copied: 1136 (749 under `world/`, 387 under `docs/design/`)
-- Design-doc links rewritten to the new locations: 209; left unresolved: 245
+- Files copied: 1365 (749 under `world/`, 616 under `docs/design/`)
+- Design-doc links rewritten to the new locations: 393; left unresolved: 176
 
 ## Missing
 
@@ -75,6 +75,44 @@ Source-map paths that do not exist at this commit:
 - `docs/phases/2-slice/2.12-loops/survey_runner.ts`: extension .ts is not text (image, binary or ignored)
 - `docs/phases/2-slice/2.12-loops/survey_runtime.test.ts`: extension .ts is not text (image, binary or ignored)
 - `docs/phases/2-slice/2.12-loops/survey_runtime.ts`: extension .ts is not text (image, binary or ignored)
+- `docs/research/agent-ops/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/agent-ops/cost-reviews.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/agents/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/archive/building-depth-2026-09/diffuse-classes.tsv`: extension .tsv is not text (image, binary or ignored)
+- `docs/research/archive/building-depth-2026-09/rule2-texture-flags.tsv`: extension .tsv is not text (image, binary or ignored)
+- `docs/research/engine/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/engine/godot-migration-assessment.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/infrastructure/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/infrastructure/codespaces-migration-plan.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/infrastructure/gpu-dev-machine-cost-analysis.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/process/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/rendering/reference/waterfall-target-close.jpg`: extension .jpg is not text (image, binary or ignored)
+- `docs/research/rendering/reference/waterfall-target-wide.jpg`: extension .jpg is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/cap-cloud-trial-billboards-r3.jpg`: extension .jpg is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/cap-cloud-trial-sheets-r7.jpg`: extension .jpg is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/fog-local-light-scattering.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/fog-over-water-1.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/fog-over-water-2.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/fog-over-water-3.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/fog-over-water-4.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-canopy-exterior.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-general.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-large-interior.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-overhead-shaft.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-small-interior-1.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/god-rays-small-interior-2.png`: extension .png is not text (image, binary or ignored)
+- `docs/research/rendering/volumetric-bars/marsh-mist-reference-nexus-33017.jpg`: extension .jpg is not text (image, binary or ignored)
+- `docs/research/text-and-voice/morrowind-dialogue-corpus.md`: Bethesda text corpus (0003, O-21)
+- `docs/research/ui/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/README.md`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/dark-souls-ds1-hud-early.webp`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/dark-souls-ds1-hud-late.webp`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/dark-souls-ds3-hud-early.webp`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/dark-souls-ds3-hud-late.webp`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/morrowind-journal-vanilla.png`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/morrowind-map-player-marker.png`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/morrowind-pause-screen-black-marsh-restyle.png`: the old repo's ways of working, not design evidence (0032)
+- `docs/research/ui/reference/title-screen-concept.png`: the old repo's ways of working, not design evidence (0032)
 - `world/sources/audio/barks/test_barks.py`: extension .py is not text data (binary, code or ignored)
 - `world/sources/blueprints/chasepoint.scan.json`: not in the source-map §1 blueprint patterns (scan files are tool output)
 - `world/sources/blueprints/the-wamasu-shrine.scan.json`: not in the source-map §1 blueprint patterns (scan files are tool output)
@@ -437,6 +475,108 @@ Source-map paths that do not exist at this commit:
 | `docs/quests/index/main.md` | `docs/design/quests/index/main.md` |
 | `docs/quests/index/proposed.md` | `docs/design/quests/index/proposed.md` |
 | `docs/quests/index/standalone.md` | `docs/design/quests/index/standalone.md` |
+| `docs/research/README.md` | `docs/design/research/README.md` |
+| `docs/research/archive/agent-process-reviews/instruction-and-agent-tree-review-2026-10-14.md` | `docs/design/research/archive/agent-process-reviews/instruction-and-agent-tree-review-2026-10-14.md` |
+| `docs/research/archive/agent-process-reviews/instruction-surface-review-2026-10-14.md` | `docs/design/research/archive/agent-process-reviews/instruction-surface-review-2026-10-14.md` |
+| `docs/research/archive/agent-process-reviews/workflow-cost-review-2026-09-28.md` | `docs/design/research/archive/agent-process-reviews/workflow-cost-review-2026-09-28.md` |
+| `docs/research/archive/armour-neck-seam/0055-as-recorded.md` | `docs/design/research/archive/armour-neck-seam/0055-as-recorded.md` |
+| `docs/research/archive/armour-neck-seam/0056-as-recorded.md` | `docs/design/research/archive/armour-neck-seam/0056-as-recorded.md` |
+| `docs/research/archive/building-depth-2026-09/README.md` | `docs/design/research/archive/building-depth-2026-09/README.md` |
+| `docs/research/archive/building-depth-2026-09/argonian-architecture.md` | `docs/design/research/archive/building-depth-2026-09/argonian-architecture.md` |
+| `docs/research/archive/building-depth-2026-09/bethesda-exterior-building.md` | `docs/design/research/archive/building-depth-2026-09/bethesda-exterior-building.md` |
+| `docs/research/archive/building-depth-2026-09/camera.md` | `docs/design/research/archive/building-depth-2026-09/camera.md` |
+| `docs/research/archive/building-depth-2026-09/modder-practice-assembly.md` | `docs/design/research/archive/building-depth-2026-09/modder-practice-assembly.md` |
+| `docs/research/archive/building-depth-2026-09/topic2-building-flash.md` | `docs/design/research/archive/building-depth-2026-09/topic2-building-flash.md` |
+| `docs/research/archive/building-depth-2026-09/topic6-argonian-hut.md` | `docs/design/research/archive/building-depth-2026-09/topic6-argonian-hut.md` |
+| `docs/research/archive/building-depth-2026-09/vault-buildability.md` | `docs/design/research/archive/building-depth-2026-09/vault-buildability.md` |
+| `docs/research/archive/building-depth-2026-09/windows-architecture.md` | `docs/design/research/archive/building-depth-2026-09/windows-architecture.md` |
+| `docs/research/archive/building-depth-2026-09/windows.md` | `docs/design/research/archive/building-depth-2026-09/windows.md` |
+| `docs/research/archive/combat-0040-rounds/0040-rounds.md` | `docs/design/research/archive/combat-0040-rounds/0040-rounds.md` |
+| `docs/research/archive/combat-0040-rounds/README.md` | `docs/design/research/archive/combat-0040-rounds/README.md` |
+| `docs/research/archive/light-8a-rounds/0021-as-recorded.md` | `docs/design/research/archive/light-8a-rounds/0021-as-recorded.md` |
+| `docs/research/archive/phase10-rounds/0036-round-log.md` | `docs/design/research/archive/phase10-rounds/0036-round-log.md` |
+| `docs/research/archive/phase10-rounds/0036-runbook-and-questions.md` | `docs/design/research/archive/phase10-rounds/0036-runbook-and-questions.md` |
+| `docs/research/archive/phase10-rounds/README.md` | `docs/design/research/archive/phase10-rounds/README.md` |
+| `docs/research/archive/phase11-rounds/0041-delivery-plan.md` | `docs/design/research/archive/phase11-rounds/0041-delivery-plan.md` |
+| `docs/research/archive/phase11-rounds/0041-round-log.md` | `docs/design/research/archive/phase11-rounds/0041-round-log.md` |
+| `docs/research/archive/phase11-rounds/0041-siting-rounds.md` | `docs/design/research/archive/phase11-rounds/0041-siting-rounds.md` |
+| `docs/research/archive/phase11-rounds/96-placement-playbook-history.md` | `docs/design/research/archive/phase11-rounds/96-placement-playbook-history.md` |
+| `docs/research/archive/phase11-rounds/README.md` | `docs/design/research/archive/phase11-rounds/README.md` |
+| `docs/research/archive/phase11-rounds/phase11-asset-gap-check.md` | `docs/design/research/archive/phase11-rounds/phase11-asset-gap-check.md` |
+| `docs/research/archive/phase11-rounds/phase11-catalogue-summary-touchpoint1.md` | `docs/design/research/archive/phase11-rounds/phase11-catalogue-summary-touchpoint1.md` |
+| `docs/research/archive/phase11-rounds/phase11-gap-plan.md` | `docs/design/research/archive/phase11-rounds/phase11-gap-plan.md` |
+| `docs/research/archive/phase11-rounds/phase11-part5-exemplar-proposal.md` | `docs/design/research/archive/phase11-rounds/phase11-part5-exemplar-proposal.md` |
+| `docs/research/archive/phase11-rounds/phase11-part6-round-a.md` | `docs/design/research/archive/phase11-rounds/phase11-part6-round-a.md` |
+| `docs/research/archive/phase11-rounds/phase11-plot-review.md` | `docs/design/research/archive/phase11-rounds/phase11-plot-review.md` |
+| `docs/research/archive/phase11-rounds/phase11-round-a-audit.md` | `docs/design/research/archive/phase11-rounds/phase11-round-a-audit.md` |
+| `docs/research/archive/phase11-rounds/phase11-round-a-owner-eye-review.md` | `docs/design/research/archive/phase11-rounds/phase11-round-a-owner-eye-review.md` |
+| `docs/research/archive/phase11-rounds/promise-ledger-round-1.md` | `docs/design/research/archive/phase11-rounds/promise-ledger-round-1.md` |
+| `docs/research/archive/phase11-rounds/walkthrough-2026-09-09.md` | `docs/design/research/archive/phase11-rounds/walkthrough-2026-09-09.md` |
+| `docs/research/archive/phase16-evidence/16a-hydrology-graph-ledger.md` | `docs/design/research/archive/phase16-evidence/16a-hydrology-graph-ledger.md` |
+| `docs/research/archive/phase16-evidence/16b-terrain-once-ledger.md` | `docs/design/research/archive/phase16-evidence/16b-terrain-once-ledger.md` |
+| `docs/research/archive/phase16-evidence/16c-round-2-ledger.md` | `docs/design/research/archive/phase16-evidence/16c-round-2-ledger.md` |
+| `docs/research/archive/phase16-evidence/16c-water-once-ledger.md` | `docs/design/research/archive/phase16-evidence/16c-water-once-ledger.md` |
+| `docs/research/archive/phase16-evidence/16d-ledger.md` | `docs/design/research/archive/phase16-evidence/16d-ledger.md` |
+| `docs/research/archive/phase16-evidence/16e-ledger.md` | `docs/design/research/archive/phase16-evidence/16e-ledger.md` |
+| `docs/research/archive/phase16-evidence/16f-ledger.md` | `docs/design/research/archive/phase16-evidence/16f-ledger.md` |
+| `docs/research/archive/phase16-evidence/16g-ledger.md` | `docs/design/research/archive/phase16-evidence/16g-ledger.md` |
+| `docs/research/archive/phase16-evidence/16g-mining.md` | `docs/design/research/archive/phase16-evidence/16g-mining.md` |
+| `docs/research/archive/phase16-evidence/16h-ledger.md` | `docs/design/research/archive/phase16-evidence/16h-ledger.md` |
+| `docs/research/archive/phase16-evidence/16k-walk10-ledger.md` | `docs/design/research/archive/phase16-evidence/16k-walk10-ledger.md` |
+| `docs/research/archive/phase16-evidence/README.md` | `docs/design/research/archive/phase16-evidence/README.md` |
+| `docs/research/archive/phase16-evidence/method-review-r6.md` | `docs/design/research/archive/phase16-evidence/method-review-r6.md` |
+| `docs/research/archive/phase16-evidence/method-review-r7.md` | `docs/design/research/archive/phase16-evidence/method-review-r7.md` |
+| `docs/research/archive/phase16-evidence/method-review-r8.md` | `docs/design/research/archive/phase16-evidence/method-review-r8.md` |
+| `docs/research/archive/phase16-evidence/method-review-r9.md` | `docs/design/research/archive/phase16-evidence/method-review-r9.md` |
+| `docs/research/archive/phase16-evidence/method-reviews.md` | `docs/design/research/archive/phase16-evidence/method-reviews.md` |
+| `docs/research/archive/phase16-retired-briefs/16i-exemplars-end-to-end.md` | `docs/design/research/archive/phase16-retired-briefs/16i-exemplars-end-to-end.md` |
+| `docs/research/archive/phase16-retired-briefs/16j-rollout-skill-and-trial-packet.md` | `docs/design/research/archive/phase16-retired-briefs/16j-rollout-skill-and-trial-packet.md` |
+| `docs/research/archive/place-decision-rounds/0081-as-recorded.md` | `docs/design/research/archive/place-decision-rounds/0081-as-recorded.md` |
+| `docs/research/archive/place-decision-rounds/0085-as-recorded.md` | `docs/design/research/archive/place-decision-rounds/0085-as-recorded.md` |
+| `docs/research/archive/place-decision-rounds/0099-as-recorded.md` | `docs/design/research/archive/place-decision-rounds/0099-as-recorded.md` |
+| `docs/research/archive/place-decision-rounds/0100-as-recorded.md` | `docs/design/research/archive/place-decision-rounds/0100-as-recorded.md` |
+| `docs/research/archive/place-decision-rounds/0106-as-recorded.md` | `docs/design/research/archive/place-decision-rounds/0106-as-recorded.md` |
+| `docs/research/archive/place-decision-rounds/README.md` | `docs/design/research/archive/place-decision-rounds/README.md` |
+| `docs/research/archive/plan-2026-10-pre-derisk/15-rollout-README.md` | `docs/design/research/archive/plan-2026-10-pre-derisk/15-rollout-README.md` |
+| `docs/research/archive/plan-2026-10-pre-derisk/README.md` | `docs/design/research/archive/plan-2026-10-pre-derisk/README.md` |
+| `docs/research/archive/plan-2026-10-pre-derisk/buildout-register.md` | `docs/design/research/archive/plan-2026-10-pre-derisk/buildout-register.md` |
+| `docs/research/archive/plan-2026-10-pre-derisk/phases-README.md` | `docs/design/research/archive/plan-2026-10-pre-derisk/phases-README.md` |
+| `docs/research/archive/quest-qa-0030/0030-findings-register.md` | `docs/design/research/archive/quest-qa-0030/0030-findings-register.md` |
+| `docs/research/archive/rendering-decision-rounds/0071-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0071-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0073-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0073-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0075-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0075-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0082-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0082-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0084-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0084-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0108-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0108-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0123-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0123-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/0124-as-recorded.md` | `docs/design/research/archive/rendering-decision-rounds/0124-as-recorded.md` |
+| `docs/research/archive/rendering-decision-rounds/README.md` | `docs/design/research/archive/rendering-decision-rounds/README.md` |
+| `docs/research/archive/vegetation-0048-rounds/0048-as-recorded.md` | `docs/design/research/archive/vegetation-0048-rounds/0048-as-recorded.md` |
+| `docs/research/archive/water-8b-rounds/0025-round-log.md` | `docs/design/research/archive/water-8b-rounds/0025-round-log.md` |
+| `docs/research/archive/water-8b-rounds/0025-runbook-and-chain.md` | `docs/design/research/archive/water-8b-rounds/0025-runbook-and-chain.md` |
+| `docs/research/archive/water-8b-rounds/README.md` | `docs/design/research/archive/water-8b-rounds/README.md` |
+| `docs/research/archive/water-overhaul-2026-09/0045-reversible-water-overhaul.md` | `docs/design/research/archive/water-overhaul-2026-09/0045-reversible-water-overhaul.md` |
+| `docs/research/archive/water-overhaul-2026-09/README.md` | `docs/design/research/archive/water-overhaul-2026-09/README.md` |
+| `docs/research/archive/water-overhaul-2026-09/water-bankfull.md` | `docs/design/research/archive/water-overhaul-2026-09/water-bankfull.md` |
+| `docs/research/archive/water-overhaul-2026-09/water-completion-audit.md` | `docs/design/research/archive/water-overhaul-2026-09/water-completion-audit.md` |
+| `docs/research/archive/water-overhaul-2026-09/water-coverage-pipeline.md` | `docs/design/research/archive/water-overhaul-2026-09/water-coverage-pipeline.md` |
+| `docs/research/archive/water-overhaul-2026-09/water-handoff.md` | `docs/design/research/archive/water-overhaul-2026-09/water-handoff.md` |
+| `docs/research/archive/water-overhaul-2026-09/water-local-fluid-and-gpu-budgets.md` | `docs/design/research/archive/water-overhaul-2026-09/water-local-fluid-and-gpu-budgets.md` |
+| `docs/research/archive/water-round-2-2026-09/0047-as-recorded.md` | `docs/design/research/archive/water-round-2-2026-09/0047-as-recorded.md` |
+| `docs/research/archive/water-round-2-2026-09/README.md` | `docs/design/research/archive/water-round-2-2026-09/README.md` |
+| `docs/research/archive/water-round-2-2026-09/water-handoff.md` | `docs/design/research/archive/water-round-2-2026-09/water-handoff.md` |
+| `docs/research/archive/water-round-2-2026-09/water-quality.md` | `docs/design/research/archive/water-round-2-2026-09/water-quality.md` |
+| `docs/research/archive/water-round-2-2026-09/water-round2-evidence.md` | `docs/design/research/archive/water-round-2-2026-09/water-round2-evidence.md` |
+| `docs/research/archive/weather-8c-rounds/0032-round-log.md` | `docs/design/research/archive/weather-8c-rounds/0032-round-log.md` |
+| `docs/research/archive/weather-8c-rounds/0032-runbook.md` | `docs/design/research/archive/weather-8c-rounds/0032-runbook.md` |
+| `docs/research/archive/weather-8c-rounds/README.md` | `docs/design/research/archive/weather-8c-rounds/README.md` |
+| `docs/research/archive/workstream-s/README.md` | `docs/design/research/archive/workstream-s/README.md` |
+| `docs/research/archive/workstream-s/stats-progression-mapping-inventory.md` | `docs/design/research/archive/workstream-s/stats-progression-mapping-inventory.md` |
+| `docs/research/archive/workstream-s/stats-progression-numbers-packet.md` | `docs/design/research/archive/workstream-s/stats-progression-numbers-packet.md` |
+| `docs/research/archive/workstream-s/stats-progression-owner-round1.md` | `docs/design/research/archive/workstream-s/stats-progression-owner-round1.md` |
+| `docs/research/archive/workstream-s/stats-progression-owner-round2.md` | `docs/design/research/archive/workstream-s/stats-progression-owner-round2.md` |
+| `docs/research/archive/workstream-s/stats-progression-repo-baseline-and-quest-inputs.md` | `docs/design/research/archive/workstream-s/stats-progression-repo-baseline-and-quest-inputs.md` |
+| `docs/research/archive/workstream-s/stats-sim-findings.md` | `docs/design/research/archive/workstream-s/stats-sim-findings.md` |
 | `docs/research/combat-and-systems/README.md` | `docs/design/research/combat-and-systems/README.md` |
 | `docs/research/combat-and-systems/botw-climbing-system.md` | `docs/design/research/combat-and-systems/botw-climbing-system.md` |
 | `docs/research/combat-and-systems/dark-souls-poise-mechanics.md` | `docs/design/research/combat-and-systems/dark-souls-poise-mechanics.md` |
@@ -457,7 +597,134 @@ Source-map paths that do not exist at this commit:
 | `docs/research/combat-and-systems/swim-climb-boat-implementation.md` | `docs/design/research/combat-and-systems/swim-climb-boat-implementation.md` |
 | `docs/research/combat-and-systems/systems-inventory-2026-10-14.md` | `docs/design/research/combat-and-systems/systems-inventory-2026-10-14.md` |
 | `docs/research/combat-and-systems/third-person-bow-aim-camera.md` | `docs/design/research/combat-and-systems/third-person-bow-aim-camera.md` |
+| `docs/research/dialogue/README.md` | `docs/design/research/dialogue/README.md` |
+| `docs/research/dialogue/elder-scrolls-dialogue.md` | `docs/design/research/dialogue/elder-scrolls-dialogue.md` |
+| `docs/research/dialogue/writing-skills-review.md` | `docs/design/research/dialogue/writing-skills-review.md` |
+| `docs/research/lore-facts-audit/README.md` | `docs/design/research/lore-facts-audit/README.md` |
+| `docs/research/lore-facts-audit/group1.md` | `docs/design/research/lore-facts-audit/group1.md` |
+| `docs/research/lore-facts-audit/group2.md` | `docs/design/research/lore-facts-audit/group2.md` |
+| `docs/research/lore-facts-audit/group3.md` | `docs/design/research/lore-facts-audit/group3.md` |
+| `docs/research/lore-facts-audit/group4.md` | `docs/design/research/lore-facts-audit/group4.md` |
+| `docs/research/lore-facts-audit/group5.md` | `docs/design/research/lore-facts-audit/group5.md` |
+| `docs/research/lore/README.md` | `docs/design/research/lore/README.md` |
 | `docs/research/lore/creature-asset-availability.md` | `docs/design/research/lore/creature-asset-availability.md` |
+| `docs/research/lore/marsh-watercraft-and-argonian-boats.md` | `docs/design/research/lore/marsh-watercraft-and-argonian-boats.md` |
+| `docs/research/lore/minority-enclaves-lore.md` | `docs/design/research/lore/minority-enclaves-lore.md` |
+| `docs/research/phase11/README.md` | `docs/design/research/phase11/README.md` |
+| `docs/research/phase11/phase11-critique/README.md` | `docs/design/research/phase11/phase11-critique/README.md` |
+| `docs/research/phase11/phase11-critique/completeness.md` | `docs/design/research/phase11/phase11-critique/completeness.md` |
+| `docs/research/phase11/phase11-critique/coverage-density.md` | `docs/design/research/phase11/phase11-critique/coverage-density.md` |
+| `docs/research/phase11/phase11-critique/feasibility.md` | `docs/design/research/phase11/phase11-critique/feasibility.md` |
+| `docs/research/phase11/phase11-critique/lore-fidelity.md` | `docs/design/research/phase11/phase11-critique/lore-fidelity.md` |
+| `docs/research/phase11/phase11-critique/part4-step2-deliverability-brief.md` | `docs/design/research/phase11/phase11-critique/part4-step2-deliverability-brief.md` |
+| `docs/research/phase11/phase11-critique/part4-step2-region-brief.md` | `docs/design/research/phase11/phase11-critique/part4-step2-region-brief.md` |
+| `docs/research/phase11/phase11-critique/part4-step2-text-review-brief.md` | `docs/design/research/phase11/phase11-critique/part4-step2-text-review-brief.md` |
+| `docs/research/phase11/phase11-critique/round3-region-brief.md` | `docs/design/research/phase11/phase11-critique/round3-region-brief.md` |
+| `docs/research/phase11/phase11-critique/round3-text-brief.md` | `docs/design/research/phase11/phase11-critique/round3-text-brief.md` |
+| `docs/research/phase11/phase11-critique/round4-region-brief.md` | `docs/design/research/phase11/phase11-critique/round4-region-brief.md` |
+| `docs/research/phase11/phase11-critique/round4-text-brief.md` | `docs/design/research/phase11/phase11-critique/round4-text-brief.md` |
+| `docs/research/phase11/phase11-critique/variety-distinctiveness.md` | `docs/design/research/phase11/phase11-critique/variety-distinctiveness.md` |
+| `docs/research/phase11/phase11-vibe-sheet-asset-audit.md` | `docs/design/research/phase11/phase11-vibe-sheet-asset-audit.md` |
+| `docs/research/phase11/travel-cost-isolation.md` | `docs/design/research/phase11/travel-cost-isolation.md` |
+| `docs/research/phase16/16e-road-paint-census.md` | `docs/design/research/phase16/16e-road-paint-census.md` |
+| `docs/research/phase16/16g-remedy-plan.md` | `docs/design/research/phase16/16g-remedy-plan.md` |
+| `docs/research/phase16/16g-review/dunmer-north.md` | `docs/design/research/phase16/16g-review/dunmer-north.md` |
+| `docs/research/phase16/16g-review/hist-heartland.md` | `docs/design/research/phase16/16g-review/hist-heartland.md` |
+| `docs/research/phase16/16g-review/imperial-fringe.md` | `docs/design/research/phase16/16g-review/imperial-fringe.md` |
+| `docs/research/phase16/16g-review/imperial-penal-south.md` | `docs/design/research/phase16/16g-review/imperial-penal-south.md` |
+| `docs/research/phase16/16g-review/mercantile-coast.md` | `docs/design/research/phase16/16g-review/mercantile-coast.md` |
+| `docs/research/phase16/16g-review/naga-kur-deeps.md` | `docs/design/research/phase16/16g-review/naga-kur-deeps.md` |
+| `docs/research/phase16/16g-review/pirate-freeholds.md` | `docs/design/research/phase16/16g-review/pirate-freeholds.md` |
+| `docs/research/phase16/16g-review/saxhleel-coast.md` | `docs/design/research/phase16/16g-review/saxhleel-coast.md` |
+| `docs/research/phase16/16h-catalogue-wide-steps-audit.md` | `docs/design/research/phase16/16h-catalogue-wide-steps-audit.md` |
+| `docs/research/phase16/16h-handoff-2026-09-25.md` | `docs/design/research/phase16/16h-handoff-2026-09-25.md` |
+| `docs/research/phase16/16k-fire-system-research.md` | `docs/design/research/phase16/16k-fire-system-research.md` |
+| `docs/research/phase16/16k-handoff-2026-09-25.md` | `docs/design/research/phase16/16k-handoff-2026-09-25.md` |
+| `docs/research/phase16/16k-path-paint-and-studio-gpu.md` | `docs/design/research/phase16/16k-path-paint-and-studio-gpu.md` |
+| `docs/research/phase16/README.md` | `docs/design/research/phase16/README.md` |
+| `docs/research/phase16/audit-chain-and-terrain.md` | `docs/design/research/phase16/audit-chain-and-terrain.md` |
+| `docs/research/phase16/audit-hydrology-data-model.md` | `docs/design/research/phase16/audit-hydrology-data-model.md` |
+| `docs/research/phase16/audit-routers-and-context.md` | `docs/design/research/phase16/audit-routers-and-context.md` |
+| `docs/research/phase16/audit-settlements-delivered.md` | `docs/design/research/phase16/audit-settlements-delivered.md` |
+| `docs/research/phase16/audit-water-runtime.md` | `docs/design/research/phase16/audit-water-runtime.md` |
+| `docs/research/placement-settlements/README.md` | `docs/design/research/placement-settlements/README.md` |
+| `docs/research/placement-settlements/boardwalk-piece-catalogue.md` | `docs/design/research/placement-settlements/boardwalk-piece-catalogue.md` |
+| `docs/research/placement-settlements/building-asset-breadth.md` | `docs/design/research/placement-settlements/building-asset-breadth.md` |
+| `docs/research/placement-settlements/building-depth-and-variety.md` | `docs/design/research/placement-settlements/building-depth-and-variety.md` |
+| `docs/research/placement-settlements/exterior-interior-linking-in-skyrim-mods.md` | `docs/design/research/placement-settlements/exterior-interior-linking-in-skyrim-mods.md` |
+| `docs/research/placement-settlements/king-of-the-murkmire-adoption-plan.md` | `docs/design/research/placement-settlements/king-of-the-murkmire-adoption-plan.md` |
+| `docs/research/placement-settlements/kit-assemblies-evidence.md` | `docs/design/research/placement-settlements/kit-assemblies-evidence.md` |
+| `docs/research/placement-settlements/kit-level-design-and-layout-generation.md` | `docs/design/research/placement-settlements/kit-level-design-and-layout-generation.md` |
+| `docs/research/placement-settlements/marsh-settlement-morphology.md` | `docs/design/research/placement-settlements/marsh-settlement-morphology.md` |
+| `docs/research/placement-settlements/mined-interior-assembly-and-settlement-form.md` | `docs/design/research/placement-settlements/mined-interior-assembly-and-settlement-form.md` |
+| `docs/research/placement-settlements/morrowind-content-density.md` | `docs/design/research/placement-settlements/morrowind-content-density.md` |
+| `docs/research/placement-settlements/openworld-approach-and-wayfinding.md` | `docs/design/research/placement-settlements/openworld-approach-and-wayfinding.md` |
+| `docs/research/placement-settlements/openworld-place-distribution-and-siting.md` | `docs/design/research/placement-settlements/openworld-place-distribution-and-siting.md` |
+| `docs/research/placement-settlements/piece-front-derivation.md` | `docs/design/research/placement-settlements/piece-front-derivation.md` |
+| `docs/research/placement-settlements/place-asset-deliverability-audit.md` | `docs/design/research/placement-settlements/place-asset-deliverability-audit.md` |
+| `docs/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md` | `docs/design/research/placement-settlements/place-purpose-hostility-and-dungeon-balance.md` |
+| `docs/research/placement-settlements/player-purpose-spectrum.md` | `docs/design/research/placement-settlements/player-purpose-spectrum.md` |
+| `docs/research/placement-settlements/road-dressing.md` | `docs/design/research/placement-settlements/road-dressing.md` |
+| `docs/research/placement-settlements/settlement-asset-inventory.md` | `docs/design/research/placement-settlements/settlement-asset-inventory.md` |
+| `docs/research/placement-settlements/settlement-design-principles-sources.md` | `docs/design/research/placement-settlements/settlement-design-principles-sources.md` |
+| `docs/research/placement-settlements/settlement-form-evidence.md` | `docs/design/research/placement-settlements/settlement-form-evidence.md` |
+| `docs/research/placement-settlements/settlement-kit-sourcing-log.md` | `docs/design/research/placement-settlements/settlement-kit-sourcing-log.md` |
+| `docs/research/placement-settlements/settlement-type-recipes.md` | `docs/design/research/placement-settlements/settlement-type-recipes.md` |
+| `docs/research/placement-settlements/shipped-world-placement-rules.md` | `docs/design/research/placement-settlements/shipped-world-placement-rules.md` |
+| `docs/research/placement-settlements/vanilla-skyrim-esm-placement-crosscheck.md` | `docs/design/research/placement-settlements/vanilla-skyrim-esm-placement-crosscheck.md` |
+| `docs/research/placement-settlements/xanmeer-mesoamerican-reference.md` | `docs/design/research/placement-settlements/xanmeer-mesoamerican-reference.md` |
+| `docs/research/quests-and-cast/README.md` | `docs/design/research/quests-and-cast/README.md` |
+| `docs/research/quests-and-cast/last-warden-boss-options.md` | `docs/design/research/quests-and-cast/last-warden-boss-options.md` |
+| `docs/research/quests-and-cast/morrowind-cast-structure.md` | `docs/design/research/quests-and-cast/morrowind-cast-structure.md` |
+| `docs/research/quests-and-cast/opening-hours-and-start-area.md` | `docs/design/research/quests-and-cast/opening-hours-and-start-area.md` |
+| `docs/research/quests-and-cast/tes-quest-and-faction-rewards.md` | `docs/design/research/quests-and-cast/tes-quest-and-faction-rewards.md` |
+| `docs/research/rendering/README.md` | `docs/design/research/rendering/README.md` |
+| `docs/research/rendering/ambient-audio-soundscape-threejs.md` | `docs/design/research/rendering/ambient-audio-soundscape-threejs.md` |
+| `docs/research/rendering/black-marsh-ground-texture-sources.md` | `docs/design/research/rendering/black-marsh-ground-texture-sources.md` |
+| `docs/research/rendering/building-ground-seam.md` | `docs/design/research/rendering/building-ground-seam.md` |
+| `docs/research/rendering/building-placement-rendering-treatments.md` | `docs/design/research/rendering/building-placement-rendering-treatments.md` |
+| `docs/research/rendering/cheap-sky-and-post-effects-for-target-devices.md` | `docs/design/research/rendering/cheap-sky-and-post-effects-for-target-devices.md` |
+| `docs/research/rendering/fable5-world-demo-audit.md` | `docs/design/research/rendering/fable5-world-demo-audit.md` |
+| `docs/research/rendering/gpu-texture-and-mesh-compression.md` | `docs/design/research/rendering/gpu-texture-and-mesh-compression.md` |
+| `docs/research/rendering/natural-light-sky-atmosphere-threejs.md` | `docs/design/research/rendering/natural-light-sky-atmosphere-threejs.md` |
+| `docs/research/rendering/reference/README.md` | `docs/design/research/rendering/reference/README.md` |
+| `docs/research/rendering/skyrim-morrowind-landscape-texture-granularity.md` | `docs/design/research/rendering/skyrim-morrowind-landscape-texture-granularity.md` |
+| `docs/research/rendering/vegetation-scatter-instancing-threejs.md` | `docs/design/research/rendering/vegetation-scatter-instancing-threejs.md` |
+| `docs/research/rendering/volumetric-bars/README.md` | `docs/design/research/rendering/volumetric-bars/README.md` |
+| `docs/research/rendering/water-edges-and-shore-waves.md` | `docs/design/research/rendering/water-edges-and-shore-waves.md` |
+| `docs/research/rendering/water-pro-greenheck-study.md` | `docs/design/research/rendering/water-pro-greenheck-study.md` |
+| `docs/research/rendering/water-rendering-threejs.md` | `docs/design/research/rendering/water-rendering-threejs.md` |
+| `docs/research/rendering/waterfall-assets-vault-audit.md` | `docs/design/research/rendering/waterfall-assets-vault-audit.md` |
+| `docs/research/rendering/waterfall-mist-and-spray.md` | `docs/design/research/rendering/waterfall-mist-and-spray.md` |
+| `docs/research/rendering/waterfalls-realtime.md` | `docs/design/research/rendering/waterfalls-realtime.md` |
+| `docs/research/rendering/weather-clouds-rain-threejs.md` | `docs/design/research/rendering/weather-clouds-rain-threejs.md` |
+| `docs/research/rendering/webgl-terrain-many-material-splatting.md` | `docs/design/research/rendering/webgl-terrain-many-material-splatting.md` |
+| `docs/research/text-and-voice/README.md` | `docs/design/research/text-and-voice/README.md` |
+| `docs/research/text-and-voice/ai-writing-tells.md` | `docs/design/research/text-and-voice/ai-writing-tells.md` |
+| `docs/research/text-and-voice/dialogue-rulings-index.md` | `docs/design/research/text-and-voice/dialogue-rulings-index.md` |
+| `docs/research/text-and-voice/skyrim-voice-barks.md` | `docs/design/research/text-and-voice/skyrim-voice-barks.md` |
+| `docs/research/text-and-voice/speech-register-model-morrowind.md` | `docs/design/research/text-and-voice/speech-register-model-morrowind.md` |
+| `docs/research/vegetation/README.md` | `docs/design/research/vegetation/README.md` |
+| `docs/research/vegetation/groundcover-system.md` | `docs/design/research/vegetation/groundcover-system.md` |
+| `docs/research/vegetation/mod-vegetation-micro-siting.md` | `docs/design/research/vegetation/mod-vegetation-micro-siting.md` |
+| `docs/research/vegetation/openworld-vegetation-placement-architecture.md` | `docs/design/research/vegetation/openworld-vegetation-placement-architecture.md` |
+| `docs/research/vegetation/regional-variety-audit-2026-09-08.md` | `docs/design/research/vegetation/regional-variety-audit-2026-09-08.md` |
+| `docs/research/vegetation/renderer-rewrite-baseline.md` | `docs/design/research/vegetation/renderer-rewrite-baseline.md` |
+| `docs/research/vegetation/rock-placement-rules.md` | `docs/design/research/vegetation/rock-placement-rules.md` |
+| `docs/research/vegetation/tropical-vegetation-ecology-targets.md` | `docs/design/research/vegetation/tropical-vegetation-ecology-targets.md` |
+| `docs/research/vegetation/vegetation-composition-rules.md` | `docs/design/research/vegetation/vegetation-composition-rules.md` |
+| `docs/research/vegetation/vegetation-density-design.md` | `docs/design/research/vegetation/vegetation-density-design.md` |
+| `docs/research/world-terrain/README.md` | `docs/design/research/world-terrain/README.md` |
+| `docs/research/world-terrain/beyond-border-distant-lands.md` | `docs/design/research/world-terrain/beyond-border-distant-lands.md` |
+| `docs/research/world-terrain/black-marsh-climatology.md` | `docs/design/research/world-terrain/black-marsh-climatology.md` |
+| `docs/research/world-terrain/mangrove-coastal-ecology.md` | `docs/design/research/world-terrain/mangrove-coastal-ecology.md` |
+| `docs/research/world-terrain/mountain-terrain-synthesis.md` | `docs/design/research/world-terrain/mountain-terrain-synthesis.md` |
+| `docs/research/world-terrain/offshore-islands-feasibility.md` | `docs/design/research/world-terrain/offshore-islands-feasibility.md` |
+| `docs/research/world-terrain/place-water-facts-vs-shipped-water.md` | `docs/design/research/world-terrain/place-water-facts-vs-shipped-water.md` |
+| `docs/research/world-terrain/rivers-on-slopes-and-cascades.md` | `docs/design/research/world-terrain/rivers-on-slopes-and-cascades.md` |
+| `docs/research/world-terrain/route-spans-and-crossing-costs.md` | `docs/design/research/world-terrain/route-spans-and-crossing-costs.md` |
+| `docs/research/world-terrain/tropical-fluvial-geomorphology.md` | `docs/design/research/world-terrain/tropical-fluvial-geomorphology.md` |
+| `docs/research/world-terrain/tropical-shoreline-materials.md` | `docs/design/research/world-terrain/tropical-shoreline-materials.md` |
 | `docs/standards/by-task.md` | `docs/design/standards/by-task.md` |
 | `docs/standards/engineering.md` | `docs/design/standards/engineering.md` |
 | `docs/standards/text/README.md` | `docs/design/standards/text/README.md` |

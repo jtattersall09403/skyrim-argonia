@@ -114,16 +114,16 @@ reason.
 - 1.6 fight on the tuned stack, wired to the sheet;
 - 1.8 a play machine you can rely on; 1.9 the front door and loads; 1.10 the player character;
 - 1.11 our HUD; 1.12 the in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window,
-  the minimap, every device; 1.14 death, the pile and respawn;
-- 1.15 the world track's close; 1.16 the owed integration checks; 1.17 frame rate and the screen numbers;
+  the minimap, every device;
+- 1.15 the world, rebuilt (decision 0033: water-first, by rule, from the lore, once; before 1.14 because the world
+  is the first priority); 1.14 death, the pile and respawn;
+- 1.16 the owed integration checks; 1.17 frame rate and the screen numbers;
 - 1.7 the owner's verdict.
 
-**The world track** starts after 0.4 and runs beside Part 1 and Part 2 as its own lane:
-- 2.W1 terrain and apron;
-- 2.W2 water (its first step the stepped-river proof);
-- 2.W3 regions, weather, light, roads and the route graph;
-- 2.W4 vegetation, navmesh and LOD with the map image;
-- 2.W5 the slice places, in two waves;
+**The world track** started after 0.4 beside Part 1. Its first four chunks (2.W1 terrain, 2.W2 water, 2.W3
+regions, weather, light and roads, 2.W4 vegetation, navmesh and LOD) are superseded by 1.15 under decision 0033;
+what they built that stands is carried by it. It continues in Part 2:
+- 2.W5 the slice places, in two waves, on the frozen world;
 - 2.W6 performance and the world walk.
 
 **Part 2, [The slice](2-slice/README.md)**, the systems track in the order of the priorities:
@@ -217,9 +217,10 @@ owner gate until 2.W5's walks.
 | 0.0 G0 (it can be played through the stream) | everything else | if the stream or the controls fail, nothing else is worth building |
 | 0.2 the stack | 0.3, 0.4 §d | the game machine runs the profile every check uses |
 | 0.3 the bridge, scenes and the runner | every L4 check and owner check after Part 0 | nothing is tested through the new-game flow |
-| 0.4 the block (Claywater built natively) | 1.1 onwards and 2.W1 (the world track starts, beside Part 1) | the first place is built on it; the world is the first priority and the longest track (decision 0027) |
+| 0.4 the block (Claywater built natively) | 1.1 onwards and the world track | the first place is built on it; the world is the first priority and the longest track (decision 0027) |
 | 0.1 §i the writing skills fitted to the import | 1.3 and 1.4 onwards (every line and quest) | all text is written through them (decision 0024) |
 | 0.4 §a the pipeline | Part 1 and everything after | records are generated, never hand-made |
+| 1.15 the frozen world | 2.W5, 1.14 onwards | places are seated on ground that will not move again (decision 0033) |
 | 1.7 the owner's verdict | Part 2's systems track | the game is confirmed before the systems are built at scale; the world track does not wait |
 | 2.W5 wave 1 of the slice places | 2.4 people onwards | people, loot and quests live in those places |
 | 2.1 the sheet | 2.4 people, 2.7 combat, 3.2 character creation | every actor and formula reads it |
