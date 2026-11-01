@@ -67,10 +67,10 @@ body { display: flex; align-items: center; justify-content: center; }
 /* The frame style over the paper sheet the view's markup asks for (render.ts: "sitting paper"). */
 .sitting.paper {
   color: var(--frame-text);
-  background: var(--frame-corner-tl) left 0.25rem top 0.25rem / 2rem no-repeat,
-    var(--frame-corner-tr) right 0.25rem top 0.25rem / 2rem no-repeat,
-    var(--frame-corner-br) right 0.25rem bottom 0.25rem / 2rem no-repeat,
-    var(--frame-corner-bl) left 0.25rem bottom 0.25rem / 2rem no-repeat, var(--frame-bg);
+  background: var(--frame-corner-tl) left 0.25rem top 0.15rem / 1.4rem no-repeat,
+    var(--frame-corner-tr) right 0.25rem top 0.15rem / 1.4rem no-repeat,
+    var(--frame-corner-br) right 0.25rem bottom 0.15rem / 1.4rem no-repeat,
+    var(--frame-corner-bl) left 0.25rem bottom 0.15rem / 1.4rem no-repeat, var(--frame-bg);
   border: 2px solid var(--frame-trim); border-radius: 0.2rem;
   box-shadow: 0 0.2rem 0.6rem var(--frame-shadow), inset 0 0 0 0.3rem var(--frame-bg),
     inset 0 0 0 calc(0.3rem + 1px) var(--frame-trim);
@@ -87,3 +87,4 @@ body { display: flex; align-items: center; justify-content: center; }
 .sitting .buy, .sitting .rise { border-color: var(--frame-trim); background: rgba(138, 138, 74, 0.12); }
 .sitting .buy:disabled { border-color: rgba(138, 138, 74, 0.4); color: var(--frame-text-soft); }
 .sitting .notice { border-left-color: var(--frame-trim-hi); background: var(--frame-well); }
+.sitting.paper { padding-left: max(var(--s6), 2rem); padding-right: max(var(--s6), 2rem); padding-top: max(var(--s4), 1.6rem); padding-bottom: max(var(--s4), 1.6rem); }

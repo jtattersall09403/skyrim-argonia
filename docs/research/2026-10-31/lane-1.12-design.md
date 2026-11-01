@@ -41,3 +41,13 @@ Commit 765110d. Status: (1) and (4) done; (2) and (3) not closed; (5) owned by t
   parchment (wants dark); Dear Diary's System and tween level bars carry knotwork end caps (bitmaps, retheme CLEAR list);
   minimap place label clipped at the disc. Fixes proposed: dark sitting, gold-green 2px trim with own corner art, greener
   ground #0d150f, warm-gold links.
+
+## Round 3 (f1823f6, 13fa14f, final)
+- In game, after the vanilla.txt fix (e62ac40): WindUI.log "menu opened (inventory, 0 items)"; the menu-mode still shows
+  inventory, stats, magic and taskbar with gold-green trim, plain corners, no knot (art 4 drawn, 0 missing).
+- Tokens: ground #0d150f, trim #8a8a4a (2px double), links warm gold #c9b36a, selection blue; our corner filigree
+  (--frame-corner-*). Dialogue and the sitting in the frame style. System page level bar #284 redrawn without knot caps.
+- Off-game set re-rendered at 4 sizes, 0 fails. Reader: no Nordic knotwork anywhere; Wind UI's black fill (DLL) and
+  bright journal/chart parchment keep it short of one design; corners overlapped text (then shrunk, sitting padded:
+  not re-rendered). Open: minimap label clip is canvas text (minimap lane's TS); chart label overlaps home icon;
+  Wind UI's Character list cuts its last row (Wind UI's layout).
