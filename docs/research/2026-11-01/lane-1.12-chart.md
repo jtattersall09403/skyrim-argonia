@@ -12,3 +12,14 @@ Batch: out/batch/adhoc/20261101T132518 (argonia-play-ie, deploy of 98d7917); cha
 | Sharp + smooth | sharp yes, smooth RED | the view stretched one 2048 px image up to zoom 24 (11x), and each key press jumped | a tile pyramid up to 8192 (out/chart8k, `python -m tools.chart render --size 8192 --out out/chart8k`, 6m41s, 3.4 GB), ZOOM_MAX 8, a glide toward a target each frame. The burst frames show no motion, and a PowerShell window covered two of them: the burst missed the pad input. Owed: a re-run with the pad input landing inside the burst |
 
 Not in scope / for others: the minimap row is lane 1.12-hud's (the marker is ready). out/chart8k is copied to the main tree's out/ so the main tree's builds take the 8192 level.
+
+## Round 2 (planner's three rows), batch out/batch/adhoc/20261101T143408, e37e84f; make check GREEN
+- **Reveal: proven.** Every layer, including the coast, rivers, cities and their names, now shows only through the seen-land mask, so unexplored land is blank parchment. The reader passed it. The minimap still draws the whole sketch: lane 1.12-hud's `ui/views/hud/minimap.ts` must clip its layers by `revealDiscs` (`ui/views/chart/geom.ts`) the same way.
+- **Look: RED.**
+  - Done: hand-lettered italic labels on a soft glow with no plates; a bolder province border (`render.py`: 5u dash, wider band), re-rendered at 8192. Under fog the blank margins now read as parchment.
+  - The reader says only a small patch shows, so the border, labels and coast are not in view. It also says the flat ink strokes clash with the soft relief, and the pane strip is mostly empty.
+  - Next: a scene that has walked farther, or a larger reveal radius, so the treatment fills the view; centre the disc on the player; a taller pane.
+- **Smooth: RED.**
+  - The d-pad pans now, because PrismaUI does not pass the right stick. The view logs `chart: input`, and the journey expected both `chart: input right` and `chart: glide`.
+  - The 4 fps burst shows the pan in jumps of 28–125 px with no frame mid-glide, and no zoom change. A 90 ms glide finishes between two frames 250 ms apart, so this capture cannot show it. The zoom presses may also not have landed.
+  - Next: capture at 15 fps or more (the burst tool flashes a PowerShell window; that is infra's), and log the glide line into the report.
