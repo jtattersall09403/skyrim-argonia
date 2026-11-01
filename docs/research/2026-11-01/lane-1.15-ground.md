@@ -114,34 +114,25 @@ asks whether the relief reads right, (2) whether there is no hard edge, (3) whet
 Next iteration: fix the footprint/bank rule and the border ramp, render 4×4-cell-or-larger windows for the four
 small ones, and send them to the reader again.
 
+## Session 2 (2026-11-01)
+
+Pushed 96e7247 (the footprint fix, its own commit): the ground beside water ramps from under the water at the type's shore grade (faded by SHORE_FAR); inside a water cell, ground under level + 0.3 m is the natural flood and counts as wet (1.65 M samples). The shore re-chamfers after the flood. The N/NW border distance is a soft minimum (no `min(row, col)` kink). The apron edge offset is blurred along the edge (sigma 64 samples, eased in by 60 m), and the streaks went from west |dx|/|dy| 0.23/0.64 and north 0.73/0.22 to 0.27/0.36 and 0.36/0.27. Site cores are pinned (lo = hi). Renders are at least 1,000 px, with small windows widened to 8×8 cells and shifted inside the province. Probes are in `terrain/probes/` (roles per window, big steps, apron streaks, unshaped sites). Sample check on 96e7247 plus the overlap release: fit 0/0/0, overflow 0, seams 0, 5 sites unshaped, generate 133 s (VM shared).
+
+Reader on 96e7247: marsh FAIL, border gate FAIL(2,3), 0_0_1_1 PARTLY, river PARTLY (the left strip is now soft), coast PARTLY, sea PASS. **Cause of the remaining plus and square pools:** the plus is the *dry cells* of `cell_water`. A dry cell has no water plane, so the neighbour's water stops on the straight cell edge. The planner's materials finding agrees: dry ground at a cell edge lies below the neighbouring level.
+
+Uncommitted in ~/wt-1.15-ground (generate.py), measured but not green:
+
+- `edge_bank`: water-cell samples within the type's shore run of a vertex touching a dry cell are bank, not wet, so the shore slopes inside the water cell (706,717 samples).
+- Site falloff warped by two angular harmonics (no discs).
+
+Result: fit 0/0/0, but **3 overflow cells** (the edge bank against step beds) and **9 sites unshaped**. The check still measures an unwarped disc and a flat core std < 1 over 228 m city radii (stormhold, helstrom, gideon), and that test is wrong for big sites.
+
 ## Starting state (hand-off)
 
-Done (pushed: 00fad6c, c2777d0, 88ae454; this report's commit follows):
+Main is at 96e7247 (the footprint, ramp, apron, pins and large renders). Owed, in order:
 
-- the renderer with its layer registry;
-- the cell-water adapter, which reads `cell_water` and `water_step` and falls back to the fixture;
-- the generator, and the generate, render and check commands;
-- the fit checks, with 0 water faults on the real `cell_water`;
-- `grid.Sources.load` reads the generated ground.
-
-`out/terrain/ground-f32.npy` is written. It is the shared out dir, and the other lanes run on it.
-
-Diagnosed:
-
-- `out/terrain/land` is shared with the other lanes (a concurrent build replaced the sample once). Run
-  `generate --sample --out <own dir>`; the ground always goes to `out/terrain/`.
-- The chamfer distances were the time sink: 180 s, down to about 40 s with in-place slices.
-
-Owed (first: the reader's FAILs above, the footprint/bank plateau and the border-ramp kink):
-
-1. **8 unshaped sites.** These are mostly flat sites on steep or banked ground, where the slope limit re-slopes the
-   terrace rim, plus one mound and one depression. They include stormhold, helstrom, porter-relay-poling,
-   the-thorn-bond, the-north-holding-pit and treasure-hunters-live-camp. Fix in `shape_sites`: pin the shaped core as
-   lo=hi bounds so the limiter cannot move it.
-2. **The `region_relief` and `entrance_site` rows are not in the DB yet.** `relief_rows()` and `entrance-sites.json`
-   hold them. Schema plus a db.py write: `entrance_site` exists from the water lane; `region_relief` needs a
-   CREATE TABLE.
-3. **ArgoniaGen `pipeline.py`'s terrain stage** has not been touched.
-4. **`regional cliff_share` is recorded but unused.** Cliff placement goes to the cliff-mesh pass.
-5. **A reader iteration on any fix.** `make check` is not yet run whole; the planner's round gate runs it. Done so
-   far: pytest on terrain (31 passed) and ruff clean.
+1. Edge bank: find the 3 overflow cells (`probes.ground_big_steps 14`); exclude step-channel vertices from `edge_bank`. Add the check the planner asked for: every vertex of a dry cell next to a water cell, and every closed-bank vertex, stands above that neighbour's level.
+2. Sites: make `check` use the same warped falloff (factor the warp into a helper). For a flat site, judge the std over a core capped at 40 m. Then re-render w4 (`-12_63`) and w5 (`0_0_1_1`) and the marsh large, and run a reader.
+3. Write `region_relief` and `entrance_site` to the DB through db.py (the pattern is `terrain gradient`).
+4. The ArgoniaGen pipeline.py terrain stage, and `tools/world_sample.py` regenerated on `sampleStep`.
+5. If the plus persists after (1), the water lane's partition is the cause: report it to them.
