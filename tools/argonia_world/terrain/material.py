@@ -28,7 +28,7 @@ Lore and research behind the stops: `docs/design/research/world-terrain/tropical
 (A1-A10: exposure sorts sediment; sheltered shores are mud, mangrove fringe is dark organic mud),
 `docs/design/research/rendering/skyrim-morrowind-landscape-texture-granularity.md` (vanilla's three-stage water
 edge RiverBottom -> RiverMud -> RiverbedEdge; ~6 textures per quad; biome families),
-`docs/design/research/world-terrain/mangrove-coastal-ecology.md`, `world/sources/lore/black-marsh-province.md`.
+`docs/design/research/world-terrain/mangrove-coastal-ecology.md`, the lore dossier black-marsh-province.md.
 """
 from __future__ import annotations
 
