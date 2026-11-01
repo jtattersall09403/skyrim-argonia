@@ -54,3 +54,10 @@ Skyrim's Journal Menu with no Wind UI window over it. It opens on its Quests tab
 - A pane counts as open by the view host's modal record, not by PrismaUI focus: an unfocused journal had read as
   closed (pad112k/l).
 - When the Journal Menu opens with Wind UI's windows up, the windows are hidden the next frame. This covers Esc from play.
+
+## System page (pad112q): pad-panes PASS
+`out/runs/pad-panes/20261101T034625/` 11 (pad) and 20 (Esc): the Journal Menu shows its System tab with the list Save,
+Load, Creations, Settings, MOD CONFIGURATION, Controls, Help. 0.4 s after the menu opens, padcursor calls the movie's
+`RestoreSavedSettings(2, false)` and then `SwitchPageToFront(2, true)`; the log reads the tab back ("tab 0 -> 2").
+SwitchPageToFront alone left Quests showing (pad112o). Left for the UI text lane: "MOD CONFIGURATION" is SkyUI's
+upper-case label, and the bottom bar still shows the Quests tab's "A Toggle Active / X Show on Map".
