@@ -41,6 +41,11 @@ def data_root() -> Path:
     return Path(os.environ.get("ARGONIA_DATA", str(Path.home() / ".argonia" / "data")))
 
 
+def generated_ground() -> Path:
+    """1.15's generated ground (terrain/generate.py); Sources.load reads it in place of the old sculpt when present."""
+    return Path(__file__).resolve().parents[3] / "out" / "terrain" / "ground-f32.npy"
+
+
 @dataclass
 class Sources:
     """The four inputs as (possibly memory-mapped) arrays; tests pass small synthetic ones."""
@@ -58,8 +63,9 @@ class Sources:
 
         r = root or data_root()
         tint = r / "terrain" / "ground-tint.png"
+        gen = generated_ground()
         return cls(
-            ground=np.load(r / "terrain" / "refined-height-f32.npy", mmap_mode="r"),
+            ground=np.load(gen if gen.exists() else r / "terrain" / "refined-height-f32.npy", mmap_mode="r"),
             apron=np.load(r / "terrain" / "apron-source-near.npy", mmap_mode="r") if apron else None,
             cover=np.load(r / "terrain" / "landcover-i16.npy", mmap_mode="r"),
             tint=png.read(tint) if tint.exists() else None,

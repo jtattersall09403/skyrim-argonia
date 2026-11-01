@@ -33,6 +33,9 @@ LOAD_ORDER = ["Skyrim.esm", "Dawnguard.esm"]  # the LTEX forms are Skyrim.esm's 
 # The gate's fixed sample (decision 0031 §3): the steepest sea cliff (-19, 58), the south-west corner across the
 # border into the apron, six-layer ground in the middle, and the Tear road's gate cell on the north border.
 SAMPLE = ((-20, 57, -19, 58), (-63, -63, -62, -62), (0, 0, 1, 1), (-12, 63, -11, 64))
+# 1.15's L3 windows: the gate's four, one river from source to sea (river.431-409, 276 m to the sea) and one
+# sea-level marsh system (the 8 x 8 cells with the most marsh water between 0.05 and 3 m, measured on the fixture).
+SAMPLE_1_15 = SAMPLE + ((-38, 25, -22, 40), (-21, -26, -14, -19))
 MANIFEST = Path(__file__).with_name("sample-manifest.json")  # the sample's ESM sha256, committed
 
 

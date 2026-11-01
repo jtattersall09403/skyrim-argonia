@@ -55,3 +55,21 @@ def read(path: Path) -> np.ndarray:
         out[r] = cur
         prev = cur
     return out.reshape(h, w, ch)
+
+
+def write(path: Path, img: np.ndarray) -> Path:
+    """uint8 (h, w) greyscale, (h, w, 3) RGB or (h, w, 4) RGBA -> a PNG (row 0 the image's top)."""
+    a = np.ascontiguousarray(img, dtype=np.uint8)
+    h, w = a.shape[:2]
+    ch = 1 if a.ndim == 2 else a.shape[2]
+    ctype = {1: 0, 3: 2, 4: 6}[ch]
+    raw = np.concatenate([np.zeros((h, 1), np.uint8), a.reshape(h, w * ch)], axis=1).tobytes()
+
+    def chunk(t: bytes, d: bytes) -> bytes:
+        return struct.pack(">I", len(d)) + t + d + struct.pack(">I", zlib.crc32(t + d) & 0xFFFFFFFF)
+
+    p = Path(path)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, ctype, 0, 0, 0))
+                  + chunk(b"IDAT", zlib.compress(raw, 6)) + chunk(b"IEND", b""))
+    return p

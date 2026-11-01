@@ -151,6 +151,23 @@ def cmd_check(a) -> int:
     return 1 if fails else 0
 
 
+def cmd_render(a) -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain import cellwater, render
+    from tools.argonia_world.terrain.grid import data_root, generated_ground
+
+    w = db.open()
+    g = generated_ground()
+    ground = np.load(data_root() / "terrain" / "refined-height-f32.npy" if a.old or not g.exists() else g, mmap_mode="r")
+    water = cellwater.load(w)
+    wins = world.SAMPLE_1_15 if a.sample or not a.cells else [_cells(a.cells)]
+    layers = a.layers.split(",") if a.layers else None
+    for c in wins:
+        name = "_".join(str(v) for v in c) + ".png"
+        print(json.dumps(render.render(render.window(ground, water, c, w), Path(a.out) / name, layers) | {"water": water.source}))
+    return 0
+
+
 def main(argv=None) -> int:
     p = argparse.ArgumentParser(prog="terrain", description=__doc__.split("\n")[0])
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -164,7 +181,15 @@ def main(argv=None) -> int:
     c = sub.add_parser("check")
     c.add_argument("--out", default=str(OUT))
     c.add_argument("--points", type=int, default=1000)
+    r = sub.add_parser("render")
+    r.add_argument("--cells")
+    r.add_argument("--sample", action="store_true")
+    r.add_argument("--out", default=str(OUT / "render"))
+    r.add_argument("--layers")
+    r.add_argument("--old", action="store_true", help="render the old sculpt, not the generated ground")
     a = p.parse_args(argv)
+    if a.cmd == "render":
+        return cmd_render(a)
     if a.cmd == "world":
         out = Path(a.out)
         print(world.write(out / "world.json", Sources.load().cell_range, out / "land"))
