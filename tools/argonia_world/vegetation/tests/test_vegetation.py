@@ -112,3 +112,33 @@ def test_vanilla_keep_brings_a_region_into_vanillas_range():
     k = place.vanilla_keep(counts)
     assert np.percentile(counts, 95) * k <= place.VANILLA_P95 + 1e-9 and max(counts) * k <= place.VANILLA_MAX
     assert place.vanilla_keep([3, 10, 20]) == 1.0
+
+
+def test_sink_fractions_are_skyrims_medians():
+    """Decision 0034, audit section 5: boulders 0.5 of their height, cliff shells 0.7; none of ours was lower."""
+    from tools.argonia_world.vegetation import lists
+    assert (lists.SINK_BOULDER, lists.SINK_CLIFF) == (0.5, 0.7)
+    assert lists.upright_share(lists.SINK_BOULDER) == lists.UPRIGHT_BOULDER == 0.25
+    assert lists.upright_share(lists.SINK_CLIFF) == 0.0 and lists.upright_share(0.0) == 0.0
+
+
+def test_a_quarter_of_boulders_stand_upright():
+    H = np.zeros((V, V))
+    H[:] = np.arange(V)[None, :] * 0.8  # a slope: a conformed rock tilts
+    r = rule(density_per_ha=600.0, conform=True, upright=0.25, max_slope=60)
+    n = flat = 0
+    for cx in range(8):
+        out = place.place_cell(cell(H=H, cx=cx), [r])
+        flat += int(((out["rx"] == 0) & (out["ry"] == 0)).sum())
+        n += out["rx"].size
+    assert abs(flat / n - 0.25) < 0.05, flat / n
+    out = place.place_cell(cell(H=H), [rule(density_per_ha=600.0, conform=True, max_slope=60)])
+    assert (np.hypot(out["rx"], out["ry"]) > 0).all()  # no upright share: all conform
+
+
+def test_tree_band_check_flags_a_thin_forest_and_passes_a_marsh():
+    from tools.argonia_world.vegetation import checks
+    eco = {"a": "flooded-forest", "b": "deep-sink-basin"}
+    rep, errs = checks.tree_bands({"a": [3, 5, 4], "b": [15, 20, 19]}, eco, [1, 20], [300.0, 500.0])
+    assert len(errs) == 1 and errs[0].startswith("a (forest)")
+    assert rep["regions"]["b"]["band"] == "marsh" and rep["in_water_share"] == 0.05

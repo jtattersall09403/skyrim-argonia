@@ -20,7 +20,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.vegetation import place
+from tools.argonia_world.vegetation import lists, place
 from tools.argonia_world.vegetation.place import Rule
 
 Q = su.QUADS_PER_CELL
@@ -37,6 +37,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
     scale = {r["form_key"]: (r["scale_min"], r["scale_max"]) for r in w.query("SELECT * FROM vegetation_form")}
     sink = {r["form_key"]: Rule.sink_of(r["sink_frac"], r["bound_z0"], r["bound_z1"]) for r in w.query(
         "SELECT v.form_key, v.sink_frac, f.bound_z0, f.bound_z1 FROM vegetation_form v JOIN object_form f USING (form_key)")}
+    upright = {r["form_key"]: lists.upright_share(r["sink_frac"]) for r in w.query("SELECT * FROM vegetation_form")}
     out: dict[str, list[Rule]] = defaultdict(list)
     for r in w.query("SELECT * FROM land_region_object ORDER BY land_region_id, form_key"):
         if r["form_key"] not in scale:
@@ -44,7 +45,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
         out[r["land_region_id"]].append(Rule(
             r["form_key"], r["density_per_ha"], r["clustering"], r["radius_m"], r["min_slope_deg"],
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
-            bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]]))
+            bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]]))
     return dict(out)
 
 

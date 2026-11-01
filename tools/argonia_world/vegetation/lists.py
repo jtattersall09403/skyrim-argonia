@@ -74,9 +74,13 @@ CLIFF_M = 12.0  # a rock taller than this is a cliff shell: uplands, steep groun
 SCALE = {"canopy": (0.8, 1.2), "emergent": (0.9, 1.3), "mushroom": (0.8, 1.3), "rock": (0.6, 1.25),
          "aquatic": (0.8, 1.2), "palm": (0.85, 1.2), "mangrove": (0.85, 1.15), "gallery": (0.85, 1.15),
          "shrub": (0.8, 1.2), "deadwood": (0.8, 1.2), "cliff-tree": (0.8, 1.2)}
-# rocks: the share of the OBND height below the ground (rock-placement-rules.md rule 1: boulders p50 -1.6 m on a
-# ~4 m RockL01 = 0.40; small -0.26 m of ~0.7 m = 0.35; cliff shells -4..-12 m pushed into the hill = 0.25 of ~36 m)
-SINK_BOULDER, SINK_CLIFF = 0.38, 0.25
+# rocks: the share of the OBND height below the ground, Skyrim.esm's own medians (docs/research/2026-11-01/
+# skyrim-does-it-this-way.md section 5, decision 0034): boulders and rock piles 0.5 (p10-p90 0.1-0.8), cliff and
+# mountain shells 0.7 (0.4-0.9); ours were 0.38 and 0.25
+SINK_BOULDER, SINK_CLIFF = 0.5, 0.7
+# the share of boulders that stand upright instead of conforming to the slope (vanilla 26 %, same section 5);
+# chosen per stem by the position-seeded draw (place.candidates "up"); shells always conform
+UPRIGHT_BOULDER = 0.25
 VANILLA_SHAPE = ("laid:tropical-skyrim-sse",)  # Tropical Skyrim's meshes at vanilla paths: vanilla geometry
 
 
@@ -100,6 +104,11 @@ def sink_frac(f) -> float:
     if f["role_id"] != "rock":
         return 0.0
     return SINK_CLIFF if "cliff" in tags(f) else SINK_BOULDER
+
+
+def upright_share(sink: float | None) -> float:
+    """The share of a rock form's stems that stand upright: boulders (the boulder sink), never shells."""
+    return UPRIGHT_BOULDER if sink == SINK_BOULDER else 0.0
 
 
 def admits(eco: str, f) -> bool:

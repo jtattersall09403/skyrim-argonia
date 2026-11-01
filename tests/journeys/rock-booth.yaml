@@ -7,111 +7,111 @@ runner: 1
 crash_risk: low
 scene: rock-booth
 steps:
-- name: rock-1-arg_rock_gl_rock04
-  # 0C0006:ArgoniaWorld.esm ref D49604 in cell (-11,54), tilt 46.3 deg, scale 1.07
+- name: rock-1-arg_rock_gl_rock09
+  # 0C0008:ArgoniaWorld.esm ref D77806 in cell (-20,57), tilt 46.1 deg, scale 1.17
   do:
   - console:
-      line: cow ARG_Province -11 54
+      line: cow ARG_Province -20 57
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -42255
+      line: player.setpos x -80369
   - console:
-      line: player.setpos y 223361
+      line: player.setpos y 237022
   - console:
-      line: player.setpos z 2126
+      line: player.setpos z 5253
   - console:
-      line: player.setangle z 201
+      line: player.setangle z 320
   - console:
       line: player.setangle x 12
   - wait: 4
-- name: rock-2-arg_rock_az_rock09
-  # 0C0004:ArgoniaWorld.esm ref D5920A in cell (-11,55), tilt 46.3 deg, scale 0.83
+- name: rock-2-01coalroundrock
+  # 1DE977:Black Marsh.esm ref D8742F in cell (-20,58), tilt 44.7 deg, scale 0.72
   do:
   - console:
-      line: cow ARG_Province -11 55
+      line: cow ARG_Province -20 58
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -43656
+      line: player.setpos x -81505
   - console:
-      line: player.setpos y 229023
+      line: player.setpos y 238119
   - console:
-      line: player.setpos z 1748
+      line: player.setpos z 5595
   - console:
-      line: player.setangle z 223
+      line: player.setangle z 138
   - console:
       line: player.setangle x 12
   - wait: 4
-- name: rock-3-arg_rock_gl_rock09
-  # 0C0008:ArgoniaWorld.esm ref D68C03 in cell (-12,56), tilt 45.7 deg, scale 1.11
+- name: rock-3-arg_rock_gl_rock06
+  # 0C0007:ArgoniaWorld.esm ref DD7203 in cell (-11,63), tilt 0.0 deg, scale 0.91
   do:
   - console:
-      line: cow ARG_Province -12 56
+      line: cow ARG_Province -11 63
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -45649
+      line: player.setpos x -42894
   - console:
-      line: player.setpos y 231563
+      line: player.setpos y 257616
   - console:
-      line: player.setpos z 422
+      line: player.setpos z 4794
   - console:
-      line: player.setangle z 226
+      line: player.setangle z 0
   - console:
       line: player.setangle x 12
   - wait: 4
-- name: rock-4-arg_rock_gl_rock03
-  # 0C0005:ArgoniaWorld.esm ref DC7E03 in cell (-7,62), tilt 40.7 deg, scale 1.16
+- name: rock-4-arg_rock_gl_rock09
+  # 0C0008:ArgoniaWorld.esm ref D77807 in cell (-20,57), tilt 44.6 deg, scale 1.18
   do:
   - console:
-      line: cow ARG_Province -7 62
+      line: cow ARG_Province -20 57
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -25876
+      line: player.setpos x -80828
   - console:
-      line: player.setpos y 254920
+      line: player.setpos y 236571
   - console:
-      line: player.setpos z 6654
+      line: player.setpos z 5356
   - console:
-      line: player.setangle z 356
+      line: player.setangle z 24
   - console:
       line: player.setangle x 12
   - wait: 4
 - name: rock-5-01coalroundrock
-  # 1DE977:Black Marsh.esm ref D49622 in cell (-11,54), tilt 40.5 deg, scale 1.09
+  # 1DE977:Black Marsh.esm ref DD7040 in cell (-12,63), tilt 27.4 deg, scale 1.11
   do:
   - console:
-      line: cow ARG_Province -11 54
+      line: cow ARG_Province -12 63
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -42169
+      line: player.setpos x -49197
   - console:
-      line: player.setpos y 223521
+      line: player.setpos y 258857
   - console:
-      line: player.setpos z 1908
+      line: player.setpos z 4509
   - console:
-      line: player.setangle z 179
+      line: player.setangle z 62
   - console:
       line: player.setangle x 12
   - wait: 4
-- name: rock-6-arg_rock_gl_rock06
-  # 0C0007:ArgoniaWorld.esm ref DA9201 in cell (-1,60), tilt 35.3 deg, scale 0.96
+- name: rock-6-01coalroundrock
+  # 1DE977:Black Marsh.esm ref DD7041 in cell (-12,63), tilt 19.8 deg, scale 0.67
   do:
   - console:
-      line: cow ARG_Province -1 60
+      line: cow ARG_Province -12 63
       settle: 60
   - wait: 8
   - console:
-      line: player.setpos x -2031
+      line: player.setpos x -48955
   - console:
-      line: player.setpos y 250160
+      line: player.setpos y 259376
   - console:
-      line: player.setpos z 2650
+      line: player.setpos z 4583
   - console:
-      line: player.setangle z 177
+      line: player.setangle z 122
   - console:
       line: player.setangle x 12
   - wait: 4

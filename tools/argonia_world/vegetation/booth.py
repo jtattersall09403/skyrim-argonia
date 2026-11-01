@@ -44,8 +44,8 @@ def vantage(d: dict) -> tuple[float, float, float, float]:
     """(x, y, z units, heading deg) downhill of the rock looking up at it. The downhill bearing is the tilt's: a
     conformed rock leans its top uphill-to-down along -grad, so step out along the tilt's horizontal direction."""
     hx, hy = math.sin(d["ry"]), -math.sin(d["rx"])  # the up axis' lean (approximate, small angles)
-    n = math.hypot(hx, hy) or 1.0
-    ux, uy = hx / n, hy / n
+    n = math.hypot(hx, hy)
+    ux, uy = (hx / n, hy / n) if n > 1e-6 else (0.0, -1.0)  # an upright rock (decision 0034) has no lean: stand south
     k = su.metres_to_units(VANTAGE_M)
     x, y = d["x"] + ux * k, d["y"] + uy * k
     heading = math.degrees(math.atan2(d["x"] - x, d["y"] - y)) % 360  # Skyrim: 0 = north, clockwise

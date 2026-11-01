@@ -31,6 +31,20 @@ from tools.argonia_world.vegetation import build, place
 GROUND_TOL_M = 0.5
 SLOPE_TOL_DEG = 0.01
 FIRST = 5  # failures listed per check
+# Skyrim.esm trees per cell by the cell's dominant ground (docs/research/2026-11-01/skyrim-does-it-this-way.md
+# section 6): (mean, p90 or None); the rest of the audit's table is not needed for our classes
+TREE_BANDS = {"forest": (31.0, 53.0), "marsh": (18.0, 36.0), "field": (10.0, None)}
+# our eco classes mapped to a band: the tall-tree river wall and the flooded and interior swamp forests are forest;
+# the open wet ground (sinks, lagoons, deltas) is marsh; the lightly forested hills and the rocky north are field
+# (lore regions/blackwood-and-gloommire.md:13-14; lists.WHY)
+ECO_BAND = {"deep-river-corridor": "forest", "flooded-forest": "forest", "interior-swamp": "forest",
+            "rootland": "forest", "deep-sink-basin": "marsh", "coastal-lagoon": "marsh", "tidal-delta": "marsh",
+            "northern-transition": "field", "western-frontier": "field"}
+TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")
+BAND_LO, BAND_HI = 0.5, 1.5  # a region's mean trees per cell within these multiples of its band's mean
+BAND_LO_FIELD = 0.25  # the hills are "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14), and the rocky
+#                       north is rock-dominated: a field region may hold down to a quarter of vanilla's field mean
+VANILLA_TREES_IN_WATER, VANILLA_TREE_WATER_P10_U = 0.058, 198.0
 
 
 def land_heights(land: Path, cys: set[int]) -> dict[tuple[int, int], np.ndarray]:
@@ -67,6 +81,11 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
     fails: dict[str, list] = defaultdict(list)
     counts: dict[str, list[int]] = defaultdict(list)
     ids: set[int] = set()
+    role = {r["form_key"]: r["role_id"] for r in w.query("SELECT form_key, role_id FROM object_form")}
+    eco = {r["id"]: r["eco_class_id"] for r in w.query("SELECT id, eco_class_id FROM land_region")}
+    trees: dict[str, list[int]] = defaultdict(list)  # trees per cell, by region
+    tree_wet = [0, 0]  # trees below the waterline, trees
+    tree_far: list[float] = []  # dry trees' distance (units) to the nearest wet vertex of their cell
     n = 0
     by_cy: dict[int, list[dict]] = defaultdict(list)
     for c in build.read_cells(out):
@@ -91,6 +110,8 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
             bases = [c["bases"][r[1]] for r in c["refs"]]
             n += len(fids)
             counts[region].append(len(fids))
+            is_tree = np.asarray([role.get(b) in TREE_ROLES for b in bases], dtype=bool)
+            trees[region].append(int(is_tree.sum()))
             if len(fids) > place.CAP:
                 fails["budget"].append(f"({cx},{cy}): {len(fids)} refs over the cap {place.CAP}")
             for k, f in enumerate(fids):
@@ -125,6 +146,13 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
                 T = np.full(T.shape, cw.nearest_level(cx, cy))
             depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
+            wet_v = np.argwhere(L > H[(cx, cy)])
+            for k in np.nonzero(is_tree)[0]:
+                tree_wet[0] += depth[k] > 0
+                tree_wet[1] += 1
+                if depth[k] <= 0 and len(wet_v):
+                    d = np.hypot(wet_v[:, 0] - (v[k] / su.VERTEX_SPACING_UNITS), wet_v[:, 1] - (u[k] / su.VERTEX_SPACING_UNITS))
+                    tree_far.append(float(d.min()) * su.VERTEX_SPACING_UNITS)
             on_paint = painted[i, j] | painted[i, j + 1] | painted[i + 1, j] | painted[i + 1, j + 1]
             road_d = [(half, place.seg_dist(pr, pc, seg)) for half, seg in build.roads_near(segs, n_, a, s_, a + 32)]
             for k, b in enumerate(bases):
@@ -156,11 +184,34 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
     res = {"refs": n, "sha256": h.hexdigest(), "province": stat(allc),
            "regions": {r: stat(v) for r, v in sorted(counts.items())}}
     fails["lists"] = lists(w)
-    for k in ("lists", "ground", "slope", "water", "road", "places", "budget", "ids"):
+    res["tree_counts"], fails["trees"] = tree_bands(trees, eco, tree_wet, tree_far)
+    for k in ("trees", "lists", "ground", "slope", "water", "road", "places", "budget", "ids"):
         f = fails.get(k, [])
         res[k] = {"failures": len(f), **({"fail": f[:FIRST]} if f else {})}
     log(f"vegetation checks: {n} refs, sha256 {res['sha256'][:12]}")
     return res
+
+
+def tree_bands(trees: dict[str, list[int]], eco: dict[str, str], wet: list[int], far: list[float]):
+    """(report, failures): each region's trees per cell against its eco class's Skyrim.esm band, the share of trees
+    in water and the p10 distance of dry trees to wet ground (reported, with vanilla's numbers)."""
+    rep, errs = {}, []
+    for r, v in sorted(trees.items()):
+        band = ECO_BAND.get(eco.get(r, ""))
+        a = np.asarray(v or [0], dtype=np.float64)
+        row = {"band": band, "cells": len(v), "mean": round(float(a.mean()), 1), "p90": round(float(np.percentile(a, 90)), 1)}
+        if band:
+            m = TREE_BANDS[band][0]
+            row["vanilla_mean"] = m
+            lo = (BAND_LO_FIELD if band == "field" else BAND_LO) * m
+            if not (lo <= a.mean() <= BAND_HI * m):
+                errs.append(f"{r} ({band}): {a.mean():.1f} trees per cell outside {lo:.1f}-{BAND_HI * m:.1f} "
+                            f"(vanilla mean {m:g})")
+        rep[r] = row
+    out = {"regions": rep, "in_water_share": round(wet[0] / max(wet[1], 1), 4), "vanilla_in_water_share": VANILLA_TREES_IN_WATER,
+           "dry_tree_p10_distance_u": round(float(np.percentile(far, 10)), 0) if far else None,
+           "vanilla_p10_distance_u": VANILLA_TREE_WATER_P10_U}
+    return out, errs
 
 
 def readback(out: Path, esm: Path, gen: Path, env=None) -> dict:

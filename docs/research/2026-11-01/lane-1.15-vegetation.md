@@ -94,6 +94,17 @@ plugin, stack re-lay (bmv keep list: the rock meshes and their textures), `make 
 chart, then lod.sh. Pins: xLODGen beta 132, DynDOLOD 3.00 Alpha-217.
 
 ## Starting state
+- Session 3 (2026-11-01, Skyrim.esm audit, decision 0034, audit sections 5 and 6): rocks sink by vanilla's medians
+  (boulders 0.5 of their OBND height, cliff shells 0.7; were 0.38 and 0.25: `lists.SINK_*`); 25 % of boulders stand
+  upright (`Rule.upright`, the cell-and-form seeded draw `up`, added last so older draws are unchanged; shells always
+  conform); `checks.tree_bands` compares trees per cell by region with vanilla's bands (forest 31, marsh 18, field 10;
+  eco classes mapped in `ECO_BAND`, band 0.5-1.5 of the mean, field from 0.25 because the lore calls the hills lightly
+  forested) and reports trees in water (0 %, vanilla 5.8 %) and the dry trees' p10 distance to wet ground (241 u,
+  vanilla 198 u). Sample (11 cells, fresh LAND from `terrain build --sample`): northern-transition 4.0 trees per
+  cell (6 cells), flooded-forest 28.0 (4 cells), both in band; 604 refs, 14 checks green. The rock booth is
+  regenerated (one upright rock among the six; its vantage stands south). Owed: the whole-province band numbers
+  (`build` without `--sample`), and the p10 distance there. A stale `out/terrain/land` fails `ground` by 1 m in
+  cell (-19,57) with or without this change: rebuild the LAND first.
 - Done:
   - The placer and checks on the new ground and solved water.
   - 20 own rock STATs in ArgoniaWorld.esm, varying by region.

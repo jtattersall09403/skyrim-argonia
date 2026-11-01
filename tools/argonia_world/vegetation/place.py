@@ -28,6 +28,8 @@ Per cell and form (seeded by the cell and the form, so a cell rebuilds alone and
   (routes/paint.py's segments), nor in a quad with a painted BC_ROAD or TRACK corner (the imported paint too).
 - **Place exclusion:** no stem inside a built place's footprint: the bounds of its exterior build_refs plus
   PLACE_MARGIN_M.
+- **Upright (decision 0034, Skyrim.esm audit section 5):** a quarter of boulders (Rule.upright) skip the
+  conforming tilt, chosen by the cell-and-form seeded draw; their sunk plane is then level.
 - **Sinking (1.15 §e.2):** a form with a sink fraction (rocks: vegetation_form.sink_frac) has its pivot set
   scale x (OBND bottom + sink_frac x OBND height) below the ground, so its open bottom is under the ground; a rock
   conforms to the quad's slope (ConformToSlope), so the buried plane follows the hill.
@@ -83,6 +85,7 @@ class Rule:
     conform: bool
     scale: tuple[float, float]
     sink_m: float = 0.0  # metres at scale 1 the pivot is set below the ground: OBND bottom + sink_frac x height
+    upright: float = 0.0  # share of stems that stand upright instead of conforming (vanilla boulders ~26 %, 0034)
 
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
@@ -141,7 +144,8 @@ def candidates(rule: Rule, cx: int, cy: int) -> dict[str, np.ndarray]:
     m = u.size
     lo, hi = rule.scale
     return {"u": u, "v": v, "yaw": g.random(m) * 2 * math.pi, "scale": lo + (hi - lo) * g.random(m),
-            "thin": g.random(m)}
+            "thin": g.random(m),
+            "up": g.random(m)}  # last, so the older draws are unchanged: below rule.upright the stem stands upright
 
 
 def _mirror(a: np.ndarray, side: float) -> np.ndarray:
@@ -296,7 +300,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
             kept_u.append(pu)
             kept_v.append(pv)
             yaw = float(c["yaw"][k])
-            rx, ry = conform_rot(float(gx[k]), float(gy[k]), yaw) if rule.conform else (0.0, 0.0)
+            conformed = rule.conform and float(c["up"][k]) >= rule.upright
+            rx, ry = conform_rot(float(gx[k]), float(gy[k]), yaw) if conformed else (0.0, 0.0)
             zk = float(z[k]) - float(c["scale"][k]) * rule.sink_m  # a rock's bottom under the ground (1.15 §e.2)
             for key, val in (("form", fi), ("u", pu), ("v", pv), ("z", zk), ("rx", rx), ("ry", ry),
                              ("rz", yaw), ("scale", float(c["scale"][k])), ("thin", float(c["thin"][k]))):
