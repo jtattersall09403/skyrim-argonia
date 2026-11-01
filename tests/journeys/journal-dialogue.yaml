@@ -55,12 +55,13 @@ steps:
     do: [{call: [core, ViewIntent, '{"type":"dialogue.service","v":1,"body":{"service":"barter"}}']}, {wait: 2}]
     expect:
       - {event: {kind: menu, match: BarterMenu}, within: 8}
+      - {event: {kind: menu, match: WindUIMenu}, within: 8}
       - {read: [core, ViewState, dialogue], path: value, eq: null}
     reader: [Wind UI's barter window with Livia's stock, our frames, Pelagiad, no Nordic ornament]
-  - name: barter-returns       # the BarterMenu closed: the same conversation is back
-    do: [{close_menu: BarterMenu}, {wait: 2}]
+  - name: barter-returns       # Wind UI's barter window (WindUIMenu; it takes the BarterMenu) closed: the conversation is back
+    do: [{close_menu: WindUIMenu}, {wait: 2}]
     expect:
-      - {event: {kind: menu, match: '"menu": "BarterMenu", "opening": false'}}
+      - {event: {kind: menu, match: '"menu": "WindUIMenu", "opening": false'}}
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 5}
     reader: [the dialogue window back with Livia, the frame style]
   - name: goodbye-livia

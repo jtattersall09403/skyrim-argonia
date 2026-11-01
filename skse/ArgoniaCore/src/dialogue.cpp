@@ -45,6 +45,7 @@ ac::msg::DialogueState Dressed(ac::msg::DialogueState s) {
   return s;
 }
 
+constexpr std::string_view kWindUIMenu = "WindUIMenu";  // Wind UI's one menu: its barter window among its panes
 bool bartering = false;  // our window is hidden behind the BarterMenu it opened; it returns when that menu closes
 
 // Barter chosen: our view hides (the conversation stays open) and the BarterMenu opens on the next frame.
@@ -147,9 +148,17 @@ class MenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     if (ac::router::hides_hud_at_once(menu)) HudLoading(menu, e->opening);  // the load blocks the task queue
     if (ac::router::covers_hud(menu)) SKSE::GetTaskInterface()->AddTask([] { HudRefresh(); });
     if (!e->opening) {
-      if (menu == RE::BarterMenu::MENU_NAME) {
+      // Wind UI takes the BarterMenu as it opens (it closes within 0.3 s, batch 20261101T020537) and draws its own
+      // barter window in WindUIMenu: our window returns only once neither is open.
+      if (menu == RE::BarterMenu::MENU_NAME || menu == kWindUIMenu) {
         std::lock_guard l(Get().lock);
-        if (bartering) SKSE::GetTaskInterface()->AddTask([] { std::lock_guard l2(Get().lock); ReturnFromBarter(); });
+        if (bartering)
+          SKSE::GetTaskInterface()->AddTask([] {
+            auto* ui = RE::UI::GetSingleton();
+            if (ui && (ui->IsMenuOpen(RE::BarterMenu::MENU_NAME) || ui->IsMenuOpen(RE::BSFixedString(kWindUIMenu.data())))) return;
+            std::lock_guard l2(Get().lock);
+            if (bartering) ReturnFromBarter();
+          });
       }
       if (menu == RE::SleepWaitMenu::MENU_NAME || menu == RE::LoadingMenu::MENU_NAME) FactsChanged("time passed");
       return RE::BSEventNotifyControl::kContinue;
