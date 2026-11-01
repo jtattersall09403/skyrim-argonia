@@ -186,7 +186,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Our screens in play: the dialogue topics, a long answer, the HUD notice, the journal's quest entry | 1.2 §b, §c | L4 | owed | journey:ui-review fail out/runs/ui-review/20261031T002055 |
 | The open and close hand-offs of the panes, the journal and the dialogue window, a clip | 1.2 §b, §c | L5 | owed | no clip made |
 | Touch B closes the journal | 1.2 §c | L4 | owed | docs/research/2026-10-31/lane-game-21.md:28 (not run) |
-| Quit to the main menu from play writes the suspend save and reaches the main menu | 1.2 §a, 1.5 | L4 | owed | journey:menus-quit fail out/batch/adhoc/20261031T112117 |
+| Quit to the main menu from play writes the suspend save and reaches the main menu | 1.2 §a, 1.5 | L4 | owed | journey:menus-quit fail out/batch/lane-1.12/20261101T012958/06-menus-quit-1-20261101T013735 |
 | Favourites or quick keys open by keyboard and pad with one set | game-22 | L4 | owed | `dev-favorite` misses weapons by editor id (docs/research/2026-10-31/lane-game-22.md) |
 | The chart's art is the old project's hand-drawn map (or its design) | owner note (tmp/owner-message.md) | L3 | owed | unconfirmed |
 | Full zoom-out shows the whole province, nothing cut off | owner play test 9 | L4 | owed | bottom cut off |

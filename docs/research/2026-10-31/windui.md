@@ -63,9 +63,10 @@ private archive (`work/research-2026-10-31/windui-stills/`, `windui-probe-p112/`
   `SKSE/Plugins/WindUI/ArtCache/windui_100/` with a `stamp.txt` of each source's size and hash. Colours are fixed in the
   DLL (black panes, grey-white text); nothing in `settings.json` themes it. So our retint acts on the SWF shapes it
   reads (the install-time recipe in `tools/ui_theme`), never on Wind UI's files.
-- **Settings** (`SKSE/Plugins/WindUI/settings.json`, nlohmann JSON; keys `mwui_fov_world`, `mwui_fov_first`,
-  `mwui_magic_glow`, `mwui_grid_scroll`, `mwui_separate`, `mwui_map_style`, `mwui_figure`, `mwui_prebuild`,
-  `mwui_icons_live`, `mwui_icon_memory`, `mwui_perf_log`). Its settings page is added to Skyrim's System page (log:
+- **Settings** (`SKSE/Plugins/WindUI/settings.json`, nlohmann JSON; its keys are `fovWorld`, `fovFirstPerson`,
+  `magicGlowAllEffects`, `separateIdentical`, `gridSideways`, `mapLayer`, `morrowindMap` (boolean), `mapPinned`,
+  `inventorySort`, `figure`, `pinnedMapSpan`, `iconsInMenus`, `iconMemory`, `terrainCacheMB`, `itemListReuse`,
+  `perfLog`; the `mwui_*` names are only its settings page's row ids, and a file keyed by them is ignored). Its settings page is added to Skyrim's System page (log:
   "the WindUI page added to Settings").
 - **Shift for Skyrim's menus: no switch (a known limit).** `SKSE/Plugins/WindUI/vanilla.txt` reading `off` logs
   "inventory intercept installed (vanilla passthrough: off)", but it turns Wind UI's takeover off altogether: no
@@ -73,7 +74,7 @@ private archive (`work/research-2026-10-31/windui-stills/`, `windui-probe-p112/`
   without the file: "menu opened (inventory, 0 items)"). The first probe read the line the wrong way round and
   tested only M after laying it. So no `vanilla.txt` is laid, and holding Shift while opening a menu still gives
   Skyrim's (the paper) menu.
-- **Fast travel and the map.** `mwui_map_style: 1` (Skyrim) makes M and the taskbar's Map open Skyrim's MapMenu, which
+- **Fast travel and the map.** `morrowindMap: false` (the first probe's `mwui_map_style: 1` was ignored; its "chart ready open" came while vanilla.txt had Wind UI off) makes M and the taskbar's Map open Skyrim's MapMenu, which
   our chart stands in for (ArgoniaCore's mapMenu surface: "chart ready open"). Wind UI's own map (Skyrim's LOD terrain,
   local and world views, fast travel by click) is then not used. The engine-side refusal is 1.12 §5's.
 - **Show on map.** In Wind UI's journal window only; with map style Skyrim it would open our chart. J opens our
