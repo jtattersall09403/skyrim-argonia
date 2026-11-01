@@ -116,7 +116,9 @@ def build_of(rev):
 
 
 def main_head():
-    return build_of("main")
+    # origin's main: a worktree's local main (or a main tree with another session's edits) lags it
+    subprocess.run(["git", "-C", str(REPO), "fetch", "-q", "origin", "main"], capture_output=True)
+    return build_of("origin/main")
 
 
 def status():
@@ -153,7 +155,7 @@ def stamp(name):
     git = lambda *a: subprocess.run(["git", "-C", str(REPO), *a], capture_output=True, text=True)
     sha = build_of("HEAD")
     clean = not git("status", "--porcelain", "--untracked-files=no", "--", ".", *NOT_BUILD).stdout.strip()
-    on_main = git("merge-base", "--is-ancestor", "HEAD", "main").returncode == 0
+    on_main = git("merge-base", "--is-ancestor", "HEAD", "origin/main").returncode == 0
     utc = git("show", "-s", "--format=%cI", sha).stdout.strip() if clean and on_main else "0"
     if utc != "0":
         utc = subprocess.check_output(["date", "-u", "-d", utc, "+%Y-%m-%dT%H:%M:%SZ"], text=True).strip()

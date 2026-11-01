@@ -3,13 +3,14 @@
 # after another, each under its own machine lock. Run after a green batch that the owner will play (the deliver
 # skill's "ready for the owner's play"), and by the planner's tick when pool.py status shows a standby BEHIND:
 #   tooling/job_guard.sh run pool-deploy -- infra/gpu-box/pool_deploy.sh      (or: make pool-deploy)
-# From the main tree on main, clean (pool.py stamp marks anything else as behind). A standby AWS cannot start now
+# From a clean checkout at origin/main, e.g. tooling/worktree.sh's (pool.py stamp marks anything else as behind). A standby AWS cannot start now
 # (no spot capacity) is reported and left; the play page meanwhile starts the current one first.
 set -uo pipefail
 here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
-[ "$(git rev-parse --abbrev-ref HEAD)" = main ] && [ -z "$(git status --porcelain --untracked-files=no)" ] \
-  || { echo "pool_deploy: run from a clean main checkout" >&2; exit 2; }
+git fetch -q origin main
+[ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] && [ -z "$(git status --porcelain --untracked-files=no)" ] \
+  || { echo "pool_deploy: run from a clean checkout at origin/main (tooling/worktree.sh makes one)" >&2; exit 2; }
 make --no-print-directory plugin || exit 1
 rc=0
 for m in $("$PY" "$here/pool.py" behind); do
