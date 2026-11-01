@@ -216,6 +216,8 @@ def cmd_check(a) -> int:
         for k in ("wet_above_water", "bank_below_water", "step_bank_below_upper", "dry_edge_below_water", "sites_unshaped"):
             if fit[k]:
                 fails.append(f"fit: {fit[k]} {k}")
+        if fit["lattice_ratio"] > 1.5:
+            fails.append(f"lattice: second difference on the 16-sample lines {fit['lattice_ratio']} x off them")
         ov = stats.get("overflow_cells", 0)
         if ov:
             fails.append(f"overflow: {ov} cells")

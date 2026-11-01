@@ -220,7 +220,8 @@ def upsample(cell: np.ndarray) -> np.ndarray:
     i0 = np.clip(np.floor(t).astype(int), 0, C - 2)
     f = np.clip(t - i0, 0, 1)
     rows = cell[i0] * (1 - f)[:, None] + cell[i0 + 1] * f[:, None]
-    return rows[:, i0] * (1 - f)[None] + rows[:, i0 + 1] * f[None]
+    # bilinear has a slope kink on every cell line (a lattice of straight creases): smoothed at half a cell
+    return blur(rows[:, i0] * (1 - f)[None] + rows[:, i0 + 1] * f[None], Q / 2)
 
 
 def fill_nearest(cell: np.ndarray) -> np.ndarray:
@@ -483,7 +484,8 @@ def generate(inp: Inputs, log=print) -> dict:
         i0 = np.floor(t).astype(int)
         f = t - i0
         rows_ = g[i0] * (1 - f)[:, None] + g[i0 + 1] * f[:, None]
-        noise += amp * (rows_[:, i0] * (1 - f)[None] + rows_[:, i0 + 1] * f[None])
+        # each octave's bilinear lattice smoothed at half its spacing (no creases every N / k samples)
+        noise += amp * blur(rows_[:, i0] * (1 - f)[None] + rows_[:, i0 + 1] * f[None], max(N / k / 2, 1.0))
     # the nearest raster water's level and type ride the chamfer together (type x 1e4 + level + 1e3)
     tw = np.pad(np.repeat(np.repeat(inp.water.wtype, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge").astype(np.float64)
     dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
@@ -940,7 +942,11 @@ def check(ground: np.ndarray, role: np.ndarray, water: CellWater, sites: list[di
               "deep_water": not np.isnan(lev) and lev - c >= DEEP_M}[s["shape"]]
         if not ok:
             site_bad.append((s["place_id"], s["shape"], int(role[ci, cj])))
-    return {"wet_above_water": int(wet_bad.sum()), "bank_below_water": int(bank_bad.sum()),
+    # no lattice: the second difference on the 16-sample lines no larger than off them (vanilla LAND has none)
+    d2 = np.abs(np.diff(np.asarray(ground[::8], np.float64), 2, axis=1))
+    on = (np.arange(1, d2.shape[1] + 1) % 16) == 0
+    lattice = round(float(d2[:, on].mean() / max(d2[:, ~on].mean(), 1e-9)), 3)
+    return {"lattice_ratio": lattice, "wet_above_water": int(wet_bad.sum()), "bank_below_water": int(bank_bad.sum()),
             "dry_edge_below_water": int(dry_bad.sum()),
             "step_bank_below_upper": step_bad, "sites": len(sites), "sites_unshaped": len(site_bad),
             "sites_unshaped_by": {f"{k[0]}/role{k[1]}": n for k, n in
