@@ -179,8 +179,14 @@ void Do(pad::Act a) {
     case pad::Act::wait_rest: AskClose(State::After::wait); break;
     case pad::Act::next_pane: GoPane(1); break;
     case pad::Act::prev_pane: GoPane(-1); break;
-    case pad::Act::wheel_up: Tap(RE::INPUT_DEVICE::kMouse, 8); break;  // BSWin32MouseDevice kWheelUp
-    case pad::Act::wheel_down: Tap(RE::INPUT_DEVICE::kMouse, 9); break;
+    case pad::Act::wheel_up:  // BSWin32MouseDevice kWheelUp
+      Tap(RE::INPUT_DEVICE::kMouse, 8);
+      SKSE::log::info("pad: wheel up (trigger)");
+      break;
+    case pad::Act::wheel_down:
+      Tap(RE::INPUT_DEVICE::kMouse, 9);
+      SKSE::log::info("pad: wheel down (trigger)");
+      break;
     case pad::Act::nudge_up: CursorTo({at.x, (std::max)(0.0, at.y - step)}); break;
     case pad::Act::nudge_down: CursorTo({at.x, (std::min)(s.h - 1, at.y + step)}); break;
     case pad::Act::nudge_left: CursorTo({(std::max)(0.0, at.x - step), at.y}); break;
@@ -235,8 +241,9 @@ void Tick() {
   const auto at = CursorAt();
   const auto to = pad::cursor_step(at, g.left, dt, s.w, s.h);
   if (std::lround(to.x) != std::lround(at.x) || std::lround(to.y) != std::lround(at.y)) CursorTo(to);
-  for (int n = pad::scroll_step(g.scroll, g.right.y, dt); n != 0; n += n > 0 ? -1 : 1)
-    Tap(RE::INPUT_DEVICE::kMouse, n > 0 ? 8 : 9);
+  const int notches = pad::scroll_step(g.scroll, g.right.y, dt);
+  for (int n = notches; n != 0; n += n > 0 ? -1 : 1) Tap(RE::INPUT_DEVICE::kMouse, n > 0 ? 8 : 9);
+  if (notches) SKSE::log::info("pad: wheel {} {} by the right stick", notches > 0 ? "up" : "down", notches > 0 ? notches : -notches);
 }
 
 class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
@@ -293,9 +300,31 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
   }
 };
 
+// Tab, the pad's Start and the HUD's Menu button all open TweenMenu; Wind UI does not always take it, so the next
+// frame swaps an untaken tween for InventoryMenu, which Wind UI takes into its full menu mode (coordinator, 1.12 §8).
+class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
+ public:
+  RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
+    if (!e || !e->opening || e->menuName != RE::TweenMenu::MENU_NAME) return RE::BSEventNotifyControl::kContinue;
+    SKSE::GetTaskInterface()->AddTask([] {
+      if (!pad::tween_to_windows(Open(RE::TweenMenu::MENU_NAME), Open(kWindUIMenu))) return;
+      auto* q = RE::UIMessageQueue::GetSingleton();
+      if (!q) return;
+      q->AddMessage(RE::TweenMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kHide, nullptr);
+      q->AddMessage(RE::InventoryMenu::MENU_NAME, RE::UI_MESSAGE_TYPE::kShow, nullptr);
+      SKSE::log::info("pad: tween -> Wind UI's windows");
+    });
+    return RE::BSEventNotifyControl::kContinue;
+  }
+};
+
 }  // namespace
 
 void PadCursorInstall() {
+  if (auto* ui = RE::UI::GetSingleton()) {
+    static TweenSink tween;
+    ui->AddEventSink<RE::MenuOpenCloseEvent>(&tween);
+  }
   if (auto* dll = GetModuleHandleA(prisma::kDll))
     if (auto request = reinterpret_cast<prisma::RequestApi>(GetProcAddress(dll, prisma::kEntry)))
       g_prisma = static_cast<prisma::Api1*>(request(prisma::Version::v1));

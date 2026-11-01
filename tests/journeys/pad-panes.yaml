@@ -10,8 +10,7 @@ steps:
   - name: start-opens-windows
     do: [{pad: "START:150"}, {wait: 2}]
     expect:
-      - {event: {kind: menu, match: WindUIMenu}}
-      - {log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 5}
+      - {log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}
   - name: left-stick-moves-cursor
     do: [{call: [input, cursor]}, {pad: "LX=1:600"}, {wait: 1}]
     expect: [{read: [input, cursor], path: x, gt: 1000}]
@@ -20,15 +19,29 @@ steps:
     expect: [{log: {name: ArgoniaCore, contains: "pad: left down"}}, {log: {name: ArgoniaCore, contains: "pad: left up"}}]
   - name: x-right-clicks
     do: [{pad: "X:150"}, {wait: 1}]
-    expect: [{log: {name: ArgoniaCore, contains: "pad: right down"}}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: right down"}}, {log: {name: ArgoniaCore, contains: "pad: right up"}}]
   - name: bumper-cycles-windows
     do: [{pad: "RB:150"}, {wait: 1}, {pad: "RB:150"}, {wait: 1}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane inventory (next)"}}]
   - name: triggers-and-right-stick-scroll
     do: [{pad: "RT:200"}, {pad: "LT:200"}, {pad: "RY=-1:600"}, {wait: 1}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: wheel down (trigger)"}}, {log: {name: ArgoniaCore, contains: "pad: wheel up (trigger)"}}, {log: {name: ArgoniaCore, contains: "by the right stick"}}]
   - name: bumper-to-journal
     do: [{pad: "RB:150"}, {wait: 1}, {pad: "RB:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: pane journal"}}]
+  - name: journal-closed-by-b    # nav.ts's B leaves our journal; Start brings the windows back
+    do: [{pad: "B:150"}, {wait: 2}, {pad: "START:150"}, {wait: 2}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}]
+  - name: bumper-to-map          # the cycle goes on from the journal to our map
+    do: [{pad: "RB:150"}, {wait: 2}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: pane map"}}]
+  - name: map-closed
+    do: [{close_menu: MapMenu}, {wait: 1}, {pad: "START:150"}, {wait: 2}]
+  - name: bumper-to-system       # System last: the windows close and Skyrim's System page opens
+    do: [{pad: "RB:150"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: pane system"}}, {event: {kind: menu, match: Journal Menu}, within: 8}]
+  - name: system-closed
+    do: [{close_menu: Journal Menu}, {wait: 1}, {pad: "START:150"}, {wait: 2}]
   - name: b-closes
     do: [{pad: "B:150"}, {wait: 2}]
     expect: [{log: {name: ArgoniaCore, contains: "pad: windows closed"}, within: 8}]
@@ -39,7 +52,7 @@ steps:
     do: [{close_menu: Sleep/Wait Menu}]
   - name: keyboard-tab-opens
     do: [{key: "TAB 120"}, {wait: 2}, {mouse: "960 540"}, {click: left}, {wheel: "down 2"}]
-    expect: [{event: {kind: menu, match: WindUIMenu}}]
+    expect: [{log: {name: ArgoniaCore, contains: "pad: windows open"}, within: 8}]
   - name: keyboard-tab-closes
     do: [{key: "TAB 120"}, {wait: 2}]
   - name: keyboard-journal

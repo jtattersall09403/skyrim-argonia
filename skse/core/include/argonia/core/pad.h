@@ -40,6 +40,10 @@ enum class Act {
 // (Tween Menu -> its menu mode) and Select is bound to Wait by controlmap.py; a view and other menus keep their own.
 Act on_button(Context c, Button b);
 
+// Wind UI takes InventoryMenu reliably but not TweenMenu early in a session: a frame after TweenMenu opens, if it is
+// still open and Wind UI's menu mode is not, the tween is closed and InventoryMenu opened (its full menu mode).
+bool tween_to_windows(bool tween_open, bool windui_open);
+
 // Button name from the Xbox name used by the bridge's pad (A B X Y LB RB LS RS START BACK UP DOWN LEFT RIGHT LT RT).
 bool button_from_name(std::string_view name, Button& out);
 // Skyrim's gamepad id code (BSWin32GamepadDevice::Key) to a button; false for an unknown code.
