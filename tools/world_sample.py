@@ -355,8 +355,31 @@ def water_plan() -> dict:
     return json.loads(need(REPO / "out" / "water" / "plan.json").read_text())
 
 
+def sample_reach(w: World) -> dict:
+    """The river stop's two points from the water plan's `sampleStep` (a falls edge, water/__main__.py emit): the
+    channel's middle 4 vertices inside the upper cell (its water) and 4 inside the lower cell (its water)."""
+    st = water_plan()["sampleStep"]
+    (cx, cy), e = st["cell"], st["edge"]
+    row = [tuple(r) for r in w.db.query("SELECT cross_lo, cross_hi FROM water_step WHERE cx = ? AND cy = ? AND edge = ?",
+                                     cx, cy, e)]
+    lo, hi = row[0] if row else (0, su.QUADS_PER_CELL)
+    q, mpp = su.QUADS_PER_CELL, su.PROVINCE_SAMPLE_M
+    x0, y0 = su.PROVINCE_CELL_SW
+    r_n, c_w = (su.PROVINCE_CELLS - 1 - (cy - y0)) * q, (cx - x0) * q
+    mid = (lo + hi) / 2
+    if e in ("n", "s"):
+        edge_r, inward = r_n + (0 if e == "n" else q), (1 if e == "n" else -1)
+        pts = [((c_w + mid) * mpp, (edge_r + k * inward) * mpp) for k in (4, -4)]
+    else:
+        edge_c, inward = c_w + (q if e == "e" else 0), (-1 if e == "e" else 1)
+        pts = [((edge_c + k * inward) * mpp, (r_n + q - mid) * mpp) for k in (4, -4)]
+    return {"id": f"step {cx},{cy} {e}", "lengthM": round(8 * mpp, 2), "dropM": round(st["upperM"] - st["lowerM"], 2),
+            "pieces": [{"eastM": round(pts[0][0], 2), "southM": round(pts[0][1], 2), "zM": st["upperM"]},
+                       {"eastM": round(pts[1][0], 2), "southM": round(pts[1][1], 2), "zM": st["lowerM"]}]}
+
+
 def stop_4(w: World, g: Ground) -> dict:
-    reach = water_plan()["sampleReach"]
+    reach = sample_reach(w)
     pieces = reach["pieces"]
     first, last = pieces[0], pieces[-1]
     r0, c0 = g.snap(first["eastM"], first["southM"])
@@ -405,7 +428,7 @@ def stop_5(w: World, g: Ground) -> dict:
                 mist.append(ref["pos"])
             elif ref["base"] == keys["falls"]:
                 falls.append(ref["pos"])
-    ref_pt = water_plan()["sampleReach"]["pieces"][0]
+    ref_pt = sample_reach(w)["pieces"][0]
     rx, ry = su.province_to_skyrim(ref_pt["eastM"], ref_pt["southM"])
     m = min(mist, key=lambda p: (p[0] - rx) ** 2 + (p[1] - ry) ** 2)  # the fall nearest the river stop
     near = [f for f in falls if (f[0] - m[0]) ** 2 + (f[1] - m[1]) ** 2 < 1200 ** 2]

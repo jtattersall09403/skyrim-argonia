@@ -129,3 +129,25 @@ def test_province_two_levels_in_a_cell_rejected_and_steps_chained():
     assert keys[(4, 10, "w")].chain in stp.CHAINS  # the reach's step into the tarn
     assert all(s.chain in stp.CHAINS or s.chain == "closed" for s in res.steps)
     assert all(s.upper_m > s.lower_m for s in res.steps)
+
+
+def test_enclosed_cells_take_their_rings_level_as_vanilla_lakes_do():
+    # a 3x3 lake at 4 m with a dry hole in the middle, a dry group on the grid edge, and a mixed ring
+    lake = {(i, j): (4.0, "fresh", "body.l", None) for i in range(1, 4) for j in range(1, 4) if (i, j) != (2, 2)}
+    add = sv.fill_enclosed(lake, n=6)
+    assert add == {(2, 2): (4.0, "fresh", "body.l", None)}  # the hole, no edge group
+    mixed = {(1, 2): (2.0, "fresh", "a", None), (3, 2): (2.0, "fresh", "a", None),
+             (2, 1): (5.0, "fresh", "b", None), (2, 3): (2.0, "fresh", "a", None)}
+    assert sv.fill_enclosed(mixed, n=6)[(2, 2)][0] == 2.0  # the level with most shared edges
+    tie = {(1, 2): (2.0, "fresh", "a", None), (3, 2): (2.0, "fresh", "a", None),
+           (2, 1): (5.0, "fresh", "b", None), (2, 3): (5.0, "fresh", "b", None)}
+    assert sv.fill_enclosed(tie, n=6)[(2, 2)][0] == 2.0  # a tie to the lower level
+
+
+def test_padding_ring_carries_the_level_one_cell_past_the_water():
+    lake = {(2, 2): (4.0, "fresh", "body.l", None)}
+    add = sv.pad_ring(lake, n=6)
+    assert set(add) == {(i, j) for i in (1, 2, 3) for j in (1, 2, 3)} - {(2, 2)}
+    assert all(v == (4.0, "fresh", "body.l", None) for v in add.values())
+    two = {(1, 2): (2.0, "fresh", "a", None), (3, 2): (5.0, "fresh", "b", None)}
+    assert sv.pad_ring(two, n=6)[(2, 2)][0] == 2.0  # the lowest neighbouring level

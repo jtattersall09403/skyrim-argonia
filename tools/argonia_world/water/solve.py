@@ -33,6 +33,14 @@ The rules (each a pure function below, unit-tested in tests/test_solve.py):
    first and the most samples win (a tie to the lower level), so a river entering a lake takes the lake's level in
    the lake's cells and its step moves to the edge before the lake; among reaches alone the lowest level wins
    (the downstream level at a junction).
+   **Enclosed cells (decision 0034, Skyrim.esm measured by terrain/probes/vanilla_lake_cells.py):** vanilla gives
+   every cell a lake or marsh touches its level, cells with no ground under it included, and leaves no hole inside
+   a body (Lake Ilinalta: 51 cells, 4 all-dry, 0 enclosed holes). So a group of cells with no candidate that no
+   path of such cells joins to the province edge takes the level its ring of water cells holds most (by shared
+   edges; a tie to the lower level), with that ring's type and body (`fill_enclosed`). The ground lane shapes the
+   shore inside such a cell; the water plane under dry ground is not seen. Then the padding ring (`pad_ring`,
+   skyrim-does-it-this-way.md §2): each cell beside water takes a neighbour's level, so no water stops on a cell
+   edge against a dry cell.
 4. Steps (world-rebuild-options.md §11, Skyrim.esm's 80 stepped edges). Where a reach crosses an edge between two
    levels: a row from the upper cell, the channel's vertex range on that edge, the chain sized to the drop
    (steps.chain_for). Any other edge between two water cells at different levels is `closed`: the bank stands at
@@ -253,6 +261,55 @@ def resolve(cands: list[tuple[int, float, str, str | None, str | None, float]]) 
     return best[1], best[2], best[3], best[4]
 
 
+def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[int, int], tuple]:
+    """Rule 3's enclosed cells: each 4-connected group of cells absent from `cells` that does not reach the grid
+    edge takes the value its bordering cells hold most (by shared edges; a tie to the lower level). Returns the
+    added cells only."""
+    seen: set[tuple[int, int]] = set()
+    added: dict[tuple[int, int], tuple] = {}
+    for i0 in range(n):
+        for j0 in range(n):
+            if (i0, j0) in cells or (i0, j0) in seen:
+                continue
+            comp, st, edge, ring = [(i0, j0)], [(i0, j0)], False, {}
+            seen.add((i0, j0))
+            while st:
+                a, b = st.pop()
+                for c in ((a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)):
+                    if not (0 <= c[0] < n and 0 <= c[1] < n):
+                        edge = True
+                    elif c in cells:
+                        v = cells[c]
+                        ring[(v[0], v[1])] = (ring.get((v[0], v[1]), (0, v))[0] + 1, v)
+                    elif c not in seen:
+                        seen.add(c)
+                        comp.append(c)
+                        st.append(c)
+            if edge or not ring:
+                continue
+            _, v = max(ring.values(), key=lambda kv: (kv[0], -kv[1][0]))
+            for c in comp:
+                added[c] = (v[0], v[1], v[2], None)
+    return added
+
+
+def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[int, int], tuple]:
+    """Vanilla's padding ring (skyrim-does-it-this-way.md §2: 23 of Skyrim.esm's 510 explicit-level cells have no
+    wet vertex; the level is carried one cell past the water): every cell absent from `cells` with a water cell
+    among its 8 neighbours takes the lowest of their levels (with that cell's type and body): a step between two
+    levels stays on the higher water's own edge, as a closed bank, and never moves a tall bank beside the lower
+    water's bed. The water plane then runs under the shore's ground, never stopping on a cell edge against a dry
+    cell. Returns the added cells only."""
+    added: dict[tuple[int, int], tuple] = {}
+    for (i, j) in {(a + di, b + dj) for (a, b) in cells for di in (-1, 0, 1) for dj in (-1, 0, 1)}:
+        if (i, j) in cells or not (0 <= i < n and 0 <= j < n):
+            continue
+        v = min((cells[(i + di, j + dj)] for di in (-1, 0, 1) for dj in (-1, 0, 1) if (i + di, j + dj) in cells),
+                key=lambda c: c[0])
+        added[(i, j)] = (v[0], v[1], v[2], None)
+    return added
+
+
 def section(upper_m: float, lower_m: float) -> dict[str, float]:
     """§11's vanilla step, for the ground lane: banks at or above the upper water, the bed through the edge
     100-300 units under the upper surface, sloping into the lower cell over 1-5 vertices (more for a big drop)."""
@@ -274,6 +331,7 @@ class Result:
     reach_kind: dict[str, str]  # reach id -> 'water' | 'dry'
     body_outcome: dict[str, str] = field(default_factory=dict)  # body id -> 'cells N' or a drop reason
     contested: int = 0  # cells with more than one level among candidates
+    enclosed: int = 0  # cells given their ring's level by fill_enclosed
     seconds: float = 0.0
 
 
@@ -362,6 +420,11 @@ def solve(w, raster=None) -> Result:
         if len({c[1] for c in cs}) > 1:
             contested += 1
         cells[(k // NCELL, k % NCELL)] = resolve(cs)
+    enclosed = fill_enclosed(cells)
+    cells.update(enclosed)
+    padded = pad_ring(cells)
+    cells.update(padded)
+    enclosed.update(padded)
 
     # steps: along each wet reach, then closed edges between any two water cells at different levels
     steps: dict[tuple[int, int, str], Step] = {}
@@ -402,7 +465,7 @@ def solve(w, raster=None) -> Result:
             lv = sorted({cells[(k // NCELL, k % NCELL)][0] for k in body_cells[bid]})
             outcome[bid] = "drop: its cells hold another body or the sea, at " + ", ".join(f"{x:g}" for x in lv)
     return Result({(CX0 + i, CY0 + j): v for (i, j), v in cells.items()}, sorted(steps.values(),
-                  key=lambda s: (s.cx, s.cy, s.edge)), dry, kind, outcome, contested, time.time() - t0)
+                  key=lambda s: (s.cx, s.cy, s.edge)), dry, kind, outcome, contested, len(enclosed), time.time() - t0)
 
 
 def write(w, res: Result) -> None:

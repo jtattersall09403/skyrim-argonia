@@ -196,8 +196,10 @@ def from_solve(world) -> CellWater | None:
         if 0 <= i < C and 0 <= j < C:
             level[i, j] = r["level_m"]
             wtype[i, j] = TYPES.index(r["water_type"])
-    steps = [Step(s["cx"], s["cy"], s["edge"], s["upper_m"], s["lower_m"], s["cross_lo"], s["cross_hi"], s["chain"])
-             for s in world.query("SELECT * FROM water_step")]
+    # a closed edge has no channel: the solve writes its range as 0..0, here -1 (no vertex is a channel)
+    steps = [Step(s["cx"], s["cy"], s["edge"], s["upper_m"], s["lower_m"],
+                  -1 if s["chain"] == "closed" else s["cross_lo"], -1 if s["chain"] == "closed" else s["cross_hi"],
+                  s["chain"]) for s in world.query("SELECT * FROM water_step")]
     return CellWater(level, wtype, steps, source="cell_water")
 
 

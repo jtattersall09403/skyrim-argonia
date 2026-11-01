@@ -27,47 +27,47 @@ stops:
   region: dunmer-north.northern-transition
   weather: ARG_Weather_tannin_haze
   cliff:
-    step_m: 14.51
-    slope_deg: 82.8
+    step_m: 6.85
+    slope_deg: 75.1
 - n: 3
   title: Four cells meet on a slope
   scene: world-sample-03-corner
   cell:
-  - -48
-  - 32
+  - -61
+  - 39
   region: imperial-fringe.western-frontier
   weather: ARG_Weather_tannin_haze
   corner:
     cell_sw:
-    - -48
-    - 32
+    - -61
+    - 39
     slope_deg: 24.9
 - n: 4
   title: A stepped river reach with rapids
   scene: world-sample-04-rapids
   cell:
-  - -33
-  - 14
+  - -62
+  - 43
   region: imperial-fringe.western-frontier
   weather: ARG_Weather_tannin_haze
   reach:
-    id: reach.949-1591
-    length_m: 156.0
-    drop_m: 4.38
-    pieces: 9
+    id: step -62,43 n
+    length_m: 14.62
+    drop_m: 8.96
+    pieces: 2
 - n: 5
   title: A waterfall
   scene: world-sample-05-waterfall
   cell:
-  - -47
-  - 22
-  region: imperial-fringe.deep-sink-basin
-  weather: SkyrimClearMA
+  - -62
+  - 44
+  region: imperial-fringe.western-frontier
+  weather: ARG_Weather_tannin_haze
   falls:
     mist_at:
-    - -190758.72
-    - 94090.78
-    top_z: 18010.3
+    - -251456.0
+    - 180224
+    top_z: 15387.7
     pieces_near: 1
 - n: 6
   title: A marsh basin
@@ -118,7 +118,7 @@ stops:
   - 47
   - 63
   region: dunmer-north.tidal-delta
-  weather: SkyrimClearCO
+  weather: ARG_Weather_clear_dry
   border:
     min_x: -253952.0
     max_y: 262144.0
@@ -180,8 +180,8 @@ stops:
   - -53
   - 3
   region: imperial-fringe.western-frontier
-  weather: SkyrimClearFF
-  high_point_m: 440.3
+  weather: ARG_Weather_clear_dry
+  high_point_m: 327.6
 steps:
 - name: s01-arrive
   do: []
@@ -200,14 +200,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2564.99
+    ge: 3268.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2635.01
+    le: 3339.01
     within: 3
-  expected_ground_m: 37.127
+  expected_ground_m: 47.18
 - name: s01-probe-east-30m
   why: ground at the east-30m point of the road
   do:
@@ -217,14 +217,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2428.99
+    ge: 2508.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2499.01
+    le: 2579.01
     within: 3
-  expected_ground_m: 35.185
+  expected_ground_m: 36.327
 - name: s01-probe-west-30m
   why: ground at the west-30m point of the road
   do:
@@ -234,14 +234,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 3132.99
+    ge: 4260.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3203.01
+    le: 4331.02
     within: 3
-  expected_ground_m: 45.238
+  expected_ground_m: 61.345
   reader:
   - grass blades stand on the painted ground and stop where the paint stops
   - trees are Black Marsh region trees (mangrove, cypress, palm, bald cypress); no pine, spruce, birch, snow, frost, heather, Nordic architecture
@@ -274,14 +274,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 11252.99
+    ge: 28460.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 11323.01
+    le: 28531.01
     within: 3
-  expected_ground_m: 161.188
+  expected_ground_m: 406.911
 - name: s02-probe-foot
   why: the foot two samples below the face
   do:
@@ -291,14 +291,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2460.99
+    ge: 2732.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2531.01
+    le: 2803.01
     within: 3
-  expected_ground_m: 35.642
+  expected_ground_m: 39.526
   reader:
   - the cliff reads as one rock face on a ramp, not a stair of terraces
   - no seam, crack or hard edge across the cell border
@@ -328,14 +328,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 34884.99
+    ge: 23420.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 34955.01
+    le: 23491.01
     within: 3
-  expected_ground_m: 498.643
+  expected_ground_m: 334.942
 - name: s03-probe-ne
   why: one sample into the NE cell
   do:
@@ -345,14 +345,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 34908.99
+    ge: 23412.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 34979.01
+    le: 23483.01
     within: 3
-  expected_ground_m: 498.986
+  expected_ground_m: 334.828
 - name: s03-probe-nw
   why: one sample into the NW cell
   do:
@@ -362,14 +362,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 34884.99
+    ge: 23300.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 34955.01
+    le: 23371.01
     within: 3
-  expected_ground_m: 498.643
+  expected_ground_m: 333.229
 - name: s03-probe-se
   why: one sample into the SE cell
   do:
@@ -379,14 +379,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 34812.99
+    ge: 23436.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 34883.01
+    le: 23507.01
     within: 3
-  expected_ground_m: 497.615
+  expected_ground_m: 335.171
 - name: s03-probe-sw
   why: one sample into the SW cell
   do:
@@ -396,14 +396,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 34772.99
+    ge: 23332.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 34843.01
+    le: 23403.01
     within: 3
-  expected_ground_m: 497.044
+  expected_ground_m: 333.686
   reader:
   - 'the ground is one surface across all four cells: no step, crack or lighting seam on the lines'
   - the ground texture runs across the lines without a hard edge
@@ -424,7 +424,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s04-top-of-reach
-  why: 'the top of reach.949-1591: on the bed or the surface, not under the ground or in the air'
+  why: 'the top of step -62,43 n: on the bed or the surface, not under the ground or in the air'
   do:
   - console: player.moveto ARG_Ref_ProbeS04TopOfReach
   - wait: 4
@@ -432,22 +432,22 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 1068.98
+    ge: 15252.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 1278.54
+    le: 15422.71
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 15.765
-  expected_water_m: 17.757
+  expected_ground_m: 218.306
+  expected_water_m: 219.73
 - name: s04-bottom-of-reach
-  why: 'the bottom of reach.949-1591: on the bed or the surface, not under the ground or in the air'
+  why: 'the bottom of step -62,43 n: on the bed or the surface, not under the ground or in the air'
   do:
   - console: player.moveto ARG_Ref_ProbeS04BottomOfReach
   - wait: 4
@@ -455,20 +455,20 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 780.99
+    ge: 14628.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 1005.84
+    le: 14795.24
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 11.652
-  expected_water_m: 13.863
+  expected_ground_m: 209.396
+  expected_water_m: 210.77
   reader:
   - 'each step of the river reads as a short drop with water over it: no visible line where one sheet ends'
   - no z-fighting or flicker between two water sheets
@@ -499,14 +499,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 16868.99
+    ge: 15148.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 18010.32
+    le: 15387.69
     within: 3
-  expected_ground_m: 241.382
+  expected_ground_m: 216.821
   reader:
   - 'the falls piece stands on the step: its top meets the upper water and its foot the pool, no gap, no overhang in the air'
   - mist at the foot
@@ -536,14 +536,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -323.01
+    ge: -115.02
     within: 3
   - read:
     - player
     path: pos.z
     le: 81.23
     within: 3
-  expected_ground_m: -4.113
+  expected_ground_m: -1.142
   expected_water_m: 0.66
   reader:
   - a water surface at one level across the basin, reaching the reeds and the bank
@@ -575,14 +575,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 3868.99
+    ge: 2012.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3939.01
+    le: 2083.01
     within: 3
-  expected_ground_m: 55.748
+  expected_ground_m: 29.245
   reader:
   - the bank meets the water without a gap, step or floating edge
   - the lake surface is one level; shore texture is mud/sand/reed, not Nordic
@@ -608,14 +608,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 20.98
+    ge: 204.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 91.02
+    le: 275.01
     within: 3
-  expected_ground_m: 0.8
+  expected_ground_m: 3.427
 - name: s07-coast-sea
   why: 'three samples out in the sea: the sea default is level 0, no land above it'
   do:
@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 21924.99
+    ge: 23316.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 21995.01
+    le: 23387.01
     within: 3
-  expected_ground_m: 313.58
+  expected_ground_m: 333.457
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
@@ -843,12 +843,12 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 3028.99
+    ge: 4444.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3099.01
+    le: 4515.02
     within: 3
   reader:
   - the signpost stands upright on the ground, with 5 arms
@@ -1677,7 +1677,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s13-probe-summit
-  why: the cell's highest vertex (440 m)
+  why: the cell's highest vertex (328 m)
   do:
   - console: player.moveto ARG_Ref_ProbeS13ProbeSummit
   - wait: 4
@@ -1685,14 +1685,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 30796.99
+    ge: 22908.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 30867.01
+    le: 22979.01
     within: 3
-  expected_ground_m: 440.268
+  expected_ground_m: 327.631
 - name: s13-frametime
   why: the 0.2 section d bar with the whole view loaded
   do:

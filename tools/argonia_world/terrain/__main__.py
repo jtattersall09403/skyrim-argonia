@@ -198,7 +198,7 @@ def cmd_check(a) -> int:
         fit = G.check(np.load(gg, mmap_mode="r"), np.load(gg.with_name("role-u8.npy")), cellwater.load(db.open()),
                       json.loads(gg.with_name("entrance-sites.json").read_text()))
         res["fit"] = fit
-        for k in ("wet_above_water", "bank_below_water", "step_bank_below_upper", "sites_unshaped"):
+        for k in ("wet_above_water", "bank_below_water", "step_bank_below_upper", "dry_edge_below_water", "sites_unshaped"):
             if fit[k]:
                 fails.append(f"fit: {fit[k]} {k}")
         ov = stats.get("overflow_cells", 0)
@@ -220,6 +220,7 @@ def cmd_generate(a) -> int:
     t0 = time.time()
     w = db.open()
     res = G.generate(G.Inputs.load(w))
+    print(f"entrance_site: {G.write_sites(w, res['sites'])} rows", flush=True)
     st = G.write(res)  # the contract's out/terrain/ground-f32.npy; LAND and its stats go to --out
     print(f"generated the province in {time.time() - t0:.1f} s", flush=True)
     print(json.dumps(st, sort_keys=True))
@@ -266,6 +267,7 @@ def main(argv=None) -> int:
     c.add_argument("--out", default=str(OUT))
     c.add_argument("--points", type=int, default=1000)
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
+    sub.add_parser("relief", help="write the region_relief rows from generate.relief_rows (the dossier bands)")
     gp = sub.add_parser("generate")
     gp.add_argument("--sample", action="store_true", help="then build the 1.15 sample windows' LAND")
     gp.add_argument("--out", default=str(OUT))
@@ -280,6 +282,11 @@ def main(argv=None) -> int:
         from tools.argonia_world import db
         from tools.argonia_world.terrain import material as M
         print(f"material_gradient: {M.write_gradient(db.open())} rows")
+        return 0
+    if a.cmd == "relief":
+        from tools.argonia_world import db
+        from tools.argonia_world.terrain import generate as G
+        print(f"region_relief: {G.write_relief(db.open())} rows")
         return 0
     if a.cmd == "generate":
         return cmd_generate(a)

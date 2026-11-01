@@ -6571,12 +6571,24 @@ CREATE TABLE "water_step" (
 -- 1.15: where a place's entrance sits on the ground (ground lane fills it).
 CREATE TABLE "entrance_site" (
   "place_id" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
-  "shape" TEXT NOT NULL CHECK ("shape" IN ('mound','bank','depression','flat','deep_water')),
+  "shape" TEXT NOT NULL CHECK ("shape" IN ('rise','bank','depression','flat','deep_water')),
   "x_m" REAL,
   "y_m" REAL,
   "radius_m" REAL,
   "facing_deg" REAL,
   "request" TEXT
+);
+
+-- 1.15: a land region's relief, heights above its local water (ground lane: terrain/generate.py relief_rows, from
+-- the dossiers; `terrain relief` writes it, `terrain generate` reads it).
+CREATE TABLE "region_relief" (
+  "land_region_id" TEXT NOT NULL PRIMARY KEY REFERENCES "land_region"("id"),
+  "floor_m" REAL NOT NULL CHECK ("floor_m" >= 0),
+  "summit_m" REAL NOT NULL CHECK ("summit_m" >= "floor_m"),
+  "roughness_m" REAL NOT NULL CHECK ("roughness_m" >= 0),
+  "cliff_share" REAL NOT NULL CHECK ("cliff_share" BETWEEN 0 AND 1),
+  "erosion" REAL NOT NULL CHECK ("erosion" BETWEEN 0 AND 1),
+  "why" TEXT NOT NULL
 );
 
 -- 1.15: a land region's mist regime (weather lane fills it).

@@ -171,7 +171,40 @@ def _terrain_stamp() -> str:
     h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
     from tools.argonia_world.terrain import place_ground
     h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
+    h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
     return h.hexdigest()
+
+
+GROUND_TABLES = ("cell_water", "water_step", "region_relief", "land_region", "cell_region_run", "road", "road_point",
+                 "place", "place_terrain_requests")
+
+
+def _ground_stamp() -> str:
+    """1.15's generated ground (terrain/generate.py): its code, the rows it reads and the prior's file."""
+    import hashlib
+    h = hashlib.sha256()
+    for f in (TERRAIN / "generate.py", TERRAIN / "cellwater.py"):
+        h.update(f.name.encode() + f.read_bytes())
+    for t in GROUND_TABLES:
+        f = ROOT / "world" / "db" / f"{t}.jsonl"
+        h.update(t.encode() + (f.read_bytes() if f.exists() else b""))
+    from tools.argonia_world.terrain.grid import data_root
+    a = data_root() / "terrain" / "apron-source-near.npy"
+    h.update(f"{a.stat().st_size}:{int(a.stat().st_mtime)}".encode() if a.exists() else b"no-apron")
+    return h.hexdigest()
+
+
+def ground() -> Path:
+    """The terrain stage's first step: `terrain generate` (out/terrain/ground-f32.npy, role, cliff, entrance sites
+    and the entrance_site rows) whenever its stamp is stale; the cell build reads that ground (grid.Sources)."""
+    from tools.argonia_world.terrain.grid import generated_ground
+    g = generated_ground()
+    stamp = g.with_name("ground.stamp")
+    now = _ground_stamp()
+    if not (g.exists() and stamp.exists() and stamp.read_text() == now):
+        run(sys.executable, "-m", "tools.argonia_world.terrain", "generate")  # its peak passes the 3 GB cap
+        stamp.write_text(_ground_stamp())  # the rows generate wrote (entrance_site) are not in the stamp's tables
+    return g
 
 
 WATER = ROOT / "tools" / "argonia_world" / "water"
@@ -260,6 +293,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
+    ground()
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
     if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
