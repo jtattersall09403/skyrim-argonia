@@ -276,7 +276,11 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
         continue;
       }
       if (!b->IsDown()) continue;
-      if (auto a = pad::on_button(ctx, which); a != pad::Act::none) g.acts.push_back(a);
+      if (auto a = pad::on_button(ctx, which); a != pad::Act::none) {
+        if (a == pad::Act::close)
+          SKSE::log::info("pad: close asked by pad code 0x{:04x} (value {:.2f}, held {:.2f})", b->GetIDCode(), b->Value(), b->HeldDuration());
+        g.acts.push_back(a);
+      }
     }
     if (ctx == pad::Context::windows) Run();
     return RE::BSEventNotifyControl::kContinue;
