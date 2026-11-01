@@ -37,6 +37,7 @@ budget:
 # The records agree and cite only what exists (owner, 2026-10-31: never stale): tools/check_records.py.
 records:
 	@python3 tools/check_records.py $(FAIL)
+	@python3 tools/doc_index.py --check $(FAIL)  # docs/INDEX.md is current: python3 tools/doc_index.py --write
 
 # The check ledgers (docs/phases/*/checks.md): every row valid, its evidence resolving, every batch journey in one.
 ledger:

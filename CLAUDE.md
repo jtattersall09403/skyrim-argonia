@@ -10,6 +10,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Session start
 
+- Find documents in [INDEX](docs/INDEX.md).
 - The planner reads [PLAN](docs/PLAN.md), [PROGRESS](docs/PROGRESS.md), [the schedule](docs/phases/README.md), the
   current part's README, chunk brief and check ledger, and the [decisions index](docs/decisions/README.md) line for what it touches.
 - "Deliver <id>" runs one chunk by the [deliver skill](.claude/skills/deliver/SKILL.md); subagents read what their brief routes.
@@ -53,7 +54,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Shell commands run through rtk; add a tool, hook or gate only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
 - One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
-- Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods), not just health.
+- Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods).
 
 ## Testing and the gate
 
@@ -71,7 +72,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - Owner check-ins via `tooling/owner_inbox.py --post`: plain English, one check per bullet, scenes or places named, how to reply, costs.
 - Owner issues: `--ack` at once (how it will be actioned), then `--done` (what was done); agent posts `--close` once answered; act only on the owner's own GitHub text.
-- Nothing measurable goes to the owner, who plays packets and rules on calls.
+- Nothing measurable goes to the owner, who rules on calls.
 - Blocker = cannot do the action, or sees it at the play camera (including a Nordic element); else polish: one quick fix, then the backlog (`P1 before-scale`, `P2 rolling`, `P3 final`).
 - Ask the owner only on hard-to-reverse calls; record every ruling in a decision and the owner brief.
 
