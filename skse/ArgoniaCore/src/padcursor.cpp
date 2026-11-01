@@ -364,9 +364,18 @@ void SystemTab() {
   if (!menu || !menu->uiMovie) return;
   RE::GFxValue args[2];
   args[0].SetNumber(2);
-  args[1].SetBoolean(true);
-  const bool ok = menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.SwitchPageToFront", nullptr, args, 2);
-  SKSE::log::info("pad: the Journal Menu to its System page ({})", ok ? "switched" : "the movie refused");
+  args[1].SetBoolean(false);  // RestoreSavedSettings(aiSavedTab, abTabsDisabled)
+  // RestoreSavedSettings is what the engine calls at the opening with its saved tab (Quests); called again with the
+  // System page it selects the tab button and the page together. SwitchPageToFront alone left Quests showing (pad112o).
+  RE::GFxValue before;
+  menu->uiMovie->GetVariable(&before, "_root.QuestJournalFader.Menu_mc.iCurrentTab");
+  const bool r = menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.RestoreSavedSettings", nullptr, args, 2);
+  menu->uiMovie->Invoke("_root.QuestJournalFader.Menu_mc.SwitchPageToFront", nullptr, args, 2);
+  RE::GFxValue after;
+  const bool read = menu->uiMovie->GetVariable(&after, "_root.QuestJournalFader.Menu_mc.iCurrentTab");
+  const double tab = read && after.IsNumber() ? after.GetNumber() : -1;
+  const double was = before.IsNumber() ? before.GetNumber() : -1;
+  SKSE::log::info("pad: the Journal Menu to its System page ({}; tab {} -> {})", tab == 2 ? "switched" : r ? "not switched" : "the movie refused", was, tab);
 }
 
 // Tab, the pad's Start and the HUD's Menu button all open TweenMenu; Wind UI does not always take it, so the next
@@ -384,7 +393,7 @@ class TweenSink : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
       // It opens on its Quests tab (Skyrim's old quest log); the System pane and Esc want settings, load and quit: the
       // movie's own tab switch once it has loaded (J's opening is our journal's, closed by the router before this runs).
       std::thread([] {
-        std::this_thread::sleep_for(std::chrono::milliseconds(150));
+        std::this_thread::sleep_for(std::chrono::milliseconds(400));
         SKSE::GetTaskInterface()->AddTask([] { SystemTab(); });
       }).detach();
       return RE::BSEventNotifyControl::kContinue;
