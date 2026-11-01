@@ -1,6 +1,6 @@
 """The parchment chart's command line (2.W4 §c). Output under out/chart/ (gitignored); nothing here is committed.
 
-    python -m tools.chart render [--size MASTER] [--out out/chart] the layers, copies, tiles, index, L1 checks
+    python -m tools.chart render [--size MASTER] [--out out/chart] [--level] the layers, copies, tiles, index, L1 checks
     python -m tools.chart twice [--size MASTER]                     two renders in two processes: the same hashes
     python -m tools.chart sample                                    the synthetic sample's hash (the gate's test)
     python -m tools.chart fetch-font                                Pelagiad (OFL) into $ARGONIA_PRIVATE/fonts
@@ -116,7 +116,8 @@ def cmd_render(a) -> int:
 
     out = Path(a.out)
     f = Features.load()
-    chart = render.Renderer(f, a.size).run()
+    ink = render.chart_level_ink(a.size) if a.level else 1.0
+    chart = render.Renderer(f, a.size, ink=ink).run()
     res = write(chart, out)
     rep = checks.run_all(chart, f)
     (out / "checks.json").write_text(json.dumps(rep, indent=1, sort_keys=True) + "\n")
@@ -166,6 +167,7 @@ def main(argv: list[str] | None = None) -> int:
     r = sub.add_parser("render")
     r.add_argument("--size", type=int, default=render.MASTER)
     r.add_argument("--out", default=str(OUT))
+    r.add_argument("--level", action="store_true", help="a close pyramid level: strokes at the screen weight of their zoom (render.chart_level_ink), for out/chart4k and out/chart8k")
     t = sub.add_parser("twice")
     t.add_argument("--size", type=int, default=render.MASTER)
     sub.add_parser("sample")

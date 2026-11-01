@@ -57,10 +57,13 @@
 /* The map pane (pane.html, 1.12 look 1): the chart docked as a fourth window beside Wind UI's character, magic and
    inventory windows, in the space their default layout leaves at the lower right; its title bar in their manner
    (a centred capital title between hairlines). Display only: no controls, the game's cursor passes over it. */
-body.pane #view { inset: auto; left: 56.2vw; top: 64.4vh; width: 41.6vw; height: 26.4vh; background: transparent; }
-body.pane .chart { width: 100%; height: 100%; padding: 2.2rem 0.6rem 0.6rem; position: relative; gap: 0;
+/* As tall as the space allows: from just under the magic window (its foot at 62.8vh) to just over the taskbar (93vh),
+   with a slimmer title bar, so the parchment fills more of it (round 3: "the pane is mostly empty"). Taller still
+   needs Wind UI's magic window shorter: lane 1.12-menus' layout. */
+body.pane #view { inset: auto; left: 56.2vw; top: 63.6vh; width: 41.6vw; height: 28vh; background: transparent; }
+body.pane .chart { width: 100%; height: 100%; padding: 1.7rem 0.45rem 0.45rem; position: relative; gap: 0;
   background: rgba(10, 12, 9, 0.94); border: 0.1rem solid var(--frame-trim); box-shadow: inset 0 0 0 0.06rem var(--frame-trim-hi); }
-body.pane .chart::before { content: attr(data-title); position: absolute; top: 0.35rem; left: 0; right: 0; text-align: center;
+body.pane .chart::before { content: attr(data-title); position: absolute; top: 0.15rem; left: 0; right: 0; text-align: center;
   font-size: var(--t-head); letter-spacing: 0.12em; text-transform: uppercase; color: var(--frame-head);
   background: linear-gradient(var(--frame-trim), var(--frame-trim)) left 1.2rem center / calc(50% - 4.4rem) 1px no-repeat,
     linear-gradient(var(--frame-trim), var(--frame-trim)) right 1.2rem center / calc(50% - 4.4rem) 1px no-repeat; }

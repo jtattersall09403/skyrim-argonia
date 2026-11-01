@@ -295,10 +295,21 @@ def compose_over(size: int, layers: list[tuple[np.ndarray, tuple[int, int, int],
     return out
 
 
+def chart_level_ink(size: int) -> float:
+    """The ink factor for a pyramid level rendered at its own size: 1 at the 2048 copy and below (the old chart's
+    desktop weights), then a screen weight that grows only as zoom^0.25, as the old canvas strokes grew a little
+    with the zoom, rather than with it in full."""
+    return (2048 / size) ** 0.75 if size > 2048 else 1.0
+
+
 class Renderer:
-    def __init__(self, f: Features, size: int = MASTER, font: Path | None = None):
+    def __init__(self, f: Features, size: int = MASTER, font: Path | None = None, ink: float = 1.0):
         self.f, self.size = f, size
         self.u = size / MASTER  # every master pixel dimension scales by u
+        # Stroke widths scale by w: u times the ink factor. A pyramid level drawn close in is rendered at its own size
+        # with ink < 1 (chart_level_ink), so the lines keep the old chart's screen weight when zoomed in, as its
+        # canvas strokes did (1.6 css px x 0.75-1.3), instead of fattening with the zoom (1.12 look 1, round 3).
+        self.w = self.u * ink
         self.m = round(MARGIN * self.u)
         self.P = size - 2 * self.m
         self.scale = self.P / f.span_m
@@ -438,7 +449,7 @@ class Renderer:
             g = np.maximum(np.hypot(gx, gy), 1e-6)
             sd = (f - 0.5) / g  # signed px from the coast, + inland
             ins = inside[e0:e1]
-            res = {"coast": np.clip(1.6 * u + 0.5 - np.abs(sd), 0, 1) * ins,
+            res = {"coast": np.clip(1.6 * self.w + 0.5 - np.abs(sd), 0, 1) * ins,
                    "landf": np.clip(sd / (1.5 * u) + 0.5, 0, 1)}
             dq = blur(lerp(dq_cols, s, axis=0, lo=e0, hi=e1), rd, 1) + 2.0 * self.noise(max(8, int(120 * u)), "waterlines.wobble", e0, e1)
             dq = np.maximum(dq, 0)
@@ -499,7 +510,7 @@ class Renderer:
         sd = fields["seeds"]
         k = 0.55 + rng.random(len(sd)) * 0.45
         L = 8.8 * u * k
-        w = max(1, round(1.6 * u * SS))
+        w = max(1, round(1.6 * self.w * SS))
         for (x, y, nx, ny), ln in zip(sd, L):
             pen.d.line([(x * SS, y * SS), ((x + nx * ln) * SS, (y + ny * ln) * SS)], fill=255, width=w)
         layers.append((pen.done(), INK, 0.5))
@@ -510,7 +521,7 @@ class Renderer:
         for r in self.f.rivers:
             if r.major:
                 p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.6 * u, 70 * u)
-                self.river(pen, p, min(9.0, 6.0 + 1.0 * (r.weight - 2)) * u)
+                self.river(pen, p, min(9.0, 6.0 + 1.0 * (r.weight - 2)) * self.w)
         masks["rivers"] = pen.done()
         layers.append((masks["rivers"], WATER_INK, 0.9))
 
@@ -519,8 +530,8 @@ class Renderer:
         for r in self.f.roads:
             if r.major:
                 p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.2 * u, 80 * u)
-                main = (5.4 if r.cls == "trunk" else 4.6) * u
-                line(casing, p, main + 4 * u)
+                main = (5.4 if r.cls == "trunk" else 4.6) * self.w
+                line(casing, p, main + 4 * self.w)
                 line(pen, p, main)
         layers.append((casing.done(), PAPER, 0.85))
         masks["roads"] = pen.done()
@@ -547,7 +558,7 @@ class Renderer:
             keep = on[t]
             for piece in dashes(p, (24 * u, 10 * u)):
                 if keep[int(np.argmin(np.hypot(*(p - piece[0]).T)))]:
-                    line(pen, piece, 5.0 * u)   # bolder (1.12 look 1: "more province outline")
+                    line(pen, piece, 5.0 * self.w)   # bolder (1.12 look 1: "more province outline")
         border = pen.done()
         rb = max(1, int(18 * u))
         band = self.banded(2 * (rb + 1) + 2, lambda e0, e1: {"b": np.clip(blur(
@@ -703,7 +714,7 @@ class Renderer:
             del d, shade
             hs = blur(g, r5, 2)
             k50 = np.rint(hs / 50)
-            cl = iso_line(hs, k50 * 50, 0.6 * u) * ((hs > sea + 1) & (lf > 0.5))
+            cl = iso_line(hs, k50 * 50, 0.6 * self.w) * ((hs > sea + 1) & (lf > 0.5))
             res["contour"] = cl * np.where(np.abs(k50) % 4 == 0, 1.0, 0.56)
             return res
 
@@ -778,7 +789,7 @@ class Renderer:
         for r in self.f.rivers:
             if not r.major:
                 p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.0 * u, 80 * u)
-                self.river(pen, p, 3.4 * u)
+                self.river(pen, p, 3.4 * self.w)
         layers.append((pen.done(), WATER_INK, 0.9))
         pen = Pen(s)
         for r in self.f.roads:
@@ -786,15 +797,15 @@ class Renderer:
                 continue
             p = wobble(self.line_px(r.pts), seed(r.id), 1.5 * u + 0.25, 1.2 * u, 90 * u, smooth=9)
             if r.cls in ("boardwalk", "causeway"):
-                line(pen, p, 1.3 * u)
+                line(pen, p, 1.3 * self.w)
                 for d in dashes(p, (2 * u, 5 * u)):
-                    line(pen, d, 5.5 * u)
+                    line(pen, d, 5.5 * self.w)
             elif r.cls == "footpath":
                 for d in dashes(p, (3 * u, 6 * u)):
-                    line(pen, d, 1.8 * u)
+                    line(pen, d, 1.8 * self.w)
             else:
                 for d in dashes(p, (10 * u, 6 * u)):
-                    line(pen, d, 2.2 * u)
+                    line(pen, d, 2.2 * self.w)
         layers.append((pen.done(), LANE_INK, 0.9))
         return layers
 

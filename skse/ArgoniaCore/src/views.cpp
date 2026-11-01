@@ -697,6 +697,24 @@ void HudLoading(std::string_view menu, bool open) {
 
 bool ViewsBound() { return g_api != nullptr; }
 
+void ChartStick(float x, float y) {
+  static bool told = false;
+  if (!g_api) return;
+  auto it = g_ids.find("chart");
+  if (it == g_ids.end()) return;
+  {
+    auto& c = Get();
+    std::lock_guard l(c.lock);
+    if (c.view_host.modal() != std::optional<std::string>("chart")) { told = false; return; }
+  }
+  if (!told && (x != 0.0f || y != 0.0f)) {
+    told = true;
+    SKSE::log::info("chart: the pad's right stick forwarded to the chart ({:.2f}, {:.2f})", x, y);
+  }
+  const auto js = std::format("window.argoniaStick&&window.argoniaStick({:.3f},{:.3f})", x, y);
+  g_api->Invoke(it->second, js.c_str());
+}
+
 void ViewsPostLoad() {
   auto* dll = GetModuleHandleA(prisma::kDll);
   auto request = dll ? reinterpret_cast<prisma::RequestApi>(GetProcAddress(dll, prisma::kEntry)) : nullptr;

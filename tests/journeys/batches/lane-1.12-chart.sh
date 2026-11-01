@@ -7,6 +7,6 @@ set -x
 cd "$(dirname "$0")/../../.."
 PY=~/.argonia/venv/bin/python
 [ -n "${NO_DEPLOY:-}" ] || make deploy || exit 1
-$PY tools/run_batch.py chart-look chart-minimap; rc=$?
+$PY tools/run_batch.py chart-look; rc=$?
 [ -n "${KEEP_UP:-}" ] || infra/gpu-box/run.sh stop
 exit $rc

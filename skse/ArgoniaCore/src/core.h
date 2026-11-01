@@ -149,6 +149,9 @@ void ViewsDataLoaded();  // after InstallHooks: the views created, the journal a
 void ViewsGameReady();   // the HUD's whole state
 void HudLoading(std::string_view menu, bool open);  // a load menu (Loading, Fader, Mist) opened or closed: our HUD hides or returns at once
 void HudRefresh();       // the HUD's state again (a sheet opened or closed: router::covers_hud)
+// The pad's right stick to the open chart (1.12 look 1, the input map: the right stick pans the map). PrismaUI passes
+// the pad's buttons to a focused view but not its sticks, so ArgoniaCore's input sink forwards the stick; main thread.
+void ChartStick(float x, float y);
 bool JournalKeyTaken();  // the Journal Menu opening now follows the journal key (J, the pad's Back), not Escape
 // A push keeps the view's last state (ViewState reads it) and sends it; a modal view opens on its first push.
 void Push(std::string_view view, std::string json);

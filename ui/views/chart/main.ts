@@ -16,6 +16,10 @@ declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex; ARGONIA_CHAR
 const PANE = window.ARGONIA_CHART_PANE === true;
 if (PANE) document.body.classList.add("pane");
 const PANE_ZOOM = 8;   // the pane is short: close in, the land round the player
+// The first opening (no remembered view: the native default is the whole province, {1, 1, 1}) is close round the
+// player, as the old chart opened on the land you stood in (1.12 look 1, round 3); a remembered view is kept.
+const OPEN_ZOOM = 3;
+const isWhole = (v: ChartView) => v.centreX === 1 && v.centreY === 1 && v.zoom === 1;
 
 const root = document.getElementById("view")!;
 const ix = window.ARGONIA_CHART_INDEX;
@@ -52,13 +56,17 @@ function tick(t: number): void {
   const dt = lastT ? Math.min(100, t - lastT) : 16;
   lastT = t;
   const was = view;
+  if (stickOn()) {   // the right stick: the target runs at a speed set by the stick's lean, the view glides after it
+    const [w, h] = sheetSize(), v = STICK_SPEED * Math.min(w, h) * dt / 1000;
+    target = pan(ix, target, w, h, -stick.x * v, stick.y * v);
+  }
   if (!dragging) view = glide(view, target, dt);
   draw();
   // the motion's own measure (1.12 look 1, smooth on every device): frames drawn per glide and the largest step
   const [w0, h0] = sheetSize(), t0 = transform(ix, was, w0, h0), t1 = transform(ix, view, w0, h0);
   const stepPx = Math.max(Math.abs(t1.tx - t0.tx), Math.abs(t1.ty - t0.ty), Math.abs(t1.scale / t0.scale - 1) * w0 / 2);
   if (stepPx > 0.01) { glideFrames++; glideMax = Math.max(glideMax, stepPx); glideStart ||= t; }
-  if (view.centreX !== target.centreX || view.centreY !== target.centreY || view.zoom !== target.zoom) drawSoon();
+  if (stickOn() || view.centreX !== target.centreX || view.centreY !== target.centreY || view.zoom !== target.zoom) drawSoon();
   else {
     lastT = 0;
     if (glideFrames > 1) console.warn(`chart: glide ${glideFrames} frames in ${Math.round(t - glideStart)} ms, largest step ${glideMax.toFixed(1)} px`);
@@ -75,7 +83,10 @@ function buildMask(s: ChartState): HTMLCanvasElement {
   const k = MASK / ix.size;
   const unknown = s.revealed.filter((r) => !ix.cells[`${r.x},${r.y}`]);
   if (unknown.length) console.warn(`chart: ${unknown.length} revealed cells not in the index`);
-  for (const [x, y, rad] of revealDiscs(ix, s.revealed)) {
+  // A disc at the player as well, so the seen land is centred on the marker, not on its cell's centre (1.12 look 1,
+  // round 3: the reader saw the patch some 27 px off the marker in the pane).
+  const me: [number, number, number][] = s.player ? [[...toPx(ix, s.player.x, s.player.y), revealDiscs(ix, [{ x: 0, y: 0 }])[0][2]]] : [];
+  for (const [x, y, rad] of [...revealDiscs(ix, s.revealed), ...me]) {
     const g = c.createRadialGradient(x * k, y * k, 0, x * k, y * k, rad * k);
     g.addColorStop(0, "rgba(255,255,255,1)"); g.addColorStop(0.55, "rgba(255,255,255,1)"); g.addColorStop(1, "rgba(255,255,255,0)");
     c.fillStyle = g;
@@ -240,6 +251,20 @@ function selfCheck(_s: CanvasRenderingContext2D, _t: { scale: number; tx: number
     `${state!.revealed.length} cells, level ${levelFor(PYR.levels, ix.size, _t.scale * dpr)})`);
 }
 
+// The pad's right stick (1.12 look 1, the input map): PrismaUI passes the pad's buttons but not its sticks, so
+// ArgoniaCore's input sink forwards each stick event here (views.cpp ChartStick). Skyrim sends one when the stick
+// moves and a zero when it comes back; between them the frame loop pans by the last lean.
+const STICK_SPEED = 0.9, STICK_DEAD = 0.2;   // sheet heights a second at full lean; the dead zone
+let stick = { x: 0, y: 0 }, stickTold = false;
+const stickOn = () => Math.hypot(stick.x, stick.y) > STICK_DEAD;
+(window as unknown as { argoniaStick: (x: number, y: number) => void }).argoniaStick = (x, y) => {
+  if (PANE) return;
+  const was = stickOn();
+  stick = { x, y };
+  if (stickOn() && !stickTold) { stickTold = true; console.warn(`chart: input stick ${x.toFixed(2)},${y.toFixed(2)}`); }
+  if (stickOn()) drawSoon(); else if (was) aim(target);
+};
+
 // A move sets the target; the frame loop glides to it. The view is sent once it has settled.
 let settle = 0, dragging = false;
 function aim(next: ChartView, now = false): void {
@@ -293,8 +318,10 @@ start({
   render(m) {
     if (m.type !== "chart.state") return;
     state = m.body;
-    view = target = clampZoom(PANE && m.body.player ? { centreX: m.body.player.x, centreY: m.body.player.y, zoom: PANE_ZOOM } : m.body.view);
-    const key = `${state.sketch}|${JSON.stringify(state.revealed)}`;
+    stickTold = false;
+    const p = m.body.player;
+    view = target = clampZoom(p && (PANE || isWhole(m.body.view)) ? { centreX: p.x, centreY: p.y, zoom: PANE ? PANE_ZOOM : OPEN_ZOOM } : m.body.view);
+    const key = `${state.sketch}|${JSON.stringify(state.revealed)}|${p ? `${p.x.toFixed(2)},${p.y.toFixed(2)}` : ""}`;
     if (key !== pushKey) { pushKey = key; checked = false; }
     root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))), ix.pins);
     delete document.body.dataset.ready;

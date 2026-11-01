@@ -362,6 +362,9 @@ class PadSink : public RE::BSTEventSink<RE::InputEvent*> {
         pad::Vec v{t->xValue, t->yValue};
         if (t->IsLeft()) g.left = v;
         else g.right = v;
+        // our chart open (no Wind UI windows): the right stick pans it (sent from a task, not inside this dispatch)
+        if (!t->IsLeft() && ctx != pad::Context::windows && OurViewOpen())
+          SKSE::GetTaskInterface()->AddTask([x = v.x, y = v.y] { ChartStick(x, y); });
         continue;
       }
       auto* b = e->AsButtonEvent();

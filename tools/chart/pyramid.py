@@ -7,7 +7,7 @@ own composites (tools/chart/__main__.py `flatten`): `sketch` (base and ink: the 
 render (decision 0014), as the layers are; nothing here is committed.
 
     tiles(sources, out) -> {"tile": TILE, "levels": [1024, 2048, ...]}
-        sources: {layer: largest render path}, e.g. {"sketch": out/chart/sketch-<master>.png, "full": ...}
+        sources: {layer: render path or paths, one per side}, e.g. {"full": [out/chart8k/full-8192.png, out/chart/full-2048.png]}
 """
 from __future__ import annotations
 
@@ -28,23 +28,39 @@ def levels_for(top: int) -> list[int]:
     return out
 
 
-def tiles(sources: dict[str, Path], out: Path) -> dict:
+def _side(p: Path) -> int:
+    return int(p.stem.rsplit("-", 1)[1])   # "full-8192" -> 8192
+
+
+def tiles(sources: dict[str, Path | list[Path]], out: Path) -> dict:
+    """Each level is cut from a render made at that level's own size when one is given (out/chart4k and out/chart8k
+    are rendered with `--level`, so their strokes keep the screen weight close in), else downsampled from the largest."""
     Image.MAX_IMAGE_PIXELS = None   # our own largest render (twice the master)
     tops = {}
-    for layer, src in sources.items():
+    for layer, srcs in sources.items():
+        srcs = [srcs] if isinstance(srcs, Path) else list(srcs)
+        by = {}
+        for q in srcs:   # the first source of a side wins
+            by.setdefault(_side(q), q)
+        top = by[max(by)]
+        tops[layer] = max(by)
         stamp = out / layer / ".source"
-        key = f"{src.resolve()} {src.stat().st_mtime_ns}"
-        im = Image.open(src).convert("RGB")
-        tops[layer] = im.width
+        key = " ".join(f"{q.resolve()} {q.stat().st_mtime_ns}" for q in sorted(by.values()))
         if stamp.exists() and stamp.read_text() == key:
             continue
-        for s in levels_for(im.width):
-            lv = im if s == im.width else im.resize((s, s), Image.LANCZOS)
+        big = None
+        for s in levels_for(max(by)):
+            if s in by:
+                lv = Image.open(by[s]).convert("RGB")
+            else:
+                big = big or Image.open(top).convert("RGB")
+                lv = big.resize((s, s), Image.LANCZOS)
             d = out / layer / str(s)
             d.mkdir(parents=True, exist_ok=True)
             for ty in range(0, s, TILE):
                 for tx in range(0, s, TILE):
                     lv.crop((tx, ty, tx + TILE, ty + TILE)).save(d / f"{tx // TILE}-{ty // TILE}.png", compress_level=6)
+            del lv
         stamp.write_text(key)
     top = min(tops.values())
     return {"tile": TILE, "levels": levels_for(top)}

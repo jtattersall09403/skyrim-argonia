@@ -70,16 +70,16 @@ def chart_index(src: Path) -> dict:
                        for k, p in ix.get("places", {}).items()}}
 
 
-def pyramid_sources(chart_dir: Path) -> dict[str, Path]:
-    """The largest render of each flattened layer: an 8192-px render in out/chart8k when one was made (`python -m
-    tools.chart render --size 8192 --out out/chart8k`), else the chart's own largest copy."""
-    out = {}
+def pyramid_sources(chart_dir: Path) -> dict[str, list[Path]]:
+    """Each flattened layer's renders, every side found: the close levels rendered at their own size with `--level`
+    (`python -m tools.chart render --level --size 8192 --out out/chart8k`, and the half size into out/chart4k) first, then the
+    chart's own copies (the 2048 and smaller levels at the old chart's desktop weights)."""
+    out: dict[str, list[Path]] = {}
     for layer in ("sketch", "full"):
-        for d in (ROOT / "out" / "chart8k", chart_dir):
-            found = sorted(d.glob(f"{layer}-*.png"), key=lambda p: int(p.stem.split("-")[1]))
-            if found:
-                out[layer] = found[-1]
-                break
+        for d in (ROOT / "out" / "chart8k", ROOT / "out" / "chart4k", chart_dir):
+            found = sorted(d.glob(f"{layer}-*.png"), key=lambda p: -int(p.stem.split("-")[1]))
+            # a close level's own render only: its smaller copies carry its thin ink
+            out.setdefault(layer, []).extend(found if d == chart_dir else found[:1])
     return out
 
 
