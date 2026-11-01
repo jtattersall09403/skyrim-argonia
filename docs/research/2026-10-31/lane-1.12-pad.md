@@ -61,3 +61,10 @@ Load, Creations, Settings, MOD CONFIGURATION, Controls, Help. 0.4 s after the me
 `RestoreSavedSettings(2, false)` and then `SwitchPageToFront(2, true)`; the log reads the tab back ("tab 0 -> 2").
 SwitchPageToFront alone left Quests showing (pad112o). Left for the UI text lane: "MOD CONFIGURATION" is SkyUI's
 upper-case label, and the bottom bar still shows the Quests tab's "A Toggle Active / X Show on Map".
+
+## Esc and Tab in the windows (pad112u): pad-panes PASS, system-perks PASS
+`out/runs/pad-panes/20261101T053413/` and `out/runs/system-perks/20261101T053801/`; stills 05, 09, 10, 11 and 13 read.
+Esc or Tab pressed while Wind UI's windows are open is swallowed by the input sink: its user event is emptied, the
+sink is now prepended, and padcursor closes the windows itself. The player lands in play, never on the System page.
+Tab had left the windows open (pad112t). Esc from play still opens the System tab. Wind UI can open its windows a few
+frames after J's Journal Menu; for 1.5 s any it opens there are hidden, so none are left under our journal.
