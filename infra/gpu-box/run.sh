@@ -89,9 +89,13 @@ case "${1:-}" in
     shift; j=${DESKTOP_JOB:-job}
     case "$j" in *[!a-z0-9-]*|'') echo "DESKTOP_JOB: [a-z0-9-] only" >&2; exit 2 ;; esac
     printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1"
-    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1" "Administrator@$(ip):C:/argonia/desktop-$j.ps1" >/dev/null
+    # launched through wscript with window style 0: powershell.exe -WindowStyle Hidden still flashed its console over
+    # the game, into the stills and clips (1.12-chart, 2026-11-01)
+    printf 'CreateObject("WScript.Shell").Run "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -Command ""try { & C:\\argonia\\desktop-%s.ps1 *> C:\\argonia\\logs\\desktop-%s.log } finally { New-Item C:\\argonia\\logs\\desktop-%s.done -Force }""", 0, True\r\n' "$j" "$j" "$j" > "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.vbs"
+    scp "${SSH_OPTS[@]}" "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1" "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.vbs" "Administrator@$(ip):C:/argonia/" >/dev/null
+    ps 'Move-Item -Force C:\argonia\argonia-desktop-'"$M-$j"'.ps1 C:\argonia\desktop-'"$j"'.ps1; Move-Item -Force C:\argonia\argonia-desktop-'"$M-$j"'.vbs C:\argonia\desktop-'"$j"'.vbs' >/dev/null
     ps '$o="C:\argonia\logs\desktop-'"$j"'.log"; Remove-Item $o -EA SilentlyContinue
-$a=New-ScheduledTaskAction -Execute powershell.exe -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -Command try { & C:\argonia\desktop-'"$j"'.ps1 *> $o } finally { New-Item C:\argonia\logs\desktop-'"$j"'.done -Force }"
+$a=New-ScheduledTaskAction -Execute wscript.exe -Argument "//B //Nologo C:\argonia\desktop-'"$j"'.vbs"
 Remove-Item C:\argonia\logs\desktop-'"$j"'.done -EA SilentlyContinue
 Register-ScheduledTask -TaskName argonia-desktop-'"$j"' -Action $a -User Administrator -RunLevel Highest -Force | Out-Null
 Start-ScheduledTask argonia-desktop-'"$j"'
