@@ -94,16 +94,32 @@ vanilla's three stages. VCLR carries slope/aspect shade and wet darkening times 
   the paint), which changes the route search. That is for the routes lane, not a small edit. Navmesh reads it
   only on its old-sculpt fallback, and `grid.Sources` loads it (ground lane).
 
+## Session 4 (2026-11-01): the Skyrim.esm audit applied (skyrim-does-it-this-way.md §4, §9)
+
+- **Blends (§4):** stops pick one texture per vertex (ties split by per-texture noise), then a 2x2 mean. Synthetic
+  shore runs p10/p50/p90 1/1/5. Sample `terrain check`: blend runs p10/p50/p90 1/2/4 (n 2,163), layers_max 6
+  (base + 6), layers {0:22, 1:10, 2:6, 3:11, 4:4, 5:1, 6:2}.
+- **VCLR (§4):** no slope or aspect term, and the old ground tint is dropped. The darkening is a 256 u water band
+  (to ~150) plus wet flats. Province luminance p10 147.3, p50 253.9, 20.7 % under 200 (vanilla 185/255/13.9 %).
+- **Sequence (§4):** bed below -384 u, then mud (under water only) and edge from -384 u, the edge on to +128 u,
+  then land. Sea beach to +256 u.
+- **Apron (§9):** `border` class alone with no blend, one base per quadrant (`quadrant_sets(bare=)`). A province
+  quadrant takes its bare neighbours' bases first. Check: apron_layers_max 0.
+- **check:** `blend_max_step` is replaced by `blend_runs` (fail p50 > 2 or p90 > 5), `vclr` and `apron_layers_max`.
+  Its other fails are the ground lane's: fit 6 dry_edge_below_water, 25 sites_unshaped, 1 overflow cell.
+- pytest terrain + water: 51 passed. Sample build: 24 s (was 3.7 s; not profiled).
+- **Reader r1 (six windows, main's ground at 19:52):** -63_-63 PASS. -21_-26: narrow strokes, "the most
+  marsh-like frame", with a flat lake and an orange stripe in a pond. 0_0, -12_63, -20_57, -38_25 FAIL.
+  - Not ours (ground/water lanes, session 4 of the ground lane): rectangular lakes and notches (0_0), lattice
+    squares in the lake (-20_57), translucent rectangles on the river (-12_63), the orange line lattice (the base
+    map's step lines).
+  - Ours, owed: grey rock swathes (ROCK slope >= 34 on -12_63, -20_57); the apron render on -38_25 (layer_rgba
+    draws per-vertex weights, not the quadrant bases the build writes); mud blobs on open water beds.
+
 ## Starting state
 
-- **Done:** e29ac9a (material.py `nearest_wet`, `rain_field`, continuous VCLR wet shade; texture_sets why; 3 tests).
-- **Diagnosed, owed elsewhere:** the footprint rectangles (water/ground fit); routes' cover read (routes lane);
-  `grid.Sources.cover` (ground lane).
-- **Owed here:**
-  1. Re-render on the ground after 96e7247. The script is the scratchpad `r6.py`: render.render with nearest-neighbour
-     upscaling.
-  2. w5's straight brown/orange lattice and perfect circles. Check the road paint (`_road`) and the place edits
-     before the stops.
-  3. The w4 left grey band and w0's stair-step bank.
-  4. Fifth reader pass.
-  5. `make plugin` and the in-game look (the planner's batch).
+- **Done:** e29ac9a (session 3) and the session 4 audit commit (material.py, build.py, check, tests, gradient rows).
+- **Owed here:** (1) render the apron from the quadrant bases; (2) the rock swathes: test the slope keys against
+  vanilla's rock share; (3) restrict under-water mud to near the line; (4) profile the 24 s build; (5) reader r2;
+  (6) `make plugin` and the in-game look (the planner's batch).
+- **Owed elsewhere:** the footprint rectangles and lattice (ground/water lanes); routes' cover read (routes lane).
