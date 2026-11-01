@@ -44,3 +44,13 @@ Fixes behind it:
 - D-pad in Wind UI's windows: cursor nudges (24 px at 1080p), as "d-pad or left stick within a pane".
 - Triggers: LT wheel up, RT wheel down in every Wind UI pane (zoom on a map, scroll elsewhere).
 - Start in the windows closes them like B (owner: "B or Start closes").
+
+## Panes unobstructed (pad112n, 1080p): pad-panes PASS, stills read
+`out/runs/pad-panes/20261101T032035/`: 07 our journal alone; 09 our chart alone; 11 (pad) and 20 (Esc from play)
+Skyrim's Journal Menu with no Wind UI window over it. It opens on its Quests tab, not System.
+- Our journal, map and System open only once Wind UI's windows are closed. The windows close through the UI queue
+  (kHide WindUIMenu): Esc also opened the System page (pad112m), and Tab left them open (pad112f). The windows come
+  back half a second after the pane closes.
+- A pane counts as open by the view host's modal record, not by PrismaUI focus: an unfocused journal had read as
+  closed (pad112k/l).
+- When the Journal Menu opens with Wind UI's windows up, the windows are hidden the next frame. This covers Esc from play.
