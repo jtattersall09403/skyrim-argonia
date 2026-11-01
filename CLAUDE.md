@@ -27,7 +27,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Never retune measured combat numbers for feel; fix timing on the animation side by runtime control or the install-time patcher ([0014](docs/decisions/0014-derived-files-are-made-on-the-players-machine.md)).
 - Never ship a derived file (FaceGen, LOD, behaviours, edited clips or menus): the installer makes it on the player's machine (0014).
 - Never update the pinned Skyrim runtime outside a decision record ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)).
-- Never run a Windows-only tool under Wine or Proton (0.2).
+- Never run a Windows-only tool under Wine or Proton.
 
 ## How we build
 
@@ -47,13 +47,12 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Agents and briefs
 
-- Model and effort live only in `.claude/agents/` frontmatter ([ways of working](docs/ways-of-working.md)).
+- Model and effort live only in `.claude/agents/` frontmatter.
 - Briefs come from `tooling/brief_template.py --write`; every field filled, Acceptance runnable or measured.
 - Shell commands run through rtk; add a tool, hook or gate only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
-- One deliverable per context; at the context marker commit what is green and hand off.
-- One builder per place, plugin module or UI view; no swarms.
+- One deliverable per context, one builder per place, plugin module or UI view; commit and hand off at the context marker; return ≤ 25 lines (report at its path).
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
-- Return at most 25 lines; the full report goes to its path.
+- Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods), not just health.
 
 ## Testing and the gate
 
@@ -83,4 +82,4 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 - The repo holds the current state, git the history: rewrite in place.
 - Decisions hold the why, chunk briefs the work (rewritten just in time, nothing dropped), PROGRESS the status, research the evidence.
-- Status moves in the commit that changes it (PROGRESS, check ledger, chunk brief); the planner checks each tick and fixes any lag.
+- Status moves in the commit that changes it (PROGRESS, check ledger, chunk brief); the planner fixes lag each tick.
