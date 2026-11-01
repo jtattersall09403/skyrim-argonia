@@ -155,7 +155,8 @@ def journey_text(vs: list[dict]) -> str:
             "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
             "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD\n"
             "# hidden. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
-            "# vibe check (not the bar); each step\n"
+            "# vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over\n"
+            "# water; light shafts through canopy; owner, 2026-11-01); each step\n"
             "# checks only that the teleport landed. Never move a vantage after the first run.\n")
     steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"key": "F 300"}, {"wait": 2},
                                                     {"console": {"line": "tm", "settle": 10}}],

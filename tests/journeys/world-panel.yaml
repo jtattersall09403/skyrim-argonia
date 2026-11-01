@@ -3,7 +3,8 @@
 # class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the
 # region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD
 # hidden. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the
-# vibe check (not the bar); each step
+# vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over
+# water; light shafts through canopy; owner, 2026-11-01); each step
 # checks only that the teleport landed. Never move a vantage after the first run.
 {
  "id": "world-panel",
@@ -42,15 +43,15 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -14",
+      "line": "cow ARG_Province 26 -17",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 109184 -57216 91"
+     "teleport": "pos 109184 -66816 91"
     },
     {
-     "console": "player.setangle z 85"
+     "console": "player.setangle z 109"
     },
     {
      "console": "player.setangle x 0"
@@ -92,14 +93,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": -57516
+     "gt": -67116
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -56916
+     "lt": -66516
     }
    ]
   },
@@ -108,15 +109,15 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -14",
+      "line": "cow ARG_Province 26 -17",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 109184 -57216 91"
+     "teleport": "pos 109184 -66816 91"
     },
     {
-     "console": "player.setangle z 85"
+     "console": "player.setangle z 109"
     },
     {
      "console": "player.setangle x 0"
@@ -158,14 +159,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": -57516
+     "gt": -67116
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -56916
+     "lt": -66516
     }
    ]
   },
@@ -311,10 +312,10 @@
      }
     },
     {
-     "teleport": "pos -126720 -145408 91"
+     "teleport": "pos -126336 -145024 102"
     },
     {
-     "console": "player.setangle z 14"
+     "console": "player.setangle z 11"
     },
     {
      "console": "player.setangle x 0"
@@ -342,28 +343,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -127020
+     "gt": -126636
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -126420
+     "lt": -126036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -145708
+     "gt": -145324
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -145108
+     "lt": -144724
     }
    ]
   },
@@ -377,10 +378,10 @@
      }
     },
     {
-     "teleport": "pos -126720 -145408 91"
+     "teleport": "pos -126336 -145024 102"
     },
     {
-     "console": "player.setangle z 14"
+     "console": "player.setangle z 11"
     },
     {
      "console": "player.setangle x 0"
@@ -408,28 +409,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -127020
+     "gt": -126636
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -126420
+     "lt": -126036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -145708
+     "gt": -145324
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -145108
+     "lt": -144724
     }
    ]
   },
@@ -438,672 +439,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -28 -34",
+      "line": "cow ARG_Province -30 -35",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -113536 -135168 430"
-    },
-    {
-     "console": "player.setangle z 135"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 12"
-    },
-    {
-     "console": "fw SkyrimCloudyMA"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -113836
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -113236
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": -135468
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": -134868
-    }
-   ]
-  },
-  {
-   "name": "deep-river-corridor-high-dawn",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -28 -34",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -113536 -135168 430"
-    },
-    {
-     "console": "player.setangle z 135"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 6.5"
-    },
-    {
-     "console": "fw ARG_Weather_mist"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -113836
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -113236
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": -135468
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": -134868
-    }
-   ]
-  },
-  {
-   "name": "deep-sink-basin-shore-noon",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -17 -7",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -69632 -25216 745"
-    },
-    {
-     "console": "player.setangle z 137"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 12"
-    },
-    {
-     "console": "fw SkyrimCloudyMA"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -69932
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -69332
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": -25516
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": -24916
-    }
-   ]
-  },
-  {
-   "name": "deep-sink-basin-shore-dawn",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -17 -7",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -69632 -25216 745"
-    },
-    {
-     "console": "player.setangle z 137"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 6.5"
-    },
-    {
-     "console": "fw ARG_Weather_mist"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -69932
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -69332
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": -25516
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": -24916
-    }
-   ]
-  },
-  {
-   "name": "deep-sink-basin-high-noon",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -40 53",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -163840 218240 37414"
-    },
-    {
-     "console": "player.setangle z 135"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 12"
-    },
-    {
-     "console": "fw SkyrimCloudyMA"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -164140
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -163540
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 217940
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 218540
-    }
-   ]
-  },
-  {
-   "name": "deep-sink-basin-high-dawn",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -40 53",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -163840 218240 37414"
-    },
-    {
-     "console": "player.setangle z 135"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 6.5"
-    },
-    {
-     "console": "fw ARG_Weather_mist"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -164140
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -163540
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 217940
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 218540
-    }
-   ]
-  },
-  {
-   "name": "flooded-forest-shore-noon",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -2 6",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -4224 24704 1008"
-    },
-    {
-     "console": "player.setangle z 315"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 12"
-    },
-    {
-     "console": "fw SkyrimCloudy"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -4524
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -3924
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 24404
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 25004
-    }
-   ]
-  },
-  {
-   "name": "flooded-forest-shore-dawn",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -2 6",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -4224 24704 1008"
-    },
-    {
-     "console": "player.setangle z 315"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 6.5"
-    },
-    {
-     "console": "fw ARG_Weather_mist"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": -4524
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": -3924
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 24404
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 25004
-    }
-   ]
-  },
-  {
-   "name": "flooded-forest-high-noon",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province 8 48",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos 36608 199296 13471"
-    },
-    {
-     "console": "player.setangle z 180"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 12"
-    },
-    {
-     "console": "fw SkyrimCloudy"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": 36308
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": 36908
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 198996
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 199596
-    }
-   ]
-  },
-  {
-   "name": "flooded-forest-high-dawn",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province 8 48",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos 36608 199296 13471"
-    },
-    {
-     "console": "player.setangle z 180"
-    },
-    {
-     "console": "player.setangle x 0"
-    },
-    {
-     "console": "set gamehour to 6.5"
-    },
-    {
-     "console": "fw ARG_Weather_mist"
-    },
-    {
-     "wait": 10
-    },
-    {
-     "wait": 4
-    }
-   ],
-   "expect": [
-    {
-     "console": "player.GetInWorldspace ARG_Province",
-     "contains": ">> 1"
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "gt": 36308
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.0",
-     "lt": 36908
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "gt": 198996
-    },
-    {
-     "read": [
-      "player"
-     ],
-     "path": "pos.1",
-     "lt": 199596
-    }
-   ]
-  },
-  {
-   "name": "interior-swamp-shore-noon",
-   "do": [
-    {
-     "console": {
-      "line": "cow ARG_Province -16 -32",
-      "settle": 60
-     }
-    },
-    {
-     "teleport": "pos -65536 -126976 354"
+     "teleport": "pos -122880 -139264 207"
     },
     {
      "console": "player.setangle z 90"
@@ -1134,14 +475,674 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -65836
+     "gt": -123180
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -65236
+     "lt": -122580
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -139564
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -138964
+    }
+   ]
+  },
+  {
+   "name": "deep-river-corridor-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -30 -35",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -122880 -139264 207"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -123180
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -122580
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -139564
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -138964
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -17 -7",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -69632 -25600 803"
+    },
+    {
+     "console": "player.setangle z 138"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -69932
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -69332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -25900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -25300
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -17 -7",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -69632 -25600 803"
+    },
+    {
+     "console": "player.setangle z 138"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -69932
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -69332
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": -25900
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": -25300
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -40 53",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -162560 221184 38997"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -162860
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -162260
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 220884
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 221484
+    }
+   ]
+  },
+  {
+   "name": "deep-sink-basin-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -40 53",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -162560 221184 38997"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -162860
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -162260
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 220884
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 221484
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 6",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -4224 24960 1008"
+    },
+    {
+     "console": "player.setangle z 326"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudy"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -4524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -3924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 24660
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 25260
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -2 6",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -4224 24960 1008"
+    },
+    {
+     "console": "player.setangle z 326"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -4524
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -3924
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 24660
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 25260
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 10 46",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 41088 192512 13817"
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudy"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 40788
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 41388
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 192212
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 192812
+    }
+   ]
+  },
+  {
+   "name": "flooded-forest-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province 10 46",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos 41088 192512 13817"
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "fw ARG_Weather_mist"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": 40788
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": 41388
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "gt": 192212
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.1",
+     "lt": 192812
+    }
+   ]
+  },
+  {
+   "name": "interior-swamp-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "cow ARG_Province -16 -32",
+      "settle": 60
+     }
+    },
+    {
+     "teleport": "pos -64768 -126976 354"
+    },
+    {
+     "console": "player.setangle z 90"
+    },
+    {
+     "console": "player.setangle x 0"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "fw SkyrimCloudyMA"
+    },
+    {
+     "wait": 10
+    },
+    {
+     "wait": 4
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "gt": -65068
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.0",
+     "lt": -64468
     },
     {
      "read": [
@@ -1169,7 +1170,7 @@
      }
     },
     {
-     "teleport": "pos -65536 -126976 354"
+     "teleport": "pos -64768 -126976 354"
     },
     {
      "console": "player.setangle z 90"
@@ -1200,14 +1201,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -65836
+     "gt": -65068
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -65236
+     "lt": -64468
     },
     {
      "read": [
@@ -1230,12 +1231,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 23 22",
+      "line": "cow ARG_Province 8 -36",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 94208 92928 2693"
+     "teleport": "pos 32896 -143360 2193"
     },
     {
      "console": "player.setangle z 135"
@@ -1266,28 +1267,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 93908
+     "gt": 32596
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 94508
+     "lt": 33196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 92628
+     "gt": -143660
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 93228
+     "lt": -143060
     }
    ]
   },
@@ -1296,12 +1297,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 23 22",
+      "line": "cow ARG_Province 8 -36",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 94208 92928 2693"
+     "teleport": "pos 32896 -143360 2193"
     },
     {
      "console": "player.setangle z 135"
@@ -1332,28 +1333,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 93908
+     "gt": 32596
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 94508
+     "lt": 33196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 92628
+     "gt": -143660
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 93228
+     "lt": -143060
     }
    ]
   },
@@ -1367,7 +1368,7 @@
      }
     },
     {
-     "teleport": "pos -4224 221312 641"
+     "teleport": "pos -4224 221312 625"
     },
     {
      "console": "player.setangle z 254"
@@ -1433,7 +1434,7 @@
      }
     },
     {
-     "teleport": "pos -4224 221312 641"
+     "teleport": "pos -4224 221312 625"
     },
     {
      "console": "player.setangle z 254"
@@ -1494,12 +1495,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -44 60",
+      "line": "cow ARG_Province -46 59",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -178176 249856 44573"
+     "teleport": "pos -185088 243072 45533"
     },
     {
      "console": "player.setangle z 225"
@@ -1530,28 +1531,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -178476
+     "gt": -185388
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -177876
+     "lt": -184788
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 249556
+     "gt": 242772
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 250156
+     "lt": 243372
     }
    ]
   },
@@ -1560,12 +1561,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -44 60",
+      "line": "cow ARG_Province -46 59",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -178176 249856 44573"
+     "teleport": "pos -185088 243072 45533"
     },
     {
      "console": "player.setangle z 225"
@@ -1596,28 +1597,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -178476
+     "gt": -185388
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -177876
+     "lt": -184788
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 249556
+     "gt": 242772
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 250156
+     "lt": 243372
     }
    ]
   },
@@ -1631,10 +1632,10 @@
      }
     },
     {
-     "teleport": "pos -64256 -12160 1196"
+     "teleport": "pos -64640 -12160 1188"
     },
     {
-     "console": "player.setangle z 333"
+     "console": "player.setangle z 324"
     },
     {
      "console": "player.setangle x 0"
@@ -1662,14 +1663,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -64556
+     "gt": -64940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -63956
+     "lt": -64340
     },
     {
      "read": [
@@ -1697,10 +1698,10 @@
      }
     },
     {
-     "teleport": "pos -64256 -12160 1196"
+     "teleport": "pos -64640 -12160 1188"
     },
     {
-     "console": "player.setangle z 333"
+     "console": "player.setangle z 324"
     },
     {
      "console": "player.setangle x 0"
@@ -1728,14 +1729,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -64556
+     "gt": -64940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -63956
+     "lt": -64340
     },
     {
      "read": [
@@ -1763,7 +1764,7 @@
      }
     },
     {
-     "teleport": "pos -24576 -12288 3203"
+     "teleport": "pos -24576 -12288 3915"
     },
     {
      "console": "player.setangle z 225"
@@ -1829,7 +1830,7 @@
      }
     },
     {
-     "teleport": "pos -24576 -12288 3203"
+     "teleport": "pos -24576 -12288 3915"
     },
     {
      "console": "player.setangle z 225"
@@ -1895,10 +1896,10 @@
      }
     },
     {
-     "teleport": "pos 103808 -45056 91"
+     "teleport": "pos 103808 -46080 96"
     },
     {
-     "console": "player.setangle z 93"
+     "console": "player.setangle z 123"
     },
     {
      "console": "player.setangle x 0"
@@ -1940,14 +1941,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": -45356
+     "gt": -46380
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -44756
+     "lt": -45780
     }
    ]
   },
@@ -1961,10 +1962,10 @@
      }
     },
     {
-     "teleport": "pos 103808 -45056 91"
+     "teleport": "pos 103808 -46080 96"
     },
     {
-     "console": "player.setangle z 93"
+     "console": "player.setangle z 123"
     },
     {
      "console": "player.setangle x 0"
@@ -2006,14 +2007,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": -45356
+     "gt": -46380
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -44756
+     "lt": -45780
     }
    ]
   },
@@ -2022,12 +2023,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -15",
+      "line": "cow ARG_Province 60 58",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 106496 -60544 649"
+     "teleport": "pos 245760 237696 1912"
     },
     {
      "console": "player.setangle z 90"
@@ -2058,28 +2059,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 106196
+     "gt": 245460
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 106796
+     "lt": 246060
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -60844
+     "gt": 237396
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -60244
+     "lt": 237996
     }
    ]
   },
@@ -2088,12 +2089,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -15",
+      "line": "cow ARG_Province 60 58",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 106496 -60544 649"
+     "teleport": "pos 245760 237696 1912"
     },
     {
      "console": "player.setangle z 90"
@@ -2124,28 +2125,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 106196
+     "gt": 245460
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 106796
+     "lt": 246060
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -60844
+     "gt": 237396
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -60244
+     "lt": 237996
     }
    ]
   },
@@ -2159,10 +2160,10 @@
      }
     },
     {
-     "teleport": "pos -165888 56320 5319"
+     "teleport": "pos -165888 56064 5312"
     },
     {
-     "console": "player.setangle z 248"
+     "console": "player.setangle z 260"
     },
     {
      "console": "player.setangle x 0"
@@ -2204,14 +2205,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": 56020
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 56620
+     "lt": 56364
     }
    ]
   },
@@ -2225,10 +2226,10 @@
      }
     },
     {
-     "teleport": "pos -165888 56320 5319"
+     "teleport": "pos -165888 56064 5312"
     },
     {
-     "console": "player.setangle z 248"
+     "console": "player.setangle z 260"
     },
     {
      "console": "player.setangle x 0"
@@ -2270,14 +2271,14 @@
       "player"
      ],
      "path": "pos.1",
-     "gt": 56020
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 56620
+     "lt": 56364
     }
    ]
   },
@@ -2286,15 +2287,15 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -51 36",
+      "line": "cow ARG_Province -53 37",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -208640 147712 40299"
+     "teleport": "pos -216704 152320 41675"
     },
     {
-     "console": "player.setangle z 180"
+     "console": "player.setangle z 315"
     },
     {
      "console": "player.setangle x 0"
@@ -2322,28 +2323,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -208940
+     "gt": -217004
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -208340
+     "lt": -216404
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 147412
+     "gt": 152020
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 148012
+     "lt": 152620
     }
    ]
   },
@@ -2352,15 +2353,15 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -51 36",
+      "line": "cow ARG_Province -53 37",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -208640 147712 40299"
+     "teleport": "pos -216704 152320 41675"
     },
     {
-     "console": "player.setangle z 180"
+     "console": "player.setangle z 315"
     },
     {
      "console": "player.setangle x 0"
@@ -2388,28 +2389,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -208940
+     "gt": -217004
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -208340
+     "lt": -216404
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 147412
+     "gt": 152020
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 148012
+     "lt": 152620
     }
    ]
   }
