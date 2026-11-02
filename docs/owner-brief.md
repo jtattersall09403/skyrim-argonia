@@ -276,3 +276,4 @@ Something they can **play**, that is:
 | 2026-11-02 | **Distant land (LOD) is rebuilt only when necessary**, and whoever rebuilds it first makes the process faster and records the measured times (infra/gpu-box/lod.sh header). |
 | 2026-11-02 | **Claude usage is reported as a percentage of the weekly allowance** (about 1% per $19), never in dollars (CLAUDE.md, Costs). |
 | 2026-11-02 | **The owner walks the world instead of the agent-driven round-3 batch**: one save per region class at its shore panel marker (infra/gpu-box/region_saves.py), loaded from the game's load menu; the owner's feedback drives the next fixes. |
+| 2026-11-02 | **Call #35, build VM spot reclaims: stay on spot machines as they are, no action for now** (the owner may return to it); builds resume from checkpoints and jobs survive the session under job_guard. |
