@@ -675,8 +675,11 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
         st["water"]["field"] = {"lift_samples": int((wf_["lift"] > 0.05).sum()), "carve_samples": int((wf_["carve"] > 0.05).sum()),
                                 "iso_samples": int(wf_["iso"].sum()), "iso_in_raster_cells": int((wf_["iso"] & blocks[hi_c][:, hi_c]).sum())}
         diag["iso"] = wf_["iso"]
+        fbank = wf_["src"] & ~wf_["iso"]  # the field's clipped edges: a site never cuts them (step-bank)
         del wf_
         foot = role == 1
+    else:
+        fbank = np.zeros((N + 1, N + 1), bool)
     if not WATER_FIELD:  # the field sets its own bed under the raster water and leaves the natural flood alone
         hi[foot] = np.minimum(hi[foot], np.minimum(vmin[foot] - FREEBOARD_M, bed[foot] + 0.0))
         h[foot] = np.minimum(h[foot], bed[foot])
@@ -794,7 +797,7 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     log(f"constraints {time.time() - t0:.1f}s")
 
     # 6. entrance sites
-    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch, nz)  # a dry cell's vertex stays bank
+    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz)  # a dry cell's vertex stays bank
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
 
     # 7. the slope limit inside the cones

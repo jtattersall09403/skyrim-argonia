@@ -82,6 +82,7 @@ RIFFLE_M = 0.5  # a smaller drop between two cells carries the upper level on (s
 MAX_DROP_M = stp.MAX_DROP_M  # the tallest falls piece
 LEVEL_TOL_M = 0.006  # the raster stores the graph's 2-decimal level as float32
 RESAMPLE_M = 1.0  # a reach's centreline is walked at this spacing
+JOIN_EPS_M = 0.05  # joined_footprint: ground this far under the level is under it (the pass itself is not)
 MERGE_M = 2.0  # water cells joined within this of a lower sheet take its level (merge_levels)
 FILL_STRIDE = 4  # samples: the spill field's grid (min-pooled ground, 1,008 x 1,008 over the province)
 MARSH = {"marsh-fringe", "marsh-deep", "swamp", "backswamp"}
@@ -358,7 +359,8 @@ def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_mi
     return added
 
 
-def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=None) -> dict[tuple[int, int], tuple]:
+def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=None,
+             spill_min=None) -> dict[tuple[int, int], tuple]:
     """Vanilla's padding ring (skyrim-does-it-this-way.md §2: 23 of Skyrim.esm's 510 explicit-level cells have no
     wet vertex; the level is carried one cell past the water): every cell absent from `cells` with a water cell
     among its 8 neighbours takes the lowest of their levels (with that cell's type and body): a step between two
@@ -369,14 +371,17 @@ def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=Non
     level (0-8 units, probes/vanilla_lake_padding.py), never a whole cell standing over it (that drew the plates and
     the level-0 cell on a 40 m hillside), nor a cell whose ground falls more than PAD_REACH_M under it (levels from
 the ground, session 11: that ground lies past the basin's rim, joined to no water, and the plane would draw a square
-pool over it or the lift a plate). Returns the added cells only."""
+pool over it or the lift a plate). With `spill_min` ((i, j) -> the lowest spill in the cell), a cell whose low ground
+lies inside the same basin (its spill is the level: the water fills it) is padded however deep (session 12: a basin's
+level beside a dry cell 150 m lower in that basin drew a 150 m dam). Returns the added cells only."""
     added: dict[tuple[int, int], tuple] = {}
     for (i, j) in {(a + di, b + dj) for (a, b) in cells for di in (-1, 0, 1) for dj in (-1, 0, 1)}:
         if (i, j) in cells or not (0 <= i < n and 0 <= j < n):
             continue
         nb = [cells[(i + di, j + dj)] for di in (-1, 0, 1) for dj in (-1, 0, 1) if (i + di, j + dj) in cells]
         if ground_min is not None:
-            nb = [c for c in nb if c[0] - PAD_REACH_M <= ground_min(i, j) <= c[0] + PAD_REACH_M]
+            nb = [c for c in nb if ground_min(i, j) <= c[0] + PAD_REACH_M and
+                  (c[0] - PAD_REACH_M <= ground_min(i, j) or (spill_min is not None and spill_min(i, j) >= c[0] - PAD_REACH_M))]
             if not nb:
                 continue
         v = min(nb, key=lambda c: c[0])
@@ -415,6 +420,23 @@ def spill(ground: np.ndarray, outlet: np.ndarray) -> np.ndarray:
     return out.reshape(H, W)
 
 
+def joined_footprint(gwin: np.ndarray, rr: np.ndarray, cc: np.ndarray, k: int, lvl: float) -> np.ndarray:
+    """The footprint samples (rr, cc in `gwin`, the body's window of the pre ground) whose ground lies under `lvl`
+    and is 4-joined under it to sample k, the footprint's lowest. A raster sample past the basin's rim (ground over
+    the level, or a hollow joined to the body only over a pass at or above it) holds no water of this body: its cell
+    would take a plane over ground the water cannot reach (session 11's plates and the 114 m lake cell beside the
+    sea; Skyrim.esm: 97 % of a lake's under-level ground is one component with the body,
+    terrain/probes/vanilla_lake_padding.py)."""
+    from tools.argonia_world.terrain.generate import reach
+    under = gwin < lvl - JOIN_EPS_M
+    seed = np.zeros(gwin.shape, bool)
+    seed[rr[k], cc[k]] = True
+    got = reach(seed, under)
+    keep = got[rr, cc]
+    keep[k] = True
+    return keep
+
+
 def basin_level(spill_m: float, kind: str) -> float:
     """Rule 1 from the ground: the sea at 0; a body at the spill of its footprint's lowest ground; one whose spill
     stands within SNAP_LO_M of the sea (or under it) is the sea-level marsh, at 0."""
@@ -447,6 +469,31 @@ def merge_levels(cells: dict[tuple[int, int], tuple], tol: float) -> int:
                         moved += 1
                     st.append(o)
     return moved
+
+
+def corner_clear(drop_m: float) -> int:
+    """The vertices a step's channel keeps from its edge's corners: the terrain's sloped band k plus one."""
+    from tools.argonia_world.terrain.generate import LIP
+    return int(min(Q - 1, max(1, math.ceil(drop_m / (0.8 * LIP))))) + 1
+
+
+def no_riffle_steps(cells: dict[tuple[int, int], tuple]) -> int:
+    """No closed edge drops RIFFLE_M or less (terrain RIFFLE_M: a smaller drop is no step; the field holds no bank
+    for it, so the upper water ran over the lower cell's ground): the upper cell takes the lower level, repeated
+    until none is left (in place). Returns the cells moved."""
+    moved = 0
+    while True:
+        hit = 0
+        for c in sorted(cells, key=lambda k: (cells[k][0], k)):
+            lv = cells[c][0]
+            a, b = c
+            for o in ((a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)):
+                if o in cells and 1e-6 < cells[o][0] - lv <= RIFFLE_M:
+                    cells[o] = (lv,) + tuple(cells[o][1:])
+                    hit += 1
+        moved += hit
+        if not hit:
+            return moved
 
 
 def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] = frozenset()) -> set:
@@ -552,9 +599,16 @@ def solve(w, raster=None, ground=None) -> Result:
             k = int(np.argmin(gz))
             r_, c_ = min((rr[k] + max(0, y0)) // FILL_STRIDE, sp.shape[0] - 1), min((cc[k] + max(0, x0)) // FILL_STRIDE, sp.shape[1] - 1)
             lvl = basin_level(max(float(sp[r_, c_]), float(gz[k])), b["kind"])
+            if lvl > 0:  # only the footprint joined to its lowest sample under the level holds it (joined_footprint)
+                keep = joined_footprint(np.asarray(ground[max(0, y0):y1 + 1, max(0, x0):x1 + 1]), rr, cc, k, lvl)
+                rr, cc = rr[keep], cc[keep]
         elif sp is not None:  # not in the raster: the spill at its deepest sample
             r_, c_ = (min(int(b[q]) // FILL_STRIDE, sp.shape[0] - 1) for q in ("deepest_y", "deepest_x"))
             lvl = basin_level(float(sp[r_, c_]), b["kind"])
+            gd = float(ground[min(int(b["deepest_y"]), ground.shape[0] - 1), min(int(b["deepest_x"]), ground.shape[1] - 1)])
+            if 0 < lvl < gd + PAD_REACH_M:  # no basin under it (its water runs off down the slope): no level
+                body_cells[b["id"]] = set()
+                continue
         else:
             lvl = body_level(b["level_m"] or 0.0, b["kind"])
         if len(rr):
@@ -627,12 +681,19 @@ def solve(w, raster=None, ground=None) -> Result:
     gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
     enclosed = fill_enclosed(cells, ground_min=gm_cell)
     cells.update(enclosed)
-    padded = pad_ring(cells, ground_min=gm_cell)
+    sm_cell = None
+    if sp is not None:
+        k_ = Q // FILL_STRIDE
+        smin = sp[:NCELL * k_, :NCELL * k_].reshape(NCELL, k_, NCELL, k_).min(axis=(1, 3))
+        sm_cell = lambda i, j: float(smin[NCELL - 1 - j, i])  # noqa: E731
+    padded = pad_ring(cells, ground_min=gm_cell, spill_min=sm_cell)
     cells.update(padded)
     enclosed.update(padded)
     if sp is not None:  # the padding and filled cells joined to a sheet within a riffle (no sub-riffle closed edge)
         merge_levels(cells, RIFFLE_M)
     walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
+    if sp is not None:
+        no_riffle_steps(cells)
     for c in walls:
         enclosed.pop(c, None)
 
@@ -650,6 +711,14 @@ def solve(w, raster=None, ground=None) -> Result:
             e = edge_between(up.cell, lo.cell)
             x = edge_vertex(up.cell[0], up.cell[1], e, *b.cross)
             lo_v, hi_v = int(max(0, math.floor(x - half))), int(min(Q, math.ceil(x + half)))
+            # the channel's sloped bed runs k vertices into the lower cell (terrain generate: k = drop / (0.8 lip));
+            # it keeps that far from the edge's corners, so it never cuts a perpendicular edge's closed bank
+            # (session 12: all 22 step-bank misses were such corners)
+            kc = corner_clear(abs(la - lb))
+            if hi_v - lo_v >= 0 and kc < Q / 2:
+                lo_v, hi_v = max(lo_v, kc), min(hi_v, Q - kc)
+                if hi_v < lo_v:
+                    lo_v = hi_v = int(round(min(max(x, kc), Q - kc)))
             key = (up.cell[0], up.cell[1], e)
             u, d = max(la, lb), min(la, lb)
             steps[key] = Step(CX0 + up.cell[0], CY0 + up.cell[1], e, u, d, lo_v, max(hi_v, lo_v + 1),

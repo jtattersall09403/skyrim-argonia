@@ -11,8 +11,6 @@ fields that fall off smoothly with distance:
   CARVE_GRADE, so the ground slopes down into the channel.
 No vertex is clamped to a constant over a cell or band; lo/hi are returned only at the vertices the rule names, for
 the slope limit."""
-import math
-
 import numpy as np
 
 from tools.argonia_world.terrain import generate as G
@@ -20,8 +18,10 @@ from tools.argonia_world.terrain import generate as G
 LIFT_GRADE = 0.6  # m per sample (18 deg): a raised bank's fall-off to the ground beside it
 CARVE_GRADE = 0.6  # m per sample: the ground's fall into raster water down to the bed
 SOFT = 3.0  # samples: the fields' blur (no crease at the cone's foot)
-APEX = 4.0  # samples: the lift's rounded apex
-SMAX = 0.6  # m: the smooth maximum's width where the lift meets the ground
+HOLLOW_GRADE = 0.08  # m per sample: a raised hollow's lift fades this slowly, so its own relief survives
+HOLLOW_PAD = 0.4  # m: a raised hollow's floor stands this far over the bank line (the blur takes some)
+BAND = 3  # samples: a clipped line's crest half-width, so the cell line is no ridge (trial: lattice 2.55 -> 1.40 at 3,
+# 1.49 at 9); the upper water stops short of the line as Skyrim.esm's does (probes/vanilla_level_edges.py)
 
 
 def cone(src: np.ndarray, amt: np.ndarray, grade: float) -> np.ndarray:
@@ -29,16 +29,18 @@ def cone(src: np.ndarray, amt: np.ndarray, grade: float) -> np.ndarray:
     return np.maximum(f, 0.0)
 
 
-def lift_to(h, src, need, grade, far=48):
-    """The lift as a rounded cone: the bank's surface falls from `need` at the nearest `src` vertex at `grade`, its
-    apex rounded over APEX samples (a hyperbolic cone, so a raised cell line is a rounded ridge, never a crease),
-    joined to the ground by a smooth maximum (exact at the source: never below `need` there)."""
-    d, nv = G.chamfer(src, far, np.where(src, need, np.nan))
-    ok = np.isfinite(d)
-    t = np.where(ok, nv - grade * (np.sqrt(np.where(ok, d, 0.0) ** 2 + APEX ** 2) - APEX), -np.inf)
-    a = np.where(ok, t, h)
-    sm = (h + a + np.sqrt((h - a) ** 2 + SMAX ** 2)) / 2 - SMAX / 2
-    return np.where(ok, np.maximum(sm, h), h) - h
+def lift_to(h, src, need, grade, band=0):
+    """The lift as a field of amounts: each `src` vertex's shortfall under `need` spreads as a cone falling at `grade`
+    (the upper envelope of all the cones), added to the ground, so the ground keeps its own shape under it and is
+    exact at the source (never below `need` there). An amount, not a height: a height cone from a high source
+    buried every cliff beside it in a 31 deg apron (session 12: 1.7 M samples raised over 50 m), and the chamfer's
+    48-sample radius cut it into walls (session 11). With `band`, the source widens to a crest that many samples
+    each side, carrying its need."""
+    if band > 0:
+        d, nv = G.chamfer(src, int(band), np.where(src, need, np.nan))
+        src, need = np.isfinite(d), np.where(np.isfinite(d), nv, -np.inf)
+    amt = np.where(src, np.maximum(need - h, 0.0), 0.0)
+    return cone(src & (amt > 0), amt, grade)
 
 
 def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
@@ -59,14 +61,19 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
     cf = G.blur(cone(foot & (cut > 0), cut, CARVE_GRADE), SOFT)
     h1 = h - cf
     # 2. lift: the clipped edges above the upper water, the bank climbing to them from both sides
-    lf = lift_to(h1, src, need, LIFT_GRADE)
+    lf = lift_to(h1, src, need, LIFT_GRADE, band=BAND)
     h1 = h1 + lf
     # 3. under-level ground not joined to the raster water (a hollow past the basin's pass, a low corner of the
     # cell): the cell's plane would draw a square pool over it, so it is lifted above the water the same way
     under = has & (h1 < vmin - G.FREEBOARD_M) & ~chz
     iso = under & ~G.reach(foot & under, under)
     if iso.any():
-        lf2 = lift_to(h1, iso, need, LIFT_GRADE)
+        # the hollow is raised whole, keeping its own slope (a bowl standing above the water, never a plate at the
+        # level): the deepest shortfall spreads at HOLLOW_GRADE and is blurred; the small rest is lifted as above
+        # (the slow fade only inside the hollow; past its rim the lift falls at LIFT_GRADE like any bank)
+        inner = np.where(iso, cone(iso, np.where(iso, need - h1, 0.0) + HOLLOW_PAD, HOLLOW_GRADE), -1e9)
+        lf2 = G.blur(np.maximum(G.majorant(inner, LIFT_GRADE), 0.0), SOFT)
+        lf2 = lf2 + lift_to(h1 + lf2, iso & (h1 + lf2 < need), need, LIFT_GRADE)
         h1 = h1 + lf2
         lf = lf + lf2
         src = src | iso
