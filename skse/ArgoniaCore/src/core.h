@@ -148,6 +148,7 @@ void ViewsPostLoad();    // kPostLoad: PrismaUI's API, or the views stay off
 void ViewsDataLoaded();  // after InstallHooks: the views created, the journal and map handlers, the HUD loop
 void ViewsGameReady();   // the HUD's whole state
 void HudLoading(std::string_view menu, bool open);  // a load menu (Loading, Fader, Mist) opened or closed: our HUD hides or returns at once
+std::string HudShow(std::string_view on_off);  // dev (bridge only): "off" hides our HUD for stills, "on" restores it
 void HudRefresh();       // the HUD's state again (a sheet opened or closed: router::covers_hud)
 // The pad's right stick to the open chart (1.12 look 1, the input map: the right stick pans the map). PrismaUI passes
 // the pad's buttons to a focused view but not its sticks, so ArgoniaCore's input sink forwards the stick; main thread.

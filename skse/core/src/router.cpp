@@ -21,6 +21,8 @@ std::vector<std::string_view> hidden_hud_clips() {
   return out;
 }
 
+bool hud_shown(bool modal_open, bool sheet_open, bool dev_hidden) { return !modal_open && !sheet_open && !dev_hidden; }
+
 bool covers_hud(std::string_view menu_name) {
   for (auto w : kWindowsOverHud)
     if (menu_name == w) return true;

@@ -24,6 +24,8 @@ constexpr std::array kNatives{
     // An engine message box with the given words (Debug.MessageBox's route, as a script shows one): the frame-style
     // sweep's sample (lane 1.12-menus); it sets no game state.
     Native{"MessageBox", true, R::Text},
+    // Dev: `on`/`off` sets the switch that hides our HUD for stills (router::hud_shown); the bridge is never shipped.
+    Native{"HudShow", true, R::Text},
 };
 
 std::string wrap(std::string_view native, json::Value v) {

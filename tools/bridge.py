@@ -363,7 +363,7 @@ class Bridge:
     CORE_NATIVES = ("Version", "SaveCount", "ViewIntent", "ViewState", "GetAttribute", "Families", "FamilyDigest",
                     "RouterLog", "GetFlag", "KnowsTopic", "GetDisposition", "JournalEntries", "RestNotice",
                     "SittingIntent", "GetVastei", "GetPendingLevels", "GetLevel", "GetSkill", "PileState", "WakePoint",
-                    "SittingOpen", "ViewProbe", "Views", "MessageBox")  # skse/core/src/bridge_call.cpp's whitelist; the plugin refuses anything else too
+                    "SittingOpen", "ViewProbe", "Views", "MessageBox", "HudShow")  # skse/core/src/bridge_call.cpp's whitelist; the plugin refuses anything else too
 
     def core(self, native: str, arg: str | None = None):
         """An ArgoniaCore native through ArgoniaBridge's `core` (1.7's journeys): its value. Only the reads of
@@ -372,6 +372,12 @@ class Bridge:
             raise BridgeError(f"core: {native!r} is not a callable native (reads and view intents only)")
         r = self.call("core", native, *([] if arg is None else [arg]))
         return r["value"]
+
+    def hud(self, state: str) -> str:
+        """`hud on|off` (dev): hides or restores OUR PrismaUI HUD (ArgoniaCore's HudShow, the HUD's visibility rule)."""
+        if state not in ("on", "off"):
+            raise BridgeError(f"hud: {state!r} is on or off")
+        return self.core("HudShow", state)
 
     def papyrus_queue(self) -> dict:
         """The Papyrus VM's stacks: {"stacks": running + suspended, "running", "suspended", "waiting_latent",

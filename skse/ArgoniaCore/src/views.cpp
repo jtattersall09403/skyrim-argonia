@@ -508,6 +508,7 @@ std::vector<ac::msg::Bar> Bars() {
 
 // An engine sheet covering the screen (router::covers_hud): our HUD hides under it, as the vanilla HUD does.
 std::atomic<bool> g_loading_open{false};
+std::atomic<bool> g_hud_dev_hidden{false};  // the bridge's `hud off` (HudShow)
 
 bool SheetOpen() {
   if (g_loading_open) return true;
@@ -523,7 +524,7 @@ bool SheetOpen() {
 void PushHudState(std::optional<std::int64_t> gained) {
   auto& c = Get();
   ac::msg::HudState s;
-  s.visible = !c.view_host.modal().has_value() && !SheetOpen();
+  s.visible = ac::router::hud_shown(c.view_host.modal().has_value(), SheetOpen(), g_hud_dev_hidden);
   s.bars = Bars();
   auto* p = RE::PlayerCharacter::GetSingleton();
   s.sneak = {p && p->IsSneaking(), 0.0};
@@ -676,6 +677,13 @@ void OnMagicSurface(ac::router::SurfaceId) { OpenMagic(); }
 }  // namespace
 
 void HudRefresh() { PushHudState(); }
+
+std::string HudShow(std::string_view on_off) {
+  if (on_off != "on" && on_off != "off") return "usage: hud <on|off>";
+  g_hud_dev_hidden = on_off == "off";
+  SKSE::GetTaskInterface()->AddTask([] { PushHudState(); });
+  return std::string("hud ") + std::string(on_off);
+}
 void HudLoading(std::string_view menu, bool open) {
   static std::set<std::string, std::less<>> loads;  // the load menus open now (main thread: menu events)
   const bool was = !loads.empty();

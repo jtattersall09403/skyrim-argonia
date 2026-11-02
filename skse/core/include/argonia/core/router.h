@@ -113,6 +113,9 @@ bool is_hud_mode(std::string_view member);
 // covers_hud is true for each, and the HUD (its minimap with it) shows again when it closes.
 inline constexpr std::array<std::string_view, 1> kWindowsOverHud{"WindUIMenu"};
 bool covers_hud(std::string_view menu_name);
+// Whether our HUD shows: not under a modal view, not under a covering sheet or load, and not hidden by the dev
+// switch (the bridge's `hud off`, so an in-game still has no HUD; never set in play).
+bool hud_shown(bool modal_open, bool sheet_open, bool dev_hidden);
 // A covering menu whose open blocks the main thread (the Loading Menu, ui-review run 050520: our HUD stayed drawn
 // over it because the deferred refresh ran only after the load): our HUD is hidden at once, inside the event.
 bool hides_hud_at_once(std::string_view menu_name);

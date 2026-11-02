@@ -354,13 +354,13 @@ class Runner:
         raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}")
 
     def _hud(self, arg):
-        """`hud: off`: the vanilla HUD hidden by `tm`, and our PrismaUI HUD's state read (ViewState hud) and kept in the
-        report. Our HUD has no hide of its own: it is hidden only under a sheet or a load (views.cpp SheetOpen), so a
-        still still shows it until ArgoniaCore gets a dev hide; the report says so rather than claiming it hidden."""
+        """`hud: off`: the vanilla HUD hidden by `tm`, and our PrismaUI HUD hidden by the bridge's dev switch
+        (core HudShow off); its state is read back (ViewState hud) and kept in the report."""
         if str(arg).strip() != "off":
             raise StepFailed(f"hud: {arg!r} is `off`")
         self._console({"line": "tm", "settle": 30})
         try:
+            self.b.hud("off")
             ours = self.b.core("ViewState", "hud")
         except Exception as e:  # an optional read: never fails the step
             ours = f"unread: {e}"
