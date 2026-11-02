@@ -54,6 +54,24 @@ foreign_slot() { # lock lane
   [ -n "${l:-}" ] && [ "${e:-0}" -gt "$(date +%s)" ] && [ "$l" != "$2" ] || return 0
   [ -z "$(slot_idle "$1" "$l")" ] && echo "$l $e" || true
 }
+# launch <script> <args...>: runs `bash -c script _ args` detached, output to the job's log; sets jpid. Under a user
+# systemd it is a transient unit (its own cgroup, outside the caller's session scope), because setsid nohup jobs were
+# all killed when the harness session died (2026-11-02, three 20-minute builds). Without one: setsid nohup.
+launch() {
+  local script=$1; shift
+  if [ -z "${JOB_GUARD_NO_SYSTEMD:-}" ] && command -v systemd-run >/dev/null && systemctl --user is-system-running >/dev/null 2>&1; then
+    local unit="jg-$name-$(date +%s)" env=() v
+    for v in $(compgen -e); do [[ $v =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] && env+=(--setenv="$v"); done
+    if systemd-run --user --quiet --collect --unit="$unit" --working-directory="$PWD" "${env[@]}" \
+        --property=StandardOutput="file:$JOBS/$name.log" --property=StandardError=inherit \
+        bash -c "$script" _ "$@"; then
+      echo "$unit" > "$JOBS/$name.unit"
+      jpid=$(systemctl --user show -p MainPID --value "$unit" 2>/dev/null || echo 0); jpid=${jpid:-0}; return 0
+    fi
+  fi
+  setsid nohup bash -c "$script" _ "$@" > "$JOBS/$name.log" 2>&1 &
+  jpid=$!
+}
 case "$cmd" in
   _slotwait) # internal: lock lane wait_s; exit 0 when no other lane's live slot, 1 on giving up
     lock=$1; lane=$2; end=$((SECONDS + $3)); said=0
@@ -82,20 +100,20 @@ case "$cmd" in
     parse_gpu "$@"; shift $shiftn
     name=$1; shift; [ "${1:-}" = "--" ] && shift
     if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
-    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine"
+    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine" "$JOBS/$name.unit"
     [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
     if [ $gpu = 1 ]; then
       echo "$ARGONIA_PLAY" > "$JOBS/$name.machine"  # stop ends the machine too (below)
       wait_s=${GPU_WAIT:-7200}; lane=${ARGONIA_LANE:-}; me=$(readlink -f "$0"); holder=$(cat "$lock.holder" 2>/dev/null || echo "?")
       # The holder file names the job inside the lock; `started` marks that this one got it (queued until then).
-      setsid nohup bash -c 'echo "queued for '"$ARGONIA_PLAY"' behind '"$holder"' (up to '"$wait_s"' s)"
+      launch 'echo "queued for '"$ARGONIA_PLAY"' behind '"$holder"' (up to '"$wait_s"' s)"
         if [ -n "'"$lane"'" ]; then bash "'"$me"'" _slotwait "'"$lock"'" "'"$lane"'" '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo "slot wait gave up"; exit 1; }; fi
         flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"
-          echo "got the lock"; "$@"; echo $? > "'"$JOBS/$name.rc"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; echo "lock wait gave up (rc $rc)"; }' _ "$@" > "$JOBS/$name.log" 2>&1 &
+          echo "got the lock"; "$@"; echo $? > "'"$JOBS/$name.rc"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
     else
-      setsid nohup bash -c '"$@"; echo $? > "'"$JOBS/$name.rc"'"' _ "$@" > "$JOBS/$name.log" 2>&1 &
+      launch '"$@"; echo $? > "'"$JOBS/$name.rc"'"' "$@"
     fi
-    echo $! > "$JOBS/$name.pid"; echo "started $name (pid $!), log $JOBS/$name.log" ;;
+    echo $jpid > "$JOBS/$name.pid"; echo "started $name (pid $jpid), log $JOBS/$name.log" ;;
   wait)
     name=$1; end=$((SECONDS + 270))
     while [ $SECONDS -lt $end ]; do
@@ -123,7 +141,8 @@ case "$cmd" in
   log) tail -n 50 "$JOBS/$1.log" ;;
   stop)  # the whole job (its setsid process group), never only the top pid: a bare kill left a job's script running (1.8)
     p=$(cat "$JOBS/$1.pid" 2>/dev/null) || { echo "no job $1" >&2; exit 2; }
-    kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true
+    if u=$(cat "$JOBS/$1.unit" 2>/dev/null) && [ -n "$u" ]; then systemctl --user stop "$u" 2>/dev/null || true  # the unit's whole cgroup
+    else kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true; fi
     echo 143 > "$JOBS/$1.rc"; echo "stopped $1"
     # A machine job's machine stops with it, unless someone streams on it: a stopped job left argonia-play-ie running
     # idle 40 min, its idle-stop held busy by the job's last SSH and busy flag (1.8, 2026-10-31).

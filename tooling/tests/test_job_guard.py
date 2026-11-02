@@ -121,3 +121,33 @@ def test_busy_slot_holder_blocks(tmp_path):
     guard(tmp_path, "run", "--gpu", "other", "--", "true", env=b)
     assert guard(tmp_path, "wait", "other").returncode == 1
     assert guard(tmp_path, "wait", "long").returncode == 0
+
+
+def test_job_survives_its_parent_shell_being_killed(tmp_path):
+    """A run whose launching shell gets SIGTERM still finishes and writes its rc (the harness killed setsid jobs)."""
+    import signal
+    jobs = tmp_path / ".argonia" / "jobs"
+    e = dict(os.environ, HOME=str(tmp_path))
+    parent = subprocess.Popen(
+        ["bash", "-c", f'bash {GUARD} run slow -- bash -c "python3 -c \'import time; time.sleep(3)\'; echo done"; python3 -c "import time; time.sleep(60)"'],
+        env=e, start_new_session=True)
+    for _ in range(200):
+        if (jobs / "slow.pid").exists():
+            break
+        time.sleep(0.05)
+    os.killpg(parent.pid, signal.SIGTERM)
+    parent.wait(timeout=30)
+    assert guard(tmp_path, "wait", "slow").returncode == 0
+    assert (jobs / "slow.rc").read_text().strip() == "0"
+    assert "done" in (jobs / "slow.log").read_text()
+
+
+def test_stop_ends_the_whole_job(tmp_path):
+    jobs = tmp_path / ".argonia" / "jobs"
+    guard(tmp_path, "run", "stopme", "--", "bash", "-c", "python3 -c 'import time; time.sleep(300)' & wait")
+    for _ in range(100):
+        if (jobs / "stopme.pid").exists():
+            break
+        time.sleep(0.05)
+    assert "stopped" in guard(tmp_path, "stop", "stopme").stdout
+    assert guard(tmp_path, "wait", "stopme").returncode == 1
