@@ -70,6 +70,6 @@ export function render(s: InventoryState, tab: Tab = "all", sel?: string): strin
   </div>
   ${notice}
   <footer class="foot"><span class="carry${s.carried > s.capacity ? " over" : ""}">Carry weight ${fmt(s.carried)} / ${fmt(s.capacity)}<span class="meter" aria-hidden="true"><i style="width:${s.capacity > 0 ? Math.min(100, Math.round(100 * s.carried / s.capacity)) : 0}%"></i></span></span><span class="gold">Gold ${s.gold}</span></footer>
-  <p class="legend" aria-hidden="true"><span><b>A</b> ${cur ? esc(cur.action) : "Use"}</span><span><b>LB</b>/<b>RB</b> Category</span><span><b>B</b> Back</span></p>
+  <p class="legend" aria-hidden="true"><span><b>A</b> ${cur ? esc(cur.action) : "Use"}</span><span><b>X</b> Drop</span><span><b>LB</b>/<b>RB</b> Category</span><span><b>B</b> Back</span></p>
 </section>`;
 }

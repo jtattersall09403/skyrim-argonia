@@ -138,6 +138,31 @@ void sheets_cover_the_hud() {
   CHECK(!covers_hud("TrueHUD") && !covers_hud("Fader Menu") && !covers_hud("HUD Menu") && !covers_hud(""));
 }
 
+// The two UI cards (owner 22:06): on "Argonia" the engine keeps InventoryMenu and StatsMenu for SkyUI and Wind UI;
+// on "Argonia custom UI" both are our views (inventory, charsheet), the engine's menu closed as ours opens.
+void custom_ui_card_takes_inventory_and_stats() {
+  std::string why;
+  int opened = 0;
+  Handler open = [&](SurfaceId) { ++opened; };
+  Router windui;
+  CHECK(windui.install(HookId::menuOpenClose));
+  CHECK(!windui.handle(SurfaceId::inventoryMenu, open, &why) && contains(why, "restyled"));
+  CHECK(!windui.handle(SurfaceId::statsMenu, open, &why) && contains(why, "restyled"));
+  CHECK(windui.on_menu("StatsMenu").action == Action::pass && windui.on_menu("InventoryMenu").action == Action::pass);
+  Router custom;
+  custom.set_custom_ui(true);
+  CHECK(custom.install(HookId::menuOpenClose));
+  CHECK(custom.view_of(SurfaceId::inventoryMenu) == "inventory" && custom.view_of(SurfaceId::statsMenu) == "charsheet");
+  auto v = custom.on_menu("InventoryMenu");  // not registered yet: shown, logged
+  CHECK(v.action == Action::pass && contains(v.note, "our view inventory is not registered yet"));
+  CHECK(custom.handle(SurfaceId::inventoryMenu, open, &why) && custom.handle(SurfaceId::statsMenu, open, &why));
+  v = custom.on_menu("InventoryMenu");
+  CHECK(v.action == Action::block && v.handled && opened == 1);
+  v = custom.on_menu("StatsMenu");
+  CHECK(v.action == Action::block && v.handled && opened == 2);
+  CHECK(custom.on_menu("ContainerMenu").action == Action::pass);  // only these two change with the card
+}
+
 int main() {
   sheets_cover_the_hud();
   dev_switch_hides_the_hud();
@@ -146,6 +171,7 @@ int main() {
   the_registry();
   a_hook_is_installed_once();
   one_handler_per_surface();
+  custom_ui_card_takes_inventory_and_stats();
   death_runs_its_flow();
   return TEST_MAIN_RESULT("core.router");
 }

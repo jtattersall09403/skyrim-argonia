@@ -21,12 +21,14 @@ from tools.ui_harness.build import ROOT, VIEWS, build
 from tools.ui_harness.harness import VIEWPORTS, Harness, fixtures
 
 OUT = ROOT / "out" / "ui" / "menus"
-BUTTON = {"a": 0, "b": 1, "lb": 4, "rb": 5, "lt": 6, "rt": 7, "up": 12, "down": 13, "left": 14, "right": 15}
+BUTTON = {"a": 0, "b": 1, "x": 2, "lb": 4, "rb": 5, "lt": 6, "rt": 7, "up": 12, "down": 13, "left": 14, "right": 15}
 
 # (view, the fixture state it opens on, the pad script, whether the d-pad only moves focus there: the graph runs then).
-# The chart's d-pad pans the map, so only its script runs.
+# The chart's d-pad pans the map, so only its script runs. SENT: the intent types a menu's script must send (the pad's
+# X drops the focused stack; B closes).
+SENT = {"inventory": ["inventory.drop"], "system": [], "magic": []}
 MENUS: tuple[tuple[str, str, list[str], bool], ...] = (
-    ("inventory", "full", ["down", "down", "down", "right", "left", "rb", "down", "lb", "up"], True),
+    ("inventory", "full", ["down", "down", "down", "right", "left", "rb", "down", "lb", "up", "x"], True),
     ("charsheet", "main", ["down", "down", "right", "left", "rb", "down", "rb", "down", "lb"], True),
     ("magic", "kit", ["down", "down", "down", "right", "left", "up", "rb", "lb"], True),
     ("system", "main", ["down", "down", "down", "up", "up", "up"], True),
@@ -187,6 +189,15 @@ def drive(h: Menus, vp, view: str, state: str, script: list[str], graph: bool, s
         if b in ("up", "down", "left", "right") and graph and ahead and before and after and before["key"] == after["key"]:
             r["fails"].append(f"script: {b} left focus on {after['key']}")
     still("script")
+    sent = [json.loads(x)["type"] for x in p.evaluate("() => window.argoniaSent")]
+    r["sent"] = sent
+    for want in SENT.get(view, []):
+        if want not in sent:
+            r["fails"].append(f"script sent no {want} (sent {sent})")
+    p.evaluate("(i) => window.__pad(i)", BUTTON["b"])
+    closed = [json.loads(x) for x in p.evaluate("() => window.argoniaSent")][len(sent):]
+    if view != "dialogue" and not any(c["type"] == "view.close" for c in closed):
+        r["fails"].append(f"B sent no view.close (sent {[c['type'] for c in closed]})")
     errs = p.evaluate("() => window.argonia.errors")
     r["fails"] += [f"error: {e}" for e in errs]
     r["seconds"] = round(time.monotonic() - t0, 2)

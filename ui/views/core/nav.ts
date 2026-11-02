@@ -9,7 +9,8 @@
 // Nothing here is game state: only which control has focus.
 export type NavAction =
   | "up" | "down" | "left" | "right" | "accept" | "back" | "prev" | "next" | "zoomIn" | "zoomOut"
-  | "panUp" | "panDown" | "panLeft" | "panRight";
+  | "panUp" | "panDown" | "panLeft" | "panRight"
+  | "drop";  // the pad's X, the X key: a view's second verb on the focused row (the inventory's Drop; OpenMW's X)
 
 export interface NavHooks {
   action(a: NavAction): boolean;
@@ -22,7 +23,7 @@ const DIRS: Partial<Record<NavAction, [number, number]>> = { up: [0, -1], down: 
 const KEYS: Record<string, NavAction> = {
   ArrowUp: "up", ArrowDown: "down", ArrowLeft: "left", ArrowRight: "right", Escape: "back", Tab: "back",
   PageUp: "prev", PageDown: "next", q: "prev", e: "next", "+": "zoomIn", "=": "zoomIn", "-": "zoomOut",
-  w: "panUp", s: "panDown", a: "panLeft", d: "panRight",
+  w: "panUp", s: "panDown", a: "panLeft", d: "panRight", x: "drop",
 };
 
 function visible(el: HTMLElement): boolean {
@@ -116,7 +117,7 @@ export function installNav(h: NavHooks) {
     const want: [string, boolean, NavAction][] = [
       ["up", b(12) || ay < -0.6, "up"], ["down", b(13) || ay > 0.6, "down"],
       ["left", b(14) || ax < -0.6, "left"], ["right", b(15) || ax > 0.6, "right"],
-      ["a", b(0), "accept"], ["b", b(1), "back"], ["lb", b(4), "prev"], ["rb", b(5), "next"],
+      ["a", b(0), "accept"], ["b", b(1), "back"], ["x", b(2), "drop"], ["lb", b(4), "prev"], ["rb", b(5), "next"],
       ["lt", b(6), "zoomOut"], ["rt", b(7), "zoomIn"],
       ["pu", ry < -0.5, "panUp"], ["pd", ry > 0.5, "panDown"], ["pl", rx < -0.5, "panLeft"], ["pr", rx > 0.5, "panRight"],
     ];
@@ -124,14 +125,14 @@ export function installNav(h: NavHooks) {
       if (!on) { held.delete(k); continue; }
       const since = held.get(k);
       if (since === undefined) { held.set(k, t + FIRST_MS); h.device("gamepad"); input(a); }
-      else if (t >= since && !["a", "b", "lb", "rb"].includes(k)) { held.set(k, t + REPEAT_MS); input(a); }
+      else if (t >= since && !["a", "b", "x", "lb", "rb"].includes(k)) { held.set(k, t + REPEAT_MS); input(a); }
     }
     padLoop = requestAnimationFrame(pad);
   };
   let padLoop = 0;
   window.addEventListener("gamepadconnected", () => { if (!padLoop) padLoop = requestAnimationFrame(pad); });
   const PRISMA_BUTTONS: Record<number, NavAction> = {
-    12: "up", 13: "down", 14: "left", 15: "right", 0: "accept", 1: "back", 4: "prev", 5: "next", 6: "zoomOut", 7: "zoomIn",
+    12: "up", 13: "down", 14: "left", 15: "right", 0: "accept", 1: "back", 2: "drop", 4: "prev", 5: "next", 6: "zoomOut", 7: "zoomIn",
   };
   const controls = (window as { prismaUi?: { controls?: EventTarget } }).prismaUi?.controls;
   controls?.addEventListener("gamepadbuttondown", (e) => {

@@ -69,11 +69,11 @@ void every_screen_has_a_fixture() {
     std::puts("skip: ui/fixtures not in this tree (the build VM's make check runs them)");
     return;
   }
-  for (const char* s : {"dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait"}) fixture(s);
+  for (const char* s : {"dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait", "inventory", "charsheet"}) fixture(s);
   CHECK(fixtures_checked >= 30);
   // Every message type in the schema appears in some fixture.
   std::string all;
-  for (const char* s : {"dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait"}) all += slurp(kRepo / "ui" / "fixtures" / (std::string(s) + ".json"));
+  for (const char* s : {"dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait", "inventory", "charsheet"}) all += slurp(kRepo / "ui" / "fixtures" / (std::string(s) + ".json"));
   for (const auto& info : msg::kMessages) CHECK(contains(all, "\"" + std::string(info.type) + "\""));
 }
 

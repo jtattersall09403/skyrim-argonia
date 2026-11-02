@@ -27,7 +27,7 @@ struct Spec {
   bool modal;  // takes focus and pauses; one modal at a time
   int order;
 };
-inline constexpr std::array<Spec, 9> kViews{{
+inline constexpr std::array<Spec, 11> kViews{{
     {"hud", "argonia/hud/index.html", false, 0},
     {"dialogue", "argonia/dialogue/index.html", true, 10},
     {"journal", "argonia/journal/index.html", true, 10},
@@ -38,6 +38,9 @@ inline constexpr std::array<Spec, 9> kViews{{
     {"chartpane", "argonia/chart/pane.html", false, 5},
     {"system", "argonia/system/index.html", true, 10},  // our System pane, for Dear Diary's System page (Esc)
     {"wait", "argonia/wait/index.html", true, 10},      // our wait window, over the hidden Sleep/Wait Menu (T)
+    // the custom-UI card only (router set_custom_ui): ours for InventoryMenu and StatsMenu (1.12 r4)
+    {"inventory", "argonia/inventory/index.html", true, 10},
+    {"charsheet", "argonia/charsheet/index.html", true, 10},
 }};
 const Spec* spec(std::string_view id);
 // The map pane's rule (owner play test 3 #26: "Map UI pane appears over dialogue UI pane"): the docked chart shows

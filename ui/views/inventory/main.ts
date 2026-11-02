@@ -32,6 +32,12 @@ start({
     if (first) root.querySelector<HTMLElement>(".row .name")?.focus({ preventScroll: true });
   },
   action(a) {
+    if (a === "drop") {  // the pad's X drops the focused stack, as the detail panel's Drop does
+      const id = (document.activeElement as HTMLElement | null)?.closest<HTMLElement>(".row")
+        ?.querySelector<HTMLElement>(".name")?.dataset.id ?? sel;
+      if (id && state?.items.some((x) => x.id === id)) send(drop(id));
+      return true;
+    }
     if (a !== "prev" && a !== "next") return false;
     tab = step(tab, a === "next" ? 1 : -1);
     sel = visible(state!, tab)[0]?.id;

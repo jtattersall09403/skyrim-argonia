@@ -128,6 +128,12 @@ void MagicDataLoaded();
 void MagicGameReady();  // the mod stock topped up on the merchant chests at each load
 void OpenMagic(std::optional<std::string> notice = std::nullopt);  // our magic pane (under Get().lock)
 std::string MagicIntent(const ac::msg::MagicEquip& m);
+// Our inventory and character sheet (panes.cpp; the custom-UI card), under Get().lock.
+void OpenInventory(std::optional<std::string> notice = std::nullopt);
+void OpenCharsheet(std::optional<std::string> notice = std::nullopt);
+std::string InventoryUse(const ac::msg::InventoryUse& m);
+std::string InventoryDrop(const ac::msg::InventoryDrop& m);
+std::string CharsheetPerk(const ac::msg::CharsheetPerk& m);
 std::vector<std::string> MagicReport();
 
 // --- menus.cpp: our System pane over Esc's Journal Menu, our wait window over the Sleep/Wait Menu (1.12 look 1) --

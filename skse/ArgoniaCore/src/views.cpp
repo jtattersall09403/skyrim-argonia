@@ -11,6 +11,7 @@
 // CanTravelTo flag, refreshed on LocationDiscovery); map fast travel is switched off at every load.
 #include <set>
 #include "core.h"
+#include "argonia/core/panes.h"
 #include "prisma_api.h"
 
 #ifndef WIN32_LEAN_AND_MEAN
@@ -680,6 +681,8 @@ class InputSink final : public RE::BSTEventSink<RE::InputEvent*> {
 void OnJournalSurface(ac::router::SurfaceId) { OpenJournal({ac::msg::JournalTab::current, 0, std::nullopt, std::nullopt}); }
 void OnMapSurface(ac::router::SurfaceId) { OpenChart(); }
 void OnMagicSurface(ac::router::SurfaceId) { OpenMagic(); }
+void OnInventorySurface(ac::router::SurfaceId) { OpenInventory(); }
+void OnStatsSurface(ac::router::SurfaceId) { OpenCharsheet(); }
 
 }  // namespace
 
@@ -761,6 +764,17 @@ void ViewsDataLoaded() {
     if (c.router.handle(s, h, &why)) c.router_log.push_back("handler " + std::string(ac::router::name(s)));
     else c.router_log.push_back("refused: " + why);
   }
+  // The custom-UI card (owner, 2026-11-02 22:06): stack.ps1 -Ui custom sets Wind UI aside, so its DLL is not loaded;
+  // then InventoryMenu and StatsMenu are ours. On the "Argonia" card both stay the engine's (SkyUI, Wind UI).
+  c.router.set_custom_ui(!GetModuleHandleA(std::string(ac::panes::kWindUiModule).c_str()));
+  c.router_log.push_back(c.router.custom_ui() ? "card: custom UI (no WindUI.dll): inventory and stats are ours"
+                                              : "card: Wind UI loaded: inventory and stats stay the engine's");
+  if (c.router.custom_ui())
+    for (auto [s, h] : {std::pair{ac::router::SurfaceId::inventoryMenu, &OnInventorySurface},
+                        std::pair{ac::router::SurfaceId::statsMenu, &OnStatsSurface}}) {
+      if (c.router.handle(s, h, &why)) c.router_log.push_back("handler " + std::string(ac::router::name(s)));
+      else c.router_log.push_back("refused: " + why);
+    }
   static InputSink input;
   // Prepended: our sink sees a press before TK Dodge's (registered earlier, at input loaded) can act on it.
   if (auto* idm = RE::BSInputDeviceManager::GetSingleton()) idm->PrependEventSink(&input);

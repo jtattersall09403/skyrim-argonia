@@ -74,6 +74,8 @@ void close_controls() {
   CHECK(close_intent("magic", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"magic"}})");
   CHECK(close_intent("magic", b, false) && close_intent("magic", tab, false) && close_intent("magic", p, false));
   CHECK(!close_intent("magic", m, false) && !close_intent("chart", p, false) && !close_intent("journal", p, false));
+  CHECK(close_intent("inventory", esc, false) == R"({"type":"view.close","v":1,"body":{"view":"inventory"}})");
+  CHECK(close_intent("charsheet", b, false) && close_intent("charsheet", tab, false) && !close_intent("inventory", p, false));
 }
 
 void the_table() {
@@ -87,8 +89,9 @@ void the_table() {
   CHECK(ids.size() == kViews.size());
   CHECK(spec("hud") && !spec("hud")->modal);
   CHECK(spec("dialogue") && spec("dialogue")->modal);
-  CHECK(!spec("inventory"));
+  CHECK(!spec("tween"));
   CHECK(spec("magic") && spec("magic")->modal);
+  CHECK(spec("inventory") && spec("inventory")->modal && spec("charsheet") && spec("charsheet")->modal);
   CHECK(spec("chartpane") && !spec("chartpane")->modal);  // display only: never takes the focus from Wind UI
 }
 

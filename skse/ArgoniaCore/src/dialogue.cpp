@@ -305,7 +305,8 @@ std::string ViewIntent(std::string_view json) {
     return {};
   }
   if (*view == "dialogue") return DialogueIntent(json);
-  if ((*view == "journal" || *view == "chart" || *view == "magic" || *view == "system" || *view == "wait") && closing) {
+  if ((*view == "journal" || *view == "chart" || *view == "magic" || *view == "system" || *view == "wait" ||
+       *view == "inventory" || *view == "charsheet") && closing) {
     CloseView(*view);
     return {};
   }
@@ -317,6 +318,12 @@ std::string ViewIntent(std::string_view json) {
     if (const auto* p = std::get_if<ac::msg::MagicEquip>(&*m)) return MagicIntent(*p);
   if (m)
     if (const auto* p = std::get_if<ac::msg::SystemPick>(&*m)) return SystemIntent(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::InventoryUse>(&*m)) return InventoryUse(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::InventoryDrop>(&*m)) return InventoryDrop(*p);
+  if (m)
+    if (const auto* p = std::get_if<ac::msg::CharsheetPerk>(&*m)) return CharsheetPerk(*p);
   if (m)
     if (const auto* p = std::get_if<ac::msg::WaitPick>(&*m)) return WaitIntent(*p);
   if (*view == "sitting") return SittingIntent(json);

@@ -66,6 +66,18 @@ bool Router::install(HookId h, std::string* why) {
   return true;
 }
 
+Replacement Router::replacement(SurfaceId s) const {
+  if (s == SurfaceId::inventoryMenu || s == SurfaceId::statsMenu)
+    return custom_ui_ ? Replacement::view : Replacement::restyled;
+  return row(s).replacement;
+}
+
+std::string_view Router::view_of(SurfaceId s) const {
+  if (s == SurfaceId::inventoryMenu) return "inventory";
+  if (s == SurfaceId::statsMenu) return "charsheet";
+  return row(s).by;
+}
+
 bool Router::handle(SurfaceId s, Handler h, std::string* why) {
   auto refuse = [&](const std::string& m) {
     if (why) *why = "surface " + std::string(name(s)) + ": " + m;
@@ -73,7 +85,7 @@ bool Router::handle(SurfaceId s, Handler h, std::string* why) {
   };
   const gen::SurfaceRow& r = row(s);
   if (!h) return refuse("an empty handler");
-  if (r.replacement == Replacement::restyled) return refuse("restyled; the engine keeps it and it takes no handler");
+  if (replacement(s) == Replacement::restyled) return refuse("restyled; the engine keeps it and it takes no handler");
   if (!installed(r.hook)) return refuse("its hook " + std::string(name(r.hook)) + " is not installed");
   if (handlers_[std::size_t(s)]) return refuse("already has a handler; one per surface");
   handlers_[std::size_t(s)] = std::move(h);
@@ -83,9 +95,8 @@ bool Router::handle(SurfaceId s, Handler h, std::string* why) {
 Verdict Router::on_surface(SurfaceId s) const {
   Verdict v;
   v.surface = s;
-  const gen::SurfaceRow& r = row(s);
   const Handler& h = handlers_[std::size_t(s)];
-  switch (r.replacement) {
+  switch (replacement(s)) {
     case Replacement::restyled:
       return v;
     case Replacement::suppressed:
@@ -94,7 +105,7 @@ Verdict Router::on_surface(SurfaceId s) const {
     case Replacement::view:
       // Until the view's system lands the engine's surface shows, logged, rather than nothing at all.
       if (!h) {
-        v.note = "surface " + std::string(name(s)) + ": our view " + std::string(r.by) + " is not registered yet";
+        v.note = "surface " + std::string(name(s)) + ": our view " + std::string(view_of(s)) + " is not registered yet";
         return v;
       }
       v.action = Action::block;
@@ -120,7 +131,7 @@ Verdict Router::on_menu(std::string_view menu_name) const {
 std::vector<SurfaceId> Router::awaiting() const {
   std::vector<SurfaceId> out;
   for (std::size_t i = 0; i < gen::kSurfaces.size(); ++i)
-    if (gen::kSurfaces[i].replacement == Replacement::view && !handlers_[i]) out.push_back(SurfaceId(i));
+    if (replacement(SurfaceId(i)) == Replacement::view && !handlers_[i]) out.push_back(SurfaceId(i));
   return out;
 }
 

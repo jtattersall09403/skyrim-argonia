@@ -55,6 +55,15 @@ class Router {
   Verdict on_menu(std::string_view menu_name) const;
   Verdict on_surface(SurfaceId s) const;
 
+  // The two UI cards (owner, 2026-11-02 22:06): with Wind UI and Dear Diary set aside (the "Argonia custom UI" card,
+  // ArgoniaCore sees no WindUI.dll), the inventory and the stats sheet are our views; on the "Argonia" card the
+  // engine keeps both for SkyUI and Wind UI. Set before handlers are registered.
+  void set_custom_ui(bool on) { custom_ui_ = on; }
+  bool custom_ui() const { return custom_ui_; }
+  // The replacement in force for a surface on this card, and the view that stands in when it is a view.
+  Replacement replacement(SurfaceId s) const;
+  std::string_view view_of(SurfaceId s) const;
+
   // Surfaces whose replacement is our view but whose system has not registered yet.
   std::vector<SurfaceId> awaiting() const;
   // The load log: each installed hook, then each handled surface (S11a reads it against the native map's list).
@@ -63,6 +72,7 @@ class Router {
  private:
   std::array<bool, gen::kHookIdCount> hooks_{};
   std::array<Handler, gen::kSurfaceIdCount> handlers_{};
+  bool custom_ui_ = false;
 };
 
 // The vanilla HUD's clips (1.2 §d): hudmenu.swf's instance names under kHudRoot, as HUD mods (iHUD, SkyHUD)
