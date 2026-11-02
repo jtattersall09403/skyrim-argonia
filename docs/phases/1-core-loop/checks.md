@@ -30,6 +30,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
+| Every Claywater person greets with topics (Livia, Takes, Signs, Gaius); a dead speaker is searched, not spoken to | 1.3 r4 | L4 | owed | journey:claywater-talk |
 | Every attribute equals its mirror AV, set and clamped, through a rest and a load | 1.3 §a | L4 | proven | journey:attributes pass out/batch/g18a/20261031T003055 |
 | Every derived value read for 5 test characters matches the formulas | 1.3 §a | L4 | owed | no journey reads 5 characters' derived values |
 | A topic learned from one person is asked of a second | 1.3 §b | L4 | proven | journey:first-place pass out/batch/g17/20261030T225900 |
