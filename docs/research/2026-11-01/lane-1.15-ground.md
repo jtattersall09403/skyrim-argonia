@@ -212,29 +212,30 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 8 (main at its commit or later). Planner rulings applied: (a) `water/solve.py` `WALL_STEP_M` 65.7 m (vanilla's
-tallest one-edge step): waters d cells apart differ by at most d x 65.7 m, the upper yields cell by cell (88 cells;
-closed steps over 65.7 m: 1, its upper a wet reach cell, which never yields). (c) Diagnosed: of 3,041 water cells
-whose refined ground stands wholly above their level, 1,808 were `pad_ring` cells (incl. (-32,31), (-20,58) at 0 on a
-40 m hillside), 647 `fill_enclosed` holes and 570 snapped-body cells (rule 1). Fixed at source: a snapped body keeps its
-own level when its samples' lowest ground stands above 0 (per body and per cell); padding and enclosed fill only where
-the cell's ground reaches the level + 0.3 m or raster water lies within one sample of it. Now 191 such cells (all
-within 0.3 m of their level but 14 reach cells and the pads raster water touches); the generator's own
-`empty_water_cells` (no raster sample) 3,088 -> 1,613. (b) A flat whose band is empty is terraced into the slope at
-the banks' level, pin kept, `request` says so (3 terraced, all now shaped). Generate: a channel end vertex a dry cell
-shares stays bank (dry-edge 4 -> 0). Build stats list `overflow_at`.
-Sample check (whole-province generate, written once into the shared out/terrain: the field the next build uses):
-dry-edge 0, wet/bank/step-bank 0, **overflow 1 cell (-20,58)**, **5 sites unshaped**, lattice 1.992. Owed:
+Session 10 (main 8013768 or later), a method diagnosis. The session-9 generate.py change was reverted and its probe
+committed (e0fdba8). `probes/clamp_census.py` measured, per window, how much dry ground sits on a per-cell clamp
+bound (within 0.05 m). The worst was 0_0 (-3,-3..4,4): 21.9 % of dry vertices sat on a bound (pad cells 9.1 %,
+shore floor 9.4 %, edge bank 2.2 %), and 26.5 % of its shore lay on cell lines, against 6.2 % for a raster
+outline. The other windows had 3.7-12.9 % on a bound.
 
-1. (-20,58) overflow: its west column (bank, role 3, ~60 m, the dry cell (-21,58)'s shared vertices) stands 20 m over
-   a wet column at 40 m (raster water one sample in from the edge). Tried clamping `limit`'s pin midpoint into the
-   water cones: overflow 1 -> 2 cells, reverted. Next: find what holds that bank's lo near 60 (print lo/hi there).
-2. Unshaped: flats the-back-kiln, the-eight-steps (re-sized, band not empty, still std >= 1), naga-village-raiding
-   (role 1, no note), depressions the-drawdown-flats, the-slumped-hamlet.
-3. Lattice 1.992 (> 1.5): session 7 item 2 stands.
-4. Reader on the six hillshades (session 8 ground): plates with hard straight edges remain on -38_25 (shelves at
-   0.35-0.58 x 0.18-0.31, 0.20-0.30 x 0.38-0.68), -20_57 (worst: facets, striped bands), 0_0 (square pool and walls
-   0.45-0.95 x 0.44-0.9), -12_63 shore; lakes clipped at cell lines on -21_-26. The solve's empty cells are no longer
-   the cause (191 left, near-level): next diagnose the generator's role-3 bank floor (`lo[bank] = vmax + FREEBOARD`)
-   and the relief prior on those windows.
-5. Re-shoot world-panel 24, 28, 29, 36, 37 and 08, 09, 29 at L4 in the planner's batch.
+`water_field.py` (`WATER_FIELD`, off by default) applies the water as two smooth cone fields instead:
+- lift, at vertices whose plane is clipped over a dry cell or a lower level;
+- carve, under the raster water.
+
+The footprint is the ground's own contour. `probes/water_field_trial.py` compares the two methods on the pre-water
+dump:
+- dry vertices on a bound: 0.3-3.6 % (marsh 6.9 %, the freeboard ring);
+- 0_0's shore on cell lines: 3.3 %;
+- bank at or below water: 0.
+
+A reader judged the field method better on 4 of 5 windows (river and marsh by a lot) and worse on -23_54. Rectangular
+pools remain on -23_54 and 0_0. Their cause: a cell's level comes from the solve, not the ground, so a level above
+the cell's ground floods the whole square up to the lifted edges.
+
+Owed, in order:
+1. Derive levels from the ground in water/solve.py: a lake's level is its basin's outlet sill; a reach follows the
+   thalweg, quantised at cell edges.
+2. Rerun the trial, then a reader.
+3. Turn `WATER_FIELD` on and run `terrain check --sample`, then one whole-province generate.
+
+The session-8 owed items 1-3 and 5 still stand.
