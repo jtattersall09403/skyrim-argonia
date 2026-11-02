@@ -246,6 +246,11 @@ switch ($Cmd) {
     Remove-Item "$skse\skse64.log" -EA SilentlyContinue
     $crashes = @(Get-ChildItem "$skse\crash-*.log" -EA SilentlyContinue).Count
     Set-GameWindow
+    # Steam restarts and self-updates after every boot; a launch inside that window dies silently with no SKSE log
+    # (2026-11-02, three launches 2 min after boot). Wait for the client proper (steamwebhelper) before launching.
+    for ($w = 0; $w -lt 180 -and -not (Get-Process steamwebhelper -EA SilentlyContinue); $w++) { Start-Sleep 1 }
+    if (-not (Get-Process steamwebhelper -EA SilentlyContinue)) { "steam: client not up after 180 s (launching anyway)" }
+    elseif ($w -gt 0) { "steam: client up after $w s"; Start-Sleep 10 }
     $t0 = Get-Date
     Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     $ok = $false
