@@ -6,7 +6,7 @@
 {"place_id":"place.dunmer-north.buried-blades","shape":"rise","x_m":4800.8,"y_m":189.2,"radius_m":25.0,"facing_deg":337.7}
 {"place_id":"place.dunmer-north.channel-cross-village","shape":"flat","x_m":5656.3,"y_m":649.8,"radius_m":83.09,"facing_deg":0.0,"request":"re-sized to 83 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.dunmer-north.climbs-to-see","shape":"flat","x_m":6460.2,"y_m":1521.7,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.dunmer-north.crystalgate","shape":"flat","x_m":1878.1,"y_m":715.6,"radius_m":85.98,"facing_deg":0.0,"request":"re-sized to 86 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.dunmer-north.crystalgate","shape":"flat","x_m":1878.1,"y_m":715.6,"radius_m":101.15,"facing_deg":0.0,"request":"re-sized to 101 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.dunmer-north.cut-and-stack","shape":"flat","x_m":6270.4,"y_m":1313.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.cut-in-the-wall","shape":"flat","x_m":1850.7,"y_m":309.8,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.draws-the-herds","shape":"rise","x_m":902.0,"y_m":754.0,"radius_m":45.0,"facing_deg":288.9}
@@ -16,7 +16,7 @@
 {"place_id":"place.dunmer-north.gandranen-ruins","shape":"bank","x_m":896.6,"y_m":907.5,"radius_m":45.0,"facing_deg":350.7}
 {"place_id":"place.dunmer-north.greylight-village","shape":"bank","x_m":6972.3,"y_m":1302.3,"radius_m":105.0,"facing_deg":224.9}
 {"place_id":"place.dunmer-north.hackwing-wall","shape":"bank","x_m":3128.3,"y_m":397.6,"radius_m":30.0,"facing_deg":356.8,"request":"cliff-bench"}
-{"place_id":"place.dunmer-north.hatching-pools","shape":"rise","x_m":2585.5,"y_m":801.1,"radius_m":115.0,"facing_deg":151.1}
+{"place_id":"place.dunmer-north.hatching-pools","shape":"rise","x_m":2585.5,"y_m":801.1,"radius_m":115.0,"facing_deg":122.2}
 {"place_id":"place.dunmer-north.hissmir","shape":"flat","x_m":6917.5,"y_m":595.0,"radius_m":140.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.hixinoag","shape":"flat","x_m":2272.9,"y_m":1285.9,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.hutan-tzel","shape":"bank","x_m":2996.7,"y_m":1000.7,"radius_m":105.0,"facing_deg":233.2}
@@ -58,7 +58,7 @@
 {"place_id":"place.dunmer-north.the-crystal-prospectors","shape":"flat","x_m":1231.1,"y_m":474.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-delta-byre","shape":"flat","x_m":6215.6,"y_m":1461.4,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-diggings-ladder","shape":"flat","x_m":1423.0,"y_m":1280.4,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.dunmer-north.the-divers-landing","shape":"deep_water","x_m":2197.06,"y_m":96.88,"radius_m":45.0,"facing_deg":0.0,"request":"moved 142 m to water"}
+{"place_id":"place.dunmer-north.the-divers-landing","shape":"deep_water","x_m":2197.06,"y_m":109.67,"radius_m":45.0,"facing_deg":0.0,"request":"moved 142 m to water"}
 {"place_id":"place.dunmer-north.the-drawdown-flats","shape":"depression","x_m":2119.4,"y_m":266.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-dres-rows","shape":"flat","x_m":6835.2,"y_m":1669.7,"radius_m":46.96,"facing_deg":0.0,"request":"re-sized to 47 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.dunmer-north.the-drover-camp","shape":"flat","x_m":3254.5,"y_m":63.1,"radius_m":45.0,"facing_deg":0.0}
@@ -97,7 +97,7 @@
 {"place_id":"place.dunmer-north.the-silyanorn-crown","shape":"flat","x_m":3605.4,"y_m":123.4,"radius_m":25.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-slumped-hamlet","shape":"depression","x_m":5431.4,"y_m":786.9,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-standing-bid","shape":"flat","x_m":2752.8,"y_m":871.8,"radius_m":12.26,"facing_deg":0.0,"request":"terraced at 43.5 m; re-sized to 12 m: the ground beside it falls or rises too fast"}
-{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","shape":"rise","x_m":2497.7,"y_m":622.4,"radius_m":25.0,"facing_deg":38.5,"request":"gorge"}
+{"place_id":"place.dunmer-north.the-stormhold-falls-chamber","shape":"rise","x_m":2497.7,"y_m":622.4,"radius_m":25.0,"facing_deg":27.9,"request":"gorge"}
 {"place_id":"place.dunmer-north.the-stripped-village","shape":"flat","x_m":5387.6,"y_m":1324.3,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-sump-hamlet","shape":"flat","x_m":3451.9,"y_m":770.4,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.the-tear-wreck","shape":"deep_water","x_m":6382.82,"y_m":1418.4,"radius_m":45.0,"facing_deg":0.0,"request":"moved 30 m to water"}
