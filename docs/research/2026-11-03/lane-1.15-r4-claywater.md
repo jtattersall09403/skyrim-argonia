@@ -12,8 +12,13 @@
 - 75f1f18 `textures/hana/signs/*` in BM&V's keep; L1 test (4 slot textures unlaid before, 0 after).
 - region_saves.py: tenth save 'Argonia Claywater' at ARG_Ref_ClaywaterStationQuestBoard (by the well), third person via ensure_third_person.
 
+## Round two (the planner's three items)
+- 2aba074 terrain_patch made real: `terrain/patches.py` (pad flat at its ground's mean + rise_m, smoothstep blend; bowl depth_m under its cell's water; no absolute heights), applied in grid.Sources.heights (LAND, game_heights_m, GameGround, navmesh) and painted by material._weights; row reuse keys and the pipeline stamp carry it. Rows: the well (r 2 m, blend 3 m, LDirtPath01; Skyrim.esm's exterior wells stand on p50 0.23 m relief within 2 m, on a dirt/mud vertex), the station house (r 6 m) and the stable (r 5.5 m, LDirtPath01). Old bed-cut rows stay keys (kind NULL). L2 test_patches.py on synthetic rows (4 tests).
+- bbdc518 the scour pool: a bowl 2.6 m under its cell's water (68.02 m) replaces build_ground's absolute floor 30.3 m, which the generated ground never read. test_creature_dens green (the shallows 2.56 m deep; it was red on main).
+- fb4accb the L3 renderer applies the patches. Render of cells -58,11..-57,12 (an 8x8-cell window), read by a reader: the river and its banks read naturally. The reader saw rectilinear, plate-edged dark water at the window's west edge, a straight north bank on the main water, and a hard-edged orange block near (650, 220) px. The pads (2-6 m) are below the render's pixel scale. The water's edge shapes are the ground lane's cell-water output, not this lane's; the orange block should be checked in the claywater-look stills.
+- Still red on main, not mine: tools/ArgoniaGen/test_pipeline.py::test_world_hands_the_frozen_ground_to_every_stage (its _terrain_stamp lambda takes no `ground` keyword; from 929d2e1).
+
 ## Not done / owed
-- The well's ground pad and texture (finding 25) and the Tropical Skyrim farmhouse re-seat as terrain_patch rows: not done (terrain_patch is a key-only table; no consumer). The house and stable now stand on today's ground with KotM/HTBM pieces.
-- `build_ground` scour-pool floor_m 30.3 is the same stale-datum class; test_creature_dens shallows fails on main before and after this lane (water 68.02, floor 65.85).
+- The Tropical Skyrim farmhouse kit: not re-seated. The house and stable keep the KotM and HTBM pieces, now on their pads.
 - The sign textures rely on BM&V's archive holding textures/hana/signs (not verifiable here); the planner's textures check after the next lay proves it.
-- L3 render not made (no province build run: memory rule). L4: the checks.md row; journeys claywater-walk/look in the planner's batch after rebuilding lists, the place layer and infra.
+- L4: the checks.md row; journeys claywater-walk/look in the planner's batch after rebuilding lists, the place layer and infra.
