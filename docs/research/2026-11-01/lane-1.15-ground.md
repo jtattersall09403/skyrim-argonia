@@ -219,6 +219,12 @@ stepped cell, under-level ground more than 6 samples from the raster water is ra
 s18a: "the blocky outlines are mostly gone ... ragged, organic edges", 1-2 straight edges left on step lines, no new
 artefacts. `check --sample` fails [], lattice 1.365, overflow 0 pairs. Still owed: the held rule with the
 depression fix, the faint edges (0_0_1_1, -20_57), lake depth by body size.
+Held rule re-measured on top (s18b, patch at `~/.argonia/jobs/generate-held.diff`, not committed): `check --sample`
+fails `1 sites_unshaped` (depression/role1, the-slumped-hamlet, centre sample 431,2971), lattice 1.371. The site
+lies in a 239.0 m cell beside a 213.2 m cell; its centre stays at 232.5 m in both s17g and s18b (6.5 m under the
+239 plane, so flooded) while the ground round it stands 1-5 m higher without the carve, so rel -0.92 against -1.5.
+Not a step channel at the centre (chz 0; vmin = vmax = 239.01). Next: find what holds the centre at 232.5 (pin,
+`reach_` cap or the limit), then dig the floor from the rim plane but no lower than the neighbouring water.
 
 Session 17 (one level definition, first half). Runs: `~/.argonia/jobs/s17.sh NAME` = `generate --sample --out
 out/terrain-sample/NAME`, `check --sample`, `render --sample --hillshade --out NAME/hs`, then the census (NAMEcen).
