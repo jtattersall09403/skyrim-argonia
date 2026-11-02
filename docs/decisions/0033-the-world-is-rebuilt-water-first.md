@@ -59,3 +59,16 @@ methods of 2.W1 and 2.W2, amends 0028's palette; the evidence is
   as history, their owed rows are dropped under this record. 2.W5 and 2.W6 build on the frozen world.
 - Region sound tables with hydrology-derived emitters go to 2.16; season-driven insects and disease to 2.14;
   infrastructure decay states to the built-places part; dungeon supply and entrance proofs to 2.W5 and 4.4.
+
+## Amendment (2026-11-02): the levels come from the ground
+
+Nine generator sessions of per-cell clamps (bank floors, edge banks, pads) left plates and cell-line shores on every
+panel still; a clamp census measured 4–22 % of dry vertices sitting on a bound. Skyrim.esm's lakes sit a median
++3 m above their basin's outlet bed and their shores simply climb (probes `vanilla_lake_sill.py`,
+`vanilla_shore_profile.py`). So decision 1 is amended in its order, not its rules: (1) the ground is generated
+continuous first (prior, relief, erosion); (2) each body's level is set from that ground: a lake, lagoon, tarn or
+pond at its basin's outlet sill, a river by its thalweg quantised at cell edges (at most 65.7 m per edge, the
+tallest vanilla step; else a dry gully), one level per cell, neighbouring cells merged into one level as vanilla
+does; (3) the ground is adjusted only by smooth carve and lift fields; the per-cell clamps, pads and edge banks
+are retired. The hydrology graph still says what water exists and of what kind; the ground says where it stands.
+(Lane report docs/research/2026-11-01/lane-1.15-ground.md, sessions 10–11.)
