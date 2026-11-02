@@ -688,7 +688,8 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
 
     # 6. entrance sites
     diag["h_sites_in"] = h.astype(np.float32)
-    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz)  # a dry cell's vertex stays bank
+    sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz, chan)  # a dry cell's vertex stays bank; a step's channel keeps its bed
+    diag["h_roads_in"] = h.astype(np.float32)  # after the sites, before the roads
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
 
     # 4 (run here). the roads laid in as Skyrim.esm lays them (routes/shape.py: the measured trough across, the grade
@@ -751,7 +752,7 @@ def blend_w(d: np.ndarray, nz: np.ndarray) -> np.ndarray:
     return t * t * (3 - 2 * t)
 
 
-def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) -> list[dict]:
+def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None, chan=None) -> list[dict]:
     """One entrance site per dungeon record, reserved and shaped in place (options §9): a mound, or a bank cut where
     water is near, for a mouth; a depression for a sinkhole; flat landmark ground; a deep-water bowl for an
     underwater entry. A dry-shaped site standing in water is reserved as ground (its disc becomes bank above the
@@ -759,6 +760,8 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
     becomes a bank mouth (both written to the row's request note)."""
     if nz is None:
         nz = np.zeros(h.shape)
+    if chan is None:
+        chan = np.zeros(h.shape, bool)
     out = []
     order = {"flat": 0, "deep_water": 1, "depression": 2}  # the broad shapes first, the mouths on top
     # the broad shapes first (a city before the districts inside it), the mouths on top
@@ -809,7 +812,10 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
         # a flat keeps its wet samples as water (no plate over a river: test_creature_dens, the audit's §10); a
         # mouth's disc is reserved as ground above any water sharing it
         if shape in ("rise", "bank"):
-            wet = disc & ~np.isnan(vmax[sl])
+            # ... except a step's channel (the vanilla join's bed through the edge): a mouth's disc over it would lift
+            # the bed to a bank and bury the channel, a wall where the river should step (lane 1.15-r4-ground-steps:
+            # 8 of 203 steps lost their channel here)
+            wet = disc & ~np.isnan(vmax[sl]) & ~chan[sl]
             whi[wet] = np.inf
             wlo[wet] = np.maximum(np.where(np.isfinite(wlo[wet]), wlo[wet], -np.inf), vmax[sl][wet] + FREEBOARD_M)
             wro[wet] = 3
@@ -856,7 +862,7 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
             low_ = np.nanmin(vmin[sl]) - DEPRESSION_M if (~np.isnan(vmin[sl])).any() else -np.inf
             win[:] = np.where(disc, np.minimum(win, win * (1 - w) + np.maximum(plane2 - DEPRESSION_M, low_) * w), win)
             del plane2
-            inner = disc & ~np.isnan(vmin[sl]) & ~sbank[sl]
+            inner = disc & ~np.isnan(vmin[sl]) & ~sbank[sl] & ~chan[sl]
             sunk = inner & (win < vmin[sl])
             wlo[inner] = np.where(sunk[inner], -np.inf, vmax[sl][inner] + FREEBOARD_M)
             whi[inner] = np.where(sunk[inner], vmin[sl][inner] - FREEBOARD_M, np.inf)
@@ -906,7 +912,7 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
             win[:] = np.where(held | fw0, keep, win * (1 - w) + tgt * w)
         else:  # deep water: a bowl under the cell's level
             bowl = vmin[sl] - DEEP_M - 0.5  # under the lowest water sharing each vertex
-            inner = (d <= 0.5) & ~np.isnan(bowl) & (wro != 3)  # a closed bank stays closed
+            inner = (d <= 0.5) & ~np.isnan(bowl) & (wro != 3) & ~chan[sl]  # a closed bank stays closed
             whi[inner] = np.minimum(whi[inner], bowl[inner])
             wlo[inner] = -np.inf
             wro[inner] = 1

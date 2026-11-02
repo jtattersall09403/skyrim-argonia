@@ -70,3 +70,38 @@ def test_write_is_atomic_an_interrupted_write_leaves_the_old_file(tmp_path):
     assert [p.name for p in tmp_path.iterdir()] == ["ground-f32.npy"]  # no tmp-<pid> left behind
     G.atomic(f, lambda fh: np.save(fh, np.zeros(4, np.float32)))
     assert np.load(f).tolist() == [0.0] * 4
+
+
+def _step_grid():
+    """A synthetic two-cell step: water at 10 m on the left half, 4 m on the right, one channel row of vertices
+    through the shared column (bed 9.8 m at the edge, as generate.py's join holds it), a cave mouth sited on it."""
+    n = 160
+    h = np.full((n, n), 12.0)
+    lo = np.full(h.shape, -np.inf)
+    hi = np.full(h.shape, np.inf)
+    vmin = np.full(h.shape, np.nan)
+    vmax = np.full(h.shape, np.nan)
+    role = np.zeros(h.shape, np.int8)
+    vmin[:, :80], vmax[:, :80] = 10.0, 10.0
+    vmin[:, 80:], vmax[:, 80:] = 4.0, 4.0
+    chan = np.zeros(h.shape, bool)
+    chan[78:83, 76:84] = True  # the graded channel across the edge
+    h[chan] = 9.8
+    hi[chan] = 9.81
+    role[chan] = 1
+    foot = role == 1
+    inp = type("I", (), {"sites": [{"place_id": "place.test.mouth", "x_m": 80 * G.MPP, "y_m": 80 * G.MPP, "radius_m": 3 * G.MPP,
+                                    "entrance": "cave-mouth", "water_m": 1.0, "request": None}]})()
+    return h, lo, hi, role, inp, vmin, vmax, foot, chan
+
+
+def test_site_over_a_step_keeps_its_channel():
+    """The pass that lost 8 of 203 steps (shape_sites: a mouth's disc reserved as ground above the water sharing it)
+    leaves a step's channel at its bed."""
+    h, lo, hi, role, inp, vmin, vmax, foot, chan = _step_grid()
+    G.shape_sites(h, lo, hi, role, inp, vmin, vmax, foot, np.zeros(h.shape, bool), None, chan)
+    assert (h[chan] <= 9.81 + 1e-9).all() and (hi[chan] <= 9.81 + 1e-9).all()
+    # without the channel mask the same site buries it (the bug this guards)
+    h, lo, hi, role, inp, vmin, vmax, foot, chan = _step_grid()
+    G.shape_sites(h, lo, hi, role, inp, vmin, vmax, foot, np.zeros(h.shape, bool))
+    assert (h[chan] > 9.81).any()
