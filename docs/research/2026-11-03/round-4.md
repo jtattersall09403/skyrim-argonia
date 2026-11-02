@@ -11,10 +11,10 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 | 1.15-r4-water | 20, 19 | lane-1.15-r4-water.md |
 | 1.15-r4-materials | 16, 17 | lane-1.15-r4-materials.md (e396d20: the pebble field is BM&V's riverbed edge chosen by height alone, 28 % of dry ground, now 2.6 % and only at the water's edge; no ground texture had a normal map, now vanilla's own, so the shine goes; one window still 41 % of one texture, being closed) |
 | 1.15-r4-light | 18, 9 | lane-1.15-r4-light.md (57d61ea: fog max 1.0 hid the sky, far under vanilla's class medians, grey zeniths; height fog was a 5 m slab, now a bank below eye height; then 9e492ee: seven mist weather copies by water-level band with their own Community Shaders fog files, every mist region banked between its water and eye height) |
-| 1.15-r4-trees | 4, 5, 32 | lane-1.15-r4-trees.md (31c2e32: trees sunk by a measured per-model seat, the mods' own placement the reference; flora with any missing texture dropped; tree families per class, classes now 0.77–0.89 distinct; the teal cypress traced to resource-pack textures, being closed) |
+| 1.15-r4-trees | 4, 5, 32 | lane-1.15-r4-trees.md (31c2e32: trees sunk by a measured per-model seat, the mods' own placement the reference; flora with any missing texture dropped; tree families per class, classes now 0.77–0.89 distinct; the teal cypress: its textures are laid and the mesh is KotM's own, so the colour is our lighting of its soft-lit, vertex-coloured needles; a weather-swap still at one tree in the batch settles it) |
 | 1.15-r4-claywater | 3, 22, 23, 25, 29, 31, 1 | lane-1.15-r4-claywater.md (9d9f2a9 79d4b34 75f1f18: a stockade kit scattered as trees, 13 Claywater refs 31 m under the new ground, docks seated on the bed, sign textures never laid; the Claywater save; then b94ef5f: terrain_patch real as pads and bowls read by the ground, materials and renderer; the well, house and stable on pads; the scour pool a bowl under its water) |
 | 1.15-r4-roads | 21 | lane-1.15-r4-roads.md |
-| 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md |
+| 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md (19492e8: the docked pane's rule ignored modal views and a barter closing within 0.3 s; names baked into tiles scaled with zoom, now screen-space at one size; the sketch layer (coast, major roads, border, compass) now drawn under the fog with the seven cities as named dots; the chart re-rendered from the current water, every river point within one cell; P2: Lilmoth/Blackrose labels read as swapped, Thorn clipped, Claywater label on roads, doubled road near Gideon) |
 | 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md (done 7948d33: third person, 5,000 gold, Precision camera shake off; 33 left: FreeClimb has no tree filter, trees climb by the 2026-11-01 ruling, the mechanic is the modder's) |
 | 1.3-r4-talk | 24, 27, 28 | lane-1.3-r4-talk.md |
 
@@ -25,6 +25,8 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 Owner, 22:06: seven screenshots of the tree colours, shiny textures and pebble swathes, routed to the trees and materials lanes.
 
 ## The batch
+
+Also in the batch: `tree-teal` (one KotM bald cypress under our weather and under KotM's own weather, a still each; if teal persists under KotM's, Community Shaders' soft lighting is next), `ground-materials`, `creature-spots`, `chart-zoom`, `claywater-talk`, `menu-sweep`, the third-person save and gold read, a hit-and-camera still. Before the deploy on the build VM, under the province lock: the province plugin build (land, materials, placements, lists, infra, creature lists), `vegetation check`, the chart renders (`python -m tools.chart render`, the 4k level), the region saves remade with `--fresh` (ten, with Claywater).
 
 One deploy of main on Paris when the lanes have landed; the journeys the lanes owe (river-steps, tree-seat,
 road-look, chart-zoom, claywater-walk, claywater-look, the panel's dawn stills, the save load) in one batch,
