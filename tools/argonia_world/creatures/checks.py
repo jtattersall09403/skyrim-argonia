@@ -9,6 +9,9 @@
               above level 1, no zone with min <> max, no template off its band's fixed level, and no list entry or
               den predator naming a mod creature whose record scales or whose death item is levelled (our fixed
               copy instead); the plugin's own bytes are checked again at readback (levelled.check)
+    lists     every region class's lists together hold at least MIN_KINDS kinds; no apex kind in a list (dens only)
+    density   spawn refs per 100 sampled cells, per vanilla terrain class (vanilla/creatures.py cell_class), at or
+              above Skyrim.esm's (VANILLA_PER_100); classes with fewer than DENSITY_MIN_CELLS cells are reported only
     dens      every den marker has its predator within DEN_BESIDE_M (+ one vertex step)
 """
 from __future__ import annotations
@@ -20,6 +23,58 @@ from tools.argonia_world.creatures import place as pl
 from tools.argonia_world.creatures import roster
 
 MIN_KINDS = 12
+# Skyrim.esm's Tamriel creature refs per 100 cells by terrain class (vanilla/creatures.py, 2026-11-03 run)
+VANILLA_PER_100 = {"shore": 105.16, "forest": 95.87, "open": 25.90, "mountain": 20.78, "water": 8.72}
+DENSITY_MIN_CELLS = 20
+
+
+def lists(w) -> dict:
+    kinds, bad = {}, []
+    for r in w.query("SELECT l.region_class, f.creature_id, c.kind FROM creature_list l JOIN creature_list_entry e "
+                     "ON e.list_id = l.id JOIN creature_form f USING (form_key) JOIN creature c ON c.id = f.creature_id"):
+        kinds.setdefault(r["region_class"], set()).add(r["creature_id"])
+        if r["kind"] == "apex":
+            bad.append(f"{r['region_class']}: apex {r['creature_id']} in a list")
+    n = {c: len(kinds.get(c, ())) for c in roster.CLASSES}
+    bad += [f"{c}: {k} kinds in its lists" for c, k in n.items() if k < MIN_KINDS]
+    return {"kinds": n, "fail": sorted(set(bad))[:10] or None}
+
+
+def terrain_class(h: np.ndarray, level: float, trees: int) -> str:
+    """vanilla/creatures.py cell_class on our cell: h metres, level the cell's water, trees its stems."""
+    wet = float((h < level).mean())
+    if wet > 0.5:
+        return "water"
+    if wet > 0:
+        return "shore"
+    if float(h.mean()) * su.UNITS_PER_METRE > 4000:
+        return "mountain"
+    return "forest" if trees >= 10 else "open"
+
+
+def density(run: dict, src, cw, cells, stems: dict | None) -> dict:
+    """Spawn refs (lists and den predators: Skyrim.esm's count is every creature ACHR) per 100 planned cells."""
+    n, refs = {}, {}
+    per = {}
+    for r in run["refs"]:
+        if r["kind"] != "den":
+            per[tuple(r["cell"])] = per.get(tuple(r["cell"]), 0) + 1
+    cls = run.get("cell_class") or {}
+    for cx, cy in cells:
+        if (cx, cy) not in cls:
+            continue
+        r0, r1 = src.cell_rows(cy)
+        c0, c1 = src.cell_cols(cx)
+        h = src.heights(r0, r1 + 1, c0, c1 + 1)
+        lv = cw.level(cx, cy)
+        level = lv if lv is not None else cw.nearest_level(cx, cy)
+        t = terrain_class(h, level, 0 if stems is None else len(stems.get((cx, cy), ())))
+        n[t] = n.get(t, 0) + 1
+        refs[t] = refs.get(t, 0) + per.get((cx, cy), 0)
+    got = {t: {"cells": n[t], "per_100": round(100 * refs[t] / n[t], 1), "vanilla": VANILLA_PER_100[t]} for t in n}
+    bad = [f"{t}: {v['per_100']} per 100 cells < vanilla {v['vanilla']}" for t, v in got.items()
+           if v["cells"] >= DENSITY_MIN_CELLS and v["per_100"] < v["vanilla"]]
+    return {"by_terrain": got, "fail": bad or None}
 
 
 def classes(w) -> dict:

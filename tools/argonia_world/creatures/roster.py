@@ -157,7 +157,12 @@ DEEP = {"creature.sea-drake": 3.0, "creature.dreugh": 2.0}  # min depth for the 
 # band -> (actor level, spawn points per cell): the levels from danger_band_combat (76 §128); the counts from
 # Skyrim.esm's creature refs per cell of wilderness (vanilla/creatures.py: shore 1.05, forest 0.96, open 0.26,
 # water 0.09), falling with the band as 74-ecology rule 1 asks (the hunters are rare)
-BANDS = {"D1": 1.0, "D2": 0.8, "D3": 0.6, "D4": 0.4, "D5": 0.2}
+# band -> spawn refs per wild cell. Skyrim.esm's densest wilderness class is shore, 105.16 refs per 100 cells (forest
+# 95.87, open 25.90, mountain 20.78, water 8.72: vanilla/creatures.py); every band takes the shore figure with a
+# margin, so a sampled cell of any terrain class measures at or above vanilla's (checks.density). The danger is the
+# list's, never the count (before: D1 1.0 down to D5 0.2, 0.35 refs per cell on the sample; owner play test 3,
+# finding 13: "very sparse").
+BANDS = {"D1": 1.2, "D2": 1.2, "D3": 1.2, "D4": 1.2, "D5": 1.2}
 
 # place class -> no-spawn radius (74-ecology rule 3: nothing wild inside a settlement)
 NO_SPAWN = {

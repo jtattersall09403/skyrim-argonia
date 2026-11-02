@@ -4,6 +4,9 @@
         every creature the pinned Black Marsh mods ship, and how each mod places its own (inventory.py)
     python3 -m tools.argonia_world.creatures seed [--inventory out/creatures/inventory.json]
         write roster.py's rows and the derived lists and zones into the world database (seed.py)
+    python3 -m tools.argonia_world.creatures lists
+        rewrite the lists (seed.derive_lists) and the bands' spawns per cell (roster.BANDS) from the database's
+        rows alone, without the laid stack
     python3 -m tools.argonia_world.creatures check [--out out/creatures] [--cells x0,y0,x1,y1,...]
         plan the 1.15 sample (terrain/world.py SAMPLE_1_15, or --cells) and run the checks (checks.py);
         exit 1 on a red
@@ -43,6 +46,18 @@ def _seed(a) -> int:
     return 0
 
 
+def _lists(a) -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world.creatures import roster, seed
+    w = db.open(cache=False)
+    for r in w.query("SELECT * FROM danger_band_level"):
+        w.upsert("danger_band_level", {**dict(r), "spawns_per_cell": roster.BANDS[r["band"]]})
+    n = seed.derive_lists(w)
+    w.save()
+    print(f"creatures lists: {len(w.rows('creature_list'))} lists, {n} entries")
+    return 0
+
+
 def _check(a) -> int:
     from tools.argonia_world import db
     from tools.argonia_world.creatures import build, checks
@@ -56,13 +71,18 @@ def _check(a) -> int:
         v = [int(x) for x in a.cells.split(",")]
         boxes = [tuple(v[i:i + 4]) for i in range(0, len(v), 4)]
     src, cw = Sources.load(), solve.load(w)
-    run = build.run(w, src, cw, build.sample_cells(boxes), Path(a.out), veg=ROOT / "out" / "terrain" / "vegetation")
-    res = {"classes": checks.classes(w), "levels": checks.levels(w), "unlevelled": checks.unlevelled(w, run),
+    cells = build.sample_cells(boxes)
+    run = build.run(w, src, cw, cells, Path(a.out), veg=ROOT / "out" / "terrain" / "vegetation")
+    res = {"classes": checks.classes(w), "lists": checks.lists(w),
+           "density": checks.density(run, src, cw, cells, run["stems"]), "levels": checks.levels(w), "unlevelled": checks.unlevelled(w, run),
            **checks.refs(run, src, cw)}
     res["seconds"] = round(time.time() - t0, 1)
     (Path(a.out) / "checks.json").write_text(json.dumps(res, indent=1, default=str) + "\n")
     bad = [k for k, v in res.items() if isinstance(v, dict) and v.get("fail")]
     print("region classes (kinds with a why):", res["classes"]["kinds"])
+    print("kinds in each class's lists:", res["lists"]["kinds"])
+    print("spawn refs per 100 cells by terrain (vanilla):", {t: f"{v['per_100']} ({v['vanilla']}) in {v['cells']}"
+                                                             for t, v in res["density"]["by_terrain"].items()})
     print(f"refs {res['habitat']['refs']} on their habitat; dens {res['dens']['dens']} with a predator beside; "
           f"lists {res['levels']['lists']} at their band's fixed level; no-spawn violations "
           f"{len(res['no_spawn']['fail'] or [])}")
@@ -71,7 +91,7 @@ def _check(a) -> int:
           f"{u['actors']} fixed copies, zones min = max")
     for k in bad:
         print(f"creatures check red: {k}: {res[k]['fail']}")
-    print(f"creatures checks: {6 - len(bad)} green, {len(bad)} red ({res['seconds']} s)")
+    print(f"creatures checks: {8 - len(bad)} green, {len(bad)} red ({res['seconds']} s)")
     return 1 if bad else 0
 
 
@@ -134,6 +154,7 @@ def main(argv=None) -> int:
     p.add_argument("--json", default=str(ROOT / "out" / "creatures" / "inventory.json"))
     p = sub.add_parser("seed")
     p.add_argument("--inventory", default=str(ROOT / "out" / "creatures" / "inventory.json"))
+    sub.add_parser("lists")
     p = sub.add_parser("check")
     p.add_argument("--out", default=str(ROOT / "out" / "creatures"))
     p.add_argument("--cells")
@@ -147,7 +168,7 @@ def main(argv=None) -> int:
     p.add_argument("--esm", required=True)
     p.add_argument("--gen", required=True)
     a = ap.parse_args(argv)
-    return {"inventory": _inventory, "seed": _seed, "check": _check, "build": _build,
+    return {"inventory": _inventory, "seed": _seed, "lists": _lists, "check": _check, "build": _build,
             "readback": _readback}[a.cmd](a)
 
 

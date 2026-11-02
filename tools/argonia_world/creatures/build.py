@@ -82,7 +82,7 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
     P = np.array([(p[0], p[1]) for p in pp])
     R = np.array([p[2] for p in pp])
     B = [p[3] for p in pp]
-    refs, skipped, reused = [], 0, 0
+    refs, skipped, reused, planned = [], 0, 0, {}
     rows: dict[int, list[tuple[int, int]]] = {}
     for cx, cy in cells:
         rows.setdefault(cy, []).append((cx, cy))
@@ -95,6 +95,7 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
                 skipped += 1
                 continue
             band = wild_band(P, B, cx, cy)
+            planned[(cx, cy)] = c
             r0, r1 = src.cell_rows(cy)
             c0, c1 = src.cell_cols(cx)
             h = src.heights(r0, r1 + 1, c0, c1 + 1)
@@ -124,7 +125,7 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
                 f.write(json.dumps(r, sort_keys=True) + "\n")
         (out / "summary.json").write_text(json.dumps(summ, indent=1, sort_keys=True) + "\n")
     log(json.dumps(summ))
-    return {"refs": refs, "summary": summ, "rules": rules, "places": (P, R)}
+    return {"refs": refs, "summary": summ, "rules": rules, "places": (P, R), "cell_class": planned, "stems": st}
 
 
 def _code_stamp() -> str:

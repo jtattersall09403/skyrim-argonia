@@ -32,6 +32,49 @@ def new_creature(cid: str, d: dict) -> dict:
             "sourcing_redesign": None, "table_row": "docs/research/2026-11-01/lane-1.15-creatures.md#inventory"}
 
 
+def derive_lists(w, lv: dict[str, int] | None = None) -> int:
+    """Rewrite creature_list and creature_list_entry from the rows (1.15 round 4, owner play test 3 finding 13).
+
+    One list per region class, band and medium, every entry at level 1 (0035). A list holds every kind of its class
+    and medium whose own lowest band is at or below the list's: the prey of the quiet bands lives on in the
+    dangerous ones, as Skyrim.esm's wilderness lists mix prey with predators (LCharAnimalForestPredator, 26 entries;
+    list entries p50 4, p90 13). Before, a list held only the kinds that named its exact band, so a D2 land list of
+    the coast was hackwing and fleshfly alone. An apex kind (creature.kind 'apex') is never in a list: it stands at
+    its den (place.py's dens), rare by dens_per_100_cells (74-ecology: the big predators keep their ground).
+    Returns the entries written."""
+    lv = lv or band_levels(w)
+    order = list(ro.BANDS)
+    for t in ("creature_list", "creature_list_entry"):
+        _clear(w, t)
+    low = {}
+    for r in w.query("SELECT creature_id, value FROM creature_band"):
+        if r["value"] in order:
+            low[r["creature_id"]] = min(low.get(r["creature_id"], 9), order.index(r["value"]))
+    crows = {r["id"]: r for r in w.query("SELECT id, kind, hand_authored_only FROM creature")}
+    med = {r["creature_id"]: r["medium"] for r in w.query("SELECT creature_id, medium FROM creature_spawn_rule")}
+    forms = {}
+    for r in w.query("SELECT creature_id, form_key FROM creature_form ORDER BY rowid"):
+        forms.setdefault(r["creature_id"], []).append(r["form_key"])
+    cls = {}
+    for r in w.query("SELECT creature_id, region_class FROM creature_region_class ORDER BY rowid"):
+        cls.setdefault(r["region_class"], []).append(r["creature_id"])
+    n = 0
+    for c in ro.CLASSES:
+        for bi, b in enumerate(order):
+            for m in ro.MEDIUM:
+                ents = [f for cid in cls.get(c, []) if med.get(cid) == m and low.get(cid, 9) <= bi
+                        and crows[cid]["kind"] != "apex" and not crows[cid]["hand_authored_only"]
+                        for f in forms.get(cid, [])]
+                if not ents:
+                    continue
+                lid = f"lvln.{c}.{b}.{m}"
+                w.insert("creature_list", id=lid, region_class=c, band=b, medium=m, level=lv[b], chance_none=0)
+                for f in ents:
+                    w.insert("creature_list_entry", list_id=lid, form_key=f, level=1, count=1)  # 0035
+                    n += 1
+    return n
+
+
 def form_keys(inv: dict) -> dict[tuple[str, str], dict]:
     out = {}
     for plugin, v in inv.items():
@@ -89,17 +132,7 @@ def seed(w, inv: dict) -> dict[str, int]:
     for b, cid, a, carrier, ch, why in ro.EFFECTS:
         w.insert("danger_band_effect", band=b, creature_id=cid, affliction_id=a, carrier=carrier, chance=ch,
                  spell_form=records.spell_form(a), why=why)
-    for c in ro.CLASSES:
-        for b in ro.BANDS:
-            for m in ro.MEDIUM:
-                ents = [f for cid, (med, _, cls, _) in ro.R.items() if med == m and c in cls and b in bands.get(cid, ())
-                        and not crows[cid]["hand_authored_only"] for f in forms_of[cid]]
-                if not ents:
-                    continue
-                lid = f"lvln.{c}.{b}.{m}"
-                w.insert("creature_list", id=lid, region_class=c, band=b, medium=m, level=lv[b], chance_none=0)
-                for f in ents:
-                    w.insert("creature_list_entry", list_id=lid, form_key=f, level=1, count=1)  # 0035
+    derive_lists(w, lv)
     for b in ro.BANDS:
         w.insert("encounter_zone", id=f"eczn.wild.{b}", band=b, kind="wild", min_level=lv[b], max_level=lv[b],
                  never_resets=False, respawn="onRest", why="the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)")

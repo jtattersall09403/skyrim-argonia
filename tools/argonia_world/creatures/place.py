@@ -32,6 +32,10 @@ from tools.argonia_world import skyrim_units as su
 
 SEED = 0xC4EA
 WATER_WEIGHT = 0.1
+# A shore vertex weighs as Skyrim.esm's shore cells against its open ones: 105.16 against 25.90 refs per 100 cells
+# (vanilla/creatures.py). Creatures gather at the water's edge; before, the thin shore band of a cell drew few of
+# its spawns, and the land lists met at the walked shores (owner play test 3, finding 13).
+SHORE_WEIGHT = 105.16 / 25.90
 WATER_CELL = 0.09  # Skyrim.esm: a cell more than half under water holds 8.7 creature refs per 100, a shore cell 105
 # The classes whose water is the creatures' home (74-ecology: the delta's mudflats and channels, the river corridor's
 # deep reaches): Skyrim's open-water cut (WATER_CELL, WATER_WEIGHT: its lakes and sea hold few creatures) does not
@@ -164,7 +168,8 @@ def plan_cell(cx: int, cy: int, h: np.ndarray, level: float, cls: str, band: str
         if k in rules.lists:
             masks[m] = rules.list_medium(k).mask(depth, slope, m) & free
     wet = cls in WATER_CLASSES
-    weights = {m: v.sum() * (WATER_WEIGHT if m == "water" and not wet else 1.0) for m, v in masks.items()}
+    weights = {m: v.sum() * (WATER_WEIGHT if m == "water" and not wet else SHORE_WEIGHT if m == "shore" else 1.0)
+               for m, v in masks.items()}
     tot = sum(weights.values())
 
     def put(kind, base, m, mask, extra=None, near=None):
