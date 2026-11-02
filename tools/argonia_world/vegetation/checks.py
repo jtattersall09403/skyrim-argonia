@@ -30,6 +30,7 @@ from tools.argonia_world.vegetation import build, forms, place
 from tools.argonia_world.vegetation import lists as lists_mod
 
 GROUND_TOL_M = 0.5
+SEAT_HOVER_U, SEAT_SINK_U = 10.0, 40.0  # a tree's trunk base over / under the ground (lane 1.15-r4-trees)
 SLOPE_TOL_DEG = 0.01
 FIRST = 5  # failures listed per check
 TREE_BANDS, ECO_BAND = lists_mod.TREE_BANDS, lists_mod.ECO_BAND  # the band table lives in lists (the placer closes on it)
@@ -80,6 +81,10 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
     tree_wet = [0, 0]  # trees below the waterline, trees
     tree_far: list[float] = []  # dry trees' distance (units) to the nearest wet vertex of their cell
     n = 0
+    seats = {r["form_key"]: r["seat_units"] for r in w.query(
+        "SELECT v.form_key, v.seat_units FROM vegetation_form v JOIN object_form f USING (form_key) "
+        "WHERE f.role_id IN (" + ",".join(f"'{x}'" for x in lists_mod.SEATED_ROLES) + ")")}
+    seat_stat = [0.0, 0.0, 0]  # the worst hover, the worst sink (units), trees checked
     placed: set[str] = set()  # base forms placed anywhere
     by_cy: dict[int, list[dict]] = defaultdict(list)
     for c in build.read_cells(out):
@@ -126,6 +131,23 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
             off = np.maximum(np.abs(zg - za), np.abs(zg - zb))
             for k in np.nonzero(off > GROUND_TOL_M)[0][:FIRST]:
                 fails["ground"].append(f"{fids[k]:06X} ({cx},{cy}): {off[k]:.2f} m off the LAND")
+            # a tree's trunk base (its mod's own seat above the pivot, x scale) against the ground under it, both
+            # triangulations: no base more than SEAT_HOVER_U above, none more than SEAT_SINK_U under (finding 4)
+            seat_u = np.asarray([seats.get(b, np.nan) for b in bases]) * refs[:, 6]
+            base_u = refs[:, 2] + seat_u
+            for k in np.nonzero(np.isin(bases, list(seats)) | np.asarray(
+                    [role.get(b) in lists_mod.SEATED_ROLES for b in bases], dtype=bool))[0]:
+                if not np.isfinite(seat_u[k]):
+                    fails["seat"].append(f"{fids[k]:06X} ({cx},{cy}) {bases[k]}: a tree with no measured seat")
+                    continue
+                hover = base_u[k] - min(za[k], zb[k]) * su.UNITS_PER_METRE
+                sunk = max(za[k], zb[k]) * su.UNITS_PER_METRE - base_u[k]
+                seat_stat[0] = max(seat_stat[0], hover)
+                seat_stat[1] = max(seat_stat[1], sunk)
+                seat_stat[2] += 1
+                if hover > SEAT_HOVER_U or sunk > SEAT_SINK_U:
+                    fails["seat"].append(f"{fids[k]:06X} ({cx},{cy}) {bases[k]}: trunk base {hover:+.0f} u over / "
+                                         f"{sunk:+.0f} u under the ground")
             sl = place.slope_deg(gx, gy)
             # this cell's water, road paint and table, over its vertices [i from the south, j]
             a, _ = src.cell_cols(cx)
@@ -188,7 +210,9 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
     fails["climbable"], share = climbable(w, placed)
     res["climbable_share"] = share
     res["tree_counts"], fails["trees"] = tree_bands(trees, eco, tree_wet, tree_far)
-    for k in ("trees", "lists", "climbable", "ground", "slope", "water", "road", "places", "budget", "ids"):
+    res["tree_seat"] = {"trees": seat_stat[2], "worst_hover_u": round(seat_stat[0], 1),
+                        "worst_sink_u": round(seat_stat[1], 1)}
+    for k in ("seat", "trees", "lists", "climbable", "ground", "slope", "water", "road", "places", "budget", "ids"):
         f = fails.get(k, [])
         res[k] = {"failures": len(f), **({"fail": f[:FIRST]} if f else {})}
     log(f"vegetation checks: {n} refs, sha256 {res['sha256'][:12]}")

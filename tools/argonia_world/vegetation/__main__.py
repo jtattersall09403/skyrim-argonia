@@ -20,6 +20,10 @@
         only climbable bodies (forms.climbable)
     python3 -m tools.argonia_world.vegetation booth --out <shards>
         write tests/journeys/rock-booth.yaml and tests/scenes/rock-booth.txt from six placed rocks (booth.py)
+    python3 -m tools.argonia_world.vegetation tree-booth --out <shards>
+        write tests/journeys/tree-seat.yaml: six placed trees' bases and one still per region class (tree_booth.py)
+    python3 -m tools.argonia_world.vegetation seat
+        measure each landscape form's seat in its own mod's worldspace into data/tree-seat.json (seat.py)
     python3 -m tools.argonia_world.vegetation check --out out/vegetation --land <dir> [--water ...]
     python3 -m tools.argonia_world.vegetation readback --out out/vegetation --esm <ArgoniaWorld.esm> --gen <ArgoniaGen>
         the spliced plugin read back through Mutagen: ref counts per cell equal the shards'; prints its sha256
@@ -109,6 +113,8 @@ def main(argv=None) -> int:
     rb.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
     rb.add_argument("--esm", required=True)
     rb.add_argument("--gen", required=True)
+    tb = sub.add_parser("tree-booth")  # tree_booth.py: the tree-seat journey from the shards
+    tb.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
     bo = sub.add_parser("booth")
     bo.add_argument("--out", default=str(ROOT / "out" / "vegetation"))
     ro = sub.add_parser("rocks")
@@ -118,6 +124,7 @@ def main(argv=None) -> int:
     fo = sub.add_parser("forms")
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
+    sub.add_parser("seat")  # seat.py: each tree's own mod's seat (machine-local, once per stack change)
     tx = sub.add_parser("textures")  # mesh_textures.py: build the manifest (machine-local) or check it (L1)
     tx.add_argument("what", choices=("build", "check", "overrides"))  # overrides: the built plugin's MODS-dropped bases read back
     tx.add_argument("--esm")
@@ -128,6 +135,13 @@ def main(argv=None) -> int:
     b.add_argument("--cells")
     b.add_argument("--budget", action="store_true")
     a = p.parse_args(argv)
+    if a.cmd == "tree-booth":
+        from tools.argonia_world import db
+        from tools.argonia_world.vegetation import tree_booth
+        six, cls = tree_booth.write(Path(a.out), db.open())
+        for d in six + cls:
+            print(f"tree-booth: {d['edid']} {d['fid']:06X} cell {d['cell']} {d['eco']} seat {d['seat']:.0f}")
+        return 0
     if a.cmd == "booth":
         from tools.argonia_world import db
         from tools.argonia_world.vegetation import booth
@@ -153,6 +167,9 @@ def main(argv=None) -> int:
         return _forms(a)
     if a.cmd == "forms":
         return _forms(a)
+    if a.cmd == "seat":
+        from tools.argonia_world.vegetation import seat
+        return seat.main([])
     if a.cmd == "textures":
         from tools.argonia_world.vegetation import mesh_textures
         if a.what == "check":

@@ -55,6 +55,9 @@ STEP_M = su.VERTEX_SPACING_UNITS / su.UNITS_PER_METRE  # 1.828 m between LAND ve
 CLUMP_MIN_RADIUS_M = 1.0  # a smaller clump radius places single stems
 MIN_SPACING_M = 1.5  # no two stems of a cell closer (trunk on trunk)
 TWIST_MAX_M = 0.45  # the two triangulations' half-difference refused above this (z within 0.5 m of either)
+# a tree's trunk base against the ground under it (owner play test 3, finding 4; the check's bounds, 10 and 40 units)
+SEAT_HOVER_M = 10 / su.UNITS_PER_METRE
+SEAT_SINK_M = 40 / su.UNITS_PER_METRE
 ROAD_MARGIN_M = 1.5  # beyond the road's half width
 PLACE_MARGIN_M = 20.0  # beyond a built place's refs' bounds
 TABLE_STEP = 8  # samples per tile of the water-table map (14.6 m)
@@ -91,8 +94,8 @@ class Rule:
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
         """A sunk form's pivot offset (metres at scale 1): its OBND bottom (z0, units, below the pivot when
-        negative) set sink_frac of its height under the ground. 0 for a form that is not sunk (flora's roots are
-        modelled below the pivot already)."""
+        negative) set sink_frac of its height under the ground. 0 for a form that is not sunk (a tree adds its
+        mod's own measured seat, vegetation_form.seat_units: build.load_rules)."""
         if not sink_frac or bound_z1 is None or bound_z0 is None:
             return 0.0
         return (bound_z0 + sink_frac * (bound_z1 - bound_z0)) / su.UNITS_PER_METRE
@@ -269,6 +272,9 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
         za, zb, gx, gy, i, j = ground_at(ci.H, u, v)
         z = (za + zb) / 2
         ok = np.abs(za - zb) / 2 <= TWIST_MAX_M
+        if rule.tree:  # a trunk base within SEAT_HOVER_M over and SEAT_SINK_M under either triangulation (finding 4)
+            ok &= np.abs(za - zb) <= SEAT_HOVER_M + SEAT_SINK_M
+            base = np.minimum(np.maximum(za, zb) - SEAT_SINK_M, np.minimum(za, zb) + SEAT_HOVER_M)
         sl = slope_deg(gx, gy)
         ok &= (sl >= rule.min_slope) & (sl <= rule.max_slope)
         if rule.min_height is not None:
@@ -303,7 +309,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
             yaw = float(c["yaw"][k])
             conformed = rule.conform and float(c["up"][k]) >= rule.upright
             rx, ry = conform_rot(float(gx[k]), float(gy[k]), yaw) if conformed else (0.0, 0.0)
-            zk = float(z[k]) - float(c["scale"][k]) * rule.sink_m  # a rock's bottom under the ground (1.15 §e.2)
+            zk = (float(base[k]) if rule.tree else float(z[k])) - float(c["scale"][k]) * rule.sink_m  # sunk (§e.2,
+            # a rock's bottom under the ground; a tree by its mod's own seat, lane 1.15-r4-trees)
             for key, val in (("form", fi), ("u", pu), ("v", pv), ("z", zk), ("rx", rx), ("ry", ry),
                              ("rz", yaw), ("scale", float(c["scale"][k])), ("thin", float(c["thin"][k]))):
                 cols[key].append(val)

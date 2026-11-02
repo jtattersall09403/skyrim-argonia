@@ -88,6 +88,7 @@ def countable(ground, level) -> bool:
 
 
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery")
+SEATED_ROLES = TREE_ROLES  # seated by their mod's own measured depth (seat.py)
 # Skyrim.esm trees per cell by the cell's dominant ground (docs/research/2026-11-01/skyrim-does-it-this-way.md
 # section 6): (mean, p90 or None); the rest of the audit's table is not needed for our classes
 TREE_BANDS = {"forest": (31.0, 53.0), "marsh": (18.0, 36.0), "field": (10.0, None)}
@@ -186,8 +187,17 @@ def upright_share(sink: float | None) -> float:
 UPLAND_DENY = ("cypress", "willow", "hangingmoss", "birch", "poplar", "juniper", "bristlecone", "redwood", "salix")
 
 
+# Not flora (lane 1.15-r4-trees): the role words took KotM's cypress stockades, walkways, platforms and houses for
+# "cypress" trees and a giant snail shell for an "emergent" tree (61 rows in the marsh lists, 2026-11-02)
+NOT_FLORA = ("stockade", "house", "walkway", "scaffold", "platform", "plank", "beam", "palisade", "bridge", "tower",
+             "creatures\\")
+
+
 def admits(eco: str, f) -> bool:
     t = tags(f)
+    s0 = f"{f['edid']} {f['model']}".lower()
+    if any(n in s0 for n in NOT_FLORA):
+        return False
     if eco in UPLAND and f["role_id"] in TREE_ROLES:
         s = f"{f['edid']} {f['model']}".lower()
         if any(n in s for n in UPLAND_DENY):
@@ -210,8 +220,10 @@ def usable(w) -> dict[str, list]:
     from tools.argonia_world.vegetation import mesh_textures
     out = defaultdict(list)
     man = mesh_textures.load()
-    bare = mesh_textures.untextured(man)  # a diffuse no row lays: Skyrim's missing texture
+    bare = mesh_textures.untextured(man) | mesh_textures.incomplete(man)  # any slot no row lays (finding 5)
     bare_forms = mesh_textures.untextured_forms(man)  # a MODS diffuse no row lays, not overridden (lane 1.15-r3-mods)
+    from tools.argonia_world.vegetation import seat
+    seats = seat.load()
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
                    "AND bound_z1 > bound_z0")
     for r in sorted(rows, key=lambda r: (r["mod"] != "bmv", -(r["placed_by_mod"] or 0), r["form_key"])):
@@ -219,6 +231,8 @@ def usable(w) -> dict[str, list]:
             continue  # excluded since the inventory was read (forms.EXCLUDE: a building piece is not flora)
         if mesh_textures.mesh_path(r["model"]) in bare or r["form_key"] in bare_forms:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
+        if r["role_id"] in SEATED_ROLES and not seat.standing(r["form_key"], r["model"], r["bound_z0"], seats):
+            continue  # no seat its mod measures, or a piece that hangs above the ground at it (finding 4)
         if r["role_id"] == "rock" and r["mesh_source"] in VANILLA_SHAPE:
             continue  # a vanilla rock's shape under another texture is still a vanilla rock (1.15 §e.2)
         if r["collision_layer"] is not None or r["role_id"] == "rock":
@@ -228,7 +242,79 @@ def usable(w) -> dict[str, list]:
     return out
 
 
+# Between-class variety (owner play test 3, finding 32: "different regions felt pretty similar"; lane 1.15-r4-trees).
+# Every class took one pool in one order (BM&V first, most placed), so its first CORE forms were every region's and the
+# classes' lists overlapped 86-100 %. Now each class ranks a role's pool by its own ecology first (FAMILY: the tree
+# families the audit and dossiers give that ground), then by a class-seeded order, so two classes share a form only
+# by chance. Packets of one class rotate within the class's own window (WINDOW x the pick), never the whole pool.
+AUDIT_ROWS = AUDIT + " rows"
+FAMILY = (  # family -> (name words, the eco classes whose ground it is, the grounding)
+    ("mangrove", ("mangrove",), COAST, AUDIT_ROWS + " 3, 4, 14 (mangrove dominant); lore regions/murkmire.md:23"),
+    ("palm", ("palm",), COAST + ("western-frontier",), AUDIT_ROWS + " 4 (strand palms), 10 (raised hammock fan palm)"),
+    ("cypress", ("cypress", "swamptree"), ("flooded-forest", "interior-swamp", "deep-river-corridor",
+                                          "deep-sink-basin"), AUDIT_ROWS + " 5, 6, 7, 12 (cypress dominant); " + FAUNA),
+    ("willow", ("willow", "bamboo", "weeping", "moss"), ("flooded-forest", "deep-sink-basin"),
+     AUDIT_ROWS + " 9 (seasonal floodplain willow); " + FAUNA + " (bamboo)"),
+    ("jungle", ("jungle", "kapok", "mega", "rainforest", "ceiba", "banyan", "gkbjungle"),
+     ("rootland", "interior-swamp", "deep-river-corridor"), AUDIT_ROWS + " 5 (river wall of tall trees), 13 (tropical "
+     "jungle)"),
+    ("hist", ("hist", "gland", "root"), ("rootland", "deep-sink-basin"), "lore regions/middle-argonia.md (the Hist "
+     "groves of the deep marsh); " + AUDIT_ROWS + " 6"),
+    ("dead", ("dead", "wigs", "skydead", "snag"), ("deep-sink-basin", "interior-swamp"), AUDIT_ROWS + " 12 (dead "
+     "trees in standing water)"),
+    ("broadleaf", ("erut", "wolene", "birch", "oak", "shrubtree", "alder", "aspen", "juniper", "cedar"), UPLAND,
+     AUDIT_ROWS + " 1, 2 (temperate north: juniper, cedar, alder); lore regions/blackwood-and-gloommire.md:13-14"),
+)
+WINDOW = 1.5
+DRAFT_SHARE = 1.5  # a class's draft: this many times its even share of the pool (some overlap, never all)
+
+
+def family(f) -> tuple[str, tuple, str] | None:
+    s = f"{f['edid']} {f['model']}".lower()
+    return next(((x[0], x[2], x[3]) for x in FAMILY if any(n in s for n in x[1])), None)
+
+
+def ranked(pool: list, eco: str) -> list:
+    """The pool in the class's own order: its ecology's families first, then a class-seeded order."""
+    def key(f):
+        fam = family(f)
+        return (0 if fam and eco in fam[1] else 1, zlib.crc32(f"{eco}|{f['form_key']}".encode()))
+    return sorted(pool, key=key)
+
+
+def draft(pools: dict[str, list], role: str) -> dict[str, list]:
+    """eco class -> its own forms of the role, in its order: the classes take turns (sorted) choosing their best
+    ranked form held by the fewest classes, up to a share of the pool (DRAFT_SHARE x pool / classes, at least CORE, at most the
+    pick x WINDOW). So a small pool (mushrooms,
+    gallery trees) is split between the classes instead of every class taking all of it."""
+    pref = {e: ranked(p, e) for e, p in pools.items() if p}
+    if not pref:
+        return {}
+    size = len({f["form_key"] for p in pref.values() for f in p})
+    k = len(pref)
+    want = {e: min(len(p), int(PICK.get(role, 4) * WINDOW), max(CORE, -(-int(DRAFT_SHARE * size) // k)))
+            for e, p in pref.items()}
+    out: dict[str, list] = {e: [] for e in pref}
+    held: dict[str, set] = defaultdict(set)  # form -> classes holding it
+    have: dict[str, set] = {e: set() for e in pref}
+    while any(len(out[e]) < want[e] for e in pref):
+        for e in sorted(pref):
+            if len(out[e]) >= want[e]:
+                continue
+
+            def cost(i_f):  # the closest class this choice brings nearer, the holders, the class's preference
+                i, f = i_f
+                hs = held[f["form_key"]]
+                return (max((len(have[e] & have[o]) for o in hs), default=-1), len(hs), i)
+            f = min(((i, f) for i, f in enumerate(pref[e]) if f["form_key"] not in have[e]), key=cost)[1]
+            out[e].append(f)
+            have[e].add(f["form_key"])
+            held[f["form_key"]].add(e)
+    return out
+
+
 def pick(pool: list, n: int, packet: str) -> list:
+    """n forms of a class's drafted pool for one packet: the first CORE always, the rest rotated by the packet."""
     if len(pool) <= n:
         return list(pool)
     if n <= CORE:  # too few to hold a core: a packet's own rotation
@@ -271,7 +357,12 @@ def build(w) -> dict:
     for t in ("land_region_object", "vegetation_form"):
         w.con.execute(f'DELETE FROM "{t}"')
         w.dirty.add(t)
+    from tools.argonia_world.vegetation import seat
+    seats = seat.load()
     pool = usable(w)
+    ecos = sorted({r["eco_class_id"] for r in w.query("SELECT eco_class_id FROM land_region WHERE border = 0")})
+    drafts = {role: draft({e: [f for f in fs if admits(e, f) and "cliff" not in tags(f)] for e in ecos}, role)
+              for role, fs in pool.items()}
     used: dict[str, dict] = {}
     report: dict[str, dict] = {}
     for reg in w.query("SELECT id, region_id, eco_class_id FROM land_region WHERE border = 0 ORDER BY id"):
@@ -298,10 +389,10 @@ def build(w) -> dict:
         counts: dict[str, int] = defaultdict(int)
         for role in sorted(mix):
             m = mix[role]
-            ok = [f for f in pool.get(role, ()) if admits(eco, f)]
-            forms = pick([f for f in ok if "cliff" not in tags(f)], PICK.get(role, 4), packet)
+            forms = pick(drafts.get(role, {}).get(eco, []), PICK.get(role, 4), packet)
             wts = [2.0 if i < CORE else 1.0 for i in range(len(forms))]
-            cliffs = pick([f for f in ok if "cliff" in tags(f)], CLIFFS, packet)
+            cliffs = pick(ranked([f for f in pool.get(role, ()) if admits(eco, f) and "cliff" in tags(f)], eco),
+                          CLIFFS, packet)
             forms, wts = forms + cliffs, wts + [0.0] * len(cliffs)
             if not forms:
                 continue
@@ -329,7 +420,9 @@ def build(w) -> dict:
                     q, mn = CLIFF_HA, 28  # rock-placement-rules.md rule 3: cliff pieces need >= 28 deg
                 if q < 0.01:
                     continue
+                fam = family(f)
                 why = (f"{role} in {eco}: {ground}"
+                       + (f" [{fam[0]}: {fam[2]}]" if fam and eco in fam[1] else "")
                        + (" [giant mushroom: deep marsh only]" if "giant" in t else "")
                        + (" [cliff shell: uplands, steep ground]" if "cliff" in t else ""))
                 w.insert("land_region_object", land_region_id=rid, form_key=f["form_key"],
@@ -345,9 +438,11 @@ def build(w) -> dict:
         if "cliff" in tags(f):
             lo, hi = 0.5, 0.9
         sf = sink_frac(f)
-        w.insert("vegetation_form", form_key=fk, scale_min=lo, scale_max=hi, sink_frac=sf,
+        st = seat.seat_of(fk, f["model"], seats) if f["role_id"] in SEATED_ROLES else 0.0
+        w.insert("vegetation_form", form_key=fk, scale_min=lo, scale_max=hi, sink_frac=sf, seat_units=st,
                  why=f"1.15 veg: the {f['role_id']} role's range (ours; the L4 stills judge it)"
-                     + (f"; sunk {sf:.2f} of its OBND height ({ROCKS})" if sf else ""))
+                     + (f"; sunk {sf:.2f} of its OBND height ({ROCKS})" if sf else "")
+                     + (f"; pivot {st:.0f} units under the ground, its mod's own median seat (seat.py)" if st else ""))
     return report
 
 

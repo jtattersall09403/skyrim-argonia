@@ -6537,6 +6537,8 @@ CREATE TABLE "vegetation_form" (
   "scale_min" REAL NOT NULL CHECK ("scale_min" > 0),
   "scale_max" REAL NOT NULL,
   "sink_frac" REAL NOT NULL CHECK ("sink_frac" >= 0 AND "sink_frac" < 1),
+  -- a tree's pivot depth under the ground (units at scale 1): its mod's own median seat (vegetation/seat.py)
+  "seat_units" REAL NOT NULL DEFAULT 0,
   "why" TEXT NOT NULL,
   CHECK ("scale_min" <= "scale_max")
 );

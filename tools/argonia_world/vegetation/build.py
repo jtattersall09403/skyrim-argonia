@@ -37,8 +37,10 @@ def shard_name(cy: int) -> str:
 # --- the rules -------------------------------------------------------------------------------------------------
 def load_rules(w) -> dict[str, list[Rule]]:
     scale = {r["form_key"]: (r["scale_min"], r["scale_max"]) for r in w.query("SELECT * FROM vegetation_form")}
-    sink = {r["form_key"]: Rule.sink_of(r["sink_frac"], r["bound_z0"], r["bound_z1"]) for r in w.query(
-        "SELECT v.form_key, v.sink_frac, f.bound_z0, f.bound_z1 FROM vegetation_form v JOIN object_form f USING (form_key)")}
+    sink = {r["form_key"]: Rule.sink_of(r["sink_frac"], r["bound_z0"], r["bound_z1"])
+            + r["seat_units"] / su.UNITS_PER_METRE  # a tree's own mod's seat (lane 1.15-r4-trees, finding 4)
+            for r in w.query("SELECT v.form_key, v.sink_frac, v.seat_units, f.bound_z0, f.bound_z1 "
+                             "FROM vegetation_form v JOIN object_form f USING (form_key)")}
     upright = {r["form_key"]: lists.upright_share(r["sink_frac"]) for r in w.query("SELECT * FROM vegetation_form")}
     tree = {r["form_key"]: r["role_id"] in lists.BAND_TREE_ROLES for r in w.query("SELECT form_key, role_id FROM object_form")}
     out: dict[str, list[Rule]] = defaultdict(list)

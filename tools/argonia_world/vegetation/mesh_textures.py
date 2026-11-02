@@ -240,6 +240,15 @@ def load(path: Path = MANIFEST) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def incomplete(manifest: dict) -> set[str]:
+    """Mesh paths with any slot no row supplies (a normal or glow map included). Owner play test 3, finding 5 ("a neon
+    blue green", "washed out and pale"): a missing normal map draws with the engine's fallback, its specular alpha
+    full, so leaves glare blue-green and bark goes pale; a missing glow map on a glow-flagged shader lights the shape
+    (BM&V gkbjungletreenew1). The region lists place none of them (lists.usable); WAIVED stays for other placers."""
+    src = manifest["sources"]
+    return {mp for mp, m in manifest["meshes"].items() if any(src.get(t) is None for _, t in m["slots"])}
+
+
 def untextured(manifest: dict) -> set[str]:
     """Mesh paths with a diffuse no row supplies: drawn as Skyrim's missing texture, so never placed (lists.usable).
     A mesh the stack does not lay (laid null) has no slots read, so it waits until a build has read it (a manifest
@@ -272,8 +281,9 @@ def alt_problems(keys: list[str], manifest: dict, what: str = "") -> list[str]:
     return out
 
 
-def problems(placed: list[dict], manifest: dict, deps: dict) -> list[str]:
-    """placed: object_form rows (model, mod, form_key) of every form the plugin places."""
+def problems(placed: list[dict], manifest: dict, deps: dict, waive: bool = True) -> list[str]:
+    """placed: object_form rows (model, mod, form_key) of every form the plugin places. waive=False (the region
+    lists' flora, lane 1.15-r4-trees): no slot may miss, WAIVED or not."""
     keep = {d["id"]: d["keep"] for d in deps["mods"] if d.get("keep")}
     src, out = manifest["sources"], []
 
@@ -290,7 +300,7 @@ def problems(placed: list[dict], manifest: dict, deps: dict) -> list[str]:
         if f["mod"] in keep and not any(fnmatch.fnmatch(mp, g) for g in keep[f["mod"]]):
             out.append(f"{f['form_key']} {mp}: not under {f['mod']}'s keep globs")
         for s, t in m["slots"]:
-            if src.get(t) is None and not kept(t) and (s == DIFFUSE or t not in WAIVED):
+            if src.get(t) is None and not kept(t) and (s == DIFFUSE or not waive or t not in WAIVED):
                 out.append(f"{f['form_key']} {mp}: slot {s} {t} has no source")
         out += alt_problems([f["form_key"]], manifest, f" {mp}")
     return out
@@ -313,7 +323,7 @@ def check() -> int:
     from tools.argonia_world import db
     w = db.open()
     man = load()
-    bad = problems(placed_forms(w), man, json.loads(DEPS.read_text(encoding="utf-8")))
+    bad = problems(placed_forms(w), man, json.loads(DEPS.read_text(encoding="utf-8")), waive=False)
     for what, keys in other_placed(w).items():
         bad += alt_problems(keys, man, f" ({what})")
     for b in bad:
