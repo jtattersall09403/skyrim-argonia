@@ -2369,6 +2369,8 @@
    "size_kb": 10,
    "why": "1.15: CS 1.9.1 ships Exponential Height Fog as its own release asset (Shaders/Features/ExponentialHeightFog.ini plus its shaders); CS switches a feature off without that ini, so without this the height-fog override on the community-shaders row does nothing and the dawn mist is flat distance fog",
    "chunk": "1.15",
+   "pick": ["Features", "ExponentialHeightFog"],
+   "pick_to": {"Features": "Shaders/Features", "ExponentialHeightFog": "Shaders/ExponentialHeightFog"},
    "required": true,
    "profile": "play",
    "sha256": "306127c8c757746cc2db02ddd5cfb37ab06ed07cb3d411bd577ff1b425720016",
