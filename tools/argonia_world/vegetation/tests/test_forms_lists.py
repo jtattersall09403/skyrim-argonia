@@ -112,3 +112,25 @@ def test_lists_drop_forms_with_no_climbable_body():
     for r in w.query("SELECT o.form_key, f.role_id, f.collision_layer l, f.collision_mass m FROM land_region_object o "
                      "JOIN object_form f USING (form_key)"):
         assert forms.climbable(r["role_id"], r["l"], r["m"]) or (r["l"] is None and r["role_id"] != "rock"), r["form_key"]
+
+
+def test_building_kit_is_never_flora():
+    """Owner play test 3 finding 3: King of the Murkmire's stockade kit had the role 'canopy' (the word cypress)."""
+    for edid, model in (("CypressStockadeWalkway", "argonia\\stockades\\stockadewallwalkway01.nif"),
+                        ("CypressStockadeStairs01", "argonia\\stockades\\stockadestairs01.nif"),
+                        ("CypressStockadeScaffoldSupport01", "argonia\\stockades\\stockadescaffoldbasesupport01.nif"),
+                        ("MurkmireWalkwayLong01Cypress", "argonia\\Blackwood\\walkway01.nif"),
+                        ("CypressStockadeBase01", "argonia\\Blackwood\\house05platform.nif"),
+                        ("CypressStockadePlanks01", "argonia\\stockades\\minewoodplanks01.nif")):
+        assert forms.role_of(edid, model) is None, edid
+    assert forms.role_of("ArgoniaTreeSwampCypress03", "argonia\\trees\\cypress1.nif") == "canopy"
+
+
+def test_world_lists_hold_no_building_piece():
+    """L1 over the world's region lists: every listed form is flora by forms.role_of (count 0)."""
+    from tools.argonia_world import db
+    w = db.open()
+    bad = [r["form_key"] for r in w.query(
+        "SELECT DISTINCT l.form_key, o.edid, o.model FROM land_region_object l JOIN object_form o USING (form_key)")
+        if forms.role_of(r["edid"], r["model"]) is None]
+    assert not bad, f"{len(bad)} building forms in land_region_object: {bad[:5]}"

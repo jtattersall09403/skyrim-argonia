@@ -29,7 +29,11 @@ TYPES = ("TREE", "FLOR", "STAT")
 EXCLUDE = ("architecture", "clutter", "weapon", "ship", "dungeon", "xanmeer", "mihail", "elements of skyrim",
            "furniture", "effects", "interior", "dwemer", "falmer", "imperial", "nord", "dragon", "snow", "ice",
            "frost", "pine", "aspen", "tundra", "reach", "winter", "skyrim\\", "farmhouse", "wheat", "lantern",
-           "candle", "totem", "fence", "tent", "hut", "wallart", "wallhanging", "test", "marker")
+           "candle", "totem", "fence", "tent", "hut", "wallart", "wallhanging", "test", "marker",
+           # King of the Murkmire's cypress building kit: its role words ("cypress") read as trees, so its
+           # palisades, walkways, scaffold towers, stairs and planks were scattered as canopy (owner play test 3,
+           # finding 3; lane 1.15-r4-claywater). A building piece stands only where a place or route authors it.
+           "stockade", "walkway", "scaffold", "argonia\\blackwood\\")
 # role -> words (lower-case, in the editor ID or mesh path); the order is the precedence
 ROLE_WORDS = (
     ("mushroom", ("mushroom", "shroom", "tr_flora_ac", "cupling", "fungus", "bracket", "parasol")),

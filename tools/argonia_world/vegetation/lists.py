@@ -182,9 +182,8 @@ def upright_share(sink: float | None) -> float:
 # hanging fronds, weeping birch-like columns, read as Nordic; decision 0006): the hills are "more temperate" and
 # "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14; AUDIT row 1), so their trees are broadleaf: no
 # cypress (tiered, drooping boughs), willow and hanging moss (weeping), birch, poplar, juniper, bristlecone and
-# redwood (boreal or columnar), and no stockade, house or walkway piece that the role words took for a "cypress" tree.
-UPLAND_DENY = ("cypress", "willow", "hangingmoss", "birch", "poplar", "juniper", "bristlecone", "redwood",
-               "stockade", "house", "walkway", "scaffold", "salix")
+# redwood (boreal or columnar). (Building pieces are no flora anywhere: forms.EXCLUDE.)
+UPLAND_DENY = ("cypress", "willow", "hangingmoss", "birch", "poplar", "juniper", "bristlecone", "redwood", "salix")
 
 
 def admits(eco: str, f) -> bool:
@@ -216,6 +215,8 @@ def usable(w) -> dict[str, list]:
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
                    "AND bound_z1 > bound_z0")
     for r in sorted(rows, key=lambda r: (r["mod"] != "bmv", -(r["placed_by_mod"] or 0), r["form_key"])):
+        if forms.role_of(r["edid"], r["model"]) is None:
+            continue  # excluded since the inventory was read (forms.EXCLUDE: a building piece is not flora)
         if mesh_textures.mesh_path(r["model"]) in bare or r["form_key"] in bare_forms:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
         if r["role_id"] == "rock" and r["mesh_source"] in VANILLA_SHAPE:
