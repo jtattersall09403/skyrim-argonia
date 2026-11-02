@@ -749,8 +749,55 @@ def cmd_plan(a):
     STACK, MO2 = stack_dirs(a)  # noqa: N806
     todo = [m for m in rows if not staged_ok(m, stage_key(m, pick), STACK / "staged", MO2 / "mods", MO2 / "tools")]
     need = sum(archive_path(m).stat().st_size * 3 if archive_path(m).exists() else 0 for m in todo)
-    print(json.dumps({"restage": [m["id"] for m in todo], "need_bytes": need}))
+    out = {"restage": [m["id"] for m in todo], "need_bytes": need}
+    if getattr(a, "ui", None):
+        v = ui_variant(a.ui, MO2)
+        out["ui"] = {"variant": a.ui, "drop": v["drop"], "set_aside": sum(1 for x in v["paths"].values() if x is None),
+                     "relaid": sum(1 for x in v["paths"].values() if x), "plugins": v["plugins"]}
+    print(json.dumps(out))
     return todo, need
+
+
+# The two UI cards (owner, 2026-11-02 22:06): "Argonia" lays the profile as staged (Wind UI + Dear Diary + our
+# screens); "Argonia custom UI" sets these rows aside at launch so our own screens cover every menu they did. Nothing
+# is dropped from the profile: the owner rules after comparing.
+UI_VARIANTS = {"windui": (), "custom": ("windui", "dear-diary", "wood-and-paper")}
+# Rows made from a dropped row (our retheme of Dear Diary, tools/ui_theme/retheme.py): their copy of a dropped path
+# goes too, so the custom card falls back to SkyUI's or the game's own file, never a reskinned Dear Diary menu.
+UI_DERIVED = {"argonia-theme": {"dear-diary", "wood-and-paper"}}
+
+
+def ui_variant(ui: str, mo2: pathlib.Path = MO2) -> dict:
+    """The custom card's lay over the staged profile: each Data path a dropped row places, and the highest remaining mod
+    (MO2 order) that places it too (re-laid in its stead) or None (the path leaves Data); the dropped rows' plugins."""
+    drop = set(UI_VARIANTS[ui])
+    order = [ln.strip()[1:] for ln in (mo2 / "profiles" / PROFILE / "modlist.txt").read_text().splitlines()
+             if ln.startswith("+")]                                   # highest first
+    files: dict[str, dict[str, str]] = {}                             # lower path -> {mod: real relative path}
+    for mod in order:
+        root = mo2 / "mods" / mod
+        if root.is_dir():
+            for f in root.rglob("*"):
+                if f.is_file():
+                    rel = str(f.relative_to(root)).replace("/", "\\")
+                    files.setdefault(rel.lower(), {})[mod] = rel
+    paths, plugins = {}, []
+    for low, by in files.items():
+        if not drop & by.keys():
+            continue
+        keep = next((m for m in order if m in by and m not in drop
+                     and not (UI_DERIVED.get(m, set()) & drop & by.keys())), None)
+        paths[low] = [keep, by[keep]] if keep else None
+        if "\\" not in low and low.endswith(PLUGIN_EXT):
+            plugins.append(by[next(m for m in order if m in by)])
+    return {"ui": ui, "drop": sorted(drop), "paths": paths, "plugins": sorted(set(plugins))}
+
+
+def write_ui_variants(mo2: pathlib.Path = MO2) -> dict:
+    """ui-custom.json beside the profile (pushed with it): what stack.ps1 play-modded -Ui custom sets aside."""
+    v = ui_variant("custom", mo2)
+    (mo2 / "profiles" / PROFILE / "ui-custom.json").write_text(json.dumps(v, indent=0))
+    return v
 
 
 def cmd_stage(a):
@@ -1002,6 +1049,7 @@ def cmd_push(a):
         run("put", str(out / f"{d}.tar"), f"C:/argonia/MO2/push/{d}.tar")
         run("ps", rf"Remove-Item -Recurse -Force C:\argonia\MO2\{d} -EA SilentlyContinue; New-Item -ItemType Directory"
                   rf" C:\argonia\MO2\{d} | Out-Null; tar -xf C:\argonia\MO2\push\{d}.tar -C C:\argonia\MO2\{d}")
+    write_ui_variants()
     run("put", str(MO2 / "profiles" / PROFILE) + "/.", f"C:/argonia/MO2/profiles/{PROFILE}/")
     stale = [n for n in sent if n not in names]
     if stale:  # rows no longer in the profile (a set swapped out)
@@ -1291,6 +1339,7 @@ def main():
                        help="lay deferred rows whose `from` chunk has started by this part or chunk (default: the current part)")
         if name == "plan":
             s.set_defaults(into=None, group=None)
+            s.add_argument("--ui", choices=sorted(UI_VARIANTS), help="also what the UI card's variant lays")
         elif name == "install":
             s.add_argument("--skip-fetch", action="store_true")
         else:

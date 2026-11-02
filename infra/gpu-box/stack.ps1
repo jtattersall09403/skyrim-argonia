@@ -8,9 +8,10 @@
 #   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
 #   stack.ps1 verify [-Full]       every laid file's hash against installed.json (cached by size and mtime; -Full rehashes)
 #   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
+#   stack.ps1 play-modded -Ui windui|custom   Wind UI + Dear Diary, or set aside for our own screens (the UI cards)
 #   stack.ps1 play-modded -Shaders on|off [-Wait]   the same with Community Shaders' DLL laid or set aside (the
 #                                  owner's on/off comparison, #16); the next `on` lays it again (exact undo)
-param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '')
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '', [ValidateSet('', 'windui', 'custom')][string]$Ui = '')
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
@@ -377,6 +378,22 @@ public static class ParHash {
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
       elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
+      # The custom-UI card (owner, 2026-11-02 22:06): Wind UI, Dear Diary and Wood and Paper set aside from Data (hard
+      # links: their mod files stay; `on` lays them again next launch), each path re-laid from the highest remaining
+      # mod where one places it; their plugins leave Plugins.txt. The list is stack.py's ui-custom.json, pushed with
+      # the profile.
+      $uiList = "$Mo2\profiles\Argonia\ui-custom.json"
+      if ($Ui -eq 'custom') {
+        if (-not (Test-Path $uiList)) { throw 'ui custom: no ui-custom.json in the profile (stack.py push lays it)' }
+        $v = Get-Content $uiList -Raw -Encoding UTF8 | ConvertFrom-Json; $gone = 0; $back = 0
+        foreach ($p in $v.paths.PSObject.Properties) {
+          $d = "\\?\$Data\$($p.Name)"
+          if (Test-Path -LiteralPath $d) { Remove-Item -LiteralPath $d -Force; $gone++ }
+          if ($p.Value) { Copy-Item -LiteralPath "$Mo2\mods\$($p.Value[0])\$($p.Value[1])" $d -Force; $back++ }
+        }
+        if ($v.plugins) { @(Get-Content "$Prefs\Plugins.txt" | ? { $v.plugins -notcontains $_.TrimStart('*') }) | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII }
+        "ui custom: $gone files set aside ($($v.drop -join ', ')), $back re-laid, $(@($v.plugins).Count) plugins off"
+      } elseif ($Ui) { 'ui windui: the profile as laid' }
       Wait-Steam | Out-Null
       Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     }
