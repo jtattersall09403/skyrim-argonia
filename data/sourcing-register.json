@@ -666,6 +666,15 @@
     "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
   },
   {
+    "name": "Community Shaders: Exponential Height Fog (GitHub v1.9.1 asset)",
+    "source_url": "https://github.com/community-shaders/skyrim-community-shaders/releases/tag/v1.9.1",
+    "version": "1.9.1 (Exponential.Height.Fog-2026-09-24T12-32Z.zip, archive sha256 306127c8c757..., data/dependencies.json row community-shaders-height-fog)",
+    "licence": "GPL-3.0 (github community-shaders/skyrim-community-shaders)",
+    "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.15: the volumetric low marsh mist our Argonia_ExponentialHeightFog override tunes",
+    "linked_or_forked_by": "none: depended on as the player's own download",
+    "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+  },
+  {
     "name": "Tropical Skyrim conversion to SSE (Nexus 78044)",
     "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78044?tab=files&file_id=328450",
     "version": "1.1 (archive sha256 6d58bb0018f8..., data/dependencies.json row tropical-skyrim-sse)",

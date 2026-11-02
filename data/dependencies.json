@@ -2356,6 +2356,32 @@
    ]
   },
   {
+   "id": "community-shaders-height-fog",
+   "group": "soul-ui",
+   "source": {
+    "github": "community-shaders/skyrim-community-shaders",
+    "tag": "v1.9.1",
+    "asset": "Exponential.Height.Fog-2026-09-24T12-32Z.zip"
+   },
+   "name": "Community Shaders: Exponential Height Fog",
+   "author": "Community Shaders Team",
+   "version": "1.9.1",
+   "size_kb": 10,
+   "why": "1.15: CS 1.9.1 ships Exponential Height Fog as its own release asset (Shaders/Features/ExponentialHeightFog.ini plus its shaders); CS switches a feature off without that ini, so without this the height-fog override on the community-shaders row does nothing and the dawn mist is flat distance fog",
+   "chunk": "1.15",
+   "required": true,
+   "profile": "play",
+   "sha256": "306127c8c757746cc2db02ddd5cfb37ab06ed07cb3d411bd577ff1b425720016",
+   "licence": "GPL-3.0 (github community-shaders/skyrim-community-shaders)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "release v1.9.1 of the CS repo (GPL-3.0); asset built from features/Exponential Height Fog in the same tag",
+   "runtime": "owed: in-game check that CS lists Exponential Height Fog and the override applies (weather lane)",
+   "conflicts": "none known: adds Shaders/ExponentialHeightFog and Shaders/Features/ExponentialHeightFog.ini only",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
    "id": "tropical-skyrim-sse",
    "group": "land",
    "source": {
