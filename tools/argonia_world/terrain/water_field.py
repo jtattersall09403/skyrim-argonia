@@ -28,6 +28,12 @@ HOLLOW_PAD = 0.4  # m: a raised hollow's floor stands this far over the bank lin
 # 15 largest inland levels (probes/vanilla_shore_profile.py)
 SHORE_D = (0.0, 1.0, 5.0, 10.0, 20.0)
 SHORE_UP = (0.0, 0.23, 2.7, 6.4, 13.0)
+# a stepped cell (a level a riffle over or under a neighbour's) floods its under-level ground only this far from its
+# raster water: a stair of cell planes down a slope flooded each cell's whole low ground to the cell line, the
+# straight-edged pools of -38_25 (probes/marsh_cells.py: raster 1.96 m under solved 10.66 m, pre-ground 3.9 m under
+# the plane, 82 % wet against 39 % footprint). Skyrim.esm's ground stands 2.7 m over its water 5 samples from the shore
+# (SHORE_UP), so a river's water keeps to its channel; past the band the ground is raised as a hollow
+FLOOD_BAND = 6
 BAND = 3  # samples: a clipped line's crest half-width, so the cell line is no ridge (trial: lattice 2.55 -> 1.40 at 3,
 # 1.49 at 9); the upper water stops short of the line as Skyrim.esm's does (probes/vanilla_level_edges.py)
 
@@ -94,7 +100,15 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
     # 3. under-level ground not joined to the raster water (a hollow past the basin's pass, a low corner of the
     # cell): the cell's plane would draw a square pool over it, so it is lifted above the water the same way
     under = has & (h1 < vmin - G.FREEBOARD_M) & ~chz
-    iso = under & ~G.reach(foot & under, under)
+    dd = drop > G.RIFFLE_M
+    dd = dd[:-1, :-1] | dd[1:, 1:] | dd[:-1, 1:] | dd[1:, :-1]
+    n_ = dd.shape[0] // G.Q
+    stc = dd[:n_ * G.Q, :n_ * G.Q].reshape(n_, G.Q, n_, G.Q).any(axis=(1, 3))
+    st_s = np.pad(np.repeat(np.repeat(stc, G.Q, 0), G.Q, 1), ((0, h.shape[0] - n_ * G.Q), (0, h.shape[1] - n_ * G.Q)),
+                  mode="edge")
+    dfo, _ = G.chamfer(foot, FLOOD_BAND + 1)
+    keep = under & ~(st_s & ~(np.nan_to_num(dfo, nan=99) <= FLOOD_BAND))
+    iso = under & ~G.reach(foot & keep, keep)
     if iso.any():
         # the hollow is raised whole, keeping its own slope (a bowl standing above the water, never a plate at the
         # level): the deepest shortfall spreads at HOLLOW_GRADE and is blurred; the small rest is lifted as above

@@ -212,6 +212,14 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
+Session 18 (s18a, `~/.argonia/jobs/s17.sh s18a`): -38_25's square pools were the solve's stair of cell planes down
+a slope (raster 1.96 m, solved 10.66/4.42/3.11 m, pre-ground 3.9 m under the plane; `-28,28` 82 % wet against a 39 %
+footprint): each plane flooded its cell's low ground to the cell line. Fix (water_field.py `FLOOD_BAND` 6): in a
+stepped cell, under-level ground more than 6 samples from the raster water is raised as a hollow. Reader s17g vs
+s18a: "the blocky outlines are mostly gone ... ragged, organic edges", 1-2 straight edges left on step lines, no new
+artefacts. `check --sample` fails [], lattice 1.365, overflow 0 pairs. Still owed: the held rule with the
+depression fix, the faint edges (0_0_1_1, -20_57), lake depth by body size.
+
 Session 17 (one level definition, first half). Runs: `~/.argonia/jobs/s17.sh NAME` = `generate --sample --out
 out/terrain-sample/NAME`, `check --sample`, `render --sample --hillshade --out NAME/hs`, then the census (NAMEcen).
 
