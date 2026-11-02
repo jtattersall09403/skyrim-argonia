@@ -18,14 +18,14 @@ inline constexpr std::array<SeasonWindow, 3> kSeasonWindows{{
 }};
 struct WeatherChance { std::string_view global; std::array<std::uint8_t, kSeasons> chance; };
 inline constexpr std::array<WeatherChance, 30> kWeatherChances{{
-    {"ARG_WChance_coastal_clear_co", {15, 14, 11}},
+    {"ARG_WChance_coastal_clear_dry", {15, 14, 11}},
     {"ARG_WChance_coastal_cloudy_co", {15, 14, 11}},
     {"ARG_WChance_coastal_sea_fog", {30, 25, 20}},
     {"ARG_WChance_coastal_squall", {20, 19, 15}},
     {"ARG_WChance_coastal_storm_rain", {10, 9, 14}},
     {"ARG_WChance_coastal_wet_rain", {10, 19, 29}},
-    {"ARG_WChance_jungle_clear", {15, 12, 7}},
-    {"ARG_WChance_jungle_cloudy", {14, 11, 7}},
+    {"ARG_WChance_jungle_clear_dry", {15, 12, 7}},
+    {"ARG_WChance_jungle_cloudy_ma", {14, 11, 7}},
     {"ARG_WChance_jungle_mist", {35, 32, 28}},
     {"ARG_WChance_jungle_monsoon_overcast", {11, 17, 22}},
     {"ARG_WChance_jungle_storm", {14, 11, 14}},
@@ -36,7 +36,7 @@ inline constexpr std::array<WeatherChance, 30> kWeatherChances{{
     {"ARG_WChance_lowland_montane_haze", {20, 30, 35}},
     {"ARG_WChance_lowland_tannin_haze", {18, 0, 0}},
     {"ARG_WChance_lowland_wet_rain", {9, 18, 26}},
-    {"ARG_WChance_marsh_clear_ma", {17, 14, 9}},
+    {"ARG_WChance_marsh_clear_dry", {17, 14, 9}},
     {"ARG_WChance_marsh_cloudy_ma", {16, 14, 9}},
     {"ARG_WChance_marsh_mist", {35, 32, 28}},
     {"ARG_WChance_marsh_monsoon_overcast", {8, 14, 18}},

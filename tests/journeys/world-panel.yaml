@@ -1,11 +1,12 @@
 # The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`
 # from the generated data: two fixed vantages per region class (shore: dry ground beside water of the
 # class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the
-# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited
+# region's clear-dry) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited
 # for), the HUD `hud: off`. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the
 # vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over
 # water; light shafts through canopy; owner, 2026-11-01); each step
 # checks only that the teleport landed. Never move a vantage after the first run.
+# Weather (round 3): `sw` after the moveto's settle, read back through the bridge `weather` before the still.
 {
  "id": "world-panel",
  "runner": 1,
@@ -46,7 +47,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyCO"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -87,6 +88,14 @@
      ],
      "path": "pos.y",
      "lt": -62920
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -112,7 +121,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_sea_fog"
+     "console": "sw ARG_Weather_sea_fog"
     },
     {
      "wait": 10
@@ -153,6 +162,14 @@
      ],
      "path": "pos.y",
      "lt": -62920
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_sea_fog",
+     "within": 20
     }
    ]
   },
@@ -178,7 +195,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyCO"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -219,6 +236,14 @@
      ],
      "path": "pos.y",
      "lt": 211896
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -244,7 +269,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_sea_fog"
+     "console": "sw ARG_Weather_sea_fog"
     },
     {
      "wait": 10
@@ -285,6 +310,14 @@
      ],
      "path": "pos.y",
      "lt": 211896
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_sea_fog",
+     "within": 20
     }
    ]
   },
@@ -310,7 +343,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -351,6 +384,14 @@
      ],
      "path": "pos.y",
      "lt": -142024
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -376,7 +417,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -417,6 +458,14 @@
      ],
      "path": "pos.y",
      "lt": -142024
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -442,7 +491,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -483,6 +532,14 @@
      ],
      "path": "pos.y",
      "lt": -136264
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -508,7 +565,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -549,6 +606,14 @@
      ],
      "path": "pos.y",
      "lt": -136264
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -574,7 +639,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -615,6 +680,14 @@
      ],
      "path": "pos.y",
      "lt": -22600
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -640,7 +713,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -681,6 +754,14 @@
      ],
      "path": "pos.y",
      "lt": -22600
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -706,7 +787,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -747,6 +828,14 @@
      ],
      "path": "pos.y",
      "lt": 224184
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -772,7 +861,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -813,6 +902,14 @@
      ],
      "path": "pos.y",
      "lt": 224184
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -838,7 +935,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClear"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -879,6 +976,14 @@
      ],
      "path": "pos.y",
      "lt": 27960
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -904,7 +1009,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -945,6 +1050,14 @@
      ],
      "path": "pos.y",
      "lt": 27960
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -970,7 +1083,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClear"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1011,6 +1124,14 @@
      ],
      "path": "pos.y",
      "lt": 203704
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1036,7 +1157,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -1077,6 +1198,14 @@
      ],
      "path": "pos.y",
      "lt": 203704
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -1102,7 +1231,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1143,6 +1272,14 @@
      ],
      "path": "pos.y",
      "lt": -123976
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1168,7 +1305,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -1209,6 +1346,14 @@
      ],
      "path": "pos.y",
      "lt": -123976
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -1234,7 +1379,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1275,6 +1420,14 @@
      ],
      "path": "pos.y",
      "lt": 39864
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1300,7 +1453,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -1341,6 +1494,14 @@
      ],
      "path": "pos.y",
      "lt": 39864
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -1366,7 +1527,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearFF"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1407,6 +1568,14 @@
      ],
      "path": "pos.y",
      "lt": 224312
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1432,7 +1601,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze"
     },
     {
      "wait": 10
@@ -1473,6 +1642,14 @@
      ],
      "path": "pos.y",
      "lt": 224312
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_montane_haze",
+     "within": 20
     }
    ]
   },
@@ -1498,7 +1675,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearFF"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1539,6 +1716,14 @@
      ],
      "path": "pos.y",
      "lt": 246456
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1564,7 +1749,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze"
     },
     {
      "wait": 10
@@ -1605,6 +1790,14 @@
      ],
      "path": "pos.y",
      "lt": 246456
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_montane_haze",
+     "within": 20
     }
    ]
   },
@@ -1630,7 +1823,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1671,6 +1864,14 @@
      ],
      "path": "pos.y",
      "lt": -9160
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1696,7 +1897,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -1737,6 +1938,14 @@
      ],
      "path": "pos.y",
      "lt": -9160
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -1762,7 +1971,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimClearMA"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1803,6 +2012,14 @@
      ],
      "path": "pos.y",
      "lt": -9288
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1828,7 +2045,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist"
     },
     {
      "wait": 10
@@ -1869,6 +2086,14 @@
      ],
      "path": "pos.y",
      "lt": -9288
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_mist",
+     "within": 20
     }
    ]
   },
@@ -1894,7 +2119,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyCO"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -1935,6 +2160,14 @@
      ],
      "path": "pos.y",
      "lt": -42440
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -1960,7 +2193,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_sea_fog"
+     "console": "sw ARG_Weather_sea_fog"
     },
     {
      "wait": 10
@@ -2001,6 +2234,14 @@
      ],
      "path": "pos.y",
      "lt": -42440
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_sea_fog",
+     "within": 20
     }
    ]
   },
@@ -2026,7 +2267,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyCO"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -2067,6 +2308,14 @@
      ],
      "path": "pos.y",
      "lt": 240696
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -2092,7 +2341,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_sea_fog"
+     "console": "sw ARG_Weather_sea_fog"
     },
     {
      "wait": 10
@@ -2133,6 +2382,14 @@
      ],
      "path": "pos.y",
      "lt": 240696
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_sea_fog",
+     "within": 20
     }
    ]
   },
@@ -2158,7 +2415,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyFF"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -2199,6 +2456,14 @@
      ],
      "path": "pos.y",
      "lt": 59192
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -2224,7 +2489,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze"
     },
     {
      "wait": 10
@@ -2265,6 +2530,14 @@
      ],
      "path": "pos.y",
      "lt": 59192
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_montane_haze",
+     "within": 20
     }
    ]
   },
@@ -2290,7 +2563,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyFF"
+     "console": "sw ARG_Weather_clear_dry"
     },
     {
      "wait": 10
@@ -2331,6 +2604,14 @@
      ],
      "path": "pos.y",
      "lt": 150840
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
     }
    ]
   },
@@ -2356,7 +2637,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "fw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze"
     },
     {
      "wait": 10
@@ -2397,6 +2678,14 @@
      ],
      "path": "pos.y",
      "lt": 150840
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_montane_haze",
+     "within": 20
     }
    ]
   }

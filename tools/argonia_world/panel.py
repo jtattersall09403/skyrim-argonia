@@ -194,7 +194,7 @@ def journey_text(vs: list[dict]) -> str:
     head = ("# The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`\n"
             "# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the\n"
             "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
-            "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited\n"
+            "# region's clear-dry) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited\n"
             "# for), the HUD `hud: off`. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
             "# vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over\n"
             "# water; light shafts through canopy; owner, 2026-11-01); each step\n"
@@ -212,10 +212,15 @@ def journey_text(vs: list[dict]) -> str:
             do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}}, {"camera": "first"},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
                   {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
+            # `sw` (set, no transition) after the moveto's settle: the region's own list had replaced `fw`'s weather
+            # (round 3: storm, wet_rain from vanilla ClearCO); the bridge `weather` read proves the sky took it
+            # before the still (a null read means a menu is open: it is polled until it holds)
+            ex = list(land)
             if v[when]:
-                do.append({"console": f"fw {v[when]}"})
+                do.append({"console": f"sw {v[when]}"})
+                ex.append({"read": ["weather"], "path": "current.editor_id", "eq": v[when], "within": 20})
             do += [{"wait": 10}, {"wait": 4}]
-            steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": land})
+            steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": ex})
     j = {"id": "world-panel", "runner": 1, "crash_risk": "medium", "scene": "world-panel", "steps": steps}
     return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
 

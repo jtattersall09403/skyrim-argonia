@@ -95,3 +95,16 @@ coast noon (02, vanilla SkyrimCloudyCO) sky near white; dawn fog grey-green unif
 - Owed: the EHF feature dependency (not in CS 1.9.1) before any height-fog tuning; the planner's next batch re-shoots
   panel dawn/noon, the mist strip without a forced weather, and creature spots with a weather read
   (GetCurrentWeather) at water-day; then shafts, burn-off and night brightness judged by a reader.
+
+## Session 4: the sun was hidden by the weather (2026-11-02, from lane-1.15-r3-machine §3)
+- **Cloud alpha.** Every authored weather wrote alpha 1.0 on all 29 cloud layers, so even clear-dry was a full deck.
+  Skyrim's SkyrimClear / ClearFF keep 0.2-0.8 on their upper layers (Skyrim.esm JNAM, measured) with sun glare 191/166 of
+  255 (ours 0.9) and sun damage 100 %. A Pleasant weather now takes its template's per-layer alphas (`alphaFromTemplate`,
+  api.py, RegionWeather.cs; builds with dotnet, game-side stills owed). HNAM is set (session 3).
+- **Lists.** Every group's list holds clear-dry (dry-season chance 15-18 %); SkyrimClearCO/MA no longer in coastal/marsh.
+  `ARG_Climate_black_marsh` drew SkyrimClear (0x00081A) and SkyrimCloudy (0x012F89), vanilla forms Tropical Skyrim does
+  not restyle (it adds CO/MA/FF variants); replaced by clear-dry and cloudy-ma (the TS marsh restyle), so the fallback
+  list is ours (climate why, decision 0012).
+- **Panel.** Noon is clear-dry in every region; dawn is the region's mist weather (clear-dry with none). Each step
+  moves, settles 60 s, sets the hour, then `sw <edid>` and reads the bridge `weather` back (`current.editor_id`, within
+  20 s; a null read is a menu open) before the still. `fw` had been replaced by the region's list after the moveto.

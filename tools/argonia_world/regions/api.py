@@ -260,7 +260,10 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
                        "sunset": images[w["image_dawn_id"]]["formKey"],
                        "night": images[w["image_night_id"]]["formKey"]},
             "clouds": {"speed": w["cloud_speed"], "colours": col["cloudLodDiffuse"],
-                       "alpha": {"sunrise": 1.0, "day": 1.0, "sunset": 1.0, "night": 1.0}},
+                       "alpha": {"sunrise": 1.0, "day": 1.0, "sunset": 1.0, "night": 1.0},
+                       # a clear (Pleasant) sky keeps its template's per-layer alphas, as Skyrim's SkyrimClear does
+                       # (0.2-0.8 on its upper layers): a full deck on every layer hid the sun (decision 0034)
+                       "alphaFromTemplate": w["classification"] == "Pleasant"},
             "windSpeed": w["wind"], "transDelta": 4.0, "sunGlare": w["sun_glare"], "sunDamage": w["sun_damage"],
             "precipitationFadeIn": w["precip_fade_in"], "precipitationFadeOut": w["precip_fade_out"],
             "thunderFrequency": thunder,

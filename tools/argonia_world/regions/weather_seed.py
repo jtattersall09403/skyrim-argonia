@@ -323,15 +323,18 @@ P["storm"] = {
     "dalcDown": ("2B2B1F", "38352D", "2D231D", "080803"),
 }
 
+# Every group holds our sunny dry-season clear-dry (the dossiers' dry season; a visible sun for the god rays), and no
+# plain Skyrim.esm weather: SkyrimClear 0x081A and SkyrimCloudy 0x012F89 (Tropical Skyrim leaves both vanilla) left the
+# jungle group, so the climate's fallback list is ours too (decision 0012).
 # the realisations of each group's synoptic states after 1.15: at most five weathers a group, so with the region's
 # mist weather a list holds 1-6 entries as vanilla's do (skyrim-does-it-this-way §7: p50 3, max 6). The ground-mist
 # state is realised by the region's mist regime (REGIMES), not here. Group -> state -> [weather ids].
 REALISE = {
-    "coastal": {"clear-humid": ["clear-co", "cloudy-co"], "monsoon-downpour": ["wet-rain"], "sea-squall": ["squall"],
+    "coastal": {"clear-humid": ["clear-dry", "cloudy-co"], "monsoon-downpour": ["wet-rain"], "sea-squall": ["squall"],
                 "storm": ["storm-rain"]},
-    "marsh": {"clear-humid": ["cloudy-ma", "clear-ma"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
+    "marsh": {"clear-humid": ["cloudy-ma", "clear-dry"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
               "storm": ["storm"]},
-    "jungle": {"clear-humid": ["cloudy", "clear"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
+    "jungle": {"clear-humid": ["cloudy-ma", "clear-dry"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
                "storm": ["storm"]},
     "uplands": {"clear-humid": ["clear-ff", "cloudy-ff", "clear-dry"], "dry-haze": ["tannin-haze"],
                 "storm": ["storm-rain"]},

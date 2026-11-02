@@ -215,7 +215,9 @@ static class RegionWriters
             w.Clouds[i] = new CloudLayer
             {
                 Enabled = true, XSpeed = F(cl, "speed"), YSpeed = 0f, Colors = WC(cl.GetProperty("colours")),
-                Alphas = new WeatherAlpha
+                Alphas = cl.TryGetProperty("alphaFromTemplate", out var aft) && aft.GetBoolean() && tpl.Clouds[i]?.Alphas is { } ta
+                    ? ta.DeepCopy()
+                    : new WeatherAlpha
                 {
                     Sunrise = F(cl.GetProperty("alpha"), "sunrise"), Day = F(cl.GetProperty("alpha"), "day"),
                     Sunset = F(cl.GetProperty("alpha"), "sunset"), Night = F(cl.GetProperty("alpha"), "night"),
