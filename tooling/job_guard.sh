@@ -164,6 +164,7 @@ case "$cmd" in
       else echo "slot $(basename "$f" .lock.slot): $l expired"; fi; done ;;
   log) tail -n 50 "$JOBS/$1.log" ;;
   stop)  # the whole job (its setsid process group), never only the top pid: a bare kill left a job's script running (1.8)
+    [ "${2:-}" = --keep-machine ] && KEEP_MACHINE=1
     p=$(cat "$JOBS/$1.pid" 2>/dev/null) || { echo "no job $1" >&2; exit 2; }
     if u=$(cat "$JOBS/$1.unit" 2>/dev/null) && [ -n "$u" ]; then systemctl --user stop "$u" 2>/dev/null || true  # the unit's whole cgroup
     else kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true; fi
@@ -172,7 +173,20 @@ case "$cmd" in
     # idle 40 min, its idle-stop held busy by the job's last SSH and busy flag (1.8, 2026-10-31).
     # Only a job that had the machine stops it: a queued job never held it, and stopping one stopped the job running
     # on it (the planner, 2026-11-01).
-    if [ -f "$JOBS/$1.started" ] && m=$(cat "$JOBS/$1.machine" 2>/dev/null) && [ -n "$m" ]; then
+    # ...and never when another job is queued for or running on that machine (2026-11-02: stopping a queued job
+    # stopped Paris twice under a running chain, and the on-demand LOD box once), nor with --keep-machine.
+    others=""
+    if m=$(cat "$JOBS/$1.machine" 2>/dev/null) && [ -n "$m" ]; then
+      for f in "$JOBS"/*.machine; do
+        o=$(basename "$f" .machine); [ "$o" = "$1" ] && continue
+        [ "$(cat "$f" 2>/dev/null)" = "$m" ] || continue
+        st=$(cat "$JOBS/$o.state" 2>/dev/null); [ -f "$JOBS/$o.rc" ] && [ "$st" != running ] && continue
+        case "$st" in queued|running) others="$others $o" ;; esac
+      done
+    fi
+    if [ -n "$others" ]; then echo "not stopping $m: still held or queued by$others"
+    elif [ "${KEEP_MACHINE:-0}" = 1 ]; then echo "not stopping $m: --keep-machine"
+    elif [ -f "$JOBS/$1.started" ] && [ -n "${m:-}" ]; then
       run="$(dirname "$(readlink -f "$0")")/../infra/gpu-box/run.sh"
       r=$(awk -v m="$m" '$1==m {print $2}' "$(dirname "$run")/machines.conf"); r=${r:-eu-west-2}  # run.sh's default
       st=$(aws ec2 describe-instances --region "$r" --filters "Name=tag:Name,Values=$m" \
