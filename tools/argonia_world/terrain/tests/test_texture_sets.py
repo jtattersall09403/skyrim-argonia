@@ -27,7 +27,8 @@ def test_every_painted_ltex_points_at_a_bmv_texture_set():
     txst = {r["formKey"]: r for r in recs if r["type"] == "TXST"}
     ltex = {r["formKey"]: r for r in recs if r["type"] == "LTEX"}
     assert len(txst) == len(ltex) == len(M.TEXTURES)
-    assert all(r["diffuse"].startswith("TEXTUREPACK\\landscape\\") and "normal" not in r for r in txst.values())
+    assert all(r["diffuse"].startswith("TEXTUREPACK\\landscape\\") and r["normal"].startswith("landscape\\")
+               and r["normal"].endswith("_n.dds") for r in txst.values())  # Skyrim.esm's own normal (r4)
     for t in M.TEXTURES:
         o = ltex[t.form_key]
         assert o["override"] and txst[o["textureSet"]]["diffuse"] == t.bmv

@@ -46,7 +46,8 @@ def test_water_gradient_runs_bed_edge_land():
     # vanilla's sequence (audit §4): the edge carries on to +128 u above the line, and no mud lies above the water
     i, e = (M.TEXTURES.index(M.TEX[t]) for t in ("LRiverMud01", "LRiverbedEdge01"))
     dh = win.dh[N // 2]
-    assert row[(dh > 0.3) & (dh < M.EDGE_TOP_M - 0.3), e].min() > 0.5
+    near = win.dwater[N // 2] <= M.EDGE_REACH[0]
+    assert row[(dh > 0.1) & (dh < M.EDGE_TOP_M - 0.3) & near, e].min() >= 0.5
     assert row[dh > 0.3, i].max() < 0.1
     assert row[dh > M.EDGE_TOP_M + 0.4, e].max() < 0.1
 
@@ -253,3 +254,19 @@ def test_dry_ground_with_no_water_in_reach_is_land():
     win = M.Material(src, water, M.Regions.uniform("flooded-forest", PAD, N), roads=False).window(
         PAD, PAD + N + 1, PAD, PAD + N + 1)
     assert (win.dh >= M.FAR_DH).all()
+
+
+def test_flat_land_a_metre_above_water_is_land_not_edge():
+    """r4 (owner play test 3, finding 16): the edge texture held 34 % of dry ground, flats a metre above water far
+    from it. Beyond EDGE_REACH vertices of water, dry ground takes the class's land stops."""
+    g = np.full((N + 1, N + 1), 1.0, np.float32)
+    g[:, :8] = -3.0  # a channel on the west edge, the rest a flat 1 m above it
+    win = mat(sources(g)).window(PAD, PAD + N + 1, PAD, PAD + N + 1)
+    e = M.TEXTURES.index(M.TEX["LRiverbedEdge01"])
+    far = win.dwater > M.EDGE_REACH[1] + 2
+    assert far.any() and win.weights[far, e].max() < 0.05
+
+
+def test_no_class_lays_one_land_texture():
+    from tools.argonia_world.terrain import texcheck
+    assert texcheck.class_problems() == []

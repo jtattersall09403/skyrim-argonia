@@ -53,6 +53,7 @@ SHORE_BAND, SHORE_DROP = 3.0, 2.5  # vertices of bed band under the edge (~384 u
 FAR_DH = 8.0  # m: dry ground beyond NEAR_FAR of any water reads at least this high, above every water-edge stop (top 6 m)
 NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
 INF = float("inf")
+EDGE_REACH = (2.0, 4.0)  # vertices from the nearest wet vertex: the edge band fades out over this reach on dry ground
 
 
 # ---- the texture set ------------------------------------------------------------------------------------------
@@ -62,6 +63,13 @@ class Tex:
     form_key: str
     bmv: str  # BM&V's diffuse, under textures\ (Black Marsh & Valenwood part 2, TEXTUREPACK\landscape)
     why: str
+
+    @property
+    def normal(self) -> str:
+        """Skyrim.esm's own landscape normal for this diffuse's name (`landscape\\<name>_n.dds`, in the player's
+        Skyrim - Textures BSA; Tropical Skyrim's loose copies are dropped, dependencies.json): vanilla's alpha is its
+        low landscape specular (p50 of means ~20/255), where TS's DXT1 copies carry 255 and BM&V ships none (r4)."""
+        return "landscape\\" + self.bmv.rsplit("\\", 1)[1][:-4] + "_n.dds"
 
 
 TEXTURES: tuple[Tex, ...] = tuple(Tex(*r) for r in (
@@ -134,6 +142,7 @@ MUD = Stop("LRiverMud01", dh=(BED_M, 0.0), noise=(-INF, 0.5), w=1.2,
            why="audit §4: LRiverMud01 under water only; shoreline A2/A6/A8: sheltered water leaves mud")
 L = EDGE_TOP_M  # land begins one vertex above the line
 S = BEACH_TOP_M  # on the sea, above the beach
+LIFT_DH = S + 0.3  # m: dry ground beyond EDGE_REACH reads at least this high (above every edge and beach band)
 # Rock is a patch texture on steep ground, never the whole of it: Skyrim.esm's dominant texture on slopes over 34°
 # is rock on 24-25 % of vertices (9 % under 10°, 20 % at 20-30°), the rest the area's ground and snow; a steep
 # cell carries 3 distinct dominant textures at p50, 6 at p90 (measured 2026-11-01, 9,500 LAND; options §8). Without
@@ -150,6 +159,7 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         MUD,
         Stop("LFrozenMarshGrass01", dh=(S, 6), noise=(0.25, INF), why="shoreline A6: marsh above the mud"),
         Stop("LFallForestDirt01", dh=(4, INF), why="shoreline A3: mangrove-forest floor inland"),
+        Stop("LCoastBeachGrass01", dh=(S, 6), noise=(0.55, INF), seed=31, w=1.3, why="shoreline A1: grassed backshore patches"),
         ROCK),
     "tidal-delta": (
         Stop("LCoastOceanFloor01", dh=(-INF, -2.5), why="shoreline A4: delta front"),
@@ -174,6 +184,8 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         Stop("LFrozenMarshGrass01", dh=(L, INF), noise=(-INF, 0.6), why="shoreline A9: reed and marsh grass"),
         Stop("LFallForestDirt01", dh=(2.5, INF), noise=(0.5, INF), why="shoreline A8: swamp-forest floor"),
         Stop("LReachMoss01", slope=(18, INF), why="moss on the few banks"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.55, INF), seed=33, w=1.3, why="shoreline A8: litter under swamp trees"),
+        Stop("LReachMoss01", dh=(L, INF), noise=(0.62, INF), seed=34, w=1.4, why="moss on hummocks (shoreline A9)"),
     ),
     "deep-sink-basin": (
         BED, MUD, EDGE,
@@ -190,17 +202,22 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         Stop("LPineForest03", dh=(L, INF), w=1.1, why="root-bound forest floor"),
         Stop("LFallForestDirt01", dh=(L, INF), noise=(0.55, INF), why="roots in mud bank"),
         Stop("LReachMoss01", slope=(14, INF), north=0.5, why="moss on rises"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.55, INF), seed=40, w=1.3, why="litter between the roots"),
+        Stop("LFrozenMarshLichen01", dh=(L, 3), noise=(0.55, INF), seed=41, w=1.4, why="shoreline A8: muck in root hollows"),
         ROCK, CRAG),
     "seasonal-floodplain": (
         BED, MUD, EDGE,
         Stop("LFieldGrass02", dh=(L, INF), why="BM&V's mossy grass on the flood flats"),
         Stop("LFrozenMarshGrass01", dh=(L, 3 + L), wet=(0.2, INF), why="wet marsh grass near the channel"),
         Stop("LFallForestDirt01", dh=(3, INF), noise=(0.6, INF), why="levee floor"),
+        Stop("LFrozenMarshGrass01", dh=(L, INF), noise=(0.55, INF), seed=35, w=1.3, why="marsh grass in the flood swales (shoreline A9)"),
+        Stop("LReachMoss01", dh=(L, INF), noise=(0.62, INF), seed=36, w=1.4, why="moss on the flats' hummocks"),
     ),
     "northern-transition": (
         BED, EDGE,
         Stop("LReachDirt01", dh=(L, INF), noise=(0.5, INF), why="red earth of the drier north (Dunmer border)"),
         Stop("LFieldGrass02", dh=(L, 120), noise=(-INF, 0.6), why="grass of the transition"),
+        Stop("LPineForest02", dh=(L, INF), noise=(0.55, INF), seed=37, w=1.3, why="drier upland forest floor of the north"),
         Stop("LTundraRocks01", slope=(24, INF), noise=(0.6, INF), seed=8, w=1.2, why="scree patches below the ranges"),
         Stop("LRocks01", slope=(34, INF), noise=(0.58, INF), seed=7, w=1.4, why="bare rock of the Velothi foothills, in patches"),
     ),
@@ -209,6 +226,8 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         Stop("LPineForest02", dh=(L, 260), slope=(-INF, 40), why="upland forest (Kinabalu cloud forest, mountain synthesis)"),
         Stop("LReachMoss01", dh=(L, INF), slope=(14, INF), north=0.6, noise=(0.35, INF),
              why="moss bands on the flanks (options §8)"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.55, INF), seed=48, w=1.3, why="cloud-forest litter (mountain synthesis)"),
+        Stop("LFallForestDirt01", dh=(L, INF), noise=(0.6, INF), seed=49, w=1.35, why="rooty upland floor"),
         ROCK,
         Stop("LRocks01", dh=(220, INF), slope=(26, INF), noise=(0.5, INF), seed=7, w=1.2,
              why="bare rock of the summits (border ranges), in patches"),
@@ -576,6 +595,12 @@ class Material:
             _, dshore = nearest_wet(np.where(wetv, np.nan, 0.0))
             dshore = np.where(wetv, dshore, 0.0).astype(np.float32)
             dh = np.where(wetv, dh - np.maximum(dshore - SHORE_BAND, 0.0) * SHORE_DROP, dh).astype(np.float32)
+        # the edge and beach are bands at the line, not every flat a metre above it: dry ground beyond EDGE_REACH
+        # vertices of water reads at least LIFT_DH, above the edge (+128 u) and the beach (+256 u), so it takes the
+        # class's land stops (r4: LRiverbedEdge01 held 34 % of dry ground, half of it > 16 vertices from water).
+        # Skyrim.esm's banks rise, so its height band is a one-vertex strip (audit §4); ours are flat, so reach rules.
+        lift = np.clip((d - EDGE_REACH[0]) / (EDGE_REACH[1] - EDGE_REACH[0]), 0.0, 1.0)
+        dh = np.where(wetv, dh, np.maximum(dh, LIFT_DH * lift)).astype(np.float32)
         wet = np.clip(0.65 * box(box(wm, 4), 4) + 0.35 * box(wm, 12) * 1.6, 0.0, 1.0)
         # rainier ground reads wetter: the climatology's R (0.5 dry pole .. 1.0 windward coast) lifts dry ground
         rain = self.water.local(a0, a1, b0, b1, self.water.rain, RAIN_BASE + RAIN_COAST)

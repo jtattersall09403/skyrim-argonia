@@ -323,6 +323,7 @@ def main(argv=None) -> int:
     c.add_argument("--cells")
     c.add_argument("--sample", action="store_true")
     c.add_argument("--points", type=int, default=1000)
+    sub.add_parser("check-materials", help="the ground's texture sets as laid: normals, specular alpha, classes")
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
     sub.add_parser("relief", help="write the region_relief rows from generate.relief_rows (the dossier bands)")
     sub.add_parser("pre", help="write the continuous ground (prior + relief + erosion) the water solve reads")
@@ -337,6 +338,9 @@ def main(argv=None) -> int:
     r.add_argument("--old", action="store_true", help="render the old sculpt, not the generated ground")
     r.add_argument("--hillshade", action="store_true", help="a grey hillshade alone: no tint, no layer")
     a = p.parse_args(argv)
+    if a.cmd == "check-materials":
+        from tools.argonia_world.terrain import texcheck
+        return texcheck.main()
     if a.cmd == "gradient":
         from tools.argonia_world import db
         from tools.argonia_world.terrain import material as M
