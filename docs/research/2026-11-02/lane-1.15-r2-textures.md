@@ -52,7 +52,7 @@ check), `lists.usable` (drops untextured meshes), `tools/ArgoniaGen/WaterRecords
 - The L1 check `python -m tools.argonia_world.vegetation textures check` runs in `make world` from
   `data/mesh-textures.json`, which holds paths only and is built machine-local by `textures build` after a stack
   change. It fails when a placed form's mesh is not in the manifest, a keep row's placed mesh is outside its globs,
-  or a texture has no source and no keep glob (a diffuse is never waived). Result: 219 placed forms, 0 problems.
+  or a texture has no source and no keep glob (a diffuse is never waived). Result after rebasing on main: 243 placed forms, 0 problems.
 
 ## Next deploy must re-lay
 
