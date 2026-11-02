@@ -115,6 +115,33 @@ prove it**, and the composition is checked only for what composition can break.
 | frame cost on the composed world | bridge frame-time probes on the chosen GPU instance | L4 |
 | prose | the `text-review` skill (one reader, then the prose linter) | L1 |
 
+### The in-game round recipe (1.15-r4-fast-loop, measured 2026-11-02)
+
+One job per round, nobody polls: `tooling/job_guard.sh run --gpu=argonia-play round-<id> -- infra/gpu-box/round.sh
+tests/journeys/batches/<id>.yaml`. It brings the machine up, deploys (incremental), runs the batch, writes the stills
+list (`out/batch/<id>/<stamp>/stills.txt`) and stops the machine on every exit; each step prints `ROUND <step> OK|FAIL
+in N s`, the last line `ROUND DONE <passed>/<items> ... stills: N in <file>`. A rerun after an interrupt skips what
+is done for the same build and resumes the batch at the first item not reached. The planner hands stills.txt to a
+`reader` (decision 0036's driver only where a journey needs judging between steps).
+
+The batch file sets `one_load: true` (one save load per batch: items on the same save chain, the scene teleports;
+`needs_load: true` in a journey keeps its own load) and `settle_waits: true` (fixed waits after a move become the
+`settle` probe: menus closed and the player still, at least 3 s, capped at the old total). New journeys write
+`settle:` before a still, never `wait`. The deploy lays Community Shaders' compiled cache by its key
+(`infra/gpu-box/shader_cache.sh`), so only a real shader change compiles.
+
+| Round cost (from the logs) | Before | After (predicted for 10 journeys) |
+|---|---|---|
+| machine up / stop | 32 s / 18 s (r3up, r3stop) | same |
+| deploy, nothing big changed | 110 s (deploy-r3u, --no-stage) to 1,011 s (deploy-r2c: BM&V re-staged 446 s, push 207 s, SKSE 135 s) | ~3 min (stage plan empty, push nothing, SKSE stamped) |
+| failed deploys before one held | ~38 min (round 3: six attempts 09:47–10:26) | one job, one in-job retry; pre-flight and shader wait already fixed |
+| shader compile after a shader change | ~11 min (3,484 shaders, 10:14) | once per shader set; a cache hit lays it from S3 |
+| launch to menu, base save | 61–91 s, 24–26 s | same |
+| per still (world panel, 37 stills) | 25.7 s (949 s; 14 s of fixed waits) | ~12–15 s (settle floor 3 s) |
+| per save load | ~7 s + settle | once per batch |
+| batch wall time (round 2: 4 journeys, 05:13–06:13) | ~60 min, ~22 min of it run, the rest attempts and hand-offs | the run alone, ~20 min |
+| **in-game round, up to stop** | **~75–100 min** | **~30–35 min** (target ≤ 45) |
+
 ## 4. Where the chunks use loops
 
 Each chunk brief's **Loops** section lists:
