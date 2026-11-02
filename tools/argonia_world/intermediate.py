@@ -164,7 +164,8 @@ LOADING_SCREENS = ROOT / "data" / "loading-screens.json"
 def loading_screen_layer(alloc: Allocator) -> Layer:
     """Our loading screens (Skyrim's classic layout, owner 2026-10-31): one LSCR per row of data/loading-screens.json
     (a reviewed loading fact) with its 3D model, a STAT of ours over a mesh from our stack, set at the row's initial
-    scale, rotation, rotation range and translation; no condition."""
+    scale, rotation, rotation range and translation; a row with a `chance` under 100 is eligible on that share of loads
+    (GetRandomPercent: the engine draws among the screens whose conditions pass), so no subject dominates."""
     records = []
     for row in json.loads(LOADING_SCREENS.read_text(encoding="utf-8"))["screens"]:
         fid, m = row["fact"], row["model"]
@@ -173,9 +174,12 @@ def loading_screen_layer(alloc: Allocator) -> Layer:
         art_key = alloc.form_key(art, "STAT", fid + "#model")
         records.append({"type": "STAT", "edid": art, "formKey": art_key, "model": m["mesh"]})
         edid = "ARG_Load_" + name
-        records.append({"type": "LSCR", "edid": edid, "formKey": alloc.form_key(edid, "LSCR", fid),
-                        "text": row["text"], "model": art_key, "scale": m["scale"], "rotation": m["rotation"],
-                        "rotationRange": m["rotationRange"], "translation": m["translation"]})
+        rec = {"type": "LSCR", "edid": edid, "formKey": alloc.form_key(edid, "LSCR", fid),
+               "text": row["text"], "model": art_key, "scale": m["scale"], "rotation": m["rotation"],
+               "rotationRange": m["rotationRange"], "translation": m["translation"]}
+        if row.get("chance", 100) < 100:  # eligible on this share of loads, so no subject takes over a third of them
+            rec["conditions"] = [{"function": "GetRandomPercent", "op": "LessThan", "value": row["chance"]}]
+        records.append(rec)
     return Layer("base:loading-screens", records)
 
 

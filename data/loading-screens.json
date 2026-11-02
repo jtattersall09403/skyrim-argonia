@@ -1,5 +1,5 @@
 {
- "about": "Our loading screens (LSCR, decision 0012), Skyrim's classic layout (owner, 2026-10-31): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), and a 3D model: a STAT of ours (ARG_LoadArt_<fact>) over a mesh from our stack (`mod` is its dependencies.json row; Black Marsh mods, then Tropical Skyrim, before vanilla; never Nordic), with its visible bounds (tools/navmesh/nif_bounds.py), its initial scale (75 units across at its largest, measured in game: 140 filled the screen (2026-11-01)), rotation (degrees x, y, z), rotation range (degrees the player may turn it) and translation (the bounds' centre moved to the screen centre measured in game, -53, 0, -5 (x+ is screen left; tuned from in-game stills, out/l112load/fix5)). Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers.",
+ "about": "Our loading screens (LSCR, decision 0012), Skyrim's classic layout (owner, 2026-10-31): one per row, the text of that province-wide fact in world/sources/lore/loading-facts.json (text-reviewed 2026-10-31; the lore family is not yet a world table, so the reviewed text is carried here), and a 3D model: a STAT of ours (ARG_LoadArt_<fact>) over a mesh from our stack (`mod` is its dependencies.json row; Black Marsh mods, then Tropical Skyrim, before vanilla; never Nordic), with its visible bounds (tools/navmesh/nif_bounds.py), its initial scale (75 units across at its largest, measured in game: 140 filled the screen (2026-11-01)), rotation (degrees x, y, z), rotation range (degrees the player may turn it) and translation (the bounds' centre moved to the screen centre measured in game, -53, 0, -5 (x+ is screen left; tuned from in-game stills, out/l112load/fix5)). Every other loaded LSCR is shelled never-true by intermediate.quarantine_layers. A row's `chance` (percent, default 100) makes it eligible on that share of loads (a GetRandomPercent condition): the Hist's five screens are at 50, so no subject passes a third of loads (owner play test 3, finding 10; tools/argonia_world/tests/test_loading_weights.py).",
  "screens": [
   {
    "fact": "fact.travel-by-boat",
@@ -71,7 +71,8 @@
       3918.5
      ]
     }
-   }
+   },
+   "chance": 50
   },
   {
    "fact": "fact.hist-one-mind",
@@ -107,7 +108,8 @@
       3091.0
      ]
     }
-   }
+   },
+   "chance": 50
   },
   {
    "fact": "fact.hist-hatching-pools",
@@ -143,7 +145,8 @@
       1554.8
      ]
     }
-   }
+   },
+   "chance": 50
   },
   {
    "fact": "fact.naming-day",
@@ -179,7 +182,8 @@
       17.0
      ]
     }
-   }
+   },
+   "chance": 50
   },
   {
    "fact": "fact.xul-vaat",
@@ -431,7 +435,8 @@
       14.8
      ]
     }
-   }
+   },
+   "chance": 50
   }
  ]
 }

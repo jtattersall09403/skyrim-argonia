@@ -114,6 +114,8 @@ static class QuestRecords
         ConditionData data = fn switch
         {
             "GetGlobalValue" => Global(c),
+            // a loading screen's share (data/loading-screens.json `chance`): eligible on this share of loads
+            "GetRandomPercent" => new GetRandomPercentConditionData(),
             _ => throw new InvalidDataException($"condition function {fn} not supported yet"),
         };
         return new ConditionFloat
