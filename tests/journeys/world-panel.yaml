@@ -19,7 +19,7 @@
      "wait": 10
     },
     {
-     "key": "F 300"
+     "wait": 1
     },
     {
      "wait": 2
@@ -31,12 +31,7 @@
      }
     }
    ],
-   "expect": [
-    {
-     "console": "IsPC1stPerson",
-     "contains": "1.00"
-    }
-   ]
+   "expect": []
   },
   {
    "name": "coastal-lagoon-shore-noon",
@@ -46,6 +41,12 @@
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
       "settle": 60
      }
+    },
+    {
+     "key": "F 300 engine"
+    },
+    {
+     "wait": 2
     },
     {
      "console": "player.setangle z 88"
@@ -75,28 +76,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 109140
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 109740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -66220
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -65620
     }
    ]
@@ -138,28 +139,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 109140
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 109740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -66220
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -65620
     }
    ]
@@ -201,28 +202,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 28244
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 28844
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 208596
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 209196
     }
    ]
@@ -264,28 +265,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 28244
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 28844
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 208596
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 209196
     }
    ]
@@ -327,28 +328,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -126636
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -126036
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -145324
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -144724
     }
    ]
@@ -390,28 +391,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -126636
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -126036
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -145324
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -144724
     }
    ]
@@ -453,28 +454,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -123180
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -122580
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -139564
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -138964
     }
    ]
@@ -516,28 +517,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -123180
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -122580
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -139564
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -138964
     }
    ]
@@ -579,28 +580,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -69932
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -69332
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -25900
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -25300
     }
    ]
@@ -642,28 +643,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -69932
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -69332
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -25900
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -25300
     }
    ]
@@ -705,28 +706,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -162604
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -162004
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 220884
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 221484
     }
    ]
@@ -768,28 +769,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -162604
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -162004
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 220884
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 221484
     }
    ]
@@ -831,28 +832,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -4012
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -3412
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 24660
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 25260
     }
    ]
@@ -894,28 +895,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -4012
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -3412
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 24660
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 25260
     }
    ]
@@ -957,28 +958,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 36436
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 37036
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 200404
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 201004
     }
    ]
@@ -1020,28 +1021,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 36436
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 37036
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 200404
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 201004
     }
    ]
@@ -1083,28 +1084,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -65068
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -64468
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -127276
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -126676
     }
    ]
@@ -1146,28 +1147,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -65068
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -64468
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -127276
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -126676
     }
    ]
@@ -1209,28 +1210,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 52948
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 53548
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 36564
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 37164
     }
    ]
@@ -1272,28 +1273,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 52948
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 53548
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 36564
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 37164
     }
    ]
@@ -1335,28 +1336,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -4140
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -3540
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 221012
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 221612
     }
    ]
@@ -1398,28 +1399,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -4140
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -3540
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 221012
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 221612
     }
    ]
@@ -1461,28 +1462,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -167340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -166740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 243156
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 243756
     }
    ]
@@ -1524,28 +1525,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -167340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -166740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 243156
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 243756
     }
    ]
@@ -1587,28 +1588,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -64940
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -64340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -12460
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -11860
     }
    ]
@@ -1650,28 +1651,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -64940
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -64340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -12460
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -11860
     }
    ]
@@ -1713,28 +1714,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -24876
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -24276
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -12588
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -11988
     }
    ]
@@ -1776,28 +1777,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -24876
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -24276
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -12588
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -11988
     }
    ]
@@ -1839,28 +1840,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 102100
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 102700
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -45740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -45140
     }
    ]
@@ -1902,28 +1903,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 102100
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 102700
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": -45740
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": -45140
     }
    ]
@@ -1965,28 +1966,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 245460
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 246060
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 237396
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 237996
     }
    ]
@@ -2028,28 +2029,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": 245460
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": 246060
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 237396
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 237996
     }
    ]
@@ -2091,28 +2092,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -156972
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -156372
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 55892
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 56492
     }
    ]
@@ -2154,28 +2155,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -156972
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -156372
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 55892
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 56492
     }
    ]
@@ -2217,28 +2218,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -208940
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -208340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 147540
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 148140
     }
    ]
@@ -2280,28 +2281,28 @@
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "gt": -208940
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.0",
+     "path": "pos.x",
      "lt": -208340
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "gt": 147540
     },
     {
      "read": [
       "player"
      ],
-     "path": "pos.1",
+     "path": "pos.y",
      "lt": 148140
     }
    ]

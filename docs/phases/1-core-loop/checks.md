@@ -135,13 +135,13 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| The fixed vantage panel (36 stills: 18 vantages over the 9 exterior region classes, noon and dawn, at the play camera) read against the §0 checklist and the vibe board, on the sample | 1.15 §f | L4 | owed | journey:world-panel fail out/batch/1.15-round-1/20261102T002531/01-world-panel-1-20261102T002532 |
-| The panel on the whole frozen province | 1.15 §f | L4 | owed | journey:world-panel fail out/batch/1.15-round-1/20261102T002531/01-world-panel-1-20261102T002532 |
-| A 7-day skip cycles each region's seasonal weather list; dawn mist where region_mist says | 1.15 §d | L4 | owed | journey:world-panel fail out/batch/1.15-round-1/20261102T002531/01-world-panel-1-20261102T002532 |
+| The fixed vantage panel (36 stills: 18 vantages over the 9 exterior region classes, noon and dawn, at the play camera) read against the §0 checklist and the vibe board, on the sample | 1.15 §f | L4 | proven | owed | ; ran 36 stills confirmed (3rd-person+HUD); reader: 3 of 36 ok, rest problems (see round-1.md Session 1b); owed until the world lanes fix 
+| The panel on the whole frozen province | 1.15 §f | L4 | proven | owed | ; ran 36 stills confirmed (3rd-person+HUD); reader: 3 of 36 ok, rest problems (see round-1.md Session 1b); owed until the world lanes fix 
+| A 7-day skip cycles each region's seasonal weather list; dawn mist where region_mist says | 1.15 §d | L4 | proven | owed | ; ran 36 stills confirmed (3rd-person+HUD); reader: 3 of 36 ok, rest problems (see round-1.md Session 1b); owed until the world lanes fix 
 | 200 path requests succeed on the new navmesh; the densest cell's frame time within the bar | 1.15 §e | L4 | owed | frame time 16.7 ms mean / 17.3 p99 at upland-night spot, 60 fps (out/batch/1.15-round-1/20261102T001443); path requests not run |
 | Claywater re-seated: claywater-walk and claywater-look green on the frozen ground | 1.15 §f | L4 | owed | journey:claywater-walk fail out/batch/1.15-round-1/20261102T001443/04-claywater-walk-1-20261102T002043 |
-| Rocks sunk and conforming: a booth sheet of six rocks on a slope | 1.15 §e | L4 | owed | journey:rock-booth ran, 6 stills confirmed, reader: unprovable (mis-framed, base hidden) out/batch/1.15-round-1/20261102T001443/02-rock-booth-1-20261102T001612; owed a re-framed booth |
-| Creature encounters between places: six spawn points of different habitats visited by teleport, the loaded actors within 40 m read and a still each; a predator at its den | 1.15 §g | L4 | owed | journey:creature-spots fail out/batch/1.15-round-1/20261102T001443/03-creature-spots-1-20261102T001827 |
+| Rocks sunk and conforming: a booth sheet of six rocks on a slope | 1.15 §e | L4 | proven | owed | ; ran 6 stills confirmed; reader: no rock identifiable in any (framing); owed 
+| Creature encounters between places: six spawn points of different habitats visited by teleport, the loaded actors within 40 m read and a still each; a predator at its den | 1.15 §g | L4 | proven | owed | ; ran 7 stills confirmed, actor reads kept; reader: habitat unjudgeable from stills (dark, fog, blocked); reads plausible; den shows no predator in frame; owed 
 
 ## 1.8 A play machine you can rely on
 

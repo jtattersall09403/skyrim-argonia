@@ -309,6 +309,9 @@ class Runner:
         """`console: <line>`, or `console: {line: <line>, settle: <s>}`: the line is sent again while the game's
         main thread is still busy (a worldspace load after coc/cow holds it past the bridge's own retries), for up
         to `settle` seconds, then the last error stands (bmv-look, 2026-11-01)."""
+        # a bare line retries 30 s: the line after a moveto meets the same busy thread (driver, 2026-11-02)
+        if not isinstance(line, dict):
+            line = {"line": line, "settle": 30}
         if isinstance(line, dict):
             settle, line = float(line.get("settle", 0)), line["line"]
             end = time.monotonic() + settle

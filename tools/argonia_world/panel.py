@@ -205,10 +205,10 @@ def journey_text(vs: list[dict]) -> str:
     for v in vs:
         x, y, z = v["pos"]
         land = [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
-                {"read": ["player"], "path": "pos.0", "gt": x - LAND_TOL_UNITS},
-                {"read": ["player"], "path": "pos.0", "lt": x + LAND_TOL_UNITS},
-                {"read": ["player"], "path": "pos.1", "gt": y - LAND_TOL_UNITS},
-                {"read": ["player"], "path": "pos.1", "lt": y + LAND_TOL_UNITS}]
+                {"read": ["player"], "path": "pos.x", "gt": x - LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.x", "lt": x + LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.y", "gt": y - LAND_TOL_UNITS},
+                {"read": ["player"], "path": "pos.y", "lt": y + LAND_TOL_UNITS}]
         for when, hour in (("noon", 12), ("dawn", 6.5)):
             do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
