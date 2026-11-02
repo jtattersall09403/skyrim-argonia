@@ -1,0 +1,764 @@
+{
+ "screen": "inventory",
+ "doc": "Mock data for our inventory screen's L1/L3 checks (1.12 round 4): the full kit across the nine categories (about sixty stacks, one split, two worn), an empty pack, and a pack holding only weapons.",
+ "states": {
+  "full": {
+   "type": "inventory.state",
+   "v": 1,
+   "body": {
+    "items": [
+     {
+      "id": "000A0001",
+      "name": "Chitin Shortsword",
+      "category": "weapons",
+      "count": 1,
+      "weight": 9,
+      "value": 45,
+      "equipped": true,
+      "action": "Unequip",
+      "detail": "Damage 9"
+     },
+     {
+      "id": "000A0002",
+      "name": "Ironbound Spear",
+      "category": "weapons",
+      "count": 1,
+      "weight": 14,
+      "value": 60,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 12, reach long"
+     },
+     {
+      "id": "000A0003",
+      "name": "Hunter's Bow",
+      "category": "weapons",
+      "count": 1,
+      "weight": 8,
+      "value": 95,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 11"
+     },
+     {
+      "id": "000A0004",
+      "name": "Bonemeal Club",
+      "category": "weapons",
+      "count": 1,
+      "weight": 11,
+      "value": 20,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 10"
+     },
+     {
+      "id": "000A0005",
+      "name": "Marsh Dagger",
+      "category": "weapons",
+      "count": 1,
+      "weight": 1.5,
+      "value": 30,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 5, quick"
+     },
+     {
+      "id": "000A0006",
+      "name": "Reed Arrows",
+      "category": "weapons",
+      "count": 24,
+      "weight": 2.4,
+      "value": 24,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 6 each"
+     },
+     {
+      "id": "000A0007",
+      "name": "Netch Axe",
+      "category": "weapons",
+      "count": 1,
+      "weight": 12,
+      "value": 70,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 13"
+     },
+     {
+      "id": "000A0008",
+      "name": "Netch-leather Cuirass",
+      "category": "apparel",
+      "count": 1,
+      "weight": 9,
+      "value": 210,
+      "equipped": true,
+      "action": "Unequip",
+      "detail": "Armour 28"
+     },
+     {
+      "id": "000A0009",
+      "name": "Reed Sandals",
+      "category": "apparel",
+      "count": 1,
+      "weight": 1,
+      "value": 6,
+      "equipped": true,
+      "action": "Unequip",
+      "detail": "Armour 2"
+     },
+     {
+      "id": "000A000A",
+      "name": "Hist Bark Shield",
+      "category": "apparel",
+      "count": 1,
+      "weight": 6,
+      "value": 80,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Armour 14"
+     },
+     {
+      "id": "000A000B",
+      "name": "Hunter's Hood",
+      "category": "apparel",
+      "count": 1,
+      "weight": 1.5,
+      "value": 35,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Armour 4"
+     },
+     {
+      "id": "000A000C",
+      "name": "Swamp Wrap",
+      "category": "apparel",
+      "count": 1,
+      "weight": 2,
+      "value": 15,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Warmth 0, dries quickly"
+     },
+     {
+      "id": "000A000D",
+      "name": "Bonemold Greaves",
+      "category": "apparel",
+      "count": 1,
+      "weight": 5,
+      "value": 120,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Armour 12"
+     },
+     {
+      "id": "000A000E",
+      "name": "Silt-strider Gloves",
+      "category": "apparel",
+      "count": 1,
+      "weight": 1,
+      "value": 22,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Armour 3"
+     },
+     {
+      "id": "000A000F",
+      "name": "Fisher's Coat",
+      "category": "apparel",
+      "count": 1,
+      "weight": 3,
+      "value": 40,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Armour 6"
+     },
+     {
+      "id": "000A0010",
+      "name": "Draught of Marsh Vigor",
+      "category": "potions",
+      "count": 3,
+      "weight": 1.5,
+      "value": 120,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Restore 40 stamina"
+     },
+     {
+      "id": "000A0011",
+      "name": "Cure Rot Tonic",
+      "category": "potions",
+      "count": 3,
+      "weight": 1.5,
+      "value": 165,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Cures disease"
+     },
+     {
+      "id": "000A0012",
+      "name": "Healing Draught",
+      "category": "potions",
+      "count": 1,
+      "weight": 0.5,
+      "value": 35,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Restore 50 health"
+     },
+     {
+      "id": "000A0013",
+      "name": "Swamp Water Flask",
+      "category": "potions",
+      "count": 1,
+      "weight": 0.5,
+      "value": 2,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Clean enough to drink"
+     },
+     {
+      "id": "000A0014",
+      "name": "Breath of the Reeds",
+      "category": "potions",
+      "count": 1,
+      "weight": 0.5,
+      "value": 60,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Water breathing, 60 seconds"
+     },
+     {
+      "id": "000A0015",
+      "name": "Kwama Tincture",
+      "category": "potions",
+      "count": 5,
+      "weight": 2.5,
+      "value": 140,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Fortify strength"
+     },
+     {
+      "id": "000A0016",
+      "name": "Scroll of Mark",
+      "category": "scrolls",
+      "count": 3,
+      "weight": 0.6,
+      "value": 450,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Sets the Recall point"
+     },
+     {
+      "id": "000A0017",
+      "name": "Scroll of Fire Bite",
+      "category": "scrolls",
+      "count": 1,
+      "weight": 0.2,
+      "value": 45,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Fire damage 30"
+     },
+     {
+      "id": "000A0018",
+      "name": "Scroll of Warding",
+      "category": "scrolls",
+      "count": 5,
+      "weight": 1.0,
+      "value": 350,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Ward 40"
+     },
+     {
+      "id": "000A0019",
+      "name": "Scroll of Mercy",
+      "category": "scrolls",
+      "count": 1,
+      "weight": 0.2,
+      "value": 90,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Calms a creature"
+     },
+     {
+      "id": "000A001A",
+      "name": "Smoked Eel",
+      "category": "food",
+      "count": 1,
+      "weight": 0.5,
+      "value": 6,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 8 health, 8 stamina"
+     },
+     {
+      "id": "000A001B",
+      "name": "Marshmerrow Cake",
+      "category": "food",
+      "count": 12,
+      "weight": 3.6,
+      "value": 48,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 5 health"
+     },
+     {
+      "id": "000A001C",
+      "name": "Hackle-lo Stew",
+      "category": "food",
+      "count": 12,
+      "weight": 12,
+      "value": 108,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 15 health over time"
+     },
+     {
+      "id": "000A001D",
+      "name": "Roasted Crab",
+      "category": "food",
+      "count": 5,
+      "weight": 2.5,
+      "value": 35,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 10 health"
+     },
+     {
+      "id": "000A001E",
+      "name": "Swamp Bread",
+      "category": "food",
+      "count": 1,
+      "weight": 0.4,
+      "value": 3,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 4 health"
+     },
+     {
+      "id": "000A001F",
+      "name": "Fried Frogleg",
+      "category": "food",
+      "count": 5,
+      "weight": 1.0,
+      "value": 25,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restores 4 stamina"
+     },
+     {
+      "id": "000A0020",
+      "name": "Marshmerrow",
+      "category": "ingredients",
+      "count": 5,
+      "weight": 0.5,
+      "value": 10,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restore stamina, fortify health"
+     },
+     {
+      "id": "000A0021",
+      "name": "Hist Sap",
+      "category": "ingredients",
+      "count": 3,
+      "weight": 0.3,
+      "value": 36,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Resist poison, restore health"
+     },
+     {
+      "id": "000A0022",
+      "name": "Scales",
+      "category": "ingredients",
+      "count": 1,
+      "weight": 0.1,
+      "value": 5,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Resist cold"
+     },
+     {
+      "id": "000A0023",
+      "name": "Bog Beacon",
+      "category": "ingredients",
+      "count": 1,
+      "weight": 0.1,
+      "value": 8,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Night eye"
+     },
+     {
+      "id": "000A0024",
+      "name": "Saltrice",
+      "category": "ingredients",
+      "count": 1,
+      "weight": 0.1,
+      "value": 3,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Restore magicka"
+     },
+     {
+      "id": "000A0025",
+      "name": "Kagouti Hide",
+      "category": "ingredients",
+      "count": 5,
+      "weight": 5,
+      "value": 50,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Fortify block"
+     },
+     {
+      "id": "000A0026",
+      "name": "Netch Jelly",
+      "category": "ingredients",
+      "count": 1,
+      "weight": 0.2,
+      "value": 9,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Paralyse, light"
+     },
+     {
+      "id": "000A0027",
+      "name": "Shalk Resin",
+      "category": "ingredients",
+      "count": 2,
+      "weight": 0.2,
+      "value": 14,
+      "equipped": false,
+      "action": "Eat",
+      "detail": "Resist fire"
+     },
+     {
+      "id": "000A0028",
+      "name": "A Traveller's Guide to the Marsh",
+      "category": "books",
+      "count": 1,
+      "weight": 1,
+      "value": 25,
+      "equipped": false,
+      "action": "Read",
+      "detail": "A short guide to the roads and the water"
+     },
+     {
+      "id": "000A0029",
+      "name": "Hist Songs, Volume Two",
+      "category": "books",
+      "count": 1,
+      "weight": 1,
+      "value": 40,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Hist devotional verse"
+     },
+     {
+      "id": "000A002A",
+      "name": "Notes on the Silt Roads",
+      "category": "books",
+      "count": 1,
+      "weight": 0.5,
+      "value": 10,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Hand-written pages"
+     },
+     {
+      "id": "000A002B",
+      "name": "Treatise on Tides",
+      "category": "books",
+      "count": 1,
+      "weight": 1,
+      "value": 35,
+      "equipped": false,
+      "action": "Read",
+      "detail": "Where the water rises and why"
+     },
+     {
+      "id": "000A002C",
+      "name": "Rusted Gate Key",
+      "category": "keys",
+      "count": 1,
+      "weight": 0.1,
+      "value": 0,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Opens a gate in a fisher's yard"
+     },
+     {
+      "id": "000A002D",
+      "name": "Shrine Warden's Key",
+      "category": "keys",
+      "count": 1,
+      "weight": 0.1,
+      "value": 0,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Opens a locked shrine door"
+     },
+     {
+      "id": "000A002E",
+      "name": "Ledger Box Key",
+      "category": "keys",
+      "count": 1,
+      "weight": 0.1,
+      "value": 0,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Small and brass"
+     },
+     {
+      "id": "000A002F",
+      "name": "Fishing Net",
+      "category": "misc",
+      "count": 12,
+      "weight": 36,
+      "value": 144,
+      "equipped": false,
+      "action": "Use",
+      "detail": "For the shallows"
+     },
+     {
+      "id": "000A0030",
+      "name": "Cooking Pot",
+      "category": "misc",
+      "count": 1,
+      "weight": 4,
+      "value": 18,
+      "equipped": false,
+      "action": "Use",
+      "detail": "A dented iron pot"
+     },
+     {
+      "id": "000A0031",
+      "name": "Lockpick",
+      "category": "misc",
+      "count": 1,
+      "weight": 0.1,
+      "value": 5,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Opens simple locks"
+     },
+     {
+      "id": "000A0032",
+      "name": "Silver Ring (plain)",
+      "category": "misc",
+      "count": 5,
+      "weight": 0.5,
+      "value": 300,
+      "equipped": false,
+      "action": "Use",
+      "detail": "No enchantment"
+     },
+     {
+      "id": "000A0033",
+      "name": "Hist Idol, Small",
+      "category": "misc",
+      "count": 5,
+      "weight": 10,
+      "value": 450,
+      "equipped": false,
+      "action": "Use",
+      "detail": "A carved figure"
+     },
+     {
+      "id": "000A0034",
+      "name": "Coil of Rope",
+      "category": "misc",
+      "count": 12,
+      "weight": 24,
+      "value": 120,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Long enough to climb with"
+     },
+     {
+      "id": "000A0035",
+      "name": "Empty Bottle",
+      "category": "misc",
+      "count": 1,
+      "weight": 0.2,
+      "value": 1,
+      "equipped": false,
+      "action": "Use"
+     },
+     {
+      "id": "000A0036",
+      "name": "Whetstone",
+      "category": "misc",
+      "count": 2,
+      "weight": 1.0,
+      "value": 16,
+      "equipped": false,
+      "action": "Use",
+      "detail": "Sharpens a blade"
+     },
+     {
+      "id": "000A0037",
+      "name": "Dried Flowers",
+      "category": "misc",
+      "count": 1,
+      "weight": 0.1,
+      "value": 2,
+      "equipped": false,
+      "action": "Use"
+     },
+     {
+      "id": "000A0038",
+      "name": "Pearl",
+      "category": "misc",
+      "count": 5,
+      "weight": 0.5,
+      "value": 500,
+      "equipped": false,
+      "action": "Use",
+      "detail": "A river pearl"
+     },
+     {
+      "id": "000A0012#1",
+      "name": "Healing Draught",
+      "category": "potions",
+      "count": 2,
+      "weight": 1.0,
+      "value": 70,
+      "equipped": false,
+      "action": "Drink",
+      "detail": "Restore 50 health"
+     }
+    ],
+    "carried": 203.1,
+    "capacity": 300,
+    "gold": 1284,
+    "notice": "You drop the Whetstone."
+   }
+  },
+  "empty": {
+   "type": "inventory.state",
+   "v": 1,
+   "body": {
+    "items": [],
+    "carried": 0,
+    "capacity": 300,
+    "gold": 0
+   }
+  },
+  "oneCategory": {
+   "type": "inventory.state",
+   "v": 1,
+   "body": {
+    "items": [
+     {
+      "id": "000A0001",
+      "name": "Chitin Shortsword",
+      "category": "weapons",
+      "count": 1,
+      "weight": 9,
+      "value": 45,
+      "equipped": true,
+      "action": "Unequip",
+      "detail": "Damage 9"
+     },
+     {
+      "id": "000A0002",
+      "name": "Ironbound Spear",
+      "category": "weapons",
+      "count": 1,
+      "weight": 14,
+      "value": 60,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 12, reach long"
+     },
+     {
+      "id": "000A0003",
+      "name": "Hunter's Bow",
+      "category": "weapons",
+      "count": 1,
+      "weight": 8,
+      "value": 95,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 11"
+     },
+     {
+      "id": "000A0004",
+      "name": "Bonemeal Club",
+      "category": "weapons",
+      "count": 1,
+      "weight": 11,
+      "value": 20,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 10"
+     },
+     {
+      "id": "000A0005",
+      "name": "Marsh Dagger",
+      "category": "weapons",
+      "count": 1,
+      "weight": 1.5,
+      "value": 30,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 5, quick"
+     },
+     {
+      "id": "000A0006",
+      "name": "Reed Arrows",
+      "category": "weapons",
+      "count": 24,
+      "weight": 2.4,
+      "value": 24,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 6 each"
+     },
+     {
+      "id": "000A0007",
+      "name": "Netch Axe",
+      "category": "weapons",
+      "count": 1,
+      "weight": 12,
+      "value": 70,
+      "equipped": false,
+      "action": "Equip",
+      "detail": "Damage 13"
+     }
+    ],
+    "carried": 60.5,
+    "capacity": 300,
+    "gold": 32
+   }
+  }
+ },
+ "intents": {
+  "use": {
+   "type": "inventory.use",
+   "v": 1,
+   "body": {
+    "item": "000A0001"
+   }
+  },
+  "drop": {
+   "type": "inventory.drop",
+   "v": 1,
+   "body": {
+    "item": "000A0001"
+   }
+  },
+  "close": {
+   "type": "view.close",
+   "v": 1,
+   "body": {
+    "view": "inventory"
+   }
+  }
+ }
+}

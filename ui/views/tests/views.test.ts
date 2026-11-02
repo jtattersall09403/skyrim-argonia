@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import {
   encodeIntent, messageTable, type ChartState, type DialogueState, type HudState, type IntentMessage,
-  type JournalState, type MagicState, type PushMessage, type SittingState,
+  type CharsheetState, type InventoryState, type JournalState, type MagicState, type PushMessage, type SittingState,
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
@@ -20,13 +20,15 @@ import { barLength, FILL_GLIDE, isLow, motion, render as hud, renderBars, shimme
 import { render as journal, ribbonStep, searchIntent, turn } from "../journal/render.ts";
 import { done as sittingDone, render as sitting } from "../sitting/render.ts";
 import { close as magicClose, render as magic } from "../magic/render.ts";
+import { close as invClose, detail as invDetail, render as inventory, step as invStep, TABS as invTabs, visible as invVisible } from "../inventory/render.ts";
+import { close as charClose, render as charsheet, step as charStep, TABS as charTabs } from "../charsheet/render.ts";
 import { close as systemClose, render as system } from "../system/render.ts";
 import { clamp as waitClamp, close as waitClose, render as wait } from "../wait/render.ts";
 
 const root = new URL("../../../", import.meta.url);
 type Fixture = { states: Record<string, PushMessage>; intents: Record<string, IntentMessage> };
 const fx = (s: string): Fixture => JSON.parse(readFileSync(new URL(`ui/fixtures/${s}.json`, root), "utf8"));
-const screens = ["dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait"] as const;
+const screens = ["dialogue", "journal", "hud", "chart", "sitting", "magic", "system", "wait", "inventory", "charsheet"] as const;
 
 // Every HTML a push can produce (the dialogue's with the persuasion panel open as well), keyed by fixture state.
 function renders(screen: string, m: PushMessage): string[] {
@@ -40,6 +42,8 @@ function renders(screen: string, m: PushMessage): string[] {
     case "sitting.state": return [sitting(m.body)];
     case "magic.state": return [magic(m.body)];
     case "system.state": return [system(m.body)];
+    case "inventory.state": return invTabs.map(([tab]) => inventory(m.body, tab));
+    case "charsheet.state": return charTabs.map(([tab]) => charsheet(m.body, tab));
     case "wait.state": return [wait(m.body), wait(m.body, 1), wait(m.body, 3), wait(m.body, m.body.max)];
   }
   throw new Error(`${screen}: no view renders ${(m as PushMessage).type}`);
@@ -54,6 +58,8 @@ function programmatic(m: PushMessage): IntentMessage[] {
   if (m.type === "sitting.state") out.push(sittingDone());
   if (m.type === "magic.state") out.push(magicClose());
   if (m.type === "system.state") out.push(systemClose());
+  if (m.type === "inventory.state") out.push(invClose());
+  if (m.type === "charsheet.state") out.push(charClose());
   if (m.type === "wait.state") out.push(waitClose());
   if (m.type === "chart.state") out.push(panIntent(m.body.view), { type: "view.close", v: 1, body: { view: "chart" } });
   return out.filter((x): x is IntentMessage => x !== null);
@@ -153,6 +159,60 @@ test("each view shows what the push carried", () => {
   const mys = textOf(magic(kit).split('<li class="school mysticism">')[1].split('<li class="school restoration">')[0]);
   assert.ok(mys.startsWith("Mysticism") && mys.includes("Mark 500") && mys.includes("Recall R 250"), `Mark and Recall under Mysticism: ${mys}`);
   assert.ok(kt.includes("Left Flames") && kt.includes("Right Recall") && kt.includes("Power Histskin"), "the readied hands");
+  // Our inventory: ten tabs in order (All, then the nine categories) that cycle both ways, every stack with its name,
+  // count, weight and value, a use intent per row and a drop in the detail, the carry line and gold; empty says so.
+  assert.deepEqual(invTabs.map(([k]) => k), ["all", "weapons", "apparel", "potions", "scrolls", "food", "ingredients", "books", "keys", "misc"]);
+  assert.equal(invStep("all", -1), "misc"); assert.equal(invStep("misc", 1), "all"); assert.equal(invStep("food", 1), "ingredients");
+  for (const [name, m] of Object.entries(fx("inventory").states)) {
+    const s = (m as { body: InventoryState }).body;
+    for (const [tab] of invTabs) {
+      const html = inventory(s, tab), t = textOf(html), rows = invVisible(s, tab);
+      assert.equal((html.match(/<li class="row/g) ?? []).length, rows.length, `${name}/${tab}: one row per stack`);
+      assert.equal((html.match(/data-list="items"/g) ?? []).length, 1, `${name}/${tab}: one list`);
+      assert.equal((html.match(/data-ui="tab"/g) ?? []).length, 10, `${name}/${tab}: ten tab buttons`);
+      const sent = intentsIn(html) as IntentMessage[];
+      for (const i of rows) {
+        assert.ok(t.includes(i.name) && t.includes(String(i.value)), `${name}/${tab}: ${i.name}`);
+        assert.ok(sent.some((x) => JSON.stringify(x) === JSON.stringify({ type: "inventory.use", v: 1, body: { item: i.id } })), `${name}/${tab}: use ${i.id}`);
+      }
+      if (!rows.length) assert.ok(t.includes("Nothing carried here") && t.includes("Nothing to show"), `${name}/${tab}: empty says so`);
+      assert.ok(t.includes(`Carry weight ${s.carried} / ${s.capacity}`) && t.includes(`Gold ${s.gold}`), `${name}/${tab}: carry and gold`);
+    }
+    const first = invVisible(s, "all")[0];
+    if (first) {
+      const d = invDetail(first), di = intentsIn(d) as IntentMessage[];
+      assert.ok(di.some((x) => x.type === "inventory.drop") && di.some((x) => x.type === "inventory.use"), `${name}: detail use and drop`);
+      assert.ok(textOf(inventory(s, "all", s.items[1]?.id)).includes(s.items[1] ? s.items[1].name : ""), name);
+    }
+  }
+  {
+    const full = (fx("inventory").states.full as { body: InventoryState }).body;
+    assert.ok(full.items.length >= 55 && new Set(full.items.map((i) => i.category)).size === 9, "full: about sixty stacks over nine categories");
+    assert.ok(full.items.some((i) => i.equipped) && inventory(full, "all").includes('class="eq" title="Equipped"'), "equipped mark");
+    assert.ok(inventory(full, "weapons").includes('class="tab on"'), "the current tab is marked");
+    const one = (fx("inventory").states.oneCategory as { body: InventoryState }).body;
+    assert.ok(one.items.every((i) => i.category === "weapons") && invVisible(one, "potions").length === 0);
+    assert.ok(textOf(inventory({ ...full, carried: 310, capacity: 300 })).length > 0 && inventory({ ...full, carried: 310, capacity: 300 }).includes("carry over"));
+  }
+  // Our character sheet: three tabs that cycle, the side column, each tab's list with a focusable row per entry, a
+  // take intent on exactly the perks that can be taken.
+  assert.deepEqual(charTabs.map(([k]) => k), ["attributes", "skills", "perks"]);
+  assert.equal(charStep("attributes", -1), "perks"); assert.equal(charStep("perks", 1), "attributes");
+  for (const [name, m] of Object.entries(fx("charsheet").states)) {
+    const s = (m as { body: CharsheetState }).body;
+    const at = charsheet(s, "attributes"), sk = charsheet(s, "skills"), pk = charsheet(s, "perks");
+    const side = textOf(at);
+    assert.ok(side.includes(s.name) && side.includes(s.race) && side.includes(`Level ${s.level}`) && side.includes(`${Math.round(s.health)}/${Math.round(s.healthMax)}`), `${name}: side column`);
+    assert.equal(s.attributes.length, 7); assert.equal(s.skills.length, 27);
+    for (const a of s.attributes) assert.ok(at.includes(`data-key="a:${a.id}"`) && textOf(at).includes(a.name), `${name}: ${a.id}`);
+    for (const k of s.skills) assert.ok(sk.includes(`data-key="s:${k.id}"`) && textOf(sk).includes(k.name), `${name}: ${k.id}`);
+    assert.equal((sk.match(/data-list="skills"/g) ?? []).length, 1); assert.equal((pk.match(/data-list="perks"/g) ?? []).length, 1);
+    const take = (intentsIn(pk) as IntentMessage[]).filter((x) => x.type === "charsheet.perk").map((x) => (x as { body: { perk: string } }).body.perk);
+    assert.deepEqual(take, s.perks.filter((p) => p.available && !p.taken).map((p) => p.id), `${name}: take only what can be taken`);
+    for (const p of s.perks) assert.ok(pk.includes(`data-key="p:${p.id}"`) && textOf(pk).includes(p.name) && textOf(pk).includes(p.description), `${name}: ${p.name}`);
+  }
+  assert.equal((intentsIn(charsheet((fx("charsheet").states.main as { body: CharsheetState }).body, "perks")) as IntentMessage[]).filter((x) => x.type === "charsheet.perk").length, 0, "main: none takeable");
+  assert.equal((intentsIn(charsheet((fx("charsheet").states.perkAvailable as { body: CharsheetState }).body, "perks")) as IntentMessage[]).filter((x) => x.type === "charsheet.perk").length, 2, "perkAvailable: two takeable");
   for (const [name, m] of Object.entries(fx("chart").states)) {
     const s = (m as { body: ChartState }).body;
     const html = chart(s);

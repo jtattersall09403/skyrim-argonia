@@ -1,0 +1,53 @@
+/* Our character sheet (1.12 round 4): one paper sheet, the paper theme's tokens only (theme.css; DESIGN.md). Title
+   bar, three tabs, the side column of who the player is beside one scrolling list. */
+body { display: flex; align-items: center; justify-content: center; }
+#view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+.window {
+  width: min(94vw, 56rem); height: 92vh; display: flex; flex-direction: column; gap: var(--s2);
+  padding: var(--s2) var(--s4) var(--s3); color: var(--ink);
+}
+.bar { display: flex; align-items: center; gap: var(--s4); padding: var(--s1) var(--s1) var(--s2);
+  border-bottom: 1px solid var(--ink-faint); }
+.bar h1 { flex: 1; margin: 0; font-size: var(--t-title); font-weight: normal; letter-spacing: 0.08em; color: var(--rust); }
+.tabrow { display: flex; align-items: center; gap: var(--s2); }
+.pad { display: none; padding: 0 var(--s2); color: var(--paper-light); background: var(--ink-soft); border-radius: 0.15rem; }
+body[data-device="gamepad"] .pad { display: inline-block; }
+.tabs { flex: 1; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); }
+.tab { min-height: 2.2rem; padding: 0 var(--s3); color: var(--link); border: 1px solid var(--ink-faint);
+  border-radius: 0.15rem; background: transparent; }
+.tab.on { color: var(--ink); background: rgba(75, 90, 42, 0.16); border-color: var(--moss); }
+.body { flex: 1; min-height: 0; display: flex; gap: var(--s4); }
+.side { width: 17rem; flex: none; overflow-y: auto; padding-right: var(--s3); border-right: 1px solid var(--ink-faint); }
+.who { margin: 0; font-size: var(--t-head); font-weight: normal; color: var(--rust); }
+.race { margin: 0 0 var(--s3); color: var(--ink-soft); font-style: italic; }
+.name { display: flex; align-items: baseline; gap: var(--s2); width: 100%; padding: 0.15rem var(--s2); color: var(--ink);
+  text-align: left; border-radius: 0.15rem; }
+.name:hover { background: rgba(176, 112, 42, 0.16); }
+.n { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.v { min-width: 3.5rem; text-align: right; flex: none; }
+.meter { flex: none; width: 5rem; height: 0.55rem; align-self: center; background: var(--paper-dark);
+  border: 1px solid var(--ink-faint); border-radius: 0.1rem; }
+.meter i { display: block; height: 100%; background: var(--moss); }
+.meter.health i { background: var(--bar-health); } .meter.magicka i { background: var(--bar-magicka); }
+.meter.stamina i { background: var(--bar-stamina); } .meter.lvl i { background: var(--rust); }
+.well { flex: 1; min-width: 0; min-height: 0; list-style: none; margin: 0; padding: 0 var(--s2) 0 0; }
+.group { margin: 0 0 var(--s3); }
+.rows { list-style: none; margin: 0; padding: 0; }
+.ghead { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust);
+  border-bottom: 1px solid var(--ink-faint); }
+.row { margin: 0.05rem 0; }
+.perk { flex-wrap: wrap; }
+.perk .d { flex-basis: 100%; color: var(--ink-soft); }
+.perk .st { color: var(--moss); font-style: italic; }
+.perk.locked { color: var(--ink-faint); }
+.perk.locked .st { color: var(--rust); }
+.perk.taken .n { font-weight: bold; }
+.none { padding: 0 var(--s2); color: var(--ink-soft); font-style: italic; list-style: none; }
+.notice { margin: 0; padding: var(--s1) var(--s3); color: var(--rust); border-left: 0.2rem solid var(--focus); }
+
+@media (min-aspect-ratio: 2/1) { .window { width: min(94vw, 62rem); } }
+.hint { margin: 0; min-height: calc(var(--line) * 1em); padding-top: var(--s1); border-top: 1px solid var(--ink-faint); color: var(--ink-soft); font-style: italic; }
+.legend { display: none; margin: 0; gap: var(--s6); color: var(--ink-soft); }
+.legend b { font-weight: normal; padding: 0 0.3rem; color: var(--paper-light); background: var(--ink-soft); border-radius: 0.15rem; }
+body[data-device="gamepad"] .legend { display: flex; }

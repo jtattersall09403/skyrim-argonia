@@ -19,7 +19,7 @@
 namespace argonia::core::msg {
 
 // FNV-1a 64 of the schema's shape; the views' twin carries the same value (ui/schema/generated/messages.ts).
-inline constexpr std::string_view kSchemaHash = "303778da3f03cb36";
+inline constexpr std::string_view kSchemaHash = "e92d5728feb2aa61";
 
 enum class Direction : std::uint8_t { push, intent };  // push: ArgoniaCore -> view; intent: view -> ArgoniaCore
 
@@ -91,9 +91,17 @@ inline constexpr std::array<std::string_view, 4> kSystemActionNames{"settings", 
 enum class WaitMode : std::uint8_t { wait, sleep };
 inline constexpr std::array<std::string_view, 2> kWaitModeNames{"wait", "sleep"};
 
+// the category an item belongs to
+enum class InventoryCategory : std::uint8_t { weapons, apparel, potions, scrolls, food, ingredients, books, keys, misc };
+inline constexpr std::array<std::string_view, 9> kInventoryCategoryNames{"weapons", "apparel", "potions", "scrolls", "food", "ingredients", "books", "keys", "misc"};
+
+// one of Argonia's twenty-seven skills
+enum class SkillId : std::uint8_t { acrobatics, alchemy, alteration, athletics, axe, block, blunt, conjuration, destruction, enchant, handToHand, heavyArmor, illusion, lightArmor, longBlade, marksman, mediumArmor, mercantile, mysticism, restoration, security, shortBlade, smithing, sneak, spear, speechcraft, unarmored };
+inline constexpr std::array<std::string_view, 27> kSkillIdNames{"acrobatics", "alchemy", "alteration", "athletics", "axe", "block", "blunt", "conjuration", "destruction", "enchant", "handToHand", "heavyArmor", "illusion", "lightArmor", "longBlade", "marksman", "mediumArmor", "mercantile", "mysticism", "restoration", "security", "shortBlade", "smithing", "sneak", "spear", "speechcraft", "unarmored"};
+
 // a view the player can close
-enum class ViewId : std::uint8_t { dialogue, journal, chart, magic, system, wait };
-inline constexpr std::array<std::string_view, 6> kViewIdNames{"dialogue", "journal", "chart", "magic", "system", "wait"};
+enum class ViewId : std::uint8_t { dialogue, journal, chart, magic, system, wait, inventory, charsheet };
+inline constexpr std::array<std::string_view, 8> kViewIdNames{"dialogue", "journal", "chart", "magic", "system", "wait", "inventory", "charsheet"};
 
 // The person the player is talking to
 struct Speaker {
@@ -525,6 +533,100 @@ struct WaitPick {
   bool operator==(const WaitPick&) const = default;
 };
 
+// One carried stack
+struct InventoryItem {
+  std::string id;  // the stack's key: the item's form id, 8 hex digits, then # and the stack's index when the item is split
+  std::string name;  // the item's name as the game has it
+  InventoryCategory category{};  // the category an item belongs to
+  std::int64_t count = 0;  // how many in the stack
+  double weight = 0;  // the stack's weight, all of it
+  std::int64_t value = 0;  // the stack's value in gold, all of it
+  bool equipped = false;  // worn or readied now
+  std::string action;  // what the pad's A does to it, as the player reads it: Equip, Unequip, Use, Eat, Read, Drink
+  std::optional<std::string> detail;  // one line of the item's figures or effect, as ArgoniaCore words them
+  bool operator==(const InventoryItem&) const = default;
+};
+
+// The open inventory
+struct InventoryState {
+  std::vector<InventoryItem> items;  // every carried stack, in ArgoniaCore's order (equipped first within a category)
+  double carried = 0;  // weight carried
+  double capacity = 0;  // the weight the player can carry before slowing
+  std::int64_t gold = 0;  // gold carried
+  std::optional<std::string> notice;  // one line about the last action (a refusal), as ArgoniaCore words it
+  bool operator==(const InventoryState&) const = default;
+};
+
+// The player equipped or used a stack (the pad's A)
+struct InventoryUse {
+  std::string item;  // the stack's key
+  bool operator==(const InventoryUse&) const = default;
+};
+
+// The player dropped a stack
+struct InventoryDrop {
+  std::string item;  // the stack's key
+  bool operator==(const InventoryDrop&) const = default;
+};
+
+// One attribute
+struct CharAttribute {
+  AttributeId id{};  // one of the seven attributes (Morrowind's, without Luck)
+  std::string name;  // the attribute's name as the sheet shows it
+  std::int64_t value = 0;  // the attribute now
+  std::optional<std::string> blurb;  // one line on what it does, shown under the list when the row is focused
+  bool operator==(const CharAttribute&) const = default;
+};
+
+// One skill
+struct CharSkill {
+  SkillId id{};  // one of Argonia's twenty-seven skills
+  std::string name;  // the skill's name as the sheet shows it
+  std::string group;  // its class heading as the sheet shows it (armour, craft, magic, ...)
+  std::int64_t value = 0;  // the skill now
+  double progress = 0;  // use points toward the next rank, 0 to 1
+  std::optional<std::string> blurb;  // one line on what it does, shown under the list when the row is focused
+  bool operator==(const CharSkill&) const = default;
+};
+
+// One perk in a skill's tree
+struct CharPerk {
+  std::string id;  // the perk's form id, 8 hex digits
+  SkillId skill{};  // one of Argonia's twenty-seven skills
+  std::string name;  // the perk's name (our wording, perk_text)
+  std::string description;  // what it does, in our wording
+  bool taken = false;  // the player has it
+  bool available = false;  // the player can take it now
+  std::optional<std::string> need;  // what is missing when it is not available, as ArgoniaCore words it
+  bool operator==(const CharPerk&) const = default;
+};
+
+// The open character sheet
+struct CharsheetState {
+  std::string name;  // the player's name
+  std::string race;  // the player's race as the game has it
+  std::int64_t level = 0;  // the character level
+  double progress = 0;  // progress to the next level, 0 to 1
+  double health = 0;  // health now
+  double health_max = 0;  // maximum health
+  double magicka = 0;  // magicka now
+  double magicka_max = 0;  // maximum magicka
+  double stamina = 0;  // stamina now
+  double stamina_max = 0;  // maximum stamina
+  std::int64_t perk_points = 0;  // perk points to spend
+  std::vector<CharAttribute> attributes;  // the seven attributes, in the sheet's order
+  std::vector<CharSkill> skills;  // the twenty-seven skills, by class then name
+  std::vector<CharPerk> perks;  // every perk the player has or can see, by skill then tree order
+  std::optional<std::string> notice;  // one line about the last pick (a refusal), as ArgoniaCore words it
+  bool operator==(const CharsheetState&) const = default;
+};
+
+// The player took a perk
+struct CharsheetPerk {
+  std::string perk;  // the perk's form id, 8 hex digits
+  bool operator==(const CharsheetPerk&) const = default;
+};
+
 // The player closed a view (Escape, the pad's B, the close button)
 struct ViewClose {
   ViewId view{};  // a view the player can close
@@ -667,18 +769,48 @@ struct Traits<WaitPick> {
   static constexpr Direction dir = Direction::intent;
 };
 template <>
+struct Traits<InventoryState> {
+  static constexpr std::string_view type = "inventory.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<InventoryUse> {
+  static constexpr std::string_view type = "inventory.use";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
+struct Traits<InventoryDrop> {
+  static constexpr std::string_view type = "inventory.drop";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
+struct Traits<CharsheetState> {
+  static constexpr std::string_view type = "charsheet.state";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::push;
+};
+template <>
+struct Traits<CharsheetPerk> {
+  static constexpr std::string_view type = "charsheet.perk";
+  static constexpr std::uint32_t version = 1;
+  static constexpr Direction dir = Direction::intent;
+};
+template <>
 struct Traits<ViewClose> {
   static constexpr std::string_view type = "view.close";
   static constexpr std::uint32_t version = 1;
   static constexpr Direction dir = Direction::intent;
 };
 
-using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState, MagicState, SystemState, WaitState>;
-using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, MagicEquip, SystemPick, WaitPick, ViewClose>;
-using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, MagicState, MagicEquip, SystemState, SystemPick, WaitState, WaitPick, ViewClose>;
+using Push = std::variant<DialogueState, JournalState, HudState, HudBars, HudMinimap, ChartState, SittingState, MagicState, SystemState, WaitState, InventoryState, CharsheetState>;
+using Intent = std::variant<DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalPage, ChartPan, SittingBuy, SittingDone, MagicEquip, SystemPick, WaitPick, InventoryUse, InventoryDrop, CharsheetPerk, ViewClose>;
+using Message = std::variant<DialogueState, DialogueTopic, DialogueKeyword, DialoguePersuade, DialogueGoodbye, DialogueService, JournalState, JournalPage, HudState, HudBars, HudMinimap, ChartState, ChartPan, SittingState, SittingBuy, SittingDone, MagicState, MagicEquip, SystemState, SystemPick, WaitState, WaitPick, InventoryState, InventoryUse, InventoryDrop, CharsheetState, CharsheetPerk, ViewClose>;
 
 struct MessageInfo { std::string_view type; std::uint32_t version; Direction dir; };
-inline constexpr std::array<MessageInfo, 23> kMessages{{
+inline constexpr std::array<MessageInfo, 28> kMessages{{
     {"dialogue.state", 2, Direction::push},
     {"dialogue.topic", 1, Direction::intent},
     {"dialogue.keyword", 1, Direction::intent},
@@ -701,6 +833,11 @@ inline constexpr std::array<MessageInfo, 23> kMessages{{
     {"system.pick", 1, Direction::intent},
     {"wait.state", 1, Direction::push},
     {"wait.pick", 1, Direction::intent},
+    {"inventory.state", 1, Direction::push},
+    {"inventory.use", 1, Direction::intent},
+    {"inventory.drop", 1, Direction::intent},
+    {"charsheet.state", 1, Direction::push},
+    {"charsheet.perk", 1, Direction::intent},
     {"view.close", 1, Direction::intent},
 }};
 
@@ -842,13 +979,29 @@ inline bool from_json(const json::Value& j, WaitMode& out, const std::string& pa
     if (*s == kWaitModeNames[i]) { out = WaitMode(i); return true; }
   return json::fail(err, path, "'" + *s + "' is not one of wait, sleep");
 }
+inline json::Value to_json(InventoryCategory v) { return json::Value::string(std::string(kInventoryCategoryNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, InventoryCategory& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of weapons, apparel, potions, scrolls, food, ingredients, books, keys, misc");
+  for (std::size_t i = 0; i < kInventoryCategoryNames.size(); ++i)
+    if (*s == kInventoryCategoryNames[i]) { out = InventoryCategory(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of weapons, apparel, potions, scrolls, food, ingredients, books, keys, misc");
+}
+inline json::Value to_json(SkillId v) { return json::Value::string(std::string(kSkillIdNames[std::size_t(v)])); }
+inline bool from_json(const json::Value& j, SkillId& out, const std::string& path, std::string& err) {
+  const std::string* s = j.as_string();
+  if (!s) return json::fail(err, path, "want one of acrobatics, alchemy, alteration, athletics, axe, block, blunt, conjuration, destruction, enchant, handToHand, heavyArmor, illusion, lightArmor, longBlade, marksman, mediumArmor, mercantile, mysticism, restoration, security, shortBlade, smithing, sneak, spear, speechcraft, unarmored");
+  for (std::size_t i = 0; i < kSkillIdNames.size(); ++i)
+    if (*s == kSkillIdNames[i]) { out = SkillId(i); return true; }
+  return json::fail(err, path, "'" + *s + "' is not one of acrobatics, alchemy, alteration, athletics, axe, block, blunt, conjuration, destruction, enchant, handToHand, heavyArmor, illusion, lightArmor, longBlade, marksman, mediumArmor, mercantile, mysticism, restoration, security, shortBlade, smithing, sneak, spear, speechcraft, unarmored");
+}
 inline json::Value to_json(ViewId v) { return json::Value::string(std::string(kViewIdNames[std::size_t(v)])); }
 inline bool from_json(const json::Value& j, ViewId& out, const std::string& path, std::string& err) {
   const std::string* s = j.as_string();
-  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart, magic, system, wait");
+  if (!s) return json::fail(err, path, "want one of dialogue, journal, chart, magic, system, wait, inventory, charsheet");
   for (std::size_t i = 0; i < kViewIdNames.size(); ++i)
     if (*s == kViewIdNames[i]) { out = ViewId(i); return true; }
-  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart, magic, system, wait");
+  return json::fail(err, path, "'" + *s + "' is not one of dialogue, journal, chart, magic, system, wait, inventory, charsheet");
 }
 
 inline json::Value to_json(const Speaker& v) {
@@ -2662,6 +2815,441 @@ inline bool from_json(const json::Value& j, WaitPick& out, const std::string& pa
   return f.done();
 }
 
+inline json::Value to_json(const InventoryItem& v) {
+  json::Object o;
+  o.reserve(9);
+  o.push_back({"id", json::Value::string(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"category", to_json(v.category)});
+  o.push_back({"count", json::Value::number(double(v.count))});
+  o.push_back({"weight", json::Value::number(v.weight)});
+  o.push_back({"value", json::Value::number(double(v.value))});
+  o.push_back({"equipped", json::Value::boolean(v.equipped)});
+  o.push_back({"action", json::Value::string(v.action)});
+  if (v.detail) o.push_back({"detail", json::Value::string(*v.detail)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, InventoryItem& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_category = f.req("category")) {
+    if (!from_json(*f_category, out.category, path + ".category", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_count = f.req("count")) {
+    if (!json::read_int(*f_count, out.count, 1.0, json::kMaxSafeInt, path + ".count", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_weight = f.req("weight")) {
+    if (!json::read_num(*f_weight, out.weight, 0.0, (std::numeric_limits<double>::max)(), path + ".weight", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_value = f.req("value")) {
+    if (!json::read_int(*f_value, out.value, 0.0, json::kMaxSafeInt, path + ".value", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_equipped = f.req("equipped")) {
+    if (!json::read(*f_equipped, out.equipped, path + ".equipped", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_action = f.req("action")) {
+    if (!json::read(*f_action, out.action, path + ".action", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_detail = f.opt("detail")) {
+    out.detail.emplace();
+    if (!json::read(*f_detail, *out.detail, path + ".detail", err)) return false;
+  } else {
+    out.detail.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const InventoryState& v) {
+  json::Object o;
+  o.reserve(5);
+  o.push_back({"items", [&] { json::Array a0; a0.reserve(v.items.size()); for (const auto& e0 : v.items) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"carried", json::Value::number(v.carried)});
+  o.push_back({"capacity", json::Value::number(v.capacity)});
+  o.push_back({"gold", json::Value::number(double(v.gold))});
+  if (v.notice) o.push_back({"notice", json::Value::string(*v.notice)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, InventoryState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_items = f.req("items")) {
+    {
+      const json::Array* a0 = (*f_items).as_array();
+      if (!a0) return json::fail(err, path + ".items", "want a list");
+      out.items.clear();
+      out.items.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.items.emplace_back();
+        if (!from_json((*a0)[i0], out.items.back(), path + ".items" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_carried = f.req("carried")) {
+    if (!json::read_num(*f_carried, out.carried, 0.0, (std::numeric_limits<double>::max)(), path + ".carried", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_capacity = f.req("capacity")) {
+    if (!json::read_num(*f_capacity, out.capacity, 0.0, (std::numeric_limits<double>::max)(), path + ".capacity", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_gold = f.req("gold")) {
+    if (!json::read_int(*f_gold, out.gold, 0.0, json::kMaxSafeInt, path + ".gold", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_notice = f.opt("notice")) {
+    out.notice.emplace();
+    if (!json::read(*f_notice, *out.notice, path + ".notice", err)) return false;
+  } else {
+    out.notice.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const InventoryUse& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"item", json::Value::string(v.item)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, InventoryUse& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_item = f.req("item")) {
+    if (!json::read(*f_item, out.item, path + ".item", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const InventoryDrop& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"item", json::Value::string(v.item)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, InventoryDrop& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_item = f.req("item")) {
+    if (!json::read(*f_item, out.item, path + ".item", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const CharAttribute& v) {
+  json::Object o;
+  o.reserve(4);
+  o.push_back({"id", to_json(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"value", json::Value::number(double(v.value))});
+  if (v.blurb) o.push_back({"blurb", json::Value::string(*v.blurb)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, CharAttribute& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!from_json(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_value = f.req("value")) {
+    if (!json::read_int(*f_value, out.value, 0.0, json::kMaxSafeInt, path + ".value", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_blurb = f.opt("blurb")) {
+    out.blurb.emplace();
+    if (!json::read(*f_blurb, *out.blurb, path + ".blurb", err)) return false;
+  } else {
+    out.blurb.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const CharSkill& v) {
+  json::Object o;
+  o.reserve(6);
+  o.push_back({"id", to_json(v.id)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"group", json::Value::string(v.group)});
+  o.push_back({"value", json::Value::number(double(v.value))});
+  o.push_back({"progress", json::Value::number(v.progress)});
+  if (v.blurb) o.push_back({"blurb", json::Value::string(*v.blurb)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, CharSkill& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!from_json(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_group = f.req("group")) {
+    if (!json::read(*f_group, out.group, path + ".group", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_value = f.req("value")) {
+    if (!json::read_int(*f_value, out.value, 0.0, json::kMaxSafeInt, path + ".value", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_progress = f.req("progress")) {
+    if (!json::read_num(*f_progress, out.progress, 0.0, 1.0, path + ".progress", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_blurb = f.opt("blurb")) {
+    out.blurb.emplace();
+    if (!json::read(*f_blurb, *out.blurb, path + ".blurb", err)) return false;
+  } else {
+    out.blurb.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const CharPerk& v) {
+  json::Object o;
+  o.reserve(7);
+  o.push_back({"id", json::Value::string(v.id)});
+  o.push_back({"skill", to_json(v.skill)});
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"description", json::Value::string(v.description)});
+  o.push_back({"taken", json::Value::boolean(v.taken)});
+  o.push_back({"available", json::Value::boolean(v.available)});
+  if (v.need) o.push_back({"need", json::Value::string(*v.need)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, CharPerk& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_id = f.req("id")) {
+    if (!json::read(*f_id, out.id, path + ".id", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_skill = f.req("skill")) {
+    if (!from_json(*f_skill, out.skill, path + ".skill", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_description = f.req("description")) {
+    if (!json::read(*f_description, out.description, path + ".description", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_taken = f.req("taken")) {
+    if (!json::read(*f_taken, out.taken, path + ".taken", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_available = f.req("available")) {
+    if (!json::read(*f_available, out.available, path + ".available", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_need = f.opt("need")) {
+    out.need.emplace();
+    if (!json::read(*f_need, *out.need, path + ".need", err)) return false;
+  } else {
+    out.need.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const CharsheetState& v) {
+  json::Object o;
+  o.reserve(15);
+  o.push_back({"name", json::Value::string(v.name)});
+  o.push_back({"race", json::Value::string(v.race)});
+  o.push_back({"level", json::Value::number(double(v.level))});
+  o.push_back({"progress", json::Value::number(v.progress)});
+  o.push_back({"health", json::Value::number(v.health)});
+  o.push_back({"healthMax", json::Value::number(v.health_max)});
+  o.push_back({"magicka", json::Value::number(v.magicka)});
+  o.push_back({"magickaMax", json::Value::number(v.magicka_max)});
+  o.push_back({"stamina", json::Value::number(v.stamina)});
+  o.push_back({"staminaMax", json::Value::number(v.stamina_max)});
+  o.push_back({"perkPoints", json::Value::number(double(v.perk_points))});
+  o.push_back({"attributes", [&] { json::Array a0; a0.reserve(v.attributes.size()); for (const auto& e0 : v.attributes) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"skills", [&] { json::Array a0; a0.reserve(v.skills.size()); for (const auto& e0 : v.skills) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  o.push_back({"perks", [&] { json::Array a0; a0.reserve(v.perks.size()); for (const auto& e0 : v.perks) a0.push_back(to_json(e0)); return json::Value::array(std::move(a0)); }()});
+  if (v.notice) o.push_back({"notice", json::Value::string(*v.notice)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, CharsheetState& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_name = f.req("name")) {
+    if (!json::read(*f_name, out.name, path + ".name", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_race = f.req("race")) {
+    if (!json::read(*f_race, out.race, path + ".race", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_level = f.req("level")) {
+    if (!json::read_int(*f_level, out.level, 1.0, json::kMaxSafeInt, path + ".level", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_progress = f.req("progress")) {
+    if (!json::read_num(*f_progress, out.progress, 0.0, 1.0, path + ".progress", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_health = f.req("health")) {
+    if (!json::read_num(*f_health, out.health, 0.0, (std::numeric_limits<double>::max)(), path + ".health", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_health_max = f.req("healthMax")) {
+    if (!json::read_num(*f_health_max, out.health_max, 0.0, (std::numeric_limits<double>::max)(), path + ".healthMax", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_magicka = f.req("magicka")) {
+    if (!json::read_num(*f_magicka, out.magicka, 0.0, (std::numeric_limits<double>::max)(), path + ".magicka", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_magicka_max = f.req("magickaMax")) {
+    if (!json::read_num(*f_magicka_max, out.magicka_max, 0.0, (std::numeric_limits<double>::max)(), path + ".magickaMax", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_stamina = f.req("stamina")) {
+    if (!json::read_num(*f_stamina, out.stamina, 0.0, (std::numeric_limits<double>::max)(), path + ".stamina", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_stamina_max = f.req("staminaMax")) {
+    if (!json::read_num(*f_stamina_max, out.stamina_max, 0.0, (std::numeric_limits<double>::max)(), path + ".staminaMax", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_perk_points = f.req("perkPoints")) {
+    if (!json::read_int(*f_perk_points, out.perk_points, 0.0, json::kMaxSafeInt, path + ".perkPoints", err)) return false;
+  } else {
+    return false;
+  }
+  if (const json::Value* f_attributes = f.req("attributes")) {
+    {
+      const json::Array* a0 = (*f_attributes).as_array();
+      if (!a0) return json::fail(err, path + ".attributes", "want a list");
+      out.attributes.clear();
+      out.attributes.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.attributes.emplace_back();
+        if (!from_json((*a0)[i0], out.attributes.back(), path + ".attributes" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_skills = f.req("skills")) {
+    {
+      const json::Array* a0 = (*f_skills).as_array();
+      if (!a0) return json::fail(err, path + ".skills", "want a list");
+      out.skills.clear();
+      out.skills.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.skills.emplace_back();
+        if (!from_json((*a0)[i0], out.skills.back(), path + ".skills" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_perks = f.req("perks")) {
+    {
+      const json::Array* a0 = (*f_perks).as_array();
+      if (!a0) return json::fail(err, path + ".perks", "want a list");
+      out.perks.clear();
+      out.perks.reserve(a0->size());
+      for (std::size_t i0 = 0; i0 < a0->size(); ++i0) {
+        out.perks.emplace_back();
+        if (!from_json((*a0)[i0], out.perks.back(), path + ".perks" + "[" + std::to_string(i0) + "]", err)) return false;
+      }
+    }
+  } else {
+    return false;
+  }
+  if (const json::Value* f_notice = f.opt("notice")) {
+    out.notice.emplace();
+    if (!json::read(*f_notice, *out.notice, path + ".notice", err)) return false;
+  } else {
+    out.notice.reset();
+  }
+  return f.done();
+}
+
+inline json::Value to_json(const CharsheetPerk& v) {
+  json::Object o;
+  o.reserve(1);
+  o.push_back({"perk", json::Value::string(v.perk)});
+  return json::Value::object(std::move(o));
+}
+inline bool from_json(const json::Value& j, CharsheetPerk& out, const std::string& path, std::string& err) {
+  json::Fields f(j, path, err);
+  if (!f.ok()) return false;
+  if (const json::Value* f_perk = f.req("perk")) {
+    if (!json::read(*f_perk, out.perk, path + ".perk", err)) return false;
+  } else {
+    return false;
+  }
+  return f.done();
+}
+
 inline json::Value to_json(const ViewClose& v) {
   json::Object o;
   o.reserve(1);
@@ -2936,6 +3524,61 @@ std::expected<V, std::string> decode_as(std::string_view text, std::string_view 
       return std::unexpected("wait.pick: " + std::string(refuse));
     }
   }
+  if (type == "inventory.state") {
+    if constexpr (std::is_constructible_v<V, InventoryState>) {
+      if (v != 1)
+        return std::unexpected("inventory.state version " + std::to_string(v) + ": this build speaks version 1");
+      InventoryState m;
+      if (!from_json(*body, m, "inventory.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<InventoryState>, std::move(m)};
+    } else {
+      return std::unexpected("inventory.state: " + std::string(refuse));
+    }
+  }
+  if (type == "inventory.use") {
+    if constexpr (std::is_constructible_v<V, InventoryUse>) {
+      if (v != 1)
+        return std::unexpected("inventory.use version " + std::to_string(v) + ": this build speaks version 1");
+      InventoryUse m;
+      if (!from_json(*body, m, "inventory.use body", err)) return std::unexpected(err);
+      return V{std::in_place_type<InventoryUse>, std::move(m)};
+    } else {
+      return std::unexpected("inventory.use: " + std::string(refuse));
+    }
+  }
+  if (type == "inventory.drop") {
+    if constexpr (std::is_constructible_v<V, InventoryDrop>) {
+      if (v != 1)
+        return std::unexpected("inventory.drop version " + std::to_string(v) + ": this build speaks version 1");
+      InventoryDrop m;
+      if (!from_json(*body, m, "inventory.drop body", err)) return std::unexpected(err);
+      return V{std::in_place_type<InventoryDrop>, std::move(m)};
+    } else {
+      return std::unexpected("inventory.drop: " + std::string(refuse));
+    }
+  }
+  if (type == "charsheet.state") {
+    if constexpr (std::is_constructible_v<V, CharsheetState>) {
+      if (v != 1)
+        return std::unexpected("charsheet.state version " + std::to_string(v) + ": this build speaks version 1");
+      CharsheetState m;
+      if (!from_json(*body, m, "charsheet.state body", err)) return std::unexpected(err);
+      return V{std::in_place_type<CharsheetState>, std::move(m)};
+    } else {
+      return std::unexpected("charsheet.state: " + std::string(refuse));
+    }
+  }
+  if (type == "charsheet.perk") {
+    if constexpr (std::is_constructible_v<V, CharsheetPerk>) {
+      if (v != 1)
+        return std::unexpected("charsheet.perk version " + std::to_string(v) + ": this build speaks version 1");
+      CharsheetPerk m;
+      if (!from_json(*body, m, "charsheet.perk body", err)) return std::unexpected(err);
+      return V{std::in_place_type<CharsheetPerk>, std::move(m)};
+    } else {
+      return std::unexpected("charsheet.perk: " + std::string(refuse));
+    }
+  }
   if (type == "view.close") {
     if constexpr (std::is_constructible_v<V, ViewClose>) {
       if (v != 1)
@@ -3106,6 +3749,41 @@ inline std::expected<std::string, std::string> encode(const WaitPick& m) {
   std::string err;
   if (!detail::from_json(body, check, "wait.pick body", err)) return std::unexpected(err);
   return json::envelope("wait.pick", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const InventoryState& m) {
+  json::Value body = detail::to_json(m);
+  InventoryState check;
+  std::string err;
+  if (!detail::from_json(body, check, "inventory.state body", err)) return std::unexpected(err);
+  return json::envelope("inventory.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const InventoryUse& m) {
+  json::Value body = detail::to_json(m);
+  InventoryUse check;
+  std::string err;
+  if (!detail::from_json(body, check, "inventory.use body", err)) return std::unexpected(err);
+  return json::envelope("inventory.use", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const InventoryDrop& m) {
+  json::Value body = detail::to_json(m);
+  InventoryDrop check;
+  std::string err;
+  if (!detail::from_json(body, check, "inventory.drop body", err)) return std::unexpected(err);
+  return json::envelope("inventory.drop", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const CharsheetState& m) {
+  json::Value body = detail::to_json(m);
+  CharsheetState check;
+  std::string err;
+  if (!detail::from_json(body, check, "charsheet.state body", err)) return std::unexpected(err);
+  return json::envelope("charsheet.state", 1, std::move(body));
+}
+inline std::expected<std::string, std::string> encode(const CharsheetPerk& m) {
+  json::Value body = detail::to_json(m);
+  CharsheetPerk check;
+  std::string err;
+  if (!detail::from_json(body, check, "charsheet.perk body", err)) return std::unexpected(err);
+  return json::envelope("charsheet.perk", 1, std::move(body));
 }
 inline std::expected<std::string, std::string> encode(const ViewClose& m) {
   json::Value body = detail::to_json(m);

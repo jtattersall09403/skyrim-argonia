@@ -2,7 +2,7 @@
 // run `node --experimental-strip-types tools/schema_gen/gen.ts`; the gate refuses a stale twin. The C++ twin is
 // skse/core/generated/argonia/core/messages.h. Views never hold game state: they render pushes and send intents.
 
-export const schemaHash = "303778da3f03cb36";
+export const schemaHash = "e92d5728feb2aa61";
 
 /** what put an entry in the window */
 export type DialogueEntryKind = "greeting" | "answer" | "notice";
@@ -38,8 +38,12 @@ export type Hand = "left" | "right" | "voice";
 export type SystemAction = "settings" | "load" | "quitToMainMenu" | "quitToDesktop";
 /** the engine's mode for the Sleep/Wait Menu */
 export type WaitMode = "wait" | "sleep";
+/** the category an item belongs to */
+export type InventoryCategory = "weapons" | "apparel" | "potions" | "scrolls" | "food" | "ingredients" | "books" | "keys" | "misc";
+/** one of Argonia's twenty-seven skills */
+export type SkillId = "acrobatics" | "alchemy" | "alteration" | "athletics" | "axe" | "block" | "blunt" | "conjuration" | "destruction" | "enchant" | "handToHand" | "heavyArmor" | "illusion" | "lightArmor" | "longBlade" | "marksman" | "mediumArmor" | "mercantile" | "mysticism" | "restoration" | "security" | "shortBlade" | "smithing" | "sneak" | "spear" | "speechcraft" | "unarmored";
 /** a view the player can close */
-export type ViewId = "dialogue" | "journal" | "chart" | "magic" | "system" | "wait";
+export type ViewId = "dialogue" | "journal" | "chart" | "magic" | "system" | "wait" | "inventory" | "charsheet";
 
 /** The person the player is talking to */
 export interface Speaker {
@@ -530,6 +534,131 @@ export interface WaitPick {
   /** hours, within the window's max */
   hours: number;
 }
+/** One carried stack */
+export interface InventoryItem {
+  /** the stack's key: the item's form id, 8 hex digits, then # and the stack's index when the item is split */
+  id: string;
+  /** the item's name as the game has it */
+  name: string;
+  /** the category an item belongs to */
+  category: InventoryCategory;
+  /** how many in the stack */
+  count: number;
+  /** the stack's weight, all of it */
+  weight: number;
+  /** the stack's value in gold, all of it */
+  value: number;
+  /** worn or readied now */
+  equipped: boolean;
+  /** what the pad's A does to it, as the player reads it: Equip, Unequip, Use, Eat, Read, Drink */
+  action: string;
+  /** one line of the item's figures or effect, as ArgoniaCore words them */
+  detail?: string;
+}
+/** The open inventory */
+export interface InventoryState {
+  /** every carried stack, in ArgoniaCore's order (equipped first within a category) */
+  items: InventoryItem[];
+  /** weight carried */
+  carried: number;
+  /** the weight the player can carry before slowing */
+  capacity: number;
+  /** gold carried */
+  gold: number;
+  /** one line about the last action (a refusal), as ArgoniaCore words it */
+  notice?: string;
+}
+/** The player equipped or used a stack (the pad's A) */
+export interface InventoryUse {
+  /** the stack's key */
+  item: string;
+}
+/** The player dropped a stack */
+export interface InventoryDrop {
+  /** the stack's key */
+  item: string;
+}
+/** One attribute */
+export interface CharAttribute {
+  /** one of the seven attributes (Morrowind's, without Luck) */
+  id: AttributeId;
+  /** the attribute's name as the sheet shows it */
+  name: string;
+  /** the attribute now */
+  value: number;
+  /** one line on what it does, shown under the list when the row is focused */
+  blurb?: string;
+}
+/** One skill */
+export interface CharSkill {
+  /** one of Argonia's twenty-seven skills */
+  id: SkillId;
+  /** the skill's name as the sheet shows it */
+  name: string;
+  /** its class heading as the sheet shows it (armour, craft, magic, ...) */
+  group: string;
+  /** the skill now */
+  value: number;
+  /** use points toward the next rank, 0 to 1 */
+  progress: number;
+  /** one line on what it does, shown under the list when the row is focused */
+  blurb?: string;
+}
+/** One perk in a skill's tree */
+export interface CharPerk {
+  /** the perk's form id, 8 hex digits */
+  id: string;
+  /** one of Argonia's twenty-seven skills */
+  skill: SkillId;
+  /** the perk's name (our wording, perk_text) */
+  name: string;
+  /** what it does, in our wording */
+  description: string;
+  /** the player has it */
+  taken: boolean;
+  /** the player can take it now */
+  available: boolean;
+  /** what is missing when it is not available, as ArgoniaCore words it */
+  need?: string;
+}
+/** The open character sheet */
+export interface CharsheetState {
+  /** the player's name */
+  name: string;
+  /** the player's race as the game has it */
+  race: string;
+  /** the character level */
+  level: number;
+  /** progress to the next level, 0 to 1 */
+  progress: number;
+  /** health now */
+  health: number;
+  /** maximum health */
+  healthMax: number;
+  /** magicka now */
+  magicka: number;
+  /** maximum magicka */
+  magickaMax: number;
+  /** stamina now */
+  stamina: number;
+  /** maximum stamina */
+  staminaMax: number;
+  /** perk points to spend */
+  perkPoints: number;
+  /** the seven attributes, in the sheet's order */
+  attributes: CharAttribute[];
+  /** the twenty-seven skills, by class then name */
+  skills: CharSkill[];
+  /** every perk the player has or can see, by skill then tree order */
+  perks: CharPerk[];
+  /** one line about the last pick (a refusal), as ArgoniaCore words it */
+  notice?: string;
+}
+/** The player took a perk */
+export interface CharsheetPerk {
+  /** the perk's form id, 8 hex digits */
+  perk: string;
+}
 /** The player closed a view (Escape, the pad's B, the close button) */
 export interface ViewClose {
   /** a view the player can close */
@@ -546,7 +675,9 @@ export type PushMessage =
   | { type: "sitting.state"; v: 1; body: SittingState }
   | { type: "magic.state"; v: 1; body: MagicState }
   | { type: "system.state"; v: 1; body: SystemState }
-  | { type: "wait.state"; v: 1; body: WaitState };
+  | { type: "wait.state"; v: 1; body: WaitState }
+  | { type: "inventory.state"; v: 1; body: InventoryState }
+  | { type: "charsheet.state"; v: 1; body: CharsheetState };
 export type IntentMessage =
   | { type: "dialogue.topic"; v: 1; body: DialogueTopic }
   | { type: "dialogue.keyword"; v: 1; body: DialogueKeyword }
@@ -560,6 +691,9 @@ export type IntentMessage =
   | { type: "magic.equip"; v: 1; body: MagicEquip }
   | { type: "system.pick"; v: 1; body: SystemPick }
   | { type: "wait.pick"; v: 1; body: WaitPick }
+  | { type: "inventory.use"; v: 1; body: InventoryUse }
+  | { type: "inventory.drop"; v: 1; body: InventoryDrop }
+  | { type: "charsheet.perk"; v: 1; body: CharsheetPerk }
   | { type: "view.close"; v: 1; body: ViewClose };
 export type Message = PushMessage | IntentMessage;
 export type Direction = "push" | "intent";
@@ -588,6 +722,11 @@ export const messageTable: readonly { type: string; version: number; dir: Direct
   { type: "system.pick", version: 1, dir: "intent" },
   { type: "wait.state", version: 1, dir: "push" },
   { type: "wait.pick", version: 1, dir: "intent" },
+  { type: "inventory.state", version: 1, dir: "push" },
+  { type: "inventory.use", version: 1, dir: "intent" },
+  { type: "inventory.drop", version: 1, dir: "intent" },
+  { type: "charsheet.state", version: 1, dir: "push" },
+  { type: "charsheet.perk", version: 1, dir: "intent" },
   { type: "view.close", version: 1, dir: "intent" },
 ];
 
@@ -699,10 +838,20 @@ function checkWaitMode(x: unknown, p: string): string | null {
   if (typeof x !== "string") return bad(p, "want one of wait, sleep");
   return WaitModeValues.includes(x) ? null : bad(p, `'${x}' is not one of wait, sleep`);
 }
-const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart", "magic", "system", "wait"];
+const InventoryCategoryValues: readonly string[] = ["weapons", "apparel", "potions", "scrolls", "food", "ingredients", "books", "keys", "misc"];
+function checkInventoryCategory(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of weapons, apparel, potions, scrolls, food, ingredients, books, keys, misc");
+  return InventoryCategoryValues.includes(x) ? null : bad(p, `'${x}' is not one of weapons, apparel, potions, scrolls, food, ingredients, books, keys, misc`);
+}
+const SkillIdValues: readonly string[] = ["acrobatics", "alchemy", "alteration", "athletics", "axe", "block", "blunt", "conjuration", "destruction", "enchant", "handToHand", "heavyArmor", "illusion", "lightArmor", "longBlade", "marksman", "mediumArmor", "mercantile", "mysticism", "restoration", "security", "shortBlade", "smithing", "sneak", "spear", "speechcraft", "unarmored"];
+function checkSkillId(x: unknown, p: string): string | null {
+  if (typeof x !== "string") return bad(p, "want one of acrobatics, alchemy, alteration, athletics, axe, block, blunt, conjuration, destruction, enchant, handToHand, heavyArmor, illusion, lightArmor, longBlade, marksman, mediumArmor, mercantile, mysticism, restoration, security, shortBlade, smithing, sneak, spear, speechcraft, unarmored");
+  return SkillIdValues.includes(x) ? null : bad(p, `'${x}' is not one of acrobatics, alchemy, alteration, athletics, axe, block, blunt, conjuration, destruction, enchant, handToHand, heavyArmor, illusion, lightArmor, longBlade, marksman, mediumArmor, mercantile, mysticism, restoration, security, shortBlade, smithing, sneak, spear, speechcraft, unarmored`);
+}
+const ViewIdValues: readonly string[] = ["dialogue", "journal", "chart", "magic", "system", "wait", "inventory", "charsheet"];
 function checkViewId(x: unknown, p: string): string | null {
-  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart, magic, system, wait");
-  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart, magic, system, wait`);
+  if (typeof x !== "string") return bad(p, "want one of dialogue, journal, chart, magic, system, wait, inventory, charsheet");
+  return ViewIdValues.includes(x) ? null : bad(p, `'${x}' is not one of dialogue, journal, chart, magic, system, wait, inventory, charsheet`);
 }
 function checkSpeaker(x: unknown, p: string): string | null {
   const o = members(x, p, ["id","name"]);
@@ -1332,6 +1481,152 @@ function checkWaitPick(x: unknown, p: string): string | null {
   if ((e = whole(o["hours"], 1, 24, p + ".hours")) !== null) return e;
   return null;
 }
+function checkInventoryItem(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","category","count","weight","value","equipped","action","detail"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = (typeof o["id"] === "string" ? null : bad(p + ".id", "want a string"))) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["category"] === undefined) return bad(p + ".category", "missing");
+  if ((e = checkInventoryCategory(o["category"], p + ".category")) !== null) return e;
+  if (o["count"] === undefined) return bad(p + ".count", "missing");
+  if ((e = whole(o["count"], 1, MAX_SAFE, p + ".count")) !== null) return e;
+  if (o["weight"] === undefined) return bad(p + ".weight", "missing");
+  if ((e = real(o["weight"], 0, Number.MAX_VALUE, p + ".weight")) !== null) return e;
+  if (o["value"] === undefined) return bad(p + ".value", "missing");
+  if ((e = whole(o["value"], 0, MAX_SAFE, p + ".value")) !== null) return e;
+  if (o["equipped"] === undefined) return bad(p + ".equipped", "missing");
+  if ((e = (typeof o["equipped"] === "boolean" ? null : bad(p + ".equipped", "want true or false"))) !== null) return e;
+  if (o["action"] === undefined) return bad(p + ".action", "missing");
+  if ((e = (typeof o["action"] === "string" ? null : bad(p + ".action", "want a string"))) !== null) return e;
+  if (o["detail"] !== undefined && (e = (typeof o["detail"] === "string" ? null : bad(p + ".detail", "want a string"))) !== null) return e;
+  return null;
+}
+function checkInventoryState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["items","carried","capacity","gold","notice"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["items"] === undefined) return bad(p + ".items", "missing");
+  if ((e = each(o["items"], p + ".items", (e0: unknown, i0: string) => checkInventoryItem(e0, i0))) !== null) return e;
+  if (o["carried"] === undefined) return bad(p + ".carried", "missing");
+  if ((e = real(o["carried"], 0, Number.MAX_VALUE, p + ".carried")) !== null) return e;
+  if (o["capacity"] === undefined) return bad(p + ".capacity", "missing");
+  if ((e = real(o["capacity"], 0, Number.MAX_VALUE, p + ".capacity")) !== null) return e;
+  if (o["gold"] === undefined) return bad(p + ".gold", "missing");
+  if ((e = whole(o["gold"], 0, MAX_SAFE, p + ".gold")) !== null) return e;
+  if (o["notice"] !== undefined && (e = (typeof o["notice"] === "string" ? null : bad(p + ".notice", "want a string"))) !== null) return e;
+  return null;
+}
+function checkInventoryUse(x: unknown, p: string): string | null {
+  const o = members(x, p, ["item"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["item"] === undefined) return bad(p + ".item", "missing");
+  if ((e = (typeof o["item"] === "string" ? null : bad(p + ".item", "want a string"))) !== null) return e;
+  return null;
+}
+function checkInventoryDrop(x: unknown, p: string): string | null {
+  const o = members(x, p, ["item"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["item"] === undefined) return bad(p + ".item", "missing");
+  if ((e = (typeof o["item"] === "string" ? null : bad(p + ".item", "want a string"))) !== null) return e;
+  return null;
+}
+function checkCharAttribute(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","value","blurb"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = checkAttributeId(o["id"], p + ".id")) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["value"] === undefined) return bad(p + ".value", "missing");
+  if ((e = whole(o["value"], 0, MAX_SAFE, p + ".value")) !== null) return e;
+  if (o["blurb"] !== undefined && (e = (typeof o["blurb"] === "string" ? null : bad(p + ".blurb", "want a string"))) !== null) return e;
+  return null;
+}
+function checkCharSkill(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","name","group","value","progress","blurb"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = checkSkillId(o["id"], p + ".id")) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["group"] === undefined) return bad(p + ".group", "missing");
+  if ((e = (typeof o["group"] === "string" ? null : bad(p + ".group", "want a string"))) !== null) return e;
+  if (o["value"] === undefined) return bad(p + ".value", "missing");
+  if ((e = whole(o["value"], 0, MAX_SAFE, p + ".value")) !== null) return e;
+  if (o["progress"] === undefined) return bad(p + ".progress", "missing");
+  if ((e = real(o["progress"], 0, 1, p + ".progress")) !== null) return e;
+  if (o["blurb"] !== undefined && (e = (typeof o["blurb"] === "string" ? null : bad(p + ".blurb", "want a string"))) !== null) return e;
+  return null;
+}
+function checkCharPerk(x: unknown, p: string): string | null {
+  const o = members(x, p, ["id","skill","name","description","taken","available","need"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["id"] === undefined) return bad(p + ".id", "missing");
+  if ((e = (typeof o["id"] === "string" ? null : bad(p + ".id", "want a string"))) !== null) return e;
+  if (o["skill"] === undefined) return bad(p + ".skill", "missing");
+  if ((e = checkSkillId(o["skill"], p + ".skill")) !== null) return e;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["description"] === undefined) return bad(p + ".description", "missing");
+  if ((e = (typeof o["description"] === "string" ? null : bad(p + ".description", "want a string"))) !== null) return e;
+  if (o["taken"] === undefined) return bad(p + ".taken", "missing");
+  if ((e = (typeof o["taken"] === "boolean" ? null : bad(p + ".taken", "want true or false"))) !== null) return e;
+  if (o["available"] === undefined) return bad(p + ".available", "missing");
+  if ((e = (typeof o["available"] === "boolean" ? null : bad(p + ".available", "want true or false"))) !== null) return e;
+  if (o["need"] !== undefined && (e = (typeof o["need"] === "string" ? null : bad(p + ".need", "want a string"))) !== null) return e;
+  return null;
+}
+function checkCharsheetState(x: unknown, p: string): string | null {
+  const o = members(x, p, ["name","race","level","progress","health","healthMax","magicka","magickaMax","stamina","staminaMax","perkPoints","attributes","skills","perks","notice"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["name"] === undefined) return bad(p + ".name", "missing");
+  if ((e = (typeof o["name"] === "string" ? null : bad(p + ".name", "want a string"))) !== null) return e;
+  if (o["race"] === undefined) return bad(p + ".race", "missing");
+  if ((e = (typeof o["race"] === "string" ? null : bad(p + ".race", "want a string"))) !== null) return e;
+  if (o["level"] === undefined) return bad(p + ".level", "missing");
+  if ((e = whole(o["level"], 1, MAX_SAFE, p + ".level")) !== null) return e;
+  if (o["progress"] === undefined) return bad(p + ".progress", "missing");
+  if ((e = real(o["progress"], 0, 1, p + ".progress")) !== null) return e;
+  if (o["health"] === undefined) return bad(p + ".health", "missing");
+  if ((e = real(o["health"], 0, Number.MAX_VALUE, p + ".health")) !== null) return e;
+  if (o["healthMax"] === undefined) return bad(p + ".healthMax", "missing");
+  if ((e = real(o["healthMax"], 0, Number.MAX_VALUE, p + ".healthMax")) !== null) return e;
+  if (o["magicka"] === undefined) return bad(p + ".magicka", "missing");
+  if ((e = real(o["magicka"], 0, Number.MAX_VALUE, p + ".magicka")) !== null) return e;
+  if (o["magickaMax"] === undefined) return bad(p + ".magickaMax", "missing");
+  if ((e = real(o["magickaMax"], 0, Number.MAX_VALUE, p + ".magickaMax")) !== null) return e;
+  if (o["stamina"] === undefined) return bad(p + ".stamina", "missing");
+  if ((e = real(o["stamina"], 0, Number.MAX_VALUE, p + ".stamina")) !== null) return e;
+  if (o["staminaMax"] === undefined) return bad(p + ".staminaMax", "missing");
+  if ((e = real(o["staminaMax"], 0, Number.MAX_VALUE, p + ".staminaMax")) !== null) return e;
+  if (o["perkPoints"] === undefined) return bad(p + ".perkPoints", "missing");
+  if ((e = whole(o["perkPoints"], 0, MAX_SAFE, p + ".perkPoints")) !== null) return e;
+  if (o["attributes"] === undefined) return bad(p + ".attributes", "missing");
+  if ((e = each(o["attributes"], p + ".attributes", (e0: unknown, i0: string) => checkCharAttribute(e0, i0))) !== null) return e;
+  if (o["skills"] === undefined) return bad(p + ".skills", "missing");
+  if ((e = each(o["skills"], p + ".skills", (e0: unknown, i0: string) => checkCharSkill(e0, i0))) !== null) return e;
+  if (o["perks"] === undefined) return bad(p + ".perks", "missing");
+  if ((e = each(o["perks"], p + ".perks", (e0: unknown, i0: string) => checkCharPerk(e0, i0))) !== null) return e;
+  if (o["notice"] !== undefined && (e = (typeof o["notice"] === "string" ? null : bad(p + ".notice", "want a string"))) !== null) return e;
+  return null;
+}
+function checkCharsheetPerk(x: unknown, p: string): string | null {
+  const o = members(x, p, ["perk"]);
+  if (typeof o === "string") return o;
+  let e: string | null;
+  if (o["perk"] === undefined) return bad(p + ".perk", "missing");
+  if ((e = (typeof o["perk"] === "string" ? null : bad(p + ".perk", "want a string"))) !== null) return e;
+  return null;
+}
 function checkViewClose(x: unknown, p: string): string | null {
   const o = members(x, p, ["view"]);
   if (typeof o === "string") return o;
@@ -1364,6 +1659,11 @@ const bodies: Record<string, (x: unknown, p: string) => string | null> = {
   "system.pick": checkSystemPick,
   "wait.state": checkWaitState,
   "wait.pick": checkWaitPick,
+  "inventory.state": checkInventoryState,
+  "inventory.use": checkInventoryUse,
+  "inventory.drop": checkInventoryDrop,
+  "charsheet.state": checkCharsheetState,
+  "charsheet.perk": checkCharsheetPerk,
   "view.close": checkViewClose,
 };
 

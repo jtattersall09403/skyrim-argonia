@@ -1,0 +1,60 @@
+/* Our inventory (1.12 round 4): one paper sheet, the paper theme's tokens only (theme.css; DESIGN.md). Title bar,
+   a row of category tabs, the item list well beside the detail panel, the carry weight and gold along the foot. */
+body { display: flex; align-items: center; justify-content: center; }
+#view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+.window {
+  width: min(94vw, 62rem); height: 92vh; display: flex; flex-direction: column; gap: var(--s2);
+  padding: var(--s2) var(--s4) var(--s3); color: var(--ink);
+}
+.bar { display: flex; align-items: center; gap: var(--s4); padding: var(--s1) var(--s1) var(--s2);
+  border-bottom: 1px solid var(--ink-faint); }
+.bar h1 { flex: 1; margin: 0; font-size: var(--t-title); font-weight: normal; letter-spacing: 0.08em; color: var(--rust); }
+.tabrow { display: flex; align-items: center; gap: var(--s2); }
+.pad { display: none; padding: 0 var(--s2); color: var(--paper-light); background: var(--ink-soft); border-radius: 0.15rem; }
+body[data-device="gamepad"] .pad { display: inline-block; }
+.tabs { flex: 1; display: flex; flex-wrap: wrap; gap: var(--s1) var(--s2); }
+.tab { flex: 1 1 auto; justify-content: center; display: flex; gap: var(--s2); align-items: baseline; min-height: 2.2rem; padding: 0 var(--s3); align-items: center;
+  color: var(--link); border: 1px solid var(--ink-faint); border-radius: 0.15rem; background: transparent; }
+.tab .tn { color: var(--ink-soft); }
+.tab.on { color: var(--ink); background: rgba(75, 90, 42, 0.16); border-color: var(--moss); }
+.body { flex: 1; min-height: 0; display: flex; gap: var(--s4); }
+.listcol { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.colheads, .name { display: flex; align-items: baseline; gap: var(--s2); }
+.colheads { padding: 0 var(--s2); color: var(--ink-soft); border-bottom: 1px solid var(--ink-faint); }
+.ic { width: 2rem; height: 2rem; flex: none; align-self: center; }  /* the item picture's slot (pictures come later) */
+.colheads .ic { height: 0; }
+.meter { display: inline-block; width: 8rem; height: 0.55rem; margin-left: var(--s3); background: var(--paper-dark); border: 1px solid var(--ink-faint); border-radius: 0.1rem; }
+.meter i { display: block; height: 100%; background: var(--moss); }
+.carry.over .meter i { background: var(--rust); }
+.legend { display: none; margin: 0; gap: var(--s6); color: var(--ink-soft); }
+.legend b { font-weight: normal; padding: 0 0.3rem; color: var(--paper-light); background: var(--ink-soft); border-radius: 0.15rem; }
+body[data-device="gamepad"] .legend { display: flex; }
+.eq { width: 1.4rem; flex: none; text-align: center; color: var(--rust); }
+.n { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.c { width: 3rem; text-align: right; flex: none; }
+.w { width: 4rem; text-align: right; flex: none; }
+.v { width: 4.5rem; text-align: right; flex: none; }
+.well { flex: 1; min-height: 0; list-style: none; margin: 0; padding: var(--s1) 0; }
+.row { margin: 0.05rem 0; }
+.name { width: 100%; padding: 0.15rem var(--s2); color: var(--ink); text-align: left; border-radius: 0.15rem; }
+.row.on .name { background: rgba(75, 90, 42, 0.16); }
+.row.on .eq { font-weight: bold; }
+.name:hover { background: rgba(176, 112, 42, 0.16); }
+.detail { width: 17rem; flex: none; overflow-y: auto; padding: 0 var(--s2); border-left: 1px solid var(--ink-faint); }
+.ghead { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust);
+  border-bottom: 1px solid var(--ink-faint); }
+.kind { margin: 0 0 var(--s2); color: var(--ink-soft); font-style: italic; }
+.figs { display: grid; grid-template-columns: auto 1fr; gap: 0 var(--s4); margin: 0 0 var(--s2); }
+.figs dt { color: var(--ink-soft); } .figs dd { margin: 0; text-align: right; }
+.info { margin: 0 0 var(--s3); }
+.act:disabled { color: var(--ink-faint); }
+.acts { display: flex; gap: var(--s2); }
+.act { flex: 1; min-height: 2.2rem; text-align: center; color: var(--link); border: var(--edge) solid var(--ink-soft);
+  border-radius: 0.15rem; background: var(--paper-light); }
+.none { padding: 0 var(--s2); color: var(--ink-soft); font-style: italic; list-style: none; }
+.notice { margin: 0; padding: var(--s1) var(--s3); color: var(--rust); border-left: 0.2rem solid var(--focus); }
+.foot { display: flex; justify-content: space-between; padding-top: var(--s2); border-top: 1px solid var(--ink-faint); }
+.carry.over { color: var(--rust); }
+
+@media (min-aspect-ratio: 2/1) { .window { width: min(94vw, 70rem); } }
