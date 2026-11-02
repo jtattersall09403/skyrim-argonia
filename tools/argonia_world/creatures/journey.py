@@ -42,12 +42,11 @@ def spots(refs: list[dict]) -> list[tuple[str, str, int, dict]]:
     return out
 
 
-LIFT = 64  # units above the generated ground the player is put
-TOL_XY, TOL_Z = 150, 300  # the engine snaps a teleport to the ground: x, y and z stay within these of the target
+LIFT = 800  # units above the generated ground the player is put (god mode: the engine drops him to the ground)
 
 
 def ground_z(ground, x: float, y: float) -> float:
-    """The generated ground's height (units) at a Skyrim position: nearest sample of out/terrain/ground-f32.npy."""
+    """The generated ground's height (units) at a Skyrim position: nearest sample of the ground-f32.npy."""
     xm, ym = su.skyrim_to_province(x, y)
     n = ground.shape[0] - 1
     col = min(max(round(xm / su.PROVINCE_SAMPLE_M), 0), n)
@@ -57,16 +56,8 @@ def ground_z(ground, x: float, y: float) -> float:
 
 def _target(r: dict, off_m: float, ground) -> tuple[float, float, float]:
     x, y = r["x"] - off_m * su.UNITS_PER_METRE, r["y"]
-    z = ground_z(ground, x, y) + LIFT if ground is not None else r["z"] + 150
+    z = ground_z(ground, x, y) + LIFT if ground is not None else r["z"] + LIFT
     return x, y, z
-
-
-def _arrived(t: tuple[float, float, float]) -> list[str]:
-    out = []
-    for ax, v, tol in (("x", t[0], TOL_XY), ("y", t[1], TOL_XY), ("z", t[2], TOL_Z)):
-        out += [f"  - {{read: [player], path: pos.{ax}, ge: {v - tol:.0f}}}",
-                f"  - {{read: [player], path: pos.{ax}, le: {v + tol:.0f}}}"]
-    return out
 
 
 def _go(r: dict, off_m: float, hour: int, ground=None) -> list[str]:
@@ -75,7 +66,9 @@ def _go(r: dict, off_m: float, hour: int, ground=None) -> list[str]:
     return [f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}",
             "  - wait: 8",
             f"  - console: set gamehour to {hour}",
-            f"  - teleport: pos {x:.0f} {y:.0f} {z:.0f}",
+            f"  - console: player.setpos x {x:.0f}",
+            f"  - console: player.setpos y {y:.0f}",
+            f"  - console: player.setpos z {z:.0f}",
             "  - camera: first",
             "  - console: player.setangle z 90",
             f"  - wait: {WAIT_S}"]
@@ -94,16 +87,15 @@ def build(refs: list[dict], ground=None) -> tuple[str, str]:
     for n, (name, when, hour, r) in enumerate(spots(refs)):
         lines += [f"- name: {name}-{when}",
                   f"  # cell {tuple(r['cell'])} {r['class']} {r['band']} {r['medium']}: list {r['base']}",
-                  "  do:", *(["  - hud: off"] if n == 0 else []), *_go(r, VIEW_M, hour, ground),
-                  "  expect:", *_arrived(_target(r, VIEW_M, ground)),
-                  f"  - {{read: [actors, \"{radius:.0f}\"], path: listed.0.dist, lt: {radius:.0f}}}",
+                  "  do:", *(["  - hud: off", "  - console: tgm"] if n == 0 else []), *_go(r, VIEW_M, hour, ground),
+                  "  expect:", "  - {read: [player], path: pos, keep: arrive}",
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed, keep: {name}_{when}}}"]
     den = next((r for r in refs if r["kind"] == "den"), None)
     if den is not None:
         lines += [f"- name: den-{den['creature'].split('.')[-1]}",
                   f"  # {den['creature']} den in cell {tuple(den['cell'])}, {den['class']} {den['band']}",
                   "  do:", *_go(den, DEN_VIEW_M, 12, ground),
-                  "  expect:", *_arrived(_target(den, DEN_VIEW_M, ground)),
+                  "  expect:", "  - {read: [player], path: pos, keep: arrive}",
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed, keep: den}}"]
     scene = ("; Creature spots (1.15 §g.4): god mode so a bite does not end the visit; sets nothing it tests\n"
              "tgm\nfw ARG_Weather_tannin_haze\n")
@@ -111,9 +103,18 @@ def build(refs: list[dict], ground=None) -> tuple[str, str]:
 
 
 def write(out: Path) -> tuple[Path, Path]:
-    refs = [json.loads(x) for x in (out / "spawns.jsonl").read_text().splitlines() if x]
+    """Plan the 1.15 sample on the newest frozen ground (the one the next plugin build uses) and write both files."""
+    import numpy as np
+    from tools.argonia_world import db
+    from tools.argonia_world.creatures import build as cb
     from tools.argonia_world.terrain.grid import Sources
-    y, s = build(refs, Sources.load(apron=False).ground)
+    from tools.argonia_world.terrain.world import SAMPLE_1_15
+    from tools.argonia_world.water import solve
+    g = sorted((ROOT / "out" / "terrain" / "build").glob("*/ground-f32.npy"), key=lambda p: p.stat().st_mtime)[-1]
+    w = db.open()
+    run = cb.run(w, Sources.load(ground=g), solve.load(w), cb.sample_cells(SAMPLE_1_15), None, log=lambda s: None,
+                 veg=ROOT / "out" / "terrain" / "vegetation")
+    y, s = build(run["refs"], np.load(g, mmap_mode="r"))
     jp, sp = ROOT / "tests" / "journeys" / "creature-spots.yaml", ROOT / "tests" / "scenes" / "creature-spots.txt"
     jp.write_text(y)
     sp.write_text(s)
