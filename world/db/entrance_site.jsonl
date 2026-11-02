@@ -209,7 +209,7 @@
 {"place_id":"place.hist-heartland.sap-tapping-licensed","shape":"flat","x_m":3435.6,"y_m":4480.6,"radius_m":21.67,"facing_deg":0.0,"request":"re-sized to 22 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.hist-heartland.sap-touched-miredancer","shape":"bank","x_m":5234.0,"y_m":3188.7,"radius_m":45.0,"facing_deg":262.1}
 {"place_id":"place.hist-heartland.sealed-xanmeer-living","shape":"flat","x_m":3846.7,"y_m":4011.2,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.hist-heartland.serpent-ground-giant-snake","shape":"rise","x_m":2179.7,"y_m":1918.6,"radius_m":30.0,"facing_deg":163.0}
+{"place_id":"place.hist-heartland.serpent-ground-giant-snake","shape":"rise","x_m":2179.7,"y_m":1918.6,"radius_m":30.0,"facing_deg":163.3}
 {"place_id":"place.hist-heartland.sinkhole-mouth-basin","shape":"depression","x_m":4888.6,"y_m":2503.2,"radius_m":25.0,"facing_deg":0.0}
 {"place_id":"place.hist-heartland.sleeping-in-the-ring","shape":"flat","x_m":5091.4,"y_m":2497.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.hist-heartland.squatted-ruin-home-hollow","shape":"flat","x_m":3846.7,"y_m":3419.0,"radius_m":45.0,"facing_deg":0.0}
@@ -290,7 +290,7 @@
 {"place_id":"place.imperial-fringe.rufios-landing","shape":"bank","x_m":754.0,"y_m":1209.1,"radius_m":25.0,"facing_deg":278.0}
 {"place_id":"place.imperial-fringe.sabinus-claim","shape":"flat","x_m":238.5,"y_m":2185.2,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.saddle-fair","shape":"flat","x_m":1379.1,"y_m":4663.7,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.silver-mouth","shape":"rise","x_m":1631.3,"y_m":1773.9,"radius_m":45.0,"facing_deg":97.6}
+{"place_id":"place.imperial-fringe.silver-mouth","shape":"rise","x_m":1631.3,"y_m":1773.9,"radius_m":45.0,"facing_deg":97.5}
 {"place_id":"place.imperial-fringe.silverhand-cairns","shape":"rise","x_m":1260.7,"y_m":3336.7,"radius_m":20.0,"facing_deg":315.0}
 {"place_id":"place.imperial-fringe.sink-field","shape":"rise","x_m":1088.5,"y_m":1351.7,"radius_m":25.0,"facing_deg":258.4}
 {"place_id":"place.imperial-fringe.slough-point","shape":"flat","x_m":529.2,"y_m":4762.4,"radius_m":65.0,"facing_deg":0.0}
@@ -305,7 +305,7 @@
 {"place_id":"place.imperial-fringe.the-black-tarn","shape":"deep_water","x_m":76.77,"y_m":2268.35,"radius_m":45.0,"facing_deg":0.0,"request":"moved 32 m to water"}
 {"place_id":"place.imperial-fringe.the-borrowed-house","shape":"flat","x_m":1763.0,"y_m":1801.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.the-broke-column","shape":"flat","x_m":1196.0,"y_m":3084.0,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.the-buried-spears","shape":"rise","x_m":117.9,"y_m":2939.8,"radius_m":25.0,"facing_deg":109.9}
+{"place_id":"place.imperial-fringe.the-buried-spears","shape":"rise","x_m":117.9,"y_m":2939.8,"radius_m":25.0,"facing_deg":105.5}
 {"place_id":"place.imperial-fringe.the-cold-forge","shape":"flat","x_m":1324.3,"y_m":3704.1,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.the-cold-lights","shape":"deep_water","x_m":1964.93,"y_m":2407.27,"radius_m":25.0,"facing_deg":0.0,"request":"moved 94 m to water"}
 {"place_id":"place.imperial-fringe.the-cordon-stones","shape":"flat","x_m":2056.2,"y_m":2412.8,"radius_m":30.0,"facing_deg":0.0}
@@ -357,7 +357,7 @@
 {"place_id":"place.imperial-fringe.watch-of-the-weighed-cart","shape":"flat","x_m":1384.6,"y_m":2826.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.westfield-village","shape":"flat","x_m":1148.8,"y_m":3594.4,"radius_m":115.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.whispers-house-of-the-low-fen","shape":"flat","x_m":2004.2,"y_m":2473.7,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","shape":"rise","x_m":11.6,"y_m":2996.7,"radius_m":40.0,"facing_deg":326.0}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","shape":"rise","x_m":11.6,"y_m":2996.7,"radius_m":40.0,"facing_deg":326.7}
 {"place_id":"place.imperial-penal-south.akaviri-works","shape":"flat","x_m":1609.4,"y_m":6215.6,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-penal-south.basin-sinkhole","shape":"depression","x_m":1932.9,"y_m":6676.2,"radius_m":25.0,"facing_deg":0.0,"request":"sinkhole"}
 {"place_id":"place.imperial-penal-south.blackrose","shape":"flat","x_m":2343.0,"y_m":6424.8,"radius_m":230.0,"facing_deg":0.0}
@@ -511,7 +511,7 @@
 {"place_id":"place.pirate-freeholds.corimont-tradehouse","shape":"flat","x_m":3687.7,"y_m":808.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.dres-holding-pens","shape":"flat","x_m":3753.5,"y_m":1450.4,"radius_m":40.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.dunmer-frontier-holding","shape":"flat","x_m":4351.2,"y_m":545.6,"radius_m":115.0,"facing_deg":0.0}
-{"place_id":"place.pirate-freeholds.flu-cairn-field","shape":"rise","x_m":3945.4,"y_m":1450.4,"radius_m":20.0,"facing_deg":60.2}
+{"place_id":"place.pirate-freeholds.flu-cairn-field","shape":"rise","x_m":3945.4,"y_m":1450.4,"radius_m":20.0,"facing_deg":59.9}
 {"place_id":"place.pirate-freeholds.freehold-market","shape":"flat","x_m":3945.4,"y_m":1134.6,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.freehold-naga-camp","shape":"flat","x_m":3939.9,"y_m":468.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.freehold-smithy","shape":"flat","x_m":3734.8,"y_m":1258.5,"radius_m":45.0,"facing_deg":0.0}
