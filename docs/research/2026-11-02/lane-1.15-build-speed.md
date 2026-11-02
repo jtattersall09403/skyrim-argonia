@@ -48,3 +48,41 @@ S3 archive keyed by ArgoniaWorld's sha256 when one exists).
 - `terrain generate` (116 s) is whole-province by method (a solve over the province); see the locality probe below.
 - The world step writes the whole ArgoniaWorld.esm (~2 min): Mutagen builds the worldspace as one object graph and
   has no partial group write; Spriggit serialises, it does not patch binaries. Cheapest whole write kept.
+
+## After (measured on the build VM, 4 CPUs)
+
+The one-region edit: `dunmer-north.deep-sink-basin` summit_m +6 in region_relief, `terrain generate` run before and
+after into a sample dir (the worktree db restored after).
+
+| measure | value |
+|---|---|
+| `terrain generate`, before / after the edit | 134 s / 147 s (whole province by method) |
+| ground samples changed | 82,133 of 16.3 M; cliff and role masks unchanged |
+| province cell rows changed | 25 of 126 (rows 4–32 from the north): the ground solve is local |
+| land, 40 x 84 cell box over the edit, first keyed build | 99 s, 0 of 84 rows reused |
+| same, rebuilt with nothing changed | 3 s, 84 of 84 reused |
+| same, rebuilt after the edit | 58 s, 41 of 84 reused, 43 built |
+| same, from scratch on the edited ground | 104 s |
+| L1: the cached rebuild's shards vs the from-scratch build's | identical, 84 rows |
+
+Whole-province projection from these (not measured end to end): the edit reaches 25 changed rows + 2 x 8 margin
+= 41 of 205 rows, so land ≈ 41/205 x 1,484 s ≈ 300 s instead of 1,484 s; `make plugin` after a one-region ground
+edit ≈ generate 147 + land ~300 + world ~120 + vegetation ~75 + creatures ~60 + Argonia.esm, about 12–15 min
+against up to 2 h. Owed: the first main-tree `make plugin` after this merges builds every row once (the existing
+land has no keys); its next one-region rebuild is the end-to-end after figure.
+
+## Deploy (the planner measures)
+
+Change: the pre-flight asks `stack.py plan` (prints `{"restage": [...], "need_bytes": N}`). On this VM now:
+`{"restage": [], "need_bytes": 0}`, so an ESM-only deploy no longer needs 26 GB free and unpacks nothing. Measure on
+the next machine that is up: touch nothing but the plugin, `make plugin`, then
+`tooling/job_guard.sh run --gpu deploy-bs -- infra/gpu-box/deploy.sh` and read the `== <step>` / `== N s` pairs and
+`DEPLOY OK in N s` from its log; compare with deploy-r3u (110 s, --no-stage) and deploy-r3r (stage 377 s, push 185 s).
+
+## Hazards found
+
+- `material.rain_field` reads `generated_ground()` (the shared out/terrain ground), not the run's frozen copy: a
+  concurrent `terrain generate` in another tree can change a build's rain mid-run. The row key hashes the rain grid
+  the build actually used, so reuse stays correct; the coupling itself belongs to the ground lane.
+- Pre-existing reds on main, not from this lane: test_check_records (PROGRESS 1.15 links a missing
+  docs/research/2026-11-0 path) and test_world_sample (world-sample.yaml stale).
