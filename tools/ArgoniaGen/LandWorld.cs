@@ -48,6 +48,9 @@ static class LandWorld
         // the REGN shells and each cell's XCLR (regions/api.py: Argonia.esm overrides the shells with the authored part)
         foreach (var g in root.TryGetProperty("regions", out var rg) ? rg.EnumerateArray() : Enumerable.Empty<JsonElement>())
             mod.Regions.Add(RegionWriters.Shell(g, ws.FormKey));
+        // 1.15 r3: overrides of the placed bases whose MODS names a diffuse no source ships, MODS dropped (AltTextures.cs)
+        var dropped = AltTextures.Write(mod, data, (root.TryGetProperty("dropAltTextures", out var da) ? da.EnumerateArray() : Enumerable.Empty<JsonElement>())
+            .Select(e => e.GetString()!));
         // 1.15: our STATs naming BM&V's unrecorded rock meshes (vegetation/rocks.py; the OBND is the NIF's vertex box)
         foreach (var r in root.TryGetProperty("statics", out var st) ? st.EnumerateArray() : Enumerable.Empty<JsonElement>())
         {
@@ -118,7 +121,7 @@ static class LandWorld
                 .Select(e => ModKey.FromFileName(e.GetString()!)).ToArray())  // the vegetation and creature splices' bases (vegetation/rocks.py, creatures/records.py)
             .SingleThread()  // the parallel writer buffers every block in memory: 3.2 GB peak against 0.95 GB here
             .Write();
-        Console.WriteLine($"world: {outPath}: 1 WRLD, {mod.Regions.Count} REGN shells, {n} cells with LAND");
+        Console.WriteLine($"world: {outPath}: 1 WRLD, {mod.Regions.Count} REGN shells, {dropped} MODS-dropped overrides, {n} cells with LAND");
         return 0;
     }
 

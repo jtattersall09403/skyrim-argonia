@@ -374,6 +374,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
         tmp.replace(esm)
         print(run(sys.executable, "-m", "tools.argonia_world.vegetation", "readback", "--out", vdir, "--esm", esm,
                   "--gen", GEN).strip())
+        print(run(sys.executable, "-m", "tools.argonia_world.vegetation", "textures", "overrides", "--esm", esm).strip())
     if veg:  # 1.15 §g, with the vegetation (both place on every cell): the spawn ACHRs and dens (CreatureRecords.cs)
         cdir = into / "creatures"
         run(sys.executable, "-m", "tools.argonia_world.creatures", "build", "--out", cdir, "--veg", vdir,

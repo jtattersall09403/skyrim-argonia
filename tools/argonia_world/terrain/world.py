@@ -70,9 +70,10 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
     from tools.argonia_world.regions import api as regions
     from tools.argonia_world.creatures import records as creatures
     from tools.argonia_world.vegetation import rocks
+    from tools.argonia_world.vegetation.mesh_textures import ALT_DROPPED
 
     w = world if world is not None else db.open()
-    used = set(rocks.masters(w)) | set(creatures.masters(w))  # the planner's ruling (2026-11-01): one plugin for the world's placements
+    used = set(rocks.masters(w)) | set(creatures.masters(w)) | {k.split(":", 1)[1] for k in ALT_DROPPED}  # the planner's ruling (2026-11-01): one plugin for the world's placements
     extra = [p for p in rocks.stack_order() if p in used] + sorted(used - set(rocks.stack_order()))
     base = _base_order(creatures.base_masters(w), extra)  # a master's own masters are ours too (the links check)
     return {"schema": 1, "mod": LAND_PLUGIN, "author": "Elder Souls: Argonia",
@@ -82,6 +83,7 @@ def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) 
             "records": [wrld(cell_range)], "land": str(land_dir),
             "regions": regions.shell_records(w), "cellRegions": regions.cell_region_runs(w),
             "borderRegion": regions.border_shell_key(w), "borderCells": regions.border_cell_runs(),
+            "dropAltTextures": sorted(ALT_DROPPED),  # 1.15 r3: the placed bases overridden with MODS dropped
             "statics": rocks.records(w),  # 1.15: our STATs naming BM&V's unrecorded rock meshes
             "creatures": creatures.document(w)}  # 1.15 §g: the lists, their templates and the zones
 

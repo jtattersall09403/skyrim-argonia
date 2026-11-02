@@ -1,5 +1,5 @@
 {
-"about": "texture slots of each non-vanilla object_form mesh and the row that lays each texture (tools/argonia_world/vegetation/mesh_textures.py); paths only",
+"about": "texture slots of each non-vanilla object_form mesh, each candidate form's MODS sets, and the row that lays each texture (tools/argonia_world/vegetation/mesh_textures.py); paths only",
 "meshes": {
 "meshes/argonia/blackwood/house05platform.nif": {
 "row": "king-of-the-murkmire",
@@ -6797,21 +6797,8 @@
 },
 "meshes/landscape/plants/bigshrub(colorful).nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/plants/grplants2/leafcol.dds"
-],
-[
-1,
-"textures/plants/grplants2/leafcol_n.dds"
-],
-[
-2,
-"textures/plants/grplants2/leafcol.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/plants/bigshrub2(colorful).nif": {
 "row": "bmv",
@@ -6882,35 +6869,13 @@
 },
 "meshes/landscape/plants/eseabuckthorn05sp.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/plants/eseabuckthorn07.dds"
-],
-[
-1,
-"textures/plants/eseabuckthorn07_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/plants/esloebush08.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/esloebranch02.dds"
-],
-[
-1,
-"textures/hod-tom_n.dds"
-],
-[
-2,
-"textures/landscape/trees/esloebranch02.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/plants/fernlarge03.nif": {
 "row": "bmv",
@@ -7076,17 +7041,8 @@
 },
 "meshes/landscape/rocks/alrocks/al_rock13.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/vvardenfell/rocks/al/al_rock02.dds"
-],
-[
-1,
-"textures/vvardenfell/rocks/al/al_rock02_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/rocks/alrocks/al_rock14.nif": {
 "row": "bmv",
@@ -7118,17 +7074,8 @@
 },
 "meshes/landscape/rocks/azrocks/coast/az_rock02.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01.dds"
-],
-[
-1,
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/rocks/azrocks/coast/az_rock03.nif": {
 "row": "bmv",
@@ -7147,17 +7094,8 @@
 },
 "meshes/landscape/rocks/azrocks/coast/az_rock09.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01.dds"
-],
-[
-1,
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/rocks/glrocks/gl_rock03.nif": {
 "row": "bmv",
@@ -7340,111 +7278,13 @@
 },
 "meshes/landscape/trees/11skyred.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/greenleaf4.dds"
-],
-[
-0,
-"textures/landscape/trees/thing1.dds"
-],
-[
-0,
-"textures/landscape/trees/thing2.dds"
-],
-[
-0,
-"textures/landscape/trees/trunk2.dds"
-],
-[
-1,
-"textures/landscape/trees/greenleaf1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/thing1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/thing2_n.dds"
-],
-[
-1,
-"textures/landscape/trees/trunk2_n.dds"
-],
-[
-2,
-"textures/landscape/trees/greenleaf1.dds"
-],
-[
-2,
-"textures/landscape/trees/thing1.dds"
-],
-[
-2,
-"textures/landscape/trees/thing2.dds"
-],
-[
-2,
-"textures/landscape/trees/trunk2.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/11skyviolett.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/greenleaf3.dds"
-],
-[
-0,
-"textures/landscape/trees/thing1.dds"
-],
-[
-0,
-"textures/landscape/trees/thing2.dds"
-],
-[
-0,
-"textures/landscape/trees/trunk2.dds"
-],
-[
-1,
-"textures/landscape/trees/greenleaf1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/thing1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/thing2_n.dds"
-],
-[
-1,
-"textures/landscape/trees/trunk2_n.dds"
-],
-[
-2,
-"textures/landscape/trees/greenleaf1.dds"
-],
-[
-2,
-"textures/landscape/trees/thing1.dds"
-],
-[
-2,
-"textures/landscape/trees/thing2.dds"
-],
-[
-2,
-"textures/landscape/trees/trunk2.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/beachpalm1.nif": {
 "row": "bmv",
@@ -7553,49 +7393,8 @@
 },
 "meshes/landscape/trees/cypress2.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/grandoak12.dds"
-],
-[
-0,
-"textures/landscape/trees/cypressbark3.dds"
-],
-[
-0,
-"textures/landscape/trees/cypressbark4.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbmapleconifer21.dds"
-],
-[
-0,
-"textures/landscape/trees/spanishmoss6.dds"
-],
-[
-1,
-"textures/landscape/trees/cypressbark5_n.dds"
-],
-[
-1,
-"textures/landscape/trees/treeaspenbranchcomp_n.dds"
-],
-[
-2,
-"textures/grandoak12.dds"
-],
-[
-2,
-"textures/landscape/trees/junglemapletest3.dds"
-],
-[
-2,
-"textures/landscape/trees/spanishmoss6.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/cypress5.nif": {
 "row": "bmv",
@@ -7714,45 +7513,8 @@
 },
 "meshes/landscape/trees/ethas/oak-o.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/ethas/treeoakbranch.dds"
-],
-[
-0,
-"textures/landscape/trees/ethas/treeoakleaf.dds"
-],
-[
-0,
-"textures/landscape/trees/ethas/treeoaktrunk.dds"
-],
-[
-1,
-"textures/landscape/trees/ethas/treeoakbranch_n.dds"
-],
-[
-1,
-"textures/landscape/trees/ethas/treeoakleaf_n.dds"
-],
-[
-1,
-"textures/landscape/trees/ethas/treeoaktrunk_n.dds"
-],
-[
-2,
-"textures/landscape/trees/ethas/treeoakbranch.dds"
-],
-[
-2,
-"textures/landscape/trees/ethas/treeoakleaf.dds"
-],
-[
-2,
-"textures/landscape/trees/ethas/treeoaktrunk.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/ethas/paradise-b.nif": {
 "row": "bmv",
@@ -7861,57 +7623,8 @@
 },
 "meshes/landscape/trees/giantredwood2.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/gkbbranch3dark.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbseq36light.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbseq36lighttop.dds"
-],
-[
-0,
-"textures/landscape/trees/redwoodbark14.dds"
-],
-[
-0,
-"textures/landscape/trees/redwoodbark15.dds"
-],
-[
-0,
-"textures/landscape/trees/redwoodbark16.dds"
-],
-[
-1,
-"textures/grandoak11_n.dds"
-],
-[
-1,
-"textures/landscape/trees/gkbbranch3dark_n.dds"
-],
-[
-1,
-"textures/landscape/trees/gkbseq24_n.dds"
-],
-[
-1,
-"textures/landscape/trees/redwoodbark14_n.dds"
-],
-[
-2,
-"textures/grandoak11.dds"
-],
-[
-2,
-"textures/landscape/trees/gkbbranch3dark.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/giantredwood3.nif": {
 "row": "bmv",
@@ -7989,37 +7702,8 @@
 },
 "meshes/landscape/trees/gkbjungletreenew2.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/gkbbark13.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbbranch1.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbbranch5dark.dds"
-],
-[
-1,
-"textures/landscape/trees/gkbbark13_n.dds"
-],
-[
-1,
-"textures/landscape/trees/reachtreebranch01_n.dds"
-],
-[
-2,
-"textures/landscape/trees/gkbbranch1.dds"
-],
-[
-2,
-"textures/landscape/trees/gkbbranch5dark.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/gkbjungletreenew2v2tropical.nif": {
 "row": "bmv",
@@ -8067,37 +7751,8 @@
 },
 "meshes/landscape/trees/gkbjungletreenew7v2orangebrown.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/gkbsmoothdarkbark20.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbsmoothdarkbark22.dds"
-],
-[
-0,
-"textures/landscape/trees/gkbtreeaspenbranchcompbrown3.dds"
-],
-[
-1,
-"textures/landscape/trees/gkbsmoothdarkbark20_n.dds"
-],
-[
-1,
-"textures/landscape/trees/gkbsmoothdarkbark22_n.dds"
-],
-[
-1,
-"textures/landscape/trees/treeaspenbranchcomp_n.dds"
-],
-[
-2,
-"textures/landscape/trees/gkbtreeaspenbranchcompbrown3.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/gkblillipad2.nif": {
 "row": "bmv",
@@ -8158,63 +7813,13 @@
 },
 "meshes/landscape/trees/leafless01.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/thing1.dds"
-],
-[
-0,
-"textures/landscape/trees/trunk2.dds"
-],
-[
-1,
-"textures/landscape/trees/thing1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/trunk2_n.dds"
-],
-[
-2,
-"textures/landscape/trees/thing1.dds"
-],
-[
-2,
-"textures/landscape/trees/trunk2.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/leafless02.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/thing1.dds"
-],
-[
-0,
-"textures/landscape/trees/trunk2.dds"
-],
-[
-1,
-"textures/landscape/trees/thing1_n.dds"
-],
-[
-1,
-"textures/landscape/trees/trunk2_n.dds"
-],
-[
-2,
-"textures/landscape/trees/thing1.dds"
-],
-[
-2,
-"textures/landscape/trees/trunk2.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/maple10.nif": {
 "row": "bmv",
@@ -8233,33 +7838,8 @@
 },
 "meshes/landscape/trees/poplar.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/leafcol44.dds"
-],
-[
-0,
-"textures/landscape/trees/trunk2.dds"
-],
-[
-1,
-"textures/landscape/trees/leafcol44_n.dds"
-],
-[
-1,
-"textures/landscape/trees/trunk2_n.dds"
-],
-[
-2,
-"textures/landscape/trees/leafcol44.dds"
-],
-[
-2,
-"textures/landscape/trees/trunk2.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/tbp_seaweed01.nif": {
 "row": "depths-of-skyrim",
@@ -8430,33 +8010,8 @@
 },
 "meshes/landscape/trees/ztgorsebush03pink.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/landscape/trees/-trunk.dds"
-],
-[
-0,
-"textures/landscape/trees/egorsebranch01pink.dds"
-],
-[
-1,
-"textures/landscape/trees/-trunk_n.dds"
-],
-[
-1,
-"textures/landscape/trees/egorsebranch01_n.dds"
-],
-[
-2,
-"textures/landscape/trees/-trunk.dds"
-],
-[
-2,
-"textures/landscape/trees/egorsebranch01pink.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscape/trees/ztgorsebush04statwhite.nif": {
 "row": "bmv",
@@ -8483,17 +8038,8 @@
 },
 "meshes/landscaping/rocks/from_online_resource/rock_28.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_28.dds"
-],
-[
-1,
-"textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_28_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/landscaping/rocks/from_online_resource/rock_30.nif": {
 "row": "bmv",
@@ -8707,8 +8253,25 @@
 },
 "meshes/stroti/bctree.nif": {
 "row": "bmv",
-"laid": null,
-"slots": []
+"laid": "bmv",
+"slots": [
+[
+0,
+"textures/vurt_bitterbark.dds"
+],
+[
+0,
+"textures/vurt_spmoss04.dds"
+],
+[
+1,
+"textures/vurt_bitterbark_n.dds"
+],
+[
+1,
+"textures/vurt_spmoss04_n.dds"
+]
+]
 },
 "meshes/trdata/mushrooms/tr_ash_parasol01.nif": {
 "row": "bmv",
@@ -8791,25 +8354,8 @@
 },
 "meshes/trdata/mushrooms/tr_oth_tallmush05.nif": {
 "row": "bmv",
-"laid": "bmv",
-"slots": [
-[
-0,
-"textures/pc_flora_str_tree_01tr2.dds"
-],
-[
-0,
-"textures/tr_oth_mush_sm2.dds"
-],
-[
-1,
-"textures/pc_flora_str_tree_01tr2_n.dds"
-],
-[
-1,
-"textures/tr_oth_mush_sm2_n.dds"
-]
-]
+"laid": null,
+"slots": []
 },
 "meshes/vurt/deadtrees/vurt_treewigs.nif": {
 "row": "bmv",
@@ -9358,14 +8904,1085 @@
 ]
 }
 },
+"forms": {
+"0009DB:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell7.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+]
+],
+"0009DC:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+]
+],
+"0009DE:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+]
+],
+"0009DF:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+],
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell7.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+]
+],
+"0009E2:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell7.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+],
+[
+"Snail",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds"
+]
+],
+"000A13:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog2.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"000A17:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog2.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"000A1A:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog3.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+],
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog4.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"000A1B:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog3.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+],
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog4.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"000B76:King of the Murkmire.esp": [
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body3.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+],
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body4.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+]
+],
+"000C1E:King of the Murkmire.esp": [
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body2.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+]
+],
+"000C31:King of the Murkmire.esp": [
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body2.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+]
+],
+"003E86:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/pigeons/pigeon2.dds",
+"textures/actors/pigeons/pigeon_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/crow.dds",
+"textures/actors/crow/crow_n.dds"
+]
+],
+"004950:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/pigeons/pigeon2.dds",
+"textures/actors/pigeons/pigeon_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/greycrow.dds",
+"textures/actors/crow/crow_n.dds"
+]
+],
+"004EBB:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/pigeons/pigeon2.dds",
+"textures/actors/pigeons/pigeon_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/crow.dds",
+"textures/actors/crow/crow_n.dds"
+],
+[
+"chicken",
+"textures/actors/seagull/seagull.dds",
+"textures/actors/seagull/seagull_n.dds"
+]
+],
+"00FD61:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/grouse/grouse_white.dds",
+"textures/actors/grouse/grouce1_n.dds"
+],
+[
+"chicken",
+"textures/actors/sparrows/sparrow.dds",
+"textures/actors/sparrows/sparrow_n.dds"
+],
+[
+"chicken",
+"textures/actors/sandpiper/pectoralsandpiper.dds",
+"textures/actors/sandpiper/sandpiper_n.dds"
+]
+],
+"00FD62:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/grouse/grouse_white.dds",
+"textures/actors/grouse/grouce1_n.dds"
+],
+[
+"chicken",
+"textures/actors/sparrows/sparrow.dds",
+"textures/actors/sparrows/sparrow_n.dds"
+],
+[
+"chicken",
+"textures/actors/oystercatcher/oystercatcher.dds",
+"textures/actors/oystercatcher/oystercatcher_n.dds"
+]
+],
+"00FF15:King of the Murkmire.esp": [
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body3.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+],
+[
+"grp002:003:1",
+"textures/mihail monsters and animals/dragon/giant snake/body4.dds",
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds"
+]
+],
+"014EC0:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/pigeons/pigeon2.dds",
+"textures/actors/pigeons/pigeon_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/crow.dds",
+"textures/actors/crow/crow_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/magpie.dds",
+"textures/actors/crow/magpie_n.dds"
+],
+[
+"chicken",
+"textures/actors/crow/raven.dds",
+"textures/actors/crow/raven_n.dds"
+]
+],
+"014EDB:Tropical Skyrim -- Birds.esp": [
+[
+"chicken",
+"textures/actors/grouse/grouse_white.dds",
+"textures/actors/grouse/grouce1_n.dds"
+],
+[
+"chicken",
+"textures/actors/sparrows/sparrow.dds",
+"textures/actors/sparrows/sparrow_n.dds"
+],
+[
+"chicken",
+"textures/actors/sparrows/kingfisher.dds",
+"textures/actors/sparrows/sparrow_n.dds"
+]
+],
+"0158BE:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+]
+],
+"0158BF:King of the Murkmire.esp": [
+[
+"Shell",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell7.dds",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds"
+]
+],
+"01A7F9:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog2.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"01A7FA:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog3.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+],
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog4.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"01A7FB:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog2.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"01A7FC:King of the Murkmire.esp": [
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog3.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+],
+[
+"frog_body",
+"textures/mihail monsters and animals/rabbit/frog/frog4.dds",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds"
+]
+],
+"0309F0:King of the Murkmire.esp": [
+[
+"L1_Dirt",
+"textures/landscape/rivermud.dds",
+"textures/landscape/rivermud_n.dds"
+]
+],
+"0309F1:King of the Murkmire.esp": [
+[
+"TreePineForestUprootedStump01:9",
+"textures/landscape/rivermud.dds",
+"textures/landscape/rivermud_n.dds"
+]
+],
+"035B35:King of the Murkmire.esp": [
+[
+"WRTempleTree02:1",
+null,
+null
+],
+[
+"WRTempleTree02:3",
+null,
+null
+]
+],
+"03A58D:King of the Murkmire.esp": [
+[
+"TreePineForestUprooted01:9",
+"textures/argonia/landscape/ctq_grass_lush01.dds",
+"textures/argonia/landscape/ctq_grass_lush01_n.dds"
+]
+],
+"03A58F:King of the Murkmire.esp": [
+[
+"L1_Dirt",
+"textures/argonia/landscape/rivermud.dds",
+"textures/argonia/landscape/rivermud_n.dds"
+]
+],
+"03A590:King of the Murkmire.esp": [
+[
+"L1_Dirt",
+"textures/argonia/landscape/ctq_grass_lush01.dds",
+"textures/argonia/landscape/ctq_grass_lush01_n.dds"
+]
+],
+"03A592:King of the Murkmire.esp": [
+[
+"TreePineForestUprootedStump01:9",
+"textures/landscape/reachmoss01.dds",
+"textures/landscape/reachmoss01_n.dds"
+]
+],
+"03A898:King of the Murkmire.esp": [
+[
+"RockL01:1",
+"textures/creationclub/_shared/dungeons/ayleidruins/cave08.dds",
+"textures/creationclub/_shared/dungeons/ayleidruins/cave08_n.dds"
+]
+],
+"040337:King of the Murkmire.esp": [
+[
+"ReachTreeStump01:3",
+"textures/creationclub/_shared/dungeons/ayleidruins/cave08.dds",
+"textures/creationclub/_shared/dungeons/ayleidruins/cave08_n.dds"
+]
+],
+"0413FF:King of the Murkmire.esp": [
+[
+"Scene Root:26",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+],
+[
+"Scene Root:22",
+"textures/architecture/windhelm/whwoodboards01.dds",
+"textures/architecture/windhelm/whwoodboards01_n.dds"
+],
+[
+"Scene Root:25",
+"textures/architecture/windhelm/whwoodboards01.dds",
+"textures/architecture/windhelm/whwoodboards01_n.dds"
+],
+[
+"Circle.028",
+"textures/architecture/riften/riftensiding01.dds",
+"textures/architecture/riften/riftensiding01_n.dds"
+],
+[
+"Circle.024",
+"textures/architecture/windhelm/whwoodboards01.dds",
+"textures/architecture/windhelm/whwoodboards01_n.dds"
+],
+[
+"Circle.027",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+]
+],
+"045111:King of the Murkmire.esp": [
+[
+"TreePineForestUprootedStump01:9",
+"textures/argonia/landscape/rivermud.dds",
+"textures/argonia/landscape/rivermud_n.dds"
+]
+],
+"06B1E1:Black Marsh.esm": [
+[
+"Drake1",
+"textures/actors/dragon/dragon_boss.dds",
+"textures/actors/dragon/dragon_n.dds"
+]
+],
+"06C775:King of the Murkmire.esp": [
+[
+"ReachTreeStump01:3",
+null,
+null
+]
+],
+"06C77A:King of the Murkmire.esp": [
+[
+"L1_Dirt",
+"textures/_resourcepack/landscape/sandwet01_d.dds",
+"textures/_resourcepack/landscape/sand01_n.dds"
+]
+],
+"07A610:Black Marsh.esm": [
+[
+"S_Hiars01Reduced",
+"textures/actors/dragon/dragon_boss.dds",
+"textures/actors/dragon/dragon_n.dds"
+],
+[
+"S_Body0180percent",
+"textures/actors/dragon/dragon_boss.dds",
+"textures/actors/dragon/dragon_n.dds"
+]
+],
+"0AA5F4:Black Marsh.esm": [
+[
+"pasted  polySurface27 1",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 2",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 3",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 4",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 5",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 6",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 7",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+],
+[
+"pasted  polySurface27 8",
+"textures/architecture/jg/jgayleidleaftrim.dds",
+null
+]
+],
+"0D85A4:Black Marsh.esm": [
+[
+"Ivy01:0",
+"textures/landscape/plants/ff.dds",
+null
+]
+],
+"0D85BB:Black Marsh.esm": [
+[
+"Tri mesh_Trunk_None.010 1",
+"textures/landscape/trees/abark2.dds",
+null
+]
+],
+"11498F:King of the Murkmire.esp": [
+[
+"L2_Accessories:0 - L1_Supports:0",
+null,
+null
+]
+],
+"11DC57:Black Marsh.esm": [
+[
+"Ivy01:0_1",
+"textures/landscape/plants/chickweed.dds",
+null
+],
+[
+"Ivy01:0",
+"textures/landscape/plants/chickweed.dds",
+null
+]
+],
+"11FE74:Black Marsh.esm": [
+[
+"Tri Flora_tree_GL_11",
+"textures/landscape/trees/abark2.dds",
+null
+]
+],
+"11FE7A:Black Marsh.esm": [
+[
+"treeofwolene4_4",
+"textures/landscape/trees/gkbtreejungleaspenbranch.dds",
+null
+],
+[
+"treeofwolene4_3",
+"textures/landscape/trees/gkbtreejungleaspenbranch.dds",
+null
+],
+[
+"treeofwolene4_2",
+"textures/landscape/trees/gkbtreejungleaspenbranch.dds",
+null
+]
+],
+"146905:King of the Murkmire.esp": [
+[
+"TreePineForestUprooted01:9",
+"textures/landscape/rivermud.dds",
+"textures/landscape/rivermud_n.dds"
+]
+],
+"14BB2E:King of the Murkmire.esp": [
+[
+"RTCanalsL01Lower01:12 - L2_RTCanalsL01Lower01:12",
+"textures/architecture/riften/riftensiding01.dds",
+"textures/architecture/riften/riftensiding01_n.dds"
+],
+[
+"RTCanalsL01Lower01:11 - L2_RTCanalsL01Lower01:11",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+],
+[
+"L2_RTCanalsL01Lower01",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+]
+],
+"155106:Black Marsh.esm": [
+[
+"L1_PineShrub04",
+"textures/landscape/trees/gkbtreejungleaspenbranch.dds",
+null
+]
+],
+"172D3A:King of the Murkmire.esp": [
+[
+"TreePineForestUprooted01:9",
+"textures/argonia/landscape/rivermud.dds",
+"textures/argonia/landscape/rivermud_n.dds"
+]
+],
+"17BCFD:Black Marsh.esm": [
+[
+"L1_PineShrub04",
+"textures/landscape/plants/tropicalshrub05.dds",
+null
+]
+],
+"17BD15:Black Marsh.esm": [
+[
+"L1_FloraHangingMoss02:0 - L2_FloraHangingMoss02:0",
+"textures/landscape/plants/vurt_spmoss021.dds",
+null
+]
+],
+"17BD1B:Black Marsh.esm": [
+[
+"TropicalShrub01:5",
+"textures/landscape/plants/tropicalshrub05.dds",
+null
+]
+],
+"17BD20:Black Marsh.esm": [
+[
+"TropicalPlant01:5",
+"textures/landscape/plants/tropicalplant01.dds",
+null
+]
+],
+"196181:Black Marsh.esm": [
+[
+"Ivy01:0",
+"textures/landscape/plants/ferny.dds",
+null
+]
+],
+"1961A5:Black Marsh.esm": [
+[
+"Ivy01:0",
+"textures/landscape/plants/bush01.dds",
+null
+]
+],
+"1B32CB:Black Marsh.esm": [
+[
+"Circle.002",
+"textures/landscape/ztree flower1/bluetulip.dds",
+null
+],
+[
+"Circle.001 1",
+"textures/landscape/ztree flower1/stem1.dds",
+null
+]
+],
+"1B32CE:Black Marsh.esm": [
+[
+"Tri shroom.005 0",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+],
+[
+"Tri shroom.005 1",
+"textures/pc_flora_blue_cap.dds",
+null
+],
+[
+"Tri shroom.005 2",
+"textures/pc_flora_blue_cap.dds",
+null
+]
+],
+"1B32D1:Black Marsh.esm": [
+[
+"Tri Flora_emp_parasol_01 0.00",
+"textures/landscape/ztree flower1/t1red2.dds",
+null
+],
+[
+"Tri Flora_emp_parasol_01 1",
+"textures/landscape/ztree flower1/daf2red.dds",
+null
+],
+[
+"Tri Flora_emp_parasol_01 2",
+"textures/landscape/ztree flower1/daf2red.dds",
+null
+],
+[
+"Tri Flora_emp_parasol_01 3",
+"textures/landscape/ztree flower1/t1red2.dds",
+null
+]
+],
+"1B32D4:Black Marsh.esm": [
+[
+"Root",
+"textures/landscape/trees/abark2.dds",
+null
+],
+[
+"Cup 0",
+"textures/landscape/plants/pc_flora_hyac_petal.dds",
+null
+]
+],
+"1B32DC:Black Marsh.esm": [
+[
+"cypress1_4",
+"textures/vurt_bcmossbark01.dds",
+null
+],
+[
+"cypress1_1",
+"textures/vurt_bcmossbark01.dds",
+null
+]
+],
+"1B32DE:Black Marsh.esm": [
+[
+"cypress2_6",
+"textures/landscape/trees/epinebark06snow.dds",
+null
+],
+[
+"cypress2_1",
+"textures/landscape/trees/epinebark06snow.dds",
+null
+]
+],
+"1B32E0:Black Marsh.esm": [
+[
+"cypress5_5",
+"textures/landscape/trees/vurt/vurtdeadbark.dds",
+null
+],
+[
+"cypress5_4",
+"textures/landscape/trees/vurt/vurtdeadbark.dds",
+null
+],
+[
+"cypress5_1",
+"textures/landscape/trees/vurt/vurtdeadbark.dds",
+null
+]
+],
+"1B32E4:Black Marsh.esm": [
+[
+"jungletree12v3_3",
+"textures/landscape/trees/epinebark06snow.dds",
+null
+],
+[
+"jungletree12v3_2",
+"textures/landscape/trees/epinebark06snow.dds",
+null
+],
+[
+"jungletree12v3_1",
+"textures/landscape/trees/epinebark06snow.dds",
+null
+]
+],
+"1B32E5:Black Marsh.esm": [
+[
+"jungletreenew1",
+"textures/vurt_bcmossbark01.dds",
+null
+]
+],
+"1CE956:Black Marsh.esm": [
+[
+"jungletree19",
+"textures/vurt_bcmossbark01.dds",
+null
+]
+],
+"1CE959:Black Marsh.esm": [
+[
+"1",
+"textures/vurt_bcmossbark01.dds",
+null
+]
+],
+"1D3CC3:Black Marsh.esm": [
+[
+"Tri cap 0",
+"textures/landscape/ztree flower1/daf2red.dds",
+null
+],
+[
+"Tri cap 5",
+"textures/pc_flora_blue_cap.dds",
+null
+],
+[
+"Tri cap 6",
+"textures/landscape/plants/pc_flora_hyac_petal.dds",
+null
+],
+[
+"Tri cap 7",
+"textures/landscape/ztree flower1/bluetulip.dds",
+null
+],
+[
+"Tri cap.007 1",
+"textures/pc_flora_mushbottom.dds",
+null
+],
+[
+"Tri cap.007 2",
+"textures/pc_flora_mushbottom.dds",
+null
+],
+[
+"Tri cap.007 3",
+"textures/pc_flora_mushbottom.dds",
+null
+],
+[
+"Tri cap.007 4",
+"textures/pc_flora_mushbottom.dds",
+null
+],
+[
+"stem",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+]
+],
+"1D3CCB:Black Marsh.esm": [
+[
+"river:4",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+],
+[
+"river:3",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+],
+[
+"river_1",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+],
+[
+"river",
+"textures/landscape/trees/vurt/baobark.dds",
+null
+]
+],
+"1D3CD2:Black Marsh.esm": [
+[
+"Circle.002",
+"textures/landscape/plants/pc_flora_hyac_petal.dds",
+null
+],
+[
+"Circle.001 1",
+"textures/landscape/ztree flower1/stem1.dds",
+null
+]
+],
+"1DE971:Black Marsh.esm": [
+[
+"pasted  pCylinder1",
+"textures/landscape/plants/sheomud01.dds",
+null
+]
+],
+"1DE977:Black Marsh.esm": [
+[
+"ALTR16",
+"textures/eressea/architecture/citesylvestrepactevert/bark0005.dds",
+null
+]
+],
+"44E914:King of the Murkmire.esp": [
+[
+"TreePineForestCutStump01:0",
+"textures/_resourcepack/landscape/trees/baldcypressbark02_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark02_n.dds"
+]
+],
+"52D306:King of the Murkmire.esp": [
+[
+"cedartree1:1",
+null,
+null
+],
+[
+"cedartree1:2",
+null,
+null
+]
+],
+"52D309:King of the Murkmire.esp": [
+[
+"WRTempleTree02:3",
+null,
+null
+],
+[
+"WRTempleTree02:1",
+null,
+null
+],
+[
+"L1_WRTempleTree02",
+null,
+null
+]
+],
+"55152F:King of the Murkmire.esp": [
+[
+"WRTempleTree02:3",
+"textures/_resourcepack/landscape/marshmud01_d.dds",
+"textures/_resourcepack/landscape/marshmud01_n.dds"
+],
+[
+"WRTempleTree02:1",
+null,
+null
+],
+[
+"L1_WRTempleTree02",
+null,
+null
+]
+],
+"551530:King of the Murkmire.esp": [
+[
+"WRTempleTree02:3",
+"textures/argonia/landscape/ctq_grass_lush01.dds",
+"textures/argonia/landscape/ctq_grass_lush01_n.dds"
+],
+[
+"WRTempleTree02:1",
+null,
+null
+],
+[
+"L1_WRTempleTree02",
+null,
+null
+]
+],
+"551536:King of the Murkmire.esp": [
+[
+"Cylinder_1",
+null,
+null
+]
+],
+"551538:King of the Murkmire.esp": [
+[
+"Plane.001",
+null,
+null
+]
+],
+"551539:King of the Murkmire.esp": [
+[
+"2 0_1",
+null,
+null
+]
+],
+"55154D:King of the Murkmire.esp": [
+[
+"WRTempleTree02:3",
+"textures/argonia/landscape/ctq_undergrowth_01.dds",
+"textures/argonia/landscape/ctq_undergrowth_01_n.dds"
+],
+[
+"WRTempleTree02:1",
+null,
+null
+],
+[
+"L1_WRTempleTree02",
+null,
+null
+]
+],
+"85A258:King of the Murkmire.esp": [
+[
+"Objekt02:1",
+"textures/architecture/riften/riftensiding01.dds",
+"textures/architecture/riften/riftensiding01_n.dds"
+],
+[
+"Circle.046",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+]
+],
+"879819:King of the Murkmire.esp": [
+[
+"RTCanalsPlazaR01Lower02:12 - L2_L2_RTCanalsPlazaR01Lower02:12",
+"textures/architecture/riften/riftensiding01.dds",
+"textures/architecture/riften/riftensiding01_n.dds"
+],
+[
+"RTCanalsPlazaR01Lower02:11 - L2_L2_RTCanalsPlazaR01Lower02:11",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+],
+[
+"L2_L2_RTCanalsPlazaR01Lower02",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds",
+"textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds"
+]
+],
+"8933E3:King of the Murkmire.esp": [
+[
+"Circle.002",
+"textures/_resourcepack/_genericmaterials/ceramic/ceramic01yellow_d.dds",
+"textures/tesak1243/mwimperialarchitecture/architecture/keep/mwimparchwallplaster01_n.dds"
+]
+]
+},
 "sources": {
 "textures/3amt/neu/stingingnetteld.dds": "bmv",
 "textures/3amt/neu/stingingnetteld_n.dds": "bmv",
+"textures/_resourcepack/_genericmaterials/ceramic/ceramic01yellow_d.dds": "vanilla",
+"textures/_resourcepack/landscape/marshmud01_d.dds": "vanilla",
+"textures/_resourcepack/landscape/marshmud01_n.dds": "vanilla",
 "textures/_resourcepack/landscape/plants/duckweed01_d.dds": "vanilla",
 "textures/_resourcepack/landscape/plants/duckweed01_n.dds": "vanilla",
 "textures/_resourcepack/landscape/plants/lilypads01_d.dds": "vanilla",
+"textures/_resourcepack/landscape/sand01_n.dds": "vanilla",
+"textures/_resourcepack/landscape/sandwet01_d.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/baldcypressbark01_d.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/baldcypressbark01_n.dds": "vanilla",
+"textures/_resourcepack/landscape/trees/baldcypressbark02_d.dds": "vanilla",
+"textures/_resourcepack/landscape/trees/baldcypressbark02_n.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/baldcypressbranches01_n.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/madagascarpalm01_d.dds": "vanilla",
@@ -9386,6 +10003,28 @@
 "textures/_resourcepack/landscape/trees/weepingwillowbark01_n.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds": "vanilla",
 "textures/_resourcepack/landscape/trees/weepingwillowbranches01_n.dds": "vanilla",
+"textures/actors/crow/crow.dds": "tropical-skyrim-sse",
+"textures/actors/crow/crow_n.dds": "tropical-skyrim-sse",
+"textures/actors/crow/greycrow.dds": "tropical-skyrim-sse",
+"textures/actors/crow/magpie.dds": "tropical-skyrim-sse",
+"textures/actors/crow/magpie_n.dds": "tropical-skyrim-sse",
+"textures/actors/crow/raven.dds": "tropical-skyrim-sse",
+"textures/actors/crow/raven_n.dds": "tropical-skyrim-sse",
+"textures/actors/dragon/dragon_boss.dds": "vanilla",
+"textures/actors/dragon/dragon_n.dds": "vanilla",
+"textures/actors/grouse/grouce1_n.dds": "tropical-skyrim-sse",
+"textures/actors/grouse/grouse_white.dds": "tropical-skyrim-sse",
+"textures/actors/oystercatcher/oystercatcher.dds": "tropical-skyrim-sse",
+"textures/actors/oystercatcher/oystercatcher_n.dds": "tropical-skyrim-sse",
+"textures/actors/pigeons/pigeon2.dds": "tropical-skyrim-sse",
+"textures/actors/pigeons/pigeon_n.dds": "tropical-skyrim-sse",
+"textures/actors/sandpiper/pectoralsandpiper.dds": "tropical-skyrim-sse",
+"textures/actors/sandpiper/sandpiper_n.dds": "tropical-skyrim-sse",
+"textures/actors/seagull/seagull.dds": "tropical-skyrim-sse",
+"textures/actors/seagull/seagull_n.dds": "tropical-skyrim-sse",
+"textures/actors/sparrows/kingfisher.dds": "tropical-skyrim-sse",
+"textures/actors/sparrows/sparrow.dds": "tropical-skyrim-sse",
+"textures/actors/sparrows/sparrow_n.dds": "tropical-skyrim-sse",
 "textures/architecture/edgetrim/woodedgetrim01.dds": "vanilla",
 "textures/architecture/edgetrim/woodedgetrim01_n.dds": "vanilla",
 "textures/architecture/farmhouse/fern01.dds": "vanilla",
@@ -9398,6 +10037,7 @@
 "textures/architecture/farmhouse/mushroom04_n.dds": "vanilla",
 "textures/architecture/farmhouse/rope01.dds": "vanilla",
 "textures/architecture/farmhouse/rope01_n.dds": "vanilla",
+"textures/architecture/jg/jgayleidleaftrim.dds": null,
 "textures/architecture/riften/riftenrope01.dds": "tropical-skyrim-sse",
 "textures/architecture/riften/riftenrope01_n.dds": "tropical-skyrim-sse",
 "textures/architecture/riften/riftensiding01.dds": "tropical-skyrim-sse",
@@ -9409,6 +10049,8 @@
 "textures/architecture/whiterun/wrfieldgrass01_n.dds": "tropical-skyrim-sse",
 "textures/architecture/whiterun/wrtreealivebark01_n.dds": "tropical-skyrim-sse",
 "textures/architecture/whiterun/wrtreefloweringbranch01_n.dds": "tropical-skyrim-sse",
+"textures/architecture/windhelm/whwoodboards01.dds": "vanilla",
+"textures/architecture/windhelm/whwoodboards01_n.dds": "vanilla",
 "textures/architecture/windhelm/whwoodboards02.dds": "vanilla",
 "textures/architecture/windhelm/whwoodboards02_n.dds": "vanilla",
 "textures/argonia/anvilplants/anvilleafpalm01.dds": "king-of-the-murkmire",
@@ -9416,6 +10058,12 @@
 "textures/argonia/anvilplants/anvilleafpalm02_n.dds": "king-of-the-murkmire",
 "textures/argonia/anvilplants/treeoakleafcol44.dds": "king-of-the-murkmire",
 "textures/argonia/anvilplants/treeoakleafcol44_n.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/ctq_grass_lush01.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/ctq_grass_lush01_n.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/ctq_undergrowth_01.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/ctq_undergrowth_01_n.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/rivermud.dds": "king-of-the-murkmire",
+"textures/argonia/landscape/rivermud_n.dds": "king-of-the-murkmire",
 "textures/clutter/quest/da13tendrilvines01.dds": "vanilla",
 "textures/clutter/quest/da13tendrilvines01_n.dds": "vanilla",
 "textures/clutter/stockade/stockadeextra01.dds": "vanilla",
@@ -9451,8 +10099,7 @@
 "textures/effects/fxbird01_n.dds": "vanilla",
 "textures/effects/fxbird02.dds": "tropical-skyrim-sse",
 "textures/effects/fxbird03.dds": "tropical-skyrim-sse",
-"textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_28.dds": null,
-"textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_28_n.dds": null,
+"textures/eressea/architecture/citesylvestrepactevert/bark0005.dds": null,
 "textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_30_n.dds": null,
 "textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_33_n.dds": null,
 "textures/grandoak11.dds": "bmv",
@@ -9460,7 +10107,6 @@
 "textures/grandoak12.dds": "bmv",
 "textures/gv_textures/argonianresources/histtree.dds": "mud-mother-grove",
 "textures/gv_textures/argonianresources/histtreeleaves.dds": "mud-mother-grove",
-"textures/hod-tom_n.dds": "bmv",
 "textures/landscape/braken.dds": "bmv",
 "textures/landscape/dirtcliffs/dirtcliffsroots01.dds": "tropical-skyrim-sse",
 "textures/landscape/dirtcliffs/dirtcliffsroots01_n.dds": "tropical-skyrim-sse",
@@ -9490,10 +10136,22 @@
 "textures/landscape/pineforest01_n.dds": "tropical-skyrim-sse",
 "textures/landscape/pineforest03.dds": "tropical-skyrim-sse",
 "textures/landscape/pineforest03_n.dds": "tropical-skyrim-sse",
+"textures/landscape/plants/bush01.dds": null,
+"textures/landscape/plants/chickweed.dds": null,
+"textures/landscape/plants/ferny.dds": null,
+"textures/landscape/plants/ff.dds": null,
+"textures/landscape/plants/pc_flora_hyac_petal.dds": null,
+"textures/landscape/plants/sheomud01.dds": null,
+"textures/landscape/plants/tropicalplant01.dds": null,
+"textures/landscape/plants/tropicalshrub05.dds": null,
+"textures/landscape/plants/vurt_spmoss021.dds": null,
 "textures/landscape/reachmoss01.dds": "tropical-skyrim-sse",
 "textures/landscape/reachmoss01_n.dds": "tropical-skyrim-sse",
+"textures/landscape/rivermud.dds": "tropical-skyrim-sse",
+"textures/landscape/rivermud_n.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/-trunk.dds": "htbm-cipactli",
 "textures/landscape/trees/-trunk_n.dds": "htbm-cipactli",
+"textures/landscape/trees/abark2.dds": null,
 "textures/landscape/trees/anvilleafpalm02.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/anvilleafpalm02_n.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/bananabark1.dds": "tropical-skyrim-sse",
@@ -9514,18 +10172,11 @@
 "textures/landscape/trees/ealderbranchcomp01_n.dds": "htbm-cipactli",
 "textures/landscape/trees/egorsebranch01_n.dds": "bmv",
 "textures/landscape/trees/egorsebranch01lightyellow.dds": "bmv",
-"textures/landscape/trees/egorsebranch01pink.dds": "bmv",
 "textures/landscape/trees/egorsebranch02_n.dds": "bmv",
 "textures/landscape/trees/egorsebranch02white.dds": "bmv",
 "textures/landscape/trees/epinebark04.dds": "king-of-the-murkmire",
 "textures/landscape/trees/epinebark04_n.dds": "king-of-the-murkmire",
-"textures/landscape/trees/esloebranch02.dds": "bmv",
-"textures/landscape/trees/ethas/treeoakbranch.dds": "htbm-cipactli",
-"textures/landscape/trees/ethas/treeoakbranch_n.dds": "htbm-cipactli",
-"textures/landscape/trees/ethas/treeoakleaf.dds": "htbm-cipactli",
-"textures/landscape/trees/ethas/treeoakleaf_n.dds": "htbm-cipactli",
-"textures/landscape/trees/ethas/treeoaktrunk.dds": "htbm-cipactli",
-"textures/landscape/trees/ethas/treeoaktrunk_n.dds": "htbm-cipactli",
+"textures/landscape/trees/epinebark06snow.dds": null,
 "textures/landscape/trees/fanpalm3.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/fanpalm3_n.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/fanpalm4.dds": "tropical-skyrim-sse",
@@ -9545,28 +10196,15 @@
 "textures/landscape/trees/gkbpalmbark14.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/gkbpalmbark14_n.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/gkbpalmbark22_n.dds": null,
-"textures/landscape/trees/gkbseq24_n.dds": "bmv",
-"textures/landscape/trees/gkbseq36light.dds": "bmv",
-"textures/landscape/trees/gkbseq36lighttop.dds": "bmv",
-"textures/landscape/trees/gkbsmoothdarkbark20.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/gkbsmoothdarkbark20_n.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/gkbsmoothdarkbark22.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/gkbsmoothdarkbark22_n.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/gkbtreeaspenbranchcompbrown3.dds": "bmv",
 "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds": "tropical-skyrim-sse",
+"textures/landscape/trees/gkbtreejungleaspenbranch.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/gkbtundradriftwoodbark01.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/gkbtundradriftwoodbark01_n.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/greenleaf1.dds": "bmv",
-"textures/landscape/trees/greenleaf1_n.dds": "bmv",
-"textures/landscape/trees/greenleaf3.dds": "bmv",
-"textures/landscape/trees/greenleaf4.dds": "bmv",
 "textures/landscape/trees/junglemapletest3.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/juniptex.dds": "bmv",
-"textures/landscape/trees/kahl lod_n.dds": null,
+"textures/landscape/trees/kahl lod_n.dds": "bmv",
 "textures/landscape/trees/kahlerast.dds": "bmv",
 "textures/landscape/trees/kahlerast_n.dds": "bmv",
-"textures/landscape/trees/leafcol44.dds": "htbm-cipactli",
-"textures/landscape/trees/leafcol44_n.dds": "htbm-cipactli",
 "textures/landscape/trees/lillipadreed.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/lillipads3.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/lillipads3_n.dds": "tropical-skyrim-sse",
@@ -9579,10 +10217,6 @@
 "textures/landscape/trees/palmmiddle3.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/rainforestvine5.dds": "tropical-skyrim-sse",
 "textures/landscape/trees/reachtreebranch01_n.dds": "tropical-skyrim-sse",
-"textures/landscape/trees/redwoodbark14.dds": "bmv",
-"textures/landscape/trees/redwoodbark14_n.dds": "bmv",
-"textures/landscape/trees/redwoodbark15.dds": "bmv",
-"textures/landscape/trees/redwoodbark16.dds": "bmv",
 "textures/landscape/trees/spanishmoss11.dds": "king-of-the-murkmire",
 "textures/landscape/trees/spanishmoss6.dds": "bmv",
 "textures/landscape/trees/thing1.dds": "bmv",
@@ -9619,19 +10253,31 @@
 "textures/landscape/trees/tundradriftwoodbranches01.dds": "vanilla",
 "textures/landscape/trees/tundradriftwoodbranches01_n.dds": "bmv",
 "textures/landscape/trees/tundradriftwoodbranches01_n.ddstextures/": null,
+"textures/landscape/trees/vurt/baobark.dds": null,
+"textures/landscape/trees/vurt/vurtdeadbark.dds": null,
 "textures/landscape/trees/vurt_deadtree.dds": "bmv",
 "textures/landscape/trees/vurt_deadtree_n.dds": "bmv",
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01.dds": null,
-"textures/morrowind/landscape/azuracoast/rocks/az_rock01_n.dds": null,
+"textures/landscape/ztree flower1/bluetulip.dds": null,
+"textures/landscape/ztree flower1/daf2red.dds": null,
+"textures/landscape/ztree flower1/stem1.dds": null,
+"textures/landscape/ztree flower1/t1red2.dds": null,
+"textures/mihail monsters and animals/dragon/giant snake/body2.dds": null,
+"textures/mihail monsters and animals/dragon/giant snake/body3.dds": null,
+"textures/mihail monsters and animals/dragon/giant snake/body4.dds": null,
+"textures/mihail monsters and animals/dragon/giant snake/body_n.dds": "depths-of-skyrim",
+"textures/mihail monsters and animals/rabbit/frog/frog2.dds": "king-of-the-murkmire",
+"textures/mihail monsters and animals/rabbit/frog/frog3.dds": "king-of-the-murkmire",
+"textures/mihail monsters and animals/rabbit/frog/frog4.dds": "king-of-the-murkmire",
+"textures/mihail monsters and animals/rabbit/frog/frog_n.dds": "king-of-the-murkmire",
 "textures/nor": null,
+"textures/pc_flora_blue_cap.dds": null,
+"textures/pc_flora_mushbottom.dds": null,
 "textures/pc_flora_str_tree_01tr2.dds": "bmv",
 "textures/pc_flora_str_tree_01tr2_n.dds": null,
 "textures/plants/deathbell01.dds": "vanilla",
 "textures/plants/deathbell01_n.dds": "vanilla",
 "textures/plants/esalixshrub01.dds": "htbm-cipactli",
 "textures/plants/esalixshrub01_n.dds": "htbm-cipactli",
-"textures/plants/eseabuckthorn07.dds": null,
-"textures/plants/eseabuckthorn07_n.dds": null,
 "textures/plants/giantlichen01.dds": "vanilla",
 "textures/plants/giantlichen01_n.dds": "vanilla",
 "textures/plants/groundplants1/bluetulip_n.dds": "king-of-the-murkmire",
@@ -9646,8 +10292,6 @@
 "textures/plants/groundplants1/lily1whitenew_n.dds": "king-of-the-murkmire",
 "textures/plants/groundplants1/lily2.dds": "king-of-the-murkmire",
 "textures/plants/groundplants1/lily2_n.dds": "king-of-the-murkmire",
-"textures/plants/grplants2/leafcol.dds": null,
-"textures/plants/grplants2/leafcol_n.dds": null,
 "textures/plants/hangingmoss01.dds": "vanilla",
 "textures/plants/hangingmoss01_n.dds": "vanilla",
 "textures/plants/nightshade01.dds": "vanilla",
@@ -9690,7 +10334,10 @@
 "textures/sheogorad/stronghold/wallplain_n.dds": "bmv",
 "textures/sheogorad/stronghold/woodpostsh.dds": "bmv",
 "textures/sheogorad/stronghold/woodpostsh_n.dds": "bmv",
+"textures/skinwalker21 creatures/horker/giant snail/snail2.dds": "king-of-the-murkmire",
+"textures/skinwalker21 creatures/horker/giant snail/snail_n.dds": "king-of-the-murkmire",
 "textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds": "king-of-the-murkmire",
+"textures/skinwalker21 creatures/horker/giant snail/snailshell7.dds": "king-of-the-murkmire",
 "textures/skinwalker21 creatures/horker/giant snail/snailshell_n.dds": "king-of-the-murkmire",
 "textures/skyfall/sleeping tree overhaul/cluste_col.dds": "king-of-the-murkmire",
 "textures/skyfall/sleeping tree overhaul/cluste_col_n.dds": "king-of-the-murkmire",
@@ -9699,6 +10346,7 @@
 "textures/skyfall/sleeping tree overhaul/vinesb_col.dds": "king-of-the-murkmire",
 "textures/skyfall/sleeping tree overhaul/vinesb_col_n.dds": "king-of-the-murkmire",
 "textures/stingingnettel_dif_n.png": null,
+"textures/tesak1243/mwimperialarchitecture/architecture/keep/mwimparchwallplaster01_n.dds": "king-of-the-murkmire",
 "textures/tr_ashswp_emppar01.dds": "bmv",
 "textures/tr_ashswp_emppar01_n.dds": null,
 "textures/tr_ashswp_emppar02.dds": "bmv",
@@ -9713,6 +10361,9 @@
 "textures/tr_oth_mush_sm2_n.dds": null,
 "textures/vurt_amanita3.dds": "bmv",
 "textures/vurt_amanita3_n.dds": null,
+"textures/vurt_bcmossbark01.dds": null,
+"textures/vurt_bitterbark.dds": "bmv",
+"textures/vurt_bitterbark_n.dds": null,
 "textures/vurt_bluecap01_g.dds": null,
 "textures/vurt_mushbottom.dds": "bmv",
 "textures/vurt_mushbottom_n.dds": null,
@@ -9729,6 +10380,8 @@
 "textures/vurt_shroomtop.dds": "bmv",
 "textures/vurt_shroomtop_n.dds": null,
 "textures/vurt_shroomystem_n.dds": null,
+"textures/vurt_spmoss04.dds": "bmv",
+"textures/vurt_spmoss04_n.dds": null,
 "textures/vurt_treebark04.dds": "bmv",
 "textures/vurt_treebark04_n.dds": null,
 "textures/vvardenfell/rocks/al/al_rock02.dds": "bmv",

@@ -13,6 +13,13 @@ The manifest holds, per non-vanilla object_form mesh, its row and its texture sl
 "vanilla") that supplies it, or null. The check fails when a placed form's mesh is not in the manifest, a keep row's
 placed mesh is not under a keep glob, or a placed mesh's texture has no source and no keep glob, unless WAIVED names it (a missing
 normal or glow map: the surface still shows its diffuse; a missing diffuse is never waived, lists.usable drops it).
+
+MODS (lane 1.15-r3-mods): a base record's alternate texture sets replace a NIF shape's diffuse and normal with a
+TXST's TX00/TX01. Round 2's lavender trunks, plants and ruin walls were Black Marsh.esm's TXSTs naming diffuses no
+source ships. The manifest's "forms" holds each candidate form's sets (ArgoniaGen `alttex`: object_form, the build
+cells' bases, the creature forms through their skins), and the check reads them like a mesh slot. A base in ALT_DROPPED
+is resolved: ArgoniaWorld.esm overrides it with MODS dropped (AltTextures.cs), so the NIF's own textures draw; a base
+in ALT_UNFIXABLE never is (lists.usable drops it).
 """
 from __future__ import annotations
 
@@ -24,6 +31,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 MANIFEST = ROOT / "data" / "mesh-textures.json"  # beside dependencies.json: the laid stack, not world data
 DEPS = ROOT / "data" / "dependencies.json"
+GEN = ROOT / "tools" / "ArgoniaGen" / "bin" / "Release" / "net10.0" / "ArgoniaGen"
 DIFFUSE = 0  # BSShaderTextureSet slot 0; 1 normal, 2 glow, 3 parallax, 4 env, 5 env mask, 6 tint, 7 specular
 # Missing non-diffuse maps measured 2026-11-02 on the laid stack, absent from every row's archive: the mesh shows its
 # diffuse with flat shading. Each entry is a texture path; the check fails on any miss not listed here.
@@ -56,6 +64,34 @@ WAIVED = {
         "BM&V rock_30: an absolute author path; its diffuse is vanilla MountainSlab02",
     "textures/g:/berkians folder/stuff for skyrim/landscaping/rocks/from_online_resource/rock_33_n.dds":
         "BM&V rock_33: an absolute author path; its diffuse is vanilla MountainSlab02",
+}
+
+# Placed bases whose MODS names a diffuse no source ships (measured 2026-11-02, lane 1.15-r3-shader §1). ArgoniaWorld.esm
+# overrides each with MODS dropped (terrain/world.py -> LandWorld.cs); the NIF's own slots are checked as for any mesh.
+ALT_DROPPED = {
+    "17BD20:Black Marsh.esm": "01tROPICAL2 (52,372 refs): TXST diffuse landscape/plants/TropicalPlant01.dds",
+    "196181:Black Marsh.esm": "01largefern (50,856): ferny.dds; the NIF's ferny3.dds draws",
+    "1B32DC:Black Marsh.esm": "01cypressmoss (8,722): vurt_bcmossbark01.dds",
+    "0AA5F4:Black Marsh.esm": "01fortFlower (8,216): jgayleidleaftrim.dds, round 2's purple ruin walls",
+    "17BCFD:Black Marsh.esm": "01TROPICAL11 (7,323): TropicalShrub05.dds",
+    "0D85BB:Black Marsh.esm": "01mushroomDUPLICATE001 (4,629): abark2.dds",
+    "1DE971:Black Marsh.esm": "altrstacked01 rock: sheomud01.dds",
+    "1DE977:Black Marsh.esm": "altr16 rock: eressea bark0005.dds",
+    "1B32D4:Black Marsh.esm": "tr_flora_cupling_04: pc_flora_hyac_petal.dds, abark2.dds",
+    "1B32E0:Black Marsh.esm": "cypress5: vurtdeadbark.dds",
+    "1B32CE:Black Marsh.esm": "tr_flora_acbranch_04: baobark.dds, pc_flora_blue_cap.dds",
+    "1B32E4:Black Marsh.esm": "gkbjungletreenew12v3: EPineBark06Snow.dds",
+    "1D3CC3:Black Marsh.esm": "vurt_morromushroom_01: five Vurt/PC diffuses",
+    # creature forms: the skin ARMAs are overridden (AltTextures.Write), so the giant snake draws its own body.dds
+    "000B76:King of the Murkmire.esp": "giant snake: Mihail's body3/body4.dds, absent (body.dds is laid)",
+    "000C1E:King of the Murkmire.esp": "giant snake: body2.dds, absent",
+    "000C31:King of the Murkmire.esp": "giant snake: body2.dds, absent",
+    "00FF15:King of the Murkmire.esp": "giant snake: body3/body4.dds, absent",
+}
+# Bases whose lavender is not only MODS, never placed (lists.usable drops them; the check is red if one is placed).
+ALT_UNFIXABLE = {
+    "17BD15:Black Marsh.esm": "01mossDUPLICATE001: its NIF's shader carries Own_Emit with a cyan emissive (0, 0.73, 1) "
+                              "x 1.5, so dropping MODS still draws it blue (lane 1.15-r3-shader §1)",
 }
 
 
@@ -120,11 +156,37 @@ def _bsa_file(b: bytes, flags: int, sz: int, fo: int) -> bytes:
     return lz4.frame.decompress(b[fo + 4:fo + sz])
 
 
-def build(mo2: Path, vanilla: Path, out: Path = MANIFEST) -> dict:
+def candidate_forms(w) -> list[str]:
+    """Every form a plugin of ours may place: the non-vanilla object_forms, the build cells' bases, the creature forms."""
+    ks = {r["form_key"] for r in w.query("SELECT form_key FROM object_form WHERE mesh_source <> 'vanilla'")}
+    ks |= {r["base"] for r in w.query("SELECT DISTINCT base FROM build_ref WHERE base IS NOT NULL")}
+    ks |= {r["form_key"] for r in w.query("SELECT form_key FROM creature_form")}
+    return sorted(k for k in ks if ":" in k)
+
+
+def alt_scan(keys: list[str], data: Path, gen: Path = GEN, esm: Path | None = None) -> dict:
+    """{form: [[shape, diffuse, normal], ...]} from ArgoniaGen `alttex` (the owning plugin's record, or `esm`'s)."""
+    import os
+    import subprocess
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        fl, out = Path(d) / "forms.txt", Path(d) / "alt.json"
+        fl.write_text("\n".join(keys) + "\n")
+        env = dict(os.environ, DOTNET_ROOT=str(Path.home() / ".dotnet"))
+        r = subprocess.run([str(gen), "alttex", "--data", str(data), "--forms", str(fl), "--out", str(out),
+                            *(["--in", str(esm)] if esm else [])], capture_output=True, text=True, env=env, check=False)
+        if r.returncode:
+            raise SystemExit(f"textures: alttex failed: {(r.stdout + r.stderr)[-800:]}")
+        raw = json.loads(out.read_text())
+    return {k: [[s["shape"], norm(s["diffuse"]) if s["diffuse"] else None, norm(s["normal"]) if s["normal"] else None]
+                for s in v["sets"]] for k, v in sorted(raw.items())}
+
+
+def build(mo2: Path, vanilla: Path, out: Path = MANIFEST, gen: Path = GEN) -> dict:
     """Scan the laid stack (MO2 mods, each row's loose files and BSAs; vanilla BSAs) for every candidate mesh."""
     from tools.argonia_world import db
     w = db.open()
-    want = {}
+    want: dict[str, str] = {}
     for r in w.query("SELECT form_key, model, mod FROM object_form WHERE mesh_source <> 'vanilla' AND model IS NOT NULL"):
         want.setdefault(mesh_path(r["model"]), r["mod"])
     where: dict[str, tuple[str, Path, tuple | None]] = {}  # path -> (row, file or bsa, bsa record)
@@ -160,9 +222,15 @@ def build(mo2: Path, vanilla: Path, out: Path = MANIFEST) -> dict:
         meshes[mp] = {"row": row, "laid": src, "slots": sorted(set(slots))}
         for _, t in slots:
             sources[t] = where[t][0] if t in where else None
-    doc = {"about": "texture slots of each non-vanilla object_form mesh and the row that lays each texture "
-                    "(tools/argonia_world/vegetation/mesh_textures.py); paths only",
-           "meshes": meshes, "sources": dict(sorted(sources.items()))}
+    forms = alt_scan(candidate_forms(w), vanilla, gen)
+    for f in forms.values():
+        for _, d, nm in f:
+            for t in (d, nm):
+                if t:
+                    sources[t] = where[t][0] if t in where else None
+    doc = {"about": "texture slots of each non-vanilla object_form mesh, each candidate form's MODS sets, and the row "
+                    "that lays each texture (tools/argonia_world/vegetation/mesh_textures.py); paths only",
+           "meshes": meshes, "forms": forms, "sources": dict(sorted(sources.items()))}
     out.write_text(json.dumps(doc, indent=0, ensure_ascii=False) + "\n", encoding="utf-8")
     return doc
 
@@ -179,6 +247,29 @@ def untextured(manifest: dict) -> set[str]:
     src = manifest["sources"]
     return {mp for mp, m in manifest["meshes"].items()
             if m["laid"] is None or any(s == DIFFUSE and src.get(t) is None for s, t in m["slots"])}
+
+
+def alt_gaps(manifest: dict, key: str) -> list[tuple[int, str]]:
+    """(slot, texture) of a form's MODS sets that no row supplies: a diffuse always, a normal unless WAIVED."""
+    src = manifest["sources"]
+    return sorted({(s, t) for _, d, nm in manifest.get("forms", {}).get(key, ()) for s, t in ((DIFFUSE, d), (1, nm))
+                   if t and src.get(t) is None and (s == DIFFUSE or t not in WAIVED)})
+
+
+def untextured_forms(manifest: dict) -> set[str]:
+    """Forms whose MODS draws a missing diffuse and that ArgoniaWorld.esm does not override (or cannot fix)."""
+    return {k for k in manifest.get("forms", {})
+            if k in ALT_UNFIXABLE or (k not in ALT_DROPPED and any(s == DIFFUSE for s, _ in alt_gaps(manifest, k)))}
+
+
+def alt_problems(keys: list[str], manifest: dict, what: str = "") -> list[str]:
+    out = []
+    for k in keys:
+        if k in ALT_UNFIXABLE:
+            out.append(f"{k}{what}: placed, but {ALT_UNFIXABLE[k]}")
+        elif k not in ALT_DROPPED:
+            out += [f"{k}{what}: MODS slot {s} {t} has no source" for s, t in alt_gaps(manifest, k)]
+    return out
 
 
 def problems(placed: list[dict], manifest: dict, deps: dict) -> list[str]:
@@ -201,6 +292,7 @@ def problems(placed: list[dict], manifest: dict, deps: dict) -> list[str]:
         for s, t in m["slots"]:
             if src.get(t) is None and not kept(t) and (s == DIFFUSE or t not in WAIVED):
                 out.append(f"{f['form_key']} {mp}: slot {s} {t} has no source")
+        out += alt_problems([f["form_key"]], manifest, f" {mp}")
     return out
 
 
@@ -209,15 +301,40 @@ def placed_forms(w) -> list[dict]:
                    "USING (form_key) WHERE f.mesh_source <> 'vanilla' ORDER BY f.form_key")
 
 
+def other_placed(w) -> dict[str, list[str]]:
+    """The non-vegetation forms our plugins place, by what places them: the build cells' bases (Claywater's block)
+    and the creature forms."""
+    return {"build_ref": sorted({r["base"] for r in w.query("SELECT DISTINCT base FROM build_ref WHERE base IS NOT NULL")
+                                 if ":" in r["base"]}),
+            "creature": sorted(r["form_key"] for r in w.query("SELECT form_key FROM creature_form"))}
+
+
 def check() -> int:
     from tools.argonia_world import db
     w = db.open()
     man = load()
     bad = problems(placed_forms(w), man, json.loads(DEPS.read_text(encoding="utf-8")))
+    for what, keys in other_placed(w).items():
+        bad += alt_problems(keys, man, f" ({what})")
     for b in bad:
         print("textures:", b)
     misses = sorted({t for m in man["meshes"].values() for _, t in m["slots"] if man["sources"].get(t) is None})
     print(f"textures: {len(placed_forms(w))} placed forms, {len(man['meshes'])} meshes in the manifest, "
           f"{len(misses)} textures absent from every row ({sum(t in WAIVED for t in misses)} waived), "
-          f"{len(bad)} problems")
+          f"{len(man.get('forms', {}))} forms with MODS ({len(ALT_DROPPED)} overridden without it), {len(bad)} problems")
+    return 1 if bad else 0
+
+
+def override_problems(read: dict) -> list[str]:
+    """read: alt_scan of ALT_DROPPED from the built ArgoniaWorld.esm (its record first, else the owner's): no set may
+    remain, so every base (or a creature's skin ARMA) is overridden there without MODS."""
+    return [f"{k}: no record read" for k in sorted(ALT_DROPPED) if k not in read] + \
+           [f"{k}: {len(read[k])} MODS sets still draw (no override, or MODS kept)" for k in sorted(ALT_DROPPED) if read.get(k)]
+
+
+def overrides_readback(esm: Path, data: Path) -> int:
+    bad = override_problems(alt_scan(sorted(ALT_DROPPED), data, esm=esm))
+    for b in bad:
+        print("textures overrides:", b)
+    print(f"textures overrides: {len(ALT_DROPPED)} bases to override without MODS in {esm.name}, {len(bad)} problems")
     return 1 if bad else 0

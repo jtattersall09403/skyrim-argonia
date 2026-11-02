@@ -210,11 +210,13 @@ def usable(w) -> dict[str, list]:
     a measured body that is not climbable, or a rock never measured, dropped: forms.climbable), BM&V first, then most placed by their mod."""
     from tools.argonia_world.vegetation import mesh_textures
     out = defaultdict(list)
-    bare = mesh_textures.untextured(mesh_textures.load())  # a diffuse no row lays: Skyrim's missing texture
+    man = mesh_textures.load()
+    bare = mesh_textures.untextured(man)  # a diffuse no row lays: Skyrim's missing texture
+    bare_forms = mesh_textures.untextured_forms(man)  # a MODS diffuse no row lays, not overridden (lane 1.15-r3-mods)
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
                    "AND bound_z1 > bound_z0")
     for r in sorted(rows, key=lambda r: (r["mod"] != "bmv", -(r["placed_by_mod"] or 0), r["form_key"])):
-        if mesh_textures.mesh_path(r["model"]) in bare:
+        if mesh_textures.mesh_path(r["model"]) in bare or r["form_key"] in bare_forms:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
         if r["role_id"] == "rock" and r["mesh_source"] in VANILLA_SHAPE:
             continue  # a vanilla rock's shape under another texture is still a vanilla rock (1.15 §e.2)
