@@ -142,6 +142,16 @@ def road_edge_site(w, node: dict, fps) -> tuple[float, float, float]:
     return round(ex, 2), round(ey, 2), round(heading((ex, ey), (cx, cy)), 2)
 
 
+def landing_z(w, z_at, x: float, y: float) -> float:
+    """A landing's deck on its cell's water (place_build.seated_z: Skyrim's dock kit over XCLW), not on the bed: the
+    old max(ground, 0 m) held only at the sea, so every inland landing stood on the river bed (owner play test 3,
+    finding 31)."""
+    from tools.argonia_world.place_build import DOCK_DECK_M, water_level
+    lv = water_level(w, x, y)
+    g = z_at(x, y)
+    return max(g, 0.0) if lv is None else max(g, lv) + DOCK_DECK_M
+
+
 def placements(w, z_at) -> list[dict]:
     """Every gate, landing, signpost and arm: {id, kind, piece, at_m [x, y south, z], yaw, ...}. ``z_at(x, y)`` gives
     the final ground."""
@@ -160,7 +170,7 @@ def placements(w, z_at) -> list[dict]:
                     "ORDER BY position_m_x, position_m_y", s["id"])
         yaw = heading((x, y), (b[0]["x"], b[0]["y"])) if b and (b[0]["x"], b[0]["y"]) != (x, y) else 0.0
         out.append({"id": "landing." + s["id"].split(".", 1)[1], "kind": "landing", "piece": s["piece"],
-                    "at_m": [x, y, round(max(z_at(x, y), 0.0), 2)], "yaw": round(yaw, 2), "station": s["id"]})
+                    "at_m": [x, y, round(landing_z(w, z_at, x, y), 2)], "yaw": round(yaw, 2), "station": s["id"]})
     texts = arm_texts(w)
     fps = footprints(w)
     for s in w.query("SELECT s.*, n.kind node_kind, n.place_id FROM signpost s JOIN route_node n ON n.id = s.node_id "
@@ -280,7 +290,7 @@ def check(w, resolver, z_at) -> list[str]:
             if not p["text"].strip():
                 errs.append(f"{p['id']}: the arm has no text")
             continue
-        want = max(z_at(x, y), 0.0) if p["kind"] == "landing" else z_at(x, y)
+        want = landing_z(w, z_at, x, y) if p["kind"] == "landing" else z_at(x, y)
         if abs(z - want) > GROUND_TOL_M:
             errs.append(f"{p['id']}: z {z} m is {z - want:+.2f} m off the final ground")
     fps = footprints(w)

@@ -138,10 +138,44 @@ class _Ctx:
         return r.base if FK_RE.match(r.base) else self.ours(r.base)
 
 
+# Pieces seated on their cell's water, not on the ground under it (owner play test 3, finding 31: Claywater's docks
+# and raft stood on the river bed, 1.2-2.9 m under the water). A dock's origin stands DOCK_DECK_M over the water
+# (Skyrim.esm's DockStRSol01/02 refs, the kit of our DockStRent02: origin over their cell's XCLW p50 0.76-0.88 m,
+# n 5; lane 1.15-r4-claywater); a boat floats at the water; each on the ground where that is higher.
+DOCK_DECK_M = 0.85
+WATER_SEATED = (("meshes/architecture/docks/", DOCK_DECK_M), ("meshes/sheogorad/dagon fel/cleat.nif", DOCK_DECK_M),
+                ("meshes/argonia/mudhuts/tamu_wooddock", DOCK_DECK_M), ("meshes/yamadori/ferries/", 0.0),
+                ("meshes/actors/sfss/canoe/", 0.0))
+
+
+def water_seat(piece: str | None) -> float | None:
+    """The height over the water a piece's origin stands at, or None for a piece on the ground."""
+    p = (piece or "").lower()
+    return next((h for pre, h in WATER_SEATED if p.startswith(pre)), None)
+
+
+def water_level(world, x_m: float, y_m: float) -> float | None:
+    """The level of the cell's water at a province point (cell_water), None for a dry cell."""
+    cache = getattr(world, "_cell_water", None)
+    if cache is None:
+        cache = world._cell_water = {(r["cx"], r["cy"]): r["level_m"]
+                                     for r in world.query("SELECT cx, cy, level_m FROM cell_water")}
+    ux, uy = su.province_to_skyrim(x_m, y_m)
+    return cache.get(su.cell_of(ux, uy))
+
+
+def seated_z(world, ground_z: float, piece: str | None, x_m: float, y_m: float) -> float:
+    h = water_seat(piece)
+    lv = water_level(world, x_m, y_m) if h is not None else None
+    return ground_z if lv is None else max(ground_z, lv) + h
+
+
 def _pos(ctx, cell_kind: str, r) -> list[float]:
     from tools.argonia_world.intermediate import _pos_exterior, _pos_interior
     if cell_kind == "exterior":
         z = r.z_m if r.z_m is not None else ctx.ground.z(r.x_m, r.y_m)
+        if r.z_m is None and getattr(r, "piece", None) and water_seat(r.piece) is not None:
+            z = seated_z(ctx.world, z, r.piece, r.x_m, r.y_m)
         return _pos_exterior([r.x_m, r.y_m, z])
     return _pos_interior([r.x_m, r.y_m, r.z_m or 0.0])
 

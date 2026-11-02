@@ -20,12 +20,13 @@ def final():
 def _implicit():
     w = db.open()
     cells = {c.id for c in w.rows("build_cell") if c.kind == "exterior"}
-    return [r for r in w.rows("build_ref") if r.cell_id in cells and r.z_m is None]
+    return [r for r in w.rows("build_ref") if r.cell_id in cells and r.z_m is None
+            and place_build.water_seat(r.piece) is None]  # docks and boats stand on the water (test_place_seating)
 
 
 def _off(ground, final):
     """(metres off the final ground, ref id) of every implicit-z ref, as place_build._pos places it."""
-    ctx = type("Ctx", (), {"ground": ground})
+    ctx = type("Ctx", (), {"ground": ground, "world": db.open()})
     return [(abs(place_build._pos(ctx, "exterior", r)[2] / su.UNITS_PER_METRE - final.z(r.x_m, r.y_m)), r.id)
             for r in _implicit()]
 
