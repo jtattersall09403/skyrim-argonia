@@ -25,7 +25,8 @@ while [ $# -gt 0 ]; do
     --from) FROM=$2; shift 2 ;;
     --new-image) NEW_IMAGE=1; shift ;;
     --image) AMI_GIVEN=$2; shift 2 ;;  # a named image in the clone's region (the source has moved region, #27)
-    --region) R=$2; shift 2 ;;  # another region: its default VPC; the clone is reached on its public address (1.8)
+    --region) R=$2; shift 2 ;;
+    --on-demand) ONDEMAND=1; shift ;;  # no spot market options: for a job box when the region has no spot capacity (2026-11-02)  # another region: its default VPC; the clone is reached on its public address (1.8)
     *) break ;;
   esac
 done
@@ -33,6 +34,7 @@ NAME=${1:?usage: clone.sh [--from argonia-play] [--new-image] argonia-play-N [ty
 case "$NAME" in argonia-play-[0-9]*) ;; *) echo "clone names are argonia-play-<n>" >&2; exit 2 ;; esac
 log() { echo "[$(date -u +%T)] $*"; }
 q() { aws ec2 "$@" --region $R --output text; }
+ONDEMAND=${ONDEMAND:-0}
 [ "$R" = eu-west-2 ] || VPC=$(q describe-vpcs --filters Name=is-default,Values=true --query 'Vpcs[0].VpcId')
 live='Name=instance-state-name,Values=pending,running,stopping,stopped'
 
@@ -86,7 +88,7 @@ if [ "$ID" = None ]; then
   TAGS="{Key=Name,Value=$NAME},{Key=project,Value=argonia},{Key=argonia-clone-of,Value=$FROM}"
   ID=$(q run-instances --image-id "$AMI" --instance-type "$TYPE" --subnet-id "$SUBNET" --security-group-ids "$SG" \
     --iam-instance-profile Name=argonia-play-ssm \
-    --instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}' \
+    "${MARKET[@]}" \
     --metadata-options HttpTokens=required \
     --tag-specifications "ResourceType=instance,Tags=[$TAGS]" "ResourceType=volume,Tags=[$TAGS]" \
       "ResourceType=spot-instances-request,Tags=[$TAGS]" \
