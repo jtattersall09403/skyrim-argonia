@@ -476,6 +476,13 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     lev_s = np.pad(np.repeat(np.repeat(wl, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge")
     rawf_ = ~np.isnan(inp.wet_level)
     own = np.isfinite(lev_s) & has & (np.nan_to_num(lev_s - vmin, nan=0.0) <= RIFFLE_M)
+    # an enclosed or padding cell's level is its ring's, not the raster water's in it: raster water there standing
+    # over the level by more than a riffle is another body's or a gully's (a 63 m pool in a 0 m padding cell at
+    # -55,-20), carved as a dry bed, never down to the ring's level
+    if inp.water.held is not None:
+        hs_ = np.pad(np.repeat(np.repeat(inp.water.held, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge")
+        own &= hs_ | ~(inp.wet_level > lev_s + RIFFLE_M)
+        del hs_
     foot = rawf_ & own
     gully = rawf_ & ~own & ~(np.isfinite(lev_s) & (np.nan_to_num(lev_s - vmin, nan=0.0) > RIFFLE_M))
     del rawf_
@@ -834,6 +841,13 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
             win[:] = np.where(d <= 0.3, np.minimum(win, door + hill), win)  # the door's own ground is cut, not raised
         elif shape == "depression":  # a sinkhole: in a water cell its floor floods (it joins the cell's water)
             win[:] = np.minimum(win, win * (1 - w) + (plane - DEPRESSION_M) * w)
+            # the blend cuts the rim too (session 19: the slumped-hamlet's ring fell 241.1 -> 239.3 m to its bank's
+            # floor, the plane under it 238.0 -> 235.1 m, the floor 233.96 pinned 1.1 m under it): the disc is dug
+            # again from the rim it leaves (clamped as the bank will hold it), never under the lowest water beside it
+            plane2 = rim_plane(np.minimum(np.maximum(win, wlo), np.maximum(whi, wlo)), d, yy, xx)
+            low_ = np.nanmin(vmin[sl]) - DEPRESSION_M if (~np.isnan(vmin[sl])).any() else -np.inf
+            win[:] = np.where(disc, np.minimum(win, win * (1 - w) + np.maximum(plane2 - DEPRESSION_M, low_) * w), win)
+            del plane2
             inner = disc & ~np.isnan(vmin[sl]) & ~sbank[sl]
             sunk = inner & (win < vmin[sl])
             wlo[inner] = np.where(sunk[inner], -np.inf, vmax[sl][inner] + FREEBOARD_M)

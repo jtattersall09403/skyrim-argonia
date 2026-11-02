@@ -212,6 +212,21 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
+Session 19 (s19b): the held rule is committed (generate.py, `CellWater.held`: raster water over a padding or
+enclosed cell's level by a riffle is a gully, not foot), together with the depression fix. Nothing was holding the
+slumped-hamlet's centre. It was the designed floor, the pre-shape rim plane (237.96 m) minus `DEPRESSION_M`, which
+gave 233.96 m with the core pinned. The blend also cut the rim ring (median 241.1 to 239.3 m, its bank floor), and
+the 213 m dry side tilts the plane, so the final rim plane fell to 235.06 m (rel -1.1). The fix: the disc is dug
+again from the rim plane the shaping leaves (clamped to lo/hi as the bank holds it), never below the window's lowest
+water minus 4 m. Centre 231.06 m, rel -4.0. `check --sample`: fails [], sites_unshaped 0, lattice 1.371, overflow 0
+pairs. Census matches s18a apart from -12_63 (plate 1.9 to 2.0 %). The reader (s18a vs s19b) found 4 windows the
+same and -21_-26 slightly better (a straight top-right shore gone). It found -12_63 the same or slightly worse: the
+lake's east end now runs to the frame edge, with a rounded ledge and a dark bar at about (770-900, 820-920) px
+(the held rule's gully change). Still owed: that -12_63 ledge, the faint edges (0_0_1_1, -20_57; the reader also
+saw about 4 squarish pools by eye in -38_25), and lake depth by body size. Province not regenerated since 9a9ce2c's
+ground: ONE `terrain generate` at the end, as the planner calls.
+
+
 Session 18 (s18a, `~/.argonia/jobs/s17.sh s18a`): -38_25's square pools were the solve's stair of cell planes down
 a slope (raster 1.96 m, solved 10.66/4.42/3.11 m, pre-ground 3.9 m under the plane; `-28,28` 82 % wet against a 39 %
 footprint): each plane flooded its cell's low ground to the cell line. Fix (water_field.py `FLOOD_BAND` 6): in a
