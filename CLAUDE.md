@@ -55,7 +55,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
 - Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods).
-- Tidy up after yourself: delete temporary files (or anything else you've created that we don't need to keep) when they are no longer needed. Do not bloat the disk. We need to actively manage disk space.
+- Tidy up after yourself: delete temporary files (or anything else you've created that we don't need to keep) when they are no longer needed. Do not bloat the disk. We need to actively manage disk space. Same for deleting things on aws that are no longer needed, like stale machine images, and temporary/rubbish files in the s3 bucket.
 
 ## Testing and the gate
 
