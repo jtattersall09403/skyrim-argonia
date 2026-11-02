@@ -31,6 +31,7 @@ GRADE_P95 = 0.164
 GRADE_BASE_M = 8.0  # the grade's baseline (vanilla measured over +-4 m)
 SMOOTH_M = 6.0  # the centreline smoothed along over +-this
 WALL_M = 0.3  # a step across a road's edge past the land's own: a wall (the planner's rule, round 4)
+MAX_CUT_M = 1.0  # a road is never cut or filled more than this from the land (L3 reader: a 3 m cut wall)
 CROSS_KEEP = 0.4  # the share of the land's cross fall a road keeps (the wall check's slope window)
 BLEND_M = 6.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
 
@@ -94,6 +95,7 @@ def centreline(h: np.ndarray, p: np.ndarray, core_m: float) -> np.ndarray:
     c = np.cumsum(np.concatenate([[0.0], zp]))
     zs = (c[2 * k + 1:] - c[:-2 * k - 1]) / (2 * k + 1)
     zs = grade_limit(zs, MPP, GRADE_MAX * 0.85)  # headroom for the trough and the 8 m baseline
+    zs = np.clip(zs, z - MAX_CUT_M, z + MAX_CUT_M)  # never a deep cut or fill: past this the land's grade stands
     return zs - 0.5 * trough(core_m)
 
 
