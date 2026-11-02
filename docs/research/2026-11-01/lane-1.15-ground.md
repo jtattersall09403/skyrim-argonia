@@ -212,30 +212,57 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 10 (main 8013768 or later), a method diagnosis. The session-9 generate.py change was reverted and its probe
-committed (e0fdba8). `probes/clamp_census.py` measured, per window, how much dry ground sits on a per-cell clamp
-bound (within 0.05 m). The worst was 0_0 (-3,-3..4,4): 21.9 % of dry vertices sat on a bound (pad cells 9.1 %,
-shore floor 9.4 %, edge bank 2.2 %), and 26.5 % of its shore lay on cell lines, against 6.2 % for a raster
-outline. The other windows had 3.7-12.9 % on a bound.
+Session 11 put the levels-from-ground order in place. `WATER_FIELD` is on. The old clamp path is still behind the flag,
+and it can be deleted once the sample check is green.
 
-`water_field.py` (`WATER_FIELD`, off by default) applies the water as two smooth cone fields instead:
-- lift, at vertices whose plane is clipped over a dry cell or a lower level;
-- carve, under the raster water.
+- **The ground comes first.** `terrain pre` writes `$ARGONIA_DATA/terrain/pre-ground-f32.npy`: the prior, relief and
+  erosion, with no water rule. Its water base comes from the wet raster's own levels, never from `cell_water`, so
+  the order is not circular. Its lattice ratio is 1.37.
+- **Vanilla sill.** `probes/vanilla_lake_sill.py` ran on Skyrim.esm's 15 largest lakes. A lake's level stands a median
+  +3.0 m above the lowest pass out of its window (range +1.5 to +11; one perched lake sits at -18). That lowest
+  pass is the outlet channel's bed, so a lake is full to its outlet.
+- **The solve** (`water/solve.py`) reads the pre ground:
+  - a body takes the `spill` (a priority flood on the ground min-pooled ×4) at its footprint's lowest sample;
+  - a spill under 0.5 m is the sea-level marsh, at 0;
+  - a reach takes the thalweg's lowest point in each cell. It never rises downstream. A drop of more than 20.96 m
+    inside one cell, or more than 65.7 m at an edge, makes it dry;
+  - `merge_levels` builds sheets: from the lowest level up, a joined cell less than 2 m above a sheet takes its
+    level (0.5 m to the sea), and then again at the riffle after padding;
+  - a pad cell's ground must lie within ±0.3 m of the level.
+  - Result: 10,595 cells, 1,923 steps (1,682 closed, against 5,204 before the merge and the pad floor), 16 dry
+    reaches. `water check` is green.
+- **The field** (`water_field.py`) runs in three steps:
+  1. carve the raster water;
+  2. lift the dry-cell and two-level vertices with a rounded cone and a smooth max;
+  3. lift the under-level ground that no raster water joins.
 
-The footprint is the ground's own contour. `probes/water_field_trial.py` compares the two methods on the pre-water
-dump:
-- dry vertices on a bound: 0.3-3.6 % (marsh 6.9 %, the freeboard ring);
-- 0_0's shore on cell lines: 3.3 %;
-- bank at or below water: 0.
+  The bank, shore, edge and step-bank clamps are off when the field is on.
+- **A trial no longer writes the shared ground.** `generate --out DIR` writes the ground to DIR (`ARGONIA_GROUND`).
+  Before this fix, the session's trials overwrote `out/terrain/ground-f32.npy` at 03:44. **Restore it from
+  `out/terrain/build/a85ecfaa95a5/`**, or let the next whole-province generate replace it.
 
-A reader judged the field method better on 4 of 5 windows (river and marsh by a lot) and worse on -23_54. Rectangular
-pools remain on -23_54 and 0_0. Their cause: a cell's level comes from the solve, not the ground, so a level above
-the cell's ground floods the whole square up to the lifted edges.
+`terrain check --out out/terrain-sample/s11` (run g11f):
+
+| check | result |
+|---|---|
+| wet | 0 |
+| bank | 0 |
+| step-bank | 136 |
+| dry-edge | 27 |
+| unshaped sites | 4 |
+| overflow | 3 cells |
+| lattice | 1.85 (main 1.99; the bound is 1.5) |
+
+The lattice on two-level cell lines is 8.7 × off them, and those lines hold 24 % of the on-line second difference.
+Most step-bank misses lie in other steps' channel bands (`chz`), with a median shortfall of 6.4 m. 113 k samples are
+lifted as unjoined hollows, 65 k of them in raster cells. A probe found that this lift makes **flat plates at level
++ 0.3** wherever a cell's level stands over ground past the rim.
 
 Owed, in order:
-1. Derive levels from the ground in water/solve.py: a lake's level is its basin's outlet sill; a reach follows the
-   thalweg, quantised at cell edges.
-2. Rerun the trial, then a reader.
-3. Turn `WATER_FIELD` on and run `terrain check --sample`, then one whole-province generate.
-
-The session-8 owed items 1-3 and 5 still stand.
+1. Stop the plates. Either the solve gives no level to a cell whose under-level ground the raster water does not
+   join, or the hollow keeps a slope instead of `need`. Then the two-level ridges: why is the second difference 8.7 ×
+   (the profile probe is in this session's notes: role 3 plates)?
+2. Get step-bank, dry-edge, sites and overflow to 0, and the lattice within 1.5.
+3. A reader on the five windows' hillshades (`terrain render --hillshade` with `ARGONIA_GROUND`).
+4. Delete the clamp path, then one whole-province generate.
+5. Speed: the generate takes 120-180 s under load 6. The wobble and noise chamfers take about 50 s.

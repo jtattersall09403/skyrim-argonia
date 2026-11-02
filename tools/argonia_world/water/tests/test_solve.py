@@ -176,3 +176,40 @@ def test_padding_reaches_only_cells_whose_ground_comes_down_to_the_level():
     assert set(add) == {(i, j) for i in (2, 3) for j in (1, 2, 3)} - {(2, 2)}  # the 40 m column stays dry
     two = {(1, 2): (0.0, "fresh", "a", None), (3, 2): (40.0, "fresh", "b", None)}
     assert sv.pad_ring(two, n=6, ground_min=lambda i, j: 39.9)[(2, 2)][0] == 40.0  # not 0 on a 40 m hillside
+
+
+# ---- levels from the ground (session 11) -----------------------------------------------------------------------
+
+def test_spill_fills_a_basin_to_its_lowest_pass():
+    g = np.full((7, 7), 10.0)
+    g[2:5, 2:5] = 2.0  # the basin floor
+    g[3, 5], g[3, 6] = 6.0, 0.0  # a pass at 6 m out to the edge
+    out = np.zeros(g.shape, bool)
+    out[0, :] = out[-1, :] = out[:, 0] = out[:, -1] = True
+    sp = sv.spill(g, out)
+    assert sp[3, 3] == 6.0 and sp[2, 2] == 6.0
+    assert sp[0, 0] == 10.0
+
+
+def test_basin_level_snaps_only_near_the_sea():
+    assert sv.basin_level(0.3, "marsh-deep") == 0.0
+    assert sv.basin_level(-2.0, "lagoon") == 0.0
+    assert sv.basin_level(4.237, "pond") == 4.24
+    assert sv.basin_level(9.0, "ocean") == 0.0
+
+
+def test_reach_from_ground_follows_the_thalweg_by_cell():
+    cell = sv.Q * sv.MPP
+    p = east_line(3)
+    z = lambda pt: 30.0 - pt[:, 0] / cell * 5.0  # 5 m fall per cell
+    rs = sv.solve_reach_ground(p, z)
+    assert rs.dry is None
+    assert all(a >= b for a, b in zip(rs.levels, rs.levels[1:]))
+    assert rs.levels[0] - rs.levels[-1] >= 5.0
+
+
+def test_reach_from_ground_cuts_a_hump_and_dries_a_cliff():
+    assert list(sv.thalweg(np.array([5.0, 7.0, 3.0, 4.0]))) == [5.0, 5.0, 3.0, 3.0]
+    cell = sv.Q * sv.MPP
+    rs = sv.solve_reach_ground(east_line(2), lambda pt: np.where(pt[:, 0] < cell * 0.9, 200.0, 0.0) + 0 * pt[:, 0])
+    assert rs.dry

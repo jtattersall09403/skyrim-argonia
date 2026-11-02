@@ -224,7 +224,7 @@ def cmd_check(a) -> int:
     if apron_layers:
         fails.append(f"{apron_layers} alpha layers in an apron quadrant: the far ground is bare (audit §9)")
     from tools.argonia_world.terrain.grid import generated_ground
-    gg = generated_ground()
+    gg = out / "ground-f32.npy" if (out / "ground-f32.npy").exists() else generated_ground()
     if gg.exists():  # 1.15: the generated ground's fit, entrance and overflow checks
         from tools.argonia_world import db
         from tools.argonia_world.terrain import cellwater
@@ -257,7 +257,12 @@ def cmd_generate(a) -> int:
     w = db.open()
     res = G.generate(G.Inputs.load(w))
     print(f"entrance_site: {G.write_sites(w, res['sites'])} rows", flush=True)
-    st = G.write(res)  # the contract's out/terrain/ground-f32.npy; LAND and its stats go to --out
+    # the contract's out/terrain/ground-f32.npy; with --out the ground, LAND and stats all go there (a trial never
+    # overwrites the shared ground other lanes read)
+    if a.out:
+        import os
+        os.environ["ARGONIA_GROUND"] = str(Path(a.out).resolve() / "ground-f32.npy")
+    st = G.write(res, Path(a.out)) if a.out else G.write(res)
     print(f"generated the province in {time.time() - t0:.1f} s", flush=True)
     print(json.dumps(st, sort_keys=True))
     if a.sample:
@@ -313,6 +318,7 @@ def main(argv=None) -> int:
     c.add_argument("--points", type=int, default=1000)
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
     sub.add_parser("relief", help="write the region_relief rows from generate.relief_rows (the dossier bands)")
+    sub.add_parser("pre", help="write the continuous ground (prior + relief + erosion) the water solve reads")
     gp = sub.add_parser("generate")
     gp.add_argument("--sample", action="store_true", help="then build the 1.15 sample windows' LAND")
     gp.add_argument("--out")
@@ -336,6 +342,18 @@ def main(argv=None) -> int:
         return 0
     if a.cmd == "generate":
         return cmd_generate(a)
+    if a.cmd == "pre":
+        import os
+        from tools.argonia_world import db
+        from tools.argonia_world.terrain import generate as G
+        from tools.argonia_world.water.solve import pre_ground_path
+        h = G.generate(G.Inputs.load(db.open()), pre_only=True)["pre"]
+        dst = pre_ground_path()
+        tmp = dst.with_suffix(".tmp.npy")
+        np.save(tmp, h)
+        os.replace(tmp, dst)
+        print(f"{dst}: {float(h.min()):.2f}..{float(h.max()):.2f} m")
+        return 0
     if a.cmd == "render":
         return cmd_render(a)
     if a.cmd == "world":

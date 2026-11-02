@@ -48,7 +48,7 @@ CLIFF_HARD_DEG = 80.0  # a forced cliff between two waters' cones: under the int
 CLIFF_DEG = 55.0  # designed slope past this is a cliff face: the cliff and climbable mask (cliff-u8.npy); Free Climb climbs normal.z <= 0.70, i.e. 45.6 deg walked to 55 deg, climbed past (docs/research/2026-11-01/climb-anything.md)
 LIP = math.tan(math.radians(DESIGN_SLOPE_DEG)) * MPP  # the limit's 4-neighbour step
 STEP_BED_M = 200 / su.UNITS_PER_METRE  # options §11: the bed crosses the edge 100-300 units (median 224) under the upper water
-WATER_FIELD = False  # the water as smooth lift and carve fields (water_field.py), not per-cell clamps
+WATER_FIELD = True  # the water as smooth lift and carve fields (water_field.py), not per-cell clamps
 FREEBOARD_M = 0.3  # a bank stands this far above its water; a bed at least this far below
 RIFFLE_M = 0.5  # water/solve.py: a smaller drop is no step
 BANK_SPREAD_DEG = 30.0  # a two-level line's bank bound spreads into the banks beside it at this slope
@@ -446,7 +446,7 @@ def stamp_polyline(mask_val: np.ndarray, pts: np.ndarray, rad: float, value=True
     mask_val[rr[ok], cc[ok]] = value
 
 
-def generate(inp: Inputs, log=print) -> dict:
+def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     t0 = time.time()
     st: dict = {}
     diag: dict = {}  # masks for probes (probes/clamp_census.py): which rule set each bound
@@ -484,7 +484,14 @@ def generate(inp: Inputs, log=print) -> dict:
 
     # 3. the water base and the footprint
     wl = inp.water.level
-    base = nanblur(upsample(blur(fill_nearest(wl), 1.0)), 32)
+    # the base comes from the wet raster (the hydrology's own levels), never from the solved cell levels: the solve
+    # reads this ground to set those levels (water/solve.py, levels from the ground), so the ground comes first
+    rawf = ~np.isnan(inp.wet_level)
+    with np.errstate(all="ignore"):
+        wlr = np.nanmin(np.where(rawf, inp.wet_level, np.inf)[:N, :N].reshape(C, Q, C, Q), axis=(1, 3))
+    wlr[~np.isfinite(wlr)] = np.nan
+    base = nanblur(upsample(blur(fill_nearest(wlr), 1.0)), 32)
+    del wlr
     vmin, vmax = vertex_levels(wl)
     has = ~np.isnan(vmin)
     foot = has & ~np.isnan(inp.wet_level)
@@ -535,11 +542,16 @@ def generate(inp: Inputs, log=print) -> dict:
     st["water"]["footprint_samples"] = int(foot.sum())
     # the nearest raster water's level and type ride the chamfer together (type x 1e4 + level + 1e3)
     tw = np.pad(np.repeat(np.repeat(inp.water.wtype, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge").astype(np.float64)
-    dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
+    if WATER_FIELD:  # the clamp path's shore chamfers are not needed
+        dwet, near_code = np.full((N + 1, N + 1), np.inf), np.zeros((N + 1, N + 1))
+    else:
+        dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
     near_t = np.floor(near_code / 1e4)
     near_lvl = near_code - near_t * 1e4 - 1e3
     del near_code
-    away = np.clip(np.where(np.isfinite(dwet), dwet, SHORE_FAR) / SHORE_FAR, 0, 1)
+    draw, _ = chamfer(rawf, SHORE_FAR)  # the raw raster's water: the relief noise fades by it (ground first)
+    away = np.clip(np.where(np.isfinite(draw), draw, SHORE_FAR) / SHORE_FAR, 0, 1)
+    del draw
     # the land stands on its water (never below the base plus its floor) and rises to the region's absolute band
     h = np.maximum(base + floor, relief) + noise * rough * away
     h = h * (1 - 0.5 * ero) + blur(h, 4) * 0.5 * ero
@@ -550,6 +562,8 @@ def generate(inp: Inputs, log=print) -> dict:
     # the shore: the ground beside the water rises from under it at the type's grade (the mangrove coast flat, the
     # upland tarn steep), faded out by SHORE_FAR so the land beyond keeps its relief; inside a water cell the ground
     # that falls below the cell's water is the natural flood and counts as wet (a partly-wet cell is no plateau)
+    if pre_only:  # the continuous ground (prior + relief + erosion): water/solve.py sets the levels from it
+        return {"pre": h.astype(np.float32), "stats": st}
     h_pre = h.copy() if os.environ.get("ARGONIA_GROUND_DUMP") else None  # probes/clamp_census.py: the prior before any water rule
     dd = np.where(np.isfinite(dwet), dwet, SHORE_FAR)
     ramp = near_lvl - FREEBOARD_M + shore_rise(near_t, dd)
@@ -572,7 +586,10 @@ def generate(inp: Inputs, log=print) -> dict:
     # and so does the lower water at a closed step (two levels at one vertex): its bank rises from the lower water
     # over the shore run of the drop, never a wall beside the lower bed (the drop rides the chamfer from its edge)
     drop = np.nan_to_num(vmax - vmin, nan=0.0)
-    ddry, dsrc = chamfer(has & (touch | (drop > RIFFLE_M)), SHORE_FAR, drop)
+    if WATER_FIELD:
+        ddry, dsrc = np.full((N + 1, N + 1), np.inf), np.zeros((N + 1, N + 1))
+    else:
+        ddry, dsrc = chamfer(has & (touch | (drop > RIFFLE_M)), SHORE_FAR, drop)
     run = shore_run(near_t, np.nan_to_num(dsrc, nan=0.0) + 2 * FREEBOARD_M)
     del drop, dsrc
     # ... except about a step's channel: the vanilla join (bed through the edge, slope band) owns those vertices
@@ -589,7 +606,7 @@ def generate(inp: Inputs, log=print) -> dict:
         else:
             e0 = r_n + (0 if s_.edge == "n" else Q)
             chz[max(e0 - k_, 0):e0 + k_ + 1, max(c_w + a0, 0):c_w + a1 + 1] = True
-    dch, _ = chamfer(chz, STEP_CLEAR)
+    dch = np.full((N + 1, N + 1), np.inf) if WATER_FIELD else chamfer(chz, STEP_CLEAR)[0]
     if h_pre is not None:
         np.savez(os.environ["ARGONIA_GROUND_DUMP"], h=h_pre.astype(np.float32), foot=foot, vmin=vmin.astype(np.float32),
                  vmax=vmax.astype(np.float32), touch=touch, chz=chz, tsamp=tw.astype(np.int8), blocks=blocks)
@@ -619,7 +636,10 @@ def generate(inp: Inputs, log=print) -> dict:
     st["water"]["natural_flood_samples"] = int(flood.sum())
     del ramp, fade, near, dd, near_t
     # the shore beyond the water cells rises from the water as now flooded (its nearest wet sample and level)
-    dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
+    if WATER_FIELD:
+        dwet, near_code = np.full((N + 1, N + 1), np.inf), np.zeros((N + 1, N + 1))
+    else:
+        dwet, near_code = chamfer(foot, SHORE_FAR, np.where(foot, np.maximum(tw, 0) * 1e4 + vmin + 1e3, np.nan))
     near_t = np.floor(near_code / 1e4)
     near_lvl = near_code - near_t * 1e4 - 1e3
     shore_up = shore_rise(near_t, np.where(np.isfinite(dwet), dwet, 0))
@@ -643,7 +663,7 @@ def generate(inp: Inputs, log=print) -> dict:
     dp = np.zeros((N + 1, N + 1))
     for i, n in enumerate(TYPES):
         dp[tsamp == i] = DEPTH_M[n]
-    din, _ = chamfer(~foot, 32)
+    din = np.zeros((N + 1, N + 1)) if WATER_FIELD else chamfer(~foot, 32)[0]
     din = np.where(foot, np.where(np.isfinite(din), din, 32), 0)
     lo = np.full((N + 1, N + 1), -np.inf)
     hi = np.full((N + 1, N + 1), np.inf)
@@ -651,10 +671,15 @@ def generate(inp: Inputs, log=print) -> dict:
     bed = vmin - np.clip(bed_depth(tsamp, din), FREEBOARD_M, np.maximum(dp, FREEBOARD_M + 0.2))
     if WATER_FIELD:
         from tools.argonia_world.terrain.water_field import water_field
-        h, role, lo, hi, _ = water_field(h, foot, vmin, vmax, touch, chz_f, tsamp)
+        h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz_f, tsamp)
+        st["water"]["field"] = {"lift_samples": int((wf_["lift"] > 0.05).sum()), "carve_samples": int((wf_["carve"] > 0.05).sum()),
+                                "iso_samples": int(wf_["iso"].sum()), "iso_in_raster_cells": int((wf_["iso"] & blocks[hi_c][:, hi_c]).sum())}
+        diag["iso"] = wf_["iso"]
+        del wf_
         foot = role == 1
-    hi[foot] = np.minimum(hi[foot], np.minimum(vmin[foot] - FREEBOARD_M, bed[foot] + 0.0))
-    h[foot] = np.minimum(h[foot], bed[foot])
+    if not WATER_FIELD:  # the field sets its own bed under the raster water and leaves the natural flood alone
+        hi[foot] = np.minimum(hi[foot], np.minimum(vmin[foot] - FREEBOARD_M, bed[foot] + 0.0))
+        h[foot] = np.minimum(h[foot], bed[foot])
     bank = has & ~foot & (not WATER_FIELD)
     # a bank in a water cell stands just above the level (Skyrim.esm: a padding cell's dry ground 0-8 units above
     # it, probes/vanilla_lake_padding.py); the ramp above brings it down to the body's outline at the shore grade
@@ -693,7 +718,8 @@ def generate(inp: Inputs, log=print) -> dict:
             esel = (r_north + Q - jj[out_], np.full(out_.sum(), c_west + (Q if s.edge == "e" else 0)))
         else:
             esel = (np.full(out_.sum(), r_north + (0 if s.edge == "n" else Q)), c_west + jj[out_])
-        banks.append((esel, s.upper_m + FREEBOARD_M))
+        if not WATER_FIELD:  # the field lifts the two-level vertices smoothly (water_field.py src)
+            banks.append((esel, s.upper_m + FREEBOARD_M))
         j = np.arange(s.cross_lo, s.cross_hi + 1)
         for kk in range(1, k + 1):  # the lower cell's band beside the edge is a graded slope, not held wet
             if s.edge in ("e", "w"):

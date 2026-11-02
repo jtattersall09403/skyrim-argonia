@@ -45,6 +45,9 @@ def data_root() -> Path:
 
 def generated_ground() -> Path:
     """1.15's generated ground (terrain/generate.py); Sources.load reads it in place of the old sculpt when present."""
+    import os
+    if os.environ.get("ARGONIA_GROUND"):  # a sample run's own ground (terrain generate --out): never the shared one
+        return Path(os.environ["ARGONIA_GROUND"])
     return Path(__file__).resolve().parents[3] / "out" / "terrain" / "ground-f32.npy"
 
 

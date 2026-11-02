@@ -82,11 +82,18 @@ RIFFLE_M = 0.5  # a smaller drop between two cells carries the upper level on (s
 MAX_DROP_M = stp.MAX_DROP_M  # the tallest falls piece
 LEVEL_TOL_M = 0.006  # the raster stores the graph's 2-decimal level as float32
 RESAMPLE_M = 1.0  # a reach's centreline is walked at this spacing
+MERGE_M = 2.0  # water cells joined within this of a lower sheet take its level (merge_levels)
+FILL_STRIDE = 4  # samples: the spill field's grid (min-pooled ground, 1,008 x 1,008 over the province)
 MARSH = {"marsh-fringe", "marsh-deep", "swamp", "backswamp"}
 
 
 def data_root() -> Path:
     return Path(os.environ.get("ARGONIA_DATA", str(Path.home() / ".argonia" / "data")))
+
+
+def pre_ground_path() -> Path:
+    """The continuous ground (`terrain pre`: prior + relief + erosion, before any water rule) the levels derive from."""
+    return data_root() / "terrain" / "pre-ground-f32.npy"
 
 
 @dataclass(frozen=True)
@@ -199,11 +206,8 @@ class Visit:
     cross: tuple[float, float] | None = None  # the entry point (east, south) on the edge from the cell before
 
 
-def walk(points: list[tuple[float, float]]) -> tuple[list[Visit], float]:
-    """The cells a centreline visits in order (4-connected: a corner crossing goes through the east/west cell
-    first), with arc ranges and entry points."""
-    if not points:
-        return [], 0.0
+def resample(points: list[tuple[float, float]]) -> tuple[list[tuple[float, float]], list[float]]:
+    """A centreline walked at RESAMPLE_M: the points and their arclengths."""
     pts = [points[0]]
     s = [0.0]
     for (e0, s0), (e1, s1) in zip(points, points[1:]):
@@ -212,6 +216,15 @@ def walk(points: list[tuple[float, float]]) -> tuple[list[Visit], float]:
         for k in range(1, n + 1):
             pts.append((e0 + (e1 - e0) * k / n, s0 + (s1 - s0) * k / n))
             s.append(s[-1] + d / n)
+    return pts, s
+
+
+def walk(points: list[tuple[float, float]]) -> tuple[list[Visit], float]:
+    """The cells a centreline visits in order (4-connected: a corner crossing goes through the east/west cell
+    first), with arc ranges and entry points."""
+    if not points:
+        return [], 0.0
+    pts, s = resample(points)
     total = s[-1]
     out: list[Visit] = [Visit(cell_of(*pts[0]), 0.0, 0.0)]
     for p, a in zip(pts[1:], s[1:]):
@@ -238,6 +251,43 @@ class ReachSolve:
     visits: list[Visit]
     levels: list[float]
     dry: str | None = None  # why the reach is a dry gully, or None
+
+
+def thalweg(z: np.ndarray, downstream: bool = True) -> np.ndarray:
+    """The ground along a centreline as water runs it: never rising in the flow direction (a hump is cut through),
+    never below the sea."""
+    t = np.minimum.accumulate(z) if downstream else np.minimum.accumulate(z[::-1])[::-1]
+    return np.maximum(t, 0.0)
+
+
+def solve_reach_ground(points, z_at, downstream: bool = True) -> ReachSolve:
+    """Rule 2 from the ground: each visited cell takes the thalweg's lowest point inside it (the water flat over the
+    cell, the channel carved down to it), riffles merged, a meander back keeping the cell's first level; dry where
+    one cell's thalweg falls more than MAX_DROP_M (several steps in one cell) or an edge drop exceeds WALL_STEP_M
+    (Skyrim.esm's tallest one-edge step, terrain/probes/vanilla_step_chains.py)."""
+    visits, _ = walk(points)
+    pts, arc = resample(points)
+    z = thalweg(np.asarray(z_at(np.asarray(pts, np.float64)), np.float64), downstream)
+    arc = np.asarray(arc)
+    levels: list[float] = []
+    first: dict[tuple[int, int], float] = {}
+    for v in visits:
+        k0, k1 = np.searchsorted(arc, v.s0, "left"), np.searchsorted(arc, v.s1, "right")
+        seg = z[min(k0, len(z) - 1):max(k1, k0 + 1)]
+        if float(seg.max() - seg.min()) > MAX_DROP_M:
+            return ReachSolve(visits, [], f"{float(seg.max() - seg.min()):.1f} m inside cell {v.cell}: several steps in one cell")
+        lv = float(seg.min())
+        lv = 0.0 if lv < SNAP_LO_M else lv
+        if levels and abs(levels[-1] - lv) < RIFFLE_M:
+            lv = levels[-1]
+        if v.cell in first:
+            lv = first[v.cell]
+        first.setdefault(v.cell, lv)
+        levels.append(round(lv, 2))
+    for a, b in zip(levels, levels[1:]):
+        if abs(a - b) > WALL_STEP_M:
+            return ReachSolve(visits, [], f"a {abs(a - b):.1f} m edge drop: taller than Skyrim.esm's tallest step")
+    return ReachSolve(visits, levels)
 
 
 def solve_reach(points, level_from: float, level_to: float) -> ReachSolve:
@@ -317,19 +367,86 @@ def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=Non
     cell. With `ground_min` ((i, j) -> the cell's lowest ground, metres) a cell is padded only to a level its ground
     reaches (lowest ground at or under the level + PAD_REACH_M): vanilla's padding cells hold ground just above the
     level (0-8 units, probes/vanilla_lake_padding.py), never a whole cell standing over it (that drew the plates and
-    the level-0 cell on a 40 m hillside). Returns the added cells only."""
+    the level-0 cell on a 40 m hillside), nor a cell whose ground falls more than PAD_REACH_M under it (levels from
+the ground, session 11: that ground lies past the basin's rim, joined to no water, and the plane would draw a square
+pool over it or the lift a plate). Returns the added cells only."""
     added: dict[tuple[int, int], tuple] = {}
     for (i, j) in {(a + di, b + dj) for (a, b) in cells for di in (-1, 0, 1) for dj in (-1, 0, 1)}:
         if (i, j) in cells or not (0 <= i < n and 0 <= j < n):
             continue
         nb = [cells[(i + di, j + dj)] for di in (-1, 0, 1) for dj in (-1, 0, 1) if (i + di, j + dj) in cells]
         if ground_min is not None:
-            nb = [c for c in nb if ground_min(i, j) <= c[0] + PAD_REACH_M]
+            nb = [c for c in nb if c[0] - PAD_REACH_M <= ground_min(i, j) <= c[0] + PAD_REACH_M]
             if not nb:
                 continue
         v = min(nb, key=lambda c: c[0])
         added[(i, j)] = (v[0], v[1], v[2], None)
     return added
+
+
+def spill(ground: np.ndarray, outlet: np.ndarray) -> np.ndarray:
+    """Each sample's spill height (priority flood, Barnes et al. 2014): the lowest height water standing there must
+    reach to leave by a path to an `outlet` sample (the sea, the grid's edge). A basin's level is its spill at its
+    lowest point: water fills it to the lowest pass out and runs over (Skyrim.esm: lakes stand at or just above
+    their lowest pass, the outlet channel's bed; terrain/probes/vanilla_lake_sill.py)."""
+    import heapq
+    g = np.asarray(ground, np.float64)
+    H, W = g.shape
+    flat = g.ravel()
+    out = np.full(H * W, np.inf)
+    seed = np.nonzero(outlet.ravel())[0]
+    out[seed] = flat[seed]
+    hq = list(zip(flat[seed].tolist(), seed.tolist()))
+    heapq.heapify(hq)
+    done = np.zeros(H * W, bool)
+    pop, push = heapq.heappop, heapq.heappush
+    while hq:
+        v, k = pop(hq)
+        if done[k]:
+            continue
+        done[k] = True
+        i, j = divmod(k, W)
+        for nk, ok in ((k - W, i > 0), (k + W, i < H - 1), (k - 1, j > 0), (k + 1, j < W - 1)):
+            if ok and not done[nk]:
+                nv = flat[nk] if flat[nk] > v else v
+                if nv < out[nk]:
+                    out[nk] = nv
+                    push(hq, (nv, nk))
+    return out.reshape(H, W)
+
+
+def basin_level(spill_m: float, kind: str) -> float:
+    """Rule 1 from the ground: the sea at 0; a body at the spill of its footprint's lowest ground; one whose spill
+    stands within SNAP_LO_M of the sea (or under it) is the sea-level marsh, at 0."""
+    if kind == "ocean" or spill_m < SNAP_LO_M:
+        return 0.0
+    return round(float(spill_m), 2)
+
+
+def merge_levels(cells: dict[tuple[int, int], tuple], tol: float) -> int:
+    """Few level boundaries, the vanilla way (Skyrim.esm's Tamriel holds 77 level edges, probes/vanilla_level_edges.py):
+    from the lowest level up, each cell not yet taken seeds a sheet at its level and takes every 4-joined water
+    cell standing less than `tol` above that seed (in place). So a level drops by less than `tol` (the channel is
+    carved to it, within a vanilla lake's 1.5-3 m over its outlet bed, probes/vanilla_lake_sill.py) and a marsh
+    within `tol` of the sea is the sea-level marsh at 0. Returns the cells whose level moved."""
+    moved = 0
+    taken: set[tuple[int, int]] = set()
+    for c in sorted(cells, key=lambda k: (cells[k][0], k)):
+        if c in taken:
+            continue
+        lv = cells[c][0]
+        taken.add(c)
+        st = [c]
+        while st:
+            a, b = st.pop()
+            for o in ((a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)):
+                if o in cells and o not in taken and cells[o][0] - lv < (tol if lv > 0 else SNAP_LO_M):
+                    taken.add(o)
+                    if cells[o][0] != lv:
+                        cells[o] = (lv,) + tuple(cells[o][1:])
+                        moved += 1
+                    st.append(o)
+    return moved
 
 
 def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] = frozenset()) -> set:
@@ -394,13 +511,20 @@ def solve(w, raster=None, ground=None) -> Result:
     if raster is None:
         z = np.load(data_root() / "hydrology-graph-bodies.npz")
         raster = (z["level"], z["sea"])
-        gp = data_root() / "terrain" / "refined-height-f32.npy"
+        gp = pre_ground_path()
         ground = np.load(gp, mmap_mode="r") if ground is None and gp.exists() else ground
     lev, sea = raster
     n = lev.shape[0] - 1
-    gmin = None
+    gmin = sp = None
     if ground is not None:
         gmin = np.asarray(ground[:n, :n], dtype=np.float32).reshape(NCELL, Q, NCELL, Q).min(axis=(1, 3))
+        # the spill field on the ground min-pooled by FILL_STRIDE (a pass is never raised by the pooling)
+        m = n // FILL_STRIDE
+        gc = np.asarray(ground[:n, :n], np.float32).reshape(m, FILL_STRIDE, m, FILL_STRIDE).min(axis=(1, 3))
+        oc = np.asarray(sea[:n, :n], bool).reshape(m, FILL_STRIDE, m, FILL_STRIDE).any(axis=(1, 3))
+        oc[0, :] = oc[-1, :] = oc[:, 0] = oc[:, -1] = True
+        sp = spill(gc, oc)
+        del gc, oc
     cands: dict[int, list] = {}
 
     # the sea: per-cell sample counts
@@ -423,10 +547,16 @@ def solve(w, raster=None, ground=None) -> Result:
             x0, y0, x1, y1 = (int(b[k]) for k in ("bbox_x0", "bbox_y0", "bbox_x1", "bbox_y1"))
             win = lev[max(0, y0):y1 + 1, max(0, x0):x1 + 1]
             rr, cc = np.nonzero(np.abs(win - np.float32(b["level_m"])) <= LEVEL_TOL_M)
-        gm = None
-        if ground is not None and len(rr):
-            gm = float(np.asarray(ground[max(0, y0):y1 + 1, max(0, x0):x1 + 1])[rr, cc].min())
-        lvl = body_level(b["level_m"] or 0.0, b["kind"], gm)
+        if sp is not None and len(rr):  # the level from the ground: the spill at the footprint's lowest sample
+            gz = np.asarray(ground[max(0, y0):y1 + 1, max(0, x0):x1 + 1])[rr, cc]
+            k = int(np.argmin(gz))
+            r_, c_ = min((rr[k] + max(0, y0)) // FILL_STRIDE, sp.shape[0] - 1), min((cc[k] + max(0, x0)) // FILL_STRIDE, sp.shape[1] - 1)
+            lvl = basin_level(max(float(sp[r_, c_]), float(gz[k])), b["kind"])
+        elif sp is not None:  # not in the raster: the spill at its deepest sample
+            r_, c_ = (min(int(b[q]) // FILL_STRIDE, sp.shape[0] - 1) for q in ("deepest_y", "deepest_x"))
+            lvl = basin_level(float(sp[r_, c_]), b["kind"])
+        else:
+            lvl = body_level(b["level_m"] or 0.0, b["kind"])
         if len(rr):
             ids, cnt = np.unique(_sample_cells(rr + max(0, y0), cc + max(0, x0), n), return_counts=True)
         else:  # not in the raster: the cell of its deepest sample, weighted by its area
@@ -434,11 +564,7 @@ def solve(w, raster=None, ground=None) -> Result:
             cnt = np.array([max(1.0, (b["area_m2"] or 0) / MPP ** 2)])
         body_cells[b["id"]] = set(int(k) for k in ids)
         for k, c in zip(ids, cnt):
-            lk = lvl  # a snapped body's cell whose ground stands wholly above 0 holds the body at its own level
-            if gmin is not None and lvl == 0.0 and b["level_m"] and b["level_m"] >= SNAP_LO_M \
-                    and gmin[NCELL - 1 - int(k) % NCELL, int(k) // NCELL] > 0.0:
-                lk = round(b["level_m"], 2)
-            cands.setdefault(int(k), []).append((1, lk, wt, b["id"], None, float(c)))
+            cands.setdefault(int(k), []).append((1, lvl, wt, b["id"], None, float(c)))
 
     # the snap rule's basin: a snapped body sharing a cell with a body at SNAP_HI_M or above takes the cell's level
     # (rule 3 does it: the cell holds one level, the body's samples count toward the winner's cell)
@@ -462,7 +588,14 @@ def solve(w, raster=None, ground=None) -> Result:
             kind[rid] = "water"
             continue
         lf, lt = (0.0, 0.0) if r["kind"] == "horizontal-tidal" else (r["level_from_m"], r["level_to_m"])
-        rs = solve_reach(p, lf, lt)
+        if ground is not None and r["kind"] != "horizontal-tidal":
+            def z_at(pt, g=ground):
+                rr_ = np.clip(np.rint(pt[:, 1] / MPP).astype(np.int64), 0, g.shape[0] - 1)
+                cc_ = np.clip(np.rint(pt[:, 0] / MPP).astype(np.int64), 0, g.shape[1] - 1)
+                return np.asarray(g[rr_, cc_], np.float64)
+            rs = solve_reach_ground(p, z_at, downstream=(lf or 0.0) >= (lt or 0.0))
+        else:
+            rs = solve_reach(p, lf, lt)
         if rs.dry:
             dry[rid], kind[rid] = rs.dry, "dry"
             continue
@@ -489,12 +622,16 @@ def solve(w, raster=None, ground=None) -> Result:
         near[:, :-1] |= wet[:, 1:]
         gmin = np.where(near.reshape(NCELL, Q, NCELL, Q).any(axis=(1, 3)), -np.inf, gmin)
         del wet, near
+    if sp is not None:  # levels from the ground: sheets, not a level per body
+        merge_levels(cells, MERGE_M)
     gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
     enclosed = fill_enclosed(cells, ground_min=gm_cell)
     cells.update(enclosed)
     padded = pad_ring(cells, ground_min=gm_cell)
     cells.update(padded)
     enclosed.update(padded)
+    if sp is not None:  # the padding and filled cells joined to a sheet within a riffle (no sub-riffle closed edge)
+        merge_levels(cells, RIFFLE_M)
     walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
     for c in walls:
         enclosed.pop(c, None)
