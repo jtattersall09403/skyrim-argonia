@@ -26,3 +26,15 @@ launch to the main menu on the base save. Lock released. The machine is not runn
 - **Saves**: the engine refused every save after loading a save (bridge `save` and console `save`, with and without spaces in the name), while saves after a new game work (the deploy's own base and walk saves). The region saves are therefore made from a fresh game each (`region_saves.py --fresh`). Whether the owner's rest-save after a load is refused too is parked for 1.14 (owner).
 - **Launches died silently** nine times, all within six minutes of a boot, with no SKSE log: Steam restarts itself to apply an update about five minutes after boot; `stack.ps1 menu` now launches only once `steam.exe` is 150 s old and its client is up. Four bisections of the LOD mod (all halves and the whole launched once Steam had settled) proved the mod innocent.
 - **Machines**: Paris spot-interrupted five times (10:57, 11:43, 12:53 and twice in between), Ireland without capacity all afternoon; the build VM reclaimed eleven times today. The owner ruled to stay on spot (#35). Waiting jobs bring each machine to its target state when capacity returns and stop it after.
+
+### Evening hand-over (planner, 14:55)
+
+- The owner walks: #37 posted with the nine region saves (in the shared pool copy since 14:01) and what to look at.
+- Object LOD on Paris: DynDOLOD generating from 14:50 after three fixes found one dialog at a time (Resources' Interface
+  and Scripts must be linked; TexGen's output must be re-linked after every fresh profile lay; the DLL-not-found
+  dialog comes before the wizard, where the step now watches pop-ups). The job `paris-finish2` collects, archives,
+  deploys (helpers with Wait-Steam, the LOD, the base save), stops Paris and comments "Paris ready" on #37;
+  `ireland-finish` then deploys the second standby and comments "Ireland ready". Both are idempotent and spooled;
+  the build VM's boot-time resume (merged, 0cabfcf) relaunches them after a reclaim.
+- The on-demand LOD box could not drive DynDOLOD's GUI (empty window titles on a GPU-less box): terminated after
+  45 min; its round-3 image ami-0b3ddccee05837aed stays as the newest game image.
