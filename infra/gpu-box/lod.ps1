@@ -300,6 +300,23 @@ switch ($Step) {
     if ($plugins) { Say "plugins in the output (not enabled by this job): $($plugins.Name -join ', ')" }
     $files = Get-ChildItem $Mod -Recurse -File
     Say "mod: $($files.Count) files, $([math]::Round(($files | Measure-Object Length -Sum).Sum / 1MB)) MB"
+    # Packed into BSAs named after ArgoniaWorld.esm (the engine loads <plugin>.bsa and <plugin> - Textures.bsa with the
+    # plugin; Bethesda ships terrain LOD this way): 21,418 loose files killed every launch before SKSE initialised,
+    # while either half alone launched (2026-11-02, four bisections); two archives lay as two hard links.
+    $ba = 'C:\argonia\tools\BSArch\BSArch.exe'
+    if (-not (Test-Path $ba)) { throw 'collect: BSArch missing (C:\argonia\tools\BSArch; setup.ps1 installs it)' }
+    $stage = "$Work\bsa-stage"
+    foreach ($pair in @(@('ArgoniaWorld.bsa', @('meshes', 'LODSettings')), @('ArgoniaWorld - Textures.bsa', @('textures')))) {
+      Remove-Item $stage -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force $stage | Out-Null
+      foreach ($d in $pair[1]) { if (Test-Path "$Mod\$d") { Move-Item "$Mod\$d" "$stage\$d" } }
+      if (Get-ChildItem $stage -Recurse -File -EA SilentlyContinue) {
+        & $ba pack $stage "$Mod\$($pair[0])" -sse -z -mt | Out-Null
+        if ($LASTEXITCODE -ne 0) { throw "collect: BSArch failed on $($pair[0])" }
+        Say "packed $($pair[0]): $([math]::Round((Get-Item "$Mod\$($pair[0])").Length / 1MB)) MB"
+      }
+      Remove-Item $stage -Recurse -Force -EA SilentlyContinue
+    }
+    Say "mod after packing: $((Get-ChildItem $Mod -Recurse -File).Count) files"
     & "$Root\infra\bridge.ps1" -Cmd prepare -Fresh | Out-Null
     Say "laid again with the LOD mod"
   }
