@@ -41,7 +41,10 @@ struct Topic {
   std::string label;               // the topic list's name and its first keyword form
   std::vector<std::string> forms;  // the glossary forms that also hyperlink it
   bool essential = false;
-  bool service = false;  // a service (topic_class service): every speaker who answers it offers it, learned or not
+  // Offered unlearned (topic_class service, newcomer or local): every speaker who answers it offers it from a first
+  // meeting, as Morrowind's player knows "latest rumors", "little advice" and "specific place" from character
+  // creation (play test 3, finding 24: a first greeting that taught nothing left Livia with Barter alone).
+  bool open = false;
 };
 
 struct Line {

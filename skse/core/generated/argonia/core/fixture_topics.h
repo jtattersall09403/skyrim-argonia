@@ -25,7 +25,7 @@ struct FxNode { int parent; std::string_view term; std::size_t first_arg, arg_co
 struct FxCond { std::size_t first_node, node_count; };
 struct FxAction { std::string_view verb; std::size_t first_arg, arg_count; };
 struct FxActionList { std::string_view id; std::size_t first, count; };
-struct FxTopic { std::string_view id, label; std::size_t first_form, form_count; bool essential, service; };
+struct FxTopic { std::string_view id, label; std::size_t first_form, form_count; bool essential, open; };
 struct FxLine {
   std::string_view id, type, speaker, topic, words, low, high;
   int cond;  // into kConds; -1: always available
@@ -34,21 +34,21 @@ struct FxLine {
 };
 
 inline constexpr std::array<FxTopic, 26> kTopics{{
-    {"topic.about-blackwood", "Where does the road go?", 0, 2, false, false},
-    {"topic.about-claywater", "What is Claywater?", 2, 1, false, false},
-    {"topic.about-gideon", "What is Gideon?", 3, 1, false, false},
-    {"topic.about-helstrom", "What is Helstrom?", 4, 1, false, false},
-    {"topic.about-imperial", "What did the Empire leave?", 5, 3, false, false},
-    {"topic.about-imperial-legion-remnant", "Why are there legionaries here?", 8, 2, false, false},
-    {"topic.about-onkobra", "What river is that?", 10, 1, false, false},
-    {"topic.about-prison-road", "Where does this road go?", 11, 3, false, false},
-    {"topic.about-sul-xan", "Who are the Sul-Xan?", 14, 1, false, false},
+    {"topic.about-blackwood", "Where does the road go?", 0, 2, false, true},
+    {"topic.about-claywater", "What is Claywater?", 2, 1, false, true},
+    {"topic.about-gideon", "What is Gideon?", 3, 1, false, true},
+    {"topic.about-helstrom", "What is Helstrom?", 4, 1, false, true},
+    {"topic.about-imperial", "What did the Empire leave?", 5, 3, false, true},
+    {"topic.about-imperial-legion-remnant", "Why are there legionaries here?", 8, 2, false, true},
+    {"topic.about-onkobra", "What river is that?", 10, 1, false, true},
+    {"topic.about-prison-road", "Where does this road go?", 11, 3, false, true},
+    {"topic.about-sul-xan", "Who are the Sul-Xan?", 14, 1, false, true},
     {"topic.claywater-landing-terms", "the landing's terms", 15, 0, true, false},
-    {"topic.claywater-station", "Claywater Station", 15, 0, false, false},
-    {"topic.claywater-station-danger", "danger near Claywater Station", 15, 0, false, false},
-    {"topic.claywater-station-directions", "the way from Claywater Station", 15, 0, false, false},
-    {"topic.claywater-station-people", "the people of Claywater Station", 15, 0, false, false},
-    {"topic.claywater-station-work", "work at Claywater Station", 15, 0, false, false},
+    {"topic.claywater-station", "Claywater Station", 15, 0, false, true},
+    {"topic.claywater-station-danger", "danger near Claywater Station", 15, 0, false, true},
+    {"topic.claywater-station-directions", "the way from Claywater Station", 15, 0, false, true},
+    {"topic.claywater-station-people", "the people of Claywater Station", 15, 0, false, true},
+    {"topic.claywater-station-work", "work at Claywater Station", 15, 0, false, true},
     {"topic.claywater-two-charges", "two charges at Claywater", 15, 0, true, false},
     {"topic.lf83-clay-bend", "the clay bend", 15, 0, true, false},
     {"topic.lf83-cracked-well", "the failing well", 15, 0, true, false},

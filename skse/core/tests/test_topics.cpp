@@ -117,11 +117,15 @@ void learned_from_a_asked_of_b(const Store& s) {
   // A topic two people answer, which person A's greeting or an answer of A's teaches.
   bool tried = false;
   for (const auto& t : s.all()) {
+    if (t.open) continue;  // offered from a first meeting: never learned (finding 24)
     auto who = answerers(s, t.id, w);
     if (who.size() < 2) continue;
     const Speaker a{std::string(who[0]), 50}, b{std::string(who[1]), 50};
     Known k;
-    CHECK(offered(s, b, k, w).empty());  // nothing learned yet, so nothing to ask
+    // nothing learned yet: only the open topics (service, newcomer, local) to ask
+    const auto first = offered(s, b, k, w);
+    for (auto o : first) CHECK(s.topic(o) && s.topic(o)->open);
+    CHECK(std::find(first.begin(), first.end(), t.id) == first.end());
     // A teaches it: a line of A's whose words or links name it (else A is told it outright, as grantTopic does).
     Known all;
     for (const auto& x : s.all()) all.learn(x.id);

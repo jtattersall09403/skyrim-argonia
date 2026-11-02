@@ -127,9 +127,33 @@ void livia_trades() {
   }
 }
 
+// Play test 3, finding 24: every speaker in the store greets and offers the topics they answer, on a first meeting.
+void every_speaker_greets_with_topics() {
+  auto store = talk::fixture_store();
+  if (!store) return;
+  for (const auto& sp : gen::fixture::kSpeakers) {
+    if (sp.status != "written") continue;
+    seam::State st;
+    Engine e;
+    const auto graphs = gen::quest_graphs();
+    seam::Session ses(st, e, e, graphs);
+    auto c = talk::Conversation::open(*store, ses, std::string(sp.id), std::string(sp.id));
+    CHECK(c.has_value());
+    if (!c) continue;
+    const auto v = c->view(ses);
+    CHECK(!v.entries.empty() && v.entries[0].kind == msg::DialogueEntryKind::greeting);
+    // the newcomer and local topics they answer, learned or not: Claywater, the road, its danger, its people
+    for (std::string_view t : {"topic.about-claywater", "topic.about-blackwood", "topic.claywater-station-danger",
+                               "topic.claywater-station-people"})
+      CHECK(std::any_of(v.topics.begin(), v.topics.end(), [&](const auto& x) { return x.id == t; }));
+    CHECK(v.topics.size() >= 9);
+  }
+}
+
 }  // namespace
 
 int main() {
+  every_speaker_greets_with_topics();
   the_store_holds_written_lines_only();
   runs_split_at_keywords();
   livia_talks();

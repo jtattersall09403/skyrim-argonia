@@ -14,6 +14,9 @@ from tools.argonia_world import db
 
 PLACE = "place.imperial-fringe.claywater-station"
 SPEAKERS = 5
+# The topic classes every speaker who answers them offers from a first meeting, learned or not (Morrowind's starting
+# topics: "latest rumors", "little advice", "specific place"); the rest grow from heard keywords (play test 3, 24).
+OPEN_CLASSES = ("service", "newcomer", "local")
 
 
 def _sv(s) -> str:
@@ -109,7 +112,7 @@ def render(w: db.World) -> list[str]:
         f = w.values("SELECT f.value FROM glossary_form f JOIN glossary_term g ON g.id = f.glossary_term_id "
                      "WHERE g.topic_id = ? ORDER BY g.id, f.ord", tid)
         topics.append(f"    {{{_sv(tid)}, {_sv(t.label)}, {len(forms)}, {len(f)}, "
-                      f"{'true' if tid in essential else 'false'}, {'true' if t.topic_class == 'service' else 'false'}}},")
+                      f"{'true' if tid in essential else 'false'}, {'true' if t.topic_class in OPEN_CLASSES else 'false'}}},")
         forms += [_sv(x) for x in f]
 
     def arr(typ: str, name: str, rows: list[str], per_line: bool = True) -> list[str]:
@@ -127,7 +130,7 @@ def render(w: db.World) -> list[str]:
          "struct FxCond { std::size_t first_node, node_count; };",
          "struct FxAction { std::string_view verb; std::size_t first_arg, arg_count; };",
          "struct FxActionList { std::string_view id; std::size_t first, count; };",
-         "struct FxTopic { std::string_view id, label; std::size_t first_form, form_count; bool essential, service; };",
+         "struct FxTopic { std::string_view id, label; std::size_t first_form, form_count; bool essential, open; };",
          "struct FxLine {", "  std::string_view id, type, speaker, topic, words, low, high;",
          "  int cond;  // into kConds; -1: always available",
          "  std::size_t first_link, link_count;", "  int actions;  // into kActionLists; -1: none", "};", "",
