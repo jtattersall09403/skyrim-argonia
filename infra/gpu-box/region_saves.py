@@ -41,10 +41,46 @@ def settle(b: Bridge, since, wait: int = 90) -> None:
     time.sleep(5)
 
 
+def new_game(b: Bridge) -> None:
+    """Quit to the main menu and start a new game in the holding cell with the start kit (base_save.py's steps)."""
+    import json
+    start = json.loads((REPO / "data" / "quarantine" / "start.json").read_text())
+    cell = start["cell"]["edid"]
+    try:
+        b.call("player")
+        b.call("dev-quit-to-menu")
+        time.sleep(8)
+    except BridgeError:
+        pass  # already at the menu
+    try:
+        b.call("console", f"coc {cell}")
+    except BridgeError as e:
+        if "did not run the task" not in str(e):
+            raise
+    for _ in range(60):
+        time.sleep(2)
+        try:
+            if b.call("player")["cell"]["editor_id"] == cell:
+                break
+        except BridgeError:
+            continue
+    else:
+        raise SystemExit(f"the new game did not reach {cell}")
+    time.sleep(3)
+    b.call("console", "player.removeallitems")
+    from tools.argonia_world import db, items_records
+    world = db.open()
+    for k in start["player"].get("kit", []):
+        b.call("console", f"player.additem {items_records.kit_edid(world, k['item'])} {k.get('count', 1)}")
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--from", dest="src", default="ArgoniaWalk", help="the save to start from")
     p.add_argument("--only", default="", help="comma-separated region keys (kebab or camel case) to make")
+    p.add_argument("--fresh", action="store_true",
+                   help="each save from a new game (quit to the menu, coc the holding cell, the start kit), as the base "
+                        "save is made: the engine refused every save after a load + moveto on 2026-11-02")
     a = p.parse_args(argv)
     want = {k.replace("-", "").lower() for k in a.only.split(",") if k}
     b = Bridge()
@@ -66,6 +102,8 @@ def main(argv=None):
     for key, name in REGIONS.items():
         if want and key.lower() not in want:
             continue
+        if a.fresh:
+            new_game(b)
         since = b.call("events")["last"]
         t0 = time.monotonic()
         try:
