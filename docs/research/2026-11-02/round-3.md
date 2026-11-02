@@ -18,3 +18,11 @@ LOD timings (lod.sh, from 10:26:59 UTC):
 
 Remaining on the next successful `run.sh up`: `lod.sh run collect` (terrain output is on disk), `lod.sh archive`,
 launch to the main menu on the base save. Lock released. The machine is not running.
+
+### Afternoon (planner): the LOD, the saves and the machines
+
+- **Terrain LOD** collected and archived at 12:24 (`s3://argonia-private-…/lod/aad64e6d9471.tar`, 21,418 files, 638 MB); any deploy of this build lays it from the archive.
+- **Object LOD**: TexGen passed on the rerun (its "finished" dialog is now answered by the watcher); DynDOLOD 3.0 alpha-217 refused to start without `interface\dyndolod\dyndolod.dds`, which `Link-Resources` did not link (Interface was left out as "dynamic LOD only"): fixed (Interface linked; a `resources` step re-links after a restart without the prepare's wipe). Per-step markers per ArgoniaWorld sha now let a rerun skip the steps already done. The DynDOLOD run itself is still owed (queued behind the saves on the next Paris start).
+- **Saves**: the engine refused every save after loading a save (bridge `save` and console `save`, with and without spaces in the name), while saves after a new game work (the deploy's own base and walk saves). The region saves are therefore made from a fresh game each (`region_saves.py --fresh`). Whether the owner's rest-save after a load is refused too is parked for 1.14 (owner).
+- **Launches died silently** three times, 2 min after a boot, with no SKSE log: Steam restarts and self-updates after every boot; `stack.ps1 menu` now waits for the client (steamwebhelper) before launching.
+- **Machines**: Paris spot-interrupted five times (10:57, 11:43, 12:53 and twice in between), Ireland without capacity all afternoon; the build VM reclaimed eleven times today. The owner ruled to stay on spot (#35). Waiting jobs bring each machine to its target state when capacity returns and stop it after.
