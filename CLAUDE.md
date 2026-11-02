@@ -4,7 +4,7 @@ Binding rules, one line each; the why lives in the linked record. Keep under 1,1
 
 ## Goal
 
-Elder Souls: Argonia is a free Skyrim SE total conversion set in Black Marsh, with Morrowind's soul, DS1-style
+Elder Souls: Argonia is a free Skyrim SE total conversion mod set in Black Marsh, with Morrowind's soul, DS1-style
 combat, climbing, swimming, boats and no Nordic element, built only from our own code and data
 ([PLAN](docs/PLAN.md), [owner brief](docs/owner-brief.md)). We build on a mod stack: we don't reinvent the wheel, we use mod functionality wherever possible and build only what is new.
 
@@ -29,7 +29,6 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Never ship a derived file (FaceGen, LOD, behaviours, clips, menus): the installer makes it on the player's machine (0014).
 - Never level anything against the player (creatures, loot, chests, prices); danger bands are fixed ([0035](docs/decisions/0035-nothing-is-levelled-against-the-player.md)).
 - Never update the pinned Skyrim runtime outside a decision record ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)).
-- Never run a Windows-only tool under Wine or Proton.
 
 ## How we build
 
@@ -37,12 +36,12 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
   HTML screen → ask the owner ([0010](docs/decisions/0010-reuse-first-and-the-running-game-is-the-oracle.md)).
 - Base-Skyrim assets come from Tropical Skyrim before vanilla; Black Marsh mods before both (0006 §8).
 - Study before building (owned games, mod source, OpenMW); findings in `docs/research/` ([0020](docs/decisions/0020-reuse-others-methods-universal-modder-and-ghidra-tooling.md)).
-- World, place, people and quest calls cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
+- World, ecology, asset, place, people and quest calls (and anything else you think is lore-relevant or should be grounded in lore) cite the lore dossiers (`world/sources/lore/`, by tier) or the extrapolation, never an invention ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)).
 - The running game is the oracle: behaviour closes only on an in-game check that can fail (L4+).
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample (0023, 0029).
 - Systems are built whole to their final interface; content can be thin; what the player meets is complete.
-- Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).
+- Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any build method rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)). But note the nuance here: this is about *method* not about *outcome*. Two examples: 1. 
 - The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM derive from it ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; no logic in Papyrus.
@@ -56,6 +55,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
 - Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods).
+- Tidy up after yourself: delete temporary files and anything else we don't need to keep as soon as it is no longer needed; manage disk space actively, never archive rubbish "to be safe".
 
 ## Testing and the gate
 
@@ -80,7 +80,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## Costs
 
 - Nothing lives only on a machine: archive privately, when made, what the repo can't rebuild in minutes; retire no machine until `machine_inventory.sh` shows nothing unarchived ([machine moves](docs/machine-moves.md)).
-- Stop machines when idle or a batch ends; report AWS month-to-date and Claude usage each check-in; AWS under $100/month ([0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)).
+- Stop machines when idle or a batch ends; report AWS month-to-date and Claude usage as a percentage of the weekly allowance (1% ≈ $19) each check-in; AWS under $100/month ([0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)).
 
 ## Docs
 

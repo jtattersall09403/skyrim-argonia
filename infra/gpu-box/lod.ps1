@@ -137,6 +137,7 @@ function Watch-Popups($proc, $main) {
     if ([W]::Cls($t) -in 'TApplication', 'TfrmMain') { continue }
     $text = (@([W]::Text($t)) + @([W]::Kids($t) | % { [W]::Text($_) })) -join ' / '
     if (-not ($text -replace '[\s/]', '')) { continue }
+    if ($text -match 'Exit TexGen|Save & Exit') { continue }  # the tool's own finished dialog: the step's done-check and Click end it (round 3: texgen finished, then the watcher threw)
     $k = $Known | ? { $text -match $_.match } | Select -First 1
     if (-not $k) { Dump $proc 'unknown pop-up'; throw "${Step}: unknown pop-up: $text" }
     $b = [W]::Kids($t) | ? { ([W]::Text($_) -replace '&', '') -eq $k.answer } | Select -First 1

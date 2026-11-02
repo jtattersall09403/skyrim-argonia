@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 # The LOD job for ARG_Province (2.W4 §c, decision 0014 §4), driven from the build VM; lod.ps1 is the machine's half.
+# OWNER RULE (2026-11-02): a rebuild is slow (terrain ~26 min, then texgen and DynDOLOD) and agents have rebuilt it
+# when nothing needed it. Rebuild only when the deployed ArgoniaWorld's LAND or placed objects changed (deploy's lod
+# step says "no LOD archive for this ArgoniaWorld"); and before you rebuild, first make the process faster for this
+# run (skip unchanged steps, the lowest LOD texture size the check needs, only the levels the check needs, keep the
+# machine's cache) and write the measured time per step in your report, so the next rebuild starts from a faster recipe.
 #   lod.sh tools                       the three tool rows (xlodgen, dyndolod, dyndolod-resources in
 #                                      data/dependencies.json) fetched, hash-checked, unpacked and laid under
 #                                      C:\argonia\tools\<id> (never Data; sent again only when the archive changed)

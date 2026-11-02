@@ -90,6 +90,11 @@ See [../loops.md](../loops.md) and decision [0021](../decisions/0021-fast-focuse
 - one lane testing a feature and its joins;
 - journeys that read state and keep a still per step;
 - measure, diagnose, fix once, re-measure.
+- **In-game rounds must get much faster** (owner, 2026-11-02, after 1.15's two rounds in twelve hours: build, deploy,
+  one batch, readers, diagnosis). Before any part plans another series of in-game rounds, it first finds a way to make
+  each round many times faster (incremental builds and deploys, parallel capture, cheaper LOD) or a way to be confident
+  a thing works in game without fully testing it there (L1–L3 proofs that predict the in-game result, and one short
+  in-game confirmation). Not done in 1.15; owed to the part that next plans rounds.
 
 Each brief's **Loops** section names its subsets and their levels, the joins it owns, its journeys, and any L5
 reason.
