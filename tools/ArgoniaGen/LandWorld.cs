@@ -43,7 +43,7 @@ static class LandWorld
             throw new InvalidDataException("the world intermediate holds exactly one record, the WRLD");
         var ws = World(records[0]);
         mod.Worldspaces.Add(ws);
-        var water = waterDir is null ? null : WaterRecords.Load(mod, ws, waterDir);  // 2.W2 (WaterRecords.cs)
+        var water = waterDir is null ? null : WaterRecords.Load(mod, ws, waterDir, data);  // 2.W2 (WaterRecords.cs)
         var nav = navDir is null ? null : NavmeshRecords.Load(navDir);  // 2.W4 §b (NavmeshRecords.cs)
         // the REGN shells and each cell's XCLR (regions/api.py: Argonia.esm overrides the shells with the authored part)
         foreach (var g in root.TryGetProperty("regions", out var rg) ? rg.EnumerateArray() : Enumerable.Empty<JsonElement>())

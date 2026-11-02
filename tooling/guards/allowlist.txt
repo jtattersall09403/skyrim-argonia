@@ -11,3 +11,4 @@ world/db/place.jsonl
 world/db/dialogue_line.jsonl
 world/db/hydrology_body.jsonl
 world/db/water_regrade.jsonl
+world/db/land_region_object.jsonl

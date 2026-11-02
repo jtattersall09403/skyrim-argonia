@@ -33,8 +33,13 @@ def _write(tmp: Path, name: str) -> bytes:
     return out.read_bytes()
 
 
-@pytest.mark.skipif(not GEN.exists(), reason="ArgoniaGen not built")
+GAME = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
+
+
+@pytest.mark.skipif(not GEN.exists() or not (GAME / "Skyrim.esm").exists(),
+                    reason="ArgoniaGen not built or no game data (each WATR copies Skyrim.esm's DefaultWater body)")
 def test_water_written_and_read_back(tmp_path):
+    (tmp_path / "Skyrim.esm").symlink_to(GAME / "Skyrim.esm")
     s = src()
     build.build(s, table(), tmp_path, cells=(-62, -62, -61, -61))
     world.write(tmp_path / "world.json", s.cell_range, tmp_path / "land")
@@ -66,6 +71,9 @@ def test_water_written_and_read_back(tmp_path):
     for fid, rec in want.items():
         assert watr[fid].first("EDID") == rec["edid"].encode() + b"\0"
         assert watr[fid].first("ANAM")[0] == rec["opacity"]
+        # the shading body of DefaultWater: three noise layers (a bare WATR drew flat opaque white, round 1)
+        assert [b for s_, b in watr[fid].subs if s_ == "NNAM"] == [b"Data\\Textures\\Water\\DefaultWater.dds\0"] * 3
+        assert struct.unpack_from("<f", watr[fid].first("DNAM"), 4 * 4)[0] == pytest.approx(1021.0)  # sun specular
     assert not by.get("ACTI")  # no water planes (1.15)
     wrld = by["WRLD"][0]
     assert struct.unpack("<I", wrld.first("NAM2"))[0] & 0xFFFFFF == int(layer.type_key("sea").split(":")[0], 16)

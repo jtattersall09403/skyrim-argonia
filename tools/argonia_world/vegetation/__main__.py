@@ -118,6 +118,10 @@ def main(argv=None) -> int:
     fo = sub.add_parser("forms")
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
+    tx = sub.add_parser("textures")  # mesh_textures.py: build the manifest (machine-local) or check it (L1)
+    tx.add_argument("what", choices=("build", "check"))
+    tx.add_argument("--mo2", default=str(Path.home() / ".argonia" / "stack" / "MO2" / "mods"))
+    tx.add_argument("--vanilla", default=str(Path.home() / "games" / "skyrimse" / "Data"))
     b.add_argument("--sample", action="store_true")
     b.add_argument("--cells")
     b.add_argument("--budget", action="store_true")
@@ -147,6 +151,13 @@ def main(argv=None) -> int:
         return _forms(a)
     if a.cmd == "forms":
         return _forms(a)
+    if a.cmd == "textures":
+        from tools.argonia_world.vegetation import mesh_textures
+        if a.what == "check":
+            return mesh_textures.check()
+        doc = mesh_textures.build(Path(a.mo2), Path(a.vanilla))
+        print(f"textures: manifest of {len(doc['meshes'])} meshes, {len(doc['sources'])} textures")
+        return 0
     if a.cmd == "readback":
         from tools.argonia_world.vegetation import checks
         res = checks.readback(Path(a.out), Path(a.esm), Path(a.gen))

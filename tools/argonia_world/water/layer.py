@@ -8,8 +8,9 @@ water links the sea type, and that plugin is the master). FormIDs come from a re
 grid, as 0031 §3 rules for the generated master: the types and activators at WATER_BASE + 0..7, each province cell
 a slot of REFS_PER_CELL ids from WATER_BASE + 0x100. A cell needing more refs than its slot is a plan error.
 
-WATR values are ours, chosen as a starting point for the Community Shaders tuning (2.W2 §a: tuned in game until a
-reader judges them good against reference stills); nothing is copied from a vanilla record.
+Each type's shading body (noise textures, specular, fresnel, displacement) is Skyrim.esm's DefaultWater (TEMPLATE,
+decision 0034: every vanilla WATR carries them, and a bare one draws flat opaque white, round 1 stills 2026-11-02);
+name, opacity, colours and fog are ours, a starting point for the Community Shaders tuning (2.W2 §a).
 """
 from __future__ import annotations
 
@@ -20,6 +21,7 @@ PLUGIN = "ArgoniaWorld.esm"
 WATER_BASE = 0x100000  # past the terrain's CELL/LAND range (0x810 + 2 x 262^2 = 0x22A30)
 REFS_PER_CELL = 256
 PROVINCE_CELLS = su.PROVINCE_CELLS
+TEMPLATE = "Skyrim.esm:DefaultWater"  # the shading body every type copies (WaterRecords.cs)
 
 # name, opacity, shallow, deep, reflection colour, fog above near/far, fog under near/far, fog amounts
 TYPES = {
@@ -52,7 +54,7 @@ def records() -> list[dict]:
     out = []
     for t in WATER_TYPES:
         name, op, shallow, deep, refl, fog_above, fog_under, amounts = TYPES[t]
-        out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "layer": "base:water",
+        out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "template": TEMPLATE, "layer": "base:water",
                     "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
                     "reflectionColor": refl, "fogAbove": [fog_above[0], fog_above[1], amounts[0]],
                     "fogUnder": [fog_under[0], fog_under[1], amounts[1]]})

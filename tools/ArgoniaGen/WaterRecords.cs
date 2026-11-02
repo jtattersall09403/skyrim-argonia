@@ -3,7 +3,7 @@
 // references from <water>/cells.jsonl (tools/argonia_world/water: `python -m tools.argonia_world.water plan`).
 // As Generate.cs: no unit maths and no choices; every number, id and link arrives resolved. The WRLD's default
 // water links the sea type (the first WATR).
-//   records.json: {"schema": 1, "records": [WATR {formKey, edid, name, opacity, shallowColor, deepColor,
+//   records.json: {"schema": 1, "records": [WATR {formKey, edid, template ("Skyrim.esm:DefaultWater"), name, opacity, shallowColor, deepColor,
 //                  reflectionColor: [r,g,b], fogAbove, fogUnder: [near, far, amount]}, ACTI {formKey, edid, model,
 //                  bounds: [[x,y,z],[x,y,z]], waterType}]}
 //   cells.jsonl:  {"x", "y", "waterHeight"?, "waterType"?, "refs": [{formKey, base, pos, rot, scale}]}
@@ -31,7 +31,7 @@ sealed class WaterRecords
     }
 
     /// The types and activators into the mod, the WRLD's default water, and the cell lines indexed by grid.
-    public static WaterRecords Load(SkyrimMod mod, Worldspace ws, string dir)
+    public static WaterRecords Load(SkyrimMod mod, Worldspace ws, string dir, string data)
     {
         using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine(dir, "records.json")));
         if (doc.RootElement.GetProperty("schema").GetInt32() != 1) throw new InvalidDataException("water records schema must be 1");
@@ -40,7 +40,7 @@ sealed class WaterRecords
         {
             switch (S(r, "type"))
             {
-                case "WATR": { var k = Type(mod, r); sea ??= k; break; }  // the first type is the sea
+                case "WATR": { var k = Type(mod, r, data); sea ??= k; break; }  // the first type is the sea
                 case "ACTI": Plane(mod, r); break;
                 default: throw new InvalidDataException($"water records: no writer for {S(r, "type")}");
             }
@@ -57,25 +57,32 @@ sealed class WaterRecords
         return w;
     }
 
-    static FormKey Type(SkyrimMod mod, JsonElement r)
+    // The type's shading body (the three noise layers' textures, scales and winds, specular, fresnel, displacement:
+    // DNAM's other fields and NNAM) is its `template`'s ("Skyrim.esm:DefaultWater", as every vanilla water type
+    // carries them); a type built bare has none and draws flat opaque white (round 1 stills, 2026-11-02). Ours on top:
+    // name, opacity, colours and fog.
+    static FormKey Type(SkyrimMod mod, JsonElement r, string data)
     {
         var fa = r.GetProperty("fogAbove");
         var fu = r.GetProperty("fogUnder");
-        var t = new Water(FK(S(r, "formKey")), Rel)
-        {
-            EditorID = S(r, "edid"),
-            Name = new TranslatedString(Language.English, S(r, "name")),
-            Opacity = (byte)r.GetProperty("opacity").GetInt32(),
-            ShallowColor = Rgb(r, "shallowColor"),
-            DeepColor = Rgb(r, "deepColor"),
-            ReflectionColor = Rgb(r, "reflectionColor"),
-            FogAboveWaterDistanceNearPlane = F(fa, 0),
-            FogAboveWaterDistanceFarPlane = F(fa, 1),
-            FogAboveWaterAmount = F(fa, 2),
-            FogUnderWaterDistanceNearPlane = F(fu, 0),
-            FogUnderWaterDistanceFarPlane = F(fu, 1),
-            FogUnderWaterAmount = F(fu, 2),
-        };
+        var tpl = S(r, "template");
+        var i = tpl.IndexOf(':');
+        using var master = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, tpl[..i]), Rel);
+        var src = master.Waters.FirstOrDefault(x => x.EditorID == tpl[(i + 1)..])
+            ?? throw new InvalidDataException($"{S(r, "edid")}: no WATR {tpl}");
+        var t = src.Duplicate(FK(S(r, "formKey")));
+        t.EditorID = S(r, "edid");
+        t.Name = new TranslatedString(Language.English, S(r, "name"));
+        t.Opacity = (byte)r.GetProperty("opacity").GetInt32();
+        t.ShallowColor = Rgb(r, "shallowColor");
+        t.DeepColor = Rgb(r, "deepColor");
+        t.ReflectionColor = Rgb(r, "reflectionColor");
+        t.FogAboveWaterDistanceNearPlane = F(fa, 0);
+        t.FogAboveWaterDistanceFarPlane = F(fa, 1);
+        t.FogAboveWaterAmount = F(fa, 2);
+        t.FogUnderWaterDistanceNearPlane = F(fu, 0);
+        t.FogUnderWaterDistanceFarPlane = F(fu, 1);
+        t.FogUnderWaterAmount = F(fu, 2);
         mod.Waters.Add(t);
         return t.FormKey;
     }
