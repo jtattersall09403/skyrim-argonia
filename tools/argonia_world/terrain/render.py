@@ -82,6 +82,11 @@ def window(ground: np.ndarray, water: CellWater, cells: tuple[int, int, int, int
     w = Window(x0, y0, x1, y1, None, None, None, water, world)
     (r0, r1), (c0, c1) = w.rows, w.cols
     w.ground = np.asarray(ground[r0:r1, c0:c1], np.float64)
+    if world is not None:  # the places' pads and bowls, as the LAND has them (patches.py)
+        from tools.argonia_world.terrain.patches import Patches
+        pt = Patches.load(ground, 0, world)
+        if pt is not None:
+            pt.apply(w.ground, r0, c0)
     i0, i1 = r0 // Q, min((r1 - 1) // Q, C - 1) + 1
     j0, j1 = c0 // Q, min((c1 - 1) // Q, C - 1) + 1
     lv = np.repeat(np.repeat(water.level[i0:i1, j0:j1], Q, 0), Q, 1)
