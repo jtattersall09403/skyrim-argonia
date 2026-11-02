@@ -189,32 +189,39 @@ Done (pushed 52f2af7, dc744c6, 7738c4e, 5b2605a):
 Sample check on 5b2605a: fit wet 0, bank 0, step-bank 0, dry_edge 0; **5 sites unshaped**; **overflow 1 cell**;
 **lattice 2.45**. Generate 323 s under a load of 12 (170 s on a quieter VM). pytest terrain: 43 passed.
 
+## Session 6 (2026-11-02): round 1's stills mapped to the rules
+
+The stills are in out/batch/adhoc/20261102T011213/01-world-panel-1-20261102T011214. `probes/vantage_ground.py` reads the ground about each world-panel
+vantage. A reader read stills 07-09, 20, 21, 23, 24, 28, 29 and 35-37.
+
+| finding (stills) | reader | the rule that made it |
+|---|---|---|
+| pyramids (24, 28, 29, 36, 37) | planar faces and ruler-straight ridges at the high vantages | `limit`'s 4-neighbour sweeps make L1 cones (square pyramids) wherever the slope sits at the 75° cap; every high window has p99 slope 75°. On 28/29 (rootland-high, 71 m from the flat hist-paatru-lowcrown) a pinned flat with a 0.4 r ramp makes a ledge with a hard corner |
+| blocky cliff edge (28, 29, 36, 37) | a straight crease where the face meets the ledge | the same cones meeting a pinned site core |
+| straight banks (08, 09, 29) | a ruler-straight diagonal or horizontal shore, ground just above flat water | the footprint edge is the raster polygon's edge or a cell line |
+| black voids (07, 35, 37) | flat black with straight edges, a hole | not the ground: build.py writes a LAND row for every province cell (it skips only low apron cells outside it, build.py:130-133). This goes to the materials lane. 23 is shadow |
+| camera on a moss slope (20, 21) | the frame filled by a steep face | interior-swamp-high stands on a 69° p99 window. This is a harness vantage problem, not the ground |
+
+Done in generate.py:
+- `limit` cones are 8-neighbour (diagonals at lip × √2), so they are octagons, not pyramids.
+- Sites ease out to `SITE_BLEND` 1.5 r through the relief noise (`blend_w`). The old ramp was 0.6-1.0 r.
+- The cliff mask is the final ground's slope over `CLIFF_DEG` (it used to be the designed slope plus the moved samples). The vegetation lane's cliff shells stand on it.
+- The footprint's edge moves ±`SHORE_WOBBLE` 4 samples by a fine noise. The wobble stays off two-level lines (16 samples) and site windows: measured, the wobble there made 3 overflow cells and 6 unshaped sites.
+
+A/B on the sample: without the diagonal pass, still 3 overflow cells; with the wobble at 0, 1 overflow cell. So the overflow came from the wobble.
+
 ## Starting state (hand-off)
 
-Main is at 46e9ca5 or later. Session 5 (sample, `terrain check`): lattice 2.45 -> 2.20, bank role 3.24 -> 2.87 x;
-wet/bank/step-bank/dry-edge 0; overflow 1 cell; 5 sites unshaped; steps joined 4,081 -> 3,120. Probes added:
-`vanilla_level_edges.py` (Skyrim.esm: 77 level edges >64 u, 18 fully closed, 76 % of an edge's vertices at/above
-the upper level at the median, the upper water a median 9 vertices short, the edge's spread 1.09 x that 4 vertices
-in), `lattice_roles.py`, `lattice_banks.py`. Done: the flood takes only raster cells' own samples (`rawc`); closed
-steps whose upper cell has no raster water and no lower footprint at the edge get no bank; a two-level line's bank
-bound spreads at 30 deg, capped by the water cones, and stays off site windows; the render draws water last and dark.
-Tried and reverted (each measured): edge bank raised by the upper cell's relief (lattice 3.09, 6 overflow); a
-bank spread over all banks (16-21 unshaped, 39 overflow); flat pins kept from later mouths (rises lost their shape).
-Owed, in order:
+Main is at the session 6 commit or later. Sample `terrain check` on it (s6d): wet, bank, step-bank and dry-edge 0; seams 0; fit 0.057 m;
+**overflow 1 cell** (-25,48); **5 unshaped** (hangs-above-the-water, the-diggings-ladder, the-standing-bid,
+the-knapping-floor-of-the-high-scree, the-slumped-hamlet); **lattice 2.175**; generate 202 s. The L3 renders show no
+relief under the material layer, so the reader cannot judge the pyramids there: the cone fix is proven only by code
+and counts, and its proof is owed in game. Owed, in order:
 
-1. Lattice 2.20: the bank excess is now 35 % beside dry cells (8 x; the bank lo `vmax + 0.3` is flat while the dry
-   cell's `shore_lo` rises with distance, so the bound switches formula on the line: try `lo[bank] = max(vmax + 0.3,
-   shore_lo)`), 38 % on two-level lines, 26 % on same-level lines.
-2. Unshaped 5: hangs-above-the-water, the-diggings-ladder, the-standing-bid, the-eight-steps, the-knapping-floor.
-   The pin is dropped where `win > reach_` (no slope joins it to water) and the limit then moves it. Pins hold at
-   the end (`limit` re-applies lo = hi), so the cause is the dropped pins, not the clash cones.
-3. Overflow (-25,48): a 326.88 m water directly north of a 67.15 m one; the dry shore cell between has 52.9 m
-   single-vertex steps. 260 m over one cell is past 75 deg, so the ground cannot solve it: water/solve.py must
-   chain the drop over several cells (a falls chain) or a dry gully.
-4. Reader on /home/ubuntu/scratch-ground/s5/render (ground at 75ae684, renders 21:38-21:39): 0_0_1_1 PARTLY/FAIL/
-   FAIL (a rectangular pool at px 640-905, 640-850; capsule islands); -38_25_-22_40 PARTLY/FAIL/PARTLY; -20_57_-19_58
-   PARTLY/FAIL/PARTLY; -12_63 PARTLY/PARTLY/PASS; -21_-26 FAIL/PARTLY/PARTLY. The PALE BLUE in every render is the
-   material layer painting a bed on DRY ground with no cell water (0_0_1_1: ground 35-39 m, level NaN), not water:
-   the materials lane's `dh` comes from the raster, not `cell_water`. Hillshade barely shows under the material.
-5. test_world_sample: 2 red, not ours (world-sample.yaml stale at cell -34,46; the cow scene). The province run is
-   not done this session.
+1. Re-shoot world-panel 24, 28, 29, 36, 37 (pyramids, creases) and 08, 09, 29 (straight banks) at L4 in the planner's batch.
+2. Render the hillshade without the material layer (render.py), so pyramids can be read at L3.
+3. Lattice 2.175: try `lo[bank] = max(vmax + 0.3, shore_lo)` beside dry cells (session 5 item 1).
+4. The 5 unshaped sites: their pins are dropped where `win > reach_`.
+5. Overflow (-25,48), a 327/67 m pair: water/solve.py needs a falls chain.
+6. 0_0_1_1: the rectangular pools are still in the render (the materials lane's `dh`, session 5 item 4).
+7. The whole-province run is not done this session.
