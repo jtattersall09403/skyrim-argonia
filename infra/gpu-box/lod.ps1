@@ -15,7 +15,7 @@
 # pop-up stops the step (named in the log), never clicked blind.
 # Every step writes C:\argonia\lod\metrics\<step>.json: wall seconds, peak working set of the tool's processes
 # (the tool, LODGen, Texconv) summed per 2 s sample, the machine's lowest free physical memory, and the exit state.
-param([Parameter(Mandatory)][ValidateSet('prepare', 'terrain', 'texgen', 'dyndolod', 'collect', 'survey')][string]$Step,
+param([Parameter(Mandatory)][ValidateSet('prepare', 'resources', 'terrain', 'texgen', 'dyndolod', 'collect', 'survey')][string]$Step,
       [ValidateSet('xlodgen', 'texgen', 'dyndolod')][string]$Tool = 'xlodgen',
       [ValidateSet('Low', 'Medium')][string]$Preset = 'Medium',
       [string]$World = 'ARG_Province', [int]$TimeoutMin = 180)
