@@ -17,6 +17,7 @@ from tools.argonia_world.terrain import generate as G
 
 LIFT_GRADE = 0.6  # m per sample (18 deg): a raised bank's fall-off to the ground beside it
 CARVE_GRADE = 0.6  # m per sample: the ground's fall into raster water down to the bed
+TYPE_BLEND = 16.0  # samples (half a cell): the bed depth by type blends over this, never steps at a cell line
 SOFT = 3.0  # samples: the fields' blur (no crease at the cone's foot)
 HOLLOW_GRADE = 0.08  # m per sample: a raised hollow's lift fades this slowly, so its own relief survives
 HOLLOW_PAD = 0.4  # m: a raised hollow's floor stands this far over the bank line (the blur takes some)
@@ -62,10 +63,20 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
     # 1. carve: the raster water under its bed, deepening inward by the type's measured profile
     din, _ = G.chamfer(~foot, 32)
     din = np.where(foot, np.where(np.isfinite(din), din, 32), 0)
-    dp = np.zeros(h.shape)
+    # the bed's depth by type, blended across the cell lines (session 16: the type is per cell, so a fresh cell in a
+    # blackwater marsh at one level cut its bed 3.0 m down beside 1.1 m, the marsh's staircase pool; Skyrim.esm's bed
+    # is one continuous bowl under one plane, probes/vanilla_shore_profile.py)
+    depth = np.zeros(h.shape)
+    wsum = np.zeros(h.shape)
     for i, n in enumerate(G.TYPES):
-        dp[tsamp == i] = G.DEPTH_M[n]
-    bed = vmin - np.clip(G.bed_depth(tsamp, din), G.FREEBOARD_M, np.maximum(dp, G.FREEBOARD_M + 0.2))
+        m = tsamp == i
+        if not m.any():
+            continue
+        wi = G.blur(m.astype(np.float64), TYPE_BLEND)
+        cap = max(G.DEPTH_M[n], G.FREEBOARD_M + 0.2)
+        depth += wi * np.clip(G.bed_depth(np.full(h.shape, i), din), G.FREEBOARD_M, cap)
+        wsum += wi
+    bed = vmin - depth / np.maximum(wsum, 1e-9)
     cut = np.where(foot, np.maximum(h - bed, 0.0), 0.0)
     cf = G.blur(cone(foot & (cut > 0), cut, CARVE_GRADE), SOFT)
     h1 = h - cf

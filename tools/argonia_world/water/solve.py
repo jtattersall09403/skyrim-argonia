@@ -325,11 +325,12 @@ def resolve(cands: list[tuple[int, float, str, str | None, str | None, float]]) 
     return best[1], best[2], best[3], best[4]
 
 
-def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=None) -> dict[tuple[int, int], tuple]:
+def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[int, int], tuple]:
     """Rule 3's enclosed cells: each 4-connected group of cells absent from `cells` that does not reach the grid
-    edge takes the value its bordering cells hold most (by shared edges; a tie to the lower level). With
-    `ground_min`, a cell of the group whose lowest ground stands more than PAD_REACH_M above that level stays dry
-    (an island: no water plane under a whole cell of ground). Returns the added cells only."""
+    edge takes the value its bordering cells hold most (by shared edges; a tie to the lower level), whatever its
+    ground: Skyrim.esm's Lake Ilinalta gives its 4 all-dry cells the level, and an island is ground standing over
+    the plane, never a dry cell (session 16: the island exception left a column of 5 dry cells across the marsh at
+    -17,-21..-25, its cell lines drawn as banks). Returns the added cells only."""
     seen: set[tuple[int, int]] = set()
     added: dict[tuple[int, int], tuple] = {}
     for i0 in range(n):
@@ -354,8 +355,7 @@ def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_mi
                 continue
             _, v = max(ring.values(), key=lambda kv: (kv[0], -kv[1][0]))
             for c in comp:
-                if ground_min is None or ground_min(*c) <= v[0] + PAD_REACH_M:
-                    added[c] = (v[0], v[1], v[2], None)
+                added[c] = (v[0], v[1], v[2], None)
     return added
 
 
@@ -679,7 +679,7 @@ def solve(w, raster=None, ground=None) -> Result:
     if sp is not None:  # levels from the ground: sheets, not a level per body
         merge_levels(cells, MERGE_M)
     gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
-    enclosed = fill_enclosed(cells, ground_min=gm_cell)
+    enclosed = fill_enclosed(cells)
     cells.update(enclosed)
     sm_cell = None
     if sp is not None:
@@ -689,6 +689,12 @@ def solve(w, raster=None, ground=None) -> Result:
     padded = pad_ring(cells, ground_min=gm_cell, spill_min=sm_cell)
     cells.update(padded)
     enclosed.update(padded)
+    # the holes the ring closes: two body cells two apart pad to a ring with a dry gap between (session 16: a column
+    # of 7 dry cells across the marsh at -17,-25..-21, its cell lines drawn as banks); Skyrim.esm leaves no hole
+    # inside a body, so a hole enclosed now takes its ring's level too
+    holes = fill_enclosed(cells)
+    cells.update(holes)
+    enclosed.update(holes)
     if sp is not None:  # the padding and filled cells joined to a sheet within a riffle (no sub-riffle closed edge)
         merge_levels(cells, RIFFLE_M)
     walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})

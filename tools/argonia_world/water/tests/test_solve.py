@@ -142,6 +142,8 @@ def test_enclosed_cells_take_their_rings_level_as_vanilla_lakes_do():
     tie = {(1, 2): (2.0, "fresh", "a", None), (3, 2): (2.0, "fresh", "a", None),
            (2, 1): (5.0, "fresh", "b", None), (2, 3): (5.0, "fresh", "b", None)}
     assert sv.fill_enclosed(tie, n=6)[(2, 2)][0] == 2.0  # a tie to the lower level
+    ring = {c: (0.5, "blackwater", "m", None) for c in ((1, 2), (3, 2), (2, 1), (2, 3))}
+    assert sv.fill_enclosed(ring, n=6)[(2, 2)][0] == 0.5  # an island cell takes the level (its ground stands over it)
 
 
 def test_padding_ring_carries_the_level_one_cell_past_the_water():
