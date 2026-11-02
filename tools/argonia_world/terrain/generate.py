@@ -421,6 +421,15 @@ def stamp_polyline(mask_val: np.ndarray, pts: np.ndarray, rad: float, value=True
 
 
 def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
+    """A whole-province generate (the full 4033² prior) takes the province lock: one at a time on the build VM."""
+    from tools.argonia_world.province_lock import province_lock
+    if inp.prior.size >= 2000 * 2000:
+        with province_lock("terrain generate", log):
+            return _generate(inp, log, pre_only)
+    return _generate(inp, log, pre_only)
+
+
+def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     t0 = time.time()
     st: dict = {}
     diag: dict = {}  # masks for probes (probes/clamp_census.py): which rule set each bound

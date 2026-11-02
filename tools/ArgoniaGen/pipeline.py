@@ -88,7 +88,14 @@ NAV_PROVINCE = OUT / "navmesh" / "province"  # `make navmesh`'s build, which out
 
 
 def generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
-    """intermediate -> ESM -> YAML, all under `into`; returns (esm, yaml dir)."""
+    """intermediate -> ESM -> YAML, all under `into`; returns (esm, yaml dir). One province build at a time on
+    the build VM (tools/argonia_world/province_lock.py)."""
+    from tools.argonia_world.province_lock import province_lock
+    with province_lock("plugin generate"):
+        return _generate(data, into, frozen)
+
+
+def _generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
     into.mkdir(parents=True, exist_ok=True)
     inter, esm, yaml = into / "argonia.json", into / "Argonia.esm", into / "yaml"
     run(sys.executable, "-m", "tools.argonia_world.intermediate", "--data", data, "--out", inter,
