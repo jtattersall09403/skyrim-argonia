@@ -71,7 +71,9 @@ def stems(veg: Path | None) -> dict[tuple[int, int], np.ndarray] | None:
             for c in vb.read_cells(veg)}
 
 
-def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=print, veg: Path | None = None) -> dict:
+def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=print, veg: Path | None = None,
+        cache: Path | None = None) -> dict:
+    """`cache`: the directory whose _rows/ keeps each row's plans by content key (row_key); None plans every row."""
     t0 = time.time()
     st = stems(veg)
     rules = pl.load_rules(w)
@@ -80,20 +82,37 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
     P = np.array([(p[0], p[1]) for p in pp])
     R = np.array([p[2] for p in pp])
     B = [p[3] for p in pp]
-    refs, skipped = [], 0
+    refs, skipped, reused = [], 0, 0
+    rows: dict[int, list[tuple[int, int]]] = {}
     for cx, cy in cells:
-        c = cls.get((cx, cy))
-        if c is None or c == "border" or not src.in_province(cx, cy):
-            skipped += 1
-            continue
-        band = wild_band(P, B, cx, cy)
-        r0, r1 = src.cell_rows(cy)
-        c0, c1 = src.cell_cols(cx)
-        h = src.heights(r0, r1 + 1, c0, c1 + 1)
-        lv = cw.level(cx, cy)
-        level = lv if lv is not None else cw.nearest_level(cx, cy)
-        cov = None if st is None else pl.cover_counts(cx, cy, st.get((cx, cy), np.zeros((0, 2), np.float32)))
-        refs += pl.plan_cell(cx, cy, h, level, c, band, rules, blocked_mask(cx, cy, P, R), cov)
+        rows.setdefault(cy, []).append((cx, cy))
+    code = _code_stamp() + repr(rules)
+    for cy, row in rows.items():  # one cached row of plans per content key (1.15 build speed)
+        args = []
+        for cx, _ in row:
+            c = cls.get((cx, cy))
+            if c is None or c == "border" or not src.in_province(cx, cy):
+                skipped += 1
+                continue
+            band = wild_band(P, B, cx, cy)
+            r0, r1 = src.cell_rows(cy)
+            c0, c1 = src.cell_cols(cx)
+            h = src.heights(r0, r1 + 1, c0, c1 + 1)
+            lv = cw.level(cx, cy)
+            level = lv if lv is not None else cw.nearest_level(cx, cy)
+            cov = None if st is None else pl.cover_counts(cx, cy, st.get((cx, cy), np.zeros((0, 2), np.float32)))
+            args.append((cx, cy, h, level, c, band, blocked_mask(cx, cy, P, R), cov))
+        key = row_key(code, args)
+        got = load_row(cache, cy, key) if cache else None
+        if got is None:
+            got = [r for cx, cy_, h, level, c, band, m, cov in args
+                   for r in pl.plan_cell(cx, cy_, h, level, c, band, rules, m, cov)]
+            if cache:
+                save_row(cache, cy, key, got)
+        else:
+            reused += 1
+        refs += got
+    log(f"creatures: {reused} of {len(rows)} rows reused by key")
     summ = {"cells": len(cells), "skipped": skipped, "refs": len(refs),
             "by_kind": _count(refs, "kind"), "by_medium": _count(refs, "medium"), "by_band": _count(refs, "band"),
             "by_class": _count(refs, "class"), "by_cover": _count([r for r in refs if "cover" in r], "cover"),
@@ -106,6 +125,51 @@ def run(w, src, cw, cells: list[tuple[int, int]], out: Path | None = None, log=p
         (out / "summary.json").write_text(json.dumps(summ, indent=1, sort_keys=True) + "\n")
     log(json.dumps(summ))
     return {"refs": refs, "summary": summ, "rules": rules, "places": (P, R)}
+
+
+def _code_stamp() -> str:
+    import hashlib
+    h = hashlib.sha256()
+    for f in sorted(Path(__file__).parent.glob("*.py")):
+        h.update(f.name.encode() + f.read_bytes())
+    return h.hexdigest()
+
+
+def row_key(code: str, args) -> str:
+    """A row's content stamp: the creature code and rules, and every cell's planner inputs (heights, level, class,
+    band, blocked mask, cover counts)."""
+    import hashlib
+    h = hashlib.sha256(code.encode())
+    for a in args:
+        for v in a:
+            if isinstance(v, np.ndarray):
+                v = np.ascontiguousarray(v)
+                h.update(f"a{v.shape}{v.dtype}".encode() + v.tobytes())
+            else:
+                h.update(f"v{v!r};".encode())
+    return h.hexdigest()
+
+
+def _row_path(out: Path, cy: int) -> Path:
+    return out / "_rows" / f"{cy:+04d}.pkl"
+
+
+def load_row(out: Path, cy: int, key: str):
+    import pickle
+    try:
+        k, got = pickle.loads(_row_path(out, cy).read_bytes())
+    except (OSError, EOFError, ValueError, pickle.UnpicklingError):
+        return None
+    return got if k == key else None
+
+
+def save_row(out: Path, cy: int, key: str, got) -> None:
+    import pickle
+    p = _row_path(out, cy)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    t = p.with_suffix(".part")
+    t.write_bytes(pickle.dumps((key, got), protocol=pickle.HIGHEST_PROTOCOL))
+    t.replace(p)
 
 
 def _count(refs, k):

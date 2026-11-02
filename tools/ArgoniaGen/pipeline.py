@@ -155,8 +155,10 @@ WORLD_ENV = {"DOTNET_GCHeapHardLimit": "0x100000000", "DOTNET_GCConserveMemory":
 WORLD_CAP = [*CAP[:-1], "MemoryMax=5G"] if CAP else []
 
 
-def _terrain_stamp() -> str:
-    """The terrain's code, the world tables it reads and its inputs (by size and time): a change rebuilds."""
+def _terrain_stamp(ground: bool = True) -> str:
+    """The terrain's code, the world tables it reads and its inputs (by size and time): a change rebuilds.
+    ground=False: the same without the generated ground's stamp, the land rows' shared key (row_key adds each row's
+    window of the ground itself, so an edit in one region rebuilds only the rows it reaches)."""
     import hashlib
     sys.path.insert(0, str(ROOT))
     from tools.argonia_world import db
@@ -177,7 +179,8 @@ def _terrain_stamp() -> str:
     h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
     from tools.argonia_world.terrain import place_ground
     h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
-    h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
+    if ground:
+        h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
     return h.hexdigest()
 
 
@@ -353,7 +356,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
         if not sample:
             _refuse_shared_rebuild(into)
         run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
-            "--stamp", now, *(["--sample"] if sample else []), capped=True)
+            "--stamp", now, *(["--sample"] if sample else ["--row-base", _terrain_stamp(ground=False)]), capped=True)
         if not sample:
             stamp.write_text(now)
     run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into,

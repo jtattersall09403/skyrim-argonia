@@ -719,6 +719,40 @@ DOC_FIELDS = {"licence", "permission_summary", "ai_clause", "permission_ask", "p
               "conflicts", "linked_or_forked_by", "plugins"}
 
 
+def stage_key(m, pick) -> str:
+    """A row's stage stamp: its manifest entry (not the permission or note fields), its db settings and the chosen
+    set's values: a row is re-staged (unpacked again) only when this changes."""
+    laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
+    if combat_settings(m["id"]):  # a changed db setting re-stages its row (and only rows that have some)
+        laid["combat_settings"] = combat_settings(m["id"])
+    if m.get("plugin_values"):  # a row shared by sets whose values differ re-stages when the set changes
+        laid["chosen_set"] = pick.get(m["group"])
+    return hashlib.sha256(json.dumps(laid, sort_keys=True).encode()).hexdigest()
+
+
+def staged_ok(m, key, keys, mods, tools) -> bool:
+    """The row is staged under `key` and its files are there: the stage leaves it alone."""
+    kf = keys / f"{m['id']}.json"
+    laid_ok = (tools / m["id"]).exists() if m.get("install") == "tool" else ((mods / m["id"]).exists() or m.get("install"))
+    try:
+        return bool(laid_ok) and json.loads(kf.read_text())["key"] == key
+    except (OSError, ValueError, KeyError):
+        return False
+
+
+def cmd_plan(a):
+    """What `stage` would unpack (rows whose stage key changed) and the room it needs: deploy's pre-flight asks this,
+    so a deploy that re-stages nothing big never demands BM&V's 26 GB (deploy-r3q stopped there). Prints JSON."""
+    doc = manifest()
+    sets = dict(s.split("=", 1) for s in a.set)
+    rows, pick = chosen(doc, sets, a.dev, a.through, need=our_masters()), picks(doc, sets)
+    STACK, MO2 = stack_dirs(a)  # noqa: N806
+    todo = [m for m in rows if not staged_ok(m, stage_key(m, pick), STACK / "staged", MO2 / "mods", MO2 / "tools")]
+    need = sum(archive_path(m).stat().st_size * 3 if archive_path(m).exists() else 0 for m in todo)
+    print(json.dumps({"restage": [m["id"] for m in todo], "need_bytes": need}))
+    return todo, need
+
+
 def cmd_stage(a):
     doc = manifest()
     sets = dict(s.split("=", 1) for s in a.set)
@@ -742,15 +776,9 @@ def cmd_stage(a):
         if d.is_dir() and d.name not in ids:
             shutil.rmtree(d)
     for m in rows:
-        laid = {k: v for k, v in m.items() if k not in DOC_FIELDS}  # a permission or note edit does not re-stage
-        if combat_settings(m["id"]):  # a changed db setting re-stages its row (and only rows that have some)
-            laid["combat_settings"] = combat_settings(m["id"])
-        if m.get("plugin_values"):  # a row shared by sets whose values differ re-stages when the set changes
-            laid["chosen_set"] = pick.get(m["group"])
-        data, key = mods / m["id"], hashlib.sha256(json.dumps(laid, sort_keys=True).encode()).hexdigest()
+        data, key = mods / m["id"], stage_key(m, pick)
         kf = keys / f"{m['id']}.json"
-        laid_ok = (tools / m["id"]).exists() if m.get("install") == "tool" else (data.exists() or m.get("install"))
-        if kf.exists() and json.loads(kf.read_text())["key"] == key and laid_ok:
+        if staged_ok(m, key, keys, mods, tools):
             taken = json.loads(kf.read_text())["fomod"]
             if json.loads(kf.read_text()).get("pruned"):
                 pruned.add(m["id"])
@@ -1255,13 +1283,15 @@ def main():
     f = sub.add_parser("fetch")
     f.add_argument("--record", action="store_true")
     f.add_argument("--only", nargs="*")
-    for name in ("stage", "install"):
+    for name in ("stage", "install", "plan"):
         s = sub.add_parser(name)
         s.add_argument("--set", action="append", default=[], help="GROUP=SET, e.g. combat=souls-0.0")
         s.add_argument("--dev", action="store_true", help="lay the dev rows too (SkyLink AI, houseCARL)")
         s.add_argument("--through", default=CURRENT_PART,
                        help="lay deferred rows whose `from` chunk has started by this part or chunk (default: the current part)")
-        if name == "install":
+        if name == "plan":
+            s.set_defaults(into=None, group=None)
+        elif name == "install":
             s.add_argument("--skip-fetch", action="store_true")
         else:
             s.add_argument("--into", help="stage into this dir instead of ~/.argonia/stack (a dry run)")
@@ -1278,7 +1308,7 @@ def main():
     a = p.parse_args()
     if a.machine:
         os.environ["ARGONIA_PLAY"] = a.machine  # run.sh reads it
-    {"fetch": cmd_fetch, "stage": cmd_stage, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
+    {"fetch": cmd_fetch, "stage": cmd_stage, "plan": cmd_plan, "push": cmd_push, "install": cmd_install, "menu": cmd_menu,
      "verify": cmd_verify, "masters": cmd_masters, "prune": cmd_prune, "evict": cmd_evict,
      "animdata": cmd_animdata, "combat": cmd_combat, "pandora-check": cmd_pandora_check}[a.cmd](a)
 

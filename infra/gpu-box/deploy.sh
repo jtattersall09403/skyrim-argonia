@@ -30,8 +30,13 @@ for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: 
   || [ "${ARGONIA_NO_NAVMESH:-}" = 1 ] || { echo "out/ArgoniaWorld.esm has no navmesh: make navmesh (or ARGONIA_NO_NAVMESH=1)" >&2; exit 1; }
 # Pre-flight before any step: the stage unpacks BM&V (26 GB) on the build VM, and a deploy that dies there costs a whole
 # restart (2026-11-02, deploy-r3q); stack.py's room() is the same rule, asked first.
+# 1.15 build speed: the room asked is what this stage will unpack (stack.py plan: rows whose stage key changed), so a
+# deploy that re-stages nothing big runs on a full disk too; nothing to re-stage and no derived UI change skips nothing
+# else (the stage's own keys and push's digests already send only changed mods).
 if [ $stage = 1 ]; then
-  "$PY" -c 'import sys; sys.path.insert(0, "infra/gpu-box"); import stack; stack.room(26 << 30, "deploy pre-flight (BM&V unpack)")' || exit 3
+  "$PY" -c 'import sys, argparse; sys.path.insert(0, "infra/gpu-box"); import stack
+a = argparse.Namespace(set=[], dev=False, through=stack.CURRENT_PART, into=None, group=None)
+todo, need = stack.cmd_plan(a); stack.room(need, "deploy pre-flight (unpack " + ", ".join(m["id"] for m in todo) + ")")' || exit 3
 fi
 step "machine up" "$run" up
 # Heartbeat (game-19's gap): idle-stop.ps1 counts the busy flag, which only commands refresh; a long single step
