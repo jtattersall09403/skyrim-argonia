@@ -69,6 +69,13 @@ NCELL = su.PROVINCE_CELLS  # 126
 WATER_TYPES = ("sea", "brackish", "blackwater", "fresh")
 SNAP_LO_M = 0.5  # below this a body is at sea level
 SNAP_HI_M = 3.0  # at or above this a body keeps its own level
+# Skyrim.esm's water steps (terrain/probes/vanilla_step_chains.py, 2026-11-02): the tallest real one-edge step is
+# 65.7 m (one 394.6 m pair under a mountain aside); taller drops are chained over cells (105.7 m in two steps of
+# 51.1 and 54.6 m, 13 cells start a chain of two or more). No vanilla edge holds one wall a cell's ground cannot carry.
+# Ours: two waters at Chebyshev distance d cells may differ by at most d x WALL_CELL_M, one cell of ground at the
+# ground lane's design slope (terrain/generate.py DESIGN_SLOPE_DEG 75); past it the upper water yields the cell to a
+# dry gully that the ground descends (`yield_walls`).
+WALL_CELL_M = math.tan(math.radians(75.0)) * su.CELL_METRES  # 218.3 m
 RIFFLE_M = 0.5  # a smaller drop between two cells carries the upper level on (steps.STEP_MAX_M, the riffle)
 MAX_DROP_M = stp.MAX_DROP_M  # the tallest falls piece
 LEVEL_TOL_M = 0.006  # the raster stores the graph's 2-decimal level as float32
@@ -310,6 +317,29 @@ def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[
     return added
 
 
+def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] = frozenset()) -> set:
+    """Every cell whose water stands more than d x WALL_CELL_M above a water cell d cells away (Chebyshev, d <= 2)
+    leaves `cells` (in place), repeated until none does: the drop then runs through dry ground over at least one more
+    cell (a dry gully, never one wall taller than a cell of ground at the design slope). Sea cells and `keep` (the
+    wet reaches' cells, whose steps the falls chains carry) never yield. Returns the removed cells."""
+    gone: set[tuple[int, int]] = set()
+    while True:
+        bad = set()
+        for (i, j), v in cells.items():
+            if v[1] == "sea" or (i, j) in keep:
+                continue
+            for di in range(-2, 3):
+                for dj in range(-2, 3):
+                    o = cells.get((i + di, j + dj))
+                    if o is not None and v[0] - o[0] > WALL_CELL_M * max(abs(di), abs(dj)):
+                        bad.add((i, j))
+        if not bad:
+            return gone
+        for c in bad:
+            del cells[c]
+        gone |= bad
+
+
 def section(upper_m: float, lower_m: float) -> dict[str, float]:
     """§11's vanilla step, for the ground lane: banks at or above the upper water, the bed through the edge
     100-300 units under the upper surface, sloping into the lower cell over 1-5 vertices (more for a big drop)."""
@@ -332,6 +362,7 @@ class Result:
     body_outcome: dict[str, str] = field(default_factory=dict)  # body id -> 'cells N' or a drop reason
     contested: int = 0  # cells with more than one level among candidates
     enclosed: int = 0  # cells given their ring's level by fill_enclosed
+    walls: int = 0  # cells yielded to a dry gully by yield_walls
     seconds: float = 0.0
 
 
@@ -425,6 +456,9 @@ def solve(w, raster=None) -> Result:
     padded = pad_ring(cells)
     cells.update(padded)
     enclosed.update(padded)
+    walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
+    for c in walls:
+        enclosed.pop(c, None)
 
     # steps: along each wet reach, then closed edges between any two water cells at different levels
     steps: dict[tuple[int, int, str], Step] = {}
@@ -462,10 +496,11 @@ def solve(w, raster=None) -> Result:
         elif won.get(bid):
             outcome[bid] = f"cells {won[bid]}"
         else:
-            lv = sorted({cells[(k // NCELL, k % NCELL)][0] for k in body_cells[bid]})
+            lv = sorted({cells[(k // NCELL, k % NCELL)][0] for k in body_cells[bid] if (k // NCELL, k % NCELL) in cells})
             outcome[bid] = "drop: its cells hold another body or the sea, at " + ", ".join(f"{x:g}" for x in lv)
     return Result({(CX0 + i, CY0 + j): v for (i, j), v in cells.items()}, sorted(steps.values(),
-                  key=lambda s: (s.cx, s.cy, s.edge)), dry, kind, outcome, contested, len(enclosed), time.time() - t0)
+                  key=lambda s: (s.cx, s.cy, s.edge)), dry, kind, outcome, contested, len(enclosed), len(walls),
+                  time.time() - t0)
 
 
 def write(w, res: Result) -> None:

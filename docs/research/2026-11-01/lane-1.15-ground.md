@@ -212,16 +212,25 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Main is at the session 6 commit or later. Sample `terrain check` on it (s6d): wet, bank, step-bank and dry-edge 0; seams 0; fit 0.057 m;
-**overflow 1 cell** (-25,48); **5 unshaped** (hangs-above-the-water, the-diggings-ladder, the-standing-bid,
-the-knapping-floor-of-the-high-scree, the-slumped-hamlet); **lattice 2.175**; generate 202 s. The L3 renders show no
-relief under the material layer, so the reader cannot judge the pyramids there: the cone fix is proven only by code
-and counts, and its proof is owed in game. Owed, in order:
+Session 7 (main at its commit or later). Measured Skyrim.esm (`terrain/probes/vanilla_step_chains.py`): tallest real
+one-edge water step 65.7 m (a 394.6 m pair under a mountain aside); taller drops chain over cells (105.7 m in two
+steps of 51.1/54.6 m; 13 cells start a 2+ step chain). Ours: `water/solve.py yield_walls`: two waters d cells apart
+(Chebyshev, d <= 2) differ by at most d x 218.3 m (one cell at the 75 deg design slope), else the upper body yields
+the cell to dry ground: 5 cells (4 of body.1052-567, 1 of body.1144-450); (-25,48)'s wall is gone. The stricter
+vanilla bound (65.7 m) would yield 237 cells: a planner call. 87 closed steps exceed 65.7 m today.
+`terrain render --hillshade` draws a grey hillshade alone (out .../render-hillshade). Sample check on the worktree
+generate: overflow 1 cell, now **(-20,58)**: a level-0 wet channel (snapped body) cut 40 m into a 40 m hillside
+beside 40.4 m water (rows of 0 against 37-41 m); its body is snapped to 0 by SNAP rule 1 though it stands at ~40 m.
+Owed, in order:
 
-1. Re-shoot world-panel 24, 28, 29, 36, 37 (pyramids, creases) and 08, 09, 29 (straight banks) at L4 in the planner's batch.
-2. Render the hillshade without the material layer (render.py), so pyramids can be read at L3.
-3. Lattice 2.175: try `lo[bank] = max(vmax + 0.3, shore_lo)` beside dry cells (session 5 item 1).
-4. The 5 unshaped sites: their pins are dropped where `win > reach_`.
-5. Overflow (-25,48), a 327/67 m pair: water/solve.py needs a falls chain.
-6. 0_0_1_1: the rectangular pools are still in the render (the materials lane's `dh`, session 5 item 4).
-7. The whole-province run is not done this session.
+1. (-20,58): the snap rule must not drop a body below the ground its raster samples stand on (solve.py rule 1).
+2. Lattice item 1 tried both ways and reverted: `lo[bank] = max(vmax+0.3, shore_lo)` gives lattice 1.492 but
+   sites unshaped 5 -> 12 (8 flats on role 3) and walls the 0 m channel at (-20,58); restricted to own-level water
+   it gives 1.963. Session 6's 2.175 stands.
+3. Five flats: lowering a pinned flat to its reach cap made no change (still unshaped); their band is empty (bank
+   cone above, water cone below) at FLAT_MIN_SCALE: move the sites (place records) or accept a terrace.
+4. -38_25_-22_40 plates: water cells whose ground stands wholly above their level (3,088 empty water cells, e.g.
+   (-32,31) at 38.4, (-31,31) at 31.9) are raised to a plate at level + 0.3 with a cliff at the cell edge to lower
+   dry ground; the reach level is perched over the terrain. The square checker is in the material layer
+   (materials lane). Reader pass on the six hillshade windows not yet run.
+5. Re-shoot world-panel 24, 28, 29, 36, 37 and 08, 09, 29 at L4 in the planner's batch; whole province not run.

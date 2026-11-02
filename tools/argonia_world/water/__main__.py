@@ -35,6 +35,7 @@ def _summary(res) -> dict:
         "bodies": dict(collections.Counter(o.split(":")[0].split(" ")[0] for o in res.body_outcome.values())),
         "contestedCells": res.contested,
         "enclosedCells": res.enclosed,
+        "wallCells": res.walls,
         "seconds": round(res.seconds, 2),
         "snap": [sv.SNAP_LO_M, sv.SNAP_HI_M],
     }

@@ -3,6 +3,8 @@ where the game would show it (ground below the cell's one level), the steps as l
 registry other lanes fill.
 
     python3 -m tools.argonia_world.terrain render [--cells=x0,y0,x1,y1 | --sample] [--out DIR] [--layers a,b]
+        [--hillshade]   (--hillshade: a grey hillshade alone, no height tint and no layer, so relief reads at L3;
+        the water and steps still drawn; default DIR .../render-hillshade)
 
 Layers: name -> "module:function"; each function takes the Window and returns an (h, w, 4) uint8 RGBA overlay
 or None. They import lazily: a layer whose module is not there yet is skipped, so the image draws what exists.
@@ -151,8 +153,11 @@ def layer(name: str):
         return None
 
 
-def render(w: Window, path: Path, layers=None, scale: int = 1) -> dict:
-    rgb = base_rgb(w)
+def render(w: Window, path: Path, layers=None, scale: int = 1, shade_only: bool = False) -> dict:
+    if shade_only:  # the relief alone: no tint, no layer (a material layer hides the pyramids and creases)
+        rgb, layers = np.repeat(255.0 * (0.15 + 0.85 * hillshade(w.ground))[..., None], 3, axis=2), []
+    else:
+        rgb = base_rgb(w)
     drawn = []
     for name in (layers if layers is not None else LAYERS):
         f = layer(name)

@@ -281,11 +281,12 @@ def cmd_render(a) -> int:
     water = cellwater.load(w)
     wins = world.SAMPLE_1_15 if a.sample or not a.cells else [_cells(a.cells)]
     a.sample = a.sample or not a.cells
-    a.out = a.out or str(default_out(a) / "render")
+    a.out = a.out or str(default_out(a) / ("render-hillshade" if a.hillshade else "render"))
     layers = a.layers.split(",") if a.layers else None
     for c in wins:
         name = "_".join(str(v) for v in c) + ".png"
-        print(json.dumps(render.render(render.window(ground, water, render.widen(c), w), Path(a.out) / name, layers) | {"water": water.source}))
+        print(json.dumps(render.render(render.window(ground, water, render.widen(c), w), Path(a.out) / name, layers,
+                                             shade_only=a.hillshade) | {"water": water.source}))
     return 0
 
 
@@ -318,6 +319,7 @@ def main(argv=None) -> int:
     r.add_argument("--out")
     r.add_argument("--layers")
     r.add_argument("--old", action="store_true", help="render the old sculpt, not the generated ground")
+    r.add_argument("--hillshade", action="store_true", help="a grey hillshade alone: no tint, no layer")
     a = p.parse_args(argv)
     if a.cmd == "gradient":
         from tools.argonia_world import db

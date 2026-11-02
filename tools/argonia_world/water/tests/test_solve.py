@@ -151,3 +151,14 @@ def test_padding_ring_carries_the_level_one_cell_past_the_water():
     assert all(v == (4.0, "fresh", "body.l", None) for v in add.values())
     two = {(1, 2): (2.0, "fresh", "a", None), (3, 2): (5.0, "fresh", "b", None)}
     assert sv.pad_ring(two, n=6)[(2, 2)][0] == 2.0  # the lowest neighbouring level
+
+
+def test_yield_walls_moves_a_wall_taller_than_a_cell_into_dry_ground():
+    from tools.argonia_world.water import solve as sv
+    hi, lo = sv.WALL_CELL_M + 50, 0.5
+    cells = {(0, 1): (hi, "fresh", "b.up", None), (1, 1): (hi, "fresh", "b.up", None),
+             (0, 0): (lo, "fresh", "b.lo", None), (5, 5): (lo, "sea", None, None), (0, 2): (hi, "fresh", "b.up", None)}
+    gone = sv.yield_walls(cells, keep={(1, 1)})
+    assert gone == {(0, 1)}  # (1, 1) is a reach's; (0, 2) stands two cells off, within 2 x WALL_CELL_M
+    assert (0, 0) in cells and (0, 2) in cells
+    assert sv.yield_walls({(0, 1): (sv.WALL_CELL_M - 1, "fresh", None, None), (0, 0): (0.0, "sea", None, None)}) == set()

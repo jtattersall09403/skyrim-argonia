@@ -3135,10 +3135,6 @@
 {"cx":-27,"cy":38,"level_m":50.55,"water_type":"fresh","body_id":"body.1167-783"}
 {"cx":-27,"cy":39,"level_m":50.55,"water_type":"fresh","body_id":"body.1167-783"}
 {"cx":-27,"cy":40,"level_m":50.55,"water_type":"fresh","body_id":"body.1167-783"}
-{"cx":-27,"cy":45,"level_m":309.36,"water_type":"fresh","body_id":"body.1052-567"}
-{"cx":-27,"cy":46,"level_m":309.36,"water_type":"fresh","body_id":"body.1052-567"}
-{"cx":-27,"cy":47,"level_m":309.36,"water_type":"fresh","body_id":"body.1052-567"}
-{"cx":-27,"cy":48,"level_m":309.36,"water_type":"fresh","body_id":"body.1052-567"}
 {"cx":-27,"cy":49,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-27,"cy":50,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-27,"cy":51,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
@@ -3252,7 +3248,6 @@
 {"cx":-26,"cy":45,"level_m":45.84,"water_type":"fresh"}
 {"cx":-26,"cy":46,"level_m":45.84,"water_type":"fresh"}
 {"cx":-26,"cy":47,"level_m":67.15,"water_type":"fresh","body_id":"body.1195-552"}
-{"cx":-26,"cy":48,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-26,"cy":49,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-26,"cy":50,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-26,"cy":51,"level_m":326.88,"water_type":"fresh","body_id":"body.1144-450"}
