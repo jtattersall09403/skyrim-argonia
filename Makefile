@@ -17,6 +17,9 @@ check-run:
 	@$(MAKE) -k -j --no-print-directory $(PARTS) || true
 	@if [ -s $(RED) ]; then echo "CHECK RED: $$(sort $(RED) | tr '\n' ' ')"; rm -f $(RED); exit 1; else echo "CHECK GREEN"; fi
 
+check-reach:  ## the gate for what the working tree changed against origin/main (lanes); the full check runs once before a batch
+	@tooling/reach_tests.sh
+
 guard:
 	@python3 tooling/guards/no_assets.py --tree $(FAIL)
 
