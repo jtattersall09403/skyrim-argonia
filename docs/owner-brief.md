@@ -277,3 +277,4 @@ Something they can **play**, that is:
 | 2026-11-02 | **Claude usage is reported as a percentage of the weekly allowance** (about 1% per $19), never in dollars (CLAUDE.md, Costs). |
 | 2026-11-02 | **The owner walks the world instead of the agent-driven round-3 batch**: one save per region class at its shore panel marker (infra/gpu-box/region_saves.py), loaded from the game's load menu; the owner's feedback drives the next fixes. |
 | 2026-11-02 | **Call #35, build VM spot reclaims: stay on spot machines as they are, no action for now** (the owner may return to it); builds resume from checkpoints and jobs survive the session under job_guard. |
+| 2026-11-02 | **No measured before-build for the build-speed lane**: the baseline is the historical logs ("up to 2 hours"); only the after is measured. And **no temporary on-demand game machine**: we wait for spot capacity. |
