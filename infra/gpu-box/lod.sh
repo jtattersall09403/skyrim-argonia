@@ -10,6 +10,7 @@
 #                                      C:\argonia\tools\<id> (never Data; sent again only when the archive changed)
 #   lod.sh survey xlodgen|texgen|dyndolod   start one tool in the desktop session, dump its windows, kill it
 #   lod.sh run [step ...]              prepare terrain texgen dyndolod collect (default: all, in that order)
+#                                      (resources: re-link DynDOLOD Resources into Data without a prepare, after a restart)
 #   lod.sh still <tag>                 the vantage still: the game launched on the laid profile, the base save, the
 #                                      highest ground within 8 cells of Claywater (cell -53,3, 440 m; the LAND shards),
 #                                      facing north-west over Claywater at noon, after 30 s -> out/lod/vantage-<tag>.png

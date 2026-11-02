@@ -200,7 +200,9 @@ function Link-Into-Data($src, $sub = '') {
   Say "linked $n files from $src into Data"
 }
 function Link-Resources {  # into Data while the tools run
-  foreach ($d in 'Meshes', 'Textures') { Link-Into-Data "$Res\$d" "\$d" }
+  # Interface too: DynDOLOD 3.0 alpha-217 refuses to start without interface\dyndolod\dyndolod.dds even when no
+  # dynamic LOD is made (2026-11-02, "Required resource file not found", an Exit-only dialog the watcher cannot answer)
+  foreach ($d in 'Meshes', 'Textures', 'Interface') { Link-Into-Data "$Res\$d" "\$d" }
 }
 
 # ARG_Province's LODSettings file (lodsettings.py on the build VM, sent by lod.sh): xLODGen lists a worldspace only
@@ -231,6 +233,7 @@ switch ($Step) {
     $free = (Get-PSDrive C).Free; Say "C: free $([math]::Round($free / 1GB, 1)) GB"
     if ($free -lt 20GB) { throw 'prepare: under 20 GB free on C:' }
   }
+  'resources' { Link-Resources }   # re-link after a machine restart without a prepare (prepare wipes the outputs)
   'survey' {
     $exeArgs = $Paths + $(if ($Tool -eq 'xlodgen') { ' -lodgen' } else { '' }) + " -o:`"$Work\out\survey\`""
     $p = Start-Tool $Tool $exeArgs
