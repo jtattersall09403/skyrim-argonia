@@ -17,7 +17,7 @@ stops:
   - -56
   - 10
   region: imperial-fringe.deep-sink-basin
-  weather: SkyrimClearMA
+  weather: ARG_Weather_clear_dry
 - n: 2
   title: The steepest limited cliff
   scene: world-sample-02-cliff
@@ -33,41 +33,41 @@ stops:
   title: Four cells meet on a slope
   scene: world-sample-03-corner
   cell:
-  - -34
-  - 46
-  region: dunmer-north.northern-transition
+  - -58
+  - 2
+  region: imperial-fringe.western-frontier
   weather: ARG_Weather_tannin_haze
   corner:
     cell_sw:
-    - -34
-    - 46
+    - -58
+    - 2
     slope_deg: 24.9
 - n: 4
   title: A stepped river reach with rapids
   scene: world-sample-04-rapids
   cell:
   - -62
-  - 43
+  - 50
   region: imperial-fringe.western-frontier
   weather: ARG_Weather_tannin_haze
   reach:
-    id: step -62,43 n
+    id: step -62,50 n
     length_m: 14.62
-    drop_m: 8.96
+    drop_m: 9.04
     pieces: 2
 - n: 5
   title: A waterfall
   scene: world-sample-05-waterfall
   cell:
   - -62
-  - 44
+  - 51
   region: imperial-fringe.western-frontier
   weather: ARG_Weather_tannin_haze
   falls:
     mist_at:
-    - -251456.0
-    - 180224
-    top_z: 15387.7
+    - -250368.0
+    - 208896
+    top_z: 16000.5
     pieces_near: 1
 - n: 6
   title: A marsh basin
@@ -76,7 +76,7 @@ stops:
   - -13
   - 25
   region: hist-heartland.flooded-forest
-  weather: SkyrimCloudy
+  weather: ARG_Weather_clear_dry
   basin:
     body: body.1571-1249
     basin: basin.1468-1039
@@ -104,13 +104,13 @@ stops:
   title: The densest vegetation cell
   scene: world-sample-08-dense-vegetation
   cell:
-  - 19
-  - 10
-  region: hist-heartland.flooded-forest
-  weather: SkyrimCloudy
+  - 7
+  - 33
+  region: pirate-freeholds.flooded-forest
+  weather: ARG_Weather_clear_dry
   vegetation:
     source: out/terrain/vegetation/summary.json densest[0]
-    refs_in_cell: 104
+    refs_in_cell: 103
 - n: 9
   title: A border segment and the Tear road gate
   scene: world-sample-09-border
@@ -118,7 +118,7 @@ stops:
   - 47
   - 63
   region: dunmer-north.tidal-delta
-  weather: SkyrimClearCO
+  weather: ARG_Weather_clear_dry
   border:
     min_x: -253952.0
     max_y: 262144.0
@@ -156,7 +156,7 @@ stops:
   - -56
   - 10
   region: imperial-fringe.deep-sink-basin
-  weather: SkyrimClearMA
+  weather: ARG_Weather_clear_dry
 - n: 12
   title: 'Navmesh: 20 path requests across the block and one swim'
   scene: world-sample-12-navmesh
@@ -200,14 +200,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 3268.99
+    ge: 4796.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3339.01
+    le: 4867.02
     within: 3
-  expected_ground_m: 47.18
+  expected_ground_m: 68.999
 - name: s01-probe-east-30m
   why: ground at the east-30m point of the road
   do:
@@ -217,14 +217,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2508.99
+    ge: 4796.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2579.01
+    le: 4867.02
     within: 3
-  expected_ground_m: 36.327
+  expected_ground_m: 68.999
 - name: s01-probe-west-30m
   why: ground at the west-30m point of the road
   do:
@@ -234,14 +234,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4244.98
+    ge: 4684.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4315.02
+    le: 4755.02
     within: 3
-  expected_ground_m: 61.117
+  expected_ground_m: 67.4
   reader:
   - grass blades stand on the painted ground and stop where the paint stops
   - trees are Black Marsh region trees (mangrove, cypress, palm, bald cypress); no pine, spruce, birch, snow, frost, heather, Nordic architecture
@@ -274,14 +274,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2956.99
+    ge: 7724.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 3027.01
+    le: 7795.02
     within: 3
-  expected_ground_m: 42.725
+  expected_ground_m: 110.81
 - name: s02-probe-foot
   why: the foot two samples below the face
   do:
@@ -291,14 +291,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2892.99
+    ge: 4660.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2963.01
+    le: 4731.02
     within: 3
-  expected_ground_m: 41.811
+  expected_ground_m: 67.057
   reader:
   - the cliff reads as one rock face on a ramp, not a stair of terraces
   - no seam, crack or hard edge across the cell border
@@ -328,14 +328,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 31564.99
+    ge: 24004.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 31635.01
+    le: 24075.01
     within: 3
-  expected_ground_m: 451.235
+  expected_ground_m: 343.281
 - name: s03-probe-ne
   why: one sample into the NE cell
   do:
@@ -345,14 +345,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 31548.99
+    ge: 23948.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 31619.01
+    le: 24019.01
     within: 3
-  expected_ground_m: 451.007
+  expected_ground_m: 342.482
 - name: s03-probe-nw
   why: one sample into the NW cell
   do:
@@ -362,14 +362,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 31644.99
+    ge: 23916.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 31715.01
+    le: 23987.01
     within: 3
-  expected_ground_m: 452.378
+  expected_ground_m: 342.025
 - name: s03-probe-se
   why: one sample into the SE cell
   do:
@@ -379,14 +379,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 31468.99
+    ge: 24068.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 31539.01
+    le: 24139.01
     within: 3
-  expected_ground_m: 449.864
+  expected_ground_m: 344.195
 - name: s03-probe-sw
   why: one sample into the SW cell
   do:
@@ -396,14 +396,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 31556.99
+    ge: 24028.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 31627.01
+    le: 24099.01
     within: 3
-  expected_ground_m: 451.121
+  expected_ground_m: 343.624
   reader:
   - 'the ground is one surface across all four cells: no step, crack or lighting seam on the lines'
   - the ground texture runs across the lines without a hard edge
@@ -424,7 +424,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s04-top-of-reach
-  why: 'the top of step -62,43 n: on the bed or the surface, not under the ground or in the air'
+  why: 'the top of step -62,50 n: on the bed or the surface, not under the ground or in the air'
   do:
   - console: player.moveto ARG_Ref_ProbeS04TopOfReach
   - wait: 4
@@ -432,22 +432,22 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 15252.99
+    ge: 16100.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 15422.71
+    le: 16035.47
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 218.306
-  expected_water_m: 219.73
+  expected_ground_m: 230.416
+  expected_water_m: 228.48
 - name: s04-bottom-of-reach
-  why: 'the bottom of step -62,43 n: on the bed or the surface, not under the ground or in the air'
+  why: 'the bottom of step -62,50 n: on the bed or the surface, not under the ground or in the air'
   do:
   - console: player.moveto ARG_Ref_ProbeS04BottomOfReach
   - wait: 4
@@ -455,20 +455,20 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 14628.99
+    ge: 15844.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 14795.24
+    le: 15402.4
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 209.396
-  expected_water_m: 210.77
+  expected_ground_m: 226.76
+  expected_water_m: 219.44
   reader:
   - 'each step of the river reads as a short drop with water over it: no visible line where one sheet ends'
   - no z-fighting or flicker between two water sheets
@@ -499,14 +499,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 15148.99
+    ge: 15764.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 15387.69
+    le: 16000.45
     within: 3
-  expected_ground_m: 216.821
+  expected_ground_m: 225.618
   reader:
   - 'the falls piece stands on the step: its top meets the upper water and its foot the pool, no gap, no overhang in the air'
   - mist at the foot
@@ -536,14 +536,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -115.02
+    ge: 68.98
     within: 3
   - read:
     - player
     path: pos.z
     le: 81.23
     within: 3
-  expected_ground_m: -1.142
+  expected_ground_m: 1.485
   expected_water_m: 0.66
   reader:
   - a water surface at one level across the basin, reaching the reeds and the bank
@@ -575,14 +575,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 2060.99
+    ge: 1564.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 2131.01
+    le: 1635.02
     within: 3
-  expected_ground_m: 29.93
+  expected_ground_m: 22.847
   reader:
   - the bank meets the water without a gap, step or floating edge
   - the lake surface is one level; shore texture is mud/sand/reed, not Nordic
@@ -608,14 +608,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 204.99
+    ge: 60.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 275.01
+    le: 131.01
     within: 3
-  expected_ground_m: 3.427
+  expected_ground_m: 1.371
 - name: s07-coast-sea
   why: 'three samples out in the sea: the sea default is level 0, no land above it'
   do:
@@ -647,7 +647,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s08-probe-centre
-  why: the cell's centre vertex (104 vegetation refs)
+  why: the cell's centre vertex (103 vegetation refs)
   do:
   - console: player.moveto ARG_Ref_ProbeS08ProbeCentre
   - wait: 4
@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 644.99
+    ge: 124.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 715.01
+    le: 195.01
     within: 3
-  expected_ground_m: 9.71
+  expected_ground_m: 2.285
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
@@ -843,12 +843,12 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4196.98
+    ge: 5028.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4267.02
+    le: 5099.02
     within: 3
   reader:
   - the signpost stands upright on the ground, with 5 arms
