@@ -18,6 +18,7 @@ static class RegionWriters
 {
     const SkyrimRelease Rel = SkyrimRelease.SkyrimSE;
     static ISkyrimModDisposableGetter? master;
+    static ISkyrimModDisposableGetter? update;
     static readonly string[] Tod = { "sunrise", "day", "sunset", "night" };
 
     public static void Write(SkyrimMod mod, JsonElement r, string data)
@@ -52,6 +53,15 @@ static class RegionWriters
     {
         if (template.ModKey.FileName != "Skyrim.esm") throw new InvalidDataException($"template {template}: Skyrim.esm only");
         return master ??= SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Skyrim.esm"), Rel);
+    }
+
+    // Skyrim SE's volumetric lighting (HNAM -> VOLI) exists only in Update.esm's WTHR overrides: Skyrim.esm's 84
+    // weathers carry no HNAM and it holds no VOLI (measured 2026-11-02, 1.15 session 3). A template read from
+    // Skyrim.esm alone gave every weather of ours no god rays; the winning override is read for that link.
+    static IWeatherGetter? UpdateOverride(string data, FormKey template)
+    {
+        update ??= SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Update.esm"), Rel);
+        return update.Weathers.TryGetValue(template, out var u) ? u : null;
     }
 
     // ---- REGN ----------------------------------------------------------------------------------------------
@@ -217,7 +227,7 @@ static class RegionWriters
         w.VisualEffect.SetTo(tpl.VisualEffect.FormKey);
         foreach (var s in tpl.Sounds) { var ws = new WeatherSound { Type = s.Type }; ws.Sound.SetTo(s.Sound.FormKey); w.Sounds.Add(ws); }
         w.SkyStatics.AddRange(tpl.SkyStatics.Select(x => (IFormLinkGetter<IStaticGetter>)new FormLink<IStaticGetter>(x.FormKey)));
-        if (tpl.VolumetricLighting is { } vl)
+        if ((UpdateOverride(data, tk)?.VolumetricLighting ?? tpl.VolumetricLighting) is { } vl)
         {
             w.VolumetricLighting = new WeatherVolumetricLighting();
             w.VolumetricLighting.Sunrise.SetTo(vl.Sunrise.FormKey);

@@ -387,8 +387,8 @@ SkyUpperColor:
   Sunset: '#007B6E7C'
   Night: '#00101A1B'
 FogNearColor:
-  Sunrise: '#00AB8F69'
-  Day: '#00A8A27C'
+  Sunrise: '#00A08662'
+  Day: '#009C9673'
   Sunset: '#00AE8355'
   Night: '#001B2822'
 UnknownColor:
@@ -405,7 +405,7 @@ SunlightColor:
   Sunrise: '#00F0B067'
   Day: '#00F9DEA5'
   Sunset: '#00EC9855'
-  Night: '#003A4837'
+  Night: '#00455642'
 SunColor:
   Sunrise: '#00FDBF71'
   Day: '#00FFECBB'
@@ -442,9 +442,9 @@ CloudLodAmbientColor:
   Sunset: '#00705949'
   Night: '#00141819'
 FogFarColor:
-  Sunrise: '#00C09B70'
+  Sunrise: '#00A58560'
   Day: '#00B8A88B'
-  Sunset: '#00BE8D5D'
+  Sunset: '#00AF8255'
   Night: '#00282F21'
 SkyStaticsColor:
   Sunrise: '#00B99870'
@@ -536,13 +536,18 @@ ImageSpaces:
   Day: 00080B:Argonia.esm
   Sunset: 000809:Argonia.esm
   Night: 00080D:Argonia.esm
+VolumetricLighting:
+  Sunrise: 000D53:Update.esm
+  Day: 000D51:Update.esm
+  Sunset: 000D52:Update.esm
+  Night: 000D58:Update.esm
 DirectionalAmbientLightingColors:
   Sunrise:
     DirectionalXPlus: '#00685942'
     DirectionalXMinus: '#00685942'
     DirectionalYPlus: '#00685942'
     DirectionalYMinus: '#00685942'
-    DirectionalZPlus: '#00786A55'
+    DirectionalZPlus: '#00605544'
     DirectionalZMinus: '#00584334'
     Specular: '#00000000'
     Scale: 1
@@ -551,7 +556,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00797458'
     DirectionalYPlus: '#00797458'
     DirectionalYMinus: '#00797458'
-    DirectionalZPlus: '#0089856E'
+    DirectionalZPlus: '#0085816B'
     DirectionalZMinus: '#00665744'
     Specular: '#00000000'
     Scale: 1
@@ -560,7 +565,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#0064523C'
     DirectionalYPlus: '#0064523C'
     DirectionalYMinus: '#0064523C'
-    DirectionalZPlus: '#0075614F'
+    DirectionalZPlus: '#00665445'
     DirectionalZMinus: '#00513D2C'
     Specular: '#00000000'
     Scale: 1
@@ -569,7 +574,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#001C2417'
     DirectionalYPlus: '#001C2417'
     DirectionalYMinus: '#001C2417'
-    DirectionalZPlus: '#001C2D20'
+    DirectionalZPlus: '#0028412E'
     DirectionalZMinus: '#00161910'
     Specular: '#00000000'
     Scale: 1

@@ -390,10 +390,10 @@ AmbientColor:
   Sunset: '#003E403B'
   Night: '#000D1810'
 SunlightColor:
-  Sunrise: '#006D6D60'
-  Day: '#00828D84'
+  Sunrise: '#00969684'
+  Day: '#00859087'
   Sunset: '#006D6356'
-  Night: '#00202123'
+  Night: '#004F5156'
 SunColor:
   Sunrise: '#00848378'
   Day: '#009BA79E'
@@ -410,7 +410,7 @@ SkyLowerColor:
   Sunset: '#00584F4F'
   Night: '#000F121A'
 HorizonColor:
-  Sunrise: '#00656962'
+  Sunrise: '#00686B5F'
   Day: '#00788182'
   Sunset: '#006A5D5A'
   Night: '#00191F10'
@@ -631,6 +631,11 @@ ImageSpaces:
   Day: 00080E:Argonia.esm
   Sunset: 00080E:Argonia.esm
   Night: 00080D:Argonia.esm
+VolumetricLighting:
+  Sunrise: 000D63:Update.esm
+  Day: 000D61:Update.esm
+  Sunset: 000D64:Update.esm
+  Night: 000D62:Update.esm
 DirectionalAmbientLightingColors:
   Sunrise:
     DirectionalXPlus: '#003C4237'
@@ -664,7 +669,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00131A0D'
     DirectionalYPlus: '#00131A0D'
     DirectionalYMinus: '#00131A0D'
-    DirectionalZPlus: '#00111B19'
+    DirectionalZPlus: '#00283F3B'
     DirectionalZMinus: '#000D0A0D'
     Specular: '#00000000'
     Scale: 1

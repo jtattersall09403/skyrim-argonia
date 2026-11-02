@@ -18,22 +18,22 @@
 {"weather_id":"clear-dry","slot":"dalcSide","tod":"night","rgb":"1F2719","why":"directional ambient from the four sides; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"dalcSide","tod":"sunrise","rgb":"605746","why":"directional ambient from the four sides; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"dalcSide","tod":"sunset","rgb":"5C4A3A","why":"directional ambient from the four sides; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"dalcUp","tod":"day","rgb":"8B9371","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"dalcUp","tod":"night","rgb":"202E29","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"dalcUp","tod":"sunrise","rgb":"776B5D","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"dalcUp","tod":"sunset","rgb":"735D4F","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"dalcUp","tod":"day","rgb":"7D8465","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"dalcUp","tod":"night","rgb":"2C3F38","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"dalcUp","tod":"sunrise","rgb":"5E554A","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"dalcUp","tod":"sunset","rgb":"685447","why":"directional ambient from above; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"day","rgb":"F4F5E2","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"night","rgb":"5E7360","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"sunrise","rgb":"E8CCA2","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"sunset","rgb":"E4B48E","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"day","rgb":"BCC4A5","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"night","rgb":"2C342C","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogFar","tod":"sunrise","rgb":"CAA982","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogFar","tod":"sunset","rgb":"C6916C","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogNear","tod":"day","rgb":"A7B696","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogNear","tod":"night","rgb":"1D2C24","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogNear","tod":"sunrise","rgb":"B29670","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogNear","tod":"sunset","rgb":"AF815A","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogFar","tod":"sunrise","rgb":"A08667","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogFar","tod":"sunset","rgb":"AF8060","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogNear","tod":"day","rgb":"8D9A7F","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogNear","tod":"night","rgb":"202E21","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogNear","tod":"sunrise","rgb":"9F8664","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogNear","tod":"sunset","rgb":"AC805D","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"day","rgb":"CDD2A5","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"night","rgb":"2F3029","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"sunrise","rgb":"E4B174","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
@@ -59,15 +59,15 @@
 {"weather_id":"clear-dry","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"stars","tod":"sunset","rgb":"000000","why":"the stars (night only); dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sun","tod":"day","rgb":"FFFCDD","why":"the sun disc; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"sun","tod":"night","rgb":"54695E","why":"the sun disc; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"sun","tod":"night","rgb":"58665E","why":"the sun disc; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sun","tod":"sunrise","rgb":"FFCB85","why":"the sun disc; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sun","tod":"sunset","rgb":"FFAB5E","why":"the sun disc; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunGlare","tod":"day","rgb":"FFF4CF","why":"the glare around the sun; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunGlare","tod":"night","rgb":"000000","why":"the glare around the sun; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunGlare","tod":"sunrise","rgb":"FFD498","why":"the glare around the sun; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunGlare","tod":"sunset","rgb":"FFB470","why":"the glare around the sun; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"sunlight","tod":"day","rgb":"FFF2C6","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"sunlight","tod":"night","rgb":"404E3D","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"sunlight","tod":"day","rgb":"F9ECC1","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"sunlight","tod":"night","rgb":"465643","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunlight","tod":"sunrise","rgb":"F4BA73","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"sunlight","tod":"sunset","rgb":"F09C53","why":"the directional light on the ground; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"unknown","tod":"day","rgb":"717664","why":"the engine's second ambient term (kept just under ambient's hue); dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
@@ -98,22 +98,22 @@
 {"weather_id":"mist","slot":"dalcSide","tod":"night","rgb":"1E261E","why":"directional ambient from the four sides; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"dalcSide","tod":"sunrise","rgb":"847F6C","why":"directional ambient from the four sides; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"dalcSide","tod":"sunset","rgb":"807364","why":"directional ambient from the four sides; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"dalcUp","tod":"day","rgb":"A2ABA0","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"dalcUp","tod":"night","rgb":"202C29","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"dalcUp","tod":"sunrise","rgb":"949184","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"dalcUp","tod":"sunset","rgb":"90847A","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"dalcUp","tod":"day","rgb":"7B827A","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"dalcUp","tod":"night","rgb":"2D3E3A","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"dalcUp","tod":"sunrise","rgb":"5B544F","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"dalcUp","tod":"sunset","rgb":"5E564F","why":"directional ambient from above; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"effectLighting","tod":"day","rgb":"E6EFE0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"effectLighting","tod":"night","rgb":"546558","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"effectLighting","tod":"sunrise","rgb":"DCD0BA","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogFar","tod":"day","rgb":"CAD2CA","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogFar","tod":"sunrise","rgb":"C6BCB0","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogFar","tod":"sunset","rgb":"C4AFA0","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"day","rgb":"D9DFD4","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"sunrise","rgb":"D0CBB8","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"sunset","rgb":"CCBFAC","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -147,12 +147,12 @@
 {"weather_id":"mist","slot":"sunGlare","tod":"sunrise","rgb":"FDE2C1","why":"the glare around the sun; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"sunGlare","tod":"sunset","rgb":"FCD0B3","why":"the glare around the sun; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"sunlight","tod":"day","rgb":"E9E6CC","why":"the directional light on the ground; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"sunlight","tod":"night","rgb":"3A3F39","why":"the directional light on the ground; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"sunlight","tod":"night","rgb":"4C534B","why":"the directional light on the ground; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"sunlight","tod":"sunrise","rgb":"ECCA9F","why":"the directional light on the ground; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"sunlight","tod":"sunset","rgb":"E6BA93","why":"the directional light on the ground; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"unknown","tod":"day","rgb":"90968F","why":"the engine's second ambient term (kept just under ambient's hue); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"unknown","tod":"night","rgb":"1E1E22","why":"the engine's second ambient term (kept just under ambient's hue); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"unknown","tod":"sunrise","rgb":"857C72","why":"the engine's second ambient term (kept just under ambient's hue); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"unknown","tod":"sunrise","rgb":"897972","why":"the engine's second ambient term (kept just under ambient's hue); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"unknown","tod":"sunset","rgb":"81726A","why":"the engine's second ambient term (kept just under ambient's hue); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"waterMultiplier","tod":"day","rgb":"B6C5B5","why":"the water's reflection and colour multiplier; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"waterMultiplier","tod":"night","rgb":"36453E","why":"the water's reflection and colour multiplier; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -178,21 +178,21 @@
 {"weather_id":"monsoon-overcast","slot":"dalcSide","tod":"night","rgb":"161E16","why":"directional ambient from the four sides; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"dalcSide","tod":"sunrise","rgb":"585748","why":"directional ambient from the four sides; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"dalcSide","tod":"sunset","rgb":"564E44","why":"directional ambient from the four sides; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"day","rgb":"858F82","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"night","rgb":"162426","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"sunrise","rgb":"69695F","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"sunset","rgb":"696358","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"day","rgb":"7A8377","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"night","rgb":"263F42","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"sunrise","rgb":"5A554F","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"dalcUp","tod":"sunset","rgb":"5C574D","why":"directional ambient from above; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"effectLighting","tod":"day","rgb":"D0D8C6","why":"light on spell and particle effects; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"effectLighting","tod":"night","rgb":"4C5B4E","why":"light on spell and particle effects; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"effectLighting","tod":"sunrise","rgb":"B4B09A","why":"light on spell and particle effects; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"effectLighting","tod":"sunset","rgb":"B0A08E","why":"light on spell and particle effects; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"day","rgb":"ABB4A2","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"night","rgb":"242D23","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunrise","rgb":"A0988A","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"9C8D79","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogNear","tod":"day","rgb":"9CA896","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunrise","rgb":"8D8B7B","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"99876F","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogNear","tod":"day","rgb":"8E9888","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"night","rgb":"162321","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogNear","tod":"sunrise","rgb":"8D8E7E","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogNear","tod":"sunrise","rgb":"898A7B","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"sunset","rgb":"867F73","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"horizon","tod":"day","rgb":"B9BCAC","why":"the horizon band; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"horizon","tod":"night","rgb":"242622","why":"the horizon band; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
@@ -209,7 +209,7 @@
 {"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"day","rgb":"9FA48D","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"night","rgb":"242B2C","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"sunrise","rgb":"897F76","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"sunset","rgb":"877866","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"sunset","rgb":"837A69","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"day","rgb":"879695","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"night","rgb":"0F1919","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"sunrise","rgb":"6C7276","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
@@ -227,7 +227,7 @@
 {"weather_id":"monsoon-overcast","slot":"sunGlare","tod":"sunrise","rgb":"B4A482","why":"the glare around the sun; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"sunGlare","tod":"sunset","rgb":"AE9274","why":"the glare around the sun; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"sunlight","tod":"day","rgb":"C8CAAF","why":"the directional light on the ground; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"sunlight","tod":"night","rgb":"2F342F","why":"the directional light on the ground; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"sunlight","tod":"night","rgb":"514F4D","why":"the directional light on the ground; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"sunlight","tod":"sunrise","rgb":"AF9C81","why":"the directional light on the ground; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"sunlight","tod":"sunset","rgb":"AB8C75","why":"the directional light on the ground; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"unknown","tod":"day","rgb":"6E756F","why":"the engine's second ambient term (kept just under ambient's hue); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
@@ -244,7 +244,7 @@
 {"weather_id":"montane-haze","slot":"ambient","tod":"sunset","rgb":"666559","why":"the ambient light; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"cloudLodAmbient","tod":"day","rgb":"889390","why":"distant clouds, shade side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"cloudLodAmbient","tod":"night","rgb":"101918","why":"distant clouds, shade side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"cloudLodAmbient","tod":"sunrise","rgb":"6C6D67","why":"distant clouds, shade side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"cloudLodAmbient","tod":"sunrise","rgb":"686F6A","why":"distant clouds, shade side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"cloudLodAmbient","tod":"sunset","rgb":"68635F","why":"distant clouds, shade side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"cloudLodDiffuse","tod":"day","rgb":"D6DBD1","why":"distant clouds, lit side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"cloudLodDiffuse","tod":"night","rgb":"262F31","why":"distant clouds, lit side; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -258,21 +258,21 @@
 {"weather_id":"montane-haze","slot":"dalcSide","tod":"night","rgb":"172417","why":"directional ambient from the four sides; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"dalcSide","tod":"sunrise","rgb":"646958","why":"directional ambient from the four sides; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"dalcSide","tod":"sunset","rgb":"625D50","why":"directional ambient from the four sides; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"dalcUp","tod":"day","rgb":"84938E","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"dalcUp","tod":"night","rgb":"1B2824","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"dalcUp","tod":"sunrise","rgb":"75786D","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"dalcUp","tod":"sunset","rgb":"716D65","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"dalcUp","tod":"day","rgb":"76837F","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"dalcUp","tod":"night","rgb":"2A3F39","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"dalcUp","tod":"sunrise","rgb":"55574F","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"dalcUp","tod":"sunset","rgb":"5B5850","why":"directional ambient from above; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"day","rgb":"E0EBDC","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"night","rgb":"51624F","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunrise","rgb":"CEC4AA","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunset","rgb":"CAB49E","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"day","rgb":"B3BDB7","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"night","rgb":"213027","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"sunrise","rgb":"AEADA0","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"sunset","rgb":"AA9D92","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogNear","tod":"day","rgb":"A4B4AA","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"sunrise","rgb":"8A8A7F","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"sunset","rgb":"91867D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogNear","tod":"day","rgb":"8B9890","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogNear","tod":"night","rgb":"182724","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogNear","tod":"sunrise","rgb":"A0A698","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogNear","tod":"sunrise","rgb":"868783","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogNear","tod":"sunset","rgb":"9C968A","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"horizon","tod":"day","rgb":"BDC4BE","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"horizon","tod":"night","rgb":"212727","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -288,8 +288,8 @@
 {"weather_id":"montane-haze","slot":"skyLower","tod":"sunset","rgb":"A89486","why":"the sky below the cloud deck; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"skyStatics","tod":"day","rgb":"A6AAA6","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"skyStatics","tod":"night","rgb":"2F3629","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"skyStatics","tod":"sunrise","rgb":"9B9A87","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"skyStatics","tod":"sunset","rgb":"978A7A","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"skyStatics","tod":"sunrise","rgb":"9D9B84","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"skyStatics","tod":"sunset","rgb":"94897D","why":"sky statics (distant silhouettes); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"skyUpper","tod":"day","rgb":"6994C1","why":"the zenith; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"skyUpper","tod":"night","rgb":"0E1A21","why":"the zenith; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"skyUpper","tod":"sunrise","rgb":"6782A4","why":"the zenith; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -307,12 +307,12 @@
 {"weather_id":"montane-haze","slot":"sunGlare","tod":"sunrise","rgb":"F1D6AD","why":"the glare around the sun; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"sunGlare","tod":"sunset","rgb":"ECC49E","why":"the glare around the sun; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"sunlight","tod":"day","rgb":"EBEACE","why":"the directional light on the ground; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"sunlight","tod":"night","rgb":"314233","why":"the directional light on the ground; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"sunlight","tod":"night","rgb":"415743","why":"the directional light on the ground; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"sunlight","tod":"sunrise","rgb":"D8BE93","why":"the directional light on the ground; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"sunlight","tod":"sunset","rgb":"D4AA83","why":"the directional light on the ground; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"unknown","tod":"day","rgb":"717A74","why":"the engine's second ambient term (kept just under ambient's hue); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"unknown","tod":"night","rgb":"141A19","why":"the engine's second ambient term (kept just under ambient's hue); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"unknown","tod":"sunrise","rgb":"63645C","why":"the engine's second ambient term (kept just under ambient's hue); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"unknown","tod":"sunrise","rgb":"67615C","why":"the engine's second ambient term (kept just under ambient's hue); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"unknown","tod":"sunset","rgb":"615854","why":"the engine's second ambient term (kept just under ambient's hue); montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"waterMultiplier","tod":"day","rgb":"A5B6A8","why":"the water's reflection and colour multiplier; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"waterMultiplier","tod":"night","rgb":"394137","why":"the water's reflection and colour multiplier; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -327,7 +327,7 @@
 {"weather_id":"sea-fog","slot":"cloudLodAmbient","tod":"sunrise","rgb":"6B7274","why":"distant clouds, shade side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"cloudLodAmbient","tod":"sunset","rgb":"6C6969","why":"distant clouds, shade side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"cloudLodDiffuse","tod":"day","rgb":"CAD1CB","why":"distant clouds, lit side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"cloudLodDiffuse","tod":"night","rgb":"1F2B2C","why":"distant clouds, lit side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"cloudLodDiffuse","tod":"night","rgb":"22292D","why":"distant clouds, lit side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"cloudLodDiffuse","tod":"sunrise","rgb":"B2B3AE","why":"distant clouds, lit side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"cloudLodDiffuse","tod":"sunset","rgb":"AFA99F","why":"distant clouds, lit side; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"dalcDown","tod":"day","rgb":"6D786C","why":"directional ambient from below (the bounce off the ground and water); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
@@ -338,22 +338,22 @@
 {"weather_id":"sea-fog","slot":"dalcSide","tod":"night","rgb":"18201B","why":"directional ambient from the four sides; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"dalcSide","tod":"sunrise","rgb":"6E7368","why":"directional ambient from the four sides; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"dalcSide","tod":"sunset","rgb":"6C6960","why":"directional ambient from the four sides; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"dalcUp","tod":"day","rgb":"929F99","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"dalcUp","tod":"night","rgb":"1A2626","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"dalcUp","tod":"sunrise","rgb":"7F857D","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"dalcUp","tod":"sunset","rgb":"7A7A78","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"dalcUp","tod":"day","rgb":"76867D","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"dalcUp","tod":"night","rgb":"2B3E3E","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"dalcUp","tod":"sunrise","rgb":"535752","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"dalcUp","tod":"sunset","rgb":"575756","why":"directional ambient from above; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"day","rgb":"D8E3D5","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"night","rgb":"48574D","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"effectLighting","tod":"sunrise","rgb":"C2C2B4","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"effectLighting","tod":"sunrise","rgb":"BFC1B7","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"sunset","rgb":"BEB4AA","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogFar","tod":"day","rgb":"B6C0C2","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogFar","tod":"night","rgb":"1F2A28","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogFar","tod":"sunrise","rgb":"ACADA6","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogFar","tod":"sunset","rgb":"A7A09C","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogNear","tod":"day","rgb":"C0CFC8","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogFar","tod":"sunrise","rgb":"8F8881","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogFar","tod":"sunset","rgb":"8D8388","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogNear","tod":"day","rgb":"8D9893","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogNear","tod":"night","rgb":"1E2D2D","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogNear","tod":"sunrise","rgb":"B4B9AE","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogNear","tod":"sunset","rgb":"B0AAA4","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogNear","tod":"sunrise","rgb":"838C85","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogNear","tod":"sunset","rgb":"A29C97","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"day","rgb":"CDD0CD","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"night","rgb":"222B29","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"sunrise","rgb":"C5BAB0","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
@@ -366,10 +366,10 @@
 {"weather_id":"sea-fog","slot":"skyLower","tod":"night","rgb":"202325","why":"the sky below the cloud deck; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyLower","tod":"sunrise","rgb":"B3AEA6","why":"the sky below the cloud deck; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyLower","tod":"sunset","rgb":"AE9FA1","why":"the sky below the cloud deck; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"skyStatics","tod":"day","rgb":"B3B9B1","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"skyStatics","tod":"day","rgb":"B9B5B3","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyStatics","tod":"night","rgb":"292B33","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyStatics","tod":"sunrise","rgb":"A3A295","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"skyStatics","tod":"sunset","rgb":"9F9190","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"skyStatics","tod":"sunset","rgb":"9F9988","why":"sky statics (distant silhouettes); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"day","rgb":"A3B2B7","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"night","rgb":"151A21","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"sunrise","rgb":"89969D","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
@@ -387,11 +387,11 @@
 {"weather_id":"sea-fog","slot":"sunGlare","tod":"sunrise","rgb":"E7D6BD","why":"the glare around the sun; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"sunGlare","tod":"sunset","rgb":"E2C6B0","why":"the glare around the sun; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"sunlight","tod":"day","rgb":"D9DCC8","why":"the directional light on the ground; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"sunlight","tod":"night","rgb":"323735","why":"the directional light on the ground; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"sunlight","tod":"night","rgb":"4B5350","why":"the directional light on the ground; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"sunlight","tod":"sunrise","rgb":"CCBEA3","why":"the directional light on the ground; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"sunlight","tod":"sunset","rgb":"C8AE97","why":"the directional light on the ground; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"unknown","tod":"day","rgb":"838A8A","why":"the engine's second ambient term (kept just under ambient's hue); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"unknown","tod":"night","rgb":"161B1E","why":"the engine's second ambient term (kept just under ambient's hue); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"unknown","tod":"night","rgb":"101924","why":"the engine's second ambient term (kept just under ambient's hue); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"unknown","tod":"sunrise","rgb":"6F706E","why":"the engine's second ambient term (kept just under ambient's hue); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"unknown","tod":"sunset","rgb":"6D6666","why":"the engine's second ambient term (kept just under ambient's hue); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"waterMultiplier","tod":"day","rgb":"A5B6AC","why":"the water's reflection and colour multiplier; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
@@ -419,7 +419,7 @@
 {"weather_id":"squall","slot":"dalcSide","tod":"sunrise","rgb":"3C4237","why":"directional ambient from the four sides; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"dalcSide","tod":"sunset","rgb":"3C3A34","why":"directional ambient from the four sides; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"dalcUp","tod":"day","rgb":"53665C","why":"directional ambient from above; squall: slate sea-green under a racing deck, cold flat light"}
-{"weather_id":"squall","slot":"dalcUp","tod":"night","rgb":"111B19","why":"directional ambient from above; squall: slate sea-green under a racing deck, cold flat light"}
+{"weather_id":"squall","slot":"dalcUp","tod":"night","rgb":"283F3B","why":"directional ambient from above; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"dalcUp","tod":"sunrise","rgb":"45514A","why":"directional ambient from above; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"dalcUp","tod":"sunset","rgb":"454545","why":"directional ambient from above; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"effectLighting","tod":"day","rgb":"94A49E","why":"light on spell and particle effects; squall: slate sea-green under a racing deck, cold flat light"}
@@ -436,7 +436,7 @@
 {"weather_id":"squall","slot":"fogNear","tod":"sunset","rgb":"54554B","why":"fog colour at the near distance; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"horizon","tod":"day","rgb":"788182","why":"the horizon band; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"horizon","tod":"night","rgb":"191F10","why":"the horizon band; squall: slate sea-green under a racing deck, cold flat light"}
-{"weather_id":"squall","slot":"horizon","tod":"sunrise","rgb":"656962","why":"the horizon band; squall: slate sea-green under a racing deck, cold flat light"}
+{"weather_id":"squall","slot":"horizon","tod":"sunrise","rgb":"686B5F","why":"the horizon band; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"horizon","tod":"sunset","rgb":"6A5D5A","why":"the horizon band; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"moonGlare","tod":"day","rgb":"000000","why":"the glare around the moons (night only); squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"moonGlare","tod":"night","rgb":"2E3E3E","why":"the glare around the moons (night only); squall: slate sea-green under a racing deck, cold flat light"}
@@ -466,9 +466,9 @@
 {"weather_id":"squall","slot":"sunGlare","tod":"night","rgb":"000000","why":"the glare around the sun; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"sunGlare","tod":"sunrise","rgb":"777469","why":"the glare around the sun; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"sunGlare","tod":"sunset","rgb":"776A5F","why":"the glare around the sun; squall: slate sea-green under a racing deck, cold flat light"}
-{"weather_id":"squall","slot":"sunlight","tod":"day","rgb":"828D84","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
-{"weather_id":"squall","slot":"sunlight","tod":"night","rgb":"202123","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
-{"weather_id":"squall","slot":"sunlight","tod":"sunrise","rgb":"6D6D60","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
+{"weather_id":"squall","slot":"sunlight","tod":"day","rgb":"859087","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
+{"weather_id":"squall","slot":"sunlight","tod":"night","rgb":"4F5156","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
+{"weather_id":"squall","slot":"sunlight","tod":"sunrise","rgb":"969684","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"sunlight","tod":"sunset","rgb":"6D6356","why":"the directional light on the ground; squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"unknown","tod":"day","rgb":"454E50","why":"the engine's second ambient term (kept just under ambient's hue); squall: slate sea-green under a racing deck, cold flat light"}
 {"weather_id":"squall","slot":"unknown","tod":"night","rgb":"0B1113","why":"the engine's second ambient term (kept just under ambient's hue); squall: slate sea-green under a racing deck, cold flat light"}
@@ -499,7 +499,7 @@
 {"weather_id":"storm","slot":"dalcSide","tod":"sunrise","rgb":"363A2C","why":"directional ambient from the four sides; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"dalcSide","tod":"sunset","rgb":"3A3427","why":"directional ambient from the four sides; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"dalcUp","tod":"day","rgb":"495549","why":"directional ambient from above; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"dalcUp","tod":"night","rgb":"09130F","why":"directional ambient from above; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"dalcUp","tod":"night","rgb":"1F4234","why":"directional ambient from above; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"dalcUp","tod":"sunrise","rgb":"3D4339","why":"directional ambient from above; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"dalcUp","tod":"sunset","rgb":"3F3B37","why":"directional ambient from above; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"effectLighting","tod":"day","rgb":"86947D","why":"light on spell and particle effects; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
@@ -511,7 +511,7 @@
 {"weather_id":"storm","slot":"fogFar","tod":"sunrise","rgb":"56544A","why":"fog colour at the far distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"fogFar","tod":"sunset","rgb":"584A46","why":"fog colour at the far distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"fogNear","tod":"day","rgb":"51614C","why":"fog colour at the near distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"fogNear","tod":"night","rgb":"091110","why":"fog colour at the near distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"fogNear","tod":"night","rgb":"0C1615","why":"fog colour at the near distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"fogNear","tod":"sunrise","rgb":"464D43","why":"fog colour at the near distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"fogNear","tod":"sunset","rgb":"4B463C","why":"fog colour at the near distance; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"horizon","tod":"day","rgb":"71705D","why":"the horizon band; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
@@ -523,7 +523,7 @@
 {"weather_id":"storm","slot":"moonGlare","tod":"sunrise","rgb":"000000","why":"the glare around the moons (night only); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"moonGlare","tod":"sunset","rgb":"000000","why":"the glare around the moons (night only); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyLower","tod":"day","rgb":"595E56","why":"the sky below the cloud deck; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"skyLower","tod":"night","rgb":"12110B","why":"the sky below the cloud deck; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"skyLower","tod":"night","rgb":"150F0C","why":"the sky below the cloud deck; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyLower","tod":"sunrise","rgb":"504D43","why":"the sky below the cloud deck; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyLower","tod":"sunset","rgb":"524A3A","why":"the sky below the cloud deck; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyStatics","tod":"day","rgb":"585845","why":"sky statics (distant silhouettes); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
@@ -546,9 +546,9 @@
 {"weather_id":"storm","slot":"sunGlare","tod":"night","rgb":"000000","why":"the glare around the sun; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"sunGlare","tod":"sunrise","rgb":"6F664F","why":"the glare around the sun; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"sunGlare","tod":"sunset","rgb":"6F5C49","why":"the glare around the sun; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"sunlight","tod":"day","rgb":"7A7B61","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"sunlight","tod":"night","rgb":"1C1B15","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"sunlight","tod":"sunrise","rgb":"655F48","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"sunlight","tod":"day","rgb":"8E8F71","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"sunlight","tod":"night","rgb":"555240","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"sunlight","tod":"sunrise","rgb":"9F9671","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"sunlight","tod":"sunset","rgb":"685346","why":"the directional light on the ground; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"unknown","tod":"day","rgb":"3F443C","why":"the engine's second ambient term (kept just under ambient's hue); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"unknown","tod":"night","rgb":"060A0D","why":"the engine's second ambient term (kept just under ambient's hue); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
@@ -578,21 +578,21 @@
 {"weather_id":"tannin-haze","slot":"dalcSide","tod":"night","rgb":"1C2417","why":"directional ambient from the four sides; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"dalcSide","tod":"sunrise","rgb":"685942","why":"directional ambient from the four sides; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"dalcSide","tod":"sunset","rgb":"64523C","why":"directional ambient from the four sides; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"dalcUp","tod":"day","rgb":"89856E","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"dalcUp","tod":"night","rgb":"1C2D20","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"dalcUp","tod":"sunrise","rgb":"786A55","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"dalcUp","tod":"sunset","rgb":"75614F","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"dalcUp","tod":"day","rgb":"85816B","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"dalcUp","tod":"night","rgb":"28412E","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"dalcUp","tod":"sunrise","rgb":"605544","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"dalcUp","tod":"sunset","rgb":"665445","why":"directional ambient from above; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"day","rgb":"ECE1BE","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"night","rgb":"56654F","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"sunrise","rgb":"DEC094","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"sunset","rgb":"DAAC82","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"fogFar","tod":"day","rgb":"B8A88B","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"fogFar","tod":"night","rgb":"282F21","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunrise","rgb":"C09B70","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunset","rgb":"BE8D5D","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"day","rgb":"A8A27C","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunrise","rgb":"A58560","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunset","rgb":"AF8255","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"day","rgb":"9C9673","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"fogNear","tod":"night","rgb":"1B2822","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunrise","rgb":"AB8F69","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunrise","rgb":"A08662","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"fogNear","tod":"sunset","rgb":"AE8355","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"horizon","tod":"day","rgb":"CDBA85","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"horizon","tod":"night","rgb":"282C24","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
@@ -627,7 +627,7 @@
 {"weather_id":"tannin-haze","slot":"sunGlare","tod":"sunrise","rgb":"FFC886","why":"the glare around the sun; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"sunGlare","tod":"sunset","rgb":"FCAC6C","why":"the glare around the sun; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"sunlight","tod":"day","rgb":"F9DEA5","why":"the directional light on the ground; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"sunlight","tod":"night","rgb":"3A4837","why":"the directional light on the ground; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"sunlight","tod":"night","rgb":"455642","why":"the directional light on the ground; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"sunlight","tod":"sunrise","rgb":"F0B067","why":"the directional light on the ground; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"sunlight","tod":"sunset","rgb":"EC9855","why":"the directional light on the ground; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"unknown","tod":"day","rgb":"736E5C","why":"the engine's second ambient term (kept just under ambient's hue); tannin haze: brown-gold air over peat water, a copper sun"}
@@ -659,7 +659,7 @@
 {"weather_id":"wet-rain","slot":"dalcSide","tod":"sunrise","rgb":"44463A","why":"directional ambient from the four sides; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"dalcSide","tod":"sunset","rgb":"464038","why":"directional ambient from the four sides; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"dalcUp","tod":"day","rgb":"5D6F68","why":"directional ambient from above; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
-{"weather_id":"wet-rain","slot":"dalcUp","tod":"night","rgb":"101C1E","why":"directional ambient from above; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
+{"weather_id":"wet-rain","slot":"dalcUp","tod":"night","rgb":"243F44","why":"directional ambient from above; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"dalcUp","tod":"sunrise","rgb":"4C5450","why":"directional ambient from above; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"dalcUp","tod":"sunset","rgb":"514D49","why":"directional ambient from above; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"effectLighting","tod":"day","rgb":"A2AE9C","why":"light on spell and particle effects; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
@@ -688,7 +688,7 @@
 {"weather_id":"wet-rain","slot":"skyLower","tod":"sunset","rgb":"685955","why":"the sky below the cloud deck; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyStatics","tod":"day","rgb":"6A796B","why":"sky statics (distant silhouettes); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyStatics","tod":"night","rgb":"1F241C","why":"sky statics (distant silhouettes); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
-{"weather_id":"wet-rain","slot":"skyStatics","tod":"sunrise","rgb":"5F5E50","why":"sky statics (distant silhouettes); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
+{"weather_id":"wet-rain","slot":"skyStatics","tod":"sunrise","rgb":"5F5F50","why":"sky statics (distant silhouettes); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyStatics","tod":"sunset","rgb":"5C5352","why":"sky statics (distant silhouettes); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyUpper","tod":"day","rgb":"5E666C","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyUpper","tod":"night","rgb":"081411","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
@@ -707,8 +707,8 @@
 {"weather_id":"wet-rain","slot":"sunGlare","tod":"sunrise","rgb":"847866","why":"the glare around the sun; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"sunGlare","tod":"sunset","rgb":"836E5F","why":"the glare around the sun; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"sunlight","tod":"day","rgb":"959881","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
-{"weather_id":"wet-rain","slot":"sunlight","tod":"night","rgb":"242723","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
-{"weather_id":"wet-rain","slot":"sunlight","tod":"sunrise","rgb":"7D755E","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
+{"weather_id":"wet-rain","slot":"sunlight","tod":"night","rgb":"4D534A","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
+{"weather_id":"wet-rain","slot":"sunlight","tod":"sunrise","rgb":"9F9578","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"sunlight","tod":"sunset","rgb":"80695A","why":"the directional light on the ground; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"unknown","tod":"day","rgb":"535F4F","why":"the engine's second ambient term (kept just under ambient's hue); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"unknown","tod":"night","rgb":"0D1A15","why":"the engine's second ambient term (kept just under ambient's hue); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}

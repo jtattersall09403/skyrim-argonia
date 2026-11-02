@@ -371,12 +371,12 @@ SkyUpperColor:
   Sunset: '#006F789C'
   Night: '#000E1A21'
 FogNearColor:
-  Sunrise: '#00A0A698'
-  Day: '#00A4B4AA'
+  Sunrise: '#00868783'
+  Day: '#008B9890'
   Sunset: '#009C968A'
   Night: '#00182724'
 UnknownColor:
-  Sunrise: '#0063645C'
+  Sunrise: '#0067615C'
   Day: '#00717A74'
   Sunset: '#00615854'
   Night: '#00141A19'
@@ -389,7 +389,7 @@ SunlightColor:
   Sunrise: '#00D8BE93'
   Day: '#00EBEACE'
   Sunset: '#00D4AA83'
-  Night: '#00314233'
+  Night: '#00415743'
 SunColor:
   Sunrise: '#00EDD4A7'
   Day: '#00FAF8E1'
@@ -421,19 +421,19 @@ CloudLodDiffuseColor:
   Sunset: '#00BBA695'
   Night: '#00262F31'
 CloudLodAmbientColor:
-  Sunrise: '#006C6D67'
+  Sunrise: '#00686F6A'
   Day: '#00889390'
   Sunset: '#0068635F'
   Night: '#00101918'
 FogFarColor:
-  Sunrise: '#00AEADA0'
+  Sunrise: '#008A8A7F'
   Day: '#00B3BDB7'
-  Sunset: '#00AA9D92'
+  Sunset: '#0091867D'
   Night: '#00213027'
 SkyStaticsColor:
-  Sunrise: '#009B9A87'
+  Sunrise: '#009D9B84'
   Day: '#00A6AAA6'
-  Sunset: '#00978A7A'
+  Sunset: '#0094897D'
   Night: '#002F3629'
 WaterMultiplierColor:
   Sunrise: '#00949D8F'
@@ -568,13 +568,18 @@ ImageSpaces:
   Day: 000E97:Argonia.esm
   Sunset: 000809:Argonia.esm
   Night: 00080D:Argonia.esm
+VolumetricLighting:
+  Sunrise: 000D55:Update.esm
+  Day: 000D56:Update.esm
+  Sunset: 000D57:Update.esm
+  Night: 000D54:Update.esm
 DirectionalAmbientLightingColors:
   Sunrise:
     DirectionalXPlus: '#00646958'
     DirectionalXMinus: '#00646958'
     DirectionalYPlus: '#00646958'
     DirectionalYMinus: '#00646958'
-    DirectionalZPlus: '#0075786D'
+    DirectionalZPlus: '#0055574F'
     DirectionalZMinus: '#00555546'
     Specular: '#00000000'
     Scale: 1
@@ -583,7 +588,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00748174'
     DirectionalYPlus: '#00748174'
     DirectionalYMinus: '#00748174'
-    DirectionalZPlus: '#0084938E'
+    DirectionalZPlus: '#0076837F'
     DirectionalZMinus: '#0061695E'
     Specular: '#00000000'
     Scale: 1
@@ -592,7 +597,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00625D50'
     DirectionalYPlus: '#00625D50'
     DirectionalYMinus: '#00625D50'
-    DirectionalZPlus: '#00716D65'
+    DirectionalZPlus: '#005B5850'
     DirectionalZMinus: '#0051473E'
     Specular: '#00000000'
     Scale: 1
@@ -601,7 +606,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00172417'
     DirectionalYPlus: '#00172417'
     DirectionalYMinus: '#00172417'
-    DirectionalZPlus: '#001B2824'
+    DirectionalZPlus: '#002A3F39'
     DirectionalZMinus: '#00131711'
     Specular: '#00000000'
     Scale: 1

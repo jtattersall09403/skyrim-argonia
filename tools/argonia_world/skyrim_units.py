@@ -33,6 +33,24 @@ FOG_RANGES_U = {
 }
 FOG_THICKEST_U = (25_000, 15_000)  # SkyrimFog, vanilla's thickest fog: day far, night far
 
+# The light slots' luma (Rec. 709, 0-255) per time of day: min and max over Skyrim's 33 region weathers as the game
+# loads them (Update.esm's WTHR overrides; the _A, quest and war weathers left out), measured 2026-11-02 (1.15 session
+# 3). Fog colours are added in HDR, so vanilla keeps them mid-dark (fog near by day at most 151); night light never
+# drops below a moonlit floor (sunlight 79, the up face of the directional ambient 56). Ours sat outside both ways:
+# day fog near 220 (blown milky coast and flat grey dawn), night up-light 42 (near-black marsh).
+LUMA_RANGES = {
+    "fogNear": {"sunrise": (22, 139), "day": (31, 151), "sunset": (23, 159), "night": (18, 108)},
+    "fogFar": {"sunrise": (38, 139), "day": (52, 194), "sunset": (35, 138), "night": (16, 83)},
+    "ambient": {"sunrise": (24, 197), "day": (27, 238), "sunset": (31, 188), "night": (3, 126)},
+    "sunlight": {"sunrise": (147, 237), "day": (139, 238), "sunset": (83, 251), "night": (79, 184)},
+    "dalcUp": {"sunrise": (35, 88), "day": (71, 130), "sunset": (54, 89), "night": (56, 68)},
+}
+
+
+def luma(rgb) -> float:
+    r, g, b = rgb
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
 def metres_to_units(m: float) -> float:
     return m * UNITS_PER_METRE
 

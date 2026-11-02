@@ -279,6 +279,10 @@ def weather_slots(w) -> list[str]:
             out.append(f"weather {wid}: no weather_sky row")
         out += [f"weather {wid}: {e}" for e in fog_outside_vanilla(w, r, wid in fogs)]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
+        from tools.argonia_world import skyrim_units as su
+        out += [f"weather {wid}: {s}@{t} luma {su.luma(cols[s, t]):.0f} outside vanilla's {lo}-{hi}"
+                for s, band in su.LUMA_RANGES.items() for t, (lo, hi) in band.items()
+                if (s, t) in cols and not lo <= round(su.luma(cols[s, t])) <= hi]
     return out
 
 

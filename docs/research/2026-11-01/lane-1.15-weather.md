@@ -60,11 +60,38 @@ a low milky mist over water, sea-fog regions a grey-white bank, montane a haze b
 yellow-green screen tint; the noon still under the commonest clear without a tint wash. Also check CS's Overrides
 tab lists Argonia_ExponentialHeightFog.
 
+## Session 3: round 1's stills diagnosed (2026-11-02)
+Reader on panel 02, 03, 11, 15, 31, 33, 35, 36, the mist strip and creature spots 01, 04: no light shaft in any;
+coast noon (02, vanilla SkyrimCloudyCO) sky near white; dawn fog grey-green uniform, not height-banded; strip flat
+(about 55 luma every frame); water-day fog mustard (150,135,40) over the whole frame; marsh-night about 12 luma.
+- **No god rays: our WTHR had no HNAM.** Skyrim SE's volumetric lighting (WTHR HNAM -> four VOLI) lives only in
+  Update.esm's overrides (Skyrim.esm: 84 WTHR, 0 HNAM, 0 VOLI; Update.esm: 69 WTHR all with HNAM, 36 VOLI; VLClear
+  sunrise intensity 4.0, VLFog 2.25). `RegionWeather.cs` read templates from Skyrim.esm only; it now takes the HNAM
+  link from the Update.esm override. Measured in out/Argonia.esm: all nine weathers carry HNAM (mist and sea-fog the
+  VLFog set, clear-dry and tannin-haze VLClear). CS 1.9.1 sets the engine's VL flag from its own ExteriorEnabled
+  (VolumetricLighting.cpp SetupVL), and `Shaders/Features/VolumetricLighting.ini` is present, so no ini is needed.
+- **Height fog never ran.** CS reads `SKSE/Plugins/CommunityShaders/Overrides` (its README; stack.py's
+  `apply_files` lays our five there), but Exponential Height Fog is not core: Feature::Load disables any feature
+  without `Data/Shaders/Features/<Name>.ini`, and the 1.9.1 archive has no `ExponentialHeightFog.ini` nor its
+  shaders. Our EHF override is inert; the low, banded mist needs the EHF feature as its own dependency row (owed:
+  find its Nexus file, register it, then tune). The uniform grey is vanilla distance fog alone.
+- **Light slots outside vanilla's range.** Measured luma over Skyrim's 33 region weathers (Update.esm): fog near by
+  day 31-151, night sunlight 79-184, night up-light 56-68. Ours: fog near by day to 220 (blown coast haze, flat grey
+  dawn), night sunlight 38 and up-light 26 (black marsh). New `skyrim_units.LUMA_RANGES` and a weather-slots check;
+  70 slots rescaled in hue to the nearest bound, 30 then nudged a few units to stay underived.
+- **No burn-off:** the mist's day far was 360 m against 215 m at night, so sunrise barely opened it. Now 700 m
+  (FogMA's 50,000 u) by day: the fog lifts through sunrise inside the one weather. The strip also forced the weather,
+  so no transition to clear could show (harness).
+- **Tidal delta** dawn is `sea-fog` (panel_weather; sea_fog chance 30/25/20): the class is right; its day fog was
+  the over-bright grey that read as plain haze. **Yellow day fog:** the weather at that spot was not recorded;
+  tannin-haze is our only brown-gold one and is now inside vanilla's luma; a creature-spot weather read is owed.
+- **Coast noon** is vanilla CloudyCO (Tropical Skyrim's restyle), not ours: its blown sky is that mod's or the
+  exposure, to judge after the light fixes. Western-frontier dawn is montane-haze over a dark canopy (35 luma 45).
+
 ## Starting state
-- Done: schema (`weather_colour`, `weather_sky`, `mist_regime`, `mist_regime_season`, tint CHECK, fog_tint dropped),
-  rows via `migrate.py --weathers-1-15`, api.py, season.py tables, CS override, panel table; session 2 applied the
-  Skyrim.esm audit (§7): fog inside vanilla's ranges, lists of 6 summing to 100 per season, marsh fog 28–35 %,
-  hour gate and its C++ removed. Measured: `make world` green (weather-slots 0, image-tint 0, region-weather 0);
-  regions pytest 18 passed; skse/check.sh 36/36.
-- Owed: `make plugin` to allocate the six new WTHR and four IMGS form ids (the WChance globals for the mist weathers
-  are new names too); the L4 dawn and noon stills (`panel_weather`); tuning of colours and CS numbers from them.
+- Done: the weather set, lists, seasons, fog ranges (sessions 1-2); session 3: HNAM from Update.esm, vanilla luma
+  bands with a check, mist burn-off range. Measured: `make world` green; regions pytest 18 passed; `make plugin`
+  built (Argonia.esm, nine WTHR with HNAM); panel_weather 47 regions consistent.
+- Owed: the EHF feature dependency (not in CS 1.9.1) before any height-fog tuning; the planner's next batch re-shoots
+  panel dawn/noon, the mist strip without a forced weather, and creature spots with a weather read
+  (GetCurrentWeather) at water-day; then shafts, burn-off and night brightness judged by a reader.

@@ -394,10 +394,10 @@ AmbientColor:
   Sunset: '#0048463F'
   Night: '#0012181B'
 SunlightColor:
-  Sunrise: '#007D755E'
+  Sunrise: '#009F9578'
   Day: '#00959881'
   Sunset: '#0080695A'
-  Night: '#00242723'
+  Night: '#004D534A'
 SunColor:
   Sunrise: '#00988D6E'
   Day: '#00ADB398'
@@ -439,7 +439,7 @@ FogFarColor:
   Sunset: '#006E6357'
   Night: '#001C2316'
 SkyStaticsColor:
-  Sunrise: '#005F5E50'
+  Sunrise: '#005F5F50'
   Day: '#006A796B'
   Sunset: '#005C5352'
   Night: '#001F241C'
@@ -628,6 +628,11 @@ ImageSpaces:
   Day: 000E99:Argonia.esm
   Sunset: 000E99:Argonia.esm
   Night: 00080D:Argonia.esm
+VolumetricLighting:
+  Sunrise: 000D5F:Update.esm
+  Day: 000D5D:Update.esm
+  Sunset: 000D60:Update.esm
+  Night: 000D5E:Update.esm
 DirectionalAmbientLightingColors:
   Sunrise:
     DirectionalXPlus: '#0044463A'
@@ -661,7 +666,7 @@ DirectionalAmbientLightingColors:
     DirectionalXMinus: '#00141B10'
     DirectionalYPlus: '#00141B10'
     DirectionalYMinus: '#00141B10'
-    DirectionalZPlus: '#00101C1E'
+    DirectionalZPlus: '#00243F44'
     DirectionalZMinus: '#000F0D0D'
     Specular: '#00000000'
     Scale: 1
