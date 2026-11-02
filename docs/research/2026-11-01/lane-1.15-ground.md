@@ -212,29 +212,41 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 13 (commit 6f1a548) closed the five flats. The cause was not the bank lift. A mouth's rise did
-`np.maximum(win, door + hill)`, which raised its whole window (up to 178 m wide) to the door level wherever the
-hill weight was 0. Flats 100-200 m away were lifted by 14-35 m. The rise is now eased in by its own weight
-(`hill / RISE_M`). `terrain check --out out/terrain-sample/s13`: fails [], wet/bank/dry-edge/step-bank 0,
-unshaped sites 0 (was 5), lattice 1.253. Generate took 103.8 s.
+Session 14 (commit 905725f). `probes/clamp_census.py` now reads the field rules: a plate is a dry vertex whose
+8-neighbour steps are all under 0.02 m, and the census attributes each one to the rule that set it (gap up/down, iso
+hollow, edge lift, lo/hi bound, sites, the pre-ground). Before, plate share by window: coast -20_57 11.4 %, border
+-12_63 17.3 %, river -38_25 11.8 %, marsh -21_-26 11.2 %, 0_0 1.8 %. The causes:
+- entrance sites (9-17 %): a flat was levelled to one constant m, and a mouth's wet disc was raised to
+  vmax + freeboard;
+- the pre-ground (marsh 10 %): the relief noise faded to nothing by the water, leaving `base + floor` flat;
+- gap 0.2-0.5 %, iso 0 %.
+The fixes:
+- a flat keeps a damped share of its own relief (FLAT_KEEP 0.35, core std held at 0.4 m);
+- the wet disc climbs from its rim by the vanilla shore profile (`water_field.shore_rise`);
+- the noise keeps 0.8 of its rises and 0.3 of its dips by the water (NEAR_RISE/NEAR_DIP).
+After the fixes: 2.4 / 1.7 / 5.0 / 3.0 / 1.2 %. A relief-keeping remap of the gap band was tried and reverted: it
+carried each cell line's level step into the ground (lattice 1.38 -> 1.66 over the 1.5 gate; measured by variants).
+The gap keeps the snap. `terrain check --out out/terrain-sample/s14b`: fails [], wet/bank/dry-edge/step-bank 0,
+unshaped 0, lattice 1.376 (s13 1.253). Generate 119.7 s.
 
-The reader on the hillshades (`out/terrain-sample/s13/hs`, `render --sample --hillshade` with
-ARGONIA_GROUND=.../s13/ground-f32.npy) failed the ground. Worst first:
-- -38_25 (river): 5 plates with hard rims; square or L-shaped pools at (0.59-0.70,0.83-0.88), (0.77-0.83,0.07-0.12),
-  (0.88-0.96,0.25-0.30) and (0.84-0.99,0.65-0.95); shores on the cell grid at x 0.77, 0.83 and y 0.87; no readable valley.
-- -21_-26 (marsh): a 0.15 x 0.64 rectangular plate at (0.49-0.64,0.24-0.88); a square pool at (0.62-1.0,0.12-0.62).
-  The meanders on the left are good.
-- -12_63 (border): plateaus and rectangular terraces at (0.30-0.85,0.80-0.95); the lake itself is organic.
-- 0_0: a square pool on a plate at (0.73-0.89,0.74-0.90), another at (0.01-0.11,0.91-1.0).
-- -20_57 (coast): large flat plates and edges on the cell grid; no sea in frame.
-Fractions are (x,y) of the image.
+The reader on `s14b`'s hillshades (`s14/hs`, same bar the gap remap) gave these verdicts:
+- -12_63: terraces fixed;
+- -20_57: plates mostly fixed, faint seams at x 0.50 and y 0.50, a faceted knob at (0.50-0.63,0.34-0.47);
+- -38_25: big plates gone, but small rims remain and the square pools and grid shores are unchanged;
+- -21_-26: the rectangle and the square pool are unchanged;
+- 0_0: rim-edged rectangles at (0.73-0.88,0.62-0.88) and (0.0-0.13,0.87-1.0).
+
+The remaining defects are measured at their cause. In -21_-26 the rectangle is the cell column x -17 (rows
+-21..-25): its pre-ground stands at about 1.1 m, it is 0 % wet, and its lift is about 0. The columns either side are
+88-100 % wet and carved to -1.7 m. So the "plate" is uncarved ground between the raster footprints, and the "square
+pool" is the wet raster's own cell-blocky footprint (`inp.wet_level`, 88 % of each cell) carved to its bed at
+CARVE_GRADE. Water planes and the field are not the cause.
 
 Owed, in order:
-1. Diagnose the plates and square pools at their rule. Likely candidates: the iso-hollow lift (`HOLLOW_GRADE`
-   raises a whole cell-shaped hollow), `gap` snapping to vmax+freeboard over a whole water cell, and pinned flats.
-   Measure which mask covers each defect (diag["iso"], role 3 on bound). Fix, then re-render once.
-2. Delete the clamp path. Not started. The dead code is in generate.py about lines 545-800: dwet/near_*, ramp,
-   ddry/run, dch, edge_bank, low/flood, din/bed, bank/shore, banks/esel, the spread/ok_ block, and
-   shore_rise/shore_run/SHORE_FAR/STEP_CLEAR/BANK_SPREAD_DEG. `sbank` is then always empty.
-   probes/clamp_census.py reads diag edge_bank/spread/sbank: retire it or fix it.
-3. Run ONE whole-province generate into out/terrain, then `terrain check`.
+1. The footprint from the ground's contour, not the raster's cell blocks: inside a water cell, wet = pre-ground under
+   the level (with the raster only seeding which body it joins), and the carve then follows that contour. The likely
+   place is generate.py's `foot = has & ~isnan(inp.wet_level)` (~line 497) or the hydrology raster's producer. Then
+   re-run the census and the reader on the five windows.
+2. The clamp path's deletion was handed to a deliver-small child (behaviour-identical, checked bit-for-bit against
+   s14b); confirm it landed (`git log`).
+3. ONE whole-province generate into out/terrain, then `terrain check`: not started.
