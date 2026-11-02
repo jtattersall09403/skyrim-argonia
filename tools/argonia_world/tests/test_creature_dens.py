@@ -9,7 +9,6 @@ from tools.argonia_world import db
 
 CROC = "creature-at.imperial-fringe.claywater-station.eco-crocodile"
 POOL_DEPTH_M = 2.5  # LF83: a scour pool of 2.5 m or more
-WATER_M = 32.84     # the water plan's surface there (build_ground's row)
 
 
 def _den(w, npc_id):
@@ -36,13 +35,13 @@ def test_claywater_crocodile_dens_on_the_bank_out_of_the_pool():
     p = w.get("build_person", CROC)
     den = _den(w, CROC)
     assert den is not None, "the crocodile has no den marker"
-    pool = w.get("build_ground", "ground.claywater-station.scour-pool")
-    assert WATER_M - pool.floor_m >= POOL_DEPTH_M  # the pool stays deep
+    pool = w.get("terrain_patch", "patch.claywater-station.scour-pool")  # a bowl under its cell's water
+    assert pool.kind == "bowl" and pool.depth_m >= POOL_DEPTH_M  # the pool stays deep
     assert 0 < p.sandbox_radius_m <= 20.0           # LF83: territory 20 m at most
     d = math.hypot(den.x_m - pool.x_m, den.y_m - pool.y_m)
     # the sandbox circle stays more than 2 m outside the pool's flat floor (the old den, the cut's lip 6.5 m from the
     # pool's centre with a 20 m circle, failed this)
-    assert d - p.sandbox_radius_m > pool.flat_radius_m + 2.0, d
+    assert d - p.sandbox_radius_m > pool.radius_m + 2.0, d
     raft = w.get("build_ref", "ref.claywater-station.raft")  # the ford stays outside the territory
     assert math.hypot(den.x_m - raft.x_m, den.y_m - raft.y_m) > p.sandbox_radius_m
     actor = next(r for r in w.rows("build_ref") if r.npc_id == CROC)
