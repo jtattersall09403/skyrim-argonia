@@ -3,7 +3,7 @@ Flags:
 - HasWater
 Grid:
   Point: -62, 43
-WaterHeight: 15387.69
+WaterHeight: 18251.92
 Regions:
 - 080010:ArgoniaWorld.esm
 - 08002F:ArgoniaWorld.esm
