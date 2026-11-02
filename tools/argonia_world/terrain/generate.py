@@ -12,7 +12,7 @@ Order (each step vectorised over the whole grid; the arrays are 65 MB each):
    the blurred ground by the region's erosion) and noise by the region's roughness away from water;
 3. the water base: the level of the nearest water (cell levels, filled outward on the cell grid, blurred): the land
    stands on its water, so an upland tarn sits in uplands (water first);
-4. road corridors flattened across and smoothed along (the traced roads, routes/build.py's widths);
+4. the roads laid in (routes/shape.py: Skyrim.esm's measured trough across and grade limit along, the traced roads);
 5. the water constraints: inside the wet footprint (the wet raster in a water cell, or the cell's own low ground
    where the raster has none) the bed below the lowest level of the cells sharing the vertex, by the shore grade per
    water type down to the body's depth; every other vertex of a water cell above the highest level sharing it; the
@@ -595,15 +595,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
                  vmax=vmax.astype(np.float32), touch=touch, chz=chz, tsamp=tw.astype(np.int8), blocks=blocks)
     del tw
 
-    # 4. roads: flat across, smooth along
-    road = np.zeros((N + 1, N + 1), bool)
-    for pts, rad in inp.roads:
-        stamp_polyline(road, pts, rad)
-    if road.any():
-        hs = blur(h, 8)
-        wroad = blur(road.astype(np.float64), 2)
-        h = h * (1 - wroad) + hs * wroad
-    st["roads"] = {"roads": len(inp.roads), "samples": int(road.sum())}
+    # 4. roads: laid in after the water constraints (step 5 below), inside their cones
 
     # 5. water constraints
     wtype = np.full((C, C), "", object)
@@ -698,6 +690,13 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     diag["h_sites_in"] = h.astype(np.float32)
     sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz)  # a dry cell's vertex stays bank
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
+
+    # 4 (run here). the roads laid in as Skyrim.esm lays them (routes/shape.py: the measured trough across, the grade
+    # along), after the water field and the sites so neither re-slopes them, then held inside their cones: a pinned
+    # site core and a water's bank or bed keep their shape (a crossing: routes.shape check's crossings, a bridge)
+    from tools.argonia_world.routes import shape as road_shape
+    st["roads"] = road_shape.shape(h, inp.roads)
+    h = np.minimum(np.maximum(h, lo), hi)
 
     # 7. the slope limit inside the cones
     diag["h_lim_in"] = h.astype(np.float32)

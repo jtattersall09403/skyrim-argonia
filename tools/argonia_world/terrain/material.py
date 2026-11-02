@@ -113,6 +113,7 @@ TEXTURES: tuple[Tex, ...] = tuple(Tex(*r) for r in (
 ))
 TEX = {t.edid: t for t in TEXTURES}
 ROAD = "LDirtPath01"
+ROAD_BLEND_M = 4.0  # the road paint blends into the land over this each side (routes/shape.py)
 
 
 # ---- the gradient ---------------------------------------------------------------------------------------------
@@ -680,12 +681,19 @@ class Material:
             segs = road_paint.segments()
         except Exception:  # no route data in this checkout (a test fixture): no roads
             return w
-        cls = np.zeros(w.shape[:2], dtype=np.int16)
-        road_paint.override_classes(cls, a0, b0, segs=segs)
-        m = (cls != 0) & (k["dh"] > 0.0)  # a road is never painted under water
+        # Skyrim.esm's road paint (routes/shape.py, the Whiterun-Riverwood road): the dirt whole across the flat
+        # width, then blending into the land's own stroke over ROAD_BLEND_M each side (0.70 dirt at the centre, 0.62
+        # at 5 m, 0.53 at 8 m); the 2x2 mean after this softens the last vertex, as everywhere
+        a = np.zeros(w.shape[:2])
+        blend = ROAD_BLEND_M / su.PROVINCE_SAMPLE_M
+        for _cls, half, seg in segs:
+            d = road_paint.distance(seg, half + blend, a0, b0, a.shape)
+            np.maximum(a, np.clip(1.0 - (d - half) / blend, 0.0, 1.0), out=a)
+        a = np.where(k["dh"] > 0.0, a, 0.0)  # a road is never painted under water
+        m = a > 0
         if m.any():
-            w[m] = 0.0
-            w[m, self.index[ROAD]] = 1.0
+            w[m] *= (1.0 - a[m])[:, None]
+            w[m, self.index[ROAD]] += a[m]
         return w
 
 

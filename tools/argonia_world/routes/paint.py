@@ -42,13 +42,13 @@ def segments(world=None) -> list[tuple[int, float, np.ndarray]]:
     return _SEGMENTS
 
 
-def mask(seg: np.ndarray, half: float, r0: int, c0: int, shape: tuple[int, int]) -> np.ndarray:
-    """Samples of the window within `half` samples of any of the segments."""
-    out = np.zeros(shape, dtype=bool)
+def distance(seg: np.ndarray, reach: float, r0: int, c0: int, shape: tuple[int, int]) -> np.ndarray:
+    """Each sample's distance (samples) to the nearest of the segments, inf beyond `reach`."""
+    out = np.full(shape, np.inf)
     h, w = shape
     for (ar, ac), (br, bc) in seg:
-        lo_r, hi_r = int(np.floor(min(ar, br) - half)), int(np.ceil(max(ar, br) + half))
-        lo_c, hi_c = int(np.floor(min(ac, bc) - half)), int(np.ceil(max(ac, bc) + half))
+        lo_r, hi_r = int(np.floor(min(ar, br) - reach)), int(np.ceil(max(ar, br) + reach))
+        lo_c, hi_c = int(np.floor(min(ac, bc) - reach)), int(np.ceil(max(ac, bc) + reach))
         lo_r, hi_r, lo_c, hi_c = max(lo_r, r0), min(hi_r, r0 + h - 1), max(lo_c, c0), min(hi_c, c0 + w - 1)
         if lo_r > hi_r or lo_c > hi_c:
             continue
@@ -56,9 +56,15 @@ def mask(seg: np.ndarray, half: float, r0: int, c0: int, shape: tuple[int, int])
         dr, dc = br - ar, bc - ac
         L2 = dr * dr + dc * dc
         t = np.clip(((rr - ar) * dr + (cc - ac) * dc) / L2, 0, 1) if L2 > 0 else np.zeros(rr.shape)
-        d2 = (rr - ar - t * dr) ** 2 + (cc - ac - t * dc) ** 2
-        out[lo_r - r0:hi_r - r0 + 1, lo_c - c0:hi_c - c0 + 1] |= d2 <= half * half
+        d = np.sqrt((rr - ar - t * dr) ** 2 + (cc - ac - t * dc) ** 2)
+        win = out[lo_r - r0:hi_r - r0 + 1, lo_c - c0:hi_c - c0 + 1]
+        np.minimum(win, np.where(d <= reach, d, np.inf), out=win)
     return out
+
+
+def mask(seg: np.ndarray, half: float, r0: int, c0: int, shape: tuple[int, int]) -> np.ndarray:
+    """Samples of the window within `half` samples of any of the segments."""
+    return distance(seg, half, r0, c0, shape) <= half
 
 
 def override_classes(classes: np.ndarray, r0: int, c0: int, water: frozenset[int] = frozenset(),
