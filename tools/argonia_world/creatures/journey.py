@@ -10,7 +10,6 @@ den (the run's first den) with a still. No walking, no fighting.
 """
 from __future__ import annotations
 
-import json
 from pathlib import Path
 
 from tools.argonia_world import skyrim_units as su
