@@ -14,7 +14,8 @@ step vegetation $PY -m tools.argonia_world.vegetation check || echo "(vegetation
 step roads $PY -m tools.argonia_world.routes.shape check || echo "(road check red: noted)"
 step chart $PY -m tools.chart render --if-stale || exit 3
 step chart4k $PY -m tools.chart render --if-stale --level --size 4096 --out out/chart4k || echo "(4k chart render failed: the 1x chart stands)"
-step sample python3 tools/world_sample.py --write || true
+step sample python3 tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
+step plugin-ids make plugin-ids || exit 3
 step tree-booth $PY -m tools.argonia_world.vegetation tree-booth --out tests/journeys/tree-seat.yaml || echo "(no tree-seat journey: tree-booth needs the shards path; the planner adds it)"
 git add tests/journeys/world-sample.yaml tests/journeys/tree-seat.yaml tools/chart/*.json 2>/dev/null
 git diff --cached --quiet || git commit -q -m "round 4 pre-batch: the world-sample pins and the tree-seat journey from the new ground and placement
