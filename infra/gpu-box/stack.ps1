@@ -27,6 +27,20 @@ $Keep = @('SKSE\Plugins\CommunityShaders\SettingsUser.json', 'SKSE\Plugins\Commu
           'SKSE\Plugins\CommunityShaders_ImGui.ini')
 
 function Get-Mode { if (Test-Path "$State\mode-on") { 'on' } else { 'off' } }
+function Wait-Steam {
+  # Steam restarts itself to apply an update about 5–6 min after a boot (bootstrap_log "Checking for available
+  # updates" then "Startup"); every launch before that died within 30 s with no SKSE log, every launch after it
+  # lived (2026-11-02, nine launches). So: the client (steamwebhelper) must be up and steam.exe itself at least
+  # 150 s old; a Steam restart resets its start time and the wait begins again. Up to 12 min. Every launch path.
+  $w = 0; $age = 0
+  while ($w -lt 720) {
+    $st = Get-Process steam -EA SilentlyContinue | Sort-Object StartTime | Select-Object -First 1
+    $age = if ($st) { ((Get-Date) - $st.StartTime).TotalSeconds } else { 0 }
+    if ($st -and (Get-Process steamwebhelper -EA SilentlyContinue) -and $age -ge 150) { break }
+    Start-Sleep 5; $w += 5
+  }
+  "steam: client up, steam.exe $([int]$age) s old, waited $w s"
+}
 
 # Skyrim fills the current desktop (sunshine-prep.ps1 sized it to the client) and keeps running without focus,
 # so a reconnect or a click elsewhere never pauses it.
@@ -248,18 +262,7 @@ switch ($Cmd) {
     Set-GameWindow
     # Steam restarts and self-updates after every boot; a launch inside that window dies silently with no SKSE log
     # (2026-11-02, three launches 2 min after boot). Wait for the client proper (steamwebhelper) before launching.
-    # Steam restarts itself to apply an update about 5–6 min after a boot (bootstrap_log "Checking for available
-    # updates" then "Startup"); every launch before that died within 30 s with no SKSE log, every launch after it
-    # lived (2026-11-02, nine launches). So: the client (steamwebhelper) must be up and steam.exe itself at least
-    # 150 s old; a Steam restart resets its start time and the wait begins again. Up to 12 min.
-    $w = 0
-    while ($w -lt 720) {
-      $st = Get-Process steam -EA SilentlyContinue | Sort-Object StartTime | Select-Object -First 1
-      $age = if ($st) { ((Get-Date) - $st.StartTime).TotalSeconds } else { 0 }
-      if ($st -and (Get-Process steamwebhelper -EA SilentlyContinue) -and $age -ge 150) { break }
-      Start-Sleep 5; $w += 5
-    }
-    "steam: client up, steam.exe $([int]$age) s old, waited $w s"
+    Wait-Steam
     $t0 = Get-Date
     Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     $ok = $false
@@ -355,7 +358,7 @@ public static class ParHash {
     }
     Set-GameWindow
     Start-Process powershell.exe -WindowStyle Hidden -ArgumentList '-ExecutionPolicy', 'Bypass', '-File', "$Root\infra\splash.ps1"
-    if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
+    if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on
       # Argonia itself (game-21: `on` lays only the modlist, so the Argonia cards started Skyrim without our ESMs,
@@ -374,6 +377,7 @@ public static class ParHash {
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
       elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
+      Wait-Steam | Out-Null
       Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     }
     if ($Wait) {
