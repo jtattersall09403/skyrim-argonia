@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1622> kForms{{
+inline constexpr std::array<FormRow, 1629> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -1574,8 +1574,15 @@ inline constexpr std::array<FormRow, 1622> kForms{{
     {"weapon_class.spear", "Argonia.esm", "KYWD", 0x00083F},
     {"weather.clear-dry", "Argonia.esm", "WTHR", 0x000E9B},
     {"weather.mist", "Argonia.esm", "WTHR", 0x00080F},
+    {"weather.mist-20m", "Argonia.esm", "WTHR", 0x000ED4},
+    {"weather.mist-25m", "Argonia.esm", "WTHR", 0x000ED5},
+    {"weather.mist-2m", "Argonia.esm", "WTHR", 0x000ED6},
+    {"weather.mist-49m", "Argonia.esm", "WTHR", 0x000ED7},
+    {"weather.mist-6m", "Argonia.esm", "WTHR", 0x000ED8},
     {"weather.monsoon-overcast", "Argonia.esm", "WTHR", 0x000E9C},
     {"weather.montane-haze", "Argonia.esm", "WTHR", 0x000E9D},
+    {"weather.montane-haze-11m", "Argonia.esm", "WTHR", 0x000ED9},
+    {"weather.montane-haze-68m", "Argonia.esm", "WTHR", 0x000EDA},
     {"weather.sea-fog", "Argonia.esm", "WTHR", 0x000E9E},
     {"weather.squall", "Argonia.esm", "WTHR", 0x000810},
     {"weather.storm", "Argonia.esm", "WTHR", 0x000811},

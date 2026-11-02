@@ -284,6 +284,8 @@ def weather_slots(w) -> list[str]:
     from tools.argonia_world.regions.weather_seed import ROLE, TOD
     out = []
     fogs = set(w.values("SELECT weather_id FROM mist_regime")) if "mist_regime" in w.tables else set()
+    if "weather_mist_band" in w.tables:
+        fogs |= set(w.values("SELECT weather_id FROM weather_mist_band"))
     for r in w.query("SELECT * FROM weather WHERE template_form_key IS NOT NULL ORDER BY id"):
         wid = r["id"]
         cols = {(c["slot"], c["tod"]): _rgb(c["rgb"])
@@ -355,6 +357,7 @@ def region_weather(w) -> list[str]:
                 out.append(f"land_region {r['id']}: nothing to draw in season {s}")
         if r["regime"] and r["regime"] != "none":
             mw = w.values("SELECT weather_id FROM mist_regime WHERE id = ?", r["regime"])
-            if not mw or mw[0] not in {x["weather_id"] for x in lst}:
+            band = set(w.values("SELECT weather_id FROM weather_mist_band WHERE variant_of = ?", mw[0])) if mw else set()
+            if not mw or not ({mw[0]} | band) & {x["weather_id"] for x in lst}:
                 out.append(f"land_region {r['id']}: regime {r['regime']} has no mist weather in its list")
     return out

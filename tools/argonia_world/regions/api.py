@@ -382,3 +382,56 @@ def layers(alloc, world, wrld: dict | None = None, resolver=None) -> list:
             recs += bases
         recs.append(over)
     return [Layer("base:regions", recs)]
+
+
+CS_WEATHERS = "SKSE/Plugins/CommunityShaders/Weathers"
+
+
+def cs_fog_files(alloc, world) -> list[dict]:
+    """Community Shaders 1.9.1's per-weather files (WeatherManager::LoadPerWeatherSettingsFromDisk: the stem is
+    Util::GetFormFileKey, `0x<local FormID>~<plugin>`; the body `{"featureSettings": {<feature>: {...}}}`), one per
+    weather_mist_band row: the bank's own height, falloff and density (weather_seed.HEIGHT_FOG), so a mist weather
+    carries its bank whatever the global setting. Laid by the stack from data/dependencies.json's community-shaders
+    files (`python3 -m tools.argonia_world.regions.api cs-fog --write`)."""
+    import json
+    from tools.argonia_world.regions.weather_seed import HEIGHT_FOG
+    out = []
+    for b in world.query("SELECT b.weather_id, b.fog_height_u, b.why, w.edid, w.form_key FROM weather_mist_band b "
+                         "JOIN weather w ON w.id = b.weather_id ORDER BY b.weather_id"):
+        fid, plugin = weather_key(alloc, {"id": b["weather_id"], "edid": b["edid"], "form_key": b["form_key"]}).split(":")
+        body = {"featureSettings": {"ExponentialHeightFog": dict(HEIGHT_FOG, fogHeight=b["fog_height_u"])},
+                "_argonia": f"{b['edid']}: {b['why']}"}
+        out.append({"path": f"{CS_WEATHERS}/0x{int(fid, 16):X}~{plugin}.json", "text": json.dumps(body, indent=1) + "\n"})
+    return out
+
+
+def sync_cs_fog(write: bool) -> list[str]:
+    """Differences between data/dependencies.json's community-shaders per-weather files and cs_fog_files; with
+    `write`, make them match (allocating new weathers' FormIDs) and save."""
+    import json
+    from pathlib import Path
+    from tools.argonia_world.formids import Allocator
+    from tools.argonia_world import db
+    world = db.open()
+    alloc = Allocator(world, frozen=not write)
+    want = cs_fog_files(alloc, world)
+    p = Path(__file__).resolve().parents[3] / "data" / "dependencies.json"
+    deps = json.loads(p.read_text())
+    row = next(d for d in deps["mods"] if any(f["path"].endswith("Argonia_ExponentialHeightFog.json")
+                                               for f in d.get("files", [])))
+    have = [f for f in row["files"] if f["path"].startswith(CS_WEATHERS + "/")]
+    if have == want:
+        return []
+    if write:
+        row["files"] = [f for f in row["files"] if not f["path"].startswith(CS_WEATHERS + "/")] + want
+        p.write_text(json.dumps(deps, indent=1, ensure_ascii=False) + "\n")
+        alloc.save()
+    return [f"community-shaders per-weather fog files differ: {len(have)} laid, {len(want)} wanted"]
+
+
+if __name__ == "__main__":
+    import sys
+    if sys.argv[1:2] == ["cs-fog"]:
+        errs = sync_cs_fog("--write" in sys.argv)
+        print("\n".join(errs) or "cs-fog: in step")
+        sys.exit(1 if errs and "--write" not in sys.argv else 0)

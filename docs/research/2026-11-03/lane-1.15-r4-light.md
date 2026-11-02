@@ -87,30 +87,48 @@ Ledger row: docs/phases/1-core-loop/checks.md, "Sky visible and low mist banks" 
 runs the dawn steps of tests/journeys/world-panel.yaml (already written), and a reader judges "sky visible" and "low
 mist banks present below eye level" at each dawn still.
 
-## Per-weather height fog (the planner's follow-up): stopped, numbers for the planner
+## Per-weather height fog: the water-level bands (planner's decision, round 4)
 
-**The format has been read** from the CS v1.9.1 source on GitHub (tag v1.9.1, GPL): `src/WeatherManager.cpp:50-93`,
-`src/Utils/Form.cpp:23,117`, `src/Features/ExponentialHeightFog.cpp:605-660`, `src/WeatherVariableRegistry.h:129-170`.
-- One file per weather: `SKSE/Plugins/CommunityShaders/Weathers/<key>.json`. The key is `0x<local FormID hex>~<plugin
-  file name>`, for example `0x801~Argonia.esp`.
-- Body: `{"featureSettings": {"ExponentialHeightFog": {"fogHeight": .., "fogHeightFalloff": .., "fogDensity": ..,
-  "startDistance": ..}}}`. These are the weather variables the feature registers (plus the inscattering ones in that block).
-- A value a weather does not set falls back to the global (user) value. Values are lerped across the weather
-  transition. Nothing clamps a value on load. The variable's slider range (fogHeight −22,000..22,000, falloff
-  0.001..2.0, density 0..1) applies only in the UI. Our falloff of 30 is beyond the UI range, so it stays as long as nobody
-  edits it in the CS menu.
+**Format** (CS v1.9.1 source on GitHub, tag v1.9.1: `src/WeatherManager.cpp:50-93`, `src/Utils/Form.cpp:23,117`,
+`src/Features/ExponentialHeightFog.cpp:605-660`, `src/WeatherVariableRegistry.h:129-170`). There is one file per weather,
+`SKSE/Plugins/CommunityShaders/Weathers/0x<local FormID>~<plugin>.json`, whose body is `{"featureSettings":
+{"ExponentialHeightFog": {...}}}`. A value the weather leaves out falls back to the global setting, values are lerped
+across a weather transition, and nothing clamps a value on load.
 
-**But each mist weather is shared by regions whose water sits at very different levels**, so one fog height per weather
-cannot keep the bank between the water and the eye. Measured: region_mist ⋈ cell_region_run ⋈ cell_water, the
-median cell water level per region, in metres. The bank top is fogHeight + 1.59 m (falloff 30). The test band is
-[median level, median level + 1.73 m (eye 121 u)].
+**Falloff within the menu's 2.0 cap: not possible.** At falloff 2, density halves every 500 u (7 m), so the bank's top
+(a tenth of its density) is 1,661 u (24 m) above fogHeight. That is a slab the player stands in at any density, never a
+bank below the eye. Each mist weather's own file therefore carries falloff 30 and density 0.5 as well as its height,
+so those weathers keep their bank even if someone moves the global slider. The global file is also still 30.
 
-| regime → weather | regions | region median water levels (m) | one height fits |
-|---|---|---|---|
-| sea_fog → sea-fog | 13 | all 0.0 | yes: fogHeight 0 (top 1.59 m), as laid now |
-| radiation → mist | 29 | 0.0 ×2, 0.7–1.4 ×18, 2.2–2.5 ×4, 5.7, 5.9, 20.2, 25.3, 49.5 | 20 of 29 (levels 0–1.4 m); 9 fail, spread 49.5 m |
-| montane → montane-haze | 5 | 0.0 ×3, 11.0, 68.0 | 3 of 5; spread 68 m |
+**What was built:**
+- A new table `weather_mist_band` (`world/schema.sql`).
+- `regions/migrate.py` gained `region_water_m` and `mist_bands`. They take the median `cell_water` level per region,
+  sort the regions of each regime by it, and close a band when it would span more than 1.6 m. The lowest band keeps
+  the regime's weather; every other band is a copy (the same colours, sky and fog distances, a new EditorID). Each
+  region's list swaps in its band's copy, keeping the parent's chance and season global.
+- The fog height is the middle of the heights that keep the bank top (fogHeight + 110.7 u) between the band's highest
+  water and its lowest water + 121 u.
+- `regions/api.py` gained `cs_fog_files` and `sync_cs_fog` (`python3 -m tools.argonia_world.regions.api cs-fog
+  --write`). They write the ten files into community-shaders' `files` in `data/dependencies.json`, and the stack lays
+  them.
+- `checks.py` now treats a band copy as its regime's mist weather, and `panel_weather.py` makes the dawn draw the
+  region's own band.
+- The FormIDs of the seven copies were allocated (`world/db/formid.jsonl`).
 
-So the planner's choice is needed: per-region mist weather variants (by level band: about 0–1.4, 2–2.5, 6, 20–25,
-50, 11 and 68 m, so six extra weathers and their CS files) or placed mist meshes. Nothing was laid or changed for
-this step.
+| weather | regime | regions | water (m) | fogHeight (u) | bank top (u) |
+|---|---|---|---|---|---|
+| sea-fog | sea_fog | 13 | 0.0 | −50.2 | 60.5 |
+| mist | radiation | 20 | 0.0–1.37 | −2.3 | 108.4 |
+| mist-2m | radiation | 4 | 2.2–2.46 | 112.9 | 223.6 |
+| mist-6m | radiation | 2 | 5.7–5.9 | 355.9 | 466.6 |
+| mist-20m | radiation | 1 | 20.21 | 1,365.1 | 1,475.8 |
+| mist-25m | radiation | 1 | 25.33 | 1,723.6 | 1,834.3 |
+| mist-49m | radiation | 1 | 49.48 | 3,414.9 | 3,525.6 |
+| montane-haze | montane | 3 | 0.0 | −50.2 | 60.5 |
+| montane-haze-11m | montane | 1 | 11.0 | 720.1 | 830.8 |
+| montane-haze-68m | montane | 1 | 68.02 | 4,713.2 | 4,823.9 |
+
+That is seven copies, not the six priced: the 20.2 m and 25.3 m regions are 5.1 m apart, so they cannot share one
+height. The test `test_every_mist_region_has_a_bank_between_its_water_and_eye` checks all 47 regions with a mist
+regime (the bank top lies between the region's median water and its eye) and checks that the laid files match the
+bands. A region's own water varies around its median, so the dawn stills judge the off-median shores.

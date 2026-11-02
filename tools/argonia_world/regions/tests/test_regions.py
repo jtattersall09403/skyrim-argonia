@@ -246,3 +246,27 @@ def test_height_fog_lies_below_the_eye():
     eye = su.metres_to_units(panel.SHORE_LO_M) + su.EYE_HEIGHT_UNITS
     assert top < eye, (top, eye)
     assert fog["fogHeight"] <= su.metres_to_units(panel.SHORE_LO_M)  # the bank is densest on the ground, not above it
+
+
+def test_every_mist_region_has_a_bank_between_its_water_and_eye():
+    """Planner's decision (round 4): the CS height fog is one absolute Z per weather, so each regime's mist weather is
+    copied per water-level band (weather_mist_band); every region with a mist regime lists a band whose bank top
+    (fogHeight + BANK_TOP_U) lies between its median water level and that water's eye, and the per-weather files the
+    stack lays match the bands."""
+    from tools.argonia_world import db
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.formids import Allocator
+    from tools.argonia_world.regions import api, migrate
+    from tools.argonia_world.regions import weather_seed as S
+    w = db.open()
+    water = migrate.region_water_m(w)
+    top = {r["weather_id"]: r["fog_height_u"] + S.BANK_TOP_U for r in w.query("SELECT * FROM weather_mist_band")}
+    bad = []
+    for r in w.values("SELECT land_region_id FROM region_mist WHERE regime != 'none'"):
+        lv = su.metres_to_units(water[r])
+        if not any(lv <= top[x] <= lv + su.EYE_HEIGHT_UNITS
+                   for x in w.values("SELECT weather_id FROM land_region_weather WHERE land_region_id = ?", r) if x in top):
+            bad.append((r, water[r]))
+    assert not bad and len(water) == len(w.values("SELECT 1 FROM region_mist WHERE regime != 'none'")), bad
+    assert not api.sync_cs_fog(False)
+    assert len(api.cs_fog_files(Allocator(w, frozen=True), w)) == len(top)

@@ -25,9 +25,11 @@ def table(w) -> list[dict]:
         return {"weather": wid, "edid": e, "form_key": wx[wid]["form_key"] or keys.get(e)}
 
     out = []
-    for r in w.query("SELECT l.id, m.regime, mr.weather_id mist FROM land_region l JOIN region_mist m "
-                     "ON m.land_region_id = l.id LEFT JOIN mist_regime mr ON mr.id = m.regime "
-                     "WHERE l.border = 0 ORDER BY l.id"):
+    for r in w.query("SELECT l.id, m.regime, (SELECT b.weather_id FROM weather_mist_band b JOIN land_region_weather lw "
+                     "ON lw.weather_id = b.weather_id WHERE lw.land_region_id = l.id AND b.variant_of = mr.weather_id) "
+                     "mist FROM land_region l JOIN region_mist m ON m.land_region_id = l.id LEFT JOIN mist_regime mr "
+                     "ON mr.id = m.regime WHERE l.border = 0 ORDER BY l.id"):
+        # the dawn draws the region's own band of its regime's mist weather (weather_mist_band)
         # noon is the sunny dry-season clear weather every region's list holds (a visible sun for the god rays); the
         # dawn is the region's mist regime's weather, or clear-dry where it has none
         noon = CLEAR

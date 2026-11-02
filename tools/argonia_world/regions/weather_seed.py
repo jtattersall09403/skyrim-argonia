@@ -371,3 +371,22 @@ REGIMES = {
 # land region -> regime rule (1.15 §d.3): mountains and hills at least half the region's cells: montane; a coastal
 # weather group: sea fog; a misty ecological class: radiation; else none (the NW dry pole, climatology §4).
 MOUNTAIN_CLASSES = ("border-mountains", "upland-hills")
+
+
+# The Community Shaders Exponential Height Fog (owner play test 3 finding 9: mist banks below the eye). Its density is
+# fogDensity/1000 * 2^(-falloff/1000 * (z - fogHeight)) (ExponentialHeightFog.hlsli), so the bank's top, a tenth of its
+# density, is BANK_TOP_U above fogHeight. Falloff 30 is beyond the CS menu's 2.0 slider (a falloff of 2 tops out
+# 1,661 u, 24 m, up: a slab, never a bank), which is why each mist weather's own file carries all three values.
+HEIGHT_FOG = {"fogHeightFalloff": 30.0, "fogDensity": 0.5}
+BANK_TOP_U = 3321.93 / HEIGHT_FOG["fogHeightFalloff"]  # log2(10) * 1000 / falloff
+BAND_SPAN_M = 1.6  # a band's water levels lie within this, so one height keeps every region's bank top under its eye
+
+
+def band_fog_height_u(lo_m: float, hi_m: float) -> float:
+    """The fog height (u) for a band of regions whose median water lies at lo_m..hi_m: the middle of the heights that put
+    the bank top at or above the highest water and at or below the lowest water's eye."""
+    from tools.argonia_world import skyrim_units as su
+    a = su.metres_to_units(hi_m) - BANK_TOP_U
+    b = su.metres_to_units(lo_m) + su.EYE_HEIGHT_UNITS - BANK_TOP_U
+    return round((a + b) / 2, 1)
+

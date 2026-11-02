@@ -1775,8 +1775,15 @@
 {"editor_id":"ARG_Weap_SteelSword","plugin":"Argonia.esm","form_id":2112,"record_type":"WEAP","entity_key":"item.steel-sword"}
 {"editor_id":"ARG_Weather_clear_dry","plugin":"Argonia.esm","form_id":3739,"record_type":"WTHR","entity_key":"weather.clear-dry"}
 {"editor_id":"ARG_Weather_mist","plugin":"Argonia.esm","form_id":2063,"record_type":"WTHR","entity_key":"weather.mist"}
+{"editor_id":"ARG_Weather_mist_20m","plugin":"Argonia.esm","form_id":3796,"record_type":"WTHR","entity_key":"weather.mist-20m"}
+{"editor_id":"ARG_Weather_mist_25m","plugin":"Argonia.esm","form_id":3797,"record_type":"WTHR","entity_key":"weather.mist-25m"}
+{"editor_id":"ARG_Weather_mist_2m","plugin":"Argonia.esm","form_id":3798,"record_type":"WTHR","entity_key":"weather.mist-2m"}
+{"editor_id":"ARG_Weather_mist_49m","plugin":"Argonia.esm","form_id":3799,"record_type":"WTHR","entity_key":"weather.mist-49m"}
+{"editor_id":"ARG_Weather_mist_6m","plugin":"Argonia.esm","form_id":3800,"record_type":"WTHR","entity_key":"weather.mist-6m"}
 {"editor_id":"ARG_Weather_monsoon_overcast","plugin":"Argonia.esm","form_id":3740,"record_type":"WTHR","entity_key":"weather.monsoon-overcast"}
 {"editor_id":"ARG_Weather_montane_haze","plugin":"Argonia.esm","form_id":3741,"record_type":"WTHR","entity_key":"weather.montane-haze"}
+{"editor_id":"ARG_Weather_montane_haze_11m","plugin":"Argonia.esm","form_id":3801,"record_type":"WTHR","entity_key":"weather.montane-haze-11m"}
+{"editor_id":"ARG_Weather_montane_haze_68m","plugin":"Argonia.esm","form_id":3802,"record_type":"WTHR","entity_key":"weather.montane-haze-68m"}
 {"editor_id":"ARG_Weather_sea_fog","plugin":"Argonia.esm","form_id":3742,"record_type":"WTHR","entity_key":"weather.sea-fog"}
 {"editor_id":"ARG_Weather_squall","plugin":"Argonia.esm","form_id":2064,"record_type":"WTHR","entity_key":"weather.squall"}
 {"editor_id":"ARG_Weather_storm","plugin":"Argonia.esm","form_id":2065,"record_type":"WTHR","entity_key":"weather.storm"}

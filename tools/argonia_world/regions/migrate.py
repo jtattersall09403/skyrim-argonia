@@ -338,6 +338,59 @@ def _clear(w, table: str) -> None:
         w.delete(table, *r)
 
 
+def region_water_m(w) -> dict[str, float]:
+    """The median solved water level (cell_water) over each mist-regime region's cells, in metres."""
+    import statistics
+    lv = defaultdict(list)
+    for r in w.query("SELECT c.land_region_id r, cw.level_m lv FROM region_mist m JOIN cell_region_run c ON "
+                     "c.land_region_id = m.land_region_id JOIN cell_water cw ON cw.cy = c.cy AND cw.cx BETWEEN c.cx0 "
+                     "AND c.cx1 WHERE m.regime != 'none'"):
+        lv[r["r"]].append(r["lv"])
+    return {k: round(statistics.median(v), 2) for k, v in lv.items()}
+
+
+def mist_bands(w, S) -> dict[str, dict[str, str]]:
+    """Split each regime's mist weather into water-level bands (weather_mist_band; the CS height fog is one absolute Z
+    per weather): regions sorted by median water level, a band closed when it would span more than S.BAND_SPAN_M.
+    The lowest band keeps the regime's weather; each other band is a copy (`<weather>-<lo>m`, same colours, sky and
+    fog distances). Returns {land region: {regime weather: band weather}}."""
+    water = region_water_m(w)
+    stale = set(w.values("SELECT weather_id FROM weather_mist_band")) - set(S.WEATHERS)
+    _clear(w, "weather_mist_band")
+    for wid in stale:
+        w.delete("weather_colour", weather_id=wid)
+        w.delete("weather_sky", weather_id=wid)
+        w.delete("weather", wid)
+    out: dict[str, dict[str, str]] = defaultdict(dict)
+    for regime, parent in w.query("SELECT id, weather_id FROM mist_regime ORDER BY id"):
+        regs = sorted((water[r], r) for r in w.values("SELECT land_region_id FROM region_mist WHERE regime = ?", regime)
+                      if r in water)
+        bands: list[list] = []
+        for lv, r in regs:
+            if not bands or lv - bands[-1][0][0] > S.BAND_SPAN_M:
+                bands.append([])
+            bands[-1].append((lv, r))
+        for i, band in enumerate(bands):
+            lo, hi = band[0][0], band[-1][0]
+            wid = parent if i == 0 else f"{parent}-{round(lo)}m"
+            h = S.band_fog_height_u(lo, hi)
+            if wid != parent:
+                p = dict(w.query("SELECT * FROM weather WHERE id = ?", parent)[0])
+                w.upsert("weather", **dict(p, id=wid, edid=f"{p['edid']}_{round(lo)}m", form_key=None,
+                                           why=f"{p['why']}; the copy for regions whose water lies at {lo}-{hi} m"))
+                w.delete("weather_colour", weather_id=wid)
+                for c in w.query("SELECT * FROM weather_colour WHERE weather_id = ?", parent):
+                    w.insert("weather_colour", **dict(c, weather_id=wid))
+                w.upsert("weather_sky", **dict(w.query("SELECT * FROM weather_sky WHERE weather_id = ?", parent)[0],
+                                               weather_id=wid))
+            w.insert("weather_mist_band", weather_id=wid, variant_of=parent, water_lo_m=lo, water_hi_m=hi,
+                     fog_height_u=h, why=f"{regime}: {len(band)} region(s) with median water {lo}-{hi} m "
+                     f"({', '.join(r for _, r in band)})")
+            for _, r in band:
+                out[r][parent] = wid
+    return out
+
+
 def weathers_1_15(w) -> dict[str, int]:
     """1.15 §d: the authored weather set, untinted image spaces, the group realisations, the mist regimes and every
     land region's mist row and weather list (1-6 entries summing to 100, each by season global; no hour gate)."""
@@ -392,10 +445,13 @@ def weathers_1_15(w) -> dict[str, int]:
             regime, why = regime_of(dict(reg), shares)
             w.insert("region_mist", land_region_id=reg["id"], regime=regime, why=why)
         n["region_mist"] += 1
+    band_of = mist_bands(w, S)  # land region -> its regime weather's variant for the region's water level
+    n["weather_mist_band"] = len(w.values("SELECT weather_id FROM weather_mist_band"))
     for reg in regions:  # region_mist decides each list's mist weather and chance (season.group_lists)
         if reg["border"]:
             continue
         for wid, chance, glob in region_list(w, reg["weather_group_id"]):
+            wid = band_of.get(reg["id"], {}).get(wid, wid)  # the parent's chance and season global, its band's copy
             w.insert("land_region_weather", land_region_id=reg["id"], weather_id=wid, chance=chance,
                      season_global=glob)
             n["land_region_weather"] += 1

@@ -5838,6 +5838,21 @@ CREATE TABLE "mist_regime" (
   "why" TEXT NOT NULL
 );
 
+-- Home of a mist weather's ground-hugging bank (owner play test 3 finding 9; lane-1.15-r4-light): the Community Shaders
+-- Exponential Height Fog height its per-weather file sets (SKSE/Plugins/CommunityShaders/Weathers/<0xID~plugin>.json,
+-- CS 1.9.1 WeatherManager). The height fog is one absolute Z, so a regime's weather is copied once per water-level band of
+-- the regions it serves (variant_of the regime's weather; same colours, sky and fog distances); fog_height_u puts the
+-- bank's top (a tenth of its density) between the band's water and the eye.
+CREATE TABLE "weather_mist_band" (
+  "weather_id" TEXT NOT NULL PRIMARY KEY REFERENCES "weather"("id"),
+  "variant_of" TEXT NOT NULL REFERENCES "weather"("id"),
+  "water_lo_m" REAL NOT NULL,
+  "water_hi_m" REAL NOT NULL,
+  "fog_height_u" REAL NOT NULL,
+  "why" TEXT NOT NULL,
+  CHECK ("water_lo_m" <= "water_hi_m")
+);
+
 -- Home of a mist regime's chance in a season: its fog weather's share of the region's list (the rest is the synoptic weathers).
 CREATE TABLE "mist_regime_season" (
   "regime_id" TEXT NOT NULL REFERENCES "mist_regime"("id"),
