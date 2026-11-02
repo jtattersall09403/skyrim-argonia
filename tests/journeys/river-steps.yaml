@@ -1,0 +1,155 @@
+# River steps (lane 1.15-r4-water, owner play test 3 findings 19 and 20): three of the steepest kept steps,
+# three reaches turned to dry gullies, two still bodies; teleport, settle, one still each at the play camera.
+# Reader checklist: at a step, the rapids line sits on the upper water at the edge and flows down; the skirt and
+# ring sit on the lower water at the foot; no piece in the air or facing uphill; no water sheet edge hanging over
+# ground. At a gully: no water surface, a dry bed. At a still body: the surface does not flow (no drift).
+# z is placed high and the player falls (tgm); the planner runs it in the round's batch.
+id: river-steps
+runner: 1
+crash_risk: medium
+scene: creature-spots
+steps:
+- name: step-1
+  # kept 19.6 m step (-50,47) s
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -50 47, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -202944
+  - console: player.setpos y 193112
+  - console: player.setpos z 30142.0
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 180
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: step-1}
+  reader: [the header checklist for this kind of stop]
+- name: step-2
+  # kept 19.5 m step (-47,16) w
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -47 16, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -191912
+  - console: player.setpos y 69056
+  - console: player.setpos z 17852
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 270
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: step-2}
+  reader: [the header checklist for this kind of stop]
+- name: step-3
+  # kept 19.5 m step (-59,-12) s
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -59 -12, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -238272
+  - console: player.setpos y -48552
+  - console: player.setpos z 11046
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 180
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: step-3}
+  reader: [the header checklist for this kind of stop]
+- name: gully-1
+  # dry gully reach.1375-169 (was a 119.8 m step)
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -19 58, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -77635
+  - console: player.setpos y 240358
+  - console: player.setpos z 20000
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: gully-1}
+  reader: [the header checklist for this kind of stop]
+- name: gully-2
+  # dry gully reach.97-2505 (was 54.1 m)
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -60 -15, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -242299
+  - console: player.setpos y -60286
+  - console: player.setpos z 20000
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: gully-2}
+  reader: [the header checklist for this kind of stop]
+- name: gully-3
+  # dry gully reach.70-1177 (was 38.1 m)
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -60 26, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -245577
+  - console: player.setpos y 109651
+  - console: player.setpos z 20000
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: gully-3}
+  reader: [the header checklist for this kind of stop]
+- name: still-1
+  # still lake-lowland cell (-36,-8), level 17.9 m
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -36 -8, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -145408
+  - console: player.setpos y -30720
+  - console: player.setpos z 20000
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: still-1}
+  reader: [the header checklist for this kind of stop]
+- name: still-2
+  # still tarn-upland cell (-62,24), level 262.7 m
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province -62 24, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -251904
+  - console: player.setpos y 100352
+  - console: player.setpos z 20000
+  - wait: 6
+  - camera: third
+  - console: player.setangle z 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: still-2}
+  reader: [the header checklist for this kind of stop]
