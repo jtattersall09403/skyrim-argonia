@@ -229,6 +229,9 @@ out/terrain-sample/NAME`, `check --sample`, `render --sample --hillshade --out N
   (the-drawdown-flats -26,59; the-slumped-hamlet 31,50): the floor pinned under the level beside a rim pinned
   15 m higher. Fix: a depression's bank within `SINK_FREE` 6 samples of its flooded floor is not pinned. 0 pairs.
 - Sample (s17g, the committed code): `check --sample` fails [], lattice 1.362, overflow 0, generate 154 s.
+- Province: one `terrain generate` at 9a9ce2c's code wrote the shared out/terrain/ground-f32.npy at 07:11:27 in
+  134.3 s. The LAND build and whole-province `terrain check` were stopped at the planner's word (the planner builds
+  and checks from that ground); the province overflow is not yet measured on it.
 - Not committed (in `~/.argonia/jobs/generate-held.py`): raster water in a padding or enclosed cell standing over
   its ring's level by a riffle is a gully, not foot (`CellWater.held`, loaded but unused). It removes the last
   big carves (-55,-20 and -55,-19: a 63 m pool cut to 0 m; 18,43 and 19,43: 122 m to 0 m) but turns
