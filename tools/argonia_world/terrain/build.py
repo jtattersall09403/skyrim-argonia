@@ -14,9 +14,11 @@ from __future__ import annotations
 
 import base64
 import gzip
+import hashlib
 import json
 import multiprocessing as mp
 import os
+import pickle
 import shutil
 import time
 from dataclasses import dataclass, field
@@ -68,7 +70,7 @@ class Stats:
             elif k.startswith("max_") or k.endswith("_max_step_m"):
                 setattr(self, k, max(getattr(self, k), v))
             else:
-                setattr(self, k, getattr(self, k) + v)
+                setattr(self, k, (getattr(self, k) + v)[:20] if k == "overflow_at" else getattr(self, k) + v)
 
 
 def b64(a: np.ndarray) -> str:
@@ -188,12 +190,96 @@ def shard_name(cy: int) -> str:
     return f"cy{cy:+04d}.jsonl.gz"
 
 
-def write_row(b: Builder, boxes, land: Path, cy: int) -> None:
+def _atomic(path: Path, data: bytes) -> None:
+    part = path.with_name(path.name + ".part")
+    part.write_bytes(data)
+    part.replace(path)
+
+
+def write_row(b: Builder, boxes, land: Path, cy: int) -> Stats:
+    """One row's shard (whole or absent) and its stats file; returns the row's stats."""
     spans = sorted({(bx[0], bx[2]) for bx in boxes if bx[1] <= cy <= bx[3]})
-    lines = [json.dumps(c, separators=(",", ":"), sort_keys=True) for x0, x1 in spans for c in b.row(cy, x0, x1)]
+    keep, b.stats = b.stats, Stats()
+    try:
+        lines = [json.dumps(c, separators=(",", ":"), sort_keys=True) for x0, x1 in spans for c in b.row(cy, x0, x1)]
+        st = b.stats
+    finally:
+        b.stats = keep
     if lines:
-        with open(land / shard_name(cy), "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
+        part = land / (shard_name(cy) + ".part")
+        with open(part, "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
             z.write(("\n".join(lines) + "\n").encode("ascii"))
+        part.replace(land / shard_name(cy))
+    _atomic(row_stats_path(land, cy), pickle.dumps((len(lines), st)))
+    return st
+
+
+def row_stats_path(land: Path, cy: int) -> Path:
+    return land / "_stats" / f"{cy:+04d}.pkl"
+
+
+def row_complete(land: Path, boxes, cy: int) -> Stats | None:
+    """The stats of a finished row left by an interrupted build, or None: the shard reads to its end with the cell
+    count its stats file recorded."""
+    try:
+        want, st = pickle.loads(row_stats_path(land, cy).read_bytes())
+        n = 0
+        if want:
+            with gzip.open(land / shard_name(cy), "rt", encoding="ascii") as z:
+                n = sum(1 for _ in z)
+        return st if n == want else None
+    except (OSError, EOFError, ValueError, pickle.UnpicklingError):
+        return None
+
+
+def sha256_file(p: Path) -> str:
+    h = hashlib.sha256()
+    with open(p, "rb") as f:
+        while chunk := f.read(1 << 24):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def code_stamp() -> str:
+    """The terrain code the cell lines depend on (the files the pipeline's terrain stamp reads)."""
+    h = hashlib.sha256()
+    here = Path(__file__).parent
+    for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py", "png.py", "place_ground.py",
+              "quantize.py", "world.py"):
+        h.update(n.encode() + (here / n).read_bytes())
+    return h.hexdigest()
+
+
+def _pid_alive(name: str) -> bool:
+    tail = name.rsplit("-", 1)[-1]
+    if not tail.isdigit():
+        return False
+    try:
+        os.kill(int(tail), 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+
+
+def claim_tmp(out: Path, inputs: dict | None, mine: Path) -> bool:
+    """Reuse an interrupted build's land.tmp-* directory whose inputs.json equals `inputs` (moved to `mine`); delete
+    every other one that no live process owns. True when rows were inherited."""
+    reused = False
+    for d in sorted(out.glob("land.tmp-*")):
+        try:
+            same = inputs is not None and json.loads((d / "inputs.json").read_text()) == inputs
+        except (OSError, ValueError):
+            same = False
+        if same and not reused:
+            if d != mine:
+                shutil.rmtree(mine, ignore_errors=True)
+                d.rename(mine)
+            reused = True
+        elif d != mine and not _pid_alive(d.name):
+            shutil.rmtree(d, ignore_errors=True)
+    return reused
 
 
 _WORKER: dict = {}
@@ -205,16 +291,15 @@ def _worker_init(factory, boxes, land, kw) -> None:
 
 
 def _worker_row(cy: int):
-    b = _WORKER["b"]
-    b.stats = Stats()
-    write_row(b, _WORKER["boxes"], _WORKER["land"], cy)
-    return cy, b.stats
+    return cy, write_row(_WORKER["b"], _WORKER["boxes"], _WORKER["land"], cy)
 
 
-def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1, factory=None, **kw) -> Stats:
+def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1, factory=None, inputs: dict | None = None,
+          **kw) -> Stats:
     """Every cell of the grid, or of `cells`: one box (x0, y0, x1, y1) or a list of boxes (the gate's sample).
     jobs > 1 (0 = every CPU) splits the rows over forked workers, each calling `factory() -> (src, mat)` for its own
-    sources; the files and stats are the single process's."""
+    sources; the files and stats are the single process's. `inputs`: what the rows depend on (terrain stamp, ground
+    sha256, code stamp); an interrupted build's land.tmp-* with equal inputs.json is resumed, its finished rows kept."""
     t0 = time.time()
     b = Builder(src, mat, **kw)
     gx0, gy0, gx1, gy1 = src.cell_range
@@ -224,29 +309,45 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1
             raise ValueError(f"cells {x0},{y0},{x1},{y1} outside the grid {gx0},{gy0},{gx1},{gy1}")
     final = out / "land"
     land = out / f"land.tmp-{os.getpid()}"  # rows go here; the old land stays whole until they are all written
-    shutil.rmtree(land, ignore_errors=True)
-    land.mkdir(parents=True)
+    if inputs is not None:
+        inputs = {**inputs, "cells": [list(bx) for bx in boxes]}
+    reused = claim_tmp(out, inputs, land)
+    if not reused:
+        shutil.rmtree(land, ignore_errors=True)
+    (land / "_stats").mkdir(parents=True, exist_ok=True)
+    if inputs is not None:
+        _atomic(land / "inputs.json", json.dumps(inputs, sort_keys=True).encode())
     rows = list(range(max(bx[3] for bx in boxes), min(bx[1] for bx in boxes) - 1, -1))  # north to south: the
     # grid's row order, so the memory maps read forward
-    jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(rows)))
+    done = {cy: st for cy in rows if reused and (st := row_complete(land, boxes, cy)) is not None}
+    todo = [cy for cy in rows if cy not in done]
+    for cy in todo:  # a partial or stale row goes
+        for q in (land / shard_name(cy), land / (shard_name(cy) + ".part"), row_stats_path(land, cy)):
+            q.unlink(missing_ok=True)
+    if done:
+        print(f"  resuming {land.name}: {len(done)} of {len(rows)} rows kept", flush=True)
+    jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(todo) or 1))
     if jobs > 1 and factory is None:
         jobs = 1
     try:
         if jobs == 1:
             for cy in rows:
-                write_row(b, boxes, land, cy)
+                b.stats.merge(done[cy] if cy in done else write_row(b, boxes, land, cy))
                 if progress:
                     progress(cy, b.stats)
         else:
             ctx = mp.get_context("fork")
             with ctx.Pool(jobs, initializer=_worker_init, initargs=(factory, boxes, land, kw)) as pool:
-                for cy, st in pool.imap(_worker_row, rows):  # in row order; each worker holds its own maps
-                    b.stats.merge(st)
+                it = pool.imap(_worker_row, todo)  # in row order; each worker holds its own maps
+                for cy in rows:
+                    b.stats.merge(done[cy] if cy in done else next(it)[1])
                     if progress:
                         progress(cy, b.stats)
     except BaseException:
         shutil.rmtree(land, ignore_errors=True)
         raise
+    shutil.rmtree(land / "_stats", ignore_errors=True)
+    (land / "inputs.json").unlink(missing_ok=True)
     old = out / f"land.old-{os.getpid()}"
     if final.exists():
         final.rename(old)

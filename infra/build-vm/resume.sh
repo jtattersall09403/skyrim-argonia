@@ -18,6 +18,16 @@ export PATH="$HOME/.local/bin:$PATH"
 mkdir -p "$STATE"
 [ $DRY = 1 ] || rm -f "$STATE/last-active"
 
+# A plugin-* or deploy-* job of today with a log but no rc was cut off (spot reclaim): name it for the planner,
+# which relaunches it (the land build resumes from its kept rows). Never relaunched here.
+JOBS="${JOBS_DIR:-$HOME/.argonia/jobs}"
+today=$(date +%F)
+for log in "$JOBS"/plugin-*.log "$JOBS"/deploy-*.log; do
+  [ -f "$log" ] || continue
+  n=$(basename "$log" .log)
+  [ -f "$JOBS/$n.rc" ] || [ "$(date -r "$log" +%F)" != "$today" ] || echo "interrupted: $n"
+done
+
 if [ $DRY = 0 ] && tmux has-session -t argonia 2>/dev/null; then exit 0; fi
 
 CLAUDE="claude --permission-mode auto"

@@ -79,8 +79,12 @@ def cmd_build(a) -> int:
 
     parent = os.getpid()
     src, mat = factory()
+    from tools.argonia_world.terrain.grid import generated_ground
+    gfile = gp or generated_ground()  # resume: the rows of an interrupted build are kept while these three hold
+    inputs = {"terrain_stamp": a.stamp, "ground_sha256": B.sha256_file(gfile) if gfile.exists() else "",
+              "code_stamp": B.code_stamp(), "apron": not a.no_apron} if a.stamp else None  # no stamp, no resume
     st = B.build(src, mat, out, cells=world.SAMPLE if a.sample else _cells(a.cells), progress=progress,
-                 jobs=os.cpu_count() or 1 if a.jobs is None else a.jobs, factory=factory)
+                 jobs=os.cpu_count() or 1 if a.jobs is None else a.jobs, factory=factory, inputs=inputs)
     d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in st.__dict__.items()}
     d["cells_arg"] = "sample" if a.sample else a.cells
     d["apron"] = not a.no_apron
@@ -305,6 +309,7 @@ def main(argv=None) -> int:
     b.add_argument("--no-apron", action="store_true")
     b.add_argument("--sample", action="store_true")
     b.add_argument("--ground", help="the ground-f32.npy to build from (a pipeline run's frozen copy)")
+    b.add_argument("--stamp", help="the pipeline's terrain stamp (names the inputs an interrupted build resumes under)")
     b.add_argument("--jobs", type=int, help="worker processes (default every CPU; 1 = one process)")
     w = sub.add_parser("world")
     w.add_argument("--out")

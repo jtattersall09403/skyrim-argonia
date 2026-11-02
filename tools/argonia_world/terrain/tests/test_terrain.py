@@ -1,4 +1,5 @@
 """L1 on a synthetic 4x4-cell province with a 1-cell apron: VHGT round trip, the limiter, seams, layers."""
+import json
 from pathlib import Path
 
 import numpy as np
@@ -125,3 +126,61 @@ def test_partial_builds_default_to_their_own_dir():
     assert M.default_out(ns(cells="-5,6,7,8")) == M.SAMPLE_OUT / "cells--5,6,7,8"
     assert M.default_out(ns(sample=True, out="x")) == Path("x")
     assert M.OUT not in M.default_out(ns(sample=True)).parents
+
+
+def test_interrupted_build_resumes_and_matches_a_clean_one(tmp_path):
+    s = src()
+    cells = (-63, -63, -62, -62)  # a two-row window
+    inp = {"terrain_stamp": "t1", "ground_sha256": "g1", "code_stamp": "c1"}
+    clean = tmp_path / "clean"
+    st_clean = build.build(s, table(), clean, cells=cells, inputs=inp)
+    shards = sorted(p.name for p in (clean / "land").iterdir())
+    assert len(shards) == 2
+    # a reclaimed build: its tmp dir is kept with one row whole and the other cut short
+    out = tmp_path / "resumed"
+    real = build.write_row
+    seen = []
+
+    def killed(b, boxes, land, cy):
+        if seen:
+            raise KeyboardInterrupt  # the second row never finishes
+        seen.append(cy)
+        return real(b, boxes, land, cy)
+    build.write_row = killed
+    real_rmtree = build.shutil.rmtree
+    build.shutil.rmtree = lambda *a, **k: None  # a killed process cleans nothing up
+    try:
+        try:
+            build.build(s, table(), out, cells=cells, inputs=inp)
+        except KeyboardInterrupt:
+            pass
+    finally:
+        build.shutil.rmtree = real_rmtree
+    tmp, = out.glob("land.tmp-*")
+    assert (tmp / "inputs.json").exists() and len(list(tmp.glob("cy*.jsonl.gz"))) == 1
+    built = []
+
+    def spy(b, boxes, land, cy):
+        built.append(cy)
+        return real(b, boxes, land, cy)
+    build.write_row = spy
+    try:
+        st_res = build.build(s, table(), out, cells=cells, inputs=inp)
+    finally:
+        build.write_row = real
+    assert len(built) == 1 and built[0] != seen[0]  # the finished row was reused, the other rebuilt
+    assert [p.name for p in out.iterdir()] == ["land"]
+    for n in shards:
+        assert (out / "land" / n).read_bytes() == (clean / "land" / n).read_bytes()
+    assert st_res.__dict__ == {**st_clean.__dict__, "seconds": st_res.seconds}
+
+
+def test_a_tmp_dir_with_other_inputs_is_deleted(tmp_path):
+    s = src()
+    stale = tmp_path / "land.tmp-999999998"
+    stale.mkdir()
+    (stale / "inputs.json").write_text(json.dumps({"terrain_stamp": "old"}))
+    (stale / "cy-063.jsonl.gz").write_bytes(b"junk")
+    build.build(s, table(), tmp_path, cells=(-63, -63, -62, -62), inputs={"terrain_stamp": "new"})
+    assert [p.name for p in tmp_path.iterdir()] == ["land"]
+    assert not (tmp_path / "land" / "inputs.json").exists()

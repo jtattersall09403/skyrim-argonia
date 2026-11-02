@@ -353,7 +353,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
         if not sample:
             _refuse_shared_rebuild(into)
         run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
-            *(["--sample"] if sample else []), capped=True)
+            "--stamp", now, *(["--sample"] if sample else []), capped=True)
         if not sample:
             stamp.write_text(now)
     run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into,
