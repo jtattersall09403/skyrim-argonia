@@ -60,12 +60,12 @@ class Sources:
     edits: object = None  # the built places' ground edits (place_ground.Edits), applied by heights() before it
 
     @classmethod
-    def load(cls, root: Path | None = None, apron: bool = True) -> Sources:
+    def load(cls, root: Path | None = None, apron: bool = True, ground: Path | None = None) -> Sources:
         from tools.argonia_world.terrain import place_ground, png, water_regrade
 
         r = root or data_root()
         tint = r / "terrain" / "ground-tint.png"
-        gen = generated_ground()
+        gen = Path(ground) if ground else generated_ground()  # `ground`: a pipeline run's frozen copy
         return cls(
             ground=np.load(gen if gen.exists() else r / "terrain" / "refined-height-f32.npy", mmap_mode="r"),
             apron=np.load(r / "terrain" / "apron-source-near.npy", mmap_mode="r") if apron else None,

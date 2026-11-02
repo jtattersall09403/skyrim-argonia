@@ -60,7 +60,8 @@ def default_out(a) -> Path:
 
 def cmd_build(a) -> int:
     a.out = str(default_out(a))
-    src = Sources.load(apron=not a.no_apron)
+    gp = Path(a.ground) if getattr(a, "ground", None) else None
+    src = Sources.load(apron=not a.no_apron, ground=gp)
     out = Path(a.out)
     out.mkdir(parents=True, exist_ok=True)
 
@@ -72,7 +73,7 @@ def cmd_build(a) -> int:
     from tools.argonia_world.terrain import material as M
 
     def factory():
-        s = src if os.getpid() == parent else Sources.load(apron=not a.no_apron)
+        s = src if os.getpid() == parent else Sources.load(apron=not a.no_apron, ground=gp)
         w = db.open()
         return s, M.Material(s, M.Water.load(w, s.pad), M.Regions.load(w, s.pad, s.n))
 
@@ -298,11 +299,13 @@ def main(argv=None) -> int:
     b.add_argument("--out", help="default out/terrain; with --sample or --cells out/terrain-sample/<sample|cells-x0,y0,x1,y1>")
     b.add_argument("--no-apron", action="store_true")
     b.add_argument("--sample", action="store_true")
+    b.add_argument("--ground", help="the ground-f32.npy to build from (a pipeline run's frozen copy)")
     b.add_argument("--jobs", type=int, help="worker processes (default every CPU; 1 = one process)")
     w = sub.add_parser("world")
     w.add_argument("--out")
     w.add_argument("--cells")
     w.add_argument("--sample", action="store_true")
+    w.add_argument("--ground")
     c = sub.add_parser("check")
     c.add_argument("--out")
     c.add_argument("--cells")
@@ -337,7 +340,7 @@ def main(argv=None) -> int:
         return cmd_render(a)
     if a.cmd == "world":
         out = default_out(a)
-        print(world.write(out / "world.json", Sources.load().cell_range, out / "land"))
+        print(world.write(out / "world.json", Sources.load(ground=Path(a.ground) if a.ground else None).cell_range, out / "land"))
         return 0
     return cmd_build(a) if a.cmd == "build" else cmd_check(a)
 

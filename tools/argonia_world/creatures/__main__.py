@@ -88,7 +88,7 @@ def _build(a) -> int:
     else:
         x0, y0 = su.PROVINCE_CELL_SW
         cells = [(x, y) for y in range(y0, y0 + su.PROVINCE_CELLS) for x in range(x0, x0 + su.PROVINCE_CELLS)]
-    r = build.run(w, Sources.load(), solve.load(w), cells, None, log=lambda s: None, veg=Path(a.veg) if a.veg else None)
+    r = build.run(w, Sources.load(ground=Path(a.ground) if a.ground else None), solve.load(w), cells, None, log=lambda s: None, veg=Path(a.veg) if a.veg else None)
     n = records.write_shards(r["refs"], Path(a.out), records.fixed_forms(w))
     print(f"creatures build: {n} refs in {len(cells)} cells ({r['summary']['seconds']} s)")
     return 0
@@ -140,6 +140,7 @@ def main(argv=None) -> int:
     p.add_argument("--out", required=True)
     p.add_argument("--sample", action="store_true")
     p.add_argument("--veg", help="the vegetation's shards: bush or open cover per spawn")
+    p.add_argument("--ground", help="the ground-f32.npy to place on (a pipeline run's frozen copy)")
     p = sub.add_parser("readback")
     p.add_argument("--out", required=True)
     p.add_argument("--esm", required=True)

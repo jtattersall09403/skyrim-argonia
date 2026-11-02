@@ -123,6 +123,7 @@ def main(argv=None) -> int:
     tx.add_argument("--mo2", default=str(Path.home() / ".argonia" / "stack" / "MO2" / "mods"))
     tx.add_argument("--vanilla", default=str(Path.home() / "games" / "skyrimse" / "Data"))
     b.add_argument("--sample", action="store_true")
+    b.add_argument("--ground", help="the ground-f32.npy to place on (a pipeline run's frozen copy)")
     b.add_argument("--cells")
     b.add_argument("--budget", action="store_true")
     a = p.parse_args(argv)
@@ -170,7 +171,8 @@ def main(argv=None) -> int:
             print("vegetation: --budget needs the whole province", file=sys.stderr)
             return 2
         t0 = time.time()
-        s = build.run(Path(a.out), Path(a.water), cells=boxes, budget=a.budget, log=print)
+        s = build.run(Path(a.out), Path(a.water), cells=boxes, budget=a.budget, log=print,
+                      ground=Path(a.ground) if a.ground else None)
         pr = s["province"]
         print(f"vegetation: {pr['refs']} refs in {pr['cells']} cells (max {pr['max']}, p95 {pr['p95']:.0f}) "
               f"in {time.time() - t0:.0f} s")

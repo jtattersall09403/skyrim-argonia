@@ -26,6 +26,7 @@ Order (each step vectorised over the whole grid; the arrays are 65 MB each):
 from __future__ import annotations
 
 import json
+import os
 import math
 import zlib
 import time
@@ -950,13 +951,25 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
     return out
 
 
+def atomic(path: Path, dump, mode: str = "wb") -> None:
+    """Write through `<name>.tmp-<pid>` and rename into place: a reader (a build in another tree sharing out/terrain)
+    sees the whole old file or the whole new one, and an interrupted write leaves the old one."""
+    tmp = path.with_name(f"{path.name}.tmp-{os.getpid()}")
+    try:
+        with open(tmp, mode) as f:
+            dump(f)
+        os.replace(tmp, path)
+    finally:
+        tmp.unlink(missing_ok=True)
+
+
 def write(res: dict, out: Path = OUT) -> dict:
     out.mkdir(parents=True, exist_ok=True)
-    np.save(out / "ground-f32.npy", res["ground"])
-    np.save(out / "cliff-u8.npy", res["cliff"])
-    np.save(out / "role-u8.npy", res["role"])
-    (out / "entrance-sites.json").write_text(json.dumps(res["sites"], indent=0) + "\n")
-    (out / "generate.json").write_text(json.dumps(res["stats"], indent=1, sort_keys=True) + "\n")
+    atomic(out / "ground-f32.npy", lambda f: np.save(f, res["ground"]))
+    atomic(out / "cliff-u8.npy", lambda f: np.save(f, res["cliff"]))
+    atomic(out / "role-u8.npy", lambda f: np.save(f, res["role"]))
+    atomic(out / "entrance-sites.json", lambda f: f.write(json.dumps(res["sites"], indent=0) + "\n"), "w")
+    atomic(out / "generate.json", lambda f: f.write(json.dumps(res["stats"], indent=1, sort_keys=True) + "\n"), "w")
     return res["stats"]
 
 

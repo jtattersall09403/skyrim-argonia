@@ -211,7 +211,36 @@ def ground() -> Path:
     if not (g.exists() and stamp.exists() and stamp.read_text() == now):
         run(sys.executable, "-m", "tools.argonia_world.terrain", "generate")  # its peak passes the 3 GB cap
         stamp.write_text(_ground_stamp())  # the rows generate wrote (entrance_site) are not in the stamp's tables
-    return g
+    return freeze_ground(g, _terrain_stamp()[:12])
+
+
+FROZEN_FILES = ("ground-f32.npy", "cliff-u8.npy", "role-u8.npy", "entrance-sites.json", "generate.json")
+FROZEN_KEEP = 2
+
+
+def freeze_ground(g: Path, stamp12: str, keep: int = FROZEN_KEEP) -> Path:
+    """Copy the ground this run decided to build from (and its cliff mask, roles, entrance sites and generate.json) to
+    <terrain>/build/<stamp12>/ and return that ground-f32.npy: the land, vegetation and creature stages read the copy,
+    so another tree's `terrain generate` over the shared out/terrain cannot change a build in progress. Derived
+    output (out/ is ignored); copies older than the newest `keep` are deleted."""
+    base = g.parent / "build"
+    dest = base / stamp12
+    tmp = base / f"{stamp12}.tmp-{os.getpid()}"
+    shutil.rmtree(tmp, ignore_errors=True)
+    tmp.mkdir(parents=True)
+    try:
+        for n in FROZEN_FILES:
+            if (g.parent / n).exists():
+                shutil.copyfile(g.parent / n, tmp / n)
+        shutil.rmtree(dest, ignore_errors=True)
+        tmp.replace(dest)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    os.utime(dest)
+    for old in sorted((d for d in base.iterdir() if d.is_dir() and ".tmp-" not in d.name),
+                      key=lambda d: d.stat().st_mtime, reverse=True)[keep:]:
+        shutil.rmtree(old, ignore_errors=True)
+    return dest / g.name
 
 
 WATER = ROOT / "tools" / "argonia_world" / "water"
@@ -281,7 +310,7 @@ def _veg_stamp() -> str:
     return h.hexdigest()
 
 
-def vegetation(into: Path, sample: bool) -> Path:
+def vegetation(into: Path, sample: bool, frozen: Path | None = None) -> Path:
     """The province's vegetation (2.W4 §a: our placement from the region rules) with its L1 checks against the
     LAND under `into`: the sample's cells for the gate, else every cell (re-placed only when its stamp changes)."""
     d = into / "vegetation"
@@ -290,7 +319,8 @@ def vegetation(into: Path, sample: bool) -> Path:
     if sample or not (stamp.exists() and stamp.read_text() == now):
         stamp.unlink(missing_ok=True)
         run(sys.executable, "-m", "tools.argonia_world.vegetation", "build", "--out", d, "--water",
-            WATER_OUT / "cells.jsonl", "--land", into / "land", *(["--sample"] if sample else []), capped=True)
+            WATER_OUT / "cells.jsonl", "--land", into / "land", *(["--sample"] if sample else []),
+            *(["--ground", frozen] if frozen else []), capped=True)
         if now:
             stamp.write_text(now)
     return d
@@ -316,17 +346,18 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
-    ground()
+    frozen = ground()
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
     if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
         if not sample:
             _refuse_shared_rebuild(into)
-        run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into,
+        run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
             *(["--sample"] if sample else []), capped=True)
         if not sample:
             stamp.write_text(now)
-    run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into)
+    run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into,
+        "--ground", frozen)
     wdir = water(into, sample)
     esm = into / "esm" / WORLD_ESM
     esm.parent.mkdir(parents=True, exist_ok=True)
@@ -337,7 +368,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
     if veg:  # 2.W4 §a, part of the build (the sample too: the gate's vegcheck): the REFRs spliced into each cell (VegetationRecords.cs)
-        vdir = vegetation(into, sample)
+        vdir = vegetation(into, sample, frozen)
         tmp = esm.with_suffix(".veg.esm")
         run(*(CAP if CAP else []), GEN, "vegetation", "--in", esm, "--veg", vdir, "--out", tmp)
         tmp.replace(esm)
@@ -346,7 +377,7 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     if veg:  # 1.15 §g, with the vegetation (both place on every cell): the spawn ACHRs and dens (CreatureRecords.cs)
         cdir = into / "creatures"
         run(sys.executable, "-m", "tools.argonia_world.creatures", "build", "--out", cdir, "--veg", vdir,
-            *(["--sample"] if sample else []), capped=True)
+            "--ground", frozen, *(["--sample"] if sample else []), capped=True)
         tmp = esm.with_suffix(".cr.esm")
         run(*(CAP if CAP else []), GEN, "creatures", "--in", esm, "--refs", cdir, "--out", tmp)
         tmp.replace(esm)

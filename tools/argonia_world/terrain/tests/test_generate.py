@@ -52,3 +52,21 @@ def test_reach_keeps_only_joined_low_ground():
     got = reach(seed, allowed)
     assert got[5, 3] and got[1, 4] and not got[5, 7]
     assert got.sum() == 12 + 2
+
+
+def test_write_is_atomic_an_interrupted_write_leaves_the_old_file(tmp_path):
+    f = tmp_path / "ground-f32.npy"
+    np.save(f, np.ones(4, np.float32))
+
+    def dies(fh):
+        fh.write(b"half a fie")
+        raise KeyboardInterrupt
+
+    try:
+        G.atomic(f, dies)
+    except KeyboardInterrupt:
+        pass
+    assert np.load(f).tolist() == [1.0] * 4
+    assert [p.name for p in tmp_path.iterdir()] == ["ground-f32.npy"]  # no tmp-<pid> left behind
+    G.atomic(f, lambda fh: np.save(fh, np.zeros(4, np.float32)))
+    assert np.load(f).tolist() == [0.0] * 4

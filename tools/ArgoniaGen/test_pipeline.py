@@ -61,3 +61,62 @@ def test_plugin_skip_decision():
     assert not skip("abc", "abd", True)         # an input changed
     assert not skip("abc", None, True)          # no stamp: never built, or the last build failed
     assert not skip("abc", "abc", False)        # an ESM is missing
+
+
+def test_freeze_ground_copies_the_field_and_keeps_the_last_two(tmp_path):
+    t = tmp_path / "terrain"
+    t.mkdir()
+    for n in pipeline.FROZEN_FILES:
+        (t / n).write_bytes(b"v1")
+    for i, s in enumerate(("aaa", "bbb", "ccc")):
+        (t / "ground-f32.npy").write_bytes(f"v{i}".encode())
+        frozen = pipeline.freeze_ground(t / "ground-f32.npy", s)
+        assert frozen == t / "build" / s / "ground-f32.npy"
+        for n in pipeline.FROZEN_FILES:
+            assert (frozen.parent / n).exists()
+        import os
+        os.utime(frozen.parent, (1000 + i, 1000 + i))
+    (t / "ground-f32.npy").write_bytes(b"overwritten by a lane")  # the shared file changes under a build
+    assert frozen.read_bytes() == b"v2"
+    assert sorted(p.name for p in (t / "build").iterdir()) == ["bbb", "ccc"]
+
+
+def test_world_hands_the_frozen_ground_to_every_stage(tmp_path, monkeypatch):
+    frozen = tmp_path / "terrain" / "build" / "abc" / "ground-f32.npy"
+    calls = []
+
+    def fake_run(*cmd, capped=False, quiet=True):
+        calls.append([str(c) for c in cmd])
+        if cmd[0] == "gen" and "--out" in cmd:  # the generator's stages write their --out
+            Path(cmd[list(cmd).index("--out") + 1]).write_bytes(b"esm")
+        return ""
+
+    class Done:
+        returncode = 0
+        stdout = stderr = ""
+
+    def fake_sub(cmd, **kw):
+        for i, c in enumerate(cmd):  # the generator writes its --out
+            if c == "--out":
+                Path(cmd[i + 1]).write_bytes(b"esm")
+        return Done()
+
+    monkeypatch.setattr(pipeline, "ground", lambda: frozen)
+    monkeypatch.setattr(pipeline, "run", fake_run)
+    monkeypatch.setattr(pipeline.subprocess, "run", fake_sub)
+    monkeypatch.setattr(pipeline, "water", lambda into, sample: into / "water")
+    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda: "s")
+    monkeypatch.setattr(pipeline, "_veg_stamp", lambda: "v")
+    monkeypatch.setattr(pipeline, "_refuse_shared_rebuild", lambda into: None)
+    monkeypatch.setattr(pipeline, "WORLD_CAP", [])
+    monkeypatch.setattr(pipeline, "CAP", [])
+    monkeypatch.setattr(pipeline, "GEN", "gen")
+    (tmp_path / "land").mkdir()
+    (tmp_path / "vegetation").mkdir()
+    pipeline.world(tmp_path / "data", tmp_path, sample=False)
+    for stage in ("build", "world"):
+        c = next(c for c in calls if c[2:4] == ["tools.argonia_world.terrain", stage])
+        assert c[c.index("--ground") + 1] == str(frozen), stage
+    for mod in ("vegetation", "creatures"):
+        c = next(c for c in calls if c[2] == f"tools.argonia_world.{mod}" and c[3] == "build")
+        assert c[c.index("--ground") + 1] == str(frozen), mod

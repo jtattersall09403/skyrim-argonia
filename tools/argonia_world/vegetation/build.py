@@ -163,7 +163,8 @@ def province_cells(cells=None) -> list[tuple[int, int]]:
     return [c for c in allc if any(a <= c[0] <= b and d <= c[1] <= e for a, d, b, e in cells)]
 
 
-def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=None, src=None, log=print) -> dict:
+def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=None, src=None, log=print,
+        ground: Path | None = None) -> dict:
     """Place every province cell's vegetation (or those in `cells`: boxes (x0, y0, x1, y1)); write the shards and
     summary.json. budget=True: compute each region's keep from these cells and write the budget rows (the whole
     province only)."""
@@ -174,7 +175,7 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
 
     t0 = time.time()
     w = world if world is not None else db.open()
-    src = src or inputs.ground_sources()
+    src = src or inputs.ground_sources(ground)
     rules = load_rules(w)
     region = cell_regions(w)
     keep = keeps(w)

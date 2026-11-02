@@ -32,12 +32,12 @@ PLANE_BASES_FIRST, PLANE_BASES_LAST = 0x100004, 0x100007  # the four water-plane
 PLANE_HALF_UNITS = 512.0  # Water1024.nif: -512..512 (water/plan.py PLANE_MESH_UNITS / 2)
 
 
-def ground_sources():
+def ground_sources(ground=None):
     """terrain/grid.Sources.load without the ground tint (the navmesh reads heights and cover only; the tint's PNG
     decode is 9 of the 11 s a small box takes)."""
     from tools.argonia_world.terrain import grid, place_ground, water_regrade
-    if (ROOT / "out" / "terrain" / "ground-f32.npy").exists():  # 1.15: the rebuilt ground, as Sources.load reads it
-        s = grid.Sources.load()
+    if ground or (ROOT / "out" / "terrain" / "ground-f32.npy").exists():  # 1.15: the rebuilt ground, as Sources.load reads it
+        s = grid.Sources.load(ground=ground)
         s.tint = None
         return s
     r = grid.data_root() / "terrain"
