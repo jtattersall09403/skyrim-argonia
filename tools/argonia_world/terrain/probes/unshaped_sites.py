@@ -1,15 +1,16 @@
 """Probe (1.15 ground): each unshaped entrance site with its shape, role, centre height, rim-plane relief, core
 std and water levels. Usage: python3 -m tools.argonia_world.terrain.probes.unshaped_sites"""
 import json
+import os
 
 import numpy as np
 
 from tools.argonia_world import db
 from tools.argonia_world.terrain import cellwater, generate as G
 
-g = np.load("out/terrain/ground-f32.npy").astype(np.float64)
-role = np.load("out/terrain/role-u8.npy")
-sites = json.load(open("out/terrain/entrance-sites.json"))
+g = np.load(os.environ.get("ARGONIA_GROUND", "out/terrain") + "/ground-f32.npy").astype(np.float64)
+role = np.load(os.environ.get("ARGONIA_GROUND", "out/terrain") + "/role-u8.npy")
+sites = json.load(open(os.environ.get("ARGONIA_GROUND", "out/terrain") + "/entrance-sites.json"))
 w = cellwater.load(db.open())
 res = G.check(g, role, w, sites)
 vmin, vmax = G.vertex_levels(w.level)

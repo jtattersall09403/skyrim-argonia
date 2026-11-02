@@ -939,7 +939,10 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
             door = float(plane[ki, kj])
             if np.isfinite(wlo[ki, kj]):  # a door held above water stands there; its rise is measured from it
                 door = max(door, float(wlo[ki, kj]))
-            win[:] = np.maximum(win, door + hill)
+            # the rise is eased in by its own weight (hill / RISE_M): only the ground behind the door is raised, never
+            # the whole window to the door's level (session 13: a hillside mouth lifted the flats 100-200 m away by
+            # 14-35 m, all five unshaped flats)
+            win[:] = np.maximum(win, win + (door + hill - win) * (hill / RISE_M))
             win[:] = np.where(d <= 0.3, np.minimum(win, door + hill), win)  # the door's own ground is cut, not raised
         elif shape == "depression":  # a sinkhole: in a water cell its floor floods (it joins the cell's water)
             win[:] = np.minimum(win, win * (1 - w) + (plane - DEPRESSION_M) * w)
