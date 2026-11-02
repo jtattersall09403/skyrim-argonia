@@ -695,8 +695,14 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     # 4 (run here). the roads laid in as Skyrim.esm lays them (routes/shape.py: the measured trough across, the grade
     # along), after the water field and the sites so neither re-slopes them, then held inside their cones: a pinned
     # site core and a water's bank or bed keep their shape (a crossing: routes.shape check's crossings, a bridge)
+    # the road yields to water: no shaping on a bed, a gully, a step channel or the wet raster, and the trough and
+    # the smoothing stop at the bank (routes/shape.py), so a crossing keeps the graded bed and banks (no wall)
     from tools.argonia_world.routes import shape as road_shape
-    st["roads"] = road_shape.shape(h, inp.roads)
+    rwater = foot | gully | chan | ~np.isnan(inp.wet_level)
+    if os.environ.get("ARGONIA_ROAD_DUMP"):  # routes/shape.py's window loop: the ground the road pass starts from
+        np.savez(os.environ["ARGONIA_ROAD_DUMP"], h=h.astype(np.float32), lo=lo.astype(np.float32),
+                 hi=hi.astype(np.float32), water=rwater)
+    st["roads"] = road_shape.shape(h, inp.roads, rwater, lo, hi)
     h = np.minimum(np.maximum(h, lo), hi)
 
     # 7. the slope limit inside the cones
