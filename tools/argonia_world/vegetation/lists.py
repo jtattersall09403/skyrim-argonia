@@ -69,12 +69,24 @@ MARSH_TREE_HA = 52.0
 # delta 34 trees a cell against the band 9-27)
 MARSH_TREE_HA_BY = {"coastal-lagoon": 170.0, "deep-sink-basin": 90.0, "tidal-delta": 68.0, "rootland": 100.0, "deep-river-corridor": 80.0}
 # ... and per region (id "packet.class"), where the new ground leaves a region's cells mostly deeper than a tree stands
-# in (session 8: window means before the scale: mercantile lagoon 1.4, saxhleel 2.6, penal-south 4.2, dunmer-north 3.7 a
-# cell against the band 9-27; dunmer-north sink 8.6)
-MARSH_TREE_HA_REGION = {"mercantile-coast.coastal-lagoon": 1700.0, "saxhleel-coast.coastal-lagoon": 1500.0,
-                        "imperial-penal-south.coastal-lagoon": 530.0, "dunmer-north.coastal-lagoon": 620.0,
-                        "dunmer-north.deep-sink-basin": 70.0}
-LAGOON_TREE_DEPTH = 6.0  # m under the water: mangrove and cypress trunks stand in a lagoon to this depth
+# in (session 9: calibrated on the check's own countable cells, trees standing to the marsh posture's 1.2-2 m only:
+# lagoon means 19-25 a cell against the band 9-27)
+MARSH_TREE_HA_REGION = {"mercantile-coast.coastal-lagoon": 250.0, "saxhleel-coast.coastal-lagoon": 130.0,
+                        "imperial-penal-south.coastal-lagoon": 199.0, "dunmer-north.coastal-lagoon": 297.0,
+                        "dunmer-north.deep-sink-basin": 153.0}
+# ONE definition of a countable cell, for the planner's targets here and the check's band (checks.py): a cell counts
+# toward its tree band when a quarter of its vertices lie within 2 m under the water (the cypress band's depth) or
+# above it. A cell of open water (a lagoon's sea floor) is no marsh cell: Skyrim.esm's marsh cells have ground to
+# stand on, and 5.8% of its trees stand in water at all (skyrim-does-it-this-way.md section 6), so the targets
+# below are trees per standable hectare-share, never a depth the trees stand in.
+STAND_DEPTH_M, STAND_SHARE = 2.0, 0.25
+
+
+def countable(ground, level) -> bool:
+    """True when the cell with these vertex heights and water levels (m) is a standable marsh cell."""
+    return bool((ground >= level - STAND_DEPTH_M).mean() >= STAND_SHARE)
+
+
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery")
 IN_WATER_TREE = (-6.0, 2.0)  # mangrove and cypress: trunks and roots in the water, and on the bank
 IN_WATER_NAMES = ("mangrove", "cypress")
@@ -280,8 +292,6 @@ def build(w) -> dict:
                 if eco in MARSH and (role == "mangrove" or (role in MARSH_TREE and any(
                         n in f["model"].lower() or n in f["edid"].lower() for n in IN_WATER_NAMES))):
                     lo, hi = IN_WATER_TREE
-                if rid in MARSH_TREE_HA_REGION and role in TREE_ROLES and hi is not None:
-                    hi = max(hi, LAGOON_TREE_DEPTH)  # a lagoon's ground is mostly deeper than a tree stands in
                 if "sea" in t:
                     lo, hi = SEA_POSTURE
                 mx = m["slope"]

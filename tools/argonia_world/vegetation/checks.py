@@ -27,6 +27,7 @@ import numpy as np
 from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.terrain import quantize
 from tools.argonia_world.vegetation import build, forms, place
+from tools.argonia_world.vegetation import lists as lists_mod
 
 GROUND_TOL_M = 0.5
 SLOPE_TOL_DEG = 0.01
@@ -41,8 +42,7 @@ ECO_BAND = {"deep-river-corridor": "forest", "flooded-forest": "forest", "interi
             "rootland": "forest", "deep-sink-basin": "marsh", "coastal-lagoon": "marsh", "tidal-delta": "marsh",
             "northern-transition": "field", "western-frontier": "field"}
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")
-STAND_DEPTH_M, STAND_SHARE = 2.0, 0.25  # a cell counts toward its tree band when a quarter of its vertices lie
-# within 2 m under the water (the cypress band's depth) or above it
+# a cell counts toward its tree band by lists.countable, the one definition the planner's targets use too
 BAND_MIN_CELLS = 10  # a region of fewer standable cells is a handful of cells of one coast, not a stand: reported only
 BAND_LO, BAND_HI = 0.5, 1.5  # a region's mean trees per cell within these multiples of its band's mean
 BAND_LO_FIELD = 0.25  # the hills are "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14), and the rocky
@@ -150,7 +150,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
                 T = np.full(T.shape, cw.nearest_level(cx, cy))
             # a tree band is Skyrim.esm's marsh cells with ground to stand on: a cell of open water (a lagoon's
             # sea floor) is no marsh cell, so it is left out of the mean (session 6)
-            if (H[(cx, cy)] >= L - STAND_DEPTH_M).mean() >= STAND_SHARE:
+            if lists_mod.countable(H[(cx, cy)], L):
                 trees[region].append(int(is_tree.sum()))
             depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
