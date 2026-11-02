@@ -212,25 +212,29 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 7 (main at its commit or later). Measured Skyrim.esm (`terrain/probes/vanilla_step_chains.py`): tallest real
-one-edge water step 65.7 m (a 394.6 m pair under a mountain aside); taller drops chain over cells (105.7 m in two
-steps of 51.1/54.6 m; 13 cells start a 2+ step chain). Ours: `water/solve.py yield_walls`: two waters d cells apart
-(Chebyshev, d <= 2) differ by at most d x 218.3 m (one cell at the 75 deg design slope), else the upper body yields
-the cell to dry ground: 5 cells (4 of body.1052-567, 1 of body.1144-450); (-25,48)'s wall is gone. The stricter
-vanilla bound (65.7 m) would yield 237 cells: a planner call. 87 closed steps exceed 65.7 m today.
-`terrain render --hillshade` draws a grey hillshade alone (out .../render-hillshade). Sample check on the worktree
-generate: overflow 1 cell, now **(-20,58)**: a level-0 wet channel (snapped body) cut 40 m into a 40 m hillside
-beside 40.4 m water (rows of 0 against 37-41 m); its body is snapped to 0 by SNAP rule 1 though it stands at ~40 m.
-Owed, in order:
+Session 8 (main at its commit or later). Planner rulings applied: (a) `water/solve.py` `WALL_STEP_M` 65.7 m (vanilla's
+tallest one-edge step): waters d cells apart differ by at most d x 65.7 m, the upper yields cell by cell (88 cells;
+closed steps over 65.7 m: 1, its upper a wet reach cell, which never yields). (c) Diagnosed: of 3,041 water cells
+whose refined ground stands wholly above their level, 1,808 were `pad_ring` cells (incl. (-32,31), (-20,58) at 0 on a
+40 m hillside), 647 `fill_enclosed` holes and 570 snapped-body cells (rule 1). Fixed at source: a snapped body keeps its
+own level when its samples' lowest ground stands above 0 (per body and per cell); padding and enclosed fill only where
+the cell's ground reaches the level + 0.3 m or raster water lies within one sample of it. Now 191 such cells (all
+within 0.3 m of their level but 14 reach cells and the pads raster water touches); the generator's own
+`empty_water_cells` (no raster sample) 3,088 -> 1,613. (b) A flat whose band is empty is terraced into the slope at
+the banks' level, pin kept, `request` says so (3 terraced, all now shaped). Generate: a channel end vertex a dry cell
+shares stays bank (dry-edge 4 -> 0). Build stats list `overflow_at`.
+Sample check (whole-province generate, written once into the shared out/terrain: the field the next build uses):
+dry-edge 0, wet/bank/step-bank 0, **overflow 1 cell (-20,58)**, **5 sites unshaped**, lattice 1.992. Owed:
 
-1. (-20,58): the snap rule must not drop a body below the ground its raster samples stand on (solve.py rule 1).
-2. Lattice item 1 tried both ways and reverted: `lo[bank] = max(vmax+0.3, shore_lo)` gives lattice 1.492 but
-   sites unshaped 5 -> 12 (8 flats on role 3) and walls the 0 m channel at (-20,58); restricted to own-level water
-   it gives 1.963. Session 6's 2.175 stands.
-3. Five flats: lowering a pinned flat to its reach cap made no change (still unshaped); their band is empty (bank
-   cone above, water cone below) at FLAT_MIN_SCALE: move the sites (place records) or accept a terrace.
-4. -38_25_-22_40 plates: water cells whose ground stands wholly above their level (3,088 empty water cells, e.g.
-   (-32,31) at 38.4, (-31,31) at 31.9) are raised to a plate at level + 0.3 with a cliff at the cell edge to lower
-   dry ground; the reach level is perched over the terrain. The square checker is in the material layer
-   (materials lane). Reader pass on the six hillshade windows not yet run.
-5. Re-shoot world-panel 24, 28, 29, 36, 37 and 08, 09, 29 at L4 in the planner's batch; whole province not run.
+1. (-20,58) overflow: its west column (bank, role 3, ~60 m, the dry cell (-21,58)'s shared vertices) stands 20 m over
+   a wet column at 40 m (raster water one sample in from the edge). Tried clamping `limit`'s pin midpoint into the
+   water cones: overflow 1 -> 2 cells, reverted. Next: find what holds that bank's lo near 60 (print lo/hi there).
+2. Unshaped: flats the-back-kiln, the-eight-steps (re-sized, band not empty, still std >= 1), naga-village-raiding
+   (role 1, no note), depressions the-drawdown-flats, the-slumped-hamlet.
+3. Lattice 1.992 (> 1.5): session 7 item 2 stands.
+4. Reader on the six hillshades (session 8 ground): plates with hard straight edges remain on -38_25 (shelves at
+   0.35-0.58 x 0.18-0.31, 0.20-0.30 x 0.38-0.68), -20_57 (worst: facets, striped bands), 0_0 (square pool and walls
+   0.45-0.95 x 0.44-0.9), -12_63 shore; lakes clipped at cell lines on -21_-26. The solve's empty cells are no longer
+   the cause (191 left, near-level): next diagnose the generator's role-3 bank floor (`lo[bank] = vmax + FREEBOARD`)
+   and the relief prior on those windows.
+5. Re-shoot world-panel 24, 28, 29, 36, 37 and 08, 09, 29 at L4 in the planner's batch.
