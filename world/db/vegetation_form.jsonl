@@ -34,9 +34,13 @@
 {"form_key":"0413FF:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"04900F:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"049014:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"04901E:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"049020:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"04E139:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"04E13A:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"04E13B:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"04E13C:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"04E36F:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"05555A:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"055561:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"055562:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
@@ -125,8 +129,10 @@
 {"form_key":"11DC5A:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the aquatic role's range (ours; the L4 stills judge it)"}
 {"form_key":"11DD75:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the aquatic role's range (ours; the L4 stills judge it)"}
 {"form_key":"11DD7A:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the aquatic role's range (ours; the L4 stills judge it)"}
+{"form_key":"11FE74:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"11FE7A:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"11FE7B:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
+{"form_key":"11FE7D:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"11FE7E:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"120661:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"12066A:Black Marsh.esm","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
@@ -140,10 +146,13 @@
 {"form_key":"155105:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"155106:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"1555CB:Black Marsh.esm","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
+{"form_key":"155FE0:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FE5:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FE7:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FEA:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FEB:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"155FEC:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"155FED:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FF1:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FF3:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it)"}
 {"form_key":"155FF5:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it)"}
@@ -164,11 +173,15 @@
 {"form_key":"15B1E0:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E1:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E2:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"15B1E3:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E4:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E5:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E6:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1E8:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1EA:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"15B1EB:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"15B1EC:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"15B1ED:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1EF:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1F1:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it)"}
 {"form_key":"15B1F2:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it)"}
@@ -192,12 +205,15 @@
 {"form_key":"1B32DC:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"1B32DE:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"1B32E4:Black Marsh.esm","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
+{"form_key":"1CE959:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"1D3CC3:Black Marsh.esm","scale_min":0.8,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the mushroom role's range (ours; the L4 stills judge it)"}
+{"form_key":"1D3CCB:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"1D3CD2:Black Marsh.esm","scale_min":0.8,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the mushroom role's range (ours; the L4 stills judge it)"}
 {"form_key":"1DE971:Black Marsh.esm","scale_min":0.6,"scale_max":1.25,"sink_frac":0.5,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.50 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"1DE977:Black Marsh.esm","scale_min":0.6,"scale_max":1.25,"sink_frac":0.5,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.50 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"2AD7AF:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"3380E5:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
+{"form_key":"3A3F9B:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"3A3F9E:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"3A3F9F:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"3B345A:King of the Murkmire.esp","scale_min":0.5,"scale_max":0.9,"sink_frac":0.7,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.70 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
@@ -206,6 +222,10 @@
 {"form_key":"3B3484:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"3B8649:King of the Murkmire.esp","scale_min":0.5,"scale_max":0.9,"sink_frac":0.7,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.70 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"44E914:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
+{"form_key":"463246:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"463247:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"463248:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
+{"form_key":"51DEBD:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"52D306:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
 {"form_key":"5376A8:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}
 {"form_key":"55152F:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it)"}

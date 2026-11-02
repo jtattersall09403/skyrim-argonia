@@ -138,8 +138,21 @@ def upright_share(sink: float | None) -> float:
     return UPRIGHT_BOULDER if sink == SINK_BOULDER else 0.0
 
 
+# Session 7 (round-1 session 1b, northern-transition stills 22-25: tall drooping conifer-like trunks with tiered
+# hanging fronds, weeping birch-like columns, read as Nordic; decision 0006): the hills are "more temperate" and
+# "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14; AUDIT row 1), so their trees are broadleaf: no
+# cypress (tiered, drooping boughs), willow and hanging moss (weeping), birch, poplar, juniper, bristlecone and
+# redwood (boreal or columnar), and no stockade, house or walkway piece that the role words took for a "cypress" tree.
+UPLAND_DENY = ("cypress", "willow", "hangingmoss", "birch", "poplar", "juniper", "bristlecone", "redwood",
+               "stockade", "house", "walkway", "scaffold", "salix")
+
+
 def admits(eco: str, f) -> bool:
     t = tags(f)
+    if eco in UPLAND and f["role_id"] in TREE_ROLES:
+        s = f"{f['edid']} {f['model']}".lower()
+        if any(n in s for n in UPLAND_DENY):
+            return False
     if "sea" in t and eco not in COAST:
         return False
     if "giant" in t and eco not in DEEP:

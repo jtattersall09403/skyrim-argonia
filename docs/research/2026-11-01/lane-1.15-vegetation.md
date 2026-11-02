@@ -94,6 +94,7 @@ plugin, stack re-lay (bmv keep list: the rock meshes and their textures), `make 
 chart, then lod.sh. Pins: xLODGen beta 132, DynDOLOD 3.00 Alpha-217.
 
 ## Starting state
+- Session 7 (2026-11-02, round-1 session 1b finding): reader on stills 20-25: the northern-transition trees (22, 23) are drooping conifer-like boughs and (24, 25) weeping columns, Nordic. Placed within 60 m of the four upland panel vantages: 01cypressDUPLICATE001/cypressmoss (cypress5/1), ArgoniaTreeWillow05, 01Willow, hanging moss, 01BIRCH, 01Juniper. `lists.UPLAND_DENY` now refuses cypress, willow, hanging moss, birch, poplar, juniper, bristlecone, redwood and the stockade/house pieces the role words took for cypress, in the tree roles of northern-transition and western-frontier (broadleaf oak, maple, alder, jungle and swamp trees remain; collision rule untouched). Lists and budget rows regenerated, `build --sample` 16 checks green. Owed: an in-game re-read of stills 22-25.
 - Session 5 (2026-11-01, the plugin-check gate's vegetation reds): cause of the sample red was a rule, not the check:
   the marsh palette bounds a tree to 6 m above the nearest water level, and on the northern hills that level is the
   sea's (0 m) with the ground 40-95 m over it, so cells (-12,63) and (-11,63) held 0 trees and 145 shrubs (shrubs carry
