@@ -40,7 +40,7 @@ def test_make_plugin_carries_the_province_navmesh(tmp_path, monkeypatch, capsys)
 
     monkeypatch.setattr(pipeline, "OUT", tmp_path)
     monkeypatch.setattr(pipeline, "world", world)
-    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda: "ground-1")
+    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda ground=True: "ground-1")
     monkeypatch.setattr(pipeline, "ENV", {})
     pipeline.master_world(tmp_path, rebuild=True)
     assert seen == [None] and "no province navmesh" in capsys.readouterr().out
@@ -105,7 +105,7 @@ def test_world_hands_the_frozen_ground_to_every_stage(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "run", fake_run)
     monkeypatch.setattr(pipeline.subprocess, "run", fake_sub)
     monkeypatch.setattr(pipeline, "water", lambda into, sample: into / "water")
-    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda: "s")
+    monkeypatch.setattr(pipeline, "_terrain_stamp", lambda ground=True: "s")
     monkeypatch.setattr(pipeline, "_veg_stamp", lambda: "v")
     monkeypatch.setattr(pipeline, "_refuse_shared_rebuild", lambda into: None)
     monkeypatch.setattr(pipeline, "WORLD_CAP", [])
