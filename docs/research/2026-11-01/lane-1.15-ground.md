@@ -212,49 +212,29 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 12 (commit 5416fca) made every water check green on the sample. Only the entrance sites are still red.
-`WATER_FIELD` is on, and the old clamp path is still in place behind the flag.
+Session 13 (commit 6f1a548) closed the five flats. The cause was not the bank lift. A mouth's rise did
+`np.maximum(win, door + hill)`, which raised its whole window (up to 178 m wide) to the door level wherever the
+hill weight was 0. Flats 100-200 m away were lifted by 14-35 m. The rise is now eased in by its own weight
+(`hill / RISE_M`). `terrain check --out out/terrain-sample/s13`: fails [], wet/bank/dry-edge/step-bank 0,
+unshaped sites 0 (was 5), lattice 1.253. Generate took 103.8 s.
 
-`terrain check --out out/terrain-sample/s12h` (job g12h, 95 s generate):
-
-| check | s11 | s12 |
-|---|---|---|
-| wet, bank | 0 | 0 |
-| step-bank | 136 | **0** |
-| dry-edge | 27 | **0** |
-| overflow | 3 cells | **0** |
-| lattice (bound 1.5) | 1.85 | **1.23** (pre ground 1.37) |
-| unshaped sites | 4 | 5 (all flats) |
-| cells / steps | 10,595 / 1,923 | 10,100 / 1,925 |
-
-What changed, each measured before the rule:
-- **Solve** (`water/solve.py`):
-  - `joined_footprint`: a body's raster samples hold its level only where they lie under it and are joined to its
-    lowest sample.
-  - A non-raster body whose spill is no higher than its ground + 0.3 m has no basin, so it gets no level. One such
-    body, plunge-pool `body.1378-171`, stood at 114 m beside the sea.
-  - `pad_ring` pads a cell in the same basin however deep it is (`spill_min`). This removed a 150 m dam beside a
-    251.5 m lake.
-  - `no_riffle_steps`: no closed edge drops 0.5 m or less. 292 of the step-bank misses were such edges.
-  - `corner_clear`: a channel keeps k+1 vertices from its edge's corners. All 22 of the last misses lay where
-    another step's sloped band met a perpendicular edge.
-- **Field** (`water_field.py`):
-  - The lift is now an amount field: a cone of shortfalls added to the ground. A height cone, as a chamfer, was cut
-    at 48 samples into 110 m walls, which were 74 % of the lattice. As a majorant, it buried cliffs: 1.7 M samples
-    were raised by more than 50 m. Now no sample is raised by more than 50 m.
-  - Each clipped line has a crest 3 samples each side (`BAND`). The lattice measured 2.55 with no crest, 1.40 with a
-    3-sample crest and 1.49 with a 9-sample crest.
-  - A hollow is raised whole and keeps its slope. Its fade is slow inside the hollow and LIFT_GRADE past its rim. No
-    hollow sample now sits on the old +0.3 m plate (there were 113 k), and the p50 slope is 0.057 m per sample.
-- **Generate**: a site never cuts the field's bank vertices (`fbank`). This removed the misses where a depression
-  site dug through a step bank.
+The reader on the hillshades (`out/terrain-sample/s13/hs`, `render --sample --hillshade` with
+ARGONIA_GROUND=.../s13/ground-f32.npy) failed the ground. Worst first:
+- -38_25 (river): 5 plates with hard rims; square or L-shaped pools at (0.59-0.70,0.83-0.88), (0.77-0.83,0.07-0.12),
+  (0.88-0.96,0.25-0.30) and (0.84-0.99,0.65-0.95); shores on the cell grid at x 0.77, 0.83 and y 0.87; no readable valley.
+- -21_-26 (marsh): a 0.15 x 0.64 rectangular plate at (0.49-0.64,0.24-0.88); a square pool at (0.62-1.0,0.12-0.62).
+  The meanders on the left are good.
+- -12_63 (border): plateaus and rectangular terraces at (0.30-0.85,0.80-0.95); the lake itself is organic.
+- 0_0: a square pool on a plate at (0.73-0.89,0.74-0.90), another at (0.01-0.11,0.91-1.0).
+- -20_57 (coast): large flat plates and edges on the cell grid; no sea in frame.
+Fractions are (x,y) of the image.
 
 Owed, in order:
-1. The 5 flat sites. Three are beside water (role 3), and two are dry (the-eight-steps, the-back-kiln). On those
-   two, the ground around a pinned centre was raised 14-35 m, probably by a nearby bank lift. Probe with
-   `/tmp`-style `unshaped_sites.py` pointed at the out dir. When the field holds a site's disc, the flat level
-   should take the lift.
-2. Restore the shared ground: `out/terrain/ground-f32.npy`, from `out/terrain/build/a85ecfaa95a5/`.
-3. A reader on the hillshades of 0_0, -38_25, -23_54, -15_56 and -21_-26. Use `terrain render --hillshade` with
-   `ARGONIA_GROUND=out/terrain-sample/s12h`.
-4. Delete the clamp path, then run one whole-province generate into `out/terrain`.
+1. Diagnose the plates and square pools at their rule. Likely candidates: the iso-hollow lift (`HOLLOW_GRADE`
+   raises a whole cell-shaped hollow), `gap` snapping to vmax+freeboard over a whole water cell, and pinned flats.
+   Measure which mask covers each defect (diag["iso"], role 3 on bound). Fix, then re-render once.
+2. Delete the clamp path. Not started. The dead code is in generate.py about lines 545-800: dwet/near_*, ramp,
+   ddry/run, dch, edge_bank, low/flood, din/bed, bank/shore, banks/esel, the spread/ok_ block, and
+   shore_rise/shore_run/SHORE_FAR/STEP_CLEAR/BANK_SPREAD_DEG. `sbank` is then always empty.
+   probes/clamp_census.py reads diag edge_bank/spread/sbank: retire it or fix it.
+3. Run ONE whole-province generate into out/terrain, then `terrain check`.
