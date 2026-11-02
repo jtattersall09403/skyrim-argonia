@@ -9,14 +9,14 @@ from pathlib import Path
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.terrain.cellwater import C, CX0, CY0, N, Q
+from tools.argonia_world.terrain.cellwater import C, CX0, CY0, Q
 
 ROOT = Path(__file__).resolve().parents[4]
 
 
 def rc(x, y):
-    cx, cy = math.floor(x / 4096), math.floor(y / 4096)
-    return ((C - 1 - (cy - CY0)) * Q + (Q - (y - cy * 4096) / 128), (cx - CX0) * Q + (x - cx * 4096) / 128)
+    cx, cy = math.floor(x / su.CELL_UNITS), math.floor(y / su.CELL_UNITS)
+    return ((C - 1 - (cy - CY0)) * Q + (Q - (y - cy * su.CELL_UNITS) / su.VERTEX_SPACING_UNITS), (cx - CX0) * Q + (x - cx * su.CELL_UNITS) / su.VERTEX_SPACING_UNITS)
 
 
 def main(out=ROOT / "out" / "terrain"):

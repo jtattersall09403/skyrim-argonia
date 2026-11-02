@@ -47,6 +47,7 @@ class Stats:
     max_limit_m: float = 0.0  # the largest height change the limiter made
     max_limit_province_m: float = 0.0
     overflow_cells: int = 0  # cells with at least one raw overflowing pair inside or on their edges
+    overflow_at: list = field(default_factory=list)  # the first 20 such cells (cx, cy)
     overflow_max_step_m: float = 0.0  # the steepest raw neighbour step
     limit_hist_province: dict = field(default_factory=dict)  # province vertices moved by more than N m -> count
     layers_hist: dict = field(default_factory=dict)  # alpha layers per quadrant -> count
@@ -136,6 +137,7 @@ class Builder:
             raw = steps[north - r0:south - r0 + 1, a - c0:b - c0 + 1]
             if quantize.overflow_pairs(raw):
                 s.overflow_cells += 1
+                s.overflow_at = (s.overflow_at + [[cx, cy]])[:20]
                 s.overflow_max_step_m = max(s.overflow_max_step_m, max(
                     float(np.abs(np.diff(raw, axis=1)).max()), float(np.abs(np.diff(raw, axis=0)).max()))
                     * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE)

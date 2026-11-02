@@ -17,11 +17,12 @@ The rules (each a pure function below, unit-tested in tests/test_solve.py):
 1. Bodies. A body's footprint is the frozen body raster's samples at its level inside its bbox (the raster every
    earlier water stage read, `hydrology-graph-bodies.npz`); a body the raster does not hold stands in the cell of
    its deepest sample. Levels: the sea at 0; a body below SNAP_LO_M at 0; **the snap rule** for the inland bodies
-   between SNAP_LO_M and SNAP_HI_M (1,086 of them): each snaps to 0, the sea-level marsh it is (Argonia's lowland
+   between SNAP_LO_M and SNAP_HI_M (1,086 of them) whose samples reach ground at or below 0: each snaps to 0, the
+   sea-level marsh it is (Argonia's lowland
    is a tidal marsh plain: docs/design/world/50-hydrology-climate.md "Define sea level, tidal zones"),
    unless it shares a cell with a body that
    stands at SNAP_HI_M or above: then the cell rule (3) gives it that body's level, its basin's. Bodies at
-   SNAP_HI_M and above keep their `level_m`.
+   SNAP_HI_M and above, and a snappable body whose samples all stand on ground above 0, keep their `level_m`.
 2. Rivers. A reach's profile runs linearly from `level_from_m` to `level_to_m` along its centreline; each cell it
    visits takes the profile at the visit's midpoint, never above the cell before it (water runs downhill), and a
    drop smaller than RIFFLE_M carries the upper level on (no step too small to read). So the water is flat inside a
@@ -72,10 +73,11 @@ SNAP_HI_M = 3.0  # at or above this a body keeps its own level
 # Skyrim.esm's water steps (terrain/probes/vanilla_step_chains.py, 2026-11-02): the tallest real one-edge step is
 # 65.7 m (one 394.6 m pair under a mountain aside); taller drops are chained over cells (105.7 m in two steps of
 # 51.1 and 54.6 m, 13 cells start a chain of two or more). No vanilla edge holds one wall a cell's ground cannot carry.
-# Ours: two waters at Chebyshev distance d cells may differ by at most d x WALL_CELL_M, one cell of ground at the
-# ground lane's design slope (terrain/generate.py DESIGN_SLOPE_DEG 75); past it the upper water yields the cell to a
-# dry gully that the ground descends (`yield_walls`).
-WALL_CELL_M = math.tan(math.radians(75.0)) * su.CELL_METRES  # 218.3 m
+# Ours, the same (planner ruling, session 8): two waters at Chebyshev distance d cells may differ by at most
+# d x WALL_STEP_M; past it the upper water yields the cell, cell by cell, so a taller drop becomes a chain of steps
+# each within vanilla's or a dry gully the ground descends (`yield_walls`).
+WALL_STEP_M = 65.7
+PAD_REACH_M = 0.3  # a padding cell's ground dips to within this of the level (terrain FREEBOARD_M)
 RIFFLE_M = 0.5  # a smaller drop between two cells carries the upper level on (steps.STEP_MAX_M, the riffle)
 MAX_DROP_M = stp.MAX_DROP_M  # the tallest falls piece
 LEVEL_TOL_M = 0.006  # the raster stores the graph's 2-decimal level as float32
@@ -141,9 +143,13 @@ def load(w) -> CellWater:
 
 # ---- the rules -------------------------------------------------------------------------------------------------
 
-def body_level(level_m: float, kind: str) -> float:
-    """Rule 1: the sea and every body below SNAP_HI_M at 0 (the cell rule may lift a snapped one to its basin)."""
-    if kind == "ocean" or level_m < SNAP_HI_M:
+def body_level(level_m: float, kind: str, ground_min_m: float | None = None) -> float:
+    """Rule 1: the sea and every body below SNAP_HI_M at 0 (the cell rule may lift a snapped one to its basin),
+    except that a body never drops below the ground its own raster samples stand on: one whose samples' lowest
+    ground (`ground_min_m`) stands above 0 keeps its own level (snapped to 0 it would be a plate of empty cells)."""
+    if kind == "ocean" or level_m < SNAP_LO_M:
+        return 0.0
+    if level_m < SNAP_HI_M and (ground_min_m is None or ground_min_m <= 0.0):
         return 0.0
     return round(level_m, 2)
 
@@ -268,10 +274,11 @@ def resolve(cands: list[tuple[int, float, str, str | None, str | None, float]]) 
     return best[1], best[2], best[3], best[4]
 
 
-def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[int, int], tuple]:
+def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=None) -> dict[tuple[int, int], tuple]:
     """Rule 3's enclosed cells: each 4-connected group of cells absent from `cells` that does not reach the grid
-    edge takes the value its bordering cells hold most (by shared edges; a tie to the lower level). Returns the
-    added cells only."""
+    edge takes the value its bordering cells hold most (by shared edges; a tie to the lower level). With
+    `ground_min`, a cell of the group whose lowest ground stands more than PAD_REACH_M above that level stays dry
+    (an island: no water plane under a whole cell of ground). Returns the added cells only."""
     seen: set[tuple[int, int]] = set()
     added: dict[tuple[int, int], tuple] = {}
     for i0 in range(n):
@@ -296,31 +303,39 @@ def fill_enclosed(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[t
                 continue
             _, v = max(ring.values(), key=lambda kv: (kv[0], -kv[1][0]))
             for c in comp:
-                added[c] = (v[0], v[1], v[2], None)
+                if ground_min is None or ground_min(*c) <= v[0] + PAD_REACH_M:
+                    added[c] = (v[0], v[1], v[2], None)
     return added
 
 
-def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL) -> dict[tuple[int, int], tuple]:
+def pad_ring(cells: dict[tuple[int, int], tuple], n: int = NCELL, ground_min=None) -> dict[tuple[int, int], tuple]:
     """Vanilla's padding ring (skyrim-does-it-this-way.md §2: 23 of Skyrim.esm's 510 explicit-level cells have no
     wet vertex; the level is carried one cell past the water): every cell absent from `cells` with a water cell
     among its 8 neighbours takes the lowest of their levels (with that cell's type and body): a step between two
     levels stays on the higher water's own edge, as a closed bank, and never moves a tall bank beside the lower
     water's bed. The water plane then runs under the shore's ground, never stopping on a cell edge against a dry
-    cell. Returns the added cells only."""
+    cell. With `ground_min` ((i, j) -> the cell's lowest ground, metres) a cell is padded only to a level its ground
+    reaches (lowest ground at or under the level + PAD_REACH_M): vanilla's padding cells hold ground just above the
+    level (0-8 units, probes/vanilla_lake_padding.py), never a whole cell standing over it (that drew the plates and
+    the level-0 cell on a 40 m hillside). Returns the added cells only."""
     added: dict[tuple[int, int], tuple] = {}
     for (i, j) in {(a + di, b + dj) for (a, b) in cells for di in (-1, 0, 1) for dj in (-1, 0, 1)}:
         if (i, j) in cells or not (0 <= i < n and 0 <= j < n):
             continue
-        v = min((cells[(i + di, j + dj)] for di in (-1, 0, 1) for dj in (-1, 0, 1) if (i + di, j + dj) in cells),
-                key=lambda c: c[0])
+        nb = [cells[(i + di, j + dj)] for di in (-1, 0, 1) for dj in (-1, 0, 1) if (i + di, j + dj) in cells]
+        if ground_min is not None:
+            nb = [c for c in nb if ground_min(i, j) <= c[0] + PAD_REACH_M]
+            if not nb:
+                continue
+        v = min(nb, key=lambda c: c[0])
         added[(i, j)] = (v[0], v[1], v[2], None)
     return added
 
 
 def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] = frozenset()) -> set:
-    """Every cell whose water stands more than d x WALL_CELL_M above a water cell d cells away (Chebyshev, d <= 2)
+    """Every cell whose water stands more than d x WALL_STEP_M above a water cell d cells away (Chebyshev, d <= 2)
     leaves `cells` (in place), repeated until none does: the drop then runs through dry ground over at least one more
-    cell (a dry gully, never one wall taller than a cell of ground at the design slope). Sea cells and `keep` (the
+    cell (a chain of steps each within Skyrim.esm's tallest, or a dry gully). Sea cells and `keep` (the
     wet reaches' cells, whose steps the falls chains carry) never yield. Returns the removed cells."""
     gone: set[tuple[int, int]] = set()
     while True:
@@ -331,7 +346,7 @@ def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] 
             for di in range(-2, 3):
                 for dj in range(-2, 3):
                     o = cells.get((i + di, j + dj))
-                    if o is not None and v[0] - o[0] > WALL_CELL_M * max(abs(di), abs(dj)):
+                    if o is not None and v[0] - o[0] > WALL_STEP_M * max(abs(di), abs(dj)):
                         bad.add((i, j))
         if not bad:
             return gone
@@ -372,14 +387,20 @@ def _sample_cells(rows: np.ndarray, cols: np.ndarray, n: int) -> np.ndarray:
     return i * NCELL + j
 
 
-def solve(w, raster=None) -> Result:
-    """The whole province from the world database and the frozen body raster (level, sea)."""
+def solve(w, raster=None, ground=None) -> Result:
+    """The whole province from the world database, the frozen body raster (level, sea) and the refined ground
+    (metres, the raster's grid; loaded with the raster, None skips the ground tests)."""
     t0 = time.time()
     if raster is None:
         z = np.load(data_root() / "hydrology-graph-bodies.npz")
         raster = (z["level"], z["sea"])
+        gp = data_root() / "terrain" / "refined-height-f32.npy"
+        ground = np.load(gp, mmap_mode="r") if ground is None and gp.exists() else ground
     lev, sea = raster
     n = lev.shape[0] - 1
+    gmin = None
+    if ground is not None:
+        gmin = np.asarray(ground[:n, :n], dtype=np.float32).reshape(NCELL, Q, NCELL, Q).min(axis=(1, 3))
     cands: dict[int, list] = {}
 
     # the sea: per-cell sample counts
@@ -392,7 +413,7 @@ def solve(w, raster=None) -> Result:
                      "deepest_y, area_m2 FROM hydrology_body ORDER BY id")
     body_cells: dict[str, set[int]] = {}
     for b in bodies:
-        lvl, wt = body_level(b["level_m"] or 0.0, b["kind"]), body_type(b["kind"], b["altitude_band"])
+        wt = body_type(b["kind"], b["altitude_band"])
         if b["kind"] == "ocean":
             body_cells[b["id"]] = set()
             continue
@@ -402,6 +423,10 @@ def solve(w, raster=None) -> Result:
             x0, y0, x1, y1 = (int(b[k]) for k in ("bbox_x0", "bbox_y0", "bbox_x1", "bbox_y1"))
             win = lev[max(0, y0):y1 + 1, max(0, x0):x1 + 1]
             rr, cc = np.nonzero(np.abs(win - np.float32(b["level_m"])) <= LEVEL_TOL_M)
+        gm = None
+        if ground is not None and len(rr):
+            gm = float(np.asarray(ground[max(0, y0):y1 + 1, max(0, x0):x1 + 1])[rr, cc].min())
+        lvl = body_level(b["level_m"] or 0.0, b["kind"], gm)
         if len(rr):
             ids, cnt = np.unique(_sample_cells(rr + max(0, y0), cc + max(0, x0), n), return_counts=True)
         else:  # not in the raster: the cell of its deepest sample, weighted by its area
@@ -409,7 +434,11 @@ def solve(w, raster=None) -> Result:
             cnt = np.array([max(1.0, (b["area_m2"] or 0) / MPP ** 2)])
         body_cells[b["id"]] = set(int(k) for k in ids)
         for k, c in zip(ids, cnt):
-            cands.setdefault(int(k), []).append((1, lvl, wt, b["id"], None, float(c)))
+            lk = lvl  # a snapped body's cell whose ground stands wholly above 0 holds the body at its own level
+            if gmin is not None and lvl == 0.0 and b["level_m"] and b["level_m"] >= SNAP_LO_M \
+                    and gmin[NCELL - 1 - int(k) % NCELL, int(k) // NCELL] > 0.0:
+                lk = round(b["level_m"], 2)
+            cands.setdefault(int(k), []).append((1, lk, wt, b["id"], None, float(c)))
 
     # the snap rule's basin: a snapped body sharing a cell with a body at SNAP_HI_M or above takes the cell's level
     # (rule 3 does it: the cell holds one level, the body's samples count toward the winner's cell)
@@ -451,9 +480,19 @@ def solve(w, raster=None) -> Result:
         if len({c[1] for c in cs}) > 1:
             contested += 1
         cells[(k // NCELL, k % NCELL)] = resolve(cs)
-    enclosed = fill_enclosed(cells)
+    if gmin is not None:  # raster water on a cell's edge reaches it: that cell holds the level whatever its ground
+        wet = (lev[:n, :n] > -1e9) | np.asarray(sea[:n, :n], bool)
+        near = wet.copy()
+        near[1:] |= wet[:-1]
+        near[:-1] |= wet[1:]
+        near[:, 1:] |= wet[:, :-1]
+        near[:, :-1] |= wet[:, 1:]
+        gmin = np.where(near.reshape(NCELL, Q, NCELL, Q).any(axis=(1, 3)), -np.inf, gmin)
+        del wet, near
+    gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
+    enclosed = fill_enclosed(cells, ground_min=gm_cell)
     cells.update(enclosed)
-    padded = pad_ring(cells)
+    padded = pad_ring(cells, ground_min=gm_cell)
     cells.update(padded)
     enclosed.update(padded)
     walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})

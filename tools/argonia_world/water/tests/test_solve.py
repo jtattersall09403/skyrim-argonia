@@ -155,10 +155,24 @@ def test_padding_ring_carries_the_level_one_cell_past_the_water():
 
 def test_yield_walls_moves_a_wall_taller_than_a_cell_into_dry_ground():
     from tools.argonia_world.water import solve as sv
-    hi, lo = sv.WALL_CELL_M + 50, 0.5
+    hi, lo = sv.WALL_STEP_M + 50, 0.5
     cells = {(0, 1): (hi, "fresh", "b.up", None), (1, 1): (hi, "fresh", "b.up", None),
              (0, 0): (lo, "fresh", "b.lo", None), (5, 5): (lo, "sea", None, None), (0, 2): (hi, "fresh", "b.up", None)}
     gone = sv.yield_walls(cells, keep={(1, 1)})
-    assert gone == {(0, 1)}  # (1, 1) is a reach's; (0, 2) stands two cells off, within 2 x WALL_CELL_M
+    assert gone == {(0, 1)}  # (1, 1) is a reach's; (0, 2) stands two cells off, within 2 x WALL_STEP_M
     assert (0, 0) in cells and (0, 2) in cells
-    assert sv.yield_walls({(0, 1): (sv.WALL_CELL_M - 1, "fresh", None, None), (0, 0): (0.0, "sea", None, None)}) == set()
+    assert sv.yield_walls({(0, 1): (sv.WALL_STEP_M - 1, "fresh", None, None), (0, 0): (0.0, "sea", None, None)}) == set()
+
+
+def test_a_snapped_body_never_drops_below_the_ground_its_samples_stand_on():
+    assert sv.body_level(2.4, "marsh-deep", ground_min_m=-0.5) == 0.0  # its marsh reaches sea level: snapped
+    assert sv.body_level(2.4, "marsh-deep", ground_min_m=0.8) == 2.4  # every sample's ground above 0: its own level
+    assert sv.body_level(0.3, "pond", ground_min_m=0.1) == 0.0  # under SNAP_LO_M: the sea's
+
+
+def test_padding_reaches_only_cells_whose_ground_comes_down_to_the_level():
+    lake = {(2, 2): (4.0, "fresh", "body.l", None)}
+    add = sv.pad_ring(lake, n=6, ground_min=lambda i, j: 40.0 if i == 1 else 4.1)
+    assert set(add) == {(i, j) for i in (2, 3) for j in (1, 2, 3)} - {(2, 2)}  # the 40 m column stays dry
+    two = {(1, 2): (0.0, "fresh", "a", None), (3, 2): (40.0, "fresh", "b", None)}
+    assert sv.pad_ring(two, n=6, ground_min=lambda i, j: 39.9)[(2, 2)][0] == 40.0  # not 0 on a 40 m hillside

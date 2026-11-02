@@ -714,6 +714,14 @@ def generate(inp: Inputs, log=print) -> dict:
             lo[sel] = -np.inf
         nstep += 1
     role[chan] = np.where(hi[chan] < vmin[chan], 1, 2)
+    # a channel's end vertex that a dry cell shares (the solve pads only cells whose ground reaches the level, so a
+    # corner may stand by dry ground) stays bank above the water: no water stops on a dry cell's edge
+    ct = chan & touch & ~np.isnan(vmax)
+    lo[ct], hi[ct] = vmax[ct] + FREEBOARD_M, np.inf
+    h[ct] = np.maximum(h[ct], lo[ct])
+    role[ct] = 3
+    chan &= ~ct
+    chan0 &= ~ct
     for esel, z in banks:  # the banks closed above the upper water, after every channel (a corner may be one)
         keep = ~chan0[esel]
         e = (esel[0][keep], esel[1][keep])
@@ -918,6 +926,10 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
                     if lo_m <= hi_m:
                         m = min(max(m, lo_m), hi_m)
                         note = f"{note}; terraced at {m:.1f} m".strip("; ")
+                    else:  # the band is empty (bank cone above, bed cone below): vanilla's hillside town, a
+                        # terrace cut into the slope at the banks' level; the place record stays where it is
+                        m = lo_m
+                        note = f"{note}; terraced into the slope at {m:.1f} m (no level band between bank and water)".strip("; ")
                     break
                 scale *= 0.85
             if scale < 1.0:
@@ -940,7 +952,8 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
         core = d <= (0.6 if shape == "flat" else 0.3 if shape in ("rise", "bank") else 0.35)
         pin = core & ~sbank[sl] & ~held & ~fw0
         fw = foot[sl]
-        if fw.any():  # a pin no slope can join to the water beside it is left to the limit (no wall into a lake)
+        if fw.any() and "terraced into" not in note:  # a pin no slope can join to the water beside it is left to
+            # the limit (no wall into a lake); a terrace cut into the slope keeps its pin (its drop is a cliff)
             df, fl = chamfer(fw, 2 * r + 2, np.where(fw, vmin[sl], np.nan))
             reach_ = np.where(np.isfinite(df), fl + 0.8 * LIP * df, np.inf)
             pin &= win <= reach_
