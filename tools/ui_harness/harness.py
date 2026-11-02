@@ -369,6 +369,9 @@ class Harness:
         rows = []
         for z in cycle:
             rows.append(p.evaluate(ZOOM_PROBE, {"centreX": pl["x"], "centreY": pl["y"], "zoom": z}))
+            if z in (1, 8) and len(rows) <= 6:   # the whole province and the closest zoom: stills for the reader
+                p.wait_for_timeout(1500)   # the level's tiles load
+                p.screenshot(path=str(self.out / "stills" / "chart" / f"zoom{z}@{vp.name}.png"))
         fails, drift, size, font = [], 0.0, {}, {}
         for r in rows:
             for m in r["marks"]:
