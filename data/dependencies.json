@@ -1027,6 +1027,23 @@
     "Nemesis_Engine/mod/colis",
     "Precision.esp"
    ],
+   "ini": [
+    {
+     "file": "MCM/Config/Precision/settings.ini",
+     "section": "Hitstop",
+     "set": {
+      "bEnableHitstopCameraShake": "0"
+     }
+    },
+    {
+     "file": "MCM/Config/Precision/settings.ini",
+     "section": "Recoil",
+     "set": {
+      "bEnableRecoilCameraShake": "0"
+     }
+    }
+   ],
+   "settings_why": "The camera shakes when the player is hit (owner play test 3, finding 15: 'does something mad, like dips underground'): Precision's own hit-reaction camera shake, [Hitstop] bEnableHitstopCameraShake (strength 6 on an NPC hit, 4 other, 0.3 s) and [Recoil] bEnableRecoilCameraShake (strength 10, 0.4 s), both 1 by default in MCM/Config/Precision/settings.ini and both documented MCM toggles (Precision's config.json). Off: the hitstop slowdown and the recoil animation stay (they are the DS1-style hit feel); only the camera movement goes. The hit impulse and ragdoll are not touched.",
    "licence": "GPL-3.0 (github Ersh1/Precision)",
    "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
    "ai_clause": "none: open licence GPL-3.0 governs",

@@ -13,7 +13,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError  # noqa: E402
+from tools.bridge import Bridge, BridgeError, ensure_third_person  # noqa: E402
 
 REGIONS = {  # panel marker suffix -> save name (the nine region classes of the 1.15 panel)
     "CoastalLagoon": "Coastal Lagoon",
@@ -72,6 +72,8 @@ def new_game(b: Bridge) -> None:
     world = db.open()
     for k in start["player"].get("kit", []):
         b.call("console", f"player.additem {items_records.kit_edid(world, k['item'])} {k.get('count', 1)}")
+    if not ensure_third_person(b):  # saves load in third person (owner play test 3, finding 2)
+        raise SystemExit("the camera stayed first person after the toggle")
 
 
 def main(argv=None):
@@ -118,6 +120,9 @@ def main(argv=None):
             ws = (pl.get("worldspace") or {}).get("editor_id")
             if ws != "ARG_Province":
                 failed.append((name, f"player not in ARG_Province after the moveto: {ws}"))
+                continue
+            if not ensure_third_person(b):
+                failed.append((name, "the camera is first person after the toggle"))
                 continue
             out = b.call("save", f"Argonia {name}")
         except BridgeError as e:

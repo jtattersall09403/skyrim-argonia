@@ -296,3 +296,21 @@ def test_a_connection_reset_is_retried(monkeypatch):
     b._exchange = exchange
     assert b.call("logfile", "CommunityShaders", "x") == {"found": True}
     assert b.transport_retries == 1
+
+
+def test_ensure_third_person_toggles_until_the_read_says_third_person():
+    class Fake:
+        def __init__(self, first):
+            self.first, self.keys = first, 0
+
+        def call(self, cmd, *a):
+            if cmd == "input":
+                self.keys += 1
+                self.first = False
+                return {}
+            return {"output": "Command returned 1.00" if self.first else "Command returned 0.00"}
+
+    f = Fake(True)
+    assert B.ensure_third_person(f) and f.keys == 1
+    g = Fake(False)
+    assert B.ensure_third_person(g) and g.keys == 0

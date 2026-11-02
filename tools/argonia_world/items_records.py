@@ -177,9 +177,14 @@ def kit_records(alloc: Allocator, world, kit) -> list[dict]:
     return out
 
 
+GOLD, GOLD_EDID, GOLD_KEY = "item.gold", "Gold001", "00000F:Skyrim.esm"  # the engine's currency, no record of ours
+
+
 def kit_edid(world, item_id: str) -> str:
     """The EditorID of a kit row's record (a weapon, an arrow or a set's armour piece)."""
     it = _item(world, item_id)
+    if item_id == GOLD:
+        return GOLD_EDID
     if it.kind == "weapon":
         return f"ARG_{'Ammo' if it.subkind == 'arrow' else 'Weap'}_{slug(it.id[5:])}"
     if it.kind == "armour":
@@ -190,7 +195,7 @@ def kit_edid(world, item_id: str) -> str:
 
 def kit_entries(alloc: Allocator, world, kit) -> list[dict]:
     """The Player override's items: ``{"item": formKey, "count": n}`` per kit row, in kit order."""
-    return [{"item": alloc.form_key(kit_edid(world, k["item"])), "count": int(k.get("count", 1))} for k in kit]
+    return [{"item": GOLD_KEY if k["item"] == GOLD else alloc.form_key(kit_edid(world, k["item"])), "count": int(k.get("count", 1))} for k in kit]
 
 
 def container_placement(world, lock_id: str = CONTAINER_LOCK) -> dict:

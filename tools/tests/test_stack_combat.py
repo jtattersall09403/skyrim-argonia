@@ -154,3 +154,25 @@ def test_stack_ps1_on_lays_in_place_and_waits_for_holders():
     assert "& $PSCommandPath off" not in on  # no wholesale delete before the lay
     assert "LastWriteTimeUtc -eq $a.LastWriteTimeUtc) { $kept++; continue }" in on
     assert "'SkyrimSE', 'skse64_loader', 'xLODGenx64'" in src
+
+
+def test_precision_camera_shake_is_off_when_laid():
+    """Owner play test 3, finding 15 (camera dips when hit): Precision's hitstop and recoil camera shakes are laid off,
+    its hitstop and recoil themselves stay on."""
+    root = Path(__file__).resolve().parents[2]
+    m = next(m for m in json.loads((root / "data/dependencies.json").read_text())["mods"] if m["id"] == "precision")
+    ini = "[Hitstop]\nbEnableHitstop = 1\nbEnableHitstopCameraShake = 1\n\n[Recoil]\nbRecoilPlayer = 1\nbEnableRecoilCameraShake = 1\n"
+    for e in m["ini"]:
+        assert e["file"] == "MCM/Config/Precision/settings.ini"
+        for k, v in e["set"].items():
+            ini = stack.set_ini(ini, e["section"], k, v)
+    assert "bEnableHitstopCameraShake = 0" in ini and "bEnableRecoilCameraShake = 0" in ini
+    assert "bEnableHitstop = 1" in ini and "bRecoilPlayer = 1" in ini
+
+
+def test_freeclimb_has_no_tree_filter_to_lay():
+    """Finding 33: FreeClimb's settings never read the form or surface (docs/research/2026-11-01/climb-anything.md §1,
+    §2): the manifest lays only the entry keys, and a tree is climbable by its collision alone."""
+    root = Path(__file__).resolve().parents[2]
+    m = next(m for m in json.loads((root / "data/dependencies.json").read_text())["mods"] if m["id"] == "freeclimb")
+    assert {k for e in m["ini"] for k in e["set"]} == {"Entry"}

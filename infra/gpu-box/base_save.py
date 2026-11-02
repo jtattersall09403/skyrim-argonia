@@ -20,7 +20,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError  # noqa: E402
+from tools.bridge import Bridge, BridgeError, ensure_third_person  # noqa: E402
 
 RACES = {"argonian": "ArgonianRace"}  # Skyrim.esm's playable race the studio character uses (start.json `studio`)
 
@@ -84,9 +84,8 @@ def main(argv=None):
     out["race"] = b.call("console", f"player.GetIsRace {RACES[studio['race']]}")["output"].strip()
     if not out["race"].endswith("1.00"):
         raise SystemExit(f"the new game's player is not {RACES[studio['race']]} ({out['race']}): is Argonia.esm loaded?")
-    if b.call("console", "IsPC1stPerson")["output"].strip().endswith("1.00"):
-        b.call("input", "key", "F", 300)  # the play camera is third person (owner, 2026-10-29)
-        time.sleep(1)
+    if not ensure_third_person(b):  # the play camera is third person (owner, 2026-10-29)
+        raise SystemExit("the camera stayed first person after the toggle")
     out["quest"] = b.call("quest", start["quest"]["edid"])
     out["mq101"] = b.call("quest", "MQ101")
     out["save"] = b.call("save", a.name)

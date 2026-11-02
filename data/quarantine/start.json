@@ -105,8 +105,12 @@
    {
     "item": "item.imperial-light-helmet",
     "count": 1
+   },
+   {
+    "item": "item.gold",
+    "count": 5000
    }
   ],
-  "kitWhy": "the starting kit (owner look 1, 1.12): a sword, a mace, a scimitar, a hunting bow and arrows, and the Imperial light set (the steel helmet's horns read Nordic), in place of the master Player's items; every piece wears its base-game record's look (items_records.look)"
+  "kitWhy": "the starting kit (owner look 1, 1.12): a sword, a mace, a scimitar, a hunting bow and arrows, the Imperial light set (the steel helmet's horns read Nordic) and 5,000 gold to try the shops (owner play test 3, finding 34), in place of the master Player's items; every piece wears its base-game record's look (items_records.look)"
  }
 }

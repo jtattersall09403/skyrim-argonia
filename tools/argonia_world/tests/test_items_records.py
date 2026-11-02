@@ -169,6 +169,12 @@ def test_kit_is_weapons_ammunition_and_armour(world, alloc):
     import json
     from tools.argonia_world.intermediate import QUARANTINE
     kit = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]["kit"]
+    gold = [k for k in kit if k["item"] == "item.gold"]  # owner play test 3, finding 34: gold to try the shops
+    assert len(gold) == 1 and gold[0]["count"] == 5000
+    assert ir.kit_edid(world, "item.gold") == "Gold001"
+    assert ir.kit_entries(None, world, gold) == [{"item": "00000F:Skyrim.esm", "count": 5000}]
+    assert ir.kit_records(alloc, world, gold) == []
+    kit = [k for k in kit if k["item"] != "item.gold"]
     kinds = [(world.get("item", k["item"]).kind, world.get("item", k["item"]).subkind) for k in kit]
     assert sum(1 for k, s in kinds if k == "weapon" and s not in ("arrow", "longbow", "shortbow")) >= 3
     assert any(s in ("longbow", "shortbow") for _, s in kinds) and any(s == "arrow" for _, s in kinds)

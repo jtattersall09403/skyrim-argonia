@@ -476,6 +476,18 @@ class Bridge:
         return {"a": str(a), "b": str(b), "changed_fraction": diff, "live": diff > 0.0}
 
 
+def ensure_third_person(b, tries: int = 3) -> bool:
+    """The play camera is third person (owner, 2026-10-29; play test 3, finding 2: saves loaded in first person). The
+    console reads IsPC1stPerson; the toggle key (F) is pressed until it reads 0. A save made after a new game is
+    first person until this runs, and the save records the camera. True when the read says third person."""
+    for _ in range(tries):
+        if not b.call("console", "IsPC1stPerson")["output"].strip().endswith("1.00"):
+            return True
+        b.call("input", "key", "F", 300)
+        time.sleep(1)
+    return not b.call("console", "IsPC1stPerson")["output"].strip().endswith("1.00")
+
+
 def pad_duration_ms(seq: str) -> int:
     """The length of a pad.ps1 sequence; over INPUT_CAP_MS or malformed is refused (0.3 §d: inputs of at most 3 s)."""
     total = 0
