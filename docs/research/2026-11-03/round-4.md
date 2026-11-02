@@ -17,7 +17,7 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 | 1.15-r4-roads | 21 | lane-1.15-r4-roads.md (e7dcd52: Skyrim's road measured as a shallow trough with a 4 m paint blend and no edge statics; roads shaped into the ground, steep points 1,421 to 287; owed: a 1 m wall where a road crosses a gully, the flat-marsh trough too shallow) |
 | 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md (19492e8: the docked pane's rule ignored modal views and a barter closing within 0.3 s; names baked into tiles scaled with zoom, now screen-space at one size; the sketch layer (coast, major roads, border, compass) now drawn under the fog with the seven cities as named dots; the chart re-rendered from the current water, every river point within one cell; P2: Lilmoth/Blackrose labels read as swapped, Thorn clipped, Claywater label on roads, doubled road near Gideon) |
 | 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md (done 7948d33: third person, 5,000 gold, Precision camera shake off; 33 left: FreeClimb has no tree filter, trees climb by the 2026-11-01 ruling, the mechanic is the modder's) |
-| 1.3-r4-talk | 24, 27, 28 | lane-1.3-r4-talk.md |
+| 1.3-r4-talk | 24, 27, 28 | lane-1.3-r4-talk.md (c1e730f: topics were offered only once learned from a keyword, now service, newcomer and local topics from the first meeting (Livia 2 to 14); the Talk perk gated on GetDead and IsInCombat as Skyrim.esm gates its corpse choice, a corpse gets Search, a fighter no prompt; Gaius had no written lines, now ten) |
 
 ## Wave 2 (as wave-1 lanes return)
 
@@ -27,7 +27,7 @@ Owner, 22:06: seven screenshots of the tree colours, shiny textures and pebble s
 
 ## The batch
 
-Also in the batch: `tree-teal` (one KotM bald cypress under our weather and under KotM's own weather, a still each; if teal persists under KotM's, Community Shaders' soft lighting is next), `ground-materials`, `creature-spots`, `chart-zoom`, `claywater-talk`, `menu-sweep`, the third-person save and gold read, a hit-and-camera still. Before the deploy on the build VM, under the province lock: the province plugin build (land, materials, placements, lists, infra, creature lists), `vegetation check`, the chart renders (`python -m tools.chart render`, the 4k level), the region saves remade with `--fresh` (ten, with Claywater).
+Also in the batch: `tree-teal` (one KotM bald cypress under our weather and under KotM's own weather, a still each; if teal persists under KotM's, Community Shaders' soft lighting is next), `ground-materials`, `creature-spots`, `chart-zoom`, `claywater-talk`, `menu-sweep`, the third-person save and gold read, a hit-and-camera still. Before the deploy on the build VM, under the province lock: the province plugin build (land, materials, placements, lists, infra, creature lists), `vegetation check`, the chart renders (`python -m tools.chart render`, the 4k level), the region saves remade with `--fresh` (ten, with Claywater); `tools/world_sample.py --write` (its pinned heights follow the new ground) and the full `make check` once.
 
 One deploy of main on Paris when the lanes have landed; the journeys the lanes owe (river-steps, tree-seat,
 road-look, chart-zoom, claywater-walk, claywater-look, the panel's dawn stills, the save load) in one batch,
