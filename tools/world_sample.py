@@ -415,7 +415,7 @@ def piece_keys() -> dict:
     from tools.argonia_world import pieces as pz
     from tools.argonia_world.water import steps
     resolver = pz.Resolver(pz.Index.load(need(REPO / "out" / "pieces-index.json")))
-    return {k: resolver.resolve(steps.PIECES[k][0])[0].form_key for k in ("rapids", "mist")}
+    return {k: resolver.resolve(steps.PIECES[k][0])[0].form_key for k in ("rapids", "mist")} | {"falls": resolver.resolve(steps.PIECES["rapids"][0])[0].form_key}
 
 
 def stop_5(w: World, g: Ground) -> dict:
@@ -426,7 +426,7 @@ def stop_5(w: World, g: Ground) -> dict:
         for ref in d["refs"]:
             if ref["base"] == keys["mist"]:
                 mist.append(ref["pos"])
-            elif ref["base"] == keys["rapids"]:
+            elif ref["base"] == keys["falls"]:
                 falls.append(ref["pos"])
     ref_pt = sample_reach(w)["pieces"][0]
     rx, ry = su.province_to_skyrim(ref_pt["eastM"], ref_pt["southM"])
