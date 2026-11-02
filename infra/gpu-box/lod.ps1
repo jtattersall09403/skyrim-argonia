@@ -281,7 +281,14 @@ switch ($Step) {
   'dyndolod' {
     $p = Start-Tool dyndolod ($Paths + " -o:`"$($Out.dyndolod)\`"")
     $main = Main-Window $p
-    Find-Control $p '*Advanced*' '' 600 | Out-Null
+    # The load's pop-ups (DLL/Scripts not found: Ignore; Resources) come before the wizard: watch them while waiting,
+    # else a known dialog sits unanswered until the timeout (Paris, 14:47).
+    $end = (Get-Date).AddSeconds(600); $adv = $null
+    while (-not $adv -and (Get-Date) -lt $end -and -not $p.HasExited) {
+      Watch-Popups $p $main
+      try { $adv = Find-Control $p '*Advanced*' '' 5 } catch { $adv = $null }
+    }
+    if (-not $adv) { Dump $p 'no wizard'; throw 'dyndolod: no wizard in 600 s' }
     Dump $p 'wizard'
     Click $p '*Advanced*'
     Find-Control $p 'OK' '*Button*' 60 | Out-Null
