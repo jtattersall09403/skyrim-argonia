@@ -236,7 +236,12 @@ switch ($Step) {
     $free = (Get-PSDrive C).Free; Say "C: free $([math]::Round($free / 1GB, 1)) GB"
     if ($free -lt 20GB) { throw 'prepare: under 20 GB free on C:' }
   }
-  'resources' { Link-Resources }   # re-link after a machine restart without a prepare (prepare wipes the outputs)
+  'resources' {  # re-link after a restart or a fresh profile lay, without a prepare (prepare wipes the outputs)
+    Link-Resources
+    # TexGen's output too: DynDOLOD reads it from Data ("No TexGen output detected" otherwise); the texgen step linked it
+    # once, every fresh lay since dropped the links, and the step marker rightly skips TexGen itself (14:41).
+    if ((Test-Path $Out.texgen) -and (Get-ChildItem $Out.texgen -Recurse -File -EA SilentlyContinue)) { Link-Into-Data $Out.texgen }
+  }
   'survey' {
     $exeArgs = $Paths + $(if ($Tool -eq 'xlodgen') { ' -lodgen' } else { '' }) + " -o:`"$Work\out\survey\`""
     $p = Start-Tool $Tool $exeArgs
