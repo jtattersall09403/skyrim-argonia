@@ -115,7 +115,11 @@ controls() {
   rm -rf "$t"
 }
 step "controls" controls
+# Community Shaders' compiled cache by its key (1.15-r4-fast-loop): laid from the archive on a machine without it, so
+# only a real shader change compiles (~11 min); archived after the launch that compiled it. Never fails the deploy.
+step "shader cache" bash -c '"$0" ensure || echo "shader cache: ensure failed; the launch compiles"' "$here/shader_cache.sh"
 step "launch" "$PY" tools/bridge.py launch --fresh
+step "shader cache save" bash -c '"$0" save || echo "shader cache: save failed (next deploy retries)"' "$here/shader_cache.sh"
 step "send scenes" send_scenes
 [ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }
 # the pool keeps one build (1.8 §7): tag what this machine now runs, so the play page and pool.py know who is behind
