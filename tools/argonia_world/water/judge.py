@@ -2,8 +2,8 @@
 functions over the emitted stream (`out/water/cells.jsonl`, `records.json`), the solve and the written ground, so a
 synthetic cell tests them (tests/test_judge.py) and `water check` runs them on the province:
 
-1. pieces: every rapids or falls piece stands on a step between two cells whose levels differ, its base within
-   BED_TOL_U of the bed the terrain graded there (the line on the edge at the upper water, the foot pieces where the
+1. pieces: every rapids or falls piece stands on a step between two cells whose levels differ, its base no more
+   than BED_TOL_U over the bed the terrain graded there (deeper is water under it) (the line on the edge at the upper water, the foot pieces where the
    bed meets the lower water) and facing down the step (the skirt, as Skyrim.esm lays it, up it);
 2. no hovering surface: along every edge where a water cell meets a dry cell, or a lower water outside a step's
    channel, the ground stands within BED_TOL_U under the level or above it; and every channel crossing (where the
@@ -82,12 +82,12 @@ def pieces(steps, levels: dict, refs: list[tuple[str, tuple, float]], g: np.ndar
         if g is not None:
             bed = water - (stp.FOOT_BED_M if foot else stp.STEP_BED_M) * UPM
             gz = ground_at(g, pos[0], pos[1]) * UPM
-            if abs(gz - bed) > stp.BED_TOL_U:
-                bad.append(f"{where}: the bed under it is {gz - bed:+.0f} u from the graded bed")
+            if gz - bed > stp.BED_TOL_U:  # deeper is water under the piece; higher buries it in a bank
+                bad.append(f"{where}: the bed under it is {gz - bed:+.0f} u over the graded bed (buried)")
         want = (stp.YAW[s.edge] + (180.0 if kind in stp.FACE_UP else 0.0)) % 360
         if _yaw_off(yaw, want) > 45.0:
             bad.append(f"{where}: faces {_yaw_off(yaw, want):.0f} deg off {'up' if kind in stp.FACE_UP else 'down'} the step")
-    lines = {(s.cx, s.cy, s.edge) for s in chained}
+    lines = {(s.cx, s.cy, s.edge) for s in chained if g is None or not buried(s, 1.0, g)}  # a buried step reads as a bank
     covered = set()
     for kind, pos, _ in refs:
         if kind == "rapids" and len(pts):
@@ -132,3 +132,14 @@ def still_flow(cells: list[tuple[int, int, str | None, str | None, str]], templa
             bad.append(f"cell ({cx},{cy}) {'still body ' + body if body else 'river ' + str(reach)}: type {key} "
                        f"copies {t}, not {want}")
     return bad
+
+
+def buried(s, width_m: float, g: np.ndarray) -> bool:
+    """A step whose ground stands over the graded bed at any of its pieces (the terrain kept no channel there):
+    the emit lays no chain on it, and the edge reads as a closed bank."""
+    for p in stp.place(s, width_m):
+        foot = p["kind"] in stp.AT_FOOT
+        bed = ((s.lower_m - stp.FOOT_BED_M) if foot else (s.upper_m - stp.STEP_BED_M)) * UPM
+        if ground_at(g, p["pos"][0], p["pos"][1]) * UPM - bed > stp.BED_TOL_U:
+            return True
+    return False

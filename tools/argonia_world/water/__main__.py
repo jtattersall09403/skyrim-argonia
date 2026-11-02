@@ -130,7 +130,7 @@ def placement(w, cw, water_out: Path, index_path: Path, ground_path: Path) -> li
     return [f"{k}: {v} reds, first {[b for b in bad if b.startswith(k)][:3]}" for k, v in n.items()]
 
 
-def cmd_emit(out: Path, index_path: Path) -> int:
+def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
     """cells.jsonl for WaterRecords.ApplyCell: per water cell its height and type; per step its chain's pieces."""
     from tools.argonia_world import db
     from tools.argonia_world import pieces as pz
@@ -149,11 +149,18 @@ def cmd_emit(out: Path, index_path: Path) -> int:
     for r in w.query("SELECT cx, cy, level_m, water_type, body_id, reach_id FROM cell_water"):
         lines[(r[0], r[1])] = {"x": r[0], "y": r[1], "waterHeight": su.rounded(su.metres_to_units(r[2]), 2),
                                "waterType": layer.type_key(layer.cell_type(r[3], r[4], r[5])), "refs": []}
+    import numpy as np
+    from tools.argonia_world.water import judge
+    g = np.load(ground_path, mmap_mode="r") if ground_path.exists() else None
     sample = None
+    no_channel = []
     for s in cw.steps():
         if s.chain == "closed":
             continue
         width_m = widths.get((s.cx, s.cy)) or (s.cross_hi - s.cross_lo) * su.PROVINCE_SAMPLE_M
+        if g is not None and judge.buried(s, width_m, g):  # the ground kept no channel: a closed bank, no chain
+            no_channel.append(f"({s.cx},{s.cy}) {s.edge}")
+            continue
         dx, dy = stp.OUT[s.edge]
         for p in stp.place(s, width_m):
             if resolved[p["kind"]].kind != "base":
@@ -178,13 +185,13 @@ def cmd_emit(out: Path, index_path: Path) -> int:
                                              sorted(lines.items(), key=lambda kv: (kv[0][1], kv[0][0]))))
     (out / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}, indent=1) + "\n")
     plan = {"cells": len(lines), "pieces": sum(len(v["refs"]) for v in lines.values()), "unresolved": unresolved,
-            "overSlot": over}
+            "overSlot": over, "noChannel": no_channel}
     if sample is not None:  # a falls step for the world sample's river stop
         plan["sampleStep"] = {"cell": [sample.cx, sample.cy], "edge": sample.edge, "upperM": sample.upper_m,
                               "lowerM": sample.lower_m, "chain": sample.chain}
     (out / "plan.json").write_text(json.dumps(plan, indent=1) + "\n")
     print(f"water emit: {plan['cells']} cells, {plan['pieces']} piece refs, unresolved {unresolved}, "
-          f"over slot {len(over)}")
+          f"over slot {len(over)}, {len(no_channel)} steps with no channel in the ground (no chain): {no_channel[:12]}")
     return 1 if unresolved or over else 0
 
 
@@ -203,7 +210,7 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_solve()
     if a.cmd == "check":
         return cmd_check(Path(a.out), Path(a.index), Path(a.ground))
-    return cmd_emit(Path(a.out), Path(a.index))
+    return cmd_emit(Path(a.out), Path(a.index), Path(a.ground))
 
 
 if __name__ == "__main__":
