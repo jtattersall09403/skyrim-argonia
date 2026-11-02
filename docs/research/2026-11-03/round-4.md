@@ -21,7 +21,7 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 
 ## Wave 2 (as wave-1 lanes return)
 
-1.15-r4-creatures (13) done d78bee5 (lists held 1–2 kinds in 30 of 81 cases and density was a third of vanilla's measured shore figure; now 125 lists of 12–21 kinds, density at vanilla's, apex kinds at their dens); 1.12-r4-menus (6, 7, 8, 10, 11, plus the owner's custom-UI card beside the Wind UI one, 22:06) launched 22:27.
+1.15-r4-creatures (13) done d78bee5 (lists held 1–2 kinds in 30 of 81 cases and density was a third of vanilla's measured shore figure; now 125 lists of 12–21 kinds, density at vanilla's, apex kinds at their dens); 1.12-r4-menus (6, 7, 8, 10, 11, plus the owner's custom-UI card beside the Wind UI one, 22:06) launched 22:27; done b3cbb78: `python -m tools.ui_harness menus` drives seven menus at four viewports by pad in 44 s (focus started nowhere in magic, journal and dialogue; magic's column jumped: fixed in nav.ts); the System pane on the paper sheet, contrast 3.2:1 to 6.6:1; loading screens weighted so no subject passes a third (the Hist was 42 %); two Moonlight cards, 'Argonia' as today and 'Argonia custom UI' with Wind UI and Dear Diary set aside and our own inventory and character sheet (OpenMW's tab, glyph and d-pad handling) wired through the router; owed: books from the inventory, the pause-pane cycle on the custom card, the owner's comparison.
 
 Owner, 22:06: seven screenshots of the tree colours, shiny textures and pebble swathes, routed to the trees and materials lanes.
 
