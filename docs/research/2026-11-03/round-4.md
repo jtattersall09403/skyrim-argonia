@@ -10,9 +10,9 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 | 1.15-r4-fast-loop | the loop itself (owner: massively faster) | lane-1.15-r4-fast-loop.md (done 0ac3304: infra/gpu-box/round.sh runs a round as one resumable job; shader cache in S3; a settle action replaces fixed waits; one save load per batch; predicted 30–35 min per 10-journey batch against 75–100) |
 | 1.15-r4-water | 20, 19 | lane-1.15-r4-water.md |
 | 1.15-r4-materials | 16, 17 | lane-1.15-r4-materials.md |
-| 1.15-r4-light | 18, 9 | lane-1.15-r4-light.md (57d61ea: fog max 1.0 hid the sky, far under vanilla's class medians, grey zeniths; height fog was a 5 m slab, now a bank below eye height; owed: per-weather fog height so inland shores get mist) |
-| 1.15-r4-trees | 4, 5, 32 | lane-1.15-r4-trees.md |
-| 1.15-r4-claywater | 3, 22, 23, 25, 29, 31, 1 | lane-1.15-r4-claywater.md (9d9f2a9 79d4b34 75f1f18: a stockade kit scattered as trees, 13 Claywater refs 31 m under the new ground, docks seated on the bed, sign textures never laid; the Claywater save; owed: the well pad via a real terrain_patch reader, the scour pool height, L3) |
+| 1.15-r4-light | 18, 9 | lane-1.15-r4-light.md (57d61ea: fog max 1.0 hid the sky, far under vanilla's class medians, grey zeniths; height fog was a 5 m slab, now a bank below eye height; then 9e492ee: seven mist weather copies by water-level band with their own Community Shaders fog files, every mist region banked between its water and eye height) |
+| 1.15-r4-trees | 4, 5, 32 | lane-1.15-r4-trees.md (31c2e32: trees sunk by a measured per-model seat, the mods' own placement the reference; flora with any missing texture dropped; tree families per class, classes now 0.77–0.89 distinct; the teal cypress traced to resource-pack textures, being closed) |
+| 1.15-r4-claywater | 3, 22, 23, 25, 29, 31, 1 | lane-1.15-r4-claywater.md (9d9f2a9 79d4b34 75f1f18: a stockade kit scattered as trees, 13 Claywater refs 31 m under the new ground, docks seated on the bed, sign textures never laid; the Claywater save; then b94ef5f: terrain_patch real as pads and bowls read by the ground, materials and renderer; the well, house and stable on pads; the scour pool a bowl under its water) |
 | 1.15-r4-roads | 21 | lane-1.15-r4-roads.md |
 | 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md |
 | 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md (done 7948d33: third person, 5,000 gold, Precision camera shake off; 33 left: FreeClimb has no tree filter, trees climb by the 2026-11-01 ruling, the mechanic is the modder's) |
