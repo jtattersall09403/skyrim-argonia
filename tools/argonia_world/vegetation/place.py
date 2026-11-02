@@ -86,6 +86,7 @@ class Rule:
     scale: tuple[float, float]
     sink_m: float = 0.0  # metres at scale 1 the pivot is set below the ground: OBND bottom + sink_frac x height
     upright: float = 0.0  # share of stems that stand upright instead of conforming (vanilla boulders ~26 %, 0034)
+    tree: bool = False  # a tree role the tree band counts (lists.BAND_TREE_ROLES)
 
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
@@ -322,6 +323,18 @@ def vanilla_keep(counts) -> float:
     if not a.size or a.max() == 0:
         return 1.0
     return min(1.0, VANILLA_P95 / max(float(np.percentile(a, 95)), 1e-9), VANILLA_MAX / float(a.max()))
+
+
+def final_mask(thin: np.ndarray, tree: np.ndarray, keep: float, tree_keep: float | None, cap: int = CAP) -> np.ndarray:
+    """The stems a cell keeps: a stem is kept when its draw is under its region's keep, a tree under the region's
+    tree keep (build.tree_keeps: the closed loop on the tree band; None: the plain keep); a cell still over the cap
+    drops its highest draws."""
+    tk = keep if tree_keep is None else tree_keep
+    m = thin < np.where(tree, tk, keep)
+    if int(m.sum()) > cap:
+        idx = np.nonzero(m)[0]
+        m[idx[np.argsort(thin[idx], kind="stable")[cap:]]] = False
+    return m
 
 
 def keep_value(t: float) -> float:

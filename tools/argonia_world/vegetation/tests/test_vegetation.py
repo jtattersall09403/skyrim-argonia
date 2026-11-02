@@ -157,3 +157,16 @@ def test_a_window_builds_the_same_twice():
     for c in cells:
         for k in a[c]:
             assert np.array_equal(a[c][k], b[c][k]), (c, k)
+
+
+def test_tree_keep_closes_the_band_deterministically():
+    from tools.argonia_world.vegetation import build
+    rng = np.random.default_rng(1)
+    mk = lambda: {"thin": rng.random(300), "tree": np.ones(300, bool), "countable": True}
+    placed = {(i, 0): mk() for i in range(12)}
+    region = {c: "r.coastal-lagoon" for c in placed}
+    tk, info = build.tree_keeps(placed, region, {"r.coastal-lagoon": 1.0}, {"r.coastal-lagoon": "coastal-lagoon"})
+    assert info["r.coastal-lagoon"]["mean_after"] == 18.0 and tk["r.coastal-lagoon"] < 0.1
+    p = placed[(0, 0)]
+    assert (place.final_mask(p["thin"], p["tree"], 1.0, tk["r.coastal-lagoon"]) ==
+            place.final_mask(p["thin"], p["tree"], 1.0, tk["r.coastal-lagoon"])).all()

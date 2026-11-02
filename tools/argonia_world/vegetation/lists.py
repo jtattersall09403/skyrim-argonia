@@ -88,6 +88,27 @@ def countable(ground, level) -> bool:
 
 
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery")
+# Skyrim.esm trees per cell by the cell's dominant ground (docs/research/2026-11-01/skyrim-does-it-this-way.md
+# section 6): (mean, p90 or None); the rest of the audit's table is not needed for our classes
+TREE_BANDS = {"forest": (31.0, 53.0), "marsh": (18.0, 36.0), "field": (10.0, None)}
+# our eco classes mapped to a band: the tall-tree river wall and the flooded and interior swamp forests are forest;
+# the open wet ground (sinks, lagoons, deltas) is marsh; the lightly forested hills and the rocky north are field
+# (lore regions/blackwood-and-gloommire.md:13-14)
+ECO_BAND = {"deep-river-corridor": "forest", "flooded-forest": "forest", "interior-swamp": "forest",
+            "rootland": "forest", "deep-sink-basin": "marsh", "coastal-lagoon": "marsh", "tidal-delta": "marsh",
+            "northern-transition": "field", "western-frontier": "field"}
+BAND_TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")  # what the band counts
+BAND_MIN_CELLS = 10  # a region of fewer standable cells is a handful of cells of one coast, not a stand: reported only
+BAND_LO, BAND_HI = 0.5, 1.5  # a region's mean trees per cell within these multiples of its band's mean
+BAND_LO_FIELD = 0.25  # the hills are "lightly forested", the rocky north rock-dominated: down to a quarter of the mean
+
+
+def band_limits(band: str) -> tuple[float, float, float]:
+    """(lower bound, mean, upper bound) of trees per countable cell for a band."""
+    m = TREE_BANDS[band][0]
+    return (BAND_LO_FIELD if band == "field" else BAND_LO) * m, m, BAND_HI * m
+
+
 IN_WATER_TREE = (-6.0, 2.0)  # mangrove and cypress: trunks and roots in the water, and on the bank
 IN_WATER_NAMES = ("mangrove", "cypress")
 # role -> eco classes that admit it (None: all)

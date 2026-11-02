@@ -38,6 +38,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
     sink = {r["form_key"]: Rule.sink_of(r["sink_frac"], r["bound_z0"], r["bound_z1"]) for r in w.query(
         "SELECT v.form_key, v.sink_frac, f.bound_z0, f.bound_z1 FROM vegetation_form v JOIN object_form f USING (form_key)")}
     upright = {r["form_key"]: lists.upright_share(r["sink_frac"]) for r in w.query("SELECT * FROM vegetation_form")}
+    tree = {r["form_key"]: r["role_id"] in lists.BAND_TREE_ROLES for r in w.query("SELECT form_key, role_id FROM object_form")}
     out: dict[str, list[Rule]] = defaultdict(list)
     for r in w.query("SELECT * FROM land_region_object ORDER BY land_region_id, form_key"):
         if r["form_key"] not in scale:
@@ -45,7 +46,8 @@ def load_rules(w) -> dict[str, list[Rule]]:
         out[r["land_region_id"]].append(Rule(
             r["form_key"], r["density_per_ha"], r["clustering"], r["radius_m"], r["min_slope_deg"],
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
-            bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]]))
+            bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]],
+            tree.get(r["form_key"], False)))
     return dict(out)
 
 
@@ -227,28 +229,79 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
                 ci = place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
                                       south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
                                       footprints=near(feet, n_, a, s_, a + Q))
-                placed[(cx, cy)] = place.place_cell(ci, rules[region[(cx, cy)]])
+                p = place.place_cell(ci, rules[region[(cx, cy)]])
+                p["tree"] = np.asarray([r.tree for r in rules[region[(cx, cy)]]], dtype=bool)[p["form"]]
+                p["countable"] = lists.countable(ci.H, ci.L)  # the check's one definition of a standable cell
+                placed[(cx, cy)] = p
                 stats["cells"] += 1
-        if not budget:  # write as we go: nothing held across bands
-            for cy in band:
-                _write_row(out, cy, rows_by_cy[cy], placed, region, rules, keep)
-                for cx in rows_by_cy[cy]:
-                    placed[(cx, cy)] = _counts(placed[(cx, cy)], keep.get(region[(cx, cy)], 1.0))
         log(f"vegetation: rows {max(band)}..{min(band)} ({time.time() - t0:.0f} s)")
     if budget:
         keep = _budget(w, placed, region)
-        for cy in cys:
-            _write_row(out, cy, rows_by_cy[cy], placed, region, rules, keep)
-            for cx in rows_by_cy[cy]:
-                placed[(cx, cy)] = _counts(placed[(cx, cy)], keep.get(region[(cx, cy)], 1.0))
+    # the closed loop on the tree band: the stems are all held, so the region's tree keep is solved on them
+    eco = {r["id"]: r["eco_class_id"] for r in w.query("SELECT id, eco_class_id FROM land_region")}
+    tkeep, tinfo = tree_keeps(placed, region, keep, eco)
+    for r, i in sorted(tinfo.items()):
+        log(f"vegetation: trees {r}: {i['mean_before']} -> {i['mean_after']} a countable cell "
+            f"(band {i['band'][0]:g}-{i['band'][1]:g}, tree keep {i['tree_keep']:.4f})"
+            + (f"; SHORTFALL: candidate supply gives {i['supply_mean']} a cell" if i["shortfall"] else ""))
+    for cy in cys:
+        _write_row(out, cy, rows_by_cy[cy], placed, region, rules, keep, tkeep)
+        for cx in rows_by_cy[cy]:
+            placed[(cx, cy)] = _counts(placed[(cx, cy)], keep.get(region[(cx, cy)], 1.0), tkeep.get(region[(cx, cy)]))
     summary = _summary(placed, region, rules, keep, time.time() - t0)
+    summary["tree_bands"] = tinfo
     (out / "summary.json").write_text(json.dumps(summary, indent=1, sort_keys=True) + "\n")
     return summary
 
 
-def _counts(p: dict, k: float) -> dict:
+def tree_keeps(placed, region, keep, eco) -> tuple[dict[str, float], dict[str, dict]]:
+    """The tree band closed as a loop (the placer measures what the check will): per region with a band, the trees
+    a countable cell (lists.countable, the check's one rule) holds after the budget; above the band's upper bound the
+    region's trees are thinned to the band's mean (Skyrim.esm's), below its lower bound raised to the nearest of the
+    mean and 1.25 x the bound, bounded by the candidate supply (a shortfall is reported). Trees keep when their
+    draw (the position-seeded `thin`, so a window placed twice places identically) is under the region's tree keep;
+    the keep is the draw that makes the mean land. Returns ({region: tree keep}, {region: report})."""
+    by: dict[str, list] = defaultdict(list)
+    for c, p in placed.items():
+        by[region[c]].append(p)
+    out, info = {}, {}
+    for r, ps in sorted(by.items()):
+        band = lists.ECO_BAND.get(eco.get(r, ""))
+        cells = [p for p in ps if p["countable"]]
+        if not band or len(cells) < lists.BAND_MIN_CELLS:
+            continue
+        lo, mean, hi = lists.band_limits(band)
+        k = keep.get(r, 1.0)
+        n = len(cells)
+        now = sum(int(((p["thin"] < k) & p["tree"]).sum()) for p in cells) / n
+        draws = np.sort(np.concatenate([p["thin"][p["tree"]] for p in cells] or [np.zeros(0)]))
+        supply = draws.size / n
+        row = {"band": [lo, hi], "cells": n, "mean_before": round(now, 1), "supply_mean": round(supply, 1),
+               "shortfall": False}
+        if now > hi:
+            target = mean
+        elif now < lo:
+            target = min(mean, 1.25 * lo)
+        else:
+            row.update(tree_keep=k, mean_after=round(now, 1))
+            info[r] = row
+            continue
+        want = int(round(target * n))
+        if want >= draws.size:  # the whole supply
+            tk = 1.0
+            row["shortfall"] = supply < lo
+        else:  # the draw that keeps `want` of the region's countable-cell trees
+            tk = float(draws[want])
+        out[r] = tk
+        after = sum(int(((p["thin"] < tk) & p["tree"]).sum()) for p in cells) / n
+        row.update(tree_keep=tk, mean_after=round(after, 1))
+        info[r] = row
+    return out, info
+
+
+def _counts(p: dict, k: float, tk: float | None = None) -> dict:
     """What the summary keeps of a cell once written: the stems before and after the budget, per form."""
-    m = p["thin"] < k
+    m = place.final_mask(p["thin"], p["tree"], k, tk)
     return {"before": int(p["thin"].size), "after": int(m.sum()), "forms": np.bincount(p["form"][m]).tolist()}
 
 
@@ -276,12 +329,12 @@ def _budget(w, placed, region) -> dict[str, float]:
     return out
 
 
-def _write_row(out: Path, cy: int, cxs: list[int], placed, region, rules, keep) -> None:
+def _write_row(out: Path, cy: int, cxs: list[int], placed, region, rules, keep, tkeep) -> None:
     lines = []
     for cx in sorted(cxs):
         p = placed[(cx, cy)]
         rl = rules[region[(cx, cy)]]
-        m = p["thin"] < keep.get(region[(cx, cy)], 1.0)
+        m = place.final_mask(p["thin"], p["tree"], keep.get(region[(cx, cy)], 1.0), tkeep.get(region[(cx, cy)]))
         idx = np.nonzero(m)[0]
         if not idx.size:
             continue

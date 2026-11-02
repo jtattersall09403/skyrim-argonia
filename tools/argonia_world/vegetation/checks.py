@@ -32,21 +32,11 @@ from tools.argonia_world.vegetation import lists as lists_mod
 GROUND_TOL_M = 0.5
 SLOPE_TOL_DEG = 0.01
 FIRST = 5  # failures listed per check
-# Skyrim.esm trees per cell by the cell's dominant ground (docs/research/2026-11-01/skyrim-does-it-this-way.md
-# section 6): (mean, p90 or None); the rest of the audit's table is not needed for our classes
-TREE_BANDS = {"forest": (31.0, 53.0), "marsh": (18.0, 36.0), "field": (10.0, None)}
-# our eco classes mapped to a band: the tall-tree river wall and the flooded and interior swamp forests are forest;
-# the open wet ground (sinks, lagoons, deltas) is marsh; the lightly forested hills and the rocky north are field
-# (lore regions/blackwood-and-gloommire.md:13-14; lists.WHY)
-ECO_BAND = {"deep-river-corridor": "forest", "flooded-forest": "forest", "interior-swamp": "forest",
-            "rootland": "forest", "deep-sink-basin": "marsh", "coastal-lagoon": "marsh", "tidal-delta": "marsh",
-            "northern-transition": "field", "western-frontier": "field"}
-TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")
+TREE_BANDS, ECO_BAND = lists_mod.TREE_BANDS, lists_mod.ECO_BAND  # the band table lives in lists (the placer closes on it)
+TREE_ROLES = lists_mod.BAND_TREE_ROLES
 # a cell counts toward its tree band by lists.countable, the one definition the planner's targets use too
-BAND_MIN_CELLS = 10  # a region of fewer standable cells is a handful of cells of one coast, not a stand: reported only
-BAND_LO, BAND_HI = 0.5, 1.5  # a region's mean trees per cell within these multiples of its band's mean
-BAND_LO_FIELD = 0.25  # the hills are "lightly forested" (lore regions/blackwood-and-gloommire.md:13-14), and the rocky
-#                       north is rock-dominated: a field region may hold down to a quarter of vanilla's field mean
+BAND_MIN_CELLS = lists_mod.BAND_MIN_CELLS
+BAND_LO, BAND_HI, BAND_LO_FIELD = lists_mod.BAND_LO, lists_mod.BAND_HI, lists_mod.BAND_LO_FIELD
 VANILLA_TREES_IN_WATER, VANILLA_TREE_WATER_P10_U = 0.058, 198.0
 
 
