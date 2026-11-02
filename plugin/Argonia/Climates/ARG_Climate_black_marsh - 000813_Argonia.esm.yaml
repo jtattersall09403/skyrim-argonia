@@ -1,9 +1,9 @@
 FormKey: 000813:Argonia.esm
 EditorID: ARG_Climate_black_marsh
 WeatherTypes:
-- Weather: 00081A:Skyrim.esm
+- Weather: 000E9B:Argonia.esm
   Chance: 13
-- Weather: 012F89:Skyrim.esm
+- Weather: 10A233:Skyrim.esm
   Chance: 13
 - Weather: 000E9C:Argonia.esm
   Chance: 27

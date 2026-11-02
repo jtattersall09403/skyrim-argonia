@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1618> kForms{{
+inline constexpr std::array<FormRow, 1622> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -1582,6 +1582,7 @@ inline constexpr std::array<FormRow, 1618> kForms{{
     {"weather.tannin-haze", "Argonia.esm", "WTHR", 0x000812},
     {"weather.wet-rain", "Argonia.esm", "WTHR", 0x000E9F},
     {"weather_chance.ARG_WChance_coastal_clear_co", "Argonia.esm", "GLOB", 0x000814},
+    {"weather_chance.ARG_WChance_coastal_clear_dry", "Argonia.esm", "GLOB", 0x000ED0},
     {"weather_chance.ARG_WChance_coastal_cloudy_co", "Argonia.esm", "GLOB", 0x000815},
     {"weather_chance.ARG_WChance_coastal_fog_co", "Argonia.esm", "GLOB", 0x000816},
     {"weather_chance.ARG_WChance_coastal_fog_vt", "Argonia.esm", "GLOB", 0x000835},
@@ -1593,7 +1594,9 @@ inline constexpr std::array<FormRow, 1618> kForms{{
     {"weather_chance.ARG_WChance_coastal_storm_rain", "Argonia.esm", "GLOB", 0x00081B},
     {"weather_chance.ARG_WChance_coastal_wet_rain", "Argonia.esm", "GLOB", 0x000EA1},
     {"weather_chance.ARG_WChance_jungle_clear", "Argonia.esm", "GLOB", 0x00081C},
+    {"weather_chance.ARG_WChance_jungle_clear_dry", "Argonia.esm", "GLOB", 0x000ED1},
     {"weather_chance.ARG_WChance_jungle_cloudy", "Argonia.esm", "GLOB", 0x00081D},
+    {"weather_chance.ARG_WChance_jungle_cloudy_ma", "Argonia.esm", "GLOB", 0x000ED2},
     {"weather_chance.ARG_WChance_jungle_fog", "Argonia.esm", "GLOB", 0x00081E},
     {"weather_chance.ARG_WChance_jungle_mist", "Argonia.esm", "GLOB", 0x00081F},
     {"weather_chance.ARG_WChance_jungle_monsoon_overcast", "Argonia.esm", "GLOB", 0x000EA2},
@@ -1611,6 +1614,7 @@ inline constexpr std::array<FormRow, 1618> kForms{{
     {"weather_chance.ARG_WChance_lowland_rain_ma", "Argonia.esm", "GLOB", 0x000827},
     {"weather_chance.ARG_WChance_lowland_tannin_haze", "Argonia.esm", "GLOB", 0x000828},
     {"weather_chance.ARG_WChance_lowland_wet_rain", "Argonia.esm", "GLOB", 0x000EA6},
+    {"weather_chance.ARG_WChance_marsh_clear_dry", "Argonia.esm", "GLOB", 0x000ED3},
     {"weather_chance.ARG_WChance_marsh_clear_ma", "Argonia.esm", "GLOB", 0x000829},
     {"weather_chance.ARG_WChance_marsh_cloudy_ma", "Argonia.esm", "GLOB", 0x00082A},
     {"weather_chance.ARG_WChance_marsh_fog_ma", "Argonia.esm", "GLOB", 0x00082B},

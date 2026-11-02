@@ -1712,6 +1712,7 @@
 {"editor_id":"ARG_VasteiPile","plugin":"Argonia.esm","form_id":2138,"record_type":"KYWD","entity_key":"hook.vastei-pile"}
 {"editor_id":"ARG_VasteiPileActivator","plugin":"Argonia.esm","form_id":2144,"record_type":"ACTI","entity_key":"death.vastei-pile"}
 {"editor_id":"ARG_WChance_coastal_clear_co","plugin":"Argonia.esm","form_id":2068,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_clear_co"}
+{"editor_id":"ARG_WChance_coastal_clear_dry","plugin":"Argonia.esm","form_id":3792,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_clear_dry"}
 {"editor_id":"ARG_WChance_coastal_cloudy_co","plugin":"Argonia.esm","form_id":2069,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_cloudy_co"}
 {"editor_id":"ARG_WChance_coastal_fog_co","plugin":"Argonia.esm","form_id":2070,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_fog_co"}
 {"editor_id":"ARG_WChance_coastal_fog_vt","plugin":"Argonia.esm","form_id":2101,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_fog_vt"}
@@ -1723,7 +1724,9 @@
 {"editor_id":"ARG_WChance_coastal_storm_rain","plugin":"Argonia.esm","form_id":2075,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_storm_rain"}
 {"editor_id":"ARG_WChance_coastal_wet_rain","plugin":"Argonia.esm","form_id":3745,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_coastal_wet_rain"}
 {"editor_id":"ARG_WChance_jungle_clear","plugin":"Argonia.esm","form_id":2076,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_clear"}
+{"editor_id":"ARG_WChance_jungle_clear_dry","plugin":"Argonia.esm","form_id":3793,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_clear_dry"}
 {"editor_id":"ARG_WChance_jungle_cloudy","plugin":"Argonia.esm","form_id":2077,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_cloudy"}
+{"editor_id":"ARG_WChance_jungle_cloudy_ma","plugin":"Argonia.esm","form_id":3794,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_cloudy_ma"}
 {"editor_id":"ARG_WChance_jungle_fog","plugin":"Argonia.esm","form_id":2078,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_fog"}
 {"editor_id":"ARG_WChance_jungle_mist","plugin":"Argonia.esm","form_id":2079,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_mist"}
 {"editor_id":"ARG_WChance_jungle_monsoon_overcast","plugin":"Argonia.esm","form_id":3746,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_jungle_monsoon_overcast"}
@@ -1741,6 +1744,7 @@
 {"editor_id":"ARG_WChance_lowland_rain_ma","plugin":"Argonia.esm","form_id":2087,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_lowland_rain_ma"}
 {"editor_id":"ARG_WChance_lowland_tannin_haze","plugin":"Argonia.esm","form_id":2088,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_lowland_tannin_haze"}
 {"editor_id":"ARG_WChance_lowland_wet_rain","plugin":"Argonia.esm","form_id":3750,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_lowland_wet_rain"}
+{"editor_id":"ARG_WChance_marsh_clear_dry","plugin":"Argonia.esm","form_id":3795,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_marsh_clear_dry"}
 {"editor_id":"ARG_WChance_marsh_clear_ma","plugin":"Argonia.esm","form_id":2089,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_marsh_clear_ma"}
 {"editor_id":"ARG_WChance_marsh_cloudy_ma","plugin":"Argonia.esm","form_id":2090,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_marsh_cloudy_ma"}
 {"editor_id":"ARG_WChance_marsh_fog_ma","plugin":"Argonia.esm","form_id":2091,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_marsh_fog_ma"}
