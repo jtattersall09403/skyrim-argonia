@@ -1,5 +1,5 @@
 """L1: the water's writer (WaterRecords.cs through LandWorld.cs) on the terrain test's 4 synthetic cells, read back
-from the bytes: the 4 WATR types and 4 plane activators, the WRLD's default water, one cell with a water height and
+from the bytes: the 7 WATR types (4 still, 3 flowing) and 4 plane activators, the WRLD's default water, one cell with a water height and
 type, one with plane and piece references only, HasWater on both; written twice, the same bytes. Also the regrade
 layer (terrain/water_regrade.py) and the greedy plane cover. Skipped where ArgoniaGen is not built."""
 import json
@@ -67,7 +67,7 @@ def test_water_written_and_read_back(tmp_path):
         by.setdefault(r.sig, []).append(r)
     watr = {r.formid & 0xFFFFFF: r for r in by["WATR"]}
     want = {int(rec["formKey"].split(":")[0], 16): rec for rec in layer.records() if rec["type"] == "WATR"}
-    assert sorted(watr) == sorted(want) and len(watr) == 4
+    assert sorted(watr) == sorted(want) and len(watr) == len(layer.EMIT_TYPES) == 7  # 4 still, 3 flowing (r4)
     for fid, rec in want.items():
         assert watr[fid].first("EDID") == rec["edid"].encode() + b"\0"
         assert watr[fid].first("ANAM")[0] == rec["opacity"]
