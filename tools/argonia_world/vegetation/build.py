@@ -12,7 +12,9 @@ the region keeps are known.
 from __future__ import annotations
 
 import gzip
+import hashlib
 import json
+import pickle
 import time
 from collections import defaultdict
 from pathlib import Path
@@ -157,6 +159,61 @@ def water_table(src, cells_path: Path) -> np.ndarray:
 
 
 # --- the province ----------------------------------------------------------------------------------------------
+def _code_stamp() -> str:
+    """The placement's code (this package), the band cache's code version."""
+    h = hashlib.sha256()
+    for f in sorted(Path(__file__).parent.glob("*.py")):
+        h.update(f.name.encode() + f.read_bytes())
+    return h.hexdigest()
+
+
+def band_key(cis, rules, region) -> str:
+    """A band's content stamp: the placement code and, per cell, its region's rules and every input place_cell reads
+    (heights, levels, table, roads, footprints): equal keys place equal stems, so the band's cache is reused."""
+    h = hashlib.sha256(_code_stamp().encode())
+    for ci in cis:
+        r = region[(ci.cx, ci.cy)]
+        h.update(f"{ci.cx},{ci.cy},{r},{rules[r]!r}".encode())
+        for k, v in sorted(vars(ci).items()):
+            h.update(k.encode())
+            _feed(h, v)
+    return h.hexdigest()
+
+
+def _feed(h, v) -> None:
+    """Hash a value whole: arrays by their bytes (repr elides long ones), lists and tuples item by item."""
+    if isinstance(v, np.ndarray):
+        v = np.ascontiguousarray(v)
+        h.update(f"a{v.shape}{v.dtype}".encode() + v.tobytes())
+    elif isinstance(v, (list, tuple)):
+        h.update(f"l{len(v)}(".encode())
+        for x in v:
+            _feed(h, x)
+        h.update(b")")
+    else:
+        h.update(f"v{v!r};".encode())
+
+
+def _band_path(out: Path, top: int) -> Path:
+    return out / "_bands" / f"{top:+04d}.pkl"
+
+
+def load_band(out: Path, top: int, key: str):
+    try:
+        k, got = pickle.loads(_band_path(out, top).read_bytes())
+    except (OSError, EOFError, ValueError, pickle.UnpicklingError):
+        return None
+    return got if k == key else None
+
+
+def save_band(out: Path, top: int, key: str, got) -> None:
+    p = _band_path(out, top)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_suffix(".part")
+    tmp.write_bytes(pickle.dumps((key, got), protocol=pickle.HIGHEST_PROTOCOL))
+    tmp.replace(p)
+
+
 def province_cells(cells=None) -> list[tuple[int, int]]:
     x0, y0 = su.PROVINCE_CELL_SW
     allc = [(cx, cy) for cy in range(y0, y0 + su.PROVINCE_CELLS) for cx in range(x0, x0 + su.PROVINCE_CELLS)]
@@ -216,6 +273,7 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
         rr = np.clip((np.arange(r0, r1) - src.pad) // place.TABLE_STEP, 0, table.shape[0] - 1)
         cc = np.clip((np.arange(c0, c1) - src.pad) // place.TABLE_STEP, 0, table.shape[1] - 1)
         T = table[np.ix_(rr, cc)].astype(np.float64)
+        cis = []
         for cy in band:
             n_, s_ = src.cell_rows(cy)
             for cx in rows_by_cy[cy]:
@@ -226,15 +284,25 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
                     lv = cw.level(cx, cy)
                     Lc = np.full(Lc.shape, -np.inf if lv is None else lv)
                     Tc = np.full(Tc.shape, cw.nearest_level(cx, cy))
-                ci = place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
-                                      south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
-                                      footprints=near(feet, n_, a, s_, a + Q))
-                p = place.place_cell(ci, rules[region[(cx, cy)]])
-                p["tree"] = np.asarray([r.tree for r in rules[region[(cx, cy)]]], dtype=bool)[p["form"]]
+                cis.append(place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
+                                            south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
+                                            footprints=near(feet, n_, a, s_, a + Q)))
+        key = band_key(cis, rules, region)
+        got = load_band(out, max(band), key)
+        reused = got is not None
+        if not reused:
+            got = {}
+            for ci in cis:
+                p = place.place_cell(ci, rules[region[(ci.cx, ci.cy)]])
+                p["tree"] = np.asarray([r.tree for r in rules[region[(ci.cx, ci.cy)]]], dtype=bool)[p["form"]]
                 p["countable"] = lists.countable(ci.H, ci.L)  # the check's one definition of a standable cell
-                placed[(cx, cy)] = p
-                stats["cells"] += 1
-        log(f"vegetation: rows {max(band)}..{min(band)} ({time.time() - t0:.0f} s)")
+                got[(ci.cx, ci.cy)] = p
+            save_band(out, max(band), key, got)
+        else:
+            stats["bands_reused"] = stats.get("bands_reused", 0) + 1
+        placed.update(got)
+        stats["cells"] += len(cis)
+        log(f"vegetation: rows {max(band)}..{min(band)}{' reused' if reused else ''} ({time.time() - t0:.0f} s)")
     if budget:
         keep = _budget(w, placed, region)
     # the closed loop on the tree band: the stems are all held, so the region's tree keep is solved on them
