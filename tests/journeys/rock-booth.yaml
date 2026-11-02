@@ -8,30 +8,30 @@ runner: 1
 crash_risk: low
 scene: rock-booth
 steps:
-- name: rock-1-arg_rock_gl_rock09
-  # 0C0008:ArgoniaWorld.esm ref DD1A03 in cell (-55,63), tilt 49.3 deg, scale 1.00, bound radius 76 u, stand 304 u off
+- name: rock-1-arg_rock_gl_rock03
+  # 0C0005:ArgoniaWorld.esm ref B3FA06 in cell (-27,21), tilt 49.1 deg, scale 0.70, bound radius 58 u, stand 300 u off
   do:
   - console:
-      line: cow ARG_Province -55 63
+      line: cow ARG_Province -27 21
       settle: 60
   - wait: 8
   - console:
-      line: fw SkyrimClearFF
+      line: fw ARG_Weather_clear_dry
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -222628
+      line: player.setpos x -109210
   - console:
-      line: player.setpos y 259161
+      line: player.setpos y 87948
   - console:
-      line: player.setpos z 38551
+      line: player.setpos z 3084
   - camera: first
   - console:
-      line: player.setangle z 220
+      line: player.setangle z 132
   - console:
-      line: player.setangle x 45
+      line: player.setangle x 48
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xDD1A03
+  - console: prid ArgoniaWorld.esm|0xB3FA06
   expect:
   - console: getpos x
     keep: rock_x
@@ -40,29 +40,29 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-2-01coalroundrock
-  # 1DE977:Black Marsh.esm ref D0DE38 in cell (17,50), tilt 49.2 deg, scale 0.77, bound radius 37 u, stand 300 u off
+  # 1DE977:Black Marsh.esm ref B0C43B in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
   do:
   - console:
-      line: cow ARG_Province 17 50
+      line: cow ARG_Province -60 18
       settle: 60
   - wait: 8
   - console:
-      line: fw SkyrimClearFF
+      line: fw ARG_Weather_clear_dry
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 69816
+      line: player.setpos x -242534
   - console:
-      line: player.setpos y 206438
+      line: player.setpos y 75260
   - console:
-      line: player.setpos z 17026
+      line: player.setpos z 16793
   - camera: first
   - console:
-      line: player.setangle z 40
+      line: player.setangle z 312
   - console:
-      line: player.setangle x 60
+      line: player.setangle x -26
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xD0DE38
+  - console: prid ArgoniaWorld.esm|0xB0C43B
   expect:
   - console: getpos x
     keep: rock_x
@@ -70,92 +70,30 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-3-arg_rock_gl_rock03
-  # 0C0005:ArgoniaWorld.esm ref D9AC04 in cell (10,59), tilt 49.0 deg, scale 1.16, bound radius 97 u, stand 387 u off
+- name: rock-3-arg_rock_rock_33
+  # 0C0012:ArgoniaWorld.esm ref A11A00 in cell (-49,2), tilt 49.0 deg, scale 0.68, bound radius 74 u, stand 300 u off
   do:
   - console:
-      line: cow ARG_Province 10 59
+      line: cow ARG_Province -49 2
       settle: 60
   - wait: 8
   - console:
-      line: fw SkyrimCloudyFF
+      line: fw ARG_Weather_clear_dry
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 43940
+      line: player.setpos x -199405
   - console:
-      line: player.setpos y 242372
+      line: player.setpos y 8441
   - console:
-      line: player.setpos z 8262
+      line: player.setpos z 20209
   - camera: first
   - console:
-      line: player.setangle z 221
-  - console:
-      line: player.setangle x 43
-  - wait: 6
-  - console: prid ArgoniaWorld.esm|0xD9AC04
-  expect:
-  - console: getpos x
-    keep: rock_x
-  - console: getpos y
-    keep: rock_y
-  - console: getpos z
-    keep: rock_z
-- name: rock-4-arg_rock_az_rock02
-  # 0C0000:ArgoniaWorld.esm ref D62005 in cell (60,55), tilt 48.9 deg, scale 1.12, bound radius 83 u, stand 332 u off
-  do:
-  - console:
-      line: cow ARG_Province 60 55
-      settle: 60
-  - wait: 8
-  - console:
-      line: fw SkyrimClearFF
-  - console:
-      line: set gamehour to 12
-  - console:
-      line: player.setpos x 245704
-  - console:
-      line: player.setpos y 227503
-  - console:
-      line: player.setpos z 699
-  - camera: first
-  - console:
-      line: player.setangle z 128
-  - console:
-      line: player.setangle x -45
-  - wait: 6
-  - console: prid ArgoniaWorld.esm|0xD62005
-  expect:
-  - console: getpos x
-    keep: rock_x
-  - console: getpos y
-    keep: rock_y
-  - console: getpos z
-    keep: rock_z
-- name: rock-5-arg_rock_gl_rock06
-  # 0C0007:ArgoniaWorld.esm ref D74603 in cell (-45,57), tilt 48.7 deg, scale 0.89, bound radius 85 u, stand 341 u off
-  do:
-  - console:
-      line: cow ARG_Province -45 57
-      settle: 60
-  - wait: 8
-  - console:
-      line: fw SkyrimClearFF
-  - console:
-      line: set gamehour to 12
-  - console:
-      line: player.setpos x -181673
-  - console:
-      line: player.setpos y 237088
-  - console:
-      line: player.setpos z 37892
-  - camera: first
-  - console:
-      line: player.setangle z 143
+      line: player.setangle z 311
   - console:
       line: player.setangle x -2
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xD74603
+  - console: prid ArgoniaWorld.esm|0xA11A00
   expect:
   - console: getpos x
     keep: rock_x
@@ -163,30 +101,92 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-6-arg_rock_gl_rock04
-  # 0C0006:ArgoniaWorld.esm ref D5BA04 in cell (9,55), tilt 48.7 deg, scale 0.97, bound radius 123 u, stand 491 u off
+- name: rock-4-arg_rock_al_rock12
+  # 0C000B:ArgoniaWorld.esm ref CFD607 in cell (11,49), tilt 49.0 deg, scale 0.80, bound radius 114 u, stand 457 u off
   do:
   - console:
-      line: cow ARG_Province 9 55
+      line: cow ARG_Province 11 49
       settle: 60
   - wait: 8
   - console:
-      line: fw SkyrimCloudyFF
+      line: fw ARG_Weather_clear_dry
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 39236
+      line: player.setpos x 47771
   - console:
-      line: player.setpos y 226110
+      line: player.setpos y 201757
   - console:
-      line: player.setpos z 4184
+      line: player.setpos z 13673
   - camera: first
   - console:
-      line: player.setangle z 220
+      line: player.setangle z 45
   - console:
-      line: player.setangle x 17
+      line: player.setangle x -17
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xD5BA04
+  - console: prid ArgoniaWorld.esm|0xCFD607
+  expect:
+  - console: getpos x
+    keep: rock_x
+  - console: getpos y
+    keep: rock_y
+  - console: getpos z
+    keep: rock_z
+- name: rock-5-arg_rock_rock_32
+  # 0C0011:ArgoniaWorld.esm ref C32C08 in cell (28,36), tilt 48.4 deg, scale 1.18, bound radius 92 u, stand 368 u off
+  do:
+  - console:
+      line: cow ARG_Province 28 36
+      settle: 60
+  - wait: 8
+  - console:
+      line: fw ARG_Weather_clear_dry
+  - console:
+      line: set gamehour to 12
+  - console:
+      line: player.setpos x 117815
+  - console:
+      line: player.setpos y 149512
+  - console:
+      line: player.setpos z 152
+  - camera: first
+  - console:
+      line: player.setangle z 148
+  - console:
+      line: player.setangle x -3
+  - wait: 6
+  - console: prid ArgoniaWorld.esm|0xC32C08
+  expect:
+  - console: getpos x
+    keep: rock_x
+  - console: getpos y
+    keep: rock_y
+  - console: getpos z
+    keep: rock_z
+- name: rock-6-arg_rock_al_rock14
+  # 0C000D:ArgoniaWorld.esm ref C18E09 in cell (-53,35), tilt 47.7 deg, scale 0.95, bound radius 60 u, stand 300 u off
+  do:
+  - console:
+      line: cow ARG_Province -53 35
+      settle: 60
+  - wait: 8
+  - console:
+      line: fw ARG_Weather_clear_dry
+  - console:
+      line: set gamehour to 12
+  - console:
+      line: player.setpos x -214424
+  - console:
+      line: player.setpos y 146796
+  - console:
+      line: player.setpos z 35949
+  - camera: first
+  - console:
+      line: player.setangle z 30
+  - console:
+      line: player.setangle x 35
+  - wait: 6
+  - console: prid ArgoniaWorld.esm|0xC18E09
   expect:
   - console: getpos x
     keep: rock_x
