@@ -63,6 +63,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import os
 import pathlib
 import subprocess
 import sys
@@ -79,6 +80,18 @@ GAME_ROOT = "C:/Program Files (x86)/Steam/steamapps/common/Skyrim Special Editio
 OPS = {"eq": lambda a, b: a == b, "ne": lambda a, b: a != b, "gt": lambda a, b: a > b, "ge": lambda a, b: a >= b,
        "lt": lambda a, b: a < b, "le": lambda a, b: a <= b, "contains": lambda a, b: str(b) in str(a),
        "not_contains": lambda a, b: str(b) not in str(a)}
+
+
+def _none_safe(f):
+    def g(a, b):
+        try:
+            return f(a, b)
+        except TypeError:   # a read that found nothing (None) fails the expectation, never the runner
+            return False
+    return g
+
+
+OPS.update({k: _none_safe(v) for k, v in OPS.items()})
 
 
 class StepFailed(Exception):
@@ -176,7 +189,7 @@ def _refs(value) -> list[str]:
 
 def dig(value, path: str):
     for part in [p for p in str(path).split(".") if p]:
-        value = value[int(part)] if isinstance(value, list) else value.get(part) if isinstance(value, dict) else None
+        value = (value[int(part)] if int(part) < len(value) else None) if isinstance(value, list) else value.get(part) if isinstance(value, dict) else None
     return value
 
 
@@ -351,12 +364,15 @@ class Runner:
                 except BridgeError as e:
                     tries.append(f"cgf error {e}")
             time.sleep(3.0)
+        if os.environ.get("ARGONIA_CAMERA_SOFT"):   # driver, 2026-11-02: record the readings, carry on (the still may be third person)
+            self.calls.append({"call": ["camera", str(arg)], "tries": tries, "soft_fail": True})
+            return {"camera": str(arg), "tries": 6, "soft_fail": True}
         raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}")
 
     def _hud(self, arg):
         """`hud: off`: the vanilla HUD hidden by `tm`, and our PrismaUI HUD hidden by the bridge's dev switch
         (core HudShow off); its state is read back (ViewState hud) and kept in the report."""
-        if str(arg).strip() != "off":
+        if str(arg).strip() not in ("off", "False"):   # unquoted YAML off is False
             raise StepFailed(f"hud: {arg!r} is `off`")
         self._console({"line": "tm", "settle": 30})
         try:

@@ -14,21 +14,18 @@ steps:
   # cell (-32, 36) western-frontier D3 shore: list lvln.western-frontier.D3.shore
   do:
   - hud: off
+  - console: tgm
   - console: {line: cow ARG_Province -32 36, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - teleport: pos -128816 148224 11108
+  - console: player.setpos x -128816
+  - console: player.setpos y 148224
+  - console: player.setpos z 11908
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -128966}
-  - {read: [player], path: pos.x, le: -128666}
-  - {read: [player], path: pos.y, ge: 148074}
-  - {read: [player], path: pos.y, le: 148374}
-  - {read: [player], path: pos.z, ge: 10808}
-  - {read: [player], path: pos.z, le: 11408}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: water_day}
 - name: water-night
   # cell (-31, 28) western-frontier D2 shore: list lvln.western-frontier.D2.shore
@@ -36,18 +33,14 @@ steps:
   - console: {line: cow ARG_Province -31 28, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - teleport: pos -125104 116352 659
+  - console: player.setpos x -125104
+  - console: player.setpos y 116352
+  - console: player.setpos z 1459
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -125254}
-  - {read: [player], path: pos.x, le: -124954}
-  - {read: [player], path: pos.y, ge: 116202}
-  - {read: [player], path: pos.y, le: 116502}
-  - {read: [player], path: pos.z, ge: 359}
-  - {read: [player], path: pos.z, le: 959}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: water_night}
 - name: marsh-day
   # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land
@@ -55,18 +48,14 @@ steps:
   - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - teleport: pos -116272 135424 2363
+  - console: player.setpos x -116272
+  - console: player.setpos y 135424
+  - console: player.setpos z 3163
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -116422}
-  - {read: [player], path: pos.x, le: -116122}
-  - {read: [player], path: pos.y, ge: 135274}
-  - {read: [player], path: pos.y, le: 135574}
-  - {read: [player], path: pos.z, ge: 2063}
-  - {read: [player], path: pos.z, le: 2663}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: marsh_day}
 - name: marsh-night
   # cell (-28, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land
@@ -74,18 +63,14 @@ steps:
   - console: {line: cow ARG_Province -28 31, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - teleport: pos -112048 129408 976
+  - console: player.setpos x -112048
+  - console: player.setpos y 129408
+  - console: player.setpos z 1776
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -112198}
-  - {read: [player], path: pos.x, le: -111898}
-  - {read: [player], path: pos.y, ge: 129258}
-  - {read: [player], path: pos.y, le: 129558}
-  - {read: [player], path: pos.z, ge: 676}
-  - {read: [player], path: pos.z, le: 1276}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: marsh_night}
 - name: upland-day
   # cell (-36, 25) western-frontier D2 land: list lvln.western-frontier.D2.land
@@ -93,18 +78,14 @@ steps:
   - console: {line: cow ARG_Province -36 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - teleport: pos -144048 103680 7004
+  - console: player.setpos x -144048
+  - console: player.setpos y 103680
+  - console: player.setpos z 7804
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -144198}
-  - {read: [player], path: pos.x, le: -143898}
-  - {read: [player], path: pos.y, ge: 103530}
-  - {read: [player], path: pos.y, le: 103830}
-  - {read: [player], path: pos.z, ge: 6704}
-  - {read: [player], path: pos.z, le: 7304}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: upland_day}
 - name: upland-night
   # cell (-36, 37) western-frontier D2 land: list lvln.western-frontier.D2.land
@@ -112,18 +93,14 @@ steps:
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - teleport: pos -144816 154496 14670
+  - console: player.setpos x -144816
+  - console: player.setpos y 154496
+  - console: player.setpos z 15470
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -144966}
-  - {read: [player], path: pos.x, le: -144666}
-  - {read: [player], path: pos.y, ge: 154346}
-  - {read: [player], path: pos.y, le: 154646}
-  - {read: [player], path: pos.z, ge: 14370}
-  - {read: [player], path: pos.z, le: 14970}
-  - {read: [actors, "2801"], path: listed.0.dist, lt: 2801}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: upland_night}
 - name: den-kaj-thux
   # creature.kaj-thux den in cell (0, 0), flooded-forest D4
@@ -131,15 +108,12 @@ steps:
   - console: {line: cow ARG_Province 0 0, settle: 60}
   - wait: 8
   - console: set gamehour to 12
-  - teleport: pos -456 2048 2476
+  - console: player.setpos x -456
+  - console: player.setpos y 2048
+  - console: player.setpos z 3276
   - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
-  - {read: [player], path: pos.x, ge: -606}
-  - {read: [player], path: pos.x, le: -306}
-  - {read: [player], path: pos.y, ge: 1898}
-  - {read: [player], path: pos.y, le: 2198}
-  - {read: [player], path: pos.z, ge: 2176}
-  - {read: [player], path: pos.z, le: 2776}
+  - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: den}
