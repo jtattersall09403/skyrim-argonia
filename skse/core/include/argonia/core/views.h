@@ -40,6 +40,11 @@ inline constexpr std::array<Spec, 9> kViews{{
     {"wait", "argonia/wait/index.html", true, 10},      // our wait window, over the hidden Sleep/Wait Menu (T)
 }};
 const Spec* spec(std::string_view id);
+// The map pane's rule (owner play test 3 #26: "Map UI pane appears over dialogue UI pane"): the docked chart shows
+// only while Wind UI's pause windows are open with none of its trade, container or crafting windows, no
+// conversation (the engine's DialogueMenu, which outlives our dialogue view across a barter round trip) and no modal
+// view of ours. Opening any modal view hides it (Host::open).
+bool pane_wanted(bool windui_open, bool trade_window_open, bool dialogue_menu_open, bool modal_open);
 inline constexpr std::string_view kPushFunction = "argoniaPush";      // bridge.ts: window.argoniaPush(text)
 inline constexpr std::string_view kIntentFunction = "argoniaIntent";  // bridge.ts calls window.argoniaIntent(text)
 

@@ -5,6 +5,7 @@
 #include "argonia/core/seam.h"
 #include "argonia/core/views.h"
 
+#include <algorithm>
 #include <set>
 
 using namespace argonia::core;
@@ -77,6 +78,27 @@ void the_table() {
   CHECK(!spec("inventory"));
   CHECK(spec("magic") && spec("magic")->modal);
   CHECK(spec("chartpane") && !spec("chartpane")->modal);  // display only: never takes the focus from Wind UI
+}
+
+// Owner play test 3 #26: the map pane never stands over dialogue (or any modal view of ours).
+void pane_never_over_dialogue() {
+  CHECK(pane_wanted(true, false, false, false));
+  CHECK(!pane_wanted(false, false, false, false));
+  CHECK(!pane_wanted(true, true, false, false));
+  CHECK(!pane_wanted(true, false, true, false));  // Wind UI's barter window from a conversation, or its return
+  CHECK(!pane_wanted(true, false, false, true));
+  Host h;
+  h.ready("chartpane");
+  h.ready("dialogue");
+  auto ops = h.push("dialogue", "D");
+  CHECK(has(ops, OpKind::hide, "chartpane") && has(ops, OpKind::show, "dialogue"));
+  // hidden before the dialogue is shown, so no frame draws the pane over it
+  auto at = [&](OpKind k, const char* v) { return std::find(ops.begin(), ops.end(), Op{k, v, {}}) - ops.begin(); };
+  CHECK(at(OpKind::hide, "chartpane") < at(OpKind::show, "dialogue"));
+  h.ready("chart");
+  ops = h.push("chart", "C");  // the chart closes the dialogue: one modal, the pane still hidden
+  CHECK(has(ops, OpKind::hide, "dialogue") && has(ops, OpKind::hide, "chartpane") && !has(ops, OpKind::show, "chartpane"));
+  CHECK(h.modal() == std::string("chart"));
 }
 
 void push_waits_for_ready() {
@@ -317,6 +339,7 @@ int main() {
   wait_words();
   prompt_text();
   the_table();
+  pane_never_over_dialogue();
   push_waits_for_ready();
   one_modal();
   hud_always_open();

@@ -76,13 +76,15 @@ void Apply(const std::vector<ac::views::Op>& ops) {
 // Wind UI's pause windows are open, the chart shows docked in the space they leave (chart/pane.html lays it out);
 // never over its trade, container or crafting windows. Display only: the full chart opens by the taskbar's Map, M or
 // the pad's pane cycle.
-bool ChartPaneWanted() {
+bool ChartPaneWanted() {  // called with Get().lock held
   auto* ui = RE::UI::GetSingleton();
-  if (!ui || !ui->IsMenuOpen(RE::BSFixedString("WindUIMenu"))) return false;
+  if (!ui) return false;
+  bool trade = false;
   for (auto m : {RE::ContainerMenu::MENU_NAME, RE::BarterMenu::MENU_NAME, RE::GiftMenu::MENU_NAME,
                  RE::CraftingMenu::MENU_NAME})
-    if (ui->IsMenuOpen(m)) return false;
-  return true;
+    trade |= ui->IsMenuOpen(m);
+  return ac::views::pane_wanted(ui->IsMenuOpen(RE::BSFixedString("WindUIMenu")), trade,
+                                ui->IsMenuOpen(RE::DialogueMenu::MENU_NAME), Get().view_host.modal().has_value());
 }
 void OpenChart();
 void ShowChartPane();
@@ -385,7 +387,10 @@ void PushHudState(std::optional<std::int64_t> gained = std::nullopt);
 class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
  public:
   RE::BSEventNotifyControl ProcessEvent(const RE::MenuOpenCloseEvent* e, RE::BSTEventSource<RE::MenuOpenCloseEvent>*) override {
-    if (e && e->menuName == RE::BSFixedString("WindUIMenu"))
+    // Wind UI's windows, a conversation (play test 3 #26: the pane over dialogue) or a trade window opening or closing:
+    // the pane's rule is read again.
+    if (e && (e->menuName == RE::BSFixedString("WindUIMenu") || e->menuName == RE::DialogueMenu::MENU_NAME ||
+              e->menuName == RE::BarterMenu::MENU_NAME || e->menuName == RE::ContainerMenu::MENU_NAME))
       SKSE::GetTaskInterface()->AddTask([] {
         std::lock_guard l(Get().lock);
         ShowChartPane();
@@ -819,6 +824,7 @@ void CloseView(std::string_view view) {
   const bool was_modal = c.view_host.modal().has_value();
   Apply(c.view_host.close(view));
   if (was_modal != c.view_host.modal().has_value()) PushHudState();
+  if (!c.view_host.modal()) ShowChartPane();  // back to Wind UI's windows (the magic pane): the pane's rule again
   // The chart stands over the engine's MapMenu (game-16: the kHide sent at its opening does not take): closing the
   // chart closes the map, so the player is back in the world.
   if (view == "chart")

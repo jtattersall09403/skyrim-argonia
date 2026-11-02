@@ -12,6 +12,10 @@ const Spec* spec(std::string_view id) {
   return nullptr;
 }
 
+bool pane_wanted(bool windui_open, bool trade_window_open, bool dialogue_menu_open, bool modal_open) {
+  return windui_open && !trade_window_open && !dialogue_menu_open && !modal_open;
+}
+
 // --- Host --------------------------------------------------------------------------------------------------------
 
 bool Host::is_ready(std::string_view view) const {
@@ -40,6 +44,9 @@ std::vector<Op> Host::open(std::string_view view) {
     ops.insert(ops.end(), shut.begin(), shut.end());
   }
   modal_ = std::string(view);
+  // A docked display-only view (the map pane) never stands over a modal one: hidden as any modal opens.
+  for (const auto& d : kViews)
+    if (!d.modal && d.order > 0 && is_ready(d.id)) ops.push_back({OpKind::hide, std::string(d.id), {}});
   if (is_ready(view)) {
     ops.push_back({OpKind::show, std::string(view), {}});
     ops.push_back({OpKind::focus, std::string(view), {}});
