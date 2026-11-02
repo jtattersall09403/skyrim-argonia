@@ -1,0 +1,28 @@
+# 1.15 round 4: the owner's play test 3 (34 findings, 2026-11-02 21:35, #37) fixed in lanes, one batch on Paris
+
+Rulings: Paris is the only game machine; in-game loops are sped up before any check runs; the LOD rebuild
+(terrain, tree, object) is the round's last step. The findings: docs/research/2026-11-02/owner-playtest-3.md.
+
+## Wave 1 (launched 2026-11-02 ~22:00 UTC, briefs under briefs/)
+
+| lane | findings | report |
+|---|---|---|
+| 1.15-r4-fast-loop | the loop itself (owner: massively faster) | lane-1.15-r4-fast-loop.md |
+| 1.15-r4-water | 20, 19 | lane-1.15-r4-water.md |
+| 1.15-r4-materials | 16, 17 | lane-1.15-r4-materials.md |
+| 1.15-r4-light | 18, 9 | lane-1.15-r4-light.md |
+| 1.15-r4-trees | 4, 5, 32 | lane-1.15-r4-trees.md |
+| 1.15-r4-claywater | 3, 22, 23, 25, 29, 31, 1 | lane-1.15-r4-claywater.md |
+| 1.15-r4-roads | 21 | lane-1.15-r4-roads.md |
+| 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md |
+| 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md |
+
+## Wave 2 (as wave-1 lanes return)
+
+1.12-r4-menus (6, 7, 8, 10, 11), 1.3-r4-talk (24, 27, 28), 1.15-r4-creatures (13).
+
+## The batch
+
+One deploy of main on Paris when the lanes have landed; the journeys the lanes owe (river-steps, tree-seat,
+road-look, chart-zoom, claywater-walk, claywater-look, the panel's dawn stills, the save load) in one batch,
+crash-prone last; stills to a reader; then the LOD; then the saves remade and the owner told on #37.
