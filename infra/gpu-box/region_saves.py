@@ -48,7 +48,12 @@ def main(argv=None):
     a = p.parse_args(argv)
     want = {k.replace("-", "").lower() for k in a.only.split(",") if k}
     b = Bridge()
-    pl = b.call("player")
+    try:
+        pl = b.call("player")
+    except BridgeError as e:  # at the main menu the read refuses ("no player in a world"): load the walk save
+        if "no player" not in str(e):
+            raise
+        pl = {}
     if (pl.get("cell") or {}).get("editor_id") in (None, "ARG_HoldingCell"):
         since = b.call("events")["last"]
         try:
