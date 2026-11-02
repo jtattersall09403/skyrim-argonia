@@ -143,6 +143,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | Claywater re-seated: claywater-walk and claywater-look green on the frozen ground | 1.15 §f | L4 | owed | journey:claywater-walk fail out/batch/1.15-round-1/20261102T001443/04-claywater-walk-1-20261102T002043 |
 | Rocks sunk and conforming: a booth sheet of six rocks on a slope | 1.15 §e | L4 | proven | owed | ; ran 6 stills confirmed; reader: no rock identifiable in any (framing); owed; round 2: out/batch/adhoc/20261102T054901/01-rock-booth-1-20261102T055006, 1 of 6 shows a rock, still owed
 | Creature encounters between places: six spawn points of different habitats visited by teleport, the loaded actors within 40 m read and a still each; a predator at its den | 1.15 §g | L4 | proven | owed | ; ran 7 stills confirmed, actor reads kept; reader: habitat unjudgeable from stills (dark, fog, blocked); reads plausible; den shows no predator in frame; owed; round 2: out/batch/adhoc/20261102T060236/01-creature-spots-1-20261102T060237, 7 stills, 4 of 7 spots list actors, no creature in frame, still owed
+| Ground matte and varied: no shiny land, no wide fields of the flat mossy pebble texture (two stills: -9 27 pebble field, -50 8 hillside, midday) | owner play test 3 findings 16-17 | L4 | owed | lane 1.15-r4-materials: journey:ground-materials; L1 check-materials 0 fails (19 normals vanilla, alpha 16.9-40.7); needs tropical-skyrim-sse re-lay + Argonia.esm + ArgoniaWorld.esm |
 
 ## 1.8 A play machine you can rely on
 

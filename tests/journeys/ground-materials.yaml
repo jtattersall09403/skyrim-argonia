@@ -1,0 +1,25 @@
+# 1.15 round 4, lane 1.15-r4-materials (owner play test 3, findings 16-17): the ground no longer shines and the
+# flat mossy pebble texture (BM&V riverbededge.dds, LRiverbedEdge01) no longer covers wide fields. Two places picked
+# from the data: -9 27 (a 1 km window whose dry ground was 75 % edge texture in round 3) and -50 8 (western-frontier
+# upland, a forested hillside). Needs the next deploy's re-lay of tropical-skyrim-sse (19 landscape _n dropped) and
+# Argonia.esm (TXST TX01 = Skyrim.esm's normals) and ArgoniaWorld.esm (the new gradient). Midday sun for the sheen.
+id: ground-materials
+runner: 1
+crash_risk: medium
+relaunch_before: false
+scene: claywater
+steps:
+  - name: pebble-field
+    do:
+      - {console: "set gamehour to 13"}
+      - {console: "cow ARG_Province -9 27"}
+      - {wait: 10}
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    reader: [the ground away from the water's edge is varied forest floor, grass or moss, not one flat grey-green pebble texture over the whole view; the pebbly edge texture only in a thin strip along the water, no ground looks wet, shiny or mirror-like in the sun]
+  - name: hillside
+    do:
+      - {console: "set gamehour to 13"}
+      - {console: "cow ARG_Province -50 8"}
+      - {wait: 10}
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    reader: [the hillside ground is matte with visible relief in its texture (stones, roots, tufts lit from one side), no shiny or reflective sheen on slopes facing the sun]
