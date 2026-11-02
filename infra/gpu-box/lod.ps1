@@ -202,7 +202,10 @@ function Link-Into-Data($src, $sub = '') {
 function Link-Resources {  # into Data while the tools run
   # Interface too: DynDOLOD 3.0 alpha-217 refuses to start without interface\dyndolod\dyndolod.dds even when no
   # dynamic LOD is made (2026-11-02, "Required resource file not found", an Exit-only dialog the watcher cannot answer)
-  foreach ($d in 'Meshes', 'Textures', 'Interface') { Link-Into-Data "$Res\$d" "\$d" }
+  # ...and Scripts: alpha-217 also refuses without scripts\sheson_dyndolod_alias.pex (survey on the LOD box, 14:21).
+  # So the whole required core is linked; what the game does with its scripts is nothing until a DynDOLOD.esp is
+  # enabled, which this job never does.
+  foreach ($d in Get-ChildItem $Res -Directory | % { $_.Name }) { Link-Into-Data "$Res\$d" "\$d" }
 }
 
 # ARG_Province's LODSettings file (lodsettings.py on the build VM, sent by lod.sh): xLODGen lists a worldspace only
