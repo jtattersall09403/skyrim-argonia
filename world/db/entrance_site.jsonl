@@ -290,7 +290,7 @@
 {"place_id":"place.imperial-fringe.rufios-landing","shape":"bank","x_m":754.0,"y_m":1209.1,"radius_m":25.0,"facing_deg":45.0}
 {"place_id":"place.imperial-fringe.sabinus-claim","shape":"flat","x_m":238.5,"y_m":2185.2,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.saddle-fair","shape":"flat","x_m":1379.1,"y_m":4663.7,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.silver-mouth","shape":"rise","x_m":1631.3,"y_m":1773.9,"radius_m":45.0,"facing_deg":94.3}
+{"place_id":"place.imperial-fringe.silver-mouth","shape":"rise","x_m":1631.3,"y_m":1773.9,"radius_m":45.0,"facing_deg":94.5}
 {"place_id":"place.imperial-fringe.silverhand-cairns","shape":"rise","x_m":1260.7,"y_m":3336.7,"radius_m":20.0,"facing_deg":319.7}
 {"place_id":"place.imperial-fringe.sink-field","shape":"rise","x_m":1088.5,"y_m":1351.7,"radius_m":25.0,"facing_deg":257.7}
 {"place_id":"place.imperial-fringe.slough-point","shape":"flat","x_m":529.2,"y_m":4762.4,"radius_m":65.0,"facing_deg":0.0}
@@ -524,7 +524,7 @@
 {"place_id":"place.pirate-freeholds.rim-keystone-chamber","shape":"flat","x_m":4312.8,"y_m":814.3,"radius_m":50.0,"facing_deg":0.0,"request":"gorge"}
 {"place_id":"place.pirate-freeholds.rim-pass-station","shape":"flat","x_m":4098.9,"y_m":463.4,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.rim-smugglers-ledge-north","shape":"bank","x_m":4197.6,"y_m":1697.1,"radius_m":45.0,"facing_deg":353.9}
-{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","shape":"rise","x_m":3956.4,"y_m":348.2,"radius_m":45.0,"facing_deg":166.3}
+{"place_id":"place.pirate-freeholds.rim-snowline-hermitage","shape":"rise","x_m":3956.4,"y_m":348.2,"radius_m":45.0,"facing_deg":162.5}
 {"place_id":"place.pirate-freeholds.rockpoint","shape":"flat","x_m":3693.2,"y_m":1647.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.trunk-road-tradehouse","shape":"flat","x_m":3583.5,"y_m":1614.9,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.trunk-toll-bridge","shape":"flat","x_m":3866.5,"y_m":1395.6,"radius_m":45.0,"facing_deg":0.0,"request":"narrows"}
