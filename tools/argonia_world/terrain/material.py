@@ -628,6 +628,8 @@ class Material:
             out += (win[..., None] == np.arange(n_tex)) * m[..., None]
         if self.roads:
             out = self._road(out, k, a0, b0)
+        if getattr(self.src, "patches", None) is not None:
+            self.src.patches.paint(out, a0, b0, self.index)  # a pad's own ground (patches.py)
         # the material blend: a 2x2 mean over the one-hot strokes, so a texture's edge is one part-weighted vertex, two
         # where it runs diagonally (audit §4: a 0.02-0.98 run is 1 vertex at p50, 5 at p90; ours ran 6-17)
         out = np.pad(out, ((0, 1), (0, 1), (0, 0)), mode="edge")

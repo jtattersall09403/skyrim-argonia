@@ -5158,9 +5158,26 @@ CREATE TABLE "formid" (
 
 -- == Keyed tables for the families later chunks migrate (decision 0030 §6) ==
 
--- Home of a terrain patch over the frozen heightfield. Migrated by the world track (2.W1) from world/sources/terrain/terrain-patches.json, route-grade-patches.json; until then a key only.
+-- A terrain patch over the generated ground (terrain/patches.py, applied by grid.Sources.heights and the material).
+-- The old chain's rows (bed-cut.*, receipts in terrain_patch_outcome) are keys only (kind NULL) and never applied.
+-- A `pad` is flat at the mean of the generated ground in its disc plus rise_m, easing back over blend_m; a `bowl`
+-- is carved to depth_m under its cell's water (cell_water), its side rising 0.5 m a metre. No absolute height is
+-- stored: a regraded ground or water moves the patch with it (lane 1.15-r4-claywater: the old absolute heights
+-- stood 33 m under the round-3 ground). ltex_edid, when set, paints the disc (material.TEXTURES).
 CREATE TABLE "terrain_patch" (
-  "id" TEXT NOT NULL PRIMARY KEY
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "place_id" TEXT REFERENCES "place"("id"),
+  "kind" TEXT CHECK ("kind" IN ('pad', 'bowl')),
+  "x_m" REAL,
+  "y_m" REAL,
+  "radius_m" REAL CHECK ("radius_m" > 0),
+  "blend_m" REAL CHECK ("blend_m" >= 0),
+  "rise_m" REAL,
+  "depth_m" REAL CHECK ("depth_m" > 0),
+  "ltex_edid" TEXT,
+  "why" TEXT,
+  CHECK ("kind" IS NULL OR ("x_m" IS NOT NULL AND "y_m" IS NOT NULL AND "radius_m" IS NOT NULL AND "why" IS NOT NULL)),
+  CHECK ("kind" <> 'bowl' OR "depth_m" IS NOT NULL)
 );
 
 -- Migrated by 2.W2 (tools/argonia_world/water/migrate.py); the rest of the family is below the 0030 marker.

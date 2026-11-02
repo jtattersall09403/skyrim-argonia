@@ -245,7 +245,7 @@ def code_stamp() -> str:
     h = hashlib.sha256()
     here = Path(__file__).parent
     for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py", "png.py", "place_ground.py",
-              "quantize.py", "world.py"):
+              "patches.py", "quantize.py", "world.py"):
         h.update(n.encode() + (here / n).read_bytes())
     return h.hexdigest()
 
@@ -289,6 +289,8 @@ def row_key(src: Sources, mat, cy: int, gkey: str | None) -> str | None:
         _arr(h, src.apron[r0:r1])
     p0, p1 = min(max(r0 - src.pad, 0), src.n + 1), min(max(r1 - src.pad, 0), src.n + 1)
     _arr(h, src.ground[p0:p1])
+    if getattr(src, "patches", None) is not None:
+        h.update(src.patches.key(r0, r1))
     _arr(h, src.cover[p0:p1])
     w, rg = mat.water, mat.regions
     C = w.level.shape[0]

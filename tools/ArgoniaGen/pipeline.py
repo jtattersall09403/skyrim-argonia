@@ -186,6 +186,8 @@ def _terrain_stamp(ground: bool = True) -> str:
     h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
     from tools.argonia_world.terrain import place_ground
     h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
+    from tools.argonia_world.terrain import patches
+    h.update(patches.stamp().encode())  # the places' pads and bowls (terrain_patch rows with a kind)
     if ground:
         h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
     return h.hexdigest()

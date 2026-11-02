@@ -61,6 +61,7 @@ class Sources:
     pad: int = PAD
     regrade: object = None  # the water's regrade (water_regrade.Regrade), applied by heights()
     edits: object = None  # the built places' ground edits (place_ground.Edits), applied by heights() before it
+    patches: object = None  # the terrain_patch pads and bowls (patches.Patches), applied by heights() last
 
     @classmethod
     def load(cls, root: Path | None = None, apron: bool = True, ground: Path | None = None) -> Sources:
@@ -69,8 +70,10 @@ class Sources:
         r = root or data_root()
         tint = r / "terrain" / "ground-tint.png"
         gen = Path(ground) if ground else generated_ground()  # `ground`: a pipeline run's frozen copy
+        from tools.argonia_world.terrain import patches
+        g = np.load(gen if gen.exists() else r / "terrain" / "refined-height-f32.npy", mmap_mode="r")
         return cls(
-            ground=np.load(gen if gen.exists() else r / "terrain" / "refined-height-f32.npy", mmap_mode="r"),
+            ground=g,
             apron=np.load(r / "terrain" / "apron-source-near.npy", mmap_mode="r") if apron else None,
             cover=np.load(r / "terrain" / "landcover-i16.npy", mmap_mode="r"),
             tint=png.read(tint) if tint.exists() else None,
@@ -78,6 +81,7 @@ class Sources:
             # the generated ground carries its water and sites: the old regrade and place edits are gone (1.15 §b)
             regrade=None if gen.exists() else water_regrade.Regrade.load(PAD if apron else 0),
             edits=None if gen.exists() else place_ground.Edits.load(PAD if apron else 0),
+            patches=patches.Patches.load(g, PAD if apron else 0) if gen.exists() else None,
         )
 
     @property
@@ -168,6 +172,8 @@ class Sources:
                 self.edits.apply(out, r0, c0)  # the built places' ground edits (place_ground.py)
             if self.regrade is not None:
                 self.regrade.apply(out, r0, c0)  # the water's border regrade (water_regrade.py)
+            if self.patches is not None:
+                self.patches.apply(out, r0, c0)  # the places' pads and bowls (patches.py)
         if inside.all():
             return out
         if self.apron is None:
