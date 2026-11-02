@@ -271,3 +271,5 @@ out/terrain-sample/NAME`, `check --sample`, `render --sample --hillshade --out N
 
 Owed: the held rule with the sinkhole fix; -38_25's square pools; the faint edges; Ilinalta-size depth (the bowl
 depth is capped by din 32 samples, not by body size).
+
+Sample outputs: s19b and s19bcen stay in `wt-1.15-ground/out/terrain-sample/`; the earlier sessions (s11–s19a, census) are archived at `s3://argonia-private-050977237313/archive/terrain-sample/<name>/` (2026-11-02, disk for the round-3 deploy) and rebuild from `terrain generate --sample` in minutes.
