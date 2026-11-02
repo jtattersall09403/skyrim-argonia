@@ -1,11 +1,11 @@
-"""Probe (1.15 ground, session 10): which per-cell clamp holds the final ground, per L3 window.
+"""Probe (1.15 ground, session 14): which water-field rule set each flat ("plate") vertex, per L3 window.
 
-Runs generate() in memory (writes nothing shared), saves ground/lo/hi/role/diag to OUT/gen.npz (reused when present),
-then per window prints the share of vertices whose final height lies on a bound (|f - bound| < 0.05 m) by the rule
-that set it, the share on a cone of a bound (the limit carried a clamp outward), and the share of shore vertices
-(wet with a dry 4-neighbour) lying on a cell line (a raster shape gives 2/Q).
+Runs generate() in memory (writes nothing shared), saves ground/lo/hi/role and the field's diag to OUT/gen.npz (reused
+when present). A plate vertex is dry (role != 1) with max |height step| to its 8 neighbours under 0.02 m. Per window:
+the share of the window that is plate, split by the rule that set it (gap snapped up/down, the iso hollow lift, the
+edge lift, a lo/hi bound, free), the share of all window vertices each rule moved by more than 0.05 m, and the share
+of shore vertices lying on a cell line (a raster shape gives about 2/Q).
 Usage: python3 -m tools.argonia_world.terrain.probes.clamp_census [OUT]"""
-import math
 import sys
 from pathlib import Path
 
@@ -17,7 +17,7 @@ from tools.argonia_world.terrain.render import widen
 from tools.argonia_world.terrain.world import SAMPLE_1_15
 
 OUT = Path(sys.argv[1] if len(sys.argv) > 1 else "out/terrain-sample/census")
-KEYS = ("edge_bank", "spread", "sbank", "ct", "chan", "pad")
+KEYS = ("gap_up", "gap_dn", "iso", "lift", "src", "h_in", "chan", "h_sites_in", "h_lim_in")
 
 
 def load():
@@ -43,28 +43,28 @@ def window(x0, y0, x1, y1):
 def census(d, sl):
     g = d["ground"][sl].astype(np.float64)
     lo, hi, role = d["lo"][sl].astype(np.float64), d["hi"][sl].astype(np.float64), d["role"][sl]
-    lip = math.tan(math.radians(G.DESIGN_SLOPE_DEG)) * G.MPP
+    m = {k: d[k][sl] for k in KEYS}
+    p = np.pad(g, 1, mode="edge")
+    step = np.max([np.abs(p[1 + a:1 + a + g.shape[0], 1 + b:1 + b + g.shape[1]] - g)
+                   for a in (-1, 0, 1) for b in (-1, 0, 1)], axis=0)
+    plate = (step < 0.02) & (role != 1)
     on_lo = np.isfinite(lo) & (np.abs(g - lo) < 0.05)
     on_hi = np.isfinite(hi) & (np.abs(g - hi) < 0.05)
-    a = G.majorant(np.where(np.isfinite(lo), lo, -1e9), lip)
-    b = G.minorant(np.where(np.isfinite(hi), hi, 1e9), lip)
-    cone = ~on_lo & ~on_hi & ((np.abs(g - a) < 0.05) | (np.abs(g - b) < 0.05))
-    m = {k: d[k][sl] for k in KEYS}
+    lifted = m["lift"] > 0.05
+    cls = {"gap up": m["gap_up"], "gap down": m["gap_dn"], "iso hollow": m["iso"] & ~m["gap_up"],
+           "edge lift": lifted & ~m["iso"] & ~m["gap_up"] & ~m["gap_dn"], "on lo": on_lo, "on hi": on_hi}
     n = g.size
-    cls = {
-        "step bank (sbank)": on_lo & m["sbank"],
-        "two-level spread": on_lo & m["spread"] & ~m["sbank"],
-        "edge bank": on_lo & m["edge_bank"] & ~m["spread"] & ~m["sbank"],
-        "pad cell bank": on_lo & m["pad"] & (role == 3) & ~m["edge_bank"] & ~m["spread"] & ~m["sbank"],
-        "bank floor (role 3)": on_lo & (role == 3) & ~m["pad"] & ~m["edge_bank"] & ~m["spread"] & ~m["sbank"],
-        "shore floor (role 4)": on_lo & (role == 4),
-        "channel": (on_lo | on_hi) & m["chan"],
-        "bed ceiling (hi, wet)": on_hi & ~m["chan"],
-        "other lo (site)": on_lo & (role == 0),
-        "cone of a bound (limit)": cone,
-    }
-    out = {k: round(100 * v.sum() / n, 1) for k, v in cls.items()}
-    out["free"] = round(100 - sum(out.values()), 1)
+    out = {"plate_%": round(100 * plate.sum() / n, 1)}
+    taken = np.zeros_like(plate)
+    for k, v in cls.items():
+        out["plate:" + k] = round(100 * (plate & v & ~taken).sum() / n, 1)
+        taken |= v
+    out["plate:free"] = round(100 * (plate & ~taken).sum() / n, 1)
+    out["prior_plate_%"] = round(100 * (plate & (np.abs(g - m["h_in"]) < 0.05)).sum() / n, 1)
+    mv = np.abs(g - m["h_in"]) > 0.05
+    for k in ("gap_up", "gap_dn", "iso"):
+        out["moved:" + k] = round(100 * (m[k] & mv).sum() / n, 1)
+    out["moved:lift"] = round(100 * lifted.sum() / n, 1)
     wet = (role == 1) | (role == 2)
     edge = np.zeros_like(wet)
     edge[1:] |= wet[1:] & ~wet[:-1]

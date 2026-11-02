@@ -6,7 +6,6 @@ outward by minimax height (water filling the basin): the sill is the lowest heig
 window's edge. Prints level - sill (metres; negative = the level stands below the lowest pass out) and the lake bed.
 Usage: python3 -m tools.argonia_world.terrain.probes.vanilla_lake_sill [Skyrim.esm]  (reads only; prints)"""
 import heapq
-import sys
 
 import numpy as np
 

@@ -3,7 +3,6 @@ L3 windows, from the pre-water dump (generate with ARGONIA_GROUND_DUMP) and the 
 Writes OUT/<old|new>-<window>.png (hillshade, water blue where the ground lies under its cell's water) and prints,
 per window, the share of vertices on a bound, the shore share on cell lines, max 4-neighbour step and p99 slope.
 Usage: python3 -m tools.argonia_world.terrain.probes.water_field_trial [OUT]"""
-import math
 import sys
 import time
 from pathlib import Path

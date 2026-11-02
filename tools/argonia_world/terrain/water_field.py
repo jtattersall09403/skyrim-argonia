@@ -20,8 +20,17 @@ CARVE_GRADE = 0.6  # m per sample: the ground's fall into raster water down to t
 SOFT = 3.0  # samples: the fields' blur (no crease at the cone's foot)
 HOLLOW_GRADE = 0.08  # m per sample: a raised hollow's lift fades this slowly, so its own relief survives
 HOLLOW_PAD = 0.4  # m: a raised hollow's floor stands this far over the bank line (the blur takes some)
+# Skyrim.esm's ground over a lake's level by distance from its shore line (vertices = our samples), the median of the
+# 15 largest inland levels (probes/vanilla_shore_profile.py)
+SHORE_D = (0.0, 1.0, 5.0, 10.0, 20.0)
+SHORE_UP = (0.0, 0.23, 2.7, 6.4, 13.0)
 BAND = 3  # samples: a clipped line's crest half-width, so the cell line is no ridge (trial: lattice 2.55 -> 1.40 at 3,
 # 1.49 at 9); the upper water stops short of the line as Skyrim.esm's does (probes/vanilla_level_edges.py)
+
+
+def shore_rise(d):
+    """The vanilla shore profile: metres over the water at `d` samples in from the shore line."""
+    return np.interp(d, SHORE_D, SHORE_UP)
 
 
 def cone(src: np.ndarray, amt: np.ndarray, grade: float) -> np.ndarray:
@@ -80,10 +89,14 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
     h2 = h1
     # the footprint is the ground's contour: under the cell's lowest water is wet
     wet = has & ~src & (h2 < vmin - G.FREEBOARD_M)
-    # no ground within the freeboard of its water (the checks' band): moved to the nearer side
+    # no ground within the freeboard of its water (the checks' band): moved to the nearer side. A monotone remap
+    # over GAP_RUN m (session 14) kept the band's relief but carried the per-vertex level's step at each cell line
+    # into the ground (lattice 1.38 -> 1.66, over the 1.5 gate); the snap moves 0.2-0.5 % of a window, the plates
+    # it draws measured at 0.0-0.5 % (probes/clamp_census.py)
     gap = has & ~wet & (h2 < vmax + G.FREEBOARD_M)
     mid = np.where(has, (vmin + vmax) / 2, 0)
-    h2 = np.where(gap & (h2 < mid) & ~src, vmin - G.FREEBOARD_M - 0.01, np.where(gap, vmax + G.FREEBOARD_M, h2))
+    gdn = gap & (h2 < mid) & ~src
+    h2 = np.where(gdn, vmin - G.FREEBOARD_M - 0.01, np.where(gap, vmax + G.FREEBOARD_M, h2))
     wet = has & ~src & (h2 < vmin - G.FREEBOARD_M)
     lo = np.full(h.shape, -np.inf)
     hi = np.full(h.shape, np.inf)
@@ -93,4 +106,4 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
     role[wet] = 1
     role[has & ~wet] = 3
     lo[has & ~wet] = np.maximum(lo[has & ~wet], vmax[has & ~wet] + G.FREEBOARD_M)
-    return h2, role, lo, hi, {"lift": lf, "carve": cf, "src": src, "iso": iso}
+    return h2, role, lo, hi, {"lift": lf, "carve": cf, "src": src, "iso": iso, "gap_up": gap & ~gdn, "gap_dn": gdn}

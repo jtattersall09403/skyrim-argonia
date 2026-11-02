@@ -54,6 +54,7 @@ RIFFLE_M = 0.5  # water/solve.py: a smaller drop is no step
 BANK_SPREAD_DEG = 30.0  # a two-level line's bank bound spreads into the banks beside it at this slope
 STEP_CLEAR = 6  # samples: the edge bank keeps this far from a step's channel and slope band
 SHORE_WOBBLE = 4  # samples: the footprint's edge moves this far in or out by noise (no straight bank)
+NEAR_RISE, NEAR_DIP = 0.8, 0.3  # by the water the relief noise keeps this share of its rises and of its dips
 SHORE_FAR = 40  # samples: the shore grade reaches this far from the water
 # shore grade (rise per metre) by water type: the mangrove coast flat, the upland tarn steep
 # (docs/design/research/world-terrain/tropical-fluvial-geomorphology.md: "Tidal creeks ... depth 0.5-2 m", the lagoon
@@ -105,6 +106,7 @@ SITE_MIN_R = 12.0
 SITE_BLEND = 1.5  # radii: a site's ground eases into the relief out to here (inside SITE_WIN)
 SITE_WIN = 1.7  # a site window in radii: holds the rim ring (1.0-1.3) under the warp (up to 1/0.74)
 FLAT_MIN_SCALE = 0.3  # a flat on a gorge lip shrinks (x0.85 a try) to no less than this share of its radius
+FLAT_KEEP, FLAT_SD_M = 0.35, 0.4  # a flat keeps this share of its relief, its core's spread held to this std (m)
 FLAT_CORE_M = 40.0  # the check's flat-core window is capped at this radius
 DEPRESSION_M, DEEP_M = 4.0, 3.0  # options §9: a sinkhole, a deep cell
 # a mouth is cut into the foot of a rise, never raised on a ring mound (skyrim-does-it-this-way.md §10: Skyrim.esm's
@@ -553,7 +555,10 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     away = np.clip(np.where(np.isfinite(draw), draw, SHORE_FAR) / SHORE_FAR, 0, 1)
     del draw
     # the land stands on its water (never below the base plus its floor) and rises to the region's absolute band
-    h = np.maximum(base + floor, relief) + noise * rough * away
+    # the noise near water keeps its rises and a share of its dips (session 14: fading it to nothing by the water left
+    # the lowland a flat plate at base + floor, the marsh's 0.15 x 0.64 plate); a dip never reaches the water
+    n_ = noise * rough
+    h = np.maximum(base + floor, relief) + np.where(n_ > 0, n_ * np.maximum(away, NEAR_RISE), n_ * np.maximum(away, NEAR_DIP))
     h = h * (1 - 0.5 * ero) + blur(h, 4) * 0.5 * ero
     nz = np.clip(noise / max(float(noise.std()), 1e-9), -2, 2) / 2  # the relief noise, unit range, for edges
     del noise
@@ -671,10 +676,13 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     bed = vmin - np.clip(bed_depth(tsamp, din), FREEBOARD_M, np.maximum(dp, FREEBOARD_M + 0.2))
     if WATER_FIELD:
         from tools.argonia_world.terrain.water_field import water_field
+        h_wf_in = h.astype(np.float32)
         h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz_f, tsamp)
         st["water"]["field"] = {"lift_samples": int((wf_["lift"] > 0.05).sum()), "carve_samples": int((wf_["carve"] > 0.05).sum()),
                                 "iso_samples": int(wf_["iso"].sum()), "iso_in_raster_cells": int((wf_["iso"] & blocks[hi_c][:, hi_c]).sum())}
         diag["iso"] = wf_["iso"]
+        diag["gap_up"], diag["gap_dn"], diag["lift"] = wf_["gap_up"], wf_["gap_dn"], wf_["lift"].astype(np.float32)
+        diag["src"], diag["h_in"] = wf_["src"], h_wf_in
         fbank = wf_["src"] & ~wf_["iso"]  # the field's clipped edges: a site never cuts them (step-bank)
         del wf_
         foot = role == 1
@@ -797,10 +805,12 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     log(f"constraints {time.time() - t0:.1f}s")
 
     # 6. entrance sites
+    diag["h_sites_in"] = h.astype(np.float32)
     sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz)  # a dry cell's vertex stays bank
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
 
     # 7. the slope limit inside the cones
+    diag["h_lim_in"] = h.astype(np.float32)
     f, moved = limit(h, lo, hi, lip)
     # the cliff mask is the final ground's steep faces (vanilla dresses them with cliff meshes, the LAND under them
     # at the cap): the vegetation lane's cliff shells stand where this is set
@@ -914,7 +924,11 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
             whi[wet] = np.inf
             wlo[wet] = np.maximum(np.where(np.isfinite(wlo[wet]), wlo[wet], -np.inf), vmax[sl][wet] + FREEBOARD_M)
             wro[wet] = 3
-            win[:] = np.maximum(win, np.where(np.isfinite(wlo), wlo, -np.inf))
+            # the disc climbs out of the water by Skyrim.esm's shore profile from its rim, never a plate at the
+            # level (session 14: the coast's mouths stood on flat discs at vmax + freeboard)
+            from tools.argonia_world.terrain.water_field import shore_rise
+            rise_ = np.where(wet, shore_rise(np.maximum(1.0 - d, 0.0) * rad), 0.0)
+            win[:] = np.maximum(win, np.where(np.isfinite(wlo), wlo + rise_, -np.inf))
         plane = rim_plane(win, d, yy, xx)
         if shape in ("rise", "bank"):
             # the mouth faces the water (a bank) or down the rim plane's slope; the rise stands behind it
@@ -987,7 +1001,13 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
                 disc = d <= 1.0
                 w = blend_w(d, nz[sl])
             wlo[core] = np.minimum(np.where(np.isfinite(wlo[core]), wlo[core], -np.inf), m)
-            win[:] = np.where(held | fw0, keep, win * (1 - w) + m * w)
+            # levelled to m keeping a damped share of the ground's own relief (Skyrim.esm's towns are level where
+            # built, never a plate: the check asks the core's std under 1 m), session 14
+            rel_ = win - plane
+            sd_ = float(rel_[core].std()) if core.any() else 0.0
+            keep_ = min(FLAT_KEEP, FLAT_SD_M / max(sd_, 1e-6))
+            tgt = m + keep_ * (rel_ - (float(np.median(rel_[core])) if core.any() else 0.0))
+            win[:] = np.where(held | fw0, keep, win * (1 - w) + tgt * w)
         else:  # deep water: a bowl under the cell's level
             bowl = vmin[sl] - DEEP_M - 0.5  # under the lowest water sharing each vertex
             inner = (d <= 0.5) & ~np.isnan(bowl) & (wro != 3)  # a closed bank stays closed
