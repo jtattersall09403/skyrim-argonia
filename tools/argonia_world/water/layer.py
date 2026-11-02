@@ -21,7 +21,18 @@ PLUGIN = "ArgoniaWorld.esm"
 WATER_BASE = 0x100000  # past the terrain's CELL/LAND range (0x810 + 2 x 262^2 = 0x22A30)
 REFS_PER_CELL = 256
 PROVINCE_CELLS = su.PROVINCE_CELLS
-TEMPLATE = "Skyrim.esm:DefaultWater"  # the shading body every type copies (WaterRecords.cs)
+# The shading body each type copies (WaterRecords.cs), still or flowing as Skyrim.esm does it (measured
+# 2026-11-03, the XCWT of Tamriel's 11,186 cells): its lakes and ponds are the world's default DefaultWater (10,742
+# cells carry no XCWT) and its marshes DefaultMarshWater; its rivers RiverWaterFlowNE/NW/SE, CreekWaterFlow* and
+# DefaultRiverWater (298 cells). The two differ in the noise layers' winds (DNAM): DefaultWater's speeds
+# 0.019/0.013/0.096, DefaultRiverWater's 0.044/0.033/0.145 with its flow normals on. Round 3 copied DefaultWater
+# into every type, rivers included, so nothing told still water from flowing (owner play test 3, finding 19).
+STILL_TEMPLATE = "Skyrim.esm:DefaultWater"
+FLOW_TEMPLATE = "Skyrim.esm:DefaultRiverWater"
+TEMPLATE = STILL_TEMPLATE
+NOISE_WIND_SPEED = {STILL_TEMPLATE: (0.019, 0.013, 0.096), FLOW_TEMPLATE: (0.044, 0.033, 0.145)}  # DNAM, measured
+FLOW = "-flow"  # a river cell's type: its class's flowing twin (the sea has none)
+EMIT_TYPES = WATER_TYPES + tuple(t + FLOW for t in WATER_TYPES if t != "sea")  # keys WATER_BASE + 0..6
 
 # name, opacity, shallow, deep, reflection colour, fog above near/far, fog under near/far, fog amounts
 TYPES = {
@@ -38,7 +49,16 @@ def type_edid(t: str) -> str:
 
 
 def type_key(t: str) -> str:
-    return f"{WATER_BASE + WATER_TYPES.index(t):06X}:{PLUGIN}"
+    return f"{WATER_BASE + EMIT_TYPES.index(t):06X}:{PLUGIN}"
+
+
+def template_of(t: str) -> str:
+    return FLOW_TEMPLATE if t.endswith(FLOW) else STILL_TEMPLATE
+
+
+def cell_type(wt: str, body_id: str | None, reach_id: str | None) -> str:
+    """The emitted type of a cell: a river's own cell (a reach's level, no body's) flows; every other is still."""
+    return wt + FLOW if reach_id and not body_id and wt != "sea" else wt
 
 
 def ref_key(cx: int, cy: int, k: int) -> str:
@@ -52,10 +72,10 @@ def ref_key(cx: int, cy: int, k: int) -> str:
 def records() -> list[dict]:
     """The WATR intermediate records (README contract; units and choices resolved here)."""
     out = []
-    for t in WATER_TYPES:
-        name, op, shallow, deep, refl, fog_above, fog_under, amounts = TYPES[t]
-        out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "template": TEMPLATE, "layer": "base:water",
-                    "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
+    for t in EMIT_TYPES:
+        name, op, shallow, deep, refl, fog_above, fog_under, amounts = TYPES[t.removesuffix(FLOW)]
+        out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t.replace("-", "_")),
+                    "template": template_of(t), "layer": "base:water", "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
                     "reflectionColor": refl, "fogAbove": [fog_above[0], fog_above[1], amounts[0]],
                     "fogUnder": [fog_under[0], fog_under[1], amounts[1]]})
     return out

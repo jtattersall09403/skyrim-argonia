@@ -177,10 +177,8 @@
 {"cx":-60,"cy":12,"level_m":65.65,"water_type":"fresh","reach_id":"reach.95-1657"}
 {"cx":-60,"cy":25,"level_m":282.44,"water_type":"fresh"}
 {"cx":-60,"cy":26,"level_m":320.53,"water_type":"fresh","body_id":"body.101-1182"}
-{"cx":-60,"cy":27,"level_m":312.72,"water_type":"fresh","reach_id":"reach.70-1177"}
-{"cx":-60,"cy":28,"level_m":354.53,"water_type":"fresh","body_id":"body.78-1125"}
+{"cx":-60,"cy":27,"level_m":282.44,"water_type":"fresh"}
 {"cx":-60,"cy":29,"level_m":380.51,"water_type":"fresh","body_id":"body.61-1075"}
-{"cx":-60,"cy":43,"level_m":281.49,"water_type":"fresh","reach_id":"reach.116-665"}
 {"cx":-60,"cy":48,"level_m":270.55,"water_type":"fresh","reach_id":"reach.137-492"}
 {"cx":-60,"cy":49,"level_m":257.77,"water_type":"fresh","reach_id":"reach.137-492"}
 {"cx":-59,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
@@ -230,15 +228,12 @@
 {"cx":-59,"cy":-18,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-59,"cy":-17,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-59,"cy":-16,"level_m":0.0,"water_type":"blackwater"}
-{"cx":-59,"cy":-15,"level_m":54.13,"water_type":"fresh","reach_id":"reach.97-2505"}
+{"cx":-59,"cy":-15,"level_m":57.05,"water_type":"fresh","reach_id":"reach.99-2504"}
 {"cx":-59,"cy":-13,"level_m":95.44,"water_type":"fresh","reach_id":"reach.202-2203"}
 {"cx":-59,"cy":-12,"level_m":114.9,"water_type":"fresh","reach_id":"reach.202-2203"}
 {"cx":-59,"cy":11,"level_m":65.65,"water_type":"fresh"}
 {"cx":-59,"cy":12,"level_m":68.02,"water_type":"fresh","body_id":"body.118-1666"}
-{"cx":-59,"cy":26,"level_m":312.72,"water_type":"fresh"}
-{"cx":-59,"cy":27,"level_m":312.72,"water_type":"fresh"}
-{"cx":-59,"cy":28,"level_m":349.21,"water_type":"fresh","body_id":"body.105-1143"}
-{"cx":-59,"cy":42,"level_m":281.49,"water_type":"fresh"}
+{"cx":-59,"cy":27,"level_m":320.53,"water_type":"fresh","body_id":"body.101-1182"}
 {"cx":-59,"cy":43,"level_m":313.85,"water_type":"fresh","body_id":"body.200-770"}
 {"cx":-59,"cy":48,"level_m":279.78,"water_type":"fresh","reach_id":"reach.137-492"}
 {"cx":-58,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
@@ -1505,7 +1500,6 @@
 {"cx":-35,"cy":11,"level_m":60.62,"water_type":"fresh","reach_id":"reach.878-1669"}
 {"cx":-35,"cy":12,"level_m":55.71,"water_type":"fresh","reach_id":"reach.881-1637"}
 {"cx":-35,"cy":50,"level_m":480.63,"water_type":"fresh","body_id":"body.866-443"}
-{"cx":-35,"cy":56,"level_m":494.88,"water_type":"fresh","reach_id":"reach.838-236"}
 {"cx":-34,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-34,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-34,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -1568,7 +1562,7 @@
 {"cx":-34,"cy":32,"level_m":84.52,"water_type":"fresh","reach_id":"reach.913-1021"}
 {"cx":-34,"cy":54,"level_m":427.87,"water_type":"fresh"}
 {"cx":-34,"cy":55,"level_m":472.63,"water_type":"fresh","body_id":"body.914-278"}
-{"cx":-34,"cy":56,"level_m":494.88,"water_type":"fresh","reach_id":"reach.838-236"}
+{"cx":-34,"cy":56,"level_m":472.63,"water_type":"fresh","body_id":"body.914-278"}
 {"cx":-33,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-33,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-33,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -1847,8 +1841,7 @@
 {"cx":-30,"cy":28,"level_m":18.44,"water_type":"blackwater","body_id":"body.1031-1148"}
 {"cx":-30,"cy":32,"level_m":35.5,"water_type":"fresh","reach_id":"reach.1035-1008"}
 {"cx":-30,"cy":38,"level_m":155.94,"water_type":"fresh","body_id":"body.1024-834"}
-{"cx":-30,"cy":51,"level_m":360.37,"water_type":"fresh"}
-{"cx":-30,"cy":52,"level_m":360.37,"water_type":"fresh"}
+{"cx":-30,"cy":52,"level_m":384.82,"water_type":"fresh","body_id":"body.1002-335"}
 {"cx":-30,"cy":53,"level_m":384.82,"water_type":"fresh","body_id":"body.1002-335"}
 {"cx":-29,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-29,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
@@ -1935,8 +1928,6 @@
 {"cx":-29,"cy":45,"level_m":303.85,"water_type":"fresh","body_id":"body.1052-567"}
 {"cx":-29,"cy":46,"level_m":303.85,"water_type":"fresh","body_id":"body.1052-567"}
 {"cx":-29,"cy":47,"level_m":303.85,"water_type":"fresh","body_id":"body.1052-567"}
-{"cx":-29,"cy":50,"level_m":360.37,"water_type":"fresh","reach_id":"reach.1071-374"}
-{"cx":-29,"cy":51,"level_m":360.37,"water_type":"fresh","reach_id":"reach.1071-374"}
 {"cx":-29,"cy":52,"level_m":384.82,"water_type":"fresh","body_id":"body.1002-335"}
 {"cx":-29,"cy":53,"level_m":384.82,"water_type":"fresh","body_id":"body.1002-335"}
 {"cx":-28,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
@@ -2020,7 +2011,7 @@
 {"cx":-28,"cy":29,"level_m":10.66,"water_type":"blackwater","body_id":"body.1084-1102"}
 {"cx":-28,"cy":46,"level_m":303.85,"water_type":"fresh","body_id":"body.1052-567"}
 {"cx":-28,"cy":49,"level_m":306.17,"water_type":"fresh","body_id":"body.1144-450"}
-{"cx":-28,"cy":50,"level_m":360.37,"water_type":"fresh","reach_id":"reach.1071-374"}
+{"cx":-28,"cy":50,"level_m":306.17,"water_type":"fresh","body_id":"body.1144-450"}
 {"cx":-28,"cy":59,"level_m":361.95,"water_type":"fresh","body_id":"body.1072-121"}
 {"cx":-28,"cy":60,"level_m":361.95,"water_type":"fresh","body_id":"body.1072-121"}
 {"cx":-27,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
@@ -2679,7 +2670,6 @@
 {"cx":-20,"cy":45,"level_m":45.12,"water_type":"fresh","body_id":"body.1373-544"}
 {"cx":-20,"cy":48,"level_m":50.09,"water_type":"fresh"}
 {"cx":-20,"cy":55,"level_m":0.0,"water_type":"blackwater"}
-{"cx":-20,"cy":58,"level_m":119.8,"water_type":"fresh","reach_id":"reach.1375-169"}
 {"cx":-19,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-19,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-19,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -3642,8 +3632,6 @@
 {"cx":-9,"cy":41,"level_m":11.0,"water_type":"fresh","body_id":"body.1696-704"}
 {"cx":-9,"cy":42,"level_m":11.0,"water_type":"fresh","body_id":"body.1696-704"}
 {"cx":-9,"cy":52,"level_m":33.28,"water_type":"blackwater","body_id":"body.1711-372"}
-{"cx":-9,"cy":53,"level_m":33.28,"water_type":"blackwater","body_id":"body.1711-372"}
-{"cx":-9,"cy":54,"level_m":36.56,"water_type":"blackwater","body_id":"body.1722-292"}
 {"cx":-9,"cy":55,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-9,"cy":56,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-9,"cy":57,"level_m":0.0,"water_type":"blackwater"}
@@ -3730,8 +3718,8 @@
 {"cx":-8,"cy":51,"level_m":27.22,"water_type":"blackwater","body_id":"body.1785-425"}
 {"cx":-8,"cy":52,"level_m":33.28,"water_type":"blackwater","body_id":"body.1733-381"}
 {"cx":-8,"cy":53,"level_m":33.28,"water_type":"blackwater","body_id":"body.1711-372"}
-{"cx":-8,"cy":54,"level_m":36.56,"water_type":"blackwater","body_id":"body.1722-292"}
-{"cx":-8,"cy":55,"level_m":36.56,"water_type":"blackwater","reach_id":"reach.1747-270"}
+{"cx":-8,"cy":54,"level_m":36.68,"water_type":"blackwater","body_id":"body.1722-292"}
+{"cx":-8,"cy":55,"level_m":36.68,"water_type":"blackwater","reach_id":"reach.1756-305"}
 {"cx":-8,"cy":56,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-8,"cy":57,"level_m":0.0,"water_type":"blackwater"}
 {"cx":-8,"cy":58,"level_m":0.0,"water_type":"blackwater"}
@@ -7423,7 +7411,6 @@
 {"cx":35,"cy":38,"level_m":21.82,"water_type":"blackwater","body_id":"body.3128-815"}
 {"cx":35,"cy":49,"level_m":186.42,"water_type":"fresh","body_id":"body.3109-467"}
 {"cx":35,"cy":51,"level_m":169.84,"water_type":"fresh","body_id":"body.3110-404"}
-{"cx":35,"cy":52,"level_m":145.41,"water_type":"fresh"}
 {"cx":36,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":36,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":36,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -7522,8 +7509,6 @@
 {"cx":36,"cy":33,"level_m":0.0,"water_type":"blackwater"}
 {"cx":36,"cy":34,"level_m":0.0,"water_type":"blackwater"}
 {"cx":36,"cy":35,"level_m":0.0,"water_type":"blackwater"}
-{"cx":36,"cy":51,"level_m":147.55,"water_type":"fresh","reach_id":"reach.3118-400"}
-{"cx":36,"cy":52,"level_m":145.41,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":37,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":37,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":37,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -7624,7 +7609,6 @@
 {"cx":37,"cy":35,"level_m":0.0,"water_type":"blackwater"}
 {"cx":37,"cy":37,"level_m":16.8,"water_type":"blackwater","body_id":"body.3182-860"}
 {"cx":37,"cy":38,"level_m":16.8,"water_type":"blackwater","body_id":"body.3182-860"}
-{"cx":37,"cy":52,"level_m":128.95,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":38,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":38,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":38,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -7727,7 +7711,6 @@
 {"cx":38,"cy":37,"level_m":13.53,"water_type":"blackwater","body_id":"body.3228-877"}
 {"cx":38,"cy":38,"level_m":16.8,"water_type":"blackwater","body_id":"body.3182-860"}
 {"cx":38,"cy":39,"level_m":18.71,"water_type":"blackwater","body_id":"body.3234-806"}
-{"cx":38,"cy":52,"level_m":112.78,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":39,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":39,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":39,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -7830,8 +7813,6 @@
 {"cx":39,"cy":37,"level_m":0.0,"water_type":"blackwater"}
 {"cx":39,"cy":38,"level_m":18.71,"water_type":"blackwater","body_id":"body.3234-806"}
 {"cx":39,"cy":39,"level_m":18.71,"water_type":"blackwater","body_id":"body.3234-806"}
-{"cx":39,"cy":51,"level_m":94.01,"water_type":"fresh","reach_id":"reach.3118-400"}
-{"cx":39,"cy":52,"level_m":107.3,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":40,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":40,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":40,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -7931,8 +7912,6 @@
 {"cx":40,"cy":34,"level_m":0.0,"water_type":"blackwater"}
 {"cx":40,"cy":35,"level_m":0.0,"water_type":"blackwater"}
 {"cx":40,"cy":36,"level_m":0.0,"water_type":"blackwater"}
-{"cx":40,"cy":51,"level_m":80.17,"water_type":"fresh","reach_id":"reach.3118-400"}
-{"cx":40,"cy":52,"level_m":80.17,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":41,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":41,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":41,"cy":-60,"level_m":0.0,"water_type":"blackwater"}
@@ -8034,8 +8013,6 @@
 {"cx":41,"cy":36,"level_m":0.0,"water_type":"blackwater"}
 {"cx":41,"cy":37,"level_m":0.0,"water_type":"blackwater"}
 {"cx":41,"cy":49,"level_m":51.41,"water_type":"fresh"}
-{"cx":41,"cy":51,"level_m":68.16,"water_type":"fresh","reach_id":"reach.3118-400"}
-{"cx":41,"cy":52,"level_m":80.17,"water_type":"fresh","reach_id":"reach.3118-400"}
 {"cx":41,"cy":57,"level_m":103.76,"water_type":"fresh","body_id":"body.3364-188-p2"}
 {"cx":42,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":42,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
@@ -8140,7 +8117,6 @@
 {"cx":42,"cy":38,"level_m":0.0,"water_type":"blackwater"}
 {"cx":42,"cy":39,"level_m":0.0,"water_type":"blackwater"}
 {"cx":42,"cy":40,"level_m":0.0,"water_type":"blackwater"}
-{"cx":42,"cy":49,"level_m":45.73,"water_type":"fresh"}
 {"cx":42,"cy":50,"level_m":51.41,"water_type":"fresh","reach_id":"reach.3352-412"}
 {"cx":42,"cy":51,"level_m":58.43,"water_type":"fresh","body_id":"body.3347-409"}
 {"cx":42,"cy":52,"level_m":62.87,"water_type":"fresh","reach_id":"reach.3363-352"}
@@ -8251,9 +8227,7 @@
 {"cx":43,"cy":40,"level_m":0.0,"water_type":"blackwater"}
 {"cx":43,"cy":41,"level_m":0.0,"water_type":"blackwater"}
 {"cx":43,"cy":43,"level_m":22.45,"water_type":"blackwater","body_id":"body.3384-650"}
-{"cx":43,"cy":48,"level_m":30.86,"water_type":"fresh"}
-{"cx":43,"cy":49,"level_m":33.55,"water_type":"fresh","reach_id":"reach.3368-445"}
-{"cx":43,"cy":50,"level_m":45.73,"water_type":"fresh","reach_id":"reach.3368-445"}
+{"cx":43,"cy":50,"level_m":47.21,"water_type":"fresh","reach_id":"reach.3352-412"}
 {"cx":43,"cy":52,"level_m":66.83,"water_type":"fresh","reach_id":"reach.3363-352"}
 {"cx":43,"cy":53,"level_m":66.83,"water_type":"fresh","reach_id":"reach.3385-271"}
 {"cx":43,"cy":54,"level_m":72.82,"water_type":"fresh","reach_id":"reach.3385-271"}
@@ -8368,7 +8342,6 @@
 {"cx":44,"cy":43,"level_m":17.6,"water_type":"blackwater","body_id":"body.3435-662"}
 {"cx":44,"cy":44,"level_m":22.45,"water_type":"blackwater","body_id":"body.3384-650"}
 {"cx":44,"cy":48,"level_m":0.0,"water_type":"blackwater"}
-{"cx":44,"cy":49,"level_m":30.86,"water_type":"fresh","reach_id":"reach.3368-445"}
 {"cx":45,"cy":-62,"level_m":0.0,"water_type":"blackwater"}
 {"cx":45,"cy":-61,"level_m":0.0,"water_type":"blackwater"}
 {"cx":45,"cy":-60,"level_m":0.0,"water_type":"blackwater"}

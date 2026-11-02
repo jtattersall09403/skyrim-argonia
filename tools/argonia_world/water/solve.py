@@ -697,80 +697,97 @@ def solve(w, raster=None, ground=None) -> Result:
             k = v.cell[0] * NCELL + v.cell[1]
             cands.setdefault(k, []).append((2, lv, wt, None, rid, v.s1 - v.s0))
 
-    cells: dict[tuple[int, int], tuple[float, str, str | None, str | None]] = {}
-    contested = 0
-    for k, cs in cands.items():
-        if len({c[1] for c in cs}) > 1:
-            contested += 1
-        cells[(k // NCELL, k % NCELL)] = resolve(cs)
-    if gmin is not None:  # raster water on a cell's edge reaches it: that cell holds the level whatever its ground
-        wet = (lev[:n, :n] > -1e9) | np.asarray(sea[:n, :n], bool)
-        near = wet.copy()
-        near[1:] |= wet[:-1]
-        near[:-1] |= wet[1:]
-        near[:, 1:] |= wet[:, :-1]
-        near[:, :-1] |= wet[:, 1:]
-        gmin = np.where(near.reshape(NCELL, Q, NCELL, Q).any(axis=(1, 3)), -np.inf, gmin)
-        del wet, near
-    if sp is not None:  # levels from the ground: sheets, not a level per body
-        merge_levels(cells, MERGE_M)
-    gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
-    enclosed = fill_enclosed(cells)
-    cells.update(enclosed)
-    sm_cell = None
-    if sp is not None:
-        k_ = Q // FILL_STRIDE
-        smin = sp[:NCELL * k_, :NCELL * k_].reshape(NCELL, k_, NCELL, k_).min(axis=(1, 3))
-        sm_cell = lambda i, j: float(smin[NCELL - 1 - j, i])  # noqa: E731
-    padded = pad_ring(cells, ground_min=gm_cell, spill_min=sm_cell)
-    cells.update(padded)
-    enclosed.update(padded)
-    # the holes the ring closes: two body cells two apart pad to a ring with a dry gap between (session 16: a column
-    # of 7 dry cells across the marsh at -17,-25..-21, its cell lines drawn as banks); Skyrim.esm leaves no hole
-    # inside a body, so a hole enclosed now takes its ring's level too
-    holes = fill_enclosed(cells)
-    cells.update(holes)
-    enclosed.update(holes)
-    if sp is not None:  # the padding and filled cells joined to a sheet within a riffle (no sub-riffle closed edge)
-        merge_levels(cells, RIFFLE_M)
-    walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
-    if sp is not None:
-        no_riffle_steps(cells)
-    one_type_per_sheet(cells)
-    for c in walls:
-        enclosed.pop(c, None)
+    # the owner's rule (play test 3, finding 20): water stands flat in cells and steps only between two of them,
+    # each step within the tallest dressed one (MAX_DROP_M); a reach whose cells' final levels (a body's taking
+    # its end cells) step taller anywhere becomes a dry gully, and the cells are assembled again without it
+    tall_dry = 0
+    while True:
+        tall: dict[str, float] = {}
+        cells: dict[tuple[int, int], tuple[float, str, str | None, str | None]] = {}
+        contested = 0
+        for k, cs in cands.items():
+            cs = [c for c in cs if c[4] is None or c[4] in solved]
+            if not cs:
+                continue
+            if len({c[1] for c in cs}) > 1:
+                contested += 1
+            cells[(k // NCELL, k % NCELL)] = resolve(cs)
+        if gmin is not None:  # raster water on a cell's edge reaches it: that cell holds the level whatever its ground
+            wet = (lev[:n, :n] > -1e9) | np.asarray(sea[:n, :n], bool)
+            near = wet.copy()
+            near[1:] |= wet[:-1]
+            near[:-1] |= wet[1:]
+            near[:, 1:] |= wet[:, :-1]
+            near[:, :-1] |= wet[:, 1:]
+            gmin = np.where(near.reshape(NCELL, Q, NCELL, Q).any(axis=(1, 3)), -np.inf, gmin)
+            del wet, near
+        if sp is not None:  # levels from the ground: sheets, not a level per body
+            merge_levels(cells, MERGE_M)
+        gm_cell = None if gmin is None else (lambda i, j: float(gmin[NCELL - 1 - j, i]))
+        enclosed = fill_enclosed(cells)
+        cells.update(enclosed)
+        sm_cell = None
+        if sp is not None:
+            k_ = Q // FILL_STRIDE
+            smin = sp[:NCELL * k_, :NCELL * k_].reshape(NCELL, k_, NCELL, k_).min(axis=(1, 3))
+            sm_cell = lambda i, j: float(smin[NCELL - 1 - j, i])  # noqa: E731
+        padded = pad_ring(cells, ground_min=gm_cell, spill_min=sm_cell)
+        cells.update(padded)
+        enclosed.update(padded)
+        # the holes the ring closes: two body cells two apart pad to a ring with a dry gap between (session 16: a column
+        # of 7 dry cells across the marsh at -17,-25..-21, its cell lines drawn as banks); Skyrim.esm leaves no hole
+        # inside a body, so a hole enclosed now takes its ring's level too
+        holes = fill_enclosed(cells)
+        cells.update(holes)
+        enclosed.update(holes)
+        if sp is not None:  # the padding and filled cells joined to a sheet within a riffle (no sub-riffle closed edge)
+            merge_levels(cells, RIFFLE_M)
+        walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
+        if sp is not None:
+            no_riffle_steps(cells)
+        one_type_per_sheet(cells)
+        for c in walls:
+            enclosed.pop(c, None)
 
-    # steps: along each wet reach, then closed edges between any two water cells at different levels
-    steps: dict[tuple[int, int, str], Step] = {}
-    for rid, rs in solved.items():
-        half = width[rid] / 2 / MPP + 0.5
-        for a, b in zip(rs.visits, rs.visits[1:]):
-            if a.cell == b.cell or b.cross is None:
-                continue
-            la, lb = cells[a.cell][0], cells[b.cell][0]
-            if abs(la - lb) < 1e-6:
-                continue
-            up, lo = (a, b) if la > lb else (b, a)
-            e = edge_between(up.cell, lo.cell)
-            x = edge_vertex(up.cell[0], up.cell[1], e, *b.cross)
-            lo_v, hi_v = int(max(0, math.floor(x - half))), int(min(Q, math.ceil(x + half)))
-            # the channel's sloped bed runs k vertices into the lower cell (terrain generate: k = drop / (0.8 lip));
-            # it keeps that far from the edge's corners, so it never cuts a perpendicular edge's closed bank
-            # (session 12: all 22 step-bank misses were such corners)
-            kc = corner_clear(abs(la - lb))
-            if hi_v - lo_v >= 0 and kc < Q / 2:
-                lo_v, hi_v = max(lo_v, kc), min(hi_v, Q - kc)
-                if hi_v < lo_v:
-                    lo_v = hi_v = int(round(min(max(x, kc), Q - kc)))
-            key = (up.cell[0], up.cell[1], e)
-            u, d = max(la, lb), min(la, lb)
-            steps[key] = Step(CX0 + up.cell[0], CY0 + up.cell[1], e, u, d, lo_v, max(hi_v, lo_v + 1),
-                              stp.chain_for(u - d))
-    for (i, j), (lv, *_rest) in cells.items():
-        for e, (di, dj) in (("n", (0, 1)), ("e", (1, 0)), ("s", (0, -1)), ("w", (-1, 0))):
-            o = cells.get((i + di, j + dj))
-            if o is not None and lv > o[0] + 1e-6 and (i, j, e) not in steps:
-                steps[(i, j, e)] = Step(CX0 + i, CY0 + j, e, lv, o[0], 0, 0, "closed")
+        # steps: along each wet reach, then closed edges between any two water cells at different levels
+        steps: dict[tuple[int, int, str], Step] = {}
+        for rid, rs in solved.items():
+            half = width[rid] / 2 / MPP + 0.5
+            for a, b in zip(rs.visits, rs.visits[1:]):
+                if a.cell == b.cell or b.cross is None:
+                    continue
+                la, lb = cells[a.cell][0], cells[b.cell][0]
+                if abs(la - lb) < 1e-6:
+                    continue
+                up, lo = (a, b) if la > lb else (b, a)
+                e = edge_between(up.cell, lo.cell)
+                x = edge_vertex(up.cell[0], up.cell[1], e, *b.cross)
+                lo_v, hi_v = int(max(0, math.floor(x - half))), int(min(Q, math.ceil(x + half)))
+                # the channel's sloped bed runs k vertices into the lower cell (terrain generate: k = drop / (0.8 lip));
+                # it keeps that far from the edge's corners, so it never cuts a perpendicular edge's closed bank
+                # (session 12: all 22 step-bank misses were such corners)
+                kc = corner_clear(abs(la - lb))
+                if hi_v - lo_v >= 0 and kc < Q / 2:
+                    lo_v, hi_v = max(lo_v, kc), min(hi_v, Q - kc)
+                    if hi_v < lo_v:
+                        lo_v = hi_v = int(round(min(max(x, kc), Q - kc)))
+                key = (up.cell[0], up.cell[1], e)
+                u, d = max(la, lb), min(la, lb)
+                if u - d > MAX_DROP_M:
+                    tall[rid] = max(tall.get(rid, 0.0), u - d)
+                steps[key] = Step(CX0 + up.cell[0], CY0 + up.cell[1], e, u, d, lo_v, max(hi_v, lo_v + 1),
+                                  stp.chain_for(u - d))
+        for (i, j), (lv, *_rest) in cells.items():
+            for e, (di, dj) in (("n", (0, 1)), ("e", (1, 0)), ("s", (0, -1)), ("w", (-1, 0))):
+                o = cells.get((i + di, j + dj))
+                if o is not None and lv > o[0] + 1e-6 and (i, j, e) not in steps:
+                    steps[(i, j, e)] = Step(CX0 + i, CY0 + j, e, lv, o[0], 0, 0, "closed")
+        if not tall:
+            break
+        for rid, dm in tall.items():
+            dry[rid], kind[rid] = f"a {dm:.1f} m step at a cell edge: taller than the tallest dressed step", "dry"
+            solved.pop(rid)
+        tall_dry += len(tall)
 
     outcome: dict[str, str] = {}
     won: dict[str, int] = {}

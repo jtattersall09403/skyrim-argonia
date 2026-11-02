@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import collections
 import json
+import math
 import sys
 import time
 from pathlib import Path
@@ -51,7 +52,7 @@ def cmd_solve() -> int:
     return 0
 
 
-def cmd_check() -> int:
+def cmd_check(water_out: Path, index_path: Path, ground_path: Path) -> int:
     from tools.argonia_world import db
     from tools.argonia_world.water import solve as sv
     from tools.argonia_world.water import steps as stp
@@ -85,9 +86,48 @@ def cmd_check() -> int:
         bad.append(f"{len(unchained)} steps without a chain: {unchained[:3]}")
     if stale_kind:
         bad.append(f"{len(stale_kind)} reaches' cell_kind stale: run `water solve`")
+    bad += placement(w, sv.load(w), water_out, index_path, ground_path)
     for b in bad:
         print("water check red:", b)
     return 1 if bad else 0
+
+
+def placement(w, cw, water_out: Path, index_path: Path, ground_path: Path) -> list[str]:
+    """The three placement rules (judge.py) on the emitted stream and the written ground; each part skips, saying
+    so, where its input is not built here."""
+    import numpy as np
+    from tools.argonia_world import pieces as pz
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.water import judge
+    from tools.argonia_world.water import layer
+    from tools.argonia_world.water import steps as stp
+    if cw is None:
+        return []
+    cells_p, rec_p = water_out / "cells.jsonl", water_out / "records.json"
+    if not cells_p.exists() or not index_path.exists():
+        print(f"water check: no {cells_p} or {index_path}: placement rules skipped")
+        return []
+    resolver = pz.Resolver(pz.Index.load(index_path))
+    kind_of = {resolver.resolve(m)[0].form_key: k for k, (m, _, _) in stp.PIECES.items()}
+    lines = [json.loads(x) for x in cells_p.read_text().splitlines() if x]
+    refs = [(kind_of.get(r["base"]), tuple(r["pos"]), math.degrees(r["rot"][2]) % 360) for d in lines for r in d["refs"]]
+    levels = {k: v[0] for k, v in cw._cells.items()}
+    g = np.load(ground_path, mmap_mode="r") if ground_path.exists() else None
+    bad = [f"{'hovering' if 'hovering surface' in b else 'pieces'}: {b}" for b in judge.pieces(cw.steps(), levels, refs, g)]
+    if g is None:
+        print(f"water check: no {ground_path}: bed and hovering rules skipped")
+    else:
+        x0, y0 = su.PROVINCE_CELL_SW
+        bad += [f"hovering: {b}" for b in judge.hovering(levels, cw.steps(), g, lambda x, y: x0 <= x < x0 + su.PROVINCE_CELLS and y0 <= y < y0 + su.PROVINCE_CELLS)]
+    templates = {r["formKey"]: r.get("template") for r in json.loads(rec_p.read_text())["records"]} if rec_p.exists() else {}
+    by_cell = {(d["x"], d["y"]): d.get("waterType") for d in lines}
+    cells = [(r[0], r[1], r[2], r[3], by_cell.get((r[0], r[1]))) for r in w.query(
+        "SELECT cx, cy, body_id, reach_id FROM cell_water")]
+    bad += [f"still/flow: {b}" for b in judge.still_flow(cells, templates)]
+    n = collections.Counter(b.split(":")[0] for b in bad)
+    print(f"water check placement: {len(refs)} pieces on {sum(1 for s in cw.steps() if s.chain != 'closed')} steps; "
+          f"reds {dict(n)}")
+    return [f"{k}: {v} reds, first {[b for b in bad if b.startswith(k)][:3]}" for k, v in n.items()]
 
 
 def cmd_emit(out: Path, index_path: Path) -> int:
@@ -102,35 +142,28 @@ def cmd_emit(out: Path, index_path: Path) -> int:
     cw = sv.load(w)
     resolver = pz.Resolver(pz.Index.load(index_path))
     resolved = {k: resolver.resolve(m)[0] for k, (m, _, _) in stp.PIECES.items()}
-    unresolved = sorted(k for k, r in resolved.items() if r.kind != "base")
+    unresolved = sorted(k for k, r in resolved.items() if r.kind != "base" and any(k in c for c in stp.CHAINS.values()))
     widths = {(r[0], r[1]): r[2] for r in w.query(
         "SELECT c.cx, c.cy, r.width_m FROM cell_water c JOIN hydrology_reach r ON r.id = c.reach_id")}
     lines: dict[tuple[int, int], dict] = {}
-    for (cx, cy), (lv, wt) in cw._cells.items():
-        lines[(cx, cy)] = {"x": cx, "y": cy, "waterHeight": su.rounded(su.metres_to_units(lv), 2),
-                           "waterType": layer.type_key(wt), "refs": []}
-    yaw = {"n": 0.0, "e": 90.0, "s": 180.0, "w": 270.0}
+    for r in w.query("SELECT cx, cy, level_m, water_type, body_id, reach_id FROM cell_water"):
+        lines[(r[0], r[1])] = {"x": r[0], "y": r[1], "waterHeight": su.rounded(su.metres_to_units(r[2]), 2),
+                               "waterType": layer.type_key(layer.cell_type(r[3], r[4], r[5])), "refs": []}
     sample = None
     for s in cw.steps():
         if s.chain == "closed":
             continue
-        ox, oy = su.cell_origin(s.cx, s.cy)
-        mid = (s.cross_lo + s.cross_hi) / 2 * su.VERTEX_SPACING_UNITS
-        x, y = {"n": (ox + mid, oy + su.CELL_UNITS), "s": (ox + mid, oy), "e": (ox + su.CELL_UNITS, oy + mid),
-                "w": (ox, oy + mid)}[s.edge]
         width_m = widths.get((s.cx, s.cy)) or (s.cross_hi - s.cross_lo) * su.PROVINCE_SAMPLE_M
-        drop = s.upper_m - s.lower_m
-        line = lines.setdefault((s.cx, s.cy), {"x": s.cx, "y": s.cy, "refs": []})
-        for k in stp.CHAINS[s.chain]:
-            if resolved[k].kind != "base":
+        dx, dy = stp.OUT[s.edge]
+        for p in stp.place(s, width_m):
+            if resolved[p["kind"]].kind != "base":
                 continue
-            _, wu, hu = stp.PIECES[k]
-            size = su.metres_to_units(drop) / hu if k in stp.SCALE_BY_DROP else su.metres_to_units(width_m) / wu
-            z = s.lower_m if k in stp.AT_FOOT else s.upper_m
-            line["refs"].append({"base": resolved[k].form_key,
-                                 "pos": [su.rounded(x, 2), su.rounded(y, 2), su.rounded(su.metres_to_units(z), 2)],
-                                 "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(yaw[s.edge])],
-                                 "scale": su.rounded(min(10.0, max(0.1, size)), 4)})
+            cell = (s.cx + dx, s.cy + dy) if p["kind"] in stp.AT_FOOT else (s.cx, s.cy)  # the cell it stands in
+            line = lines.setdefault(cell, {"x": cell[0], "y": cell[1], "refs": []})
+            line["refs"].append({"base": resolved[p["kind"]].form_key,
+                                 "pos": [su.rounded(v, 2) for v in p["pos"]],
+                                 "rot": [su.rounded(v, 6) for v in su.yaw_to_rot(p["yaw"])],
+                                 "scale": su.rounded(p["scale"], 4)})
         if sample is None and s.chain == "falls":
             sample = s
     over = []
@@ -159,6 +192,7 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="water", description=__doc__.split("\n")[0])
     ap.add_argument("cmd", choices=["solve", "check", "emit", "records"])
     ap.add_argument("--out", default=str(ROOT / "out" / "water"))
+    ap.add_argument("--ground", default=str(ROOT / "out" / "terrain" / "ground-f32.npy"))
     ap.add_argument("--index", default=str(ROOT / "out" / "pieces-index.json"))
     a = ap.parse_args(argv)
     if a.cmd == "records":
@@ -168,7 +202,7 @@ def main(argv: list[str] | None = None) -> int:
     if a.cmd == "solve":
         return cmd_solve()
     if a.cmd == "check":
-        return cmd_check()
+        return cmd_check(Path(a.out), Path(a.index), Path(a.ground))
     return cmd_emit(Path(a.out), Path(a.index))
 
 
