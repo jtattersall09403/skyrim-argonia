@@ -421,7 +421,7 @@ std::string actor_json(RE::Actor* a, const RE::NiPoint3& from) {
 }
 
 // actors [radius] [ref id...]: the engine's process switches (the global AI toggles), then every actor in the four
-// process lists within radius of the player (default 6000), and each named ref whether listed or not. The read that
+// process lists in the player's worldspace within radius of the player (default 6000), and each named ref whether listed or not. The read that
 // splits "no AI" (game-8): an actor with no process has no package; a listed one with ai_enabled false is switched off.
 std::string actors(const Request& req) {
   return on_main_thread("actors", [req] {
@@ -450,6 +450,9 @@ std::string actors(const Request& req) {
         auto a = h.get();
         if (!a) continue;
         ++counts[i];
+        // interior cells keep local coordinates that overlap the exterior's near the origin (the creature-spots den at
+        // province cell 0 0 listed ~80 Skyrim interior NPCs): only actors in the player's worldspace are in range
+        if (a->GetWorldspace() != p->GetWorldspace()) continue;
         if (a->GetPosition().GetDistance(from) > radius) continue;
         if (listed.size() > 1) listed += ',';
         listed += actor_json(a.get(), from);
