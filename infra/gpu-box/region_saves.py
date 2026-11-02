@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Region saves for the owner's walk (1.15, owner 2026-11-02): one save per region class, the player standing at that
-region's shore panel marker (the 1.15 panel's `ARG_Ref_Panel<Region>Shore` XMarkers, tools/argonia_world/panel.py),
+region's shore panel marker, and one at Claywater station (MARKERS) (the 1.15 panel's `ARG_Ref_Panel<Region>Shore` XMarkers, tools/argonia_world/panel.py),
 so the owner loads a save and walks the region. Made from the walk save on the game machine; never committed.
     region_saves.py [--from ArgoniaWalk] [--only coastal-lagoon,rootland]   the game at the main menu or in game
 Each save is named `Argonia <Region>` (the load menu lists them by name). A region whose marker fails to load is
@@ -25,7 +25,10 @@ REGIONS = {  # panel marker suffix -> save name (the nine region classes of the 
     "Rootland": "Rootland",
     "TidalDelta": "Tidal Delta",
     "WesternFrontier": "Western Frontier",
+    "Claywater": "Claywater",  # the tenth: the station's common by the well (owner play test 3, finding 1)
 }
+# key -> the persistent marker the player is moved to; a region's own shore panel marker unless named here
+MARKERS = {"Claywater": "ARG_Ref_ClaywaterStationQuestBoard"}  # ref.claywater-station.quest-board, facing the well
 
 
 def settle(b: Bridge, since, wait: int = 90) -> None:
@@ -109,7 +112,7 @@ def main(argv=None):
         since = b.call("events")["last"]
         t0 = time.monotonic()
         try:
-            b.call("console", f"player.moveto ARG_Ref_Panel{key}Shore")
+            b.call("console", f"player.moveto {MARKERS.get(key, f'ARG_Ref_Panel{key}Shore')}")
         except BridgeError as e:
             if "did not run the task" not in str(e):
                 failed.append((name, str(e)))
