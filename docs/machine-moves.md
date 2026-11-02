@@ -53,3 +53,24 @@ The owner pays for the build VM's disk by its size (120 GB gp3, about $11 a mont
 
 Kept on purpose: the staged mods (`~/.argonia/stack/MO2`; stack push and the UI theme build read them), the owned
 games (`~/games`: Skyrim SE data for ArgoniaGen, DSR for measuring), the main tree's `out/`.
+
+## Interrupts: the job queue survives a reboot
+
+The build VM is a spot instance (reclaimed twelve times on 2026-11-02) and comes back within minutes. Every
+`job_guard.sh run` spools what a relaunch needs under `~/.argonia/jobs` (on the root EBS volume, so it survives the
+reboot): `<name>.cmd` (argv, NUL-separated), `.cwd`, `.env` (ARGONIA_* and PATH), `.seq` (launch order), `.gpu`
+(the game machine whose lock it takes) and `.state` (queued, running, done, stopped). At boot the systemd --user unit
+`argonia-job-resume.service` (lingering is on for ubuntu, so it starts without a login; laid once by
+`tooling/job_resume.sh --install`) runs `tooling/job_resume.sh`, which relaunches in `.seq` order, through the
+normal `job_guard.sh run` path (same locks and queue, same cwd, env and argv, same seq), every job whose state is
+queued or running, whose `.rc` is absent or a signal's (>= 128; `stop` marks a job stopped, so it stays stopped) and
+whose unit is not alive. It writes `RESUMED-<boot-id>` with what it relaunched; the planner reads that instead of
+re-queueing. A job finished before the interrupt is not rerun; the interrupted run's log is kept as `<name>.log.interrupted`.
+Jobs on one machine take its lock in `.seq` order, so the queue's order holds.
+
+**What a job must be.** A relaunched job starts again from its first line, so every job must be idempotent: a rerun
+skips the steps that finished (step markers, checkpoints) and only waits where the wait is already satisfied.
+Already so: `tooling/lod.sh run` (per-step markers per ArgoniaWorld sha), the terrain build (resumes from an
+interrupted `land.tmp-*` with equal inputs, 3a36981), `~/.argonia/scripts/up_until.sh` (bringing a machine up twice
+is harmless), the chains in `~/.argonia/scripts/` built on it. A job that is not (one that appends, pushes or sends
+on every run) must check for its own output first, or not be run under job_guard.

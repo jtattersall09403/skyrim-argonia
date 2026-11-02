@@ -17,8 +17,12 @@
 #   job_guard.sh wait <name>                          wait up to 270 s; exit 0 done-ok, 1 done-failed, 3 still running
 #   job_guard.sh status [<name>] | log <name>
 #   job_guard.sh stop <name>                          end the job and everything it started (its process group)
+# Spool (1.15): run also writes <name>.cmd (argv, NUL-separated), .cwd, .env (ARGONIA_*, PATH; NUL-separated),
+#   .seq (launch order), .gpu (the machine, gpu jobs only) and .state (queued|running|done|stopped; a signal-killed job, rc >= 128, stays running). At boot
+#   tooling/job_resume.sh relaunches, in .seq order, every job left queued or running (no .rc, or rc >= 128). Jobs on one
+#   machine take its lock in .seq order. JOBS_DIR overrides the spool directory (tests).
 set -euo pipefail
-JOBS="$HOME/.argonia/jobs"; mkdir -p "$JOBS"
+JOBS="${JOBS_DIR:-$HOME/.argonia/jobs}"; mkdir -p "$JOBS"
 cmd=${1:-}; shift || true
 # Parses an optional --gpu[=machine] from "$@" (sets gpu, ARGONIA_PLAY, lock, and shifts via $shiftn).
 parse_gpu() {
@@ -59,7 +63,7 @@ foreign_slot() { # lock lane
 # all killed when the harness session died (2026-11-02, three 20-minute builds). Without one: setsid nohup.
 launch() {
   local script=$1; shift
-  if [ -z "${JOB_GUARD_NO_SYSTEMD:-}" ] && command -v systemd-run >/dev/null && systemctl --user is-system-running >/dev/null 2>&1; then
+  if [ -z "${JOB_GUARD_NO_SYSTEMD:-}" ] && command -v systemd-run >/dev/null && case $(systemctl --user is-system-running 2>/dev/null) in running|degraded|starting|initializing) true ;; *) false ;; esac; then
     local unit="jg-$name-$(date +%s)" env=() v
     for v in $(compgen -e); do [[ $v =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] && env+=(--setenv="$v"); done
     if systemd-run --user --quiet --collect --unit="$unit" --working-directory="$PWD" "${env[@]}" \
@@ -84,6 +88,16 @@ case "$cmd" in
       [ $SECONDS -ge $end ] && exit 1
       sleep 1
     done ;;
+  _turn) # internal: machine seq wait_s; waits while an earlier-seq job on the machine is still queued (FIFO lock order)
+    m=$1; seq=$2; end=$((SECONDS + $3))
+    while :; do ahead=""
+      for f in "$JOBS"/*.gpu; do [ -e "$f" ] || continue; n=$(basename "$f" .gpu)
+        [ "$(cat "$f")" = "$m" ] && [ ! -f "$JOBS/$n.rc" ] && [ "$(cat "$JOBS/$n.state" 2>/dev/null)" = queued ] || continue
+        s2=$(cat "$JOBS/$n.seq" 2>/dev/null || echo 0); [ "$s2" -lt "$seq" ] || continue
+        kill -0 "$(cat "$JOBS/$n.pid" 2>/dev/null || echo 0)" 2>/dev/null && { ahead=$n; break; }
+      done
+      [ -z "$ahead" ] && exit 0; [ $SECONDS -ge $end ] && exit 1; sleep 1
+    done ;;
   reserve|release)
     parse_gpu "$@"; shift $shiftn
     [ $gpu = 1 ] || { export ARGONIA_PLAY="${ARGONIA_PLAY:-argonia-play}"; parse_gpu --gpu; }
@@ -103,7 +117,13 @@ case "$cmd" in
     parse_gpu "$@"; shift $shiftn
     name=$1; shift; [ "${1:-}" = "--" ] && shift
     if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
-    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine" "$JOBS/$name.unit"
+    rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine" "$JOBS/$name.unit" "$JOBS/$name.gpu"
+    # The spool a relaunch needs (job_resume.sh). JOB_SEQ keeps a resumed job's place; else the next number.
+    if [ -n "${JOB_SEQ:-}" ]; then seq=$JOB_SEQ; else
+      seq=$( { flock 9; n=$(( $(cat "$JOBS/.seq" 2>/dev/null || echo 0) + 1 )); echo $n > "$JOBS/.seq"; echo $n; } 9>"$JOBS/.seq.lock" ); fi
+    echo "$seq" > "$JOBS/$name.seq"; printf '%s\0' "$@" > "$JOBS/$name.cmd"; echo "$PWD" > "$JOBS/$name.cwd"
+    for v in $(compgen -e); do [[ $v == ARGONIA_* || $v == PATH ]] && printf '%s=%s\0' "$v" "${!v}"; done > "$JOBS/$name.env"
+    if [ $gpu = 1 ]; then echo "$ARGONIA_PLAY" > "$JOBS/$name.gpu"; echo queued > "$JOBS/$name.state"; else echo running > "$JOBS/$name.state"; fi
     [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
     if [ $gpu = 1 ]; then
       echo "$ARGONIA_PLAY" > "$JOBS/$name.machine"  # stop ends the machine too (below)
@@ -111,10 +131,11 @@ case "$cmd" in
       # The holder file names the job inside the lock; `started` marks that this one got it (queued until then).
       launch 'echo "queued for '"$ARGONIA_PLAY"' behind '"$holder"' (up to '"$wait_s"' s)"
         if [ -n "'"$lane"'" ]; then bash "'"$me"'" _slotwait "'"$lock"'" "'"$lane"'" '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo "slot wait gave up"; exit 1; }; fi
-        flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"
-          echo "got the lock"; "$@"; echo $? > "'"$JOBS/$name.rc"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
+        bash "'"$me"'" _turn "'"$ARGONIA_PLAY"'" '"$seq"' '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo done > "'"$JOBS/$name.state"'"; echo "turn wait gave up"; exit 1; }
+        flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"; echo running > "'"$JOBS/$name.state"'"
+          echo "got the lock"; "$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
     else
-      launch '"$@"; echo $? > "'"$JOBS/$name.rc"'"' "$@"
+      launch '"$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"' "$@"
     fi
     echo $jpid > "$JOBS/$name.pid"; echo "started $name (pid $jpid), log $JOBS/$name.log" ;;
   wait)
@@ -146,7 +167,7 @@ case "$cmd" in
     p=$(cat "$JOBS/$1.pid" 2>/dev/null) || { echo "no job $1" >&2; exit 2; }
     if u=$(cat "$JOBS/$1.unit" 2>/dev/null) && [ -n "$u" ]; then systemctl --user stop "$u" 2>/dev/null || true  # the unit's whole cgroup
     else kill -- -"$(ps -o pgid= -p "$p" | tr -d ' ')" 2>/dev/null || kill "$p" 2>/dev/null || true; fi
-    echo 143 > "$JOBS/$1.rc"; echo "stopped $1"
+    echo 143 > "$JOBS/$1.rc"; echo stopped > "$JOBS/$1.state"; echo "stopped $1"
     # A machine job's machine stops with it, unless someone streams on it: a stopped job left argonia-play-ie running
     # idle 40 min, its idle-stop held busy by the job's last SSH and busy flag (1.8, 2026-10-31).
     # Only a job that had the machine stops it: a queued job never held it, and stopping one stopped the job running
