@@ -247,6 +247,6 @@ Owed, in order:
    the level (with the raster only seeding which body it joins), and the carve then follows that contour. The likely
    place is generate.py's `foot = has & ~isnan(inp.wet_level)` (~line 497) or the hydrology raster's producer. Then
    re-run the census and the reader on the five windows.
-2. The clamp path's deletion was handed to a deliver-small child (behaviour-identical, checked bit-for-bit against
-   s14b); confirm it landed (`git log`).
+2. Done (e4396b6): the clamp path is deleted, generate.py went from 1142 to 1003 lines, and the sample ground and role
+   are bit-identical to s14b. The pytest terrain and water suites passed (67) and ruff is clean.
 3. ONE whole-province generate into out/terrain, then `terrain check`: not started.
