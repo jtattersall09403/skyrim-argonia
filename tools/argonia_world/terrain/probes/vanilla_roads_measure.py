@@ -27,8 +27,8 @@ def main():
         T[:, r:r + 33, c:c + 33] = np.maximum(T[:, r:r + 33, c:c + 33], W[i])
 
     def sample(A, xu, yu):
-        c = (xu - cx0 * 4096) / 128.0
-        r = (yu - cy0 * 4096) / 128.0
+        c = (xu - cx0 * su.CELL_UNITS) / su.VERTEX_SPACING_UNITS
+        r = (yu - cy0 * su.CELL_UNITS) / su.VERTEX_SPACING_UNITS
         c0, r0 = np.floor(c).astype(int), np.floor(r).astype(int)
         ok = (c0 >= 0) & (r0 >= 0) & (c0 < A.shape[-1] - 1) & (r0 < A.shape[-2] - 1)
         c0, r0 = np.clip(c0, 0, A.shape[-1] - 2), np.clip(r0, 0, A.shape[-2] - 2)
