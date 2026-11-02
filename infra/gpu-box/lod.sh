@@ -91,7 +91,17 @@ case "${1:-}" in
   run)
     shift; steps=("$@"); [ ${#steps[@]} -gt 0 ] || steps=(prepare terrain texgen dyndolod collect)
     tools
-    for s in "${steps[@]}"; do ps1 "$s"; done
+    # Per-step markers for this ArgoniaWorld (owner, 2026-11-02: a rerun must pick up where the last attempt got to):
+    # prepare, terrain, texgen and dyndolod are skipped when their marker exists for the deployed ESM's sha; collect,
+    # archive and resources always run. LOD_FORCE=1 reruns everything. The outputs they stand for live on the machine.
+    sha12=$(sha256sum out/ArgoniaWorld.esm | cut -c1-12); marks="$HOME/.argonia/lod-steps/$sha12"; mkdir -p "$marks"
+    for s in "${steps[@]}"; do
+      case "$s" in prepare|terrain|texgen|dyndolod)
+        if [ -z "${LOD_FORCE:-}" ] && [ -f "$marks/$s" ]; then echo "== $s: done before for $sha12 ($(cat "$marks/$s")); skipped"; continue; fi ;;
+      esac
+      ps1 "$s"
+      case "$s" in prepare|terrain|texgen|dyndolod) date -u +%FT%TZ > "$marks/$s" ;; esac
+    done
     fetch_back
     echo "LOD OK: ${steps[*]}" ;;
   still)
