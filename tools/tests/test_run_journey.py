@@ -113,7 +113,7 @@ def test_console_settle_waits_out_a_busy_main_thread(tmp_path, monkeypatch):
             raise BridgeError("console: main thread did not run the task within 3000 ms")
         return real2(cmd, *args)
     fake2.call = busy_once
-    rep = rj.Runner(fake2, tmp_path / "out2").run(journey(tmp_path, [{"name": "arrive", "do": [{"console": "cow BlackMarsh 1 1"}]}]), "base")
+    rep = rj.Runner(fake2, tmp_path / "out2").run(journey(tmp_path, [{"name": "arrive", "do": [{"console": {"line": "cow BlackMarsh 1 1", "settle": 0}}]}]), "base")
     assert not rep["passed"]
 
 
@@ -570,3 +570,24 @@ def test_wait_load_waits_out_a_fade_after_the_load(monkeypatch):
                     {"menu": "Fader Menu", "opening": True}])
     r.wait_load(7, cap=5)
     assert now[0] >= 5  # the fade never closed: held to the cap, never acting under it
+
+
+def test_camera_first_retries_until_it_flips_and_fails_when_it_never_does(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    fake, state = Fake(), {"first": False}
+    real = fake.call
+
+    def cam(cmd, *args):
+        if cmd == "console" and args[0] == "IsPC1stPerson" and rj.Runner is not None and state.get("armed"):
+            return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if state["first"] else "0.00")}
+        if cmd == "console" and args[0].startswith("cgf"):
+            state["first"] = True
+        return real(cmd, *args)
+    fake.call = cam
+    state["armed"] = True
+    step = {"name": "look", "do": [{"camera": "first"}, {"hud": "off"}]}
+    rep = rj.Runner(fake, tmp_path / "a").run(journey(tmp_path, [step]), "base")
+    assert rep["passed"] and "tm" in fake.lines  # the F key did nothing; Game.ForceFirstPerson through cgf did it
+    never = Fake()
+    rep = rj.Runner(never, tmp_path / "b").run(journey(tmp_path, [step]), "base")
+    assert not rep["passed"] and "never became first" in rep["steps"][0]["reason"]

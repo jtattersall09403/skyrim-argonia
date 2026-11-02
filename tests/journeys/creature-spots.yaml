@@ -13,10 +13,12 @@ steps:
 - name: water-day
   # cell (-32, 36) western-frontier D3 shore: list lvln.western-frontier.D3.shore
   do:
+  - hud: off
   - console: {line: cow ARG_Province -32 36, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - teleport: pos -128816 148224 11108
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -35,6 +37,7 @@ steps:
   - wait: 8
   - console: set gamehour to 1
   - teleport: pos -125104 116352 659
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -53,6 +56,7 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - teleport: pos -116272 135424 2363
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -71,6 +75,7 @@ steps:
   - wait: 8
   - console: set gamehour to 1
   - teleport: pos -112048 129408 976
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -89,6 +94,7 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - teleport: pos -144048 103680 7004
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -107,6 +113,7 @@ steps:
   - wait: 8
   - console: set gamehour to 1
   - teleport: pos -144816 154496 14670
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -125,6 +132,7 @@ steps:
   - wait: 8
   - console: set gamehour to 12
   - teleport: pos -456 2048 2476
+  - camera: first
   - console: player.setangle z 90
   - wait: 6
   expect:

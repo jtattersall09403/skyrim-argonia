@@ -76,6 +76,7 @@ def _go(r: dict, off_m: float, hour: int, ground=None) -> list[str]:
             "  - wait: 8",
             f"  - console: set gamehour to {hour}",
             f"  - teleport: pos {x:.0f} {y:.0f} {z:.0f}",
+            "  - camera: first",
             "  - console: player.setangle z 90",
             f"  - wait: {WAIT_S}"]
 
@@ -90,10 +91,10 @@ def build(refs: list[dict], ground=None) -> tuple[str, str]:
              "# Marsh kind (no Skyrim animal), on ground or in water its kind allows; at the den the predator beside",
              "# it. The kind of each base read is its creature_form row. The planner runs it in the round's batch.",
              "id: creature-spots", "runner: 1", "crash_risk: medium", "scene: creature-spots", "steps:"]
-    for name, when, hour, r in spots(refs):
+    for n, (name, when, hour, r) in enumerate(spots(refs)):
         lines += [f"- name: {name}-{when}",
                   f"  # cell {tuple(r['cell'])} {r['class']} {r['band']} {r['medium']}: list {r['base']}",
-                  "  do:", *_go(r, VIEW_M, hour, ground),
+                  "  do:", *(["  - hud: off"] if n == 0 else []), *_go(r, VIEW_M, hour, ground),
                   "  expect:", *_arrived(_target(r, VIEW_M, ground)),
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed.0.dist, lt: {radius:.0f}}}",
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed, keep: {name}_{when}}}"]

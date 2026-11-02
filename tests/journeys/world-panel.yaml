@@ -1,8 +1,8 @@
 # The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`
 # from the generated data: two fixed vantages per region class (shore: dry ground beside water of the
 # class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the
-# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD
-# hidden. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the
+# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited
+# for), the HUD `hud: off`. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the
 # vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over
 # water; light shafts through canopy; owner, 2026-11-01); each step
 # checks only that the teleport landed. Never move a vantage after the first run.
@@ -19,16 +19,7 @@
      "wait": 10
     },
     {
-     "wait": 1
-    },
-    {
-     "wait": 2
-    },
-    {
-     "console": {
-      "line": "tm",
-      "settle": 10
-     }
+     "hud": "off"
     }
    ],
    "expect": []
@@ -43,10 +34,7 @@
      }
     },
     {
-     "key": "F 300 engine"
-    },
-    {
-     "wait": 2
+     "camera": "first"
     },
     {
      "console": "player.setangle z 88"
@@ -112,6 +100,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 88"
     },
     {
@@ -173,6 +164,9 @@
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 180"
@@ -238,6 +232,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 180"
     },
     {
@@ -299,6 +296,9 @@
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 1"
@@ -364,6 +364,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 1"
     },
     {
@@ -425,6 +428,9 @@
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 90"
@@ -490,6 +496,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 90"
     },
     {
@@ -551,6 +560,9 @@
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 138"
@@ -616,6 +628,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 138"
     },
     {
@@ -677,6 +692,9 @@
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 135"
@@ -742,6 +760,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 135"
     },
     {
@@ -803,6 +824,9 @@
       "line": "player.moveto ARG_Ref_PanelFloodedForestShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 315"
@@ -868,6 +892,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 315"
     },
     {
@@ -929,6 +956,9 @@
       "line": "player.moveto ARG_Ref_PanelFloodedForestHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 180"
@@ -994,6 +1024,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 180"
     },
     {
@@ -1055,6 +1088,9 @@
       "line": "player.moveto ARG_Ref_PanelInteriorSwampShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 90"
@@ -1120,6 +1156,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 90"
     },
     {
@@ -1181,6 +1220,9 @@
       "line": "player.moveto ARG_Ref_PanelInteriorSwampHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 0"
@@ -1246,6 +1288,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 0"
     },
     {
@@ -1307,6 +1352,9 @@
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 251"
@@ -1372,6 +1420,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 251"
     },
     {
@@ -1433,6 +1484,9 @@
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 90"
@@ -1498,6 +1552,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 90"
     },
     {
@@ -1559,6 +1616,9 @@
       "line": "player.moveto ARG_Ref_PanelRootlandShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 319"
@@ -1624,6 +1684,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 319"
     },
     {
@@ -1685,6 +1748,9 @@
       "line": "player.moveto ARG_Ref_PanelRootlandHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 225"
@@ -1750,6 +1816,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 225"
     },
     {
@@ -1811,6 +1880,9 @@
       "line": "player.moveto ARG_Ref_PanelTidalDeltaShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 359"
@@ -1876,6 +1948,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 359"
     },
     {
@@ -1937,6 +2012,9 @@
       "line": "player.moveto ARG_Ref_PanelTidalDeltaHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 90"
@@ -2002,6 +2080,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 90"
     },
     {
@@ -2063,6 +2144,9 @@
       "line": "player.moveto ARG_Ref_PanelWesternFrontierShore",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 138"
@@ -2128,6 +2212,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 138"
     },
     {
@@ -2191,6 +2278,9 @@
      }
     },
     {
+     "camera": "first"
+    },
+    {
      "console": "player.setangle z 180"
     },
     {
@@ -2252,6 +2342,9 @@
       "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
       "settle": 60
      }
+    },
+    {
+     "camera": "first"
     },
     {
      "console": "player.setangle z 180"

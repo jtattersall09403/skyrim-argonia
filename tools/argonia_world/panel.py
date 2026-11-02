@@ -194,14 +194,13 @@ def journey_text(vs: list[dict]) -> str:
     head = ("# The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`\n"
             "# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the\n"
             "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
-            "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person, the HUD\n"
-            "# hidden. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
+            "# region's commonest dry-season weather) and dawn 06:30 (its mist regime's weather), first person (`camera: first`, waited\n"
+            "# for), the HUD `hud: off`. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
             "# vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over\n"
             "# water; light shafts through canopy; owner, 2026-11-01); each step\n"
             "# checks only that the teleport landed. Never move a vantage after the first run.\n")
-    steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"key": "F 300"}, {"wait": 2},
-                                                    {"console": {"line": "tm", "settle": 10}}],
-              "expect": [{"console": "IsPC1stPerson", "contains": "1.00"}]}]
+    steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"hud": "off"}],
+              "expect": []}]
     for v in vs:
         x, y, z = v["pos"]
         land = [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
@@ -210,7 +209,7 @@ def journey_text(vs: list[dict]) -> str:
                 {"read": ["player"], "path": "pos.y", "gt": y - LAND_TOL_UNITS},
                 {"read": ["player"], "path": "pos.y", "lt": y + LAND_TOL_UNITS}]
         for when, hour in (("noon", 12), ("dawn", 6.5)):
-            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
+            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}}, {"camera": "first"},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
                   {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
             if v[when]:

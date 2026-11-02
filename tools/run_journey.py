@@ -324,6 +324,49 @@ class Runner:
                     time.sleep(2)
         return self.b.call("console", line)
 
+    def _camera(self, arg):
+        """`camera: first` (or `third`): the play camera, waited for. IsPC1stPerson is read after each try: the F key by
+        the engine route (a pad/key press is ignored while a load holds the thread), then Papyrus's
+        Game.ForceFirstPerson / ForceThirdPerson through `cgf`; 6 tries, 3 s apart. Fails the step, naming the tries,
+        if it never flips (driver, 2026-11-02: F 300 engine left IsPC1stPerson 0 on both routes)."""
+        want = {"first": "1.00", "third": "0.00"}.get(str(arg).strip())
+        if want is None:
+            raise StepFailed(f"camera: {arg!r} is `first` or `third`")
+        fn = "ForceFirstPerson" if want == "1.00" else "ForceThirdPerson"
+        tries = []
+        for n in range(1, 7):
+            try:
+                now = self._console("IsPC1stPerson")["output"].strip()
+            except BridgeError as e:
+                now = f"error {e}"
+            tries.append(now[-40:])
+            if now.endswith(want):
+                self.calls.append({"call": ["camera", str(arg)], "tries": tries})
+                return {"camera": str(arg), "tries": n}
+            if n % 2:
+                self.b.call("input", "key", "F", 300, "engine")
+            else:
+                try:
+                    self.b.call("console", f'cgf "Game.{fn}"')
+                except BridgeError as e:
+                    tries.append(f"cgf error {e}")
+            time.sleep(3.0)
+        raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}")
+
+    def _hud(self, arg):
+        """`hud: off`: the vanilla HUD hidden by `tm`, and our PrismaUI HUD's state read (ViewState hud) and kept in the
+        report. Our HUD has no hide of its own: it is hidden only under a sheet or a load (views.cpp SheetOpen), so a
+        still still shows it until ArgoniaCore gets a dev hide; the report says so rather than claiming it hidden."""
+        if str(arg).strip() != "off":
+            raise StepFailed(f"hud: {arg!r} is `off`")
+        self._console({"line": "tm", "settle": 30})
+        try:
+            ours = self.b.core("ViewState", "hud")
+        except Exception as e:  # an optional read: never fails the step
+            ours = f"unread: {e}"
+        self.calls.append({"call": ["hud", "off"], "ours": ours})
+        return {"hud": "off", "vanilla": "tm", "ours": ours}
+
     def _teleport(self, args):
         return self.b.call("teleport", *(args if isinstance(args, list) else str(args).split()))
 
@@ -748,7 +791,8 @@ AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the f
 ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
            "burst": Runner._burst, "burst_fetch": Runner._burst_fetch,
-           "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel}
+           "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel,
+           "camera": Runner._camera, "hud": Runner._hud}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
 SKSE_LOGS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\SKSE"
