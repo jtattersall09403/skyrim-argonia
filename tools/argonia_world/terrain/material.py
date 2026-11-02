@@ -173,7 +173,7 @@ STOPS: dict[str, tuple[Stop, ...]] = {
         # five land stops, each on its own noise, so no one covers more than about half a window (audit §4: vanilla
         # forest floors carry 4-6 textures; r 2026-11-01: 0_0 read as one dark-green swathe)
         Stop("LPineForest03", dh=(L, INF), why="BM&V's swamp forest floor (its most painted ground)"),
-        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.54, INF), seed=21, w=1.3, why="shoreline A8: wet litter"),
+        Stop("LFallForestLeaves01", dh=(L, INF), noise=(0.48, INF), seed=21, w=1.3, why="shoreline A8: wet litter"),
         Stop("LFallForestDirt01", dh=(1, INF), noise=(0.56, INF), seed=22, w=1.35, why="rooty patches (BM&V roots-in-mudbank)"),
         Stop("LFrozenMarshLichen01", dh=(L, 3), noise=(0.5, INF), seed=23, w=1.4, why="shoreline A8: muck in the hollows"),
         Stop("LReachMoss01", dh=(1, INF), noise=(0.6, INF), seed=24, w=1.45, why="moss on raised roots and hummocks"),

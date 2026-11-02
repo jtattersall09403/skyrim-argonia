@@ -16,7 +16,7 @@
    stills: the sheen is on the pale, nearly textureless steep hillside (still 5) and on the road strip (still 6).
    Forest floor and pebbles read matte. The reader notes fog may account for part of the sheen.
 3. BM&V's 19 diffuses are 512² DXT3 with **no mipmaps**, so they shimmer and tile at distance. This is not fixed here:
-   making mips is a derived file (0014), so it belongs to an installer step. It is a backlog candidate (P2).
+   making mips is a derived file (0014), so it is made on the player's machine by an installer step: installer backlog (P2).
 
 ## What changed
 
@@ -38,23 +38,25 @@
   - Every normal resolves from the vanilla BSA, with alpha 16.9-40.7 and tilt 12-60°.
   - The bar is vanilla p90 28.9, or Skyrim's own figure for that same LTEX where higher (riverbottom 33.6, riverbededge 40.7).
   - Before the change, 19 of 19 had no normal. With TS's normals, 18 of 19 would carry alpha 255.
-- **Share of dry ground, 34 one-km windows (seed 1), before → after:**
+- **Share of dry ground, 34 one-km windows (seed 1), before → after** (after = with the flooded-forest leaf-litter gate
+  lowered 0.54 → 0.48, commit below):
 
   | LTEX | before | after |
   |---|---|---|
   | RiverbedEdge01 | 28.3 % | 2.6 % (100 % of it within 4 vertices of water) |
   | FrozenMarshGrass01 | 12.7 % | 6.3 % |
   | FieldGrass02 | 10.0 % | 7.5 % |
-  | FallForestLeaves01 | 5.2 % | 21.0 % |
-  | PineForest03 | 6.5 % | 14.1 % |
-  | FallForestDirt01 | 5.6 % | 13.3 % |
-  | ReachMoss01 | 7.9 % | 12.6 % |
+  | FallForestLeaves01 | 5.2 % | 23.8 % |
+  | FallForestDirt01 | 5.6 % | 12.9 % |
+  | ReachMoss01 | 7.9 % | 12.4 % |
+  | PineForest03 | 6.5 % | 11.9 % |
   | PineForest02 | 7.9 % | 11.4 % |
 
-- **Largest single texture in any window:**
-  - Before: 0.75 (edge), 0.70 (marsh grass).
-  - After: **0.41** (PineForest03, window r3512 c3581, flooded forest), then 0.36.
-  - This is a 1-point miss of the 40 % bar in one window. Next step: lower that class's leaf-litter noise gate.
+- **Largest single texture in any window:** before 0.75 (edge) and 0.70 (marsh grass). After: **0.38** (PineForest03
+  and FallForestLeaves01), then 0.36. Every window is under the 40 % bar.
+- **L3 of that window** (cells -19 5 to -2 22, `out/terrain-sample/render-r4-ff/`), judged by a reader: **PASS**. Dark
+  green is the largest colour at about 35-40 % of the land, split into many areas. The land is in patches, and the
+  shore band is thin (5-15 px).
 - The whole-province share from the built LAND is not re-measured: a province rebuild waits for the province lock and
   the planner. The round-3 build in out/terrain stays as the "before". It gives 16.9 % edge province-wide, including water.
 - **L3 render** of the sample windows (`out/terrain-sample/render-r4-materials/`), judged by a reader:
@@ -62,7 +64,7 @@
   - Over 40 % by eye: the lake-dominated -21_-26_-14_-19 (its little land is shore) and -12_63_-11_64 (bright green
     40-45 %).
   - The reader saw a wide straight brown strip in -12_63, probably the road paint, and a straight edge in -38_25.
-    Neither is judged here.
+    Both go to the roads and water lanes (planner).
   - Verdict: FAIL narrowly.
 
 ## Owed in game (planner's batch)
