@@ -18,4 +18,5 @@ systemctl --user daemon-reload
 systemctl --user enable argonia-resume.service
 systemctl --user enable --now argonia-idle-stop.timer
 systemctl --user enable --now argonia-watchdog.timer
-echo "installed: argonia-resume.service (at boot), argonia-idle-stop.timer (every minute), argonia-watchdog.timer (every 2 min: resume if Claude died without a reboot)"
+systemctl --user enable --now argonia-owner-wake.timer
+echo "installed: argonia-resume.service (at boot), argonia-idle-stop.timer (every minute), argonia-watchdog.timer (every 2 min: resume if Claude died without a reboot), argonia-owner-wake.timer (every 2 min: wake the agent on an unread owner comment)"

@@ -1,0 +1,6 @@
+[Unit]
+Description=Wake Claude Code on an unread owner comment (2026-11-02: a reply sat 50 min after a hand-over)
+
+[Service]
+Type=oneshot
+ExecStart=%h/skyrim-argonia/infra/build-vm/owner-wake.sh
