@@ -90,7 +90,7 @@ def main(argv=None):
         if "no player" not in str(e):
             raise
         pl = {}
-    if (pl.get("cell") or {}).get("editor_id") in (None, "ARG_HoldingCell"):
+    if not a.fresh and (pl.get("cell") or {}).get("editor_id") in (None, "ARG_HoldingCell"):
         since = b.call("events")["last"]
         try:
             b.call("load", a.src)
