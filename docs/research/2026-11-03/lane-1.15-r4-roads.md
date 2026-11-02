@@ -22,3 +22,10 @@
 ## Not done / owed
 - Bridges at the 221 crossings; site cores re-graded to meet their roads; RoadChunk-style scatter on the road (a non-Nordic piece must be chosen first).
 - In game: journey road-look (3 Blackwood Road vantages), a checks.md row, owed.
+
+## Round 2 of the lane (planner's rule: the road yields to water, 0 walls)
+- shape.py: the road splits into dry runs at every water sample (bed, gully, step channel, wet raster), tapers to 0 over the blend at a bank, and never shapes a water sample. Overlapping roads blend by weight (no nearest-road seam). It keeps 0.4 of the land's cross fall (a bench, not a fill shelf), smooths the centreline over ±6 m, and is never cut or filled more than 1 m from the land (the L3 reader saw a 3 m cut wall). The check gains a wall count: a step across a road edge more than 0.3 m past the land's own step just outside, skipped where the outside sample is in another road's corridor.
+- Window loop on the two Blackwood windows (round-3 ground + the wet raster, no cones): 0 walls in both. Trough 2 m/4 m: flat 0.06/0.21 m, slope 0.07/0.23 m, inside the vanilla band but under its 0.09/0.29 medians.
+- L3 reader, last pass: the slope crossing is not accepted. The road sits above the gully floor, with faint striped patches in the hillshade.
+- One province generate on main + this lane (out/terrain-sample-roads in the lane worktree): roads.shape check: walls 240 (round-3 main by the same metric: 637), dry points over 0.219: 1120 (round-3: 1421; the uncapped version had 287), grade p95 0.283, max 2.88; trough 2 m 0.077 / 4 m 0.240 (in band), tracks 0.116; 221 crossings. Water check: green (0 with two levels, 0 steps without a chain).
+- Still red: the 1 m cut cap trades grade for walls. A steep road has to be re-routed or zig-zagged (routes/build.py), not cut. The 240 walls are not yet broken down by cause (crossing taper, site pins, land steps).
