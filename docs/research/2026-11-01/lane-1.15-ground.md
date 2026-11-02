@@ -212,57 +212,49 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 11 put the levels-from-ground order in place. `WATER_FIELD` is on. The old clamp path is still behind the flag,
-and it can be deleted once the sample check is green.
+Session 12 (commit 5416fca) made every water check green on the sample. Only the entrance sites are still red.
+`WATER_FIELD` is on, and the old clamp path is still in place behind the flag.
 
-- **The ground comes first.** `terrain pre` writes `$ARGONIA_DATA/terrain/pre-ground-f32.npy`: the prior, relief and
-  erosion, with no water rule. Its water base comes from the wet raster's own levels, never from `cell_water`, so
-  the order is not circular. Its lattice ratio is 1.37.
-- **Vanilla sill.** `probes/vanilla_lake_sill.py` ran on Skyrim.esm's 15 largest lakes. A lake's level stands a median
-  +3.0 m above the lowest pass out of its window (range +1.5 to +11; one perched lake sits at -18). That lowest
-  pass is the outlet channel's bed, so a lake is full to its outlet.
-- **The solve** (`water/solve.py`) reads the pre ground:
-  - a body takes the `spill` (a priority flood on the ground min-pooled ×4) at its footprint's lowest sample;
-  - a spill under 0.5 m is the sea-level marsh, at 0;
-  - a reach takes the thalweg's lowest point in each cell. It never rises downstream. A drop of more than 20.96 m
-    inside one cell, or more than 65.7 m at an edge, makes it dry;
-  - `merge_levels` builds sheets: from the lowest level up, a joined cell less than 2 m above a sheet takes its
-    level (0.5 m to the sea), and then again at the riffle after padding;
-  - a pad cell's ground must lie within ±0.3 m of the level.
-  - Result: 10,595 cells, 1,923 steps (1,682 closed, against 5,204 before the merge and the pad floor), 16 dry
-    reaches. `water check` is green.
-- **The field** (`water_field.py`) runs in three steps:
-  1. carve the raster water;
-  2. lift the dry-cell and two-level vertices with a rounded cone and a smooth max;
-  3. lift the under-level ground that no raster water joins.
+`terrain check --out out/terrain-sample/s12h` (job g12h, 95 s generate):
 
-  The bank, shore, edge and step-bank clamps are off when the field is on.
-- **A trial no longer writes the shared ground.** `generate --out DIR` writes the ground to DIR (`ARGONIA_GROUND`).
-  Before this fix, the session's trials overwrote `out/terrain/ground-f32.npy` at 03:44. **Restore it from
-  `out/terrain/build/a85ecfaa95a5/`**, or let the next whole-province generate replace it.
+| check | s11 | s12 |
+|---|---|---|
+| wet, bank | 0 | 0 |
+| step-bank | 136 | **0** |
+| dry-edge | 27 | **0** |
+| overflow | 3 cells | **0** |
+| lattice (bound 1.5) | 1.85 | **1.23** (pre ground 1.37) |
+| unshaped sites | 4 | 5 (all flats) |
+| cells / steps | 10,595 / 1,923 | 10,100 / 1,925 |
 
-`terrain check --out out/terrain-sample/s11` (run g11f):
-
-| check | result |
-|---|---|
-| wet | 0 |
-| bank | 0 |
-| step-bank | 136 |
-| dry-edge | 27 |
-| unshaped sites | 4 |
-| overflow | 3 cells |
-| lattice | 1.85 (main 1.99; the bound is 1.5) |
-
-The lattice on two-level cell lines is 8.7 × off them, and those lines hold 24 % of the on-line second difference.
-Most step-bank misses lie in other steps' channel bands (`chz`), with a median shortfall of 6.4 m. 113 k samples are
-lifted as unjoined hollows, 65 k of them in raster cells. A probe found that this lift makes **flat plates at level
-+ 0.3** wherever a cell's level stands over ground past the rim.
+What changed, each measured before the rule:
+- **Solve** (`water/solve.py`):
+  - `joined_footprint`: a body's raster samples hold its level only where they lie under it and are joined to its
+    lowest sample.
+  - A non-raster body whose spill is no higher than its ground + 0.3 m has no basin, so it gets no level. One such
+    body, plunge-pool `body.1378-171`, stood at 114 m beside the sea.
+  - `pad_ring` pads a cell in the same basin however deep it is (`spill_min`). This removed a 150 m dam beside a
+    251.5 m lake.
+  - `no_riffle_steps`: no closed edge drops 0.5 m or less. 292 of the step-bank misses were such edges.
+  - `corner_clear`: a channel keeps k+1 vertices from its edge's corners. All 22 of the last misses lay where
+    another step's sloped band met a perpendicular edge.
+- **Field** (`water_field.py`):
+  - The lift is now an amount field: a cone of shortfalls added to the ground. A height cone, as a chamfer, was cut
+    at 48 samples into 110 m walls, which were 74 % of the lattice. As a majorant, it buried cliffs: 1.7 M samples
+    were raised by more than 50 m. Now no sample is raised by more than 50 m.
+  - Each clipped line has a crest 3 samples each side (`BAND`). The lattice measured 2.55 with no crest, 1.40 with a
+    3-sample crest and 1.49 with a 9-sample crest.
+  - A hollow is raised whole and keeps its slope. Its fade is slow inside the hollow and LIFT_GRADE past its rim. No
+    hollow sample now sits on the old +0.3 m plate (there were 113 k), and the p50 slope is 0.057 m per sample.
+- **Generate**: a site never cuts the field's bank vertices (`fbank`). This removed the misses where a depression
+  site dug through a step bank.
 
 Owed, in order:
-1. Stop the plates. Either the solve gives no level to a cell whose under-level ground the raster water does not
-   join, or the hollow keeps a slope instead of `need`. Then the two-level ridges: why is the second difference 8.7 ×
-   (the profile probe is in this session's notes: role 3 plates)?
-2. Get step-bank, dry-edge, sites and overflow to 0, and the lattice within 1.5.
-3. A reader on the five windows' hillshades (`terrain render --hillshade` with `ARGONIA_GROUND`).
-4. Delete the clamp path, then one whole-province generate.
-5. Speed: the generate takes 120-180 s under load 6. The wobble and noise chamfers take about 50 s.
+1. The 5 flat sites. Three are beside water (role 3), and two are dry (the-eight-steps, the-back-kiln). On those
+   two, the ground around a pinned centre was raised 14-35 m, probably by a nearby bank lift. Probe with
+   `/tmp`-style `unshaped_sites.py` pointed at the out dir. When the field holds a site's disc, the flat level
+   should take the lift.
+2. Restore the shared ground: `out/terrain/ground-f32.npy`, from `out/terrain/build/a85ecfaa95a5/`.
+3. A reader on the hillshades of 0_0, -38_25, -23_54, -15_56 and -21_-26. Use `terrain render --hillshade` with
+   `ARGONIA_GROUND=out/terrain-sample/s12h`.
+4. Delete the clamp path, then run one whole-province generate into `out/terrain`.
