@@ -83,3 +83,24 @@ def test_edids():
     assert infra.edid({"id": "sign.road.gideon-soulrest.1234", "kind": "signpost",
                        "signpost": "sign.road.gideon-soulrest.1234"}) == "ARG_Ref_SignGideonSoulrest1234"
     assert infra.arm_edid("Ridge Runners' Post") == "ARG_ACTI_SignArmRidgeRunnersPost"
+
+
+def test_sign_board_textures_are_laid_or_kept():
+    """Owner play test 3, finding 29 (lilac sign boards: Skyrim's missing texture): every diffuse and normal BM&V's
+    sign boards name is laid by some row of the stack or under BM&V's keep globs (so the next lay brings it)."""
+    import fnmatch
+    import json
+    from pathlib import Path
+
+    import pytest
+
+    from tools.argonia_world.vegetation import mesh_textures as mt
+    mods = Path.home() / ".argonia" / "stack" / "MO2" / "mods"
+    boards = [mods / "bmv" / m for m in ("meshes/roadsignmedium01l.nif", "meshes/roadsignmedium01r.nif")]
+    if not all(b.exists() for b in boards):
+        pytest.skip("no laid stack")
+    deps = json.loads(Path("data/dependencies.json").read_text())
+    keep = next(m for m in deps["mods"] if m["id"] == "bmv")["keep"]
+    bad = [(b.name, t) for b in boards for s, t in ((s, mt.norm(t)) for s, t in mt.texture_slots(b.read_bytes()))
+           if s <= 1 and not any(fnmatch.fnmatch(t, g) for g in keep) and not any((m / t).exists() for m in mods.iterdir())]
+    assert not bad, bad
