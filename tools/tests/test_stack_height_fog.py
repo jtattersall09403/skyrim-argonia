@@ -1,4 +1,4 @@
-"""The height-fog release asset has Features/ and ExponentialHeightFog/ at its root; CS only loads them under Shaders/."""
+"""The height-fog release asset (v1.9.1, 2026-09-24) carries Shaders/Features and Shaders/ExponentialHeightFog; they are laid at the same paths under Data (the deploy of 2026-11-02 failed on a pick that assumed them at the root)."""
 import json
 import sys
 from pathlib import Path
@@ -14,7 +14,7 @@ def test_height_fog_lays_under_shaders(tmp_path):
     rows = rows["mods"]
     m = next(r for r in rows if r["id"] == "community-shaders-height-fog")
     src, data = tmp_path / "src", tmp_path / "Data"
-    for rel in ("Features/ExponentialHeightFog.ini", "ExponentialHeightFog/ExponentialHeightFog.hlsl"):
+    for rel in ("Shaders/Features/ExponentialHeightFog.ini", "Shaders/ExponentialHeightFog/ExponentialHeightFog.hlsl"):
         f = src / rel
         f.parent.mkdir(parents=True)
         f.write_text("x")
