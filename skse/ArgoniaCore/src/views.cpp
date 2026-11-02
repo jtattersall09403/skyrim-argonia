@@ -424,7 +424,9 @@ void SetPrompt(RE::TESObjectREFR* ref) {
   RE::BSString text;
   if (base && !ref->IsDisabled() && base->GetActivateText(ref, text)  /* the activated reference (passing the player named it: "Talk Prisoner") */) {
     const char* name = ref->GetDisplayFullName();
-    if (auto p = ac::views::prompt_from_activate_text(text.c_str() ? text.c_str() : "", name ? name : ""))
+    auto p = ac::views::prompt_from_activate_text(text.c_str() ? text.c_str() : "", name ? name : "");
+    if (auto* a = ref->As<RE::Actor>()) p = ac::views::actor_prompt(std::move(p), ActorAtOf(a));
+    if (p)
       next = ac::msg::Prompt{p->verb, p->target,
                              {{ac::msg::InputDevice::keyboard, "key." + ActivateKey()},
                               {ac::msg::InputDevice::gamepad, "pad.A"}}};

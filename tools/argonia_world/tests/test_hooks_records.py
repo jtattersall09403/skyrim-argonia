@@ -32,6 +32,9 @@ def test_perk_fields():
 
 def test_condition_is_on_tab_1_and_names_the_speaker_keyword():
     r = recs()
-    (c,) = r["PERK"]["effects"][0]["conditions"]
+    c, dead, combat = r["PERK"]["effects"][0]["conditions"]
+    # a corpse keeps the engine's Search and a fighter its attack (play test 3, findings 27, 28)
+    assert (dead["tab"], dead["function"], dead["op"], dead["value"]) == (1, "GetDead", "EqualTo", 0)
+    assert (combat["tab"], combat["function"], combat["op"], combat["value"]) == (1, "IsInCombat", "EqualTo", 0)
     assert c["tab"] == 1 and c["function"] == "HasKeyword" and c["op"] == "EqualTo" and c["value"] == 1
     assert c["keyword"] == r["KYWD"]["formKey"]

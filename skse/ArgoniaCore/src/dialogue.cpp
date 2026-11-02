@@ -243,6 +243,10 @@ bool OpenDialogue(RE::TESObjectREFR* target) {
   auto& c = Get();
   std::lock_guard l(c.lock);
   if (!target) return false;
+  if (auto* a = target->As<RE::Actor>(); a && !ac::views::offers_talk(ActorAtOf(a))) {  // a corpse or a fighter
+    SKSE::log::info("dialogue: {:08X} is dead or fighting the player; no conversation", a->GetFormID());
+    return false;
+  }
   c.pending_speaker = target->GetHandle();
   const auto v = c.router.on_surface(ac::router::SurfaceId::dialogueMenu);
   if (!v.note.empty()) SKSE::log::info("router: {}", v.note);

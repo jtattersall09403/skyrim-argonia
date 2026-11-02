@@ -37,6 +37,18 @@ void prompt_text() {
   CHECK(!prompt_from_activate_text("", "Chest") && !prompt_from_activate_text("<font></font>\nChest", "Chest"));
 }
 
+// Findings 27, 28: never Talk to a corpse or a fighter; a corpse is searched.
+void actor_rule() {
+  const PromptText talk{"Speak", "Livia Varinius"};
+  CHECK(offers_talk({}) && !offers_talk({.dead = true}) && !offers_talk({.fighting_player = true}));
+  CHECK(!offers_talk({.dead = true, .fighting_player = true}));
+  CHECK((actor_prompt(talk, {}) == talk));
+  CHECK((actor_prompt(talk, {.dead = true}) == PromptText{"Search", "Livia Varinius"}));
+  CHECK((actor_prompt(PromptText{"Talk", "Deserter"}, {.fighting_player = true}) == std::nullopt));
+  CHECK((actor_prompt(talk, {.dead = true, .fighting_player = true}) == PromptText{"Search", "Livia Varinius"}));
+  CHECK((actor_prompt(std::nullopt, {.dead = true}) == std::nullopt));
+}
+
 void wait_words() {
   using argonia::core::journal::GameDate;
   const auto t = wait_now(GameDate{201, 2, 17, 10.15});
@@ -338,6 +350,7 @@ int main() {
   close_controls();
   wait_words();
   prompt_text();
+  actor_rule();
   the_table();
   pane_never_over_dialogue();
   push_waits_for_ready();

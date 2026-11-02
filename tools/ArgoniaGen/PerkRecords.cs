@@ -147,7 +147,7 @@ static class PerkRecords
             Modification = Enum.Parse<PerkEntryPointModifyActorValue.ModificationType>(S(e, "function")),
             Value = e.GetProperty("value").GetSingle(),
         };
-        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
+        eff.Conditions.AddRange(Conds(edid, e));
         return eff;
     }
 
@@ -160,7 +160,7 @@ static class PerkRecords
             Modification = PerkEntryPointModifyValue.ModificationType.Multiply,
             Value = e.GetProperty("value").GetSingle(),
         };
-        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
+        eff.Conditions.AddRange(Conds(edid, e));
         return eff;
     }
 
@@ -180,28 +180,42 @@ static class PerkRecords
             ButtonLabel = S(e, "buttonLabel"),
             Flags = new PerkScriptFlag { Flags = (PerkScriptFlag.Flag)fl, FragmentIndex = (ushort)I(e, "fragment") },
         };
-        foreach (var c in A(e, "conditions")) eff.Conditions.Add(Cond(edid, c));
+        eff.Conditions.AddRange(Conds(edid, e));
         return eff;
     }
 
-    static PerkCondition Cond(string edid, JsonElement c)
+    // The effect's conditions grouped by tab in first-seen order (one PRKC per tab, its CTDAs after it, as Skyrim.esm's
+    // perks are: DA11Cannibalism's tab 1 holds GetDead and two more).
+    static List<PerkCondition> Conds(string edid, JsonElement e)
     {
-        var cf = S(c, "function");
-        if (cf != "HasKeyword") throw new InvalidDataException($"{edid}: condition function {cf} not supported yet");
-        var data = new HasKeywordConditionData { RunOnType = Condition.RunOnType.Subject };
-        data.Keyword.Link.SetTo(FormKey.Factory(S(c, "keyword")));
-        return new PerkCondition
+        var tabs = new List<PerkCondition>();
+        foreach (var c in A(e, "conditions"))
         {
-            RunOnTabIndex = (byte)I(c, "tab"),
-            Conditions =
+            var tab = (byte)I(c, "tab");
+            var pc = tabs.Find(t => t.RunOnTabIndex == tab);
+            if (pc == null) tabs.Add(pc = new PerkCondition { RunOnTabIndex = tab });
+            pc.Conditions.Add(new ConditionFloat
             {
-                new ConditionFloat
-                {
-                    CompareOperator = Enum.Parse<CompareOperator>(S(c, "op")),
-                    ComparisonValue = c.GetProperty("value").GetSingle(),
-                    Data = data,
-                },
-            },
-        };
+                CompareOperator = Enum.Parse<CompareOperator>(S(c, "op")),
+                ComparisonValue = c.GetProperty("value").GetSingle(),
+                Data = Data(edid, c),
+            });
+        }
+        return tabs;
+    }
+
+    // HasKeyword (the speaker mark); GetDead and IsInCombat (a corpse is searched and a fighter fought, never spoken to).
+    static ConditionData Data(string edid, JsonElement c)
+    {
+        switch (S(c, "function"))
+        {
+            case "HasKeyword":
+                var kw = new HasKeywordConditionData { RunOnType = Condition.RunOnType.Subject };
+                kw.Keyword.Link.SetTo(FormKey.Factory(S(c, "keyword")));
+                return kw;
+            case "GetDead": return new GetDeadConditionData { RunOnType = Condition.RunOnType.Subject };
+            case "IsInCombat": return new IsInCombatConditionData { RunOnType = Condition.RunOnType.Subject };
+            case var cf: throw new InvalidDataException($"{edid}: condition function {cf} not supported yet");
+        }
     }
 }

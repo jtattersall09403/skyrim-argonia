@@ -66,6 +66,8 @@ T* Lookup(std::string_view world_id) {
   return f ? f->As<T>() : nullptr;
 }
 std::optional<std::string> WorldId(const RE::TESForm* form);
+// The actor as the dialogue intercept's rule reads it (findings 27, 28): dead, or in combat and hostile to the player.
+argonia::core::views::ActorAt ActorAtOf(RE::Actor* a);
 // An actor value by its engine (AVIF enum) name; kNone for a name the runtime does not know.
 RE::ActorValue AvNamed(std::string_view name);
 inline constexpr RE::FormID kGold = 0x0000000F;  // Skyrim.esm's Gold001, the engine's own currency record

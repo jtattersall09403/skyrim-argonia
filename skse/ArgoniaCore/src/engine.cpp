@@ -78,6 +78,11 @@ std::optional<std::string> WorldId(const RE::TESForm* form) {
   return row ? std::optional<std::string>(row->id) : std::nullopt;
 }
 
+ac::views::ActorAt ActorAtOf(RE::Actor* a) {
+  auto* player = RE::PlayerCharacter::GetSingleton();
+  return {a && a->IsDead(), a && player && a->IsInCombat() && a->IsHostileToActor(player)};
+}
+
 std::optional<int> GameEngine::item_count(std::string_view item) const {
   auto* obj = Lookup<RE::TESBoundObject>(item);
   auto* p = Player();

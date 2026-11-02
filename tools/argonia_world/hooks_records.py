@@ -21,7 +21,12 @@ def layer(alloc: Allocator) -> Layer:
         "hidden": True, "playable": False, "trait": False, "level": 0, "ranks": 1, "name": "", "description": "",
         "effects": [{
             "entryPoint": "Activate", "function": "AddActivateChoice", "rank": 0, "priority": 0, "tabCount": 2,
-            "conditions": [{"tab": 1, "function": "HasKeyword", "keyword": kw, "op": "EqualTo", "value": 1}],
+            # Tab 1 is the activated reference. A speaker alive and out of combat only: a corpse keeps the engine's
+            # Search and a fighter its attack (owner play test 3, findings 27, 28); Skyrim.esm's DA11Cannibalism
+            # gates its corpse choice by GetDead on the same tab.
+            "conditions": [{"tab": 1, "function": "HasKeyword", "keyword": kw, "op": "EqualTo", "value": 1},
+                           {"tab": 1, "function": "GetDead", "op": "EqualTo", "value": 0},
+                           {"tab": 1, "function": "IsInCombat", "op": "EqualTo", "value": 0}],
             "buttonLabel": "Speak", "flags": ["RunImmediately", "ReplaceDefault"], "fragment": 0,
         }],
         "fragments": {"script": FRAGMENT_SCRIPT, "entries": [{"index": 0, "name": "Fragment_0"}]},

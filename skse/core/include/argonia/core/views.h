@@ -110,6 +110,16 @@ struct PromptText {
 };
 std::optional<PromptText> prompt_from_activate_text(std::string_view activate_text, std::string_view display_name);
 
+// The activated actor as the intercept sees it (owner play test 3, findings 27, 28). A corpse is searched and a fighter
+// in combat with the player is fought: neither is ever spoken to, whatever the engine's text or a perk's label says.
+struct ActorAt {
+  bool dead = false;
+  bool fighting_player = false;  // in combat and hostile to the player
+};
+bool offers_talk(const ActorAt& a);
+// The prompt over an actor: a corpse's verb is Search, a fighter has none, anyone else keeps the engine's text.
+std::optional<PromptText> actor_prompt(std::optional<PromptText> engine, const ActorAt& a);
+
 class ClosePressGuard {
  public:
   // True when the adapter must hide this event from the game.

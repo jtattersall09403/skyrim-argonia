@@ -344,6 +344,14 @@ std::optional<PromptText> prompt_from_activate_text(std::string_view text, std::
   return p;
 }
 
+bool offers_talk(const ActorAt& a) { return !a.dead && !a.fighting_player; }
+
+std::optional<PromptText> actor_prompt(std::optional<PromptText> engine, const ActorAt& a) {
+  if (a.fighting_player && !a.dead) return std::nullopt;
+  if (a.dead && engine) engine->verb = "Search";
+  return engine;
+}
+
 bool ClosePressGuard::swallow(std::uint32_t key, bool down, bool up, bool modal_open) {
   const auto it = std::find(held_.begin(), held_.end(), key);
   if (down) {
