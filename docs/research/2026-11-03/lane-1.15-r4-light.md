@@ -86,3 +86,31 @@ skeleton.nif in Skyrim - Meshes0.bsa. It is now `skyrim_units.EYE_HEIGHT_UNITS`.
 Ledger row: docs/phases/1-core-loop/checks.md, "Sky visible and low mist banks" (owed). The planner's round-4 batch
 runs the dawn steps of tests/journeys/world-panel.yaml (already written), and a reader judges "sky visible" and "low
 mist banks present below eye level" at each dawn still.
+
+## Per-weather height fog (the planner's follow-up): stopped, numbers for the planner
+
+**The format has been read** from the CS v1.9.1 source on GitHub (tag v1.9.1, GPL): `src/WeatherManager.cpp:50-93`,
+`src/Utils/Form.cpp:23,117`, `src/Features/ExponentialHeightFog.cpp:605-660`, `src/WeatherVariableRegistry.h:129-170`.
+- One file per weather: `SKSE/Plugins/CommunityShaders/Weathers/<key>.json`. The key is `0x<local FormID hex>~<plugin
+  file name>`, for example `0x801~Argonia.esp`.
+- Body: `{"featureSettings": {"ExponentialHeightFog": {"fogHeight": .., "fogHeightFalloff": .., "fogDensity": ..,
+  "startDistance": ..}}}`. These are the weather variables the feature registers (plus the inscattering ones in that block).
+- A value a weather does not set falls back to the global (user) value. Values are lerped across the weather
+  transition. Nothing clamps a value on load. The variable's slider range (fogHeight −22,000..22,000, falloff
+  0.001..2.0, density 0..1) applies only in the UI. Our falloff of 30 is beyond the UI range, so it stays as long as nobody
+  edits it in the CS menu.
+
+**But each mist weather is shared by regions whose water sits at very different levels**, so one fog height per weather
+cannot keep the bank between the water and the eye. Measured: region_mist ⋈ cell_region_run ⋈ cell_water, the
+median cell water level per region, in metres. The bank top is fogHeight + 1.59 m (falloff 30). The test band is
+[median level, median level + 1.73 m (eye 121 u)].
+
+| regime → weather | regions | region median water levels (m) | one height fits |
+|---|---|---|---|
+| sea_fog → sea-fog | 13 | all 0.0 | yes: fogHeight 0 (top 1.59 m), as laid now |
+| radiation → mist | 29 | 0.0 ×2, 0.7–1.4 ×18, 2.2–2.5 ×4, 5.7, 5.9, 20.2, 25.3, 49.5 | 20 of 29 (levels 0–1.4 m); 9 fail, spread 49.5 m |
+| montane → montane-haze | 5 | 0.0 ×3, 11.0, 68.0 | 3 of 5; spread 68 m |
+
+So the planner's choice is needed: per-region mist weather variants (by level band: about 0–1.4, 2–2.5, 6, 20–25,
+50, 11 and 68 m, so six extra weathers and their CS files) or placed mist meshes. Nothing was laid or changed for
+this step.
