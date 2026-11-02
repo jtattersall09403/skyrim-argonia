@@ -3,11 +3,9 @@ Flags:
 - HasWater
 Grid:
   Point: -57, 13
-WaterHeight: 4763.44
 Regions:
 - 080010:ArgoniaWorld.esm
 - 08002F:ArgoniaWorld.esm
-Water: 100003:ArgoniaWorld.esm
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 0008BB:Argonia.esm

@@ -13,12 +13,12 @@ Temporary:
   FormKey: 000887:Argonia.esm
   Base: 035F49:Skyrim.esm
   Placement:
-    Position: -232197.8, 52845.47, 4778.21
+    Position: -232197.8, 52845.47, 4790.84
 - MutagenObjectType: PlacedObject
   FormKey: 000888:Argonia.esm
   Base: 1AD605:King of the Murkmire.esp
   Placement:
-    Position: -232208.3, 52795.26, 4762.52
+    Position: -232208.3, 52795.26, 4787.7
 - MutagenObjectType: PlacedObject
   FormKey: 000889:Argonia.esm
   Base: 000039:ArgonianLakeHouse.esl
@@ -39,7 +39,7 @@ Temporary:
   FormKey: 0008B6:Argonia.esm
   Base: 050D7B:King of the Murkmire.esp
   Placement:
-    Position: -231963.2, 52059.97, 4784
+    Position: -231963.2, 52059.97, 4789.75
 - MutagenObjectType: PlacedObject
   FormKey: 0008B8:Argonia.esm
   Base: 08995A:King of the Murkmire.esp
