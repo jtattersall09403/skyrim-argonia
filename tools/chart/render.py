@@ -9,10 +9,15 @@ place glyphs. Only the look is reused (0026): this renderer is ours, over our ow
 
 Three layers on one canvas (the master is MASTER^2 px, 2^12; the province fills [M, size - M) at one pixel per terrain sample):
 - base      opaque: the paper, and the sea's wash and ripples (water the lightest ground);
-- ink       RGBA: the sketch, always shown: the coast and its hachure, the major rivers and roads, the province's
-            land border, a compass rose, the seven cities drawn and labelled;
+- ink       RGBA: the sketch, always shown (owner play test 3 #12: "broad brush outlines of the province ... the major
+            roads ... like a rough sketch map"): the coast and its hachure, the major roads, the province's land
+            border, a compass rose; nothing else, so the unexplored land is the rough sketch the owner asked for;
+- cities    RGBA: the seven cities' glyphs and names, for the world map overlay only (fwmf.py's map-<size>.png): the
+            chart view draws each city as its own dot and name at a constant screen size (play test 3 #14), never
+            the raster's, which would grow with the zoom;
 - revealed  RGBA: what exploring fills in, masked per cell by the view: the land's warm tint, relief and 50 m
-            contours, the woods (crowns and stipple), the marsh tufts, the minor rivers and tracks (as the old
+            contours, the woods (crowns and stipple), the marsh tufts, every river (drawn from the cells the game
+            holds water in, data.py) and the minor tracks (as the old
             chart showed land only where it was explored). No place but the cities is drawn: the view marks each
             once Skyrim's discovery fires for it (1.12 §5).
 The view stacks base, revealed (masked), ink, then its own marks: the discovered places and the player.
@@ -262,6 +267,7 @@ class Chart:
     scale: float  # px per metre
     base: np.ndarray  # (s, s, 3) uint8
     ink: np.ndarray  # (s, s, 4) uint8
+    cities: np.ndarray  # (s, s, 4) uint8: the cities' glyphs and names (the world map overlay's, never the view's)
     revealed: np.ndarray  # (s, s, 4) uint8
     masks: dict = field(default_factory=dict)  # the checks' masks (uint8, canvas size)
     index: dict = field(default_factory=dict)
@@ -353,19 +359,22 @@ class Renderer:
 
         fields = self.shore(land, inside)
         base = self.paper(fields)
-        ink_layers, masks = self.sketch(land, inside, fields)
+        ink_layers, masks, city_layers = self.sketch(land, inside, fields)
         ground = self._sample(self.f.ground, np.float32)
         rev_layers = self.relief(ground, fields, forest)
         del ground
         rev_layers += self.woods(fields, forest, marsh)
         del forest, marsh
+        river_layers, masks["rivers"] = self.rivers()
+        rev_layers += river_layers
         rev_layers += self.minor_lines()
         place_layers, places = self.places()
         rev_layers += place_layers
 
         ink = compose_over(s, ink_layers)
+        cities = compose_over(s, city_layers)
         revealed = compose_over(s, rev_layers)
-        chart = Chart(s, m, self.scale, base, ink, revealed, masks=masks, land=land & inside)
+        chart = Chart(s, m, self.scale, base, ink, cities, revealed, masks=masks, land=land & inside)
         chart.index = self.make_index(places)
         return chart
 
@@ -516,15 +525,6 @@ class Renderer:
         layers.append((pen.done(), INK, 0.5))
         del pen
 
-        # the major rivers: slate water ink, widening a little toward the mouth
-        pen = Pen(s)
-        for r in self.f.rivers:
-            if r.major:
-                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.6 * u, 70 * u)
-                self.river(pen, p, min(9.0, 6.0 + 1.0 * (r.weight - 2)) * self.w)
-        masks["rivers"] = pen.done()
-        layers.append((masks["rivers"], WATER_INK, 0.9))
-
         # the major roads: red-brown lane ink over a paper casing
         casing, pen = Pen(s), Pen(s)
         for r in self.f.roads:
@@ -585,10 +585,20 @@ class Renderer:
             x, y = self.city_px[c.id]
             self.label_ring[c.id] = self.label(text, halo, c.name, x, y, 64, R + 6 * u, track=0.12, halo_w=6)
         masks["cities"] = glyph.done()
-        layers.append((self.soft(halo.done(), 3 * u), PAPER, 0.8))
-        layers.append((masks["cities"], INK, 1.0))
-        layers.append((text.done(), INK, 1.0))
-        return layers, masks
+        city_layers = [(self.soft(halo.done(), 3 * u), PAPER, 0.8), (masks["cities"], INK, 1.0), (text.done(), INK, 1.0)]
+        return layers, masks, city_layers
+
+    def rivers(self):
+        """The major rivers in slate water ink, widening a little toward the mouth; the revealed layer's, since play
+        test 3 (#12: the sketch is the outline, the cities and the major roads; #30: the rivers drawn where the water is)."""
+        u = self.u
+        pen = Pen(self.size)
+        for r in self.f.rivers:
+            if r.major:
+                p = wobble(self.line_px(r.pts), seed(r.id), 3 * u + 0.5, 1.6 * u, 70 * u)
+                self.river(pen, p, min(9.0, 6.0 + 1.0 * (r.weight - 2)) * self.w)
+        mask = pen.done()
+        return [(mask, WATER_INK, 0.9)], mask
 
     def compass(self, land):
         s, u = self.size, self.u
@@ -847,4 +857,4 @@ class Renderer:
                        "kind": p.kind, "city": p.city, "label": lab}
         return {"size": self.size, "margin": m, "px_per_m": self.scale, "tile": tile,
                 "origin": "pixel = margin + metres * px_per_m; x east, y south of the province's NW corner",
-                "layers": ["base", "revealed", "ink"], "cells": cells, "places": pl}
+                "layers": ["base", "revealed", "ink", "cities"], "cells": cells, "places": pl}

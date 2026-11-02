@@ -49,7 +49,7 @@ def sample_hash() -> str:
     from tools.chart.__main__ import digest
 
     c = render_sample()
-    return digest(c.base, c.ink, c.revealed, extra=json.dumps(c.index, sort_keys=True).encode())
+    return digest(c.base, c.ink, c.cities, c.revealed, extra=json.dumps(c.index, sort_keys=True).encode())
 
 
 def pinned() -> str:

@@ -30,6 +30,9 @@ CITIES = (
 # "Major" thresholds on the hydrology and the road network; the rest is drawn in the revealed layer.
 MAJOR_RIVER_STRAHLER = 2  # 20 of the 101 rivers: every river of order 2 or more
 MAJOR_ROAD_CLASSES = ("trunk", "road")  # 8 of the 23 legs: the built roads (surface BC_ROAD)
+# Owner play test 3 #30 ("rivers on map don't match reality"): a river is drawn only where the game holds water
+# (cell_water, the water solve) within this many cells of its centreline; the rest of the line is cut.
+RIVER_REACH_CELLS = 1
 # Land-cover classes (terrain/landcover.py SEED): the sea, and the marsh the sketch hatches.
 SEA = (33, 35)  # SEABED_SAND, OCEAN_FLOOR
 MARSH = (3, 4, 5, 7, 8, 11, 15)  # SCUM, BLACK_MUD, PUDDLE, MUCK, BC_MUD, MARSH_GRASS, SWAMP_GRASS
@@ -72,6 +75,19 @@ class Features:
     cell_samples: int = su.QUADS_PER_CELL
     cell_sw: tuple[int, int] = su.PROVINCE_CELL_SW
     meta: dict = field(default_factory=dict)
+    water: frozenset | None = None  # the cells the game holds water in (cell_water: x east, y north), when known
+
+    def cell_of(self, x_m: float, y_m: float) -> tuple[int, int]:
+        """The game cell under a point (metres east and south of the NW corner; cell y runs north)."""
+        q = self.cell_samples * self.sample_m
+        return self.cell_sw[0] + int(x_m // q), self.cell_sw[1] + self.n // self.cell_samples - 1 - int(y_m // q)
+
+    def wet(self, x_m: float, y_m: float, reach: int = RIVER_REACH_CELLS) -> bool:
+        """Whether the game holds water within `reach` cells of the point (True when the water is not known)."""
+        if self.water is None:
+            return True
+        cx, cy = self.cell_of(x_m, y_m)
+        return any((cx + i, cy + j) in self.water for i in range(-reach, reach + 1) for j in range(-reach, reach + 1))
 
     @property
     def n(self) -> int:
@@ -89,6 +105,7 @@ class Features:
         w = db.open()
         src = grid.Sources.load(apron=False)
         level = w.values("SELECT level_m FROM hydrology_body WHERE kind = 'ocean'")
+        water = frozenset((r["cx"], r["cy"]) for r in w.query("SELECT cx, cy FROM cell_water"))
         rivers = []
         for r in w.query("SELECT id, strahler FROM hydrology_river ORDER BY id"):
             pts = [(p["east_m"], p["south_m"]) for p in w.query(
@@ -97,6 +114,8 @@ class Features:
             if len(pts) >= 2:
                 rivers.append(Line(r["id"], _dedup(pts), r["strahler"] >= MAJOR_RIVER_STRAHLER,
                                    float(r["strahler"])))
+        f0 = cls(ground=src.ground, cover=src.cover, sea_level_m=0.0, rivers=[], roads=[], places=[], water=water)
+        rivers = [piece for r in rivers for piece in f0.on_water(r)]
         weight = {"trunk": 2.0, "road": 1.5, "track": 1.0, "causeway": 1.0, "boardwalk": 0.8, "footpath": 0.7}
         roads = []
         for r in w.query("SELECT r.id, r.class FROM route r JOIN road d ON d.route_id = r.id ORDER BY r.id"):
@@ -111,8 +130,22 @@ class Features:
             mag = int(r["m"][1:]) if r["m"] and r["m"][1:].isdigit() else 0
             places.append(Place(r["id"], r["name"], r["x"], r["y"], r["k"] or "lone", mag, r["id"] in CITIES))
         return cls(ground=src.ground, cover=src.cover, sea_level_m=float(level[0]) if level else 0.0,
-                   rivers=rivers, roads=roads, places=places,
+                   rivers=rivers, roads=roads, places=places, water=water,
                    meta={"ground_shape": list(src.ground.shape)})
+
+    def on_water(self, r: Line) -> list[Line]:
+        """The runs of a river's line that lie on the game's water (wet), each its own Line (ids suffixed)."""
+        keep = [self.wet(x, y) for x, y in r.pts]
+        out, start = [], None
+        for i, k in enumerate([*keep, False]):
+            if k and start is None:
+                start = i
+            elif not k and start is not None:
+                if i - start >= 2:
+                    out.append(Line(r.id if start == 0 and i == len(keep) else f"{r.id}#{start}", r.pts[start:i],
+                                    r.major, r.weight, r.cls))
+                start = None
+        return out
 
 
 def _dedup(pts) -> np.ndarray:

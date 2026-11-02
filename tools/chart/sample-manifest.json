@@ -1,5 +1,5 @@
 {
  "sample": "tools/chart/sample.py features() at 512^2 (base, ink, revealed pixels + the index)",
- "sha256": "94f1fa8c347fa3faa264be29d38fb56da1d75aebb514f8af1744c13c0a8fed52",
- "measured": "2026-10-31 (1.12 \u00a75: only the cities drawn; places marked by the view on discovery), Pillow 13.0.0 (FreeType 2.14.3), numpy 2.5.4"
+ "sha256": "6db1f974a4e0fd5daaf599b8a9fe63a2fe5523c07a11d8408f3638bc76629ad7",
+ "measured": "2026-11-02 (play test 3: the sketch is the outline and major roads; rivers and the cities' art leave it), Pillow 13.0.0 (FreeType 2.14.3), numpy 2.5.4"
 }

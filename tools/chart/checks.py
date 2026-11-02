@@ -59,5 +59,10 @@ def run_all(chart: Chart, f: Features) -> dict:
         out[key] = {"ok": bool(cov) and min(cov.values()) >= need, "need": need, "count": len(cov),
                     "min": min(cov.values()) if cov else None, "coverage": cov}
         del near
+    # play test 3 #30: every drawn river point lies within one cell of the game's water (the water solve)
+    pts = [(x, y) for r in f.rivers for x, y in r.pts]
+    wet = sum(f.wet(x, y) for x, y in pts)
+    out["rivers_on_water"] = {"ok": f.water is None or wet == len(pts), "points": len(pts), "wet": int(wet),
+                              "known": f.water is not None}
     out["no_player_marker"] = {"ok": not any("player" in k for k in chart.index), "keys": sorted(chart.index)}
     return out

@@ -213,7 +213,7 @@ def build(fwmf: Path, chart: Path, out: Path, size: int = render.MASTER) -> dict
     if src is None:
         raise FwmfChanged(f"{fwmf}: no {FWMF_BLOCK} (FWMF for Fantasy Paper Maps not installed)")
     index = json.loads((chart / "index.json").read_text())
-    sketch = chart / f"sketch-{index['size']}.png"
+    sketch = chart / f"map-{index['size']}.png"   # the sketch with the cities' glyphs and names
     if not sketch.exists():
         raise SystemExit(f"{sketch}: render the chart first (python -m tools.chart render)")
     cx, cy, half = extent(index)

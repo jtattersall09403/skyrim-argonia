@@ -51,24 +51,25 @@ def save(arr: np.ndarray, path: Path) -> None:
     Image.fromarray(arr).save(path, optimize=False, compress_level=6)
 
 
-def write(chart: render.Chart, out: Path) -> dict:
+def write(chart: render.Chart, out: Path, source: str = "") -> dict:
     out.mkdir(parents=True, exist_ok=True)
     s = chart.size
     idx = json.dumps(chart.index, sort_keys=True, separators=(",", ":")).encode()
-    hashes = {"base": digest(chart.base), "ink": digest(chart.ink), "revealed": digest(chart.revealed),
-              "index": hashlib.sha256(idx).hexdigest()}
-    hashes["render"] = digest(chart.base, chart.ink, chart.revealed, extra=idx)
+    hashes = {"base": digest(chart.base), "ink": digest(chart.ink), "cities": digest(chart.cities),
+              "revealed": digest(chart.revealed), "index": hashlib.sha256(idx).hexdigest()}
+    hashes["render"] = digest(chart.base, chart.ink, chart.cities, chart.revealed, extra=idx)
     (out / "index.json").write_bytes(idx)
     layers = {"base": chart.base, "ink": chart.ink, "revealed": chart.revealed}
-    sketch = flatten(chart.base, chart.ink)
-    full = flatten(chart.base, chart.revealed, chart.ink)
-    layers |= {"sketch": sketch, "full": full}
+    # The view's two layers carry no city art (it letters the cities itself, at a constant size); the world map
+    # overlay's `map` has them (fwmf.py).
+    layers |= {"sketch": flatten(chart.base, chart.ink), "full": flatten(chart.base, chart.revealed, chart.ink),
+               "map": flatten(chart.base, chart.ink, chart.cities)}
     files = []
     for name, a in layers.items():
         im = Image.fromarray(a)
         im.save(out / f"{name}-{s}.png", compress_level=6)
         files.append(f"{name}-{s}.png")
-        for c in COPIES + ((512,) if name == "sketch" else ()):
+        for c in COPIES + ((512,) if name in ("sketch", "map") else ()):
             if c < s:
                 im.resize((c, c), Image.LANCZOS).save(out / f"{name}-{c}.png", compress_level=6)
                 files.append(f"{name}-{c}.png")
@@ -91,7 +92,7 @@ def write(chart: render.Chart, out: Path) -> dict:
     if demo is not None:
         Image.fromarray(demo).resize((s // 2, s // 2), Image.LANCZOS).save(out / f"explored-demo-{s // 2}.png")
         files.append(f"explored-demo-{s // 2}.png")
-    (out / "hashes.json").write_text(json.dumps(hashes, indent=1, sort_keys=True) + "\n")
+    (out / "hashes.json").write_text(json.dumps(hashes | ({"source": source} if source else {}), indent=1, sort_keys=True) + "\n")
     return {"hashes": hashes, "files": files, "tiles": n_tiles}
 
 
@@ -108,17 +109,41 @@ def demo_reveal(chart: render.Chart, name: str, radius_cells: int = 9) -> np.nda
     mask = render.blur(mask, max(1, int(20 * chart.size / render.MASTER)), 2)  # the old chart's long, gradual fade
     rev = chart.revealed.copy()
     rev[..., 3] = np.rint(rev[..., 3] * mask).astype(np.uint8)
-    return flatten(chart.base, rev, chart.ink)
+    return flatten(chart.base, rev, chart.ink, chart.cities)
+
+
+def source_stamp() -> str:
+    """What the chart is made from (play test 3 #30: a world change re-renders it): the built ESM's sha (the
+    pipeline's stamp of the world), the generated ground and the world database by size and time, and the chart's
+    own code. hashes.json keeps it; `render --if-stale` renders only when it has changed."""
+    from tools.argonia_world.terrain import grid
+
+    h = hashlib.sha256()
+    for f in sorted((REPO / "tools" / "chart").glob("*.py")):
+        h.update(f.name.encode() + f.read_bytes())
+    for f in (REPO / "out" / "ArgoniaWorld.esm", REPO / "out" / "terrain" / "ArgoniaWorld.esm"):
+        if f.exists():
+            with f.open("rb") as fh:
+                h.update(f.name.encode() + hashlib.file_digest(fh, "sha256").digest())
+            break
+    for f in (grid.generated_ground(), REPO / "out" / "world.sqlite"):
+        h.update(f"{f.name}:{f.stat().st_size}:{f.stat().st_mtime_ns}".encode() if f.exists() else f.name.encode())
+    return h.hexdigest()
 
 
 def cmd_render(a) -> int:
     from tools.chart.data import Features
 
     out = Path(a.out)
+    stamp = source_stamp()
+    have = out / "hashes.json"
+    if a.if_stale and have.exists() and json.loads(have.read_text()).get("source") == stamp:
+        print(f"chart: {out} is current (source {stamp[:12]})")
+        return 0
     f = Features.load()
     ink = render.chart_level_ink(a.size) if a.level else 1.0
     chart = render.Renderer(f, a.size, ink=ink).run()
-    res = write(chart, out)
+    res = write(chart, out, stamp)
     rep = checks.run_all(chart, f)
     (out / "checks.json").write_text(json.dumps(rep, indent=1, sort_keys=True) + "\n")
     bad = [k for k, v in rep.items() if not v["ok"]]
@@ -167,6 +192,7 @@ def main(argv: list[str] | None = None) -> int:
     r = sub.add_parser("render")
     r.add_argument("--size", type=int, default=render.MASTER)
     r.add_argument("--out", default=str(OUT))
+    r.add_argument("--if-stale", action="store_true", help="render only when the source stamp (ESM, ground, db, code) changed")
     r.add_argument("--level", action="store_true", help="a close pyramid level: strokes at the screen weight of their zoom (render.chart_level_ink), for out/chart4k and out/chart8k")
     t = sub.add_parser("twice")
     t.add_argument("--size", type=int, default=render.MASTER)
