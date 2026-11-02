@@ -212,33 +212,32 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 15 tried the contour footprint and reverted it: the reader judged it worse. Main is at 20c00d5 (s14: plates
-at 1-6 % per window, check green, lattice 1.38, clamp path deleted). The trial is kept as a patch outside the repo.
+Session 16 found and removed the marsh column; main is at 4c3d794. Measured with `probes/marsh_cells.py OUT x0 y0 x1 y1`
+(per cell: foot, wet, touch, gap, lift, carve, h_in and output against the level) on a census run.
 
-What was measured (dump of the pre-ground, `ARGONIA_GROUND_DUMP`):
-- No literal level contour exists. The pre-ground stands on `base + floor`, so inside the marsh water cells (-21..-14,
-  -26..-19) 0 % of samples are under the cell's level; median ground minus level is +0.2 to +2.7 m.
-- The raster's level and the solved level disagree on the coast. In -20_57, where the raster is wet, the pre-ground
-  stands 11 / 64 / 109 m (p5/p50/p95) above the solved `vmin`. The base is the raster's level, and the carve uses vmin.
-- Trial: the raster's wetness, blurred over 16 samples and faded to 0 within 16 samples of a dry cell, made wet
-  wherever it beat a threshold set by the local relief (`h - blur(h,32)`, tanh over 1 m). The raster was kept by
-  steps and sites. Results:
-  - `terrain check --sample`: fails [], lattice 1.39, generate 95 s;
-  - census plates: 2.4 / 1.6 / 1.9 / 5.9 / 3.0 %;
-  - shore on a cell line: coast 13.8 %, others 3-5 % (6.2 % would be expected by chance).
-- The reader (s14/hs against s15): -20_57, -12_63 and -38_25 worse, with new square pools, an octagon platform, a
-  flat column and a notch. -21_-26 and 0_0 were the same: the marsh column and the staircase pool did not change.
-  Two caveats: the s14/hs images may cover other cells than the s15 renders (the reader saw no water at all in
-  s14's -20_57), and the shapes may come from the field. Either way, changing the footprint alone does not move the
-  marsh shapes.
+- The column (-17,-25..-21) was a run of dry cells inside the marsh. The marsh's body cells are sparse and
+  `pad_ring` pads one cell, so a gap two cells wide stayed dry and joined the province edge at `fill_enclosed`
+  time. Its `touch` vertices became banks, which drew the cell lines. Fix: `fill_enclosed` runs again after the ring
+  (Skyrim.esm leaves no hole in a body) and has no island exception. The solve now gives 10,634 cells (2,249
+  enclosed or padded). Committed with the regenerated cell_water, water_step and entrance_site rows.
+- Staircase: the bed's depth cap is per-cell type (fresh 3.0 m beside blackwater 1.5 m at one level, beds −3.0
+  against −1.1 m). It now blends over `TYPE_BLEND` = 16 samples. The reader still sees the stepped pool in -21_-26
+  (x 0.62–1.0, y 0.12–0.62, the fresh cells -16..-14,-20..-23), with straight left and bottom edges, so the blend
+  alone does not fix it. Next: one type per body (the solve gives the body's type to every cell at its level), or a
+  depth that does not depend on type at all.
+- Sample (s16b vs s16a, the same command): `check --sample` fails [], lattice 1.376 → 1.359, generate 104 s. Census
+  plates in -21_-26 fell from 3.9 % to 1.3 % (edge lift 2.6 → 0.3 %); the other windows are within ±0.1. The reader
+  rated -21_-26 better (the column is gone) and the other four windows the same; -38_25 still has grid-square pools
+  at the bottom right.
+- Coast gap, measured: raster-wet cells with no solved level are the dry gullies (374/231/199 m in -23..-20,58..61),
+  and river cells sit under the raster (the river at -20,58 is 120 m solved against a raster minimum of 149 m). The
+  base takes the raster, while `vmin` takes the lowest of the four cells, so the 0 m sea is used beside them. Not
+  fixed. The base cannot use the solved levels while the solve reads the pre-ground.
+- Province: generate into out/terrain in 109 s; `terrain check` reports **fails ["overflow: 13 cells"]**, lattice
+  1.359. Whether this was already red before session 16 is not yet proved.
+- Reds that are not this lane's: test_creature_dens shallows (68.02 against 66.08 m; red on main too) and
+  test_world_sample (the worktree has no out/pieces-index.json).
 
-Owed, in order:
-1. Find where the marsh column and staircase are made, inside the field. Take `h_in` against the output, and
-   `role`/`lift`/`carve` per cell in -21_-26. The shapes follow the outlines of the per-cell `vmin`/`touch` banks,
-   because `touch` makes every vertex beside a dry cell a bank. Render the before and after hillshades with the same
-   command and window first, then ask the reader.
-2. Make the underwater ground continuous. Today the base is the raster's level plus a floor, so nothing is under
-   water until the carve cuts it. Vanilla-like ground dips below the level: base minus a depth that grows with the
-   blurred wetness. Then the contour of the level is real, and the footprint and carve follow from it. Settle first
-   why the coast's vmin and the raster's levels differ by tens of metres.
-3. ONE whole-province generate into out/terrain, then `terrain check`: not started.
+Owed: (1) the province overflow, 13 cells: name them and compare with main's ground; (2) the stepped pool: one
+type per body; (3) the bowl in the pre-ground, with one level definition shared by the base, the solve and the
+carve. The base's level, for river cells and gullies, remains to be settled.
