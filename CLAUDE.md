@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Binding rules, one line each; the why lives in the linked record. Keep under 1,100 words.
+Binding rules, one line each; the why lives in the linked record. Keep it lean (the owner relaxed the word limit, 2026-11-02).
 
 ## Goal
 
@@ -41,7 +41,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Decompile whatever helps ([0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md) §8): game output stays in `$ARGONIA_PRIVATE`; permitted mod code may be adapted.
 - De-risk first: prove each class of work on a real sample (0023, 0029).
 - Systems are built whole to their final interface; content can be thin; what the player meets is complete.
-- Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any build method rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)). But note the nuance here: this is about *method* not about *outcome*. Two examples: 1. 
+- Build natively ([0026](docs/decisions/0026-everything-is-built-natively-the-skyrim-way.md)); golden rule: before any build method rule of ours, ask what we are achieving, whether Bethesda faced it, measure how Skyrim.esm solves it, do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)). But note the nuance here: this is about *method* not about *outcome*. Two examples: 1. Water in the world. Our desired *outcome* was: our new argonia world, based on the authored map, approximate hydrology graph (in terms of birds-eye view of where lakes, ponds, rivers, streams, and larger bodies of water go), and macro plot of built places, with no visual water bugs or unnatural features. The skyrim *method* for water was researched and mined from the game: one water level per cell, and some specific stuff around how the skyrim world is designed to enable water crossing cell boundaries and flowing down slopes etc. So we adjusted our planned world to enable the *outcome* we wanted (non buggy water) to be achieved using the skyrim *method*. 2. Creatures. Desired *outcome*: fixed danger bands (D0-D5), between-place creature encounters, grounded in our lore and danger bands and ecology, using mods. We then researched the skyrim & mod *methods* for placing/spawning creatures in the world to achieve the desired outcome. We did *not* change to skyrim's 'levelled creatures' approach where creature difficulty is scaled to player's level. We are aiming to use skyrim's engine and methods to achieve our own authored outcomes.
 - The world is one relational database (`world/schema.sql`, 3NF; only through `db.py`); records, YAML and the ESM derive from it ([0030](docs/decisions/0030-one-relational-world-database.md), [0009](docs/decisions/0009-world-content-is-imported-then-generated-into-plugins.md)).
 - Skyrim unit facts live only in the units module.
 - New state lives in ArgoniaCore's versioned co-save families; rules live where 1.1's native map put them, unit-tested; no logic in Papyrus.
@@ -55,7 +55,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
 - Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods).
-- Tidy up after yourself: delete temporary files and anything else we don't need to keep as soon as it is no longer needed; manage disk space actively, never archive rubbish "to be safe".
+- Tidy up after yourself: delete temporary files (or anything else you've created that we don't need to keep) when they are no longer needed. Do not bloat the disk. We need to actively manage disk space.
 
 ## Testing and the gate
 
