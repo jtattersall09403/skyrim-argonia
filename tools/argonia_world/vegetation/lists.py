@@ -68,6 +68,13 @@ MARSH_TREE_HA = 52.0
 # water, and a lagoon or sink cell is mostly deeper (window means before the scale: lagoon 5.4, sink 4.5-6.6,
 # delta 34 trees a cell against the band 9-27)
 MARSH_TREE_HA_BY = {"coastal-lagoon": 170.0, "deep-sink-basin": 90.0, "tidal-delta": 68.0, "rootland": 100.0, "deep-river-corridor": 80.0}
+# ... and per region (id "packet.class"), where the new ground leaves a region's cells mostly deeper than a tree stands
+# in (session 8: window means before the scale: mercantile lagoon 1.4, saxhleel 2.6, penal-south 4.2, dunmer-north 3.7 a
+# cell against the band 9-27; dunmer-north sink 8.6)
+MARSH_TREE_HA_REGION = {"mercantile-coast.coastal-lagoon": 1700.0, "saxhleel-coast.coastal-lagoon": 1500.0,
+                        "imperial-penal-south.coastal-lagoon": 530.0, "dunmer-north.coastal-lagoon": 620.0,
+                        "dunmer-north.deep-sink-basin": 70.0}
+LAGOON_TREE_DEPTH = 6.0  # m under the water: mangrove and cypress trunks stand in a lagoon to this depth
 TREE_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery")
 IN_WATER_TREE = (-6.0, 2.0)  # mangrove and cypress: trunks and roots in the water, and on the bank
 IN_WATER_NAMES = ("mangrove", "cypress")
@@ -240,13 +247,13 @@ def build(w) -> dict:
             # roles the palette lists but no form of ours serves (the delta's mangrove, 650 a ha) count for nothing
             real = [r for r in TREE_ROLES if r in mix and any(admits(eco, f) for f in pool.get(r, ()))]
             have = sum(mix[r]["per_ha"] for r in real)
-            want = MARSH_TREE_HA_BY.get(eco, MARSH_TREE_HA)
+            want = MARSH_TREE_HA_REGION.get(rid) or MARSH_TREE_HA_BY.get(eco, MARSH_TREE_HA)
             for r in real:  # a slope bound of 14 degrees (the delta's) refused the coast's banks: trees take 38
                 mix[r]["slope"] = max(mix[r]["slope"], 38)
             if have < want:
                 c = mix.setdefault("canopy", {"per_ha": 0.0, "clust": 3, "rad": 8.0, "slope": 30, "wmin": None, "wmax": None})
                 c["per_ha"] += want - have
-            elif eco in MARSH_TREE_HA_BY:  # the palette's own trees overshoot: scaled down to the class's number
+            elif eco in MARSH_TREE_HA_BY or rid in MARSH_TREE_HA_REGION:  # the palette's own trees overshoot: scaled down to the class's number
                 for r in real:
                     mix[r]["per_ha"] *= want / have
         if "rock" in mix and eco in ROCK_HA:
@@ -273,6 +280,8 @@ def build(w) -> dict:
                 if eco in MARSH and (role == "mangrove" or (role in MARSH_TREE and any(
                         n in f["model"].lower() or n in f["edid"].lower() for n in IN_WATER_NAMES))):
                     lo, hi = IN_WATER_TREE
+                if rid in MARSH_TREE_HA_REGION and role in TREE_ROLES and hi is not None:
+                    hi = max(hi, LAGOON_TREE_DEPTH)  # a lagoon's ground is mostly deeper than a tree stands in
                 if "sea" in t:
                     lo, hi = SEA_POSTURE
                 mx = m["slope"]
