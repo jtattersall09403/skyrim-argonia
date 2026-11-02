@@ -1,0 +1,10 @@
+FormKey: 0181B2:ArgoniaWorld.esm
+Flags:
+- HasWater
+Grid:
+  Point: -1, 54
+WaterHeight: 528.73
+Regions:
+- 080003:ArgoniaWorld.esm
+- 08002F:ArgoniaWorld.esm
+Water: 100003:ArgoniaWorld.esm

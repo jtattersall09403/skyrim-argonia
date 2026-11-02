@@ -38,6 +38,10 @@ def test_water_written_and_read_back(tmp_path):
     s = src()
     build.build(s, table(), tmp_path, cells=(-62, -62, -61, -61))
     world.write(tmp_path / "world.json", s.cell_range, tmp_path / "land")
+    # the creature copies (CreatureRecords.cs) read their game masters from --data; these synthetic cells carry none
+    doc = json.loads((tmp_path / "world.json").read_text())
+    doc.pop("creatures", None)
+    (tmp_path / "world.json").write_text(json.dumps(doc))
     wd = tmp_path / "water"
     wd.mkdir()
     (wd / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}))

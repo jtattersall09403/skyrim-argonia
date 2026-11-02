@@ -1,6 +1,7 @@
 """L1: ArgoniaGen's world writer (LandWorld.cs) on 4 synthetic cells, read back from the bytes: the WRLD, every
 CELL's grid, and each LAND's heights, normals, colours and texture layers equal to the cell lines it was given;
 written twice, the same bytes. Skipped where ArgoniaGen is not built (the build VM builds it in `make plugin`)."""
+import json
 import os
 import struct
 import subprocess
@@ -34,6 +35,10 @@ def test_four_cells_written_and_read_back(tmp_path):
     lines = {(c["x"], c["y"]): c for c in build.read_cells(tmp_path)}
     assert len(lines) == 4
     world.write(tmp_path / "world.json", s.cell_range, tmp_path / "land")
+    # the creature copies (CreatureRecords.cs) read their game masters from --data; these synthetic cells carry none
+    doc = json.loads((tmp_path / "world.json").read_text())
+    doc.pop("creatures", None)
+    (tmp_path / "world.json").write_text(json.dumps(doc))
     blob = _write(tmp_path, "a")
     assert _write(tmp_path, "b") == blob
     recs = list(esm.records(blob))

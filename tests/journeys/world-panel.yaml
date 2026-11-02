@@ -43,15 +43,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -17",
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 109184 -66816 91"
-    },
-    {
-     "console": "player.setangle z 109"
+     "console": "player.setangle z 88"
     },
     {
      "console": "player.setangle x 0"
@@ -79,28 +76,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 108884
+     "gt": 109140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 109484
+     "lt": 109740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -67116
+     "gt": -66220
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -66516
+     "lt": -65620
     }
    ]
   },
@@ -109,15 +106,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 26 -17",
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 109184 -66816 91"
-    },
-    {
-     "console": "player.setangle z 109"
+     "console": "player.setangle z 88"
     },
     {
      "console": "player.setangle x 0"
@@ -145,28 +139,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 108884
+     "gt": 109140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 109484
+     "lt": 109740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -67116
+     "gt": -66220
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -66516
+     "lt": -65620
     }
    ]
   },
@@ -175,15 +169,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -54 -22",
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -221184 -86016 4525"
-    },
-    {
-     "console": "player.setangle z 225"
+     "console": "player.setangle z 180"
     },
     {
      "console": "player.setangle x 0"
@@ -211,28 +202,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -221484
+     "gt": 28244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -220884
+     "lt": 28844
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -86316
+     "gt": 208596
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -85716
+     "lt": 209196
     }
    ]
   },
@@ -241,15 +232,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -54 -22",
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -221184 -86016 4525"
-    },
-    {
-     "console": "player.setangle z 225"
+     "console": "player.setangle z 180"
     },
     {
      "console": "player.setangle x 0"
@@ -277,28 +265,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -221484
+     "gt": 28244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -220884
+     "lt": 28844
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -86316
+     "gt": 208596
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -85716
+     "lt": 209196
     }
    ]
   },
@@ -307,15 +295,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -31 -36",
+      "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -126336 -145024 102"
-    },
-    {
-     "console": "player.setangle z 11"
+     "console": "player.setangle z 1"
     },
     {
      "console": "player.setangle x 0"
@@ -324,7 +309,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -373,15 +358,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -31 -36",
+      "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -126336 -145024 102"
-    },
-    {
-     "console": "player.setangle z 11"
+     "console": "player.setangle z 1"
     },
     {
      "console": "player.setangle x 0"
@@ -439,12 +421,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -30 -35",
+      "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -122880 -139264 207"
     },
     {
      "console": "player.setangle z 90"
@@ -456,7 +435,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -505,12 +484,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -30 -35",
+      "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -122880 -139264 207"
     },
     {
      "console": "player.setangle z 90"
@@ -571,12 +547,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -17 -7",
+      "line": "player.moveto ARG_Ref_PanelDeepSinkBasinShore",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -69632 -25600 803"
     },
     {
      "console": "player.setangle z 138"
@@ -588,7 +561,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -637,12 +610,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -17 -7",
+      "line": "player.moveto ARG_Ref_PanelDeepSinkBasinShore",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -69632 -25600 803"
     },
     {
      "console": "player.setangle z 138"
@@ -703,15 +673,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -40 53",
+      "line": "player.moveto ARG_Ref_PanelDeepSinkBasinHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -162560 221184 38997"
-    },
-    {
-     "console": "player.setangle z 90"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -720,7 +687,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -739,14 +706,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -162860
+     "gt": -162604
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -162260
+     "lt": -162004
     },
     {
      "read": [
@@ -769,15 +736,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -40 53",
+      "line": "player.moveto ARG_Ref_PanelDeepSinkBasinHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -162560 221184 38997"
-    },
-    {
-     "console": "player.setangle z 90"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -805,14 +769,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -162860
+     "gt": -162604
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -162260
+     "lt": -162004
     },
     {
      "read": [
@@ -835,15 +799,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -2 6",
+      "line": "player.moveto ARG_Ref_PanelFloodedForestShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -4224 24960 1008"
-    },
-    {
-     "console": "player.setangle z 326"
+     "console": "player.setangle z 315"
     },
     {
      "console": "player.setangle x 0"
@@ -852,7 +813,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudy"
+     "console": "fw SkyrimClear"
     },
     {
      "wait": 10
@@ -871,14 +832,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -4524
+     "gt": -4012
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -3924
+     "lt": -3412
     },
     {
      "read": [
@@ -901,15 +862,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -2 6",
+      "line": "player.moveto ARG_Ref_PanelFloodedForestShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -4224 24960 1008"
-    },
-    {
-     "console": "player.setangle z 326"
+     "console": "player.setangle z 315"
     },
     {
      "console": "player.setangle x 0"
@@ -937,14 +895,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -4524
+     "gt": -4012
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -3924
+     "lt": -3412
     },
     {
      "read": [
@@ -967,12 +925,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 10 46",
+      "line": "player.moveto ARG_Ref_PanelFloodedForestHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos 41088 192512 13817"
     },
     {
      "console": "player.setangle z 180"
@@ -984,7 +939,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudy"
+     "console": "fw SkyrimClear"
     },
     {
      "wait": 10
@@ -1003,28 +958,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 40788
+     "gt": 36436
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 41388
+     "lt": 37036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 192212
+     "gt": 200404
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 192812
+     "lt": 201004
     }
    ]
   },
@@ -1033,12 +988,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 10 46",
+      "line": "player.moveto ARG_Ref_PanelFloodedForestHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos 41088 192512 13817"
     },
     {
      "console": "player.setangle z 180"
@@ -1069,28 +1021,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 40788
+     "gt": 36436
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 41388
+     "lt": 37036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 192212
+     "gt": 200404
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 192812
+     "lt": 201004
     }
    ]
   },
@@ -1099,12 +1051,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -16 -32",
+      "line": "player.moveto ARG_Ref_PanelInteriorSwampShore",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -64768 -126976 354"
     },
     {
      "console": "player.setangle z 90"
@@ -1116,7 +1065,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -1165,12 +1114,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -16 -32",
+      "line": "player.moveto ARG_Ref_PanelInteriorSwampShore",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -64768 -126976 354"
     },
     {
      "console": "player.setangle z 90"
@@ -1231,15 +1177,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 8 -36",
+      "line": "player.moveto ARG_Ref_PanelInteriorSwampHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 32896 -143360 2193"
-    },
-    {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 0"
     },
     {
      "console": "player.setangle x 0"
@@ -1248,7 +1191,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -1267,28 +1210,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 32596
+     "gt": 52948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 33196
+     "lt": 53548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -143660
+     "gt": 36564
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -143060
+     "lt": 37164
     }
    ]
   },
@@ -1297,15 +1240,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 8 -36",
+      "line": "player.moveto ARG_Ref_PanelInteriorSwampHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 32896 -143360 2193"
-    },
-    {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 0"
     },
     {
      "console": "player.setangle x 0"
@@ -1333,28 +1273,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 32596
+     "gt": 52948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 33196
+     "lt": 53548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -143660
+     "gt": 36564
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -143060
+     "lt": 37164
     }
    ]
   },
@@ -1363,15 +1303,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -2 54",
+      "line": "player.moveto ARG_Ref_PanelNorthernTransitionShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -4224 221312 625"
-    },
-    {
-     "console": "player.setangle z 254"
+     "console": "player.setangle z 251"
     },
     {
      "console": "player.setangle x 0"
@@ -1380,7 +1317,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearFF"
     },
     {
      "wait": 10
@@ -1399,14 +1336,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -4524
+     "gt": -4140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -3924
+     "lt": -3540
     },
     {
      "read": [
@@ -1429,15 +1366,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -2 54",
+      "line": "player.moveto ARG_Ref_PanelNorthernTransitionShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -4224 221312 625"
-    },
-    {
-     "console": "player.setangle z 254"
+     "console": "player.setangle z 251"
     },
     {
      "console": "player.setangle x 0"
@@ -1465,14 +1399,14 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -4524
+     "gt": -4140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -3924
+     "lt": -3540
     },
     {
      "read": [
@@ -1495,15 +1429,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -46 59",
+      "line": "player.moveto ARG_Ref_PanelNorthernTransitionHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -185088 243072 45533"
-    },
-    {
-     "console": "player.setangle z 225"
+     "console": "player.setangle z 90"
     },
     {
      "console": "player.setangle x 0"
@@ -1512,7 +1443,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearFF"
     },
     {
      "wait": 10
@@ -1531,28 +1462,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -185388
+     "gt": -167340
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -184788
+     "lt": -166740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 242772
+     "gt": 243156
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 243372
+     "lt": 243756
     }
    ]
   },
@@ -1561,15 +1492,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -46 59",
+      "line": "player.moveto ARG_Ref_PanelNorthernTransitionHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -185088 243072 45533"
-    },
-    {
-     "console": "player.setangle z 225"
+     "console": "player.setangle z 90"
     },
     {
      "console": "player.setangle x 0"
@@ -1597,28 +1525,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -185388
+     "gt": -167340
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -184788
+     "lt": -166740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 242772
+     "gt": 243156
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 243372
+     "lt": 243756
     }
    ]
   },
@@ -1627,15 +1555,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -16 -3",
+      "line": "player.moveto ARG_Ref_PanelRootlandShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -64640 -12160 1188"
-    },
-    {
-     "console": "player.setangle z 324"
+     "console": "player.setangle z 319"
     },
     {
      "console": "player.setangle x 0"
@@ -1644,7 +1569,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -1693,15 +1618,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -16 -3",
+      "line": "player.moveto ARG_Ref_PanelRootlandShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -64640 -12160 1188"
-    },
-    {
-     "console": "player.setangle z 324"
+     "console": "player.setangle z 319"
     },
     {
      "console": "player.setangle x 0"
@@ -1759,12 +1681,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -6 -4",
+      "line": "player.moveto ARG_Ref_PanelRootlandHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -24576 -12288 3915"
     },
     {
      "console": "player.setangle z 225"
@@ -1776,7 +1695,7 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "fw SkyrimCloudyMA"
+     "console": "fw SkyrimClearMA"
     },
     {
      "wait": 10
@@ -1825,12 +1744,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -6 -4",
+      "line": "player.moveto ARG_Ref_PanelRootlandHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos -24576 -12288 3915"
     },
     {
      "console": "player.setangle z 225"
@@ -1891,15 +1807,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 25 -12",
+      "line": "player.moveto ARG_Ref_PanelTidalDeltaShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 103808 -46080 96"
-    },
-    {
-     "console": "player.setangle z 123"
+     "console": "player.setangle z 359"
     },
     {
      "console": "player.setangle x 0"
@@ -1927,28 +1840,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 103508
+     "gt": 102100
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 104108
+     "lt": 102700
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -46380
+     "gt": -45740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -45780
+     "lt": -45140
     }
    ]
   },
@@ -1957,15 +1870,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 25 -12",
+      "line": "player.moveto ARG_Ref_PanelTidalDeltaShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos 103808 -46080 96"
-    },
-    {
-     "console": "player.setangle z 123"
+     "console": "player.setangle z 359"
     },
     {
      "console": "player.setangle x 0"
@@ -1993,28 +1903,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": 103508
+     "gt": 102100
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": 104108
+     "lt": 102700
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": -46380
+     "gt": -45740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": -45780
+     "lt": -45140
     }
    ]
   },
@@ -2023,12 +1933,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 60 58",
+      "line": "player.moveto ARG_Ref_PanelTidalDeltaHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos 245760 237696 1912"
     },
     {
      "console": "player.setangle z 90"
@@ -2089,12 +1996,9 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province 60 58",
+      "line": "player.moveto ARG_Ref_PanelTidalDeltaHigh",
       "settle": 60
      }
-    },
-    {
-     "teleport": "pos 245760 237696 1912"
     },
     {
      "console": "player.setangle z 90"
@@ -2155,15 +2059,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -41 13",
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -165888 56064 5312"
-    },
-    {
-     "console": "player.setangle z 260"
+     "console": "player.setangle z 138"
     },
     {
      "console": "player.setangle x 0"
@@ -2191,28 +2092,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -166188
+     "gt": -156972
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -165588
+     "lt": -156372
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 55764
+     "gt": 55892
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 56364
+     "lt": 56492
     }
    ]
   },
@@ -2221,15 +2122,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -41 13",
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierShore",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -165888 56064 5312"
-    },
-    {
-     "console": "player.setangle z 260"
+     "console": "player.setangle z 138"
     },
     {
      "console": "player.setangle x 0"
@@ -2257,28 +2155,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -166188
+     "gt": -156972
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -165588
+     "lt": -156372
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 55764
+     "gt": 55892
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 56364
+     "lt": 56492
     }
    ]
   },
@@ -2287,15 +2185,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -53 37",
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -216704 152320 41675"
-    },
-    {
-     "console": "player.setangle z 315"
+     "console": "player.setangle z 180"
     },
     {
      "console": "player.setangle x 0"
@@ -2323,28 +2218,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -217004
+     "gt": -208940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -216404
+     "lt": -208340
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 152020
+     "gt": 147540
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 152620
+     "lt": 148140
     }
    ]
   },
@@ -2353,15 +2248,12 @@
    "do": [
     {
      "console": {
-      "line": "cow ARG_Province -53 37",
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
       "settle": 60
      }
     },
     {
-     "teleport": "pos -216704 152320 41675"
-    },
-    {
-     "console": "player.setangle z 315"
+     "console": "player.setangle z 180"
     },
     {
      "console": "player.setangle x 0"
@@ -2389,28 +2281,28 @@
       "player"
      ],
      "path": "pos.0",
-     "gt": -217004
+     "gt": -208940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.0",
-     "lt": -216404
+     "lt": -208340
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "gt": 152020
+     "gt": 147540
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.1",
-     "lt": 152620
+     "lt": 148140
     }
    ]
   }

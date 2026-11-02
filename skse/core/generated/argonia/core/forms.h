@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1600> kForms{{
+inline constexpr std::array<FormRow, 1618> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -1441,6 +1441,24 @@ inline constexpr std::array<FormRow, 1600> kForms{{
     {"ref.claywater-station.well", "Argonia.esm", "REFR", 0x0008F4},
     {"ref.claywater-station.well-silt", "Argonia.esm", "REFR", 0x0008F5},
     {"ref.claywater-station.well-water", "Argonia.esm", "REFR", 0x0008F6},
+    {"ref.panel.coastal-lagoon-high", "Argonia.esm", "REFR", 0x000EBE},
+    {"ref.panel.coastal-lagoon-shore", "Argonia.esm", "REFR", 0x000EBF},
+    {"ref.panel.deep-river-corridor-high", "Argonia.esm", "REFR", 0x000EC0},
+    {"ref.panel.deep-river-corridor-shore", "Argonia.esm", "REFR", 0x000EC1},
+    {"ref.panel.deep-sink-basin-high", "Argonia.esm", "REFR", 0x000EC2},
+    {"ref.panel.deep-sink-basin-shore", "Argonia.esm", "REFR", 0x000EC3},
+    {"ref.panel.flooded-forest-high", "Argonia.esm", "REFR", 0x000EC4},
+    {"ref.panel.flooded-forest-shore", "Argonia.esm", "REFR", 0x000EC5},
+    {"ref.panel.interior-swamp-high", "Argonia.esm", "REFR", 0x000EC6},
+    {"ref.panel.interior-swamp-shore", "Argonia.esm", "REFR", 0x000EC7},
+    {"ref.panel.northern-transition-high", "Argonia.esm", "REFR", 0x000EC8},
+    {"ref.panel.northern-transition-shore", "Argonia.esm", "REFR", 0x000EC9},
+    {"ref.panel.rootland-high", "Argonia.esm", "REFR", 0x000ECA},
+    {"ref.panel.rootland-shore", "Argonia.esm", "REFR", 0x000ECB},
+    {"ref.panel.tidal-delta-high", "Argonia.esm", "REFR", 0x000ECC},
+    {"ref.panel.tidal-delta-shore", "Argonia.esm", "REFR", 0x000ECD},
+    {"ref.panel.western-frontier-high", "Argonia.esm", "REFR", 0x000ECE},
+    {"ref.panel.western-frontier-shore", "Argonia.esm", "REFR", 0x000ECF},
     {"ref.probe.s01-probe-east-30m", "Argonia.esm", "REFR", 0x0009CD},
     {"ref.probe.s01-probe-road-in", "Argonia.esm", "REFR", 0x0009CE},
     {"ref.probe.s01-probe-west-30m", "Argonia.esm", "REFR", 0x0009CF},

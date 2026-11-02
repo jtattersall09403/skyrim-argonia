@@ -188,11 +188,12 @@ GROUND_TABLES = ("cell_water", "water_step", "region_relief", "land_region", "ce
 def _ground_stamp() -> str:
     """1.15's generated ground (terrain/generate.py): its code, the rows it reads and the prior's file."""
     import hashlib
+    from tools.argonia_world import db
     h = hashlib.sha256()
     for f in (TERRAIN / "generate.py", TERRAIN / "cellwater.py"):
         h.update(f.name.encode() + f.read_bytes())
     for t in GROUND_TABLES:
-        f = ROOT / "world" / "db" / f"{t}.jsonl"
+        f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"  # the jsonl bytes, named by db.py
         h.update(t.encode() + (f.read_bytes() if f.exists() else b""))
     from tools.argonia_world.terrain.grid import data_root
     a = data_root() / "terrain" / "apron-source-near.npy"

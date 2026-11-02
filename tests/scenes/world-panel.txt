@@ -1,3 +1,3 @@
-; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage's cell, staged last
+; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage, staged last
 set gamehour to 12
-cow ARG_Province 26 -17
+player.moveto ARG_Ref_PanelCoastalLagoonShore

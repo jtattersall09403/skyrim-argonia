@@ -44,7 +44,7 @@ DEN_MARKER = "000034:Skyrim.esm"  # XMarkerHeading: an editor marker, never draw
 ZONE_KINDS = ("wild", "clearable")
 ACTOR_BASE = 0x0D4000  # our fixed-level copies of scaling mod creatures (0035): form index x bands + band
 FIXED_ITEM_BASE = 0x0D6000  # our level-1 copies of levelled death-item lists (CreatureRecords.cs allocates in order)
-SPELL_BASE = 0x0D3000  # our afflictions: MGEF at SPELL_BASE + 2i (a second effect's at + 0x800), SPEL at + 2i + 1
+SPELL_BASE = 0x0D3000  # our afflictions: MGEF at SPELL_BASE + 2i (a second effect's at the offset CreatureRecords.cs adds), SPEL at + 2i + 1
 #                        (i: the roster.AFFLICTIONS order)
 
 # The afflictions the mods ship as their own SPEL (read 2026-11-01 from the laid plugins: SPIT type 1 disease,

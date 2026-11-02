@@ -5,6 +5,6 @@
   1,
   1
  ],
- "sha256": "5eed6ffd117743d1cf9e45cab8c31e45362250fa55da6198845776cacf739bcc",
- "note": "the navmesh job on four cells (pipeline.py NAV_SAMPLE); a deliberate change rewrites it"
+ "sha256": "ae141dc3e436e68b0b6967226ea6d2114d1f3ba446fbad85eccc3846d92b1be4",
+ "note": "the navmesh job on four cells (pipeline.py NAV_SAMPLE); a deliberate change rewrites it; 2026-11-02 re-pinned: the ground changed (1.15 round 1), two builds identical"
 }

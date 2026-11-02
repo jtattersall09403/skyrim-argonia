@@ -37,6 +37,10 @@ VIEW_NEAR_M, VIEW_FAR_M = 300.0, 1500.0
 EDGE_CELLS = 3                        # a vantage stays 3 cells inside the province edge (no apron seam in frame)
 EYE_M = 1.0                           # the player is dropped this far above the ground and falls to it
 LAND_TOL_UNITS = 300                  # the teleport landed: the player within this of the vantage in x and y
+# A `cow` grid change crashed the culling job and a raw `teleport pos` across cells likewise (diag5-g17 §2,
+# tools/tests/test_world_sample.py): each vantage is a persistent XMarker (`build_ref` rows `ref.panel.<id>` in
+# MARKER_CELL, synced by `--write` through db.py, emitted by `make plugin`) and the player arrives by `player.moveto`.
+MARKER_CELL = "cell.studio.world-panel"
 
 
 def _dilate(m: np.ndarray, r: int) -> np.ndarray:
@@ -142,10 +146,47 @@ def vantages(w=None, ground: np.ndarray | None = None) -> list[dict]:
     return out
 
 
+def marker_ref(v: dict) -> str:
+    return f"ref.panel.{v['id']}"
+
+
+def marker_edid(v: dict) -> str:
+    from tools.argonia_world.place_build import ref_edid
+    return ref_edid(marker_ref(v))
+
+
+def marker_rows(vs: list[dict]) -> list[dict]:
+    return [{"id": marker_ref(v), "cell_id": MARKER_CELL, "base": su.ENGINE_MARKER_HEADING, "x_m": v["x_m"],
+             "y_m": v["y_m"], "z_m": round(v["ground_m"] + EYE_M, 3), "yaw_deg": float(v["yaw_deg"]), "persistent": True,
+             "why": f"world-panel vantage {v['id']} (tools/argonia_world/panel.py)"} for v in vs]
+
+
+def sync_markers(w, vs: list[dict], write: bool) -> bool:
+    """True when the DB's vantage markers match the vantages; with `write`, make them match and save."""
+    from tools.argonia_world.vegetation.build import PROBE_PLACE  # the footprints skip the studio markers' place
+    have = {r["id"]: dict(r) for r in w.query("SELECT * FROM build_ref WHERE cell_id = ?", MARKER_CELL)}
+    want = {r["id"]: r for r in marker_rows(vs)}
+    same = set(have) == set(want) and all(
+        all(have[k][c] == v or (isinstance(v, float) and abs(have[k][c] - v) < 1e-6) for c, v in r.items())
+        for k, r in want.items())
+    if same or not write:
+        return same
+    if w.get("place", PROBE_PLACE) is None:
+        w.insert("place", id=PROBE_PLACE, name="World sample probes")
+    if w.get("build_cell", MARKER_CELL) is None:
+        w.insert("build_cell", id=MARKER_CELL, place_id=PROBE_PLACE, kind="exterior")
+    for k in have:
+        w.delete("build_ref", k)
+    for r in want.values():
+        w.insert("build_ref", **r)
+    w.save()
+    return True
+
+
 def scene_text(vs: list[dict]) -> str:
     v = vs[0]
-    lines = ["; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage's cell, staged last",
-             "set gamehour to 12", f"cow ARG_Province {v['cell'][0]} {v['cell'][1]}"]
+    lines = ["; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage, staged last",
+             "set gamehour to 12", f"player.moveto {marker_edid(v)}"]
     return "\r\n".join(lines) + "\r\n"
 
 
@@ -169,8 +210,8 @@ def journey_text(vs: list[dict]) -> str:
                 {"read": ["player"], "path": "pos.1", "gt": y - LAND_TOL_UNITS},
                 {"read": ["player"], "path": "pos.1", "lt": y + LAND_TOL_UNITS}]
         for when, hour in (("noon", 12), ("dawn", 6.5)):
-            do = [{"console": {"line": f"cow ARG_Province {v['cell'][0]} {v['cell'][1]}", "settle": 60}},
-                  {"teleport": f"pos {x} {y} {z}"}, {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
+            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
+                  {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
                   {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
             if v[when]:
                 do.append({"console": f"fw {v[when]}"})
@@ -191,6 +232,8 @@ def main(argv: list[str]) -> int:
         if old != ["first-person-no-hud"] + [f"{v['id']}-{t}" for v in vs for t in ("noon", "dawn")]:
             print("world-panel: the vantages are fixed; pass --force after a ruling", file=sys.stderr)
             return 1
+    w = db.open()
+    sync_markers(w, vs, True)
     SCENE.write_bytes(scene_text(vs).encode())
     JOURNEY.write_text(journey_text(vs))
     print(f"{len(vs)} vantages -> {SCENE.relative_to(ROOT)}, {JOURNEY.relative_to(ROOT)}")
