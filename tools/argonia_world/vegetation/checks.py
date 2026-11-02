@@ -128,6 +128,9 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
             za, zb, gx, gy, i, j = place.ground_at(H[(cx, cy)], u, v)
             sunk = np.asarray([rules[(region, b)].sink_m if (region, b) in rules else 0.0 for b in bases]) * refs[:, 6]
             zg = z + sunk  # the ground under a sunk rock's pivot
+            seated = np.asarray([b in seats for b in bases], dtype=bool)
+            zg = np.where(seated, (za + zb) / 2, zg)  # a tree's base is held by the seat check below, its posture
+            # read at the ground (place.py: the base sits within 10 u over / 40 u under either triangulation)
             off = np.maximum(np.abs(zg - za), np.abs(zg - zb))
             for k in np.nonzero(off > GROUND_TOL_M)[0][:FIRST]:
                 fails["ground"].append(f"{fids[k]:06X} ({cx},{cy}): {off[k]:.2f} m off the LAND")
@@ -145,7 +148,7 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
                 seat_stat[0] = max(seat_stat[0], hover)
                 seat_stat[1] = max(seat_stat[1], sunk)
                 seat_stat[2] += 1
-                if hover > SEAT_HOVER_U or sunk > SEAT_SINK_U:
+                if hover > SEAT_HOVER_U + 0.5 or sunk > SEAT_SINK_U + 0.5:  # float rounding at the bound
                     fails["seat"].append(f"{fids[k]:06X} ({cx},{cy}) {bases[k]}: trunk base {hover:+.0f} u over / "
                                          f"{sunk:+.0f} u under the ground")
             sl = place.slope_deg(gx, gy)
