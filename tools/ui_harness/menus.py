@@ -16,7 +16,6 @@ import argparse
 import json
 import sys
 import time
-from pathlib import Path
 
 from tools.ui_harness.build import ROOT, VIEWS, build
 from tools.ui_harness.harness import VIEWPORTS, Harness, fixtures
