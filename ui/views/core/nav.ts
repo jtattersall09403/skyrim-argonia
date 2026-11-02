@@ -51,26 +51,35 @@ export function installNav(h: NavHooks) {
   const move = (dx: number, dy: number): void => {
     const all = [...document.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(visible);
     if (!all.length) return;
-    const cur = document.activeElement as HTMLElement | null;
-    if (!cur || !all.includes(cur)) { focus(all[0]); return; }
+    let cur = document.activeElement as HTMLElement | null;
+    if (!cur || !all.includes(cur)) { focus(first(all)); return; }
     // Within a scrolling list, walk the list's order, so a long topic list moves one row at a time.
     // A row's side control (data-aside: the magic pane's left-hand "L") is not in the walk; from it, focus moves spatially.
     // Up and down from a side control walk from its row's main control (the magic pane's "L" sits beside the name).
     const rowMain = (el: HTMLElement): HTMLElement => (el.hasAttribute("data-aside")
       ? el.parentElement?.querySelector<HTMLElement>(`${FOCUSABLE.split(",").map((s) => s.trim() + ":not([data-aside])").join(",")}`) ?? el
       : el);
-    const base = dy !== 0 ? rowMain(cur) : cur;
-    const list = base.closest<HTMLElement>("[data-list]");
+    // A side control walks its own column (an "L" to the next row's "L"): the menu loop failed the old walk from an
+    // "L" to the next row's name as a column jump (1.12-r4-menus, owner play test 3 finding 7).
+    const aside = cur.hasAttribute("data-aside");
+    const list = cur.closest<HTMLElement>("[data-list]");
     if (list && dy !== 0) {
-      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((e) => !e.hasAttribute("data-aside") && visible(e));
-      const i = items.indexOf(base) + dy;
-      if (items.includes(base) && i >= 0 && i < items.length) { focus(items[i]); return; }
+      const items = [...list.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((e) => e.hasAttribute("data-aside") === aside && visible(e));
+      const i = items.indexOf(cur) + dy;
+      if (items.includes(cur) && i >= 0 && i < items.length) { focus(items[i]); return; }
+      if (aside) { const m = rowMain(cur), j = all.indexOf(m); if (j >= 0) cur = m; }
     }
     const others = all.filter((e) => e !== cur).map((el) => ({ el, r: el.getBoundingClientRect() }));
     const i = nearest(cur.getBoundingClientRect(), others, dx, dy);
     // a vertical move never lands on a side control: it lands on that row's main control
-    if (i >= 0) focus(dy !== 0 ? rowMain(others[i].el) : others[i].el);
+    if (i >= 0) focus(dy !== 0 && !aside ? rowMain(others[i].el) : others[i].el);
   };
+
+  // Where the pad starts: the first row of the view's first list, else the first control that is not a Close
+  // (the loop found magic, the journal and dialogue opening with nothing focused, the first press spent on Close).
+  const first = (all: HTMLElement[]): HTMLElement =>
+    all.find((e) => e.closest("[data-list]") && !e.hasAttribute("data-aside"))
+    ?? all.find((e) => !e.classList.contains("close")) ?? all[0];
 
   const focus = (el: HTMLElement): void => {
     el.focus({ preventScroll: true });
@@ -135,9 +144,19 @@ export function installNav(h: NavHooks) {
     input,
     // After a re-render, put focus back on the control with the same data-key, so a push never loses the pad's place.
     restore(): void {
-      if (lastKey === null) return;
+      if (lastKey === null) { this.settle(); return; }
       const el = document.querySelector<HTMLElement>(`[data-key="${CSS.escape(lastKey)}"]`);
       if (el && document.activeElement !== el) el.focus({ preventScroll: true });
+      this.settle();
+    },
+    // A push that leaves nothing focused (an opening, or the focused control gone) focuses where the pad starts.
+    settle(): void {
+      const a = document.activeElement;
+      if (a && a !== document.body && (a as HTMLElement).isConnected) return;
+      // only a menu with a list: the chart's d-pad pans, and a place focused at its opening clipped its label (smoke)
+      if (!document.querySelector("[data-list]")) return;
+      const all = [...document.querySelectorAll<HTMLElement>(FOCUSABLE)].filter(visible);
+      if (all.length) { const f = first(all); f.focus({ preventScroll: true }); lastKey = f.dataset.key ?? null; }
     },
   };
 }
