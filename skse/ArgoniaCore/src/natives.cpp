@@ -364,7 +364,8 @@ std::expected<std::string, std::string> BridgeCall(std::string_view native, cons
   if (n == "WakePoint") return bc::encode_text(n, Str(WakePoint(nullptr)));
   if (n == "SittingOpen") return bc::encode_bool(n, SittingOpen(nullptr));
   if (n == "ViewProbe") return bc::encode_json(n, ViewProbe(*arg));
-  if (n == "HudShow") return bc::encode_text(n, HudShow(a));
+  // *arg, not `a`: BSFixedString is a case-insensitive pool and hands back the casing first interned ("off" -> "OFF").
+  if (n == "HudShow") return bc::encode_text(n, HudShow(*arg));
   if (n == "Views") return bc::encode_list(n, ViewsReport());
   return std::unexpected("whitelisted but not wired: " + std::string(native));  // a new whitelist row needs a line here
 }
