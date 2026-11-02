@@ -328,7 +328,26 @@ class Bridge:
         if "MAIN-MENU OK" not in out:
             raise GameDown(f"the game did not reach the main menu:\n{out.strip()[-1500:]}")
         self.token(refresh=True)
-        return {"killed": killed, "laid": laid, "ping": self.call("ping", timeout=30)}
+        return {"killed": killed, "laid": laid, "ping": self.ping_through_shader_compile()}
+
+    CS_LOG = r"$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\SKSE\CommunityShaders.log"
+
+    def ping_through_shader_compile(self, budget: int = 1500) -> dict:
+        """Ping; while Community Shaders is still compiling its cache at the menu (the first launch after a shader
+        change: 3,484 shaders, ~11 min on the g6, 2026-11-02) the main thread refuses tasks, so wait for the
+        compile instead of failing the launch. The CS log's [ShaderTiming] lines carry remaining=N."""
+        t0 = time.monotonic()
+        while True:
+            try:
+                return self.call("ping", timeout=30)
+            except BridgeError as e:
+                tail = self.machine.ps(f'Get-Content "{self.CS_LOG}" -Tail 40 -ErrorAction SilentlyContinue', timeout=60)
+                m = re.findall(r"remaining=(\d+)", tail)
+                left = int(m[-1]) if m else 0
+                if not left or time.monotonic() - t0 > budget:
+                    raise
+                print(f"bridge: launch: Community Shaders compiling, {left} shaders left; waiting", file=sys.stderr)
+                time.sleep(30)
 
     def screenshot(self, out: Path) -> Path:
         """One still of the game as the stream sees it (Desktop Duplication), copied to `out`."""
