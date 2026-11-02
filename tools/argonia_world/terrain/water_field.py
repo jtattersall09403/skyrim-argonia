@@ -20,6 +20,9 @@ CARVE_GRADE = 0.6  # m per sample: the ground's fall into raster water down to t
 TYPE_BLEND = 16.0  # samples (half a cell): the bed depth by type blends over this, never steps at a cell line
 SOFT = 3.0  # samples: the fields' blur (no crease at the cone's foot)
 HOLLOW_GRADE = 0.08  # m per sample: a raised hollow's lift fades this slowly, so its own relief survives
+# a dry gully (raster water the solve gave no level: water/solve.py dry reaches) is a bed with no level, cut this
+# far into its own ground at its middle by the blackwater bed profile (Skyrim.esm's dressed dry beds are shallow)
+GULLY_M = 1.0
 HOLLOW_PAD = 0.4  # m: a raised hollow's floor stands this far over the bank line (the blur takes some)
 # Skyrim.esm's ground over a lake's level by distance from its shore line (vertices = our samples), the median of the
 # 15 largest inland levels (probes/vanilla_shore_profile.py)
@@ -53,7 +56,7 @@ def lift_to(h, src, need, grade, band=0):
     return cone(src & (amt > 0), amt, grade)
 
 
-def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
+def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
     has = np.isfinite(vmin)
     drop = np.nan_to_num(vmax - vmin, nan=0.0)
     need = np.where(has, vmax + G.FREEBOARD_M, -np.inf)
@@ -80,6 +83,11 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp):
     cut = np.where(foot, np.maximum(h - bed, 0.0), 0.0)
     cf = G.blur(cone(foot & (cut > 0), cut, CARVE_GRADE), SOFT)
     h1 = h - cf
+    if gully is not None and gully.any():
+        dg, _ = G.chamfer(~gully, 32)
+        dg = np.where(gully, np.where(np.isfinite(dg), dg, 32), 0)
+        gcut = np.where(gully, np.minimum(G.bed_depth(np.full(h.shape, G.TYPES.index("blackwater")), dg), GULLY_M), 0.0)
+        h1 = h1 - G.blur(gcut, SOFT)
     # 2. lift: the clipped edges above the upper water, the bank climbing to them from both sides
     lf = lift_to(h1, src, need, LIFT_GRADE, band=BAND)
     h1 = h1 + lf

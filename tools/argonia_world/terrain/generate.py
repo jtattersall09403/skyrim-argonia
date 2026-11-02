@@ -106,6 +106,7 @@ FLAT_MIN_SCALE = 0.3  # a flat on a gorge lip shrinks (x0.85 a try) to no less t
 FLAT_KEEP, FLAT_SD_M = 0.35, 0.4  # a flat keeps this share of its relief, its core's spread held to this std (m)
 FLAT_CORE_M = 40.0  # the check's flat-core window is capped at this radius
 DEPRESSION_M, DEEP_M = 4.0, 3.0  # options §9: a sinkhole, a deep cell
+SINK_FREE = 6  # samples: a flooded sinkhole's unpinned bank (a 15 m rise at the 75 deg limit's 6.8 m a sample, doubled)
 # a mouth is cut into the foot of a rise, never raised on a ring mound (skyrim-does-it-this-way.md §10: Skyrim.esm's
 # cave doors stand p50 553 u below the ground 1,024 u around, slope 35 deg at the door): the ground RISE_L_M behind
 # the mouth stands RISE_M above its door; the check asks RISE_OK of it
@@ -467,14 +468,25 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     del wlr
     vmin, vmax = vertex_levels(wl)
     has = ~np.isnan(vmin)
-    foot = has & ~np.isnan(inp.wet_level)
+    # one level definition (session 17): a sample's water is its own cell's solved level, never the lowest of the
+    # four cells at a vertex nor the raster's level. Raster water in a cell the solve left dry is a dry gully (a bed
+    # with no level, carved by the field); raster water on a vertex of a drop belongs to no body (the step's banks
+    # and join own it). So the carve stops at the body's own footprint: session 16's coast gap carved a 199-374 m
+    # gully down to the 0 m sea of the padded cell beside it
+    lev_s = np.pad(np.repeat(np.repeat(wl, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge")
+    rawf_ = ~np.isnan(inp.wet_level)
+    own = np.isfinite(lev_s) & has & (np.nan_to_num(lev_s - vmin, nan=0.0) <= RIFFLE_M)
+    foot = rawf_ & own
+    gully = rawf_ & ~own & ~(np.isfinite(lev_s) & (np.nan_to_num(lev_s - vmin, nan=0.0) > RIFFLE_M))
+    del rawf_
     # a water cell the raster leaves dry (an enclosed cell, water/solve.py fill_enclosed) gets no pool of its own:
     # as in Skyrim.esm (Lake Ilinalta's 4 all-dry cells), only its ground under the level is wet (the natural
     # flood below); a forced lowest-third pool cut on the cell grid made the square pools
     blocks = foot[:N, :N].reshape(C, Q, C, Q).any(axis=(1, 3))
     empty = ~np.isnan(wl) & ~blocks
     st["water"] = {"source": inp.water.source, "cells": int((~np.isnan(wl)).sum()), "steps": len(inp.water.steps),
-                   "empty_water_cells": int(empty.sum()), "footprint_samples": int(foot.sum())}
+                   "empty_water_cells": int(empty.sum()), "footprint_samples": int(foot.sum()),
+                   "gully_samples": int(gully.sum())}
     log(f"water base {time.time() - t0:.1f}s")
 
     # noise by roughness, away from water; erosion as a blend toward the blurred ground
@@ -507,6 +519,7 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
         r_s = int(math.ceil(s_["radius_m"] * SITE_WIN / MPP)) + 2
         ci_, cj_ = int(round(s_["y_m"] / MPP)), int(round(s_["x_m"] / MPP))
         wob[max(ci_ - r_s, 0):ci_ + r_s + 1, max(cj_ - r_s, 0):cj_ + r_s + 1] = 0.0
+        gully[max(ci_ - r_s, 0):ci_ + r_s + 1, max(cj_ - r_s, 0):cj_ + r_s + 1] = False  # a site shapes its own ground
     del two_
     din_, _ = chamfer(~foot, SHORE_WOBBLE + 1)
     dout_, _ = chamfer(foot, SHORE_WOBBLE + 1)
@@ -585,7 +598,7 @@ def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     hi = np.full((N + 1, N + 1), np.inf)
     from tools.argonia_world.terrain.water_field import water_field
     h_wf_in = h.astype(np.float32)
-    h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz, tsamp)
+    h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully)
     st["water"]["field"] = {"lift_samples": int((wf_["lift"] > 0.05).sum()), "carve_samples": int((wf_["carve"] > 0.05).sum()),
                             "iso_samples": int(wf_["iso"].sum()), "iso_in_raster_cells": int((wf_["iso"] & blocks[hi_c][:, hi_c]).sum())}
     diag["iso"] = wf_["iso"]
@@ -881,6 +894,12 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None) 
         # the shaped core pinned (lo = hi) so the slope limit cannot re-slope it (a flat on a hillside, a mouth's door)
         core = d <= (0.6 if shape == "flat" else 0.3 if shape in ("rise", "bank") else 0.35)
         pin = core & ~sbank[sl] & ~held & ~fw0
+        if shape == "depression":  # a sinkhole's bank in a water cell is never pinned: its
+            # flooded floor (hi under the level) beside its pinned rim drew 15 m single-sample walls (session 17:
+            # the province's overflow pairs at -26,59 and 31,50 were the drawdown-flats and slumped-hamlet sinkholes)
+            # the flooded floor keeps its pin; the bank within SINK_FREE samples of it is left to the limit
+            dfl, _ = chamfer(wro == 1, SINK_FREE)
+            pin &= ~np.isfinite(dfl) | (wro == 1)
         fw = foot[sl]
         if fw.any() and "terraced into" not in note:  # a pin no slope can join to the water beside it is left to
             # the limit (no wall into a lake); a terrace cut into the slope keeps its pin (its drop is a cliff)

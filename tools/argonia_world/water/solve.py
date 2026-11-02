@@ -496,6 +496,42 @@ def no_riffle_steps(cells: dict[tuple[int, int], tuple]) -> int:
             return moved
 
 
+def one_type_per_sheet(cells: dict[tuple[int, int], tuple]) -> int:
+    """One water type per body (session 17): each sheet (4-joined cells at one level) takes the type most of its
+    body cells hold (the hydrology graph's body type; reach and padding cells count only where the sheet holds no
+    body; a tie to the order of WATER_TYPES), so the bed under one plane is one bowl, never a fresh 3 m cut beside a
+    blackwater 1.1 m one (the marsh's stepped pool). Skyrim.esm gives one XCWT per lake (probes/vanilla_lake_cells.py).
+    In place; returns the cells whose type changed."""
+    moved = 0
+    seen: set[tuple[int, int]] = set()
+    for c in sorted(cells):
+        if c in seen:
+            continue
+        lv = cells[c][0]
+        comp, st = [c], [c]
+        seen.add(c)
+        while st:
+            a, b = st.pop()
+            for o in ((a + 1, b), (a - 1, b), (a, b + 1), (a, b - 1)):
+                if o in cells and o not in seen and abs(cells[o][0] - lv) < 1e-6:
+                    seen.add(o)
+                    comp.append(o)
+                    st.append(o)
+        votes: dict[str, int] = {}
+        for k in comp:
+            if cells[k][2] is not None:
+                votes[cells[k][1]] = votes.get(cells[k][1], 0) + 1
+        if not votes:
+            for k in comp:
+                votes[cells[k][1]] = votes.get(cells[k][1], 0) + 1
+        wt = max(votes, key=lambda t: (votes[t], -WATER_TYPES.index(t)))
+        for k in comp:
+            if cells[k][1] != wt:
+                cells[k] = (cells[k][0], wt) + tuple(cells[k][2:])
+                moved += 1
+    return moved
+
+
 def yield_walls(cells: dict[tuple[int, int], tuple], keep: set[tuple[int, int]] = frozenset()) -> set:
     """Every cell whose water stands more than d x WALL_STEP_M above a water cell d cells away (Chebyshev, d <= 2)
     leaves `cells` (in place), repeated until none does: the drop then runs through dry ground over at least one more
@@ -700,6 +736,7 @@ def solve(w, raster=None, ground=None) -> Result:
     walls = yield_walls(cells, {v.cell for rs in solved.values() for v in rs.visits})
     if sp is not None:
         no_riffle_steps(cells)
+    one_type_per_sheet(cells)
     for c in walls:
         enclosed.pop(c, None)
 

@@ -215,3 +215,13 @@ def test_reach_from_ground_cuts_a_hump_and_dries_a_cliff():
     cell = sv.Q * sv.MPP
     rs = sv.solve_reach_ground(east_line(2), lambda pt: np.where(pt[:, 0] < cell * 0.9, 200.0, 0.0) + 0 * pt[:, 0])
     assert rs.dry
+
+
+def test_one_sheet_holds_one_type_its_bodies_hold_most():
+    from tools.argonia_world.water.solve import one_type_per_sheet
+    cells = {(0, 0): (2.0, "blackwater", "b1", None), (1, 0): (2.0, "blackwater", "b1", None),
+             (2, 0): (2.0, "fresh", None, "r1"), (3, 0): (2.0, "fresh", "b2", None),
+             (4, 0): (5.0, "fresh", "b3", None)}
+    assert one_type_per_sheet(cells) == 2
+    assert [cells[(i, 0)][1] for i in range(5)] == ["blackwater"] * 4 + ["fresh"]
+    assert cells[(2, 0)][3] == "r1"

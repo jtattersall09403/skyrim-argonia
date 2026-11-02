@@ -212,32 +212,30 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 16 found and removed the marsh column; main is at 4c3d794. Measured with `probes/marsh_cells.py OUT x0 y0 x1 y1`
-(per cell: foot, wet, touch, gap, lift, carve, h_in and output against the level) on a census run.
+Session 17 (one level definition, first half). Runs: `~/.argonia/jobs/s17.sh NAME` = `generate --sample --out
+out/terrain-sample/NAME`, `check --sample`, `render --sample --hillshade --out NAME/hs`, then the census (NAMEcen).
 
-- The column (-17,-25..-21) was a run of dry cells inside the marsh. The marsh's body cells are sparse and
-  `pad_ring` pads one cell, so a gap two cells wide stayed dry and joined the province edge at `fill_enclosed`
-  time. Its `touch` vertices became banks, which drew the cell lines. Fix: `fill_enclosed` runs again after the ring
-  (Skyrim.esm leaves no hole in a body) and has no island exception. The solve now gives 10,634 cells (2,249
-  enclosed or padded). Committed with the regenerated cell_water, water_step and entrance_site rows.
-- Staircase: the bed's depth cap is per-cell type (fresh 3.0 m beside blackwater 1.5 m at one level, beds −3.0
-  against −1.1 m). It now blends over `TYPE_BLEND` = 16 samples. The reader still sees the stepped pool in -21_-26
-  (x 0.62–1.0, y 0.12–0.62, the fresh cells -16..-14,-20..-23), with straight left and bottom edges, so the blend
-  alone does not fix it. Next: one type per body (the solve gives the body's type to every cell at its level), or a
-  depth that does not depend on type at all.
-- Sample (s16b vs s16a, the same command): `check --sample` fails [], lattice 1.376 → 1.359, generate 104 s. Census
-  plates in -21_-26 fell from 3.9 % to 1.3 % (edge lift 2.6 → 0.3 %); the other windows are within ±0.1. The reader
-  rated -21_-26 better (the column is gone) and the other four windows the same; -38_25 still has grid-square pools
-  at the bottom right.
-- Coast gap, measured: raster-wet cells with no solved level are the dry gullies (374/231/199 m in -23..-20,58..61),
-  and river cells sit under the raster (the river at -20,58 is 120 m solved against a raster minimum of 149 m). The
-  base takes the raster, while `vmin` takes the lowest of the four cells, so the 0 m sea is used beside them. Not
-  fixed. The base cannot use the solved levels while the solve reads the pre-ground.
-- Province: generate into out/terrain in 109 s; `terrain check` reports **fails ["overflow: 13 cells"]**, lattice
-  1.359. Whether this was already red before session 16 is not yet proved.
-- Reds that are not this lane's: test_creature_dens shallows (68.02 against 66.08 m; red on main too) and
-  test_world_sample (the worktree has no out/pieces-index.json).
+- (1) The pre-ground (`terrain pre`) already takes no water knowledge but the raster's seeds (base and `away`);
+  unchanged.
+- (2) Solve: `one_type_per_sheet` (water/solve.py, tested): each 4-joined sheet at one level takes the type its
+  body cells hold most. -21_-26's stepped pool is gone (reader, s16b vs s17b hillshades: "one continuous dark body
+  with a smooth organic shore"); 10,634 cells (9,916 blackwater, 706 fresh, 9 sea, 3 brackish).
+- (3) Carve: a sample's water is its own cell's solved level (`lev_s`), never the lowest of four cells; raster water
+  in a cell with no level is a dry gully, cut `GULLY_M` 1.0 m by the blackwater bed profile (water_field.py; no
+  gully cut inside a site window). Carve > 5 m fell from 6.18 M to 1.43 M samples (the 0 m-sea trench under the
+  coast's gullies). The bowl depth is the type's profile (one type per body now, so one bowl).
+- (4) Overflow: the province's "13 cells" was stale: `check` reads stats.json from the 04:34 build, not the 06:09
+  ground. The 06:09 ground had 6 pairs over the byte (`probes/overflow_pairs.py`), all at two flooded sinkholes
+  (the-drawdown-flats -26,59; the-slumped-hamlet 31,50): the floor pinned under the level beside a rim pinned
+  15 m higher. Fix: a depression's bank within `SINK_FREE` 6 samples of its flooded floor is not pinned. 0 pairs.
+- Sample (s17g, the committed code): `check --sample` fails [], lattice 1.362, overflow 0, generate 154 s.
+- Not committed (in `~/.argonia/jobs/generate-held.py`): raster water in a padding or enclosed cell standing over
+  its ring's level by a riffle is a gully, not foot (`CellWater.held`, loaded but unused). It removes the last
+  big carves (-55,-20 and -55,-19: a 63 m pool cut to 0 m; 18,43 and 19,43: 122 m to 0 m) but turns
+  the-slumped-hamlet unshaped (depression rel -0.92 against -1.5; the window stands 3-4 m higher with no bowl).
+  The fix belongs in the depression shaping, not the check.
+- Reader on the other windows: -38_25 keeps the straight cell-edge pools (x 0.55-0.85, y 0.70-1.0); faint new
+  straight edges in 0_0_1_1 (x 0.15-0.35, y 0.83-1.0) and -20_57 (x 0.15-0.3, y 0.83-0.95), not yet traced.
 
-Owed: (1) the province overflow, 13 cells: name them and compare with main's ground; (2) the stepped pool: one
-type per body; (3) the bowl in the pre-ground, with one level definition shared by the base, the solve and the
-carve. The base's level, for river cells and gullies, remains to be settled.
+Owed: the held rule with the sinkhole fix; -38_25's square pools; the faint edges; Ilinalta-size depth (the bowl
+depth is capped by din 32 samples, not by body size).

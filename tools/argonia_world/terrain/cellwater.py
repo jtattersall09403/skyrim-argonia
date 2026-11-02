@@ -45,6 +45,9 @@ class CellWater:
     wtype: np.ndarray  # (126, 126) int8 index into TYPES, -1 = none
     steps: list[Step] = field(default_factory=list)
     source: str = "fixture"
+    # (126, 126) True where the cell's level is a body's or a reach's own (not an enclosed or padding cell's): only
+    # there is the raster's water this level's footprint; None = every water cell
+    held: np.ndarray | None = None
 
     def at(self, cx: int, cy: int) -> tuple[int, int]:
         return C - 1 - (cy - CY0), cx - CX0
@@ -184,23 +187,25 @@ def derive_steps(level: np.ndarray, wet: np.ndarray, chain: str = "fixture") -> 
 def from_solve(world) -> CellWater | None:
     """The water lane's tables when they hold rows."""
     try:
-        rows = world.query("SELECT cx, cy, level_m, water_type FROM cell_water")
+        rows = world.query("SELECT cx, cy, level_m, water_type, body_id, reach_id FROM cell_water")
     except Exception:
         return None
     if not rows:
         return None
     level = np.full((C, C), np.nan)
     wtype = np.full((C, C), -1, np.int8)
+    held = np.zeros((C, C), bool)
     for r in rows:
         i, j = C - 1 - (r["cy"] - CY0), r["cx"] - CX0
         if 0 <= i < C and 0 <= j < C:
             level[i, j] = r["level_m"]
             wtype[i, j] = TYPES.index(r["water_type"])
+            held[i, j] = bool(r["body_id"] or r["reach_id"])
     # a closed edge has no channel: the solve writes its range as 0..0, here -1 (no vertex is a channel)
     steps = [Step(s["cx"], s["cy"], s["edge"], s["upper_m"], s["lower_m"],
                   -1 if s["chain"] == "closed" else s["cross_lo"], -1 if s["chain"] == "closed" else s["cross_hi"],
                   s["chain"]) for s in world.query("SELECT * FROM water_step")]
-    return CellWater(level, wtype, steps, source="cell_water")
+    return CellWater(level, wtype, steps, source="cell_water", held=held)
 
 
 def load(world=None, root=None) -> CellWater:
