@@ -65,3 +65,19 @@ The trade-off: each class now has fewer kinds (3 aquatic kinds per class) in exc
 
 ## L3
 `terrain/render.py`'s registry named `vegetation.render`, which did not exist, so no render ever drew a placement. That module now exists and colours trees by family. The four-window render and the reader are listed under the run state below.
+
+## Follow-up (planner's ask)
+- **Seat check on the sample (L1).** 730 refs, 227 trees; worst hover 0 u, worst sink 40 u; 18 checks green, 0 red.
+  - The first run had red `ground` and `water` failures on (-62,-62): my seat bounds put a tree's base up to 0.55 m off the mean ground. The fix: the seat check owns a tree's base, and the ground and water checks read a tree at the mean ground.
+- **Teal, checked at L1: the textures are present.**
+  - `_ResourcePack.bsa` and `.esl` are in the pinned Data (`infra/gpu-box/vanilla-data-files.txt:1-2`), and `_resourcepack.esl` is in the stack's `loadorder.txt`. The BSA holds `textures/_resourcepack/landscape/trees/baldcypressbranches01_d/_n.dds`.
+  - The cause is not a missing texture. KotM's cypress1.nif (and Willow04) is served from `King of the Murkmire.bsa`, and the forms have no MODS set.
+  - The foliage shape uses BSLightingShaderProperty type 0 with SLSF1 0x82000308 and SLSF2 0x22000031: vertex colours, tree animation, double-sided, and soft lighting, with slot 2 set to the diffuse itself as the soft-light map. Glossiness is 80 and specular is white x1.
+  - We place KotM's own TREE base with the same NIF, so the mesh, textures and flags are the same as in KotM's worldspace.
+  - What differs is the lighting the mesh is drawn under: our weathers, image spaces and directional light, and Community Shaders' treatment of soft lighting. The soft-light map lets back-lit sun through the needles, which can read as a saturated teal. The owner's stills fit that: a flat saturated colour, no gloss.
+  - Owed (L4): the same tree under KotM's own weather against ours (`fw` swap at one tree), which separates the weather from Community Shaders.
+- **L3 renders, judged by a reader.**
+  - Windows: `/home/ubuntu/argonia-lanes/veg-render/*.png`, covering northern-transition, coastal-lagoon (sample (-62,-62)), flooded-forest and rootland (-21,23).
+  - Verdict: the four mixes differ "only weakly". Rootland shows more jungle green and the north a few orange broadleaf and yellow palm dots. Flooded-forest is almost all light green. The coastal-lagoon window was unreadable: dark, with its patch at the corner because render widens the window at the province edge.
+  - The cause at L3: shrubs make up most of each cell's stems, their colour is next to willow's, and the class lists differ in kinds (0.77-0.89), not in role mix. The render cannot show kind differences within a role.
+  - The variety claim is therefore proven at L1 (lists) only. The play-camera judgement stays with the tree-seat journey's per-class stills.
