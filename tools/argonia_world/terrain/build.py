@@ -250,6 +250,85 @@ def code_stamp() -> str:
     return h.hexdigest()
 
 
+ROW_MARGIN = 256  # vertices of context a row key covers: quantize.HALO (64) + material.HALO (64) + a quadrant, the
+# class warp (30) and blend (~5) make ~170; rounded up, so an edit reaches 8 cell rows each side and no further
+
+
+def _arr(h, a) -> None:
+    a = np.ascontiguousarray(a)
+    h.update(f"{a.shape}{a.dtype}".encode())
+    h.update(a.tobytes())
+
+
+def global_key(src: Sources, mat, base: str | None, spans, kw: dict) -> str | None:
+    """What every row shares: `base` (the code, tables and vault files, from the pipeline's land stamp, which leaves
+    the ground out), the grid's geometry, the apron edge tables' source (the ground's four edges), the tint and the
+    builder's arguments. None (no reuse) without a base or for the old ground's regrade and place edits."""
+    if base is None or src.regrade is not None or src.edits is not None or not isinstance(mat, M.Material):
+        return None
+    h = hashlib.sha256(f"{base}:{code_stamp()}:{src.pad}:{src.n}:{ROW_MARGIN}:{sorted(kw.items())}:{spans}:"
+                       f"{mat.roads}:{mat.water.pad}:{mat.regions.pad}:{mat.regions.n}".encode())
+    g, n = src.ground, src.n
+    for e in (g[0, :], g[n, :], g[:, 0], g[:, n]):
+        _arr(h, e)
+    if src.tint is not None:
+        _arr(h, src.tint)
+    return h.hexdigest()
+
+
+def row_key(src: Sources, mat, cy: int, gkey: str | None) -> str | None:
+    """Row cy's content stamp: the global key and every input raster cut to the row's window (ROW_MARGIN vertices
+    each side): the apron, the ground and the land cover, and the cell grids of water level, nearest level, rain
+    and eco class. Equal keys give equal shard bytes (test_land_reuse proves it against a from-scratch build)."""
+    if gkey is None:
+        return None
+    h = hashlib.sha256(f"{gkey}:{cy}".encode())
+    north, south = src.cell_rows(cy)
+    r0, r1 = max(north - ROW_MARGIN, 0), min(south + ROW_MARGIN + 1, src.size)
+    if src.apron is not None:
+        _arr(h, src.apron[r0:r1])
+    p0, p1 = min(max(r0 - src.pad, 0), src.n + 1), min(max(r1 - src.pad, 0), src.n + 1)
+    _arr(h, src.ground[p0:p1])
+    _arr(h, src.cover[p0:p1])
+    w, rg = mat.water, mat.regions
+    C = w.level.shape[0]
+    q = su.QUADS_PER_CELL
+    i0, i1 = max(p0 // q - 1, 0), min(p1 // q + 2, C)
+    for a in (w.level, w.near, w.rain):
+        _arr(h, a[i0:i1])
+    Cr = rg.grid.shape[0]  # rows from the south
+    _arr(h, rg.grid[max(Cr - i1, 0):max(Cr - i0, 0)])
+    return h.hexdigest()
+
+
+def row_key_path(land: Path, cy: int) -> Path:
+    return land / "_keys" / f"{cy:+04d}.txt"
+
+
+def reuse_row(old: Path, land: Path, boxes, cy: int, key: str | None) -> Stats | None:
+    """Row cy from the last finished land `old` when its stored key equals `key`: the shard and stats hard-linked
+    (copied across devices) into `land`; None when the key differs or the row is incomplete."""
+    if key is None or not old.is_dir():
+        return None
+    try:
+        if row_key_path(old, cy).read_text() != key:
+            return None
+    except OSError:
+        return None
+    st = row_complete(old, boxes, cy)
+    if st is None:
+        return None
+    for src_p, dst_p in ((old / shard_name(cy), land / shard_name(cy)), (row_stats_path(old, cy), row_stats_path(land, cy)),
+                         (row_key_path(old, cy), row_key_path(land, cy))):
+        if src_p.exists():
+            dst_p.unlink(missing_ok=True)
+            try:
+                os.link(src_p, dst_p)
+            except OSError:
+                shutil.copyfile(src_p, dst_p)
+    return st
+
+
 def _pid_alive(name: str) -> bool:
     tail = name.rsplit("-", 1)[-1]
     if not tail.isdigit():
@@ -295,11 +374,13 @@ def _worker_row(cy: int):
 
 
 def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1, factory=None, inputs: dict | None = None,
-          **kw) -> Stats:
+          row_base: str | None = None, **kw) -> Stats:
     """Every cell of the grid, or of `cells`: one box (x0, y0, x1, y1) or a list of boxes (the gate's sample).
     jobs > 1 (0 = every CPU) splits the rows over forked workers, each calling `factory() -> (src, mat)` for its own
     sources; the files and stats are the single process's. `inputs`: what the rows depend on (terrain stamp, ground
-    sha256, code stamp); an interrupted build's land.tmp-* with equal inputs.json is resumed, its finished rows kept."""
+    sha256, code stamp); an interrupted build's land.tmp-* with equal inputs.json is resumed, its finished rows kept.
+    `row_base`: the land stamp without the ground (the pipeline's); each row's key (row_key) is stored in
+    land/_keys, and a row whose key equals the last finished land's is reused from it, not rebuilt."""
     t0 = time.time()
     b = Builder(src, mat, **kw)
     gx0, gy0, gx1, gy1 = src.cell_range
@@ -322,10 +403,19 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1
     done = {cy: st for cy in rows if reused and (st := row_complete(land, boxes, cy)) is not None}
     todo = [cy for cy in rows if cy not in done]
     for cy in todo:  # a partial or stale row goes
-        for q in (land / shard_name(cy), land / (shard_name(cy) + ".part"), row_stats_path(land, cy)):
+        for q in (land / shard_name(cy), land / (shard_name(cy) + ".part"), row_stats_path(land, cy),
+                  row_key_path(land, cy)):
             q.unlink(missing_ok=True)
     if done:
         print(f"  resuming {land.name}: {len(done)} of {len(rows)} rows kept", flush=True)
+    gkey = global_key(src, b.mat, row_base, sorted({(bx[0], bx[2]) for bx in boxes}), kw)
+    keys = {cy: row_key(src, b.mat, cy, gkey) for cy in rows} if gkey else {}
+    (land / "_keys").mkdir(exist_ok=True)
+    kept = {cy: st for cy in todo if (st := reuse_row(final, land, boxes, cy, keys.get(cy))) is not None}
+    done.update(kept)
+    todo = [cy for cy in todo if cy not in kept]
+    if gkey:
+        print(f"  land reuse: {len(kept)} of {len(rows)} rows by key, {len(todo)} to build", flush=True)
     jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(todo) or 1))
     if jobs > 1 and factory is None:
         jobs = 1
@@ -346,7 +436,12 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1
     except BaseException:
         shutil.rmtree(land, ignore_errors=True)
         raise
-    shutil.rmtree(land / "_stats", ignore_errors=True)
+    for cy, k in keys.items():  # after every row is written: a key names a finished row only
+        if k is not None:
+            _atomic(row_key_path(land, cy), k.encode())
+    if not keys:  # no keys, no reuse: the stats go as before
+        shutil.rmtree(land / "_stats", ignore_errors=True)
+        shutil.rmtree(land / "_keys", ignore_errors=True)
     (land / "inputs.json").unlink(missing_ok=True)
     old = out / f"land.old-{os.getpid()}"
     if final.exists():
