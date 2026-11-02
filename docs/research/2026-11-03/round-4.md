@@ -15,11 +15,12 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 | 1.15-r4-claywater | 3, 22, 23, 25, 29, 31, 1 | lane-1.15-r4-claywater.md |
 | 1.15-r4-roads | 21 | lane-1.15-r4-roads.md |
 | 1.12-r4-chart | 26, 14, 12, 30 | lane-1.12-r4-chart.md |
-| 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md |
+| 1.x-r4-play | 2, 34, 15, 33 | lane-1.x-r4-play.md (done 7948d33: third person, 5,000 gold, Precision camera shake off; 33 left: FreeClimb has no tree filter, trees climb by the 2026-11-01 ruling, the mechanic is the modder's) |
+| 1.3-r4-talk | 24, 27, 28 | lane-1.3-r4-talk.md |
 
 ## Wave 2 (as wave-1 lanes return)
 
-1.12-r4-menus (6, 7, 8, 10, 11), 1.3-r4-talk (24, 27, 28), 1.15-r4-creatures (13).
+1.12-r4-menus (6, 7, 8, 10, 11), 1.15-r4-creatures (13).
 
 ## The batch
 
