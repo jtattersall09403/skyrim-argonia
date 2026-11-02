@@ -204,6 +204,8 @@ class Runner:
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
         self.save = BASE_SAVE
         self.resume_dir = RESUME
+        self.settle_waits = False  # a batch's `settle_waits: true`: fixed waits after a move become `settle` (settled_do)
+        self.settle_since = None  # the event seq at the step's start: `settle` waits on menus opened after it
 
     def fill(self, value):
         """`{name}` / `{name.i}` in an action's text: the kept value (a string split on spaces for the index)."""
@@ -428,6 +430,40 @@ class Runner:
         if float(seconds) > 10:
             raise StepFailed(f"wait {seconds}: a step waits at most 10 s (keep steps short; use game_hours)")
         time.sleep(float(seconds))
+
+    def _settle(self, arg):
+        """`settle: <cap s>` (or `settle: {cap: 14, min: 1.0}`): the measured settle that replaces fixed waits before a
+        still (1.15-r4-fast-loop: the world panel's `wait: 10` + `wait: 4` were 14 of its 25.7 s per still). Returns once
+        no Loading Menu or Fader Menu is open since the step began and two `player` reads 0.5 s apart agree within
+        `tol` units (the cell attached, the moveto landed), and at least `min` s have passed; at `cap` it returns anyway,
+        naming what was still moving (the still is then judged by the driver as any other)."""
+        cfg = arg if isinstance(arg, dict) else {"cap": arg}
+        cap, least, tol = float(cfg.get("cap", 14)), float(cfg.get("min", 1.0)), float(cfg.get("tol", 1.0))
+        if cap > 30:
+            raise StepFailed(f"settle cap {cap}: at most 30 s")
+        since = self.settle_since if self.settle_since is not None else (self.b.call("events") or {}).get("last")
+        waited, prev, why = 0.0, None, "never read"
+        while True:
+            menus = [e.get("data") or {} for e in ((self.b.call("events", since, "menu") or {}).get("events") or [])]
+            open_now = {}
+            for d in menus:
+                if d.get("menu") in ("Loading Menu", "Fader Menu"):
+                    open_now[d["menu"]] = bool(d.get("opening"))
+            busy = [m for m, o in open_now.items() if o]
+            pos = ((self.b.call("player") or {}).get("pos")) or {}
+            here = tuple(float(pos.get(k, 0.0)) for k in ("x", "y", "z"))
+            still = prev is not None and max(abs(a - b) for a, b in zip(here, prev)) <= tol
+            why = f"open: {', '.join(busy)}" if busy else ("moving" if not still else "")
+            if (not why and waited >= least) or waited >= cap:
+                break
+            prev = here
+            time.sleep(0.5)
+            waited += 0.5
+        rec = {"call": ["settle", cap], "waited": waited}
+        if why and waited >= cap:
+            rec["capped"] = why
+        self.calls.append(rec)
+        return rec
 
     def _game_hours(self, hours):
         """Game time passes on the game's own clock: the timescale raised, then put back. An hour is 0.6 s (6000) for a
@@ -764,7 +800,8 @@ class Runner:
         kept0 = dict(self.kept)
         retries0 = getattr(self.b, "transport_retries", 0)
         try:
-            for a in step.get("do", []):
+            self.settle_since = ctx["since"]
+            for a in (settled_do(step.get("do", [])) if self.settle_waits else step.get("do", [])):
                 self.act(a)
             for e in step.get("expect", []):
                 why = self.expect(e, ctx)
@@ -790,6 +827,41 @@ class Runner:
         return rec
 
 
+MOVES = ("moveto", "coc ", "cow ", "setpos", "sw ", "fw ", "set gamehour", "setangle")
+
+
+def settled_do(do: list) -> list:
+    """A step's actions with each run of fixed `wait`s that follows a move (a teleport, a moveto/coc/cow/setpos console
+    line, a weather or hour set) replaced by one `settle` capped at the run's total (1.15-r4-fast-loop: fixed waits
+    were the largest cost per still). Waits that time an animation or an input (after a key, pad, strike) stay."""
+    out, moved, run = [], False, []
+    def flush():
+        nonlocal run
+        if run:
+            total = sum(float(a["wait"]) for a in run)
+            if moved:
+                out.append({"settle": {"cap": min(total, 30.0), "min": min(3.0, total)}})
+            else:
+                out.extend(run)
+            run = []
+    for a in do:
+        (k, v), = a.items()
+        if k == "wait":
+            run.append(a)
+            continue
+        flush()
+        line = (v.get("line") if isinstance(v, dict) else v) if k == "console" else ""
+        if k == "teleport" or (k == "console" and any(m in str(line) for m in MOVES)):
+            moved = True
+        elif k in ("camera", "hud", "settle"):
+            pass  # neither a move nor a timed input: a wait after them still settles the move before
+        else:
+            moved = False
+        out.append(a)
+    flush()
+    return out
+
+
 def _form_id(text) -> int | None:
     """A runtime form id as an int, from `0001A26F`, `0x1A26F` or `"0001A26F"`; None for anything else."""
     t = str(text or "").strip().strip('"')
@@ -808,7 +880,7 @@ ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
            "burst": Runner._burst, "burst_fetch": Runner._burst_fetch,
            "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel,
-           "camera": Runner._camera, "hud": Runner._hud}
+           "camera": Runner._camera, "hud": Runner._hud, "settle": Runner._settle}
 QUIT_WAIT_S = 60  # a clean quit (a suspend save first, 2.8 §c) gets this long before launch kills what is left
 EXPECTS = ("read", "console", "event", "moved", "quests_running", "music", "log")
 SKSE_LOGS = "$env:USERPROFILE\\Documents\\My Games\\Skyrim Special Edition\\SKSE"

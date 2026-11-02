@@ -17,6 +17,10 @@ A batch file:
       - {journey: lf83-endings, chain: true}   # no save load: the scene is applied over the last item's game
       - {scene: world-sample-03-corner}    # a scene alone: loaded, `bat`, a still (passes when it applies)
 
+`one_load: true` (batch level, 1.15-r4-fast-loop) chains every item whose save is the last item's, after a pass, unless
+the journey says `needs_load: true` or changes the save (relaunch, batch_last): one load per batch, the scenes
+teleport. `settle_waits: true` turns each run of fixed waits after a move into a measured `settle` (run_journey).
+
 `chain: true` saves a full save load (about 7 s, and the memory it grows) when the item follows one of the same
 scene family and needs nothing the base save resets; it is ignored after a relaunch or a failed item.
 
@@ -83,6 +87,26 @@ def parse_items(spec: list) -> list[dict]:
     return items
 
 
+def item_save(it: dict) -> str:
+    """The save an item starts from (its own, its journey's, else the base save)."""
+    if it.get("save"):
+        return it["save"]
+    f = JOURNEYS / f"{it['id']}.yaml"
+    if it.get("kind", "journey") == "journey" and f.exists():
+        return (rj.load_journey(f) or {}).get("save") or rj.BASE_SAVE
+    return rj.BASE_SAVE
+
+
+def item_needs_load(it: dict) -> bool:
+    """`needs_load: true` (or a save-changing journey: a relaunch, batch_last) keeps its own save load under one_load."""
+    f = JOURNEYS / f"{it['id']}.yaml"
+    if it.get("kind", "journey") != "journey" or not f.exists():
+        return False
+    j = rj.load_journey(f) or {}
+    return bool(j.get("needs_load") or j.get("batch_last") or j.get("soak")
+                or any("relaunch" in a for s in j.get("steps", []) for a in s.get("do", [])))
+
+
 def load_batch(argv_items: list[str]) -> dict:
     if len(argv_items) == 1 and argv_items[0].endswith((".yaml", ".yml")):
         import yaml
@@ -90,8 +114,10 @@ def load_batch(argv_items: list[str]) -> dict:
         if not isinstance(b, dict) or "items" not in b:
             raise SystemExit(f"{argv_items[0]}: a batch has `items`")
         return {"id": b.get("id", pathlib.Path(argv_items[0]).stem), "items": parse_items(b["items"]),
-                "relaunch_mb": float(b.get("relaunch_mb", RELAUNCH_MB)), "relaunch_every": int(b.get("relaunch_every", 0))}
-    return {"id": "adhoc", "items": parse_items(argv_items), "relaunch_mb": RELAUNCH_MB, "relaunch_every": 0}
+                "relaunch_mb": float(b.get("relaunch_mb", RELAUNCH_MB)), "relaunch_every": int(b.get("relaunch_every", 0)),
+                "one_load": bool(b.get("one_load", False)), "settle_waits": bool(b.get("settle_waits", False))}
+    return {"id": "adhoc", "items": parse_items(argv_items), "relaunch_mb": RELAUNCH_MB, "relaunch_every": 0,
+            "one_load": False, "settle_waits": False}
 
 
 def dry(batch: dict) -> list[str]:
@@ -170,6 +196,7 @@ class Batch:
         stamp = time.strftime("%Y%m%dT%H%M%S")
         out = self.out / f"{len(self.summary['items']) + 1:02d}-{it['id']}-{run}-{stamp}"
         runner = rj.Runner(self.b, out, stills=self.stills, sent=self.sent)
+        runner.settle_waits = self.batch.get("settle_waits", False)
         if it["kind"] == "journey":
             j = rj.load_journey(JOURNEYS / f"{it['id']}.yaml")
             save = it["save"] or j.get("save") or rj.BASE_SAVE
@@ -182,7 +209,7 @@ class Batch:
 
     def run(self, start: str | None = None, only: bool = False) -> dict:
         """`start` is `<item>[:<step>]` (--from), alone with `only` (--only)."""
-        t0, prev_ok = self.clock(), False
+        t0, prev_ok, prev_save = self.clock(), False, None
         items = self.batch["items"]
         first_step = None
         if start:
@@ -213,7 +240,10 @@ class Batch:
                         self.write()
                         return self.summary
                     relaunched, prev_ok = True, False
-                load = not (it["chain"] and prev_ok and run == 1)
+                save_now = item_save(it)
+                load = not (prev_ok and run == 1 and (it["chain"] or (self.batch.get("one_load") and save_now == prev_save
+                                                                     and not item_needs_load(it))))
+                prev_save = save_now
                 resume = first_step if k == 0 and run == 1 and first_step else None
                 rep = self.run_one(it, run, load, start=resume, only=only and bool(resume))
                 bad = next((s for s in rep["steps"] if not s["passed"]), None)

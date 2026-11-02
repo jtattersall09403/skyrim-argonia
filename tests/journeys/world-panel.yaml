@@ -50,10 +50,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -124,10 +124,10 @@
      "console": "sw ARG_Weather_sea_fog"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -198,10 +198,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -272,10 +272,10 @@
      "console": "sw ARG_Weather_sea_fog"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -346,10 +346,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -420,10 +420,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -494,10 +494,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -568,10 +568,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -642,10 +642,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -716,10 +716,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -790,10 +790,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -864,10 +864,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -938,10 +938,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1012,10 +1012,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1086,10 +1086,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1160,10 +1160,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1234,10 +1234,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1308,10 +1308,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1382,10 +1382,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1456,10 +1456,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1530,10 +1530,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1604,10 +1604,10 @@
      "console": "sw ARG_Weather_montane_haze"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1678,10 +1678,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1752,10 +1752,10 @@
      "console": "sw ARG_Weather_montane_haze"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1826,10 +1826,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1900,10 +1900,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -1974,10 +1974,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2048,10 +2048,10 @@
      "console": "sw ARG_Weather_mist"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2122,10 +2122,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2196,10 +2196,10 @@
      "console": "sw ARG_Weather_sea_fog"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2270,10 +2270,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2344,10 +2344,10 @@
      "console": "sw ARG_Weather_sea_fog"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2418,10 +2418,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2492,10 +2492,10 @@
      "console": "sw ARG_Weather_montane_haze"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2566,10 +2566,10 @@
      "console": "sw ARG_Weather_clear_dry"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [
@@ -2640,10 +2640,10 @@
      "console": "sw ARG_Weather_montane_haze"
     },
     {
-     "wait": 10
-    },
-    {
-     "wait": 4
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
     }
    ],
    "expect": [

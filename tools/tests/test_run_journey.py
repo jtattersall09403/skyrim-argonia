@@ -591,3 +591,55 @@ def test_camera_first_retries_until_it_flips_and_fails_when_it_never_does(tmp_pa
     never = Fake()
     rep = rj.Runner(never, tmp_path / "b").run(journey(tmp_path, [step]), "base")
     assert not rep["passed"] and "never became first" in rep["steps"][0]["reason"]
+
+
+class Settling:
+    """A bridge whose player lands after `moves` reads and whose Loading Menu closes after `loading` event reads."""
+    def __init__(self, moves=3, loading=2):
+        self.moves, self.loading, self.reads = moves, loading, 0
+
+    def call(self, cmd, *args):
+        if cmd == "player":
+            self.reads += 1
+            x = 0.0 if self.reads > self.moves else float(self.reads * 100)
+            return {"pos": {"x": x, "y": 0.0, "z": 0.0}}
+        if cmd == "events":
+            if not args:
+                return {"last": 1}
+            self.loading -= 1
+            ev = [{"data": {"menu": "Loading Menu", "opening": True}}]
+            if self.loading < 0:
+                ev.append({"data": {"menu": "Loading Menu", "opening": False}})
+            return {"events": ev}
+        return {}
+
+
+def test_settle_returns_when_still_not_at_the_cap(tmp_path):
+    r = rj.Runner(Settling(moves=3, loading=2), tmp_path, stills=False)
+    rec = r._settle({"cap": 14, "min": 1})
+    assert rec["waited"] < 14 and "capped" not in rec
+    assert rec["waited"] >= 1
+
+
+def test_settle_caps_and_names_what_moved(tmp_path):
+    r = rj.Runner(Settling(moves=10 ** 6, loading=0), tmp_path, stills=False)
+    rec = r._settle(4)
+    assert rec["waited"] == 4 and rec["capped"] == "moving"
+    with pytest.raises(rj.StepFailed):
+        r._settle(31)
+
+
+def test_settled_do_turns_waits_after_a_move_into_one_settle():
+    do = [{"console": {"line": "player.moveto X", "settle": 60}}, {"camera": "first"}, {"console": "sw W"},
+          {"wait": 10}, {"wait": 4}]
+    assert rj.settled_do(do)[-1] == {"settle": {"cap": 14.0, "min": 3.0}}
+    timed = [{"key": "E 120"}, {"wait": 2}]  # a wait that times an input stays
+    assert rj.settled_do(timed) == timed
+    assert rj.settled_do([{"teleport": "a b"}, {"wait": 1}]) == [{"teleport": "a b"}, {"settle": {"cap": 1.0, "min": 1.0}}]
+
+
+def test_world_panel_settles_instead_of_fixed_waits():
+    j = rj.load_journey(rj.REPO / "tests" / "journeys" / "world-panel.yaml")
+    moved = [s for s in j["steps"] if any("console" in a and "moveto" in str(a["console"]) for a in s["do"])]
+    assert moved and all(s["do"][-1] == {"settle": {"cap": 14, "min": 3}} for s in moved)
+    assert not any("wait" in a for s in moved for a in s["do"])

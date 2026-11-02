@@ -92,7 +92,8 @@ def journeys(tmp_path, monkeypatch):
 
 
 def run(tmp_path, items, **kw):
-    batch = {"id": "t", "items": rb.parse_items(items), "relaunch_mb": kw.pop("mb", 6000), "relaunch_every": kw.pop("every", 0)}
+    batch = {"id": "t", "items": rb.parse_items(items), "relaunch_mb": kw.pop("mb", 6000), "relaunch_every": kw.pop("every", 0),
+             "one_load": kw.pop("one_load", False), "settle_waits": kw.pop("settle_waits", False)}
     f = Fake()
     s = rb.Batch(f, batch, tmp_path / "out", stills=False).run()
     return f, s, json.loads((tmp_path / "out" / "summary.json").read_text())
@@ -234,3 +235,25 @@ def test_write_owed_orders_by_crash_risk_save_changing_last(tmp_path, journeys):
     j("h-bad", "extreme")
     with pytest.raises(SystemExit, match="crash_risk"):
         rb.owed(d, out)
+
+
+def test_one_load_loads_once_per_batch(tmp_path, journeys):
+    """1.15-r4-fast-loop: one load per batch; a failed item makes the next load again (its state is unknown)."""
+    f, s, _ = run(tmp_path, ["good", "good", "bad", "good", "good"], one_load=True)
+    assert [i["loaded"] for i in s["items"]] == [True, False, False, True, False]
+    assert f.loads == 2
+
+
+def test_one_load_keeps_the_load_of_a_save_changer(tmp_path, journeys):
+    import yaml
+    (rb.JOURNEYS / "fresh.yaml").write_text(yaml.safe_dump({"id": "fresh", "runner": 1, "scene": "sc", "needs_load": True,
+                                                             "steps": [{"name": "ok"}]}))
+    _, s, _ = run(tmp_path, ["good", "fresh", "good"], one_load=True)
+    assert [i["loaded"] for i in s["items"]] == [True, True, False]
+
+
+def test_load_batch_reads_the_fast_loop_keys(tmp_path):
+    f = tmp_path / "b.yaml"
+    f.write_text("id: b\none_load: true\nsettle_waits: true\nitems: [good]\n")
+    b = rb.load_batch([str(f)])
+    assert b["one_load"] and b["settle_waits"]
