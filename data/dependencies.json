@@ -2352,7 +2352,7 @@
    "files": [
     {
      "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json",
-     "text": "{\n \"enabled\": 1,\n \"disableVanillaFog\": 0,\n \"respectVanillaFogFade\": 1,\n \"originalFogColorAmount\": 1.0,\n \"fogHeight\": 350.0,\n \"fogHeightFalloff\": 0.35,\n \"fogDensity\": 0.012,\n \"startDistance\": 0.0,\n \"directionalInscatteringAnisotropy\": 0.6,\n \"directionalInscatteringMultiplier\": 1.0,\n \"volumetricFogEnabled\": 1,\n \"volumetricFogDistance\": 20000.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Argonia's low marsh fog: an exponential height fog over the water and wet ground, volumetric, coloured by the weather's own authored fog slots\"\n }\n}\n"
+     "text": "{\n \"enabled\": 1,\n \"disableVanillaFog\": 0,\n \"respectVanillaFogFade\": 1,\n \"originalFogColorAmount\": 1.0,\n \"fogHeight\": 0.0,\n \"fogHeightFalloff\": 30.0,\n \"fogDensity\": 0.5,\n \"startDistance\": 0.0,\n \"directionalInscatteringAnisotropy\": 0.6,\n \"directionalInscatteringMultiplier\": 1.0,\n \"volumetricFogEnabled\": 1,\n \"volumetricFogDistance\": 20000.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Argonia's low marsh mist: full density at sea level (Z 0), a tenth of it 111 u up (falloff 30), so the bank lies below the 121 u eye on the lowland shore; volumetric, lit by the weather's own fog slots\"\n }\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_VolumetricLighting.json",

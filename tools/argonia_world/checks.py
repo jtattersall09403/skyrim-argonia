@@ -255,8 +255,24 @@ def fog_outside_vanilla(w, r, fog: bool) -> list[str]:
     for k, (lo, hi) in (("day_far", day), ("night_far", night)):
         if fog:
             lo = max(lo, su.FOG_THICKEST_U[0 if k == "day_far" else 1])
-        if not lo <= u[k] <= hi:
+        if not lo <= round(u[k], -2) <= hi:
             out.append(f"fog {k} {u[k]:,.0f} u outside vanilla's {sky[0]['classification']} {lo:,}-{hi:,}")
+    for k, med in zip(("day_far", "night_far"), su.FOG_MEDIAN_U.get(sky[0]["classification"], ())):
+        if round(u[k], -2) < med:
+            out.append(f"fog {k} {u[k]:,.0f} u below vanilla's {sky[0]['classification']} median {med:,}")
+    out += [f"fog {k} 0: the fog starts at the eye" for k in ("day_near", "night_near") if u[k] <= 0]
+    return out
+
+
+def sky_blocked(cls: str, sky: dict, upper: dict) -> list[str]:
+    """Where a weather can hide the sky (owner play test 3 finding 18): fog max above SkyrimFog's, or a grey zenith
+    (skyUpper's channel spread below vanilla's p10 for the class) at any time of day."""
+    from tools.argonia_world import skyrim_units as su
+    out = [f"fog {k} {sky[k]} above vanilla's {su.FOG_MAX_CAP}" for k in ("fog_day_max", "fog_night_max")
+           if sky[k] > su.FOG_MAX_CAP]
+    floor = su.SKY_CHROMA_MIN.get(cls, 0)
+    out += [f"skyUpper@{t} spread {max(c) - min(c)} below vanilla's {cls} {floor} (grey sky)"
+            for t, c in upper.items() if max(c) - min(c) < floor]
     return out
 
 
@@ -278,6 +294,10 @@ def weather_slots(w) -> list[str]:
         if not w.query("SELECT 1 FROM weather_sky WHERE weather_id = ?", wid):
             out.append(f"weather {wid}: no weather_sky row")
         out += [f"weather {wid}: {e}" for e in fog_outside_vanilla(w, r, wid in fogs)]
+        sky = w.query("SELECT * FROM weather_sky WHERE weather_id = ?", wid)
+        if sky:
+            out += [f"weather {wid}: {e}" for e in sky_blocked(sky[0]["classification"], sky[0],
+                                                              {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
         from tools.argonia_world import skyrim_units as su
         out += [f"weather {wid}: {s}@{t} luma {su.luma(cols[s, t]):.0f} outside vanilla's {lo}-{hi}"

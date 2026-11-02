@@ -133,7 +133,7 @@
 {"weather_id":"mist","slot":"skyUpper","tod":"day","rgb":"B1C0BF","why":"the zenith; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"skyUpper","tod":"night","rgb":"182223","why":"the zenith; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"skyUpper","tod":"sunrise","rgb":"97A0A5","why":"the zenith; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"skyUpper","tod":"sunset","rgb":"9D989F","why":"the zenith; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"skyUpper","tod":"sunset","rgb":"A3969F","why":"the zenith; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"stars","tod":"day","rgb":"000000","why":"the stars (night only); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"stars","tod":"night","rgb":"6F7D73","why":"the stars (night only); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -211,9 +211,9 @@
 {"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"sunrise","rgb":"897F76","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyStatics","tod":"sunset","rgb":"837A69","why":"sky statics (distant silhouettes); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"day","rgb":"879695","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"night","rgb":"0F1919","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"sunrise","rgb":"6C7276","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"sunset","rgb":"6B6A6A","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"night","rgb":"0C1A1F","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"sunrise","rgb":"6A7379","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"skyUpper","tod":"sunset","rgb":"726A62","why":"the zenith; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"stars","tod":"day","rgb":"000000","why":"the stars (night only); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"stars","tod":"night","rgb":"6D796B","why":"the stars (night only); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
@@ -373,7 +373,7 @@
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"day","rgb":"A3B2B7","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"night","rgb":"151A21","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"skyUpper","tod":"sunrise","rgb":"89969D","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"skyUpper","tod":"sunset","rgb":"8D8C95","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"skyUpper","tod":"sunset","rgb":"8B8A99","why":"the zenith; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"stars","tod":"day","rgb":"000000","why":"the stars (night only); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"stars","tod":"night","rgb":"576361","why":"the stars (night only); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
@@ -531,9 +531,9 @@
 {"weather_id":"storm","slot":"skyStatics","tod":"sunrise","rgb":"47433B","why":"sky statics (distant silhouettes); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyStatics","tod":"sunset","rgb":"493B39","why":"sky statics (distant silhouettes); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"skyUpper","tod":"day","rgb":"424E48","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"skyUpper","tod":"night","rgb":"060C0D","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"skyUpper","tod":"sunrise","rgb":"363E39","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
-{"weather_id":"storm","slot":"skyUpper","tod":"sunset","rgb":"3A3637","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"skyUpper","tod":"night","rgb":"060E10","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"skyUpper","tod":"sunrise","rgb":"35403B","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
+{"weather_id":"storm","slot":"skyUpper","tod":"sunset","rgb":"3E3437","why":"the zenith; storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"stars","tod":"day","rgb":"000000","why":"the stars (night only); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"stars","tod":"night","rgb":"272F23","why":"the stars (night only); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
 {"weather_id":"storm","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); storm: green-black deck, bruised horizon, lightning-ready dark ambient"}
@@ -693,7 +693,7 @@
 {"weather_id":"wet-rain","slot":"skyUpper","tod":"day","rgb":"5E666C","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyUpper","tod":"night","rgb":"081411","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"skyUpper","tod":"sunrise","rgb":"4D5258","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
-{"weather_id":"wet-rain","slot":"skyUpper","tod":"sunset","rgb":"4E4C50","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
+{"weather_id":"wet-rain","slot":"skyUpper","tod":"sunset","rgb":"564C55","why":"the zenith; rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"stars","tod":"day","rgb":"000000","why":"the stars (night only); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"stars","tod":"night","rgb":"3B453E","why":"the stars (night only); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}
 {"weather_id":"wet-rain","slot":"stars","tod":"sunrise","rgb":"000000","why":"the stars (night only); rain: slate green-grey, dim cool ambient, water dark; night near-black green"}

@@ -194,3 +194,55 @@ def test_regimes_hold_marsh_fog_in_vanilla_band():
     from tools.argonia_world.regions import weather_seed as S
     assert all(28 <= c <= 35 for c, _ in S.REGIMES["radiation"][2].values())
     assert all(sum(map(len, st.values())) <= 5 for st in S.REALISE.values())  # + the mist weather: <= 6 entries
+
+
+def test_no_weather_hides_the_sky():
+    """Owner play test 3 finding 18: every weather's fog far at least vanilla's class median (day and night: sunrise
+    and sunset lie between them), near above 0, fog max at most SkyrimFog's 0.95, and an authored, non-grey zenith at
+    every time of day. The old mist (night far 215 m, near 0, max 1.0) and a grey dusk zenith fail."""
+    from tools.argonia_world import checks as C
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.regions import weather_seed as S
+
+    class W:
+        def __init__(self, cls):
+            self.cls = cls
+
+        def query(self, *_):
+            return [{"classification": self.cls}]
+
+    def row(wid, dn, df, nn, nf):
+        return {"id": wid, "fog_day_near_m": dn, "fog_day_far_m": df, "fog_night_near_m": nn, "fog_night_far_m": nf}
+
+    old = C.fog_outside_vanilla(W("Cloudy"), row("mist", 0, 700, 0, 215), True)
+    assert any("median" in e for e in old) and any("starts at the eye" in e for e in old)
+    assert C.sky_blocked("Cloudy", {"fog_day_max": 1.0, "fog_night_max": 1.0}, {"sunset": (0x6B, 0x6A, 0x6A)})
+    for wid, v in S.WEATHERS.items():
+        cls, fmax = S.SKY[wid][0], S.SKY[wid][10:12]
+        assert not C.fog_outside_vanilla(W(cls), row(wid, *v[3:7]), False), wid
+        upper = dict(zip(S.TOD, (C._rgb(h) for h in S.P[wid]["skyUpper"])))
+        assert not C.sky_blocked(cls, {"fog_day_max": fmax[0], "fog_night_max": fmax[1]}, upper), wid
+        assert all(su.metres_to_units(m) > 0 for m in (v[3], v[5])), wid
+
+
+def test_height_fog_lies_below_the_eye():
+    """The Community Shaders Exponential Height Fog the stack lays (data/dependencies.json, community-shaders' files):
+    density 2^(-falloff/1000 * (z - fogHeight)) (ExponentialHeightFog.hlsli), so the bank's top (a tenth of its
+    density) is fogHeight + log2(10) * 1000 / falloff. On the flattest ground the world panel stands on (its shore
+    vantage's lowest, 0.3 m above sea-level water) that top is below the play camera, and the volumetric part is on."""
+    import json
+    import math
+    from pathlib import Path
+    from tools.argonia_world import panel
+    from tools.argonia_world import skyrim_units as su
+    deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
+    rows = deps if isinstance(deps, list) else deps.get("dependencies", deps.get("mods", []))
+    text = next(f["text"] for d in rows for f in d.get("files", [])
+                if f["path"].endswith("Argonia_ExponentialHeightFog.json"))
+    fog = json.loads(text)
+    assert fog["enabled"] == 1 and fog["volumetricFogEnabled"] == 1 and fog["volumetricFogDistance"] > 0
+    assert fog["fogDensity"] > 0 and fog["disableVanillaFog"] == 0
+    top = fog["fogHeight"] + math.log2(10) * 1000 / fog["fogHeightFalloff"]
+    eye = su.metres_to_units(panel.SHORE_LO_M) + su.EYE_HEIGHT_UNITS
+    assert top < eye, (top, eye)
+    assert fog["fogHeight"] <= su.metres_to_units(panel.SHORE_LO_M)  # the bank is densest on the ground, not above it

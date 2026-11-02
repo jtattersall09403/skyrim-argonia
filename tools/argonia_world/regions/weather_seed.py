@@ -36,9 +36,10 @@ ROLE = {
 # id -> (EditorID, template weather id (references only), state, fog m: day near, day far, night near, night far,
 #        image day, image dawn, image night, why)
 # Fog distances sit inside Skyrim.esm's measured ranges for the weather's class and time of day
-# (skyrim-does-it-this-way §7; checks.weather_fog): the mist no thicker than SkyrimFog (>= 25,000 u day, 15,000 u night).
+# (skyrim-does-it-this-way §7; checks.weather_fog): far at least the class's vanilla median, near above 0, fog max at
+# most SkyrimFog's 0.95 so the sky is never fully hidden (owner play test 3 finding 18; lane-1.15-r4-light).
 WEATHERS = {
-    "clear-dry": ("ARG_Weather_clear_dry", "clear-ff", "clear-humid", 15, 1400, 5, 700, "day", "dawn", "night",
+    "clear-dry": ("ARG_Weather_clear_dry", "clear-ff", "clear-humid", 15, 1400, 5, 714, "day", "dawn", "night",
                   "dry-season subsidence clear: the NW dry pole's best visibility, a pale hot sky over olive haze "
                   "(climatology §4 NW border; 55 §98 cloudless days belong to dry spells)"),
     "monsoon-overcast": ("ARG_Weather_monsoon_overcast", "cloudy-ma", "monsoon-downpour", 15, 700, 10, 480,
@@ -46,10 +47,10 @@ WEATHERS = {
                          "a monsoon break day under a full deck: flat bright light, no rain (55 §98 coverage ladder)"),
     "wet-rain": ("ARG_Weather_wet_rain", "rain-ma", "monsoon-downpour", 15, 400, 10, 280, "rain", "rain", "night",
                  "wet-season rain: a wall of grey-green water over the interior (55 §98; climatology §2 monsoon)"),
-    "mist": ("ARG_Weather_mist", "fog-ma", "ground-mist", 0, 700, 0, 215, "mist", "mist", "night",
+    "mist": ("ARG_Weather_mist", "fog-ma", "ground-mist", 2, 700, 2, 430, "mist", "mist", "night",
              "radiation mist: pooled over inland water and wet ground after a clear calm night, burning off after "
              "dawn (climatology §2, §4 interior basins; 55 §97)"),
-    "sea-fog": ("ARG_Weather_sea_fog", "fog-co", "ground-mist", 4, 450, 2, 300, "seafog", "seafog", "night",
+    "sea-fog": ("ARG_Weather_sea_fog", "fog-co", "ground-mist", 4, 450, 2, 430, "seafog", "seafog", "night",
                 "advection sea fog on the open coast and up the estuaries (climatology §2, §3 exp(-dCoast/8))"),
     "montane-haze": ("ARG_Weather_montane_haze", "cloudy-ff", "ground-mist", 15, 700, 10, 480, "montane", "dawn",
                      "night", "the montane cloud-forest belt's haze on the border ranges, summits clear above it "
@@ -71,18 +72,18 @@ SKY = {
                          "a moving deck, no direct sun; fog builds evenly"),
     "wet-rain": ("Rainy", 0.55, 0.05, 0.0, 0.0, 0.2, 0.9, 0.0, 0.9, 0.9, 0.95, 0.95,
                  "rain thick enough to close the middle distance"),
-    "mist": ("Cloudy", 0.03, 0.005, 0.3, 0.0, 0.0, 0.0, 0.0, 0.6, 0.6, 1.0, 1.0,
-             "calm air (radiation mist needs it); fog starts at the eye; its far opens from SkyrimFog's night 215 m to FogMA's "
-             "day 700 m through sunrise, the burn-off inside one weather (vanilla's FogMA: 35,000 to 50,000 u)"),
-    "sea-fog": ("Cloudy", 0.2, 0.02, 0.15, 0.0, 0.0, 0.0, 0.0, 0.7, 0.7, 1.0, 1.0,
+    "mist": ("Cloudy", 0.03, 0.005, 0.3, 0.0, 0.0, 0.0, 0.0, 0.6, 0.6, 0.95, 0.95,
+             "calm air (radiation mist needs it); fog starts 2 m out; its far opens from 430 m at night "
+             "(vanilla's cloudy median, 30,000 u) to day 700 m through sunrise, the burn-off inside one weather (vanilla's FogMA: 35,000 to 50,000 u)"),
+    "sea-fog": ("Cloudy", 0.2, 0.02, 0.15, 0.0, 0.0, 0.0, 0.0, 0.7, 0.7, 0.95, 0.95,
                 "a sea breeze carries the bank in; dense but not at the eye"),
     "montane-haze": ("Cloudy", 0.25, 0.025, 0.4, 0.3, 0.0, 0.0, 0.0, 1.1, 1.0, 0.85, 0.9,
                      "upslope wind feeds the belt; haze not whiteout"),
     "tannin-haze": ("Cloudy", 0.2, 0.02, 0.5, 0.5, 0.0, 0.0, 0.0, 1.3, 1.1, 0.8, 0.85,
                     "dry warm air holding fine particles; a long soft fog ramp"),
-    "squall": ("Rainy", 0.8, 0.08, 0.0, 0.0, 0.1, 0.9, 0.3, 0.8, 0.8, 1.0, 1.0,
+    "squall": ("Rainy", 0.8, 0.08, 0.0, 0.0, 0.1, 0.9, 0.3, 0.8, 0.8, 0.95, 0.95,
                "the one fast arrival (55 §98: 6 min); wind and rain bands"),
-    "storm": ("Rainy", 0.7, 0.07, 0.0, 0.0, 0.1, 0.9, 0.6, 0.8, 0.8, 1.0, 1.0,
+    "storm": ("Rainy", 0.7, 0.07, 0.0, 0.0, 0.1, 0.9, 0.6, 0.8, 0.8, 0.95, 0.95,
               "convective storm: thunder often, rain heavy"),
 }
 
@@ -147,7 +148,7 @@ P["clear-dry"] = {
     "dalcDown": ("4D4332", "5D5D40", "49392B", "161B10"),
 }
 P["monsoon-overcast"] = {
-    "skyUpper": ("6C7276", "879695", "6B6A6A", "0F1919"),
+    "skyUpper": ("6A7379", "879695", "726A62", "0C1A1F"),
     "skyLower": ("8D8880", "AFAFA6", "8E7B71", "1E1F1A"),
     "horizon": ("A99B8A", "B9BCAC", "A58C75", "242622"),
     "fogNear": ("898A7B", "8E9888", "867F73", "162321"),
@@ -169,7 +170,7 @@ P["monsoon-overcast"] = {
     "dalcDown": ("494536", "5D5F4A", "4A3B35", "131111"),
 }
 P["wet-rain"] = {
-    "skyUpper": ("4D5258", "5E666C", "4E4C50", "081411"),
+    "skyUpper": ("4D5258", "5E666C", "564C55", "081411"),
     "skyLower": ("66635B", "787D77", "685955", "131913"),
     "horizon": ("777361", "8A8F80", "75675C", "131F1C"),
     "fogNear": ("606755", "6E7D6B", "5F5A52", "0F1E14"),
@@ -191,7 +192,7 @@ P["wet-rain"] = {
     "dalcDown": ("39372B", "48473E", "3B3129", "0F0D0D"),
 }
 P["mist"] = {
-    "skyUpper": ("97A0A5", "B1C0BF", "9D989F", "182223"),
+    "skyUpper": ("97A0A5", "B1C0BF", "A3969F", "182223"),
     "skyLower": ("CDBCAE", "D1D9C3", "C8B5A0", "262927"),
     "horizon": ("E1C8B1", "DBDFC8", "DABAA0", "2B3229"),
     "fogNear": ("8A887F", "92968F", "A69C8C", "283533"),
@@ -213,7 +214,7 @@ P["mist"] = {
     "dalcDown": ("736E5A", "808172", "6F5F54", "191D17"),
 }
 P["sea-fog"] = {
-    "skyUpper": ("89969D", "A3B2B7", "8D8C95", "151A21"),
+    "skyUpper": ("89969D", "A3B2B7", "8B8A99", "151A21"),
     "skyLower": ("B3AEA6", "C3C5C4", "AE9FA1", "202325"),
     "horizon": ("C5BAB0", "CDD0CD", "C1AEA1", "222B29"),
     "fogNear": ("838C85", "8D9893", "A29C97", "1E2D2D"),
@@ -301,7 +302,7 @@ P["squall"] = {
     "dalcDown": ("2D342B", "3B3F3B", "342929", "0D0A0D"),
 }
 P["storm"] = {
-    "skyUpper": ("363E39", "424E48", "3A3637", "060C0D"),
+    "skyUpper": ("35403B", "424E48", "3E3437", "060E10"),
     "skyLower": ("504D43", "595E56", "524A3A", "150F0C"),
     "horizon": ("62594C", "71705D", "61534A", "111B0B"),
     "fogNear": ("464D43", "51614C", "4B463C", "0C1615"),

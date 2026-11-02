@@ -32,6 +32,18 @@ FOG_RANGES_U = {
     "Rainy": (1200, (15_000, 39_000), (10_000, 31_000)),
 }
 FOG_THICKEST_U = (25_000, 15_000)  # SkyrimFog, vanilla's thickest fog: day far, night far
+# Skyrim.esm's median fog far per class, day and night (vanilla/measure.py q7, re-measured 2026-11-02 for
+# lane-1.15-r4-light): our fog far sits at or above it so no weather blocks more of the view than vanilla's
+# typical weather of its class; fog near above 0; fog max at most SkyrimFog's 0.95 (vanilla day max p50 0.9,
+# 1.0 only on the 16 unclassified effect weathers), so the sky dome is never fully fogged.
+FOG_MEDIAN_U = {"Pleasant": (85_000, 50_000), "Cloudy": (30_000, 30_000), "Rainy": (20_000, 15_000)}
+FOG_MAX_CAP = 0.95
+# The sky's top colour is never grey: its channel spread (max - min, 0-255) at every time of day is at least vanilla's
+# p10 for the class (the per-weather minimum over the four times, Skyrim.esm WTHR NAM0 slot 0, measured 2026-11-02).
+SKY_CHROMA_MIN = {"Pleasant": 9, "Cloudy": 11, "Rainy": 9}
+# The play camera's height above the feet for a race of height 1.0: the human skeleton's Camera3rd [Cam3] node
+# (actors/character/character assets/skeleton.nif, Skyrim - Meshes0.bsa; NPCEyeBone 124.1), measured 2026-11-02.
+EYE_HEIGHT_UNITS = 121.0
 
 # The light slots' luma (Rec. 709, 0-255) per time of day: min and max over Skyrim's 33 region weathers as the game
 # loads them (Update.esm's WTHR overrides; the _A, quest and war weathers left out), measured 2026-11-02 (1.15 session
