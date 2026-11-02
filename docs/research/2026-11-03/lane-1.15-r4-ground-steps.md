@@ -28,3 +28,7 @@ deep-water `inner` skip it. Test: `terrain/tests/test_generate.py::test_site_ove
   `python3 -m tools.argonia_world.water emit` and `check` (expect 0 reds, noChannel []).
 - I killed the roads lane's first deadlocked generate (pids 145314/145315) before seeing the lock fix; the second I did not touch.
 - In game: no new check; the existing river-steps journey covers it.
+
+## Re-measure (after the lock freed)
+`terrain generate --out out/terrain-r4gs` (about 2 min), `water emit`, `water check` with that ground:
+noChannel 8 -> 0 (759 pieces on 203 steps, was 728), `water check` reds {} (0). Blocker above is cleared.
