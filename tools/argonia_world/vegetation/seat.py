@@ -20,13 +20,14 @@ from pathlib import Path
 import numpy as np
 
 from tools.argonia_world.terrain.esm import records
+from tools.argonia_world.skyrim_units import CELL_UNITS
 from tools.navmesh.meshes import STACK
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "data" / "tree-seat.json"
 MIN_REFS = 5  # fewer refs: no measured seat (the form is not listed as a tree)
 HANG_MAX = 10.0  # units: a mesh whose lowest point stands higher above the ground at its seat hangs
-CELL = 4096.0
+CELL = float(CELL_UNITS)
 STEP = 128.0
 
 
