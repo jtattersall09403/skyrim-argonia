@@ -17,7 +17,6 @@ CLEAR = "clear-dry"
 
 
 def table(w) -> list[dict]:
-    from tools.argonia_world.regions import season as S
     keys = {r.editor_id: f"{r.form_id:06X}:{r.plugin}" for r in w.rows("formid") if r.record_type == "WTHR"}
     wx = {r["id"]: dict(r) for r in w.query("SELECT id, edid, form_key FROM weather")}
 
