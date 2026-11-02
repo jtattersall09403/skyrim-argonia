@@ -1,4 +1,6 @@
 """L1 on a synthetic 4x4-cell province with a 1-cell apron: VHGT round trip, the limiter, seams, layers."""
+from pathlib import Path
+
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
@@ -84,3 +86,42 @@ def test_game_heights_equal_the_cells(tmp_path):
     a, b = s.cell_cols(-61)
     g = build.game_heights_m(s, north, south + 1, a, b + 1)[::-1]
     assert np.allclose(g, quantize.decode(c["offset"], build.unpack(c)["vhgt"]) * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE)
+
+
+def test_build_replaces_land_only_after_writing_its_rows(tmp_path):
+    s = src()
+    build.build(s, table(), tmp_path, cells=(-63, -63, -58, -58))
+    old = sorted(p.name for p in (tmp_path / "land").iterdir())
+    try:
+        build.build(s, table(), tmp_path, cells=(-63, -63, -58, 99999))  # refused before any row is written
+    except ValueError:
+        pass
+    assert sorted(p.name for p in (tmp_path / "land").iterdir()) == old
+    real = build.write_row
+
+    def boom(*a, **k):
+        raise RuntimeError("interrupted")
+    build.write_row = boom
+    try:
+        build.build(s, table(), tmp_path, cells=(-63, -63, -58, -58))
+    except RuntimeError:
+        pass
+    finally:
+        build.write_row = real
+    assert sorted(p.name for p in (tmp_path / "land").iterdir()) == old  # the old land is intact
+    assert [p.name for p in tmp_path.iterdir()] == ["land"]  # no temp dir left behind
+    build.build(s, table(), tmp_path, cells=(-63, -63, -60, -60))  # a new build swaps in whole
+    assert len(list((tmp_path / "land").iterdir())) < len(old)
+    assert [p.name for p in tmp_path.iterdir()] == ["land"]
+
+
+def test_partial_builds_default_to_their_own_dir():
+    import argparse
+
+    from tools.argonia_world.terrain import __main__ as M
+    ns = lambda **k: argparse.Namespace(**{"out": None, "sample": False, "cells": None, **k})  # noqa: E731
+    assert M.default_out(ns()) == M.OUT
+    assert M.default_out(ns(sample=True)) == M.SAMPLE_OUT / "sample"
+    assert M.default_out(ns(cells="-5,6,7,8")) == M.SAMPLE_OUT / "cells--5,6,7,8"
+    assert M.default_out(ns(sample=True, out="x")) == Path("x")
+    assert M.OUT not in M.default_out(ns(sample=True)).parents

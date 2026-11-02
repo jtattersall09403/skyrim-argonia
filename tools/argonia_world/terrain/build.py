@@ -17,6 +17,7 @@ import gzip
 import json
 import multiprocessing as mp
 import os
+import shutil
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -219,27 +220,36 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1
     for x0, y0, x1, y1 in boxes:
         if not (gx0 <= x0 <= x1 <= gx1 and gy0 <= y0 <= y1 <= gy1):
             raise ValueError(f"cells {x0},{y0},{x1},{y1} outside the grid {gx0},{gy0},{gx1},{gy1}")
-    land = out / "land"
-    land.mkdir(parents=True, exist_ok=True)
-    for old in land.glob("cy*.jsonl.gz"):
-        old.unlink()
+    final = out / "land"
+    land = out / f"land.tmp-{os.getpid()}"  # rows go here; the old land stays whole until they are all written
+    shutil.rmtree(land, ignore_errors=True)
+    land.mkdir(parents=True)
     rows = list(range(max(bx[3] for bx in boxes), min(bx[1] for bx in boxes) - 1, -1))  # north to south: the
     # grid's row order, so the memory maps read forward
     jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(rows)))
     if jobs > 1 and factory is None:
         jobs = 1
-    if jobs == 1:
-        for cy in rows:
-            write_row(b, boxes, land, cy)
-            if progress:
-                progress(cy, b.stats)
-    else:
-        ctx = mp.get_context("fork")
-        with ctx.Pool(jobs, initializer=_worker_init, initargs=(factory, boxes, land, kw)) as pool:
-            for cy, st in pool.imap(_worker_row, rows):  # in row order; each worker holds its own maps
-                b.stats.merge(st)
+    try:
+        if jobs == 1:
+            for cy in rows:
+                write_row(b, boxes, land, cy)
                 if progress:
                     progress(cy, b.stats)
+        else:
+            ctx = mp.get_context("fork")
+            with ctx.Pool(jobs, initializer=_worker_init, initargs=(factory, boxes, land, kw)) as pool:
+                for cy, st in pool.imap(_worker_row, rows):  # in row order; each worker holds its own maps
+                    b.stats.merge(st)
+                    if progress:
+                        progress(cy, b.stats)
+    except BaseException:
+        shutil.rmtree(land, ignore_errors=True)
+        raise
+    old = out / f"land.old-{os.getpid()}"
+    if final.exists():
+        final.rename(old)
+    land.rename(final)
+    shutil.rmtree(old, ignore_errors=True)
     b.stats.seconds = round(time.time() - t0, 1)
     return b.stats
 

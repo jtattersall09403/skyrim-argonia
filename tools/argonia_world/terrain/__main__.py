@@ -1,8 +1,11 @@
 """The terrain generator's command line (2.W1).
 
     python3 -m tools.argonia_world.terrain build [--cells=x0,y0,x1,y1] [--out DIR] [--no-apron]   (the = keeps a leading minus an argument)
-        every cell's LAND line into DIR/land/ (default out/terrain/), the build stats into DIR/stats.json
+        every cell's LAND line into DIR/land/ (default out/terrain/ for the whole province; with --cells or
+        --sample, out/terrain-sample/<cells-x0,y0,x1,y1|sample>/ so a worktree never clears the shared whole land),
+        the build stats into DIR/stats.json
     python3 -m tools.argonia_world.terrain build --sample [--out DIR]   the gate's fixed sample (world.SAMPLE)
+    (world, check and render take --sample/--cells and follow the same default dir)
     python3 -m tools.argonia_world.terrain world [--out DIR]   DIR/world.json, the WRLD intermediate over DIR/land
     python3 -m tools.argonia_world.terrain check [--out DIR] [--points N]
         the L1 checks on what `build` wrote: inputs by sha256, height error at N random province vertices and
@@ -29,6 +32,7 @@ from tools.argonia_world.terrain.grid import Sources
 
 ROOT = Path(__file__).resolve().parents[3]
 OUT = ROOT / "out" / "terrain"
+SAMPLE_OUT = ROOT / "out" / "terrain-sample"  # a partial build's own dirs, never the whole-province out/terrain/land
 HEIGHT_TOL_M = 0.5  # the brief's L1/L4 bound
 QUANT_M = 0.5 * su.VHGT_STEP_UNITS / su.UNITS_PER_METRE + 1e-6  # rounding to a step alone stays within this
 
@@ -42,9 +46,23 @@ def _cells(s: str | None):
     return v
 
 
+def default_out(a) -> Path:
+    """--out, else out/terrain for the whole province, else out/terrain-sample/<sample|cells-x0,y0,x1,y1>/ for a
+    partial build: a worktree's out/terrain is the main tree's, and a partial build must never clear its land."""
+    if a.out:
+        return Path(a.out)
+    if getattr(a, "sample", False):
+        return SAMPLE_OUT / "sample"
+    if getattr(a, "cells", None):
+        return SAMPLE_OUT / ("cells-" + ",".join(map(str, _cells(a.cells))))
+    return OUT
+
+
 def cmd_build(a) -> int:
+    a.out = str(default_out(a))
     src = Sources.load(apron=not a.no_apron)
     out = Path(a.out)
+    out.mkdir(parents=True, exist_ok=True)
 
     def progress(cy, st):
         if cy % 16 == 0:
@@ -106,7 +124,7 @@ def _built_cells(out: Path, src) -> set[tuple[int, int]]:
 
 
 def cmd_check(a) -> int:
-    out = Path(a.out)
+    out = default_out(a)
     stats = json.loads((out / "stats.json").read_text())
     src = Sources.load(apron=stats.get("apron", True))
     res: dict = {"inputs": {n: s for n, s in vault.status(vault.data_dir()).items()
@@ -244,7 +262,7 @@ def cmd_generate(a) -> int:
     if a.sample:
         src = Sources.load()
         from tools.argonia_world.terrain.landcover import table as tbl
-        out = Path(a.out)
+        out = default_out(a)
         stt = B.build(src, tbl(w), out, cells=world.SAMPLE_1_15)
         d = {k: (v if not isinstance(v, dict) else {str(i): n for i, n in sorted(v.items())}) for k, v in stt.__dict__.items()}
         d["cells_arg"], d["apron"] = "sample-1.15", True
@@ -262,6 +280,8 @@ def cmd_render(a) -> int:
     ground = np.load(data_root() / "terrain" / "refined-height-f32.npy" if a.old or not g.exists() else g, mmap_mode="r")
     water = cellwater.load(w)
     wins = world.SAMPLE_1_15 if a.sample or not a.cells else [_cells(a.cells)]
+    a.sample = a.sample or not a.cells
+    a.out = a.out or str(default_out(a) / "render")
     layers = a.layers.split(",") if a.layers else None
     for c in wins:
         name = "_".join(str(v) for v in c) + ".png"
@@ -274,24 +294,28 @@ def main(argv=None) -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build")
     b.add_argument("--cells")
-    b.add_argument("--out", default=str(OUT))
+    b.add_argument("--out", help="default out/terrain; with --sample or --cells out/terrain-sample/<sample|cells-x0,y0,x1,y1>")
     b.add_argument("--no-apron", action="store_true")
     b.add_argument("--sample", action="store_true")
     b.add_argument("--jobs", type=int, help="worker processes (default every CPU; 1 = one process)")
     w = sub.add_parser("world")
-    w.add_argument("--out", default=str(OUT))
+    w.add_argument("--out")
+    w.add_argument("--cells")
+    w.add_argument("--sample", action="store_true")
     c = sub.add_parser("check")
-    c.add_argument("--out", default=str(OUT))
+    c.add_argument("--out")
+    c.add_argument("--cells")
+    c.add_argument("--sample", action="store_true")
     c.add_argument("--points", type=int, default=1000)
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
     sub.add_parser("relief", help="write the region_relief rows from generate.relief_rows (the dossier bands)")
     gp = sub.add_parser("generate")
     gp.add_argument("--sample", action="store_true", help="then build the 1.15 sample windows' LAND")
-    gp.add_argument("--out", default=str(OUT))
+    gp.add_argument("--out")
     r = sub.add_parser("render")
     r.add_argument("--cells")
     r.add_argument("--sample", action="store_true")
-    r.add_argument("--out", default=str(OUT / "render"))
+    r.add_argument("--out")
     r.add_argument("--layers")
     r.add_argument("--old", action="store_true", help="render the old sculpt, not the generated ground")
     a = p.parse_args(argv)
@@ -310,7 +334,7 @@ def main(argv=None) -> int:
     if a.cmd == "render":
         return cmd_render(a)
     if a.cmd == "world":
-        out = Path(a.out)
+        out = default_out(a)
         print(world.write(out / "world.json", Sources.load().cell_range, out / "land"))
         return 0
     return cmd_build(a) if a.cmd == "build" else cmd_check(a)

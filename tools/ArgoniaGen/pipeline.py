@@ -296,6 +296,22 @@ def vegetation(into: Path, sample: bool) -> Path:
     return d
 
 
+def _shared_tree(into: Path) -> Path | None:
+    """The other tree whose out/ `into` really is, when this process runs in a worktree whose out/terrain links to it."""
+    top = Path(subprocess.run(["git", "rev-parse", "--show-toplevel"], cwd=ROOT, capture_output=True, text=True,
+                              check=False).stdout.strip() or ROOT).resolve()
+    real = into.resolve()
+    return real.parents[1] if real != into and not real.is_relative_to(top) else None
+
+
+def _refuse_shared_rebuild(into: Path) -> None:
+    """A worktree's out/terrain is the main tree's: a stale land stamp there is rebuilt in the main tree, never from
+    here (four whole-province lands were emptied that way); ARGONIA_REBUILD_LAND=1 overrides."""
+    if os.environ.get("ARGONIA_REBUILD_LAND") != "1" and _shared_tree(into):
+        print("land is stale: run make plugin in the main tree", file=sys.stderr)
+        raise SystemExit(2)
+
+
 def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bool = True) -> Path:
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
@@ -304,6 +320,8 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
     if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
+        if not sample:
+            _refuse_shared_rebuild(into)
         run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into,
             *(["--sample"] if sample else []), capped=True)
         if not sample:
