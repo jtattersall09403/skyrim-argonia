@@ -699,6 +699,7 @@ class Runner:
         for name in {e["log"]["name"] for e in step.get("expect", []) if "log" in e}:
             ctx["log_lines"][name] = len(skse_log(self.b, name))
         rec = {"n": n, "name": step["name"], "passed": True}
+        kept0 = dict(self.kept)
         retries0 = getattr(self.b, "transport_retries", 0)
         try:
             for a in step.get("do", []):
@@ -714,6 +715,8 @@ class Runner:
             rec.update(passed=False, reason=f"{type(e).__name__}: {e}")
         if ctx.get("notes"):
             rec["notes"] = ctx["notes"]
+        if new := {k: v for k, v in self.kept.items() if k not in kept0 or kept0[k] != v}:
+            rec["kept"] = new  # what the step read and kept (e.g. the actors table), in the run's report.json
         if self.stills or not rec["passed"]:
             try:
                 rec["still"] = str(self.b.screenshot(self.out / f"{n:02d}-{step['name']}.png"))
