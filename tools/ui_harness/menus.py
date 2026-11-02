@@ -60,6 +60,33 @@ window.__desc = (el) => {
 };
 """
 
+# The lowest contrast of any shown text over its ground (WCAG 2 ratio): each translucent ground composited over the
+# next one up, the page's bottom taken as play at its darkest (black); the text's own alpha and opacity applied.
+CONTRAST = r"""
+() => {
+  const rgba = (c) => { const m = c.match(/[\d.]+/g).map(Number); return [m[0], m[1], m[2], m.length > 3 ? m[3] : 1]; };
+  const over = (top, bot) => [0, 1, 2].map((i) => top[i] * top[3] + bot[i] * (1 - top[3])).concat([1]);
+  const lum = (c) => { const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; };
+    return 0.2126 * f(c[0]) + 0.7152 * f(c[1]) + 0.0722 * f(c[2]); };
+  const ground = (el) => { const chain = []; for (let e = el; e; e = e.parentElement) chain.push(rgba(getComputedStyle(e).backgroundColor));
+    return chain.reverse().reduce((g, c) => c[3] > 0 ? over(c, g) : g, [0, 0, 0, 1]); };
+  let worst = { ratio: 99, text: "" };
+  const w = document.createTreeWalker(document.getElementById("view"), NodeFilter.SHOW_TEXT);
+  for (let n = w.nextNode(); n; n = w.nextNode()) {
+    if (!n.textContent.trim()) continue;
+    const el = n.parentElement, r = el.getBoundingClientRect();
+    if (!r.width || !r.height) continue;
+    let op = 1; for (let e = el; e; e = e.parentElement) op *= +getComputedStyle(e).opacity;
+    const g = ground(el), c = rgba(getComputedStyle(el).color); c[3] *= op;
+    const t = over(c, g), a = lum(t), b = lum(g), ratio = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    if (ratio < worst.ratio) worst = { ratio: Math.round(ratio * 100) / 100, text: n.textContent.trim().slice(0, 30) };
+  }
+  return worst;
+}
+"""
+MIN_CONTRAST = 4.5
+CONTRAST_CHECKED = {"system", "inventory", "charsheet", "magic", "journal"}
+
 GRAPH = r"""
 (B) => {
   const els = window.__focusables();
@@ -133,6 +160,9 @@ def drive(h: Menus, vp, view: str, state: str, script: list[str], graph: bool, s
     opening = p.evaluate("() => window.__desc(document.activeElement)")
     r["opening"] = opening and opening["key"]
     still("open")
+    r["contrast"] = p.evaluate(CONTRAST)
+    if view in CONTRAST_CHECKED and r["contrast"]["ratio"] < MIN_CONTRAST:
+        r["fails"].append(f"contrast {r['contrast']['ratio']}:1 under {MIN_CONTRAST} on '{r['contrast']['text']}'")
     if graph:
         g = p.evaluate(GRAPH, BUTTON)
         got = reach(g["start"] or (opening and opening["key"]), g["edges"])

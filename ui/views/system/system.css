@@ -1,11 +1,12 @@
-/* Our System pane (lane 1.12-menus): one small frame-style window (the --frame-* tokens; DESIGN.md), centred over play,
-   as Morrowind's options window: the title bar, then the entries as full-width buttons. */
+/* Our System pane (lane 1.12-menus; restyled 1.12-r4-menus for owner play test 3 finding 8): the journal's frame
+   window and title bar, a paper sheet inside, the groups under left-hand headings in the journal's heading style
+   (.ghead: rust on paper, a faint rule), the entries ink on paper (the menu loop measures the contrast). */
 body { display: flex; align-items: center; justify-content: center; }
 #view { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
 
 .window {
-  width: min(92vw, 26rem); display: flex; flex-direction: column; gap: var(--s3);
-  padding: var(--s2) var(--s4) var(--s4); color: var(--frame-text); background: var(--frame-ground);
+  width: min(92vw, 30rem); display: flex; flex-direction: column; gap: var(--s3);
+  padding: var(--s2) var(--s4) var(--s4); color: var(--frame-text); background: #0e130d;
   border: var(--edge) solid var(--frame-trim); border-radius: 0.3rem;
   box-shadow: 0 0.4rem 1.6rem var(--frame-shadow), inset 0 0 0 0.3rem var(--frame-bg),
     inset 0 0 0 calc(0.3rem + 1px) var(--frame-trim);
@@ -17,20 +18,19 @@ body { display: flex; align-items: center; justify-content: center; }
   min-height: 2.2rem; padding: 0 var(--s3); color: var(--frame-text); background: transparent;
   border: var(--edge) solid var(--frame-trim); border-radius: 0.15rem;
 }
-.entries { list-style: none; margin: 0; padding: var(--s2); display: flex; flex-direction: column; gap: var(--s2);
-  background: var(--frame-well); border: 1px solid var(--frame-trim); border-radius: 0.15rem; }
-.entry {
-  display: flex; align-items: center; justify-content: center; width: 100%; min-height: 2.75rem; padding: 0 var(--s3); text-align: center; font: inherit; font-size: var(--t-body);
-  color: var(--frame-text); background: transparent; border: 1px solid transparent; border-radius: 0.15rem;
-}
-.entry { position: relative; }
-.entry:hover, .entry:focus-visible, .entry:focus { color: var(--frame-head); background: var(--frame-select);
-  border-color: var(--frame-trim-hi); outline: none; box-shadow: inset 0 0 0.6rem rgba(181, 168, 98, 0.25); }
-/* the marked row: a gilt lozenge each side, as Wind UI marks its selected row */
-.entry:hover::before, .entry:focus::before, .entry:hover::after, .entry:focus::after {
-  content: ""; position: absolute; top: 50%; width: 0.45rem; height: 0.45rem; margin-top: -0.225rem;
-  background: var(--frame-trim-hi); transform: rotate(45deg); }
-.entry:hover::before, .entry:focus::before { left: var(--s2); }
-.entry:hover::after, .entry:focus::after { right: var(--s2); }
 .window .close:hover, .window .close:focus { color: var(--frame-head); border-color: var(--frame-trim-hi); outline: none; }
-.entry.off { color: var(--frame-text-soft); opacity: 0.6; }
+
+.sheet { list-style: none; margin: 0; padding: var(--s4) var(--s6); color: var(--ink); background: var(--paper);
+  border: var(--edge) solid var(--paper-edge); border-radius: 0.2rem; }
+.group { margin: 0 0 var(--s4); }
+.group:last-child { margin-bottom: 0; }
+.ghead { margin: 0 0 var(--s1); font-size: var(--t-head); font-weight: normal; color: var(--rust); text-align: left;
+  border-bottom: 1px solid var(--ink-faint); }
+.entries { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s1); }
+.entry {
+  display: flex; align-items: center; width: 100%; min-height: 2.75rem; padding: 0 var(--s3); text-align: left;
+  font: inherit; font-size: var(--t-body); color: var(--ink); background: transparent;
+  border: 1px solid transparent; border-radius: 0.15rem;
+}
+.entry:hover, .entry:focus { color: var(--ink); background: rgba(75, 90, 42, 0.16); border-color: var(--moss); outline: none; }
+.entry.off { color: var(--ink-soft); }   /* a dimmed entry still reads: ink-soft on paper is 6.9:1 */
