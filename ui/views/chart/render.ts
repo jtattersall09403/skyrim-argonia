@@ -30,10 +30,12 @@ export function render(s: ChartState, cities: { id: string; name: string; x: num
   const places = s.places.map((p) =>
     `<button type="button" class="place" data-nav data-key="place:${esc(p.id)}" data-place="${esc(p.id)}" data-kind="${esc(p.kind)}"
       data-x="${p.x}" data-y="${p.y}" aria-label="${esc(p.name)}">${pinSvg(p.kind, pins)}<span class="pname">${esc(p.name)}</span></button>`).join("");
+  // The major cities of the sketch not yet discovered: an ink dot each, drawn by the view at one size (play test 3 #14)
+  const dots = cities.map((c) => `<span class="city" aria-hidden="true" data-city="${esc(c.id)}" data-x="${c.x}" data-y="${c.y}"></span>`).join("");
   const me = s.player
     ? `<div class="me" data-player data-x="${s.player.x}" data-y="${s.player.y}" data-heading="${s.player.heading}" aria-label="You">${PLAYER_SVG}</div>` : "";
   return `<section class="chart frame" aria-label="Chart" data-title="Map" data-worldspace="${esc(s.worldspace)}" data-sketch="${esc(s.sketch)}">
-  <div class="sheet paper"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${places}${me}</div></div>
+  <div class="sheet paper"><canvas class="layers"></canvas><div class="labels">${labels}</div><div class="places">${dots}${places}${me}</div></div>
   <div class="controls">
     <button type="button" class="zoom" data-ui="zoom-in" data-key="zoom-in" aria-label="Zoom in">+</button>
     <button type="button" class="zoom" data-ui="zoom-out" data-key="zoom-out" aria-label="Zoom out">&minus;</button>

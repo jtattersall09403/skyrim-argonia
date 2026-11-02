@@ -1,0 +1,52 @@
+# 1.12 round 4, lane 1.12-r4-chart (owner play test 3 #26, #14, #12, #30; ledger rows "the map never stands over
+# dialogue", "markers and names keep their size and place under zoom", "the undiscovered land is a rough sketch",
+# "the map's rivers are the game's water"). From `first-place` on the base save. The scene sets nothing the journey
+# tests: M opens the chart, the triggers zoom, Livia's talk opens our dialogue. Judged by ArgoniaCore's Views read,
+# its log and a still per look, each read by a reader.
+id: chart-zoom
+runner: 1
+crash_risk: low
+scene: first-place
+steps:
+  - name: chart-open                          # M opens our chart round the player
+    do: [{key: "M 120"}, {wait: 4}]
+    expect:
+      - {read: [core, Views], path: value, contains: "chart ready open"}
+      - {log: {name: ArgoniaCore, contains: "the map key opens the chart (MapMenu never opens)"}, within: 6}
+    reader: [the parchment chart close round the player, the walked land filled in round the gilt arrowhead, beyond it the rough sketch on bare parchment - the coast's outline, the province's dashed border and red-brown major roads, with no woods, relief or rivers - and the major cities as small ink dots with their names in italic, names and dots small and even]
+  - name: chart-zoomed-out                    # the triggers zoom out to the whole province
+    do: [{pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 2}]
+    reader: [the whole province, the seven major cities (Gideon, Soulrest, Lilmoth, Blackrose, Archon, Stormhold, Thorn) each a small dot with its name in the same small lettering as in the close view, the land outside the walked patch a rough sketch (outline, border, roads), slate rivers only inside the walked patch]
+  - name: chart-zoomed-in                     # the triggers zoom in to the maximum: names and markers keep their size
+    do: [{pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 2}]
+    expect: [{log: {name: ArgoniaCore, contains: "chart: input zoomIn"}, within: 10}]
+    reader: [the chart close in round the player, the gilt marker and every dot or place marker the same small size as in the whole-province still, every name the same lettering size as before, no name or marker drawn large; the slate river lines lie on the water the explored land shows]
+  - name: chart-closed
+    do: [{key: "M 120"}, {wait: 3}]
+    expect: [{read: [core, ViewState, chart], path: value, eq: null}]
+  - name: speak-livia                         # our dialogue opens; the map pane and the chart stay hidden
+    do:
+      - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
+      - {console: "player.setangle z 0"}
+      - {talk: ARG_Ref_ClaywaterStationLivia}
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 2}
+  - name: map-key-in-dialogue                 # M during the conversation: the chart does not open over it
+    do: [{key: "M 120"}, {wait: 3}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper}
+      - {read: [core, ViewState, chart], path: value, eq: null}
+    reader: [our dialogue window in the frame style with Livia's name, and no parchment map or map pane anywhere over or beside it]
+  - name: barter                              # Barter from the conversation: Wind UI's barter window, no map pane over it
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.service","v":1,"body":{"service":"barter"}}']}, {wait: 2}]
+    expect:
+      - {event: {kind: menu, match: WindUIMenu}, within: 8}
+    reader: [Wind UI's barter window with Livia's stock, and no parchment map pane anywhere on screen]
+  - name: barter-returns                      # back in the conversation: our window, and no map pane over or beside it
+    do: [{close_menu: WindUIMenu}, {wait: 2}]
+    expect:
+      - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 5}
+    reader: [our dialogue window with Livia's name back on screen, no parchment map pane over it or beside it]
+  - name: goodbye
+    do: [{call: [core, ViewIntent, '{"type":"dialogue.goodbye","v":1,"body":{}}']}, {wait: 1}]
+    expect: [{read: [core, ViewState, dialogue], path: value, eq: null}]

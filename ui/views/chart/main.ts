@@ -1,8 +1,10 @@
 // The chart in the browser (1.12 §5, look 1): the render's tile pyramid (tools/chart/pyramid.py) drawn on one canvas
 // the size of the sheet, from the level nearest one pixel to one at the zoom, so it stays sharp close in and draws
-// only what shows. Two flattened layers: `sketch` everywhere (the coast, rivers, roads and cities over the paper) and
-// `full` (the explored land's tint, woods, marsh and tracks) through a soft mask of the land the player has seen.
-// Over them the discovered places' markers and the player's, turned to the heading.
+// only what shows. Two flattened layers: `sketch` everywhere, the rough sketch under the fog (owner play test 3 #12:
+// the province's outline and the major roads over the paper), and `full` (the explored land's tint, woods, marsh,
+// rivers and tracks) through a soft mask of the land the player has seen. Over them, in screen space at one size
+// whatever the zoom (play test 3 #14), the major cities' dots and names, the discovered places' markers and the
+// player's, turned to the heading.
 // Drag, pinch, the wheel, WASD, +/- and the pad's right stick and triggers move a target view; each frame the view
 // glides toward it (geom.ts glide), and when it settles the view is sent as chart.pan, kept between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
@@ -95,17 +97,6 @@ function buildMask(s: ChartState): HTMLCanvasElement {
   return m;
 }
 
-// Whether the seen land covers a point in cell units (the mask is our own canvas, so it reads back in game).
-let maskData: Uint8ClampedArray | null = null, maskDataFor = "";
-function seenAt(u: number, v: number): boolean {
-  if (!mask) return false;
-  if (maskDataFor !== maskFor) { try { maskData = mask.getContext("2d")!.getImageData(0, 0, MASK, MASK).data; } catch { maskData = null; } maskDataFor = maskFor; }
-  if (!maskData) return true;
-  const [x, y] = toPx(ix, u, v), k = MASK / ix.size;
-  const i = Math.round(y * k), j = Math.round(x * k);
-  return i >= 0 && j >= 0 && i < MASK && j < MASK && maskData[(i * MASK + j) * 4 + 3] > 128;
-}
-
 let seen: HTMLCanvasElement | null = null;   // the explored layer through the mask, the sheet's size
 function layer(c: CanvasRenderingContext2D, dir: string, name: string, level: number, t: { scale: number; tx: number; ty: number },
   w: number, h: number): void {
@@ -142,8 +133,9 @@ function draw(): void {
   c.setTransform(dpr, 0, 0, dpr, 0, 0);
   c.clearRect(0, 0, w, h);   // the margins show the sheet's paper (the theme's .paper mottle)
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
-  // Unexplored land is blank parchment (1.12 look 1, the owner's ruling: the land revealed round where the player has
-  // been): every layer, coast, rivers, roads and cities included, shows only through the seen land's soft mask.
+  // The rough sketch everywhere (play test 3 #12), then the explored detail through the seen land's soft mask, so the
+  // sketch is filled in as the player explores.
+  layer(c, dir, "sketch", level, t, w, h);
   if (state.revealed.length && mask) {
     seen ??= document.createElement("canvas");
     if (seen.width !== canvas.width || seen.height !== canvas.height) { seen.width = canvas.width; seen.height = canvas.height; }
@@ -175,7 +167,7 @@ function draw(): void {
   if (y0 > 0) strip(0, y0, 0, y0 + f, Math.max(0, x0), y0, Math.min(w, x1) - Math.max(0, x0), f);
   if (y1 < h) strip(0, y1, 0, y1 - f, Math.max(0, x0), y1 - f, Math.min(w, x1) - Math.max(0, x0), f);
   c.globalCompositeOperation = "source-over";
-  for (const el of root.querySelectorAll<HTMLElement>(".place, .me")) {
+  for (const el of root.querySelectorAll<HTMLElement>(".place, .me, .city")) {
     const [px, py] = toPx(ix, Number(el.dataset.x), Number(el.dataset.y));
     el.style.left = `${px * t.scale + t.tx}px`; el.style.top = `${py * t.scale + t.ty}px`;
     if (el.dataset.heading !== undefined) el.style.transform = `rotate(${Number(el.dataset.heading)}deg)`;
@@ -186,8 +178,8 @@ function draw(): void {
   for (const el of root.querySelectorAll<HTMLElement>(".label")) {
     const at = labelAt(ix, t, el.dataset.label!, Number(el.dataset.x), Number(el.dataset.y),
       el.dataset.discovered === "true", rem * 0.75);
-    el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0 ||   // the sheet clips the rest
-      (el.dataset.discovered !== "true" && !seenAt(Number(el.dataset.x), Number(el.dataset.y)));   // fog hides a city's name
+    // the sheet clips the rest; a major city's name shows under the fog too (play test 3 #12)
+    el.hidden = at === null || at.left > w || at.left < 0 || at.top > h || at.top < 0;
     el.style.transform = "";
     if (!at || el.hidden) continue;
     el.style.left = `${at.left}px`; el.style.top = `${at.top}px`;
@@ -204,7 +196,7 @@ function draw(): void {
   boxes.sort((a, b) => Number(b.city) - Number(a.city) || b.w * b.h - a.w * a.h);
   // The pins and the player's marker stay where they are: the labels move round them.
   const marks: LabelBox[] = [];
-  for (const el of root.querySelectorAll<HTMLElement>(".place:not([hidden]), .me")) {
+  for (const el of root.querySelectorAll<HTMLElement>(".place:not([hidden]), .me, .city")) {
     const r = el.offsetWidth / 2;
     marks.push({ id: "", x: parseFloat(el.style.left) - r, y: parseFloat(el.style.top) - r, w: 2 * r, h: 2 * r });
   }
@@ -222,6 +214,12 @@ function draw(): void {
   }
   document.body.dataset.ready = "1";
 }
+
+// The harness's hands (tools/ui_harness: the zoom-drift test, play test 3 #14): set the view and draw this frame.
+(window as unknown as { argoniaChart: unknown }).argoniaChart = {
+  set(v: ChartView) { view = target = clampZoom(v); draw(); },
+  transform() { const [w, h] = sheetSize(); return { ...transform(ix, view, w, h), size: ix.size, cell: ix.cells["0,0"] }; },
+};
 
 // The reveal's own proof in game (1.12 look 1: 1.12's journey read the native log, never the pixels). The tiles are
 // file images, which may taint the sheet for reading back, so the proof reads canvases of our own making: the mask

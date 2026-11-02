@@ -50,9 +50,9 @@
   transform: translateY(-50%); background: rgba(225, 212, 176, 0.85); border-radius: 50%; filter: blur(0.2rem); }
 .label[data-discovered="false"] { color: #4a4630; }
 .label[hidden] { display: none; }
-.label.beside[data-discovered="true"]::before { display: none; }   /* the place's marker stands beside it */
-.label.beside::before { content: ""; position: absolute; left: -0.55rem; top: 50%; width: 0.4rem; height: 0.4rem;
-  margin-top: -0.2rem; border-radius: 50%; background: #2b2e1c; box-shadow: 0 0 0 0.12rem #f1e8cf; }
+/* A major city of the sketch (play test 3 #12): an ink dot on a paper ring at its place, one size at every zoom. */
+.city { position: absolute; width: 0.5rem; height: 0.5rem; margin: -0.25rem 0 0 -0.25rem; border-radius: 50%;
+  background: #2b2e1c; box-shadow: 0 0 0 0.12rem #f1e8cf; pointer-events: none; }
 
 /* The map pane (pane.html, 1.12 look 1): the chart docked as a fourth window beside Wind UI's character, magic and
    inventory windows, in the space their default layout leaves at the lower right; its title bar in their manner

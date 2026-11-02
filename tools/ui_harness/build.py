@@ -65,7 +65,8 @@ def chart_index(src: Path) -> dict:
     glyphs = json.loads((ROOT / "tools" / "chart" / "glyphs.json").read_text())   # our own UI art (glyphs-SOURCE.md)
     return {"size": ix["size"], "cells": {k: v[2:6] for k, v in ix["cells"].items()},
             "pins": {k: g["d"] for k, g in glyphs.items()},
-            "places": {k: {"city": bool(p.get("city")), "label": p.get("label"),
+            # no drawn lettering in the view's tiles (play test 3 #14): the view letters every name at one size
+            "places": {k: {"city": bool(p.get("city")), "label": None,
                            **({"name": p["name"], "cell": p["cell"]} if p.get("city") else {})}
                        for k, p in ix.get("places", {}).items()}}
 

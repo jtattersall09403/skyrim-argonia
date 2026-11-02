@@ -27,7 +27,7 @@ export function labelAt(ix: CellIndex, t: { scale: number; tx: number; ty: numbe
   }
   const [px, py] = toPx(ix, x, y);
   // Beside the place's marker (1.6rem across) when discovered, else beside a small ink dot.
-  return { left: px * t.scale + t.tx + minPx * (discovered ? 1.2 : 0.6), top: py * t.scale + t.ty };
+  return { left: px * t.scale + t.tx + minPx * (discovered ? 1.2 : 0.8), top: py * t.scale + t.ty };
 }
 
 // Label collisions. Each box is where a label sits on the sheet in screen px; `order` is the caller's priority

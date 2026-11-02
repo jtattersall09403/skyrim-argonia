@@ -92,6 +92,29 @@ MEASURE = r"""
 }
 """
 
+# The chart at one view (play test 3 #14): each marker's drawn centre and size against the view's own transform of
+# its data (cell units -> master px -> screen px), and each shown name's font size and height.
+ZOOM_PROBE = r"""
+(v) => {
+  window.argoniaChart.set(v);
+  const t = window.argoniaChart.transform(), [x0, y0, w, h] = t.cell;
+  const sheet = document.querySelector(".sheet .layers").getBoundingClientRect();
+  const marks = [], labels = [];
+  for (const el of document.querySelectorAll(".city, .place, .me")) {
+    const r = el.getBoundingClientRect();
+    const u = Number(el.dataset.x), vv = Number(el.dataset.y);
+    const ex = sheet.left + (x0 + w * u) * t.scale + t.tx, ey = sheet.top + (y0 + h - h * vv) * t.scale + t.ty;
+    if (ex < sheet.left || ey < sheet.top || ex > sheet.right || ey > sheet.bottom) continue;
+    marks.push({ id: el.dataset.city || el.dataset.place || "me", cx: r.left + r.width / 2, cy: r.top + r.height / 2, ex, ey, w: r.width, h: r.height });
+  }
+  for (const el of document.querySelectorAll(".label:not([hidden])")) {
+    const r = el.getBoundingClientRect();
+    labels.push({ id: el.dataset.label, font: getComputedStyle(el).fontSize, h: r.height });
+  }
+  return { marks, labels };
+}
+"""
+
 # The 300-topic window: the list scrolls inside its column, rows are in order and a line tall, the conversation keeps
 # its room, and Goodbye and the window stay on screen.
 TOPICS = r"""
@@ -156,6 +179,7 @@ class Harness:
         self.pages: dict[str, object] = {}
         self.console: list[str] = []
         self.loaded: tuple[str, str, bool] | None = None   # (viewport, view, bright) of the clean page now open
+        self.zoom_report: dict[str, dict] = {}   # the chart's zoom cycle per viewport (chart_zoom)
 
     def page(self, vp: Viewport):
         if vp.name not in self.pages:
@@ -328,6 +352,42 @@ class Harness:
             if not (len(sent) == 2 and sent[0]["type"] == "chart.pan" and abs(sent[0]["body"]["view"]["zoom"] - z * 1.5) < 1e-6
                     and sent[1] == c["intents"]["close"]):
                 fails.append(f"chart sent {sent}")
+            for zvp in VIEWPORTS:   # every viewport (play test 3 #14)
+                fails += self.chart_zoom(zvp, c)
+        return fails
+
+    def chart_zoom(self, vp, c) -> list[str]:
+        """Play test 3 #14 ("map text and marker sizes on zoom behave weirdly"): over a zoom cycle 1x -> max -> 1x
+        about the player, every marker (city dot, place, player) stays on its map point (0 px drift from the view's
+        own transform of its data) at one screen size, and every name keeps its font size and height."""
+        p = self.open(vp, "chart")
+        st = c["states"]["claywater"]
+        p.evaluate("(m) => window.argonia.push(m)", json.dumps(st))
+        p.wait_for_function("() => document.body.dataset.ready === '1'", timeout=20000)
+        pl = st["body"]["player"]
+        cycle = [1, 1.5, 2.25, 3.4, 5, 8, 5, 3.4, 2.25, 1.5, 1]
+        rows = []
+        for z in cycle:
+            rows.append(p.evaluate(ZOOM_PROBE, {"centreX": pl["x"], "centreY": pl["y"], "zoom": z}))
+        fails, drift, size, font = [], 0.0, {}, {}
+        for r in rows:
+            for m in r["marks"]:
+                drift = max(drift, abs(m["cx"] - m["ex"]), abs(m["cy"] - m["ey"]))
+                size.setdefault(m["id"], set()).add((round(m["w"], 2), round(m["h"], 2)))
+            for lab in r["labels"]:
+                font.setdefault(lab["id"], set()).add((lab["font"], round(lab["h"], 2)))
+        grown = [k for k, v in size.items() if len(v) > 1]
+        refont = [k for k, v in font.items() if len(v) > 1]
+        self.zoom_report[vp.name] = {"zooms": cycle, "marks": len(size), "labels": len(font), "drift_px": round(drift, 3),
+                                "marks_resized": grown[:5], "labels_resized": refont[:5]}
+        if drift > 0.5:
+            fails.append(f"chart zoom: a marker drifts {drift:.2f} px off its map point")
+        if grown:
+            fails.append(f"chart zoom: markers change size: {grown[:3]}")
+        if refont:
+            fails.append(f"chart zoom: labels change size: {refont[:3]}")
+        if not size or not font:
+            fails.append(f"chart zoom: nothing measured ({len(size)} marks, {len(font)} labels)")
         return fails
 
 
@@ -424,6 +484,7 @@ def run(smoke: bool, out: Path = OUT, shoot: bool = True) -> dict:
         finally:
             browser.close()
         report["console"] += h.console
+        report["chart_zoom"] = h.zoom_report
     report["seconds"] = round(time.monotonic() - t0, 1)
     report["fails"] = [f"{k}: {x}" for k, m in report["stills"].items() for x in m["fails"]] + report["wiring"] + \
         [f"console: {c}" for c in report["console"] if not c.startswith("chart skipped")]
