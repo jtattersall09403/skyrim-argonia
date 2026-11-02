@@ -26,6 +26,7 @@ Exit codes: 0 ok, 1 the bridge or game said no (BridgeError), 2 the game is down
 """
 from __future__ import annotations
 
+import re
 import json
 import os
 import socket
@@ -340,7 +341,7 @@ class Bridge:
         while True:
             try:
                 return self.call("ping", timeout=30)
-            except BridgeError as e:
+            except BridgeError:
                 tail = self.machine.ps(f'Get-Content "{self.CS_LOG}" -Tail 40 -ErrorAction SilentlyContinue', timeout=60)
                 m = re.findall(r"remaining=(\d+)", tail)
                 left = int(m[-1]) if m else 0
