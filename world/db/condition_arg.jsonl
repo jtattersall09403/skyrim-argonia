@@ -1049,6 +1049,9 @@
 {"condition_id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-93:available","ord":0,"value":"quest.local.lf83"}
 {"condition_id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-93:available","ord":1,"value":"="}
 {"condition_id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-93:available","ord":2,"value":93}
+{"condition_id":"dialogue_line:line.claywater-station.n1.greeting.1-night:available","ord":0,"value":"night"}
+{"condition_id":"dialogue_line:line.claywater-station.n1.greeting.2-dawn:available","ord":0,"value":"dawn"}
+{"condition_id":"dialogue_line:line.claywater-station.n1.greeting.3-dusk:available","ord":0,"value":"dusk"}
 {"condition_id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available.0","ord":0,"value":"quest.local.lf83"}
 {"condition_id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available.0","ord":1,"value":"≥"}
 {"condition_id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available.0","ord":2,"value":20}

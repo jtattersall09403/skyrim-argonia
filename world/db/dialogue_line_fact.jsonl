@@ -133,6 +133,15 @@
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-90","ord":0,"value":"fact.lf83.after-rains"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-92","ord":0,"value":"fact.lf83.after-keeper-dead"}
 {"dialogue_line_id":"line.claywater-station.n1-3.two-charges.stage-93","ord":0,"value":"fact.lf83.after-poler-dead"}
+{"dialogue_line_id":"line.claywater-station.n1.about-claywater","ord":0,"value":"fact.claywater-station.why-founding-2"}
+{"dialogue_line_id":"line.claywater-station.n1.about-claywater","ord":1,"value":"fact.claywater-station.why-founding-3"}
+{"dialogue_line_id":"line.claywater-station.n1.about-claywater","ord":2,"value":"fact.claywater-station.vibe-signatureFeature-1"}
+{"dialogue_line_id":"line.claywater-station.n1.claywater-station","ord":0,"value":"fact.claywater-station.vibe-signatureFeature-1"}
+{"dialogue_line_id":"line.claywater-station.n1.claywater-station","ord":1,"value":"fact.claywater-station.vibe-materials-1"}
+{"dialogue_line_id":"line.claywater-station.n1.claywater-station","ord":2,"value":"fact.claywater-station.vibe-materials-2"}
+{"dialogue_line_id":"line.claywater-station.n1.claywater-station-people","ord":0,"value":"fact.claywater-station.vibe-mood-1"}
+{"dialogue_line_id":"line.claywater-station.n1.role-two-halves","ord":0,"value":"fact.claywater-station.vibe-signatureFeature-1"}
+{"dialogue_line_id":"line.claywater-station.n1.role-two-halves","ord":1,"value":"fact.claywater-station.vibe-condition-1"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.about-blackwood","ord":0,"value":"fact.claywater-station.playerPurpose-hook-1"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.about-blackwood","ord":1,"value":"fact.claywater-station.road-gideon"}
 {"dialogue_line_id":"line.claywater-station.well-keeper.about-blackwood","ord":2,"value":"fact.claywater-station.road-leyawiin"}

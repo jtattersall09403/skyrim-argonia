@@ -2147,6 +2147,9 @@
 {"id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-90:available","term":"questStage"}
 {"id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-92:available","term":"questStage"}
 {"id":"dialogue_line:line.claywater-station.n1-3.two-charges.stage-93:available","term":"questStage"}
+{"id":"dialogue_line:line.claywater-station.n1.greeting.1-night:available","term":"timeOfDay"}
+{"id":"dialogue_line:line.claywater-station.n1.greeting.2-dawn:available","term":"timeOfDay"}
+{"id":"dialogue_line:line.claywater-station.n1.greeting.3-dusk:available","term":"timeOfDay"}
 {"id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available","term":"all"}
 {"id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available.0","parent_id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available","ord":0,"term":"questStage"}
 {"id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available.1","parent_id":"dialogue_line:line.claywater-station.well-keeper.claywater-station-danger.crocodile:available","ord":1,"term":"questStage"}

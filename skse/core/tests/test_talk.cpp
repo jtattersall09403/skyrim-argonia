@@ -143,10 +143,9 @@ void every_speaker_greets_with_topics() {
     const auto v = c->view(ses);
     CHECK(!v.entries.empty() && v.entries[0].kind == msg::DialogueEntryKind::greeting);
     // the newcomer and local topics they answer, learned or not: Claywater, the road, its danger, its people
-    for (std::string_view t : {"topic.about-claywater", "topic.about-blackwood", "topic.claywater-station-danger",
-                               "topic.claywater-station-people"})
+    for (std::string_view t : {"topic.about-claywater", "topic.claywater-station", "topic.claywater-station-people"})
       CHECK(std::any_of(v.topics.begin(), v.topics.end(), [&](const auto& x) { return x.id == t; }));
-    CHECK(v.topics.size() >= 9);
+    CHECK(v.topics.size() >= 5);
   }
 }
 

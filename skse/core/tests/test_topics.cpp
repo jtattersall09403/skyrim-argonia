@@ -119,8 +119,11 @@ void learned_from_a_asked_of_b(const Store& s) {
   for (const auto& t : s.all()) {
     if (t.open) continue;  // offered from a first meeting: never learned (finding 24)
     auto who = answerers(s, t.id, w);
-    if (who.size() < 2) continue;
-    const Speaker a{std::string(who[0]), 50}, b{std::string(who[1]), 50};
+    // every ordered pair of answerers until one teaches it (the first two need not: Gaius teaches little)
+    for (std::size_t ia = 0; ia < who.size() && !tried; ++ia)
+    for (std::size_t ib = 0; ib < who.size() && !tried; ++ib) {
+    if (ia == ib) continue;
+    const Speaker a{std::string(who[ia]), 50}, b{std::string(who[ib]), 50};
     Known k;
     // nothing learned yet: only the open topics (service, newcomer, local) to ask
     const auto first = offered(s, b, k, w);
@@ -155,7 +158,8 @@ void learned_from_a_asked_of_b(const Store& s) {
     TalkFacts tf(b, k, w);
     const std::vector<Arg> keys{t.id, a.id};
     CHECK(tf.truth(Term::topicHeardFrom, keys) == std::optional<bool>(true));
-    break;
+    }
+    if (tried) break;
   }
   CHECK(tried);
 }
