@@ -55,7 +55,7 @@ def land_heights(land: Path, cys: set[int]) -> dict[tuple[int, int], np.ndarray]
     return out
 
 
-def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> dict:
+def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, collect: dict | None = None) -> dict:
     from tools.argonia_world import db
     from tools.argonia_world.routes import paint as road_paint
     from tools.navmesh import inputs
@@ -140,8 +140,11 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print) -> 
                 T = np.full(T.shape, cw.nearest_level(cx, cy))
             # a tree band is Skyrim.esm's marsh cells with ground to stand on: a cell of open water (a lagoon's
             # sea floor) is no marsh cell, so it is left out of the mean (session 6)
-            if lists_mod.countable(H[(cx, cy)], L):
+            counted = lists_mod.countable(H[(cx, cy)], L)
+            if counted:
                 trees[region].append(int(is_tree.sum()))
+            if collect is not None:  # the post-pass's view: this cell's trees and whether the band counts it
+                collect[(cx, cy)] = (region, is_tree, counted)
             depth = place.depth_at(L, i, j, zg)
             pr, pc = s_ - v / su.VERTEX_SPACING_UNITS, a + u / su.VERTEX_SPACING_UNITS
             wet_v = np.argwhere(L > H[(cx, cy)])

@@ -386,3 +386,92 @@ def read_cells(out: Path):
         with gzip.open(p, "rt", encoding="ascii") as f:
             for line in f:
                 yield json.loads(line)
+
+
+def tree_score(refs: np.ndarray) -> np.ndarray:
+    """A keep score in [0, 1) per ref from its position alone (x, y in units, 2 dp), so the same stem scores the
+    same in any window and any run."""
+    k = np.round(refs[:, :2] * 100).astype(np.int64).astype(np.uint64)
+    h = k[:, 0] * np.uint64(0x9E3779B97F4A7C15) ^ (k[:, 1] * np.uint64(0xC2B2AE3D27D4EB4F))
+    h ^= h >> np.uint64(29)
+    h *= np.uint64(0xBF58476D1CE4E5B9)
+    h ^= h >> np.uint64(32)
+    return (h >> np.uint64(11)).astype(np.float64) / float(1 << 53)
+
+
+def close_tree_bands(out: Path, land: Path, water: Path, world=None, src=None, log=print, rounds: int = 3) -> dict:
+    """After all placement, the check's own tree count decides: for a region the check (checks.run, on these shards
+    and this LAND) reports above its band, thin its trees (all cells) with the position-seeded score until the
+    check's count reports the band's mean; repeat up to `rounds` times. A region under its band is a shortfall
+    (supply), reported, never thinned or red. Returns {region: {"before", "after", "rounds"}}."""
+    from tools.argonia_world import db
+    from tools.argonia_world.vegetation import checks
+    w = world if world is not None else db.open()
+    eco = {r["id"]: r["eco_class_id"] for r in w.query("SELECT id, eco_class_id FROM land_region")}
+    report: dict[str, dict] = {}
+    for rd in range(rounds + 1):
+        col: dict = {}
+        checks.run(out, land, water, world=w, src=src, log=lambda *_: None, collect=col)
+        cells = defaultdict(list)
+        for (cx, cy), (r, tr, counted) in col.items():
+            if counted:
+                cells[r].append(int(tr.sum()))
+        thin = {}
+        for r, v in sorted(cells.items()):
+            band = lists.ECO_BAND.get(eco.get(r, ""))
+            if not band or len(v) < lists.BAND_MIN_CELLS:
+                continue
+            lo, mean, hi = lists.band_limits(band)
+            m = sum(v) / len(v)
+            report.setdefault(r, {"before": round(m, 1)})
+            if m > hi * 0.999 and rd < rounds:
+                thin[r] = (len(v), mean)
+            else:
+                report[r].update(after=round(m, 1), rounds=rd, shortfall=m < lo)
+        if not thin:
+            break
+        scores: dict[str, list] = defaultdict(list)
+        shards = {}
+        for cy in sorted({cy for _, cy in col}):
+            p = out / shard_name(cy)
+            if p.exists():
+                with gzip.open(p, "rt", encoding="ascii") as f:
+                    shards[cy] = [json.loads(line) for line in f]
+        trees_of = {}
+        for cy, cs in shards.items():
+            for c in cs:
+                key = (c["x"], cy)
+                if c["region"] in thin and key in col:
+                    refs = np.asarray([x[2:4] for x in c["refs"]], dtype=np.float64).reshape(-1, 2)
+                    sc = tree_score(refs)
+                    trees_of[key] = (sc, col[key][1])
+                    if col[key][2]:
+                        scores[c["region"]].extend(sc[col[key][1]].tolist())
+        tk = {}
+        for r, (n, mean) in thin.items():
+            d = np.sort(np.asarray(scores[r]))
+            want = int(round(mean * n))
+            tk[r] = float(d[want]) if want < d.size else 2.0
+        for cy, cs in shards.items():
+            changed, lines = False, []
+            for c in cs:
+                key = (c["x"], cy)
+                if key in trees_of:
+                    sc, tr = trees_of[key]
+                    keepm = ~(tr & (sc >= tk[c["region"]]))
+                    if not keepm.all():
+                        changed = True
+                        c["refs"] = [x for x, k in zip(c["refs"], keepm) if k]
+                        for k, x in enumerate(c["refs"]):
+                            x[0] = place.ref_id(c["x"], cy, k)
+                if c["refs"]:
+                    lines.append(json.dumps(c, separators=(",", ":"), sort_keys=True))
+            if changed:
+                with open(out / shard_name(cy), "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
+                    z.write(("\n".join(lines) + "\n").encode("ascii"))
+    for r, i in sorted(report.items()):
+        if "after" in i and i["after"] != i["before"]:
+            log(f"vegetation: trees {r}: {i['before']} -> {i['after']} by the check's count, {i['rounds']} round(s)")
+        if i.get("shortfall"):
+            log(f"vegetation: trees {r}: SHORTFALL (supply) {i['after']} a cell")
+    return report

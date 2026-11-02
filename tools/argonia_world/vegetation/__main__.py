@@ -181,6 +181,8 @@ def main(argv=None) -> int:
               f"in {time.time() - t0:.0f} s")
         if not a.land:
             return 0
+        if not boxes:  # the whole province: the check's own count closes the tree band
+            build.close_tree_bands(Path(a.out), Path(a.land), Path(a.water), log=print)
     if not a.land:
         print("vegetation check: --land is required", file=sys.stderr)
         return 2

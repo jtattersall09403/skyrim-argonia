@@ -170,3 +170,10 @@ def test_tree_keep_closes_the_band_deterministically():
     p = placed[(0, 0)]
     assert (place.final_mask(p["thin"], p["tree"], 1.0, tk["r.coastal-lagoon"]) ==
             place.final_mask(p["thin"], p["tree"], 1.0, tk["r.coastal-lagoon"])).all()
+
+
+def test_tree_score_is_position_seeded_and_in_range():
+    from tools.argonia_world.vegetation import build
+    r = np.array([[1234.5, 99.25], [1234.5, 99.25], [5.0, 7.0]])
+    s = build.tree_score(r)
+    assert s[0] == s[1] and s[0] != s[2] and ((0 <= s) & (s < 1)).all()
