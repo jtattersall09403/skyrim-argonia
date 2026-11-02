@@ -212,41 +212,33 @@ A/B on the sample: without the diagonal pass, still 3 overflow cells; with the w
 
 ## Starting state (hand-off)
 
-Session 14 (commit 905725f). `probes/clamp_census.py` now reads the field rules: a plate is a dry vertex whose
-8-neighbour steps are all under 0.02 m, and the census attributes each one to the rule that set it (gap up/down, iso
-hollow, edge lift, lo/hi bound, sites, the pre-ground). Before, plate share by window: coast -20_57 11.4 %, border
--12_63 17.3 %, river -38_25 11.8 %, marsh -21_-26 11.2 %, 0_0 1.8 %. The causes:
-- entrance sites (9-17 %): a flat was levelled to one constant m, and a mouth's wet disc was raised to
-  vmax + freeboard;
-- the pre-ground (marsh 10 %): the relief noise faded to nothing by the water, leaving `base + floor` flat;
-- gap 0.2-0.5 %, iso 0 %.
-The fixes:
-- a flat keeps a damped share of its own relief (FLAT_KEEP 0.35, core std held at 0.4 m);
-- the wet disc climbs from its rim by the vanilla shore profile (`water_field.shore_rise`);
-- the noise keeps 0.8 of its rises and 0.3 of its dips by the water (NEAR_RISE/NEAR_DIP).
-After the fixes: 2.4 / 1.7 / 5.0 / 3.0 / 1.2 %. A relief-keeping remap of the gap band was tried and reverted: it
-carried each cell line's level step into the ground (lattice 1.38 -> 1.66 over the 1.5 gate; measured by variants).
-The gap keeps the snap. `terrain check --out out/terrain-sample/s14b`: fails [], wet/bank/dry-edge/step-bank 0,
-unshaped 0, lattice 1.376 (s13 1.253). Generate 119.7 s.
+Session 15 tried the contour footprint and reverted it: the reader judged it worse. Main is at 20c00d5 (s14: plates
+at 1-6 % per window, check green, lattice 1.38, clamp path deleted). The trial is kept as a patch outside the repo.
 
-The reader on `s14b`'s hillshades (`s14/hs`, same bar the gap remap) gave these verdicts:
-- -12_63: terraces fixed;
-- -20_57: plates mostly fixed, faint seams at x 0.50 and y 0.50, a faceted knob at (0.50-0.63,0.34-0.47);
-- -38_25: big plates gone, but small rims remain and the square pools and grid shores are unchanged;
-- -21_-26: the rectangle and the square pool are unchanged;
-- 0_0: rim-edged rectangles at (0.73-0.88,0.62-0.88) and (0.0-0.13,0.87-1.0).
-
-The remaining defects are measured at their cause. In -21_-26 the rectangle is the cell column x -17 (rows
--21..-25): its pre-ground stands at about 1.1 m, it is 0 % wet, and its lift is about 0. The columns either side are
-88-100 % wet and carved to -1.7 m. So the "plate" is uncarved ground between the raster footprints, and the "square
-pool" is the wet raster's own cell-blocky footprint (`inp.wet_level`, 88 % of each cell) carved to its bed at
-CARVE_GRADE. Water planes and the field are not the cause.
+What was measured (dump of the pre-ground, `ARGONIA_GROUND_DUMP`):
+- No literal level contour exists. The pre-ground stands on `base + floor`, so inside the marsh water cells (-21..-14,
+  -26..-19) 0 % of samples are under the cell's level; median ground minus level is +0.2 to +2.7 m.
+- The raster's level and the solved level disagree on the coast. In -20_57, where the raster is wet, the pre-ground
+  stands 11 / 64 / 109 m (p5/p50/p95) above the solved `vmin`. The base is the raster's level, and the carve uses vmin.
+- Trial: the raster's wetness, blurred over 16 samples and faded to 0 within 16 samples of a dry cell, made wet
+  wherever it beat a threshold set by the local relief (`h - blur(h,32)`, tanh over 1 m). The raster was kept by
+  steps and sites. Results:
+  - `terrain check --sample`: fails [], lattice 1.39, generate 95 s;
+  - census plates: 2.4 / 1.6 / 1.9 / 5.9 / 3.0 %;
+  - shore on a cell line: coast 13.8 %, others 3-5 % (6.2 % would be expected by chance).
+- The reader (s14/hs against s15): -20_57, -12_63 and -38_25 worse, with new square pools, an octagon platform, a
+  flat column and a notch. -21_-26 and 0_0 were the same: the marsh column and the staircase pool did not change.
+  Two caveats: the s14/hs images may cover other cells than the s15 renders (the reader saw no water at all in
+  s14's -20_57), and the shapes may come from the field. Either way, changing the footprint alone does not move the
+  marsh shapes.
 
 Owed, in order:
-1. The footprint from the ground's contour, not the raster's cell blocks: inside a water cell, wet = pre-ground under
-   the level (with the raster only seeding which body it joins), and the carve then follows that contour. The likely
-   place is generate.py's `foot = has & ~isnan(inp.wet_level)` (~line 497) or the hydrology raster's producer. Then
-   re-run the census and the reader on the five windows.
-2. Done (e4396b6): the clamp path is deleted, generate.py went from 1142 to 1003 lines, and the sample ground and role
-   are bit-identical to s14b. The pytest terrain and water suites passed (67) and ruff is clean.
+1. Find where the marsh column and staircase are made, inside the field. Take `h_in` against the output, and
+   `role`/`lift`/`carve` per cell in -21_-26. The shapes follow the outlines of the per-cell `vmin`/`touch` banks,
+   because `touch` makes every vertex beside a dry cell a bank. Render the before and after hillshades with the same
+   command and window first, then ask the reader.
+2. Make the underwater ground continuous. Today the base is the raster's level plus a floor, so nothing is under
+   water until the carve cuts it. Vanilla-like ground dips below the level: base minus a depth that grows with the
+   blurred wetness. Then the contour of the level is real, and the footprint and carve follow from it. Settle first
+   why the coast's vmin and the raster's levels differ by tens of metres.
 3. ONE whole-province generate into out/terrain, then `terrain check`: not started.
