@@ -66,7 +66,10 @@ launch() {
         --property=StandardOutput="file:$JOBS/$name.log" --property=StandardError=inherit \
         bash -c "$script" _ "$@"; then
       echo "$unit" > "$JOBS/$name.unit"
-      jpid=$(systemctl --user show -p MainPID --value "$unit" 2>/dev/null || echo 0); jpid=${jpid:-0}; return 0
+      local i; jpid=0  # the main pid, once the unit has one; a unit already gone finished (its rc says so)
+      for i in $(seq 40); do jpid=$(systemctl --user show -p MainPID --value "$unit" 2>/dev/null || echo 0)
+        [ "${jpid:-0}" != 0 ] || ! systemctl --user is-active -q "$unit" 2>/dev/null && break; read -t 0.1 < /dev/zero 2>/dev/null || true; done
+      jpid=${jpid:-0}; return 0
     fi
   fi
   setsid nohup bash -c "$script" _ "$@" > "$JOBS/$name.log" 2>&1 &
