@@ -28,6 +28,11 @@ for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: 
 # A province without NAVM is a province where no one walks (game-8: every deploy since 2.W4 shipped none).
 "$PY" -c 'import sys; n = open("out/ArgoniaWorld.esm", "rb").read().count(b"NAVM"); print(f"ArgoniaWorld.esm: {n} NAVM"); sys.exit(n == 0)' \
   || [ "${ARGONIA_NO_NAVMESH:-}" = 1 ] || { echo "out/ArgoniaWorld.esm has no navmesh: make navmesh (or ARGONIA_NO_NAVMESH=1)" >&2; exit 1; }
+# Pre-flight before any step: the stage unpacks BM&V (26 GB) on the build VM, and a deploy that dies there costs a whole
+# restart (2026-11-02, deploy-r3q); stack.py's room() is the same rule, asked first.
+if [ $stage = 1 ]; then
+  "$PY" -c 'import sys; sys.path.insert(0, "infra/gpu-box"); import stack; stack.room(26 << 30, "deploy pre-flight (BM&V unpack)")' || exit 3
+fi
 step "machine up" "$run" up
 # Heartbeat (game-19's gap): idle-stop.ps1 counts the busy flag, which only commands refresh; a long single step
 # (stage push, skse build) could outlast it. Touch it every 5 min while the deploy runs; stopped on exit.
