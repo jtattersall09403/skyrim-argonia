@@ -7,7 +7,7 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 
 | lane | findings | report |
 |---|---|---|
-| 1.15-r4-fast-loop | the loop itself (owner: massively faster) | lane-1.15-r4-fast-loop.md |
+| 1.15-r4-fast-loop | the loop itself (owner: massively faster) | lane-1.15-r4-fast-loop.md (done 0ac3304: infra/gpu-box/round.sh runs a round as one resumable job; shader cache in S3; a settle action replaces fixed waits; one save load per batch; predicted 30–35 min per 10-journey batch against 75–100) |
 | 1.15-r4-water | 20, 19 | lane-1.15-r4-water.md |
 | 1.15-r4-materials | 16, 17 | lane-1.15-r4-materials.md |
 | 1.15-r4-light | 18, 9 | lane-1.15-r4-light.md (57d61ea: fog max 1.0 hid the sky, far under vanilla's class medians, grey zeniths; height fog was a 5 m slab, now a bank below eye height; owed: per-weather fog height so inland shores get mist) |
@@ -20,7 +20,9 @@ Rulings: Paris is the only game machine; in-game loops are sped up before any ch
 
 ## Wave 2 (as wave-1 lanes return)
 
-1.15-r4-creatures (13) launched 22:12; 1.12-r4-menus (6, 7, 8, 10, 11) next.
+1.15-r4-creatures (13) launched 22:12; 1.12-r4-menus (6, 7, 8, 10, 11, plus the owner's custom-UI card beside the Wind UI one, 22:06) launched 22:27.
+
+Owner, 22:06: seven screenshots of the tree colours, shiny textures and pebble swathes, routed to the trees and materials lanes.
 
 ## The batch
 
