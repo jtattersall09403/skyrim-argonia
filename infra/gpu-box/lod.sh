@@ -94,7 +94,7 @@ case "${1:-}" in
     # Per-step markers for this ArgoniaWorld (owner, 2026-11-02: a rerun must pick up where the last attempt got to):
     # prepare, terrain, texgen and dyndolod are skipped when their marker exists for the deployed ESM's sha; collect,
     # archive and resources always run. LOD_FORCE=1 reruns everything. The outputs they stand for live on the machine.
-    sha12=$(sha256sum out/ArgoniaWorld.esm | cut -c1-12); marks="$HOME/.argonia/lod-steps/$sha12"; mkdir -p "$marks"
+    sha12=$(sha256sum out/ArgoniaWorld.esm | cut -c1-12); marks="$HOME/.argonia/lod-steps/${ARGONIA_PLAY:-argonia-play}/$sha12"; mkdir -p "$marks"  # per machine: the outputs live there
     for s in "${steps[@]}"; do
       case "$s" in prepare|terrain|texgen|dyndolod)
         if [ -z "${LOD_FORCE:-}" ] && [ -f "$marks/$s" ]; then echo "== $s: done before for $sha12 ($(cat "$marks/$s")); skipped"; continue; fi ;;
