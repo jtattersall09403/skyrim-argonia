@@ -24,3 +24,17 @@ def test_forms():
     assert lh.red_textures("ztree's\\plants\\water lily5.nif", MAN, M) == []
     bad = lh.problems([{"form_key": "1:x", "model": "a.nif"}, {"form_key": "2:x", "model": "b.nif"}], MAN, M)
     assert len(bad) == 1 and bad[0].startswith("1:x")
+
+
+def test_vertex_colour():
+    crimson = {"n": 936, "rgb": [209, 48, 113], "red_share": 1.0}
+    green = {"n": 900, "rgb": [132, 195, 81], "red_share": 0.0}
+    white = {"n": 80, "rgb": [250, 250, 249], "red_share": 0.0}
+    assert lh.red_shape(crimson) and not lh.red_shape(green) and not lh.red_shape(white)
+    shapes = {"meshes/a.nif": [green, crimson], "meshes/b.nif": [green, white], "meshes/c.nif": None,
+              "meshes/argonia/trees/hist trees/histflower01.nif": [crimson]}
+    assert lh.red_vertex("a.nif", shapes) == ["vertex colour rgb(209, 48, 113)"]
+    assert lh.red_vertex("b.nif", shapes) == [] and lh.red_vertex("c.nif", shapes) == []
+    assert lh.red_vertex("argonia\\trees\\Hist Trees\\HistFlower01.nif", shapes) == []
+    bad = lh.problems([{"form_key": "1:x", "model": "a.nif"}, {"form_key": "2:x", "model": "b.nif"}], MAN, M, shapes)
+    assert len(bad) == 1 and bad[0].startswith("1:x")

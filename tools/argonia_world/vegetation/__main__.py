@@ -126,8 +126,10 @@ def main(argv=None) -> int:
     fo.add_argument("--lists-only", action="store_true")
     sub.add_parser("seat")  # seat.py: each tree's own mod's seat (machine-local, once per stack change)
     hu = sub.add_parser("hue")  # leaf_hue.py: measure the diffuses' leaf colour (machine-local, needs Pillow)
-    hu.add_argument("what", choices=("build",))
-    hu.add_argument("sources", nargs="+", help="<row>=<BSA or loose Data dir>, the row as data/mesh-textures.json names it")
+    hu.add_argument("what", choices=("build", "build-nif"))
+    hu.add_argument("sources", nargs="*", help="build: <row>=<BSA or loose Data dir>, the row as data/mesh-textures.json names it")
+    hu.add_argument("--mo2", default=str(Path.home() / ".argonia" / "stack" / "MO2" / "mods"))
+    hu.add_argument("--vanilla", default=str(Path.home() / "games" / "skyrimse" / "Data"))
     tx = sub.add_parser("textures")  # mesh_textures.py: build the manifest (machine-local) or check it (L1)
     tx.add_argument("what", choices=("build", "check", "overrides"))  # overrides: the built plugin's MODS-dropped bases read back
     tx.add_argument("--esm")
@@ -175,6 +177,11 @@ def main(argv=None) -> int:
         return seat.main([])
     if a.cmd == "hue":
         from tools.argonia_world.vegetation import leaf_hue
+        if a.what == "build-nif":
+            doc = leaf_hue.build_nif(Path(a.mo2), Path(a.vanilla))
+            red = sorted(m for m, sh in doc["meshes"].items() if any(leaf_hue.red_shape(s) for s in sh or []))
+            print(f"hue: {len(doc['meshes'])} meshes' vertex colours read, {len(red)} with a red shape: {red}")
+            return 0
         doc = leaf_hue.build([(x.split('=', 1)[0], Path(x.split('=', 1)[1])) for x in a.sources])
         print(f"hue: {len(doc['textures'])} diffuses measured")
         return 0

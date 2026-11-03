@@ -224,6 +224,7 @@ def usable(w) -> dict[str, list]:
     bare_forms = mesh_textures.untextured_forms(man)  # a MODS diffuse no row lays, not overridden (lane 1.15-r3-mods)
     from tools.argonia_world.vegetation import leaf_hue
     hues = leaf_hue.load()
+    vshapes = leaf_hue.load_meshes()
     from tools.argonia_world.vegetation import seat
     seats = seat.load()
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
@@ -233,7 +234,7 @@ def usable(w) -> dict[str, list]:
             continue  # excluded since the inventory was read (forms.EXCLUDE: a building piece is not flora)
         if mesh_textures.mesh_path(r["model"]) in bare or r["form_key"] in bare_forms:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
-        if leaf_hue.red_textures(r["model"], man, hues):
+        if leaf_hue.red_textures(r["model"], man, hues) or (r["role_id"] != "rock" and leaf_hue.red_vertex(r["model"], vshapes)):
             continue  # a red or magenta leaf in a green swamp (lane 1.15-r4-red-trees; leaf_hue.py)
         if r["role_id"] in SEATED_ROLES and not seat.standing(r["form_key"], r["model"], r["bound_z0"], seats):
             continue  # no seat its mod measures, or a piece that hangs above the ground at it (finding 4)
