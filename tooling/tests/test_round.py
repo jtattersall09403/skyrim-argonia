@@ -13,7 +13,7 @@ def stub(path: pathlib.Path, body: str):
     path.chmod(0o755)
 
 
-def tree(tmp, deploy_fails=0, batch_items=2):
+def tree(tmp, deploy_fails=0, batch_items=2, to_run=2):
     root = tmp / "repo"
     (root / "infra" / "gpu-box").mkdir(parents=True)
     shutil.copy(REPO / "infra" / "gpu-box" / "round.sh", root / "infra" / "gpu-box" / "round.sh")
@@ -28,6 +28,9 @@ def tree(tmp, deploy_fails=0, batch_items=2):
     (root / "tools").mkdir()
     (root / "tools" / "run_batch.py").write_text(f'''import json, pathlib, sys, time
 open("{log}", "a").write("batch " + " ".join(sys.argv[1:]) + "\\n")
+if "--plan" in sys.argv:
+    print("batch: {to_run} of 2 journeys, {to_run} of 4 steps to run")
+    sys.exit(0 if {to_run} else 3)
 d = pathlib.Path("out/batch/t") / str(time.time_ns()); d.mkdir(parents=True)
 items = [{{"id": "a", "passed": True}}, {{"id": "b", "passed": False}}][:{batch_items}]
 (d / "summary.json").write_text(json.dumps({{"items": items}}))
@@ -52,8 +55,9 @@ def test_one_job_up_deploy_batch_stills_stop(tmp_path):
     r = go(root, env)
     assert r.returncode == 0, r.stdout + r.stderr
     calls = log.read_text().splitlines()
-    assert calls[0].startswith("up m1") and calls[1] == "make --no-print-directory deploy"
-    assert calls[2] == "batch b.yaml" and calls[-1] == "run stop"
+    assert calls[0] == "batch --plan b.yaml"  # the plan, before the machine starts
+    assert calls[1].startswith("up m1") and calls[2] == "make --no-print-directory deploy"
+    assert calls[3] == "batch b.yaml" and calls[-1] == "run stop"
     assert "ROUND DONE 1/2" in r.stdout and "stills: 1 in" in r.stdout
     stills = next(root.glob("out/batch/t/*/stills.txt")).read_text().split()
     assert len(stills) == 1 and stills[0].endswith("01-x.png")
@@ -67,6 +71,13 @@ def test_a_rerun_skips_what_is_done(tmp_path):
     calls = log.read_text().splitlines()
     assert calls == ["run stop"], calls  # up, deploy and the batch done for this build
     assert "ROUND DONE 1/2" in r.stdout
+
+
+def test_nothing_left_to_run_starts_no_machine(tmp_path):
+    root, log, env = tree(tmp_path, to_run=0)
+    r = go(root, env)
+    assert r.returncode == 0 and "ROUND DONE nothing to run" in r.stdout
+    assert log.read_text().splitlines() == ["batch --plan b.yaml"]
 
 
 def test_deploy_retried_once_then_stops_the_machine(tmp_path):
