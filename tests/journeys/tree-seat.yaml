@@ -1,0 +1,16 @@
+# The tree-seat journey (lane 1.15-r4-trees; owner play test 3, findings 4 and 32): six placed trees of different
+# forms, the ones their mod sinks deepest first (the erut, palm and jungle trees whose roots hung in the air), a
+# first-person still each aimed at the trunk base; then one still per region class from a placed tree's spot, level at
+# the play camera, for the variety between classes. Generated from the placer's shards like the rock booth (booth.py).
+# 
+#     python3 -m tools.argonia_world.vegetation tree-booth --out <shards>
+# 
+# Reader checklist per tree still: the trunk base meets the ground (no gap under it, roots into the ground, not
+# standing on root tips); natural bark and leaf colour (no neon blue-green, no washed-out pale). Per class still: name
+# the trees and plants seen; the six classes' stills should not read as one forest.
+# 
+id: tree-seat
+runner: 1
+crash_risk: low
+scene: rock-booth
+steps:
