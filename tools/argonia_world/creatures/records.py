@@ -44,6 +44,7 @@ DEN_MARKER = "000034:Skyrim.esm"  # XMarkerHeading: an editor marker, never draw
 ZONE_KINDS = ("wild", "clearable")
 ACTOR_BASE = 0x0D4000  # our fixed-level copies of scaling mod creatures (0035): form index x bands + band
 FIXED_ITEM_BASE = 0x0D6000  # our level-1 copies of levelled death-item lists (CreatureRecords.cs allocates in order)
+PACK_BASE = 0x0D3F00  # our scheduled creature packages (day_package_records order)
 SPELL_BASE = 0x0D3000  # our afflictions: MGEF at SPELL_BASE + 2i (a second effect's at the offset CreatureRecords.cs adds), SPEL at + 2i + 1
 #                        (i: the roster.AFFLICTIONS order)
 
@@ -133,9 +134,52 @@ def masters(w) -> list[str]:
 
 
 def fixed_forms(w) -> list[str]:
-    """The mod forms our plugin copies at a fixed level (0035), in form-key order (their ids' order)."""
-    return [r["form_key"] for r in w.query("SELECT form_key FROM creature_form WHERE pc_level_mult OR "
-                                           "death_item_levelled ORDER BY form_key")]
+    """The mod forms our plugin copies per band, in form-key order: every wild form (in a list or at a den), so each
+    copy carries its fixed level (0035) and its kind's day packages (owner #37, 09:23). Kept animals stay the mods'."""
+    return [r["form_key"] for r in w.query("SELECT f.form_key FROM creature_form f JOIN creature c ON c.id = "
+                                           "f.creature_id WHERE NOT c.domestic ORDER BY f.form_key")]
+
+
+# Time of day the Skyrim way (0034, measured 2026-11-03): Skyrim.esm's wild creatures run
+# EncCreatureSandboxEditorLocation512 (10F7A5), DefaultSandboxEditorLocation512 (01B217) or
+# EncSlaughterfishSboxEditorLocation256 (0DA751): the Sandbox template (01C254, 12 inputs), near the editor
+# location, at any hour; an hour switch exists only as a package schedule (PSDT hour + duration, as
+# DefaultSleepEditorLoc24x8 01B210: 0 h for 480 min). A kind's day_rule picks its abroad windows: a sandbox of
+# 512 units then, of 256 units (resting near its spawn) the rest of the day; 'any' keeps vanilla's own 10F7A5.
+ANY_PACKAGE = "10F7A5:Skyrim.esm"
+ABROAD = {"diurnal": [(6, 14)], "nocturnal": [(20, 10)], "crepuscular": [(4, 4), (17, 4)]}
+ABROAD_UNITS, REST_UNITS = 512, 256
+
+
+def _rest(windows: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    """The day's hours outside the abroad windows, as (start, hours)."""
+    on = {(h + k) % 24 for h, n in windows for k in range(n)}
+    out, h = [], 0
+    starts = [x for x in range(24) if x not in on and (x - 1) % 24 in on]
+    for st in starts:
+        n = 0
+        while (st + n) % 24 not in on:
+            n += 1
+        out.append((st, n))
+    return out
+
+
+def day_packages() -> tuple[list[dict], dict[str, list[str]]]:
+    """(the PACK records, rule -> the package form keys an actor carries, abroad first: Skyrim runs the first
+    package whose schedule holds)."""
+    from tools.argonia_world import packages as pk
+    recs, by = [], {"any": [ANY_PACKAGE]}
+    for rule, win in ABROAD.items():
+        by[rule] = []
+        for kind, ws, units in (("Abroad", win, ABROAD_UNITS), ("Rest", _rest(win), REST_UNITS)):
+            for i, (h, n) in enumerate(ws):
+                fk = f"{PACK_BASE + len(recs):06X}:{PLUGIN}"
+                recs.append({"type": "PACK", "formKey": fk, "edid": f"ARG_CrPk_{rule.title()}{kind}{i}",
+                             "template": pk.SANDBOX_TEMPLATE, "inputCount": pk.TEMPLATE_INPUTS[pk.SANDBOX_TEMPLATE],
+                             "flags": [], "schedule": {"hour": h, "minute": 0, "durationHours": n, "dayOfWeek": "Any"},
+                             "location": {"editor": True, "radius": units}})
+                by[rule].append(fk)
+    return recs, by
 
 
 def actor_key(w, form_key: str, band: str) -> str:
@@ -148,11 +192,18 @@ def actor_key(w, form_key: str, band: str) -> str:
 
 def actors(w) -> list[dict]:
     lv = {r["band"]: r["level"] for r in w.query("SELECT band, level FROM danger_band_level")}
+    rule = {r["id"]: r["day_active"] for r in w.query("SELECT id, day_active FROM creature")}
+    _, by = day_packages()
+    day = {"always": "any", "diurnal": "diurnal", "nocturnal": "nocturnal", "crepuscular": "crepuscular"}
+    fixed = set(fixed_forms(w))
     out = []
-    for r in w.query("SELECT * FROM creature_form WHERE pc_level_mult OR death_item_levelled ORDER BY form_key"):
+    for r in w.query("SELECT * FROM creature_form ORDER BY form_key"):
+        if r["form_key"] not in fixed:
+            continue
         for b in ro.BANDS:
             out.append({"formKey": actor_key(w, r["form_key"], b), "edid": f"ARG_Cr_{r['edid']}_{b}",
-                        "source": r["form_key"], "level": lv[b], "deathItem": bool(r["death_item_levelled"])})
+                        "source": r["form_key"], "level": lv[b], "deathItem": bool(r["death_item_levelled"]),
+                        "packages": by[day[rule[r["creature_id"]]]]})
     return out
 
 
@@ -191,7 +242,7 @@ def document(w) -> dict:
               "minLevel": r["min_level"], "maxLevel": r["max_level"], "neverResets": bool(r["never_resets"])}
              for r in w.query("SELECT * FROM encounter_zone ORDER BY id")]
     return {"lists": lists, "templates": templates, "actors": actors(w), "plugins": plugins(w), "zones": zones,
-            "afflictions": afflictions()}
+            "afflictions": afflictions(), "packages": day_packages()[0]}
 
 
 def base_of(r: dict, fixed: list[str] | None = None) -> tuple[str, str]:

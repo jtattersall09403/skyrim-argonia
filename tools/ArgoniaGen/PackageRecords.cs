@@ -101,7 +101,8 @@ static class PackageRecords
         var radius = loc.TryGetProperty("radius", out var rd) ? rd.GetSingle() : 0f;
         ALocationTarget tgt = loc.TryGetProperty("ref", out var rf) ? new LocationTarget { Link = new FormLink<IPlacedGetter>(FK(rf.GetString()!)) }
             : loc.TryGetProperty("cell", out var ce) ? new LocationCell { Link = new FormLink<ICellGetter>(FK(ce.GetString()!)) }
-            : throw new InvalidDataException("location needs ref or cell");
+            : loc.TryGetProperty("editor", out _) ? new LocationFallback { Type = LocationTargetRadius.LocationType.NearEditorLocation }
+            : throw new InvalidDataException("location needs ref, cell or editor");
         d.Location = new LocationTargetRadius { Target = tgt, Radius = (uint)Math.Round(radius) };
     }
 

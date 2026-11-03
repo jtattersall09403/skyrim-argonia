@@ -29,6 +29,8 @@ static class CreatureRecords
 
     public static void Add(SkyrimMod mod, JsonElement c, string data)
     {
+        if (c.TryGetProperty("packages", out var pp))  // the day packages (records.day_packages, Skyrim's Sandbox shape)
+            foreach (var p in pp.EnumerateArray()) PackageRecords.Write(mod, p, data);
         Actors(mod, c, data);
         foreach (var l in c.GetProperty("lists").EnumerateArray())
         {
@@ -181,6 +183,12 @@ static class CreatureRecords
             cf.Level = new NpcLevel { Level = lvl };  // an NpcLevel, not a PcLevelMult: Mutagen writes the ACBS flag off
             cf.CalcMinLevel = lvl;
             cf.CalcMaxLevel = lvl;
+            if (a.TryGetProperty("packages", out var pk))
+            {  // its kind's day packages, abroad first; its own, no longer the template's (0x20 AI packages)
+                cf.TemplateFlags &= ~NpcConfiguration.TemplateFlag.AIPackages;
+                n.Packages.Clear();
+                foreach (var k in pk.EnumerateArray()) n.Packages.Add(new FormLink<IPackageGetter>(FK(k.GetString()!)));
+            }
             if (a.GetProperty("deathItem").GetBoolean())
             {
                 if (cf.TemplateFlags.HasFlag(NpcConfiguration.TemplateFlag.Traits))
