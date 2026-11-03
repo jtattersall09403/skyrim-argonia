@@ -10,13 +10,13 @@ step() { local n=$1; shift; local s=$SECONDS; echo "== $n $(date -u +%H:%M:%S)";
 git pull -q --rebase origin main || exit 3
 step plugin make plugin || exit 3
 step water $PY -m tools.argonia_world.water check || exit 3
-step vegetation $PY -m tools.argonia_world.vegetation check || echo "(vegetation check red: the batch's tree-seat stills decide)"
+step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
 step roads $PY -m tools.argonia_world.routes.shape check || echo "(road check red: noted)"
 step chart $PY -m tools.chart render --if-stale || exit 3
 step chart4k $PY -m tools.chart render --if-stale --level --size 4096 --out out/chart4k || echo "(4k chart render failed: the 1x chart stands)"
-step sample python3 tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
+step sample $PY tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
 step plugin-ids make plugin-ids || exit 3
-step tree-booth $PY -m tools.argonia_world.vegetation tree-booth --out tests/journeys/tree-seat.yaml || echo "(no tree-seat journey: tree-booth needs the shards path; the planner adds it)"
+step tree-booth $PY -m tools.argonia_world.vegetation tree-booth --out out/terrain/vegetation || echo "(no tree-seat journey this run)"
 git add tests/journeys/world-sample.yaml tests/journeys/tree-seat.yaml tools/chart/*.json 2>/dev/null
 git diff --cached --quiet || git commit -q -m "round 4 pre-batch: the world-sample pins and the tree-seat journey from the new ground and placement
 
