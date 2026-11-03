@@ -1,6 +1,11 @@
 """The menu loop (owner play test 3, finding 6): every menu driven by a scripted pad at the four viewports.
 
     python -m tools.ui_harness menus [--only VIEW ...] [--no-stills]   -> out/ui/menus/report.json + stills
+    python -m tools.ui_harness menus --flash [--theme <overlay>]       -> out/ui/flash/report.json + stills
+
+--flash: every retinted Flash screen with a driven state (tools.ui_theme.flash_still.STATES) drawn from the themed
+overlay by Ruffle, an L3 still and its text measure each; a text item under FLASH_MIN_CONTRAST fails. Run it on the
+overlay the next deploy carries, before the deploy.
 
 The pad is the in-game one: PrismaUI's `gamepadbuttondown` on window.prismaUi.controls (nav.ts), stood up before the
 view loads, so the presses run the same code path as in game. Per menu and viewport:
@@ -16,6 +21,7 @@ import argparse
 import json
 import sys
 import time
+from pathlib import Path
 
 from tools.ui_harness.build import ROOT, VIEWS, build
 from tools.ui_harness.harness import VIEWPORTS, Harness, fixtures
@@ -229,11 +235,54 @@ def run(only: list[str] | None, shoot: bool) -> dict:
     return report
 
 
+FLASH_OUT = ROOT / "out" / "ui" / "flash"
+FLASH_MIN_CONTRAST = 2.0  # WCAG's floor for large text is 3.0; Dear Diary's unselected rows are dimmed by design
+# (the movie under the overlay's interface/, its driven states)
+FLASH = (("quest_journal.swf", ("system-main", "system-settings", "system-load")),)
+
+
+def run_flash(theme) -> dict:
+    from tools.ui_theme import flash_still
+
+    t0 = time.monotonic()
+    report: dict = {"theme": str(theme), "screens": {}, "fails": []}
+    for movie, states in FLASH:
+        src = theme / "interface" / movie
+        if not src.is_file():
+            report["fails"].append(f"{movie}: not in {theme}/interface")
+            continue
+        for state in states:
+            r = flash_still.still_with_measure(src, FLASH_OUT / f"{src.stem}-{state}.png", state)
+            report["screens"][f"{movie}@{state}"] = r
+            for i in r["items"]:
+                if i["contrast"] < FLASH_MIN_CONTRAST:
+                    report["fails"].append(f"{movie}@{state}: text at {i['box']} ink {i['ink']} on {i['background']} "
+                                           f"contrast {i['contrast']} < {FLASH_MIN_CONTRAST}")
+    report["seconds"] = round(time.monotonic() - t0, 1)
+    return report
+
+
+def default_theme():
+    from tools.ui_theme.flash_still import STACK
+    built = ROOT / "out" / "ui_theme" / "argonia-theme"
+    return built if (built / "interface").is_dir() else STACK / "argonia-theme"
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(prog="python -m tools.ui_harness menus")
     ap.add_argument("--only", nargs="*")
     ap.add_argument("--no-stills", action="store_true")
+    ap.add_argument("--flash", action="store_true", help="the Flash screens' L3 stills and text contrast (Ruffle)")
+    ap.add_argument("--theme", type=Path, help="the themed overlay (default out/ui_theme/argonia-theme, else the stack's)")
     a = ap.parse_args(argv)
+    if a.flash:
+        r = run_flash(a.theme or default_theme())
+        FLASH_OUT.mkdir(parents=True, exist_ok=True)
+        (FLASH_OUT / "report.json").write_text(json.dumps(r, indent=1) + "\n")
+        print(f"{len(r['screens'])} flash stills in {r['seconds']} s; {len(r['fails'])} fails -> {FLASH_OUT}")
+        for f in r["fails"][:60]:
+            print("  " + f)
+        return 1 if r["fails"] else 0
     r = run(a.only, not a.no_stills)
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "report.json").write_text(json.dumps(r, indent=1) + "\n")

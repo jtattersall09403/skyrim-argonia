@@ -107,6 +107,7 @@ prove it**, and the composition is checked only for what composition can break.
 | a fight, an AI choice, a combat window by time | the combat core driven by a time stream (no game) | L2 |
 | a quest's rules, a dialogue walk's conditions, a crime response, a co-save round trip | unit tests of the core and the tools | L2 |
 | a UI screen on every viewport, focus order, readability | the `ui/` harness: Playwright at 1920×1080, 1280×720, the Magic V5 folded (~21:9) and unfolded; readers | L3 |
+| a retinted Flash (Scaleform) menu: its text colours, colour transforms, layout and art | `python -m tools.ui_harness menus --flash [--theme <overlay>]` before any deploy: the movie itself drawn by Ruffle's headless exporter in its driven states (`tools.ui_theme.flash_still`), a still and a text contrast each (fails under 2.0); readers. Cannot show: Scaleform-only filters and blend quirks, the engine's own data (real saves, settings values), the fonts' hinting; the in-game still closes it | L3 |
 | that our plugin, the frameworks and Skyrim agree (a hit lands, a window opens on time, a stage fires, an NPC paths) | a studio scene and the game runner: state reads and event timestamps | L4 |
 | a journey inside the game | the journey runner: state, events, a still per step | L4 |
 | a place, a kit piece, an item or creature up close | bridge vantage stills and booth sheets, read by readers | L4 |
