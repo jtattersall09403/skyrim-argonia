@@ -248,7 +248,7 @@ class JournalFramePalette(FramePalette):
                 out[sl[0], sl[1], 3] = a
 
         for x0, y0, x1, y1 in boxes:  # the ground first, 10 px beyond each panel, so neighbours share one sheet
-            rect(x0 - 10, y0 - 10, x1 + 10, y1 + 10, g, 242, fill=True)  # --frame-bg's 0.95
+            rect(x0 - 10, y0 - 10, x1 + 10, y1 + 10, g, 255, fill=True)  # opaque, as 08 (0.95 let play show through)
         for x0, y0, x1, y1 in boxes:
             rect(x0 - 6, y0 - 6, x1 + 6, y1 + 6, hi, 255, t=2)  # the lit rule
             rect(x0 - 2, y0 - 2, x1 + 2, y1 + 2, lo, 255)  # the inner trim

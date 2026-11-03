@@ -18,6 +18,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import re
 import sys
 from fnmatch import fnmatch
 from pathlib import Path
@@ -125,7 +126,7 @@ def script_text_colours(data: bytes, base: int) -> list[tuple[int, int]]:
                 q += 1
                 if ty == 0:
                     e = body.index(0, q)
-                    armed |= body[q:e] == b"textColor"
+                    armed |= body[q:e] in (b"textColor", b"color")
                     q = e + 1
                 elif ty == 7:
                     if armed:
@@ -133,7 +134,7 @@ def script_text_colours(data: bytes, base: int) -> list[tuple[int, int]]:
                     q += 4
                 elif ty in (8, 9):
                     k = body[q] if ty == 8 else int.from_bytes(body[q:q + 2], "little")
-                    armed |= k < len(pool) and pool[k] == b"textColor"
+                    armed |= k < len(pool) and pool[k] in (b"textColor", b"color")
                     q += 1 if ty == 8 else 2
                 else:
                     q += {1: 4, 2: 0, 3: 0, 4: 1, 5: 1, 6: 8}.get(ty, len(body))
@@ -155,8 +156,10 @@ def recolour_script_text(movie: swf.Movie, palette: FramePalette) -> int:
         data = bytearray(tag.data)
         for off, v in hits:
             rgb = ((v >> 16) & 255, (v >> 8) & 255, v & 255)
-            key = "frame-head" if rgb[0] > 2 * max(rgb[1], rgb[2]) + 40 else "frame-text"
-            r, g, b = (int(round(c * 255)) for c in palette.t[key])
+            if rgb[0] > 2 * max(rgb[1], rgb[2]) + 40:
+                r, g, b = (int(round(c * 255)) for c in palette.t["frame-head"])
+            else:
+                r, g, b = palette.text(rgb)
             data[off:off + 4] = ((r << 16) | (g << 8) | b).to_bytes(4, "little", signed=True)
         movie.tags[k] = swf.Tag(tag.code, bytes(data), tag.long)
         n += len(hits)
@@ -186,12 +189,17 @@ def recolour_text(movie: swf.Movie, palette: FramePalette) -> int:
             continue
         data = bytearray(tag.data)
         data[o:o + 3] = bytes(palette.text(tuple(data[o:o + 3])))
+        # the initial HTML text's own <font color="#rrggbb"> overrides the field colour (r5 16:03: the category list,
+        # the date line, Level and the button labels stayed black): each moves to the same token, same length
+        data = bytearray(HTML_COLOUR.sub(lambda m: b'color="#%02x%02x%02x"' % palette.text(
+            tuple(int(m.group(1)[i:i + 2], 16) for i in (0, 2, 4))), bytes(data)))
         movie.tags[k] = swf.Tag(tag.code, bytes(data), tag.long)
         n += 1
     return n
 
 
 DEFINE_EDIT_TEXT = 37
+HTML_COLOUR = re.compile(rb'color="#([0-9a-fA-F]{6})"')
 
 
 def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str | None = None

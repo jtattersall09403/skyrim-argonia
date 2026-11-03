@@ -299,3 +299,15 @@ def test_journal_rows_run_time_colours_and_sheet_redrawn():
     assert out[15, 200, 3] == 0  # header strip cleared
     assert out[272, 300, 3] > 0  # tab runs to the pane's right edge
     assert tuple(out[150, 200, :3]) == tuple(tokens()["frame-ground"])
+
+
+def test_html_font_colours_follow_the_frame_text():
+    """r5 16:03: a field's initial HTML <font color> overrode its recoloured TextColor (black category list, date)."""
+    from tools.ui_theme import retheme
+    html = b'<p><font face="$EverywhereFont" color="#000000">x</font></p>'
+    # DefineEditText: id, RECT (nbits 0: one byte), flags HasText|HasTextColor (f1 0x80|0x04), HTML (f2 0x02)
+    data = b"\x01\x00" + b"\x00" + bytes([0x84, 0x02]) + b"\x00\x00\x00\xff" + b"\x00\x00" + html + b"\x00"
+    movie = swf.Movie(b"FWS", 10, b"", [swf.Tag(37, data, True)])
+    assert retheme.recolour_text(movie, FramePalette()) == 1
+    out = movie.tags[0].data
+    assert b'color="#000000"' not in out and b'color="#d9cfa6"' in out and len(out) == len(data)
