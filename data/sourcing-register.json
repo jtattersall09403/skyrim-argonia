@@ -1131,5 +1131,14 @@
     "used_by": "world/db/creature_form.jsonl and creature_list_entry.jsonl, tools/argonia_world/creatures/records.py (ArgoniaWorld.esm's LVLN entries and den ACHRs), tools/ArgoniaGen/CreatureRecords.cs",
     "notes": "forms: 01BOSActorKingfisher (014EDB, marsh-bird); 01BOSActorRaven (014EC0, crow); 01BOSActorSeagull (004EBB, marsh-bird); 01BOSCrow1 (003E86, crow); 01BOSGreycrow (004950, crow); 01BOSOystercatcher (00FD62, marsh-bird); 01BOSPectoralSandpiper (00FD61, marsh-bird)",
     "linked_or_forked_by": "linked: our LVLN and ACHR name the mod's own NPC_ by FormID (the mod is a master of ArgoniaWorld.esm, planner 2026-11-01); nothing of the mod is committed or shipped (0003)"
+  },
+  {
+    "name": "Ruffle (Flash Player emulator), headless exporter",
+    "source_url": "https://github.com/ruffle-rs/ruffle/releases/tag/nightly-2026-11-03",
+    "version": "nightly-2026-11-03 (exporter built from the tag's source, commit in ~/.argonia/tools/ruffle/exporter.commit); desktop release ruffle-nightly-2026_11_03-linux-x86_64.tar.gz sha256 26269a2336b175e561ba4b4f997fb7483c6c91441ce12c3132c1ff6a79d91c97 (matches the release page digest)",
+    "licence": "MIT OR Apache-2.0",
+    "used_by": "tools/ui_theme/flash_still.py (L3 stills of the themed Scaleform menus), tools/ui_harness menus --flash",
+    "linked_or_forked_by": "built locally by tools/ui_theme/ruffle/build_exporter.sh with our patch tools/ui_theme/ruffle/exporter-argonia.patch (AVM traces to stderr; Windows-path, case-blind local fetches); binary in ~/.argonia/tools/ruffle, never committed, not shipped",
+    "notes": "Agents' tool only (owner approved the fetch 2026-11-03). Build needs Rust (rustup, ~/.argonia/tools/rust) and Java (openjdk-21-jre-headless) for Ruffle's AVM2 playerglobal step."
   }
 ]
