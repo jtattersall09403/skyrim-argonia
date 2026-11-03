@@ -136,13 +136,19 @@ RE::TESBoundObject* Carried(std::string_view key, std::int32_t& count) {
 // Under Get().lock (the router's handler and ViewIntent hold it).
 void OpenInventory(std::optional<std::string> notice) {
   auto json = ac::msg::encode(InventoryState(std::move(notice)));
-  if (!json) return SKSE::log::error("views: the inventory does not fit the schema: {}", json.error());
+  if (!json) {
+    SKSE::log::error("views: the inventory does not fit the schema: {}", json.error());
+    return;
+  }
   Push("inventory", std::move(*json));
 }
 
 void OpenCharsheet(std::optional<std::string> notice) {
   auto json = ac::msg::encode(SheetState(std::move(notice)));
-  if (!json) return SKSE::log::error("views: the character sheet does not fit the schema: {}", json.error());
+  if (!json) {
+    SKSE::log::error("views: the character sheet does not fit the schema: {}", json.error());
+    return;
+  }
   Push("charsheet", std::move(*json));
 }
 
