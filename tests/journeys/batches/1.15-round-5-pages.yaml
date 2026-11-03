@@ -1,0 +1,8 @@
+# Only the Settings and Load pages (lane 1.12-r5-system-pages e57e1e4a): the owner's no-duplication rule.
+id: 1.15-round-5-pages
+relaunch_mb: 6000
+relaunch_every: 0
+one_load: true
+settle_waits: true
+items:
+  - system-pages
