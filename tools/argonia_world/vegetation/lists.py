@@ -257,7 +257,11 @@ FAMILY = (  # family -> (name words, the eco classes whose ground it is, the gro
     ("mangrove", ("mangrove",), COAST, AUDIT_ROWS + " 3, 4, 14 (mangrove dominant); lore regions/murkmire.md:23"),
     ("palm", ("palm",), COAST + ("western-frontier",), AUDIT_ROWS + " 4 (strand palms), 10 (raised hammock fan palm)"),
     ("cypress", ("cypress", "swamptree"), ("flooded-forest", "interior-swamp", "deep-river-corridor",
-                                          "deep-sink-basin"), AUDIT_ROWS + " 5, 6, 7, 12 (cypress dominant); " + FAUNA),
+                                          "deep-sink-basin", "tidal-delta"),
+     AUDIT_ROWS + " 5, 6, 7, 12 (cypress dominant); " + FAUNA + "; tidal-delta (lane 1.15-r5-delta-trees): the "
+     "mangrove role has no form of ours, so the buttressed cypress stands for the mangrove thicket that screens a "
+     "river mouth (lore regions/waters.md:31, regions/murkmire.md:23, topics/fauna-hazards.md:94), in the water "
+     "(IN_WATER_TREE)"),
     ("willow", ("willow", "bamboo", "weeping", "moss"), ("flooded-forest", "deep-sink-basin"),
      AUDIT_ROWS + " 9 (seasonal floodplain willow); " + FAUNA + " (bamboo)"),
     ("jungle", ("jungle", "kapok", "mega", "rainforest", "ceiba", "banyan", "gkbjungle"),
