@@ -52,6 +52,10 @@ step "game down" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\
 # before the redesign, because nothing rebuilt out/ui/views and worktrees linked the main tree's copy): the views
 # (esbuild, seconds) and the theme overlay (the retheme recipe over the staged mods; cleared first so a dropped file goes).
 if [ $stage = 1 ]; then
+  # The chart's render is re-made when its source stamp changed (r4 shipped a render dated days before the terrain; the
+  # sketch layer is the map's first look, owner 2026-11-03 #37); a fresh one costs a stamp check.
+  step "chart" "$PY" -m tools.chart render --if-stale
+  step "chart 4k" "$PY" -m tools.chart render --if-stale --level --size 4096 --out out/chart4k
   step "views" "$PY" -m tools.ui_harness.build
   step "theme" bash -c 'rm -rf out/ui_theme/argonia-theme && "$0" -m tools.ui_theme.build --mods "$HOME/.argonia/stack/MO2/mods" \
     --ttf "${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf" --out out/ui_theme/argonia-theme' "$PY"

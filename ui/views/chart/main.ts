@@ -9,7 +9,7 @@
 // glides toward it (geom.ts glide), and when it settles the view is sent as chart.pan, kept between openings.
 import type { ChartState, ChartView } from "../../schema/generated/messages.ts";
 import { send, start } from "../core/bridge.ts";
-import { type CellIndex, type LabelBox, glide, labelAt, levelFor, placeLabels, pan, panIntent, revealDiscs, sketchCities, toPx,
+import { type CellIndex, type LabelBox, compositePlan, glide, labelAt, levelFor, placeLabels, pan, panIntent, revealDiscs, sketchCities, toPx,
   toward, transform, visibleTiles, ZOOM_MAX, ZOOM_MIN } from "./geom.ts";
 import { render } from "./render.ts";
 
@@ -135,8 +135,9 @@ function draw(): void {
   c.imageSmoothingEnabled = true; c.imageSmoothingQuality = "high";
   // The rough sketch everywhere (play test 3 #12), then the explored detail through the seen land's soft mask, so the
   // sketch is filled in as the player explores.
-  layer(c, dir, "sketch", level, t, w, h);
-  if (state.revealed.length && mask) {
+  const plan = compositePlan(state.revealed.length);
+  for (const step of plan.filter((s) => !s.masked)) layer(c, dir, step.layer, level, t, w, h);
+  if (plan.some((s) => s.masked) && mask) {
     seen ??= document.createElement("canvas");
     if (seen.width !== canvas.width || seen.height !== canvas.height) { seen.width = canvas.width; seen.height = canvas.height; }
     const s = seen.getContext("2d")!;
@@ -144,7 +145,7 @@ function draw(): void {
     s.globalCompositeOperation = "source-over";
     s.clearRect(0, 0, w, h);
     s.imageSmoothingEnabled = true;
-    layer(s, dir, "full", level, t, w, h);
+    for (const step of plan.filter((p) => p.masked)) layer(s, dir, step.layer, level, t, w, h);
     s.globalCompositeOperation = "destination-in";
     s.drawImage(mask, t.tx, t.ty, ix.size * t.scale, ix.size * t.scale);
     s.globalCompositeOperation = "source-over";

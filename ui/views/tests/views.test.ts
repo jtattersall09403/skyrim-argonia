@@ -11,7 +11,7 @@ import {
 } from "../../schema/generated/messages.ts";
 import { esc, intentsIn, textOf } from "../core/html.ts";
 import { remFor } from "../core/scale.ts";
-import { type CellIndex, glide, hits, labelAt, levelFor, placeLabels, pan, panIntent, REVEAL, revealDiscs, revealRects, toPx, toUnits, toward, transform, visibleTiles, ZOOM_MAX } from "../chart/geom.ts";
+import { type CellIndex, compositePlan, glide, hits, labelAt, levelFor, placeLabels, pan, panIntent, REVEAL, revealDiscs, revealRects, toPx, toUnits, toward, transform, visibleTiles, ZOOM_MAX } from "../chart/geom.ts";
 import { discTransform, onDisc, REACH, turnTo } from "../hud/minimap.ts";
 import { ME } from "../hud/me.ts";
 import { render as chart } from "../chart/render.ts";
@@ -471,4 +471,14 @@ test("our System pane lists settings, load and the two quits, never Quests; our 
     assert.equal(waitClamp(99, m.body.max), m.body.max);
     assert.ok(textOf(wait(m.body, 1)).includes("1 hour") && !textOf(wait(m.body, 1)).includes("1 hours"), name);
   }
+});
+
+// Owner 2026-11-03 (#37): the sketch is always visible. The mask applies to the `full` layer only, never to `sketch`.
+test("chart compositing: the sketch is drawn whole and unmasked, the mask cuts only the detail", () => {
+  assert.deepEqual(compositePlan(0), [{ layer: "sketch", masked: false }]);
+  for (const n of [1, 10, 400]) {
+    assert.deepEqual(compositePlan(n), [{ layer: "sketch", masked: false }, { layer: "full", masked: true }]);
+  }
+  for (const n of [0, 1, 10]) for (const s of compositePlan(n)) assert.equal(s.masked, s.layer === "full");
+  assert.equal(compositePlan(0)[0].layer, "sketch");   // under the detail, never over it
 });

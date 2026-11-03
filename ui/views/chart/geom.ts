@@ -58,6 +58,14 @@ export function placeLabels(boxes: LabelBox[], sheetW: number, sheetH: number, g
 
 export const key = (c: CellKey): string => `${c.x},${c.y}`;
 
+// The order the view composites the chart in (owner 2026-11-03, #37: the sketch is always visible, the map starts as a
+// rough sketch and fills in on foot). `sketch` is drawn first, whole and unmasked, whatever has been revealed; `full`
+// (the detail: terrain, rivers, tracks) is drawn only when something is revealed and only through the seen land's mask.
+// The cities are screen-space DOM over both (main.ts), never masked. Nothing else is composited over the sketch.
+export interface CompositeStep { layer: "sketch" | "full"; masked: boolean }
+export const compositePlan = (revealedCount: number): CompositeStep[] =>
+  [{ layer: "sketch", masked: false }, ...(revealedCount > 0 ? [{ layer: "full" as const, masked: true }] : [])];
+
 // The sketch's cities the push did not name: the chart letters them whether or not the player has been there.
 export const sketchCities = (ix: CellIndex, named: Set<string>) =>
   Object.entries(ix.places ?? {}).filter(([id, p]) => p.city && p.name && !named.has(id))
