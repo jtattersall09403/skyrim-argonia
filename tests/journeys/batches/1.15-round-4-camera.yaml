@@ -8,5 +8,4 @@ one_load: true
 settle_waits: true
 items:
   - world-panel
-  - river-steps
   - tree-seat
