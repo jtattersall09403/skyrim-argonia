@@ -6,6 +6,7 @@
 # cast; then compares the two launches. Each step checks only that the teleport landed and the weather took.
 {
  "id": "sky-ab",
+ "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
  "scene": "world-panel",
