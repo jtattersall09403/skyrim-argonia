@@ -398,7 +398,9 @@ def stop_4(w: World, g: Ground) -> dict:
             "why": f"the {tag} of {reach['id']}: on the bed or the surface, not under the ground or in the air",
             "do": [probe_go(f"s04-{tag}-of-reach", x, y, max(z, water_u) + DROP_U), {"wait": 4}],
             "expect": [{"read": ["player"], "path": "pos.z", "ge": su.rounded(z - tol, 2), "within": 3},
-                       {"read": ["player"], "path": "pos.z", "le": su.rounded(water_u + tol, 2), "within": 3},
+                       # on the surface or, where the piece's water lies under its bank (round 4's skirt and ring at
+                       # the foot of a step), on the ground: the higher of the two
+                       {"read": ["player"], "path": "pos.z", "le": su.rounded(max(water_u, z) + tol, 2), "within": 3},
                        {"read": ["player"], "path": "in_air", "eq": False, "within": 3}],
             "expected_ground_m": round(float(g.H[r, c]), 3), "expected_water_m": p["zM"]})
     s["steps"][-1]["reader"] = [

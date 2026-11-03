@@ -3,6 +3,12 @@ EditorID: ARG_Load_naming_day
 Description:
   TargetLanguage: English
   Value: On their Naming Day a hatchling licks the Hist and is granted a name.
+Conditions:
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 50
 LoadingScreenNif: 000C02:Argonia.esm
 InitialScale: 3.5047
 InitialRotation: -10, 0, 30

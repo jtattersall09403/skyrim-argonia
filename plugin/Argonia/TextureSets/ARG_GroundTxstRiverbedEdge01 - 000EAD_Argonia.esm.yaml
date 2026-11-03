@@ -1,3 +1,4 @@
 FormKey: 000EAD:Argonia.esm
 EditorID: ARG_GroundTxstRiverbedEdge01
 Diffuse: TEXTUREPACK\landscape\riverbededge.dds
+NormalOrGloss: landscape\riverbededge_n.dds

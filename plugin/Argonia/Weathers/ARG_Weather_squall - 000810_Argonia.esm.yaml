@@ -460,8 +460,8 @@ FogDistanceNightNear: 350.15
 FogDistanceNightFar: 19608.4
 FogDistanceDayPower: 0.8
 FogDistanceNightPower: 0.8
-FogDistanceDayMax: 1
-FogDistanceNightMax: 1
+FogDistanceDayMax: 0.95
+FogDistanceNightMax: 0.95
 WindSpeed: 0.8
 TransDelta: 4
 PrecipitationBeginFadeIn: 0.09803921568627451

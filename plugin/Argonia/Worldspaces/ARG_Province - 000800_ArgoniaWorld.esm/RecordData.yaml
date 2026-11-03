@@ -60,7 +60,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -231199.9, 47690.22, 4792
+      Position: -231199.9, 47690.22, 4800
       Rotation: 0, 0, 3.490659
   - MutagenObjectType: PlacedNpc
     FormKey: 00088C:Argonia.esm
@@ -70,7 +70,7 @@ TopCell:
     - 0x400
     Base: 000858:Argonia.esm
     Placement:
-      Position: -239358.16, 52991.34, 4808.04
+      Position: -239358.16, 52991.34, 4808.08
       Rotation: 0, 0, 1.745329
     MajorFlags:
     - Persistent
@@ -96,7 +96,7 @@ TopCell:
       Position: 8622.41, -5156.74, 5711.58
       Rotation: 0, 0, 4.287916
     Placement:
-      Position: -231669.1, 47410.11, 2675.15
+      Position: -231669.1, 47410.11, 4852.38
       Rotation: 0, 0, 3.700098
   - MutagenObjectType: PlacedObject
     FormKey: 0008B7:Argonia.esm
@@ -110,7 +110,7 @@ TopCell:
       Position: 7711.09, -3806.71, 5820.68
       Rotation: 0, 0, 4.215246
     Placement:
-      Position: -231963.2, 52522.99, 2455.04
+      Position: -231963.2, 52522.99, 4791.45
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 0008BC:Argonia.esm
@@ -124,7 +124,7 @@ TopCell:
       Position: 7699.53, -3961.07, 6491.01
       Rotation: 0, 0, 5.056176
     Placement:
-      Position: -230212.5, 54757.87, 2515.97
+      Position: -230212.5, 54757.87, 4799.86
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 0008C3:Argonia.esm
@@ -138,7 +138,7 @@ TopCell:
       Position: 7472.79, -3806.36, 6065.16
       Rotation: 0, 0, 3.208757
     Placement:
-      Position: -231359.77, 53320.47, 2503.22
+      Position: -231359.77, 53320.47, 4783.75
       Rotation: 0, 0, 1.570796
   - MutagenObjectType: PlacedObject
     FormKey: 0008C9:Argonia.esm
@@ -157,7 +157,7 @@ TopCell:
     - 0x400
     Base: 000876:Argonia.esm
     Placement:
-      Position: -234239.11, 48418.51, 4611.74
+      Position: -234239.11, 48418.51, 4584
       Rotation: 0, 0, 3.141593
     MajorFlags:
     - Persistent
@@ -180,7 +180,7 @@ TopCell:
     - 0x400
     Base: 000886:Argonia.esm
     Placement:
-      Position: -231192.9, 47690.22, 4792
+      Position: -231192.9, 47690.22, 4800
       Rotation: 0, 0, 3.490659
     MajorFlags:
     - Persistent
@@ -192,7 +192,7 @@ TopCell:
     - 0x400
     Base: 000870:Argonia.esm
     Placement:
-      Position: -231430.98, 47760.25, 4792
+      Position: -231430.98, 47760.25, 4799.94
       Rotation: 0, 0, 0.523599
   - MutagenObjectType: PlacedObject
     FormKey: 0008E7:Argonia.esm
@@ -212,7 +212,7 @@ TopCell:
     - 0x400
     Base: 00081A:Ferries.esp
     Placement:
-      Position: -229561.23, 51506.75, 4560
+      Position: -229561.23, 51506.75, 4763.44
       Rotation: 0, 0, 2.036799
   - MutagenObjectType: PlacedObject
     FormKey: 0008E9:Argonia.esm
@@ -222,7 +222,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -229120.06, 43306.46, 4829.34
+      Position: -229120.06, 43306.46, 4837.35
   - MutagenObjectType: PlacedNpc
     FormKey: 0008EC:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -254,7 +254,7 @@ TopCell:
     - 0x400
     Base: 000871:Argonia.esm
     Placement:
-      Position: -231332.95, 47704.22, 4792
+      Position: -231332.95, 47704.22, 4800
       Rotation: 0, 0, 0.244346
   - MutagenObjectType: PlacedObject
     FormKey: 0008F5:Argonia.esm
@@ -265,7 +265,7 @@ TopCell:
     Base: 000872:Argonia.esm
     Owner: 000886:Argonia.esm
     Placement:
-      Position: -231304.94, 47788.26, 4792
+      Position: -231304.94, 47788.26, 4800
   - MutagenObjectType: PlacedObject
     FormKey: 0008F6:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -275,7 +275,7 @@ TopCell:
     Base: 000873:Argonia.esm
     Owner: 000886:Argonia.esm
     Placement:
-      Position: -231234.9, 47830.27, 4792
+      Position: -231234.9, 47830.27, 4797.43
   - MutagenObjectType: PlacedObject
     FormKey: 000970:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -285,7 +285,7 @@ TopCell:
     Base: 000034:Skyrim.esm
     Owner: 000876:Argonia.esm
     Placement:
-      Position: -234169.1, 47753.24, 2354.41
+      Position: -234169.1, 47753.24, 4730.15
   - MutagenObjectType: PlacedObject
     FormKey: 000975:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -294,8 +294,8 @@ TopCell:
     - 0x400
     Base: 000973:Argonia.esm
     Placement:
-      Position: -252586.45, 50005.34, 4525.34
-      Rotation: 0, 0, 3.926816
+      Position: -252551.44, 49919.91, 4519.74
+      Rotation: 0, 0, 4.712389
   - MutagenObjectType: PlacedObject
     FormKey: 000976:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -304,7 +304,7 @@ TopCell:
     - 0x400
     Base: 000973:Argonia.esm
     Placement:
-      Position: 192767.89, 260743.44, 49.72
+      Position: 192767.89, 260743.44, 58.83
   - MutagenObjectType: PlacedObject
     FormKey: 000977:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -313,7 +313,7 @@ TopCell:
     - 0x400
     Base: 01FA35:King of the Murkmire.esp
     Placement:
-      Position: -232117.27, 50232.24, 4690.61
+      Position: -232117.27, 50232.24, 4822.97
       Rotation: 0, 0, 3.081728
   - MutagenObjectType: PlacedObject
     FormKey: 000978:Argonia.esm
@@ -323,7 +323,7 @@ TopCell:
     - 0x400
     Base: 01FA35:King of the Murkmire.esp
     Placement:
-      Position: -232061.23, 49132.8, 4643.69
+      Position: -232061.23, 49132.8, 4822.97
       Rotation: 0, 0, 6.183527
   - MutagenObjectType: PlacedObject
     FormKey: 000979:Argonia.esm
@@ -333,8 +333,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: -64415.59, 207529.84, 3255.69
-      Rotation: 0, 0, 3.625747
+      Position: -64420.49, 207531.95, 3262.7
+      Rotation: 0, 0, 3.558203
   - MutagenObjectType: PlacedObject
     FormKey: 00097B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -343,7 +343,7 @@ TopCell:
     - 0x400
     Base: 00097A:Argonia.esm
     Placement:
-      Position: -64415.59, 207529.84, 3414.66
+      Position: -64420.49, 207531.95, 3421.67
       Rotation: 0, 0, 3.625049
   - MutagenObjectType: PlacedObject
     FormKey: 00097D:Argonia.esm
@@ -353,8 +353,8 @@ TopCell:
     - 0x400
     Base: 00097C:Argonia.esm
     Placement:
-      Position: -64415.59, 207529.84, 3394.35
-      Rotation: 0, 0, 4.803146
+      Position: -64420.49, 207531.95, 3401.36
+      Rotation: 0, 0, 4.796165
   - MutagenObjectType: PlacedObject
     FormKey: 00097F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -363,7 +363,7 @@ TopCell:
     - 0x400
     Base: 00097E:Argonia.esm
     Placement:
-      Position: -64415.59, 207529.84, 3374.05
+      Position: -64420.49, 207531.95, 3381.05
       Rotation: 0, 0, 4.803146
   - MutagenObjectType: PlacedObject
     FormKey: 000981:Argonia.esm
@@ -373,8 +373,8 @@ TopCell:
     - 0x400
     Base: 000980:Argonia.esm
     Placement:
-      Position: -64415.59, 207529.84, 3353.74
-      Rotation: 0, 0, 3.625049
+      Position: -64420.49, 207531.95, 3360.74
+      Rotation: 0, 0, 3.558726
   - MutagenObjectType: PlacedObject
     FormKey: 000982:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -383,8 +383,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: 183590.02, 219041.77, 4699.71
-      Rotation: 0, 0, 2.356194
+      Position: 183566.2, 219034.77, 4690.61
+      Rotation: 0, 0, 3.683168
   - MutagenObjectType: PlacedObject
     FormKey: 000984:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -393,7 +393,7 @@ TopCell:
     - 0x400
     Base: 000983:Argonia.esm
     Placement:
-      Position: 183590.02, 219041.77, 4858.68
+      Position: 183566.2, 219034.77, 4849.58
       Rotation: 0, 0, 1.809906
   - MutagenObjectType: PlacedObject
     FormKey: 000986:Argonia.esm
@@ -403,8 +403,8 @@ TopCell:
     - 0x400
     Base: 000985:Argonia.esm
     Placement:
-      Position: 183590.02, 219041.77, 4838.37
-      Rotation: 0, 0, 1.809906
+      Position: 183566.2, 219034.77, 4829.27
+      Rotation: 0, 0, 1.605703
   - MutagenObjectType: PlacedObject
     FormKey: 000988:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -413,8 +413,8 @@ TopCell:
     - 0x400
     Base: 000987:Argonia.esm
     Placement:
-      Position: 183590.02, 219041.77, 4818.06
-      Rotation: 0, 0, 1.809906
+      Position: 183566.2, 219034.77, 4808.96
+      Rotation: 0, 0, 2.080432
   - MutagenObjectType: PlacedObject
     FormKey: 000989:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -423,8 +423,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: -145288.12, 47156.61, 5043.56
-      Rotation: 0, 0, 5.667957
+      Position: -145301.44, 47251.14, 5050.56
+      Rotation: 0, 0, 1.154012
   - MutagenObjectType: PlacedObject
     FormKey: 00098B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -433,8 +433,8 @@ TopCell:
     - 0x400
     Base: 00098A:Argonia.esm
     Placement:
-      Position: -145288.12, 47156.61, 5202.53
-      Rotation: 0, 0, 4.995132
+      Position: -145301.44, 47251.14, 5209.53
+      Rotation: 0, 0, 5.047492
   - MutagenObjectType: PlacedObject
     FormKey: 00098D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -443,8 +443,8 @@ TopCell:
     - 0x400
     Base: 00098C:Argonia.esm
     Placement:
-      Position: -145288.12, 47156.61, 5182.22
-      Rotation: 0, 0, 4.995132
+      Position: -145301.44, 47251.14, 5189.22
+      Rotation: 0, 0, 4.961971
   - MutagenObjectType: PlacedObject
     FormKey: 00098F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -453,8 +453,8 @@ TopCell:
     - 0x400
     Base: 00098E:Argonia.esm
     Placement:
-      Position: -145288.12, 47156.61, 5161.91
-      Rotation: 0, 0, 5.667084
+      Position: -145301.44, 47251.14, 5168.91
+      Rotation: 0, 0, 5.818928
   - MutagenObjectType: PlacedObject
     FormKey: 000991:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -463,7 +463,7 @@ TopCell:
     - 0x400
     Base: 000990:Argonia.esm
     Placement:
-      Position: -145288.12, 47156.61, 5141.6
+      Position: -145301.44, 47251.14, 5148.61
       Rotation: 0, 0, 4.995132
   - MutagenObjectType: PlacedObject
     FormKey: 000992:Argonia.esm
@@ -473,7 +473,7 @@ TopCell:
     - 0x400
     Base: 000983:Argonia.esm
     Placement:
-      Position: -145288.12, 47156.61, 5121.29
+      Position: -145301.44, 47251.14, 5128.3
       Rotation: 0, 0, 4.995132
   - MutagenObjectType: PlacedObject
     FormKey: 000993:Argonia.esm
@@ -483,8 +483,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: -90013.62, -187738.34, 264.01
-      Rotation: 0, 0, 0.785398
+      Position: -89930.99, -187852.5, 267.51
+      Rotation: 0, 0, 0.101055
   - MutagenObjectType: PlacedObject
     FormKey: 000995:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -493,8 +493,8 @@ TopCell:
     - 0x400
     Base: 000994:Argonia.esm
     Placement:
-      Position: -90013.62, -187738.34, 422.98
-      Rotation: 0, 0, 4.874705
+      Position: -89930.99, -187852.5, 426.48
+      Rotation: 0, 0, 5.11556
   - MutagenObjectType: PlacedObject
     FormKey: 000996:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -503,7 +503,7 @@ TopCell:
     - 0x400
     Base: 000990:Argonia.esm
     Placement:
-      Position: -90013.62, -187738.34, 402.67
+      Position: -89930.99, -187852.5, 406.17
       Rotation: 0, 0, 4.874705
   - MutagenObjectType: PlacedObject
     FormKey: 000997:Argonia.esm
@@ -513,8 +513,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: -1992.62, -180728.55, 367.66
-      Rotation: 0, 0, 4.036772
+      Position: -1994.02, -180727.16, 367.66
+      Rotation: 0, 0, 4.013036
   - MutagenObjectType: PlacedObject
     FormKey: 000999:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -523,8 +523,8 @@ TopCell:
     - 0x400
     Base: 000998:Argonia.esm
     Placement:
-      Position: -1992.62, -180728.55, 526.63
-      Rotation: 0, 0, 2.370157
+      Position: -1994.02, -180727.16, 526.63
+      Rotation: 0, 0, 2.391101
   - MutagenObjectType: PlacedObject
     FormKey: 00099A:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -533,8 +533,8 @@ TopCell:
     - 0x400
     Base: 000990:Argonia.esm
     Placement:
-      Position: -1992.62, -180728.55, 506.32
-      Rotation: 0, 0, 4.036947
+      Position: -1994.02, -180727.16, 506.32
+      Rotation: 0, 0, 4.012512
   - MutagenObjectType: PlacedObject
     FormKey: 00099C:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -543,8 +543,8 @@ TopCell:
     - 0x400
     Base: 00099B:Argonia.esm
     Placement:
-      Position: -1992.62, -180728.55, 486.01
-      Rotation: 0, 0, 4.036947
+      Position: -1994.02, -180727.16, 486.01
+      Rotation: 0, 0, 4.012512
   - MutagenObjectType: PlacedObject
     FormKey: 00099D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -553,8 +553,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: -216968.11, -187802.78, 591.75
-      Rotation: 0, 0, 6.180211
+      Position: -216970.2, -187803.48, 591.75
+      Rotation: 0, 0, 6.201155
   - MutagenObjectType: PlacedObject
     FormKey: 00099E:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -563,8 +563,8 @@ TopCell:
     - 0x400
     Base: 00097C:Argonia.esm
     Placement:
-      Position: -216968.11, -187802.78, 750.72
-      Rotation: 0, 0, 5.845108
+      Position: -216970.2, -187803.48, 750.72
+      Rotation: 0, 0, 5.738643
   - MutagenObjectType: PlacedObject
     FormKey: 00099F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -573,8 +573,8 @@ TopCell:
     - 0x400
     Base: 000998:Argonia.esm
     Placement:
-      Position: -216968.11, -187802.78, 730.41
-      Rotation: 0, 0, 5.845108
+      Position: -216970.2, -187803.48, 730.41
+      Rotation: 0, 0, 5.721189
   - MutagenObjectType: PlacedObject
     FormKey: 0009A0:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -583,8 +583,8 @@ TopCell:
     - 0x400
     Base: 000994:Argonia.esm
     Placement:
-      Position: -216968.11, -187802.78, 710.1
-      Rotation: 0, 0, 6.180211
+      Position: -216970.2, -187803.48, 710.1
+      Rotation: 0, 0, 6.201155
   - MutagenObjectType: PlacedObject
     FormKey: 0009A1:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -593,8 +593,8 @@ TopCell:
     - 0x400
     Base: 03AF9D:Skyrim.esm
     Placement:
-      Position: 21115.93, 179665.7, 23.81
-      Rotation: 0, 0, 5.393242
+      Position: 21029.09, 179744.14, 23.81
+      Rotation: 0, 0, 5.86099
   - MutagenObjectType: PlacedObject
     FormKey: 0009A2:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -603,8 +603,8 @@ TopCell:
     - 0x400
     Base: 000983:Argonia.esm
     Placement:
-      Position: 21115.93, 179665.7, 182.78
-      Rotation: 0, 0, 5.393067
+      Position: 21029.09, 179744.14, 182.78
+      Rotation: 0, 0, 5.281366
   - MutagenObjectType: PlacedObject
     FormKey: 0009A4:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -613,273 +613,8 @@ TopCell:
     - 0x400
     Base: 0009A3:Argonia.esm
     Placement:
-      Position: 21115.93, 179665.7, 162.47
-      Rotation: 0, 0, 5.393067
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009A5:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -119552.14, 29440.22, 5239.64
-      Rotation: 0, 0, 5.497787
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009A7:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 0009A6:Argonia.esm
-    Placement:
-      Position: -119552.14, 29440.22, 5398.61
-      Rotation: 0, 0, 3.926991
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009A9:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignCartwrightsCrossFigMarket1790Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 0009A8:Argonia.esm
-    Placement:
-      Position: -119552.14, 29440.22, 5378.3
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AA:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -204209, 38990.64, 5063.87
-      Rotation: 0, 0, 0.785398
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AB:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00097C:Argonia.esm
-    Placement:
-      Position: -204209, 38990.64, 5222.84
-      Rotation: 0, 0, 5.497787
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AC:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonBlackwoodRoad1087Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00098C:Argonia.esm
-    Placement:
-      Position: -204209, 38990.64, 5202.53
-      Rotation: 0, 0, 2.356194
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AD:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonSoulrest1234
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -108800.04, -6400.12, 1736.04
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AE:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonSoulrest1234Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00097C:Argonia.esm
-    Placement:
-      Position: -108800.04, -6400.12, 1895.01
-      Rotation: 0, 0, 4.712389
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009AF:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignGideonSoulrest1234Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000990:Argonia.esm
-    Placement:
-      Position: -108800.04, -6400.12, 1874.7
-      Rotation: 0, 0, 2.356194
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B0:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose2289
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -109311.94, -170751.66, 144.26
-      Rotation: 0, 0, 0.785398
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B1:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose2289Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000998:Argonia.esm
-    Placement:
-      Position: -109311.94, -170751.66, 303.23
-      Rotation: 0, 0, 5.497787
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B2:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose2289Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000990:Argonia.esm
-    Placement:
-      Position: -109311.94, -170751.66, 282.92
-      Rotation: 0, 0, 1.570796
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B3:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose711
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -191744.02, -220416.22, 312.33
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B4:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose711Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000990:Argonia.esm
-    Placement:
-      Position: -191744.02, -220416.22, 471.3
-      Rotation: 0, 0, 4.712389
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B5:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose711Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000998:Argonia.esm
-    Placement:
-      Position: -191744.02, -220416.22, 450.99
-      Rotation: 0, 0, 0.694641
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B6:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose906
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -179267.12, -222463.84, 168.07
-      Rotation: 0, 0, 4.712389
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B7:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose906Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000990:Argonia.esm
-    Placement:
-      Position: -179267.12, -222463.84, 327.04
-      Rotation: 0, 0, 3.141593
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B8:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignSoulrestBlackrose906Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000998:Argonia.esm
-    Placement:
-      Position: -179267.12, -222463.84, 306.73
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009B9:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignStormholdThorn1114
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -7423.99, 226559.97, 383.76
-      Rotation: 0, 0, 5.356415
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BA:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignStormholdThorn1114Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000983:Argonia.esm
-    Placement:
-      Position: -7423.99, 226559.97, 542.73
-      Rotation: 0, 0, 3.785619
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BB:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignStormholdThorn1114Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00097E:Argonia.esm
-    Placement:
-      Position: -7423.99, 226559.97, 522.42
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BC:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignThornTearRoad369
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: 200959.77, 225024.25, 719.91
-      Rotation: 0, 0, 3.926991
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BD:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignThornTearRoad369Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 00097E:Argonia.esm
-    Placement:
-      Position: 200959.77, 225024.25, 878.88
-      Rotation: 0, 0, 2.356194
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BE:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignThornTearRoad369Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000985:Argonia.esm
-    Placement:
-      Position: 200959.77, 225024.25, 858.57
-      Rotation: 0, 0, 4.712389
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009BF:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 03AF9D:Skyrim.esm
-    Placement:
-      Position: -64008.72, -177816.08, 79.83
-      Rotation: 0, 0, 4.680973
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009C0:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444Arm0
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000990:Argonia.esm
-    Placement:
-      Position: -64008.72, -177816.08, 238.8
-      Rotation: 0, 0, 3.110177
-  - MutagenObjectType: PlacedObject
-    FormKey: 0009C1:Argonia.esm
-    MajorRecordFlagsRaw: 1024
-    EditorID: ARG_Ref_SignMercantileCoastCoastRoad3444Arm1
-    SkyrimMajorRecordFlags:
-    - 0x400
-    Base: 000994:Argonia.esm
-    Placement:
-      Position: -64008.72, -177816.08, 218.49
-      Rotation: 0, 0, 6.251769
+      Position: 21029.09, 179744.14, 162.47
+      Rotation: 0, 0, 5.352925
   - MutagenObjectType: PlacedObject
     FormKey: 0009C6:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -888,7 +623,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -234239.11, 48418.51, 4611.74
+      Position: -234239.11, 48418.51, 4584
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 0009CD:Argonia.esm
@@ -907,7 +642,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -229120, 43264.03, 4932
+      Position: -229120, 43264.03, 4939.99
   - MutagenObjectType: PlacedObject
     FormKey: 0009CF:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -925,7 +660,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -75136.03, 236800.02, 4796
+      Position: -75776.02, 238336.02, -1380.01
   - MutagenObjectType: PlacedObject
     FormKey: 0009D1:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -934,7 +669,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -75136.03, 243072.02, 7860.03
+      Position: -77440.03, 238336.02, 132.01
   - MutagenObjectType: PlacedObject
     FormKey: 0009D2:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -1006,7 +741,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -250367.97, 208896.03, 15900.03
+      Position: -250367.97, 209151.98, 15436.01
   - MutagenObjectType: PlacedObject
     FormKey: 0009DA:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -1051,7 +786,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: 30719.99, 137215.98, 260.02
+      Position: 26623.98, 174079.98, 132.01
   - MutagenObjectType: PlacedObject
     FormKey: 0009DF:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -1087,7 +822,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -75776.02, 239615.98, 3212
+      Position: -75776.02, 239615.98, -787.98
   - MutagenObjectType: PlacedObject
     FormKey: 0009E3:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -1150,7 +885,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: 30719.99, 137215.98, 260.02
+      Position: 26623.98, 174079.98, 132.01
   - MutagenObjectType: PlacedObject
     FormKey: 0009EA:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -1177,7 +912,7 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -145408.02, 47104.01, 5139.99
+      Position: -145408.02, 47104.01, 5156.03
   - MutagenObjectType: PlacedObject
     FormKey: 0009ED:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -5088,7 +4823,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: 198656, 262144, 1456
+      Position: 198656, 262144, 1448
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B06:Argonia.esm
@@ -6063,7 +5798,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -67584, 262144, 18728
+      Position: -67584, 262144, 18712
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B47:Argonia.esm
@@ -6078,7 +5813,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -71680, 262144, 24432
+      Position: -71680, 262144, 24016
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B48:Argonia.esm
@@ -6093,7 +5828,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -75776, 262144, 27520
+      Position: -75776, 262144, 26544
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B49:Argonia.esm
@@ -6108,7 +5843,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -79872, 262144, 28376
+      Position: -79872, 262144, 27600
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B4A:Argonia.esm
@@ -6138,7 +5873,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -88064, 262144, 29472
+      Position: -88064, 262144, 29200
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B4C:Argonia.esm
@@ -6153,7 +5888,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -92160, 262144, 28656
+      Position: -92160, 262144, 28392
       Rotation: 0, 0, 3.141593
   - MutagenObjectType: PlacedObject
     FormKey: 000B4D:Argonia.esm
@@ -7308,7 +7043,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -253952, 108544, 19840
+      Position: -253952, 108544, 19880
       Rotation: 0, 0, 1.570796
   - MutagenObjectType: PlacedObject
     FormKey: 000B9A:Argonia.esm
@@ -7518,7 +7253,7 @@ TopCell:
       Unknown: 0.15
       Type: Box
     Placement:
-      Position: -253952, 51200, 4480
+      Position: -253952, 51200, 4488
       Rotation: 0, 0, 1.570796
   - MutagenObjectType: PlacedObject
     FormKey: 000BA8:Argonia.esm
@@ -8643,7 +8378,7 @@ TopCell:
         Value: Andalen Plantation
       Type: Fort
     Placement:
-      Position: -92481.41, 159573.97, 2734.66
+      Position: -92481.41, 159573.97, 2730.75
   - MutagenObjectType: PlacedObject
     FormKey: 000C59:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8671,7 +8406,7 @@ TopCell:
         Value: Broken Boom
       Type: Camp
     Placement:
-      Position: 193218.88, 249665.02, 249.94
+      Position: 193218.88, 249665.02, 251.82
   - MutagenObjectType: PlacedObject
     FormKey: 000C5B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8727,7 +8462,7 @@ TopCell:
         Value: Channel Cross
       Type: Settlement
     Placement:
-      Position: 142147.44, 216639.8, 12531.99
+      Position: 142147.44, 216639.8, 12534.1
   - MutagenObjectType: PlacedObject
     FormKey: 000C5F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8755,7 +8490,7 @@ TopCell:
         Value: Crystalgate
       Type: Town
     Placement:
-      Position: -122432.39, 212031.95, 27456
+      Position: -122432.39, 212031.95, 28856
   - MutagenObjectType: PlacedObject
     FormKey: 000C61:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8839,7 +8574,7 @@ TopCell:
         Value: Anachronistic Library
       Type: Landmark
     Placement:
-      Position: -196157.88, 198593.58, 30992
+      Position: -196157.88, 198593.58, 31013.88
   - MutagenObjectType: PlacedObject
     FormKey: 000C67:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8853,7 +8588,7 @@ TopCell:
         Value: Gandranen Ruins
       Type: Landmark
     Placement:
-      Position: -191164.89, 198593.58, 31797.95
+      Position: -191164.89, 198593.58, 31802.05
   - MutagenObjectType: PlacedObject
     FormKey: 000C68:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8881,7 +8616,7 @@ TopCell:
         Value: Hackwing Wall
       Type: Cave
     Placement:
-      Position: -34883.37, 234300.86, 492.2
+      Position: -34883.37, 234300.86, 500.2
   - MutagenObjectType: PlacedObject
     FormKey: 000C6A:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -8895,7 +8630,7 @@ TopCell:
         Value: Hatching Pools
       Type: Settlement
     Placement:
-      Position: -72894.58, 206044.56, 3320.95
+      Position: -72894.58, 206044.56, 3325.04
   - MutagenObjectType: PlacedObject
     FormKey: 000C6B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9035,7 +8770,7 @@ TopCell:
         Value: Names-The-Year
       Type: Clearing
     Placement:
-      Position: 69087.22, 191275.66, 12222.65
+      Position: 69087.22, 191275.66, 12213.95
   - MutagenObjectType: PlacedObject
     FormKey: 000C75:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9217,7 +8952,7 @@ TopCell:
         Value: Stormhold
       Type: City
     Placement:
-      Position: -64456.2, 207452.12, 3256.98
+      Position: -64456.2, 207452.12, 3260.75
   - MutagenObjectType: PlacedObject
     FormKey: 000C82:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9259,7 +8994,7 @@ TopCell:
         Value: Tearmouth
       Type: Town
     Placement:
-      Position: -64449.2, 237375.1, 3696
+      Position: -64449.2, 237375.1, -804.21
   - MutagenObjectType: PlacedObject
     FormKey: 000C85:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9301,7 +9036,7 @@ TopCell:
         Value: Ash Causeway
       Type: Landmark
     Placement:
-      Position: 160956.95, 159041.77, 1403.81
+      Position: 160956.95, 159041.77, 1401.77
   - MutagenObjectType: PlacedObject
     FormKey: 000C88:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9497,7 +9232,7 @@ TopCell:
         Value: The Drawdown Flats
       Type: Clearing
     Placement:
-      Position: -105534.63, 243516.55, 25478.45
+      Position: -105534.63, 243516.55, 25195.44
   - MutagenObjectType: PlacedObject
     FormKey: 000C96:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9707,7 +9442,7 @@ TopCell:
         Value: Moon Court
       Type: Landmark
     Placement:
-      Position: -51010.82, 250050.16, 3684.18
+      Position: -51010.82, 250050.16, 3682.02
   - MutagenObjectType: PlacedObject
     FormKey: 000CA5:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9735,7 +9470,7 @@ TopCell:
         Value: North Post
       Type: Fort
     Placement:
-      Position: -105534.63, 201282.66, 21459.83
+      Position: -105534.63, 201282.66, 21485.87
   - MutagenObjectType: PlacedObject
     FormKey: 000CA7:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9763,7 +9498,7 @@ TopCell:
         Value: The Waiting Hole
       Type: Fort
     Placement:
-      Position: 181699.27, 230078.17, 7219.89
+      Position: 181699.27, 230078.17, 7224
   - MutagenObjectType: PlacedObject
     FormKey: 000CA9:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9861,7 +9596,7 @@ TopCell:
         Value: Permit Dig
       Type: Camp
     Placement:
-      Position: -100303.54, 153663.61, 2921.94
+      Position: -100303.54, 153663.61, 2916.97
   - MutagenObjectType: PlacedObject
     FormKey: 000CB0:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -9931,7 +9666,7 @@ TopCell:
         Value: The Salt Ledge
       Type: Landmark
     Placement:
-      Position: 86083.01, 236604.78, 12793.81
+      Position: 86083.01, 236604.78, 12790
   - MutagenObjectType: PlacedObject
     FormKey: 000CB5:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10001,7 +9736,7 @@ TopCell:
         Value: The Slumped Hamlet
       Type: Landmark
     Placement:
-      Position: 126398.14, 207038.95, 16166.44
+      Position: 126398.14, 207038.95, 16138.44
   - MutagenObjectType: PlacedObject
     FormKey: 000CBA:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10015,7 +9750,7 @@ TopCell:
         Value: The Standing Bid
       Type: Clearing
     Placement:
-      Position: -61178.89, 201093.58, 3047.67
+      Position: -61178.89, 201093.58, 3047.65
   - MutagenObjectType: PlacedObject
     FormKey: 000CBB:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10029,7 +9764,7 @@ TopCell:
         Value: Behind the Falls
       Type: Landmark
     Placement:
-      Position: -79043.04, 218558.56, 6915.07
+      Position: -79043.04, 218558.56, 4376.09
   - MutagenObjectType: PlacedObject
     FormKey: 000CBC:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10099,7 +9834,7 @@ TopCell:
         Value: Thorn Bond
       Type: Landmark
     Placement:
-      Position: 171181.05, 216254.64, 5768
+      Position: 171181.05, 216254.64, 5549.18
   - MutagenObjectType: PlacedObject
     FormKey: 000CC1:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10183,7 +9918,7 @@ TopCell:
         Value: The Veterans' Ridge
       Type: Settlement
     Placement:
-      Position: -101311.94, 214335.88, 23640
+      Position: -101311.94, 214335.88, 22992
   - MutagenObjectType: PlacedObject
     FormKey: 000CC7:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10267,7 +10002,7 @@ TopCell:
         Value: Thorn
       Type: City
     Placement:
-      Position: 183583.02, 219006.75, 4697.94
+      Position: 183583.02, 219006.75, 4689.94
   - MutagenObjectType: PlacedObject
     FormKey: 000CCD:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10323,7 +10058,7 @@ TopCell:
         Value: Thorn Rat Gallery
       Type: Landmark
     Placement:
-      Position: 112959.76, 258110.39, 10322.42
+      Position: 112959.76, 258110.39, 10306.53
   - MutagenObjectType: PlacedObject
     FormKey: 000CD1:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -10911,7 +10646,7 @@ TopCell:
         Value: Green-Moss Hammock
       Type: Settlement
     Placement:
-      Position: -80576.65, 155197.22, 2520
+      Position: -80576.65, 155197.22, 2523.96
   - MutagenObjectType: PlacedObject
     FormKey: 000CFB:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -11597,7 +11332,7 @@ TopCell:
         Value: The Coiling Reach
       Type: Cave
     Placement:
-      Position: -101311.94, 127788.26, 580.15
+      Position: -101311.94, 127788.26, 574.91
   - MutagenObjectType: PlacedObject
     FormKey: 000D2C:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12059,7 +11794,7 @@ TopCell:
         Value: Bonded Shed
       Type: Landmark
     Placement:
-      Position: -141830.16, 47480.13, 4631.51
+      Position: -141830.16, 47480.13, 4624.36
   - MutagenObjectType: PlacedObject
     FormKey: 000D4D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12101,7 +11836,7 @@ TopCell:
         Value: Cartwright's Cross
       Type: Town
     Placement:
-      Position: -204064.05, 38845.68, 5064
+      Position: -204064.05, 38845.68, 5074
   - MutagenObjectType: PlacedObject
     FormKey: 000D50:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12213,7 +11948,7 @@ TopCell:
         Value: Fig Market
       Type: Town
     Placement:
-      Position: -106108.86, 25988.54, 4176
+      Position: -106108.86, 25988.54, 4176.2
   - MutagenObjectType: PlacedObject
     FormKey: 000D58:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12255,7 +11990,7 @@ TopCell:
         Value: Gideon
       Type: City
     Placement:
-      Position: -145338.55, 47228.03, 5047.75
+      Position: -145338.55, 47228.03, 5051.66
   - MutagenObjectType: PlacedObject
     FormKey: 000D5B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12381,7 +12116,7 @@ TopCell:
         Value: Hollow Arch
       Type: Landmark
     Placement:
-      Position: -115905.78, 107052.96, 712
+      Position: -115905.78, 107052.96, 713.37
   - MutagenObjectType: PlacedObject
     FormKey: 000D64:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12507,7 +12242,7 @@ TopCell:
         Value: Moonmarch Ground
       Type: Clearing
     Placement:
-      Position: -174421.19, 28481.54, 4508.25
+      Position: -174421.19, 28481.54, 4534.89
   - MutagenObjectType: PlacedObject
     FormKey: 000D6D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12577,7 +12312,7 @@ TopCell:
         Value: Onkobra Ferry
       Type: Docks
     Placement:
-      Position: -131262.92, 60736.44, 1916.03
+      Position: -131262.92, 60736.44, 1912
   - MutagenObjectType: PlacedObject
     FormKey: 000D72:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12647,7 +12382,7 @@ TopCell:
         Value: Reedcutters' Bridge
       Type: Landmark
     Placement:
-      Position: -124351.16, -56385.41, 474.02
+      Position: -124351.16, -56385.41, 476.09
   - MutagenObjectType: PlacedObject
     FormKey: 000D77:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12661,7 +12396,7 @@ TopCell:
         Value: Ridge Runners' Post
       Type: Landmark
     Placement:
-      Position: -186746.12, 39419.91, 4935.38
+      Position: -186746.12, 39419.91, 4928.24
   - MutagenObjectType: PlacedObject
     FormKey: 000D78:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12703,7 +12438,7 @@ TopCell:
         Value: Sabinus' Claim
       Type: Camp
     Placement:
-      Position: -237250.31, 109118.79, 24024
+      Position: -237250.31, 109118.79, 24296.07
   - MutagenObjectType: PlacedObject
     FormKey: 000D7B:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12731,7 +12466,7 @@ TopCell:
         Value: Silver Mouth
       Type: Landmark
     Placement:
-      Position: -139715.31, 137921.31, 8040.63
+      Position: -139715.31, 137921.31, 8024.5
   - MutagenObjectType: PlacedObject
     FormKey: 000D7D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12899,7 +12634,7 @@ TopCell:
         Value: The Black Tarn
       Type: Cave
     Placement:
-      Position: -246466.02, 104125.79, 20904.94
+      Position: -246466.02, 104125.79, 20936.94
   - MutagenObjectType: PlacedObject
     FormKey: 000D89:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12941,7 +12676,7 @@ TopCell:
         Value: The Buried Spears
       Type: Fort
     Placement:
-      Position: -245695.7, 56275.65, 4088.11
+      Position: -245695.7, 56275.65, 4089.49
   - MutagenObjectType: PlacedObject
     FormKey: 000D8C:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -12983,7 +12718,7 @@ TopCell:
         Value: The Cordon Stones
       Type: Landmark
     Placement:
-      Position: -109960.4, 93180.41, 3144.3
+      Position: -109960.4, 93180.41, 3144.32
   - MutagenObjectType: PlacedObject
     FormKey: 000D8F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13179,7 +12914,7 @@ TopCell:
         Value: Onkobra Divers' Yard
       Type: Landmark
     Placement:
-      Position: -233020.62, 181695.81, 22590.1
+      Position: -233020.62, 181695.81, 22586.1
   - MutagenObjectType: PlacedObject
     FormKey: 000D9D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13207,7 +12942,7 @@ TopCell:
         Value: Leaning Watch
       Type: Fort
     Placement:
-      Position: -231487.02, -64445.64, 3815.91
+      Position: -231487.02, -64445.64, 3888
   - MutagenObjectType: PlacedObject
     FormKey: 000D9F:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13277,7 +13012,7 @@ TopCell:
         Value: Old Office House
       Type: Shack
     Placement:
-      Position: -135674.69, 65925.51, 1816.33
+      Position: -135674.69, 65925.51, 1808.66
   - MutagenObjectType: PlacedObject
     FormKey: 000DA4:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13361,7 +13096,7 @@ TopCell:
         Value: Rests-The-Walkers
       Type: Shrine
     Placement:
-      Position: -120513.62, 27179.01, 5333.31
+      Position: -120513.62, 27179.01, 5341.31
   - MutagenObjectType: PlacedObject
     FormKey: 000DAA:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13375,7 +13110,7 @@ TopCell:
         Value: Old Locks
       Type: Fort
     Placement:
-      Position: -124736.31, 64959.13, 1187.98
+      Position: -124736.31, 64959.13, 1191.93
   - MutagenObjectType: PlacedObject
     FormKey: 000DAB:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13669,7 +13404,7 @@ TopCell:
         Value: Xi-Tsei
       Type: Fort
     Placement:
-      Position: -253139.69, 52291.06, 4227.96
+      Position: -253139.69, 52291.06, 4230.45
   - MutagenObjectType: PlacedObject
     FormKey: 000DC0:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13711,7 +13446,7 @@ TopCell:
         Value: Blackrose
       Type: City
     Placement:
-      Position: -89876.37, -187771.97, 264
+      Position: -89876.37, -187771.97, 270.73
   - MutagenObjectType: PlacedObject
     FormKey: 000DC3:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -13865,7 +13600,7 @@ TopCell:
         Value: Holding Fields, Cordon Three
       Type: Settlement
     Placement:
-      Position: -110142.48, -170194.94, 146.82
+      Position: -110142.48, -170194.94, 149.35
   - MutagenObjectType: PlacedObject
     FormKey: 000DCE:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -14019,7 +13754,7 @@ TopCell:
         Value: The Blue Hole
       Type: Landmark
     Placement:
-      Position: -80576.65, -173885.4, 107.84
+      Position: -80576.65, -173885.4, 115.92
   - MutagenObjectType: PlacedObject
     FormKey: 000DD9:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -14047,7 +13782,7 @@ TopCell:
         Value: The Cordon
       Type: Landmark
     Placement:
-      Position: -67285.33, -182183.73, 98.67
+      Position: -67285.33, -182183.73, 102.34
   - MutagenObjectType: PlacedObject
     FormKey: 000DDB:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -16091,7 +15826,7 @@ TopCell:
         Value: Archon
       Type: City
     Placement:
-      Position: 90375.73, -60615.1, 144
+      Position: 90375.73, -60615.1, 128.27
   - MutagenObjectType: PlacedObject
     FormKey: 000E6D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -16747,5 +16482,275 @@ TopCell:
     Placement:
       Position: -156671.89, 56192.32, 3998.01
       Rotation: 0, 0, 2.408554
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EDB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignAltenCorimontStormhold741
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -20159.98, 194015.84, 1439.82
+      Rotation: 0, 0, 2.151991
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EDC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignAltenCorimontStormhold741Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097A:Argonia.esm
+    Placement:
+      Position: -20159.98, 194015.84, 1598.78
+      Rotation: 0, 0, 0.581195
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EDD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignAltenCorimontStormhold741Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000983:Argonia.esm
+    Placement:
+      Position: -20159.98, 194015.84, 1578.48
+      Rotation: 0, 0, 3.532546
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EDE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon4584
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -106080.15, -6224.35, 1884.51
+      Rotation: 0, 0, 0.92677
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EDF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon4584Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098A:Argonia.esm
+    Placement:
+      Position: -106080.15, -6224.35, 2043.48
+      Rotation: 0, 0, 5.639159
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon4584Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -106080.15, -6224.35, 2023.17
+      Rotation: 0, 0, 2.898992
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon703
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -120512.22, 29567.67, 5044.26
+      Rotation: 0, 0, 1.384046
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon703Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098A:Argonia.esm
+    Placement:
+      Position: -120512.22, 29567.67, 5203.23
+      Rotation: 0, 0, 6.096435
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignArchonGideon703Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -120512.22, 29567.67, 5182.92
+      Rotation: 0, 0, 3.20617
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1088
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -204190.1, 39044.56, 5079.98
+      Rotation: 0, 0, 1.007055
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1088Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097C:Argonia.esm
+    Placement:
+      Position: -204190.1, 39044.56, 5238.94
+      Rotation: 0, 0, 5.719444
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignGideonBlackwoodRoad1088Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00098C:Argonia.esm
+    Placement:
+      Position: -204190.1, 39044.56, 5218.64
+      Rotation: 0, 0, 2.576106
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE7:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose682
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -191695.7, -220120.02, 310.23
+      Rotation: 0, 0, 6.085963
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE8:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose682Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -191695.7, -220120.02, 469.2
+      Rotation: 0, 0, 4.515167
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EE9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose682Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -191695.7, -220120.02, 448.89
+      Rotation: 0, 0, 1.003564
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EEA:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose859
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -180295.84, -222440.73, 156.17
+      Rotation: 0, 0, 4.605924
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EEB:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose859Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -180295.84, -222440.73, 315.13
+      Rotation: 0, 0, 3.035128
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EEC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignSoulrestBlackrose859Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000998:Argonia.esm
+    Placement:
+      Position: -180295.84, -222440.73, 294.83
+      Rotation: 0, 0, 6.17323
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EED:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad515
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: 201935.95, 228359.69, 700.3
+      Rotation: 0, 0, 3.4191
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EEE:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad515Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00097E:Argonia.esm
+    Placement:
+      Position: 201935.95, 228359.69, 859.27
+      Rotation: 0, 0, 1.848304
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EEF:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignThornTearRoad515Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000985:Argonia.esm
+    Placement:
+      Position: 201935.95, 228359.69, 838.96
+      Rotation: 0, 0, 4.829326
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF0:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad2602
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -109056.34, -170654.31, 144.26
+      Rotation: 0, 0, 3.543018
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF1:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad2602Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -109056.34, -170654.31, 303.23
+      Rotation: 0, 0, 1.972222
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF2:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad2602Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000994:Argonia.esm
+    Placement:
+      Position: -109056.34, -170654.31, 282.92
+      Rotation: 0, 0, 5.112069
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF3:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad730
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 03AF9D:Skyrim.esm
+    Placement:
+      Position: -64034.63, -177778.97, 74.93
+      Rotation: 0, 0, 4.694936
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF4:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad730Arm0
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000990:Argonia.esm
+    Placement:
+      Position: -64034.63, -177778.97, 233.9
+      Rotation: 0, 0, 3.124139
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF5:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_SignMercantileCoastCoastRoad730Arm1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000994:Argonia.esm
+    Placement:
+      Position: -64034.63, -177778.97, 213.59
+      Rotation: 0, 0, 6.265732
   MajorFlags:
   - Persistent

@@ -360,7 +360,7 @@ Clouds:
 SkyUpperColor:
   Sunrise: '#0089969D'
   Day: '#00A3B2B7'
-  Sunset: '#008D8C95'
+  Sunset: '#008B8A99'
   Night: '#00151A21'
 FogNearColor:
   Sunrise: '#00838C85'
@@ -445,11 +445,11 @@ MoonGlareColor:
 FogDistanceDayNear: 280.12
 FogDistanceDayFar: 31513.5
 FogDistanceNightNear: 140.06
-FogDistanceNightFar: 21009
+FogDistanceNightFar: 30112.9
 FogDistanceDayPower: 0.7
 FogDistanceNightPower: 0.7
-FogDistanceDayMax: 1
-FogDistanceNightMax: 1
+FogDistanceDayMax: 0.95
+FogDistanceNightMax: 0.95
 WindSpeed: 0.2
 TransDelta: 4
 SunGlare: 0.14901960784313725

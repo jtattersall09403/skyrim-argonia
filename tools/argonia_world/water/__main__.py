@@ -99,7 +99,6 @@ def placement(w, cw, water_out: Path, index_path: Path, ground_path: Path) -> li
     from tools.argonia_world import pieces as pz
     from tools.argonia_world import skyrim_units as su
     from tools.argonia_world.water import judge
-    from tools.argonia_world.water import layer
     from tools.argonia_world.water import steps as stp
     if cw is None:
         return []

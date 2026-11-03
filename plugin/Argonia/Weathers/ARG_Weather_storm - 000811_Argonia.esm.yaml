@@ -370,10 +370,10 @@ Clouds:
     Night: '#00000000'
   Alphas: {}
 SkyUpperColor:
-  Sunrise: '#00363E39'
+  Sunrise: '#0035403B'
   Day: '#00424E48'
-  Sunset: '#003A3637'
-  Night: '#00060C0D'
+  Sunset: '#003E3437'
+  Night: '#00060E10'
 FogNearColor:
   Sunrise: '#00464D43'
   Day: '#0051614C'
@@ -460,8 +460,8 @@ FogDistanceNightNear: 350.15
 FogDistanceNightFar: 17507.5
 FogDistanceDayPower: 0.8
 FogDistanceNightPower: 0.8
-FogDistanceDayMax: 1
-FogDistanceNightMax: 1
+FogDistanceDayMax: 0.95
+FogDistanceNightMax: 0.95
 WindSpeed: 0.6980392156862745
 TransDelta: 4
 PrecipitationBeginFadeIn: 0.09803921568627451

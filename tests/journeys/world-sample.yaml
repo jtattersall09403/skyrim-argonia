@@ -27,8 +27,8 @@ stops:
   region: dunmer-north.northern-transition
   weather: ARG_Weather_tannin_haze
   cliff:
-    step_m: 6.85
-    slope_deg: 75.1
+    step_m: 2.06
+    slope_deg: 48.4
 - n: 3
   title: Four cells meet on a slope
   scene: world-sample-03-corner
@@ -66,7 +66,7 @@ stops:
   falls:
     mist_at:
     - -250368.0
-    - 208896
+    - 209152
     top_z: 16000.5
     pieces_near: 1
 - n: 6
@@ -104,13 +104,13 @@ stops:
   title: The densest vegetation cell
   scene: world-sample-08-dense-vegetation
   cell:
-  - 7
-  - 33
+  - 6
+  - 42
   region: pirate-freeholds.flooded-forest
   weather: ARG_Weather_clear_dry
   vegetation:
     source: out/terrain/vegetation/summary.json densest[0]
-    refs_in_cell: 103
+    refs_in_cell: 110
 - n: 9
   title: A border segment and the Tear road gate
   scene: world-sample-09-border
@@ -139,11 +139,11 @@ stops:
     id: sign.place.imperial-fringe.gideon
     post_ref: ARG_Ref_SignImperialFringeGideon
     arms:
-    - - 16.2
+    - - 19.2
       - Archon
-    - - 16.2
+    - - 14.3
       - Leyawiin
-    - - 54.7
+    - - 63.4
       - Ridge Runners' Post
     - - 16.2
       - Soulrest
@@ -200,14 +200,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4796.98
+    ge: 4804.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4867.02
+    le: 4875.02
     within: 3
-  expected_ground_m: 68.999
+  expected_ground_m: 69.113
 - name: s01-probe-east-30m
   why: ground at the east-30m point of the road
   do:
@@ -274,14 +274,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 7724.98
+    ge: -3.02
     within: 3
   - read:
     - player
     path: pos.z
-    le: 7795.02
+    le: 67.02
     within: 3
-  expected_ground_m: 110.81
+  expected_ground_m: 0.457
 - name: s02-probe-foot
   why: the foot two samples below the face
   do:
@@ -291,14 +291,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4660.98
+    ge: -1515.02
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4731.02
+    le: -1444.98
     within: 3
-  expected_ground_m: 67.057
+  expected_ground_m: -21.134
   reader:
   - the cliff reads as one rock face on a ramp, not a stair of terraces
   - no seam, crack or hard edge across the cell border
@@ -437,7 +437,7 @@ steps:
   - read:
     - player
     path: pos.z
-    le: 16035.47
+    le: 16171.01
     within: 3
   - read:
     - player
@@ -460,7 +460,7 @@ steps:
   - read:
     - player
     path: pos.z
-    le: 15402.4
+    le: 15915.01
     within: 3
   - read:
     - player
@@ -499,14 +499,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 15764.99
+    ge: 15300.99
     within: 3
   - read:
     - player
     path: pos.z
     le: 16000.45
     within: 3
-  expected_ground_m: 225.618
+  expected_ground_m: 218.992
   reader:
   - 'the falls piece stands on the step: its top meets the upper water and its foot the pool, no gap, no overhang in the air'
   - mist at the foot
@@ -647,7 +647,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s08-probe-centre
-  why: the cell's centre vertex (103 vegetation refs)
+  why: the cell's centre vertex (110 vegetation refs)
   do:
   - console: player.moveto ARG_Ref_ProbeS08ProbeCentre
   - wait: 4
@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 124.98
+    ge: -3.02
     within: 3
   - read:
     - player
     path: pos.z
-    le: 195.01
+    le: 67.02
     within: 3
-  expected_ground_m: 2.285
+  expected_ground_m: 0.457
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
@@ -837,7 +837,7 @@ steps:
   do:
   - console: player.moveto ARG_Ref_ProbeS10FaceTheSign
   - wait: 4
-  - console: player.setangle z 196.2
+  - console: player.setangle z 199.2
   - wait: 1
   expect:
   - read:
@@ -852,15 +852,15 @@ steps:
     within: 3
   reader:
   - the signpost stands upright on the ground, with 5 arms
-  - 'the arms point the way: Archon (16 deg), Leyawiin (16 deg), Ridge Runners'' Post (55 deg), Soulrest (16 deg), Stormhold (16 deg)'
+  - 'the arms point the way: Archon (19 deg), Leyawiin (14 deg), Ridge Runners'' Post (63 deg), Soulrest (16 deg), Stormhold (16 deg)'
   - wood and rope are marsh-made, not Nordic; any lettering on the boards is no Nordic rune or Skyrim place name; no pine, spruce, birch, snow,
     frost, heather, Nordic architecture or Nordic-grey rock anywhere in frame
 - name: s10-sign-text
   why: 'before arm 0 of sign.place.imperial-fringe.gideon, looking at its board: the crosshair reads it'
   do:
-  - console: player.moveto ARG_Ref_SignImperialFringeGideon 112.6 11.0 0
+  - console: player.moveto ARG_Ref_SignImperialFringeGideon 113.0 5.1 0
   - wait: 2
-  - console: player.setangle z 286.2
+  - console: player.setangle z 289.2
   - console: player.setangle x -24.1
   - wait: 1
   expect:
@@ -870,7 +870,7 @@ steps:
     contains: '>> 0'
   reader:
   - the crosshair reads "To Archon" over the board
-  - the board points away from the post towards 16 deg (the way to Archon)
+  - the board points away from the post towards 19 deg (the way to Archon)
 - name: s11-arrive
   do:
   - *id001

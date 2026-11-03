@@ -101,6 +101,9 @@ Items:
 - Item:
     Item: 000E96:Argonia.esm
     Count: 1
+- Item:
+    Item: 00000F:Skyrim.esm
+    Count: 5000
 AIData:
   EnergyLevel: 50
   Responsibility: NoCrime

@@ -376,7 +376,7 @@ Clouds:
 SkyUpperColor:
   Sunrise: '#004D5258'
   Day: '#005E666C'
-  Sunset: '#004E4C50'
+  Sunset: '#00564C55'
   Night: '#00081411'
 FogNearColor:
   Sunrise: '#00606755'

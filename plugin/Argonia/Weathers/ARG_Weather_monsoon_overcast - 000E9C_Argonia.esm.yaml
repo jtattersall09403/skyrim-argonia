@@ -366,10 +366,10 @@ Clouds:
     Night: '#00000000'
   Alphas: {}
 SkyUpperColor:
-  Sunrise: '#006C7276'
+  Sunrise: '#006A7379'
   Day: '#00879695'
-  Sunset: '#006B6A6A'
-  Night: '#000F1919'
+  Sunset: '#00726A62'
+  Night: '#000C1A1F'
 FogNearColor:
   Sunrise: '#00898A7B'
   Day: '#008E9888'

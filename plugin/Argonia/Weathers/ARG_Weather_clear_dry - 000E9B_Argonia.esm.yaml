@@ -457,7 +457,7 @@ MoonGlareColor:
 FogDistanceDayNear: 1050.45
 FogDistanceDayFar: 98042
 FogDistanceNightNear: 350.15
-FogDistanceNightFar: 49021
+FogDistanceNightFar: 50001.42
 FogDistanceDayPower: 1.2
 FogDistanceNightPower: 1
 FogDistanceDayMax: 0.55

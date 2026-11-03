@@ -2372,43 +2372,39 @@
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0x80F~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -2.3\n  }\n },\n \"_argonia\": \"ARG_Weather_mist: radiation: 20 regions with median water 0.0-1.37 m (dunmer-north.interior-swamp, pirate-freeholds.flooded-forest, imperial-penal-south.deep-river-corridor, imperial-penal-south.deep-sink-basin, imperial-penal-south.flooded-forest, imperial-penal-south.interior-swamp, imperial-penal-south.rootland, mercantile-coast.deep-sink-basin, mercantile-coast.flooded-forest, mercantile-coast.interior-swamp, mercantile-coast.rootland, naga-kur-deeps.deep-river-corridor, naga-kur-deeps.deep-sink-basin, hist-heartland.interior-swamp, saxhleel-coast.deep-sink-basin, saxhleel-coast.interior-swamp, saxhleel-coast.flooded-forest, hist-heartland.flooded-forest, hist-heartland.rootland, hist-heartland.deep-sink-basin)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -2.3\n  }\n },\n \"_argonia\": \"ARG_Weather_mist: radiation: 20 region(s) with median water 0.0-1.37 m (dunmer-north.interior-swamp, pirate-freeholds.flooded-forest, imperial-penal-south.deep-river-corridor, imperial-penal-south.deep-sink-basin, imperial-penal-south.flooded-forest, imperial-penal-south.interior-swamp, imperial-penal-south.rootland, mercantile-coast.deep-sink-basin, mercantile-coast.flooded-forest, mercantile-coast.interior-swamp, mercantile-coast.rootland, naga-kur-deeps.deep-river-corridor, naga-kur-deeps.deep-sink-basin, hist-heartland.interior-swamp, saxhleel-coast.deep-sink-basin, saxhleel-coast.interior-swamp, saxhleel-coast.flooded-forest, hist-heartland.flooded-forest, hist-heartland.rootland, hist-heartland.deep-sink-basin)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED4~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 1365.1\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_20m: radiation: 1 regions with median water 20.21-20.21 m (dunmer-north.rootland)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 1365.1\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_20m: radiation: 1 region(s) with median water 20.21-20.21 m (dunmer-north.rootland)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED5~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 1723.6\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_25m: radiation: 1 regions with median water 25.33-25.33 m (imperial-fringe.deep-sink-basin)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 1723.6\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_25m: radiation: 1 region(s) with median water 25.33-25.33 m (imperial-fringe.deep-sink-basin)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED6~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 112.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_2m: radiation: 4 regions with median water 2.2-2.46 m (pirate-freeholds.rootland, naga-kur-deeps.rootland, naga-kur-deeps.flooded-forest, naga-kur-deeps.interior-swamp)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 112.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_2m: radiation: 4 region(s) with median water 2.2-2.46 m (pirate-freeholds.rootland, naga-kur-deeps.rootland, naga-kur-deeps.flooded-forest, naga-kur-deeps.interior-swamp)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED7~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 3414.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_49m: radiation: 1 regions with median water 49.48-49.48 m (dunmer-north.deep-sink-basin)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 3414.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_49m: radiation: 1 region(s) with median water 49.48-49.48 m (dunmer-north.deep-sink-basin)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED8~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 355.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_6m: radiation: 2 regions with median water 5.7-5.9 m (imperial-fringe.rootland, pirate-freeholds.deep-sink-basin)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 355.9\n  }\n },\n \"_argonia\": \"ARG_Weather_mist_6m: radiation: 2 region(s) with median water 5.7-5.9 m (imperial-fringe.rootland, pirate-freeholds.deep-sink-basin)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xE9D~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -50.2\n  }\n },\n \"_argonia\": \"ARG_Weather_montane_haze: montane: 3 regions with median water 0.0-0.0 m (hist-heartland.western-frontier, mercantile-coast.western-frontier, pirate-freeholds.western-frontier)\"\n}\n"
-    },
-    {
-     "path": "SKSE/Plugins/CommunityShaders/Weathers/0xED9~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 720.1\n  }\n },\n \"_argonia\": \"ARG_Weather_montane_haze_11m: montane: 1 regions with median water 11.0-11.0 m (dunmer-north.northern-transition)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -50.2\n  }\n },\n \"_argonia\": \"ARG_Weather_montane_haze: montane: 4 region(s) with median water 0.0-0.0 m (dunmer-north.northern-transition, hist-heartland.western-frontier, mercantile-coast.western-frontier, pirate-freeholds.western-frontier)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xEDA~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 4713.2\n  }\n },\n \"_argonia\": \"ARG_Weather_montane_haze_68m: montane: 1 regions with median water 68.02-68.02 m (imperial-fringe.western-frontier)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": 4713.2\n  }\n },\n \"_argonia\": \"ARG_Weather_montane_haze_68m: montane: 1 region(s) with median water 68.02-68.02 m (imperial-fringe.western-frontier)\"\n}\n"
     },
     {
      "path": "SKSE/Plugins/CommunityShaders/Weathers/0xE9E~Argonia.esm.json",
-     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -50.2\n  }\n },\n \"_argonia\": \"ARG_Weather_sea_fog: sea_fog: 13 regions with median water 0.0-0.0 m (dunmer-north.coastal-lagoon, dunmer-north.tidal-delta, hist-heartland.coastal-lagoon, hist-heartland.tidal-delta, imperial-fringe.coastal-lagoon, imperial-penal-south.coastal-lagoon, imperial-penal-south.tidal-delta, mercantile-coast.coastal-lagoon, mercantile-coast.tidal-delta, pirate-freeholds.coastal-lagoon, pirate-freeholds.tidal-delta, saxhleel-coast.coastal-lagoon, saxhleel-coast.tidal-delta)\"\n}\n"
+     "text": "{\n \"featureSettings\": {\n  \"ExponentialHeightFog\": {\n   \"fogHeightFalloff\": 30.0,\n   \"fogDensity\": 0.5,\n   \"fogHeight\": -50.2\n  }\n },\n \"_argonia\": \"ARG_Weather_sea_fog: sea_fog: 13 region(s) with median water 0.0-0.0 m (dunmer-north.coastal-lagoon, dunmer-north.tidal-delta, hist-heartland.coastal-lagoon, hist-heartland.tidal-delta, imperial-fringe.coastal-lagoon, imperial-penal-south.coastal-lagoon, imperial-penal-south.tidal-delta, mercantile-coast.coastal-lagoon, mercantile-coast.tidal-delta, pirate-freeholds.coastal-lagoon, pirate-freeholds.tidal-delta, saxhleel-coast.coastal-lagoon, saxhleel-coast.tidal-delta)\"\n}\n"
     }
    ]
   },

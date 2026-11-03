@@ -5,6 +5,7 @@ then the drops of the dressed steps and the skirt scales. Feeds water/steps.py.
 Usage: python3 -m tools.argonia_world.terrain.probes.vanilla_step_pieces [Skyrim.esm]  (reads only; prints numbers)"""
 import collections
 import math
+from tools.argonia_world import skyrim_units as su
 import struct
 import sys
 
@@ -38,16 +39,16 @@ for (x,y),h in water.items():
         if o in water and abs(water[o]-h)>64:
             hi,lo=((x,y),o) if h>water[o] else (o,(x,y)); steps.append((hi,lo))
 def gz(px,py):
-    cx,cy=math.floor(px/4096),math.floor(py/4096); a=land.get((cx,cy))
+    cx,cy=math.floor(px/su.CELL_UNITS),math.floor(py/su.CELL_UNITS); a=land.get((cx,cy))
     if a is None: return None
-    i=min(32,round((py-cy*4096)/128)); j=min(32,round((px-cx*4096)/128)); return float(a[i,j])
+    i=min(32,round((py-cy*su.CELL_UNITS)/su.VERTEX_SPACING_UNITS)); j=min(32,round((px-cx*su.CELL_UNITS)/su.VERTEX_SPACING_UNITS)); return float(a[i,j])
 out=collections.defaultdict(list)
 for n,(px,py,pz,rx,ry,rz),sc in refs:
     best=None
     for hi,lo in steps:
         # shared edge midpoint
-        ex=(max(hi[0],lo[0]))*4096 if hi[0]!=lo[0] else hi[0]*4096+2048
-        ey=(max(hi[1],lo[1]))*4096 if hi[1]!=lo[1] else hi[1]*4096+2048
+        ex=(max(hi[0],lo[0]))*su.CELL_UNITS if hi[0]!=lo[0] else hi[0]*su.CELL_UNITS+su.CELL_UNITS//2
+        ey=(max(hi[1],lo[1]))*su.CELL_UNITS if hi[1]!=lo[1] else hi[1]*su.CELL_UNITS+su.CELL_UNITS//2
         d=math.hypot(px-ex,py-ey)
         if d<3000 and (best is None or d<best[0]): best=(d,hi,lo)
     if not best: continue
@@ -63,10 +64,10 @@ for k,v in out.items():
 dd=collections.defaultdict(set)
 for n,(px,py,pz,rx,ry,rz),sc in refs:
     for hi,lo in steps:
-        ex=(max(hi[0],lo[0]))*4096 if hi[0]!=lo[0] else hi[0]*4096+2048
-        ey=(max(hi[1],lo[1]))*4096 if hi[1]!=lo[1] else hi[1]*4096+2048
+        ex=(max(hi[0],lo[0]))*su.CELL_UNITS if hi[0]!=lo[0] else hi[0]*su.CELL_UNITS+su.CELL_UNITS//2
+        ey=(max(hi[1],lo[1]))*su.CELL_UNITS if hi[1]!=lo[1] else hi[1]*su.CELL_UNITS+su.CELL_UNITS//2
         if math.hypot(px-ex,py-ey)<3000: dd[(hi,lo)].add(base[n])
-dr=sorted((water[h]-water[l])/70.03 for (h,l) in dd)
+dr=sorted((water[h]-water[l])/su.UNITS_PER_METRE for (h,l) in dd)
 print("vanilla steps with fx",len(dr),"drop m",[round(x,1) for x in dr])
 sk=[struct.unpack("<f",s)[0] if s else 1.0 for n,_,s in refs if base[n]=="FXWaterfallSkirtSlope"]
 print("skirt scales",np.percentile(sk,[10,50,90]).round(2))

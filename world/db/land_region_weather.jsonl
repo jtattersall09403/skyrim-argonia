@@ -19,7 +19,7 @@
 {"land_region_id":"dunmer-north.northern-transition","weather_id":"clear-dry","chance":16,"season_global":"ARG_WChance_lowland_clear_dry"}
 {"land_region_id":"dunmer-north.northern-transition","weather_id":"clear-ff","chance":15,"season_global":"ARG_WChance_lowland_clear_ff"}
 {"land_region_id":"dunmer-north.northern-transition","weather_id":"cloudy-ma","chance":15,"season_global":"ARG_WChance_lowland_cloudy_ma"}
-{"land_region_id":"dunmer-north.northern-transition","weather_id":"montane-haze-11m","chance":29,"season_global":"ARG_WChance_lowland_montane_haze"}
+{"land_region_id":"dunmer-north.northern-transition","weather_id":"montane-haze","chance":29,"season_global":"ARG_WChance_lowland_montane_haze"}
 {"land_region_id":"dunmer-north.northern-transition","weather_id":"tannin-haze","chance":6,"season_global":"ARG_WChance_lowland_tannin_haze"}
 {"land_region_id":"dunmer-north.northern-transition","weather_id":"wet-rain","chance":19,"season_global":"ARG_WChance_lowland_wet_rain"}
 {"land_region_id":"dunmer-north.rootland","weather_id":"clear-dry","chance":13,"season_global":"ARG_WChance_marsh_clear_dry"}

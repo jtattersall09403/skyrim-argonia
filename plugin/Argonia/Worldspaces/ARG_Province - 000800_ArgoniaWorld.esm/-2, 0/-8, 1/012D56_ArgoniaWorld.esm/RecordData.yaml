@@ -6,6 +6,901 @@ Grid:
 Regions:
 - 080010:ArgoniaWorld.esm
 - 08002F:ArgoniaWorld.esm
+NavigationMeshes:
+- FormKey: 6092A3:ArgoniaWorld.esm
+  IsCompressed: True
+  MajorRecordFlagsRaw: 262144
+  SkyrimMajorRecordFlags:
+  - Compressed
+  Data:
+    Parent:
+      MutagenObjectType: WorldspaceNavmeshParent
+      Parent: 000800:ArgoniaWorld.esm
+      Coordinates: 13, -57
+    Vertices:
+    - -229376, 53248, 4784
+    - -233472, 53248, 4792
+    - -232033.48, 53632.844, 4783.842
+    - -233472, 53644.387, 4781.677
+    - -232895.27, 53632.914, 4783.802
+    - -233472, 54172.902, 4681.8066
+    - -232801.38, 54017.35, 4679.916
+    - -233472, 55494.195, 4708.3867
+    - -233183.25, 54591.74, 4681.9365
+    - -233472, 57079.742, 4950.453
+    - -233375.31, 56318.734, 4851.8486
+    - -233472, 57344, 5008
+    - -233075.61, 57344, 4968.7744
+    - -232414.97, 57344, 5075.871
+    - -232705.36, 56894.453, 4967.8916
+    - -231622.19, 57344, 4960
+    - -232030.47, 56896.176, 4946.9844
+    - -230829.42, 57344, 5048
+    - -230879.06, 56991.75, 5022.8594
+    - -229904.52, 57344, 4986.0645
+    - -230687.67, 57086.688, 5017.7744
+    - -229376, 57344, 4864
+    - -229919.06, 56992.38, 4927.9297
+    - -229376, 56947.613, 4791.2256
+    - -229824.67, 55071.22, 4782.049
+    - -232511.89, 53632.527, 4783.801
+    - -231550.58, 53726.695, 4799.9556
+    - -232798.42, 55168.55, 4645.9185
+    - -233087.56, 56511.11, 4935.916
+    - -233375.48, 55841.465, 4756.3076
+    - -231552.06, 56896.492, 4948.0293
+    - -231265.06, 56798.668, 4974.7344
+    - -229726.52, 56703.586, 4855.578
+    - -231072.02, 54207.477, 4801.0005
+    - -229920.86, 55457.445, 4764.1074
+    - -232320.5, 53727.47, 4742.248
+    - -231839.31, 54398.516, 4732.1323
+    - -232609.23, 54399.293, 4656.044
+    - -232895.92, 55454.848, 4674.742
+    - -233280.28, 56319.438, 4867.842
+    - -233184.08, 55936.406, 4794.1094
+    - -232320.84, 56513.535, 4868.34
+    - -232031.94, 56318.977, 4859.9434
+    - -230496.44, 56704.36, 4934.0723
+    - -230878.66, 56321.016, 4898.2427
+    - -230014.84, 56704.676, 4903.9395
+    - -230689.06, 54881.023, 4789.9336
+    - -230304.95, 55167.633, 4802.048
+    - -232416.12, 53920.23, 4701.963
+    - -232223.98, 54305.37, 4678.001
+    - -231455.38, 54207.863, 4801.0674
+    - -232511.98, 55264.195, 4655.006
+    - -232414.64, 54497.43, 4660.17
+    - -232799.25, 56513.22, 4935.1113
+    - -232991.95, 56321.547, 4910.293
+    - -231649.31, 56031.59, 4869.867
+    - -230016.89, 56320.945, 4872.2007
+    - -231070.53, 54784.676, 4758.071
+    - -230209.19, 55455.336, 4797.0537
+    - -231936.81, 54688.016, 4735.8984
+    - -231647.92, 54496.656, 4756.9434
+    - -232703.8, 55839.99, 4783.9897
+    - -232512.97, 56128.395, 4832.134
+    - -232129.03, 55934.54, 4831.6875
+    - -230305.22, 56318.836, 4895.8555
+    - -231263.5, 55744.203, 4838.0693
+    - -230305.38, 55841.566, 4830.2812
+    - -230783.94, 55360.785, 4816.0996
+    - -230593.28, 55168.727, 4808.0225
+    - -231648.33, 55167.39, 4713.9985
+    - -230878.81, 55840.547, 4863.96
+    Triangles:
+    - Vertices: 0, 2, 1
+      EdgeLink_0_1: 14
+      EdgeLink_1_2: 13
+      Flags:
+      - EdgeLink_2_0
+      - Door
+      - Found
+    - Vertices: 1, 4, 3
+      EdgeLink_0_1: 16
+      EdgeLink_1_2: 15
+      EdgeLink_2_0: 1
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 3, 6, 5
+      EdgeLink_0_1: 15
+      EdgeLink_1_2: 17
+      EdgeLink_2_0: 2
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 5, 8, 7
+      EdgeLink_0_1: 17
+      EdgeLink_1_2: 18
+      EdgeLink_2_0: 3
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 7, 10, 9
+      EdgeLink_0_1: 20
+      EdgeLink_1_2: 19
+      EdgeLink_2_0: 4
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 9, 12, 11
+      EdgeLink_0_1: 21
+      EdgeLink_1_2: 5
+      EdgeLink_2_0: 6
+      Flags:
+      - EdgeLink_1_2
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 12, 14, 13
+      EdgeLink_0_1: 21
+      EdgeLink_1_2: 22
+      EdgeLink_2_0: 7
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 13, 16, 15
+      EdgeLink_0_1: 22
+      EdgeLink_1_2: 23
+      EdgeLink_2_0: 8
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 15, 18, 17
+      EdgeLink_0_1: 25
+      EdgeLink_1_2: 24
+      EdgeLink_2_0: 9
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 17, 20, 19
+      EdgeLink_0_1: 24
+      EdgeLink_1_2: 26
+      EdgeLink_2_0: 10
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 19, 22, 21
+      EdgeLink_0_1: 26
+      EdgeLink_1_2: 11
+      EdgeLink_2_0: 11
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 21, 22, 23
+      EdgeLink_0_1: 10
+      EdgeLink_1_2: 27
+      EdgeLink_2_0: 12
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 23, 24, 0
+      EdgeLink_0_1: 29
+      EdgeLink_1_2: 28
+      EdgeLink_2_0: 13
+      Flags:
+      - EdgeLink_2_0
+      - Found
+    - Vertices: 2, 25, 1
+      EdgeLink_0_1: 30
+      EdgeLink_1_2: 16
+      Flags:
+      - Found
+    - Vertices: 0, 26, 2
+      EdgeLink_0_1: 32
+      EdgeLink_1_2: 31
+      Flags:
+      - Found
+    - Vertices: 4, 6, 3
+      EdgeLink_0_1: 33
+      EdgeLink_1_2: 2
+      EdgeLink_2_0: 1
+      Flags:
+      - Found
+    - Vertices: 1, 25, 4
+      EdgeLink_0_1: 13
+      EdgeLink_1_2: 33
+      EdgeLink_2_0: 1
+      Flags:
+      - Found
+    - Vertices: 6, 8, 5
+      EdgeLink_0_1: 34
+      EdgeLink_1_2: 3
+      EdgeLink_2_0: 2
+      Flags:
+      - Found
+    - Vertices: 8, 27, 7
+      EdgeLink_0_1: 36
+      EdgeLink_1_2: 35
+      EdgeLink_2_0: 3
+      Flags:
+      - Found
+    - Vertices: 10, 28, 9
+      EdgeLink_0_1: 38
+      EdgeLink_1_2: 37
+      EdgeLink_2_0: 4
+      Flags:
+      - Found
+    - Vertices: 7, 29, 10
+      EdgeLink_0_1: 40
+      EdgeLink_1_2: 39
+      EdgeLink_2_0: 4
+      Flags:
+      - Found
+    - Vertices: 9, 14, 12
+      EdgeLink_0_1: 37
+      EdgeLink_1_2: 6
+      EdgeLink_2_0: 5
+      Flags:
+      - Found
+    - Vertices: 14, 16, 13
+      EdgeLink_0_1: 41
+      EdgeLink_1_2: 7
+      EdgeLink_2_0: 6
+      Flags:
+      - Found
+    - Vertices: 16, 30, 15
+      EdgeLink_0_1: 43
+      EdgeLink_1_2: 42
+      EdgeLink_2_0: 7
+      Flags:
+      - Found
+    - Vertices: 18, 20, 17
+      EdgeLink_0_1: 44
+      EdgeLink_1_2: 9
+      EdgeLink_2_0: 8
+      Flags:
+      - Found
+    - Vertices: 15, 31, 18
+      EdgeLink_0_1: 42
+      EdgeLink_1_2: 45
+      EdgeLink_2_0: 8
+      Flags:
+      - Found
+    - Vertices: 20, 22, 19
+      EdgeLink_0_1: 46
+      EdgeLink_1_2: 10
+      EdgeLink_2_0: 9
+      Flags:
+      - Found
+    - Vertices: 22, 32, 23
+      EdgeLink_0_1: 48
+      EdgeLink_1_2: 47
+      EdgeLink_2_0: 11
+      Flags:
+      - Found
+    - Vertices: 24, 33, 0
+      EdgeLink_0_1: 49
+      EdgeLink_1_2: 32
+      EdgeLink_2_0: 12
+      Flags:
+      - Found
+    - Vertices: 23, 34, 24
+      EdgeLink_0_1: 47
+      EdgeLink_1_2: 50
+      EdgeLink_2_0: 12
+      Flags:
+      - Found
+    - Vertices: 2, 35, 25
+      EdgeLink_0_1: 52
+      EdgeLink_1_2: 51
+      EdgeLink_2_0: 13
+      Flags:
+      - Found
+    - Vertices: 26, 36, 2
+      EdgeLink_0_1: 54
+      EdgeLink_1_2: 53
+      EdgeLink_2_0: 14
+      Flags:
+      - Found
+    - Vertices: 0, 33, 26
+      EdgeLink_0_1: 28
+      EdgeLink_1_2: 55
+      EdgeLink_2_0: 14
+      Flags:
+      - Found
+    - Vertices: 4, 25, 6
+      EdgeLink_0_1: 16
+      EdgeLink_1_2: 56
+      EdgeLink_2_0: 15
+      Flags:
+      - Found
+    - Vertices: 6, 37, 8
+      EdgeLink_0_1: 57
+      EdgeLink_1_2: 36
+      EdgeLink_2_0: 17
+      Flags:
+      - Found
+    - Vertices: 27, 38, 7
+      EdgeLink_0_1: 58
+      EdgeLink_1_2: 40
+      EdgeLink_2_0: 18
+      Flags:
+      - Found
+    - Vertices: 8, 37, 27
+      EdgeLink_0_1: 34
+      EdgeLink_1_2: 59
+      EdgeLink_2_0: 18
+      Flags:
+      - Found
+    - Vertices: 28, 14, 9
+      EdgeLink_0_1: 60
+      EdgeLink_1_2: 21
+      EdgeLink_2_0: 19
+      Flags:
+      - Found
+    - Vertices: 10, 39, 28
+      EdgeLink_0_1: 62
+      EdgeLink_1_2: 61
+      EdgeLink_2_0: 19
+      Flags:
+      - Found
+    - Vertices: 29, 40, 10
+      EdgeLink_0_1: 63
+      EdgeLink_1_2: 62
+      EdgeLink_2_0: 20
+      Flags:
+      - Found
+    - Vertices: 7, 38, 29
+      EdgeLink_0_1: 35
+      EdgeLink_1_2: 63
+      EdgeLink_2_0: 20
+      Flags:
+      - Found
+    - Vertices: 14, 41, 16
+      EdgeLink_0_1: 65
+      EdgeLink_1_2: 64
+      EdgeLink_2_0: 22
+      Flags:
+      - Found
+    - Vertices: 30, 31, 15
+      EdgeLink_0_1: 66
+      EdgeLink_1_2: 25
+      EdgeLink_2_0: 23
+      Flags:
+      - Found
+    - Vertices: 16, 42, 30
+      EdgeLink_0_1: 64
+      EdgeLink_1_2: 67
+      EdgeLink_2_0: 23
+      Flags:
+      - Found
+    - Vertices: 18, 43, 20
+      EdgeLink_0_1: 68
+      EdgeLink_1_2: 46
+      EdgeLink_2_0: 24
+      Flags:
+      - Found
+    - Vertices: 31, 44, 18
+      EdgeLink_0_1: 69
+      EdgeLink_1_2: 68
+      EdgeLink_2_0: 25
+      Flags:
+      - Found
+    - Vertices: 20, 43, 22
+      EdgeLink_0_1: 44
+      EdgeLink_1_2: 70
+      EdgeLink_2_0: 26
+      Flags:
+      - Found
+    - Vertices: 32, 34, 23
+      EdgeLink_0_1: 71
+      EdgeLink_1_2: 29
+      EdgeLink_2_0: 27
+      Flags:
+      - Found
+    - Vertices: 22, 45, 32
+      EdgeLink_0_1: 70
+      EdgeLink_1_2: 72
+      EdgeLink_2_0: 27
+      Flags:
+      - Found
+    - Vertices: 24, 46, 33
+      EdgeLink_0_1: 74
+      EdgeLink_1_2: 73
+      EdgeLink_2_0: 28
+      Flags:
+      - Door
+      - Found
+    - Vertices: 34, 47, 24
+      EdgeLink_0_1: 75
+      EdgeLink_1_2: 74
+      EdgeLink_2_0: 29
+      Flags:
+      - Found
+    - Vertices: 35, 48, 25
+      EdgeLink_0_1: 52
+      EdgeLink_1_2: 56
+      EdgeLink_2_0: 30
+      Flags:
+      - Found
+    - Vertices: 2, 48, 35
+      EdgeLink_0_1: 76
+      EdgeLink_1_2: 51
+      EdgeLink_2_0: 30
+      Flags:
+      - Found
+    - Vertices: 36, 49, 2
+      EdgeLink_0_1: 77
+      EdgeLink_1_2: 76
+      EdgeLink_2_0: 31
+      Flags:
+      - Found
+    - Vertices: 26, 50, 36
+      EdgeLink_0_1: 55
+      EdgeLink_1_2: 78
+      EdgeLink_2_0: 31
+      Flags:
+      - Found
+    - Vertices: 33, 50, 26
+      EdgeLink_0_1: 79
+      EdgeLink_1_2: 54
+      EdgeLink_2_0: 32
+      Flags:
+      - Found
+    - Vertices: 25, 48, 6
+      EdgeLink_0_1: 51
+      EdgeLink_1_2: 57
+      EdgeLink_2_0: 33
+      Flags:
+      - Found
+    - Vertices: 6, 48, 37
+      EdgeLink_0_1: 56
+      EdgeLink_1_2: 80
+      EdgeLink_2_0: 34
+      Flags:
+      - Found
+    - Vertices: 27, 51, 38
+      EdgeLink_0_1: 82
+      EdgeLink_1_2: 81
+      EdgeLink_2_0: 35
+      Flags:
+      - Found
+    - Vertices: 37, 52, 27
+      EdgeLink_0_1: 83
+      EdgeLink_1_2: 82
+      EdgeLink_2_0: 36
+      Flags:
+      - Found
+    - Vertices: 28, 53, 14
+      EdgeLink_0_1: 84
+      EdgeLink_1_2: 65
+      EdgeLink_2_0: 37
+      Flags:
+      - Found
+    - Vertices: 39, 54, 28
+      EdgeLink_0_1: 85
+      EdgeLink_1_2: 84
+      EdgeLink_2_0: 38
+      Flags:
+      - Found
+    - Vertices: 10, 40, 39
+      EdgeLink_0_1: 39
+      EdgeLink_1_2: 85
+      EdgeLink_2_0: 38
+      Flags:
+      - Found
+    - Vertices: 29, 38, 40
+      EdgeLink_0_1: 40
+      EdgeLink_1_2: 86
+      EdgeLink_2_0: 39
+      Flags:
+      - Found
+    - Vertices: 41, 42, 16
+      EdgeLink_0_1: 87
+      EdgeLink_1_2: 43
+      EdgeLink_2_0: 41
+      Flags:
+      - Found
+    - Vertices: 14, 53, 41
+      EdgeLink_0_1: 60
+      EdgeLink_1_2: 88
+      EdgeLink_2_0: 41
+      Flags:
+      - Found
+    - Vertices: 30, 55, 31
+      EdgeLink_0_1: 67
+      EdgeLink_1_2: 69
+      EdgeLink_2_0: 42
+      Flags:
+      - Found
+    - Vertices: 42, 55, 30
+      EdgeLink_0_1: 89
+      EdgeLink_1_2: 66
+      EdgeLink_2_0: 43
+      Flags:
+      - Found
+    - Vertices: 18, 44, 43
+      EdgeLink_0_1: 45
+      EdgeLink_1_2: 90
+      EdgeLink_2_0: 44
+      Flags:
+      - Found
+    - Vertices: 31, 55, 44
+      EdgeLink_0_1: 66
+      EdgeLink_1_2: 91
+      EdgeLink_2_0: 45
+      Flags:
+      - Found
+    - Vertices: 43, 45, 22
+      EdgeLink_0_1: 92
+      EdgeLink_1_2: 48
+      EdgeLink_2_0: 46
+      Flags:
+      - Found
+    - Vertices: 32, 56, 34
+      EdgeLink_0_1: 72
+      EdgeLink_1_2: 93
+      EdgeLink_2_0: 47
+      Flags:
+      - Found
+    - Vertices: 45, 56, 32
+      EdgeLink_0_1: 94
+      EdgeLink_1_2: 71
+      EdgeLink_2_0: 48
+      Flags:
+      - Found
+    - Vertices: 46, 57, 33
+      EdgeLink_0_1: 95
+      EdgeLink_1_2: 79
+      EdgeLink_2_0: 49
+      Flags:
+      - Found
+    - Vertices: 24, 47, 46
+      EdgeLink_0_1: 50
+      EdgeLink_1_2: 96
+      EdgeLink_2_0: 49
+      Flags:
+      - Found
+    - Vertices: 34, 58, 47
+      EdgeLink_0_1: 98
+      EdgeLink_1_2: 97
+      EdgeLink_2_0: 50
+      Flags:
+      - Found
+    - Vertices: 2, 49, 48
+      EdgeLink_0_1: 53
+      EdgeLink_1_2: 80
+      EdgeLink_2_0: 52
+      Flags:
+      - Found
+    - Vertices: 36, 59, 49
+      EdgeLink_0_1: 100
+      EdgeLink_1_2: 99
+      EdgeLink_2_0: 53
+      Flags:
+      - Found
+    - Vertices: 50, 60, 36
+      EdgeLink_0_1: 101
+      EdgeLink_1_2: 100
+      EdgeLink_2_0: 54
+      Flags:
+      - Found
+    - Vertices: 33, 57, 50
+      EdgeLink_0_1: 73
+      EdgeLink_1_2: 101
+      EdgeLink_2_0: 55
+      Flags:
+      - Found
+    - Vertices: 48, 49, 37
+      EdgeLink_0_1: 76
+      EdgeLink_1_2: 83
+      EdgeLink_2_0: 57
+      Flags:
+      - Found
+    - Vertices: 51, 61, 38
+      EdgeLink_0_1: 102
+      EdgeLink_1_2: 86
+      EdgeLink_2_0: 58
+      Flags:
+      - Found
+    - Vertices: 27, 52, 51
+      EdgeLink_0_1: 59
+      EdgeLink_1_2: 103
+      EdgeLink_2_0: 58
+      Flags:
+      - Found
+    - Vertices: 37, 49, 52
+      EdgeLink_0_1: 80
+      EdgeLink_1_2: 99
+      EdgeLink_2_0: 59
+      Flags:
+      - Found
+    - Vertices: 28, 54, 53
+      EdgeLink_0_1: 61
+      EdgeLink_1_2: 104
+      EdgeLink_2_0: 60
+      Flags:
+      - Found
+    - Vertices: 39, 40, 54
+      EdgeLink_0_1: 62
+      EdgeLink_1_2: 105
+      EdgeLink_2_0: 61
+      Flags:
+      - Found
+    - Vertices: 38, 61, 40
+      EdgeLink_0_1: 81
+      EdgeLink_1_2: 105
+      EdgeLink_2_0: 63
+      Flags:
+      - Found
+    - Vertices: 41, 62, 42
+      EdgeLink_0_1: 88
+      EdgeLink_1_2: 106
+      EdgeLink_2_0: 64
+      Flags:
+      - Found
+    - Vertices: 53, 62, 41
+      EdgeLink_0_1: 104
+      EdgeLink_1_2: 87
+      EdgeLink_2_0: 65
+      Flags:
+      - Found
+    - Vertices: 42, 63, 55
+      EdgeLink_0_1: 106
+      EdgeLink_1_2: 107
+      EdgeLink_2_0: 67
+      Flags:
+      - Found
+    - Vertices: 44, 64, 43
+      EdgeLink_0_1: 108
+      EdgeLink_1_2: 92
+      EdgeLink_2_0: 68
+      Flags:
+      - Found
+    - Vertices: 55, 65, 44
+      EdgeLink_0_1: 110
+      EdgeLink_1_2: 109
+      EdgeLink_2_0: 69
+      Flags:
+      - Found
+    - Vertices: 43, 64, 45
+      EdgeLink_0_1: 90
+      EdgeLink_1_2: 94
+      EdgeLink_2_0: 70
+      Flags:
+      - Found
+    - Vertices: 56, 66, 34
+      EdgeLink_0_1: 111
+      EdgeLink_1_2: 98
+      EdgeLink_2_0: 71
+      Flags:
+      - Found
+    - Vertices: 45, 64, 56
+      EdgeLink_0_1: 92
+      EdgeLink_1_2: 111
+      EdgeLink_2_0: 72
+      Flags:
+      - Found
+    - Vertices: 46, 67, 57
+      EdgeLink_0_1: 113
+      EdgeLink_1_2: 112
+      EdgeLink_2_0: 73
+      Flags:
+      - Found
+    - Vertices: 47, 68, 46
+      EdgeLink_0_1: 97
+      EdgeLink_1_2: 113
+      EdgeLink_2_0: 74
+      Flags:
+      - Found
+    - Vertices: 58, 68, 47
+      EdgeLink_0_1: 114
+      EdgeLink_1_2: 96
+      EdgeLink_2_0: 75
+      Flags:
+      - Found
+    - Vertices: 34, 66, 58
+      EdgeLink_0_1: 93
+      EdgeLink_1_2: 115
+      EdgeLink_2_0: 75
+      Flags:
+      - Found
+    - Vertices: 59, 52, 49
+      EdgeLink_0_1: 103
+      EdgeLink_1_2: 83
+      EdgeLink_2_0: 77
+      Flags:
+      - Found
+    - Vertices: 36, 60, 59
+      EdgeLink_0_1: 78
+      EdgeLink_1_2: 116
+      EdgeLink_2_0: 77
+      Flags:
+      - Found
+    - Vertices: 50, 57, 60
+      EdgeLink_0_1: 79
+      EdgeLink_1_2: 117
+      EdgeLink_2_0: 78
+      Flags:
+      - Found
+    - Vertices: 51, 63, 61
+      EdgeLink_0_1: 119
+      EdgeLink_1_2: 118
+      EdgeLink_2_0: 81
+      Flags:
+      - Found
+    - Vertices: 52, 59, 51
+      EdgeLink_0_1: 99
+      EdgeLink_1_2: 120
+      EdgeLink_2_0: 82
+      Flags:
+      - Found
+    - Vertices: 54, 62, 53
+      EdgeLink_0_1: 121
+      EdgeLink_1_2: 88
+      EdgeLink_2_0: 84
+      Flags:
+      - Found
+    - Vertices: 40, 61, 54
+      EdgeLink_0_1: 86
+      EdgeLink_1_2: 121
+      EdgeLink_2_0: 85
+      Flags:
+      - Found
+    - Vertices: 62, 63, 42
+      EdgeLink_0_1: 118
+      EdgeLink_1_2: 89
+      EdgeLink_2_0: 87
+      Flags:
+      - Found
+    - Vertices: 63, 69, 55
+      EdgeLink_0_1: 119
+      EdgeLink_1_2: 110
+      EdgeLink_2_0: 89
+      Flags:
+      - Found
+    - Vertices: 44, 70, 64
+      EdgeLink_0_1: 109
+      EdgeLink_1_2: 122
+      EdgeLink_2_0: 90
+      Flags:
+      - Found
+    - Vertices: 65, 70, 44
+      EdgeLink_0_1: 123
+      EdgeLink_1_2: 108
+      EdgeLink_2_0: 91
+      Flags:
+      - Found
+    - Vertices: 55, 69, 65
+      EdgeLink_0_1: 107
+      EdgeLink_1_2: 124
+      EdgeLink_2_0: 91
+      Flags:
+      - Found
+    - Vertices: 56, 64, 66
+      EdgeLink_0_1: 94
+      EdgeLink_1_2: 122
+      EdgeLink_2_0: 93
+      Flags:
+      - Found
+    - Vertices: 67, 69, 57
+      EdgeLink_0_1: 124
+      EdgeLink_1_2: 117
+      EdgeLink_2_0: 95
+      Flags:
+      - Found
+    - Vertices: 46, 68, 67
+      EdgeLink_0_1: 96
+      EdgeLink_1_2: 114
+      EdgeLink_2_0: 95
+      Flags:
+      - Found
+    - Vertices: 58, 67, 68
+      EdgeLink_0_1: 115
+      EdgeLink_1_2: 113
+      EdgeLink_2_0: 97
+      Flags:
+      - Found
+    - Vertices: 66, 67, 58
+      EdgeLink_0_1: 125
+      EdgeLink_1_2: 114
+      EdgeLink_2_0: 98
+      Flags:
+      - Found
+    - Vertices: 60, 69, 59
+      EdgeLink_0_1: 117
+      EdgeLink_1_2: 120
+      EdgeLink_2_0: 100
+      Flags:
+      - Found
+    - Vertices: 57, 69, 60
+      EdgeLink_0_1: 112
+      EdgeLink_1_2: 116
+      EdgeLink_2_0: 101
+      Flags:
+      - Found
+    - Vertices: 63, 62, 61
+      EdgeLink_0_1: 106
+      EdgeLink_1_2: 121
+      EdgeLink_2_0: 102
+      Flags:
+      - Found
+    - Vertices: 51, 69, 63
+      EdgeLink_0_1: 120
+      EdgeLink_1_2: 107
+      EdgeLink_2_0: 102
+      Flags:
+      - Found
+    - Vertices: 59, 69, 51
+      EdgeLink_0_1: 116
+      EdgeLink_1_2: 119
+      EdgeLink_2_0: 103
+      Flags:
+      - Found
+    - Vertices: 54, 61, 62
+      EdgeLink_0_1: 105
+      EdgeLink_1_2: 118
+      EdgeLink_2_0: 104
+      Flags:
+      - Found
+    - Vertices: 70, 66, 64
+      EdgeLink_0_1: 125
+      EdgeLink_1_2: 111
+      EdgeLink_2_0: 108
+      Flags:
+      - Found
+    - Vertices: 65, 67, 70
+      EdgeLink_0_1: 124
+      EdgeLink_1_2: 125
+      EdgeLink_2_0: 109
+      Flags:
+      - Found
+    - Vertices: 69, 67, 65
+      EdgeLink_0_1: 112
+      EdgeLink_1_2: 123
+      EdgeLink_2_0: 110
+      Flags:
+      - Found
+    - Vertices: 66, 70, 67
+      EdgeLink_0_1: 122
+      EdgeLink_1_2: 123
+      EdgeLink_2_0: 115
+      Flags:
+      - Found
+    EdgeLinks:
+    - Mesh: 60919D:ArgoniaWorld.esm
+      TriangleIndex: 16
+    - Mesh: 6092A2:ArgoniaWorld.esm
+      TriangleIndex: 14
+    - Mesh: 6092A2:ArgoniaWorld.esm
+      TriangleIndex: 13
+    - Mesh: 6092A2:ArgoniaWorld.esm
+      TriangleIndex: 12
+    - Mesh: 6092A2:ArgoniaWorld.esm
+      TriangleIndex: 11
+    - Mesh: 6093A9:ArgoniaWorld.esm
+    - Mesh: 6092A2:ArgoniaWorld.esm
+      TriangleIndex: 10
+    - Mesh: 6093A9:ArgoniaWorld.esm
+      TriangleIndex: 20
+    - Mesh: 6093A9:ArgoniaWorld.esm
+      TriangleIndex: 19
+    - Mesh: 6093A9:ArgoniaWorld.esm
+      TriangleIndex: 18
+    - Mesh: 6093A9:ArgoniaWorld.esm
+      TriangleIndex: 17
+    - Mesh: 6093A9:ArgoniaWorld.esm
+      TriangleIndex: 16
+    - Mesh: 6092A4:ArgoniaWorld.esm
+      TriangleIndex: 23
+    - Mesh: 6092A4:ArgoniaWorld.esm
+      TriangleIndex: 22
+    DoorTriangles:
+    - Unknown: -460622861
+      Door: 0008C3:Argonia.esm
+    - TriangleBeforeDoor: 49
+      Unknown: -460622861
+      Door: 0008BC:Argonia.esm
+    NavmeshGridDivisor: 4
+    MaxDistanceX: 1024
+    MaxDistanceY: 1024
+    Min: -233472, 53248, 4645.9185
+    Max: -229376, 57344, 5075.871
+    NavmeshGrid: 0x0F00000000000100020003000D000F00100011001E002100220033003800390050001200000000000D000E001E001F00200033003400350036003700380039004C004E004F00500065000900000000000E001C0020003100370049004F0065000500000000000C000E001C0020001100000003001100120022002300240039003A003B0050005100520053006600670077007800160000001F00350036003B004C004D004E0050005200530063006400650067006B006E00700074007500770078007C000E0000001C00310049004A004F005F0060006100650070007100720075007C00090000000C001C001D00310032004A004B0060006100190000000300040012001300140023002600270028003A003D003E003F00510055005600570058006600680069006A00760077007900100000002B0040004200430045005700580059005B0066006A006B006E00760077007C001000000045005A005B005F0061006C006D006E0070007100720073007A007B007C007D00120000000C001D002F00320047004B005A005C005D005E00610062006C006F00720073007A007D00120000000400050006001300150016002500260029003C003D0041005400550058006800690079001000000006000700080016001700190029002A002B0040004100420043004500570058001200000008000900180019001A002A002C002D002E0042004400450046005A005B005C006C006D001200000009000A000B000C001A001B001D002E002F0030004600470048005A005C005D005E006F00
+  MajorFlags:
+  - 0x40000
 Temporary:
 - MutagenObjectType: PlacedObject
   FormKey: 0008BB:Argonia.esm
@@ -16,7 +911,7 @@ Temporary:
   FormKey: 0008BD:Argonia.esm
   Base: 08995A:King of the Murkmire.esp
   Placement:
-    Position: -230243.39, 54552.47, 2430.39
+    Position: -230243.39, 54552.47, 4714.42
     Rotation: 0, 0, 3.141593
 - MutagenObjectType: PlacedObject
   FormKey: 0008BE:Argonia.esm
@@ -43,7 +938,7 @@ Temporary:
   FormKey: 0008C4:Argonia.esm
   Base: 08995A:King of the Murkmire.esp
   Placement:
-    Position: -231154.38, 53289.59, 2417.58
+    Position: -231154.38, 53289.59, 4698.31
     Rotation: 0, 0, 1.570796
 - MutagenObjectType: PlacedObject
   FormKey: 0008D4:Argonia.esm
