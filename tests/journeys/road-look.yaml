@@ -13,12 +13,15 @@ steps:
   - name: road-in
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: blackwood-20
-    do: [{console: "player.setpos x -166236"}, {console: "player.setpos y 32022"}, {console: "player.setpos z 4708"},
-         {console: "player.setangle z 240"}, {wait: 4}]
+    # subject: -167759 31035 4679
+    do: [{console: "player.setpos x -166046"}, {console: "player.setpos y 30670"}, {console: "player.setpos z 4851"},
+         {console: "player.setangle z 282"}, {console: "player.setangle x 9"}, {wait: 4}]
   - name: blackwood-flat-46
-    do: [{console: "player.setpos x -195572"}, {console: "player.setpos y 40894"}, {console: "player.setpos z 5115"},
-         {console: "player.setangle z 272"}, {wait: 4}]
+    # subject: -197391 40981 4989
+    do: [{console: "player.setpos x -195643"}, {console: "player.setpos y 40898"}, {console: "player.setpos z 4968"},
+         {console: "player.setangle z 273"}, {console: "player.setangle x 3"}, {wait: 4}]
   - name: blackwood-slope-57
-    do: [{console: "player.setpos x -209265"}, {console: "player.setpos y 41818"}, {console: "player.setpos z 5159"},
-         {console: "player.setangle z 281"}, {wait: 4}]
+    # subject: -210012 40295 4732
+    do: [{console: "player.setpos x -209374"}, {console: "player.setpos y 41925"}, {console: "player.setpos z 4995"},
+         {console: "player.setangle z 201"}, {console: "player.setangle x 12"}, {wait: 4}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]

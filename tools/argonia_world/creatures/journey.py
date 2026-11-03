@@ -68,7 +68,6 @@ def _go(r: dict, off_m: float, hour: int, ground=None) -> list[str]:
             f"  - console: player.setpos x {x:.0f}",
             f"  - console: player.setpos y {y:.0f}",
             f"  - console: player.setpos z {z:.0f}",
-            "  - camera: first",
             "  - console: player.setangle z 90",
             f"  - wait: {WAIT_S}"]
 
@@ -82,10 +81,12 @@ def build(refs: list[dict], ground=None) -> tuple[str, str]:
              "# and every entry at level 1 always yields one). Reader checklist per still: the creature is a Black",
              "# Marsh kind (no Skyrim animal), on ground or in water its kind allows; at the den the predator beside",
              "# it. The kind of each base read is its creature_form row. The planner runs it in the round's batch.",
-             "id: creature-spots", "runner: 1", "crash_risk: medium", "scene: creature-spots", "steps:"]
+             "id: creature-spots", "runner: 1", "crash_risk: medium", "scene: creature-spots", "camera: first",
+             "steps:"]
     for n, (name, when, hour, r) in enumerate(spots(refs)):
         lines += [f"- name: {name}-{when}",
                   f"  # cell {tuple(r['cell'])} {r['class']} {r['band']} {r['medium']}: list {r['base']}",
+                  f"  # subject: {r['x']:.0f} {r['y']:.0f} {r['z'] + su.EYE_HEIGHT_UNITS / 2:.0f}",
                   "  do:", *(["  - hud: off", "  - console: tgm"] if n == 0 else []), *_go(r, VIEW_M, hour, ground),
                   "  expect:", "  - {read: [player], path: pos, keep: arrive}",
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed, keep: {name}_{when}}}"]
@@ -93,6 +94,7 @@ def build(refs: list[dict], ground=None) -> tuple[str, str]:
     if den is not None:
         lines += [f"- name: den-{den['creature'].split('.')[-1]}",
                   f"  # {den['creature']} den in cell {tuple(den['cell'])}, {den['class']} {den['band']}",
+                  f"  # subject: {den['x']:.0f} {den['y']:.0f} {den['z'] + su.EYE_HEIGHT_UNITS / 2:.0f}",
                   "  do:", *_go(den, DEN_VIEW_M, 12, ground),
                   "  expect:", "  - {read: [player], path: pos, keep: arrive}",
                   f"  - {{read: [actors, \"{radius:.0f}\"], path: listed, keep: den}}"]

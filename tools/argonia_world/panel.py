@@ -35,7 +35,7 @@ MPP = su.PROVINCE_SAMPLE_M
 SHORE_LO_M, SHORE_HI_M, SHORE_REACH = 0.3, 3.0, 4  # dry ground just above the water, within 4 samples (7 m) of it
 VIEW_NEAR_M, VIEW_FAR_M = 300.0, 1500.0
 EDGE_CELLS = 3                        # a vantage stays 3 cells inside the province edge (no apron seam in frame)
-EYE_M = 1.0                           # the player is dropped this far above the ground and falls to it
+EYE_M = 0.23                          # the player is put this far above the ground (tools/journeys SEAT_U)
 LAND_TOL_UNITS = 300                  # the teleport landed: the player within this of the vantage in x and y
 # A `cow` grid change crashed the culling job and a raw `teleport pos` across cells likewise (diag5-g17 §2,
 # tools/tests/test_world_sample.py): each vantage is a persistent XMarker (`build_ref` rows `ref.panel.<id>` in
@@ -198,7 +198,8 @@ def journey_text(vs: list[dict]) -> str:
             "# for), the HUD `hud: off`. Read by a `reader` with the 1.15 §0 checklist and feel question, docs/design/world/vibe-board.md the\n"
             "# vibe check (not the bar), and god rays and volumetric fog where the weather has them (dawn mist over\n"
             "# water; light shafts through canopy; owner, 2026-11-01); each step\n"
-            "# checks only that the teleport landed. Never move a vantage after the first run.\n")
+            "# checks only that the teleport landed. The vantages are re-derived from each build and pulled out of foliage\n"
+            "# (`python3 -m tools.journeys refresh`).\n")
     steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"hud": "off"}],
               "expect": []}]
     for v in vs:
@@ -209,7 +210,7 @@ def journey_text(vs: list[dict]) -> str:
                 {"read": ["player"], "path": "pos.y", "gt": y - LAND_TOL_UNITS},
                 {"read": ["player"], "path": "pos.y", "lt": y + LAND_TOL_UNITS}]
         for when, hour in (("noon", 12), ("dawn", 6.5)):
-            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}}, {"camera": "first"},
+            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
                   {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
             # `sw` (set, no transition) after the moveto's settle: the region's own list had replaced `fw`'s weather
@@ -223,7 +224,8 @@ def journey_text(vs: list[dict]) -> str:
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s
             do += [{"settle": {"cap": 14, "min": 3}}]
             steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": ex})
-    j = {"id": "world-panel", "runner": 1, "crash_risk": "medium", "scene": "world-panel", "steps": steps}
+    j = {"id": "world-panel", "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
+         "steps": steps}
     return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
 
 

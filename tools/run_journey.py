@@ -132,6 +132,8 @@ def load_journey(path: pathlib.Path) -> dict:
                 raise SystemExit(f"{path}: step {s['name']}: {e} has no comparison and keeps nothing")
             if "read" in e and not isinstance(e["read"], list):
                 raise SystemExit(f"{path}: step {s['name']}: read takes a list [<command>, args...]")
+    if "camera" in j and j["camera"] not in ("first", "third"):
+        raise SystemExit(f"{path}: `camera:` is `first` or `third`, said once at the top")
     names = [s["name"] for s in j["steps"]]
     if len(set(names)) != len(names):
         raise SystemExit(f"{path}: step names repeat: {sorted({n for n in names if names.count(n) > 1})}")
@@ -766,6 +768,8 @@ class Runner:
         try:
             rep["scene_output"] = self.apply_scene(scene, save, load=load)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
+            if j.get("camera"):  # the journey's camera mode, said once at the top, applied after the load (1.15-r4-journeys)
+                rep["camera"] = self._camera(j["camera"])
             for n, step in enumerate(j["steps"], 1):
                 if not first < n <= last:
                     continue

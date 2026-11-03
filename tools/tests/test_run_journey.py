@@ -603,6 +603,23 @@ def test_camera_bridge_command_is_tried_first_and_decides(tmp_path, monkeypatch)
     assert rep["passed"] and fake.lines.count("IsPC1stPerson") <= 1  # only the run-end read; no retry loop: the bridge answered
 
 
+def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    fake, asked = Fake(), []
+    real = fake.call
+
+    def cam(cmd, *a):
+        if cmd == "camera":
+            asked.append((a[0], len(fake.lines)))
+            return {"asked": a[0], "first_person": a[0] == "first"}
+        return real(cmd, *a)
+    fake.call = cam
+    rep = rj.Runner(fake, tmp_path / "d").run(journey(tmp_path, [{"name": "look"}], camera="first"), "base")
+    assert rep["passed"] and rep["camera"]["camera"] == "first" and [a for a, _ in asked] == ["first"]
+    with pytest.raises(SystemExit, match="said once at the top"):
+        journey(tmp_path, [{"name": "look"}], camera="sideways")
+
+
 class Settling:
     """A bridge whose player lands after `moves` reads and whose Loading Menu closes after `loading` event reads."""
     def __init__(self, moves=3, loading=2):

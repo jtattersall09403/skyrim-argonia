@@ -84,18 +84,19 @@ def journey(rocks: list[dict], src, weather: dict[tuple[int, int], str]) -> str:
              "# the ground 4 bound radii (300 units at least) downhill, eye 120 units up, aimed at the rock's middle, `camera: first`, noon in the region's",
              "# own clear weather (no fog over the base). Reader checklist per still: sunk (no open bottom), no gap",
              "# under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.",
-             "id: rock-booth", "runner: 1", "crash_risk: low", "scene: rock-booth", "steps:"]
+             "id: rock-booth", "runner: 1", "crash_risk: low", "scene: rock-booth", "camera: first", "steps:"]
     for n, d in enumerate(rocks, 1):
         x, y, z, h, pitch = vantage(d, src)
         cx, cy = d["cell"]
         lines += [f"- name: rock-{n}-{d['edid'].lower()}",
                   f"  # {d['form_key']} ref {d['fid']:06X} in cell ({cx},{cy}), tilt {math.degrees(d['tilt']):.1f} deg,"
                   f" scale {d['scale']:.2f}, bound radius {d['radius']:.0f} u, stand {k_of(d):.0f} u off",
+                  f"  # subject: {d['x']:.0f} {d['y']:.0f} {d['z'] + d['height'] / 2:.0f}",
                   "  do:", "  - console:", f"      line: cow {WORLD} {cx} {cy}", "      settle: 60", "  - wait: 8",
                   "  - console:", f"      line: fw {weather[d['cell']]}", "  - console:", "      line: set gamehour to 12",
                   "  - console:", f"      line: player.setpos x {x:.0f}", "  - console:",
                   f"      line: player.setpos y {y:.0f}", "  - console:", f"      line: player.setpos z {z:.0f}",
-                  "  - camera: first", "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
+                  "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
                   f"      line: player.setangle x {pitch:.0f}", "  - wait: 6",
                   "  - console: " + f"prid ArgoniaWorld.esm|0x{d['fid']:06X}",  # the rock ref selected: getpos reads it
                   "  expect:", "  - console: getpos x", "    keep: rock_x", "  - console: getpos y", "    keep: rock_y",

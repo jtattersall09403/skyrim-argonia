@@ -7,12 +7,14 @@ id: rock-booth
 runner: 1
 crash_risk: low
 scene: rock-booth
+camera: first
 steps:
-- name: rock-1-arg_rock_gl_rock03
-  # 0C0005:ArgoniaWorld.esm ref B3FA06 in cell (-27,21), tilt 49.1 deg, scale 0.70, bound radius 58 u, stand 300 u off
+- name: rock-1-arg_rock_gl_rock09
+  # 0C0008:ArgoniaWorld.esm ref DD1A00 in cell (-55,63), tilt 49.3 deg, scale 1.00, bound radius 76 u, stand 304 u off
+  # subject: -222823 258927 38246
   do:
   - console:
-      line: cow ARG_Province -27 21
+      line: cow ARG_Province -55 63
       settle: 60
   - wait: 8
   - console:
@@ -20,18 +22,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -109210
+      line: player.setpos x -222628
   - console:
-      line: player.setpos y 87948
+      line: player.setpos y 259161
   - console:
-      line: player.setpos z 3084
-  - camera: first
+      line: player.setpos z 38450
   - console:
-      line: player.setangle z 132
+      line: player.setangle z 220
   - console:
-      line: player.setangle x 48
+      line: player.setangle x 47
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xB3FA06
+  - console: prid ArgoniaWorld.esm|0xDD1A00
   expect:
   - console: getpos x
     keep: rock_x
@@ -40,7 +41,8 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-2-01coalroundrock
-  # 1DE977:Black Marsh.esm ref B0C43B in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
+  # 1DE977:Black Marsh.esm ref B0C420 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
+  # subject: -242757 75461 16940
   do:
   - console:
       line: cow ARG_Province -60 18
@@ -55,14 +57,13 @@ steps:
   - console:
       line: player.setpos y 75260
   - console:
-      line: player.setpos z 16793
-  - camera: first
+      line: player.setpos z 16689
   - console:
       line: player.setangle z 312
   - console:
-      line: player.setangle x -26
+      line: player.setangle x -23
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xB0C43B
+  - console: prid ArgoniaWorld.esm|0xB0C420
   expect:
   - console: getpos x
     keep: rock_x
@@ -70,11 +71,12 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-3-arg_rock_rock_33
-  # 0C0012:ArgoniaWorld.esm ref A11A00 in cell (-49,2), tilt 49.0 deg, scale 0.68, bound radius 74 u, stand 300 u off
+- name: rock-3-arg_rock_gl_rock04
+  # 0C0006:ArgoniaWorld.esm ref CB0401 in cell (24,44), tilt 48.7 deg, scale 0.89, bound radius 113 u, stand 453 u off
+  # subject: 101777 182165 13266
   do:
   - console:
-      line: cow ARG_Province -49 2
+      line: cow ARG_Province 24 44
       settle: 60
   - wait: 8
   - console:
@@ -82,18 +84,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -199405
+      line: player.setpos x 101746
   - console:
-      line: player.setpos y 8441
+      line: player.setpos y 181572
   - console:
-      line: player.setpos z 20209
-  - camera: first
+      line: player.setpos z 12734
   - console:
-      line: player.setangle z 311
+      line: player.setangle z 3
   - console:
-      line: player.setangle x -2
+      line: player.setangle x -35
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xA11A00
+  - console: prid ArgoniaWorld.esm|0xCB0401
   expect:
   - console: getpos x
     keep: rock_x
@@ -101,11 +102,12 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-4-arg_rock_al_rock12
-  # 0C000B:ArgoniaWorld.esm ref CFD607 in cell (11,49), tilt 49.0 deg, scale 0.80, bound radius 114 u, stand 457 u off
+- name: rock-4-arg_rock_gl_rock03
+  # 0C0005:ArgoniaWorld.esm ref D9AC04 in cell (10,59), tilt 47.9 deg, scale 1.16, bound radius 97 u, stand 387 u off
+  # subject: 43685 242082 7729
   do:
   - console:
-      line: cow ARG_Province 11 49
+      line: cow ARG_Province 10 59
       settle: 60
   - wait: 8
   - console:
@@ -113,18 +115,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 47771
+      line: player.setpos x 43932
   - console:
-      line: player.setpos y 201757
+      line: player.setpos y 242379
   - console:
-      line: player.setpos z 13673
-  - camera: first
+      line: player.setpos z 7984
   - console:
-      line: player.setangle z 45
+      line: player.setangle z 220
   - console:
-      line: player.setangle x -17
+      line: player.setangle x 44
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xCFD607
+  - console: prid ArgoniaWorld.esm|0xD9AC04
   expect:
   - console: getpos x
     keep: rock_x
@@ -132,11 +133,12 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-5-arg_rock_rock_32
-  # 0C0011:ArgoniaWorld.esm ref C32C08 in cell (28,36), tilt 48.4 deg, scale 1.18, bound radius 92 u, stand 368 u off
+- name: rock-5-arg_rock_gl_rock06
+  # 0C0007:ArgoniaWorld.esm ref C59607 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
+  # subject: -167419 162556 26959
   do:
   - console:
-      line: cow ARG_Province 28 36
+      line: cow ARG_Province -41 39
       settle: 60
   - wait: 8
   - console:
@@ -144,18 +146,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 117815
+      line: player.setpos x -167593
   - console:
-      line: player.setpos y 149512
+      line: player.setpos y 162357
   - console:
-      line: player.setpos z 152
-  - camera: first
+      line: player.setpos z 26888
   - console:
-      line: player.setangle z 148
+      line: player.setangle z 41
   - console:
-      line: player.setangle x -3
+      line: player.setangle x 11
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xC32C08
+  - console: prid ArgoniaWorld.esm|0xC59607
   expect:
   - console: getpos x
     keep: rock_x
@@ -163,11 +164,12 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-6-arg_rock_al_rock14
-  # 0C000D:ArgoniaWorld.esm ref C18E09 in cell (-53,35), tilt 47.7 deg, scale 0.95, bound radius 60 u, stand 300 u off
+- name: rock-6-01mudrockstack
+  # 1DE971:Black Marsh.esm ref C89634 in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
+  # subject: -140385 172969 24665
   do:
   - console:
-      line: cow ARG_Province -53 35
+      line: cow ARG_Province -35 42
       settle: 60
   - wait: 8
   - console:
@@ -175,18 +177,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -214424
+      line: player.setpos x -140235
   - console:
-      line: player.setpos y 146796
+      line: player.setpos y 173196
   - console:
-      line: player.setpos z 35949
-  - camera: first
+      line: player.setpos z 24695
   - console:
-      line: player.setangle z 30
+      line: player.setangle z 213
   - console:
-      line: player.setangle x 35
+      line: player.setangle x 29
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xC18E09
+  - console: prid ArgoniaWorld.esm|0xC89634
   expect:
   - console: getpos x
     keep: rock_x

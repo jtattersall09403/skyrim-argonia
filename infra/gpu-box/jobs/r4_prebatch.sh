@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Round 4 of 1.15, before the machine: the one full gate, the province build (the lock is taken in-process), the
 # vegetation and water checks on the whole province, the chart renders from the new ground and water, the
-# world-sample pins rewritten for the new ground, the tree-seat journey made from the placement, all committed by
+# world-sample pins rewritten for the new ground, every data-driven journey re-derived (tools/journeys), all committed by
 # path. Idempotent: every step is a rerun-safe command. Run under tooling/job_guard.sh run r4-prebatch -- ...
 set -u
 cd /home/ubuntu/skyrim-argonia
@@ -15,10 +15,15 @@ step roads $PY -m tools.argonia_world.routes.shape check || echo "(road check re
 step chart $PY -m tools.chart render --if-stale || exit 3
 step chart4k $PY -m tools.chart render --if-stale --level --size 4096 --out out/chart4k || echo "(4k chart render failed: the 1x chart stands)"
 step sample $PY tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
-step plugin-ids make plugin-ids || exit 3
-step tree-booth $PY -m tools.argonia_world.vegetation tree-booth --out out/terrain/vegetation || echo "(no tree-seat journey this run)"
-git add tests/journeys/world-sample.yaml tests/journeys/tree-seat.yaml tools/chart/*.json 2>/dev/null
-git diff --cached --quiet || git commit -q -m "round 4 pre-batch: the world-sample pins and the tree-seat journey from the new ground and placement
+# every data-driven journey re-derived from this build (positions, heights, ids; vantages out of water and foliage),
+# then checked at L1: a stale stand stops the round here, before any machine time (1.15-r4-journeys)
+step journeys $PY -m tools.journeys refresh || exit 3
+step plugin-ids make plugin-ids || exit 3  # the panel's moved vantage markers are DB rows: emitted here
+J=tests/journeys; S=tests/scenes
+git add $J/world-sample.yaml $J/world-panel.yaml $J/river-steps.yaml $J/road-look.yaml $J/claywater-walk.yaml \
+  $J/claywater-look.yaml $J/creature-spots.yaml $J/tree-seat.yaml $J/rock-booth.yaml $S/world-panel.txt \
+  $S/creature-spots.txt $S/rock-booth.txt world/db/build_ref.jsonl tools/chart/*.json 2>/dev/null
+git diff --cached --quiet || git commit -q -m "round 4 pre-batch: the journeys re-derived from the new ground, water and placement
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 step gate make check || { echo "PREBATCH gate RED: the planner reads out/check"; }

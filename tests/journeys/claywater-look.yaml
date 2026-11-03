@@ -11,7 +11,7 @@ steps:
   - name: road-in
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: well-junction
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationQuestBoard"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationQuestBoard 0 -560 47"}, {console: "player.setangle z 0"}, {wait: 3}]
   - name: station-house-front
     do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door"}, {wait: 3}]
   - name: huts-row
@@ -19,15 +19,15 @@ steps:
   - name: family-hut
     do: [{console: "player.moveto ARG_Ref_ClaywaterStationB5Door"}, {wait: 3}]
   - name: landing-and-raft
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationRaft"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationRaft -1188 -1188 32"}, {console: "player.setangle z 45"}, {wait: 3}]
   - name: clay-cut-and-pool
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationClayBend"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationClayBend 0 -560 45"}, {console: "player.setangle z 0"}, {wait: 3}]
   - name: ford-ambush-road
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -560 47"}, {console: "player.setangle z 0"}, {wait: 3}]
   - name: livia-full-body
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -245 18"}, {console: "player.setangle z 0"}, {wait: 3}]
   - name: signs-full-body
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationSigns"}, {wait: 3}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationSigns -1646 0 37"}, {console: "player.setangle z 90"}, {wait: 3}]
   - name: station-house-inside
     # claywater-walk's stand-off: 70 units out on the porch against the door's heading, facing it (moveto onto the door
     # left the player outside with the prompt shown; diag2-crash-misc)

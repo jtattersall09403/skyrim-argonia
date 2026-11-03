@@ -47,17 +47,18 @@ def pick(out: Path, w) -> tuple[list[dict], list[dict]]:
 
 def _steps(name: str, note: str, d: dict, x: float, y: float, z: float, h: float, pitch: float, wx: str) -> list[str]:
     cx, cy = d["cell"]
-    return [f"- name: {name}", f"  # {note}", "  do:", "  - console:", f"      line: cow {booth.WORLD} {cx} {cy}",
+    subj = [f"  # subject: {d['x']:.0f} {d['y']:.0f} {d['z'] + d['seat'] * d['scale']:.0f}"] if pitch else []
+    return [f"- name: {name}", f"  # {note}", *subj, "  do:", "  - console:", f"      line: cow {booth.WORLD} {cx} {cy}",
             "      settle: 60", "  - wait: 8", "  - console:", f"      line: fw {wx}", "  - console:",
             "      line: set gamehour to 12", "  - console:", f"      line: player.setpos x {x:.0f}", "  - console:",
             f"      line: player.setpos y {y:.0f}", "  - console:", f"      line: player.setpos z {z:.0f}",
-            "  - camera: first", "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
+            "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
             f"      line: player.setangle x {pitch:.0f}", "  - wait: 6"]
 
 
 def journey(six: list[dict], classes: list[dict], src, weather: dict) -> str:
     lines = [ln if ln else "#" for ln in ("# " + __doc__.replace("\n", "\n# ")).splitlines()]
-    lines += ["id: tree-seat", "runner: 1", "crash_risk: low", "scene: rock-booth", "steps:"]
+    lines += ["id: tree-seat", "runner: 1", "crash_risk: low", "scene: rock-booth", "camera: first", "steps:"]
     for n, d in enumerate(six, 1):
         x, y = d["x"], d["y"] - STAND_U  # stand south of the trunk, looking north at its base
         z = booth._ground_units(src, x, y) + EYE_U

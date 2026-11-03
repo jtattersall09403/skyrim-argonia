@@ -13,9 +13,11 @@ id: tree-seat
 runner: 1
 crash_risk: low
 scene: rock-booth
+camera: first
 steps:
 - name: tree-1-argoniatreepalmoke04
   # 155FF4:King of the Murkmire.esp ref CE8822, seat 968 u x scale 1.20; aim at the trunk base
+  # subject: -120378 200475 24283
   do:
   - console:
       line: cow ARG_Province -30 48
@@ -26,19 +28,19 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -120378
+      line: player.setpos x -120597
   - console:
-      line: player.setpos y 200025
+      line: player.setpos y 200694
   - console:
-      line: player.setpos z 24547
-  - camera: first
+      line: player.setpos z 24404
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 135
   - console:
-      line: player.setangle x 30
+      line: player.setangle x 38
   - wait: 6
 - name: tree-2-argoniatreepalmoke02
   # 155FF2:King of the Murkmire.esp ref 925412, seat 780 u x scale 1.20; aim at the trunk base
+  # subject: -202625 -52672 6488
   do:
   - console:
       line: cow ARG_Province -50 -13
@@ -53,15 +55,15 @@ steps:
   - console:
       line: player.setpos y -53122
   - console:
-      line: player.setpos z 6699
-  - camera: first
+      line: player.setpos z 6592
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 25
+      line: player.setangle x 27
   - wait: 6
 - name: tree-3-argoniatreepalmoke03
   # 155FF3:King of the Murkmire.esp ref CC5014, seat 748 u x scale 1.20; aim at the trunk base
+  # subject: -251191 192066 18195
   do:
   - console:
       line: cow ARG_Province -62 46
@@ -74,17 +76,17 @@ steps:
   - console:
       line: player.setpos x -251191
   - console:
-      line: player.setpos y 191616
+      line: player.setpos y 191896
   - console:
-      line: player.setpos z 18387
-  - camera: first
+      line: player.setpos z 18262
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 23
+      line: player.setangle x 48
   - wait: 6
 - name: tree-4-argoniatreeerut05
   # 155FEA:King of the Murkmire.esp ref CC161C, seat 723 u x scale 1.20; aim at the trunk base
+  # subject: 146717 184436 8961
   do:
   - console:
       line: cow ARG_Province 35 45
@@ -97,17 +99,17 @@ steps:
   - console:
       line: player.setpos x 146717
   - console:
-      line: player.setpos y 183986
+      line: player.setpos y 184266
   - console:
-      line: player.setpos z 8881
-  - camera: first
+      line: player.setpos z 8925
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x -10
+      line: player.setangle x 27
   - wait: 6
 - name: tree-5-histtrunk01
   # 035B36:King of the Murkmire.esp ref 8FA600, seat 651 u x scale 1.30; aim at the trunk base
+  # subject: -60404 -62505 136
   do:
   - console:
       line: cow ARG_Province -15 -16
@@ -120,17 +122,17 @@ steps:
   - console:
       line: player.setpos x -60404
   - console:
-      line: player.setpos y -62955
+      line: player.setpos y -62815
   - console:
-      line: player.setpos z 281
-  - camera: first
+      line: player.setpos z 179
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 18
+      line: player.setangle x 28
   - wait: 6
 - name: tree-6-histtrunk01moss
   # 6EDDDD:King of the Murkmire.esp ref D0B837, seat 651 u x scale 1.29; aim at the trunk base
+  # subject: -4657 204825 -46
   do:
   - console:
       line: cow ARG_Province -2 50
@@ -145,12 +147,11 @@ steps:
   - console:
       line: player.setpos y 204375
   - console:
-      line: player.setpos z 180
-  - camera: first
+      line: player.setpos z 73
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 27
+      line: player.setangle x 28
   - wait: 6
 - name: class-coastal-lagoon
   # the class's fullest cell (45 refs), level view north
@@ -166,10 +167,9 @@ steps:
   - console:
       line: player.setpos x -251254
   - console:
-      line: player.setpos y -55329
+      line: player.setpos y -55049
   - console:
-      line: player.setpos z 145
-  - camera: first
+      line: player.setpos z 70
   - console:
       line: player.setangle z 0
   - console:
@@ -189,10 +189,9 @@ steps:
   - console:
       line: player.setpos x -25299
   - console:
-      line: player.setpos y -224396
+      line: player.setpos y -223836
   - console:
-      line: player.setpos z 77
-  - camera: first
+      line: player.setpos z 23
   - console:
       line: player.setangle z 0
   - console:
@@ -212,10 +211,9 @@ steps:
   - console:
       line: player.setpos x 26930
   - console:
-      line: player.setpos y 172810
+      line: player.setpos y 173370
   - console:
-      line: player.setpos z 149
-  - camera: first
+      line: player.setpos z 40
   - console:
       line: player.setangle z 0
   - console:
@@ -235,10 +233,9 @@ steps:
   - console:
       line: player.setpos x -147741
   - console:
-      line: player.setpos y -109250
+      line: player.setpos y -108690
   - console:
-      line: player.setpos z 189
-  - camera: first
+      line: player.setpos z 88
   - console:
       line: player.setangle z 0
   - console:
@@ -256,14 +253,13 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -87897
+      line: player.setpos x -87550
   - console:
-      line: player.setpos y -121193
+      line: player.setpos y -119796
   - console:
-      line: player.setpos z 93
-  - camera: first
+      line: player.setpos z 113
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 225
   - console:
       line: player.setangle x 0
   - wait: 6
@@ -281,10 +277,9 @@ steps:
   - console:
       line: player.setpos x -197075
   - console:
-      line: player.setpos y 210611
+      line: player.setpos y 211031
   - console:
-      line: player.setpos z 30680
-  - camera: first
+      line: player.setpos z 30569
   - console:
       line: player.setangle z 0
   - console:
