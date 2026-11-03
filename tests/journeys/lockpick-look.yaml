@@ -1,0 +1,21 @@
+# The lockpicking screen alone (moved out of menus-look, 2026-11-03: its direct opener needs a bridge command that
+# shows the Lockpicking Menu on a ref; a console activate skips the lock (151959) and the aimed E is the game
+# control the owner ruled out for a screen under check). Owed until that command exists; runs from the props scene.
+id: lockpick-look
+runner: 1
+crash_risk: low
+scene: ui-props
+camera: first
+steps:
+  - name: lockpicking
+    # a screen under check, opened directly (owner 2026-11-03): `lockpick` tries the console's activate, which skips
+    # the lock (151959), and only then falls back to the engine's own pick; it fails unless the Lockpicking Menu opens
+    do:
+      - {console: '"{lockbox}".lock 25'}
+      - {lockpick: "{lockbox}"}
+      - {wait: 3}
+    expect:
+      - {event: {kind: menu, match: Lockpicking Menu}}
+    reader: [the lock in close-up with its words (lock level, lockpicks) in warm light text on dark (the frame style), nothing of parchment]
+  - name: lockpicking-closed
+    do: [{key: "ESC 120 engine"}, {wait: 2}]

@@ -105,18 +105,6 @@ steps:
     reader: [the ledger's pages on paper (parchment by ruling), every word in Pelagiad, no Nordic ornament]
   - name: book-closed
     do: [{close_menu: Book Menu}, {wait: 2}]
-  - name: lockpicking
-    # a screen under check, opened directly (owner 2026-11-03): `lockpick` tries the console's activate, which skips
-    # the lock (151959), and only then falls back to the engine's own pick; it fails unless the Lockpicking Menu opens
-    do:
-      - {console: '"{lockbox}".lock 25'}
-      - {lockpick: "{lockbox}"}
-      - {wait: 3}
-    expect:
-      - {event: {kind: menu, match: Lockpicking Menu}}
-    reader: [the lock in close-up with its words (lock level, lockpicks) in warm light text on dark (the frame style), nothing of parchment]
-  - name: lockpicking-closed
-    do: [{key: "ESC 120 engine"}, {wait: 2}]
   - name: message-box        # an engine message box (Debug.MessageBox, the scripts' own route): the frame style
     do: [{call: [core, MessageBox, "The tide is out."]}, {wait: 3}]
     expect:
