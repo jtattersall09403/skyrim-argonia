@@ -20,4 +20,7 @@ for d in "$main"/out/*/; do
   case "$n" in batch|runs|check|resume|build|ui|ui_theme) continue ;; esac  # per-run outputs and the UI deploy builds stay the worktree's own
   [ -e "$wt/out/$n" ] || ln -s "$d" "$wt/out/$n"
 done
+# the top-level build outputs too (out/pieces-index.json and the sample inputs): three lanes on 2026-11-03 saw
+# test_world_sample and test_ref_heights red in their worktrees for want of them
+for f in "$main"/out/*; do [ -f "$f" ] || continue; n=$(basename "$f"); [ -e "$wt/out/$n" ] || ln -s "$f" "$wt/out/$n"; done
 echo "worktree $wt at $(git -C "$wt" rev-parse --short HEAD), $(find "$wt/out" -maxdepth 1 -type l | wc -l) build inputs linked"
