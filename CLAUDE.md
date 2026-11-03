@@ -63,13 +63,13 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 ## Testing and the gate
 
 - Fast focused loops: each block at the cheapest proving level ([loops](docs/loops.md), [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)): L1 data, L2 logic, L3 off-game stills, L4 in game from a scene, L5 a clip with a reason, L6 owner.
-- In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch replaces a game action ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)).
+- In-game checks start from a scene on the base save; the bridge and console are the hands; no mode or switch replaces a game action that is itself the thing checked ([0022](docs/decisions/0022-the-studio-boots-into-any-place.md)); a screen that is the thing checked is opened directly (console, bridge, dev command), never by lining up the game controls (owner, 2026-11-03).
 - Check from state and stills (teleport, still, state read), a `driver` agent judging each capture ([0036](docs/decisions/0036-journeys-are-driven-by-an-agent-simple-and-smart.md)); no complicated journeys.
 - Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0, never what they test; measure all, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change reaches; a red is re-proved by its one test.
 - Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
-- Each round the planner runs every lane's in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own.
+- Each round the planner runs the lanes' in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own; a check that passed on the current build is never run again: the batch shrinks as items pass, a rerun carries only what failed or is new (owner, 2026-11-03).
 - Each in-game check a brief owes is a `checks.md` row, closed only by the run or still that proved it.
 
 ## The owner
