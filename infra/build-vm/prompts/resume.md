@@ -13,3 +13,5 @@ OOM kill; no clean-stop marker was written). Resume, following CLAUDE.md:
 3. Close any owner issue whose answer is already recorded (`owner_inbox.py --close N --commit SHA`).
 4. Continue the work. Stop only when it is complete, when a critical blocker needs the owner, or at a handover the
    owner asked for; then post the owner issue and run `tooling/agent_stop.sh "<why>"`.
+
+First of all: `cat ~/.argonia/state/agent-wake-pending` (a background chain that ended while no session was alive leaves its line there); act on it, then delete the file.

@@ -5,3 +5,5 @@ The owner replied on an owner issue, which woke the build VM. Following CLAUDE.m
 3. Record any ruling (decision record and owner brief), close every answered issue at once with `owner_inbox.py --close N --commit SHA`, and continue
    the work the reply unblocks. Stop only when it is complete, when a critical blocker needs the owner, or at a
    handover the owner asked for; then post the owner issue and run `tooling/agent_stop.sh "<why>"`.
+
+First of all: `cat ~/.argonia/state/agent-wake-pending` (a background chain that ended while no session was alive leaves its line there); act on it, then delete the file.
