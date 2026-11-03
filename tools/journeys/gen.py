@@ -421,5 +421,5 @@ def creatures_kinds(b: Build, w, log: list) -> str:
         "  expect:", "  - {read: [player], path: pos, keep: guar_stand}",
         *[f"  - {{read: [actors, \"1500\", {e}], path: refs.0.{k}, {op}}}" for e in GUAR_EDIDS
           for k, op in (("dead", "eq: false"), ("disabled", "eq: false"), ("dist", "lt: 1500"))],
-        f"  - {{read: [actors, \"1500\"], path: listed, keep: guar_pen}}"]) + "\n"
+        "  - {read: [actors, \"1500\"], path: listed, keep: guar_pen}"]) + "\n"
     return text
