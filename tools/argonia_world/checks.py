@@ -278,15 +278,13 @@ def sky_blocked(cls: str, sky: dict, upper: dict) -> list[str]:
 
 MIST_HUE = (120, 230)  # a mist weather's fog: cool grey-green to grey-blue hue (degrees) ...
 MIST_GREY_SAT = 0.04  # ... unless near-neutral grey (HSV saturation at most this); olive and yellow fall outside both
-HORIZON_FOG_GAP = 0.10  # noon horizon luma at least this fraction above or below fog far: no hard white line
+HORIZON_FOG_GAP = 0.10  # horizon luma (sunrise, noon, sunset) at least this fraction above or below fog far: no hard white line
 
 
 def mist_fog_cast(cols: dict) -> list[str]:
     """For a mist-bearing weather's {(slot, tod): rgb} (owner play test 3 finding 18, batch two's olive mist): every
-    fogNear and fogFar cool grey-green or grey-blue, and at noon the horizon's luma not within HORIZON_FOG_GAP of fog
-    far's (a fog far as bright as the horizon reads as a hard white line where the sky should be)."""
+    fogNear and fogFar cool grey-green or grey-blue."""
     import colorsys
-    from tools.argonia_world import skyrim_units as su
     out = []
     for (s, t), c in sorted(cols.items()):
         if s not in ("fogNear", "fogFar"):
@@ -294,10 +292,20 @@ def mist_fog_cast(cols: dict) -> list[str]:
         h, sat, _ = colorsys.rgb_to_hsv(*(x / 255 for x in c))
         if sat > MIST_GREY_SAT and not MIST_HUE[0] <= h * 360 <= MIST_HUE[1]:
             out.append(f"{s}@{t} hue {h * 360:.0f} saturation {sat:.2f}: olive or yellow, not grey-green or grey-blue")
-    if ("horizon", "day") in cols and ("fogFar", "day") in cols:
-        hz, ff = su.luma(cols["horizon", "day"]), su.luma(cols["fogFar", "day"])
-        if abs(hz - ff) < HORIZON_FOG_GAP * hz:
-            out.append(f"horizon@day luma {hz:.0f} within {HORIZON_FOG_GAP:.0%} of fogFar@day {ff:.0f} (white horizon line)")
+    return out
+
+
+def horizon_line(cols: dict) -> list[str]:
+    """For any weather's {(slot, tod): rgb}: at sunrise, noon and sunset the horizon's luma not within HORIZON_FOG_GAP
+    of fog far's (a fog far as bright as the horizon reads as a hard white line where the sky should be, under any
+    sky; planner, round 4). Night is exempt: at luma 20-50 a 10 % step is a few levels and no line can read white."""
+    from tools.argonia_world import skyrim_units as su
+    out = []
+    for t in ("sunrise", "day", "sunset"):
+        if ("horizon", t) in cols and ("fogFar", t) in cols:
+            hz, ff = su.luma(cols["horizon", t]), su.luma(cols["fogFar", t])
+            if abs(hz - ff) < HORIZON_FOG_GAP * hz:
+                out.append(f"horizon@{t} luma {hz:.0f} within {HORIZON_FOG_GAP:.0%} of fogFar@{t} {ff:.0f} (white horizon line)")
     return out
 
 
@@ -326,6 +334,7 @@ def weather_slots(w) -> list[str]:
             out += [f"weather {wid}: {e}" for e in sky_blocked(sky[0]["classification"], sky[0],
                                                               {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
+        out += [f"weather {wid}: {e}" for e in horizon_line(cols)]
         if wid in fogs:
             out += [f"weather {wid}: {e}" for e in mist_fog_cast(cols)]
         from tools.argonia_world import skyrim_units as su

@@ -334,6 +334,8 @@ def test_mist_fog_cast_flags_the_olive_mist_and_white_horizon():
     from tools.argonia_world import db
     old = {("fogNear", "day"): bytes.fromhex("92968F"), ("fogFar", "sunset"): bytes.fromhex("958976"),
            ("horizon", "day"): bytes.fromhex("BDC4BE"), ("fogFar", "day"): bytes.fromhex("B3BDB7")}
-    errs = C.mist_fog_cast(old)
+    errs = C.mist_fog_cast(old) + C.horizon_line(old)
     assert len(errs) == 3 and "white horizon" in errs[-1], errs
+    # every weather, not only the mist ones: the batch-two wet-rain noon (horizon 8A8F80, fog far 7C847C, 8 % apart)
+    assert C.horizon_line({("horizon", "day"): bytes.fromhex("8A8F80"), ("fogFar", "day"): bytes.fromhex("7C847C")})
     assert not C.weather_slots(db.open())

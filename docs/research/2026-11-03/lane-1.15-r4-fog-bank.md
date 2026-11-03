@@ -21,8 +21,8 @@ Defaults: fogDensity 0.005, fogHeightFalloff 0.2, startDistance 0, fogHeight 0. 
 - checks.py `mist_fog_cast` in weather-slots, for every mist-bearing weather: fogNear/fogFar hue 120-230 or saturation <= 0.04, every hour; noon horizon luma not within 10 % of fog far.
 - test_regions.py: test_height_fog_laid_values_are_low_drifts_not_a_slab, test_mist_fog_cast_flags_the_olive_mist_and_white_horizon. make check-reach: 228 passed, 6 skipped.
 
-## Not covered
-The noon horizon gap also fails outside the mist weathers (clear-dry 8.6 %, monsoon-overcast 5.1 %, storm 8.2 %, tannin-haze 9.1 %, wet-rain 7.9 %); left to the planner (no mist bank there; other lanes own those weathers).
+## Every weather's horizon line (planner's follow-up)
+`horizon_line` (checks.py, in weather-slots) holds for every weather at sunrise, noon and sunset (night exempt: at luma 20-50 a 10 % step cannot read white). Eleven fog far colours darkened to clear it (gap after): clear-dry day B0C4C6->A7BABB (13.3 %); monsoon-overcast day ABB4A2->9FA795 (11.9 %), sunset 99876F->8E7D66 (11.6 %); squall sunrise 5C6364->4C5251 (23.5 %), sunset 5D5A58->575452 (11.6 %); storm sunrise 56544A->515045 (11.7 %), day 62685A->5D6355 (12.7 %); tannin-haze day B8A88B->AFA083 (13.5 %); wet-rain sunrise 696C60->636659 (12.3 %), day 7C847C->727A71 (15.1 %), sunset 6E6357->665B4F (12.1 %). Horizons untouched; every new colour within vanilla's fog far luma band and derived from no other.
 
 ## Owed in game
 checks.md row (1-core-loop, sky visible / soft low mist): the world panel's dawn and noon stills (tests/journeys/world-panel.yaml), reader: sky visible, soft low mist, no white horizon line, no yellow cast.
