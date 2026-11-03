@@ -33,3 +33,13 @@ Also in the batch: `tree-teal` (one KotM bald cypress under our weather and unde
 One deploy of main on Paris when the lanes have landed; the journeys the lanes owe (river-steps, tree-seat,
 road-look, chart-zoom, claywater-walk, claywater-look, the panel's dawn stills, the save load) in one batch,
 crash-prone last; stills to a reader; then the LOD; then the saves remade and the owner told on #37.
+
+## Batch one on Paris (03 Nov 01:20–01:56, 36 min of machine time: up 8, deploy 5.7, batch 22.5; 7 of 11 journeys green, 81 stills)
+
+Readers' verdicts (four readers, one per group):
+
+- **Proven:** the station house exists with a door and an interior; no lilac or purple surface anywhere; no stray boardwalk or stair tower on land; Livia offers Barter plus at least eight topics, Takes and Signs nine or more, Gaius five; the map pane stays off the dialogue window; markers and names keep their size under zoom; the sketch layer (coast, roads, named city dots) shows under the fog; still water reads as still (one clear lake still); the creature reports list frogs, snails, moon-adders, kotu gava, a mudrunner and a giant snake instead of only hackwings and centipedes (few visible in the stills).
+- **Not proven, the harness's fault:** 14 stills framed inside foliage and two road vantages in lakes, three Claywater vantages with the player swimming: the camera never left third person (`cgf` unknown to this runtime's console, the F key ignored) and the journeys' positions predate the re-traced roads and the moved Claywater ground; the panel stopped at its tenth still, tree-seat at its class views; menu-sweep's pad presses did nothing on the Wind UI panes; the corpse-search step lost the body from the crosshair.
+- **Red in game:** water surfaces marbled and blocky white-and-dark at distance (nine stills; new since the WATR split); fog still hides the sky, no low mist bank in any still, a yellow-olive cast; the map pane over the barter window; crimson, pink and cyan foliage persists; docks and landings at or under the water line in two stills; the stables unseen, hut doors unseen.
+
+Wave 3 (02:10): 1.15-r4-camera (a bridge camera command over the engine's API), 1.15-r4-journeys (every journey derived from the build it runs on, stale ones red at L1, pulled-back vantages), 1.15-r4-water-look (the WATR records diffed against vanilla), 1.12-r4-chart-barter, 1.15-r4-light-verify (stale weather ids, fog files laid, the yellow slot). The second pass (camera soft) and the saves job run on Paris meanwhile.
