@@ -31,6 +31,7 @@ SCENES = ROOT / "tests" / "scenes"
 TOL_M = 0.5            # the brief's: a stand within 0.5 m of the ground
 SEAT_U = 16.0          # the feet put this far over the ground (0.23 m): inside TOL_M, the engine settles him
 CLEAR_M = 2.0          # no foliage within 2 m of the eye line (horizontally)
+RAY_NEAR_M, RAY_GROUND_M = 2.0, 0.3   # the eye ray meets nothing within 2 m; the ground within 0.3 m of the ray is a hit
 OVER_M = 0.5           # and the line passes a plant's top (or under a crown) by at least this
 STEP_M, BACK_M, NEAR_M = 2.0, 30.0, 2.0   # the approach-line search: 2 m steps, up to 30 m back, never nearer than 2 m
 SUBJECT_M = 15.0       # a level view's subject distance
@@ -197,6 +198,54 @@ class Build:
         return out
 
 
+def _eye_hits(b: Build, eye: tuple, subj: tuple) -> list[str]:
+    """What the eye ray meets within RAY_NEAR_M of the eye: the ground rising to it, or a plant's trunk or leaves (3-D
+    distance from the ray's near stretch, the eye's own point included: a stand inside a trunk)."""
+    u = su.UNITS_PER_METRE
+    ex, ey, ez = eye
+    dx, dy, dz = subj[0] - ex, subj[1] - ey, subj[2] - ez
+    L = math.sqrt(dx * dx + dy * dy + dz * dz) or 1.0
+    ux, uy, uz = dx / L, dy / L, dz / L
+    why = []
+    for k in range(0, int(RAY_NEAR_M * 2) + 1):
+        t = min(k * 0.5 * u, L)
+        if b.ground_u(ex + ux * t, ey + uy * t) + RAY_GROUND_M * u >= ez + uz * t:
+            why.append(f"ground at {k * 0.5:.1f} m")
+            break
+    reach = RAY_NEAR_M * u
+    for fx, fy, fz, fr, fh, bushy in b.foliage_near(ex, ey, reach + 2 * u):
+        parts = [(fr, fz, fz + fh)] if bushy else [(min(fr, TRUNK_U), fz, fz + CROWN_FROM * fh), (fr, fz + CROWN_FROM * fh, fz + fh)]
+        for r, lo, hi in parts:
+            for k in range(0, int(RAY_NEAR_M * 2) + 1):
+                t = min(k * 0.5 * u, L)
+                px, py, pz = ex + ux * t, ey + uy * t, ez + uz * t
+                if math.hypot(px - fx, py - fy) < r and lo <= pz <= hi:
+                    why.append(f"plant at {k * 0.5:.1f} m")
+                    break
+            else:
+                continue
+            break
+        if len(why) > 1:
+            break
+    return why
+
+
+def ground_slope_deg(b: Build, x: float, y: float) -> float:
+    """The ground's steepest slope at a point, degrees, over a LAND quad either side (VERTEX_SPACING_UNITS)."""
+    h = su.VERTEX_SPACING_UNITS
+    gx = (b.ground_u(x + h, y) - b.ground_u(x - h, y)) / (2 * h)
+    gy = (b.ground_u(x, y + h) - b.ground_u(x, y - h)) / (2 * h)
+    return math.degrees(math.atan(math.hypot(gx, gy)))
+
+
+def stand_bad(b: Build, x: float, y: float, subj: tuple) -> list[str]:
+    """Why a stand fails: the eye ray meets geometry within RAY_NEAR_M, or the ground is too steep to stand on."""
+    why = _eye_hits(b, eye_of(b, x, y), subj)
+    if (s := ground_slope_deg(b, x, y)) > su.STAND_SLOPE_MAX_DEG:
+        why.append(f"slope {s:.0f} deg")
+    return why
+
+
 def eye_of(b: Build, x: float, y: float) -> tuple[float, float, float]:
     return x, y, b.ground_u(x, y) + SEAT_U + su.EYE_HEIGHT_UNITS
 
@@ -221,6 +270,27 @@ def aim(eye: tuple, subj: tuple) -> tuple[float, float]:
     return h, max(-60.0, min(60.0, p))
 
 
+def stand_near(b: Build, x: float, y: float, heading: float, reach_m: float = 16.0, water: bool = False) -> dict | None:
+    """The nearest stand to (x, y), on a 2 m grid out to reach_m, that is dry, stands on ground the player can stand on and
+    whose level eye ray along `heading` (degrees) meets nothing within RAY_NEAR_M and no plant on the line; None if none."""
+    u = su.UNITS_PER_METRE
+    a = math.radians(heading)
+    d = SUBJECT_M * u
+    n = int(reach_m / 2)
+    cands = sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)), key=lambda c: c[0] ** 2 + c[1] ** 2)
+    for i, j in cands:
+        if math.hypot(i, j) * 2 > reach_m:
+            break
+        px, py = x + i * 2 * u, y + j * 2 * u
+        if not water and b.wet(px, py):
+            continue
+        ex, ey, ez = eye_of(b, px, py)
+        subj = (ex + math.sin(a) * d, ey + math.cos(a) * d, ez)
+        if not stand_bad(b, px, py, subj) and not b.blockers((ex, ey, ez), subj):
+            return {"x": px, "y": py, "moved_m": round(math.hypot(i, j) * 2, 1)}
+    return None
+
+
 def frame(b: Build, x: float, y: float, subj: tuple, water: bool = False, band: tuple | None = None) -> dict:
     """The stand on the approach line (subject -> stand) nearest the given one, dry (unless `water`) and with a clear
     eye line: first the given distance, then back STEP_M at a time up to BACK_M, then nearer down to NEAR_M. With
@@ -237,7 +307,7 @@ def frame(b: Build, x: float, y: float, subj: tuple, water: bool = False, band: 
     for d in ds:
         px, py = sx + ux * d, sy + uy * d
         dry = water or not b.wet(px, py)
-        n = len(b.blockers(eye_of(b, px, py), subj))
+        n = len(b.blockers(eye_of(b, px, py), subj)) + len(stand_bad(b, px, py, subj))
         if first is None:
             first = {"wet": not dry, "blockers": n}
         if dry and n == 0:

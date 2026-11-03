@@ -363,28 +363,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -126892
+     "gt": -127872
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -126292
+     "lt": -127272
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -145196
+     "gt": -144916
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144596
+     "lt": -144316
     },
     {
      "read": [
@@ -437,28 +437,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -126892
+     "gt": -127872
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -126292
+     "lt": -127272
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -145196
+     "gt": -144916
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144596
+     "lt": -144316
     },
     {
      "read": [
@@ -955,28 +955,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -7173
+     "gt": -6548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -6573
+     "lt": -5948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 24973
+     "gt": 24672
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 25573
+     "lt": 25272
     },
     {
      "read": [
@@ -1029,28 +1029,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -7173
+     "gt": -6548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -6573
+     "lt": -5948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 24973
+     "gt": 24672
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 25573
+     "lt": 25272
     },
     {
      "read": [
@@ -1265,14 +1265,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -127276
+     "gt": -127136
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126676
+     "lt": -126536
     },
     {
      "read": [
@@ -1339,14 +1339,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -127276
+     "gt": -127136
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126676
+     "lt": -126536
     },
     {
      "read": [
@@ -1709,14 +1709,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": 245588
+     "gt": 245728
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 246188
+     "lt": 246328
     },
     {
      "read": [
@@ -1783,14 +1783,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": 245588
+     "gt": 245728
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 246188
+     "lt": 246328
     },
     {
      "read": [
@@ -2287,28 +2287,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106896
+     "gt": 106196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107496
+     "lt": 106796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -58028
+     "gt": -57748
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -57428
+     "lt": -57148
     },
     {
      "read": [
@@ -2361,28 +2361,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106896
+     "gt": 106196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107496
+     "lt": 106796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -58028
+     "gt": -57748
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -57428
+     "lt": -57148
     },
     {
      "read": [
@@ -2435,14 +2435,14 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156076
+     "gt": -155796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155476
+     "lt": -155196
     },
     {
      "read": [
@@ -2509,14 +2509,14 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156076
+     "gt": -155796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155476
+     "lt": -155196
     },
     {
      "read": [

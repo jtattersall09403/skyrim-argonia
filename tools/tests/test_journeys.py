@@ -109,3 +109,16 @@ def test_the_derived_journeys_stand_on_the_current_build():
         pytest.skip("no build in out/ (terrain and water): the pre-batch job runs this after the build")
     bad = {n: e for n, e in J.check(J.Build()).items() if e}
     assert not bad, f"stale journeys (run `python3 -m tools.journeys refresh`): {bad}"
+
+
+def test_a_stand_inside_geometry_or_on_a_cliff_is_bad():
+    from tools.argonia_world import skyrim_units as su
+    from tools.journeys import Build, stand_bad
+    u = su.UNITS_PER_METRE
+    b = Build(foliage={})
+    b.ground_u = lambda x, y: 0.0 if x < 1000 else x * 2.0   # flat, then a 63 degree slope
+    b.foliage_near = lambda x, y, r: [(0.0, 0.0, 0.0, 30.0, 40 * u, False)]   # one trunk at the origin
+    assert stand_bad(b, 0.0, 0.0, (15 * u, 0.0, 120.0))   # standing in a trunk
+    b.foliage_near = lambda x, y, r: []
+    assert not stand_bad(b, 0.0, 0.0, (15 * u, 0.0, 120.0))
+    assert any("slope" in w for w in stand_bad(b, 1500.0, 0.0, (1500.0 + 15 * u, 0.0, 3000.0)))

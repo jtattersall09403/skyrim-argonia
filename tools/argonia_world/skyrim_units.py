@@ -44,6 +44,9 @@ SKY_CHROMA_MIN = {"Pleasant": 9, "Cloudy": 11, "Rainy": 9}
 # The play camera's height above the feet for a race of height 1.0: the human skeleton's Camera3rd [Cam3] node
 # (actors/character/character assets/skeleton.nif, Skyrim - Meshes0.bsa; NPCEyeBone 124.1), measured 2026-11-02.
 EYE_HEIGHT_UNITS = 121.0
+# The steepest ground the player can stand on (degrees): Havok's character controller slides off steeper slopes. A
+# conservative 45 (the proxy's default max slope is near 0.8 rad); not yet measured in game, so a vantage keeps under it.
+STAND_SLOPE_MAX_DEG = 45.0
 
 # The light slots' luma (Rec. 709, 0-255) per time of day: min and max over Skyrim's 33 region weathers as the game
 # loads them (Update.esm's WTHR overrides; the _A, quest and war weathers left out), measured 2026-11-02 (1.15 session

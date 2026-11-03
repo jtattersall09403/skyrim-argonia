@@ -30,7 +30,7 @@ class Fake:
         if cmd == "console":
             self.lines.append(args[0])
             if args[0] == "IsPC1stPerson":
-                return {"output": "IsPC1stPerson >> 0.00\n"}
+                return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if getattr(self, "first", False) else "0.00")}
             if args[0] == "nosuch":
                 raise BridgeError("console: Script command \"nosuch\" not found")
             return {"output": f"{args[0]} >> 1.00\n"}
@@ -597,10 +597,15 @@ def test_camera_bridge_command_is_tried_first_and_decides(tmp_path, monkeypatch)
     monkeypatch.setattr(rj.time, "sleep", lambda s: None)
     fake = Fake()
     real = fake.call
-    fake.call = lambda cmd, *a: {"asked": a[0], "first_person": a[0] == "first"} if cmd == "camera" else real(cmd, *a)
+    def cam(cmd, *a):
+        if cmd == "camera":
+            fake.first = a[0] == "first"
+            return {"asked": a[0], "first_person": fake.first}
+        return real(cmd, *a)
+    fake.call = cam
     step = {"name": "look", "do": [{"camera": "first"}]}
     rep = rj.Runner(fake, tmp_path / "c").run(journey(tmp_path, [step]), "base")
-    assert rep["passed"] and fake.lines.count("IsPC1stPerson") <= 1  # only the run-end read; no retry loop: the bridge answered
+    assert rep["passed"] and fake.lines.count("IsPC1stPerson") <= 2  # the state read after the bridge call, no retry loop (no F key)
 
 
 def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkeypatch):
@@ -611,11 +616,13 @@ def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkey
     def cam(cmd, *a):
         if cmd == "camera":
             asked.append((a[0], len(fake.lines)))
-            return {"asked": a[0], "first_person": a[0] == "first"}
+            fake.first = a[0] == "first"
+            return {"asked": a[0], "first_person": fake.first}
         return real(cmd, *a)
     fake.call = cam
-    rep = rj.Runner(fake, tmp_path / "d").run(journey(tmp_path, [{"name": "look"}], camera="first"), "base")
-    assert rep["passed"] and rep["camera"]["camera"] == "first" and [a for a, _ in asked] == ["first"]
+    rep = rj.Runner(fake, tmp_path / "d", stills=True).run(journey(tmp_path, [{"name": "look"}], camera="first"), "base")
+    # asked after the load, and again before the step's still, each read back
+    assert rep["passed"] and rep["camera"]["camera"] == "first" and [a for a, _ in asked] == ["first", "first"]
     with pytest.raises(SystemExit, match="said once at the top"):
         journey(tmp_path, [{"name": "look"}], camera="sideways")
 

@@ -11,7 +11,7 @@ import math
 import sys
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import DERIVED, JOURNEYS, ROOT, SUBJECT_M, Build, check, eye_of, frame, reframe
+from tools.journeys import DERIVED, JOURNEYS, ROOT, SUBJECT_M, Build, check, eye_of, frame, reframe, stand_near
 from tools.journeys import gen
 
 
@@ -24,6 +24,11 @@ def _panel(b: Build, w, log: list) -> None:
         a = math.radians(v["yaw_deg"])
         d = SUBJECT_M * su.UNITS_PER_METRE
         f = frame(b, x, y, (ex + math.sin(a) * d, ey + math.cos(a) * d, ez))
+        if not f["clear"]:   # the approach line found none: any dry, standable stand round it with a clear ray
+            near = stand_near(b, x, y, v["yaw_deg"])
+            if near:
+                f = {**f, "x": near["x"], "y": near["y"], "moved_m": near["moved_m"], "clear": True,
+                     "why": f["why"] + "; ray, plants or slope"}
         log.append({"journey": "world-panel", "step": v["id"], "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
         if f["moved_m"]:
             v["x_m"], v["y_m"] = (round(c, 2) for c in su.skyrim_to_province(f["x"], f["y"]))

@@ -211,6 +211,7 @@ class Runner:
         # scene -> the resolved text last put on the machine: a batch shares one, so an unchanged scene is not re-sent
         self.sent = {} if sent is None else sent
         self.calls = []
+        self.camera: str | None = None  # the journey's camera mode, re-asserted and read before each still
         self.kept: dict = {}
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
         self.save = BASE_SAVE
@@ -365,7 +366,10 @@ class Runner:
         try:   # route 1: the bridge's own command over the engine's camera API (cgf is unknown here, F is ignored)
             r = self.b.call("camera", str(arg).strip())
             tries.append(f"bridge {r.get('first_person')}")
-            if r.get("first_person") is (want == "1.00"):
+            time.sleep(0.5)   # the engine's switch lands a frame or two after the call answers: the console read is the state read
+            now = self._console("IsPC1stPerson")["output"].strip()
+            tries.append(f"read {now[-40:]}")
+            if r.get("first_person") is (want == "1.00") and now.endswith(want):
                 self.calls.append({"call": ["camera", str(arg)], "tries": tries})
                 return {"camera": str(arg), "tries": 0, "route": "bridge"}
         except BridgeError as e:
@@ -792,6 +796,7 @@ class Runner:
         try:
             rep["scene_output"] = self.apply_scene(scene, save, load=load)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
+            self.camera = j.get("camera")
             if j.get("camera"):  # the journey's camera mode, said once at the top, applied after the load (1.15-r4-journeys)
                 rep["camera"] = self._camera(j["camera"])
             for n, step in enumerate(j["steps"], 1):
@@ -852,6 +857,12 @@ class Runner:
             rec["notes"] = ctx["notes"]
         if new := {k: v for k, v in self.kept.items() if k not in kept0 or kept0[k] != v}:
             rec["kept"] = new  # what the step read and kept (e.g. the actors table), in the run's report.json
+        if (self.stills or not rec["passed"]) and self.camera:   # a teleport, menu or load can undo it: re-asserted, then read
+            try:
+                self._camera(self.camera)
+            except StepFailed as e:
+                if rec["passed"]:
+                    rec.update(passed=False, reason=f"StepFailed: {e}")
         if self.stills or not rec["passed"]:
             try:
                 rec["still"] = str(self.b.screenshot(self.out / f"{n:02d}-{step['name']}.png"))
@@ -1028,10 +1039,13 @@ def judge_soak(loops: list[dict], bars: dict) -> list[str]:
 
 def third_person(b):
     """The play camera is third person (owner, 2026-10-29); a save can hold first, where TDM is off. Setup only."""
-    for _ in range(2):
+    for _ in range(3):
         if b.call("console", "IsPC1stPerson")["output"].strip().endswith("0.00"):
             return
-        b.call("input", "key", "F", 300)  # Toggle POV: a 100 ms press did not take (2026-10-30)
+        try:   # the engine's own command first: the F key is a toggle, and a one_load batch leaves the last item's camera on
+            b.call("camera", "third")
+        except BridgeError:
+            b.call("input", "key", "F", 300)  # Toggle POV: a 100 ms press did not take (2026-10-30)
         time.sleep(1.0)
     raise StepFailed("the camera stays in first person")
 

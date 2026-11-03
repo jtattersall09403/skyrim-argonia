@@ -186,6 +186,7 @@ def sync_markers(w, vs: list[dict], write: bool) -> bool:
 def scene_text(vs: list[dict]) -> str:
     v = vs[0]
     lines = ["; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage, staged last",
+             "tgm", "tcai",   # god mode and no AI at step 0: the player is neither harmed nor engaged during the stills
              "set gamehour to 12", f"player.moveto {marker_edid(v)}"]
     return "\r\n".join(lines) + "\r\n"
 
