@@ -91,7 +91,6 @@ def domestic(w) -> int:
     w.dirty.update({"npc", "npc_statblock", "socket", "build_person", "build_ref"})
     band = {r["creature_id"]: r["value"] for r in w.query("SELECT creature_id, value FROM creature_band WHERE ord = 0")}
     names = {r["id"]: r["name"] for r in w.query("SELECT id, name FROM creature")}
-    races = {r["form_key"]: r["race"] for r in w.query("SELECT form_key, race FROM creature_form")}
     laid = {r[0] for r in w.query("SELECT place_id FROM layout")}  # a socket lives in its place's layout
     built = {r["place_id"]: r["id"] for r in w.query("SELECT id, place_id FROM build_cell WHERE kind = 'exterior'")}
     n = 0

@@ -154,7 +154,7 @@ ABROAD_UNITS, REST_UNITS = 512, 256
 def _rest(windows: list[tuple[int, int]]) -> list[tuple[int, int]]:
     """The day's hours outside the abroad windows, as (start, hours)."""
     on = {(h + k) % 24 for h, n in windows for k in range(n)}
-    out, h = [], 0
+    out = []
     starts = [x for x in range(24) if x not in on and (x - 1) % 24 in on]
     for st in starts:
         n = 0
