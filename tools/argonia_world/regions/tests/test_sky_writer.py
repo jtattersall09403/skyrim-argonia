@@ -73,6 +73,10 @@ def test_written_sky_follows_its_templates(tmp_path):
     for w in weathers:
         errs += [f"{w['edid']}: {e}" for e in checks.sky_clouds(ours[_fid(w["formKey"])], van[_fid(w["template"])],
                                                                 "Pleasant" in w["flags"])]
+        t = van[_fid(w["template"])]
+        clear_tpl = bool(struct.unpack_from("<B", t.first("DATA"), 11)[0] & 1)  # DATA flags: Pleasant
+        errs += [f"{w['edid']}: {e}" for e in checks.sky_fill_and_ambient(
+            ours[_fid(w["formKey"])], t, clear_tpl, "Pleasant" in w["flags"])]
         for tod, key in w["images"].items():
             if tod in ("sunrise", "sunset") and key == w["images"]["day"]:
                 continue  # one image all day (mist, overcast, rain, storm): judged as the day's

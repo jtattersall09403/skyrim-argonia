@@ -276,6 +276,7 @@ def sky_blocked(cls: str, sky: dict, upper: dict) -> list[str]:
     return out
 
 
+HAZE_GREY = {"tannin-haze"}  # a haze held to the mist bounds: a warm grey, never yellow (coordinator 2026-11-03)
 MIST_HUE = (120, 230)  # a mist weather's fog: cool grey-green to grey-blue hue (degrees) ...
 MIST_GREY_SAT = 0.04  # ... unless near-neutral grey (HSV saturation at most this); olive and yellow fall outside both
 HORIZON_FOG_GAP = 0.10  # horizon luma (sunrise, noon, sunset) at least this fraction above or below fog far: no hard white line
@@ -335,7 +336,7 @@ def weather_slots(w) -> list[str]:
                                                               {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
         out += [f"weather {wid}: {e}" for e in horizon_line(cols)]
-        if wid in fogs:
+        if wid in fogs or wid in HAZE_GREY:
             out += [f"weather {wid}: {e}" for e in mist_fog_cast(cols)]
         from tools.argonia_world import skyrim_units as su
         out += [f"weather {wid}: {s}@{t} luma {su.luma(cols[s, t]):.0f} outside vanilla's {lo}-{hi}"
@@ -440,4 +441,21 @@ def sky_image(ours, tpl, tod: str, tpl_edid: str) -> list[str]:
     want = IMGS_TOD[tod]
     if not any(f"{w}_" in tpl_edid or tpl_edid.endswith(w) for w in ((want,) if isinstance(want, str) else want)):
         out.append(f"used at {tod} but its template {tpl_edid} is not a {want} image space")
+    return out
+
+
+def sky_fill_and_ambient(ours, tpl, clear_template: bool, pleasant: bool) -> list[str]:
+    """On a clear template the full-sky fill (slot 28) draws with the template's colour and alpha (tannin-haze's
+    cream fill at 1.0 was the refused yellow fog); a clear sky's ambient (NAM0 slot 3) and DALC are the template's
+    (clear-dry's olive ground light; coordinator ruling 2026-11-03)."""
+    out = []
+    if clear_template and 28 in _cloud_slots(tpl):
+        for sig, n in (("PNAM", 16), ("JNAM", 16)):
+            if _sub(ours, sig)[28 * n:29 * n] != _sub(tpl, sig)[28 * n:29 * n]:
+                out.append(f"fill layer {sig} not the template's")
+    if pleasant:
+        if _sub(ours, "NAM0")[48:64] != _sub(tpl, "NAM0")[48:64]:
+            out.append("ambient not the template's")
+        if [b for s, b in ours.subs if s == "DALC"] != [b for s, b in tpl.subs if s == "DALC"]:
+            out.append("directional ambient not the template's")
     return out

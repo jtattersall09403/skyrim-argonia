@@ -231,6 +231,20 @@ static class RegionWriters
                 },
             };
         }
+        // a clear template's full-sky fill (SkyrimCloudsFill, slot 28) keeps its colour and alpha on every weather
+        const int Fill = 28;
+        if (cl.TryGetProperty("fillFromClearTemplate", out var fft) && fft.GetBoolean()
+            && tpl.Flags.HasFlag(Mutagen.Bethesda.Skyrim.Weather.Flag.Pleasant)
+            && Fill < tpl.CloudTextures.Count && tpl.CloudTextures[Fill] is not null && tpl.Clouds[Fill] is { } tf && w.Clouds[Fill] is { } wf)
+        {
+            wf.Colors = tf.Colors.DeepCopy();
+            wf.Alphas = tf.Alphas.DeepCopy();
+        }
+        if (r.TryGetProperty("ambientFromTemplate", out var aft2) && aft2.GetBoolean())
+        {
+            w.AmbientColor = tpl.AmbientColor.DeepCopy();
+            if (tpl.DirectionalAmbientLightingColors is { } d) w.DirectionalAmbientLightingColors = d.DeepCopy();
+        }
         if (tpl.LNAM is { } lnam) w.LNAM = lnam.ToArray();  // the cloud layer count
         w.Precipitation.SetTo(tpl.Precipitation.FormKeyNullable);
         w.VisualEffect.SetTo(tpl.VisualEffect.FormKey);

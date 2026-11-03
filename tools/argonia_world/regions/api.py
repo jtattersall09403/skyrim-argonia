@@ -265,7 +265,13 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
                        # ... and its per-layer colours: SkyrimClear tints its full-sky SkyrimCloudsFill layer the
                        # zenith's dark blue (114E77 at noon); one cream cloud colour on it painted a pale veil over
                        # the whole sky (lane 1.15-r5-sky)
-                       "coloursFromTemplate": w["classification"] == "Pleasant"},
+                       "coloursFromTemplate": w["classification"] == "Pleasant",
+                       # a weather on a clear template draws its full-sky fill as the template does (coordinator
+                       # ruling 2026-11-03: tannin-haze's cream fill at alpha 1.0 was the "yellow fog" refused)
+                       "fillFromClearTemplate": True},
+            # a clear sky's ambient and directional ambient are the template's (ruling 2026-11-03, 0034): the
+            # authored olive ground light (7A8367, DALC Z+ 7D8465) was the last candidate for the cast
+            "ambientFromTemplate": w["classification"] == "Pleasant",
             "windSpeed": w["wind"], "transDelta": 4.0, "sunGlare": w["sun_glare"], "sunDamage": w["sun_damage"],
             "precipitationFadeIn": w["precip_fade_in"], "precipitationFadeOut": w["precip_fade_out"],
             "thunderFrequency": thunder,

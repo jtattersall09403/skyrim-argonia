@@ -86,3 +86,13 @@ Cloudy-class weathers keep their full fill (alpha 1.0, their own colour) where v
 - L4 owed (new `checks.md` row): `tests/journeys/sky-ab.yaml` (dry-run ok), with five steps: the coastal-lagoon shore and the
   western-frontier high vantage, each at noon and at dawn 06:30, clear-dry forced, first person, HUD off, pitched 12 degrees up. The planner runs it under both
   launches, shaders on and shaders off, on one deploy. A reader answers: blue zenith visible, no grey veil, no yellow or olive cast, and how the two launches compare.
+
+## Coordinator rulings, 2026-11-03 (applied; bytes before → after)
+1. **Fill layer from a clear template, on every weather.** `RegionWeather.cs` copies slot 28's colour and alpha (`SkyrimCloudsFill`) whenever the template carries the Pleasant flag (`api.py` `fillFromClearTemplate`).
+   - tannin-haze fill: `CFA679/D2CDA6/CB9065/2C312D` at alpha 1.0 → `61738A/277697/2C2832/0E274C` at 0.2/0.5/0.2/0.2 (SkyrimClearMA's).
+   - monsoon-overcast fill: `989588/BBC1B1/94857A/262B2E` at 1.0 → `1A3E46/306176/364343/08262D` at 1.0/0.4/0.4/0.5. SkyrimCloudyMA's DATA byte 11 also carries the Pleasant flag, so the rule covers it too.
+   - tannin-haze's fogNear, fogFar and horizon are now warm greys: HSV saturation ≤ 0.04, at about the old luma, nudged until weather-slots passes. Examples: fogFar day `AFA083` → `A6A5A6`, horizon day `CDBA85` → `B5BAB6`. They are re-pointed through db.py. `checks.HAZE_GREY` now holds tannin-haze to `mist_fog_cast`. `weather_seed.py` still records the first authoring.
+2. **clear-dry's ambient and directional ambient (DALC) come from the template** (`ambientFromTemplate`, Pleasant).
+   - ambient: `6C6351/7A8367/685745/1A281F` → `94A1B6/98B3CC/6A6C7A/4C6990`.
+   - DALC Z+: `5E554A/7D8465/685447/2C3F38` → `50515A/558D95/50535A/32434E`.
+- `checks.sky_fill_and_ambient` is called from `test_sky_writer.py`. The Weathers YAML is regenerated.

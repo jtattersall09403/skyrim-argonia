@@ -1066,18 +1066,18 @@
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"night","rgb":"56654F","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"sunrise","rgb":"DEC094","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"effectLighting","tod":"sunset","rgb":"DAAC82","why":"light on spell and particle effects; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"day","rgb":"AFA083","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"night","rgb":"282F21","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunrise","rgb":"A58560","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunset","rgb":"AF8255","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"day","rgb":"9C9673","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"night","rgb":"1B2822","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunrise","rgb":"A08662","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunset","rgb":"AE8355","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"horizon","tod":"day","rgb":"CDBA85","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"horizon","tod":"night","rgb":"282C24","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"horizon","tod":"sunrise","rgb":"DBA976","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
-{"weather_id":"tannin-haze","slot":"horizon","tod":"sunset","rgb":"D7985D","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"day","rgb":"A6A5A6","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"night","rgb":"2C2C2B","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunrise","rgb":"7E8281","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogFar","tod":"sunset","rgb":"888789","why":"fog colour at the far distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"day","rgb":"919090","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"night","rgb":"242425","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunrise","rgb":"878B89","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"fogNear","tod":"sunset","rgb":"8E8B8A","why":"fog colour at the near distance; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"horizon","tod":"day","rgb":"B5BAB6","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"horizon","tod":"night","rgb":"28292A","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"horizon","tod":"sunrise","rgb":"AEADAA","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
+{"weather_id":"tannin-haze","slot":"horizon","tod":"sunset","rgb":"9EA1A2","why":"the horizon band; tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"moonGlare","tod":"day","rgb":"000000","why":"the glare around the moons (night only); tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"moonGlare","tod":"night","rgb":"899682","why":"the glare around the moons (night only); tannin haze: brown-gold air over peat water, a copper sun"}
 {"weather_id":"tannin-haze","slot":"moonGlare","tod":"sunrise","rgb":"000000","why":"the glare around the moons (night only); tannin haze: brown-gold air over peat water, a copper sun"}

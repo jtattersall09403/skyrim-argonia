@@ -329,15 +329,15 @@ Clouds:
   XSpeed: 0.02992126
   YSpeed: 0
   Colors:
-    Sunrise: '#00989588'
-    Day: '#00BBC1B1'
-    Sunset: '#0094857A'
-    Night: '#00262B2E'
+    Sunrise: '#001A3E46'
+    Day: '#00306176'
+    Sunset: '#00364343'
+    Night: '#0008262D'
   Alphas:
     Sunrise: 1
-    Day: 1
-    Sunset: 1
-    Night: 1
+    Day: 0.4
+    Sunset: 0.4
+    Night: 0.5
 - Enabled: True
   XSpeed: 0
   YSpeed: 0

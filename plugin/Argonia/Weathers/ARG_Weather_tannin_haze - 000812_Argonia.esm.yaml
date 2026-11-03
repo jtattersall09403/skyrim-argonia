@@ -345,15 +345,15 @@ Clouds:
   XSpeed: 0.01968504
   YSpeed: 0
   Colors:
-    Sunrise: '#00CFA679'
-    Day: '#00D2CDA6'
-    Sunset: '#00CB9065'
-    Night: '#002C312D'
+    Sunrise: '#0061738A'
+    Day: '#00277697'
+    Sunset: '#002C2832'
+    Night: '#000E274C'
   Alphas:
-    Sunrise: 1
-    Day: 1
-    Sunset: 1
-    Night: 1
+    Sunrise: 0.2
+    Day: 0.5
+    Sunset: 0.2
+    Night: 0.2
 - Enabled: True
   XSpeed: 0
   YSpeed: 0
@@ -387,10 +387,10 @@ SkyUpperColor:
   Sunset: '#007B6E7C'
   Night: '#00101A1B'
 FogNearColor:
-  Sunrise: '#00A08662'
-  Day: '#009C9673'
-  Sunset: '#00AE8355'
-  Night: '#001B2822'
+  Sunrise: '#00878B89'
+  Day: '#00919090'
+  Sunset: '#008E8B8A'
+  Night: '#00242425'
 UnknownColor:
   Sunrise: '#0067564A'
   Day: '#00736E5C'
@@ -422,10 +422,10 @@ SkyLowerColor:
   Sunset: '#00C08965'
   Night: '#00232123'
 HorizonColor:
-  Sunrise: '#00DBA976'
-  Day: '#00CDBA85'
-  Sunset: '#00D7985D'
-  Night: '#00282C24'
+  Sunrise: '#00AEADAA'
+  Day: '#00B5BAB6'
+  Sunset: '#009EA1A2'
+  Night: '#0028292A'
 EffectLightingColor:
   Sunrise: '#00DEC094'
   Day: '#00ECE1BE'
@@ -442,10 +442,10 @@ CloudLodAmbientColor:
   Sunset: '#00705949'
   Night: '#00141819'
 FogFarColor:
-  Sunrise: '#00A58560'
-  Day: '#00AFA083'
-  Sunset: '#00AF8255'
-  Night: '#00282F21'
+  Sunrise: '#007E8281'
+  Day: '#00A6A5A6'
+  Sunset: '#00888789'
+  Night: '#002C2C2B'
 SkyStaticsColor:
   Sunrise: '#00B99870'
   Day: '#00C1B289'
