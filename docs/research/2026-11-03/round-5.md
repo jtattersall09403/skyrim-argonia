@@ -36,6 +36,14 @@ plugin YAML and the shards hold no Erut or SwampPlant02 ref), flat white water i
 marbled water with pink reflection blotches; the water types 1 of 7 (the tarn) with the rest marbled by the same
 reflections and two vantages missing the water.
 
+## The owner's 11:54 reply (#37)
+
+Red or pink leaves are fine if the tree looks reasonable: the crimson-vertex drop is reversed and the hunt turns to
+the artificial neon blue-green trees and the pale, washed-out wide-trunk trees that look unrendered (lane
+1.15-r5-trees-2). AWS: $28.6 for 1–3 November is too high: the breakdown went to the owner (the Ireland standby $8.07
+the top item; four disks; an S3 request churn of ~150k small writes being traced) with three deletions for the owner's
+word. No creature without a model (the lizard-steed and mouth-plover stay out).
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
