@@ -90,6 +90,7 @@ art, the empty Level meter, the empty left pane.
 | harness-r5-pass-ledger | journeys re-run after they had passed | lane-harness-r5-pass-ledger.md (5afaf6af: a per-step pass ledger keyed by each step's reach; the batch shrinks; lod.sh archive/collect skip) |
 
 | 1.15-r5-black-water | the black type copied King of the Murkmire's "black" water, lighter than our green marsh; the darkest natural open water in the load order is Update.esm's MurkyWater (deep 9,9,6, opacity 100) | lane-1.15-r5-black-water.md (e3be487f; the surface blotching's suspects are Community Shaders' water effects and SSR: an A/B next round) |
+| 1.15-r5-white-trunks | the glowing white trunk is Erut07's bark (an empty normal slot, white vertex colour); the pale emitting tree BM&V's skydead; seven barks with 23–104:1 UV stretch | lane-1.15-r5-white-trunks.md (f457d57c: nine forms out with their measured reasons, 204 → 195 placed forms) |
 | harness-r5-water-camera | the camera stalls at four stands were not swimming (all dry by the heightmap); dry footing of 0.5 m is enforced anyway and the failure now names the engine state | d8ad98cc |
 | harness-r5-flash-stills | no off-game render of a Scaleform screen | lane-harness-r5-flash-stills.md (97006250: Ruffle's exporter built from source; the System page's Settings and Load states rendered with sample rows; faithful on the colours; `menus --flash` in the harness) |
 
