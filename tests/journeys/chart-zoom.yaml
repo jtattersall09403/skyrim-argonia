@@ -8,19 +8,20 @@ runner: 1
 crash_risk: low
 scene: first-place
 steps:
-  - name: chart-open                          # M opens our chart round the player
+  - name: chart-open                          # M opens our chart: the whole province as a rough sketch (owner #37)
     do: [{key: "M 120"}, {wait: 4}]
     expect:
       - {read: [core, Views], path: value, contains: "chart ready open"}
       - {log: {name: ArgoniaCore, contains: "the map key opens the chart (MapMenu never opens)"}, within: 6}
-    reader: [the parchment chart close round the player, the walked land filled in round the gilt arrowhead, beyond it the rough sketch on bare parchment - the coast's outline, the province's dashed border and red-brown major roads, with no woods, relief or rivers - and the major cities as small ink dots with their names in italic, names and dots small and even]
-  - name: chart-zoomed-out                    # the triggers zoom out to the whole province
-    do: [{pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 0.4}, {pad: "LT:200"}, {wait: 2}]
-    reader: [the whole province, the seven major cities (Gideon, Soulrest, Lilmoth, Blackrose, Archon, Stormhold, Thorn) each a small dot with its name in the same small lettering as in the close view, the land outside the walked patch a rough sketch (outline, border, roads), slate rivers only inside the walked patch]
-  - name: chart-zoomed-in                     # the triggers zoom in to the maximum: names and markers keep their size
-    do: [{pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 0.4}, {pad: "RT:200"}, {wait: 2}]
+    reader: [the whole province on parchment with a plain parchment edge and no cream column or veil, the coast's outline, the province's dashed border and red-brown major roads, the major cities as small ink dots with their names in italic, names and dots small and even; the walked land only a small patch of extra detail round the gilt arrowhead]
+  - name: chart-zoomed-in                     # six triggers (1.5x each, a glide of about a second each) zoom in to the maximum
+    do: [{pad: "RT:200"}, {wait: 1.5}, {pad: "RT:200"}, {wait: 1.5}, {pad: "RT:200"}, {wait: 1.5}, {pad: "RT:200"}, {wait: 1.5}, {pad: "RT:200"}, {wait: 1.5}, {pad: "RT:200"}, {wait: 3}]
     expect: [{log: {name: ArgoniaCore, contains: "chart: input zoomIn"}, within: 10}]
-    reader: [the chart close in round the player, the gilt marker and every dot or place marker the same small size as in the whole-province still, every name the same lettering size as before, no name or marker drawn large; the slate river lines lie on the water the explored land shows]
+    reader: [the chart close in round the player, clearly closer than the opening still, the gilt marker and every dot or place marker the same small size as in the whole-province still, every name the same lettering size as before; the slate river lines lie on the water the explored land shows]
+  - name: chart-zoomed-out                    # seven triggers zoom back out to the whole province
+    do: [{pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 1.5}, {pad: "LT:200"}, {wait: 3}]
+    expect: [{log: {name: ArgoniaCore, contains: "chart: input zoomOut"}, within: 10}]
+    reader: [the whole province again, the same view as the opening still: the seven major cities (Gideon, Soulrest, Lilmoth, Blackrose, Archon, Stormhold, Thorn) each a small dot with its name in the same small lettering as in the close view, the whole coast and border visible, no cream column or blank band, slate rivers only inside the walked patch]
   - name: chart-closed
     do: [{key: "M 120"}, {wait: 3}]
     expect: [{read: [core, ViewState, chart], path: value, eq: null}]

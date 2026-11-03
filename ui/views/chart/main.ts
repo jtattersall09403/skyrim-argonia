@@ -18,10 +18,11 @@ declare global { interface Window { ARGONIA_CHART_INDEX: CellIndex; ARGONIA_CHAR
 const PANE = window.ARGONIA_CHART_PANE === true;
 if (PANE) document.body.classList.add("pane");
 const PANE_ZOOM = 8;   // the pane is short: close in, the land round the player
-// The first opening (no remembered view: the native default is the whole province, {1, 1, 1}) is close round the
-// player, as the old chart opened on the land you stood in (1.12 look 1, round 3); a remembered view is kept.
-const OPEN_ZOOM = 3;
-const isWhole = (v: ChartView) => v.centreX === 1 && v.centreY === 1 && v.zoom === 1;
+// The chart opens on the whole province, a rough sketch (owner 2026-11-03, #37: the map starts as a sketch of the
+// province and gains detail on foot), whatever view the native side remembers; the player zooms in toward the marker.
+// Later pushes (a cell revealed while open) keep the view the player has now.
+const WHOLE: ChartView = { centreX: 1, centreY: 1, zoom: 1 };
+let opened = false;
 
 const root = document.getElementById("view")!;
 const ix = window.ARGONIA_CHART_INDEX;
@@ -319,7 +320,8 @@ start({
     state = m.body;
     stickTold = false;
     const p = m.body.player;
-    view = target = clampZoom(p && (PANE || isWhole(m.body.view)) ? { centreX: p.x, centreY: p.y, zoom: PANE ? PANE_ZOOM : OPEN_ZOOM } : m.body.view);
+    if (PANE) view = target = clampZoom(p ? { centreX: p.x, centreY: p.y, zoom: PANE_ZOOM } : m.body.view);
+    else if (!opened) { opened = true; view = target = WHOLE; }
     const key = `${state.sketch}|${JSON.stringify(state.revealed)}|${p ? `${p.x.toFixed(2)},${p.y.toFixed(2)}` : ""}`;
     if (key !== pushKey) { pushKey = key; checked = false; }
     root.innerHTML = render(state, sketchCities(ix, new Set(state.places.map((p) => p.id))), ix.pins);
