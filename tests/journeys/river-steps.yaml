@@ -3,6 +3,7 @@
 # Reader checklist: at a step, the rapids line sits on the upper water at the edge and flows down; the skirt and
 # ring sit on the lower water at the foot; no piece in the air or facing uphill; no water sheet edge hanging over
 # ground. At a gully: no water surface, a dry bed. At a still body: the surface does not flow (no drift).
+# Every stop (lane 1.15-r4-water-look): near and far water read as water, no marbled or blocky white-and-dark tiles.
 # z is placed high and the player falls (tgm); the planner runs it in the round's batch.
 id: river-steps
 runner: 1

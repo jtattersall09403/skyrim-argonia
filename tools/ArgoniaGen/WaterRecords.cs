@@ -27,7 +27,7 @@ sealed class WaterRecords
     static System.Drawing.Color Rgb(JsonElement e, string k)
     {
         var c = e.GetProperty(k);
-        return System.Drawing.Color.FromArgb(c[0].GetInt32(), c[1].GetInt32(), c[2].GetInt32());
+        return System.Drawing.Color.FromArgb(0, c[0].GetInt32(), c[1].GetInt32(), c[2].GetInt32());  // alpha 0, as Skyrim.esm's WATR colours
     }
 
     /// The types and activators into the mod, the WRLD's default water, and the cell lines indexed by grid.
@@ -45,7 +45,14 @@ sealed class WaterRecords
                 default: throw new InvalidDataException($"water records: no writer for {S(r, "type")}");
             }
         }
-        if (sea is { } s) ws.Water.SetTo(s);
+        // Tamriel's NAM2 and NAM3 are both DefaultWater and its NAM4 (LOD water height) its DNAM default water height:
+        // without NAM3/NAM4 the distant water draws a null type at 0 (round 4 batch one, far water marbled and blocky).
+        if (sea is { } s)
+        {
+            ws.Water.SetTo(s);
+            ws.LodWater.SetTo(s);
+            ws.LodWaterHeight = ws.LandDefaults?.DefaultWaterHeight ?? 0f;
+        }
         var w = new WaterRecords();
         foreach (var line in File.ReadLines(Path.Combine(dir, "cells.jsonl")))
         {

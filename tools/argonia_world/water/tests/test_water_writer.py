@@ -77,6 +77,22 @@ def test_water_written_and_read_back(tmp_path):
     assert not by.get("ACTI")  # no water planes (1.15)
     wrld = by["WRLD"][0]
     assert struct.unpack("<I", wrld.first("NAM2"))[0] & 0xFFFFFF == int(layer.type_key("sea").split(":")[0], 16)
+    # as Tamriel: NAM3 (LOD water type) = NAM2, NAM4 (LOD water height) = DNAM's default water height (round 4 r4-water-look)
+    assert wrld.first("NAM3") == wrld.first("NAM2")
+    assert struct.unpack("<f", wrld.first("NAM4"))[0] == struct.unpack_from("<f", wrld.first("DNAM"), 4)[0]
+    vanilla = _vanilla_watr()
+    for fid, rec in want.items():
+        tpl = vanilla[rec["template"].split(":")[1]]
+        ours = watr[fid]
+        # every subrecord but ours (EDID, FULL, ANAM, DNAM's fog and colours) is the template's, byte for byte
+        assert [s_ for s_, _ in ours.subs if s_ != "FULL"] == [s_ for s_, _ in tpl.subs]
+        for s_, b in ours.subs:
+            if s_ not in ("EDID", "FULL", "ANAM", "DNAM"):
+                assert b == tpl.first(s_), (rec["edid"], s_)
+        d, v = ours.first("DNAM"), tpl.first("DNAM")
+        ours_at = {8, 9, 10, 11, 12, 33, 35, 36, 37}  # fog above near/far, shallow/deep/reflection, fog amounts, under
+        assert [k for k in range(len(v) // 4) if d[4 * k:4 * k + 4] != v[4 * k:4 * k + 4] and k not in ours_at] == []
+        assert all(d[4 * k + 3] == 0 for k in (10, 11, 12))  # colour alpha 0, as Skyrim.esm's
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")
@@ -97,6 +113,38 @@ def test_water_written_and_read_back(tmp_path):
             assert (struct.unpack("<f", scale)[0] if scale else 1.0) == pytest.approx(ref["scale"])
     tes4 = by["TES4"][0]
     assert b"Skyrim.esm\0" in [b for s_, b in tes4.subs if s_ == "MAST"]
+
+
+def _vanilla_watr() -> dict:
+    """Skyrim.esm's WATR records by EDID (the WATR top group only)."""
+    import zlib
+    b = (GAME / "Skyrim.esm").read_bytes()
+    i, out = struct.unpack_from("<I", b, 4)[0] + 24, {}
+    while i < len(b):
+        size = struct.unpack_from("<I", b, i + 4)[0]
+        if b[i + 8:i + 12] == b"WATR":
+            for r in esm.records(b"TES4" + struct.pack("<I", 0) + bytes(16) + b[i:i + size]):
+                if r.sig == "WATR":
+                    out[r.first("EDID").rstrip(b"\0").decode()] = r
+            return out
+        i += size
+    return out
+
+
+@pytest.mark.skipif(not (GAME / "Skyrim - Textures7.bsa").exists(), reason="no game data")
+def test_every_watr_texture_resolves():
+    """Each texture our WATR types name (the templates' NNAM noise maps; we add none) is in the laid stack's index:
+    the vanilla BSAs (no laid mod overrides textures/water/)."""
+    from tools.argonia_world.vegetation.mesh_textures import _bsa
+    index = {p for f in GAME.glob("*.bsa") for p, _, _ in _bsa(f)[2]}
+    vanilla = _vanilla_watr()
+    names = set()
+    for rec in layer.records():
+        for s_, b in vanilla[rec["template"].split(":")[1]].subs:
+            if s_ in ("NNAM", "TNAM", "MNAM", "XNAM") and b.rstrip(b"\0"):
+                t = b.rstrip(b"\0").decode().lower().replace("\\", "/")
+                names.add(t.removeprefix("data/"))
+    assert names and not sorted(n for n in names if n not in index)
 
 
 def test_regrade_raises_the_ground_only_to_its_floors():
