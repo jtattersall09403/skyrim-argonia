@@ -1,0 +1,15 @@
+# Round 5 of 1.15 (owner 2026-11-03 08:55 and 09:23, #37): every fix proven in a still before anything is handed over.
+# The sky (records as their templates), the water types, the creature kinds and the Claywater guar, the sketch map,
+# the System pane; the world panel last (crash-prone, the longest). Shaders on; LOD rebuilt before the final pass.
+id: 1.15-round-5
+relaunch_mb: 6000
+relaunch_every: 0
+one_load: true
+settle_waits: true
+items:
+  - menus-look
+  - chart-zoom
+  - sky-ab
+  - water-types
+  - creatures-kinds
+  - world-panel
