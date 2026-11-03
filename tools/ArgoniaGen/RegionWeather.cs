@@ -3,7 +3,9 @@
 // As Generate.cs: no unit maths and no choices. Every number is ours and arrives resolved. From a weather's or the
 // climate's template only references are taken: cloud texture paths, precipitation, the visual effect, sounds,
 // sky statics, volumetric lighting, the aurora, the lens flare, the sun textures and the cloud layer count. They are
-// read from the master (decision 0003: links to the player's files, never their values).
+// read from the master (decision 0003: links to the player's files). Measured to matter, the template's values are
+// also carried (decision 0034, as WATR): which cloud layers draw, a clear sky's per-layer cloud alphas and colours,
+// and the image space's HDR.
 using System.Text.Json;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Plugins;
@@ -28,7 +30,7 @@ static class RegionWriters
             case "REGN": mod.Regions.Add(Region(r)); break;
             case "CLMT": mod.Climates.Add(Climate(r, data)); break;
             case "WTHR": mod.Weathers.Add(Weather(r, data)); break;
-            case "IMGS": mod.ImageSpaces.Add(ImageSpace(r)); break;
+            case "IMGS": mod.ImageSpaces.Add(ImageSpace(r, data)); break;
             case "WRLD": mod.Worldspaces.Add(WorldOverride(r)); break;
             default: throw new InvalidDataException($"RegionWriters: {S(r, "type")}");
         }
@@ -212,9 +214,14 @@ static class RegionWriters
         for (var i = 0; i < w.Clouds.Length && i < tpl.CloudTextures.Count; i++)
         {
             if (tpl.CloudTextures[i] is null) continue;
+            // a layer is drawn only where the template draws it (NAM1): Skyrim.esm leaves textured layers off
+            // (SkyrimCloudy's OblivionCloudCloudyUpper01, WastelandCloudHorizon01, SkyrimClouds04); all on stacked
+            // every overcast sheet the template holds (lane 1.15-r5-sky)
             w.Clouds[i] = new CloudLayer
             {
-                Enabled = true, XSpeed = F(cl, "speed"), YSpeed = 0f, Colors = WC(cl.GetProperty("colours")),
+                Enabled = tpl.Clouds[i]?.Enabled ?? false, XSpeed = F(cl, "speed"), YSpeed = 0f,
+                Colors = cl.TryGetProperty("coloursFromTemplate", out var cft) && cft.GetBoolean() && tpl.Clouds[i]?.Colors is { } tc
+                    ? tc.DeepCopy() : WC(cl.GetProperty("colours")),
                 Alphas = cl.TryGetProperty("alphaFromTemplate", out var aft) && aft.GetBoolean() && tpl.Clouds[i]?.Alphas is { } ta
                     ? ta.DeepCopy()
                     : new WeatherAlpha
@@ -243,21 +250,33 @@ static class RegionWriters
     }
 
     // ---- IMGS ----------------------------------------------------------------------------------------------
-    static ImageSpace ImageSpace(JsonElement r)
+    static ImageSpace ImageSpace(JsonElement r, string data)
     {
-        var h = r.GetProperty("hdr");
         var c = r.GetProperty("cinematic");
         var t = r.GetProperty("tint");
-        return new ImageSpace(FK(S(r, "formKey")), Rel)
+        ImageSpaceHdr hdr;
+        if (r.TryGetProperty("hdrFromTemplate", out var hft) && hft.GetBoolean())
         {
-            EditorID = S(r, "edid"),
-            Hdr = new ImageSpaceHdr
+            // the template's HDR, as WATR carries its template's body (decision 0034, lane 1.15-r5-sky)
+            var tk = FK(S(r, "template"));
+            var tpl = Master(data, tk).ImageSpaces.TryGetValue(tk, out var ti) ? ti : throw new InvalidDataException($"no IMGS {tk}");
+            hdr = tpl.Hdr?.DeepCopy() ?? throw new InvalidDataException($"IMGS {tk}: no HDR");
+        }
+        else
+        {
+            var h = r.GetProperty("hdr");
+            hdr = new ImageSpaceHdr
             {
                 EyeAdaptSpeed = F(h, "eyeAdaptSpeed"), EyeAdaptStrength = F(h, "eyeAdaptStrength"),
                 BloomBlurRadius = F(h, "bloomBlurRadius"), BloomThreshold = F(h, "bloomThreshold"),
                 BloomScale = F(h, "bloomScale"), ReceiveBloomThreshold = F(h, "receiveBloomThreshold"),
                 White = F(h, "white"), SunlightScale = F(h, "sunlightScale"), SkyScale = F(h, "skyScale"),
-            },
+            };
+        }
+        return new ImageSpace(FK(S(r, "formKey")), Rel)
+        {
+            EditorID = S(r, "edid"),
+            Hdr = hdr,
             Cinematic = new ImageSpaceCinematic { Saturation = F(c, "saturation"), Brightness = F(c, "brightness"), Contrast = F(c, "contrast") },
             Tint = new ImageSpaceTint { Amount = F(t, "amount"), Color = C(t.GetProperty("color")) },
             DepthOfField = new ImageSpaceDepthOfField(),

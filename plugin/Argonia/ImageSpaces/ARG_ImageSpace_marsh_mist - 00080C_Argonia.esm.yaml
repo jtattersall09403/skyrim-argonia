@@ -1,15 +1,15 @@
 FormKey: 00080C:Argonia.esm
 EditorID: ARG_ImageSpace_marsh_mist
 Hdr:
-  EyeAdaptSpeed: 1
-  BloomBlurRadius: 4
-  BloomThreshold: 0.7
-  BloomScale: 0.4
+  EyeAdaptSpeed: 20
+  BloomBlurRadius: 7
+  BloomThreshold: 0.3
+  BloomScale: 2.25
   ReceiveBloomThreshold: 0.6
-  White: 4
-  SunlightScale: 1.6
-  SkyScale: 1.6
-  EyeAdaptStrength: 0.3
+  White: 0.9
+  SunlightScale: 0.9
+  SkyScale: 0.375
+  EyeAdaptStrength: 1.5
 Cinematic:
   Saturation: 0.9
   Brightness: 1

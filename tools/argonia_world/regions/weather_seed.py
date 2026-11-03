@@ -87,27 +87,27 @@ SKY = {
               "convective storm: thunder often, rain heavy"),
 }
 
-# image spaces: id, EditorID, template (references and HDR), saturation, brightness, contrast, why; tint off
+# image spaces: id, EditorID, template (its HDR is carried: the matching vanilla time of day, lane 1.15-r5-sky), saturation, brightness, contrast, why; tint off
 IMAGES = (
-    ("day", "ARG_ImageSpace_marsh_day", "10A1BF:Skyrim.esm", 1.06, 1.0, 1.05,
+    ("day", "ARG_ImageSpace_marsh_day", "10A1EE:Skyrim.esm", 1.06, 1.0, 1.05,
      "dry clear day: a little saturation for the hot greens, contrast for hard sun; colour from the slots"),
-    ("dawn", "ARG_ImageSpace_marsh_dawn", "10A1C0:Skyrim.esm", 1.04, 0.98, 1.02,
+    ("dawn", "ARG_ImageSpace_marsh_dawn", "10A1EB:Skyrim.esm", 1.04, 0.98, 1.02,
      "low sun through humid air: the gold is in the sunlight slot, not a screen wash"),
-    ("night", "ARG_ImageSpace_marsh_night", "10A1C2:Skyrim.esm", 0.88, 0.92, 1.0,
+    ("night", "ARG_ImageSpace_marsh_night", "10A1EC:Skyrim.esm", 0.88, 0.92, 1.0,
      "night: saturation down so the green-black slots read as dark, not tinted"),
-    ("mist", "ARG_ImageSpace_marsh_mist", "10A1C7:Skyrim.esm", 0.9, 1.0, 0.94,
+    ("mist", "ARG_ImageSpace_marsh_mist", "10A1CA:Skyrim.esm", 0.9, 1.0, 0.94,
      "mist flattens: contrast down, saturation down a step"),
-    ("haze", "ARG_ImageSpace_marsh_haze", "10A1BF:Skyrim.esm", 0.98, 1.02, 0.97,
+    ("haze", "ARG_ImageSpace_marsh_haze", "10A1C2:Skyrim.esm", 0.98, 1.02, 0.97,
      "tannin haze: soft contrast; the brown-gold is in the fog slots"),
-    ("storm", "ARG_ImageSpace_marsh_storm", "10A1CB:Skyrim.esm", 0.86, 0.92, 1.08,
+    ("storm", "ARG_ImageSpace_marsh_storm", "0C8217:Skyrim.esm", 0.86, 0.92, 1.08,
      "storm: desaturated, hard contrast for lightning"),
-    ("overcast", "ARG_ImageSpace_overcast", "10A1BF:Skyrim.esm", 0.95, 1.0, 0.98,
+    ("overcast", "ARG_ImageSpace_overcast", "10A1CE:Skyrim.esm", 0.95, 1.0, 0.98,
      "overcast: flat light, saturation a little down"),
-    ("rain", "ARG_ImageSpace_rain", "10A1CB:Skyrim.esm", 0.9, 0.96, 1.02,
+    ("rain", "ARG_ImageSpace_rain", "10A1C6:Skyrim.esm", 0.9, 0.96, 1.02,
      "rain: wet surfaces darken; saturation down"),
-    ("seafog", "ARG_ImageSpace_sea_fog", "10A1C7:Skyrim.esm", 0.88, 1.02, 0.92,
+    ("seafog", "ARG_ImageSpace_sea_fog", "10A1D6:Skyrim.esm", 0.88, 1.02, 0.92,
      "sea fog: the flattest of the set, bright and soft"),
-    ("montane", "ARG_ImageSpace_montane", "10A1BF:Skyrim.esm", 0.96, 1.0, 1.0,
+    ("montane", "ARG_ImageSpace_montane", "10A1FE:Skyrim.esm", 0.96, 1.0, 1.0,
      "montane haze: crisper than the lowland, a little cool"),
 )
 

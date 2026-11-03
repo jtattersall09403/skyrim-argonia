@@ -397,3 +397,47 @@ def region_weather(w) -> list[str]:
             if not mw or not ({mw[0]} | band) & {x["weather_id"] for x in lst}:
                 out.append(f"land_region {r['id']}: regime {r['regime']} has no mist weather in its list")
     return out
+
+
+# -- the sky against its template, from the bytes (lane 1.15-r5-sky) ----------------------------------------------
+# Not a world check (the values come from Skyrim.esm at write time): pure functions over records read with
+# terrain/esm.py, called by the region writer test on the written plugin.
+IMGS_TOD = {"sunrise": "DAWN", "day": "DAY", "sunset": ("DAWN", "DUSK"), "night": "NIGHT"}
+
+
+def _sub(rec, sig: str) -> bytes:
+    return rec.first(sig) or b""
+
+
+def _cloud_slots(rec) -> list[int]:
+    """The cloud layers a WTHR gives a texture (00TX is slot 0, 10TX slot 1, ... L0TX slot 28)."""
+    return [ord(s[0]) - 48 for s, _ in rec.subs if len(s) == 4 and s.endswith("0TX")]
+
+
+def sky_clouds(ours, tpl, pleasant: bool) -> list[str]:
+    """A WTHR's cloud layers against its template's: each textured layer drawn (NAM1) exactly where the template
+    draws it (all on stacked SkyrimCloudy's disabled overcast sheets), and a clear sky's per-layer colours (PNAM)
+    the template's (one cream colour on SkyrimClear's full-sky SkyrimCloudsFill layer painted a pale veil)."""
+    import struct
+    out = []
+    n1o, n1t = (struct.unpack("<I", _sub(r, "NAM1") or b"\0\0\0\0")[0] for r in (ours, tpl))
+    for i in _cloud_slots(tpl):
+        if (n1o >> i) & 1 != (n1t >> i) & 1:
+            out.append(f"cloud layer {i} {'off' if (n1o >> i) & 1 else 'on'} where the template has it "
+                       f"{'off' if (n1t >> i) & 1 else 'on'}")
+        if pleasant and _sub(ours, "PNAM")[i * 16:i * 16 + 16] != _sub(tpl, "PNAM")[i * 16:i * 16 + 16]:
+            out.append(f"cloud layer {i} colours not the template's (a clear sky's layers are tinted to it)")
+    return out
+
+
+def sky_image(ours, tpl, tod: str, tpl_edid: str) -> list[str]:
+    """An IMGS used at `tod` against its template: HDR (HNAM) the template's (ours put sky scale 1.6 against
+    Skyrim.esm's 0.02-0.38 and white 4.0 against 0.82-1.02), and the template a vanilla image space for that time of
+    day (ISSkyrimClearDAY_FF for noon; the day image once pointed at ISSkyrimClearDAWN_MA)."""
+    out = []
+    if _sub(ours, "HNAM")[:36] != _sub(tpl, "HNAM")[:36]:
+        out.append("HDR not the template's")
+    want = IMGS_TOD[tod]
+    if not any(f"{w}_" in tpl_edid or tpl_edid.endswith(w) for w in ((want,) if isinstance(want, str) else want)):
+        out.append(f"used at {tod} but its template {tpl_edid} is not a {want} image space")
+    return out

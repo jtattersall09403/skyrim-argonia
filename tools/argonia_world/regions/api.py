@@ -227,17 +227,15 @@ def _image_records(alloc, world) -> tuple[list[dict], dict]:
     recs = []
     for i in images.values():
         i["formKey"] = alloc.form_key(i["edid"], "IMGS", f"image_space.{i['id']}")
-        recs.append({"type": "IMGS", "edid": i["edid"], "formKey": i["formKey"],
+        # HDR (HNAM) is the template's, as WATR carries its template's body (decision 0034, lane 1.15-r5-sky): our
+        # own starting point put sky scale 1.6 against Skyrim.esm's 0.02-0.3 and white 4.0 against 0.88-1.02, a sky
+        # blown to a flat pale sheet at noon
+        recs.append({"type": "IMGS", "edid": i["edid"], "formKey": i["formKey"], "template": i["template_form_key"],
                      "cinematic": {"saturation": i["saturation"], "brightness": i["brightness"],
                                    "contrast": i["contrast"]},
                      "tint": {"color": rgb(i["tint"]), "amount": i["tint_amount"]},
-                     "hdr": dict(IMGS_HDR)})
+                     "hdrFromTemplate": True})
     return recs, images
-
-
-# HDR values of ours (a starting point for 4.6): a gentle eye adaptation and bloom for a bright, wet air.
-IMGS_HDR = {"eyeAdaptSpeed": 1.0, "eyeAdaptStrength": 0.3, "bloomBlurRadius": 4.0, "bloomThreshold": 0.7,
-            "bloomScale": 0.4, "receiveBloomThreshold": 0.6, "white": 4.0, "sunlightScale": 1.6, "skyScale": 1.6}
 
 
 def _weather_records(alloc, world, images: dict) -> list[dict]:
@@ -263,7 +261,11 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
                        "alpha": {"sunrise": 1.0, "day": 1.0, "sunset": 1.0, "night": 1.0},
                        # a clear (Pleasant) sky keeps its template's per-layer alphas, as Skyrim's SkyrimClear does
                        # (0.2-0.8 on its upper layers): a full deck on every layer hid the sun (decision 0034)
-                       "alphaFromTemplate": w["classification"] == "Pleasant"},
+                       "alphaFromTemplate": w["classification"] == "Pleasant",
+                       # ... and its per-layer colours: SkyrimClear tints its full-sky SkyrimCloudsFill layer the
+                       # zenith's dark blue (114E77 at noon); one cream cloud colour on it painted a pale veil over
+                       # the whole sky (lane 1.15-r5-sky)
+                       "coloursFromTemplate": w["classification"] == "Pleasant"},
             "windSpeed": w["wind"], "transDelta": 4.0, "sunGlare": w["sun_glare"], "sunDamage": w["sun_damage"],
             "precipitationFadeIn": w["precip_fade_in"], "precipitationFadeOut": w["precip_fade_out"],
             "thunderFrequency": thunder,

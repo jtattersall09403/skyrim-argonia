@@ -46,7 +46,7 @@ Clouds:
     Day: 1
     Sunset: 1
     Night: 1
-- Enabled: True
+- Enabled: False
   XSpeed: 0.01968504
   YSpeed: 0
   Colors:
@@ -124,7 +124,7 @@ Clouds:
     Day: 1
     Sunset: 1
     Night: 1
-- Enabled: True
+- Enabled: False
   XSpeed: 0.01968504
   YSpeed: 0
   Colors:

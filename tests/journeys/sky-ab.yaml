@@ -1,0 +1,323 @@
+# The sky A/B (lane 1.15-r5-sky; owner #37, 2026-11-03): one coastal shore and one highland vantage of the world
+# panel, each at noon and dawn 06:30, clear-dry forced by its runtime form id (sw + fw Argonia.esm|0x000E9B),
+# first person, HUD off, the camera pitched 12 degrees up so the zenith is in frame. The planner runs it twice on
+# one deploy: under the Community Shaders launch and the shaders-off launch. A reader answers per still: is the
+# sky visible (blue zenith, sparse clouds), is there a flat grey veil or ceiling over it, is there a yellow or olive
+# cast; then compares the two launches. Each step checks only that the teleport landed and the weather took.
+{
+ "id": "sky-ab",
+ "runner": 1,
+ "crash_risk": "medium",
+ "scene": "world-panel",
+ "camera": "first",
+ "steps": [
+  {
+   "name": "first-person-no-hud",
+   "do": [
+    {
+     "wait": 10
+    },
+    {
+     "hud": "off"
+    }
+   ],
+   "expect": []
+  },
+  {
+   "name": "coastal-lagoon-shore-noon",
+   "do": [
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 94"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": 108500
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": 109100
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": -66348
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": -65748
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
+    }
+   ]
+  },
+  {
+   "name": "coastal-lagoon-shore-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 94"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": 108500
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": 109100
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": -66348
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": -65748
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-high-noon",
+   "do": [
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 12"
+    },
+    {
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": -209196
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": -208596
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": 143316
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": 143916
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-high-dawn",
+   "do": [
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": -209196
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": -208596
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": 143316
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": 143916
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "ARG_Weather_clear_dry",
+     "within": 20
+    }
+   ]
+  }
+ ]
+}
