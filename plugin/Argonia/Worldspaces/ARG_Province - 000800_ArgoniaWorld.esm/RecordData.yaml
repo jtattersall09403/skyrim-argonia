@@ -16753,5 +16753,47 @@ TopCell:
     Placement:
       Position: -64034.63, -177778.97, 218.49
       Rotation: 0, 0, 6.265732
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF6:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationKeptGuar1Pen
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Owner: 000EF8:Argonia.esm
+    Placement:
+      Position: -231276.94, 47914.31, 4782.94
+  - MutagenObjectType: PlacedObject
+    FormKey: 000EF9:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationKeptGuar2Pen
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000034:Skyrim.esm
+    Owner: 000EFB:Argonia.esm
+    Placement:
+      Position: -231178.89, 47914.31, 4776.82
+  - MutagenObjectType: PlacedNpc
+    FormKey: 000EFC:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationKeptGuar1
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000EF8:Argonia.esm
+    Placement:
+      Position: -231276.94, 47914.31, 4782.94
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 000EFD:Argonia.esm
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_Ref_ClaywaterStationKeptGuar2
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000EFB:Argonia.esm
+    Placement:
+      Position: -231178.89, 47914.31, 4776.82
+    MajorFlags:
+    - Persistent
   MajorFlags:
   - Persistent
