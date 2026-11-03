@@ -20,12 +20,7 @@ Race: 005901:King of the Murkmire.esp
 Perks: []
 Items: []
 AIData:
-  Aggression: VeryAggressive
-  Confidence: Foolhardy
   EnergyLevel: 50
-  AggroRadiusBehavior: True
-  WarnOrAttack: 2000
-  Attack: 1500
 Packages:
 - 000EFA:Argonia.esm
 Class: 000806:Argonia.esm
