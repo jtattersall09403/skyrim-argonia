@@ -7,6 +7,10 @@ crash_risk: low
 scene: ui-props
 camera: first
 steps:
+  - name: props-found
+    do: [{wait: 2}]
+    expect:
+      - {read: [refs, ARG_Cont_OpeningWorkCampGuardStores, "1500"], path: refs.1.ref, keep: lockbox}
   - name: lockpicking
     # a screen under check, opened directly (owner 2026-11-03): `lockpick` tries the console's activate, which skips
     # the lock (151959), and only then falls back to the engine's own pick; it fails unless the Lockpicking Menu opens
