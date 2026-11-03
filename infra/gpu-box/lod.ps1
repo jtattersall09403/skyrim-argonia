@@ -278,7 +278,9 @@ switch ($Step) {
     Dump $p 'options'
     Click $p 'Start'
     Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'TexGen completed successfully' }
-    $txt = Tool-Text $p; Set-Content "$Work\logs\texgen-messages.txt" $txt
+    $t1 = Get-Date  # as terrain: re-read until the finish line is there (close-8, 20:39), not once
+    do { $txt = Tool-Text $p; if ($txt -match 'completed successfully') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
+    Set-Content "$Work\logs\texgen-messages.txt" $txt
     if ($txt -notmatch 'completed successfully') { $p | Stop-Process -Force; throw 'texgen: did not complete' }
     Click $p 'Exit TexGen'; if (-not $p.WaitForExit(120000)) { $p | Stop-Process -Force }
     Link-Into-Data $Out.texgen
@@ -309,7 +311,9 @@ switch ($Step) {
     Click $p 'OK'
     }
     Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
-    $txt = Tool-Text $p; Set-Content "$Work\logs\dyndolod-messages.txt" $txt
+    $t1 = Get-Date  # as terrain: re-read until the finish line is there (close-8, 20:39), not once
+    do { $txt = Tool-Text $p; if ($txt -match 'generated successfully') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
+    Set-Content "$Work\logs\dyndolod-messages.txt" $txt
     if ($txt -notmatch 'generated successfully') { $p | Stop-Process -Force; throw 'dyndolod: did not complete' }
     Click $p 'Save and Exit'; if (-not $p.WaitForExit(300000)) { $p | Stop-Process -Force }
   }
