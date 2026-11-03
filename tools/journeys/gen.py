@@ -9,7 +9,7 @@ import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import JOURNEYS, ROOT, SEAT_U, Build, aim, eye_of, place
+from tools.journeys import (JOURNEYS, ROOT, SEAT_U, WATER_MIN_SHARE_BY_STEP, WATER_MIN_SHARE, Build, min_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
@@ -235,8 +235,115 @@ def _water_stop(b: Build, name: str, subj: tuple, ux: float, uy: float, log: lis
     f = place(b, subj, d, around(math.degrees(math.atan2(ux, uy)) % 360))
     if not f["dry"]:
         return None
-    log.append({"journey": "water-types", "step": name, "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
-    return f
+    return f   # the fit (_fit) logs the stand it settles on
+
+
+FIT_REACH_M = 30.0      # a stand the clearance moved is searched for within this of the authored one
+FIT_SHORES = 40         # the shores tried, best first, before the refresh fails
+FIT_WET_M = 40.0        # the subject of a non-sea stop: the wet point nearest the body's centre within this
+
+
+def _wet_near(b: Build, pt: tuple, reach_m: float = FIT_WET_M):
+    """The wet point nearest pt (2 m grid) within reach_m, or None."""
+    n = int(reach_m / SAMPLE_M)
+    for i, j in sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)), key=lambda c: c[0] ** 2 + c[1] ** 2):
+        if math.hypot(i, j) > n:
+            break
+        x, y = pt[0] + i * SAMPLE_M * U, pt[1] + j * SAMPLE_M * U
+        if b.wet(x, y):
+            return x, y, b.water_u(x, y)
+    return None
+
+
+def _first_wet(b: Build, pt: tuple, ux: float, uy: float, limit_m: float = 400.0):
+    """From pt, walk (ux, uy) to the first wet sample (pt itself if wet): the real shore of a water cell dry at its middle."""
+    for k in range(int(limit_m / SAMPLE_M)):
+        px, py = pt[0] + ux * k * SAMPLE_M * U, pt[1] + uy * k * SAMPLE_M * U
+        if b.wet(px, py):
+            return px, py, b.water_u(px, py)
+    return None
+
+
+def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
+    """The authored stand `f` aimed at the body's centre, or (clearance, slope or foliage moved it, or its field holds too
+    little water) the nearest stand within FIT_REACH_M, dry and clear, whose aim point is water and whose near field
+    (0-60 m, +-30 deg) is at least WATER_MIN_SHARE water at or below the eye. Raises when none: no silent off-aim stop.
+    Returns (x, y, subject, share)."""
+    n = int(FIT_REACH_M / SAMPLE_M)
+    cands = sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)), key=lambda c: c[0] ** 2 + c[1] ** 2)
+    best, why = 0.0, {}
+    for i, j in cands:
+        if math.hypot(i, j) * SAMPLE_M > FIT_REACH_M:
+            break
+        x, y = f["x"] + i * SAMPLE_M * U, f["y"] + j * SAMPLE_M * U
+        if b.wet(x, y):
+            continue
+        brg = math.atan2(centre[0] - x, centre[1] - y)
+        if sea:   # the aim 400 m out over water, the horizon in frame
+            subj = (x + math.sin(brg) * SEA_OUT_M * U, y + math.cos(brg) * SEA_OUT_M * U, b.water_u(*(
+                x + math.sin(brg) * SEA_OUT_M * U, y + math.cos(brg) * SEA_OUT_M * U)) or 0.0)
+        else:
+            w_ = _wet_near(b, centre)
+            subj = w_ and (w_[0], w_[1], w_[2])
+        if not subj or not b.wet(subj[0], subj[1]):
+            continue
+        h = math.degrees(math.atan2(subj[0] - x, subj[1] - y)) % 360
+        sh = water_share(b, x, y, h)
+        best = max(best, sh)
+        if sh < min_share(name):
+            continue
+        ex, ey, ez = eye_of(b, x, y)
+        if sea:
+            subj = (subj[0], subj[1], ez)   # level: pitch 0
+        a_ = math.radians(h)   # the eye line is judged over the near field (a far shore's trees are the horizon)
+        near_ = (ex + math.sin(a_) * 60 * U, ey + math.cos(a_) * 60 * U, ez)
+        if bad := stand_bad(b, x, y, near_):
+            why[bad[0].split(" at")[0]] = why.get(bad[0].split(" at")[0], 0) + 1
+            continue
+        if b.blockers((ex, ey, ez), near_):
+            why["plants"] = why.get("plants", 0) + 1
+            continue
+        if i or j:
+            log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(i, j) * SAMPLE_M, 1),
+                        "why": "re-aimed at the body's centre", "clear": True})
+        return x, y, subj, sh
+    raise ValueError(f"water-types: {name}: no stand within {FIT_REACH_M:.0f} m of ({f['x']:.0f}, {f['y']:.0f}) whose near "
+                     f"field holds {min_share(name):.0%} water with a water aim (best share {best:.0%}; rejected for {why})")
+
+
+def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dict, line: dict, reach_of: dict, log: list):
+    """One water stop at a shore cell (cx, cy), its dry side (dx, dy): the stand fitted to hold water (_fit)."""
+    ox, oy = su.cell_origin(cx, cy)
+    z = su.metres_to_units(level[(cx, cy)])
+    f = None
+    if name in ("river", "stream"):
+        pts = line[reach_of[(cx, cy)]]
+        mid = min(range(len(pts) - 1), key=lambda i: math.hypot(pts[i][0] - ox - su.CELL_UNITS / 2, pts[i][1] - oy - su.CELL_UNITS / 2))
+        ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
+        tx, ty = pts[ahead][0] - pts[mid][0], pts[ahead][1] - pts[mid][1]
+        n = math.hypot(tx, ty) or 1.0
+        for side in (1, -1):  # the bank to the reach's left, then right, standing back upstream of the subject
+            nx, ny = -ty / n * side, tx / n * side
+            f = _water_stop(b, name, (pts[mid][0], pts[mid][1], z), nx, ny, log)
+            if f:
+                # face downstream: the subject moves down the reach, the stand stays on the bank
+                subj = (pts[ahead][0], pts[ahead][1], z)
+                break
+    else:
+        dist = SEA_OUT_M * U if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS
+        sx = ox + su.CELL_UNITS / 2 - dx * dist
+        sy = oy + su.CELL_UNITS / 2 - dy * dist
+        subj = (sx, sy, z)
+        near = (ox + su.CELL_UNITS / 2, oy + su.CELL_UNITS / 2, z)
+        near = _first_wet(b, near, -dx, -dy) or _cell_low(b, cx, cy, wet=True)
+        f = _water_stop(b, name, near, dx, dy, log)
+        if f:   # the body's centre: from the shore point out over the water (the sea: 400 m, the horizon in frame)
+            sh = _shore(b, near[0], near[1], dx, dy) or near
+            subj = (sh[0] - dx * (SEA_OUT_M if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS / U) * U,
+                    sh[1] - dy * (SEA_OUT_M if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS / U) * U, z)
+    if not f:
+        raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
+    return _fit(b, name, f, subj, name == "sea", log)
 
 
 def water_types(b: Build, w, log: list) -> str:
@@ -253,7 +360,7 @@ def water_types(b: Build, w, log: list) -> str:
     inside = lambda x, y: x0 + 1 <= x < x0 + su.PROVINCE_CELLS - 1 and y0 + 1 <= y < y0 + su.PROVINCE_CELLS - 1  # noqa: E731
     out, first = [WATER_TYPES_HEAD], True
     for name, want in WATER_TYPE_STOPS:
-        best = None
+        cands_ = []
         for (cx, cy), t in sorted(types.items()):
             if t not in want:
                 continue
@@ -265,38 +372,28 @@ def water_types(b: Build, w, log: list) -> str:
                     score = len(pts) if len(pts) > 12 else 0
                 else:
                     score = sum(1 for k in range(1, REACH_CELLS + 1) if types.get((cx - dx * k, cy - dy * k)) in want)
-                if score and (best is None or score > best[0]):
-                    best = (score, (cx, cy), (dx, dy))
-        if best is None:
+                if score:
+                    cands_.append((score, (cx, cy), (dx, dy)))
+        if not cands_:
             raise ValueError(f"water-types: no shore cell of {want}")
-        _, (cx, cy), (dx, dy) = best
-        ox, oy = su.cell_origin(cx, cy)
-        z = su.metres_to_units(level[(cx, cy)])
-        f = None
-        if name in ("river", "stream"):
-            pts = line[reach_of[(cx, cy)]]
-            mid = min(range(len(pts) - 1), key=lambda i: math.hypot(pts[i][0] - ox - su.CELL_UNITS / 2, pts[i][1] - oy - su.CELL_UNITS / 2))
-            ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
-            tx, ty = pts[ahead][0] - pts[mid][0], pts[ahead][1] - pts[mid][1]
-            n = math.hypot(tx, ty) or 1.0
-            for side in (1, -1):  # the bank to the reach's left, then right, standing back upstream of the subject
-                nx, ny = -ty / n * side, tx / n * side
-                f = _water_stop(b, name, (pts[mid][0], pts[mid][1], z), nx, ny, log)
-                if f:
-                    # face downstream: the subject moves down the reach, the stand stays on the bank
-                    subj = (pts[ahead][0], pts[ahead][1], z)
-                    break
+        cands_.sort(key=lambda c: -c[0])   # the best shore first; a shore with no stand holding water goes to the next
+        err = None
+        for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
+            n_log = len(log)
+            try:
+                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log)
+            except ValueError as e:
+                err = err or e
+                del log[n_log:]
+                continue
+            break
         else:
-            dist = SEA_OUT_M * U if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS
-            sx = ox + su.CELL_UNITS / 2 - dx * dist
-            sy = oy + su.CELL_UNITS / 2 - dy * dist
-            subj = (sx, sy, z)
-            near = (ox + su.CELL_UNITS / 2, oy + su.CELL_UNITS / 2, z)
-            f = _water_stop(b, name, near if b.wet(*near[:2]) else _cell_low(b, cx, cy, wet=True), dx, dy, log)
-        if not f:
-            raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
-        x, y = f["x"], f["y"]
+            raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
+        x, y, subj, share = got
+        print(f"water-types: {name}: water share {share:.0%} of the near field (0-60 m, +-30 deg; needs {min_share(name):.0%})")
         h, p = aim(eye_of(b, x, y), subj)
+        if name == "sea":
+            p = 0.0
         out.append(_cow_step(name, f"{types[(cx, cy)]} water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m",
                              x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first))
         first = False

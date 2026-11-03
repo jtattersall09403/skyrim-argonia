@@ -413,6 +413,8 @@ def check(b: Build, names=DERIVED) -> dict[str, list[str]]:
         j = yaml.safe_load(text)
         ss = stands(text) + scene_stands(j.get("scene") or "")
         out[n] = [e for s in ss if (e := check_stand(b, s))]
+        if n in WATER_JOURNEYS:
+            out[n] += [e for s in water_stops(text) if (e := water_stop_bad(b, s))]
     return out
 
 
@@ -451,3 +453,77 @@ def reframe(b: Build, text: str, log: list) -> str:
                                     lines[i])
         log.append({"step": name, **{k: f[k] for k in ("moved_m", "why", "clear")}})
     return "\n".join(lines) + ("\n" if text.endswith("\n") else "")
+
+
+# -- water stops: the eye must hold water (lane harness-r5-water-aim) ---------------------------------------------------
+WATER_NEAR_M, WATER_HALF_DEG, WATER_MIN_SHARE = 60.0, 30.0, 0.4   # near field 0-60 m, +-30 degrees, >= 40% water
+WATER_JOURNEYS = ("water-types",)
+# A creek is a few metres wide: no stand can have 40% of a 60 m, 60 degree field in it (the widest possible is ~20%), so a
+# stream holds the share its width allows; its aim point must still be water and its channel in frame.
+WATER_MIN_SHARE_BY_STEP = {"stream": 0.08}
+
+
+def min_share(step: str) -> float:
+    return WATER_MIN_SHARE_BY_STEP.get(step, WATER_MIN_SHARE)
+
+
+def water_share(b: Build, x: float, y: float, heading: float, near_m: float = WATER_NEAR_M,
+                half_deg: float = WATER_HALF_DEG) -> float:
+    """The share (by ground area) of the near field, 0-near_m along `heading` (Skyrim bearing) and +-half_deg, that is
+    water at or below the eye and in sight: the ground there lies under the water level, the level is not above the eye,
+    and the ground between does not rise over the line from the eye to it."""
+    u = su.UNITS_PER_METRE
+    ex, ey, ez = eye_of(b, x, y)
+    tot = hit = 0.0
+    n_r, n_a = 15, 13
+    for i in range(n_r):
+        r = (i + 0.5) * near_m / n_r
+        for j in range(n_a):
+            a = math.radians(heading + (j / (n_a - 1) - 0.5) * 2 * half_deg)
+            wgt = r  # polar area weight
+            tot += wgt
+            px, py = x + math.sin(a) * r * u, y + math.cos(a) * r * u
+            lv = b.water_u(px, py)
+            if lv is None or lv > ez or b.ground_u(px, py) >= lv:
+                continue
+            seen = True
+            for k in range(1, 9):   # the ground between the eye and the point must not rise over the line
+                t = k / 9
+                qx, qy = x + (px - x) * t, y + (py - y) * t
+                if b.ground_u(qx, qy) > ez + (lv - ez) * t:
+                    seen = False
+                    break
+            if seen:
+                hit += wgt
+    return hit / tot if tot else 0.0
+
+
+def water_stops(text: str) -> list[dict]:
+    """The stops of a water journey: name, stand (x, y), heading, subject (x, y)."""
+    lines = text.splitlines()
+    out = []
+    for name, a, z in steps_of(text):
+        blk = "\n".join(lines[a:z])
+        pos = {k: float(v) for k, v in SETPOS.findall(blk)}
+        ang = {k: float(v) for k, v in SETANGLE.findall(blk)}
+        m = SUBJECT.search(blk)
+        if {"x", "y"} <= set(pos) and m and "z" in ang:
+            out.append({"step": name, "x": pos["x"], "y": pos["y"], "heading": ang["z"],
+                        "subject": tuple(float(v) for v in m.groups())})
+    return out
+
+
+def water_stop_bad(b: Build, s: dict) -> str | None:
+    """Why a water stop does not look at water, else None: the aim point is not a water cell, the aim does not point at the
+    subject, or the near field holds under WATER_MIN_SHARE water."""
+    sx, sy = s["subject"][0], s["subject"][1]
+    want = math.degrees(math.atan2(sx - s["x"], sy - s["y"])) % 360
+    off = abs((s["heading"] - want + 180) % 360 - 180)
+    if off > 3:
+        return f"{s['step']}: heading {s['heading']:.0f} is {off:.0f} deg off its subject (bearing {want:.0f})"
+    if not b.wet(sx, sy):
+        return f"{s['step']}: the aim point {sx:.0f} {sy:.0f} is not a water cell"
+    sh = water_share(b, s["x"], s["y"], s["heading"])
+    if sh < min_share(s['step']):
+        return f"{s['step']}: water is {sh:.0%} of the near field (0-60 m, +-30 deg), under {min_share(s['step']):.0%}"
+    return None

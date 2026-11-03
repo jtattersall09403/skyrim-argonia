@@ -122,3 +122,44 @@ def test_a_stand_inside_geometry_or_on_a_cliff_is_bad():
     b.foliage_near = lambda x, y, r: []
     assert not stand_bad(b, 0.0, 0.0, (15 * u, 0.0, 120.0))
     assert any("slope" in w for w in stand_bad(b, 1500.0, 0.0, (1500.0 + 15 * u, 0.0, 3000.0)))
+
+
+class Pond(J.Build):
+    """Flat 10 m ground; water (level 10.5 m) in every cell whose index is in `wet` (a synthetic cell grid)."""
+    def __init__(self, wet):
+        super().__init__(ground=np.full((80, 80), 10.0, np.float32), water={}, refs={})
+        self.wet_cells = set(wet)
+
+    def water_u(self, x, y):
+        return 10.5 * U if su.cell_of(x, y) in self.wet_cells else None
+
+    def _cell_foliage(self, cx, cy):
+        return []
+
+
+def test_water_share_counts_the_water_in_the_aim_field_and_not_behind_it():
+    cx, cy = su.cell_of(*at(60, 60))
+    b = Pond({(cx, cy + k) for k in range(1, 4)})        # water from the next cell north on
+    x, y = at(60, 60)
+    assert J.water_share(b, x, y, 0) > 0.4               # facing the water
+    assert J.water_share(b, x, y, 180) == 0.0            # facing away
+    assert J.water_share(Pond(set()), x, y, 0) == 0.0    # no water at all
+
+
+def test_water_stop_bad_flags_an_off_water_aim_and_a_dry_field_and_passes_a_good_one():
+    cx, cy = su.cell_of(*at(60, 60))
+    b = Pond({(cx, cy + k) for k in range(0, 4)})
+    x, y = su.cell_origin(cx, cy)[0] + 100, su.cell_origin(cx, cy)[1] - 10 * U
+    good = {"step": "t", "x": x, "y": y, "heading": 0.0, "subject": (x, y + 100 * U, 10.5 * U)}
+    assert J.water_stop_bad(b, good) is None
+    assert "not a water cell" in J.water_stop_bad(b, {**good, "subject": (x, y - 30 * U, 10.5 * U), "heading": 180.0})
+    assert "off its subject" in J.water_stop_bad(b, {**good, "heading": 90.0})
+    ox, oy = su.cell_origin(cx, cy)
+    dry = {**good, "x": ox + 100, "y": oy + 100, "subject": (ox + 100, oy + 3.5 * su.CELL_UNITS, 10.5 * U)}  # water 3 cells out
+    assert "of the near field" in J.water_stop_bad(Pond({(cx, cy + 3)}), dry)
+
+
+def test_water_stops_parse_a_journey_text():
+    text = ("steps:\n- name: s1\n  # subject: 10 20 30\n  do:\n  - console: player.setpos x 1\n  - console: player.setpos y 2\n"
+            "  - console: player.setangle z 90\n")
+    assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "subject": (10.0, 20.0, 30.0)}]
