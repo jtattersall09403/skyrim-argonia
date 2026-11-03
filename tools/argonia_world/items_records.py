@@ -177,7 +177,7 @@ def kit_records(alloc: Allocator, world, kit) -> list[dict]:
     return out
 
 
-GOLD, GOLD_EDID, GOLD_KEY = "item.gold", "Gold001", "00000F:Skyrim.esm"  # the engine's currency, no record of ours
+GOLD, GOLD_EDID, GOLD_KEY = "item.gold", "0000000F", "00000F:Skyrim.esm"  # the engine's currency, no record of ours
 
 
 def kit_edid(world, item_id: str) -> str:

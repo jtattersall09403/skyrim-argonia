@@ -171,7 +171,7 @@ def test_kit_is_weapons_ammunition_and_armour(world, alloc):
     kit = json.loads((QUARANTINE / "start.json").read_text(encoding="utf-8"))["player"]["kit"]
     gold = [k for k in kit if k["item"] == "item.gold"]  # owner play test 3, finding 34: gold to try the shops
     assert len(gold) == 1 and gold[0]["count"] == 5000
-    assert ir.kit_edid(world, "item.gold") == "Gold001"
+    assert ir.kit_edid(world, "item.gold") == "0000000F"  # the console takes the form id; it refused the editor name Gold001 (round 4 deploy)
     assert ir.kit_entries(None, world, gold) == [{"item": "00000F:Skyrim.esm", "count": 5000}]
     assert ir.kit_records(alloc, world, gold) == []
     kit = [k for k in kit if k["item"] != "item.gold"]
