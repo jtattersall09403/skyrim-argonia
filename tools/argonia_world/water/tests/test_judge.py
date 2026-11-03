@@ -76,13 +76,47 @@ def test_hovering_sheet_at_a_bank():
 
 
 def test_still_and_flow():
-    still, flow = layer.type_key("fresh"), layer.type_key("fresh" + layer.FLOW)
-    t = {r["formKey"]: r["template"] for r in layer.records()}
-    assert judge.still_flow([(0, 0, "body.1", None, still), (0, 1, None, "reach.1", flow)], t) == []
-    assert judge.still_flow([(0, 0, None, "reach.1", still)], t)
-    assert judge.still_flow([(0, 0, "body.1", "reach.1", flow)], t)
-    assert layer.cell_type("fresh", None, "reach.1") == "fresh-flow"
-    assert layer.cell_type("sea", None, "reach.1") == "sea"
+    still, flow = layer.type_key("lake"), layer.type_key("river-ne")
+    f = {layer.type_key(t): layer.is_flow(t) for t in layer.EMIT_TYPES}
+    assert judge.still_flow([(0, 0, "body.1", None, still), (0, 1, None, "reach.1", flow)], f) == []
+    assert judge.still_flow([(0, 0, None, "reach.1", still)], f)
+    assert judge.still_flow([(0, 0, "body.1", "reach.1", flow)], f)
+    assert judge.still_flow([(0, 0, "body.1", None, "FFFFFF:X.esm")], f)
+
+
+def test_cell_type_keys_on_the_database():
+    ct = layer.cell_type
+    assert ct("sea", None, None, None, None, None) == "sea" and ct("sea", "lagoon", "tidal", None, None, None) == "sea"
+    assert ct("brackish", "marsh-deep", "lowland", None, None, None) == "brackish"
+    assert ct("blackwater", "mudflat", "tidal", None, None, None) == "brackish"
+    assert ct("fresh", None, None, "reach.1", 1, "sw") == "creek-sw"
+    assert ct("blackwater", None, None, "reach.1", 3, "nw") == "river-nw"
+    assert ct("blackwater", None, None, "reach.1", None, "se") == "river-se"  # a tidal channel, no river
+    assert ct("blackwater", "marsh-deep", "lowland", None, None, None) == "marsh"
+    assert ct("fresh", "backswamp", "upland", "reach.1", 2, "ne") == "marsh"  # a body's cell is still
+    assert ct("blackwater", "swamp", "lowland", None, None, None) == "black"
+    assert ct("blackwater", "marsh-fringe", "lowland", None, None, None) == "black"
+    assert ct("fresh", "pond", "montane", None, None, None) == "cold"
+    assert ct("fresh", "tarn-upland", "upland", None, None, None) == "cold"
+    assert ct("fresh", "pond", "lowland", None, None, None) == "lake"
+    assert ct("fresh", "lake-lowland", "lowland", None, None, None) == "lake"
+    assert ct("blackwater", None, None, None, None, None) == "black" and ct("fresh", None, None, None, None, None) == "lake"
+    with pytest.raises(ValueError):
+        ct("fresh", "geyser", "lowland", None, None, None)
+    assert layer.quadrant(1, 1) == "ne" and layer.quadrant(-1, 1) == "nw" and layer.quadrant(1, -1) == "se"
+    assert layer.quadrant(-1, -1) == "sw"
+    assert all(t.split("-")[0] in ("river", "creek") for t in layer.EMIT_TYPES if layer.is_flow(t))
+    assert {f"{k}-{q}" for k in ("river", "creek") for q in layer.QUADS} <= set(layer.EMIT_TYPES)
+
+
+def test_types_counts_and_winners():
+    recs = [{"formKey": "A", "edid": "ARG_a", "template": "Tropical Skyrim.esp:DefaultWater"},
+            {"formKey": "B", "edid": "ARG_b", "template": "Skyrim.esm:DefaultMarshWater"}]
+    win = {"DefaultWater": ("Tropical Skyrim.esp", None), "DefaultMarshWater": ("Tropical Skyrim.esp", None)}
+    counts, bad = judge.types([(0, 0, None, None, "A"), (0, 1, None, None, "A"), (0, 2, None, None, "C")], recs, win)
+    assert counts == {"ARG_a": 2, "ARG_b": 0}
+    assert any("(0,2)" in b for b in bad) and any("ARG_b copies Skyrim.esm" in b for b in bad) and len(bad) == 2
+    assert judge.types([(0, 0, None, None, "A")], recs[:1], None) == ({"ARG_a": 1}, [])
 
 
 @pytest.mark.parametrize("drop", [0.5, 2.0, 8.0, 20.0])

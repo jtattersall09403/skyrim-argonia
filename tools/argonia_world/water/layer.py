@@ -1,61 +1,104 @@
-"""The water's records: four WATR types (intermediate records, README contract; no water-plane activators since
-1.15: every cell's water is its own XCLW/XCWT, decision 0033 §1),
-and the per-cell stream `out/water/cells.jsonl` that the worldspace writer applies to each exterior CELL through
-`WaterRecords.ApplyCell` (agreed with the 2.W1 lane on 2026-10-29).
+"""The water's records: the WATR types (intermediate records, README contract; no water-plane activators since
+1.15: every cell's water is its own XCLW/XCWT, decision 0033 §1), and the per-cell stream `out/water/cells.jsonl`
+that the worldspace writer applies to each exterior CELL through `WaterRecords.ApplyCell` (agreed with the 2.W1
+lane on 2026-10-29).
 
 Plugin (decision 0031): the water belongs to `ArgoniaWorld.esm` with the cells it stands in (the WRLD's default
-water links the sea type, and that plugin is the master). FormIDs come from a reserved range computed from the cell
-grid, as 0031 §3 rules for the generated master: the types and activators at WATER_BASE + 0..7, each province cell
-a slot of REFS_PER_CELL ids from WATER_BASE + 0x100. A cell needing more refs than its slot is a plan error.
+and LOD water link the sea type, and that plugin is the master). FormIDs come from a reserved range computed from
+the cell grid, as 0031 §3 rules for the generated master: the types at WATER_BASE + 0..len(TYPES)-1, each province
+cell a slot of REFS_PER_CELL ids from WATER_BASE + 0x100. A cell needing more refs than its slot is a plan error.
 
-Each type's shading body (noise textures, specular, fresnel, displacement) is Skyrim.esm's DefaultWater (TEMPLATE,
-decision 0034: every vanilla WATR carries them, and a bare one draws flat opaque white, round 1 stills 2026-11-02);
-only the name is ours; opacity, colours and fog are the template's too (round 4).
+Types the Skyrim way (round 5, docs/research/2026-11-03/water-types.md, owner #37): Skyrim varies water by WATR
+parameters only and gives each cell one type (XCWT); its sea and lakes are the worldspace default DefaultWater, its
+marshes DefaultMarshWater with a DefaultMarshWaterTransition rim, its rivers RiverWaterFlowNE/NW/SE and its creeks
+CreekWaterFlowSE/SW, a flow direction baked per record. Each of our types copies one vanilla or dependency editor id
+whole (its shading body: textures, colours, fog, winds, specular; a bare WATR draws flat opaque white, round 1),
+and the copy is of the record the game RESOLVES: the last plugin in the load order that carries it (`winners`).
+Round 4 copied Skyrim.esm's DefaultWater, which Update.esm and Tropical Skyrim.esp override, so the game never
+showed the record we copied. Only the name is ours, and on the two directions vanilla never made (rivers flowing
+SW, creeks flowing NE/NW) the flow (NAM0 linear velocity and the three noise winds' directions) of the opposite
+record turned half a circle: the named `set` fields, nothing else.
+
+The per-cell type keys on what the database already holds (cell_water's water class, the body's kind and altitude
+band, the reach's river strahler and its centreline heading); `cell_type` is the rule.
 """
 from __future__ import annotations
 
+import os
+import struct
+from functools import lru_cache
+from pathlib import Path
+
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.water.solve import WATER_TYPES
 
 PLUGIN = "ArgoniaWorld.esm"
 WATER_BASE = 0x100000  # past the terrain's CELL/LAND range (0x810 + 2 x 262^2 = 0x22A30)
 REFS_PER_CELL = 256
 PROVINCE_CELLS = su.PROVINCE_CELLS
-# The shading body each type copies (WaterRecords.cs), still or flowing as Skyrim.esm does it (measured
-# 2026-11-03, the XCWT of Tamriel's 11,186 cells): its lakes and ponds are the world's default DefaultWater (10,742
-# cells carry no XCWT) and its marshes DefaultMarshWater; its rivers RiverWaterFlowNE/NW/SE, CreekWaterFlow* and
-# DefaultRiverWater (298 cells). The two differ in the noise layers' winds (DNAM): DefaultWater's speeds
-# 0.019/0.013/0.096, DefaultRiverWater's 0.044/0.033/0.145 with its flow normals on. Round 3 copied DefaultWater
-# into every type, rivers included, so nothing told still water from flowing (owner play test 3, finding 19).
-STILL_TEMPLATE = "Skyrim.esm:DefaultWater"
-FLOW_TEMPLATE = "Skyrim.esm:DefaultRiverWater"
-TEMPLATE = STILL_TEMPLATE
-NOISE_WIND_SPEED = {STILL_TEMPLATE: (0.019, 0.013, 0.096), FLOW_TEMPLATE: (0.044, 0.033, 0.145)}  # DNAM, measured
-FLOW = "-flow"  # a river cell's type: its class's flowing twin (the sea has none)
-EMIT_TYPES = WATER_TYPES + tuple(t + FLOW for t in WATER_TYPES if t != "sea")  # keys WATER_BASE + 0..6
+GAME_DATA = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
 
-# The name is the only field ours (round 4, decision 0034): opacity, the three colours, the fog above and below and every
-# other DNAM field are the template's own. The round-3/4 overrides (opacity 35-90 against vanilla's 30 and 50, fog
-# near 0 against -10 and -500, brighter colours) were a guess, and the shore stills read marbled, blotchy, black and
-# green with them; the authored look comes later by a decision (2.W2 a).
-TYPES = {"sea": "Sea", "brackish": "Brackish Water", "fresh": "Fresh Water", "blackwater": "Black Water"}
+QUADS = ("ne", "nw", "se", "sw")
+# type -> (name, the editor id it copies, flowing, the opposite direction's type it turns half a circle or None).
+# The first is the sea (WRLD NAM2/NAM3). Winners measured 2026-11-03 over the stack's load order: DefaultWater,
+# DefaultMarshWater and DefaultMarshWaterTransition = Tropical Skyrim.esp; DefaultBlackmarshWater = King of the
+# Murkmire.esp; DefaultWaterCold = Dawnguard.esm; RiverWaterFlowNE/NW/SE and CreekWaterFlowSE/SW = Update.esm.
+TYPES: dict[str, tuple[str, str, bool, str | None]] = {
+    "sea": ("Sea", "DefaultWater", False, None),
+    "lake": ("Lake Water", "DefaultWater", False, None),  # Skyrim's lakes are its sea's type; ours its twin
+    "marsh": ("Marsh Water", "DefaultMarshWater", False, None),  # marsh-deep, backswamp
+    "black": ("Black Water", "DefaultBlackmarshWater", False, None),  # swamp, marsh-fringe
+    "cold": ("Cold Water", "DefaultWaterCold", False, None),  # tarns, montane and upland ponds and pools
+    "brackish": ("Brackish Water", "DefaultMarshWaterTransition", False, None),  # the tidal rim
+    "river-ne": ("River", "RiverWaterFlowNE", True, None),
+    "river-nw": ("River", "RiverWaterFlowNW", True, None),
+    "river-se": ("River", "RiverWaterFlowSE", True, None),
+    "river-sw": ("River", "RiverWaterFlowNE", True, "ne"),
+    "creek-se": ("Stream", "CreekWaterFlowSE", True, None),
+    "creek-sw": ("Stream", "CreekWaterFlowSW", True, None),
+    "creek-nw": ("Stream", "CreekWaterFlowSE", True, "se"),
+    "creek-ne": ("Stream", "CreekWaterFlowSW", True, "sw"),
+}
+EMIT_TYPES = tuple(TYPES)
+STILL_KINDS = {"marsh-deep": "marsh", "backswamp": "marsh", "swamp": "black", "marsh-fringe": "black",
+               "tarn-upland": "cold", "plunge-pool": "cold", "lake-lowland": "lake", "lagoon": "sea",
+               "mudflat": "brackish"}
 
 
 def type_edid(t: str) -> str:
-    return f"ARG_WATR_{t}"
+    return f"ARG_WATR_{t.replace('-', '_')}"
 
 
 def type_key(t: str) -> str:
     return f"{WATER_BASE + EMIT_TYPES.index(t):06X}:{PLUGIN}"
 
 
-def template_of(t: str) -> str:
-    return FLOW_TEMPLATE if t.endswith(FLOW) else STILL_TEMPLATE
+def is_flow(t: str) -> bool:
+    return TYPES[t][2]
 
 
-def cell_type(wt: str, body_id: str | None, reach_id: str | None) -> str:
-    """The emitted type of a cell: a river's own cell (a reach's level, no body's) flows; every other is still."""
-    return wt + FLOW if reach_id and not body_id and wt != "sea" else wt
+def quadrant(dx_east: float, dy_north: float) -> str:
+    """A heading quantised to the four baked directions (NAM0's x east, y north, as RiverWaterFlowNE's (2.54, 1.35))."""
+    return ("n" if dy_north >= 0 else "s") + ("e" if dx_east >= 0 else "w")
+
+
+def cell_type(wt: str, kind: str | None, band: str | None, reach_id: str | None, strahler: int | None,
+              quad: str | None) -> str:
+    """The emitted type of a cell. A river's own cell (a reach's level, no body's) flows, its record by strahler
+    (1 a creek, 2+ a river; a reach of no river, the tidal channels, a river) and its reach's heading; every other
+    is still, by its water class and body kind."""
+    if wt == "sea":
+        return "sea"
+    if wt == "brackish":
+        return "brackish"
+    if reach_id and not kind:
+        return f"{'creek' if strahler == 1 else 'river'}-{quad or 'ne'}"
+    if kind is None:
+        return "black" if wt == "blackwater" else "lake"  # a step's foot or a bank fill: the class's still water
+    if kind in STILL_KINDS:
+        return STILL_KINDS[kind]
+    if kind in ("pond", "pool"):
+        return "lake" if band in ("lowland", "tidal") else "cold"
+    raise ValueError(f"water: body kind {kind!r} has no type")
 
 
 def ref_key(cx: int, cy: int, k: int) -> str:
@@ -66,10 +109,54 @@ def ref_key(cx: int, cy: int, k: int) -> str:
     return f"{WATER_BASE + 0x100 + i * REFS_PER_CELL + k:06X}:{PLUGIN}"
 
 
-def records() -> list[dict]:
-    """The WATR intermediate records (README contract; units and choices resolved here)."""
+def top_group(path: Path, sig: bytes) -> list:
+    """A plugin's records of one top group (esm.Record), seeking past the other groups (Skyrim.esm is 250 MB)."""
+    from tools.argonia_world.terrain import esm
+    with open(path, "rb") as f:
+        head = f.read(24)
+        f.seek(struct.unpack_from("<I", head, 4)[0] + 24)
+        while len(g := f.read(24)) == 24:
+            size = struct.unpack_from("<I", g, 4)[0]
+            if g[8:12] == sig:
+                body = g + f.read(size - 24)
+                return [r for r in esm.records(b"TES4" + struct.pack("<I", 0) + bytes(16) + body) if r.sig == sig.decode()]
+            f.seek(size - 24, 1)
+    return []
+
+
+@lru_cache(maxsize=4)
+def winners(data: Path = GAME_DATA) -> dict[str, tuple[str, object]]:
+    """Every WATR editor id -> (the last plugin in the load order carrying it, its record): what the game draws."""
+    from tools.argonia_world.intermediate import load_order
+    out: dict[str, tuple[str, object]] = {}
+    for p in load_order(Path(data)):
+        for r in top_group(Path(data) / p, b"WATR"):
+            out[r.first("EDID").rstrip(b"\0").decode()] = (p, r)
+    return out
+
+
+def template_of(t: str, data: Path = GAME_DATA) -> str:
+    edid = TYPES[t][1]
+    return f"{winners(Path(data))[edid][0]}:{edid}"
+
+
+def flow_set(t: str, data: Path = GAME_DATA) -> dict:
+    """The fields a turned type changes from its template: NAM0 and the three noise winds' directions, half a circle."""
+    if TYPES[t][3] is None:
+        return {}
+    r = winners(Path(data))[TYPES[t][1]][1]
+    v = struct.unpack("<3f", r.first("NAM0"))
+    d = struct.unpack_from("<3f", r.first("DNAM"), 25 * 4)
+    return {"linearVelocity": [-v[0], -v[1], v[2]], "windDirections": [(a + 180.0) % 360.0 for a in d]}
+
+
+def records(data: Path = GAME_DATA) -> list[dict]:
+    """The WATR intermediate records (README contract; units, winners and choices resolved here)."""
     out = []
     for t in EMIT_TYPES:
-        out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t.replace("-", "_")),
-                    "template": template_of(t), "layer": "base:water", "name": TYPES[t.removesuffix(FLOW)]})
+        rec = {"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "template": template_of(t, data),
+               "layer": "base:water", "name": TYPES[t][0], "flow": is_flow(t)}
+        if s := flow_set(t, data):
+            rec["set"] = s
+        out.append(rec)
     return out

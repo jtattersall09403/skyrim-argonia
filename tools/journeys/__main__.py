@@ -64,6 +64,8 @@ def refresh(only: set[str] | None = None) -> int:
         _reframe(b, "rock-booth", log)
     if want("river-steps"):
         (JOURNEYS / "river-steps.yaml").write_text(gen.river_steps(b, w, log))
+    if want("water-types"):
+        (JOURNEYS / "water-types.yaml").write_text(gen.water_types(b, w, log))
     if want("road-look"):
         (JOURNEYS / "road-look.yaml").write_text(gen.road_look(b, w, log))
     for n in ("claywater-look", "claywater-walk"):

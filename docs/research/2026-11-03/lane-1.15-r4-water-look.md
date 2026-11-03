@@ -4,7 +4,7 @@ Round 4 batch one: nine stills showed far water marbled and blocky white-and-dar
 
 ## The diff (out/ArgoniaWorld.esm, 03 Nov 01:03, the batch's build, against Skyrim.esm)
 
-- **Subrecords.** All seven types carry exactly their template's subrecords (DefaultWater: NNAM x3, ANAM, FNAM, SNAM, DATA, DNAM, GNAM, NAM0, NAM1; DefaultRiverWater: the same with MNAM instead of SNAM), plus FULL. NNAM, FNAM, SNAM/MNAM, DATA, GNAM, NAM0 and NAM1 match byte for byte. The noise maps are vanilla `textures/water/defaultwater.dds` (Skyrim - Textures7.bsa). No mod in the stack lays anything under textures/water/.
+- **Subrecords.** All seven types carry exactly their template's subrecords (DefaultWater: NNAM x3, ANAM, FNAM, SNAM, DATA, DNAM, GNAM, NAM0, NAM1; DefaultRiverWater: the same with MNAM instead of SNAM), plus FULL. NNAM, FNAM, SNAM/MNAM, DATA, GNAM, NAM0 and NAM1 match byte for byte. The noise maps are vanilla `textures/water/defaultwater.dds` (Skyrim - Textures7.bsa). (Corrected round 5: Tropical Skyrim lays a loose `textures/water/defaultwater.dds`, and Update.esm and Tropical Skyrim override the DefaultWater these copied; water-types.md finding A.)
 - **Fields that differ, all ours by design (layer.py TYPES):**
   - ANAM opacity: 35 to 90, against 30 (still) and 50 (river).
   - DNAM floats 8 and 9: above-water fog near and far. Near is 0 (the river template has -10); far runs 60 to 150 (vanilla 110 and 150).

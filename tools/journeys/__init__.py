@@ -39,7 +39,7 @@ NOT_FOLIAGE = ("rock",)
 TRUNKED = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree", "deadwood")  # leaves only up top
 CROWN_FROM, TRUNK_U = 0.4, 25.0   # a tree's crown from 0.4 of its height up; below it a trunk ~0.35 m round
 # The data-driven journeys: refresh re-derives them, the L1 test checks them.
-DERIVED = ("world-panel", "river-steps", "road-look", "claywater-walk", "claywater-look", "creature-spots", "tree-seat",
+DERIVED = ("world-panel", "river-steps", "water-types", "road-look", "claywater-walk", "claywater-look", "creature-spots", "tree-seat",
            "rock-booth")
 
 SETPOS = re.compile(r"player\.setpos ([xyz]) (-?\d+(?:\.\d+)?)")

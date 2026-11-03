@@ -158,7 +158,7 @@ def proving_ground(alloc: Allocator, resolver: Resolver) -> list[dict]:
                 teleport={"door": partner, "pos": _pos_interior((px, py + 1.5, 0.0)), "rot": _rot(180.0)})
     for station, (x, y, yaw) in STATIONS.items():
         b.marker(marker_edid(station), x, y, yaw)
-    water = type_key("fresh")
+    water = type_key("lake")
     cell = _cell(b, PROVING_GROUND, ["IsInteriorCell", "CantTravelFromHere", "HasWater"],
                  {"water": water, "waterHeight": su.rounded(su.metres_to_units(WATER_LEVEL_M), 2)})
     return [*b.records, cell]

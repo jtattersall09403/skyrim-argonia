@@ -8,8 +8,10 @@ synthetic cell tests them (tests/test_judge.py) and `water check` runs them on t
 2. no hovering surface: along every edge where a water cell meets a dry cell, or a lower water outside a step's
    channel, the ground stands within BED_TOL_U under the level or above it; and every channel crossing (where the
    upper sheet ends over the lower cell's bed) is covered by a rapids line;
-3. still and flowing: a body's cell (lake, pond, pool, tarn, marsh, lagoon, backswamp) takes a type copying
-   Skyrim.esm's still water, a river's own cell a type copying its river water (layer.py, measured).
+3. still and flowing: a body's cell (lake, pond, pool, tarn, marsh, lagoon, backswamp) takes a still type, a
+   river's own cell a flowing one (layer.TYPES, measured);
+4. types: every water cell has one of our types, and each type copies the record the game draws (the load order's
+   winner, layer.winners), never a record a later plugin overrides (round 5).
 
 Ground: the province grid (4033 x 4033, row 0 north, metres); world units map to it by skyrim_units.
 """
@@ -122,16 +124,34 @@ def hovering(levels: dict, steps, g: np.ndarray, in_province) -> list[str]:
     return bad
 
 
-def still_flow(cells: list[tuple[int, int, str | None, str | None, str]], templates: dict[str, str]) -> list[str]:
-    """Rule 3. `cells`: (cx, cy, body_id, reach_id, emitted type key); `templates`: type key -> template."""
+def still_flow(cells: list[tuple[int, int, str | None, str | None, str]], flow: dict[str, bool]) -> list[str]:
+    """Rule 3. `cells`: (cx, cy, body_id, reach_id, emitted type key); `flow`: type key -> the type flows."""
     bad = []
     for cx, cy, body, reach, key in cells:
-        t = templates.get(key)
-        want = layer.STILL_TEMPLATE if body or not reach else layer.FLOW_TEMPLATE
-        if t != want:
+        want = not body and bool(reach)
+        if flow.get(key) is not want:
             bad.append(f"cell ({cx},{cy}) {'still body ' + body if body else 'river ' + str(reach)}: type {key} "
-                       f"copies {t}, not {want}")
+                       f"{'is unknown' if key not in flow else 'flows' if flow[key] else 'is still'}")
     return bad
+
+
+def types(cells: list[tuple[int, int, str | None, str | None, str]], recs: list[dict],
+          winners: dict | None) -> tuple[dict[str, int], list[str]]:
+    """Rule 4 (round 5): the cells per type (edid -> count), and a red for a water cell with no type, or a type whose
+    template is not the load order's winner for its editor id (`winners`: layer.winners; None skips that part)."""
+    by_key = {r["formKey"]: r for r in recs}
+    counts: dict[str, int] = {r["edid"]: 0 for r in recs}
+    bad = []
+    for cx, cy, _, _, key in cells:
+        if key not in by_key:
+            bad.append(f"cell ({cx},{cy}): type {key} is no WATR of ours")
+            continue
+        counts[by_key[key]["edid"]] += 1
+    for r in recs:
+        plugin, edid = r["template"].split(":", 1)
+        if winners is not None and (edid not in winners or winners[edid][0] != plugin):
+            bad.append(f"{r['edid']} copies {r['template']}, the game draws {winners.get(edid, ('nothing',))[0]}'s")
+    return counts, bad
 
 
 def buried(s, width_m: float, g: np.ndarray) -> bool:

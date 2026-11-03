@@ -1,5 +1,5 @@
 """L1: the water's writer (WaterRecords.cs through LandWorld.cs) on the terrain test's 4 synthetic cells, read back
-from the bytes: the 7 WATR types (4 still, 3 flowing) and 4 plane activators, the WRLD's default water, one cell with a water height and
+from the bytes: the WATR types (each its load-order winner's record but the named fields, round 5), no plane activators, the WRLD's default water, one cell with a water height and
 type, one with plane and piece references only, HasWater on both; written twice, the same bytes. Also the regrade
 layer (terrain/water_regrade.py) and the greedy plane cover. Skipped where ArgoniaGen is not built."""
 import json
@@ -37,9 +37,11 @@ GAME = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse"))
 
 
 @pytest.mark.skipif(not GEN.exists() or not (GAME / "Skyrim.esm").exists(),
-                    reason="ArgoniaGen not built or no game data (each WATR copies Skyrim.esm's DefaultWater body)")
+                    reason="ArgoniaGen not built or no game data (each WATR copies its winner's body)")
 def test_water_written_and_read_back(tmp_path):
-    (tmp_path / "Skyrim.esm").symlink_to(GAME / "Skyrim.esm")
+    wrecs = layer.records(GAME)
+    for p in {"Skyrim.esm"} | {r["template"].split(":")[0] for r in wrecs}:
+        (tmp_path / p).symlink_to(GAME / p)
     s = src()
     build.build(s, table(), tmp_path, cells=(-62, -62, -61, -61))
     world.write(tmp_path / "world.json", s.cell_range, tmp_path / "land")
@@ -49,8 +51,8 @@ def test_water_written_and_read_back(tmp_path):
     (tmp_path / "world.json").write_text(json.dumps(doc))
     wd = tmp_path / "water"
     wd.mkdir()
-    (wd / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}))
-    height = {"x": -62, "y": -62, "waterHeight": 512.5, "waterType": layer.type_key("fresh"), "refs": [
+    (wd / "records.json").write_text(json.dumps({"schema": 1, "records": wrecs}))
+    height = {"x": -62, "y": -62, "waterHeight": 512.5, "waterType": layer.type_key("cold"), "refs": [
         {"formKey": layer.ref_key(-62, -62, 0), "base": "01AC8D:Skyrim.esm", "pos": [-253000.0, -253000.0, 700.0],
          "rot": [0.0, 0.0, 0.5], "scale": 0.25}]}
     planes = {"x": -61, "y": -61, "refs": [
@@ -66,28 +68,46 @@ def test_water_written_and_read_back(tmp_path):
     for r in recs:
         by.setdefault(r.sig, []).append(r)
     watr = {r.formid & 0xFFFFFF: r for r in by["WATR"]}
-    want = {int(rec["formKey"].split(":")[0], 16): rec for rec in layer.records() if rec["type"] == "WATR"}
-    assert sorted(watr) == sorted(want) and len(watr) == len(layer.EMIT_TYPES) == 7  # 4 still, 3 flowing (r4)
+    want = {int(rec["formKey"].split(":")[0], 16): rec for rec in wrecs if rec["type"] == "WATR"}
+    assert sorted(watr) == sorted(want) and len(watr) == len(layer.EMIT_TYPES) == 14  # 6 still, 8 flowing (r5)
     for fid, rec in want.items():
         assert watr[fid].first("EDID") == rec["edid"].encode() + b"\0"
-        # the shading body of DefaultWater: three noise layers (a bare WATR drew flat opaque white, round 1)
-        assert [b for s_, b in watr[fid].subs if s_ == "NNAM"] == [b"Data\\Textures\\Water\\DefaultWater.dds\0"] * 3
-        assert struct.unpack_from("<f", watr[fid].first("DNAM"), 4 * 4)[0] == pytest.approx(1021.0)  # sun specular
     assert not by.get("ACTI")  # no water planes (1.15)
     wrld = by["WRLD"][0]
     assert struct.unpack("<I", wrld.first("NAM2"))[0] & 0xFFFFFF == int(layer.type_key("sea").split(":")[0], 16)
     # as Tamriel: NAM3 (LOD water type) = NAM2, NAM4 (LOD water height) = DNAM's default water height (round 4 r4-water-look)
     assert wrld.first("NAM3") == wrld.first("NAM2")
     assert struct.unpack("<f", wrld.first("NAM4"))[0] == struct.unpack_from("<f", wrld.first("DNAM"), 4)[0]
-    vanilla = _vanilla_watr()
+    win = layer.winners(GAME)
+    expected = {"sea": "Tropical Skyrim.esp", "lake": "Tropical Skyrim.esp", "marsh": "Tropical Skyrim.esp",
+                "brackish": "Tropical Skyrim.esp", "black": "King of the Murkmire.esp", "cold": "Dawnguard.esm",
+                "river-ne": "Update.esm", "creek-sw": "Update.esm"}
+    for t, plugin in expected.items():  # the winners measured 2026-11-03 (water-types.md finding A)
+        assert layer.template_of(t, GAME) == f"{plugin}:{layer.TYPES[t][1]}"
     for fid, rec in want.items():
-        tpl = vanilla[rec["template"].split(":")[1]]
-        ours = watr[fid]
-        # round 4 (0034): every subrecord but EDID and FULL is the template's, byte for byte: opacity, colours, fog, all of DNAM
+        plugin, edid = rec["template"].split(":")
+        assert win[edid][0] == plugin  # the record the game draws, never an overridden one
+        tpl, ours = win[edid][1], watr[fid]
+        # every subrecord but EDID and FULL is the winner's, byte for byte; a turned direction changes only NAM0 and
+        # DNAM's three noise wind directions (floats 25-27), to the values layer.flow_set named
         assert [s_ for s_, _ in ours.subs if s_ != "FULL"] == [s_ for s_, _ in tpl.subs if s_ != "FULL"]
+        turned = rec.get("set", {})
         for s_, b in ours.subs:
-            if s_ not in ("EDID", "FULL"):
+            if s_ in ("EDID", "FULL"):
+                continue
+            if turned and s_ == "NAM0":
+                assert struct.unpack("<3f", b) == pytest.approx(turned["linearVelocity"])
+            elif turned and s_ == "DNAM":
+                t = tpl.first("DNAM")
+                assert b[:100] == t[:100] and b[112:] == t[112:], rec["edid"]
+                assert struct.unpack_from("<3f", b, 100) == pytest.approx(turned["windDirections"])
+            else:
                 assert b == tpl.first(s_), (rec["edid"], s_)
+        # still stays still, flowing flows: a flowing type moves its water (NAM0), a still type's template is no flow map
+        if rec["flow"]:
+            assert any(abs(v) > 0.1 for v in struct.unpack("<3f", ours.first("NAM0")[:12])[:2]), rec["edid"]
+        else:
+            assert ours.first("FNAM")[0] & 0x08 == 0, rec["edid"]
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")
@@ -95,7 +115,7 @@ def test_water_written_and_read_back(tmp_path):
             cells[struct.unpack_from("<ii", xclc)] = c
     c = cells[(-62, -62)]
     assert struct.unpack("<f", c.first("XCLW"))[0] == 512.5
-    assert struct.unpack("<I", c.first("XCWT"))[0] & 0xFFFFFF == int(layer.type_key("fresh").split(":")[0], 16)
+    assert struct.unpack("<I", c.first("XCWT"))[0] & 0xFFFFFF == int(layer.type_key("cold").split(":")[0], 16)
     assert struct.unpack("<H", c.first("DATA")[:2])[0] & HAS_WATER
     assert cells[(-61, -61)].first("XCLW") is None or struct.unpack("<f", cells[(-61, -61)].first("XCLW"))[0] != 512.5
     refr = {r.formid & 0xFFFFFF: r for r in by["REFR"]}
@@ -110,32 +130,17 @@ def test_water_written_and_read_back(tmp_path):
     assert b"Skyrim.esm\0" in [b for s_, b in tes4.subs if s_ == "MAST"]
 
 
-def _vanilla_watr() -> dict:
-    """Skyrim.esm's WATR records by EDID (the WATR top group only)."""
-    b = (GAME / "Skyrim.esm").read_bytes()
-    i, out = struct.unpack_from("<I", b, 4)[0] + 24, {}
-    while i < len(b):
-        size = struct.unpack_from("<I", b, i + 4)[0]
-        if b[i + 8:i + 12] == b"WATR":
-            for r in esm.records(b"TES4" + struct.pack("<I", 0) + bytes(16) + b[i:i + size]):
-                if r.sig == "WATR":
-                    out[r.first("EDID").rstrip(b"\0").decode()] = r
-            return out
-        i += size
-    return out
-
-
 @pytest.mark.skipif(not (GAME / "Skyrim - Textures7.bsa").exists(), reason="no game data")
 def test_every_watr_texture_resolves():
-    """Each texture our WATR types name (the templates' NNAM noise maps; we add none) is in the laid stack's index:
-    the vanilla BSAs (no laid mod overrides textures/water/)."""
+    """Each texture our WATR types name (the winners' noise maps, NNAM or SSE's NAM2-NAM4; we add none) is in the
+    vanilla BSAs' index (Tropical Skyrim's loose defaultwater.dds overrides that path, it adds none)."""
     from tools.argonia_world.vegetation.mesh_textures import _bsa
     index = {p for f in GAME.glob("*.bsa") for p, _, _ in _bsa(f)[2]}
-    vanilla = _vanilla_watr()
+    win = layer.winners(GAME)
     names = set()
-    for rec in layer.records():
-        for s_, b in vanilla[rec["template"].split(":")[1]].subs:
-            if s_ in ("NNAM", "TNAM", "MNAM", "XNAM") and b.rstrip(b"\0"):
+    for rec in layer.records(GAME):
+        for s_, b in win[rec["template"].split(":")[1]][1].subs:
+            if s_ in ("NNAM", "NAM2", "NAM3", "NAM4", "TNAM", "MNAM", "XNAM") and len(b) > 4 and b.rstrip(b"\0"):
                 t = b.rstrip(b"\0").decode().lower().replace("\\", "/")
                 names.add(t.removeprefix("data/"))
     assert names and not sorted(n for n in names if n not in index)

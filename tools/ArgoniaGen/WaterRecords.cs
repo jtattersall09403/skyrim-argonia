@@ -3,7 +3,7 @@
 // references from <water>/cells.jsonl (tools/argonia_world/water: `python -m tools.argonia_world.water plan`).
 // As Generate.cs: no unit maths and no choices; every number, id and link arrives resolved. The WRLD's default
 // water links the sea type (the first WATR).
-//   records.json: {"schema": 1, "records": [WATR {formKey, edid, template ("Skyrim.esm:DefaultWater"), name} (opacity, colours, fog: the
+//   records.json: {"schema": 1, "records": [WATR {formKey, edid, template ("<winning plugin>:<EDID>"), name, set?} (all else the
 //                  template's own), ACTI {formKey, edid, model,
 //                  bounds: [[x,y,z],[x,y,z]], waterType}]}
 //   cells.jsonl:  {"x", "y", "waterHeight"?, "waterType"?, "refs": [{formKey, base, pos, rot, scale}]}
@@ -59,10 +59,11 @@ sealed class WaterRecords
         return w;
     }
 
-    // The type's shading body (the three noise layers' textures, scales and winds, specular, fresnel, displacement:
-    // DNAM's other fields and NNAM) is its `template`'s ("Skyrim.esm:DefaultWater", as every vanilla water type
-    // carries them); a type built bare has none and draws flat opaque white (round 1 stills, 2026-11-02). Ours on top: the name only
-    // (round 4: opacity, colours and fog are the template's too, decision 0034).
+    // The type's shading body (the noise textures, colours, opacity, fog, winds, specular, fresnel, displacement)
+    // is its `template`'s, "<plugin>:<EDID>" naming the load order's winner (water/layer.py winners; round 5: Skyrim.esm's
+    // DefaultWater was the loser Update.esm and Tropical Skyrim override); a type built bare draws flat opaque white
+    // (round 1 stills, 2026-11-02). Ours on top: the name, and on a direction vanilla never baked the named `set`
+    // fields (linearVelocity = NAM0, windDirections = the three noise layers'), resolved in Python.
     static FormKey Type(SkyrimMod mod, JsonElement r, string data)
     {
         var tpl = S(r, "template");
@@ -73,6 +74,23 @@ sealed class WaterRecords
         var t = src.Duplicate(FK(S(r, "formKey")));
         t.EditorID = S(r, "edid");
         t.Name = new TranslatedString(Language.English, S(r, "name"));
+        if (r.TryGetProperty("set", out var set))
+        {
+            foreach (var f in set.EnumerateObject())
+            {
+                var v = f.Value;
+                switch (f.Name)
+                {
+                    case "linearVelocity": t.LinearVelocity = new P3Float(F(v, 0), F(v, 1), F(v, 2)); break;
+                    case "windDirections":
+                        t.NoiseLayerOneWindDirection = F(v, 0);
+                        t.NoiseLayerTwoWindDirection = F(v, 1);
+                        t.NoiseLayerThreeWindDirection = F(v, 2);
+                        break;
+                    default: throw new InvalidDataException($"{S(r, "edid")}: no writer for set field {f.Name}");
+                }
+            }
+        }
         mod.Waters.Add(t);
         return t.FormKey;
     }

@@ -118,15 +118,38 @@ def placement(w, cw, water_out: Path, index_path: Path, ground_path: Path) -> li
     else:
         x0, y0 = su.PROVINCE_CELL_SW
         bad += [f"hovering: {b}" for b in judge.hovering(levels, cw.steps(), g, lambda x, y: x0 <= x < x0 + su.PROVINCE_CELLS and y0 <= y < y0 + su.PROVINCE_CELLS)]
-    templates = {r["formKey"]: r.get("template") for r in json.loads(rec_p.read_text())["records"]} if rec_p.exists() else {}
+    recs = json.loads(rec_p.read_text())["records"] if rec_p.exists() else []
     by_cell = {(d["x"], d["y"]): d.get("waterType") for d in lines}
     cells = [(r[0], r[1], r[2], r[3], by_cell.get((r[0], r[1]))) for r in w.query(
         "SELECT cx, cy, body_id, reach_id FROM cell_water")]
-    bad += [f"still/flow: {b}" for b in judge.still_flow(cells, templates)]
+    bad += [f"still/flow: {b}" for b in judge.still_flow(cells, {r["formKey"]: r.get("flow") for r in recs})]
+    from tools.argonia_world.water import layer
+    win = layer.winners() if (layer.GAME_DATA / "Skyrim.esm").exists() else None
+    counts, tbad = judge.types(cells, recs, win)
+    print("water check types: " + ", ".join(f"{k} {v}" for k, v in counts.items())
+          + ("" if win else " (no game data: winners not read)"))
+    bad += [f"types: {b}" for b in tbad]
     n = collections.Counter(b.split(":")[0] for b in bad)
     print(f"water check placement: {len(refs)} pieces on {sum(1 for s in cw.steps() if s.chain != 'closed')} steps; "
           f"reds {dict(n)}")
     return [f"{k}: {v} reds, first {[b for b in bad if b.startswith(k)][:3]}" for k, v in n.items()]
+
+
+def cell_types(w) -> dict[tuple[int, int], tuple[float, str]]:
+    """Each water cell's level and emitted type (layer.cell_type) from the database: the water class, the body's kind
+    and altitude band, the reach's river strahler and its centreline's heading (headwater first, source to end)."""
+    from tools.argonia_world.water import layer
+    ends: dict[str, list] = {}
+    for rid, e, s in w.query("SELECT reach_id, east_m, south_m FROM hydrology_reach_point ORDER BY reach_id, ord"):
+        ends.setdefault(rid, [(e, s), (e, s)])[1] = (e, s)
+    quad = {rid: layer.quadrant(b[0] - a[0], a[1] - b[1]) for rid, (a, b) in ends.items()}  # south grows southwards
+    out = {}
+    for cx, cy, level, wt, kind, band, rid, strahler in w.query(
+            "SELECT c.cx, c.cy, c.level_m, c.water_type, b.kind, b.altitude_band, c.reach_id, rv.strahler "
+            "FROM cell_water c LEFT JOIN hydrology_body b ON b.id = c.body_id "
+            "LEFT JOIN hydrology_reach r ON r.id = c.reach_id LEFT JOIN hydrology_river rv ON rv.id = r.river_id"):
+        out[(cx, cy)] = (level, layer.cell_type(wt, kind, band, rid, strahler, quad.get(rid)))
+    return out
 
 
 def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
@@ -145,9 +168,9 @@ def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
     widths = {(r[0], r[1]): r[2] for r in w.query(
         "SELECT c.cx, c.cy, r.width_m FROM cell_water c JOIN hydrology_reach r ON r.id = c.reach_id")}
     lines: dict[tuple[int, int], dict] = {}
-    for r in w.query("SELECT cx, cy, level_m, water_type, body_id, reach_id FROM cell_water"):
-        lines[(r[0], r[1])] = {"x": r[0], "y": r[1], "waterHeight": su.rounded(su.metres_to_units(r[2]), 2),
-                               "waterType": layer.type_key(layer.cell_type(r[3], r[4], r[5])), "refs": []}
+    for (cx, cy), (level, t) in cell_types(w).items():
+        lines[(cx, cy)] = {"x": cx, "y": cy, "waterHeight": su.rounded(su.metres_to_units(level), 2),
+                           "waterType": layer.type_key(t), "refs": []}
     import numpy as np
     from tools.argonia_world.water import judge
     g = np.load(ground_path, mmap_mode="r") if ground_path.exists() else None

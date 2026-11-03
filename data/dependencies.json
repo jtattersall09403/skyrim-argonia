@@ -2495,7 +2495,7 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm copies the bodies of its winning WATR overrides DefaultWater (000018, ARG_WATR_sea and _lake), DefaultMarshWater (105CC3, _marsh) and DefaultMarshWaterTransition (105CC4, _brackish), read from the player's own plugin at build time (water/layer.py winners; 1.15 r5 water types, 2026-11-03)"
   },
   {
    "id": "xanmeer-tileset",
@@ -2556,7 +2556,7 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "336 dangling refs inside King of the Murkmire.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm copies the body of its DefaultBlackmarshWater WATR (08184260, ARG_WATR_black), read from the player's own plugin at build time (water/layer.py winners; 1.15 r5 water types, 2026-11-03)"
   },
   {
    "id": "htbm",
