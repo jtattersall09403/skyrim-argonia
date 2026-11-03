@@ -6,7 +6,13 @@
 set -u
 cd /home/ubuntu/skyrim-argonia
 PY=$HOME/.argonia/venv/bin/python
-step() { local n=$1; shift; local s=$SECONDS; echo "== $n $(date -u +%H:%M:%S)"; if "$@"; then echo "PREBATCH $n OK in $((SECONDS-s)) s"; else echo "PREBATCH $n FAIL in $((SECONDS-s)) s"; return 1; fi; }
+# Resumable per step (eight spot interruptions of the build VM on 2026-11-03 restarted it from the top each time, ~15 min):
+# a step whose verdict is OK for the same inputs (HEAD, the lists and the ground) is skipped on a rerun.
+key=$( { git rev-parse HEAD; sha256sum world/db/land_region_object.jsonl tools/argonia_world/vegetation/lists.py 2>/dev/null; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
+state="$HOME/.argonia/round/prebatch.$key.state"; mkdir -p "$(dirname "$state")"; touch "$state"
+step() { local n=$1; shift; local s=$SECONDS
+  if grep -qx "$n OK" "$state"; then echo "PREBATCH $n OK (done earlier for $key)"; return 0; fi
+  echo "== $n $(date -u +%H:%M:%S)"; if "$@"; then echo "$n OK" >>"$state"; echo "PREBATCH $n OK in $((SECONDS-s)) s"; else echo "PREBATCH $n FAIL in $((SECONDS-s)) s"; return 1; fi; }
 # a round build leaves its output unstaged (the regenerated plugin YAML, the appended form ids): commit it by path
 # first, so the pull runs on a clean tree (10:17: the pull refused and the job died)
 git add plugin world/db/formid.jsonl skse/core/generated/argonia/core/forms.h 2>/dev/null
