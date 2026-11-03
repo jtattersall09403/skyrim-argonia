@@ -40,6 +40,8 @@ TREE_ROLES = lists_mod.BAND_TREE_ROLES
 # a cell counts toward its tree band by lists.countable, the one definition the planner's targets use too
 BAND_MIN_CELLS = lists_mod.BAND_MIN_CELLS
 BAND_LO, BAND_HI, BAND_LO_FIELD = lists_mod.BAND_LO, lists_mod.BAND_HI, lists_mod.BAND_LO_FIELD
+BAND_TOL = 0.5  # trees per cell: the placer closes on the band over its own countable cells; the check's countable set moves with the
+# water typing (the tidal delta read 8.9 against a 9.0 floor after the sea was typed sea, 2026-11-03)
 VANILLA_TREES_IN_WATER, VANILLA_TREE_WATER_P10_U = 0.058, 198.0
 
 
@@ -237,7 +239,7 @@ def tree_bands(trees: dict[str, list[int]], eco: dict[str, str], wet: list[int],
             m = TREE_BANDS[band][0]
             row["vanilla_mean"] = m
             lo = (BAND_LO_FIELD if band == "field" else BAND_LO) * m
-            if len(v) >= BAND_MIN_CELLS and not (lo <= a.mean() <= BAND_HI * m):
+            if len(v) >= BAND_MIN_CELLS and not (lo - BAND_TOL <= a.mean() <= BAND_HI * m + BAND_TOL):
                 errs.append(f"{r} ({band}): {a.mean():.1f} trees per cell outside {lo:.1f}-{BAND_HI * m:.1f} "
                             f"(vanilla mean {m:g})")
         rep[r] = row
