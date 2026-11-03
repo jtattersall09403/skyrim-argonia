@@ -23,15 +23,24 @@ or goes never renumbers the rest.
     layers(alloc, world, wrld)           the Argonia.esm layer: REGN overrides and the border, CLMT, WTHR, IMGS,
                                          the WChance globals, the TimeScale override, the WRLD override
 
-Weather and image-space numbers are ours (decision 0003: no vanilla or Tropical Skyrim values are copied): every
-colour slot of every weather authored per time of day in weather_colour (1.15 §d; owner 2026-11-01: never derived,
-the image-space tint off), the sky's motion and fog curve in weather_sky. Only references (cloud texture paths, precipitation,
-sounds, sky statics, the lens flare) come from each weather's template, and the C# writer reads those from the master.
+Weather and image-space numbers are ours where they are the place's (fog distances and curve, the mist bank, the
+light on the ground, cinematic grade: weather_colour and weather_sky), and the sky's own paint is the template's: the
+sky upper/lower/horizon and sun colours, every cloud layer's colours and the image space's HDR and bloom are copied at
+generation from the record the game RESOLVES for the template (the load order's last plugin carrying it: Tropical
+Skyrim.esp's restyle before Update.esm before Skyrim.esm; decision 0006 §8, lane 1.15-r5-sky-2), as WATR copies its
+winner's body. References (cloud texture paths, precipitation, sounds, sky statics, the lens flare) come from it too.
 """
 from __future__ import annotations
 
+import os
+import struct
+from functools import lru_cache
+from pathlib import Path
+
 from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.regions.classify import weather_list
+
+GAME_DATA = Path(os.environ.get("ARGONIA_GAME_ROOT", Path.home() / "games/skyrimse")) / "Data"
 
 LAND_PLUGIN = "ArgoniaWorld.esm"
 REGION_SHELL_BASE = 0x080000  # ArgoniaWorld.esm: past the terrain's CELL/LAND range (to 0x22A30), below the water's
@@ -222,6 +231,57 @@ def weather_key(alloc, w) -> str:
     return w["form_key"] or alloc.form_key(w["edid"], "WTHR", f"weather.{w['id']}")
 
 
+def _masters(path: Path) -> list[str]:
+    """A plugin's master list (TES4 MAST), read from its header record alone."""
+    from tools.argonia_world.terrain import esm
+    with open(path, "rb") as f:
+        head = f.read(24)
+        body = f.read(struct.unpack_from("<I", head, 4)[0])
+    return [b.rstrip(b"\0").decode() for s, b in esm._subrecords(body) if s == "MAST"]
+
+
+@lru_cache(maxsize=4)
+def sky_winners(data: Path = GAME_DATA) -> dict[str, str]:
+    """Every WTHR and IMGS form key ("XXXXXX:Master.esm") -> the last plugin in the load order carrying it: the record
+    the game draws (Tropical Skyrim.esp restyles 38 vanilla weathers and 111 image spaces in place; measured 2026-11-03,
+    lane 1.15-r5-sky-2). Without game data every template resolves to its own master."""
+    from tools.argonia_world.intermediate import load_order
+    from tools.argonia_world.water.layer import top_group
+    out: dict[str, str] = {}
+    if not (Path(data) / "Skyrim.esm").exists():
+        return out
+    for p in load_order(Path(data)):
+        mast = _masters(Path(data) / p)
+        for sig in (b"WTHR", b"IMGS"):
+            for r in top_group(Path(data) / p, sig):
+                i = r.formid >> 24
+                out[f"{r.formid & 0xFFFFFF:06X}:{mast[i] if i < len(mast) else p}"] = p
+    return out
+
+
+def template_plugin(form_key: str, data: Path = GAME_DATA) -> str:
+    return sky_winners(Path(data)).get(form_key, form_key.split(":")[1])
+
+
+SKY_SLOTS = {"skyUpper": 0, "sun": 5, "skyLower": 7, "horizon": 8}  # the WTHR NAM0 slots a weather takes from its template
+
+
+@lru_cache(maxsize=64)
+def template_sky(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, str], bytes]:
+    """The sky paint a weather is written with, {(slot, tod): rgb}, read from its resolved template (empty without
+    game data): what the checks judge in place of the authored rows the writer no longer uses."""
+    from tools.argonia_world.water.layer import top_group
+    p = template_plugin(form_key, Path(data))
+    if not (Path(data) / p).exists():
+        return {}
+    fid = int(form_key.split(":")[0], 16)
+    r = next((x for x in top_group(Path(data) / p, b"WTHR") if x.formid & 0xFFFFFF == fid), None)
+    n = r.first("NAM0") if r else None
+    if not n:
+        return {}
+    return {(s, t): n[k * 16 + i * 4:k * 16 + i * 4 + 3] for s, k in SKY_SLOTS.items() for i, t in enumerate(TOD)}
+
+
 def _image_records(alloc, world) -> tuple[list[dict], dict]:
     images = {r["id"]: dict(r) for r in world.query("SELECT * FROM image_space ORDER BY id")}
     recs = []
@@ -231,6 +291,7 @@ def _image_records(alloc, world) -> tuple[list[dict], dict]:
         # own starting point put sky scale 1.6 against Skyrim.esm's 0.02-0.3 and white 4.0 against 0.88-1.02, a sky
         # blown to a flat pale sheet at noon
         recs.append({"type": "IMGS", "edid": i["edid"], "formKey": i["formKey"], "template": i["template_form_key"],
+                     "templatePlugin": template_plugin(i["template_form_key"]),
                      "cinematic": {"saturation": i["saturation"], "brightness": i["brightness"],
                                    "contrast": i["contrast"]},
                      "tint": {"color": rgb(i["tint"]), "amount": i["tint_amount"]},
@@ -247,6 +308,10 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
         thunder = w["thunder"]
         recs.append({
             "type": "WTHR", "edid": w["edid"], "formKey": weather_key(alloc, w), "template": w["template_form_key"],
+            "templatePlugin": template_plugin(w["template_form_key"]),
+            # the sky's paint (upper, lower, horizon, the sun disc) is the resolved template's: our authored
+            # northern-pale slots read a grey-blue zenith at noon (lane 1.15-r5-sky-2; 0006 §8 Tropical first)
+            "skyFromTemplate": True,
             "flags": [w["classification"]], "colours": col, "ambient": ambient(allc),
             "fog": {"dayNear": su.rounded(su.metres_to_units(w["fog_day_near_m"]), 2),
                     "dayFar": su.rounded(su.metres_to_units(w["fog_day_far_m"]), 2),
@@ -265,7 +330,8 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
                        # ... and its per-layer colours: SkyrimClear tints its full-sky SkyrimCloudsFill layer the
                        # zenith's dark blue (114E77 at noon); one cream cloud colour on it painted a pale veil over
                        # the whole sky (lane 1.15-r5-sky)
-                       "coloursFromTemplate": w["classification"] == "Pleasant",
+                       # (every class since lane 1.15-r5-sky-2: one authored cream-grey on every overcast layer)
+                       "coloursFromTemplate": True,
                        # a weather on a clear template draws its full-sky fill as the template does (coordinator
                        # ruling 2026-11-03: tannin-haze's cream fill at alpha 1.0 was the "yellow fog" refused)
                        "fillFromClearTemplate": True},

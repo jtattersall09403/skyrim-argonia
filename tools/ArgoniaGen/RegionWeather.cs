@@ -21,6 +21,7 @@ static class RegionWriters
     const SkyrimRelease Rel = SkyrimRelease.SkyrimSE;
     static ISkyrimModDisposableGetter? master;
     static ISkyrimModDisposableGetter? update;
+    static readonly Dictionary<string, ISkyrimModDisposableGetter> winners = new();
     static readonly string[] Tod = { "sunrise", "day", "sunset", "night" };
 
     public static void Write(SkyrimMod mod, JsonElement r, string data)
@@ -55,6 +56,18 @@ static class RegionWriters
     {
         if (template.ModKey.FileName != "Skyrim.esm") throw new InvalidDataException($"template {template}: Skyrim.esm only");
         return master ??= SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, "Skyrim.esm"), Rel);
+    }
+
+    // The record the game resolves for a Skyrim.esm template: `templatePlugin` names the load order's last plugin
+    // carrying it (regions/api.py sky_winners: Tropical Skyrim.esp's restyle before Update.esm before Skyrim.esm;
+    // decision 0006 §8, lane 1.15-r5-sky-2), whose override is looked up by the same FormKey.
+    static ISkyrimModDisposableGetter Winner(JsonElement r, string data, FormKey template)
+    {
+        var p = Os(r, "templatePlugin");
+        if (p is null || p == "Skyrim.esm") return Master(data, template);
+        if (!winners.TryGetValue(p, out var m))
+            winners[p] = m = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, p), Rel);
+        return m;
     }
 
     // Skyrim SE's volumetric lighting (HNAM -> VOLI) exists only in Update.esm's WTHR overrides: Skyrim.esm's 84
@@ -165,7 +178,7 @@ static class RegionWriters
     static Weather Weather(JsonElement r, string data)
     {
         var tk = FK(S(r, "template"));
-        var tpl = Master(data, tk).Weathers.TryGetValue(tk, out var t) ? t : throw new InvalidDataException($"no WTHR {tk}");
+        var tpl = Winner(r, data, tk).Weathers.TryGetValue(tk, out var t) ? t : throw new InvalidDataException($"no WTHR {tk}");
         var col = r.GetProperty("colours");
         var fog = r.GetProperty("fog");
         var img = r.GetProperty("images");
@@ -240,6 +253,14 @@ static class RegionWriters
             wf.Colors = tf.Colors.DeepCopy();
             wf.Alphas = tf.Alphas.DeepCopy();
         }
+        if (r.TryGetProperty("skyFromTemplate", out var sft) && sft.GetBoolean())
+        {
+            // the sky's paint is the resolved template's (lane 1.15-r5-sky-2): our authored slots were northern-pale
+            w.SkyUpperColor = tpl.SkyUpperColor.DeepCopy();
+            w.SkyLowerColor = tpl.SkyLowerColor.DeepCopy();
+            w.HorizonColor = tpl.HorizonColor.DeepCopy();
+            w.SunColor = tpl.SunColor.DeepCopy();
+        }
         if (r.TryGetProperty("ambientFromTemplate", out var aft2) && aft2.GetBoolean())
         {
             w.AmbientColor = tpl.AmbientColor.DeepCopy();
@@ -273,7 +294,7 @@ static class RegionWriters
         {
             // the template's HDR, as WATR carries its template's body (decision 0034, lane 1.15-r5-sky)
             var tk = FK(S(r, "template"));
-            var tpl = Master(data, tk).ImageSpaces.TryGetValue(tk, out var ti) ? ti : throw new InvalidDataException($"no IMGS {tk}");
+            var tpl = Winner(r, data, tk).ImageSpaces.TryGetValue(tk, out var ti) ? ti : throw new InvalidDataException($"no IMGS {tk}");
             hdr = tpl.Hdr?.DeepCopy() ?? throw new InvalidDataException($"IMGS {tk}: no HDR");
         }
         else

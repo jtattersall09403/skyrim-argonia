@@ -28,7 +28,7 @@
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"sunset","rgb":"E4B48E","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"day","rgb":"A7BABB","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"night","rgb":"2C342C","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogFar","tod":"sunrise","rgb":"A08667","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogFar","tod":"sunrise","rgb":"8C755A","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"sunset","rgb":"AF8060","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogNear","tod":"day","rgb":"7B9498","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogNear","tod":"night","rgb":"202E21","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
@@ -588,8 +588,8 @@
 {"weather_id":"monsoon-overcast","slot":"effectLighting","tod":"sunset","rgb":"B0A08E","why":"light on spell and particle effects; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"day","rgb":"9FA795","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"night","rgb":"242D23","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunrise","rgb":"8D8B7B","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"8E7D66","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunrise","rgb":"807E6F","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"706250","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"day","rgb":"8E9888","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"night","rgb":"162321","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"sunrise","rgb":"898A7B","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
@@ -666,7 +666,7 @@
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"night","rgb":"51624F","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunrise","rgb":"CEC4AA","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunset","rgb":"CAB49E","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"day","rgb":"A3AFAB","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"day","rgb":"8A9490","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"night","rgb":"213027","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"sunrise","rgb":"818989","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"sunset","rgb":"838A8D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -746,7 +746,7 @@
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"night","rgb":"51624F","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"sunrise","rgb":"CEC4AA","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"sunset","rgb":"CAB49E","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"day","rgb":"A3AFAB","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"day","rgb":"8A9490","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogFar","tod":"night","rgb":"213027","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunrise","rgb":"818989","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunset","rgb":"838A8D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}

@@ -327,6 +327,10 @@ def weather_slots(w) -> list[str]:
         missing = [f"{s}@{t}" for s in ROLE for t in TOD if (s, t) not in cols]
         if missing:
             out.append(f"weather {wid}: {len(missing)} slots not authored ({', '.join(missing[:4])}...)")
+        # the sky paint is written from the resolved template (lane 1.15-r5-sky-2): judge what is written
+        from tools.argonia_world.regions.api import template_sky
+        painted = template_sky(r["template_form_key"])
+        cols.update(painted)
         if not w.query("SELECT 1 FROM weather_sky WHERE weather_id = ?", wid):
             out.append(f"weather {wid}: no weather_sky row")
         out += [f"weather {wid}: {e}" for e in fog_outside_vanilla(w, r, wid in fogs)]
@@ -334,7 +338,7 @@ def weather_slots(w) -> list[str]:
         if sky:
             out += [f"weather {wid}: {e}" for e in sky_blocked(sky[0]["classification"], sky[0],
                                                               {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
-        out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
+        out += [f"weather {wid}: {e}" for e in derived_colours({k: v for k, v in cols.items() if k not in painted})]
         out += [f"weather {wid}: {e}" for e in horizon_line(cols)]
         if wid in fogs or wid in HAZE_GREY:
             out += [f"weather {wid}: {e}" for e in mist_fog_cast(cols)]
@@ -429,6 +433,29 @@ def sky_clouds(ours, tpl, pleasant: bool) -> list[str]:
         if pleasant and _sub(ours, "PNAM")[i * 16:i * 16 + 16] != _sub(tpl, "PNAM")[i * 16:i * 16 + 16]:
             out.append(f"cloud layer {i} colours not the template's (a clear sky's layers are tinted to it)")
     return out
+
+
+SKY_PAINT = {0: "sky upper", 5: "sun", 7: "sky lower", 8: "horizon"}  # NAM0 slots, 16 bytes each (4 times of day)
+
+
+def sky_paint(ours, tpl) -> list[str]:
+    """A WTHR's sky paint against its resolved template's (Tropical Skyrim's restyle where it has one; lane
+    1.15-r5-sky-2), field by field: sky upper, lower, horizon and sun per time of day (NAM0), and every textured
+    cloud layer's colours (PNAM). Our authored northern-pale slots read a grey-blue zenith at noon."""
+    out = []
+    no, nt = _sub(ours, "NAM0"), _sub(tpl, "NAM0")
+    for slot, name in SKY_PAINT.items():
+        for t, tod in enumerate(TOD_ORDER):
+            a, b = no[slot * 16 + t * 4:slot * 16 + t * 4 + 3], nt[slot * 16 + t * 4:slot * 16 + t * 4 + 3]
+            if a != b:
+                out.append(f"{name} at {tod} {a.hex().upper()} not the template's {b.hex().upper()}")
+    for i in _cloud_slots(tpl):
+        if _sub(ours, "PNAM")[i * 16:i * 16 + 16] != _sub(tpl, "PNAM")[i * 16:i * 16 + 16]:
+            out.append(f"cloud layer {i} colours not the template's")
+    return out
+
+
+TOD_ORDER = ("sunrise", "day", "sunset", "night")
 
 
 def sky_image(ours, tpl, tod: str, tpl_edid: str) -> list[str]:

@@ -39,18 +39,18 @@ ROLE = {
 # (skyrim-does-it-this-way §7; checks.weather_fog): far at least the class's vanilla median, near above 0, fog max at
 # most SkyrimFog's 0.95 so the sky is never fully hidden (owner play test 3 finding 18; lane-1.15-r4-light).
 WEATHERS = {
-    "clear-dry": ("ARG_Weather_clear_dry", "clear-ff", "clear-humid", 15, 1400, 5, 714, "day", "dawn", "night",
+    "clear-dry": ("ARG_Weather_clear_dry", "clear", "clear-humid", 15, 1400, 5, 714, "day", "dawn", "night",
                   "dry-season subsidence clear: the NW dry pole's best visibility, a pale hot sky over olive haze "
                   "(climatology §4 NW border; 55 §98 cloudless days belong to dry spells)"),
     "monsoon-overcast": ("ARG_Weather_monsoon_overcast", "cloudy-ma", "monsoon-downpour", 15, 700, 10, 480,
                          "overcast", "overcast", "night",
                          "a monsoon break day under a full deck: flat bright light, no rain (55 §98 coverage ladder)"),
-    "wet-rain": ("ARG_Weather_wet_rain", "rain-ma", "monsoon-downpour", 15, 400, 10, 280, "rain", "rain", "night",
+    "wet-rain": ("ARG_Weather_wet_rain", "rain-ff", "monsoon-downpour", 15, 400, 10, 280, "rain", "rain", "night",
                  "wet-season rain: a wall of grey-green water over the interior (55 §98; climatology §2 monsoon)"),
     "mist": ("ARG_Weather_mist", "fog-ma", "ground-mist", 2, 700, 2, 430, "mist", "mist", "night",
              "radiation mist: pooled over inland water and wet ground after a clear calm night, burning off after "
              "dawn (climatology §2, §4 interior basins; 55 §97)"),
-    "sea-fog": ("ARG_Weather_sea_fog", "fog-co", "ground-mist", 4, 450, 2, 430, "seafog", "seafog", "night",
+    "sea-fog": ("ARG_Weather_sea_fog", "fog", "ground-mist", 4, 450, 2, 430, "seafog", "seafog", "night",
                 "advection sea fog on the open coast and up the estuaries (climatology §2, §3 exp(-dCoast/8))"),
     "montane-haze": ("ARG_Weather_montane_haze", "cloudy-ff", "ground-mist", 15, 700, 10, 480, "montane", "dawn",
                      "night", "the montane cloud-forest belt's haze on the border ranges, summits clear above it "
