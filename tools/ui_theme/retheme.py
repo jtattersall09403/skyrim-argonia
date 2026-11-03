@@ -25,7 +25,7 @@ from pathlib import Path
 import numpy as np
 
 from tools.ui_theme import swf
-from tools.ui_theme.palette import EdgedFramePalette, FramePalette, Palette
+from tools.ui_theme.palette import EdgedFramePalette, FramePalette, JournalFramePalette, Palette
 
 SCOPE = ("interface/deardiary/*_bg.swf", "interface/loadingmenu.swf")
 # SWFs whose vector shapes (DefineShape fills and lines) are recoloured too: the menus and SkyUI's lists, plates and
@@ -41,6 +41,8 @@ FRAME = ("interface/quest_journal.swf", "interface/deardiary/quest_journal/*_bg.
          "interface/lockpickingmenu.swf", "interface/deardiary/lockpickingmenu/*_bg.swf")
 # Of those, the sheets whose own art has no frame: they take the System pane's panel edge too.
 EDGED = ("interface/deardiary/messagebox/*_bg.swf", "interface/deardiary/lockpickingmenu/*_bg.swf")
+# The Journal's System page sheet: redrawn on its panel layout, not recoloured (its torn band read as a cream rag).
+JOURNAL = ("interface/deardiary/quest_journal/*_bg.swf",)
 EMBEDDERS = "interface/*.swf"  # menu SWFs carrying copies of the BG bitmaps (fallbacks): matched by their pixels
 # Nordic marks (0006), by path and the bitmap's measured size (w, h); cleared to transparent, not recoloured.
 CLEAR = {
@@ -94,6 +96,73 @@ def recolour_shapes(movie: swf.Movie, palette: Palette) -> int:
     return n
 
 
+DO_ACTION, DO_INIT_ACTION, ACTION_PUSH, ACTION_POOL, ACTION_SET_MEMBER = 12, 59, 0x96, 0x88, 0x4F
+
+
+def script_text_colours(data: bytes, base: int) -> list[tuple[int, int]]:
+    """(offset, value) of every int32 an AS2 action stream pushes as a `textColor` it then sets: the list rows'
+    run-time colours (BSScrollingList and QuestCenteredList SetEntryText), which no DefineEditText carries."""
+    out, pool, armed, p = [], [], False, base
+    while p < len(data):
+        code = data[p]
+        if code < 0x80:
+            if code == ACTION_SET_MEMBER:
+                armed = False
+            p += 1
+            continue
+        n = int.from_bytes(data[p + 1:p + 3], "little")
+        body, start = data[p + 3:p + 3 + n], p + 3
+        if code == ACTION_POOL:
+            pool, q = [], 2
+            for _ in range(int.from_bytes(body[:2], "little")):
+                e = body.index(0, q)
+                pool.append(body[q:e])
+                q = e + 1
+        elif code == ACTION_PUSH:
+            q = 0
+            while q < len(body):
+                ty = body[q]
+                q += 1
+                if ty == 0:
+                    e = body.index(0, q)
+                    armed |= body[q:e] == b"textColor"
+                    q = e + 1
+                elif ty == 7:
+                    if armed:
+                        out.append((start + q, int.from_bytes(body[q:q + 4], "little", signed=True)))
+                    q += 4
+                elif ty in (8, 9):
+                    k = body[q] if ty == 8 else int.from_bytes(body[q:q + 2], "little")
+                    armed |= k < len(pool) and pool[k] == b"textColor"
+                    q += 1 if ty == 8 else 2
+                else:
+                    q += {1: 4, 2: 0, 3: 0, 4: 1, 5: 1, 6: 8}.get(ty, len(body))
+        p += 3 + n
+    return out
+
+
+def recolour_script_text(movie: swf.Movie, palette: FramePalette) -> int:
+    """The list rows' run-time text colours moved onto the frame text tokens in place: the dark-red mark (Dear
+    Diary's highlighted row, 0x640000) to the head colour, the rest to the body text; the count."""
+    n = 0
+    for k, tag in enumerate(movie.tags):
+        if tag.code not in (DO_ACTION, DO_INIT_ACTION):
+            continue
+        base = 2 if tag.code == DO_INIT_ACTION else 0
+        hits = script_text_colours(tag.data, base)
+        if not hits:
+            continue
+        data = bytearray(tag.data)
+        for off, v in hits:
+            rgb = ((v >> 16) & 255, (v >> 8) & 255, v & 255)
+            key = "frame-head" if rgb[0] > 2 * max(rgb[1], rgb[2]) + 40 else "frame-text"
+            r, g, b = (int(round(c * 255)) for c in palette.t[key])
+            data[off:off + 4] = ((r << 16) | (g << 8) | b).to_bytes(4, "little", signed=True)
+        movie.tags[k] = swf.Tag(tag.code, bytes(data), tag.long)
+        n += len(hits)
+    return n
+
+
 def edit_text_colour(data: bytes) -> int | None:
     """The offset of a DefineEditText's RGBA text colour, or None when it sets none."""
     nbits = data[2] >> 3
@@ -141,6 +210,9 @@ def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str 
     if isinstance(palette, FramePalette) and (n := recolour_text(movie, palette)):
         notes.append(f"recoloured {n} text field colours")
         changed = True
+    if isinstance(palette, FramePalette) and (n := recolour_script_text(movie, palette)):
+        notes.append(f"recoloured {n} run-time text colours")
+        changed = True
     for k, bm in swf.bitmaps(movie):
         verdict = decide(bm)
         if verdict is None:
@@ -176,6 +248,8 @@ def run(roots: list[Path], out: Path, palette: Palette, ttf: Path | None, frame:
             want = CLEAR.get(rel)
 
             bg_palette = edged if any(fnmatch(rel, e) for e in EDGED) else palette
+            if any(fnmatch(rel, j) for j in JOURNAL):
+                bg_palette = JournalFramePalette()
 
             def decide(bm, want=want, rel=rel, palette=bg_palette):
                 if want and (bm.rgba.shape[1], bm.rgba.shape[0]) != want[0]:

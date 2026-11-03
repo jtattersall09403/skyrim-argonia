@@ -269,3 +269,33 @@ def test_frame_text_fields_and_edge(tmp_path):
     out = EdgedFramePalette().apply(sheet)
     assert tuple(out[30, 8, :3]) == tokens()["frame-trim-hi"]  # the lit rule inset from the sheet's bounds
     assert np.abs(out[30, 40, :3].astype(int) - np.array(tokens()["frame-ground"])).max() < 16
+
+
+def test_journal_rows_run_time_colours_and_sheet_redrawn():
+    """r5 system pages: the SetEntryText textColor pushes are found and moved to the frame text; the journal sheet is
+    redrawn as straight panes with the header strip cleared and the button tab widened to the pane."""
+    from tools.ui_theme import retheme
+    from tools.ui_theme.palette import JournalFramePalette
+
+    pool = b"\x88" + (12).to_bytes(2, "little") + (1).to_bytes(2, "little") + b"textColor\x00"
+    push = b"\x96\x07\x00\x08\x00\x07" + (0x640000).to_bytes(4, "little") + b"\x4f"
+    other = b"\x96\x05\x00\x07" + (7).to_bytes(4, "little")
+    code = b"\x01\x00" + pool + push + other + b"\x00"
+    hits = retheme.script_text_colours(code, 2)
+    assert hits == [(2 + len(pool) + 6, 0x640000)]
+    movie = swf.Movie(b"FWS", 10, b"", [swf.Tag(59, code, True)])
+    if movie is not None:
+        assert retheme.recolour_script_text(movie, FramePalette()) == 1
+        v = retheme.script_text_colours(movie.tags[0].data, 2)[0][1]
+        head = tuple(int(x) for x in tokens()["frame-head"])
+        assert ((v >> 16) & 255, (v >> 8) & 255, v & 255) == head
+    sheet = np.zeros((300, 400, 4), np.uint8)
+    sheet[10:30, 50:350] = (120, 80, 30, 255)  # header slot strip (wood band)
+    sheet[40:250, 20:380] = (120, 80, 30, 255)  # the pane's band
+    sheet[50:240, 30:370] = (150, 150, 150, 255)  # its paper
+    sheet[255:290, 30:150] = (120, 80, 30, 255)  # the button tab's band
+    sheet[260:285, 36:144] = (150, 150, 150, 255)
+    out = JournalFramePalette().apply(sheet)
+    assert out[15, 200, 3] == 0  # header strip cleared
+    assert out[272, 300, 3] > 0  # tab runs to the pane's right edge
+    assert tuple(out[150, 200, :3]) == tuple(tokens()["frame-ground"])

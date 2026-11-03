@@ -172,3 +172,84 @@ class EdgedFramePalette(FramePalette):
 
     def apply(self, rgba: np.ndarray) -> np.ndarray:
         return self.edge(super().apply(rgba))
+
+
+def _box(mask: np.ndarray, r: int) -> np.ndarray:
+    """The mean of a boolean mask over a (2r+1)^2 box, by an integral image (no scipy on the player's machine)."""
+    m = np.pad(mask.astype(np.float32), r + 1, mode="edge")
+    ii = m.cumsum(0).cumsum(1)
+    k = 2 * r + 1
+    s = ii[k:, k:] - ii[:-k, k:] - ii[k:, :-k] + ii[:-k, :-k]
+    return s[:mask.shape[0], :mask.shape[1]] / (k * k)
+
+
+def _components(mask: np.ndarray, step: int = 4) -> list[tuple[int, int, int, int]]:
+    """Bounding boxes (x0, y0, x1, y1) of a mask's 4-connected parts, found on a 1/step grid."""
+    m = mask[::step, ::step]
+    seen = np.zeros_like(m)
+    out = []
+    for y0, x0 in zip(*np.nonzero(m)):
+        if seen[y0, x0]:
+            continue
+        stack, ys, xs = [(y0, x0)], [], []
+        seen[y0, x0] = True
+        while stack:
+            y, x = stack.pop()
+            ys.append(y)
+            xs.append(x)
+            for yy, xx in ((y + 1, x), (y - 1, x), (y, x + 1), (y, x - 1)):
+                if 0 <= yy < m.shape[0] and 0 <= xx < m.shape[1] and m[yy, xx] and not seen[yy, xx]:
+                    seen[yy, xx] = True
+                    stack.append((yy, xx))
+        out.append((min(xs) * step, min(ys) * step, max(xs) * step + step - 1, max(ys) * step + step - 1))
+    return out
+
+
+class JournalFramePalette(FramePalette):
+    """The Journal's System page sheet (Wood and Paper's quest_journal_BG, 1036x687; lane 1.12-r5-system-pages).
+
+    Recolouring keeps its torn wood band, which reads as a wide cream rag at play size. Here the sheet is redrawn on
+    its own panel layout: each panel (a part of the sheet inside the band) becomes a straight rectangle on the frame
+    ground with the System pane's double rule (lit trim, inner trim), the rag goes, and the empty header slots above
+    the panels are cleared.
+    """
+
+    def apply(self, rgba: np.ndarray) -> np.ndarray:
+        rgb = rgba[..., :3].astype(np.float32) / 255
+        lum = luma(rgb)
+        _h, s, _v = hsv(rgb)
+        opaque = rgba[..., 3] > 128
+        band = opaque & (s > 0.45) & (lum < 0.28)
+        inner = (_box(opaque, 6) > 0.5) & ~(_box(band, 6) > 0.35)
+        boxes = [b for b in _components(inner) if (b[2] - b[0]) * (b[3] - b[1]) > 0.01 * inner.size]
+        out = np.zeros_like(rgba)
+        if not boxes:
+            return super().apply(rgba)
+        top = min(b[1] for b in boxes if (b[3] - b[1]) > 0.3 * rgba.shape[0])
+        boxes = [b for b in boxes if b[1] >= top - 8]  # the header slots sit above the panels
+        # the button tab under the panels runs to the pane's right edge: the Load page's three buttons (Delete,
+        # Character Selection, Cancel) overran its 370 px (r5 still 11)
+        bottom, right = max(b[3] for b in boxes if b[1] < top + 8), max(b[2] for b in boxes)
+        boxes = [(b[0], b[1], right, b[3]) if b[1] > bottom else b for b in boxes]
+        g = np.rint(self.t["frame-ground"] * 255).astype(np.uint8)
+        hi = np.rint(self.t["frame-trim-hi"] * 255).astype(np.uint8)
+        lo = np.rint(self.t["frame-trim"] * 255).astype(np.uint8)
+        h, w = rgba.shape[:2]
+
+        def rect(x0, y0, x1, y1, c, a, fill=False, t=1):
+            x0, y0, x1, y1 = max(x0, 0), max(y0, 0), min(x1, w - 1), min(y1, h - 1)
+            if fill:
+                out[y0:y1 + 1, x0:x1 + 1, :3] = c
+                out[y0:y1 + 1, x0:x1 + 1, 3] = a
+                return
+            for sl in ((slice(y0, y0 + t), slice(x0, x1 + 1)), (slice(y1 - t + 1, y1 + 1), slice(x0, x1 + 1)),
+                       (slice(y0, y1 + 1), slice(x0, x0 + t)), (slice(y0, y1 + 1), slice(x1 - t + 1, x1 + 1))):
+                out[sl[0], sl[1], :3] = c
+                out[sl[0], sl[1], 3] = a
+
+        for x0, y0, x1, y1 in boxes:  # the ground first, 10 px beyond each panel, so neighbours share one sheet
+            rect(x0 - 10, y0 - 10, x1 + 10, y1 + 10, g, 242, fill=True)  # --frame-bg's 0.95
+        for x0, y0, x1, y1 in boxes:
+            rect(x0 - 6, y0 - 6, x1 + 6, y1 + 6, hi, 255, t=2)  # the lit rule
+            rect(x0 - 2, y0 - 2, x1 + 2, y1 + 2, lo, 255)  # the inner trim
+        return out
