@@ -104,12 +104,12 @@ steps:
   - console: {line: cow ARG_Province -62 20, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -250153
-  - console: player.setpos y 83968
-  - console: player.setpos z 17312
+  - console: player.setpos x -250270
+  - console: player.setpos y 82334
+  - console: player.setpos z 17309
   - wait: 6
-  - console: player.setangle z 270
-  - console: player.setangle x 5
+  - console: player.setangle z 315
+  - console: player.setangle x 4
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: tarn}
