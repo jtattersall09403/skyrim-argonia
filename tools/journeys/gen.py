@@ -298,7 +298,7 @@ def water_types(b: Build, w, log: list) -> str:
         x, y = f["x"], f["y"]
         h, p = aim(eye_of(b, x, y), subj)
         out.append(_cow_step(name, f"{types[(cx, cy)]} water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m",
-                             x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, True))
+                             x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first))
         first = False
     return "".join(out)
 

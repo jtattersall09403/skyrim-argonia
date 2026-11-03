@@ -36,8 +36,6 @@ steps:
   # marsh water from cell (-40,-25), level 1.4 m
   # subject: -145408 -100352 99
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province -40 -25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
@@ -55,8 +53,6 @@ steps:
   # black water from cell (-49,-29), level 7.7 m
   # subject: -198656 -133120 541
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province -49 -29, settle: 60}
   - wait: 8
   - console: set gamehour to 13
@@ -74,8 +70,6 @@ steps:
   # river-se water from cell (15,-8), level 0.8 m
   # subject: 69073 -29754 60
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province 15 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
@@ -93,8 +87,6 @@ steps:
   # creek-se water from cell (-44,-8), level 117.5 m
   # subject: -173805 -30111 8231
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province -44 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
@@ -112,8 +104,6 @@ steps:
   # cold water from cell (-42,6), level 68.2 m
   # subject: -169984 43008 4775
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province -42 6, settle: 60}
   - wait: 8
   - console: set gamehour to 13
@@ -131,8 +121,6 @@ steps:
   # brackish water from cell (21,16), level 0.0 m
   # subject: 71680 67584 0
   do:
-  - hud: off
-  - console: tgm
   - console: {line: cow ARG_Province 21 16, settle: 60}
   - wait: 8
   - console: set gamehour to 13
