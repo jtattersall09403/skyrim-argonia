@@ -238,7 +238,7 @@ def _water_stop(b: Build, name: str, subj: tuple, ux: float, uy: float, log: lis
     return f   # the fit (_fit) logs the stand it settles on
 
 
-FIT_REACH_M = 30.0      # a stand the clearance moved is searched for within this of the authored one
+FIT_REACH_M = 60.0      # a stand the clearance moved is searched for within this of the authored one
 FIT_SHORES = 40         # the shores tried, best first, before the refresh fails
 FIT_WET_M = 40.0        # the subject of a non-sea stop: the wet point nearest the body's centre within this
 
@@ -271,7 +271,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
     Returns (x, y, subject, share)."""
     n = int(FIT_REACH_M / SAMPLE_M)
     cands = sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)), key=lambda c: c[0] ** 2 + c[1] ** 2)
-    best, why = 0.0, {}
+    best, why, fallback = 0.0, {}, None
     for i, j in cands:
         if math.hypot(i, j) * SAMPLE_M > FIT_REACH_M:
             break
@@ -297,15 +297,22 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
             subj = (subj[0], subj[1], ez)   # level: pitch 0
         a_ = math.radians(h)   # the eye line is judged over the near field (a far shore's trees are the horizon)
         near_ = (ex + math.sin(a_) * 60 * U, ey + math.cos(a_) * 60 * U, ez)
-        if bad := stand_bad(b, x, y, near_):
-            why[bad[0].split(" at")[0]] = why.get(bad[0].split(" at")[0], 0) + 1
-            continue
-        if b.blockers((ex, ey, ez), near_):
-            why["plants"] = why.get("plants", 0) + 1
+        hits = stand_bad(b, x, y, near_)
+        hits = len(hits) * 100 + len(b.blockers((ex, ey, ez), near_)) if hits else len(b.blockers((ex, ey, ez), near_))
+        if hits:   # water and aim hold but plants are on the eye line: kept as the fallback, fewest hits then nearest
+            if fallback is None or hits < fallback[0]:
+                fallback = (hits, i, j, x, y, subj, sh)
             continue
         if i or j:
             log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(i, j) * SAMPLE_M, 1),
                         "why": "re-aimed at the body's centre", "clear": True})
+        return x, y, subj, sh
+    if fallback is not None:
+        hits, i, j, x, y, subj, sh = fallback
+        print(f"water-types: WARNING {name}: no stand clears the plants; the one with fewest ({hits}) on the eye line is used "
+              f"(water and aim hold)")
+        log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(i, j) * SAMPLE_M, 1),
+                    "why": f"{hits} plant hits on the eye line, water holds", "clear": True})
         return x, y, subj, sh
     raise ValueError(f"water-types: {name}: no stand within {FIT_REACH_M:.0f} m of ({f['x']:.0f}, {f['y']:.0f}) whose near "
                      f"field holds {min_share(name):.0%} water with a water aim (best share {best:.0%}; rejected for {why})")
