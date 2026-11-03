@@ -2520,7 +2520,7 @@
    ],
    "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
    "conflicts": "336 dangling refs inside King of the Murkmire.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
-   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm copies the body of its DefaultBlackmarshWater WATR (08184260, ARG_WATR_black), read from the player's own plugin at build time (water/layer.py winners; 1.15 r5 water types, 2026-11-03)"
+   "linked_or_forked_by": "none: depended on as the player’s own download; ArgoniaWorld.esm no longer copies its DefaultBlackmarshWater WATR (08184260; olive 130,116,34, read as grey-green in the round 5 stills); the black type copies Update.esm's MurkyWater (docs/research/2026-11-03/lane-1.15-r5-black-water.md); this row is kept for the other KotM content"
   },
   {
    "id": "htbm",

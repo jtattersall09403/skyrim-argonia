@@ -41,12 +41,14 @@ QUADS = ("ne", "nw", "se", "sw")
 # type -> (name, the editor id it copies, flowing, the opposite direction's type it turns half a circle or None).
 # The first is the sea (WRLD NAM2/NAM3). Winners measured 2026-11-03 over the stack's load order: DefaultWater,
 # DefaultMarshWater and DefaultMarshWaterTransition = Tropical Skyrim.esp; DefaultBlackmarshWater = King of the
-# Murkmire.esp; DefaultWaterCold = Dawnguard.esm; RiverWaterFlowNE/NW/SE and CreekWaterFlowSE/SW = Update.esm.
+# Murkmire.esp (not used since r5 black-water: olive 130,116,34, not black); the black type copies MurkyWater (Update.esm,
+# shallow 26,19,19 / deep 9,9,6, the darkest open-water record in the load order); DefaultWaterCold = Dawnguard.esm;
+# RiverWaterFlowNE/NW/SE and CreekWaterFlowSE/SW = Update.esm.
 TYPES: dict[str, tuple[str, str, bool, str | None]] = {
     "sea": ("Sea", "DefaultWater", False, None),
     "lake": ("Lake Water", "DefaultWater", False, None),  # Skyrim's lakes are its sea's type; ours its twin
     "marsh": ("Marsh Water", "DefaultMarshWater", False, None),  # marsh-deep, backswamp
-    "black": ("Black Water", "DefaultBlackmarshWater", False, None),  # swamp, marsh-fringe
+    "black": ("Black Water", "MurkyWater", False, None),  # swamp, marsh-fringe: the darkest natural record (r5 black-water)
     "cold": ("Cold Water", "DefaultWaterCold", False, None),  # tarns, montane and upland ponds and pools
     "brackish": ("Brackish Water", "DefaultMarshWaterTransition", False, None),  # the tidal rim
     "river-ne": ("River", "RiverWaterFlowNE", True, None),

@@ -80,7 +80,7 @@ def test_water_written_and_read_back(tmp_path):
     assert struct.unpack("<f", wrld.first("NAM4"))[0] == struct.unpack_from("<f", wrld.first("DNAM"), 4)[0]
     win = layer.winners(GAME)
     expected = {"sea": "Tropical Skyrim.esp", "lake": "Tropical Skyrim.esp", "marsh": "Tropical Skyrim.esp",
-                "brackish": "Tropical Skyrim.esp", "black": "King of the Murkmire.esp", "cold": "Dawnguard.esm",
+                "brackish": "Tropical Skyrim.esp", "black": "Update.esm", "cold": "Dawnguard.esm",
                 "river-ne": "Update.esm", "creek-sw": "Update.esm"}
     for t, plugin in expected.items():  # the winners measured 2026-11-03 (water-types.md finding A)
         assert layer.template_of(t, GAME) == f"{plugin}:{layer.TYPES[t][1]}"
@@ -108,6 +108,13 @@ def test_water_written_and_read_back(tmp_path):
             assert any(abs(v) > 0.1 for v in struct.unpack("<3f", ours.first("NAM0")[:12])[:2]), rec["edid"]
         else:
             assert ours.first("FNAM")[0] & 0x08 == 0, rec["edid"]
+    # the black type is Update.esm's MurkyWater, the darkest open-water record (r5 black-water): measured bytes, written as is
+    blk = watr[int(layer.type_key("black").split(":")[0], 16)]
+    d = blk.first("DNAM")
+    assert [tuple(d[o:o + 3]) for o in (40, 44, 48)] == [(26, 19, 19), (9, 9, 6), (32, 35, 27)]  # shallow, deep, reflection
+    assert blk.first("ANAM") == b"d"  # opacity 100
+    assert struct.unpack_from("<2f", d, 32) == (0.0, 60.0)  # fog above near, far
+    assert struct.unpack_from("<2f", d, 20) == pytest.approx((0.55, 0.25))  # reflectivity, fresnel
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")
