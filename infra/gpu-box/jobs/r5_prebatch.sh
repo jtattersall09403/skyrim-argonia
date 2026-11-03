@@ -32,6 +32,10 @@ git add $J/world-sample.yaml $J/world-panel.yaml $J/river-steps.yaml $J/road-loo
 git diff --cached --quiet || git commit -q -m "round 5 pre-batch: the journeys re-derived from the new ground, water and placement
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+# the generated records the gate checks are written first (the docs index: three records-only reds today), committed by path
+python3 tools/doc_index.py --write >/dev/null 2>&1 && { git add docs/INDEX.md; git diff --cached --quiet || git commit -q -m "index: the round build's research notes and briefs
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; }
 step gate make check || { echo "PREBATCH gate RED: the planner reads out/check"; }
 step plugin-check make plugin-check || echo "(plugin-check red: noted)"
 git push -q origin main || git pull -q --rebase origin main && git push -q origin main
