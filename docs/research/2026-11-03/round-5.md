@@ -83,6 +83,12 @@ rule): every text item cream and legible on the opaque ground after Dear Diary's
 lifted at install (lane 1.12-r5-system-pages, e57e1e4a); polish left: the black scrollbar, the shared button-glyph
 art, the empty Level meter, the empty left pane.
 
+| 1.15-r5-sky-2 | the sky templates were read from Skyrim.esm while Tropical Skyrim overrides 38 weathers and 111 image spaces in place (navy zenith 001E64–00309F against our 4B86C8; day bloom ~1 against 3.5–4): the same mistake as the water's; the neon mint leaves are King of the Murkmire leaf cards with a soft-lighting wrap of 10 (nothing else in the stack above 5) and Groundplant10's lime diffuse | lane-1.15-r5-sky-2.md (65c426f8: every template resolves to the load order's winner; a wrap > 5 drops a form; 210 → 204 forms) |
+| harness-r5-water-aim | the water stops stood up to 210 m from the shoreline and the clearance moved them without re-aiming | lane-harness-r5-water-aim.md (0d0958cf: a near-field water share per stop, red when off-aim; refresh raises when no stand passes) |
+| harness-r5-camera-read | the camera was asked once and a cell load reset it to third; the retry pressed a toggle | 68ab90c4 (the bridge camera re-asked up to seven times with a read after each) |
+| harness-r5-direct-screens | screens reached by aiming the game controls | lane-harness-r5-direct-screens.md (ebc44df1: show/dialogue/lockpick by console activate; the lockpick screen owed a bridge command) |
+| harness-r5-pass-ledger | journeys re-run after they had passed | lane-harness-r5-pass-ledger.md (5afaf6af: a per-step pass ledger keyed by each step's reach; the batch shrinks; lod.sh archive/collect skip) |
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
