@@ -8,7 +8,7 @@ id: water-types
 runner: 1
 crash_risk: medium
 scene: creature-spots
-camera: third
+camera: first   # third failed to engage in the round-5 batch (the camera stayed first); first person shows the water as well
 steps:
 - name: sea
   # sea water in cell (-62,-13), level 0.0 m
