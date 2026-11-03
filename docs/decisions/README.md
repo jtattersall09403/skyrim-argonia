@@ -39,6 +39,7 @@ Rulings inherited from elder-souls-argonia are listed (carry / adapt / drop) in
 - [0032](0032-every-world-call-is-grounded-in-the-lore.md) Every world call is grounded in the lore dossiers and the imported old research record
 - [0033](0033-the-world-is-rebuilt-water-first.md) The world is rebuilt water-first, by rule, from the lore, once (supersedes 2.W1 and 2.W2's methods; amends 0028's palette)
 - [0036](0036-journeys-are-driven-by-an-agent-simple-and-smart.md) In-game checks are driven by a `driver` agent that judges each capture and adapts; simple and smart; stills first, clips with a reason
+- [0037](0037-work-is-interrupt-proof.md) The machines are spot and stay spot; every long job checkpoints each step by its inputs and resumes from exactly where it got to; an interruption costs only the gap (owner, #38, 2026-11-03).
 - [0035](0035-nothing-is-levelled-against-the-player.md) Nothing is ever levelled against the player; danger bands are fixed; Skyrim's levelled machinery only as a random pick at level 1
 - [0034](0034-ask-how-bethesda-did-it-and-do-the-same.md) Before any rule of ours: ask how Bethesda solved it in Skyrim, measure it, do the same (a golden rule for every system)
 - [0029](0029-part-0-is-one-sequence-not-spikes.md) Part 0 is one sequence, not spikes: our stack, the agent's hands (SkyLink as the bridge), the pipeline and the first block; scenes are a save plus batch files; journeys read state and keep stills; no installer until release; no time budgets; a Starting state is the state now
