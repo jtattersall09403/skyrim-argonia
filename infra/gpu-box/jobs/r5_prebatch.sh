@@ -11,7 +11,7 @@ PY=$HOME/.argonia/venv/bin/python
 # the key is the build's inputs (the tracked blobs of the world data, the generators and the plugin YAML, plus the
 # ground), not HEAD: a tooling commit (13:40) made a resumed run redo every step
 # (not plugin/, tests/journeys or tests/scenes: the pre-batch commits those itself, which moved the key every run)
-key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart data; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
+key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart data | grep -v "world/db/build_ref.jsonl"; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)  # build_ref is written by this script
 state="$HOME/.argonia/round/prebatch.$key.state"; mkdir -p "$(dirname "$state")"; touch "$state"
 step() { local n=$1; shift; local s=$SECONDS
   if grep -qx "$n OK" "$state"; then echo "PREBATCH $n OK (done earlier for $key)"; return 0; fi
