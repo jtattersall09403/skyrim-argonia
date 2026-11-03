@@ -578,6 +578,8 @@ def test_camera_first_retries_until_it_flips_and_fails_when_it_never_does(tmp_pa
     real = fake.call
 
     def cam(cmd, *args):
+        if cmd == "camera":   # an older DLL without the command: the F key and cgf are the fallback
+            raise rj.BridgeError("unknown command camera")
         if cmd == "console" and args[0] == "IsPC1stPerson" and rj.Runner is not None and state.get("armed"):
             return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if state["first"] else "0.00")}
         if cmd == "console" and args[0].startswith("cgf"):
@@ -589,6 +591,8 @@ def test_camera_first_retries_until_it_flips_and_fails_when_it_never_does(tmp_pa
     rep = rj.Runner(fake, tmp_path / "a").run(journey(tmp_path, [step]), "base")
     assert rep["passed"] and "tm" in fake.lines  # the F key did nothing; Game.ForceFirstPerson through cgf did it
     never = Fake()
+    nreal = never.call
+    never.call = lambda c, *a: (_ for _ in ()).throw(rj.BridgeError("x")) if c == "camera" else nreal(c, *a)
     rep = rj.Runner(never, tmp_path / "b").run(journey(tmp_path, [step]), "base")
     assert not rep["passed"] and "never became first" in rep["steps"][0]["reason"]
 
@@ -733,3 +737,26 @@ def test_dialogue_places_the_npc_then_activates_and_reads_the_view(tmp_path):
     mine = [l for l in b.lines if "ARG_Ref_Livia" in l]
     assert mine[0].startswith("ARG_Ref_Livia.moveto player") and mine[1] == "ARG_Ref_Livia.activate player"
     assert not run_one(tmp_path, Screen(view=False), {"dialogue": "ARG_Ref_Livia"})["passed"]
+
+
+def test_camera_bridge_is_reasked_when_a_load_resets_it_to_third(tmp_path, monkeypatch):
+    # Recorded: the bridge answered first_person True, then the console read `IsPC1stPerson >> 0.00` until a later ask.
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    fake = Fake()
+    real = fake.call
+    st = {"asks": 0}
+
+    def cam(cmd, *a):
+        if cmd == "camera":
+            st["asks"] += 1
+            return {"asked": a[0], "first_person": True}
+        if cmd == "console" and a[0] == "IsPC1stPerson":
+            return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if st["asks"] >= 3 else "0.00")}
+        return real(cmd, *a)
+    fake.call = cam
+    r = rj.Runner(fake, tmp_path / "e")
+    assert r._camera("first")["tries"] == 2 and st["asks"] == 3
+
+    st["asks"] = -99   # the read holds third after every ask: fails, naming the reads
+    with pytest.raises(rj.StepFailed, match="never became first"):
+        rj.Runner(fake, tmp_path / "f")._camera("first")

@@ -364,34 +364,38 @@ class Runner:
             raise StepFailed(f"camera: {arg!r} is `first` or `third`")
         fn = "ForceFirstPerson" if want == "1.00" else "ForceThirdPerson"
         tries = []
-        try:   # route 1: the bridge's own command over the engine's camera API (cgf is unknown here, F is ignored)
-            r = self.b.call("camera", str(arg).strip())
-            tries.append(f"bridge {r.get('first_person')}")
-            time.sleep(0.5)   # the engine's switch lands a frame or two after the call answers: the console read is the state read
-            now = self._console("IsPC1stPerson")["output"].strip()
-            tries.append(f"read {now[-40:]}")
-            if r.get("first_person") is (want == "1.00") and now.endswith(want):
-                self.calls.append({"call": ["camera", str(arg)], "tries": tries})
-                return {"camera": str(arg), "tries": 0, "route": "bridge"}
-        except BridgeError as e:
-            tries.append(f"bridge error {str(e)[:60]}")
-        for n in range(1, 7):
+        bridge_ok = True
+        # The bridge command is re-asked on every try: a load or cell change that finishes after the first ask resets the
+        # camera to third (round 5 batch, water-types brackish-rim and world-panel deep-river-corridor: the bridge answered
+        # first_person True, the console read 0.00 on all six later reads because only the F key / a missing `cgf` were
+        # retried). The F key and cgf are the fallback only for a DLL without the command.
+        for n in range(0, 7):
+            if bridge_ok:
+                try:
+                    r = self.b.call("camera", str(arg).strip())
+                    tries.append(f"bridge {r.get('first_person')}")
+                except BridgeError as e:
+                    bridge_ok = False
+                    tries.append(f"bridge error {str(e)[:60]}")
+            time.sleep(0.5 if n == 0 else 3.0)   # the switch lands a frame or two after the call answers; the console read is the state read
             try:
                 now = self._console("IsPC1stPerson")["output"].strip()
             except BridgeError as e:
                 now = f"error {e}"
-            tries.append(now[-40:])
+            tries.append(f"read {now[-40:]}")
             if now.endswith(want):
                 self.calls.append({"call": ["camera", str(arg)], "tries": tries})
-                return {"camera": str(arg), "tries": n}
-            if n % 2:
-                self.b.call("input", "key", "F", 300, "engine")
-            else:
-                try:
-                    self.b.call("console", f'cgf "Game.{fn}"')
-                except BridgeError as e:
-                    tries.append(f"cgf error {e}")
-            time.sleep(3.0)
+                return {"camera": str(arg), "tries": n, **({"route": "bridge"} if bridge_ok and n == 0 else {})}
+            if n == 6:
+                break
+            if not bridge_ok:
+                if n % 2 == 0:
+                    self.b.call("input", "key", "F", 300, "engine")
+                else:
+                    try:
+                        self.b.call("console", f'cgf "Game.{fn}"')
+                    except BridgeError as e:
+                        tries.append(f"cgf error {e}")
         if os.environ.get("ARGONIA_CAMERA_SOFT"):   # driver, 2026-11-02: record the readings, carry on (the still may be third person)
             self.calls.append({"call": ["camera", str(arg)], "tries": tries, "soft_fail": True})
             return {"camera": str(arg), "tries": 6, "soft_fail": True}
