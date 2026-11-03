@@ -16,6 +16,17 @@ bool pane_wanted(bool windui_open, bool trade_window_open, bool dialogue_menu_op
   return windui_open && !trade_window_open && !dialogue_menu_open && !modal_open;
 }
 
+bool is_trade_menu(std::string_view n) {
+  for (std::string_view m : {"BarterMenu", "ContainerMenu", "GiftMenu", "Crafting Menu", "Lockpicking Menu", "Book Menu",
+                             "Training Menu"})
+    if (n == m) return true;
+  return false;
+}
+
+bool menu_open_after_event(bool listed_open, bool event_menu_is_this, bool event_opening) {
+  return event_menu_is_this ? event_opening : listed_open;
+}
+
 // --- Host --------------------------------------------------------------------------------------------------------
 
 bool Host::is_ready(std::string_view view) const {

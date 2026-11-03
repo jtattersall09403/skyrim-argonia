@@ -48,6 +48,12 @@ const Spec* spec(std::string_view id);
 // conversation (the engine's DialogueMenu, which outlives our dialogue view across a barter round trip) and no modal
 // view of ours. Opening any modal view hides it (Host::open).
 bool pane_wanted(bool windui_open, bool trade_window_open, bool dialogue_menu_open, bool modal_open);
+// Every engine menu that takes the screen from Wind UI's windows and so hides the pane (the owner's finding 26, barter:
+// the pane stood over Livia's stock). The menu events and the rule both read this one list.
+bool is_trade_menu(std::string_view menu_name);
+// The menu of an open/close event counts as it will be (open when opening), whatever the UI's stack says at the
+// event: the engine sends the event before the menu is in (or out of) its stack.
+bool menu_open_after_event(bool listed_open, bool event_menu_is_this, bool event_opening);
 inline constexpr std::string_view kPushFunction = "argoniaPush";      // bridge.ts: window.argoniaPush(text)
 inline constexpr std::string_view kIntentFunction = "argoniaIntent";  // bridge.ts calls window.argoniaIntent(text)
 

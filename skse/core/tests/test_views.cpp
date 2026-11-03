@@ -116,6 +116,21 @@ void pane_never_over_dialogue() {
   CHECK(h.modal() == std::string("chart"));
 }
 
+// Finding 26, barter: every menu that takes the screen hides the pane, and an event counts its menu as it will be.
+void pane_never_over_trade_menus() {
+  for (const char* m : {"BarterMenu", "ContainerMenu", "GiftMenu", "Crafting Menu", "Lockpicking Menu", "Book Menu",
+                        "Training Menu"}) {
+    CHECK(is_trade_menu(m));
+    CHECK(!pane_wanted(true, is_trade_menu(m), false, false));
+  }
+  CHECK(!is_trade_menu("WindUIMenu") && !is_trade_menu("InventoryMenu") && !is_trade_menu("HUD Menu"));
+  // the barter's opening event: the stack does not list it yet, the pane is hidden all the same
+  CHECK(menu_open_after_event(false, true, true));
+  // its closing event: still listed, counted closed, so the pane returns only when the game view does
+  CHECK(!menu_open_after_event(true, true, false));
+  CHECK(menu_open_after_event(true, false, false));
+}
+
 void push_waits_for_ready() {
   Host h;
   auto ops = h.push("dialogue", "A");
@@ -356,6 +371,7 @@ int main() {
   actor_rule();
   the_table();
   pane_never_over_dialogue();
+  pane_never_over_trade_menus();
   push_waits_for_ready();
   one_modal();
   hud_always_open();

@@ -77,18 +77,24 @@ void Apply(const std::vector<ac::views::Op>& ops) {
 // Wind UI's pause windows are open, the chart shows docked in the space they leave (chart/pane.html lays it out);
 // never over its trade, container or crafting windows. Display only: the full chart opens by the taskbar's Map, M or
 // the pad's pane cycle.
-bool ChartPaneWanted() {  // called with Get().lock held
+// `event_menu`/`opening`: the menu event being handled, counted as it will be (the engine sends it before the stack
+// changes; the barter's opening event was read as "not open yet", the pane stood over it).
+bool ChartPaneWanted(std::string_view event_menu = {}, bool opening = false) {  // lock held
   auto* ui = RE::UI::GetSingleton();
   if (!ui) return false;
+  auto open = [&](std::string_view m) {
+    return ac::views::menu_open_after_event(ui->IsMenuOpen(m), !event_menu.empty() && event_menu == m, opening);
+  };
   bool trade = false;
   for (auto m : {RE::ContainerMenu::MENU_NAME, RE::BarterMenu::MENU_NAME, RE::GiftMenu::MENU_NAME,
-                 RE::CraftingMenu::MENU_NAME})
-    trade |= ui->IsMenuOpen(m);
+                 RE::CraftingMenu::MENU_NAME, RE::LockpickingMenu::MENU_NAME, RE::BookMenu::MENU_NAME,
+                 RE::TrainingMenu::MENU_NAME})
+    trade |= open(m);
   return ac::views::pane_wanted(ui->IsMenuOpen(RE::BSFixedString("WindUIMenu")), trade,
-                                ui->IsMenuOpen(RE::DialogueMenu::MENU_NAME), Get().view_host.modal().has_value());
+                                open(RE::DialogueMenu::MENU_NAME), Get().view_host.modal().has_value());
 }
 void OpenChart();
-void ShowChartPane();
+void ShowChartPane(std::string_view event_menu = {}, bool opening = false);
 
 void OnDomReady(prisma::View h) {
   SKSE::GetTaskInterface()->AddTask([h] {
@@ -250,8 +256,8 @@ void OpenChart() {
 }
 
 // The map pane: the chart's state pushed to the docked view and shown while Wind UI's windows want it, else hidden.
-void ShowChartPane() {
-  if (!ChartPaneWanted()) {
+void ShowChartPane(std::string_view event_menu, bool opening) {
+  if (!ChartPaneWanted(event_menu, opening)) {
     Apply({{ac::views::OpKind::hide, "chartpane", {}}});
     return;
   }
@@ -391,10 +397,10 @@ class HudMenuSink final : public RE::BSTEventSink<RE::MenuOpenCloseEvent> {
     // Wind UI's windows, a conversation (play test 3 #26: the pane over dialogue) or a trade window opening or closing:
     // the pane's rule is read again.
     if (e && (e->menuName == RE::BSFixedString("WindUIMenu") || e->menuName == RE::DialogueMenu::MENU_NAME ||
-              e->menuName == RE::BarterMenu::MENU_NAME || e->menuName == RE::ContainerMenu::MENU_NAME))
-      SKSE::GetTaskInterface()->AddTask([] {
+              ac::views::is_trade_menu(e->menuName.c_str())))
+      SKSE::GetTaskInterface()->AddTask([name = std::string(e->menuName.c_str()), opening = e->opening] {
         std::lock_guard l(Get().lock);
-        ShowChartPane();
+        ShowChartPane(name, opening);
       });
     if (e && e->opening && e->menuName == RE::HUDMenu::MENU_NAME)
       SKSE::GetTaskInterface()->AddTask([] {
