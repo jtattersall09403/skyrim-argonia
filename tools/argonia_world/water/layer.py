@@ -10,7 +10,7 @@ a slot of REFS_PER_CELL ids from WATER_BASE + 0x100. A cell needing more refs th
 
 Each type's shading body (noise textures, specular, fresnel, displacement) is Skyrim.esm's DefaultWater (TEMPLATE,
 decision 0034: every vanilla WATR carries them, and a bare one draws flat opaque white, round 1 stills 2026-11-02);
-name, opacity, colours and fog are ours, a starting point for the Community Shaders tuning (2.W2 §a).
+only the name is ours; opacity, colours and fog are the template's too (round 4).
 """
 from __future__ import annotations
 
@@ -34,14 +34,11 @@ NOISE_WIND_SPEED = {STILL_TEMPLATE: (0.019, 0.013, 0.096), FLOW_TEMPLATE: (0.044
 FLOW = "-flow"  # a river cell's type: its class's flowing twin (the sea has none)
 EMIT_TYPES = WATER_TYPES + tuple(t + FLOW for t in WATER_TYPES if t != "sea")  # keys WATER_BASE + 0..6
 
-# name, opacity, shallow, deep, reflection colour, fog above near/far, fog under near/far, fog amounts
-TYPES = {
-    "sea": ("Sea", 40, [74, 112, 104], [12, 38, 44], [160, 186, 190], (0.0, 150.0), (0.0, 1200.0), (0.4, 0.85)),
-    "brackish": ("Brackish Water", 60, [92, 104, 72], [30, 40, 26], [150, 160, 140], (0.0, 110.0), (0.0, 600.0),
-                 (0.5, 0.9)),
-    "fresh": ("Fresh Water", 35, [86, 118, 98], [22, 48, 42], [170, 190, 186], (0.0, 140.0), (0.0, 900.0), (0.35, 0.8)),
-    "blackwater": ("Black Water", 90, [52, 44, 26], [14, 12, 6], [120, 116, 96], (0.0, 60.0), (0.0, 220.0), (0.7, 1.0)),
-}
+# The name is the only field ours (round 4, decision 0034): opacity, the three colours, the fog above and below and every
+# other DNAM field are the template's own. The round-3/4 overrides (opacity 35-90 against vanilla's 30 and 50, fog
+# near 0 against -10 and -500, brighter colours) were a guess, and the shore stills read marbled, blotchy, black and
+# green with them; the authored look comes later by a decision (2.W2 a).
+TYPES = {"sea": "Sea", "brackish": "Brackish Water", "fresh": "Fresh Water", "blackwater": "Black Water"}
 
 
 def type_edid(t: str) -> str:
@@ -73,9 +70,6 @@ def records() -> list[dict]:
     """The WATR intermediate records (README contract; units and choices resolved here)."""
     out = []
     for t in EMIT_TYPES:
-        name, op, shallow, deep, refl, fog_above, fog_under, amounts = TYPES[t.removesuffix(FLOW)]
         out.append({"type": "WATR", "formKey": type_key(t), "edid": type_edid(t.replace("-", "_")),
-                    "template": template_of(t), "layer": "base:water", "name": name, "opacity": op, "shallowColor": shallow, "deepColor": deep,
-                    "reflectionColor": refl, "fogAbove": [fog_above[0], fog_above[1], amounts[0]],
-                    "fogUnder": [fog_under[0], fog_under[1], amounts[1]]})
+                    "template": template_of(t), "layer": "base:water", "name": TYPES[t.removesuffix(FLOW)]})
     return out

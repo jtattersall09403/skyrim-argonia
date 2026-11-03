@@ -3,8 +3,8 @@
 // references from <water>/cells.jsonl (tools/argonia_world/water: `python -m tools.argonia_world.water plan`).
 // As Generate.cs: no unit maths and no choices; every number, id and link arrives resolved. The WRLD's default
 // water links the sea type (the first WATR).
-//   records.json: {"schema": 1, "records": [WATR {formKey, edid, template ("Skyrim.esm:DefaultWater"), name, opacity, shallowColor, deepColor,
-//                  reflectionColor: [r,g,b], fogAbove, fogUnder: [near, far, amount]}, ACTI {formKey, edid, model,
+//   records.json: {"schema": 1, "records": [WATR {formKey, edid, template ("Skyrim.esm:DefaultWater"), name} (opacity, colours, fog: the
+//                  template's own), ACTI {formKey, edid, model,
 //                  bounds: [[x,y,z],[x,y,z]], waterType}]}
 //   cells.jsonl:  {"x", "y", "waterHeight"?, "waterType"?, "refs": [{formKey, base, pos, rot, scale}]}
 using System.Text.Json;
@@ -24,11 +24,6 @@ sealed class WaterRecords
     static string S(JsonElement e, string k) => e.GetProperty(k).GetString() ?? throw new InvalidDataException($"{k} is null");
     static FormKey FK(string s) => FormKey.Factory(s);
     static float F(JsonElement e, int i) => e[i].GetSingle();
-    static System.Drawing.Color Rgb(JsonElement e, string k)
-    {
-        var c = e.GetProperty(k);
-        return System.Drawing.Color.FromArgb(0, c[0].GetInt32(), c[1].GetInt32(), c[2].GetInt32());  // alpha 0, as Skyrim.esm's WATR colours
-    }
 
     /// The types and activators into the mod, the WRLD's default water, and the cell lines indexed by grid.
     public static WaterRecords Load(SkyrimMod mod, Worldspace ws, string dir, string data)
@@ -66,12 +61,10 @@ sealed class WaterRecords
 
     // The type's shading body (the three noise layers' textures, scales and winds, specular, fresnel, displacement:
     // DNAM's other fields and NNAM) is its `template`'s ("Skyrim.esm:DefaultWater", as every vanilla water type
-    // carries them); a type built bare has none and draws flat opaque white (round 1 stills, 2026-11-02). Ours on top:
-    // name, opacity, colours and fog.
+    // carries them); a type built bare has none and draws flat opaque white (round 1 stills, 2026-11-02). Ours on top: the name only
+    // (round 4: opacity, colours and fog are the template's too, decision 0034).
     static FormKey Type(SkyrimMod mod, JsonElement r, string data)
     {
-        var fa = r.GetProperty("fogAbove");
-        var fu = r.GetProperty("fogUnder");
         var tpl = S(r, "template");
         var i = tpl.IndexOf(':');
         using var master = SkyrimMod.CreateFromBinaryOverlay(Path.Combine(data, tpl[..i]), Rel);
@@ -80,16 +73,6 @@ sealed class WaterRecords
         var t = src.Duplicate(FK(S(r, "formKey")));
         t.EditorID = S(r, "edid");
         t.Name = new TranslatedString(Language.English, S(r, "name"));
-        t.Opacity = (byte)r.GetProperty("opacity").GetInt32();
-        t.ShallowColor = Rgb(r, "shallowColor");
-        t.DeepColor = Rgb(r, "deepColor");
-        t.ReflectionColor = Rgb(r, "reflectionColor");
-        t.FogAboveWaterDistanceNearPlane = F(fa, 0);
-        t.FogAboveWaterDistanceFarPlane = F(fa, 1);
-        t.FogAboveWaterAmount = F(fa, 2);
-        t.FogUnderWaterDistanceNearPlane = F(fu, 0);
-        t.FogUnderWaterDistanceFarPlane = F(fu, 1);
-        t.FogUnderWaterAmount = F(fu, 2);
         mod.Waters.Add(t);
         return t.FormKey;
     }

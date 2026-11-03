@@ -70,7 +70,6 @@ def test_water_written_and_read_back(tmp_path):
     assert sorted(watr) == sorted(want) and len(watr) == len(layer.EMIT_TYPES) == 7  # 4 still, 3 flowing (r4)
     for fid, rec in want.items():
         assert watr[fid].first("EDID") == rec["edid"].encode() + b"\0"
-        assert watr[fid].first("ANAM")[0] == rec["opacity"]
         # the shading body of DefaultWater: three noise layers (a bare WATR drew flat opaque white, round 1)
         assert [b for s_, b in watr[fid].subs if s_ == "NNAM"] == [b"Data\\Textures\\Water\\DefaultWater.dds\0"] * 3
         assert struct.unpack_from("<f", watr[fid].first("DNAM"), 4 * 4)[0] == pytest.approx(1021.0)  # sun specular
@@ -84,15 +83,11 @@ def test_water_written_and_read_back(tmp_path):
     for fid, rec in want.items():
         tpl = vanilla[rec["template"].split(":")[1]]
         ours = watr[fid]
-        # every subrecord but ours (EDID, FULL, ANAM, DNAM's fog and colours) is the template's, byte for byte
-        assert [s_ for s_, _ in ours.subs if s_ != "FULL"] == [s_ for s_, _ in tpl.subs]
+        # round 4 (0034): every subrecord but EDID and FULL is the template's, byte for byte: opacity, colours, fog, all of DNAM
+        assert [s_ for s_, _ in ours.subs if s_ != "FULL"] == [s_ for s_, _ in tpl.subs if s_ != "FULL"]
         for s_, b in ours.subs:
-            if s_ not in ("EDID", "FULL", "ANAM", "DNAM"):
+            if s_ not in ("EDID", "FULL"):
                 assert b == tpl.first(s_), (rec["edid"], s_)
-        d, v = ours.first("DNAM"), tpl.first("DNAM")
-        ours_at = {8, 9, 10, 11, 12, 33, 35, 36, 37}  # fog above near/far, shallow/deep/reflection, fog amounts, under
-        assert [k for k in range(len(v) // 4) if d[4 * k:4 * k + 4] != v[4 * k:4 * k + 4] and k not in ours_at] == []
-        assert all(d[4 * k + 3] == 0 for k in (10, 11, 12))  # colour alpha 0, as Skyrim.esm's
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")
