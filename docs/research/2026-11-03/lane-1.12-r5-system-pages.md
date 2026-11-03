@@ -1,6 +1,6 @@
 # Lane 1.12-r5-system-pages: the Journal's System page (Settings, Load) in the frame style
 
-Status: evidence named (step 1); retheme in progress.
+Status: retheme shipped (03e0043e), lockpicking step fixed (dae19f13); two L4 rows owed in checks.md (the planner re-runs menus-look).
 
 ## The frame art
 
@@ -27,3 +27,38 @@ Status: evidence named (step 1); retheme in progress.
 
 Each is an ActionPush int32 feeding `textField.textColor` (SetMember); recolour_text only reaches DefineEditText
 colours, so these stay black on the new dark ground.
+
+## The restyle (install-time, tools/ui_theme/retheme.py; 0014)
+
+- `JournalFramePalette` (palette.py) redraws the quest_journal BG sheet instead of recolouring it: the panels inside the
+  wood band are found (integral-image box filter, connected parts on a 1/4 grid), each drawn as a straight rectangle on
+  `frame-ground` at 0.95 alpha with a 2 px `frame-trim-hi` rule and a 1 px `frame-trim` inner rule; parts above the
+  tallest panel (the header slot bars) are dropped; the button tab under the pane runs to the pane's right edge (the
+  Load footer's Delete / Character Selection / Cancel overran its 370 px). The left list and the page merge into one
+  pane (the divider's gap joins them), which matches 08's single pane. 0.16 s per sheet.
+- `recolour_script_text` (retheme.py) finds every int32 an AS2 stream pushes as a `textColor` it sets and rewrites it
+  in place: the six constants above; 0x640000 (dark red: the "Save" mark) to `frame-head`, the rest to `frame-text`.
+- "Level 1" bar: the level text and meter are the movie's own fields and shapes (`LevelMeter_mc`), already in the frame
+  tokens; its empty well was the sheet's bottom strip, now part of the pane.
+- Contrast (WCAG 2, the menu loop's measure, on frame-ground composited at 0.95): frame-text 11.7:1, frame-head
+  13.2:1, frame-text-soft 6.5:1; all above 4.5.
+
+## L3 proof
+
+`python -m tools.ui_theme.retheme --mods <dear-diary> <wood-and-paper> --out <t>` (73 files, 0 warnings), then
+`python -m tools.ui_theme.frame_stills <t> <stills>` (rows now drawn in the movie's run-time colours). Reader on
+settings.png and load.png against r5 still 08: "same family as 08, legible"; no cream or torn frame; all text light on
+dark; header slot bars gone; the bottom strip wide enough for three buttons (the mock draws no buttons). The mock's
+left labels sit at old sheet coordinates; in game the movie places them.
+
+## Lockpicking (r5 21-lockpicking)
+
+The step moved the crate by a world offset and pitched a fixed 20 degrees: the crosshair missed it, E hit nothing, no
+lock opened (0 menu events). A new journey action `open: <ref>` (run_journey.py) reuses talk's face-and-aim with the
+pitch set to a crate's middle (OPEN_Z 20, OPEN_UNITS 100), presses E only once the bridge's crosshair read holds the
+crate, and retries E while no menu opens. menus-look's lockpicking step uses it on the locked Claywater crate.
+
+## Owed
+
+Two checks.md rows (1-core-loop): the Settings and Load pages in game, and the lockpicking step; the planner re-runs
+menus-look on the next deploy (the theme overlay must be rebuilt by the installer to carry this).
