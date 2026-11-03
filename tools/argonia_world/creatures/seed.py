@@ -103,6 +103,37 @@ def domestic(w) -> int:
     return n
 
 
+DAY_RULE = {"always": "any", "diurnal": "diurnal", "nocturnal": "nocturnal", "crepuscular": "crepuscular"}
+
+
+def ground(w) -> int:
+    """Fill each creature_region_class row's grounding from the rows (owner #37, 09:23): ecology from the creature's
+    habitat and diet against the class, its fixed bands, the class's climatology from land_region_weather (summed
+    chance per weather over the class's land regions), and its day rule from creature.day_active."""
+    clim = {}
+    for r in w.query("SELECT lr.eco_class_id c, wt.weather_id k, SUM(wt.chance) n FROM land_region_weather wt "
+                     "JOIN land_region lr ON lr.id = wt.land_region_id GROUP BY 1, 2"):
+        clim.setdefault(r["c"], []).append((r["n"], r["k"]))
+    climate = {}
+    for c, v in clim.items():
+        tot = sum(n for n, _ in v) or 1
+        climate[c] = ", ".join(f"{k} {round(100 * n / tot)}%" for n, k in sorted(v, reverse=True)[:4])
+    bands = {}
+    for r in w.query("SELECT creature_id, value FROM creature_band ORDER BY ord"):
+        bands.setdefault(r["creature_id"], []).append(r["value"])
+    cr = {r["id"]: r for r in w.query("SELECT * FROM creature")}
+    n = 0
+    for r in w.query("SELECT creature_id, region_class, why FROM creature_region_class"):
+        c = cr[r["creature_id"]]
+        eco = (f"{c['habitat_ground'] or '-'}; water: {c['habitat_water'] or '-'}; diet: {c['diet'] or '-'}; "
+               f"-> {ro.CLASSES[r['region_class']]}")
+        w.upsert("creature_region_class", {**dict(r), "ecology": eco, "bands": "-".join(bands.get(c["id"], [])),
+                                           "climate": climate.get(r["region_class"], ""),
+                                           "day_rule": DAY_RULE[c["day_active"]]})
+        n += 1
+    return n
+
+
 def form_keys(inv: dict) -> dict[tuple[str, str], dict]:
     out = {}
     for plugin, v in inv.items():
@@ -171,6 +202,7 @@ def seed(w, inv: dict) -> dict[str, int]:
     for b, cid, a, carrier, ch, why in ro.EFFECTS:
         w.insert("danger_band_effect", band=b, creature_id=cid, affliction_id=a, carrier=carrier, chance=ch,
                  spell_form=records.spell_form(a), why=why)
+    ground(w)
     derive_lists(w, lv)
     domestic(w)
     for b in ro.BANDS:

@@ -78,5 +78,23 @@ WeatherCoast: its largest land region is nearer the inland regions in size, so t
     yet, so until then they are rows only.
 - Domestic kinds: two placed against Skyrim's five. Lizard-steed and mouth-plover have creature rows but no form
   in any pinned mod, so the rest needs an owner call.
-- Owner's 09:23 comment on #37 widens the grounding: per region climatology and time of day (nocturnal against
-  diurnal spawns). `creature.day_active` exists, but the lists are not split by hour. This is the planner's to brief.
+- Time of day in the generated records (owner 09:23, #37). In the DB each row carries `day_rule`, but no generated
+  record acts on it yet.
+  - The measure (0034): Skyrim.esm's wild creatures carry no hour schedule. Of every Tamriel creature ref's
+    packages (DefaultPatrolLinkedRefNoConvo 1,717, MudCrabSandbox 1,283, DefaultSandbox 1,029, ...), none is timed
+    except named, scripted ones (Dawnstar's foxes, Stump, the Dragon Bridge goat). An SSE LVLO entry takes no
+    condition.
+  - So Skyrim's only native hour switch is a package schedule (PSDT hour and duration), as its guards' sleep and
+    duty shifts use. Doing the same: each kind's fixed copy gets a sandbox package scheduled to its `day_rule`
+    hours, with a stay or hide package for the rest of the day. That is the ArgoniaGen side
+    (`tools/ArgoniaGen/CreatureRecords.cs`, `records.document`). It is not built here: owed, next round.
+
+## Grounding per row (owner #37, 09:23; coordinator's widening of Acceptance 4)
+
+- `creature_region_class` gains four columns, through `world/schema.sql` and `db.py`: `ecology` (habitat, water,
+  diet against the class), `bands` (the fixed bands), `climate` (the class's top four weathers by summed chance
+  from `land_region_weather`) and `day_rule` (diurnal, nocturnal, crepuscular or any, from `creature.day_active`).
+  `seed.ground` fills all 234 rows.
+- Named check `creature-grounding` fails any row without lore (why), ecology, bands, climate or day rule.
+- The round-4 rows' `why` cites `74-ecology.md` (our design table), not a lore dossier. The 71 round-5 rows cite
+  dossier facts. Re-citing the round-4 rows to dossier facts is owed.

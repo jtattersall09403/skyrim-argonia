@@ -6654,6 +6654,13 @@ CREATE TABLE "creature_region_class" (
   "creature_id" TEXT NOT NULL REFERENCES "creature"("id"),
   "region_class" TEXT NOT NULL,
   "why" TEXT NOT NULL,
+  -- the row's grounding (owner #37, 09:23): the ecology (habitat, water, diet against the class), the fixed danger
+  -- bands (0035), the class's climatology (its weathers by chance), and when it is abroad (day_rule); the named
+  -- check creature-grounding fails a row without them
+  "ecology" TEXT,
+  "bands" TEXT,
+  "climate" TEXT,
+  "day_rule" TEXT CHECK ("day_rule" IN ('diurnal', 'nocturnal', 'crepuscular', 'any')),
   PRIMARY KEY ("creature_id", "region_class")
 );
 

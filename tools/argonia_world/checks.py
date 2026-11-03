@@ -466,3 +466,12 @@ def creature_kinds_bar(w) -> list[str]:
     worldspace of equal area, and 12 kinds in each dry-ground list (owner #37; creatures/checks.kind_bars)."""
     from tools.argonia_world.creatures import checks as cc
     return cc.kind_bars(w)["fail"] or []
+
+
+@check("creature-grounding", "creature_region_class")
+def creature_grounding(w) -> list[str]:
+    """Every wild row carries its grounding: lore (why), ecology, bands, climate, day rule (owner #37, 09:23)."""
+    return [f"creature_region_class {r[0]} {r[1]}: no grounding" for r in w.query(
+        "SELECT creature_id, region_class FROM creature_region_class WHERE COALESCE(why, '') = '' OR "
+        "COALESCE(ecology, '') = '' OR COALESCE(bands, '') = '' OR COALESCE(climate, '') = '' OR day_rule IS NULL "
+        "ORDER BY 1, 2")][:20]
