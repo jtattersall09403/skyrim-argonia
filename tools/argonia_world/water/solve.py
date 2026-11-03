@@ -538,7 +538,7 @@ TIDAL_REACH_CELLS = 3  # classify.py DELTA_CELLS: a channel within three cells o
 def salinity(cells: dict[tuple[int, int], tuple], kinds: dict[str, str] | None = None,
              reach: int = TIDAL_REACH_CELLS) -> int:
     """Salt by connection to the open water (decision 0033 section 1; 50-hydrology-climate.md step 9 "estuarine
-    salinity and tidal reach"; world/sources/lore/regions/waters.md: the tide runs a long way inland). The sea stays
+    salinity and tidal reach"; the waters dossier (lore, regions/waters.md): the tide runs a long way inland). The sea stays
     sea. Sea-level (level 0) water joined to it through level-0 cells takes a type by its 4-connected distance d in
     cells: a lagoon body (`kinds`: body id -> kind) is sea; any other cell with d <= `reach` is brackish (the tidal
     delta's own limit, classify.py DELTA_CELLS); beyond it the cell keeps its body's type (blackwater for the inland

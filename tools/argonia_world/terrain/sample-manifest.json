@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "ccbb00c0f0b7d55b90255626f52cd93f4953e9230ba817b9e1e50cd3637a4bde",
- "measured": "2026-11-03, re-pinned deliberately: round 4 of 1.15 (the step rule and dry gullies, shape_sites keeps step channels, roads shaped and re-traced, terrain_patch pads, materials, tree seats, creature lists); the gate's build"
+ "sha256": "2cc5b49cfadfdfd035c9f3f6d2d8068c70b390d15c16afdec0a289dd48b0a5d4",
+ "measured": "2026-11-03, re-pinned deliberately: round 4 of 1.15, batch two's build (the sea typed sea, the WRLD's distant water, the vantage markers moved out of foliage); the gate's build"
 }

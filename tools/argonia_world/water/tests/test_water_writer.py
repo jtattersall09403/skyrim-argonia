@@ -117,7 +117,6 @@ def test_water_written_and_read_back(tmp_path):
 
 def _vanilla_watr() -> dict:
     """Skyrim.esm's WATR records by EDID (the WATR top group only)."""
-    import zlib
     b = (GAME / "Skyrim.esm").read_bytes()
     i, out = struct.unpack_from("<I", b, 4)[0] + 24, {}
     while i < len(b):
