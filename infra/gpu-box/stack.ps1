@@ -262,12 +262,16 @@ switch ($Cmd) {
   }
   'menu' {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { Stop-Process -Name SkyrimSE -Force; Start-Sleep 3 }
-    # -Shaders on|off (round 5's sky A/B, 2026-11-03): `on` is run again so the DLL is back after an `off` launch,
-    # then `off` sets only Community Shaders' DLL aside, as the play-modded cards do (its settings files stay).
-    if ($Shaders -or -not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    # -Shaders on|off (round 5's sky A/B, 2026-11-03): only Community Shaders' DLL is laid or set aside, as the
+    # play-modded cards do (its settings files stay). Never `on` here: a bare re-lay just before the launch removed
+    # the ArgoniaBridge and ArgoniaCore DLLs that prepare had laid (09:40: the game up, the bridge never loaded).
     $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
-    if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
-    elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
+    if ($Shaders -eq 'on' -and -not (Test-Path $cs)) {
+      $src = Get-ChildItem "$Mo2\mods\*\SKSE\Plugins\CommunityShaders.dll" -EA SilentlyContinue | Select -First 1
+      if ($src) { Copy-Item -LiteralPath $src.FullName $cs -Force; 'community shaders: on (DLL laid again)' } else { 'community shaders: on asked, DLL not in any mod' } }
+    elseif ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
+    elseif ($Shaders) { "community shaders: $Shaders (already so)" }
     $skse = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\SKSE"
     Remove-Item "$skse\skse64.log" -EA SilentlyContinue
     $crashes = @(Get-ChildItem "$skse\crash-*.log" -EA SilentlyContinue).Count
