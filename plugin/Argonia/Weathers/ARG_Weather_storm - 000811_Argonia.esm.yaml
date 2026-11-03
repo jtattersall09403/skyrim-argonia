@@ -430,8 +430,8 @@ CloudLodAmbientColor:
   Sunset: '#002E2929'
   Night: '#0008070A'
 FogFarColor:
-  Sunrise: '#0056544A'
-  Day: '#0062685A'
+  Sunrise: '#00515045'
+  Day: '#005D6355'
   Sunset: '#00584A46'
   Night: '#00131B08'
 SkyStaticsColor:

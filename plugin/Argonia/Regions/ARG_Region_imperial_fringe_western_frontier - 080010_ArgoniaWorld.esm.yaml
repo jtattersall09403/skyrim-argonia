@@ -666,8 +666,8 @@ Objects:
     MaxSlope: 30
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 03A57B:King of the Murkmire.esp
-    Density: 31.2468
+  - Object: 03A583:King of the Murkmire.esp
+    Density: 39.0585
     Clustering: 5
     MaxSlope: 52
     Radius: 492
@@ -796,14 +796,22 @@ Objects:
     - Tree
     Radius: 1033
     Unknown2: 0x000000000000
+  - Object: 0F0ACB:King of the Murkmire.esp
+    Density: 78.1171
+    Clustering: 5
+    MaxSlope: 52
+    Flags:
+    - Tree
+    Radius: 492
+    Unknown2: 0x000000000000
   - Object: 11FE7A:Black Marsh.esm
     Density: 2.5075
     Clustering: 4
     MaxSlope: 50
     Radius: 1033
     Unknown2: 0x000000000000
-  - Object: 14FAD6:Black Marsh.esm
-    Density: 31.2468
+  - Object: 155105:Black Marsh.esm
+    Density: 39.0585
     Clustering: 5
     MaxSlope: 52
     Radius: 492
@@ -892,12 +900,6 @@ Objects:
     MaxSlope: 35
     Radius: 866
     Unknown2: 0x000000000000
-  - Object: 17BCFD:Black Marsh.esm
-    Density: 31.2468
-    Clustering: 5
-    MaxSlope: 52
-    Radius: 492
-    Unknown2: 0x000000000000
   - Object: 1DE977:Black Marsh.esm
     Density: 1
     Clustering: 3
@@ -906,8 +908,8 @@ Objects:
     - ConformToSlope
     Radius: 728
     Unknown2: 0x000000000000
-  - Object: 3A3FA6:King of the Murkmire.esp
-    Density: 62.4937
+  - Object: 3A3FA3:King of the Murkmire.esp
+    Density: 78.1171
     Clustering: 5
     MaxSlope: 52
     Flags:
@@ -933,24 +935,8 @@ Objects:
     MaxSlope: 30
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 768242:King of the Murkmire.esp
-    Density: 62.4937
-    Clustering: 5
-    MaxSlope: 52
-    Flags:
-    - Tree
-    Radius: 492
-    Unknown2: 0x000000000000
-  - Object: 768243:King of the Murkmire.esp
-    Density: 31.2468
-    Clustering: 5
-    MaxSlope: 52
-    Flags:
-    - Tree
-    Radius: 492
-    Unknown2: 0x000000000000
-  - Object: 768248:King of the Murkmire.esp
-    Density: 62.4937
+  - Object: 768246:King of the Murkmire.esp
+    Density: 78.1171
     Clustering: 5
     MaxSlope: 52
     Flags:
