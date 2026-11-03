@@ -104,13 +104,13 @@ stops:
   title: The densest vegetation cell
   scene: world-sample-08-dense-vegetation
   cell:
-  - -19
-  - -35
-  region: naga-kur-deeps.interior-swamp
+  - 18
+  - 10
+  region: hist-heartland.flooded-forest
   weather: ARG_Weather_clear_dry
   vegetation:
     source: out/terrain/vegetation/summary.json densest[0]
-    refs_in_cell: 107
+    refs_in_cell: 108
 - n: 9
   title: A border segment and the Tear road gate
   scene: world-sample-09-border
@@ -647,7 +647,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s08-probe-centre
-  why: the cell's centre vertex (107 vegetation refs)
+  why: the cell's centre vertex (108 vegetation refs)
   do:
   - console: player.moveto ARG_Ref_ProbeS08ProbeCentre
   - wait: 4
@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -11.02
+    ge: 700.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 59.02
+    le: 771.01
     within: 3
-  expected_ground_m: 0.343
+  expected_ground_m: 10.51
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
