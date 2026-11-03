@@ -4610,6 +4610,672 @@
   "meshes/ztree's/plants/water lily5-violett.nif": [],
   "meshes/ztree's/plants/water lily5.nif": []
  },
+ "soft_lighting": {
+  "meshes/argonia/trees/bambocluster01.nif": [
+   {
+    "diffuse": "textures/landscape/trees/tree03.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/bananapalm01.nif": [
+   {
+    "diffuse": "textures/landscape/trees/palmleafnew8.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/bananapalm02.nif": [
+   {
+    "diffuse": "textures/landscape/trees/palmleafnew8.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypress1.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypress2.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypress3.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypress4.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypress5.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypressdebris/branchpile01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 10.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/cypressdebris/branchpile02.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 10.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/baldcypressbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/datepalm1.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/datepalm2.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/datepalm3.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/gkbjungletreenew11v3.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/gkbjungletreenew12v3.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/gkbjungletreenew14v3.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/gkbjungletreenew17v2.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/greguire/swampplant06.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10_rose.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/greguire/swampplant06a.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10_rose.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/hangingmoss01.nif": [
+   {
+    "diffuse": "textures/plants/hangingmoss01.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/plants/hangingmoss01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/hangingmoss02.nif": [
+   {
+    "diffuse": "textures/plants/hangingmoss01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/hangingmoss03.nif": [
+   {
+    "diffuse": "textures/plants/hangingmoss01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/hist trees/histtree02a.nif": [
+   {
+    "diffuse": "textures/skyfall/sleeping tree overhaul/cluste_col.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/hist trees/histtree02b.nif": [
+   {
+    "diffuse": "textures/skyfall/sleeping tree overhaul/cluste_col.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/hist trees/histtree02c.nif": [
+   {
+    "diffuse": "textures/skyfall/sleeping tree overhaul/cluste_col.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/hist trees/histtree03.nif": [
+   {
+    "diffuse": "textures/skyfall/sleeping tree overhaul/cluste_col.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/tundradriftwoodbranches01.dds",
+    "soft": 10.0
+   }
+  ],
+  "meshes/argonia/trees/rainforesttree01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbark01_d.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/argonia/anvilplants/treeoakleafcol44.dds",
+    "soft": 2.3
+   }
+  ],
+  "meshes/argonia/trees/rainforesttree02.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/treeoakleafcol44.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbark01_d.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/argonia/trees/shrubtree01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 10.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/shrubtree02.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 10.0
+   }
+  ],
+  "meshes/argonia/trees/shrubtree03.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 10.0
+   }
+  ],
+  "meshes/argonia/trees/shrubtree04.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 10.0
+   }
+  ],
+  "meshes/argonia/trees/shrubtree07.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/treeoakleafcol44.dds",
+    "soft": 2.0
+   }
+  ],
+  "meshes/argonia/trees/shrubtreestump01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/treereachaddon01.dds",
+    "soft": 2.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/tundradriftwoodbranches01.dds",
+    "soft": 10.0
+   }
+  ],
+  "meshes/argonia/trees/treeofwolene2.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/treeofwolene3.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/treeofwolene4.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/treeofwolene5.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth01jungle.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth02.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth02jungle.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth03.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth03jungle.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth04.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth04jungle.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth05.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/snowgumbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/undergrowth05jungle.nif": [
+   {
+    "diffuse": "textures/argonia/anvilplants/anvilleafpalm02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/willow01.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds",
+    "soft": 2.0
+   }
+  ],
+  "meshes/argonia/trees/willow03.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds",
+    "soft": 2.0
+   }
+  ],
+  "meshes/argonia/trees/willow04.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/willow05.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/argonia/trees/willow07.nif": [
+   {
+    "diffuse": "textures/_resourcepack/landscape/trees/weepingwillowbranches01_d.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/dos/misc/tbp_coralbig.nif": [
+   {
+    "diffuse": "textures/dos/plants/tbpcoastcoralgrass02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/dos/misc/tbp_coralmedium.nif": [
+   {
+    "diffuse": "textures/dos/plants/tbpcoastcoralgrass02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/gv_meshes/argoniannest/histtree.nif": [
+   {
+    "diffuse": "d:/steamlibrary/steamapps/common/skyrim special edition/data/textures/gv_textures/argonianresources/histtreeleaves.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/grass/tbp_coralsmall01.nif": [
+   {
+    "diffuse": "textures/landscape/grass/tbpcoastcoralgrass02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/grass/tbp_seaweed06.nif": [
+   {
+    "diffuse": "textures/landscape/grass/seaweed02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/grass/vurt_reeds.nif": [
+   {
+    "diffuse": "textures/landscape/grass/v_reeds.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/plants/braken.nif": [
+   {
+    "diffuse": "textures/landscape/braken.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/landscape/plants/chickweed.nif": [
+   {
+    "diffuse": "textures/plants/ztree flower1/stem1.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/ztree flower1/chickweed.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/landscape/plants/fernlarge03.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ferny3.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/landscape/trees/11skykahl1.nif": [
+   {
+    "diffuse": "textures/landscape/trees/thing1.dds",
+    "soft": 2.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/trunk2.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/thing1.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/thing2.dds",
+    "soft": 2.3
+   }
+  ],
+  "meshes/landscape/trees/birch-.nif": [
+   {
+    "diffuse": "textures/landscape/trees/-trunk.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/kahlerast.dds",
+    "soft": 2.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/birch-leaf.dds",
+    "soft": 2.3
+   }
+  ],
+  "meshes/landscape/trees/cypress1.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbmapleconifer21.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/spanishmoss6.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/spanishmoss11.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/cypress5.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbmapleconifer21.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/grandoak12.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/grandoak12.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/dwarfjunip01.nif": [
+   {
+    "diffuse": "textures/landscape/trees/juniptex.dds",
+    "soft": 2.3
+   }
+  ],
+  "meshes/landscape/trees/gkbjungletreenew12v3.nif": [
+   {
+    "diffuse": "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/gkblillipad2.nif": [
+   {
+    "diffuse": "textures/landscape/trees/lillipads3.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/lillipadreed.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/landscape/trees/hodalder01gkb.nif": [
+   {
+    "diffuse": "textures/landscape/trees/ealderbranchcomp01.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/landscape/trees/ealderbranchcomp01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/tbp_seaweed01.nif": [
+   {
+    "diffuse": "textures/landscape/grass/seaweed01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/tbp_seaweed02.nif": [
+   {
+    "diffuse": "textures/landscape/grass/seaweed02.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/treeofwolene4.nif": [
+   {
+    "diffuse": "textures/grandoak11.dds",
+    "soft": 5.0
+   },
+   {
+    "diffuse": "textures/grandoak11.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/treewillow01a.nif": [
+   {
+    "diffuse": "textures/landscape/trees/treewillowbark01.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/landscape/trees/treewillow01.dds",
+    "soft": 5.0
+   }
+  ],
+  "meshes/landscape/trees/tropicalplant01.nif": [
+   {
+    "diffuse": "textures/plants/tamira/newplants/tropicalplant01.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/landscape/trees/ztgorsebush04statwhite.nif": [
+   {
+    "diffuse": "textures/landscape/trees/egorsebranch02white.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/plants/tamira/new plants/bush04.nif": [
+   {
+    "diffuse": "textures/plants/tamira/newplants/bush04.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/plants/tamira/new plants/tropicalplant01.nif": [
+   {
+    "diffuse": "textures/plants/tamira/newplants/tropicalplant01.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily-violett.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1_violet.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily1.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily2-violett.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1_violet.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily2.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily3.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10_rose.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily4.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily5-violett.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10_rose.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1_violet.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ],
+  "meshes/ztree's/plants/water lily5.nif": [
+   {
+    "diffuse": "textures/plants/groundplants1/ewplake10_rose.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily1.dds",
+    "soft": 0.3
+   },
+   {
+    "diffuse": "textures/plants/groundplants1/lily2.dds",
+    "soft": 0.3
+   }
+  ]
+ },
  "textures": {
   "textures/3amt/neu/stingingnetteld.dds": {
    "hue": 72,

@@ -121,6 +121,65 @@ def nif_shapes(d: bytes) -> list[dict]:
     return out
 
 
+SOFT_LIGHTING = 1 << 25  # SLSF2 Soft_Lighting: light wraps through the leaf by Lighting Effect 1
+
+
+def soft_lit(d: bytes) -> list[dict]:
+    """Per BSLightingShaderProperty of a Skyrim SE NIF with Soft_Lighting set: {soft: Lighting Effect 1 (the wrap
+    strength), diffuse: slot 0}. A wrap far above vanilla's lights the leaf card by the sky from behind: an olive
+    diffuse draws neon mint against a blue sky (lane 1.15-r5-sky-2)."""
+    blocks, p = _blocks(d)
+    out = []
+    for t, b in blocks:
+        if t != "BSLightingShaderProperty":
+            continue
+        ne, = struct.unpack_from("<I", b, 8)
+        q = 12 + 4 * ne + 4
+        f2, = struct.unpack_from("<I", b, q + 4)
+        if not f2 & SOFT_LIGHTING:
+            continue
+        ts, = struct.unpack_from("<i", b, q + 8 + 16)
+        le1, = struct.unpack_from("<f", b, q + 8 + 16 + 4 + 16 + 4 + 12 + 16)
+        tex = ""
+        if 0 <= ts < len(blocks) and blocks[ts][0] == "BSShaderTextureSet":
+            n, = struct.unpack_from("<I", blocks[ts][1], 4)
+            tex = blocks[ts][1][8:8 + n].decode("latin-1").lower().replace("\\", "/")
+        out.append({"soft": round(le1, 3), "diffuse": tex})
+    return out
+
+
+def _blocks(d: bytes) -> tuple[list[tuple[str, bytes]], int]:
+    """A Skyrim SE NIF's blocks as (type, bytes)."""
+    p = d.index(b"\n") + 1 + 4 + 1
+    _, nb, _ = struct.unpack_from("<III", d, p)
+    p += 12
+    for _ in range(3):
+        p += 1 + d[p]
+    nt, = struct.unpack_from("<H", d, p)
+    p += 2
+    types = []
+    for _ in range(nt):
+        n, = struct.unpack_from("<I", d, p)
+        types.append(d[p + 4:p + 4 + n].decode("latin-1"))
+        p += 4 + n
+    idx = struct.unpack_from(f"<{nb}H", d, p)
+    p += 2 * nb
+    sizes = struct.unpack_from(f"<{nb}I", d, p)
+    p += 4 * nb
+    ns, = struct.unpack_from("<I", d, p)
+    p += 8
+    for _ in range(ns):
+        n, = struct.unpack_from("<I", d, p)
+        p += 4 + n
+    ng, = struct.unpack_from("<I", d, p)
+    p += 4 + 4 * ng
+    out = []
+    for i in range(nb):
+        out.append((types[idx[i]], d[p:p + sizes[i]]))
+        p += sizes[i]
+    return out, p
+
+
 def red_shape(sh: dict) -> bool:
     """A vertex colour tints the leaf diffuse (multiplied): a mean in the red-magenta band at saturation, or most
     vertices red-dominant, is a crimson canopy whatever the diffuse says."""
@@ -147,7 +206,7 @@ def build_nif(mo2: Path, vanilla: Path, out: Path = MEASURED) -> dict:
                         where[n] = (f, (sz, fo))
             elif f.is_file() and r.endswith(".nif"):
                 where[r] = (f, None)
-    cache, res = {}, {}
+    cache, res, soft = {}, {}, {}
     for mp in sorted(mt.load()["meshes"]):
         hit = where.get(mp)
         if hit is None:
@@ -164,8 +223,14 @@ def build_nif(mo2: Path, vanilla: Path, out: Path = MEASURED) -> dict:
             res[mp] = nif_shapes(data)
         except (struct.error, ValueError):
             res[mp] = None  # not a BS 100 NIF: unread, not claimed clean
+        try:
+            if sl := soft_lit(data):
+                soft[mp] = sl
+        except (struct.error, ValueError, IndexError):
+            pass
     doc = json.loads(out.read_text(encoding="utf-8"))
     doc["meshes"] = dict(sorted(res.items()))
+    doc["soft_lighting"] = dict(sorted(soft.items()))
     out.write_text(json.dumps(doc, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     return doc
 
@@ -211,7 +276,8 @@ def build(sources: list[tuple[str, Path]], out: Path = MEASURED) -> dict:
     doc = {"about": "mean leaf colour per diffuse and vertex colour per mesh shape (vegetation/leaf_hue.py build, "
                     "build-nif); numbers only",
            "textures": dict(sorted({**old, **got}.items())),
-           "meshes": load_meshes(out)}
+           "meshes": load_meshes(out),
+           "soft_lighting": json.loads(out.read_text(encoding="utf-8")).get("soft_lighting", {}) if out.exists() else {}}
     out.write_text(json.dumps(doc, indent=1, sort_keys=True) + "\n", encoding="utf-8")
     return doc
 
@@ -240,6 +306,29 @@ def red_textures(model: str, man: dict, measured: dict) -> list[str]:
 def problems(placed: list[dict], man: dict, measured: dict) -> list[str]:
     return [f"{f['form_key']} {f['model']}: red leaf {', '.join(ts)}"
             for f in placed if (ts := red_textures(f["model"], man, measured))]
+
+
+SOFT_WRAP_MAX = 5.0  # the stack's soft-light wrap ceiling: 64 of 123 soft-lit leaf shapes sit at 5.0, the next is 10.0
+
+
+def load_soft(path: Path = MEASURED) -> dict:
+    return json.loads(path.read_text(encoding="utf-8")).get("soft_lighting", {}) if path.exists() else {}
+
+
+def glowing(model: str, soft: dict) -> list[str]:
+    """A model's soft-lit shapes whose wrap (Lighting Effect 1) is above SOFT_WRAP_MAX: King of the Murkmire's
+    shrubtree01-04, shrub stumps and cypress branch piles carry 10.0 on their snowgum and bald-cypress leaf cards,
+    which the sky lights through from behind into neon mint 'ghost trees' (owner, sky A/B 2026-11-03, the western
+    frontier high vantage; lane 1.15-r5-sky-2). Natural greens only (lore topics/loading-facts.md:301; 0032)."""
+    from tools.argonia_world.vegetation import mesh_textures
+    mp = mesh_textures.mesh_path(model or "")
+    return [f"soft-light wrap {x['soft']} on {x['diffuse'].rsplit('/', 1)[-1]}"
+            for x in soft.get(mp, []) if x["soft"] > SOFT_WRAP_MAX]
+
+
+def glow_problems(placed: list[dict], soft: dict | None = None) -> list[str]:
+    soft = load_soft() if soft is None else soft
+    return [f"{f['form_key']} {f['model']}: {', '.join(g)}" for f in placed if (g := glowing(f["model"], soft))]
 
 
 def vertex_report(placed: list[dict], shapes: dict | None = None) -> list[str]:

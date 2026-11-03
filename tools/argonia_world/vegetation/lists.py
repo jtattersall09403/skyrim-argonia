@@ -230,6 +230,9 @@ LOOK_DROP = {
     "46324A:King of the Murkmire.esp": "ctq_kapoktree05: bark diffuse luminance 132",
     "0EB91F:King of the Murkmire.esp": "RainforestTree01: bark soft-lit and double-sided with no soft-light map",
     "0EB921:King of the Murkmire.esp": "RainforestTree02: bark soft-lit and double-sided with no soft-light map",
+    "03A583:King of the Murkmire.esp": "Groundplant10 (Tamira bush01): anvilleafpalm02 leaf diffuse saturation 0.86, "
+                                       "the stack's top leaf saturation bar one dark oak card; the bright lime palm at "
+                                       "the western frontier high vantage (lane 1.15-r5-sky-2; natural greens, 0032)",
 }
 
 
@@ -243,6 +246,7 @@ def usable(w) -> dict[str, list]:
     bare_forms = mesh_textures.untextured_forms(man)  # a MODS diffuse no row lays, not overridden (lane 1.15-r3-mods)
     from tools.argonia_world.vegetation import leaf_hue
     hues = leaf_hue.load()
+    soft = leaf_hue.load_soft()
     from tools.argonia_world.vegetation import seat
     seats = seat.load()
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
@@ -254,6 +258,8 @@ def usable(w) -> dict[str, list]:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
         if r["form_key"] in LOOK_DROP:
             continue  # the form's own mesh draws neon or washed out (LOOK_DROP; lane 1.15-r5-trees-2)
+        if leaf_hue.glowing(r["model"], soft):
+            continue  # a leaf card soft-lit far past the stack's wrap draws neon mint against the sky (lane 1.15-r5-sky-2)
         if leaf_hue.red_textures(r["model"], man, hues):
             continue  # a red or magenta leaf diffuse in a green swamp (lane 1.15-r4-red-trees; leaf_hue.py). A red VERTEX
             # colour no longer drops a form: the owner ruled red leaves fine (#37, 2026-11-03 11:54; lane 1.15-r5-trees-2)
