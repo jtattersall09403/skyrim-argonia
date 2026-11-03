@@ -9,7 +9,7 @@ import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import (JOURNEYS, ROOT, SEAT_U, WATER_MIN_SHARE_BY_STEP, WATER_MIN_SHARE, Build, min_share, aim, eye_of, place, stand_bad, water_share)
+from tools.journeys import (JOURNEYS, ROOT, SEAT_U, Build, min_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
@@ -267,7 +267,7 @@ def _first_wet(b: Build, pt: tuple, ux: float, uy: float, limit_m: float = 400.0
 def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
     """The authored stand `f` aimed at the body's centre, or (clearance, slope or foliage moved it, or its field holds too
     little water) the nearest stand within FIT_REACH_M, dry and clear, whose aim point is water and whose near field
-    (0-60 m, +-30 deg) is at least WATER_MIN_SHARE water at or below the eye. Raises when none: no silent off-aim stop.
+    (0-60 m, +-30 deg) is at least the share's floor water at or below the eye. Raises when none: no silent off-aim stop.
     Returns (x, y, subject, share)."""
     n = int(FIT_REACH_M / SAMPLE_M)
     cands = sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)), key=lambda c: c[0] ** 2 + c[1] ** 2)
