@@ -76,3 +76,15 @@ menus-look on the next deploy (the theme overlay must be rebuilt by the installe
 - Ground: my redraw set 0.95 alpha; now 255 (the sheet's alpha values are exactly {0, 255}).
 - Not done: the "Level 1" meter (LevelMeter_mc, the movie's own shapes) still shows; hiding it needs its placement
   edited. The header band is already gone in the 16:03 stills.
+
+## Third pass (r5 17:06: list rows, Level, footer labels still black)
+
+Route B (route A, Dear Diary's dark edition, needs a new download and permissions; B was one function). The cause is
+neither a field colour nor a push: Dear Diary blacks its text with colour transforms on the placed clips (PlaceObject2
+CXFORM, red/green/blue multipliers 0, e.g. sprite 153 placing fields 140-152, sprites 124, 128, 169, 182, 188), so
+the cream colours were multiplied to black. `unblack_text` (retheme.py) finds every placement of a text field, or of a
+clip that holds one, whose transform darkens (all colour multipliers below 1.0, no positive add) and sets red, green
+and blue to 1.0, alpha kept. Measured on the rebuilt overlay: 40 lifted in quest_journal.swf, 22, 10 and 8 in the
+other frame movies (config panel, message box, lockpicking); a second pass finds 0; the darkening transforms left are
+on shapes and icon clips (no text). Not done: the B/X/Y glyph art (skyui/buttonArtDD.swf) is shared with the paper
+menus and keeps the light palette.

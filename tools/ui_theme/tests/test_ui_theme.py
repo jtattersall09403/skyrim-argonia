@@ -311,3 +311,19 @@ def test_html_font_colours_follow_the_frame_text():
     assert retheme.recolour_text(movie, FramePalette()) == 1
     out = movie.tags[0].data
     assert b'color="#000000"' not in out and b'color="#d9cfa6"' in out and len(out) == len(data)
+
+
+def test_darkening_colour_transforms_lifted_off_text():
+    """r5 17:06: Dear Diary drew its list labels black through PlaceObject2 colour transforms, not the field colour."""
+    from tools.ui_theme import retheme
+    et = b"\x05\x00" + b"\x00" + bytes([0x04, 0x00]) + b"\xff\xff\xff\xff" + b"\x00\x00"  # field 5, a colour, no text
+    cx = retheme._write_cxform([0, 0, 0, 256], None)
+    place = bytes([0x0A]) + b"\x01\x00" + b"\x05\x00" + cx  # HasCharacter | HasCxform, depth 1, char 5
+    inner = swf.Tag(26, place).encode() + swf.Tag(0, b"").encode()
+    sprite = b"\x06\x00\x01\x00" + inner
+    movie = swf.Movie(b"FWS", 10, b"", [swf.Tag(37, et), swf.Tag(39, sprite)])
+    assert retheme.unblack_text(movie) == 1
+    t = retheme._inner_tags(movie.tags[1].data[4:])[0]
+    _cid, q, _end = retheme._cxform_at(t.data, t.code)
+    assert retheme._read_cxform(t.data, q)[0] == [256, 256, 256, 256]
+    assert retheme.unblack_text(movie) == 0

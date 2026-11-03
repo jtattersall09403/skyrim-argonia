@@ -166,6 +166,118 @@ def recolour_script_text(movie: swf.Movie, palette: FramePalette) -> int:
     return n
 
 
+DEFINE_SPRITE, PLACE_OBJECT2, PLACE_OBJECT3 = 39, 26, 70
+
+
+def _inner_tags(data: bytes) -> list[swf.Tag]:
+    out, p = [], 0
+    while p + 2 <= len(data):
+        h = int.from_bytes(data[p:p + 2], "little")
+        code, n, long = h >> 6, h & 63, False
+        p += 2
+        if n == 63:
+            n, long = int.from_bytes(data[p:p + 4], "little"), True
+            p += 4
+        out.append(swf.Tag(code, data[p:p + n], long))
+        p += n
+    return out
+
+
+def _cxform_at(d: bytes, code: int) -> tuple[int | None, int, int] | None:
+    """(character id, offset, end) of a PlaceObject2/3's colour transform, or None when it has none."""
+    fl, q, cid = d[0], (4 if code == PLACE_OBJECT3 else 3), None
+    if code == PLACE_OBJECT3 and d[1] & 8:
+        q = d.index(0, q) + 1
+    if fl & 2:
+        cid = int.from_bytes(d[q:q + 2], "little")
+        q += 2
+    if fl & 4:
+        q = swf._skip_matrix(d, q)
+    if not fl & 8:
+        return None
+    r = swf.BitReader(d, q)
+    ha, hm, n = r.u(1), r.u(1), r.u(4)
+    r.u(n * 4 * (ha + hm))
+    return cid, q, q + (r.bit - q * 8 + 7) // 8
+
+
+def _read_cxform(d: bytes, q: int):
+    r = swf.BitReader(d, q)
+    ha, hm, n = r.u(1), r.u(1), r.u(4)
+    mul = [r.s(n) for _ in range(4)] if hm else None
+    add = [r.s(n) for _ in range(4)] if ha else None
+    return mul, add
+
+
+def _write_cxform(mul, add) -> bytes:
+    w = swf.BitWriter()
+    vals = (mul or []) + (add or [])
+    n = max(swf.sbits(*vals), 1) if vals else 1
+    w.u(1 if add else 0, 1)
+    w.u(1 if mul else 0, 1)
+    w.u(n, 4)
+    for v in vals:
+        w.s(v, n)
+    return w.flush()
+
+
+def unblack_text(movie: swf.Movie) -> int:
+    """Dear Diary darkens its text by colour transforms on the placed clips (PlaceObject CXFORM multiplying red,
+    green and blue towards 0: sprite 153's list labels, the category list, the save rows, Level, the button labels;
+    r5 17:06), so the cream field colours were drawn black. On every placement of a text field, or of a clip that
+    holds one, a transform whose colour multipliers darken (all below 1.0, no positive add) keeps its alpha and
+    takes 1.0 for red, green and blue; the count."""
+    text = {int.from_bytes(t.data[:2], "little") for t in movie.tags if t.code == DEFINE_EDIT_TEXT}
+    sprites = {int.from_bytes(t.data[:2], "little"): _inner_tags(t.data[4:]) for t in movie.tags
+               if t.code == DEFINE_SPRITE}
+    grew = True
+    while grew:  # a clip holds text when it places text or a clip that does
+        grew = False
+        for sid, inner in sprites.items():
+            if sid in text:
+                continue
+            ids = {_place_id(t) for t in inner if t.code in (PLACE_OBJECT2, PLACE_OBJECT3)}
+            if ids & text:
+                text.add(sid)
+                grew = True
+    count = 0
+
+    def fix(tags: list[swf.Tag]) -> bool:
+        nonlocal count
+        changed = False
+        for k, t in enumerate(tags):
+            if t.code not in (PLACE_OBJECT2, PLACE_OBJECT3) or _place_id(t) not in text:
+                continue
+            at = _cxform_at(t.data, t.code)
+            if at is None:
+                continue
+            _cid, q, end = at
+            mul, add = _read_cxform(t.data, q)
+            if not mul or max(mul[:3]) >= 256 or (add and max(add[:3]) > 0):
+                continue
+            new = _write_cxform([256, 256, 256, mul[3]], add)
+            tags[k] = swf.Tag(t.code, t.data[:q] + new + t.data[end:], t.long)
+            count += 1
+            changed = True
+        return changed
+
+    fix(movie.tags)
+    for k, t in enumerate(movie.tags):
+        if t.code == DEFINE_SPRITE:
+            inner = _inner_tags(t.data[4:])
+            if fix(inner):
+                movie.tags[k] = swf.Tag(t.code, t.data[:4] + b"".join(x.encode() for x in inner), t.long)
+    return count
+
+
+def _place_id(t: swf.Tag) -> int | None:
+    """The character a PlaceObject2/3 places (None for a move of what the depth holds)."""
+    d, q = t.data, (4 if t.code == PLACE_OBJECT3 else 3)
+    if t.code == PLACE_OBJECT3 and d[1] & 8:
+        q = d.index(0, q) + 1
+    return int.from_bytes(d[q:q + 2], "little") if d[0] & 2 else None
+
+
 def edit_text_colour(data: bytes) -> int | None:
     """The offset of a DefineEditText's RGBA text colour, or None when it sets none."""
     nbits = data[2] >> 3
@@ -217,6 +329,9 @@ def rewrite(path: Path, decide, palette: Palette | None = None, scale_mode: str 
         changed = True
     if isinstance(palette, FramePalette) and (n := recolour_text(movie, palette)):
         notes.append(f"recoloured {n} text field colours")
+        changed = True
+    if isinstance(palette, FramePalette) and (n := unblack_text(movie)):
+        notes.append(f"lifted {n} darkening colour transforms off text")
         changed = True
     if isinstance(palette, FramePalette) and (n := recolour_script_text(movie, palette)):
         notes.append(f"recoloured {n} run-time text colours")
