@@ -128,10 +128,180 @@ def measure() -> dict:
     }
 
 
+# -- kinds per region (1.15 round 5, owner #37 2026-11-03: "at least as many kinds per equivalent-sized region") --
+# A kind is one species: Skyrim's races collapsed (three bears, two trolls named apart as Skyrim names them, the
+# spider sizes, spriggan and matron, deer and elk); the mod's by display name with its variants folded; unnamed
+# master forms take their race's kind. Humanoids, named one-offs and forms whose race lives in a DLC master the
+# scan does not read are out; domestic kinds are counted apart (docs/research/2026-11-03/creature-kinds-per-region.md).
+RACE_KIND = {
+    "WolfRace": "wolf", "BearBrownRace": "bear", "BearBlackRace": "bear", "BearSnowRace": "bear", "FoxRace": "fox",
+    "MudcrabRace": "mudcrab", "HareRace": "hare", "TrollFrostRace": "frost troll", "TrollRace": "troll",
+    "SabreCatRace": "sabre cat", "SabreCatSnowyRace": "sabre cat", "FrostbiteSpiderRace": "frostbite spider",
+    "FrostbiteSpiderRaceLarge": "frostbite spider", "FrostbiteSpiderRaceGiant": "frostbite spider", "ElkRace": "deer",
+    "DeerRace": "deer", "IceWraithRace": "ice wraith", "SkeeverRace": "skeever", "SkeeverWhiteTailRace": "skeever",
+    "GoatRace": "goat", "DragonRace": "dragon", "HorkerRace": "horker", "ChaurusRace": "chaurus",
+    "ChaurusReaperRace": "chaurus", "SlaughterfishRace": "slaughterfish", "GiantRace": "giant",
+    "C00GiantOutsideWhiterunRace": "giant", "MammothRace": "mammoth", "WitchlightRace": "wisp", "WispRace": "wisp",
+    "HagravenRace": "hagraven", "SprigganRace": "spriggan", "SprigganMatronRace": "spriggan",
+    "AtronachFrostRace": "atronach", "AtronachFlameRace": "atronach", "AtronachStormRace": "atronach",
+    "DwarvenCenturionRace": "dwarven centurion",
+    "ChickenRace": "*chicken", "CowRace": "*cow", "DogRace": "*dog", "DogCompanionRace": "*dog", "HorseRace": "*horse",
+    "CartHorseRace": "*horse"}
+# the mod's display names folded to one kind (variants, sizes, misspellings)
+NAME_KIND = {"bear cub": "bear", "forest spider queen": "forest spider", "dragling blind": "dragling",
+             "adolescent serpant": "serpent", "guardian of the forest": "forest guardian", "megalanian": "megalania",
+             "blue megalania": "megalania"}
+# the mod's own named forms: out when the race is a person's (a draugr-race corpse leech is a creature kind)
+PERSON = ("Nord", "Imperial", "Breton", "Redguard", "HighElf", "DarkElf", "WoodElf", "Orc", "Argonian", "Khajiit",
+          "Elder", "Child", "DragonPriest", "Dremora", "Vampire")
+EDID_KIND = {"EncWolfRed": "red wolf", "EncGoatDomestic": "*goat"}  # Skyrim forms the mod places as another kind
+WEATHER_SKIP = ("NoPrecip",)
+CITY = ("WeatherHighHrothgar", "WeatherCoastFog", "WeatherDarklightTower", "WeatherFFRiften", "WeatherFalkreath",
+        "WeatherWinterhold", "WeatherLabyrinthian", "WeatherThroatOfTheWorld", "WeatherDA02")
+MOD = Path.home() / ".argonia" / "stack" / "MO2" / "mods" / "bmv" / "Black Marsh.esm"
+MOD_MAIN = "BlackMarsh"
+BARS = Path(__file__).resolve().parents[3] / "data" / "creature-kind-bars.json"
+
+
+def kind_of(s, k: int, race_scan=None, mod=False) -> str | None:
+    """The species a creature NPC_ stands for, '*name' for a domestic kind, None when it is no creature kind."""
+    n = s.npcs[k]
+    if race_scan is None:  # a Skyrim.esm form
+        if mod and n.edid in EDID_KIND:
+            return EDID_KIND[n.edid]
+        r = s.races.get(n.race)
+        if r is None or any(h.lower() in r.edid.lower() for h in HUMANOID):
+            return None
+        return RACE_KIND.get(r.edid)
+    r = s.races.get(n.race) or race_scan.races.get((n.race or 0) & 0xFFFFFF)  # the mod's own race, else Skyrim's
+    if r is None or not n.name or any(h.lower() in r.edid.lower() for h in PERSON):
+        return None  # a DLC race the scan does not read, an unnamed mod form, a person
+    nm = n.name.lower()
+    return NAME_KIND.get(nm, nm)
+
+
+def skyrim_kinds(s=None, t=None) -> dict[str, dict]:
+    """Skyrim.esm: per Weather* biome region (NoPrecip merged into its parent, city sub-regions out) the cells and
+    the wild kinds reachable from its exterior creature refs (levelled lists expanded)."""
+    s, t = s or scan(), t or load.tamriel()
+    regn = {f: v[1] for f, v in t["forms"].items() if v[0] == "REGN"}
+    cell_reg = {}
+    for xy, c in t["cells"].items():
+        for r in c["regions"]:
+            e = regn.get(r, "")
+            if e.startswith("Weather"):
+                e = e.replace("NoPrecip", "")
+                if e not in CITY:
+                    cell_reg.setdefault(xy, set()).add(e)  # a cell may carry two biome regions: it counts in each
+    out = {}
+    for es in cell_reg.values():
+        for e in es:
+            out.setdefault(e, {"cells": 0, "kinds": set()})["cells"] += 1
+    for a in s.achrs:
+        if a.world != load.TAMRIEL or a.cell not in cell_reg:
+            continue
+        for k in actors.resolve(s, a.base):
+            if k in s.npcs:
+                kd = kind_of(s, k)
+                if kd:
+                    for e in cell_reg[a.cell]:
+                        out[e]["kinds"].add(kd)
+    return out
+
+
+def mod_kinds(m=None, s=None) -> dict[str, dict]:
+    """Black Marsh.esm: per worldspace (its cells carry no REGN) the LAND cells, the wild kinds, and the most kinds
+    any square window of n x n cells holds (for the equal-area bar of a smaller region)."""
+    m, s = m or actors.scan(MOD), s or scan()
+    own = len(m.masters)
+    per = {}
+    for a in m.achrs:
+        w = m.worlds.get(a.world)
+        if w is None or w == "Tamriel" or a.cell is None:
+            continue
+        i = a.base >> 24
+        if i >= own:
+            S, f, rs = m, a.base, s
+        elif m.masters[i] == "Skyrim.esm":
+            S, f, rs = s, a.base & 0xFFFFFF, None
+        else:
+            continue
+        for k in actors.resolve(S, f):
+            if k in S.npcs:
+                kd = kind_of(S, k, rs) if S is m else kind_of(s, k, mod=True)
+                if kd:
+                    per.setdefault(w, {}).setdefault(a.cell, set()).add(kd)
+    land = mod_land_cells()
+    out = {}
+    for w, cells in per.items():
+        wild = set().union(*cells.values())
+        win = {}
+        for n in (3, 5, 9, 13, 17, 21, 25, 29, 33):
+            best = 0
+            xs, ys = [c[0] for c in cells], [c[1] for c in cells]
+            for x0 in range(min(xs) - n + 1, max(xs) + 1):
+                for y0 in range(min(ys) - n + 1, max(ys) + 1):
+                    k = {kd for (x, y), v in cells.items() if x0 <= x < x0 + n and y0 <= y < y0 + n for kd in v
+                         if not kd.startswith("*")}
+                    best = max(best, len(k))
+            win[n * n] = best
+        out[w] = {"cells": land.get(w, 0), "kinds": wild, "window_max": win}
+    return out
+
+
+def mod_land_cells() -> dict[str, int]:
+    """LAND records per worldspace of the mod (its exterior extent)."""
+    import struct
+    import zlib
+    blob, out, cur = MOD.read_bytes(), {}, {}
+
+    def walk(i, end, wname):
+        while i < end:
+            sig, size = blob[i:i + 4], struct.unpack_from("<I", blob, i + 4)[0]
+            if sig == b"GRUP":
+                label, gt = struct.unpack_from("<Ii", blob, i + 8)
+                if gt == 0 and blob[i + 8:i + 12] not in (b"WRLD", b"CELL"):
+                    i += size
+                    continue
+                walk(i + 24, i + size, cur.get(label, wname) if gt == 1 else wname)
+                i += size
+                continue
+            if sig == b"WRLD":
+                flags, fid = struct.unpack_from("<II", blob, i + 8)
+                b = blob[i + 24:i + 24 + size]
+                b = zlib.decompress(b[4:]) if flags & 0x40000 else b
+                cur[fid] = dict(actors._subs(b)).get(b"EDID", b"").split(b"\0")[0].decode("latin1")
+            elif sig == b"LAND" and wname:
+                out[wname] = out.get(wname, 0) + 1
+            i += 24 + size
+
+    walk(struct.unpack_from("<I", blob, 4)[0] + 24, len(blob), None)
+    return out
+
+
+def kind_bars() -> dict:
+    """The numbers the creatures check holds our region classes to (cached in data/, counts only, 0003)."""
+    s = scan()
+    sk = skyrim_kinds(s)
+    md = mod_kinds(s=s)
+    wild = lambda v: sorted(k for k in v["kinds"] if not k.startswith("*"))
+    return {"source": "python3 -m tools.argonia_world.vanilla.creatures --bars (Skyrim.esm + Update.esm; Black Marsh.esm)",
+            "skyrim": {e: {"cells": v["cells"], "wild_kinds": len(wild(v))} for e, v in sorted(sk.items())},
+            "mod": {w: {"cells": v["cells"], "wild_kinds": len(wild(v)), "window_max": v["window_max"]}
+                    for w, v in sorted(md.items())},
+            "mod_main": MOD_MAIN}
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--json")
+    ap.add_argument("--bars", action="store_true", help="the kinds-per-region bars, written to data/")
     a = ap.parse_args(argv)
+    if a.bars:
+        b = kind_bars()
+        BARS.write_text(json.dumps(b, indent=1) + "\n")
+        print(json.dumps(b, indent=1))
+        return 0
     m = measure()
     txt = json.dumps(m, indent=1, default=str)
     if a.json:

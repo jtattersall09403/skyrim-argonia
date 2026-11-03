@@ -27,3 +27,30 @@ def test_terrain_class_matches_vanilla_cuts():
     assert checks.terrain_class(flat + 60, 0.0, 0) == "mountain"
     assert checks.terrain_class(flat + 1, 0.0, 10) == "forest"
     assert checks.terrain_class(flat + 1, 0.0, 9) == "open"
+
+
+def test_every_class_clears_skyrims_and_the_mods_kinds_bar():
+    """Owner #37: never fewer kinds per equal-sized region than Skyrim.esm or Black Marsh.esm (data/ bars)."""
+    w = db.open()
+    r = checks.kind_bars(w)
+    assert r["fail"] is None, r["fail"]
+    assert r["classes"]["coastal-lagoon"]["kinds"] >= 14 and r["classes"]["northern-transition"]["kinds"] >= 18
+
+
+def test_bar_follows_area():
+    bars = {"skyrim": {"A": {"cells": 1500, "wild_kinds": 14}, "B": {"cells": 700, "wild_kinds": 18},
+                       "C": {"cells": 150, "wild_kinds": 10}},
+            "mod": {"M": {"cells": 1000, "wild_kinds": 26, "window_max": {"25": 14, "169": 23}}}, "mod_main": "M"}
+    assert checks.bar_for(2000, bars)[::2] == (14, 26)
+    assert checks.bar_for(160, bars)[::2] == (14, 23)  # never below the least-varied 600+ cell region
+    assert checks.bar_for(700, bars)[0] == 18
+
+
+def test_kept_animals_at_every_lived_in_settlement():
+    w = db.open()
+    lived = {r[0] for r in w.query("SELECT id FROM place WHERE classification_class = 'settlement' AND status IN "
+                                   "('active', 'seasonal', 'contested')")}
+    kept = {r[0] for r in w.query("SELECT home_place_id FROM npc WHERE id LIKE 'creature-at.%.domestic-%'")}
+    assert "place.imperial-fringe.claywater-station" in kept and lived <= kept
+    forms = {r[0] for r in w.query("SELECT creature_id FROM creature_form")}
+    assert {"creature.guar", "creature.bantam-guar"} <= forms

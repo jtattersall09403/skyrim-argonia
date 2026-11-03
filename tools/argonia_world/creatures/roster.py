@@ -14,6 +14,7 @@ ECO = "docs/design/world/74-ecology.md"
 
 KOTM, CIP, BM, BIRDS = ("King of the Murkmire.esp", "Here There Be Monsters - Curse of Cipactli.esp",
                         "Black Marsh.esm", "Tropical Skyrim -- Birds.esp")
+HTBM = "Here There Be Monsters.esp"
 
 # the region classes and what about each one draws a creature (land_region suffixes; 'border' is the map edge)
 CLASSES = {
@@ -60,6 +61,19 @@ NEW = {
         ground="banks, mudflats, snags", water="wades", day="diurnal", group=(2, 8),
         why="Marsh giants boost bird diversity (FH, Marsh Giant); shore and water birds of the coast and rivers.",
         notes="Kingfishers, sandpipers, oystercatchers and gulls: the province's ambient birdlife."),
+    # round 5 (owner #37: never fewer kinds per region than Skyrim or the Black Marsh mod)
+    "creature.tree-viper": dict(name="Red Hooped Tree-Viper", kind="predator", hostility="hostile", bands=("D2", "D3"),
+        ground="branches, root tangles, leaf litter", water="none", day="crepuscular", group=(1, 1),
+        why="The lethal red hooped tree-viper looks almost identical to the wasso hedge snake (LF fact.tree-viper-lookalike).",
+        notes="A red-ringed snake of the branches; its bite kills."),
+    "creature.pad-sa-shark": dict(name="Pad-sa Shark", kind="predator", hostility="hostile", bands=("D3",),
+        ground="none", water="open fresh and salt water", day="always", group=(1, 2),
+        why="Pad-sa sharks survive fresh and salt water from the Niben mouth to Topal Bay (LF fact.pad-sa-sharks).",
+        notes="A hardy shark of the bays and lower rivers."),
+    "creature.bantam-guar": dict(name="Bantam Guar", kind="domestic", hostility="neutral", bands=("D0",),
+        ground="village yards, landings", water="none", day="diurnal", group=(1, 3), domestic=True,
+        why="A voriplasm was seen to engulf a bantam guar in Murkmire (LF fact.voriplasm-bantam-guar): small guar kept by the villages.",
+        notes="A small guar that pecks about the yards and landings."),
 }
 
 # creature -> (medium, [(plugin, edid)], classes, den)
@@ -142,6 +156,59 @@ R = {
                               "deep-river-corridor"), False),
     "creature.marsh-bird": ("shore", [(BIRDS, "01BOSActorKingfisher"), (BIRDS, "01BOSPectoralSandpiper"),
                                       (BIRDS, "01BOSOystercatcher"), (BIRDS, "01BOSActorSeagull")], ALL, False),
+    "creature.tree-viper": ("land", [(CIP, "mihailsnakeVIPER")],
+                            ("flooded-forest", "rootland", "western-frontier", "northern-transition"), False),
+    "creature.pad-sa-shark": ("water", [(HTBM, "HTBMSharkEnc"), (HTBM, "HTBMSharkLargeEnc")],
+                              ("coastal-lagoon", "tidal-delta"), False),
+}
+
+# Round 5 widening (owner #37, 2026-11-03: never fewer kinds per region than Skyrim.esm or Black Marsh.esm; the bar is
+# checks.kind_bars). creature -> (classes added, the lore that grants it there): each becomes that class's
+# creature_region_class.why (0032). The dry-ground kinds reach every wet class so each D2/D3 land list holds 12.
+_WET_LAND = ("coastal-lagoon", "tidal-delta", "deep-river-corridor", "interior-swamp", "deep-sink-basin")
+WIDEN = {
+    "creature.fellrunner": (("coastal-lagoon", "deep-river-corridor", "interior-swamp", "deep-sink-basin",
+                             "flooded-forest"),
+                            "fellrunners of the swamps, whose feathers farmers trade (LF fact.murkwood-fellrunner)"),
+    "creature.giant-wasp": (_WET_LAND, "giant wasps 'the size of ponies' are an everyday swamp hazard (FH Everyday hazards)"),
+    "creature.hoarvor": (_WET_LAND[:4] + ("flooded-forest",),
+                         "hoarvors common in the swamp (LF fact.xal-ithix-swamp-angry; FH Everyday hazards)"),
+    "creature.hackwing": (("deep-river-corridor", "deep-sink-basin", "flooded-forest", "rootland"),
+                          "hackwings, giant saw-beaked birds and vicious predators (LF fact.hackwings)"),
+    "creature.jassa-red-slug": (("coastal-lagoon", "tidal-delta", "western-frontier", "northern-transition"),
+                                "slugs are common in Black Marsh (LF fact.slugs)"),
+    "creature.moon-adder": (("coastal-lagoon", "tidal-delta", "deep-river-corridor", "deep-sink-basin"),
+                            "moon-adders, the venomous vipers whose venom makes daril (LF fact.moon-adders)"),
+    "creature.giant-centipede": (("coastal-lagoon", "tidal-delta", "deep-river-corridor", "interior-swamp"),
+                                 "centipedes are part of every Argonian's life (LF fact.centipede-pillows)"),
+    "creature.giant-snail": (("coastal-lagoon", "tidal-delta", "western-frontier", "northern-transition"),
+                             "snails, cooked for their slime and eaten by burglar crabs (LF fact.tum-taleel-burglar-crabs)"),
+    "creature.tree-viper": (_WET_LAND, "the red hooped tree-viper (LF fact.tree-viper-lookalike), a province-wide snake"),
+    "creature.giant-leech": (("coastal-lagoon", "western-frontier", "northern-transition"),
+                             "giant leeches of the seeps (FH Everyday hazards)"),
+    "creature.swamp-jelly": (("coastal-lagoon",), "swamp jellies drift in Murkmire's waters (LF fact.swamp-jelly-murkmire-breeds)"),
+    "creature.kotu-gava": (("coastal-lagoon", "western-frontier", "northern-transition"),
+                           "kotu gava swarms (FH Everyday hazards)"),
+    "creature.wamasu": (("coastal-lagoon", "western-frontier", "northern-transition"),
+                        "the wamasu lives in many regions of the swamp (LF fact.wamasu; Shadowfen: fact.shadowfen-creatures)"),
+    "creature.kaj-thux": (("coastal-lagoon", "western-frontier", "northern-transition"),
+                          "giant snakes are common in Black Marsh (LF fact.kajthux-giant-snakes; Shadowfen: fact.shadowfen-creatures)"),
+    "creature.haj-mota": (("western-frontier", "northern-transition", "rootland"),
+                          "haj mota wait concealed and burrow (LF fact.haj-mota-devil-tortoise; Blackwood's are small: fact.blackwood-small-haj-mota)"),
+    "creature.marsh-turtle": (("western-frontier", "northern-transition"),
+                              "turtles of the rivers, a tribe's totem (LF fact.bright-throat-turtle, fact.riverback-riddle-tribute)"),
+    "creature.dragon-frog": (("western-frontier", "northern-transition"),
+                             "Black Marsh dragon frogs (LF fact.dragon-frog-poison-breath)"),
+    "creature.voriplasm": (("western-frontier", "northern-transition"), "voriplasms, living slime of the pools (LF fact.voriplasms)"),
+    "creature.crocodile": (("northern-transition",), "Stormhold's crocodile-infested ravines (LF fact.stormhold-crocodile-ravines)"),
+    "creature.dreugh": (("northern-transition",), "the Bogmother dreugh of Shadowfen (LF fact.bogmother-dreugh)"),
+    "creature.pad-sa-shark": (("deep-river-corridor",), "pad-sa sharks survive fresh water up the rivers (LF fact.pad-sa-sharks)"),
+}
+
+# domestic kinds (placed at settlements by npc rows, never in a wild list; 0035: fixed, unlevelled)
+DOMESTIC = {
+    "creature.guar": [(KOTM, "ALPAGwar01"), (KOTM, "ALPAGwar02Pack"), (KOTM, "ALPAGwar03")],
+    "creature.bantam-guar": [(CIP, "CIPHTBMBantamGuar")],
 }
 # kinds with no NPC_ in any pinned mod (vanilla critters or hand-authored): left out of the lists, named here
 NO_FORM = {
@@ -215,3 +282,15 @@ EFFECTS = [
     ("D2", "creature.giant-centipede", "poison.centipede-numb", "bite", 0.5, "the mods' centipede"),
     ("D3", "creature.giant-centipede", "poison.centipede-numb", "bite", 0.7, "the mods' centipede"),
 ]
+
+# settlement -> its kept animals (74-ecology rule 3: only kept animals inside a settlement). The statuses a settlement
+# is lived in; guar everywhere (LF fact.glowgill-guar-archon, fact.guar-glow-tattoos), bantam guar in Murkmire's
+# regions (LF fact.voriplasm-bantam-guar). Each a fixed actor in its creature's band (0035).
+LIVED_IN = ("active", "seasonal", "contested")
+KEPT = {
+    "creature.guar": (None, 2, "a kept guar of the village (LF fact.glowgill-guar-archon, fact.guar-glow-tattoos)",
+                      "Grazes the yard and noses about the landing."),
+    "creature.bantam-guar": (("naga-kur-deeps", "imperial-penal-south"), 2,
+                             "a bantam guar kept in Murkmire (LF fact.voriplasm-bantam-guar)",
+                             "Pecks about the stilts and scuttles from feet."),
+}

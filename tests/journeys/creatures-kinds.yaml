@@ -1,0 +1,54 @@
+# Creature kinds per region (1.15 round 5, owner #37: never fewer kinds per region than Skyrim or the Black Marsh
+# mod). At three region classes (cells chosen inside each class, 3+ cells from any place, the class on every cell
+# two out): teleport to the cell centre by day, wait for the spawns, read every actor loaded within two cells
+# (8192 units) by state, and take one still. Fails when a read lists no actor. Judge from the reads: the kinds (each
+# base's creature_form row) are Black Marsh kinds of that class's lists (creature_region_class), at least 4 distinct
+# kinds per spot; reader checklist per still: no Skyrim animal. No walking, no fighting. The planner runs it in the
+# round's batch on the round-5 build (lists from world/db creature_list at this commit).
+id: creatures-kinds
+runner: 1
+crash_risk: medium
+scene: creature-spots
+camera: first
+steps:
+- name: coastal-lagoon
+  # cell (42, 33) coastal-lagoon: lists lvln.coastal-lagoon.*
+  do:
+  - hud: off
+  - console: tgm
+  - console: {line: cow ARG_Province 42 33, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x 174080
+  - console: player.setpos y 137216
+  - console: player.setpos z 20000
+  - wait: 12
+  expect:
+  - {read: [player], path: pos, keep: arrive}
+  - {read: [actors, "8192"], path: listed, keep: coastal_lagoon}
+- name: northern-transition
+  # cell (-24, 55) northern-transition: lists lvln.northern-transition.*
+  do:
+  - console: {line: cow ARG_Province -24 55, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -96256
+  - console: player.setpos y 227328
+  - console: player.setpos z 20000
+  - wait: 12
+  expect:
+  - {read: [player], path: pos, keep: arrive}
+  - {read: [actors, "8192"], path: listed, keep: northern_transition}
+- name: western-frontier
+  # cell (-48, -13) western-frontier: lists lvln.western-frontier.*
+  do:
+  - console: {line: cow ARG_Province -48 -13, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -194560
+  - console: player.setpos y -51200
+  - console: player.setpos z 20000
+  - wait: 12
+  expect:
+  - {read: [player], path: pos, keep: arrive}
+  - {read: [actors, "8192"], path: listed, keep: western_frontier}

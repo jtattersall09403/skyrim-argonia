@@ -157,7 +157,7 @@ The children and lookups of the families above, listed so the guide names every 
 - `deed`: `deed_kind`, `deed_source`
 - `rumour_pool`: `rumour_pool_kind`, `rumour_pool_source`
 - `document`: `document_kind`, `document_leaf`, `document_source`, `document_teaches`
-- `creature`: `creature_kind`, `creature_source`, `creature_region`, `creature_band`, `creature_statblock`, `creature_fight_flee_alarm`, `creature_notice`, `creature_day_role_exceptions`, `creature_day_blocks`
+- `creature`: `creature_kind`, `creature_source`, `creature_band`, `creature_statblock`, `creature_fight_flee_alarm`, `creature_notice`, `creature_day_role_exceptions`, `creature_day_blocks`
 - `quest`: `quest_group`, `quest_status`, `quest_shape`, `quest_anchor_place`, `quest_touch`, `quest_source`, `quest_essential_topic`, `quest_record_source`, `quest_player_start`, `quest_socket`
 - `topic`: `topic_class`, `topic_required_for_places`, `topic_required_for_glossary_terms`, `topic_required_for_factions`, `topic_required_for_roles`, `topic_required_for_people`
 - `route`: `route_mode`, `route_class`, `route_alias`, `route_source`, `route_stages`

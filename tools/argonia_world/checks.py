@@ -459,3 +459,10 @@ def sky_fill_and_ambient(ours, tpl, clear_template: bool, pleasant: bool) -> lis
         if [b for s, b in ours.subs if s == "DALC"] != [b for s, b in tpl.subs if s == "DALC"]:
             out.append("directional ambient not the template's")
     return out
+@check("creature-kinds-bar", "creature_list", "creature_list_entry", "creature_form", "creature_region_class",
+       "land_region")
+def creature_kinds_bar(w) -> list[str]:
+    """Every region class holds at least as many wild kinds as Skyrim.esm's biome region and Black Marsh.esm's main
+    worldspace of equal area, and 12 kinds in each dry-ground list (owner #37; creatures/checks.kind_bars)."""
+    from tools.argonia_world.creatures import checks as cc
+    return cc.kind_bars(w)["fail"] or []

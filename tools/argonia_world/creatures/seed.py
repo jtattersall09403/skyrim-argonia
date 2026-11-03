@@ -27,7 +27,7 @@ def new_creature(cid: str, d: dict) -> dict:
             "territory_per_stretch_min": 1, "territory_per_stretch_max": 3,
             "territory_per_stretch_unit": "groups per km of path or swim network in a matching band",
             "day_active": d["day"], "diet": "", "eaten_by": "", "harvest": "", "why_here": d["why"],
-            "domestic": False, "hand_authored_only": False, "look_model_set": None, "sourcing_status": "sourced",
+            "domestic": d.get("domestic", False), "hand_authored_only": False, "look_model_set": None, "sourcing_status": "sourced",
             "sourcing_via": "the mods' own NPC_ (the creature_form table)", "sourcing_notes": "",
             "sourcing_redesign": None, "table_row": "docs/research/2026-11-01/lane-1.15-creatures.md#inventory"}
 
@@ -75,6 +75,34 @@ def derive_lists(w, lv: dict[str, int] | None = None) -> int:
     return n
 
 
+def domestic(w) -> int:
+    """Kept animals at every lived-in settlement (owner #37: Skyrim and the mod place 5 domestic kinds in every
+    settled region; ours had none): npc rows of kind creature at the settlement, each with its creature's band
+    (0035: never levelled). Rewrites the rows it owns ('.domestic-'); returns the rows written."""
+    w._begin()
+    w.con.execute("DELETE FROM npc_statblock WHERE npc_id LIKE 'creature-at.%.domestic-%'")
+    w.con.execute("DELETE FROM npc WHERE id LIKE 'creature-at.%.domestic-%'")
+    w.dirty.update({"npc", "npc_statblock"})
+    band = {r["creature_id"]: r["value"] for r in w.query("SELECT creature_id, value FROM creature_band WHERE ord = 0")}
+    names = {r["id"]: r["name"] for r in w.query("SELECT id, name FROM creature")}
+    n = 0
+    q = ("SELECT id, region FROM place WHERE classification_class = 'settlement' AND status IN (%s) ORDER BY id"
+         % ",".join("?" * len(ro.LIVED_IN)))
+    for p in w.query(q, *ro.LIVED_IN):
+        for cid, (regions, count, why, role) in ro.KEPT.items():
+            if regions and p["region"] not in regions:
+                continue
+            for i in range(count):
+                nid = f"creature-at.{p['id'].split('.', 1)[1]}.domestic-{cid.split('.')[1]}-{i + 1}"
+                w.insert("npc", id=nid, kind="creature", name=names[cid], role=role, hostility="neutral",
+                         home_place_id=p["id"], doom_tier="none", status="creature", notes=why, species=cid,
+                         nav="large", look_model_set=cid.split(".")[1], table_row="docs/research/2026-11-03/lane-1.15-r5-creatures.md")
+                w.insert("npc_statblock", npc_id=nid, **{"class": "creature"}, band=band[cid], position=0.5,
+                         respawn="never", soul_trappable=True)
+                n += 1
+    return n
+
+
 def form_keys(inv: dict) -> dict[tuple[str, str], dict]:
     out = {}
     for plugin, v in inv.items():
@@ -117,6 +145,11 @@ def seed(w, inv: dict) -> dict[str, int]:
         for c in classes:
             w.insert("creature_region_class", creature_id=cid, region_class=c,
                      why=f"{hab} -> {ro.CLASSES[c]} ({crows[cid]['table_row'] or ro.ECO})")
+        added, cite = ro.WIDEN.get(cid, ((), ""))
+        for c in added:
+            assert c not in classes, f"{cid}: {c} is already its class"
+            w.insert("creature_region_class", creature_id=cid, region_class=c,
+                     why=f"round 5 (owner #37): {cite} -> {ro.CLASSES[c]}")
         mn, mx, above, slope = ro.MEDIUM[medium]
         mn = ro.DEEP.get(cid, mn)
         g0, g1 = max(1, crows[cid]["territory_group_min"]), max(1, crows[cid]["territory_group_max"])
@@ -124,6 +157,12 @@ def seed(w, inv: dict) -> dict[str, int]:
                  shore_above_m=above, max_slope_deg=slope, group_min=g0, group_max=max(g0, g1), den=den,
                  dens_per_100_cells=(1.5 if crows[cid]["kind"] == "apex" else 3.0) if den else 0.0,
                  why=f"{medium}: {hab}; den {crows[cid]['den_type']} ({crows[cid]['den_why']})")
+    for cid, forms in ro.DOMESTIC.items():  # kept at settlements by npc rows; never in a wild list
+        for plugin, edid in forms:
+            f = keys[(plugin, edid)]
+            w.insert("creature_form", form_key=f["form"], creature_id=cid, mod=plugin, edid=edid, race=f["race"],
+                     aggression=f["aggression"], pc_level_mult=f["pc_level_mult"],
+                     death_item_levelled=f["death_item_levelled"], why=f"{plugin}'s own {edid} ({f['race']}) stands for {crows[cid]['name']}")
     for b, k in ro.BANDS.items():
         w.insert("danger_band_level", band=b, level=lv[b], spawns_per_cell=k,
                  why="level: danger_band_combat (76 §128); spawns: Skyrim.esm wilderness refs per cell scaled by band")
@@ -133,6 +172,7 @@ def seed(w, inv: dict) -> dict[str, int]:
         w.insert("danger_band_effect", band=b, creature_id=cid, affliction_id=a, carrier=carrier, chance=ch,
                  spell_form=records.spell_form(a), why=why)
     derive_lists(w, lv)
+    domestic(w)
     for b in ro.BANDS:
         w.insert("encounter_zone", id=f"eczn.wild.{b}", band=b, kind="wild", min_level=lv[b], max_level=lv[b],
                  never_resets=False, respawn="onRest", why="the wild resets with its cell (Skyrim: 219 of 280 ECZN reset)")

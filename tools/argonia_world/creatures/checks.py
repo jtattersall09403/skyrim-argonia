@@ -13,19 +13,82 @@
     density   spawn refs per 100 sampled cells, per vanilla terrain class (vanilla/creatures.py cell_class), at or
               above Skyrim.esm's (VANILLA_PER_100); classes with fewer than DENSITY_MIN_CELLS cells are reported only
     dens      every den marker has its predator within DEN_BESIDE_M (+ one vertex step)
+    kind_bars every region class holds at least as many wild kinds as the Skyrim.esm biome region nearest its largest
+              land region in cells (never below Skyrim's least-varied region of BIOME_MIN_CELLS or more) AND as the
+              Black Marsh.esm main worldspace holds over an equal area (its densest window of that many cells, the
+              whole worldspace past its size); every D2/D3 land list holds DRY_MIN kinds. The vanilla numbers are
+              computed by vanilla/creatures.py --bars and cached in data/creature-kind-bars.json (counts only, 0003).
+              Owner #37 (2026-11-03): "at least as many kinds per equivalent-sized region".
 """
 from __future__ import annotations
 
-import numpy as np
+import json
+from pathlib import Path
 
-from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.creatures import place as pl
 from tools.argonia_world.creatures import roster
+
+# numpy, the units and the planner load inside the functions that need them: kind_bars runs in the world gate's
+# named checks (db check), on the system python without numpy
 
 MIN_KINDS = 12
 # Skyrim.esm's Tamriel creature refs per 100 cells by terrain class (vanilla/creatures.py, 2026-11-03 run)
 VANILLA_PER_100 = {"shore": 105.16, "forest": 95.87, "open": 25.90, "mountain": 20.78, "water": 8.72}
 DENSITY_MIN_CELLS = 20
+BARS = Path(__file__).resolve().parents[3] / "data" / "creature-kind-bars.json"
+BIOME_MIN_CELLS = 600  # a Skyrim biome region the size of a hold's wilderness (the research note's comparable unit)
+DRY_MIN = 12  # Skyrim's fewest land species in a biome region (creature-kinds-per-region.md, owner #37)
+
+
+def our_kinds(w) -> dict[str, dict]:
+    """Per region class: the wild kinds a walker can meet (the lists' kinds and the apex kinds at dens), the kinds
+    of its D2 and D3 land lists, and its largest land region in cells."""
+    out = {c: {"kinds": set(), "dry": {}, "cells": 0} for c in roster.CLASSES}
+    for r in w.query("SELECT l.region_class c, l.band b, l.medium m, f.creature_id k FROM creature_list l "
+                     "JOIN creature_list_entry e ON e.list_id = l.id JOIN creature_form f USING (form_key)"):
+        if r["c"] in out:
+            out[r["c"]]["kinds"].add(r["k"])
+            if r["m"] == "land" and r["b"] in ("D2", "D3"):
+                out[r["c"]]["dry"].setdefault(r["b"], set()).add(r["k"])
+    for r in w.query("SELECT rc.region_class c, rc.creature_id k FROM creature_region_class rc JOIN creature c "
+                     "ON c.id = rc.creature_id JOIN creature_form f ON f.creature_id = c.id WHERE c.kind = 'apex'"):
+        if r["c"] in out:
+            out[r["c"]]["kinds"].add(r["k"])
+    for r in w.query("SELECT eco_class_id c, MAX(cells) n FROM land_region GROUP BY eco_class_id"):
+        if r["c"] in out:
+            out[r["c"]]["cells"] = r["n"]
+    return out
+
+
+def bar_for(cells: int, bars: dict) -> tuple[int, str, int, str]:
+    """(Skyrim's bar, its region, the mod's bar, its window) for a region of `cells` cells."""
+    sk = bars["skyrim"]
+    near = min(sk, key=lambda e: (abs(sk[e]["cells"] - cells), -sk[e]["wild_kinds"]))
+    floor = min(v["wild_kinds"] for v in sk.values() if v["cells"] >= BIOME_MIN_CELLS)
+    main = bars["mod"][bars["mod_main"]]
+    if cells >= main["cells"]:
+        mod, win = main["wild_kinds"], f"{bars['mod_main']} ({main['cells']} cells)"
+    else:
+        wins = {int(k): v for k, v in main["window_max"].items()}
+        a = min(wins, key=lambda k: (abs(k - cells), -wins[k]))
+        mod, win = wins[a], f"{bars['mod_main']} window of {a} cells"
+    return max(sk[near]["wild_kinds"], floor), near, mod, win
+
+
+def kind_bars(w, bars: dict | None = None) -> dict:
+    bars = bars or json.loads(BARS.read_text())
+    got, bad = {}, []
+    for c, v in our_kinds(w).items():
+        sky, near, mod, win = bar_for(v["cells"], bars)
+        n, dry = len(v["kinds"]), {b: len(k) for b, k in v["dry"].items()}
+        got[c] = {"cells": v["cells"], "kinds": n, "skyrim": sky, "skyrim_region": near, "mod": mod, "mod_window": win,
+                  "dry": dry}
+        if n < sky:
+            bad.append(f"{c}: {n} kinds < Skyrim's {sky} ({near}, for {v['cells']} cells)")
+        if n < mod:
+            bad.append(f"{c}: {n} kinds < Black Marsh.esm's {mod} ({win})")
+        bad += [f"{c}: {b} land list {k} kinds < {DRY_MIN}" for b, k in dry.items() if k < DRY_MIN]
+        bad += [f"{c}: no {b} land list" for b in ("D2", "D3") if b not in dry]
+    return {"classes": got, "fail": bad or None}
 
 
 def lists(w) -> dict:
@@ -40,8 +103,9 @@ def lists(w) -> dict:
     return {"kinds": n, "fail": sorted(set(bad))[:10] or None}
 
 
-def terrain_class(h: np.ndarray, level: float, trees: int) -> str:
+def terrain_class(h, level: float, trees: int) -> str:
     """vanilla/creatures.py cell_class on our cell: h metres, level the cell's water, trees its stems."""
+    from tools.argonia_world import skyrim_units as su
     wet = float((h < level).mean())
     if wet > 0.5:
         return "water"
@@ -115,6 +179,10 @@ def unlevelled(w, run: dict | None = None) -> dict:
 
 
 def refs(run: dict, src, cw) -> dict:
+    import numpy as np
+
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.creatures import place as pl
     rules, (P, R) = run["rules"], run["places"]
     hs = {}
     bad_h, bad_ns, bad_den = [], [], []

@@ -994,7 +994,7 @@ CREATE TABLE "document_teaches" (
 
 -- == creature ==
 
--- Home of every creature kind: regions, bands, habitat, stat block, senses, reaction.
+-- Home of every creature kind: region classes (creature_region_class), bands, habitat, stat block, senses, reaction.
 CREATE TABLE "creature" (
   "id" TEXT NOT NULL,
   "name" TEXT NOT NULL,
@@ -1037,15 +1037,6 @@ CREATE TABLE "creature" (
 
 -- Home of one row per element of `sources` of each creature row (ordered by `ord` where it has one).
 CREATE TABLE "creature_source" (
-  "creature_id" TEXT NOT NULL,
-  "ord" INTEGER NOT NULL,
-  "value" TEXT NOT NULL,
-  PRIMARY KEY ("creature_id", "ord"),
-  FOREIGN KEY ("creature_id") REFERENCES "creature" ("id") ON DELETE CASCADE
-);
-
--- Home of one row per element of `regions` of each creature row (ordered by `ord` where it has one).
-CREATE TABLE "creature_region" (
   "creature_id" TEXT NOT NULL,
   "ord" INTEGER NOT NULL,
   "value" TEXT NOT NULL,
