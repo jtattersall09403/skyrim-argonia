@@ -78,16 +78,36 @@ WeatherCoast: its largest land region is nearer the inland regions in size, so t
     yet, so until then they are rows only.
 - Domestic kinds: two placed against Skyrim's five. Lizard-steed and mouth-plover have creature rows but no form
   in any pinned mod, so the rest needs an owner call.
-- Time of day in the generated records (owner 09:23, #37). In the DB each row carries `day_rule`, but no generated
-  record acts on it yet.
-  - The measure (0034): Skyrim.esm's wild creatures carry no hour schedule. Of every Tamriel creature ref's
-    packages (DefaultPatrolLinkedRefNoConvo 1,717, MudCrabSandbox 1,283, DefaultSandbox 1,029, ...), none is timed
-    except named, scripted ones (Dawnstar's foxes, Stump, the Dragon Bridge goat). An SSE LVLO entry takes no
-    condition.
-  - So Skyrim's only native hour switch is a package schedule (PSDT hour and duration), as its guards' sleep and
-    duty shifts use. Doing the same: each kind's fixed copy gets a sandbox package scheduled to its `day_rule`
-    hours, with a stay or hide package for the rest of the day. That is the ArgoniaGen side
-    (`tools/ArgoniaGen/CreatureRecords.cs`, `records.document`). It is not built here: owed, next round.
+- Domestic kinds beyond the guar (lizard-steed, mouth-plover): no form in any pinned mod; the coordinator takes it
+  to the owner.
+- Kept guar in the 85 lived-in settlements that have no layout or build yet: their npc rows stand ready; each gets
+  its pen socket and actor when its place is laid out and built (the same `seed.domestic` path).
+
+## Round 5b: the owed parts finished
+
+- **Time of day in the records, the Skyrim way** (`records.day_packages`, `CreatureRecords.cs`, `PackageRecords.cs`).
+  - Every wild form is now copied per band: 77 forms, 385 copies. Each copy carries its kind's packages in PKID,
+    abroad first, with the template's AI-packages flag (0x20) cleared.
+  - The packages template on vanilla's EncCreatureSandboxEditorLocation512 (10F7A5): the Sandbox template 01C254,
+    near the editor location. Abroad hours use a 512-unit sandbox. Rest hours use 256 units, as
+    EncSlaughterfishSboxEditorLocation256 (0DA751). The hours come from a PSDT schedule, as
+    DefaultSleepEditorLoc24x8 (01B210) does.
+  - The windows: diurnal 06-20, nocturnal 20-06, crepuscular 04-08 and 17-21. Kinds with `any` keep 10F7A5 itself.
+  - Eight PACK records at 0D3F00 onwards.
+  - Writer test on the bytes, `creatures/tests/test_day_packages.py`, passes. It runs ArgoniaGen `world` and reads
+    back each PACK's PSDT hour and minutes and its Sandbox template (PKCU), and each actor's PKID order and ACBS
+    template flags.
+- **Kept guar placed.** The place build's own animal socket (kind fauna, zone pen, as upriver-hist-village's
+  `fauna-pond-guar`) is written for every lived-in settlement with a layout (6 sockets, 12 rows homed to them).
+  - Where the place is built, at Claywater, each guar is a persistent actor REFR (`ref.claywater-station.kept-guar-1`
+    and `-2`) with an owned pen marker. `place_build._people` writes its NPC_ on King of the Murkmire's
+    `ALPAGwar01`, with the creature den sandbox around the pen all day.
+  - The pen stands 22.8 m east of the centre, out of the crocodile's scour pool (35 m off).
+  - Bantam guar moved to band D1.
+  - `test_creature_dens` picks the crocodile's NPC_ by its EditorID now that the guar are NPC_ too.
+- **Lore citations (0032).** Every `creature_region_class.why` now cites the lore dossiers (`roster.LORE`):
+  loading-facts fact ids, fauna-hazards sections, and ecology-encounters-loot's region table. None cites
+  `74-ecology.md` any more (0 of 234 rows).
 
 ## Grounding per row (owner #37, 09:23; coordinator's widening of Acceptance 4)
 
@@ -96,5 +116,4 @@ WeatherCoast: its largest land region is nearer the inland regions in size, so t
   from `land_region_weather`) and `day_rule` (diurnal, nocturnal, crepuscular or any, from `creature.day_active`).
   `seed.ground` fills all 234 rows.
 - Named check `creature-grounding` fails any row without lore (why), ecology, bands, climate or day rule.
-- The round-4 rows' `why` cites `74-ecology.md` (our design table), not a lore dossier. The 71 round-5 rows cite
-  dossier facts. Re-citing the round-4 rows to dossier facts is owed.
+- Every row's `why` cites the dossiers (round 5b).

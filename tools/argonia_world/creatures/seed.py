@@ -77,28 +77,64 @@ def derive_lists(w, lv: dict[str, int] | None = None) -> int:
 
 def domestic(w) -> int:
     """Kept animals at every lived-in settlement (owner #37: Skyrim and the mod place 5 domestic kinds in every
-    settled region; ours had none): npc rows of kind creature at the settlement, each with its creature's band
-    (0035: never levelled). Rewrites the rows it owns ('.domestic-'); returns the rows written."""
+    settled region; ours had none): per kept kind a pen (a fauna socket, zone pen), its npc rows homed there with
+    their band's statblock (0035: never levelled), and where the place is built its actor REFRs and pen markers
+    (build_person, build_ref: the place build's creature path). Rewrites the rows it owns; returns the npc rows."""
+    import math
     w._begin()
-    w.con.execute("DELETE FROM npc_statblock WHERE npc_id LIKE 'creature-at.%.domestic-%'")
-    w.con.execute("DELETE FROM npc WHERE id LIKE 'creature-at.%.domestic-%'")
-    w.dirty.update({"npc", "npc_statblock"})
+    for sql in ("DELETE FROM build_ref WHERE id LIKE 'ref.%.kept-%'",
+                "DELETE FROM build_person WHERE npc_id LIKE 'creature-at.%.domestic-%'",
+                "DELETE FROM npc_statblock WHERE npc_id LIKE 'creature-at.%.domestic-%'",
+                "DELETE FROM npc WHERE id LIKE 'creature-at.%.domestic-%'",
+                "DELETE FROM socket WHERE id LIKE 'socket.%.pen-kept-%'"):
+        w.con.execute(sql)
+    w.dirty.update({"npc", "npc_statblock", "socket", "build_person", "build_ref"})
     band = {r["creature_id"]: r["value"] for r in w.query("SELECT creature_id, value FROM creature_band WHERE ord = 0")}
     names = {r["id"]: r["name"] for r in w.query("SELECT id, name FROM creature")}
+    races = {r["form_key"]: r["race"] for r in w.query("SELECT form_key, race FROM creature_form")}
+    laid = {r[0] for r in w.query("SELECT place_id FROM layout")}  # a socket lives in its place's layout
+    built = {r["place_id"]: r["id"] for r in w.query("SELECT id, place_id FROM build_cell WHERE kind = 'exterior'")}
     n = 0
-    q = ("SELECT id, region FROM place WHERE classification_class = 'settlement' AND status IN (%s) ORDER BY id"
-         % ",".join("?" * len(ro.LIVED_IN)))
+    q = ("SELECT id, region, position_m_x x, position_m_y y, footprint_radius_m r FROM place WHERE "
+         "classification_class = 'settlement' AND status IN (%s) ORDER BY id" % ",".join("?" * len(ro.LIVED_IN)))
     for p in w.query(q, *ro.LIVED_IN):
+        slug = p["id"].split(".")[-1]
+        nxt = (w.query("SELECT MAX(ord) FROM socket WHERE place_id = ?", p["id"])[0][0] or 0) + 1
         for cid, (regions, count, why, role) in ro.KEPT.items():
             if regions and p["region"] not in regions:
                 continue
+            kind = cid.split(".")[1]
+            a = math.radians(ro.PEN_BEARING[cid])
+            out = ro.PEN_OUT_M * (p["r"] or 40.0)
+            px, py = p["x"] + out * math.cos(a), p["y"] + out * math.sin(a)
+            sid = f"socket.{slug}.pen-kept-{kind}" if p["id"] in laid else None
+            if sid:
+                w.insert("socket", place_id=p["id"], ord=nxt, op="socket", id=sid, kind="fauna", at_x=round(px, 1),
+                         at_y=round(py, 1), zone="pen", species=cid, headcount=count, why=why,
+                         danger_band=band[cid])
+                nxt += 1
             for i in range(count):
-                nid = f"creature-at.{p['id'].split('.', 1)[1]}.domestic-{cid.split('.')[1]}-{i + 1}"
+                nid = f"creature-at.{p['id'].split('.', 1)[1]}.domestic-{kind}-{i + 1}"
                 w.insert("npc", id=nid, kind="creature", name=names[cid], role=role, hostility="neutral",
-                         home_place_id=p["id"], doom_tier="none", status="creature", notes=why, species=cid,
-                         nav="large", look_model_set=cid.split(".")[1], table_row="docs/research/2026-11-03/lane-1.15-r5-creatures.md")
+                         home_place_id=p["id"], home_home_socket_id=sid, home_home_activity="rest", doom_tier="none",
+                         status="creature", notes=why, species=cid, nav="large", look_model_set=kind,
+                         table_row="docs/research/2026-11-03/lane-1.15-r5-creatures.md")
                 w.insert("npc_statblock", npc_id=nid, **{"class": "creature"}, band=band[cid], position=0.5,
                          respawn="never", soul_trappable=True)
+                if p["id"] in built:
+                    tpl, race, edid = ro.KEPT_FORM[cid]
+                    w.insert("build_person", npc_id=nid, template_form_key=tpl, race_form_key=race,
+                             template_why=f"{edid}: the mod's own {names[cid]} (body, stats, attacks)", speaker=False,
+                             sandbox_radius_m=ro.PEN_RADIUS_M, outfit_stand_in=False)
+                    ax, ay = px + 1.5 * i, py
+                    w.insert("build_ref", id=f"ref.{slug}.kept-{kind}-{i + 1}", cell_id=built[p["id"]],
+                             base=f"ARG_Npc_Domestic{kind.title().replace('-', '')}{i + 1}", x_m=round(ax, 1),
+                             y_m=round(ay, 1), yaw_deg=0.0, persistent=True, npc_id=nid, thing_id=nid,
+                             why=f"{names[cid]} in its pen ({sid}); stands on the game ground")
+                    w.insert("build_ref", id=f"ref.{slug}.kept-{kind}-{i + 1}-pen", cell_id=built[p["id"]],
+                             base="000034:Skyrim.esm", x_m=round(ax, 1), y_m=round(ay, 1), yaw_deg=0.0,
+                             persistent=True, owner_npc_id=nid,
+                             why=f"the {names[cid]}'s pen marker (its sandbox centre, owned by it)")
                 n += 1
     return n
 
@@ -175,7 +211,7 @@ def seed(w, inv: dict) -> dict[str, int]:
         hab = f"{crows[cid]['habitat_ground']}; water: {crows[cid]['habitat_water']}"
         for c in classes:
             w.insert("creature_region_class", creature_id=cid, region_class=c,
-                     why=f"{hab} -> {ro.CLASSES[c]} ({crows[cid]['table_row'] or ro.ECO})")
+                     why=f"{ro.LORE[cid]} -> {ro.CLASSES[c]}")
         added, cite = ro.WIDEN.get(cid, ((), ""))
         for c in added:
             assert c not in classes, f"{cid}: {c} is already its class"

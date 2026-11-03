@@ -11,6 +11,7 @@ from __future__ import annotations
 FH = "lore dossier topics/fauna-hazards.md"
 LF = "lore dossier topics/loading-facts.md"
 ECO = "docs/design/world/74-ecology.md"
+EL = "lore dossier topics/ecology-encounters-loot.md"
 
 KOTM, CIP, BM, BIRDS = ("King of the Murkmire.esp", "Here There Be Monsters - Curse of Cipactli.esp",
                         "Black Marsh.esm", "Tropical Skyrim -- Birds.esp")
@@ -70,7 +71,7 @@ NEW = {
         ground="none", water="open fresh and salt water", day="always", group=(1, 2),
         why="Pad-sa sharks survive fresh and salt water from the Niben mouth to Topal Bay (LF fact.pad-sa-sharks).",
         notes="A hardy shark of the bays and lower rivers."),
-    "creature.bantam-guar": dict(name="Bantam Guar", kind="domestic", hostility="neutral", bands=("D0",),
+    "creature.bantam-guar": dict(name="Bantam Guar", kind="domestic", hostility="neutral", bands=("D1",),
         ground="village yards, landings", water="none", day="diurnal", group=(1, 3), domestic=True,
         why="A voriplasm was seen to engulf a bantam guar in Murkmire (LF fact.voriplasm-bantam-guar): small guar kept by the villages.",
         notes="A small guar that pecks about the yards and landings."),
@@ -205,6 +206,48 @@ WIDEN = {
     "creature.pad-sa-shark": (("deep-river-corridor",), "pad-sa sharks survive fresh water up the rivers (LF fact.pad-sa-sharks)"),
 }
 
+# each kind's lore grounding in the dossiers (0032): its base classes' creature_region_class.why cites this, not our
+# design table 74-ecology.md (round 4 cited the design table). EL's region table: Shadowfen, Murkmire, Thornmarsh,
+# Middle Argonia, Blackwood, Coasts (EXTRAPOLATED from canon distributions).
+LORE = {
+    "creature.alit": f"{EL} region table: alit on the Thornmarsh grassland edge",
+    "creature.bog-blight": f"{EL} region table: bog blights near Shadowfen's old graves; {LF} fact.bog-blight-water",
+    "creature.bog-dog": f"{LF} fact.bog-dogs (Blackwood); {EL} region table: Blackwood staple",
+    "creature.crocodile": f"{EL} region table: Shadowfen staple; {LF} fact.stormhold-crocodile-ravines",
+    "creature.crow": f"{EL} region table: crows, a Blackwood staple",
+    "creature.death-hopper": f"{LF} fact.death-hoppers, fact.gideon-death-hoppers; {EL} region table: Blackwood signature",
+    "creature.dreugh": f"{EL} region table: dreugh of the coasts and bays; {LF} fact.bogmother-dreugh",
+    "creature.fellrunner": f"{LF} fact.murkwood-fellrunner; {FH} Fellrunners",
+    "creature.fleshfly": f"{EL} region table: fleshflies in Shadowfen, fleshfly clouds inland in Murkmire; {LF} fact.shadowfen-creatures",
+    "creature.giant-leech": f"{FH} Everyday hazards: giant leeches",
+    "creature.giant-wasp": f"{FH} Everyday hazards: giant wasps the size of ponies",
+    "creature.hackwing": f"{LF} fact.hackwings; {EL} region table: hackwing flocks of Murkmire, Thornmarsh and Blackwood",
+    "creature.haj-mota": f"{LF} fact.haj-mota-devil-tortoise, fact.haj-mota-nest",
+    "creature.hoarvor": f"{FH} Everyday hazards: hoarvor; {LF} fact.xal-ithix-swamp-angry",
+    "creature.jassa-red-slug": f"{LF} fact.slugs (common in Black Marsh)",
+    "creature.kaj-thux": f"{LF} fact.kajthux-giant-snakes; {EL} region table: Shadowfen's signature giant snakes",
+    "creature.kotu-gava": f"{FH} Everyday hazards: kotu gava",
+    "creature.marsh-giant": f"{FH} Marsh Giant; {EL} region table: Blackwood's apex",
+    "creature.marsh-rat": f"{FH} Everyday hazards: rats in the carcasses",
+    "creature.miregaunt": f"{LF} fact.miregaunts (the deep swamps); {EL} region table: Murkmire signature",
+    "creature.moon-adder": f"{LF} fact.moon-adders",
+    "creature.sea-drake": f"{FH} Sea-drakes; {EL} region table: coasts' signature; {LF} fact.oliis-rare-fish",
+    "creature.slaughterfish": f"{EL} region table: slaughterfish of the coasts and bays",
+    "creature.swamp-jelly": f"{LF} fact.swamp-jelly-murkmire-breeds; {EL} region table: Murkmire staple",
+    "creature.voriplasm": f"{LF} fact.voriplasms; {EL} region table: Murkmire staple",
+    "creature.wamasu": f"{LF} fact.wamasu, fact.shadowfen-creatures; {EL} region table: Shadowfen apex",
+    "creature.wisp": f"{LF} fact.will-o-wisps (the deep swamps); {FH} Wisps and the Wispmother",
+    "creature.singing-frog": f"{LF} fact.singing-frogs",
+    "creature.dragon-frog": f"{LF} fact.dragon-frog-poison-breath",
+    "creature.burglar-crab": f"{LF} fact.tum-taleel-burglar-crabs",
+    "creature.marsh-turtle": f"{LF} fact.bright-throat-turtle",
+    "creature.giant-centipede": f"{LF} fact.centipede-pillows",
+    "creature.giant-snail": f"{LF} fact.tum-taleel-burglar-crabs (snails the crabs eat), fact.murkmire-polite-gargle (chefs cook with snail slime)",
+    "creature.marsh-bird": f"{FH} Marsh Giant (marsh giants boost bird diversity)",
+    "creature.tree-viper": f"{LF} fact.tree-viper-lookalike",
+    "creature.pad-sa-shark": f"{LF} fact.pad-sa-sharks",
+}
+
 # domestic kinds (placed at settlements by npc rows, never in a wild list; 0035: fixed, unlevelled)
 DOMESTIC = {
     "creature.guar": [(KOTM, "ALPAGwar01"), (KOTM, "ALPAGwar02Pack"), (KOTM, "ALPAGwar03")],
@@ -287,6 +330,15 @@ EFFECTS = [
 # is lived in; guar everywhere (LF fact.glowgill-guar-archon, fact.guar-glow-tattoos), bantam guar in Murkmire's
 # regions (LF fact.voriplasm-bantam-guar). Each a fixed actor in its creature's band (0035).
 LIVED_IN = ("active", "seasonal", "contested")
+# the pen: a fauna socket (zone 'pen', as upriver-hist-village's fauna-pond-guar) this far out from the place's centre,
+# each kept kind at its own bearing; where the place is built (build_cell exterior), the place build realises it as
+# the animal's actor REFR and its owned pen marker, sandboxing there all day (place_build._people's creature den)
+PEN_OUT_M, PEN_RADIUS_M = 0.35, 6.0  # PEN_OUT_M: a share of footprint_radius_m; the sandbox radius in metres
+PEN_BEARING = {"creature.guar": 0.0, "creature.bantam-guar": 120.0}
+# the place build's template and race for each kept kind (King of the Murkmire's common guar; Cipactli's bantam)
+KEPT_FORM = {"creature.guar": ("005BC9:King of the Murkmire.esp", "005901:King of the Murkmire.esp", "ALPAGwar01"),
+             "creature.bantam-guar": ("006618:Here There Be Monsters - Curse of Cipactli.esp",
+                                     "006617:Here There Be Monsters - Curse of Cipactli.esp", "CIPHTBMBantamGuar")}
 KEPT = {
     "creature.guar": (None, 2, "a kept guar of the village (LF fact.glowgill-guar-archon, fact.guar-glow-tattoos)",
                       "Grazes the yard and noses about the landing."),

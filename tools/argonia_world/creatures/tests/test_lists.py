@@ -54,3 +54,18 @@ def test_kept_animals_at_every_lived_in_settlement():
     assert "place.imperial-fringe.claywater-station" in kept and lived <= kept
     forms = {r[0] for r in w.query("SELECT creature_id FROM creature_form")}
     assert {"creature.guar", "creature.bantam-guar"} <= forms
+
+
+def test_claywater_guar_stand_in_their_pen_with_a_sandbox():
+    """Where the place is built the kept animals are actor REFRs with an owned pen marker (place_build's creature
+    path: an NPC_ templated on the mod's guar that sandboxes around its pen all day)."""
+    from tools.argonia_world import place_build as pb
+    from tools.argonia_world.formids import Allocator
+    w = db.open()
+    refs = {r.id: r for r in w.rows("build_ref") if r.id.startswith("ref.claywater-station.kept-guar")}
+    assert len(refs) == 4 and all(r.persistent for r in refs.values())
+    cells = {c.id: c for c in w.rows("build_cell", place_id="place.imperial-fringe.claywater-station")}
+    ctx = pb._Ctx(Allocator(w), w, None, None)
+    pb._people(ctx, w, [r for r in w.rows("build_ref") if r.cell_id in cells], cells)
+    g = ctx.records["ARG_Npc_DomesticGuar1"]
+    assert g["template"] == "005BC9:King of the Murkmire.esp" and len(g["packages"]) == 1

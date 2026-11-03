@@ -96,14 +96,14 @@ def test_crocodile_waits_in_the_shallows_by_default_with_our_combat_style():
     ctx, *_ = _croc_records(w)
     assert not [r for r in ctx.records.values() if r["type"] == "RACE"]  # no override: it never walks on land
     csty = next(r for r in ctx.records.values() if r["type"] == "CSTY")
-    assert next(r for r in ctx.records.values() if r["type"] == "NPC_")["combatStyle"] == csty["formKey"]
+    assert ctx.records["ARG_Npc_EcoCrocodile"]["combatStyle"] == csty["formKey"]  # the kept guar are NPC_ too
 
 
 def test_walk_stays_in_the_data_one_row_away():
     w = db.open()
     row = dataclasses.replace(w.get("creature_hunt", CROC), way="walk", den_ref_id=_den(w, CROC).id)  # (b): the bank den
     ctx, *_ = _croc_records(w, row)
-    npc = next(r for r in ctx.records.values() if r["type"] == "NPC_")
+    npc = ctx.records["ARG_Npc_EcoCrocodile"]
     race = [r for r in ctx.records.values() if r["type"] == "RACE"]
     assert race == [{"type": "RACE", "override": True, "edid": race[0]["edid"],
                      "formKey": w.get("build_person", CROC).race_form_key, "flagsAdd": ["Walks"]}]
@@ -131,7 +131,7 @@ def test_shallows_den_sits_in_water_at_least_2_5_m_deep():
     row = dataclasses.replace(w.get("creature_hunt", CROC), way="shallows", den_ref_id=shallows.id)
     ctx, actor, cells, by_id = _croc_records(w, row)
     assert not [r for r in ctx.records.values() if r["type"] == "RACE"]  # the race as King of the Murkmire has it
-    assert next(r for r in ctx.records.values() if r["type"] == "NPC_")["combatStyle"]
+    assert ctx.records["ARG_Npc_EcoCrocodile"]["combatStyle"]
 
     class Ground:
         def z(self, x, y):
