@@ -12,7 +12,6 @@
 # Reader checklist per still: the spawn's creature (or its kind's neighbours) in frame, a Black Marsh kind (no Skyrim
 # animal), not underwater, not inside foliage; the guar still shows two guar, penned beside Claywater's buildings.
 id: creatures-kinds
-independent_steps: true   # each stop stands alone: a rerun skips the stops that passed (owner, 2026-11-03)
 reach: [esm, "tools/argonia_world/creatures/**", data/creature-kind-bars.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium

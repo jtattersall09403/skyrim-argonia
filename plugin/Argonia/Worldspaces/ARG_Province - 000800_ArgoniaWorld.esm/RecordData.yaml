@@ -16401,8 +16401,8 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -65536.03, -126835.69, 88.24
-      Rotation: 0, 0, 5.044002
+      Position: -65407.88, -126975.75, 104.34
+      Rotation: 0, 0, 5.078908
   - MutagenObjectType: PlacedObject
     FormKey: 000EC8:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -16441,8 +16441,8 @@ TopCell:
     - 0x400
     Base: 000034:Skyrim.esm
     Placement:
-      Position: -65944.3, -12867.9, 1097.37
-      Rotation: 0, 0, 4.031711
+      Position: -65024.13, -12159.92, 1112.08
+      Rotation: 0, 0, 5.585054
   - MutagenObjectType: PlacedObject
     FormKey: 000ECC:Argonia.esm
     MajorRecordFlagsRaw: 1024
