@@ -78,6 +78,11 @@ at the lockpick step (moved out), chart red at the barter close, water-types and
 assertion (lane harness-r5-camera-read) and the water stops off their aim after the refresh (lane harness-r5-water-aim).
 The ten saves remade next; the Settings and Load pages re-proved alone by the system-pages journey.
 
+The Settings and Load pages: proven at 17:31 by the six-step system-pages journey alone (the owner's no-duplication
+rule): every text item cream and legible on the opaque ground after Dear Diary's darkening colour transforms were
+lifted at install (lane 1.12-r5-system-pages, e57e1e4a); polish left: the black scrollbar, the shared button-glyph
+art, the empty Level meter, the empty left pane.
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
