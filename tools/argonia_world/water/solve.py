@@ -503,7 +503,7 @@ def one_type_per_sheet(cells: dict[tuple[int, int], tuple]) -> int:
     blackwater 1.1 m one (the marsh's stepped pool). Skyrim.esm gives one XCWT per lake (probes/vanilla_lake_cells.py).
     In place; returns the cells whose type changed."""
     moved = 0
-    seen: set[tuple[int, int]] = set()
+    seen: set[tuple[int, int]] = {c for c, v in cells.items() if v[1] == "sea"}  # the sea is its own sheet (salinity())
     for c in sorted(cells):
         if c in seen:
             continue
@@ -529,6 +529,38 @@ def one_type_per_sheet(cells: dict[tuple[int, int], tuple]) -> int:
             if cells[k][1] != wt:
                 cells[k] = (cells[k][0], wt) + tuple(cells[k][2:])
                 moved += 1
+    return moved
+
+
+TIDAL_REACH_CELLS = 3  # classify.py DELTA_CELLS: a channel within three cells of the sea is the tidal delta
+
+
+def salinity(cells: dict[tuple[int, int], tuple], kinds: dict[str, str] | None = None,
+             reach: int = TIDAL_REACH_CELLS) -> int:
+    """Salt by connection to the open water (decision 0033 section 1; 50-hydrology-climate.md step 9 "estuarine
+    salinity and tidal reach"; world/sources/lore/regions/waters.md: the tide runs a long way inland). The sea stays
+    sea. Sea-level (level 0) water joined to it through level-0 cells takes a type by its 4-connected distance d in
+    cells: a lagoon body (`kinds`: body id -> kind) is sea; any other cell with d <= `reach` is brackish (the tidal
+    delta's own limit, classify.py DELTA_CELLS); beyond it the cell keeps its body's type (blackwater for the inland
+    marsh). Water above 0 is never touched. In place; returns the cells whose type changed."""
+    kinds = kinds or {}
+    sea = [c for c, v in cells.items() if v[1] == "sea"]
+    dist = {c: 0 for c in sea}
+    todo = list(sea)
+    for c in todo:
+        for o in ((c[0] + 1, c[1]), (c[0] - 1, c[1]), (c[0], c[1] + 1), (c[0], c[1] - 1)):
+            if o in cells and o not in dist and abs(cells[o][0]) < 1e-6:
+                dist[o] = dist[c] + 1
+                todo.append(o)
+    moved = 0
+    for c, d in dist.items():
+        if d == 0:
+            continue
+        v = cells[c]
+        wt = "sea" if kinds.get(v[2]) == "lagoon" else ("brackish" if d <= reach else v[1])
+        if wt != v[1]:
+            cells[c] = (v[0], wt) + tuple(v[2:])
+            moved += 1
     return moved
 
 
@@ -746,6 +778,7 @@ def solve(w, raster=None, ground=None) -> Result:
         if sp is not None:
             no_riffle_steps(cells)
         one_type_per_sheet(cells)
+        salinity(cells, {b["id"]: b["kind"] for b in bodies})
         for c in walls:
             enclosed.pop(c, None)
 

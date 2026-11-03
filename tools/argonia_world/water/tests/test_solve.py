@@ -225,3 +225,19 @@ def test_one_sheet_holds_one_type_its_bodies_hold_most():
     assert one_type_per_sheet(cells) == 2
     assert [cells[(i, 0)][1] for i in range(5)] == ["blackwater"] * 4 + ["fresh"]
     assert cells[(2, 0)][3] == "r1"
+
+
+def test_salinity_by_distance_to_the_sea_on_a_synthetic_coast():
+    # a row at level 0: sea x<0, then marsh cells x=0..9 (blackwater body), a lagoon body at x=4..5, a lake above 0
+    cells = {(x, 0): (0.0, "sea", None, None) for x in range(-3, 0)}
+    cells.update({(x, 0): (0.0, "blackwater", "m", None) for x in range(0, 10)})
+    cells[(4, 0)] = cells[(5, 0)] = (0.0, "blackwater", "lag", None)
+    cells[(20, 0)] = (4.0, "blackwater", "m", None)
+    sv.one_type_per_sheet(cells)
+    moved = sv.salinity(cells, {"lag": "lagoon", "m": "marsh-deep"})
+    t = {x: cells[(x, 0)][1] for x in range(-3, 10)}
+    assert all(t[x] == "sea" for x in range(-3, 0))
+    assert [t[x] for x in range(0, 3)] == ["brackish"] * 3          # d = 1..3, the tidal reach
+    assert t[3] == "blackwater" and t[6] == "blackwater" and t[9] == "blackwater"  # beyond it: the inland marsh
+    assert t[4] == t[5] == "sea"                                     # the lagoon joined to the sea
+    assert cells[(20, 0)][1] == "blackwater" and moved == 5
