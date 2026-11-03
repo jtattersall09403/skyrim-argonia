@@ -9,7 +9,6 @@
 # (`python3 -m tools.journeys refresh`).
 {
  "id": "world-panel",
- "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
  "scene": "world-panel",
