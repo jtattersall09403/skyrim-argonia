@@ -43,3 +43,10 @@ This needs a retheme follow-up.
 - The game world behind the menu: the render's ground is flat #333.
 - Only quest_journal's System states are driven. Each other retinted movie needs its own state recipe in `STATES`.
 - The in-game still still closes the check (L4).
+
+## Rebuild (nothing lives only on this machine)
+Only the binary is kept: `~/.argonia/tools/ruffle/bin/ruffle-exporter` (sha256 7ac01e3c…dc0a) and `exporter.commit`.
+The source tree and the Rust toolchain were deleted (nothing else in the repo uses cargo). To rebuild, check out
+Ruffle tag `nightly-2026-11-03`, apply `tools/ui_theme/ruffle/exporter-argonia.patch`, then run
+`cargo build --release -p exporter`. Rust and Java (openjdk-21-jre-headless) must be installed.
+`tools/ui_theme/ruffle/build_exporter.sh` does all of that and deletes the source tree afterwards.

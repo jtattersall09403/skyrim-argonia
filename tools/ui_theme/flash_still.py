@@ -10,7 +10,7 @@ hidden gives the text mask: each text item's ink colour, the background behind i
     python -m tools.ui_theme.flash_still <swf> --frame 1 --out raw.png        # a frame as authored, no driving
     python -m tools.ui_theme.flash_still <swf> --label fadeIn --out x.png     # _root.gotoAndStop(label) first
 
-Ruffle: ~/.argonia/tools/ruffle/ruffle-exporter (built by ~/.argonia/tools/ruffle/build_exporter.sh at a pinned
+Ruffle: ~/.argonia/tools/ruffle/bin/ruffle-exporter (built by tools/ui_theme/ruffle/build_exporter.sh at a pinned
 nightly; sourcing register). The fonts the movie imports from gfxfontlib.swf are served from our Pelagiad library
 (fonts_pelagiad.swf, re-exported under the $-names fontconfig maps); what Ruffle cannot show is in the report.
 """
@@ -33,7 +33,7 @@ from PIL import Image
 from tools.ui_theme import swf
 from tools.ui_theme.avm1 import Asm, Ref, hide_text_function, translate_function
 
-EXPORTER = Path(os.environ.get("RUFFLE_EXPORTER", Path.home() / ".argonia/tools/ruffle/ruffle-exporter"))
+EXPORTER = Path(os.environ.get("RUFFLE_EXPORTER", Path.home() / ".argonia/tools/ruffle/bin/ruffle-exporter"))
 STACK = Path.home() / ".argonia/stack/MO2/mods"
 STAGE_DIR = Path.home() / ".argonia/cache/flash-stills/stage"  # must be a lowercase path
 DO_ACTION, SHOW_FRAME, END = 12, 1, 0
