@@ -34,3 +34,32 @@ def test_grade_limit_is_lipschitz():
     z = np.array([0, 5, 0, 10, 10, 2, 30], float)
     g = S.grade_limit(z, 1.0, 0.2)
     assert np.abs(np.diff(g)).max() <= 0.2 + 1e-9
+
+
+def test_grade_within_never_cuts_past_the_cap():
+    z = np.concatenate([np.zeros(20), np.linspace(0, 6, 10), np.full(20, 6.0)])  # a 6 m bank in 10 samples
+    g = S.grade_within(z.copy(), z, 1.0, 0.2)
+    assert np.abs(g - z).max() <= S.MAX_CUT_M + 1e-9
+    gentle = np.linspace(0, 3, 50)
+    assert np.abs(np.diff(S.grade_within(gentle + 0.3 * np.sin(np.arange(50)), gentle, 1.0, 0.2))).max() <= 0.2 + 1e-9
+
+
+def test_the_fade_follows_the_bank():
+    """A road running along a stream: no wall at the edge on the water's side (the untouched bed beside it)."""
+    h = _ground(bumps=0.6)
+    water = np.zeros(h.shape, bool)
+    water[100 + 4:100 + 7, :] = True  # a stream just past the road's left edge
+    h[water] -= 1.0
+    roads = _road()
+    S.shape(h, roads, water)
+    c = S.census(h, None, None, None, water, roads, None)
+    assert c["walls"]["other"] == 0, c["walls"]
+
+
+def test_census_lists_walls_by_water_as_crossings():
+    h = _ground()
+    water = np.zeros(h.shape, bool)
+    water[103:107, :] = True  # a channel beside the road, its bank at the road's edge
+    h[water] -= 2.0  # a wall the road did not make: the bank
+    c = S.census(h, None, None, None, water, _road(), None)
+    assert c["walls"]["crossing"] > 0 and c["walls"]["other"] == 0, c["walls"]

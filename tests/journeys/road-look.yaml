@@ -1,7 +1,8 @@
 # 1.15 round 4 (owner play test 3, finding 21: "roads poorly implemented: just flat texture"): three stills of the
 # Blackwood Road at the play camera, for a `reader` against routes/shape.py's measured Skyrim road: the road the low
 # line of a shallow worn trough (ground rising ~0.3 m at 4 m out), its dirt paint blending into the land over ~4 m
-# each side (no hard stripe), no spike, wall or step along it, no Nordic piece. Vantages: 20 % along, the flat marsh
+# each side (no hard stripe), no spike, wall or step along it, no Nordic piece. Vantages re-derived 1.15-r4-roads-2 from the
+# re-traced road on the new ground (ground + 160 units; the road now takes the gentler line). Vantages: 20 % along, the flat marsh
 # window (46 %) and the slope window (57 %) of the L3 stills; each faces along the road. Stills are the evidence;
 # each step only checks the player landed in the province.
 id: road-look
@@ -12,12 +13,12 @@ steps:
   - name: road-in
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: blackwood-20
-    do: [{console: "player.setpos x -166085"}, {console: "player.setpos y 32173"}, {console: "player.setpos z 4717"},
-         {console: "player.setangle z 233"}, {wait: 4}]
+    do: [{console: "player.setpos x -166236"}, {console: "player.setpos y 32022"}, {console: "player.setpos z 4708"},
+         {console: "player.setangle z 240"}, {wait: 4}]
   - name: blackwood-flat-46
-    do: [{console: "player.setpos x -195476"}, {console: "player.setpos y 40873"}, {console: "player.setpos z 5105"},
-         {console: "player.setangle z 274"}, {wait: 4}]
+    do: [{console: "player.setpos x -195572"}, {console: "player.setpos y 40894"}, {console: "player.setpos z 5115"},
+         {console: "player.setangle z 272"}, {wait: 4}]
   - name: blackwood-slope-57
-    do: [{console: "player.setpos x -209737"}, {console: "player.setpos y 39089"}, {console: "player.setpos z 4863"},
-         {console: "player.setangle z 275"}, {wait: 4}]
+    do: [{console: "player.setpos x -209265"}, {console: "player.setpos y 41818"}, {console: "player.setpos z 5159"},
+         {console: "player.setangle z 281"}, {wait: 4}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]

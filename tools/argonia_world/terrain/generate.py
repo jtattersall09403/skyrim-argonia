@@ -703,6 +703,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
         np.savez(os.environ["ARGONIA_ROAD_DUMP"], h=h.astype(np.float32), lo=lo.astype(np.float32),
                  hi=hi.astype(np.float32), water=rwater)
     st["roads"] = road_shape.shape(h, inp.roads, rwater, lo, hi)
+    road_water = rwater.astype(np.uint8)  # routes.shape check reads it: a wall or a steep point by water is a crossing
     h = np.minimum(np.maximum(h, lo), hi)
 
     # 7. the slope limit inside the cones
@@ -718,7 +719,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     st["seconds"] = round(time.time() - t0, 1)
     log(f"limit {time.time() - t0:.1f}s")
     return {"ground": f.astype(np.float32), "cliff": cliff.astype(np.uint8), "role": role, "lo": lo, "hi": hi,
-            "sites": sites, "stats": st, "diag": diag}
+            "sites": sites, "stats": st, "diag": diag, "road_water": road_water}
 
 
 def pad_wet_edge(s, foot) -> bool:
@@ -964,6 +965,9 @@ def write(res: dict, out: Path = OUT) -> dict:
     atomic(out / "ground-f32.npy", lambda f: np.save(f, res["ground"]))
     atomic(out / "cliff-u8.npy", lambda f: np.save(f, res["cliff"]))
     atomic(out / "role-u8.npy", lambda f: np.save(f, res["role"]))
+    if "road_water" in res:
+        from tools.argonia_world.routes.shape import ROAD_WATER
+        atomic(out / ROAD_WATER, lambda f: np.save(f, res["road_water"]))
     atomic(out / "entrance-sites.json", lambda f: f.write(json.dumps(res["sites"], indent=0) + "\n"), "w")
     atomic(out / "generate.json", lambda f: f.write(json.dumps(res["stats"], indent=1, sort_keys=True) + "\n"), "w")
     return res["stats"]

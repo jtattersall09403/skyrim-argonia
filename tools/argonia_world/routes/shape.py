@@ -25,6 +25,9 @@ from tools.argonia_world import skyrim_units as su
 MPP = su.PROVINCE_SAMPLE_M
 TROUGH_AT_M = np.arange(0.0, 9.0)
 TROUGH_M = np.array([0.0, 0.02, 0.09, 0.19, 0.29, 0.40, 0.55, 0.69, 0.83])  # vanilla's fold, median
+# the shaped fold comes out shallower than its target (the 1 m caps on a side slope, the bank fades, the blend and
+# the slope limit after): the target is deepened by this so the measured fold meets vanilla's medians (check: fold_*)
+TROUGH_GAIN = 1.35
 TROUGH_BAND = {2.0: (0.03, 0.13), 4.0: (0.18, 0.45)}  # p25..p75 at 2 m and 4 m out
 GRADE_MAX = 0.219  # vanilla's steepest road grade
 GRADE_P95 = 0.164
@@ -33,6 +36,9 @@ SMOOTH_M = 6.0  # the centreline smoothed along over +-this
 WALL_M = 0.3  # a step across a road's edge past the land's own: a wall (the planner's rule, round 4)
 MAX_CUT_M = 1.0  # a road is never cut or filled more than this from the land (L3 reader: a 3 m cut wall)
 CROSS_KEEP = 0.4  # the share of the land's cross fall a road keeps (the wall check's slope window)
+SITE_REACH = 1.5  # a place's shaped ground in the census: its site eased out to SITE_BLEND radii (generate.py)
+ROAD_WATER = "road-water-u8.npy"  # generate writes the road pass's water mask beside the ground (the check's census)
+DELTA_LIP = 0.2  # the road's change between neighbour samples, at most (m): its walls stay under WALL_M
 BLEND_M = 6.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
 
 
@@ -94,9 +100,33 @@ def centreline(h: np.ndarray, p: np.ndarray, core_m: float) -> np.ndarray:
     zp = np.concatenate([np.full(k, z[0]), z, np.full(k, z[-1])])
     c = np.cumsum(np.concatenate([[0.0], zp]))
     zs = (c[2 * k + 1:] - c[:-2 * k - 1]) / (2 * k + 1)
-    zs = grade_limit(zs, MPP, GRADE_MAX * 0.85)  # headroom for the trough and the 8 m baseline
-    zs = np.clip(zs, z - MAX_CUT_M, z + MAX_CUT_M)  # never a deep cut or fill: past this the land's grade stands
-    return zs - 0.5 * trough(core_m)
+    return grade_within(zs, z, MPP, GRADE_MAX * 0.85) - 0.5 * TROUGH_GAIN * trough(core_m)  # headroom: trough, 8 m baseline
+
+
+def cone_env(b: np.ndarray, lip: float, op) -> np.ndarray:
+    """The lip-Lipschitz envelope of b: min over j of b_j + lip |i - j| (op=min) or max of b_j - lip |i - j|."""
+    sg = 1.0 if op is min else -1.0
+    e = b.copy()
+    for i in range(1, len(e)):
+        e[i] = op(e[i], e[i - 1] + sg * lip)
+    for i in range(len(e) - 2, -1, -1):
+        e[i] = op(e[i], e[i + 1] + sg * lip)
+    return e
+
+
+def grade_within(zs: np.ndarray, z: np.ndarray, ds_m: float, g: float) -> np.ndarray:
+    """The grade-limited profile of zs held within MAX_CUT_M of the land z and still within g: the band
+    [z - cut, z + cut] narrowed to its g-Lipschitz envelopes (lo' = max cone of the floor, hi' = min cone of the
+    roof), so clipping the limited profile into it keeps the grade (a min/max of g-Lipschitz profiles is one).
+    Where the land itself is too steep for any such profile (lo' > hi': a slope longer than the cut can take) the
+    road takes the band's middle there, and the point is a re-route's (routes/build.py), never a deeper cut."""
+    lip = g * ds_m
+    lo = cone_env(z - MAX_CUT_M, lip, max)
+    hi = cone_env(z + MAX_CUT_M, lip, min)
+    out = np.clip(grade_limit(zs, ds_m, g), np.minimum(lo, hi), np.maximum(lo, hi))
+    bad = lo > hi
+    out[bad] = 0.5 * (lo[bad] + hi[bad])
+    return np.clip(out, z - MAX_CUT_M, z + MAX_CUT_M)
 
 
 def _nearest(shape, p: np.ndarray, reach: float):
@@ -139,6 +169,13 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     wgt = np.zeros(h.shape)
     n = runs_n = 0
     taper_n = max(1, int(round(BLEND_M / MPP)))
+    bank_w = None
+    if water is not None:  # the fade follows the bank: a road sample's weight eases to 0 at the water beside it,
+        # so a road running along a bank or a crossing's wing never stands a step over the untouched water sample
+        from tools.argonia_world.terrain.generate import chamfer
+        dw, _ = chamfer(water, int(np.ceil(BLEND_M / MPP)) + 1)
+        bank_w = np.clip(np.where(np.isfinite(dw), dw * MPP / BLEND_M, 1.0), 0.0, 1.0)
+        bank_w = bank_w * bank_w * (3 - 2 * bank_w)
     for pts, core in roads:
         core_m = core * MPP
         p, _s = _dense(pts)
@@ -167,7 +204,10 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
             # across a slope the road keeps CROSS_KEEP of the land's own fall (a bench, cut uphill and filled
             # downhill, never a flat shelf with a fill wall on its low side); on the flat this is ~0
             zg = bilinear(h, q[:, 0], q[:, 1])
-            t = zc[ii] + trough(d_m) + CROSS_KEEP * (h[rr, cc] - zg[ii])
+            t = zc[ii] + TROUGH_GAIN * trough(d_m) + CROSS_KEEP * (h[rr, cc] - zg[ii])
+            t = np.clip(t, h[rr, cc] - MAX_CUT_M, h[rr, cc] + MAX_CUT_M)  # across too: never a cut over 1 m
+            if bank_w is not None:
+                w = w * bank_w[rr, cc]
             if lo is not None:
                 t = np.minimum(np.maximum(t, lo[rr, cc]), np.maximum(hi[rr, cc], lo[rr, cc]))
             keep = w > 0
@@ -180,8 +220,126 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
             n += int((d_m <= core_m).sum())
             runs_n += 1
     m = wgt > 0
-    h[m] = h[m] * (1 - wgt[m]) + num[m] / den[m] * wgt[m]
+    # the road's change is held inside DELTA_LIP cones from every sample it may not move (0 on water and off the
+    # corridors; a site's pin and a bank's freeboard by their bounds), so no shaped sample stands a step over an
+    # untouched neighbour: the fade follows the bank. Inside the road the change is free (it evens the land's steps)
+    dz = np.zeros(h.shape)
+    dz[m] = (num[m] / den[m] - h[m]) * wgt[m]
+    free = m.copy() if water is None else m & ~water
+    lod = np.where(free, -np.inf, 0.0)
+    hid = np.where(free, np.inf, 0.0)
+    if lo is not None:
+        lod = np.where(free & np.isfinite(lo), np.maximum(lo - h, -1e6), lod)
+        hid = np.where(free & np.isfinite(hi), np.minimum(hi - h, 1e6), hid)
+    from tools.argonia_world.terrain.generate import majorant, minorant
+    a, b = majorant(np.maximum(lod, -1e6), DELTA_LIP), minorant(np.minimum(hid, 1e6), DELTA_LIP)
+    dz = np.minimum(np.maximum(dz, a), np.maximum(b, a))
+    h += dz
     return {"roads": len(roads), "dry_runs": runs_n, "core_samples": n, "shaped_samples": int(m.sum())}
+
+
+def _at(a: np.ndarray, x: np.ndarray, y: np.ndarray) -> np.ndarray:
+    return a[np.clip(np.rint(y).astype(int), 0, a.shape[0] - 1), np.clip(np.rint(x).astype(int), 0, a.shape[1] - 1)]
+
+
+def frame(pts: np.ndarray, step: float = 2.0):
+    """The dense centreline at `step` samples, its unit tangent and its left normal."""
+    p, _s = _dense(pts, step)
+    v = np.gradient(p, axis=0)
+    v /= np.maximum(np.hypot(v[:, 0], v[:, 1]), 1e-9)[:, None]
+    return p, v, np.stack([-v[:, 1], v[:, 0]], 1)
+
+
+def corridor_reach(shape, roads) -> np.ndarray:
+    """How many roads' corridors reach each sample: a wall test whose outside sample lies in another road's corridor
+    reads that road's trough (a track beside a road, a junction), not a wall."""
+    reach = np.zeros(shape, np.int8)
+    for pts, core in roads:
+        rr, cc, _d, _i = _nearest(shape, _dense(pts)[0], core + BLEND_M / MPP)
+        reach[rr, cc] += 1
+    return reach
+
+
+def edge_walls(h, p, nrm, core, sg, reach) -> np.ndarray:
+    """A wall at each point on side sg: a step across the road's edge more than WALL_M beyond the land's own step
+    just outside it (outside samples in another road's corridor skipped)."""
+    zz = [bilinear(h, p[:, 0] + sg * nrm[:, 0] * (core + o), p[:, 1] + sg * nrm[:, 1] * (core + o))
+          for o in (-0.5, 0.5, 1.5)]
+    alone = _at(reach, p[:, 0] + sg * nrm[:, 0] * (core + 0.5), p[:, 1] + sg * nrm[:, 1] * (core + 0.5)) <= 1
+    return (np.abs(zz[1] - zz[0]) > WALL_M + np.abs(zz[2] - zz[1])) & alone
+
+
+def grade_along(h, p, v) -> np.ndarray:
+    """|rise| / run over the GRADE_BASE_M baseline at each point (0 within half a baseline of the ends)."""
+    half = GRADE_BASE_M / 2 / MPP
+    za = bilinear(h, p[:, 0] + v[:, 0] * half, p[:, 1] + v[:, 1] * half)
+    zb = bilinear(h, p[:, 0] - v[:, 0] * half, p[:, 1] - v[:, 1] * half)
+    g = np.abs(za - zb) / GRADE_BASE_M
+    e = int(np.ceil(half / 2.0))
+    g[:e] = g[-e:] = 0.0
+    return g
+
+
+def census(h, h_pre, lo, hi, water, roads, wet, sites=()) -> dict:
+    """Every wall and every dry over-steep point on ground h, tagged by cause from the data (first that holds):
+    crossing - within the taper (core + BLEND_M) of a water point on the centreline, or a water sample or a water's
+    bank/bed cone holding the ground (h at lo or hi) within 2 samples of the edge (steep: of the centreline); pinned - a site core's
+    pin (lo == hi) or a place's site disc within 2 samples; land - the same test on the ground before the roads (h_pre) already fails there (a step in the
+    land, or the land's own grade); other."""
+    reach = corridor_reach(h.shape, roads)
+    if lo is not None:
+        pin = np.isfinite(lo) & np.isfinite(hi) & (np.abs(hi - lo) < 0.05)  # a site core's pin (lo == hi)
+        bank = ((np.abs(h - lo) < 0.01) | (np.abs(h - hi) < 0.01)) & ~pin  # a water's bank or bed cone binding h
+    else:  # the check on a written ground: no cones, the water mask and the sites only
+        pin, bank = np.zeros(h.shape, bool), np.zeros(h.shape, bool)
+    for st in sites:  # a place's shaped ground (its site out to the blend): the place's to grade, not the road's
+        cy, cx, r = st["y_m"] / MPP, st["x_m"] / MPP, st["radius_m"] / MPP * SITE_REACH
+        r0, r1 = int(max(cy - r, 0)), int(min(cy + r + 1, h.shape[0]))
+        c0, c1 = int(max(cx - r, 0)), int(min(cx + r + 1, h.shape[1]))
+        yy, xx = np.mgrid[r0:r1, c0:c1]
+        pin[r0:r1, c0:c1] |= np.hypot(yy - cy, xx - cx) <= r
+    pin2, bank2 = pin.copy(), bank | water
+    for ax in (0, 1):
+        for d in (-2, -1, 1, 2):
+            pin2 |= np.roll(pin, d, ax)
+            bank2 |= np.roll(bank | water, d, ax)
+    walls = {"crossing": 0, "pinned": 0, "land": 0, "other": 0}
+    steep = {"crossing": 0, "pinned": 0, "land": 0, "other": 0}
+    where = {"walls": [], "steep": []}
+    for ri, (pts, core) in enumerate(roads):
+        p, v, nrm = frame(pts)
+        if len(p) < 5:
+            continue
+        wp = _at(water, p[:, 0], p[:, 1])
+        # along-road distance (samples) to the nearest water point on the centreline
+        idx = np.nonzero(wp)[0]
+        pos = np.arange(len(p)) * 2.0
+        dw = np.full(len(p), np.inf) if not len(idx) else np.min(np.abs(pos[:, None] - pos[idx][None]), 1) \
+            if len(idx) * len(p) < 5e7 else np.full(len(p), np.inf)
+        near_w = dw <= core + BLEND_M / MPP
+        for sg in (1.0, -1.0):
+            wl = edge_walls(h, p, nrm, core, sg, reach)
+            wl0 = edge_walls(h_pre, p, nrm, core, sg, reach) if h_pre is not None else np.zeros(len(p), bool)
+            ex, ey = p[:, 0] + sg * nrm[:, 0] * (core + 0.5), p[:, 1] + sg * nrm[:, 1] * (core + 0.5)
+            wet_e = np.zeros(len(p), bool)
+            for o in (-1.5, -0.5, 0.5, 1.5, 2.5):
+                wet_e |= _at(water, p[:, 0] + sg * nrm[:, 0] * (core + o), p[:, 1] + sg * nrm[:, 1] * (core + o))
+            wet_e |= _at(bank2, ex, ey)
+            pe = _at(pin2, ex, ey) | _at(pin2, p[:, 0] + sg * nrm[:, 0] * (core - 0.5), p[:, 1] + sg * nrm[:, 1] * (core - 0.5))
+            for i in np.nonzero(wl)[0]:
+                c = "crossing" if near_w[i] or wet_e[i] else "pinned" if pe[i] else "land" if wl0[i] else "other"
+                walls[c] += 1
+                where["walls"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP))))
+        g = grade_along(h, p, v)
+        g0 = grade_along(h_pre, p, v) if h_pre is not None else np.zeros(len(p))
+        rl = np.isfinite(_at(wet, p[:, 0], p[:, 1])) if wet is not None else np.zeros(len(p), bool)
+        pc = _at(pin2, p[:, 0], p[:, 1])
+        near_w = near_w | _at(bank2, p[:, 0], p[:, 1])
+        for i in np.nonzero((g > GRADE_MAX + 1e-6) & ~rl)[0]:
+            c = "crossing" if near_w[i] else "pinned" if pc[i] else "land" if g0[i] > GRADE_MAX else "other"
+            steep[c] += 1
+            where["steep"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP)), round(float(g0[i]), 3)))
+    return {"walls": walls, "steep": steep, "where": where}
 
 
 def profile(h: np.ndarray, roads: list[tuple[np.ndarray, float]], wet=None) -> dict:
@@ -192,12 +350,7 @@ def profile(h: np.ndarray, roads: list[tuple[np.ndarray, float]], wet=None) -> d
     fold = {2.0: [], 4.0: []}
     track_fold = []
     grades, steep, wet_pts, total, crossings, cross_pts, walls = [], 0, 0, 0, 0, 0, 0
-    # how many roads' corridors reach each sample: a wall test whose outside sample lies in another road's corridor
-    # reads that road's trough (a track beside a road, a junction), not a wall
-    reach = np.zeros(h.shape, np.int8)
-    for pts, _core in roads:
-        rr, cc, _d, _i = _nearest(h.shape, _dense(pts)[0], _core + BLEND_M / MPP)
-        reach[rr, cc] += 1
+    reach = corridor_reach(h.shape, roads)
     for pts, _core in roads:
         p, _s = _dense(pts, 2.0)
         if len(p) < 5:
@@ -210,21 +363,9 @@ def profile(h: np.ndarray, roads: list[tuple[np.ndarray, float]], wet=None) -> d
             a = bilinear(h, p[:, 0] + nrm[:, 0] * o / MPP, p[:, 1] + nrm[:, 1] * o / MPP)
             b = bilinear(h, p[:, 0] - nrm[:, 0] * o / MPP, p[:, 1] - nrm[:, 1] * o / MPP)
             (fold[o] if _core * MPP >= 4.0 else track_fold if o == 4.0 else []).append((a + b) / 2 - z0)
-        # a wall: a step across the road's edge more than WALL_M beyond the land's own step just outside it
         for sg in (1.0, -1.0):
-            zz = [bilinear(h, p[:, 0] + sg * nrm[:, 0] * (_core + o), p[:, 1] + sg * nrm[:, 1] * (_core + o))
-                  for o in (-0.5, 0.5, 1.5)]
-            ox = p[:, 0] + sg * nrm[:, 0] * (_core + 0.5)
-            oy = p[:, 1] + sg * nrm[:, 1] * (_core + 0.5)
-            alone = reach[np.clip(np.rint(oy).astype(int), 0, h.shape[0] - 1),
-                          np.clip(np.rint(ox).astype(int), 0, h.shape[1] - 1)] <= 1
-            walls += int(((np.abs(zz[1] - zz[0]) > WALL_M + np.abs(zz[2] - zz[1])) & alone).sum())
-        half = GRADE_BASE_M / 2 / MPP
-        za = bilinear(h, p[:, 0] + v[:, 0] * half, p[:, 1] + v[:, 1] * half)
-        zb = bilinear(h, p[:, 0] - v[:, 0] * half, p[:, 1] - v[:, 1] * half)
-        g = np.abs(za - zb) / GRADE_BASE_M
-        e = int(np.ceil(half / 2.0))  # the baseline never reaches past the road's ends
-        g[:e] = g[-e:] = 0.0
+            walls += int(edge_walls(h, p, nrm, _core, sg, reach).sum())
+        g = grade_along(h, p, v)
         if wet is not None:  # a point on the wet raster (a water's footprint) is a crossing, not road grade:
             # `crossings` counts its runs, each a place that wants a bridge or a ford
             lv = wet[np.clip(np.rint(p[:, 1]).astype(int), 0, wet.shape[0] - 1),
@@ -269,6 +410,7 @@ def main(argv=None) -> int:
     Fails on any dry road point steeper than GRADE_MAX or a fold median outside the vanilla band."""
     import argparse
     import json
+    from pathlib import Path
 
     from tools.argonia_world import db
     from tools.argonia_world.terrain import cellwater
@@ -279,14 +421,30 @@ def main(argv=None) -> int:
     ap.add_argument("ground", nargs="?")
     a = ap.parse_args(argv)
     w = db.open()
-    h = np.load(a.ground or generated_ground(), mmap_mode="r")
+    gp = Path(a.ground or generated_ground())
+    h = np.asarray(np.load(gp, mmap_mode="r"), np.float64)
     wet, _ = cellwater.wet_raster(w)
-    res = profile(np.asarray(h, np.float64), load_roads(w), wet)
+    roads = load_roads(w)
+    res = profile(h, roads, wet)
     fails = []
-    if res["steeper_than_max"]:
-        fails.append(f"{res['steeper_than_max']} dry road points steeper than {GRADE_MAX}")
-    if res["walls"]:
-        fails.append(f"{res['walls']} walls at a road edge (a step over {WALL_M} m past the land's own)")
+    # the census: walls and steep points beside a water crossing (owed to bridges) or on a place's site (owed to
+    # the places lane) are listed, not failed; every other one fails (generate writes the road pass's water mask)
+    wm = gp.with_name(ROAD_WATER)
+    water = np.load(wm) > 0 if wm.exists() else np.isfinite(wet)
+    sp = gp.with_name("entrance-sites.json")
+    c = census(h, None, None, None, water, roads, wet, json.loads(sp.read_text()) if sp.exists() else ())
+    res["walls_by_cause"], res["steep_by_cause"] = c["walls"], c["steep"]
+    res["owed_sample_m"] = {k: [x[2:5] for x in c["where"][k] if x[2] in ("crossing", "pinned")][::25]
+                            for k in ("walls", "steep")}  # (cause, x, y) every 25th: the full list is census()'s
+    res["own_sample_m"] = {k: [x[2:5] for x in c["where"][k] if x[2] not in ("crossing", "pinned")][:40]
+                           for k in ("walls", "steep")}
+    own_w = c["walls"]["land"] + c["walls"]["other"]
+    own_s = c["steep"]["land"] + c["steep"]["other"]
+    if own_s:
+        fails.append(f"{own_s} dry road points steeper than {GRADE_MAX} away from crossings and places")
+    if own_w:
+        fails.append(f"{own_w} walls at a road edge (a step over {WALL_M} m past the land's own) away from crossings "
+                     f"and places")
     for o, (lo, hi) in TROUGH_BAND.items():
         m = res[f"fold_{o:.0f}m_median"]
         if not lo <= m <= hi:

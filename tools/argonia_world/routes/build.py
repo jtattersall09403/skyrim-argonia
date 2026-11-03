@@ -39,6 +39,14 @@ WIDTH = {"trunk": (6.0, 2.0), "road": (5.0, 2.0)}  # flat width, shoulder (m): o
 TRACK_WIDTH_M = 2.5
 LANDMARK_M = 120.0
 TOLERANCE = 0.05
+# a road climbs no steeper than Skyrim.esm's steepest road (routes/shape.py GRADE_MAX 0.219, with its trough and
+# baseline headroom): a search step past GRADE_OK on the generated ground costs GRADE_COST per unit of excess grade,
+# so a road on a mountainside takes the longer, gentler line or zig-zags (vanilla's own answer) instead of a cut
+GRADE_OK = 0.85 * 0.219
+GRADE_COST = 1500.0
+# and a road keeps off a steep side slope where it can (a bench cut into it stands walls at its edges): a cell whose
+# land falls faster than SIDE_OK costs SIDE_COST per unit over
+SIDE_OK, SIDE_COST = 0.35, 60.0
 
 
 # --- geometry helpers ------------------------------------------------------------------------------------------------
@@ -63,6 +71,19 @@ def simplify(pts: list[tuple[float, float]], tol: float) -> list[tuple[float, fl
             keep[k] = True
             stack += [(a, k), (k, b)]
     return [p for p, f in zip(pts, keep) if f]
+
+
+def chaikin(pts: list[tuple[float, float]], rounds: int = 3) -> list[tuple[float, float]]:
+    """Corner cutting (ends kept): the search grid's turns and a zig-zag's hairpins become curves a road can be
+    laid along (a sharp vertex folds the road's own corridor over itself: a wall at its inside edge)."""
+    for _ in range(rounds):
+        if len(pts) < 3:
+            return list(pts)
+        out = [pts[0]]
+        for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
+            out += [(0.75 * x0 + 0.25 * x1, 0.75 * y0 + 0.25 * y1), (0.25 * x0 + 0.75 * x1, 0.25 * y0 + 0.75 * y1)]
+        pts = out[:1] + out[2:-1] + [pts[-1]]
+    return pts
 
 
 def length_2d(pts) -> float:
@@ -127,6 +148,22 @@ class Surface:
             lv = np.asarray(bodies["level"][j * STRIDE:j1 * STRIDE:STRIDE, :n * STRIDE:STRIDE])
             hb = np.asarray(h[j * STRIDE:j1 * STRIDE:STRIDE, :n * STRIDE:STRIDE])
             self.water[j:j1] = sb | (lv > hb + 0.05)
+        self.z = None
+        try:  # the ground the roads are laid into (generate's), at the search grid
+            from tools.argonia_world.terrain.grid import generated_ground
+            g = np.load(generated_ground(), mmap_mode="r")
+            self.z = np.asarray(g[:n * STRIDE:STRIDE, :n * STRIDE:STRIDE], np.float64)
+            gy, gx = np.gradient(self.z, STEP_M)
+            self.side = SIDE_COST * np.clip(np.hypot(gx, gy) - SIDE_OK, 0.0, None)
+        except (FileNotFoundError, OSError):
+            pass
+
+    def climb(self, u, v, w: float) -> float:
+        """The grade penalty of the step u -> v (w its length in search steps)."""
+        if self.z is None:
+            return 0.0
+        g = abs(self.z[v] - self.z[u]) / (w * STEP_M)
+        return (GRADE_COST * max(0.0, g - GRADE_OK) + 0.5 * (self.side[u] + self.side[v])) * w
 
     def cost(self, j: int, i: int, own: str) -> float:
         on_road, on_track = self.road[j, i], self.track[j, i]
@@ -171,7 +208,7 @@ class Surface:
                 v = (u[0] + dj, u[1] + di)
                 if not (j0 <= v[0] <= j1 and i0 <= v[1] <= i1):
                     continue
-                nd = d + w * 0.5 * (self.cost(*u, own) + self.cost(*v, own))
+                nd = d + w * 0.5 * (self.cost(*u, own) + self.cost(*v, own)) + self.climb(u, v, w)
                 if nd < dist.get(v, math.inf):
                     dist[v], prev[v] = nd, u
                     heapq.heappush(pq, (nd, v))
@@ -181,7 +218,7 @@ class Surface:
         path.reverse()
         on = sum(1 for j, i in path if (self.road if own == "road" else self.track)[j, i]) / len(path)
         pts = [((i + 0.5) * STEP_M, (j + 0.5) * STEP_M) for j, i in path]
-        return [a] + simplify(pts, STEP_M / 2) + [b], on
+        return simplify(chaikin([a] + simplify(pts, STEP_M / 2) + [b]), 0.25), on  # curves, kept within 0.25 m
 
 
 # --- the network -----------------------------------------------------------------------------------------------------
