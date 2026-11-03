@@ -1,0 +1,12 @@
+# Round 4's second pass: the journeys the first batch lost to the camera step (`cgf` unknown to the console on Paris,
+# the F key ignored): rerun with the runner's camera step tolerant (a still is taken at whatever camera holds and
+# the mismatch recorded for the reader).
+id: 1.15-round-4-camera
+relaunch_mb: 6000
+relaunch_every: 0
+one_load: true
+settle_waits: true
+items:
+  - world-panel
+  - river-steps
+  - tree-seat
