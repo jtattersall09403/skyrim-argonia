@@ -54,7 +54,7 @@ ac::msg::InventoryState InventoryState(std::optional<std::string> notice) {
     it.name = name;
     it.category = pn::category(*kind, food);
     it.count = data.first;
-    it.weight = std::max(0.0, double(obj->GetWeight()) * data.first);
+    it.weight = (std::max)(0.0, double(obj->GetWeight()) * data.first);
     it.value = std::max<std::int64_t>(0, std::int64_t(obj->GetGoldValue()) * data.first);
     it.equipped = worn;
     it.action = pn::action(*kind, food, worn);
@@ -62,8 +62,8 @@ ac::msg::InventoryState InventoryState(std::optional<std::string> notice) {
   }
   pn::order(s.items);
   auto* avo = p->AsActorValueOwner();
-  s.carried = std::max(0.0, double(avo->GetActorValue(RE::ActorValue::kInventoryWeight)));
-  s.capacity = std::max(0.0, double(avo->GetActorValue(RE::ActorValue::kCarryWeight)));
+  s.carried = (std::max)(0.0, double(avo->GetActorValue(RE::ActorValue::kInventoryWeight)));
+  s.capacity = (std::max)(0.0, double(avo->GetActorValue(RE::ActorValue::kCarryWeight)));
   s.notice = std::move(notice);
   return s;
 }
@@ -105,8 +105,8 @@ ac::msg::CharsheetState SheetState(std::optional<std::string> notice) {
   auto* p = RE::PlayerCharacter::GetSingleton();
   if (!p) return {};
   auto* avo = p->AsActorValueOwner();
-  const auto av = [&](RE::ActorValue a) { return std::max(0.0, double(avo->GetActorValue(a))); };
-  const auto mx = [&](RE::ActorValue a) { return std::max(0.0, double(avo->GetPermanentActorValue(a))); };
+  const auto av = [&](RE::ActorValue a) { return (std::max)(0.0, double(avo->GetActorValue(a))); };
+  const auto mx = [&](RE::ActorValue a) { return (std::max)(0.0, double(avo->GetPermanentActorValue(a))); };
   const pn::Pools pools{av(RE::ActorValue::kHealth), mx(RE::ActorValue::kHealth), av(RE::ActorValue::kMagicka),
                         mx(RE::ActorValue::kMagicka), av(RE::ActorValue::kStamina), mx(RE::ActorValue::kStamina)};
   std::vector<ac::msg::CharPerk> perks;
