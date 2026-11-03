@@ -33,9 +33,15 @@ function Wait-Steam {
   # updates" then "Startup"); every launch before that died within 30 s with no SKSE log, every launch after it
   # lived (2026-11-02, nine launches). So: the client (steamwebhelper) must be up and steam.exe itself at least
   # 150 s old; a Steam restart resets its start time and the wait begins again. Up to 12 min. Every launch path.
+  # Steam gone altogether (its self-update restart sometimes never comes back: no steam.exe for an hour on Paris,
+  # 2026-11-03 04:20, two launches lost to a 12 min wait): start it after 30 s without one.
   $w = 0; $age = 0
   while ($w -lt 720) {
     $st = Get-Process steam -EA SilentlyContinue | Sort-Object StartTime | Select-Object -First 1
+    if (-not $st -and $w -ge 30) {
+      $exe = "C:\Program Files (x86)\Steam\steam.exe"
+      if (Test-Path $exe) { Start-Process $exe -ArgumentList '-silent'; "steam: not running, started it" }
+    }
     $age = if ($st) { ((Get-Date) - $st.StartTime).TotalSeconds } else { 0 }
     if ($st -and (Get-Process steamwebhelper -EA SilentlyContinue) -and $age -ge 150) { break }
     Start-Sleep 5; $w += 5
