@@ -593,6 +593,16 @@ def test_camera_first_retries_until_it_flips_and_fails_when_it_never_does(tmp_pa
     assert not rep["passed"] and "never became first" in rep["steps"][0]["reason"]
 
 
+def test_camera_bridge_command_is_tried_first_and_decides(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    fake = Fake()
+    real = fake.call
+    fake.call = lambda cmd, *a: {"asked": a[0], "first_person": a[0] == "first"} if cmd == "camera" else real(cmd, *a)
+    step = {"name": "look", "do": [{"camera": "first"}]}
+    rep = rj.Runner(fake, tmp_path / "c").run(journey(tmp_path, [step]), "base")
+    assert rep["passed"] and fake.lines.count("IsPC1stPerson") <= 1  # only the run-end read; no retry loop: the bridge answered
+
+
 class Settling:
     """A bridge whose player lands after `moves` reads and whose Loading Menu closes after `loading` event reads."""
     def __init__(self, moves=3, loading=2):

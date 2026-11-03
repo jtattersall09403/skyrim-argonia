@@ -314,3 +314,21 @@ def test_ensure_third_person_toggles_until_the_read_says_third_person():
     assert B.ensure_third_person(f) and f.keys == 1
     g = Fake(False)
     assert B.ensure_third_person(g) and g.keys == 0
+
+
+def test_ensure_third_person_uses_the_bridge_command_first_and_camera_checks_its_mode():
+    class Fake:
+        def __init__(self):
+            self.cmds = []
+
+        def call(self, cmd, *a):
+            self.cmds.append(cmd)
+            return {"first_person": False} if cmd == "camera" else {}
+
+    f = Fake()
+    assert B.ensure_third_person(f) and f.cmds == ["camera"]
+    b = B.Bridge.__new__(B.Bridge)
+    b.call = lambda cmd, *a, **k: {"cmd": cmd, "a": a}
+    assert b.camera("first") == {"cmd": "camera", "a": ("first",)}
+    with pytest.raises(B.BridgeError):
+        b.camera("second")

@@ -393,6 +393,13 @@ class Bridge:
         r = self.call("core", native, *([] if arg is None else [arg]))
         return r["value"]
 
+    def camera(self, mode: str) -> dict:
+        """`camera first|third`: the engine's own PlayerCamera::ForceFirstPerson / ForceThirdPerson through the bridge;
+        {"asked", "first_person"} with the state read back. Needs the DLL that has the command."""
+        if mode not in ("first", "third"):
+            raise BridgeError(f"camera: {mode!r} is first or third")
+        return self.call("camera", mode)
+
     def hud(self, state: str) -> str:
         """`hud on|off` (dev): hides or restores OUR PrismaUI HUD (ArgoniaCore's HudShow, the HUD's visibility rule)."""
         if state not in ("on", "off"):
@@ -480,7 +487,13 @@ class Bridge:
 def ensure_third_person(b, tries: int = 3) -> bool:
     """The play camera is third person (owner, 2026-10-29; play test 3, finding 2: saves loaded in first person). The
     console reads IsPC1stPerson; the toggle key (F) is pressed until it reads 0. A save made after a new game is
-    first person until this runs, and the save records the camera. True when the read says third person."""
+    first person until this runs, and the save records the camera. True when the read says third person. The bridge's
+    `camera third` is tried first; the F key stays as the fallback (an older DLL has no such command)."""
+    try:
+        if b.call("camera", "third").get("first_person") is False:
+            return True
+    except BridgeError:
+        pass
     for _ in range(tries):
         if not b.call("console", "IsPC1stPerson")["output"].strip().endswith("1.00"):
             return True

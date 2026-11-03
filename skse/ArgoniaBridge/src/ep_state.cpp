@@ -96,6 +96,22 @@ std::string save(const Request& req) {
   return reply_error("save", "the game did not write " + file.string() + " within 30 s");
 }
 
+// camera first|third: the engine's own camera switch (PlayerCamera::ForceFirstPerson / ForceThirdPerson) on the game
+// thread; the reply reads the state back (IsInFirstPerson). The console's `cgf` is unknown on this runtime and the F key
+// through the engine route left IsPC1stPerson at 0 (round 4).
+std::string camera(const Request& req) {
+  auto mode = rest(req);
+  if (mode != "first" && mode != "third") return reply_error("camera", "usage: camera first|third");
+  bool first = mode == "first";
+  return on_main_thread(req.command, [first] {
+    if (!player_in_world()) return reply_error("camera", "no player in a world (main menu or loading)");
+    auto* cam = RE::PlayerCamera::GetSingleton();
+    if (!cam) return reply_error("camera", "no camera");
+    if (first) cam->ForceFirstPerson(); else cam->ForceThirdPerson();
+    return reply_ok("camera", JsonObject().str("asked", first ? "first" : "third").boolean("first_person", cam->IsInFirstPerson()).done());
+  });
+}
+
 // load <name>: loads Saves\<name>.ess and answers once SKSE's post-load message says it finished (120 s cap).
 std::string load(const Request& req) {
   auto name = rest(req);
@@ -179,6 +195,7 @@ std::string core_suspend(const Request& req) {
 const Register r_player{"player", &player};
 const Register r_console{"console", &console};
 const Register r_save{"save", &save};
+const Register r_camera{"camera", &camera};
 const Register r_load{"load", &load};
 const Register r_core_suspend{"core-suspend", &core_suspend};
 const Register r_greeting{"greeting", &greeting};

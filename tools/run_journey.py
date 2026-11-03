@@ -349,6 +349,14 @@ class Runner:
             raise StepFailed(f"camera: {arg!r} is `first` or `third`")
         fn = "ForceFirstPerson" if want == "1.00" else "ForceThirdPerson"
         tries = []
+        try:   # route 1: the bridge's own command over the engine's camera API (cgf is unknown here, F is ignored)
+            r = self.b.call("camera", str(arg).strip())
+            tries.append(f"bridge {r.get('first_person')}")
+            if r.get("first_person") is (want == "1.00"):
+                self.calls.append({"call": ["camera", str(arg)], "tries": tries})
+                return {"camera": str(arg), "tries": 0, "route": "bridge"}
+        except BridgeError as e:
+            tries.append(f"bridge error {str(e)[:60]}")
         for n in range(1, 7):
             try:
                 now = self._console("IsPC1stPerson")["output"].strip()
