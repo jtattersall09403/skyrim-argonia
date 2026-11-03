@@ -17,15 +17,15 @@ steps:
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -51 46, settle: 60}
+  - console: {line: cow ARG_Province -50 46, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -205734
-  - console: player.setpos y 190901
-  - console: player.setpos z 25708
+  - console: player.setpos x -203234
+  - console: player.setpos y 191430
+  - console: player.setpos z 27001
   - wait: 6
-  - console: player.setangle z 60
-  - console: player.setangle x -11
+  - console: player.setangle z 15
+  - console: player.setangle x 31
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-1}
@@ -140,11 +140,11 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -253568
-  - console: player.setpos y 100866
-  - console: player.setpos z 18521
+  - console: player.setpos y 101146
+  - console: player.setpos z 18581
   - wait: 6
   - console: player.setangle z 180
-  - console: player.setangle x 18
+  - console: player.setangle x 16
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: still-2}

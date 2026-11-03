@@ -41,7 +41,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-2-01coalroundrock
-  # 1DE977:Black Marsh.esm ref B0C422 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
+  # 1DE977:Black Marsh.esm ref B0C425 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
   # subject: -242757 75461 16940
   do:
   - console:
@@ -63,7 +63,7 @@ steps:
   - console:
       line: player.setangle x -23
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xB0C422
+  - console: prid ArgoniaWorld.esm|0xB0C425
   expect:
   - console: getpos x
     keep: rock_x
@@ -165,7 +165,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-6-01mudrockstack
-  # 1DE971:Black Marsh.esm ref C89644 in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
+  # 1DE971:Black Marsh.esm ref C89645 in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
   # subject: -140385 172969 24665
   do:
   - console:
@@ -187,7 +187,7 @@ steps:
   - console:
       line: player.setangle x 31
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xC89644
+  - console: prid ArgoniaWorld.esm|0xC89645
   expect:
   - console: getpos x
     keep: rock_x

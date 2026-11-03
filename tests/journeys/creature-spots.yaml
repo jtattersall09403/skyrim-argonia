@@ -13,16 +13,16 @@ camera: first
 steps:
 - name: water-day
   # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water
-  # subject: -150272 103680 27853
+  # subject: -148864 103552 27853
   do:
   - hud: off
   - console: tgm
   - console: {line: cow ARG_Province -37 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -150832
-  - console: player.setpos y 103680
-  - console: player.setpos z 14308
+  - console: player.setpos x -149564
+  - console: player.setpos y 103552
+  - console: player.setpos z 14026
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -45,15 +45,15 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_night}
 - name: marsh-day
   # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -118016 135936 2620
+  # subject: -118272 135936 2654
   do:
   - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -118115
-  - console: player.setpos y 136035
-  - console: player.setpos z 2601
-  - console: player.setangle z 135
+  - console: player.setpos x -118832
+  - console: player.setpos y 135936
+  - console: player.setpos z 2691
+  - console: player.setangle z 90
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
