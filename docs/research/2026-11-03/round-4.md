@@ -53,3 +53,14 @@ Readers' verdicts:
 - **Unproven, the harness:** the panel stopped at its seventh still (the editor-id `sw` left the region's pick: the third pass sets and forces by runtime form id); the river-step stills framed ground or leaves, the road stills sand or lake (the road paint is the pale sand; no trough visible); the ground-material stills inside gorse; the corpse-search step lost the body from the crosshair again; the look journey's interior check is stale (the house stands in the world); the stables in no frame.
 
 Wave 4 (03:58): 1.15-r4-fog-bank (the height-fog bank soft and below the eye, the mist weathers' olive fog slots cool), 1.15-r4-red-trees (the crimson and pink forms named and swapped or fixed). Then the LOD rebuild on Paris (terrain, TexGen, DynDOLOD), the saves, the panel on the LOD build, the owner's comment.
+
+## The final panel on Paris (03 Nov 05:41–05:52: deploy 4 min with the LOD laid and the shader cache archived, the panel 7 min, 37 stills, first person, weathers forced by form id)
+
+The LOD rebuilt last (04:48–05:37: terrain 8 min, TexGen 4 min, DynDOLOD 31 min, collect 1 min, archive 1.7 GB), the ten region saves made fresh at 04:48 and pushed to the pool; the jobs lost one Paris boot to the eighth spot interruption (04:33) and two launches to Steam not running (fixed: the launch starts Steam when it is absent).
+
+Readers' verdicts on the 37 stills:
+
+- **Fixed:** low soft mist at dawn in most dawn stills; trunk bases on the ground, no hovering tree anywhere; distant land and trees continuous with the near ground where a far view exists; no pebble swathe read as a field; nothing Nordic; no white horizon line beyond the three coastal stills.
+- **Still visible:** the sky hidden by a flat grey fog in most stills (at noon under the forced clear-dry weather too, so not the weather's fog distances) with a yellow-olive cast in about half; crimson and pink foliage in about twenty stills (trees, not the dropped ferns: their textures are vanilla pack files the build VM cannot measure); the near water at river and basin shores marbled and blotchy black-and-green (nine stills; round 3's vanilla water read as water: our records' colour and opacity overrides are the suspect, reverting now); the far water bright white and flat in three flooded-forest stills; two vantages inside willow fronds.
+
+The next diagnosis is the owner's to run cheaply: the two Moonlight cards with Community Shaders on and off at the same shore tell whether the fog wall and the water look come from the shaders or the records.
