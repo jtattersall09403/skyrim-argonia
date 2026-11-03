@@ -28,15 +28,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -120378
+      line: player.setpos x -120498
   - console:
-      line: player.setpos y 200305
+      line: player.setpos y 200355
   - console:
-      line: player.setpos z 24389
+      line: player.setpos z 24431
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 45
   - console:
-      line: player.setangle x 53
+      line: player.setangle x 58
   - wait: 6
 - name: tree-2-argoniatreepalmoke02
   # 155FF2:King of the Murkmire.esp ref 9D4E2A, seat 780 u x scale 1.16; aim at the trunk base
