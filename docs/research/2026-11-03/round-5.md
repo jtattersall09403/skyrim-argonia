@@ -45,6 +45,14 @@ the artificial neon blue-green trees and the pale, washed-out wide-trunk trees t
 the top item; four disks; an S3 request churn of ~150k small writes being traced) with three deletions for the owner's
 word. No creature without a model (the lizard-steed and mouth-plover stay out).
 
+## The owner's 12:18 reply (#37): the deletes and the bucket
+
+Done the same hour: the Ireland machine terminated with its disk, the orphan London volume and the older Paris snapshot
+deleted; from the private bucket the 85,793 lane-archive objects (5.8 GB, all rebuildable), three old LOD archives and
+two old shader caches; the lane tidy (tooling/disk.sh) archives no build output any more (the S3 request churn of
+~150k writes came from it: docs/research/2026-11-03/s3-request-cost.md). Kept: the mod archives (17 GB), the current
+LOD and shader cache, the saves backups.
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
