@@ -1,6 +1,6 @@
 from pathlib import Path
 
-LIMIT = 1500  # the owner relaxed the budget on 2026-11-02 (CLAUDE.md: keep it lean); 1,381 words that day
+LIMIT = 1800  # the owner relaxed the budget on 2026-11-02 (CLAUDE.md: keep it lean) and added four binding lines on 2026-11-03 (interruptions, no reruns, direct screens); 1,381 words that day
 ROOT = Path(__file__).resolve().parents[2]
 
 
