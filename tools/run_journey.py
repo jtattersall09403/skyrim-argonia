@@ -331,6 +331,8 @@ class Runner:
             line = {"line": line, "settle": 30}
         if isinstance(line, dict):
             settle, line = float(line.get("settle", 0)), line["line"]
+            if "|0x" in line:  # `<file>.esm|0x<hex>`: the runtime id for this launch's load order (editor ids of
+                line = self.b.resolve_plugin_forms(line)  # weathers were not resolving on Paris, round 4 batch two)
             end = time.monotonic() + settle
             while True:
                 try:

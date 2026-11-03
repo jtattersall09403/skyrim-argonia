@@ -45,7 +45,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -116,7 +119,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_sea_fog"
+     "console": "sw Argonia.esm|0x000E9E"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9E"
     },
     {
      "settle": {
@@ -187,7 +193,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -258,7 +267,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_sea_fog"
+     "console": "sw Argonia.esm|0x000E9E"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9E"
     },
     {
      "settle": {
@@ -329,7 +341,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -400,7 +415,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -471,7 +489,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -542,7 +563,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -613,7 +637,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -684,7 +711,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -755,7 +785,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -826,7 +859,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist_49m"
+     "console": "sw Argonia.esm|0x000ED7"
+    },
+    {
+     "console": "fw Argonia.esm|0x000ED7"
     },
     {
      "settle": {
@@ -897,7 +933,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -968,7 +1007,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -1039,7 +1081,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1110,7 +1155,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -1181,7 +1229,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1252,7 +1303,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist_2m"
+     "console": "sw Argonia.esm|0x000ED6"
+    },
+    {
+     "console": "fw Argonia.esm|0x000ED6"
     },
     {
      "settle": {
@@ -1323,7 +1377,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1394,7 +1451,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -1465,7 +1525,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1536,7 +1599,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze"
+     "console": "sw Argonia.esm|0x000E9D"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9D"
     },
     {
      "settle": {
@@ -1607,7 +1673,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1678,7 +1747,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze"
+     "console": "sw Argonia.esm|0x000E9D"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9D"
     },
     {
      "settle": {
@@ -1749,7 +1821,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1820,7 +1895,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -1891,7 +1969,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -1962,7 +2043,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw Argonia.esm|0x00080F"
+    },
+    {
+     "console": "fw Argonia.esm|0x00080F"
     },
     {
      "settle": {
@@ -2033,7 +2117,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -2104,7 +2191,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_sea_fog"
+     "console": "sw Argonia.esm|0x000E9E"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9E"
     },
     {
      "settle": {
@@ -2175,7 +2265,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -2246,7 +2339,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_sea_fog"
+     "console": "sw Argonia.esm|0x000E9E"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9E"
     },
     {
      "settle": {
@@ -2317,7 +2413,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -2388,7 +2487,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze_68m"
+     "console": "sw Argonia.esm|0x000EDA"
+    },
+    {
+     "console": "fw Argonia.esm|0x000EDA"
     },
     {
      "settle": {
@@ -2459,7 +2561,10 @@
      "console": "set gamehour to 12"
     },
     {
-     "console": "sw ARG_Weather_clear_dry"
+     "console": "sw Argonia.esm|0x000E9B"
+    },
+    {
+     "console": "fw Argonia.esm|0x000E9B"
     },
     {
      "settle": {
@@ -2530,7 +2635,10 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze_68m"
+     "console": "sw Argonia.esm|0x000EDA"
+    },
+    {
+     "console": "fw Argonia.esm|0x000EDA"
     },
     {
      "settle": {

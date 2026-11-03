@@ -202,6 +202,7 @@ def journey_text(vs: list[dict]) -> str:
             "# (`python3 -m tools.journeys refresh`).\n")
     steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"hud": "off"}],
               "expect": []}]
+    wthr = {r.editor_id: (r.plugin, r.form_id) for r in db.open().rows("formid") if r.record_type == "WTHR"}
     for v in vs:
         x, y, z = v["pos"]
         land = [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
@@ -218,7 +219,12 @@ def journey_text(vs: list[dict]) -> str:
             # before the still (a null read means a menu is open: it is polled until it holds)
             ex = list(land)
             if v[when]:
-                do.append({"console": f"sw {v[when]}"})
+                # the weather by its runtime form id (`<plugin>|0x<id>`, resolved by the runner: `sw <editor id>` left
+                # the region's own pick in place twice in round 4), set then forced so the region list cannot replace it
+                fid = wthr.get(v[when])
+                ref = f"{fid[0]}|0x{fid[1]:06X}" if fid else v[when]
+                do.append({"console": f"sw {ref}"})
+                do.append({"console": f"fw {ref}"})
                 ex.append({"read": ["weather"], "path": "current.editor_id", "eq": v[when], "within": 20})
             # the measured settle, not 14 s of fixed waits (1.15-r4-fast-loop): menus closed and the player still,
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s

@@ -283,6 +283,7 @@ def test_panel_journey_forces_each_regions_own_current_weather():
     text = (Path(__file__).resolve().parents[4] / "tests" / "journeys" / "world-panel.yaml").read_text()
     steps = {s["name"]: s for s in json.loads(text[text.index('{\n "id"'):])["steps"]}
     keyed = {r.editor_id for r in w.rows("formid") if r.record_type == "WTHR"}
+    by_ref = {f"{r.plugin}|0x{r.form_id:06X}": r.editor_id for r in w.rows("formid") if r.record_type == "WTHR"}
     for v in panel.vantages(w):
         lr_list = {r["edid"] for r in w.query("SELECT w.edid FROM land_region_weather l JOIN weather w "
                                               "ON w.id = l.weather_id WHERE l.land_region_id = ?", v["land_region"])}
@@ -291,6 +292,7 @@ def test_panel_journey_forces_each_regions_own_current_weather():
             s = steps[f"{v['id']}-{when}"]
             lines = [d["console"] if isinstance(d["console"], str) else d["console"]["line"]
                      for d in s["do"] if "console" in d]
-            assert f"sw {edid}" in lines, (s["name"], edid)
+            forced = [by_ref.get(ln.split(" ", 1)[1], ln.split(" ", 1)[1]) for ln in lines if ln.startswith(("sw ", "fw "))]
+            assert forced and set(forced) == {edid}, (s["name"], edid, forced)  # set and forced by its runtime form id
             assert [e["eq"] for e in s["expect"] if e.get("read") == ["weather"]] == [edid], s["name"]
             assert edid in lr_list and edid in keyed, (s["name"], edid)
