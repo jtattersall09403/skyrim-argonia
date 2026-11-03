@@ -17,15 +17,15 @@ steps:
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -50 46, settle: 60}
+  - console: {line: cow ARG_Province -51 46, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -204036
-  - console: player.setpos y 191882
-  - console: player.setpos z 27045
+  - console: player.setpos x -204885
+  - console: player.setpos y 191392
+  - console: player.setpos z 26232
   - wait: 6
   - console: player.setangle z 60
-  - console: player.setangle x 29
+  - console: player.setangle x -3
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-1}
@@ -37,12 +37,12 @@ steps:
   - console: {line: cow ARG_Province -48 17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -193142
-  - console: player.setpos y 70148
-  - console: player.setpos z 14852
+  - console: player.setpos x -193282
+  - console: player.setpos y 70390
+  - console: player.setpos z 14901
   - wait: 6
   - console: player.setangle z 150
-  - console: player.setangle x 32
+  - console: player.setangle x 29
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-2}
@@ -88,12 +88,12 @@ steps:
   - console: {line: cow ARG_Province -60 -15, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245483
-  - console: player.setpos y -60267
-  - console: player.setpos z 2210
+  - console: player.setpos x -245632
+  - console: player.setpos y -59366
+  - console: player.setpos z 2227
   - wait: 6
-  - console: player.setangle z 225
-  - console: player.setangle x 43
+  - console: player.setangle z 180
+  - console: player.setangle x 11
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: gully-2}
@@ -106,11 +106,11 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -245632
-  - console: player.setpos y 108138
-  - console: player.setpos z 22488
+  - console: player.setpos y 108698
+  - console: player.setpos z 22496
   - wait: 6
   - console: player.setangle z 180
-  - console: player.setangle x 16
+  - console: player.setangle x 8
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: gully-3}

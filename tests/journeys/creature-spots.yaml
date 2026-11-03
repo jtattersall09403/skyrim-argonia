@@ -13,16 +13,16 @@ camera: first
 steps:
 - name: water-day
   # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore
-  # subject: -143360 154112 14412
+  # subject: -143488 153984 14432
   do:
   - hud: off
   - console: tgm
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -143920
-  - console: player.setpos y 154112
-  - console: player.setpos z 14473
+  - console: player.setpos x -144048
+  - console: player.setpos y 153984
+  - console: player.setpos z 14486
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -35,24 +35,24 @@ steps:
   - console: {line: cow ARG_Province -34 32, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - console: player.setpos x -136035
-  - console: player.setpos y 132637
-  - console: player.setpos z 5981
-  - console: player.setangle z 45
+  - console: player.setpos x -136496
+  - console: player.setpos y 132736
+  - console: player.setpos z 6011
+  - console: player.setangle z 90
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: water_night}
 - name: marsh-day
   # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -118144 135680 2595
+  # subject: -117632 135680 2549
   do:
   - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -118284
+  - console: player.setpos x -117772
   - console: player.setpos y 135680
-  - console: player.setpos z 2570
+  - console: player.setpos z 2513
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -60,14 +60,14 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: marsh_day}
 - name: marsh-night
   # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -104960 127360 754
+  # subject: -103296 127488 695
   do:
   - console: {line: cow ARG_Province -26 31, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - console: player.setpos x -105240
-  - console: player.setpos y 127360
-  - console: player.setpos z 696
+  - console: player.setpos x -103576
+  - console: player.setpos y 127488
+  - console: player.setpos z 656
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -110,9 +110,9 @@ steps:
   - console: {line: cow ARG_Province 0 0, settle: 60}
   - wait: 8
   - console: set gamehour to 12
-  - console: player.setpos x 3280
+  - console: player.setpos x 3700
   - console: player.setpos y 2688
-  - console: player.setpos z 2680
+  - console: player.setpos z 2703
   - console: player.setangle z 90
   - wait: 6
   expect:
