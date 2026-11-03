@@ -68,6 +68,8 @@ def refresh(only: set[str] | None = None) -> int:
         (JOURNEYS / "water-types.yaml").write_text(gen.water_types(b, w, log))
     if want("road-look"):
         (JOURNEYS / "road-look.yaml").write_text(gen.road_look(b, w, log))
+    if want("creatures-kinds"):
+        (JOURNEYS / "creatures-kinds.yaml").write_text(gen.creatures_kinds(b, w, log))
     for n in ("claywater-look", "claywater-walk"):
         if want(n):
             (JOURNEYS / n).with_suffix(".yaml").write_text(gen.claywater(b, n, log))

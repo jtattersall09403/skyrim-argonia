@@ -128,7 +128,9 @@ def load_journey(path: pathlib.Path) -> dict:
         for e in s.get("expect", []):
             if not set(e) & set(EXPECTS):
                 raise SystemExit(f"{path}: step {s['name']}: unknown expectation {e}")
-            if ("read" in e or "console" in e) and not (set(e) & set(OPS)) and "keep" not in e:
+            if "kinds" in e and (not isinstance(e["kinds"], dict) or not {"ge", "among"} <= set(e["kinds"])):
+                raise SystemExit(f"{path}: step {s['name']}: kinds takes {{ge: N, among: [kind names]}}")
+            if ("read" in e or "console" in e) and not (set(e) & set(OPS) | {"kinds"}) and "keep" not in e:
                 raise SystemExit(f"{path}: step {s['name']}: {e} has no comparison and keeps nothing")
             if "read" in e and not isinstance(e["read"], list):
                 raise SystemExit(f"{path}: step {s['name']}: read takes a list [<command>, args...]")
@@ -187,6 +189,13 @@ def _vocab():
 def _refs(value) -> list[str]:
     import re
     return [m.split(".")[0] for m in re.findall(r"\{([A-Za-z_][A-Za-z0-9_]*(?:\.\d+)?)\}", json.dumps(value))]
+
+
+def kinds_found(actors, among) -> list[str]:
+    """The `among` kinds that a live actor of the list is: its name ends the kind's name or the kind's name ends its
+    (the mods name an actor "Leech" where the list says "Giant Leech")."""
+    names = [str(a.get("name") or "").lower() for a in (actors if isinstance(actors, list) else []) if not a.get("dead")]
+    return sorted(k for k in among if any(n and (k.lower().endswith(n) or n.endswith(k.lower())) for n in names))
 
 
 def dig(value, path: str):
@@ -651,8 +660,21 @@ class Runner:
         return r
 
     # -- expectations ----------------------------------------------------------------------------------------
+    def check_kinds(self, exp: dict):
+        """read + kinds {ge: N, among: [names]}: the read's path lists actors; the distinct `among` kinds among the live
+        ones must number at least N. The kinds found are kept (a list) under `keep`."""
+        got = dig(self.b.call(*self.fill(exp["read"])), exp.get("path", ""))
+        found = kinds_found(got, exp["kinds"]["among"])
+        if "keep" in exp:
+            self.kept[exp["keep"]] = found
+        want = int(exp["kinds"]["ge"])
+        return None if len(found) >= want else (f"{' '.join(map(str, exp['read']))} {exp.get('path', '')}: {len(found)} distinct "
+                                                f"kinds of the list {found}, wanted at least {want}")
+
     def check(self, exp: dict, ctx: dict):
         """None when it holds, else the reason in words."""
+        if "kinds" in exp and "read" in exp:
+            return self.check_kinds(exp)
         op = next((k for k in OPS if k in exp), None)
         want = exp.get(op)
         if isinstance(want, dict) and "kept" in want:

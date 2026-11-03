@@ -670,3 +670,11 @@ def test_world_panel_settles_instead_of_fixed_waits():
     moved = [s for s in j["steps"] if any("console" in a and "moveto" in str(a["console"]) for a in s["do"])]
     assert moved and all(s["do"][-1] == {"settle": {"cap": 14, "min": 3}} for s in moved)
     assert not any("wait" in a for s in moved for a in s["do"])
+
+
+def test_kinds_found_counts_distinct_live_kinds():
+    from tools.run_journey import kinds_found
+    actors = [{"name": "Leech"}, {"name": "Leech"}, {"name": "Bull Swamp Jelly"}, {"name": "Crow", "dead": True}, {"name": "Alit"}]
+    among = ["Giant Leech", "Swamp Jelly", "Crow", "Dragon Frog"]
+    assert kinds_found(actors, among) == ["Giant Leech", "Swamp Jelly"]
+    assert kinds_found(None, among) == [] and kinds_found([], among) == []

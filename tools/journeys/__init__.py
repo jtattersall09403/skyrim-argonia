@@ -40,7 +40,7 @@ TRUNKED = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree", "d
 CROWN_FROM, TRUNK_U = 0.4, 25.0   # a tree's crown from 0.4 of its height up; below it a trunk ~0.35 m round
 # The data-driven journeys: refresh re-derives them, the L1 test checks them.
 DERIVED = ("world-panel", "river-steps", "water-types", "road-look", "claywater-walk", "claywater-look", "creature-spots", "tree-seat",
-           "rock-booth")
+           "rock-booth", "creatures-kinds")
 
 SETPOS = re.compile(r"player\.setpos ([xyz]) (-?\d+(?:\.\d+)?)")
 SETANGLE = re.compile(r"player\.setangle ([xz]) (-?\d+(?:\.\d+)?)")
@@ -221,15 +221,18 @@ def aim(eye: tuple, subj: tuple) -> tuple[float, float]:
     return h, max(-60.0, min(60.0, p))
 
 
-def frame(b: Build, x: float, y: float, subj: tuple, water: bool = False) -> dict:
+def frame(b: Build, x: float, y: float, subj: tuple, water: bool = False, band: tuple | None = None) -> dict:
     """The stand on the approach line (subject -> stand) nearest the given one, dry (unless `water`) and with a clear
-    eye line: first the given distance, then back STEP_M at a time up to BACK_M, then nearer down to NEAR_M."""
+    eye line: first the given distance, then back STEP_M at a time up to BACK_M, then nearer down to NEAR_M. With
+    `band` (lo, hi metres) only stands in the band are tried, the nearest to the given distance first."""
     sx, sy = subj[0], subj[1]
     d0 = math.hypot(x - sx, y - sy)
     ux, uy = ((x - sx) / d0, (y - sy) / d0) if d0 > 1 else (0.0, -1.0)
     u = su.UNITS_PER_METRE
     ds = [d0] + [d0 + k * STEP_M * u for k in range(1, int(BACK_M / STEP_M) + 1)]
     ds += [d0 - k * STEP_M * u for k in range(1, int(d0 / (STEP_M * u)) + 1) if d0 - k * STEP_M * u >= NEAR_M * u - 1]
+    if band:
+        ds = sorted((v * u for v in range(int(band[0]), int(band[1]) + 1)), key=lambda d: abs(d - d0))
     first, best = None, None
     for d in ds:
         px, py = sx + ux * d, sy + uy * d
@@ -253,14 +256,14 @@ def _why(first: dict) -> str:
                                  if first["blockers"] else "") if w) or "clear"
 
 
-def place(b: Build, subj: tuple, d0_u: float, bearings) -> dict:
+def place(b: Build, subj: tuple, d0_u: float, bearings, band: tuple | None = None) -> dict:
     """A stand d0_u off the subject on the first bearing (degrees, Skyrim: the stand's bearing from the subject) whose
     approach line gives a dry stand with a clear eye line; else the first dry one; else the first bearing's."""
     tried = []
     for brg in bearings:
         x = subj[0] + math.sin(math.radians(brg)) * d0_u
         y = subj[1] + math.cos(math.radians(brg)) * d0_u
-        f = frame(b, x, y, subj)
+        f = frame(b, x, y, subj, band=band)
         f["bearing"] = brg
         if f["clear"]:
             return f
