@@ -279,6 +279,11 @@ switch ($Step) {
     Link-Into-Data $Out.texgen
   }
   'dyndolod' {
+    # A DynDOLOD already running (the build VM that drove it rebooted: ten spot interruptions on 2026-11-03) is
+    # attached, not restarted: its 35 minutes carry on and this step only waits for its finish.
+    $p = Get-Process DynDOLODx64 -EA SilentlyContinue | Select -First 1
+    if ($p) { Say "attach: DynDOLOD already running (pid $($p.Id) since $($p.StartTime.ToString('HH:mm:ss'))): waiting for it"; $main = Main-Window $p }
+    else {
     $p = Start-Tool dyndolod ($Paths + " -o:`"$($Out.dyndolod)\`"")
     $main = Main-Window $p
     # The load's pop-ups (DLL/Scripts not found: Ignore; Resources) come before the wizard: watch them while waiting,
@@ -297,6 +302,7 @@ switch ($Step) {
     try { Set-Check $p 'Generate DynDOLOD' $false } catch { Say "no 'Generate DynDOLOD' box" }   # static LOD only: no plugins, no scripts
     Dump $p 'before OK'
     Click $p 'OK'
+    }
     Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
     $txt = Tool-Text $p; Set-Content "$Work\logs\dyndolod-messages.txt" $txt
     if ($txt -notmatch 'generated successfully') { $p | Stop-Process -Force; throw 'dyndolod: did not complete' }
