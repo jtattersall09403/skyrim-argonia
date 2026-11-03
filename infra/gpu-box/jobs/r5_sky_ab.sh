@@ -6,7 +6,7 @@
 set -u
 cd /home/ubuntu/skyrim-argonia
 B=tests/journeys/batches
-ARGONIA_SHADERS=on  infra/gpu-box/round.sh $B/1.15-round-5-sky-on.yaml  || echo "SKY-AB on: round failed (see above)"
+ROUND_KEEP_UP=1 ARGONIA_SHADERS=on  infra/gpu-box/round.sh $B/1.15-round-5-sky-on.yaml  || echo "SKY-AB on: round failed (see above)"
 ARGONIA_SHADERS=off infra/gpu-box/round.sh $B/1.15-round-5-sky-off.yaml || echo "SKY-AB off: round failed (see above)"
 ls -t ~/.argonia/round/1.15-round-5-sky-*.state 2>/dev/null | head -2
 echo "SKY-AB DONE $(date -u +%H:%M)"

@@ -25,8 +25,12 @@ step() {  # step <name> <cmd...>: skipped when OK for this build; verdict line a
   if "$@"; then echo "$name OK" >>"$state"; echo "ROUND $name OK in $(( SECONDS - s )) s"; return 0; fi
   echo "ROUND $name FAIL in $(( SECONDS - s )) s"; return 1
 }
-stop_machine() { infra/gpu-box/run.sh stop >/dev/null 2>&1 && echo "ROUND stop OK" || echo "ROUND stop FAIL (stop $m by hand)"; }
+# ROUND_KEEP_UP=1: a chained caller (r5_sky_ab.sh) runs another round on the same boot, so a round that passed leaves
+# the machine up (a stop and start between two halves cost ~4 min, 2026-11-03); a failed round still stops it.
+stop_machine() { if [ "${ROUND_KEEP_UP:-}" = 1 ] && [ "${round_rc:-1}" = 0 ]; then echo "ROUND kept up (ROUND_KEEP_UP)"; return; fi
+  infra/gpu-box/run.sh stop >/dev/null 2>&1 && echo "ROUND stop OK" || echo "ROUND stop FAIL (stop $m by hand)"; }
 trap stop_machine EXIT
+round_rc=1
 
 step up ~/.argonia/scripts/up_until.sh "$m" 120 || exit 3
 # a deploy that dies with the machine is run again once (what landed stays landed)
@@ -57,4 +61,5 @@ find $dirs -name '*.png' | sort >"${last}stills.txt"
 passed=$("$PY" -c 'import json, sys
 i = [x for d in sys.argv[1:] for x in json.load(open(d + "summary.json")).get("items", [])]
 print(str(sum(x["passed"] for x in i)) + "/" + str(len(i)))' $dirs 2>/dev/null || echo "?/?")
+round_rc=0
 echo "ROUND DONE $passed in $(( SECONDS - t0 )) s; stills: $(wc -l <"${last}stills.txt") in ${last}stills.txt"
