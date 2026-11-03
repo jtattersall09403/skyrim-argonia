@@ -1,0 +1,19 @@
+# Round 4's second batch: every world journey again on the wave-3 build (the bridge camera command, journeys
+# derived from the build, the WRLD's distant water, the sea typed sea, the yellow fog slots re-authored, the pane
+# off the barter window); menu-sweep left out (its pad presses did nothing on the Wind UI panes: a harness gap).
+id: 1.15-round-4b
+relaunch_mb: 6000
+relaunch_every: 0
+one_load: true
+settle_waits: true
+items:
+  - world-panel
+  - ground-materials
+  - river-steps
+  - road-look
+  - tree-seat
+  - creature-spots
+  - chart-zoom
+  - claywater-walk
+  - claywater-look
+  - claywater-talk
