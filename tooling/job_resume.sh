@@ -5,6 +5,8 @@
 #                             .rc is absent or a signal's (>= 128; `stop` sets .state stopped) and whose pid is not alive, through `job_guard.sh run` (same locks,
 #                             queueing, cwd, ARGONIA_*/PATH env, argv, seq); writes $JOBS/RESUMED-<boot-id>
 #   job_resume.sh --install   lay and enable the unit under ~/.config/systemd/user (the planner runs this once)
+# JOBS_DIR is passed on to the relaunched jobs only when the caller set it: the default spool needs no variable, and a
+# job that inherited the real spool's path made every test it ran (the gate) read and write the real spool.
 # Once per boot: a second run in the same boot finds RESUMED-<boot-id> and does nothing. Jobs older than
 # $RESUME_MAX_AGE s (default 43200) are left alone: a job dead half a day is the planner's call, not a resume.
 set -euo pipefail
@@ -46,7 +48,7 @@ done
     gpu=(); [ -f "$JOBS/$n.gpu" ] && gpu=(--gpu="$(cat "$JOBS/$n.gpu")")
     cwd=$(cat "$JOBS/$n.cwd" 2>/dev/null || echo "$HOME"); [ -d "$cwd" ] || cwd=$HOME
     mv -f "$JOBS/$n.log" "$JOBS/$n.log.interrupted" 2>/dev/null || true
-    if out=$(cd "$cwd" && env -u ARGONIA_PLAY -u ARGONIA_LANE "${envs[@]}" JOB_SEQ="$seq" JOBS_DIR="$JOBS" \
+    if out=$(cd "$cwd" && env -u ARGONIA_PLAY -u ARGONIA_LANE "${envs[@]}" JOB_SEQ="$seq" ${JOBS_DIR:+JOBS_DIR="$JOBS_DIR"} \
         bash "$here/job_guard.sh" run "${gpu[@]}" "$n" -- "${argv[@]}" 2>&1); then
       echo "relaunched $n (seq $seq${gpu:+, ${gpu[0]}}) +$(echo "$(date +%s.%N) - $t0" | bc)s: $out"
     else echo "FAILED $n (seq $seq): $out"; fi

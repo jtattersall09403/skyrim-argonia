@@ -11,9 +11,9 @@ GUARD, RESUME = TOOLING / "job_guard.sh", TOOLING / "job_resume.sh"
 
 
 def env_for(tmp, extra=None):
-    e = dict(os.environ, HOME=str(tmp), JOBS_DIR=str(tmp / "jobs"))
-    e.pop("ARGONIA_PLAY", None)
-    e.pop("ARGONIA_LANE", None)
+    e = {k: v for k, v in os.environ.items()
+         if k not in ("ARGONIA_PLAY", "ARGONIA_LANE", "JOB_SEQ", "GPU_WAIT", "SLOT_IDLE", "JOB_GUARD_NO_SYSTEMD")}
+    e.update(HOME=str(tmp), JOBS_DIR=str(tmp / "jobs"))
     e.update(extra or {})
     return e
 

@@ -9,9 +9,17 @@ from pathlib import Path
 GUARD = Path(__file__).resolve().parents[1] / "job_guard.sh"
 
 
+def clean_env(home):
+    """The environment a test runs the script in: its own spool and none of the caller's job_guard settings (a gate run
+    inside a job, or a resumed job, carries the real spool's JOBS_DIR, a lane, a seq, a wait)."""
+    e = {k: v for k, v in os.environ.items()
+         if k not in ("ARGONIA_PLAY", "ARGONIA_LANE", "JOB_SEQ", "GPU_WAIT", "SLOT_IDLE", "JOB_GUARD_NO_SYSTEMD")}
+    e.update(HOME=str(home), JOBS_DIR=str(Path(home) / ".argonia" / "jobs"))
+    return e
+
+
 def guard(home, *args, env=None):
-    e = dict(os.environ, HOME=str(home))
-    e.pop("ARGONIA_PLAY", None)
+    e = clean_env(home)
     e.update(env or {})
     return subprocess.run(["bash", str(GUARD), *args], env=e, capture_output=True, text=True, timeout=300)
 
@@ -127,7 +135,7 @@ def test_job_survives_its_parent_shell_being_killed(tmp_path):
     """A run whose launching shell gets SIGTERM still finishes and writes its rc (the harness killed setsid jobs)."""
     import signal
     jobs = tmp_path / ".argonia" / "jobs"
-    e = dict(os.environ, HOME=str(tmp_path))
+    e = clean_env(tmp_path)
     parent = subprocess.Popen(
         ["bash", "-c", f'bash {GUARD} run slow -- bash -c "python3 -c \'import time; time.sleep(3)\'; echo done"; python3 -c "import time; time.sleep(60)"'],
         env=e, start_new_session=True)
