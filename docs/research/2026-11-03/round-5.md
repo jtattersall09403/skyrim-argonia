@@ -54,6 +54,25 @@ two old shader caches; the lane tidy (tooling/disk.sh) archives no build output 
 ~150k writes came from it: docs/research/2026-11-03/s3-request-cost.md). Kept: the mod archives (17 GB), the current
 LOD and shader cache, the saves backups.
 
+## The owner's rulings of 16:02–17:2x (#38 and in session)
+
+Stay on spot and make the workflow interrupt-proof (decision 0037, a CLAUDE.md line): the pre-batch resumable per
+step by its inputs, the round keyed on the built world and the deploy inputs, a running DynDOLOD attached, the job
+spool relaunching at boot. Never duplicate a journey: a pass stands until the check's own inputs change (lane
+harness-r5-pass-ledger: per-step passes keyed by each step's reach; the batch shrinks). A screen under check is
+opened directly, never by lining up the game controls (lane harness-r5-direct-screens, ebc44df1: `show`, `dialogue`,
+`lockpick` by console activate; the lockpick screen needs a bridge command and moved to lockpick-look.yaml).
+
+## The final batch on Paris (17:06 run, the fourth attempt on the final build after three interruptions)
+
+Readers so far: menus: the System pane, Wait and container in our frame; the Settings and Load pages' date, version
+and left menu now light, their category list, save rows, Level and footer hints still near-black (lane
+1.12-r5-system-pages, third pass: Dear Diary Dark Mode first). Chart: whole province at open, zoom in and out, no
+pane over the dialogue, Livia talks again (16:07 run; cream side columns P2). Sky: no hard horizon line, fog low and
+soft, water reads as water at the coast; the zenith still a pale grey-blue, dawn a grey-cream wash, neon mint leaf
+cards on two or three frontier forms (lane 1.15-r5-sky-2: Tropical Skyrim's own sky colours as the templates, 0006
+§8; the neon forms).
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
