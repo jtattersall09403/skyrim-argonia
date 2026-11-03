@@ -373,20 +373,15 @@ REGIMES = {
 MOUNTAIN_CLASSES = ("border-mountains", "upland-hills")
 
 
-# The Community Shaders Exponential Height Fog (owner play test 3 findings 9 and 18: low drifts below the eye, the sky
-# never hidden). Its density is fogDensity/1000 * 2^(-falloff/1000 * max(z - fogHeight, 0)) per unit and a ray's
-# transmittance 2^(-integral) (ExponentialHeightFog.hlsli, CS 1.9.1), so the bank's top, a tenth of its density, is
-# BANK_TOP_U above fogHeight. The feature's own numbers (ExponentialHeightFog.h/.cpp): defaults density 0.005, falloff
-# 0.2, startDistance 0; sliders density 0-1, falloff 0.001-2.0, startDistance 0-100000, fogHeight +-22000.
-# - falloff 30, beyond the 2.0 slider: a tenth within one eye height (121 u) needs falloff >= log2(10)*1000/121 = 27.5,
-#   and at 2.0 the tenth lies 1,661 u (24 m) up: a slab, never a bank. The slider writes only when dragged, and each
-#   mist weather's own file carries the value, so an untouched menu keeps it.
-# - density 0.1 (in the slider's range; was 0.5): a level ray at the eye meets at most a tenth of it, so over the mist
-#   weathers' day fog far (49,021 u) it is at most 1 - 2^(-0.1e-3 * 0.1 * 49021) = 29 % opaque (0.5 gave 82 %: the
-#   uniform slab and white horizon of batch two); inside the bank it halves the light every 10,000 u (143 m): drifts.
-# - startDistance 700 u (10 m): the first ten metres of every ray carry no height fog, so the ground at the feet is clear.
-HEIGHT_FOG = {"fogHeightFalloff": 30.0, "fogDensity": 0.1, "startDistance": 700.0}
-BANK_TOP_U = 3321.93 / HEIGHT_FOG["fogHeightFalloff"]  # log2(10) * 1000 / falloff
+# The Community Shaders Exponential Height Fog at the feature's own shipped defaults (ExponentialHeightFog.h/.cpp:
+# density 0.005, falloff 0.2, startDistance 0, fogHeight 0; sliders density 0-1, falloff 0.001-2.0, startDistance
+# 0-100000, fogHeight +-22000). Round 4 laid density 0.1 (20x) and falloff 30 (15x the slider cap): a level ray at the
+# eye was fogged 1 - 2^(-0.1e-3 * 0.1 * 49021) = 29 % over the day fog far, and the sky dome, far past that, nearly all
+# of it: the flat grey-cyan veil, no clouds, hard white horizon of the round-5 sky A/B (shaders on vs off). The low mist
+# comes from the weather records (fog near/far), not this shader, so no per-weather file is laid (absent, the global
+# applies).
+HEIGHT_FOG = {"fogHeightFalloff": 0.2, "fogDensity": 0.005, "startDistance": 0.0, "fogHeight": 0.0}
+BANK_TOP_U = 3321.93 / 30.0  # the round-4 bank (falloff 30), still the band-copy spacing of weather_mist_band
 BAND_SPAN_M = 1.6  # a band's water levels lie within this, so one height keeps every region's bank top under its eye
 
 

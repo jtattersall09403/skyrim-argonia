@@ -396,21 +396,10 @@ CS_WEATHERS = "SKSE/Plugins/CommunityShaders/Weathers"
 
 
 def cs_fog_files(alloc, world) -> list[dict]:
-    """Community Shaders 1.9.1's per-weather files (WeatherManager::LoadPerWeatherSettingsFromDisk: the stem is
-    Util::GetFormFileKey, `0x<local FormID>~<plugin>`; the body `{"featureSettings": {<feature>: {...}}}`), one per
-    weather_mist_band row: the bank's own height, falloff and density (weather_seed.HEIGHT_FOG), so a mist weather
-    carries its bank whatever the global setting. Laid by the stack from data/dependencies.json's community-shaders
-    files (`python3 -m tools.argonia_world.regions.api cs-fog --write`)."""
-    import json
-    from tools.argonia_world.regions.weather_seed import HEIGHT_FOG
-    out = []
-    for b in world.query("SELECT b.weather_id, b.fog_height_u, b.why, w.edid, w.form_key FROM weather_mist_band b "
-                         "JOIN weather w ON w.id = b.weather_id ORDER BY b.weather_id"):
-        fid, plugin = weather_key(alloc, {"id": b["weather_id"], "edid": b["edid"], "form_key": b["form_key"]}).split(":")
-        body = {"featureSettings": {"ExponentialHeightFog": dict(HEIGHT_FOG, fogHeight=b["fog_height_u"])},
-                "_argonia": f"{b['edid']}: {b['why']}"}
-        out.append({"path": f"{CS_WEATHERS}/0x{int(fid, 16):X}~{plugin}.json", "text": json.dumps(body, indent=1) + "\n"})
-    return out
+    """Community Shaders 1.9.1 per-weather files (`0x<local FormID>~<plugin>.json` under Weathers): none. Round 5 (sky A/B,
+    lane 1.15-r5-cs-fog): the height fog is the feature's shipped defaults in the one global override, and a weather
+    with no file takes it; the low mist is the weather records' own fog near/far."""
+    return []
 
 
 def sync_cs_fog(write: bool) -> list[str]:

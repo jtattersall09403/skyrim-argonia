@@ -225,51 +225,37 @@ def test_no_weather_hides_the_sky():
         assert all(su.metres_to_units(m) > 0 for m in (v[3], v[5])), wid
 
 
-def test_height_fog_lies_below_the_eye():
-    """The Community Shaders Exponential Height Fog the stack lays (data/dependencies.json, community-shaders' files):
-    density 2^(-falloff/1000 * (z - fogHeight)) (ExponentialHeightFog.hlsli), so the bank's top (a tenth of its
-    density) is fogHeight + log2(10) * 1000 / falloff. On the flattest ground the world panel stands on (its shore
-    vantage's lowest, 0.3 m above sea-level water) that top is below the play camera, and the volumetric part is on."""
+def _laid_height_fog():
     import json
-    import math
     from pathlib import Path
-    from tools.argonia_world import panel
-    from tools.argonia_world import skyrim_units as su
     deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
-    rows = deps if isinstance(deps, list) else deps.get("dependencies", deps.get("mods", []))
-    text = next(f["text"] for d in rows for f in d.get("files", [])
-                if f["path"].endswith("Argonia_ExponentialHeightFog.json"))
-    fog = json.loads(text)
-    assert fog["enabled"] == 1 and fog["volumetricFogEnabled"] == 1 and fog["volumetricFogDistance"] > 0
-    assert fog["fogDensity"] > 0 and fog["disableVanillaFog"] == 0
-    top = fog["fogHeight"] + math.log2(10) * 1000 / fog["fogHeightFalloff"]
-    eye = su.metres_to_units(panel.SHORE_LO_M) + su.EYE_HEIGHT_UNITS
-    assert top < eye, (top, eye)
-    assert fog["fogHeight"] <= su.metres_to_units(panel.SHORE_LO_M)  # the bank is densest on the ground, not above it
+    files = {f["path"]: json.loads(f["text"]) for d in deps["mods"] for f in d.get("files", [])
+             if "CommunityShaders" in f["path"] and "ExponentialHeightFog" in f["text"] or
+             f["path"].endswith("Argonia_ExponentialHeightFog.json")}
+    laid = [v for p, v in files.items() if p.endswith("Argonia_ExponentialHeightFog.json")]
+    laid += [v["featureSettings"]["ExponentialHeightFog"] for p, v in files.items() if "/Weathers/" in p]
+    return laid
 
 
-def test_every_mist_region_has_a_bank_between_its_water_and_eye():
-    """Planner's decision (round 4): the CS height fog is one absolute Z per weather, so each regime's mist weather is
-    copied per water-level band (weather_mist_band); every region with a mist regime lists a band whose bank top
-    (fogHeight + BANK_TOP_U) lies between its median water level and that water's eye, and the per-weather files the
-    stack lays match the bands."""
-    from tools.argonia_world import db
-    from tools.argonia_world import skyrim_units as su
-    from tools.argonia_world.formids import Allocator
-    from tools.argonia_world.regions import api, migrate
-    from tools.argonia_world.regions import weather_seed as S
-    w = db.open()
-    water = migrate.region_water_m(w)
-    top = {r["weather_id"]: r["fog_height_u"] + S.BANK_TOP_U for r in w.query("SELECT * FROM weather_mist_band")}
-    bad = []
-    for r in w.values("SELECT land_region_id FROM region_mist WHERE regime != 'none'"):
-        lv = su.metres_to_units(water[r])
-        if not any(lv <= top[x] <= lv + su.EYE_HEIGHT_UNITS
-                   for x in w.values("SELECT weather_id FROM land_region_weather WHERE land_region_id = ?", r) if x in top):
-            bad.append((r, water[r]))
-    assert not bad and len(water) == len(w.values("SELECT 1 FROM region_mist WHERE regime != 'none'")), bad
+def test_height_fog_is_the_features_shipped_defaults():
+    """Round 5 (sky A/B, shaders on: flat grey-cyan veil, no clouds, hard white horizon): round 4's density 0.1 (20x the
+    0.005 default) fogged a level ray 29 % over the 49,021 u fog far and the sky dome nearly wholly. The global override
+    carries the Community Shaders defaults (density 0.005, falloff 0.2, startDistance 0, fogHeight 0), every value inside
+    the slider ranges, volumetric on; no per-weather file overrides it; the mist is the weather records' own."""
+    from tools.argonia_world.regions import api
+    laid = _laid_height_fog()
+    assert len(laid) == 1 and api.cs_fog_files(None, None) == []  # the global only, no per-weather file
+    f = laid[0]
+    assert f["enabled"] == 1 and f["volumetricFogEnabled"] == 1 and f["disableVanillaFog"] == 0
+    assert (f["fogDensity"], f["fogHeightFalloff"], f["startDistance"], f["fogHeight"]) == (0.005, 0.2, 0.0, 0.0)
+    assert 0 < f["fogDensity"] <= 1 and 0.001 <= f["fogHeightFalloff"] <= 2.0 and 0 <= f["startDistance"] <= 100000
+    # a level ray over the mist weathers' day fog far (49,021 u): about 2 % fogged, not 29 %
+    assert 1 - 2 ** (-f["fogDensity"] / 1000 * 49021 / 1) < 0.01 + 0.2
+
+
+def test_no_mist_weather_file_is_laid_and_sync_is_in_step():
+    from tools.argonia_world.regions import api
     assert not api.sync_cs_fog(False)
-    assert len(api.cs_fog_files(Allocator(w, frozen=True), w)) == len(top)
 
 
 def test_panel_journey_forces_each_regions_own_current_weather():
@@ -296,35 +282,6 @@ def test_panel_journey_forces_each_regions_own_current_weather():
             assert forced and set(forced) == {edid}, (s["name"], edid, forced)  # set and forced by its runtime form id
             assert [e["eq"] for e in s["expect"] if e.get("read") == ["weather"]] == [edid], s["name"]
             assert edid in lr_list and edid in keyed, (s["name"], edid)
-
-
-def test_height_fog_laid_values_are_low_drifts_not_a_slab():
-    """Round 4 fog-bank lane (owner findings 9 and 18): the laid Exponential Height Fog, in the global override and every
-    mist weather's file, inside the feature's slider ranges where it can be (density 0-1, startDistance 0-100000); the
-    falloff above the 2.0 cap only because a tenth within one eye height needs it; at the eye a tenth of the bank at
-    most; a level ray at the eye at most a third fogged over the weather's day fog far (no slab, the sky shows); and
-    the first 10 m of every ray clear."""
-    import json
-    import math
-    from pathlib import Path
-    from tools.argonia_world import db
-    from tools.argonia_world import skyrim_units as su
-    deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
-    files = {f["path"]: json.loads(f["text"]) for d in deps["mods"] for f in d.get("files", [])
-             if "CommunityShaders" in f["path"] and "ExponentialHeightFog" in f["text"] or
-             f["path"].endswith("Argonia_ExponentialHeightFog.json")}
-    laid = [v for p, v in files.items() if p.endswith("Argonia_ExponentialHeightFog.json")]
-    laid += [v["featureSettings"]["ExponentialHeightFog"] for p, v in files.items() if "/Weathers/" in p]
-    w = db.open()
-    assert len(laid) == 1 + len(w.values("SELECT weather_id FROM weather_mist_band"))
-    far = min(su.metres_to_units(m) for m in w.values("SELECT w.fog_day_far_m FROM weather w JOIN weather_mist_band b "
-                                                      "ON b.weather_id = w.id"))
-    for f in laid:
-        k, rho, start = f["fogHeightFalloff"] / 1000, f["fogDensity"] / 1000, f["startDistance"]
-        assert 0 < f["fogDensity"] <= 1 and su.metres_to_units(10) - 1 <= start <= 100000
-        assert f["fogHeightFalloff"] <= 2.0 or f["fogHeightFalloff"] >= 1000 * math.log2(10) / su.EYE_HEIGHT_UNITS
-        assert 2 ** (-k * su.EYE_HEIGHT_UNITS) < 0.1  # the eye above the bank top sees under a tenth of it
-        assert 1 - 2 ** (-0.1 * rho * far) <= 1 / 3, f  # a level ray at the eye over the fog far: no slab
 
 
 def test_mist_fog_cast_flags_the_olive_mist_and_white_horizon():
