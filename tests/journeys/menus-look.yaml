@@ -55,7 +55,7 @@ steps:
     do: [{call: [core, ViewIntent, '{"type":"system.pick","v":1,"body":{"action":"settings"}}']}, {wait: 3}]
     expect:
       - {log: {name: ArgoniaCore, contains: "menus: the System page's SETTINGS pressed"}, within: 5}
-      - {log: {name: ArgoniaCore, contains: "Journal Menu restyle (tabs hidden: QuestsTab"}, within: 5}
+      - {log: {name: ArgoniaCore, contains: "Journal Menu handed over (tabs hidden: QuestsTab"}, within: 5}
     reader: [the game's settings list (gameplay, display, audio and the rest) on a dark green-black ground with warm light words (the frame style), no parchment page, no Quests or stats tab]
   - name: settings-back      # Esc backs out to the page's main list: our System pane again
     do: [{key: "ESC 120 engine"}, {wait: 3}]
