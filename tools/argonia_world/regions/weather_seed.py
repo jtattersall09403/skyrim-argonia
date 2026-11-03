@@ -195,8 +195,8 @@ P["mist"] = {
     "skyUpper": ("97A0A5", "B1C0BF", "A3969F", "182223"),
     "skyLower": ("CDBCAE", "D1D9C3", "C8B5A0", "262927"),
     "horizon": ("E1C8B1", "DBDFC8", "DABAA0", "2B3229"),
-    "fogNear": ("8A887F", "92968F", "A69C8C", "283533"),
-    "fogFar": ("8F887F", "BBC2BB", "958976", "27302C"),
+    "fogNear": ("818C8B", "8A9996", "879290", "283533"),
+    "fogFar": ("7F888A", "BBC2BB", "808987", "27302C"),
     "ambient": ("8A8777", "95A295", "837C72", "1C2821"),
     "unknown": ("897972", "90968F", "81726A", "1E1E22"),
     "sunlight": ("ECCA9F", "E9E6CC", "E6BA93", "4C534B"),
@@ -217,8 +217,8 @@ P["sea-fog"] = {
     "skyUpper": ("89969D", "A3B2B7", "8B8A99", "151A21"),
     "skyLower": ("B3AEA6", "C3C5C4", "AE9FA1", "202325"),
     "horizon": ("C5BAB0", "CDD0CD", "C1AEA1", "222B29"),
-    "fogNear": ("838C85", "8D9893", "A29C97", "1E2D2D"),
-    "fogFar": ("8F8881", "B6C0C2", "8D8388", "1F2A28"),
+    "fogNear": ("838C85", "8D9893", "949C9C", "1E2D2D"),
+    "fogFar": ("858C8F", "AAB5BB", "848A92", "1F2A28"),
     "ambient": ("747D73", "88978E", "72736B", "16221E"),
     "unknown": ("6F706E", "838A8A", "6D6666", "101924"),
     "sunlight": ("CCBEA3", "D9DCC8", "C8AE97", "4B5350"),
@@ -239,8 +239,8 @@ P["montane-haze"] = {
     "skyUpper": ("6782A4", "6994C1", "6F789C", "0E1A21"),
     "skyLower": ("A9A49A", "A6BABA", "A89486", "192023"),
     "horizon": ("C1B69F", "BDC4BE", "BDA28D", "212727"),
-    "fogNear": ("868783", "8B9890", "9C968A", "182724"),
-    "fogFar": ("8A8A7F", "B3BDB7", "91867D", "213027"),
+    "fogNear": ("868783", "8B9890", "8E9692", "182724"),
+    "fogFar": ("818989", "A3AFAB", "838A8D", "213027"),
     "ambient": ("687161", "78897B", "666559", "15221A"),
     "unknown": ("67615C", "717A74", "615854", "141A19"),
     "sunlight": ("D8BE93", "EBEACE", "D4AA83", "415743"),
@@ -373,11 +373,19 @@ REGIMES = {
 MOUNTAIN_CLASSES = ("border-mountains", "upland-hills")
 
 
-# The Community Shaders Exponential Height Fog (owner play test 3 finding 9: mist banks below the eye). Its density is
-# fogDensity/1000 * 2^(-falloff/1000 * (z - fogHeight)) (ExponentialHeightFog.hlsli), so the bank's top, a tenth of its
-# density, is BANK_TOP_U above fogHeight. Falloff 30 is beyond the CS menu's 2.0 slider (a falloff of 2 tops out
-# 1,661 u, 24 m, up: a slab, never a bank), which is why each mist weather's own file carries all three values.
-HEIGHT_FOG = {"fogHeightFalloff": 30.0, "fogDensity": 0.5}
+# The Community Shaders Exponential Height Fog (owner play test 3 findings 9 and 18: low drifts below the eye, the sky
+# never hidden). Its density is fogDensity/1000 * 2^(-falloff/1000 * max(z - fogHeight, 0)) per unit and a ray's
+# transmittance 2^(-integral) (ExponentialHeightFog.hlsli, CS 1.9.1), so the bank's top, a tenth of its density, is
+# BANK_TOP_U above fogHeight. The feature's own numbers (ExponentialHeightFog.h/.cpp): defaults density 0.005, falloff
+# 0.2, startDistance 0; sliders density 0-1, falloff 0.001-2.0, startDistance 0-100000, fogHeight +-22000.
+# - falloff 30, beyond the 2.0 slider: a tenth within one eye height (121 u) needs falloff >= log2(10)*1000/121 = 27.5,
+#   and at 2.0 the tenth lies 1,661 u (24 m) up: a slab, never a bank. The slider writes only when dragged, and each
+#   mist weather's own file carries the value, so an untouched menu keeps it.
+# - density 0.1 (in the slider's range; was 0.5): a level ray at the eye meets at most a tenth of it, so over the mist
+#   weathers' day fog far (49,021 u) it is at most 1 - 2^(-0.1e-3 * 0.1 * 49021) = 29 % opaque (0.5 gave 82 %: the
+#   uniform slab and white horizon of batch two); inside the bank it halves the light every 10,000 u (143 m): drifts.
+# - startDistance 700 u (10 m): the first ten metres of every ray carry no height fog, so the ground at the feet is clear.
+HEIGHT_FOG = {"fogHeightFalloff": 30.0, "fogDensity": 0.1, "startDistance": 700.0}
 BANK_TOP_U = 3321.93 / HEIGHT_FOG["fogHeightFalloff"]  # log2(10) * 1000 / falloff
 BAND_SPAN_M = 1.6  # a band's water levels lie within this, so one height keeps every region's bank top under its eye
 

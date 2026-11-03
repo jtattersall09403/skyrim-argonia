@@ -296,3 +296,44 @@ def test_panel_journey_forces_each_regions_own_current_weather():
             assert forced and set(forced) == {edid}, (s["name"], edid, forced)  # set and forced by its runtime form id
             assert [e["eq"] for e in s["expect"] if e.get("read") == ["weather"]] == [edid], s["name"]
             assert edid in lr_list and edid in keyed, (s["name"], edid)
+
+
+def test_height_fog_laid_values_are_low_drifts_not_a_slab():
+    """Round 4 fog-bank lane (owner findings 9 and 18): the laid Exponential Height Fog, in the global override and every
+    mist weather's file, inside the feature's slider ranges where it can be (density 0-1, startDistance 0-100000); the
+    falloff above the 2.0 cap only because a tenth within one eye height needs it; at the eye a tenth of the bank at
+    most; a level ray at the eye at most a third fogged over the weather's day fog far (no slab, the sky shows); and
+    the first 10 m of every ray clear."""
+    import json
+    import math
+    from pathlib import Path
+    from tools.argonia_world import db
+    from tools.argonia_world import skyrim_units as su
+    deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
+    files = {f["path"]: json.loads(f["text"]) for d in deps["mods"] for f in d.get("files", [])
+             if "CommunityShaders" in f["path"] and "ExponentialHeightFog" in f["text"] or
+             f["path"].endswith("Argonia_ExponentialHeightFog.json")}
+    laid = [v for p, v in files.items() if p.endswith("Argonia_ExponentialHeightFog.json")]
+    laid += [v["featureSettings"]["ExponentialHeightFog"] for p, v in files.items() if "/Weathers/" in p]
+    w = db.open()
+    assert len(laid) == 1 + len(w.values("SELECT weather_id FROM weather_mist_band"))
+    far = min(su.metres_to_units(m) for m in w.values("SELECT w.fog_day_far_m FROM weather w JOIN weather_mist_band b "
+                                                      "ON b.weather_id = w.id"))
+    for f in laid:
+        k, rho, start = f["fogHeightFalloff"] / 1000, f["fogDensity"] / 1000, f["startDistance"]
+        assert 0 < f["fogDensity"] <= 1 and su.metres_to_units(10) - 1 <= start <= 100000
+        assert f["fogHeightFalloff"] <= 2.0 or f["fogHeightFalloff"] >= 1000 * math.log2(10) / su.EYE_HEIGHT_UNITS
+        assert 2 ** (-k * su.EYE_HEIGHT_UNITS) < 0.1  # the eye above the bank top sees under a tenth of it
+        assert 1 - 2 ** (-0.1 * rho * far) <= 1 / 3, f  # a level ray at the eye over the fog far: no slab
+
+
+def test_mist_fog_cast_flags_the_olive_mist_and_white_horizon():
+    """The batch-two mist colours (fogNear@day 92968F, fogFar@sunset 958976) fail the hue bound and the old montane
+    noon (horizon BDC4BE, fogFar B3BDB7, 4 % apart) the horizon gap; the laid weathers pass (weather-slots)."""
+    from tools.argonia_world import checks as C
+    from tools.argonia_world import db
+    old = {("fogNear", "day"): bytes.fromhex("92968F"), ("fogFar", "sunset"): bytes.fromhex("958976"),
+           ("horizon", "day"): bytes.fromhex("BDC4BE"), ("fogFar", "day"): bytes.fromhex("B3BDB7")}
+    errs = C.mist_fog_cast(old)
+    assert len(errs) == 3 and "white horizon" in errs[-1], errs
+    assert not C.weather_slots(db.open())

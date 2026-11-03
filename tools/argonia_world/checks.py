@@ -276,6 +276,31 @@ def sky_blocked(cls: str, sky: dict, upper: dict) -> list[str]:
     return out
 
 
+MIST_HUE = (120, 230)  # a mist weather's fog: cool grey-green to grey-blue hue (degrees) ...
+MIST_GREY_SAT = 0.04  # ... unless near-neutral grey (HSV saturation at most this); olive and yellow fall outside both
+HORIZON_FOG_GAP = 0.10  # noon horizon luma at least this fraction above or below fog far: no hard white line
+
+
+def mist_fog_cast(cols: dict) -> list[str]:
+    """For a mist-bearing weather's {(slot, tod): rgb} (owner play test 3 finding 18, batch two's olive mist): every
+    fogNear and fogFar cool grey-green or grey-blue, and at noon the horizon's luma not within HORIZON_FOG_GAP of fog
+    far's (a fog far as bright as the horizon reads as a hard white line where the sky should be)."""
+    import colorsys
+    from tools.argonia_world import skyrim_units as su
+    out = []
+    for (s, t), c in sorted(cols.items()):
+        if s not in ("fogNear", "fogFar"):
+            continue
+        h, sat, _ = colorsys.rgb_to_hsv(*(x / 255 for x in c))
+        if sat > MIST_GREY_SAT and not MIST_HUE[0] <= h * 360 <= MIST_HUE[1]:
+            out.append(f"{s}@{t} hue {h * 360:.0f} saturation {sat:.2f}: olive or yellow, not grey-green or grey-blue")
+    if ("horizon", "day") in cols and ("fogFar", "day") in cols:
+        hz, ff = su.luma(cols["horizon", "day"]), su.luma(cols["fogFar", "day"])
+        if abs(hz - ff) < HORIZON_FOG_GAP * hz:
+            out.append(f"horizon@day luma {hz:.0f} within {HORIZON_FOG_GAP:.0%} of fogFar@day {ff:.0f} (white horizon line)")
+    return out
+
+
 @check("weather-slots", "weather", "weather_colour", "weather_sky")
 def weather_slots(w) -> list[str]:
     """Each of our weathers (a template weather) has every slot at every time of day, a sky row, fog distances inside
@@ -301,6 +326,8 @@ def weather_slots(w) -> list[str]:
             out += [f"weather {wid}: {e}" for e in sky_blocked(sky[0]["classification"], sky[0],
                                                               {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
         out += [f"weather {wid}: {e}" for e in derived_colours(cols)]
+        if wid in fogs:
+            out += [f"weather {wid}: {e}" for e in mist_fog_cast(cols)]
         from tools.argonia_world import skyrim_units as su
         out += [f"weather {wid}: {s}@{t} luma {su.luma(cols[s, t]):.0f} outside vanilla's {lo}-{hi}"
                 for s, band in su.LUMA_RANGES.items() for t, (lo, hi) in band.items()

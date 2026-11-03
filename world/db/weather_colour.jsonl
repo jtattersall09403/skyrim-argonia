@@ -108,12 +108,12 @@
 {"weather_id":"mist","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -188,12 +188,12 @@
 {"weather_id":"mist-20m","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-20m","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-20m","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-20m","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-20m","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-20m","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-20m","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-20m","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-20m","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-20m","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-20m","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-20m","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -268,12 +268,12 @@
 {"weather_id":"mist-25m","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-25m","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-25m","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-25m","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-25m","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-25m","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-25m","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-25m","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-25m","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-25m","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-25m","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-25m","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -348,12 +348,12 @@
 {"weather_id":"mist-2m","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-2m","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-2m","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-2m","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-2m","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-2m","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-2m","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-2m","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-2m","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-2m","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-2m","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-2m","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -428,12 +428,12 @@
 {"weather_id":"mist-49m","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-49m","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-49m","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-49m","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-49m","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-49m","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-49m","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-49m","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-49m","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-49m","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-49m","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-49m","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -508,12 +508,12 @@
 {"weather_id":"mist-6m","slot":"effectLighting","tod":"sunset","rgb":"D8C4B0","why":"light on spell and particle effects; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"fogFar","tod":"day","rgb":"BBC2BB","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"fogFar","tod":"night","rgb":"27302C","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-6m","slot":"fogFar","tod":"sunrise","rgb":"8F887F","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-6m","slot":"fogFar","tod":"sunset","rgb":"958976","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-6m","slot":"fogNear","tod":"day","rgb":"92968F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-6m","slot":"fogFar","tod":"sunrise","rgb":"7F888A","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-6m","slot":"fogFar","tod":"sunset","rgb":"808987","why":"fog colour at the far distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-6m","slot":"fogNear","tod":"day","rgb":"8A9996","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"fogNear","tod":"night","rgb":"283533","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-6m","slot":"fogNear","tod":"sunrise","rgb":"8A887F","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
-{"weather_id":"mist-6m","slot":"fogNear","tod":"sunset","rgb":"A69C8C","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-6m","slot":"fogNear","tod":"sunrise","rgb":"818C8B","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
+{"weather_id":"mist-6m","slot":"fogNear","tod":"sunset","rgb":"879290","why":"fog colour at the near distance; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"horizon","tod":"day","rgb":"DBDFC8","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"horizon","tod":"night","rgb":"2B3229","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
 {"weather_id":"mist-6m","slot":"horizon","tod":"sunrise","rgb":"E1C8B1","why":"the horizon band; radiation mist: milky green-white near, sun a diffuse pale disc, dawn pink-gold through it"}
@@ -666,14 +666,14 @@
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"night","rgb":"51624F","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunrise","rgb":"CEC4AA","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"effectLighting","tod":"sunset","rgb":"CAB49E","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"day","rgb":"B3BDB7","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"day","rgb":"A3AFAB","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogFar","tod":"night","rgb":"213027","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"sunrise","rgb":"8A8A7F","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogFar","tod":"sunset","rgb":"91867D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"sunrise","rgb":"818989","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogFar","tod":"sunset","rgb":"838A8D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogNear","tod":"day","rgb":"8B9890","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogNear","tod":"night","rgb":"182724","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"fogNear","tod":"sunrise","rgb":"868783","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze","slot":"fogNear","tod":"sunset","rgb":"9C968A","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze","slot":"fogNear","tod":"sunset","rgb":"8E9692","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"horizon","tod":"day","rgb":"BDC4BE","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"horizon","tod":"night","rgb":"212727","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze","slot":"horizon","tod":"sunrise","rgb":"C1B69F","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -746,14 +746,14 @@
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"night","rgb":"51624F","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"sunrise","rgb":"CEC4AA","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"effectLighting","tod":"sunset","rgb":"CAB49E","why":"light on spell and particle effects; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"day","rgb":"B3BDB7","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"day","rgb":"A3AFAB","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogFar","tod":"night","rgb":"213027","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunrise","rgb":"8A8A7F","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunset","rgb":"91867D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunrise","rgb":"818989","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze-68m","slot":"fogFar","tod":"sunset","rgb":"838A8D","why":"fog colour at the far distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogNear","tod":"day","rgb":"8B9890","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogNear","tod":"night","rgb":"182724","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"fogNear","tod":"sunrise","rgb":"868783","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
-{"weather_id":"montane-haze-68m","slot":"fogNear","tod":"sunset","rgb":"9C968A","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
+{"weather_id":"montane-haze-68m","slot":"fogNear","tod":"sunset","rgb":"8E9692","why":"fog colour at the near distance; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"horizon","tod":"day","rgb":"BDC4BE","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"horizon","tod":"night","rgb":"212727","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
 {"weather_id":"montane-haze-68m","slot":"horizon","tod":"sunrise","rgb":"C1B69F","why":"the horizon band; montane haze: cool mossy grey belt, clearer blue above, mist-grey crag light"}
@@ -826,14 +826,14 @@
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"night","rgb":"48574D","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"sunrise","rgb":"BFC1B7","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"effectLighting","tod":"sunset","rgb":"BEB4AA","why":"light on spell and particle effects; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogFar","tod":"day","rgb":"B6C0C2","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogFar","tod":"day","rgb":"AAB5BB","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogFar","tod":"night","rgb":"1F2A28","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogFar","tod":"sunrise","rgb":"8F8881","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogFar","tod":"sunset","rgb":"8D8388","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogFar","tod":"sunrise","rgb":"858C8F","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogFar","tod":"sunset","rgb":"848A92","why":"fog colour at the far distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogNear","tod":"day","rgb":"8D9893","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogNear","tod":"night","rgb":"1E2D2D","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"fogNear","tod":"sunrise","rgb":"838C85","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
-{"weather_id":"sea-fog","slot":"fogNear","tod":"sunset","rgb":"A29C97","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
+{"weather_id":"sea-fog","slot":"fogNear","tod":"sunset","rgb":"949C9C","why":"fog colour at the near distance; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"day","rgb":"CDD0CD","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"night","rgb":"222B29","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
 {"weather_id":"sea-fog","slot":"horizon","tod":"sunrise","rgb":"C5BAB0","why":"the horizon band; sea fog: cool salt grey-white with a sea-green cast, sun barely through"}
