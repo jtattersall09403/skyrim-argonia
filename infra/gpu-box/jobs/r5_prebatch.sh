@@ -7,7 +7,13 @@ set -u
 cd /home/ubuntu/skyrim-argonia
 PY=$HOME/.argonia/venv/bin/python
 step() { local n=$1; shift; local s=$SECONDS; echo "== $n $(date -u +%H:%M:%S)"; if "$@"; then echo "PREBATCH $n OK in $((SECONDS-s)) s"; else echo "PREBATCH $n FAIL in $((SECONDS-s)) s"; return 1; fi; }
-git pull -q --rebase origin main || exit 3
+# a round build leaves its output unstaged (the regenerated plugin YAML, the appended form ids): commit it by path
+# first, so the pull runs on a clean tree (10:17: the pull refused and the job died)
+git add plugin world/db/formid.jsonl skse/core/generated/argonia/core/forms.h 2>/dev/null
+git diff --cached --quiet || git commit -q -m "round 5 build output: the generated plugin YAML and the appended form ids
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+git pull -q --rebase origin main || { echo "PREBATCH: pull refused (an unstaged file not from the build: git status)"; git status --short | head; exit 3; }
 step plugin make plugin || exit 3
 step water $PY -m tools.argonia_world.water check || exit 3
 step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
