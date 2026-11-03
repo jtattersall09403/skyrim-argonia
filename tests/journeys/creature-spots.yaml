@@ -13,16 +13,16 @@ camera: first
 steps:
 - name: water-day
   # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water
-  # subject: -150016 103040 27853
+  # subject: -150144 103424 27853
   do:
   - hud: off
   - console: tgm
   - console: {line: cow ARG_Province -37 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -150576
-  - console: player.setpos y 103040
-  - console: player.setpos z 14152
+  - console: player.setpos x -150704
+  - console: player.setpos y 103424
+  - console: player.setpos z 14193
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -30,30 +30,30 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_day}
 - name: water-night
   # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore
-  # subject: -143488 153856 14432
+  # subject: -143488 153984 14432
   do:
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - console: player.setpos x -144577
-  - console: player.setpos y 154945
-  - console: player.setpos z 15027
-  - console: player.setangle z 135
+  - console: player.setpos x -144048
+  - console: player.setpos y 153984
+  - console: player.setpos z 14486
+  - console: player.setangle z 90
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: water_night}
 - name: marsh-day
   # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -117760 135680 2554
+  # subject: -117632 135680 2549
   do:
   - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -117760
-  - console: player.setpos y 135540
-  - console: player.setpos z 2486
-  - console: player.setangle z 0
+  - console: player.setpos x -117772
+  - console: player.setpos y 135680
+  - console: player.setpos z 2513
+  - console: player.setangle z 90
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}

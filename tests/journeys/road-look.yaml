@@ -14,8 +14,8 @@ steps:
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: blackwood-20
     # subject: -167759 31035 4679
-    do: [{console: "player.setpos x -169550"}, {console: "player.setpos y 33796"}, {console: "player.setpos z 4796"},
-         {console: "player.setangle z 147"}, {console: "player.setangle x 4"}, {wait: 4}]
+    do: [{console: "player.setpos x -166320"}, {console: "player.setpos y 30728"}, {console: "player.setpos z 4863"},
+         {console: "player.setangle z 282"}, {console: "player.setangle x 12"}, {wait: 4}]
   - name: blackwood-flat-46
     # subject: -197391 40981 4989
     do: [{console: "player.setpos x -195643"}, {console: "player.setpos y 40898"}, {console: "player.setpos z 4968"},

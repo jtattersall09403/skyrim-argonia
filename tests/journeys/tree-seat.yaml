@@ -16,7 +16,7 @@ scene: rock-booth
 camera: first
 steps:
 - name: tree-1-argoniatreepalmoke04
-  # 155FF4:King of the Murkmire.esp ref CE881D, seat 968 u x scale 1.20; aim at the trunk base
+  # 155FF4:King of the Murkmire.esp ref CE8824, seat 968 u x scale 1.20; aim at the trunk base
   # subject: -120378 200475 24283
   do:
   - console:
@@ -28,18 +28,18 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -120498
+      line: player.setpos x -118970
   - console:
-      line: player.setpos y 200355
+      line: player.setpos y 199067
   - console:
-      line: player.setpos z 24431
+      line: player.setpos z 23827
   - console:
-      line: player.setangle z 45
+      line: player.setangle z 315
   - console:
-      line: player.setangle x 58
+      line: player.setangle x -10
   - wait: 6
 - name: tree-2-argoniatreepalmoke02
-  # 155FF2:King of the Murkmire.esp ref 9D4E2A, seat 780 u x scale 1.16; aim at the trunk base
+  # 155FF2:King of the Murkmire.esp ref 9D4E2E, seat 780 u x scale 1.16; aim at the trunk base
   # subject: -126070 -4627 1535
   do:
   - console:
@@ -62,7 +62,7 @@ steps:
       line: player.setangle x 47
   - wait: 6
 - name: tree-3-argoniatreepalmoke03
-  # 155FF3:King of the Murkmire.esp ref CC5023, seat 748 u x scale 1.20; aim at the trunk base
+  # 155FF3:King of the Murkmire.esp ref CC5027, seat 748 u x scale 1.20; aim at the trunk base
   # subject: -251191 192066 18195
   do:
   - console:
@@ -76,15 +76,38 @@ steps:
   - console:
       line: player.setpos x -251191
   - console:
-      line: player.setpos y 191616
+      line: player.setpos y 191896
   - console:
-      line: player.setpos z 18280
+      line: player.setpos z 18262
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 25
+      line: player.setangle x 48
   - wait: 6
-- name: tree-4-histtrunk01
+- name: tree-4-argoniatreeerut05
+  # 155FEA:King of the Murkmire.esp ref CC161F, seat 723 u x scale 1.20; aim at the trunk base
+  # subject: 146717 184436 8961
+  do:
+  - console:
+      line: cow ARG_Province 35 45
+      settle: 60
+  - wait: 8
+  - console:
+      line: fw ARG_Weather_clear_dry
+  - console:
+      line: set gamehour to 12
+  - console:
+      line: player.setpos x 147167
+  - console:
+      line: player.setpos y 184436
+  - console:
+      line: player.setpos z 9056
+  - console:
+      line: player.setangle z 270
+  - console:
+      line: player.setangle x 26
+  - wait: 6
+- name: tree-5-histtrunk01
   # 035B36:King of the Murkmire.esp ref 8FA600, seat 651 u x scale 1.30; aim at the trunk base
   # subject: -60404 -62505 136
   do:
@@ -107,8 +130,8 @@ steps:
   - console:
       line: player.setangle x 28
   - wait: 6
-- name: tree-5-histtrunk01moss
-  # 6EDDDD:King of the Murkmire.esp ref BC2C52, seat 651 u x scale 1.26; aim at the trunk base
+- name: tree-6-histtrunk01moss
+  # 6EDDDD:King of the Murkmire.esp ref BC2C54, seat 651 u x scale 1.26; aim at the trunk base
   # subject: 57534 119293 -16
   do:
   - console:
@@ -130,34 +153,11 @@ steps:
   - console:
       line: player.setangle x 21
   - wait: 6
-- name: tree-6-argoniatreepalmoke07
-  # 155FF7:King of the Murkmire.esp ref D0C417, seat 564 u x scale 1.17; aim at the trunk base
-  # subject: 18509 206533 8
-  do:
-  - console:
-      line: cow ARG_Province 4 50
-      settle: 60
-  - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
-  - console:
-      line: set gamehour to 12
-  - console:
-      line: player.setpos x 17779
-  - console:
-      line: player.setpos y 206533
-  - console:
-      line: player.setpos z 64
-  - console:
-      line: player.setangle z 90
-  - console:
-      line: player.setangle x 14
-  - wait: 6
 - name: class-coastal-lagoon
-  # the class's fullest cell (59 refs), level view north
+  # the class's fullest cell (67 refs), level view north
   do:
   - console:
-      line: cow ARG_Province 29 9
+      line: cow ARG_Province 43 35
       settle: 60
   - wait: 8
   - console:
@@ -165,21 +165,21 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 119867
+      line: player.setpos x 178040
   - console:
-      line: player.setpos y 41014
+      line: player.setpos y 143980
   - console:
-      line: player.setpos z 52
+      line: player.setpos z 299
   - console:
       line: player.setangle z 0
   - console:
       line: player.setangle x 0
   - wait: 6
 - name: class-tidal-delta
-  # the class's fullest cell (53 refs), level view north
+  # the class's fullest cell (51 refs), level view north
   do:
   - console:
-      line: cow ARG_Province -6 -54
+      line: cow ARG_Province 12 34
       settle: 60
   - wait: 8
   - console:
@@ -187,18 +187,18 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -23539
+      line: player.setpos x 51646
   - console:
-      line: player.setpos y -220096
+      line: player.setpos y 142973
   - console:
-      line: player.setpos z 40
+      line: player.setpos z 64
   - console:
       line: player.setangle z 0
   - console:
       line: player.setangle x 0
   - wait: 6
 - name: class-flooded-forest
-  # the class's fullest cell (108 refs), level view north
+  # the class's fullest cell (106 refs), level view north
   do:
   - console:
       line: cow ARG_Province 18 10
@@ -220,10 +220,10 @@ steps:
       line: player.setangle x 0
   - wait: 6
 - name: class-interior-swamp
-  # the class's fullest cell (106 refs), level view north
+  # the class's fullest cell (104 refs), level view north
   do:
   - console:
-      line: cow ARG_Province -46 -30
+      line: cow ARG_Province -37 -27
       settle: 60
   - wait: 8
   - console:
@@ -231,21 +231,21 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -184908
+      line: player.setpos x -147741
   - console:
-      line: player.setpos y -118630
+      line: player.setpos y -109250
   - console:
-      line: player.setpos z 528
+      line: player.setpos z 88
   - console:
       line: player.setangle z 0
   - console:
       line: player.setangle x 0
   - wait: 6
 - name: class-rootland
-  # the class's fullest cell (91 refs), level view north
+  # the class's fullest cell (93 refs), level view north
   do:
   - console:
-      line: cow ARG_Province -25 28
+      line: cow ARG_Province -30 -25
       settle: 60
   - wait: 8
   - console:
@@ -253,21 +253,21 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -102160
+      line: player.setpos x -122671
   - console:
-      line: player.setpos y 116123
+      line: player.setpos y -99667
   - console:
-      line: player.setpos z 344
+      line: player.setpos z 184
   - console:
       line: player.setangle z 0
   - console:
       line: player.setangle x 0
   - wait: 6
 - name: class-northern-transition
-  # the class's fullest cell (96 refs), level view north
+  # the class's fullest cell (102 refs), level view north
   do:
   - console:
-      line: cow ARG_Province 35 57
+      line: cow ARG_Province -18 59
       settle: 60
   - wait: 8
   - console:
@@ -275,11 +275,11 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 146618
+      line: player.setpos x -69719
   - console:
-      line: player.setpos y 237070
+      line: player.setpos y 245131
   - console:
-      line: player.setpos z 12786
+      line: player.setpos z 430
   - console:
       line: player.setangle z 0
   - console:
