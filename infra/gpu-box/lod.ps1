@@ -137,7 +137,7 @@ function Watch-Popups($proc, $main) {
     if ([W]::Cls($t) -in 'TApplication', 'TfrmMain') { continue }
     $text = (@([W]::Text($t)) + @([W]::Kids($t) | % { [W]::Text($_) })) -join ' / '
     if (-not ($text -replace '[\s/]', '')) { continue }
-    if ($text -match 'Exit TexGen|Save & Exit') { continue }  # the tool's own finished dialog: the step's done-check and Click end it (round 3: texgen finished, then the watcher threw)
+    if ($text -match 'Exit TexGen|Save 'Exit TexGen|Save & Exit' Exit|Save and Exit') { continue }  # the tool's own finished dialog: the step's done-check and Click end it (round 3: texgen finished, then the watcher threw)
     $k = $Known | ? { $text -match $_.match } | Select -First 1
     if (-not $k) { Dump $proc 'unknown pop-up'; throw "${Step}: unknown pop-up: $text" }
     $b = [W]::Kids($t) | ? { ([W]::Text($_) -replace '&', '') -eq $k.answer } | Select -First 1
@@ -300,7 +300,7 @@ switch ($Step) {
     Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
     $txt = Tool-Text $p; Set-Content "$Work\logs\dyndolod-messages.txt" $txt
     if ($txt -notmatch 'generated successfully') { $p | Stop-Process -Force; throw 'dyndolod: did not complete' }
-    Click $p 'Save & Exit'; if (-not $p.WaitForExit(300000)) { $p | Stop-Process -Force }
+    Click $p 'Save and Exit'; if (-not $p.WaitForExit(300000)) { $p | Stop-Process -Force }
   }
   'collect' {
     # Lowest first: DynDOLOD Resources (its instruction: keep it installed with the output), TexGen, terrain, DynDOLOD.
