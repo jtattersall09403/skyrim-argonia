@@ -69,3 +69,28 @@ def test_the_bed_seat_fails_on_purpose(world, ground):
     """The old seat (the ground under the dock) puts Claywater's landing stage under its water."""
     r = world.get("build_ref", "ref.claywater-station.land-dock2")
     assert ground.z(r.x_m, r.y_m) < place_build.water_level(world, r.x_m, r.y_m)
+
+
+def test_no_person_stands_under_the_ground_or_the_cell_water(world, ground):
+    """Round 5 (lane 1.3-r5-livia): a person's placement is on the ground and over the cell's water, never under either."""
+    people = {p.npc_id for p in world.rows("build_person")}
+    bad = []
+    for r in _exterior(world):
+        if r.npc_id not in people or place_build._is_person_spot(world, r) is False:
+            continue
+        ctx = type("C", (), {"ground": ground, "world": world})
+        z = place_build._pos(ctx, "exterior", r)[2] / place_build.su.UNITS_PER_METRE  # where the build puts them
+        g = ground.z(r.x_m, r.y_m)
+        lv = place_build.water_level(world, r.x_m, r.y_m)
+        if z < g - 0.5 or (lv is not None and z < lv):
+            bad.append((r.id, round(z, 2), round(g, 2), lv))
+    assert not bad, f"people under the ground or the water: {bad}"
+
+
+def test_a_kept_animal_is_not_a_predator():
+    """Round 5: the pen's guar carried the predator AI (VeryAggressive, aggro 2000) and mauled Livia at the well."""
+    from tools.argonia_world import place_build as pb
+    w = db.open()
+    kept = {n.id for n in w.rows("npc") if n.kind == "creature" and n.hostility == "neutral"}
+    assert kept and pb.KEPT_AI["aggression"] == "Unaggressive" and "aggro" not in pb.KEPT_AI
+    pb.check_creatures([{"type": "NPC_", "edid": "ARG_Npc_G", "templateFlags": pb.CREATURE_TEMPLATE_FLAGS, **pb.KEPT_AI}])

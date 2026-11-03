@@ -48,6 +48,10 @@ CREATURE_TEMPLATE_FLAGS = ["Traits", "Stats", "Factions", "SpellList", "Inventor
 # Attack 1500. These are vanilla's own numbers in game units, not metres, so no conversion is involved.
 CREATURE_AGGRO = {"behavior": True, "warn": 0, "warnOrAttack": 2000, "attack": 1500}
 CREATURE_AI = {"aggression": "VeryAggressive", "confidence": "Foolhardy", "energy": 50, "aggro": CREATURE_AGGRO}
+# A kept animal (hostility neutral: the village's guar) is not a predator: Skyrim's cow and goat are Unaggressive and
+# Cowardly with no aggro radius (round 5: the pen's guar carried the predator AI, attacked the player and ragdolled
+# Livia at the well, 3 m away, so the chart-zoom talk found nobody).
+KEPT_AI = {"aggression": "Unaggressive", "confidence": "Cowardly", "energy": 50}
 # Our combat styles for creatures (CSTY; creature_hunt.combat_style). melee-ambush: a lone predator that closes and
 # bites, then backs off (game-10 §4: the crocodile's NPC_ had none; vanilla predators carry one, csWolf and csBear).
 # Our own numbers, in vanilla's ranges: offensive over defensive, staggered targets pressed, no bash, no circling.
@@ -170,12 +174,22 @@ def seated_z(world, ground_z: float, piece: str | None, x_m: float, y_m: float) 
     return ground_z if lv is None else max(ground_z, lv) + h
 
 
+def _is_person_spot(world, r) -> bool:
+    """A person's actor, or the marker they own: not a creature, which may wade (the crocodile hunts in the shallows)."""
+    nid = getattr(r, "npc_id", None) or getattr(r, "owner_npc_id", None)
+    return bool(nid) and world.get("npc", nid).kind != "creature"
+
+
 def _pos(ctx, cell_kind: str, r) -> list[float]:
     from tools.argonia_world.intermediate import _pos_exterior, _pos_interior
     if cell_kind == "exterior":
         z = r.z_m if r.z_m is not None else ctx.ground.z(r.x_m, r.y_m)
         if r.z_m is None and getattr(r, "piece", None) and water_seat(r.piece) is not None:
             z = seated_z(ctx.world, z, r.piece, r.x_m, r.y_m)
+        if r.z_m is None and _is_person_spot(ctx.world, r):
+            lv = water_level(ctx.world, r.x_m, r.y_m)
+            if lv is not None and z < lv:  # a person over the cell's water stands on the deck there, not on the bed under it
+                z = lv + DOCK_DECK_M
         return _pos_exterior([r.x_m, r.y_m, z])
     return _pos_interior([r.x_m, r.y_m, r.z_m or 0.0])
 
@@ -343,7 +357,7 @@ def _people(ctx, world, refs, cells, crime: str | None = None) -> None:
                "weight": su.NPC_DEFAULT_WEIGHT, "perks": [], "items": [], "packages": pkgs,
                "flags": [] if creature else ["Unique", "AutoCalcStats"]}
         if creature:
-            rec.update(CREATURE_AI)
+            rec.update(CREATURE_AI if npc.hostility != "neutral" else KEPT_AI)
             if hunt:
                 rec["combatStyle"] = _combat_style(ctx, hunt.combat_style)
                 if hunt.way == "walk":
@@ -492,6 +506,7 @@ def check_creatures(records: list[dict]) -> None:
     """L1: a creature NPC_ (templated beyond Traits) carries its own attack radius and does not template AIData, whose
     template may hold radius 0 (the crocodile detected the player and never fought)."""
     bad = [r["edid"] for r in records if r.get("type") == "NPC_" and r.get("templateFlags") != PEOPLE_TEMPLATE_FLAGS
+           and r.get("aggression") != "Unaggressive"  # a kept animal needs no radius
            and (r.get("aggro", {}).get("attack", 0) <= 0 or "AIData" in r["templateFlags"])]
     if bad:
         raise ValueError("creatures with no attack radius of their own: " + ", ".join(bad))
