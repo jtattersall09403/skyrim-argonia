@@ -30,6 +30,8 @@ from tools.argonia_world.vegetation import build, forms, place
 from tools.argonia_world.vegetation import lists as lists_mod
 
 GROUND_TOL_M = 0.5
+POSTURE_TOL_M = 0.15  # the check reads the LAND's quantised, patched heights where the placer read the float game ground:
+# one ref of 734,650 sat 0.05 m past its posture band on that difference and failed round 4's build (2026-11-03 00:40)
 SEAT_HOVER_U, SEAT_SINK_U = 10.0, 40.0  # a tree's trunk base over / under the ground (lane 1.15-r4-trees)
 SLOPE_TOL_DEG = 0.01
 FIRST = 5  # failures listed per check
@@ -194,7 +196,8 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
                     fails["slope"].append(f"{fids[k]:06X} ({cx},{cy}): {zk:.1f} m outside its height band")
                 t = T[i[k], j[k]]
                 above = zk - (t if np.isfinite(t) else -np.inf)
-                if not place.posture_ok(r, np.array([depth[k]]), np.array([above]))[0]:
+                if not any(place.posture_ok(r, np.array([depth[k] + e]), np.array([above + e]))[0]
+                           for e in (0.0, -POSTURE_TOL_M, POSTURE_TOL_M)):
                     what = "dry-land flora over water" if r.dry_only else "outside its water posture"
                     fails["water"].append(f"{fids[k]:06X} ({cx},{cy}) {b}: {what} (depth {depth[k]:.2f} m)")
                 if on_paint[k] or any(d[k] < half for half, d in road_d):
