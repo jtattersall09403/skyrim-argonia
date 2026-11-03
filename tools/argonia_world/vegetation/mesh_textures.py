@@ -326,12 +326,17 @@ def check() -> int:
     bad = problems(placed_forms(w), man, json.loads(DEPS.read_text(encoding="utf-8")), waive=False)
     for what, keys in other_placed(w).items():
         bad += alt_problems(keys, man, f" ({what})")
+    from tools.argonia_world.vegetation import leaf_hue
+    hues = leaf_hue.load()
+    flora = {r["form_key"] for r in w.query("SELECT form_key FROM object_form WHERE role_id <> 'rock'")}
+    bad += leaf_hue.problems([f for f in placed_forms(w) if f["form_key"] in flora], man, hues)
     for b in bad:
         print("textures:", b)
     misses = sorted({t for m in man["meshes"].values() for _, t in m["slots"] if man["sources"].get(t) is None})
     print(f"textures: {len(placed_forms(w))} placed forms, {len(man['meshes'])} meshes in the manifest, "
           f"{len(misses)} textures absent from every row ({sum(t in WAIVED for t in misses)} waived), "
-          f"{len(man.get('forms', {}))} forms with MODS ({len(ALT_DROPPED)} overridden without it), {len(bad)} problems")
+          f"{len(man.get('forms', {}))} forms with MODS ({len(ALT_DROPPED)} overridden without it), "
+          f"{len(hues)} diffuses' leaf hue measured, {len(bad)} problems")
     return 1 if bad else 0
 
 

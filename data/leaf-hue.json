@@ -1,0 +1,1358 @@
+{
+ "about": "mean leaf colour per diffuse (vegetation/leaf_hue.py build); numbers only",
+ "textures": {
+  "textures/3amt/neu/stingingnetteld.dds": {
+   "hue": 72,
+   "red_share": 0.0,
+   "rgb": [
+    51,
+    55,
+    33
+   ],
+   "sat": 0.39
+  },
+  "textures/architecture/farmhouse/ivy01.dds": {
+   "hue": 62,
+   "red_share": 0.0,
+   "rgb": [
+    70,
+    72,
+    22
+   ],
+   "sat": 0.69
+  },
+  "textures/architecture/riften/riftenrope01.dds": {
+   "hue": 31,
+   "red_share": 0.0,
+   "rgb": [
+    103,
+    85,
+    66
+   ],
+   "sat": 0.36
+  },
+  "textures/architecture/riften/riftensiding01.dds": {
+   "hue": 34,
+   "red_share": 0.0,
+   "rgb": [
+    129,
+    104,
+    72
+   ],
+   "sat": 0.45
+  },
+  "textures/architecture/riften/riftenwindows02.dds": {
+   "hue": 35,
+   "red_share": 0.02,
+   "rgb": [
+    74,
+    65,
+    52
+   ],
+   "sat": 0.29
+  },
+  "textures/architecture/whiterun/wrfieldgrass01.dds": {
+   "hue": 30,
+   "red_share": 0.0,
+   "rgb": [
+    121,
+    89,
+    58
+   ],
+   "sat": 0.52
+  },
+  "textures/argonia/anvilplants/anvilleafpalm01.dds": {
+   "hue": 107,
+   "red_share": 0.0,
+   "rgb": [
+    26,
+    53,
+    19
+   ],
+   "sat": 0.64
+  },
+  "textures/argonia/anvilplants/anvilleafpalm02.dds": {
+   "hue": 76,
+   "red_share": 0.0,
+   "rgb": [
+    52,
+    68,
+    10
+   ],
+   "sat": 0.86
+  },
+  "textures/argonia/anvilplants/treeoakleafcol44.dds": {
+   "hue": 91,
+   "red_share": 0.0,
+   "rgb": [
+    18,
+    37,
+    0
+   ],
+   "sat": 1.0
+  },
+  "textures/ctq/plants/kapok/ctq_kapok_branch.dds": {
+   "hue": 87,
+   "red_share": 0.0,
+   "rgb": [
+    45,
+    57,
+    30
+   ],
+   "sat": 0.47
+  },
+  "textures/ctq/plants/kapok/ctq_kapokbark_d.dds": {
+   "hue": 75,
+   "red_share": 0.0,
+   "rgb": [
+    136,
+    143,
+    116
+   ],
+   "sat": 0.19
+  },
+  "textures/dos/plants/tbpcoastcoralgrass02.dds": {
+   "hue": 27,
+   "red_share": 0.18,
+   "rgb": [
+    45,
+    26,
+    11
+   ],
+   "sat": 0.76
+  },
+  "textures/effects/fxbird01.dds": {
+   "hue": 351,
+   "red_share": 0.26,
+   "rgb": [
+    127,
+    80,
+    87
+   ],
+   "sat": 0.37
+  },
+  "textures/effects/fxbird02.dds": {
+   "hue": 34,
+   "red_share": 0.0,
+   "rgb": [
+    126,
+    90,
+    44
+   ],
+   "sat": 0.65
+  },
+  "textures/effects/fxbird03.dds": {
+   "hue": 246,
+   "red_share": 0.29,
+   "rgb": [
+    66,
+    61,
+    113
+   ],
+   "sat": 0.47
+  },
+  "textures/grandoak11.dds": {
+   "hue": 75,
+   "red_share": 0.0,
+   "rgb": [
+    48,
+    55,
+    27
+   ],
+   "sat": 0.51
+  },
+  "textures/grandoak12.dds": {
+   "hue": 80,
+   "red_share": 0.0,
+   "rgb": [
+    39,
+    45,
+    26
+   ],
+   "sat": 0.42
+  },
+  "textures/landscape/braken.dds": {
+   "hue": 103,
+   "red_share": 0.0,
+   "rgb": [
+    53,
+    76,
+    43
+   ],
+   "sat": 0.42
+  },
+  "textures/landscape/dirtcliffs/dirtcliffsroots01.dds": {
+   "hue": 50,
+   "red_share": 0.01,
+   "rgb": [
+    78,
+    72,
+    47
+   ],
+   "sat": 0.39
+  },
+  "textures/landscape/grass/coastbeachgrassobj01.dds": {
+   "hue": 40,
+   "red_share": 0.0,
+   "rgb": [
+    143,
+    130,
+    102
+   ],
+   "sat": 0.28
+  },
+  "textures/landscape/grass/espmeadowsweet04.dds": {
+   "hue": 14,
+   "red_share": 0.66,
+   "rgb": [
+    78,
+    53,
+    45
+   ],
+   "sat": 0.42
+  },
+  "textures/landscape/grass/espmeadowsweet05.dds": {
+   "hue": 58,
+   "red_share": 0.03,
+   "rgb": [
+    89,
+    87,
+    43
+   ],
+   "sat": 0.51
+  },
+  "textures/landscape/grass/fieldgrassobj01.dds": {
+   "hue": 65,
+   "red_share": 0.0,
+   "rgb": [
+    73,
+    77,
+    32
+   ],
+   "sat": 0.58
+  },
+  "textures/landscape/grass/forestgrass01.dds": {
+   "hue": 104,
+   "red_share": 0.0,
+   "rgb": [
+    42,
+    81,
+    28
+   ],
+   "sat": 0.66
+  },
+  "textures/landscape/grass/reachgrassobj01.dds": {
+   "hue": 72,
+   "red_share": 0.0,
+   "rgb": [
+    50,
+    58,
+    15
+   ],
+   "sat": 0.74
+  },
+  "textures/landscape/grass/seaweed01.dds": {
+   "hue": 81,
+   "red_share": 0.0,
+   "rgb": [
+    34,
+    41,
+    22
+   ],
+   "sat": 0.46
+  },
+  "textures/landscape/grass/seaweed02.dds": {
+   "hue": 66,
+   "red_share": 0.0,
+   "rgb": [
+    40,
+    43,
+    14
+   ],
+   "sat": 0.68
+  },
+  "textures/landscape/grass/swordfern.dds": {
+   "hue": 66,
+   "red_share": 0.01,
+   "rgb": [
+    60,
+    64,
+    27
+   ],
+   "sat": 0.58
+  },
+  "textures/landscape/grass/tbpcoastcoralgrass02.dds": {
+   "hue": 27,
+   "red_share": 0.18,
+   "rgb": [
+    45,
+    26,
+    11
+   ],
+   "sat": 0.76
+  },
+  "textures/landscape/grass/v_reeds.dds": {
+   "hue": 66,
+   "red_share": 0.01,
+   "rgb": [
+    32,
+    35,
+    7
+   ],
+   "sat": 0.8
+  },
+  "textures/landscape/mountains/mountainslab02.dds": {
+   "hue": 28,
+   "red_share": 0.03,
+   "rgb": [
+    97,
+    73,
+    50
+   ],
+   "sat": 0.48
+  },
+  "textures/landscape/pineforest01.dds": {
+   "hue": 40,
+   "red_share": 0.0,
+   "rgb": [
+    48,
+    38,
+    19
+   ],
+   "sat": 0.6
+  },
+  "textures/landscape/pineforest03.dds": {
+   "hue": 65,
+   "red_share": 0.0,
+   "rgb": [
+    57,
+    61,
+    17
+   ],
+   "sat": 0.73
+  },
+  "textures/landscape/reachmoss01.dds": {
+   "hue": 86,
+   "red_share": 0.0,
+   "rgb": [
+    42,
+    50,
+    31
+   ],
+   "sat": 0.38
+  },
+  "textures/landscape/trees/-trunk.dds": {
+   "hue": 29,
+   "red_share": 0.14,
+   "rgb": [
+    50,
+    42,
+    34
+   ],
+   "sat": 0.33
+  },
+  "textures/landscape/trees/anvilleafpalm02.dds": {
+   "hue": 76,
+   "red_share": 0.0,
+   "rgb": [
+    52,
+    68,
+    10
+   ],
+   "sat": 0.86
+  },
+  "textures/landscape/trees/bananabark1.dds": {
+   "hue": 36,
+   "red_share": 0.02,
+   "rgb": [
+    153,
+    121,
+    72
+   ],
+   "sat": 0.53
+  },
+  "textures/landscape/trees/bananabarktop2.dds": {
+   "hue": 47,
+   "red_share": 0.01,
+   "rgb": [
+    139,
+    122,
+    66
+   ],
+   "sat": 0.52
+  },
+  "textures/landscape/trees/bananabarktop3.dds": {
+   "hue": 44,
+   "red_share": 0.02,
+   "rgb": [
+    141,
+    121,
+    68
+   ],
+   "sat": 0.52
+  },
+  "textures/landscape/trees/birch-leaf.dds": {
+   "hue": 81,
+   "red_share": 0.04,
+   "rgb": [
+    50,
+    57,
+    38
+   ],
+   "sat": 0.33
+  },
+  "textures/landscape/trees/cypressbark3.dds": {
+   "hue": 44,
+   "red_share": 0.01,
+   "rgb": [
+    65,
+    61,
+    49
+   ],
+   "sat": 0.25
+  },
+  "textures/landscape/trees/cypressbark4.dds": {
+   "hue": 33,
+   "red_share": 0.02,
+   "rgb": [
+    73,
+    66,
+    57
+   ],
+   "sat": 0.21
+  },
+  "textures/landscape/trees/datepalmbark2.dds": {
+   "hue": 54,
+   "red_share": 0.0,
+   "rgb": [
+    115,
+    114,
+    110
+   ],
+   "sat": 0.04
+  },
+  "textures/landscape/trees/datepalmbark3.dds": {
+   "hue": 28,
+   "red_share": 0.02,
+   "rgb": [
+    137,
+    116,
+    98
+   ],
+   "sat": 0.29
+  },
+  "textures/landscape/trees/datepalmbark7.dds": {
+   "hue": 32,
+   "red_share": 0.06,
+   "rgb": [
+    89,
+    61,
+    28
+   ],
+   "sat": 0.68
+  },
+  "textures/landscape/trees/datepalmbark8.dds": {
+   "hue": 32,
+   "red_share": 0.07,
+   "rgb": [
+    85,
+    59,
+    30
+   ],
+   "sat": 0.64
+  },
+  "textures/landscape/trees/ealderbranchcomp01.dds": {
+   "hue": 95,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    72,
+    44
+   ],
+   "sat": 0.38
+  },
+  "textures/landscape/trees/egorsebranch01lightyellow.dds": {
+   "hue": 43,
+   "red_share": 0.0,
+   "rgb": [
+    103,
+    84,
+    39
+   ],
+   "sat": 0.62
+  },
+  "textures/landscape/trees/egorsebranch02white.dds": {
+   "hue": 43,
+   "red_share": 0.0,
+   "rgb": [
+    108,
+    94,
+    61
+   ],
+   "sat": 0.44
+  },
+  "textures/landscape/trees/epinebark04.dds": {
+   "hue": 24,
+   "red_share": 0.17,
+   "rgb": [
+    55,
+    44,
+    37
+   ],
+   "sat": 0.34
+  },
+  "textures/landscape/trees/fanpalm3.dds": {
+   "hue": 92,
+   "red_share": 0.0,
+   "rgb": [
+    44,
+    59,
+    30
+   ],
+   "sat": 0.49
+  },
+  "textures/landscape/trees/fanpalm4.dds": {
+   "hue": 48,
+   "red_share": 0.0,
+   "rgb": [
+    50,
+    46,
+    26
+   ],
+   "sat": 0.48
+  },
+  "textures/landscape/trees/fanpalm6.dds": {
+   "hue": 34,
+   "red_share": 0.02,
+   "rgb": [
+    82,
+    65,
+    44
+   ],
+   "sat": 0.45
+  },
+  "textures/landscape/trees/fanpalm7.dds": {
+   "hue": 34,
+   "red_share": 0.02,
+   "rgb": [
+    54,
+    41,
+    23
+   ],
+   "sat": 0.57
+  },
+  "textures/landscape/trees/gkbbark13.dds": {
+   "hue": 46,
+   "red_share": 0.0,
+   "rgb": [
+    79,
+    74,
+    55
+   ],
+   "sat": 0.31
+  },
+  "textures/landscape/trees/gkbbark27.dds": {
+   "hue": 35,
+   "red_share": 0.02,
+   "rgb": [
+    93,
+    79,
+    61
+   ],
+   "sat": 0.35
+  },
+  "textures/landscape/trees/gkbbranch1.dds": {
+   "hue": 79,
+   "red_share": 0.0,
+   "rgb": [
+    50,
+    63,
+    22
+   ],
+   "sat": 0.65
+  },
+  "textures/landscape/trees/gkbbranch3dark.dds": {
+   "hue": 33,
+   "red_share": 0.01,
+   "rgb": [
+    74,
+    64,
+    52
+   ],
+   "sat": 0.3
+  },
+  "textures/landscape/trees/gkbbranch5dark.dds": {
+   "hue": 34,
+   "red_share": 0.02,
+   "rgb": [
+    55,
+    48,
+    40
+   ],
+   "sat": 0.27
+  },
+  "textures/landscape/trees/gkbjunglebranch2.dds": {
+   "hue": 89,
+   "red_share": 0.0,
+   "rgb": [
+    76,
+    98,
+    51
+   ],
+   "sat": 0.48
+  },
+  "textures/landscape/trees/gkbmapleconifer21.dds": {
+   "hue": 76,
+   "red_share": 0.0,
+   "rgb": [
+    39,
+    44,
+    28
+   ],
+   "sat": 0.36
+  },
+  "textures/landscape/trees/gkbpalmbark14.dds": {
+   "hue": 28,
+   "red_share": 0.02,
+   "rgb": [
+    134,
+    104,
+    79
+   ],
+   "sat": 0.41
+  },
+  "textures/landscape/trees/gkbtreeaspenbranchcompgreen1dark.dds": {
+   "hue": 91,
+   "red_share": 0.0,
+   "rgb": [
+    50,
+    61,
+    39
+   ],
+   "sat": 0.35
+  },
+  "textures/landscape/trees/gkbtundradriftwoodbark01.dds": {
+   "hue": 49,
+   "red_share": 0.0,
+   "rgb": [
+    74,
+    68,
+    36
+   ],
+   "sat": 0.51
+  },
+  "textures/landscape/trees/juniptex.dds": {
+   "hue": 75,
+   "red_share": 0.01,
+   "rgb": [
+    51,
+    57,
+    34
+   ],
+   "sat": 0.4
+  },
+  "textures/landscape/trees/kahlerast.dds": {
+   "hue": 135,
+   "red_share": 0.0,
+   "rgb": [
+    85,
+    86,
+    85
+   ],
+   "sat": 0.01
+  },
+  "textures/landscape/trees/lillipadreed.dds": {
+   "hue": 82,
+   "red_share": 0.0,
+   "rgb": [
+    119,
+    137,
+    90
+   ],
+   "sat": 0.34
+  },
+  "textures/landscape/trees/lillipads3.dds": {
+   "hue": 94,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    69,
+    46
+   ],
+   "sat": 0.33
+  },
+  "textures/landscape/trees/palmbarknew14.dds": {
+   "hue": 27,
+   "red_share": 0.05,
+   "rgb": [
+    133,
+    104,
+    80
+   ],
+   "sat": 0.4
+  },
+  "textures/landscape/trees/palmfond8.dds": {
+   "hue": 79,
+   "red_share": 0.0,
+   "rgb": [
+    78,
+    82,
+    68
+   ],
+   "sat": 0.17
+  },
+  "textures/landscape/trees/palmleafnew8.dds": {
+   "hue": 89,
+   "red_share": 0.0,
+   "rgb": [
+    75,
+    97,
+    49
+   ],
+   "sat": 0.49
+  },
+  "textures/landscape/trees/palmmiddle3.dds": {
+   "hue": 71,
+   "red_share": 0.06,
+   "rgb": [
+    75,
+    80,
+    52
+   ],
+   "sat": 0.35
+  },
+  "textures/landscape/trees/rainforestvine5.dds": {
+   "hue": 55,
+   "red_share": 0.0,
+   "rgb": [
+    52,
+    51,
+    41
+   ],
+   "sat": 0.2
+  },
+  "textures/landscape/trees/spanishmoss11.dds": {
+   "hue": 63,
+   "red_share": 0.0,
+   "rgb": [
+    89,
+    90,
+    78
+   ],
+   "sat": 0.13
+  },
+  "textures/landscape/trees/spanishmoss6.dds": {
+   "hue": 71,
+   "red_share": 0.0,
+   "rgb": [
+    64,
+    66,
+    54
+   ],
+   "sat": 0.17
+  },
+  "textures/landscape/trees/thing1.dds": {
+   "hue": 35,
+   "red_share": 0.0,
+   "rgb": [
+    53,
+    48,
+    42
+   ],
+   "sat": 0.2
+  },
+  "textures/landscape/trees/thing2.dds": {
+   "hue": 36,
+   "red_share": 0.09,
+   "rgb": [
+    52,
+    44,
+    34
+   ],
+   "sat": 0.35
+  },
+  "textures/landscape/trees/tree03.dds": {
+   "hue": 98,
+   "red_share": 0.0,
+   "rgb": [
+    34,
+    52,
+    24
+   ],
+   "sat": 0.54
+  },
+  "textures/landscape/trees/tree04.dds": {
+   "hue": 77,
+   "red_share": 0.02,
+   "rgb": [
+    48,
+    55,
+    32
+   ],
+   "sat": 0.41
+  },
+  "textures/landscape/trees/treeoaktrunk02.dds": {
+   "hue": 65,
+   "red_share": 0.01,
+   "rgb": [
+    39,
+    40,
+    29
+   ],
+   "sat": 0.29
+  },
+  "textures/landscape/trees/treepineforestbranchcomp.dds": {
+   "hue": 64,
+   "red_share": 0.0,
+   "rgb": [
+    40,
+    41,
+    24
+   ],
+   "sat": 0.43
+  },
+  "textures/landscape/trees/treewillow01.dds": {
+   "hue": 73,
+   "red_share": 0.0,
+   "rgb": [
+    29,
+    36,
+    8
+   ],
+   "sat": 0.78
+  },
+  "textures/landscape/trees/treewillowbark01.dds": {
+   "hue": 48,
+   "red_share": 0.0,
+   "rgb": [
+    41,
+    39,
+    31
+   ],
+   "sat": 0.25
+  },
+  "textures/landscape/trees/trunk2.dds": {
+   "hue": 68,
+   "red_share": 0.0,
+   "rgb": [
+    38,
+    38,
+    33
+   ],
+   "sat": 0.14
+  },
+  "textures/landscape/trees/vurt_deadtree.dds": {
+   "hue": 337,
+   "red_share": 0.01,
+   "rgb": [
+    127,
+    121,
+    123
+   ],
+   "sat": 0.05
+  },
+  "textures/pc_flora_str_tree_01tr2.dds": {
+   "hue": 26,
+   "red_share": 0.07,
+   "rgb": [
+    95,
+    84,
+    75
+   ],
+   "sat": 0.21
+  },
+  "textures/plants/esalixshrub01.dds": {
+   "hue": 98,
+   "red_share": 0.0,
+   "rgb": [
+    59,
+    86,
+    43
+   ],
+   "sat": 0.5
+  },
+  "textures/plants/groundplants1/crocus02.dds": {
+   "hue": 264,
+   "red_share": 0.04,
+   "rgb": [
+    77,
+    38,
+    136
+   ],
+   "sat": 0.72
+  },
+  "textures/plants/groundplants1/ewplake10.dds": {
+   "hue": 99,
+   "red_share": 0.0,
+   "rgb": [
+    23,
+    44,
+    12
+   ],
+   "sat": 0.71
+  },
+  "textures/plants/groundplants1/ewplake10_rose.dds": {
+   "hue": 68,
+   "red_share": 0.3,
+   "rgb": [
+    33,
+    35,
+    16
+   ],
+   "sat": 0.56
+  },
+  "textures/plants/groundplants1/ferny3.dds": {
+   "hue": 121,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    70,
+    56
+   ],
+   "sat": 0.21
+  },
+  "textures/plants/groundplants1/lily1.dds": {
+   "hue": 346,
+   "red_share": 0.14,
+   "rgb": [
+    58,
+    47,
+    49
+   ],
+   "sat": 0.19
+  },
+  "textures/plants/groundplants1/lily1_violet.dds": {
+   "hue": 263,
+   "red_share": 0.03,
+   "rgb": [
+    31,
+    24,
+    44
+   ],
+   "sat": 0.45
+  },
+  "textures/plants/groundplants1/lily2.dds": {
+   "hue": 352,
+   "red_share": 0.75,
+   "rgb": [
+    186,
+    107,
+    118
+   ],
+   "sat": 0.42
+  },
+  "textures/plants/tamira/newplants/bamboo.dds": {
+   "hue": 156,
+   "red_share": 0.0,
+   "rgb": [
+    33,
+    68,
+    54
+   ],
+   "sat": 0.52
+  },
+  "textures/plants/tamira/newplants/bush04.dds": {
+   "hue": 71,
+   "red_share": 0.0,
+   "rgb": [
+    58,
+    69,
+    14
+   ],
+   "sat": 0.79
+  },
+  "textures/plants/tamira/newplants/leaves27.dds": {
+   "hue": 72,
+   "red_share": 0.0,
+   "rgb": [
+    61,
+    67,
+    41
+   ],
+   "sat": 0.39
+  },
+  "textures/plants/tamira/newplants/palmplant.dds": {
+   "hue": 71,
+   "red_share": 0.0,
+   "rgb": [
+    42,
+    48,
+    14
+   ],
+   "sat": 0.7
+  },
+  "textures/plants/tamira/newplants/tropicalplant01.dds": {
+   "hue": 77,
+   "red_share": 0.0,
+   "rgb": [
+    40,
+    51,
+    9
+   ],
+   "sat": 0.83
+  },
+  "textures/plants/tamira/newplants/tropicalplant02.dds": {
+   "hue": 74,
+   "red_share": 0.01,
+   "rgb": [
+    47,
+    55,
+    22
+   ],
+   "sat": 0.6
+  },
+  "textures/plants/tamira/newplants/tropicalshrub03.dds": {
+   "hue": 57,
+   "red_share": 0.0,
+   "rgb": [
+    66,
+    64,
+    34
+   ],
+   "sat": 0.49
+  },
+  "textures/plants/tamira/newplants/tropicalshrub04.dds": {
+   "hue": 65,
+   "red_share": 0.02,
+   "rgb": [
+    30,
+    33,
+    4
+   ],
+   "sat": 0.88
+  },
+  "textures/plants/tamira/newplants/tropicalshrub05.dds": {
+   "hue": 65,
+   "red_share": 0.01,
+   "rgb": [
+    41,
+    44,
+    10
+   ],
+   "sat": 0.76
+  },
+  "textures/plants/ztree flower1/chickweed.dds": {
+   "hue": 46,
+   "red_share": 0.0,
+   "rgb": [
+    90,
+    89,
+    85
+   ],
+   "sat": 0.05
+  },
+  "textures/plants/ztree flower1/stem1.dds": {
+   "hue": 66,
+   "red_share": 0.0,
+   "rgb": [
+    47,
+    51,
+    17
+   ],
+   "sat": 0.67
+  },
+  "textures/sheogorad/stronghold/block.dds": {
+   "hue": 47,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    54,
+    47
+   ],
+   "sat": 0.15
+  },
+  "textures/sheogorad/stronghold/ground.dds": {
+   "hue": 30,
+   "red_share": 0.02,
+   "rgb": [
+    64,
+    58,
+    52
+   ],
+   "sat": 0.18
+  },
+  "textures/sheogorad/stronghold/moulding.dds": {
+   "hue": 25,
+   "red_share": 0.31,
+   "rgb": [
+    51,
+    39,
+    30
+   ],
+   "sat": 0.41
+  },
+  "textures/sheogorad/stronghold/raggedroof01.dds": {
+   "hue": 31,
+   "red_share": 0.1,
+   "rgb": [
+    78,
+    64,
+    50
+   ],
+   "sat": 0.36
+  },
+  "textures/sheogorad/stronghold/stonewall.dds": {
+   "hue": 37,
+   "red_share": 0.05,
+   "rgb": [
+    34,
+    32,
+    28
+   ],
+   "sat": 0.17
+  },
+  "textures/sheogorad/stronghold/trimsmall.dds": {
+   "hue": 27,
+   "red_share": 0.0,
+   "rgb": [
+    86,
+    83,
+    80
+   ],
+   "sat": 0.08
+  },
+  "textures/sheogorad/stronghold/wallplain.dds": {
+   "hue": 120,
+   "red_share": 0.01,
+   "rgb": [
+    49,
+    49,
+    49
+   ],
+   "sat": 0.0
+  },
+  "textures/sheogorad/stronghold/woodpostsh.dds": {
+   "hue": 28,
+   "red_share": 0.05,
+   "rgb": [
+    75,
+    63,
+    53
+   ],
+   "sat": 0.3
+  },
+  "textures/skinwalker21 creatures/horker/giant snail/snailshell1.dds": {
+   "hue": 35,
+   "red_share": 0.08,
+   "rgb": [
+    56,
+    39,
+    14
+   ],
+   "sat": 0.74
+  },
+  "textures/skyfall/sleeping tree overhaul/cluste_col.dds": {
+   "hue": 80,
+   "red_share": 0.0,
+   "rgb": [
+    32,
+    39,
+    19
+   ],
+   "sat": 0.5
+  },
+  "textures/skyfall/sleeping tree overhaul/crackedbark.dds": {
+   "hue": 28,
+   "red_share": 0.0,
+   "rgb": [
+    67,
+    58,
+    51
+   ],
+   "sat": 0.24
+  },
+  "textures/skyfall/sleeping tree overhaul/vinesb_col.dds": {
+   "hue": 75,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    62,
+    36
+   ],
+   "sat": 0.42
+  },
+  "textures/tr_ashswp_emppar01.dds": {
+   "hue": 30,
+   "red_share": 0.01,
+   "rgb": [
+    119,
+    116,
+    113
+   ],
+   "sat": 0.05
+  },
+  "textures/tr_ashswp_emppar02.dds": {
+   "hue": 44,
+   "red_share": 0.02,
+   "rgb": [
+    147,
+    144,
+    135
+   ],
+   "sat": 0.08
+  },
+  "textures/tr_ashswp_tree2.dds": {
+   "hue": 40,
+   "red_share": 0.0,
+   "rgb": [
+    146,
+    141,
+    133
+   ],
+   "sat": 0.08
+  },
+  "textures/tr_flora_cupling_01.dds": {
+   "hue": 31,
+   "red_share": 0.06,
+   "rgb": [
+    151,
+    86,
+    17
+   ],
+   "sat": 0.89
+  },
+  "textures/tr_flora_cupling_02.dds": {
+   "hue": 23,
+   "red_share": 0.29,
+   "rgb": [
+    43,
+    26,
+    15
+   ],
+   "sat": 0.65
+  },
+  "textures/vurt_amanita3.dds": {
+   "hue": 31,
+   "red_share": 0.0,
+   "rgb": [
+    72,
+    59,
+    44
+   ],
+   "sat": 0.38
+  },
+  "textures/vurt_bitterbark.dds": {
+   "hue": 49,
+   "red_share": 0.0,
+   "rgb": [
+    56,
+    51,
+    30
+   ],
+   "sat": 0.46
+  },
+  "textures/vurt_mushbottom.dds": {
+   "hue": 50,
+   "red_share": 0.0,
+   "rgb": [
+    121,
+    117,
+    97
+   ],
+   "sat": 0.2
+  },
+  "textures/vurt_paragills512.dds": {
+   "hue": 45,
+   "red_share": 0.04,
+   "rgb": [
+    41,
+    38,
+    30
+   ],
+   "sat": 0.26
+  },
+  "textures/vurt_parasol1.dds": {
+   "hue": 31,
+   "red_share": 0.0,
+   "rgb": [
+    72,
+    59,
+    44
+   ],
+   "sat": 0.38
+  },
+  "textures/vurt_shcap022.dds": {
+   "hue": 21,
+   "red_share": 0.22,
+   "rgb": [
+    46,
+    40,
+    36
+   ],
+   "sat": 0.21
+  },
+  "textures/vurt_shroomstem2.dds": {
+   "hue": 40,
+   "red_share": 0.01,
+   "rgb": [
+    73,
+    68,
+    58
+   ],
+   "sat": 0.21
+  },
+  "textures/vurt_shroomstemmoss.dds": {
+   "hue": 45,
+   "red_share": 0.0,
+   "rgb": [
+    59,
+    52,
+    34
+   ],
+   "sat": 0.42
+  },
+  "textures/vurt_shroomtop.dds": {
+   "hue": 31,
+   "red_share": 0.0,
+   "rgb": [
+    72,
+    58,
+    44
+   ],
+   "sat": 0.38
+  },
+  "textures/vurt_spmoss04.dds": {
+   "hue": 44,
+   "red_share": 0.0,
+   "rgb": [
+    58,
+    53,
+    41
+   ],
+   "sat": 0.3
+  },
+  "textures/vurt_treebark04.dds": {
+   "hue": 53,
+   "red_share": 0.0,
+   "rgb": [
+    98,
+    94,
+    69
+   ],
+   "sat": 0.3
+  },
+  "textures/vvardenfell/rocks/al/al_rock02.dds": {
+   "opaque": 0
+  },
+  "textures/vvardenfell/rocks/alrockbase01.dds": {
+   "hue": 50,
+   "red_share": 0.05,
+   "rgb": [
+    28,
+    27,
+    21
+   ],
+   "sat": 0.23
+  },
+  "textures/vvardenfell/rocks/gl/rock_gl02.dds": {
+   "hue": 38,
+   "red_share": 0.0,
+   "rgb": [
+    198,
+    181,
+    153
+   ],
+   "sat": 0.23
+  }
+ }
+}

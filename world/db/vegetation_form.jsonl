@@ -51,7 +51,6 @@
 {"form_key":"08992F:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-66.3,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -66 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"089930:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-597.8,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -598 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"089931:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-301.1,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -301 units under the ground, its mod's own median seat (seat.py)"}
-{"form_key":"0AA5F4:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"0B75A1:Black Marsh.esm","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the aquatic role's range (ours; the L4 stills judge it)"}
 {"form_key":"0C0005:ArgoniaWorld.esm","scale_min":0.6,"scale_max":1.25,"sink_frac":0.5,"seat_units":0.0,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.50 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"0C0006:ArgoniaWorld.esm","scale_min":0.6,"scale_max":1.25,"sink_frac":0.5,"seat_units":0.0,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.50 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
@@ -188,8 +187,6 @@
 {"form_key":"3A3F9B:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-188.5,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -188 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"3A3FA3:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"3A3FA4:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
-{"form_key":"3A3FA5:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
-{"form_key":"3A3FA6:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"3B345A:King of the Murkmire.esp","scale_min":0.5,"scale_max":0.9,"sink_frac":0.7,"seat_units":0.0,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.70 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"3B3462:King of the Murkmire.esp","scale_min":0.5,"scale_max":0.9,"sink_frac":0.7,"seat_units":0.0,"why":"1.15 veg: the rock role's range (ours; the L4 stills judge it); sunk 0.70 of its OBND height (docs/design/research/vegetation/rock-placement-rules.md rule 1)"}
 {"form_key":"3B3484:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
@@ -210,13 +207,9 @@
 {"form_key":"67300F:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-124.2,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -124 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"673010:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-57.6,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -58 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"6EDDDD:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":651.3,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot 651 units under the ground, its mod's own median seat (seat.py)"}
-{"form_key":"768240:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
-{"form_key":"768242:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
-{"form_key":"768243:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"768244:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"768246:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"768247:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
-{"form_key":"768248:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"768249:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"7FD0F3:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it)"}
 {"form_key":"7FD0F4:King of the Murkmire.esp","scale_min":0.85,"scale_max":1.2,"sink_frac":0.0,"seat_units":14.3,"why":"1.15 veg: the palm role's range (ours; the L4 stills judge it); pivot 14 units under the ground, its mod's own median seat (seat.py)"}

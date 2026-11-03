@@ -125,6 +125,9 @@ def main(argv=None) -> int:
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
     sub.add_parser("seat")  # seat.py: each tree's own mod's seat (machine-local, once per stack change)
+    hu = sub.add_parser("hue")  # leaf_hue.py: measure the diffuses' leaf colour (machine-local, needs Pillow)
+    hu.add_argument("what", choices=("build",))
+    hu.add_argument("sources", nargs="+", help="<row>=<BSA or loose Data dir>, the row as data/mesh-textures.json names it")
     tx = sub.add_parser("textures")  # mesh_textures.py: build the manifest (machine-local) or check it (L1)
     tx.add_argument("what", choices=("build", "check", "overrides"))  # overrides: the built plugin's MODS-dropped bases read back
     tx.add_argument("--esm")
@@ -170,6 +173,11 @@ def main(argv=None) -> int:
     if a.cmd == "seat":
         from tools.argonia_world.vegetation import seat
         return seat.main([])
+    if a.cmd == "hue":
+        from tools.argonia_world.vegetation import leaf_hue
+        doc = leaf_hue.build([(x.split('=', 1)[0], Path(x.split('=', 1)[1])) for x in a.sources])
+        print(f"hue: {len(doc['textures'])} diffuses measured")
+        return 0
     if a.cmd == "textures":
         from tools.argonia_world.vegetation import mesh_textures
         if a.what == "check":
