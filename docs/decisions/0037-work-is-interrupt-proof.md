@@ -31,3 +31,17 @@ lost but the interrupt gap, and the work is picked up from exactly where it was.
   to be narrowed to the built world and the stack).
 - `job_guard.sh status` and the lane log say for every job where it will resume from.
 - Owner-facing: the hand-over's "machine time" is the sum of the steps, not of the restarts.
+
+## Amendment, 2026-11-03 (owner, 22:20, #37): a chain's verdict is its output, and its end wakes the agent
+
+Round 5's close-8 lost 90 minutes: xLODGen had written the whole terrain LOD, the driver's one read of the tool's
+window came back unreadable, the step was called failed, the machine stopped, and nothing woke the agent until the
+owner asked. The owner: prevent anything of that shape. So, for every long chain:
+
+- A step's verdict comes from its output on disk (files written, stable, helpers gone), never from a single read of a
+  window or a log line; the window text is a progress signal and is re-read until it is there.
+- Finished work is never discarded by a driver's doubt: the step marker is written when the output is proven, and a rerun
+  accepts proven output instead of remaking it.
+- Every end of a chain, good or bad, calls `infra/build-vm/agent-wake.sh`; the build VM's two-minute wake timer treats
+  that line as it treats an owner comment, and the session that launched the chain also watches its log. A chain that
+  can stop silently is a defect in the chain.

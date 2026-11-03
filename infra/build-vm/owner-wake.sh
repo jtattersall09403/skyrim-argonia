@@ -13,6 +13,9 @@ export PATH="$HOME/.local/bin:$PATH"
 cd "$REPO"
 latest=$(python3 -I tooling/owner_inbox.py --unread --peek 2>/dev/null | grep -oE '\(20[0-9]{2}-[0-9]{2}-[0-9]{2}T[0-9:]{8}Z\)' | tr -d '()' | sort | tail -1 || true)
 sent=$(cat "$STATE/owner-wake-sent" 2>/dev/null || echo "")
+# a background chain that ended (agent-wake.sh) wakes the session the same way (owner, 2026-11-03 22:20, #37: close-8 sat 90 min)
+pend=$(tail -1 "$STATE/agent-wake-pending" 2>/dev/null | cut -c1-20 || true)
+if [ -n "$pend" ] && [ "$pend" \> "$latest" ]; then latest=$pend; fi
 if [ -z "$latest" ] || [ ! "$latest" \> "$sent" ]; then [ $DRY = 1 ] && echo "nothing new (latest '$latest', sent '$sent')"; exit 0; fi
 if pgrep -u "$(id -u)" -f '(^|/)claude( |$)' >/dev/null && tmux has-session -t argonia 2>/dev/null; then
   what="wake prompt typed into tmux argonia:0"

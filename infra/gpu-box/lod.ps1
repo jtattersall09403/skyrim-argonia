@@ -265,8 +265,16 @@ switch ($Step) {
     $t1 = Get-Date
     do { $txt = Tool-Text $p; if ($txt -match 'finished|generation done') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
     Set-Content "$Work\logs\terrain-messages.txt" $txt
-    $p | Stop-Process -Force
+    if ($txt -notmatch 'finished|generation done') {
+      # The window's text can come back unreadable (close-8, 20:39: 691 KB of '?'). The verdict then comes from the
+      # output on disk, not the window (owner, 22:20, #37): tool alive, no helper left, the file count unchanged for 60 s.
+      $c1 = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Start-Sleep 60
+      $c2 = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count
+      $busy = @(Get-Process -Name $Helpers -EA SilentlyContinue).Count
+      if ($c1 -gt 0 -and $c1 -eq $c2 -and $busy -eq 0 -and -not $p.HasExited) { Say "terrain: finish line unreadable; accepted on disk ($c1 files, stable 60 s, no helper running)"; $txt = 'generation done (accepted on disk)' }
+    }
     if ($txt -notmatch 'finished|generation done') { throw 'terrain: xLODGen did not finish' }
+    $p | Stop-Process -Force
     $n = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Say "terrain: $n files"
     if (-not $n) { throw 'terrain: no .btr or .dds written' }
     Link-Into-Data $Out.terrain   # DynDOLOD culls object LOD below the terrain LOD
