@@ -237,20 +237,24 @@ def _laid_height_fog():
     return laid
 
 
-def test_height_fog_is_the_features_shipped_defaults():
-    """Round 5 (sky A/B, shaders on: flat grey-cyan veil, no clouds, hard white horizon): round 4's density 0.1 (20x the
-    0.005 default) fogged a level ray 29 % over the 49,021 u fog far and the sky dome nearly wholly. The global override
-    carries the Community Shaders defaults (density 0.005, falloff 0.2, startDistance 0, fogHeight 0), every value inside
-    the slider ranges, volumetric on; no per-weather file overrides it; the mist is the weather records' own."""
-    from tools.argonia_world.regions import api
+def test_height_fog_is_off_until_authored_within_measured_bounds():
+    """Round 5 sky bisect ruling (owner-brief 2026-11-03, ea4a3909): Community Shaders' height fog and volumetric lighting
+    are OFF until authored within measured bounds (with them on the sky was a grey veil with no clouds). The laid global
+    override is density 0.0, volumetricFogEnabled 0, and the volumetric lighting ExteriorEnabled false; the seed's
+    HEIGHT_FOG says the same; no per-weather file overrides it; the mist is the weather records' own."""
+    import json
+    from pathlib import Path
+    from tools.argonia_world.regions import api, weather_seed
     laid = _laid_height_fog()
     assert len(laid) == 1 and api.cs_fog_files(None, None) == []  # the global only, no per-weather file
     f = laid[0]
-    assert f["enabled"] == 1 and f["volumetricFogEnabled"] == 1 and f["disableVanillaFog"] == 0
-    assert (f["fogDensity"], f["fogHeightFalloff"], f["startDistance"], f["fogHeight"]) == (0.005, 0.2, 0.0, 0.0)
-    assert 0 < f["fogDensity"] <= 1 and 0.001 <= f["fogHeightFalloff"] <= 2.0 and 0 <= f["startDistance"] <= 100000
-    # a level ray over the mist weathers' day fog far (49,021 u): about 2 % fogged, not 29 %
-    assert 1 - 2 ** (-f["fogDensity"] / 1000 * 49021 / 1) < 0.01 + 0.2
+    assert f["fogDensity"] == 0.0 and f["volumetricFogEnabled"] == 0 and f["disableVanillaFog"] == 0
+    assert weather_seed.HEIGHT_FOG["fogDensity"] == f["fogDensity"]
+    assert 0.001 <= f["fogHeightFalloff"] <= 2.0 and f["startDistance"] == 0.0 and f["fogHeight"] == 0.0
+    deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
+    vl = [json.loads(x["text"]) for d in deps["mods"] for x in d.get("files", [])
+          if x["path"].endswith("Argonia_VolumetricLighting.json")]
+    assert len(vl) == 1 and vl[0]["ExteriorEnabled"] is False
 
 
 def test_no_mist_weather_file_is_laid_and_sync_is_in_step():

@@ -24,11 +24,25 @@ def _implicit():
             and place_build.water_seat(r.piece) is None]  # docks and boats stand on the water (test_place_seating)
 
 
+def _deck_seat(world, final, r):
+    """The water + DOCK_DECK_M height of a person's actor or owned marker over cell water (lane 1.3-r5-livia), else None."""
+    if not place_build._is_person_spot(world, r):
+        return None
+    lv = place_build.water_level(world, r.x_m, r.y_m)
+    return lv + place_build.DOCK_DECK_M if lv is not None and final.z(r.x_m, r.y_m) < lv else None
+
+
 def _off(ground, final):
-    """(metres off the final ground, ref id) of every implicit-z ref, as place_build._pos places it."""
-    ctx = type("Ctx", (), {"ground": ground, "world": db.open()})
-    return [(abs(place_build._pos(ctx, "exterior", r)[2] / su.UNITS_PER_METRE - final.z(r.x_m, r.y_m)), r.id)
-            for r in _implicit()]
+    """(metres off the final ground, ref id) of every implicit-z ref, as place_build._pos places it. A person over cell
+    water is seated on the deck at water + 0.85 m (place_build._pos), so its offset is from that height instead."""
+    world = db.open()
+    ctx = type("Ctx", (), {"ground": ground, "world": world})
+    out = []
+    for r in _implicit():
+        z = place_build._pos(ctx, "exterior", r)[2] / su.UNITS_PER_METRE
+        deck = _deck_seat(world, final, r)
+        out.append((abs(z - (final.z(r.x_m, r.y_m) if deck is None else deck)), r.id))
+    return out
 
 
 def test_implicit_refs_within_half_a_metre_of_the_final_ground(final):

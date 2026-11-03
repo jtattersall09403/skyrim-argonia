@@ -373,14 +373,16 @@ REGIMES = {
 MOUNTAIN_CLASSES = ("border-mountains", "upland-hills")
 
 
-# The Community Shaders Exponential Height Fog at the feature's own shipped defaults (ExponentialHeightFog.h/.cpp:
+# Round 5 sky bisect ruling (docs/owner-brief.md 2026-11-03, ea4a3909): the height fog and volumetric lighting are OFF
+# (density 0.0, volumetric off) until authored within measured bounds; the laid override in data/dependencies.json says
+# so, and the test pins this seed to it. History: the Community Shaders Exponential Height Fog at its own shipped defaults (ExponentialHeightFog.h/.cpp:
 # density 0.005, falloff 0.2, startDistance 0, fogHeight 0; sliders density 0-1, falloff 0.001-2.0, startDistance
 # 0-100000, fogHeight +-22000). Round 4 laid density 0.1 (20x) and falloff 30 (15x the slider cap): a level ray at the
 # eye was fogged 1 - 2^(-0.1e-3 * 0.1 * 49021) = 29 % over the day fog far, and the sky dome, far past that, nearly all
 # of it: the flat grey-cyan veil, no clouds, hard white horizon of the round-5 sky A/B (shaders on vs off). The low mist
 # comes from the weather records (fog near/far), not this shader, so no per-weather file is laid (absent, the global
 # applies).
-HEIGHT_FOG = {"fogHeightFalloff": 0.2, "fogDensity": 0.005, "startDistance": 0.0, "fogHeight": 0.0}
+HEIGHT_FOG = {"fogHeightFalloff": 0.2, "fogDensity": 0.0, "startDistance": 0.0, "fogHeight": 0.0}
 BANK_TOP_U = 3321.93 / 30.0  # the round-4 bank (falloff 30), still the band-copy spacing of weather_mist_band
 BAND_SPAN_M = 1.6  # a band's water levels lie within this, so one height keeps every region's bank top under its eye
 
