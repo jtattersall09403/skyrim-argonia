@@ -36,5 +36,5 @@ def test_vertex_colour():
     assert lh.red_vertex("a.nif", shapes) == ["vertex colour rgb(209, 48, 113)"]
     assert lh.red_vertex("b.nif", shapes) == [] and lh.red_vertex("c.nif", shapes) == []
     assert lh.red_vertex("argonia\\trees\\Hist Trees\\HistFlower01.nif", shapes) == []
-    bad = lh.problems([{"form_key": "1:x", "model": "a.nif"}, {"form_key": "2:x", "model": "b.nif"}], MAN, M, shapes)
-    assert len(bad) == 1 and bad[0].startswith("1:x")
+    rep = lh.vertex_report([{"form_key": "1:x", "model": "a.nif"}, {"form_key": "2:x", "model": "b.nif"}], shapes)
+    assert len(rep) == 1 and rep[0].startswith("1:x")  # a report, never a red: the owner ruled red leaves fine (#37)

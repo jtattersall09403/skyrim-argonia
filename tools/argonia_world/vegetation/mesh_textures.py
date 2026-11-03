@@ -330,6 +330,8 @@ def check() -> int:
     hues = leaf_hue.load()
     flora = {r["form_key"] for r in w.query("SELECT form_key FROM object_form WHERE role_id <> 'rock'")}
     bad += leaf_hue.problems([f for f in placed_forms(w) if f["form_key"] in flora], man, hues)
+    for r in leaf_hue.vertex_report([f for f in placed_forms(w) if f["form_key"] in flora]):
+        print("textures: report (not a red), red vertex colour:", r)
     for b in bad:
         print("textures:", b)
     misses = sorted({t for m in man["meshes"].values() for _, t in m["slots"] if man["sources"].get(t) is None})

@@ -216,6 +216,23 @@ def admits(eco: str, f) -> bool:
     return eco in ROLE_ECO.get(f["role_id"], (eco,))
 
 
+# Forms whose own mesh draws wrong under our stack (owner #37, 2026-11-03 11:54: "neon bluey green" and "pale washed
+# out wide trunk trees"); measured by lane 1.15-r5-trees-2 (docs/research/2026-11-03/lane-1.15-r5-trees-2.md) from each
+# NIF's BSLightingShaderProperty and the leaf-hue diffuse means. No install-time NIF patcher exists yet (0014), so the
+# form leaves the lists until one rewrites these shaders; bamboo stays lore-grounded (fauna-hazards.md:95) for that day.
+LOOK_DROP = {
+    "7FD0F3:King of the Murkmire.esp": "BambooCluster01 leaves: soft-lit 5.0 with no soft-light map, own-emit grey 0.47",
+    "0D85C2:Black Marsh.esm": "01kelpcluser: own-emit cyan (0.08, 0.62, 0.62) on an orange diffuse, soft-lit 3.0",
+    "463246:King of the Murkmire.esp": "ctq_kapoktree01: bark diffuse luminance 132 (placed bark median 59), gloss 20",
+    "463247:King of the Murkmire.esp": "ctq_kapoktree02: bark diffuse luminance 132",
+    "463248:King of the Murkmire.esp": "ctq_kapoktree03: bark diffuse luminance 132",
+    "463249:King of the Murkmire.esp": "ctq_kapoktree04: bark diffuse luminance 132",
+    "46324A:King of the Murkmire.esp": "ctq_kapoktree05: bark diffuse luminance 132",
+    "0EB91F:King of the Murkmire.esp": "RainforestTree01: bark soft-lit and double-sided with no soft-light map",
+    "0EB921:King of the Murkmire.esp": "RainforestTree02: bark soft-lit and double-sided with no soft-light map",
+}
+
+
 def usable(w) -> dict[str, list]:
     """role -> usable forms (a mod supplies the mesh and every diffuse it names, an OBND known; a rock or tree with
     a measured body that is not climbable, or a rock never measured, dropped: forms.climbable), BM&V first, then most placed by their mod."""
@@ -226,7 +243,6 @@ def usable(w) -> dict[str, list]:
     bare_forms = mesh_textures.untextured_forms(man)  # a MODS diffuse no row lays, not overridden (lane 1.15-r3-mods)
     from tools.argonia_world.vegetation import leaf_hue
     hues = leaf_hue.load()
-    vshapes = leaf_hue.load_meshes()
     from tools.argonia_world.vegetation import seat
     seats = seat.load()
     rows = w.query("SELECT * FROM object_form WHERE mesh_source <> 'vanilla' AND bound_z1 IS NOT NULL "
@@ -236,8 +252,11 @@ def usable(w) -> dict[str, list]:
             continue  # excluded since the inventory was read (forms.EXCLUDE: a building piece is not flora)
         if mesh_textures.mesh_path(r["model"]) in bare or r["form_key"] in bare_forms:
             continue  # round 1's white plants and pale rocks (lane 1.15-r2-textures)
-        if leaf_hue.red_textures(r["model"], man, hues) or (r["role_id"] != "rock" and leaf_hue.red_vertex(r["model"], vshapes)):
-            continue  # a red or magenta leaf in a green swamp (lane 1.15-r4-red-trees; leaf_hue.py)
+        if r["form_key"] in LOOK_DROP:
+            continue  # the form's own mesh draws neon or washed out (LOOK_DROP; lane 1.15-r5-trees-2)
+        if leaf_hue.red_textures(r["model"], man, hues):
+            continue  # a red or magenta leaf diffuse in a green swamp (lane 1.15-r4-red-trees; leaf_hue.py). A red VERTEX
+            # colour no longer drops a form: the owner ruled red leaves fine (#37, 2026-11-03 11:54; lane 1.15-r5-trees-2)
         if r["role_id"] in SEATED_ROLES and not seat.standing(r["form_key"], r["model"], r["bound_z0"], seats):
             continue  # no seat its mod measures, or a piece that hangs above the ground at it (finding 4)
         if r["role_id"] == "rock" and r["mesh_source"] in VANILLA_SHAPE:

@@ -237,7 +237,13 @@ def red_textures(model: str, man: dict, measured: dict) -> list[str]:
     return sorted({t for s, t in slots if s == 0 and red(t, measured)})
 
 
-def problems(placed: list[dict], man: dict, measured: dict, shapes: dict | None = None) -> list[str]:
-    shapes = load_meshes() if shapes is None else shapes
+def problems(placed: list[dict], man: dict, measured: dict) -> list[str]:
     return [f"{f['form_key']} {f['model']}: red leaf {', '.join(ts)}"
-            for f in placed if (ts := red_textures(f["model"], man, measured) + red_vertex(f["model"], shapes))]
+            for f in placed if (ts := red_textures(f["model"], man, measured))]
+
+
+def vertex_report(placed: list[dict], shapes: dict | None = None) -> list[str]:
+    """Placed forms whose leaf shape carries a red vertex colour: a report, never a red. The owner ruled red leaves
+    fine if they look reasonable (#37, 2026-11-03 11:54; lane 1.15-r5-trees-2 reverses lane 1.15-r5-crimson's drop)."""
+    shapes = load_meshes() if shapes is None else shapes
+    return [f"{f['form_key']} {f['model']}: {', '.join(ts)}" for f in placed if (ts := red_vertex(f["model"], shapes))]
