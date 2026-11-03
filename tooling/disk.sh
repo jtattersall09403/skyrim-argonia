@@ -35,9 +35,14 @@ archive() {  # $1 worktree -> s3://$BUCKET/worktrees/<name>/
     git -C "$wt" bundle create -q "$tmp/head.bundle" HEAD --not origin/main  # a ref: a bare sha bundles empty
     echo "unmerged $(git -C "$main" log --oneline origin/main.."$head" | wc -l) commits in head.bundle" >> "$tmp/manifest.txt"
   fi
-  [ -d "$wt/out" ] && aws s3 sync "$wt/out" "$dst/out" --no-follow-symlinks --only-show-errors \
-    --storage-class STANDARD_IA --exclude '*.esm' --exclude '*.esp' --exclude '*.bsa'
-  aws s3 cp "$tmp" "$dst" --recursive --only-show-errors --storage-class STANDARD_IA
+  # one tar of out/ (symlinks to the main tree's build inputs skipped), Standard class: the per-file sync into
+  # Infrequent Access cost ~150k PUT requests ($1.54) in three days (85,791 objects by 3 Nov; owner, #37 11:54), and IA
+  # bills a 128 KB minimum per object and 30 days: four objects per lane instead of thousands
+  if [ -d "$wt/out" ]; then
+    (cd "$wt" && find out -type f ! -name '*.esm' ! -name '*.esp' ! -name '*.bsa' -print0 | tar --null -T - -czf "$tmp/out.tgz")
+    [ "$(tar -tzf "$tmp/out.tgz" | wc -l)" -gt 0 ] || rm "$tmp/out.tgz"
+  fi
+  aws s3 cp "$tmp" "$dst" --recursive --only-show-errors
   rm -rf "$tmp"
 }
 
