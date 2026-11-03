@@ -16,18 +16,18 @@ camera: first
 steps:
 - name: sea
   # sea water from cell (-61,-14), level 0.0 m
-  # subject: -247887 -98502 174
+  # subject: -247875 -96458 172
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -60 -18, settle: 60}
+  - console: {line: cow ARG_Province -61 -17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245460
-  - console: player.setpos y -70595
-  - console: player.setpos z 53
+  - console: player.setpos x -249521
+  - console: player.setpos y -68494
+  - console: player.setpos z 51
   - wait: 6
-  - console: player.setangle z 185
+  - console: player.setangle z 177
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -41,10 +41,10 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -156260
-  - console: player.setpos y -96710
-  - console: player.setpos z 158
+  - console: player.setpos y -96991
+  - console: player.setpos z 152
   - wait: 6
-  - console: player.setangle z 102
+  - console: player.setangle z 101
   - console: player.setangle x 1
   - wait: 4
   expect:
@@ -75,7 +75,7 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x 69195
-  - console: player.setpos y -25997
+  - console: player.setpos y -25717
   - console: player.setpos z 200
   - wait: 6
   - console: player.setangle z 182
@@ -88,15 +88,15 @@ steps:
   # creek-se water from cell (-44,-8), level 117.5 m
   # subject: -172404 -30951 7429
   do:
-  - console: {line: cow ARG_Province -45 -8, settle: 60}
+  - console: {line: cow ARG_Province -45 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -180932
-  - console: player.setpos y -28804
-  - console: player.setpos z 8586
+  - console: player.setpos x -180792
+  - console: player.setpos y -27824
+  - console: player.setpos z 8410
   - wait: 6
-  - console: player.setangle z 104
-  - console: player.setangle x 8
+  - console: player.setangle z 110
+  - console: player.setangle x 7
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: stream}

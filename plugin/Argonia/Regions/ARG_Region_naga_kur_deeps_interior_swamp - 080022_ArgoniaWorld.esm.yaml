@@ -308,7 +308,7 @@ Objects:
     Radius: 840
     Unknown2: 0x000000000000
   - Object: 0D85BB:Black Marsh.esm
-    Density: 7.5638
+    Density: 8.3202
     Clustering: 4
     MaxSlope: 38
     Radius: 1127
@@ -324,14 +324,6 @@ Objects:
     Clustering: 3
     MaxSlope: 30
     Radius: 560
-    Unknown2: 0x000000000000
-  - Object: 0E6794:King of the Murkmire.esp
-    Density: 3.7819
-    Clustering: 4
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1127
     Unknown2: 0x000000000000
   - Object: 0E67A8:King of the Murkmire.esp
     Density: 83.4927
@@ -366,15 +358,7 @@ Objects:
     Radius: 674
     Unknown2: 0x000000000000
   - Object: 0EB924:King of the Murkmire.esp
-    Density: 3.7819
-    Clustering: 4
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1127
-    Unknown2: 0x000000000000
-  - Object: 0F0AB8:King of the Murkmire.esp
-    Density: 3.7819
+    Density: 4.1601
     Clustering: 4
     MaxSlope: 38
     Flags:
@@ -396,7 +380,7 @@ Objects:
     Radius: 560
     Unknown2: 0x000000000000
   - Object: 120661:Black Marsh.esm
-    Density: 7.5638
+    Density: 8.3202
     Clustering: 4
     MaxSlope: 38
     Radius: 1127
@@ -415,16 +399,24 @@ Objects:
     - Tree
     Radius: 498
     Unknown2: 0x000000000000
-  - Object: 15B1E3:King of the Murkmire.esp
-    Density: 3.7819
+  - Object: 15B1E8:King of the Murkmire.esp
+    Density: 4.1601
     Clustering: 4
     MaxSlope: 38
     Flags:
     - Tree
     Radius: 1127
     Unknown2: 0x000000000000
-  - Object: 15B1E8:King of the Murkmire.esp
-    Density: 3.7819
+  - Object: 15B1EB:King of the Murkmire.esp
+    Density: 4.1601
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1127
+    Unknown2: 0x000000000000
+  - Object: 15B1F4:King of the Murkmire.esp
+    Density: 4.1601
     Clustering: 4
     MaxSlope: 38
     Flags:
@@ -444,7 +436,7 @@ Objects:
     Radius: 498
     Unknown2: 0x000000000000
   - Object: 1B32DC:Black Marsh.esm
-    Density: 7.5638
+    Density: 8.3202
     Clustering: 4
     MaxSlope: 38
     Radius: 1127

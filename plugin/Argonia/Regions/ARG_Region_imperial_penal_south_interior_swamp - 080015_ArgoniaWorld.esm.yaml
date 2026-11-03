@@ -656,7 +656,7 @@ Objects:
     Radius: 840
     Unknown2: 0x000000000000
   - Object: 0D85BB:Black Marsh.esm
-    Density: 6.1893
+    Density: 6.8082
     Clustering: 4
     MaxSlope: 38
     Radius: 1313
@@ -672,14 +672,6 @@ Objects:
     Clustering: 3
     MaxSlope: 30
     Radius: 560
-    Unknown2: 0x000000000000
-  - Object: 0E6794:King of the Murkmire.esp
-    Density: 3.0946
-    Clustering: 4
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1313
     Unknown2: 0x000000000000
   - Object: 0E67A8:King of the Murkmire.esp
     Density: 49.0888
@@ -714,15 +706,7 @@ Objects:
     Radius: 533
     Unknown2: 0x000000000000
   - Object: 0EB924:King of the Murkmire.esp
-    Density: 3.0946
-    Clustering: 4
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1313
-    Unknown2: 0x000000000000
-  - Object: 0F0AB8:King of the Murkmire.esp
-    Density: 3.0946
+    Density: 3.4041
     Clustering: 4
     MaxSlope: 38
     Flags:
@@ -744,7 +728,7 @@ Objects:
     Radius: 560
     Unknown2: 0x000000000000
   - Object: 120661:Black Marsh.esm
-    Density: 6.1893
+    Density: 6.8082
     Clustering: 4
     MaxSlope: 38
     Radius: 1313
@@ -763,16 +747,24 @@ Objects:
     - Tree
     Radius: 508
     Unknown2: 0x000000000000
-  - Object: 15B1E3:King of the Murkmire.esp
-    Density: 3.0946
+  - Object: 15B1E8:King of the Murkmire.esp
+    Density: 3.4041
     Clustering: 4
     MaxSlope: 38
     Flags:
     - Tree
     Radius: 1313
     Unknown2: 0x000000000000
-  - Object: 15B1E8:King of the Murkmire.esp
-    Density: 3.0946
+  - Object: 15B1EB:King of the Murkmire.esp
+    Density: 3.4041
+    Clustering: 4
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1313
+    Unknown2: 0x000000000000
+  - Object: 15B1F4:King of the Murkmire.esp
+    Density: 3.4041
     Clustering: 4
     MaxSlope: 38
     Flags:
@@ -792,7 +784,7 @@ Objects:
     Radius: 508
     Unknown2: 0x000000000000
   - Object: 1B32DC:Black Marsh.esm
-    Density: 6.1893
+    Density: 6.8082
     Clustering: 4
     MaxSlope: 38
     Radius: 1313
