@@ -8,7 +8,9 @@ cd /home/ubuntu/skyrim-argonia
 PY=$HOME/.argonia/venv/bin/python
 # Resumable per step (eight spot interruptions of the build VM on 2026-11-03 restarted it from the top each time, ~15 min):
 # a step whose verdict is OK for the same inputs (HEAD, the lists and the ground) is skipped on a rerun.
-key=$( { git rev-parse HEAD; sha256sum world/db/land_region_object.jsonl tools/argonia_world/vegetation/lists.py 2>/dev/null; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
+# the key is the build's inputs (the tracked blobs of the world data, the generators and the plugin YAML, plus the
+# ground), not HEAD: a tooling commit (13:40) made a resumed run redo every step
+key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart plugin tests/journeys tests/scenes data; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
 state="$HOME/.argonia/round/prebatch.$key.state"; mkdir -p "$(dirname "$state")"; touch "$state"
 step() { local n=$1; shift; local s=$SECONDS
   if grep -qx "$n OK" "$state"; then echo "PREBATCH $n OK (done earlier for $key)"; return 0; fi
