@@ -35,13 +35,8 @@ archive() {  # $1 worktree -> s3://$BUCKET/worktrees/<name>/
     git -C "$wt" bundle create -q "$tmp/head.bundle" HEAD --not origin/main  # a ref: a bare sha bundles empty
     echo "unmerged $(git -C "$main" log --oneline origin/main.."$head" | wc -l) commits in head.bundle" >> "$tmp/manifest.txt"
   fi
-  # one tar of out/ (symlinks to the main tree's build inputs skipped), Standard class: the per-file sync into
-  # Infrequent Access cost ~150k PUT requests ($1.54) in three days (85,791 objects by 3 Nov; owner, #37 11:54), and IA
-  # bills a 128 KB minimum per object and 30 days: four objects per lane instead of thousands
-  if [ -d "$wt/out" ]; then
-    (cd "$wt" && find out -type f ! -name '*.esm' ! -name '*.esp' ! -name '*.bsa' -print0 | tar --null -T - -czf "$tmp/out.tgz")
-    [ "$(tar -tzf "$tmp/out.tgz" | wc -l)" -gt 0 ] || rm "$tmp/out.tgz"
-  fi
+  # no build output is archived (owner, 2026-11-03 12:18: the bucket held 85,793 lane objects, 5.8 GB, all rebuildable):
+  # only the manifest, the patch, the untracked files and any unpushed commits, a few kilobytes
   aws s3 cp "$tmp" "$dst" --recursive --only-show-errors
   rm -rf "$tmp"
 }
