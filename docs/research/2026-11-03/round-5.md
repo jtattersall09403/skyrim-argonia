@@ -73,6 +73,11 @@ soft, water reads as water at the coast; the zenith still a pale grey-blue, dawn
 cards on two or three frontier forms (lane 1.15-r5-sky-2: Tropical Skyrim's own sky colours as the templates, 0006
 §8; the neon forms).
 
+The 17:06 batch closed at 2 of 6 journeys green by the runner (sky-ab, creatures-kinds; 91 stills): menus red only
+at the lockpick step (moved out), chart red at the barter close, water-types and the world panel red on the new camera
+assertion (lane harness-r5-camera-read) and the water stops off their aim after the refresh (lane harness-r5-water-aim).
+The ten saves remade next; the Settings and Load pages re-proved alone by the system-pages journey.
+
 ## The close (in progress)
 
 The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
