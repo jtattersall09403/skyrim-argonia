@@ -139,6 +139,13 @@ Get-Content $o -EA SilentlyContinue' ;;
       if head -1 "$q" 2>/dev/null | grep -q "^queued for $M " && [ ! -f "${q%.log}.started" ] && [ ! -f "${q%.log}.rc" ] \
          && kill -0 "$(cat "${q%.log}.pid" 2>/dev/null || echo 0)" 2>/dev/null; then
         echo "not stopping $M: job $n is queued for it"; exit 0; fi; done
-    echo "stopping $M ($R)"; "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null; echo "stopping $M" ;;
+    echo "stopping $M ($R)"; "$here/saves.sh" backup || echo "saves backup failed" >&2; aws ec2 stop-instances --region $R --instance-ids "$(id)" >/dev/null
+    # the state reads "running" for a moment after the call: an `up` issued in that second (a chained round's first
+    # step, 2026-11-03 09:41) deployed onto a machine that was going down, so wait until the state has moved
+    for i in $(seq 1 12); do
+      s=$(aws ec2 describe-instances --region $R --instance-ids "$(id)" --query 'Reservations[0].Instances[0].State.Name' --output text 2>/dev/null)
+      [ "$s" != running ] && break; read -t 2 < /dev/zero 2>/dev/null || true
+    done
+    echo "stopping $M" ;;
   *) sed -n '2,10p' "$0"; exit 2 ;;
 esac
