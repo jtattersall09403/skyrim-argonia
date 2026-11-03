@@ -14,7 +14,10 @@ cd "$(dirname "$(readlink -f "$0")")/../.."
 export ARGONIA_PLAY=$m
 PY=$(command -v "$HOME/.argonia/venv/bin/python" || command -v python3)
 id=$("$PY" -c 'import sys, yaml; print(yaml.safe_load(open(sys.argv[1])).get("id") or sys.argv[1].rsplit("/", 1)[-1].rsplit(".", 1)[0])' "$batch")
-build=$( { git rev-parse HEAD; sha256sum out/Argonia.esm out/ArgoniaWorld.esm 2>/dev/null; } | sha256sum | cut -c1-12)
+# the build key is what the deploy and the batch depend on (the two ESMs, the deploy inputs' tracked blobs: the stack,
+# data, UI, SKSE, journeys and scenes), never HEAD: a planner commit during a round made a resumed round redeploy and
+# restart its batch (decision 0037, 2026-11-03)
+build=$( { sha256sum out/Argonia.esm out/ArgoniaWorld.esm 2>/dev/null; git ls-files -s infra/gpu-box data ui skse tools/ArgoniaGen tests/journeys tests/scenes; } | sha256sum | cut -c1-12)
 state="$HOME/.argonia/round/$id.$build.state"; mkdir -p "$(dirname "$state")"; touch "$state"
 t0=$SECONDS
 done_ok() { grep -qx "$1 OK" "$state"; }
