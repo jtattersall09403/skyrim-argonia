@@ -283,8 +283,10 @@ def water(into: Path, sample: bool) -> Path:
     stamp = WATER_OUT / "water.stamp"
     now = _water_stamp()
     if not (stamp.exists() and stamp.read_text() == now and (WATER_OUT / "cells.jsonl").exists()):
-        run(sys.executable, "-m", "tools.argonia_world.water", "check", capped=True)
+        # emit first: the check's placement rules judge the emitted stream (a check before the emit judged round 3's
+        # pieces and types and failed round 4's first build, 2026-11-03 00:11)
         run(sys.executable, "-m", "tools.argonia_world.water", "emit", "--out", WATER_OUT, capped=True)
+        run(sys.executable, "-m", "tools.argonia_world.water", "check", capped=True)
         stamp.write_text(now)
     if not sample:
         return WATER_OUT
