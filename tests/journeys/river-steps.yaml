@@ -6,7 +6,6 @@
 # ground. At a gully: no water surface, a dry bed. At a still body: the surface does not flow (no drift).
 # Every stop (lane 1.15-r4-water-look): near and far water read as water, no marbled or blocky white-and-dark tiles.
 id: river-steps
-reach: [esm, "tools/argonia_world/water/**", "tools/argonia_world/terrain/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: creature-spots
@@ -38,12 +37,12 @@ steps:
   - console: {line: cow ARG_Province -48 17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -193282
-  - console: player.setpos y 70390
-  - console: player.setpos z 14901
+  - console: player.setpos x -193142
+  - console: player.setpos y 70148
+  - console: player.setpos z 14852
   - wait: 6
   - console: player.setangle z 150
-  - console: player.setangle x 29
+  - console: player.setangle x 32
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-2}
@@ -106,12 +105,12 @@ steps:
   - console: {line: cow ARG_Province -60 26, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245632
-  - console: player.setpos y 108698
-  - console: player.setpos z 22496
+  - console: player.setpos x -245142
+  - console: player.setpos y 107648
+  - console: player.setpos z 22524
   - wait: 6
-  - console: player.setangle z 180
-  - console: player.setangle x 8
+  - console: player.setangle z 270
+  - console: player.setangle x 20
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: gully-3}

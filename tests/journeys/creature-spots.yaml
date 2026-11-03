@@ -6,7 +6,6 @@
 # Marsh kind (no Skyrim animal), on ground or in water its kind allows; at the den the predator beside
 # it. The kind of each base read is its creature_form row. The planner runs it in the round's batch.
 id: creature-spots
-reach: [esm, "tools/argonia_world/creatures/**", data/creature-kind-bars.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: creature-spots
@@ -14,16 +13,16 @@ camera: first
 steps:
 - name: water-day
   # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water
-  # subject: -150144 103424 27853
+  # subject: -150272 103680 27853
   do:
   - hud: off
   - console: tgm
   - console: {line: cow ARG_Province -37 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -150704
-  - console: player.setpos y 103424
-  - console: player.setpos z 14193
+  - console: player.setpos x -150832
+  - console: player.setpos y 103680
+  - console: player.setpos z 14308
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -31,14 +30,14 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_day}
 - name: water-night
   # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore
-  # subject: -143488 153984 14432
+  # subject: -143360 154240 14415
   do:
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - console: player.setpos x -144048
-  - console: player.setpos y 153984
-  - console: player.setpos z 14486
+  - console: player.setpos x -143920
+  - console: player.setpos y 154240
+  - console: player.setpos z 14481
   - console: player.setangle z 90
   - wait: 6
   expect:
@@ -46,29 +45,29 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_night}
 - name: marsh-day
   # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -117632 135680 2549
+  # subject: -118016 135936 2620
   do:
   - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -117772
-  - console: player.setpos y 135680
-  - console: player.setpos z 2513
-  - console: player.setangle z 90
+  - console: player.setpos x -118115
+  - console: player.setpos y 136035
+  - console: player.setpos z 2601
+  - console: player.setangle z 135
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
   - {read: [actors, "2801"], path: listed, keep: marsh_day}
 - name: marsh-night
   # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land
-  # subject: -103296 127488 695
+  # subject: -104576 127360 756
   do:
   - console: {line: cow ARG_Province -26 31, settle: 60}
   - wait: 8
   - console: set gamehour to 1
-  - console: player.setpos x -103576
-  - console: player.setpos y 127488
-  - console: player.setpos z 656
+  - console: player.setpos x -105136
+  - console: player.setpos y 127360
+  - console: player.setpos z 701
   - console: player.setangle z 90
   - wait: 6
   expect:

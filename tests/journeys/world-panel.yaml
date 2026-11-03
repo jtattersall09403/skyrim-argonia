@@ -363,28 +363,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -127872
+     "gt": -126752
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -127272
+     "lt": -126152
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -144916
+     "gt": -145196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144316
+     "lt": -144596
     },
     {
      "read": [
@@ -437,28 +437,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -127872
+     "gt": -126752
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -127272
+     "lt": -126152
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -144916
+     "gt": -145196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144316
+     "lt": -144596
     },
     {
      "read": [
@@ -1547,28 +1547,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -396
+     "gt": -1128
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 204
+     "lt": -528
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 226652
+     "gt": 227216
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227252
+     "lt": 227816
     },
     {
      "read": [
@@ -1621,28 +1621,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -396
+     "gt": -1128
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 204
+     "lt": -528
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 226652
+     "gt": 227216
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227252
+     "lt": 227816
     },
     {
      "read": [
@@ -1843,28 +1843,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -66944
+     "gt": -66244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -66344
+     "lt": -65644
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -13588
+     "gt": -13168
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -12988
+     "lt": -12568
     },
     {
      "read": [
@@ -1917,28 +1917,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -66944
+     "gt": -66244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -66344
+     "lt": -65644
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -13588
+     "gt": -13168
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -12988
+     "lt": -12568
     },
     {
      "read": [
@@ -2435,28 +2435,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156389
+     "gt": -155796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155789
+     "lt": -155196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 56228
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56828
+     "lt": 56364
     },
     {
      "read": [
@@ -2509,28 +2509,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156389
+     "gt": -155796
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155789
+     "lt": -155196
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 56228
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56828
+     "lt": 56364
     },
     {
      "read": [
