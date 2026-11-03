@@ -262,7 +262,12 @@ switch ($Cmd) {
   }
   'menu' {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { Stop-Process -Name SkyrimSE -Force; Start-Sleep 3 }
-    if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    # -Shaders on|off (round 5's sky A/B, 2026-11-03): `on` is run again so the DLL is back after an `off` launch,
+    # then `off` sets only Community Shaders' DLL aside, as the play-modded cards do (its settings files stay).
+    if ($Shaders -or -not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
+    $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
+    if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
+    elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
     $skse = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition\SKSE"
     Remove-Item "$skse\skse64.log" -EA SilentlyContinue
     $crashes = @(Get-ChildItem "$skse\crash-*.log" -EA SilentlyContinue).Count

@@ -325,7 +325,10 @@ class Bridge:
         laid = self.machine.helper("prepare", *(["-Fresh"] if fresh else []), timeout=900)
         if not laid.get("laid"):
             raise BridgeError(f"the DLL was not laid: {laid}")
-        out = self.machine.desktop(r"$env:ARGONIA_KEEP='1'; & C:\argonia\infra\stack.ps1 menu", wait=wait)
+        # ARGONIA_SHADERS=on|off launches with Community Shaders' DLL laid or set aside (round 5's sky A/B).
+        sh = os.environ.get("ARGONIA_SHADERS", "")
+        flag = f" -Shaders {sh}" if sh in ("on", "off") else ""
+        out = self.machine.desktop(r"$env:ARGONIA_KEEP='1'; & C:\argonia\infra\stack.ps1 menu" + flag, wait=wait)
         if "MAIN-MENU OK" not in out:
             raise GameDown(f"the game did not reach the main menu:\n{out.strip()[-1500:]}")
         self.token(refresh=True)
