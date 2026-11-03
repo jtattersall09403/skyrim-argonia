@@ -26,15 +26,15 @@
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"night","rgb":"5E7360","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"sunrise","rgb":"E8CCA2","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"effectLighting","tod":"sunset","rgb":"E4B48E","why":"light on spell and particle effects; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogFar","tod":"day","rgb":"BCC4A5","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogFar","tod":"day","rgb":"B0C4C6","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"night","rgb":"2C342C","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"sunrise","rgb":"A08667","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogFar","tod":"sunset","rgb":"AF8060","why":"fog colour at the far distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"fogNear","tod":"day","rgb":"8D9A7F","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"fogNear","tod":"day","rgb":"7B9498","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogNear","tod":"night","rgb":"202E21","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogNear","tod":"sunrise","rgb":"9F8664","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"fogNear","tod":"sunset","rgb":"AC805D","why":"fog colour at the near distance; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
-{"weather_id":"clear-dry","slot":"horizon","tod":"day","rgb":"CDD2A5","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
+{"weather_id":"clear-dry","slot":"horizon","tod":"day","rgb":"C7D6CB","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"night","rgb":"2F3029","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"sunrise","rgb":"E4B174","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}
 {"weather_id":"clear-dry","slot":"horizon","tod":"sunset","rgb":"DF8E4B","why":"the horizon band; dry clear: pale hot blue-green sky, olive horizon haze, white-gold sun; night green-black"}

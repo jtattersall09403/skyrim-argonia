@@ -861,7 +861,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist_49m"
     },
     {
      "settle": {
@@ -908,7 +908,7 @@
       "weather"
      ],
      "path": "current.editor_id",
-     "eq": "ARG_Weather_mist",
+     "eq": "ARG_Weather_mist_49m",
      "within": 20
     }
    ]
@@ -1305,7 +1305,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_mist"
+     "console": "sw ARG_Weather_mist_2m"
     },
     {
      "settle": {
@@ -1352,7 +1352,7 @@
       "weather"
      ],
      "path": "current.editor_id",
-     "eq": "ARG_Weather_mist",
+     "eq": "ARG_Weather_mist_2m",
      "within": 20
     }
    ]
@@ -2489,7 +2489,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze_68m"
     },
     {
      "settle": {
@@ -2536,7 +2536,7 @@
       "weather"
      ],
      "path": "current.editor_id",
-     "eq": "ARG_Weather_montane_haze",
+     "eq": "ARG_Weather_montane_haze_68m",
      "within": 20
     }
    ]
@@ -2637,7 +2637,7 @@
      "console": "set gamehour to 6.5"
     },
     {
-     "console": "sw ARG_Weather_montane_haze"
+     "console": "sw ARG_Weather_montane_haze_68m"
     },
     {
      "settle": {
@@ -2684,7 +2684,7 @@
       "weather"
      ],
      "path": "current.editor_id",
-     "eq": "ARG_Weather_montane_haze",
+     "eq": "ARG_Weather_montane_haze_68m",
      "within": 20
     }
    ]

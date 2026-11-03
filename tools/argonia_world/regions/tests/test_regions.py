@@ -270,3 +270,27 @@ def test_every_mist_region_has_a_bank_between_its_water_and_eye():
     assert not bad and len(water) == len(w.values("SELECT 1 FROM region_mist WHERE regime != 'none'")), bad
     assert not api.sync_cs_fog(False)
     assert len(api.cs_fog_files(Allocator(w, frozen=True), w)) == len(top)
+
+
+def test_panel_journey_forces_each_regions_own_current_weather():
+    """world-panel.yaml's `sw` and its read-back are, per vantage and hour, the region's own weather (a band copy
+    re-seeded to new ids leaves an old edid forcing the wrong weather: round 4's first batch), and that weather is in
+    the region's list and has a FormID."""
+    import json
+    from pathlib import Path
+    from tools.argonia_world import db, panel
+    w = db.open()
+    text = (Path(__file__).resolve().parents[4] / "tests" / "journeys" / "world-panel.yaml").read_text()
+    steps = {s["name"]: s for s in json.loads(text[text.index('{\n "id"'):])["steps"]}
+    keyed = {r.editor_id for r in w.rows("formid") if r.record_type == "WTHR"}
+    for v in panel.vantages(w):
+        lr_list = {r["edid"] for r in w.query("SELECT w.edid FROM land_region_weather l JOIN weather w "
+                                              "ON w.id = l.weather_id WHERE l.land_region_id = ?", v["land_region"])}
+        for when in ("noon", "dawn"):
+            edid = v[when]
+            s = steps[f"{v['id']}-{when}"]
+            lines = [d["console"] if isinstance(d["console"], str) else d["console"]["line"]
+                     for d in s["do"] if "console" in d]
+            assert f"sw {edid}" in lines, (s["name"], edid)
+            assert [e["eq"] for e in s["expect"] if e.get("read") == ["weather"]] == [edid], s["name"]
+            assert edid in lr_list and edid in keyed, (s["name"], edid)
