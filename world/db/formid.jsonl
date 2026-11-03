@@ -1285,6 +1285,10 @@
 {"editor_id":"ARG_Msg_RoadClosed","plugin":"Argonia.esm","form_id":2418,"record_type":"MESG","entity_key":"message.road-closed"}
 {"editor_id":"ARG_MusicSilence","plugin":"Argonia.esm","form_id":2049,"record_type":"MUSC"}
 {"editor_id":"ARG_Npc_AmbushDeserter","plugin":"Argonia.esm","form_id":2136,"record_type":"NPC_","entity_key":"npc.imperial-fringe.claywater-station.ambush-deserter"}
+{"editor_id":"ARG_Npc_DomesticGuar1","plugin":"Argonia.esm","form_id":3832,"record_type":"NPC_","entity_key":"creature-at.imperial-fringe.claywater-station.domestic-guar-1"}
+{"editor_id":"ARG_Npc_DomesticGuar1_Den","plugin":"Argonia.esm","form_id":3831,"record_type":"PACK","entity_key":"creature-at.imperial-fringe.claywater-station.domestic-guar-1#den"}
+{"editor_id":"ARG_Npc_DomesticGuar2","plugin":"Argonia.esm","form_id":3835,"record_type":"NPC_","entity_key":"creature-at.imperial-fringe.claywater-station.domestic-guar-2"}
+{"editor_id":"ARG_Npc_DomesticGuar2_Den","plugin":"Argonia.esm","form_id":3834,"record_type":"PACK","entity_key":"creature-at.imperial-fringe.claywater-station.domestic-guar-2#den"}
 {"editor_id":"ARG_Npc_EcoCrocodile","plugin":"Argonia.esm","form_id":2166,"record_type":"NPC_","entity_key":"creature-at.imperial-fringe.claywater-station.eco-crocodile"}
 {"editor_id":"ARG_Npc_EcoCrocodile_Den","plugin":"Argonia.esm","form_id":2165,"record_type":"PACK","entity_key":"creature-at.imperial-fringe.claywater-station.eco-crocodile#den"}
 {"editor_id":"ARG_Npc_LandingSPoler","plugin":"Argonia.esm","form_id":2170,"record_type":"NPC_","entity_key":"npc.imperial-fringe.claywater-station.landing-s-poler"}
@@ -1504,6 +1508,10 @@
 {"editor_id":"ARG_Ref_ClaywaterStationGaius","plugin":"Argonia.esm","form_id":2264,"record_type":"ACHR","entity_key":"ref.claywater-station.gaius"}
 {"editor_id":"ARG_Ref_ClaywaterStationGaiusBed","plugin":"Argonia.esm","form_id":2173,"record_type":"REFR","entity_key":"ref.claywater-station.gaius-bed"}
 {"editor_id":"ARG_Ref_ClaywaterStationKeeperWork","plugin":"Argonia.esm","form_id":2179,"record_type":"REFR","entity_key":"ref.claywater-station.keeper-work"}
+{"editor_id":"ARG_Ref_ClaywaterStationKeptGuar1","plugin":"Argonia.esm","form_id":3836,"record_type":"ACHR","entity_key":"ref.claywater-station.kept-guar-1"}
+{"editor_id":"ARG_Ref_ClaywaterStationKeptGuar1Pen","plugin":"Argonia.esm","form_id":3830,"record_type":"REFR","entity_key":"ref.claywater-station.kept-guar-1-pen"}
+{"editor_id":"ARG_Ref_ClaywaterStationKeptGuar2","plugin":"Argonia.esm","form_id":3837,"record_type":"ACHR","entity_key":"ref.claywater-station.kept-guar-2"}
+{"editor_id":"ARG_Ref_ClaywaterStationKeptGuar2Pen","plugin":"Argonia.esm","form_id":3833,"record_type":"REFR","entity_key":"ref.claywater-station.kept-guar-2-pen"}
 {"editor_id":"ARG_Ref_ClaywaterStationLandDock1","plugin":"Argonia.esm","form_id":2265,"record_type":"REFR","entity_key":"ref.claywater-station.land-dock1"}
 {"editor_id":"ARG_Ref_ClaywaterStationLandDock2","plugin":"Argonia.esm","form_id":2266,"record_type":"REFR","entity_key":"ref.claywater-station.land-dock2"}
 {"editor_id":"ARG_Ref_ClaywaterStationLedger","plugin":"Argonia.esm","form_id":2295,"record_type":"REFR","entity_key":"ref.claywater-station.ledger"}

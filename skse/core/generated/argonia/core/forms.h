@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1656> kForms{{
+inline constexpr std::array<FormRow, 1662> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -520,6 +520,8 @@ inline constexpr std::array<FormRow, 1656> kForms{{
     {"combat-style.melee-ambush", "Argonia.esm", "CSTY", 0x0009C5},
     {"combat-style.sword-and-shield", "Argonia.esm", "CSTY", 0x0009F0},
     {"combat.carriers", "Argonia.esm", "PERK", 0x000855},
+    {"creature-at.imperial-fringe.claywater-station.domestic-guar-1", "Argonia.esm", "NPC_", 0x000EF8},
+    {"creature-at.imperial-fringe.claywater-station.domestic-guar-2", "Argonia.esm", "NPC_", 0x000EFB},
     {"creature-at.imperial-fringe.claywater-station.eco-crocodile", "Argonia.esm", "NPC_", 0x000876},
     {"csf.acrobatics.color", "Argonia.esm", "GLOB", 0x000C0D},
     {"csf.acrobatics.legendary", "Argonia.esm", "GLOB", 0x000C0C},
@@ -1414,6 +1416,10 @@ inline constexpr std::array<FormRow, 1656> kForms{{
     {"ref.claywater-station.gaius", "Argonia.esm", "ACHR", 0x0008D8},
     {"ref.claywater-station.gaius-bed", "Argonia.esm", "REFR", 0x00087D},
     {"ref.claywater-station.keeper-work", "Argonia.esm", "REFR", 0x000883},
+    {"ref.claywater-station.kept-guar-1", "Argonia.esm", "ACHR", 0x000EFC},
+    {"ref.claywater-station.kept-guar-1-pen", "Argonia.esm", "REFR", 0x000EF6},
+    {"ref.claywater-station.kept-guar-2", "Argonia.esm", "ACHR", 0x000EFD},
+    {"ref.claywater-station.kept-guar-2-pen", "Argonia.esm", "REFR", 0x000EF9},
     {"ref.claywater-station.land-dock1", "Argonia.esm", "REFR", 0x0008D9},
     {"ref.claywater-station.land-dock2", "Argonia.esm", "REFR", 0x0008DA},
     {"ref.claywater-station.ledger", "Argonia.esm", "REFR", 0x0008F7},
