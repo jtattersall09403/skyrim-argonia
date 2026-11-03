@@ -24,7 +24,7 @@ Status: `todo`, `in progress (evidence; owed)`, `done (evidence)`, `blocked (why
 | 1 | 1.10 | The player character | done (every row proven: the owner's play test 2, docs/research/2026-10-31/owner-playtest-2.md) |
 | 1 | 1.11 | Our HUD, rebuilt from the old game's | in progress (in game on argonia-play, docs/research/2026-10-31/owner-playtest-2.md; owed: the owner's look) |
 | 1 | 1.12 | The in-game UI: Wind UI under our Argonian patch, the chart, the journal, the dialogue window, the minimap, every device | in progress (the owner's look 1: all 18 findings built, e2c03d5 on both standbys; 11 proven in game, 7 with the owner, #34) |
-| 1 | 1.15 | The world, rebuilt | in progress (round 3 on argonia-play with the nine region saves in the shared copy; the owner walks (#37); the object LOD and the Ireland deploy finish by resumable jobs; rounds 1–3 in docs/research/2026-11-01/round-1.md, docs/research/2026-11-02/round-2.md and docs/research/2026-11-02/round-3.md) |
+| 1 | 1.15 | The world, rebuilt | in progress (round 4 on argonia-play from the owner's play test 3 (34 findings, #37): twenty lanes fixed rivers, roads, materials, light, trees, Claywater, creatures, the map, the menus and the talk at L1–L3; two in-game batches on Paris proved the seats, the still water, the Claywater block, the talk and the map; the LOD rebuilt last and the ten region saves remade; the owner walks again; rounds 1–4 in docs/research/2026-11-01/round-1.md, docs/research/2026-11-02/round-2.md, round-3.md and docs/research/2026-11-03/round-4.md) |
 | 1 | 1.14 | Death, the pile and respawn | todo |
 | 1 | 1.16 | The owed integration checks | todo |
 | 1 | 1.17 | Frame rate and the screen numbers | todo |
