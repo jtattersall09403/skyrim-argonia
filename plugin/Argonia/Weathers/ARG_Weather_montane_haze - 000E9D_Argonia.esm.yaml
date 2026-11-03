@@ -373,7 +373,7 @@ SkyUpperColor:
 FogNearColor:
   Sunrise: '#00868783'
   Day: '#008B9890'
-  Sunset: '#009C968A'
+  Sunset: '#008E9692'
   Night: '#00182724'
 UnknownColor:
   Sunrise: '#0067615C'
@@ -426,9 +426,9 @@ CloudLodAmbientColor:
   Sunset: '#0068635F'
   Night: '#00101918'
 FogFarColor:
-  Sunrise: '#008A8A7F'
-  Day: '#00B3BDB7'
-  Sunset: '#0091867D'
+  Sunrise: '#00818989'
+  Day: '#00A3AFAB'
+  Sunset: '#00838A8D'
   Night: '#00213027'
 SkyStaticsColor:
   Sunrise: '#009D9B84'
