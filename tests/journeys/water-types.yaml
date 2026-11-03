@@ -8,6 +8,7 @@
 # river (flowing), stream (flowing, clear), tarn (cold teal), brackish rim (between marsh and sea); water fills the
 # middle of the frame; near and far water read as water: no marbling, no black-and-green blotch, no white tiles.
 id: water-types
+reach: [esm, "tools/argonia_world/water/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: creature-spots

@@ -10,6 +10,7 @@
 # player's health lowered before the death so the deserter's blow is the lethal one (die-and-recover's rule).
 # Owed at L4 (game-6): `core` and `papyrus-queue` deployed (dec1c2b); the face-and-press E pose tuned once per speaker.
 id: first-place
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: first-place

@@ -6,6 +6,7 @@
 # (run_journey.py _face), so one step forward puts it behind (the back still) and a turn without moving shows the
 # side and the front.
 id: player-look
+reach: [esm, "data/quarantine/**", infra/gpu-box/base_save.py, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 save: ArgoniaWalk
 crash_risk: low

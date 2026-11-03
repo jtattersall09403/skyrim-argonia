@@ -3,6 +3,7 @@
 # fail-forward 92 from a keeper killed by the player's own attacks (lf83-endings stages the death with `kill`).
 # Livia's health is lowered as setup (the means), never her death.
 id: quest-board
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: first-place

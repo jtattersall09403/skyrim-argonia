@@ -7,6 +7,8 @@
 # verdict to ~/.argonia/round/<batch id>.<build>.state, and a step whose verdict is OK is not run again for the same
 # build (git HEAD + ESM hashes). The deploy is incremental by itself (cached plugin, staged rows, per-mod push, SKSE
 # stamp, LOD and shader-cache archives). The machine is stopped on every exit, pass or fail.
+# The batch shrinks by the pass ledger (tools/pass_ledger.py): the plan line "batch: N of M journeys, K of S steps to
+# run" comes before the machine starts, and a batch with nothing left starts no machine.
 # Each step prints `ROUND <step> OK|FAIL in N s`; the last line is `ROUND DONE <passed>/<items> in N s; stills: <file>`.
 set -u
 batch=${1:?batch.yaml}; m=${2:-${ARGONIA_PLAY:-argonia-play}}
@@ -32,6 +34,14 @@ step() {  # step <name> <cmd...>: skipped when OK for this build; verdict line a
 # the machine up (a stop and start between two halves cost ~4 min, 2026-11-03); a failed round still stops it.
 stop_machine() { if [ "${ROUND_KEEP_UP:-}" = 1 ] && [ "${round_rc:-1}" = 0 ]; then echo "ROUND kept up (ROUND_KEEP_UP)"; return; fi
   infra/gpu-box/run.sh stop >/dev/null 2>&1 && echo "ROUND stop OK" || echo "ROUND stop FAIL (stop $m by hand)"; }
+# the pass ledger's shrink (owner, 2026-11-03: a passed check is not run again until its own inputs change), before
+# the machine is started; nothing left to run starts no machine. ROUND_ALL=1 runs every step (run_batch --all).
+all=(); [ "${ROUND_ALL:-}" = 1 ] && all=(--all)
+if ! done_ok batch; then
+  "$PY" tools/run_batch.py --plan "${all[@]}" "$batch"; prc=$?
+  if [ $prc = 3 ]; then echo "ROUND DONE nothing to run: every step passed on the same inputs (ROUND_ALL=1 forces)"; exit 0; fi
+  [ $prc = 0 ] || { echo "ROUND plan FAIL (rc $prc)"; exit 6; }
+fi
 trap stop_machine EXIT
 round_rc=1
 
@@ -53,7 +63,7 @@ print("" if x is None else (x if isinstance(x, str) else (x.get("journey") or x.
   fi
   s=$SECONDS; echo "== batch $(date -u +%H:%M:%S) ${from[*]:-}"
   before=$(ls -td "out/batch/$id"/*/ 2>/dev/null | head -1)
-  "$PY" tools/run_batch.py "${from[@]}" "$batch"; rc=$?
+  "$PY" tools/run_batch.py "${from[@]}" "${all[@]}" "$batch"; rc=$?
   last=$(ls -td "out/batch/$id"/*/ 2>/dev/null | head -1)
   [ "$last" != "$before" ] && echo "batch-dir $last" >>"$state"
   if [ $rc -le 1 ]; then echo "batch OK" >>"$state"; fi

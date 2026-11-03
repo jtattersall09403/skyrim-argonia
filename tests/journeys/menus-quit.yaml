@@ -4,6 +4,7 @@
 # engine's resetGame and the Journal's close, as its confirmation does) writes ArgoniaSuspend as the Journal closes. The
 # journey ends at the main menu: a batch's next item loads its save. Runs last in a batch, or before a relaunch.
 id: menus-quit
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)

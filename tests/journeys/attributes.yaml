@@ -3,6 +3,7 @@
 # (SetAttribute, its clamps and the unknown-name path) goes through the dev bridge's `dev-set`, ArgoniaCore's own native
 # called by the Papyrus VM (the input set; the clamp and the mirror are what is read back).
 id: attributes
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: first-place

@@ -3,6 +3,7 @@
 # w.roll.tier). On the Blackwood Road beyond Claywater's ford (bat claywater-ambush); the load is ingots added as
 # setup. Cut: roll distance, stamina per roll and the i-frame trace (TK Dodge's and the i-frame generator's own).
 id: fight-roll-burden
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater-ambush

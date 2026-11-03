@@ -5,6 +5,7 @@
 # (full zoom-out uncut, the player marker, the minimap and its rose); the L3 stills prove the drawing off-game.
 # The scene never sets what is tested: no reveal, no discovery, no fast-travel switch is set; the walk is the pad.
 id: chart-minimap
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm, "tools/chart/**"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 step_saves: false        # it saves and loads to test the reveal holding

@@ -4,6 +4,7 @@
 # flick (TDM's own behaviour), the arena's three placed hostiles, and beyond-range (TDM's own break rule, our value
 # a mod-default guess; diag2-crash-misc 2026-10-30).
 id: fight-lock-on
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater-ambush

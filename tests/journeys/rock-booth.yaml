@@ -4,6 +4,7 @@
 # own clear weather (no fog over the base). Reader checklist per still: sunk (no open bottom), no gap
 # under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.
 id: rock-booth
+reach: [esm, "tools/argonia_world/vegetation/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: rock-booth

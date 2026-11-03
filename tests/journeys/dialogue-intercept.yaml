@@ -2,6 +2,7 @@
 # The 2.W5 block is gone: ARG_Speaker (KYWD 0x853) is on Livia's NPC_ (plugin/Argonia/Npcs/ARG_Npc_WellKeeper), N1,
 # N13 and the landing's poler. The perk is added by ArgoniaCore on load (engine.cpp EnsurePerk), never the scene.
 id: dialogue-intercept
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: first-place

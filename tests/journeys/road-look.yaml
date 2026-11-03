@@ -6,6 +6,7 @@
 # window (46 %) and the slope window (57 %) of the L3 stills; each faces along the road. Stills are the evidence;
 # each step only checks the player landed in the province.
 id: road-look
+reach: [esm, "tools/argonia_world/routes/**", "tools/argonia_world/terrain/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater

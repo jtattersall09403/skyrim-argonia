@@ -5,6 +5,7 @@
 # proves it: the game quit and launched again, `ArgoniaWalk` loaded with no scene (as the owner loads it), and the
 # player walks.
 id: walk-save
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json, infra/gpu-box/base_save.py]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: claywater

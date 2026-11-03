@@ -4,6 +4,7 @@
 # pool holding water at the clay cut; people whole (no seam, tone mismatch or dark face). Stills are the evidence;
 # each step only checks the teleport landed. Fix and re-shoot until the reader passes them.
 id: claywater-look
+reach: [esm, tools/argonia_world/place_build.py, tools/argonia_world/pieces.py, data/pieces-preference.json, data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater

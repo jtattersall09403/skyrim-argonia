@@ -43,7 +43,13 @@ A crash is a failure: the item is recorded with its crash, the game is relaunche
 goes on. Out: out/batch/<id>/<stamp>/summary.json, rewritten after every item: per item pass/fail, the failing step
 and its reason, seconds (and the scene apply's), private MB before and after, and whether the game was relaunched;
 the totals and the time per step class (launch, scene apply, steps). Each journey's own report sits beside it.
-Exit 0 every item passed, 1 any failed, 2 the game could not be launched again. At the end of every run the
+Exit 0 every item passed, 1 any failed, 2 the game could not be launched again.
+
+The pass ledger (owner, 2026-11-03; tools/pass_ledger.py): a step whose (journey, step, reach hash) last passed is
+not run again ("skipped: passed <time> on the same inputs", its still the ledger's); a journey whose every step passed
+is skipped whole; `--all` runs everything. Every judged step is written to the ledger. `--plan` prints the shrink
+("batch: N of M journeys, K of S steps to run") and exits 3 when nothing is left to run (round.sh then starts no
+machine). The summary counts `steps_run` and `steps_skipped`. At the end of every run the
 `journey:<id>` rows of the check ledgers (docs/phases/*/checks.md) are rewritten from it (tools/check_ledger.py
 update): a pass sets proven with its run dir, a fail sets owed with the failing run; dropped rows stay.
 """
@@ -58,6 +64,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
+from tools import pass_ledger  # noqa: E402
 from tools import run_journey as rj  # noqa: E402
 from tools.bridge import Bridge, BridgeError  # noqa: E402
 
@@ -158,8 +165,11 @@ def lod_tools_running(b) -> list[str]:
 
 
 class Batch:
-    def __init__(self, bridge, batch: dict, out: pathlib.Path, stills: bool = True, clock=time.monotonic):
+    def __init__(self, bridge, batch: dict, out: pathlib.Path, stills: bool = True, clock=time.monotonic,
+                 force: bool = False, ledger: pathlib.Path | None = None):
         self.b, self.batch, self.out, self.stills, self.clock = bridge, batch, out, stills, clock
+        self.force, self.ledger = force, ledger
+        self.index = pass_ledger.last_rows(ledger)
         self.sent: dict = {}  # scenes already on the machine (run_journey's Runner skips an unchanged re-put)
         self.summary = {"id": batch["id"], "out": str(out), "items": [], "launches": [], "passed": False}
         self.since_launch = 0
@@ -192,7 +202,8 @@ class Batch:
             return f"{n} items since the last launch"
         return None
 
-    def run_one(self, it: dict, run: int, load: bool, start: str | None = None, only: bool = False) -> dict:
+    def run_one(self, it: dict, run: int, load: bool, start: str | None = None, only: bool = False,
+                plan: dict | None = None) -> dict:
         stamp = time.strftime("%Y%m%dT%H%M%S")
         out = self.out / f"{len(self.summary['items']) + 1:02d}-{it['id']}-{run}-{stamp}"
         runner = rj.Runner(self.b, out, stills=self.stills, sent=self.sent)
@@ -203,8 +214,11 @@ class Batch:
         else:  # a scene alone: applied, one still; it passes when the bridge and the game took it
             j = {"id": it["id"], "scene": it["id"], "step_saves": False, "steps": [{"name": "applied", "do": [{"wait": 2}]}]}
             save = it["save"] or rj.BASE_SAVE
-        rep = runner.run(j, save, load=load, **({"start": start, "only": only} if start else {}))
+        rep = runner.run(j, save, load=load, skip=(plan or {}).get("skip"),
+                         **({"start": start, "only": only} if start else {}))
         rep["_out"] = str(out)
+        if it["kind"] == "journey":
+            pass_ledger.record(j, rep, (plan or {}).get("hashes"), path=self.ledger)
         return rep
 
     def run(self, start: str | None = None, only: bool = False) -> dict:
@@ -225,6 +239,20 @@ class Batch:
             self.write()
             return self.summary
         for k, it in enumerate(items):
+            plan = item_plan(it, self.index, self.force)
+            if plan is not None and plan["skip"] and not plan["run"]:
+                row = next(iter(plan["skip"].values()), {})
+                why = f"skipped: passed {row.get('time')} on the same inputs"
+                self.summary["items"].append({"kind": it["kind"], "id": it["id"], "run": 1, "passed": True,
+                                              "skipped": why, "steps_run": 0, "steps_skipped": len(plan["skip"]),
+                                              "seconds": 0.0, "scene_s": 0.0, "steps_s": 0.0, "crash": False,
+                                              "failed_at": None, "reason": None, "loaded": False,
+                                              "relaunched_before": False, "mb_before": None, "mb_after": None,
+                                              "owed": [], "report": row.get("run")})
+                print(f"{it['id']}: {why} ({len(plan['skip'])} steps)", flush=True)
+                self.totals(t0)
+                self.write()
+                continue
             for run in range(1, it["runs"] + 1):
                 mb = private_mb(self.b)
                 why = self.need_relaunch(mb)
@@ -245,7 +273,7 @@ class Batch:
                                                                      and not item_needs_load(it))))
                 prev_save = save_now
                 resume = first_step if k == 0 and run == 1 and first_step else None
-                rep = self.run_one(it, run, load, start=resume, only=only and bool(resume))
+                rep = self.run_one(it, run, load, start=resume, only=only and bool(resume), plan=plan)
                 bad = next((s for s in rep["steps"] if not s["passed"]), None)
                 rec = {"kind": it["kind"], "id": it["id"], "run": run, "passed": rep["passed"],
                        "failed_at": rep.get("failed_at"),
@@ -254,7 +282,9 @@ class Batch:
                        "steps_s": round(sum(s.get("seconds", 0) for s in rep["steps"]), 1),
                        "transport_retries": sum(s.get("transport_retries", 0) for s in rep["steps"]),
                        "loaded": load, "relaunched_before": relaunched, "mb_before": mb, "mb_after": private_mb(self.b),
-                       "owed": [o["name"] for o in rep.get("owed", [])], "report": rep["_out"]}
+                       "owed": [o["name"] for o in rep.get("owed", [])], "report": rep["_out"],
+                       "steps_run": sum(1 for x in rep["steps"] if not x.get("skipped")),
+                       "steps_skipped": sum(1 for x in rep["steps"] if x.get("skipped"))}
                 self.summary["items"].append(rec)
                 self.since_launch += 1
                 prev_ok = rep["passed"]
@@ -277,8 +307,31 @@ class Batch:
                                "scene_apply": round(sum(i["scene_s"] or 0 for i in items), 1),
                                "steps": round(sum(i["steps_s"] for i in items), 1)}
         s["transport_retries"] = sum(i.get("transport_retries", 0) for i in items)
+        s["steps_run"] = sum(i.get("steps_run", 0) for i in items)
+        s["steps_skipped"] = sum(i.get("steps_skipped", 0) for i in items)
         mbs = [i["mb_after"] for i in items if i["mb_after"]]
         s["mb_peak"] = max(mbs) if mbs else None
+
+
+def item_plan(it: dict, index: dict, force: bool = False) -> dict | None:
+    """The pass ledger's plan for a journey item (None for a scene or a missing file)."""
+    f = JOURNEYS / f"{it['id']}.yaml"
+    if it.get("kind", "journey") != "journey" or not f.exists():
+        return None
+    return pass_ledger.plan(rj.load_journey(f), index, force=force or it.get("runs", 1) > 1)
+
+
+def shrink(batch: dict, index: dict, force: bool = False) -> dict:
+    """How much of the batch is left to run: journeys (items) and steps, to run and in all."""
+    r = {"items": 0, "items_all": 0, "steps": 0, "steps_all": 0}
+    for it in batch["items"]:
+        p = item_plan(it, index, force)
+        n_all, n_run = (1, 1) if p is None else (len(p["run"]) + len(p["skip"]), len(p["run"]))
+        r["items_all"] += 1
+        r["steps_all"] += n_all
+        r["items"] += 1 if n_run or (p is not None and not p["skip"]) else 0
+        r["steps"] += n_run
+    return r
 
 
 def history(out: pathlib.Path = None) -> dict:
@@ -355,7 +408,9 @@ def main(argv=None) -> int:
     p.add_argument("--only", default=None, help="<item>[:<step>]: that item (or step) alone")
     p.add_argument("--owed", action="store_true", help="list every journey and its status from the run history")
     p.add_argument("--write-owed", type=pathlib.Path, default=None, help="write a batch of every runnable journey not passed")
-    p.add_argument("--all", action="store_true", help="with --write-owed: every runnable journey, passed ones too")
+    p.add_argument("--all", action="store_true", help="run every step, passed ones too (the pass ledger ignored); "
+                   "with --write-owed: every runnable journey")
+    p.add_argument("--plan", action="store_true", help="print the shrink; exit 3 when nothing is left to run")
     p.add_argument("--dry", action="store_true", help="validate every item and its scene; no game")
     p.add_argument("--no-stills", action="store_true", help="stills only for a failed step")
     p.add_argument("--relaunch-mb", type=float, default=None)
@@ -374,14 +429,20 @@ def main(argv=None) -> int:
     batch = load_batch(a.items)
     if a.relaunch_mb:
         batch["relaunch_mb"] = a.relaunch_mb
+    if a.plan:
+        dry(batch)
+        r = shrink(batch, pass_ledger.last_rows(), force=a.all)
+        print(f"batch: {r['items']} of {r['items_all']} journeys, {r['steps']} of {r['steps_all']} steps to run")
+        return 0 if r["items"] else 3
     if a.dry:
         for line in dry(batch):
             print(line)
         return 0
     dry(batch)  # a bad item fails before the game is touched
     out = REPO / "out" / "batch" / batch["id"] / time.strftime("%Y%m%dT%H%M%S")
-    s = Batch(Bridge(), batch, out, stills=not a.no_stills).run(start=a.only or a.start, only=bool(a.only))
-    print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {out / 'summary.json'}")
+    s = Batch(Bridge(), batch, out, stills=not a.no_stills, force=a.all).run(start=a.only or a.start, only=bool(a.only))
+    print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {s.get('steps_run', 0)} steps"
+          f" ran, {s.get('steps_skipped', 0)} skipped (passed on the same inputs); {out / 'summary.json'}")
     from tools import check_ledger  # the check ledgers' journey rows follow the run (owner, 2026-10-31)
     print(f"ledgers: {check_ledger.update(s)} rows rewritten (docs/phases/*/checks.md); commit them with the report")
     for f in s["failed"]:

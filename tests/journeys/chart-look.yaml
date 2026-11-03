@@ -6,6 +6,7 @@
 # ArgoniaCore's console hook), the map key's log line, ArgoniaCore's Views read, and a still (or a burst) per look,
 # each read by a reader with the row's claim and the feel question.
 id: chart-look
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm, "tools/chart/**"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium   # 33 travels by cow
 relaunch_before: true   # a fresh game for the cow travels (run_batch: cow crashes the engine after uptime)

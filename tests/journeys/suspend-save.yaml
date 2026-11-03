@@ -2,6 +2,7 @@
 # the stream client's drop writes it, in combat too; Continue after a quit loads it, and the wake point stays the camp.
 # Ends by a relaunch on the suspend save (no scene: the player resumes where it quit): a save-changing item, last in its batch.
 id: suspend-save
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)

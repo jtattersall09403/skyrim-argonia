@@ -2,6 +2,7 @@
 # the camp writes the one save; a rest inside a settlement is refused. SaveCount (META) counts every co-save write,
 # so a save the game made would move it. A second camp spot is placed at Claywater's well junction (a settlement).
 id: rest-is-the-only-save
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)

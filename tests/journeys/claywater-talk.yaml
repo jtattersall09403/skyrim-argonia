@@ -2,6 +2,7 @@
 # corpse is searched, never spoken to. L1/L2: test_speakers_talk.py, core.talk every_speaker_greets_with_topics,
 # core.views actor_rule, the perk's GetDead/IsInCombat conditions (hooks_records.py). One still per conversation.
 id: claywater-talk
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium   # the kill step
 scene: first-place

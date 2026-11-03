@@ -1,6 +1,9 @@
 """python3 -m tools.journeys refresh [--only a,b]   re-derive every data-driven journey from the current build, pull
                                                   each vantage out of water and foliage; exit 1 if any is still stale
    python3 -m tools.journeys check                 the L1 check alone: every stand against the current build
+   python3 -m tools.journeys ledger pass <journey> <step>   record a reader's PASS for the step's last run in the
+                                                  pass ledger (tools/pass_ledger.py): it is not run again on the
+                                                  same inputs
 
 The build: out/terrain (the LAND heights, the vegetation shards), out/water/cells.jsonl, the world DB (db.py).
 """
@@ -8,6 +11,7 @@ from __future__ import annotations
 
 import json
 import math
+import re
 import sys
 
 from tools.argonia_world import skyrim_units as su
@@ -52,6 +56,7 @@ def refresh(only: set[str] | None = None) -> int:
     from pathlib import Path
     want = lambda n: only is None or n in only  # noqa: E731
     b, w, log = Build(), db.open(), []
+    reach = _reach_lines()  # the generators write whole files: each journey's `reach:` line is put back after
     veg = ROOT / "out" / "terrain" / "vegetation"
     if want("world-panel"):
         _panel(b, w, log)
@@ -83,9 +88,31 @@ def refresh(only: set[str] | None = None) -> int:
     for r in moved + [r for r in stuck if r not in moved]:
         print(f"journeys: {r['journey']} {r['step']}: {r['why']}; moved {r['moved_m']} m"
               f"{'' if r['clear'] else ' (no clear stand within reach)'}")
+    _put_reach(reach)
     (ROOT / "out" / "journeys-refresh.json").write_text(json.dumps(log, indent=1))
     print(f"journeys refresh: {len(log)} vantages, {len(moved)} moved, {len(stuck)} not clear")
     return _check(b, only)
+
+
+def _reach_lines() -> dict:
+    """Each journey file's `reach:` line (the pass ledger's inputs, tools/pass_ledger.py)."""
+    out = {}
+    for f in JOURNEYS.glob("*.yaml"):
+        m = re.search(r"^reach:.*\n", f.read_text(), re.M)
+        if m:
+            out[f] = m.group(0)
+    return out
+
+
+def _put_reach(lines: dict) -> None:
+    """A regenerated journey that lost its `reach:` line gets it back, after its `id:` line."""
+    for f, line in lines.items():
+        t = f.read_text() if f.exists() else ""
+        if re.search(r"^reach:", t, re.M):
+            continue
+        m = re.search(r"^id: .*\n", t, re.M)
+        if m:
+            f.write_text(t[:m.end()] + line + t[m.end():])
 
 
 def _check(b: Build, only=None) -> int:
@@ -103,6 +130,11 @@ def main(argv: list[str]) -> int:
         only = set(argv[argv.index("--only") + 1].split(","))
     if argv[:1] == ["refresh"]:
         return refresh(only)
+    if argv[:2] == ["ledger", "pass"] and len(argv) == 4:
+        from tools import pass_ledger
+        row = pass_ledger.reader_pass(argv[2], argv[3])
+        print(f"ledger: {argv[2]} {argv[3]} PASS (reader) on {row['reach_hash']}, run {row.get('run')}")
+        return 0
     if argv[:1] == ["check"]:
         return _check(Build(), only)
     print(__doc__)

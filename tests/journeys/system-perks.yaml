@@ -6,6 +6,7 @@
 # the perk point, the menus, the favourite and the quit are what is tested. The touch menu button and the click on a
 # perk in Wind UI's list have no runner action yet: their steps are reader stills (see the lane report).
 id: system-perks
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 batch_last: true         # it ends at the main menu

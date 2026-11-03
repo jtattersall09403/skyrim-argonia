@@ -5,6 +5,7 @@
 # back, our Pandora output carries DSC's roll, TDM's lock-on answers. DSC's poise, roll bands, backstab, parry and
 # its Papyrus load are DSC's own behaviour, measured for the trial table in docs/research/journals/combat.md, not here.
 id: combat-trial-b2
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 stack: B2
 crash_risk: low

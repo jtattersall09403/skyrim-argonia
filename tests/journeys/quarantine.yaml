@@ -2,6 +2,7 @@
 # only our silence plays (the bridge's `quests` and `music` reads).
 # Time passes on the game's own clock (the runner's game_hours: the timescale raised, then put back).
 id: quarantine
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: holding

@@ -4,6 +4,7 @@
 # raised timescale), she walks to her door, the door link takes her in, and she lies down. The player waits outside
 # by the road, then goes in through the door to read her.
 id: livia-sleep
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: first-place

@@ -142,6 +142,21 @@ The batch file sets `one_load: true` (one save load per batch: items on the same
 | batch wall time (round 2: 4 journeys, 05:13–06:13) | ~60 min, ~22 min of it run, the rest attempts and hand-offs | the run alone, ~20 min |
 | **in-game round, up to stop** | **~75–100 min** | **~30–35 min** (target ≤ 45) |
 
+### The pass ledger and reach (owner, 2026-11-03)
+
+A check that passed is not run again until something it depends on changes: its own inputs, not the whole build.
+Each journey says what it depends on with `reach:` (repo paths or globs, and `esm` for the two plugin hashes), at the
+journey level and optionally per step; a journey with none keys on the whole build. A step's reach hash covers those
+paths' tracked blob ids, the ESM hashes when named, its scene file, the journey's settings and the step itself.
+`run_batch.py` and `run_journey.py` write every judged step to `~/.argonia/round/passes.jsonl` (journey, step,
+reach_hash, build, time, status, run, still); a step with a `reader:` list is `reader` until the planner records the
+verdict with `python3 -m tools.journeys ledger pass <journey> <step>`. The next batch skips a step whose last row on
+the same hash is `pass` ("skipped: passed <time> on the same inputs", its still the ledger's) and a journey whose every
+step passed; steps hand state on, so a journey runs up to its last step that must run (`independent_steps: true` skips
+each passed step, `needs:` keeps a step a running one depends on). `--all` (round.sh: `ROUND_ALL=1`) runs everything.
+`round.sh` prints "batch: N of M journeys, K of S steps to run" before the machine starts and starts none when nothing
+is left. The check ledgers (`checks.md`) are unchanged: a skipped journey's row keeps its proving run.
+
 ## 4. Where the chunks use loops
 
 Each chunk brief's **Loops** section lists:

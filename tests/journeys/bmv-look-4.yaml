@@ -4,6 +4,7 @@
 # worldspace load keeps ~300 MB; the engine passed 6 GB after five) and `settle` on every console line (a load holds the
 # main thread past the bridge's retries). A reference run on a dependency's worldspace, never a check of our work.
 id: bmv-look-4
+reach: [data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 relaunch_before: true

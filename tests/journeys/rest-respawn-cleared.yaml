@@ -4,6 +4,7 @@
 # four: the LCTN's native cleared flag is set; rest: none is back.
 # DRAFT (runner 0) until Jungle Root Hollow is built into the plugin (no build_ref yet); then runner: 1.
 id: rest-respawn-cleared
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 0
 crash_risk: medium   # one place, two rests (each writes the rest save)
 scene: jungle-root-hollow

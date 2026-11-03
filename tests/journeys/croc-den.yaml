@@ -4,6 +4,7 @@
 # (past the engine's 10-day cell reset) and on return it is still dead. How it attacks and how it dies to blows are
 # KotM's water ambusher as its author built it, not checked here.
 id: croc-den
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high   # cell travel and a long wait away
 scene: first-place

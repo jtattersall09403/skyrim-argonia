@@ -2,6 +2,7 @@
 # nothing in the families; LF83's start (a real topic) gives JRNL, QWCH and TOPC something to carry. Rest is the only
 # save (1.5): the journey saves by resting.
 id: cosave
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 step_saves: false        # it counts or tests saves: no step save (run_journey resume)

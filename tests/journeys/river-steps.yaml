@@ -6,6 +6,7 @@
 # ground. At a gully: no water surface, a dry bed. At a still body: the surface does not flow (no drift).
 # Every stop (lane 1.15-r4-water-look): near and far water read as water, no marbled or blocky white-and-dark tiles.
 id: river-steps
+reach: [esm, "tools/argonia_world/water/**", "tools/argonia_world/terrain/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: creature-spots

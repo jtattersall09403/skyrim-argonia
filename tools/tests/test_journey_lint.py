@@ -77,3 +77,14 @@ def test_talk_names_one_placed_ref():
                    {"name": "b", "do": [{"talk": "Livia 0 110"}]}]}
     errs = L.lint(j, None)
     assert len(errs) == 1 and errs[0].startswith("step b: talk")
+
+
+def test_reach_and_needs():
+    from tools import journey_lint as jl
+    ok = {"reach": ["ui/**", "esm", "skse"], "steps": [{"name": "a"}, {"name": "b", "needs": ["a"], "reach": ["data/dependencies.json"]}]}
+    assert jl.lint(ok, None) == []
+    bad = {"reach": "ui", "independent_steps": 1,
+           "steps": [{"name": "a", "needs": ["b"], "reach": ["no/such/path/**"]}, {"name": "b"}]}
+    errs = jl.lint(bad, None)
+    assert any("reach: a list" in e for e in errs) and any("independent_steps" in e for e in errs)
+    assert any("matches no tracked file" in e for e in errs) and any("not an earlier step" in e for e in errs)

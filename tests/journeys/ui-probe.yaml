@@ -12,6 +12,7 @@
 # the frame-time reads here, which run while the view sits open (the runner reads frames between actions).
 # The sitting view is grow-at-rest's (its rest opens it); its still there counts for 1.2 §0.
 id: ui-probe
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high
 scene: first-place

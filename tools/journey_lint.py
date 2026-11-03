@@ -13,6 +13,8 @@ Vocabulary (when $ARGONIA_PRIVATE/vocab.json is present; tools/fetch_vocab.py fi
   - more arguments than the function takes is an error;
   - the `av` read's name is one the game's actor value list answers to;
   - an `ARG_Ref_*` word is a placed ref of ours (the world database's formid rows).
+Reach (the pass ledger, tools/pass_ledger.py): `reach:` at the journey or a step is a list of repo paths or git
+pathspec globs (or `esm`), each matching a tracked file; a step's `needs:` names earlier steps.
 Without the cache the vocabulary rules are skipped with one warning; the gate never fails for want of it.
 """
 from __future__ import annotations
@@ -114,9 +116,30 @@ def pad_seq(seq: str) -> list[str]:
     return []
 
 
+def reach(value, where: str) -> list[str]:
+    """A `reach:` list: strings, each `esm` or a pathspec matching a tracked file."""
+    if not isinstance(value, list) or not all(isinstance(p, str) and p.strip() for p in value):
+        return [f"{where}reach: a list of repo paths or globs (or `esm`)"]
+    from tools import pass_ledger
+    return [f"{where}reach `{p}` matches no tracked file" for p in value
+            if p != "esm" and not pass_ledger._blobs(str(pass_ledger.REPO), (p,)).strip()]
+
+
 def lint(journey: dict, vocab: dict | None) -> list[str]:
     """Every error in a runnable journey, as `step <name>: <what>`."""
     errs = []
+    if "reach" in journey:
+        errs += reach(journey["reach"], "")
+    if "independent_steps" in journey and not isinstance(journey["independent_steps"], bool):
+        errs.append("independent_steps: true or false")
+    seen: list = []
+    for s in journey.get("steps", []):
+        if "reach" in s:
+            errs += reach(s["reach"], f"step {s['name']}: ")
+        bad = [n for n in (s.get("needs") or []) if n not in seen]
+        if bad:
+            errs.append(f"step {s['name']}: needs {bad}: not an earlier step")
+        seen.append(s["name"])
     for s in journey.get("steps", []):
         found = []
         for a in s.get("do", []):

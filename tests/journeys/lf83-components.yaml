@@ -7,6 +7,7 @@
 # asserted at each stage and clue, beside the journal family (`core JournalEntries`, one line per entry). The thing
 # hooks (activate or read sets a fact) are read after stage 20.
 id: lf83-components
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: first-place

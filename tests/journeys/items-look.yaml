@@ -7,6 +7,7 @@
 # the free camera (tfc) from the play camera's own spot, flown in close behind the weapon (right) side by keys; no
 # turn of the player.
 id: items-look
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 save: ArgoniaWalk
 crash_risk: low

@@ -3,6 +3,7 @@
 # low as setup only. game-22: the death is one engine damage call past the player's health (the deserter's AI held
 # no weapon and left him at 5 of 1000, game-21): the check is our intercept, pile and wake, not base combat.
 id: die-and-recover
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: high     # death and wake three times
 batch_last: true         # it ends at the main menu or changes the saves: last in a batch (run_batch --write-owed)

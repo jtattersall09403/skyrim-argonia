@@ -10,6 +10,7 @@
 # the trees and plants seen; the six classes' stills should not read as one forest.
 # 
 id: tree-seat
+reach: [esm, "tools/argonia_world/vegetation/**", data/tree-seat.json, data/leaf-hue.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: rock-booth

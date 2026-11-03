@@ -3,6 +3,7 @@
 # Claywater crocodile (`never`) are both killed by the console; the player rests at a camp spot placed at the
 # ambush marker at step 0; the deserter is back alive at its placement and the crocodile is still dead.
 id: rest-respawn
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium   # cell travel and one rest (writes the rest save)
 scene: claywater-ambush

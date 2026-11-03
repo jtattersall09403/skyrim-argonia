@@ -4,6 +4,7 @@
 # upland, a forested hillside). Needs the next deploy's re-lay of tropical-skyrim-sse (19 landscape _n dropped) and
 # Argonia.esm (TXST TX01 = Skyrim.esm's normals) and ArgoniaWorld.esm (the new gradient). Midday sun for the sheen.
 id: ground-materials
+reach: [esm, "tools/argonia_world/terrain/**", data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 relaunch_before: false

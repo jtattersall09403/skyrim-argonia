@@ -853,7 +853,10 @@ class Runner:
         self.resume_dir.mkdir(parents=True, exist_ok=True)
         f.write_text(json.dumps({"latest": name, "saves": saves}, indent=1, default=str))
 
-    def run(self, j: dict, save: str, load: bool = True, start: str | None = None, only: bool = False) -> dict:
+    def run(self, j: dict, save: str, load: bool = True, start: str | None = None, only: bool = False,
+            skip: dict | None = None) -> dict:
+        """`skip`: step name -> its pass ledger row (tools/pass_ledger.py plan): not run, recorded as passed with the
+        ledger's still and run, its kept values restored."""
         self.out.mkdir(parents=True, exist_ok=True)
         rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False, "loaded": load}
         self.scene, self.save = j.get("scene"), save
@@ -879,6 +882,14 @@ class Runner:
                 if step.get("owed"):  # not run: what it waits on is named, and the journey goes on past it
                     rep.setdefault("owed", []).append({"n": n, "name": step["name"], "why": step["owed"]})
                     print(f"  {n:2d} {step['name']:<24} OWED: {step['owed']}", flush=True)
+                    continue
+                if skip and step["name"] in skip:
+                    row = skip[step["name"]]
+                    self.kept.update(row.get("kept") or {})
+                    why = f"skipped: passed {row.get('time')} on the same inputs"
+                    rep["steps"].append({"n": n, "name": step["name"], "passed": True, "skipped": why,
+                                         "still": row.get("still"), "run": row.get("run"), "seconds": 0.0})
+                    print(f"  {n:2d} {step['name']:<24} {why}", flush=True)
                     continue
                 rec = self.step(n, step)
                 rep["steps"].append(rec)
@@ -1164,6 +1175,9 @@ def main(argv=None) -> int:
         print(f"{j['id']} run {r}: {out}", flush=True)
         rep = Runner(b, out, stills=not a.no_stills).run(j, save, **({"start": a.only or a.start, "only": bool(a.only)}
                                                            if a.only or a.start else {}))
+        rep["_out"] = str(out)
+        from tools import pass_ledger  # each judged step into the pass ledger (owner, 2026-11-03)
+        pass_ledger.record(j, rep)
         verdict = "PASS" if rep["passed"] else "CRASH" if rep.get("crash") else "FAIL"
         print(f"{j['id']} run {r}: {verdict} in {rep['seconds']} s"
               + ("" if rep["passed"] else f" at {rep['failed_at']}: {signature(rep).split('|', 1)[1]}"), flush=True)

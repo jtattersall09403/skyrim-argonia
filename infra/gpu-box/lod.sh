@@ -133,10 +133,16 @@ case "${1:-}" in
     key=${2:-$(sha256sum "$repo/out/ArgoniaWorld.esm" | cut -c1-12)}; tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
     if [ "$1" = archive ]; then
-      n=$("$run" ps "if (Test-Path '$mod') { tar -cf C:\argonia\logs\lod.tar -C '$mod' .; (Get-ChildItem '$mod' -Recurse -File).Count } else { 0 }" | tr -d '\r')
+      # the mod's file count and bytes (each file rounded to a tar block); skipped when the bucket already holds
+      # this key's tar of that mod (lod_skip.py: a resumed run re-uploaded 1.7 GB every time, 2026-11-03)
+      read -r n bytes < <("$run" ps "if (Test-Path '$mod') { \$f = Get-ChildItem '$mod' -Recurse -File; '' + \$f.Count + ' ' + ((\$f | % { [math]::Ceiling(\$_.Length / 512) * 512 } | Measure-Object -Sum).Sum) } else { '0 0' }" | tr -d '\r' | tail -1)
       [ "${n:-0}" -gt 0 ] || { echo "no LOD mod on the machine (lod.sh run prepare terrain collect)"; exit 1; }
+      if [ -z "${LOD_FORCE:-}" ] && aws s3api head-object --bucket "$bucket" --key "lod/$key.tar" 2>/dev/null | "$PY" "$here/lod_skip.py" "$n" "$bytes"; then
+        echo "LOD archived before: s3://$bucket/lod/$key.tar holds this mod ($n files); skipped"; exit 0
+      fi
+      "$run" ps "tar -cf C:\argonia\logs\lod.tar -C '$mod' ." >/dev/null
       "$run" get 'C:/argonia/logs/lod.tar' "$tmp/lod.tar"
-      for k in "$key" latest; do aws s3 cp "$tmp/lod.tar" "s3://$bucket/lod/$k.tar" --only-show-errors; done
+      for k in "$key" latest; do aws s3 cp "$tmp/lod.tar" "s3://$bucket/lod/$k.tar" --only-show-errors --metadata "argonia-files=$n,argonia-bytes=$bytes"; done
       "$run" ps 'Remove-Item C:\argonia\logs\lod.tar' >/dev/null
       echo "LOD archived: $n files, $(du -m "$tmp/lod.tar" | cut -f1) MB, s3://$bucket/lod/$key.tar"
     else

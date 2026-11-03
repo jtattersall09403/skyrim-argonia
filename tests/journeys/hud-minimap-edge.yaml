@@ -2,6 +2,7 @@
 # 3, a far western corner the base save never walked: a still on arrival, then a long walk by the pad reveals a patch,
 # and a still with the patch's edge in view, the seen land on one side and blank parchment on the other.
 id: hud-minimap-edge
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm, "tools/chart/**"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: world-sample-03-corner

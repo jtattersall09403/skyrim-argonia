@@ -2,6 +2,7 @@
 # shows the Lockpicking Menu on a ref; a console activate skips the lock (151959) and the aimed E is the game
 # control the owner ruled out for a screen under check). Owed until that command exists; runs from the props scene.
 id: lockpick-look
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: ui-props

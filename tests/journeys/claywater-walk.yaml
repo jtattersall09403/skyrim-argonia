@@ -2,6 +2,7 @@
 # interior; the people stand at their posts by day; LF83's things are placed and enabled. Judged by console state;
 # a still per step. The schedules (sandbox by day, sleep by night) are nav-sandbox-20's and a night step here.
 id: claywater-walk
+reach: [esm, tools/argonia_world/place_build.py, tools/argonia_world/pieces.py, data/pieces-preference.json, data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater

@@ -4,6 +4,7 @@
 # each burst is read frame by frame. The scene sets nothing tested: the drains are real actions (rolls, a cast), the
 # refill is the game's own regeneration; vastei is set through dev-set (the shimmer is under test, not the earning).
 id: hud-look
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater

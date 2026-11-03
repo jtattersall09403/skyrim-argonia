@@ -3,6 +3,7 @@
 # on the machine that answers spot/instance-action with a stop notice, points the watcher at it, and reports whether
 # ArgoniaSuspend.ess was written after the mock's start; the scene sets nothing about saves or the watcher.
 id: spot-watch
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 step_saves: false        # it tests a save: no step save

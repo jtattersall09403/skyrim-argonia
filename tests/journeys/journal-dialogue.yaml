@@ -7,6 +7,7 @@
 # (infra/stream-client), so the pad's B here is the same input; a forced-fail run: expect `tab` "finished" at
 # journal-current and see it fail. Last step ends the quest: a save-changing item, last in its batch.
 id: journal-dialogue
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 batch_last: true

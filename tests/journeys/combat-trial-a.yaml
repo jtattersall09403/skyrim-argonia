@@ -5,6 +5,7 @@
 # Pandora output), TDM's lock-on answers. How far a roll goes, poise, parries and the Papyrus queue under a brawl
 # are the mods' own behaviour and are not checked here.
 id: combat-trial-a
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater-ambush

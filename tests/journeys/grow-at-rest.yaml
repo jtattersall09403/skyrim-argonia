@@ -3,6 +3,7 @@
 # at the player's marker at step 0. The pending level comes from landed blows sent by the dev bridge's `dev-grow` into
 # ArgoniaCore's own hit sink (the count is measured and kept); the rest and the sitting are what is tested.
 id: grow-at-rest
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium   # a long fight and two rests (each writes the rest save)
 scene: claywater-ambush

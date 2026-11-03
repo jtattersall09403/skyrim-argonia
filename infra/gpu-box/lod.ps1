@@ -309,6 +309,20 @@ switch ($Step) {
     Click $p 'Save and Exit'; if (-not $p.WaitForExit(300000)) { $p | Stop-Process -Force }
   }
   'collect' {
+    # Skipped when the mod already holds this collect (a resumed run re-copied it every time, 2026-11-03): the
+    # sources' file count and the mod's file count are both what the last collect wrote to argonia-collect.count.
+    $srcN = 0
+    foreach ($d in 'Meshes', 'Textures') { if (Test-Path "$Res\$d") { $srcN += (Get-ChildItem "$Res\$d" -Recurse -File).Count } }
+    foreach ($src in $Out.texgen, $Out.terrain, $Out.dyndolod) { if (Test-Path $src) { $srcN += (Get-ChildItem $src -Recurse -File).Count } }
+    $mark = "$Mod\argonia-collect.count"
+    if (Test-Path $mark) {
+      $was = (Get-Content $mark -Raw).Trim() -split ' '
+      $modN = (Get-ChildItem $Mod -Recurse -File | ? { $_.Name -notin "argonia-collect.count", "argonia-lod.key" }).Count
+      if ($was.Count -eq 2 -and [int]$was[0] -eq $srcN -and [int]$was[1] -eq $modN) {
+        Say "collect: the mod already matches the outputs ($srcN source files, $modN in the mod); skipped"
+        Say "$Step OK"; exit 0
+      }
+    }
     # Lowest first: DynDOLOD Resources (its instruction: keep it installed with the output), TexGen, terrain, DynDOLOD.
     Remove-Item "$Mod\*" -Recurse -Force -EA SilentlyContinue
     foreach ($d in 'Meshes', 'Textures') { robocopy "$Res\$d" "$Mod\$d" /E /NFL /NDL /NJH /NJS /NP | Out-Null }
@@ -320,6 +334,7 @@ switch ($Step) {
     $plugins = Get-ChildItem $Mod -File -Include *.esp, *.esm, *.esl -Recurse
     if ($plugins) { Say "plugins in the output (not enabled by this job): $($plugins.Name -join ', ')" }
     $files = Get-ChildItem $Mod -Recurse -File
+    Set-Content $mark "$srcN $($files.Count)"
     Say "mod: $($files.Count) files, $([math]::Round(($files | Measure-Object Length -Sum).Sum / 1MB)) MB"
     & "$Root\infra\bridge.ps1" -Cmd prepare -Fresh | Out-Null
     Say "laid again with the LOD mod"

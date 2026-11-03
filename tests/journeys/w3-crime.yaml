@@ -4,6 +4,7 @@
 # Read through the bridge's `crime-gold` (Papyrus Faction.GetCrimeGoldViolent): the console's GetCrimeGoldViolent takes
 # no faction and printed the player's own 0 (diag2-dialogue-crime). The faction as a plugin form (ARG_Faction_ClaywaterStation). Read within 3 s of the hit, before she fights back.
 id: w3-crime
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: first-place

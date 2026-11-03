@@ -6,6 +6,7 @@
 # [Interface] sForcedLoadScreenEditorID in Documents\My Games\Skyrim Special Edition\Skyrim.ini (the bridge's setini
 # faults on it). Without that, the engine picks among our 12 screens at random.
 id: loading-look
+reach: ["ui/**", "tools/ui_theme/**", "skse/ArgoniaCore/**", "skse/core/**", data/dependencies.json, esm, data/loading-screens.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: first-place

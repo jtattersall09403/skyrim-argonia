@@ -5,6 +5,7 @@
 #   pickup makes ArgoniaCore re-read its facts, as any fact change does); 92 / 93 a keeper dead (staged `kill`).
 # Each ending writes its journal entry (kind 1 complete, 2 failed) and closes the quest in the engine.
 id: lf83-endings
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: first-place

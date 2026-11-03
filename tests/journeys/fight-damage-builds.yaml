@@ -4,6 +4,7 @@
 # light blow on the deserter (calmed, health raised) and its health loss against docs/research/2026-10-30/combat-wiring.md.
 # Kept: the pinned vanilla skills, the carriers moving on equip. Cut: the power attack's stamina (kept only, never judged).
 id: fight-damage-builds
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater-ambush

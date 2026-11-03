@@ -6,6 +6,7 @@
 # Marsh kind (no Skyrim animal), on ground or in water its kind allows; at the den the predator beside
 # it. The kind of each base read is its creature_form row. The planner runs it in the round's batch.
 id: creature-spots
+reach: [esm, "tools/argonia_world/creatures/**", data/creature-kind-bars.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: creature-spots

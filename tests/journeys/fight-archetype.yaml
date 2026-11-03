@@ -4,6 +4,7 @@
 # Cut (owner, 2026-10-31: only what we built): the swing and hit (Skyrim's combat AI), aggro range, the player's blow,
 # parry and riposte (Elden Parry, Rim Parry), the rest respawn.
 id: fight-archetype
+reach: [esm, "skse/ArgoniaCore/**", "skse/core/**", "data/quarantine/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: low
 scene: claywater-ambush

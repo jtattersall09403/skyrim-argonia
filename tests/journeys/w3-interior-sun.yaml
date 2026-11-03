@@ -3,6 +3,7 @@
 # light. A still per hour from a fixed camera goes to a `reader` (the lit patch moves or vanishes between hours).
 # Runtime 1.7.104 first; on a fail there, repeat on 1.6.1170 before any change to the pin (decision 0002).
 id: w3-interior-sun
+reach: [esm, "plugin/Argonia/ImageSpaces/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 crash_risk: medium
 scene: first-place
