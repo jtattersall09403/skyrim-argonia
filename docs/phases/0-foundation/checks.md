@@ -44,9 +44,9 @@ its owner-brief date. The mapping from each brief's acceptance lines is in
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
 | The quarantine: only ours and the allowlist run at days 0, 1, 10 and 50 | 0.4 §b | L4 | proven | journey:quarantine pass out/batch/g17/20261030T225900 |
-| The player walks the road into Claywater, into the station house and out; a person at work by day and in bed by night | 0.4 §d | L4 | proven | journey:claywater-walk pass out/batch/1.15-round-4/20261103T013333/05-claywater-walk-1-20261103T014214 |
+| The player walks the road into Claywater, into the station house and out; a person at work by day and in bed by night | 0.4 §d | L4 | proven | journey:claywater-walk pass out/batch/1.15-round-4b/20261103T031256/08-claywater-walk-1-20261103T032811 |
 | A person sleeps in her own bed at night (Livia, the native sleep) | 0.4 §d | L4 | proven | journey:livia-sleep pass out/batch/g17/20261030T225900 |
 | The three people path between two spots | 0.4 §d | L4 | dropped | owner-brief:2026-10-30 (NPC movement is not checked in game) |
-| Vantage and full-body stills of the block (the road in, the well, the houses, Livia, the signs) | 0.4 §d | L4 | proven | journey:claywater-look pass out/batch/1.15-round-4/20261103T013333/06-claywater-look-1-20261103T014337 |
+| Vantage and full-body stills of the block (the road in, the well, the houses, Livia, the signs) | 0.4 §d | L4 | owed | journey:claywater-look fail out/batch/1.15-round-4b/20261103T031256/09-claywater-look-1-20261103T032933 |
 | A reader passes the block's stills: grass on the paint, trees, no seam, tone mismatch or dark face | 0.4 §d | L4 | owed | no reader report on record |
 | The owner walks Claywater (`bat claywater`) and climbs, swims and boards the boat (`bat proving-ground`) | Part 0 exit | L6 | owed | the 1.7 packet carries the walk |

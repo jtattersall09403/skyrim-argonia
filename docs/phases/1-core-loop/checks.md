@@ -30,7 +30,7 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 
 | Check | From | Level | Status | Evidence |
 |---|---|---|---|---|
-| Every Claywater person greets with topics (Livia, Takes, Signs, Gaius); a dead speaker is searched, not spoken to | 1.3 r4 | L4 | owed | journey:claywater-talk fail out/batch/1.15-round-4/20261103T013333/10-claywater-talk-1-20261103T015251 |
+| Every Claywater person greets with topics (Livia, Takes, Signs, Gaius); a dead speaker is searched, not spoken to | 1.3 r4 | L4 | owed | journey:claywater-talk fail out/batch/1.15-round-4b/20261103T031256/10-claywater-talk-1-20261103T033131 |
 | Every attribute equals its mirror AV, set and clamped, through a rest and a load | 1.3 §a | L4 | proven | journey:attributes pass out/batch/g18a/20261031T003055 |
 | Every derived value read for 5 test characters matches the formulas | 1.3 §a | L4 | owed | no journey reads 5 characters' derived values |
 | A topic learned from one person is asked of a second | 1.3 §b | L4 | proven | journey:first-place pass out/batch/g17/20261030T225900 |
@@ -211,10 +211,10 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The chart's art is the old project's hand-drawn map (or its design) | owner note (tmp/owner-message.md) | L3 | proven | docs/research/2026-10-31/lane-1.12-chart.md (the old project's look re-rendered over our data, the owner's 2026-10-29 ruling) |
 | Full zoom-out shows the whole province, nothing cut off | owner play test 9 | L4 | proven | journey:chart-minimap pass out/batch/adhoc/20261101T143408/02-chart-minimap-1-20261101T143648 |
 | The player marker shows at the player | owner play test 9 | L4 | proven | journey:chart-minimap pass out/batch/adhoc/20261101T143408/02-chart-minimap-1-20261101T143648 |
-| The map never stands over dialogue: M in a conversation opens no chart, and no map pane shows over it after Barter | owner play test 3 #26 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4/20261103T013333/03-chart-zoom-1-20261103T013735 |
-| Markers and names keep their screen size and place from whole-province to the closest zoom | owner play test 3 #14 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4/20261103T013333/03-chart-zoom-1-20261103T013735 |
-| The undiscovered land is a rough sketch (outline, major cities as named dots, major roads), filled in as the player explores | owner play test 3 #12 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4/20261103T013333/03-chart-zoom-1-20261103T013735 |
-| The map's rivers are the game's water, rendered from the current terrain and world database | owner play test 3 #30 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4/20261103T013333/03-chart-zoom-1-20261103T013735 |
+| The map never stands over dialogue: M in a conversation opens no chart, and no map pane shows over it after Barter | owner play test 3 #26 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4b/20261103T031256/07-chart-zoom-1-20261103T032535 |
+| Markers and names keep their screen size and place from whole-province to the closest zoom | owner play test 3 #14 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4b/20261103T031256/07-chart-zoom-1-20261103T032535 |
+| The undiscovered land is a rough sketch (outline, major cities as named dots, major roads), filled in as the player explores | owner play test 3 #12 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4b/20261103T031256/07-chart-zoom-1-20261103T032535 |
+| The map's rivers are the game's water, rendered from the current terrain and world database | owner play test 3 #30 | L4 | proven | journey:chart-zoom pass out/batch/1.15-round-4b/20261103T031256/07-chart-zoom-1-20261103T032535 |
 | The land around the player reveals as they explore, and holds after a save and load | owner play test 9 | L4 | proven | journey:chart-minimap pass out/batch/adhoc/20261101T143408/02-chart-minimap-1-20261101T143648 |
 | A place's marker is absent before its discovery and shown after; no fast travel from the map | 1.12 §5 | L4 | proven | journey:chart-minimap pass out/batch/adhoc/20261101T143408/02-chart-minimap-1-20261101T143648 |
 | The HUD's minimap top right, with its compass turned two ways | 1.12 §5 | L4 | proven | journey:chart-minimap pass out/batch/adhoc/20261101T143408/02-chart-minimap-1-20261101T143648 |
