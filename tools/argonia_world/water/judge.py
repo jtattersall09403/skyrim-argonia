@@ -22,7 +22,6 @@ import math
 import numpy as np
 
 from tools.argonia_world import skyrim_units as su
-from tools.argonia_world.water import layer
 from tools.argonia_world.water import steps as stp
 
 UPM = su.UNITS_PER_METRE
