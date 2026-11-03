@@ -3,12 +3,12 @@ EditorID: ARG_ImageSpace_marsh_haze
 Hdr:
   EyeAdaptSpeed: 45
   BloomBlurRadius: 7
-  BloomThreshold: 0.725
-  BloomScale: 4
-  ReceiveBloomThreshold: 0.7
+  BloomThreshold: 0.125
+  BloomScale: 0.8
+  ReceiveBloomThreshold: 1
   White: 1
   SunlightScale: 2.7
-  SkyScale: 0.3
+  SkyScale: 0.15
   EyeAdaptStrength: 5
 Cinematic:
   Saturation: 0.98

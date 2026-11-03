@@ -67,20 +67,6 @@ Objects:
     MaxSlope: 35
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 04900F:Black Marsh.esm
-    Density: 3.7173
-    Clustering: 4
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 06C77A:King of the Murkmire.esp
-    Density: 0.25
-    Clustering: 2
-    MaxSlope: 35
-    Radius: 840
-    Unknown2: 0x000000000000
   - Object: 0C000A:ArgoniaWorld.esm
     Density: 0.6
     Clustering: 3
@@ -138,7 +124,7 @@ Objects:
     Radius: 350
     Unknown2: 0x000000000000
   - Object: 0D864C:Black Marsh.esm
-    Density: 32.5
+    Density: 16.25
     Clustering: 5
     MaxSlope: 40
     Flags:
@@ -161,7 +147,7 @@ Objects:
     - Tree
     Radius: 420
     Unknown2: 0x000000000000
-  - Object: 0EB93B:King of the Murkmire.esp
+  - Object: 0EB923:King of the Murkmire.esp
     Density: 3.7173
     Clustering: 4
     MaxSlope: 38
@@ -169,13 +155,13 @@ Objects:
     - Tree
     Radius: 980
     Unknown2: 0x000000000000
-  - Object: 0F0AD1:King of the Murkmire.esp
-    Density: 16.25
-    Clustering: 5
-    MaxSlope: 40
+  - Object: 0EB93B:King of the Murkmire.esp
+    Density: 3.7173
+    Clustering: 4
+    MaxSlope: 38
     Flags:
     - Tree
-    Radius: 560
+    Radius: 980
     Unknown2: 0x000000000000
   - Object: 0FAEDD:King of the Murkmire.esp
     Density: 0.5
@@ -188,6 +174,12 @@ Objects:
     Clustering: 2
     MaxSlope: 30
     Radius: 420
+    Unknown2: 0x000000000000
+  - Object: 142930:King of the Murkmire.esp
+    Density: 0.25
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
     Unknown2: 0x000000000000
   - Object: 155FE0:King of the Murkmire.esp
     Density: 3.7173
@@ -255,8 +247,16 @@ Objects:
     - ConformToSlope
     Radius: 611
     Unknown2: 0x000000000000
-  - Object: 82654E:King of the Murkmire.esp
+  - Object: 768247:King of the Murkmire.esp
     Density: 16.25
+    Clustering: 5
+    MaxSlope: 40
+    Flags:
+    - Tree
+    Radius: 560
+    Unknown2: 0x000000000000
+  - Object: 82654E:King of the Murkmire.esp
+    Density: 32.5
     Clustering: 5
     MaxSlope: 40
     Flags:

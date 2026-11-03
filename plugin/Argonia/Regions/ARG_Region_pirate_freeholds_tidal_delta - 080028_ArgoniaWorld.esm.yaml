@@ -67,12 +67,6 @@ Objects:
     MaxSlope: 35
     Radius: 840
     Unknown2: 0x000000000000
-  - Object: 03A592:King of the Murkmire.esp
-    Density: 0.25
-    Clustering: 2
-    MaxSlope: 35
-    Radius: 840
-    Unknown2: 0x000000000000
   - Object: 0611CD:DepthsOfSkyrim.esp
     Density: 13.3333
     Clustering: 6
@@ -134,6 +128,12 @@ Objects:
     Flags:
     - Tree
     Radius: 560
+    Unknown2: 0x000000000000
+  - Object: 146905:King of the Murkmire.esp
+    Density: 0.25
+    Clustering: 2
+    MaxSlope: 35
+    Radius: 840
     Unknown2: 0x000000000000
   - Object: 155FEC:King of the Murkmire.esp
     Density: 2.1535

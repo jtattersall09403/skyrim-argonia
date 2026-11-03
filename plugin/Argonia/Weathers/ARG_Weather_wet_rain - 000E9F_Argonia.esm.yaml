@@ -37,10 +37,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#00192421'
+    Day: '#0073858F'
+    Sunset: '#00252B2E'
+    Night: '#001A2524'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -50,10 +50,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#00121C1B'
+    Day: '#0093A2A4'
+    Sunset: '#0027292C'
+    Night: '#00151F1F'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -63,10 +63,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#00000000'
+    Day: '#00808080'
+    Sunset: '#00000000'
+    Night: '#00000000'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -76,10 +76,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#000B1616'
+    Day: '#003F4F56'
+    Sunset: '#000E171E'
+    Night: '#001A2626'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -125,10 +125,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#001F2C28'
+    Day: '#00B0CECE'
+    Sunset: '#002A4953'
+    Night: '#0039514E'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -138,10 +138,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#00636549'
+    Day: '#00B0CECE'
+    Sunset: '#002A4953'
+    Night: '#0039514E'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -151,10 +151,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#001F2C28'
+    Day: '#00B0CECE'
+    Sunset: '#002A4953'
+    Night: '#0039514E'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -164,68 +164,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
-  Alphas:
-    Sunrise: 1
-    Day: 1
-    Sunset: 1
-    Night: 1
-- Enabled: True
-  XSpeed: 0
-  YSpeed: 0
-  Colors:
-    Sunrise: '#00000000'
-    Day: '#00000000'
-    Sunset: '#00000000'
-    Night: '#00000000'
-  Alphas: {}
-- Enabled: True
-  XSpeed: 0
-  YSpeed: 0
-  Colors:
-    Sunrise: '#00000000'
-    Day: '#00000000'
-    Sunset: '#00000000'
-    Night: '#00000000'
-  Alphas: {}
-- Enabled: True
-  XSpeed: 0
-  YSpeed: 0
-  Colors:
-    Sunrise: '#00000000'
-    Day: '#00000000'
-    Sunset: '#00000000'
-    Night: '#00000000'
-  Alphas: {}
-- Enabled: True
-  XSpeed: 0
-  YSpeed: 0
-  Colors:
-    Sunrise: '#00000000'
-    Day: '#00000000'
-    Sunset: '#00000000'
-    Night: '#00000000'
-  Alphas: {}
-- Enabled: True
-  XSpeed: 0
-  YSpeed: 0
-  Colors:
-    Sunrise: '#00000000'
-    Day: '#00000000'
-    Sunset: '#00000000'
-    Night: '#00000000'
-  Alphas: {}
-- Enabled: True
-  XSpeed: 0.0496063
-  YSpeed: 0
-  Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#001F2C28'
+    Day: '#00B0CECE'
+    Sunset: '#002A4953'
+    Night: '#0039514E'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -280,10 +222,68 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#0016211F'
+    Day: '#0051737D'
+    Sunset: '#00182F37'
+    Night: '#00273536'
+  Alphas:
+    Sunrise: 1
+    Day: 1
+    Sunset: 1
+    Night: 1
+- Enabled: True
+  XSpeed: 0
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00000000'
+    Day: '#00000000'
+    Sunset: '#00000000'
+    Night: '#00000000'
+  Alphas: {}
+- Enabled: True
+  XSpeed: 0
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00000000'
+    Day: '#00000000'
+    Sunset: '#00000000'
+    Night: '#00000000'
+  Alphas: {}
+- Enabled: True
+  XSpeed: 0
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00000000'
+    Day: '#00000000'
+    Sunset: '#00000000'
+    Night: '#00000000'
+  Alphas: {}
+- Enabled: True
+  XSpeed: 0
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00000000'
+    Day: '#00000000'
+    Sunset: '#00000000'
+    Night: '#00000000'
+  Alphas: {}
+- Enabled: True
+  XSpeed: 0
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00000000'
+    Day: '#00000000'
+    Sunset: '#00000000'
+    Night: '#00000000'
+  Alphas: {}
+- Enabled: True
+  XSpeed: 0.0496063
+  YSpeed: 0
+  Colors:
+    Sunrise: '#00202B29'
+    Day: '#0051737D'
+    Sunset: '#00182F37'
+    Night: '#00273536'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -293,10 +293,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#0016211F'
+    Day: '#0051737D'
+    Sunset: '#00182F37'
+    Night: '#00273536'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -324,10 +324,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#001F2C28'
+    Day: '#00537788'
+    Sunset: '#000C2930'
+    Night: '#002F4644'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -337,10 +337,10 @@ Clouds:
   XSpeed: 0.0496063
   YSpeed: 0
   Colors:
-    Sunrise: '#006A6B62'
-    Day: '#007C8980'
-    Sunset: '#0072605B'
-    Night: '#001A1D22'
+    Sunrise: '#000D160E'
+    Day: '#00223B42'
+    Sunset: '#0003161D'
+    Night: '#001E2829'
   Alphas:
     Sunrise: 1
     Day: 1
@@ -374,10 +374,10 @@ Clouds:
     Night: '#00000000'
   Alphas: {}
 SkyUpperColor:
-  Sunrise: '#004D5258'
-  Day: '#005E666C'
-  Sunset: '#00564C55'
-  Night: '#00081411'
+  Sunrise: '#00546565'
+  Day: '#008BA3A3'
+  Sunset: '#0051727B'
+  Night: '#003F5651'
 FogNearColor:
   Sunrise: '#00606755'
   Day: '#006E7D6B'
@@ -399,25 +399,25 @@ SunlightColor:
   Sunset: '#0080695A'
   Night: '#004D534A'
 SunColor:
-  Sunrise: '#00988D6E'
-  Day: '#00ADB398'
-  Sunset: '#00988168'
-  Night: '#002F3735'
+  Sunrise: '#00000000'
+  Day: '#00000000'
+  Sunset: '#00405355'
+  Night: '#00000000'
 StarsColor:
   Sunrise: '#00000000'
   Day: '#00000000'
   Sunset: '#00000000'
   Night: '#003B453E'
 SkyLowerColor:
-  Sunrise: '#0066635B'
-  Day: '#00787D77'
-  Sunset: '#00685955'
-  Night: '#00131913'
+  Sunrise: '#0071713C'
+  Day: '#00708C8D'
+  Sunset: '#003B5755'
+  Night: '#00273434'
 HorizonColor:
-  Sunrise: '#00777361'
-  Day: '#008A8F80'
-  Sunset: '#0075675C'
-  Night: '#00131F1C'
+  Sunrise: '#0035321A'
+  Day: '#0021353D'
+  Sunset: '#0006171C'
+  Night: '#00152020'
 EffectLightingColor:
   Sunrise: '#008A8A77'
   Day: '#00A2AE9C'

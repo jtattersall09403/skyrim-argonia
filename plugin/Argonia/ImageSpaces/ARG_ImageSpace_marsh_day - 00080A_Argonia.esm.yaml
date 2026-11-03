@@ -2,13 +2,13 @@ FormKey: 00080A:Argonia.esm
 EditorID: ARG_ImageSpace_marsh_day
 Hdr:
   EyeAdaptSpeed: 45
-  BloomBlurRadius: 7
-  BloomThreshold: 0.6
-  BloomScale: 3.5
-  ReceiveBloomThreshold: 0.5
+  BloomBlurRadius: 6
+  BloomThreshold: 0.2
+  BloomScale: 0.95
+  ReceiveBloomThreshold: 1
   White: 1.025
   SunlightScale: 2.55
-  SkyScale: 0.3
+  SkyScale: 0.12
   EyeAdaptStrength: 7
 Cinematic:
   Saturation: 1.06

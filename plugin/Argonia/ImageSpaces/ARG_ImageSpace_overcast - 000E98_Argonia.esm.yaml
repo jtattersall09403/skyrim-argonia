@@ -3,12 +3,12 @@ EditorID: ARG_ImageSpace_overcast
 Hdr:
   EyeAdaptSpeed: 40
   BloomBlurRadius: 7
-  BloomThreshold: 0.675
-  BloomScale: 3
-  ReceiveBloomThreshold: 0.5
+  BloomThreshold: 0.175
+  BloomScale: 1
+  ReceiveBloomThreshold: 1
   White: 0.975
   SunlightScale: 2.7
-  SkyScale: 0.195
+  SkyScale: 0.05
   EyeAdaptStrength: 5
 Cinematic:
   Saturation: 0.95

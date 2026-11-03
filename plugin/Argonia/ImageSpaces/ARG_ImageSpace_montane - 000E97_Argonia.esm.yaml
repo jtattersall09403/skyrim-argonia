@@ -2,13 +2,13 @@ FormKey: 000E97:Argonia.esm
 EditorID: ARG_ImageSpace_montane
 Hdr:
   EyeAdaptSpeed: 40
-  BloomBlurRadius: 7
-  BloomThreshold: 0.65
-  BloomScale: 3
-  ReceiveBloomThreshold: 0.5
+  BloomBlurRadius: 5
+  BloomThreshold: 0.2
+  BloomScale: 0.9
+  ReceiveBloomThreshold: 1
   White: 1
   SunlightScale: 2.425
-  SkyScale: 0.195
+  SkyScale: 0.095
   EyeAdaptStrength: 5
 Cinematic:
   Saturation: 0.96
