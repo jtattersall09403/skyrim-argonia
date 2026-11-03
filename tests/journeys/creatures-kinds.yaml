@@ -18,53 +18,53 @@ scene: creature-spots
 camera: first
 steps:
 - name: coastal-lagoon
-  # cell (30, -3) coastal-lagoon, spawn lvln.coastal-lagoon.D3.shore (D3), the class on 20 of the 25 cells round it, 5 spawn points within 90 m; the stand is 20 m from it
-  # subject: 123904 -11264 59
+  # cell (30, -3) coastal-lagoon, spawn lvln.coastal-lagoon.D3.shore (D3), the class on 20 of the 25 cells round it, 5 spawn points within 90 m; the stand is 16 m from it
+  # subject: 124928 -11136 75
   do:
   - hud: off
   - console: tgm
   - console: {line: cow ARG_Province 30 -3, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 122503
-  - console: player.setpos y -11264
-  - console: player.setpos z 72
-  - console: player.setangle z 90
-  - console: player.setangle x 5
+  - console: player.setpos x 124928
+  - console: player.setpos y -10016
+  - console: player.setpos z 70
+  - console: player.setangle z 180
+  - console: player.setangle x 6
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: coastal_lagoon_stand}
   - {read: [actors, "8192"], path: listed, keep: coastal_lagoon}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Burglar Crab", "Crocodile", "Crow", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Pad-sa Shark", "Red Hooped Tree-Viper", "Sea-Drake", "Slaughterfish", "Swamp Jelly", "Wamasu"]}, keep: coastal_lagoon_kinds}
 - name: northern-transition
-  # cell (-51, 53) northern-transition, spawn lvln.northern-transition.D4.shore (D4), the class on 25 of the 25 cells round it, 10 spawn points within 90 m; the stand is 19 m from it
-  # subject: -207872 217728 26643
+  # cell (-38, 47) northern-transition, spawn lvln.northern-transition.D3.land (D3), the class on 20 of the 25 cells round it, 11 spawn points within 90 m; the stand is 20 m from it
+  # subject: -153984 194560 33867
   do:
-  - console: {line: cow ARG_Province -51 53, settle: 60}
+  - console: {line: cow ARG_Province -38 47, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -208813
-  - console: player.setpos y 216787
-  - console: player.setpos z 26415
-  - console: player.setangle z 45
-  - console: player.setangle x -5
+  - console: player.setpos x -153984
+  - console: player.setpos y 195961
+  - console: player.setpos z 34190
+  - console: player.setangle z 180
+  - console: player.setangle x 18
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: northern_transition_stand}
   - {read: [actors, "8192"], path: listed, keep: northern_transition}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Dragon Frog", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: northern_transition_kinds}
 - name: western-frontier
-  # cell (-33, -6) western-frontier, spawn lvln.western-frontier.D3.shore (D3), the class on 19 of the 25 cells round it, 12 spawn points within 90 m; the stand is 19 m from it
-  # subject: -132480 -20736 907
+  # cell (-49, 26) western-frontier, spawn lvln.western-frontier.D3.land (D3), the class on 25 of the 25 cells round it, 11 spawn points within 90 m; the stand is 20 m from it
+  # subject: -197888 108032 21731
   do:
-  - console: {line: cow ARG_Province -33 -6, settle: 60}
+  - console: {line: cow ARG_Province -49 26, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -133811
-  - console: player.setpos y -20736
-  - console: player.setpos z 1134
-  - console: player.setangle z 90
-  - console: player.setangle x 15
+  - console: player.setpos x -198878
+  - console: player.setpos y 109022
+  - console: player.setpos z 21891
+  - console: player.setangle z 135
+  - console: player.setangle x 11
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: western_frontier_stand}

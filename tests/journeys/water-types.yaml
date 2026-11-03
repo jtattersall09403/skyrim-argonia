@@ -23,8 +23,8 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -247808
-  - console: player.setpos y -55086
-  - console: player.setpos z 1621
+  - console: player.setpos y -54946
+  - console: player.setpos z 1624
   - wait: 6
   - console: player.setangle z 180
   - console: player.setangle x 4
@@ -41,11 +41,11 @@ steps:
   - console: {line: cow ARG_Province -40 -25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -162002
-  - console: player.setpos y -100352
-  - console: player.setpos z 187
+  - console: player.setpos x -162832
+  - console: player.setpos y -99312
+  - console: player.setpos z 240
   - wait: 6
-  - console: player.setangle z 90
+  - console: player.setangle z 93
   - console: player.setangle x 1
   - wait: 4
   expect:
@@ -117,11 +117,11 @@ steps:
   - console: {line: cow ARG_Province -42 6, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -169381
-  - console: player.setpos y 27301
-  - console: player.setpos z 4878
+  - console: player.setpos x -169728
+  - console: player.setpos y 27158
+  - console: player.setpos z 4884
   - wait: 6
-  - console: player.setangle z 358
+  - console: player.setangle z 359
   - console: player.setangle x 1
   - wait: 4
   expect:

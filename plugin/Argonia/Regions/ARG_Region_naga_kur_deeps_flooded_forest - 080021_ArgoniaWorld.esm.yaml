@@ -383,6 +383,14 @@ Objects:
     MaxSlope: 30
     Radius: 560
     Unknown2: 0x000000000000
+  - Object: 0E6796:King of the Murkmire.esp
+    Density: 4.4884
+    Clustering: 3
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1391
+    Unknown2: 0x000000000000
   - Object: 0E67A8:King of the Murkmire.esp
     Density: 99.974
     Clustering: 5
@@ -399,6 +407,14 @@ Objects:
     - Tree
     Radius: 420
     Unknown2: 0x000000000000
+  - Object: 0F0AB9:King of the Murkmire.esp
+    Density: 8.9768
+    Clustering: 3
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1391
+    Unknown2: 0x000000000000
   - Object: 0FAEDD:King of the Murkmire.esp
     Density: 1
     Clustering: 3
@@ -412,6 +428,14 @@ Objects:
     Flags:
     - Tree
     Radius: 486
+    Unknown2: 0x000000000000
+  - Object: 15B1E0:King of the Murkmire.esp
+    Density: 4.4884
+    Clustering: 3
+    MaxSlope: 38
+    Flags:
+    - Tree
+    Radius: 1391
     Unknown2: 0x000000000000
   - Object: 15B1E6:King of the Murkmire.esp
     Density: 4.4884
@@ -445,12 +469,6 @@ Objects:
     - Tree
     Radius: 1391
     Unknown2: 0x000000000000
-  - Object: 160445:King of the Murkmire.esp
-    Density: 4.4884
-    Clustering: 3
-    MaxSlope: 38
-    Radius: 1391
-    Unknown2: 0x000000000000
   - Object: 160447:King of the Murkmire.esp
     Density: 0.5
     Clustering: 2
@@ -458,17 +476,9 @@ Objects:
     Radius: 840
     Unknown2: 0x000000000000
   - Object: 1B32E0:Black Marsh.esm
-    Density: 8.9768
-    Clustering: 3
-    MaxSlope: 38
-    Radius: 1391
-    Unknown2: 0x000000000000
-  - Object: 463246:King of the Murkmire.esp
     Density: 4.4884
     Clustering: 3
     MaxSlope: 38
-    Flags:
-    - Tree
     Radius: 1391
     Unknown2: 0x000000000000
   - Object: 67300E:King of the Murkmire.esp
@@ -494,14 +504,6 @@ Objects:
     Clustering: 2
     MaxSlope: 38
     Radius: 980
-    Unknown2: 0x000000000000
-  - Object: 7FD0F3:King of the Murkmire.esp
-    Density: 4.4884
-    Clustering: 3
-    MaxSlope: 38
-    Flags:
-    - Tree
-    Radius: 1391
     Unknown2: 0x000000000000
 Weather:
   Priority: 50
