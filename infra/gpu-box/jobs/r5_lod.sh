@@ -13,4 +13,5 @@ if timeout 9000 infra/gpu-box/lod.sh run && infra/gpu-box/lod.sh archive; then
   mkdir -p ~/.argonia/lod-steps/argonia-play; date -u +%FT%TZ > ~/.argonia/lod-steps/argonia-play/objlod-archived-r5
   echo "LOD OK $(date -u +%H:%M) $(sha256sum out/ArgoniaWorld.esm | cut -c1-12)"
 else echo "LOD FAILED $(date -u +%H:%M)"; $run stop; exit 3; fi
+[ "${ROUND_KEEP_UP:-}" = 1 ] && { echo "LOD: machine kept up (ROUND_KEEP_UP)"; exit 0; }  # the chained final round follows on the same boot
 $run stop
