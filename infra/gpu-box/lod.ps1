@@ -258,8 +258,13 @@ switch ($Step) {
     Set-Check $p 'Terrain LOD' $true
     Dump $p 'before Generate'
     Click $p 'Generate'
-    Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' }
-    $txt = Tool-Text $p; Set-Content "$Work\logs\terrain-messages.txt" $txt
+    Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'LOD Generator: finished|LOD generation done' }
+    # round 5 close-8 (20:39): the done-check's pop-up watcher wrote a line, which made the check true 6 s before the
+    # tool's finish line existed, and this re-read found none. The watcher's output is now discarded above, and this
+    # re-read waits for the finish line (up to 10 min) instead of failing on one early read.
+    $t1 = Get-Date
+    do { $txt = Tool-Text $p; if ($txt -match 'finished|generation done') { break }; Start-Sleep 5 } while (((Get-Date) - $t1).TotalMinutes -lt 10)
+    Set-Content "$Work\logs\terrain-messages.txt" $txt
     $p | Stop-Process -Force
     if ($txt -notmatch 'finished|generation done') { throw 'terrain: xLODGen did not finish' }
     $n = (Get-ChildItem $Out.terrain -Recurse -File -Include *.btr, *.dds).Count; Say "terrain: $n files"
@@ -272,7 +277,7 @@ switch ($Step) {
     Find-Control $p 'Start' '*Button*' 600 | Out-Null
     Dump $p 'options'
     Click $p 'Start'
-    Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'TexGen completed successfully' }
+    Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'TexGen completed successfully' }
     $txt = Tool-Text $p; Set-Content "$Work\logs\texgen-messages.txt" $txt
     if ($txt -notmatch 'completed successfully') { $p | Stop-Process -Force; throw 'texgen: did not complete' }
     Click $p 'Exit TexGen'; if (-not $p.WaitForExit(120000)) { $p | Stop-Process -Force }
@@ -303,7 +308,7 @@ switch ($Step) {
     Dump $p 'before OK'
     Click $p 'OK'
     }
-    Measure-Run $p { Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
+    Measure-Run $p { $null = Watch-Popups $p $main; (Tool-Text $p) -match 'generated successfully' }
     $txt = Tool-Text $p; Set-Content "$Work\logs\dyndolod-messages.txt" $txt
     if ($txt -notmatch 'generated successfully') { $p | Stop-Process -Force; throw 'dyndolod: did not complete' }
     Click $p 'Save and Exit'; if (-not $p.WaitForExit(300000)) { $p | Stop-Process -Force }
