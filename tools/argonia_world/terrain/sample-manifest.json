@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "94b4bfa9d4f725dd4883bd96db62f6467577967db4ea07854ec0035e1d23dae8",
- "measured": "2026-11-03, re-pinned deliberately: round 4 of 1.15, the final build (the red-leaf forms dropped from the lists, the fog and horizon slots re-authored); the gate's build"
+ "sha256": "43badc368c11c1c281822b153986172e18e60bc07511bfdb15310ae1bcafb6cd",
+ "measured": "2026-11-03, re-pinned deliberately: round 4 of 1.15, the deployed build (our seven water records carry vanilla's values); the gate's build"
 }
