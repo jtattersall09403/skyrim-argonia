@@ -10,7 +10,8 @@ PY=$HOME/.argonia/venv/bin/python
 # a step whose verdict is OK for the same inputs (HEAD, the lists and the ground) is skipped on a rerun.
 # the key is the build's inputs (the tracked blobs of the world data, the generators and the plugin YAML, plus the
 # ground), not HEAD: a tooling commit (13:40) made a resumed run redo every step
-key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart plugin tests/journeys tests/scenes data; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
+# (not plugin/, tests/journeys or tests/scenes: the pre-batch commits those itself, which moved the key every run)
+key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart data; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)
 state="$HOME/.argonia/round/prebatch.$key.state"; mkdir -p "$(dirname "$state")"; touch "$state"
 step() { local n=$1; shift; local s=$SECONDS
   if grep -qx "$n OK" "$state"; then echo "PREBATCH $n OK (done earlier for $key)"; return 0; fi
