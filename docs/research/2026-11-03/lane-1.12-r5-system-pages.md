@@ -62,3 +62,17 @@ crate, and retries E while no menu opens. menus-look's lockpicking step uses it 
 
 Two checks.md rows (1-core-loop): the Settings and Load pages in game, and the lockpicking step; the planner re-runs
 menus-look on the next deploy (the theme overlay must be rebuilt by the installer to carry this).
+
+## Second pass (r5 16:03 in game: dark text, translucent ground)
+
+- Route 1 (config): Dear Diary's `fJournalAlpha = 100` already (deardiary/config.txt:185); SkyUI's `colors.text.*`
+  (skyui/config.txt:44-49) colour SkyUI's item lists, not the Journal's System page. No config reaches these pages.
+- Every text colour in quest_journal.swf, enumerated: 53 DefineEditText TextColors; their initial HTML
+  `<font color>` attributes (ffffff x27, 000000 x9, aaaaaa, 999999, 666666, cccccc, dddddd x2 each), which override the
+  field colour and were the black category list, date line, Level and button labels; the six SetEntryText pushes
+  above; tag 557 +1598 0xaaaaaa (`defaultTextFormat.color`); tag 539 +1157 0xff0000 is a filter flag, not a colour.
+- Fix (97fc35dc): the HTML colours and the TextFormat push go through the same frame-text map. Measured on the
+  rebuilt overlay: the only text colours left in the movie are #d9cfa6 and #e6dcb2 (11.7:1 and 13.2:1).
+- Ground: my redraw set 0.95 alpha; now 255 (the sheet's alpha values are exactly {0, 255}).
+- Not done: the "Level 1" meter (LevelMeter_mc, the movie's own shapes) still shows; hiding it needs its placement
+  edited. The header band is already gone in the 16:03 stills.
