@@ -399,7 +399,20 @@ class Runner:
         if os.environ.get("ARGONIA_CAMERA_SOFT"):   # driver, 2026-11-02: record the readings, carry on (the still may be third person)
             self.calls.append({"call": ["camera", str(arg)], "tries": tries, "soft_fail": True})
             return {"camera": str(arg), "tries": 6, "soft_fail": True}
-        raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}")
+        raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}; engine state {self._engine_state()}")
+
+    ENGINE_STATE_READS = ("IsSwimming", "GetSitState", "GetKnockedState", "GetSleepState", "GetDead")
+
+    def _engine_state(self) -> str:
+        """Why the engine may refuse first person, read through the console: swimming, sitting or in furniture, knocked
+        (kill-move, ragdoll), sleeping, dead. Named in the camera failure so the next one says why."""
+        out = []
+        for fn in self.ENGINE_STATE_READS:
+            try:
+                out.append(self._console(f"player.{fn}")["output"].strip()[-40:])
+            except BridgeError as e:
+                out.append(f"{fn} error {str(e)[:40]}")
+        return "; ".join(out)
 
     def _hud(self, arg):
         """`hud: off`: the vanilla HUD hidden by `tm`, and our PrismaUI HUD hidden by the bridge's dev switch

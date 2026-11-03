@@ -276,7 +276,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
         if math.hypot(i, j) * SAMPLE_M > FIT_REACH_M:
             break
         x, y = f["x"] + i * SAMPLE_M * U, f["y"] + j * SAMPLE_M * U
-        if b.wet(x, y):
+        if b.soaked(x, y):
             continue
         brg = math.atan2(centre[0] - x, centre[1] - y)
         if sea:   # the aim 400 m out over water, the horizon in frame

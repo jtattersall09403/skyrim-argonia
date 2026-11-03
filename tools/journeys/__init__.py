@@ -50,6 +50,9 @@ SUBJECT = re.compile(r"#\s*subject:\s*(-?[\d.]+) (-?[\d.]+) (-?[\d.]+)")
 STEP = re.compile(r"^\s*-\s+name:\s*(\S+)|^\s*\{?\s*\"name\":\s*\"([^\"]+)\"")
 
 
+DRY_FOOTING_M = 0.5     # a stand's ground is at least this far above the cell water level (else it is not dry)
+
+
 class Build:
     """The current build's ground, water, foliage and refs, loaded lazily (ground 2 s; the DB ~13 s, only for refs)."""
 
@@ -92,6 +95,17 @@ class Build:
     def wet(self, x: float, y: float) -> bool:
         lv = self.water_u(x, y)
         return lv is not None and self.ground_u(x, y) < lv
+
+    def margin_u(self, x: float, y: float) -> float | None:
+        """Ground minus the cell's water level, units (None where the cell holds no water)."""
+        lv = self.water_u(x, y)
+        return None if lv is None else self.ground_u(x, y) - lv
+
+    def soaked(self, x: float, y: float) -> bool:
+        """Not dry footing: the ground is under the cell's water or within DRY_FOOTING_M of it. A stand with its feet that
+        close to the water level is a wade or a swim to the engine (no first person); the eye 1.7 m up proves nothing."""
+        m = self.margin_u(x, y)
+        return m is not None and m < su.metres_to_units(DRY_FOOTING_M)
 
     # -- foliage -----------------------------------------------------------------------------------------------------
     def foliage_near(self, x: float, y: float, reach_u: float) -> list[tuple]:
@@ -523,6 +537,9 @@ def water_stop_bad(b: Build, s: dict) -> str | None:
         return f"{s['step']}: heading {s['heading']:.0f} is {off:.0f} deg off its subject (bearing {want:.0f})"
     if not b.wet(sx, sy):
         return f"{s['step']}: the aim point {sx:.0f} {sy:.0f} is not a water cell"
+    if b.soaked(s["x"], s["y"]):
+        return (f"{s['step']}: no dry footing: ground {su.units_to_metres(b.margin_u(s['x'], s['y'])):+.2f} m over the cell "
+                f"water level (needs {DRY_FOOTING_M} m)")
     sh = water_share(b, s["x"], s["y"], s["heading"])
     if sh < min_share(s['step']):
         return f"{s['step']}: water is {sh:.0%} of the near field (0-60 m, +-30 deg), under {min_share(s['step']):.0%}"

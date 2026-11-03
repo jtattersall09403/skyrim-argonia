@@ -17,18 +17,18 @@ camera: first
 steps:
 - name: sea
   # sea water from cell (-61,-14), level 0.0 m
-  # subject: -247865 -98397 147
+  # subject: -247887 -98502 174
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -61 -18, settle: 60}
+  - console: {line: cow ARG_Province -60 -18, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245880
-  - console: player.setpos y -70455
-  - console: player.setpos z 26
+  - console: player.setpos x -245460
+  - console: player.setpos y -70595
+  - console: player.setpos z 53
   - wait: 6
-  - console: player.setangle z 184
+  - console: player.setangle z 185
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -38,12 +38,12 @@ steps:
   # marsh water from cell (-40,-25), level 1.4 m
   # subject: -138405 -100352 48
   do:
-  - console: {line: cow ARG_Province -38 -24, settle: 60}
+  - console: {line: cow ARG_Province -39 -24, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -155559
+  - console: player.setpos x -156260
   - console: player.setpos y -96710
-  - console: player.setpos z 121
+  - console: player.setpos z 158
   - wait: 6
   - console: player.setangle z 102
   - console: player.setangle x 1

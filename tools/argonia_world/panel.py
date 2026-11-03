@@ -2,7 +2,7 @@
 generated data and written as a runnable scene and journey, the in-game oracle of the rebuilt world.
 
 Per eco class (`eco_class` rows with land regions in `cell_region_run`):
-- **shore**: on dry ground (0.3 to 3 m above its cell's solved water, `cell_water`) within 4 samples of water of the
+- **shore**: on dry ground (0.5 to 3 m above its cell's solved water, `cell_water`) within 4 samples of water of the
   class's commonest water type, the candidate nearest the class's centroid, facing the water;
 - **high**: the class's highest ground sample, facing the compass direction whose ground 300 to 1500 m out is lowest
   (the longest view).
@@ -32,7 +32,7 @@ Q = su.QUADS_PER_CELL                 # 32
 C = su.PROVINCE_CELLS                 # 126
 CX0, CY0 = su.PROVINCE_CELL_SW
 MPP = su.PROVINCE_SAMPLE_M
-SHORE_LO_M, SHORE_HI_M, SHORE_REACH = 0.3, 3.0, 4  # dry ground just above the water, within 4 samples (7 m) of it
+SHORE_LO_M, SHORE_HI_M, SHORE_REACH = 0.5, 3.0, 4  # dry ground just above the water, within 4 samples (7 m) of it
 VIEW_NEAR_M, VIEW_FAR_M = 300.0, 1500.0
 EDGE_CELLS = 3                        # a vantage stays 3 cells inside the province edge (no apron seam in frame)
 EYE_M = 0.23                          # the player is put this far above the ground (tools/journeys SEAT_U)

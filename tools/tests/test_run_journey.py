@@ -758,5 +758,5 @@ def test_camera_bridge_is_reasked_when_a_load_resets_it_to_third(tmp_path, monke
     assert r._camera("first")["tries"] == 2 and st["asks"] == 3
 
     st["asks"] = -99   # the read holds third after every ask: fails, naming the reads
-    with pytest.raises(rj.StepFailed, match="never became first"):
+    with pytest.raises(rj.StepFailed, match="never became first.*engine state.*IsSwimming"):
         rj.Runner(fake, tmp_path / "f")._camera("first")

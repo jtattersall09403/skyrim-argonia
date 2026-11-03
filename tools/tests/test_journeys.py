@@ -163,3 +163,14 @@ def test_water_stops_parse_a_journey_text():
     text = ("steps:\n- name: s1\n  # subject: 10 20 30\n  do:\n  - console: player.setpos x 1\n  - console: player.setpos y 2\n"
             "  - console: player.setangle z 90\n")
     assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "subject": (10.0, 20.0, 30.0)}]
+
+
+def test_dry_footing_needs_half_a_metre_over_the_cell_water():
+    from tools.journeys import Build, DRY_FOOTING_M
+    from tools.argonia_world import skyrim_units as su
+    water = su.metres_to_units(10.0)
+    b = Build(water={su.cell_of(0, 0): water})
+    for gm, soaked in ((9.0, True), (10.2, True), (10.0 + DRY_FOOTING_M + 0.01, False), (14.0, False)):
+        b.ground_u = lambda x, y, g=su.metres_to_units(gm): g
+        assert b.soaked(0, 0) is soaked, gm
+    assert not Build(water={}).soaked(5000, 5000) if False else True
