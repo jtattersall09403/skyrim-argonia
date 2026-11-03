@@ -36,7 +36,7 @@
      }
     },
     {
-     "console": "player.setangle z 96"
+     "console": "player.setangle z 94"
     },
     {
      "console": "player.setangle x 0"
@@ -64,28 +64,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 109140
+     "gt": 108500
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 109740
+     "lt": 109100
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66604
+     "gt": -66348
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -66004
+     "lt": -65748
     },
     {
      "read": [
@@ -107,7 +107,7 @@
      }
     },
     {
-     "console": "player.setangle z 96"
+     "console": "player.setangle z 94"
     },
     {
      "console": "player.setangle x 0"
@@ -135,28 +135,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 109140
+     "gt": 108500
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 109740
+     "lt": 109100
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66604
+     "gt": -66348
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -66004
+     "lt": -65748
     },
     {
      "read": [
@@ -1456,7 +1456,7 @@
      }
     },
     {
-     "console": "player.setangle z 24"
+     "console": "player.setangle z 13"
     },
     {
      "console": "player.setangle x 0"
@@ -1484,28 +1484,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -314
+     "gt": -396
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 286
+     "lt": 204
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 227284
+     "gt": 226652
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227884
+     "lt": 227252
     },
     {
      "read": [
@@ -1527,7 +1527,7 @@
      }
     },
     {
-     "console": "player.setangle z 24"
+     "console": "player.setangle z 13"
     },
     {
      "console": "player.setangle x 0"
@@ -1555,28 +1555,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -314
+     "gt": -396
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 286
+     "lt": 204
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 227284
+     "gt": 226652
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227884
+     "lt": 227252
     },
     {
      "read": [
@@ -2024,7 +2024,7 @@
      }
     },
     {
-     "console": "player.setangle z 158"
+     "console": "player.setangle z 153"
     },
     {
      "console": "player.setangle x 0"
@@ -2052,28 +2052,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102100
+     "gt": 102164
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102700
+     "lt": 102764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -48044
+     "gt": -48041
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47444
+     "lt": -47441
     },
     {
      "read": [
@@ -2095,7 +2095,7 @@
      }
     },
     {
-     "console": "player.setangle z 158"
+     "console": "player.setangle z 153"
     },
     {
      "console": "player.setangle x 0"
@@ -2123,28 +2123,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102100
+     "gt": 102164
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102700
+     "lt": 102764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -48044
+     "gt": -48041
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47444
+     "lt": -47441
     },
     {
      "read": [

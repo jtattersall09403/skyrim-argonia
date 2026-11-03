@@ -608,14 +608,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 60.98
+    ge: 108.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 131.01
+    le: 179.01
     within: 3
-  expected_ground_m: 1.371
+  expected_ground_m: 2.056
 - name: s07-coast-sea
   why: 'three samples out in the sea: the sea default is level 0, no land above it'
   do:

@@ -131,11 +131,11 @@ steps:
       line: player.setangle x 28
   - wait: 6
 - name: tree-6-histtrunk01moss
-  # 6EDDDD:King of the Murkmire.esp ref D0B837, seat 651 u x scale 1.29; aim at the trunk base
-  # subject: -4657 204825 -46
+  # 6EDDDD:King of the Murkmire.esp ref 9F943D, seat 651 u x scale 1.28; aim at the trunk base
+  # subject: 34525 2985 756
   do:
   - console:
-      line: cow ARG_Province -2 50
+      line: cow ARG_Province 8 0
       settle: 60
   - wait: 8
   - console:
@@ -143,21 +143,21 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -4657
+      line: player.setpos x 34525
   - console:
-      line: player.setpos y 204375
+      line: player.setpos y 2535
   - console:
-      line: player.setpos z 73
+      line: player.setpos z 809
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 28
+      line: player.setangle x 21
   - wait: 6
 - name: class-coastal-lagoon
-  # the class's fullest cell (45 refs), level view north
+  # the class's fullest cell (62 refs), level view north
   do:
   - console:
-      line: cow ARG_Province -62 -14
+      line: cow ARG_Province 31 9
       settle: 60
   - wait: 8
   - console:
@@ -165,18 +165,18 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -251254
+      line: player.setpos x 128693
   - console:
-      line: player.setpos y -55049
+      line: player.setpos y 39923
   - console:
-      line: player.setpos z 70
+      line: player.setpos z 86
   - console:
       line: player.setangle z 0
   - console:
       line: player.setangle x 0
   - wait: 6
 - name: class-tidal-delta
-  # the class's fullest cell (57 refs), level view north
+  # the class's fullest cell (52 refs), level view north
   do:
   - console:
       line: cow ARG_Province -7 -55
@@ -187,11 +187,11 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -25299
+      line: player.setpos x -28371
   - console:
-      line: player.setpos y -223836
+      line: player.setpos y -221606
   - console:
-      line: player.setpos z 23
+      line: player.setpos z 40
   - console:
       line: player.setangle z 0
   - console:
@@ -213,7 +213,7 @@ steps:
   - console:
       line: player.setpos y 173370
   - console:
-      line: player.setpos z 40
+      line: player.setpos z 48
   - console:
       line: player.setangle z 0
   - console:
