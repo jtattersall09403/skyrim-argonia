@@ -106,11 +106,11 @@ steps:
   - name: book-closed
     do: [{close_menu: Book Menu}, {wait: 2}]
   - name: lockpicking
-    # the game's own activation (a script's activate skips the lock, 151959): the locked crate set before the player,
-    # aimed at low (`open`, not a fixed heading: r5's 21-lockpicking found no lock), then E once the crosshair holds it
+    # a screen under check, opened directly (owner 2026-11-03): `lockpick` tries the console's activate, which skips
+    # the lock (151959), and only then falls back to the engine's own pick; it fails unless the Lockpicking Menu opens
     do:
       - {console: '"{lockbox}".lock 25'}
-      - {open: "{lockbox}"}
+      - {lockpick: "{lockbox}"}
       - {wait: 3}
     expect:
       - {event: {kind: menu, match: Lockpicking Menu}}

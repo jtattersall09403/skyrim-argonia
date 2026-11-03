@@ -17,7 +17,8 @@ A runnable journey has `runner: 1` (the drafts beside it are prose for a lane to
         expect:                  # each polled until it holds or `within` seconds pass (default 5)
           - moved: {gt: 100}
 
-Actions: pad <seq>; key "<K[+K]> <ms>"; talk <ref> (the NPC set 1.1 m before the player facing them, then E once
+Actions: pad <seq>; show <ref | {ref, menu, view}> / dialogue <ref> / lockpick <ref> (a screen under check opened directly
+by the console's activate, no crosshair; the step fails unless the menu event arrives); key "<K[+K]> <ms>"; talk <ref> (the NPC set 1.1 m before the player facing them, then E once
 the crosshair shows it, or the step fails); open <ref> (the same for a crate or lock, aimed low); console <line>; teleport [cell <edid> | pos x y z | ref <id>];
 wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, the game's own clock, then the
 timescale is put back); call [<command>, args...] (any bridge read, kept in the report); relaunch <save | true>
@@ -635,6 +636,62 @@ class Runner:
                 return [key, route]
         raise StepFailed(f"close_menu {menu}: none of {keys} closed it")
 
+    def _caller(self, ref):
+        ref = str(ref).strip().strip('"')
+        return ref if ref.startswith("ARG_") else f'"{ref}"'  # a runtime id calls quoted (tools/journey_lint.py)
+
+    def _show(self, ref, menu=None, view=None, label="show", tries=3):
+        """Direct opener (owner ruling 2026-11-03: a screen under check is opened by the console, never by lining up
+        the crosshair): `<ref>.activate player`, the engine's own activation of that ref, no aim and no key.
+        It holds once a menu opened since the call (named `menu` when given) or our `view` reads a body; sent again
+        up to `tries` times; StepFailed when the expected menu event never arrives."""
+        caller = self._caller(ref)
+        for attempt in range(1, tries + 1):
+            last = (self.b.call("events") or {}).get("last")
+            r = self.b.call("console", f"{caller}.activate player")
+            self.calls.append({"call": [label, str(ref)], "result": r, "attempt": attempt})
+            for _ in range(6):
+                time.sleep(0.5)
+                evs = (self.b.call("events", last, "menu") or {}).get("events") or []
+                if any((e.get("data") or {}).get("opening") and (menu is None or (e.get("data") or {}).get("menu") == menu)
+                       for e in evs):
+                    return r
+                if view and (self.b.call("core", "ViewState", view) or {}).get("value"):
+                    return r
+        raise StepFailed(f"{label} {ref}: no {menu or view or 'menu'} event after {tries} activations by console")
+
+    def _place_before(self, ref, units):
+        """The ref set `units` in front of the player (no turn, no aim): an NPC to speak to stands near enough."""
+        caller = self._caller(ref)
+        h = float(self.b.call("player")["heading_deg"])
+        dx, dy = units * math.sin(math.radians(h)), units * math.cos(math.radians(h))
+        self.b.call("console", f"{caller}.moveto player {dx:.0f} {dy:.0f} 0")
+
+    def _dialogue(self, ref):
+        """`dialogue: <ref>`: our dialogue window opened on the NPC directly (placed before the player, then the
+        console's activate); holds when ViewState dialogue reads a body, else StepFailed. For a screen under check;
+        `talk` stays for a step whose action is the thing checked."""
+        self._place_before(ref, TALK_UNITS)
+        return self._show(ref, view="dialogue", label="dialogue")
+
+    def _lockpick(self, ref):
+        """`lockpick: <ref>`: the Lockpicking Menu on a locked ref. The console's activate skips the lock (151959) and
+        opens the container instead, so it is tried first only to learn that: a Container Menu it opens is closed and
+        the engine's own pick is used (`open`: the ref set before the player, E once the crosshair holds it); the
+        step fails unless a Lockpicking Menu opening is seen."""
+        last = (self.b.call("events") or {}).get("last")
+        try:
+            self._show(ref, menu="Lockpicking Menu", label="lockpick", tries=1)
+            return None
+        except StepFailed:
+            evs = (self.b.call("events", last, "menu") or {}).get("events") or []
+            if any((e.get("data") or {}).get("opening") for e in evs):  # the script activate opened the container
+                self._close_menu("ContainerMenu")
+        self._open(ref)
+        evs = (self.b.call("events", last, "menu") or {}).get("events") or []
+        if not any((e.get("data") or {}).get("menu") == "Lockpicking Menu" and (e.get("data") or {}).get("opening") for e in evs):
+            raise StepFailed(f"lockpick {ref}: no Lockpicking Menu event")
+
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""
         self._face(ref)
@@ -646,6 +703,12 @@ class Runner:
         heading and pitch with a moveto missed the crate and no lock opened (r5 menus-look 21-lockpicking)."""
         self._face(ref, OPEN_UNITS, chest_z=OPEN_Z)
         return self._activate(120)
+
+    def _show_action(self, spec):
+        """`show: <ref>` or `show: {ref, menu, view}`: _show as an action."""
+        if isinstance(spec, dict):
+            return self._show(spec["ref"], spec.get("menu"), spec.get("view"))
+        return self._show(spec)
 
     def _strike(self, ref):
         """`strike: <ref>`: one real melee swing at the ref with no key or pad on the path (the input path is the
@@ -931,7 +994,7 @@ MENU_VIEWS = {"journal": "journal", "MapMenu": "chart", "system": "system", "wai
 CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order; pad B closes our journal (game-16, live)
 AIM_EYE_Z, AIM_CHEST_Z = 110, 90
 OPEN_UNITS, OPEN_Z = 100, 20  # a crate at reach, aimed at its middle (units)  # a standing human's eye and chest above the feet (units)
-ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "open": Runner._open, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
+ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "open": Runner._open, "show": Runner._show_action, "dialogue": Runner._dialogue, "lockpick": Runner._lockpick, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
            "burst": Runner._burst, "burst_fetch": Runner._burst_fetch,
            "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel,

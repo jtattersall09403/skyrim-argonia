@@ -685,3 +685,51 @@ def test_kinds_found_counts_distinct_live_kinds():
     among = ["Giant Leech", "Swamp Jelly", "Crow", "Dragon Frog"]
     assert kinds_found(actors, among) == ["Giant Leech", "Swamp Jelly"]
     assert kinds_found(None, among) == [] and kinds_found([], among) == []
+
+
+class Screen(Fake):
+    """A bridge whose console activate opens `opens` (a menu name) or nothing, and a dialogue view when asked."""
+    def __init__(self, opens=None, view=False):
+        super().__init__()
+        self.opens, self.view, self.opened = opens, view, False
+
+    def call(self, cmd, *args):
+        if cmd == "player":
+            return {"pos": {"x": 0, "y": 0, "z": 0}, "heading_deg": 0}
+        if cmd == "console" and args[0].endswith(".activate player"):
+            self.lines.append(args[0])
+            self.opened = True
+            return {"output": ""}
+        if cmd == "events":
+            if not args:
+                return {"last": 7}
+            ev = [{"seq": 8, "kind": "menu", "data": {"menu": self.opens, "opening": True}}] if self.opens and self.opened else []
+            return {"last": 8, "events": ev}
+        if cmd == "core" and args[:2] == ("ViewState", "dialogue"):
+            return {"value": {"body": {}} if self.view and self.opened else None}
+        return super().call(cmd, *args)
+
+
+def run_one(tmp_path, bridge, action):
+    return rj.Runner(bridge, tmp_path / "out").run(journey(tmp_path, [{"name": "s", "do": [action]}]), "base")
+
+
+def test_show_passes_when_the_menu_event_arrives_and_sends_no_key(tmp_path):
+    b = Screen(opens="Lockpicking Menu")
+    rep = run_one(tmp_path, b, {"show": {"ref": "ARG_Ref_X", "menu": "Lockpicking Menu"}})
+    assert rep["passed"] and [l for l in b.lines if "ARG_Ref_X" in l] == ["ARG_Ref_X.activate player"]
+
+
+def test_show_fails_when_the_wrong_or_no_menu_opens(tmp_path):
+    for opens in (None, "ContainerMenu"):
+        rep = run_one(tmp_path, Screen(opens=opens), {"show": {"ref": "ARG_Ref_X", "menu": "Lockpicking Menu"}})
+        assert not rep["passed"] and "no Lockpicking Menu event" in json.dumps(rep)
+
+
+def test_dialogue_places_the_npc_then_activates_and_reads_the_view(tmp_path):
+    b = Screen(view=True)
+    rep = run_one(tmp_path, b, {"dialogue": "ARG_Ref_Livia"})
+    assert rep["passed"]
+    mine = [l for l in b.lines if "ARG_Ref_Livia" in l]
+    assert mine[0].startswith("ARG_Ref_Livia.moveto player") and mine[1] == "ARG_Ref_Livia.activate player"
+    assert not run_one(tmp_path, Screen(view=False), {"dialogue": "ARG_Ref_Livia"})["passed"]

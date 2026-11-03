@@ -28,8 +28,7 @@ steps:
   - name: speak-livia                         # our dialogue opens; the map pane and the chart stay hidden
     do:
       - {console: "player.moveto ARG_Ref_ClaywaterStationLivia 0 -120 0"}
-      - {console: "player.setangle z 0"}
-      - {talk: ARG_Ref_ClaywaterStationLivia}
+      - {dialogue: ARG_Ref_ClaywaterStationLivia}
     expect:
       - {read: [core, ViewState, dialogue], path: value.body.speaker.id, eq: npc.imperial-fringe.claywater-station.well-keeper, within: 2}
   - name: map-key-in-dialogue                 # M during the conversation: the chart does not open over it
