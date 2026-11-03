@@ -73,7 +73,9 @@ MARSH_TREE_HA_BY = {"coastal-lagoon": 170.0, "deep-sink-basin": 90.0, "tidal-del
 # lagoon means 19-25 a cell against the band 9-27)
 MARSH_TREE_HA_REGION = {"mercantile-coast.coastal-lagoon": 250.0, "saxhleel-coast.coastal-lagoon": 130.0,
                         "imperial-penal-south.coastal-lagoon": 199.0, "dunmer-north.coastal-lagoon": 297.0,
-                        "dunmer-north.deep-sink-basin": 153.0}
+                        "dunmer-north.deep-sink-basin": 127.0}
+# dunmer-north.deep-sink-basin 153 -> 127 (lane 1.15-r5-delta-trees): it read 29.4 trees a cell against the band's 27.0;
+# 153 x 24.5 / 29.4 = 127, 24.5 being the median of the seven other deep-sink-basin regions' measured means (17.3-26.1)
 # ONE definition of a countable cell, for the planner's targets here and the check's band (checks.py): a cell counts
 # toward its tree band when a quarter of its vertices lie within 2 m under the water (the cypress band's depth) or
 # above it. A cell of open water (a lagoon's sea floor) is no marsh cell: Skyrim.esm's marsh cells have ground to

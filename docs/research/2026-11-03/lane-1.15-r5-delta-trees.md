@@ -22,3 +22,6 @@ dunmer-north.deep-sink-basin (88 cells) reads 28.6 before and 29.4 after against
 
 ## Owed
 L4: round-5 world panel tidal-delta stills (cypress-shaped trunks in the water instead of Erut). 45 vegetation tests pass.
+
+## Second red closed
+dunmer-north.deep-sink-basin: MARSH_TREE_HA_REGION 153 -> 127 (153 x 24.5 / 29.4; 24.5 = median of the other seven deep-sink-basin regions' measured means). It now reads 25.1 a cell; province check 18 green, 0 red (648,640 refs).
