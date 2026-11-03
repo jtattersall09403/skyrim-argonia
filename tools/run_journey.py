@@ -18,7 +18,7 @@ A runnable journey has `runner: 1` (the drafts beside it are prose for a lane to
           - moved: {gt: 100}
 
 Actions: pad <seq>; key "<K[+K]> <ms>"; talk <ref> (the NPC set 1.1 m before the player facing them, then E once
-the crosshair shows it, or the step fails); console <line>; teleport [cell <edid> | pos x y z | ref <id>];
+the crosshair shows it, or the step fails); open <ref> (the same for a crate or lock, aimed low); console <line>; teleport [cell <edid> | pos x y z | ref <id>];
 wait <seconds, at most 10>; game_hours <n> (time passes at a raised timescale, the game's own clock, then the
 timescale is put back); call [<command>, args...] (any bridge read, kept in the report); relaunch <save | true>
 (the game quit cleanly by the console's qqq, launched again through the bridge's `launch` to the main menu with the
@@ -532,7 +532,7 @@ class Runner:
         self.calls.append({"call": ["relaunch", save], "result": r})
         return r
 
-    def _face(self, ref, units=None, need_crosshair=True):
+    def _face(self, ref, units=None, need_crosshair=True, chest_z=None):
         """The NPC moved TALK_UNITS (or `units`) in front of the player, turned to face them, then E once the
         crosshair's ref is that NPC (the bridge's `crosshair` read), polled for TALK_WAIT_S; StepFailed when it never
         is. An NPC under AI walked out of the crosshair during a fixed wait before E (diag2-dialogue-crime)."""
@@ -555,7 +555,7 @@ class Runner:
             if seen and want is not None and _form_id(seen.get("id")) == want:
                 break
             if time.monotonic() - aimed >= 1.0:  # an NPC under AI or a moveto that landed off the mark: aim again
-                self._aim(caller)
+                self._aim(caller, chest_z)
                 aimed = time.monotonic()
             if time.monotonic() >= end:
                 if not need_crosshair:  # a swing lands on what stands in front; the step's hit expects are the check
@@ -638,6 +638,13 @@ class Runner:
     def _talk(self, ref):
         """`talk: <ref>`: _face, then E (retried while no menu opens)."""
         self._face(ref)
+        return self._activate(120)
+
+    def _open(self, ref):
+        """`open: <ref>`: a container, door or lock opened the player's way: the ref set OPEN_UNITS before the player,
+        the aim pitched to its middle (OPEN_Z, a crate's, not a person's chest), E once the crosshair shows it. A fixed
+        heading and pitch with a moveto missed the crate and no lock opened (r5 menus-look 21-lockpicking)."""
+        self._face(ref, OPEN_UNITS, chest_z=OPEN_Z)
         return self._activate(120)
 
     def _strike(self, ref):
@@ -922,8 +929,9 @@ TALK_UNITS, TALK_WAIT_S = 110, 5.0  # 5 s: a player moveto before it may load a 
 STRIKE_UNITS = 80  # inside a sword's reach
 MENU_VIEWS = {"journal": "journal", "MapMenu": "chart", "system": "system", "wait": "wait"}  # a menu name and our view that stands for or over it
 CLOSE_KEYS = (("B", "pad"), ("ESC", "engine"), ("TAB", "engine"), ("ESC", "os"), ("TAB", "os"))  # tried in order; pad B closes our journal (game-16, live)
-AIM_EYE_Z, AIM_CHEST_Z = 110, 90  # a standing human's eye and chest above the feet (units)
-ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
+AIM_EYE_Z, AIM_CHEST_Z = 110, 90
+OPEN_UNITS, OPEN_Z = 100, 20  # a crate at reach, aimed at its middle (units)  # a standing human's eye and chest above the feet (units)
+ACTIONS = {"pad": Runner._pad, "talk": Runner._talk, "open": Runner._open, "strike": Runner._strike, "rest": Runner._rest, "close_menu": Runner._close_menu, "key": Runner._key, "console": Runner._console, "teleport": Runner._teleport,
            "wait": Runner._wait, "game_hours": Runner._game_hours, "call": Runner._call, "relaunch": Runner._relaunch,
            "burst": Runner._burst, "burst_fetch": Runner._burst_fetch,
            "mouse": Runner._mouse, "click": Runner._click, "wheel": Runner._wheel,

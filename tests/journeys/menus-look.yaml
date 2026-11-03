@@ -106,15 +106,11 @@ steps:
   - name: book-closed
     do: [{close_menu: Book Menu}, {wait: 2}]
   - name: lockpicking
-    # the game's own activation (a script's activate skips the lock, 151959): the crate set in front of the player, who
-    # faces it (heading 90 = +x) and presses the activate key
+    # the game's own activation (a script's activate skips the lock, 151959): the locked crate set before the player,
+    # aimed at low (`open`, not a fixed heading: r5's 21-lockpicking found no lock), then E once the crosshair holds it
     do:
       - {console: '"{lockbox}".lock 25'}
-      - {console: 'player.setangle x 20'}
-      - {console: 'player.setangle z 90'}
-      - {console: '"{lockbox}".moveto player 110 0 0'}
-      - {wait: 1}
-      - {key: "E 120 engine"}
+      - {open: "{lockbox}"}
       - {wait: 3}
     expect:
       - {event: {kind: menu, match: Lockpicking Menu}}

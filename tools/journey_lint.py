@@ -125,7 +125,7 @@ def lint(journey: dict, vocab: dict | None) -> list[str]:
                 found += console_line(str(v["line"] if isinstance(v, dict) else v), vocab)
             elif k == "call" and isinstance(v, list):
                 found += read_call(v, vocab)
-            elif k in ("talk", "strike"):
+            elif k in ("talk", "strike", "open"):
                 found += talk_ref(str(v), vocab)
             elif k == "pad":
                 found += pad_seq(str(v))
