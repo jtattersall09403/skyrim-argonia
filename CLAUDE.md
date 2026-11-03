@@ -54,6 +54,9 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Shell commands run through rtk; add a tool, hook or gate only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
 - One deliverable per context, one builder per place, module or view; hand off at the context marker; return ≤ 25 lines.
 - No `sleep` or polling; long jobs run backgrounded under `job_guard.sh`; waits return within 270 s.
+- Expect to be interrupted often (the machines are spot): plan every piece of work, yours and any tool or method you
+  use, so that nothing is lost but the machine's downtime and it resumes from exactly where it got to; a tool or
+  method found not to be so is made so before it is used again ([0037](docs/decisions/0037-work-is-interrupt-proof.md)).
 - Every 20 minutes the planner checks each running subagent and speeds it up (tools, patterns, methods).
 - Tidy up after yourself: delete temporary files (or anything else you've created that we don't need to keep) when they are no longer needed. Do not bloat the disk. We need to actively manage disk space. Same for deleting things on aws that are no longer needed, like stale machine images, and temporary/rubbish files in the s3 bucket.
 

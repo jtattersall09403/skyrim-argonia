@@ -1,6 +1,6 @@
 # 0037 — Work is interrupt-proof: every long job resumes from exactly where it got to
 
-**Date:** 2026-11-03 · **Status:** accepted (owner rulings on #38, 16:02 and 16:04; amends nothing, binds every job)
+**Date:** 2026-11-03 · **Status:** accepted (owner rulings on #38, 16:02, 16:04 and 16:14; a binding CLAUDE.md line; binds every job, tool and method)
 
 ## Decision
 
@@ -14,7 +14,9 @@
    (`infra/gpu-box/lod.sh`: a marker per step on the play machine; a tool still running when the driver comes back
    is attached and waited for, never restarted). Jobs relaunch at boot from their spool (`tooling/job_resume.sh`);
    lanes resume from their transcripts, their worktrees keep uncommitted files, and they commit each proven step.
-3. **A step that cannot checkpoint is split until it can**, or it runs on the machine that survives (the LOD tools run
+3. **Every agent plans its own work this way** (owner, 16:14): it expects frequent interruptions, and any pre-existing tool or
+   method it finds that is not interrupt-proof it makes so before using it again.
+4. **A step that cannot checkpoint is split until it can**, or it runs on the machine that survives (the LOD tools run
    on the play machine; the build VM only drives them).
 
 ## Why
