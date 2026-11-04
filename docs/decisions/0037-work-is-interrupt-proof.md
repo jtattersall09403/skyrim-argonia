@@ -45,3 +45,11 @@ owner asked. The owner: prevent anything of that shape. So, for every long chain
 - Every end of a chain, good or bad, calls `infra/build-vm/agent-wake.sh`; the build VM's two-minute wake timer treats
   that line as it treats an owner comment, and the session that launched the chain also watches its log. A chain that
   can stop silently is a defect in the chain.
+
+## Amendment, 2026-11-04 (owner, 13:14, #39): spot stays, and a restart costs nothing but its minutes
+
+The build VM was reclaimed fourteen times in one morning and the planner asked about on-demand; the owner had ruled
+before and ruled again: spot stays, no agent asks, and every agent plans for interruption so that nothing is lost but the
+interruption time itself. A resumed chain that re-runs its pre-batch or its deploy is a defect of this decision: the
+pre-batch is keyed by its inputs and skipped whole when they hold; the deploy is keyed by the build the machine already
+holds and skipped whole when it matches; the batch resumes at its next open step from the pass ledger.
