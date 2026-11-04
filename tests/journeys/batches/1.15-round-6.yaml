@@ -13,6 +13,8 @@ items:
   - river-steps
   - ground-materials
   - road-look
+  - bridge-look
+  - junction-dry
   - rain-look
   - rock-booth
   - tree-seat
