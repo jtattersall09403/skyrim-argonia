@@ -38,7 +38,15 @@ step chart4k $PY -m tools.chart render --if-stale --level --size 4096 --out out/
 step sample $PY tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
 # every data-driven journey re-derived from this build (positions, heights, ids; vantages out of water and foliage),
 # then checked at L1: a stale stand stops the round here, before any machine time (1.15-r4-journeys)
-step journeys $PY -m tools.journeys refresh || exit 3
+# 1.15-r6-resume-costs: keyed by its own inputs in a state of its own (the journeys' code, the panel, the world rows (their blobs, not the sqlite a plugin build rewrites), and
+# the out/ files gen.py's per-stand cache reads), so a change elsewhere does not rerun the ~6-minute refresh; an
+# interrupted refresh resumes stand by stand from out/journeys/cache (gen.py _cached)
+jkey=$( { git ls-files -s tools/journeys tools/argonia_world/panel.py world/db world/schema.sql | grep -v "world/db/build_ref.jsonl"
+  git diff -- tools/journeys tools/argonia_world/panel.py; ls -l --time-style=+%s out/water/cells.jsonl out/terrain/ground-f32.npy 2>/dev/null
+  ls -l --time-style=+%s out/terrain/vegetation out/terrain/land 2>/dev/null; } | sha256sum | cut -c1-12)
+jstate="$HOME/.argonia/round/prebatch-journeys.$jkey.state"; touch "$jstate"
+if grep -qx "journeys OK" "$jstate"; then echo "PREBATCH journeys OK (done earlier for its inputs $jkey)"
+else state=$jstate step journeys $PY -m tools.journeys refresh || exit 3; fi
 step plugin-ids make plugin-ids || exit 3  # the panel's moved vantage markers are DB rows: emitted here
 J=tests/journeys; S=tests/scenes
 git add $J/world-sample.yaml $J/world-panel.yaml $J/river-steps.yaml $J/road-look.yaml $J/claywater-walk.yaml \
