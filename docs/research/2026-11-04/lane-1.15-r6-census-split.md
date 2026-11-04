@@ -4,3 +4,4 @@
 - vanilla_road_banks.py does not import shape.py.
 - The import walk (walk_imports) no longer reaches census.py, but pipeline.py `_hand("ground")` still globs `routes/*.py`, so census.py stays in stage_cover("ground") until that glob excludes it (pipeline.py is outside this lane's paths: left to the planner).
 - The same glob keeps routes/infra.py and build.py in the ground cover.
+- Census now emits infra.census_bridges() as `bridges` and drops bridge-covered crossings from `bridge_candidates` (now empty; gideon-step, glenbridge-step, thorn-step listed); test_census covers a synthetic covered crossing; the rest of the output diffs equal to before.

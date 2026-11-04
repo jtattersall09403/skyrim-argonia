@@ -64,3 +64,11 @@ def test_flooded_footprint_becomes_a_causeway():
     g[(col[:-1] < 2.0) != (col[1:] < 2.0)] = 0.0
     assert g.max() <= S.GRADE_MAX + 0.02, g.max()
     assert col.min() < 2.0 - 0.3 and col[n // 2] >= 2.0 + S.CAUSEWAY_M - 0.01
+
+
+def test_a_step_crossing_a_bridge_covers_is_not_a_candidate():
+    res = {"r1": {"step_crossings": [{"drop_m": 1.0, "at_m": [100, 100]}, {"drop_m": 1.0, "at_m": [500, 500]}]},
+           "r2": {"step_crossings": [{"drop_m": 1.0, "at_m": [100, 100]}]}, "r3": {"step_crossings": []}}
+    bridges = [{"id": "bridge.x", "routes": ["r1"], "at_m": [102.0, 99.0, 0.0]}]
+    left = C.bridge_candidates(res, bridges)
+    assert left == {"r1": [{"drop_m": 1.0, "at_m": [500, 500]}], "r2": [{"drop_m": 1.0, "at_m": [100, 100]}]}

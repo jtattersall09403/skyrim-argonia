@@ -4,6 +4,8 @@ from shape.py (lane 1.15-r6-census-split) so a measure-only edit does not move t
 imports shape.py's road pass, never this file."""
 from __future__ import annotations
 
+import math
+
 import numpy as np
 
 from tools.argonia_world.routes.shape import (
@@ -312,6 +314,18 @@ def wet_census(h, roads, ids, level, reach, step: float = 1.0, raised=None, rid=
     return out
 
 
+def bridge_candidates(res: dict, bridges: list[dict]) -> dict:
+    """The step crossings still owed a bridge: per road, those no bridge covers (a bridge covers a crossing on one of
+    its roads within half its length of its centre)."""
+    from tools.argonia_world.routes.infra import BRIDGE_LEN_M
+
+    def covered(road, x):
+        return any(road in b["routes"] and math.hypot(x["at_m"][0] - b["at_m"][0], x["at_m"][1] - b["at_m"][1])
+                   <= BRIDGE_LEN_M / 2 for b in bridges)
+    out = {k: [x for x in r["step_crossings"] if not covered(k, x)] for k, r in res.items()}
+    return {k: v for k, v in out.items() if v}
+
+
 def wet_main(w, a) -> int:
     """`census [GROUND.npy]`: every road's wet census on the generated ground (lane 1.15-r6-roads-dry). Fails on any
     metre under water outside a ford, a ford deeper than FORD_M, or a bank steeper than GRADE_MAX (the slope's
@@ -352,8 +366,10 @@ def wet_main(w, a) -> int:
     fails += [f"{k}: ford {r['ford_max_m']} m" for k, r in res.items() if r["ford_max_m"] > FORD_M + 0.01]
     fails += [f"{k}: bank p99 {r['bank_p99']} over the bar {BANK_BAR}" for k, r in res.items()
               if raised is not None and r["bank_p99"] > BANK_BAR]
-    tot["bridge_candidates"] = {k: r["step_crossings"] for k, r in res.items() if r["step_crossings"]}
-    print(json.dumps({"total": tot, "roads": res, "fails": fails, "grade_max": GRADE_MAX,
+    from tools.argonia_world.routes.infra import census_bridges
+    bridges = census_bridges(w, lambda x, y: float(bilinear(h, np.array([x / MPP]), np.array([y / MPP]))[0]))
+    tot["bridge_candidates"] = bridge_candidates(res, bridges)
+    print(json.dumps({"total": tot, "roads": res, "fails": fails, "bridges": bridges, "grade_max": GRADE_MAX,
                       "bank_bar": {"value": BANK_BAR, "band_m": BANK_BAND_M, "source": BANK_BAR_SOURCE},
                       "bank_measured_on": "raised" if raised is not None else "all low ground (no road-raised mask)"}, indent=1))
     return 1 if fails else 0
