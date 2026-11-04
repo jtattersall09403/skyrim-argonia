@@ -55,3 +55,15 @@ def test_pad_paints_its_disc():
 def test_old_key_only_rows_are_never_applied():
     p = patches.Patches.from_rows([{"id": "patch.bed-cut.x", "kind": None}], _ground(), 0, lambda x, y: None)
     assert len(p) == 0
+
+
+def test_pad_stands_its_freeboard_over_the_wettest_cell_under_its_disc():
+    """Lane 1.15-r6-claywater-water: Claywater's common stood 0.52 m over its river and the quest-board marker 0.08 m
+    on the bank's slope. A pad by the water clears the highest cell water its disc touches by PAD_FREEBOARD_M; a pad
+    already higher keeps its mean; a pad over dry cells keeps its mean."""
+    g = _ground()
+    mean = patches.Patches.from_rows(_rows(), g, 0, lambda x, y: None).items[0].level
+    wet = lambda x, y: mean if x > 30 * S + 3.0 else None  # only the rim east of the centre is in a wet cell
+    assert patches.Patches.from_rows(_rows(), g, 0, wet).items[0].level == round(mean + patches.PAD_FREEBOARD_M, 3)
+    low = lambda x, y: mean - 5.0
+    assert patches.Patches.from_rows(_rows(), g, 0, low).items[0].level == mean

@@ -2,7 +2,8 @@
 ground, applied where the ground's heights are read (grid.Sources.heights: the LAND, game_heights_m, GameGround and
 the navmesh) and where its material is painted (material.Material), so a pad is a row and never a hand edit.
 
-- `pad`: flat at the mean of the generated ground inside its disc plus rise_m, easing back to the ground over
+- `pad`: flat at the mean of the generated ground inside its disc plus rise_m (at least PAD_FREEBOARD_M over its
+  cell's water), easing back to the ground over
   blend_m (smoothstep). Skyrim.esm's exterior wells (farmwell01, swell, rtplazawell01, genericwell01) stand on
   ground with p50 0.23 m of relief within 2 m and on a dirt or mud vertex (LDirt02, LFallForestDirt01,
   LRiverMud01): a flat pad under the dirt path's texture (lane 1.15-r4-claywater).
@@ -24,6 +25,11 @@ from tools.argonia_world import skyrim_units as su
 TABLE = "terrain_patch"
 BOWL_RISE = 0.5
 BOWL_REACH_M = 20.0
+# A pad stands at least this far over its cell's water: Skyrim.esm's Riverwood (cells 3..7, -13..-9) seats its
+# farmhouses and smithy 1.0-3.81 m over the river's cell water (FarmhouseSmith01 1.0 m, the least; n 7), so a yard by
+# the water is lifted clear of it, never left a hand's width over it (lane 1.15-r6-claywater-water: Claywater's
+# common stood 0.52 m over the river, the quest-board marker 0.08 m over it on the bank's slope).
+PAD_FREEBOARD_M = 1.0
 
 
 @dataclass(frozen=True)
@@ -53,6 +59,15 @@ def pad_level(ground: np.ndarray, row: float, col: float, radius_m: float, rise:
     return float(sel.mean()) + rise
 
 
+def pad_water(r: dict, water_at) -> float | None:
+    """The highest cell water under a pad's disc (its centre and four points on its rim): a pad across a cell edge
+    clears the wet cell's water, not only the cell its centre falls in."""
+    rad = r["radius_m"]
+    got = [water_at(r["x_m"] + dx * rad, r["y_m"] + dy * rad) for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1))]
+    got = [g for g in got if g is not None]
+    return max(got) if got else None
+
+
 class Patches:
     def __init__(self, items: list[Patch]):
         self.items = items
@@ -71,6 +86,9 @@ class Patches:
             row, col = r["y_m"] / s, r["x_m"] / s
             if r["kind"] == "pad":
                 level = pad_level(ground, row, col, r["radius_m"], r["rise_m"] or 0.0)
+                lv = pad_water(r, water_at)
+                if lv is not None:
+                    level = max(level, lv + PAD_FREEBOARD_M)
             else:
                 lv = water_at(r["x_m"], r["y_m"])
                 if lv is None:
