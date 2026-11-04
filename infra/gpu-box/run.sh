@@ -31,6 +31,12 @@ open_ssh() {
   [ "$(cat "$C/sg-$M" 2>/dev/null)" = "$me" ] && return 0  # already opened to this address (saves ~3 s a call)
   sg=$(aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)
+  # one rule per build-VM address, the previous one revoked first: a spot build VM changes address at every reboot and the
+  # group's rule limit was reached after 55 of them (2026-11-04 18:0x: SSH timed out for 30 min while AWS called the machine healthy)
+  local prev; prev=$(cat "$C/sg-$M" 2>/dev/null)
+  if [ -n "$prev" ] && [ "$prev" != "$me" ]; then
+    aws ec2 revoke-security-group-ingress --region $R --group-id "$sg" --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$prev/32}]" >/dev/null 2>&1 || true
+  fi
   aws ec2 authorize-security-group-ingress --region $R --group-id "$sg" \
     --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$me/32,Description=build-vm}]" >/dev/null 2>&1 || true
   echo "$me" > "$C/sg-$M"
