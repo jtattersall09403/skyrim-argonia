@@ -43,7 +43,10 @@ fi
 cd "${ARGONIA_REPO:-$src}" || exit 2
 g=infra/gpu-box; t0=$SECONDS
 run() { echo "CHAIN $1 $(date -u +%H:%M:%S)"; shift; [ -n "${CHAIN_DRY:-}" ] && { echo "  would run: $*"; return 0; }; "$@"; }
-trap '[ -n "${CHAIN_DRY:-}" ] || $g/run.sh stop >/dev/null 2>&1; echo "CHAIN end in $(( SECONDS - t0 )) s"' EXIT
+# the machine stops on a chain's own end, never when the planner stops the job to relaunch it (18:09: a stop to relaunch
+# at HEAD stopped Paris through this trap and cost a capacity hunt)
+stopped=; trap 'stopped=1' TERM INT
+trap '[ -n "${CHAIN_DRY:-}" ] || [ -n "$stopped" ] || $g/run.sh stop >/dev/null 2>&1; echo "CHAIN end in $(( SECONDS - t0 )) s"' EXIT
 # 0. a game machine already up for this round is kept up through the pre-batch: its idle-stop stops it after 15 minutes
 #    with no agent command, and a build-VM reboot plus the pre-batch is longer (2026-11-04: Paris stopped at 14 of 14 reboots)
 if [ -z "${CHAIN_DRY:-}" ] && $g/run.sh ps "echo ok" >/dev/null 2>&1; then echo "CHAIN machine up: busy flag touched"; fi
