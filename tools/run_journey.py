@@ -73,7 +73,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError, GameDown  # noqa: E402
+from tools.bridge import Bridge, BridgeError, GameDown, frame_difference  # noqa: E402
 
 BASE_SAVE = "argoniabase"
 RESUME = REPO / "out" / "resume"
@@ -214,6 +214,7 @@ class Runner:
         self.sent = {} if sent is None else sent
         self.calls = []
         self.camera: str | None = None  # the journey's camera mode, re-asserted and read before each still
+        self.view_unverified = False  # a load or relaunch happened: the next first-person toggle is checked against the view
         self.kept: dict = {}
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
         self.save = BASE_SAVE
@@ -249,6 +250,7 @@ class Runner:
             self.b.call("load", save)
             self.wait_load(since, appear=5.0)  # act only on a settled world: the travel line inside a load's tail
             # crashed the engine twice (diag2-crash-misc, batch 20261030T151243)
+            self.view_unverified = True
         third_person(self.b)
         if scene:
             src = SCENES / f"{scene}.txt"
@@ -386,6 +388,8 @@ class Runner:
             except BridgeError as e:
                 now = f"error {e}"
             tries.append(f"read {now[-40:]}")
+            if now.endswith(want) and want == "1.00" and self.view_unverified and not self._view_is_first(tries):
+                now = "view check failed"   # the read says first person, the frame does not move: retried like a bad read
             if now.endswith(want):
                 self.calls.append({"call": ["camera", str(arg)], "tries": tries})
                 return {"camera": str(arg), "tries": n, **({"route": "bridge"} if bridge_ok and n == 0 else {})}
@@ -403,6 +407,43 @@ class Runner:
             self.calls.append({"call": ["camera", str(arg)], "tries": tries, "soft_fail": True})
             return {"camera": str(arg), "tries": 6, "soft_fail": True}
         raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}; engine state {self._engine_state()}")
+
+    VIEW_CHANGE_MIN = 0.15   # a real third->first switch moves the camera, so far more than this fraction of pixels changes
+
+    def _view_is_first(self, tries, attempts=3) -> bool:
+        """After a load or relaunch the console read (and the bridge's own read-back) can say first person while the
+        view is still third (r6 sky-ab: the stills after the relaunch showed the player's body). The view is measured:
+        the camera put to third and a still taken, put to first and another; the two must differ by VIEW_CHANGE_MIN
+        (bridge.frame_difference), else it is toggled again, up to `attempts` times. True when it moved (and the flag is
+        cleared), or when no still can be taken (the check is then skipped, not failed)."""
+        grab = getattr(self.b, "screenshot", None)
+        if grab is None:
+            return True
+        tmp = self.out / "camera-view-check"
+        tmp.mkdir(parents=True, exist_ok=True)
+        for k in range(attempts):
+            try:
+                self.b.call("camera", "third")
+                time.sleep(1.5)
+                a = grab(tmp / f"third{k}.png")
+                self.b.call("camera", "first")
+                time.sleep(1.5)
+                b = grab(tmp / f"first{k}.png")
+            except BridgeError as e:
+                tries.append(f"view check skipped {str(e)[:40]}")
+                return True
+            try:
+                d = frame_difference(a, b)
+            except Exception as e:   # noqa: BLE001  an unreadable still: the check is skipped, never a failure
+                tries.append(f"view check skipped {str(e)[:40]}")
+                return True
+            tries.append(f"view diff {d:.2f}")
+            if d >= self.VIEW_CHANGE_MIN:
+                self.view_unverified = False
+                shutil.rmtree(tmp, ignore_errors=True)
+                return True
+        shutil.rmtree(tmp, ignore_errors=True)
+        return False
 
     ENGINE_STATE_READS = ("IsSwimming", "GetSitState", "GetKnockedState", "GetSleepState", "GetDead")
 
@@ -547,6 +588,7 @@ class Runner:
                 clean = True
                 break
             time.sleep(1)
+        self.view_unverified = True
         launched = self.b.launch()  # kills what is left (a quit that hung), lays the DLL, waits for the ping
         self.apply_scene(scene, save)
         r = {"quit_clean": clean, "save": save, "ping": launched.get("ping")}

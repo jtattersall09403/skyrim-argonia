@@ -653,8 +653,8 @@ def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkey
         return real(cmd, *a)
     fake.call = cam
     rep = rj.Runner(fake, tmp_path / "d", stills=True).run(journey(tmp_path, [{"name": "look"}], camera="first"), "base")
-    # asked after the load, and again before the step's still, each read back
-    assert rep["passed"] and rep["camera"]["camera"] == "first" and [a for a, _ in asked] == ["first", "first"]
+    # asked after the load (with the one view check: third, first), and again before the step's still, each read back
+    assert rep["passed"] and rep["camera"]["camera"] == "first" and [a for a, _ in asked] == ["first", "third", "first", "first"]
     with pytest.raises(SystemExit, match="said once at the top"):
         journey(tmp_path, [{"name": "look"}], camera="sideways")
 
@@ -835,3 +835,32 @@ def test_camera_failure_without_independent_steps_does_not_relaunch(tmp_path):
     step = {"name": "look", "do": [{"camera": "first"}]}
     rep = rj.Runner(fake, tmp_path / "r").run(journey(tmp_path, [step]), "base")
     assert not rep["passed"] and fake.launched == 0 and "relaunches" not in rep
+
+
+def test_camera_view_check_retries_a_toggle_whose_readback_lies(tmp_path, monkeypatch):
+    # r6 sky-ab: after a relaunch the read said first person while the view stayed third. The view is measured.
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    diffs = iter([0.01, 0.40])   # first toggle: the frame does not move (lie); second: it does
+    monkeypatch.setattr(rj, "frame_difference", lambda a, b: next(diffs))
+    fake = Fake()
+    real = fake.call
+
+    def cam(cmd, *a):
+        if cmd == "camera":
+            return {"asked": a[0], "first_person": True}
+        if cmd == "console" and a[0] == "IsPC1stPerson":
+            return {"output": "IsPC1stPerson >> 1.00\n"}
+        return real(cmd, *a)
+    fake.call = cam
+    fake.screenshot = lambda p: p
+    r = rj.Runner(fake, tmp_path / "v")
+    r.view_unverified = True
+    res = r._camera("first")
+    assert res["camera"] == "first" and not r.view_unverified
+    assert any(t.startswith("view diff 0.01") for c in r.calls for t in c["tries"])
+
+    monkeypatch.setattr(rj, "frame_difference", lambda a, b: 0.0)   # never moves: fails
+    r2 = rj.Runner(fake, tmp_path / "w")
+    r2.view_unverified = True
+    with pytest.raises(rj.StepFailed, match="never became first"):
+        r2._camera("first")
