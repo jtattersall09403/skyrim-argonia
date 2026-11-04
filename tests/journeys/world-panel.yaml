@@ -333,7 +333,7 @@
      }
     },
     {
-     "console": "player.setangle z 13"
+     "console": "player.setangle z 73"
     },
     {
      "console": "player.setangle x 0"
@@ -407,7 +407,7 @@
      }
     },
     {
-     "console": "player.setangle z 13"
+     "console": "player.setangle z 73"
     },
     {
      "console": "player.setangle x 0"

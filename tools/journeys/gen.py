@@ -567,35 +567,72 @@ def creatures_kinds(b: Build, w, log: list) -> str:
 
 # -- world-panel: the stands clear of fronds and canopy ---------------------------------------------------------------
 PANEL_CLEAR = ("deep-river-corridor-shore",)   # round 5 stills 03-world-panel 06, 07: inside willow fronds
-PANEL_CLEAR_M, PANEL_STEP_M = 200.0, 4.0   # measured: the corridor's banks hold no 0/0 stand within 60 m
+PANEL_CLEAR_M, PANEL_STEP_M = 600.0, 8.0   # measured: the corridor shore's nearest 0/0 stand with water is ~540 m off
+PANEL_TURN_DEG = 15
 
 
-def panel_clear(b: Build, vid: str, x: float, y: float, yaw: float, log: list) -> tuple[float, float]:
-    """A PANEL_CLEAR vantage moved to the nearest stand (2 m grid, PANEL_CLEAR_M) on dry footing, standable, whose eye
-    reads 0/0 (clearance) facing the same yaw and keeps at least the authored stand's water share (40% at most asked);
-    every vantage's clearance is printed. Unchanged when it already reads 0/0 or none is found (warned)."""
+_RUNS: dict = {}
+
+
+def _region_at(w, x: float, y: float) -> str | None:
+    """The land region of the cell under (x, y) (cell_region_run, inclusive runs)."""
+    if not _RUNS:
+        for r in w.query("SELECT cy, cx0, cx1, land_region_id FROM cell_region_run"):
+            _RUNS.setdefault(r["cy"], []).append((r["cx0"], r["cx1"], r["land_region_id"]))
+    cx, cy = su.cell_of(x, y)
+    return next((lr for a, z, lr in _RUNS.get(cy, []) if a <= cx <= z), None)
+
+
+def panel_clear(b: Build, vid: str, x: float, y: float, yaw: float, log: list, w=None,
+                region: str | None = None) -> tuple[float, float, float]:
+    """A PANEL_CLEAR vantage moved to the nearest stand (PANEL_STEP_M grid within PANEL_CLEAR_M; per stand the yaw nearest
+    the authored one, PANEL_TURN_DEG steps) on dry footing, standable, whose eye reads 0/0 (clearance) and whose near field
+    holds at least the authored stand's water share (40% at most asked); every vantage's clearance is printed.
+    Unchanged when it already reads 0/0 or none is found (warned). Returns (x, y, yaw)."""
     from tools.journeys import stand_bad, water_share
     cl = clearance(b, eye_of(b, x, y), yaw)
     if vid in PANEL_CLEAR and cl != (0, 0):
         need = min(water_share(b, x, y, yaw), 0.4)
-        a = math.radians(yaw)
         n = int(PANEL_CLEAR_M / PANEL_STEP_M)
+        turns = sorted(range(0, 360, PANEL_TURN_DEG), key=lambda t: min(t, 360 - t))
+        found, best = None, None
         for i, j in sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1) if math.hypot(i, j) <= n),
                            key=lambda c: c[0] ** 2 + c[1] ** 2):
             px, py = x + i * PANEL_STEP_M * U, y + j * PANEL_STEP_M * U
-            if b.soaked(px, py) or b.wet(px, py) or clearance(b, eye_of(b, px, py), yaw) != (0, 0):
-                continue
+            if b.soaked(px, py) or b.wet(px, py) or (region and _region_at(w, px, py) != region):
+                continue   # dry, and in the vantage's own land region (the panel is per region class)
             ex, ey, ez = eye_of(b, px, py)
-            if stand_bad(b, px, py, (ex + math.sin(a) * 15 * U, ey + math.cos(a) * 15 * U, ez)):
-                continue
-            if water_share(b, px, py, yaw) < need:
-                continue
-            log.append({"journey": "world-panel", "step": vid, "moved_m": round(math.hypot(i, j) * PANEL_STEP_M, 1),
-                        "why": f"clearance {cl[0]}/{cl[1]} -> 0/0", "clear": True})
-            x, y, cl = px, py, (0, 0)
-            break
+            dm = math.hypot(i, j) * PANEL_STEP_M
+            for t in turns:
+                h = (yaw + t) % 360
+                c_ = clearance(b, (ex, ey, ez), h)
+                if c_ != (0, 0) and (dm > FIT_REACH_M or best and (c_[1], sum(c_)) >= best[0]):
+                    continue
+                if water_share(b, px, py, h) < need:
+                    continue
+                a = math.radians(h)
+                if stand_bad(b, px, py, (ex + math.sin(a) * 15 * U, ey + math.cos(a) * 15 * U, ez)):
+                    continue
+                if c_ != (0, 0):   # the fallback: within FIT_REACH_M, least canopy then fewest plants, nearest
+                    best = ((c_[1], sum(c_)), px, py, h, dm, c_)
+                    continue
+                found = (px, py, h, math.hypot(i, j) * PANEL_STEP_M)
+                break
+            if found:
+                break
+        if not found and best and (best[0][0], best[0][1]) < (cl[1], sum(cl)):
+            print(f"world-panel: WARNING {vid}: no stand within {PANEL_CLEAR_M:.0f} m reads 0/0; the least-hit one within "
+                  f"{FIT_REACH_M:.0f} m is used ({best[5][0]}/{best[5][1]})")
+            log.append({"journey": "world-panel", "step": vid, "moved_m": round(best[4], 1),
+                        "why": f"clearance {cl[0]}/{cl[1]} -> {best[5][0]}/{best[5][1]}, yaw {yaw:.0f} -> {best[3]:.0f}",
+                        "clear": True})
+            x, y, yaw, cl = best[1], best[2], best[3], best[5]
+        elif found:
+            log.append({"journey": "world-panel", "step": vid, "moved_m": round(found[3], 1),
+                        "why": f"clearance {cl[0]}/{cl[1]} -> 0/0, yaw {yaw:.0f} -> {found[2]:.0f}", "clear": True})
+            x, y, yaw, cl = found[0], found[1], found[2], (0, 0)
         else:
             print(f"world-panel: WARNING {vid}: no stand within {PANEL_CLEAR_M:.0f} m reads 0/0")
     print(f"world-panel: {vid}: clearance {cl[0]}/{cl[1]} (plants on the eye line to 60 m / canopy over the eye within "
-          f"10 m) at {x:.0f} {y:.0f}")
-    return x, y
+          f"10 m) at {x:.0f} {y:.0f} yaw {yaw:.0f}")
+    return x, y, yaw
