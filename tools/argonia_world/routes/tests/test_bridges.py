@@ -60,11 +60,18 @@ def test_the_six_step_crossings_are_bridged_on_their_lines(world):
         assert p["at_m"][2] == pytest.approx(p["deck_m"] - infra.BRIDGE_TOP_M, abs=0.01)
 
 
-def test_no_road_enters_the_dive_shafts_site(world):
+def test_no_road_enters_a_water_entered_site(world):
     w, _g = world
-    (pid, cx, cy, r), = build.keep_out_discs(w)
-    for rd in w.query("SELECT route_id, flat_width_m FROM road"):
-        pts = [(p["x_m"], p["y_m"]) for p in w.query(
-            "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", rd["route_id"])]
-        d = min(math.hypot(x - cx, y - cy) for x, y in pts)
-        assert d >= r + rd["flat_width_m"] / 2 + build.DRY_SHOULDER_M - 0.05, (rd["route_id"], d)
+    assert build.site_conflicts(w)["red"] == []
+    assert {d[0] for d in build.keep_out_discs(w)} >= {"place.imperial-penal-south.natural-dive-shaft",
+                                                         "place.saxhleel-coast.archon-glowgill-byre"}
+
+
+def test_a_road_into_a_keep_out_disc_is_red(world, monkeypatch):
+    w, _g = world
+    pid, x, y, r = next(d for d in build.keep_out_discs(w) if d[0].endswith("natural-dive-shaft"))
+    monkeypatch.setattr(build, "keep_out_discs", lambda _w: [(pid, x, y, r)])
+    real = w.query
+    rows = [{"route_id": "route.track.rose-causeway", "x_m": x - 200.0, "y_m": y}, {"route_id": "route.track.rose-causeway", "x_m": x + 200.0, "y_m": y}]
+    monkeypatch.setattr(w, "query", lambda q, *a: rows if q.startswith("SELECT route_id, x_m, y_m FROM road_point") else real(q, *a))
+    assert [c["road"] for c in build.site_conflicts(w)["red"]] == ["route.track.rose-causeway"]

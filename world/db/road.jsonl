@@ -1,5 +1,5 @@
 {"route_id":"route.road.alten-corimont-stormhold","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":1557.4,"length_3d_m":1636.1,"why":"traced off its TRACK and PATH paint (63% of the steps on it)"}
-{"route_id":"route.road.archon-gideon","surface_cover":30,"flat_width_m":5.0,"shoulder_m":2.0,"length_m":5897.4,"length_3d_m":5915.6,"reference_length_m":6236.0,"why":"traced off its BC_ROAD paint (59% of the steps on it)"}
+{"route_id":"route.road.archon-gideon","surface_cover":30,"flat_width_m":5.0,"shoulder_m":2.0,"length_m":5951.6,"length_3d_m":5969.3,"reference_length_m":6236.0,"why":"traced off its BC_ROAD paint (59% of the steps on it)"}
 {"route_id":"route.road.blackrose-lilmoth","surface_cover":30,"flat_width_m":5.0,"shoulder_m":2.0,"length_m":1500.1,"length_3d_m":1504.9,"reference_length_m":1644.0,"why":"traced off its BC_ROAD paint (79% of the steps on it)"}
 {"route_id":"route.road.bone-road-waystation-the-counted-dead","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":933.1,"length_3d_m":937.6,"why":"traced off its TRACK and PATH paint (38% of the steps on it)"}
 {"route_id":"route.road.cartwrights-cross-fig-market","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":1950.1,"length_3d_m":1963.7,"why":"traced off its TRACK and PATH paint (45% of the steps on it)"}
@@ -9,7 +9,7 @@
 {"route_id":"route.road.gideon-stormhold","surface_cover":30,"flat_width_m":5.0,"shoulder_m":2.0,"length_m":3751.7,"length_3d_m":3776.9,"reference_length_m":4498.0,"why":"traced off its BC_ROAD paint (40% of the steps on it)"}
 {"route_id":"route.road.glenbridge-the-road-nisswo-house","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":3440.2,"length_3d_m":3518.0,"why":"traced off its TRACK and PATH paint (60% of the steps on it)"}
 {"route_id":"route.road.soulrest-blackrose","surface_cover":30,"flat_width_m":5.0,"shoulder_m":2.0,"length_m":2481.9,"length_3d_m":2489.6,"reference_length_m":3006.0,"why":"traced off its BC_ROAD paint (4% of the steps on it)"}
-{"route_id":"route.road.stormhold-thorn","surface_cover":30,"flat_width_m":6.0,"shoulder_m":2.0,"length_m":6366.6,"length_3d_m":6561.9,"reference_length_m":8802.0,"why":"traced off its BC_ROAD paint (68% of the steps on it)"}
+{"route_id":"route.road.stormhold-thorn","surface_cover":30,"flat_width_m":6.0,"shoulder_m":2.0,"length_m":6366.6,"length_3d_m":6562.0,"reference_length_m":8802.0,"why":"traced off its BC_ROAD paint (68% of the steps on it)"}
 {"route_id":"route.road.thorn-tear-road","surface_cover":30,"flat_width_m":6.0,"shoulder_m":2.0,"length_m":1041.9,"length_3d_m":1093.0,"reference_length_m":1251.0,"why":"traced off its BC_ROAD paint (71% of the steps on it)"}
 {"route_id":"route.track.blackrose-cordon-line","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":973.6,"length_3d_m":975.0,"why":"traced off its TRACK and PATH paint (91% of the steps on it)"}
 {"route_id":"route.track.bogmother-causeway","surface_cover":29,"flat_width_m":2.5,"shoulder_m":0.0,"length_m":626.1,"length_3d_m":876.0,"why":"traced off its TRACK and PATH paint (28% of the steps on it)"}

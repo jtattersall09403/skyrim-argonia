@@ -62,3 +62,19 @@ The Blue Hole (place.imperial-penal-south.natural-dive-shaft, 30 m site, entranc
 ## Checks owed (rows for checks.md; the planner adds them to the batch)
 1. The six step crossings are walkable on their bridges. Journey `bridge-look`: a stop at each of the three decks (the centres above, standing on the deck at the deck top), scan 6. The player walks end to end on each road's line with no wall at either seat. A state read gives the player's z within 0.3 m of the deck top at both ends.
 2. The junction is dry. Journey `junction-dry`: a stop at (2444.7, 6268.5) on the arc, scan 6. The three tracks meet outside the Blue Hole's bowl with no water on the line. A state read: the player is not swimming along the arc.
+
+## Round 2 (planner): the keep-out made general
+- `build.keep_out_discs` now takes every placed site whose entrance is underwater-entry (`KEEP_OUT_ENTRANCES`; generate's deep_water shape): 42 sites.
+  - A site that is one of a road's own ends is not kept out (`route_ends`).
+  - When it picks a side, an arc weighs another site's disc at 1000 and water at 1, so it never swaps one site for the next.
+  - `around` is idempotent: a point already on the arc counts as outside.
+- `build.site_conflicts` is the census line, printed by `routes.build check`.
+  - `red`: a road corridor inside a keep-out disc. It fails the check, so the next one is a red.
+  - `served`: a built place's eased footprint that a road runs through and that is not one of its ends. These are listed only, because the road is the place's street.
+  - Today: 0 red; served: claywater-station on gideon-blackwood-road.
+- `routes.build reroute` (no re-trace):
+  - archon-gideon goes round archon-glowgill-byre (67.5 m eased site + 8.5 m corridor = 76 m; it was 26.6 m away): +54.2 m from chain 727 m, ends kept.
+  - stormhold-thorn goes round reach-wreck (it passed 63.1 m away, keep 76.5 m): 880 -> 895 points, +0.0 m (a graze).
+  - The Blue Hole's three tracks are unchanged.
+- `routes.build check`: 1 component, worst terrain deviation 2.02 %, site_conflicts 0 red.
+- Tests: routes tests pass, 30 (no road enters a water-entered site; a planted road into a disc is red). Ruff is clean.

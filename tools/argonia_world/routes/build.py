@@ -52,10 +52,12 @@ SIDE_OK, SIDE_COST = 0.35, 60.0
 
 # A road keeps out of the site of a place the player enters from the water (lane 1.15-r6-bridges, a place call): the
 # site's ground (terrain/generate.py shape_sites, a deep_water bowl eased out to SITE_BLEND radii) would cut the
-# road's corridor into a ford. The line goes round the disc on its drier side, its two ends kept. The Blue Hole is
+# road's corridor into a ford. The line goes round the disc on its drier side, its two ends kept. Every such site
+# keeps roads out (planner, lane 1.15-r6-bridges); a built place's footprint a road runs through is served by it
+# (Claywater's street is the Blackwood road) and only listed by site_conflicts. The Blue Hole is
 # "a vertical hole nine metres wide in a flat lake bottom" reached by boat and by diving (its place row:
 # why_site_advantages, traversal_fallback boat, underwater_access deep-dive): its approach is the water, not a road.
-KEEP_OUT = ("place.imperial-penal-south.natural-dive-shaft",)
+KEEP_OUT_ENTRANCES = ("underwater-entry",)  # generate's SHAPES -> deep_water: every such site, never a road's
 DRY_SHOULDER_M = 6.0  # routes/shape.py dry_corridor's shoulder past the core: the corridor the disc must clear
 ARC_STEP_M = 3.0
 
@@ -135,15 +137,49 @@ class Ground:
 
 
 def keep_out_discs(w) -> list[tuple[str, float, float, float]]:
-    """(place id, x, y, site radius eased out) of each KEEP_OUT place: generate's site disc, its radius at least
-    SITE_MIN_R, times SITE_BLEND (the bowl's easing)."""
+    """(place id, x, y, site radius eased out) of every placed site entered from the water (KEEP_OUT_ENTRANCES):
+    generate's site disc, its radius at least SITE_MIN_R, times SITE_BLEND (the bowl's easing)."""
     from tools.argonia_world.terrain.generate import SITE_BLEND, SITE_MIN_R
-    out = []
-    for pid in KEEP_OUT:
-        r = w.query("SELECT position_m_x x, position_m_y y, footprint_radius_m r FROM place WHERE id = ?", pid)
-        if r and r[0]["x"] is not None:
-            out.append((pid, r[0]["x"], r[0]["y"], max(r[0]["r"] or 0.0, SITE_MIN_R) * SITE_BLEND))
-    return out
+    return [(r["id"], r["x"], r["y"], max(r["r"] or 0.0, SITE_MIN_R) * SITE_BLEND) for r in w.query(
+        "SELECT id, position_m_x x, position_m_y y, footprint_radius_m r FROM place WHERE interior_kind IS NOT NULL "
+        f"AND position_m_x IS NOT NULL AND entrance IN ({', '.join('?' * len(KEEP_OUT_ENTRANCES))}) ORDER BY id",
+        *KEEP_OUT_ENTRANCES)]
+
+
+def _dist(q, pts) -> float:
+    m = math.inf
+    for a, b in zip(pts, pts[1:]):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        L2 = dx * dx + dy * dy or 1e-9
+        t = max(0.0, min(1.0, ((q[0] - a[0]) * dx + (q[1] - a[1]) * dy) / L2))
+        m = min(m, math.hypot(a[0] + t * dx - q[0], a[1] + t * dy - q[1]))
+    return m
+
+
+def site_conflicts(w) -> dict:
+    """The census line: every road whose corridor (half its flat width + DRY_SHOULDER_M) enters a keep-out disc
+    (`red`, the next one a failure, not a find), and every built place's eased footprint a road runs through that
+    is not one of its ends (`served`, listed only)."""
+    from tools.argonia_world.terrain.generate import SITE_BLEND, SITE_MIN_R
+    lines = {}
+    for p in w.query("SELECT route_id, x_m, y_m FROM road_point ORDER BY route_id, ord"):
+        lines.setdefault(p["route_id"], []).append((p["x_m"], p["y_m"]))
+    half = {r["route_id"]: r["flat_width_m"] / 2 + DRY_SHOULDER_M for r in w.query("SELECT route_id, flat_width_m FROM road")}
+    ends = route_ends(w)
+    red, served = [], []
+    for pid, x, y, r in keep_out_discs(w):
+        for rid, pts in sorted(lines.items()):
+            d = _dist((x, y), pts)
+            if pid not in ends[rid] and d < r + half.get(rid, DRY_SHOULDER_M) - 0.05:
+                red.append({"place": pid, "road": rid, "distance_m": round(d, 1), "keep_m": round(r + half[rid], 2)})
+    for p in w.query("SELECT DISTINCT p.id, p.position_m_x x, p.position_m_y y, p.footprint_radius_m r FROM place p "
+                     "JOIN build_cell c ON c.place_id = p.id WHERE c.kind = 'exterior' AND p.position_m_x IS NOT NULL "
+                     "ORDER BY p.id"):
+        R = max(p["r"] or 0.0, SITE_MIN_R) * SITE_BLEND
+        for rid, pts in sorted(lines.items()):
+            if p["id"] not in ends[rid] and _dist((p["x"], p["y"]), pts) < R + half.get(rid, DRY_SHOULDER_M):
+                served.append({"place": p["id"], "road": rid})
+    return {"red": red, "served": served}
 
 
 def _cut(a, b, cx, cy, R) -> tuple[float, float]:
@@ -157,9 +193,9 @@ def _cut(a, b, cx, cy, R) -> tuple[float, float]:
 
 def around(pts, cx: float, cy: float, R: float, wet=lambda x, y: False):
     """The polyline with its run inside the circle (first entry to last exit) replaced by the arc between the two
-    crossings on the side with fewer wet samples (`wet(x, y)`), the shorter on a tie. Unchanged when it misses the
+    crossings on the side whose samples weigh least (`wet(x, y)`, a bool or a weight), the shorter on a tie. Unchanged when it misses the
     circle or an end lies inside it (a road's ends are kept)."""
-    ins = [math.hypot(x - cx, y - cy) < R for x, y in pts]
+    ins = [math.hypot(x - cx, y - cy) < R - 0.05 for x, y in pts]  # a point on the arc already is outside
     if not any(ins) or ins[0] or ins[-1]:
         return list(pts)
     i = ins.index(True)
@@ -171,16 +207,30 @@ def around(pts, cx: float, cy: float, R: float, wet=lambda x, y: False):
     for sweep in (ccw, ccw - 2 * math.pi):
         n = max(2, int(abs(sweep) * R / ARC_STEP_M) + 1)
         arc = [(cx + R * math.cos(ta + sweep * k / n), cy + R * math.sin(ta + sweep * k / n)) for k in range(1, n)]
-        arcs.append((sum(1 for q in arc if wet(*q)), abs(sweep), arc))
+        arcs.append((sum(wet(*q) for q in arc), abs(sweep), arc))
     arc = min(arcs, key=lambda a: a[:2])[2]
     return list(pts[:i]) + [A] + arc + [B] + list(pts[j + 1:])
 
 
 def keep_out(pts, discs, half_m: float, wet=lambda x, y: False):
     """`around` every disc, its radius grown by the road's half corridor (half its flat width plus DRY_SHOULDER_M)."""
-    for _pid, cx, cy, r in discs:
-        pts = around(pts, cx, cy, r + half_m + DRY_SHOULDER_M, wet)
+    for k, (_pid, cx, cy, r) in enumerate(discs):
+        others = [d for n, d in enumerate(discs) if n != k]
+
+        def bad(x, y, others=others):  # water 1, another site's disc 1000 (an arc never swaps one site for the next)
+            hit = any(math.hypot(x - d[1], y - d[2]) < d[3] + half_m + DRY_SHOULDER_M for d in others)
+            return 1000 * hit + bool(wet(x, y))
+        pts = around(pts, cx, cy, r + half_m + DRY_SHOULDER_M, bad)
     return pts
+
+
+def route_ends(w) -> dict[str, set]:
+    """route id -> the places its edges join (a road reaching a water-entered place is its own; never kept out)."""
+    ends = defaultdict(set)
+    for e in w.query("SELECT e.route_id, a.place_id pa, b.place_id pb FROM route_edge e JOIN route_node a ON "
+                     "a.id = e.from_node_id JOIN route_node b ON b.id = e.to_node_id"):
+        ends[e["route_id"]] |= {e["pa"], e["pb"]}
+    return ends
 
 
 def reroute(w, root: Path | None = None) -> list[str]:
@@ -193,11 +243,11 @@ def reroute(w, root: Path | None = None) -> list[str]:
         j, i = int(y / STEP_M), int(x / STEP_M)
         return bool(surface.water[min(max(j, 0), surface.n - 1), min(max(i, 0), surface.n - 1)])
 
-    done = []
+    done, ends = [], route_ends(w)
     for r in w.query("SELECT route_id, flat_width_m FROM road ORDER BY route_id"):
         rid = r["route_id"]
         old = [(p["x_m"], p["y_m"]) for p in w.query("SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", rid)]
-        new = keep_out(old, discs, r["flat_width_m"] / 2, wet)
+        new = keep_out(old, [d for d in discs if d[0] not in ends[rid]], r["flat_width_m"] / 2, wet)
         if new == old:
             continue
         k = next(n for n, (a, b) in enumerate(zip(old, new)) if a != b)
@@ -390,7 +440,8 @@ def build(w, root: Path | None = None) -> dict:
             own = "road" if r["mode"] == "road" and r["class"] in WIDTH else "track"
             pts, on = surface.trace(A, B, own)
             fw0 = WIDTH[r["class"]][0] if own == "road" else TRACK_WIDTH_M
-            pts = keep_out(pts, discs, fw0 / 2, lambda x, y: bool(surface.water[
+            mine = {nodes[na]["place_id"], nodes[nb]["place_id"]}
+            pts = keep_out(pts, [d for d in discs if d[0] not in mine], fw0 / 2, lambda x, y: bool(surface.water[
                 min(max(int(y / STEP_M), 0), surface.n - 1), min(max(int(x / STEP_M), 0), surface.n - 1)]))
             L3 = ground.length_3d(pts)
             edge.update(length_m=round(L3, 1), to_chain_m=round(length_2d(pts), 1), _pts=pts, _on=on)
@@ -636,7 +687,9 @@ def check(w, root: Path | None = None) -> tuple[list[str], dict]:
             if abs(dev) > TOLERANCE:
                 errs.append(f"{r['route_id']}: 3D {r['length_3d_m']} m vs the old chain's {r['reference_length_m']} m "
                             f"({dev:+.1%})")
-    return errs, {"components": len(comps), "worst_terrain_dev": worst, "reference_dev": ref_dev}
+    sc = site_conflicts(w)
+    errs += [f"site_conflicts: {c['road']} {c['distance_m']} m from {c['place']} (keep {c['keep_m']} m)" for c in sc["red"]]
+    return errs, {"components": len(comps), "worst_terrain_dev": worst, "reference_dev": ref_dev, "site_conflicts": sc}
 
 
 def main(argv: list[str]) -> int:
@@ -654,10 +707,11 @@ def main(argv: list[str]) -> int:
     elif a.cmd == "reroute":
         moved = reroute(w)
         w.save()
-        print(f"reroute: {len(moved)} roads round {', '.join(KEEP_OUT)}", *moved, sep="\n   ")
+        print(f"reroute: {len(moved)} roads round the keep-out sites", *moved, sep="\n   ")
     errs, m = check(w)
     print(f"check: {m['components']} component(s), worst terrain deviation {m['worst_terrain_dev']:.2%}; "
           f"against the old chain: {m['reference_dev']}")
+    print(f"site_conflicts: {len(m['site_conflicts']['red'])} red, served {m['site_conflicts']['served']}")
     print("\n".join(errs))
     return 1 if errs else 0
 
