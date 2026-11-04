@@ -9,7 +9,7 @@ import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, frame_share, grass_hits,
+from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits,
                             TYPE_MIN_SHARE, cover_ok, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
