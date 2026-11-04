@@ -41,3 +41,19 @@ builds: fixed by the per-cell checkpoint below.
   its nearest dry land spawn points 600-7500 u off (inside the loaded 5x5 grid): 200 nav steps, then `frametime 600`
   in the densest vegetation cell (3, -12): p50 <= 16.67 ms, p99 <= 22.22 ms. independent_steps; bar >= 99 % (<= 2 red).
 - `run_journey.py --dry`: 241 steps, lint ok. tools/navmesh/tests/test_paths_journey.py: 1 passed.
+
+## (1) The navmesh on the current ground (job r6-navmesh2)
+- Ground stamp d0f9fae0acf2 = the current ground (after the Claywater pads): the plugin step's "predates" warning
+  is gone. out/ArgoniaWorld.esm sha 6b41dfa874d9, 171,321,175 bytes: 15,841 NAVM + 1 NAVI, verify_esm green,
+  check green, 2,120,172 triangles. `make plugin` picks this build up (province_navmesh(): out/navmesh/province).
+- Times: first pass of the cells 1,057 s (cache file mtimes; 4 vCPU shared with two other lanes' jobs) against
+  1,314 s before; the run resumed after the 09:23 reboot reused all 15,876 cells: recast_s 10.4 s; the whole job
+  then inputs 5.4 + stitch 72.5 + check 60.2 s + the ESM write. Cache 72 MB.
+- LOD keys of this ESM: terrain=0a33d8d6c39c object=76212ab310eb (both differ from r5's 92a3406fc7a7 / b229bf3a2c43:
+  the pads moved LAND and refs moved since, so both halves are owed at the round's LOD step). Navmesh-only key
+  equality is shown by test_lodkey, not on two real ESMs (none with this ground and no navmesh was built).
+
+## L4 for the planner's batch
+- tests/journeys/navmesh-paths.yaml (regenerated on this ground; lint ok): 200 nav steps, >= 198 green; frametime at
+  cell (3, -12) p50 <= 16.67, p99 <= 22.22 ms. Closes checks.md 1-core-loop row 146.
+- `lod.sh ensure` on deploy: expect two WARNINGs (no terrain-0a33d8d6c39c, no object-76212ab310eb archive).
