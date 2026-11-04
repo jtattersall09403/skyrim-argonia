@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := $(shell git rev-parse --git-dir)/check-red  # .git is a file in a worktree
-PARTS := guard lint unit budget links records ledger world plugin-check skse immersion ui
+PARTS := guard lint unit budget links records ledger world roads-census plugin-check skse immersion ui
 # The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
@@ -54,6 +54,12 @@ world:
 	@python3 -m tools.argonia_world.db check && python3 tools/argonia_world/check_world_reads.py && \
 	  $(PY) -m tools.argonia_world.vegetation textures check && \
 	  { [ ! -f $${ARGONIA_DATA:-$(HOME)/.argonia/data}/hydrology-graph-bodies.npz ] || $(PY) -m tools.argonia_world.water check; } $(FAIL)
+
+# lane 1.15-r6-stamp-walk (owner #42): the roads against the cell water on the current out/terrain ground (routes
+# census: a wet metre outside a ford, a ford over 0.3 m, a raised bank over GRADE_MAX is red; about 1 s)
+roads-census:
+	@{ [ ! -f out/terrain/ground-f32.npy ] && echo "roads-census: no out/terrain ground (skipped)"; } || \
+	  $(PY) -m tools.argonia_world.routes census > out/roads-census.json || { tail -c 600 out/roads-census.json; echo $@ >> $(RED); exit 1; }
 
 # out/world.sqlite for DuckDB, pandas or the sqlite3 shell.
 db:

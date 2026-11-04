@@ -28,6 +28,7 @@ import filecmp
 import json
 import os
 import shutil
+import re
 import struct
 import subprocess
 import sys
@@ -295,6 +296,7 @@ def _terrain_stamp(ground: bool = True) -> str:
         # rebuilt all 262 rows (16 s each, 1508 s on 4 CPUs), now only the rows within its reach
         h.update(patches.stamp().encode())
         h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
+    h.update(_cover_key("terrain").encode())
     return h.hexdigest()
 
 
@@ -321,6 +323,7 @@ def _ground_stamp() -> str:
     from tools.argonia_world.terrain.grid import data_root
     a = data_root() / "terrain" / "apron-source-near.npy"
     h.update(f"{a.stat().st_size}:{int(a.stat().st_mtime)}".encode() if a.exists() else b"no-apron")
+    h.update(_cover_key("ground").encode())
     return h.hexdigest()
 
 
@@ -385,6 +388,7 @@ def _water_stamp() -> str:
         h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
     for f in (OUT / "pieces-index.json",):
         h.update(f.read_bytes() if f.exists() else b"-")
+    h.update(_cover_key("water").encode())
     return h.hexdigest()
 
 
@@ -434,6 +438,7 @@ def _veg_stamp() -> str:
     for t in VEG_TABLES:
         h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
     h.update((WATER_OUT / "cells.jsonl").read_bytes())
+    h.update(_cover_key("vegetation").encode())
     return h.hexdigest()
 
 
@@ -531,7 +536,104 @@ def _creature_key() -> str:
     vegetation it stands beside (whose stamp carries the ground and water)."""
     cr = ROOT / "tools" / "argonia_world" / "creatures"
     return _files_key(_veg_stamp(), files=sorted(cr.glob("*.py")) + [ROOT / "tools/argonia_world/regions/api.py"],
-                      tables=CREATURE_TABLES)
+                      tables=CREATURE_TABLES) + _cover_key("creatures")
+
+
+# The stamps' cover (lane 1.15-r6-stamp-walk, owner #42): a stamp that hashed a hand list of modules and tables
+# went stale when road shaping was added to generate.py's imports and never to the list (the ground stood stale
+# from 11-03 02:26 while `--plan` said skip). Each stage now also hashes the modules its entry imports (an AST walk
+# within WALK_ROOTS, recursive, function-level imports included) and the tables named after FROM/JOIN in them.
+WALK_ROOTS = ("tools/argonia_world", "tools/ArgoniaGen")
+STAGE_ENTRY = {"ground": "tools.argonia_world.terrain.generate", "terrain": "tools.argonia_world.terrain.__main__",
+               "water": "tools.argonia_world.water.__main__", "vegetation": "tools.argonia_world.vegetation.__main__",
+               "creatures": "tools.argonia_world.creatures.__main__"}
+# A top-level tools/argonia_world module the walk reaches is hashed but not descended: their function-level imports
+# fan out to every generator (db's `check` imports checks.py; patches -> place_build -> intermediate -> quest_gen), so
+# a descent covered 87 of the tree's modules for the ground; the stage packages (terrain, routes, water, ...) are
+# walked through, which is where the incident's import (generate -> routes.shape) lay.
+
+
+def _leaf(mod: str) -> bool:
+    return mod.startswith("tools.argonia_world.") and mod.count(".") == 2
+_SQL_NAME = re.compile(r'\b(?:FROM|JOIN)\s+"?([a-z_][a-z0-9_]*)')
+
+
+def _mod_file(mod: str, root: Path = ROOT) -> Path | None:
+    p = root.joinpath(*mod.split("."))
+    for f in (p.with_suffix(".py"), p / "__init__.py"):
+        if f.is_file() and any(str(f.relative_to(root)).startswith(r + "/") for r in WALK_ROOTS):
+            return f
+    return None
+
+
+def walk_imports(entry: str, root: Path = ROOT) -> list[Path]:
+    """Every module file the entry module imports, recursively (static: the AST's import lines, at any depth),
+    within WALK_ROOTS, with the packages' __init__ files the imports run."""
+    import ast
+    seen: dict[Path, None] = {}
+    todo = [entry]
+    while todo:
+        mod = todo.pop()
+        f = _mod_file(mod, root)
+        if f is None or f in seen:
+            continue
+        seen[f] = None
+        if _leaf(mod):
+            continue
+        parts = mod.split(".")
+        todo += [".".join(parts[:i]) for i in range(1, len(parts))]  # the packages above run their __init__
+        pkg = parts if f.name == "__init__.py" else parts[:-1]
+        for n in ast.walk(ast.parse(f.read_text(), str(f))):
+            if isinstance(n, ast.Import):
+                todo += [a.name for a in n.names]
+            elif isinstance(n, ast.ImportFrom):
+                base = ".".join(pkg[:len(pkg) - n.level + 1] + ([n.module] if n.module else [])) if n.level \
+                    else (n.module or "")
+                todo += [base, *(f"{base}.{a.name}" for a in n.names)]  # `from pkg import mod` names a module
+    return sorted(seen)
+
+
+def sql_tables(files, root: Path = ROOT) -> list[str]:
+    """The world tables named after FROM or JOIN in the files' source, those the schema declares (db.SCHEMA)."""
+    sys.path.insert(0, str(ROOT))
+    from tools.argonia_world import db
+    schema = set(re.findall(r"CREATE TABLE (?:IF NOT EXISTS )?\"?(\w+)", (root / db.SCHEMA).read_text()))
+    return sorted({t for f in files for t in _SQL_NAME.findall(Path(f).read_text())} & schema)
+
+
+def _hand(name: str) -> tuple[list[Path], tuple[str, ...]]:
+    """The hand lists each stamp kept before the walk (still hashed: the union)."""
+    rt = ROOT / "tools" / "argonia_world"
+    return {"ground": ([*TERRAIN.glob("*.py"), *(rt / "routes").glob("*.py")], GROUND_TABLES),
+            "terrain": ([TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py",
+                                                "png.py", "place_ground.py", "quantize.py", "world.py")]
+                        + [rt / "routes" / "paint.py"], ("road", "road_point")),
+            "water": ([*WATER.glob("*.py")], ()),
+            "vegetation": ([*VEG.glob("*.py"), ROOT / "tools/navmesh/inputs.py", rt / "routes/paint.py"], VEG_TABLES),
+            "creatures": ([*(rt / "creatures").glob("*.py"), rt / "regions/api.py"], CREATURE_TABLES)}[name]
+
+
+@_memo
+def stage_cover(name: str) -> tuple[tuple[Path, ...], tuple[str, ...]]:
+    """A stage's files and tables: the hand list unioned with the entry's import walk and its FROM/JOIN names."""
+    files, tables = _hand(name)
+    walked = walk_imports(STAGE_ENTRY[name])
+    return tuple(sorted(set(files) | set(walked))), tuple(sorted(set(tables) | set(sql_tables(walked))))
+
+
+def _cover_key(name: str) -> str:
+    files, tables = stage_cover(name)
+    return _files_key(name, *(str(f.relative_to(ROOT)) for f in files), files=files, tables=tables)
+
+
+def stamps() -> int:
+    """`pipeline.py stamps` (and `plugin --plan --verbose`): what each stage's stamp covers."""
+    for name in STAGE_ENTRY:
+        files, tables = stage_cover(name)
+        print(f"stamp {name}: {len(files)} files, {len(tables)} tables (entry {STAGE_ENTRY[name]})")
+        print("  files: " + " ".join(str(f.relative_to(ROOT)) for f in files))
+        print("  tables: " + " ".join(tables))
+    return 0
 
 
 def _world_esm(data, into, wdir, nav, esm, veg, sample, frozen) -> None:
@@ -634,6 +736,8 @@ def plan() -> int:
                             ("world-esm", _world_key(data, t, WATER_OUT, nav, True),
                              (t / "esm" / f"{Path(WORLD_ESM).stem}.final.esm",))):
         print(f"plan: {name:<11} {stage_known(name, key, *outs)}  key {key[:12]}")
+    if "--verbose" in sys.argv:
+        stamps()
     for name in ("world-json", "esm-write", "records"):
         print(f"plan: {name:<11} run   (unkeyed: {'cheap' if name != 'esm-write' else 'runs when world-esm runs'})")
     y = OUT / "build" / "Argonia.esm"
@@ -840,5 +944,5 @@ def vegetation_world() -> int:
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    sys.exit(plan() if cmd == "plugin" and "--plan" in sys.argv else plugin() if cmd == "plugin" else plugin(force=True, world=False) if cmd == "ids" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
+    sys.exit(plan() if cmd == "plugin" and "--plan" in sys.argv else plugin() if cmd == "plugin" else plugin(force=True, world=False) if cmd == "ids" else check() if cmd == "check" else stamps() if cmd == "stamps" else navmesh() if cmd == "navmesh"
              else vegetation_world() if cmd == "vegetation" else (print(__doc__) or 2))

@@ -154,3 +154,53 @@ def test_files_key_names_its_inputs(tmp_path):
     a.write_text("2")
     assert k != pipeline._files_key("p", files=[a])
     assert k != pipeline._files_key("q", files=[a])
+
+
+# lane 1.15-r6-stamp-walk (owner #42): a stage stamp covers every module its entry imports and every table they read
+def _expected(entry: str) -> tuple[set, set]:
+    """An independent line-based walk (regex over `from tools.argonia_world.<pkg>[.<mod>] import a, b` and `import`
+    lines), descending as the stamp does: through the stage packages, not past a top-level module."""
+    import re
+    seen, todo = set(), [entry]
+    while todo:
+        m = todo.pop()
+        f = pipeline._mod_file(m)
+        if f is None or f in seen:
+            continue
+        seen.add(f)
+        if m.count(".") == 2 and m.startswith("tools.argonia_world."):
+            continue
+        todo += [".".join(m.split(".")[:i]) for i in range(1, m.count(".") + 1)]
+        for base, names in re.findall(r"^\s*from (tools\.\S+) import \(?([\w ,]+)", f.read_text(), re.M):
+            todo += [base, *(f"{base}.{n.split(' as ')[0].strip()}" for n in names.split(","))]
+        todo += re.findall(r"^\s*import (tools\.[\w.]+)", f.read_text(), re.M)
+    return seen, set(pipeline.sql_tables(seen))
+
+
+@pytest.mark.parametrize("stage", sorted(pipeline.STAGE_ENTRY))
+def test_stamp_covers_the_stage_imports_and_tables(stage):
+    files, tables = pipeline.stage_cover(stage)
+    want_files, want_tables = _expected(pipeline.STAGE_ENTRY[stage])
+    assert want_files - set(files) == set(), f"{stage}: imported but not in the stamp"
+    assert want_tables - set(tables) == set(), f"{stage}: read but not in the stamp"
+
+
+def test_ground_stamp_covers_the_incident():
+    files, tables = pipeline.stage_cover("ground")
+    names = {str(f.relative_to(pipeline.ROOT)) for f in files}
+    assert {"tools/argonia_world/routes/shape.py", "tools/argonia_world/terrain/cellwater.py"} <= names
+    assert {"road", "road_point", "cell_water", "hydrology_reach"} <= set(tables)
+
+
+def test_walk_is_stable_and_sees_a_new_import(tmp_path):
+    for stage in pipeline.STAGE_ENTRY:
+        assert pipeline.walk_imports(pipeline.STAGE_ENTRY[stage]) == pipeline.walk_imports(pipeline.STAGE_ENTRY[stage])
+    pkg = tmp_path / "tools" / "argonia_world" / "demo"
+    pkg.mkdir(parents=True)
+    for d in (tmp_path / "tools", tmp_path / "tools" / "argonia_world", pkg):
+        (d / "__init__.py").write_text("")
+    (pkg / "a.py").write_text("def f():\n    from tools.argonia_world.demo import b\n")
+    (pkg / "b.py").write_text("from .c import g\n")
+    (pkg / "c.py").write_text("g = 'SELECT * FROM road'\n")
+    got = {f.name for f in pipeline.walk_imports("tools.argonia_world.demo.a", tmp_path)}
+    assert {"a.py", "b.py", "c.py"} <= got

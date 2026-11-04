@@ -18,7 +18,7 @@ def test_docs_only_runs_only_docs_checks():
 def test_water_only_runs_water_tests_and_world():
     reached, targets, why, _ = cr.plan(["tools/argonia_world/water/solve.py"])
     assert why is None
-    assert set(reached) == {"lint", "unit", "world"}
+    assert set(reached) == {"lint", "unit", "world", "roads-census"}
     assert "plugin-check" not in reached
     assert targets and all("water" in t or "argonia_world" in t for t in targets)
     assert not any(t.startswith("tooling") for t in targets)

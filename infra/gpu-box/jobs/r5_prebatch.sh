@@ -33,7 +33,7 @@ step plugin make plugin || exit 3
 step navmesh infra/gpu-box/jobs/navmesh_if_stale.sh || exit 3  # the navmesh follows the ground (keyed by the terrain stamp)
 step water $PY -m tools.argonia_world.water check || exit 3
 step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
-step roads $PY -m tools.argonia_world.routes.shape check || echo "(road check red: noted)"
+step roads sh -c "$PY -m tools.argonia_world.routes.shape check; $PY -m tools.argonia_world.routes census" || echo "(road check or census red: noted)"
 step chart $PY -m tools.chart render --if-stale || exit 3
 step chart4k $PY -m tools.chart render --if-stale --level --size 4096 --out out/chart4k || echo "(4k chart render failed: the 1x chart stands)"
 step sample $PY tools/world_sample.py --write || true  # the probe markers are DB rows: emitted by the ids build below
