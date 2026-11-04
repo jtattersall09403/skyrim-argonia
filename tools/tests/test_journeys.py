@@ -149,20 +149,20 @@ def test_water_share_counts_the_water_in_the_aim_field_and_not_behind_it():
 def test_water_stop_bad_flags_an_off_water_aim_and_a_dry_field_and_passes_a_good_one():
     cx, cy = su.cell_of(*at(60, 60))
     b = Pond({(cx, cy + k) for k in range(0, 4)})
-    x, y = su.cell_origin(cx, cy)[0] + 100, su.cell_origin(cx, cy)[1] - 10 * U
+    x, y = su.cell_origin(cx, cy)[0] + su.CELL_UNITS / 2, su.cell_origin(cx, cy)[1] - 2 * U
     good = {"step": "t", "x": x, "y": y, "heading": 0.0, "subject": (x, y + 100 * U, 10.5 * U)}
     assert J.water_stop_bad(b, good) is None
     assert "not a water cell" in J.water_stop_bad(b, {**good, "subject": (x, y - 30 * U, 10.5 * U), "heading": 180.0})
     assert "off its subject" in J.water_stop_bad(b, {**good, "heading": 90.0})
     ox, oy = su.cell_origin(cx, cy)
     dry = {**good, "x": ox + 100, "y": oy + 100, "subject": (ox + 100, oy + 3.5 * su.CELL_UNITS, 10.5 * U)}  # water 3 cells out
-    assert "of the near field" in J.water_stop_bad(Pond({(cx, cy + 3)}), dry)
+    assert "of the lower frame" in J.water_stop_bad(Pond({(cx, cy + 3)}), dry)
 
 
 def test_water_stops_parse_a_journey_text():
     text = ("steps:\n- name: s1\n  # subject: 10 20 30\n  do:\n  - console: player.setpos x 1\n  - console: player.setpos y 2\n"
             "  - console: player.setangle z 90\n")
-    assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "subject": (10.0, 20.0, 30.0)}]
+    assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "pitch": 0.0, "subject": (10.0, 20.0, 30.0)}]
 
 
 def test_dry_footing_needs_half_a_metre_over_the_cell_water():
@@ -260,7 +260,8 @@ def test_frustum_cover_scores_a_near_trunk_and_ignores_one_behind():
     assert fc["near"] == 0.0 and fc["all"] > 0 and J.cover_ok(fc)
     close = (x + 1 * U, y, gz, 0.5 * U, 2 * U, True, 0.0)       # bounds 0.5 m from the eye, off the frame
     b4 = Flat([close]); b4.grass = b.grass
-    assert not J.cover_ok(J.frustum_cover(b4, eye, 0.0))
+    fc = J.frustum_cover(b4, eye, 0.0)
+    assert fc["nearest_m"] < 1.0 and J.cover_ok(fc)                # beside the camera: reported, harmless
 
 
 def test_type_share_counts_the_wet_rays_of_the_stops_own_type():

@@ -10,7 +10,7 @@ import re
 
 from tools.argonia_world import skyrim_units as su
 from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits,
-                            TYPE_MIN_SHARE, cover_ok, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
+                            TYPE_MIN_SHARE, cover_ok, frame_floor, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
@@ -206,7 +206,8 @@ def river_steps(b: Build, w, log: list) -> str:
     for n, s in enumerate(steps, 1):
         x0, y0, into = _edge_mid(s["cx"], s["cy"], s["edge"], s["cross_lo"], s["cross_hi"])
         subj = (x0, y0, (s["lower_m"] + s["upper_m"]) / 2 * U)
-        x, y, h, p, cl, sh, fc, ok = step_stand(b, s, x0, y0, into, subj)
+        x, y, h, p, cl, sh, fc, ok = _cached("river-steps", f"step-{n}-{s['cx']}-{s['cy']}-{s['edge']}",
+                                             lambda: step_stand(b, s, x0, y0, into, subj))
         RIVER_STANDS.append((f"step-{n}", x, y, h, p, cl, sh, fc))
         print(f"river-steps: step-{n}: clearance {cl[0]}/{cl[1]}/{cl[2]}, {cover_text(fc)}, step pieces in frame {sh:.0%} "
               f"(needs {STEP_MIN_SHARE:.0%}){'' if ok else ' WARNING: short'} at {x:.0f} {y:.0f} facing {h:.0f} pitch {p:.0f}")
@@ -466,7 +467,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
             return None
         sh, cells = frame_read(b, x, y, h, p)
         ts = type_share(cells, types, want)[0] if types is not None else 1.0
-        miss = sh < FRAME_MIN_SHARE or ts < TYPE_MIN_SHARE
+        miss = sh < frame_floor(name) or ts < TYPE_MIN_SHARE
         if strict and miss:
             return None
         fc = frustum_cover(b, eye, h, p)
@@ -496,12 +497,12 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         raise ValueError(f"water-types: {name}: no dry stand with a water aim within {FIT_FAR_M:.0f} m of "
                          f"({f['x']:.0f}, {f['y']:.0f})")
     (miss, pen, cl, nsh), di, dj, x, y, subj, sh = best
-    if strict and sh < FRAME_MIN_SHARE:
+    if strict and sh < frame_floor(name):
         raise ValueError(f"water-types: {name}: no clear stand within {FIT_FAR_M:.0f} m holds {FRAME_MIN_SHARE:.0%} "
                          f"water in the lower frame (best {sh:.0%})")
     if cl or pen or miss:
         SHORT_OF_FRAME[name] = (f"best stand: {cl} clearance hits, frustum cover {'over' if pen else 'ok'}, frame share "
-                                f"{sh:.0%}{', type share short' if miss and sh >= FRAME_MIN_SHARE else ''}")
+                                f"{sh:.0%}{', type share short' if miss and sh >= frame_floor(name) else ''}")
     log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(di, dj), 1),
                 "why": "re-aimed at the body's centre", "clear": cl == 0 and not pen and not miss})
     return x, y, subj, sh, best[0]
@@ -519,7 +520,7 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
         ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
         tx, ty = pts[ahead][0] - pts[mid][0], pts[ahead][1] - pts[mid][1]
         n = math.hypot(tx, ty) or 1.0
-        if name == "river":   # the reach's centreline runs source to end (cell_types): downstream is along it
+        if name in ("river", "stream"):   # the aim along the channel; the reach's centreline runs source to end (cell_types): downstream is along it
             flow = math.degrees(math.atan2(tx, ty)) % 360
         for side in (1, -1):  # the bank to the reach's left, then right, standing back upstream of the subject
             nx, ny = -ty / n * side, tx / n * side
@@ -543,6 +544,39 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
     if not f:
         raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
     return _fit(b, name, f, subj, name == "sea", log, strict, types, want, flow)
+
+
+CACHE = ROOT / "out" / "journeys" / "cache"
+
+
+def _build_key() -> str:
+    """The fit's inputs: the water cells, the world DB, the vegetation and land shards (size, mtime) and this code."""
+    import hashlib
+    h = hashlib.sha1()
+    o = ROOT / "out"
+    for p in [o / "water" / "cells.jsonl", o / "world.sqlite", *sorted((o / "terrain" / "vegetation").glob("*")),
+              *sorted((o / "terrain" / "land").glob("*"))]:
+        if p.is_file():
+            st = p.stat()
+            h.update(f"{p.name}:{st.st_size}:{st.st_mtime_ns};".encode())
+    for p in (ROOT / "tools" / "journeys" / "gen.py", ROOT / "tools" / "journeys" / "__init__.py"):
+        h.update(p.read_bytes())
+    return h.hexdigest()[:16]
+
+
+def _cached(journey: str, stop: str, fn):
+    """fn()'s result for this stop, from out/journeys/cache when the build key matches (a rerun returns in seconds)."""
+    if not hasattr(_cached, "key"):
+        _cached.key = _build_key()
+    p = CACHE / f"{journey}.{stop}.{_cached.key}.json"
+    if p.is_file():
+        return json.loads(p.read_text())
+    r = fn()
+    CACHE.mkdir(parents=True, exist_ok=True)
+    for old in CACHE.glob(f"{journey}.{stop}.*.json"):
+        old.unlink()
+    p.write_text(json.dumps(r))
+    return r
 
 
 def water_types(b: Build, w, log: list) -> str:
@@ -578,43 +612,53 @@ def water_types(b: Build, w, log: list) -> str:
         if not cands_:
             raise ValueError(f"water-types: no shore cell of {want}")
         cands_.sort(key=lambda c: -c[0])   # the best shore first; a shore with no stand holding water goes to the next
-        err, got = None, None
-        # the first shore whose stand reads 0/0/0 with the frame share; none: the widened search over the WIDE_SHORES best
-        # shores, the stand with fewest hits (then meeting the share) kept and warned
-        print(f"water-types: {name}: strict search over {min(len(cands_), FIT_SHORES)} shores", flush=True)
-        for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
-            n_log = len(log)
-            try:
-                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, True, types, want) + ((cx, cy),)
-            except ValueError as e:
-                err = err or e
-                del log[n_log:]
-                continue
-            break
-        if not got:
-            print(f"water-types: {name}: none clear; widened search (600 m) over {min(len(cands_), WIDE_SHORES)} shores",
-                  flush=True)
-            short = None
-            for _, (cx, cy), (dx, dy) in cands_[:WIDE_SHORES]:
+
+        def search():
+            log = []
+            err, got = None, None
+            # the first shore whose stand reads 0/0/0 with the frame share; none: the widened search over the WIDE_SHORES best
+            # shores, the stand with fewest hits (then meeting the share) kept and warned
+            print(f"water-types: {name}: strict search over {min(len(cands_), FIT_SHORES)} shores", flush=True)
+            for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
                 n_log = len(log)
-                SHORT_OF_FRAME.pop(name, None)
                 try:
-                    r = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, False, types, want) + ((cx, cy),)
+                    got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, True, types, want) + ((cx, cy),)
                 except ValueError as e:
                     err = err or e
                     del log[n_log:]
                     continue
-                if got is None or r[4] < got[4]:
-                    got, short = r, SHORT_OF_FRAME.get(name)
-                if r[4][:3] == (False, 0, 0):
-                    break
-            SHORT_OF_FRAME.pop(name, None)
-            if short:
-                SHORT_OF_FRAME[name] = short
-                print(f"water-types: WARNING {name}: {short}")
-        if not got:
-            raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
-        x, y, subj, share, _, (cx, cy) = got
+                break
+            if not got:
+                print(f"water-types: {name}: none clear; widened search (600 m) over {min(len(cands_), WIDE_SHORES)} shores",
+                      flush=True)
+                short = None
+                for _, (cx, cy), (dx, dy) in cands_[:WIDE_SHORES]:
+                    n_log = len(log)
+                    SHORT_OF_FRAME.pop(name, None)
+                    try:
+                        r = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, False, types, want) + ((cx, cy),)
+                    except ValueError as e:
+                        err = err or e
+                        del log[n_log:]
+                        continue
+                    if got is None or r[4] < got[4]:
+                        got, short = r, SHORT_OF_FRAME.get(name)
+                    if r[4][:3] == (False, 0, 0):
+                        break
+                SHORT_OF_FRAME.pop(name, None)
+                if short:
+                    SHORT_OF_FRAME[name] = short
+                    print(f"water-types: WARNING {name}: {short}")
+            if not got:
+                raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
+            return {"got": got, "short": SHORT_OF_FRAME.get(name), "log": log}
+
+        res = _cached("water-types", name, search)
+        log.extend(res["log"])
+        SHORT_OF_FRAME.pop(name, None)
+        if res["short"]:
+            SHORT_OF_FRAME[name] = res["short"]
+        x, y, subj, share, _, (cx, cy) = res["got"]
         h, p = aim(eye_of(b, x, y), subj)
         if name == "sea":
             p = 0.0
@@ -626,7 +670,7 @@ def water_types(b: Build, w, log: list) -> str:
         print(f"water-types: {name}: clearance {cl[0]}/{cl[1]}/{cl[2]} (plants on the eye line / canopy / tall grass); "
               f"{cover_text(fc)} ({'ok' if cover_ok(fc, name == 'sea') else 'OVER'}); type share {ts:.0%} "
               f"(needs {TYPE_MIN_SHARE:.0%}; other cells {others[:3]}); "
-              f"frame share {fs:.0%} (lower half, 0-60 m, +-30 deg; needs {FRAME_MIN_SHARE:.0%}); "
+              f"frame share {fs:.0%} (lower half, 0-60 m, +-30 deg; floor {frame_floor(name):.0%}); "
               f"near-field share {water_share(b, x, y, h):.0%} at {x:.0f} {y:.0f} facing {h:.0f} pitch {p:.0f}")
         if name == "sea":
             p = 0.0

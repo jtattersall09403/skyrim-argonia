@@ -557,7 +557,7 @@ def water_stops(text: str) -> list[dict]:
         m = SUBJECT.search(blk)
         if {"x", "y"} <= set(pos) and m and "z" in ang:
             out.append({"step": name, "x": pos["x"], "y": pos["y"], "heading": ang["z"],
-                        "subject": tuple(float(v) for v in m.groups())})
+                        "pitch": ang.get("x", 0.0), "subject": tuple(float(v) for v in m.groups())})
     return out
 
 
@@ -574,9 +574,10 @@ def water_stop_bad(b: Build, s: dict) -> str | None:
     if b.soaked(s["x"], s["y"]):
         return (f"{s['step']}: no dry footing: ground {su.units_to_metres(b.margin_u(s['x'], s['y'])):+.2f} m over the cell "
                 f"water level (needs {DRY_FOOTING_M} m)")
-    sh = water_share(b, s["x"], s["y"], s["heading"])
-    if sh < min_share(s['step']):
-        return f"{s['step']}: water is {sh:.0%} of the near field (0-60 m, +-30 deg), under {min_share(s['step']):.0%}"
+    sh = frame_share(b, s["x"], s["y"], s["heading"], s.get("pitch", 0.0))
+    fl = frame_floor(s["step"])
+    if sh < fl:
+        return f"{s['step']}: water is {sh:.0%} of the lower frame (0-60 m, +-30 deg), under its floor {fl:.0%}"
     return None
 
 
@@ -707,6 +708,11 @@ def clearance3(b: Build, eye: tuple, heading: float) -> tuple[int, int, int]:
 # -- the frame share: what the lower half of the still shows (lane 1.15-r6-water-stands-2) -----------------------------
 FRAME_HALF_H_DEG, FRAME_HALF_V_DEG = 30.0, 25.0   # the share's field: +-30 degrees across, the lower half down 25 degrees
 FRAME_NEAR_M, FRAME_MIN_SHARE = 60.0, 0.5
+FRAME_FLOOR_BY_STEP = {"stream": 0.3}   # a narrow channel cannot fill half the lower frame (planner, round 6)
+
+
+def frame_floor(step: str) -> float:
+    return FRAME_FLOOR_BY_STEP.get(step, FRAME_MIN_SHARE)
 
 
 def frame_read(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M,
@@ -837,10 +843,9 @@ def frustum_cover(b: Build, eye: tuple, heading: float, pitch: float = 0.0) -> d
 
 
 def cover_ok(fc: dict, sea: bool = False) -> bool:
-    """The frustum rule: near-frame plant cover under NEAR_COVER_MAX, no plant bounds within EYE_CLEAR_M of the eye, and
-    for the sea the upper frame under UPPER_COVER_MAX."""
-    return (fc["near"] < NEAR_COVER_MAX and fc["nearest_m"] >= EYE_CLEAR_M
-            and (not sea or fc["upper"] < UPPER_COVER_MAX))
+    """The frustum rule: near-frame plant cover under NEAR_COVER_MAX and for the sea the upper frame under
+    UPPER_COVER_MAX. nearest_m is reported only: a plant beside or behind the camera is harmless (planner, round 6)."""
+    return fc["near"] < NEAR_COVER_MAX and (not sea or fc["upper"] < UPPER_COVER_MAX)
 
 
 def cover_text(fc: dict) -> str:
