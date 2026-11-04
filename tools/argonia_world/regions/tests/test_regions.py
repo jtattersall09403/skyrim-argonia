@@ -240,7 +240,7 @@ def _laid_height_fog():
 def test_height_fog_is_off_until_authored_within_measured_bounds():
     """Round 5 sky bisect ruling (owner-brief 2026-11-03, ea4a3909): Community Shaders' height fog and volumetric lighting
     are OFF until authored within measured bounds (with them on the sky was a grey veil with no clouds). The laid global
-    override is density 0.0, volumetricFogEnabled 0, and the volumetric lighting ExteriorEnabled true (round 6: the grey veil was our sky templates, not CS; the owner wants god rays, 2026-11-01); the seed's
+    override is density 0.0, volumetricFogEnabled 0, and the volumetric lighting ExteriorEnabled false (round 6, 12:1x: with it on the dawn cream-grey veil came back in the sky-ab stills and no shafts showed; the engine's own volumetric lighting stays on in the prefs); the seed's
     HEIGHT_FOG says the same; no per-weather file overrides it; the mist is the weather records' own."""
     import json
     from pathlib import Path
@@ -254,7 +254,7 @@ def test_height_fog_is_off_until_authored_within_measured_bounds():
     deps = json.loads((Path(__file__).resolve().parents[4] / "data" / "dependencies.json").read_text())
     vl = [json.loads(x["text"]) for d in deps["mods"] for x in d.get("files", [])
           if x["path"].endswith("Argonia_VolumetricLighting.json")]
-    assert len(vl) == 1 and vl[0]["ExteriorEnabled"] is True
+    assert len(vl) == 1 and vl[0]["ExteriorEnabled"] is False
 
 
 def test_no_mist_weather_file_is_laid_and_sync_is_in_step():
