@@ -328,6 +328,28 @@ def bridge_candidates(res: dict, bridges: list[dict]) -> dict:
     return {k: v for k, v in out.items() if v}
 
 
+def seat_census(h, seats: list[dict]) -> list[dict]:
+    """Per bridge end (routes/infra.seats): the ground along the seat's axis, from from_m (under the deck) to to_m
+    beyond the end, against the deck's top; red when any point is off it by more than infra.SEAT_TOL_M."""
+    from tools.argonia_world.routes import infra
+    ends: dict = {}
+    for q in seats:
+        ends.setdefault(q["bridge"], []).append(q)
+    out = []
+    for q in seats:
+        ex, ey = q["at_m"]
+        o = [x for x in ends[q["bridge"]] if x is not q]
+        ux, uy = (ex - o[0]["at_m"][0], ey - o[0]["at_m"][1]) if o else (math.sin(math.radians(q["heading"])),
+                                                                          -math.cos(math.radians(q["heading"])))
+        ln = max(math.hypot(ux, uy), 1e-9)
+        s_ = np.arange(q["from_m"], q["to_m"] + 0.01, 0.5)
+        z = bilinear(h, (ex + ux / ln * s_) / MPP, (ey + uy / ln * s_) / MPP)
+        off = float(np.abs(z - q["z_m"]).max())
+        out.append({"bridge": q["bridge"], "end": q["end"], "deck_m": q["z_m"], "ground_m": [round(float(z.min()), 2),
+                    round(float(z.max()), 2)], "off_max_m": round(off, 2), "red": off > infra.SEAT_TOL_M})
+    return out
+
+
 def wet_main(w, a) -> int:
     """`census [GROUND.npy]`: every road's wet census on the generated ground (lane 1.15-r6-roads-dry). Fails on any
     metre under water outside a ford, a ford deeper than FORD_M, or a bank steeper than GRADE_MAX (the slope's
@@ -379,7 +401,11 @@ def wet_main(w, a) -> int:
     fails += [f"{k}: bank p99 {r['bank_p99']} over the bar {BANK_BAR}" for k, r in res.items()
               if raised is not None and r["bank_p99"] > BANK_BAR]
     tot["bridge_candidates"] = bridge_candidates(res, bridges)
-    print(json.dumps({"total": tot, "roads": res, "fails": fails, "bridges": bridges, "grade_max": GRADE_MAX,
+    # the seats: each bridge end's ground (on the seat's axis, from under the deck to APPROACH_M beyond) against
+    # the deck's top (infra's one definition: the ref's z + BRIDGE_TOP_M), bar SEAT_TOL_M
+    seats_out = seat_census(h, infra.seats(w, lambda x, y: float(bilinear(h, np.array([x / MPP]), np.array([y / MPP]))[0])))
+    fails += [f"{q['bridge']} end {q['end']}: seat off its deck by {q['off_max_m']} m" for q in seats_out if q["red"]]
+    print(json.dumps({"total": tot, "roads": res, "fails": fails, "bridges": bridges, "seats": seats_out, "grade_max": GRADE_MAX,
                       "bank_bar": {"value": BANK_BAR, "band_m": BANK_BAND_M, "source": BANK_BAR_SOURCE},
                       "bank_measured_on": "raised" if raised is not None else "all low ground (no road-raised mask)"}, indent=1))
     return 1 if fails else 0

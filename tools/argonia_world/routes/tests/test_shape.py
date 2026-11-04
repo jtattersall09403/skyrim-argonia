@@ -85,3 +85,13 @@ def test_bridge_over_a_step_is_seated_level_with_its_deck():
     g = np.abs(np.diff(row[:57])) / S.MPP
     g2 = np.abs(np.diff(row[64:])) / S.MPP
     assert max(g.max(), g2.max()) <= S.GRADE_MAX + 1e-6, (g.max(), g2.max())
+
+
+def test_seat_census_reds_a_seat_off_its_deck():
+    from tools.argonia_world.routes import census as K
+    h = np.full((101, 101), 5.0)
+    h[:, 61:] = 5.5
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, 50 * S.MPP], "z_m": 5.0, "heading": 90.0,
+              "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0} for k, cx in enumerate((40.0, 60.0))]
+    out = K.seat_census(h, seats)
+    assert not out[0]["red"] and out[1]["red"] and out[1]["off_max_m"] == 0.5, out

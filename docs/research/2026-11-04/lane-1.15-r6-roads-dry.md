@@ -117,3 +117,12 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
   - it drops road points within BRIDGE_LEN_M/2 + APPROACH_M of a bridge from the wet metres (the road is the deck there).
 - Result: 0 m under water on every road, 25 fords at most 0.30 m, 19,020 m of causeway, no bridge candidates, no fails.
 - Bank: every road's p99 is at most 0.249, under the 0.429 bar. The single-side maxima are gideon-soulrest 1.152 and gideon-stormhold 0.848, both at bridge crossings, in the seat ease beside the step.
+
+## Round 6: the seats against infra's deck tops
+- `bridge_seats` takes its deck tops from `infra.seats` (`infra.bridge_placements`: deck = ref z + BRIDGE_TOP_M 0.67 m), sampled on the last generated ground (out/terrain/ground-f32.npy).
+- Against `place_build.GameGround` (the ground the refs are placed on), the deck tops agree within 0.09 m: gideon 69.12 / 69.21, glenbridge 17.99 / 18.03, thorn 31.28 / 31.30. So the seats are not on the refined `routes.build.Ground` (40 m), and they need no source change.
+- The census's new `seats` entry checks each end's ground along the seat axis (0.3 m under the deck to 4 m beyond) against the deck top, bar 0.3 m:
+  - 5 of 6 ends are within 0.02-0.19 m;
+  - gideon-step end 1 is 0.33 m off (red, ground 69.11-69.45 m) - the deck moved 0.1 m as the regenerated ground changed under it, so it converges on the next rebuild;
+  - the census flags it in `fails`.
+- An approach standing 2.2 m over its deck (71.4 against 69.2 m) is not in this ground: the ground at both gideon seats is 69.1-69.5 m. The journey's stand z should be checked against GameGround at the stand point.
