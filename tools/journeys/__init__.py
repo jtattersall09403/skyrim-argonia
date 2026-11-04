@@ -578,3 +578,163 @@ def water_stop_bad(b: Build, s: dict) -> str | None:
     if sh < min_share(s['step']):
         return f"{s['step']}: water is {sh:.0%} of the near field (0-60 m, +-30 deg), under {min_share(s['step']):.0%}"
     return None
+
+
+# -- landscape grass: the LTEX under each LAND vertex and the grass it grows (lane 1.15-r6-water-stands-2) -------------
+# Round 6's sea, river and brackish stands read 0/0 on the placed plants and still stood in reeds and ferns: the engine
+# grows grass from the LTEX under each vertex (GNAM), which the placed-plant count never saw. The vertex's textures come
+# from the build's LAND records (out/terrain/land, base + layers with 17x17 alpha per quad); each LTEX's grass list is
+# the plan's (`ltex_grass`, which tools/argonia_world/terrain/grass.py `check` holds equal to what the game loads), each
+# GRAS's model from out/ltex-scan.json. GRASS_HEIGHT_M is the height class of each grass model, by its mesh (the scan
+# carries no bounds): a class, not a measurement; tall is anything that reaches a standing eye's lower frame.
+GRASS_HEIGHT_M = {
+    "marshgrassobj01.nif": 1.2, "cattailgrass.nif": 1.8, "grassfern01.nif": 0.9, "grassplant01.nif": 0.8,
+    "tundragrassobj03.nif": 0.7, "tundragrassobj04.nif": 0.7, "tundragrass01.nif": 0.4, "forestgrass01.nif": 0.4,
+    "rockgrass01.nif": 0.2, "rockgrasswater01.nif": 0.3, "tbprockgrasswater03.nif": 0.3, "tbpalgae01.nif": 0.1,
+    "waterkelptall01.nif": 1.5, "waterkelptall02.nif": 1.5, "waterkelptall03.nif": 1.5, "waterkelpshort01.nif": 0.5,
+    "tbpcoastdriftwood01.nif": 0.3, "tbpcoastdriftwood02.nif": 0.3, "tbp_coralsmall01.nif": 0.3,
+    "tbp_seaweed02test.nif": 0.8, "tbp_seaweed06.nif": 0.8,
+}
+TALL_GRASS_M = 0.5          # a grass this tall or taller fills the lower frame of a standing eye
+GRASS_NEAR_M, GRASS_LINE_M = 6.0, 20.0   # no tall grass within 6 m of the eye point or under the first 20 m of the eye line
+GRASS_TEX_MIN = 0.3         # a texture this much of a vertex's blend grows its grass there
+QUADS = {"BottomLeft": (0, 0), "BottomRight": (16, 0), "TopLeft": (0, 16), "TopRight": (16, 16)}
+
+
+def ltex_grass_heights(world=None) -> dict[str, float]:
+    """LTEX form key -> the tallest grass its list grows (metres), from the plan rows and the scan's GRAS models."""
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain import grass as G
+    w = world or db.open()
+    model = {g["formKey"]: g["model"].rsplit("/", 1)[-1].lower() for g in G.load_scan()["grass"]}
+    out: dict[str, float] = {}
+    for lt, g in w.query("SELECT ltex_form_key, grass_form_key FROM ltex_grass"):
+        out[lt] = max(out.get(lt, 0.0), GRASS_HEIGHT_M.get(model.get(g, ""), 0.0))
+    return out
+
+
+def vertex_textures(quads: list[dict]) -> dict[tuple[int, int], dict[str, float]]:
+    """(i, j) 0..32 (east, north) -> {LTEX: blend weight} from a LAND record's quads (each layer over the ones before)."""
+    import base64
+    out: dict[tuple[int, int], dict[str, float]] = {}
+    for q in quads:
+        oi, oj = QUADS[q["q"]]
+        alphas = [(l["ltex"], base64.b64decode(l["alpha"])) for l in q["layers"]]
+        for r in range(17):
+            for c in range(17):
+                w = {q["base"]: 1.0}
+                for lt, a in alphas:
+                    v = a[r * 17 + c] / 255.0 if len(a) > r * 17 + c else 0.0
+                    if v:
+                        w = {k: x * (1 - v) for k, x in w.items()}
+                        w[lt] = w.get(lt, 0.0) + v
+                out.setdefault((oi + c, oj + r), w)
+    return out
+
+
+class Grass:
+    """The tallest grass the ground grows at each LAND vertex (metres), loaded per cell row from out/terrain/land."""
+    def __init__(self, heights: dict[str, float] | None = None, root: Path | None = None):
+        self._h, self._root, self._cells = heights, root or ROOT / "out" / "terrain" / "land", {}
+
+    def heights(self) -> dict[str, float]:
+        if self._h is None:
+            self._h = ltex_grass_heights()
+        return self._h
+
+    def _row(self, cy: int):
+        p = self._root / f"cy{cy:+04d}.jsonl.gz"
+        if p.is_file():
+            with gzip.open(p, "rt", encoding="ascii") as f:
+                for ln in f:
+                    d = json.loads(ln)
+                    self._cells[(d["x"], d["y"])] = {k: max((self.heights().get(t, 0.0) for t, w in v.items()
+                                                             if w >= GRASS_TEX_MIN), default=0.0)
+                                                     for k, v in vertex_textures(d["quads"]).items()}
+        for cx in range(-200, 200):
+            self._cells.setdefault((cx, cy), {})
+
+    def at(self, x: float, y: float) -> float:
+        """The tallest grass grown at the LAND vertex nearest (x, y), metres (0 where none)."""
+        cx, cy = su.cell_of(x, y)
+        if (cx, cy) not in self._cells:
+            self._row(cy)
+        ox, oy = su.cell_origin(cx, cy)
+        i, j = round((x - ox) / su.VERTEX_SPACING_UNITS), round((y - oy) / su.VERTEX_SPACING_UNITS)
+        return self._cells[(cx, cy)].get((i, j), 0.0)
+
+
+def grass_hits(b: Build, eye: tuple, heading: float, near_m: float = GRASS_NEAR_M, line_m: float = GRASS_LINE_M,
+               first: bool = False) -> int:
+    """The LAND vertices growing tall grass (TALL_GRASS_M, its top over any water there) within near_m of the eye point
+    or within one vertex spacing of the first line_m of the eye line (the ground under it). `first`: stop at one."""
+    g = getattr(b, "grass", None)
+    if g is None:
+        g = b.grass = Grass()
+    u, s = su.UNITS_PER_METRE, su.VERTEX_SPACING_UNITS
+    ex, ey, _ = eye
+    a = math.radians(heading)
+    dx, dy = math.sin(a), math.cos(a)
+    reach = max(near_m, line_m) * u + s
+    hits = 0
+    gx0, gy0 = math.floor((ex - reach) / s), math.floor((ey - reach) / s)
+    for gi in range(gx0, gx0 + int(2 * reach / s) + 2):
+        for gj in range(gy0, gy0 + int(2 * reach / s) + 2):
+            px, py = gi * s, gj * s
+            rx, ry = px - ex, py - ey
+            t = rx * dx + ry * dy
+            near = math.hypot(rx, ry) <= near_m * u
+            on = 0 <= t <= line_m * u and abs(rx * dy - ry * dx) <= s
+            if not (near or on):
+                continue
+            h = g.at(px, py)
+            if h < TALL_GRASS_M:
+                continue
+            lv = b.water_u(px, py)
+            if lv is not None and b.ground_u(px, py) + h * u <= lv:
+                continue   # submerged: kelp under the surface is not in the eye's way
+            hits += 1
+            if first:
+                return hits
+    return hits
+
+
+def clearance3(b: Build, eye: tuple, heading: float) -> tuple[int, int, int]:
+    """(line, canopy, grass): `clearance`'s placed-plant counts and the tall landscape grass (grass_hits)."""
+    return (*clearance(b, eye, heading), grass_hits(b, eye, heading))
+
+
+# -- the frame share: what the lower half of the still shows (lane 1.15-r6-water-stands-2) -----------------------------
+FRAME_HALF_H_DEG, FRAME_HALF_V_DEG = 30.0, 25.0   # the share's field: +-30 degrees across, the lower half down 25 degrees
+FRAME_NEAR_M, FRAME_MIN_SHARE = 60.0, 0.5
+
+
+def frame_share(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M) -> float:
+    """The share of the still's lower half (rays from the eye at `heading` +-30 deg, from the pitch line down 25 deg;
+    pitch positive is down) whose first meeting within near_m is a water surface over lower ground; a ray that meets
+    the ground first, or nothing within near_m, is not water. Marched over the build's ground and cell water heights."""
+    u = su.UNITS_PER_METRE
+    ex, ey, ez = eye_of(b, x, y)
+    n_h, n_v, step = 9, 8, 1.0 * u
+    hit = tot = 0
+    for i in range(n_h):
+        a = math.radians(heading + (i / (n_h - 1) - 0.5) * 2 * FRAME_HALF_H_DEG)
+        sa, ca = math.sin(a), math.cos(a)
+        for j in range(n_v):
+            dn = math.radians(pitch + (j + 0.5) / n_v * FRAME_HALF_V_DEG)
+            tot += 1
+            if dn <= 0:
+                continue
+            tn = math.tan(dn)
+            r = step
+            while r <= near_m * u:
+                px, py, pz = ex + sa * r, ey + ca * r, ez - tn * r
+                g = b.ground_u(px, py)
+                lv = b.water_u(px, py)
+                if lv is not None and lv > g and pz <= lv:
+                    hit += 1
+                    break
+                if pz <= g:
+                    break
+                r += step
+    return hit / tot if tot else 0.0

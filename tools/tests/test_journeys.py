@@ -205,3 +205,39 @@ def test_sky_ab_bounds_follow_the_markers_and_a_moved_marker_is_stale():
     # a moved marker moves the bounds, so the file written for the old position is stale
     moved, _ = gen.sky_ab(Flat(refs=refs(400)))
     assert yaml.safe_load(moved)["steps"][1]["expect"] != ex
+
+
+class _Grass:
+    """Tall grass (1.2 m) at every LAND vertex inside the box given (units), none elsewhere."""
+    def __init__(self, box):
+        self.box = box
+
+    def at(self, x, y):
+        x0, y0, x1, y1 = self.box
+        return 1.2 if x0 <= x <= x1 and y0 <= y <= y1 else 0.0
+
+
+def test_grass_clearance_counts_tall_grass_near_the_eye_and_under_the_first_20_m_only():
+    x, y = at(60, 60)
+    b = Flat()
+    eye = J.eye_of(b, x, y)
+    b.grass = _Grass((x - 3 * U, y - 3 * U, x + 3 * U, y + 3 * U))        # round the stand
+    assert J.grass_hits(b, eye, 0.0) > 0
+    b.grass = _Grass((x - 1 * U, y + 12 * U, x + 1 * U, y + 16 * U))       # on the line 12-16 m out
+    assert J.grass_hits(b, eye, 0.0) > 0
+    assert J.grass_hits(b, eye, 180.0) == 0                                 # behind the eye, past 6 m
+    b.grass = _Grass((x - 1 * U, y + 30 * U, x + 1 * U, y + 40 * U))       # on the line past 20 m: the view, not the lens
+    assert J.grass_hits(b, eye, 0.0) == 0
+    assert J.clearance3(b, eye, 0.0) == (0, 0, 0)
+
+
+def test_frame_share_reads_the_lower_frame_over_the_ground_and_water_heights():
+    cx, cy = su.cell_of(*at(60, 60))
+    x, y = at(60, 60)
+    y -= 4 * U
+    b = Pond({(cx, cy + k) for k in range(1, 4)})
+    north = (su.cell_origin(cx, cy)[1] + su.CELL_UNITS - y) / U              # metres to the water's edge
+    assert 0 < north < 60
+    assert J.frame_share(b, x, y, 0.0, 0.0) > 0.5                            # the shallow rays reach the water
+    assert J.frame_share(b, x, y, 180.0, 0.0) == 0.0                         # facing away
+    assert J.frame_share(b, x, y, 0.0, 40.0) == 0.0                          # pitched down: the bank fills the frame
