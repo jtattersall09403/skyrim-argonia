@@ -60,7 +60,7 @@ Owner #37, 2026-11-04 07:36: find the cause and fix it, never drop. The causes w
 - `vegetation forms --lists-only` raises the placed forms from 195 to 208.
 - `textures check`: 0 problems.
 - pytest on meshes and vegetation tests: 56 passed. The 9 patcher tests use synthetic NIFs made by the test: one per op, the bars, the before-mismatch, run and list, LZ4, and the table.
-- Province vegetation check: see §6.
+- Province vegetation check (`vegetation build` and `check` over out/terrain/land): 18 green, 0 red, 646,952 refs (was 647,618).
 
 ## 4. The deploy's lay step
 - `deploy.sh` gains the step `mesh patches`, after `stack push`. It runs `patch --out out/mesh_patches/argonia-mesh-patches` and sends the result to `C:\argonia\MO2\mods\argonia-mesh-patches`.
