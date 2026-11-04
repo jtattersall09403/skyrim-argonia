@@ -241,3 +241,30 @@ def test_frame_share_reads_the_lower_frame_over_the_ground_and_water_heights():
     assert J.frame_share(b, x, y, 0.0, 0.0) > 0.5                            # the shallow rays reach the water
     assert J.frame_share(b, x, y, 180.0, 0.0) == 0.0                         # facing away
     assert J.frame_share(b, x, y, 0.0, 40.0) == 0.0                          # pitched down: the bank fills the frame
+
+
+def test_frustum_cover_scores_a_near_trunk_and_ignores_one_behind():
+    x, y = at(60, 60)
+    b = Flat()
+    b.grass = _Grass((0, 0, 0, 0))
+    eye = J.eye_of(b, x, y)
+    gz = b.ground_u(x, y)
+    trunk = (x, y + 4 * U, gz, 1 * U, 12 * U, False, 0.0)      # a 2 m wide trunk 4 m ahead, 12 m tall
+    b2 = Flat([trunk]); b2.grass = b.grass
+    fc = J.frustum_cover(b2, eye, 0.0)
+    assert fc["near"] > J.NEAR_COVER_MAX and not J.cover_ok(fc)
+    assert J.frustum_cover(b2, eye, 180.0)["near"] == 0.0        # behind the eye
+    far = (x, y + 20 * U, gz, 0.3 * U, 2 * U, True, 0.0)        # a small bush 20 m out: not the near frame
+    b3 = Flat([far]); b3.grass = b.grass
+    fc = J.frustum_cover(b3, eye, 0.0)
+    assert fc["near"] == 0.0 and fc["all"] > 0 and J.cover_ok(fc)
+    close = (x + 1 * U, y, gz, 0.5 * U, 2 * U, True, 0.0)       # bounds 0.5 m from the eye, off the frame
+    b4 = Flat([close]); b4.grass = b.grass
+    assert not J.cover_ok(J.frustum_cover(b4, eye, 0.0))
+
+
+def test_type_share_counts_the_wet_rays_of_the_stops_own_type():
+    cells = {(1, 1): 7, (1, 2): 3}
+    sh, others = J.type_share(cells, {(1, 1): "black", (1, 2): "marsh"}, ("black",))
+    assert sh == 0.7 and others == [(1, 2, "marsh", 3)]
+    assert J.type_share({}, {}, ("black",))[0] == 0.0

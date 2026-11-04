@@ -10,7 +10,7 @@ import re
 
 from tools.argonia_world import skyrim_units as su
 from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, frame_share, grass_hits,
-                            aim, eye_of, place, stand_bad, water_share)
+                            TYPE_MIN_SHARE, cover_ok, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
@@ -170,17 +170,20 @@ def step_stand(b: Build, s, x0: float, y0: float, into: float, subj: tuple):
                     continue
                 cl = clearance3(b, eye, h)
                 sh = step_share(b, eye, h, p, pieces)
-                key = (sh < STEP_MIN_SHARE, sum(cl), abs(p) // 10, -sh)
+                if best is not None and best[0][0] is False and sh < STEP_MIN_SHARE:
+                    continue
+                fc = frustum_cover(b, eye, h, p)
+                key = (sh < STEP_MIN_SHARE, not cover_ok(fc), sum(cl), abs(p) // 10, -sh)
                 if best is None or key < best[0]:
-                    best = (key, (x, y, h, p, cl, sh))
-                if sum(cl) == 0 and sh >= STEP_MIN_SHARE:
-                    return x, y, h, p, cl, sh, True
+                    best = (key, (x, y, h, p, cl, sh, fc))
+                if sum(cl) == 0 and sh >= STEP_MIN_SHARE and cover_ok(fc):
+                    return x, y, h, p, cl, sh, fc, True
     if best is None:
         raise ValueError(f"river-steps: no dry stand {STEP_BAND_M} m from the step at ({x0:.0f}, {y0:.0f})")
     return (*best[1], False)
 
 
-RIVER_STANDS: list = []   # (name, x, y, heading, pitch, clearance3, share) of the last refresh, for the report
+RIVER_STANDS: list = []   # (name, x, y, heading, pitch, clearance3, share, frustum cover) of the last refresh, for the report
 
 
 def _still_again(name: str, note: str, x: float, y: float, z: float, h: float, p: float, subj) -> str:
@@ -203,9 +206,9 @@ def river_steps(b: Build, w, log: list) -> str:
     for n, s in enumerate(steps, 1):
         x0, y0, into = _edge_mid(s["cx"], s["cy"], s["edge"], s["cross_lo"], s["cross_hi"])
         subj = (x0, y0, (s["lower_m"] + s["upper_m"]) / 2 * U)
-        x, y, h, p, cl, sh, ok = step_stand(b, s, x0, y0, into, subj)
-        RIVER_STANDS.append((f"step-{n}", x, y, h, p, cl, sh))
-        print(f"river-steps: step-{n}: clearance {cl[0]}/{cl[1]}/{cl[2]}, step pieces in frame {sh:.0%} "
+        x, y, h, p, cl, sh, fc, ok = step_stand(b, s, x0, y0, into, subj)
+        RIVER_STANDS.append((f"step-{n}", x, y, h, p, cl, sh, fc))
+        print(f"river-steps: step-{n}: clearance {cl[0]}/{cl[1]}/{cl[2]}, {cover_text(fc)}, step pieces in frame {sh:.0%} "
               f"(needs {STEP_MIN_SHARE:.0%}){'' if ok else ' WARNING: short'} at {x:.0f} {y:.0f} facing {h:.0f} pitch {p:.0f}")
         log.append({"journey": "river-steps", "step": f"step-{n}", "moved_m": 0.0, "why": "side of the step",
                     "clear": ok})
@@ -398,7 +401,7 @@ def _first_wet(b: Build, pt: tuple, ux: float, uy: float, limit_m: float = 400.0
     return None
 
 
-STANDS: list = []   # (name, x, y, heading, pitch, clearance3, frame share, near share) of the last refresh
+STANDS: list = []   # (name, x, y, heading, pitch, clearance3, frame share, near share, frustum cover, type share, other cells) of the last refresh
 CLEAR_STOPS = ("sea", "river", "brackish-rim")   # round 5: these read clear and stood under canopy, in fronds
 
 
@@ -418,14 +421,21 @@ FIT_STRICT_STEP_M = 4.0    # every shore's near field on a 4 m grid (strict), th
 FIT_COARSE_M, FIT_FINE_M = 25.0, 2.5   # 25 m to FIT_FAR_M, then 2.5 m within 25 m of the coarse best
 
 
-def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, strict: bool = False):
+FLOW_AIM_DEG = 30.0   # the river stand's aim within this of the reach's flow (downstream) heading
+
+
+def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, strict: bool = False,
+         types: dict | None = None, want=(), flow: float | None = None):
     """The authored stand `f` aimed at the body's centre, or the nearest stand that is dry footing, whose aim point is
     water, whose clearance reads 0/0/0 (placed plants on the eye line, canopy over the eye, tall landscape grass near the
     eye and under the first 20 m of the line) and whose frame share (the lower half of the still, 0-60 m, +-30 deg, from
     the eye's height and pitch over the ground and water heights) is at least FRAME_MIN_SHARE. `strict` searches
     FIT_REACH_M on a 4 m grid and raises when none; else a 2 m grid to FIT_REACH_M, a 25 m grid to FIT_FAR_M and a 2.5 m
     grid round the best, which is kept (meeting the share first, then fewest hits) and named in SHORT_OF_FRAME when
-    short. Returns (x, y, subject, share)."""
+    short. Lane 1.15-r6-water-stands-3 adds the frame, not only the line: the frustum cover (cover_ok: near-frame plant
+    cover, plant bounds by the eye, the sea's upper frame), the lower frame's wet rays carrying the stop's own type
+    (TYPE_MIN_SHARE of them, from `types`), and for `flow` (a heading) the aim within FLOW_AIM_DEG of it.
+    Returns (x, y, subject, share, key)."""
     w_ = None if sea else _wet_near(b, centre)
 
     def ev(di, dj):
@@ -452,8 +462,19 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         cl += grass_hits(b, eye, h, first=strict)
         if strict and cl:
             return None
-        sh = frame_share(b, x, y, h, p)
-        return ((sh < FRAME_MIN_SHARE, cl, -sh), di, dj, x, y, subj, sh)
+        if flow is not None and abs((h - flow + 180) % 360 - 180) > FLOW_AIM_DEG:
+            return None
+        sh, cells = frame_read(b, x, y, h, p)
+        ts = type_share(cells, types, want)[0] if types is not None else 1.0
+        miss = sh < FRAME_MIN_SHARE or ts < TYPE_MIN_SHARE
+        if strict and miss:
+            return None
+        fc = frustum_cover(b, eye, h, p)
+        bad = not cover_ok(fc, sea)
+        if strict and bad:
+            return None
+        pen = bad * (1 + round(100 * max(fc["near"], fc["upper"] if sea else 0.0)))
+        return ((miss, pen, cl, -sh), di, dj, x, y, subj, sh)
 
     best = None
 
@@ -463,7 +484,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
             r = ev(di, dj)
             if r and (best is None or r[0] < best[0]):
                 best = r
-            if best and best[0][:2] == (False, 0):
+            if best and best[0][:3] == (False, 0, 0):
                 return True
         return False
 
@@ -474,29 +495,32 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
     if best is None:
         raise ValueError(f"water-types: {name}: no dry stand with a water aim within {FIT_FAR_M:.0f} m of "
                          f"({f['x']:.0f}, {f['y']:.0f})")
-    (_, cl, nsh), di, dj, x, y, subj, sh = best
+    (miss, pen, cl, nsh), di, dj, x, y, subj, sh = best
     if strict and sh < FRAME_MIN_SHARE:
         raise ValueError(f"water-types: {name}: no clear stand within {FIT_FAR_M:.0f} m holds {FRAME_MIN_SHARE:.0%} "
                          f"water in the lower frame (best {sh:.0%})")
-    if cl or sh < FRAME_MIN_SHARE:
-        SHORT_OF_FRAME[name] = f"best stand: {cl} clearance hits, frame share {sh:.0%}"
+    if cl or pen or miss:
+        SHORT_OF_FRAME[name] = (f"best stand: {cl} clearance hits, frustum cover {'over' if pen else 'ok'}, frame share "
+                                f"{sh:.0%}{', type share short' if miss and sh >= FRAME_MIN_SHARE else ''}")
     log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(di, dj), 1),
-                "why": "re-aimed at the body's centre", "clear": cl == 0})
+                "why": "re-aimed at the body's centre", "clear": cl == 0 and not pen and not miss})
     return x, y, subj, sh, best[0]
 
 
 def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dict, line: dict, reach_of: dict, log: list,
-             strict: bool = False):
+             strict: bool = False, types: dict | None = None, want=()):
     """One water stop at a shore cell (cx, cy), its dry side (dx, dy): the stand fitted to hold water (_fit)."""
     ox, oy = su.cell_origin(cx, cy)
     z = su.metres_to_units(level[(cx, cy)])
-    f = None
+    f = flow = None
     if name in ("river", "stream"):
         pts = line[reach_of[(cx, cy)]]
         mid = min(range(len(pts) - 1), key=lambda i: math.hypot(pts[i][0] - ox - su.CELL_UNITS / 2, pts[i][1] - oy - su.CELL_UNITS / 2))
         ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
         tx, ty = pts[ahead][0] - pts[mid][0], pts[ahead][1] - pts[mid][1]
         n = math.hypot(tx, ty) or 1.0
+        if name == "river":   # the reach's centreline runs source to end (cell_types): downstream is along it
+            flow = math.degrees(math.atan2(tx, ty)) % 360
         for side in (1, -1):  # the bank to the reach's left, then right, standing back upstream of the subject
             nx, ny = -ty / n * side, tx / n * side
             f = _water_stop(b, name, (pts[mid][0], pts[mid][1], z), nx, ny, log)
@@ -518,7 +542,7 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
                     sh[1] - dy * (SEA_OUT_M if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS / U) * U, z)
     if not f:
         raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
-    return _fit(b, name, f, subj, name == "sea", log, strict)
+    return _fit(b, name, f, subj, name == "sea", log, strict, types, want, flow)
 
 
 def water_types(b: Build, w, log: list) -> str:
@@ -561,7 +585,7 @@ def water_types(b: Build, w, log: list) -> str:
         for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
             n_log = len(log)
             try:
-                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, True) + ((cx, cy),)
+                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, True, types, want) + ((cx, cy),)
             except ValueError as e:
                 err = err or e
                 del log[n_log:]
@@ -575,14 +599,14 @@ def water_types(b: Build, w, log: list) -> str:
                 n_log = len(log)
                 SHORT_OF_FRAME.pop(name, None)
                 try:
-                    r = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, False) + ((cx, cy),)
+                    r = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, False, types, want) + ((cx, cy),)
                 except ValueError as e:
                     err = err or e
                     del log[n_log:]
                     continue
                 if got is None or r[4] < got[4]:
                     got, short = r, SHORT_OF_FRAME.get(name)
-                if r[4][:2] == (False, 0):
+                if r[4][:3] == (False, 0, 0):
                     break
             SHORT_OF_FRAME.pop(name, None)
             if short:
@@ -595,9 +619,13 @@ def water_types(b: Build, w, log: list) -> str:
         if name == "sea":
             p = 0.0
         cl = clearance3(b, eye_of(b, x, y), h)
-        fs = frame_share(b, x, y, h, p)
-        STANDS.append((name, x, y, h, p, cl, fs, share))
+        fs, cells_ = frame_read(b, x, y, h, p)
+        ts, others = type_share(cells_, types, want)
+        fc = frustum_cover(b, eye_of(b, x, y), h, p)
+        STANDS.append((name, x, y, h, p, cl, fs, share, fc, ts, others[:3]))
         print(f"water-types: {name}: clearance {cl[0]}/{cl[1]}/{cl[2]} (plants on the eye line / canopy / tall grass); "
+              f"{cover_text(fc)} ({'ok' if cover_ok(fc, name == 'sea') else 'OVER'}); type share {ts:.0%} "
+              f"(needs {TYPE_MIN_SHARE:.0%}; other cells {others[:3]}); "
               f"frame share {fs:.0%} (lower half, 0-60 m, +-30 deg; needs {FRAME_MIN_SHARE:.0%}); "
               f"near-field share {water_share(b, x, y, h):.0%} at {x:.0f} {y:.0f} facing {h:.0f} pitch {p:.0f}")
         if name == "sea":

@@ -709,14 +709,17 @@ FRAME_HALF_H_DEG, FRAME_HALF_V_DEG = 30.0, 25.0   # the share's field: +-30 degr
 FRAME_NEAR_M, FRAME_MIN_SHARE = 60.0, 0.5
 
 
-def frame_share(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M) -> float:
-    """The share of the still's lower half (rays from the eye at `heading` +-30 deg, from the pitch line down 25 deg;
-    pitch positive is down) whose first meeting within near_m is a water surface over lower ground; a ray that meets
-    the ground first, or nothing within near_m, is not water. Marched over the build's ground and cell water heights."""
+def frame_read(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M,
+               types: dict | None = None) -> tuple[float, dict]:
+    """(share, wet cells): the share of the still's lower half (rays from the eye at `heading` +-30 deg, from the pitch
+    line down 25 deg; pitch positive is down) whose first meeting within near_m is a water surface over lower ground (a
+    ray that meets the ground first, or nothing within near_m, is not water), and per cell (cx, cy) the rays that met
+    its water. Marched over the build's ground and cell water heights."""
     u = su.UNITS_PER_METRE
     ex, ey, ez = eye_of(b, x, y)
     n_h, n_v, step = 9, 8, 1.0 * u
     hit = tot = 0
+    cells: dict = {}
     for i in range(n_h):
         a = math.radians(heading + (i / (n_h - 1) - 0.5) * 2 * FRAME_HALF_H_DEG)
         sa, ca = math.sin(a), math.cos(a)
@@ -733,8 +736,113 @@ def frame_share(b: Build, x: float, y: float, heading: float, pitch: float = 0.0
                 lv = b.water_u(px, py)
                 if lv is not None and lv > g and pz <= lv:
                     hit += 1
+                    c = su.cell_of(px, py)
+                    cells[c] = cells.get(c, 0) + 1
                     break
                 if pz <= g:
                     break
                 r += step
-    return hit / tot if tot else 0.0
+    return (hit / tot if tot else 0.0), cells
+
+
+def frame_share(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M) -> float:
+    """frame_read's share alone."""
+    return frame_read(b, x, y, heading, pitch, near_m)[0]
+
+
+TYPE_MIN_SHARE = 0.7   # the wet rays of the lower frame whose cell carries the stop's own water type
+
+
+def type_share(cells: dict, types: dict, want) -> tuple[float, list]:
+    """(share, others): of frame_read's wet rays, the share whose cell's type (types[(cx, cy)]) is in `want`; others the
+    (cx, cy, type, rays) rows that are not, most rays first (a neighbouring body, or a cell the type was not applied to)."""
+    tot = sum(cells.values())
+    own = sum(n for c, n in cells.items() if types.get(c) in want)
+    others = sorted(((c[0], c[1], types.get(c), n) for c, n in cells.items() if types.get(c) not in want),
+                    key=lambda r: -r[3])
+    return (own / tot if tot else 0.0), others
+
+
+# -- the frustum cover: what the near frame shows, not only the eye line (lane 1.15-r6-water-stands-3) -----------------
+FRUSTUM_H_DEG, FRUSTUM_V_DEG, FRUSTUM_FAR_M = 32.0, 20.0, 25.0   # the camera frustum: +-32 across, +-20 up/down, 0-25 m
+NEAR_FRAME_M, NEAR_COVER_MAX, EYE_CLEAR_M = 10.0, 0.05, 2.5     # near frame 0-10 m: cover under 5 %, no bounds within 2.5 m
+UPPER_COVER_MAX = 0.10                                           # the sea: plant cover of the upper frame under 10 %
+
+
+def _span(lo: float, hi: float, a: float, b_: float) -> float:
+    return max(0.0, min(hi, b_) - max(lo, a))
+
+
+def frustum_cover(b: Build, eye: tuple, heading: float, pitch: float = 0.0) -> dict:
+    """The angular cover of the frame by each placed plant (its seated OBND as a cylinder: widest half-extent, pivot + z0
+    to + height) and tall-grass vertex inside the frustum (+-FRUSTUM_H_DEG across, +-FRUSTUM_V_DEG up/down from the aim,
+    0-FRUSTUM_FAR_M): each as the angular rectangle it subtends at its nearest distance, clipped to the frame, over the
+    frame's area. Returns near (plants, 0-NEAR_FRAME_M), upper (plants 0-25 m, the frame above the aim), all (plants
+    0-25 m), grass (tall-grass vertices 0-NEAR_FRAME_M; reported, not gated) and nearest_m (the nearest plant bounds to
+    the eye, any direction). Covers are summed (overlaps count twice: conservative)."""
+    u = su.UNITS_PER_METRE
+    ex, ey, ez = eye
+    W, H = 2 * FRUSTUM_H_DEG, 2 * FRUSTUM_V_DEG
+    near = upper = allc = grass = 0.0
+    nearest = float("inf")
+
+    def rect(cx, cy, r, lo, hi):
+        hyp = math.hypot(cx - ex, cy - ey)
+        dn = max(hyp - r, 0.3 * u)
+        hw = 90.0 if hyp <= r else math.degrees(math.asin(min(1.0, r / hyp)))
+        dh = (math.degrees(math.atan2(cx - ex, cy - ey)) - heading + 180) % 360 - 180
+        if hyp <= r:
+            dh = 0.0
+        w = _span(-FRUSTUM_H_DEG, FRUSTUM_H_DEG, dh - hw, dh + hw)
+        v0 = math.degrees(math.atan2(lo - ez, dn)) + pitch
+        v1 = math.degrees(math.atan2(hi - ez, dn)) + pitch
+        return dn, w, v0, v1
+
+    for f in b.foliage_near(ex, ey, FRUSTUM_FAR_M * u):
+        fx, fy, fz, fr, fh = f[:5]
+        lo = fz + (f[6] if len(f) > 6 else 0.0)
+        hi = lo + fh
+        dz = 0.0 if lo <= ez <= hi else min(abs(lo - ez), abs(hi - ez))
+        nearest = min(nearest, math.hypot(max(0.0, math.hypot(fx - ex, fy - ey) - fr), dz) / u)
+        dn, w, v0, v1 = rect(fx, fy, fr, lo, hi)
+        if dn > FRUSTUM_FAR_M * u or not w:
+            continue
+        c = w * _span(-FRUSTUM_V_DEG, FRUSTUM_V_DEG, v0, v1) / (W * H)
+        allc += c
+        upper += w * _span(0.0, FRUSTUM_V_DEG, -v1, -v0) / (W * FRUSTUM_V_DEG)   # up is negative pitch
+        if dn <= NEAR_FRAME_M * u:
+            near += c
+    g = getattr(b, "grass", None)
+    if g is None:
+        g = b.grass = Grass()
+    s = su.VERTEX_SPACING_UNITS
+    reach = NEAR_FRAME_M * u
+    gx0, gy0 = math.floor((ex - reach) / s), math.floor((ey - reach) / s)
+    for gi in range(gx0, gx0 + int(2 * reach / s) + 2):
+        for gj in range(gy0, gy0 + int(2 * reach / s) + 2):
+            px, py = gi * s, gj * s
+            if math.hypot(px - ex, py - ey) > reach:
+                continue
+            h = g.at(px, py)
+            if h < TALL_GRASS_M:
+                continue
+            gz = b.ground_u(px, py)
+            lv = b.water_u(px, py)
+            if lv is not None and gz + h * u <= lv:
+                continue
+            dn, w, v0, v1 = rect(px, py, s / 2, gz, gz + h * u)
+            if w:
+                grass += w * _span(-FRUSTUM_V_DEG, FRUSTUM_V_DEG, v0, v1) / (W * H)
+    return {"near": near, "upper": upper, "all": allc, "grass": grass, "nearest_m": nearest}
+
+
+def cover_ok(fc: dict, sea: bool = False) -> bool:
+    """The frustum rule: near-frame plant cover under NEAR_COVER_MAX, no plant bounds within EYE_CLEAR_M of the eye, and
+    for the sea the upper frame under UPPER_COVER_MAX."""
+    return (fc["near"] < NEAR_COVER_MAX and fc["nearest_m"] >= EYE_CLEAR_M
+            and (not sea or fc["upper"] < UPPER_COVER_MAX))
+
+
+def cover_text(fc: dict) -> str:
+    return (f"cover near {fc['near']:.1%} upper {fc['upper']:.1%} all {fc['all']:.1%} grass {fc['grass']:.1%} "
+            f"nearest {fc['nearest_m']:.1f} m")
