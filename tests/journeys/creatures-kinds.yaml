@@ -38,34 +38,34 @@ steps:
   - {read: [actors, "8192"], path: listed, keep: coastal_lagoon}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Burglar Crab", "Crocodile", "Crow", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Pad-sa Shark", "Red Hooped Tree-Viper", "Sea-Drake", "Slaughterfish", "Swamp Jelly", "Wamasu"]}, keep: coastal_lagoon_kinds}
 - name: northern-transition
-  # cell (-59, 59) northern-transition, spawn lvln.northern-transition.D3.land (D3), the class on 25 of the 25 cells round it, 10 spawn points within 90 m; the stand is 20 m from it
-  # subject: -238208 245376 19595
+  # cell (-61, 60) northern-transition, spawn lvln.northern-transition.D3.shore (D3), the class on 20 of the 25 cells round it, 8 spawn points within 90 m; the stand is 15 m from it
+  # subject: -249728 249728 17211
   do:
-  - console: {line: cow ARG_Province -59 59, settle: 60}
+  - console: {line: cow ARG_Province -61 60, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -236807
-  - console: player.setpos y 245376
-  - console: player.setpos z 20093
-  - console: player.setangle z 270
-  - console: player.setangle x 24
+  - console: player.setpos x -249728
+  - console: player.setpos y 250778
+  - console: player.setpos z 17030
+  - console: player.setangle z 180
+  - console: player.setangle x -3
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: northern_transition_stand}
   - {read: [actors, "8192"], path: listed, keep: northern_transition}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Dragon Frog", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: northern_transition_kinds}
 - name: western-frontier
-  # cell (-33, -5) western-frontier, spawn lvln.western-frontier.D3.land (D3), the class on 23 of the 25 cells round it, 12 spawn points within 90 m; the stand is 15 m from it
-  # subject: -134144 -18432 1067
+  # cell (-36, -5) western-frontier, spawn lvln.western-frontier.D3.shore (D3), the class on 24 of the 25 cells round it, 8 spawn points within 90 m; the stand is 20 m from it
+  # subject: -144512 -20352 1547
   do:
-  - console: {line: cow ARG_Province -33 -5, settle: 60}
+  - console: {line: cow ARG_Province -36 -5, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -134887
-  - console: player.setpos y -17689
-  - console: player.setpos z 1094
-  - console: player.setangle z 135
-  - console: player.setangle x 8
+  - console: player.setpos x -143522
+  - console: player.setpos y -19362
+  - console: player.setpos z 1315
+  - console: player.setangle z 225
+  - console: player.setangle x -5
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: western_frontier_stand}
@@ -73,14 +73,14 @@ steps:
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Death Hopper", "Dragon Frog", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: western_frontier_kinds}
 - name: guar-pen
   # Claywater Station's pen (the pen markers 22.8 m east of the centre): both kept guar
-  # subject: -231228 47914 4850
+  # subject: -231228 47914 4868
   do:
   - console: {line: cow ARG_Province -57 11, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -231228
   - console: player.setpos y 47354
-  - console: player.setpos z 4820
+  - console: player.setpos z 4831
   - console: player.setangle z 0
   - console: player.setangle x 9
   - wait: 6

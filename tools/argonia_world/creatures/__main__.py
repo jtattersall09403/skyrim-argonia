@@ -14,6 +14,9 @@
         plan the gate's sample (terrain/world.py SAMPLE) or the province and write the splice's shards (records.py)
     python3 -m tools.argonia_world.creatures readback --out <dir> --esm <esm> --gen <ArgoniaGen>
         the spliced plugin read back through Mutagen: the creature refs per cell equal the planner's
+    python3 -m tools.argonia_world.creatures plan-check [--journey tests/journeys/creatures-kinds.yaml]
+        the kinds the province plan puts within two cells of each creatures-kinds stand (plan_check.py); exit 1
+        when a stop has fewer than 4 expected, no spawn point within 90 m or a blocked eye line
 The vanilla measurement is python3 -m tools.argonia_world.vanilla.creatures.
 """
 from __future__ import annotations
@@ -147,6 +150,30 @@ def _readback(a) -> int:
     return 1 if bad or lv["fail"] else 0
 
 
+def _plan_check(a) -> int:
+    from tools.argonia_world import db
+    from tools.argonia_world import skyrim_units as su
+    from tools.argonia_world.creatures import build, plan_check
+    from tools.argonia_world.terrain.grid import Sources
+    from tools.argonia_world.water import solve
+    from tools.journeys import Build
+    w = db.open()
+    g = sorted((ROOT / "out" / "terrain" / "build").glob("*/ground-f32.npy"), key=lambda p: p.stat().st_mtime)[-1]
+    x0, y0 = su.PROVINCE_CELL_SW
+    cells = [(x, y) for y in range(y0, y0 + su.PROVINCE_CELLS) for x in range(x0, x0 + su.PROVINCE_CELLS)]
+    run = build.run(w, Sources.load(ground=g), solve.load(w), cells, None, log=lambda s: None,
+                    veg=ROOT / "out" / "terrain" / "vegetation", cache=ROOT / "out" / "terrain" / "creatures")
+    rows = plan_check.run(run["refs"], w, Build(), Path(a.journey).read_text())
+    for r in rows:
+        print(f"plan-check {r['class']}: {r['spawns']} spawn refs within two cells ({r['own_spawns']} of the class's own "
+              f"lists), {r['possible']} kinds possible, {r['expected']} expected, P(>={plan_check.KINDS_N}) {r['p_ge']}; "
+              f"{r['within_reach']} spawn points within {plan_check.REACH_M:.0f} m; eye line "
+              f"{'clear' if r['clear'] else 'blocked'}{'; RED: ' + ', '.join(r['fail']) if r['fail'] else ''}")
+    bad = [r for r in rows if r["fail"]] or (len(rows) < 3 and [None])
+    print(f"plan-check: {len(rows) - len([r for r in rows if r['fail']])} of {len(rows)} stops green")
+    return 1 if bad else 0
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="creatures")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -163,13 +190,15 @@ def main(argv=None) -> int:
     p.add_argument("--sample", action="store_true")
     p.add_argument("--veg", help="the vegetation's shards: bush or open cover per spawn")
     p.add_argument("--ground", help="the ground-f32.npy to place on (a pipeline run's frozen copy)")
+    p = sub.add_parser("plan-check")
+    p.add_argument("--journey", default=str(ROOT / "tests" / "journeys" / "creatures-kinds.yaml"))
     p = sub.add_parser("readback")
     p.add_argument("--out", required=True)
     p.add_argument("--esm", required=True)
     p.add_argument("--gen", required=True)
     a = ap.parse_args(argv)
     return {"inventory": _inventory, "seed": _seed, "lists": _lists, "check": _check, "build": _build,
-            "readback": _readback}[a.cmd](a)
+            "readback": _readback, "plan-check": _plan_check}[a.cmd](a)
 
 
 if __name__ == "__main__":
