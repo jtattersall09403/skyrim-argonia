@@ -236,7 +236,9 @@ def journey_text(vs: list[dict]) -> str:
     j = {"id": "world-panel", "look": "world", "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
-    return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
+    from tools.journeys import aims   # a reader-named heading for a stop (tests/journeys/aims.yaml)
+    marks = {marker_edid(v): tuple(v["pos"][:2]) for v in vs}
+    return aims.apply_text("world-panel", head + json.dumps(j, indent=1) + "\n", marks.get)  # JSON is YAML; one writer
 
 
 def main(argv: list[str]) -> int:

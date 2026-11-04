@@ -1,5 +1,7 @@
 """python3 -m tools.journeys refresh [--only a,b]   re-derive every data-driven journey from the current build, pull
                                                   each vantage out of water and foliage; exit 1 if any is still stale
+   python3 -m tools.journeys ledger aim <journey> <step> <heading> [--pitch P]   a reader-named heading for the stop,
+                                                  applied by refresh (tools/journeys/aims.py, tests/journeys/aims.yaml)
    python3 -m tools.journeys check                 the L1 check alone: every stand against the current build
    python3 -m tools.journeys ledger pass <journey> <step>   record a reader's PASS for the step's last run in the
                                                   pass ledger (tools/pass_ledger.py): it is not run again on the
@@ -114,10 +116,23 @@ def refresh(only: set[str] | None = None) -> int:
                                                                and r not in moved and r not in stuck]:
         print(f"journeys: {r['journey']} {r['step']}: {r['why']}; moved {r['moved_m']} m"
               f"{'' if r['clear'] else ' (no clear stand within reach)'}")
+    _apply_aims(b, only)
     _put_reach(reach)
     (ROOT / "out" / "journeys-refresh.json").write_text(json.dumps(log, indent=1))
     print(f"journeys refresh: {len(log)} vantages, {len(moved)} moved, {len(stuck)} not clear")
     return _check(b, only)
+
+
+def _apply_aims(b: Build, only=None) -> None:
+    """Each journey with a reader-named aim (tools/journeys/aims.py) gets it on its stop; the moved ones are dropped."""
+    from tools.journeys import aims
+    ref = lambda e: (r["x"], r["y"]) if (r := b.ref(e)) and "x" in r else None  # noqa: E731
+    for n in sorted({r["journey"] for r in aims.load()}):
+        p = JOURNEYS / f"{n}.yaml"
+        if (only is None or n in only) and p.is_file():
+            p.write_text(aims.apply_text(n, p.read_text(), ref))
+    for r in aims.prune():
+        print(f"journeys: aim override dropped for {r['journey']} {r['step']} (stand moved over {aims.DROP_M:.0f} m)")
 
 
 def _reach_lines() -> dict:
@@ -170,6 +185,19 @@ def main(argv: list[str]) -> int:
         from tools import pass_ledger
         row = pass_ledger.reader_pass(argv[2], argv[3])
         print(f"ledger: {argv[2]} {argv[3]} PASS (reader) on {row['reach_hash']}, run {row.get('run')}")
+        return 0
+    if argv[:2] == ["ledger", "aim"] and len(argv) >= 5:
+        from tools.journeys import aims
+        pitch = float(argv[argv.index("--pitch") + 1]) if "--pitch" in argv else None
+        b = Build()
+        st = aims.stand_in(argv[2], argv[3], (JOURNEYS / f"{argv[2]}.yaml").read_text(),
+                           lambda e: (r["x"], r["y"]) if (r := b.ref(e)) and "x" in r else None)
+        if st is None:
+            print(f"ledger aim: no stand found for {argv[2]} {argv[3]}")
+            return 1
+        aims.record(argv[2], argv[3], float(argv[4]), pitch, *st)
+        print(f"ledger: aim {argv[2]} {argv[3]} heading {float(argv[4]):.0f}"
+              f"{'' if pitch is None else f' pitch {pitch:.0f}'} at {st[0]:.0f} {st[1]:.0f}; `refresh --only {argv[2]}` applies it")
         return 0
     if argv[:1] == ["check"]:
         return _check(Build(), only)

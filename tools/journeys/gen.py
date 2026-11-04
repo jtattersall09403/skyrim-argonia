@@ -1090,7 +1090,9 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
     j = {"id": "sky-ab", "look": "world", "reach": reach or ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
-    return SKY_HEAD + json.dumps(j, indent=1) + "\n", pos
+    from tools.journeys import aims
+    return aims.apply_text("sky-ab", SKY_HEAD + json.dumps(j, indent=1) + "\n",
+                           {e: (x, y) for e, x, y in pos}.get), pos
 
 
 def sky_ab_stale(b: Build) -> list[str]:

@@ -46,7 +46,7 @@
      }
     },
     {
-     "console": "player.setangle z 94"
+     "console": "player.setangle z 154"
     },
     {
      "console": "player.setangle x -12"
