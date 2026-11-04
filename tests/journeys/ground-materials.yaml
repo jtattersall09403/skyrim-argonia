@@ -6,6 +6,7 @@
 id: ground-materials
 reach: [esm, "tools/argonia_world/terrain/**", data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
+independent_steps: true
 crash_risk: medium
 relaunch_before: false
 scene: claywater

@@ -85,7 +85,7 @@ def build(refs: list[dict], b, log: list | None = None) -> tuple[str, str]:
              "# fails when none) and one still. No walking, no fighting (owner, 2026-11-01). Reader checklist per still:",
              "# daylight, no fog wall; a creature in frame, a Black Marsh kind (no Skyrim animal), on ground or in water",
              "# its kind allows; at the den the predator beside it.",
-             "id: creature-spots", "runner: 1", "crash_risk: medium", "scene: creature-spots", "camera: first",
+             "id: creature-spots", "runner: 1", "independent_steps: true", "crash_risk: medium", "scene: creature-spots", "camera: first",
              "steps:"]
     done: dict = {}
     for name, when, hour, r in spots(refs):

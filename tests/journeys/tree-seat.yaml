@@ -11,6 +11,7 @@
 # 
 id: tree-seat
 runner: 1
+independent_steps: true
 crash_risk: low
 scene: rock-booth
 camera: first

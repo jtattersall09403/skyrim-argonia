@@ -27,6 +27,7 @@ RIVER_HEAD = """# River steps (lane 1.15-r4-water, owner play test 3 findings 19
 # Every stop (lane 1.15-r4-water-look): near and far water read as water, no marbled or blocky white-and-dark tiles.
 id: river-steps
 runner: 1
+independent_steps: true
 crash_risk: medium
 scene: creature-spots
 camera: third
@@ -155,7 +156,7 @@ def road_look(b: Build, w, log: list) -> str:
     pts = [su.province_to_skyrim(r["x_m"], r["y_m"]) for r in w.query(
         "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", ROAD)]
     total = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(pts, pts[1:]))
-    lines = head + ["id: road-look", "runner: 1", "crash_risk: low", "scene: claywater", "steps:",
+    lines = head + ["id: road-look", "runner: 1", "independent_steps: true", "crash_risk: low", "scene: claywater", "steps:",
                     "  - name: road-in", "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]"]
     for k, (name, f) in enumerate(ROAD_AT):
         ahead = ROAD_AHEAD_M * U / total
@@ -219,6 +220,7 @@ WATER_TYPES_HEAD = """# Water types (lane 1.15-r5-water-types, owner #37): one s
 # middle of the frame; near and far water read as water: no marbling, no black-and-green blotch, no white tiles.
 id: water-types
 runner: 1
+independent_steps: true
 crash_risk: medium
 scene: creature-spots
 camera: first
@@ -455,6 +457,7 @@ KINDS_HEAD = """# Creature kinds per region (lane 1.15-r5-creatures-journey; own
 # animal), not underwater, not inside foliage; the guar still shows two guar, penned beside Claywater's buildings.
 id: creatures-kinds
 runner: 1
+independent_steps: true
 crash_risk: medium
 scene: creature-spots
 camera: first

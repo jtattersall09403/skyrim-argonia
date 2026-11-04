@@ -6,6 +6,7 @@
 id: claywater-look
 reach: [esm, tools/argonia_world/place_build.py, tools/argonia_world/pieces.py, data/pieces-preference.json, data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
+independent_steps: true
 crash_risk: low
 scene: claywater
 steps:

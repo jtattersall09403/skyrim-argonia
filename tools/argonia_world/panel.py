@@ -231,7 +231,7 @@ def journey_text(vs: list[dict]) -> str:
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s
             do += [{"settle": {"cap": 14, "min": 3}}]
             steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": ex})
-    j = {"id": "world-panel", "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
+    j = {"id": "world-panel", "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
 

@@ -5,6 +5,7 @@
 # under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.
 id: rock-booth
 runner: 1
+independent_steps: true
 crash_risk: low
 scene: rock-booth
 camera: first
