@@ -57,8 +57,8 @@ def pack_subrecord(sig: bytes, payload: bytes) -> bytes:
     return sig + struct.pack("<H", len(payload)) + payload
 
 
-def records(path: Path, want: set[bytes], groups: set[bytes] | None = None):
-    """Every record whose type is in `want`, in file order. `groups`: the top-level group labels to enter (None:
+def records(path: Path, want: set[bytes] | None, groups: set[bytes] | None = None):
+    """Every record whose type is in `want` (None: every record), in file order. `groups`: the top-level group labels to enter (None:
     all); the rest are skipped by size, which is what keeps a walk of Skyrim.esm fast."""
     with open(path, "rb") as f, mmap.mmap(f.fileno(), 0, access=mmap.ACCESS_READ) as m:
         end = len(m)
@@ -80,7 +80,7 @@ def records(path: Path, want: set[bytes], groups: set[bytes] | None = None):
                 i += 24
                 continue
             size, flags, fid, vcs1, version, vcs2 = struct.unpack_from("<IIIIHH", m, i + 4)
-            if sig in want:
+            if want is None or sig in want:
                 raw = m[i + 24:i + 24 + size]
                 data = zlib.decompress(raw[4:]) if flags & COMPRESSED else bytes(raw)
                 in_cell = any(g in (GROUP_CELL_CHILDREN, GROUP_CELL_TEMPORARY) for _, g, _ in stack)

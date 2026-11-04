@@ -15,12 +15,13 @@
 #                                      highest ground within 8 cells of Claywater (cell -53,3, 440 m; the LAND shards),
 #                                      facing north-west over Claywater at noon, after 30 s -> out/lod/vantage-<tag>.png
 #   lod.sh archive                     the machine's "Argonia LOD (generated)" mod as a tar to the private bucket
-#                                      (s3://argonia-private-…/lod/<ArgoniaWorld sha12>.tar and latest.tar): derived
+#                                      (s3://argonia-private-…/lod/<lodkey>.tar and latest.tar): derived
 #                                      from game data, so never the repo (decision 0003)
 #   lod.sh ensure                      deploy's step: restore when the machine's LOD key (argonia-lod.key in the mod)
 #                                      is not this ArgoniaWorld's; no archive for it: a loud WARNING, the old LOD kept
 #   lod.sh restore [key]               that tar (default: the one made from this out/ArgoniaWorld.esm) onto the machine
 #                                      and the profile laid again with it: minutes, not 26 of xLODGen. Skyrim is killed.
+#   lod.sh key [esm]                   print the LOD key of that ESM (default out/ArgoniaWorld.esm)
 #   PRESET=Low|Medium (default Medium) sets DynDOLOD's preset.
 # Run under the GPU lock (LOD is CPU- and RAM-heavy and must not overlap a timing batch):
 #   tooling/job_guard.sh run --gpu lod -- infra/gpu-box/lod.sh run
@@ -31,6 +32,15 @@ run="$here/run.sh"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
 ROWS=(xlodgen dyndolod dyndolod-resources)
 mkdir -p "$repo/out/lod"
+# The LOD's key (decision 0037: a key names its inputs): the sha of ArgoniaWorld.esm's records bar NAVM, NAVI and
+# TES4 (tools/navmesh/lodkey.py), the three tool rows' pins, lod.ps1, lodsettings.py and the preset. A navmesh-only
+# rebuild keeps it, so its ESM lays the archive already made; a moved ref or a changed height moves it.
+lodkey() {
+  local esm=${1:-$repo/out/ArgoniaWorld.esm} pins
+  pins=$("$PY" -c 'import json,sys; r={m["id"]:m for m in json.load(open(sys.argv[1]))["mods"]}; print(" ".join(r[i]["sha256"] for i in sys.argv[2:]))' "$repo/data/dependencies.json" "${ROWS[@]}")
+  (cd "$repo" && "$PY" -m tools.navmesh.lodkey "$esm" --salt "$pins" --salt "preset=${PRESET:-Medium}" \
+     --salt-file infra/gpu-box/lod.ps1 --salt-file infra/gpu-box/lodsettings.py)
+}
 
 ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over SSH
   local step=$1; shift
@@ -78,7 +88,8 @@ for rid in sys.argv[2:]:
 EOF
 }
 
-case "${1:-}" in tools|survey|run|still|archive|restore|ensure) ;; *) sed -n "2,10p" "$0"; exit 2 ;; esac
+case "${1:-}" in tools|survey|run|still|archive|restore|ensure|key) ;; *) sed -n "2,10p" "$0"; exit 2 ;; esac
+[ "$1" = key ] && { lodkey "${2:-}"; exit 0; }  # no machine needed
 "$run" ps 'New-Item -ItemType Directory -Force C:\argonia\infra, C:\argonia\tools | Out-Null' >/dev/null
 "$run" put "$here/lod.ps1" C:/argonia/infra/lod.ps1 >/dev/null
 # ARG_Province's LODSettings file, from the land the plugin build wrote (lodsettings.py; lod.ps1 lays it)
@@ -94,7 +105,7 @@ case "${1:-}" in
     # Per-step markers for this ArgoniaWorld (owner, 2026-11-02: a rerun must pick up where the last attempt got to):
     # prepare, terrain, texgen and dyndolod are skipped when their marker exists for the deployed ESM's sha; collect,
     # archive and resources always run. LOD_FORCE=1 reruns everything. The outputs they stand for live on the machine.
-    sha12=$(sha256sum out/ArgoniaWorld.esm | cut -c1-12); marks="$HOME/.argonia/lod-steps/${ARGONIA_PLAY:-argonia-play}/$sha12"; mkdir -p "$marks"  # per machine: the outputs live there
+    sha12=$(lodkey); marks="$HOME/.argonia/lod-steps/${ARGONIA_PLAY:-argonia-play}/$sha12"; mkdir -p "$marks"  # per machine: the outputs live there
     for s in "${steps[@]}"; do
       case "$s" in prepare|terrain|texgen|dyndolod)
         if [ -z "${LOD_FORCE:-}" ] && [ -f "$marks/$s" ]; then echo "== $s: done before for $sha12 ($(cat "$marks/$s")); skipped"; continue; fi ;;
@@ -121,7 +132,7 @@ case "${1:-}" in
     "${B[@]}" console 'tm' >/dev/null ;;
   ensure)
     bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
-    key=$(sha256sum "$repo/out/ArgoniaWorld.esm" | cut -c1-12)
+    key=$(lodkey)
     mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
     have=$("$run" ps "Get-Content '$mod\argonia-lod.key' -EA SilentlyContinue" | tr -d '\r\n ' || true)
     if [ "$have" = "$key" ]; then echo "LOD current ($key)"; exit 0; fi
@@ -130,7 +141,7 @@ case "${1:-}" in
     exit 0 ;;
   archive|restore)
     bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
-    key=${2:-$(sha256sum "$repo/out/ArgoniaWorld.esm" | cut -c1-12)}; tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    key=${2:-$(lodkey)}; tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
     if [ "$1" = archive ]; then
       # the mod's file count and bytes (each file rounded to a tar block); skipped when the bucket already holds
