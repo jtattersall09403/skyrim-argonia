@@ -22,7 +22,7 @@ heights the LAND stores), so the L1 check holds each one within GROUND_TOL_M of 
   road bridges are statics laid across the water with their ends on the banks, Bridge01 42.3 m long, the crown a
   median 5 m over the water and ~3 m over the land at its ends, so the road ramps up to it; probe in the lane
   report). The piece is King of the Murkmire's cypress scaffold bridge (`MurkmirePlatformBridge04`, 17.6 m x
-  3.8 m, the widest wooden span of the stack; Stormhold's "long wooden bridges", world/sources/lore/stormhold.md
+  3.8 m, the widest wooden span of the stack; Stormhold's "long wooden bridges", the Stormhold lore dossier (stormhold.md line 43)
   43; never a Nordic stone bridge, 0006). The deck is level along the road's line, on the mean line of the roads it
   carries, centred where the earthwork at its two seats is least, its top at the higher bank: the last SEAT_M of each end rests on its bank, and the
   terrain pass holds the corridor there at the deck's top (`seats`, the ask to the road pass).
