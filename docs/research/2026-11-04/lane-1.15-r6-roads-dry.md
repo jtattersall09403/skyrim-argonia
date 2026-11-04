@@ -97,3 +97,13 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
    - Steepest single side: gideon-stormhold 0.776 and gideon-soulrest 0.696, both beside the step crossings. That is 1.8x Skyrim's max, and it goes away with the bridges.
    - The fade width does not need to widen with depth.
    - GRADE_MAX 0.219 remains the road's longitudinal grade only.
+
+## Round 4: bridge seats in the road pass (for lane 1.15-r6-bridges, d3cffadc)
+- `routes/shape.py bridge_seats()`, applied in `terrain/generate.py` right after `dry_corridor`. For each `routes/infra.seats()` end:
+  - lo = hi = the deck top over a box from 0.3 m under the deck to 4 m beyond the end, at the seat's half width, with the axis pointing away from the bridge's other end;
+  - beyond the box, lo and hi cones at GRADE_MAX inside the road corridor;
+  - the step channel between the seats (`keep=chan`) is untouched;
+  - a seated wet sample becomes bank.
+- `Inputs.load` reads the seats with the deck levels taken on the last generated ground (the ground the bridges lane seated on). With no bridge rows or pieces index it skips the seats and prints why.
+- L2 test `test_bridge_over_a_step_is_seated_level_with_its_deck`: both seats at the deck top, the channel untouched, the ease within GRADE_MAX.
+- Measured on the planner's r6-land3, not here.

@@ -333,6 +333,7 @@ class Inputs:
     roads: list[tuple[np.ndarray, float]]  # (points (k, 2) as (col, row) samples, half flat width + shoulder in samples)
     sites: list[dict]  # dungeon records: place_id, x_m, y_m, radius_m, entrance, water_m, request
     reach: np.ndarray | None = None  # (4033, 4033) a reach's channel (river or stream) outside the still bodies
+    seats: list | None = None  # routes/infra.seats: each bridge end's seat on the road (lane 1.15-r6-bridges)
 
     @classmethod
     def load(cls, world=None) -> Inputs:
@@ -374,8 +375,24 @@ class Inputs:
         zb = np.load(_dr() / "hydrology-graph-bodies.npz")
         reach = ~np.isnan(rl) & ~np.isfinite(zb["level"]) & ~zb["sea"]
         del rl, zb
+        # the bridges' seats: their deck levels are set on the generated ground the bridges lane seated them on
+        # (the last ground; the prior where there is none)
+        from tools.argonia_world.routes import infra
+        from tools.argonia_world.routes.shape import bilinear
+        from tools.argonia_world.terrain.grid import generated_ground
+        gg = generated_ground()
+        zg = np.load(gg, mmap_mode="r") if gg.exists() else prior
+
+        def z_at(x, y):
+            return float(bilinear(zg, np.array([x / MPP]), np.array([y / MPP]))[0])
+        try:
+            seats = infra.seats(w, z_at)
+        except Exception as e:  # noqa: BLE001 - no bridge rows or pieces index: no seats, said in the stats
+            log_ = f"bridge seats skipped: {e}"
+            print(log_)
+            seats = []
         return cls(prior, region, rows, [cult[r["land_region_id"]] for r in rows], water, wet_level, roads, sites,
-                   reach)
+                   reach, seats)
 
 
 def reach(seed: np.ndarray, allowed: np.ndarray) -> np.ndarray:
@@ -693,6 +710,13 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     reach_ = inp.reach if inp.reach is not None else np.zeros((N + 1, N + 1), bool)
     dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan)
     st["roads_dry"] = dc["stats"]
+    if inp.seats:  # the bridges' ends held at their decks, eased into the road (the channel between untouched)
+        from tools.argonia_world.routes.shape import bridge_seats, corridor
+        bs = bridge_seats(inp.seats, lo, hi, keep=chan, corridor_m=corridor(lo.shape, inp.roads))
+        st["bridge_seats"] = bs["stats"]
+        role[bs["seated"] & (role == 1)] = 3
+        dc["bank"] = dc["bank"] | bs["seated"]
+        del bs
     road_dry = dc["bank"]
     road_raised = dc["raised"].astype(np.uint8)
     foot &= ~road_dry

@@ -267,6 +267,53 @@ FORD_M = 0.3  # a reach crossing's bed under its level, at most (Skyrim.esm's ro
 FORD_GAP = 2  # samples between a ford and the causeway left to the ground (the ramp from the top to the bed)
 
 
+def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None) -> dict:
+    """Each bridge end's seat (routes/infra.seats, lane 1.15-r6-bridges): the corridor held at the deck's top z_m
+    from from_m (under the deck) to to_m beyond the end, half_width_m across, then eased into the road at GRADE_MAX
+    (lo and hi cones from the seat, inside the road's corridor `corridor_m` when given). The seat's axis points away
+    from the bridge's other end; between the two seats the channel (`keep`) is never touched. lo, hi in place."""
+    from tools.argonia_world.terrain.generate import chamfer
+    keep = np.zeros(lo.shape, bool) if keep is None else keep
+    ends: dict = {}
+    for q in seats:
+        ends.setdefault(q["bridge"], []).append(q)
+    n_seat = 0
+    held = np.zeros(lo.shape, bool)
+    for q in seats:
+        ex, ey = (float(v) / MPP for v in q["at_m"])
+        other = [o for o in ends[q["bridge"]] if o is not q]
+        if other:
+            ox, oy = (float(v) / MPP for v in other[0]["at_m"])
+            ux, uy = ex - ox, ey - oy
+        else:
+            th = np.radians(q["heading"])
+            ux, uy = np.sin(th), -np.cos(th)
+        ln = max(float(np.hypot(ux, uy)), 1e-9)
+        ux, uy = ux / ln, uy / ln
+        far = int(np.ceil(4 * MAX_CUT_M / (GRADE_MAX * MPP))) + 2  # the ease's reach in samples
+        reach = (q["to_m"] + q["half_width_m"]) / MPP + far + 2
+        r0, r1 = int(max(ey - reach, 0)), int(min(ey + reach, lo.shape[0] - 1))
+        c0, c1 = int(max(ex - reach, 0)), int(min(ex + reach, lo.shape[1] - 1))
+        sub = np.s_[r0:r1 + 1, c0:c1 + 1]
+        yy, xx = np.mgrid[r0:r1 + 1, c0:c1 + 1].astype(np.float64)
+        along = ((xx - ex) * ux + (yy - ey) * uy) * MPP
+        across = np.abs(-(xx - ex) * uy + (yy - ey) * ux) * MPP
+        box = (along >= q["from_m"]) & (along <= q["to_m"]) & (across <= q["half_width_m"]) & ~keep[sub]
+        lo[sub] = np.where(box, q["z_m"], lo[sub])
+        hi[sub] = np.where(box, q["z_m"], hi[sub])
+        held[sub] |= box
+        n_seat += int(box.sum())
+        # the ease: lo and hi cones from the seat falling GRADE_MAX a metre (8-neighbour chamfer distance)
+        d, _ = chamfer(box, far)
+        m = np.isfinite(d) & (d > 0) & ~keep[sub] & ~held[sub]
+        if corridor_m is not None:
+            m &= corridor_m[sub]
+        dz = GRADE_MAX * np.where(np.isfinite(d), d, 0.0) * MPP
+        lo[sub] = np.where(m, np.maximum(lo[sub], q["z_m"] - dz), lo[sub])
+        hi[sub] = np.where(m, np.maximum(np.minimum(hi[sub], q["z_m"] + dz), lo[sub]), hi[sub])
+    return {"seated": held, "stats": {"seats": len(seats), "seat_samples": n_seat}}
+
+
 def corridor(shape_, roads, extra_m: float = CAUSEWAY_SHOULDER_M) -> np.ndarray:
     """The samples within each road's core half width plus `extra_m`."""
     m = np.zeros(shape_, bool)

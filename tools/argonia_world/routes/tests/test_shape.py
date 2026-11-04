@@ -63,3 +63,25 @@ def test_step_channel_under_a_road_is_capped_at_the_ford_depth():
     assert np.allclose(d, S.FORD_M), d
     assert h[5, 59] == 0.0  # off the corridor the channel keeps its bed
     assert dc["ford"][n // 2, 59]
+
+
+def test_bridge_over_a_step_is_seated_level_with_its_deck():
+    n = 120
+    y, x = np.mgrid[0:n + 1, 0:n + 1].astype(np.float64)
+    h = np.where(x < 60, 6.0, 1.0)  # a 5 m step at the channel, cols 58..62
+    chan = (x >= 58) & (x <= 62)
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
+    hi[chan] = 0.0
+    deck = 5.0
+    road = [(np.array([[10.0, n / 2], [n - 10.0, n / 2]]), 4.5 / S.MPP)]
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, n / 2 * S.MPP], "z_m": deck, "heading": 90.0,
+              "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0} for k, cx in enumerate((56.0, 64.0))]
+    bs = S.bridge_seats(seats, lo, hi, keep=chan, corridor_m=S.corridor(h.shape, road))
+    f = np.minimum(np.maximum(h, lo), hi)
+    for cx in (54, 56, 64, 66):
+        assert abs(f[n // 2, cx] - deck) < 1e-9, (cx, f[n // 2, cx])
+    assert (f[chan] == 0.0).all() and not bs["seated"][chan].any()  # the channel untouched
+    row = f[n // 2]
+    g = np.abs(np.diff(row[:57])) / S.MPP
+    g2 = np.abs(np.diff(row[64:])) / S.MPP
+    assert max(g.max(), g2.max()) <= S.GRADE_MAX + 1e-6, (g.max(), g2.max())
