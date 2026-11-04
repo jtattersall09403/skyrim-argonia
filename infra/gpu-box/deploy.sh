@@ -61,6 +61,16 @@ if [ $stage = 1 ]; then
     --ttf "${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf" --out out/ui_theme/argonia-theme' "$PY"
   step "perks" bash -c 'rm -rf out/perks/argonia-perks && "$0" -m tools.argonia_world.perk_plugin --out out/perks/argonia-perks' "$PY"
   step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push
+  # 1.15-r6: the mesh patch table (data/mesh-patches.yaml) over the staged mods' own meshes, as copies in a derived mod
+  # folder (decision 0014: made from the player's mods, never shipped); stack.ps1 on lays it after every profile mod, so
+  # it wins. `python3 -m tools.argonia_world.meshes patch --list` is the step's dry run. A failing bar fails the deploy.
+  mesh_patches() {
+    local o=out/mesh_patches/argonia-mesh-patches
+    rm -rf "$o" && "$PY" -m tools.argonia_world.meshes patch --out "$o" | tail -1
+    "$run" ps 'Remove-Item -Recurse -Force -LiteralPath C:\argonia\MO2\mods\argonia-mesh-patches -EA SilentlyContinue' >/dev/null
+    "$run" put "$o" C:/argonia/MO2/mods/ >/dev/null && echo "$(find "$o" -name '*.nif' | wc -l) patched meshes sent"
+  }
+  step "mesh patches" mesh_patches
 fi
 if [ $papyrus = 1 ]; then step "papyrus" "$here/records_jobs.sh" papyrus; fi
 ls out/gpu/papyrus/*.pex >/dev/null 2>&1 || { echo "no out/gpu/papyrus/*.pex: records_jobs.sh papyrus" >&2; exit 1; }

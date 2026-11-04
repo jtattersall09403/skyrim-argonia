@@ -217,38 +217,20 @@ def admits(eco: str, f) -> bool:
 
 
 # Forms whose own mesh draws wrong under our stack (owner #37, 2026-11-03 11:54: "neon bluey green" and "pale washed
-# out wide trunk trees"); measured by lane 1.15-r5-trees-2 (docs/research/2026-11-03/lane-1.15-r5-trees-2.md) from each
-# NIF's BSLightingShaderProperty and the leaf-hue diffuse means. No install-time NIF patcher exists yet (0014), so the
-# form leaves the lists until one rewrites these shaders; bamboo stays lore-grounded (fauna-hazards.md:95) for that day.
+# out wide trunk trees"); measured by lane 1.15-r5-trees-2 (docs/research/2026-11-03/lane-1.15-r5-trees-2.md) and
+# lane 1.15-r5-white-trunks. Owner #37, 2026-11-04 07:36: root-cause and fix, never drop. A cause in a NIF's shader or UVs
+# is fixed by the install-time mesh patcher (data/mesh-patches.yaml, tools/argonia_world/meshes; lane 1.15-r6-mesh-
+# patcher): the bamboo, kelp, rainforest 01/02, 01skydead, Erut07, MegaTree04/05, SwampTreeTall04 and JungleTree01/02/05/06
+# are back. What stays is a cause no mesh op fixes without new art (0006): a bright bark diffuse, a lime leaf diffuse.
 LOOK_DROP = {
-    "7FD0F3:King of the Murkmire.esp": "BambooCluster01 leaves: soft-lit 5.0 with no soft-light map, own-emit grey 0.47",
-    "0D85C2:Black Marsh.esm": "01kelpcluser: own-emit cyan (0.08, 0.62, 0.62) on an orange diffuse, soft-lit 3.0",
     "463246:King of the Murkmire.esp": "ctq_kapoktree01: bark diffuse luminance 132 (placed bark median 59), gloss 20",
     "463247:King of the Murkmire.esp": "ctq_kapoktree02: bark diffuse luminance 132",
     "463248:King of the Murkmire.esp": "ctq_kapoktree03: bark diffuse luminance 132",
     "463249:King of the Murkmire.esp": "ctq_kapoktree04: bark diffuse luminance 132",
     "46324A:King of the Murkmire.esp": "ctq_kapoktree05: bark diffuse luminance 132",
-    "0EB91F:King of the Murkmire.esp": "RainforestTree01: bark soft-lit and double-sided with no soft-light map",
-    "0EB921:King of the Murkmire.esp": "RainforestTree02: bark soft-lit and double-sided with no soft-light map",
     "03A583:King of the Murkmire.esp": "Groundplant10 (Tamira bush01): anvilleafpalm02 leaf diffuse saturation 0.86, "
                                        "the stack's top leaf saturation bar one dark oak card; the bright lime palm at "
                                        "the western frontier high vantage (lane 1.15-r5-sky-2; natural greens, 0032)",
-    # lane 1.15-r5-white-trunks (docs/research/2026-11-03/lane-1.15-r5-white-trunks.md): the deep-sink-basin panel stills'
-    # cream-white glowing trunks and stretched bark, named by bearing and distance from the placement shards and measured
-    # from each NIF (shader flags, vertex colour, normal slot, UV-to-surface stretch of the bark shape).
-    "155FEC:King of the Murkmire.esp": "ErutTree03Tall (Erut07) bark: the only placed bark with an empty normal slot "
-                                       "(its normal sits in slot 2), vertex colour mean (242, 245, 242), no specular; "
-                                       "the white trunk at 102-112 m in the deep-sink high noon still",
-    "04E139:Black Marsh.esm": "01skydead (11skykahl1) trunk shape: own-emit, soft-lit and double-sided like the dropped "
-                              "rainforest trunks; the pale trunk at 27-40 m (shore) and 102-105 m (high) in the stills",
-    "15B1E2:King of the Murkmire.esp": "MegaTree04: a 3240-vertex bark shape whose UV is stretched 104:1 (siblings 3:1, "
-                                       "global median 1.7:1), the streaked twisted bark in the shore dawn still",
-    "15B1E3:King of the Murkmire.esp": "MegaTree05: a 3720-vertex bark shape whose UV is stretched 91:1 (as MegaTree04)",
-    "15B1E7:King of the Murkmire.esp": "SwampTreeTall04: an 8082-vertex bark shape whose UV is stretched 44:1",
-    "0EB922:King of the Murkmire.esp": "JungleTree01 trunk2 UV stretched 24:1 (JungleTree03/04 draw the same texture at 5:1)",
-    "0EB923:King of the Murkmire.esp": "JungleTree02 trunk2 UV stretched 24:1 (as JungleTree01)",
-    "155FE0:King of the Murkmire.esp": "JungleTree05 trunk2 UV stretched 23:1 (as JungleTree01)",
-    "155FE2:King of the Murkmire.esp": "JungleTree06 trunk2 UV stretched 27:1 (as JungleTree01)",
 }
 
 

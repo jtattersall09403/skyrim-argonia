@@ -28,7 +28,7 @@ meshes:
       slot1: textures\landscape\trees\tree04_n.dds
       slot2: ''
       stretch: 1.4
-    ops: &id001
+    ops:
       clear_flags:
       - Own_Emit
     reason: 'stem Own_Emit grey 0.47: a self-lit cane'
@@ -86,7 +86,9 @@ meshes:
       slot1: textures\landscape\grass\CoastKelpGrass01_N.dds
       slot2: textures\landscape\grass\CoastKelpGrass01.dds
       stretch: 2.2
-    ops: *id001
+    ops:
+      clear_flags:
+      - Own_Emit
     reason: 'Own_Emit cyan (0.08, 0.62, 0.62) on an orange-olive diffuse (hue 43): the round-5 teal fleck; the glow goes,
       soft lighting keeps its map'
 - mesh: meshes/argonia/trees/rainforesttree01.nif
@@ -217,7 +219,9 @@ meshes:
       slot1: textures\landscape\trees\thing1_n.dds
       slot2: textures\landscape\trees\thing1.dds
       stretch: 1.3
-    ops: *id001
+    ops:
+      clear_flags:
+      - Own_Emit
     reason: Own_Emit set on a leaf card (colour black)
   - shape: 9
     name: ReachTree02:3_1
@@ -263,7 +267,9 @@ meshes:
       slot1: textures\landscape\trees\thing1_n.dds
       slot2: textures\landscape\trees\thing1.dds
       stretch: 1.3
-    ops: *id001
+    ops:
+      clear_flags:
+      - Own_Emit
     reason: Own_Emit set on a leaf card
   - shape: 16
     name: ReachTree02:3_3
@@ -285,7 +291,9 @@ meshes:
       slot1: textures\landscape\trees\thing2_n.dds
       slot2: textures\landscape\trees\thing2.dds
       stretch: 1.3
-    ops: *id001
+    ops:
+      clear_flags:
+      - Own_Emit
     reason: Own_Emit set on a leaf card
 - mesh: meshes/argonia/trees/greguire/eruttree03tall.nif
   mod: king-of-the-murkmire
@@ -313,7 +321,9 @@ meshes:
       slot1: textures\plants\tamira\newplants\leaves27_n.dds
       slot2: ''
       stretch: 1.6
-    ops: *id001
+    ops:
+      clear_flags:
+      - Own_Emit
     reason: Own_Emit grey 0.47 on the leaf (every Erut leaf carries it; the bar is per patched mesh)
   - shape: 11
     name: ErutTree03Tall:Moss
