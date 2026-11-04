@@ -67,7 +67,9 @@ print("" if x is None else (x if isinstance(x, str) else (x.get("journey") or x.
   fi
   s=$SECONDS; echo "== batch $(date -u +%H:%M:%S) ${from[*]:-}"
   before=$(ls -td "out/batch/$id"/*/ 2>/dev/null | head -1)
-  "$PY" tools/run_batch.py "${from[@]}" "${all[@]}" "$batch"; rc=$?
+  # each journey's done.json goes to the planner's reader queue the moment it finishes (0036 amendment: judged in the run)
+  hook=(); [ -x "$HOME/.argonia/scripts/journey_done.sh" ] && hook=(--on-done "$HOME/.argonia/scripts/journey_done.sh")
+  "$PY" tools/run_batch.py "${hook[@]}" "${from[@]}" "${all[@]}" "$batch"; rc=$?
   last=$(ls -td "out/batch/$id"/*/ 2>/dev/null | head -1)
   [ "$last" != "$before" ] && echo "batch-dir $last" >>"$state"
   if [ $rc -le 1 ]; then echo "batch OK" >>"$state"; fi
