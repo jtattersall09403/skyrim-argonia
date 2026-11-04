@@ -12,7 +12,7 @@ dead process or a Crash Logger file written since this launch raises GameDown wi
     python3 tools/bridge.py player                     # {"pos": {...}, "cell": {...}, ...}
     python3 tools/bridge.py console player.getav health
     python3 tools/bridge.py save studio-a ; python3 tools/bridge.py load studio-a
-    python3 tools/bridge.py launch [--fresh]           # kill any zombie, lay the DLL, start to the main menu
+    python3 tools/bridge.py launch [--fresh] [--wait=900]  # kill any zombie, lay the DLL, start to the main menu
     python3 tools/bridge.py health | screenshot out.png | oracle | commands
     python3 tools/bridge.py pad 'LY=1:800 B:150'       # the virtual pad, at most 3 s
     python3 tools/bridge.py input mouse 640 360        # the game's cursor (engine); input click [left|right]; input wheel down 2; input cursor
@@ -315,7 +315,9 @@ class Bridge:
             raise GameDown(f"SkyrimSE {h['pid']} is not responding")
 
     # -- launch, screenshots ---------------------------------------------------------------------------------
-    def launch(self, wait: int = 420, fresh: bool = False) -> dict:
+    # 900 s: a new GPU compiles Community Shaders' cache on the first launch (the round-6 spot clone, a T4 imaged from
+    # Paris's L4, took 287 s to the menu and the 420 s --fresh deploy launch "did not reach the main menu", 21:50)
+    def launch(self, wait: int = 900, fresh: bool = False) -> dict:
         """Kill any running or zombie game, lay ArgoniaBridge.dll over the profile, start to the main menu
         (0.2's stack.ps1 menu, kept running) and wait for the bridge's ping."""
         self.machine.install()
@@ -542,7 +544,8 @@ def main(argv: list[str]) -> int:
     b, cmd, args = Bridge(), argv[0], argv[1:]
     try:
         if cmd == "launch":
-            result = b.launch(fresh="--fresh" in args)
+            w = next((int(a.split("=", 1)[1]) for a in args if a.startswith("--wait=")), 900)
+            result = b.launch(wait=w, fresh="--fresh" in args)
         elif cmd == "health":
             result = b.health()
         elif cmd == "kill":
