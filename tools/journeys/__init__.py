@@ -138,8 +138,8 @@ class Build:
                     fs = []
                     for r in c["refs"]:
                         s = shapes.get(c["bases"][r[1]])
-                        if s:
-                            fs.append((r[2], r[3], r[4], s[0] * r[8], s[1] * r[8], s[2]))
+                        if s:   # the 7th: the OBND bottom under the pivot (the seat sinks the pivot; z0 is the mesh's own)
+                            fs.append((r[2], r[3], r[4], s[0] * r[8], s[1] * r[8], s[2], s[3] * r[8]))
                     row[(c["x"], c["y"])] = fs
         for cx in range(-200, 200):
             self._foliage.setdefault((cx, cy), row.get((cx, cy), []))
@@ -147,13 +147,13 @@ class Build:
     _shapes = None
 
     def shapes(self) -> dict:
-        """form key -> (horizontal radius, height) units of each placed plant form, from its bounds (object_form)."""
+        """form key -> (horizontal radius, height, bushy, OBND bottom z) units of each placed plant form, from its bounds (object_form)."""
         if Build._shapes is None:
             from tools.argonia_world import db
             Build._shapes = {r["form_key"]: (max(1.0, abs(r["bound_x0"] or 0), abs(r["bound_x1"] or 0),
                                                  abs(r["bound_y0"] or 0), abs(r["bound_y1"] or 0)),
                                              max(1.0, (r["bound_z1"] or 0) - (r["bound_z0"] or 0)),
-                                             r["role_id"] not in TRUNKED)
+                                             r["role_id"] not in TRUNKED, r["bound_z0"] or 0.0)
                              for r in db.open().query("SELECT form_key, role_id, bound_x0, bound_x1, bound_y0, bound_y1, "
                                                       "bound_z0, bound_z1 FROM object_form")
                              if r["role_id"] not in NOT_FOLIAGE}
@@ -193,7 +193,7 @@ class Build:
         mid = ((ex + sx) / 2, (ey + sy) / 2)
         out = []
         for f in self.foliage_near(mid[0], mid[1], math.sqrt(L2) / 2 + clear):
-            fx, fy, fz, fr, fh, bushy = f
+            fx, fy, fz, fr, fh, bushy = f[:6]
             if math.hypot(fx - sx, fy - sy) <= free:
                 continue
             t = 0.0 if L2 == 0 else ((fx - ex) * dx + (fy - ey) * dy) / L2
@@ -227,7 +227,8 @@ def _eye_hits(b: Build, eye: tuple, subj: tuple) -> list[str]:
             why.append(f"ground at {k * 0.5:.1f} m")
             break
     reach = RAY_NEAR_M * u
-    for fx, fy, fz, fr, fh, bushy in b.foliage_near(ex, ey, reach + 2 * u):
+    for f_ in b.foliage_near(ex, ey, reach + 2 * u):
+        fx, fy, fz, fr, fh, bushy = f_[:6]
         parts = [(fr, fz, fz + fh)] if bushy else [(min(fr, TRUNK_U), fz, fz + CROWN_FROM * fh), (fr, fz + CROWN_FROM * fh, fz + fh)]
         for r, lo, hi in parts:
             for k in range(0, int(RAY_NEAR_M * 2) + 1):
@@ -242,6 +243,35 @@ def _eye_hits(b: Build, eye: tuple, subj: tuple) -> list[str]:
         if len(why) > 1:
             break
     return why
+
+
+CLEAR_LINE_M, CANOPY_M = 60.0, 10.0   # the clearance measure: the eye line to 60 m, the canopy within 10 m of the eye
+
+
+def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M, canopy_m: float = CANOPY_M) -> tuple[int, int]:
+    """(line, canopy): the plant volumes crossing the level eye line along `heading` out to line_m, and the plant volumes
+    within canopy_m of the eye (horizontally) that rise above it. Each plant is its whole OBND volume, no trunk
+    exemption: a cylinder of its widest half-extent from pivot + z0 to pivot + z0 + height (the pivot already carries
+    the seat), scaled. Round 5's sea stand stood under a leaf canopy and its river and corridor stands inside willow
+    fronds while the trunk-and-crown model (blockers) read them clear; this one reads them as hits."""
+    u = su.UNITS_PER_METRE
+    ex, ey, ez = eye
+    a = math.radians(heading)
+    dx, dy = math.sin(a) * line_m * u, math.cos(a) * line_m * u
+    L2 = dx * dx + dy * dy
+    line = canopy = 0
+    for f in b.foliage_near(ex + dx / 2, ey + dy / 2, line_m * u / 2 + canopy_m * u):
+        fx, fy, fz, fr, fh = f[:5]
+        lo = fz + (f[6] if len(f) > 6 else 0.0)
+        hi = lo + fh
+        dh = math.hypot(fx - ex, fy - ey)
+        if dh - fr <= canopy_m * u and hi > ez:
+            canopy += 1
+            continue
+        t = min(max(((fx - ex) * dx + (fy - ey) * dy) / L2, 0.0), 1.0)
+        if math.hypot(ex + t * dx - fx, ey + t * dy - fy) < fr and lo <= ez <= hi:
+            line += 1
+    return line, canopy
 
 
 def ground_slope_deg(b: Build, x: float, y: float) -> float:

@@ -174,3 +174,15 @@ def test_dry_footing_needs_half_a_metre_over_the_cell_water():
         b.ground_u = lambda x, y, g=su.metres_to_units(gm): g
         assert b.soaked(0, 0) is soaked, gm
     assert not Build(water={}).soaked(5000, 5000) if False else True
+
+
+def test_clearance_counts_fronds_on_the_line_and_canopy_over_the_eye():
+    x, y = at(60, 60)
+    b0 = Flat()
+    eye = J.eye_of(b0, x, y)
+    willow = (x, y + 20 * U, 10 * U, 4 * U, 8 * U, False)         # fronds to the ground 20 m ahead, on the line
+    crown = (x + 6 * U, y - 3 * U, 10 * U, 5 * U, 20 * U, False)  # a tree 6 m off whose crown is over the eye
+    low = (x, y + 30 * U, 10 * U, 1 * U, 0.5 * U, True)           # a fern under the line
+    far = (x + 40 * U, y, 10 * U, 2 * U, 20 * U, False)           # a tall tree off the line, beyond 10 m
+    assert J.clearance(Flat([willow, crown, low, far]), eye, 0.0) == (1, 1)
+    assert J.clearance(Flat([low, far]), eye, 0.0) == (0, 0)
