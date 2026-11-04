@@ -23,7 +23,11 @@ git add plugin world/db/formid.jsonl world/db/build_ref.jsonl skse/core/generate
 git diff --cached --quiet || git commit -q -m "round build output: the generated plugin YAML, form ids, re-derived journeys and scenes
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
-git pull -q --rebase origin main || { echo "PREBATCH: pull refused (an unstaged file not from the build: git status)"; git status --short | head; exit 3; }
+# Pull only when origin is ahead: the build VM is main's only writer (lanes commit here), so a rebase is usually a no-op
+# and a lane's live edit in the tree must not stop the round (09:49: three chains refused on one unstaged file).
+git fetch -q origin main
+if git merge-base --is-ancestor origin/main HEAD; then echo "PREBATCH: origin/main already in HEAD, no pull"
+else git pull -q --rebase origin main || { echo "PREBATCH: pull refused (origin ahead and the tree dirty): git status"; git status --short | head; exit 3; }; fi
 step plugin make plugin || exit 3
 step water $PY -m tools.argonia_world.water check || exit 3
 step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
