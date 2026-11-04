@@ -113,6 +113,12 @@ sky-ab bound, two camera failures against trunks, see checks.md), the ten saves 
 d3d11.dll at the Claywater stop; Claywater remade in r5-close11). Reader on the 16 stills: lagoon noon and dawn proven,
 stream and black swamp read as water; stands in foliage at the sea, river and corridor shore; an olive noon cast in the
 corridor and sink basin; neon lime willows; no light shafts at dawn; a pale cream rock mound; a stretched bark trunk.
+Two harness faults found at the hand-over, both fixed: ArgoniaCore blocks the engine's saving in any loaded session
+(life.cpp SavingBlocked; the bridge's save then "did not write within 30 s" with no SKSE save line), so harness saves come
+from a fresh new game (`region_saves.py --fresh`); and saves_push.sh had never pushed: saves-sync keeps every file "on this
+machine" while an agent job holds the busy flag, and an SSH session may not open the task's global mutex (push -Deliberate
+and an optional mutex, 48d76553; the pool held the 2nd's saves until 01:00). The camera failure is a long-session
+condition (fresh session: every stop first person at once); the runner relaunches once and retries (67b00d2e).
 Open after this round: the vantage generator's canopy and frond clearance; the camera failure's cause; the residual
 olive cast and neon willows (owner's eye); the Settings page frame; creature presence against the lists; lizard-steed
 and mouth-plover forms (the owner's call).
