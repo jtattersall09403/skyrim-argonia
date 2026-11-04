@@ -10,6 +10,7 @@
 {
  "id": "world-panel",
  "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+ "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
  "scene": "world-panel",

@@ -7,6 +7,7 @@
 # its kind allows; at the den the predator beside it.
 id: creature-spots
 runner: 1
+independent_steps: true
 crash_risk: medium
 scene: creature-spots
 camera: first
