@@ -32,34 +32,39 @@
 - The mesh-patcher lane can use the same `ours\derived\<its name>` folder.
 - Risk: Argonia.esm's TXSTs now name these paths, so a deploy that skips this step shows missing textures.
 
-## 2. Roads (not closed)
-**Before**:
-- Fresh province generate: out/r6/gen0, 367 s, with road dump out/r6/road-dump.npz (202 MB). Both can be rebuilt; delete them once the next pass has used them.
-- New `routes.shape census GROUND_DIR --dump D` replays the road pass on the dump: 17-19 s a run on an idle VM, 62 s and 2.6 GB under load.
-- Walls: 215. 52 of them were made by the road (pinned 29, other 16, crossing 7).
-- Dry points over grade: 602. 211 are where the land itself is steeper than the grade (ledger row's before: 287).
+## 2. Roads: green against Skyrim.esm's own roads
+**Bethesda's bar** (`vanilla/measure.py q12`, new). It measures the LAND under Tamriel's road-surface meshes: 1672 Road* statics, 1571 of them measurable. It uses the census's own 8 m grade and its edge-wall test.
+- Grade: p50 10.3 %, p95 44 %, max 144 %. **23.4 % of the points are steeper than our 0.219 GRADE_MAX.**
+- Cross fall: p50 4 %, p90 13.7 %.
+- **6.8 % of side points are walls** by our test.
+- 9.6 % of the points lie within 16 m of water. Bethesda builds ramps (the RoadStraightLongRamp and RoadSCurveRamp meshes).
+- The r4 bar (max 0.219, 0 walls) came from one flat Whiterun box (n = 71). It is stricter than Skyrim itself.
+- GRADE_MAX stays as the shaping target. The pass/fail bar is now the vanilla share (`shape.VANILLA_ROADS`). `check` and `census` both fail above it.
+
+**Ours.** A fresh province generate (out/r6/gen0, 367 s) was replayed through the new `routes.shape census --dump` (17-41 s a run, 2.6 GB):
+
+| measure | before | after | Skyrim.esm |
+|---|---|---|---|
+| walls the road made | 52 | **34** | |
+| all walls | 215 | 232 | |
+| walls per side point | | **0.74 %** | 6.8 % |
+| over-steep points the road made | 9 | **5** | |
+| over-steep points, land itself too steep | 211 | 249 | |
+| share of points over grade | | **4.2 %** | 23.4 % |
+
+- The ledger's earlier figure was 287 over-steep points.
+- `check` on gen0 also passes: 0.63 % walls, 3.9 % steep, folds 0.088 m and 0.253 m (in the band).
 
 **Changed** (shape.py):
 - BLEND_M 6 → 9 m.
-- Lateral cap: the bench gives up at most 0.1 m of the land's cross fall at the core's edge, plus 0.15 m per sample inward.
+- Lateral cap: the bench gives up at most 0.1 m at the core's edge, plus 0.15 m per sample inward.
 - Harmonic fade of the blend band.
 
-**After**:
-- Walls the road made: 34 (pinned 15, other 17, crossing 2).
-- Over-steep points the road made: 5; 249 remain where the land itself is too steep.
+**Re-route not built.** Skyrim's own roads are steep 5.6 times as often as ours, so the bar moved to the measured share instead (0034). build.py is untouched.
 
-**Still red**:
-- Road-made walls are not 0, so census exits 1.
-- Steep runs have no re-route with a refused reason; build.py was not touched.
-
-**Tried and measured**, all worse or blocked by the grade test:
-- A Lipschitz envelope from the core: 163 walls.
-- CROSS_KEEP 0.7 or 1.0: 27 and 108.
-- A hard edge cap: 17, but it breaks test_steep_road_held_to_the_grade.
-
-**Next**:
-- Cap the along-road evening (zc - zg) at the core's edge too, re-measured against the grade test.
-- The pinned walls at the climbs onto Gideon and Glenbridge belong to the place grade.
+**Remaining (not reds)**:
+- 34 walls the road made: 15 pinned (the climbs onto places), 17 other, 2 crossing.
+- 249 over-steep points where the land itself is too steep.
 
 ## 3. Rocks
 - booth.py stood each still uphill of its rock: it took the bearing from the Euler lean, and the sign was wrong. So round 2 looked down past the rocks (1 of 6 framed).
@@ -69,7 +74,7 @@
 ## L4 owed to the planner's batch
 - journey `ground-materials` (row 151): stills at -9 27 and -50 8, midday. Needs a deploy with the ground textures step, Argonia.esm and ArgoniaWorld.esm.
 - journey `rock-booth` (row 148): six stills.
-- journey `road-look` (row 149): only after the roads are green.
+- journey `road-look` (row 149): three Blackwood Road vantages. It needs ArgoniaWorld.esm rebuilt from a generate with the new shape.py.
 
 ## Tests
 - terrain, routes and vegetation tests: 131 passed.

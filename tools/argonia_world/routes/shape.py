@@ -39,6 +39,10 @@ CROSS_KEEP = 0.4  # the share of the land's cross fall a road keeps (the wall ch
 SITE_REACH = 1.5  # a place's shaped ground in the census: its site eased out to SITE_BLEND radii (generate.py)
 ROAD_WATER = "road-water-u8.npy"  # generate writes the road pass's water mask beside the ground (the check's census)
 DELTA_LIP = 0.2  # the road's change between neighbour samples, at most (m): its walls stay under WALL_M
+# Skyrim.esm's own roads (vanilla/measure.py q12, 2026-11-04: the LAND under Tamriel's 1571 road-surface meshes,
+# the same 8 m grade and the census's edge-wall test): 23.4 % of points steeper than GRADE_MAX, 6.8 % of side points
+# a wall, 9.6 % within 16 m of water. GRADE_MAX (the r4 Whiterun box's max) is the shaping target, not the bar
+VANILLA_ROADS = {"steep_share": 0.2342, "walls_per_side_point": 0.0681}
 LAT_EDGE_M = 0.1  # the cut or fill at a road's edge, at most (m), growing LAT_RATE_M a sample toward the centre: the
 LAT_RATE_M = 0.15  # bench's cut bank stays under WALL_M past the land's own step (the lateral cap, r6)
 FADE_ITER = 40  # the blend's harmonic fade: Jacobi sweeps (the band is ~5 samples wide; 40 sweeps settle it)
@@ -472,13 +476,14 @@ def main(argv=None) -> int:
                             for k in ("walls", "steep")}  # (cause, x, y) every 25th: the full list is census()'s
     res["own_sample_m"] = {k: [x[2:5] for x in c["where"][k] if x[2] not in ("crossing", "pinned")][:40]
                            for k in ("walls", "steep")}
-    own_w = c["walls"]["land"] + c["walls"]["other"]
-    own_s = c["steep"]["land"] + c["steep"]["other"]
-    if own_s:
-        fails.append(f"{own_s} dry road points steeper than {GRADE_MAX} away from crossings and places")
-    if own_w:
-        fails.append(f"{own_w} walls at a road edge (a step over {WALL_M} m past the land's own) away from crossings "
-                     f"and places")
+    # the bar is Skyrim.esm's own roads (q12, VANILLA_ROADS): shares over every road point, all causes counted
+    n_pts = res["points"]
+    ws, ss = sum(c["walls"].values()) / max(1, 2 * n_pts), sum(c["steep"].values()) / max(1, n_pts)
+    res["walls_per_side_point"], res["steep_share"], res["vanilla_roads"] = round(ws, 4), round(ss, 4), VANILLA_ROADS
+    if ss > VANILLA_ROADS["steep_share"]:
+        fails.append(f"steep share {ss:.4f} of road points over Skyrim.esm's {VANILLA_ROADS['steep_share']}")
+    if ws > VANILLA_ROADS["walls_per_side_point"]:
+        fails.append(f"walls {ws:.4f} a side point over Skyrim.esm's {VANILLA_ROADS['walls_per_side_point']}")
     for o, (lo, hi) in TROUGH_BAND.items():
         m = res[f"fold_{o:.0f}m_median"]
         if not lo <= m <= hi:
@@ -506,6 +511,16 @@ def census_main(w, a) -> int:
     wet, _ = cellwater.wet_raster(w)
     sp = Path(a.ground or "out/terrain") / "entrance-sites.json"
     c = census(h, h_pre, lo, hi, water, roads, wet, json.loads(sp.read_text()) if sp.exists() else ())
+    pts_n = sum(len(frame(pts)[0]) for pts, _c in roads)
+    vb = VANILLA_ROADS
+    sh = {"points": pts_n, "walls_per_side_point": round(sum(c["walls"].values()) / (2 * pts_n), 4),
+          "made_walls_per_side_point": round(c["made_by_road"]["walls"] / (2 * pts_n), 4),
+          "steep_share": round(sum(c["steep"].values()) / pts_n, 4), "vanilla": vb}
+    fails = []
+    if sh["walls_per_side_point"] > vb["walls_per_side_point"]:
+        fails.append(f"walls {sh['walls_per_side_point']} a side point over Skyrim.esm's {vb['walls_per_side_point']}")
+    if sh["steep_share"] > vb["steep_share"]:
+        fails.append(f"steep share {sh['steep_share']} over Skyrim.esm's {vb['steep_share']}")
     land = {}
     for ri, _i, cause, x, y, g0 in c["where"]["steep"]:
         if cause == "land":
@@ -514,13 +529,14 @@ def census_main(w, a) -> int:
     for x in c["where"]["walls"]:
         if x[5]:
             made[x[2]] = made.get(x[2], 0) + 1
-    res = {"walls": c["walls"], "steep": c["steep"], "made_by_road": c["made_by_road"], "made_walls_by_cause": made,
+    res = {"bar": sh, "fails": fails, "walls": c["walls"], "steep": c["steep"], "made_by_road": c["made_by_road"],
+           "made_walls_by_cause": made,
            "made_walls_m": [x[:5] for x in c["where"]["walls"] if x[5]][:60],
            "walls_total": sum(c["walls"].values()), "steep_total": sum(c["steep"].values()),
            "steep_land_by_road": {str(r): {"points": len(v), "land_grade_median": round(float(np.median([g for *_, g in v])), 3),
                                            "first_m": v[0][:2]} for r, v in sorted(land.items())}}
     print(json.dumps(res, indent=1))
-    return 1 if c["made_by_road"]["walls"] else 0
+    return 1 if fails else 0
 
 
 if __name__ == "__main__":

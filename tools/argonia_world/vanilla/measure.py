@@ -569,7 +569,58 @@ def q11(t):
             "windows": len(win), "window_pct_within_16v": pct(win, (10, 25, 50, 75, 90))}
 
 
-QS = {f"q{i}": f for i, f in enumerate((q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11), 1)}
+# ---------- Q12 roads (lane 1.15-r6-ground-roads): grade, cross fall, edge walls along every road-surface mesh ----------
+ROAD_SURF = re.compile(r"^Road(?!.*(Sign|Chunk|Marker))", re.I)
+ROAD_GRADE_MAX = 0.219  # routes/shape.py GRADE_MAX (the r4 box's max)
+
+
+def q12(t):
+    """Along Tamriel's road-surface statics (Road*, no signs, chunks or markers), on the LAND under them: the grade
+    over an 8 m baseline, the cross fall over +-4 m, and the edge wall test routes/shape.py's census uses (a step over
+    0.3 m across the edge at 3 m out beyond the land's own step just outside), and the share within 16 m of water."""
+    C = t["cells"]
+    xs, ys = [k[0] for k in C], [k[1] for k in C]
+    x0, y0 = min(xs), min(ys)
+    H, W = mosaic(t, x0, y0, max(xs), max(ys))
+    U = VERTEX_SPACING_UNITS / 128.0 * 70.0  # units per metre (1 m = 70 u)
+
+    def at(A, xu, yu):
+        c = (xu - x0 * CELL_UNITS) / VERTEX_SPACING_UNITS
+        r = (yu - y0 * CELL_UNITS) / VERTEX_SPACING_UNITS
+        c0, r0 = np.clip(np.floor(c).astype(int), 0, A.shape[1] - 2), np.clip(np.floor(r).astype(int), 0, A.shape[0] - 2)
+        fc, fr = c - c0, r - r0
+        return (A[r0, c0] * (1 - fc) * (1 - fr) + A[r0, c0 + 1] * fc * (1 - fr) + A[r0 + 1, c0] * (1 - fc) * fr
+                + A[r0 + 1, c0 + 1] * fc * fr)
+    P = np.array([r[2:4] for r in t["refs"] if sig(t, r[1]) == "STAT" and ROAD_SURF.match(edid(t, r[1]) or "")])
+    wet = np.isfinite(H) & (H < W)
+    dw = chamfer(wet, 9)  # vertices (1.83 m): within 16 m
+    grade, cross, walls, nearw, steep_runs = [], [], 0, 0, 0
+    for p in P:
+        nb = P[np.hypot(*(P - p).T) < 40 * U]
+        if len(nb) < 3:
+            continue
+        v = np.linalg.svd(nb - nb.mean(0))[2][0]
+        n = np.array([-v[1], v[0]])
+        a = at(H, p[0] + v[0] * 4 * U * np.array([-1, 1]), p[1] + v[1] * 4 * U * np.array([-1, 1])) / U
+        b = at(H, p[0] + n[0] * 4 * U * np.array([-1, 1]), p[1] + n[1] * 4 * U * np.array([-1, 1])) / U
+        if not (np.isfinite(a).all() and np.isfinite(b).all()):
+            continue
+        grade.append(abs(a[1] - a[0]) / 8.0)
+        cross.append(abs(b[1] - b[0]) / 8.0)
+        for sg in (1, -1):
+            z = at(H, p[0] + sg * n[0] * U * np.array([2.1, 3.9, 5.7]), p[1] + sg * n[1] * U * np.array([2.1, 3.9, 5.7])) / U
+            walls += int(abs(z[1] - z[0]) > 0.3 + abs(z[2] - z[1]))
+        c = int((p[0] - x0 * CELL_UNITS) / VERTEX_SPACING_UNITS); r = int((p[1] - y0 * CELL_UNITS) / VERTEX_SPACING_UNITS)
+        nearw += int(dw[min(max(r, 0), dw.shape[0] - 1), min(max(c, 0), dw.shape[1] - 1)] <= 9)
+    g = np.array(grade)
+    return {"road_meshes": int(len(P)), "measured": int(len(g)),
+            "grade": pct(100 * g, (50, 90, 95, 99, 100)), "cross_fall": pct(100 * np.array(cross), (50, 90, 99, 100)),
+            "share_over_grade_max": round(float((g > ROAD_GRADE_MAX).mean()), 4),
+            "edge_walls_per_side_point": round(walls / max(1, 2 * len(g)), 4), "edge_walls": walls,
+            "share_within_16m_of_water": round(nearw / max(1, len(g)), 4)}
+
+
+QS = {f"q{i}": f for i, f in enumerate((q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11, q12), 1)}
 
 if __name__ == "__main__":
     t = tamriel()
