@@ -17,11 +17,33 @@
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
-plugin=1 papyrus=1 skse=1 stage=1 base=1
-for a in "$@"; do case "$a" in --no-plugin) plugin=0 ;; --no-papyrus) papyrus=0 ;; --no-skse) skse=0 ;; --no-stage) stage=0 ;; --no-base) base=0 ;;
+plugin=1 papyrus=1 skse=1 stage=1 base=1 plan=0
+for a in "$@"; do case "$a" in --plan) plan=1 ;; --no-plugin) plugin=0 ;; --no-papyrus) papyrus=0 ;; --no-skse) skse=0 ;; --no-stage) stage=0 ;; --no-base) base=0 ;;
   *) sed -n '2,10p' "$0"; exit 2 ;; esac; done
 run="$here/run.sh"; t0=$SECONDS
 step() { local s=$SECONDS; echo "== $1"; shift; "$@"; echo "== $(( SECONDS - s )) s"; }
+# 1.15-r6-fast-loop-2: a derived step keyed by its inputs (decision 0037) is skipped when its stamp holds the same key
+# and its output is there (the logs of 11-02..04: theme 9 s and perks 3 s on 36 deploys whose inputs had not moved).
+# `deploy.sh --plan` prints each keyed step's verdict and exits, touching no machine. DEPLOY_FORCE=1 runs every step.
+inkey() { { git ls-files -s -- "$@"; git diff -- "$@"; } | sha256sum | cut -c1-12; }
+keyed() {  # keyed <name> <key> <output> <cmd...>
+  local name=$1 key=$2 o=$3 st="out/.deploy-keys/$1"; shift 3
+  if [ -z "${DEPLOY_FORCE:-}" ] && [ -e "$o" ] && [ "$(cat "$st" 2>/dev/null)" = "$key" ]; then echo "$name: unchanged ($key), skipped"; return 0; fi
+  [ "${plan:-0}" = 1 ] && { echo "$name: would run (key $key, stamp $(cat "$st" 2>/dev/null || echo none))"; return 0; }
+  "$@" && mkdir -p out/.deploy-keys && echo "$key" >"$st"
+}
+mods="$HOME/.argonia/stack/MO2/mods"; font="${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf"
+theme_key=$( { inkey tools/ui_theme; ls -l --time-style=+%s "$mods" "$font" 2>/dev/null; } | sha256sum | cut -c1-12)
+perks_key=$( { inkey tools/argonia_world/perk_plugin.py tools/argonia_world/db.py world/db world/schema.sql; ls -l --time-style=+%s tools/ArgoniaGen/bin/Release/net10.0/ArgoniaGen 2>/dev/null; } | sha256sum | cut -c1-12)
+# the base save's inputs: the ESMs, our scripts, the SKSE tree, the stack and data rows, the scenes and the save's own code;
+# its stamp lives on the machine beside the save (a new machine from the image has neither, so it saves)
+base_key=$( { sha256sum out/Argonia.esm out/ArgoniaWorld.esm out/gpu/papyrus/*.pex 2>/dev/null; inkey skse infra/gpu-box/base_save.py infra/gpu-box/stack.py infra/gpu-box/stack.ps1 infra/gpu-box/bridge.ps1 data/dependencies.json tests/scenes tools/bridge.py; } | sha256sum | cut -c1-12)
+if [ "${plan:-0}" = 1 ]; then
+  keyed theme "$theme_key" out/ui_theme/argonia-theme true
+  keyed perks "$perks_key" out/perks/argonia-perks true
+  echo "base save: key $base_key (the machine's stamp C:\argonia\ours\argoniabase.key decides)"
+  exit 0
+fi
 
 [ $plugin = 1 ] && step "make plugin" make --no-print-directory plugin
 for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: make plugin first" >&2; exit 1; }; done
@@ -57,9 +79,9 @@ if [ $stage = 1 ]; then
   step "chart" "$PY" -m tools.chart render --if-stale
   step "chart 4k" "$PY" -m tools.chart render --if-stale --level --size 4096 --out out/chart4k
   step "views" "$PY" -m tools.ui_harness.build
-  step "theme" bash -c 'rm -rf out/ui_theme/argonia-theme && "$0" -m tools.ui_theme.build --mods "$HOME/.argonia/stack/MO2/mods" \
+  step "theme" keyed theme "$theme_key" out/ui_theme/argonia-theme bash -c 'rm -rf out/ui_theme/argonia-theme && "$0" -m tools.ui_theme.build --mods "$HOME/.argonia/stack/MO2/mods" \
     --ttf "${ARGONIA_PRIVATE:-$HOME/argonia-private}/fonts/pelagiad/Pelagiad.ttf" --out out/ui_theme/argonia-theme' "$PY"
-  step "perks" bash -c 'rm -rf out/perks/argonia-perks && "$0" -m tools.argonia_world.perk_plugin --out out/perks/argonia-perks' "$PY"
+  step "perks" keyed perks "$perks_key" out/perks/argonia-perks bash -c 'rm -rf out/perks/argonia-perks && "$0" -m tools.argonia_world.perk_plugin --out out/perks/argonia-perks' "$PY"
   step "stack stage" "$PY" "$here/stack.py" stage; step "stack push" "$PY" "$here/stack.py" push
   # 1.15-r6: the mesh patch table (data/mesh-patches.yaml) over the staged mods' own meshes, as copies in a derived mod
   # folder (decision 0014: made from the player's mods, never shipped); stack.ps1 on lays it after every profile mod, so
@@ -147,7 +169,17 @@ step "shader cache" bash -c '"$0" ensure || echo "shader cache: ensure failed; t
 step "launch" "$PY" tools/bridge.py launch --fresh
 step "shader cache save" bash -c '"$0" save || echo "shader cache: save failed (next deploy retries)"' "$here/shader_cache.sh"
 step "send scenes" send_scenes
-[ $base = 1 ] && { step "base save" "$PY" "$here/base_save.py" || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" "$PY" "$here/base_save.py"; }; }
+# the base save keyed (1.15-r6-fast-loop-2: 22 s median on 23 deploys, most on unchanged inputs): skipped when the
+# machine's stamp is this key and both saves are there; written only after a save that succeeded
+base_have() { "$run" ps '$d="C:\Users\Administrator\Documents\My Games\Skyrim Special Edition\Saves"; if ((Test-Path "$d\argoniabase.ess") -and (Test-Path "$d\ArgoniaWalk.ess")) { Get-Content C:\argonia\ours\argoniabase.key -EA SilentlyContinue }' 2>/dev/null | tr -d '\r\n ' || true; }
+base_stamp() { "$run" ps "Set-Content -NoNewline C:\\argonia\\ours\\argoniabase.key '$base_key'" >/dev/null; }
+if [ $base = 1 ]; then
+  if [ -z "${DEPLOY_FORCE:-}" ] && [ "$(base_have)" = "$base_key" ]; then echo "base save: unchanged ($base_key), skipped"
+  else
+    bs() { "$PY" "$here/base_save.py" && base_stamp; }  # the stamp only after a save that succeeded
+    step "base save" bs || { echo "base save: retry once (a first boot or shader warm-up can miss the 3 s main-thread window; game-20, game-21)"; step "base save (retry)" bs; }
+  fi
+fi
 # the pool keeps one build (1.8 §7): tag what this machine now runs, so the play page and pool.py know who is behind
 "$PY" "$here/pool.py" stamp "${ARGONIA_PLAY:-argonia-play}" || echo "pool stamp failed (the play page may treat this machine as behind)" >&2
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"
