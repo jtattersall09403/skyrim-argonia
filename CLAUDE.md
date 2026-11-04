@@ -68,6 +68,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Reuse before harness; no time budgets, only measured times ([0029](docs/decisions/0029-part-0-is-one-sequence-not-spikes.md)).
 - Scenes set state at step 0, never what they test; measure all, diagnose all, fix once, re-measure.
 - `make check` is the one gate (≤ 3 min); run only what the change reaches; a red is re-proved by its one test.
+- Slow derived steps (LOD) run last and only for the half whose inputs moved; every round closes with a measured retrospective of where the time went and ships its cuts; no agent plans as if this round were the last; the on-demand box only for jobs that cannot resume (owner, 2026-11-04, [0021](docs/decisions/0021-fast-focused-loops-and-the-ladder.md)).
 - Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
 - Each round the planner runs the lanes' in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own; a check that passed is never run again until something it depends on changes (its own inputs, not the whole build): the batch shrinks as items pass, a rerun carries only what failed, is new, or whose inputs moved (owner, 2026-11-03).
 - Each in-game check a brief owes is a `checks.md` row, closed only by the run or still that proved it.

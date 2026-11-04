@@ -61,3 +61,8 @@ inputs, not the whole build: terrain LOD by the land, object LOD by the placed o
 anything else lays the archive already made. A rebuild of a derived step whose inputs did not move is a defect; so is
 rebuilding before the loops are green. The edit-to-test path itself is measured stage by stage and the measured sinks
 are cut (lane 1.15-r6-fast-loop-2).
+
+The owner added (08:11): no agent plans as if the current round were the last; every iteration and the loop's
+architecture are kept as fast as they can be; each round closes with a measured retrospective of where the time went
+(a tool over the job logs, its table in the round's record) and ships what it finds; no AWS beyond what is authorised;
+the on-demand box only for defined jobs that cannot resume after an interrupt, the LOD above all.
