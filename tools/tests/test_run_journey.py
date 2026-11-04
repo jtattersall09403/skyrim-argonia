@@ -749,7 +749,7 @@ def test_camera_bridge_is_reasked_when_a_load_resets_it_to_third(tmp_path, monke
     def cam(cmd, *a):
         if cmd == "camera":
             st["asks"] += 1
-            return {"asked": a[0], "first_person": True}
+            return {"asked": a[0], "first_person": a[0] == "first"}
         if cmd == "console" and a[0] == "IsPC1stPerson":
             return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if st["asks"] >= 3 else "0.00")}
         return real(cmd, *a)
@@ -760,3 +760,50 @@ def test_camera_bridge_is_reasked_when_a_load_resets_it_to_third(tmp_path, monke
     st["asks"] = -99   # the read holds third after every ask: fails, naming the reads
     with pytest.raises(rj.StepFailed, match="never became first.*engine state.*IsSwimming"):
         rj.Runner(fake, tmp_path / "f")._camera("first")
+
+
+class StuckCamera(Fake):
+    """IsPC1stPerson reads 0.00 (the bridge answers first_person True) until the fake has seen `launch`."""
+    def __init__(self, heals=True):
+        super().__init__()
+        self.launched, self.heals, self.first = 0, heals, False
+
+    def launch(self):
+        self.launched += 1
+        return {"ping": True}
+
+    def health(self):
+        return {"alive": False}
+
+    def call(self, cmd, *a, **kw):
+        if cmd == "camera":
+            self.first = a[0] == "first"
+            return {"asked": a[0], "first_person": self.first}
+        if cmd == "console" and a[0] == "IsPC1stPerson":
+            self.lines.append(a[0])
+            ok = self.first and self.heals and self.launched
+            return {"output": "IsPC1stPerson >> %s\n" % ("1.00" if ok else "0.00")}
+        return super().call(cmd, *a)
+
+
+def test_camera_failure_in_an_independent_journey_relaunches_once_and_passes(tmp_path):
+    fake = StuckCamera()
+    step = {"name": "look", "do": [{"camera": "first"}]}
+    rep = rj.Runner(fake, tmp_path / "r").run(journey(tmp_path, [step], independent_steps=True), "base")
+    assert rep["passed"] and fake.launched == 1
+    assert len(rep["relaunches"]) == 1 and rep["steps"][0]["relaunch"]["step"] == "look"
+
+
+def test_camera_still_failing_after_the_relaunch_fails_naming_it(tmp_path):
+    fake = StuckCamera(heals=False)
+    step = {"name": "look", "do": [{"camera": "first"}]}
+    rep = rj.Runner(fake, tmp_path / "r").run(journey(tmp_path, [step], independent_steps=True), "base")
+    assert not rep["passed"] and fake.launched == 1
+    assert "relaunch" in rep["steps"][0]["reason"] and "never became first" in rep["steps"][0]["reason"]
+
+
+def test_camera_failure_without_independent_steps_does_not_relaunch(tmp_path):
+    fake = StuckCamera()
+    step = {"name": "look", "do": [{"camera": "first"}]}
+    rep = rj.Runner(fake, tmp_path / "r").run(journey(tmp_path, [step]), "base")
+    assert not rep["passed"] and fake.launched == 0 and "relaunches" not in rep

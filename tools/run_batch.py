@@ -217,6 +217,10 @@ class Batch:
         rep = runner.run(j, save, load=load, skip=(plan or {}).get("skip"),
                          **({"start": start, "only": only} if start else {}))
         rep["_out"] = str(out)
+        for r in rep.get("relaunches", []):  # a camera relaunch inside the journey is a launch of the batch too
+            self.summary["launches"].append({"why": f"camera relaunch in {it['id']}#{r['step']}", "seconds": r.get("seconds", 0.0),
+                                             "attempt": 1, **({"error": r["error"]} if r.get("error") else {})})
+        self.since_launch = 0 if rep.get("relaunches") else self.since_launch
         if it["kind"] == "journey":
             pass_ledger.record(j, rep, (plan or {}).get("hashes"), path=self.ledger)
         return rep

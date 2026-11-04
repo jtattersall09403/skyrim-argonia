@@ -216,6 +216,8 @@ class Runner:
         self.kept: dict = {}
         self.scene: str | None = None  # the journey's scene and save, for a relaunch
         self.save = BASE_SAVE
+        self.independent = False  # the journey's `independent_steps: true`: a step may be rerun alone after a relaunch
+        self.relaunches: list = []  # the camera relaunches this run made (report.json `relaunches`; the batch's `launches`)
         self.resume_dir = RESUME
         self.settle_waits = False  # a batch's `settle_waits: true`: fixed waits after a move become `settle` (settled_do)
         self.settle_since = None  # the event seq at the step's start: `settle` waits on menus opened after it
@@ -873,6 +875,7 @@ class Runner:
         self.out.mkdir(parents=True, exist_ok=True)
         rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False, "loaded": load}
         self.scene, self.save = j.get("scene"), save
+        self.independent = bool(j.get("independent_steps"))
         first, scene = 0, j.get("scene")
         if start:
             resumed, kept, first = self.resume_point(j, start)
@@ -927,10 +930,44 @@ class Runner:
             rep["logs"] = fetch_failure_logs(self.b, self.out, crash=bool(rep.get("crash")))
         rep["seconds"] = round(time.monotonic() - t0, 1)
         rep["calls"] = self.calls
+        if self.relaunches:
+            rep["relaunches"] = self.relaunches
         (self.out / "report.json").write_text(json.dumps(rep, indent=1))
         return rep
 
     def step(self, n: int, step: dict) -> dict:
+        """One step. When `camera:` never flips in a journey of independent steps, the game process is the cause
+        (measured 2026-11-04: IsPC1stPerson stays 0.00 after the bridge's ForceFirstPerson from about the 9th-12th stop of
+        one process, never in a fresh one): relaunch once, put the journey's camera back, retry the step from its `do:`."""
+        rec = self._step(n, step)
+        if rec["passed"] or not self.independent or "the camera never became" not in rec.get("reason", ""):
+            return rec
+        first_reason = rec["reason"]
+        print(f"  {n:2d} {step['name']:<24} camera never flipped: relaunching the game once", flush=True)
+        info = {"step": step["name"], "why": "the camera never became first/third in this game process",
+                "first_reason": first_reason[:300]}
+        t = time.monotonic()
+        try:
+            info["result"] = self._relaunch(True)
+            if self.camera:
+                self._camera(self.camera)
+        except GameDown:
+            raise
+        except (BridgeError, StepFailed) as e:
+            info["error"] = str(e)[:300]
+            rec = {"n": n, "name": step["name"], "passed": False, "seconds": round(time.monotonic() - t, 1),
+                   "reason": f"the relaunch after a camera failure did not complete: {e}", "relaunch": info}
+            self.relaunches.append({**info, "seconds": rec["seconds"]})
+            return rec
+        rec = self._step(n, step)
+        info["seconds"] = round(time.monotonic() - t, 1)
+        self.relaunches.append(info)
+        rec["relaunch"] = info
+        if not rec["passed"]:
+            rec["reason"] = f"after one relaunch: {rec['reason']} (first try: {first_reason[:200]})"
+        return rec
+
+    def _step(self, n: int, step: dict) -> dict:
         t = time.monotonic()
         ctx = {"since": self.b.call("events")["last"], "pos": self.b.call("player")["pos"], "log_lines": {}}
         for name in {e["log"]["name"] for e in step.get("expect", []) if "log" in e}:
