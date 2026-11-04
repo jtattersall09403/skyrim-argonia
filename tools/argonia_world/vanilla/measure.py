@@ -527,7 +527,49 @@ def q10(t):
                         "door_z_minus_ground": pct([r["door_z_minus_ground"] for r in rows if r["door_z_minus_ground"] is not None])}}
 
 
-QS = {f"q{i}": f for i, f in enumerate((q1, q2, q3, q4, q5, q6, q7, q8, q9, q10), 1)}
+# ---------- Q11 the riverbed edge's share of dry land (lane 1.15-r6-ground-roads) ----------
+EDGE_LTEX = re.compile(r"riverbed\w*edge", re.I)
+EDGE_NEAR_V = 16  # vertices (~29 m): the band the material's edge stop is meant to hold
+
+
+def q11(t):
+    """The share of dry LAND (vertex at or above its cell's water) painted with Skyrim.esm's riverbed edge LTEX
+    (alpha-over weight, cell_weights), over all dry land, within EDGE_NEAR_V vertices of water and beyond it."""
+    C = t["cells"]
+    xs, ys = [k[0] for k in C], [k[1] for k in C]
+    x0, y0, x1, y1 = min(xs), min(ys), max(xs), max(ys)
+    H, W = mosaic(t, x0, y0, x1, y1)
+    E = np.zeros_like(H)
+    for (x, y), c in C.items():
+        if c["h"] is None:
+            continue
+        r, q = (y - y0) * 32, (x - x0) * 32
+        for k, v in cell_weights(c).items():
+            if EDGE_LTEX.search(edid(t, int(k))):
+                E[r:r + 33, q:q + 33] = np.maximum(E[r:r + 33, q:q + 33], v)
+    have = np.isfinite(H)
+    wet = have & (H < W)
+    dry = have & ~wet
+    d = chamfer(wet, EDGE_NEAR_V)
+    near, far = dry & (d <= EDGE_NEAR_V), dry & (d > EDGE_NEAR_V)
+    names = sorted({f[1] for f in t["forms"].values() if f and f[0] == "LTEX" and EDGE_LTEX.search(f[1] or "")})
+    win = []  # per 8x8-cell window with shore (>= 2000 dry vertices within 16 of water): the band of the share
+    for r in range(0, H.shape[0] - 1, 256):
+        for q in range(0, H.shape[1] - 1, 256):
+            n = near[r:r + 256, q:q + 256]
+            if n.sum() >= 2000:
+                win.append(100.0 * float(E[r:r + 256, q:q + 256][n].sum()) / n.sum())  # percent
+    e = float(E[dry].sum())
+    return {"edge_ltex": names, "dry_vertices": int(dry.sum()),
+            "edge_share_of_dry": round(e / max(1, dry.sum()), 4),
+            "edge_share_of_dry_within_16v": round(float(E[near].sum()) / max(1, near.sum()), 4),
+            "edge_share_of_dry_beyond_16v": round(float(E[far].sum()) / max(1, far.sum()), 4),
+            "edge_within_16v_of_its_area": round(float(E[near].sum()) / max(e, 1e-9), 4),
+            "dry_within_16v_share": round(float(near.sum()) / max(1, dry.sum()), 4),
+            "windows": len(win), "window_pct_within_16v": pct(win, (10, 25, 50, 75, 90))}
+
+
+QS = {f"q{i}": f for i, f in enumerate((q1, q2, q3, q4, q5, q6, q7, q8, q9, q10, q11), 1)}
 
 if __name__ == "__main__":
     t = tamriel()
