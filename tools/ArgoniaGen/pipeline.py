@@ -315,7 +315,7 @@ def _ground_stamp() -> str:
     from tools.argonia_world import db
     h = hashlib.sha256()
     # the code: generate.py and every module it runs (water_field, cellwater, grid, routes.shape and its helpers)
-    for f in sorted([*TERRAIN.glob("*.py"), *(TERRAIN.parent / "routes").glob("*.py")]):
+    for f in sorted([*TERRAIN.glob("*.py"), TERRAIN.parent / "routes" / "shape.py"]):  # the import walk (_cover_key) adds the rest; routes/census.py and infra.py are not the ground's
         h.update(f.name.encode() + f.read_bytes())
     for t in GROUND_TABLES:
         f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"  # the jsonl bytes, named by db.py
@@ -604,7 +604,7 @@ def sql_tables(files, root: Path = ROOT) -> list[str]:
 def _hand(name: str) -> tuple[list[Path], tuple[str, ...]]:
     """The hand lists each stamp kept before the walk (still hashed: the union)."""
     rt = ROOT / "tools" / "argonia_world"
-    return {"ground": ([*TERRAIN.glob("*.py"), *(rt / "routes").glob("*.py")], GROUND_TABLES),
+    return {"ground": ([*TERRAIN.glob("*.py"), rt / "routes" / "shape.py"], GROUND_TABLES),
             "terrain": ([TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py",
                                                 "png.py", "place_ground.py", "quantize.py", "world.py")]
                         + [rt / "routes" / "paint.py"], ("road", "road_point")),
