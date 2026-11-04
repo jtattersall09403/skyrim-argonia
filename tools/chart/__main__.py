@@ -112,21 +112,37 @@ def demo_reveal(chart: render.Chart, name: str, radius_cells: int = 9) -> np.nda
     return flatten(chart.base, rev, chart.ink, chart.cities)
 
 
-def source_stamp() -> str:
-    """What the chart is made from (play test 3 #30: a world change re-renders it): the built ESM's sha (the
-    pipeline's stamp of the world), the generated ground and the world database by size and time, and the chart's
-    own code. hashes.json keeps it; `render --if-stale` renders only when it has changed."""
+# The rows the chart reads (data.py Features.load), selected in a fixed order: its own inputs and nothing else.
+STAMP_QUERIES = (
+    "SELECT level_m FROM hydrology_body WHERE kind = 'ocean'",
+    "SELECT cx, cy FROM cell_water ORDER BY cx, cy",
+    "SELECT id, strahler FROM hydrology_river ORDER BY id",
+    "SELECT rr.river_id, rr.ord, p.ord, p.east_m, p.south_m FROM hydrology_river_reach rr JOIN hydrology_reach_point p "
+    "ON p.reach_id = rr.reach_id ORDER BY rr.river_id, rr.ord, p.ord",
+    "SELECT r.id, r.class, d.route_id FROM route r JOIN road d ON d.route_id = r.id ORDER BY r.id",
+    "SELECT route_id, ord, x_m, y_m FROM road_point ORDER BY route_id, ord",
+    "SELECT id, name, classification_class, classification_magnitude, position_m_x, position_m_y FROM place "
+    "WHERE position_m_x IS NOT NULL ORDER BY id",
+)
+
+
+def source_stamp(world=None) -> str:
+    """What the chart is made from (play test 3 #30: a world change re-renders it): a sha over the world rows it
+    reads (STAMP_QUERIES, through db.py), the generated ground and land cover by size and time, and the chart's own
+    code. The built ESM is not read, so a creature or water record change leaves it. hashes.json keeps it;
+    `render --if-stale` renders only when it has changed."""
+    from tools.argonia_world import db
     from tools.argonia_world.terrain import grid
 
     h = hashlib.sha256()
     for f in sorted((REPO / "tools" / "chart").glob("*.py")):
         h.update(f.name.encode() + f.read_bytes())
-    for f in (REPO / "out" / "ArgoniaWorld.esm", REPO / "out" / "terrain" / "ArgoniaWorld.esm"):
-        if f.exists():
-            with f.open("rb") as fh:
-                h.update(f.name.encode() + hashlib.file_digest(fh, "sha256").digest())
-            break
-    for f in (grid.generated_ground(), REPO / "out" / "world.sqlite"):
+    w = world or db.open()
+    for q in STAMP_QUERIES:
+        h.update(q.encode())
+        for r in w.query(q):
+            h.update(repr(tuple(r)).encode())
+    for f in (grid.generated_ground(), grid.data_root() / "terrain" / "landcover-i16.npy"):
         h.update(f"{f.name}:{f.stat().st_size}:{f.stat().st_mtime_ns}".encode() if f.exists() else f.name.encode())
     return h.hexdigest()
 
