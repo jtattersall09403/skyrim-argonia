@@ -280,7 +280,10 @@ def test_one_load_chains_past_a_fresh_failure_not_a_chained_one(tmp_path, journe
 
 def test_done_marker_per_journey_and_the_hook_runs_detached(tmp_path, journeys, monkeypatch):
     started = []
+    real = rb.subprocess.Popen
     def popen(args, **kw):
+        if not (isinstance(args, list) and args[:2] == ["python3", "reader.py"]):
+            return real(args, **kw)    # the ledger's git calls (pass_ledger._blobs) go through
         started.append((args, kw.get("start_new_session")))
         if "bad" in args[-1]:
             raise OSError("no such launcher")    # a broken hook never fails the batch
