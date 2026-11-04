@@ -309,6 +309,8 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         if not subj or not b.wet(subj[0], subj[1]):
             continue
         h = math.degrees(math.atan2(subj[0] - x, subj[1] - y)) % 360
+        if strict and clearance(b, eye_of(b, x, y), h) != (0, 0):
+            continue   # fronds on the eye line or canopy over the eye (the OBND volumes): never kept; cheaper than the share
         sh = water_share(b, x, y, h)
         best = max(best, sh)
         if sh < min_share(name):
@@ -320,10 +322,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         near_ = (ex + math.sin(a_) * 60 * U, ey + math.cos(a_) * 60 * U, ez)
         hits = stand_bad(b, x, y, near_)
         hits = len(hits) * 100 + len(b.blockers((ex, ey, ez), near_)) if hits else len(b.blockers((ex, ey, ez), near_))
-        cl = clearance(b, (ex, ey, ez), h)
-        if strict and cl != (0, 0):
-            continue   # fronds on the eye line or canopy over the eye (the OBND volumes): never kept
-        hits += 1000 * sum(cl)
+        hits += 0 if strict else 1000 * sum(clearance(b, (ex, ey, ez), h))
         if hits:   # water and aim hold but plants are on the eye line: kept as the fallback, fewest hits then nearest
             if fallback is None or hits < fallback[0]:
                 fallback = (hits, i, j, x, y, subj, sh)
@@ -413,7 +412,7 @@ def water_types(b: Build, w, log: list) -> str:
         err, got = None, None
         # a CLEAR_STOPS stop takes the first shore whose stand reads 0/0 (clearance); none: the old fit, warned
         for strict in ((True, False) if name in CLEAR_STOPS else (False,)):
-            for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
+            for _, (cx, cy), (dx, dy) in (cands_ if strict else cands_[:FIT_SHORES]):   # strict: every shore
                 n_log = len(log)
                 try:
                     got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, strict)
@@ -424,7 +423,7 @@ def water_types(b: Build, w, log: list) -> str:
                 break
             if got:
                 break
-            print(f"water-types: WARNING {name}: no shore of {min(len(cands_), FIT_SHORES)} has a stand clear of fronds and canopy")
+            print(f"water-types: WARNING {name}: no shore of {len(cands_)} has a stand clear of fronds and canopy")
         if not got:
             raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
         x, y, subj, share = got
@@ -564,3 +563,39 @@ def creatures_kinds(b: Build, w, log: list) -> str:
           for k, op in (("dead", "eq: false"), ("disabled", "eq: false"), ("dist", "lt: 1500"))],
         "  - {read: [actors, \"1500\"], path: listed, keep: guar_pen}"]) + "\n"
     return text
+
+
+# -- world-panel: the stands clear of fronds and canopy ---------------------------------------------------------------
+PANEL_CLEAR = ("deep-river-corridor-shore",)   # round 5 stills 03-world-panel 06, 07: inside willow fronds
+PANEL_CLEAR_M, PANEL_STEP_M = 200.0, 4.0   # measured: the corridor's banks hold no 0/0 stand within 60 m
+
+
+def panel_clear(b: Build, vid: str, x: float, y: float, yaw: float, log: list) -> tuple[float, float]:
+    """A PANEL_CLEAR vantage moved to the nearest stand (2 m grid, PANEL_CLEAR_M) on dry footing, standable, whose eye
+    reads 0/0 (clearance) facing the same yaw and keeps at least the authored stand's water share (40% at most asked);
+    every vantage's clearance is printed. Unchanged when it already reads 0/0 or none is found (warned)."""
+    from tools.journeys import stand_bad, water_share
+    cl = clearance(b, eye_of(b, x, y), yaw)
+    if vid in PANEL_CLEAR and cl != (0, 0):
+        need = min(water_share(b, x, y, yaw), 0.4)
+        a = math.radians(yaw)
+        n = int(PANEL_CLEAR_M / PANEL_STEP_M)
+        for i, j in sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1) if math.hypot(i, j) <= n),
+                           key=lambda c: c[0] ** 2 + c[1] ** 2):
+            px, py = x + i * PANEL_STEP_M * U, y + j * PANEL_STEP_M * U
+            if b.soaked(px, py) or b.wet(px, py) or clearance(b, eye_of(b, px, py), yaw) != (0, 0):
+                continue
+            ex, ey, ez = eye_of(b, px, py)
+            if stand_bad(b, px, py, (ex + math.sin(a) * 15 * U, ey + math.cos(a) * 15 * U, ez)):
+                continue
+            if water_share(b, px, py, yaw) < need:
+                continue
+            log.append({"journey": "world-panel", "step": vid, "moved_m": round(math.hypot(i, j) * PANEL_STEP_M, 1),
+                        "why": f"clearance {cl[0]}/{cl[1]} -> 0/0", "clear": True})
+            x, y, cl = px, py, (0, 0)
+            break
+        else:
+            print(f"world-panel: WARNING {vid}: no stand within {PANEL_CLEAR_M:.0f} m reads 0/0")
+    print(f"world-panel: {vid}: clearance {cl[0]}/{cl[1]} (plants on the eye line to 60 m / canopy over the eye within "
+          f"10 m) at {x:.0f} {y:.0f}")
+    return x, y

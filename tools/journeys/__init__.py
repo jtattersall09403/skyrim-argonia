@@ -250,7 +250,7 @@ CLEAR_LINE_M, CANOPY_M = 60.0, 10.0   # the clearance measure: the eye line to 6
 
 def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M, canopy_m: float = CANOPY_M) -> tuple[int, int]:
     """(line, canopy): the plant volumes crossing the level eye line along `heading` out to line_m, and the plant volumes
-    within canopy_m of the eye (horizontally) that rise above it. Each plant is its whole OBND volume, no trunk
+    over the eye within canopy_m above it (footprint over the eye point, reaching from under eye + canopy_m to over the eye). Each plant is its whole OBND volume, no trunk
     exemption: a cylinder of its widest half-extent from pivot + z0 to pivot + z0 + height (the pivot already carries
     the seat), scaled. Round 5's sea stand stood under a leaf canopy and its river and corridor stands inside willow
     fronds while the trunk-and-crown model (blockers) read them clear; this one reads them as hits."""
@@ -260,12 +260,12 @@ def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M
     dx, dy = math.sin(a) * line_m * u, math.cos(a) * line_m * u
     L2 = dx * dx + dy * dy
     line = canopy = 0
-    for f in b.foliage_near(ex + dx / 2, ey + dy / 2, line_m * u / 2 + canopy_m * u):
+    for f in b.foliage_near(ex + dx / 2, ey + dy / 2, line_m * u / 2):
         fx, fy, fz, fr, fh = f[:5]
         lo = fz + (f[6] if len(f) > 6 else 0.0)
         hi = lo + fh
         dh = math.hypot(fx - ex, fy - ey)
-        if dh - fr <= canopy_m * u and hi > ez:
+        if dh < fr and hi > ez and lo < ez + canopy_m * u:
             canopy += 1
             continue
         t = min(max(((fx - ex) * dx + (fy - ey) * dy) / L2, 0.0), 1.0)

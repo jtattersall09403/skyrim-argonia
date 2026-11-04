@@ -15,19 +15,19 @@ scene: creature-spots
 camera: first
 steps:
 - name: sea
-  # sea water from cell (-61,-14), level 0.0 m
-  # subject: -247875 -96458 172
+  # sea water from cell (-56,-20), level 0.0 m
+  # subject: -227328 -116078 1233
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -61 -17, settle: 60}
+  - console: {line: cow ARG_Province -56 -22, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -249521
-  - console: player.setpos y -68494
-  - console: player.setpos z 51
+  - console: player.setpos x -227328
+  - console: player.setpos y -88066
+  - console: player.setpos z 1112
   - wait: 6
-  - console: player.setangle z 177
+  - console: player.setangle z 180
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -37,14 +37,14 @@ steps:
   # marsh water from cell (-40,-25), level 1.4 m
   # subject: -138405 -100352 48
   do:
-  - console: {line: cow ARG_Province -39 -24, settle: 60}
+  - console: {line: cow ARG_Province -39 -26, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -156260
-  - console: player.setpos y -96991
-  - console: player.setpos z 152
+  - console: player.setpos x -156820
+  - console: player.setpos y -102593
+  - console: player.setpos z 144
   - wait: 6
-  - console: player.setangle z 101
+  - console: player.setangle z 83
   - console: player.setangle x 1
   - wait: 4
   expect:
@@ -57,29 +57,29 @@ steps:
   - console: {line: cow ARG_Province -50 -29, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -202074
-  - console: player.setpos y -116293
-  - console: player.setpos z 759
+  - console: player.setpos x -202634
+  - console: player.setpos y -115312
+  - console: player.setpos z 856
   - wait: 6
-  - console: player.setangle z 181
+  - console: player.setangle z 179
   - console: player.setangle x 2
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: black-swamp}
   reader: [the header checklist for this kind of stop]
 - name: river
-  # river-se water from cell (15,-8), level 0.8 m
-  # subject: 69073 -29754 60
+  # river-se water from cell (-26,39), level 62.3 m
+  # subject: -101844 159749 4049
   do:
-  - console: {line: cow ARG_Province 16 -7, settle: 60}
+  - console: {line: cow ARG_Province -26 39, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 69195
-  - console: player.setpos y -25717
-  - console: player.setpos z 200
+  - console: player.setpos x -105959
+  - console: player.setpos y 163763
+  - console: player.setpos z 7423
   - wait: 6
-  - console: player.setangle z 182
-  - console: player.setangle x 4
+  - console: player.setangle z 134
+  - console: player.setangle x 31
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: river}
@@ -92,11 +92,11 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - console: player.setpos x -180792
-  - console: player.setpos y -27824
-  - console: player.setpos z 8410
+  - console: player.setpos y -28664
+  - console: player.setpos z 8529
   - wait: 6
-  - console: player.setangle z 110
-  - console: player.setangle x 7
+  - console: player.setangle z 105
+  - console: player.setangle x 8
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: stream}
@@ -105,32 +105,32 @@ steps:
   # cold water from cell (-42,6), level 68.2 m
   # subject: -169984 46790 5578
   do:
-  - console: {line: cow ARG_Province -42 6, settle: 60}
+  - console: {line: cow ARG_Province -41 6, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -169984
-  - console: player.setpos y 27394
-  - console: player.setpos z 4840
+  - console: player.setpos x -166763
+  - console: player.setpos y 26554
+  - console: player.setpos z 5384
   - wait: 6
-  - console: player.setangle z 0
-  - console: player.setangle x -2
+  - console: player.setangle z 351
+  - console: player.setangle x -0
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: tarn}
   reader: [the header checklist for this kind of stop]
 - name: brackish-rim
-  # brackish water from cell (21,16), level 0.0 m
-  # subject: 62716 67584 0
+  # brackish water from cell (-19,58), level 0.0 m
+  # subject: -75776 224773 0
   do:
-  - console: {line: cow ARG_Province 19 16, settle: 60}
+  - console: {line: cow ARG_Province -19 59, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 79590
-  - console: player.setpos y 67584
-  - console: player.setpos z 194
+  - console: player.setpos x -76273
+  - console: player.setpos y 243474
+  - console: player.setpos z 1921
   - wait: 6
-  - console: player.setangle z 270
-  - console: player.setangle x 1
+  - console: player.setangle z 178
+  - console: player.setangle x 6
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: brackish-rim}

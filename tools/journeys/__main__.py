@@ -34,6 +34,9 @@ def _panel(b: Build, w, log: list) -> None:
                 f = {**f, "x": near["x"], "y": near["y"], "moved_m": near["moved_m"], "clear": True,
                      "why": f["why"] + "; ray, plants or slope"}
         log.append({"journey": "world-panel", "step": v["id"], "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
+        cx, cy = gen.panel_clear(b, v["id"], f["x"], f["y"], v["yaw_deg"], log)
+        if (cx, cy) != (f["x"], f["y"]):
+            f = {**f, "x": cx, "y": cy, "moved_m": round(math.hypot(cx - x, cy - y) / su.UNITS_PER_METRE, 1) or 0.1}
         if f["moved_m"]:
             v["x_m"], v["y_m"] = (round(c, 2) for c in su.skyrim_to_province(f["x"], f["y"]))
         g = su.units_to_metres(b.ground_u(f["x"], f["y"]))  # the game's ground (LAND), not the generator's
