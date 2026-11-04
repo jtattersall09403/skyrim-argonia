@@ -16,22 +16,22 @@ scene: creature-spots
 camera: first
 steps:
 - name: sea
-  # sea water from cell (-17,9), level 0.0 m
-  # subject: -67495 68845 210
+  # sea water from cell (-61,-14), level 0.0 m
+  # subject: -226659 -95738 -287
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -18 10, settle: 60}
+  - console: {line: cow ARG_Province -63 -24, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x -71226
-  - console: player.setpos y 41083
-  - console: player.setpos z 89
+  - console: player.setpos x -254563
+  - console: player.setpos y -98187
+  - console: player.setpos z -408
   - wait: 6
-  - console: player.setangle z 8
+  - console: player.setangle z 85
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -61,21 +61,21 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: black-swamp
-  # black water from cell (-49,-29), level 7.7 m
-  # subject: -202257 -135100 172
+  # black water from cell (-45,-30), level 5.4 m
+  # subject: -181292 -137776 300
   do:
   - hud: off
-  - console: {line: cow ARG_Province -54 -23, settle: 60}
+  - console: {line: cow ARG_Province -48 -39, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x -221093
-  - console: player.setpos y -91088
-  - console: player.setpos z 78
+  - console: player.setpos x -196453
+  - console: player.setpos y -156267
+  - console: player.setpos z 321
   - wait: 6
-  - console: player.setangle z 157
+  - console: player.setangle z 39
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -83,22 +83,22 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: river
-  # river-se water from cell (18,-8), level 0.8 m
-  # subject: 79262 -28136 60
+  # river-se water from cell (15,-8), level 0.8 m
+  # subject: 69073 -29754 60
   do:
   - hud: off
-  - console: {line: cow ARG_Province 22 -11, settle: 60}
+  - console: {line: cow ARG_Province 15 -8, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x 93976
-  - console: player.setpos y -43175
-  - console: player.setpos z 71
+  - console: player.setpos x 64982
+  - console: player.setpos y -30059
+  - console: player.setpos z 130
   - wait: 6
-  - console: player.setangle z 316
-  - console: player.setangle x 0
+  - console: player.setangle z 86
+  - console: player.setangle x 3
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: river}
@@ -115,20 +115,20 @@ steps:
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x -179111
-  - console: player.setpos y -26703
-  - console: player.setpos z 8293
+  - console: player.setpos x -178131
+  - console: player.setpos y -26983
+  - console: player.setpos z 8317
   - wait: 6
-  - console: player.setangle z 122
-  - console: player.setangle x 7
+  - console: player.setangle z 125
+  - console: player.setangle x 8
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: stream}
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: tarn
-  # cold water from cell (-56,9), level 68.0 m
-  # subject: -210944 38912 4763
+  # cold water from cell (-56,10), level 68.0 m
+  # subject: -210384 43008 4763
   do:
   - hud: off
   - console: {line: cow ARG_Province -56 9, settle: 60}
@@ -137,11 +137,11 @@ steps:
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x -227818
-  - console: player.setpos y 39192
-  - console: player.setpos z 4824
+  - console: player.setpos x -228098
+  - console: player.setpos y 39366
+  - console: player.setpos z 4815
   - wait: 6
-  - console: player.setangle z 91
+  - console: player.setangle z 78
   - console: player.setangle x 1
   - wait: 4
   expect:
@@ -149,21 +149,21 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: brackish-rim
-  # brackish water from cell (21,16), level 0.0 m
-  # subject: 62716 67584 0
+  # brackish water from cell (-19,58), level 0.0 m
+  # subject: -75776 224773 0
   do:
   - hud: off
-  - console: {line: cow ARG_Province 17 14, settle: 60}
+  - console: {line: cow ARG_Province -19 58, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x 70662
-  - console: player.setpos y 59005
-  - console: player.setpos z 56
+  - console: player.setpos x -76553
+  - console: player.setpos y 241233
+  - console: player.setpos z 307
   - wait: 6
-  - console: player.setangle z 317
+  - console: player.setangle z 177
   - console: player.setangle x 1
   - wait: 4
   expect:
