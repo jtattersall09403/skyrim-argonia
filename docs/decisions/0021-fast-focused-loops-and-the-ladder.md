@@ -51,3 +51,13 @@ keeping a still per step means a red can be understood without re-running.
   any L5 reason.
 - The journey format, the runner and the scenes are built and proved in chunk 0.3 before any lane uses them.
 - The testing levels L1–L6 in ways-of-working and CLAUDE.md are the levels of this ladder.
+
+## Amendment, 2026-11-04 (owner, 08:06, #37): slow derived steps run last, and only for what changed
+
+A round's edits are proven by the fast loops and the in-game stills on the build we already have laid; the slow derived
+steps (LOD above all: terrain LOD by xLODGen, object LOD by DynDOLOD, each tens of minutes and sensitive to a spot
+interrupt) run once, at the round's end, after the stills say the rest is final. Each derived step is keyed by its own
+inputs, not the whole build: terrain LOD by the land, object LOD by the placed objects and their forms, so a change to
+anything else lays the archive already made. A rebuild of a derived step whose inputs did not move is a defect; so is
+rebuilding before the loops are green. The edit-to-test path itself is measured stage by stage and the measured sinks
+are cut (lane 1.15-r6-fast-loop-2).
