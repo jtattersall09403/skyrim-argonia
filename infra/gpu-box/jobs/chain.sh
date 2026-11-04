@@ -44,6 +44,9 @@ cd "${ARGONIA_REPO:-$src}" || exit 2
 g=infra/gpu-box; t0=$SECONDS
 run() { echo "CHAIN $1 $(date -u +%H:%M:%S)"; shift; [ -n "${CHAIN_DRY:-}" ] && { echo "  would run: $*"; return 0; }; "$@"; }
 trap '[ -n "${CHAIN_DRY:-}" ] || $g/run.sh stop >/dev/null 2>&1; echo "CHAIN end in $(( SECONDS - t0 )) s"' EXIT
+# 0. a game machine already up for this round is kept up through the pre-batch: its idle-stop stops it after 15 minutes
+#    with no agent command, and a build-VM reboot plus the pre-batch is longer (2026-11-04: Paris stopped at 14 of 14 reboots)
+if [ -z "${CHAIN_DRY:-}" ] && $g/run.sh ps "echo ok" >/dev/null 2>&1; then echo "CHAIN machine up: busy flag touched"; fi
 # 1. fast loops, no machine: plugin, L1 checks, journeys refresh, the gate (each skipped when its key is done)
 run prebatch $g/jobs/r5_prebatch.sh || exit 3
 # 2. the in-game batch on the machine's existing LOD (deploy's lod step keeps the old LOD when none is archived for
