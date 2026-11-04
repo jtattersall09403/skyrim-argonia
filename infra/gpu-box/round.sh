@@ -45,7 +45,9 @@ fi
 trap stop_machine EXIT
 round_rc=1
 
-step up ~/.argonia/scripts/up_until.sh "$m" 120 || exit 3
+# the machine's "up" is never a state to reuse: a reclaim between two resumes stops it (17:20: the batch ran against a dead
+# machine because up and deploy read "done earlier"); up runs every time (seconds when it already answers)
+~/.argonia/scripts/up_until.sh "$m" 120 || exit 3
 # a deploy that dies with the machine is run again once (what landed stays landed)
 # a deploy that dies with the machine is run again once (what landed stays landed); a deploy that failed with the
 # machine still answering (a launch red, 09:41) is not: the second try cost 4 min and failed the same way
