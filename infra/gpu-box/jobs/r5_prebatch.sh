@@ -19,7 +19,7 @@ step() { local n=$1; shift; local s=$SECONDS
 # a round build leaves its output unstaged (the regenerated plugin YAML, the appended form ids): commit it by path
 # first, so the pull runs on a clean tree (10:17: the pull refused and the job died)
 # the refresh's outputs too (round 6, 09:48: the pull refused twice on re-derived journeys, scenes and marker rows)
-git add plugin world/db/formid.jsonl world/db/build_ref.jsonl skse/core/generated/argonia/core/forms.h tests/journeys tests/scenes 2>/dev/null
+git add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated tests/journeys tests/scenes 2>/dev/null  # entrance_site: the generate writes it (chain18 read the land as stale without it, 23:01)
 git diff --cached --quiet || git commit -q -m "round build output: the generated plugin YAML, form ids, re-derived journeys and scenes
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
