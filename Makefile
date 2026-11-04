@@ -17,8 +17,8 @@ check-run:
 	@$(MAKE) -k -j --no-print-directory $(PARTS) || true
 	@if [ -s $(RED) ]; then echo "CHECK RED: $$(sort $(RED) | tr '\n' ' ')"; rm -f $(RED); exit 1; else echo "CHECK GREEN"; fi
 
-check-reach:  ## the gate for what the working tree changed against origin/main (lanes); the full check runs once before a batch
-	@tooling/reach_tests.sh
+check-reach:  ## the gate for what changed since SINCE (default origin/main): tooling/check_reach.py maps paths to the steps that read them
+	@$(PY) tooling/check_reach.py --since $(or $(SINCE),origin/main)
 
 guard:
 	@python3 tooling/guards/no_assets.py --tree $(FAIL)
@@ -79,8 +79,8 @@ immersion:
 
 # Records (0.4 §a): world -> intermediate JSON -> ArgoniaGen (Mutagen) -> out/Argonia.esm -> Spriggit plugin/Argonia/.
 # One build at a time: two lanes' parallel builds raced on out/ (2026-10-29); the second waits for the lock.
-plugin:
-	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py plugin
+plugin:  # PLAN=1: print each stage's key and run/skip, build nothing (no lock)
+	@mkdir -p out && $(if $(PLAN),$(PY) tools/ArgoniaGen/pipeline.py plugin --plan,flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py plugin)
 
 plugin-ids:  # Argonia.esm and its new FormIDs over the existing out/ArgoniaWorld.esm, no province world build
 	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py ids
