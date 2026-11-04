@@ -22,15 +22,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -222628
+      line: player.setpos x -223119
   - console:
-      line: player.setpos y 259161
+      line: player.setpos y 258856
   - console:
-      line: player.setpos z 38450
+      line: player.setpos z 37975
   - console:
-      line: player.setangle z 220
+      line: player.setangle z 77
   - console:
-      line: player.setangle x 47
+      line: player.setangle x -42
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xDD1A00
   expect:
@@ -53,15 +53,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -242534
+      line: player.setpos x -242460
   - console:
-      line: player.setpos y 75260
+      line: player.setpos y 75419
   - console:
-      line: player.setpos z 16689
+      line: player.setpos z 16763
   - console:
-      line: player.setangle z 312
+      line: player.setangle z 278
   - console:
-      line: player.setangle x -23
+      line: player.setangle x -31
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xB0C425
   expect:
@@ -84,15 +84,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -164751
+      line: player.setpos x -164666
   - console:
-      line: player.setpos y 107581
+      line: player.setpos y 107400
   - console:
-      line: player.setpos z 21737
+      line: player.setpos z 21776
   - console:
-      line: player.setangle z 225
+      line: player.setangle z 264
   - console:
-      line: player.setangle x -10
+      line: player.setangle x -24
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xB8CA02
   expect:
@@ -115,15 +115,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 101746
+      line: player.setpos x 101481
   - console:
-      line: player.setpos y 181572
+      line: player.setpos y 181821
   - console:
-      line: player.setpos z 12734
+      line: player.setpos z 12935
   - console:
-      line: player.setangle z 3
+      line: player.setangle z 41
   - console:
-      line: player.setangle x -35
+      line: player.setangle x -36
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xCB0401
   expect:
@@ -146,15 +146,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -167392
+      line: player.setpos x -167092
   - console:
-      line: player.setpos y 162153
+      line: player.setpos y 162319
   - console:
-      line: player.setpos z 26635
+      line: player.setpos z 26581
   - console:
-      line: player.setangle z 356
+      line: player.setangle z 306
   - console:
-      line: player.setangle x -27
+      line: player.setangle x -43
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xC59601
   expect:
@@ -177,15 +177,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -140004
+      line: player.setpos x -140224
   - console:
-      line: player.setpos y 173547
+      line: player.setpos y 172591
   - console:
-      line: player.setpos z 24966
+      line: player.setpos z 24266
   - console:
-      line: player.setangle z 213
+      line: player.setangle z 337
   - console:
-      line: player.setangle x 31
+      line: player.setangle x -44
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xC89645
   expect:

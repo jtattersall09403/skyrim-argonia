@@ -46,8 +46,9 @@ def test_water_gradient_runs_bed_edge_land():
     # vanilla's sequence (audit §4): the edge carries on to +128 u above the line, and no mud lies above the water
     i, e = (M.TEXTURES.index(M.TEX[t]) for t in ("LRiverMud01", "LRiverbedEdge01"))
     dh = win.dh[N // 2]
-    near = win.dwater[N // 2] <= M.EDGE_REACH[0]
-    assert row[(dh > 0.1) & (dh < M.EDGE_TOP_M - 0.3) & near, e].min() >= 0.5
+    # the first dry vertex carries the edge (Skyrim.esm's one-vertex strip, +128 u; r6: q11's share bounds the reach)
+    first_dry = (win.dwater[N // 2] == 1) & (dh >= 0)
+    assert first_dry.any() and row[first_dry, e].min() >= 0.5
     assert row[dh > 0.3, i].max() < 0.1
     assert row[dh > M.EDGE_TOP_M + 0.4, e].max() < 0.1
 

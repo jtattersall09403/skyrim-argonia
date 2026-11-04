@@ -66,10 +66,14 @@ def vantage(d: dict, src) -> tuple[float, float, float, float, float]:
     (the side an open back or a lifted lip shows from), eye EYE_U above that ground, aimed at the rock's base
     (its z plus half its height: the rock's middle, not the origin under the ground, which at 4 radii out put the rock
     out of frame in round 1). The downhill bearing is
-    the tilt's: a conformed rock leans along -grad, so step out along the tilt's horizontal direction."""
-    hx, hy = math.sin(d["ry"]), -math.sin(d["rx"])  # the up axis' lean (approximate, small angles)
+    the ground's: step out along -grad at the rock, so the still looks up the slope at it."""
+    # downhill from the ground itself (r6: the Euler lean's sign put five of six stands uphill of their rock, the
+    # still looking down past it, round 2: 1 of 6 framed): the generated ground's fall over +-STEP_U at the rock
+    e = 128.0
+    hx = _ground_units(src, d["x"] - e, d["y"]) - _ground_units(src, d["x"] + e, d["y"])
+    hy = _ground_units(src, d["x"], d["y"] - e) - _ground_units(src, d["x"], d["y"] + e)
     n = math.hypot(hx, hy)
-    ux, uy = (hx / n, hy / n) if n > 1e-6 else (0.0, -1.0)  # an upright rock (decision 0034) has no lean: stand south
+    ux, uy = (hx / n, hy / n) if n > 1e-6 else (0.0, -1.0)  # flat ground (decision 0034): stand south
     k = stand(d)
     x, y = d["x"] + ux * k, d["y"] + uy * k
     heading = math.degrees(math.atan2(d["x"] - x, d["y"] - y)) % 360  # Skyrim: 0 = north, clockwise

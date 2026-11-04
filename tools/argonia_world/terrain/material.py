@@ -53,7 +53,8 @@ SHORE_BAND, SHORE_DROP = 3.0, 2.5  # vertices of bed band under the edge (~384 u
 FAR_DH = 8.0  # m: dry ground beyond NEAR_FAR of any water reads at least this high, above every water-edge stop (top 6 m)
 NEAR_FAR = (40.0, 64.0)  # vertices: the nearest wet vertex's level rules within 40 (~70 m), the cell rule beyond 64
 INF = float("inf")
-EDGE_REACH = (2.0, 4.0)  # vertices from the nearest wet vertex: the edge band fades out over this reach on dry ground
+EDGE_REACH = (1.0, 3.0)  # vertices from the nearest wet vertex: the edge band fades out over this reach on dry ground
+# (r6: (2, 4) laid 8.3 % of dry ground within 16 v of water over 34 windows, above Skyrim.esm's window p90 6.1 %; q11)
 
 
 # ---- the texture set ------------------------------------------------------------------------------------------
