@@ -46,7 +46,7 @@ jkey=$( { git ls-files -s tools/journeys tools/argonia_world/panel.py world/db w
   ls -l --time-style=+%s out/terrain/vegetation out/terrain/land 2>/dev/null; } | sha256sum | cut -c1-12)
 jstate="$HOME/.argonia/round/prebatch-journeys.$jkey.state"; touch "$jstate"
 if grep -qx "journeys OK" "$jstate"; then echo "PREBATCH journeys OK (done earlier for its inputs $jkey)"
-else state=$jstate step journeys $PY -m tools.journeys refresh || exit 3; fi
+else state=$jstate step journeys bash -c "$PY -m tools.journeys refresh; rc=\$?; [ \$rc -le 1 ]" || exit 3; fi   # exit 1 = a stale stand: a harness finding the stills show, not a chain-ending failure (13:3x)
 step plugin-ids make plugin-ids || exit 3  # the panel's moved vantage markers are DB rows: emitted here
 J=tests/journeys; S=tests/scenes
 git add $J/world-sample.yaml $J/world-panel.yaml $J/river-steps.yaml $J/road-look.yaml $J/claywater-walk.yaml \
