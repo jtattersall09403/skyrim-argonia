@@ -38,3 +38,9 @@
   the driver, the evidence wanted (still, clip or strip) and the lightest steps that give it.
 - The planner's one-batch-per-round rule (loops rule 10) stands: the driver runs the whole round's batch in one
   session on one deploy.
+
+## Amendment, 2026-11-04 (owner, 19:05, #41)
+
+- A wrongly framed capture is fixed inside the run: the run's reader judges each still as it lands and the driver retakes at once with a changed heading or pitch; nothing waits for the round's end and a laborious redo.
+- Every look stop takes a scan: captures at several headings from the stand (the runner's `scan:` on a still step, six headings by default), so the reader picks the frame that shows the subject and the stand's aim is never the single point of failure.
+- Creature and spawn checks are state reads, never stills: the spawn records loaded and the actors within range read by kind through the bridge ("lining up the stills will be very buggy").

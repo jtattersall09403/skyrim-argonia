@@ -73,6 +73,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 - Prove the screenshot oracle live; after 3 identical failures, diagnose; a crash is a failure.
 - Each round the planner runs the lanes' in-game checks in one batch on one deploy of main, crash-prone last; lanes never run their own; a check that passed is never run again until something it depends on changes (its own inputs, not the whole build): the batch shrinks as items pass, a rerun carries only what failed, is new, or whose inputs moved (owner, 2026-11-03).
 - Each in-game check a brief owes is a `checks.md` row, closed only by the run or still that proved it.
+- Look stops take a scan (several headings); a wrong frame is retaken inside the run, never at the round's end; creature and spawn checks are state reads, not stills (owner, 2026-11-04 19:05, [0036](docs/decisions/0036-journeys-are-driven-by-an-agent-simple-and-smart.md)).
 
 ## The owner
 
