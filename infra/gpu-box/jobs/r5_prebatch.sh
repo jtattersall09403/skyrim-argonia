@@ -30,6 +30,7 @@ git fetch -q origin main
 if git merge-base --is-ancestor origin/main HEAD; then echo "PREBATCH: origin/main already in HEAD, no pull"
 else git rebase -q origin/main || { echo "PREBATCH: rebase onto origin/main refused: git status"; git status --short | head; git rebase --abort; exit 3; }; fi
 step plugin make plugin || exit 3
+step navmesh infra/gpu-box/jobs/navmesh_if_stale.sh || exit 3  # the navmesh follows the ground (keyed by the terrain stamp)
 step water $PY -m tools.argonia_world.water check || exit 3
 step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
 step roads $PY -m tools.argonia_world.routes.shape check || echo "(road check red: noted)"
