@@ -39,7 +39,10 @@ CROSS_KEEP = 0.4  # the share of the land's cross fall a road keeps (the wall ch
 SITE_REACH = 1.5  # a place's shaped ground in the census: its site eased out to SITE_BLEND radii (generate.py)
 ROAD_WATER = "road-water-u8.npy"  # generate writes the road pass's water mask beside the ground (the check's census)
 DELTA_LIP = 0.2  # the road's change between neighbour samples, at most (m): its walls stay under WALL_M
-BLEND_M = 6.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
+LAT_EDGE_M = 0.1  # the cut or fill at a road's edge, at most (m), growing LAT_RATE_M a sample toward the centre: the
+LAT_RATE_M = 0.15  # bench's cut bank stays under WALL_M past the land's own step (the lateral cap, r6)
+FADE_ITER = 40  # the blend's harmonic fade: Jacobi sweeps (the band is ~5 samples wide; 40 sweeps settle it)
+BLEND_M = 9.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
 
 
 def trough(d_m):
@@ -167,6 +170,7 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     num = np.zeros(h.shape)  # sum of weight x target: where two roads reach a sample, their targets blend by weight
     den = np.zeros(h.shape)
     wgt = np.zeros(h.shape)
+    core_m_ = np.zeros(h.shape, bool)  # the road's own surface (within its core half width)
     n = runs_n = 0
     taper_n = max(1, int(round(BLEND_M / MPP)))
     bank_w = None
@@ -204,8 +208,14 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
             # across a slope the road keeps CROSS_KEEP of the land's own fall (a bench, cut uphill and filled
             # downhill, never a flat shelf with a fill wall on its low side); on the flat this is ~0
             zg = bilinear(h, q[:, 0], q[:, 1])
-            t = zc[ii] + TROUGH_GAIN * trough(d_m) + CROSS_KEEP * (h[rr, cc] - zg[ii])
-            t = np.clip(t, h[rr, cc] - MAX_CUT_M, h[rr, cc] + MAX_CUT_M)  # across too: never a cut over 1 m
+            # the lateral cap (r6): the bench (the land's cross fall the road gives up) is at most LAT_EDGE_M at the
+            # core's edge, growing LAT_RATE_M a sample inward, so its cut bank never stands a wall over WALL_M (gen0:
+            # a 0.4 keep on a 0.5 side slope cut 0.7 m at the edge, 52 walls the road made); the along-road evening
+            # (zc - zg) is not capped by it
+            cap = np.minimum(MAX_CUT_M, LAT_EDGE_M + LAT_RATE_M * np.maximum(core_m - d_m, 0.0) / MPP)
+            cross = h[rr, cc] - zg[ii]
+            t = zc[ii] + TROUGH_GAIN * trough(d_m) + cross + np.clip((CROSS_KEEP - 1.0) * cross, -cap, cap)
+            t = np.clip(t, h[rr, cc] - MAX_CUT_M, h[rr, cc] + MAX_CUT_M)  # never a cut or fill over 1 m
             if bank_w is not None:
                 w = w * bank_w[rr, cc]
             if lo is not None:
@@ -217,6 +227,7 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
             num[rr, cc] += w * t
             den[rr, cc] += w
             np.maximum.at(wgt, (rr, cc), w)
+            core_m_[rr, cc] |= d_m[keep] <= core_m
             n += int((d_m <= core_m).sum())
             runs_n += 1
     m = wgt > 0
@@ -234,6 +245,22 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     from tools.argonia_world.terrain.generate import majorant, minorant
     a, b = majorant(np.maximum(lod, -1e6), DELTA_LIP), minorant(np.minimum(hid, 1e6), DELTA_LIP)
     dz = np.minimum(np.maximum(dz, a), np.maximum(b, a))
+    # the lateral cap (r6): beyond the core the road's change fades out harmonically (each blend sample the mean of
+    # its neighbours, the core and the frozen samples held), so a cut or fill never stands a step at the road's edge
+    # (gen0: 52 walls the road made, a 1 m cut faded by a smoothstep over 3 samples); the cones still bound it
+    band = m & ~core_m_
+    if water is not None:
+        band &= ~water
+    if band.any():
+        ys, xs = np.nonzero(band)
+        y0, y1, x0, x1 = max(ys.min() - 1, 0), ys.max() + 2, max(xs.min() - 1, 0), xs.max() + 2
+        sub, bs = dz[y0:y1, x0:x1].copy(), band[y0:y1, x0:x1]
+        for _ in range(FADE_ITER):
+            p_ = np.pad(sub, 1, mode="edge")
+            avg = (p_[:-2, 1:-1] + p_[2:, 1:-1] + p_[1:-1, :-2] + p_[1:-1, 2:]) / 4
+            sub = np.where(bs, avg, sub)
+        dz[y0:y1, x0:x1] = sub
+        dz = np.minimum(np.maximum(dz, a), np.maximum(b, a))
     h += dz
     return {"roads": len(roads), "dry_runs": runs_n, "core_samples": n, "shaped_samples": int(m.sum())}
 
@@ -303,6 +330,7 @@ def census(h, h_pre, lo, hi, water, roads, wet, sites=()) -> dict:
         for d in (-2, -1, 1, 2):
             pin2 |= np.roll(pin, d, ax)
             bank2 |= np.roll(bank | water, d, ax)
+    made = {"walls": 0, "steep": 0}  # not in the ground before the roads (h_pre): what the road itself made
     walls = {"crossing": 0, "pinned": 0, "land": 0, "other": 0}
     steep = {"crossing": 0, "pinned": 0, "land": 0, "other": 0}
     where = {"walls": [], "steep": []}
@@ -326,20 +354,23 @@ def census(h, h_pre, lo, hi, water, roads, wet, sites=()) -> dict:
                 wet_e |= _at(water, p[:, 0] + sg * nrm[:, 0] * (core + o), p[:, 1] + sg * nrm[:, 1] * (core + o))
             wet_e |= _at(bank2, ex, ey)
             pe = _at(pin2, ex, ey) | _at(pin2, p[:, 0] + sg * nrm[:, 0] * (core - 0.5), p[:, 1] + sg * nrm[:, 1] * (core - 0.5))
+            made["walls"] += int((wl & ~wl0).sum()) if h_pre is not None else 0
             for i in np.nonzero(wl)[0]:
                 c = "crossing" if near_w[i] or wet_e[i] else "pinned" if pe[i] else "land" if wl0[i] else "other"
                 walls[c] += 1
-                where["walls"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP))))
+                where["walls"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP)),
+                                       bool(not wl0[i]), sg))
         g = grade_along(h, p, v)
         g0 = grade_along(h_pre, p, v) if h_pre is not None else np.zeros(len(p))
         rl = np.isfinite(_at(wet, p[:, 0], p[:, 1])) if wet is not None else np.zeros(len(p), bool)
         pc = _at(pin2, p[:, 0], p[:, 1])
         near_w = near_w | _at(bank2, p[:, 0], p[:, 1])
+        made["steep"] += int(((g > GRADE_MAX + 1e-6) & ~rl & (g0 <= GRADE_MAX)).sum()) if h_pre is not None else 0
         for i in np.nonzero((g > GRADE_MAX + 1e-6) & ~rl)[0]:
             c = "crossing" if near_w[i] else "pinned" if pc[i] else "land" if g0[i] > GRADE_MAX else "other"
             steep[c] += 1
             where["steep"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP)), round(float(g0[i]), 3)))
-    return {"walls": walls, "steep": steep, "where": where}
+    return {"walls": walls, "steep": steep, "made_by_road": made, "where": where}
 
 
 def profile(h: np.ndarray, roads: list[tuple[np.ndarray, float]], wet=None) -> dict:
@@ -417,10 +448,13 @@ def main(argv=None) -> int:
     from tools.argonia_world.terrain.grid import generated_ground
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["check"])
+    ap.add_argument("cmd", choices=["check", "census"])
     ap.add_argument("ground", nargs="?")
+    ap.add_argument("--dump", help="census: generate's ARGONIA_ROAD_DUMP (.npz): the road pass replayed on it")
     a = ap.parse_args(argv)
     w = db.open()
+    if a.cmd == "census":
+        return census_main(w, a)
     gp = Path(a.ground or generated_ground())
     h = np.asarray(np.load(gp, mmap_mode="r"), np.float64)
     wet, _ = cellwater.wet_raster(w)
@@ -452,6 +486,41 @@ def main(argv=None) -> int:
     res["fails"] = fails
     print(json.dumps(res, indent=1))
     return 1 if fails else 0
+
+
+def census_main(w, a) -> int:
+    """`census --dump D [GROUND_DIR]`: the road pass replayed on generate's dump (the ground before the roads, the
+    cones and the water mask), then every wall and dry over-steep point by cause, with what the road itself made
+    (not in the ground before it). The sites are GROUND_DIR's entrance-sites.json (default out/terrain)."""
+    import json
+    from pathlib import Path
+
+    from tools.argonia_world.terrain import cellwater
+    d = np.load(a.dump)
+    h_pre = np.asarray(d["h"], np.float64)
+    lo, hi, water = np.asarray(d["lo"], np.float64), np.asarray(d["hi"], np.float64), d["water"]
+    h = h_pre.copy()
+    roads = load_roads(w)
+    shape(h, roads, water, lo, hi)
+    h = np.minimum(np.maximum(h, lo), hi)
+    wet, _ = cellwater.wet_raster(w)
+    sp = Path(a.ground or "out/terrain") / "entrance-sites.json"
+    c = census(h, h_pre, lo, hi, water, roads, wet, json.loads(sp.read_text()) if sp.exists() else ())
+    land = {}
+    for ri, _i, cause, x, y, g0 in c["where"]["steep"]:
+        if cause == "land":
+            land.setdefault(ri, []).append((x, y, g0))
+    made = {}
+    for x in c["where"]["walls"]:
+        if x[5]:
+            made[x[2]] = made.get(x[2], 0) + 1
+    res = {"walls": c["walls"], "steep": c["steep"], "made_by_road": c["made_by_road"], "made_walls_by_cause": made,
+           "made_walls_m": [x[:5] for x in c["where"]["walls"] if x[5]][:60],
+           "walls_total": sum(c["walls"].values()), "steep_total": sum(c["steep"].values()),
+           "steep_land_by_road": {str(r): {"points": len(v), "land_grade_median": round(float(np.median([g for *_, g in v])), 3),
+                                           "first_m": v[0][:2]} for r, v in sorted(land.items())}}
+    print(json.dumps(res, indent=1))
+    return 1 if c["made_by_road"]["walls"] else 0
 
 
 if __name__ == "__main__":
