@@ -10,7 +10,7 @@ import re
 
 from tools.argonia_world import skyrim_units as su
 from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, frame_share, grass_hits,
-                            min_share, aim, eye_of, place, stand_bad, water_share)
+                            aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
