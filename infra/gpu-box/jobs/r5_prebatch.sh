@@ -4,7 +4,7 @@
 # world-sample pins rewritten for the new ground, every data-driven journey re-derived (tools/journeys), all committed by
 # path. Idempotent: every step is a rerun-safe command. Run under tooling/job_guard.sh run r5-prebatch -- ...
 set -u
-cd /home/ubuntu/skyrim-argonia
+cd "${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}" || exit 2
 PY=$HOME/.argonia/venv/bin/python
 # Resumable per step (eight spot interruptions of the build VM on 2026-11-03 restarted it from the top each time, ~15 min):
 # a step whose verdict is OK for the same inputs (HEAD, the lists and the ground) is skipped on a rerun.
@@ -25,9 +25,10 @@ git diff --cached --quiet || git commit -q -m "round build output: the generated
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 # Pull only when origin is ahead: the build VM is main's only writer (lanes commit here), so a rebase is usually a no-op
 # and a lane's live edit in the tree must not stop the round (09:49: three chains refused on one unstaged file).
+# In the chain's worktree the head is detached and the tree clean: rebase onto origin/main when it is ahead.
 git fetch -q origin main
 if git merge-base --is-ancestor origin/main HEAD; then echo "PREBATCH: origin/main already in HEAD, no pull"
-else git pull -q --rebase origin main || { echo "PREBATCH: pull refused (origin ahead and the tree dirty): git status"; git status --short | head; exit 3; }; fi
+else git rebase -q origin/main || { echo "PREBATCH: rebase onto origin/main refused: git status"; git status --short | head; git rebase --abort; exit 3; }; fi
 step plugin make plugin || exit 3
 step water $PY -m tools.argonia_world.water check || exit 3
 step vegetation $PY -m tools.argonia_world.vegetation check --out out/terrain/vegetation --water out/water/cells.jsonl --land out/terrain/land || echo "(vegetation check red: the batch's tree-seat stills decide)"
@@ -52,5 +53,5 @@ python3 tools/doc_index.py --write >/dev/null 2>&1 && { git add docs/INDEX.md; g
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; }
 step gate $PY tooling/check_reach.py --since auto --record || { echo "PREBATCH gate RED: the planner reads out/check"; }
 step plugin-check make plugin-check || echo "(plugin-check red: noted)"
-git push -q origin main || git pull -q --rebase origin main && git push -q origin main
+git push -q origin HEAD:main || { git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main; }  # the lanes' tree takes it on its next pull
 echo "PREBATCH DONE $(date -u +%H:%M) $(git rev-parse --short HEAD) $(sha256sum out/ArgoniaWorld.esm | cut -c1-12)"

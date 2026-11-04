@@ -3,7 +3,7 @@
 # fresh on Paris in third person with the 5,000-gold kit, pushed to the shared pool copy, the machine stopped.
 # Resumable: reruns remake only what is missing. Run under tooling/job_guard.sh run --gpu=argonia-play r5-saves -- ...
 set -u
-cd /home/ubuntu/skyrim-argonia
+cd "${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}" || exit 2
 export ARGONIA_PLAY=argonia-play
 run=infra/gpu-box/run.sh
 ~/.argonia/scripts/up_until.sh argonia-play 120 || exit 3

@@ -7,10 +7,40 @@
 # keyed steps, region_saves' remake-what-is-missing), so a rerun after an interrupt goes on where it stopped.
 # No AWS beyond the authorised game machine: the machine starts only after the pre-batch (no idle minutes during the
 # build) and stops on every exit; the Paris on-demand box is never started here (LOD on it is a separate defined job).
-# CHAIN_DRY=1 prints the stages and the LOD verdict without running them.
+# CHAIN_DRY=1 prints the worktree and sha, the stages and the LOD verdict without running them.
 set -u
 batch=${1:?batch.yaml}; record=${2:?round record .md}; logs=${3:-$(basename "$batch" .yaml)*}
-cd /home/ubuntu/skyrim-argonia; export ARGONIA_PLAY=${ARGONIA_PLAY:-argonia-play}
+export ARGONIA_PLAY=${ARGONIA_PLAY:-argonia-play}
+# The chain runs on a committed tree of its own (1.15-r6-chain-worktree): a detached git worktree of the launch commit
+# at ~/.argonia/round/tree, never the lanes' live tree (09:4x-10:5x: four chains refused or killed by lanes' edits).
+# out/ (every keyed cache, the province lock, the LOD markers) and the ignored build inputs are symlinks to the main
+# tree's, so nothing rebuilds for the move. The sha is the resume key (0037): ~/.argonia/round/chain.<batch>.sha,
+# kept until the chain ends well; a rerun keeps the tree when its HEAD descends from that sha (the pre-batch's commits).
+# The round record is appended in the main tree (the planner commits it); batch.yaml is read from the committed tree.
+src=${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}
+case $record in /*) ;; *) record="$src/$record";; esac
+if [ -z "${CHAIN_IN_TREE:-}" ]; then
+  tree=${CHAIN_TREE:-$HOME/.argonia/round/tree}; keyf="$HOME/.argonia/round/chain.$(basename "$batch" .yaml).sha"
+  sha=${CHAIN_SHA:-$(cat "$keyf" 2>/dev/null || git -C "$src" rev-parse HEAD)}; sha=$(git -C "$src" rev-parse "$sha^{commit}") || exit 2
+  echo "CHAIN tree $tree sha $sha"
+  if [ -n "${CHAIN_DRY:-}" ]; then echo "  would run on: $tree at $sha (out/ -> $src/out)"
+  else
+    s0=$SECONDS; mkdir -p "$(dirname "$keyf")"; echo "$sha" >"$keyf"
+    ex="$(git -C "$src" rev-parse --path-format=absolute --git-common-dir)/info/exclude"; mkdir -p "$(dirname "$ex")"
+    grep -qx /out "$ex" 2>/dev/null || echo /out >>"$ex"   # the symlink: out/ in .gitignore matches directories only
+    if [ ! -e "$tree/.git" ]; then git -C "$src" worktree prune; git -C "$src" worktree add -q --detach "$tree" "$sha" || exit 2
+    elif ! git -C "$tree" merge-base --is-ancestor "$sha" HEAD 2>/dev/null; then
+      git -C "$tree" checkout -q -f --detach "$sha" && git -C "$tree" clean -fdq || exit 2; fi
+    ln -sfn "$src/out" "$tree/out" 2>/dev/null || { rm -rf "$tree/out"; ln -s "$src/out" "$tree/out"; }
+    # ignored files the build hashes or reads (data/immersion/inventory.jsonl): linked, not copied
+    git -C "$src" ls-files -oi --exclude-standard -- data world plugin | while read -r f; do
+      [ -e "$tree/$f" ] || { mkdir -p "$(dirname "$tree/$f")"; ln -s "$src/$f" "$tree/$f"; }; done
+    echo "CHAIN tree ready in $(( SECONDS - s0 )) s: $(git -C "$tree" rev-parse --short HEAD)"
+    CHAIN_IN_TREE=1 ARGONIA_REPO="$tree" bash "$tree/infra/gpu-box/jobs/chain.sh" "$batch" "$record" "$logs"; rc=$?
+    [ "$rc" = 0 ] && rm -f "$keyf"; exit "$rc"
+  fi
+fi
+cd "${ARGONIA_REPO:-$src}" || exit 2
 g=infra/gpu-box; t0=$SECONDS
 run() { echo "CHAIN $1 $(date -u +%H:%M:%S)"; shift; [ -n "${CHAIN_DRY:-}" ] && { echo "  would run: $*"; return 0; }; "$@"; }
 trap '[ -n "${CHAIN_DRY:-}" ] || $g/run.sh stop >/dev/null 2>&1; echo "CHAIN end in $(( SECONDS - t0 )) s"' EXIT
