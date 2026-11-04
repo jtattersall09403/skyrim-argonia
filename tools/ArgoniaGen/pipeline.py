@@ -475,6 +475,8 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     into.mkdir(parents=True, exist_ok=True)
     with stage("ground", None if sample else _ground_stamp()) as st:
         st.run = not _stamp_holds(OUT / "terrain" / "ground.stamp", _ground_stamp())
+        if st.run and not sample:
+            _refuse_shared_rebuild(into)  # before the 140 s generate, not after it (r6-chain16, 20:1x: generated, then refused)
         frozen = ground()
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
