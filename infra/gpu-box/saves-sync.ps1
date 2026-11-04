@@ -11,7 +11,8 @@
 # Agents' saves stay home: files written while an agent job holds the machine with no stream (the busy flag, as
 # idle-stop counts it) are listed in state\saves-agent.txt and never pushed; nor are the per-build saves each deploy
 # makes on its own machine (argoniabase, ArgoniaWalk). Nothing is deleted on either side. Log: logs\saves-sync.log.
-param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd, [string]$SeedBefore, [string]$SavesDir)
+param([Parameter(Mandatory)][ValidateSet('pull', 'push')][string]$Cmd, [string]$SeedBefore, [string]$SavesDir,
+      [string]$Deliberate)   # push -Deliberate <regex>: files whose name matches go up now, agent job or not (the hand-over's region saves, 2026-11-04)
 $ErrorActionPreference = 'Stop'
 $Bucket = 'argonia-saves-050977237313'; $Prefix = 'pool/'; $Region = 'eu-west-2'
 $Saves = if ($SavesDir) { $SavesDir } else { 'C:\Users\Administrator\Documents\My Games\Skyrim Special Edition\Saves' }
@@ -20,8 +21,11 @@ $Skip = '^(argoniabase|ArgoniaWalk)'
 $AgentList = "$State\saves-agent.txt"
 New-Item -ItemType Directory -Force $State, (Split-Path $Log), $Saves | Out-Null
 function Log($m) { "$((Get-Date).ToUniversalTime().ToString('o')) $Cmd $m" | Add-Content $Log }
-$mutex = New-Object Threading.Mutex($false, 'Global\argonia-saves-sync')
-if (-not $mutex.WaitOne(120000)) { Log 'another sync still running'; exit 0 }
+# The global mutex belongs to the account that first made it (the scheduled task's); a push from an SSH session may not
+# open it (2026-11-04: "Access to the path 'Global\argonia-saves-sync' is denied", every saves_push.sh since the 2nd failed
+# there unseen). Then the sync runs without it: an S3 put of the same file twice is harmless.
+try { $mutex = New-Object Threading.Mutex($false, 'Global\argonia-saves-sync') } catch { Log "mutex: $($_.Exception.Message); running without it"; $mutex = $null }
+if ($mutex -and -not $mutex.WaitOne(120000)) { Log 'another sync still running'; exit 0 }
 try {
   Import-Module AWSPowerShell
   # At boot the role's credentials can take a minute to appear: retry the listing for two minutes.
@@ -55,6 +59,7 @@ try {
   . C:\argonia\infra\stream-activity.ps1
   $busyFlag = (Test-Path "$State\busy") -and ((Get-Item "$State\busy").LastWriteTime -gt (Get-Date).AddMinutes(-15))
   $agentOnly = $busyFlag -and -not (Get-StreamActivity).streaming
+  if ($Deliberate) { $agentOnly = $false }   # an agent's deliberate push (saves_push.sh): the region saves are the owner's, made for the hand-over
   $files = @(Get-ChildItem $Saves -File -EA SilentlyContinue | ? { $_.Name -notmatch $Skip })
   $changed = @($files | ? { & $newer $_.LastWriteTimeUtc $remote[$_.Name] })
   $key = { param($f) "$($f.Name)|$($f.LastWriteTimeUtc.Ticks)" }
@@ -66,7 +71,7 @@ try {
   $agent = @{}; if (Test-Path $AgentList) { Get-Content $AgentList | % { $agent[$_] = 1 } }
   $n = 0
   foreach ($f in $changed) {
-    if ($agent[(& $key $f)]) { continue }
+    if ($agent[(& $key $f)] -and -not ($Deliberate -and $f.Name -match $Deliberate)) { continue }
     Write-S3Object -BucketName $Bucket -Key "$Prefix$($f.Name)" -File $f.FullName -Region $Region
     $n++
   }
@@ -76,4 +81,4 @@ try {
     @(Get-Content $AgentList | ? { $live[$_] }) | Set-Content $AgentList
   }
   if ($n) { Log "pushed $n" }
-} finally { $mutex.ReleaseMutex() }
+} finally { if ($mutex) { $mutex.ReleaseMutex() } }
