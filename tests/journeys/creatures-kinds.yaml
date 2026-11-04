@@ -14,6 +14,7 @@
 id: creatures-kinds
 reach: [esm, "tools/argonia_world/creatures/**", data/creature-kind-bars.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
+independent_steps: true
 crash_risk: medium
 scene: creature-spots
 camera: first
@@ -27,6 +28,9 @@ steps:
   - console: {line: cow ARG_Province 3 18, settle: 60}
   - wait: 8
   - console: set gamehour to 13
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: player.setpos x 15385
   - console: player.setpos y 78311
   - console: player.setpos z 88
@@ -44,6 +48,9 @@ steps:
   - console: {line: cow ARG_Province -61 60, settle: 60}
   - wait: 8
   - console: set gamehour to 13
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: player.setpos x -249728
   - console: player.setpos y 250778
   - console: player.setpos z 17030
@@ -61,6 +68,9 @@ steps:
   - console: {line: cow ARG_Province -34 -4, settle: 60}
   - wait: 8
   - console: set gamehour to 13
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: player.setpos x -140409
   - console: player.setpos y -16384
   - console: player.setpos z 1463
