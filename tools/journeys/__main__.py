@@ -96,6 +96,10 @@ def refresh(only: set[str] | None = None) -> int:
         (JOURNEYS / "road-look.yaml").write_text(gen.road_look(b, w, log))
         p = JOURNEYS / "road-look.yaml"   # the stands are on the road's line (gen.road_stand): the re-aim keeps them there
         p.write_text(look.reaim(b, p.read_text(), "road-look", log, lambda d: (d, d), 0.0))
+    if want("bridge-look"):
+        (JOURNEYS / "bridge-look.yaml").write_text(gen.bridge_look(b, w, log))
+    if want("junction-dry"):
+        (JOURNEYS / "junction-dry.yaml").write_text(gen.junction_dry(b, w, log))
     if want("ground-materials"):
         p = JOURNEYS / "ground-materials.yaml"
         p.write_text(look.ground_materials(b, log, [ln for ln in p.read_text().splitlines() if ln.startswith("#")]))

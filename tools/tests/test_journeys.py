@@ -283,3 +283,31 @@ def test_road_measure_is_the_distance_and_heading_against_the_centreline():
     assert abs(bend["off_m"] - 1) < 1e-6 and abs(bend["road_deg"] - 90) < 1e-6 and abs(bend["head_off_deg"] - 45) < 1e-6
     assert abs(bend["at_m"] - 160) < 1e-6
     assert gen.ROAD_OFF_MAX_M == 2.0 and gen.ROAD_HEAD_MAX_DEG == 20.0
+
+
+def test_bridge_look_stands_12_m_from_the_deck_end_on_the_yaw_and_the_deck_stop_at_the_deck_top(monkeypatch):
+    """gen.bridge_look: per bridge a stand BRIDGE_BACK_M from the deck's end along the heading (aimed at the deck middle),
+    and a deck stop teleported to the deck middle whose z reads sit within 0.3 m of the deck top infra gives."""
+    import math
+    import re
+
+    from tools.argonia_world import place_build
+    from tools.argonia_world.routes import infra
+    from tools.journeys import gen
+    hd, deck_m = 90.0, 12.0   # a deck running east
+    placed = {"id": "bridge.t-step", "at_m": [30.0, 40.0, 0.0], "heading": hd, "deck_m": deck_m, "routes": ["route.road.a", "route.road.b"]}
+    monkeypatch.setattr(infra, "bridge_placements", lambda w, z_at: [placed])
+    monkeypatch.setattr(place_build, "GameGround", lambda: type("G", (), {"z": staticmethod(lambda x, y: 10.0)})())
+    text = gen.bridge_look(Flat(), None, [])
+    s = gen.bridge_stands(Flat(), None)[0]
+    cx, cy = su.province_to_skyrim(30.0, 40.0)
+    assert math.hypot(s["sx"] - cx, s["sy"] - cy) / U == pytest.approx(infra.BRIDGE_LEN_M / 2 + gen.BRIDGE_BACK_M, abs=0.1)  # 12 m past the end
+    assert s["sx"] < cx and s["sy"] == pytest.approx(cy, abs=1)   # back along the yaw: west of the deck, on its line
+    assert s["h"] == pytest.approx(hd, abs=1)                      # aimed along it at the deck middle
+    assert s["sz"] == pytest.approx(10.0 * U + J.SEAT_U, abs=1)    # seated on the current ground
+    deck = text.split("name: t-step-deck")[1]
+    top = round(su.metres_to_units(deck_m))
+    z = int(re.search(r"player\.setpos z (\d+)", deck).group(1))
+    assert z - top == gen.BRIDGE_DECK_DROP_U
+    assert f"pos.z, ge: {top - gen.BRIDGE_DECK_TOL_U}" in deck and f"pos.z, le: {top + gen.BRIDGE_DECK_TOL_U}" in deck
+    assert f"player.setpos x {cx:.0f}" in deck and "# deck:" in deck   # the deck stop is exempt from the ground check

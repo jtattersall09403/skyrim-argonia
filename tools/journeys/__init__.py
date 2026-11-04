@@ -42,7 +42,7 @@ TRUNKED = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree", "d
 CROWN_FROM, TRUNK_U = 0.4, 25.0   # a tree's crown from 0.4 of its height up; below it a trunk ~0.35 m round
 # The data-driven journeys: refresh re-derives them, the L1 test checks them.
 DERIVED = ("world-panel", "river-steps", "water-types", "road-look", "claywater-walk", "claywater-look", "creature-spots", "tree-seat",
-           "rock-booth", "creatures-kinds", "sky-ab")
+           "rock-booth", "creatures-kinds", "sky-ab", "bridge-look", "junction-dry")
 
 SETPOS = re.compile(r"player\.setpos ([xyz]) (-?\d+(?:\.\d+)?)")
 SETANGLE = re.compile(r"player\.setangle ([xz]) (-?\d+(?:\.\d+)?)")
@@ -408,7 +408,7 @@ def stands(text: str) -> list[dict]:
         pos = {k: float(v) for k, v in SETPOS.findall(blk)}
         if {"x", "y"} <= set(pos):
             out.append({"step": name, "kind": "setpos", "x": pos["x"], "y": pos["y"], "z": pos.get("z"),
-                        "water": "# water" in blk})
+                        "water": "# water" in blk, "deck": "# deck" in blk})
         for ref, off in MOVETO.findall(blk):
             o = [float(v) for v in off.split()] if off else [0.0, 0.0, 0.0]
             out.append({"step": name, "kind": "moveto", "ref": ref, "off": o, "water": "# water" in blk})
@@ -428,6 +428,8 @@ def check_stand(b: Build, s: dict) -> str | None:
     tol = TOL_M * su.UNITS_PER_METRE
     if s["kind"] == "setpos":
         x, y, z = s["x"], s["y"], s["z"]
+        if s.get("deck"):
+            return None   # a deck stop (`# deck`): over the channel, its z is the deck's top (infra), not the ground
         g = b.ground_u(x, y)
         if z is not None and abs(z - g) > tol and not (s["water"] and (lv := b.water_u(x, y)) is not None
                                                      and abs(z - lv) <= tol):
