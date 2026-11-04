@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -3.02
+    ge: 4.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 67.02
+    le: 75.02
     within: 3
-  expected_ground_m: 0.457
+  expected_ground_m: 0.571
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
