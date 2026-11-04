@@ -67,7 +67,7 @@ launch() {
     local unit="jg-$name-$(date +%s)" env=() v
     for v in $(compgen -e); do [[ $v =~ ^[A-Za-z_][A-Za-z0-9_]*$ ]] && env+=(--setenv="$v"); done
     if systemd-run --user --quiet --collect --unit="$unit" --working-directory="$PWD" "${env[@]}" \
-        --property=StandardOutput="file:$JOBS/$name.log" --property=StandardError=inherit \
+        --property=StandardOutput="$logmode:$JOBS/$name.log" --property=StandardError=inherit \
         bash -c "$script" _ "$@"; then
       echo "$unit" > "$JOBS/$name.unit"
       local i; jpid=0  # the main pid, once the unit has one; a unit already gone finished (its rc says so)
@@ -76,7 +76,8 @@ launch() {
       jpid=${jpid:-0}; return 0
     fi
   fi
-  setsid nohup bash -c "$script" _ "$@" > "$JOBS/$name.log" 2>&1 &
+  if [ "$logmode" = append ]; then setsid nohup bash -c "$script" _ "$@" >> "$JOBS/$name.log" 2>&1 &
+  else setsid nohup bash -c "$script" _ "$@" > "$JOBS/$name.log" 2>&1 & fi
   jpid=$!
 }
 case "$cmd" in
@@ -121,6 +122,9 @@ case "$cmd" in
     # The spool a relaunch needs (job_resume.sh). JOB_SEQ keeps a resumed job's place; else the next number.
     if [ -n "${JOB_SEQ:-}" ]; then seq=$JOB_SEQ; else
       seq=$( { flock 9; n=$(( $(cat "$JOBS/.seq" 2>/dev/null || echo 0) + 1 )); echo $n > "$JOBS/.seq"; echo $n; } 9>"$JOBS/.seq.lock" ); fi
+    # a boot resume (job_resume.sh sets JOB_RESUMED) appends to the job's log after a "== RESUMED" line: truncating
+    # it lost every earlier resume's lines (r6-chain7, 2026-11-04); a fresh run starts the log anew
+    logmode=truncate; if [ -n "${JOB_RESUMED:-}" ]; then logmode=append; echo "== RESUMED $(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$JOBS/$name.log"; fi; unset JOB_RESUMED
     echo "$seq" > "$JOBS/$name.seq"; printf '%s\0' "$@" > "$JOBS/$name.cmd"; echo "$PWD" > "$JOBS/$name.cwd"
     export PYTHONUNBUFFERED=1  # a job's python prints as it goes: r6-navmesh ran 20 min with an empty log (2026-11-04)
     for v in $(compgen -e); do [[ $v == ARGONIA_* || $v == PATH || $v == PYTHONUNBUFFERED ]] && printf '%s=%s\0' "$v" "${!v}"; done > "$JOBS/$name.env"

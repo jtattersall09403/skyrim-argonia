@@ -47,8 +47,8 @@ done
     mapfile -d '' argv < "$JOBS/$n.cmd"; mapfile -d '' envs < "$JOBS/$n.env" 2>/dev/null || envs=()
     gpu=(); [ -f "$JOBS/$n.gpu" ] && gpu=(--gpu="$(cat "$JOBS/$n.gpu")")
     cwd=$(cat "$JOBS/$n.cwd" 2>/dev/null || echo "$HOME"); [ -d "$cwd" ] || cwd=$HOME
-    mv -f "$JOBS/$n.log" "$JOBS/$n.log.interrupted" 2>/dev/null || true
-    if out=$(cd "$cwd" && env -u ARGONIA_PLAY -u ARGONIA_LANE "${envs[@]}" JOB_SEQ="$seq" ${JOBS_DIR:+JOBS_DIR="$JOBS_DIR"} \
+    # the log is kept: job_guard appends "== RESUMED <time>" and the relaunch's output (1.15-r6-resume-costs)
+    if out=$(cd "$cwd" && env -u ARGONIA_PLAY -u ARGONIA_LANE "${envs[@]}" JOB_SEQ="$seq" JOB_RESUMED=1 ${JOBS_DIR:+JOBS_DIR="$JOBS_DIR"} \
         bash "$here/job_guard.sh" run "${gpu[@]}" "$n" -- "${argv[@]}" 2>&1); then
       echo "relaunched $n (seq $seq${gpu:+, ${gpu[0]}}) +$(echo "$(date +%s.%N) - $t0" | bc)s: $out"
     else echo "FAILED $n (seq $seq): $out"; fi

@@ -13,7 +13,7 @@ def clean_env(home):
     """The environment a test runs the script in: its own spool and none of the caller's job_guard settings (a gate run
     inside a job, or a resumed job, carries the real spool's JOBS_DIR, a lane, a seq, a wait)."""
     e = {k: v for k, v in os.environ.items()
-         if k not in ("ARGONIA_PLAY", "ARGONIA_LANE", "JOB_SEQ", "GPU_WAIT", "SLOT_IDLE", "JOB_GUARD_NO_SYSTEMD")}
+         if k not in ("ARGONIA_PLAY", "ARGONIA_LANE", "JOB_SEQ", "GPU_WAIT", "SLOT_IDLE", "JOB_GUARD_NO_SYSTEMD", "JOB_RESUMED")}
     e.update(HOME=str(home), JOBS_DIR=str(Path(home) / ".argonia" / "jobs"))
     return e
 
@@ -159,3 +159,25 @@ def test_stop_ends_the_whole_job(tmp_path):
         time.sleep(0.05)
     assert "stopped" in guard(tmp_path, "stop", "stopme").stdout
     assert guard(tmp_path, "wait", "stopme").returncode == 1
+
+
+def done(home, jobs):
+    """wait, then drop the pid (a unit gone at once records pid 0, which `kill -0` reads as alive)."""
+    assert guard(home, "wait", "j").returncode == 0
+    (jobs / "j.pid").unlink()
+
+
+def test_resumed_run_appends_to_its_log(tmp_path):
+    """A boot resume (JOB_RESUMED) keeps the earlier run's lines and marks the resume; a fresh run starts anew."""
+    jobs = tmp_path / ".argonia" / "jobs"
+    for nosd in ("", "1"):  # the systemd unit's append: mode and the setsid >> fallback
+        env = {"JOB_GUARD_NO_SYSTEMD": nosd} if nosd else {}
+        assert guard(tmp_path, "run", "j", "--", "echo", "first", env=env).returncode == 0
+        done(tmp_path, jobs)
+        assert guard(tmp_path, "run", "j", "--", "echo", "second", env={**env, "JOB_RESUMED": "1"}).returncode == 0
+        done(tmp_path, jobs)
+        lines = (jobs / "j.log").read_text().splitlines()
+        assert lines[0] == "first" and lines[1].startswith("== RESUMED ") and lines[2] == "second", lines
+        assert guard(tmp_path, "run", "j", "--", "echo", "third", env=env).returncode == 0
+        done(tmp_path, jobs)
+        assert (jobs / "j.log").read_text().splitlines() == ["third"]
