@@ -122,7 +122,8 @@ case "$cmd" in
     if [ -n "${JOB_SEQ:-}" ]; then seq=$JOB_SEQ; else
       seq=$( { flock 9; n=$(( $(cat "$JOBS/.seq" 2>/dev/null || echo 0) + 1 )); echo $n > "$JOBS/.seq"; echo $n; } 9>"$JOBS/.seq.lock" ); fi
     echo "$seq" > "$JOBS/$name.seq"; printf '%s\0' "$@" > "$JOBS/$name.cmd"; echo "$PWD" > "$JOBS/$name.cwd"
-    for v in $(compgen -e); do [[ $v == ARGONIA_* || $v == PATH ]] && printf '%s=%s\0' "$v" "${!v}"; done > "$JOBS/$name.env"
+    export PYTHONUNBUFFERED=1  # a job's python prints as it goes: r6-navmesh ran 20 min with an empty log (2026-11-04)
+    for v in $(compgen -e); do [[ $v == ARGONIA_* || $v == PATH || $v == PYTHONUNBUFFERED ]] && printf '%s=%s\0' "$v" "${!v}"; done > "$JOBS/$name.env"
     if [ $gpu = 1 ]; then echo "$ARGONIA_PLAY" > "$JOBS/$name.gpu"; echo queued > "$JOBS/$name.state"; else echo running > "$JOBS/$name.state"; fi
     [ -n "${ARGONIA_LANE:-}" ] && echo "$ARGONIA_LANE" > "$JOBS/$name.lane"
     if [ $gpu = 1 ]; then
