@@ -298,8 +298,12 @@ def _terrain_stamp(ground: bool = True) -> str:
     return h.hexdigest()
 
 
+# every table generate.py and its helpers (water_field, cellwater, routes.shape/build/paint) read: the hydrology and
+# route rows were missing (lane 1.15-r6-road-course, 2026-11-04 20:1x: the ground stood stale from 11-03 02:26 while
+# `--plan` said skip, and lacked the r6 road shaping: 191,368 shaped samples against 246,222 fresh)
 GROUND_TABLES = ("cell_water", "water_step", "region_relief", "land_region", "cell_region_run", "road", "road_point",
-                 "place", "place_terrain_requests")
+                 "route", "route_edge", "route_node", "travel_station", "hydrology_body", "hydrology_reach",
+                 "hydrology_reach_point", "place", "place_terrain_requests")
 
 
 @_memo
@@ -308,7 +312,8 @@ def _ground_stamp() -> str:
     import hashlib
     from tools.argonia_world import db
     h = hashlib.sha256()
-    for f in (TERRAIN / "generate.py", TERRAIN / "cellwater.py"):
+    # the code: generate.py and every module it runs (water_field, cellwater, grid, routes.shape and its helpers)
+    for f in sorted([*TERRAIN.glob("*.py"), *(TERRAIN.parent / "routes").glob("*.py")]):
         h.update(f.name.encode() + f.read_bytes())
     for t in GROUND_TABLES:
         f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"  # the jsonl bytes, named by db.py
