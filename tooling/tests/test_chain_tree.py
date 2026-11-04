@@ -34,8 +34,9 @@ def setup(tmp):
 
 
 def chain(tmp, src, **env):
-    e = dict(os.environ, HOME=str(tmp / "home"), **env)
-    e.pop("ARGONIA_REPO", None)
+    # the gate itself runs inside a chain: nothing the chain exports may leak in (CHAIN_IN_TREE skipped the tree step)
+    e = {k: v for k, v in os.environ.items() if not k.startswith("CHAIN_") and k != "ARGONIA_REPO"}
+    e.update(HOME=str(tmp / "home"), **env)
     return subprocess.run(["bash", str(src / "infra/gpu-box/jobs/chain.sh"), "b.yaml", "rec.md"], cwd=src, env=e,
                           capture_output=True, text=True)
 
