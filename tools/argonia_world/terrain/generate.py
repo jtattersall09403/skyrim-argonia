@@ -332,6 +332,7 @@ class Inputs:
     wet_level: np.ndarray  # (4033, 4033) the wet raster's level (NaN dry)
     roads: list[tuple[np.ndarray, float]]  # (points (k, 2) as (col, row) samples, half flat width + shoulder in samples)
     sites: list[dict]  # dungeon records: place_id, x_m, y_m, radius_m, entrance, water_m, request
+    reach: np.ndarray | None = None  # (4033, 4033) a reach's channel (river or stream) outside the still bodies
 
     @classmethod
     def load(cls, world=None) -> Inputs:
@@ -368,7 +369,13 @@ class Inputs:
             reqs.setdefault(q["place_id"], q["kind"])
         for s in sites:
             s["request"] = reqs.get(s["place_id"])
-        return cls(prior, region, rows, [cult[r["land_region_id"]] for r in rows], water, wet_level, roads, sites)
+        from tools.argonia_world.terrain.grid import data_root as _dr
+        rl, _ = cellwater.reach_raster(w)
+        zb = np.load(_dr() / "hydrology-graph-bodies.npz")
+        reach = ~np.isnan(rl) & ~np.isfinite(zb["level"]) & ~zb["sea"]
+        del rl, zb
+        return cls(prior, region, rows, [cult[r["land_region_id"]] for r in rows], water, wet_level, roads, sites,
+                   reach)
 
 
 def reach(seed: np.ndarray, allowed: np.ndarray) -> np.ndarray:
@@ -680,6 +687,15 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     role[ct] = 3
     chan &= ~ct
     chan0 &= ~ct
+    # the roads keep to dry ground (lane 1.15-r6-roads-dry, planner 2026-11-04 20:15): the corridor a causeway over
+    # its cell's water, a reach crossed at a ford (routes/shape.py dry_corridor); a step's channel keeps its bed
+    from tools.argonia_world.routes.shape import dry_corridor
+    reach_ = inp.reach if inp.reach is not None else np.zeros((N + 1, N + 1), bool)
+    dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan)
+    st["roads_dry"] = dc["stats"]
+    road_dry = dc["bank"]
+    foot &= ~road_dry
+    del dc
     diag["sbank"], diag["ct"], diag["chan"] = sbank.copy(), ct.copy(), chan.copy()
     diag["pad"] = has & ~blocks[hi_c][:, hi_c] & ~blocks[lo_c][:, lo_c]
     st["steps_joined"] = nstep
@@ -698,7 +714,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     # the road yields to water: no shaping on a bed, a gully, a step channel or the wet raster, and the trough and
     # the smoothing stop at the bank (routes/shape.py), so a crossing keeps the graded bed and banks (no wall)
     from tools.argonia_world.routes import shape as road_shape
-    rwater = foot | gully | chan | ~np.isnan(inp.wet_level)
+    rwater = ((foot | ~np.isnan(inp.wet_level)) & ~road_dry) | gully | chan
     if os.environ.get("ARGONIA_ROAD_DUMP"):  # routes/shape.py's window loop: the ground the road pass starts from
         np.savez(os.environ["ARGONIA_ROAD_DUMP"], h=h.astype(np.float32), lo=lo.astype(np.float32),
                  hi=hi.astype(np.float32), water=rwater)

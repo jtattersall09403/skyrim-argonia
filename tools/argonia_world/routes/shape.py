@@ -269,6 +269,54 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     return {"roads": len(roads), "dry_runs": runs_n, "core_samples": n, "shaped_samples": int(m.sum())}
 
 
+CAUSEWAY_SHOULDER_M = 6.0  # the corridor held dry: the road's core plus this each side (the pass's fade)
+CAUSEWAY_M = 0.5  # the corridor's ground stands this far above its cell's highest water (planner, 2026-11-04 20:15)
+FORD_M = 0.3  # a reach crossing's bed under its level, at most (Skyrim.esm's road fords: p50 0.16 m, max 1.23 m)
+FORD_GAP = 2  # samples between a ford and the causeway left to the ground (the ramp from the top to the bed)
+
+
+def corridor(shape_, roads, extra_m: float = CAUSEWAY_SHOULDER_M) -> np.ndarray:
+    """The samples within each road's core half width plus `extra_m`."""
+    m = np.zeros(shape_, bool)
+    for pts, core in roads:
+        rr, cc, _d, _i = _nearest(shape_, _dense(pts)[0], core + extra_m / MPP)
+        m[rr, cc] = True
+    return m
+
+
+def dry_corridor(roads, lo, hi, role, vmin, vmax, reach, keep=None) -> dict:
+    """A road is never under water (lane 1.15-r6-roads-dry): in each road's corridor the ground's lower bound
+    stands CAUSEWAY_M over the cell's highest water and the sample leaves the footprint (role 3, no upper bound), the
+    bank falling from it at GRADE_MAX until it meets the water's own bed (a footprint sample the bank needs above the
+    water becomes bank too: the causeway widens with the depth); where the corridor crosses a reach (`reach`, a river
+    or stream) the wet samples are a ford, the bed held FORD_M under the level. `keep` (a step's channel) is never
+    touched: the step chain stays. lo, hi, role change in place; returns the masks and counts."""
+    from tools.argonia_world.terrain.generate import chamfer, majorant
+    has = np.isfinite(vmin)
+    keep = np.zeros(lo.shape, bool) if keep is None else keep
+    cor = corridor(lo.shape, roads) & has
+    rd, _ = chamfer(reach, FORD_GAP + 2)
+    ford = cor & (role == 1) & reach & ~keep
+    near_f = cor & np.isfinite(rd) & (rd <= FORD_GAP) & ~reach
+    cw = cor & ~reach & ~near_f & ~keep
+    top = np.where(cw, vmax + CAUSEWAY_M, -np.inf)
+    cone = majorant(np.where(cw, top, -1e9), GRADE_MAX * MPP)
+    cone = np.where(cone > -1e8, cone, -np.inf)
+    free = ~keep & ~ford & ~near_f & ~reach
+    from tools.argonia_world.terrain.generate import FREEBOARD_M
+    flip = free & has & (role == 1) & (cone > vmin - FREEBOARD_M)
+    bank = (cw | flip)
+    lo[free] = np.maximum(lo[free], cone[free])
+    lo[flip] = np.maximum(lo[flip], vmax[flip] + FREEBOARD_M)
+    hi[bank] = np.inf
+    role[bank & has] = 3
+    lo[ford] = vmin[ford] - FORD_M
+    hi[ford] = np.minimum(hi[ford], vmin[ford] - FORD_M)
+    return {"causeway": cw, "bank": bank, "ford": ford,
+            "stats": {"causeway_samples": int(cw.sum()), "flipped_samples": int((flip & ~cw).sum()),
+                      "ford_samples": int(ford.sum())}}
+
+
 def _at(a: np.ndarray, x: np.ndarray, y: np.ndarray) -> np.ndarray:
     return a[np.clip(np.rint(y).astype(int), 0, a.shape[0] - 1), np.clip(np.rint(x).astype(int), 0, a.shape[1] - 1)]
 
@@ -458,7 +506,7 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     w = db.open()
     if a.cmd == "census":
-        return census_main(w, a)
+        return census_main(w, a) if a.dump else wet_main(w, a)
     gp = Path(a.ground or generated_ground())
     h = np.asarray(np.load(gp, mmap_mode="r"), np.float64)
     wet, _ = cellwater.wet_raster(w)
@@ -490,6 +538,82 @@ def main(argv=None) -> int:
             fails.append(f"fold at {o:.0f} m median {m} outside vanilla's {lo}..{hi}")
     res["fails"] = fails
     print(json.dumps(res, indent=1))
+    return 1 if fails else 0
+
+
+def wet_census(h, roads, ids, level, reach, step: float = 1.0) -> dict:
+    """Per road on ground h: metres under its cell's water (`level`, per sample, NaN dry) outside fords, the longest
+    wet run, the fords (wet runs touching a reach: count, deepest), the causeway metres (dry over a cell with water)
+    and the bank's steepest grade beside the causeway (core edge out to 30 m, where the ground falls to the water)."""
+    out = {}
+    for rid, (pts, core) in zip(ids, roads):
+        p, v, nrm = frame(pts, step)
+        z, lv = bilinear(h, p[:, 0], p[:, 1]), _at(level, p[:, 0], p[:, 1])
+        wet = np.isfinite(lv) & (z < lv)
+        rch = np.zeros(len(p), bool)
+        for o in np.arange(-core, core + 0.5, 1.0):
+            rch |= _at(reach, p[:, 0] + nrm[:, 0] * o, p[:, 1] + nrm[:, 1] * o)
+        ds = step * MPP
+        fords, under, longest = [], 0.0, 0.0
+        for a0, a1 in _runs(wet):
+            seg = slice(a0, a1)
+            depth = float((lv[seg] - z[seg]).max())
+            if rch[max(a0 - 2, 0):a1 + 2].any():
+                fords.append(round(depth, 2))
+            else:
+                under += (a1 - a0) * ds
+                longest = max(longest, (a1 - a0) * ds)
+        cw = np.isfinite(lv) & ~wet & (z < lv + CAUSEWAY_M + 1.0)  # low dry ground over a cell's water
+        g = 0.0
+        if cw.any():
+            for sg in (-1, 1):
+                prev = None
+                for o in np.arange(core, core + 30.0 / MPP, 1.0):
+                    zo = bilinear(h, p[cw, 0] + sg * nrm[cw, 0] * o, p[cw, 1] + sg * nrm[cw, 1] * o)
+                    if prev is not None:
+                        lo_ = _at(level, p[cw, 0] + sg * nrm[cw, 0] * o, p[cw, 1] + sg * nrm[cw, 1] * o)
+                        fall = (prev - zo) / MPP
+                        # the waterline's freeboard step (every shore's) is not the bank's grade
+                        m = np.isfinite(lo_) & (zo < lo_ + CAUSEWAY_M + 0.5) & ((zo < lo_) == (prev < lo_))
+                        if m.any():
+                            g = max(g, float(fall[m].max()))
+                    prev = zo
+        out[rid] = {"length_m": round(len(p) * ds), "under_m": round(under), "longest_wet_m": round(longest),
+                    "fords": len(fords), "ford_max_m": max(fords) if fords else 0.0,
+                    "causeway_m": round(float(cw.sum()) * ds), "bank_max_grade": round(g, 3)}
+    return out
+
+
+def wet_main(w, a) -> int:
+    """`census [GROUND.npy]`: every road's wet census on the generated ground (lane 1.15-r6-roads-dry). Fails on any
+    metre under water outside a ford, a ford deeper than FORD_M, or a bank steeper than GRADE_MAX (the slope's
+    lip-limit is the land's elsewhere, so the bank grade is reported against the bar)."""
+    import json
+    from pathlib import Path
+
+    from tools.argonia_world.terrain import cellwater
+    from tools.argonia_world.terrain.generate import Q
+    from tools.argonia_world.terrain.grid import data_root, generated_ground
+    gp = Path(a.ground or generated_ground())
+    h = np.asarray(np.load(gp, mmap_mode="r"), np.float64)
+    wl = cellwater.load(w).level
+    level = np.pad(np.repeat(np.repeat(wl, Q, 0), Q, 1), ((0, 1), (0, 1)), mode="edge")[:h.shape[0], :h.shape[1]]
+    rl, _ = cellwater.reach_raster(w, h.shape[0])
+    zb = np.load(data_root() / "hydrology-graph-bodies.npz")
+    reach = ~np.isnan(rl) & ~np.isfinite(zb["level"]) & ~zb["sea"]
+    ids = [r["route_id"] for r in w.query("SELECT route_id FROM road ORDER BY route_id")]
+    pts: dict[str, list] = {}
+    for p in w.query("SELECT route_id, x_m, y_m FROM road_point ORDER BY route_id, ord"):
+        pts.setdefault(p["route_id"], []).append(1)
+    ids = [i for i in ids if len(pts.get(i, [])) >= 2]
+    res = wet_census(h, load_roads(w), ids, level, reach)
+    tot = {k: round(sum(r[k] for r in res.values()), 1) for k in ("length_m", "under_m", "causeway_m", "fords")}
+    tot["roads_wet"] = sum(r["under_m"] > 0 for r in res.values())
+    tot["ford_max_m"] = max([r["ford_max_m"] for r in res.values()] or [0])
+    tot["bank_max_grade"] = max([r["bank_max_grade"] for r in res.values()] or [0])
+    fails = [f"{k}: {r['under_m']} m under water" for k, r in res.items() if r["under_m"] > 0]
+    fails += [f"{k}: ford {r['ford_max_m']} m" for k, r in res.items() if r["ford_max_m"] > FORD_M + 0.01]
+    print(json.dumps({"total": tot, "roads": res, "fails": fails, "grade_max": GRADE_MAX}, indent=1))
     return 1 if fails else 0
 
 

@@ -63,3 +63,47 @@ def test_census_lists_walls_by_water_as_crossings():
     h[water] -= 2.0  # a wall the road did not make: the bank
     c = S.census(h, None, None, None, water, _road(), None)
     assert c["walls"]["crossing"] > 0 and c["walls"]["other"] == 0, c["walls"]
+
+
+def _flooded(n=120, level=2.0, bed=-3.0):
+    """A 5 m deep lake over the whole window, one level, a road across it."""
+    h = np.full((n + 1, n + 1), bed)
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, level - 0.3)
+    role = np.ones(h.shape, np.uint8)
+    vl = np.full(h.shape, level)
+    return h, lo, hi, role, vl
+
+
+def test_flooded_footprint_becomes_a_causeway():
+    from tools.argonia_world.terrain.generate import limit
+    n = 120
+    h, lo, hi, role, vl = _flooded(n)
+    road = _road(n)
+    reach = np.zeros(h.shape, bool)
+    dc = S.dry_corridor(road, lo, hi, role, vl, vl, reach)
+    assert dc["causeway"].any() and not dc["ford"].any()
+    h = np.minimum(np.maximum(h, lo), hi)
+    S.shape(h, road, ~dc["bank"] & (role == 1), lo, hi)
+    f, _ = limit(np.minimum(np.maximum(h, lo), hi), lo, hi, 6.8)
+    c = S.wet_census(f, road, ["r"], vl, reach)["r"]
+    assert c["under_m"] == 0 and c["causeway_m"] > 150, c
+    # the bank falls at no more than GRADE_MAX from the causeway to the bed (the waterline's freeboard step aside:
+    # every shore's, no ground within 0.3 m of its water)
+    col = f[:, n // 2]
+    g = np.abs(np.diff(col)) / S.MPP
+    g[(col[:-1] < 2.0) != (col[1:] < 2.0)] = 0.0
+    assert g.max() <= S.GRADE_MAX + 0.02, g.max()
+    assert col.min() < 2.0 - 0.3 and col[n // 2] >= 2.0 + S.CAUSEWAY_M - 0.01
+
+
+def test_reach_crossing_is_a_ford():
+    n = 120
+    h, lo, hi, role, vl = _flooded(n)
+    road = _road(n)
+    reach = np.zeros(h.shape, bool)
+    reach[:, 55:66] = True  # a stream across the road
+    dc = S.dry_corridor(road, lo, hi, role, vl, vl, reach)
+    assert dc["ford"].any()
+    h = np.minimum(np.maximum(h, lo), hi)
+    d = 2.0 - h[n // 2, 56:65]
+    assert (d > 0).all() and d.max() <= S.FORD_M + 1e-6, d
