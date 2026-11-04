@@ -642,6 +642,7 @@ def test_camera_bridge_command_is_tried_first_and_decides(tmp_path, monkeypatch)
 
 def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkeypatch):
     monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    monkeypatch.setattr(rj, "frame_difference", lambda a, b: 0.5)
     fake, asked = Fake(), []
     real = fake.call
 
