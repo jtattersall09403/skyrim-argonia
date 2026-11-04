@@ -10,6 +10,7 @@
     pipeline.py vegetation  (2.W4 §a and 1.15 §g's creatures; `plugin` and the gate's sample build already include it) out/ArgoniaWorld.esm with the province's vegetation REFRs spliced in
                          (tools/argonia_world/vegetation; its L1 checks and the spliced plugin's read-back)
     pipeline.py navmesh  the province's navmesh (tools/navmesh), then out/ArgoniaWorld.esm with its NAVM and NAVI
+    pipeline.py plugin --plan  (`make plugin PLAN=1`) build nothing: print each stage's key and run/skip
     pipeline.py check    the FormID table append-only; every design piece resolved; regenerate twice into
                          out/check/{a,b}: identical ESM bytes and YAML trees, and equal to the committed
                          plugin/Argonia/ (else: run `make plugin`); the Spriggit round trip: plugin/Argonia/
@@ -43,6 +44,97 @@ ENV = dict(os.environ, DOTNET_ROOT=str(HOME / ".dotnet"), DOTNET_CLI_TELEMETRY_O
            DOTNET_gcServer="0", DOTNET_GCHeapHardLimit="0xC0000000",  # workstation GC, 3 GB heap (memory guidance)
            PATH=f"{HOME / '.dotnet'}:{HOME / '.local/bin'}:{os.environ.get('PATH', '')}")
 CAP = ["systemd-run", "--user", "--scope", "-q", "-p", "MemoryMax=3G"] if shutil.which("systemd-run") else []
+
+
+# --- stages: each keyed by the inputs it reads (decision 0037), timed, and planned without running -----------------
+STAGE_DIR = OUT / "stages"
+TIMES: list[tuple[str, str, float, str]] = []  # (stage, run|skip, seconds, key12)
+
+
+class stage:
+    """`with stage(name, key) as st:` times a stage and records run/skip; st.run is False when `key` equals the key the
+    stage last finished with (out/stages/<name>.key) and `outputs` all exist; key None always runs, never stored."""
+
+    def __init__(self, name: str, key: str | None, *outputs: Path, force: bool = False):
+        self.name, self.key, self.outputs = name, key, outputs
+        f = STAGE_DIR / f"{name}.key"
+        self.run = force or key is None or not (f.exists() and f.read_text() == key and all(o.exists() for o in outputs))
+
+    def __enter__(self):
+        import time
+        self.t0 = time.monotonic()
+        return self
+
+    def __exit__(self, et, *_):
+        import time
+        dt = time.monotonic() - self.t0
+        if et is None:
+            if self.run and self.key is not None:
+                STAGE_DIR.mkdir(parents=True, exist_ok=True)
+                f = STAGE_DIR / f"{self.name}.key"  # atomic: an interrupt leaves the old key or the new, never half
+                tmp = f.with_name(f"{f.name}.tmp-{os.getpid()}")
+                tmp.write_text(self.key)
+                tmp.replace(f)
+            TIMES.append((self.name, "run" if self.run else "skip", dt, (self.key or "-")[:12]))
+            print(f"plugin: stage {self.name:<11} {'run ' if self.run else 'skip'} {dt:8.1f} s  key {(self.key or '-')[:12]}",
+                  flush=True)
+        return False
+
+
+def _stamp_holds(f: Path, key: str) -> bool:
+    return f.exists() and f.read_text() == key
+
+
+def stage_known(name: str, key: str | None, *outputs: Path) -> str:
+    """The plan's verdict for a stage: run or skip, as `stage` would decide it."""
+    return "run" if stage(name, key, *outputs).run else "skip"
+
+
+def _files_key(*parts, files=(), tables=()) -> str:
+    """A key over strings, file bytes (missing files by name) and world-db tables (their jsonl bytes, named by db.py)."""
+    import hashlib
+    h = hashlib.sha256()
+    for x in parts:
+        h.update(str(x).encode() + b"\0")
+    for f in files:
+        f = Path(f)
+        h.update(f.name.encode() + (f.read_bytes() if f.is_file() else b"-") + b"\0")
+    if tables:
+        sys.path.insert(0, str(ROOT))
+        from tools.argonia_world import db
+        for t in tables:
+            f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"
+            h.update(t.encode() + (f.read_bytes() if f.exists() else b"") + b"\0")
+    return h.hexdigest()
+
+
+def _stat_key(*files) -> str:
+    """Large inputs (the binary, the masters) by size and time."""
+    return ";".join(f"{Path(f).name}:{Path(f).stat().st_size}:{int(Path(f).stat().st_mtime)}" if Path(f).exists()
+                    else Path(f).name for f in files)
+
+
+def _gen_key() -> str:
+    """The generator: its sources and project, what `dotnet build` compiles (not the binary: every build_tool
+    rewrites its time, which moved the key with no input changed, 2026-11-04)."""
+    return _files_key(files=sorted(PROJ.glob("*.cs")) + [PROJ / "ArgoniaGen.csproj"])
+
+
+_MEMO: dict = {}
+
+
+def _memo(f):
+    """A stamp computed once per process (the nested stamps re-read the same tables: 79 s to 29 s for the plan);
+    the inputs do not move inside one build. `_MEMO.clear()` forgets."""
+    import functools
+
+    @functools.wraps(f)
+    def g(*a, **k):
+        key = (f.__name__, a, tuple(sorted(k.items())))
+        if key not in _MEMO:
+            _MEMO[key] = f(*a, **k)
+        return _MEMO[key]
+    return g
 
 
 def data_dir() -> Path:
@@ -87,17 +179,30 @@ def scans(data: Path):
 NAV_PROVINCE = OUT / "navmesh" / "province"  # `make navmesh`'s build, which out/ArgoniaWorld.esm carries
 
 
-def generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
+def generate(data: Path, into: Path, frozen: bool, keyed: bool = False) -> tuple[Path, Path]:
     """intermediate -> ESM -> YAML, all under `into`; returns (esm, yaml dir). One province build at a time on
     the build VM (tools/argonia_world/province_lock.py)."""
     from tools.argonia_world.province_lock import province_lock
     with province_lock("plugin generate"):
-        return _generate(data, into, frozen)
+        return _generate(data, into, frozen, keyed)
 
 
-def _generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
+def _generate(data: Path, into: Path, frozen: bool, keyed: bool = False) -> tuple[Path, Path]:
+    """keyed (`make plugin`): the records stage times itself, and the YAML is reserialised only when the ESM's bytes
+    changed (the key is its sha256)."""
     into.mkdir(parents=True, exist_ok=True)
     inter, esm, yaml = into / "argonia.json", into / "Argonia.esm", into / "yaml"
+    with stage("records", None):
+        _records(data, inter, esm, frozen)
+    with stage("yaml", sha256(esm) if keyed else None, yaml) as st:
+        if st.run:
+            shutil.rmtree(yaml, ignore_errors=True)
+            run("spriggit", "serialize", "-i", esm, "-o", yaml, "-g", "SkyrimSE", *SPRIGGIT, capped=True)
+    return esm, yaml
+
+
+def _records(data: Path, inter: Path, esm: Path, frozen: bool) -> None:
+    into = inter.parent
     run(sys.executable, "-m", "tools.argonia_world.intermediate", "--data", data, "--out", inter,
         "--frozen", "1" if frozen else "0")
     # Load doors on the navmesh (tools/navmesh/doors.py): the door cells' NAVMs with their door triangles, from the
@@ -110,9 +215,6 @@ def _generate(data: Path, into: Path, frozen: bool) -> tuple[Path, Path]:
     else:
         print("plugin: WARNING no province navmesh (out/navmesh/province): Argonia.esm has no door triangles")
     run(GEN, "generate", "--in", inter, "--data", data, "--out", esm, capped=True)
-    shutil.rmtree(yaml, ignore_errors=True)
-    run("spriggit", "serialize", "-i", esm, "-o", yaml, "-g", "SkyrimSE", *SPRIGGIT, capped=True)
-    return esm, yaml
 
 
 # --- canonical record order -------------------------------------------------------------------------------
@@ -162,6 +264,7 @@ WORLD_ENV = {"DOTNET_GCHeapHardLimit": "0x100000000", "DOTNET_GCConserveMemory":
 WORLD_CAP = [*CAP[:-1], "MemoryMax=5G"] if CAP else []
 
 
+@_memo
 def _terrain_stamp(ground: bool = True) -> str:
     """The terrain's code, the world tables it reads and its inputs (by size and time): a change rebuilds.
     ground=False: the same without the generated ground's stamp, the land rows' shared key (row_key adds each row's
@@ -197,6 +300,7 @@ GROUND_TABLES = ("cell_water", "water_step", "region_relief", "land_region", "ce
                  "place", "place_terrain_requests")
 
 
+@_memo
 def _ground_stamp() -> str:
     """1.15's generated ground (terrain/generate.py): its code, the rows it reads and the prior's file."""
     import hashlib
@@ -259,6 +363,7 @@ WATER = ROOT / "tools" / "argonia_world" / "water"
 WATER_OUT = OUT / "water"
 
 
+@_memo
 def _water_stamp() -> str:
     """The water plan's code (and the terrain's, whose ground it stands on), the hydrology and water tables, the
     frozen inputs: a change replans."""
@@ -308,6 +413,7 @@ VEG_TABLES = ("land_region_object", "object_form", "vegetation_form", "vegetatio
               "build_ref", "build_cell", "road", "road_point")
 
 
+@_memo
 def _veg_stamp() -> str:
     """The placement's code, the water plan's stamp (the ground and water it stands on), the navmesh inputs it
     reuses and the tables it reads: a change replaces."""
@@ -360,29 +466,77 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     """terrain cells -> world.json -> ArgoniaWorld.esm under `into`; the full grid's cells are reused while the
     stamp holds. `nav`: a built navmesh (tools/navmesh) whose NAVM and NAVI go in too (`make navmesh`)."""
     into.mkdir(parents=True, exist_ok=True)
-    frozen = ground()
+    with stage("ground", None if sample else _ground_stamp()) as st:
+        st.run = not _stamp_holds(OUT / "terrain" / "ground.stamp", _ground_stamp())
+        frozen = ground()
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
-    if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
-        if not sample:
-            _refuse_shared_rebuild(into)
-        run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
-            "--stamp", now, *(["--sample"] if sample else ["--row-base", _terrain_stamp(ground=False)]), capped=True)
-        if not sample:
-            stamp.write_text(now)
-    run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into,
-        "--ground", frozen)
-    wdir = water(into, sample)
+    with stage("terrain", None if sample else now) as st:
+        if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
+            if not sample:
+                _refuse_shared_rebuild(into)
+            run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
+                "--stamp", now, *(["--sample"] if sample else ["--row-base", _terrain_stamp(ground=False)]), capped=True)
+            if not sample:
+                stamp.write_text(now)
+        else:
+            st.run = False
+    with stage("world-json", None):  # cheap; its bytes key the ESM write (it reads the regions, creatures, rocks)
+        run(sys.executable, "-m", "tools.argonia_world.terrain", "world", "--out", into,
+            "--ground", frozen)
+    with stage("water", None if sample else _water_stamp()) as st:
+        st.run = not _stamp_holds(WATER_OUT / "water.stamp", _water_stamp())
+        wdir = water(into, sample)
     esm = into / "esm" / WORLD_ESM
     esm.parent.mkdir(parents=True, exist_ok=True)
+    final = esm.with_suffix(".final.esm")  # the last finished world (written, spliced) whose key esm-write.. holds
+    wkey = None if sample else _world_key(data, into, wdir, nav, veg)
+    with stage("world-esm", wkey, final) as st:
+        if not st.run:
+            shutil.copyfile(final, esm)
+            return esm
+        _world_esm(data, into, wdir, nav, esm, veg, sample, frozen)
+        if not sample:
+            shutil.copyfile(esm, final)
+    return esm
+
+
+def _world_key(data: Path, into: Path, wdir: Path, nav: Path | None, veg: bool) -> str:
+    """ArgoniaWorld.esm's inputs: world.json, the land rows' stamp, the water stream, the navmesh build, the generator,
+    the masters, and (with veg) the vegetation's and creatures' keys; equal keys write equal bytes."""
+    return _files_key(_terrain_stamp(), _gen_key(), _stat_key(*sorted(data.glob("*.es[mp]"))), veg,
+                      _veg_stamp() + _creature_key() if veg else "",
+                      files=[into / "world.json", wdir / "cells.jsonl", wdir / "records.json",
+                             *([nav / "build.json", nav / "terrain.stamp"] if nav else [])])
+
+
+CREATURE_TABLES = ("build_cell", "build_person", "build_ref", "cell_region_run", "creature", "creature_band",
+                   "creature_form", "creature_list", "creature_list_entry", "creature_region_class",
+                   "creature_spawn_rule", "danger_band_combat", "danger_band_level", "encounter_zone", "land_region",
+                   "land_region_weather", "layout", "npc", "npc_statblock", "place", "place_no_spawn", "socket")
+
+
+@_memo
+def _creature_key() -> str:
+    """The spawn placement's code and the tables it reads (grep FROM in tools/argonia_world/creatures) over the
+    vegetation it stands beside (whose stamp carries the ground and water)."""
+    cr = ROOT / "tools" / "argonia_world" / "creatures"
+    return _files_key(_veg_stamp(), files=sorted(cr.glob("*.py")) + [ROOT / "tools/argonia_world/regions/api.py"],
+                      tables=CREATURE_TABLES)
+
+
+def _world_esm(data, into, wdir, nav, esm, veg, sample, frozen) -> None:
     full = WORLD_CAP + [str(GEN), "world", "--in", str(into / "world.json"), "--land", str(into / "land"),
                                    "--data", str(data), "--out", str(esm), "--water", str(wdir),
                                    *(["--navmesh", str(nav)] if nav else [])]
-    r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
+    with stage("esm-write", None):
+        r = subprocess.run(full, cwd=ROOT, env=dict(ENV, **WORLD_ENV), capture_output=True, text=True, check=False)
     if r.returncode:
         raise SystemExit(f"plugin: ArgoniaWorld.esm failed\n{(r.stdout + r.stderr)[-3000:]}")
     if veg:  # 2.W4 §a, part of the build (the sample too: the gate's vegcheck): the REFRs spliced into each cell (VegetationRecords.cs)
-        vdir = vegetation(into, sample, frozen)
+        with stage("vegetation", None if sample else _veg_stamp()) as st:
+            st.run = sample or not _stamp_holds(into / "vegetation" / "veg.stamp", _veg_stamp())
+            vdir = vegetation(into, sample, frozen)
         tmp = esm.with_suffix(".veg.esm")
         run(*(CAP if CAP else []), GEN, "vegetation", "--in", esm, "--veg", vdir, "--out", tmp)
         tmp.replace(esm)
@@ -391,14 +545,15 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
         print(run(sys.executable, "-m", "tools.argonia_world.vegetation", "textures", "overrides", "--esm", esm).strip())
     if veg:  # 1.15 §g, with the vegetation (both place on every cell): the spawn ACHRs and dens (CreatureRecords.cs)
         cdir = into / "creatures"
-        run(sys.executable, "-m", "tools.argonia_world.creatures", "build", "--out", cdir, "--veg", vdir,
-            "--ground", frozen, *(["--sample"] if sample else []), capped=True)
+        with stage("creatures", None if sample else _creature_key(), cdir) as st:
+            if st.run:
+                run(sys.executable, "-m", "tools.argonia_world.creatures", "build", "--out", cdir, "--veg", vdir,
+                    "--ground", frozen, *(["--sample"] if sample else []), capped=True)
         tmp = esm.with_suffix(".cr.esm")
         run(*(CAP if CAP else []), GEN, "creatures", "--in", esm, "--refs", cdir, "--out", tmp)
         tmp.replace(esm)
         print(run(sys.executable, "-m", "tools.argonia_world.creatures", "readback", "--out", cdir, "--esm", esm,
                   "--gen", GEN).strip())
-    return esm
 
 
 def sha256(p: Path) -> str:
@@ -436,7 +591,7 @@ def input_hash(data: Path | None = None) -> str:
                 if not f.endswith((".pyc", ".log")):
                     p = Path(dp) / f
                     h.update(str(p.relative_to(ROOT)).encode() + b"\0" + p.read_bytes() + b"\0")
-    extra = [GEN, GEN.with_suffix(".dll"), NAV_PROVINCE / "build.json"]
+    extra = [NAV_PROVINCE / "build.json"]  # the generator by its sources (tools/ArgoniaGen above), not its binary's time
     sys.path.insert(0, str(ROOT))
     from tools.argonia_world.terrain import vault
     extra += [vault.data_dir() / n for n in sorted(vault.FILES)]
@@ -453,6 +608,39 @@ def skip_plugin(now: str, stamp: str | None, esms_exist: bool) -> bool:
     return esms_exist and stamp is not None and stamp.strip() == now
 
 
+def plan() -> int:
+    """`make plugin PLAN=1`: every stage's key against the key it last finished with; nothing is built. world-json,
+    esm-write and records are unkeyed (cheap or keyed through world-esm); world-esm's key needs world.json, so the
+    plan reads the one the last build left."""
+    data = data_dir()
+    sys.path.insert(0, str(ROOT))
+    t = OUT / "terrain"
+    nav = NAV_PROVINCE if (NAV_PROVINCE / "build.json").exists() else None
+    own = [("ground", _ground_stamp(), t / "ground.stamp"), ("terrain", _terrain_stamp(), t / "terrain.stamp"),
+           ("water", _water_stamp(), WATER_OUT / "water.stamp"),
+           ("vegetation", _veg_stamp(), t / "vegetation" / "veg.stamp")]
+    for name, key, f in own:  # these keep their own stamps (the cell rows and vegetation bands key per row inside)
+        print(f"plan: {name:<11} {'skip' if _stamp_holds(f, key) else 'run '}  key {key[:12]}")
+    for name, key, outs in (("creatures", _creature_key(), (t / "creatures",)),
+                            ("world-esm", _world_key(data, t, WATER_OUT, nav, True),
+                             (t / "esm" / f"{Path(WORLD_ESM).stem}.final.esm",))):
+        print(f"plan: {name:<11} {stage_known(name, key, *outs)}  key {key[:12]}")
+    for name in ("world-json", "esm-write", "records"):
+        print(f"plan: {name:<11} run   (unkeyed: {'cheap' if name != 'esm-write' else 'runs when world-esm runs'})")
+    y = OUT / "build" / "Argonia.esm"
+    print(f"plan: {'yaml':<11} run when records' Argonia.esm sha256 differs from {(STAGE_DIR / 'yaml.key').read_text()[:12] if (STAGE_DIR / 'yaml.key').exists() else '-'}"
+          f" (last {sha256(y)[:12] if y.exists() else '-'})")
+    now = input_hash(data)
+    st = PLUGIN_STAMP.read_text() if PLUGIN_STAMP.exists() else None
+    print(f"plan: whole build {'skip' if skip_plugin(now, st, (OUT / 'Argonia.esm').exists() and (OUT / WORLD_ESM).exists()) else 'run'}  key {now[:12]}")
+    return 0
+
+
+def times_table() -> str:
+    tot = sum(t for _, _, t, _ in TIMES)
+    return "\n".join([f"plugin: times {n:<11} {r:<4} {t:8.1f} s  {k}" for n, r, t, k in TIMES] + [f"plugin: times total {tot:.1f} s"])
+
+
 def plugin(force: bool = False, world: bool = True) -> int:
     """`world=False` (`pipeline.py ids`, `make plugin-ids`): Argonia.esm and its new FormIDs over the existing
     out/ArgoniaWorld.esm (built when missing), without the whole-province world build; the stamp is left unwritten."""
@@ -464,13 +652,26 @@ def plugin(force: bool = False, world: bool = True) -> int:
             print(f"plugin: unchanged ({now[:16]})")
             return 0
     PLUGIN_STAMP.unlink(missing_ok=True)
-    build_tool()
-    scans(data)
+    TIMES.clear()
+    with stage("tool", None):
+        build_tool()
+    with stage("scans", None):
+        scans(data)
     master_world(data, rebuild=world)  # first: Argonia.esm's place cells override its cells
-    esm, yaml = generate(data, OUT / "build", frozen=False)
+    esm, yaml = generate(data, OUT / "build", frozen=False, keyed=True)
     shutil.copyfile(esm, OUT / "Argonia.esm")
-    shutil.rmtree(YAML, ignore_errors=True)
-    shutil.copytree(yaml, YAML)
+    with stage("yaml-copy", sha256(esm), YAML) as st:
+        if st.run:
+            shutil.rmtree(YAML, ignore_errors=True)
+            shutil.copytree(yaml, YAML)
+    with stage("round-trip", sha256(esm), OUT / "build" / "roundtrip.esm") as st:
+        if st.run:  # plugin-check's round trip, here once per new Argonia.esm
+            rt = OUT / "build" / "roundtrip.esm"
+            run("spriggit", "deserialize", "-i", YAML, "-o", rt, *SPRIGGIT, capped=True)
+            if canon(rt.read_bytes()) != canon(esm.read_bytes()):
+                rt.unlink()
+                raise SystemExit("plugin: round trip: plugin/Argonia/ deserialised is not byte-identical to Argonia.esm")
+    print(times_table())
     from tools.argonia_world import forms_table; forms_table.write()  # the allocator may have added rows (1.1)
     n = sum(1 for _ in YAML.rglob("*.yaml"))
     print(f"plugin: out/Argonia.esm ({esm.stat().st_size} bytes), {n} YAML files in plugin/Argonia/")
@@ -630,5 +831,5 @@ def vegetation_world() -> int:
 
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
-    sys.exit(plugin() if cmd == "plugin" else plugin(force=True, world=False) if cmd == "ids" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
+    sys.exit(plan() if cmd == "plugin" and "--plan" in sys.argv else plugin() if cmd == "plugin" else plugin(force=True, world=False) if cmd == "ids" else check() if cmd == "check" else navmesh() if cmd == "navmesh"
              else vegetation_world() if cmd == "vegetation" else (print(__doc__) or 2))

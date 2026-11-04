@@ -1,6 +1,8 @@
 """L1: the round trip's canonical record order (pipeline.canon) on a synthetic plugin (no game data)."""
 import importlib.util
 import struct
+
+import pytest
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location("pipeline", Path(__file__).with_name("pipeline.py"))
@@ -107,6 +109,9 @@ def test_world_hands_the_frozen_ground_to_every_stage(tmp_path, monkeypatch):
     monkeypatch.setattr(pipeline, "water", lambda into, sample: into / "water")
     monkeypatch.setattr(pipeline, "_terrain_stamp", lambda ground=True: "s")
     monkeypatch.setattr(pipeline, "_veg_stamp", lambda: "v")
+    for f in ("_ground_stamp", "_water_stamp", "_creature_key"):
+        monkeypatch.setattr(pipeline, f, lambda: f)
+    monkeypatch.setattr(pipeline, "STAGE_DIR", tmp_path / "stages")
     monkeypatch.setattr(pipeline, "_refuse_shared_rebuild", lambda into: None)
     monkeypatch.setattr(pipeline, "WORLD_CAP", [])
     monkeypatch.setattr(pipeline, "CAP", [])
@@ -120,3 +125,32 @@ def test_world_hands_the_frozen_ground_to_every_stage(tmp_path, monkeypatch):
     for mod in ("vegetation", "creatures"):
         c = next(c for c in calls if c[2] == f"tools.argonia_world.{mod}" and c[3] == "build")
         assert c[c.index("--ground") + 1] == str(frozen), mod
+
+
+def test_stage_runs_once_per_key_and_records_its_time(tmp_path, monkeypatch):
+    """0037: a stage reruns only when the key of its inputs moved or an output is missing."""
+    monkeypatch.setattr(pipeline, "STAGE_DIR", tmp_path / "stages")
+    out = tmp_path / "o"
+    with pipeline.stage("s", "k1", out) as st:
+        assert st.run
+        out.write_text("x")
+    assert pipeline.stage_known("s", "k1", out) == "skip"
+    assert pipeline.stage_known("s", "k2", out) == "run"      # an input moved
+    out.unlink()
+    assert pipeline.stage_known("s", "k1", out) == "run"      # an output is gone
+    assert pipeline.stage_known("s", None) == "run"           # unkeyed stages always run
+    with pytest.raises(RuntimeError):
+        with pipeline.stage("f", "k1"):
+            raise RuntimeError
+    assert not (tmp_path / "stages" / "f.key").exists()       # a failed stage leaves no key
+    assert [r[:2] for r in pipeline.TIMES[-1:]] == [("s", "run")]
+
+
+def test_files_key_names_its_inputs(tmp_path):
+    a = tmp_path / "a"
+    a.write_text("1")
+    k = pipeline._files_key("p", files=[a])
+    assert k == pipeline._files_key("p", files=[a])
+    a.write_text("2")
+    assert k != pipeline._files_key("p", files=[a])
+    assert k != pipeline._files_key("q", files=[a])
