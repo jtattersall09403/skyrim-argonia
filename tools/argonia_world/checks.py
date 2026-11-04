@@ -330,6 +330,10 @@ def weather_slots(w) -> list[str]:
         # the sky paint is written from the resolved template (lane 1.15-r5-sky-2): judge what is written
         from tools.argonia_world.regions.api import template_sky
         painted = template_sky(r["template_form_key"])
+        sk = w.query("SELECT classification FROM weather_sky WHERE weather_id = ?", wid)
+        from tools.argonia_world.regions.api import template_colours
+        if sk and sk[0]["classification"] == "Pleasant":  # every colour field is the template's (lane 1.15-r6-light)
+            painted = {**template_colours(r["template_form_key"]), **painted}
         cols.update(painted)
         if not w.query("SELECT 1 FROM weather_sky WHERE weather_id = ?", wid):
             out.append(f"weather {wid}: no weather_sky row")
@@ -339,6 +343,9 @@ def weather_slots(w) -> list[str]:
             out += [f"weather {wid}: {e}" for e in sky_blocked(sky[0]["classification"], sky[0],
                                                               {t: cols[s, t] for s, t in cols if s == "skyUpper"})]
         out += [f"weather {wid}: {e}" for e in derived_colours({k: v for k, v in cols.items() if k not in painted})]
+        tpl_lit = bool(sk and sk[0]["classification"] == "Pleasant" and template_colours(r["template_form_key"]))
+        if tpl_lit:  # every slot is the template's own design (0034): our horizon/luma heuristics judge authored slots
+            continue
         out += [f"weather {wid}: {e}" for e in horizon_line(cols)]
         if wid in fogs or wid in HAZE_GREY:
             out += [f"weather {wid}: {e}" for e in mist_fog_cast(cols)]
@@ -469,6 +476,35 @@ def sky_image(ours, tpl, tod: str, tpl_edid: str) -> list[str]:
     if not any(f"{w}_" in tpl_edid or tpl_edid.endswith(w) for w in ((want,) if isinstance(want, str) else want)):
         out.append(f"used at {tod} but its template {tpl_edid} is not a {want} image space")
     return out
+
+
+def sky_light(ours, tpl) -> list[str]:
+    """A clear (Pleasant) WTHR's every colour field against its resolved template's (lane 1.15-r6-light, 0034): all
+    17 NAM0 slots per time of day (fog near/far, sunlight, ambient, the sky paint...) and the four DALC."""
+    out = []
+    no, nt = _sub(ours, "NAM0"), _sub(tpl, "NAM0")
+    for k in range(min(len(no), len(nt)) // 16):
+        for t, tod in enumerate(TOD_ORDER):
+            a, b = no[k * 16 + t * 4:k * 16 + t * 4 + 3], nt[k * 16 + t * 4:k * 16 + t * 4 + 3]
+            if a != b:
+                out.append(f"NAM0 slot {k} at {tod} {a.hex().upper()} not the template's {b.hex().upper()}")
+    if [b for s, b in ours.subs if s == "DALC"] != [b for s, b in tpl.subs if s == "DALC"]:
+        out.append("directional ambient not the template's")
+    return out
+
+
+def sky_grade(ours, tpl) -> list[str]:
+    """An IMGS's cinematic grade (CNAM saturation, brightness, contrast) and tint (TNAM) against its template's."""
+    return [f"{sig} not the template's" for sig, n in (("CNAM", 12), ("TNAM", 16))
+            if _sub(ours, sig)[:n] != _sub(tpl, sig)[:n]]
+
+
+def volumetric_links(ours, tpl, update) -> list[str]:
+    """A WTHR's volumetric lighting (HNAM, four VOLI links) is its winner's where that carries any link, else
+    Update.esm's (Tropical Skyrim's HNAM is all null: the LE plugin's empty SSE field; lane 1.15-r6-light)."""
+    t = _sub(tpl, "HNAM")
+    want = t if t and any(t) else _sub(update, "HNAM") if update is not None else t
+    return [] if _sub(ours, "HNAM")[:16] == (want or b"")[:16] else ["volumetric lighting not the template's"]
 
 
 def sky_fill_and_ambient(ours, tpl, clear_template: bool, pleasant: bool) -> list[str]:

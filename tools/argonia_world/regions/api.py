@@ -282,6 +282,28 @@ def template_sky(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, str],
     return {(s, t): n[k * 16 + i * 4:k * 16 + i * 4 + 3] for s, k in SKY_SLOTS.items() for i, t in enumerate(TOD)}
 
 
+NAM0_SLOTS = ("skyUpper", "fogNear", "unknown", "ambient", "sunlight", "sun", "stars", "skyLower", "horizon",
+              "effectLighting", "cloudLodDiffuse", "cloudLodAmbient", "fogFar", "skyStatics", "waterMultiplier",
+              "sunGlare", "moonGlare")
+
+
+@lru_cache(maxsize=64)
+def template_colours(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, str], bytes]:
+    """Every NAM0 colour of a weather's resolved template, {(slot, tod): rgb} (empty without game data): what a clear
+    weather is written with (lightFromTemplate, lane 1.15-r6-light)."""
+    from tools.argonia_world.water.layer import top_group
+    p = template_plugin(form_key, Path(data))
+    if not (Path(data) / p).exists():
+        return {}
+    fid = int(form_key.split(":")[0], 16)
+    r = next((x for x in top_group(Path(data) / p, b"WTHR") if x.formid & 0xFFFFFF == fid), None)
+    n = r.first("NAM0") if r else None
+    if not n:
+        return {}
+    return {(s, t): n[k * 16 + i * 4:k * 16 + i * 4 + 3] for k, s in enumerate(NAM0_SLOTS) if k * 16 + 16 <= len(n)
+            for i, t in enumerate(TOD)}
+
+
 def _image_records(alloc, world) -> tuple[list[dict], dict]:
     images = {r["id"]: dict(r) for r in world.query("SELECT * FROM image_space ORDER BY id")}
     recs = []
@@ -295,7 +317,8 @@ def _image_records(alloc, world) -> tuple[list[dict], dict]:
                      "cinematic": {"saturation": i["saturation"], "brightness": i["brightness"],
                                    "contrast": i["contrast"]},
                      "tint": {"color": rgb(i["tint"]), "amount": i["tint_amount"]},
-                     "hdrFromTemplate": True})
+                     # ... and its cinematic grade and tint (lane 1.15-r6-light: ours had tint 0 and our own grade)
+                     "hdrFromTemplate": True, "gradeFromTemplate": True})
     return recs, images
 
 
@@ -338,6 +361,8 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
             # a clear sky's ambient and directional ambient are the template's (ruling 2026-11-03, 0034): the
             # authored olive ground light (7A8367, DALC Z+ 7D8465) was the last candidate for the cast
             "ambientFromTemplate": w["classification"] == "Pleasant",
+            # ... and every colour field (fog near/far, sunlight, the rest of NAM0; lane 1.15-r6-light, 0034)
+            "lightFromTemplate": w["classification"] == "Pleasant",
             "windSpeed": w["wind"], "transDelta": 4.0, "sunGlare": w["sun_glare"], "sunDamage": w["sun_damage"],
             "precipitationFadeIn": w["precip_fade_in"], "precipitationFadeOut": w["precip_fade_out"],
             "thunderFrequency": thunder,

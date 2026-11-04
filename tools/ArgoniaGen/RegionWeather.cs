@@ -261,6 +261,21 @@ static class RegionWriters
             w.HorizonColor = tpl.HorizonColor.DeepCopy();
             w.SunColor = tpl.SunColor.DeepCopy();
         }
+        if (r.TryGetProperty("lightFromTemplate", out var lft) && lft.GetBoolean())
+        {
+            // every colour field is the resolved template's (lane 1.15-r6-light, 0034): fog near/far, sunlight,
+            // effect lighting, water multiplier, glare, statics, stars, cloud LOD and the sky paint (all 17 NAM0 slots)
+            w.SkyUpperColor = tpl.SkyUpperColor.DeepCopy(); w.FogNearColor = tpl.FogNearColor.DeepCopy();
+            w.UnknownColor = tpl.UnknownColor.DeepCopy(); w.AmbientColor = tpl.AmbientColor.DeepCopy();
+            w.SunlightColor = tpl.SunlightColor.DeepCopy(); w.SunColor = tpl.SunColor.DeepCopy();
+            w.StarsColor = tpl.StarsColor.DeepCopy(); w.SkyLowerColor = tpl.SkyLowerColor.DeepCopy();
+            w.HorizonColor = tpl.HorizonColor.DeepCopy(); w.EffectLightingColor = tpl.EffectLightingColor.DeepCopy();
+            w.CloudLodDiffuseColor = tpl.CloudLodDiffuseColor.DeepCopy(); w.CloudLodAmbientColor = tpl.CloudLodAmbientColor.DeepCopy();
+            w.FogFarColor = tpl.FogFarColor.DeepCopy(); w.SkyStaticsColor = tpl.SkyStaticsColor.DeepCopy();
+            w.WaterMultiplierColor = tpl.WaterMultiplierColor.DeepCopy(); w.SunGlareColor = tpl.SunGlareColor.DeepCopy();
+            w.MoonGlareColor = tpl.MoonGlareColor.DeepCopy();
+            if (tpl.DirectionalAmbientLightingColors is { } d0) w.DirectionalAmbientLightingColors = d0.DeepCopy();
+        }
         if (r.TryGetProperty("ambientFromTemplate", out var aft2) && aft2.GetBoolean())
         {
             w.AmbientColor = tpl.AmbientColor.DeepCopy();
@@ -271,7 +286,10 @@ static class RegionWriters
         w.VisualEffect.SetTo(tpl.VisualEffect.FormKey);
         foreach (var s in tpl.Sounds) { var ws = new WeatherSound { Type = s.Type }; ws.Sound.SetTo(s.Sound.FormKey); w.Sounds.Add(ws); }
         w.SkyStatics.AddRange(tpl.SkyStatics.Select(x => (IFormLinkGetter<IStaticGetter>)new FormLink<IStaticGetter>(x.FormKey)));
-        if ((UpdateOverride(data, tk)?.VolumetricLighting ?? tpl.VolumetricLighting) is { } vl)
+        // the winner's VOLI links where it carries any; Tropical Skyrim.esp (an LE plugin, HEDR 1.70) carries HNAM
+        // all null on its 38 overrides, the converter's empty SSE field, so Update.esm's links stand (lane 1.15-r6-light)
+        static bool Linked(IWeatherVolumetricLightingGetter? v) => v is not null && !(v.Sunrise.IsNull && v.Day.IsNull && v.Sunset.IsNull && v.Night.IsNull);
+        if ((Linked(tpl.VolumetricLighting) ? tpl.VolumetricLighting : UpdateOverride(data, tk)?.VolumetricLighting ?? tpl.VolumetricLighting) is { } vl)
         {
             w.VolumetricLighting = new WeatherVolumetricLighting();
             w.VolumetricLighting.Sunrise.SetTo(vl.Sunrise.FormKey);
@@ -290,6 +308,13 @@ static class RegionWriters
         var c = r.GetProperty("cinematic");
         var t = r.GetProperty("tint");
         ImageSpaceHdr hdr;
+        // the cinematic grade and tint are the resolved template's (lane 1.15-r6-light, 0034)
+        IImageSpaceGetter? grade = null;
+        if (r.TryGetProperty("gradeFromTemplate", out var gft) && gft.GetBoolean())
+        {
+            var gk = FK(S(r, "template"));
+            grade = Winner(r, data, gk).ImageSpaces.TryGetValue(gk, out var gi) ? gi : throw new InvalidDataException($"no IMGS {gk}");
+        }
         if (r.TryGetProperty("hdrFromTemplate", out var hft) && hft.GetBoolean())
         {
             // the template's HDR, as WATR carries its template's body (decision 0034, lane 1.15-r5-sky)
@@ -312,8 +337,8 @@ static class RegionWriters
         {
             EditorID = S(r, "edid"),
             Hdr = hdr,
-            Cinematic = new ImageSpaceCinematic { Saturation = F(c, "saturation"), Brightness = F(c, "brightness"), Contrast = F(c, "contrast") },
-            Tint = new ImageSpaceTint { Amount = F(t, "amount"), Color = C(t.GetProperty("color")) },
+            Cinematic = grade?.Cinematic?.DeepCopy() ?? new ImageSpaceCinematic { Saturation = F(c, "saturation"), Brightness = F(c, "brightness"), Contrast = F(c, "contrast") },
+            Tint = grade?.Tint?.DeepCopy() ?? new ImageSpaceTint { Amount = F(t, "amount"), Color = C(t.GetProperty("color")) },
             DepthOfField = new ImageSpaceDepthOfField(),
         };
     }

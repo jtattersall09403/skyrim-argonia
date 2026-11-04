@@ -90,6 +90,9 @@ def test_written_sky_follows_its_templates(tmp_path):
     for p in dict.fromkeys(plugin.values()):
         byid = {x.formid & 0xFFFFFF: x for x in esm.records((GAME / p).read_bytes()) if x.sig in ("WTHR", "IMGS")}
         van.update({_fid(k): byid[_fid(k)] for k, q in plugin.items() if q == p})
+    upd = {x.formid & 0xFFFFFF: x for x in esm.records((GAME / "Update.esm").read_bytes()) if x.sig == "WTHR"}
+    hn = {w["edid"]: ours[_fid(w["formKey"])].first("HNAM") for w in weathers}
+    assert any(hn["ARG_Weather_clear_dry"]) and any(hn["ARG_Weather_mist"])  # god rays linked on clear and mist
     edid = {k: (v.first("EDID") or b"").rstrip(b"\0").decode() for k, v in van.items()}
     errs = []
     for w in weathers:
@@ -100,10 +103,30 @@ def test_written_sky_follows_its_templates(tmp_path):
         clear_tpl = bool(struct.unpack_from("<B", t.first("DATA"), 11)[0] & 1)  # DATA flags: Pleasant
         errs += [f"{w['edid']}: {e}" for e in checks.sky_fill_and_ambient(
             ours[_fid(w["formKey"])], t, clear_tpl, "Pleasant" in w["flags"])]
+        if "Pleasant" in w["flags"]:  # clear-dry: the weather in force at every noon stop (sw/fw 0x000E9B)
+            errs += [f"{w['edid']}: {e}" for e in checks.sky_light(ours[_fid(w["formKey"])], t)]
+        errs += [f"{w['edid']}: {e}" for e in checks.volumetric_links(ours[_fid(w["formKey"])], t, upd.get(_fid(w["template"])))]
         for tod, key in w["images"].items():
             if tod in ("sunrise", "sunset") and key == w["images"]["day"]:
                 continue  # one image all day (mist, overcast, rain, storm): judged as the day's
             i = next(x for x in images if x["formKey"] == key)
             errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_image(
                 ours[_fid(key)], van[_fid(i["template"])], tod, edid[_fid(i["template"])])]
+            errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_grade(ours[_fid(key)], van[_fid(i["template"])])]
     assert errs == []
+
+
+@pytest.mark.skipif(not (GAME / "Skyrim.esm").exists(), reason="no game data")
+def test_climate_dawn_hour_inside_the_template_sunrise():
+    """Lane 1.15-r6-light: the journeys' dawn hour (06:30, set gamehour to 6.5) lies inside our climate's sunrise window
+    and the template's (SkyrimClimate 000812 as the load order writes it: Tropical Skyrim.esp, TNAM 33/60 = 05:30-10:00),
+    and our window lies inside the template's."""
+    from tools.argonia_world.water.layer import top_group
+    tnam = None
+    for p in ("Skyrim.esm", "Update.esm", "Tropical Skyrim.esp"):
+        tnam = next((x.first("TNAM") for x in top_group(GAME / p, b"CLMT") if x.formid & 0xFFFFFF == 0x812), tnam)
+    tb, te = tnam[0] * 10, tnam[1] * 10
+    c = api.climate_record(Allocator(world=db.open(), frozen=True), db.open())
+    dawn = 6.5 * 60
+    assert (tb, te) == (330, 600)
+    assert tb <= c["sunriseBegin"] < dawn < c["sunriseEnd"] <= te
