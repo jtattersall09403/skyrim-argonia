@@ -33,7 +33,7 @@ open_ssh() {
     --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)
   # one rule per build-VM address, the previous one revoked first: a spot build VM changes address at every reboot and the
   # group's rule limit was reached after 55 of them (2026-11-04 18:0x: SSH timed out for 30 min while AWS called the machine healthy)
-  local prev; prev=$(cat "$C/sg-$M" 2>/dev/null)
+  local prev; prev=$(cat "$C/sg-$M" 2>/dev/null || true)  # no file yet for a new machine: not an exit under set -e (the clone, 19:32)
   if [ -n "$prev" ] && [ "$prev" != "$me" ]; then
     aws ec2 revoke-security-group-ingress --region $R --group-id "$sg" --ip-permissions "IpProtocol=tcp,FromPort=22,ToPort=22,IpRanges=[{CidrIp=$prev/32}]" >/dev/null 2>&1 || true
   fi
