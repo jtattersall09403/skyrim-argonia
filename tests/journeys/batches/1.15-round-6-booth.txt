@@ -1,0 +1,18 @@
+# Round 6 tree booth (lane 1.15-r6-mesh-patcher §6; checks.md row tree-look): one `python3 tools/bridge.py booth <form> out/batch/<round>/booth` per line,
+# near and mid distance at noon, on the deploy that lays the mesh patches. Form id | what the reader judges.
+7FD0F3 | bamboo: frond leaves an ordinary green, no flat teal or neon; stems green
+0D85C2 | kelp, in water: olive-orange, no cyan glow
+0EB91F | rainforest 01: trunk as dark as nearby bark, not pale or washed out; leaves normal
+0EB921 | rainforest 02: the same
+04E139 | 01skydead: trunk dark, no self-glowing leaves
+155FEC | Erut07: trunk shaded with bark relief, not cream-white; leaves may read red
+15B1E2 | Mega04: bark grain even, no streaks, swirls, smears or island seams
+15B1E3 | Mega05: the same
+15B1E7 | Swamp04: the same
+0EB922 | Jungle: the same
+0EB923 | Jungle: the same
+155FE0 | Jungle: the same
+155FE2 | Jungle: the same
+0E67A9 | Willow05 (KotM): is the frond neon lime? (pair with 01Willow below, same pose)
+034580 | 01Willow (BM&V): is the frond neon lime? If only the KotM willow is, the leaf wrap 5.0 is the cause; if both, the weather or shader
+Swamp01 | KotM snowgum card beside Undergrowth01: is the card's yellow-green beyond the undergrowth's? If yes, the vertex tint is the cause

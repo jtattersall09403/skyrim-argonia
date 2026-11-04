@@ -1,0 +1,23 @@
+# Round 6 (owner 07:36 and 08:06-08:11, #37: no hand-over with known gaps; the batch runs on the existing LOD and the
+# slow derived steps come last). Every open row of 1.15 in one batch on one deploy of main: the pass ledger shrinks it
+# to what failed, is new or whose inputs moved. Crash-prone last (the heavy town and the long panel). Shaders on.
+# The tree booth stills (tests/journeys/batches/1.15-round-6-booth.txt) run on the same boot after the batch.
+id: 1.15-round-6
+relaunch_mb: 6000
+relaunch_every: 0
+one_load: true
+settle_waits: true
+items:
+  - sky-ab
+  - water-types
+  - river-steps
+  - ground-materials
+  - road-look
+  - rock-booth
+  - tree-seat
+  - creature-spots
+  - creatures-kinds
+  - navmesh-paths
+  - claywater-look
+  - claywater-walk
+  - world-panel
