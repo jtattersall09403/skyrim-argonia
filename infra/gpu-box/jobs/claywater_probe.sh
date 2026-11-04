@@ -38,7 +38,7 @@ ok = None
 for i in range(24):
     time.sleep(10)
     try:
-        h = b.call("health"); p = b.call("player")
+        h = b.call("ping"); p = b.call("player")
         print(f"  +{int(time.monotonic()-t0):3d}s health ok, cell {p.get('cell',{}).get('id')} ws {(p.get('worldspace') or {}).get('editor_id')} main_thread {h.get('ping',{}).get('main_thread')}", flush=True)
         if (p.get('worldspace') or {}).get('editor_id') == 'ARG_Province':
             ok = int(time.monotonic()-t0); break
@@ -58,7 +58,7 @@ if ok:
     for i in range(12):
         time.sleep(10)
         try:
-            h = b.call("health"); print(f"  save wait +{(i+1)*10}s health ok", flush=True)
+            h = b.call("ping"); print(f"  save wait +{(i+1)*10}s health ok", flush=True)
         except GameDown as e:
             print("  GAME DOWN after save:", str(e)[:160]); ok = False; break
 sys.exit(0 if ok else 3)
