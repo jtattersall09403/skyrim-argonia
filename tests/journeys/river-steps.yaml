@@ -17,15 +17,15 @@ steps:
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -50 46, settle: 60}
+  - console: {line: cow ARG_Province -51 46, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -203234
-  - console: player.setpos y 191430
-  - console: player.setpos z 27001
+  - console: player.setpos x -205734
+  - console: player.setpos y 190901
+  - console: player.setpos z 25708
   - wait: 6
-  - console: player.setangle z 15
-  - console: player.setangle x 31
+  - console: player.setangle z 60
+  - console: player.setangle x -11
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-1}
@@ -37,12 +37,12 @@ steps:
   - console: {line: cow ARG_Province -48 17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -193142
-  - console: player.setpos y 70148
-  - console: player.setpos z 14852
+  - console: player.setpos x -193282
+  - console: player.setpos y 70390
+  - console: player.setpos z 14901
   - wait: 6
   - console: player.setangle z 150
-  - console: player.setangle x 32
+  - console: player.setangle x 29
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: step-2}
@@ -102,15 +102,15 @@ steps:
   # dry gully reach.1078-739, its bed in cell (-27,40)
   # subject: -106624 163968 7496
   do:
-  - console: {line: cow ARG_Province -26 40, settle: 60}
+  - console: {line: cow ARG_Province -27 39, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -106277
-  - console: player.setpos y 164315
-  - console: player.setpos z 7361
+  - console: player.setpos x -106624
+  - console: player.setpos y 163758
+  - console: player.setpos z 7425
   - wait: 6
-  - console: player.setangle z 225
-  - console: player.setangle x -2
+  - console: player.setangle z 0
+  - console: player.setangle x 13
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: gully-3}

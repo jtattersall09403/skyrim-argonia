@@ -16,18 +16,18 @@ camera: first
 steps:
 - name: sea
   # sea water from cell (-56,-20), level 0.0 m
-  # subject: -227328 -116078 1233
+  # subject: -227241 -115995 1060
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -56 -22, settle: 60}
+  - console: {line: cow ARG_Province -55 -22, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -227328
+  - console: player.setpos x -225087
   - console: player.setpos y -88066
-  - console: player.setpos z 1112
+  - console: player.setpos z 939
   - wait: 6
-  - console: player.setangle z 180
+  - console: player.setangle z 184
   - console: player.setangle x 0
   - wait: 4
   expect:
@@ -40,11 +40,11 @@ steps:
   - console: {line: cow ARG_Province -39 -26, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -156820
-  - console: player.setpos y -102593
+  - console: player.setpos x -156960
+  - console: player.setpos y -102873
   - console: player.setpos z 144
   - wait: 6
-  - console: player.setangle z 83
+  - console: player.setangle z 82
   - console: player.setangle x 1
   - wait: 4
   expect:
@@ -57,11 +57,11 @@ steps:
   - console: {line: cow ARG_Province -50 -29, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -202634
-  - console: player.setpos y -115312
-  - console: player.setpos z 856
+  - console: player.setpos x -202255
+  - console: player.setpos y -115914
+  - console: player.setpos z 823
   - wait: 6
-  - console: player.setangle z 179
+  - console: player.setangle z 180
   - console: player.setangle x 2
   - wait: 4
   expect:
@@ -88,15 +88,15 @@ steps:
   # creek-se water from cell (-44,-8), level 117.5 m
   # subject: -172404 -30951 7429
   do:
-  - console: {line: cow ARG_Province -45 -7, settle: 60}
+  - console: {line: cow ARG_Province -44 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -180792
-  - console: player.setpos y -28664
-  - console: player.setpos z 8529
+  - console: player.setpos x -179111
+  - console: player.setpos y -25863
+  - console: player.setpos z 8572
   - wait: 6
-  - console: player.setangle z 105
-  - console: player.setangle x 8
+  - console: player.setangle z 127
+  - console: player.setangle x 9
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: stream}
@@ -105,15 +105,15 @@ steps:
   # cold water from cell (-42,6), level 68.2 m
   # subject: -169984 46790 5578
   do:
-  - console: {line: cow ARG_Province -41 6, settle: 60}
+  - console: {line: cow ARG_Province -42 6, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -166763
-  - console: player.setpos y 26554
-  - console: player.setpos z 5384
+  - console: player.setpos x -169984
+  - console: player.setpos y 27394
+  - console: player.setpos z 4840
   - wait: 6
-  - console: player.setangle z 351
-  - console: player.setangle x -0
+  - console: player.setangle z 0
+  - console: player.setangle x -2
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: tarn}
@@ -122,15 +122,15 @@ steps:
   # brackish water from cell (-19,58), level 0.0 m
   # subject: -75776 224773 0
   do:
-  - console: {line: cow ARG_Province -19 59, settle: 60}
+  - console: {line: cow ARG_Province -19 58, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -76273
-  - console: player.setpos y 243474
-  - console: player.setpos z 1921
+  - console: player.setpos x -76833
+  - console: player.setpos y 241233
+  - console: player.setpos z 371
   - wait: 6
-  - console: player.setangle z 178
-  - console: player.setangle x 6
+  - console: player.setangle z 176
+  - console: player.setangle x 2
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: brackish-rim}

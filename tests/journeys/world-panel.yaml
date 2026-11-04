@@ -68,28 +68,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 108360
+     "gt": 107103
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 108960
+     "lt": 107703
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66768
+     "gt": -66250
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -66168
+     "lt": -65650
     },
     {
      "read": [
@@ -142,28 +142,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 108360
+     "gt": 107103
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 108960
+     "lt": 107703
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66768
+     "gt": -66250
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -66168
+     "lt": -65650
     },
     {
      "read": [
@@ -333,7 +333,7 @@
      }
     },
     {
-     "console": "player.setangle z 73"
+     "console": "player.setangle z 343"
     },
     {
      "console": "player.setangle x 0"
@@ -364,28 +364,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -126752
+     "gt": -120029
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -126152
+     "lt": -119429
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -145196
+     "gt": -144916
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144596
+     "lt": -144316
     },
     {
      "read": [
@@ -407,7 +407,7 @@
      }
     },
     {
-     "console": "player.setangle z 73"
+     "console": "player.setangle z 343"
     },
     {
      "console": "player.setangle x 0"
@@ -438,28 +438,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -126752
+     "gt": -120029
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -126152
+     "lt": -119429
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -145196
+     "gt": -144916
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144596
+     "lt": -144316
     },
     {
      "read": [
@@ -660,14 +660,14 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -69932
+     "gt": -69652
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -69332
+     "lt": -69052
     },
     {
      "read": [
@@ -734,14 +734,14 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -69932
+     "gt": -69652
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -69332
+     "lt": -69052
     },
     {
      "read": [
@@ -1252,28 +1252,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -66100
+     "gt": -65708
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -65500
+     "lt": -65108
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -127125
+     "gt": -127276
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126525
+     "lt": -126676
     },
     {
      "read": [
@@ -1326,28 +1326,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -66100
+     "gt": -65708
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -65500
+     "lt": -65108
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -127125
+     "gt": -127276
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126525
+     "lt": -126676
     },
     {
      "read": [
@@ -1548,28 +1548,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 132
+     "gt": -1128
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 732
+     "lt": -528
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 226796
+     "gt": 227216
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227396
+     "lt": 227816
     },
     {
      "read": [
@@ -1622,28 +1622,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 132
+     "gt": -1128
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 732
+     "lt": -528
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 226796
+     "gt": 227216
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227396
+     "lt": 227816
     },
     {
      "read": [
@@ -1858,14 +1858,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -12460
+     "gt": -12040
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -11860
+     "lt": -11440
     },
     {
      "read": [
@@ -1932,14 +1932,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -12460
+     "gt": -12040
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -11860
+     "lt": -11440
     },
     {
      "read": [
@@ -2140,28 +2140,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102164
+     "gt": 102240
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102764
+     "lt": 102840
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -48041
+     "gt": -47636
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47441
+     "lt": -47036
     },
     {
      "read": [
@@ -2214,28 +2214,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102164
+     "gt": 102240
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102764
+     "lt": 102840
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -48041
+     "gt": -47636
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47441
+     "lt": -47036
     },
     {
      "read": [
@@ -2436,28 +2436,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -155796
+     "gt": -156389
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155196
+     "lt": -155789
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 55764
+     "gt": 56228
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56364
+     "lt": 56828
     },
     {
      "read": [
@@ -2510,28 +2510,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -155796
+     "gt": -156389
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155196
+     "lt": -155789
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 55764
+     "gt": 56228
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56364
+     "lt": 56828
     },
     {
      "read": [

@@ -22,15 +22,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -223119
+      line: player.setpos x -222982
   - console:
-      line: player.setpos y 258856
+      line: player.setpos y 258667
   - console:
-      line: player.setpos z 37975
+      line: player.setpos z 37998
   - console:
-      line: player.setangle z 77
+      line: player.setangle z 32
   - console:
-      line: player.setangle x -42
+      line: player.setangle x -23
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xDD1A00
   expect:
@@ -41,7 +41,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-2-01coalroundrock
-  # 1DE977:Black Marsh.esm ref B0C425 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
+  # 1DE977:Black Marsh.esm ref B0C424 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
   # subject: -242757 75461 16940
   do:
   - console:
@@ -57,13 +57,13 @@ steps:
   - console:
       line: player.setpos y 75419
   - console:
-      line: player.setpos z 16763
+      line: player.setpos z 16657
   - console:
       line: player.setangle z 278
   - console:
-      line: player.setangle x -31
+      line: player.setangle x -28
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xB0C425
+  - console: prid ArgoniaWorld.esm|0xB0C424
   expect:
   - console: getpos x
     keep: rock_x
@@ -72,7 +72,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-3-arg_rock_gl_rock03
-  # 0C0005:ArgoniaWorld.esm ref B8CA02 in cell (-41,26), tilt 48.8 deg, scale 0.77, bound radius 64 u, stand 300 u off
+  # 0C0005:ArgoniaWorld.esm ref B8CA05 in cell (-41,26), tilt 48.8 deg, scale 0.77, bound radius 64 u, stand 300 u off
   # subject: -164965 107370 21912
   do:
   - console:
@@ -88,13 +88,13 @@ steps:
   - console:
       line: player.setpos y 107400
   - console:
-      line: player.setpos z 21776
+      line: player.setpos z 21673
   - console:
       line: player.setangle z 264
   - console:
-      line: player.setangle x -24
+      line: player.setangle x -21
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xB8CA02
+  - console: prid ArgoniaWorld.esm|0xB8CA05
   expect:
   - console: getpos x
     keep: rock_x
@@ -115,15 +115,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 101481
+      line: player.setpos x 101821
   - console:
-      line: player.setpos y 181821
+      line: player.setpos y 181573
   - console:
-      line: player.setpos z 12935
+      line: player.setpos z 12770
   - console:
-      line: player.setangle z 41
+      line: player.setangle z 356
   - console:
-      line: player.setangle x -36
+      line: player.setangle x -32
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xCB0401
   expect:
@@ -134,7 +134,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-5-arg_rock_gl_rock06
-  # 0C0007:ArgoniaWorld.esm ref C59601 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
+  # 0C0007:ArgoniaWorld.esm ref C59609 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
   # subject: -167419 162556 26959
   do:
   - console:
@@ -150,13 +150,13 @@ steps:
   - console:
       line: player.setpos y 162319
   - console:
-      line: player.setpos z 26581
+      line: player.setpos z 26479
   - console:
       line: player.setangle z 306
   - console:
-      line: player.setangle x -43
+      line: player.setangle x -42
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xC59601
+  - console: prid ArgoniaWorld.esm|0xC59609
   expect:
   - console: getpos x
     keep: rock_x
@@ -165,7 +165,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-6-01mudrockstack
-  # 1DE971:Black Marsh.esm ref C89645 in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
+  # 1DE971:Black Marsh.esm ref C8963A in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
   # subject: -140385 172969 24665
   do:
   - console:
@@ -177,17 +177,17 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -140224
+      line: player.setpos x -140179
   - console:
-      line: player.setpos y 172591
+      line: player.setpos y 173480
   - console:
-      line: player.setpos z 24266
+      line: player.setpos z 24958
   - console:
-      line: player.setangle z 337
+      line: player.setangle z 202
   - console:
-      line: player.setangle x -44
+      line: player.setangle x 37
   - wait: 6
-  - console: prid ArgoniaWorld.esm|0xC89645
+  - console: prid ArgoniaWorld.esm|0xC8963A
   expect:
   - console: getpos x
     keep: rock_x

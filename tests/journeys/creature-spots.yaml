@@ -12,8 +12,8 @@ scene: creature-spots
 camera: first
 steps:
 - name: water-a
-  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water; the stand 23 m from it, the next spawn point 77 m
-  # subject: -148864 103552 27793
+  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water; the stand 20 m from it, the next spawn point 55 m
+  # subject: -148992 103424 27793
   do:
   - hud: off
   - console: tgm
@@ -22,9 +22,9 @@ steps:
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
-  - console: player.setpos x -150475
-  - console: player.setpos y 103552
-  - console: player.setpos z 14105
+  - console: player.setpos x -150393
+  - console: player.setpos y 103424
+  - console: player.setpos z 14080
   - console: player.setangle z 90
   - console: player.setangle x -60
   - wait: 6
@@ -34,19 +34,19 @@ steps:
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: water_a_first}
   - {read: [actors, "2801"], path: listed, keep: water_a}
 - name: water-b
-  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore; the stand 20 m from it, the next spawn point 74 m
-  # subject: -143360 154240 14387
+  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore; the stand 20 m from it, the next spawn point 78 m
+  # subject: -143488 153984 14403
   do:
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 11
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
-  - console: player.setpos x -144350
-  - console: player.setpos y 155230
-  - console: player.setpos z 15019
+  - console: player.setpos x -144478
+  - console: player.setpos y 154974
+  - console: player.setpos z 14980
   - console: player.setangle z 135
-  - console: player.setangle x 28
+  - console: player.setangle x 26
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
@@ -54,12 +54,32 @@ steps:
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: water_b_first}
   - {read: [actors, "2801"], path: listed, keep: water_b}
 - name: marsh-a
-  # cell (-26, 34) flooded-forest D3 land: list lvln.flooded-forest.D3.land; the stand 20 m from it, the next spawn point 45 m
+  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land; the stand 20 m from it, the next spawn point 52 m
+  # subject: -103296 127488 667
+  do:
+  - console: {line: cow ARG_Province -26 31, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - console: player.setpos x -104286
+  - console: player.setpos y 128478
+  - console: player.setpos z 716
+  - console: player.setangle z 135
+  - console: player.setangle x 7
+  - wait: 6
+  expect:
+  - {read: [player], path: pos, keep: arrive}
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
+  - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_a_first}
+  - {read: [actors, "2801"], path: listed, keep: marsh_a}
+- name: marsh-b
+  # cell (-26, 34) flooded-forest D3 land: list lvln.flooded-forest.D3.land; the stand 20 m from it, the next spawn point 49 m
   # subject: -105984 139264 2131
   do:
   - console: {line: cow ARG_Province -26 34, settle: 60}
   - wait: 8
-  - console: set gamehour to 13
+  - console: set gamehour to 11
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - console: player.setpos x -104583
@@ -71,30 +91,10 @@ steps:
   expect:
   - {read: [player], path: pos, keep: arrive}
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
-  - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_a_first}
-  - {read: [actors, "2801"], path: listed, keep: marsh_a}
-- name: marsh-b
-  # cell (-25, 31) flooded-forest D4 land: list lvln.flooded-forest.D4.land; the stand 18 m from it, the next spawn point 27 m
-  # subject: -98560 127360 531
-  do:
-  - console: {line: cow ARG_Province -25 31, settle: 60}
-  - wait: 8
-  - console: set gamehour to 11
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - console: player.setpos x -98560
-  - console: player.setpos y 126099
-  - console: player.setpos z 433
-  - console: player.setangle z 0
-  - console: player.setangle x 1
-  - wait: 6
-  expect:
-  - {read: [player], path: pos, keep: arrive}
-  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_b_first}
   - {read: [actors, "2801"], path: listed, keep: marsh_b}
 - name: upland-a
-  # cell (-38, 29) western-frontier D3 land: list lvln.western-frontier.D3.land; the stand 15 m from it, the next spawn point 27 m
+  # cell (-38, 29) western-frontier D3 land: list lvln.western-frontier.D3.land; the stand 20 m from it, the next spawn point 45 m
   # subject: -153088 120960 17379
   do:
   - console: {line: cow ARG_Province -38 29, settle: 60}
@@ -102,11 +102,11 @@ steps:
   - console: set gamehour to 13
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
-  - console: player.setpos x -154138
+  - console: player.setpos x -151687
   - console: player.setpos y 120960
-  - console: player.setpos z 18032
-  - console: player.setangle z 90
-  - console: player.setangle x 36
+  - console: player.setpos z 16167
+  - console: player.setangle z 270
+  - console: player.setangle x -38
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
@@ -134,19 +134,19 @@ steps:
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: upland_b_first}
   - {read: [actors, "2801"], path: listed, keep: upland_b}
 - name: den-hackwing
-  # creature.hackwing den in cell (-29, 25), western-frontier D2; the stand 20 m from its predator
-  # subject: -118656 102528 1723
+  # creature.hackwing den in cell (-25, 25), rootland D2; the stand 16 m from its predator
+  # subject: -102144 104960 531
   do:
-  - console: {line: cow ARG_Province -29 25, settle: 60}
+  - console: {line: cow ARG_Province -25 25, settle: 60}
   - wait: 8
   - console: set gamehour to 12
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
-  - console: player.setpos x -119646
-  - console: player.setpos y 103518
-  - console: player.setpos z 1653
-  - console: player.setangle z 135
-  - console: player.setangle x 2
+  - console: player.setpos x -102144
+  - console: player.setpos y 103840
+  - console: player.setpos z 520
+  - console: player.setangle z 0
+  - console: player.setangle x 6
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: arrive}
