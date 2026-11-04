@@ -91,6 +91,26 @@ def stage_known(name: str, key: str | None, *outputs: Path) -> str:
     return "run" if stage(name, key, *outputs).run else "skip"
 
 
+def _code_bytes(f: Path) -> bytes:
+    """What a stamp hashes of a file: for .py the AST without docstrings (comments, formatting and docstrings move
+    nothing, code does); a file that does not parse, and every other file, by its bytes."""
+    b = f.read_bytes()
+    if f.suffix != ".py":
+        return b
+    import ast
+    try:
+        tree = ast.parse(b)
+    except (SyntaxError, ValueError):
+        return b
+    for n in ast.walk(tree):
+        if isinstance(n, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)):
+            body = n.body
+            if body and isinstance(body[0], ast.Expr) and isinstance(body[0].value, ast.Constant) \
+                    and isinstance(body[0].value.value, str):
+                n.body = body[1:] or [ast.Pass()]
+    return ast.dump(tree, include_attributes=False).encode()
+
+
 def _files_key(*parts, files=(), tables=()) -> str:
     """A key over strings, file bytes (missing files by name) and world-db tables (their jsonl bytes, named by db.py)."""
     import hashlib
@@ -99,7 +119,7 @@ def _files_key(*parts, files=(), tables=()) -> str:
         h.update(str(x).encode() + b"\0")
     for f in files:
         f = Path(f)
-        h.update(f.name.encode() + (f.read_bytes() if f.is_file() else b"-") + b"\0")
+        h.update(f.name.encode() + (_code_bytes(f) if f.is_file() else b"-") + b"\0")
     if tables:
         sys.path.insert(0, str(ROOT))
         from tools.argonia_world import db
@@ -278,9 +298,9 @@ def _terrain_stamp(ground: bool = True) -> str:
     h = hashlib.sha256(repr(sorted(table(db.open()).items())).encode())
     for f in sorted(TERRAIN / n for n in ("__main__.py", "build.py", "grid.py", "landcover.py", "material.py", "png.py",
                                           "place_ground.py", "quantize.py", "world.py")):  # what the cell lines depend on
-        h.update(f.name.encode() + f.read_bytes())
+        h.update(f.name.encode() + _code_bytes(f))
     roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads
-    h.update(roads.read_bytes() + repr(db.open().values(
+    h.update(_code_bytes(roads) + repr(db.open().values(
         "SELECT group_concat(v, ';') FROM (SELECT route_id || surface_cover || flat_width_m || x_m || y_m v "
         "FROM road JOIN road_point USING (route_id) ORDER BY route_id, ord)")).encode())
     for n in sorted(vault.FILES):
@@ -316,7 +336,7 @@ def _ground_stamp() -> str:
     h = hashlib.sha256()
     # the code: generate.py and every module it runs (water_field, cellwater, grid, routes.shape and its helpers)
     for f in sorted([*TERRAIN.glob("*.py"), TERRAIN.parent / "routes" / "shape.py"]):  # the import walk (_cover_key) adds the rest; routes/census.py and infra.py are not the ground's
-        h.update(f.name.encode() + f.read_bytes())
+        h.update(f.name.encode() + _code_bytes(f))
     for t in GROUND_TABLES:
         f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"  # the jsonl bytes, named by db.py
         h.update(t.encode() + (f.read_bytes() if f.exists() else b""))
@@ -382,7 +402,7 @@ def _water_stamp() -> str:
     from tools.argonia_world import db
     w = db.open()
     for f in sorted(WATER.glob("*.py")):
-        h.update(f.name.encode() + f.read_bytes())
+        h.update(f.name.encode() + _code_bytes(f))
     for t in sorted(n for n in w.values("SELECT name FROM sqlite_master WHERE type = 'table'")
                     if n.startswith(("hydrology_", "water_", "cell_water"))):
         h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
@@ -434,7 +454,7 @@ def _veg_stamp() -> str:
     w = db.open()
     for f in sorted(VEG.glob("*.py")) + [ROOT / "tools" / "navmesh" / "inputs.py",
                                          ROOT / "tools" / "argonia_world" / "routes" / "paint.py"]:
-        h.update(f.name.encode() + f.read_bytes())
+        h.update(f.name.encode() + _code_bytes(f))
     for t in VEG_TABLES:
         h.update(t.encode() + repr([tuple(r) for r in w.query(f'SELECT * FROM "{t}"')]).encode())
     h.update((WATER_OUT / "cells.jsonl").read_bytes())
@@ -701,7 +721,7 @@ def input_hash(data: Path | None = None) -> str:
             for f in sorted(fn):
                 if not f.endswith((".pyc", ".log")):
                     p = Path(dp) / f
-                    h.update(str(p.relative_to(ROOT)).encode() + b"\0" + p.read_bytes() + b"\0")
+                    h.update(str(p.relative_to(ROOT)).encode() + b"\0" + _code_bytes(p) + b"\0")
     extra = [NAV_PROVINCE / "build.json"]  # the generator by its sources (tools/ArgoniaGen above), not its binary's time
     sys.path.insert(0, str(ROOT))
     from tools.argonia_world.terrain import vault

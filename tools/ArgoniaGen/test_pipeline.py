@@ -204,3 +204,17 @@ def test_walk_is_stable_and_sees_a_new_import(tmp_path):
     (pkg / "c.py").write_text("g = 'SELECT * FROM road'\n")
     got = {f.name for f in pipeline.walk_imports("tools.argonia_world.demo.a", tmp_path)}
     assert {"a.py", "b.py", "c.py"} <= got
+
+
+def test_code_bytes_ignores_comments_and_docstrings_not_code(tmp_path):
+    f = tmp_path / "m.py"
+    f.write_text('"""doc"""\nK = 1  # c\n\ndef g():\n    """d"""\n    return K\n')
+    base = pipeline._code_bytes(f)
+    f.write_text('"""other doc"""\n# new comment\nK   =   1\n\ndef g():\n    # x\n    return K\n')
+    assert pipeline._code_bytes(f) == base
+    f.write_text('"""doc"""\nK = 2  # c\n\ndef g():\n    """d"""\n    return K\n')
+    assert pipeline._code_bytes(f) != base
+    f.write_text("def (:\n")
+    assert pipeline._code_bytes(f) == b"def (:\n"
+    (tmp_path / "t.txt").write_text("# a")
+    assert pipeline._code_bytes(tmp_path / "t.txt") == b"# a"
