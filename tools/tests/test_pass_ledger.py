@@ -171,3 +171,34 @@ def test_refresh_keeps_reach_lines(tmp_path, monkeypatch):
     f.write_text("# c\nid: x\nrunner: 1\n")  # a generator rewrote it
     jm._put_reach(lines)
     assert f.read_text() == "# c\nid: x\nreach: [esm]\nrunner: 1\n"
+
+
+@pytest.mark.parametrize("name", ["world-panel", "sky-ab"])
+def test_panel_and_sky_reach_ignores_other_journeys_and_follows_placement(name, tmp_path):
+    """The 00:41 rerun ran 21 steps, 0 skipped, after a sky-ab bound edit: with no `reach:` every journey edit moved
+    every key. Their own reach: an unrelated journey's edit leaves the keys; a placement (ESM) change moves them."""
+    import yaml
+    j = yaml.safe_load((ROOT / "tests" / "journeys" / f"{name}.yaml").read_text())
+    assert "esm" in j["reach"] and "tests/journeys/**" not in j["reach"]
+    r = tmp_path / "repo"
+    (r / "tests" / "journeys").mkdir(parents=True)
+    (r / "tests" / "scenes").mkdir(parents=True)
+    (r / "data").mkdir()
+    (r / "out").mkdir()
+    (r / "tests" / "journeys" / "other.yaml").write_text("id: other\n")
+    (r / "tests" / "scenes" / "world-panel.txt").write_text("player.moveto X\n")
+    (r / "data" / "dependencies.json").write_text("{}")
+    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"refs1")
+    subprocess.run(["git", "init", "-q"], cwd=r, check=True)
+    subprocess.run(["git", "add", "."], cwd=r, check=True)
+    pl.clear_cache()
+    keys = lambda: [pl.reach_hash(j, s, r) for s in j["steps"]]  # noqa: E731
+    k0 = keys()
+    (r / "tests" / "journeys" / "other.yaml").write_text("id: other\nsteps: []\n")
+    subprocess.run(["git", "add", "."], cwd=r, check=True)
+    pl.clear_cache()
+    assert keys() == k0
+    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"refs2")   # a placement change
+    pl.clear_cache()
+    assert all(a != b for a, b in zip(keys(), k0))
+    pl.clear_cache()

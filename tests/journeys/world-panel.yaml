@@ -9,6 +9,7 @@
 # (`python3 -m tools.journeys refresh`).
 {
  "id": "world-panel",
+ "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
  "runner": 1,
  "crash_risk": "medium",
  "scene": "world-panel",

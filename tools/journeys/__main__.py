@@ -98,7 +98,7 @@ def _reach_lines() -> dict:
     """Each journey file's `reach:` line (the pass ledger's inputs, tools/pass_ledger.py)."""
     out = {}
     for f in JOURNEYS.glob("*.yaml"):
-        m = re.search(r"^reach:.*\n", f.read_text(), re.M)
+        m = re.search(r'^(?:reach| "reach"):.*\n', f.read_text(), re.M)   # YAML block or a JSON journey's one line
         if m:
             out[f] = m.group(0)
     return out
@@ -108,9 +108,9 @@ def _put_reach(lines: dict) -> None:
     """A regenerated journey that lost its `reach:` line gets it back, after its `id:` line."""
     for f, line in lines.items():
         t = f.read_text() if f.exists() else ""
-        if re.search(r"^reach:", t, re.M):
+        if re.search(r'^(?:reach| "reach"):', t, re.M):
             continue
-        m = re.search(r"^id: .*\n", t, re.M)
+        m = re.search(r'^(?:id| "id"): .*\n', t, re.M)
         if m:
             f.write_text(t[:m.end()] + line + t[m.end():])
 
