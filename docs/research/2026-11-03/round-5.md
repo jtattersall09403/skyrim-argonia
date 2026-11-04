@@ -101,9 +101,18 @@ olive until MurkyWater lands); the panel's noon stops proven (water, trunks, not
 one high stand (the next failure names the engine state). The LOD for the final tree set is rebuilt when Paris has
 capacity again; the final round then runs only the stops that have not passed (the pass ledger), then the saves.
 
-## The close (in progress)
+## The close (2026-11-03 18:55 to 2026-11-04 00:22)
 
-The LOD rebuilt for the final ESM, the final deploy, the final batch (six journeys), the ten region saves remade, the
-hand-over with the stills' verdicts. Open after this round: the residual Community Shaders grey (a feature bisect, one
-machine run per feature); the Settings page frame; creature presence in game against the lists; lizard-steed and
-mouth-plover forms (the owner's call).
+One build (7f4d0004) deployed 20:20; terrain LOD by xLODGen on Paris (complete, but the driver's one read of the tool's
+window came back unreadable and failed the step: 90 minutes lost in silence, decision 0037 amended); TexGen on Paris;
+Paris reclaimed by AWS mid-DynDOLOD at 22:23 (the second time that day), so the object LOD ran on an on-demand g6.xlarge
+imaged from Paris's disk (the owner's G quota had landed): DynDOLOD 2366 s, collect 449 s, archived 23:55 (30461 files,
+1.69 GB), the box terminated, both images deregistered (two 150 GB snapshots remain: the build role may not delete
+snapshots). Paris deployed the archive 00:03 (LOD restored: 30462 files), the rest batch ran 00:05 (0/3 journeys: a stale
+sky-ab bound, two camera failures against trunks, see checks.md), the ten saves remade 00:14-00:22 (the game crashed in
+d3d11.dll at the Claywater stop; Claywater remade in r5-close11). Reader on the 16 stills: lagoon noon and dawn proven,
+stream and black swamp read as water; stands in foliage at the sea, river and corridor shore; an olive noon cast in the
+corridor and sink basin; neon lime willows; no light shafts at dawn; a pale cream rock mound; a stretched bark trunk.
+Open after this round: the vantage generator's canopy and frond clearance; the camera failure's cause; the residual
+olive cast and neon willows (owner's eye); the Settings page frame; creature presence against the lists; lizard-steed
+and mouth-plover forms (the owner's call).
