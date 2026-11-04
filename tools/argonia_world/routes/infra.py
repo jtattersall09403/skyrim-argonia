@@ -17,6 +17,15 @@ heights the LAND stores), so the L1 check holds each one within GROUND_TOL_M of 
   we lack (a placed primitive and a script on the trigger's base) and an event script, for a message the border
   wall makes redundant as a barrier.
 - **Landings**: each `ferry-landing` travel_station with a piece, at its position, facing its berth.
+- **Bridges** (lane 1.15-r6-bridges): where a road crosses a water step (two cells' levels more than STEP_M
+  apart, the step's channel under it), no ford can stand, so the road crosses on a bridge, Skyrim's way (0034: its
+  road bridges are statics laid across the water with their ends on the banks, Bridge01 42.3 m long, the crown a
+  median 5 m over the water and ~3 m over the land at its ends, so the road ramps up to it; probe in the lane
+  report). The piece is King of the Murkmire's cypress scaffold bridge (`MurkmirePlatformBridge04`, 17.6 m x
+  3.8 m, the widest wooden span of the stack; Stormhold's "long wooden bridges", world/sources/lore/stormhold.md
+  43; never a Nordic stone bridge, 0006). The deck is level along the road's line, on the mean line of the roads it
+  carries, centred where the earthwork at its two seats is least, its top at the higher bank: the last SEAT_M of each end rests on its bank, and the
+  terrain pass holds the corridor there at the deck's top (`seats`, the ask to the road pass).
 - **Signposts**: one per `signpost` row: the post at the node, turned to its first arm, and one arm board per
   `signpost_arm`, turned to the arm's bearing. Skyrim has no sign text but the crosshair: each arm is an ACTI of
   ours named with its destination (the place's name, or the exit's city), shown when the player looks at it, the
@@ -63,6 +72,132 @@ PERK = ("ARG_Perk_RoadClosed", "hook.road-closed")  # ArgoniaCore's EnsurePerks 
 FRAGMENT_SCRIPT = "ARG_PRKF_RoadClosed"
 MESSAGE = ("ARG_Msg_RoadClosed", "message.road-closed")
 GATE_ACTI = ("ARG_ACTI_BorderGate", "infra.border-gate")
+
+
+# The bridge piece: King of the Murkmire's MurkmirePlatformBridge04 (stockadescaffoldbridge04.nif), its OBND read
+# from the plugin (-613, -136, -80, 616, 130, 47) units: long along the mesh's +x, the deck's top 47 u over the origin.
+BRIDGE_PIECE = "bridge-cypress-scaffold"
+DESIGN_PIECES[BRIDGE_PIECE] = "meshes/argonia/stockades/stockadescaffoldbridge04.nif"
+BRIDGE_LEN_M = su.units_to_metres(613 + 616)
+BRIDGE_HALF_W_M = su.units_to_metres(136 + 130) / 2
+BRIDGE_TOP_M = su.units_to_metres(47)  # the deck's top over the piece's origin
+BRIDGE_YAW_OFFSET = -90.0  # the mesh's long axis is its +x: a deck along heading h is yawed h - 90
+SEAT_M = 0.3  # each end's last 0.3 m rests on its bank (the lane brief)
+SEAT_TOL_M = 0.3  # a bank within this of the deck's top needs no seat from the terrain pass
+APPROACH_M = 4.0  # the corridor beyond each end the seat search weighs: the road meets the deck level there
+STEP_M = 0.5  # routes/shape.py's step: two cells' levels further apart are a step, never a ford
+# The step crossings lane 1.15-r6-roads-dry's census named (34180d72): id -> (the census point (x, y south) m, the
+# step's channel, the roads that cross there, widest first: the deck lies along the first one's line).
+BRIDGES = {
+    "gideon-step": ((1600.0, 3041.0), "reach.878-1669",
+                    ("route.road.gideon-soulrest", "route.road.gideon-stormhold")),
+    "glenbridge-step": ((1871.0, 2723.0), "reach.1015-1489",
+                        ("route.road.gideon-stormhold", "route.road.glenbridge-the-road-nisswo-house",
+                         "route.track.north-shadowfen-rootworm-line")),
+    "thorn-step": ((5581.0, 1461.0), "reach.3043-787", ("route.road.stormhold-thorn", "route.track.dres-slave-road")),
+}
+
+
+def nearest_on(pts, q) -> tuple[float, tuple[float, float], float]:
+    """(distance, the nearest point, the heading there) of a polyline to q."""
+    best = None
+    for a, b in zip(pts[:-1], pts[1:]):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        L2 = dx * dx + dy * dy
+        if L2 == 0:
+            continue
+        t = max(0.0, min(1.0, ((q[0] - a[0]) * dx + (q[1] - a[1]) * dy) / L2))
+        p = (a[0] + t * dx, a[1] + t * dy)
+        d = math.hypot(p[0] - q[0], p[1] - q[1])
+        if best is None or d < best[0]:
+            best = (d, p, heading(a, b))
+    return best
+
+
+def seat(z_along, length: float = BRIDGE_LEN_M, reach: float = BRIDGE_LEN_M / 2 - 1.0, step: float = 0.25):
+    """The deck's offset along the road from the crossing, its top and its two banks: ``z_along(s)`` is the ground
+    s metres along the road's line. Each end's seat (SEAT_M in from the end) and APPROACH_M beyond it should stand
+    at the deck's top (the higher seat's bank, so no bank is cut under a deck end); the offset (the crossing kept
+    on the deck, within `reach`) is the one with the least earthwork there. -> (offset, top, (bank a, bank b))."""
+    half = length / 2 - SEAT_M
+    best = None
+    for k in range(-int(reach / step), int(reach / step) + 1):
+        c = k * step
+        a, b = z_along(c - half), z_along(c + half)
+        top = max(a, b)
+        work = sum(abs(z_along(c - half - j) - top) + abs(z_along(c + half + j) - top)
+                   for j in range(int(APPROACH_M) + 1))
+        key = (round(work, 3), abs(c))
+        if best is None or key < best[0]:
+            best = (key, c, top, (a, b))
+    return best[1], best[2], best[3]
+
+
+def bridge_placements(w, z_at) -> list[dict]:
+    """Every BRIDGES piece: on its first road's line at the census point, along that road, seated (seat()); its two
+    ends' positions and banks, and the lift each bank needs to meet the deck."""
+    out = []
+    for bid, (q, reach, routes) in sorted(BRIDGES.items()):
+        lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
+            "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
+        if any(len(v) < 2 for v in lines.values()):
+            continue  # a road not traced: nothing to bridge
+        near = [nearest_on(lines[r], q) for r in routes]
+        x, y, hd = axis(near)
+        ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
+        c, top, banks = seat(lambda s: z_at(x + ux * s, y + uy * s))
+        cx, cy = x + ux * c, y + uy * c
+        half = BRIDGE_LEN_M / 2
+        ends = [[round(cx - ux * half, 2), round(cy - uy * half, 2), round(top, 2)],
+                [round(cx + ux * half, 2), round(cy + uy * half, 2), round(top, 2)]]
+        out.append({"id": f"bridge.{bid}", "kind": "bridge", "piece": BRIDGE_PIECE,
+                    "at_m": [round(cx, 2), round(cy, 2), round(top - BRIDGE_TOP_M, 2)],
+                    "yaw": round((hd + BRIDGE_YAW_OFFSET) % 360, 2), "heading": round(hd, 2), "deck_m": round(top, 2),
+                    "ends_m": ends, "banks_m": [round(b, 2) for b in banks],
+                    "lift_m": [round(top - b, 2) for b in banks], "routes": list(routes), "reach": reach,
+                    "crossing_m": [round(x, 2), round(y, 2)]})
+    return out
+
+
+def axis(near) -> tuple[float, float, float]:
+    """The deck's centre line through several roads' crossings: their mean point, and the first road's heading
+    turned by the others' mean deviation (each taken either way along, so a road traced the other way counts)."""
+    h0 = near[0][2]
+    dev = [((n[2] - h0 + 90) % 180) - 90 for n in near]
+    return (sum(n[1][0] for n in near) / len(near), sum(n[1][1] for n in near) / len(near),
+            (h0 + sum(dev) / len(dev)) % 360)
+
+
+def lateral(p: dict, pt) -> tuple[float, float]:
+    """(along, across) metres of a point from a bridge's centre in its deck's frame."""
+    ux, uy = math.sin(math.radians(p["heading"])), -math.cos(math.radians(p["heading"]))
+    dx, dy = pt[0] - p["at_m"][0], pt[1] - p["at_m"][1]
+    return dx * ux + dy * uy, -dx * uy + dy * ux
+
+
+def seats(w, z_at) -> list[dict]:
+    """The ask to the terrain's road pass (the lane may not edit terrain/generate.py or routes/shape.py): at each
+    bridge end, the corridor held at the deck's top from SEAT_M under the deck out to APPROACH_M beyond it, the
+    deck's width plus the road's shoulder wide, then eased into the road's own profile at GRADE_MAX; between the two
+    seats the channel is left to the water (the deck stands over it)."""
+    out = []
+    for p in bridge_placements(w, z_at):
+        for k, e in enumerate(p["ends_m"]):
+            out.append({"bridge": p["id"], "end": k, "at_m": e[:2], "z_m": p["deck_m"], "heading": p["heading"],
+                        "from_m": -SEAT_M, "to_m": APPROACH_M, "half_width_m": round(BRIDGE_HALF_W_M + 2.0, 2),
+                        "lift_m": p["lift_m"][k]})
+    return out
+
+
+def census_bridges(w, z_at) -> list[dict]:
+    """The census's `bridges` entry (routes/shape.py wet_main, the planner's edit): per crossing, the bridge form,
+    its roads and its ends' bank heights against the deck."""
+    from tools.argonia_world.pieces import Index, Resolver
+    r, _ = _mesh(Resolver(Index.load()), BRIDGE_PIECE)
+    form = r.form_key if r is not None else None
+    return [{"id": p["id"], "form": form, "routes": p["routes"], "at_m": p["at_m"][:2], "deck_m": p["deck_m"],
+             "banks_m": p["banks_m"], "seated": all(abs(x) <= SEAT_TOL_M for x in p["lift_m"])}
+            for p in bridge_placements(w, z_at)]
 
 
 def walk_back(pts: list[tuple[float, float]], dist: float) -> tuple[tuple[float, float], float]:
@@ -188,7 +323,7 @@ def placements(w, z_at) -> list[dict]:
                         "at_m": [x, y, round(z + ARM_TOP_M - ARM_STEP_M * k, 2)],
                         "yaw": round((a["bearing_deg"] + ARM_YAW_OFFSET) % 360, 2), "signpost": s["id"],
                         "text": texts.get((s["id"], k), ""), "bearing": a["bearing_deg"]})
-    return out
+    return out + bridge_placements(w, z_at)
 
 
 def edid(p: dict) -> str:
@@ -290,6 +425,9 @@ def check(w, resolver, z_at) -> list[str]:
             if not p["text"].strip():
                 errs.append(f"{p['id']}: the arm has no text")
             continue
+        if p["kind"] == "bridge":
+            errs += bridge_errors(p, w, z_at)
+            continue
         want = landing_z(w, z_at, x, y) if p["kind"] == "landing" else z_at(x, y)
         if abs(z - want) > GROUND_TOL_M:
             errs.append(f"{p['id']}: z {z} m is {z - want:+.2f} m off the final ground")
@@ -307,6 +445,26 @@ def check(w, resolver, z_at) -> list[str]:
     kinds = {k: sum(1 for p in ps if p["kind"] == k) for k in ("gate", "landing", "signpost", "arm")}
     if kinds["gate"] != len(w.values("SELECT id FROM route_node WHERE kind = 'exit'")):
         errs.append(f"{kinds['gate']} gates for the exit nodes")
+    return errs
+
+
+def bridge_errors(p: dict, w, z_at) -> list[str]:
+    """L1 for one bridge: every road it carries crosses the deck inside its width (the road line at the crossing,
+    within BRIDGE_HALF_W_M across the deck's axis, inside its length), the deck's top at the higher bank, and the
+    channel under it below the deck (it spans water). The banks' lift is the terrain's seat, not an error here."""
+    errs = []
+    for r in p["routes"]:
+        pts = [(q["x_m"], q["y_m"]) for q in w.query("SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)]
+        _, q, _ = nearest_on(pts, p["crossing_m"])
+        al, ac = lateral(p, q)
+        if abs(ac) > BRIDGE_HALF_W_M or abs(al) > BRIDGE_LEN_M / 2 - SEAT_M:
+            errs.append(f"{p['id']}: {r} crosses {ac:+.1f} m across, {al:+.1f} m along the deck")
+    if abs(p["deck_m"] - max(p["banks_m"])) > 0.01 or min(p["lift_m"]) < -0.01:
+        errs.append(f"{p['id']}: deck {p['deck_m']} m not at the higher bank {p['banks_m']}")
+    under = min(z_at(p["at_m"][0] + (e[0] - p["at_m"][0]) * t, p["at_m"][1] + (e[1] - p["at_m"][1]) * t)
+                for e in p["ends_m"] for t in (0.0, 0.25, 0.5, 0.75))
+    if under >= p["deck_m"] - BRIDGE_TOP_M:
+        errs.append(f"{p['id']}: no gap under the deck (lowest ground {under:.2f} m)")
     return errs
 
 
@@ -329,9 +487,12 @@ def main(argv: list[str]) -> int:
     errs = check(w, res, g.z)
     for e in errs:
         print("infra:", e)
-    n = {k: sum(1 for p in ps if p["kind"] == k) for k in ("gate", "landing", "signpost", "arm")}
-    print(f"infra: {n['gate']} gates, {n['landing']} landings, {n['signpost']} signposts, {n['arm']} arms; "
-          f"{len(errs)} errors")
+    for p in ps:
+        if p["kind"] == "bridge":
+            print(f"{p['id']}: deck {p['deck_m']} m, banks {p['banks_m']}, lift {p['lift_m']}, ends {p['ends_m']}")
+    n = {k: sum(1 for p in ps if p["kind"] == k) for k in ("gate", "landing", "signpost", "arm", "bridge")}
+    print(f"infra: {n['gate']} gates, {n['landing']} landings, {n['signpost']} signposts, {n['arm']} arms, "
+          f"{n['bridge']} bridges; {len(errs)} errors")
     return 1 if errs else 0
 
 

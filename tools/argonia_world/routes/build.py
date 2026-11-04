@@ -14,6 +14,7 @@ traced 3D length, water legs the straight length between their ends); landmarks 
 leg. Signposts stand at every node where two or more land legs meet; each arm points at a leg's far end.
 
     python3 -m tools.argonia_world.routes.build build    trace, then write road, road_point, route_node, route_edge...
+    python3 -m tools.argonia_world.routes.build reroute  the stored lines round the KEEP_OUT sites, no re-trace
     python3 -m tools.argonia_world.routes.build check    L1: the graph connected; distances within 5 %
 """
 from __future__ import annotations
@@ -47,6 +48,16 @@ GRADE_COST = 1500.0
 # and a road keeps off a steep side slope where it can (a bench cut into it stands walls at its edges): a cell whose
 # land falls faster than SIDE_OK costs SIDE_COST per unit over
 SIDE_OK, SIDE_COST = 0.35, 60.0
+
+
+# A road keeps out of the site of a place the player enters from the water (lane 1.15-r6-bridges, a place call): the
+# site's ground (terrain/generate.py shape_sites, a deep_water bowl eased out to SITE_BLEND radii) would cut the
+# road's corridor into a ford. The line goes round the disc on its drier side, its two ends kept. The Blue Hole is
+# "a vertical hole nine metres wide in a flat lake bottom" reached by boat and by diving (its place row:
+# why_site_advantages, traversal_fallback boat, underwater_access deep-dive): its approach is the water, not a road.
+KEEP_OUT = ("place.imperial-penal-south.natural-dive-shaft",)
+DRY_SHOULDER_M = 6.0  # routes/shape.py dry_corridor's shoulder past the core: the corridor the disc must clear
+ARC_STEP_M = 3.0
 
 
 # --- geometry helpers ------------------------------------------------------------------------------------------------
@@ -121,6 +132,90 @@ class Ground:
         zs = [self.z(x, y) for x, y in s]
         return sum(math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2 + (zb - za) ** 2)
                    for a, b, za, zb in zip(s, s[1:], zs, zs[1:]))
+
+
+def keep_out_discs(w) -> list[tuple[str, float, float, float]]:
+    """(place id, x, y, site radius eased out) of each KEEP_OUT place: generate's site disc, its radius at least
+    SITE_MIN_R, times SITE_BLEND (the bowl's easing)."""
+    from tools.argonia_world.terrain.generate import SITE_BLEND, SITE_MIN_R
+    out = []
+    for pid in KEEP_OUT:
+        r = w.query("SELECT position_m_x x, position_m_y y, footprint_radius_m r FROM place WHERE id = ?", pid)
+        if r and r[0]["x"] is not None:
+            out.append((pid, r[0]["x"], r[0]["y"], max(r[0]["r"] or 0.0, SITE_MIN_R) * SITE_BLEND))
+    return out
+
+
+def _cut(a, b, cx, cy, R) -> tuple[float, float]:
+    """The point where segment a (outside) -> b (inside) meets the circle."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    fx, fy = a[0] - cx, a[1] - cy
+    A, B, C = dx * dx + dy * dy, 2 * (fx * dx + fy * dy), fx * fx + fy * fy - R * R
+    t = (-B - math.sqrt(max(B * B - 4 * A * C, 0.0))) / (2 * A)
+    return a[0] + dx * t, a[1] + dy * t
+
+
+def around(pts, cx: float, cy: float, R: float, wet=lambda x, y: False):
+    """The polyline with its run inside the circle (first entry to last exit) replaced by the arc between the two
+    crossings on the side with fewer wet samples (`wet(x, y)`), the shorter on a tie. Unchanged when it misses the
+    circle or an end lies inside it (a road's ends are kept)."""
+    ins = [math.hypot(x - cx, y - cy) < R for x, y in pts]
+    if not any(ins) or ins[0] or ins[-1]:
+        return list(pts)
+    i = ins.index(True)
+    j = len(ins) - 1 - ins[::-1].index(True)
+    A, B = _cut(pts[i - 1], pts[i], cx, cy, R), _cut(pts[j + 1], pts[j], cx, cy, R)
+    ta, tb = math.atan2(A[1] - cy, A[0] - cx), math.atan2(B[1] - cy, B[0] - cx)
+    ccw = (tb - ta) % (2 * math.pi)
+    arcs = []
+    for sweep in (ccw, ccw - 2 * math.pi):
+        n = max(2, int(abs(sweep) * R / ARC_STEP_M) + 1)
+        arc = [(cx + R * math.cos(ta + sweep * k / n), cy + R * math.sin(ta + sweep * k / n)) for k in range(1, n)]
+        arcs.append((sum(1 for q in arc if wet(*q)), abs(sweep), arc))
+    arc = min(arcs, key=lambda a: a[:2])[2]
+    return list(pts[:i]) + [A] + arc + [B] + list(pts[j + 1:])
+
+
+def keep_out(pts, discs, half_m: float, wet=lambda x, y: False):
+    """`around` every disc, its radius grown by the road's half corridor (half its flat width plus DRY_SHOULDER_M)."""
+    for _pid, cx, cy, r in discs:
+        pts = around(pts, cx, cy, r + half_m + DRY_SHOULDER_M, wet)
+    return pts
+
+
+def reroute(w, root: Path | None = None) -> list[str]:
+    """Apply keep_out to the stored road lines (no re-trace of the rest): road_point, the road's lengths and its
+    edges' chainages and 3D lengths. -> what moved."""
+    surface, ground = Surface(root), Ground(root)
+    discs = keep_out_discs(w)
+
+    def wet(x, y):
+        j, i = int(y / STEP_M), int(x / STEP_M)
+        return bool(surface.water[min(max(j, 0), surface.n - 1), min(max(i, 0), surface.n - 1)])
+
+    done = []
+    for r in w.query("SELECT route_id, flat_width_m FROM road ORDER BY route_id"):
+        rid = r["route_id"]
+        old = [(p["x_m"], p["y_m"]) for p in w.query("SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", rid)]
+        new = keep_out(old, discs, r["flat_width_m"] / 2, wet)
+        if new == old:
+            continue
+        k = next(n for n, (a, b) in enumerate(zip(old, new)) if a != b)
+        at = length_2d(old[:k])
+        delta = length_2d(new) - length_2d(old)
+        w.delete("road_point", route_id=rid)
+        w.insert_many("road_point", [{"route_id": rid, "ord": n, "x_m": round(x, 2), "y_m": round(y, 2)}
+                                     for n, (x, y) in enumerate(new)])
+        new = [(round(x, 2), round(y, 2)) for x, y in new]
+        w.update("road", rid, length_m=round(length_2d(new), 1), length_3d_m=round(ground.length_3d(new), 1))
+        for e in w.query("SELECT id, from_chain_m c0, to_chain_m c1 FROM route_edge WHERE route_id = ? AND "
+                         "to_chain_m IS NOT NULL", rid):
+            c0 = e["c0"] + delta if e["c0"] > at else e["c0"]
+            c1 = e["c1"] + delta if e["c1"] > at else e["c1"]
+            w.update("route_edge", e["id"], from_chain_m=round(c0, 1), to_chain_m=round(c1, 1),
+                     length_m=round(ground.length_3d(sub_polyline(new, c0, c1), 0.5), 1))
+        done.append(f"{rid}: {len(old)} -> {len(new)} points, {delta:+.1f} m from {at:.0f} m")
+    return done
 
 
 # --- tracing ---------------------------------------------------------------------------------------------------------
@@ -256,6 +351,7 @@ def build(w, root: Path | None = None) -> dict:
     if rep.exists():
         ref = {k: v["lengthKm"] * 1000 for k, v in json.loads(rep.read_text())["roads"].items()}
     nodes: dict[str, dict] = {}
+    discs = keep_out_discs(w)
 
     def node_for(name: str) -> str | None:
         if name in EXITS:
@@ -293,6 +389,9 @@ def build(w, root: Path | None = None) -> dict:
         if land:
             own = "road" if r["mode"] == "road" and r["class"] in WIDTH else "track"
             pts, on = surface.trace(A, B, own)
+            fw0 = WIDTH[r["class"]][0] if own == "road" else TRACK_WIDTH_M
+            pts = keep_out(pts, discs, fw0 / 2, lambda x, y: bool(surface.water[
+                min(max(int(y / STEP_M), 0), surface.n - 1), min(max(int(x / STEP_M), 0), surface.n - 1)]))
             L3 = ground.length_3d(pts)
             edge.update(length_m=round(L3, 1), to_chain_m=round(length_2d(pts), 1), _pts=pts, _on=on)
             fw, sh = WIDTH[r["class"]] if own == "road" else (TRACK_WIDTH_M, 0.0)
@@ -542,7 +641,7 @@ def check(w, root: Path | None = None) -> tuple[list[str], dict]:
 
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("cmd", choices=("build", "check"))
+    ap.add_argument("cmd", choices=("build", "check", "reroute"))
     a = ap.parse_args(argv)
     w = db.open()
     if a.cmd == "build":
@@ -552,6 +651,10 @@ def main(argv: list[str]) -> int:
         for s in rep["skipped"]:
             print("  ", *s)
         print(f"joins {len(rep['joins'])}:", *rep["joins"], sep="\n   ")
+    elif a.cmd == "reroute":
+        moved = reroute(w)
+        w.save()
+        print(f"reroute: {len(moved)} roads round {', '.join(KEEP_OUT)}", *moved, sep="\n   ")
     errs, m = check(w)
     print(f"check: {m['components']} component(s), worst terrain deviation {m['worst_terrain_dev']:.2%}; "
           f"against the old chain: {m['reference_dev']}")
