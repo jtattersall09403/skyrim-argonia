@@ -1,6 +1,29 @@
 # Lane 1.15-r6-navmesh-lodkey: report and hand-off
 
-Status: (1) navmesh rebuild RUNNING (job r6-navmesh, resumed at the 07:49 boot); (2) and (3) done, committed.
+Status: (1) navmesh rebuild RUNNING as job r6-navmesh2 (queued on out/.plugin.lock behind another lane's
+`make plugin`); (2), (3) and the per-half keys done, committed. Two spot reboots (07:49, 08:34) lost two province
+builds: fixed by the per-cell checkpoint below.
+
+## Per-half LOD keys (249fcc1e; owner 08:06, #37)
+- `lod.sh key` prints `terrain=<12> object=<12>`; terrain = LAND + xlodgen pin; object = REFR + drawn forms (STAT,
+  TREE, ...) + master list + dyndolod pins + every stack mod pin; both + lod.ps1, lodsettings.py, preset. CELL (water),
+  WATR, REGN, NAVM, NAVI, NPC_, levelled lists in neither. 19.6 s.
+- Archives s3://.../lod/terrain-<k>.tar (Meshes|Textures/terrain) and object-<k>.tar (the rest); `archive`/`restore`
+  take halves; restore replaces only that half's files and that half's entry in argonia-lod.key; `ensure` lays each
+  half whose archive exists and warns with only the missing half's steps. Run markers per half.
+- The round-5 archive d40c2553505c split (24,135 + 6,325 files) and uploaded as terrain-92a3406fc7a7 and
+  object-b229bf3a2c43 (the r5 ESM's keys). First `ensure` restores both once (the machine's key file holds the old
+  single key). Left for the planner: delete lod/d40c2553505c.tar, latest.tar, dfaac845338e.tar (my delete was refused).
+- Tests: 5 (navmesh-only keeps both; LAND moves terrain alone; ref moves object alone; water keeps both; salts).
+
+## Province build speed and checkpoint (ArgoniaNav)
+- Before: recast_s 1314 (r5 build.json), ~1.15 of 4 cores (a barrier per row; every cell scanned all object tris).
+- After: one parallel pass over all cells, object triangles bucketed per cell, each cell cached in
+  out/navmesh/province/cache/cx_cy.bin keyed by sha256 of its window samples, its object tris and the params:
+  a rerun or a local ground change (the Claywater pads) rebuilds only the cells whose inputs moved. Sample hash
+  unchanged (67cfc8df9bf6). After-time: see (1) below when the job ends.
+- Harness fault: `job_guard.sh stop` left the job's python (and the flock on out/.plugin.lock) alive; killed by hand.
+
 
 ## (3) The LOD key (b8a66638)
 - tools/navmesh/lodkey.py: sha256 of every ArgoniaWorld.esm record except NAVM, NAVI and TES4 (type, FormID, flags
