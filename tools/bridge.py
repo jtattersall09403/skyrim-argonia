@@ -17,6 +17,9 @@ dead process or a Crash Logger file written since this launch raises GameDown wi
     python3 tools/bridge.py pad 'LY=1:800 B:150'       # the virtual pad, at most 3 s
     python3 tools/bridge.py input mouse 640 360        # the game's cursor (engine); input click [left|right]; input wheel down 2; input cursor
     python3 tools/bridge.py booth 0001A26F out/booth   # six stills of one base record
+    python3 tools/bridge.py camera first|third|state   # PlayerCamera natively on the main thread (ForceFirstPerson /
+        # ForceThirdPerson, then SetState if a tween or vanity holds it); every reply is the state read natively:
+        # {"asked", "first_person": currentState == the first-person state, "state": first|third|tween|..., "native": true}
 
     from tools.bridge import Bridge;  b = Bridge();  b.call("player")["pos"]["z"]
 
@@ -399,10 +402,11 @@ class Bridge:
         return r["value"]
 
     def camera(self, mode: str) -> dict:
-        """`camera first|third`: the engine's own PlayerCamera::ForceFirstPerson / ForceThirdPerson through the bridge;
-        {"asked", "first_person"} with the state read back. Needs the DLL that has the command."""
-        if mode not in ("first", "third"):
-            raise BridgeError(f"camera: {mode!r} is first or third")
+        """`camera first|third|state`: the engine's own PlayerCamera::ForceFirstPerson / ForceThirdPerson on the main
+        thread (`state` only reads); {"asked", "first_person", "state", "native"} with the camera state read natively
+        (an older DLL answers {"asked", "first_person"} and refuses `state`)."""
+        if mode not in ("first", "third", "state"):
+            raise BridgeError(f"camera: {mode!r} is first, third or state")
         return self.call("camera", mode)
 
     def hud(self, state: str) -> str:

@@ -247,4 +247,11 @@ std::string papyrus_queue_json(const PapyrusQueue& q) {
       .done();
 }
 
+std::optional<CameraAsk> camera_ask(std::string_view mode) {
+  if (mode == "first") return CameraAsk::kFirst;
+  if (mode == "third") return CameraAsk::kThird;
+  if (mode == "state") return CameraAsk::kState;
+  return std::nullopt;
+}
+
 }  // namespace argonia::bridge

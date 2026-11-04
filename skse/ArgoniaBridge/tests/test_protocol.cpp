@@ -131,7 +131,15 @@ void core_calls_and_the_queue() {
         R"({"stacks":5,"running":3,"suspended":2,"waiting_latent":1,"waiting_functions":0,"overstressed":false})");
 }
 
+void camera_asks() {
+  CHECK(camera_ask("first") == CameraAsk::kFirst);
+  CHECK(camera_ask("third") == CameraAsk::kThird);
+  CHECK(camera_ask("state") == CameraAsk::kState);
+  CHECK(!camera_ask("") && !camera_ask("First") && !camera_ask("first ") && !camera_ask("sideways"));
+}
+
 int main() {
+  camera_asks();
   core_calls_and_the_queue();
   input_keys_and_frames();
   nav_tests();

@@ -96,19 +96,53 @@ std::string save(const Request& req) {
   return reply_error("save", "the game did not write " + file.string() + " within 30 s");
 }
 
-// camera first|third: the engine's own camera switch (PlayerCamera::ForceFirstPerson / ForceThirdPerson) on the game
-// thread; the reply reads the state back (IsInFirstPerson). The console's `cgf` is unknown on this runtime and the F key
-// through the engine route left IsPC1stPerson at 0 (round 4).
+// camera first|third|state: the engine's own PlayerCamera on the game thread (1.15-r6, route 5). first|third calls
+// ForceFirstPerson / ForceThirdPerson and, when the camera is left in another state (a tween, the vanity or a furniture
+// state after a load), sets the wanted state directly; state only reads. Every reply carries the state read natively:
+// first_person is currentState == cameraStates[kFirstPerson], never the console's IsPC1stPerson (r6-chain19: the
+// console and F key lost the camera after each relaunch). The switch lands a frame later, so the runner re-reads.
+const char* camera_state_name(std::uint32_t id) {
+  switch (id) {
+    case RE::CameraState::kFirstPerson: return "first";
+    case RE::CameraState::kThirdPerson: return "third";
+    case RE::CameraState::kAutoVanity: return "vanity";
+    case RE::CameraState::kFree: return "free";
+    case RE::CameraState::kFurniture: return "furniture";
+    case RE::CameraState::kTween: return "tween";
+    case RE::CameraState::kMount: return "mount";
+    case RE::CameraState::kDragon: return "dragon";
+    case RE::CameraState::kBleedout: return "bleedout";
+    default: return "other";
+  }
+}
+
+std::string camera_reply(RE::PlayerCamera* cam, const char* asked) {
+  auto* cur = cam->currentState.get();
+  bool first = cur && cur == cam->GetRuntimeData().cameraStates[RE::CameraState::kFirstPerson].get();
+  return reply_ok("camera", JsonObject()
+                                .str("asked", asked)
+                                .boolean("first_person", first)
+                                .str("state", cur ? camera_state_name(cur->id) : "none")
+                                .boolean("native", true)
+                                .done());
+}
+
 std::string camera(const Request& req) {
-  auto mode = rest(req);
-  if (mode != "first" && mode != "third") return reply_error("camera", "usage: camera first|third");
-  bool first = mode == "first";
-  return on_main_thread(req.command, [first] {
+  auto ask = camera_ask(rest(req));
+  if (!ask) return reply_error("camera", "usage: camera first|third|state");
+  return on_main_thread(req.command, [a = *ask] {
     if (!player_in_world()) return reply_error("camera", "no player in a world (main menu or loading)");
     auto* cam = RE::PlayerCamera::GetSingleton();
     if (!cam) return reply_error("camera", "no camera");
+    if (a == CameraAsk::kState) return camera_reply(cam, "state");
+    bool first = a == CameraAsk::kFirst;
     if (first) cam->ForceFirstPerson(); else cam->ForceThirdPerson();
-    return reply_ok("camera", JsonObject().str("asked", first ? "first" : "third").boolean("first_person", cam->IsInFirstPerson()).done());
+    auto want = first ? RE::CameraState::kFirstPerson : RE::CameraState::kThirdPerson;
+    auto* cur = cam->currentState.get();
+    if (cur && cur->id != want && cur->id != RE::CameraState::kFirstPerson && cur->id != RE::CameraState::kThirdPerson) {
+      if (auto* st = cam->GetRuntimeData().cameraStates[want].get()) cam->SetState(st);  // a tween or vanity the Force call left in place
+    }
+    return camera_reply(cam, first ? "first" : "third");
   });
 }
 

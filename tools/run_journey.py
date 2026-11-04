@@ -360,39 +360,53 @@ class Runner:
         return self.b.call("console", line)
 
     def _camera(self, arg):
-        """`camera: first` (or `third`): the play camera, waited for. IsPC1stPerson is read after each try: the F key by
-        the engine route (a pad/key press is ignored while a load holds the thread), then Papyrus's
-        Game.ForceFirstPerson / ForceThirdPerson through `cgf`; 6 tries, 3 s apart. Fails the step, naming the tries,
-        if it never flips (driver, 2026-11-02: F 300 engine left IsPC1stPerson 0 on both routes)."""
-        want = {"first": "1.00", "third": "0.00"}.get(str(arg).strip())
+        """`camera: first` (or `third`): the play camera, waited for. The bridge's `camera <mode>` calls PlayerCamera
+        natively on the main thread, then `camera state` reads currentState natively a frame later: that read is the
+        primary assert (1.15-r6 camera-native; r6-chain19 lost first person after every relaunch through the console
+        and F key). For first person the frame check (_view_is_first) is the second opinion after a load or relaunch.
+        A DLL without the native read falls back to the console's IsPC1stPerson; one without the command to the F key
+        and Papyrus's Game.ForceFirstPerson through `cgf`. 7 tries, 3 s apart; fails the step naming the tries."""
+        mode = str(arg).strip()
+        want = {"first": "1.00", "third": "0.00"}.get(mode)
         if want is None:
             raise StepFailed(f"camera: {arg!r} is `first` or `third`")
         fn = "ForceFirstPerson" if want == "1.00" else "ForceThirdPerson"
         tries = []
         bridge_ok = True
-        # The bridge command is re-asked on every try: a load or cell change that finishes after the first ask resets the
-        # camera to third (round 5 batch, water-types brackish-rim and world-panel deep-river-corridor: the bridge answered
-        # first_person True, the console read 0.00 on all six later reads because only the F key / a missing `cgf` were
-        # retried). The F key and cgf are the fallback only for a DLL without the command.
+        native_ok = True
+        # The command is re-asked on every try: a load or cell change finishing after the first ask resets the camera.
         for n in range(0, 7):
             if bridge_ok:
                 try:
-                    r = self.b.call("camera", str(arg).strip())
+                    r = self.b.call("camera", mode)
                     tries.append(f"bridge {r.get('first_person')}")
                 except BridgeError as e:
-                    bridge_ok = False
+                    bridge_ok = native_ok = False
                     tries.append(f"bridge error {str(e)[:60]}")
-            time.sleep(0.5 if n == 0 else 3.0)   # the switch lands a frame or two after the call answers; the console read is the state read
-            try:
-                now = self._console("IsPC1stPerson")["output"].strip()
-            except BridgeError as e:
-                now = f"error {e}"
-            tries.append(f"read {now[-40:]}")
+            time.sleep(0.5 if n == 0 else 3.0)   # the switch lands a frame or two after the call answers
+            now = None
+            if native_ok:
+                try:
+                    st = self.b.call("camera", "state")
+                    if "native" not in st:
+                        raise BridgeError("no native read")
+                    now = "1.00" if st.get("first_person") else "0.00"
+                    tries.append(f"native {st.get('state')}")
+                except BridgeError as e:
+                    native_ok = False
+                    tries.append(f"native error {str(e)[:40]}")
+            if now is None:
+                try:
+                    now = self._console("IsPC1stPerson")["output"].strip()
+                except BridgeError as e:
+                    now = f"error {e}"
+                tries.append(f"read {now[-40:]}")
             if now.endswith(want) and want == "1.00" and self.view_unverified and not self._view_is_first(tries):
                 now = "view check failed"   # the read says first person, the frame does not move: retried like a bad read
             if now.endswith(want):
-                self.calls.append({"call": ["camera", str(arg)], "tries": tries})
-                return {"camera": str(arg), "tries": n, **({"route": "bridge"} if bridge_ok and n == 0 else {})}
+                self.calls.append({"call": ["camera", mode], "tries": tries})
+                route = "native" if native_ok else ("bridge" if bridge_ok else None)
+                return {"camera": mode, "tries": n, **({"route": route} if route and n == 0 else {})}
             if n == 6:
                 break
             if not bridge_ok:
@@ -404,9 +418,9 @@ class Runner:
                     except BridgeError as e:
                         tries.append(f"cgf error {e}")
         if os.environ.get("ARGONIA_CAMERA_SOFT"):   # driver, 2026-11-02: record the readings, carry on (the still may be third person)
-            self.calls.append({"call": ["camera", str(arg)], "tries": tries, "soft_fail": True})
-            return {"camera": str(arg), "tries": 6, "soft_fail": True}
-        raise StepFailed(f"the camera never became {arg}: IsPC1stPerson read {tries}; engine state {self._engine_state()}")
+            self.calls.append({"call": ["camera", mode], "tries": tries, "soft_fail": True})
+            return {"camera": mode, "tries": 6, "soft_fail": True}
+        raise StepFailed(f"the camera never became {mode}: reads {tries}; engine state {self._engine_state()}")
 
     VIEW_CHANGE_MIN = 0.15   # a real third->first switch moves the camera, so far more than this fraction of pixels changes
 

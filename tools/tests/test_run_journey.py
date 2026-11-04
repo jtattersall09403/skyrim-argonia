@@ -630,6 +630,8 @@ def test_camera_bridge_command_is_tried_first_and_decides(tmp_path, monkeypatch)
     fake = Fake()
     real = fake.call
     def cam(cmd, *a):
+        if cmd == "camera" and a[0] == "state":   # a DLL before camera-native refuses the read
+            raise rj.BridgeError("camera: usage: camera first|third")
         if cmd == "camera":
             fake.first = a[0] == "first"
             return {"asked": a[0], "first_person": fake.first}
@@ -647,6 +649,8 @@ def test_journey_camera_is_said_once_and_applied_after_the_load(tmp_path, monkey
     real = fake.call
 
     def cam(cmd, *a):
+        if cmd == "camera" and a[0] == "state":   # a DLL before camera-native refuses the read
+            raise rj.BridgeError("camera: usage: camera first|third")
         if cmd == "camera":
             asked.append((a[0], len(fake.lines)))
             fake.first = a[0] == "first"
@@ -776,6 +780,8 @@ def test_camera_bridge_is_reasked_when_a_load_resets_it_to_third(tmp_path, monke
     st = {"asks": 0}
 
     def cam(cmd, *a):
+        if cmd == "camera" and a[0] == "state":   # a DLL before camera-native refuses the read
+            raise rj.BridgeError("camera: usage: camera first|third")
         if cmd == "camera":
             st["asks"] += 1
             return {"asked": a[0], "first_person": a[0] == "first"}
@@ -805,6 +811,8 @@ class StuckCamera(Fake):
         return {"alive": False}
 
     def call(self, cmd, *a, **kw):
+        if cmd == "camera" and a[0] == "state":   # a DLL before camera-native refuses the read
+            raise rj.BridgeError("camera: usage: camera first|third")
         if cmd == "camera":
             self.first = a[0] == "first"
             return {"asked": a[0], "first_person": self.first}
@@ -847,6 +855,8 @@ def test_camera_view_check_retries_a_toggle_whose_readback_lies(tmp_path, monkey
     real = fake.call
 
     def cam(cmd, *a):
+        if cmd == "camera" and a[0] == "state":   # a DLL before camera-native refuses the read
+            raise rj.BridgeError("camera: usage: camera first|third")
         if cmd == "camera":
             return {"asked": a[0], "first_person": True}
         if cmd == "console" and a[0] == "IsPC1stPerson":
@@ -865,3 +875,38 @@ def test_camera_view_check_retries_a_toggle_whose_readback_lies(tmp_path, monkey
     r2.view_unverified = True
     with pytest.raises(rj.StepFailed, match="never became first"):
         r2._camera("first")
+
+
+class NativeCamera(Fake):
+    """The camera-native DLL: `camera first|third` answers at once, `camera state` reads the engine's state natively.
+    The console's IsPC1stPerson lies (reads 1.00 throughout), as r6-chain19's after-relaunch reads did."""
+    def __init__(self, lands_after=1):
+        super().__init__()
+        self.asks, self.lands_after, self.state = 0, lands_after, "third"
+
+    def call(self, cmd, *a, **kw):
+        if cmd == "camera" and a[0] == "state":
+            return {"asked": "state", "first_person": self.state == "first", "state": self.state, "native": True}
+        if cmd == "camera":
+            self.asks += 1
+            if a[0] == "third" or self.asks >= self.lands_after:
+                self.state = a[0]
+            return {"asked": a[0], "first_person": False, "state": "tween", "native": True}
+        if cmd == "console" and a[0] == "IsPC1stPerson":
+            self.lines.append(a[0])
+            return {"output": "IsPC1stPerson >> 1.00\n"}
+        return super().call(cmd, *a)
+
+
+def test_camera_asserts_on_the_native_state_not_the_console(tmp_path, monkeypatch):
+    monkeypatch.setattr(rj.time, "sleep", lambda s: None)
+    fake = NativeCamera(lands_after=3)   # the switch lands on the third ask; the console says first all along
+    r = rj.Runner(fake, tmp_path / "n")
+    got = r._camera("first")
+    assert got["tries"] == 2 and fake.asks == 3 and "IsPC1stPerson" not in fake.lines
+    assert r.calls[-1]["tries"][:2] == ["bridge False", "native third"]
+    fake = NativeCamera(lands_after=1)
+    assert rj.Runner(fake, tmp_path / "m")._camera("first") == {"camera": "first", "tries": 0, "route": "native"}
+    fake = NativeCamera(lands_after=99)   # never lands: fails on the native reads though the console reads 1.00
+    with pytest.raises(rj.StepFailed, match="never became first.*native third"):
+        rj.Runner(fake, tmp_path / "o")._camera("first")

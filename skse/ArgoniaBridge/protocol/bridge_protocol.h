@@ -113,4 +113,8 @@ struct PapyrusQueue {
 // {"stacks":running+suspended,"running":..,"suspended":..,"waiting_latent":..,"waiting_functions":..,"overstressed":..}
 std::string papyrus_queue_json(const PapyrusQueue& q);
 
+// `camera first|third|state` (1.15-r6): what to do with the PlayerCamera; nullopt for anything else.
+enum class CameraAsk { kFirst, kThird, kState };
+std::optional<CameraAsk> camera_ask(std::string_view mode);
+
 }  // namespace argonia::bridge
