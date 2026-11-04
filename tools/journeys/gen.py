@@ -822,11 +822,12 @@ SKY_HEAD = """# The sky A/B (lane 1.15-r5-sky; owner #37, 2026-11-03): one coast
 SKY_STOPS = (("coastal-lagoon-shore", "ARG_Ref_PanelCoastalLagoonShore", 94),
              ("western-frontier-high", "ARG_Ref_PanelWesternFrontierHigh", 180))
 SKY_WEATHER, SKY_TOL_U = "Argonia.esm|0x000E9B", 300
+SKY_TEMPLATE_WEATHER = "Skyrim.esm|0x00081A"   # SkyrimClear, the record our clear-dry is templated from
 
 
 def sky_ab(b: Build, reach=None) -> tuple[str, list]:
     """(the journey's text, the markers' positions): the stops' landing bounds from the markers' positions in the build."""
-    steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"hud": "off"}], "expect": []}]
+    steps = [{"name": "first-person-no-hud", "setup": True, "do": [{"wait": 10}, {"hud": "off"}], "expect": []}]
     pos = []
     for key, edid, yaw in SKY_STOPS:
         r = b.ref(edid)
@@ -834,18 +835,23 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
             raise SystemExit(f"sky-ab: {edid} is no placed exterior marker of the build")
         x, y = round(r["x"]), round(r["y"])
         pos.append((edid, x, y))
-        for when, hour in (("noon", 12), ("dawn", 6.5)):
+        for when, hour, wthr, edit in (("noon", 12, SKY_WEATHER, "ARG_Weather_clear_dry"),
+                                       ("dawn", 6.5, SKY_WEATHER, "ARG_Weather_clear_dry"),
+                                       # the template's own dawn (Tropical's override of Skyrim.esm 00081A, the
+                                       # winner of the load order): is the cream-grey wash ours or the template's?
+                                       ("dawn-template", 6.5, SKY_TEMPLATE_WEATHER, "SkyrimClear")):
             steps.append({
                 "name": f"{key}-{when}",
-                "do": [{"console": {"line": f"player.moveto {edid}", "settle": 60}},
+                "do": [{"hud": "off"},
+                       {"console": {"line": f"player.moveto {edid}", "settle": 60}},
                        {"console": f"player.setangle z {yaw}"}, {"console": "player.setangle x -12"},
-                       {"console": f"set gamehour to {hour}"}, {"console": f"sw {SKY_WEATHER}"},
-                       {"console": f"fw {SKY_WEATHER}"}, {"settle": {"cap": 14, "min": 3}}],
+                       {"console": f"set gamehour to {hour}"}, {"console": f"sw {wthr}"},
+                       {"console": f"fw {wthr}"}, {"settle": {"cap": 14, "min": 3}}],
                 "expect": [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
                            *[{"read": ["player"], "path": f"pos.{a}", op: v}
                              for a, c in (("x", x), ("y", y))
                              for op, v in (("gt", c - SKY_TOL_U), ("lt", c + SKY_TOL_U))],
-                           {"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}]})
+                           {"read": ["weather"], "path": "current.editor_id", "eq": edit, "within": 20}]})
     j = {"id": "sky-ab", "reach": reach or ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}

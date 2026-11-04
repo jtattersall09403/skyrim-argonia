@@ -129,17 +129,23 @@ def plan(j: dict, index: dict, force: bool = False, repo: pathlib.Path = REPO) -
     Returns {skip: {name: ledger row}, run: [names], hashes: {name: hash}}."""
     steps = [s for s in j.get("steps", []) if not s.get("owed")]
     hashes = {s["name"]: reach_hash(j, s, repo) for s in steps}
-    done = {} if force else {s["name"]: r for s in steps
+    # a `setup: true` step sets session state (HUD off, camera): never a pass to skip, run whenever any other step runs
+    done = {} if force else {s["name"]: r for s in steps if not s.get("setup")
                              if (r := passed(index, j["id"], s["name"], hashes[s["name"]]))}
+    setup = {s["name"] for s in steps if s.get("setup")}
     if j.get("independent_steps"):
-        need = {s["name"] for s in steps if s["name"] not in done}
+        need = {s["name"] for s in steps if s["name"] not in done and s["name"] not in setup}
         for s in steps:
             if s["name"] in need:
                 need |= set(s.get("needs") or [])
         skip = {n: r for n, r in done.items() if n not in need}
+        if not need:
+            skip.update({n: {"time": "-", "setup_idle": True} for n in setup})
     else:
-        last = max((i for i, s in enumerate(steps) if s["name"] not in done), default=-1)
-        skip = {s["name"]: done[s["name"]] for s in steps[last + 1:]}
+        last = max((i for i, s in enumerate(steps) if s["name"] not in done and s["name"] not in setup), default=-1)
+        skip = {s["name"]: done[s["name"]] for s in steps[last + 1:] if s["name"] in done}
+        if last < 0:
+            skip.update({n: {"time": "-", "setup_idle": True} for n in setup})
     return {"skip": skip, "run": [s["name"] for s in steps if s["name"] not in skip], "hashes": hashes}
 
 

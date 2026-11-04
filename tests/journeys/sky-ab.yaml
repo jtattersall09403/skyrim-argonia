@@ -21,6 +21,7 @@
  "steps": [
   {
    "name": "first-person-no-hud",
+   "setup": true,
    "do": [
     {
      "wait": 10
@@ -34,6 +35,9 @@
   {
    "name": "coastal-lagoon-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
@@ -109,6 +113,9 @@
    "name": "coastal-lagoon-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
       "settle": 60
@@ -180,8 +187,88 @@
    ]
   },
   {
+   "name": "coastal-lagoon-shore-dawn-template",
+   "do": [
+    {
+     "hud": "off"
+    },
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 94"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "sw Skyrim.esm|0x00081A"
+    },
+    {
+     "console": "fw Skyrim.esm|0x00081A"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": 107103
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": 107703
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": -66251
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": -65651
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "SkyrimClear",
+     "within": 20
+    }
+   ]
+  },
+  {
    "name": "western-frontier-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
@@ -257,6 +344,9 @@
    "name": "western-frontier-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
       "settle": 60
@@ -323,6 +413,83 @@
      ],
      "path": "current.editor_id",
      "eq": "ARG_Weather_clear_dry",
+     "within": 20
+    }
+   ]
+  },
+  {
+   "name": "western-frontier-high-dawn-template",
+   "do": [
+    {
+     "hud": "off"
+    },
+    {
+     "console": {
+      "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
+      "settle": 60
+     }
+    },
+    {
+     "console": "player.setangle z 180"
+    },
+    {
+     "console": "player.setangle x -12"
+    },
+    {
+     "console": "set gamehour to 6.5"
+    },
+    {
+     "console": "sw Skyrim.esm|0x00081A"
+    },
+    {
+     "console": "fw Skyrim.esm|0x00081A"
+    },
+    {
+     "settle": {
+      "cap": 14,
+      "min": 3
+     }
+    }
+   ],
+   "expect": [
+    {
+     "console": "player.GetInWorldspace ARG_Province",
+     "contains": ">> 1"
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "gt": -209196
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.x",
+     "lt": -208596
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "gt": 143316
+    },
+    {
+     "read": [
+      "player"
+     ],
+     "path": "pos.y",
+     "lt": 143916
+    },
+    {
+     "read": [
+      "weather"
+     ],
+     "path": "current.editor_id",
+     "eq": "SkyrimClear",
      "within": 20
     }
    ]

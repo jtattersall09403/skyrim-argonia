@@ -202,3 +202,19 @@ def test_panel_and_sky_reach_ignores_other_journeys_and_follows_placement(name, 
     pl.clear_cache()
     assert all(a != b for a, b in zip(keys(), k0))
     pl.clear_cache()
+
+
+def test_a_setup_step_is_never_skipped(repo, tmp_path):
+    led = tmp_path / "l.jsonl"
+    for extra in ({}, {"independent_steps": True}):
+        j = J(**extra)
+        j["steps"][0]["setup"] = True
+        passes(j, ["a", "b", "c"], repo, led)
+        assert pl.plan(j, pl.last_rows(led), repo=repo)["run"] == []  # nothing else runs: no setup alone
+        j2 = J(**extra)
+        j2["steps"][0]["setup"] = True
+        j2["steps"][2]["do"] = [{"wait": 1}]  # c changed: its key moved
+        p = pl.plan(j2, pl.last_rows(led), repo=repo)
+        assert p["run"][0] == "a" and "a" not in p["skip"] and "c" in p["run"]
+        if not extra:
+            assert p["run"] == ["a", "b", "c"]

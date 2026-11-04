@@ -200,7 +200,7 @@ def test_sky_ab_bounds_follow_the_markers_and_a_moved_marker_is_stale():
     j = yaml.safe_load(text)
     ex = j["steps"][1]["expect"]
     assert [e.get("gt", e.get("lt")) for e in ex if e.get("path") == "pos.x"] == [700, 1300]
-    assert j["id"] == "sky-ab" and j["independent_steps"] is True and len(j["steps"]) == 5
+    assert j["id"] == "sky-ab" and j["independent_steps"] is True and len(j["steps"]) == 7
     assert pos[1] == ("ARG_Ref_PanelWesternFrontierHigh", -500, 700)
     # a moved marker moves the bounds, so the file written for the old position is stale
     moved, _ = gen.sky_ab(Flat(refs=refs(400)))

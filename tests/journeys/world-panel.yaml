@@ -9,7 +9,11 @@
 # (`python3 -m tools.journeys refresh`).
 {
  "id": "world-panel",
- "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+ "reach": [
+  "esm",
+  "tests/scenes/world-panel.txt",
+  "data/dependencies.json"
+ ],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
@@ -18,6 +22,7 @@
  "steps": [
   {
    "name": "first-person-no-hud",
+   "setup": true,
    "do": [
     {
      "wait": 10
@@ -31,6 +36,9 @@
   {
    "name": "coastal-lagoon-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
@@ -106,6 +114,9 @@
    "name": "coastal-lagoon-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonShore",
       "settle": 60
@@ -179,6 +190,9 @@
   {
    "name": "coastal-lagoon-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonHigh",
@@ -254,6 +268,9 @@
    "name": "coastal-lagoon-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelCoastalLagoonHigh",
       "settle": 60
@@ -327,6 +344,9 @@
   {
    "name": "deep-river-corridor-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorShore",
@@ -402,6 +422,9 @@
    "name": "deep-river-corridor-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorShore",
       "settle": 60
@@ -475,6 +498,9 @@
   {
    "name": "deep-river-corridor-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorHigh",
@@ -550,6 +576,9 @@
    "name": "deep-river-corridor-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepRiverCorridorHigh",
       "settle": 60
@@ -623,6 +652,9 @@
   {
    "name": "deep-sink-basin-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinShore",
@@ -698,6 +730,9 @@
    "name": "deep-sink-basin-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinShore",
       "settle": 60
@@ -771,6 +806,9 @@
   {
    "name": "deep-sink-basin-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinHigh",
@@ -846,6 +884,9 @@
    "name": "deep-sink-basin-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelDeepSinkBasinHigh",
       "settle": 60
@@ -919,6 +960,9 @@
   {
    "name": "flooded-forest-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelFloodedForestShore",
@@ -994,6 +1038,9 @@
    "name": "flooded-forest-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelFloodedForestShore",
       "settle": 60
@@ -1067,6 +1114,9 @@
   {
    "name": "flooded-forest-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelFloodedForestHigh",
@@ -1142,6 +1192,9 @@
    "name": "flooded-forest-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelFloodedForestHigh",
       "settle": 60
@@ -1215,6 +1268,9 @@
   {
    "name": "interior-swamp-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelInteriorSwampShore",
@@ -1290,6 +1346,9 @@
    "name": "interior-swamp-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelInteriorSwampShore",
       "settle": 60
@@ -1363,6 +1422,9 @@
   {
    "name": "interior-swamp-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelInteriorSwampHigh",
@@ -1438,6 +1500,9 @@
    "name": "interior-swamp-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelInteriorSwampHigh",
       "settle": 60
@@ -1511,6 +1576,9 @@
   {
    "name": "northern-transition-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionShore",
@@ -1586,6 +1654,9 @@
    "name": "northern-transition-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionShore",
       "settle": 60
@@ -1659,6 +1730,9 @@
   {
    "name": "northern-transition-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionHigh",
@@ -1734,6 +1808,9 @@
    "name": "northern-transition-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelNorthernTransitionHigh",
       "settle": 60
@@ -1807,6 +1884,9 @@
   {
    "name": "rootland-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelRootlandShore",
@@ -1882,6 +1962,9 @@
    "name": "rootland-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelRootlandShore",
       "settle": 60
@@ -1955,6 +2038,9 @@
   {
    "name": "rootland-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelRootlandHigh",
@@ -2030,6 +2116,9 @@
    "name": "rootland-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelRootlandHigh",
       "settle": 60
@@ -2103,6 +2192,9 @@
   {
    "name": "tidal-delta-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelTidalDeltaShore",
@@ -2178,6 +2270,9 @@
    "name": "tidal-delta-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelTidalDeltaShore",
       "settle": 60
@@ -2251,6 +2346,9 @@
   {
    "name": "tidal-delta-high-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelTidalDeltaHigh",
@@ -2326,6 +2424,9 @@
    "name": "tidal-delta-high-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelTidalDeltaHigh",
       "settle": 60
@@ -2399,6 +2500,9 @@
   {
    "name": "western-frontier-shore-noon",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierShore",
@@ -2474,6 +2578,9 @@
    "name": "western-frontier-shore-dawn",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierShore",
       "settle": 60
@@ -2548,6 +2655,9 @@
    "name": "western-frontier-high-noon",
    "do": [
     {
+     "hud": "off"
+    },
+    {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",
       "settle": 60
@@ -2621,6 +2731,9 @@
   {
    "name": "western-frontier-high-dawn",
    "do": [
+    {
+     "hud": "off"
+    },
     {
      "console": {
       "line": "player.moveto ARG_Ref_PanelWesternFrontierHigh",

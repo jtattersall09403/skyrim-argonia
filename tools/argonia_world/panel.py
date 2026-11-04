@@ -201,7 +201,7 @@ def journey_text(vs: list[dict]) -> str:
             "# water; light shafts through canopy; owner, 2026-11-01); each step\n"
             "# checks only that the teleport landed. The vantages are re-derived from each build and pulled out of foliage\n"
             "# (`python3 -m tools.journeys refresh`).\n")
-    steps = [{"name": "first-person-no-hud", "do": [{"wait": 10}, {"hud": "off"}],
+    steps = [{"name": "first-person-no-hud", "setup": True, "do": [{"wait": 10}, {"hud": "off"}],
               "expect": []}]
     wthr = {r.editor_id: (r.plugin, r.form_id) for r in db.open().rows("formid") if r.record_type == "WTHR"}
     for v in vs:
@@ -212,7 +212,8 @@ def journey_text(vs: list[dict]) -> str:
                 {"read": ["player"], "path": "pos.y", "gt": y - LAND_TOL_UNITS},
                 {"read": ["player"], "path": "pos.y", "lt": y + LAND_TOL_UNITS}]
         for when, hour in (("noon", 12), ("dawn", 6.5)):
-            do = [{"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
+            do = [{"hud": "off"},
+                  {"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
                   {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
             # `sw` (set, no transition) after the moveto's settle: the region's own list had replaced `fw`'s weather
@@ -231,7 +232,8 @@ def journey_text(vs: list[dict]) -> str:
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s
             do += [{"settle": {"cap": 14, "min": 3}}]
             steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": ex})
-    j = {"id": "world-panel", "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
+    j = {"id": "world-panel", "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+         "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits
 
