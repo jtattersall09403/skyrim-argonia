@@ -61,6 +61,6 @@ python3 tools/doc_index.py --write >/dev/null 2>&1 && { git add docs/INDEX.md; g
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; }
 step gate $PY tooling/check_reach.py --since auto --record || { echo "PREBATCH gate RED: the planner reads out/check"; echo "gate OK" >>"$state"; echo "# gate was RED for these inputs (noted; a resume does not rerun the 330 s)" >>"$state"; }
-step plugin-check make plugin-check || echo "(plugin-check red: noted)"
+# plugin-check is the gate's (check_reach runs it whenever the ESM moved, which in a chain is every time): not run twice (116 s, r6-chain15/17)
 git push -q origin HEAD:main || { git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main; }  # the lanes' tree takes it on its next pull
 echo "PREBATCH DONE $(date -u +%H:%M) $(git rev-parse --short HEAD) $(sha256sum out/ArgoniaWorld.esm | cut -c1-12)"
