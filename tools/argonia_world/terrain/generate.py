@@ -694,6 +694,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan)
     st["roads_dry"] = dc["stats"]
     road_dry = dc["bank"]
+    road_raised = dc["raised"].astype(np.uint8)
     foot &= ~road_dry
     del dc
     diag["sbank"], diag["ct"], diag["chan"] = sbank.copy(), ct.copy(), chan.copy()
@@ -735,7 +736,8 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     st["seconds"] = round(time.time() - t0, 1)
     log(f"limit {time.time() - t0:.1f}s")
     return {"ground": f.astype(np.float32), "cliff": cliff.astype(np.uint8), "role": role, "lo": lo, "hi": hi,
-            "sites": sites, "stats": st, "diag": diag, "road_water": road_water}
+            "sites": sites, "stats": st, "diag": diag, "road_water": road_water,
+            "road_raised": road_raised}
 
 
 def pad_wet_edge(s, foot) -> bool:
@@ -981,6 +983,9 @@ def write(res: dict, out: Path = OUT) -> dict:
     atomic(out / "ground-f32.npy", lambda f: np.save(f, res["ground"]))
     atomic(out / "cliff-u8.npy", lambda f: np.save(f, res["cliff"]))
     atomic(out / "role-u8.npy", lambda f: np.save(f, res["role"]))
+    if "road_raised" in res:
+        from tools.argonia_world.routes.shape import ROAD_RAISED
+        atomic(out / ROAD_RAISED, lambda f: np.save(f, res["road_raised"]))
     if "road_water" in res:
         from tools.argonia_world.routes.shape import ROAD_WATER
         atomic(out / ROAD_WATER, lambda f: np.save(f, res["road_water"]))

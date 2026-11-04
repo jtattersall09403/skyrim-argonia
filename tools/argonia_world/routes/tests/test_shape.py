@@ -107,3 +107,19 @@ def test_reach_crossing_is_a_ford():
     h = np.minimum(np.maximum(h, lo), hi)
     d = 2.0 - h[n // 2, 56:65]
     assert (d > 0).all() and d.max() <= S.FORD_M + 1e-6, d
+
+
+def test_step_channel_under_a_road_is_capped_at_the_ford_depth():
+    n = 120
+    h, lo, hi, role, vl = _flooded(n)
+    road = _road(n)
+    chan = np.zeros(h.shape, bool)
+    chan[:, 58:61] = True  # a step's channel across the road, its bed 2 m under the level
+    hi[chan] = 0.0
+    h[chan] = 0.0
+    dc = S.dry_corridor(road, lo, hi, role, vl, vl, np.zeros(h.shape, bool), keep=chan)
+    h = np.minimum(np.maximum(h, lo), hi)
+    d = 2.0 - h[n // 2, 58:61]
+    assert np.allclose(d, S.FORD_M), d
+    assert h[5, 59] == 0.0  # off the corridor the channel keeps its bed
+    assert dc["ford"][n // 2, 59]

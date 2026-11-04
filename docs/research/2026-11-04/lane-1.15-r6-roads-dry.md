@@ -54,3 +54,22 @@ The roads' metres under water are 99.6 % gone. The ford depth and bank grade bar
 
 ## Checks
 Rows 162 and 163 (grass on the lane follows the water; the dry lane's LDirtPath01 grows nothing): evidence to come from the planner's road-look rerun.
+
+## Fix round 2 (built; the planner's regenerate r6-land2 measures it)
+1. The ford takes the 2-sample ring beside a reach as well as the reach: lo = hi = level - 0.3 on every wet corridor sample there.
+2. A step channel's bed in a road corridor is capped at the vertex's lowest level - 0.3 m (lo = hi = cap where it was deeper). Off the corridor the channel is unchanged. The L2 test `test_step_channel_under_a_road_is_capped_at_the_ford_depth` covers it.
+3. Generate writes `road-raised-u8.npy`, the samples dry_corridor raised. The census measures the bank grade only on that mask and fails over GRADE_MAX. Without the mask (the current ground) it measures all low ground and says so.
+4. The census prints each road's deepest ford with its reach (id, kind, width).
+
+Deepest fords on the 20:19 ground:
+| road | ford | reach |
+|---|---|---|
+| gideon-soulrest | 4.1 m | reach.878-1669, channel, 6.8 m wide |
+| rose-causeway, coast-road, cordon-line | 2.1-2.3 m | reach.1362-3419, backwater, 5.9 m |
+| north-shadowfen-rootworm-line, gideon-stormhold | 1.6 m | reach.1304-630, riffle, 11.7 m |
+| cartwrights-cross | 1.51 m | reach.460-1720, channel, 6.1 m |
+| dres-slave-road | 1.12 m | reach.3043-787, riffle |
+| blackwood-road | 0.97 m | reach.191-1674, riffle, 14 m |
+| glenbridge | 0.96 m | reach.1085-1169, channel, 9.7 m |
+
+No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (widest: soulrest-blackrose at reach.1249-3511, already 0.39 m). The depths come from the water field's carve left in the ring and the channels, not from the reach, so no bridge candidate. Recheck after r6-land2: any ford still over 0.3 m is a bridge candidate to name here.
