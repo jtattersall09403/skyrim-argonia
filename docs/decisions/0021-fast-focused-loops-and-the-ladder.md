@@ -66,3 +66,7 @@ The owner added (08:11): no agent plans as if the current round were the last; e
 architecture are kept as fast as they can be; each round closes with a measured retrospective of where the time went
 (a tool over the job logs, its table in the round's record) and ships what it finds; no AWS beyond what is authorised;
 the on-demand box only for defined jobs that cannot resume after an interrupt, the LOD above all.
+
+The owner made it exact (08:29): the LOD runs after all the rounds of the loop have finished and everything is verified
+complete, not at the end of each round. The chain's LOD and saves stages need `CHAIN_FINAL=1`, set by the planner only
+when the ledger shows nothing open; an intermediate round ends with its batch and retrospective.

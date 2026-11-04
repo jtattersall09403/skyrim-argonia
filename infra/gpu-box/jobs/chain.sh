@@ -19,7 +19,15 @@ run prebatch $g/jobs/r5_prebatch.sh || exit 3
 # 2. the in-game batch on the machine's existing LOD (deploy's lod step keeps the old LOD when none is archived for
 #    this ESM: a loud warning, never a rebuild); the machine stays up for stage 3
 ROUND_KEEP_UP=1 run batch $g/round.sh "$batch" || exit 4
-# 3. the LOD only when this ESM's key has no archive (lod.sh's keyed ensure: current or restored is minutes)
+# 3. the LOD and the saves only after the whole loop: CHAIN_FINAL=1 is set by the planner when the ledger shows nothing
+#    open (owner, 2026-11-04 08:29, #37: "after all the rounds/loop iterations have finished and everything has been
+#    verified as completed"); an intermediate round ends here with the retrospective.
+if [ -z "${CHAIN_FINAL:-}" ]; then
+  echo "CHAIN intermediate round: no LOD, no saves (CHAIN_FINAL unset)"
+  run retro python3 tooling/round_retro.py "$logs" --append "$record"
+  exit 0
+fi
+# the LOD only when this ESM's key has no archive (lod.sh's keyed ensure: current or restored is minutes)
 if [ -n "${CHAIN_DRY:-}" ]; then ens="(dry: lod.sh ensure not asked)"; else ens=$($g/lod.sh ensure 2>&1); fi; echo "$ens" | tail -3
 if echo "$ens" | grep -q 'no LOD archive'; then
   run lod bash -c "$g/lod.sh run && $g/lod.sh archive" || exit 5
