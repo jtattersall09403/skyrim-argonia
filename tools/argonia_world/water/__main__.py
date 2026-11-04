@@ -110,9 +110,15 @@ def placement(w, cw, water_out: Path, index_path: Path, ground_path: Path) -> li
     kind_of = {resolver.resolve(m)[0].form_key: k for k, (m, _, _) in stp.PIECES.items()}
     lines = [json.loads(x) for x in cells_p.read_text().splitlines() if x]
     refs = [(kind_of.get(r["base"]), tuple(r["pos"]), math.degrees(r["rot"][2]) % 360) for d in lines for r in d["refs"]]
+    seat_n, seat_bad = judge.seat(cw.steps(), [(kind_of.get(r["base"]), tuple(r["pos"]), math.degrees(r["rot"][2]) % 360,
+                                                r.get("scale", 1.0)) for d in lines for r in d["refs"]])
+    plan_p = water_out / "plan.json"
+    reseated = json.loads(plan_p.read_text()).get("reseated", "not emitted") if plan_p.exists() else "no plan"
+    print(f"water check seat: {seat_n.pop('pieces')} pieces against their chains; reds {seat_n}; re-seated {reseated}")
     levels = {k: v[0] for k, v in cw._cells.items()}
     g = np.load(ground_path, mmap_mode="r") if ground_path.exists() else None
     bad = [f"{'hovering' if 'hovering surface' in b else 'pieces'}: {b}" for b in judge.pieces(cw.steps(), levels, refs, g)]
+    bad += [f"seat: {b}" for b in seat_bad]
     if g is None:
         print(f"water check: no {ground_path}: bed and hovering rules skipped")
     else:
@@ -176,6 +182,7 @@ def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
     g = np.load(ground_path, mmap_mode="r") if ground_path.exists() else None
     sample = None
     no_channel = []
+    reseated = 0
     for s in cw.steps():
         if s.chain == "closed":
             continue
@@ -187,6 +194,7 @@ def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
         for p in stp.place(s, width_m):
             if resolved[p["kind"]].kind != "base":
                 continue
+            reseated += p["reseated"]
             cell = (s.cx + dx, s.cy + dy) if p["kind"] in stp.AT_FOOT else (s.cx, s.cy)  # the cell it stands in
             line = lines.setdefault(cell, {"x": cell[0], "y": cell[1], "refs": []})
             line["refs"].append({"base": resolved[p["kind"]].form_key,
@@ -207,7 +215,7 @@ def cmd_emit(out: Path, index_path: Path, ground_path: Path) -> int:
                                              sorted(lines.items(), key=lambda kv: (kv[0][1], kv[0][0]))))
     (out / "records.json").write_text(json.dumps({"schema": 1, "records": layer.records()}, indent=1) + "\n")
     plan = {"cells": len(lines), "pieces": sum(len(v["refs"]) for v in lines.values()), "unresolved": unresolved,
-            "overSlot": over, "noChannel": no_channel}
+            "overSlot": over, "noChannel": no_channel, "reseated": reseated}
     if sample is not None:  # a falls step for the world sample's river stop
         plan["sampleStep"] = {"cell": [sample.cx, sample.cy], "edge": sample.edge, "upperM": sample.upper_m,
                               "lowerM": sample.lower_m, "chain": sample.chain}

@@ -143,10 +143,15 @@ def template_of(t: str, data: Path = GAME_DATA) -> str:
 
 
 def flow_set(t: str, data: Path = GAME_DATA) -> dict:
-    """The fields a turned type changes from its template: NAM0 and the three noise winds' directions, half a circle."""
+    """The fields a type changes from its template: a turned type its NAM0 and the three noise winds' directions, half
+    a circle; a still type but the sea its NAM0 to nought (lane 1.15-r6-water-steps, owner play test 3 finding 20: the
+    lake, cold and marsh winners drift at 0.15-0.37; Skyrim's own still record, MurkyWater, carries NAM0 0, 0, 0)."""
+    r = winners(Path(data))[TYPES[t][1]][1]
+    if not TYPES[t][2]:
+        v = struct.unpack("<3f", r.first("NAM0"))
+        return {"linearVelocity": [0.0, 0.0, 0.0]} if t != "sea" and any(v) else {}
     if TYPES[t][3] is None:
         return {}
-    r = winners(Path(data))[TYPES[t][1]][1]
     v = struct.unpack("<3f", r.first("NAM0"))
     d = struct.unpack_from("<3f", r.first("DNAM"), 25 * 4)
     return {"linearVelocity": [-v[0], -v[1], v[2]], "windDirections": [(a + 180.0) % 360.0 for a in d]}

@@ -99,6 +99,35 @@ def pieces(steps, levels: dict, refs: list[tuple[str, tuple, float]], g: np.ndar
     return bad
 
 
+def seat(steps, refs: list[tuple[str, tuple, float, float]]) -> tuple[dict[str, int], list[str]]:
+    """The seat rule (r6 water-steps): every chained piece against its own step by rule: its origin neither over the
+    upper reach's water nor under the lower's, not facing uphill, and its OBND's foot (scaled) at or under the lower
+    water (no hanging sheet edge). `refs`: (kind, pos units, yaw deg, scale). Returns counts per rule and the reds."""
+    chained = [s for s in steps if s.chain != "closed"]
+    n = {"pieces": 0, "above upper": 0, "below lower": 0, "uphill": 0, "hanging": 0}
+    bad = []
+    if not chained:
+        return n, [f"{k} at {p[:2]}: no step" for k, p, _, _ in refs]
+    pts = np.array([stp.foot_point(s) for s in chained] + [stp.edge_point(s) for s in chained])
+    for kind, pos, yaw, scale in refs:
+        n["pieces"] += 1
+        i = int(np.argmin(np.hypot(pts[:, 0] - pos[0], pts[:, 1] - pos[1]))) % len(chained)
+        s = chained[i]
+        up, lo = s.upper_m * UPM, s.lower_m * UPM
+        where = f"{kind} on step ({s.cx},{s.cy}) {s.edge}"
+        z0 = stp.OBND_Z.get(kind, (0, 0))[0] * scale
+        for rule, hit in (("above upper", pos[2] > up + stp.BED_TOL_U), ("below lower", pos[2] < lo - stp.BED_TOL_U),
+                          ("hanging", pos[2] + z0 > lo + stp.BED_TOL_U + 0.5)):
+            if hit:
+                n[rule] += 1
+                bad.append(f"{where}: {rule} ({pos[2]:.0f} u, foot {pos[2] + z0:.0f} u, waters {up:.0f}/{lo:.0f} u)")
+        want = (stp.YAW[s.edge] + (180.0 if kind in stp.FACE_UP else 0.0)) % 360
+        if _yaw_off(yaw, want) > 90.0:
+            n["uphill"] += 1
+            bad.append(f"{where}: faces uphill ({_yaw_off(yaw, want):.0f} deg off)")
+    return n, bad
+
+
 def hovering(levels: dict, steps, g: np.ndarray, in_province) -> list[str]:
     """Rule 2's ground half: no ground more than BED_TOL_U under a level along an edge where its sheet ends."""
     chan = {(s.cx, s.cy, s.edge): (s.cross_lo, s.cross_hi) for s in steps if s.chain != "closed"}

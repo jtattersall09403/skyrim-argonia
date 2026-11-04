@@ -124,3 +124,21 @@ def test_foot_matches_the_generator(drop):
     from tools.argonia_world.terrain.generate import LIP
     import math
     assert stp.foot_vertices(drop) == int(min(Q - 1, max(1, math.ceil(drop / (0.8 * LIP)))))
+
+
+def test_seat_holds_every_piece_between_its_waters_and_reseats_a_hanging_line():
+    """r6 water-steps (finding 19): the line on a 5 m step at a 2 m channel's width hangs (its OBND's foot -560 u x
+    scale over the lower water); place re-seats it to the drop, and the seat rule reds the unseated one, a piece over
+    the upper water, one under the lower and one facing uphill."""
+    pl = stp.place(STEP, 2.0)
+    seat = [(p["kind"], p["pos"], p["yaw"], p["scale"]) for p in pl]
+    n, bad = judge.seat([STEP], seat)
+    assert bad == [] and n["pieces"] == 4 and [p["kind"] for p in pl if p["reseated"]] == ["rapids"]
+    k, pos, yaw, _ = seat[0]
+    unseated = su.metres_to_units(2.0) / stp.PIECES["rapids"][1]
+    x, y, z = pos
+    wrong = [(k, pos, yaw, unseated), (k, (x, y, z + 200), yaw, 10.0), ("ring", (x, y, LO * UPM - 200), yaw, 1.0),
+             (k, pos, (yaw + 180) % 360, 10.0)]
+    n, bad = judge.seat([STEP], wrong)
+    assert {r: n[r] for r in ("hanging", "above upper", "below lower", "uphill")} == dict.fromkeys(
+        ("hanging", "above upper", "below lower", "uphill"), 1), bad

@@ -42,6 +42,12 @@ AT_FOOT = {"skirt", "ring", "mist"}  # at the lower water where the bed meets it
 FACE_UP = {"skirt"}  # yawed up the step (vanilla 180 deg); the rest down it
 SCALE_BY_DROP = {"mist"}  # sized to the drop; the rest to the channel's width
 SCALE_RANGE = (0.1, 10.0)
+# Each piece's OBND z extent (units, unscaled; Skyrim.esm, water/probes/vanilla_piece_seat.py 2026-11-04). Vanilla seats
+# every piece so its bounds' foot reaches the lower water: the line's bottom at the lower water (median +17 u, 50 of 111
+# at or under it), the skirt's and ring's under it (38 of 49, 45 of 49); so a sheet whose foot stands over the lower
+# water hangs in the air (finding 19). The seat rule: a piece's origin between the two waters, its foot at or under
+# the lower water + BED_TOL_U; a line too small to reach is re-seated, sized to the drop.
+OBND_Z = {"rapids": (-560, 589), "ring": (-728, 733), "skirt": (-475, 3258), "mist": (-290, 362), "falls": (-1468, 0)}
 # the largest one-edge drop a chain dresses: the tall body's height (20.96 m), inside vanilla's dressed steps
 # (p90 22.8 m of the 51); a taller step makes its reach a dry gully (solve.py)
 MAX_DROP_M = 1468.0 / su.UNITS_PER_METRE
@@ -90,7 +96,10 @@ def place(s, width_m: float) -> list[dict]:
         x, y = foot_point(s) if foot else edge_point(s)
         z = su.metres_to_units(s.lower_m if foot else s.upper_m)
         size = su.metres_to_units(drop) / hu if k in SCALE_BY_DROP else su.metres_to_units(width_m) / wu
+        size = min(SCALE_RANGE[1], max(SCALE_RANGE[0], size))
+        reach = (z - su.metres_to_units(s.lower_m) - BED_TOL_U) / -OBND_Z[k][0]  # the scale whose foot meets it
+        reseated = reach > size
         yaw = (YAW[s.edge] + (180.0 if k in FACE_UP else 0.0)) % 360
-        out.append({"kind": k, "pos": (x, y, z), "yaw": yaw,
-                    "scale": min(SCALE_RANGE[1], max(SCALE_RANGE[0], size))})
+        out.append({"kind": k, "pos": (x, y, z), "yaw": yaw, "reseated": reseated,
+                    "scale": min(SCALE_RANGE[1], max(size, reach))})
     return out

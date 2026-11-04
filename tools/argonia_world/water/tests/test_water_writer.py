@@ -97,17 +97,26 @@ def test_water_written_and_read_back(tmp_path):
                 continue
             if turned and s_ == "NAM0":
                 assert struct.unpack("<3f", b) == pytest.approx(turned["linearVelocity"])
-            elif turned and s_ == "DNAM":
+            elif "windDirections" in turned and s_ == "DNAM":
                 t = tpl.first("DNAM")
                 assert b[:100] == t[:100] and b[112:] == t[112:], rec["edid"]
                 assert struct.unpack_from("<3f", b, 100) == pytest.approx(turned["windDirections"])
             else:
                 assert b == tpl.first(s_), (rec["edid"], s_)
         # still stays still, flowing flows: a flowing type moves its water (NAM0), a still type's template is no flow map
-        if rec["flow"]:
-            assert any(abs(v) > 0.1 for v in struct.unpack("<3f", ours.first("NAM0")[:12])[:2]), rec["edid"]
+        v = struct.unpack("<3f", ours.first("NAM0")[:12])
+        if rec["flow"]:  # the template's flow fields, or the turned direction's
+            assert v == pytest.approx(turned.get("linearVelocity", struct.unpack("<3f", tpl.first("NAM0")))), rec["edid"]
+            assert any(abs(x) > 0.1 for x in v[:2]), rec["edid"]
         else:
             assert ours.first("FNAM")[0] & 0x08 == 0, rec["edid"]
+            if rec["edid"] != layer.type_edid("sea"):  # still water does not drift (r6 water-steps; the sea keeps its own)
+                assert v == (0.0, 0.0, 0.0), rec["edid"]
+    # every lake, tarn, pond, pool and marsh cell takes a still type, every river's own cell a flowing one
+    for kind in (*layer.STILL_KINDS, "pond", "pool"):
+        for band in ("lowland", "upland"):
+            assert not layer.is_flow(layer.cell_type("fresh", kind, band, "reach.x", 2, "ne")), kind
+    assert layer.is_flow(layer.cell_type("fresh", None, None, "reach.x", 1, "sw"))
     # the black type is Update.esm's MurkyWater, the darkest open-water record (r5 black-water): measured bytes, written as is
     blk = watr[int(layer.type_key("black").split(":")[0], 16)]
     d = blk.first("DNAM")
