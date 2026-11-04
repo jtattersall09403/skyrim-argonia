@@ -3,7 +3,6 @@ stepped Tamriel cell edge: per FX base its OBND, and per ref near a step its sca
 upper and lower water (units). Feeds steps.py's seat rule. Reads only; prints numbers.
 Usage: python3 -m tools.argonia_world.water.probes.vanilla_piece_seat [Skyrim.esm]"""
 import collections
-import math
 import struct
 import sys
 from pathlib import Path

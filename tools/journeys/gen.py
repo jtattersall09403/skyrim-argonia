@@ -9,7 +9,7 @@ import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import (JOURNEYS, ROOT, SEAT_U, Build, min_share, aim, eye_of, place, stand_bad, water_share)
+from tools.journeys import (JOURNEYS, ROOT, SEAT_U, Build, clearance, min_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
 # Every bearing, the given one first, then out from it both ways: the first that clears wins.
@@ -91,6 +91,7 @@ def _stand(b: Build, subj, d_m: float, first_bearing: float, log: list, name: st
 
 
 def river_steps(b: Build, w, log: list) -> str:
+    from tools.argonia_world.water import layer
     steps = w.query("SELECT cx, cy, edge, upper_m, lower_m, cross_lo, cross_hi FROM water_step WHERE chain != 'closed' "
                     "ORDER BY upper_m - lower_m DESC, cx, cy, edge LIMIT 3")
     out, first = [RIVER_HEAD], True
@@ -102,11 +103,28 @@ def river_steps(b: Build, w, log: list) -> str:
         out.append(_cow_step(f"step-{n}", f"kept {s['upper_m'] - s['lower_m']:.1f} m step ({s['cx']},{s['cy']}) "
                              f"{s['edge']}", x, y, z, h, p, subj, first))
         first = False
-    for name, reach, (cx, cy) in GULLIES:
+    # three dry gullies from the build's dry reaches (cell_kind 'dry'): each at its centreline's middle cell, the
+    # chosen ones (GULLIES) first, the first three whose bed takes a dry, clear stand
+    pts = {}
+    for rid, e, so in w.query("SELECT p.reach_id, p.east_m, p.south_m FROM hydrology_reach_point p JOIN hydrology_reach r "
+                              "ON r.id = p.reach_id WHERE r.cell_kind = 'dry' ORDER BY p.reach_id, p.ord"):
+        pts.setdefault(rid, []).append((e, so))
+    order = [g[1] for g in GULLIES if g[1] in pts] + sorted(r for r in pts if r not in {g[1] for g in GULLIES})
+    kept, spare = [], []
+    for reach in order:
+        cx, cy = su.cell_of(*su.province_to_skyrim(*pts[reach][len(pts[reach]) // 2]))
         subj = _cell_low(b, cx, cy)
-        x, y, z, h, p = _stand(b, subj, BED_STAND_M, 0.0, log, name)
-        out.append(_cow_step(name, f"dry gully {reach}, its bed in cell ({cx},{cy})", x, y, z, h, p, subj, first))
-    for name, (cx, cy) in STILLS:
+        f = place(b, subj, BED_STAND_M * U, around(0.0))
+        (kept if f["clear"] else spare).append((reach, cx, cy, subj))
+        if len(kept) == 3:
+            break
+    for n, (reach, cx, cy, subj) in enumerate((kept + spare)[:3], 1):
+        x, y, z, h, p = _stand(b, subj, BED_STAND_M, 0.0, log, f"gully-{n}")
+        out.append(_cow_step(f"gully-{n}", f"dry gully {reach}, its bed in cell ({cx},{cy})", x, y, z, h, p, subj, first))
+    for name, (cx, cy) in STILLS:  # still a still body's cell (a lake, tarn or marsh: no flow) in this build
+        kind = w.query("SELECT b.kind FROM cell_water c JOIN hydrology_body b ON b.id = c.body_id WHERE c.cx = ? AND c.cy = ?",
+                       cx, cy)
+        assert kind and kind[0][0] in layer.STILL_KINDS, (cx, cy)
         subj = _cell_low(b, cx, cy, wet=True)
         x, y, z, h, p = _stand(b, subj, BED_STAND_M, 0.0, log, name)
         out.append(_cow_step(name, f"still water in cell ({cx},{cy}), level {su.units_to_metres(subj[2]):.1f} m",
@@ -264,7 +282,10 @@ def _first_wet(b: Build, pt: tuple, ux: float, uy: float, limit_m: float = 400.0
     return None
 
 
-def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
+CLEAR_STOPS = ("sea", "river", "brackish-rim")   # round 5: these read clear and stood under canopy, in fronds
+
+
+def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, strict: bool = False):
     """The authored stand `f` aimed at the body's centre, or (clearance, slope or foliage moved it, or its field holds too
     little water) the nearest stand within FIT_REACH_M, dry and clear, whose aim point is water and whose near field
     (0-60 m, +-30 deg) is at least the share's floor water at or below the eye. Raises when none: no silent off-aim stop.
@@ -299,6 +320,10 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
         near_ = (ex + math.sin(a_) * 60 * U, ey + math.cos(a_) * 60 * U, ez)
         hits = stand_bad(b, x, y, near_)
         hits = len(hits) * 100 + len(b.blockers((ex, ey, ez), near_)) if hits else len(b.blockers((ex, ey, ez), near_))
+        cl = clearance(b, (ex, ey, ez), h)
+        if strict and cl != (0, 0):
+            continue   # fronds on the eye line or canopy over the eye (the OBND volumes): never kept
+        hits += 1000 * sum(cl)
         if hits:   # water and aim hold but plants are on the eye line: kept as the fallback, fewest hits then nearest
             if fallback is None or hits < fallback[0]:
                 fallback = (hits, i, j, x, y, subj, sh)
@@ -307,7 +332,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
             log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(i, j) * SAMPLE_M, 1),
                         "why": "re-aimed at the body's centre", "clear": True})
         return x, y, subj, sh
-    if fallback is not None:
+    if fallback is not None and not strict:
         hits, i, j, x, y, subj, sh = fallback
         print(f"water-types: WARNING {name}: no stand clears the plants; the one with fewest ({hits}) on the eye line is used "
               f"(water and aim hold)")
@@ -318,7 +343,8 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list):
                      f"field holds {min_share(name):.0%} water with a water aim (best share {best:.0%}; rejected for {why})")
 
 
-def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dict, line: dict, reach_of: dict, log: list):
+def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dict, line: dict, reach_of: dict, log: list,
+             strict: bool = False):
     """One water stop at a shore cell (cx, cy), its dry side (dx, dy): the stand fitted to hold water (_fit)."""
     ox, oy = su.cell_origin(cx, cy)
     z = su.metres_to_units(level[(cx, cy)])
@@ -350,7 +376,7 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
                     sh[1] - dy * (SEA_OUT_M if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS / U) * U, z)
     if not f:
         raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
-    return _fit(b, name, f, subj, name == "sea", log)
+    return _fit(b, name, f, subj, name == "sea", log, strict)
 
 
 def water_types(b: Build, w, log: list) -> str:
@@ -384,21 +410,28 @@ def water_types(b: Build, w, log: list) -> str:
         if not cands_:
             raise ValueError(f"water-types: no shore cell of {want}")
         cands_.sort(key=lambda c: -c[0])   # the best shore first; a shore with no stand holding water goes to the next
-        err = None
-        for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
-            n_log = len(log)
-            try:
-                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log)
-            except ValueError as e:
-                err = err or e
-                del log[n_log:]
-                continue
-            break
-        else:
+        err, got = None, None
+        # a CLEAR_STOPS stop takes the first shore whose stand reads 0/0 (clearance); none: the old fit, warned
+        for strict in ((True, False) if name in CLEAR_STOPS else (False,)):
+            for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
+                n_log = len(log)
+                try:
+                    got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, strict)
+                except ValueError as e:
+                    err = err or e
+                    del log[n_log:]
+                    continue
+                break
+            if got:
+                break
+            print(f"water-types: WARNING {name}: no shore of {min(len(cands_), FIT_SHORES)} has a stand clear of fronds and canopy")
+        if not got:
             raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
         x, y, subj, share = got
-        print(f"water-types: {name}: water share {share:.0%} of the near field (0-60 m, +-30 deg; needs {min_share(name):.0%})")
         h, p = aim(eye_of(b, x, y), subj)
+        cl = clearance(b, eye_of(b, x, y), h)
+        print(f"water-types: {name}: water share {share:.0%} of the near field (0-60 m, +-30 deg; needs {min_share(name):.0%}); "
+              f"clearance {cl[0]}/{cl[1]} (plants on the eye line to 60 m / canopy over the eye within 10 m) at {x:.0f} {y:.0f}")
         if name == "sea":
             p = 0.0
         out.append(_cow_step(name, f"{types[(cx, cy)]} water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m",
@@ -436,7 +469,8 @@ GUAR_STAND_M = 8.0
 
 def _kinds_spawns(w, b: Build) -> dict:
     """Per class the candidate spawn refs, best first: land or shore (dry), the class on most (13+) of the 25 cells round it, then the
-    most spawn points within KINDS_REACH_M, then the class on the most cells; no place within 3 cells."""
+    most spawn points of the class's own lists within the read's KINDS_RADIUS_U (round 6: the lagoon's round-5 stand had 1 of 8),
+    then the most spawn points within KINDS_REACH_M, then the class on the most cells; no place within 3 cells."""
     import numpy as np
     from tools.argonia_world.creatures import build as cb
     from tools.argonia_world.terrain.grid import Sources
@@ -451,6 +485,7 @@ def _kinds_spawns(w, b: Build) -> dict:
     sp = [r for r in run["refs"] if r["kind"] == "spawn"]
     xy = np.array([(r["x"], r["y"]) for r in sp])
     reach = KINDS_REACH_M * U
+    own_class = {c: np.array([r["class"] == c for r in sp]) for c in KINDS_CLASSES}
     out = {}
     for c in KINDS_CLASSES:
         cand = []
@@ -463,8 +498,10 @@ def _kinds_spawns(w, b: Build) -> dict:
                 continue
             if b.wet(r["x"], r["y"]):
                 continue
-            n = int((np.hypot(xy[:, 0] - r["x"], xy[:, 1] - r["y"]) < reach).sum())
-            cand.append(((same < 13, -n, -same, cx, cy, r["x"], r["y"]), r, n, same))
+            d = np.hypot(xy[:, 0] - r["x"], xy[:, 1] - r["y"])
+            n = int((d < reach).sum())
+            own = int(((d < KINDS_RADIUS_U) & own_class[c]).sum())  # the class's own lists in the read's two cells
+            cand.append(((same < 13, -own, -n, -same, cx, cy, r["x"], r["y"]), r, n, same))
         out[c] = sorted(cand, key=lambda t: t[0])
     return out
 

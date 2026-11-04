@@ -65,23 +65,6 @@ steps:
   - {read: [player], path: pos, keep: step-3}
   reader: [the header checklist for this kind of stop]
 - name: gully-1
-  # dry gully reach.1375-169, its bed in cell (-19,58)
-  # subject: -74368 237696 -1920
-  do:
-  - console: {line: cow ARG_Province -19 58, settle: 60}
-  - wait: 8
-  - console: set gamehour to 13
-  - console: player.setpos x -77519
-  - console: player.setpos y 237696
-  - console: player.setpos z 77
-  - wait: 6
-  - console: player.setangle z 90
-  - console: player.setangle x 34
-  - wait: 4
-  expect:
-  - {read: [player], path: pos, keep: gully-1}
-  reader: [the header checklist for this kind of stop]
-- name: gully-2
   # dry gully reach.97-2505, its bed in cell (-60,-15)
   # subject: -245632 -60416 2136
   do:
@@ -96,21 +79,38 @@ steps:
   - console: player.setangle x 11
   - wait: 4
   expect:
+  - {read: [player], path: pos, keep: gully-1}
+  reader: [the header checklist for this kind of stop]
+- name: gully-2
+  # dry gully reach.1071-374, its bed in cell (-29,51)
+  # subject: -114816 209024 25320
+  do:
+  - console: {line: cow ARG_Province -29 51, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -114816
+  - console: player.setpos y 210495
+  - console: player.setpos z 26915
+  - wait: 6
+  - console: player.setangle z 180
+  - console: player.setangle x 49
+  - wait: 4
+  expect:
   - {read: [player], path: pos, keep: gully-2}
   reader: [the header checklist for this kind of stop]
 - name: gully-3
-  # dry gully reach.70-1177, its bed in cell (-60,26)
-  # subject: -245632 107648 22464
+  # dry gully reach.1078-739, its bed in cell (-27,40)
+  # subject: -106624 163968 7496
   do:
-  - console: {line: cow ARG_Province -60 26, settle: 60}
+  - console: {line: cow ARG_Province -26 40, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245142
-  - console: player.setpos y 107648
-  - console: player.setpos z 22524
+  - console: player.setpos x -106277
+  - console: player.setpos y 164315
+  - console: player.setpos z 7361
   - wait: 6
-  - console: player.setangle z 270
-  - console: player.setangle x 20
+  - console: player.setangle z 225
+  - console: player.setangle x -2
   - wait: 4
   expect:
   - {read: [player], path: pos, keep: gully-3}
