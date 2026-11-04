@@ -34,9 +34,24 @@ Owner #37, 2026-11-04 07:36: find the cause and fix it, never drop. The causes w
 - Every slot path points at a texture its mod already lays. No new art (0006).
 - `--check` ran over the staged KotM mod and BM&V's two meshes. Those two were read from the vault archive (Data1.rar), because the stage had pruned them while the forms were dropped.
 - The lists rebuild adds them back to the BM&V keep list (data/dependencies.json, +2 paths). The next `stack stage` unpacks them, and the deploy's patcher then reads them in place.
-- Still dropped, because no mesh op fixes them without new art:
-  - kapok 01-05: the bark diffuse is bright (luminance 132);
-  - Groundplant10: the lime leaf diffuse.
+- **Kapok 01-05 and Groundplant10 are back too (the coordinator's follow-up: never dropped).** The fix is a measured vertex-colour op in the same mesh patch, not a derived texture:
+  - The kapok diffuse is BC7 (DX10), which our DDS reader cannot decode.
+  - Groundplant10's drawn mesh is Tropical Skyrim's Bush01 (the load order's winner), and its diffuse, anvilleafpalm02, is shared with the date palms and undergrowth. Overriding that texture on its path would recolour those forms too.
+  - The engine multiplies the vertex colour into the diffuse, so scaling it changes only these shapes and leaves the texture untouched.
+  - The numbers below are drawn colour (diffuse mean from data/leaf-hue.json times the vertex-colour mean), shown in `patch --check`:
+
+| form | shape | before | after |
+|---|---|---|---|
+| kapok 01-05 (463246-46324A) | bark (vertex colour 255; on 05 the attribute was added, the shape had none) | lum 137.8, sat 0.19 | lum 58.9, sat 0.19 (the placed bark median is 59) |
+| Groundplant10 (03A583) | Tropical bush01 Bush03, per-channel factor | sat 0.88, lum 33.0 | sat 0.71 (the stack's leaf p90), lum 14.4 |
+| Groundplant10 (03A583) | Bush03 Own_Emit (black) | set | cleared |
+| rainforest 01/02 | bark (new bar: drawn bark lum <= 81, the brightest kept bark) | lum 94.0 | lum 59.0 |
+
+  - Groundplant10 loses luminance because no channel may pass 255: the blue would have to rise. The still judges whether it now reads too dark.
+  - LOOK_DROP is now empty (0 entries). Province vegetation check after this follow-up: 18 green, 0 red, 647,242 refs.
+  - Lists: 214 placed forms. Kapok rows 7/13/14/2/6, Groundplant10 10.
+  - `textures check`: 0 problems. pytest: 58 passed (two new vertex-colour tests, one of which adds the attribute).
+  - `patch --check`: 19 meshes. The two BM&V meshes are absent from the current stage until it re-stages (proven earlier from the vault copy).
 
 ## 3. Lists and checks
 - LOOK_DROP is down from 22 to 6 entries. Thirteen forms are back, with these land_region_object rows:
@@ -63,9 +78,8 @@ Owner #37, 2026-11-04 07:36: find the cause and fix it, never drop. The causes w
 - Province vegetation check (`vegetation build` and `check` over out/terrain/land): 18 green, 0 red, 646,952 refs (was 647,618).
 
 ## 4. The deploy's lay step
-- `deploy.sh` gains the step `mesh patches`, after `stack push`. It runs `patch --out out/mesh_patches/argonia-mesh-patches` and sends the result to `C:\argonia\MO2\mods\argonia-mesh-patches`.
-- `stack.ps1 on` lays that folder after every profile mod, so a loose patched copy wins over the source loose file or BSA entry. The verify pass skips its paths, as it does for pandora-output and the LOD.
-- `stack.py push` never removes the folder: it prunes only the rows it sent.
+- `deploy.sh` gains the step `mesh patches`, after `ground textures`, only when the deploy stages. It runs `patch --out out/derived/argonia-meshes` and sends the result to `C:\argonia\ours\derived\argonia-meshes`. This is the ground lane's road (267bae8d): one folder per tool.
+- `stack.ps1 on` already lays every `ours\derived` folder over every mod and skips them in verify. My own stack.ps1 lines were removed.
 - Dry run: `patch --list` names the 13 files with their sources.
 - `out/` is gitignored. Nothing patched is committed (0003).
 
@@ -96,6 +110,8 @@ Take one booth still per form, near and at mid distance, noon. The reader judges
 - 15B1E2, 15B1E3, 15B1E7 and 0EB922 / 0EB923 / 155FE0 / 155FE2: is the bark grain even, with no streaks, swirls or smears along the trunk or branches, and no seam where the islands meet?
 - Willow05 (0E67A9) and 01Willow (034580), same pose: is either frond neon lime? If only the KotM willows are, the shared leaf shape's wrap 5.0 is the cause and the next op is a lower wrap. If both are, it is the weather or shader.
 - Swamp01 (KotM snowgum) beside Undergrowth01: is the Swamp card's yellow-green beyond the undergrowth's? If yes, the vertex tint is the cause, and the next op is a vertex-colour scale.
+- Kapok 01-05: does the wide buttressed trunk read as dark bark like its neighbours, not pale grey-beige? (rootland, deep-sink)
+- Groundplant10 (03A583) at the western frontier high vantage: is it no longer bright lime, and not black-dark?
 - Then the world-panel stops: deep-river-corridor 6-9, deep-sink-basin shore and high, and the lagoon shore (reflections), plus the water-types stops.
 
 ## Hand-off
