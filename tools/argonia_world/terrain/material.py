@@ -346,9 +346,14 @@ def value_noise(r0: int, r1: int, c0: int, c1: int, period: int, seed: int) -> n
     iy, ix = rr // period, cc // period
     fy = _smooth((rr % period) / period).astype(np.float32)
     fx = _smooth((cc % period) / period).astype(np.float32)
-    a, b = _hash(iy, ix, seed), _hash(iy, ix + 1, seed)
-    c, d = _hash(iy + 1, ix, seed), _hash(iy + 1, ix + 1, seed)
-    return (a * (1 - fx) + b * fx) * (1 - fy) + (c * (1 - fx) + d * fx) * fy
+    # the hash only on the lattice the window spans (one value per lattice node, then gathered): the same hash of
+    # the same nodes as hashing every vertex, so the bytes do not move, at period^-2 of the hashing
+    y0, x0 = int(iy.min()), int(ix.min())
+    g = _hash(np.arange(y0, int(iy.max()) + 2)[:, None], np.arange(x0, int(ix.max()) + 2)[None, :], seed)
+    ly, lx = (iy - y0)[:, 0], ix - x0
+    # x first on each lattice row, then rows gathered: per vertex the same float32 operations in the same order
+    gx = g[:, lx[0]] * (1 - fx) + g[:, lx[0] + 1] * fx
+    return gx[ly] * (1 - fy) + gx[ly + 1] * fy
 
 
 # ---- inputs: water and regions ------------------------------------------------------------------------------
@@ -649,13 +654,19 @@ class Material:
             m = np.where(apron, raw, box(box(raw, CLASS_BLEND), CLASS_BLEND))  # the class blend; none in the apron
             if not m.any():
                 continue
-            wc = np.zeros_like(out)
+            # the rule is per vertex: work only over the box where the class has weight (outside it m is 0 and the
+            # class adds nothing), the same values in the same order as over the whole window
+            ry, rx = np.nonzero(m.any(axis=1))[0], np.nonzero(m.any(axis=0))[0]
+            y0, y1, x0, x1 = int(ry[0]), int(ry[-1]) + 1, int(rx[0]), int(rx[-1]) + 1
+            sl = (slice(y0, y1), slice(x0, x1))
+            ks = {n: k[n][sl] for n in ("band", "dh", "slope", "wet", "noise", "north")}
+            wc = np.zeros((y1 - y0, x1 - x0, n_tex), dtype=np.float32)
             for s in STOPS[CLASSES[c]]:
-                x = k["band"] if s.dh[0] > 5 else k["dh"]
-                nz = k["noise"] if not s.seed else self._noise(k, s.seed, a0, a1, b0, b1)
-                f = (ramp(x, *s.dh, SOFT["dh"]) * ramp(k["slope"], *s.slope, SOFT["slope"])
-                     * ramp(k["wet"], *s.wet, SOFT["wet"]) * ramp(nz, *s.noise, SOFT["noise"]))
-                f = f * s.w * (1.0 + s.north * k["north"])
+                x = ks["band"] if s.dh[0] > 5 else ks["dh"]
+                nz = ks["noise"] if not s.seed else self._noise(k, s.seed, a0, a1, b0, b1)[sl]
+                f = (ramp(x, *s.dh, SOFT["dh"]) * ramp(ks["slope"], *s.slope, SOFT["slope"])
+                     * ramp(ks["wet"], *s.wet, SOFT["wet"]) * ramp(nz, *s.noise, SOFT["noise"]))
+                f = f * s.w * (1.0 + s.north * ks["north"])
                 wc[..., self.index[s.ltex]] += f.astype(np.float32)
             # one texture rules each vertex, as a painted stroke (audit §4: no sustained 30/70 mixes); where stops
             # tie, a per-texture noise breaks the tie in patches, never in a straight line
@@ -664,9 +675,12 @@ class Material:
             for t in {self.index[s.ltex] for s in STOPS[CLASSES[c]]}:
                 if t not in ties:
                     ties[t] = self._tie(t, a0, a1, b0, b1)
-                wc[..., t] *= 1.0 + TIE * (ties[t] - 0.5)
+                wc[..., t] *= 1.0 + TIE * (ties[t][sl] - 0.5)
             win = np.where(tot > 1e-4, np.argmax(wc, axis=2), fb)
-            out += (win[..., None] == np.arange(n_tex)) * m[..., None]
+            # the one-hot stroke added at its texture alone (adding the other textures' zeros moves nothing)
+            o = out[sl]
+            yy, xx = np.indices(win.shape)
+            o[yy, xx, win] += m[sl]
         if self.roads:
             out = self._road(out, k, a0, b0)
         if getattr(self.src, "patches", None) is not None:
