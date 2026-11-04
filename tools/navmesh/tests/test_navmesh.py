@@ -172,3 +172,27 @@ def test_nvmi_door_links_are_replaced_in_place():
     want = nvnm.nvmi(0x01600001, (1, 2, 3), [0x01600002], [0x02000892, 0x020008B7], 0x01000800, (3, -4), preferred=0.25)
     assert doors.nvmi_with_doors(plain, [0x020008B7, 0x02000892]) == want
     assert doors.form_id("0008B7:Argonia.esm", doors.MASTERS, doors.SELF_FILE) == 0x020008B7
+
+
+def test_placed_collects_infrastructure_persistent_refs(tmp_path):
+    """A bridge/gate ref in the WRLD override's persistentRefs is collected with the mesh of the intermediate's own
+    base record, beside a place cell's ref."""
+    import json
+    from tools.navmesh import nif, placed
+
+    class Res:
+        def collision(self, modl):
+            return nif.Collision(np.array([[[0, 0, 0], [100, 0, 0], [0, 100, 0]]], float), None, {}) if modl == "bridge.nif" else None
+
+    recs = [
+        {"type": "STAT", "formKey": "000A00:Argonia.esm", "model": "bridge.nif", "layer": "base:regions"},
+        {"type": "WRLD", "override": True, "layer": "base:regions", "persistentRefs": [
+            {"formKey": "000A01:Argonia.esm", "base": "000A00:Argonia.esm", "pos": [10.0, 20.0, 30.0], "rot": [0, 0, 0]},
+            {"formKey": "000A02:Argonia.esm", "base": "000A99:Argonia.esm", "pos": [0.0, 0.0, 0.0], "rot": [0, 0, 0]}]},
+    ]
+    f = tmp_path / "i.json"
+    f.write_text(json.dumps({"records": recs}))
+    assert len(placed._refs(f)) == 2
+    tris, tally = placed.triangles(tmp_path, f, resolver=Res())
+    assert tally["collision"] == 1 and tally["no_base"] == 1 and len(tris) == 1
+    assert np.allclose(tris[0][0], [10, 20, 30]) and np.allclose(tris[0][1], [110, 20, 30])

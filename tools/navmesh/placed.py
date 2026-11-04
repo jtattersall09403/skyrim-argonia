@@ -1,6 +1,9 @@
 """Placed-object collision for the navmesh job (inputs.write's `objects`): the built places' references as the
 triangles of their meshes' own collision, in world units.
 
+The route infrastructure's persistent references (the WRLD override's `persistentRefs`) are read the same way, their
+base's mesh from the intermediate's own STAT/ACTI record or from the plugin that holds it.
+
 Each exterior reference of a `place:` layer in the intermediate (out/build/argonia.json) whose base is a solid type
 is looked up in its own plugin (esm.py: MODL and OBND). Its mesh is found as the game finds it (meshes.py: the laid
 mod stack's loose files, then BSAs) and its Havok collision read (nif.py: compressed mesh, packed strips, convex
@@ -66,16 +69,31 @@ def rotation(rx: float, ry: float, rz: float) -> np.ndarray:
     return rot(0, -rx) @ rot(1, -ry) @ rot(2, -rz)
 
 
-def _refs(intermediate: Path) -> list[dict]:
-    recs = json.loads(intermediate.read_text(encoding="utf-8"))["records"]
-    return [x for r in recs if r.get("layer", "").startswith("place:") and r["type"] == "CELL" and r.get("worldspace")
-            for x in r.get("refs", []) if not x.get("actor") and not x.get("disabled")]
+def _refs(intermediate: Path, recs: list[dict] | None = None) -> list[dict]:
+    """The built places' exterior references plus the route infrastructure's persistent ones (the WRLD override's
+    `persistentRefs`: gates, landings, bridges; routes/infra.py), each with the same keys."""
+    if recs is None:
+        recs = json.loads(intermediate.read_text(encoding="utf-8"))["records"]
+    out = [x for r in recs if r.get("layer", "").startswith("place:") and r["type"] == "CELL" and r.get("worldspace")
+           for x in r.get("refs", []) if not x.get("actor") and not x.get("disabled")]
+    out += [x for r in recs if r["type"] == "WRLD" for x in r.get("persistentRefs", [])
+            if not x.get("actor") and not x.get("disabled") and x.get("base") and x.get("pos")]
+    return out
+
+
+def own_models(recs: list[dict]) -> dict[str, str]:
+    """FormKey -> MODL of the base records the intermediate itself defines (the infrastructure's gate ACTI, signs,
+    new STATs), which no plugin on the VM holds yet."""
+    return {r["formKey"]: r["model"] for r in recs if r.get("model") and r.get("formKey") and r["type"] in ("STAT", "ACTI")}
 
 
 def triangles(data: Path, intermediate: Path = INTERMEDIATE, resolver=None) -> tuple[np.ndarray, dict]:
     from tools.navmesh import meshes
-    refs = _refs(intermediate)
-    info = bases(data, {x["base"] for x in refs})
+    recs = json.loads(intermediate.read_text(encoding="utf-8"))["records"]
+    refs = _refs(intermediate, recs)
+    own = own_models(recs)
+    info = bases(data, {x["base"] for x in refs if x["base"] not in own})
+    info.update({k: (m, None) for k, m in own.items()})
     res = resolver or meshes.Resolver(data)
     out: list[np.ndarray] = []
     tally = {"refs": len(refs), "collision": 0, "no_collision": 0, "box_fallback": 0, "no_base": 0, "triangles": 0}
