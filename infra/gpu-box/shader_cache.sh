@@ -2,7 +2,10 @@
 # Community Shaders' cache across deploys and machines (1.15-r4-fast-loop; the owner: loops massively faster).
 # CS keeps its compiled cache in Data\ShaderCache (stack.ps1 never touches it), so a machine pays the ~11 min compile
 # once per shader set; a new machine from an older image paid it again. Keyed by shader_cache.py (the shader sources,
-# the CS DLL, its settings): the machine's key sits in Data\ShaderCache\argonia-shader.key.
+# the CS DLL, its settings, and the GPU name and driver from nvidia-smi: the round-6 clone, a T4 imaged from an L4
+# disk, read "current" and recompiled on every launch, 287 s to the menu): the machine's key sits in
+# Data\ShaderCache\argonia-shader.key. SHADER_GPU="name, driver" overrides the machine read (dry runs, tests).
+#   shader_cache.sh dry      print the key, the machine's key, the archive path and the decision; nothing laid
 #   shader_cache.sh ensure   deploy, before the launch: current -> nothing; archived -> laid; else the launch compiles
 #   shader_cache.sh save     deploy, after the launch (compile done): archive the cache under its key if none is
 set -euo pipefail
@@ -10,9 +13,15 @@ here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd)
 run="$here/run.sh"; PY=$(command -v "$HOME/.argonia/venv/bin/python" || command -v python3)
 bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
 cache='C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\Data\ShaderCache'
-key=$("$PY" "$here/shader_cache.py" key)
+gpu=${SHADER_GPU:-$("$run" ps '& nvidia-smi --query-gpu=name,driver_version --format=csv,noheader 2>$null; if ($LASTEXITCODE -ne 0 -and (Test-Path C:\Windows\System32\nvidia-smi.exe)) { & C:\Windows\System32\nvidia-smi.exe --query-gpu=name,driver_version --format=csv,noheader }' 2>/dev/null | tr -d '\r' | head -1 || true)}
+[ -n "$gpu" ] || echo "shader cache: no GPU read from the machine; the key carries the shaders only" >&2
+key=$("$PY" "$here/shader_cache.py" key --gpu "$gpu")
 have=$("$run" ps "Get-Content '$cache\argonia-shader.key' -EA SilentlyContinue" | tr -d '\r\n ' || true)
+archived() { aws s3 ls "s3://$bucket/shadercache/$key.tar" >/dev/null 2>&1 && echo 1 || echo 0; }
 case "${1:-}" in
+  dry)
+    echo "gpu: ${gpu:-none}"; echo "key: $key"; echo "machine key: ${have:-none}"; echo "archive: s3://$bucket/shadercache/$key.tar"
+    echo "decision: $("$PY" "$here/shader_cache.py" decide "${have:--}" "$key" "$(archived)")" ;;
   ensure)
     if [ "$have" = "$key" ]; then echo "shader cache current ($key)"; exit 0; fi
     if ! aws s3 ls "s3://$bucket/shadercache/$key.tar" >/dev/null 2>&1; then
@@ -35,5 +44,5 @@ case "${1:-}" in
     aws s3 cp "$tmp/sc.tar" "s3://$bucket/shadercache/$key.tar" --only-show-errors
     "$run" ps 'Remove-Item C:\argonia\logs\shadercache.tar' >/dev/null
     echo "shader cache archived: $n files, $(du -m "$tmp/sc.tar" | cut -f1) MB, s3://$bucket/shadercache/$key.tar" ;;
-  *) sed -n '2,8p' "$0"; exit 2 ;;
+  *) sed -n '2,10p' "$0"; exit 2 ;;
 esac
