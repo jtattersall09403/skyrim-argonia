@@ -1057,7 +1057,6 @@ SKY_HEAD = """# The sky A/B (lane 1.15-r5-sky; owner #37, 2026-11-03): one coast
 SKY_STOPS = (("coastal-lagoon-shore", "ARG_Ref_PanelCoastalLagoonShore", 94),
              ("western-frontier-high", "ARG_Ref_PanelWesternFrontierHigh", 180))
 SKY_WEATHER, SKY_TOL_U = "Argonia.esm|0x000E9B", 300
-SKY_TEMPLATE_WEATHER = "Skyrim.esm|0x00081A"   # SkyrimClear, the record our clear-dry is templated from
 
 
 def sky_ab(b: Build, reach=None) -> tuple[str, list]:
@@ -1071,10 +1070,7 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
         x, y = round(r["x"]), round(r["y"])
         pos.append((edid, x, y))
         for when, hour, wthr, edit in (("noon", 12, SKY_WEATHER, "ARG_Weather_clear_dry"),
-                                       ("dawn", 6.5, SKY_WEATHER, "ARG_Weather_clear_dry"),
-                                       # the template's own dawn (Tropical's override of Skyrim.esm 00081A, the
-                                       # winner of the load order): is the cream-grey wash ours or the template's?
-                                       ("dawn-template", 6.5, SKY_TEMPLATE_WEATHER, "SkyrimClear")):
+                                       ("dawn", 6.5, SKY_WEATHER, "ARG_Weather_clear_dry")):
             steps.append({
                 "name": f"{key}-{when}",
                 "do": [{"hud": "off"},
