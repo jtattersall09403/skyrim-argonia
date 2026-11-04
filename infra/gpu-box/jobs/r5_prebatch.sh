@@ -18,8 +18,9 @@ step() { local n=$1; shift; local s=$SECONDS
   echo "== $n $(date -u +%H:%M:%S)"; if "$@"; then echo "$n OK" >>"$state"; echo "PREBATCH $n OK in $((SECONDS-s)) s"; else echo "PREBATCH $n FAIL in $((SECONDS-s)) s"; return 1; fi; }
 # a round build leaves its output unstaged (the regenerated plugin YAML, the appended form ids): commit it by path
 # first, so the pull runs on a clean tree (10:17: the pull refused and the job died)
-git add plugin world/db/formid.jsonl skse/core/generated/argonia/core/forms.h 2>/dev/null
-git diff --cached --quiet || git commit -q -m "round 5 build output: the generated plugin YAML and the appended form ids
+# the refresh's outputs too (round 6, 09:48: the pull refused twice on re-derived journeys, scenes and marker rows)
+git add plugin world/db/formid.jsonl world/db/build_ref.jsonl skse/core/generated/argonia/core/forms.h tests/journeys tests/scenes 2>/dev/null
+git diff --cached --quiet || git commit -q -m "round build output: the generated plugin YAML, form ids, re-derived journeys and scenes
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 git pull -q --rebase origin main || { echo "PREBATCH: pull refused (an unstaged file not from the build: git status)"; git status --short | head; exit 3; }
