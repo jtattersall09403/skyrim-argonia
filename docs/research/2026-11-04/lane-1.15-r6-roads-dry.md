@@ -107,3 +107,13 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
 - `Inputs.load` reads the seats with the deck levels taken on the last generated ground (the ground the bridges lane seated on). With no bridge rows or pieces index it skips the seats and prints why.
 - L2 test `test_bridge_over_a_step_is_seated_level_with_its_deck`: both seats at the deck top, the channel untouched, the ease within GRADE_MAX.
 - Measured on the planner's r6-land3, not here.
+
+## Round 5: the 23:0x ground (seats 8ec1f83d, bridges, re-routes)
+- The 9 wet metres were the census's, not the ground's:
+  - glenbridge (1873, 2721) and rootworm-line (1871, 2727, 1.23 m) lie under the glenbridge-step bridge's deck and seat;
+  - the rest are 1-3 sample runs in the pass's FORD_GAP ring beside a reach: nisswo-line at a reach's sea mouth (3487, 6588), glenbridge (1905, 2815, 0.08 m), rootworm-line (2404, 1152, 0.01 m). The pass fords that ring; the census's ford test looked only at the reach.
+- Fix, in `routes/census.py`:
+  - the census treats the reach plus FORD_GAP + 1 samples as the ford, matching `dry_corridor`;
+  - it drops road points within BRIDGE_LEN_M/2 + APPROACH_M of a bridge from the wet metres (the road is the deck there).
+- Result: 0 m under water on every road, 25 fords at most 0.30 m, 19,020 m of causeway, no bridge candidates, no fails.
+- Bank: every road's p99 is at most 0.249, under the 0.429 bar. The single-side maxima are gideon-soulrest 1.152 and gideon-stormhold 0.848, both at bridge crossings, in the seat ease beside the step.

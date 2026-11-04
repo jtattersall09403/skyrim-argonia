@@ -255,7 +255,7 @@ def main(argv=None) -> int:
     return 1 if fails else 0
 
 
-def wet_census(h, roads, ids, level, reach, step: float = 1.0, raised=None, rid=None, rnames=None, drop=None) -> dict:
+def wet_census(h, roads, ids, level, reach, step: float = 1.0, raised=None, rid=None, rnames=None, drop=None, bridged=()) -> dict:
     """Per road on ground h: metres under its cell's water (`level`, per sample, NaN dry) outside fords, the longest
     wet run, the fords (wet runs touching a reach: count, deepest), the causeway metres (dry over a cell with water)
     and the bank's steepest grade beside the causeway (core edge out to 30 m, where the ground falls to the water)."""
@@ -264,6 +264,8 @@ def wet_census(h, roads, ids, level, reach, step: float = 1.0, raised=None, rid=
         p, v, nrm = frame(pts, step)
         z, lv = bilinear(h, p[:, 0], p[:, 1]), _at(level, p[:, 0], p[:, 1])
         wet = np.isfinite(lv) & (z < lv)
+        for bx, by, br in bridged:  # on a bridge's deck or seat the road is the bridge, not the ground under it
+            wet &= np.hypot(p[:, 0] * MPP - bx, p[:, 1] * MPP - by) > br
         rch = np.zeros(len(p), bool)
         for o in np.arange(-core, core + 0.5, 1.0):
             rch |= _at(reach, p[:, 0] + nrm[:, 0] * o, p[:, 1] + nrm[:, 1] * o)
@@ -357,7 +359,17 @@ def wet_main(w, a) -> int:
     drop = np.nan_to_num(vmax - vmin, nan=0.0)[:h.shape[0], :h.shape[1]]
     for _ in range(3):  # a step's channel runs a few samples into the lower cell: the drop carried to it
         drop = np.maximum.reduce([drop, np.roll(drop, 1, 0), np.roll(drop, -1, 0), np.roll(drop, 1, 1), np.roll(drop, -1, 1)])
-    res = wet_census(h, load_roads(w), ids, level, reach, raised=raised, rid=rid, rnames=rnames, drop=drop)
+    # the pass's ford covers the reach and the FORD_GAP ring beside it (shape.dry_corridor): so does the census's
+    from tools.argonia_world.routes.shape import FORD_GAP
+    from tools.argonia_world.terrain.generate import chamfer
+    rd_, _ = chamfer(reach, FORD_GAP + 2)
+    reach = np.isfinite(rd_) & (rd_ <= FORD_GAP + 1)
+    del rd_
+    from tools.argonia_world.routes import infra
+    bridges = infra.census_bridges(w, lambda x, y: float(bilinear(h, np.array([x / MPP]), np.array([y / MPP]))[0]))
+    span = infra.BRIDGE_LEN_M / 2 + infra.APPROACH_M  # a bridge's deck and seats: the road is on the bridge there
+    res = wet_census(h, load_roads(w), ids, level, reach, raised=raised, rid=rid, rnames=rnames, drop=drop,
+                     bridged=[(b["at_m"][0], b["at_m"][1], span) for b in bridges])
     tot = {k: round(sum(r[k] for r in res.values()), 1) for k in ("length_m", "under_m", "causeway_m", "fords")}
     tot["roads_wet"] = sum(r["under_m"] > 0 for r in res.values())
     tot["ford_max_m"] = max([r["ford_max_m"] for r in res.values()] or [0])
@@ -366,8 +378,6 @@ def wet_main(w, a) -> int:
     fails += [f"{k}: ford {r['ford_max_m']} m" for k, r in res.items() if r["ford_max_m"] > FORD_M + 0.01]
     fails += [f"{k}: bank p99 {r['bank_p99']} over the bar {BANK_BAR}" for k, r in res.items()
               if raised is not None and r["bank_p99"] > BANK_BAR]
-    from tools.argonia_world.routes.infra import census_bridges
-    bridges = census_bridges(w, lambda x, y: float(bilinear(h, np.array([x / MPP]), np.array([y / MPP]))[0]))
     tot["bridge_candidates"] = bridge_candidates(res, bridges)
     print(json.dumps({"total": tot, "roads": res, "fails": fails, "bridges": bridges, "grade_max": GRADE_MAX,
                       "bank_bar": {"value": BANK_BAR, "band_m": BANK_BAND_M, "source": BANK_BAR_SOURCE},
