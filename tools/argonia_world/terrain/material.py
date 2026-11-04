@@ -65,11 +65,25 @@ class Tex:
     why: str
 
     @property
+    def name(self) -> str:
+        return self.bmv.rsplit("\\", 1)[1][:-4]
+
+    @property
+    def diffuse(self) -> str:
+        """The TXST's diffuse: BM&V's file with its mip chain, derived at install (derive_textures.py, 0014)."""
+        return "argonia\\landscape\\" + self.name + ".dds"
+
+    @property
     def normal(self) -> str:
-        """Skyrim.esm's own landscape normal for this diffuse's name (`landscape\\<name>_n.dds`, in the player's
-        Skyrim - Textures BSA; Tropical Skyrim's loose copies are dropped, dependencies.json): vanilla's alpha is its
-        low landscape specular (p50 of means ~20/255), where TS's DXT1 copies carry 255 and BM&V ships none (r4)."""
-        return "landscape\\" + self.bmv.rsplit("\\", 1)[1][:-4] + "_n.dds"
+        """The TXST's normal: derived at install from BM&V's diffuse (derive_textures.py), its tilt and specular
+        alpha set to Skyrim.esm's own normal of this name (`vanilla_normal`); BM&V ships none."""
+        return "argonia\\landscape\\" + self.name + "_n.dds"
+
+    @property
+    def vanilla_normal(self) -> str:
+        """Skyrim.esm's landscape normal for this diffuse's name (`landscape\\<name>_n.dds`, the player's BSA): the
+        derived normal's bar (vanilla alpha p50 of means ~20/255; TS's DXT1 copies carry 255, r4)."""
+        return "landscape\\" + self.name + "_n.dds"
 
 
 TEXTURES: tuple[Tex, ...] = tuple(Tex(*r) for r in (

@@ -27,11 +27,11 @@ def test_every_painted_ltex_points_at_a_bmv_texture_set():
     txst = {r["formKey"]: r for r in recs if r["type"] == "TXST"}
     ltex = {r["formKey"]: r for r in recs if r["type"] == "LTEX"}
     assert len(txst) == len(ltex) == len(M.TEXTURES)
-    assert all(r["diffuse"].startswith("TEXTUREPACK\\landscape\\") and r["normal"].startswith("landscape\\")
-               and r["normal"].endswith("_n.dds") for r in txst.values())  # Skyrim.esm's own normal (r4)
+    assert all(r["diffuse"].startswith("argonia\\landscape\\") and r["normal"].startswith("argonia\\landscape\\")
+               and r["normal"].endswith("_n.dds") for r in txst.values())  # derived at install (r6, 0014)
     for t in M.TEXTURES:
         o = ltex[t.form_key]
-        assert o["override"] and txst[o["textureSet"]]["diffuse"] == t.bmv
+        assert o["override"] and txst[o["textureSet"]]["diffuse"] == t.diffuse
     assert ltex[first]["grasses"] == ["000100:Tropical Skyrim.esp"]  # the plan's list
     assert ltex[M.TEXTURES[1].form_key]["grasses"] == ["000200:Skyrim.esm"]  # no plan row: the winner's
 

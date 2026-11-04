@@ -107,6 +107,18 @@ send_scenes() {  # after the launch: a ref is named by its runtime id, the plugi
   echo "$(ls out/scenes/*.txt | wc -l) scenes sent"
 }
 step "send ESMs and helpers" send_esms
+# The ground's derived textures (decision 0014; lane 1.15-r6-ground-roads): BM&V's diffuses with mips and normals at
+# Skyrim.esm's own tilt and specular alpha, made here from the stack's BM&V (`terrain derive-textures`, --dry-run lists
+# them), sent to ours\derived\argonia-ground; stack.ps1 on lays every ours\derived\<name> over the mods (the TXSTs
+# in Argonia.esm name them). Other derived folders take the same road (one folder per tool).
+ground_textures() {
+  local d=out/derived/argonia-ground/textures/argonia/landscape m='C:\argonia\ours\derived\argonia-ground'
+  "$PY" -m tools.argonia_world.terrain derive-textures | tail -1 || return 1
+  "$run" ps "Remove-Item $m -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force $m\textures\argonia\landscape | Out-Null" >/dev/null
+  "$run" put "$d"/*.dds C:/argonia/ours/derived/argonia-ground/textures/argonia/landscape/ >/dev/null  # one scp
+  echo "$(ls "$d"/*.dds | wc -l) derived ground textures sent"
+}
+step "ground textures" ground_textures
 step "lod" "$here/lod.sh" ensure   # nothing lives only on a machine: the archived LOD for this ArgoniaWorld
 # The pad layout follows controlmap.py on every machine (b112b: argonia-play kept Select = Journal, so the pad's Select
 # opened the journal, not Wait): the machine's made controlmap.txt fetched, GAMEPLAY re-applied, sent back; the launch's

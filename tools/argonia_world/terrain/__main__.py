@@ -324,6 +324,9 @@ def main(argv=None) -> int:
     c.add_argument("--sample", action="store_true")
     c.add_argument("--points", type=int, default=1000)
     sub.add_parser("check-materials", help="the ground's texture sets as laid: normals, specular alpha, classes")
+    dt = sub.add_parser("derive-textures", help="the install's derived ground textures: BM&V diffuses with mips, normals")
+    dt.add_argument("--out")
+    dt.add_argument("--dry-run", action="store_true")
     sub.add_parser("gradient", help="write the material_gradient rows from material.STOPS")
     sub.add_parser("relief", help="write the region_relief rows from generate.relief_rows (the dossier bands)")
     sub.add_parser("pre", help="write the continuous ground (prior + relief + erosion) the water solve reads")
@@ -341,6 +344,9 @@ def main(argv=None) -> int:
     if a.cmd == "check-materials":
         from tools.argonia_world.terrain import texcheck
         return texcheck.main()
+    if a.cmd == "derive-textures":
+        from tools.argonia_world.terrain import derive_textures
+        return derive_textures.main(Path(a.out) if a.out else None, a.dry_run)
     if a.cmd == "gradient":
         from tools.argonia_world import db
         from tools.argonia_world.terrain import material as M

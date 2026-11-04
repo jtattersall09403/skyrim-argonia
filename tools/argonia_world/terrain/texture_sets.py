@@ -4,10 +4,9 @@ its landscape pack (`textures\\TEXTUREPACK\\landscape\\`), because Black Marsh.e
 material paints (`material.TEXTURES`) and an LTEX override naming it, with the grass list the plan gives
 (`terrain/grass.py`; the winner's where the plan has no row). BM&V ships no normal maps, and a landscape TXST with
 no TX01 shades from the engine's default normal; the landscape shader reads specular from the normal's alpha, so the
-ground shone (owner, play test 3, findings 16-17). Each TXST names Skyrim.esm's own normal of the same name
-(`Tex.normal`, `landscape\\<name>_n.dds`, in the player's Skyrim - Textures BSA): vanilla's landscape normals carry
-alpha p50 ~20/255 (50 files, measured 2026-11-02, terrain/texcheck.py), Tropical Skyrim's DXT1 copies at the same
-paths carry 255 on 18 of our 19, so dependencies.json drops those 19 TS files and the vanilla ones resolve.
+ground shone (owner, play test 3, findings 16-17), and BM&V's diffuses carry no mipmaps. Each TXST names the files
+derive_textures.py makes at install from BM&V's diffuse (0014): `Tex.diffuse` with its mip chain and `Tex.normal`,
+whose tilt and alpha are Skyrim.esm's own normal of that name (vanilla alpha p50 ~20/255, 50 files, texcheck.py).
 `python -m tools.argonia_world.terrain check-materials` proves the laid set.
 
 The records go to ArgoniaGen `generate` (TextureSets.cs, LandTextures.cs); `grass.layer` leaves these LTEX to us.
@@ -30,7 +29,7 @@ def records(alloc, scan: dict, intended: dict[str, list[str]]) -> list[dict]:
     for t in M.TEXTURES:
         edid = PREFIX + t.edid[1:]
         txst = alloc.form_key(edid, "TXST", f"ground.txst.{t.edid}")
-        out.append({"type": "TXST", "edid": edid, "formKey": txst, "diffuse": t.bmv, "normal": t.normal})
+        out.append({"type": "TXST", "edid": edid, "formKey": txst, "diffuse": t.diffuse, "normal": t.normal})
         w = ltex[t.form_key]
         out.append({"type": "LTEX", "override": True, "formKey": t.form_key, "edid": w["edid"], "textureSet": txst,
                     "materialType": w["materialType"], "friction": w["friction"], "restitution": w["restitution"],

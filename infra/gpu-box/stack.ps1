@@ -131,6 +131,10 @@ switch ($Cmd) {
       if (-not (Test-Path $src)) { continue }
       foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) { $want[$f.Substring($src.Length).ToLower()] = $f }
     }
+    # Derived folders (decision 0014: made at install on the build VM from the player's mods, sent by deploy.sh to
+    # ours\derived\<name>, e.g. argonia-ground's textures with mips and normals): over every mod
+    foreach ($d in @(Get-ChildItem "$Root\ours\derived" -Directory -EA SilentlyContinue)) {
+      foreach ($f in [IO.Directory]::EnumerateFiles($d.FullName, '*', 'AllDirectories')) { $want[$f.Substring($d.FullName.Length).ToLower()] = $f } }
     $vanilla = @{}; Get-Content "$Root\infra\vanilla-data-files.txt" | % { $vanilla[$_.ToLower()] = 1 }
     $removed = 0
     foreach ($f in @([IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories'))) {
@@ -140,7 +144,7 @@ switch ($Cmd) {
     }
     $n = 0; $kept = 0
     foreach ($rel in $want.Keys) {
-      $f = $want[$rel]; $dst = "\\?\$Data" + $f.Substring($f.IndexOf('\', "$Mo2\mods\".Length))
+      $f = $want[$rel]; $dst = "\\?\$Data" + $f.Substring($f.Length - $rel.Length)  # the mod's or derived folder's own case
       $a = [IO.FileInfo]::new("\\?\$f"); $b = [IO.FileInfo]::new($dst)
       if ($b.Exists -and $b.Length -eq $a.Length -and $b.LastWriteTimeUtc -eq $a.LastWriteTimeUtc) { $kept++; continue }
       [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($dst))
@@ -360,6 +364,7 @@ public static class ParHash {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
       if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or $rel -eq 'skse\plugins\argoniabridge.dll' -or $rel -eq 'skse\plugins\argoniacore.dll' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
+      if (@(Get-ChildItem "$Root\ours\derived\*\$rel" -EA SilentlyContinue).Count) { continue }  # a derived folder's (on)
       "unrecorded: $rel"; $extra++
     }
     "$n recorded files checked, $bad bad, $extra unrecorded, $($pandora.Count) Pandora outputs, $([int]((Get-Date) - $t0).TotalSeconds) s"

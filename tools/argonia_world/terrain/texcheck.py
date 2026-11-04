@@ -22,6 +22,7 @@ from tools.argonia_world.terrain import material as M
 MO2 = Path.home() / ".argonia" / "stack" / "MO2" / "mods"
 VANILLA = Path.home() / "games" / "skyrimse" / "Data"
 DEPS = Path(__file__).resolve().parents[3] / "data" / "dependencies.json"
+DERIVED = Path(__file__).resolve().parents[3] / "out" / "derived" / "argonia-ground"  # derive_textures.OUT
 FLAT_DEG = 3.0  # a normal whose texels tilt less than this on average lights no relief (vanilla's flattest: below)
 
 
@@ -89,7 +90,7 @@ def _read(path: Path, flags: int, sz: int, fo: int) -> bytes:
 class Stack:
     """lower path -> (source row, reader) over the laid stack: loose files win over every BSA, vanilla last."""
 
-    def __init__(self, mo2: Path = MO2, vanilla: Path = VANILLA, prefix: str = "textures/"):
+    def __init__(self, mo2: Path = MO2, vanilla: Path = VANILLA, prefix: str = "textures/", derived: Path | None = DERIVED):
         self.where: dict[str, tuple[str, Path, tuple | None]] = {}
         self.vanilla: dict[str, tuple[str, Path, tuple]] = {}  # Skyrim's own, whatever overrides it
         for b in sorted(vanilla.glob("*.bsa")):
@@ -116,6 +117,11 @@ class Stack:
                 elif r.startswith(prefix):
                     loose[r] = (m.name, f, None)
         self.where.update(loose)
+        if derived is not None and derived.exists():  # the install's derived folder (derive_textures.py) lies on top
+            for f in derived.rglob("*"):
+                r = str(f.relative_to(derived)).lower().replace("\\", "/")
+                if f.is_file() and r.startswith(prefix):
+                    self.where[r] = (derived.name, f, None)
 
     def get(self, path: str, table: dict | None = None) -> tuple[str, bytes] | None:
         p = "textures/" + path.lower().replace("\\", "/")
@@ -170,8 +176,8 @@ def check(stack: Stack | None = None) -> dict:
     limit = bar["alpha_p90"]
     rows, fails = [], list(class_problems())
     for t in M.TEXTURES:
-        r = {"ltex": t.edid, "diffuse": t.bmv, "normal": t.normal}
-        d = stack.get(t.bmv)
+        r = {"ltex": t.edid, "diffuse": t.diffuse, "normal": t.normal}
+        d = stack.get(t.diffuse)
         r["diffuse_row"] = d[0] if d else None
         if d:
             hd = dds.header(d[1])
@@ -179,14 +185,16 @@ def check(stack: Stack | None = None) -> dict:
         n = stack.get(t.normal)
         r["normal_row"] = n[0] if n else None
         if d is None:
-            fails.append(f"{t.edid}: diffuse {t.bmv} is laid by no row")
+            fails.append(f"{t.edid}: diffuse {t.diffuse} is laid by no row (derive-textures not run?)")
+        elif r["diffuse_mips"] <= 1:
+            fails.append(f"{t.edid}: diffuse {t.diffuse} has no mipmaps")
         if n is None:
             fails.append(f"{t.edid}: no normal map ({t.normal} resolves nowhere)")
         else:
             r |= normal_stats(n[1])
             if r["tilt_deg"] < FLAT_DEG:
                 fails.append(f"{t.edid}: flat normal {t.normal} (mean tilt {r['tilt_deg']} deg < {FLAT_DEG})")
-            own = bar["per_file"].get("textures/" + t.normal.lower().replace("\\", "/"))
+            own = bar["per_file"].get("textures/" + t.vanilla_normal.lower().replace("\\", "/"))
             # the bar is vanilla's p90 over its 50 landscape normals; a texture may carry what Skyrim.esm itself
             # paints that same LTEX with (its own normal, e.g. the wet riverbed family), never more
             r["limit_alpha"] = max(limit, own or 0.0)
@@ -199,6 +207,16 @@ def check(stack: Stack | None = None) -> dict:
 
 def main(out: Path | None = None) -> int:
     res = check()
+    es = res["edge"] = edge_share()
+    print(f"riverbed edge share of dry ground, {es['windows']} windows: within {EDGE_NEAR_V} v {es['within_16v']:.2%} "
+          f"(Skyrim.esm {es['vanilla']['within_16v']:.2%}, window p90 {EDGE_WITHIN_MAX:.1%}), beyond "
+          f"{es['beyond_16v']:.3%} (Skyrim.esm {EDGE_BEYOND_MAX:.2%}), all dry {es['edge_share_of_dry']:.2%}")
+    if es["within_16v"] > EDGE_WITHIN_MAX:
+        res["fails"].append(f"riverbed edge {es['within_16v']:.2%} of dry ground within {EDGE_NEAR_V} v of water, over "
+                            f"Skyrim.esm's window p90 {EDGE_WITHIN_MAX:.1%}")
+    if es["beyond_16v"] > EDGE_BEYOND_MAX:
+        res["fails"].append(f"riverbed edge {es['beyond_16v']:.3%} of dry ground beyond {EDGE_NEAR_V} v of water, over "
+                            f"Skyrim.esm's {EDGE_BEYOND_MAX:.2%}")
     for r in res["rows"]:
         print(f"{r['ltex']:22s} {r['diffuse']:44s} [{r['diffuse_row']}, mips {r.get('diffuse_mips')}]  "
               f"{r['normal']:34s} [{r['normal_row']}] alpha {r.get('alpha_mean')} tilt {r.get('tilt_deg')}")
@@ -209,3 +227,34 @@ def main(out: Path | None = None) -> int:
         out.write_text(json.dumps(res, indent=1) + "\n")
     print(f"check-materials: {len(res['rows'])} textures, {len(res['fails'])} fails")
     return 1 if res["fails"] else 0
+
+
+# the bar: Skyrim.esm's own riverbed edge (vanilla/measure.py q11, 2026-11-04): 2.51 % of dry land within 16 vertices
+# of water, 0.06 % beyond; per 8x8-cell shore window p90 6.1 % within 16
+EDGE_NEAR_V = 16
+EDGE_WITHIN_MAX = 0.061
+EDGE_BEYOND_MAX = 0.0006
+
+
+def edge_share(n: int = 34, seed: int = 1, size: int = 546) -> dict:
+    """The riverbed edge's share of dry ground over n random ~1 km windows of the province (seed 1: r4's 34)."""
+    from tools.argonia_world import db
+    from tools.argonia_world.terrain.grid import Sources
+    world, src = db.open(), Sources.load()
+    mat = M.Material(src, M.Water.load(world, src.pad), M.Regions.load(world, src.pad, src.n))
+    k = mat.index["LRiverbedEdge01"]
+    rng = np.random.default_rng(seed)
+    e_near = e_far = n_near = n_far = 0.0
+    for _ in range(n):
+        r0, c0 = (int(v) + src.pad for v in rng.integers(0, src.n - size, 2))
+        win = mat.window(r0, r0 + size, c0, c0 + size)
+        dry = win.dwater > 0  # 0 in water
+        near = dry & (win.dwater <= EDGE_NEAR_V)
+        far = dry & ~near
+        e = win.weights[..., k]
+        e_near, e_far = e_near + float(e[near].sum()), e_far + float(e[far].sum())
+        n_near, n_far = n_near + float(near.sum()), n_far + float(far.sum())
+    return {"windows": n, "dry_vertices": int(n_near + n_far),
+            "edge_share_of_dry": round((e_near + e_far) / max(n_near + n_far, 1), 4),
+            "within_16v": round(e_near / max(n_near, 1), 4), "beyond_16v": round(e_far / max(n_far, 1), 4),
+            "vanilla": {"within_16v": 0.0251, "within_16v_window_p90": EDGE_WITHIN_MAX, "beyond_16v": EDGE_BEYOND_MAX}}
