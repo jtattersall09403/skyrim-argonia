@@ -99,7 +99,8 @@ def test_a_later_fail_and_reader_rows(repo, tmp_path):
     with pytest.raises(SystemExit):
         pl.reader_pass("j", "a", led)
     pl.append({**row, "status": "reader"}, led)
-    assert not pl.passed(pl.last_rows(led), "j", "a", row["reach_hash"])
+    # a reader row's still exists for these inputs: skipped on a rerun (the reader judges the still); its PASS is recorded
+    assert pl.passed(pl.last_rows(led), "j", "a", row["reach_hash"])["status"] == "reader"
     pl.reader_pass("j", "a", led)
     assert pl.passed(pl.last_rows(led), "j", "a", row["reach_hash"])["reader"] == "PASS"
 

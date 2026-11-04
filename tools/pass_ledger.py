@@ -106,7 +106,9 @@ def last_rows(path: pathlib.Path | None = None) -> dict:
 
 def passed(index: dict, journey: str, step: str, h: str) -> dict | None:
     r = index.get((journey, step, h))
-    return r if r and r.get("status") == "pass" else None
+    # `reader`: the run held and its still exists for these inputs; a reader judges the still, and a reader FAIL leads to
+    # a fix that moves the step's inputs. Retaking the still buys nothing (12 reboots on 2026-11-04 retook 355 steps).
+    return r if r and r.get("status") in ("pass", "reader") else None
 
 
 def append(row: dict, path: pathlib.Path | None = None) -> None:
