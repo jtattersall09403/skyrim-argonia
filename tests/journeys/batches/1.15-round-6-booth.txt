@@ -16,3 +16,6 @@
 0E67A9 | Willow05 (KotM): is the frond neon lime? (pair with 01Willow below, same pose)
 034580 | 01Willow (BM&V): is the frond neon lime? If only the KotM willow is, the leaf wrap 5.0 is the cause; if both, the weather or shader
 Swamp01 | KotM snowgum card beside Undergrowth01: is the card's yellow-green beyond the undergrowth's? If yes, the vertex tint is the cause
+463246 | Kapok01 (rootland, deep-sink): buttressed trunk reads as dark bark like its neighbours, not pale
+463248 | Kapok03: the same
+03A583 | Groundplant10 at the western-frontier high stop: no longer bright lime, and not black-dark
