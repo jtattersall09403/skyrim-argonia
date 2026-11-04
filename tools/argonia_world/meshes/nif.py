@@ -9,7 +9,6 @@ Every other block is carried as bytes; `to_bytes()` of an unedited file equals i
 from __future__ import annotations
 
 import struct
-from dataclasses import dataclass
 
 import numpy as np
 

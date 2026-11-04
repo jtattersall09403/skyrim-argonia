@@ -594,7 +594,7 @@ def q12(t):
     P = np.array([r[2:4] for r in t["refs"] if sig(t, r[1]) == "STAT" and ROAD_SURF.match(edid(t, r[1]) or "")])
     wet = np.isfinite(H) & (H < W)
     dw = chamfer(wet, 9)  # vertices (1.83 m): within 16 m
-    grade, cross, walls, nearw, steep_runs = [], [], 0, 0, 0
+    grade, cross, walls, nearw = [], [], 0, 0
     for p in P:
         nb = P[np.hypot(*(P - p).T) < 40 * U]
         if len(nb) < 3:
