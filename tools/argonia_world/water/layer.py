@@ -61,6 +61,11 @@ TYPES: dict[str, tuple[str, str, bool, str | None]] = {
     "creek-ne": ("Stream", "CreekWaterFlowSW", True, "sw"),
 }
 EMIT_TYPES = tuple(TYPES)
+# A type whose surface reflection (DNAM reflectivity at 20, fresnel at 24) is another winner's (lane 1.15-r6-black-swamp-water):
+# MurkyWater's 0.55 / 0.25 mirrors the clear-dry noon sky at the play camera's grazing view, so the black swamp read
+# bright blue over a deep colour of 9,9,6 (still 03, owner #41). Bethesda's own dark still water, Dawnguard's
+# DLC01DarkFallCaveDarkStillWater, reflects 0.28 with no fresnel: its two numbers, measured, none of ours.
+REFLECT_FROM = {"black": "DLC01DarkFallCaveDarkStillWater"}
 STILL_KINDS = {"marsh-deep": "marsh", "backswamp": "marsh", "swamp": "black", "marsh-fringe": "black",
                "tarn-upland": "cold", "plunge-pool": "cold", "lake-lowland": "lake", "lagoon": "sea",
                "mudflat": "brackish"}
@@ -149,7 +154,11 @@ def flow_set(t: str, data: Path = GAME_DATA) -> dict:
     r = winners(Path(data))[TYPES[t][1]][1]
     if not TYPES[t][2]:
         v = struct.unpack("<3f", r.first("NAM0"))
-        return {"linearVelocity": [0.0, 0.0, 0.0]} if t != "sea" and any(v) else {}
+        out = {"linearVelocity": [0.0, 0.0, 0.0]} if t != "sea" and any(v) else {}
+        if t in REFLECT_FROM:
+            refl, fres = struct.unpack_from("<2f", winners(Path(data))[REFLECT_FROM[t]][1].first("DNAM"), 20)
+            out |= {"waterReflectivity": refl, "waterFresnel": fres}
+        return out
     if TYPES[t][3] is None:
         return {}
     v = struct.unpack("<3f", r.first("NAM0"))

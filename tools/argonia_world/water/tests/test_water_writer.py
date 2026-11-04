@@ -2,6 +2,7 @@
 from the bytes: the WATR types (each its load-order winner's record but the named fields, round 5), no plane activators, the WRLD's default water, one cell with a water height and
 type, one with plane and piece references only, HasWater on both; written twice, the same bytes. Also the regrade
 layer (terrain/water_regrade.py) and the greedy plane cover. Skipped where ArgoniaGen is not built."""
+import colorsys
 import json
 import os
 import struct
@@ -95,12 +96,16 @@ def test_water_written_and_read_back(tmp_path):
         for s_, b in ours.subs:
             if s_ in ("EDID", "FULL"):
                 continue
-            if turned and s_ == "NAM0":
+            if "linearVelocity" in turned and s_ == "NAM0":
                 assert struct.unpack("<3f", b) == pytest.approx(turned["linearVelocity"])
-            elif "windDirections" in turned and s_ == "DNAM":
-                t = tpl.first("DNAM")
-                assert b[:100] == t[:100] and b[112:] == t[112:], rec["edid"]
-                assert struct.unpack_from("<3f", b, 100) == pytest.approx(turned["windDirections"])
+            elif turned.keys() & {"windDirections", "waterReflectivity"} and s_ == "DNAM":
+                # DNAM is the winner's but the named floats: reflectivity, fresnel at 20/24; winds at 100-108
+                want_d = bytearray(tpl.first("DNAM"))
+                if "windDirections" in turned:
+                    struct.pack_into("<3f", want_d, 100, *turned["windDirections"])
+                if "waterReflectivity" in turned:
+                    struct.pack_into("<2f", want_d, 20, turned["waterReflectivity"], turned["waterFresnel"])
+                assert b == bytes(want_d), rec["edid"]
             else:
                 assert b == tpl.first(s_), (rec["edid"], s_)
         # still stays still, flowing flows: a flowing type moves its water (NAM0), a still type's template is no flow map
@@ -117,13 +122,15 @@ def test_water_written_and_read_back(tmp_path):
         for band in ("lowland", "upland"):
             assert not layer.is_flow(layer.cell_type("fresh", kind, band, "reach.x", 2, "ne")), kind
     assert layer.is_flow(layer.cell_type("fresh", None, None, "reach.x", 1, "sw"))
-    # the black type is Update.esm's MurkyWater, the darkest open-water record (r5 black-water): measured bytes, written as is
+    # the black type is Update.esm's MurkyWater, the darkest open-water record (r5 black-water), but its surface
+    # reflection is Dawnguard's dark still water's (r6 black-swamp-water: 0.55 / 0.25 mirrored the noon sky blue)
     blk = watr[int(layer.type_key("black").split(":")[0], 16)]
     d = blk.first("DNAM")
     assert [tuple(d[o:o + 3]) for o in (40, 44, 48)] == [(26, 19, 19), (9, 9, 6), (32, 35, 27)]  # shallow, deep, reflection
+    assert colorsys.rgb_to_hsv(*(x / 255 for x in d[44:47]))[2] < 0.2  # deep colour near-black
     assert blk.first("ANAM") == b"d"  # opacity 100
     assert struct.unpack_from("<2f", d, 32) == (0.0, 60.0)  # fog above near, far
-    assert struct.unpack_from("<2f", d, 20) == pytest.approx((0.55, 0.25))  # reflectivity, fresnel
+    assert struct.unpack_from("<2f", d, 20) == pytest.approx((0.28, 0.0), abs=1e-3)  # reflectivity, fresnel
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")
@@ -184,3 +191,22 @@ def test_ref_keys_stay_in_the_reserved_range():
     assert int(last.split(":")[0], 16) < 0x1000000
     with pytest.raises(ValueError):
         layer.ref_key(x0, y0, layer.REFS_PER_CELL)
+
+
+CELLS = Path(__file__).resolve().parents[4] / "out/water/cells.jsonl"
+
+
+@pytest.mark.skipif(not CELLS.exists(), reason="no water build (out/water/cells.jsonl)")
+def test_black_swamp_stop_cells_carry_the_black_type():
+    """The water-types journey's black-swamp stop (player cell -48,-39 facing NE to the subject at -45,-34): every
+    cell of its frame carries ARG_WATR_black (lane 1.15-r6-black-swamp-water; the r6 still read blue on black cells)."""
+    import json
+    black = layer.type_key("black")
+    frame = {(x, y) for x in range(-48, -44) for y in range(-39, -33)} - {(-46, -39)}  # -46,-39 a creek's own cell (creek-se)
+    got = {}
+    for line in CELLS.open():
+        c = json.loads(line)
+        if (c["x"], c["y"]) in frame:
+            got[(c["x"], c["y"])] = c["waterType"]
+    assert set(got) == frame
+    assert {k for k, v in got.items() if v != black} == set()

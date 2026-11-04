@@ -87,6 +87,8 @@ sealed class WaterRecords
                         t.NoiseLayerTwoWindDirection = F(v, 1);
                         t.NoiseLayerThreeWindDirection = F(v, 2);
                         break;
+                    case "waterReflectivity": t.WaterReflectivity = v.GetSingle(); break;
+                    case "waterFresnel": t.WaterFresnel = v.GetSingle(); break;
                     default: throw new InvalidDataException($"{S(r, "edid")}: no writer for set field {f.Name}");
                 }
             }
