@@ -220,18 +220,9 @@ def admits(eco: str, f) -> bool:
 # out wide trunk trees"); measured by lane 1.15-r5-trees-2 (docs/research/2026-11-03/lane-1.15-r5-trees-2.md) and
 # lane 1.15-r5-white-trunks. Owner #37, 2026-11-04 07:36: root-cause and fix, never drop. A cause in a NIF's shader or UVs
 # is fixed by the install-time mesh patcher (data/mesh-patches.yaml, tools/argonia_world/meshes; lane 1.15-r6-mesh-
-# patcher): the bamboo, kelp, rainforest 01/02, 01skydead, Erut07, MegaTree04/05, SwampTreeTall04 and JungleTree01/02/05/06
-# are back. What stays is a cause no mesh op fixes without new art (0006): a bright bark diffuse, a lime leaf diffuse.
-LOOK_DROP = {
-    "463246:King of the Murkmire.esp": "ctq_kapoktree01: bark diffuse luminance 132 (placed bark median 59), gloss 20",
-    "463247:King of the Murkmire.esp": "ctq_kapoktree02: bark diffuse luminance 132",
-    "463248:King of the Murkmire.esp": "ctq_kapoktree03: bark diffuse luminance 132",
-    "463249:King of the Murkmire.esp": "ctq_kapoktree04: bark diffuse luminance 132",
-    "46324A:King of the Murkmire.esp": "ctq_kapoktree05: bark diffuse luminance 132",
-    "03A583:King of the Murkmire.esp": "Groundplant10 (Tamira bush01): anvilleafpalm02 leaf diffuse saturation 0.86, "
-                                       "the stack's top leaf saturation bar one dark oak card; the bright lime palm at "
-                                       "the western frontier high vantage (lane 1.15-r5-sky-2; natural greens, 0032)",
-}
+# patcher): every form once dropped here is back, its NIF patched at install (the kapok's pale bark and Groundplant10's
+# lime palm by a measured vertex-colour op: the shared texture untouched). A new entry needs a cause no op can fix.
+LOOK_DROP: dict[str, str] = {}
 
 
 def usable(w) -> dict[str, list]:

@@ -5,13 +5,15 @@ the cause and fix it, never drop): a soft-lit leaf with no soft-light map, Own_E
 the wrong slot, a bark UV stretched tens of times along one axis. A modder fixes these in NifSkope; we write the same
 edits as data (data/mesh-patches.yaml: per mesh and shape, the measured before, the ops, the reason) and this tool
 applies them to the source mod's mesh on the player's machine side of the build (the deploy's lay step), writing
-copies into a derived mod folder that wins over the source mods. Nothing patched is ever committed.
+copies into ours\\derived\\argonia-meshes, laid over every mod. Nothing patched is ever committed.
 
 Ops (per shape): clear_flags / set_flags [names of nif.F1/F2]; emissive {rgb, mult}; texture_slot {slot: path};
+vertex_colour {lum_to: n | sat_to: s} (the drawn diffuse x vertex colour; the shared texture is never touched);
 uv_scale {axis: u|v, factor: <number> | fit} (fit: per UV island, the factor from FIT_STEPS that minimises the
 island's median stretch; the island is scaled about its own minimum so the half floats stay small).
 Bars, every shape of a patched mesh, after: a soft-lit shape has a slot-2 map; no shape is Own_Emit unless the entry
-names the lore (`lore_emit`); a shape of kind bark has a normal (slot 1) and a median UV stretch <= STRETCH_BAR.
+names the lore (`lore_emit`); a shape of kind bark has a normal (slot 1), a median UV stretch <= STRETCH_BAR and a drawn
+luminance <= BARK_LUM_BAR; a leaf with a sat_to op draws at saturation <= LEAF_SAT_BAR.
 
     python3 -m tools.argonia_world.meshes patch --check [--mods DIR ...]   before/after per entry; exit 1 on any bar
     python3 -m tools.argonia_world.meshes patch --out DIR [--mods DIR ...] write the patched copies, re-read, verify
@@ -30,9 +32,13 @@ from tools.argonia_world.meshes import source
 ROOT = Path(__file__).resolve().parents[3]
 TABLE = ROOT / "data" / "mesh-patches.yaml"
 MODS = Path.home() / ".argonia" / "stack" / "MO2" / "mods"
-DERIVED = "argonia-mesh-patches"  # the derived mod folder's name on the machine (stack.ps1 lays it last)
-OUT = ROOT / "out" / "mesh_patches" / DERIVED
-STRETCH_BAR = 6.0  # the placed bark band's top (lane 1.15-r5-white-trunks: 3:1 to 6:1; global median 1.7:1)
+DERIVED = "argonia-meshes"  # the derived folder: ours\\derived\\<this> on the machine, laid over every mod (stack.ps1)
+OUT = ROOT / "out" / "derived" / DERIVED
+STRETCH_BAR = 6.0
+BARK_LUM_BAR = 81.0  # the brightest kept placed bark (gkbbark27, lane 1.15-r5-white-trunks); placed median 59
+BARK_LUM_TARGET = 59.0
+LEAF_SAT_BAR = 0.71  # the stack's leaf diffuses' p90 saturation (179 measured; median 0.39)
+HUE = ROOT / "data" / "leaf-hue.json"  # the placed bark band's top (lane 1.15-r5-white-trunks: 3:1 to 6:1; global median 1.7:1)
 FIT_STEPS = np.geomspace(1 / 128, 128, 57)
 
 
@@ -40,13 +46,41 @@ def load(path: Path = TABLE) -> list[dict]:
     return yaml.safe_load(path.read_text(encoding="utf-8"))["meshes"]
 
 
+_HUES: dict = {}
+
+
+def _diffuse_rgb(path: str) -> list | None:
+    if not _HUES and HUE.exists():
+        import json
+        _HUES.update(json.loads(HUE.read_text(encoding="utf-8")).get("textures", {}))
+    from tools.argonia_world.vegetation.mesh_textures import norm
+    t = _HUES.get(norm(path)) if path else None
+    return t.get("rgb") if t else None
+
+
+def _lum(c) -> float:
+    return 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]
+
+
+def _sat(c) -> float:
+    return 0.0 if max(c) <= 0 else (max(c) - min(c)) / max(c)
+
+
 def measure(sh: N.Shape) -> dict:
+    """The shape's shader and UV numbers, and what the engine draws: the diffuse mean (data/leaf-hue.json) times the
+    vertex colour mean when Vertex_Colors is set (lum = Rec.601 luminance, sat = HSV saturation of that mean)."""
     p = sh.prop
     m = {"name": sh.name}
     if p is not None:
         f1, f2 = p.flags
         sl = p.slots() + [""] * 3
         m.update(flags=N.flag_names(f1, f2), emissive=list(p.emissive), soft=p.soft, slot1=sl[1], slot2=sl[2])
+        d = _diffuse_rgb(sl[0])
+        if d is not None:
+            c = sh.colours()
+            vc = c.mean(0)[:3] / 255 if c is not None and "Vertex_Colors" in m["flags"] else np.ones(3)
+            e = [float(x) for x in np.asarray(d) * vc]
+            m.update(lum=round(_lum(e), 1), sat=round(_sat(e), 2))
     st = sh.stretch() if sh.has_uv() else None
     m["stretch"] = None if st is None else round(st, 1)
     return m
@@ -96,6 +130,30 @@ def _uv_scale(sh: N.Shape, axis: str, factor) -> None:
     sh.set_uv(uv)
 
 
+def _vertex_colour(sh: N.Shape, op: dict) -> None:
+    """lum_to: scale every vertex colour uniformly so the drawn luminance reaches the number (saturation kept);
+    sat_to: a per-channel factor (a white balance) that takes the drawn mean colour to that saturation at the same
+    luminance. Vertex_Colors is set on the property either way."""
+    d = np.asarray(_diffuse_rgb(sh.prop.slots()[0]), float)
+    c = sh.colours()
+    f1, f2 = sh.prop.flags
+    vc = c[:, :3] if c is not None and f2 >> N.F2["Vertex_Colors"] & 1 else np.full((sh.nv, 3), 255.0)
+    eff = d * vc.mean(0) / 255
+    if "lum_to" in op:
+        k = op["lum_to"] / _lum(eff)
+        new = vc * k
+    else:
+        L, lo, hi = _lum(eff), 0.0, 1.0
+        for _ in range(40):
+            s = (lo + hi) / 2
+            lo, hi = (s, hi) if _sat(L + (eff - L) * s) < op["sat_to"] else (lo, s)
+        tgt = L + (eff - L) * lo
+        f = tgt / np.maximum(eff, 1e-6)
+        new = vc * (f / max(1.0, float((vc.max(0) * f / 255).max())))  # no channel past 255: darker, same saturation
+    sh.set_colours(new)
+    sh.prop.set_flags(f1, f2 | 1 << N.F2["Vertex_Colors"])
+
+
 def apply(n: N.Nif, entry: dict) -> list[str]:
     """Apply the entry's ops in place; return mismatches between the table's `before` and the bytes."""
     shapes = {s.i: s for s in n.shapes()}
@@ -120,6 +178,8 @@ def apply(n: N.Nif, entry: dict) -> list[str]:
             p.set_emissive(ops["emissive"]["rgb"], ops["emissive"]["mult"])
         for slot, path in (ops.get("texture_slot") or {}).items():
             p.set_slot(int(slot), path)
+        if "vertex_colour" in ops:
+            _vertex_colour(sh, ops["vertex_colour"])
         if "uv_scale" in ops:
             _uv_scale(sh, ops["uv_scale"]["axis"], ops["uv_scale"]["factor"])
     return bad
@@ -127,6 +187,7 @@ def apply(n: N.Nif, entry: dict) -> list[str]:
 
 def bars(n: N.Nif, entry: dict) -> list[str]:
     kinds = {se["shape"]: se.get("kind") for se in entry["shapes"]}
+    sat_op = {se["shape"] for se in entry["shapes"] if "sat_to" in ((se.get("ops") or {}).get("vertex_colour") or {})}
     out = []
     for sh in n.shapes():
         m = measure(sh)
@@ -140,8 +201,12 @@ def bars(n: N.Nif, entry: dict) -> list[str]:
         if kinds.get(sh.i) == "bark":
             if not m["slot1"]:
                 out.append(f"{tag}: bark with no normal map")
+            if m.get("lum") is not None and m["lum"] > BARK_LUM_BAR:
+                out.append(f"{tag}: bark draws at luminance {m['lum']} > {BARK_LUM_BAR}")
             if m["stretch"] is not None and m["stretch"] > STRETCH_BAR:
                 out.append(f"{tag}: UV stretch {m['stretch']}:1 > {STRETCH_BAR}:1")
+        if sh.i in sat_op and m.get("sat") is not None and m["sat"] > LEAF_SAT_BAR + 0.005:
+            out.append(f"{tag}: leaf draws at saturation {m['sat']} > {LEAF_SAT_BAR}")
     return out
 
 
@@ -173,12 +238,12 @@ def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=prin
         problems += bars(n2, e)
         say(f"{'FAIL' if problems else 'ok  '} {e['mod']}/{e['mesh']} ({', '.join(e['forms'])})")
         for s in n2.shapes():
-            if s.i in {x["shape"] for x in e["shapes"]}:
+            if s.i in {x["shape"] for x in e["shapes"] if x.get("ops")}:
                 a, b = before[s.i], measure(s)
                 say(f"    shape {s.i} {s.name}:")
-                for k in ("flags", "emissive", "soft", "slot1", "slot2", "stretch"):
+                for k in ("flags", "emissive", "slot1", "slot2", "stretch", "lum", "sat"):
                     if k in a:
-                        say(f"      {k:8} {a[k]!s:60} -> {b.get(k)}" if a[k] != b.get(k) else f"      {k:8} {a[k]}")
+                        say(f"      {k:8} {a[k]} -> {b.get(k)}" if a[k] != b.get(k) else f"      {k:8} {a[k]} (kept)")
         for p in problems:
             say(f"    BAR {p}")
         bad += bool(problems)
@@ -196,5 +261,5 @@ def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=prin
 def listing(out: Path = OUT, table: Path = TABLE, say=print) -> int:
     for e in load(table):
         say(f"{DERIVED}/{e['mesh']}  <- {e['mod']}/{e['mesh']}  ({', '.join(e['forms'])})")
-    say(f"lay: {out} -> C:\\argonia\\MO2\\mods\\{DERIVED} (stack.ps1 on: laid after every profile mod, so it wins)")
+    say(f"lay: {out} -> C:\\argonia\\ours\\derived\\{DERIVED} (stack.ps1 on: laid over every mod, so it wins)")
     return 0

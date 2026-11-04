@@ -133,10 +133,6 @@ switch ($Cmd) {
       if (-not (Test-Path $src)) { continue }
       foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) { $want[$f.Substring($src.Length).ToLower()] = $f }
     }
-    # the derived mesh patches (1.15-r6, deploy.sh `mesh patches`): not a profile row, laid last so each patched copy
-    # wins over its source mod's mesh (loose or in a BSA)
-    $src = "$Mo2\mods\argonia-mesh-patches"
-    if (Test-Path $src) { foreach ($f in [IO.Directory]::EnumerateFiles($src, '*', 'AllDirectories')) { $want[$f.Substring($src.Length).ToLower()] = $f } }
     # Derived folders (decision 0014: made at install on the build VM from the player's mods, sent by deploy.sh to
     # ours\derived\<name>, e.g. argonia-ground's textures with mips and normals): over every mod
     foreach ($d in @(Get-ChildItem "$Root\ours\derived" -Directory -EA SilentlyContinue)) {
@@ -336,7 +332,7 @@ public static class ParHash {
 '@
     # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's;
     # the generated LOD (lod.ps1) is made on the machine too, so neither is in installed.json
-    $pandora = @{}; foreach ($gen in 'pandora-output', 'Argonia LOD (generated)', 'argonia-mesh-patches') { if (Test-Path "$Mo2\mods\$gen") {
+    $pandora = @{}; foreach ($gen in 'pandora-output', 'Argonia LOD (generated)') { if (Test-Path "$Mo2\mods\$gen") {
       Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
     $out = New-Object System.Collections.Generic.List[string]

@@ -123,6 +123,27 @@ class Shape:
             return None
         return self._view(((self.desc >> 24) & 0xF) * 4, np.uint8, 4).astype(float)
 
+    def set_colours(self, rgb: np.ndarray) -> None:
+        """Write per-vertex RGB (0..255; alpha kept). A shape without the colour attribute gains one (4 bytes at the
+        end of each vertex; the vertex size, offsets, data size and attribute bits rewritten), so the engine multiplies
+        it into the diffuse once the property's Vertex_Colors flag is set."""
+        b = self.nif.blocks[self.i]
+        if not self.attrs & 0x20:
+            old = self.vsize
+            rows = [bytes(b[self.vdata + v * old:self.vdata + (v + 1) * old]) + b"\xff\xff\xff\xff" for v in range(self.nv)]
+            tail = bytes(b[self.vdata + self.nv * old:])
+            self.desc = (self.desc & ~0xF & ~(0xF << 24)) | ((old // 4 + 1) & 0xF) | ((old // 4) << 24) | (0x20 << 44)
+            q = self.vdata - 16
+            struct.pack_into("<Q", b, q, self.desc)
+            struct.pack_into("<I", b, q + 12, self.nv * (old + 4) + 6 * self.ntri)
+            b[self.vdata:] = b"".join(rows) + tail
+            self.vsize, self.attrs = old + 4, (self.desc >> 44) & 0xFFF
+        co = ((self.desc >> 24) & 0xF) * 4
+        c = np.clip(np.rint(rgb), 0, 255).astype(np.uint8)
+        for v in range(self.nv):
+            o = self.vdata + v * self.vsize + co
+            b[o:o + 3] = c[v].tobytes()
+
     def triangles(self) -> np.ndarray:
         o = self.vdata + self.nv * self.vsize
         return np.frombuffer(bytes(self.nif.blocks[self.i][o:o + 6 * self.ntri]), "<u2").reshape(-1, 3)

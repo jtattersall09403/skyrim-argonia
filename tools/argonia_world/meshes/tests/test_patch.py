@@ -104,6 +104,28 @@ def test_uv_scale_fit_and_number():
     assert patch.measure(n3.shapes()[0])["stretch"] == pytest.approx(1.0, abs=0.02)
 
 
+def test_vertex_colour_lum_to_adds_the_attribute(monkeypatch):
+    monkeypatch.setattr(patch, "_diffuse_rgb", lambda p: [200, 200, 180])
+    n = N.Nif(make_nif())  # no colour attribute
+    m = patch.measure(n.shapes()[0])
+    assert m["lum"] > patch.BARK_LUM_BAR and "pale" not in str(patch.bars(n, entry({}, kind="bark")))
+    assert any("luminance" in b for b in patch.bars(n, entry({}, kind="bark")))
+    patch.apply(n, entry({"vertex_colour": {"lum_to": 59.0}}, kind="bark"))
+    n2 = N.Nif(n.to_bytes())
+    m2 = patch.measure(n2.shapes()[0])
+    assert m2["lum"] == pytest.approx(59, abs=0.6) and m2["sat"] == m["sat"] and "Vertex_Colors" in m2["flags"]
+    assert m2["stretch"] == m["stretch"] and not patch.bars(n2, entry({}, kind="bark"))
+
+
+def test_vertex_colour_sat_to(monkeypatch):
+    monkeypatch.setattr(patch, "_diffuse_rgb", lambda p: [52, 68, 10])
+    n = N.Nif(make_nif())
+    e = entry({"vertex_colour": {"sat_to": patch.LEAF_SAT_BAR}})
+    patch.apply(n, e)
+    n2 = N.Nif(n.to_bytes())
+    assert patch.measure(n2.shapes()[0])["sat"] == pytest.approx(0.71, abs=0.01) and not patch.bars(n2, e)
+
+
 def test_before_mismatch_is_reported():
     n = N.Nif(make_nif())
     assert patch.apply(n, entry({}, before={"slot2": "x.dds"}))

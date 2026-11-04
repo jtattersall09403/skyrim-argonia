@@ -27,6 +27,7 @@
 {"form_key":"03A57E:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"03A57F:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"03A582:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
+{"form_key":"03A583:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the shrub role's range (ours; the L4 stills judge it)"}
 {"form_key":"03A589:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"03A58A:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"03A58B:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
@@ -188,6 +189,11 @@
 {"form_key":"44E912:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"44E913:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
 {"form_key":"44E914:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":0.0,"why":"1.15 veg: the deadwood role's range (ours; the L4 stills judge it)"}
+{"form_key":"463246:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-14.5,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -14 units under the ground, its mod's own median seat (seat.py)"}
+{"form_key":"463247:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-1.7,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -2 units under the ground, its mod's own median seat (seat.py)"}
+{"form_key":"463248:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-20.7,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -21 units under the ground, its mod's own median seat (seat.py)"}
+{"form_key":"463249:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-73.3,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -73 units under the ground, its mod's own median seat (seat.py)"}
+{"form_key":"46324A:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-36.3,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -36 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"51DEBD:King of the Murkmire.esp","scale_min":0.8,"scale_max":1.2,"sink_frac":0.0,"seat_units":-0.6,"why":"1.15 veg: the canopy role's range (ours; the L4 stills judge it); pivot -1 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"52D306:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":-82.9,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot -83 units under the ground, its mod's own median seat (seat.py)"}
 {"form_key":"551536:King of the Murkmire.esp","scale_min":0.9,"scale_max":1.3,"sink_frac":0.0,"seat_units":133.8,"why":"1.15 veg: the emergent role's range (ours; the L4 stills judge it); pivot 134 units under the ground, its mod's own median seat (seat.py)"}

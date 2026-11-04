@@ -2,7 +2,7 @@
 # mod's mesh, every shape of it (kind: leaf, bark or other; the bars read the kind), and for a shape with ops its
 # measured `before` (the patcher fails if the mod's bytes no longer match) and the reason. The patcher
 # (tools/argonia_world/meshes) applies the ops in the deploy's lay step and writes copies into the derived mod folder
-# argonia-mesh-patches; no mesh, patched or not, is ever in the repo. Measures: docs/research/2026-11-03/
+# argonia-meshes; no mesh, patched or not, is ever in the repo. Measures: docs/research/2026-11-03/
 # lane-1.15-r5-trees-2.md and lane-1.15-r5-white-trunks.md; the patch: docs/research/2026-11-04/
 # lane-1.15-r6-mesh-patcher.md. Texture slots point at textures the same mods already lay (0006: no new art).
 meshes:
@@ -118,7 +118,10 @@ meshes:
       clear_flags:
       - Soft_Lighting
       - Double_Sided
-    reason: 'bark soft-lit and double-sided with no soft-light map: the sun wraps through the trunk'
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'bark soft-lit and double-sided with no soft-light map: the sun wraps through the trunk; snowgumbark01_d draws
+      at luminance 94 (placed bark median 59): the vertex colour (added, the shape had none) takes it to 59'
   - shape: 9
     name: cedartree1:10
     kind: leaf
@@ -192,7 +195,10 @@ meshes:
       clear_flags:
       - Soft_Lighting
       - Double_Sided
-    reason: bark soft-lit and double-sided with no soft-light map
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'bark soft-lit and double-sided with no soft-light map; snowgumbark01_d draws at luminance 94 (placed bark median
+      59): the vertex colour (added, the shape had none) takes it to 59'
 - mesh: meshes/landscape/trees/11skykahl1.nif
   mod: bmv
   forms:
@@ -600,3 +606,195 @@ meshes:
   - shape: 14
     name: JungleTree06:Vines
     kind: other
+- mesh: meshes/argonia/trees/ctq_kapoktree01.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 463246:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 7
+    name: LOD0.009
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\ctq\plants\kapok\ctq_kapokbark_n.dds
+      slot2: ''
+      stretch: 2.4
+      lum: 137.8
+      sat: 0.19
+    ops:
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'the pale wide trunk: ctq_kapokbark_d draws at luminance 138 (white vertex colour; placed bark median 59); the
+      vertex colour is scaled uniformly to draw at 59, saturation kept, the shared texture untouched'
+  - shape: 10
+    name: LOD0
+    kind: leaf
+- mesh: meshes/argonia/trees/ctq_kapoktree02.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 463247:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 7
+    name: LOD0.008
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\ctq\plants\kapok\ctq_kapokbark_n.dds
+      slot2: ''
+      stretch: 2.4
+      lum: 137.8
+      sat: 0.19
+    ops:
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'the pale wide trunk: ctq_kapokbark_d draws at luminance 138 (white vertex colour; placed bark median 59); the
+      vertex colour is scaled uniformly to draw at 59, saturation kept, the shared texture untouched'
+  - shape: 10
+    name: LOD0.001
+    kind: leaf
+- mesh: meshes/argonia/trees/ctq_kapoktree03.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 463248:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 7
+    name: LOD0.007
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\ctq\plants\kapok\ctq_kapokbark_n.dds
+      slot2: ''
+      stretch: 2.5
+      lum: 137.8
+      sat: 0.19
+    ops:
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'the pale wide trunk: ctq_kapokbark_d draws at luminance 138 (white vertex colour; placed bark median 59); the
+      vertex colour is scaled uniformly to draw at 59, saturation kept, the shared texture untouched'
+  - shape: 10
+    name: LOD0.002
+    kind: leaf
+- mesh: meshes/argonia/trees/ctq_kapoktree04.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 463249:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 7
+    name: LOD0.006
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\ctq\plants\kapok\ctq_kapokbark_n.dds
+      slot2: ''
+      stretch: 2.2
+      lum: 137.8
+      sat: 0.19
+    ops:
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'the pale wide trunk: ctq_kapokbark_d draws at luminance 138 (white vertex colour; placed bark median 59); the
+      vertex colour is scaled uniformly to draw at 59, saturation kept, the shared texture untouched'
+  - shape: 10
+    name: LOD0.003
+    kind: leaf
+- mesh: meshes/argonia/trees/ctq_kapoktree05.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 46324A:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 7
+    name: CTQ_KapokTree_Leaves
+    kind: leaf
+  - shape: 11
+    name: CTQ_KapokTree_Bark
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\ctq\plants\kapok\ctq_kapokbark_n.dds
+      slot2: ''
+      stretch: 2.2
+      lum: 137.8
+      sat: 0.19
+    ops:
+      vertex_colour:
+        lum_to: 59.0
+    reason: 'the pale wide trunk: ctq_kapokbark_d draws at luminance 138 (white vertex colour; placed bark median 59); the
+      vertex colour is scaled uniformly to draw at 59, saturation kept, the shared texture untouched'
+- mesh: meshes/plants/tamira/new plants/bush01.nif
+  mod: tropical-skyrim-sse
+  forms:
+  - 03A583:King of the Murkmire.esp
+  lane: 1.15-r5-trees-2 / 1.15-r5-sky-2 measured; 1.15-r6-mesh-patcher patched
+  shapes:
+  - shape: 2
+    name: Bush03
+    kind: leaf
+    before:
+      flags:
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\landscape\trees\anvilleafpalm02_N.dds
+      slot2: ''
+      stretch: 1.5
+      lum: 33.0
+      sat: 0.88
+    ops:
+      vertex_colour:
+        sat_to: 0.71
+      clear_flags:
+      - Own_Emit
+    reason: 'the bright lime palm: Tropical Skyrim''s Bush01 (the load order''s winner) draws anvilleafpalm02 (sat 0.86)
+      at saturation 0.88 through its vertex colour; a per-channel vertex factor takes it to the stack''s leaf p90 (0.71)
+      at the same luminance; Own_Emit (black) cleared'
