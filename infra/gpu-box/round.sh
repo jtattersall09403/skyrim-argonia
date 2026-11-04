@@ -49,7 +49,9 @@ step up ~/.argonia/scripts/up_until.sh "$m" 120 || exit 3
 # a deploy that dies with the machine is run again once (what landed stays landed)
 # a deploy that dies with the machine is run again once (what landed stays landed); a deploy that failed with the
 # machine still answering (a launch red, 09:41) is not: the second try cost 4 min and failed the same way
-step deploy bash -c 'make --no-print-directory deploy || { infra/gpu-box/run.sh ps "echo ok" 2>/dev/null | grep -q ok && { echo "deploy: failed with the machine up; not retried"; exit 1; }; echo "deploy: again (resumes)"; make --no-print-directory deploy; }' || exit 4
+mkdir -p out; step deploy bash -c '{ make --no-print-directory deploy || { infra/gpu-box/run.sh ps "echo ok" 2>/dev/null | grep -q ok && { echo "deploy: failed with the machine up; not retried"; exit 1; }; echo "deploy: again (resumes)"; make --no-print-directory deploy; }; } | tee out/.deploy-last.log; exit ${PIPESTATUS[0]}' || exit 4
+# a held deploy (the machine already runs this build) launched nothing: the bridge's ping, else a launch to the menu
+grep -q '^DEPLOY held' out/.deploy-last.log 2>/dev/null && { $PY tools/bridge.py ping >/dev/null 2>&1 && echo "ROUND game answers (held build)" || { $PY tools/bridge.py launch || exit 4; }; }
 # the batch: a resumed round goes on from the first item its last run did not reach (run_batch --from), never the top
 last=$(sed -n 's/^batch-dir //p' "$state" | tail -1)
 if ! done_ok batch; then

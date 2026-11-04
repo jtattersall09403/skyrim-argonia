@@ -13,7 +13,7 @@ def stub(path: pathlib.Path, body: str):
     path.chmod(0o755)
 
 
-def tree(tmp, deploy_fails=0, batch_items=2, to_run=2):
+def tree(tmp, deploy_fails=0, batch_items=2, to_run=2, held=False):
     root = tmp / "repo"
     (root / "infra" / "gpu-box").mkdir(parents=True)
     shutil.copy(REPO / "infra" / "gpu-box" / "round.sh", root / "infra" / "gpu-box" / "round.sh")
@@ -24,7 +24,8 @@ def tree(tmp, deploy_fails=0, batch_items=2, to_run=2):
     fails = tmp / "deploy_fails"
     fails.write_text(str(deploy_fails))
     stub(tmp / "bin" / "make", f'echo "make $*" >>{log}; n=$(cat {fails}); '
-                               f'if [ "$n" -gt 0 ]; then echo $((n-1)) >{fails}; exit 1; fi; exit 0\n')
+                               f'if [ "$n" -gt 0 ]; then echo $((n-1)) >{fails}; exit 1; fi; '
+                               + ('echo "DEPLOY held: k, skipped"; ' if held else '') + 'exit 0\n')
     (root / "tools").mkdir()
     (root / "tools" / "run_batch.py").write_text(f'''import json, pathlib, sys, time
 open("{log}", "a").write("batch " + " ".join(sys.argv[1:]) + "\\n")
@@ -37,6 +38,7 @@ items = [{{"id": "a", "passed": True}}, {{"id": "b", "passed": False}}][:{batch_
 (d / "01-a").mkdir(); (d / "01-a" / "01-x.png").write_bytes(b"png")
 sys.exit(1)
 ''')
+    (root / "tools" / "bridge.py").write_text(f'import sys; open("{log}", "a").write("bridge " + " ".join(sys.argv[1:]) + "\\n")\n')
     (root / "b.yaml").write_text("id: t\nitems: [a, b]\n")
     subprocess.run(["git", "init", "-q"], cwd=root, check=True)
     subprocess.run(["git", "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-q", "--allow-empty", "-m", "x"],
@@ -99,3 +101,18 @@ def test_resume_goes_on_from_the_first_item_not_reached(tmp_path):
     log.write_text("")
     go(root, env)
     assert "batch --from b b.yaml" in log.read_text().splitlines()
+
+
+def test_a_held_deploy_only_pings_the_bridge(tmp_path):
+    root, log, env = tree(tmp_path, held=True)
+    r = go(root, env)
+    assert r.returncode == 0, r.stdout + r.stderr
+    calls = log.read_text().splitlines()
+    assert calls[2] == "make --no-print-directory deploy" and calls[3] == "bridge ping", calls
+    assert "ROUND game answers (held build)" in r.stdout
+
+
+def test_an_unheld_deploy_never_asks_the_bridge(tmp_path):
+    root, log, env = tree(tmp_path)
+    go(root, env)
+    assert not any(c.startswith("bridge") for c in log.read_text().splitlines())

@@ -13,7 +13,7 @@
 # 5. bridge.py launch --fresh: the profile laid again, our DLLs and ESMs copied in (bridge.ps1 prepare), main menu;
 #    then the scenes (tests/scenes/*.txt, refs as runtime ids by tools/ref_ids.py) to the game's folder for `bat <id>`;
 # 6. base_save.py: a new game, the quarantine start, the studio character in the holding cell, saved as argoniabase.
-# Every step prints its seconds; the last line is DEPLOY OK.
+# Every step prints its seconds; the last line is DEPLOY OK, or "DEPLOY held: <key>" when the machine already runs this build.
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd); repo=$(cd "$here/../.." && pwd); cd "$repo"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
@@ -38,13 +38,30 @@ perks_key=$( { inkey tools/argonia_world/perk_plugin.py tools/argonia_world/db.p
 # the base save's inputs: the ESMs, our scripts, the SKSE tree, the stack and data rows, the scenes and the save's own code;
 # its stamp lives on the machine beside the save (a new machine from the image has neither, so it saves)
 base_key=$( { sha256sum out/Argonia.esm out/ArgoniaWorld.esm out/gpu/papyrus/*.pex 2>/dev/null; inkey skse infra/gpu-box/base_save.py infra/gpu-box/stack.py infra/gpu-box/stack.ps1 infra/gpu-box/bridge.ps1 data/dependencies.json tests/scenes tools/bridge.py; } | sha256sum | cut -c1-12)
+# 1.15-r6-resume-costs (owner #39: a restart costs no deploy): the whole build this deploy would lay, keyed by the two
+# ESMs, the .pex, the derived steps' keys, the base save's key and every tracked input of the plugin and the steps
+# (blobs plus the dirty diff). A green deploy writes it to C:\argonia\state\deployed.key; a deploy whose machine
+# answers with the same key is skipped whole ("DEPLOY held"): no plugin build, no launch, no base save (round.sh then
+# only asks the bridge for the main menu). Any flag other than the full deploy, or DEPLOY_FORCE=1, never holds.
+held() { { sha256sum out/Argonia.esm out/ArgoniaWorld.esm out/gpu/papyrus/*.pex 2>/dev/null; echo "$theme_key $perks_key"  # the base key's inputs are all below
+  inkey world/db world/schema.sql plugin tools infra/gpu-box data ui skse tests/scenes; } | sha256sum | cut -c1-12; }
+held_key=$(held)
+full=$(( plugin && papyrus && skse && stage && base ))
 if [ "${plan:-0}" = 1 ]; then
+  echo "held key: $held_key (the machine's C:\argonia\state\deployed.key decides; full deploy $full)"
   keyed theme "$theme_key" out/ui_theme/argonia-theme true
   keyed perks "$perks_key" out/perks/argonia-perks true
   echo "base save: key $base_key (the machine's stamp C:\argonia\ours\argoniabase.key decides)"
   exit 0
 fi
 
+if [ $full = 1 ] && [ -z "${DEPLOY_FORCE:-}" ] && [ -f out/ArgoniaWorld.esm ]; then
+  have=$("$run" ps 'Get-Content C:\argonia\state\deployed.key -EA SilentlyContinue' 2>/dev/null | tr -d '\r\n ' || true)
+  if [ "$have" = "$held_key" ]; then echo "DEPLOY held: $held_key, skipped in $(( SECONDS - t0 )) s"; exit 0; fi
+  echo "deploy: machine holds ${have:-nothing}, laying $held_key"
+  # a deploy that dies half-way must not leave the old key claiming the half-laid build
+  [ -n "$have" ] && "$run" ps 'Remove-Item C:\argonia\state\deployed.key -EA SilentlyContinue' >/dev/null 2>&1 || true
+fi
 [ $plugin = 1 ] && step "make plugin" make --no-print-directory plugin
 for f in Argonia.esm ArgoniaWorld.esm; do [ -f "out/$f" ] || { echo "no out/$f: make plugin first" >&2; exit 1; }; done
 # A province without NAVM is a province where no one walks (game-8: every deploy since 2.W4 shipped none).
@@ -183,4 +200,7 @@ if [ $base = 1 ]; then
 fi
 # the pool keeps one build (1.8 §7): tag what this machine now runs, so the play page and pool.py know who is behind
 "$PY" "$here/pool.py" stamp "${ARGONIA_PLAY:-argonia-play}" || echo "pool stamp failed (the play page may treat this machine as behind)" >&2
+# the whole build's key, last: only a deploy that got here is held by a resume
+# re-keyed now: the plugin build and papyrus compile above may have rewritten the ESMs, .pex and plugin YAML
+held_key=$(held); [ $full = 1 ] && "$run" ps "New-Item -ItemType Directory -Force C:\\argonia\\state | Out-Null; Set-Content -NoNewline C:\\argonia\\state\\deployed.key '$held_key'" >/dev/null
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"
