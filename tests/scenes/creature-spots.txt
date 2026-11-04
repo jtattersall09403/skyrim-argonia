@@ -1,3 +1,2 @@
 ; Creature spots (1.15 §g.4): god mode so a bite does not end the visit; sets nothing it tests
 tgm
-fw ARG_Weather_tannin_haze

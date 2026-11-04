@@ -263,25 +263,100 @@ def _along(pts: list[tuple[float, float]], f: float) -> tuple[float, float, int]
     return pts[-1][0], pts[-1][1], len(pts) - 2
 
 
+ROAD_OFF_MAX_M, ROAD_HEAD_MAX_DEG = 2.0, 20.0   # a stop stands within 2 m of the DB centreline, facing within 20 deg of it
+ROAD_THIRD_DEG = STEP_FRAME_DEG[0] / 3            # the middle third of the frame across: +-11.7 deg of the heading
+ROAD_TROUGH_M = (8.0, 30.0)                       # the lane's trough read this far ahead along the line
+ROAD_SLIDE_M, ROAD_SLIDE_STEP_M = 200.0, 2.0      # the stand slides along the line this far either way to clear (20 % lies under its cells' water)
+ROAD_GRASS_WINDOW_M = 30.0                        # the least-grass stand is chosen within this of the nearest clear one
+
+
+def road_measure(pts: list[tuple[float, float]], x: float, y: float, heading: float) -> dict:
+    """A stop against the road's centreline (units): the eye point's distance to the line (m), the line's direction at
+    the nearest point (deg, along the point order), the heading's difference from it (deg, either way along the road)
+    and the nearest point's distance along the line (m)."""
+    best, acc = None, 0.0
+    for a, b in zip(pts, pts[1:]):
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        L = math.hypot(dx, dy)
+        t = max(0.0, min(1.0, ((x - a[0]) * dx + (y - a[1]) * dy) / (L * L))) if L else 0.0
+        d = math.hypot(x - a[0] - t * dx, y - a[1] - t * dy)
+        if best is None or d < best[0]:
+            best = (d, math.degrees(math.atan2(dx, dy)) % 360, acc + t * L)
+        acc += L
+    d, road_h, s = best
+    dh = abs((heading - road_h + 180) % 360 - 180)
+    return {"off_m": d / U, "road_deg": road_h, "head_off_deg": min(dh, 180 - dh), "at_m": s / U}
+
+
+def _at_dist(pts: list[tuple[float, float]], s_u: float) -> tuple[float, float]:
+    total = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(pts, pts[1:]))
+    return _along(pts, max(0.0, min(1.0, s_u / total)))[:2]
+
+
+def road_stand(b: Build, pts: list[tuple[float, float]], f: float) -> dict:
+    """The stop at fraction f of the road: on the centreline, facing along it (towards the point ROAD_AHEAD_M on), slid
+    along the line (ROAD_SLIDE_STEP_M steps) to stands that are dry footing, standable, clear by the clearance measure (no
+    plant on the eye line nor canopy over the eye: look.score), facing within ROAD_HEAD_MAX_DEG of the line, the trough
+    (the line ROAD_TROUGH_M ahead) inside the middle third of the frame; of those within ROAD_GRASS_WINDOW_M of the
+    nearest, the least tall grass (the road carries tall grass along most of its length: the still shows it, the
+    reader judges it)."""
+    from tools.journeys import look   # the clearance measure road-look's re-aim pass applies (read, not edited here)
+    total = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(pts, pts[1:]))
+    s0 = f * total
+    k = int(ROAD_SLIDE_M / ROAD_SLIDE_STEP_M)
+    found = []
+    for off in sorted(range(-k, k + 1), key=abs):
+        if found and abs(off) * ROAD_SLIDE_STEP_M > abs(found[0][1]) + ROAD_GRASS_WINDOW_M:
+            break
+        s = s0 + off * ROAD_SLIDE_STEP_M * U
+        if not 0 <= s <= total - ROAD_TROUGH_M[1] * U:
+            continue
+        x, y = (round(c) for c in _at_dist(pts, s))   # as written: the re-aim reads the rounded stand
+        if b.soaked(x, y):
+            continue
+        sx, sy = _at_dist(pts, s + ROAD_AHEAD_M * U)
+        subj = (round(sx), round(sy), round(b.ground_u(sx, sy)))
+        sc = look.score(b, x, y, subj)
+        if sc["wet"] or sc["bad"] or sc["line"] or sc["canopy"]:
+            continue
+        eye = eye_of(b, x, y)
+        h, p = aim(eye, subj)
+        m = road_measure(pts, x, y, h)
+        if m["off_m"] > ROAD_OFF_MAX_M or m["head_off_deg"] > ROAD_HEAD_MAX_DEG:
+            continue
+        third = max(abs((aim(eye, _at_dist(pts, s + d * U) + (0.0,))[0] - h + 180) % 360 - 180)
+                    for d in range(int(ROAD_TROUGH_M[0]), int(ROAD_TROUGH_M[1]) + 1, 2))
+        if third > ROAD_THIRD_DEG:
+            continue
+        found.append((sc["grass"], off * ROAD_SLIDE_STEP_M,
+                      {"x": x, "y": y, "h": h, "p": p, "subj": subj, "slid_m": off * ROAD_SLIDE_STEP_M,
+                       "third_deg": third, "grass": sc["grass"], **m}))
+    if not found:
+        raise ValueError(f"road-look: no clear stand on the line within {ROAD_SLIDE_M:.0f} m of {f:.0%}")
+    return min(found, key=lambda c: (c[0], abs(c[1])))[2]
+
+
+ROAD_STANDS: list = []   # (name, stand) of the last refresh, for the report
+
+
 def road_look(b: Build, w, log: list) -> str:
     path = JOURNEYS / "road-look.yaml"
     head = [ln for ln in path.read_text().splitlines() if ln.startswith("#")]
     pts = [su.province_to_skyrim(r["x_m"], r["y_m"]) for r in w.query(
         "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", ROAD)]
-    total = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(pts, pts[1:]))
     lines = head + ["id: road-look", "look: world", "runner: 1", "independent_steps: true", "crash_risk: low",
                     "scene: claywater", "camera: first", "steps:",
                     "  - name: road-in", "    do: [{hud: \"off\"}]",
                     "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]"]
-    for k, (name, f) in enumerate(ROAD_AT):
-        ahead = ROAD_AHEAD_M * U / total
-        sx, sy, _ = _along(pts, min(f + ahead, 1.0))
-        subj = (sx, sy, b.ground_u(sx, sy) + 0.5 * U)  # the road's surface 25 m on, looking along it
-        px, py, _ = _along(pts, f)  # down the road first; off it to either side when that line is wet or leafy
-        f0 = place(b, subj, ROAD_AHEAD_M * U, around(math.degrees(math.atan2(px - sx, py - sy)) % 360))
-        x, y = f0["x"], f0["y"]
-        h, p = aim(eye_of(b, x, y), subj)
-        log.append({"journey": "road-look", "step": name, "moved_m": f0["moved_m"], "why": f0["why"], "clear": f0["clear"]})
+    ROAD_STANDS.clear()
+    for name, f in ROAD_AT:
+        r = road_stand(b, pts, f)
+        x, y, h, p, subj = r["x"], r["y"], r["h"], r["p"], r["subj"]
+        ROAD_STANDS.append((name, r))
+        log.append({"journey": "road-look", "step": name, "moved_m": abs(r["slid_m"]),
+                    "why": f"on the line, slid {r['slid_m']:+.0f} m along it", "clear": True})
+        print(f"road-look: {name}: cell {su.cell_of(x, y)} off the line {r['off_m']:.1f} m, heading {h:.0f} vs road "
+              f"{r['road_deg']:.0f} ({r['head_off_deg']:.0f} deg), trough within {r['third_deg']:.1f} deg, grass {r['grass']}, slid {r['slid_m']:+.0f} m")
         lines += [f"  - name: {name}", f"    # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
                   f"    do: [{{hud: \"off\"}}, {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, "
                   "{settle: {cap: 14, min: 3}},",
@@ -687,29 +762,101 @@ def water_types(b: Build, w, log: list) -> str:
         out.append(_cow_step(name, f"{types[(cx, cy)]} water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m",
                              x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first))
         first = False
+    out.append(sea_far(b, types, level, line, reach_of, log, [s_ for s_ in STANDS if s_[0] == "sea"][0]))
     return "".join(out)
+
+
+SEA_FAR_REACH_CELLS = 12     # a far-sea shore: the most sea cells straight out from it, up to this many
+SEA_FAR_M = 300.0            # the far stop's type share is read out to here (the sea's horizon, not the shallows)
+SEA_FAR_SHORES = 40          # the shores tried, best first
+
+
+def sea_far_ok(b: Build, x: float, y: float, h: float, types: dict) -> dict:
+    """The far-sea measures of a stand facing h, level: the upper-frame plant cover, the near-frame cover, the share of the
+    lower half's wet rays (to SEA_FAR_M) whose cell is sea, and whether they meet the stop's bar."""
+    fc = frustum_cover(b, eye_of(b, x, y), h, 0.0)
+    _, cells = frame_read(b, x, y, h, 0.0, near_m=SEA_FAR_M)
+    ts, others = type_share(cells, types, ("sea",))
+    return {"upper": fc["upper"], "near": fc["near"], "sea_share": ts, "rays": sum(cells.values()), "others": others[:3],
+            "ok": cover_ok(fc, True) and ts >= TYPE_MIN_SHARE and sum(cells.values()) > 0}
+
+
+def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log: list, near: tuple) -> str:
+    """The far-sea stop (owner #41, round 6: the near sea stop is "fine for shallows by the coast"): an open shore facing
+    out to sea, level, the horizon in frame, the upper frame's plant cover under UPPER_COVER_MAX, and at least
+    TYPE_MIN_SHARE of the lower half's wet rays out to SEA_FAR_M on sea cells; on a shore other than the near stop's."""
+    x0, y0 = su.PROVINCE_CELL_SW
+    inside = lambda x, y: x0 + 1 <= x < x0 + su.PROVINCE_CELLS - 1 and y0 + 1 <= y < y0 + su.PROVINCE_CELLS - 1  # noqa: E731
+    near_cell = su.cell_of(near[1], near[2])
+    cands = []
+    for (cx, cy), t in sorted(types.items()):
+        if t != "sea" or (cx, cy) == tuple(near_cell):
+            continue
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            if (cx + dx, cy + dy) in types or not inside(cx + dx, cy + dy):
+                continue
+            n = 0
+            for k in range(1, SEA_FAR_REACH_CELLS + 1):
+                if types.get((cx - dx * k, cy - dy * k)) != "sea":
+                    break
+                n += 1
+            if n >= 4:
+                cands.append((-n, (cx, cy), (dx, dy)))
+    cands.sort()
+
+    def search():
+        lg, err = [], None
+        print(f"water-types: sea-far: search over {min(len(cands), SEA_FAR_SHORES)} shores", flush=True)
+        for _, (cx, cy), (dx, dy) in cands[:SEA_FAR_SHORES]:
+            n_log = len(lg)
+            try:
+                got = _stop_at(b, "sea", cx, cy, dx, dy, level, line, reach_of, lg, True, types, ("sea",))
+            except ValueError as e:
+                err = err or e
+                del lg[n_log:]
+                continue
+            x, y, subj = got[0], got[1], got[2]
+            if sea_far_ok(b, x, y, aim(eye_of(b, x, y), subj)[0], types)["ok"]:
+                for r in lg:
+                    r["step"] = "sea-far"
+                return {"got": [x, y, list(subj), [cx, cy]], "log": lg}
+            del lg[n_log:]
+        raise ValueError(f"water-types: sea-far: no shore of {min(len(cands), SEA_FAR_SHORES)} meets the far-sea bar ({err})")
+
+    res = _cached("water-types", "sea-far", search)
+    log.extend(res["log"])
+    x, y, subj, (cx, cy) = res["got"]
+    h = aim(eye_of(b, x, y), subj)[0]
+    m = sea_far_ok(b, x, y, h, types)
+    cl = clearance3(b, eye_of(b, x, y), h)
+    fs, _ = frame_read(b, x, y, h, 0.0)
+    STANDS.append(("sea-far", x, y, h, 0.0, cl, fs, fs, frustum_cover(b, eye_of(b, x, y), h, 0.0), m["sea_share"], m["others"]))
+    print(f"water-types: sea-far: stand cell {su.cell_of(x, y)} at {x:.0f} {y:.0f} facing {h:.0f}; clearance "
+          f"{cl[0]}/{cl[1]}/{cl[2]}; upper cover {m['upper']:.1%} near {m['near']:.1%}; sea share to {SEA_FAR_M:.0f} m "
+          f"{m['sea_share']:.0%} of {m['rays']} wet rays (others {m['others']}); frame share {fs:.0%}")
+    return _cow_step("sea-far", f"sea water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m, out to sea",
+                     x, y, b.ground_u(x, y) + SEAT_U, h, 0.0, subj, False)
 
 
 # -- creatures-kinds --------------------------------------------------------------------------------------------------
 KINDS_HEAD = """# Creature kinds per region (lane 1.15-r5-creatures-journey; owner #37: never fewer kinds per region than Skyrim or the
-# Black Marsh mod). Generated by `python3 -m tools.journeys refresh` (tools/journeys/gen.py) from the build: never hand-edit.
+# Black Marsh mod). Generated by `python3 -m tools.argonia_world.creatures kinds` (tools/journeys/gen.py) from the build:
+# never hand-edit. A state check, no stills (owner 19:05 #41, decision 0036 amended; lane 1.15-r6-creatures-state).
 # Three region classes, one stop each at a planned spawn point of the build (creature planner, the whole province): the
 # land or shore spawn with its class on the most cells two out (all 25 where the class is wide enough), then the most spawn points
-# within {reach} m, and 3+ cells from any place. The
-# stand is dry ground {lo}-{hi} m from the spawn, clear of foliage, facing it, first person, HUD off. Each stop teleports,
-# waits for the spawns, reads every actor loaded within two cells ({radius} units) and FAILS unless at least {n}
-# distinct kinds of that class's list are among them (`kinds`: an actor is a kind when its name ends the kind's name or
-# the kind's name ends its name, so "Leech" is "Giant Leech"; dead actors do not count). The read's list and the kinds
-# found go into report.json (kept: <class>, <class>_kinds). The fourth stop is Claywater's guar pen: both kept guar
-# (lane 1.15-r5-creatures) read present, alive and near, and a still that frames them.
-# Reader checklist per still: the spawn's creature (or its kind's neighbours) in frame, a Black Marsh kind (no Skyrim
-# animal), not underwater, not inside foliage; the guar still shows two guar, penned beside Claywater's buildings.
+# within {reach} m, and 3+ cells from any place. Each stop teleports to dry ground {lo}-{hi} m from the spawn, waits,
+# and reads by the bridge: the spawn's own reference (ArgoniaWorld.esm|0x...: present, enabled, 3D loaded, a kind of its
+# own list) and every actor loaded within two cells ({radius} units), FAILING unless at least {n} distinct kinds of that
+# class's lists are among them (`kinds`: an actor is a kind when its name ends the kind's name or the kind's name ends
+# its name, so "Leech" is "Giant Leech"; dead actors do not count). The reads go into report.json (kept: <class>,
+# <class>_kinds, <class>_spawn). The fourth stop is Claywater's guar pen: both kept guar (lane 1.15-r5-creatures) read
+# present, alive, enabled and near. A failed step alone takes a still.
 id: creatures-kinds
 runner: 1
 independent_steps: true
 crash_risk: medium
 scene: creature-spots
-camera: first
+stills: false
 steps:
 """
 KINDS_CLASSES = ("coastal-lagoon", "northern-transition", "western-frontier")
@@ -733,7 +880,11 @@ def _kinds_spawns(w, b: Build) -> dict:
                  veg=ROOT / "out" / "terrain" / "vegetation", cache=ROOT / "out" / "terrain" / "creatures")
     cls = cb.cell_classes(w)
     P = np.array([(p[0], p[1], p[2]) for p in cb.places(w)])
+    from tools.argonia_world.creatures.journey import ref_ids
+    rid = ref_ids(run["refs"])
     sp = [r for r in run["refs"] if r["kind"] == "spawn"]
+    for r in sp:
+        r["ref"] = rid[id(r)]
     xy = np.array([(r["x"], r["y"]) for r in sp])
     reach = KINDS_REACH_M * U
     own_class = {c: np.array([r["class"] == c for r in sp]) for c in KINDS_CLASSES}
@@ -758,6 +909,7 @@ def _kinds_spawns(w, b: Build) -> dict:
 
 
 def creatures_kinds(b: Build, w, log: list) -> str:
+    from tools.argonia_world.creatures.journey import list_kinds
     spots = _kinds_spawns(w, b)
     text = KINDS_HEAD.format(reach=round(KINDS_REACH_M), lo=KINDS_BAND_M[0], hi=KINDS_BAND_M[1], radius=KINDS_RADIUS_U,
                              n=KINDS_N)
@@ -776,23 +928,27 @@ def creatures_kinds(b: Build, w, log: list) -> str:
         among = [x["name"] for x in w.query(f"SELECT c.name FROM creature_region_class rc JOIN creature c "
                                             f"ON c.id = rc.creature_id WHERE rc.region_class = '{c}' ORDER BY c.name")]
         x, y = f["x"], f["y"]
-        h, p = aim(eye_of(b, x, y), subj)
         log.append({"journey": "creatures-kinds", "step": c, "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
         cx, cy = r["cell"]
         key = c.replace("-", "_")
+        own = list_kinds(w, r["base"])
+        rad, ref = f'"{KINDS_RADIUS_U}"', r["ref"]
         text += "\n".join([
-            f"- name: {c}", f"  # cell ({cx}, {cy}) {c}, spawn {r['base']} ({r['band']}), the class on {same} of the 25 cells round it, {n} spawn points within "
-            f"{round(KINDS_REACH_M)} m; the stand is {math.hypot(x - r['x'], y - r['y']) / U:.0f} m from it",
+            f"- name: {c}", f"  # cell ({cx}, {cy}) {c}, spawn {r['base']} ({r['band']}) ref {ref}, the class on {same} of the 25 cells round it, "
+            f"{n} spawn points within {round(KINDS_REACH_M)} m; the stand is {math.hypot(x - r['x'], y - r['y']) / U:.0f} m from it",
             f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
-            *(["  - hud: off", "  - console: tgm"] if k == 0 else []),
+            *(["  - console: tgm"] if k == 0 else []),
             f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}", "  - wait: 8",
-            "  - console: set gamehour to 13", *WEATHER_DO, f"  - console: player.setpos x {x:.0f}",
-        f"  - console: player.setpos y {y:.0f}",
-            f"  - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", f"  - console: player.setangle z {h:.0f}",
-            f"  - console: player.setangle x {p:.0f}", "  - wait: 10",
+            "  - console: set gamehour to 13", "  - settle: {cap: 14, min: 3}", f"  - console: player.setpos x {x:.0f}",
+            f"  - console: player.setpos y {y:.0f}",
+            f"  - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", "  - wait: 10",
             "  expect:", "  - {read: [player], path: pos, keep: " + f"{key}_stand" + "}",
-            f"  - {{read: [actors, \"{KINDS_RADIUS_U}\"], path: listed, keep: {key}}}",
-            f"  - {{read: [actors, \"{KINDS_RADIUS_U}\"], path: listed, kinds: {{ge: {min(KINDS_N, len(among))}, "
+            f"  - {{read: [actors, {rad}, \"{ref}\"], path: refs.0, ne: null, keep: {key}_spawn}}",
+            f"  - {{read: [actors, {rad}, \"{ref}\"], path: refs.0.disabled, eq: false}}",
+            f"  - {{read: [actors, {rad}, \"{ref}\"], path: refs.0.loaded_3d, eq: true}}",
+            f"  - {{read: [actors, {rad}, \"{ref}\"], path: refs, kinds: {{ge: 1, among: {json.dumps(own)}}}, keep: {key}_spawn_kind}}",
+            f"  - {{read: [actors, {rad}], path: listed, keep: {key}}}",
+            f"  - {{read: [actors, {rad}], path: listed, kinds: {{ge: {min(KINDS_N, len(among))}, "
             f"among: {json.dumps(among)}}}, keep: {key}_kinds}}"]) + "\n"
     refs = [b.ref(e) for e in GUAR_EDIDS]
     if not all(refs):
@@ -801,7 +957,6 @@ def creatures_kinds(b: Build, w, log: list) -> str:
     subj = (mx, my, b.ground_u(mx, my) + 1.0 * U)
     f = place(b, subj, GUAR_STAND_M * U, around(180.0))
     x, y = f["x"], f["y"]
-    h, p = aim(eye_of(b, x, y), subj)
     gx, gy = su.cell_of(x, y)
     log.append({"journey": "creatures-kinds", "step": "guar-pen", "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
     text += "\n".join([
@@ -809,8 +964,7 @@ def creatures_kinds(b: Build, w, log: list) -> str:
         f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
         f"  - console: {{line: cow ARG_Province {gx} {gy}, settle: 60}}", "  - wait: 8", "  - console: set gamehour to 13",
         f"  - console: player.setpos x {x:.0f}", f"  - console: player.setpos y {y:.0f}",
-        f"  - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", f"  - console: player.setangle z {h:.0f}",
-        f"  - console: player.setangle x {p:.0f}", "  - wait: 6",
+        f"  - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", "  - wait: 6",
         "  expect:", "  - {read: [player], path: pos, keep: guar_stand}",
         *[f"  - {{read: [actors, \"1500\", {e}], path: refs.0.{k}, {op}}}" for e in GUAR_EDIDS
           for k, op in (("dead", "eq: false"), ("disabled", "eq: false"), ("dist", "lt: 1500"))],

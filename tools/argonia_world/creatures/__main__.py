@@ -17,6 +17,9 @@
     python3 -m tools.argonia_world.creatures plan-check [--journey tests/journeys/creatures-kinds.yaml]
         the kinds the province plan puts within two cells of each creatures-kinds stand (plan_check.py); exit 1
         when a stop has fewer than 4 expected, no spawn point within 90 m or a blocked eye line
+    python3 -m tools.argonia_world.creatures journey | kinds
+        regenerate tests/journeys/creature-spots.yaml (journey.py) or creatures-kinds.yaml (tools/journeys/gen.py):
+        state checks, no stills (owner 19:05 #41), then `tools.journeys check` on it
 The vanilla measurement is python3 -m tools.argonia_world.vanilla.creatures.
 """
 from __future__ import annotations
@@ -192,13 +195,21 @@ def main(argv=None) -> int:
     p.add_argument("--ground", help="the ground-f32.npy to place on (a pipeline run's frozen copy)")
     p = sub.add_parser("plan-check")
     p.add_argument("--journey", default=str(ROOT / "tests" / "journeys" / "creatures-kinds.yaml"))
+    sub.add_parser("journey")
+    sub.add_parser("kinds")
     p = sub.add_parser("readback")
     p.add_argument("--out", required=True)
     p.add_argument("--esm", required=True)
     p.add_argument("--gen", required=True)
     a = ap.parse_args(argv)
     return {"inventory": _inventory, "seed": _seed, "lists": _lists, "check": _check, "build": _build,
-            "readback": _readback, "plan-check": _plan_check}[a.cmd](a)
+            "readback": _readback, "plan-check": _plan_check,
+            "journey": lambda a: _refresh("creature-spots"), "kinds": lambda a: _refresh("creatures-kinds")}[a.cmd](a)
+
+
+def _refresh(name: str) -> int:
+    from tools.journeys.__main__ import refresh
+    return refresh({name})
 
 
 if __name__ == "__main__":
