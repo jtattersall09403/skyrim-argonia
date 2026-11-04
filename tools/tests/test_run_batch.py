@@ -257,3 +257,22 @@ def test_load_batch_reads_the_fast_loop_keys(tmp_path):
     f.write_text("id: b\none_load: true\nsettle_waits: true\nitems: [good]\n")
     b = rb.load_batch([str(f)])
     assert b["one_load"] and b["settle_waits"]
+
+
+def test_one_load_groups_by_scene_two_on_one_scene_cost_one_load(tmp_path, journeys):
+    """1.15-r6-batch-one-load: two journeys on one scene ride one load; a journey on another scene whose start is
+    no teleport loads again; a teleporting scene chains onto any item of the save."""
+    import yaml
+    (rj.SCENES / "still.txt").write_text("set gamehour to 12\n")  # no moveto/coc/cow: chains only onto itself
+    for jid, sc in (("s1", "still"), ("s2", "still"), ("t1", "sc")):
+        (rb.JOURNEYS / f"{jid}.yaml").write_text(yaml.safe_dump({"id": jid, "runner": 1, "scene": sc, "steps": [{"name": "ok"}]}))
+    f, s, _ = run(tmp_path, ["s1", "s2", "good", "s1"], one_load=True)
+    assert [i["loaded"] for i in s["items"]] == [True, False, False, True]  # good's scene `sc` teleports (coc)
+    assert f.loads == 2
+    b = {"items": rb.parse_items(["s1", "s2", "good", "s1"]), "one_load": True}
+    assert rb.groups(b, {}) == [["s1", "s2", "good"], ["s1"]]
+
+
+def test_one_load_chains_past_a_fresh_failure_not_a_chained_one(tmp_path, journeys):
+    f, s, _ = run(tmp_path, ["bad", "good", "bad", "good"], one_load=True)
+    assert [i["loaded"] for i in s["items"]] == [True, False, False, True]

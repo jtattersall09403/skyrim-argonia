@@ -114,6 +114,58 @@ def item_needs_load(it: dict) -> bool:
                 or any("relaunch" in a for s in j.get("steps", []) for a in s.get("do", [])))
 
 
+TELEPORT = re.compile(r"^\s*(?:player\.)?(?:moveto|coc|cow|centeroncell|centeronworld|setpos)\b", re.I | re.M)
+LOAD_S, CHAIN_S = 10.0, 3.9  # scene_s medians, out/batch summaries 2026-11-02..04: 41 loaded runs, 11 chained
+
+
+def item_scene(it: dict) -> str | None:
+    if it.get("kind", "journey") == "scene":
+        return it["id"]
+    f = JOURNEYS / f"{it['id']}.yaml"
+    return (rj.load_journey(f) or {}).get("scene") if f.exists() else None
+
+
+def starts_by_teleport(it: dict, run_names: list | None = None) -> bool:
+    """The item's scene, or its first step to run, moves the player (moveto, coc, cow, setpos): it can follow any
+    item of its save without a load. Else it chains only onto an item of its own scene."""
+    sc = item_scene(it)
+    if sc and (rj.SCENES / f"{sc}.txt").is_file() and TELEPORT.search((rj.SCENES / f"{sc}.txt").read_text()):
+        return True
+    f = JOURNEYS / f"{it['id']}.yaml"
+    if it.get("kind", "journey") != "journey" or not f.exists():
+        return False
+    steps = (rj.load_journey(f) or {}).get("steps", [])
+    first = next((s for s in steps if not run_names or s.get("name") in run_names), steps[0] if steps else {})
+    lines = [a["console"] if isinstance(a["console"], str) else a["console"].get("line", "")
+             for a in first.get("do", []) if isinstance(a, dict) and "console" in a]
+    return any(TELEPORT.search(str(x)) for x in lines)
+
+
+def can_chain(it: dict, prev: dict | None, run_names: list | None = None) -> bool:
+    """one_load: the item rides the last item's game when that game is alive and unbroken (prev not a crash, not a
+    chained failure: a failure after a fresh load is the journey's own), the save is the same, the journey does not
+    ask for its load, and its start is a teleport or the same scene."""
+    if not prev or prev["crash"] or (not prev["passed"] and not prev["loaded"]):
+        return False
+    return (item_save(it) == prev["save"] and not item_needs_load(it)
+            and (item_scene(it) == prev["scene"] or starts_by_teleport(it, run_names)))
+
+
+def groups(batch: dict, index: dict, force: bool = False) -> list[list[str]]:
+    """The plan's load groups, every item assumed to pass: a new group at each load."""
+    out, prev = [], None
+    for it in batch["items"]:
+        p = item_plan(it, index, force)
+        if p is not None and p["skip"] and not p["run"]:
+            continue
+        chain = batch.get("one_load") and can_chain(it, prev, (p or {}).get("run")) or (it["chain"] and prev)
+        if not chain:
+            out.append([])
+        out[-1].append(it["id"])
+        prev = {"crash": False, "passed": True, "loaded": not chain, "save": item_save(it), "scene": item_scene(it)}
+    return out
+
+
 def load_batch(argv_items: list[str]) -> dict:
     if len(argv_items) == 1 and argv_items[0].endswith((".yaml", ".yml")):
         import yaml
@@ -227,7 +279,7 @@ class Batch:
 
     def run(self, start: str | None = None, only: bool = False) -> dict:
         """`start` is `<item>[:<step>]` (--from), alone with `only` (--only)."""
-        t0, prev_ok, prev_save = self.clock(), False, None
+        t0, prev_ok, prev = self.clock(), False, None
         items = self.batch["items"]
         first_step = None
         if start:
@@ -271,11 +323,9 @@ class Batch:
                         self.summary["seconds"] = round(self.clock() - t0, 1)
                         self.write()
                         return self.summary
-                    relaunched, prev_ok = True, False
-                save_now = item_save(it)
-                load = not (prev_ok and run == 1 and (it["chain"] or (self.batch.get("one_load") and save_now == prev_save
-                                                                     and not item_needs_load(it))))
-                prev_save = save_now
+                    relaunched, prev_ok, prev = True, False, None
+                load = not (run == 1 and ((prev_ok and it["chain"]) or (self.batch.get("one_load") and
+                                                                      can_chain(it, prev, (plan or {}).get("run")))))
                 resume = first_step if k == 0 and run == 1 and first_step else None
                 rep = self.run_one(it, run, load, start=resume, only=only and bool(resume), plan=plan)
                 bad = next((s for s in rep["steps"] if not s["passed"]), None)
@@ -292,6 +342,8 @@ class Batch:
                 self.summary["items"].append(rec)
                 self.since_launch += 1
                 prev_ok = rep["passed"]
+                prev = {"crash": rec["crash"], "passed": rep["passed"], "loaded": load, "save": item_save(it),
+                        "scene": item_scene(it)}
                 print(f"{it['id']} run {run}: {'PASS' if rep['passed'] else 'CRASH' if rec['crash'] else 'FAIL'} "
                       f"in {rep['seconds']} s, {rec['mb_before']} -> {rec['mb_after']} MB"
                       + ("" if rep["passed"] else f" at {rec['failed_at']}: {rec['reason']}"), flush=True)
@@ -437,6 +489,13 @@ def main(argv=None) -> int:
         dry(batch)
         r = shrink(batch, pass_ledger.last_rows(), force=a.all)
         print(f"batch: {r['items']} of {r['items_all']} journeys, {r['steps']} of {r['steps_all']} steps to run")
+        if batch.get("one_load"):
+            g = groups(batch, pass_ledger.last_rows(), force=a.all)
+            n = sum(len(x) for x in g)
+            for k, x in enumerate(g, 1):
+                print(f"  load {k}: {' '.join(x)}")
+            print(f"loads: {len(g)} for {n} journeys; {n - len(g)} saved, ~{(n - len(g)) * (LOAD_S - CHAIN_S):.0f} s "
+                  f"({LOAD_S} s a load vs {CHAIN_S} s a chained scene, medians 2026-11-02..04), all passing")
         return 0 if r["items"] else 3
     if a.dry:
         for line in dry(batch):
