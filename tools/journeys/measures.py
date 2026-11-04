@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import functools
 import hashlib
+
+from tools.argonia_world import db
 import inspect
 import json
 import sqlite3
@@ -28,7 +30,7 @@ def build_key() -> str:
     land shard sizes (a boot re-checkout touches every mtime) and MEASURE_VERSION."""
     h = hashlib.sha1()
     for t in READS_DB:   # the tables the measures read, by content: other lanes' rebuilds of the rest move nothing
-        h.update((ROOT / "world" / "db" / f"{t}.jsonl").read_bytes())
+        h.update((db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl").read_bytes())   # the jsonl bytes, the path named by db.py (0030 §3)
     o = ROOT / "out"
     h.update((o / "water" / "cells.jsonl").read_bytes())
     for p in [*sorted((o / "terrain" / "vegetation").glob("cy*.jsonl.gz")), *sorted((o / "terrain" / "land").glob("cy*.jsonl.gz"))]:
