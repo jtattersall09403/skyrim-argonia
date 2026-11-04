@@ -290,8 +290,10 @@ def _terrain_stamp(ground: bool = True) -> str:
     from tools.argonia_world.terrain import place_ground
     h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
     from tools.argonia_world.terrain import patches
-    h.update(patches.stamp().encode())  # the places' pads and bowls (terrain_patch rows with a kind)
-    if ground:
+    if ground:  # the places' pads and bowls (terrain_patch rows with a kind): in the stage's stamp, but not in the
+        # rows' shared key, where row_key already hashes the patches reaching each row (patches.key): a pad edit
+        # rebuilt all 262 rows (16 s each, 1508 s on 4 CPUs), now only the rows within its reach
+        h.update(patches.stamp().encode())
         h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
     return h.hexdigest()
 

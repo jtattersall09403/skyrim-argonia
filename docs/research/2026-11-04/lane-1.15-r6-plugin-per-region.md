@@ -20,6 +20,13 @@ ground skip 0.2 s | terrain (cell rows, row-keyed) 1508.7 s | world-json 2.1 | w
 Plan straight after: ground, terrain, water, vegetation and creatures all skip. world-esm showed run because of the dll mtime (fixed above).
 ArgoniaWorld.esm sha256 66be65e603c9…, equal to the final.esm cache. Argonia.esm 1b46c02030f0….
 
+## The terrain sink, profiled (09:40, current inputs, out/ppr scratch, no lock)
+- Row keys are stable: recomputed now, 262 of 262 equal the stored keys (8.8 s to compute). The 1508 s run was a real miss, not an unstable key. Inputs moved between 02:47 and 08:34: material.py code (231d93b2, 267bae8d) and Claywater's terrain_patch rows (8686cdd8).
+- One row (cProfile, cy 0) takes 16.4 s: material.window 15.9 s, of which _weights 12.7 s (value_noise 4.8, _hash 4.2, _keys 3.1, nearest_wet 2.4, _tie 2.3). 262 rows over 4 CPUs is about 1070 s plus pool overhead, which makes the 1508 s.
+- Cut (pipeline.py): terrain_patch rows left the rows' shared key. They stay in the stage stamp, and row_key already hashes the patches reaching each row. Before, a pad edit missed all 262 rows. Now Claywater's 7 patches reach 20 of 262 rows (counted with patches.key over each row's window). That is about 20 x 16 s / 4 CPUs, roughly 80 s, against 1508 s. This is an estimate, not a timed run: a timed one-place run needs the province lock, which r6-chain1 holds. The first build after this commit rebuilds every row once, because the shared key changed.
+- Next cut, outside these paths: material.py's _weights (value_noise/_hash is 55 % of a row) is our code and parallel-safe per row, so a vectorised noise is the lever. Code edits to material.py rightly miss every row.
+- plugin-check (r6-ppr-check, 09:40): regenerate twice identical (no red). Two other reds, from other lanes' inputs: plugin/Argonia/ YAML stale in 4 navmesh/worldspace files (the navmesh lane), and the terrain sample hash a4cfe45e64cf against the manifest's f7936887d862 (material.py moved after the manifest was last written).
+
 ## Remains
 - (3) terrain generate is a province-wide raster solve: blurs, chamfers and Lipschitz sweeps whose reach is unbounded. A per-block split would change bytes, which the brief rules out. Land rows (row_key) and vegetation bands are already cached per block. The 1508 s terrain stage was row-keyed but still slow: the next cut is a profile of the row build. The one-place versus province-wide before/after seconds were not measured (two reboots).
 - (4) rerun `make plugin-check` (regenerate twice identical) on this pipeline.
