@@ -10,9 +10,10 @@ Hdr:
   SunlightScale: 0.95
   EyeAdaptStrength: 5
 Cinematic:
-  Saturation: 0.88
-  Brightness: 1.02
-  Contrast: 0.92
+  Saturation: 2
+  Brightness: 1.2
+  Contrast: 1.4
 Tint:
-  Color: '#00FFFFFF'
+  Amount: 0.75
+  Color: '#00AAC1C2'
 DepthOfField: {}

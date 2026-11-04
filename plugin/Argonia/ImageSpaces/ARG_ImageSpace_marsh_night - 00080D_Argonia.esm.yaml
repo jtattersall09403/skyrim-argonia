@@ -11,9 +11,10 @@ Hdr:
   SkyScale: 0.03
   EyeAdaptStrength: 8
 Cinematic:
-  Saturation: 0.88
-  Brightness: 0.92
-  Contrast: 1
+  Saturation: 1.5
+  Brightness: 1.35
+  Contrast: 1.5
 Tint:
-  Color: '#00FFFFFF'
+  Amount: 0.785
+  Color: '#00566772'
 DepthOfField: {}

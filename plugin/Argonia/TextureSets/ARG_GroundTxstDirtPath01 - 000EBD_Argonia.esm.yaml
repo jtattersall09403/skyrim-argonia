@@ -1,4 +1,4 @@
 FormKey: 000EBD:Argonia.esm
 EditorID: ARG_GroundTxstDirtPath01
-Diffuse: TEXTUREPACK\landscape\dirtpath01.dds
-NormalOrGloss: landscape\dirtpath01_n.dds
+Diffuse: argonia\landscape\dirtpath01.dds
+NormalOrGloss: argonia\landscape\dirtpath01_n.dds

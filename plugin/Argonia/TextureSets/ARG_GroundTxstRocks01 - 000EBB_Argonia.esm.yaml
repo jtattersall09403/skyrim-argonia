@@ -1,4 +1,4 @@
 FormKey: 000EBB:Argonia.esm
 EditorID: ARG_GroundTxstRocks01
-Diffuse: TEXTUREPACK\landscape\rocks01.dds
-NormalOrGloss: landscape\rocks01_n.dds
+Diffuse: argonia\landscape\rocks01.dds
+NormalOrGloss: argonia\landscape\rocks01_n.dds

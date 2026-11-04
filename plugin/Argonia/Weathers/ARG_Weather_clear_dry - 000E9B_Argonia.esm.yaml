@@ -375,25 +375,25 @@ SkyUpperColor:
   Sunset: '#0032464A'
   Night: '#0000060C'
 FogNearColor:
-  Sunrise: '#009F8664'
-  Day: '#007B9498'
-  Sunset: '#00AC805D'
-  Night: '#00202E21'
+  Sunrise: '#002F4E5B'
+  Day: '#00888A44'
+  Sunset: '#00264443'
+  Night: '#00182D3D'
 UnknownColor:
-  Sunrise: '#00655A4E'
-  Day: '#00717664'
-  Sunset: '#00614C42'
-  Night: '#00181E23'
+  Sunrise: '#00000000'
+  Day: '#00000000'
+  Sunset: '#00000000'
+  Night: '#00000000'
 AmbientColor:
   Sunrise: '#00A2A5B0'
   Day: '#00AAC0CE'
   Sunset: '#00696970'
   Night: '#00466886'
 SunlightColor:
-  Sunrise: '#00F4BA73'
-  Day: '#00F9ECC1'
-  Sunset: '#00F09C53'
-  Night: '#00465643'
+  Sunrise: '#00B6705F'
+  Day: '#00A39687'
+  Sunset: '#00A06449'
+  Night: '#00055EA5'
 SunColor:
   Sunrise: '#0021130A'
   Day: '#00766B63'
@@ -403,7 +403,7 @@ StarsColor:
   Sunrise: '#00000000'
   Day: '#00000000'
   Sunset: '#00000000'
-  Night: '#00C6D6C2'
+  Night: '#00FFFFFF'
 SkyLowerColor:
   Sunrise: '#009DA1B5'
   Day: '#00004693'
@@ -415,45 +415,45 @@ HorizonColor:
   Sunset: '#005B4C46'
   Night: '#00052B3F'
 EffectLightingColor:
-  Sunrise: '#00E8CCA2'
-  Day: '#00F4F5E2'
-  Sunset: '#00E4B48E'
-  Night: '#005E7360'
+  Sunrise: '#00D1ADAD'
+  Day: '#00A0A7A9'
+  Sunset: '#00533D3C'
+  Night: '#00155F95'
 CloudLodDiffuseColor:
-  Sunrise: '#00DBAA79'
-  Day: '#00ECEBD9'
-  Sunset: '#00D38C61'
-  Night: '#00303435'
-CloudLodAmbientColor:
-  Sunrise: '#0078695F'
-  Day: '#009AA198'
-  Sunset: '#0072574D'
-  Night: '#00121B1D'
-FogFarColor:
-  Sunrise: '#008C755A'
-  Day: '#00A7BABB'
-  Sunset: '#00AF8060'
-  Night: '#002C342C'
-SkyStaticsColor:
-  Sunrise: '#00C9A27A'
-  Day: '#00D9D9C0'
-  Sunset: '#00C38A64'
-  Night: '#00383940'
-WaterMultiplierColor:
-  Sunrise: '#00B5AA84'
-  Day: '#00BFCEAC'
-  Sunset: '#00B19674'
-  Night: '#003B4A44'
-SunGlareColor:
-  Sunrise: '#00FFD498'
-  Day: '#00FFF4CF'
-  Sunset: '#00FFB470'
-  Night: '#00000000'
-MoonGlareColor:
   Sunrise: '#00000000'
   Day: '#00000000'
   Sunset: '#00000000'
-  Night: '#0089A292'
+  Night: '#00000000'
+CloudLodAmbientColor:
+  Sunrise: '#00000000'
+  Day: '#00000000'
+  Sunset: '#00000000'
+  Night: '#00000000'
+FogFarColor:
+  Sunrise: '#00888A99'
+  Day: '#003995F9'
+  Sunset: '#004E565C'
+  Night: '#00081C21'
+SkyStaticsColor:
+  Sunrise: '#00A295A7'
+  Day: '#00E2E9F4'
+  Sunset: '#00DC9B85'
+  Night: '#002D89D0'
+WaterMultiplierColor:
+  Sunrise: '#0089ABA5'
+  Day: '#00AFEDD6'
+  Sunset: '#004E6972'
+  Night: '#001F3F4B'
+SunGlareColor:
+  Sunrise: '#00271203'
+  Day: '#003F250C'
+  Sunset: '#00632C07'
+  Night: '#00000000'
+MoonGlareColor:
+  Sunrise: '#006E5F56'
+  Day: '#00443026'
+  Sunset: '#00865331'
+  Night: '#00FFA57D'
 FogDistanceDayNear: 1050.45
 FogDistanceDayFar: 98042
 FogDistanceNightNear: 350.15

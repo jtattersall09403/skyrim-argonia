@@ -2,8 +2,8 @@ FormKey: 012FB4:Skyrim.esm
 NavMeshVersion: 12
 MapInfos:
 - NavigationMesh: 609097:ArgoniaWorld.esm
-  Point: -231020.36, 47635.957, 4736.536
-  PreferredMergesFlag: 1051004940
+  Point: -231192.95, 46878.492, 4820.803
+  PreferredMergesFlag: 1040299240
   MergedTo:
   - 608F91:ArgoniaWorld.esm
   - 609096:ArgoniaWorld.esm
@@ -18,8 +18,8 @@ MapInfos:
     ParentWorldspace: 000800:ArgoniaWorld.esm
     ParentWorldspaceCoord: 11, -57
 - NavigationMesh: 60919D:ArgoniaWorld.esm
-  Point: -231543.5, 50952.188, 4736.2783
-  PreferredMergesFlag: 1040457992
+  Point: -231193.9, 51665.926, 4760.0806
+  PreferredMergesFlag: 1026886119
   MergedTo:
   - 609097:ArgoniaWorld.esm
   - 60919C:ArgoniaWorld.esm
@@ -34,7 +34,7 @@ MapInfos:
     ParentWorldspace: 000800:ArgoniaWorld.esm
     ParentWorldspaceCoord: 12, -57
 - NavigationMesh: 6092A3:ArgoniaWorld.esm
-  Point: -231737.11, 55624.125, 4830.73
+  Point: -230959.98, 54785.887, 4866.742
   MergedTo:
   - 60919D:ArgoniaWorld.esm
   - 6092A2:ArgoniaWorld.esm
