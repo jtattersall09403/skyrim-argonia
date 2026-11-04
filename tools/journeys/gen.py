@@ -402,6 +402,7 @@ STANDS: list = []   # (name, x, y, heading, pitch, clearance3, frame share, near
 CLEAR_STOPS = ("sea", "river", "brackish-rim")   # round 5: these read clear and stood under canopy, in fronds
 
 
+WIDE_SHORES = 6         # the widened search runs on this many of the best shores
 FIT_FAR_M = 600.0       # past FIT_REACH_M the search widens to 600 m
 SHORT_OF_FRAME: dict[str, str] = {}      # the stops no stand within FIT_FAR_M meets the frame share for (the report's)
 
@@ -479,10 +480,9 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
                          f"water in the lower frame (best {sh:.0%})")
     if cl or sh < FRAME_MIN_SHARE:
         SHORT_OF_FRAME[name] = f"best stand: {cl} clearance hits, frame share {sh:.0%}"
-        print(f"water-types: WARNING {name}: {SHORT_OF_FRAME[name]}")
     log.append({"journey": "water-types", "step": name, "moved_m": round(math.hypot(di, dj), 1),
                 "why": "re-aimed at the body's centre", "clear": cl == 0})
-    return x, y, subj, sh
+    return x, y, subj, sh, best[0]
 
 
 def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dict, line: dict, reach_of: dict, log: list,
@@ -555,24 +555,42 @@ def water_types(b: Build, w, log: list) -> str:
             raise ValueError(f"water-types: no shore cell of {want}")
         cands_.sort(key=lambda c: -c[0])   # the best shore first; a shore with no stand holding water goes to the next
         err, got = None, None
-        # every stop takes the first shore whose stand reads 0/0/0 with the frame share; none: the widened search, warned
-        for strict in (True, False):
-            print(f"water-types: {name}: {'strict' if strict else 'widened'} search over {min(len(cands_), FIT_SHORES)} shores", flush=True)
-            for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
+        # the first shore whose stand reads 0/0/0 with the frame share; none: the widened search over the WIDE_SHORES best
+        # shores, the stand with fewest hits (then meeting the share) kept and warned
+        print(f"water-types: {name}: strict search over {min(len(cands_), FIT_SHORES)} shores", flush=True)
+        for _, (cx, cy), (dx, dy) in cands_[:FIT_SHORES]:
+            n_log = len(log)
+            try:
+                got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, True) + ((cx, cy),)
+            except ValueError as e:
+                err = err or e
+                del log[n_log:]
+                continue
+            break
+        if not got:
+            print(f"water-types: {name}: none clear; widened search (600 m) over {min(len(cands_), WIDE_SHORES)} shores",
+                  flush=True)
+            short = None
+            for _, (cx, cy), (dx, dy) in cands_[:WIDE_SHORES]:
                 n_log = len(log)
+                SHORT_OF_FRAME.pop(name, None)
                 try:
-                    got = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, strict)
+                    r = _stop_at(b, name, cx, cy, dx, dy, level, line, reach_of, log, False) + ((cx, cy),)
                 except ValueError as e:
                     err = err or e
                     del log[n_log:]
                     continue
-                break
-            if got:
-                break
-            print(f"water-types: WARNING {name}: no shore of {len(cands_)} has a stand clear of fronds and canopy")
+                if got is None or r[4] < got[4]:
+                    got, short = r, SHORT_OF_FRAME.get(name)
+                if r[4][:2] == (False, 0):
+                    break
+            SHORT_OF_FRAME.pop(name, None)
+            if short:
+                SHORT_OF_FRAME[name] = short
+                print(f"water-types: WARNING {name}: {short}")
         if not got:
             raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
-        x, y, subj, share = got
+        x, y, subj, share, _, (cx, cy) = got
         h, p = aim(eye_of(b, x, y), subj)
         if name == "sea":
             p = 0.0
