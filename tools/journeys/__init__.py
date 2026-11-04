@@ -24,6 +24,7 @@ import re
 from pathlib import Path
 
 from tools.argonia_world import skyrim_units as su
+from tools.journeys.measures import memo
 
 ROOT = Path(__file__).resolve().parents[2]
 JOURNEYS = ROOT / "tests" / "journeys"
@@ -58,6 +59,7 @@ class Build:
 
     def __init__(self, ground=None, water=None, foliage=None, refs=None):
         self._ground, self._water, self._foliage, self._refs = ground, water, foliage, refs
+        self.real = ground is None and water is None and foliage is None and refs is None   # only the real build's measures are cached
 
     # -- the ground and the water ------------------------------------------------------------------------------------
     @property
@@ -212,6 +214,7 @@ class Build:
         return out
 
 
+@memo("eye_hits")
 def _eye_hits(b: Build, eye: tuple, subj: tuple) -> list[str]:
     """What the eye ray meets within RAY_NEAR_M of the eye: the ground rising to it, or a plant's trunk or leaves (3-D
     distance from the ray's near stretch, the eye's own point included: a stand inside a trunk)."""
@@ -248,6 +251,7 @@ def _eye_hits(b: Build, eye: tuple, subj: tuple) -> list[str]:
 CLEAR_LINE_M, CANOPY_M = 60.0, 10.0   # the clearance measure: the eye line to 60 m, the canopy within 10 m of the eye
 
 
+@memo("clearance", dec=tuple)
 def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M, canopy_m: float = CANOPY_M) -> tuple[int, int]:
     """(line, canopy): the plant volumes crossing the level eye line along `heading` out to line_m, and the plant volumes
     over the eye within canopy_m above it (footprint over the eye point, reaching from under eye + canopy_m to over the eye). Each plant is its whole OBND volume, no trunk
@@ -274,6 +278,7 @@ def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M
     return line, canopy
 
 
+@memo("ground_slope_deg")
 def ground_slope_deg(b: Build, x: float, y: float) -> float:
     """The ground's steepest slope at a point, degrees, over a LAND quad either side (VERTEX_SPACING_UNITS)."""
     h = su.VERTEX_SPACING_UNITS
@@ -282,6 +287,7 @@ def ground_slope_deg(b: Build, x: float, y: float) -> float:
     return math.degrees(math.atan(math.hypot(gx, gy)))
 
 
+@memo("stand_bad")
 def stand_bad(b: Build, x: float, y: float, subj: tuple) -> list[str]:
     """Why a stand fails: the eye ray meets geometry within RAY_NEAR_M, or the ground is too steep to stand on."""
     why = _eye_hits(b, eye_of(b, x, y), subj)
@@ -515,6 +521,7 @@ def min_share(step: str) -> float:
     return WATER_MIN_SHARE_BY_STEP.get(step, WATER_MIN_SHARE)
 
 
+@memo("water_share")
 def water_share(b: Build, x: float, y: float, heading: float, near_m: float = WATER_NEAR_M,
                 half_deg: float = WATER_HALF_DEG) -> float:
     """The share (by ground area) of the near field, 0-near_m along `heading` (Skyrim bearing) and +-half_deg, that is
@@ -665,6 +672,7 @@ class Grass:
         return self._cells[(cx, cy)].get((i, j), 0.0)
 
 
+@memo("grass_hits")
 def grass_hits(b: Build, eye: tuple, heading: float, near_m: float = GRASS_NEAR_M, line_m: float = GRASS_LINE_M,
                first: bool = False) -> int:
     """The LAND vertices growing tall grass (TALL_GRASS_M, its top over any water there) within near_m of the eye point
@@ -715,6 +723,8 @@ def frame_floor(step: str) -> float:
     return FRAME_FLOOR_BY_STEP.get(step, FRAME_MIN_SHARE)
 
 
+@memo("frame_read", skip=("types",), dec=lambda r: (r[0], {(a, c): n for a, c, n in r[1]}),
+      enc=lambda r: [r[0], [[c[0], c[1], n] for c, n in r[1].items()]])
 def frame_read(b: Build, x: float, y: float, heading: float, pitch: float = 0.0, near_m: float = FRAME_NEAR_M,
                types: dict | None = None) -> tuple[float, dict]:
     """(share, wet cells): the share of the still's lower half (rays from the eye at `heading` +-30 deg, from the pitch
@@ -779,6 +789,7 @@ def _span(lo: float, hi: float, a: float, b_: float) -> float:
     return max(0.0, min(hi, b_) - max(lo, a))
 
 
+@memo("frustum_cover")
 def frustum_cover(b: Build, eye: tuple, heading: float, pitch: float = 0.0) -> dict:
     """The angular cover of the frame by each placed plant (its seated OBND as a cylinder: widest half-extent, pivot + z0
     to + height) and tall-grass vertex inside the frustum (+-FRUSTUM_H_DEG across, +-FRUSTUM_V_DEG up/down from the aim,

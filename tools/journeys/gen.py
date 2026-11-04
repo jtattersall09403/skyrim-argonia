@@ -206,8 +206,7 @@ def river_steps(b: Build, w, log: list) -> str:
     for n, s in enumerate(steps, 1):
         x0, y0, into = _edge_mid(s["cx"], s["cy"], s["edge"], s["cross_lo"], s["cross_hi"])
         subj = (x0, y0, (s["lower_m"] + s["upper_m"]) / 2 * U)
-        x, y, h, p, cl, sh, fc, ok = _cached("river-steps", f"step-{n}-{s['cx']}-{s['cy']}-{s['edge']}",
-                                             lambda: step_stand(b, s, x0, y0, into, subj))
+        x, y, h, p, cl, sh, fc, ok = step_stand(b, s, x0, y0, into, subj)
         RIVER_STANDS.append((f"step-{n}", x, y, h, p, cl, sh, fc))
         print(f"river-steps: step-{n}: clearance {cl[0]}/{cl[1]}/{cl[2]}, {cover_text(fc)}, step pieces in frame {sh:.0%} "
               f"(needs {STEP_MIN_SHARE:.0%}){'' if ok else ' WARNING: short'} at {x:.0f} {y:.0f} facing {h:.0f} pitch {p:.0f}")
@@ -626,41 +625,6 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
     return _fit(b, name, f, subj, name == "sea", log, strict, types, want, flow)
 
 
-CACHE = ROOT / "out" / "journeys" / "cache"
-
-
-def _build_key() -> str:
-    """The fit's inputs, by content not mtime (a reboot rewrites out/world.sqlite): the world DB's table signature, the
-    water cells, the vegetation and land shard sizes, and this code."""
-    import hashlib
-    from tools.argonia_world import db
-    # sizes only: a boot re-checkout touches every mtime (the key moved on each of three reboots)
-    h = hashlib.sha1(json.dumps({k: v[1] for k, v in db.signature(db.WORLD_ROOT).items()}, sort_keys=True).encode())
-    o = ROOT / "out"
-    h.update((o / "water" / "cells.jsonl").read_bytes())
-    for p in [*sorted((o / "terrain" / "vegetation").glob("*")), *sorted((o / "terrain" / "land").glob("*"))]:
-        if p.is_file():
-            h.update(f"{p.name}:{p.stat().st_size};".encode())
-    for p in (ROOT / "tools" / "journeys" / "gen.py", ROOT / "tools" / "journeys" / "__init__.py"):
-        h.update(p.read_bytes())
-    return h.hexdigest()[:16]
-
-
-def _cached(journey: str, stop: str, fn):
-    """fn()'s result for this stop, from out/journeys/cache when the build key matches (a rerun returns in seconds)."""
-    if not hasattr(_cached, "key"):
-        _cached.key = _build_key()
-    p = CACHE / f"{journey}.{stop}.{_cached.key}.json"
-    if p.is_file():
-        return json.loads(p.read_text())
-    r = fn()
-    CACHE.mkdir(parents=True, exist_ok=True)
-    for old in CACHE.glob(f"{journey}.{stop}.*.json"):
-        old.unlink()
-    p.write_text(json.dumps(r))
-    return r
-
-
 def water_types(b: Build, w, log: list) -> str:
     from tools.argonia_world.water.__main__ import cell_types
     cells = cell_types(w)
@@ -735,7 +699,7 @@ def water_types(b: Build, w, log: list) -> str:
                 raise ValueError(f"{err} (and {min(len(cands_), FIT_SHORES) - 1} other shores)")
             return {"got": got, "short": SHORT_OF_FRAME.get(name), "log": log}
 
-        res = _cached("water-types", name, search)
+        res = search()
         log.extend(res["log"])
         SHORT_OF_FRAME.pop(name, None)
         if res["short"]:
@@ -843,7 +807,7 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
         return {"got": None, "log": [{"journey": "water-types", "step": "sea-far", "moved_m": 0.0, "clear": False,
                                       "why": "stale: no shore meets the far-sea bar; no sea-far stop written"}]}
 
-    res = _cached("water-types", "sea-far", search)
+    res = search()
     log.extend(res["log"])
     if res["got"] is None:   # never raise on a stand search: water-types still regenerates, the log says why
         print("water-types: WARNING sea-far: no shore meets the far-sea bar; no sea-far stop written")
