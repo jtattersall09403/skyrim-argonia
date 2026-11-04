@@ -14,6 +14,7 @@ scene: claywater
 camera: first
 steps:
   - name: pebble-field
+    scan: 6
     # cell -9 27: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 33 bad 0, 8.0 m to the subject, heading 330 pitch 14
     # subject: -32575 114321 209
     do:
@@ -36,8 +37,9 @@ steps:
       - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
     reader: [the ground away from the water's edge is varied forest floor, grass or moss, not one flat grey-green pebble texture over the whole view; the pebbly edge texture only in a thin strip along the water, no ground looks wet, shiny or mirror-like in the sun]
   - name: hillside
+    scan: 6
     # cell -50 8: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 20 bad 0, 15.0 m to the subject, heading 180 pitch 7
-    # subject: -204993 37617 5077
+    # subject: -204993 37617 5080
     do:
       - hud: off
       - console: {line: cow ARG_Province -50 8, settle: 60}

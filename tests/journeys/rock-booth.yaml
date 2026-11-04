@@ -12,6 +12,7 @@ scene: rock-booth
 camera: first
 steps:
 - name: rock-1-arg_rock_gl_rock09
+  scan: 6
   # 0C0008:ArgoniaWorld.esm ref DD1A00 in cell (-55,63), tilt 49.3 deg, scale 1.00, bound radius 76 u, stand 304 u off
   # subject: -222823 258927 38246
   do:
@@ -46,6 +47,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-2-01coalroundrock
+  scan: 6
   # 1DE977:Black Marsh.esm ref B0C424 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
   # subject: -242757 75461 16940
   do:
@@ -80,6 +82,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-3-arg_rock_gl_rock03
+  scan: 6
   # 0C0005:ArgoniaWorld.esm ref B8CA05 in cell (-41,26), tilt 48.8 deg, scale 0.77, bound radius 64 u, stand 300 u off
   # subject: -164965 107370 21912
   do:
@@ -114,6 +117,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-4-arg_rock_gl_rock04
+  scan: 6
   # 0C0006:ArgoniaWorld.esm ref CB0401 in cell (24,44), tilt 48.7 deg, scale 0.89, bound radius 113 u, stand 453 u off
   # subject: 101777 182165 13266
   do:
@@ -148,6 +152,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-5-arg_rock_gl_rock06
+  scan: 6
   # 0C0007:ArgoniaWorld.esm ref C59609 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
   # subject: -167419 162556 26959
   do:
@@ -182,6 +187,7 @@ steps:
   - console: getpos z
     keep: rock_z
 - name: rock-6-01mudrockstack
+  scan: 6
   # 1DE971:Black Marsh.esm ref C8963A in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
   # subject: -140385 172969 24665
   do:

@@ -43,12 +43,12 @@ steps:
   - name: clay-cut-and-pool
     scan: 6   # six headings from the stand (owner 19:05 #41, 0036)
     do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
-         {console: "player.moveto ARG_Ref_ClaywaterStationClayBend 0 -560 45"}, {console: "player.setangle z 0"}, {wait: 3}]
+         {console: "player.moveto ARG_Ref_ClaywaterStationClayBend 0 -560 42"}, {console: "player.setangle z 0"}, {wait: 3}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
   - name: ford-ambush-road
     scan: 6   # six headings from the stand (owner 19:05 #41, 0036)
     do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
-         {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -560 47"}, {console: "player.setangle z 0"}, {wait: 3}]
+         {console: "player.moveto ARG_Ref_ClaywaterStationAmbushPlayer 0 -560 24"}, {console: "player.setangle z 0"}, {wait: 3}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
   - name: livia-full-body
     scan: 6   # six headings from the stand (owner 19:05 #41, 0036)

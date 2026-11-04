@@ -34,7 +34,7 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Giant Leech"]}, keep: water_a_kinds}
 - name: water-b
-  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore, spawn ref ArgoniaWorld.esm|0xEC3500; the stand 20 m from it, the next spawn point 78 m
+  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore, spawn ref ArgoniaWorld.esm|0xEC3500; the stand 20 m from it, the next spawn point 71 m
   # subject: -143488 153984 14403
   do:
   - console: {line: cow ARG_Province -36 37, settle: 60}
@@ -54,15 +54,15 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_b}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Crocodile", "Death Hopper", "Dragon Frog", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle", "Singing Frog"]}, keep: water_b_kinds}
 - name: marsh-a
-  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB7A80; the stand 20 m from it, the next spawn point 52 m
-  # subject: -103296 127488 667
+  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB7A80; the stand 20 m from it, the next spawn point 41 m
+  # subject: -103936 127488 675
   do:
   - console: {line: cow ARG_Province -26 31, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -104286
-  - console: player.setpos y 128478
-  - console: player.setpos z 716
+  - console: player.setpos x -102946
+  - console: player.setpos y 126498
+  - console: player.setpos z 524
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: marsh_a_arrive}
@@ -133,23 +133,23 @@ steps:
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: upland_b_first}
   - {read: [actors, "2801"], path: listed, keep: upland_b}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: upland_b_kinds}
-- name: den-hackwing
-  # creature.hackwing den in cell (-25, 25), rootland D2; predator ref ArgoniaWorld.esm|0xEABDC2; the stand 16 m from it
-  # subject: -102144 104960 531
+- name: den-haj-mota
+  # creature.haj-mota den in cell (-31, 27), western-frontier D2; predator ref ArgoniaWorld.esm|0xEAFB43; the stand 21 m from it
+  # subject: -125312 114176 1379
   do:
-  - console: {line: cow ARG_Province -25 25, settle: 60}
+  - console: {line: cow ARG_Province -31 27, settle: 60}
   - wait: 8
   - console: set gamehour to 12
-  - console: player.setpos x -102144
-  - console: player.setpos y 103840
-  - console: player.setpos z 520
+  - console: player.setpos x -126783
+  - console: player.setpos y 114176
+  - console: player.setpos z 2147
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: den_arrive}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEABDC2"], path: refs.0, ne: null, keep: den_spawn}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEABDC2"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEABDC2"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEABDC2"], path: refs, kinds: {ge: 1, among: ["Hackwing"]}, keep: den_spawn_kind}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEAFB43"], path: refs.0, ne: null, keep: den_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEAFB43"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEAFB43"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEAFB43"], path: refs, kinds: {ge: 1, among: ["Haj Mota"]}, keep: den_spawn_kind}
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: den_first}
   - {read: [actors, "2801"], path: listed, keep: den}
-  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Hackwing"]}, keep: den_kinds}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Haj Mota"]}, keep: den_kinds}

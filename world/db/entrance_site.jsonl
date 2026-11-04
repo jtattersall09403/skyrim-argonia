@@ -15,8 +15,8 @@
 {"place_id":"place.dunmer-north.gandranen-library","shape":"flat","x_m":825.3,"y_m":907.5,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.gandranen-ruins","shape":"bank","x_m":896.6,"y_m":907.5,"radius_m":45.0,"facing_deg":350.7}
 {"place_id":"place.dunmer-north.greylight-village","shape":"bank","x_m":6972.3,"y_m":1302.3,"radius_m":105.0,"facing_deg":230.6}
-{"place_id":"place.dunmer-north.hackwing-wall","shape":"bank","x_m":3128.3,"y_m":397.6,"radius_m":30.0,"facing_deg":349.4,"request":"cliff-bench"}
-{"place_id":"place.dunmer-north.hatching-pools","shape":"rise","x_m":2585.5,"y_m":801.1,"radius_m":115.0,"facing_deg":122.1}
+{"place_id":"place.dunmer-north.hackwing-wall","shape":"bank","x_m":3128.3,"y_m":397.6,"radius_m":30.0,"facing_deg":337.3,"request":"cliff-bench"}
+{"place_id":"place.dunmer-north.hatching-pools","shape":"rise","x_m":2585.5,"y_m":801.1,"radius_m":115.0,"facing_deg":121.3}
 {"place_id":"place.dunmer-north.hissmir","shape":"flat","x_m":6917.5,"y_m":595.0,"radius_m":140.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.hixinoag","shape":"flat","x_m":2272.9,"y_m":1285.9,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.dunmer-north.hutan-tzel","shape":"bank","x_m":2996.7,"y_m":1000.7,"radius_m":105.0,"facing_deg":233.2}
@@ -242,7 +242,7 @@
 {"place_id":"place.hist-heartland.xanmeer-fort-defences-working","shape":"flat","x_m":3265.4,"y_m":3808.3,"radius_m":115.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.ashen-tower","shape":"flat","x_m":863.7,"y_m":3256.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.bog-iron-workings","shape":"flat","x_m":2004.2,"y_m":2598.7,"radius_m":38.25,"facing_deg":0.0,"request":"re-sized to 38 m: the ground beside it falls or rises too fast"}
-{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","shape":"flat","x_m":1601.1,"y_m":3065.4,"radius_m":12.26,"facing_deg":0.0,"request":"terraced into the slope at 66.1 m (no level band between bank and water); re-sized to 12 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-fringe.bonded-shed-of-the-onkobra","shape":"flat","x_m":1601.1,"y_m":3065.4,"radius_m":12.26,"facing_deg":0.0,"request":"terraced into the slope at 66.2 m (no level band between bank and water); re-sized to 12 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-fringe.bone-road-waystation","shape":"flat","x_m":2015.2,"y_m":4466.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.burnt-field-village","shape":"flat","x_m":1143.3,"y_m":4669.2,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.cartwrights-cross","shape":"flat","x_m":712.4,"y_m":3188.7,"radius_m":83.09,"facing_deg":0.0,"request":"re-sized to 83 m: the ground beside it falls or rises too fast"}
@@ -252,12 +252,12 @@
 {"place_id":"place.imperial-fringe.collections-dig","shape":"flat","x_m":106.9,"y_m":2640.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.comes-back-slowly","shape":"flat","x_m":1393.4,"y_m":3307.1,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.dreams-in-mud","shape":"flat","x_m":1773.9,"y_m":2086.5,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.fenmarch-village","shape":"rise","x_m":2037.1,"y_m":3100.9,"radius_m":105.0,"facing_deg":44.9}
-{"place_id":"place.imperial-fringe.fig-market","shape":"flat","x_m":2111.2,"y_m":3372.3,"radius_m":73.08,"facing_deg":0.0,"request":"re-sized to 73 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-fringe.fenmarch-village","shape":"rise","x_m":2037.1,"y_m":3100.9,"radius_m":105.0,"facing_deg":44.0}
+{"place_id":"place.imperial-fringe.fig-market","shape":"flat","x_m":2111.2,"y_m":3372.3,"radius_m":101.15,"facing_deg":0.0,"request":"re-sized to 101 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-fringe.fort-greenditch","shape":"flat","x_m":871.3,"y_m":3147.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.fort-swampmoth","shape":"flat","x_m":1104.9,"y_m":3155.8,"radius_m":65.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.gideon","shape":"flat","x_m":1551.0,"y_m":3069.0,"radius_m":62.67,"facing_deg":0.0,"request":"re-sized to 63 m: the ground beside it falls or rises too fast"}
-{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","shape":"rise","x_m":1795.9,"y_m":2971.6,"radius_m":45.0,"facing_deg":42.0}
+{"place_id":"place.imperial-fringe.gideon","shape":"flat","x_m":1551.0,"y_m":3069.0,"radius_m":62.67,"facing_deg":0.0,"request":"terraced into the slope at 72.1 m (no level band between bank and water); re-sized to 63 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-fringe.gideon-rootworm-terminus","shape":"rise","x_m":1795.9,"y_m":2971.6,"radius_m":45.0,"facing_deg":42.8}
 {"place_id":"place.imperial-fringe.gideon-synod-outstation","shape":"flat","x_m":1313.3,"y_m":3397.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.giovesse-lines","shape":"flat","x_m":1285.9,"y_m":3144.8,"radius_m":40.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.glenbridge","shape":"flat","x_m":1477.8,"y_m":1658.8,"radius_m":140.0,"facing_deg":0.0}
@@ -279,7 +279,7 @@
 {"place_id":"place.imperial-fringe.nine-arch-stage","shape":"flat","x_m":1990.4,"y_m":2325.1,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.ninefold-station","shape":"flat","x_m":1285.9,"y_m":4926.9,"radius_m":50.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.onkobra-clay-pits","shape":"flat","x_m":1538.1,"y_m":2793.9,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.onkobra-ferry","shape":"flat","x_m":1752.0,"y_m":2876.1,"radius_m":38.25,"facing_deg":0.0,"request":"narrows; re-sized to 38 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-fringe.onkobra-ferry","shape":"flat","x_m":1752.0,"y_m":2876.1,"radius_m":32.51,"facing_deg":0.0,"request":"narrows; re-sized to 33 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-fringe.onkobra-field-station","shape":"flat","x_m":1204.0,"y_m":3261.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.onkobra-kwama-mine","shape":"rise","x_m":1620.4,"y_m":1911.0,"radius_m":45.0,"facing_deg":97.4}
 {"place_id":"place.imperial-fringe.orma-tactile-ruin","shape":"flat","x_m":1401.0,"y_m":1417.5,"radius_m":19.97,"facing_deg":0.0,"request":"re-sized to 20 m: the ground beside it falls or rises too fast"}
@@ -291,7 +291,7 @@
 {"place_id":"place.imperial-fringe.sabinus-claim","shape":"flat","x_m":238.5,"y_m":2185.2,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.saddle-fair","shape":"flat","x_m":1379.1,"y_m":4663.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.silver-mouth","shape":"rise","x_m":1631.3,"y_m":1773.9,"radius_m":45.0,"facing_deg":97.5}
-{"place_id":"place.imperial-fringe.silverhand-cairns","shape":"rise","x_m":1260.7,"y_m":3336.7,"radius_m":20.0,"facing_deg":315.0}
+{"place_id":"place.imperial-fringe.silverhand-cairns","shape":"rise","x_m":1260.7,"y_m":3336.7,"radius_m":20.0,"facing_deg":315.3}
 {"place_id":"place.imperial-fringe.sink-field","shape":"rise","x_m":1088.5,"y_m":1351.7,"radius_m":25.0,"facing_deg":258.4}
 {"place_id":"place.imperial-fringe.slough-point","shape":"flat","x_m":529.2,"y_m":4762.4,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.sour-orchard","shape":"flat","x_m":666.2,"y_m":3567.0,"radius_m":30.0,"facing_deg":0.0}
@@ -305,7 +305,7 @@
 {"place_id":"place.imperial-fringe.the-black-tarn","shape":"deep_water","x_m":76.77,"y_m":2268.35,"radius_m":45.0,"facing_deg":0.0,"request":"moved 32 m to water"}
 {"place_id":"place.imperial-fringe.the-borrowed-house","shape":"flat","x_m":1763.0,"y_m":1801.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.the-broke-column","shape":"flat","x_m":1196.0,"y_m":3084.0,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.the-buried-spears","shape":"rise","x_m":117.9,"y_m":2939.8,"radius_m":25.0,"facing_deg":105.5}
+{"place_id":"place.imperial-fringe.the-buried-spears","shape":"rise","x_m":117.9,"y_m":2939.8,"radius_m":25.0,"facing_deg":102.5}
 {"place_id":"place.imperial-fringe.the-cold-forge","shape":"flat","x_m":1324.3,"y_m":3704.1,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.the-cold-lights","shape":"deep_water","x_m":1964.93,"y_m":2407.27,"radius_m":25.0,"facing_deg":0.0,"request":"moved 94 m to water"}
 {"place_id":"place.imperial-fringe.the-cordon-stones","shape":"flat","x_m":2056.2,"y_m":2412.8,"radius_m":30.0,"facing_deg":0.0}
@@ -357,11 +357,11 @@
 {"place_id":"place.imperial-fringe.watch-of-the-weighed-cart","shape":"flat","x_m":1384.6,"y_m":2826.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.westfield-village","shape":"flat","x_m":1148.8,"y_m":3594.4,"radius_m":115.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.whispers-house-of-the-low-fen","shape":"flat","x_m":2004.2,"y_m":2473.7,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","shape":"rise","x_m":11.6,"y_m":2996.7,"radius_m":40.0,"facing_deg":326.7}
+{"place_id":"place.imperial-fringe.xi-tsei-massacre-ground","shape":"rise","x_m":11.6,"y_m":2996.7,"radius_m":40.0,"facing_deg":320.5}
 {"place_id":"place.imperial-penal-south.akaviri-works","shape":"flat","x_m":1609.4,"y_m":6215.6,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-penal-south.basin-sinkhole","shape":"depression","x_m":1932.9,"y_m":6676.2,"radius_m":25.0,"facing_deg":0.0,"request":"sinkhole"}
 {"place_id":"place.imperial-penal-south.blackrose","shape":"flat","x_m":2343.0,"y_m":6424.8,"radius_m":230.0,"facing_deg":0.0}
-{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","shape":"flat","x_m":2278.4,"y_m":6462.3,"radius_m":34.0,"facing_deg":0.0,"request":"re-sized to 34 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-penal-south.blackrose-drowned-hist","shape":"flat","x_m":2278.4,"y_m":6462.3,"radius_m":10.9,"facing_deg":0.0,"request":"terraced into the slope at 4.8 m (no level band between bank and water); re-sized to 11 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-penal-south.blackrose-prison","shape":"flat","x_m":2086.5,"y_m":6396.5,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.imperial-penal-south.blasphemer-urn-vault","shape":"rise","x_m":1856.2,"y_m":6163.0,"radius_m":35.0,"facing_deg":188.6}
 {"place_id":"place.imperial-penal-south.bramman-head","shape":"flat","x_m":1806.8,"y_m":6434.9,"radius_m":17.71,"facing_deg":0.0,"request":"terraced into the slope at 1.7 m (no level band between bank and water); re-sized to 18 m: the ground beside it falls or rises too fast"}
@@ -444,10 +444,10 @@
 {"place_id":"place.mercantile-coast.screen-watch","shape":"flat","x_m":3155.8,"y_m":6886.7,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.mercantile-coast.sealed-meer-murkmire","shape":"flat","x_m":392.1,"y_m":4976.3,"radius_m":38.25,"facing_deg":0.0,"request":"knoll; re-sized to 38 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.mercantile-coast.slaughter-memorial","shape":"bank","x_m":3682.2,"y_m":6056.5,"radius_m":35.0,"facing_deg":39.6}
-{"place_id":"place.mercantile-coast.soulrest","shape":"flat","x_m":528.0,"y_m":6424.0,"radius_m":195.5,"facing_deg":0.0,"request":"re-sized to 196 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.mercantile-coast.soulrest","shape":"flat","x_m":528.0,"y_m":6424.0,"radius_m":141.25,"facing_deg":0.0,"request":"re-sized to 141 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.mercantile-coast.soulrest-breaking-yard","shape":"flat","x_m":649.8,"y_m":6533.6,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.mercantile-coast.soulrest-divers-yard","shape":"flat","x_m":584.0,"y_m":6626.8,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","shape":"flat","x_m":537.5,"y_m":6476.1,"radius_m":12.26,"facing_deg":0.0,"request":"terraced into the slope at 8.7 m (no level band between bank and water); re-sized to 12 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.mercantile-coast.soulrest-quay-tradehouse","shape":"flat","x_m":537.5,"y_m":6476.1,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.mercantile-coast.stripped-village-north","shape":"flat","x_m":3408.0,"y_m":5058.5,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.mercantile-coast.sunkfoot","shape":"deep_water","x_m":4233.3,"y_m":6236.6,"radius_m":65.0,"facing_deg":0.0}
 {"place_id":"place.mercantile-coast.teeba-enoo-court","shape":"flat","x_m":3433.3,"y_m":6555.5,"radius_m":38.25,"facing_deg":0.0,"request":"re-sized to 38 m: the ground beside it falls or rises too fast"}
@@ -511,7 +511,7 @@
 {"place_id":"place.pirate-freeholds.corimont-tradehouse","shape":"flat","x_m":3687.7,"y_m":808.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.dres-holding-pens","shape":"flat","x_m":3753.5,"y_m":1450.4,"radius_m":40.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.dunmer-frontier-holding","shape":"flat","x_m":4351.2,"y_m":545.6,"radius_m":115.0,"facing_deg":0.0}
-{"place_id":"place.pirate-freeholds.flu-cairn-field","shape":"rise","x_m":3945.4,"y_m":1450.4,"radius_m":20.0,"facing_deg":58.6}
+{"place_id":"place.pirate-freeholds.flu-cairn-field","shape":"rise","x_m":3945.4,"y_m":1450.4,"radius_m":20.0,"facing_deg":58.9}
 {"place_id":"place.pirate-freeholds.freehold-market","shape":"flat","x_m":3945.4,"y_m":1134.6,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.freehold-naga-camp","shape":"flat","x_m":3939.9,"y_m":468.8,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.freehold-smithy","shape":"flat","x_m":3734.8,"y_m":1258.5,"radius_m":45.0,"facing_deg":0.0}
@@ -519,7 +519,7 @@
 {"place_id":"place.pirate-freeholds.kothringi-river-ruin","shape":"flat","x_m":3835.7,"y_m":995.3,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.opening-work-barge","shape":"flat","x_m":3956.4,"y_m":1582.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.opening-work-camp","shape":"flat","x_m":3991.5,"y_m":1395.6,"radius_m":45.0,"facing_deg":0.0}
-{"place_id":"place.pirate-freeholds.reach-wreck","shape":"deep_water","x_m":3513.11,"y_m":493.52,"radius_m":45.0,"facing_deg":0.0,"request":"moved 79 m to water"}
+{"place_id":"place.pirate-freeholds.reach-wreck","shape":"deep_water","x_m":3525.9,"y_m":484.38,"radius_m":45.0,"facing_deg":0.0,"request":"moved 90 m to water"}
 {"place_id":"place.pirate-freeholds.reoccupied-fort","shape":"flat","x_m":3865.3,"y_m":839.6,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.pirate-freeholds.rim-keystone-chamber","shape":"flat","x_m":4312.8,"y_m":814.3,"radius_m":50.0,"facing_deg":0.0,"request":"gorge"}
 {"place_id":"place.pirate-freeholds.rim-pass-station","shape":"flat","x_m":4098.9,"y_m":463.4,"radius_m":45.0,"facing_deg":0.0}
@@ -536,7 +536,7 @@
 {"place_id":"place.saxhleel-coast.archon-harbour-hist","shape":"flat","x_m":5086.0,"y_m":4674.7,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.archon-lighthouse","shape":"flat","x_m":5075.0,"y_m":4411.5,"radius_m":45.0,"facing_deg":0.0,"request":"islet"}
 {"place_id":"place.saxhleel-coast.archon-sacked-quarter","shape":"flat","x_m":4992.7,"y_m":4504.7,"radius_m":65.0,"facing_deg":0.0}
-{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","shape":"rise","x_m":4789.9,"y_m":4696.6,"radius_m":45.0,"facing_deg":99.8}
+{"place_id":"place.saxhleel-coast.archon-shadowscale-sanctuary","shape":"rise","x_m":4789.9,"y_m":4696.6,"radius_m":45.0,"facing_deg":100.5}
 {"place_id":"place.saxhleel-coast.banner-stack","shape":"flat","x_m":4504.7,"y_m":4055.1,"radius_m":50.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.cantemir-headland","shape":"flat","x_m":5656.3,"y_m":3512.2,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.saxhleel-coast.coast-hist-less-refuge","shape":"flat","x_m":5075.0,"y_m":4005.7,"radius_m":65.0,"facing_deg":0.0}

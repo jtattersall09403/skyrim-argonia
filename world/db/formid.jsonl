@@ -1422,6 +1422,9 @@
 {"editor_id":"ARG_Q_LF83","plugin":"Argonia.esm","form_id":2130,"record_type":"QUST","entity_key":"quest.local.lf83"}
 {"editor_id":"ARG_QuarantineNever","plugin":"Argonia.esm","form_id":2048,"record_type":"GLOB"}
 {"editor_id":"ARG_Race_argonian","plugin":"Argonia.esm","form_id":2055,"record_type":"SPEL","entity_key":"race.argonian"}
+{"editor_id":"ARG_Ref_BridgeGideonStep","plugin":"Argonia.esm","form_id":3840,"record_type":"REFR","entity_key":"bridge.gideon-step"}
+{"editor_id":"ARG_Ref_BridgeGlenbridgeStep","plugin":"Argonia.esm","form_id":3841,"record_type":"REFR","entity_key":"bridge.glenbridge-step"}
+{"editor_id":"ARG_Ref_BridgeThornStep","plugin":"Argonia.esm","form_id":3842,"record_type":"REFR","entity_key":"bridge.thorn-step"}
 {"editor_id":"ARG_Ref_ClaywaterStationAhyFire","plugin":"Argonia.esm","form_id":2183,"record_type":"REFR","entity_key":"ref.claywater-station.ahy-fire"}
 {"editor_id":"ARG_Ref_ClaywaterStationAhyOven","plugin":"Argonia.esm","form_id":2184,"record_type":"REFR","entity_key":"ref.claywater-station.ahy-oven"}
 {"editor_id":"ARG_Ref_ClaywaterStationAlCandle1","plugin":"Argonia.esm","form_id":2185,"record_type":"REFR","entity_key":"ref.claywater-station.al-candle1"}
