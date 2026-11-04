@@ -38,7 +38,15 @@ def walk_save(b: Bridge, name: str) -> dict:
                for e in b.call("events", since, "menu")["events"]):
             break
     time.sleep(5)  # the fade-in and the cells settling before the save
-    pl = b.call("player")
+    pl = None
+    for i in range(12):  # a new GPU compiles its shader cache after the load (the round-6 clone's T4: the main
+        try:             # thread did not run the task within 3000 ms); the read is retried over a minute
+            pl = b.call("player")
+            break
+        except BridgeError as e:
+            if "main thread" not in str(e) or i == 11:
+                raise
+            time.sleep(5)
     if (pl.get("cell") or {}).get("editor_id") == "ARG_HoldingCell":
         raise SystemExit("the claywater scene did not move the player out of the holding cell")
     return {"cell": pl["cell"], "save": b.call("save", name)}
