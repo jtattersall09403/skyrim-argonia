@@ -71,7 +71,9 @@ def test_a_rerun_skips_what_is_done(tmp_path):
     log.write_text("")
     r = go(root, env)
     calls = log.read_text().splitlines()
-    assert calls == ["run stop"], calls  # up, deploy and the batch done for this build
+    # the machine-up step is never reused from state (a reclaim between resumes stopped the machine and the batch ran
+    # against a dead one, 7d781c4b); deploy and the batch are done for this build
+    assert len(calls) == 2 and calls[0].startswith("up m1") and calls[1] == "run stop", calls
     assert "ROUND DONE 1/2" in r.stdout
 
 
