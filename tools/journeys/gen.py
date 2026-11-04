@@ -559,7 +559,8 @@ def _build_key() -> str:
     water cells, the vegetation and land shard sizes, and this code."""
     import hashlib
     from tools.argonia_world import db
-    h = hashlib.sha1(json.dumps(db.signature(db.WORLD_ROOT), sort_keys=True, default=str).encode())
+    # sizes only: a boot re-checkout touches every mtime (the key moved on each of three reboots)
+    h = hashlib.sha1(json.dumps({k: v[1] for k, v in db.signature(db.WORLD_ROOT).items()}, sort_keys=True).encode())
     o = ROOT / "out"
     h.update((o / "water" / "cells.jsonl").read_bytes())
     for p in [*sorted((o / "terrain" / "vegetation").glob("*")), *sorted((o / "terrain" / "land").glob("*"))]:
