@@ -71,11 +71,28 @@ def _numbers(s: dict) -> str:
             f"{s['d_m']} m to the subject, heading {s['h']:.0f} pitch {s['p']:.0f}")
 
 
+SCAN = 6   # the headings each look stop scans (owner 19:05 #41; tools/run_journey.py `scan`)
+NAME = re.compile(r"^(\s*)- name: ")
+
+
+def with_scan(text: str, only: set | None = None) -> str:
+    """`scan: SCAN` after the name line of each step (of `only`, when given) that has none."""
+    lines = text.splitlines()
+    for step, a, z in reversed(steps_of(text)):
+        if (only is not None and step not in only) or any(re.match(r"^\s+scan:", ln) for ln in lines[a:z]):
+            continue
+        i = next((i for i in range(a, z) if NAME.match(lines[i])), None)
+        if i is not None:
+            lines.insert(i + 1, NAME.match(lines[i]).group(1) + f"  scan: {SCAN}")
+    return "\n".join(lines) + "\n"
+
+
 def reaim(b: Build, text: str, name: str, log: list, band=lambda d: (max(2.0, d * 0.8), d * 1.6),
           spread: float = 180.0) -> str:
     """Each setpos step with a `# subject:` re-stood by the clearance measure when its stand is not clear: the same
     subject, a distance in band(d0), the nearest bearing; seated, aimed at the subject (the middle of the frame)."""
     lines = text.splitlines()
+    stood: set = set()
     for step, a, z in steps_of(text):
         blk = "\n".join(lines[a:z])
         pos = {k: float(v) for k, v in SETPOS.findall(blk)}
@@ -83,6 +100,7 @@ def reaim(b: Build, text: str, name: str, log: list, band=lambda d: (max(2.0, d 
         if not ({"x", "y"} <= set(pos) and m):
             continue
         subj = tuple(float(v) for v in m.groups())
+        stood.add(step)
         x, y = pos["x"], pos["y"]
         sc = score(b, x, y, subj)
         moved = 0.0
@@ -98,7 +116,7 @@ def reaim(b: Build, text: str, name: str, log: list, band=lambda d: (max(2.0, d 
             lines[i] = SETANGLE.sub(lambda mm: f"player.setangle {mm.group(1)} {ang[mm.group(1)]:.0f}", lines[i])
         log.append({"journey": name, "step": step, "moved_m": moved, "clear": clear(sc),
                     "why": "clearance: " + _numbers(sc)})
-    return "\n".join(lines) + "\n"
+    return with_scan("\n".join(lines) + "\n", stood)
 
 
 def booth_standard(text: str) -> str:
@@ -116,7 +134,7 @@ def booth_standard(text: str) -> str:
     for name, a, z in reversed(steps_of(text)):
         if not any(ln.startswith("  expect:") for ln in lines[a:z]):
             lines[z:z] = ["  expect:", f"  - {WEATHER_READ}"]
-    return "\n".join(lines) + "\n"
+    return with_scan("\n".join(lines) + "\n")
 
 
 # -- ground-materials --------------------------------------------------------------------------------------------------
@@ -161,7 +179,7 @@ def ground_materials(b: Build, log: list, head: list[str]) -> str:
         subj, x, y, sc = _ground_subject(b, cell)
         log.append({"journey": "ground-materials", "step": name, "moved_m": 0.0, "clear": clear(sc),
                     "why": "clearance: " + _numbers(sc)})
-        out += [f"  - name: {name}", f"    # cell {cell[0]} {cell[1]}: the dry patch nearest its middle with a clear stand "
+        out += [f"  - name: {name}", f"    scan: {SCAN}", f"    # cell {cell[0]} {cell[1]}: the dry patch nearest its middle with a clear stand "
                 f"8-15 m off; {_numbers(sc)}",
                 f"    # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "    do:", "      - hud: off",
                 f"      - console: {{line: cow ARG_Province {cell[0]} {cell[1]}, settle: 60}}", "      - wait: 8",

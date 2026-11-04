@@ -59,6 +59,8 @@ import argparse
 import json
 import pathlib
 import re
+import shlex
+import subprocess
 import sys
 import time
 
@@ -218,7 +220,8 @@ def lod_tools_running(b) -> list[str]:
 
 class Batch:
     def __init__(self, bridge, batch: dict, out: pathlib.Path, stills: bool = True, clock=time.monotonic,
-                 force: bool = False, ledger: pathlib.Path | None = None):
+                 force: bool = False, ledger: pathlib.Path | None = None, on_done: str | None = None):
+        self.on_done = on_done
         self.b, self.batch, self.out, self.stills, self.clock = bridge, batch, out, stills, clock
         self.force, self.ledger = force, ledger
         self.index = pass_ledger.last_rows(ledger)
@@ -340,6 +343,7 @@ class Batch:
                        "steps_run": sum(1 for x in rep["steps"] if not x.get("skipped")),
                        "steps_skipped": sum(1 for x in rep["steps"] if x.get("skipped"))}
                 self.summary["items"].append(rec)
+                self.done(it, rep, rec)
                 self.since_launch += 1
                 prev_ok = rep["passed"]
                 prev = {"crash": rec["crash"], "passed": rep["passed"], "loaded": load, "save": item_save(it),
@@ -352,6 +356,32 @@ class Batch:
         self.totals(t0)
         self.write()
         return self.summary
+
+    def done(self, it: dict, rep: dict, rec: dict) -> pathlib.Path | None:
+        """`<journey run>/done.json` as the journey finishes (journey, verdict, stills, scan files), and the
+        `--on-done <cmd>` hook run detached on it, so a reader judges and the driver retakes while the batch runs on
+        (owner 19:05 #41, 0036 amended). Neither a failed write nor a failed hook fails the batch."""
+        try:
+            d = pathlib.Path(rep["_out"])
+            d.mkdir(parents=True, exist_ok=True)
+            steps = rep.get("steps", [])
+            body = {"journey": it["id"], "run": rec["run"], "kind": it["kind"],
+                    "verdict": "PASS" if rec["passed"] else "CRASH" if rec["crash"] else "FAIL",
+                    "failed_at": rec["failed_at"], "reason": rec["reason"], "report": str(d / "report.json"),
+                    "stills": [{"step": x["name"], "still": x["still"]} for x in steps if x.get("still")],
+                    "scans": [{"step": x["name"], "files": x["scan"]} for x in steps if x.get("scan")]}
+            path = d / "done.json"
+            path.write_text(json.dumps(body, indent=1))
+        except (OSError, KeyError, TypeError) as e:
+            print(f"{it['id']}: done.json not written: {e}", flush=True)
+            return None
+        if self.on_done:
+            try:
+                subprocess.Popen([*shlex.split(self.on_done), str(path)], start_new_session=True,
+                                 stdin=subprocess.DEVNULL, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            except (OSError, ValueError) as e:
+                print(f"{it['id']}: --on-done hook failed to start: {e}", flush=True)
+        return path
 
     def totals(self, t0):
         items, s = self.summary["items"], self.summary
@@ -468,6 +498,8 @@ def main(argv=None) -> int:
                    "with --write-owed: every runnable journey")
     p.add_argument("--plan", action="store_true", help="print the shrink; exit 3 when nothing is left to run")
     p.add_argument("--dry", action="store_true", help="validate every item and its scene; no game")
+    p.add_argument("--on-done", default=None, help="<cmd>: run `<cmd> <done.json>` detached as each journey finishes "
+                   "(the planner's reader launcher); its failure never fails the batch")
     p.add_argument("--no-stills", action="store_true", help="stills only for a failed step")
     p.add_argument("--relaunch-mb", type=float, default=None)
     a = p.parse_args(argv)
@@ -503,7 +535,7 @@ def main(argv=None) -> int:
         return 0
     dry(batch)  # a bad item fails before the game is touched
     out = REPO / "out" / "batch" / batch["id"] / time.strftime("%Y%m%dT%H%M%S")
-    s = Batch(Bridge(), batch, out, stills=not a.no_stills, force=a.all).run(start=a.only or a.start, only=bool(a.only))
+    s = Batch(Bridge(), batch, out, stills=not a.no_stills, force=a.all, on_done=a.on_done).run(start=a.only or a.start, only=bool(a.only))
     print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {s.get('steps_run', 0)} steps"
           f" ran, {s.get('steps_skipped', 0)} skipped (passed on the same inputs); {out / 'summary.json'}")
     from tools import check_ledger  # the check ledgers' journey rows follow the run (owner, 2026-10-31)

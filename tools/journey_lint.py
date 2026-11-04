@@ -155,6 +155,8 @@ def look(journey: dict) -> list[str]:
         errs.append(f"step {steps[0]['name']}: look: world: `hud: off` before the first still")
     for s in stops:
         n = s["name"]
+        if not (isinstance(s.get("scan"), int) and s["scan"] >= 2):
+            errs.append(f"step {n}: look: world: a scan of headings at each stop (`scan: 6`; owner 19:05 #41)")
         if indep and not hud(s):
             errs.append(f"step {n}: look: world: `hud: off` in each stop (independent_steps relaunches)")
         if s.get("weather") == "any":

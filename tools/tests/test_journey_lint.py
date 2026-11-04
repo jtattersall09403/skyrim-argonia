@@ -98,13 +98,22 @@ def test_a_look_journey_needs_first_person_hud_off_and_forced_weather_per_stop()
     assert any("form id" in e for e in errs) and any("read the weather back" in e for e in errs)
     good = {"name": "s", "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"},
                                 {"console": "fw Argonia.esm|0x000E9B"}],
-            "expect": [{"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}]}
+            "expect": [{"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}],
+            "scan": 6}
     assert L.look({**j, "camera": "first", "steps": [good]}) == []
     by_edid = {**good, "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"}, {"console": "fw ARG_Weather_clear_dry"}]}
     assert any("form id" in e for e in L.look({**j, "camera": "first", "steps": [by_edid]}))
-    anyw = {"name": "s", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any"}
+    anyw = {"name": "s", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any", "scan": 6}
     assert L.look({**j, "camera": "first", "steps": [anyw]}) == []
     assert L.look({"id": "j", "steps": [stop]}) == []   # unmarked: not a look journey
+
+
+def test_a_look_stop_without_a_scan_fails_naming_the_step():
+    stop = {"name": "pebbles", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any"}
+    j = {"id": "j", "look": "world", "camera": "first", "steps": [stop]}
+    assert L.look(j) == ["step pebbles: look: world: a scan of headings at each stop (`scan: 6`; owner 19:05 #41)"]
+    assert L.look({**j, "steps": [{**stop, "scan": 1}]}) != []
+    assert L.look({**j, "steps": [{**stop, "scan": 6}]}) == []
 
 
 def test_the_five_look_journeys_meet_the_standard():
@@ -112,4 +121,5 @@ def test_the_five_look_journeys_meet_the_standard():
     for n in ("ground-materials", "road-look", "rock-booth", "tree-seat", "claywater-look"):
         j = yaml.safe_load((pathlib.Path(__file__).resolve().parents[2] / "tests" / "journeys" / f"{n}.yaml").read_text())
         assert j.get("look") == "world", n
-        assert L.look(j) == [], (n, L.look(j)[:3])
+        errs = [e for e in L.look(j) if "a scan of headings" not in e]  # scans land at the planner's refresh (look.py)
+        assert errs == [], (n, errs[:3])

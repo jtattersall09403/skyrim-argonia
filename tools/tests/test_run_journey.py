@@ -87,6 +87,34 @@ def test_pass_keeps_a_still_per_step(tmp_path):
     assert (tmp_path / "out" / "01-walk.png").exists() and (tmp_path / "out" / "02-draw.png").exists()
 
 
+def test_a_scan_step_captures_n_headings_from_the_stand(tmp_path):
+    class Stand(Fake):
+        shots = 0
+
+        def call(self, cmd, *args):
+            if cmd == "player":
+                return {"pos": {"x": 0.0, "y": 0.0, "z": 0.0}, "heading_deg": 30.0}
+            return super().call(cmd, *args)
+
+        def screenshot(self, out):
+            self.shots += 1
+            return super().screenshot(out)
+    f = Stand()
+    j = journey(tmp_path, [{"name": "look", "scan": 6, "do": [{"console": "player.setangle x 20"}]},
+                           {"name": "plain", "do": [{"wait": 0}]}])
+    rep = rj.Runner(f, tmp_path / "out").run(j, "base")
+    scan = rep["steps"][0]["scan"]
+    assert [s["heading"] for s in scan] == [30, 90, 150, 210, 270, 330] and f.shots == 6 + 1
+    turns = [ln for ln in f.lines if ln.startswith("player.setangle z")]
+    assert turns == [f"player.setangle z {h}" for h in (90, 150, 210, 270, 330, 30)]   # then back to the stand's aim
+    assert not any(ln.startswith("player.setangle x") for ln in f.lines[f.lines.index(turns[0]):])  # pitch kept
+    out = tmp_path / "out"
+    assert (out / "01-look.png").exists() and all((out / f"01-look-s{k}.png").exists() for k in range(6))
+    assert "scan" not in rep["steps"][1] and not (out / "02-plain-s0.png").exists()
+    saved = json.loads((out / "report.json").read_text())
+    assert [s["still"] for s in saved["steps"][0]["scan"]][1].endswith("01-look-s1.png")
+
+
 def test_console_settle_waits_out_a_busy_main_thread(tmp_path, monkeypatch):
     """A worldspace load holds the main thread past the bridge's retries: `settle` keeps sending until it runs."""
     fake, calls = Fake(), []

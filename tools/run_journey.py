@@ -68,6 +68,7 @@ import os
 import pathlib
 import subprocess
 import sys
+import shutil
 import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
@@ -876,6 +877,8 @@ class Runner:
         rep = {"id": j["id"], "save": save, "scene": j.get("scene"), "steps": [], "passed": False, "loaded": load}
         self.scene, self.save = j.get("scene"), save
         self.independent = bool(j.get("independent_steps"))
+        if j.get("stills") is False:  # a state-read journey (creature checks, owner 19:05 #41): a still only on a fail
+            self.stills = False
         first, scene = 0, j.get("scene")
         if start:
             resumed, kept, first = self.resume_point(j, start)
@@ -967,6 +970,32 @@ class Runner:
             rec["reason"] = f"after one relaunch: {rec['reason']} (first try: {first_reason[:200]})"
         return rec
 
+    def scan(self, n: int, step: dict, count: int, s0: pathlib.Path) -> list[dict]:
+        """A scan of headings from the stand (owner 19:05 #41, 0036 amended): `count` stills at h0 + k*360/count, the
+        stand's own aim k=0 (the step's still, kept under its old name and copied to -s0), the pitch kept, SCAN_SETTLE_S
+        each; the stand's heading put back after. A reader names the heading that shows the subject."""
+        h0 = float((self.b.call("player") or {}).get("heading_deg") or 0.0)
+        out = []
+        for k in range(count):
+            h = (h0 + k * 360.0 / count) % 360
+            path = self.out / f"{n:02d}-{step['name']}-s{k}.png"
+            try:
+                if k == 0:
+                    shutil.copyfile(s0, path)
+                else:
+                    self.b.call("console", f"player.setangle z {h:.0f}")
+                    time.sleep(SCAN_SETTLE_S)
+                    path = self.b.screenshot(path)
+                out.append({"k": k, "heading": round(h), "still": str(path)})
+            except (BridgeError, OSError) as e:
+                out.append({"k": k, "heading": round(h), "still": f"none: {e}"})
+        if count > 1:
+            try:
+                self.b.call("console", f"player.setangle z {h0:.0f}")
+            except BridgeError:
+                pass
+        return out
+
     def _step(self, n: int, step: dict) -> dict:
         t = time.monotonic()
         ctx = {"since": self.b.call("events")["last"], "pos": self.b.call("player")["pos"], "log_lines": {}}
@@ -1003,11 +1032,15 @@ class Runner:
                 rec["still"] = str(self.b.screenshot(self.out / f"{n:02d}-{step['name']}.png"))
             except BridgeError as e:
                 rec["still"] = f"none: {e}"
+            if step.get("scan") and rec["passed"] and not rec["still"].startswith("none"):
+                rec["scan"] = self.scan(n, step, int(step["scan"]), pathlib.Path(rec["still"]))
         rec["seconds"] = round(time.monotonic() - t, 1)
         rec["transport_retries"] = getattr(self.b, "transport_retries", 0) - retries0
         print(f"  {n:2d} {step['name']:<24} {'ok' if rec['passed'] else 'FAIL: ' + rec['reason']}", flush=True)
         return rec
 
+
+SCAN_SETTLE_S = 2.0  # a scan heading's settle before its still (the owner's ruling, 19:05 #41)
 
 MOVES = ("moveto", "coc ", "cow ", "setpos", "sw ", "fw ", "set gamehour", "setangle")
 

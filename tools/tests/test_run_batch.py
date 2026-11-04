@@ -276,3 +276,19 @@ def test_one_load_groups_by_scene_two_on_one_scene_cost_one_load(tmp_path, journ
 def test_one_load_chains_past_a_fresh_failure_not_a_chained_one(tmp_path, journeys):
     f, s, _ = run(tmp_path, ["bad", "good", "bad", "good"], one_load=True)
     assert [i["loaded"] for i in s["items"]] == [True, False, False, True]
+
+
+def test_done_marker_per_journey_and_the_hook_runs_detached(tmp_path, journeys, monkeypatch):
+    started = []
+    def popen(args, **kw):
+        started.append((args, kw.get("start_new_session")))
+        if "bad" in args[-1]:
+            raise OSError("no such launcher")    # a broken hook never fails the batch
+    monkeypatch.setattr(rb.subprocess, "Popen", popen)
+    batch = {"id": "t", "items": rb.parse_items(["good", "bad"]), "relaunch_mb": 6000, "relaunch_every": 0}
+    s = rb.Batch(Fake(), batch, tmp_path / "out", stills=True, on_done="python3 reader.py --x").run()
+    marks = [json.loads((pathlib.Path(i["report"]) / "done.json").read_text()) for i in s["items"]]
+    assert [(m["journey"], m["verdict"]) for m in marks] == [("good", "PASS"), ("bad", "FAIL")]
+    assert marks[0]["stills"][0]["step"] == "ok" and marks[0]["scans"] == []
+    assert [a[:3] for a, _ in started] == [["python3", "reader.py", "--x"]] * 2 and all(d for _, d in started)
+    assert started[0][0][3].endswith("done.json") and len(s["items"]) == 2
