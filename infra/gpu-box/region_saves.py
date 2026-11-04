@@ -136,7 +136,7 @@ def main(argv=None):
     for name, why in failed:
         print(f"FAILED: {name}: {why}", file=sys.stderr)
     print(f"{len(made)} saves made, {len(failed)} failed")
-    return 1 if failed and not made else 0
+    return 1 if failed else 0   # one save short is a failure (2026-11-04: nine made, Claywater crashed, the chain pushed a stale Claywater as 'SAVES OK')
 
 
 if __name__ == "__main__":
