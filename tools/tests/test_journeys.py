@@ -269,3 +269,17 @@ def test_type_share_counts_the_wet_rays_of_the_stops_own_type():
     sh, others = J.type_share(cells, {(1, 1): "black", (1, 2): "marsh"}, ("black",))
     assert sh == 0.7 and others == [(1, 2, "marsh", 3)]
     assert J.type_share({}, {}, ("black",))[0] == 0.0
+
+
+def test_road_measure_is_the_distance_and_heading_against_the_centreline():
+    from tools.journeys import gen
+    u = gen.U
+    pts = [(0.0, 0.0), (0.0, 100 * u), (100 * u, 100 * u)]   # north 100 m, then east 100 m
+    on = gen.road_measure(pts, 0.0, 50 * u, 0.0)
+    assert on["off_m"] < 1e-6 and on["head_off_deg"] < 1e-6 and abs(on["at_m"] - 50) < 1e-6
+    off = gen.road_measure(pts, 3 * u, 40 * u, 200.0)          # 3 m east of the first leg, facing back down it, 20 deg off
+    assert abs(off["off_m"] - 3) < 1e-6 and abs(off["road_deg"]) < 1e-6 and abs(off["head_off_deg"] - 20) < 1e-6
+    bend = gen.road_measure(pts, 60 * u, 101 * u, 45.0)        # by the second leg (east), 45 deg off it
+    assert abs(bend["off_m"] - 1) < 1e-6 and abs(bend["road_deg"] - 90) < 1e-6 and abs(bend["head_off_deg"] - 45) < 1e-6
+    assert abs(bend["at_m"] - 160) < 1e-6
+    assert gen.ROAD_OFF_MAX_M == 2.0 and gen.ROAD_HEAD_MAX_DEG == 20.0

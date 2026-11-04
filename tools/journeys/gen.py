@@ -768,7 +768,9 @@ def water_types(b: Build, w, log: list) -> str:
 
 SEA_FAR_REACH_CELLS = 12     # a far-sea shore: the most sea cells straight out from it, up to this many
 SEA_FAR_M = 300.0            # the far stop's type share is read out to here (the sea's horizon, not the shallows)
-SEA_FAR_SHORES = 40          # the shores tried, best first
+SEA_FAR_SHORES = 40          # the shores tried, best first (x10 cheap tries)
+SEA_FAR_APART_CELLS = 6      # the far stop stands this many cells (manhattan) from the near one
+SEA_FAR_MIN_RAYS = 30        # of the lower half's 72 rays, this many meet water within SEA_FAR_M (open water, the horizon above)
 
 
 def sea_far_ok(b: Build, x: float, y: float, h: float, types: dict) -> dict:
@@ -787,10 +789,9 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
     TYPE_MIN_SHARE of the lower half's wet rays out to SEA_FAR_M on sea cells; on a shore other than the near stop's."""
     x0, y0 = su.PROVINCE_CELL_SW
     inside = lambda x, y: x0 + 1 <= x < x0 + su.PROVINCE_CELLS - 1 and y0 + 1 <= y < y0 + su.PROVINCE_CELLS - 1  # noqa: E731
-    near_cell = su.cell_of(near[1], near[2])
     cands = []
     for (cx, cy), t in sorted(types.items()):
-        if t != "sea" or (cx, cy) == tuple(near_cell):
+        if t != "sea":
             continue
         for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
             if (cx + dx, cy + dy) in types or not inside(cx + dx, cy + dy):
@@ -805,26 +806,48 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
     cands.sort()
 
     def search():
-        lg, err = [], None
+        # a light search (the far stop asks for no near-water share): from each shore, best first, stands 5-40 m back on
+        # dry footing, facing straight out to sea and +-20 deg, level; the first clear (0/0/0, standable) that meets the bar
         print(f"water-types: sea-far: search over {min(len(cands), SEA_FAR_SHORES)} shores", flush=True)
-        for _, (cx, cy), (dx, dy) in cands[:SEA_FAR_SHORES]:
-            n_log = len(lg)
-            try:
-                got = _stop_at(b, "sea", cx, cy, dx, dy, level, line, reach_of, lg, True, types, ("sea",))
-            except ValueError as e:
-                err = err or e
-                del lg[n_log:]
+        nx, ny = su.cell_of(near[1], near[2])
+        for _, (cx, cy), (dx, dy) in cands[:SEA_FAR_SHORES * 10]:
+            if abs(cx - nx) + abs(cy - ny) < SEA_FAR_APART_CELLS:
                 continue
-            x, y, subj = got[0], got[1], got[2]
-            if sea_far_ok(b, x, y, aim(eye_of(b, x, y), subj)[0], types)["ok"]:
-                for r in lg:
-                    r["step"] = "sea-far"
-                return {"got": [x, y, list(subj), [cx, cy]], "log": lg}
-            del lg[n_log:]
-        raise ValueError(f"water-types: sea-far: no shore of {min(len(cands), SEA_FAR_SHORES)} meets the far-sea bar ({err})")
+            ox, oy = su.cell_origin(cx, cy)
+            c = (ox + su.CELL_UNITS / 2, oy + su.CELL_UNITS / 2)
+            wet = _first_wet(b, c, -dx, -dy) or c
+            sh = _shore(b, wet[0], wet[1], dx, dy)
+            if sh is None:
+                continue
+            for back in (5.0, 10.0, 15.0, 20.0, 30.0, 40.0):
+                for side in (0.0, -10.0, 10.0, -20.0, 20.0):
+                    sx, sy = sh[0] + dx * back * U, sh[1] + dy * back * U
+                    sx, sy = sx + (-dy) * side * U, sy + dx * side * U
+                    if b.soaked(sx, sy):
+                        continue
+                    for turn in (0.0, -20.0, 20.0):
+                        h = (math.degrees(math.atan2(-dx, -dy)) + turn) % 360
+                        eye = eye_of(b, sx, sy)
+                        far = next(((sx + math.sin(math.radians(h)) * d * U, sy + math.cos(math.radians(h)) * d * U)
+                                    for d in range(int(SEA_OUT_M), 50, -10)   # the aim: the farthest water cell out to 400 m
+                                    if b.wet(sx + math.sin(math.radians(h)) * d * U, sy + math.cos(math.radians(h)) * d * U)), None)
+                        if far is None:
+                            continue
+                        if stand_bad(b, sx, sy, (far[0], far[1], eye[2])) or sum(clearance3(b, eye, h)):
+                            continue
+                        m = sea_far_ok(b, sx, sy, h, types)
+                        if m["ok"] and m["rays"] >= SEA_FAR_MIN_RAYS:
+                            return {"got": [sx, sy, [far[0], far[1], eye[2]], [cx, cy]],
+                                    "log": [{"journey": "water-types", "step": "sea-far", "moved_m": 0.0,
+                                             "why": f"far-sea shore ({cx},{cy}), {back:.0f} m back", "clear": True}]}
+        return {"got": None, "log": [{"journey": "water-types", "step": "sea-far", "moved_m": 0.0, "clear": False,
+                                      "why": "stale: no shore meets the far-sea bar; no sea-far stop written"}]}
 
     res = _cached("water-types", "sea-far", search)
     log.extend(res["log"])
+    if res["got"] is None:   # never raise on a stand search: water-types still regenerates, the log says why
+        print("water-types: WARNING sea-far: no shore meets the far-sea bar; no sea-far stop written")
+        return ""
     x, y, subj, (cx, cy) = res["got"]
     h = aim(eye_of(b, x, y), subj)[0]
     m = sea_far_ok(b, x, y, h, types)

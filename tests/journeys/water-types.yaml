@@ -170,3 +170,25 @@ steps:
   - {read: [player], path: pos, keep: brackish-rim}
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
+- name: sea-far
+  # sea water from cell (-3,54), level 0.0 m, out to sea
+  # subject: -9540 237168 240
+  do:
+  - hud: off
+  - console: {line: cow ARG_Province -3 55, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
+  - console: player.setpos x -9540
+  - console: player.setpos y 228064
+  - console: player.setpos z 119
+  - wait: 6
+  - console: player.setangle z 0
+  - console: player.setangle x 0
+  - wait: 4
+  expect:
+  - {read: [player], path: pos, keep: sea-far}
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
+  reader: [the header checklist for this kind of stop]
