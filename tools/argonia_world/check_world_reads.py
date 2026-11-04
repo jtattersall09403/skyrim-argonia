@@ -10,6 +10,7 @@ as a path join (`"world" / "sources"`). Exit 0 clean, 1 with one line per hit (f
 from __future__ import annotations
 
 import argparse
+import ast
 import re
 import sys
 from pathlib import Path
@@ -35,6 +36,43 @@ SKIP_DIRS = {"__pycache__", "bin", "obj", "node_modules", ".pytest_cache"}
 TEXT = {".py", ".md", ".yaml", ".yml", ".json", ".sh", ".ps1", ".cs", ".toml", ".txt", ".sql"}
 
 
+HASH_COMMENT = {".sh", ".ps1", ".yaml", ".yml", ".toml"}
+SUB = {"sources", "db", "schema", "schemas"}
+
+
+def _str(n: ast.AST) -> str | None:
+    return n.value if isinstance(n, ast.Constant) and isinstance(n.value, str) else None
+
+
+def py_hits(text: str) -> list[int] | None:
+    """Line numbers of code that names a world/ path: string constants in expressions and path joins, never comments
+    (the AST has none) or docstrings. None when the file does not parse."""
+    try:
+        tree = ast.parse(text)
+    except (SyntaxError, ValueError):
+        return None
+    doc = set()
+    for n in ast.walk(tree):
+        if isinstance(n, (ast.Module, ast.ClassDef, ast.FunctionDef, ast.AsyncFunctionDef)) and n.body:
+            f = n.body[0]
+            if isinstance(f, ast.Expr) and _str(f.value) is not None:
+                doc.add(id(f.value))
+    lines = set()
+    for n in ast.walk(tree):
+        v = _str(n)
+        if v is not None and id(n) not in doc and HIT.search(v):
+            lines.add(n.lineno)
+        elif isinstance(n, ast.BinOp) and isinstance(n.op, ast.Div) and _str(n.right) in SUB:
+            left = n.left.right if isinstance(n.left, ast.BinOp) else n.left
+            if _str(left) == "world":
+                lines.add(n.lineno)
+        elif isinstance(n, ast.Call):
+            vals = [_str(a) for a in n.args]
+            if any(a == "world" and b in SUB for a, b in zip(vals, vals[1:])):
+                lines.add(n.lineno)
+    return sorted(lines)
+
+
 def scan(root: Path) -> list[str]:
     out = []
     for top in SCAN:
@@ -51,7 +89,15 @@ def scan(root: Path) -> list[str]:
                 text = p.read_text(encoding="utf-8")
             except (UnicodeDecodeError, OSError):
                 continue
-            for i, line in enumerate(text.splitlines(), 1):
+            src = text.splitlines()
+            if p.suffix == ".py":
+                found = py_hits(text)
+                if found is not None:
+                    out += [f"{rel}:{i}: {src[i - 1].strip()[:120]}" for i in found]
+                    continue
+            for i, line in enumerate(src, 1):
+                if p.suffix in HASH_COMMENT and line.lstrip().startswith("#"):
+                    continue
                 if HIT.search(line) and not (p.suffix == ".md" and not HIT.search(UNMIGRATED_HIT.sub("", line))):
                     out.append(f"{rel}:{i}: {line.strip()[:120]}")
     return out

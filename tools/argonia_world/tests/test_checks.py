@@ -78,6 +78,23 @@ def test_world_reads(tmp_path):
     assert [h.split(":")[1] for h in check_world_reads.scan(tmp_path)] == ["1", "2"]
 
 
+def test_world_reads_ignores_comments_and_docstrings(tmp_path):
+    (tmp_path / "tools").mkdir()
+    w_ = "wor" + "ld"
+    ok = f'"""see {w_}/sources/lore/a.md"""\n# {w_}/sources/lore/stormhold.md\n\ndef f():\n    """{w_}/db/x.jsonl"""\n    return 1  # {w_}/db/y\n'
+    (tmp_path / "tools" / "ok.py").write_text(ok)
+    (tmp_path / "tools" / "ok.sh").write_text(f"# {w_}/db/x.jsonl\necho hi\n")
+    assert check_world_reads.scan(tmp_path) == []
+    (tmp_path / "tools" / "argonia_world").mkdir()
+    (tmp_path / "tools" / "argonia_world" / "db.py").write_text(f'p = Path("{w_}/db/x.jsonl")\n')
+    assert check_world_reads.scan(tmp_path) == []   # db.py stays exempt
+    bad = (f'a = Path("{w_}/db/x.jsonl")\nb = f"{w_}/db/{{n}}.json"\nc = "{w_}/sources/x"\n'
+           f'd = Path("{w_}", "db")\ne = R / "{w_}" / "schema"\n')
+    (tmp_path / "tools" / "bad.py").write_text(bad)
+    (tmp_path / "tools" / "bad.sh").write_text(f"cat {w_}/db/x\n")
+    assert [h.split(":")[1] for h in check_world_reads.scan(tmp_path)] == ["1", "2", "3", "4", "5", "1"]
+
+
 def test_every_named_check_runs_on_the_real_schema(world):
     """run() skips a check whose tables are missing (a test's small schema); on the real world none may skip, or a
     renamed table would turn its check off with the gate still green."""
