@@ -555,15 +555,16 @@ CACHE = ROOT / "out" / "journeys" / "cache"
 
 
 def _build_key() -> str:
-    """The fit's inputs: the water cells, the world DB, the vegetation and land shards (size, mtime) and this code."""
+    """The fit's inputs, by content not mtime (a reboot rewrites out/world.sqlite): the world DB's table signature, the
+    water cells, the vegetation and land shard sizes, and this code."""
     import hashlib
-    h = hashlib.sha1()
+    from tools.argonia_world import db
+    h = hashlib.sha1(json.dumps(db.signature(db.WORLD_ROOT), sort_keys=True, default=str).encode())
     o = ROOT / "out"
-    for p in [o / "water" / "cells.jsonl", o / "world.sqlite", *sorted((o / "terrain" / "vegetation").glob("*")),
-              *sorted((o / "terrain" / "land").glob("*"))]:
+    h.update((o / "water" / "cells.jsonl").read_bytes())
+    for p in [*sorted((o / "terrain" / "vegetation").glob("*")), *sorted((o / "terrain" / "land").glob("*"))]:
         if p.is_file():
-            st = p.stat()
-            h.update(f"{p.name}:{st.st_size}:{st.st_mtime_ns};".encode())
+            h.update(f"{p.name}:{p.stat().st_size};".encode())
     for p in (ROOT / "tools" / "journeys" / "gen.py", ROOT / "tools" / "journeys" / "__init__.py"):
         h.update(p.read_bytes())
     return h.hexdigest()[:16]
