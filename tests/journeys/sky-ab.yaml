@@ -8,6 +8,7 @@
 # panel markers' current positions +-300 units; never hand-edit.
 {
  "id": "sky-ab",
+ "look": "world",
  "reach": [
   "esm",
   "tests/scenes/world-panel.txt",
@@ -107,7 +108,8 @@
      "eq": "ARG_Weather_clear_dry",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   },
   {
    "name": "coastal-lagoon-shore-dawn",
@@ -184,7 +186,8 @@
      "eq": "ARG_Weather_clear_dry",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   },
   {
    "name": "coastal-lagoon-shore-dawn-template",
@@ -261,7 +264,8 @@
      "eq": "SkyrimClear",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   },
   {
    "name": "western-frontier-high-noon",
@@ -338,7 +342,8 @@
      "eq": "ARG_Weather_clear_dry",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   },
   {
    "name": "western-frontier-high-dawn",
@@ -415,7 +420,8 @@
      "eq": "ARG_Weather_clear_dry",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   },
   {
    "name": "western-frontier-high-dawn-template",
@@ -492,7 +498,8 @@
      "eq": "SkyrimClear",
      "within": 20
     }
-   ]
+   ],
+   "scan": 6
   }
  ]
 }

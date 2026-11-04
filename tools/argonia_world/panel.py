@@ -192,6 +192,7 @@ def scene_text(vs: list[dict]) -> str:
 
 
 def journey_text(vs: list[dict]) -> str:
+    from tools.journeys import look   # the scan of headings each look stop takes (look.SCAN)
     head = ("# The world panel (1.15 §0, §f; decision 0033 §5), written by `python3 -m tools.argonia_world.panel --write`\n"
             "# from the generated data: two fixed vantages per region class (shore: dry ground beside water of the\n"
             "# class's commonest kind; high: the class's highest point, facing its longest view), each at noon (the\n"
@@ -231,8 +232,8 @@ def journey_text(vs: list[dict]) -> str:
             # the measured settle, not 14 s of fixed waits (1.15-r4-fast-loop): menus closed and the player still,
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s
             do += [{"settle": {"cap": 14, "min": 3}}]
-            steps.append({"name": f"{v['id']}-{when}", "do": do, "expect": ex})
-    j = {"id": "world-panel", "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+            steps.append({"name": f"{v['id']}-{when}", "scan": look.SCAN, "do": do, "expect": ex})
+    j = {"id": "world-panel", "look": "world", "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     return head + json.dumps(j, indent=1) + "\n"  # JSON is YAML; one writer, no hand edits

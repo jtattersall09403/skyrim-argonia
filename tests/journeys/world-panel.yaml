@@ -9,6 +9,7 @@
 # (`python3 -m tools.journeys refresh`).
 {
  "id": "world-panel",
+ "look": "world",
  "reach": [
   "esm",
   "tests/scenes/world-panel.txt",
@@ -35,6 +36,7 @@
   },
   {
    "name": "coastal-lagoon-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -112,6 +114,7 @@
   },
   {
    "name": "coastal-lagoon-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -189,6 +192,7 @@
   },
   {
    "name": "coastal-lagoon-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -266,6 +270,7 @@
   },
   {
    "name": "coastal-lagoon-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -343,6 +348,7 @@
   },
   {
    "name": "deep-river-corridor-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -420,6 +426,7 @@
   },
   {
    "name": "deep-river-corridor-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -497,6 +504,7 @@
   },
   {
    "name": "deep-river-corridor-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -574,6 +582,7 @@
   },
   {
    "name": "deep-river-corridor-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -651,6 +660,7 @@
   },
   {
    "name": "deep-sink-basin-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -728,6 +738,7 @@
   },
   {
    "name": "deep-sink-basin-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -805,6 +816,7 @@
   },
   {
    "name": "deep-sink-basin-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -882,6 +894,7 @@
   },
   {
    "name": "deep-sink-basin-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -959,6 +972,7 @@
   },
   {
    "name": "flooded-forest-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1036,6 +1050,7 @@
   },
   {
    "name": "flooded-forest-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1113,6 +1128,7 @@
   },
   {
    "name": "flooded-forest-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1190,6 +1206,7 @@
   },
   {
    "name": "flooded-forest-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1267,6 +1284,7 @@
   },
   {
    "name": "interior-swamp-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1344,6 +1362,7 @@
   },
   {
    "name": "interior-swamp-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1421,6 +1440,7 @@
   },
   {
    "name": "interior-swamp-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1498,6 +1518,7 @@
   },
   {
    "name": "interior-swamp-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1575,6 +1596,7 @@
   },
   {
    "name": "northern-transition-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1652,6 +1674,7 @@
   },
   {
    "name": "northern-transition-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1729,6 +1752,7 @@
   },
   {
    "name": "northern-transition-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1806,6 +1830,7 @@
   },
   {
    "name": "northern-transition-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1883,6 +1908,7 @@
   },
   {
    "name": "rootland-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -1960,6 +1986,7 @@
   },
   {
    "name": "rootland-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2037,6 +2064,7 @@
   },
   {
    "name": "rootland-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2114,6 +2142,7 @@
   },
   {
    "name": "rootland-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2191,6 +2220,7 @@
   },
   {
    "name": "tidal-delta-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2268,6 +2298,7 @@
   },
   {
    "name": "tidal-delta-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2345,6 +2376,7 @@
   },
   {
    "name": "tidal-delta-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2422,6 +2454,7 @@
   },
   {
    "name": "tidal-delta-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2499,6 +2532,7 @@
   },
   {
    "name": "western-frontier-shore-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2576,6 +2610,7 @@
   },
   {
    "name": "western-frontier-shore-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2653,6 +2688,7 @@
   },
   {
    "name": "western-frontier-high-noon",
+   "scan": 6,
    "do": [
     {
      "hud": "off"
@@ -2730,6 +2766,7 @@
   },
   {
    "name": "western-frontier-high-dawn",
+   "scan": 6,
    "do": [
     {
      "hud": "off"

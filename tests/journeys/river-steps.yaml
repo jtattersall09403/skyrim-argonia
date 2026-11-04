@@ -7,6 +7,7 @@
 # ground. At a gully: no water surface, a dry bed. At a still body: the surface does not flow (no drift).
 # Every stop (lane 1.15-r4-water-look): near and far water read as water, no marbled or blocky white-and-dark tiles.
 id: river-steps
+look: world
 runner: 1
 independent_steps: true
 crash_risk: medium
@@ -14,6 +15,7 @@ scene: creature-spots
 camera: first
 steps:
 - name: step-1
+  scan: 6
   # kept 19.6 m step (-50,47) s, seen from its side
   # subject: -202944 192512 26455
   do:
@@ -37,6 +39,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: step-2
+  scan: 6
   # kept 19.5 m step (-47,16) w, seen from its side
   # subject: -192512 69056 14170
   do:
@@ -59,6 +62,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: step-3
+  scan: 6
   # kept 19.5 m step (-59,-12) s, seen from its side
   # subject: -238272 -49152 7365
   do:
@@ -81,6 +85,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: gully-1
+  scan: 6
   # dry gully reach.97-2505, its bed in cell (-60,-15)
   # subject: -245632 -60416 2136
   do:
@@ -103,6 +108,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: gully-2
+  scan: 6
   # dry gully reach.1071-374, its bed in cell (-29,51)
   # subject: -114816 209024 25320
   do:
@@ -125,6 +131,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: gully-3
+  scan: 6
   # dry gully reach.1078-739, its bed in cell (-27,40)
   # subject: -106624 163968 7496
   do:
@@ -147,6 +154,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: still-1a
+  scan: 6
   # still water in cell (-36,-8), level 18.0 m; the first of a drift pair
   # subject: -145408 -30720 1257
   do:
@@ -169,8 +177,10 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: still-1b
+  scan: 6
   # still water in cell (-36,-8), level 18.0 m; still-1a's stand and aim a few seconds later
   # subject: -145408 -30720 1257
+  weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds
   do:
   - hud: off
   - console: player.setpos x -143774
@@ -184,6 +194,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: still-2a
+  scan: 6
   # still water in cell (-62,24), level 262.7 m; the first of a drift pair
   # subject: -253568 100096 18395
   do:
@@ -206,8 +217,10 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
 - name: still-2b
+  scan: 6
   # still water in cell (-62,24), level 262.7 m; still-2a's stand and aim a few seconds later
   # subject: -253568 100096 18395
+  weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds
   do:
   - hud: off
   - console: player.setpos x -253568

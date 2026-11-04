@@ -189,12 +189,24 @@ RIVER_STANDS: list = []   # (name, x, y, heading, pitch, clearance3, share, frus
 def _still_again(name: str, note: str, x: float, y: float, z: float, h: float, p: float, subj) -> str:
     """The second still of a drift pair: the same stand and aim a few seconds after the first, no reload."""
     return "\n".join([
-        f"- name: {name}", f"  # {note}", f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
+        f"- name: {name}", f"  # {note}", f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
+        "  weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds", "  do:",
         "  - hud: off", f"  - console: player.setpos x {x:.0f}", f"  - console: player.setpos y {y:.0f}",
         f"  - console: player.setpos z {z:.0f}", f"  - console: player.setangle z {h:.0f}",
         f"  - console: player.setangle x {p:.0f}", "  - wait: 5",
         "  expect:", f"  - {{read: [player], path: pos, keep: {name}}}", WEATHER_EXPECT,
         "  reader: [the header checklist for this kind of stop]"]) + "\n"
+
+
+def look_world(text: str) -> str:
+    """A generated YAML journey marked `look: world`, `scan: 6` (look.with_scan) on each still stop (a step that sets the
+    position or teleports; the setup steps keep none)."""
+    from tools.journeys import look, steps_of
+    if not re.search(r"^look: world$", text, re.M):
+        text = re.sub(r"^(id: .*)$", r"\1\nlook: world", text, count=1, flags=re.M)
+    lines = text.splitlines()
+    stops = {n for n, a, z in steps_of(text) if any(re.search(r"player\.setpos|\bcow\b|moveto", ln) for ln in lines[a:z])}
+    return look.with_scan(text, stops)
 
 
 def river_steps(b: Build, w, log: list) -> str:
@@ -242,7 +254,7 @@ def river_steps(b: Build, w, log: list) -> str:
         note = f"still water in cell ({cx},{cy}), level {su.units_to_metres(subj[2]):.1f} m"
         out.append(_cow_step(f"{name}a", note + "; the first of a drift pair", x, y, z, h, p, subj, first))
         out.append(_still_again(f"{name}b", note + f"; {name}a's stand and aim a few seconds later", x, y, z, h, p, subj))
-    return "".join(out)
+    return look_world("".join(out))
 
 
 # -- road-look ---------------------------------------------------------------------------------------------------------
@@ -727,7 +739,7 @@ def water_types(b: Build, w, log: list) -> str:
                              x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first))
         first = False
     out.append(sea_far(b, types, level, line, reach_of, log, [s_ for s_ in STANDS if s_[0] == "sea"][0]))
-    return "".join(out)
+    return look_world("".join(out))
 
 
 SEA_FAR_REACH_CELLS = 12     # a far-sea shore: the most sea cells straight out from it, up to this many
@@ -1075,7 +1087,11 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
                              for a, c in (("x", x), ("y", y))
                              for op, v in (("gt", c - SKY_TOL_U), ("lt", c + SKY_TOL_U))],
                            {"read": ["weather"], "path": "current.editor_id", "eq": edit, "within": 20}]})
-    j = {"id": "sky-ab", "reach": reach or ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+    from tools.journeys import look
+    for st in steps:   # every still stop takes the scan of headings (look.SCAN); the setup step takes none
+        if not st.get("setup"):
+            st["scan"] = look.SCAN
+    j = {"id": "sky-ab", "look": "world", "reach": reach or ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     return SKY_HEAD + json.dumps(j, indent=1) + "\n", pos
