@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1662> kForms{{
+inline constexpr std::array<FormRow, 1664> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -1667,8 +1667,10 @@ inline constexpr std::array<FormRow, 1662> kForms{{
     {"weather_chance.ARG_WChance_uplands_clear_dry", "Argonia.esm", "GLOB", 0x000EA9},
     {"weather_chance.ARG_WChance_uplands_clear_ff", "Argonia.esm", "GLOB", 0x00082F},
     {"weather_chance.ARG_WChance_uplands_cloudy_ff", "Argonia.esm", "GLOB", 0x000830},
+    {"weather_chance.ARG_WChance_uplands_cloudy_ma", "Argonia.esm", "GLOB", 0x000EFE},
     {"weather_chance.ARG_WChance_uplands_fog_ff", "Argonia.esm", "GLOB", 0x000831},
     {"weather_chance.ARG_WChance_uplands_montane_haze", "Argonia.esm", "GLOB", 0x000EAA},
+    {"weather_chance.ARG_WChance_uplands_storm", "Argonia.esm", "GLOB", 0x000EFF},
     {"weather_chance.ARG_WChance_uplands_storm_ff", "Argonia.esm", "GLOB", 0x000832},
     {"weather_chance.ARG_WChance_uplands_storm_rain", "Argonia.esm", "GLOB", 0x000838},
     {"weather_chance.ARG_WChance_uplands_tannin_haze", "Argonia.esm", "GLOB", 0x000833},

@@ -304,8 +304,22 @@ def template_colours(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, s
             for i, t in enumerate(TOD)}
 
 
+def template_graded(world) -> set[str]:
+    """The image spaces that take their template's cinematic grade and tint: those a clear (Pleasant) weather draws,
+    which takes every colour from its template (lane 1.15-r6-light). Every other image space keeps our grade and no
+    tint: Tropical Skyrim's rain, storm and overcast IMGS tint the screen yellow-green at 0.65-0.75 under saturation
+    1.5-1.9 (RainDAY 10A1C6 tint A3B185 x 0.75; StormRainDAY 0C8217 A9BA65 x 0.75), the smog-yellow rain sky the owner
+    refused (#41, lane 1.15-r6-fog-yellow)."""
+    return set(world.values("SELECT DISTINCT i FROM (SELECT w.image_day_id i, s.classification c FROM weather w JOIN "
+                            "weather_sky s ON s.weather_id = w.id UNION SELECT w.image_dawn_id, s.classification FROM "
+                            "weather w JOIN weather_sky s ON s.weather_id = w.id UNION SELECT w.image_night_id, "
+                            "s.classification FROM weather w JOIN weather_sky s ON s.weather_id = w.id) "
+                            "WHERE c = 'Pleasant' AND i IS NOT NULL"))
+
+
 def _image_records(alloc, world) -> tuple[list[dict], dict]:
     images = {r["id"]: dict(r) for r in world.query("SELECT * FROM image_space ORDER BY id")}
+    graded = template_graded(world)
     recs = []
     for i in images.values():
         i["formKey"] = alloc.form_key(i["edid"], "IMGS", f"image_space.{i['id']}")
@@ -318,7 +332,7 @@ def _image_records(alloc, world) -> tuple[list[dict], dict]:
                                    "contrast": i["contrast"]},
                      "tint": {"color": rgb(i["tint"]), "amount": i["tint_amount"]},
                      # ... and its cinematic grade and tint (lane 1.15-r6-light: ours had tint 0 and our own grade)
-                     "hdrFromTemplate": True, "gradeFromTemplate": True})
+                     "hdrFromTemplate": True, "gradeFromTemplate": i["id"] in graded})
     return recs, images
 
 

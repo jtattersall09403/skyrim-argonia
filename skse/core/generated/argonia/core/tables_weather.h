@@ -22,7 +22,7 @@ inline constexpr std::array<WeatherChance, 30> kWeatherChances{{
     {"ARG_WChance_coastal_cloudy_co", {15, 14, 11}},
     {"ARG_WChance_coastal_sea_fog", {30, 25, 20}},
     {"ARG_WChance_coastal_squall", {20, 19, 15}},
-    {"ARG_WChance_coastal_storm_rain", {10, 9, 14}},
+    {"ARG_WChance_coastal_storm", {10, 9, 14}},
     {"ARG_WChance_coastal_wet_rain", {10, 19, 29}},
     {"ARG_WChance_jungle_clear_dry", {15, 12, 7}},
     {"ARG_WChance_jungle_cloudy_ma", {14, 11, 7}},
@@ -44,9 +44,9 @@ inline constexpr std::array<WeatherChance, 30> kWeatherChances{{
     {"ARG_WChance_marsh_wet_rain", {8, 13, 18}},
     {"ARG_WChance_uplands_clear_dry", {16, 18, 13}},
     {"ARG_WChance_uplands_clear_ff", {16, 17, 13}},
-    {"ARG_WChance_uplands_cloudy_ff", {16, 17, 13}},
+    {"ARG_WChance_uplands_cloudy_ma", {16, 17, 13}},
     {"ARG_WChance_uplands_montane_haze", {20, 30, 35}},
-    {"ARG_WChance_uplands_storm_rain", {16, 18, 26}},
+    {"ARG_WChance_uplands_storm", {16, 18, 26}},
     {"ARG_WChance_uplands_tannin_haze", {16, 0, 0}},
 }};
 

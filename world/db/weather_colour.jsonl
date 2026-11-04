@@ -589,7 +589,7 @@
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"day","rgb":"9FA795","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"night","rgb":"242D23","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunrise","rgb":"807E6F","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
-{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"706250","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
+{"weather_id":"monsoon-overcast","slot":"fogFar","tod":"sunset","rgb":"5C686F","why":"fog colour at the far distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"day","rgb":"8E9888","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"night","rgb":"162321","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}
 {"weather_id":"monsoon-overcast","slot":"fogNear","tod":"sunrise","rgb":"898A7B","why":"fog colour at the near distance; overcast: grey-green deck lit from above, soft shadowless ambient, damp horizon"}

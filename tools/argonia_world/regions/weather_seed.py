@@ -152,7 +152,7 @@ P["monsoon-overcast"] = {
     "skyLower": ("8D8880", "AFAFA6", "8E7B71", "1E1F1A"),
     "horizon": ("A99B8A", "B9BCAC", "A58C75", "242622"),
     "fogNear": ("898A7B", "8E9888", "867F73", "162321"),
-    "fogFar": ("8D8B7B", "9FA795", "8E7D66", "242D23"),
+    "fogFar": ("8D8B7B", "9FA795", "5C686F", "242D23"),  # sunset: template slate (was olive)
     "ambient": ("5E6153", "788573", "5C594F", "142019"),
     "unknown": ("59564E", "6E756F", "5A4C4C", "17171A"),
     "sunlight": ("AF9C81", "C8CAAF", "AB8C75", "514F4D"),
@@ -327,18 +327,23 @@ P["storm"] = {
 # Every group holds our sunny dry-season clear-dry (the dossiers' dry season; a visible sun for the god rays), and no
 # plain Skyrim.esm weather: SkyrimClear 0x081A and SkyrimCloudy 0x012F89 (Tropical Skyrim leaves both vanilla) left the
 # jungle group, so the climate's fallback list is ours too (decision 0012).
+# No group draws Tropical Skyrim's SkyrimStormRainTU (storm-rain, 10A241): its tundra storm paints every day fog,
+# sky and ambient slot yellow-olive (fog near D7BC22, far 666242, horizon 535026); the storm state is our own storm
+# on SkyrimStormRain, grey (lane 1.15-r6-fog-yellow, owner #41 19:05).
+# Nor Tropical's SkyrimCloudyFF (cloudy-ff, 10A23F): its noon fog near is 688107, a saturated olive; the uplands'
+# cloudy day is SkyrimCloudyMA.
 # the realisations of each group's synoptic states after 1.15: at most five weathers a group, so with the region's
 # mist weather a list holds 1-6 entries as vanilla's do (skyrim-does-it-this-way §7: p50 3, max 6). The ground-mist
 # state is realised by the region's mist regime (REGIMES), not here. Group -> state -> [weather ids].
 REALISE = {
     "coastal": {"clear-humid": ["clear-dry", "cloudy-co"], "monsoon-downpour": ["wet-rain"], "sea-squall": ["squall"],
-                "storm": ["storm-rain"]},
+                "storm": ["storm"]},
     "marsh": {"clear-humid": ["cloudy-ma", "clear-dry"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
               "storm": ["storm"]},
     "jungle": {"clear-humid": ["cloudy-ma", "clear-dry"], "monsoon-downpour": ["wet-rain", "monsoon-overcast"],
                "storm": ["storm"]},
-    "uplands": {"clear-humid": ["clear-ff", "cloudy-ff", "clear-dry"], "dry-haze": ["tannin-haze"],
-                "storm": ["storm-rain"]},
+    "uplands": {"clear-humid": ["clear-ff", "cloudy-ma", "clear-dry"], "dry-haze": ["tannin-haze"],
+                "storm": ["storm"]},
     "lowland": {"clear-humid": ["clear-ff", "cloudy-ma", "clear-dry"], "dry-haze": ["tannin-haze"],
                 "monsoon-downpour": ["wet-rain"]},
 }

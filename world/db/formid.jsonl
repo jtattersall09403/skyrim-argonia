@@ -1792,8 +1792,10 @@
 {"editor_id":"ARG_WChance_uplands_clear_dry","plugin":"Argonia.esm","form_id":3753,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_clear_dry"}
 {"editor_id":"ARG_WChance_uplands_clear_ff","plugin":"Argonia.esm","form_id":2095,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_clear_ff"}
 {"editor_id":"ARG_WChance_uplands_cloudy_ff","plugin":"Argonia.esm","form_id":2096,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_cloudy_ff"}
+{"editor_id":"ARG_WChance_uplands_cloudy_ma","plugin":"Argonia.esm","form_id":3838,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_cloudy_ma"}
 {"editor_id":"ARG_WChance_uplands_fog_ff","plugin":"Argonia.esm","form_id":2097,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_fog_ff"}
 {"editor_id":"ARG_WChance_uplands_montane_haze","plugin":"Argonia.esm","form_id":3754,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_montane_haze"}
+{"editor_id":"ARG_WChance_uplands_storm","plugin":"Argonia.esm","form_id":3839,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_storm"}
 {"editor_id":"ARG_WChance_uplands_storm_ff","plugin":"Argonia.esm","form_id":2098,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_storm_ff"}
 {"editor_id":"ARG_WChance_uplands_storm_rain","plugin":"Argonia.esm","form_id":2104,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_storm_rain"}
 {"editor_id":"ARG_WChance_uplands_tannin_haze","plugin":"Argonia.esm","form_id":2099,"record_type":"GLOB","entity_key":"weather_chance.ARG_WChance_uplands_tannin_haze"}

@@ -112,7 +112,10 @@ def test_written_sky_follows_its_templates(tmp_path):
             i = next(x for x in images if x["formKey"] == key)
             errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_image(
                 ours[_fid(key)], van[_fid(i["template"])], tod, edid[_fid(i["template"])])]
-            errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_grade(ours[_fid(key)], van[_fid(i["template"])])]
+            if i["gradeFromTemplate"]:  # a clear weather's image: the template's grade and tint (lane 1.15-r6-light)
+                errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_grade(ours[_fid(key)], van[_fid(i["template"])])]
+            elif struct.unpack_from("<f", ours[_fid(key)].first("TNAM"), 0)[0] != 0.0:  # else ours, untinted
+                errs.append(f"{w['edid']} {i['edid']}: tinted")  # (rain's template tint: lane 1.15-r6-fog-yellow)
     assert errs == []
 
 
