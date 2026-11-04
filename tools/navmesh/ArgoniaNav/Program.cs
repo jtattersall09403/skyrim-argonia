@@ -65,24 +65,101 @@ static class Cells
         var objPath = Path.Combine(inDir, "objects.f32");
         var obj = File.Exists(objPath) ? Raster<float>(objPath, (int)(new FileInfo(objPath).Length / 4)) : Array.Empty<float>();
         var grid = new Grid(rows, cols, x0, ytop, step, hgt, wat, flg, obj);
-        long cells = 0, tris = 0;
+        long cells = 0, tris = 0, reused = 0;
+        // Each cell's object triangles, bucketed once (each cell scanned every triangle before), in file order.
+        int nx = box[2] - box[0] + 1, ny = box[3] - box[1] + 1, B = p.BorderSamples;
+        var buckets = new List<int>[nx * ny];
+        for (var k = 0; k < buckets.Length; k++) buckets[k] = new List<int>();
+        float pad = (B + 1) * step;
+        for (var t = 0; t + 9 <= obj.Length; t += 9)
+        {
+            float xa = MathF.Min(obj[t], MathF.Min(obj[t + 3], obj[t + 6])) - pad, xb = MathF.Max(obj[t], MathF.Max(obj[t + 3], obj[t + 6])) + pad;
+            float ya = MathF.Min(obj[t + 1], MathF.Min(obj[t + 4], obj[t + 7])) - pad, yb = MathF.Max(obj[t + 1], MathF.Max(obj[t + 4], obj[t + 7])) + pad;
+            int cxa = Math.Max(box[0], (int)MathF.Floor(xa / CellUnits)), cxb = Math.Min(box[2], (int)MathF.Floor(xb / CellUnits));
+            int cya = Math.Max(box[1], (int)MathF.Floor(ya / CellUnits)), cyb = Math.Min(box[3], (int)MathF.Floor(yb / CellUnits));
+            for (var cy = cya; cy <= cyb; cy++) for (var cx = cxa; cx <= cxb; cx++) buckets[(box[3] - cy) * nx + (cx - box[0])].Add(t);
+        }
+        // Checkpoint (decision 0037): each cell's result in cache/cx_cy.bin under the sha256 of what it reads (the
+        // params, its window of height, water and flags samples, its object triangles, CacheVersion); a rerun or a
+        // ground change elsewhere reuses every cell whose inputs are unchanged. Written by temp file and rename.
+        var cache = Path.Combine(outDir, "cache");
+        Directory.CreateDirectory(cache);
+        var prm = System.Text.Encoding.UTF8.GetBytes(g.GetProperty("params").GetRawText() + "|" + CacheVersion + "|" + step + "|" + x0 + "|" + ytop);
+        var all = new (List<float>, List<int>)[nx * ny];
+        Parallel.For(0, all.Length, new ParallelOptions { MaxDegreeOfParallelism = Threads }, k =>
+        {
+            int cx = box[0] + k % nx, cy = box[3] - k / nx;
+            var key = CellKey(grid, prm, B, cx, cy, buckets[k]);
+            var file = Path.Combine(cache, $"{cx}_{cy}.bin");
+            if (File.Exists(file))
+            {
+                var r = Load(file, key);
+                if (r is { } got) { all[k] = got; Interlocked.Increment(ref reused); return; }
+            }
+            all[k] = Cell(grid, p, cx, cy, buckets[k]);
+            var tmp = file + $".{Environment.ProcessId}.tmp";
+            using (var w = new BinaryWriter(File.Create(tmp))) { w.Write(key); WriteCell(w, cx, cy, all[k]); }
+            File.Move(tmp, file, true);
+        });
         for (var cy = box[3]; cy >= box[1]; cy--)
         {
             using var f = File.Create(Path.Combine(raw, $"cy{cy:+000;-000}.bin"));
             using var w = new BinaryWriter(f);
-            var row = new (List<float>, List<int>)[box[2] - box[0] + 1];  // cells in parallel, written in order
-            Parallel.For(0, row.Length, new ParallelOptions { MaxDegreeOfParallelism = Threads }, i => row[i] = Cell(grid, p, box[0] + i, cy));
             for (var cx = box[0]; cx <= box[2]; cx++)
             {
-                var (v, t) = row[cx - box[0]];
-                w.Write(cx); w.Write(cy); w.Write(v.Count / 3); w.Write(t.Count / 4);
-                foreach (var c in v) w.Write(c);
-                for (var i = 0; i < t.Count; i += 4) { w.Write((ushort)t[i]); w.Write((ushort)t[i + 1]); w.Write((ushort)t[i + 2]); w.Write((byte)t[i + 3]); }
-                cells++; tris += t.Count / 4;
+                var k = (box[3] - cy) * nx + (cx - box[0]);
+                WriteCell(w, cx, cy, all[k]);
+                cells++; tris += all[k].Item2.Count / 4;
+                all[k] = default;
             }
         }
+        Console.WriteLine($"cells: {reused} of {cells} reused from the cache");
         Console.WriteLine($"cells: {cells} cells, {tris} triangles");
         return 0;
+    }
+
+    const string CacheVersion = "cells/1";  // bump when Cell's method changes: every cached cell is then rebuilt
+
+    static void WriteCell(BinaryWriter w, int cx, int cy, (List<float>, List<int>) c)
+    {
+        var (v, t) = c;
+        w.Write(cx); w.Write(cy); w.Write(v.Count / 3); w.Write(t.Count / 4);
+        foreach (var x in v) w.Write(x);
+        for (var i = 0; i < t.Count; i += 4) { w.Write((ushort)t[i]); w.Write((ushort)t[i + 1]); w.Write((ushort)t[i + 2]); w.Write((byte)t[i + 3]); }
+    }
+
+    static (List<float>, List<int>)? Load(string file, byte[] key)
+    {
+        try
+        {
+            using var r = new BinaryReader(File.OpenRead(file));
+            if (!r.ReadBytes(32).AsSpan().SequenceEqual(key)) return null;
+            r.ReadInt32(); r.ReadInt32();
+            int nv = r.ReadInt32(), nt = r.ReadInt32();
+            var v = new List<float>(nv * 3); var t = new List<int>(nt * 4);
+            for (var i = 0; i < nv * 3; i++) v.Add(r.ReadSingle());
+            for (var i = 0; i < nt; i++) { t.Add(r.ReadUInt16()); t.Add(r.ReadUInt16()); t.Add(r.ReadUInt16()); t.Add(r.ReadByte()); }
+            return (v, t);
+        }
+        catch (Exception) { return null; }  // a torn or old file: rebuilt
+    }
+
+    static byte[] CellKey(Grid g, byte[] prm, int B, int cx, int cy, List<int> objIdx)
+    {
+        using var h = System.Security.Cryptography.IncrementalHash.CreateHash(System.Security.Cryptography.HashAlgorithmName.SHA256);
+        h.AppendData(prm);
+        int n = 32 + 2 * B + 1, c0 = g.Col(cx * CellUnits) - B, r0 = g.Row(cy * CellUnits + CellUnits) - B;
+        h.AppendData(BitConverter.GetBytes(c0)); h.AppendData(BitConverter.GetBytes(r0));
+        for (var j = 0; j < n; j++)
+        {
+            int k = (r0 + j) * g.Cols + c0;
+            if (k < 0 || k + n > g.H.Length) continue;  // Cell throws on such a window
+            h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.H.AsSpan(k, n)));
+            h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.W.AsSpan(k, n)));
+            h.AppendData(g.F.AsSpan(k, n));
+        }
+        foreach (var t in objIdx) h.AppendData(System.Runtime.InteropServices.MemoryMarshal.AsBytes(g.Obj.AsSpan(t, 9)));
+        return h.GetHashAndReset();
     }
 
     static T[] Raster<T>(string path, int n) where T : struct
@@ -117,7 +194,7 @@ static class Cells
         return (z1 + z2) / 2;
     }
 
-    static (List<float>, List<int>) Cell(Grid g, Params p, int cx, int cy)
+    static (List<float>, List<int>) Cell(Grid g, Params p, int cx, int cy, List<int> objIdx)
     {
         float wx0 = cx * CellUnits, wy0 = cy * CellUnits;
         int B = p.BorderSamples, n = 32 + 2 * B + 1;  // samples per side of the window
@@ -161,7 +238,7 @@ static class Cells
         var objV = new List<float>();
         var objT = new List<int>();
         var objA = new List<int>();
-        for (var t = 0; t + 9 <= g.Obj.Length; t += 9)
+        foreach (var t in objIdx)  // the bucketed triangles, a superset of those the window takes, in file order
         {
             float xa = MathF.Min(g.Obj[t], MathF.Min(g.Obj[t + 3], g.Obj[t + 6])), xb = MathF.Max(g.Obj[t], MathF.Max(g.Obj[t + 3], g.Obj[t + 6]));
             float ya = MathF.Min(g.Obj[t + 1], MathF.Min(g.Obj[t + 4], g.Obj[t + 7])), yb = MathF.Max(g.Obj[t + 1], MathF.Max(g.Obj[t + 4], g.Obj[t + 7]));
