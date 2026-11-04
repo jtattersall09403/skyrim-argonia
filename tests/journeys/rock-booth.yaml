@@ -4,6 +4,7 @@
 # own clear weather (no fog over the base). Reader checklist per still: sunk (no open bottom), no gap
 # under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.
 id: rock-booth
+look: world
 runner: 1
 independent_steps: true
 crash_risk: low
@@ -14,27 +15,30 @@ steps:
   # 0C0008:ArgoniaWorld.esm ref DD1A00 in cell (-55,63), tilt 49.3 deg, scale 1.00, bound radius 76 u, stand 304 u off
   # subject: -222823 258927 38246
   do:
+  - hud: off
   - console:
       line: cow ARG_Province -55 63
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -222982
+      line: player.setpos x -222834
   - console:
-      line: player.setpos y 258667
+      line: player.setpos y 258507
   - console:
-      line: player.setpos z 37998
+      line: player.setpos z 38083
   - console:
-      line: player.setangle z 32
+      line: player.setangle z 1
   - console:
-      line: player.setangle x -23
+      line: player.setangle x -6
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xDD1A00
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y
@@ -45,27 +49,30 @@ steps:
   # 1DE977:Black Marsh.esm ref B0C424 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
   # subject: -242757 75461 16940
   do:
+  - hud: off
   - console:
       line: cow ARG_Province -60 18
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -242460
+      line: player.setpos x -242409
   - console:
-      line: player.setpos y 75419
+      line: player.setpos y 75503
   - console:
-      line: player.setpos z 16657
+      line: player.setpos z 16649
   - console:
-      line: player.setangle z 278
+      line: player.setangle z 263
   - console:
-      line: player.setangle x -28
+      line: player.setangle x -26
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xB0C424
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y
@@ -76,27 +83,30 @@ steps:
   # 0C0005:ArgoniaWorld.esm ref B8CA05 in cell (-41,26), tilt 48.8 deg, scale 0.77, bound radius 64 u, stand 300 u off
   # subject: -164965 107370 21912
   do:
+  - hud: off
   - console:
       line: cow ARG_Province -41 26
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -164666
+      line: player.setpos x -164710
   - console:
-      line: player.setpos y 107400
+      line: player.setpos y 107255
   - console:
-      line: player.setpos z 21673
+      line: player.setpos z 21687
   - console:
-      line: player.setangle z 264
+      line: player.setangle z 294
   - console:
-      line: player.setangle x -21
+      line: player.setangle x -20
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xB8CA05
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y
@@ -107,27 +117,30 @@ steps:
   # 0C0006:ArgoniaWorld.esm ref CB0401 in cell (24,44), tilt 48.7 deg, scale 0.89, bound radius 113 u, stand 453 u off
   # subject: 101777 182165 13266
   do:
+  - hud: off
   - console:
       line: cow ARG_Province 24 44
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 101821
+      line: player.setpos x 100793
   - console:
-      line: player.setpos y 181573
+      line: player.setpos y 181495
   - console:
-      line: player.setpos z 12770
+      line: player.setpos z 12256
   - console:
-      line: player.setangle z 356
+      line: player.setangle z 56
   - console:
-      line: player.setangle x -32
+      line: player.setangle x -37
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xCB0401
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y
@@ -138,27 +151,30 @@ steps:
   # 0C0007:ArgoniaWorld.esm ref C59609 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
   # subject: -167419 162556 26959
   do:
+  - hud: off
   - console:
       line: cow ARG_Province -41 39
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -167092
+      line: player.setpos x -167364
   - console:
-      line: player.setpos y 162319
+      line: player.setpos y 162210
   - console:
-      line: player.setpos z 26479
+      line: player.setpos z 26639
   - console:
-      line: player.setangle z 306
+      line: player.setangle z 351
   - console:
-      line: player.setangle x -42
+      line: player.setangle x -30
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xC59609
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y
@@ -169,27 +185,30 @@ steps:
   # 1DE971:Black Marsh.esm ref C8963A in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
   # subject: -140385 172969 24665
   do:
+  - hud: off
   - console:
       line: cow ARG_Province -35 42
       settle: 60
   - wait: 8
-  - console:
-      line: fw ARG_Weather_clear_dry
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -140179
+      line: player.setpos x -139833
   - console:
-      line: player.setpos y 173480
+      line: player.setpos y 173401
   - console:
-      line: player.setpos z 24958
+      line: player.setpos z 24789
   - console:
-      line: player.setangle z 202
+      line: player.setangle z 232
   - console:
-      line: player.setangle x 37
+      line: player.setangle x 19
   - wait: 6
   - console: prid ArgoniaWorld.esm|0xC8963A
   expect:
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
     keep: rock_x
   - console: getpos y

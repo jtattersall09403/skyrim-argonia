@@ -15,6 +15,11 @@ Vocabulary (when $ARGONIA_PRIVATE/vocab.json is present; tools/fetch_vocab.py fi
   - an `ARG_Ref_*` word is a placed ref of ours (the world database's formid rows).
 Reach (the pass ledger, tools/pass_ledger.py): `reach:` at the journey or a step is a list of repo paths or git
 pathspec globs (or `esm`), each matching a tracked file; a step's `needs:` names earlier steps.
+Look journeys (lane 1.15-r6-look-journeys-standard): a journey marked `look: world` (its stills are of the world, judged
+by a reader) has `camera: first`, a `hud: off` before its first still (in every stop with `independent_steps`, a
+relaunch drops it), and each stop (a step that teleports: cow, coc, setpos, moveto) forces a weather by form id
+(`fw <plugin>|0x<hex>`) and reads it back (`{read: [weather], path: current.editor_id, eq: ..., within: <=20}`), or
+says `weather: any` with a why. Round 6's stills were third person, HUD on, in fog.
 Without the cache the vocabulary rules are skipped with one warning; the gate never fails for want of it.
 """
 from __future__ import annotations
@@ -125,9 +130,48 @@ def reach(value, where: str) -> list[str]:
             if p != "esm" and not pass_ledger._blobs(str(pass_ledger.REPO), (p,)).strip()]
 
 
+TELEPORT = re.compile(r"^\s*(?:player\.)?(?:cow|coc|setpos|moveto|centeronworld|centeroncell)\b", re.I)
+FORCE_WEATHER = re.compile(r"^\s*fw\s+[\w'-]+\.es[pml]\|0x[0-9A-Fa-f]{1,6}\s*$", re.I)
+
+
+def _line(a) -> str | None:
+    (k, v), = a.items()
+    if k != "console":
+        return None
+    return str(v["line"] if isinstance(v, dict) else v)
+
+
+def look(journey: dict) -> list[str]:
+    """The look-journey standard (`look: world`): first person, HUD off before the first still, weather per stop."""
+    if journey.get("look") != "world":
+        return []
+    errs = [] if journey.get("camera") == "first" else ["look: world: `camera: first` at the head"]
+    steps = journey.get("steps", [])
+    indep = bool(journey.get("independent_steps"))
+    lines = lambda s: [ln for a in s.get("do", []) if (ln := _line(a)) is not None]  # noqa: E731
+    hud = lambda s: any(a in ({"hud": "off"}, {"hud": False}) for a in s.get("do", []))  # noqa: E731
+    stops = [s for s in steps if any(TELEPORT.match(ln) for ln in lines(s))]
+    if steps and not hud(steps[0]):
+        errs.append(f"step {steps[0]['name']}: look: world: `hud: off` before the first still")
+    for s in stops:
+        n = s["name"]
+        if indep and not hud(s):
+            errs.append(f"step {n}: look: world: `hud: off` in each stop (independent_steps relaunches)")
+        if s.get("weather") == "any":
+            continue
+        if not any(FORCE_WEATHER.match(ln) for ln in lines(s)):
+            errs.append(f"step {n}: look: world: force the weather by form id (`fw Argonia.esm|0x...`) or say "
+                        "`weather: any  # why`")
+        if not any(e.get("read") == ["weather"] and e.get("path") == "current.editor_id" and "eq" in e
+                   and float(e.get("within", 99)) <= 20 for e in s.get("expect", [])):
+            errs.append(f"step {n}: look: world: read the weather back (`{{read: [weather], path: current.editor_id, "
+                        "eq: ..., within: 20}`)")
+    return errs
+
+
 def lint(journey: dict, vocab: dict | None) -> list[str]:
     """Every error in a runnable journey, as `step <name>: <what>`."""
-    errs = []
+    errs = look(journey)
     if "reach" in journey:
         errs += reach(journey["reach"], "")
     if "independent_steps" in journey and not isinstance(journey["independent_steps"], bool):

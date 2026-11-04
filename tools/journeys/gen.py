@@ -265,8 +265,10 @@ def road_look(b: Build, w, log: list) -> str:
     pts = [su.province_to_skyrim(r["x_m"], r["y_m"]) for r in w.query(
         "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", ROAD)]
     total = sum(math.hypot(q[0] - p[0], q[1] - p[1]) for p, q in zip(pts, pts[1:]))
-    lines = head + ["id: road-look", "runner: 1", "independent_steps: true", "crash_risk: low", "scene: claywater", "steps:",
-                    "  - name: road-in", "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]"]
+    lines = head + ["id: road-look", "look: world", "runner: 1", "independent_steps: true", "crash_risk: low",
+                    "scene: claywater", "camera: first", "steps:",
+                    "  - name: road-in", "    do: [{hud: \"off\"}]",
+                    "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]"]
     for k, (name, f) in enumerate(ROAD_AT):
         ahead = ROAD_AHEAD_M * U / total
         sx, sy, _ = _along(pts, min(f + ahead, 1.0))
@@ -277,11 +279,14 @@ def road_look(b: Build, w, log: list) -> str:
         h, p = aim(eye_of(b, x, y), subj)
         log.append({"journey": "road-look", "step": name, "moved_m": f0["moved_m"], "why": f0["why"], "clear": f0["clear"]})
         lines += [f"  - name: {name}", f"    # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
-                  f"    do: [{{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}}, "
+                  f"    do: [{{hud: \"off\"}}, {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, "
+                  "{settle: {cap: 14, min: 3}},",
+                  f"         {{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}}, "
                   f"{{console: \"player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}\"}},",
                   f"         {{console: \"player.setangle z {h:.0f}\"}}, {{console: \"player.setangle x {p:.0f}\"}}, {{wait: 4}}]"]
-        if k == len(ROAD_AT) - 1:
-            lines.append("    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]")
+        lines += ["    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]",
+                  "    reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt "
+                  "blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]"]
     return "\n".join(lines) + "\n"
 
 

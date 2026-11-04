@@ -16,7 +16,7 @@ import sys
 
 from tools.argonia_world import skyrim_units as su
 from tools.journeys import DERIVED, JOURNEYS, ROOT, SUBJECT_M, Build, check, eye_of, frame, reframe, stand_near
-from tools.journeys import gen
+from tools.journeys import gen, look
 
 
 def _panel(b: Build, w, log: list) -> None:
@@ -55,6 +55,11 @@ def _reframe(b: Build, name: str, log: list) -> None:
     log += [{"journey": name, **s} for s in steps]
 
 
+def _look(b: Build, name: str, log: list, band) -> None:
+    p = JOURNEYS / f"{name}.yaml"
+    p.write_text(look.reaim(b, look.booth_standard(p.read_text()), name, log, band))
+
+
 def refresh(only: set[str] | None = None) -> int:
     from tools.argonia_world import db
     from pathlib import Path
@@ -77,24 +82,32 @@ def refresh(only: set[str] | None = None) -> int:
         from tools.argonia_world.vegetation import tree_booth
         tree_booth.write(Path(veg), w)
         _reframe(b, "tree-seat", log)
+        _look(b, "tree-seat", log, lambda d: (max(6.0, d * 0.8), max(14.0, d * 1.4)))   # out from under its own crown
     if want("rock-booth"):
         from tools.argonia_world.vegetation import booth
         booth.write(Path(veg), w)
         _reframe(b, "rock-booth", log)
+        _look(b, "rock-booth", log, lambda d: (max(3.0, d), max(8.0, d * 2)))
     if want("river-steps"):
         (JOURNEYS / "river-steps.yaml").write_text(gen.river_steps(b, w, log))
     if want("water-types"):
         (JOURNEYS / "water-types.yaml").write_text(gen.water_types(b, w, log))
     if want("road-look"):
         (JOURNEYS / "road-look.yaml").write_text(gen.road_look(b, w, log))
+        p = JOURNEYS / "road-look.yaml"   # the road lane along its line: stands within 30 degrees of it, 15-30 m back
+        p.write_text(look.reaim(b, p.read_text(), "road-look", log, lambda d: (15.0, 30.0), 30.0))
+    if want("ground-materials"):
+        p = JOURNEYS / "ground-materials.yaml"
+        p.write_text(look.ground_materials(b, log, [ln for ln in p.read_text().splitlines() if ln.startswith("#")]))
     if want("creatures-kinds"):
         (JOURNEYS / "creatures-kinds.yaml").write_text(gen.creatures_kinds(b, w, log))
-    for n in ("claywater-look", "claywater-walk"):
+    for n in ("claywater-look", "claywater-walk"):   # claywater-look's standard lines are authored and kept
         if want(n):
             (JOURNEYS / n).with_suffix(".yaml").write_text(gen.claywater(b, n, log))
     moved = [r for r in log if r["moved_m"]]
     stuck = [r for r in log if not r["clear"]]
-    for r in moved + [r for r in stuck if r not in moved]:
+    for r in moved + [r for r in stuck if r not in moved] + [r for r in log if r["why"].startswith("clearance:")
+                                                               and r not in moved and r not in stuck]:
         print(f"journeys: {r['journey']} {r['step']}: {r['why']}; moved {r['moved_m']} m"
               f"{'' if r['clear'] else ' (no clear stand within reach)'}")
     _put_reach(reach)
@@ -125,10 +138,20 @@ def _put_reach(lines: dict) -> None:
 
 
 def _check(b: Build, only=None) -> int:
-    bad = {n: e for n, e in check(b, [n for n in DERIVED if only is None or n in only]).items() if e}
+    bad = {n: e for n, e in check(b, [n for n in (*DERIVED, "ground-materials") if only is None or n in only]).items() if e}
     for n, es in bad.items():
         for e in es:
             print(f"journeys STALE {n}: {e}")
+    import yaml
+    from tools import journey_lint
+    for n in sorted({*DERIVED, "ground-materials"}):   # the look-journey standard (tools/journey_lint.py `look`)
+        p = JOURNEYS / f"{n}.yaml"
+        if (only is None or n in only) and p.is_file():
+            es = journey_lint.look(yaml.safe_load(p.read_text()))
+            if es:
+                bad.setdefault(n, []).extend(es)
+                for e in es:
+                    print(f"journeys LOOK {n}: {e}")
     print(f"journeys check: {sum(map(len, bad.values()))} stale stands in {len(bad)} journeys")
     return 1 if bad else 0
 

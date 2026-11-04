@@ -7,22 +7,34 @@
 # each step only checks the player landed in the province.
 id: road-look
 reach: [esm, "tools/argonia_world/routes/**", "tools/argonia_world/terrain/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
+look: world
 runner: 1
+independent_steps: true
 crash_risk: low
 scene: claywater
+camera: first
 steps:
   - name: road-in
+    do: [{hud: "off"}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
   - name: blackwood-20
     # subject: -167759 31035 4679
-    do: [{console: "player.setpos x -166320"}, {console: "player.setpos y 30728"}, {console: "player.setpos z 4863"},
-         {console: "player.setangle z 282"}, {console: "player.setangle x 12"}, {wait: 4}]
+    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+         {console: "player.setpos x -166732"}, {console: "player.setpos y 30816"}, {console: "player.setpos z 4795"},
+         {console: "player.setangle z 282"}, {console: "player.setangle x 13"}, {wait: 4}]
+    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
+    reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]
   - name: blackwood-flat-46
     # subject: -197391 40981 4989
-    do: [{console: "player.setpos x -195643"}, {console: "player.setpos y 40898"}, {console: "player.setpos z 4968"},
-         {console: "player.setangle z 273"}, {console: "player.setangle x 3"}, {wait: 4}]
+    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+         {console: "player.setpos x -196507"}, {console: "player.setpos y 40413"}, {console: "player.setpos z 4988"},
+         {console: "player.setangle z 303"}, {console: "player.setangle x 7"}, {wait: 4}]
+    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
+    reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]
   - name: blackwood-slope-57
     # subject: -210012 40295 4732
-    do: [{console: "player.setpos x -209374"}, {console: "player.setpos y 41925"}, {console: "player.setpos z 4995"},
-         {console: "player.setangle z 201"}, {console: "player.setangle x 12"}, {wait: 4}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+         {console: "player.setpos x -209841"}, {console: "player.setpos y 41826"}, {console: "player.setpos z 4803"},
+         {console: "player.setangle z 186"}, {console: "player.setangle x 7"}, {wait: 4}]
+    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
+    reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]

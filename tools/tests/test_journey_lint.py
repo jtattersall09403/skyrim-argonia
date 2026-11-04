@@ -88,3 +88,28 @@ def test_reach_and_needs():
     errs = jl.lint(bad, None)
     assert any("reach: a list" in e for e in errs) and any("independent_steps" in e for e in errs)
     assert any("matches no tracked file" in e for e in errs) and any("not an earlier step" in e for e in errs)
+
+
+def test_a_look_journey_needs_first_person_hud_off_and_forced_weather_per_stop():
+    stop = {"name": "s", "do": [{"console": {"line": "cow ARG_Province -9 27", "settle": 60}}], "expect": []}
+    j = {"id": "j", "look": "world", "independent_steps": True, "steps": [stop]}
+    errs = L.look(j)
+    assert any("camera: first" in e for e in errs) and any("hud: off" in e for e in errs)
+    assert any("form id" in e for e in errs) and any("read the weather back" in e for e in errs)
+    good = {"name": "s", "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"},
+                                {"console": "fw Argonia.esm|0x000E9B"}],
+            "expect": [{"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}]}
+    assert L.look({**j, "camera": "first", "steps": [good]}) == []
+    by_edid = {**good, "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"}, {"console": "fw ARG_Weather_clear_dry"}]}
+    assert any("form id" in e for e in L.look({**j, "camera": "first", "steps": [by_edid]}))
+    anyw = {"name": "s", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any"}
+    assert L.look({**j, "camera": "first", "steps": [anyw]}) == []
+    assert L.look({"id": "j", "steps": [stop]}) == []   # unmarked: not a look journey
+
+
+def test_the_five_look_journeys_meet_the_standard():
+    import yaml
+    for n in ("ground-materials", "road-look", "rock-booth", "tree-seat", "claywater-look"):
+        j = yaml.safe_load((pathlib.Path(__file__).resolve().parents[2] / "tests" / "journeys" / f"{n}.yaml").read_text())
+        assert j.get("look") == "world", n
+        assert L.look(j) == [], (n, L.look(j)[:3])
