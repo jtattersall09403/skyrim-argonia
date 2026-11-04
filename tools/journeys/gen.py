@@ -467,6 +467,11 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
             return None
         sh, cells = frame_read(b, x, y, h, p)
         ts = type_share(cells, types, want)[0] if types is not None else 1.0
+        if types is not None:   # the stand's own cell or the aim cell's 3x3 carries the stop's type (cell_water's, the XCWT rule)
+            ac = su.cell_of(subj[0], subj[1])
+            if types.get(su.cell_of(x, y)) not in want and not any(
+                    types.get((ac[0] + i, ac[1] + j)) in want for i in (-1, 0, 1) for j in (-1, 0, 1)):
+                ts = 0.0
         miss = sh < frame_floor(name) or ts < TYPE_MIN_SHARE
         if strict and miss:
             return None
@@ -667,6 +672,9 @@ def water_types(b: Build, w, log: list) -> str:
         ts, others = type_share(cells_, types, want)
         fc = frustum_cover(b, eye_of(b, x, y), h, p)
         STANDS.append((name, x, y, h, p, cl, fs, share, fc, ts, others[:3]))
+        ac = su.cell_of(subj[0], subj[1])
+        print(f"water-types: {name}: stand cell {su.cell_of(x, y)} {types.get(su.cell_of(x, y))}, aim cell {ac} "
+              f"{types.get(tuple(ac))}")
         print(f"water-types: {name}: clearance {cl[0]}/{cl[1]}/{cl[2]} (plants on the eye line / canopy / tall grass); "
               f"{cover_text(fc)} ({'ok' if cover_ok(fc, name == 'sea') else 'OVER'}); type share {ts:.0%} "
               f"(needs {TYPE_MIN_SHARE:.0%}; other cells {others[:3]}); "
