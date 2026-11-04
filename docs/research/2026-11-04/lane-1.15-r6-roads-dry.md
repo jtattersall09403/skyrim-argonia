@@ -73,3 +73,27 @@ Deepest fords on the 20:19 ground:
 | glenbridge | 0.96 m | reach.1085-1169, channel, 9.7 m |
 
 No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (widest: soulrest-blackrose at reach.1249-3511, already 0.39 m). The depths come from the water field's carve left in the ring and the channels, not from the reach, so no bridge candidate. Recheck after r6-land2: any ford still over 0.3 m is a bridge candidate to name here.
+
+## Round 3: the 21:58 ground (r6-land2, built from 6479c080), measured without a generate
+1. **gideon-soulrest's 4.01 m "ford" is a step under the road.** The road at (1600, 3041) m crosses the cell line between the 60.6 m and 55.7 m cells: a 4.9 m step, channel reach.878-1669.
+   - The cap took: the bed stands 0.3 m under each side's own level.
+   - The census measured the lower side against the upper cell's level.
+   - No ford exists at a 4.9 m fall, so this is a **bridge candidate**, not a bed to force.
+   - The census now lists any wet run within 3 samples of a step (a drop over 0.5 m) as a bridge candidate with its drop, not as a ford. Six roads have one, drops 4.8-5.8 m:
+     - gideon-soulrest (1600, 3041);
+     - gideon-stormhold, glenbridge and north-shadowfen-rootworm-line, all at (1871, 2723);
+     - stormhold-thorn and dres-slave-road, both at (5581, 1461).
+2. **Deep fords left:** rose-causeway 2.33 m, coast-road 2.3 m, cordon-line 2.12 m.
+   - All three are one point, (2494, 6243): three tracks meet where reach.1362-3419 enters a still body.
+   - That is inside the 30 m deep_water entrance site of place.imperial-penal-south.natural-dive-shaft.
+   - `shape_sites` runs after `dry_corridor` and cuts its bowl through the corridor.
+   - This is a place call, not a ground rule: either the tracks route around the dive shaft, or the site wins and the junction needs a boardwalk or bridge. Proposed to the planner; not forced in code.
+3. **Wet metres:** 13 m on 4 roads (glenbridge 2, cordon-line 4, nisswo-line 5, rootworm-line 2), all beside the step and site points above.
+4. **Bank bar, measured (0034).**
+   - Method: `terrain/probes/vanilla_road_banks.py` on Skyrim.esm Tamriel cells -20..20 x -25..10. That is 578 road-surface meshes, with 257 sides where the road stands above the land. At each side, the fall over the 8 m beside the road edge.
+   - Result: p50 0.077, p95 0.304, **p99 0.429**, max 0.580 m per m.
+   - The census now prints `bank_bar` = 0.429 with its source, and holds each road's p99 fall over the 8 m beside the core edge, on the raised mask, to it.
+   - Every road passes: p99 from 0.015 (thorn-tear) to 0.329 (rose-causeway).
+   - Steepest single side: gideon-stormhold 0.776 and gideon-soulrest 0.696, both beside the step crossings. That is 1.8x Skyrim's max, and it goes away with the bridges.
+   - The fade width does not need to widen with depth.
+   - GRADE_MAX 0.219 remains the road's longitudinal grade only.
