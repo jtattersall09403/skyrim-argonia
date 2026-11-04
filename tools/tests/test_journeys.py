@@ -187,3 +187,21 @@ def test_clearance_counts_fronds_on_the_line_and_canopy_over_the_eye():
     high = (x - 3 * U, y - 3 * U, 25 * U, 6 * U, 10 * U, False)   # a crown over the eye but 15 m up: sky, not leaves
     assert J.clearance(Flat([willow, crown, low, far]), eye, 0.0) == (1, 1)
     assert J.clearance(Flat([low, far, high]), eye, 0.0) == (0, 0)
+
+
+def test_sky_ab_bounds_follow_the_markers_and_a_moved_marker_is_stale():
+    from tools.journeys import gen
+
+    def refs(dx):
+        return {"ARG_Ref_PanelCoastalLagoonShore": {"x": 1000.0 + dx, "y": -2000.0, "marker": True, "own_z": True},
+                "ARG_Ref_PanelWesternFrontierHigh": {"x": -500.0, "y": 700.0, "marker": True, "own_z": True}}
+    import yaml
+    text, pos = gen.sky_ab(Flat(refs=refs(0)))
+    j = yaml.safe_load(text)
+    ex = j["steps"][1]["expect"]
+    assert [e.get("gt", e.get("lt")) for e in ex if e.get("path") == "pos.x"] == [700, 1300]
+    assert j["id"] == "sky-ab" and j["independent_steps"] is True and len(j["steps"]) == 5
+    assert pos[1] == ("ARG_Ref_PanelWesternFrontierHigh", -500, 700)
+    # a moved marker moves the bounds, so the file written for the old position is stale
+    moved, _ = gen.sky_ab(Flat(refs=refs(400)))
+    assert yaml.safe_load(moved)["steps"][1]["expect"] != ex

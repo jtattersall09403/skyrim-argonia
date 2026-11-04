@@ -64,6 +64,11 @@ def refresh(only: set[str] | None = None) -> int:
     veg = ROOT / "out" / "terrain" / "vegetation"
     if want("world-panel"):
         _panel(b, w, log)
+    if want("sky-ab"):   # after world-panel: the markers it just synced, read fresh
+        text, pos = gen.sky_ab(Build())
+        for edid, x, y in pos:
+            print(f"sky-ab: {edid} at {x} {y}: bounds x {x - gen.SKY_TOL_U}..{x + gen.SKY_TOL_U}, y {y - gen.SKY_TOL_U}..{y + gen.SKY_TOL_U}")
+        (JOURNEYS / "sky-ab.yaml").write_text(text)
     if want("creature-spots"):
         from tools.argonia_world.creatures import journey as cj
         cj.write(ROOT / "out" / "creatures")
