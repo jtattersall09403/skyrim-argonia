@@ -1,12 +1,16 @@
-"""The LOD archive's key (infra/gpu-box/lod.sh): the sha256 of what the LOD is made from, never the whole ESM's.
+"""The LOD archive's two keys (infra/gpu-box/lod.sh; owner ruling 2026-11-04 08:06, #37): the terrain LOD rebuilds
+only when the land changed, the object LOD only when the placed objects or the forms they draw changed.
 
-LOD (xLODGen terrain, DynDOLOD objects) reads the world's LAND, CELL, WRLD and placed refs, and the tools' versions;
-it never reads the navmesh. So the key hashes every record of ArgoniaWorld.esm but NAVM, NAVI and the TES4 header
-(whose record count moves with the NAVM count), each as type, FormID, flags (bar compression) and decompressed data,
-plus the salt files (the LOD tools' manifest pins, lod.ps1, the preset). A navmesh-only rebuild keeps the key; a
-moved ref or a changed height moves it (decision 0037: a key names its inputs, not a superset).
+- terrain: every LAND record of ArgoniaWorld.esm (FormID, flags bar compression, decompressed data), salted with
+  the terrain tool's pin (xlodgen), lod.ps1, lodsettings.py and the preset (lod.sh passes them).
+- object: every REFR (the placed objects; ACHR actors draw no LOD) and every base form the plugin itself defines
+  that a ref can draw (STAT, TREE, ...), plus the master list, salted with the object tools' pins (dyndolod,
+  dyndolod-resources) and every stack mod's pin (the masters' forms and meshes come from those archives).
+NAVM, NAVI, CELL (water height), WATR, WTHR, REGN, ECZN, NPC_, the levelled lists and the header are in neither:
+a change to them lays the archive already made (decision 0037: a key names its inputs, never a superset).
 
-    python -m tools.navmesh.lodkey <ArgoniaWorld.esm> [--salt <text>]... [--salt-file <path>]...   prints 12 hex
+    python -m tools.navmesh.lodkey <esm> [--terrain-salt T]... [--object-salt T]... [--*-salt-file P]...
+    prints `terrain=<12 hex> object=<12 hex>`
 """
 from __future__ import annotations
 
@@ -16,30 +20,40 @@ import struct
 import sys
 from pathlib import Path
 
-from tools.navmesh.esm import COMPRESSED, records
+from tools.navmesh.esm import COMPRESSED, masters, records
 
-NOT_LOD = {b"NAVM", b"NAVI", b"TES4"}
+TERRAIN = {b"LAND"}
+OBJECT = {b"REFR", b"STAT", b"TREE", b"MSTT", b"SCOL", b"FURN", b"ACTI", b"DOOR", b"CONT", b"FLOR", b"LIGH",
+          b"MISC", b"TXST", b"GRAS"}
 
 
-def lod_key(esm: Path, salts: list[bytes] = ()) -> str:
-    h = hashlib.sha256(b"argonia-lod-key/1\n")
+def _h(tag: bytes, salts):
+    h = hashlib.sha256(b"argonia-lod-key/2 " + tag + b"\n")
     for s in salts:
         h.update(struct.pack("<I", len(s)) + s)
-    for r in records(esm, None):
-        if r.sig in NOT_LOD:
-            continue
+    return h
+
+
+def lod_keys(esm: Path, terrain_salts=(), object_salts=()) -> dict[str, str]:
+    t = _h(b"terrain", terrain_salts)
+    o = _h(b"object", list(object_salts) + ["\n".join(masters(esm)).encode()])
+    for r in records(esm, TERRAIN | OBJECT):
+        h = t if r.sig in TERRAIN else o
         h.update(r.sig + struct.pack("<III", r.fid, r.flags & ~COMPRESSED, len(r.data)) + r.data)
-    return h.hexdigest()[:12]
+    return {"terrain": t.hexdigest()[:12], "object": o.hexdigest()[:12]}
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(prog="lodkey")
     ap.add_argument("esm", type=Path)
-    ap.add_argument("--salt", action="append", default=[])
-    ap.add_argument("--salt-file", action="append", default=[], type=Path)
+    for half in ("terrain", "object"):
+        ap.add_argument(f"--{half}-salt", action="append", default=[])
+        ap.add_argument(f"--{half}-salt-file", action="append", default=[], type=Path)
     a = ap.parse_args(argv)
-    salts = [s.encode() for s in a.salt] + [p.read_bytes() for p in a.salt_file]
-    print(lod_key(a.esm, salts))
+    salts = {h: [s.encode() for s in getattr(a, f"{h}_salt")] + [p.read_bytes() for p in getattr(a, f"{h}_salt_file")]
+             for h in ("terrain", "object")}
+    k = lod_keys(a.esm, salts["terrain"], salts["object"])
+    print(f"terrain={k['terrain']} object={k['object']}")
     return 0
 
 

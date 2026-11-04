@@ -14,14 +14,14 @@
 #   lod.sh still <tag>                 the vantage still: the game launched on the laid profile, the base save, the
 #                                      highest ground within 8 cells of Claywater (cell -53,3, 440 m; the LAND shards),
 #                                      facing north-west over Claywater at noon, after 30 s -> out/lod/vantage-<tag>.png
-#   lod.sh archive                     the machine's "Argonia LOD (generated)" mod as a tar to the private bucket
-#                                      (s3://argonia-private-…/lod/<lodkey>.tar and latest.tar): derived
-#                                      from game data, so never the repo (decision 0003)
-#   lod.sh ensure                      deploy's step: restore when the machine's LOD key (argonia-lod.key in the mod)
-#                                      is not this ArgoniaWorld's; no archive for it: a loud WARNING, the old LOD kept
-#   lod.sh restore [key]               that tar (default: the one made from this out/ArgoniaWorld.esm) onto the machine
+#   lod.sh archive [terrain|object]    the machine's "Argonia LOD (generated)" mod, per half, as a tar to the private
+#                                      bucket (s3://argonia-private-…/lod/<half>-<key>.tar): derived from game data,
+#                                      so never the repo (decision 0003)
+#   lod.sh ensure                      deploy's step: per half, restore when the machine's key (argonia-lod.key in the
+#                                      mod) is not this ArgoniaWorld's; no archive: a WARNING naming that half's steps
+#   lod.sh restore [terrain|object]    that half's tar for this out/ArgoniaWorld.esm onto the machine
 #                                      and the profile laid again with it: minutes, not 26 of xLODGen. Skyrim is killed.
-#   lod.sh key [esm]                   print the LOD key of that ESM (default out/ArgoniaWorld.esm)
+#   lod.sh key [esm]                   print the two LOD keys of that ESM (default out/ArgoniaWorld.esm)
 #   PRESET=Low|Medium (default Medium) sets DynDOLOD's preset.
 # Run under the GPU lock (LOD is CPU- and RAM-heavy and must not overlap a timing batch):
 #   tooling/job_guard.sh run --gpu lod -- infra/gpu-box/lod.sh run
@@ -32,15 +32,24 @@ run="$here/run.sh"
 PY=$(ls "$HOME/.argonia/venv/bin/python" 2>/dev/null || command -v python3)
 ROWS=(xlodgen dyndolod dyndolod-resources)
 mkdir -p "$repo/out/lod"
-# The LOD's key (decision 0037: a key names its inputs): the sha of ArgoniaWorld.esm's records bar NAVM, NAVI and
-# TES4 (tools/navmesh/lodkey.py), the three tool rows' pins, lod.ps1, lodsettings.py and the preset. A navmesh-only
-# rebuild keeps it, so its ESM lays the archive already made; a moved ref or a changed height moves it.
-lodkey() {
-  local esm=${1:-$repo/out/ArgoniaWorld.esm} pins
-  pins=$("$PY" -c 'import json,sys; r={m["id"]:m for m in json.load(open(sys.argv[1]))["mods"]}; print(" ".join(r[i]["sha256"] for i in sys.argv[2:]))' "$repo/data/dependencies.json" "${ROWS[@]}")
-  (cd "$repo" && "$PY" -m tools.navmesh.lodkey "$esm" --salt "$pins" --salt "preset=${PRESET:-Medium}" \
-     --salt-file infra/gpu-box/lod.ps1 --salt-file infra/gpu-box/lodsettings.py)
+# The LOD's two keys (owner ruling 2026-11-04 08:06, #37; decision 0037: a key names its inputs), from
+# tools/navmesh/lodkey.py: terrain = the LAND records + xlodgen's pin, object = the placed refs and the forms they draw
+# + the master list + dyndolod's two pins and every stack mod's pin; both + lod.ps1, lodsettings.py and the preset.
+# A navmesh, water or weather change keeps both; each half rebuilds and archives on its own.
+#   s3://<bucket>/lod/terrain-<key>.tar  Meshes/Terrain and Textures/Terrain of the LOD mod
+#   s3://<bucket>/lod/object-<key>.tar   the rest of it (DynDOLOD, Meshes/LOD, Textures/LOD, ...)
+lodkey() {  # prints "terrain=<12> object=<12>"
+  local esm=${1:-$repo/out/ArgoniaWorld.esm} pin common
+  pin() { "$PY" -c 'import json,sys; r={m["id"]:m for m in json.load(open(sys.argv[1]))["mods"]}; print(" ".join(r[i]["sha256"] if i in r else i for i in sys.argv[2:]))' "$repo/data/dependencies.json" "$@"; }
+  common=(--terrain-salt "preset=${PRESET:-Medium}" --object-salt "preset=${PRESET:-Medium}"
+          --terrain-salt-file infra/gpu-box/lod.ps1 --object-salt-file infra/gpu-box/lod.ps1
+          --terrain-salt-file infra/gpu-box/lodsettings.py --object-salt-file infra/gpu-box/lodsettings.py)
+  (cd "$repo" && "$PY" -m tools.navmesh.lodkey "$esm" "${common[@]}" --terrain-salt "$(pin xlodgen)" \
+     --object-salt "$(pin dyndolod dyndolod-resources)" \
+     --object-salt "$("$PY" -c 'import json,sys; print(" ".join(sorted(m.get("sha256") or "" for m in json.load(open(sys.argv[1]))["mods"])))' data/dependencies.json)")
 }
+half_of() { case "$1" in terrain) echo terrain ;; texgen|dyndolod) echo object ;; *) echo both ;; esac; }
+key_of() { sed -n "s/.*$1=\([0-9a-f]*\).*/\1/p" <<<"$2"; }
 
 ps1() {  # one lod.ps1 step; the GUI steps in the desktop session, the rest over SSH
   local step=$1; shift
@@ -105,8 +114,11 @@ case "${1:-}" in
     # Per-step markers for this ArgoniaWorld (owner, 2026-11-02: a rerun must pick up where the last attempt got to):
     # prepare, terrain, texgen and dyndolod are skipped when their marker exists for the deployed ESM's sha; collect,
     # archive and resources always run. LOD_FORCE=1 reruns everything. The outputs they stand for live on the machine.
-    sha12=$(lodkey); marks="$HOME/.argonia/lod-steps/${ARGONIA_PLAY:-argonia-play}/$sha12"; mkdir -p "$marks"  # per machine: the outputs live there
+    # a step's marker is under its half's key (terrain: terrain; texgen, dyndolod: object; prepare: both)
+    keys=$(lodkey); tk=$(key_of terrain "$keys"); ok=$(key_of object "$keys")
     for s in "${steps[@]}"; do
+      case $(half_of "$s") in terrain) sha12=t-$tk ;; object) sha12=o-$ok ;; *) sha12=$tk-$ok ;; esac
+      marks="$HOME/.argonia/lod-steps/${ARGONIA_PLAY:-argonia-play}/$sha12"; mkdir -p "$marks"  # per machine: the outputs live there
       case "$s" in prepare|terrain|texgen|dyndolod)
         if [ -z "${LOD_FORCE:-}" ] && [ -f "$marks/$s" ]; then echo "== $s: done before for $sha12 ($(cat "$marks/$s")); skipped"; continue; fi ;;
       esac
@@ -131,36 +143,55 @@ case "${1:-}" in
     "${B[@]}" player | head -20
     "${B[@]}" console 'tm' >/dev/null ;;
   ensure)
+    # each half laid from its own archive when the machine's half differs; a half with no archive: a loud WARNING
+    # naming only that half's steps (the other half is laid, never rebuilt)
     bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
-    key=$(lodkey)
-    mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
-    have=$("$run" ps "Get-Content '$mod\argonia-lod.key' -EA SilentlyContinue" | tr -d '\r\n ' || true)
-    if [ "$have" = "$key" ]; then echo "LOD current ($key)"; exit 0; fi
-    if aws s3 ls "s3://$bucket/lod/$key.tar" >/dev/null 2>&1; then exec "$0" restore "$key"; fi
-    printf '\n!!!!!!!! WARNING: no LOD archive for this ArgoniaWorld (%s); the machine keeps LOD %s.\n!!!!!!!! Distant land may be missing or stale: run lod.sh run prepare terrain collect && lod.sh archive\n\n' "$key" "${have:-none}"
+    keys=$(lodkey); mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
+    have=$("$run" ps "Get-Content '$mod\argonia-lod.key' -EA SilentlyContinue" | tr -d '\r' | tr '\n' ' ' || true)
+    lay=() miss=()
+    for h in terrain object; do
+      k=$(key_of "$h" "$keys")
+      if [ "$(key_of "$h" "$have")" = "$k" ]; then echo "LOD $h current ($k)"; continue; fi
+      if aws s3 ls "s3://$bucket/lod/$h-$k.tar" >/dev/null 2>&1; then lay+=("$h"); else miss+=("$h"); fi
+    done
+    [ ${#lay[@]} -eq 0 ] || "$0" restore "${lay[@]}"
+    for h in "${miss[@]}"; do
+      case $h in terrain) st="run prepare terrain collect" ;; object) st="run prepare texgen dyndolod collect" ;; esac
+      printf '\n!!!!!!!! WARNING: no %s LOD archive for this ArgoniaWorld (%s); the machine keeps %s.\n!!!!!!!! Rebuild only that half: lod.sh %s && lod.sh archive %s\n\n' "$h" "$(key_of "$h" "$keys")" "$(key_of "$h" "$have")" "$st" "$h"
+    done
     exit 0 ;;
   archive|restore)
+    # archive [terrain|object ...] / restore [terrain|object ...]: per half (default both), keyed by this ESM's keys
     bucket=${ARGONIA_PRIVATE_BUCKET:-argonia-private-050977237313}
-    key=${2:-$(lodkey)}; tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
+    keys=$(lodkey); tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     mod='C:\argonia\MO2\mods\Argonia LOD (generated)'
-    if [ "$1" = archive ]; then
-      # the mod's file count and bytes (each file rounded to a tar block); skipped when the bucket already holds
-      # this key's tar of that mod (lod_skip.py: a resumed run re-uploaded 1.7 GB every time, 2026-11-03)
-      read -r n bytes < <("$run" ps "if (Test-Path '$mod') { \$f = Get-ChildItem '$mod' -Recurse -File; '' + \$f.Count + ' ' + ((\$f | % { [math]::Ceiling(\$_.Length / 512) * 512 } | Measure-Object -Sum).Sum) } else { '0 0' }" | tr -d '\r' | tail -1)
-      [ "${n:-0}" -gt 0 ] || { echo "no LOD mod on the machine (lod.sh run prepare terrain collect)"; exit 1; }
-      if [ -z "${LOD_FORCE:-}" ] && aws s3api head-object --bucket "$bucket" --key "lod/$key.tar" 2>/dev/null | "$PY" "$here/lod_skip.py" "$n" "$bytes"; then
-        echo "LOD archived before: s3://$bucket/lod/$key.tar holds this mod ($n files); skipped"; exit 0
+    op=$1; shift; halves=("$@"); [ ${#halves[@]} -gt 0 ] || halves=(terrain object)
+    sel() {  # a PowerShell filter on the mod's files for one half
+      case $1 in terrain) echo '$_.FullName.Substring($m.Length + 1) -match "^(meshes|textures)\\terrain\\"' ;;
+                 object) echo '$_.FullName.Substring($m.Length + 1) -notmatch "^(meshes|textures)\\terrain\\" -and $_.Name -ne "argonia-lod.key" -and $_.Name -ne "argonia-collect.count"' ;; esac; }
+    for h in "${halves[@]}"; do
+      k=$(key_of "$h" "$keys"); obj="lod/$h-$k.tar"
+      if [ "$op" = archive ]; then
+        # this half's file count and bytes (each file rounded to a tar block); skipped when the bucket holds it already
+        read -r n bytes < <("$run" ps "\$m = '$mod'; if (Test-Path \$m) { \$f = Get-ChildItem \$m -Recurse -File | ? { $(sel "$h") }; '' + @(\$f).Count + ' ' + ((\$f | % { [math]::Ceiling(\$_.Length / 512) * 512 } | Measure-Object -Sum).Sum) } else { '0 0' }" | tr -d '\r' | tail -1)
+        [ "${n:-0}" -gt 0 ] || { echo "no $h LOD in the mod on the machine (lod.sh run ...)"; exit 1; }
+        if [ -z "${LOD_FORCE:-}" ] && aws s3api head-object --bucket "$bucket" --key "$obj" 2>/dev/null | "$PY" "$here/lod_skip.py" "$n" "$bytes"; then
+          echo "LOD $h archived before: s3://$bucket/$obj ($n files); skipped"; continue
+        fi
+        "$run" ps "\$m = '$mod'; Set-Location \$m; Get-ChildItem \$m -Recurse -File | ? { $(sel "$h") } | % { \$_.FullName.Substring(\$m.Length + 1) } | Set-Content -Encoding ascii C:\argonia\logs\lod.list; tar -cf C:\argonia\logs\lod.tar -T C:\argonia\logs\lod.list" >/dev/null
+        "$run" get 'C:/argonia/logs/lod.tar' "$tmp/lod.tar"
+        aws s3 cp "$tmp/lod.tar" "s3://$bucket/$obj" --only-show-errors --metadata "argonia-files=$n,argonia-bytes=$bytes"
+        "$run" ps 'Remove-Item C:\argonia\logs\lod.tar, C:\argonia\logs\lod.list' >/dev/null
+        echo "LOD $h archived: $n files, $(du -m "$tmp/lod.tar" | cut -f1) MB, s3://$bucket/$obj"; rm -f "$tmp/lod.tar"
+      else
+        aws s3 cp "s3://$bucket/$obj" "$tmp/lod.tar" --only-show-errors || { echo "no s3://$bucket/$obj (lod.sh ensure names the steps)"; exit 1; }
+        "$run" ps "Stop-Process -Name SkyrimSE -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\MO2\push | Out-Null" >/dev/null
+        "$run" put "$tmp/lod.tar" C:/argonia/MO2/push/lod.tar >/dev/null; rm -f "$tmp/lod.tar"
+        # only this half's files are replaced; the key file keeps the other half's key
+        "$run" ps "\$m = '$mod'; New-Item -ItemType Directory -Force \$m | Out-Null; Get-ChildItem \$m -Recurse -File | ? { $(sel "$h") } | Remove-Item -Force; tar -xf C:\argonia\MO2\push\lod.tar -C \$m; Remove-Item C:\argonia\MO2\push\lod.tar; \$old = (Get-Content \"\$m\argonia-lod.key\" -EA SilentlyContinue) -join ' '; \$kv = @{}; foreach (\$p in (\$old -split ' ')) { if (\$p -match '^(terrain|object)=') { \$kv[\$p.Split('=')[0]] = \$p } }; \$kv['$h'] = '$h=$k'; Set-Content \"\$m\argonia-lod.key\" ((\$kv.Values | Sort-Object) -join ' '); 'LOD $h restored'"
       fi
-      "$run" ps "tar -cf C:\argonia\logs\lod.tar -C '$mod' ." >/dev/null
-      "$run" get 'C:/argonia/logs/lod.tar' "$tmp/lod.tar"
-      for k in "$key" latest; do aws s3 cp "$tmp/lod.tar" "s3://$bucket/lod/$k.tar" --only-show-errors --metadata "argonia-files=$n,argonia-bytes=$bytes"; done
-      "$run" ps 'Remove-Item C:\argonia\logs\lod.tar' >/dev/null
-      echo "LOD archived: $n files, $(du -m "$tmp/lod.tar" | cut -f1) MB, s3://$bucket/lod/$key.tar"
-    else
-      aws s3 cp "s3://$bucket/lod/$key.tar" "$tmp/lod.tar" --only-show-errors || { echo "no s3://$bucket/lod/$key.tar (lod.sh restore latest, or run the job)"; exit 1; }
-      "$run" ps "Stop-Process -Name SkyrimSE -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force C:\argonia\MO2\push | Out-Null" >/dev/null
-      "$run" put "$tmp/lod.tar" C:/argonia/MO2/push/lod.tar >/dev/null
-      "$run" ps "Remove-Item '$mod' -Recurse -Force -EA SilentlyContinue; New-Item -ItemType Directory -Force '$mod' | Out-Null; tar -xf C:\argonia\MO2\push\lod.tar -C '$mod'; Remove-Item C:\argonia\MO2\push\lod.tar; Set-Content '$mod\argonia-lod.key' '$key'; & C:\argonia\infra\bridge.ps1 -Cmd prepare -Fresh | Out-Null; 'LOD restored: ' + (Get-ChildItem '$mod' -Recurse -File).Count + ' files'"
-    fi ;;
+    done
+    [ "$op" = restore ] && "$run" ps "& C:\argonia\infra\bridge.ps1 -Cmd prepare -Fresh | Out-Null; 'profile laid'"
+    exit 0 ;;
   *) sed -n '2,13p' "$0"; exit 2 ;;
 esac
