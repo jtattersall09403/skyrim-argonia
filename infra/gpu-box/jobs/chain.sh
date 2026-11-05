@@ -22,6 +22,23 @@ src=${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}
 case $record in /*) ;; *) record="$src/$record";; esac
 if [ -z "${CHAIN_IN_TREE:-}" ]; then
   tree=${CHAIN_TREE:-$HOME/.argonia/round/tree}; keyf="$HOME/.argonia/round/chain.$(basename "$batch" .yaml).sha"
+  # the build outputs the main tree holds uncommitted (the generate's entrance sites, the plugin YAML, form ids) are
+  # committed by path, so the worktree at HEAD reads the same rows (r6-chain24: a stale land from an uncommitted
+  # entrance_site.jsonl). Also run BEFORE the sync: an interrupted land pass leaves them dirty (r6-chain29 blocked)
+  commit_outputs() {
+    git -C "$src" add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated 2>/dev/null
+    if ! git -C "$src" diff --cached --quiet; then
+      git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" \
+        && return 0
+    fi
+    return 1
+  }
+  push_outputs() {
+    git -C "$src" push -q origin HEAD:main 2>"$HOME/.argonia/round/push.err" || echo "CHAIN warning: push to origin/main refused: $(tr '\n' ' ' <"$HOME/.argonia/round/push.err")"
+  }
+  mkdir -p "$HOME/.argonia/round"
+  pre_committed=0
+  if [ -z "${CHAIN_DRY:-}" ] && commit_outputs; then pre_committed=1; fi
   # the main tree is brought to origin/main first (lanes push from their own worktrees): the land is built, and the key
   # sha taken, from the same code the worktree will run. A dirty tree or a diverged one is the planner's to reconcile.
   if git -C "$src" remote get-url origin >/dev/null 2>&1 && git -C "$src" fetch -q origin 2>/dev/null; then
@@ -29,9 +46,12 @@ if [ -z "${CHAIN_IN_TREE:-}" ]; then
        && ! git -C "$src" merge-base --is-ancestor origin/main HEAD 2>/dev/null; then
       if [ -n "$(git -C "$src" status --porcelain --untracked-files=no)" ]; then
         echo "CHAIN BLOCKED: $src has uncommitted tracked changes and origin/main is ahead of its HEAD: the planner reconciles"; exit 2; fi
-      git -C "$src" merge -q --ff-only origin/main || {
+      { git -C "$src" merge -q --ff-only origin/main 2>/dev/null \
+        || { [ "$pre_committed" = 1 ] && git -C "$src" rebase -q origin/main 2>/dev/null; } \
+        || { git -C "$src" rebase --abort 2>/dev/null; false; }; } || {
         echo "CHAIN BLOCKED: $src cannot fast-forward to origin/main (diverged): the planner reconciles"; exit 2; }
       echo "CHAIN main tree fast-forwarded to $(git -C "$src" rev-parse --short HEAD)"
+      [ "$pre_committed" = 1 ] && push_outputs
     fi
   fi
   # the land (ground, terrain, navmesh) is built in the main tree, never from the worktree (pipeline refuses a shared
@@ -59,16 +79,7 @@ PY
     (cd "$src" && make plugin && infra/gpu-box/jobs/navmesh_if_stale.sh) || { echo "CHAIN land pass FAILED"; exit 3; }
     echo "CHAIN land pass done $(date -u +%H:%M:%S)"
   fi
-  # the build outputs the main tree holds uncommitted (the generate's entrance sites, the plugin YAML, form ids) are
-  # committed by path first, so the worktree at HEAD reads the same rows (r6-chain24: a stale land from an uncommitted
-  # entrance_site.jsonl)
-  if [ -z "${CHAIN_DRY:-}" ]; then
-    git -C "$src" add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated 2>/dev/null
-    if ! git -C "$src" diff --cached --quiet; then
-      git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" \
-        && { git -C "$src" push -q origin HEAD:main 2>"$HOME/.argonia/round/push.err" || echo "CHAIN warning: push to origin/main refused: $(tr '\n' ' ' <"$HOME/.argonia/round/push.err")"; }
-    fi
-  fi
+  if [ -z "${CHAIN_DRY:-}" ] && commit_outputs; then push_outputs; fi
   sha=${CHAIN_SHA:-$(cat "$keyf" 2>/dev/null || git -C "$src" rev-parse HEAD)}; sha=$(git -C "$src" rev-parse "$sha^{commit}") || exit 2
   echo "CHAIN tree $tree sha $sha"
   if [ -n "${CHAIN_DRY:-}" ]; then echo "  would run on: $tree at $sha (out/ -> $src/out)"

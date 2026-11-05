@@ -111,3 +111,22 @@ def test_prebatch_sync_leaves_pinned_tree_alone(tmp_path):
         r = subprocess.run(["bash", "-c", sync], cwd=wt, env={**e, **env}, capture_output=True, text=True)
         assert r.returncode == 0 and "pinned at" in r.stdout, r.stdout + r.stderr
         assert git(wt, "rev-parse", "HEAD") == old
+
+
+def test_build_output_only_dirty_is_committed_then_ff(tmp_path):
+    src, seen = setup(tmp_path)
+    (src / "world/db").mkdir(parents=True)
+    (src / "world/db/entrance_site.jsonl").write_text("a\n")
+    git(src, "-c", "user.email=t@t", "-c", "user.name=t", "add", ".")
+    git(src, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "e")
+    new = bare_origin(tmp_path, src)
+    (src / "world/db/entrance_site.jsonl").write_text("a\nb\n")  # the interrupted land pass's output
+    e = ["-c", "user.email=t@t", "-c", "user.name=t"]
+    r = subprocess.run(["git", *e, "config", "user.email", "t@t"], cwd=src)
+    git(src, "config", "user.name", "t")
+    r = chain(tmp_path, src)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert git(src, "status", "--porcelain", "--untracked-files=no") == ""
+    assert git(src, "merge-base", "--is-ancestor", new, "HEAD") == ""
+    assert "round build output" in git(src, "log", "-1", "--format=%s")
+    assert seen.exists()
