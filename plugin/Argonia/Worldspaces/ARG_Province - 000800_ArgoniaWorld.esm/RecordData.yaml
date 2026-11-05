@@ -11795,7 +11795,7 @@ TopCell:
         Value: Bonded Shed
       Type: Landmark
     Placement:
-      Position: -141830.16, 47480.13, 4631.89
+      Position: -141830.16, 47480.13, 4631.53
   - MutagenObjectType: PlacedObject
     FormKey: 000D4D:Argonia.esm
     MajorRecordFlagsRaw: 1024
@@ -16804,7 +16804,7 @@ TopCell:
     - 0x400
     Base: 10A58B:King of the Murkmire.esp
     Placement:
-      Position: -141748.22, 49277.05, 4795.65
+      Position: -141664.19, 49299.46, 4804.06
       Rotation: 0, 0, 6.022782
   - MutagenObjectType: PlacedObject
     FormKey: 000F01:Argonia.esm
@@ -16824,7 +16824,7 @@ TopCell:
     - 0x400
     Base: 10A58B:King of the Murkmire.esp
     Placement:
-      Position: 136860.31, 159854.78, 2145.02
+      Position: 136786.1, 159807.88, 2145.02
       Rotation: 0, 0, 5.714732
   MajorFlags:
   - Persistent
