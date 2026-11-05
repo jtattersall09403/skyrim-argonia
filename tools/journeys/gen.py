@@ -185,19 +185,7 @@ def step_stand(b: Build, s, x0: float, y0: float, into: float, subj: tuple):
     return (*best[1], False)
 
 
-BOX_MARGIN_CELLS = 2    # a stand lies this many cells inside the built province box's edge (beyond it: apron and LOD plates)
-
-
-def in_box(x: float, y: float, margin: int = BOX_MARGIN_CELLS) -> bool:
-    """Whether the worldspace point is in a cell at least `margin` cells inside the built province box
-    (su.PROVINCE_CELL_SW, su.PROVINCE_CELLS: the terrain grid's extent, not a literal)."""
-    cx, cy = su.cell_of(x, y)
-    x0, y0 = su.PROVINCE_CELL_SW
-    n = su.PROVINCE_CELLS
-    return x0 + margin <= cx < x0 + n - margin and y0 + margin <= cy < y0 + n - margin
-
-
-STANDS: list = []   # (name, x, y, heading, pitch, clearance3, share, frustum cover) of the last refresh, for the report
+RIVER_STANDS: list = []   # (name, x, y, heading, pitch, clearance3, share, frustum cover) of the last refresh, for the report
 
 
 BOX_MARGIN_CELLS = 2    # a stand lies this many cells inside the built province box's edge (beyond it: apron and LOD plates)
@@ -863,36 +851,6 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
                                 tally["clearance: " + k] += bool(v)
                             continue
                         m = sea_far_ok(b, sx, sy, h, types)
-                        why = sea_far_fails(m)
-                        for k in why:
-                            tally[k] += 1
-                        if best_of is None or (len(why), -m["sea_share"]) < best_of[0]:
-                            best_of = ((len(why), -m["sea_share"]), (cx, cy), sx, sy, h, m, why)
-                        if m["ok"] and m["rays"] >= SEA_FAR_MIN_RAYS:
-                            return {"got": [sx, sy, [far[0], far[1], eye[2]], [cx, cy]],
-                                    "log": [{"journey": "water-types", "step": "sea-far", "moved_m": 0.0,
-                                             "why": f"far-sea shore ({cx},{cy}), {back:.0f} m back", "clear": True}]}
-        print(f"water-types: sea-far: no stand meets the bar; rejects by part {dict(tally)}", flush=True)
-        if best_of:   # the per-candidate numbers of the nearest miss
-            _, c_, sx_, sy_, h_, m_, why_ = best_of
-            print(f"water-types: sea-far: nearest miss shore {c_} at {sx_:.0f} {sy_:.0f} facing {h_:.0f}: upper {m_['upper']:.1%} "
-                  f"(<{UPPER_COVER_MAX:.0%}) near {m_['near']:.1%} sea share {m_['sea_share']:.0%} (>={TYPE_MIN_SHARE:.0%}) "
-                  f"rays {m_['rays']} (>={SEA_FAR_MIN_RAYS}) others {m_['others']}; fails {why_}", flush=True)
-        return {"got": None, "log": [{"journey": "water-types", "step": "sea-far", "moved_m": 0.0, "clear": False,
-                                      "why": "stale: no shore meets the far-sea bar; no sea-far stop written"}]}
-
-    res = search()
-    log.extend(res["log"])
-    if res["got"] is None:   # never raise on a stand search: water-types still regenerates, the log says why
-                            tally["no water 50-400 m out"] += 1
-                            continue
-                        bad = stand_bad(b, sx, sy, (far[0], far[1], eye[2]))
-                        if bad:
-                            tally["stand: " + bad[0].split(" at ")[0].split(" ")[0]] += 1
-        print("water-types: WARNING sea-far: no shore meets the far-sea bar; no sea-far stop written")
-        return ""
-    x, y, subj, (cx, cy) = res["got"]
-    h = aim(eye_of(b, x, y), subj)[0]
                         why = sea_far_fails(m)
                         for k in why:
                             tally[k] += 1

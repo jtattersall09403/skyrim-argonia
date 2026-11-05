@@ -256,7 +256,7 @@
 {"place_id":"place.imperial-fringe.fig-market","shape":"flat","x_m":2111.2,"y_m":3372.3,"radius_m":101.15,"facing_deg":0.0,"request":"re-sized to 101 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-fringe.fort-greenditch","shape":"flat","x_m":871.3,"y_m":3147.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.fort-swampmoth","shape":"flat","x_m":1104.9,"y_m":3155.8,"radius_m":65.0,"facing_deg":0.0}
-{"place_id":"place.imperial-fringe.gideon","shape":"flat","x_m":1551.0,"y_m":3069.0,"radius_m":62.67,"facing_deg":0.0,"request":"re-sized to 63 m: the ground beside it falls or rises too fast"}
+{"place_id":"place.imperial-fringe.gideon","shape":"flat","x_m":1551.0,"y_m":3069.0,"radius_m":62.67,"facing_deg":0.0,"request":"terraced into the slope at 72.1 m (no level band between bank and water); re-sized to 63 m: the ground beside it falls or rises too fast"}
 {"place_id":"place.imperial-fringe.gideon-rootworm-terminus","shape":"rise","x_m":1795.9,"y_m":2971.6,"radius_m":45.0,"facing_deg":42.8}
 {"place_id":"place.imperial-fringe.gideon-synod-outstation","shape":"flat","x_m":1313.3,"y_m":3397.0,"radius_m":45.0,"facing_deg":0.0}
 {"place_id":"place.imperial-fringe.giovesse-lines","shape":"flat","x_m":1285.9,"y_m":3144.8,"radius_m":40.0,"facing_deg":0.0}
