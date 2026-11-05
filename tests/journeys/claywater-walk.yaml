@@ -27,7 +27,7 @@ steps:
   - name: to-the-station-door
     # 70 units out on the porch, against the door's heading (212 deg), facing it: moveto onto the door left the camera
     # in the thatch and E found nothing; the stilt house of a6a2748 has its porch on this side (game-7)
-    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door 37 60 20"}, {console: "player.setangle z 212"}, {wait: 2}]
+    do: [{console: "player.moveto ARG_Ref_ClaywaterStationB1Door 0 -560 16"}, {console: "player.setangle z 0"}, {wait: 2}]
   - name: enter-the-station-house   # the real path: activate the load door
     do: [{key: "E 120"}, {wait: 6}]
     expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]

@@ -21,15 +21,15 @@ steps:
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -50 46, settle: 60}
+  - console: {line: cow ARG_Province -50 47, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -201794
-  - console: player.setpos y 192204
-  - console: player.setpos z 27657
+  - console: player.setpos x -201894
+  - console: player.setpos y 192512
+  - console: player.setpos z 27828
   - wait: 6
-  - console: player.setangle z 285
-  - console: player.setangle x 48
+  - console: player.setangle z 270
+  - console: player.setangle x 55
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -45,15 +45,15 @@ steps:
   # subject: -192512 69056 14170
   do:
   - hud: off
-  - console: {line: cow ARG_Province -48 16, settle: 60}
+  - console: {line: cow ARG_Province -48 17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -193453
-  - console: player.setpos y 68115
-  - console: player.setpos z 14703
+  - console: player.setpos x -193403
+  - console: player.setpos y 69947
+  - console: player.setpos z 14072
   - wait: 6
-  - console: player.setangle z 45
-  - console: player.setangle x 26
+  - console: player.setangle z 135
+  - console: player.setangle x 1
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -72,12 +72,12 @@ steps:
   - console: {line: cow ARG_Province -58 -13, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -237331
-  - console: player.setpos y -50093
-  - console: player.setpos z 8008
+  - console: player.setpos x -237529
+  - console: player.setpos y -49895
+  - console: player.setpos z 8505
   - wait: 6
   - console: player.setangle z 315
-  - console: player.setangle x 30
+  - console: player.setangle x 50
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -89,19 +89,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: gully-1
   scan: 6
-  # dry gully reach.97-2505, its bed in cell (-60,-15)
-  # subject: -245632 -60416 2136
+  # dry gully reach.1375-169, its bed in cell (-19,58)
+  # subject: -73856 237696 -544
   do:
   - hud: off
-  - console: {line: cow ARG_Province -60 -15, settle: 60}
+  - console: {line: cow ARG_Province -19 58, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -245632
-  - console: player.setpos y -59366
-  - console: player.setpos z 2227
+  - console: player.setpos x -73856
+  - console: player.setpos y 239727
+  - console: player.setpos z 116
   - wait: 6
   - console: player.setangle z 180
-  - console: player.setangle x 11
+  - console: player.setangle x 21
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -113,19 +113,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: gully-2
   scan: 6
-  # dry gully reach.1071-374, its bed in cell (-29,51)
-  # subject: -114816 209024 25320
+  # dry gully reach.97-2505, its bed in cell (-60,-15)
+  # subject: -245632 -61312 -432
   do:
   - hud: off
-  - console: {line: cow ARG_Province -29 51, settle: 60}
+  - console: {line: cow ARG_Province -60 -15, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -114816
-  - console: player.setpos y 210495
-  - console: player.setpos z 26915
+  - console: player.setpos x -245632
+  - console: player.setpos y -58161
+  - console: player.setpos z 237
   - wait: 6
   - console: player.setangle z 180
-  - console: player.setangle x 49
+  - console: player.setangle x 14
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -137,19 +137,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: gully-3
   scan: 6
-  # dry gully reach.1078-739, its bed in cell (-27,40)
-  # subject: -106624 163968 7496
+  # dry gully reach.70-1177, its bed in cell (-60,26)
+  # subject: -244864 109696 21256
   do:
   - hud: off
-  - console: {line: cow ARG_Province -27 39, settle: 60}
+  - console: {line: cow ARG_Province -60 26, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -106624
-  - console: player.setpos y 163758
-  - console: player.setpos z 7425
+  - console: player.setpos x -244022
+  - console: player.setpos y 110538
+  - console: player.setpos z 24683
   - wait: 6
-  - console: player.setangle z 0
-  - console: player.setangle x 13
+  - console: player.setangle z 225
+  - console: player.setangle x 60
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -165,15 +165,15 @@ steps:
   # subject: -145408 -30720 1257
   do:
   - hud: off
-  - console: {line: cow ARG_Province -36 -8, settle: 60}
+  - console: {line: cow ARG_Province -36 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -143774
-  - console: player.setpos y -29086
-  - console: player.setpos z 1298
+  - console: player.setpos x -145408
+  - console: player.setpos y -28549
+  - console: player.setpos z 1456
   - wait: 6
-  - console: player.setangle z 225
-  - console: player.setangle x 4
+  - console: player.setangle z 180
+  - console: player.setangle x 8
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -190,11 +190,11 @@ steps:
   weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds
   do:
   - hud: off
-  - console: player.setpos x -143774
-  - console: player.setpos y -29086
-  - console: player.setpos z 1298
-  - console: player.setangle z 225
-  - console: player.setangle x 4
+  - console: player.setpos x -145408
+  - console: player.setpos y -28549
+  - console: player.setpos z 1456
+  - console: player.setangle z 180
+  - console: player.setangle x 8
   - console: player.setangle y 0
   - wait: 5
   expect:
@@ -204,18 +204,18 @@ steps:
 - name: still-2a
   scan: 6
   # still water in cell (-62,24), level 262.7 m; the first of a drift pair
-  # subject: -253568 100096 18395
+  # subject: -251904 100352 18395
   do:
   - hud: off
   - console: {line: cow ARG_Province -62 24, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -253568
-  - console: player.setpos y 101146
-  - console: player.setpos z 18581
+  - console: player.setpos x -253934
+  - console: player.setpos y 102382
+  - console: player.setpos z 18787
   - wait: 6
-  - console: player.setangle z 180
-  - console: player.setangle x 16
+  - console: player.setangle z 135
+  - console: player.setangle x 10
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -228,15 +228,15 @@ steps:
 - name: still-2b
   scan: 6
   # still water in cell (-62,24), level 262.7 m; still-2a's stand and aim a few seconds later
-  # subject: -253568 100096 18395
+  # subject: -251904 100352 18395
   weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds
   do:
   - hud: off
-  - console: player.setpos x -253568
-  - console: player.setpos y 101146
-  - console: player.setpos z 18581
-  - console: player.setangle z 180
-  - console: player.setangle x 16
+  - console: player.setpos x -253934
+  - console: player.setpos y 102382
+  - console: player.setpos z 18787
+  - console: player.setangle z 135
+  - console: player.setangle x 10
   - console: player.setangle y 0
   - wait: 5
   expect:

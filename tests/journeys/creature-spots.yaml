@@ -7,7 +7,7 @@
 # marsh-a-probe* (lane 1.15-r6-land-spawn-probe): the land spawn that read nothing, probed from the same stand.
 # A failure names the read; a failed step alone takes a still. No walking, no fighting (owner, 2026-11-01).
 id: creature-spots
-reach: ["data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -38,29 r1", "records: cell -38,30 r1", "records: cell -37,25 r1", "records: cell -37,40 r1", "records: cell -36,40 r1", "records: cell -26,30 r1", "records: cell -26,31 r1", "records: cell -26,34 r1", "records: cell -24,25 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -38,25 r1", "records: cell -38,29 r1", "records: cell -38,30 r1", "records: cell -37,25 r1", "records: cell -37,29 r1", "records: cell -36,38 r1", "records: cell -35,38 r1", "records: cell -29,33 r1", "records: cell -26,32 r1", "records: cell -24,25 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium
@@ -15,16 +15,16 @@ scene: creature-spots
 stills: false
 steps:
 - name: water-a
-  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water, spawn ref ArgoniaWorld.esm|0xEABAC0; the stand 19 m from it, the next spawn point 54 m
-  # subject: -148992 103424 27793
+  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water, spawn ref ArgoniaWorld.esm|0xEABAC0; the stand 20 m from it, the next spawn point 84 m
+  # subject: -151040 102912 27793
   do:
   - console: tgm
   - console: {line: cow ARG_Province -37 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -150323
-  - console: player.setpos y 103424
-  - console: player.setpos z 14085
+  - console: player.setpos x -152441
+  - console: player.setpos y 102912
+  - console: player.setpos z 14958
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: water_a_arrive}
@@ -36,60 +36,60 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Giant Leech", "Leech"]}, keep: water_a_kinds}
 - name: water-b
-  # cell (-36, 40) northern-transition D4 shore: list lvln.northern-transition.D4.shore, spawn ref ArgoniaWorld.esm|0xEC9380; the stand 20 m from it, the next spawn point 32 m
-  # subject: -147456 165504 19067
+  # cell (-36, 38) western-frontier D2 shore: list lvln.western-frontier.D2.shore, spawn ref ArgoniaWorld.esm|0xEC5480; the stand 20 m from it, the next spawn point 21 m
+  # subject: -143872 159104 17707
   do:
-  - console: {line: cow ARG_Province -36 40, settle: 60}
+  - console: {line: cow ARG_Province -36 38, settle: 60}
   - wait: 8
   - console: set gamehour to 11
-  - console: player.setpos x -148857
-  - console: player.setpos y 165504
-  - console: player.setpos z 19198
+  - console: player.setpos x -142882
+  - console: player.setpos y 158114
+  - console: player.setpos z 16483
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: water_b_arrive}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC9380"], path: refs.0, ne: null, keep: water_b_spawn}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC9380"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC9380"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC9380"], path: refs, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle", "Voriplasm"]}, keep: water_b_spawn_kind}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC5480"], path: refs.0, ne: null, keep: water_b_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC5480"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC5480"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEC5480"], path: refs, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Large Indigo Tree Frog", "Large Moss-Foot Croaker", "Large Ruby Hopper", "Large Sun-Blessed Toad", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle"]}, keep: water_b_spawn_kind}
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: water_b_first}
   - {read: [actors, "2801"], path: listed, keep: water_b}
-  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle", "Voriplasm"]}, keep: water_b_kinds}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Large Indigo Tree Frog", "Large Moss-Foot Croaker", "Large Ruby Hopper", "Large Sun-Blessed Toad", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle"]}, keep: water_b_kinds}
 - name: marsh-a
-  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB7A80; the stand 16 m from it, the next spawn point 44 m
-  # subject: -103936 127488 675
+  # cell (-29, 33) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEBB8C0; the stand 20 m from it, the next spawn point 29 m
+  # subject: -115584 136448 2715
   do:
-  - console: {line: cow ARG_Province -26 31, settle: 60}
+  - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -103144
-  - console: player.setpos y 126696
-  - console: player.setpos z 549
+  - console: player.setpos x -116985
+  - console: player.setpos y 136448
+  - console: player.setpos z 2785
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: marsh_a_arrive}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs.0, ne: null, keep: marsh_a_spawn}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_a_spawn_kind}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: refs.0, ne: null, keep: marsh_a_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: refs, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_a_spawn_kind}
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_a_first}
   - {read: [actors, "2801"], path: listed, keep: marsh_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_a_kinds}
 - name: marsh-a-probe
-  # the land-spawn probe, state of the spawn ref ArgoniaWorld.esm|0xEB7A80 (template NPC_ ArgoniaWorld.esm|0x0D1044, list ArgoniaWorld.esm|0x0D0044) at the marsh-a stand; keeps every field
-  # subject: -103936 127488 675
+  # the land-spawn probe, state of the spawn ref ArgoniaWorld.esm|0xEBB8C0 (template NPC_ ArgoniaWorld.esm|0x0D1044, list ArgoniaWorld.esm|0x0D0044) at the marsh-a stand; keeps every field
+  # subject: -115584 136448 2715
   do:
-  - console: {line: cow ARG_Province -26 31, settle: 60}
+  - console: {line: cow ARG_Province -29 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -103144
-  - console: player.setpos y 126696
-  - console: player.setpos z 549
+  - console: player.setpos x -116985
+  - console: player.setpos y 136448
+  - console: player.setpos z 2785
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: marsh_a_probe_arrive}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs, keep: marsh_a_probe_spawn}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: counts, keep: marsh_a_probe_counts}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: refs, keep: marsh_a_probe_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBB8C0"], path: counts, keep: marsh_a_probe_counts}
   - {read: [refs, "ArgoniaWorld.esm|0x0D1044", "2801"], path: count, keep: marsh_a_probe_template_count}
   - {read: [refs, "ArgoniaWorld.esm|0x0D1044", "2801"], path: refs, keep: marsh_a_probe_template_refs}
   - {read: [actors, "2801"], path: listed, keep: marsh_a_probe_before}
@@ -110,35 +110,35 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: marsh_a_probe_entry}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_a_probe_entry_kinds}
 - name: marsh-b
-  # cell (-26, 34) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEBD900; the stand 20 m from it, the next spawn point 49 m
-  # subject: -105984 139264 2131
+  # cell (-26, 32) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB9A00; the stand 20 m from it, the next spawn point 31 m
+  # subject: -102912 131840 1043
   do:
-  - console: {line: cow ARG_Province -26 34, settle: 60}
+  - console: {line: cow ARG_Province -26 32, settle: 60}
   - wait: 8
   - console: set gamehour to 11
-  - console: player.setpos x -104583
-  - console: player.setpos y 139264
-  - console: player.setpos z 1849
+  - console: player.setpos x -102912
+  - console: player.setpos y 133241
+  - console: player.setpos z 1176
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: marsh_b_arrive}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBD900"], path: refs.0, ne: null, keep: marsh_b_spawn}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBD900"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBD900"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEBD900"], path: refs, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_b_spawn_kind}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB9A00"], path: refs.0, ne: null, keep: marsh_b_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB9A00"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB9A00"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB9A00"], path: refs, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_b_spawn_kind}
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_b_first}
   - {read: [actors, "2801"], path: listed, keep: marsh_b}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: marsh_b_kinds}
 - name: upland-a
-  # cell (-38, 29) western-frontier D3 land: list lvln.western-frontier.D3.land, spawn ref ArgoniaWorld.esm|0xEB3880; the stand 20 m from it, the next spawn point 45 m
-  # subject: -153088 120960 17379
+  # cell (-38, 29) western-frontier D3 land: list lvln.western-frontier.D3.land, spawn ref ArgoniaWorld.esm|0xEB3880; the stand 20 m from it, the next spawn point 39 m
+  # subject: -152832 120832 17235
   do:
   - console: {line: cow ARG_Province -38 29, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -151687
-  - console: player.setpos y 120960
-  - console: player.setpos z 16167
+  - console: player.setpos x -151431
+  - console: player.setpos y 120832
+  - console: player.setpos z 15932
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: upland_a_arrive}
@@ -150,7 +150,7 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: upland_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: upland_a_kinds}
 - name: upland-b
-  # cell (-38, 30) western-frontier D3 land: list lvln.western-frontier.D3.land, spawn ref ArgoniaWorld.esm|0xEB5800; the stand 20 m from it, the next spawn point 45 m
+  # cell (-38, 30) western-frontier D3 land: list lvln.western-frontier.D3.land, spawn ref ArgoniaWorld.esm|0xEB5800; the stand 20 m from it, the next spawn point 49 m
   # subject: -153728 123392 18235
   do:
   - console: {line: cow ARG_Province -38 30, settle: 60}
@@ -170,15 +170,15 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: upland_b}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: upland_b_kinds}
 - name: den-giant-wasp
-  # creature.giant-wasp den in cell (-24, 25), deep-sink-basin D2; predator ref ArgoniaWorld.esm|0xEABE02; the stand 20 m from it
-  # subject: -96000 103168 595
+  # creature.giant-wasp den in cell (-24, 25), deep-sink-basin D2; predator ref ArgoniaWorld.esm|0xEABE02; the stand 16 m from it
+  # subject: -95488 102656 611
   do:
   - console: {line: cow ARG_Province -24 25, settle: 60}
   - wait: 8
   - console: set gamehour to 12
-  - console: player.setpos x -95010
-  - console: player.setpos y 104158
-  - console: player.setpos z 1057
+  - console: player.setpos x -96608
+  - console: player.setpos y 102656
+  - console: player.setpos z 472
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: den_arrive}

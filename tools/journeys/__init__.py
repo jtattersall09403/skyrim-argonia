@@ -175,7 +175,7 @@ class Build:
             w = db.open()
             ext = {r["id"] for r in w.query("SELECT id FROM build_cell WHERE kind = 'exterior'")}
             self._refs = {}
-            for r in w.query("SELECT id, cell_id, x_m, y_m, z_m FROM build_ref"):
+            for r in w.query("SELECT id, cell_id, x_m, y_m, z_m, z_over_m FROM build_ref"):
                 if r["cell_id"] not in ext:  # an interior's ref: no province ground under it
                     self._refs[ref_edid(r["id"])] = {"id": r["id"], "interior": True}
                     continue
@@ -184,7 +184,8 @@ class Build:
                 # a studio marker (the panel's, the probes') stands on the ground it was put over: its z is checked
                 self._refs[ref_edid(r["id"])] = {"id": r["id"], "x": x, "y": y, "own_z": own,
                                                  "marker": r["cell_id"].startswith("cell.studio."),
-                                                 "z": su.metres_to_units(r["z_m"]) if own else None}
+                                                 "z": su.metres_to_units(r["z_m"]) if own else None,
+                                                 "over": r["z_over_m"]}
         return self._refs.get(edid)
 
     # -- placed statics (lane 1.15-r6-claywater-look-derived) --------------------------------------------------------
@@ -588,7 +589,8 @@ def check_stand(b: Build, s: dict) -> str | None:
             return None  # inside: the interior's own floor
         x, y = r["x"] + s["off"][0], r["y"] + s["off"][1]
         if r["marker"]:
-            g, z = b.ground_u(x, y), r["z"] + s["off"][2]
+            g = b.ground_u(x, y)
+            z = (g + su.metres_to_units(r["over"]) if r.get("over") is not None else r["z"]) + s["off"][2]
             if abs(z - g) > tol:
                 return f"{s['step']}: {s['ref']} at z {z:.0f} is {su.units_to_metres(z - g):+.2f} m off the ground {g:.0f}"
         elif r["own_z"]:

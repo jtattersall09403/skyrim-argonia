@@ -15,19 +15,19 @@ camera: first
 steps:
   - name: pebble-field
     scan: 6
-    # cell -9 27: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 34 bad 0, 8.0 m to the subject, heading 0 pitch 14
-    # subject: -32575 113760 208
+    # cell -9 27: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 1 grass 36 bad 0, 10.0 m to the subject, heading 330 pitch 11
+    # subject: -32015 111520 208
     do:
       - hud: off
       - console: {line: cow ARG_Province -9 27, settle: 60}
       - wait: 8
       - console: set gamehour to 13
-      - console: player.setpos x -32575
-      - console: player.setpos y 113200
+      - console: player.setpos x -31665
+      - console: player.setpos y 110913
       - console: player.setpos z 224
       - wait: 6
-      - console: player.setangle z 0
-      - console: player.setangle x 14
+      - console: player.setangle z 330
+      - console: player.setangle x 11
       - console: player.setangle y 0
       - wait: 4
       - console: sw Argonia.esm|0x000E9B
@@ -39,8 +39,8 @@ steps:
     reader: [the ground away from the water's edge is varied forest floor, grass or moss, not one flat grey-green pebble texture over the whole view; the pebbly edge texture only in a thin strip along the water, no ground looks wet, shiny or mirror-like in the sun]
   - name: hillside
     scan: 6
-    # cell -50 8: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 20 bad 0, 15.0 m to the subject, heading 180 pitch 7
-    # subject: -204993 37617 5080
+    # cell -50 8: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 16 bad 0, 15.0 m to the subject, heading 180 pitch 4
+    # subject: -204993 37617 5525
     do:
       - hud: off
       - console: {line: cow ARG_Province -50 8, settle: 60}
@@ -48,10 +48,10 @@ steps:
       - console: set gamehour to 13
       - console: player.setpos x -204993
       - console: player.setpos y 38668
-      - console: player.setpos z 5088
+      - console: player.setpos z 5476
       - wait: 6
       - console: player.setangle z 180
-      - console: player.setangle x 7
+      - console: player.setangle x 4
       - console: player.setangle y 0
       - wait: 4
       - console: sw Argonia.esm|0x000E9B

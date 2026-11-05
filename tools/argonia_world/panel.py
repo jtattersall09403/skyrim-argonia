@@ -157,7 +157,7 @@ def marker_edid(v: dict) -> str:
 
 def marker_rows(vs: list[dict]) -> list[dict]:
     return [{"id": marker_ref(v), "cell_id": MARKER_CELL, "base": su.ENGINE_MARKER_HEADING, "x_m": v["x_m"],
-             "y_m": v["y_m"], "z_m": round(v["ground_m"] + EYE_M, 3), "yaw_deg": float(v["yaw_deg"]), "persistent": True,
+             "y_m": v["y_m"], "z_over_m": EYE_M, "yaw_deg": float(v["yaw_deg"]), "persistent": True,
              "why": f"world-panel vantage {v['id']} (tools/argonia_world/panel.py)"} for v in vs]
 
 

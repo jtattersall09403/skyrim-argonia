@@ -10,7 +10,7 @@
 {
  "id": "world-panel",
  "look": "world",
- "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonHigh", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelDeepRiverCorridorHigh", "records: ref ARG_Ref_PanelDeepRiverCorridorShore", "records: ref ARG_Ref_PanelDeepSinkBasinHigh", "records: ref ARG_Ref_PanelDeepSinkBasinShore", "records: ref ARG_Ref_PanelFloodedForestHigh", "records: ref ARG_Ref_PanelFloodedForestShore", "records: ref ARG_Ref_PanelInteriorSwampHigh", "records: ref ARG_Ref_PanelInteriorSwampShore", "records: ref ARG_Ref_PanelNorthernTransitionHigh", "records: ref ARG_Ref_PanelNorthernTransitionShore", "records: ref ARG_Ref_PanelRootlandHigh", "records: ref ARG_Ref_PanelRootlandShore", "records: ref ARG_Ref_PanelTidalDeltaHigh", "records: ref ARG_Ref_PanelTidalDeltaShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: ref ARG_Ref_PanelWesternFrontierShore", "records: cell -59,-16 r1", "records: cell -52,35 r1", "records: cell -42,60 r1", "records: cell -41,52 r1", "records: cell -39,13 r1", "records: cell -30,-36 r1", "records: cell -28,-34 r1", "records: cell -22,-7 r1", "records: cell -17,-8 r1", "records: cell -16,-31 r1", "records: cell -16,-3 r1", "records: cell -2,6 r1", "records: cell -1,54 r1", "records: cell 9,48 r1", "records: cell 25,-12 r1", "records: cell 26,-16 r1", "records: cell 26,-15 r1", "records: cell 43,45 r1"],
+ "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonHigh", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelDeepRiverCorridorHigh", "records: ref ARG_Ref_PanelDeepRiverCorridorShore", "records: ref ARG_Ref_PanelDeepSinkBasinHigh", "records: ref ARG_Ref_PanelDeepSinkBasinShore", "records: ref ARG_Ref_PanelFloodedForestHigh", "records: ref ARG_Ref_PanelFloodedForestShore", "records: ref ARG_Ref_PanelInteriorSwampHigh", "records: ref ARG_Ref_PanelInteriorSwampShore", "records: ref ARG_Ref_PanelNorthernTransitionHigh", "records: ref ARG_Ref_PanelNorthernTransitionShore", "records: ref ARG_Ref_PanelRootlandHigh", "records: ref ARG_Ref_PanelRootlandShore", "records: ref ARG_Ref_PanelTidalDeltaHigh", "records: ref ARG_Ref_PanelTidalDeltaShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: ref ARG_Ref_PanelWesternFrontierShore", "records: cell -59,-16 r1", "records: cell -52,33 r1", "records: cell -52,35 r1", "records: cell -43,60 r1", "records: cell -42,60 r1", "records: cell -41,52 r1", "records: cell -40,53 r1", "records: cell -39,13 r1", "records: cell -31,-38 r1", "records: cell -30,-36 r1", "records: cell -28,-34 r1", "records: cell -28,-33 r1", "records: cell -22,-7 r1", "records: cell -17,-8 r1", "records: cell -17,-7 r1", "records: cell -16,-31 r1", "records: cell -16,-3 r1", "records: cell -2,6 r1", "records: cell -1,54 r1", "records: cell -1,55 r1", "records: cell 9,48 r1", "records: cell 17,43 r1", "records: cell 25,-12 r1", "records: cell 26,-16 r1", "records: cell 26,-15 r1", "records: cell 43,45 r1", "records: cell 44,44 r1"],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
@@ -44,7 +44,7 @@
      }
     },
     {
-     "console": "player.setangle z 244"
+     "console": "player.setangle z 254"
     },
     {
      "console": "player.setangle x 0"
@@ -78,28 +78,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106683
+     "gt": 107018
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107283
+     "lt": 107618
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65830
+     "gt": -65614
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65230
+     "lt": -65014
     },
     {
      "read": [
@@ -125,7 +125,7 @@
      }
     },
     {
-     "console": "player.setangle z 244"
+     "console": "player.setangle z 254"
     },
     {
      "console": "player.setangle x 0"
@@ -159,28 +159,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106683
+     "gt": 107018
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107283
+     "lt": 107618
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65830
+     "gt": -65614
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65230
+     "lt": -65014
     },
     {
      "read": [
@@ -206,7 +206,7 @@
      }
     },
     {
-     "console": "player.setangle z 315"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -240,28 +240,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -238590
+     "gt": 73148
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -237990
+     "lt": 73748
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65836
+     "gt": 177299
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65236
+     "lt": 177899
     },
     {
      "read": [
@@ -287,7 +287,7 @@
      }
     },
     {
-     "console": "player.setangle z 315"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -321,28 +321,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -238590
+     "gt": 73148
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -237990
+     "lt": 73748
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65836
+     "gt": 177299
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65236
+     "lt": 177899
     },
     {
      "read": [
@@ -368,7 +368,7 @@
      }
     },
     {
-     "console": "player.setangle z 328"
+     "console": "player.setangle z 96"
     },
     {
      "console": "player.setangle x 0"
@@ -402,28 +402,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -120029
+     "gt": -126015
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -119429
+     "lt": -125415
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -144916
+     "gt": -154500
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144316
+     "lt": -153900
     },
     {
      "read": [
@@ -449,7 +449,7 @@
      }
     },
     {
-     "console": "player.setangle z 328"
+     "console": "player.setangle z 96"
     },
     {
      "console": "player.setangle x 0"
@@ -483,28 +483,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -120029
+     "gt": -126015
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -119429
+     "lt": -125415
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -144916
+     "gt": -154500
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -144316
+     "lt": -153900
     },
     {
      "read": [
@@ -530,7 +530,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -564,28 +564,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -114348
+     "gt": -114850
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -113748
+     "lt": -114250
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -136236
+     "gt": -134207
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -135636
+     "lt": -133607
     },
     {
      "read": [
@@ -611,7 +611,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -645,28 +645,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -114348
+     "gt": -114850
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -113748
+     "lt": -114250
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -136236
+     "gt": -134207
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -135636
+     "lt": -133607
     },
     {
      "read": [
@@ -692,7 +692,7 @@
      }
     },
     {
-     "console": "player.setangle z 141"
+     "console": "player.setangle z 87"
     },
     {
      "console": "player.setangle x 0"
@@ -726,28 +726,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -69652
+     "gt": -69932
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -69052
+     "lt": -69332
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -29356
+     "gt": -28972
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -28756
+     "lt": -28372
     },
     {
      "read": [
@@ -773,7 +773,7 @@
      }
     },
     {
-     "console": "player.setangle z 141"
+     "console": "player.setangle z 87"
     },
     {
      "console": "player.setangle x 0"
@@ -807,28 +807,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -69652
+     "gt": -69932
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -69052
+     "lt": -69332
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -29356
+     "gt": -28972
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -28756
+     "lt": -28372
     },
     {
      "read": [
@@ -854,7 +854,7 @@
      }
     },
     {
-     "console": "player.setangle z 345"
+     "console": "player.setangle z 120"
     },
     {
      "console": "player.setangle x 0"
@@ -888,28 +888,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -165331
+     "gt": -164140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -164731
+     "lt": -163540
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 215803
+     "gt": 217312
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 216403
+     "lt": 217912
     },
     {
      "read": [
@@ -935,7 +935,7 @@
      }
     },
     {
-     "console": "player.setangle z 345"
+     "console": "player.setangle z 120"
     },
     {
      "console": "player.setangle x 0"
@@ -969,28 +969,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -165331
+     "gt": -164140
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -164731
+     "lt": -163540
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 215803
+     "gt": 217312
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 216403
+     "lt": 217912
     },
     {
      "read": [
@@ -1016,7 +1016,7 @@
      }
     },
     {
-     "console": "player.setangle z 322"
+     "console": "player.setangle z 320"
     },
     {
      "console": "player.setangle x 0"
@@ -1050,28 +1050,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -6548
+     "gt": -6688
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -5948
+     "lt": -6088
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 24672
+     "gt": 24940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 25272
+     "lt": 25540
     },
     {
      "read": [
@@ -1097,7 +1097,7 @@
      }
     },
     {
-     "console": "player.setangle z 322"
+     "console": "player.setangle z 320"
     },
     {
      "console": "player.setangle x 0"
@@ -1131,28 +1131,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -6548
+     "gt": -6688
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -5948
+     "lt": -6088
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 24672
+     "gt": 24940
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 25272
+     "lt": 25540
     },
     {
      "read": [
@@ -1340,7 +1340,7 @@
      }
     },
     {
-     "console": "player.setangle z 291"
+     "console": "player.setangle z 290"
     },
     {
      "console": "player.setangle x 0"
@@ -1374,28 +1374,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -65708
+     "gt": -65836
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -65108
+     "lt": -65236
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -127276
+     "gt": -127136
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126676
+     "lt": -126536
     },
     {
      "read": [
@@ -1421,7 +1421,7 @@
      }
     },
     {
-     "console": "player.setangle z 291"
+     "console": "player.setangle z 290"
     },
     {
      "console": "player.setangle x 0"
@@ -1455,28 +1455,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -65708
+     "gt": -65836
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -65108
+     "lt": -65236
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -127276
+     "gt": -127136
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -126676
+     "lt": -126536
     },
     {
      "read": [
@@ -1502,7 +1502,7 @@
      }
     },
     {
-     "console": "player.setangle z 345"
+     "console": "player.setangle z 75"
     },
     {
      "console": "player.setangle x 0"
@@ -1536,28 +1536,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 177963
+     "gt": 180274
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 178563
+     "lt": 180874
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 184790
+     "gt": 183740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 185390
+     "lt": 184340
     },
     {
      "read": [
@@ -1583,7 +1583,7 @@
      }
     },
     {
-     "console": "player.setangle z 345"
+     "console": "player.setangle z 75"
     },
     {
      "console": "player.setangle x 0"
@@ -1617,28 +1617,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 177963
+     "gt": 180274
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 178563
+     "lt": 180874
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 184790
+     "gt": 183740
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 185390
+     "lt": 184340
     },
     {
      "read": [
@@ -1664,7 +1664,7 @@
      }
     },
     {
-     "console": "player.setangle z 163"
+     "console": "player.setangle z 178"
     },
     {
      "console": "player.setangle x 0"
@@ -1698,28 +1698,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -1548
+     "gt": -1058
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -948
+     "lt": -458
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 224905
+     "gt": 225313
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 225505
+     "lt": 225913
     },
     {
      "read": [
@@ -1745,7 +1745,7 @@
      }
     },
     {
-     "console": "player.setangle z 163"
+     "console": "player.setangle z 178"
     },
     {
      "console": "player.setangle x 0"
@@ -1779,28 +1779,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -1548
+     "gt": -1058
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -948
+     "lt": -458
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 224905
+     "gt": 225313
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 225505
+     "lt": 225913
     },
     {
      "read": [
@@ -1860,28 +1860,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -172327
+     "gt": -173226
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -171727
+     "lt": -172626
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 245938
+     "gt": 248961
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 246538
+     "lt": 249561
     },
     {
      "read": [
@@ -1941,28 +1941,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -172327
+     "gt": -173226
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -171727
+     "lt": -172626
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 245938
+     "gt": 248961
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 246538
+     "lt": 249561
     },
     {
      "read": [
@@ -1988,7 +1988,7 @@
      }
     },
     {
-     "console": "player.setangle z 320"
+     "console": "player.setangle z 321"
     },
     {
      "console": "player.setangle x 0"
@@ -2036,14 +2036,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -12040
+     "gt": -12332
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -11440
+     "lt": -11732
     },
     {
      "read": [
@@ -2069,7 +2069,7 @@
      }
     },
     {
-     "console": "player.setangle z 320"
+     "console": "player.setangle z 321"
     },
     {
      "console": "player.setangle x 0"
@@ -2117,14 +2117,14 @@
       "player"
      ],
      "path": "pos.y",
-     "gt": -12040
+     "gt": -12332
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -11440
+     "lt": -11732
     },
     {
      "read": [
@@ -2150,7 +2150,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 225"
     },
     {
      "console": "player.setangle x 0"
@@ -2184,28 +2184,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -89864
+     "gt": -88364
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -89264
+     "lt": -87764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -25323
+     "gt": -27692
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -24723
+     "lt": -27092
     },
     {
      "read": [
@@ -2231,7 +2231,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 225"
     },
     {
      "console": "player.setangle x 0"
@@ -2265,28 +2265,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -89864
+     "gt": -88364
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -89264
+     "lt": -87764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -25323
+     "gt": -27692
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -24723
+     "lt": -27092
     },
     {
      "read": [
@@ -2312,7 +2312,7 @@
      }
     },
     {
-     "console": "player.setangle z 153"
+     "console": "player.setangle z 112"
     },
     {
      "console": "player.setangle x 0"
@@ -2346,28 +2346,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102240
+     "gt": 104020
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102840
+     "lt": 104620
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -47636
+     "gt": -46892
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47036
+     "lt": -46292
     },
     {
      "read": [
@@ -2393,7 +2393,7 @@
      }
     },
     {
-     "console": "player.setangle z 153"
+     "console": "player.setangle z 112"
     },
     {
      "console": "player.setangle x 0"
@@ -2427,28 +2427,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 102240
+     "gt": 104020
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 102840
+     "lt": 104620
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -47636
+     "gt": -46892
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -47036
+     "lt": -46292
     },
     {
      "read": [
@@ -2474,7 +2474,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 150"
     },
     {
      "console": "player.setangle x 0"
@@ -2508,28 +2508,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106406
+     "gt": 106826
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107006
+     "lt": 107426
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -60269
+     "gt": -59791
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -59669
+     "lt": -59191
     },
     {
      "read": [
@@ -2555,7 +2555,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 150"
     },
     {
      "console": "player.setangle x 0"
@@ -2589,28 +2589,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106406
+     "gt": 106826
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107006
+     "lt": 107426
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -60269
+     "gt": -59791
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -59669
+     "lt": -59191
     },
     {
      "read": [
@@ -2636,7 +2636,7 @@
      }
     },
     {
-     "console": "player.setangle z 146"
+     "console": "player.setangle z 133"
     },
     {
      "console": "player.setangle x 0"
@@ -2670,28 +2670,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156389
+     "gt": -156844
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155789
+     "lt": -156244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 56228
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56828
+     "lt": 56364
     },
     {
      "read": [
@@ -2717,7 +2717,7 @@
      }
     },
     {
-     "console": "player.setangle z 146"
+     "console": "player.setangle z 133"
     },
     {
      "console": "player.setangle x 0"
@@ -2751,28 +2751,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -156389
+     "gt": -156844
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -155789
+     "lt": -156244
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 56228
+     "gt": 55764
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 56828
+     "lt": 56364
     },
     {
      "read": [
@@ -2798,7 +2798,7 @@
      }
     },
     {
-     "console": "player.setangle z 120"
+     "console": "player.setangle z 165"
     },
     {
      "console": "player.setangle x 0"
@@ -2832,28 +2832,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -210036
+     "gt": -209580
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -209436
+     "lt": -208980
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 143946
+     "gt": 138498
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 144546
+     "lt": 139098
     },
     {
      "read": [
@@ -2879,7 +2879,7 @@
      }
     },
     {
-     "console": "player.setangle z 120"
+     "console": "player.setangle z 165"
     },
     {
      "console": "player.setangle x 0"
@@ -2913,28 +2913,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -210036
+     "gt": -209580
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -209436
+     "lt": -208980
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 143946
+     "gt": 138498
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 144546
+     "lt": 139098
     },
     {
      "read": [

@@ -11,7 +11,7 @@
 # the trees and plants seen; the six classes' stills should not read as one forest.
 # 
 id: tree-seat
-reach: ["data/dependencies.json", "records: Statics", "records: cell -62,46 r1", "records: cell -49,60 r1", "records: cell -42,59 r1", "records: cell -36,-31 r1", "records: cell -32,-2 r1", "records: cell -22,-25 r1", "records: cell -16,58 r1", "records: cell -15,-16 r1", "records: cell -8,43 r1", "records: cell -6,-54 r1", "records: cell 14,28 r1", "records: cell 29,13 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["data/dependencies.json", "records: Statics", "records: cell -49,60 r1", "records: cell -42,59 r1", "records: cell -36,-31 r1", "records: cell -32,-2 r1", "records: cell -22,-25 r1", "records: cell -16,58 r1", "records: cell -15,-16 r1", "records: cell -8,43 r1", "records: cell -6,-54 r1", "records: cell 9,-42 r1", "records: cell 14,28 r1", "records: cell 29,13 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true
@@ -52,7 +52,7 @@ steps:
 - name: tree-2-argoniatreepalmoke02
   scan: 6
   # 155FF2:King of the Murkmire.esp ref 9D4E2C, seat 780 u x scale 1.16; aim at the trunk base 8 m off its 7.0 m footprint, 0 on the aim line, 0 at the eye
-  # subject: -126070 -4627 1719
+  # subject: -126070 -4627 1735
   do:
   - hud: off
   - console:
@@ -66,7 +66,7 @@ steps:
   - console:
       line: player.setpos y -5154
   - console:
-      line: player.setpos z 1809
+      line: player.setpos z 1824
   - console:
       line: player.setangle z 60
   - console:
@@ -81,26 +81,26 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-3-argoniatreepalmoke03
   scan: 6
-  # 155FF3:King of the Murkmire.esp ref CC501D, seat 748 u x scale 1.20; aim at the trunk base 8 m off its 14.8 m footprint, 0 on the aim line, 0 at the eye
-  # subject: -251191 192066 18220
+  # 155FF3:King of the Murkmire.esp ref 763C0A, seat 748 u x scale 1.20; aim at the trunk base 7 m off its 14.8 m footprint, 0 on the aim line, 0 at the eye
+  # subject: 36749 -171343 141
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -62 46
+      line: cow ARG_Province 9 -42
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -251191
+      line: player.setpos x 38273
   - console:
-      line: player.setpos y 190471
+      line: player.setpos y -171343
   - console:
-      line: player.setpos z 18457
+      line: player.setpos z 299
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 270
   - console:
-      line: player.setangle x 13
+      line: player.setangle x 10
   - console:
       line: player.setangle y 0
   - wait: 6

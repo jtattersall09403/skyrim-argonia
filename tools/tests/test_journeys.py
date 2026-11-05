@@ -493,3 +493,14 @@ def test_panel_aim_horizon_rule_turns_then_moves():
     gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=lambda *a: trunk, wet=lambda *a: False, ok_stand=lambda *a: True)
     assert log[-1]["tier"] == 4 and log[-1]["clear"] and h == 90.0 and moved == 0.0
     # the frustum cover of a region of the frame never exceeds 100 %
+
+
+def test_panel_markers_are_heights_over_the_game_ground():
+    """L1: a vantage marker carries z_over_m (resolved at plugin time), never a frozen z_m; the check seats it on the ground."""
+    from tools.argonia_world import panel
+    row = panel.marker_rows([{"id": "x", "x_m": 1.0, "y_m": 2.0, "ground_m": 50.0, "yaw_deg": 0}])[0]
+    assert row["z_over_m"] == panel.EYE_M and "z_m" not in row
+    b = J.Build(ground=np.full((80, 80), 10.0, np.float32), water={}, refs={})
+    b._refs = {"ARG_Ref_P": {"id": "p", "x": 100.0, "y": 100.0, "own_z": False, "marker": True, "z": None, "over": panel.EYE_M}}
+    s = {"kind": "ref", "step": "s", "ref": "ARG_Ref_P", "off": (0, 0, 0), "water": False}
+    assert J.check_stand(b, s) is None

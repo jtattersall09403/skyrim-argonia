@@ -82,28 +82,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106683
+     "gt": 107018
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107283
+     "lt": 107618
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65830
+     "gt": -65614
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65230
+     "lt": -65014
     },
     {
      "read": [
@@ -169,28 +169,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106683
+     "gt": 107018
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107283
+     "lt": 107618
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -65830
+     "gt": -65614
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65230
+     "lt": -65014
     },
     {
      "read": [
@@ -222,16 +222,16 @@
      "wait": 8
     },
     {
-     "console": "player.setpos x -166754"
+     "console": "player.setpos x -166291"
     },
     {
-     "console": "player.setpos y 31672"
+     "console": "player.setpos y 31987"
     },
     {
-     "console": "player.setpos z 4852"
+     "console": "player.setpos z 4865"
     },
     {
-     "console": "player.setangle z 239"
+     "console": "player.setangle z 237"
     },
     {
      "console": "player.setangle x 5"
@@ -268,28 +268,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -167054
+     "gt": -166591
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -166454
+     "lt": -165991
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 31372
+     "gt": 31687
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 31972
+     "lt": 32287
     },
     {
      "read": [
@@ -321,16 +321,16 @@
      "wait": 8
     },
     {
-     "console": "player.setpos x -166754"
+     "console": "player.setpos x -166291"
     },
     {
-     "console": "player.setpos y 31672"
+     "console": "player.setpos y 31987"
     },
     {
-     "console": "player.setpos z 4852"
+     "console": "player.setpos z 4865"
     },
     {
-     "console": "player.setangle z 239"
+     "console": "player.setangle z 237"
     },
     {
      "console": "player.setangle x 5"
@@ -367,28 +367,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -167054
+     "gt": -166591
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -166454
+     "lt": -165991
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 31372
+     "gt": 31687
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 31972
+     "lt": 32287
     },
     {
      "read": [

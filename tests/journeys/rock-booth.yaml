@@ -4,7 +4,7 @@
 # own clear weather (no fog over the base). Reader checklist per still: sunk (no open bottom), no gap
 # under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.
 id: rock-booth
-reach: ["data/dependencies.json", "records: Statics", "records: cell -60,18 r1", "records: cell -55,63 r1", "records: cell -41,26 r1", "records: cell -41,39 r1", "records: cell -35,42 r1", "records: cell 24,44 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["data/dependencies.json", "records: Statics", "records: cell -55,63 r1", "records: cell -32,41 r1", "records: cell 8,54 r1", "records: cell 24,44 r1", "records: cell 30,60 r1", "records: cell 44,41 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true
@@ -51,33 +51,33 @@ steps:
     keep: rock_z
 - name: rock-2-01coalroundrock
   scan: 6
-  # 1DE977:Black Marsh.esm ref B0C424 in cell (-60,18), tilt 49.1 deg, scale 0.92, bound radius 44 u, stand 300 u off
-  # subject: -242757 75461 16940
+  # 1DE977:Black Marsh.esm ref D4BC16 in cell (8,54), tilt 49.0 deg, scale 1.00, bound radius 48 u, stand 300 u off
+  # subject: 36864 222965 4475
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -60 18
+      line: cow ARG_Province 8 54
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -242409
+      line: player.setpos x 36676
   - console:
-      line: player.setpos y 75503
+      line: player.setpos y 223199
   - console:
-      line: player.setpos z 16649
+      line: player.setpos z 4170
   - console:
-      line: player.setangle z 263
+      line: player.setangle z 141
   - console:
-      line: player.setangle x -26
+      line: player.setangle x -31
   - console:
       line: player.setangle y 0
   - wait: 6
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: prid ArgoniaWorld.esm|0xB0C424
+  - console: prid ArgoniaWorld.esm|0xD4BC16
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
@@ -86,35 +86,35 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-3-arg_rock_gl_rock03
+- name: rock-3-arg_rock_rock_32
   scan: 6
-  # 0C0005:ArgoniaWorld.esm ref B8CA05 in cell (-41,26), tilt 48.8 deg, scale 0.77, bound radius 64 u, stand 300 u off
-  # subject: -164965 107370 21912
+  # 0C0011:ArgoniaWorld.esm ref C83801 in cell (44,41), tilt 48.9 deg, scale 1.21, bound radius 94 u, stand 377 u off
+  # subject: 182113 169402 1083
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -41 26
+      line: cow ARG_Province 44 41
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -164710
+      line: player.setpos x 180452
   - console:
-      line: player.setpos y 107255
+      line: player.setpos y 169146
   - console:
-      line: player.setpos z 21687
+      line: player.setpos z 37
   - console:
-      line: player.setangle z 294
+      line: player.setangle z 81
   - console:
-      line: player.setangle x -20
+      line: player.setangle x -29
   - console:
       line: player.setangle y 0
   - wait: 6
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: prid ArgoniaWorld.esm|0xB8CA05
+  - console: prid ArgoniaWorld.esm|0xC83801
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
@@ -160,35 +160,35 @@ steps:
     keep: rock_y
   - console: getpos z
     keep: rock_z
-- name: rock-5-arg_rock_gl_rock06
+- name: rock-5-arg_rock_gl_rock03
   scan: 6
-  # 0C0007:ArgoniaWorld.esm ref C59609 in cell (-41,39), tilt 47.6 deg, scale 1.05, bound radius 101 u, stand 404 u off
-  # subject: -167419 162556 26959
+  # 0C0005:ArgoniaWorld.esm ref C7A005 in cell (-32,41), tilt 48.7 deg, scale 0.80, bound radius 67 u, stand 300 u off
+  # subject: -127972 168790 21026
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -41 39
+      line: cow ARG_Province -32 41
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -167364
+      line: player.setpos x -127912
   - console:
-      line: player.setpos y 162210
+      line: player.setpos y 168496
   - console:
-      line: player.setpos z 26639
+      line: player.setpos z 20720
   - console:
-      line: player.setangle z 351
+      line: player.setangle z 348
   - console:
-      line: player.setangle x -30
+      line: player.setangle x -32
   - console:
       line: player.setangle y 0
   - wait: 6
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: prid ArgoniaWorld.esm|0xC59609
+  - console: prid ArgoniaWorld.esm|0xC7A005
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
@@ -199,33 +199,33 @@ steps:
     keep: rock_z
 - name: rock-6-01mudrockstack
   scan: 6
-  # 1DE971:Black Marsh.esm ref C8963A in cell (-35,42), tilt 47.5 deg, scale 1.05, bound radius 103 u, stand 411 u off
-  # subject: -140385 172969 24665
+  # 1DE971:Black Marsh.esm ref DAD03C in cell (30,60), tilt 47.5 deg, scale 0.91, bound radius 90 u, stand 358 u off
+  # subject: 125215 247312 12526
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -35 42
+      line: cow ARG_Province 30 60
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -139833
+      line: player.setpos x 125263
   - console:
-      line: player.setpos y 173401
+      line: player.setpos y 248011
   - console:
-      line: player.setpos z 24789
+      line: player.setpos z 11879
   - console:
-      line: player.setangle z 232
+      line: player.setangle z 184
   - console:
-      line: player.setangle x 19
+      line: player.setangle x -37
   - console:
       line: player.setangle y 0
   - wait: 6
   - console: sw Argonia.esm|0x000E9B
   - console: fw Argonia.esm|0x000E9B
   - settle: {cap: 14, min: 3}
-  - console: prid ArgoniaWorld.esm|0xC8963A
+  - console: prid ArgoniaWorld.esm|0xDAD03C
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   - console: getpos x
