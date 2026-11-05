@@ -34,7 +34,7 @@ def test_push_sends_wide_names_by_zip(tmp_path, monkeypatch):
         assert [i.filename for i in infos] == ["Sound/Buff/BuffMelee1 - 副本.wav", "deg °.txt"]
         assert all(i.flag_bits & 0x800 for i in infos)  # UTF-8 names, read exactly by .NET's ZipFile
         assert z.read("deg °.txt") == b"c"
-    assert not list(out.iterdir())  # parts and zip removed once sent
+    assert [p.name for p in out.iterdir()] == ["parts"]  # parts and zip removed once sent; only resume marks stay (cmd_push drops them after unpack)
 
 
 def test_unpack_fails_loudly_and_lays_the_zip():
