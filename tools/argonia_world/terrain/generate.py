@@ -991,6 +991,11 @@ def shape_sites(h, lo, hi, role, inp: Inputs, vmin, vmax, foot, sbank, nz=None, 
     return out
 
 
+def is_province_out(out) -> bool:
+    """No --out, or --out the province's own out/terrain: only then may a generate write the world DB."""
+    return out is None or Path(out).resolve() == OUT.resolve()
+
+
 def atomic(path: Path, dump, mode: str = "wb") -> None:
     """Write through `<name>.tmp-<pid>` and rename into place: a reader (a build in another tree sharing out/terrain)
     sees the whole old file or the whole new one, and an interrupted write leaves the old one."""

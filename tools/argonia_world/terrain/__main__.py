@@ -13,6 +13,12 @@
         shared cell edge), layers per quadrant, and the overflow survey; DIR/check.json, and the sampled points
         with their expected heights in DIR/probe-points.json (the L4 terrain-heights scene); exit 1 on a failure
 
+Measure a rule: generate once to scratch (~4 min), then build --rows against that ground:
+    python3 -m tools.argonia_world.terrain generate --out SCRATCH
+    python3 -m tools.argonia_world.terrain build --rows=-48:-46 [--cols=X0:X1] --ground SCRATCH/ground-f32.npy --out SCRATCH/w
+        sugar for --cells (inclusive cell rows/columns); SCRATCH/w/window.json marks it a window, which the pipeline's
+        stamp checks never accept as the province's terrain.
+
 Memory: the arrays are memory-mapped and both commands stream one row of cells at a time.
 """
 from __future__ import annotations
@@ -46,6 +52,26 @@ def _cells(s: str | None):
     return v
 
 
+def _span(s: str, name: str) -> tuple[int, int]:
+    try:
+        lo, hi = (int(t) for t in s.split(":"))
+    except ValueError:
+        raise SystemExit(f"--{name} takes A:B (inclusive, e.g. --{name}=-48:-46)") from None
+    if lo > hi:
+        raise SystemExit(f"--{name} {s}: A must not exceed B")
+    return lo, hi
+
+
+def window_cells(rows: str | None, cols: str | None, cell_range) -> tuple[int, int, int, int] | None:
+    """--rows/--cols as the build's x0,y0,x1,y1 box; an omitted axis spans the grid's cell range."""
+    if not rows and not cols:
+        return None
+    gx0, gy0, gx1, gy1 = cell_range
+    y0, y1 = _span(rows, "rows") if rows else (gy0, gy1)
+    x0, x1 = _span(cols, "cols") if cols else (gx0, gx1)
+    return x0, y0, x1, y1
+
+
 def default_out(a) -> Path:
     """--out, else out/terrain for the whole province, else out/terrain-sample/<sample|cells-x0,y0,x1,y1>/ for a
     partial build: a worktree's out/terrain is the main tree's, and a partial build must never clear its land."""
@@ -59,6 +85,15 @@ def default_out(a) -> Path:
 
 
 def cmd_build(a) -> int:
+    if getattr(a, "rows", None) or getattr(a, "cols", None):
+        if a.cells or a.sample:
+            raise SystemExit("--rows/--cols cannot be combined with --cells or --sample")
+        a.cells = ",".join(map(str, window_cells(a.rows, a.cols, Sources.load(apron=not a.no_apron).cell_range)))
+        if not a.out:
+            a.out = str(default_out(a))
+        B.mark_window(Path(a.out), a.cells)
+    else:
+        (default_out(a) / "window.json").unlink(missing_ok=True)  # a whole build clears an old window mark
     a.out = str(default_out(a))
     gp = Path(a.ground) if getattr(a, "ground", None) else None
     src = Sources.load(apron=not a.no_apron, ground=gp)
@@ -261,7 +296,8 @@ def cmd_generate(a) -> int:
     t0 = time.time()
     w = db.open()
     res = G.generate(G.Inputs.load(w))
-    print(f"entrance_site: {G.write_sites(w, res['sites'])} rows", flush=True)
+    if G.is_province_out(a.out):  # a scratch --out never writes a tracked DB row
+        print(f"entrance_site: {G.write_sites(w, res['sites'])} rows", flush=True)
     # the contract's out/terrain/ground-f32.npy; with --out the ground, LAND and stats all go there (a trial never
     # overwrites the shared ground other lanes read)
     if a.out:
@@ -307,6 +343,8 @@ def main(argv=None) -> int:
     b = sub.add_parser("build")
     b.add_argument("--cells")
     b.add_argument("--out", help="default out/terrain; with --sample or --cells out/terrain-sample/<sample|cells-x0,y0,x1,y1>")
+    b.add_argument("--rows", help="cell rows Y0:Y1 inclusive (sugar for --cells; writes window.json)")
+    b.add_argument("--cols", help="cell columns X0:X1 inclusive (with or without --rows)")
     b.add_argument("--no-apron", action="store_true")
     b.add_argument("--sample", action="store_true")
     b.add_argument("--ground", help="the ground-f32.npy to build from (a pipeline run's frozen copy)")

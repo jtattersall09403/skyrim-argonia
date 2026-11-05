@@ -83,6 +83,8 @@ class stage:
 
 
 def _stamp_holds(f: Path, key: str) -> bool:
+    if (f.parent / "window.json").exists() or (f.parent.parent / "window.json").exists():
+        return False  # a windowed scratch build is never the province's (terrain `build --rows`)
     return f.exists() and f.read_text() == key
 
 
@@ -520,7 +522,8 @@ def world(data: Path, into: Path, sample: bool, nav: Path | None = None, veg: bo
     stamp = into / "terrain.stamp"
     now = _terrain_stamp()
     with stage("terrain", None if sample else now) as st:
-        if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()):
+        if sample or not (stamp.exists() and stamp.read_text() == now and (into / "land").is_dir()
+                          and not (into / "window.json").exists()):
             if not sample:
                 _refuse_shared_rebuild(into)
             run(sys.executable, "-m", "tools.argonia_world.terrain", "build", "--out", into, "--ground", frozen,
