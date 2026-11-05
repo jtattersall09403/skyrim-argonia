@@ -15,12 +15,25 @@ export ARGONIA_PLAY=${ARGONIA_PLAY:-argonia-play}
 # at ~/.argonia/round/tree, never the lanes' live tree (09:4x-10:5x: four chains refused or killed by lanes' edits).
 # out/ (every keyed cache, the province lock, the LOD markers) and the ignored build inputs are symlinks to the main
 # tree's, so nothing rebuilds for the move. The sha is the resume key (0037): ~/.argonia/round/chain.<batch>.sha,
-# kept until the chain ends well; a rerun keeps the tree when its HEAD descends from that sha (the pre-batch's commits).
+# kept until the chain ends well; a fresh run puts the tree at exactly the main tree's HEAD (after a ff to origin/main), a
+# rerun at the key sha (a tree ahead of it is reset: the tree that runs the pre-batch is the tree whose code built the land).
 # The round record is appended in the main tree (the planner commits it); batch.yaml is read from the committed tree.
 src=${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}
 case $record in /*) ;; *) record="$src/$record";; esac
 if [ -z "${CHAIN_IN_TREE:-}" ]; then
   tree=${CHAIN_TREE:-$HOME/.argonia/round/tree}; keyf="$HOME/.argonia/round/chain.$(basename "$batch" .yaml).sha"
+  # the main tree is brought to origin/main first (lanes push from their own worktrees): the land is built, and the key
+  # sha taken, from the same code the worktree will run. A dirty tree or a diverged one is the planner's to reconcile.
+  if git -C "$src" remote get-url origin >/dev/null 2>&1 && git -C "$src" fetch -q origin 2>/dev/null; then
+    if git -C "$src" rev-parse -q --verify origin/main >/dev/null \
+       && ! git -C "$src" merge-base --is-ancestor origin/main HEAD 2>/dev/null; then
+      if [ -n "$(git -C "$src" status --porcelain --untracked-files=no)" ]; then
+        echo "CHAIN BLOCKED: $src has uncommitted tracked changes and origin/main is ahead of its HEAD: the planner reconciles"; exit 2; fi
+      git -C "$src" merge -q --ff-only origin/main || {
+        echo "CHAIN BLOCKED: $src cannot fast-forward to origin/main (diverged): the planner reconciles"; exit 2; }
+      echo "CHAIN main tree fast-forwarded to $(git -C "$src" rev-parse --short HEAD)"
+    fi
+  fi
   # the land (ground, terrain, navmesh) is built in the main tree, never from the worktree (pipeline refuses a shared
   # rebuild): when its stamps are stale the chain runs that pass here first, keyed and resumable, instead of dying in
   # its pre-batch (r6-chain16/18/20/21, 2026-11-04/05: four chains ended on "land is stale", five land jobs by hand)
@@ -51,7 +64,10 @@ PY
   # entrance_site.jsonl)
   if [ -z "${CHAIN_DRY:-}" ]; then
     git -C "$src" add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated 2>/dev/null
-    git -C "$src" diff --cached --quiet || git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" && git -C "$src" push -q origin HEAD:main 2>/dev/null || true
+    if ! git -C "$src" diff --cached --quiet; then
+      git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" \
+        && { git -C "$src" push -q origin HEAD:main 2>"$HOME/.argonia/round/push.err" || echo "CHAIN warning: push to origin/main refused: $(tr '\n' ' ' <"$HOME/.argonia/round/push.err")"; }
+    fi
   fi
   sha=${CHAIN_SHA:-$(cat "$keyf" 2>/dev/null || git -C "$src" rev-parse HEAD)}; sha=$(git -C "$src" rev-parse "$sha^{commit}") || exit 2
   echo "CHAIN tree $tree sha $sha"
@@ -61,7 +77,7 @@ PY
     ex="$(git -C "$src" rev-parse --path-format=absolute --git-common-dir)/info/exclude"; mkdir -p "$(dirname "$ex")"
     grep -qx /out "$ex" 2>/dev/null || echo /out >>"$ex"   # the symlink: out/ in .gitignore matches directories only
     if [ ! -e "$tree/.git" ]; then git -C "$src" worktree prune; git -C "$src" worktree add -q --detach "$tree" "$sha" || exit 2
-    elif ! git -C "$tree" merge-base --is-ancestor "$sha" HEAD 2>/dev/null; then
+    elif [ "$(git -C "$tree" rev-parse HEAD 2>/dev/null)" != "$sha" ]; then
       git -C "$tree" checkout -q -f --detach "$sha" && git -C "$tree" clean -fdq || exit 2; fi
     ln -sfn "$src/out" "$tree/out" 2>/dev/null || { rm -rf "$tree/out"; ln -s "$src/out" "$tree/out"; }
     # ignored files the build hashes or reads (data/immersion/inventory.jsonl): linked, not copied

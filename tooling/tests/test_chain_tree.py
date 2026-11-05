@@ -63,3 +63,35 @@ def test_dry_prints_tree_and_sha(tmp_path):
     sha = git(src, "rev-parse", "HEAD")
     assert f"CHAIN tree {tmp_path}/home/.argonia/round/tree sha {sha}" in r.stdout
     assert "would run on:" in r.stdout and not (tmp_path / "home/.argonia/round/tree").exists()
+
+
+def bare_origin(tmp, src):
+    o = tmp / "origin.git"
+    git(tmp, "init", "-q", "--bare", "-b", "main", str(o))
+    git(src, "remote", "add", "origin", str(o))
+    git(src, "push", "-q", "origin", "main")
+    other = tmp / "other"
+    git(tmp, "clone", "-q", str(o), str(other))
+    (other / "lane.txt").write_text("pushed by a lane\n")
+    git(other, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qam", "lane")
+    git(other, "push", "-q", "origin", "main")
+    return git(other, "rev-parse", "HEAD")
+
+
+def test_ff_to_origin_and_tree_at_that_sha(tmp_path):
+    src, seen = setup(tmp_path)
+    new = bare_origin(tmp_path, src)
+    r = chain(tmp_path, src)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert git(src, "rev-parse", "HEAD") == new
+    assert f"prebatch {tmp_path}/home/.argonia/round/tree pushed by a lane" in seen.read_text()
+
+
+def test_dirty_tree_behind_origin_refused(tmp_path):
+    src, seen = setup(tmp_path)
+    old = git(src, "rev-parse", "HEAD")
+    bare_origin(tmp_path, src)
+    (src / "lane.txt").write_text("dirty\n")
+    r = chain(tmp_path, src)
+    assert r.returncode == 2 and "planner reconciles" in r.stdout
+    assert git(src, "rev-parse", "HEAD") == old and not seen.exists()
