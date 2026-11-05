@@ -240,6 +240,17 @@ def sha256_file(p: Path) -> str:
     return h.hexdigest()
 
 
+def mark_window(out: Path, cells: str) -> None:
+    """A windowed build's dir is marked: the pipeline's stamp checks never take it as the province's terrain."""
+    import json
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "window.json").write_text(json.dumps({"windowed": True, "cells": cells}) + "\n")
+
+
+def is_window(d: Path) -> bool:
+    return (Path(d) / "window.json").exists()
+
+
 def code_stamp() -> str:
     """The terrain code the cell lines depend on (the files the pipeline's terrain stamp reads)."""
     h = hashlib.sha256()
@@ -286,7 +297,7 @@ def road_key(mat, r0: int, r1: int) -> bytes:
         segs = road_paint.segments()
     except Exception:  # no route data (a fixture): no roads, as Material._road
         return b""
-    reach = M.ROAD_BLEND_M / su.PROVINCE_SAMPLE_M
+    reach = (M.ROAD_FULL_M + M.ROAD_BLEND_M) / su.PROVINCE_SAMPLE_M
     h = hashlib.sha256()
     for cls, half, seg in segs:
         lo = seg[:, :, 0].min(axis=1) - (half + reach)

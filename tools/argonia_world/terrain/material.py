@@ -128,7 +128,11 @@ TEXTURES: tuple[Tex, ...] = tuple(Tex(*r) for r in (
 ))
 TEX = {t.edid: t for t in TEXTURES}
 ROAD = "LDirtPath01"
-ROAD_BLEND_M = 4.0  # the road paint blends into the land over this each side (routes/shape.py)
+# the road paint (lane 1.15-r6-road-profile, probes/vanilla_road_profile.py --marsh: Skyrim.esm's road dirt holds its
+# weight to 5 m from the centre, gone by 7 m): full over the flat half width plus ROAD_FULL_M, then blending into the
+# land over ROAD_BLEND_M; full to the lane's edge so no grass-growing ltex reaches the lane (row 163: the ferns on it)
+ROAD_FULL_M = 2.0
+ROAD_BLEND_M = 2.0
 
 
 # ---- the gradient ---------------------------------------------------------------------------------------------
@@ -716,6 +720,7 @@ class Material:
         a = np.zeros(w.shape[:2])
         blend = ROAD_BLEND_M / su.PROVINCE_SAMPLE_M
         for _cls, half, seg in segs:
+            half = half + ROAD_FULL_M / su.PROVINCE_SAMPLE_M
             d = road_paint.distance(seg, half + blend, a0, b0, a.shape)
             np.maximum(a, np.clip(1.0 - (d - half) / blend, 0.0, 1.0), out=a)
         a = np.where(k["dh"] > 0.0, a, 0.0)  # a road is never painted under water

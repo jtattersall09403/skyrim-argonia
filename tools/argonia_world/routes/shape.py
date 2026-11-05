@@ -38,6 +38,7 @@ DELTA_LIP = 0.2  # the road's change between neighbour samples, at most (m): its
 LAT_EDGE_M = 0.1  # the cut or fill at a road's edge, at most (m), growing LAT_RATE_M a sample toward the centre: the
 LAT_RATE_M = 0.15  # bench's cut bank stays under WALL_M past the land's own step (the lateral cap, r6)
 FADE_ITER = 40  # the blend's harmonic fade: Jacobi sweeps (the band is ~5 samples wide; 40 sweeps settle it)
+PIN_TOL_M = 0.05  # a sample whose bounds are this close is a place's pin (census.py's pin test)
 BLEND_M = 9.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
 
 
@@ -162,7 +163,9 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     The road yields to water (`water`: a bed, gully, channel or wet-raster sample): the centreline is cut into dry
     runs at every water point, each run shaped on its own, its weight tapering to 0 over BLEND_M toward a bank, and
     no water sample is shaped; so a crossing keeps the water's graded bed and banks. With lo/hi (generate's cones)
-    the target is held inside them before the blend, so the clip after never cuts a wall into the road."""
+    the target is held inside them before the blend, so the clip after never cuts a wall into the road; a place's pin
+    (lo == hi) inside a road's core has its lo lowered in place by the road's centre set, so the road's trough shows
+    through a site's flat pad and the clip after keeps it."""
     num = np.zeros(h.shape)  # sum of weight x target: where two roads reach a sample, their targets blend by weight
     den = np.zeros(h.shape)
     wgt = np.zeros(h.shape)
@@ -189,6 +192,13 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
                 continue
             q = p[a0:a1]
             zc = centreline(h, q, core_m)
+            if lo is not None:  # a floor under the centre (a causeway's dry top): the trough rises from the floor, never
+                # sits flattened on it (lane 1.15-r6-road-profile: the centre's set clipped up to the floor left the
+                # trough's first 3.5 m each side flat, a 7 m+ slab on 10 % of causeway points); a pin keeps its own
+                lc = bilinear(np.where(np.isfinite(lo), lo, -1e6), q[:, 0], q[:, 1])
+                hc = bilinear(np.where(np.isfinite(hi), hi, 1e6), q[:, 0], q[:, 1])
+                floor = np.isfinite(lc) & (lc > -1e5) & (np.abs(hc - lc) >= PIN_TOL_M)
+                zc = np.where(floor, np.maximum(zc, lc), zc)
             # taper toward a bank: full weight taper_n points in from a water end, none at it (a road end is full)
             idx = np.arange(a1 - a0, dtype=np.float64)
             tap = np.ones(a1 - a0)
@@ -215,6 +225,16 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
             if bank_w is not None:
                 w = w * bank_w[rr, cc]
             if lo is not None:
+                # a place's pinned pad (lo == hi: a fort's or a station's flat site) keeps its level but for the
+                # road's own trough (lane 1.15-r6-road-profile: 43 of 50 road points on a pin read a 20 m slab, the
+                # 'plaza' at blackwood-flat-46 is Fort Greenditch's pad): inside the core the pin's floor drops by
+                # the centre's set (half the core's trough), never a raise; Skyrim.esm's road is a trough everywhere
+                inside = d_m <= core_m + MPP
+                pinned = inside & np.isfinite(lo[rr, cc]) & (np.abs(hi[rr, cc] - lo[rr, cc]) < PIN_TOL_M)
+                if pinned.any():
+                    cut = 0.5 * TROUGH_GAIN * trough(core_m)
+                    pr_, pc_ = rr[pinned], cc[pinned]
+                    lo[pr_, pc_] = np.minimum(lo[pr_, pc_], hi[pr_, pc_] - cut)
                 t = np.minimum(np.maximum(t, lo[rr, cc]), np.maximum(hi[rr, cc], lo[rr, cc]))
             keep = w > 0
             if water is not None:

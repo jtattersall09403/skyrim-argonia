@@ -31,6 +31,80 @@ BANK_BAR = 0.429
 BANK_BAR_SOURCE = "Skyrim.esm roadside fall over 8 m beside the edge, p99 (probes/vanilla_road_banks.py)"
 
 
+# Skyrim.esm's road across (0034, lane 1.15-r6-road-profile; the LAND under 365 Road* surface meshes in Tamriel cells
+# -32..0 x 0..32, probes/vanilla_road_profile.py): the flat width (|dz| < FLAT_TOL_M of the centre, contiguous) p50
+# 3.0 m, p95 7.5 m; the fold p50 0.10 m at 2 m, 0.42 at 4 m, 0.75 at 6 m; the steepest second difference across at
+# 0.5 m steps p50 0.133, p95 0.487, p99 0.911 m. Through the Hjaalmarch marsh (9 meshes with marsh paint beside them)
+# the road is the same trough (0.39 m at 4 m), never a raised crowned bank: no side stands under the centre at 12 m.
+FLAT_TOL_M = 0.1
+PROFILE_OUT_M, PROFILE_DS_M, PROFILE_STEP_M = 12.0, 0.5, 50.0
+VANILLA_PROFILE = {"flat_width_p95_m": 7.5, "second_diff_p95": 0.487, "second_diff_p99": 0.911}
+FLAT_OVER_SHARE = 0.05  # the share of road points wider than Skyrim's p95 flat width, at most (vanilla's own 5 %)
+
+
+def flat_width(z: np.ndarray, c: int, ds: float, tol: float = FLAT_TOL_M) -> float:
+    """The contiguous width about index c over which z stays within tol of z[c]."""
+    a = b = c
+    while a > 0 and abs(z[a - 1] - z[c]) < tol:
+        a -= 1
+    while b < len(z) - 1 and abs(z[b + 1] - z[c]) < tol:
+        b += 1
+    return (b - a) * ds
+
+
+def cross_profiles(h: np.ndarray, pts: np.ndarray, step_m: float = PROFILE_STEP_M) -> tuple[np.ndarray, np.ndarray]:
+    """The road's cross profile every step_m along: heights relative to the centre at -OUT..OUT every DS (m);
+    returns (offsets, (k, n) profiles)."""
+    p, v, nrm = frame(pts, step_m / MPP)
+    offs = np.arange(-PROFILE_OUT_M, PROFILE_OUT_M + 1e-6, PROFILE_DS_M)
+    xs = p[:, :1] + nrm[:, :1] * offs[None] / MPP
+    ys = p[:, 1:] + nrm[:, 1:] * offs[None] / MPP
+    z = bilinear(h, xs.ravel(), ys.ravel()).reshape(xs.shape)
+    return offs, z - z[:, [len(offs) // 2]]
+
+
+def profile_census(h: np.ndarray, roads, water=None) -> dict:
+    """Every road's cross profile at PROFILE_STEP_M (profiles whose line meets `water` skipped: a crossing): the flat
+    width, the fold at 4 m and the steepest second difference across, against VANILLA_PROFILE."""
+    fw, sd, f4 = [], [], []
+    for pts, core in roads:
+        if core * MPP < 4.0 or len(pts) < 2:
+            continue  # vanilla's class: roads, not tracks
+        offs, pr = cross_profiles(h, pts)
+        c = len(offs) // 2
+        if water is not None:
+            p, _v, nrm = frame(pts, PROFILE_STEP_M / MPP)
+            wet = np.zeros(len(p), bool)
+            for o in (-PROFILE_OUT_M, -6.0, 0.0, 6.0, PROFILE_OUT_M):
+                wet |= _at(water, p[:, 0] + nrm[:, 0] * o / MPP, p[:, 1] + nrm[:, 1] * o / MPP).astype(bool)
+            pr = pr[~wet[:len(pr)]]
+        for z in pr:
+            fw.append(flat_width(z, c, PROFILE_DS_M))
+        sd.extend(np.abs(np.diff(pr, 2, axis=1)).max(1).tolist())
+        k4 = np.isclose(np.abs(offs), 4.0)
+        f4.extend(pr[:, k4].mean(1).tolist())
+    fw, sd, f4 = np.array(fw), np.array(sd), np.array(f4)
+    if not len(fw):
+        return {"points": 0}
+    bar = VANILLA_PROFILE["flat_width_p95_m"]
+    return {"points": len(fw), "flat_width_p50_m": round(float(np.median(fw)), 2),
+            "flat_width_p95_m": round(float(np.percentile(fw, 95)), 2),
+            "flat_over_share": round(float((fw > bar).mean()), 3), "fold_4m_p50": round(float(np.median(f4)), 3),
+            "second_diff_p95": round(float(np.percentile(sd, 95)), 3), "second_diff_max": round(float(sd.max()), 3),
+            "vanilla": VANILLA_PROFILE}
+
+
+def profile_fails(r: dict) -> list[str]:
+    out = []
+    if r.get("points", 0) and r["flat_over_share"] > FLAT_OVER_SHARE:
+        out.append(f"flat road {r['flat_over_share']} of points wider than Skyrim.esm's p95 "
+                   f"{VANILLA_PROFILE['flat_width_p95_m']} m (a slab, not a road)")
+    if r.get("points", 0) and r["second_diff_p95"] > VANILLA_PROFILE["second_diff_p95"]:
+        out.append(f"second difference across p95 {r['second_diff_p95']} over Skyrim.esm's "
+                   f"{VANILLA_PROFILE['second_diff_p95']} (a step or a spike)")
+    return out
+
+
 def _at(a: np.ndarray, x: np.ndarray, y: np.ndarray) -> np.ndarray:
     return a[np.clip(np.rint(y).astype(int), 0, a.shape[0] - 1), np.clip(np.rint(x).astype(int), 0, a.shape[1] - 1)]
 
@@ -137,6 +211,63 @@ def census(h, h_pre, lo, hi, water, roads, wet, sites=()) -> dict:
             steep[c] += 1
             where["steep"].append((ri, int(i), c, round(float(p[i, 0] * MPP)), round(float(p[i, 1] * MPP)), round(float(g0[i]), 3)))
     return {"walls": walls, "steep": steep, "made_by_road": made, "where": where}
+
+
+LANE_GRASS_W = 0.25  # a lane vertex whose grass-growing ltex weight reaches this grows grass on the lane (the engine
+# grows a texture's grass by its weight, not only the winner's)
+
+
+def lane_grass(land_dir, roads, grass_ltex: set[str], half_m=None, step_m: float = PROFILE_STEP_M) -> dict:
+    """The ltex under each road's lane (coordinator, trees-in-water lane, row 163: the ferns on the lane are grass the
+    ground texture grows): at every step_m along, the vertices at the centre and at the lane's edges (half_m, a list
+    per road, default 3 m), the winning ltex (the most weight, base and alpha layers composited as the engine draws
+    them) read from the built LAND (land_dir/cy*.jsonl.gz); counts those whose winner grows grass (`grass_ltex`)."""
+    import base64
+    import gzip
+    import json
+    from pathlib import Path
+
+    from tools.argonia_world.terrain import material as M
+    from tools.argonia_world.terrain.grid import CX0, CY0, Q
+    from tools.argonia_world import skyrim_units as su
+    ncell = su.PROVINCE_CELLS
+    want: dict[tuple[int, int], list] = {}
+    for ri, (pts, _core) in enumerate(roads):
+        p, _v, nrm = frame(pts, step_m / MPP)
+        hm = 3.0 if half_m is None else half_m[ri]
+        for o in (-hm, 0.0, hm):
+            xs, ys = p[:, 0] + nrm[:, 0] * o / MPP, p[:, 1] + nrm[:, 1] * o / MPP
+            for x, y in zip(np.rint(xs).astype(int), np.rint(ys).astype(int)):
+                cx, rq = divmod(x, Q)
+                cyi, rr = divmod(y, Q)
+                cy = CY0 + ncell - 1 - cyi
+                want.setdefault((CX0 + cx, cy), []).append((Q - rr, rq))
+    fk = {t.form_key: i for i, t in enumerate(M.TEXTURES)}
+    names = [t.form_key for t in M.TEXTURES]
+    gi = [i for i, k in enumerate(names) if k in grass_ltex]
+    n = grass = part = 0
+    for f in sorted(Path(land_dir).glob("cy*.jsonl.gz")):
+        cy = int(f.name[2:6])
+        if not any(k[1] == cy for k in want):
+            continue
+        with gzip.open(f, "rt", encoding="ascii") as fh:
+            for line in fh:
+                x = int(line[line.index('"x":') + 4:].split(",")[0].split("}")[0])
+                if (x, cy) not in want:
+                    continue
+                c = json.loads(line)
+                w = np.zeros((2 * M.QS + 1, 2 * M.QS + 1, len(fk)))
+                for qi, q in enumerate(c["quads"]):
+                    lay = [(fk[a["ltex"]], np.frombuffer(base64.b64decode(a["alpha"]), np.uint8).reshape(M.QV, M.QV))
+                           for a in q["layers"] if a["ltex"] in fk]
+                    qy, qx = divmod(qi, 2)
+                    if q["base"] in fk:
+                        w[qy * M.QS:qy * M.QS + M.QV, qx * M.QS:qx * M.QS + M.QV] = M.composite(fk[q["base"]], lay, len(fk))
+                for i, j in want[(x, cy)]:
+                    n += 1
+                    grass += names[int(w[i, j].argmax())] in grass_ltex
+                    part += float(w[i, j, gi].sum()) >= LANE_GRASS_W
+    return {"lane_samples": n, "lane_grass_samples": grass, "lane_grass_weight_samples": part}
 
 
 def profile(h: np.ndarray, roads: list[tuple[np.ndarray, float]], wet=None) -> dict:
@@ -250,6 +381,8 @@ def main(argv=None) -> int:
         m = res[f"fold_{o:.0f}m_median"]
         if not lo <= m <= hi:
             fails.append(f"fold at {o:.0f} m median {m} outside vanilla's {lo}..{hi}")
+    res["profile"] = pc = profile_census(h, roads, water)
+    fails += profile_fails(pc)
     res["fails"] = fails
     print(json.dumps(res, indent=1))
     return 1 if fails else 0
