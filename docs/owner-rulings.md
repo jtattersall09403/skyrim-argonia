@@ -13,6 +13,11 @@ added here the day they are made, with the date and the issue.
   stopped.
 - A new game takes the player straight into our own authored opening, nothing via Helgen and no alternate-start
   menu, as Enderal does it (2026-11-05).
+- No owner test in Phase 0; the first walk is after Phase 1, with a Vanilla Skyrim card and the Argonia card
+  on the play page to try both at once (2026-11-05).
+- Agents verify by reading the files the game will consume (the ESP, the scripts, the DLLs, the profile) and
+  loop until that read meets the bar; they never run the game themselves (2026-11-05).
+- The BM&V census into the relational story data runs in Phase 1, beside the stack (2026-11-05).
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

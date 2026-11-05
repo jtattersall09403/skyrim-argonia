@@ -1,4 +1,4 @@
-# Phase 1: the stack, in BM&V as the default world
+# Phase 1: the stack, in BM&V as the default world, and foundational research
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
 
@@ -11,7 +11,8 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
 - **Rebase the collection onto 1.7.104.** The collection was pinned for AE 1.6: DAR is replaced by Open
   Animation Replacer, Nemesis by Pandora, and the AE-era DLLs (Stop On Slash, Elden Counter, Animated Armoury's
   DLL if any) are checked for a 1.7.x build or dropped with a note. houseCARL reports conflicts and missing
-  masters; the game reaches the main menu with every DLL loaded (SKSE's log).
+  masters; every SKSE DLL is checked from its file (the SKSE plugin version data it exports, its Address Library
+  use, its declared runtimes) for 1.7.104, without running the game.
 - **The start: a new game goes straight into our own opening, Enderal-style.** No Helgen, no cart, no
   alternate-start statue or menu. Our plugin carries a start quest (Start Game Enabled, run before anything else)
   that, on a new game: stops the vanilla intro `MQ101` before its cart scene, opens the race menu for character
@@ -33,7 +34,18 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
 - **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
   one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
-  ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly.
-- **Owner test (the first walk):** new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the
+  ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
+- In parallel: **The census, into the story data.** BM&V's locations, cells, NPCs, factions and quests are read from
+  `Black Marsh.esm` (Spriggit on the build VM) into new tables of the one relational store
+  (`story/data/schema.sql`, loaded by `tools/argonia_world/db.py` like every other table): `bmv_location`,
+  `bmv_cell`, `bmv_npc`, `bmv_faction`, `bmv_quest`, keyed by form key, with editor id, name, worldspace and
+  position. Our designed places, people and factions are then **linked, not copied**: mapping tables
+  `place_bmv_location`, `npc_bmv_npc` and `faction_bmv_faction` say which BM&V record a designed row lands on, and
+  our own authored records carry their form keys in `mod_form` as the Magic Expanded forms already do. The quest
+  skills read the mapping, so a quest written against a designed place resolves to a BM&V cell. Where BM&V has no
+  place for a designed one, the row is mapped to the nearest BM&V place or marked waiting.
+- **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner. For the census mine, do a loop between a miner and reviewer, where the reviewer thinks critically about what the miner might have missed and provides feedback. You as the planner use your judgment to decide when that loop exits. We need to know we have information about every place from the BM&V mod, and we have enough information about every place to meet the requirements for our goal (and for being able to properly author and review our quests).
+- **Owner test (the first walk, the first owner test since the pivot):** both cards on the play page, Vanilla
+  Skyrim (a quick check that the stream and the game run) and Argonia. On Argonia, a new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the
   collection's moveset, a climb, a Morrowind spell from Magic Expanded, a walk between two BM&V places; then wait
   30 days: no dragon, no courier, no civil-war or guild starts; the journal holds only what the allow-list says.

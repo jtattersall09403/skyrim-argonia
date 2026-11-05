@@ -7,4 +7,4 @@ Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit thi
   (create.sh, setup.ps1: driver, Steam, MO2, Sunshine, Moonlight-Web, the tunnel; machines.conf and the Worker
   updated to the region). The owner logs Steam in once; Skyrim is pinned to build 24914197.
 - The play page starts it, the vanilla card runs, saves sync, idle-stop stops it.
-- **Owner test:** play vanilla for ten minutes from the phone and the Mac.
+- **Owner test:** none, first test is after phase 1

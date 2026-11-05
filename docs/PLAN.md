@@ -71,7 +71,7 @@ file in [phases/](phases/), edited as the phase goes.
 
 | Phase | What | Ends when the owner can say |
 |---|---|---|
-| [0](phases/0-play-machine.md) | the play machine is back and vanilla Skyrim streams | "I played vanilla Skyrim for ten minutes from the phone and the Mac" |
+| [0](phases/0-play-machine.md) | the play machine is back and vanilla Skyrim streams | no owner test: the machine, Steam and the pinned game are checked by the agent; the owner tries the Vanilla card in the first walk (owner, 2026-11-05) |
 | [1](phases/1-stack-in-bmv.md) | the stack, in BM&V as the default world | "I started in Black Marsh, fought, climbed, cast a Morrowind spell and nothing from Skyrim followed me" |
 | [2](phases/2-building-blocks.md) | the building blocks (the proving kit) | "I saw all nine blocks work in game" |
 | [3](phases/3-first-act.md) | the story's first act on BM&V | "I played the first act from the Black Marsh start" |

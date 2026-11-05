@@ -21,5 +21,7 @@ compiler). If Spriggit proves awkward for a record type, a Mutagen script replac
 | B8 Remove or change | a BM&V NPC disabled; a BM&V reference moved; a BM&V quest's stage changed | editing what BM&V built |
 | B9 Journal | a quest with directions written in the journal, no marker | directions, not markers |
 
+- **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner.
+
 **Owner test:** one session through the nine examples, from an issue that says where each one is and what to
 do. A block the owner finds broken is fixed and re-posted; a block that passes is never re-tested.

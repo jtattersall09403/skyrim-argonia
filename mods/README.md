@@ -31,7 +31,7 @@ for 1.7.104: DAR is replaced by Open Animation Replacer (it reads DAR folders), 
 Library is v13 for 1.7.104, AMR and Payload Interpreter carry their 1.7.104 DLL rebuilds, USSEP is the current
 4.3.9c. Stop On Slash and Elden Counter carry AE-era DLLs, replaced by their dTry Plugin Updates rebuilds (Nexus 85740,
 version-independent; the next row after each). PACE is dropped: its DLL needs 1.5.97. Community Shaders runs at its
-default features; its Exponential Height Fog add-on is not laid. `stack.py menu` lists every DLL's load at the menu.
+default features; its Exponential Height Fog add-on is not laid. Each DLL is checked for 1.7.104 from its file, not by running the game.
 
 ## Shutting vanilla down
 
