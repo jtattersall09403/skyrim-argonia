@@ -774,6 +774,18 @@ def times_table() -> str:
     return "\n".join([f"plugin: times {n:<11} {r:<4} {t:8.1f} s  {k}" for n, r, t, k in TIMES] + [f"plugin: times total {tot:.1f} s"])
 
 
+def sync_yaml(src: Path, dst: Path | None = None) -> bool:
+    """plugin/Argonia/ becomes the serialised YAML in `src`. Decided by comparing the two trees, never by a stage key:
+    out/ (and its stage keys) is shared by every worktree, plugin/ is not, so a key written by one tree's build skipped
+    the copy in the next tree and left its plugin/ stale (r6-chain23)."""
+    dst = YAML if dst is None else dst
+    if dst.exists() and not trees_equal(src, dst):
+        return False
+    shutil.rmtree(dst, ignore_errors=True)
+    shutil.copytree(src, dst)
+    return True
+
+
 def plugin(force: bool = False, world: bool = True) -> int:
     """`world=False` (`pipeline.py ids`, `make plugin-ids`): Argonia.esm and its new FormIDs over the existing
     out/ArgoniaWorld.esm (built when missing), without the whole-province world build; the stamp is left unwritten."""
@@ -782,7 +794,8 @@ def plugin(force: bool = False, world: bool = True) -> int:
         now = input_hash(data)
         stamp = PLUGIN_STAMP.read_text() if PLUGIN_STAMP.exists() else None
         if skip_plugin(now, stamp, (OUT / "Argonia.esm").exists() and (OUT / WORLD_ESM).exists()):
-            print(f"plugin: unchanged ({now[:16]})")
+            moved = (OUT / "build" / "yaml").exists() and sync_yaml(OUT / "build" / "yaml")
+            print(f"plugin: unchanged ({now[:16]})" + (", plugin/Argonia/ brought to out/build/yaml" if moved else ""))
             return 0
     PLUGIN_STAMP.unlink(missing_ok=True)
     TIMES.clear()
@@ -793,10 +806,7 @@ def plugin(force: bool = False, world: bool = True) -> int:
     master_world(data, rebuild=world)  # first: Argonia.esm's place cells override its cells
     esm, yaml = generate(data, OUT / "build", frozen=False, keyed=True)
     shutil.copyfile(esm, OUT / "Argonia.esm")
-    with stage("yaml-copy", sha256(esm), YAML) as st:
-        if st.run:
-            shutil.rmtree(YAML, ignore_errors=True)
-            shutil.copytree(yaml, YAML)
+    sync_yaml(yaml)
     with stage("round-trip", sha256(esm), OUT / "build" / "roundtrip.esm") as st:
         if st.run:  # plugin-check's round trip, here once per new Argonia.esm
             rt = OUT / "build" / "roundtrip.esm"

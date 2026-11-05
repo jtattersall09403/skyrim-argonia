@@ -218,3 +218,14 @@ def test_code_bytes_ignores_comments_and_docstrings_not_code(tmp_path):
     assert pipeline._code_bytes(f) == b"def (:\n"
     (tmp_path / "t.txt").write_text("# a")
     assert pipeline._code_bytes(tmp_path / "t.txt") == b"# a"
+
+
+def test_sync_yaml_follows_the_trees_not_a_shared_stage_key(tmp_path):
+    src, dst = tmp_path / "out_yaml", tmp_path / "plugin"
+    (src / "W").mkdir(parents=True)
+    (src / "W" / "RecordData.yaml").write_text("Position: 1, 2, 4631.89\n")
+    assert pipeline.sync_yaml(src, dst)                      # no plugin/ yet: copied
+    assert not pipeline.sync_yaml(src, dst)                  # equal: left alone
+    (dst / "W" / "RecordData.yaml").write_text("Position: 1, 2, 4631.53\n")  # another tree's build moved out/ on
+    assert pipeline.sync_yaml(src, dst)                      # stale: brought level whatever any stage key says
+    assert (dst / "W" / "RecordData.yaml").read_text() == "Position: 1, 2, 4631.89\n"
