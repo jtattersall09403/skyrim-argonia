@@ -95,3 +95,19 @@ def test_dirty_tree_behind_origin_refused(tmp_path):
     r = chain(tmp_path, src)
     assert r.returncode == 2 and "planner reconciles" in r.stdout
     assert git(src, "rev-parse", "HEAD") == old and not seen.exists()
+
+
+def test_prebatch_sync_leaves_pinned_tree_alone(tmp_path):
+    src, _ = setup(tmp_path)
+    old = git(src, "rev-parse", "HEAD")
+    new = bare_origin(tmp_path, src)
+    assert new != old
+    text = (REPO / "infra/gpu-box/jobs/r5_prebatch.sh").read_text()
+    sync = text.split("# PREBATCH-SYNC begin\n")[1].split("# PREBATCH-SYNC end")[0]
+    wt = tmp_path / "wt"
+    git(src, "worktree", "add", "-q", "--detach", str(wt), old)
+    e = {k: v for k, v in os.environ.items() if not k.startswith("CHAIN_")}
+    for env in ({}, {"CHAIN_IN_TREE": "1"}):  # detached alone is enough; the flag too
+        r = subprocess.run(["bash", "-c", sync], cwd=wt, env={**e, **env}, capture_output=True, text=True)
+        assert r.returncode == 0 and "pinned at" in r.stdout, r.stdout + r.stderr
+        assert git(wt, "rev-parse", "HEAD") == old

@@ -26,9 +26,14 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 # Pull only when origin is ahead: the build VM is main's only writer (lanes commit here), so a rebase is usually a no-op
 # and a lane's live edit in the tree must not stop the round (09:49: three chains refused on one unstaged file).
 # In the chain's worktree the head is detached and the tree clean: rebase onto origin/main when it is ahead.
-git fetch -q origin main
+# PREBATCH-SYNC begin
+# Inside the chain's pinned tree (CHAIN_IN_TREE=1 or a detached head) nothing is fetched or rebased: the tree stays at the sha whose
+# code built the land (r6-chain28, 07:24: a lane's push moved the tree and the stale check ran newer code than the land).
+if [ -n "${CHAIN_IN_TREE:-}" ] || ! git symbolic-ref -q HEAD >/dev/null; then pinned=1; echo "PREBATCH tree pinned at $(git rev-parse --short HEAD) by the chain"
+else pinned=0; git fetch -q origin main
 if git merge-base --is-ancestor origin/main HEAD; then echo "PREBATCH: origin/main already in HEAD, no pull"
-else git rebase -q origin/main || { echo "PREBATCH: rebase onto origin/main refused: git status"; git status --short | head; git rebase --abort; exit 3; }; fi
+else git rebase -q origin/main || { echo "PREBATCH: rebase onto origin/main refused: git status"; git status --short | head; git rebase --abort; exit 3; }; fi; fi
+# PREBATCH-SYNC end
 step plugin make plugin || exit 3
 step navmesh infra/gpu-box/jobs/navmesh_if_stale.sh || exit 3  # the navmesh follows the ground (keyed by the terrain stamp)
 step water $PY -m tools.argonia_world.water check || exit 3
@@ -62,5 +67,6 @@ python3 tools/doc_index.py --write >/dev/null 2>&1 && { git add docs/INDEX.md; g
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; }
 step gate $PY tooling/check_reach.py --since auto --record || { echo "PREBATCH gate RED: the planner reads out/check"; echo "gate OK" >>"$state"; echo "# gate was RED for these inputs (noted; a resume does not rerun the 330 s)" >>"$state"; }
 # plugin-check is the gate's (check_reach runs it whenever the ESM moved, which in a chain is every time): not run twice (116 s, r6-chain15/17)
-git push -q origin HEAD:main || { git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main; }  # the lanes' tree takes it on its next pull
+if [ "$pinned" = 1 ]; then git push -q origin HEAD:main || echo "PREBATCH warning: push of HEAD:main refused (origin moved); not rebasing in the chain's tree"
+else git push -q origin HEAD:main || { git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main; }; fi  # the lanes' tree takes it on its next pull
 echo "PREBATCH DONE $(date -u +%H:%M) $(git rev-parse --short HEAD) $(sha256sum out/ArgoniaWorld.esm | cut -c1-12)"
