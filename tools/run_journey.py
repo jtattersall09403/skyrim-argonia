@@ -66,6 +66,7 @@ import json
 import math
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import shutil
@@ -73,7 +74,7 @@ import time
 
 REPO = pathlib.Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-from tools.bridge import Bridge, BridgeError, GameDown, frame_difference  # noqa: E402
+from tools.bridge import Bridge, BridgeError, GameDown, NoReply, frame_difference  # noqa: E402
 
 BASE_SAVE = "argoniabase"
 RESUME = REPO / "out" / "resume"
@@ -958,6 +959,7 @@ class Runner:
         saves = j.get("step_saves", False)  # off by default: the console `save` was silently refused in game-13 (0 argj-*.ess after 30 items)
         last = first + 1 if only else len(j["steps"])
         t0 = time.monotonic()
+        failures, dead_groups = [], set()
         try:
             rep["scene_output"] = self.apply_scene(scene, save, load=load)
             rep["scene_s"] = round(time.monotonic() - t0, 1)
@@ -979,19 +981,35 @@ class Runner:
                                          "still": row.get("still"), "run": row.get("run"), "seconds": 0.0})
                     print(f"  {n:2d} {step['name']:<24} {why}", flush=True)
                     continue
+                if (g := re.match(r"(.+)-nav-\d+$", step["name"])) and g.group(1) in dead_groups:
+                    why = f"skipped: {g.group(1)}-arrive failed"   # a skipped step is not a failed one
+                    rep["steps"].append({"n": n, "name": step["name"], "passed": True, "skipped": why, "seconds": 0.0})
+                    print(f"  {n:2d} {step['name']:<24} {why}", flush=True)
+                    continue
                 rec = self.step(n, step)
                 rep["steps"].append(rec)
                 if rec["passed"] and saves:
                     self.step_save(j, step["name"])
                 if not rec["passed"]:
-                    rep["failed_at"] = step["name"]
                     fail = {"journey": j["id"], "step": step["name"], "do": step.get("do"), "expect": step.get("expect"),
                             "reason": rec["reason"], "still": rec.get("still"),
                             "ask_reader": "Does this still agree with the step's expectation? Say what it shows."}
-                    (self.out / "failure.json").write_text(json.dumps(fail, indent=1))
-                    break
+                    failures.append(step["name"])
+                    if len(failures) == 1:
+                        rep["failed_at"] = step["name"]
+                        (self.out / "failure.json").write_text(json.dumps(fail, indent=1))
+                    if not self.independent or rec.get("game_failure") or "the camera never became" in rec["reason"] or "relaunch after a camera" in rec["reason"]:
+                        break
+                    rec["failure"] = fail   # kept in the report: the run goes on with the next step
+                    if (g := re.match(r"(.+)-arrive$", step["name"])):
+                        dead_groups.add(g.group(1))
             else:
-                rep["passed"] = True
+                rep["passed"] = not failures
+            if failures and self.independent:
+                bad = [x for x in rep["steps"] if not x["passed"]]
+                total = sum(1 for x in rep["steps"] if not x.get("skipped"))
+                rep["failed_steps"] = len(bad)
+                rep["reason"] = f"{len(bad)} of {total} steps failed, first: {bad[0]['name']}: {bad[0]['reason']}"
         except GameDown as e:
             rep["crash"] = str(e)
             rep["failed_at"] = rep.get("failed_at") or "game down"
@@ -1086,6 +1104,8 @@ class Runner:
             raise
         except (BridgeError, StepFailed) as e:
             rec.update(passed=False, reason=f"{type(e).__name__}: {e}")
+            if isinstance(e, NoReply) or "did not run the task" in str(e):
+                rec["game_failure"] = True   # a transport failure: the game process is the cause, the run ends
         if ctx.get("notes"):
             rec["notes"] = ctx["notes"]
         if new := {k: v for k, v in self.kept.items() if k not in kept0 or kept0[k] != v}:
@@ -1096,6 +1116,8 @@ class Runner:
             except StepFailed as e:
                 if rec["passed"]:
                     rec.update(passed=False, reason=f"StepFailed: {e}")
+                if "the camera never became" in str(e):
+                    rec["game_failure"] = True
         if self.stills or not rec["passed"]:
             try:
                 rec["still"] = str(self.b.screenshot(self.out / f"{n:02d}-{step['name']}.png"))

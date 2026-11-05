@@ -334,7 +334,7 @@ class Batch:
                 bad = next((s for s in rep["steps"] if not s["passed"]), None)
                 rec = {"kind": it["kind"], "id": it["id"], "run": run, "passed": rep["passed"],
                        "failed_at": rep.get("failed_at"),
-                       "reason": (bad or {}).get("reason") or rep.get("error") or rep.get("crash"),
+                       "reason": rep.get("reason") or (bad or {}).get("reason") or rep.get("error") or rep.get("crash"),
                        "crash": bool(rep.get("crash")), "seconds": rep["seconds"], "scene_s": rep.get("scene_s"),
                        "steps_s": round(sum(s.get("seconds", 0) for s in rep["steps"]), 1),
                        "transport_retries": sum(s.get("transport_retries", 0) for s in rep["steps"]),

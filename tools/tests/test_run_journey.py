@@ -910,3 +910,40 @@ def test_camera_asserts_on_the_native_state_not_the_console(tmp_path, monkeypatc
     fake = NativeCamera(lands_after=99)   # never lands: fails on the native reads though the console reads 1.00
     with pytest.raises(rj.StepFailed, match="never became first.*native third"):
         rj.Runner(fake, tmp_path / "o")._camera("first")
+
+
+def _independent_fixture(tmp_path, names, bad, **kw):
+    ok = {"name": "x", "expect": [{"moved": {"gt": -1}}]}
+    nope = {"name": "x", "expect": [{"moved": {"gt": 100}, "within": 0}]}
+    steps = [{**(nope if n in bad else ok), "name": n} for n in names]
+    return journey(tmp_path, steps, **kw)
+
+
+def test_independent_steps_all_run_and_the_verdict_counts_failures(tmp_path):
+    j = _independent_fixture(tmp_path, ["s1", "s2", "s3"], {"s2"}, independent_steps=True)
+    rep = rj.Runner(Fake(), tmp_path / "out").run(j, "base")
+    assert [s["name"] for s in rep["steps"]] == ["s1", "s2", "s3"] and not rep["passed"]
+    assert rep["failed_at"] == "s2" and rep["reason"].startswith("1 of 3 steps failed, first: s2: ")
+    assert rep["steps"][1]["failure"]["step"] == "s2"
+
+
+def test_dependent_steps_stop_at_the_first_failure(tmp_path):
+    j = _independent_fixture(tmp_path, ["s1", "s2", "s3"], {"s2"})
+    rep = rj.Runner(Fake(), tmp_path / "out").run(j, "base")
+    assert [s["name"] for s in rep["steps"]] == ["s1", "s2"] and rep["failed_at"] == "s2"
+
+
+def test_a_game_down_stops_even_independent_steps(tmp_path):
+    j = _independent_fixture(tmp_path, ["s1", "s2"], set(), independent_steps=True)
+    rep = rj.Runner(Fake(crash_on="player"), tmp_path / "out").run(j, "base")
+    assert not rep["passed"] and "crash-1.log" in rep["crash"] and rep["steps"] == []
+
+
+def test_an_arrive_failure_skips_its_groups_nav_steps(tmp_path):
+    names = ["a00-arrive", "a00-nav-0", "a00-nav-1", "a01-arrive", "a01-nav-0"]
+    j = _independent_fixture(tmp_path, names, {"a00-arrive"}, independent_steps=True)
+    rep = rj.Runner(Fake(), tmp_path / "out").run(j, "base")
+    by = {s["name"]: s for s in rep["steps"]}
+    assert [n for n, s in by.items() if s.get("skipped")] == ["a00-nav-0", "a00-nav-1"]
+    assert by["a01-arrive"]["passed"] and "skipped" not in by["a01-nav-0"]
+    assert rep["reason"].startswith("1 of 3 steps failed, first: a00-arrive: ")
