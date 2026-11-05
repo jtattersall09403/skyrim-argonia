@@ -15,6 +15,7 @@ import numpy as np
 
 from tools.argonia_world.terrain.esm import records
 from tools.argonia_world.terrain.probes.vanilla_lake_cells import TAMRIEL, vhgt
+from tools.argonia_world.water.edges_census import first_run
 
 ESM = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/ubuntu/games/skyrimse/Data/Skyrim.esm")
 TOL_U = 21.0  # 0.3 m
@@ -50,7 +51,9 @@ def strip(g, side):
 def main():
     water, land = load()
     out = {"wet_dry": [0.0, 0.0], "step": [0.0, 0.0]}  # [hanging m, line m]
+    chain, foot_run = [], []
     lip, run, worst, face, foot = [], [], [], [], []
+    drops, over, lower_wet, uppers = [], [], [], set()
     for (x, y), _ in list(water.items()):
         for dx, dy, se, so in ((1, 0, "e", "w"), (-1, 0, "w", "e"), (0, 1, "n", "s"), (0, -1, "s", "n")):
             o = (x + dx, y + dy)
@@ -77,6 +80,15 @@ def main():
                 r0 = int(np.argmin(e))
                 face.append(((s[r0, :9] - ho) / 70.03).round(1).tolist())
                 foot.append(int(np.argmax(under[r0])) if under[r0].any() else 33)
+                foot_run.append(first_run(under[r0]))
+                # the bar for a bank: the step line's ground over the upper level off the channel (vanilla's lift), the
+                # drop, the lower cell's wet share (vertices under its level), and whether the lower cell steps again
+                drops.append(float(hu - ho) / 70.03)
+                over.append(float(np.max(e - hu)) / 70.03)
+                lower_wet.append(float((land[o] < ho).mean()))
+                uppers.add((x, y))
+                chain.append(o)
+    again = sum(1 for o in chain if o in uppers)
     q = lambda a: np.percentile(a, [10, 50, 90]).round(2).tolist() if a else []
     worst.sort(reverse=True)
     print(json.dumps({
@@ -87,7 +99,13 @@ def main():
                  "share": round(out["step"][0] / max(out["step"][1], 1), 4),
                  "line_over_upper_m_p10_50_90": q(lip), "face_run_vertices_p10_50_90": q(run),
                  "channel_face_over_lower_m_by_vertex_p50": np.median(face, 0).round(2).tolist() if face else [],
-                 "channel_foot_vertices_p10_50_90": q(foot)},
+                 "channel_foot_vertices_p10_50_90": q(foot),
+                 "channel_foot_run3_vertices_p10_50_90": q(foot_run),
+                 "channel_foot_run3_within_12": f"{sum(f <= 12 for f in foot_run)} of {len(foot_run)}",
+                 "drop_m_p10_50_90_max": q(drops) + [round(max(drops), 2)] if drops else [],
+                 "line_max_over_upper_m_p50_90_max": np.percentile(over, [50, 90, 100]).round(2).tolist() if over else [],
+                 "lower_wet_share_p10_50_90": q(lower_wet),
+                 "lower_steps_again": f"{again} of {len(chain)}"},
         "worst": [{"m": round(m, 1), "cell": c, "edge": e, "kind": k, "depth_m": d} for m, c, e, k, d in worst[:20]],
     }, indent=1))
 
