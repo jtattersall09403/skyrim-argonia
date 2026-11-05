@@ -290,6 +290,65 @@ def unpack(archive, dest):
                 f.rename(target)
 
 
+class Resume:
+    """A row's stage progress on disk (decision 0037): steps done under one stage key, so a build VM killed
+    mid-unpack (spot reclaim) resumes at the step it was on. A different key, or no file, is a fresh start."""
+
+    def __init__(self, path, key):
+        self.path, self.key, self.steps = pathlib.Path(path), key, []
+        try:
+            doc = json.loads(self.path.read_text())
+            if doc["key"] == key:
+                self.steps = list(doc["steps"])
+        except (OSError, ValueError, KeyError):
+            pass
+        self.fresh = not self.steps
+
+    def done(self, step):
+        return step in self.steps
+
+    def mark(self, step):
+        self.steps.append(step)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = self.path.with_suffix(".tmp")
+        tmp.write_text(json.dumps({"key": self.key, "steps": self.steps}))
+        tmp.replace(self.path)  # atomic: a kill leaves the old or the new list, never half
+
+    def clear(self):
+        self.path.unlink(missing_ok=True)
+
+
+def unrar_into(inner, data):
+    subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
+
+
+def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=unrar_into):
+    """A row whose archive holds archives (BM&V: a 9 GB tar of Data1.rar, Data2.rar, 21 GB laid). Each step is marked
+    on disk when done; a rerun after a kill skips the done steps, and a step cut half-way (no mark) is redone over its
+    partial files (unrar -o+ overwrites). A changed stage key (or no mark) clears the partial copy first."""
+    unpack_fn = unpack_fn or unpack
+    r = Resume(progress, key)
+    if r.fresh:
+        shutil.rmtree(data, ignore_errors=True)
+        shutil.rmtree(src, ignore_errors=True)
+    if not r.done("unpack"):
+        unpack_fn(archive, src)
+        r.mark("unpack")
+        print(f"  {m['id']}: unpacked the archive", flush=True)
+    data.mkdir(parents=True, exist_ok=True)
+    for name in m["nested"]:
+        if r.done(f"rar:{name}"):
+            print(f"  {m['id']}: {name} already laid (resumed)", flush=True)
+            continue
+        inner = ci(data_root(src), name)
+        if inner is None:
+            raise SystemExit(f"{m['id']}: {name} not in the archive")
+        unrar_fn(inner, data)
+        r.mark(f"rar:{name}")
+        print(f"  {m['id']}: laid {name}", flush=True)
+    return r
+
+
 def ci(base, rel):
     """Resolve an archive-relative path case-insensitively (FOMODs are written on Windows)."""
     cur = base
@@ -833,19 +892,28 @@ def cmd_stage(a):
             src = work / m["id"]
             if not archive_path(m).exists():
                 fetch_one(m, secret("NEXUS_API_KEY"))
-            shutil.rmtree(data, ignore_errors=True)  # the old staged copy first: BM&V's is 21 GB on a 116 GB disk
-            room(archive_path(m).stat().st_size * 3, f"unpack {m['id']}")  # unpacked plus staged copy
-            unpack(archive_path(m), src)
-            data.mkdir()
-            if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
-                shutil.rmtree(tools / m["id"], ignore_errors=True)
-            taken = place(m, src, data, tools, root)
+            prog = STACK / "progress" / f"{m['id']}.json"
+            resume = Resume(prog, key) if m.get("nested") else None
+            if resume is None or resume.fresh:  # a resumed row keeps the partial copy it is part-way through
+                shutil.rmtree(data, ignore_errors=True)  # the old staged copy first: BM&V's is 21 GB on a 116 GB disk
+                room(archive_path(m).stat().st_size * 3, f"unpack {m['id']}")  # unpacked plus staged copy
+            if resume is not None:
+                resume = stage_nested(m, key, archive_path(m), src, data, prog)
+                taken = []
+            else:
+                unpack(archive_path(m), src)
+                data.mkdir()
+                if m.get("install") == "tool":  # a tool is never a mod: nothing of it reaches Data
+                    shutil.rmtree(tools / m["id"], ignore_errors=True)
+                taken = place(m, src, data, tools, root)
             shutil.rmtree(src)
             prune(data, m)
             apply_ini(m, data)
             apply_files(m, data)
             plugin_values(m, data, pick)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
+            if resume is not None:
+                resume.clear()
             restaged.add(m["id"])
             print(f"staged {m['id']}" + (f" ({'; '.join(taken)})" if taken else ""))
         if m["id"] in pruned or (data.exists() and any(data.iterdir())):
@@ -967,12 +1035,53 @@ def wide_names(src):
                   if f.is_file() and not str(f.relative_to(src)).isascii())
 
 
-def send_tar(src, out, n):
+def part_markers(done_dir, machine_sizes):
+    """Parts a killed push already put on the machine: {part name: size} markers in `done_dir` that the machine still
+    holds at that size stay; any other marker goes (the part is sent again)."""
+    kept = {}
+    for f in done_dir.glob("*") if done_dir.exists() else []:
+        try:
+            size = int(f.read_text())
+        except ValueError:
+            size = -1
+        if machine_sizes.get(f.name) == size:
+            kept[f.name] = size
+        else:
+            f.unlink()
+    return kept
+
+
+def machine_part_sizes(n):
+    """{part name: bytes} of <n>.tar.NNN already in the machine's push dir (empty when none or the call fails)."""
+    out = run("ps", rf"Get-ChildItem -LiteralPath C:\argonia\MO2\push -Filter '{n}.tar.*' -EA SilentlyContinue | "
+                    r"% { $_.Name + ' ' + $_.Length }", check=False, capture=True) or ""
+    sizes = {}
+    for ln in out.splitlines():
+        parts = ln.split()
+        if len(parts) == 2 and parts[1].isdigit():
+            sizes[parts[0]] = int(parts[1])
+    return sizes
+
+
+def send_tar(src, out, n, digest=""):
     """tar `src` as C:/argonia/MO2/push/<n>.tar.NNN parts, never the whole tar on the build VM's disk; the files
     with non-ASCII paths (wide_names) go as C:/argonia/MO2/push/<n>.wide.zip. Returns that zip's file count."""
     # three tries: one scp of a 1 GB part dropped with exit 255 while the machine was busy (2026-10-29)
-    put = (f"for i in 1 2 3; do {RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && break; [ $i = 3 ] && exit 1; "
-           f"done && rm \"$FILE\"")
+    # resume (0037): a part put and size-checked on the machine leaves a marker under parts/<n>-<digest>/; a rerun after
+    # a kill cuts the same parts again (the tar of an unchanged folder is the same bytes) and sends only the unmarked
+    done_dir = out / "parts" / f"{n}-{digest[:16]}"
+    for old in (out / "parts").glob(f"{n}-*") if (out / "parts").exists() else []:
+        if old != done_dir:
+            shutil.rmtree(old, ignore_errors=True)  # another content: its parts are not ours
+    done_dir.mkdir(parents=True, exist_ok=True)
+    have = machine_part_sizes(n)
+    kept = part_markers(done_dir, have)
+    stale = [k for k in have if k not in kept]  # a part cut mid-put, or another content's: the join would take it
+    if stale:
+        run("ps", "; ".join(rf"Remove-Item -LiteralPath 'C:\argonia\MO2\push\{k}' -EA SilentlyContinue" for k in stale))
+    put = (f"B=$(basename \"$FILE\"); if [ ! -e \"{done_dir}/$B\" ]; then "
+           f"for i in 1 2 3; do {RUN} put \"$FILE\" C:/argonia/MO2/push/ >/dev/null && break; [ $i = 3 ] && exit 1; "
+           f"done && stat -c %s \"$FILE\" > \"{done_dir}/$B\"; fi && rm \"$FILE\"")
     wide = set(wide_names(src))
     names = sorted(str(f.relative_to(src)).replace(os.sep, "/") for f in src.rglob("*") if f.is_file())
     listing = "".join(f"./{x}\0" for x in names if x not in wide)
@@ -1035,13 +1144,14 @@ def cmd_push(a):
     batch = [todo[i:i + 12] for i in range(0, len(todo), 12)]
     for group in batch:
         for n in group:
-            send_tar(MO2 / "mods" / n, out, n)
+            send_tar(MO2 / "mods" / n, out, n, digest[n])
         script = "; ".join(unpack_script(n) for n in group)
         out_ps = run("ps", script + "; 'UNPACKED'", check=False, capture=True)  # absent after any failure
         if "UNPACKED" not in out_ps.splitlines()[-1:]:
             raise SystemExit("push: unpack failed: " + out_ps.strip()[-600:])
         for n in group:
             sent[n] = digest[n]
+            shutil.rmtree(out / "parts" / f"{n}-{digest[n][:16]}", ignore_errors=True)
         (out / "sent.json").write_text(json.dumps(sent))
         print("pushed", ", ".join(group))
     for d in ("tools", "root"):
