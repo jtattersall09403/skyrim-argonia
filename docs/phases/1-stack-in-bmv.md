@@ -44,8 +44,7 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   our own authored records carry their form keys in `mod_form` as the Magic Expanded forms already do. The quest
   skills read the mapping, so a quest written against a designed place resolves to a BM&V cell. Where BM&V has no
   place for a designed one, the row is mapped to the nearest BM&V place or marked waiting.
-- **An offline 2d interactive map**
-- After the census: **an offline interactive 2D map of BM&V's world** (owner, 2026-11-05), for the owner and agents
+- **An offline 2d interactive map**, after the census, of BM&V's world (owner, 2026-11-05), for the owner and agents
   to explore, linked to the mined records: pan and zoom over each BM&V worldspace, the land drawn from BM&V's own
   terrain heights and water, every exterior cell gridded, each settlement, door, NPC placement and quest-relevant
   place clickable to its census row (form key, editor id, name, settlement, NPCs there) and to our designed place
