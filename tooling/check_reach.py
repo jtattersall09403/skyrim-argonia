@@ -180,6 +180,48 @@ def run_part(s: str, targets: set[str], paths: list[str]) -> tuple[int, float, s
     return r.returncode, time.time() - t, r.stdout + r.stderr
 
 
+def part_stamp(step: str, paths: list[str], targets: set[str], key: str) -> str:
+    """The inputs of one part: its name, the caller's key (the pre-batch's build key), and the content of every changed
+    path that reaches it (plus the pytest targets for unit). A moved input is a new stamp, so the part reruns."""
+    import hashlib
+    h = hashlib.sha256(f"{step}\0{key}\0".encode())
+    for p in sorted(paths):
+        m = match(p)
+        if m and (step in m[1] or (step == "unit" and "unit:all" in m[1])):
+            f = REPO / p
+            h.update(p.encode() + b"\0" + (hashlib.sha256(f.read_bytes()).digest() if f.is_file() else b"-"))
+    if step == "unit":
+        h.update("\0".join(sorted(targets)).encode())
+    return h.hexdigest()[:12]
+
+
+def resumable(runner, state: Path | None, stamp_of):
+    """Wrap a part runner: a part whose "<name> <stamp> OK" line is in `state` is skipped; a green part is recorded the
+    moment it ends (a spot reclaim keeps it); a red part is never recorded, so it reruns."""
+    import threading
+    lock = threading.Lock()
+
+    def run(s):
+        if state is None:
+            return runner(s)
+        st = stamp_of(s)
+        line = f"{s} {st} OK"
+        try:
+            done = line in state.read_text().splitlines()
+        except OSError:
+            done = False
+        if done:
+            return 0, 0.0, f"gate part {s} OK (done earlier for {st})"
+        r = runner(s)
+        if r[0] == 0:
+            with lock:
+                state.parent.mkdir(parents=True, exist_ok=True)
+                with state.open("a") as f:
+                    f.write(line + "\n")
+        return r
+    return run
+
+
 def run_pool(steps: list[str], jobs: int, runner, emit=print) -> dict[str, int]:
     """Run steps with `jobs` workers in queue_order; each part's text is emitted whole, in PARTS order, once it and
     every earlier part has ended. -> {step: rc}."""
@@ -241,6 +283,8 @@ def main(argv=None) -> int:
     ap.add_argument("--since", default="origin/main")
     ap.add_argument("--plan", action="store_true")
     ap.add_argument("--jobs", type=int, default=3, help="parts run at once (default 3; 1 is the serial run)")
+    ap.add_argument("--state", default=os.environ.get("ARGONIA_GATE_STATE"), help="file of green parts (name, input stamp): a rerun skips them")
+    ap.add_argument("--key", default=os.environ.get("ARGONIA_GATE_KEY", ""), help="the caller's inputs key, folded into every part stamp")
     ap.add_argument("--record", action="store_true", help="a green run on a clean tree records HEAD as the last green gate")
     a = ap.parse_args(argv)
     since, why_full = a.since, None
@@ -276,7 +320,9 @@ def main(argv=None) -> int:
         return 0
     t0 = time.time()
     steps = [x for x in PARTS if x in reached]
-    res = run_pool(steps, a.jobs, lambda x: run_part(x, targets, paths))
+    run = resumable(lambda x: run_part(x, targets, paths), Path(a.state) if a.state else None,
+                    lambda x: part_stamp(x, paths, targets, a.key))
+    res = run_pool(steps, a.jobs, run)
     red = [x for x in steps if res.get(x)]
     wall = time.time() - t0
     print((f"REACH RED: {' '.join(red)} ({wall:.0f} s wall, {a.jobs} jobs)") if red else f"REACH GREEN ({len(reached)} steps of {len(PARTS)}, {wall:.0f} s wall, {a.jobs} jobs)")

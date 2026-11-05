@@ -62,3 +62,36 @@ def test_pool_heavy_first_and_output_whole_in_part_order():
     order = [o.split()[1] for o in out if o.startswith("reach: ")]
     assert order == [s for s in cr.PARTS if s in steps]
     assert res["world"] == 1 and res["unit"] == 0
+
+
+def test_gate_resumes_by_part(tmp_path):
+    """A second gate run with unchanged inputs skips the green parts; a part whose input moved (or that was red) reruns."""
+    state = tmp_path / "gate.state"
+    ran = []
+
+    def runner(s):
+        ran.append(s)
+        return (1 if s == "world" else 0), 0.0, ""
+
+    stamps = {"lint": "a1", "unit": "b1", "world": "c1"}
+    steps = ["lint", "unit", "world"]
+    out = []
+    cr.run_pool(steps, 1, cr.resumable(runner, state, lambda s: stamps[s]), emit=out.append)
+    assert sorted(ran) == steps
+    ran.clear(); out.clear()
+    stamps["unit"] = "b2"  # unit's input moved; world was red
+    cr.run_pool(steps, 1, cr.resumable(runner, state, lambda s: stamps[s]), emit=out.append)
+    assert sorted(ran) == ["unit", "world"]
+    assert "gate part lint OK (done earlier for a1)" in out
+
+
+def test_part_stamp_follows_content(tmp_path, monkeypatch):
+    monkeypatch.setattr(cr, "REPO", tmp_path)
+    (tmp_path / "docs").mkdir()
+    f = tmp_path / "docs" / "a.md"
+    f.write_text("x")
+    a = cr.part_stamp("links", ["docs/a.md"], set(), "k")
+    assert a == cr.part_stamp("links", ["docs/a.md"], set(), "k")
+    f.write_text("y")
+    assert a != cr.part_stamp("links", ["docs/a.md"], set(), "k")
+    assert cr.part_stamp("links", ["docs/a.md"], set(), "k") != cr.part_stamp("links", ["docs/a.md"], set(), "k2")

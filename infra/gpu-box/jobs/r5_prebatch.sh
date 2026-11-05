@@ -11,7 +11,7 @@ PY=$HOME/.argonia/venv/bin/python
 # the key is the build's inputs (the tracked blobs of the world data, the generators and the plugin YAML, plus the
 # ground), not HEAD: a tooling commit (13:40) made a resumed run redo every step
 # (not plugin/, tests/journeys or tests/scenes: the pre-batch commits those itself, which moved the key every run)
-key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart data | grep -v "world/db/build_ref.jsonl"; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)  # build_ref is written by this script
+key=$( { git ls-files -s world/db world/schema.sql tools/argonia_world tools/ArgoniaGen tools/chart data | grep -v -E "world/db/(build_ref|build_person|formid|entrance_site).jsonl"; ls -l --time-style=+%s out/terrain/ground-f32.npy 2>/dev/null; } | sha256sum | cut -c1-12)  # build_ref is written by this script
 state="$HOME/.argonia/round/prebatch.$key.state"; mkdir -p "$(dirname "$state")"; touch "$state"
 step() { local n=$1; shift; local s=$SECONDS
   if grep -qx "$n OK" "$state"; then echo "PREBATCH $n OK (done earlier for $key)"; return 0; fi
@@ -47,7 +47,7 @@ step sample $PY tools/world_sample.py --write || true  # the probe markers are D
 # 1.15-r6-resume-costs: keyed by its own inputs in a state of its own (the journeys' code, the panel, the world rows (their blobs, not the sqlite a plugin build rewrites), and
 # the out/ files gen.py's per-stand cache reads), so a change elsewhere does not rerun the ~6-minute refresh; an
 # interrupted refresh resumes stand by stand from out/journeys/cache (gen.py _cached)
-jkey=$( { git ls-files -s tools/journeys tools/argonia_world/panel.py world/db world/schema.sql | grep -v "world/db/build_ref.jsonl"
+jkey=$( { git ls-files -s tools/journeys tools/argonia_world/panel.py world/db world/schema.sql | grep -v -E "world/db/(build_ref|build_person|formid|entrance_site).jsonl"
   git diff -- tools/journeys tools/argonia_world/panel.py; ls -l --time-style=+%s out/water/cells.jsonl out/terrain/ground-f32.npy 2>/dev/null
   ls -l --time-style=+%s out/terrain/vegetation out/terrain/land 2>/dev/null; } | sha256sum | cut -c1-12)
 jstate="$HOME/.argonia/round/prebatch-journeys.$jkey.state"; touch "$jstate"
@@ -65,7 +65,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 python3 tools/doc_index.py --write >/dev/null 2>&1 && { git add docs/INDEX.md; git diff --cached --quiet || git commit -q -m "index: the round build's research notes and briefs
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"; }
-step gate $PY tooling/check_reach.py --since auto --record || { echo "PREBATCH gate RED: the planner reads out/check"; echo "gate OK" >>"$state"; echo "# gate was RED for these inputs (noted; a resume does not rerun the 330 s)" >>"$state"; }
+# resumable by part (a spot reclaim cut the ~9 min gate at zero, r6-chain30): each green part is recorded in gate.$key.state as it ends
+step gate $PY tooling/check_reach.py --since auto --record --jobs 3 --state "${state%.state}.gate.state" --key "$key" || { echo "PREBATCH gate RED: the planner reads out/check"; echo "gate OK" >>"$state"; echo "# gate was RED for these inputs (noted; a resume does not rerun the 330 s)" >>"$state"; }
 # plugin-check is the gate's (check_reach runs it whenever the ESM moved, which in a chain is every time): not run twice (116 s, r6-chain15/17)
 if [ "$pinned" = 1 ]; then git push -q origin HEAD:main || echo "PREBATCH warning: push of HEAD:main refused (origin moved); not rebasing in the chain's tree"
 else git push -q origin HEAD:main || { git fetch -q origin main && git rebase -q origin/main && git push -q origin HEAD:main; }; fi  # the lanes' tree takes it on its next pull
