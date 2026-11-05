@@ -375,22 +375,10 @@ class Inputs:
         zb = np.load(_dr() / "hydrology-graph-bodies.npz")
         reach = ~np.isnan(rl) & ~np.isfinite(zb["level"]) & ~zb["sea"]
         del rl, zb
-        # the bridges' seats: their deck levels are set on the generated ground the bridges lane seated them on
-        # (the last ground; the prior where there is none)
-        from tools.argonia_world.routes import infra
-        from tools.argonia_world.routes.shape import bilinear
-        from tools.argonia_world.terrain.grid import generated_ground
-        gg = generated_ground()
-        zg = np.load(gg, mmap_mode="r") if gg.exists() else prior
-
-        def z_at(x, y):
-            return float(bilinear(zg, np.array([x / MPP]), np.array([y / MPP]))[0])
-        try:
-            seats = infra.seats(w, z_at)
-        except Exception as e:  # noqa: BLE001 - no bridge rows or pieces index: no seats, said in the stats
-            log_ = f"bridge seats skipped: {e}"
-            print(log_)
-            seats = []
+        # the bridges' crossings (routes/infra.BRIDGES on their roads' lines): the deck tops are set by generate on
+        # the corridor after dry_corridor (shape.bridge_decks), never on an older ground
+        from tools.argonia_world.routes.shape import bridge_crossings
+        seats = bridge_crossings(w)
         return cls(prior, region, rows, [cult[r["land_region_id"]] for r in rows], water, wet_level, roads, sites,
                    reach, seats)
 
@@ -708,11 +696,19 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     # its cell's water, a reach crossed at a ford (routes/shape.py dry_corridor); a step's channel keeps its bed
     from tools.argonia_world.routes.shape import dry_corridor
     reach_ = inp.reach if inp.reach is not None else np.zeros((N + 1, N + 1), bool)
-    dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan)
+    span = np.zeros_like(chan)
+    if inp.seats:  # under a bridge's deck the water stays (the step shows under it): no causeway there
+        from tools.argonia_world.routes.shape import deck_span
+        span = deck_span(chan.shape, inp.seats)
+    dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan | span)
     st["roads_dry"] = dc["stats"]
-    if inp.seats:  # the bridges' ends held at their decks, eased into the road (the channel between untouched)
-        from tools.argonia_world.routes.shape import bridge_seats, corridor
-        bs = bridge_seats(inp.seats, lo, hi, keep=chan, corridor_m=corridor(lo.shape, inp.roads))
+    decks = []
+    if inp.seats:  # each deck at its road's corridor (the higher end), the ends eased up to it (the channel untouched)
+        from tools.argonia_world.routes.shape import bridge_decks, bridge_seats, corridor
+        hc = np.minimum(np.maximum(h, lo), hi)
+        decks = bridge_decks(hc, inp.seats)
+        bs = bridge_seats(inp.seats, lo, hi, keep=chan | span, corridor_m=corridor(lo.shape, inp.roads), h=hc)
+        del hc
         st["bridge_seats"] = bs["stats"]
         role[bs["seated"] & (role == 1)] = 3
         dc["bank"] = dc["bank"] | bs["seated"]
@@ -761,7 +757,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     log(f"limit {time.time() - t0:.1f}s")
     return {"ground": f.astype(np.float32), "cliff": cliff.astype(np.uint8), "role": role, "lo": lo, "hi": hi,
             "sites": sites, "stats": st, "diag": diag, "road_water": road_water,
-            "road_raised": road_raised}
+            "road_raised": road_raised, "bridge_decks": decks}
 
 
 def pad_wet_edge(s, foot) -> bool:
@@ -1007,6 +1003,8 @@ def write(res: dict, out: Path = OUT) -> dict:
     atomic(out / "ground-f32.npy", lambda f: np.save(f, res["ground"]))
     atomic(out / "cliff-u8.npy", lambda f: np.save(f, res["cliff"]))
     atomic(out / "role-u8.npy", lambda f: np.save(f, res["role"]))
+    if "bridge_decks" in res:  # infra.bridge_placements reads the deck tops from here (one definition)
+        atomic(out / "bridge-decks.json", lambda f: f.write(json.dumps(res["bridge_decks"], indent=1) + "\n"), "w")
     if "road_raised" in res:
         from tools.argonia_world.routes.shape import ROAD_RAISED
         atomic(out / ROAD_RAISED, lambda f: np.save(f, res["road_raised"]))

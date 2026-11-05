@@ -65,26 +65,35 @@ def test_step_channel_under_a_road_is_capped_at_the_ford_depth():
     assert dc["ford"][n // 2, 59]
 
 
-def test_bridge_over_a_step_is_seated_level_with_its_deck():
+def test_bridge_deck_stands_at_the_raised_corridor():
+    """A crossing on a causeway: the deck top is the corridor's height (the higher end), the seats level with it,
+    no seat sample under the causeway, the step's channel between untouched."""
     n = 120
     y, x = np.mgrid[0:n + 1, 0:n + 1].astype(np.float64)
-    h = np.where(x < 60, 6.0, 1.0)  # a 5 m step at the channel, cols 58..62
     chan = (x >= 58) & (x <= 62)
-    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
-    hi[chan] = 0.0
-    deck = 5.0
+    h = np.where(x < 60, 60.0, 56.0)  # the land under a step's two levels
     road = [(np.array([[10.0, n / 2], [n - 10.0, n / 2]]), 4.5 / S.MPP)]
-    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, n / 2 * S.MPP], "z_m": deck, "heading": 90.0,
-              "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0} for k, cx in enumerate((56.0, 64.0))]
-    bs = S.bridge_seats(seats, lo, hi, keep=chan, corridor_m=S.corridor(h.shape, road))
-    f = np.minimum(np.maximum(h, lo), hi)
+    cor = S.corridor(h.shape, road)
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
+    hi[chan] = 55.0
+    causeway = np.where(x < 60, 61.1, 56.2)  # dry_corridor's top over each cell's water
+    lo[cor & ~chan] = causeway[cor & ~chan]
+    hc = np.minimum(np.maximum(h, lo), hi)
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, n / 2 * S.MPP], "z_m": None, "heading": 90.0,
+              "centre_m": [60 * S.MPP, n / 2 * S.MPP], "yaw": 0.0, "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0}
+             for k, cx in enumerate((56.0, 64.0))]
+    decks = S.bridge_decks(hc, seats)
+    assert decks[0]["deck_m"] == 61.1, decks
+    lo0 = lo.copy()
+    bs = S.bridge_seats(seats, lo, hi, keep=chan, corridor_m=cor, h=hc)
+    f = np.minimum(np.maximum(hc, lo), hi)
     for cx in (54, 56, 64, 66):
-        assert abs(f[n // 2, cx] - deck) < 1e-9, (cx, f[n // 2, cx])
-    assert (f[chan] == 0.0).all() and not bs["seated"][chan].any()  # the channel untouched
-    row = f[n // 2]
-    g = np.abs(np.diff(row[:57])) / S.MPP
-    g2 = np.abs(np.diff(row[64:])) / S.MPP
-    assert max(g.max(), g2.max()) <= S.GRADE_MAX + 1e-6, (g.max(), g2.max())
+        assert abs(f[n // 2, cx] - 61.1) < 1e-9, (cx, f[n // 2, cx])
+    seat = bs["seated"]
+    assert (f[seat] >= lo0[seat] - 1e-9).all()  # never under the causeway
+    assert (f[chan] == hc[chan]).all() and not seat[chan].any()  # the channel untouched
+    g = np.abs(np.diff(f[n // 2, 66:])) / S.MPP  # the lower side eased up to the deck
+    assert g.max() <= S.GRADE_MAX + 1e-6, g.max()
 
 
 def test_seat_census_reds_a_seat_off_its_deck():
@@ -95,3 +104,10 @@ def test_seat_census_reds_a_seat_off_its_deck():
               "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0} for k, cx in enumerate((40.0, 60.0))]
     out = K.seat_census(h, seats)
     assert not out[0]["red"] and out[1]["red"] and out[1]["off_max_m"] == 0.5, out
+
+
+def test_deck_span_lies_between_the_seats():
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, 50 * S.MPP], "from_m": -0.3, "half_width_m": 3.0}
+             for k, cx in enumerate((50.0, 60.0))]
+    m = S.deck_span((101, 101), seats)
+    assert m[50, 51:60].all() and not m[50, 49] and not m[50, 61] and not m[40, 55]

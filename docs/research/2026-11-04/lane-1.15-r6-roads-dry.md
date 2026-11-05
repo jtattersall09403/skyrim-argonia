@@ -126,3 +126,13 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
   - gideon-step end 1 is 0.33 m off (red, ground 69.11-69.45 m) - the deck moved 0.1 m as the regenerated ground changed under it, so it converges on the next rebuild;
   - the census flags it in `fails`.
 - An approach standing 2.2 m over its deck (71.4 against 69.2 m) is not in this ground: the ground at both gideon seats is 69.1-69.5 m. The journey's stand z should be checked against GameGround at the stand point.
+
+## Round 7: the deck stands at the road (bridge-look 02-gideon-step-deck.png: a deck in a vertical-walled trench)
+- Cause: the deck top came from an older ground at the crossing (infra on GameGround, the pre-causeway bank), and the seats pinned the corridor to it (lo = hi), cutting the raised road down to the deck.
+- Rule now (planner, 2026-11-05):
+  1. `shape.bridge_crossings(w)` places each end on infra.BRIDGES' axis, with the deck centred on the crossing.
+  2. `shape.deck_span` marks the samples under the deck between the seats, and `dry_corridor` leaves them as it leaves the channel. The step's water stays under the deck; no causeway is built there.
+  3. `shape.bridge_decks(h)` runs after dry_corridor and sets the deck top to the corridor's highest ground along either seat (from 0.3 m under the deck to 4 m beyond), the higher end.
+  4. `bridge_seats` only raises: lo = deck over the seat, pinned (hi = deck) only where the ground is at or under the deck, and a lo cone at GRADE_MAX eases the road up to it. It never cuts below the causeway.
+  5. generate writes `out/terrain/bridge-decks.json` with, per bridge: id, deck_m, ends_ground_m, centre_m, ends_m, heading, yaw. infra should take both z and centre_m from it: the deck is centred on the axis point, with no seat() offset.
+- L2 tests: `test_bridge_deck_stands_at_the_raised_corridor` (deck = corridor 61.1 m, seats level, none under the causeway, the channel untouched, the ease within GRADE_MAX) and `test_deck_span_lies_between_the_seats`.

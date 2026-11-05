@@ -267,11 +267,98 @@ FORD_M = 0.3  # a reach crossing's bed under its level, at most (Skyrim.esm's ro
 FORD_GAP = 2  # samples between a ford and the causeway left to the ground (the ramp from the top to the bed)
 
 
-def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None) -> dict:
-    """Each bridge end's seat (routes/infra.seats, lane 1.15-r6-bridges): the corridor held at the deck's top z_m
-    from from_m (under the deck) to to_m beyond the end, half_width_m across, then eased into the road at GRADE_MAX
-    (lo and hi cones from the seat, inside the road's corridor `corridor_m` when given). The seat's axis points away
-    from the bridge's other end; between the two seats the channel (`keep`) is never touched. lo, hi in place."""
+def bridge_crossings(w) -> list[dict]:
+    """Each bridge end's seat at routes/infra.BRIDGES' crossings (the deck centred on the roads' axis there), its
+    deck top z_m unset: generate sets it on the corridor (bridge_decks)."""
+    import math
+
+    from tools.argonia_world.routes import infra
+    out = []
+    for bid, (q, _reach, routes) in sorted(infra.BRIDGES.items()):
+        lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
+            "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
+        if any(len(v) < 2 for v in lines.values()):
+            continue
+        x, y, hd = infra.axis([infra.nearest_on(lines[r], q) for r in routes])
+        ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
+        half = infra.BRIDGE_LEN_M / 2
+        for k, sg in enumerate((-1, 1)):
+            out.append({"bridge": f"bridge.{bid}", "end": k, "at_m": [round(x + sg * ux * half, 2), round(y + sg * uy * half, 2)],
+                        "centre_m": [round(x, 2), round(y, 2)], "heading": round(hd, 2),
+                        "yaw": round((hd + infra.BRIDGE_YAW_OFFSET) % 360, 2), "z_m": None,
+                        "from_m": -infra.SEAT_M, "to_m": infra.APPROACH_M,
+                        "half_width_m": round(infra.BRIDGE_HALF_W_M + 2.0, 2)})
+    return out
+
+
+def _seat_axis(q, ends):
+    ex, ey = (float(v) / MPP for v in q["at_m"])
+    other = [o for o in ends[q["bridge"]] if o is not q]
+    if other:
+        ox, oy = (float(v) / MPP for v in other[0]["at_m"])
+        ux, uy = ex - ox, ey - oy
+    else:
+        th = np.radians(q["heading"])
+        ux, uy = np.sin(th), -np.cos(th)
+    ln = max(float(np.hypot(ux, uy)), 1e-9)
+    return ex, ey, ux / ln, uy / ln
+
+
+def deck_span(shape_, seats: list[dict]) -> np.ndarray:
+    """The samples under each bridge's deck between its two seats (inside from_m of each end), the deck's half width
+    plus the seat's margin across: dry_corridor leaves them to the water, so the step shows under the deck."""
+    m = np.zeros(shape_, bool)
+    ends: dict = {}
+    for q in seats:
+        ends.setdefault(q["bridge"], []).append(q)
+    for qs in ends.values():
+        if len(qs) != 2:
+            continue
+        (ax, ay), (bx, by) = ([float(v) / MPP for v in q["at_m"]] for q in qs)
+        ln = max(float(np.hypot(bx - ax, by - ay)), 1e-9)
+        ux, uy = (bx - ax) / ln, (by - ay) / ln
+        inset = -qs[0]["from_m"] / MPP
+        w_ = qs[0]["half_width_m"] / MPP
+        r = int(np.ceil(ln / 2 + w_)) + 1
+        cx, cy = (ax + bx) / 2, (ay + by) / 2
+        r0, r1 = max(int(cy) - r, 0), min(int(cy) + r, shape_[0] - 1)
+        c0, c1 = max(int(cx) - r, 0), min(int(cx) + r, shape_[1] - 1)
+        yy, xx = np.mgrid[r0:r1 + 1, c0:c1 + 1].astype(np.float64)
+        along = (xx - ax) * ux + (yy - ay) * uy
+        across = np.abs(-(xx - ax) * uy + (yy - ay) * ux)
+        m[r0:r1 + 1, c0:c1 + 1] |= (along > inset) & (along < ln - inset) & (across <= w_)
+    return m
+
+
+def bridge_decks(h, seats: list[dict]) -> list[dict]:
+    """Each bridge's deck top: the road corridor's height at its two ends (h after dry_corridor's bounds), the higher
+    one: the highest ground along each seat's axis (from under the deck to APPROACH_M beyond), so a seat only ever
+    raises the road to the deck, never cuts the causeway down to it. Sets each seat's z_m; returns the decks
+    (bridge-decks.json: id, deck top, centre, ends, heading, yaw)."""
+    ends: dict = {}
+    for q in seats:
+        ends.setdefault(q["bridge"], []).append(q)
+    out = []
+    for bid, qs in ends.items():
+        tops = []
+        for q in qs:
+            ex, ey, ux, uy = _seat_axis(q, ends)
+            s_ = np.arange(q["from_m"], q["to_m"] + 0.01, 0.5) / MPP
+            tops.append(float(bilinear(h, ex + ux * s_, ey + uy * s_).max()))
+        top = round(max(tops), 2)
+        for q in qs:
+            q["z_m"] = top
+        out.append({"id": bid, "deck_m": top, "ends_ground_m": [round(t, 2) for t in tops], "centre_m": qs[0]["centre_m"],
+                    "ends_m": [q["at_m"] for q in qs], "heading": qs[0]["heading"], "yaw": qs[0]["yaw"]})
+    return out
+
+
+def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None, h=None) -> dict:
+    """Each bridge end's seat (bridge_crossings, decks by bridge_decks): the corridor raised to the deck's top z_m
+    from from_m (under the deck) to to_m beyond the end, half_width_m across, and eased up to it at GRADE_MAX beyond
+    (a lo cone, inside the road's corridor `corridor_m` when given). A seat never cuts: where the ground `h` already
+    stands above the deck it is left; only a seat sample at or under the deck is pinned to it. Between the two seats
+    the channel (`keep`) is never touched, so the step's water shows under the deck. lo, hi in place."""
     from tools.argonia_world.terrain.generate import chamfer
     keep = np.zeros(lo.shape, bool) if keep is None else keep
     ends: dict = {}
@@ -280,16 +367,9 @@ def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None) -> dict:
     n_seat = 0
     held = np.zeros(lo.shape, bool)
     for q in seats:
-        ex, ey = (float(v) / MPP for v in q["at_m"])
-        other = [o for o in ends[q["bridge"]] if o is not q]
-        if other:
-            ox, oy = (float(v) / MPP for v in other[0]["at_m"])
-            ux, uy = ex - ox, ey - oy
-        else:
-            th = np.radians(q["heading"])
-            ux, uy = np.sin(th), -np.cos(th)
-        ln = max(float(np.hypot(ux, uy)), 1e-9)
-        ux, uy = ux / ln, uy / ln
+        if q.get("z_m") is None:
+            continue
+        ex, ey, ux, uy = _seat_axis(q, ends)
         far = int(np.ceil(4 * MAX_CUT_M / (GRADE_MAX * MPP))) + 2  # the ease's reach in samples
         reach = (q["to_m"] + q["half_width_m"]) / MPP + far + 2
         r0, r1 = int(max(ey - reach, 0)), int(min(ey + reach, lo.shape[0] - 1))
@@ -299,18 +379,20 @@ def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None) -> dict:
         along = ((xx - ex) * ux + (yy - ey) * uy) * MPP
         across = np.abs(-(xx - ex) * uy + (yy - ey) * ux) * MPP
         box = (along >= q["from_m"]) & (along <= q["to_m"]) & (across <= q["half_width_m"]) & ~keep[sub]
-        lo[sub] = np.where(box, q["z_m"], lo[sub])
-        hi[sub] = np.where(box, q["z_m"], hi[sub])
+        z = q["z_m"]
+        pin = box if h is None else box & (h[sub] <= z + 1e-6)
+        lo[sub] = np.where(box, np.maximum(lo[sub], z), lo[sub])
+        hi[sub] = np.where(pin, z, np.where(box, np.maximum(hi[sub], z), hi[sub]))
         held[sub] |= box
         n_seat += int(box.sum())
-        # the ease: lo and hi cones from the seat falling GRADE_MAX a metre (8-neighbour chamfer distance)
+        # the ease: a lo cone from the seat falling GRADE_MAX a metre (8-neighbour chamfer distance); raise only
         d, _ = chamfer(box, far)
         m = np.isfinite(d) & (d > 0) & ~keep[sub] & ~held[sub]
         if corridor_m is not None:
             m &= corridor_m[sub]
         dz = GRADE_MAX * np.where(np.isfinite(d), d, 0.0) * MPP
-        lo[sub] = np.where(m, np.maximum(lo[sub], q["z_m"] - dz), lo[sub])
-        hi[sub] = np.where(m, np.maximum(np.minimum(hi[sub], q["z_m"] + dz), lo[sub]), hi[sub])
+        lo[sub] = np.where(m, np.maximum(lo[sub], z - dz), lo[sub])
+        hi[sub] = np.where(m, np.maximum(hi[sub], lo[sub]), hi[sub])
     return {"seated": held, "stats": {"seats": len(seats), "seat_samples": n_seat}}
 
 
