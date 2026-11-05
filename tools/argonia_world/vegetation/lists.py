@@ -74,6 +74,10 @@ MARSH_TREE_HA_BY = {"coastal-lagoon": 170.0, "deep-sink-basin": 90.0, "tidal-del
 MARSH_TREE_HA_REGION = {"mercantile-coast.coastal-lagoon": 250.0, "saxhleel-coast.coastal-lagoon": 130.0,
                         "imperial-penal-south.coastal-lagoon": 199.0, "dunmer-north.coastal-lagoon": 297.0,
                         "dunmer-north.deep-sink-basin": 127.0}
+# lane 1.15-r6-tree-look: the weeping willow left the interior swamp (SIGNATURE_ONLY), and with it the gallery role
+# that held most of its trees (19-34 a countable cell before, 7.5-13.8 after at the default 52 a ha, under the band's
+# 15.5): its canopy (rain trees, cypress, snags) is asked for the band's middle, 52 x 31 / 12 a ha
+MARSH_TREE_HA_BY["interior-swamp"] = 135.0
 # lane 1.15-r6-trees-in-water: no tree stands in the water now (place.py), so two regions' supply fell under their
 # band (imperial-penal-south.deep-river-corridor 4.2 against 15.5 a cell, hist-heartland.tidal-delta 8.5 against
 # 9.0); their canopy is scaled to the band by the measured ratio with a fifth's margin

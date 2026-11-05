@@ -57,12 +57,22 @@ Coastal-lagoon was already distinct and is unchanged: seaweed is 0.71 of its ste
 
 Stems in the current shards before the change: flooded-forest willow 0.348 and gorse 0.147; interior-swamp willow 0.377.
 
-The share of stems after the change waits on the owed regenerate. Monstera-type ground plants are still shared, at 0.256 and 0.083.
+After the regenerate (shards 05:2x Nov 5), the share of stems:
+
+- interior-swamp: willow 0.377 → 0, cypress 0.029 → 0.114, monstera 0.214, fern 0.069.
+- flooded-forest: gorse 0.147 → 0, willow 0.348 → 0.429.
+- coastal-lagoon: no change.
+
+Losing the willow cut interior-swamp trees from 19-34 a countable cell to 7.5-13.8, a shortfall under the band's 15.5. Its canopy ask is now MARSH_TREE_HA_BY 135 a ha (52 x 31 / 12), and the regenerate has 0 shortfalls.
+
+Monstera-type ground plants are still shared.
 
 ## Gates
 
 - tree-booth and `journeys refresh --only tree-seat`: 0 stale. journey_lint ok. run_journey --dry ok. Tests: vegetation 63 passed, meshes 14 passed. ruff clean.
-- trees-census is red on the current shards (depth reds in cells (-44,-7), (-61,10) and (-25,37)). test_journeys reports other journeys stale against a moved ground. This lane changed no shard or ground. The cause is the water-edges terrain work in flight (cell_water and ground changes).
-- Owed: the whole-province vegetation regenerate. The province lock was held by we2-after2 (terrain generate), so it was not run. After it: re-run tree-booth and the refresh, and the census of the share of stems by form.
+- trees-census is red: 9617 of 276092 stems are wet. It was red on the old shards too. The vegetation L1 check gives 14 green and 4 red: ground, slope and water against out/terrain/land (for example, cell (-52,-57) 1.6-1.85 m off the LAND).
+- These reds most likely come from the water-edges and terrain work in flight: uncommitted cell_water, terrain/patches.py and water_field.py, a LAND that does not match, and the first regenerate crashing in patches.py. That is not proved, and the lane did not split it out.
+- test_journeys reports other journeys stale against the moved ground. tree-seat is 0 stale.
+- The regenerate ran under the province lock (job treelook-veg2). The checks were red, so it wrote no veg.stamp, and the chain's pre-batch places again. Re-run tree-booth after that placement.
 
 Birch (01BIRCH, 0.026 of coastal-lagoon stems) reads Nordic and is left for the planner.
