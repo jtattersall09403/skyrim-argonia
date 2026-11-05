@@ -46,7 +46,14 @@ std::atomic<bool> g_save_loading{false};
 constexpr auto kLoadWaitCap = 10s;
 }  // namespace
 
-bool save_loading() { return g_save_loading.load(); }
+// a save load (the SKSE message) or any cell load (the Loading Menu open: an interior door, a far teleport): a task
+// queued during either waits kLoadWaitCap (r6-chain23 claywater-look, 01:40: the console after the station door died
+// on the 3 s window while the interior loaded; the UI read is thread-safe for a flag check)
+bool save_loading() {
+  if (g_save_loading.load()) return true;
+  auto* ui = RE::UI::GetSingleton();
+  return ui && ui->IsMenuOpen(RE::LoadingMenu::MENU_NAME);
+}
 
 std::string on_main_thread(const std::string& cmd, std::function<std::string()> fn, std::chrono::milliseconds timeout) {
   auto done = std::make_shared<std::promise<std::string>>();
