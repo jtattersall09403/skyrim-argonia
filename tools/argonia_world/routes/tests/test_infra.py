@@ -101,6 +101,15 @@ def test_sign_board_textures_are_laid_or_kept():
         pytest.skip("no laid stack")
     deps = json.loads(Path("data/dependencies.json").read_text())
     keep = next(m for m in deps["mods"] if m["id"] == "bmv")["keep"]
+    def laid(m, t):  # Windows resolves case-insensitively; the stack lays archive spelling (Textures/Hana/Signs/RoadSign.dds)
+        cur = m
+        for part in t.split("/"):
+            hit = [c for c in cur.iterdir() if c.name.lower() == part] if cur.is_dir() else []
+            if not hit:
+                return False
+            cur = hit[0]
+        return True
+
     bad = [(b.name, t) for b in boards for s, t in ((s, mt.norm(t)) for s, t in mt.texture_slots(b.read_bytes()))
-           if s <= 1 and not any(fnmatch.fnmatch(t, g) for g in keep) and not any((m / t).exists() for m in mods.iterdir())]
+           if s <= 1 and not any(fnmatch.fnmatch(t, g) for g in keep) and not any(laid(m, t) for m in mods.iterdir())]
     assert not bad, bad

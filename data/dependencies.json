@@ -3212,6 +3212,33 @@
    "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name, plus BM&V's landscape pack (textures/TEXTUREPACK/landscape, 118 files) that our TXST records point the ground's LTEX at (1.15 materials); flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
   },
   {
+   "id": "hanas-blank-roadsigns",
+   "group": "land",
+   "source": {
+    "nexus": "skyrim",
+    "mod": 33392,
+    "file": 1000017846
+   },
+   "name": "Hanas Blank Roadsigns - Resource",
+   "author": "Hanaisse",
+   "version": "1.0",
+   "archive": "Hanas Blank Roadsigns-33392-1-0.7z",
+   "size_kb": 5649,
+   "why": "the blank road-sign textures (textures/hana/signs: roadsignmedium.dds, roadsign_n.dds and the small and large boards) that BM&V's sign boards name and its archives lack (lilac boards, owner play test 3 finding 29)",
+   "chunk": "0.4",
+   "required": true,
+   "profile": "play",
+   "sha256": "52858bd11e775a30b2468f38d17269dde77801a385fb7d263f1efd0213582f84",
+   "licence": "free use in mods with credit (Nexus: 'This is a resource. Use it freely in your mods and please give credit.')",
+   "permission_summary": "A resource the author offers for use in other mods with credit; credit Hanaisse.",
+   "ai_clause": "not stated",
+   "permission_ask": false,
+   "permission_evidence": "Nexus page description (settlement-kit-sourcing-log.md G10)",
+   "runtime": "data only (no DLL, no plugin)",
+   "conflicts": "none; its meshes/hana/signs boards are unused, BM&V's roadsign nifs lie at meshes/",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
    "id": "tropical-skyrim-le",
    "group": "pipeline",
    "source": {
