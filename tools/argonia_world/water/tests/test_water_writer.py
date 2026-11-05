@@ -81,7 +81,7 @@ def test_water_written_and_read_back(tmp_path):
     assert struct.unpack("<f", wrld.first("NAM4"))[0] == struct.unpack_from("<f", wrld.first("DNAM"), 4)[0]
     win = layer.winners(GAME)
     expected = {"sea": "Tropical Skyrim.esp", "lake": "Tropical Skyrim.esp", "marsh": "Tropical Skyrim.esp",
-                "brackish": "Tropical Skyrim.esp", "black": "Update.esm", "cold": "Dawnguard.esm",
+                "brackish": "Tropical Skyrim.esp", "black": "Dawnguard.esm", "cold": "Dawnguard.esm",
                 "river-ne": "Update.esm", "creek-sw": "Update.esm"}
     for t, plugin in expected.items():  # the winners measured 2026-11-03 (water-types.md finding A)
         assert layer.template_of(t, GAME) == f"{plugin}:{layer.TYPES[t][1]}"
@@ -122,15 +122,20 @@ def test_water_written_and_read_back(tmp_path):
         for band in ("lowland", "upland"):
             assert not layer.is_flow(layer.cell_type("fresh", kind, band, "reach.x", 2, "ne")), kind
     assert layer.is_flow(layer.cell_type("fresh", None, None, "reach.x", 1, "sw"))
-    # the black type is Update.esm's MurkyWater, the darkest open-water record (r5 black-water), but its surface
-    # reflection is Dawnguard's dark still water's (r6 black-swamp-water: 0.55 / 0.25 mirrored the noon sky blue)
+    # the black type is Dawnguard's DLC01DarkFallCaveDarkStillWater whole (r6 water-look-2): Bethesda's darkest still
+    # water, a grey-black reflection colour (MurkyWater's olive 32,35,27 read the swamp olive under the canopy)
     blk = watr[int(layer.type_key("black").split(":")[0], 16)]
     d = blk.first("DNAM")
-    assert [tuple(d[o:o + 3]) for o in (40, 44, 48)] == [(26, 19, 19), (9, 9, 6), (32, 35, 27)]  # shallow, deep, reflection
-    assert colorsys.rgb_to_hsv(*(x / 255 for x in d[44:47]))[2] < 0.2  # deep colour near-black
-    assert blk.first("ANAM") == b"d"  # opacity 100
-    assert struct.unpack_from("<2f", d, 32) == (0.0, 60.0)  # fog above near, far
-    assert struct.unpack_from("<2f", d, 20) == pytest.approx((0.28, 0.0), abs=1e-3)  # reflectivity, fresnel
+    assert [tuple(d[o:o + 3]) for o in (40, 44, 48)] == [(31, 33, 33), (12, 12, 12), (10, 10, 5)]  # shallow, deep, refl.
+    for o in (44, 48):  # the rendered-colour proxy: deep and reflection colours near-black
+        assert colorsys.rgb_to_hsv(*(x / 255 for x in d[o:o + 3]))[2] < 0.2
+    assert struct.unpack_from("<f", d, 20)[0] < 0.3 and struct.unpack_from("<f", d, 24)[0] == 0.0  # refl., fresnel
+    # the stream flows: every creek type moves its water at Update.esm's creek speed, no type is still
+    for t in ("creek-se", "creek-sw", "creek-ne", "creek-nw"):
+        c = watr[int(layer.type_key(t).split(":")[0], 16)]
+        vx, vy, _ = struct.unpack("<3f", c.first("NAM0")[:12])
+        assert (vx * vx + vy * vy) ** 0.5 > 0.9, t  # CreekWaterFlowSE 0.7,-0.72 / SW -0.98,-0.69
+        assert c.first("ANAM")[0] == 0, t  # Skyrim's creek opacity 0: clear
     cells = {}
     for c in by["CELL"]:
         xclc = c.first("XCLC")

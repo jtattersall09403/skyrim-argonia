@@ -41,14 +41,16 @@ QUADS = ("ne", "nw", "se", "sw")
 # type -> (name, the editor id it copies, flowing, the opposite direction's type it turns half a circle or None).
 # The first is the sea (WRLD NAM2/NAM3). Winners measured 2026-11-03 over the stack's load order: DefaultWater,
 # DefaultMarshWater and DefaultMarshWaterTransition = Tropical Skyrim.esp; DefaultBlackmarshWater = King of the
-# Murkmire.esp (not used since r5 black-water: olive 130,116,34, not black); the black type copies MurkyWater (Update.esm,
-# shallow 26,19,19 / deep 9,9,6, the darkest open-water record in the load order); DefaultWaterCold = Dawnguard.esm;
+# Murkmire.esp (not used since r5 black-water: olive 130,116,34, not black); the black type copies Dawnguard's
+# DLC01DarkFallCaveDarkStillWater whole (lane 1.15-r6-water-look-2: Bethesda's darkest still water, deep 12,12,12,
+# reflection colour 10,10,5, reflectivity 0.28, fresnel 0; MurkyWater's olive reflection colour 32,35,27 under a lit
+# canopy read the swamp dark olive in r6-chain23); DefaultWaterCold = Dawnguard.esm;
 # RiverWaterFlowNE/NW/SE and CreekWaterFlowSE/SW = Update.esm.
 TYPES: dict[str, tuple[str, str, bool, str | None]] = {
     "sea": ("Sea", "DefaultWater", False, None),
     "lake": ("Lake Water", "DefaultWater", False, None),  # Skyrim's lakes are its sea's type; ours its twin
     "marsh": ("Marsh Water", "DefaultMarshWater", False, None),  # marsh-deep, backswamp
-    "black": ("Black Water", "MurkyWater", False, None),  # swamp, marsh-fringe: the darkest natural record (r5 black-water)
+    "black": ("Black Water", "DLC01DarkFallCaveDarkStillWater", False, None),  # swamp, marsh-fringe (r6 water-look-2)
     "cold": ("Cold Water", "DefaultWaterCold", False, None),  # tarns, montane and upland ponds and pools
     "brackish": ("Brackish Water", "DefaultMarshWaterTransition", False, None),  # the tidal rim
     "river-ne": ("River", "RiverWaterFlowNE", True, None),
@@ -61,11 +63,6 @@ TYPES: dict[str, tuple[str, str, bool, str | None]] = {
     "creek-ne": ("Stream", "CreekWaterFlowSW", True, "sw"),
 }
 EMIT_TYPES = tuple(TYPES)
-# A type whose surface reflection (DNAM reflectivity at 20, fresnel at 24) is another winner's (lane 1.15-r6-black-swamp-water):
-# MurkyWater's 0.55 / 0.25 mirrors the clear-dry noon sky at the play camera's grazing view, so the black swamp read
-# bright blue over a deep colour of 9,9,6 (still 03, owner #41). Bethesda's own dark still water, Dawnguard's
-# DLC01DarkFallCaveDarkStillWater, reflects 0.28 with no fresnel: its two numbers, measured, none of ours.
-REFLECT_FROM = {"black": "DLC01DarkFallCaveDarkStillWater"}
 STILL_KINDS = {"marsh-deep": "marsh", "backswamp": "marsh", "swamp": "black", "marsh-fringe": "black",
                "tarn-upland": "cold", "plunge-pool": "cold", "lake-lowland": "lake", "lagoon": "sea",
                "mudflat": "brackish"}
@@ -154,11 +151,7 @@ def flow_set(t: str, data: Path = GAME_DATA) -> dict:
     r = winners(Path(data))[TYPES[t][1]][1]
     if not TYPES[t][2]:
         v = struct.unpack("<3f", r.first("NAM0"))
-        out = {"linearVelocity": [0.0, 0.0, 0.0]} if t != "sea" and any(v) else {}
-        if t in REFLECT_FROM:
-            refl, fres = struct.unpack_from("<2f", winners(Path(data))[REFLECT_FROM[t]][1].first("DNAM"), 20)
-            out |= {"waterReflectivity": refl, "waterFresnel": fres}
-        return out
+        return {"linearVelocity": [0.0, 0.0, 0.0]} if t != "sea" and any(v) else {}
     if TYPES[t][3] is None:
         return {}
     v = struct.unpack("<3f", r.first("NAM0"))
