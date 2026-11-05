@@ -49,6 +49,7 @@ combat, climbing, swimming, boats and no Nordic element, built only from our own
 
 ## Agents and briefs
 
+- Lanes commit with `tooling/lane_commit.sh -m msg -- paths` (never stash, checkout, pull on a dirty tree).
 - Model and effort live only in `.claude/agents/` frontmatter.
 - Briefs come from `tooling/brief_template.py --write`; every field filled, Acceptance runnable or measured.
 - Shell commands run through rtk; add a tool, hook or gate only after the incident it would have prevented ([0011](docs/decisions/0011-ways-of-working-are-inherited-lean.md), 0027).
