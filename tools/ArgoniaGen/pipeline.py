@@ -316,6 +316,13 @@ def _terrain_stamp(ground: bool = True) -> str:
         from tools.argonia_world.terrain import patches
         h.update(patches.stamp().encode())  # the places' pads and bowls: the rows' key hashes those reaching each row
         h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
+        # ... and the ground OUTPUT itself, by content: two grounds with equal input keys can differ (one built by an
+        # older pass and re-labelled, 03:2x), and the cells must follow what is on disk, not what should be
+        from tools.argonia_world.terrain.grid import generated_ground
+        g = generated_ground()
+        if g.exists():
+            with g.open("rb") as fh:
+                h.update(hashlib.file_digest(fh, "sha256").digest())
         h.update(_cover_key("terrain").encode())
     else:  # the land rows' shared base: exactly the tables and code the cell lines read; water and region grids, the
         # ground, patches and roads enter each row's own key (build.row_key), so a local edit rebuilds only its rows
