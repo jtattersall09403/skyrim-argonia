@@ -27,8 +27,8 @@ stops:
   region: dunmer-north.northern-transition
   weather: ARG_Weather_tannin_haze
   cliff:
-    step_m: 2.06
-    slope_deg: 48.4
+    step_m: 3.31
+    slope_deg: 61.1
 - n: 3
   title: Four cells meet on a slope
   scene: world-sample-03-corner
@@ -104,13 +104,13 @@ stops:
   title: The densest vegetation cell
   scene: world-sample-08-dense-vegetation
   cell:
-  - 6
-  - 42
-  region: pirate-freeholds.flooded-forest
+  - -28
+  - -29
+  region: imperial-penal-south.deep-river-corridor
   weather: ARG_Weather_clear_dry
   vegetation:
     source: out/terrain/vegetation/summary.json densest[0]
-    refs_in_cell: 106
+    refs_in_cell: 103
 - n: 9
   title: A border segment and the Tear road gate
   scene: world-sample-09-border
@@ -200,14 +200,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4804.98
+    ge: 4972.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4875.02
+    le: 5043.02
     within: 3
-  expected_ground_m: 69.113
+  expected_ground_m: 71.512
 - name: s01-probe-east-30m
   why: ground at the east-30m point of the road
   do:
@@ -234,14 +234,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4684.98
+    ge: 4956.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 4755.02
+    le: 5027.02
     within: 3
-  expected_ground_m: 67.4
+  expected_ground_m: 71.284
   reader:
   - grass blades stand on the painted ground and stop where the paint stops
   - trees are Black Marsh region trees (mangrove, cypress, palm, bald cypress); no pine, spruce, birch, snow, frost, heather, Nordic architecture
@@ -274,14 +274,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -3.02
+    ge: 164.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 67.02
+    le: 235.01
     within: 3
-  expected_ground_m: 0.457
+  expected_ground_m: 2.856
 - name: s02-probe-foot
   why: the foot two samples below the face
   do:
@@ -291,14 +291,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: -1515.02
+    ge: -275.01
     within: 3
   - read:
     - player
     path: pos.z
-    le: -1444.98
+    le: -204.99
     within: 3
-  expected_ground_m: -21.134
+  expected_ground_m: -3.427
   reader:
   - the cliff reads as one rock face on a ramp, not a stair of terraces
   - no seam, crack or hard edge across the cell border
@@ -432,19 +432,19 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 16100.99
+    ge: 15892.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 16171.01
+    le: 16035.47
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 230.416
+  expected_ground_m: 227.445
   expected_water_m: 228.48
 - name: s04-bottom-of-reach
   why: 'the bottom of step -62,50 n: on the bed or the surface, not under the ground or in the air'
@@ -455,19 +455,19 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 15844.99
+    ge: 15260.99
     within: 3
   - read:
     - player
     path: pos.z
-    le: 15915.01
+    le: 15402.4
     within: 3
   - read:
     - player
     path: in_air
     eq: false
     within: 3
-  expected_ground_m: 226.76
+  expected_ground_m: 218.421
   expected_water_m: 219.44
   reader:
   - 'each step of the river reads as a short drop with water over it: no visible line where one sheet ends'
@@ -575,14 +575,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 1564.98
+    ge: 1708.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 1635.02
+    le: 1779.02
     within: 3
-  expected_ground_m: 22.847
+  expected_ground_m: 24.904
   reader:
   - the bank meets the water without a gap, step or floating edge
   - the lake surface is one level; shore texture is mud/sand/reed, not Nordic
@@ -608,14 +608,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 108.98
+    ge: 68.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 179.01
+    le: 139.01
     within: 3
-  expected_ground_m: 2.056
+  expected_ground_m: 1.485
 - name: s07-coast-sea
   why: 'three samples out in the sea: the sea default is level 0, no land above it'
   do:
@@ -647,7 +647,7 @@ steps:
     eq: ARG_Province
     within: 20
 - name: s08-probe-centre
-  why: the cell's centre vertex (106 vegetation refs)
+  why: the cell's centre vertex (103 vegetation refs)
   do:
   - console: player.moveto ARG_Ref_ProbeS08ProbeCentre
   - wait: 4
@@ -655,14 +655,14 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 4.98
+    ge: 92.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 75.02
+    le: 163.01
     within: 3
-  expected_ground_m: 0.571
+  expected_ground_m: 1.828
 - name: s08-frametime
   why: 'the 0.2 section d bar: p50 at 60 fps, p99 at 45 fps, in the densest view'
   do:
@@ -843,12 +843,12 @@ steps:
   - read:
     - player
     path: pos.z
-    ge: 5028.98
+    ge: 5308.98
     within: 3
   - read:
     - player
     path: pos.z
-    le: 5099.02
+    le: 5379.02
     within: 3
   reader:
   - the signpost stands upright on the ground, with 5 arms
