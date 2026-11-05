@@ -329,7 +329,8 @@ def weather_slots(w) -> list[str]:
             out.append(f"weather {wid}: {len(missing)} slots not authored ({', '.join(missing[:4])}...)")
         # the sky paint is written from the resolved template (lane 1.15-r5-sky-2): judge what is written
         from tools.argonia_world.regions.api import template_sky
-        painted = template_sky(r["template_form_key"])
+        from tools.argonia_world.regions.api import NEUTRAL_SKY
+        painted = {} if wid in NEUTRAL_SKY else template_sky(r["template_form_key"])
         sk = w.query("SELECT classification FROM weather_sky WHERE weather_id = ?", wid)
         from tools.argonia_world.regions.api import template_colours
         if sk and sk[0]["classification"] == "Pleasant":  # every colour field is the template's (lane 1.15-r6-light)

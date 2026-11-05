@@ -309,6 +309,14 @@ def template_colours(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, s
 # Skyrim.esm's tints 0.56 x DBCCBA; its SkyrimClear's day fog near is 888A44. The twin takes Skyrim.esm's of both.
 SKYRIM_PINNED = {"image": {"day-neutral"}, "weather": {"clear-dry-neutral"}}
 
+# The rain and storm weathers whose sky paint is our authored rows, not the template's (lane 1.15-r6-storm-grey, owner
+# #41 19:05 "no smoggy yellow ever"): the rows are the resolved template's sky with every olive or warm slot
+# desaturated to 0.08 at its own value (SkyrimStormRain's sunset zenith 4A4E41 and horizon 635F53; OvercastRainFF's
+# sunrise skyLower 71713C and horizon 35321A). Their fog, ambient and light are Skyrim.esm's own, neutralised.
+NEUTRAL_SKY = {"storm", "squall", "wet-rain"}
+# Sky slots of a neutral weather: the authored grey/slate band its rows hold (the lint, test_no_yellow_sky).
+OLIVE_HUE, OLIVE_SAT = (40, 100), 0.12
+
 
 def template_graded(world) -> set[str]:
     """The image spaces that take their template's cinematic grade and tint: those a clear (Pleasant) weather draws,
@@ -356,7 +364,7 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
             else template_plugin(w["template_form_key"]),
             # the sky's paint (upper, lower, horizon, the sun disc) is the resolved template's: our authored
             # northern-pale slots read a grey-blue zenith at noon (lane 1.15-r5-sky-2; 0006 §8 Tropical first)
-            "skyFromTemplate": True,
+            "skyFromTemplate": w["id"] not in NEUTRAL_SKY,
             "flags": [w["classification"]], "colours": col, "ambient": ambient(allc),
             "fog": {"dayNear": su.rounded(su.metres_to_units(w["fog_day_near_m"]), 2),
                     "dayFar": su.rounded(su.metres_to_units(w["fog_day_far_m"]), 2),

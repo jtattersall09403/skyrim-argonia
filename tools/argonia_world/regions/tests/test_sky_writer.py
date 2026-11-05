@@ -109,7 +109,14 @@ def test_written_sky_follows_its_templates(tmp_path):
         van.rec = w["formKey"]
         errs += [f"{w['edid']}: {e}" for e in checks.sky_clouds(ours[_fid(w["formKey"])], van[_fid(w["template"])],
                                                                 "Pleasant" in w["flags"])]
-        errs += [f"{w['edid']}: {e}" for e in checks.sky_paint(ours[_fid(w["formKey"])], van[_fid(w["template"])])]
+        paint = checks.sky_paint(ours[_fid(w["formKey"])], van[_fid(w["template"])])
+        if not w["skyFromTemplate"]:  # a neutral rain or storm sky (api.NEUTRAL_SKY): our grey rows, its clouds the template's
+            paint = [e for e in paint if e.startswith("cloud layer")]
+            n0 = ours[_fid(w["formKey"])].first("NAM0")
+            paint += [f"{s} at {t} {n0[k * 16 + i * 4:k * 16 + i * 4 + 3].hex().upper()} not our row {w['colours'][s][t]}"
+                      for s, k in api.SKY_SLOTS.items() for i, t in enumerate(api.TOD)
+                      if list(n0[k * 16 + i * 4:k * 16 + i * 4 + 3]) != w["colours"][s][t]]
+        errs += [f"{w['edid']}: {e}" for e in paint]
         t = van[_fid(w["template"])]
         clear_tpl = bool(struct.unpack_from("<B", t.first("DATA"), 11)[0] & 1)  # DATA flags: Pleasant
         errs += [f"{w['edid']}: {e}" for e in checks.sky_fill_and_ambient(
