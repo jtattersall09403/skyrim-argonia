@@ -798,3 +798,92 @@ meshes:
     reason: 'the bright lime palm: Tropical Skyrim''s Bush01 (the load order''s winner) draws anvilleafpalm02 (sat 0.86)
       at saturation 0.88 through its vertex colour; a per-channel vertex factor takes it to the stack''s leaf p90 (0.71)
       at the same luminance; Own_Emit (black) cleared'
+- mesh: meshes/argonia/trees/greguire/greatsejutree01.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 3A3F9B:King of the Murkmire.esp
+  lane: 1.15-r6-lane-clear measured
+  shapes:
+  - shape: 7
+    name: GreatSejuTree01:Trunk
+    kind: bark
+    ops:
+      uv_scale:
+        axis: v
+        factor: fit
+    reason: 'bark UV stretched 7.9:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
+      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    before:
+      flags:
+      - Specular
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\madagascarpalm01_n.dds
+      slot2: ''
+      stretch: 7.9
+      lum: 70.5
+      sat: 0.33
+- mesh: meshes/argonia/trees/greguire/jungletree01stump.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 16043A:King of the Murkmire.esp
+  lane: 1.15-r6-lane-clear measured
+  shapes:
+  - shape: 7
+    name: JungleTree01
+    kind: bark
+    ops:
+      uv_scale:
+        axis: v
+        factor: fit
+    reason: 'bark UV stretched 6.4:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
+      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    before:
+      flags:
+      - Specular
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+      slot2: ''
+      stretch: 6.4
+      lum: 37.4
+      sat: 0.13
+- mesh: meshes/argonia/trees/willow05.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 0E67A9:King of the Murkmire.esp
+  lane: 1.15-r6-lane-clear measured
+  shapes:
+  - shape: 5
+    name: jungletree26weeping_1
+    kind: bark
+    ops:
+      uv_scale:
+        axis: v
+        factor: fit
+    reason: 'bark UV stretched 7.0:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
+      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+      slot2: ''
+      stretch: 7.0
+      lum: 62.3
+      sat: 0.2

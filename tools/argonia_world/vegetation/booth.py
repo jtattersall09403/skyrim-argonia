@@ -97,11 +97,12 @@ def journey(rocks: list[dict], src, weather: dict[tuple[int, int], str]) -> str:
                   f" scale {d['scale']:.2f}, bound radius {d['radius']:.0f} u, stand {k_of(d):.0f} u off",
                   f"  # subject: {d['x']:.0f} {d['y']:.0f} {d['z'] + d['height'] / 2:.0f}",
                   "  do:", "  - console:", f"      line: cow {WORLD} {cx} {cy}", "      settle: 60", "  - wait: 8",
-                  "  - console:", f"      line: fw {weather[d['cell']]}", "  - console:", "      line: set gamehour to 12",
+                  "  - console:", "      line: set gamehour to 12",
                   "  - console:", f"      line: player.setpos x {x:.0f}", "  - console:",
                   f"      line: player.setpos y {y:.0f}", "  - console:", f"      line: player.setpos z {z:.0f}",
                   "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
                   f"      line: player.setangle x {pitch:.0f}", "  - wait: 6",
+                  "  - console:", f"      line: fw {weather[d['cell']]}",   # AFTER the teleport and its settle (the new cell's region weather replaces an earlier force); look.booth_standard adds sw + settle
                   "  - console: " + f"prid ArgoniaWorld.esm|0x{d['fid']:06X}",  # the rock ref selected: getpos reads it
                   "  expect:", "  - console: getpos x", "    keep: rock_x", "  - console: getpos y", "    keep: rock_y",
                   "  - console: getpos z", "    keep: rock_z"]

@@ -24,7 +24,8 @@ Per cell and form (seeded by the cell and the form, so a cell rebuilds alone and
   ground; negative is the height above the local water table): on dry ground the depth is minus the height above
   the table, the level of the nearest water (a coarse map, TABLE_STEP samples a tile). A form with no posture is
   dry-land flora: never where there is water.
-- **Road exclusion:** no stem within the traced road's half width plus ROAD_MARGIN_M of its centreline
+- **Road exclusion:** no stem within the traced road's half width plus ROAD_MARGIN_M plus its own reach (OBND half
+  extent x scale, at most ROAD_REACH_CAP_M: a trunk or a bush is a body, not a point; round 6 found one on the lane) of its centreline
   (routes/paint.py's segments), nor in a quad with a painted BC_ROAD or TRACK corner (the imported paint too).
 - **Place exclusion:** no stem inside a built place's footprint: the bounds of its exterior build_refs plus
   PLACE_MARGIN_M.
@@ -59,6 +60,7 @@ TWIST_MAX_M = 0.45  # the two triangulations' half-difference refused above this
 SEAT_HOVER_M = 10 / su.UNITS_PER_METRE
 SEAT_SINK_M = 40 / su.UNITS_PER_METRE
 ROAD_MARGIN_M = 1.5  # beyond the road's half width
+ROAD_REACH_CAP_M = 4.0  # a stem's own reach (Rule.reach_m x scale) added to that margin, to at most this
 PLACE_MARGIN_M = 20.0  # beyond a built place's refs' bounds
 TABLE_STEP = 8  # samples per tile of the water-table map (14.6 m)
 CAP = 400  # refs per cell: the starting budget (2.W4 §a: measured on the GPU instance at L4, owed)
@@ -90,6 +92,7 @@ class Rule:
     sink_m: float = 0.0  # metres at scale 1 the pivot is set below the ground: OBND bottom + sink_frac x height
     upright: float = 0.0  # share of stems that stand upright instead of conforming (vanilla boulders ~26 %, 0034)
     tree: bool = False  # a tree role the tree band counts (lists.BAND_TREE_ROLES)
+    reach_m: float = 0.0  # metres at scale 1 the body spreads from its pivot (OBND, capped ROAD_REACH_CAP_M): the road's clearance
 
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
@@ -243,12 +246,18 @@ class CellInputs:
         return self.south_row - v / s, self.west_col + u / s
 
 
-def excluded(ci: CellInputs, u: np.ndarray, v: np.ndarray, i: np.ndarray, j: np.ndarray) -> np.ndarray:
-    """Road and place exclusion (bool per point)."""
+def road_reach(rule: Rule, scale) -> np.ndarray:
+    """Each stem's body reach (metres) added to the road clearance."""
+    return np.minimum(rule.reach_m * np.asarray(scale, dtype=float), ROAD_REACH_CAP_M)
+
+
+def excluded(ci: CellInputs, u: np.ndarray, v: np.ndarray, i: np.ndarray, j: np.ndarray,
+             reach_m=0.0) -> np.ndarray:
+    """Road and place exclusion (bool per point); reach_m is each stem's own body reach, metres."""
     p = ci.painted
     out = p[i, j] | p[i, j + 1] | p[i + 1, j] | p[i + 1, j + 1]
     pr, pc = ci.grid(u, v)
-    margin = ROAD_MARGIN_M / su.PROVINCE_SAMPLE_M
+    margin = (ROAD_MARGIN_M + reach_m) / su.PROVINCE_SAMPLE_M
     for half, seg in ci.roads:
         out |= seg_dist(pr, pc, seg) < half + margin
     for r0, c0, r1, c1 in ci.footprints:
@@ -286,7 +295,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
         ok &= posture_ok(rule, depth, z - ti)
         idx = np.nonzero(ok)[0]
         if idx.size:
-            idx = idx[~excluded(ci, u[idx], v[idx], i[idx], j[idx])]
+            idx = idx[~excluded(ci, u[idx], v[idx], i[idx], j[idx],
+                                         road_reach(rule, c["scale"][idx]))]
         for k in idx.tolist():  # spacing, first come first kept
             pu, pv = float(u[k]), float(v[k])
             bx, by = int(pu // sep), int(pv // sep)

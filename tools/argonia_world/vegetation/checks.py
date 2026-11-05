@@ -6,7 +6,7 @@ places, the road and the built places.
     slope      the LAND quad's slope inside the form's band; the height inside its band
     water      dry-land flora never over water; every other form's depth (or minus its height above the local
                water table) inside its water posture
-    road       no ref within a traced road's half width of its centreline, nor on a painted road or track sample
+    road       no ref within a traced road's half width plus its own reach (OBND half extent x scale, to 4 m) of its centreline, nor on a painted road or track sample
     places     no ref inside a built place's footprint (its refs' bounds plus the margin)
     budget     no cell over the cap; the counts per region and cell (max, p95)
     ids        every FormID in its cell's reserved slot, none twice
@@ -202,7 +202,8 @@ def run(out: Path, land: Path, water: Path, world=None, src=None, log=print, col
                            for e in (0.0, -POSTURE_TOL_M, POSTURE_TOL_M)):
                     what = "dry-land flora over water" if r.dry_only else "outside its water posture"
                     fails["water"].append(f"{fids[k]:06X} ({cx},{cy}) {b}: {what} (depth {depth[k]:.2f} m)")
-                if on_paint[k] or any(d[k] < half for half, d in road_d):
+                reach = float(place.road_reach(r, refs[k, 6])) / su.PROVINCE_SAMPLE_M  # the stem's own body (round 6)
+                if on_paint[k] or any(d[k] < half + reach for half, d in road_d):
                     fails["road"].append(f"{fids[k]:06X} ({cx},{cy}): on the road")
                 for r0, c0, r1, c1 in feet:
                     if r0 <= pr[k] <= r1 and c0 <= pc[k] <= c1:

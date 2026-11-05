@@ -91,6 +91,18 @@ def test_road_and_place_exclusion():
     assert q["u"].size and not ((qr >= 980) & (qc <= 1016)).any()
 
 
+def test_road_corridor_keeps_a_tree_trunk_off_the_lane():
+    # round 6: a trunk is a body. The centre may sit outside half + margin and the trunk still stand on the lane.
+    seg = np.array([[[1000.0, 1000.0], [1000.0 - 32, 1032.0]]])
+    half = 3.0 / su.PROVINCE_SAMPLE_M
+    big = rule(density_per_ha=300.0, tree=True, reach_m=3.0, scale=(1.0, 1.0))
+    p = place.place_cell(cell(roads=[(half, seg)]), [big])
+    pr, pc = 1000 - p["v"] / su.VERTEX_SPACING_UNITS, 1000 + p["u"] / su.VERTEX_SPACING_UNITS
+    assert p["u"].size
+    assert (place.seg_dist(pr, pc, seg) >= half + (place.ROAD_MARGIN_M + 3.0) / su.PROVINCE_SAMPLE_M).all()
+    assert place.road_reach(rule(reach_m=9.0), [2.0])[0] == place.ROAD_REACH_CAP_M  # capped
+
+
 def test_budget_threshold_holds_the_cap():
     t = np.random.default_rng(1).random(900)
     k = place.keep_value(place.threshold(t, 400))

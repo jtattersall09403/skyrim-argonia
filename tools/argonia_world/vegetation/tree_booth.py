@@ -49,11 +49,12 @@ def _steps(name: str, note: str, d: dict, x: float, y: float, z: float, h: float
     cx, cy = d["cell"]
     subj = [f"  # subject: {d['x']:.0f} {d['y']:.0f} {d['z'] + d['seat'] * d['scale']:.0f}"] if pitch else []
     return [f"- name: {name}", f"  # {note}", *subj, "  do:", "  - console:", f"      line: cow {booth.WORLD} {cx} {cy}",
-            "      settle: 60", "  - wait: 8", "  - console:", f"      line: fw {wx}", "  - console:",
+            "      settle: 60", "  - wait: 8", "  - console:",
             "      line: set gamehour to 12", "  - console:", f"      line: player.setpos x {x:.0f}", "  - console:",
             f"      line: player.setpos y {y:.0f}", "  - console:", f"      line: player.setpos z {z:.0f}",
             "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
-            f"      line: player.setangle x {pitch:.0f}", "  - wait: 6"]
+            f"      line: player.setangle x {pitch:.0f}", "  - wait: 6",
+            "  - console:", f"      line: fw {wx}"]   # AFTER the teleport and its settle (the region weather replaces an earlier force)
 
 
 def journey(six: list[dict], classes: list[dict], src, weather: dict) -> str:

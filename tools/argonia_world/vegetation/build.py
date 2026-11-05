@@ -43,6 +43,10 @@ def load_rules(w) -> dict[str, list[Rule]]:
                              "FROM vegetation_form v JOIN object_form f USING (form_key)")}
     upright = {r["form_key"]: lists.upright_share(r["sink_frac"]) for r in w.query("SELECT * FROM vegetation_form")}
     tree = {r["form_key"]: r["role_id"] in lists.BAND_TREE_ROLES for r in w.query("SELECT form_key, role_id FROM object_form")}
+    reach = {r["form_key"]: min(max(abs(r["bound_x0"]), abs(r["bound_x1"]), abs(r["bound_y0"]), abs(r["bound_y1"]))
+                                / su.UNITS_PER_METRE, place.ROAD_REACH_CAP_M)
+             for r in w.query("SELECT form_key, bound_x0, bound_x1, bound_y0, bound_y1 FROM object_form "
+                              "WHERE role_id <> 'rock' AND bound_x1 IS NOT NULL")}
     out: dict[str, list[Rule]] = defaultdict(list)
     for r in w.query("SELECT * FROM land_region_object ORDER BY land_region_id, form_key"):
         if r["form_key"] not in scale:
@@ -51,7 +55,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
             r["form_key"], r["density_per_ha"], r["clustering"], r["radius_m"], r["min_slope_deg"],
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
             bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]],
-            tree.get(r["form_key"], False)))
+            tree.get(r["form_key"], False), reach.get(r["form_key"], 0.0)))
     return dict(out)
 
 
@@ -98,7 +102,7 @@ def road_segments(world) -> list[tuple[float, np.ndarray, np.ndarray]]:
 
 
 def roads_near(segs, r0, c0, r1, c1):
-    margin = place.ROAD_MARGIN_M / su.PROVINCE_SAMPLE_M
+    margin = (place.ROAD_MARGIN_M + place.ROAD_REACH_CAP_M) / su.PROVINCE_SAMPLE_M
     out = []
     for half, seg, bb in segs:
         reach = half + margin + 1
