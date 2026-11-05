@@ -10,7 +10,7 @@ the game machine, with exact undo.
   stack.py plan [--dev]                       what stage would unpack and the room it needs (JSON)
   stack.py push                               send changed mod folders and the profile to C:\\argonia\\MO2 on the machine
   stack.py install [--dev] [--skip-fetch]     fetch, stage, push, then on the machine: stack.ps1 off (bare Data), Pandora,
-                                              the animation-data patch, and the main-menu check
+                                              the animation-data patch (no game launch: agents never run it)
   stack.py animdata                           after Pandora: the root motion its animation data lacks (animdata.py)
   stack.py menu                               launch through SKSE, wait for the main menu, list each DLL's load
   stack.py verify [--full]                    archives against the manifest; every laid file in Data against installed.json
@@ -989,7 +989,7 @@ def cmd_install(a):
     os.environ["DESKTOP_WAIT"] = "2000"  # Pandora (900 s at most)
     print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
     cmd_animdata(a)
-    cmd_menu(a)
+    # No main-menu launch here: agents never run the game (owner, 2026-11-05); the laid files are checked by reading.
 
 
 ANIMDATA = r"meshes\animationdatasinglefile.txt"
