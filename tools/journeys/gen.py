@@ -1117,21 +1117,24 @@ def panel_clear(b: Build, vid: str, x: float, y: float, yaw: float, log: list, w
 
 # -- world-panel: every vantage aimed by the clearance measure and a horizon rule (lane 1.15-r6-panel-stands) -----------
 PANEL_UPPER_MAX = 0.30     # the horizon rule: plant cover of the frame above the aim under 30 % (sky or far land up there)
-PANEL_AIM_MOVE_M, PANEL_AIM_STEP_M = 30.0, 3.0   # no heading at the marker passes: the dry stand within 30 m, 3 m grid
+PANEL_FOREST_UPPER_MAX, PANEL_FOREST_NEAR_MAX = 0.70, 0.10   # tier 3: canopy accepted (a forest class's character IS canopy)
+PANEL_AIM_MOVE_M, PANEL_AIM_FAR_M, PANEL_AIM_STEP_M = 30.0, 60.0, 3.0   # tiers 1 and 2: the dry stand within 30 m, 60 m
 PANEL_HEADING_DEG = 15
 
 
 def panel_score(b: Build, x: float, y: float, h: float) -> dict:
-    """The aim's numbers at a stand: plants on the eye line (60 m) and canopy (clearance), tall grass on the first 20 m,
-    the frustum cover of the upper half of the frame, the placed statics at the stand or on the first 3 m of the line."""
+    """The aim's numbers at a stand: plants on the eye line (60 m) and canopy (clearance), the line to 20 m, tall grass
+    on the first 20 m, the frustum cover (upper half of the frame; near field 0-10 m), the placed statics."""
     from tools.journeys import grass_hits, static_hits
     eye = eye_of(b, x, y)
     a = math.radians(h)
     subj = (eye[0] + math.sin(a) * 15 * U, eye[1] + math.cos(a) * 15 * U, eye[2])
     line, canopy = clearance(b, eye, h)
     st = static_hits(b, x, y, subj)
-    return {"line": line, "canopy": canopy, "grass": grass_hits(b, eye, h, line_m=20.0),
-            "upper": frustum_cover(b, eye, h, 0.0)["upper"], "static": len(st["stand"]) + len(st["aim"])}
+    fc = frustum_cover(b, eye, h, 0.0)
+    return {"line": line, "canopy": canopy, "line20": clearance(b, eye, h, line_m=20.0)[0],
+            "grass": grass_hits(b, eye, h, line_m=20.0), "upper": fc["upper"], "near": fc["near"],
+            "static": len(st["stand"]) + len(st["aim"])}
 
 
 def panel_pass(s: dict) -> bool:
@@ -1139,9 +1142,20 @@ def panel_pass(s: dict) -> bool:
     return not (s["line"] or s["canopy"] or s["static"]) and s["upper"] < PANEL_UPPER_MAX
 
 
+def panel_forest_pass(s: dict) -> bool:
+    """Tier 3: no plant on the eye line to 20 m (so no trunk face within 3 m), near field 0-10 m under 10 %, the upper
+    cover capped only at 70 %, no static."""
+    return (not (s.get("line20", s["line"]) or s["static"]) and s.get("near", 0.0) < PANEL_FOREST_NEAR_MAX
+            and s["upper"] <= PANEL_FOREST_UPPER_MAX)
+
+
 def _panel_key(s: dict) -> tuple:
     return (s["static"] > 0, s["line"] + s["canopy"] > 0, s["upper"] >= PANEL_UPPER_MAX,
             s["line"] + s["canopy"], s["upper"], s["grass"])
+
+
+def _forest_key(s: dict) -> tuple:
+    return (s.get("near", 0.0), s["upper"], s["grass"])
 
 
 def panel_headings(yaw: float) -> list[float]:
@@ -1151,49 +1165,77 @@ def panel_headings(yaw: float) -> list[float]:
 
 def panel_aim(b: Build, vid: str, x: float, y: float, yaw: float, log: list, score=None, wet=None, ok_stand=None,
               want_water=None) -> tuple[float, float, float, float]:
-    """(x, y, yaw, moved_m): the marker's own stand with the first heading (nearest the authored one) that passes
-    panel_pass; when none does, the stand within PANEL_AIM_MOVE_M on dry, standable ground (nearest first) that has one;
-    else the least-bad aim at the marker's stand. Printed and logged per vantage. `score`, `wet`, `ok_stand`
-    stand in for the measures in tests; `want_water(x, y, h)` keeps a shore vantage facing water."""
+    """(x, y, yaw, moved_m). Tiers: (1) the marker's stand, else the dry standable stand within PANEL_AIM_MOVE_M, with the
+    first heading (nearest the authored one) that passes panel_pass; (2) the same out to PANEL_AIM_FAR_M; (3) the best
+    heading at the marker or within PANEL_AIM_MOVE_M that passes panel_forest_pass (lowest near cover, then upper):
+    "forest vantage: canopy accepted"; else the least-bad aim at the marker's stand (WARNING). Printed and logged per
+    vantage. `score`, `wet`, `ok_stand` stand in for the measures in tests; `want_water(x, y, h)` keeps a shore vantage
+    facing water."""
     score = score or (lambda px, py, h: panel_score(b, px, py, h))
     wet = wet or (lambda px, py: b.soaked(px, py) or b.wet(px, py))
     ok_stand = ok_stand or (lambda px, py: not stand_bad(b, px, py, (px + 15 * U, py, eye_of(b, px, py)[2])))
     want_water = want_water or (lambda px, py, h: True)
+    cache: dict = {}
 
-    def search(px, py):
+    def sc(px, py, h):
+        k = (round(px), round(py), round(h))
+        if k not in cache:
+            cache[k] = score(px, py, h)
+        return cache[k]
+
+    def search(px, py, passes, key):
         best = None
         for need in (True, False):
             for h in panel_headings(yaw):
                 if need and not want_water(px, py, h):
                     continue
-                s = score(px, py, h)
-                if panel_pass(s):
+                s = sc(px, py, h)
+                if passes(s):
                     return h, s, True
-                if best is None or _panel_key(s) < _panel_key(best[1]):
+                if best is None or key(s) < key(best[1]):
                     best = (h, s, False)
-            if best and need and best[2]:
-                break
         return best
-    h, s, ok = search(x, y)
-    moved = 0.0
-    if not ok:
-        n = int(PANEL_AIM_MOVE_M / PANEL_AIM_STEP_M)
-        for i, j in sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1) if math.hypot(i, j) <= n and (i or j)),
-                           key=lambda c: c[0] ** 2 + c[1] ** 2):
+
+    def stands(reach):
+        n = int(reach / PANEL_AIM_STEP_M)
+        for i, j in sorted(((i, j) for i in range(-n, n + 1) for j in range(-n, n + 1)
+                            if math.hypot(i, j) <= n and (i or j)), key=lambda c: c[0] ** 2 + c[1] ** 2):
             px, py = x + i * PANEL_AIM_STEP_M * U, y + j * PANEL_AIM_STEP_M * U
-            if wet(px, py) or not ok_stand(px, py):
-                continue
-            r = search(px, py)
+            if not (wet(px, py) or not ok_stand(px, py)):
+                yield px, py, round(math.hypot(i, j) * PANEL_AIM_STEP_M, 1)
+
+    def tier(passes, key, reach):
+        r = search(x, y, passes, key)
+        if r and r[2]:
+            return r[0], r[1], x, y, 0.0
+        for px, py, m in stands(reach):
+            r = search(px, py, passes, key)
             if r and r[2]:
-                h, s, ok = r
-                moved = round(math.hypot(i, j) * PANEL_AIM_STEP_M, 1)
-                x, y = px, py
-                break
-    print(f"world-panel: {vid}: aim {h:.0f} (marker {yaw:.0f}) line {s['line']} canopy {s['canopy']} grass {s['grass']} "
-          f"upper cover {s['upper']:.1%} static {s['static']}, stand moved {moved} m{'' if ok else ' WARNING: no heading passes'}")
-    log.append({"journey": "world-panel", "step": vid, "moved_m": moved, "clear": ok,
-                "why": f"aim {yaw:.0f} -> {h:.0f}: line {s['line']} canopy {s['canopy']} grass {s['grass']} upper {s['upper']:.1%}"})
-    return x, y, h, moved
+                return r[0], r[1], px, py, m
+        return None
+
+    res = None
+    for t, (passes, key, reach) in enumerate(((panel_pass, _panel_key, PANEL_AIM_MOVE_M),
+                                               (panel_pass, _panel_key, PANEL_AIM_FAR_M),
+                                               (panel_forest_pass, _forest_key, PANEL_AIM_MOVE_M)), 1):
+        res = tier(passes, key, reach)
+        if res:
+            break
+    if res:
+        h, s, nx, ny, moved = res
+        note = "forest vantage: canopy accepted" if t == 3 else ""
+        ok = True
+    else:
+        t = 0
+        h, s, ok = search(x, y, panel_pass, _panel_key)
+        nx, ny, moved, note = x, y, 0.0, "WARNING: no heading passes"
+    print(f"world-panel: {vid}: tier {t} aim {h:.0f} (marker {yaw:.0f}) line {s['line']} canopy {s['canopy']} "
+          f"grass {s['grass']} upper cover {s['upper']:.1%} near {s.get('near', 0.0):.1%} static {s['static']}, "
+          f"stand moved {moved} m {note}")
+    log.append({"journey": "world-panel", "step": vid, "moved_m": moved, "clear": ok, "tier": t,
+                "why": f"tier {t} aim {yaw:.0f} -> {h:.0f}: line {s['line']} canopy {s['canopy']} grass {s['grass']} "
+                       f"upper {s['upper']:.1%} {note}".strip()})
+    return nx, ny, h, moved
 
 
 # -- sky-ab: the world panel's two sky vantages, bounds from the markers --------------------------------------------------

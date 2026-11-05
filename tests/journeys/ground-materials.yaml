@@ -15,18 +15,18 @@ camera: first
 steps:
   - name: pebble-field
     scan: 6
-    # cell -9 27: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 33 bad 0, 8.0 m to the subject, heading 330 pitch 14
-    # subject: -32575 114321 209
+    # cell -9 27: the dry patch nearest its middle with a clear stand 8-15 m off; line 0 canopy 0 grass 34 bad 0, 8.0 m to the subject, heading 0 pitch 14
+    # subject: -32575 113760 208
     do:
       - hud: off
       - console: {line: cow ARG_Province -9 27, settle: 60}
       - wait: 8
       - console: set gamehour to 13
-      - console: player.setpos x -32295
-      - console: player.setpos y 113836
+      - console: player.setpos x -32575
+      - console: player.setpos y 113200
       - console: player.setpos z 224
       - wait: 6
-      - console: player.setangle z 330
+      - console: player.setangle z 0
       - console: player.setangle x 14
       - console: player.setangle y 0
       - wait: 4

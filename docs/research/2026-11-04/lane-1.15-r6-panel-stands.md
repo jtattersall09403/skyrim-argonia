@@ -7,3 +7,5 @@
 - Rootland-shore: best aim 20, line 10 canopy 19 (a wall of trunks and crowns within 30 m); needs a wider search or a ruling that these classes are read as forest.
 - Structure kept: two vantages per class, noon and dawn, `scan: 6`, records reach. A reader-named aim override that the move invalidated (sky-ab coastal-lagoon-shore-noon) was dropped by the existing 5 m rule.
 - Tests: `test_panel_aim_horizon_rule_turns_then_moves`. Open: widen PANEL_AIM_MOVE_M for the 12, or relax canopy for them.
+- Planner ruling (forest canopy is the class's character): tiers 1 strict within 30 m, 2 strict within 60 m, 3 forest vantage (line 0 to 20 m, near field under 10 %, upper cover at most 70 %, "canopy accepted"); `frustum_cover` regions capped at 100 % (MEASURE_VERSION 3).
+- Result of 18 vantages: tier 1 = 7, tier 2 = 4, tier 3 = 1 (deep-river-corridor-shore), none = 6 (deep-river-corridor-high, deep-sink-basin-shore, flooded-forest-shore, interior-swamp-shore, rootland-shore, tidal-delta-shore: trunks on the line or near cover over 10 % at every heading within 30 m).

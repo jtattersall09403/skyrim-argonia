@@ -183,13 +183,13 @@ steps:
   - console:
       line: player.setpos x 57534
   - console:
-      line: player.setpos y 118843
+      line: player.setpos y 119123
   - console:
       line: player.setpos z 40
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 21
+      line: player.setangle x 46
   - console:
       line: player.setangle y 0
   - wait: 6

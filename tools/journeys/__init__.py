@@ -964,7 +964,8 @@ def frustum_cover(b: Build, eye: tuple, heading: float, pitch: float = 0.0) -> d
             dn, w, v0, v1 = rect(px, py, s / 2, gz, gz + h * u)
             if w:
                 grass += w * _span(-FRUSTUM_V_DEG, FRUSTUM_V_DEG, v0, v1) / (W * H)
-    return {"near": near, "upper": upper, "all": allc, "grass": grass, "nearest_m": nearest}
+    cap = lambda v: min(v, 1.0)   # overlaps sum: a region of the frame is at most wholly covered (lane 1.15-r6-panel-stands)
+    return {"near": cap(near), "upper": cap(upper), "all": cap(allc), "grass": cap(grass), "nearest_m": nearest}
 
 
 def cover_ok(fc: dict, sea: bool = False) -> bool:

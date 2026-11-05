@@ -10,7 +10,7 @@
 {
  "id": "world-panel",
  "look": "world",
- "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonHigh", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelDeepRiverCorridorHigh", "records: ref ARG_Ref_PanelDeepRiverCorridorShore", "records: ref ARG_Ref_PanelDeepSinkBasinHigh", "records: ref ARG_Ref_PanelDeepSinkBasinShore", "records: ref ARG_Ref_PanelFloodedForestHigh", "records: ref ARG_Ref_PanelFloodedForestShore", "records: ref ARG_Ref_PanelInteriorSwampHigh", "records: ref ARG_Ref_PanelInteriorSwampShore", "records: ref ARG_Ref_PanelNorthernTransitionHigh", "records: ref ARG_Ref_PanelNorthernTransitionShore", "records: ref ARG_Ref_PanelRootlandHigh", "records: ref ARG_Ref_PanelRootlandShore", "records: ref ARG_Ref_PanelTidalDeltaHigh", "records: ref ARG_Ref_PanelTidalDeltaShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: ref ARG_Ref_PanelWesternFrontierShore", "records: cell -59,-16 r1", "records: cell -52,35 r1", "records: cell -51,35 r1", "records: cell -43,60 r1", "records: cell -42,60 r1", "records: cell -40,53 r1", "records: cell -39,13 r1", "records: cell -30,-36 r1", "records: cell -28,-34 r1", "records: cell -22,-7 r1", "records: cell -22,-6 r1", "records: cell -17,-8 r1", "records: cell -16,-31 r1", "records: cell -16,-3 r1", "records: cell -2,6 r1", "records: cell -1,55 r1", "records: cell 9,48 r1", "records: cell 25,-12 r1", "records: cell 26,-17 r1", "records: cell 26,-16 r1", "records: cell 26,-15 r1", "records: cell 44,44 r1"],
+ "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonHigh", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelDeepRiverCorridorHigh", "records: ref ARG_Ref_PanelDeepRiverCorridorShore", "records: ref ARG_Ref_PanelDeepSinkBasinHigh", "records: ref ARG_Ref_PanelDeepSinkBasinShore", "records: ref ARG_Ref_PanelFloodedForestHigh", "records: ref ARG_Ref_PanelFloodedForestShore", "records: ref ARG_Ref_PanelInteriorSwampHigh", "records: ref ARG_Ref_PanelInteriorSwampShore", "records: ref ARG_Ref_PanelNorthernTransitionHigh", "records: ref ARG_Ref_PanelNorthernTransitionShore", "records: ref ARG_Ref_PanelRootlandHigh", "records: ref ARG_Ref_PanelRootlandShore", "records: ref ARG_Ref_PanelTidalDeltaHigh", "records: ref ARG_Ref_PanelTidalDeltaShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: ref ARG_Ref_PanelWesternFrontierShore", "records: cell -59,-16 r1", "records: cell -52,35 r1", "records: cell -51,35 r1", "records: cell -43,60 r1", "records: cell -42,60 r1", "records: cell -41,52 r1", "records: cell -40,53 r1", "records: cell -39,13 r1", "records: cell -30,-36 r1", "records: cell -28,-34 r1", "records: cell -22,-7 r1", "records: cell -22,-6 r1", "records: cell -17,-8 r1", "records: cell -16,-31 r1", "records: cell -16,-3 r1", "records: cell -2,6 r1", "records: cell -1,54 r1", "records: cell -1,55 r1", "records: cell 9,48 r1", "records: cell 25,-12 r1", "records: cell 26,-17 r1", "records: cell 26,-16 r1", "records: cell 26,-15 r1", "records: cell 43,45 r1", "records: cell 44,44 r1"],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
@@ -368,7 +368,7 @@
      }
     },
     {
-     "console": "player.setangle z 343"
+     "console": "player.setangle z 328"
     },
     {
      "console": "player.setangle x 0"
@@ -449,7 +449,7 @@
      }
     },
     {
-     "console": "player.setangle z 343"
+     "console": "player.setangle z 328"
     },
     {
      "console": "player.setangle x 0"
@@ -854,7 +854,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -888,28 +888,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -163860
+     "gt": -165331
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -163260
+     "lt": -164731
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 218324
+     "gt": 215803
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 218924
+     "lt": 216403
     },
     {
      "read": [
@@ -935,7 +935,7 @@
      }
     },
     {
-     "console": "player.setangle z 135"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -969,28 +969,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -163860
+     "gt": -165331
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -163260
+     "lt": -164731
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 218324
+     "gt": 215803
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 218924
+     "lt": 216403
     },
     {
      "read": [
@@ -1502,7 +1502,7 @@
      }
     },
     {
-     "console": "player.setangle z 120"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -1536,28 +1536,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 180064
+     "gt": 177963
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 180664
+     "lt": 178563
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 183740
+     "gt": 184790
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 184340
+     "lt": 185390
     },
     {
      "read": [
@@ -1583,7 +1583,7 @@
      }
     },
     {
-     "console": "player.setangle z 120"
+     "console": "player.setangle z 345"
     },
     {
      "console": "player.setangle x 0"
@@ -1617,28 +1617,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 180064
+     "gt": 177963
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 180664
+     "lt": 178563
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 183740
+     "gt": 184790
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 184340
+     "lt": 185390
     },
     {
      "read": [
@@ -1664,7 +1664,7 @@
      }
     },
     {
-     "console": "player.setangle z 13"
+     "console": "player.setangle z 163"
     },
     {
      "console": "player.setangle x 0"
@@ -1698,28 +1698,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -1128
+     "gt": -1548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -528
+     "lt": -948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 227216
+     "gt": 224905
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227816
+     "lt": 225505
     },
     {
      "read": [
@@ -1745,7 +1745,7 @@
      }
     },
     {
-     "console": "player.setangle z 13"
+     "console": "player.setangle z 163"
     },
     {
      "console": "player.setangle x 0"
@@ -1779,28 +1779,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -1128
+     "gt": -1548
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -528
+     "lt": -948
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 227216
+     "gt": 224905
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 227816
+     "lt": 225505
     },
     {
      "read": [
@@ -2474,7 +2474,7 @@
      }
     },
     {
-     "console": "player.setangle z 75"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -2508,28 +2508,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106196
+     "gt": 106406
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 106796
+     "lt": 107006
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -57748
+     "gt": -60269
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -57148
+     "lt": -59669
     },
     {
      "read": [
@@ -2555,7 +2555,7 @@
      }
     },
     {
-     "console": "player.setangle z 75"
+     "console": "player.setangle z 135"
     },
     {
      "console": "player.setangle x 0"
@@ -2589,28 +2589,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 106196
+     "gt": 106406
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 106796
+     "lt": 107006
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -57748
+     "gt": -60269
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -57148
+     "lt": -59669
     },
     {
      "read": [

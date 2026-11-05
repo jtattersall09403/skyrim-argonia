@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "out" / "journeys-cache"
-MEASURE_VERSION = 2   # 2: canopy radii (data/canopy-radius.json) widen the plant shapes
+MEASURE_VERSION = 3   # 2: canopy radii widen the plant shapes; 3: frustum cover capped at 100 % per region
 READS_DB = ("object_form", "ltex_grass")   # plant bounds (Build.shapes) and the landscape textures' grass (ltex_grass_heights)
 ROUND = 4          # key arguments rounded to 0.1 mm (units are 1/70 m: finer than any search step)
 KEEP_DAYS = 3

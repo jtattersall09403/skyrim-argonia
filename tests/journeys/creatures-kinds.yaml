@@ -116,13 +116,13 @@ steps:
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_probe_entry_kinds}
 - name: guar-pen
   # Claywater Station's pen (the pen markers 22.8 m east of the centre): both kept guar
-  # subject: -231228 47914 4902
+  # subject: -229967 46738 4902
   do:
   - console: {line: cow ARG_Province -57 11, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -231228
-  - console: player.setpos y 47354
+  - console: player.setpos x -229967
+  - console: player.setpos y 46178
   - console: player.setpos z 4848
   - wait: 6
   expect:
