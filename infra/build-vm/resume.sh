@@ -2,7 +2,8 @@
 # Run once at every boot by argonia-resume.service (chunk 0.0 §a). Opens tmux session `argonia` in the repo and
 # decides what Claude Code does there, from the clean-stop marker:
 #
-#   no marker                    the machine stopped mid-task (spot reclaim, manual stop): resume the work
+#   no marker, work was live     the machine stopped mid-task (Claude Code died, a manual stop while working): resume
+#   no marker, nothing for 15 min the machine stopped while idle (the CloudWatch CPU alarm, a manual stop): as marker
 #   marker + a new owner comment woken by a reply: read the owner's comments and act on them
 #   marker, nothing new          the owner started the machine: Claude waits at its prompt, nothing resumes
 #
@@ -32,9 +33,25 @@ if [ $DRY = 0 ] && tmux has-session -t argonia 2>/dev/null; then exit 0; fi
 
 CLAUDE="claude --permission-mode auto"
 mode=idle
+# No marker is not proof of an interrupted task: the CloudWatch backstop alarm (an hour under 3% CPU) and a manual
+# stop from the console write none (2026-11-05 19:31: an idle stop by the alarm read as a cut-off). The build VM is
+# on demand (0008), so there are no spot reclaims. Work counts as live only if a transcript or a job log was written
+# within 15 minutes of the previous boot's end; otherwise the stop was idle and is treated as a clean one.
 if [ ! -f "$STATE/clean-stop" ]; then
-  mode=resume
-else
+  # the previous boot's last entry: "... Thu 2026-11-05 19:31:48 UTC" -> "2026-11-05 19:31:48"
+  prev_end=$(journalctl --list-boots --no-pager 2>/dev/null | tail -2 | head -1 | awk '{print $(NF-2)" "$(NF-1)}')
+  pe=$(date -u -d "$prev_end" +%s 2>/dev/null || echo 0)
+  newest=$(find "$HOME/.claude/projects" "$HOME/.argonia/jobs" -type f \( -name '*.jsonl' -o -name '*.log' \) -printf '%T@\n' 2>/dev/null | cut -d. -f1 | awk -v pe="$pe" '$1 <= pe' | sort -n | tail -1)
+  if [ "$pe" -gt 0 ] && [ -n "$newest" ] && [ $(( pe - newest )) -gt 900 ]; then
+    idle_min=$(( (pe - newest) / 60 ))
+    [ $DRY = 1 ] && echo "previous stop: idle for $idle_min min before it (no marker)"
+    [ $DRY = 1 ] || printf '{"at": "%s", "reason": "stopped while idle (no activity for %s min before the stop)"}\n' \
+      "$(date -u -d "@$newest" +%FT%TZ)" "$idle_min" > "$STATE/clean-stop"
+  else
+    mode=resume
+  fi
+fi
+if [ -f "$STATE/clean-stop" ] && [ "$mode" != resume ]; then
   since=$(python3 -I -c 'import json,sys; print(json.load(open(sys.argv[1]))["at"])' "$STATE/clean-stop" 2>/dev/null || echo "")
   # Wait briefly for the network, then look for owner comments on owner issues since the stop.
   for _ in 1 2 3 4 5 6; do gh api rate_limit >/dev/null 2>&1 && break; sleep 5; done
