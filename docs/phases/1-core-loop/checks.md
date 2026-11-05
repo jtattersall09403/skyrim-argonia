@@ -171,6 +171,8 @@ owner-brief date. The mapping from each brief's acceptance lines is in `docs/res
 | The ford ambusher wears his outfit (08-ford-ambush-road-s3/s4: bare-chested, skin-grey, a sword), and the ambush still is taken before combat (the enemy health bar and the crosshair are the combat HUD, not a HUD-off fault) | round-6 claywater-look reader | L1, L4 | owed | the people lane (1.3) with the journey's stop order |
 | No blown-out white cleats on Claywater's jetty (10-signs-full-body-s0: two bollards glow white) and the raft floats at its freeboard, not at the waterline (10-signs-full-body-s1) | round-6 claywater-look reader | L1, L4 | owed | the Claywater water lane (pads with freeboard) |
 | No dark blob in the sky over the ford (08-ford-ambush-road-s1: a grey-red blob in the sky, a marker or a leftover mesh?) | round-6 claywater-look reader | L4 | owed | identify from the still and the cell's refs |
+| Claywater's look stops stand outside the station's walls and show their subjects (round-6 second reader: 03-station-house-front, 04-huts-row and 05-family-hut frames filled by one wall texture, the camera under a floor; the stands never moved when the pads were re-seated): the journey derived from the place's refs with a placed-static clearance | round-6 claywater-look reader 2 | L1, L4 | owed | lane 1.15-r6-claywater-look-derived |
+| Claywater's pad reads as packed earth with a soft edge, not a white slab with hard straight edges (02-well-junction-s0 and the ford stills); no plank floats (04-huts-row-s0, 05-family-hut-s0); no post through the pen's guar (02-well-junction-s0); no striped post (02-well-junction-s3) | round-6 claywater-look readers | L1, L4 | owed | lane 1.15-r6-claywater-pads-look |
 
 ## 1.8 A play machine you can rely on
 
