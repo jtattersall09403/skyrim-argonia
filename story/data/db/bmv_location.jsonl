@@ -1,0 +1,7 @@
+{"id":"018EE8:Skyrim.esm","editor_id":"BlackreachLocation","name":"Blackreach","parent":"01676B:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"019152:Skyrim.esm","editor_id":"BthardamzLocation","name":"Bthardamz","parent":"016769:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"019159:Skyrim.esm","editor_id":"CragslaneCavernLocation","name":"Cragslane Cavern","parent":"01676A:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"019281:Skyrim.esm","editor_id":"MzulftLocation","name":"Mzulft","parent":"01676A:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"019283:Skyrim.esm","editor_id":"NchuandZelLocation","name":"Nchuand-Zel","parent":"016769:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"05254C:Skyrim.esm","editor_id":"AbandonedShackInteriorLocation","name":"Abandoned Shack","parent":"05254B:Skyrim.esm","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"07B91A:Skyrim.esm","editor_id":"DaintySloadLocation","name":"Dainty Sload","parent":"016770:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}

@@ -1,0 +1,84 @@
+{"id":"000013:Skyrim.esm","editor_id":"CreatureFaction","name":"Creature Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"000DB1:Skyrim.esm","editor_id":"PlayerFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"003375:Dawnguard.esm","editor_id":"DLC1HunterFaction","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"007A66:Dawnguard.esm","editor_id":"SoulCairnFaction","name":"Soul Cairn Faction","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"011BE2:Dawnguard.esm","editor_id":"DLC1UndeadGuardianFaction","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"017964:Dragonborn.esm","editor_id":"DLC2ExpSpiderFriendFaction","name":"Exploding Spider Faction","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"018C4F:Dawnguard.esm","editor_id":"DLC1VampireCompanionFaction","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"01BCC0:Skyrim.esm","editor_id":"BanditFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01C1EE:Skyrim.esm","editor_id":"ProtectedFaction","name":"Faction for protected actors","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01C4ED:Skyrim.esm","editor_id":"DA03BarbasFaction","name":"BarbasFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01C9FC:Skyrim.esm","editor_id":"CWImperialFactionNPC","name":"NPC faction (creates hostility to enemy)","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01D9C9:Dragonborn.esm","editor_id":"DLC2RieklingFaction","name":"Riekling","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"01EEC4:Dragonborn.esm","editor_id":"DLC2DremoraMerchantFaction","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"02430D:Skyrim.esm","editor_id":"DraugrFaction","name":"Draugr Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02507C:Dragonborn.esm","editor_id":"DLC2NetchFaction","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"026724:Skyrim.esm","editor_id":"WarlockFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0267E3:Skyrim.esm","editor_id":"CrimeFactionEastmarch","name":"Eastmarch","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02816B:Skyrim.esm","editor_id":"CrimeFactionRift","name":"The Rift","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"028173:Skyrim.esm","editor_id":"TownWindhelmFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"028185:Skyrim.esm","editor_id":"TownIvarsteadFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"028848:Skyrim.esm","editor_id":"CrimeFactionImperial","name":"Imperial Legion","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02997E:Skyrim.esm","editor_id":"FalmerFaction","name":"Falmer","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02997F:Skyrim.esm","editor_id":"SpiderFaction","name":"Spiders","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"029DB0:Skyrim.esm","editor_id":"CrimeFactionHaafingar","name":"Haafingar","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02B0E5:Skyrim.esm","editor_id":"DaedraFaction","name":"Daedra","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02B0F2:Dragonborn.esm","editor_id":"DLC2BenthicLurkerFaction","name":"Benthic Lurker Faction","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"02BC5E:Dragonborn.esm","editor_id":"DLC2ApocryphaFaction","name":"allied apocrypha creatures","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"02BE3B:Skyrim.esm","editor_id":"GuardDialogueFaction","name":"Guard Faction (for dialogue)","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02BF9A:Skyrim.esm","editor_id":"CWImperialFaction","name":"Imperial Legion","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02D1DF:Skyrim.esm","editor_id":"SkeletonFaction","name":"Skeleton Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02E893:Skyrim.esm","editor_id":"PredatorFaction","name":"Predator Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02E894:Skyrim.esm","editor_id":"PreyFaction","name":"Prey Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"02EBEE:Skyrim.esm","editor_id":"GuardFactionSolitude","name":"Dialogue Faction for Falkreath Hold Guards","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"032D9C:Skyrim.esm","editor_id":"DragonFaction","name":"Dragon Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0330B1:Skyrim.esm","editor_id":"SkeeverFaction","name":"Skeever Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0397E3:Dragonborn.esm","editor_id":"DLC2ApoTentacleNoHitFaction","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"039F26:Skyrim.esm","editor_id":"ThalmorFaction","name":"Thalmor","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03C9A8:Skyrim.esm","editor_id":"ChaurusFaction","name":"Chaurus Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03E093:Skyrim.esm","editor_id":"SprigganPredatorFaction","name":"Spriggan Predator Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03E095:Skyrim.esm","editor_id":"SprigganPreyFaction","name":"Spriggan Prey Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03E096:Skyrim.esm","editor_id":"WispFaction","name":"Wisp Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03E691:Skyrim.esm","editor_id":"WolfFaction","name":"Wolf Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"040858:Black Marsh.esm","editor_id":"01faction","name":"Prisoners Faction","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"040859:Black Marsh.esm","editor_id":"01faction2","name":"Prisoners Faction","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"0418EA:Skyrim.esm","editor_id":"SlaughterfishFaction","name":"Slaughterfish Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"043594:Skyrim.esm","editor_id":"WerewolfFaction","name":"Werewolf Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"043596:Skyrim.esm","editor_id":"DogFaction","name":"Dog Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"043597:Skyrim.esm","editor_id":"DremoraFaction","name":"Dremora Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"043598:Skyrim.esm","editor_id":"DwarvenAutomatonFaction","name":"Dwarven Automaton Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04359A:Skyrim.esm","editor_id":"GiantFaction","name":"Giant Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04359B:Skyrim.esm","editor_id":"MammothFaction","name":"Mammoth Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04359D:Skyrim.esm","editor_id":"GoatFaction","name":"Goat Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04359E:Skyrim.esm","editor_id":"HagravenFaction","name":"Hagraven Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04359F:Skyrim.esm","editor_id":"HorkerFaction","name":"Horker Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0435A0:Skyrim.esm","editor_id":"IceWraithFaction","name":"Ice Wraith Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0435A1:Skyrim.esm","editor_id":"TrollFaction","name":"Troll Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0435A2:Skyrim.esm","editor_id":"SabreCatFaction","name":"Sabre Cat Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04C446:Skyrim.esm","editor_id":"MarkarthStablesFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"04E849:Skyrim.esm","editor_id":"FarmAnimalsFaction","name":"FarmAnimalsFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"05091D:Skyrim.esm","editor_id":"JobBlacksmithFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"051596:Skyrim.esm","editor_id":"JobMerchantFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"05C84E:Skyrim.esm","editor_id":"CurrentFollowerFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"06491A:Skyrim.esm","editor_id":"MQ101ImperialDialogueFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"068D78:Skyrim.esm","editor_id":"PlayerHorseFaction","name":"Player Horse Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"06B18C:Skyrim.esm","editor_id":"CWDialogueSoldierFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"079816:Black Marsh.esm","editor_id":"01merrchant1","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"079818:Black Marsh.esm","editor_id":"01merrchantDUPLICATE002","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"079819:Black Marsh.esm","editor_id":"01merrchant2","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"07F6BE:Skyrim.esm","editor_id":"JobStreetVendorFaction","name":"Street Vendor","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"086EEE:Skyrim.esm","editor_id":"IsGuardFaction","name":"GuardFaction (makes an actor a guard)","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"094393:Skyrim.esm","editor_id":"FavorExcludedFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"09A7B2:Skyrim.esm","editor_id":"PlayerPotentialAnimalFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0A3087:Skyrim.esm","editor_id":"HareFaction","name":"Prey Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0AA784:Skyrim.esm","editor_id":"dunPrisonerFaction","name":"Prisoners Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0AB7B9:Skyrim.esm","editor_id":"CWSoldierNoGuardDialogueFaction","name":"Faction for CW soldiers (excludes guard dialogue)","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0B18E2:Skyrim.esm","editor_id":"DA02GuardFaction","name":"Blue Palace Guard for DA02","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0B2849:Skyrim.esm","editor_id":"ChickenFaction","name":"Prey Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0B4054:Skyrim.esm","editor_id":"MQ101TemporaryFriendsFaction","name":"anyone in this are friends","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0C6015:Skyrim.esm","editor_id":"SailorFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0D25A6:Skyrim.esm","editor_id":"CreatureFriendFaction","name":"Faction that is friends with all Creatures","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0E16CA:Skyrim.esm","editor_id":"DA16OrcAmbushFaction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0F1ABC:Skyrim.esm","editor_id":"HunterPreyFaction","name":"Hunter Prey Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0FBBF3:Skyrim.esm","editor_id":"BearFaction","name":"Bear Faction","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"106643:Skyrim.esm","editor_id":"DragonPriestFaction","name":"Dragon Priest Faction","defined_in":"Skyrim.esm","in_bmv":false}

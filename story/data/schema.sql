@@ -2663,3 +2663,206 @@ CREATE TABLE "creature_list_entry" (
   "count" INTEGER NOT NULL CHECK ("count" >= 1),
   PRIMARY KEY ("list_id", "form_key")
 );
+
+-- ---------------------------------------------------------------------------------------------------------------------
+-- The BM&V census (phase 1): our data about Black Marsh.esm, read from the file by `tools/argonia_world/bmv_census.py`
+-- (never copied from it: keys, editor ids, names, coordinates, counts and links only). Every id is a form key
+-- "XXXXXX:Plugin" as mod_form writes them; `defined_in` is the plugin whose record wins (Black Marsh.esm, or the master
+-- a BM&V record points at). Designed rows are linked to it by place_bmv, npc_bmv and faction_bmv, never copied.
+-- ---------------------------------------------------------------------------------------------------------------------
+
+-- Home of a worldspace BM&V adds or edits (WRLD).
+CREATE TABLE "bmv_worldspace" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT NOT NULL,
+  "name" TEXT,
+  "defined_in" TEXT NOT NULL
+);
+
+-- Home of a location (LCTN) BM&V defines, overrides, or names on one of its cells.
+CREATE TABLE "bmv_location" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "parent" TEXT,
+  "defined_in" TEXT NOT NULL,
+  "in_bmv" BOOLEAN NOT NULL CHECK ("in_bmv" IN (0, 1))
+);
+
+-- Home of a cell (CELL) in Black Marsh.esm: an interior, or an exterior of a worldspace at a grid square; the
+-- persistent cell of a worldspace (flag 0x400, directly under its WRLD) has no grid. `refs` counts the placed references (REFR and ACHR) the file puts in it.
+CREATE TABLE "bmv_cell" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "interior" BOOLEAN NOT NULL CHECK ("interior" IN (0, 1)),
+  "worldspace" TEXT REFERENCES "bmv_worldspace"("id"),
+  "grid_x" INTEGER,
+  "grid_y" INTEGER,
+  "persistent" BOOLEAN NOT NULL CHECK ("persistent" IN (0, 1)),
+  "location" TEXT REFERENCES "bmv_location"("id"),
+  "has_navmesh" BOOLEAN NOT NULL CHECK ("has_navmesh" IN (0, 1)),
+  "refs" INTEGER NOT NULL CHECK ("refs" >= 0),
+  "defined_in" TEXT NOT NULL,
+  CHECK (("interior" = 1) = ("worldspace" IS NULL)),
+  CHECK (("grid_x" IS NULL) = ("grid_y" IS NULL)),
+  CHECK ("interior" = 0 OR "grid_x" IS NULL),
+  CHECK ("persistent" = 0 OR "grid_x" IS NULL)
+);
+
+-- Home of a race a BM&V actor uses (RACE).
+CREATE TABLE "bmv_race" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "defined_in" TEXT NOT NULL
+);
+
+-- Home of a class a BM&V actor uses (CLAS).
+CREATE TABLE "bmv_class" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "defined_in" TEXT NOT NULL
+);
+
+-- Home of a faction (FACT) BM&V defines or overrides, or that one of its actors belongs to.
+CREATE TABLE "bmv_faction" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "defined_in" TEXT NOT NULL,
+  "in_bmv" BOOLEAN NOT NULL CHECK ("in_bmv" IN (0, 1))
+);
+
+-- Home of an actor base BM&V defines or places: an NPC_ record, or a levelled actor list (LVLN) one of its
+-- references places. Race, class and sex are the NPC_'s own: a templated actor's (template_flags, ACBS, non-zero) may
+-- come from its template. `person` is whether its own race carries ActorTypeNPC (false: a creature).
+CREATE TABLE "bmv_npc" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "record" TEXT NOT NULL CHECK ("record" IN ('NPC_', 'LVLN')),
+  "editor_id" TEXT,
+  "name" TEXT,
+  "race" TEXT REFERENCES "bmv_race"("id"),
+  "class" TEXT REFERENCES "bmv_class"("id"),
+  "sex" TEXT CHECK ("sex" IN ('male', 'female')),
+  "template" TEXT,
+  "template_flags" INTEGER,
+  "person" BOOLEAN,
+  "defined_in" TEXT NOT NULL,
+  "in_bmv" BOOLEAN NOT NULL CHECK ("in_bmv" IN (0, 1)),
+  CHECK ("record" = 'NPC_' OR ("race" IS NULL AND "sex" IS NULL))
+);
+
+-- Home of one faction membership of a BM&V NPC_ (SNAM).
+CREATE TABLE "bmv_npc_faction" (
+  "npc" TEXT NOT NULL REFERENCES "bmv_npc"("id"),
+  "faction" TEXT NOT NULL REFERENCES "bmv_faction"("id"),
+  "rank" INTEGER NOT NULL,
+  PRIMARY KEY ("npc", "faction")
+);
+
+-- Home of a placed actor (ACHR) in Black Marsh.esm: its base, its cell, its position; grid is the exterior square
+-- the position falls in (for a reference in a worldspace's persistent cell too), null in an interior.
+CREATE TABLE "bmv_placement" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "npc" TEXT NOT NULL REFERENCES "bmv_npc"("id"),
+  "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
+  "x" REAL NOT NULL,
+  "y" REAL NOT NULL,
+  "z" REAL NOT NULL,
+  "grid_x" INTEGER,
+  "grid_y" INTEGER,
+  "disabled" BOOLEAN NOT NULL CHECK ("disabled" IN (0, 1)),
+  "enable_parent" TEXT
+);
+
+-- Home of a quest (QUST) BM&V defines or overrides.
+CREATE TABLE "bmv_quest" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "start_game_enabled" BOOLEAN NOT NULL CHECK ("start_game_enabled" IN (0, 1)),
+  "priority" INTEGER NOT NULL,
+  "defined_in" TEXT NOT NULL
+);
+
+-- Home of a load door (a REFR with XTEL) in Black Marsh.esm: where it stands and the door it leads to. An exterior
+-- door sits in its worldspace's persistent cell; `ext_cell` is the exterior square it stands on.
+-- `target` is the paired door when the file holds it; `target_elsewhere` the paired door's key when a master holds it.
+CREATE TABLE "bmv_door" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
+  "x" REAL NOT NULL,
+  "y" REAL NOT NULL,
+  "z" REAL NOT NULL,
+  "grid_x" INTEGER,
+  "grid_y" INTEGER,
+  "worldspace" TEXT REFERENCES "bmv_worldspace"("id"),
+  "ext_cell" TEXT REFERENCES "bmv_cell"("id"),
+  "target" TEXT REFERENCES "bmv_door"("id"),
+  "target_elsewhere" TEXT,
+  CHECK (("target" IS NULL) <> ("target_elsewhere" IS NULL))
+);
+
+-- Home of a settlement or site the census groups BM&V's cells into (BM&V has no LCTN of its own): a named exterior
+-- cell cluster ('settlement'), or interiors reached by load doors from one exterior spot ('site'). Derived, with why.
+CREATE TABLE "bmv_settlement" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "name" TEXT NOT NULL,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('settlement', 'site')),
+  "worldspace" TEXT REFERENCES "bmv_worldspace"("id"),
+  "grid_x" INTEGER,
+  "grid_y" INTEGER,
+  "why" TEXT NOT NULL
+);
+
+-- Home of a cell's membership of a settlement: an anchor (a named exterior cell), a neighbour square (within one), an
+-- area square (a square with content, nearest this settlement's anchors within eight), or an interior reached through
+-- load doors (its main settlement; every exit is in bmv_interior_exit).
+CREATE TABLE "bmv_settlement_cell" (
+  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT NOT NULL UNIQUE REFERENCES "bmv_cell"("id"),
+  "role" TEXT NOT NULL CHECK ("role" IN ('anchor', 'neighbour', 'area', 'interior')),
+  PRIMARY KEY ("settlement", "cell")
+);
+
+-- Home of one way out of an interior: an exterior load door its door graph reaches, and the settlement there if any.
+-- A ship has one per port, a shared house interior one per house door; an interior with none has no load door in.
+CREATE TABLE "bmv_interior_exit" (
+  "interior" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
+  "door" TEXT NOT NULL REFERENCES "bmv_door"("id"),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
+  PRIMARY KEY ("interior", "door")
+);
+
+-- Home of a designed place's landing in BM&V: a settlement or a cell, or waiting when BM&V has nothing for it.
+CREATE TABLE "place_bmv" (
+  "place" TEXT NOT NULL PRIMARY KEY REFERENCES "place"("id"),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "status" TEXT NOT NULL CHECK ("status" IN ('mapped', 'waiting')),
+  "confidence" TEXT CHECK ("confidence" IN ('high', 'medium', 'low')),
+  "reason" TEXT NOT NULL,
+  "source" TEXT NOT NULL,
+  CHECK (("status" = 'waiting') = ("settlement" IS NULL AND "cell" IS NULL)),
+  CHECK (("status" = 'waiting') = ("confidence" IS NULL))
+);
+
+-- Home of a designed person who clearly is a BM&V actor.
+CREATE TABLE "npc_bmv" (
+  "npc" TEXT NOT NULL PRIMARY KEY REFERENCES "npc"("id"),
+  "bmv_npc" TEXT NOT NULL REFERENCES "bmv_npc"("id"),
+  "confidence" TEXT NOT NULL CHECK ("confidence" IN ('high', 'medium', 'low')),
+  "reason" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);
+
+-- Home of a designed faction's landing on a BM&V faction.
+CREATE TABLE "faction_bmv" (
+  "faction" TEXT NOT NULL PRIMARY KEY REFERENCES "faction"("id"),
+  "bmv_faction" TEXT NOT NULL REFERENCES "bmv_faction"("id"),
+  "confidence" TEXT NOT NULL CHECK ("confidence" IN ('high', 'medium', 'low')),
+  "reason" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);

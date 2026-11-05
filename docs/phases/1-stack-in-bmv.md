@@ -52,23 +52,15 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   the markers; owed: the owner looks in the walk, and LOD is generated only if it is bare.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
-- In parallel: **The census, into the story data.** BM&V's locations, cells, NPCs, factions and quests are read from
-  `Black Marsh.esm` (Spriggit on the build VM) into new tables of the one relational store
-  (`story/data/schema.sql`, loaded by `tools/argonia_world/db.py` like every other table): `bmv_location`,
-  `bmv_cell`, `bmv_npc`, `bmv_faction`, `bmv_quest`, keyed by form key, with editor id, name, worldspace and
-  position. Our designed places, people and factions are then **linked, not copied**: mapping tables
-  `place_bmv_location`, `npc_bmv_npc` and `faction_bmv_faction` say which BM&V record a designed row lands on, and
-  our own authored records carry their form keys in `mod_form` as the Magic Expanded forms already do. The quest
-  skills read the mapping, so a quest written against a designed place resolves to a BM&V cell. Where BM&V has no
-  place for a designed one, the row is mapped to the nearest BM&V place or marked waiting.
-- **An offline 2d interactive map**, after the census, of BM&V's world (owner, 2026-11-05), for the owner and agents
-  to explore, linked to the mined records: pan and zoom over each BM&V worldspace, the land drawn from BM&V's own
-  terrain heights and water, every exterior cell gridded, each settlement, door, NPC placement and quest-relevant
-  place clickable to its census row (form key, editor id, name, settlement, NPCs there) and to our designed place
-  mapped onto it. A generator under `tools/` builds one self-contained HTML page into `out/bmv-map/` from
-  `story/data` and the ESM; the rendered terrain image is derived from BM&V's files, so it is never committed
-  (decision 0003): the owner gets it as a private page, agents open the local build. Searchable by name and editor
-  id; coordinates shown in cell grid and game units, so an agent can turn a click into a marker position.
+- In parallel: **The census, into the story data.** Done 2026-11-05 ([census](../research/bmv/census.md)).
+  `tools/argonia_world/bmv_census.py build` reads `Black Marsh.esm` with its own reader (`esm.py`; masters for
+  names), and `verify` recounts the ESM against the db. It found 4 worldspaces, 4,826 cells, 243 actor bases,
+  1,139 placements, 84 factions, 3 quests and 79 load doors, grouped into 24 settlements (1,403 cells) and 40
+  interior exits. The designed rows are linked, not copied: `place_bmv` holds 8 mapped places and 10 waiting;
+  `npc_bmv` and `faction_bmv` are empty, because BM&V's actors and factions are generic. A reviewer pass found
+  persistent cells, content squares and shared interiors the first pass had missed, and they were fixed. Still
+  owed: display names for the editor-id settlements, and a decision on the Tamriel entry door (its base is
+  `OrcDoorLoad01`).
 - **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner. For the census mine, do a loop between a miner and reviewer, where the reviewer thinks critically about what the miner might have missed and provides feedback. You as the planner use your judgment to decide when that loop exits. We need to know we have information about every place from the BM&V mod, and we have enough information about every place to meet the requirements for our goal (and for being able to properly author and review our quests).
 - **Owner test (the first walk, the first owner test since the pivot):** both cards on the play page, Vanilla
   Skyrim (a quick check that the stream and the game run) and Argonia. On Argonia, a new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the

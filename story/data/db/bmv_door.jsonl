@@ -1,0 +1,79 @@
+{"id":"005AB4:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":5687.6,"y":-9381.7,"z":177.9,"grid_x":1,"grid_y":-3,"worldspace":"23D689:Black Marsh.esm","ext_cell":"005943:Black Marsh.esm","target":"0F9399:Black Marsh.esm"}
+{"id":"00AC5C:Black Marsh.esm","cell":"000D74:Skyrim.esm","x":157470.8,"y":53951.9,"z":-13945.4,"grid_x":38,"grid_y":13,"worldspace":"00003C:Skyrim.esm","ext_cell":"00B410:Skyrim.esm","target":"0F91ED:Black Marsh.esm"}
+{"id":"01544B:Skyrim.esm","cell":"0152A5:Skyrim.esm","x":2831.8,"y":716.1,"z":-3215.0,"target":"03B591:Black Marsh.esm"}
+{"id":"020615:Black Marsh.esm","cell":"020043:Black Marsh.esm","x":-4294.6,"y":3289.5,"z":5174.3,"target":"025BEE:Black Marsh.esm"}
+{"id":"0207CA:Black Marsh.esm","cell":"020043:Black Marsh.esm","x":7936.3,"y":-1565.7,"z":5617.7,"target":"048FCD:Black Marsh.esm"}
+{"id":"025BEE:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":47518.9,"y":-21504.3,"z":-124.8,"grid_x":11,"grid_y":-6,"worldspace":"23D689:Black Marsh.esm","ext_cell":"039749:Black Marsh.esm","target":"020615:Black Marsh.esm"}
+{"id":"039827:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":44831.0,"y":-7213.4,"z":63.4,"grid_x":10,"grid_y":-2,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0396AF:Black Marsh.esm","target":"0AA6C9:Black Marsh.esm"}
+{"id":"03B591:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":64056.1,"y":-12615.8,"z":119.5,"grid_x":15,"grid_y":-4,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D72F1:Black Marsh.esm","target":"01544B:Skyrim.esm"}
+{"id":"048FCD:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":58240.0,"y":-9024.0,"z":64.0,"grid_x":14,"grid_y":-3,"worldspace":"23D689:Black Marsh.esm","ext_cell":"02F38C:Black Marsh.esm","target":"0207CA:Black Marsh.esm"}
+{"id":"04B4CC:Black Marsh.esm","cell":"04B1FD:Black Marsh.esm","x":256.0,"y":1104.0,"z":128.0,"target":"04BF6C:Black Marsh.esm"}
+{"id":"04B658:Black Marsh.esm","cell":"04B1FD:Black Marsh.esm","x":-3584.0,"y":1104.0,"z":-128.0,"target":"04BA40:Black Marsh.esm"}
+{"id":"04B8A5:Black Marsh.esm","cell":"04B6ED:Black Marsh.esm","x":-4704.0,"y":-1824.0,"z":-1280.0,"target":"0643FE:Black Marsh.esm"}
+{"id":"04BA40:Black Marsh.esm","cell":"04B6ED:Black Marsh.esm","x":-2624.0,"y":21504.0,"z":-96.0,"target":"04B658:Black Marsh.esm"}
+{"id":"04BF6C:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-8276.1,"y":35637.4,"z":-20.2,"grid_x":-3,"grid_y":8,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D75DF:Black Marsh.esm","target":"04B4CC:Black Marsh.esm"}
+{"id":"050F28:Skyrim.esm","cell":"050F1E:Skyrim.esm","x":1926.1,"y":769.2,"z":7584.7,"target_elsewhere":"050F1F:Skyrim.esm"}
+{"id":"0643FE:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":61863.4,"y":-21908.1,"z":-132.1,"grid_x":15,"grid_y":-6,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D7291:Black Marsh.esm","target":"04B8A5:Black Marsh.esm"}
+{"id":"0AA664:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":32176.3,"y":-2430.5,"z":-14.7,"grid_x":7,"grid_y":-1,"worldspace":"23D689:Black Marsh.esm","ext_cell":"005A21:Black Marsh.esm","target":"0AA837:Black Marsh.esm"}
+{"id":"0AA6C9:Black Marsh.esm","cell":"0AA665:Black Marsh.esm","x":2914.5,"y":4367.8,"z":7013.7,"target":"039827:Black Marsh.esm"}
+{"id":"0AA837:Black Marsh.esm","cell":"0AA665:Black Marsh.esm","x":2923.5,"y":5111.9,"z":7040.8,"target":"0AA664:Black Marsh.esm"}
+{"id":"0E971F:Black Marsh.esm","cell":"0E96A9:Black Marsh.esm","x":1926.1,"y":769.2,"z":7584.7,"target":"120E93:Black Marsh.esm"}
+{"id":"0E9812:Black Marsh.esm","cell":"0E9786:Black Marsh.esm","x":1926.1,"y":769.2,"z":7584.7,"target":"120E94:Black Marsh.esm"}
+{"id":"0F91ED:Black Marsh.esm","cell":"0F9178:Black Marsh.esm","x":2914.5,"y":4367.8,"z":7013.7,"target":"00AC5C:Black Marsh.esm"}
+{"id":"0F9399:Black Marsh.esm","cell":"0F9178:Black Marsh.esm","x":2923.5,"y":5111.9,"z":7040.8,"target":"005AB4:Black Marsh.esm"}
+{"id":"0FE832:Black Marsh.esm","cell":"0FE7F7:Black Marsh.esm","x":1926.1,"y":738.2,"z":7717.7,"target":"0FE95A:Black Marsh.esm"}
+{"id":"0FE8DC:Black Marsh.esm","cell":"0FE8B7:Black Marsh.esm","x":1926.1,"y":738.2,"z":7717.7,"target":"0FE95B:Black Marsh.esm"}
+{"id":"0FE95A:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":31553.3,"y":-7639.7,"z":3.6,"grid_x":7,"grid_y":-2,"worldspace":"23D689:Black Marsh.esm","ext_cell":"005A1F:Black Marsh.esm","target":"0FE832:Black Marsh.esm"}
+{"id":"0FE95B:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":22668.9,"y":-609.9,"z":51.6,"grid_x":5,"grid_y":-1,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0059FF:Black Marsh.esm","target":"0FE8DC:Black Marsh.esm"}
+{"id":"120E93:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":50560.0,"y":-7424.0,"z":64.0,"grid_x":12,"grid_y":-2,"worldspace":"23D689:Black Marsh.esm","ext_cell":"02F364:Black Marsh.esm","target":"0E971F:Black Marsh.esm"}
+{"id":"120E94:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":50745.9,"y":-5244.2,"z":18.7,"grid_x":12,"grid_y":-2,"worldspace":"23D689:Black Marsh.esm","ext_cell":"02F364:Black Marsh.esm","target":"0E9812:Black Marsh.esm"}
+{"id":"156415:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":-290.7,"y":-1224.9,"z":354.1,"target":"156469:Black Marsh.esm"}
+{"id":"156427:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":250.7,"y":-294.6,"z":1571.2,"target":"156482:Black Marsh.esm"}
+{"id":"156433:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":1970.0,"y":-2212.4,"z":1816.8,"target":"15647C:Black Marsh.esm"}
+{"id":"15643F:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":3580.0,"y":-2050.9,"z":1323.3,"target":"15647F:Black Marsh.esm"}
+{"id":"15644B:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":4917.4,"y":-172.5,"z":1298.0,"target":"15646D:Black Marsh.esm"}
+{"id":"156457:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":5998.1,"y":1057.0,"z":1846.6,"target":"156479:Black Marsh.esm"}
+{"id":"156463:Black Marsh.esm","cell":"15635D:Black Marsh.esm","x":3510.2,"y":2914.6,"z":2417.9,"target":"156473:Black Marsh.esm"}
+{"id":"156469:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":136791.9,"y":-57853.4,"z":103.6,"grid_x":33,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC32:Black Marsh.esm","target":"156415:Black Marsh.esm"}
+{"id":"15646D:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":138739.7,"y":-58910.1,"z":123.0,"grid_x":33,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC32:Black Marsh.esm","target":"15644B:Black Marsh.esm"}
+{"id":"156473:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":137867.0,"y":-60625.2,"z":89.2,"grid_x":33,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC32:Black Marsh.esm","target":"156463:Black Marsh.esm"}
+{"id":"156479:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":136614.1,"y":-61382.0,"z":84.1,"grid_x":33,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC32:Black Marsh.esm","target":"156457:Black Marsh.esm"}
+{"id":"15647C:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":136148.8,"y":-59232.9,"z":58.5,"grid_x":33,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC32:Black Marsh.esm","target":"156433:Black Marsh.esm"}
+{"id":"15647F:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":134469.6,"y":-57834.1,"z":91.8,"grid_x":32,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC30:Black Marsh.esm","target":"15643F:Black Marsh.esm"}
+{"id":"156482:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":134881.5,"y":-60185.6,"z":67.7,"grid_x":32,"grid_y":-15,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFC30:Black Marsh.esm","target":"156427:Black Marsh.esm"}
+{"id":"15BB38:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":100672.0,"y":-17728.0,"z":-1856.0,"grid_x":24,"grid_y":-5,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0397BD:Black Marsh.esm","target":"190E1B:Black Marsh.esm"}
+{"id":"16638D:Black Marsh.esm","cell":"0E9786:Black Marsh.esm","x":2603.6,"y":-4858.6,"z":8887.8,"target":"16B6B6:Black Marsh.esm"}
+{"id":"16B6B6:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":52869.9,"y":3036.2,"z":330.9,"grid_x":12,"grid_y":0,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D73AB:Black Marsh.esm","target":"16638D:Black Marsh.esm"}
+{"id":"16B768:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":4425.1,"y":-40597.1,"z":71.8,"grid_x":1,"grid_y":-10,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D716B:Black Marsh.esm","target":"16B76A:Black Marsh.esm"}
+{"id":"16B76A:Black Marsh.esm","cell":"0E9786:Black Marsh.esm","x":-194.0,"y":-1765.5,"z":10049.0,"target":"16B768:Black Marsh.esm"}
+{"id":"186656:Black Marsh.esm","cell":"18657D:Black Marsh.esm","x":69.7,"y":938.3,"z":26.4,"target":"186668:Black Marsh.esm"}
+{"id":"186668:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":11808.0,"y":25498.2,"z":39.6,"grid_x":2,"grid_y":6,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0059B5:Black Marsh.esm","target":"186656:Black Marsh.esm"}
+{"id":"190E1B:Black Marsh.esm","cell":"190D03:Black Marsh.esm","x":-74.8,"y":-1990.8,"z":17.3,"target":"15BB38:Black Marsh.esm"}
+{"id":"1B944E:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":74348.6,"y":7527.2,"z":116.7,"grid_x":18,"grid_y":1,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D7C43:Black Marsh.esm","target":"1C9449:Black Marsh.esm"}
+{"id":"1BEAD6:Black Marsh.esm","cell":"00ACB9:Black Marsh.esm","x":136270.9,"y":-70157.2,"z":82.6,"grid_x":33,"grid_y":-18,"worldspace":"23D689:Black Marsh.esm","ext_cell":"0AFE55:Black Marsh.esm","target":"1BECCD:Black Marsh.esm"}
+{"id":"1BECCD:Black Marsh.esm","cell":"1BEAD7:Black Marsh.esm","x":2925.0,"y":3852.5,"z":7255.7,"target":"1BEAD6:Black Marsh.esm"}
+{"id":"1C9449:Black Marsh.esm","cell":"1BEAD7:Black Marsh.esm","x":2676.8,"y":4478.3,"z":7033.5,"target":"1B944E:Black Marsh.esm"}
+{"id":"1DE5DE:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":913.7,"y":145.1,"z":372.7,"target":"1E42B2:Black Marsh.esm"}
+{"id":"1DE671:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-3262.1,"y":3596.8,"z":2229.8,"target":"1E42B4:Black Marsh.esm"}
+{"id":"1DE715:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-7053.5,"y":5913.7,"z":3152.2,"target":"1E42B3:Black Marsh.esm"}
+{"id":"1DE7B9:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-10641.1,"y":8986.7,"z":4436.1,"target":"1E42B6:Black Marsh.esm"}
+{"id":"1DE85D:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-14310.0,"y":12180.6,"z":5712.0,"target":"1E42B5:Black Marsh.esm"}
+{"id":"1DE901:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-18373.2,"y":14684.0,"z":6924.2,"target":"1E44AE:Black Marsh.esm"}
+{"id":"1E42B2:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-25306.7,"y":93226.8,"z":40.9,"grid_x":-7,"grid_y":22,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D798F:Black Marsh.esm","target":"1DE5DE:Black Marsh.esm"}
+{"id":"1E42B3:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-20970.6,"y":97693.5,"z":237.0,"grid_x":-6,"grid_y":23,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D79D5:Black Marsh.esm","target":"1DE715:Black Marsh.esm"}
+{"id":"1E42B4:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-29678.7,"y":91777.5,"z":24.7,"grid_x":-8,"grid_y":22,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D798D:Black Marsh.esm","target":"1DE671:Black Marsh.esm"}
+{"id":"1E42B5:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-23499.4,"y":83026.2,"z":1498.1,"grid_x":-6,"grid_y":20,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D7909:Black Marsh.esm","target":"1DE85D:Black Marsh.esm"}
+{"id":"1E42B6:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-19356.2,"y":87773.3,"z":1139.5,"grid_x":-5,"grid_y":21,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D794F:Black Marsh.esm","target":"1DE7B9:Black Marsh.esm"}
+{"id":"1E42B7:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-39649.4,"y":62623.8,"z":0.0,"grid_x":-10,"grid_y":15,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D77AD:Black Marsh.esm","target":"1E43B4:Black Marsh.esm"}
+{"id":"1E42B8:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-36065.5,"y":61414.1,"z":-0.7,"grid_x":-9,"grid_y":14,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D776B:Black Marsh.esm","target":"1E43F1:Black Marsh.esm"}
+{"id":"1E42B9:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-41916.9,"y":57742.9,"z":923.2,"grid_x":-11,"grid_y":14,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D7767:Black Marsh.esm","target":"1E4419:Black Marsh.esm"}
+{"id":"1E43B4:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-1142.1,"y":17183.8,"z":13562.7,"target":"1E42B7:Black Marsh.esm"}
+{"id":"1E43F1:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":2526.8,"y":13990.0,"z":12286.7,"target":"1E42B8:Black Marsh.esm"}
+{"id":"1E4419:Black Marsh.esm","cell":"1DE4A1:Black Marsh.esm","x":-5205.3,"y":19687.2,"z":14774.8,"target":"1E42B9:Black Marsh.esm"}
+{"id":"1E44AE:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-28608.4,"y":69406.7,"z":0.0,"grid_x":-7,"grid_y":16,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D77F7:Black Marsh.esm","target":"1DE901:Black Marsh.esm"}
+{"id":"1EEB70:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-29114.0,"y":109954.9,"z":233.3,"grid_x":-8,"grid_y":26,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D7A97:Black Marsh.esm","target":"1F5AE4:Black Marsh.esm"}
+{"id":"1F5AE4:Black Marsh.esm","cell":"000811:Dawnguard.esm","x":10229.8,"y":-2526.6,"z":7537.1,"target":"1EEB70:Black Marsh.esm"}
+{"id":"2076D0:Black Marsh.esm","cell":"2076BB:Black Marsh.esm","x":9.0,"y":1709.7,"z":-1027.7,"target":"207718:Black Marsh.esm"}
+{"id":"207718:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-28917.6,"y":79543.9,"z":-3.2,"grid_x":-8,"grid_y":19,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D78C1:Black Marsh.esm","target":"2076D0:Black Marsh.esm"}
+{"id":"23D458:Black Marsh.esm","cell":"1562F8:Black Marsh.esm","x":-38250.9,"y":50460.5,"z":31.6,"grid_x":-10,"grid_y":12,"worldspace":"0D6960:Black Marsh.esm","ext_cell":"0D76E1:Black Marsh.esm","target":"23D496:Black Marsh.esm"}
+{"id":"23D496:Black Marsh.esm","cell":"0AA665:Black Marsh.esm","x":6038.0,"y":5825.1,"z":8054.3,"target":"23D458:Black Marsh.esm"}

@@ -1,0 +1,68 @@
+{"id":"000019:Skyrim.esm","editor_id":"DefaultRace","name":"Default Race","defined_in":"Skyrim.esm"}
+{"id":"000D53:Skyrim.esm","editor_id":"DraugrRace","name":"Draugr","defined_in":"Skyrim.esm"}
+{"id":"0023E2:Dawnguard.esm","editor_id":"SkeletonArmorRace","name":"Draugr","defined_in":"Dawnguard.esm"}
+{"id":"0051FB:Dawnguard.esm","editor_id":"DLC1ChaurusHunterRace","name":"Chaurusflyer","defined_in":"Dawnguard.esm"}
+{"id":"006AFA:Dawnguard.esm","editor_id":"DLC1SoulCairnSkeletonNecroRace","name":"Skeleton","defined_in":"Dawnguard.esm"}
+{"id":"00894D:Dawnguard.esm","editor_id":"DLC1SoulCairnSkeletonArmorRace","name":"Draugr","defined_in":"Dawnguard.esm"}
+{"id":"00A2C6:Dawnguard.esm","editor_id":"DLC1GargoyleRace","name":"Gargoyle","defined_in":"Dawnguard.esm"}
+{"id":"00D0B2:Dawnguard.esm","editor_id":"DLC1DeerGlowRace","name":"Deer","defined_in":"Dawnguard.esm"}
+{"id":"012E82:Skyrim.esm","editor_id":"DragonRace","name":"Dragon Race","defined_in":"Black Marsh.esm"}
+{"id":"0131E8:Skyrim.esm","editor_id":"BearBlackRace","name":"Cave Bear","defined_in":"Skyrim.esm"}
+{"id":"0131EB:Skyrim.esm","editor_id":"ChaurusRace","name":"Chaurus","defined_in":"Black Marsh.esm"}
+{"id":"0131EF:Skyrim.esm","editor_id":"DragonPriestRace","name":"Dragon Priest","defined_in":"Skyrim.esm"}
+{"id":"0131F0:Skyrim.esm","editor_id":"DremoraRace","name":"Dremora","defined_in":"Skyrim.esm"}
+{"id":"0131F1:Skyrim.esm","editor_id":"DwarvenCenturionRace","name":"Dwarven Centurion","defined_in":"Skyrim.esm"}
+{"id":"0131F2:Skyrim.esm","editor_id":"DwarvenSphereRace","name":"Dwarven Sphere","defined_in":"Skyrim.esm"}
+{"id":"0131F3:Skyrim.esm","editor_id":"DwarvenSpiderRace","name":"Dwarven Spider","defined_in":"Skyrim.esm"}
+{"id":"0131F4:Skyrim.esm","editor_id":"FalmerRace","name":"Falmer","defined_in":"Dawnguard.esm"}
+{"id":"0131F5:Skyrim.esm","editor_id":"AtronachFlameRace","name":"Flame Atronach","defined_in":"Black Marsh.esm"}
+{"id":"0131F6:Skyrim.esm","editor_id":"AtronachFrostRace","name":"Frost Atronach","defined_in":"Skyrim.esm"}
+{"id":"0131F7:Skyrim.esm","editor_id":"AtronachStormRace","name":"Storm Atronach","defined_in":"Skyrim.esm"}
+{"id":"0131F8:Skyrim.esm","editor_id":"FrostbiteSpiderRace","name":"Frostbite Spider","defined_in":"Black Marsh.esm"}
+{"id":"0131F9:Skyrim.esm","editor_id":"GiantRace","name":"Giant","defined_in":"Skyrim.esm"}
+{"id":"0131FA:Skyrim.esm","editor_id":"GoatRace","name":"Goat","defined_in":"Skyrim.esm"}
+{"id":"0131FB:Skyrim.esm","editor_id":"HagravenRace","name":"Hagraven","defined_in":"Skyrim.esm"}
+{"id":"0131FC:Skyrim.esm","editor_id":"HorkerRace","name":"Horker","defined_in":"Skyrim.esm"}
+{"id":"0131FD:Skyrim.esm","editor_id":"HorseRace","name":"Horse","defined_in":"Update.esm"}
+{"id":"0131FE:Skyrim.esm","editor_id":"IceWraithRace","name":"Ice Wraith","defined_in":"Skyrim.esm"}
+{"id":"0131FF:Skyrim.esm","editor_id":"MammothRace","name":"Mammoth","defined_in":"Black Marsh.esm"}
+{"id":"013200:Skyrim.esm","editor_id":"SabreCatRace","name":"Sabre Cat","defined_in":"Black Marsh.esm"}
+{"id":"013201:Skyrim.esm","editor_id":"SkeeverRace","name":"Skeever","defined_in":"Black Marsh.esm"}
+{"id":"013203:Skyrim.esm","editor_id":"SlaughterfishRace","name":"Slaughterfish","defined_in":"Skyrim.esm"}
+{"id":"013205:Skyrim.esm","editor_id":"TrollRace","name":"Troll","defined_in":"Skyrim.esm"}
+{"id":"013208:Skyrim.esm","editor_id":"WispRace","name":"Wisp","defined_in":"Skyrim.esm"}
+{"id":"01320A:Skyrim.esm","editor_id":"WolfRace","name":"Wolf","defined_in":"Black Marsh.esm"}
+{"id":"013740:Skyrim.esm","editor_id":"ArgonianRace","name":"Argonian","defined_in":"Update.esm"}
+{"id":"013741:Skyrim.esm","editor_id":"BretonRace","name":"Breton","defined_in":"Update.esm"}
+{"id":"013742:Skyrim.esm","editor_id":"DarkElfRace","name":"Dark Elf","defined_in":"Update.esm"}
+{"id":"013743:Skyrim.esm","editor_id":"HighElfRace","name":"High Elf","defined_in":"Update.esm"}
+{"id":"013744:Skyrim.esm","editor_id":"ImperialRace","name":"Imperial","defined_in":"Update.esm"}
+{"id":"013746:Skyrim.esm","editor_id":"NordRace","name":"Nord","defined_in":"Update.esm"}
+{"id":"013747:Skyrim.esm","editor_id":"OrcRace","name":"Orc","defined_in":"Update.esm"}
+{"id":"013748:Skyrim.esm","editor_id":"RedguardRace","name":"Redguard","defined_in":"Update.esm"}
+{"id":"013749:Skyrim.esm","editor_id":"WoodElfRace","name":"Wood Elf","defined_in":"Update.esm"}
+{"id":"014449:Dragonborn.esm","editor_id":"DLC2ExpSpiderBaseRace","name":"Frostbite Spider","defined_in":"Dragonborn.esm"}
+{"id":"014495:Dragonborn.esm","editor_id":"DLC2LurkerRace","name":"Giant","defined_in":"Dragonborn.esm"}
+{"id":"017F44:Dragonborn.esm","editor_id":"DLC2RieklingRace","defined_in":"Dragonborn.esm"}
+{"id":"018B36:Dawnguard.esm","editor_id":"DLC1HuskyBareRace","name":"Dog","defined_in":"Dawnguard.esm"}
+{"id":"019FD3:Dawnguard.esm","editor_id":"DLC1BlackSkeletonRace","name":"Skeleton","defined_in":"Dawnguard.esm"}
+{"id":"01B658:Dragonborn.esm","editor_id":"DLC2AshHopperRace","name":"Scrib","defined_in":"Dragonborn.esm"}
+{"id":"01E17B:Dragonborn.esm","editor_id":"DLC2WerebearBeastRace","name":"Werewolf","defined_in":"Dragonborn.esm"}
+{"id":"01FEB8:Dragonborn.esm","editor_id":"DLC2NetchRace","name":"Netch","defined_in":"Dragonborn.esm"}
+{"id":"024038:Dragonborn.esm","editor_id":"DLC2BoarRace","defined_in":"Dragonborn.esm"}
+{"id":"028580:Dragonborn.esm","editor_id":"DLC2NetchCalfRace","name":"Netch","defined_in":"Dragonborn.esm"}
+{"id":"02B014:Dragonborn.esm","editor_id":"DLC2DwarvenBallistaRace","name":"Dwarven Sphere","defined_in":"Dragonborn.esm"}
+{"id":"035538:Dragonborn.esm","editor_id":"DLC2DremoraRace","name":"Dremora","defined_in":"Dragonborn.esm"}
+{"id":"04E785:Skyrim.esm","editor_id":"CowRace","name":"HighlandCow","defined_in":"Skyrim.esm"}
+{"id":"067CD8:Skyrim.esm","editor_id":"ElderRace","name":"Old People Race","defined_in":"Skyrim.esm"}
+{"id":"06DC99:Skyrim.esm","editor_id":"HareRace","name":"Rabbit","defined_in":"Skyrim.esm"}
+{"id":"0A919D:Skyrim.esm","editor_id":"ChickenRace","name":"Rabbit","defined_in":"Skyrim.esm"}
+{"id":"0B7998:Skyrim.esm","editor_id":"SkeletonRace","name":"Skeleton","defined_in":"Skyrim.esm"}
+{"id":"0B9FD7:Skyrim.esm","editor_id":"RigidSkeletonRace","name":"Skeleton","defined_in":"Skyrim.esm"}
+{"id":"0BA545:Skyrim.esm","editor_id":"MudcrabRace","name":"MudCrab","defined_in":"Skyrim.esm"}
+{"id":"0CD657:Skyrim.esm","editor_id":"DA03BarbasDogRace","name":"Dog","defined_in":"Skyrim.esm"}
+{"id":"0CF89B:Skyrim.esm","editor_id":"DeerRace","name":"Deer","defined_in":"Skyrim.esm"}
+{"id":"0F1AC4:Skyrim.esm","editor_id":"DogCompanionRace","name":"Dog","defined_in":"Skyrim.esm"}
+{"id":"104F45:Skyrim.esm","editor_id":"WhiteStagRace","name":"Deer","defined_in":"Skyrim.esm"}
+{"id":"109C7C:Skyrim.esm","editor_id":"FoxRace","name":"Fox","defined_in":"Skyrim.esm"}
+{"id":"18BA1C:Black Marsh.esm","editor_id":"DragonRace3","name":"Dragon Race","defined_in":"Black Marsh.esm"}
