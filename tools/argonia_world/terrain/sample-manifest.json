@@ -1,5 +1,5 @@
 {
  "cells": "world.SAMPLE",
- "sha256": "12afee50010539c29b6e8cb86a18c7e2abfcccb425086dcee31d0ce4a93aa62f",
- "measured": "2026-11-05 04:0x, re-pinned deliberately: round 6 of 1.15 after the roads became causeways with fords and bridges, the Claywater pads re-painted and the stamps re-keyed (the sample cells' land moved: 12afee500105 in r6-chain27's gate)"
+ "sha256": "622500c9c30416d9d52b7eec6eb39ad8819515050fc1c80f0ffe4893fa24f52b",
+ "measured": "2026-11-05 12:25, re-pinned deliberately: round 6 of 1.15 after the morning's land (the pool-keep rule, the shore rise, the Claywater pads, the roads' pad trough and square ends, trees out of the water) moved the sample cells' land (622500c9c304 in r6-chain33's gate; was 12afee500105)"
 }
