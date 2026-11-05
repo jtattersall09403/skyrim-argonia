@@ -106,6 +106,7 @@ class Rule:
     reach_m: float = 0.0  # metres at scale 1 the body spreads from its pivot (OBND, capped ROAD_REACH_CAP_M): the road's clearance
     stem: bool = False  # a tree or large shrub: never in the water (is_stem)
     in_water: bool = False  # cypress or mangrove: may stand in IN_WATER_TYPES water (in_water_ok)
+    bank: bool = False  # tall (lists.bank_tall): on a river or creek bank only in a clump (bank_open)
 
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
@@ -289,6 +290,7 @@ class CellInputs:
     roads: list  # [(half width in samples, (n, 2, 2) segments in grid row, col)] near the cell
     footprints: list  # [(row0, col0, row1, col1)] grid rectangles near the cell
     wtype: str | None = None  # the cell's water type (cell_water), None for a dry cell
+    bank: np.ndarray | None = None  # bool per vertex: within lists.BANK_M of a river or creek's water
 
     def grid(self, u: np.ndarray, v: np.ndarray):
         s = su.VERTEX_SPACING_UNITS
@@ -312,6 +314,24 @@ def excluded(ci: CellInputs, u: np.ndarray, v: np.ndarray, i: np.ndarray, j: np.
     for r0, c0, r1, c1 in ci.footprints:
         out |= (pr >= r0) & (pr <= r1) & (pc >= c0) & (pc <= c1)
     return out
+
+
+def bank_open(ci: CellInputs, u: np.ndarray, v: np.ndarray) -> np.ndarray:
+    """True where a point stands on a river or creek bank (its nearest vertex within lists.BANK_M of the water) in a
+    bank block the draw keeps open (lists.BANK_CLUMP of the BANK_BLOCK_M blocks hold the clumps). The draw hashes
+    the block's worldspace position: every form and both banks agree, so the clumps are whole."""
+    if ci.bank is None or not ci.bank.any():
+        return np.zeros(np.shape(u), dtype=bool)
+    from tools.argonia_world.vegetation import lists
+    s = su.VERTEX_SPACING_UNITS
+    j = np.clip(np.rint(u / s).astype(np.int64), 0, su.LAND_VERTS - 1)
+    i = np.clip(np.rint(v / s).astype(np.int64), 0, su.LAND_VERTS - 1)
+    b = su.metres_to_units(lists.BANK_BLOCK_M)
+    bx = np.floor((ci.cx * su.CELL_UNITS + u) / b).astype(np.int64)
+    by = np.floor((ci.cy * su.CELL_UNITS + v) / b).astype(np.int64)
+    h = ((bx * 73856093) ^ (by * 19349663) ^ SEED) & 0xFFFFFF
+    h = (h * 2654435761) & 0xFFFFFF
+    return ci.bank[i, j] & (h / float(0x1000000) >= lists.BANK_CLUMP)
 
 
 def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
@@ -344,6 +364,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
         ok &= posture_ok(rule, depth, z - ti)
         if rule.stem and not (rule.in_water and ci.wtype in IN_WATER_TYPES):  # no stem in the water
             ok &= (depth <= 0) & ~wet_near(ci.H, ci.L, u, v)
+        if rule.bank:  # a tall plant on a river or creek bank: only in a clump (lists.BANK_CLUMP)
+            ok &= ~bank_open(ci, u, v)
         idx = np.nonzero(ok)[0]
         if idx.size:
             idx = idx[~excluded(ci, u[idx], v[idx], i[idx], j[idx],

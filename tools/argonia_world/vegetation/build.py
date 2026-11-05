@@ -25,9 +25,10 @@ from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.vegetation import lists, place
 from tools.argonia_world.vegetation.place import Rule
 
+ROOT = Path(__file__).resolve().parents[3]
 Q = su.QUADS_PER_CELL
 BAND = 4  # cell rows per band
-MEASURE_ONLY = ("census.py",)  # read the shards, never place: no part of the placement's stamp
+MEASURE_ONLY = ("census.py", "banks.py")  # read the shards, never place: no part of the placement's stamp
 ROAD_CLASSES = (29, 30)  # TRACK, BC_ROAD (routes/paint.py)
 
 
@@ -50,6 +51,10 @@ def load_rules(w) -> dict[str, list[Rule]]:
                                 / su.UNITS_PER_METRE, place.ROAD_REACH_CAP_M)
              for r in w.query("SELECT form_key, bound_x0, bound_x1, bound_y0, bound_y1 FROM object_form "
                               "WHERE role_id <> 'rock' AND bound_x1 IS NOT NULL")}
+    canopy_z = json.loads((ROOT / "data" / "canopy-radius.json").read_text()).get("z_u", {}) \
+        if (ROOT / "data" / "canopy-radius.json").is_file() else {}
+    tall = {k: lists.bank_tall(fr[k]["bound_z1"], (canopy_z.get(k) or [0, 0])[1], scale[k][1])
+            for k in scale if k in fr}
     out: dict[str, list[Rule]] = defaultdict(list)
     for r in w.query("SELECT * FROM land_region_object ORDER BY land_region_id, form_key"):
         if r["form_key"] not in scale:
@@ -59,7 +64,7 @@ def load_rules(w) -> dict[str, list[Rule]]:
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
             bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]],
             tree.get(r["form_key"], False), reach.get(r["form_key"], 0.0),
-            place.is_stem(fr[r["form_key"]]), place.water_tree(fr[r["form_key"]])))
+            place.is_stem(fr[r["form_key"]]), place.water_tree(fr[r["form_key"]]), tall.get(r["form_key"], False)))
     return dict(out)
 
 
@@ -122,6 +127,42 @@ def cell_water(w):
         return None
     from tools.argonia_world.water import solve
     return solve.load(w)
+
+
+def river_cells(w) -> dict[tuple[int, int], float]:
+    """(cx, cy) -> level (m) of each cell whose water is a river or creek reach's (lists.BANK_WATERS)."""
+    q = ",".join("?" * len(lists.BANK_WATERS))
+    return {(r["cx"], r["cy"]): r["level_m"] for r in w.query(
+        "SELECT c.cx, c.cy, c.level_m FROM cell_water c JOIN hydrology_reach r ON r.id = c.reach_id "
+        f"WHERE r.water IN ({q}) AND c.level_m IS NOT NULL", *lists.BANK_WATERS)}
+
+
+def bank_mask(src, rivers: dict, r0: int, r1: int, c0: int, c1: int) -> np.ndarray:
+    """bool over the band's grid rows r0..r1, cols c0..c1 (row 0 north): within lists.BANK_M of a river or creek's
+    water (ground under its cell's level), the water searched past the band's edge."""
+    from tools.argonia_world.terrain import build as tb
+    k = int(np.ceil(lists.BANK_M / su.PROVINCE_SAMPLE_M))
+    shape = (r1 - r0 + 2 * k, c1 - c0 + 2 * k)
+    R = np.full(shape, -np.inf)
+    hit = False
+    for (cx, cy), lv in rivers.items():
+        n_, s_ = src.cell_rows(cy)
+        a, b = src.cell_cols(cx)
+        rr0, rr1 = max(n_ - (r0 - k), 0), min(s_ + 1 - (r0 - k), shape[0])
+        cc0, cc1 = max(a - (c0 - k), 0), min(b + 1 - (c0 - k), shape[1])
+        if rr0 < rr1 and cc0 < cc1:
+            R[rr0:rr1, cc0:cc1] = np.maximum(R[rr0:rr1, cc0:cc1], lv)
+            hit = True
+    near = np.zeros((r1 - r0, c1 - c0), dtype=bool)
+    if not hit:
+        return near
+    wet = tb.game_heights_m(src, r0 - k, r1 + k, c0 - k, c1 + k) < R
+    lim = (lists.BANK_M / su.PROVINCE_SAMPLE_M) ** 2
+    for dr in range(-k, k + 1):
+        for dc in range(-k, k + 1):
+            if dr * dr + dc * dc <= lim:
+                near |= wet[k + dr:k + dr + near.shape[0], k + dc:k + dc + near.shape[1]]
+    return near
 
 
 # --- the water table -------------------------------------------------------------------------------------------
@@ -254,6 +295,7 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
     segs = road_segments(w)
     table = water_table(src, cells_path)
     cw = cell_water(w)
+    rivers = river_cells(w) if cw is not None else {}
     log(f"vegetation: rules for {len(rules)} regions, water table {table.shape} ({time.time() - t0:.0f} s)")
     todo = [c for c in province_cells(cells) if region.get(c) in rules]
     rows_by_cy: dict[int, list[int]] = defaultdict(list)
@@ -285,6 +327,7 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
         rr = np.clip((np.arange(r0, r1) - src.pad) // place.TABLE_STEP, 0, table.shape[0] - 1)
         cc = np.clip((np.arange(c0, c1) - src.pad) // place.TABLE_STEP, 0, table.shape[1] - 1)
         T = table[np.ix_(rr, cc)].astype(np.float64)
+        bank = bank_mask(src, rivers, r0, r1, c0, c1)
         cis = []
         for cy in band:
             n_, s_ = src.cell_rows(cy)
@@ -299,7 +342,8 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
                 cis.append(place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
                                             south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
                                             footprints=near(feet, n_, a, s_, a + Q),
-                                            wtype=cw.type(cx, cy) if cw is not None else None))
+                                            wtype=cw.type(cx, cy) if cw is not None else None,
+                                            bank=bank[win][::-1]))
         key = band_key(cis, rules, region)
         got = load_band(out, max(band), key)
         reused = got is not None
@@ -331,6 +375,10 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
             placed[(cx, cy)] = _counts(placed[(cx, cy)], keep.get(region[(cx, cy)], 1.0), tkeep.get(region[(cx, cy)]))
     summary = _summary(placed, region, rules, keep, time.time() - t0)
     summary["tree_bands"] = tinfo
+    if cells is None and rivers:  # the river banks' open share (lane 1.15-r6-bank-plants; test_bank_plants reads it)
+        from tools.argonia_world.vegetation import banks
+        summary["bank_open"] = banks.ours(out)
+        log(f"vegetation: river banks open {summary['bank_open']['open_share']} (bar {lists.BANK_OPEN_BAR})")
     (out / "summary.json").write_text(json.dumps(summary, indent=1, sort_keys=True) + "\n")
     return summary
 

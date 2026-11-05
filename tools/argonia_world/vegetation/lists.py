@@ -156,6 +156,52 @@ SINK_BOULDER, SINK_CLIFF = 0.5, 0.7
 # the share of boulders that stand upright instead of conforming to the slope (vanilla 26 %, same section 5);
 # chosen per stem by the position-seeded draw (place.candidates "up"); shells always conform
 UPRIGHT_BOULDER = 0.25
+# River and creek banks (lane 1.15-r6-bank-plants, 0034): Skyrim.esm's Whiterun Hold rivers (the White River, the
+# Treva) leave 0.664 of their bank open at eye height by the journeys' tall_near measure (banks.py: nothing over 1 m
+# within 4 m of the 15 m line across the water, a high crown by its trunk), 88 tall plants a km within 10 m; ours
+# stood at 0.243 and 198
+# (King of the Murkmire's Bush01, its 8 m fronds on a 1.8 m OBND, and the undergrowth and willows). The lore's
+# waterside is open ground of reeds "up to your chin" with the trees in stands (world/sources/lore/regions/
+# blackwood-and-gloommire.md:34; topics/fauna-hazards.md:92-95, cypress, mangrove, ferns): a plant whose top stands
+# over BANK_TALL_M grows within BANK_M of a river or creek's water only in a clump, a BANK_BLOCK_M block of bank
+# the position-seeded draw keeps (BANK_CLUMP of them); low plants (reeds, ferns under 1 m, lilies) are untouched.
+BANK_OPEN_BAR = 0.66
+BANK_TALL_M = 1.0
+BANK_M = 12.0  # the 10 m bank band, and the far bank of a creek the 15 m view crosses
+BANK_BLOCK_M = 24.0
+BANK_CLUMP = 0.2
+BANK_WATERS = ("clearwater", "whitewater")  # the reach waters that are a river or a creek (blackwater is the marsh's)
+
+
+# A frond plant whose mesh stands over SPECIMEN_M on an OBND under place.SHRUB_STEM_M (King of the Murkmire's Bush01,
+# 6.3 m of fronds on a 1.6 m OBND; Groundplant09, 5.4 m): KotM itself places Bush01 18 times, 6 in Tamriel's
+# exteriors one to a cell at scale 1.16-2.25 (a specimen, ~3 a ha where it stands), never as a carpet; ours listed it
+# at 21-29 a ha. A specimen is listed at most SPECIMEN_HA a hectare.
+SPECIMEN_M = 5.0
+SPECIMEN_HA = 3.0
+
+
+def mesh_top_u() -> dict[str, float]:
+    """form key -> its mesh's measured top (units, data/canopy-radius.json z_u; python -m tools.journeys.canopy)."""
+    import json
+    from pathlib import Path
+    p = Path(__file__).resolve().parents[3] / "data" / "canopy-radius.json"
+    return {k: v[1] for k, v in json.loads(p.read_text()).get("z_u", {}).items()} if p.is_file() else {}
+
+
+def specimen(f, tops: dict[str, float]) -> bool:
+    return (f["role_id"] == "shrub" and tops.get(f["form_key"], 0.0) / su.UNITS_PER_METRE > SPECIMEN_M
+            and f["bound_z1"] is not None and f["bound_z0"] is not None
+            and (f["bound_z1"] - f["bound_z0"]) / su.UNITS_PER_METRE < 2.0)
+
+
+def bank_tall(bound_z1: int | None, mesh_top_u: float | None, scale_max: float) -> bool:
+    """A form whose top (its mesh's own when measured, data/canopy-radius.json, else its OBND) at its largest scale
+    stands over BANK_TALL_M: thinned to clumps on a river or creek bank."""
+    top = max(bound_z1 or 0, mesh_top_u or 0) * scale_max
+    return top / su.UNITS_PER_METRE > BANK_TALL_M
+
+
 VANILLA_SHAPE = ("laid:tropical-skyrim-sse",)  # Tropical Skyrim's meshes at vanilla paths: vanilla geometry
 
 
@@ -395,6 +441,7 @@ def build(w) -> dict:
               for role, fs in pool.items()}
     used: dict[str, dict] = {}
     report: dict[str, dict] = {}
+    tops = mesh_top_u()
     for reg in w.query("SELECT id, region_id, eco_class_id FROM land_region WHERE border = 0 ORDER BY id"):
         rid, packet, eco = reg["id"], reg["region_id"], reg["eco_class_id"]
         mix = role_mix(w, rid)
@@ -446,6 +493,8 @@ def build(w) -> dict:
                     conform = "cliff" not in t  # rule 2: a cliff shell takes ~0.12 of the pitch: buried upright
                 if "giant" in t:
                     q = min(q, 0.6)  # a landmark, not a stand
+                if specimen(f, tops):
+                    q = min(q, SPECIMEN_HA)  # a specimen frond plant, as its own mod places it
                 if "cliff" in t:
                     q, mn = CLIFF_HA, 28  # rock-placement-rules.md rule 3: cliff pieces need >= 28 deg
                 if q < 0.01:
