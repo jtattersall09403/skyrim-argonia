@@ -17,19 +17,19 @@ camera: first
 steps:
 - name: sea
   scan: 6
-  # sea water from cell (-61,-14), level 0.0 m
-  # subject: -226659 -95738 -287
+  # sea water from cell (-53,-26), level 0.0 m
+  # subject: -243668 -104086 175
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -63 -24, settle: 60}
+  - console: {line: cow ARG_Province -53 -28, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -254563
-  - console: player.setpos y -98187
-  - console: player.setpos z -408
+  - console: player.setpos x -216896
+  - console: player.setpos y -112326
+  - console: player.setpos z 54
   - wait: 6
-  - console: player.setangle z 85
+  - console: player.setangle z 287
   - console: player.setangle x 0
   - console: player.setangle y 0
   - wait: 4
@@ -97,9 +97,9 @@ steps:
   - console: {line: cow ARG_Province 15 -8, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 64982
-  - console: player.setpos y -30059
-  - console: player.setpos z 130
+  - console: player.setpos x 65000
+  - console: player.setpos y -30046
+  - console: player.setpos z 126
   - wait: 6
   - console: player.setangle z 86
   - console: player.setangle x 3
@@ -182,5 +182,29 @@ steps:
   - settle: {cap: 14, min: 3}
   expect:
   - {read: [player], path: pos, keep: brackish-rim}
+  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
+  reader: [the header checklist for this kind of stop]
+- name: sea-far
+  scan: 6
+  # sea water from cell (15,13), level 0.0 m, out to sea
+  # subject: 62438 81207 171
+  do:
+  - hud: off
+  - console: {line: cow ARG_Province 15 12, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x 62438
+  - console: player.setpos y 53195
+  - console: player.setpos z 50
+  - wait: 6
+  - console: player.setangle z 0
+  - console: player.setangle x 0
+  - console: player.setangle y 0
+  - wait: 4
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
+  expect:
+  - {read: [player], path: pos, keep: sea-far}
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
   reader: [the header checklist for this kind of stop]
