@@ -181,7 +181,7 @@ def _expected(entry: str) -> tuple[set, set]:
 def test_stamp_covers_the_stage_imports_and_tables(stage):
     files, tables = pipeline.stage_cover(stage)
     want_files, want_tables = _expected(pipeline.STAGE_ENTRY[stage])
-    want_tables -= pipeline.STAGE_WRITES.get(stage, set())  # a table the stage writes is its output, not its key
+    want_tables -= pipeline.STAGE_WRITES.get(stage, set()) | pipeline.PIPELINE_OUTPUT_TABLES  # a table the stage writes is its output, not its key
     assert want_files - set(files) == set(), f"{stage}: imported but not in the stamp"
     assert want_tables - set(tables) == set(), f"{stage}: read but not in the stamp"
 
@@ -290,3 +290,25 @@ def test_tool_and_scans_stages_skip_when_current(tmp_path, monkeypatch):
     assert go() == {"tool": False, "scans": True}          # a scanned input moved: only scans
     outs[0].unlink()
     assert go() == {"tool": False, "scans": True}          # an output is gone
+
+
+@pytest.mark.parametrize("stage", sorted(pipeline.STAGE_ENTRY))
+def test_no_stage_cover_includes_a_pipeline_written_table(stage):
+    assert not set(pipeline.stage_cover(stage)[1]) & pipeline.PIPELINE_OUTPUT_TABLES
+
+
+def test_rewriting_build_output_tables_moves_no_stage_key(tmp_path, monkeypatch):
+    from tools.argonia_world import db
+    root = tmp_path / "w"
+    (root / db.DB_DIR).mkdir(parents=True)
+    for t in pipeline.PIPELINE_OUTPUT_TABLES:
+        (root / db.DB_DIR / f"{t}.jsonl").write_text("{}\n")
+    monkeypatch.setattr(db, "WORLD_ROOT", root)
+
+    def keys():
+        return [pipeline._files_key(n, tables=pipeline.stage_cover(n)[1] + tuple(pipeline.PIPELINE_OUTPUT_TABLES))
+                for n in sorted(pipeline.STAGE_ENTRY)] + [pipeline._files_key("g", tables=pipeline.GROUND_TABLES + ("build_ref",))]
+    before = keys()
+    for t in pipeline.PIPELINE_OUTPUT_TABLES:
+        (root / db.DB_DIR / f"{t}.jsonl").write_text('{"x": 1}\n')
+    assert keys() == before

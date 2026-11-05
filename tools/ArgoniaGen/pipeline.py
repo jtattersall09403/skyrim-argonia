@@ -113,6 +113,12 @@ def _code_bytes(f: Path) -> bytes:
     return ast.dump(tree, include_attributes=False).encode()
 
 
+# every world/db table a build writes while it runs (the creature seed's build_person/build_ref, the formid allocator,
+# the ground's entrance_site): an output, never a key input, or building moves the key of the stage that just built
+# (r6-chain29: the pre-batch plugin rewrote build_ref and the deploy's ground stamp read "land is stale")
+PIPELINE_OUTPUT_TABLES = frozenset({"build_ref", "build_person", "formid", "entrance_site"})
+
+
 def _files_key(*parts, files=(), tables=()) -> str:
     """A key over strings, file bytes (missing files by name) and world-db tables (their jsonl bytes, named by db.py)."""
     import hashlib
@@ -126,6 +132,8 @@ def _files_key(*parts, files=(), tables=()) -> str:
         sys.path.insert(0, str(ROOT))
         from tools.argonia_world import db
         for t in tables:
+            if t in PIPELINE_OUTPUT_TABLES:
+                continue
             f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"
             h.update(t.encode() + (f.read_bytes() if f.exists() else b"") + b"\0")
     return h.hexdigest()
@@ -367,6 +375,8 @@ def _ground_stamp() -> str:
     for f in sorted([TERRAIN / "generate.py", TERRAIN.parent / "routes" / "shape.py"]):  # the generate and the road pass; the walk adds what they import (the terrain build's own modules are the terrain stage's: build.py moved the ground key for nothing, 02:3x)  # the import walk (_cover_key) adds the rest; routes/census.py and infra.py are not the ground's
         h.update(f.name.encode() + _code_bytes(f))
     for t in GROUND_TABLES:
+        if t in PIPELINE_OUTPUT_TABLES:
+            continue
         f = db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl"  # the jsonl bytes, named by db.py
         h.update(t.encode() + (f.read_bytes() if f.exists() else b""))
     from tools.argonia_world.terrain.grid import data_root
@@ -674,7 +684,7 @@ def stage_cover(name: str) -> tuple[tuple[Path, ...], tuple[str, ...]]:
     # a table the stage itself writes (the generate's entrance_site rows) is an output, not an input: in the key it made
     # every tree with uncommitted output rows disagree with a committed one (r6-chain24, 03:17: "land is stale" in the
     # worktree while the main tree's stamps held)
-    written = STAGE_WRITES.get(name, set())
+    written = STAGE_WRITES.get(name, set()) | PIPELINE_OUTPUT_TABLES
     return tuple(sorted(set(files) | set(walked))), tuple(sorted((set(tables) | set(sql_tables(walked))) - written))
 
 
