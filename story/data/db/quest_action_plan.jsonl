@@ -14,6 +14,32 @@
 {"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
 {"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
 {"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
+{"quest_id":"quest.main.mq01","ord":0,"skill":"speechcraft","use":"lie","reason":"at the roll the player gives any name, or none; the manner is remembered"}
+{"quest_id":"quest.main.mq01","ord":1,"skill":"security","use":"pick-a-lock","reason":"the confiscation chest on the docks holds the gang's own things"}
+{"quest_id":"quest.main.mq01","ord":2,"skill":"sneak","use":"sneak-past","reason":"the cult's rearguard holds the Pusbottom lane"}
+{"quest_id":"quest.main.mq01","ord":3,"skill":"long-blade","use":"fight","reason":"or fight the rearguard with what the chest gave back"}
+{"quest_id":"quest.main.mq01","ord":4,"skill":"athletics","use":"swim","reason":"under the burning planks to the witness, and across the shallows to Hereguard"}
+{"quest_id":"quest.main.mq01","ord":5,"skill":"short-blade","use":"fight","reason":"the two root-cutters at the shed"}
+{"quest_id":"quest.main.mq03","ord":0,"skill":"sneak","use":"search-unseen","reason":"Lilmoth's dock wardens hold the burnt docks; the traces are read past them"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"athletics","use":"dive","reason":"the courier's cut strap went into the water under the planks"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"alchemy","use":"test-a-sample","reason":"the black gum on the cut root is a made thing"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"interrogate","reason":"the overseer Wuleen-Sei hides in a cabin and lies"}
+{"quest_id":"quest.main.mq03","ord":4,"skill":"security","use":"pick-a-lock","reason":"or her strongbox is opened and her ledger read"}
+{"quest_id":"quest.main.mq03","ord":5,"skill":"speechcraft","use":"present-evidence","reason":"Nesh-Deeka hears the case and decides who is named"}
+{"quest_id":"quest.main.mq03","ord":6,"skill":"mercantile","use":"settle-an-owing","reason":"the player can buy the gang's months off the copy as the pardon's price"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"sneak","use":"sneak-past","reason":"lurker sharks and alligators on the coast road east of Lilmoth"}
+{"quest_id":"quest.main.mq04","ord":1,"skill":"destruction","use":"burn-a-nest","reason":"the leech beds cover the cut root"}
+{"quest_id":"quest.main.mq04","ord":2,"skill":"alchemy","use":"test-a-sample","reason":"the leeches are fat on spilled sap: they bred after the tree closed"}
+{"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"spy","reason":"the accused tender goes to the root at night"}
+{"quest_id":"quest.main.mq04","ord":4,"skill":"sneak","use":"follow","reason":"the gum trail out to the camp"}
+{"quest_id":"quest.main.mq04","ord":5,"skill":"long-blade","use":"clear-a-place","reason":"the cutters' camp in the swamps"}
+{"quest_id":"quest.main.mq04","ord":6,"skill":"speechcraft","use":"present-evidence","reason":"the warden-mother judges the tender at the Hist"}
+{"quest_id":"quest.main.mq05","ord":0,"skill":"marksman","use":"snipe","reason":"the raiders on the shore at dock5, from the ship's deck"}
+{"quest_id":"quest.main.mq05","ord":1,"skill":"block","use":"protect","reason":"the two Reed escorts on the walk to Helstrom"}
+{"quest_id":"quest.main.mq05","ord":2,"skill":"spear","use":"fight","reason":"the beasts on the walk, at a fixed level"}
+{"quest_id":"quest.main.mq05","ord":3,"skill":"sneak","use":"pickpocket","reason":"the raider leader carries a copy of Nesh-Deeka's message"}
+{"quest_id":"quest.main.mq05","ord":4,"skill":"speechcraft","use":"persuade","reason":"Kaska-Meen is won by the wound shown her"}
+{"quest_id":"quest.main.mq05","ord":5,"skill":"mercantile","use":"bribe","reason":"Ei-Tuja's help has a price"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}
 {"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}

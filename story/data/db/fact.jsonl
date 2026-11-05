@@ -557,6 +557,37 @@
 {"id":"fact.morrowind.border","says":"The border between the provinces is cold and resented on both sides."}
 {"id":"fact.morrowind.mournhold","says":"Argonian armies sacked Mournhold in the Fourth Era."}
 {"id":"fact.morrowind.north","says":"Morrowind is the Dunmer province north of the marsh."}
+{"id":"fact.mq01.blank-line","claim":"The work roll has a line for me and no name on it.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.clutch-dead","claim":"The gang's egg clutch died the night of the attack.","ord":6,"from_ref":"t8","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.her-face","claim":"A tall Argonian woman with a knotted cord at her wrist led the attackers, and she let me live.","ord":7,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.hist-closed","claim":"Lilmoth's Hist went dark the day of the attack.","ord":5,"from_ref":"t7","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.owing-roll","claim":"Everyone on the Lilmoth work detail owes months, and the roll adds months for food.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.root-cut","claim":"The root that feeds the hatching shed was cut and its sap drawn into jars.","ord":4,"from_ref":"t5","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's sealed satchel and nothing else.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that they no longer speak of it.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq03.black-gum","claim":"The cut root was sealed with a black gum brewed from sap and ash, a made thing no Hist bleeds.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.jars-ready","claim":"The cutters brought jars stoppered and marked for sap; they came to harvest.","ord":6,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.legally-dead","claim":"With the roll burnt and the Reed holding the only copy, on which my line is blank, the law counts me among the dead of the work detail.","ord":4,"from_ref":"t5","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.overseer-hid","claim":"Wuleen-Sei ran to a fisher's cabin by Pusbottom after the attack.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.overseer-paid","claim":"Wuleen-Sei was paid a purse to keep the gang at the dock end at noon.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.reed-stroke","claim":"The courier's strap was cut low and clean with a hooked knife, the stroke the Veiled Reed teaches its officers.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.reed-trained","claim":"Whoever led the attack was trained by the Veiled Reed.","ord":7,"from_ref":"t6","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.satchel-reed","claim":"The courier's satchel was Veiled Reed business sent under seal.","ord":5,"from_ref":"t5","quest_id":"quest.main.mq03"}
+{"id":"fact.mq04.camp","claim":"The cutters are camped on a dry rise in the swamps south-east of the village with jars of sap.","ord":7,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.gum-on-root","claim":"The village's cut root is sealed with the same black gum as Lilmoth's.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.leeches-after","claim":"The leeches in the hatching pools are fat on spilled sap; they bred after the tree closed.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.nest-cold","claim":"The village's Hist has closed and its nest is cold, as Lilmoth's was.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.tender-washes","claim":"Mee-Vei goes to the cut root each night to wash it with pool water.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.three-cutters","claim":"Three people came to the root by night twelve days ago and left by the reeds to the south.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.trail","claim":"Gum drips, a cracked jar and a sunk skiff mark a way south and east from the village.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.warden-blames","claim":"Nurwul-Neel believes Mee-Vei cut the root.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq04"}
+{"id":"fact.mq05.leak","claim":"The raiders at dock5 carried a copy of Nesh-Deeka's message: someone in Helstrom sold it.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.minders-refuse","claim":"Kaska-Meen will let no outsider near Helstrom's trees.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.sermon","claim":"Ei-Tuja preaches this season that the trees closed of their own will.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.sermon-for-hire","claim":"Ei-Tuja holds other readings and will preach the one that pays.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.throne-empty","claim":"The Scalded Throne in Helstrom has stood empty for centuries and is swept every morning.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.word-sent","claim":"Nesh-Deeka sent word to the Reed office in Helstrom that I was coming by dock5.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.wound","claim":"The trees that closed were cut by outsiders and sealed with black gum; they did not close of their own will.","ord":5,"from_ref":"t6","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.consent","claim":"No Hist speaks for all the Hist, and one tree's will does not bind another's people.","ord":9,"from_ref":"culture.faction.many-root-conclave#norms","quest_id":"quest.mr.mr01"}

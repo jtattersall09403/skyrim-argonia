@@ -20,6 +20,40 @@
 {"quest_id":"quest.local.lh38","stages_ord":4,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"accuse","setting":"before witnesses (a council, a hearing, a household)","target":"Reeh-Shaal","note":"two of the rope, the bill, the satchel, the night watch"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"approaches_ord":1,"ord":0,"skill":"any-weapon","use":"fight","setting":"open ground by day","target":"Reeh-Shaal, short blade, D2","note":"she runs for the river landing"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"approaches_ord":2,"ord":0,"skill":"mercantile","use":"bargain","target":"Reeh-Shaal","note":"take the packet and let her go"}
+{"quest_id":"quest.main.mq01","stages_ord":1,"approaches_ord":0,"ord":0,"skill":"security","use":"pick-a-lock","setting":"indoors","note":"the confiscation chest; opening it sets flag.mq01.gear-recovered"}
+{"quest_id":"quest.main.mq01","stages_ord":1,"approaches_ord":1,"ord":0,"skill":"sneak","use":"pickpocket","setting":"in a crowd","target":"Wuleen-Sei","note":"the chest's key"}
+{"quest_id":"quest.main.mq01","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"long-blade","use":"fight","setting":"in a crowd","target":"a rival crew","note":"the rearguard at the lane mouth, two cultists at a fixed level"}
+{"quest_id":"quest.main.mq01","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"sneak","use":"sneak-past","setting":"in a crowd","target":"a rival crew"}
+{"quest_id":"quest.main.mq01","stages_ord":4,"approaches_ord":0,"ord":0,"skill":"short-blade","use":"fight","target":"a rival crew","note":"two cultists at a fixed level"}
+{"quest_id":"quest.main.mq01","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"athletics","use":"swim","setting":"by night or against the clock","note":"under the burning planks; the fire is the clock"}
+{"quest_id":"quest.main.mq01","stages_ord":7,"approaches_ord":0,"ord":0,"skill":"athletics","use":"swim","setting":"by night or against the clock"}
+{"quest_id":"quest.main.mq01","stages_ord":7,"approaches_ord":1,"ord":0,"skill":"sneak","use":"sneak-past","setting":"by night","target":"a rival crew","note":"a cultist watches the shore path"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"approaches_ord":0,"ord":0,"skill":"sneak","use":"search-unseen","setting":"by night","target":"the town watch"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"persuade","target":"the town watch","note":"Nesh-Deeka's token gets the player past by day; the wardens then tell the contractor the player lives"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"approaches_ord":2,"ord":0,"skill":"athletics","use":"dive","setting":"underwater","note":"the strap on the harbour floor"}
+{"quest_id":"quest.main.mq03","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"interrogate","setting":"indoors","target":"Wuleen-Sei"}
+{"quest_id":"quest.main.mq03","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"security","use":"open-a-strongbox","setting":"indoors","note":"the ledger in her strongbox"}
+{"quest_id":"quest.main.mq03","stages_ord":4,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"each line of the case is gated on the thing held (C-item): the strap, the gum, the ledger"}
+{"quest_id":"quest.main.mq03","stages_ord":4,"approaches_ord":1,"ord":0,"skill":"alchemy","use":"test-a-sample","setting":"open-ground","note":"at the landing's table: the gum is sap and ash, a made thing, which Nesh-Deeka will not take on the player's word alone"}
+{"quest_id":"quest.main.mq03","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","setting":"indoors","target":"Nesh-Deeka"}
+{"quest_id":"quest.main.mq03","stages_ord":5,"approaches_ord":1,"ord":0,"skill":"mercantile","use":"settle-an-owing","setting":"hearing","note":"the gang's months struck off the copy, paid with the player's own months of service"}
+{"quest_id":"quest.main.mq04","stages_ord":0,"approaches_ord":0,"ord":0,"skill":"sneak","use":"sneak-past","setting":"open-ground","target":"beasts","note":"lurker sharks and alligators by the road (BM&V, fixed)"}
+{"quest_id":"quest.main.mq04","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"destruction","use":"burn-a-nest","setting":"open-ground","target":"vermin","note":"the leech bed on the root"}
+{"quest_id":"quest.main.mq04","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"alchemy","use":"test-a-sample","setting":"open-ground","note":"the leech: its belly is sap"}
+{"quest_id":"quest.main.mq04","stages_ord":3,"approaches_ord":0,"ord":0,"skill":"sneak","use":"spy","setting":"by night","target":"Mee-Vei"}
+{"quest_id":"quest.main.mq04","stages_ord":3,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"persuade","target":"Mee-Vei","note":"he tells of the watch and the three on a Speech check, or when shown the gum"}
+{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"sneak","use":"follow","setting":"open-ground"}
+{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":1,"ord":0,"skill":"long-blade","use":"clear-a-place","target":"a rival crew","note":"three cultists at a fixed level (D2)"}
+{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":2,"ord":0,"skill":"sneak","use":"steal","setting":"by night","note":"the chest of jars taken while they sleep"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"the clearing line needs the jars and either the leech or the gum (C-item)"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"intimidate","target":"Nurwul-Neel","note":"the An-Xileel will take the tree in hand"}
+{"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":0,"ord":0,"skill":"marksman","use":"snipe","setting":"height","target":"pirates","note":"from the ship's deck"}
+{"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":1,"ord":0,"skill":"spear","use":"fight","target":"pirates"}
+{"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":2,"ord":0,"skill":"sneak","use":"pickpocket","target":"pirates","note":"the copy, from the leader, if the player closes unseen; otherwise it is on his body"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"block","use":"protect","target":"beasts","note":"the escorts can die; the walk goes on without them, and the Reed's file says so"}
+{"quest_id":"quest.main.mq05","stages_ord":3,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","target":"the town watch","note":"the gate guards admit a stranger from the marsh on Nesh-Deeka's token, or on a Speech check"}
+{"quest_id":"quest.main.mq05","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","setting":"before witnesses (a council, a hearing, a household)","target":"Kaska-Meen","note":"the grant line needs the gum or the jars held (C-item) and a Speech check (C-skill)"}
+{"quest_id":"quest.main.mq05","stages_ord":5,"approaches_ord":1,"ord":0,"skill":"mercantile","use":"bribe","target":"Ei-Tuja","note":"he preaches that a closed tree may be watched by any who mean it well; 200 gold"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"alteration","use":"water-breathe","setting":"in a flooded ruin, root-cave or under water"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"spear","use":"fight","setting":"in a flooded ruin, root-cave or under water","target":"vermin: parasite swarms in a root-cave","note":"clears the air pocket on the way"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"the samples and the tool-marks against Im-Moro's belief"}

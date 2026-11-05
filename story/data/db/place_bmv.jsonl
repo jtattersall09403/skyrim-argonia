@@ -1,3 +1,4 @@
+{"place":"place.dunmer-north.hatching-pools","settlement":"bmv.village","status":"mapped","confidence":"medium","reason":"BM&V's tribal Village (chief 084A7F, 72 leeches) hosts MQ04's hatching pools; BM&V sets it east of Lilmoth where the lore has them north (story/design/quests/act1-on-bmv.md)","source":"story/lore/regions/secondary-settlements.md"}
 {"place":"place.dunmer-north.stormhold","status":"waiting","reason":"no BM&V cell, door or editor id names Stormhold","source":"story/lore/stormhold.md"}
 {"place":"place.dunmer-north.thorn","status":"waiting","reason":"no BM&V cell, door or editor id names Thorn","source":"story/lore/thorn.md"}
 {"place":"place.hist-heartland.greenspring","status":"waiting","reason":"no BM&V cell, door or editor id names Greenspring","source":"story/lore/regions/secondary-settlements.md:73"}

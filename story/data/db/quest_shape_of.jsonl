@@ -1063,6 +1063,7 @@
 {"quest_id":"quest.main.mq01","ord":1,"value":"RITE"}
 {"quest_id":"quest.main.mq03","ord":0,"value":"RECKONING"}
 {"quest_id":"quest.main.mq04","ord":0,"value":"CONTAMINATION"}
+{"quest_id":"quest.main.mq04","ord":1,"value":"MISSING"}
 {"quest_id":"quest.main.mq05","ord":0,"value":"NEGOTIATION"}
 {"quest_id":"quest.main.mq06","ord":0,"value":"MISSING"}
 {"quest_id":"quest.main.mq07","ord":0,"value":"FRAUD"}

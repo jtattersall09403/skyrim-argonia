@@ -9,6 +9,24 @@
 {"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
 {"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
+{"quest_id":"quest.main.mq01","source":"bmvCells","value":"bmv_cell 00591F Dock1, 00596F Lilmoth, 005A0B Pussbottom, 005A0D LilmothHist, 005919 HereguardPlantation"}
+{"quest_id":"quest.main.mq01","source":"bmvPeople","value":"bmv_placement 02A1E7 Flaa Heet, 02A204-02A206 and 02A208-02A209 (WE adventurers and thieves at LilmothHist), 02A207 Deep-In-His-Cups, 00AC8E Argonian Boat Captain at Hereguard"}
+{"quest_id":"quest.main.mq01","source":"lore"}
+{"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
+{"quest_id":"quest.main.mq03","source":"bmvCells","value":"bmv_cell 005919 HereguardPlantation, 00591F Dock1, 005A0B Pussbottom, 0FE8B7 01CabinIntsiningDUPLICATE002 (door 0FE95B), 01Cavebig (orphan, census)"}
+{"quest_id":"quest.main.mq03","source":"bmvPeople","value":"bmv_placement 015193, 015195 Manor Servant; 0AA64F, 0AA650 Merchant; 00AC8E Argonian Boat Captain"}
+{"quest_id":"quest.main.mq03","source":"cultureSheets"}
+{"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka, Never-Writes-Twice)"}
+{"quest_id":"quest.main.mq04","source":"bmvCells","value":"bmv_cell 03978F Village; trail cells 03978D (22,-5), 0397CD (22,-7), 07A6BC (26,-8); camp 0954C7 (28,-7)"}
+{"quest_id":"quest.main.mq04","source":"bmvPeople","value":"bmv_placement 084A7F Argonian Chief, 084A7B-084A91 tribal Argonians and children; Leech x72 (084AD7 first); removed under a parent that stays off (decision 0006): SoM_00EncDraugrzombiez1 x8 (084AF9 first), 00Corpseleech (draugr race) 07F92F, 07F931, 07F932, 07F933, 0Namith \"Condemed\" (dragon priest race) 120E0A, 120E0B"}
+{"quest_id":"quest.main.mq04","source":"cultureSheets"}
+{"quest_id":"quest.main.mq04","source":"lore"}
+{"quest_id":"quest.main.mq05","source":"bmvCells","value":"bmv_cell 0D794B Helstrom, 1DE4A1 01ArgonianHouseinside, 2076BB 01cellDUPLICATE002; bmv_settlement bmv.dock5; bmv.lilmoth (ship 01Ship)"}
+{"quest_id":"quest.main.mq05","source":"bmvDoors","value":"bmv_door into 1DE4A1: 1E42B2-1E42B6 (Helstrom), 1E42B7-1E42B9 (dock5, locked), 1E44AE (-7,16, locked); 2076D0 (the hall)"}
+{"quest_id":"quest.main.mq05","source":"bmvPeople","value":"none at Helstrom or on the walk (census); creature bases for the walk from bmv_placement at bmv.temple: Megalanian 103C91, Leopard 103C96"}
+{"quest_id":"quest.main.mq05","source":"cultureSheets"}
+{"quest_id":"quest.main.mq05","source":"lore"}
+{"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Ei-Tuja, Kaska-Meen, Never-Writes-Twice)"}
 {"quest_id":"quest.mr.mr01","source":"catalogue","value":"world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets"}
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
