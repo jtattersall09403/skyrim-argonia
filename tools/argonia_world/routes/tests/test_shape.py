@@ -110,7 +110,7 @@ def test_deck_span_lies_between_the_seats():
     seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, 50 * S.MPP], "from_m": -0.3, "half_width_m": 3.0}
              for k, cx in enumerate((50.0, 60.0))]
     m = S.deck_span((101, 101), seats)
-    assert m[50, 51:60].all() and not m[50, 49] and not m[50, 61] and not m[40, 55]
+    assert m[50, 52:59].all() and not m[50, 51] and not m[50, 59] and not m[40, 55]  # inset SEAT_UNDER_SAMPLES
 
 
 def test_bridge_on_a_climbing_road_seats_the_whole_axis():
@@ -131,3 +131,31 @@ def test_bridge_on_a_climbing_road_seats_the_whole_axis():
     f = np.minimum(np.maximum(h, lo), hi)
     out = K.seat_census(f, seats)
     assert not any(q["red"] for q in out), out
+
+
+def test_bridge_whose_ends_differ_by_4_m_ramps_the_lower_end():
+    """One end's corridor 4 m over the other's: the deck is the higher end's, the lower seat a ramp up to it, both
+    seats on the census's bilinear axis within the bar, the ground under the deck clear of it."""
+    from tools.argonia_world.routes import census as K
+    n = 120
+    y, x = np.mgrid[0:n + 1, 0:n + 1].astype(np.float64)
+    chan = (x >= 58) & (x <= 62)
+    h = np.where(x < 60, 64.0, 60.0)
+    h[chan] = 55.0
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
+    hi[chan] = 55.0
+    road = [(np.array([[10.0, n / 2], [n - 10.0, n / 2]]), 4.5 / S.MPP)]
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, n / 2 * S.MPP], "z_m": None, "heading": 90.0,
+              "centre_m": [60 * S.MPP, n / 2 * S.MPP], "yaw": 0.0, "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0}
+             for k, cx in enumerate((55.0, 65.0))]
+    decks = S.bridge_decks(h, seats)
+    assert decks[0]["deck_m"] == 64.0
+    S.bridge_seats(seats, lo, hi, keep=chan | S.deck_span(h.shape, seats), corridor_m=S.corridor(h.shape, road), h=h,
+                   keep_ch=chan)
+    from tools.argonia_world.terrain.generate import limit
+    f, _ = limit(np.minimum(np.maximum(h, lo), hi), lo, hi, 6.8)
+    out = K.seat_census(f, seats)
+    assert not any(q["red"] for q in out), out
+    assert (f[n // 2, 57:64] <= 64.0 - S.DECK_CLEAR_M + 1e-9).all(), f[n // 2, 55:66]
+    g = np.abs(np.diff(f[n // 2, 68:])) / S.MPP  # the lower road eased up to the deck
+    assert g.max() <= S.GRADE_MAX + 1e-6, g.max()

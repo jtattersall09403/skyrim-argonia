@@ -725,7 +725,8 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
         from tools.argonia_world.routes.shape import bridge_decks, bridge_seats, corridor
         hc = np.minimum(np.maximum(h, lo), hi)
         decks = bridge_decks(hc, inp.seats)
-        bs = bridge_seats(inp.seats, lo, hi, keep=chan | span, corridor_m=corridor(lo.shape, inp.roads), h=hc)
+        bs = bridge_seats(inp.seats, lo, hi, keep=chan | span, corridor_m=corridor(lo.shape, inp.roads), h=hc,
+                          keep_ch=chan)
         del hc
         st["bridge_seats"] = bs["stats"]
         role[bs["seated"] & (role == 1)] = 3

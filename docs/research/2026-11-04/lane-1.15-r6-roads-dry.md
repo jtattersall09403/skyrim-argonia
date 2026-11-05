@@ -143,3 +143,21 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
 - Fix: the decks and seats now run after the sites, on the ground the road pass starts from.
 - L2 test `test_bridge_on_a_climbing_road_seats_the_whole_axis`: a road climbing 0.6 m a metre from the channel, deck from bridge_decks, the seat census green.
 - Carried by the next land rebuild.
+
+## Round 9: one level deck over ends that differ by metres (sixth pass: gideon end 0 0.64 m, end 1 4.38 m; glenbridge end 1 0.9 m)
+- gideon-step ground along the deck axis on the sixth pass. t is metres from end 0 toward end 1; end 1 is at t = 17; the deck is 71.86 m.
+  - t = -4..0: 72.5, 71.86, 71.86, 71.94, 72.37
+  - t = 1..3, under the deck: 72.7, 72.77, 72.57
+  - t = 5..14: falls from 69.3 to 55.6, the step's channel
+  - t = 15..18: 59.6, 61.9, 66.2, 70.65
+  - t = 19 on: 71.86, then up to 72.4
+- Two causes, both on the 1.83 m grid:
+  1. The 0.3 m seat under each deck end is under one sample. The census's bilinear ground at the deck end mixed in the free samples under the deck: 66.2 m at t = 17, the end 1 red.
+  2. The ground under the deck was free for the road pass, which raised it to 72.7 m, through the deck.
+- Rule (0034: Skyrim.esm's Bridge01 ends stand 2.97 m over the land and the road climbs to the level deck):
+  - the deck is the higher end's corridor height (bridge_decks, the seat axes' highest ground);
+  - each seat is held whole at the deck, from 1.5 samples (2.7 m) under the deck to 4 m beyond, so the lower end is a ramp up to the deck and its ease continues at GRADE_MAX;
+  - the ground under the deck between the seats, outside the step's channel, is held 1.0 m under the deck top;
+  - the channel keeps its bed and water.
+- L2 test `test_bridge_whose_ends_differ_by_4_m_ramps_the_lower_end`: deck = the higher end, both seats green on the census's bilinear axis, under-deck clear by 1 m, the lower road eased within GRADE_MAX.
+- Carried by the next land pass.

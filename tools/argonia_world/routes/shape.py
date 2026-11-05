@@ -264,6 +264,9 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
 CAUSEWAY_SHOULDER_M = 6.0  # the corridor held dry: the road's core plus this each side (the pass's fade)
 CAUSEWAY_M = 0.5  # the corridor's ground stands this far above its cell's highest water (planner, 2026-11-04 20:15)
 FORD_M = 0.3  # a reach crossing's bed under its level, at most (Skyrim.esm's road fords: p50 0.16 m, max 1.23 m)
+SEAT_UNDER_SAMPLES = 1.5  # a seat runs this many samples under its deck at least: the 0.3 m seat is under one
+# sample, so the bilinear ground at the deck's end mixed the free samples under the deck (gideon-step end 1: 4.4 m)
+DECK_CLEAR_M = 1.0  # the ground under a deck between its seats stands at least this far under the deck's top
 FORD_GAP = 2  # samples between a ford and the causeway left to the ground (the ramp from the top to the bed)
 
 
@@ -317,7 +320,7 @@ def deck_span(shape_, seats: list[dict]) -> np.ndarray:
         (ax, ay), (bx, by) = ([float(v) / MPP for v in q["at_m"]] for q in qs)
         ln = max(float(np.hypot(bx - ax, by - ay)), 1e-9)
         ux, uy = (bx - ax) / ln, (by - ay) / ln
-        inset = -qs[0]["from_m"] / MPP
+        inset = max(-qs[0]["from_m"] / MPP, SEAT_UNDER_SAMPLES)
         w_ = qs[0]["half_width_m"] / MPP
         r = int(np.ceil(ln / 2 + w_)) + 1
         cx, cy = (ax + bx) / 2, (ay + by) / 2
@@ -353,12 +356,15 @@ def bridge_decks(h, seats: list[dict]) -> list[dict]:
     return out
 
 
-def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None, h=None) -> dict:
+def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None, h=None, keep_ch=None) -> dict:
     """Each bridge end's seat (bridge_crossings, decks by bridge_decks): the corridor raised to the deck's top z_m
     from from_m (under the deck) to to_m beyond the end, half_width_m across, and eased up to it at GRADE_MAX beyond
     (a lo cone, inside the road's corridor `corridor_m` when given). A seat never cuts: where the ground `h` already
     stands above the deck it is left; only a seat sample at or under the deck is pinned to it. Between the two seats
-    the channel (`keep`) is never touched, so the step's water shows under the deck. lo, hi in place."""
+    the channel (`keep`) is never touched, so the step's water shows under the deck; the rest under the deck
+    (outside the step's channel `keep_ch`) is held DECK_CLEAR_M under it. The deck is the higher end's corridor
+    (bridge_decks), so the lower end's seat is a ramp up to it, as Skyrim.esm's roads climb to a level deck
+    (Bridge01's ends 2.97 m over the land). lo, hi in place."""
     from tools.argonia_world.terrain.generate import chamfer
     keep = np.zeros(lo.shape, bool) if keep is None else keep
     ends: dict = {}
@@ -378,11 +384,12 @@ def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None, h=None) 
         yy, xx = np.mgrid[r0:r1 + 1, c0:c1 + 1].astype(np.float64)
         along = ((xx - ex) * ux + (yy - ey) * uy) * MPP
         across = np.abs(-(xx - ex) * uy + (yy - ey) * ux) * MPP
-        box = (along >= q["from_m"]) & (along <= q["to_m"]) & (across <= q["half_width_m"]) & ~keep[sub]
+        box = (along >= min(q["from_m"], -SEAT_UNDER_SAMPLES * MPP)) & (along <= q["to_m"]) & \
+            (across <= q["half_width_m"]) & ~keep[sub]
         z = q["z_m"]
-        pin = box if h is None else box & (h[sub] <= z + 1e-6)
-        lo[sub] = np.where(box, np.maximum(lo[sub], z), lo[sub])
-        hi[sub] = np.where(pin, z, np.where(box, np.maximum(hi[sub], z), hi[sub]))
+        pin = box  # the deck is the seat axis's highest corridor ground: the whole seat is held at it
+        lo[sub] = np.where(pin, z, lo[sub])
+        hi[sub] = np.where(pin, z, hi[sub])
         held[sub] |= box
         n_seat += int(box.sum())
         # the ease: a lo cone from the seat falling GRADE_MAX a metre (8-neighbour chamfer distance); raise only
@@ -393,7 +400,18 @@ def bridge_seats(seats: list[dict], lo, hi, keep=None, corridor_m=None, h=None) 
         dz = GRADE_MAX * np.where(np.isfinite(d), d, 0.0) * MPP
         lo[sub] = np.where(m, np.maximum(lo[sub], z - dz), lo[sub])
         hi[sub] = np.where(m, np.maximum(hi[sub], lo[sub]), hi[sub])
-    return {"seated": held, "stats": {"seats": len(seats), "seat_samples": n_seat}}
+    # under each deck between its seats: the ground held DECK_CLEAR_M under the deck's top (never through the deck;
+    # the step's channel keeps its own bed)
+    n_under = 0
+    for qs in ends.values():
+        if len(qs) != 2 or qs[0].get("z_m") is None:
+            continue
+        under = deck_span(lo.shape, qs) & ~keep_ch if keep_ch is not None else deck_span(lo.shape, qs)
+        cap = qs[0]["z_m"] - DECK_CLEAR_M
+        hi[under] = np.minimum(hi[under], cap)
+        lo[under] = np.minimum(lo[under], hi[under])
+        n_under += int(under.sum())
+    return {"seated": held, "stats": {"seats": len(seats), "seat_samples": n_seat, "under_deck_samples": n_under}}
 
 
 def corridor(shape_, roads, extra_m: float = CAUSEWAY_SHOULDER_M) -> np.ndarray:
