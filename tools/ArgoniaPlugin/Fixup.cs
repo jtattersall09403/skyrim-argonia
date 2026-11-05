@@ -26,7 +26,8 @@ static class Fixup
         var tmp = Path.Combine(Path.GetDirectoryName(Path.GetFullPath(esp))!, "fixup");
         Directory.CreateDirectory(tmp);
         var outp = Path.Combine(tmp, Path.GetFileName(esp));
-        mod.BeginWrite.ToPath(outp).WithLoadOrder(paths.Select(p => ModKey.FromFileName(Path.GetFileName(p))).Append(mod.ModKey)).WithNoDataFolder().Write();
+        mod.BeginWrite.ToPath(outp).WithLoadOrder(paths.Select(p => ModKey.FromFileName(Path.GetFileName(p))).Append(mod.ModKey)).WithNoDataFolder()
+            .WithExtraIncludedMasters(mod.ModHeader.MasterReferences.Select(m => m.Master).ToArray()).Write();  // keep the seeded masters
         File.Move(outp, esp, true); Directory.Delete(tmp);
         Console.WriteLine($"fixup: {n} nodes' conditions from the winners");
     }

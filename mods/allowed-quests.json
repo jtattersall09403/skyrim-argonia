@@ -38,6 +38,14 @@
    "reason": "BM&V's own quest (01Captain, the ship captain); BM&V's world needs it"
   },
   {
+   "plugin": "Valenwood.esp",
+   "quests": [
+    "0MainQuest1",
+    "AANEWQuestM"
+   ],
+   "reason": "BM&V's Valenwood arrival quests (0MainQuest1 'Valenwood', stages 0 and 20, two guard topics; AANEWQuestM 'Welcome To Valenwood', stages 0, 10 and 20, one 'Are you ok?' topic): no scripts, aliases, scenes or objectives, so they only hold the greeting a player meets on arrival in Valenwood; BM&V's world, no Skyrim story and no courier. Black Marsh North.esp and BosmerArmorMATY743.esm hold no quests and no story-manager nodes (survey 2026-11-05)"
+  },
+  {
    "plugin": "ccBGSSSE001-Fish.esm",
    "quests": [
     "ccBGSSSE001_DLCDetectionQuest",

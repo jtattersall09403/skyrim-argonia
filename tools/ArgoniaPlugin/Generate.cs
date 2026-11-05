@@ -9,8 +9,8 @@ using Mutagen.Bethesda.Skyrim;
 static class Generate
 {
     static readonly ModKey Ours = ModKey.FromFileName("Argonia.esp");
-    static readonly ModKey Bmv = ModKey.FromFileName("Black Marsh.esm");
-    // The opening's spot: a navmesh triangle's centre on Lilmoth's dock walkway, BM&V cell Dock1 (1,-2), NAVM 079823.
+    // The opening's spot: a navmesh triangle's centre on Lilmoth's dock walkway, BM&V cell Dock1 (1,-2), NAVM 079823
+    // (still the winner with Black Marsh North.esp loaded; the read-back checks it).
     static readonly P3Float Spot = new(5403f, -6109f, 66f);
 
     public static void Run(string outPath, string[] paths)
@@ -31,7 +31,8 @@ static class Generate
         global.Data = 0;
         var opening = mod.Quests.AddNew("ARG_Opening");
         var world = new Worldspace(FormKey.Factory("23D689:Black Marsh.esm"), SkyrimRelease.SkyrimSE);
-        var bmWorld = mods.First(m => m.ModKey == Bmv).Worldspaces.First(w => w.FormKey == world.FormKey);
+        // The load order's winning BlackMarsh (Black Marsh North.esp overrides BM&V's): our override starts from it.
+        var (bmWorld, worldFrom) = Survey.Winners<IWorldspaceGetter>(mods)[world.FormKey];
         var marker = new PlacedObject(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE)
         {
             EditorID = "ARG_OpeningMarker",
@@ -133,7 +134,9 @@ static class Generate
                 }
             }
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
-        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().Write();
+        // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
+        // always loads after it.
+        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().WithExtraIncludedMasters(worldFrom).Write();
         Console.WriteLine($"wrote {outPath}: {mod.EnumerateMajorRecords().Count()} records");
     }
 }

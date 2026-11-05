@@ -21,7 +21,7 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   stage 0, no aliases, scenes or Helgen stages, whose fragment (`papyrus/ARG_QF_MQ101.psc`) starts `ARG_Opening` and
   stops `MQ101`. `ARG_Opening`'s script (`papyrus/ARG_StartQuestScript.psc`) waits for game mode, moves the player to
   our XMarker `ARG_OpeningMarker` on Lilmoth's dock walkway (BM&V `BlackMarsh` worldspace, cell `Dock1` (1,-2), at
-  5403,-6109,66, a triangle centre of BM&V's navmesh 079823; a persistent reference in the world's persistent cell),
+  5403,-6109,66, a triangle centre of BM&V's navmesh 079823; a persistent reference in the world's persistent cell; re-derived 2026-11-05 with BM&V staged whole: Black Marsh North.esp overrides the `BlackMarsh` worldspace and cell `Dock1` but not navmesh 079823 or the pier, so the marker stays put on the winning navmesh at its height, our worldspace override starts from Black Marsh North's record and that plugin is a master after Black Marsh.esm; the read-back checks all three),
   takes everything away, opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
   (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`) and sets stage 10, the one journal line ("I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.", through
   text-review). Records: `plugin/Argonia/` (Spriggit YAML,
@@ -41,8 +41,8 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   (inheritance, guild letters), World Interactions, bounties, radiant and favour quests, world encounters, main-quest
   dragons, civil-war garrisons and scenes, guild radiants, Dawnguard's vampire attacks and scouts, Dragonborn's cultist
   ambush and world encounters, Hearthfire's letters, Saints & Seducers' world encounters. MQ102 on never starts: only MQ101 starts it. The list and its
-  reasons: `tools/ArgoniaPlugin/shutdown.json`; what stays: `mods/allowed-quests.json` (576 Start Game Enabled quests
-  in the staged load order: 92 off, 146 the mods' (Survival's only quest is the mode itself, Curios' only one its
+  reasons: `tools/ArgoniaPlugin/shutdown.json`; what stays: `mods/allowed-quests.json` (578 Start Game Enabled quests
+  in the staged load order: 92 off, 148 the mods' (Valenwood.esp's two arrival-greeting quests kept as BM&V's world; Black Marsh North.esp and the Bosmer armour master hold no quests or nodes; Survival's only quest is the mode itself, Curios' only one its
   stock), 338 vanilla dialogue, dungeon and mechanics quests that start nothing by themselves). The four free
   Creation Club files are masters (ruling via the coordinator, 2026-11-05). Two nodes (MG01ShoutNode,
   CompanionsJorrvaskrTheftNode) hold GetVMQuestVariable conditions that Spriggit 0.41's YAML loses one of; `make

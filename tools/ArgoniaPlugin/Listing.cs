@@ -85,6 +85,29 @@ static class Listing
                 if (n.Conditions.Count != w.Conditions.Count + 1 || n.Parent.FormKey != w.Parent.FormKey || n.PreviousSibling.FormKey != w.PreviousSibling.FormKey)
                     errs.Add($"{n.EditorID ?? n.FormKey.ToString()}: differs from the winner beyond the gate");
             }
+            // The worldspace: the winner's own fields, and its plugin a master.
+            var (ww, wfrom) = Survey.Winners<IWorldspaceGetter>(lo)[ws.FormKey];
+            var wmask = new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false, SubCellsTimestamp = false };  // the group stamp is the writer's
+            if (!ws.DeepCopy(wmask).Equals(ww.DeepCopy(wmask))) errs.Add($"{ws.EditorID}: not the winner's record ({wfrom}): {ws.DeepCopy(wmask).GetEqualsMask(ww.DeepCopy(wmask))}");
+            var masters = mod.ModHeader.MasterReferences.Select(m => m.Master).ToList();
+            if (!masters.Contains(wfrom)) errs.Add($"{ws.EditorID}: its winner {wfrom} is not a master");
+            // Every overridden record's winning plugin is a master, and the masters are in load order.
+            foreach (var r in mod.EnumerateMajorRecords().Where(r => r.FormKey.ModKey != mod.ModKey))
+                if (!masters.Contains(r.FormKey.ModKey)) errs.Add($"{r.EditorID}: {r.FormKey.ModKey} not a master");
+            var pos = masters.Select(m => lo.FindIndex(x => x.ModKey == m)).ToList();
+            if (pos.Any(i => i < 0)) errs.Add("a master is not in the load order: " + string.Join(", ", masters.Where((m, i) => pos[i] < 0)));
+            else if (!pos.SequenceEqual(pos.OrderBy(i => i))) errs.Add("masters out of load order");
+            // The marker stands on a winning navmesh triangle of its worldspace, within 16 units of its height.
+            var mk = mod.EnumerateMajorRecords<IPlacedObjectGetter>().Single(r => r.EditorID == "ARG_OpeningMarker");
+            var spot = mk.Placement!.Position;
+            var wsNav = ww.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items).SelectMany(c => c.NavigationMeshes).Select(n => n.FormKey).ToHashSet();
+            foreach (var m in lo) foreach (var w2 in m.Worldspaces.Where(w2 => w2.FormKey == ws.FormKey))
+                foreach (var c in w2.SubCells.SelectMany(b => b.Items).SelectMany(sb => sb.Items)) foreach (var n in c.NavigationMeshes) wsNav.Add(n.FormKey);
+            var under = Seat.Under(lo, spot).Where(h => wsNav.Contains(h.Navmesh) && Math.Abs(h.Z - spot.Z) <= 16).ToList();
+            if (under.Count == 0) errs.Add("ARG_OpeningMarker: no winning navmesh triangle of its worldspace under it");
+            sb.AppendLine();
+            sb.AppendLine($"Worldspace {ws.EditorID}: the winner's record ({wfrom}), a master. ARG_OpeningMarker at {spot}: " +
+                          string.Join("; ", under.Select(h => $"on navmesh `{h.Navmesh.IDString()}` ({h.From}, the winner) triangle {h.Triangle}, its height {h.Z:F1}")) + ".");
             sb.AppendLine();
             sb.AppendLine($"Compared with the load order's winners ({loadOrder.Length} plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.");
         }

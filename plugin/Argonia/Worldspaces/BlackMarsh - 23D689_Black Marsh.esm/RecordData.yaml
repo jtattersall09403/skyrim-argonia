@@ -29,7 +29,7 @@ TopCell:
   Flags:
   - HasWater
   Grid:
-    Flags: -1403458816
+    Flags: -1536086528
   WaterHeight: 3.4028235E+38
   Persistent:
   - MutagenObjectType: PlacedObject
@@ -44,4 +44,4 @@ TopCell:
   MajorFlags:
   - Persistent
   - 0x40000
-SubCellsUnknown: 16843009
+SubCellsUnknown: 1

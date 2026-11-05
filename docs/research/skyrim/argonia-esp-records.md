@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm. 203 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp. 203 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -29,6 +29,8 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | hearthfire letters | story-manager node | gated off | BYOHHouseChangeLocationNode `00308C`, BYOHAdoptionQuestNode `003F7A`, BYOHHouseNode `010A49` |
 | creation club | story-manager node | gated off | BGSSSE025_WEQuestNode `220E6E` |
 
-Compared with the load order's winners (29 plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.
+Worldspace BlackMarsh: the winner's record (Black Marsh North.esp), a master. ARG_OpeningMarker at 5403, -6109, 66: on navmesh `079823` (Black Marsh.esm, the winner) triangle 6, its height 66.0.
+
+Compared with the load order's winners (32 plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.
 
 Read-back: every override carries its change (MQ101 one stage; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate).
