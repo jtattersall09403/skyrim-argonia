@@ -88,6 +88,9 @@ sealed class WaterRecords
                         t.NoiseLayerThreeWindDirection = F(v, 2);
                         break;
                     case "waterReflectivity": t.WaterReflectivity = v.GetSingle(); break;
+                    case "shallowColor":
+                        t.ShallowColor = System.Drawing.Color.FromArgb(0, v[0].GetInt32(), v[1].GetInt32(), v[2].GetInt32());
+                        break;
                     case "waterFresnel": t.WaterFresnel = v.GetSingle(); break;
                     default: throw new InvalidDataException($"{S(r, "edid")}: no writer for set field {f.Name}");
                 }

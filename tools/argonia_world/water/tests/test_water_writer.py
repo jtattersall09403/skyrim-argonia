@@ -98,11 +98,13 @@ def test_water_written_and_read_back(tmp_path):
                 continue
             if "linearVelocity" in turned and s_ == "NAM0":
                 assert struct.unpack("<3f", b) == pytest.approx(turned["linearVelocity"])
-            elif turned.keys() & {"windDirections", "waterReflectivity"} and s_ == "DNAM":
+            elif turned.keys() & {"windDirections", "waterReflectivity", "shallowColor"} and s_ == "DNAM":
                 # DNAM is the winner's but the named floats: reflectivity, fresnel at 20/24; winds at 100-108
                 want_d = bytearray(tpl.first("DNAM"))
                 if "windDirections" in turned:
                     struct.pack_into("<3f", want_d, 100, *turned["windDirections"])
+                if "shallowColor" in turned:
+                    want_d[40:43] = bytes(turned["shallowColor"])
                 if "waterReflectivity" in turned:
                     struct.pack_into("<2f", want_d, 20, turned["waterReflectivity"], turned["waterFresnel"])
                 assert b == bytes(want_d), rec["edid"]
@@ -215,3 +217,12 @@ def test_black_swamp_stop_cells_carry_the_black_type():
             got[(c["x"], c["y"])] = c["waterType"]
     assert set(got) == frame
     assert {k for k, v in got.items() if v != black} == set()
+
+
+def test_same_level_seam_shares_the_shallow_colour():
+    """The sea and its brackish rim meet at one level along cell lines: one shallow colour, as Skyrim.esm's three."""
+    if not (layer.GAME_DATA / "Skyrim.esm").exists():
+        pytest.skip("no game data")
+    recs = {r["edid"]: r for r in layer.records()}
+    got = recs[layer.type_edid("brackish")].get("set", {}).get("shallowColor", layer.shallow_of("brackish"))
+    assert got == layer.shallow_of("sea")

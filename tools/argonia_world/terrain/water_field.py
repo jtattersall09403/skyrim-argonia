@@ -34,6 +34,21 @@ SHORE_UP = (0.0, 0.23, 2.7, 6.4, 13.0)
 # the plane, 82 % wet against 39 % footprint). Skyrim.esm's ground stands 2.7 m over its water 5 samples from the shore
 # (SHORE_UP), so a river's water keeps to its channel; past the band the ground is raised as a hollow
 FLOOD_BAND = 6
+# Skyrim.esm's shore floor (lane 1.15-r6-shores-slope, probes/vanilla_shore_profile.py, the 15 largest inland
+# levels, dry vertices inside the water cells): the 10th percentile of the ground's rise over the level (m) by
+# distance from the water (vertices). Nine in ten of vanilla's shore stands over this line: the ground falls through
+# the waterline, never a plate at the level. Ours had a shelf at the freeboard (the floor plate base + floor, the gap
+# snap, lo = level + freeboard): p10 0.30-0.50 m flat from 5 to 15 m out at the round-6 tarn and sea-far stands
+FLOOR_D = (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20)
+FLOOR_UP = (0.0, 0.0, 0.23, 0.46, 0.71, 1.00, 1.31, 1.77, 2.31, 2.74, 3.43, 4.51)
+FLOOR_FAR = 20  # samples: the floor reaches this far from the water, then fades back to the ground over as far again
+# a water cell's edge on a dry cell: vanilla's upper water stops a median 9 vertices short of a closed edge
+# (probes/vanilla_level_edges.py), so the edge stands the floor's 9-vertex rise over the water and the bank falls from
+# it at EDGE_GRADE (vanilla's p10 grade); at LIFT_GRADE and the freeboard the waterline ran one sample inside the cell
+# line, ruler-straight, with a stepped notch at each cell corner (round-6 sea-far s0/s5)
+EDGE_UP = 2.06
+MARSH_FLOOR = 0.5
+EDGE_GRADE = 0.3
 BAND = 3  # samples: a clipped line's crest half-width, so the cell line is no ridge (trial: lattice 2.55 -> 1.40 at 3,
 # 1.49 at 9); the upper water stops short of the line as Skyrim.esm's does (probes/vanilla_level_edges.py)
 
@@ -41,6 +56,13 @@ BAND = 3  # samples: a clipped line's crest half-width, so the cell line is no r
 def shore_rise(d):
     """The vanilla shore profile: metres over the water at `d` samples in from the shore line."""
     return np.interp(d, SHORE_D, SHORE_UP)
+
+
+def shore_floor(d):
+    """Skyrim.esm's shore floor: metres over the water at `d` samples from it (0 past FLOOR_FAR, faded over as far)."""
+    up = np.interp(d, FLOOR_D, FLOOR_UP)
+    fade = np.clip(1.0 - (d - FLOOR_FAR) / FLOOR_FAR, 0.0, 1.0)
+    return np.where(np.isfinite(d), up * fade, 0.0)
 
 
 def cone(src: np.ndarray, amt: np.ndarray, grade: float) -> np.ndarray:
@@ -94,8 +116,11 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
         dg = np.where(gully, np.where(np.isfinite(dg), dg, 32), 0)
         gcut = np.where(gully, np.minimum(G.bed_depth(np.full(h.shape, G.TYPES.index("blackwater")), dg), GULLY_M), 0.0)
         h1 = h1 - G.blur(gcut, SOFT)
-    # 2. lift: the clipped edges above the upper water, the bank climbing to them from both sides
-    lf = lift_to(h1, src, need, LIFT_GRADE, band=BAND)
+    # 2. lift: the clipped edges above the upper water, the bank climbing to them from both sides; an edge on a dry
+    # cell stands the shore's 9-vertex rise over the water and falls at vanilla's grade, so the water stops short of it
+    edge = src & touch
+    lf = np.maximum(lift_to(h1, src & ~edge, need, LIFT_GRADE, band=BAND),
+                    lift_to(h1, edge, need + EDGE_UP, EDGE_GRADE, band=BAND))
     h1 = h1 + lf
     # 3. under-level ground not joined to the raster water (a hollow past the basin's pass, a low corner of the
     # cell): the cell's plane would draw a square pool over it, so it is lifted above the water the same way
@@ -119,6 +144,22 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
         h1 = h1 + lf2
         lf = lf + lf2
         src = src | iso
+    # 4. the shore floor: dry ground near the water stands at least Skyrim.esm's p10 rise over it (FLOOR_UP) plus the
+    # freeboard, so the land falls continuously through the waterline: no shelf at the level for the plane to meet in a
+    # straight line, nothing for the freeboard snap below to flatten. The level carries out over a dry cell's edge
+    # (the nearest water's), so the ground beside a closed edge rises too
+    wet0 = has & ~src & (h1 < vmin - G.FREEBOARD_M)
+    dw, lvw = G.chamfer(wet0, 2 * FLOOR_FAR, np.where(wet0, vmax, np.nan))
+    lvw = np.where(has, vmax, lvw)
+    # a marsh's shore rises at half a lake's (SHORE_RISE_U: Morthal's 326 u at 10 vertices against Ilinalta's 648)
+    marsh = np.isin(tsamp, [G.TYPES.index("brackish"), G.TYPES.index("blackwater")])
+    up = shore_floor(dw) * np.where(marsh, MARSH_FLOOR, 1.0)
+    fl = np.where(~wet0 & ~chz & np.isfinite(lvw), lvw + G.FREEBOARD_M + up, -np.inf)
+    sf = G.blur(np.maximum(fl - h1, 0.0), 1.0)
+    sf = np.where(np.isfinite(fl), np.maximum(sf, fl - h1), 0.0)
+    sf = np.maximum(sf, 0.0)
+    h1 = h1 + sf
+    lf = lf + sf
     h2 = h1
     # the footprint is the ground's contour: under the cell's lowest water is wet
     wet = has & ~src & (h2 < vmin - G.FREEBOARD_M)
@@ -139,4 +180,5 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
     role[wet] = 1
     role[has & ~wet] = 3
     lo[has & ~wet] = np.maximum(lo[has & ~wet], vmax[has & ~wet] + G.FREEBOARD_M)
-    return h2, role, lo, hi, {"lift": lf, "carve": cf, "src": src, "iso": iso, "gap_up": gap & ~gdn, "gap_dn": gdn}
+    lo[fl > lo] = fl[fl > lo]
+    return h2, role, lo, hi, {"floor": sf, "lift": lf, "carve": cf, "src": src, "iso": iso, "gap_up": gap & ~gdn, "gap_dn": gdn}

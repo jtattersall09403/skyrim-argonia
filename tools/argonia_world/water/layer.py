@@ -159,13 +159,30 @@ def flow_set(t: str, data: Path = GAME_DATA) -> dict:
     return {"linearVelocity": [-v[0], -v[1], v[2]], "windDirections": [(a + 180.0) % 360.0 for a in d]}
 
 
+# types that meet at one level along a cell line share the shallow colour, as Skyrim.esm's DefaultWater,
+# DefaultMarshWater and DefaultMarshWaterTransition all carry 37,52,37 (lane 1.15-r6-shores-slope: 119 of Tamriel's
+# 21,162 same-level neighbour pairs differ in type, 34 of them Transition beside DefaultWater or the marsh). Tropical
+# Skyrim gives DefaultWater a cyan shallow 81,174,165 and the Transition an olive 49,56,37, so our tidal rim drew a
+# hard cyan strip at zero depth along the sea cell beside it (round-6 brackish-rim s0, y 620-660; 286 of our 287
+# same-level type seams are sea beside brackish). The brackish rim takes the sea's shallow colour; its deep stays its own
+SHALLOW_FROM = {"brackish": "sea"}
+
+
+def shallow_of(t: str, data: Path = GAME_DATA) -> list[int]:
+    d = winners(Path(data))[TYPES[t][1]][1].first("DNAM")
+    return list(d[40:43])
+
+
 def records(data: Path = GAME_DATA) -> list[dict]:
     """The WATR intermediate records (README contract; units, winners and choices resolved here)."""
     out = []
     for t in EMIT_TYPES:
         rec = {"type": "WATR", "formKey": type_key(t), "edid": type_edid(t), "template": template_of(t, data),
                "layer": "base:water", "name": TYPES[t][0], "flow": is_flow(t)}
-        if s := flow_set(t, data):
+        s = flow_set(t, data)
+        if t in SHALLOW_FROM and shallow_of(SHALLOW_FROM[t], data) != shallow_of(t, data):
+            s = {**s, "shallowColor": shallow_of(SHALLOW_FROM[t], data)}
+        if s:
             rec["set"] = s
         out.append(rec)
     return out
