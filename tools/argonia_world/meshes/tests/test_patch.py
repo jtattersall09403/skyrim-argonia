@@ -178,3 +178,15 @@ def test_bark_stretch_tail_fails_unless_owed():
     assert any("p90" in b for b in patch.bars(n, e))
     e["p90_owed"] = "measured; a re-unwrap is owed"
     assert not any("p90" in b for b in patch.bars(n, e))
+
+
+def test_the_tree_look_defects_carry_their_ops():
+    """Lane 1.15-r6-tree-look: each defect's mesh is in the table with the op that fixes it."""
+    want = {"meshes/argonia/trees/greguire/eruttree01tall.nif": {"texture_slot", "uv_scale", "clear_flags"},
+            "meshes/argonia/trees/greguire/swampplant08a.nif": {"clear_flags"},
+            "meshes/argonia/trees/smallmushroom01green.nif": {"clear_flags"},
+            "meshes/landscape/plants/esalixshrub03.nif": {"clear_flags", "vertex_colour"},
+            "meshes/landscape/trees/ztgorsebush04statwhite.nif": {"clear_flags", "vertex_colour"}}
+    got = {e["mesh"]: {k for s in e["shapes"] for k in (s.get("ops") or {})} for e in patch.load()}
+    for mesh, ops in want.items():
+        assert ops <= got.get(mesh, set()), mesh

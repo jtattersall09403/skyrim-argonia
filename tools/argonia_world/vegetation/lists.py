@@ -246,10 +246,22 @@ NOT_FLORA = ("stockade", "house", "walkway", "scaffold", "platform", "plank", "b
              "creatures\\")
 
 
+# The close classes told apart (lane 1.15-r6-tree-look, 0032): the willow curtain stood in 0.35 of the flooded forest's
+# and 0.38 of the interior swamp's stems. The willow is the seasonal floodplain's signature (AUDIT rows 9; FAMILY
+# "willow"); the interior swamp's is the broad rain-tree crown over dead snags in the pools ("dank foliage", AUDIT
+# line 156: rows 7, 12), so a weeping willow stands only in its own classes. Gorse is no Black Marsh plant (the flora
+# list, lore topics/fauna-hazards.md:92-96: cypress, mangrove, bamboo, palms, bog willow, ferns, blue moss): BM&V's
+# white gorse bush (edid 01giantmushroom) took 0.15 of the flooded forest's stems.
+SIGNATURE_ONLY = {"willow": ("flooded-forest", "deep-sink-basin")}
+NOT_BLACK_MARSH = ("gorse",)
+
+
 def admits(eco: str, f) -> bool:
     t = tags(f)
     s0 = f"{f['edid']} {f['model']}".lower()
-    if any(n in s0 for n in NOT_FLORA):
+    if any(n in s0 for n in NOT_FLORA) or any(n in s0 for n in NOT_BLACK_MARSH):
+        return False
+    if any(w in s0 and eco not in ecos for w, ecos in SIGNATURE_ONLY.items()):
         return False
     if eco in UPLAND and f["role_id"] in TREE_ROLES:
         s = f"{f['edid']} {f['model']}".lower()

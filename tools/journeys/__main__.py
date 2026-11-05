@@ -85,9 +85,9 @@ def refresh(only: set[str] | None = None) -> int:
         _reframe(b, "creature-spots", log)
     if want("tree-seat"):
         from tools.argonia_world.vegetation import tree_booth
-        tree_booth.write(Path(veg), w)
-        _reframe(b, "tree-seat", log)
-        _look(b, "tree-seat", log, lambda d: (max(6.0, d * 0.8), max(14.0, d * 1.4)))   # out from under its own crown
+        tree_booth.write(Path(veg), w, b)   # the stand rule is the booth's own (BAND_M, the aim line, the curtain):
+        p = JOURNEYS / "tree-seat.yaml"     # no re-aim after it (round 6's re-aim stood them 2.4-4.4 m off the trunk)
+        p.write_text(look.booth_standard(p.read_text()))
     if want("rock-booth"):
         from tools.argonia_world.vegetation import booth
         booth.write(Path(veg), w)

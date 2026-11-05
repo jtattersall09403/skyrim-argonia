@@ -1206,3 +1206,249 @@ meshes:
   - shape: 14
     name: JungleTree03:Leaves
     kind: leaf
+- mesh: meshes/argonia/trees/greguire/eruttree01tall.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 155FEA:King of the Murkmire.esp
+  lane: 1.15-r6-tree-look measured and patched
+  shapes:
+  - shape: 7
+    name: ErutTree01Tall:Trunk
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\snowgumbark01_n.dds
+      slot2: ''
+      stretch: 4.0
+    ops:
+      texture_slot:
+        1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+    reason: 'the streaked trunk (round-6 tree-seat 04-tree-4-argoniatreeerut05-s0): its weepingwillowbark01_d diffuse is paired
+      with snowgumbark01_n in the normal slot, so the relief streaks belong to another bark; slot 1 takes weepingwillowbark01_n,
+      the pair of its diffuse (as ErutTree01, lane 1.15-r6-veg-forms-3)'
+  - shape: 10
+    name: ErutTree01Tall:Moss.001
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\hangingmoss01_n.dds
+      slot2: ''
+      stretch: 16.4
+    ops:
+      uv_scale:
+        axis: v
+        factor: fit
+    reason: 'the trunk moss sheet''s UV stretched 16.4:1 (p90 33.3:1; the placed bark band is 3:1 to 6:1): the smeared pale-green
+      block at the trunk base in 04-tree-4-argoniatreeerut05-s0; scaled per UV island to square texels'
+  - shape: 14
+    name: ErutTreeTall01:Leaves
+    kind: leaf
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      emissive:
+      - - 0.474
+        - 0.474
+        - 0.474
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\tamira\newplants\leaves27_n.dds
+      slot2: ''
+      stretch: 1.5
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: Own_Emit grey 0.47 on the leaf (as every Erut leaf; the bar is per patched mesh)
+  p90_owed: 'the moss sheet (shape 10) after the V fit: median 2.3:1, area-weighted p90 7.5:1 (U fit the same): its hanging
+    strands are single-quad strips whose length no per-island scale squares without crushing their width; the median the eye
+    reads is fixed'
+- mesh: meshes/argonia/trees/greguire/swampplant08a.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 3A3FA4:King of the Murkmire.esp
+  lane: 1.15-r6-tree-look measured and patched
+  shapes:
+  - shape: 7
+    name: SwampPlant08
+    kind: leaf
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      emissive:
+      - - 1.0
+        - 1.0
+        - 1.0
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\tamira\newplants\tropicalplant01_n.dds
+      slot2: ''
+      stretch: 1.8
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: 'Own_Emit white 1.0 on the frond: a fully self-lit plant that draws neon lime in shade (round-6 tree-seat 05-tree-5-histtrunk01-s2,
+      ten on that line); no lore names a glow'
+  - shape: 11
+    name: SwampPlant08.001
+    kind: leaf
+  - shape: 15
+    name: SwampPlant08.002
+    kind: other
+- mesh: meshes/argonia/trees/smallmushroom01green.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 0E676C:King of the Murkmire.esp
+  lane: 1.15-r6-tree-look measured and patched
+  shapes:
+  - shape: 7
+    name: Objekt01:1:1
+    kind: other
+    before:
+      flags:
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.06
+        - 1.0
+        - 0.0
+      - 1.0
+      slot1: textures\dlc02\architecture\telvannitower\telglobe01_n.dds
+      slot2: ''
+      stretch: 1.8
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: 'Own_Emit pure lime (0.06, 1.0, 0.0) on a Telvanni globe cap: the neon-lime cluster top right of 05-tree-5-histtrunk01-s2;
+      no lore dossier names a glowing marsh fungus (world/sources/lore grep glow/luminous: none)'
+  - shape: 10
+    name: Objekt01:1:2
+    kind: other
+    before:
+      flags:
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.06
+        - 1.0
+        - 0.0
+      - 1.0
+      slot1: textures\dlc02\architecture\telvannitower\telglobe01_n.dds
+      slot2: ''
+      stretch: 1.2
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: 'as shape 7: the same lime self-light'
+  - shape: 13
+    name: Objekt04:0
+    kind: other
+- mesh: meshes/landscape/plants/esalixshrub03.nif
+  mod: bmv
+  forms:
+  - 17BCFD:Black Marsh.esm
+  lane: 1.15-r6-tree-look measured and patched
+  shapes:
+  - shape: 1
+    name: L1_PineShrub04
+    kind: leaf
+    before:
+      flags:
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\esalixshrub01_n.dds
+      slot2: ''
+      stretch: 2.6
+    ops:
+      clear_flags:
+      - Own_Emit
+      vertex_colour:
+        lum_to: 50.0
+    reason: 'the lime ground patch in 12-class-northern-transition-s0 (two on the line within 15 m): drawn luminance 73 at
+      saturation 0.5, the brightest leaf on that line (FernLarge03 64, undergrowth 62, the kapok and mega crowns 47-52); vertex
+      colour to lum 50, the crowns'' level, saturation kept; Own_Emit (black) cleared for the bar'
+- mesh: meshes/landscape/trees/ztgorsebush04statwhite.nif
+  mod: bmv
+  forms:
+  - 0D85A1:Black Marsh.esm
+  - 14FAD6:Black Marsh.esm
+  lane: 1.15-r6-tree-look measured and patched
+  shapes:
+  - shape: 1
+    name: Ivy01:0
+    kind: leaf
+    before:
+      flags:
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Soft_Lighting
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 180
+      slot1: textures\landscape\trees\egorsebranch02_n.dds
+      slot2: textures\landscape\trees\egorsebranch02white.dds
+      stretch: 1.3
+    ops:
+      clear_flags:
+      - Own_Emit
+      - Soft_Lighting
+      vertex_colour:
+        lum_to: 60.0
+    reason: 'the blown-out cream flowers (10-class-interior-swamp-s2/s4, 0.1 m off the s1 line): drawn luminance 94, soft-lit
+      with its own white diffuse as the soft-light map, so backlit it draws past white; soft lighting and the (black) Own_Emit
+      cleared and the drawn luminance taken to 60 (the placed bark median 59, lane 1.15-r5-white-trunks). Not a vanilla form: BM&V''s own 01giantmushroom (mesh_source bmv)'

@@ -1,7 +1,8 @@
 # The tree-seat journey (lane 1.15-r4-trees; owner play test 3, findings 4 and 32): six placed trees of different
 # forms, the ones their mod sinks deepest first (the erut, palm and jungle trees whose roots hung in the air), a
-# first-person still each aimed at the trunk base; then one still per region class from a placed tree's spot, level at
-# the play camera, for the variety between classes. Generated from the placer's shards like the rock booth (booth.py).
+# first-person still each aimed at the trunk base from 6-10 m with nothing over 1 m within 3 m of the eye line (the stand
+# rule, BAND_M); then one still per region class from a clearing's edge in the class's fullest cell (no plant over 1 m
+# within 4 m of the eye), level into the most trunks, for the variety between classes. Generated from the placer's shards like the rock booth (booth.py).
 # 
 #     python3 -m tools.argonia_world.vegetation tree-booth --out <shards>
 # 
@@ -10,7 +11,7 @@
 # the trees and plants seen; the six classes' stills should not read as one forest.
 # 
 id: tree-seat
-reach: ["data/dependencies.json", "records: Statics", "records: cell -62,46 r1", "records: cell -46,-30 r1", "records: cell -46,-29 r1", "records: cell -35,50 r1", "records: cell -31,-2 r1", "records: cell -30,-25 r1", "records: cell -30,48 r1", "records: cell -18,59 r1", "records: cell -15,-16 r1", "records: cell -6,-54 r1", "records: cell 6,42 r1", "records: cell 14,29 r1", "records: cell 22,14 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["data/dependencies.json", "records: Statics", "records: cell -62,46 r1", "records: cell -54,31 r1", "records: cell -40,-38 r1", "records: cell -30,48 r1", "records: cell -18,59 r1", "records: cell -15,-16 r1", "records: cell -9,58 r1", "records: cell -6,-54 r1", "records: cell 5,18 r1", "records: cell 14,28 r1", "records: cell 18,10 r1", "records: cell 35,38 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true
@@ -20,7 +21,7 @@ camera: first
 steps:
 - name: tree-1-argoniatreepalmoke04
   scan: 6
-  # 155FF4:King of the Murkmire.esp ref CE8820, seat 968 u x scale 1.20; aim at the trunk base
+  # 155FF4:King of the Murkmire.esp ref CE8820, seat 968 u x scale 1.20; aim at the trunk base 9 m off its 12.7 m footprint, 0 on the aim line, 0 at the eye
   # subject: -120378 200475 24283
   do:
   - hud: off
@@ -31,15 +32,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -120498
+      line: player.setpos x -119061
   - console:
-      line: player.setpos y 200355
+      line: player.setpos y 199714
   - console:
-      line: player.setpos z 24431
+      line: player.setpos z 26193
   - console:
-      line: player.setangle z 45
+      line: player.setangle z 300
   - console:
-      line: player.setangle x 58
+      line: player.setangle x 53
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -50,26 +51,26 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-2-argoniatreepalmoke02
   scan: 6
-  # 155FF2:King of the Murkmire.esp ref 9D4E31, seat 780 u x scale 1.16; aim at the trunk base
-  # subject: -126070 -4627 1535
+  # 155FF2:King of the Murkmire.esp ref BD9C28, seat 780 u x scale 1.10; aim at the trunk base 8 m off its 6.7 m footprint, 0 on the aim line, 0 at the eye
+  # subject: -217893 130257 35178
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -31 -2
+      line: cow ARG_Province -54 31
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -125645
+      line: player.setpos x -218885
   - console:
-      line: player.setpos y -4382
+      line: player.setpos y 130522
   - console:
-      line: player.setpos z 1603
+      line: player.setpos z 35360
   - console:
-      line: player.setangle z 240
+      line: player.setangle z 105
   - console:
-      line: player.setangle x 21
+      line: player.setangle x 16
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -80,7 +81,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-3-argoniatreepalmoke03
   scan: 6
-  # 155FF3:King of the Murkmire.esp ref CC5026, seat 748 u x scale 1.20; aim at the trunk base
+  # 155FF3:King of the Murkmire.esp ref CC5026, seat 748 u x scale 1.20; aim at the trunk base 8 m off its 14.8 m footprint, 0 on the aim line, 0 at the eye
   # subject: -251191 192066 18195
   do:
   - hud: off
@@ -91,15 +92,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -251300
+      line: player.setpos x -251988
   - console:
-      line: player.setpos y 192472
+      line: player.setpos y 190684
   - console:
-      line: player.setpos z 18220
+      line: player.setpos z 18320
   - console:
-      line: player.setangle z 165
+      line: player.setangle z 30
   - console:
-      line: player.setangle x 19
+      line: player.setangle x 9
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -110,26 +111,26 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-4-argoniatreeerut05
   scan: 6
-  # 155FEA:King of the Murkmire.esp ref D0761A, seat 723 u x scale 1.20; aim at the trunk base
-  # subject: -142658 206182 33694
+  # 155FEA:King of the Murkmire.esp ref C53211, seat 723 u x scale 1.20; aim at the trunk base 8 m off its 6.0 m footprint, 0 on the aim line, 0 at the eye
+  # subject: 146703 156820 1521
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -35 50
+      line: cow ARG_Province 35 38
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -142439
+      line: player.setpos x 146703
   - console:
-      line: player.setpos y 205963
+      line: player.setpos y 155840
   - console:
-      line: player.setpos z 33716
+      line: player.setpos z 1707
   - console:
-      line: player.setangle z 315
+      line: player.setangle z 0
   - console:
-      line: player.setangle x 25
+      line: player.setangle x 17
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -140,7 +141,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-5-histtrunk01
   scan: 6
-  # 035B36:King of the Murkmire.esp ref 8FA600, seat 651 u x scale 1.30; aim at the trunk base
+  # 035B36:King of the Murkmire.esp ref 8FA600, seat 651 u x scale 1.30; aim at the trunk base 8 m off its 22.4 m footprint, 0 on the aim line, 0 at the eye
   # subject: -60404 -62505 136
   do:
   - hud: off
@@ -151,15 +152,15 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -60107
+      line: player.setpos x -59854
   - console:
-      line: player.setpos y -62802
+      line: player.setpos y -64560
   - console:
-      line: player.setpos z 184
+      line: player.setpos z 104
   - console:
-      line: player.setangle z 315
+      line: player.setangle z 345
   - console:
-      line: player.setangle x 22
+      line: player.setangle x 2
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -170,12 +171,12 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: tree-6-histtrunk01moss
   scan: 6
-  # 6EDDDD:King of the Murkmire.esp ref BC2C52, seat 651 u x scale 1.26; aim at the trunk base
+  # 6EDDDD:King of the Murkmire.esp ref BC2C52, seat 651 u x scale 1.26; aim at the trunk base 9 m off its 21.7 m footprint, 0 on the aim line, 0 at the eye
   # subject: 57534 119293 -16
   do:
   - hud: off
   - console:
-      line: cow ARG_Province 14 29
+      line: cow ARG_Province 14 28
       settle: 60
   - wait: 8
   - console:
@@ -183,13 +184,13 @@ steps:
   - console:
       line: player.setpos x 57534
   - console:
-      line: player.setpos y 119123
+      line: player.setpos y 117141
   - console:
-      line: player.setpos z 40
+      line: player.setpos z 230
   - console:
       line: player.setangle z 0
   - console:
-      line: player.setangle x 46
+      line: player.setangle x 10
   - console:
       line: player.setangle y 0
   - wait: 6
@@ -200,23 +201,23 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-coastal-lagoon
   scan: 6
-  # the class's fullest cell (62 refs), level view north
+  # the class's fullest cell (71 refs), level view into 14 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
-      line: cow ARG_Province 22 14
+      line: cow ARG_Province -9 58
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 93243
+      line: player.setpos x -36864
   - console:
-      line: player.setpos y 59280
+      line: player.setpos y 239249
   - console:
-      line: player.setpos z 1124
+      line: player.setpos z 143
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 225
   - console:
       line: player.setangle x 0
   - console:
@@ -229,7 +230,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-tidal-delta
   scan: 6
-  # the class's fullest cell (55 refs), level view north
+  # the class's fullest cell (55 refs), level view into 13 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
@@ -239,13 +240,13 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -23539
+      line: player.setpos x -22335
   - console:
-      line: player.setpos y -220096
+      line: player.setpos y -220624
   - console:
-      line: player.setpos z 40
+      line: player.setpos z 89
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 270
   - console:
       line: player.setangle x 0
   - console:
@@ -258,23 +259,23 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-flooded-forest
   scan: 6
-  # the class's fullest cell (106 refs), level view north
+  # the class's fullest cell (104 refs), level view into 14 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
-      line: cow ARG_Province 6 42
+      line: cow ARG_Province 18 10
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x 26930
+      line: player.setpos x 77089
   - console:
-      line: player.setpos y 173370
+      line: player.setpos y 41520
   - console:
-      line: player.setpos z 56
+      line: player.setpos z 747
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 270
   - console:
       line: player.setangle x 0
   - console:
@@ -287,23 +288,23 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-interior-swamp
   scan: 6
-  # the class's fullest cell (104 refs), level view north
+  # the class's fullest cell (99 refs), level view into 12 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -46 -30
+      line: cow ARG_Province -40 -38
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -184908
+      line: player.setpos x -163840
   - console:
-      line: player.setpos y -118630
+      line: player.setpos y -153967
   - console:
-      line: player.setpos z 528
+      line: player.setpos z 399
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 90
   - console:
       line: player.setangle x 0
   - console:
@@ -316,23 +317,23 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-rootland
   scan: 6
-  # the class's fullest cell (96 refs), level view north
+  # the class's fullest cell (86 refs), level view into 15 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
-      line: cow ARG_Province -30 -25
+      line: cow ARG_Province 5 18
       settle: 60
   - wait: 8
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -122671
+      line: player.setpos x 21040
   - console:
-      line: player.setpos y -99667
+      line: player.setpos y 73728
   - console:
-      line: player.setpos z 184
+      line: player.setpos z 349
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 270
   - console:
       line: player.setangle x 0
   - console:
@@ -345,7 +346,7 @@ steps:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
 - name: class-northern-transition
   scan: 6
-  # the class's fullest cell (101 refs), level view north
+  # the class's fullest cell (101 refs), level view into 6 trunks, 0 plants within 4 m of the eye
   do:
   - hud: off
   - console:
@@ -355,13 +356,13 @@ steps:
   - console:
       line: set gamehour to 12
   - console:
-      line: player.setpos x -69719
+      line: player.setpos x -72608
   - console:
-      line: player.setpos y 245131
+      line: player.setpos y 242224
   - console:
-      line: player.setpos z 430
+      line: player.setpos z 694
   - console:
-      line: player.setangle z 0
+      line: player.setangle z 270
   - console:
       line: player.setangle x 0
   - console:
