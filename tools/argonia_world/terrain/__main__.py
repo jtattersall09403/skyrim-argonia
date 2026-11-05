@@ -295,7 +295,14 @@ def cmd_generate(a) -> int:
 
     t0 = time.time()
     w = db.open()
-    res = G.generate(G.Inputs.load(w))
+    out_dir = Path(a.out) if a.out else G.OUT
+    inp = G.Inputs.load(w)
+    ck = G.Checkpoint(out_dir / ".gen-ckpt", G.input_key(inp), a.stop_after)  # decision 0037: resumable by stage
+    try:
+        res = G.generate(inp, ckpt=ck)
+    except G.GenerateStopped as e:
+        print(f"stopped after stage {e} (checkpoint kept)", flush=True)
+        return 3
     if G.is_province_out(a.out):  # a scratch --out never writes a tracked DB row
         print(f"entrance_site: {G.write_sites(w, res['sites'])} rows", flush=True)
     # the contract's out/terrain/ground-f32.npy; with --out the ground, LAND and stats all go there (a trial never
@@ -304,6 +311,7 @@ def cmd_generate(a) -> int:
         import os
         os.environ["ARGONIA_GROUND"] = str(Path(a.out).resolve() / "ground-f32.npy")
     st = G.write(res, Path(a.out)) if a.out else G.write(res)
+    ck.clear()
     print(f"generated the province in {time.time() - t0:.1f} s", flush=True)
     print(json.dumps(st, sort_keys=True))
     if a.sample:
@@ -371,6 +379,7 @@ def main(argv=None) -> int:
     gp = sub.add_parser("generate")
     gp.add_argument("--sample", action="store_true", help="then build the 1.15 sample windows' LAND")
     gp.add_argument("--out")
+    gp.add_argument("--stop-after", choices=("prior", "relief", "water base", "noise", "constraints", "sites and roads"), help="test flag: stop once this stage's checkpoint is written")
     r = sub.add_parser("render")
     r.add_argument("--cells")
     r.add_argument("--sample", action="store_true")

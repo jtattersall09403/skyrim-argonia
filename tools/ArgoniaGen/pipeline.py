@@ -733,7 +733,7 @@ PLUGIN_STAMP = OUT / "plugin.stamp"
 # generator's sources and the world/navmesh tooling; the binary, the province navmesh's build record, the terrain
 # vault's inputs and the game's plugins/archives are folded in by size and time (too big to read).
 HASH_DIRS = ("world", "plugin", "data", "tools/ArgoniaGen", "tools/argonia_world", "tools/navmesh")
-HASH_SKIP = {"bin", "obj", "__pycache__", ".pytest_cache"}
+HASH_SKIP = {"bin", "obj", "__pycache__", ".pytest_cache", ".gen-ckpt"}  # .gen-ckpt: the ground generate's resume checkpoint (0037), never an input
 
 
 def input_hash(data: Path | None = None) -> str:

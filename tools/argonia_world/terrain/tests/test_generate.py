@@ -105,3 +105,59 @@ def test_site_over_a_step_keeps_its_channel():
     h, lo, hi, role, inp, vmin, vmax, foot, chan = _step_grid()
     G.shape_sites(h, lo, hi, role, inp, vmin, vmax, foot, np.zeros(h.shape, bool))
     assert (h[chan] > 9.81).any()
+
+
+def test_checkpoint_resumes_clears_on_a_new_key_and_keeps_one_stage(tmp_path):
+    """Decision 0037: a checkpoint of the same key resumes at the last stage; another key clears it."""
+    d = tmp_path / ".gen-ckpt"
+    a = np.arange(6, dtype=np.float32).reshape(2, 3)
+    ck = G.Checkpoint(d, "k1", log=lambda *_: None)
+    assert ck.done() == 0
+    ck.save(1, "prior", {"a": a, "st": {"x": 1.5}}, "a st")
+    ck.save(2, "relief", {"a": a + 1, "st": [{"p": 2}]}, "a st")
+    assert [p.name for p in d.glob("*.npz")] == ["2-relief.npz"]  # only the last stage is kept
+    ck2 = G.Checkpoint(d, "k1", "relief", log=lambda *_: None)
+    assert ck2.done() == 2
+    got_a, got_st = ck2.load(2, "a st")
+    assert got_a.dtype == np.float32 and (got_a == a + 1).all() and got_st == [{"p": 2}]
+    try:
+        ck2.stop_if("relief")
+        raise AssertionError("no stop")
+    except G.GenerateStopped:
+        pass
+    assert G.Checkpoint(d, "k2", log=lambda *_: None).done() == 0  # a new key clears
+    ck.clear()
+    assert not d.exists()
+
+
+def test_generate_resume_is_byte_identical():
+    """The whole province: stopped after every stage in turn and resumed, the ground bytes equal an uninterrupted run's
+    (~8 min; ARGONIA_SLOW=1)."""
+    import os
+    import pytest
+    if not os.environ.get("ARGONIA_SLOW"):
+        pytest.skip("ARGONIA_SLOW=1")
+    import hashlib
+    import shutil
+    import subprocess
+    import sys
+    import tempfile
+    from pathlib import Path
+    root = Path(__file__).resolve().parents[4]
+    stages = ("prior", "relief", "water base", "noise", "constraints", "sites and roads")
+    with tempfile.TemporaryDirectory(dir=os.environ.get("ARGONIA_SCRATCH")) as t:
+        def run(out, *extra):
+            return subprocess.run([sys.executable, "-m", "tools.argonia_world.terrain", "generate", "--out", str(out), *extra],
+                                  cwd=root, capture_output=True, text=True).returncode
+
+        def digest(out):
+            return {n: hashlib.sha256((out / n).read_bytes()).hexdigest()
+                    for n in ("ground-f32.npy", "role-u8.npy", "cliff-u8.npy", "entrance-sites.json")}
+        full, part = Path(t) / "full", Path(t) / "part"
+        assert run(full) == 0
+        for s in stages:
+            assert run(part, "--stop-after", s) == 3
+            assert (part / ".gen-ckpt").exists()
+        assert run(part) == 0 and not (part / ".gen-ckpt").exists()
+        assert digest(part) == digest(full)
+        shutil.rmtree(t, ignore_errors=True)
