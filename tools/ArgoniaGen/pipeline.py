@@ -300,23 +300,30 @@ def _terrain_stamp(ground: bool = True) -> str:
                                           "place_ground.py", "quantize.py", "world.py")):  # what the cell lines depend on
         h.update(f.name.encode() + _code_bytes(f))
     roads = ROOT / "tools" / "argonia_world" / "routes" / "paint.py"  # 2.W3's road paint and the rows it reads
-    h.update(_code_bytes(roads) + repr(db.open().values(
-        "SELECT group_concat(v, ';') FROM (SELECT route_id || surface_cover || flat_width_m || x_m || y_m v "
-        "FROM road JOIN road_point USING (route_id) ORDER BY route_id, ord)")).encode())
+    h.update(_code_bytes(roads))
+    if ground:  # the land rows' key hashes each row's own road segments (build.road_key), so the road rows stay out of it
+        h.update(repr(db.open().values(
+            "SELECT group_concat(v, ';') FROM (SELECT route_id || surface_cover || flat_width_m || x_m || y_m v "
+            "FROM road JOIN road_point USING (route_id) ORDER BY route_id, ord)")).encode())
     for n in sorted(vault.FILES):
         f = vault.data_dir() / n
         h.update(f"{n}:{f.stat().st_size}:{int(f.stat().st_mtime)}".encode() if f.exists() else n.encode())
-    from tools.argonia_world.terrain import water_regrade
-    h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
-    from tools.argonia_world.terrain import place_ground
-    h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
-    from tools.argonia_world.terrain import patches
-    if ground:  # the places' pads and bowls (terrain_patch rows with a kind): in the stage's stamp, but not in the
-        # rows' shared key, where row_key already hashes the patches reaching each row (patches.key): a pad edit
-        # rebuilt all 262 rows (16 s each, 1508 s on 4 CPUs), now only the rows within its reach
-        h.update(patches.stamp().encode())
+    if ground:
+        from tools.argonia_world.terrain import water_regrade
+        h.update(water_regrade.stamp().encode())  # 2.W2's border regrade (rows in the world db)
+        from tools.argonia_world.terrain import place_ground
+        h.update(place_ground.stamp().encode())  # 0.4 §d: the built places' ground edits (build_ground rows)
+        from tools.argonia_world.terrain import patches
+        h.update(patches.stamp().encode())  # the places' pads and bowls: the rows' key hashes those reaching each row
         h.update(_ground_stamp().encode())  # 1.15: the generated ground the cells are built from
-    h.update(_cover_key("terrain").encode())
+        h.update(_cover_key("terrain").encode())
+    else:  # the land rows' shared base: exactly the tables and code the cell lines read; water and region grids, the
+        # ground, patches and roads enter each row's own key (build.row_key), so a local edit rebuilds only its rows
+        extra = [ROOT / "tools" / "argonia_world" / x for x in ("terrain/cellwater.py", "terrain/patches.py",
+                                                                "water/solve.py")]
+        for f in extra:
+            h.update(f.name.encode() + _code_bytes(f))
+        h.update(_files_key("land", tables=("land_cover", "land_cover_ltex", "material_gradient")).encode())
     return h.hexdigest()
 
 

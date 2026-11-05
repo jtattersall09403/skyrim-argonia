@@ -276,6 +276,28 @@ def global_key(src: Sources, mat, base: str | None, spans, kw: dict) -> str | No
     return h.hexdigest()
 
 
+def road_key(mat, r0: int, r1: int) -> bytes:
+    """The road segments reaching grid rows [r0, r1) (their paint reach included), in paint order: a road moved
+    elsewhere leaves this row's key alone (the road tables are not in the shared base)."""
+    if not getattr(mat, "roads", False):
+        return b""
+    try:
+        from tools.argonia_world.routes import paint as road_paint
+        segs = road_paint.segments()
+    except Exception:  # no route data (a fixture): no roads, as Material._road
+        return b""
+    reach = M.ROAD_BLEND_M / su.PROVINCE_SAMPLE_M
+    h = hashlib.sha256()
+    for cls, half, seg in segs:
+        lo = seg[:, :, 0].min(axis=1) - (half + reach)
+        hi = seg[:, :, 0].max(axis=1) + (half + reach)
+        hit = seg[(hi >= r0) & (lo < r1)]
+        if len(hit):
+            h.update(f"{cls}:{half}".encode())
+            _arr(h, hit)
+    return h.digest()
+
+
 def row_key(src: Sources, mat, cy: int, gkey: str | None) -> str | None:
     """Row cy's content stamp: the global key and every input raster cut to the row's window (ROW_MARGIN vertices
     each side): the apron, the ground and the land cover, and the cell grids of water level, nearest level, rain
@@ -291,6 +313,7 @@ def row_key(src: Sources, mat, cy: int, gkey: str | None) -> str | None:
     _arr(h, src.ground[p0:p1])
     if getattr(src, "patches", None) is not None:
         h.update(src.patches.key(r0, r1))
+    h.update(road_key(mat, r0, r1))
     _arr(h, src.cover[p0:p1])
     w, rg = mat.water, mat.regions
     C = w.level.shape[0]
@@ -417,7 +440,8 @@ def build(src: Sources, mat, out: Path, cells=None, progress=None, jobs: int = 1
     done.update(kept)
     todo = [cy for cy in todo if cy not in kept]
     if gkey:
-        print(f"  land reuse: {len(kept)} of {len(rows)} rows by key, {len(todo)} to build", flush=True)
+        print(f"  land reuse: {len(kept)} of {len(rows)} rows by key, {len(todo)} to build "
+              f"(rows: {len(kept)} reused, {len(todo)} built)", flush=True)
     jobs = max(1, min(jobs if jobs else (os.cpu_count() or 1), len(todo) or 1))
     if jobs > 1 and factory is None:
         jobs = 1

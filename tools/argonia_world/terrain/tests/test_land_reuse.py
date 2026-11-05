@@ -2,6 +2,7 @@
 the last land reuses every row the edit cannot reach, rebuilds the rest, and its shards equal a from-scratch build's
 byte for byte; a changed shared key (the code or tables, `row_base`) reuses nothing."""
 import re
+import time
 from pathlib import Path
 
 import numpy as np
@@ -55,3 +56,40 @@ def test_stale_shared_key_reuses_nothing(tmp_path, capsys):
     assert _reused(capsys.readouterr().out)[0] == 0
     build.build(_src(), None, tmp_path, cells=cells, row_base=None)  # no base: no keys kept, no reuse
     assert "land reuse" not in capsys.readouterr().out and not (tmp_path / "land" / "_keys").exists()
+
+
+def test_road_key_is_per_row(monkeypatch):
+    """A road moved in one band changes only the keys of the rows its paint reaches; the road tables are not in the
+    shared base. Rows: 262 keys cost well under 2 s."""
+    from tools.argonia_world.routes import paint
+    from tools.argonia_world.terrain import material as M
+
+    class Mat:
+        roads = True
+
+    def seg(r0, r1, c=100.0):
+        return (30, 2.0, np.array([[[r0, c], [r1, c]]], dtype=np.float64))
+    def road(a, b, c):  # a polyline of 50-sample segments, as the roads are
+        return (30, 2.0, np.concatenate([seg(r, min(r + 50, b), c)[2] for r in range(a, b, 50)]))
+    base = [road(100, 300, 100.0), road(3000, 3400, 100.0)]
+    monkeypatch.setattr(paint, "segments", lambda world=None: base)
+    spans = [(r, r + 32) for r in range(0, 4096, 32)]  # 128 rows
+    t = time.time()
+    k0 = [build.road_key(Mat, a, b) for a, b in spans]
+    assert time.time() - t < 2.0
+    base[1] = road(3000, 3600, 100.0)  # the far road is lengthened
+    k1 = [build.road_key(Mat, a, b) for a, b in spans]
+    changed = [i for i, (x, y) in enumerate(zip(k0, k1)) if x != y]
+    assert changed and all(spans[i][1] > 3400 - 50 - 2 * M.ROAD_BLEND_M for i in changed)
+    assert k0[:100] == k1[:100] and len(changed) < len(spans) // 2
+
+
+def test_one_row_slice_rebuilds_only_its_reach(tmp_path, monkeypatch, capsys):
+    monkeypatch.setattr(build, "ROW_MARGIN", 32)
+    cells = (-63, -63, -62, -54)
+    build.build(_src(), None, tmp_path, cells=cells, row_base="base")
+    capsys.readouterr()
+    build.build(_src(edit=True), None, tmp_path, cells=cells, row_base="base")
+    out = capsys.readouterr().out
+    m = re.search(r"rows: (\d+) reused, (\d+) built", out)
+    assert m and int(m[1]) >= 6 and 0 < int(m[2]) <= 4, out
