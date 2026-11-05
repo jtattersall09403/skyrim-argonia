@@ -271,18 +271,19 @@ FORD_GAP = 2  # samples between a ford and the causeway left to the ground (the 
 
 
 def bridge_crossings(w) -> list[dict]:
-    """Each bridge end's seat at routes/infra.BRIDGES' crossings (the deck centred on the roads' axis there), its
-    deck top z_m unset: generate sets it on the corridor (bridge_decks)."""
+    """Each bridge end's seat at routes/infra.BRIDGES' crossings, on infra.deck_axis (the deck centred on its step's
+    channel, square to the cell line between the two levels: one axis for the file, the seats and the placement),
+    infra.SEAT_WIDTH_M wide; its deck top z_m unset: generate sets it on the corridor (bridge_decks)."""
     import math
 
     from tools.argonia_world.routes import infra
+    from tools.argonia_world.terrain import cellwater
+    level = cellwater.load(w).level
     out = []
-    for bid, (q, _reach, routes) in sorted(infra.BRIDGES.items()):
-        lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
-            "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
-        if any(len(v) < 2 for v in lines.values()):
+    for bid, (_q, _reach, routes) in sorted(infra.BRIDGES.items()):
+        if any(len(w.query("SELECT 1 FROM road_point WHERE route_id = ? LIMIT 2", r)) < 2 for r in routes):
             continue
-        x, y, hd = infra.axis([infra.nearest_on(lines[r], q) for r in routes])
+        x, y, hd = infra.deck_axis(w, bid, level)
         ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
         half = infra.BRIDGE_LEN_M / 2
         for k, sg in enumerate((-1, 1)):
@@ -290,7 +291,7 @@ def bridge_crossings(w) -> list[dict]:
                         "centre_m": [round(x, 2), round(y, 2)], "heading": round(hd, 2),
                         "yaw": round((hd + infra.BRIDGE_YAW_OFFSET) % 360, 2), "z_m": None,
                         "from_m": -infra.SEAT_M, "to_m": infra.APPROACH_M,
-                        "half_width_m": round(infra.BRIDGE_HALF_W_M + 2.0, 2)})
+                        "half_width_m": round(infra.SEAT_WIDTH_M / 2, 2), "seat_width_m": infra.SEAT_WIDTH_M})
     return out
 
 
@@ -352,7 +353,8 @@ def bridge_decks(h, seats: list[dict]) -> list[dict]:
         for q in qs:
             q["z_m"] = top
         out.append({"id": bid, "deck_m": top, "ends_ground_m": [round(t, 2) for t in tops], "centre_m": qs[0]["centre_m"],
-                    "ends_m": [q["at_m"] for q in qs], "heading": qs[0]["heading"], "yaw": qs[0]["yaw"]})
+                    "ends_m": [q["at_m"] for q in qs], "heading": qs[0]["heading"], "yaw": qs[0]["yaw"],
+                    "seat_width_m": qs[0].get("seat_width_m", round(2 * qs[0]["half_width_m"], 2))})
     return out
 
 

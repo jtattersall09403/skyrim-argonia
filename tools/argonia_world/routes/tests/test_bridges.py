@@ -123,3 +123,17 @@ def test_a_channel_15_degrees_off_the_road_gets_a_square_deck_and_the_road_eases
     assert math.hypot(e2[0] - e1[0], e2[1] - e1[1]) == pytest.approx(infra.BRIDGE_LEN_M, abs=1e-6)
     assert abs(e2[0] - e1[0]) < 1e-6  # the deck's run is square to the step's line (constant x)
     assert infra.SEAT_WIDTH_M == pytest.approx(2 * (infra.BRIDGE_HALF_W_M + 2.0 + infra.su.PROVINCE_SAMPLE_M), abs=0.01)
+
+
+def test_bridge_crossings_share_infras_square_axis(world):
+    """shape.bridge_crossings (generate's seats and bridge-decks.json) stands on infra.deck_axis: centred on the
+    step's channel, square to the cell line, SEAT_WIDTH_M wide."""
+    from tools.argonia_world.routes import shape
+    w, _g = world
+    qs = shape.bridge_crossings(w)
+    assert qs
+    for q in qs:
+        x, y, hd = infra.deck_axis(w, q["bridge"].split(".", 1)[1])
+        assert q["centre_m"] == [x, y] and q["heading"] == hd and hd % 90 == 0, q
+        assert q["half_width_m"] * 2 == pytest.approx(infra.SEAT_WIDTH_M, abs=0.01)
+        assert math.hypot(q["at_m"][0] - x, q["at_m"][1] - y) == pytest.approx(infra.BRIDGE_LEN_M / 2, abs=0.02)

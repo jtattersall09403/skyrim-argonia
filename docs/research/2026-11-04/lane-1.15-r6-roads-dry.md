@@ -176,3 +176,14 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
   (a) the deck's axis crosses the step's edge at right angles, with the road eased into the turn over the seat's 4 m and the ease; or
   (b) the road re-routed to cross the cell line squarely; or
   (c) the census's seat bar reads the nearest held sample at the deck end, not the bilinear ground, accepting a 0.3-0.9 sample bank edge beside the channel under a 0.3 m seat.
+
+## Round 11: the seats on infra's square axis (bridges side c226e84d)
+- `shape.bridge_crossings` now takes each crossing's centre and heading from `infra.deck_axis`: the deck centred on its step's channel and square to the cell line. That fixes round 10's geometry.
+- The seats hold infra.SEAT_WIDTH_M (11.46 m), half each side.
+- Each bridge-decks.json entry carries `seat_width_m`.
+- Crossings on the current DB:
+  - gideon-step: (1605.18, 3041.77), heading 0
+  - glenbridge-step: (1871.03, 2722.06), heading 270
+  - thorn-step: (5582.21, 1459.99), heading 0
+- New test `test_bridges.py::test_bridge_crossings_share_infras_square_axis` (needs the terrain grid; it skips without one).
+- Carried by the next land pass.
