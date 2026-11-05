@@ -72,6 +72,17 @@ VANILLA_MAX = 162
 SLOT = 512  # FormIDs reserved per province cell (>= CAP)
 VEG_BASE = 0x620000  # ArgoniaWorld.esm: past the navmesh's NAVM range (0x600000 + 262^2 cells = 0x610C24)
 PLUGIN = "ArgoniaWorld.esm"
+# No stem in the water (lane 1.15-r6-trees-in-water, round 6: tall trees stood in the sea at (-53,-28)): a stem of a
+# tree role or a large shrub never on ground under its cell's water, nor within WET_REACH_M of a LAND vertex under it
+# (the footprint grown by the freeboard). Skyrim.esm's trees stand on dry land (0034: the lane note's audit). The
+# lore's exception (0032): cypress and mangrove trunks stand in the marsh's black water ("Cypress, mangrove",
+# world/sources/lore/topics/fauna-hazards.md:92-95, CANON_EXPLICIT; the owner's vibe board vibe-01/05/07), never in
+# the sea, a lagoon's brackish water or a fresh river, stream or lake.
+WET_REACH_M = 1.0
+STEM_ROLES = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree")
+SHRUB_STEM_M = 2.0  # a shrub at least this tall (OBND height, scale 1) is a stem
+IN_WATER_NAMES = ("mangrove", "cypress")
+IN_WATER_TYPES = ("blackwater",)
 
 
 @dataclass(frozen=True)
@@ -93,6 +104,8 @@ class Rule:
     upright: float = 0.0  # share of stems that stand upright instead of conforming (vanilla boulders ~26 %, 0034)
     tree: bool = False  # a tree role the tree band counts (lists.BAND_TREE_ROLES)
     reach_m: float = 0.0  # metres at scale 1 the body spreads from its pivot (OBND, capped ROAD_REACH_CAP_M): the road's clearance
+    stem: bool = False  # a tree or large shrub: never in the water (is_stem)
+    in_water: bool = False  # cypress or mangrove: may stand in IN_WATER_TYPES water (in_water_ok)
 
     @staticmethod
     def sink_of(sink_frac: float, bound_z0: int | None, bound_z1: int | None) -> float:
@@ -106,6 +119,41 @@ class Rule:
     @property
     def dry_only(self) -> bool:
         return self.water_min is None and self.water_max is None
+
+
+def is_stem(f: dict) -> bool:
+    """A tree role, or a shrub SHRUB_STEM_M tall or more (an object_form row: role_id, bound_z0, bound_z1)."""
+    if f["role_id"] in STEM_ROLES:
+        return True
+    if f["role_id"] == "shrub" and f.get("bound_z1") is not None and f.get("bound_z0") is not None:
+        return (f["bound_z1"] - f["bound_z0"]) / su.UNITS_PER_METRE >= SHRUB_STEM_M
+    return False
+
+
+def water_tree(f: dict) -> bool:
+    """Cypress or mangrove by its role, model or editor id (the lore's in-water trees)."""
+    name = ((f.get("model") or "") + " " + (f.get("edid") or "")).lower()
+    return f["role_id"] == "mangrove" or any(n in name for n in IN_WATER_NAMES)
+
+
+def in_water_ok(f: dict, water_type: str | None) -> bool:
+    return water_tree(f) and water_type in IN_WATER_TYPES
+
+
+def wet_near(H: np.ndarray, L, u: np.ndarray, v: np.ndarray) -> np.ndarray:
+    """True where a LAND vertex within WET_REACH_M of the point lies under the water (L: the level, scalar or per
+    vertex). The vertices 1.83 m apart, only the point's own quad's corners can be that near."""
+    L = np.broadcast_to(np.asarray(L, dtype=np.float64), H.shape)
+    fx, fy = u / su.VERTEX_SPACING_UNITS, v / su.VERTEX_SPACING_UNITS
+    j = np.clip(np.floor(fx).astype(np.int64), 0, su.LAND_VERTS - 2)
+    i = np.clip(np.floor(fy).astype(np.int64), 0, su.LAND_VERTS - 2)
+    out = np.zeros(np.shape(u), dtype=bool)
+    r2 = (WET_REACH_M / STEP_M) ** 2
+    for di in (0, 1):
+        for dj in (0, 1):
+            near = (fx - (j + dj)) ** 2 + (fy - (i + di)) ** 2 <= r2
+            out |= near & (H[i + di, j + dj] < L[i + di, j + dj])
+    return out
 
 
 def ref_id(cx: int, cy: int, k: int) -> int:
@@ -240,6 +288,7 @@ class CellInputs:
     west_col: int  # the grid column of vertex j = 0
     roads: list  # [(half width in samples, (n, 2, 2) segments in grid row, col)] near the cell
     footprints: list  # [(row0, col0, row1, col1)] grid rectangles near the cell
+    wtype: str | None = None  # the cell's water type (cell_water), None for a dry cell
 
     def grid(self, u: np.ndarray, v: np.ndarray):
         s = su.VERTEX_SPACING_UNITS
@@ -293,6 +342,8 @@ def place_cell(ci: CellInputs, rules: list[Rule]) -> dict[str, np.ndarray]:
         depth = depth_at(ci.L, i, j, z)
         ti = np.where(np.isnan(ci.T[i, j]), -np.inf, ci.T[i, j])
         ok &= posture_ok(rule, depth, z - ti)
+        if rule.stem and not (rule.in_water and ci.wtype in IN_WATER_TYPES):  # no stem in the water
+            ok &= (depth <= 0) & ~wet_near(ci.H, ci.L, u, v)
         idx = np.nonzero(ok)[0]
         if idx.size:
             idx = idx[~excluded(ci, u[idx], v[idx], i[idx], j[idx],

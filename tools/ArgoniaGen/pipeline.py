@@ -466,7 +466,7 @@ def _veg_stamp() -> str:
     h = hashlib.sha256(_water_stamp().encode())
     from tools.argonia_world import db
     w = db.open()
-    for f in sorted(VEG.glob("*.py")) + [ROOT / "tools" / "navmesh" / "inputs.py",
+    for f in [p for p in sorted(VEG.glob("*.py")) if p.name != "census.py"] + [ROOT / "tools" / "navmesh" / "inputs.py",
                                          ROOT / "tools" / "argonia_world" / "routes" / "paint.py"]:
         h.update(f.name.encode() + _code_bytes(f))
     for t in VEG_TABLES:
@@ -643,7 +643,7 @@ def _hand(name: str) -> tuple[list[Path], tuple[str, ...]]:
                                                 "png.py", "place_ground.py", "quantize.py", "world.py")]
                         + [rt / "routes" / "paint.py"], ("road", "road_point")),
             "water": ([*WATER.glob("*.py")], ()),
-            "vegetation": ([*VEG.glob("*.py"), ROOT / "tools/navmesh/inputs.py", rt / "routes/paint.py"], VEG_TABLES),
+            "vegetation": ([*(p for p in VEG.glob("*.py") if p.name != "census.py"), ROOT / "tools/navmesh/inputs.py", rt / "routes/paint.py"], VEG_TABLES),
             "creatures": ([*(rt / "creatures").glob("*.py"), rt / "regions/api.py"], CREATURE_TABLES)}[name]
 
 

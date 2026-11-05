@@ -27,6 +27,7 @@ from tools.argonia_world.vegetation.place import Rule
 
 Q = su.QUADS_PER_CELL
 BAND = 4  # cell rows per band
+MEASURE_ONLY = ("census.py",)  # read the shards, never place: no part of the placement's stamp
 ROAD_CLASSES = (29, 30)  # TRACK, BC_ROAD (routes/paint.py)
 
 
@@ -43,6 +44,8 @@ def load_rules(w) -> dict[str, list[Rule]]:
                              "FROM vegetation_form v JOIN object_form f USING (form_key)")}
     upright = {r["form_key"]: lists.upright_share(r["sink_frac"]) for r in w.query("SELECT * FROM vegetation_form")}
     tree = {r["form_key"]: r["role_id"] in lists.BAND_TREE_ROLES for r in w.query("SELECT form_key, role_id FROM object_form")}
+    fr = {r["form_key"]: dict(r) for r in w.query(
+        "SELECT form_key, role_id, edid, model, bound_z0, bound_z1 FROM object_form")}
     reach = {r["form_key"]: min(max(abs(r["bound_x0"]), abs(r["bound_x1"]), abs(r["bound_y0"]), abs(r["bound_y1"]))
                                 / su.UNITS_PER_METRE, place.ROAD_REACH_CAP_M)
              for r in w.query("SELECT form_key, bound_x0, bound_x1, bound_y0, bound_y1 FROM object_form "
@@ -55,7 +58,8 @@ def load_rules(w) -> dict[str, list[Rule]]:
             r["form_key"], r["density_per_ha"], r["clustering"], r["radius_m"], r["min_slope_deg"],
             r["max_slope_deg"], r["min_height_m"], r["max_height_m"], r["water_min_m"], r["water_max_m"],
             bool(r["conform"]), scale[r["form_key"]], sink[r["form_key"]], upright[r["form_key"]],
-            tree.get(r["form_key"], False), reach.get(r["form_key"], 0.0)))
+            tree.get(r["form_key"], False), reach.get(r["form_key"], 0.0),
+            place.is_stem(fr[r["form_key"]]), place.water_tree(fr[r["form_key"]])))
     return dict(out)
 
 
@@ -169,6 +173,8 @@ def _code_stamp() -> str:
     """The placement's code (this package), the band cache's code version."""
     h = hashlib.sha256()
     for f in sorted(Path(__file__).parent.glob("*.py")):
+        if f.name in MEASURE_ONLY:
+            continue
         h.update(f.name.encode() + f.read_bytes())
     return h.hexdigest()
 
@@ -292,7 +298,8 @@ def run(out: Path, cells_path: Path, cells=None, budget: bool = False, world=Non
                     Tc = np.full(Tc.shape, cw.nearest_level(cx, cy))
                 cis.append(place.CellInputs(cx, cy, H[win][::-1], Lc, Tc, painted[win][::-1],
                                             south_row=s_, west_col=a, roads=roads_near(segs, n_, a, s_, a + Q),
-                                            footprints=near(feet, n_, a, s_, a + Q)))
+                                            footprints=near(feet, n_, a, s_, a + Q),
+                                            wtype=cw.type(cx, cy) if cw is not None else None))
         key = band_key(cis, rules, region)
         got = load_band(out, max(band), key)
         reused = got is not None

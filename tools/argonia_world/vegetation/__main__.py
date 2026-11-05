@@ -124,6 +124,9 @@ def main(argv=None) -> int:
     fo = sub.add_parser("forms")
     fo.add_argument("--bmv-nifs")
     fo.add_argument("--lists-only", action="store_true")
+    ce = sub.add_parser("census")  # census.py: no tree or large shrub in the water (the gate's census)
+    ce.add_argument("--out", default=str(ROOT / "out" / "terrain" / "vegetation"))
+    ce.add_argument("--land", default=str(ROOT / "out" / "terrain" / "land"))
     sub.add_parser("seat")  # seat.py: each tree's own mod's seat (machine-local, once per stack change)
     hu = sub.add_parser("hue")  # leaf_hue.py: measure the diffuses' leaf colour (machine-local, needs Pillow)
     hu.add_argument("what", choices=("build", "build-nif"))
@@ -172,6 +175,9 @@ def main(argv=None) -> int:
         return _forms(a)
     if a.cmd == "forms":
         return _forms(a)
+    if a.cmd == "census":
+        from tools.argonia_world.vegetation import census
+        return census.main(Path(a.out), Path(a.land))
     if a.cmd == "seat":
         from tools.argonia_world.vegetation import seat
         return seat.main([])

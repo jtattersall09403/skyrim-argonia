@@ -1,6 +1,6 @@
 # The one gate. `make check` runs every target in parallel and ends with one list of the reds.
 RED := $(shell git rev-parse --git-dir)/check-red  # .git is a file in a worktree
-PARTS := guard lint unit budget links records ledger world roads-census plugin-check skse immersion ui
+PARTS := guard lint unit budget links records ledger world roads-census trees-census plugin-check skse immersion ui
 # The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 # A failing part records its name, then fails.
@@ -60,6 +60,14 @@ world:
 roads-census:
 	@{ [ ! -f out/terrain/ground-f32.npy ] && echo "roads-census: no out/terrain ground (skipped)"; } || \
 	  $(PY) -m tools.argonia_world.routes census > out/roads-census.json || { tail -c 600 out/roads-census.json; echo $@ >> $(RED); exit 1; }
+
+# lane 1.15-r6-trees-in-water: no tree or large shrub in the sea, a lake, a river or a stream (vegetation census: a
+# stem on ground under its cell's water or within 1 m of it is red, bar cypress and mangrove in black water; the
+# result cached by its stamp, the bytes it reads; about 20 s cold). It also reds a tree or large shrub whose body
+# reaches a road lane (routes/paint.py width) and counts ground flora on the lane
+trees-census:
+	@{ [ ! -f out/terrain/vegetation/summary.json ] && echo "trees-census: no out/terrain vegetation (skipped)"; } || \
+	  $(PY) -m tools.argonia_world.vegetation census > out/trees-census.json || { head -c 1200 out/trees-census.json; echo $@ >> $(RED); exit 1; }
 
 # out/world.sqlite for DuckDB, pandas or the sqlite3 shell.
 db:
