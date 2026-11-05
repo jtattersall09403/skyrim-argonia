@@ -524,14 +524,40 @@ def place(m, src, data, tools, root):
     return []
 
 
+def complete_nested(m, archive, data):
+    """Every file of a nested row's inner archives is laid (owner, 2026-11-05: 100% of BM&V, nothing missing): list each
+    inner rar's files with `unrar lt` and fail on any not in the staged copy, bar what prune removes on purpose."""
+    with tempfile.TemporaryDirectory() as t:
+        subprocess.run(["tar", "-xf", str(archive), "-C", t, "--wildcards", *[f"*/{n}" for n in m["nested"]]], check=True)
+        want = set()
+        for n in m["nested"]:
+            inner = next(pathlib.Path(t).rglob(n))
+            out = subprocess.run(["unrar", "lt", str(inner)], check=True, capture_output=True, text=True).stdout
+            name = None
+            for line in out.splitlines():
+                line = line.strip()
+                if line.startswith("Name: "):
+                    name = line[6:]
+                elif line.startswith("Type: ") and line[6:] == "File" and name:
+                    want.add(name.replace("\\", "/").lower())
+    have = {str(f.relative_to(data)).lower() for f in data.rglob("*") if f.is_file()}
+    on_purpose = lambda p: p.endswith((".bat", ".pdb")) or (pathlib.PurePath(p).name.startswith("put your ") and p.endswith(".txt"))
+    missing = sorted(p for p in want - have if not on_purpose(p))
+    if missing:
+        raise SystemExit(f"{m['id']}: {len(missing)} archive files not laid, e.g. {missing[:3]}")
+    print(f"  {m['id']}: complete: {len(want)} archive files, all laid")
+
+
 def prune(data, m):
     for f in list(data.rglob("*")):
         if f.is_file() and (f.name.lower().startswith("put your ") and f.suffix.lower() == ".txt"
                             or f.suffix.lower() in (".bat", ".pdb")):
             f.unlink()
-    for d in sorted((x for x in data.rglob("*") if x.is_dir() and (x.name in ("BEIFEN",) or not x.name.isascii())),
-                    key=lambda x: -len(x.parts)):
-        shutil.rmtree(d, ignore_errors=True)  # Rim Parry's unused sound backups
+    # Only a row that asks drops its non-ASCII folders (Rim Parry's sound backups did): a blanket rule deleted BM&V's
+    # meshes/clutter/Oaristys/Forge/Linen° and its 42 meshes (2026-11-05).
+    for d in sorted((x for x in data.rglob("*") if x.is_dir() and (x.name in ("BEIFEN",) or
+                     (m.get("drop_nonascii") and not x.name.isascii()))), key=lambda x: -len(x.parts)):
+        shutil.rmtree(d, ignore_errors=True)
     for pat in m.get("drop", []):
         gone = 0
         for f in list(data.rglob("*")):
@@ -724,6 +750,8 @@ def cmd_stage(a):
                 taken = place(m, src, data, tools, root)
             shutil.rmtree(src)
             prune(data, m)
+            if m.get("nested") and not m.get("keep"):
+                complete_nested(m, archive_path(m), data)
             apply_ini(m, data)
             apply_files(m, data)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
@@ -742,8 +770,18 @@ def cmd_stage(a):
     prof.mkdir(parents=True)
     (prof / "modlist.txt").write_text("".join(f"+{n}\r\n" for n in reversed(names)))  # MO2 order: highest first
     plugins, have, unmet = [], {p.lower() for p in vanilla_plugins()}, []
+    order = {m["id"]: [x.lower() for x in m.get("plugins", [])] for m in rows}
+
+    def plugin_key(n, f):
+        """A row's own `plugins` list is its load order; else masters (.esm, .esl) before .esp, then by name
+        (alphabetical alone put "Black Marsh North.esp" before its master "Black Marsh.esm", 2026-11-05)."""
+        want = order.get(n, [])
+        if f.name.lower() in want:
+            return (0, want.index(f.name.lower()), "")
+        return (1, 0 if f.suffix.lower() in (".esm", ".esl") else 1, f.name.lower())
+
     for n in names:
-        for f in sorted((mods / n).iterdir()):
+        for f in sorted((mods / n).iterdir(), key=lambda f: plugin_key(n, f)):
             if f.suffix.lower() in PLUGIN_EXT and f.name.lower() not in have:
                 missing = [x for x in masters_of(f) if x.lower() not in have]
                 if missing:
@@ -759,7 +797,9 @@ def cmd_stage(a):
     for n in names:  # later mods win
         hf = keys / f"{n}.files.json"  # the row's own file hashes, kept with its key: a skipped row is not re-hashed
         if n in restaged or not hf.exists():
-            if n in pruned:  # pushed, verified on the machine and cut to its plugins here: its record stands
+            # a row restaged now is hashed from disk even if it was pruned before: the pruned record is its old
+            # content (BM&V's trimmed keep list stood in for the whole mod, 2026-11-05)
+            if n in pruned and n not in restaged:  # pushed, verified on the machine and cut to its plugins here
                 own = {k: v[1] for k, v in prev.items() if v[0] == n}
             else:
                 own = {str(f.relative_to(mods / n)).replace("/", "\\").lower(): sha256(f)
