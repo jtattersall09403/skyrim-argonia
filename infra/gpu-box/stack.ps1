@@ -77,6 +77,9 @@ function Set-GameWindow {
   }
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
+  # the auto-vanity camera: after fAutoVanityModeDelay seconds idle the camera orbits the player and no first-person
+  # switch takes (round 6, 00:4x: the bridge's native read said 'vanity' on every assert after a settle); never in the studio
+  & $set "$docs\Skyrim.ini" 'Camera' @{ 'fAutoVanityModeDelay' = 1000000 }
   # No compass and no quest marker (1.2 §a, Morrowind's way): the player finds places by the chart and directions.
   & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0 }
   # Light shafts: the engine's volumetric lighting, linked per weather (WTHR HNAM, lane 1.15-r6-light); off by default in the prefs the stack writes.
