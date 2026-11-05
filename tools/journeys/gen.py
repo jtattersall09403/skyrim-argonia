@@ -1451,7 +1451,9 @@ def grade_ab(b: Build) -> str:
                      {"console": f"player.setangle z {yaw:.0f}"}, {"console": "player.setangle x 0"},
                      {"console": "player.setangle y 0"}, {"wait": 4}],
                (round(r["x"]), round(r["y"]))),
-              ("blackwood-20", [*({"console": f"player.setpos {a} {pos[a]:.0f}"} for a in "xyz"),
+              ("blackwood-20", [{"console": {"line": "cow ARG_Province {} {}".format(*su.cell_of(pos["x"], pos["y"])),
+                                             "settle": 60}}, {"wait": 8},   # the cell first, as _do does: a setpos alone lands short
+                                *({"console": f"player.setpos {a} {pos[a]:.0f}"} for a in "xyz"),
                                 {"console": f"player.setangle z {ang['z']:.0f}"},
                                 {"console": f"player.setangle x {ang['x']:.0f}"},
                                 {"console": "player.setangle y 0"}, {"wait": 4}], (round(pos["x"]), round(pos["y"])))]

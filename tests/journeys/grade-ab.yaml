@@ -213,6 +213,15 @@
      "hud": "off"
     },
     {
+     "console": {
+      "line": "cow ARG_Province -41 7",
+      "settle": 60
+     }
+    },
+    {
+     "wait": 8
+    },
+    {
      "console": "player.setpos x -166754"
     },
     {
@@ -301,6 +310,15 @@
    "do": [
     {
      "hud": "off"
+    },
+    {
+     "console": {
+      "line": "cow ARG_Province -41 7",
+      "settle": 60
+     }
+    },
+    {
+     "wait": 8
     },
     {
      "console": "player.setpos x -166754"
