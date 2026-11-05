@@ -258,12 +258,20 @@ NOT_FLORA = ("stockade", "house", "walkway", "scaffold", "platform", "plank", "b
 # white gorse bush (edid 01giantmushroom) took 0.15 of the flooded forest's stems.
 SIGNATURE_ONLY = {"willow": ("flooded-forest", "deep-sink-basin")}
 NOT_BLACK_MARSH = ("gorse",)
+# The northern palette (lane 1.15-r6-no-birch, decision 0006: no Nordic element survives; 0032): silver birch, poplar,
+# dwarf juniper, bristlecone, pine, spruce, fir and aspen are boreal trees. Black Marsh's flora is cypress, mangrove,
+# bamboo, palms, bog willow, ferns, blue moss (lore topics/fauna-hazards.md:92-96, "Flora"), so no list in any region
+# class admits them (01BIRCH stood in 0.092 of the coastal lagoon's tree stems, 01Juniper in 0.007 of the flooded
+# forest's); the class's own ecology families (mangrove, palm, cypress) take their draft places.
+NORTHERN_PALETTE = ("birch", "poplar", "popular", "juniper", "bristlecone", "briscone", "pinetree", "\\pine", "pine0", "pine1", "spruce", "aspen",
+                    "fir_", "firtree")
 
 
 def admits(eco: str, f) -> bool:
     t = tags(f)
     s0 = f"{f['edid']} {f['model']}".lower()
-    if any(n in s0 for n in NOT_FLORA) or any(n in s0 for n in NOT_BLACK_MARSH):
+    if any(n in s0 for n in NOT_FLORA) or any(n in s0 for n in NOT_BLACK_MARSH) \
+            or any(n in s0 for n in NORTHERN_PALETTE):
         return False
     if any(w in s0 and eco not in ecos for w, ecos in SIGNATURE_ONLY.items()):
         return False
@@ -354,7 +362,7 @@ FAMILY = (  # family -> (name words, the eco classes whose ground it is, the gro
      "groves of the deep marsh); " + AUDIT_ROWS + " 6"),
     ("dead", ("dead", "wigs", "skydead", "snag"), ("deep-sink-basin", "interior-swamp"), AUDIT_ROWS + " 12 (dead "
      "trees in standing water)"),
-    ("broadleaf", ("erut", "wolene", "birch", "oak", "shrubtree", "alder", "aspen", "juniper", "cedar"), UPLAND,
+    ("broadleaf", ("erut", "wolene", "oak", "shrubtree", "alder", "cedar"), UPLAND,
      AUDIT_ROWS + " 1, 2 (temperate north: juniper, cedar, alder); lore regions/blackwood-and-gloommire.md:13-14"),
 )
 WINDOW = 1.5
