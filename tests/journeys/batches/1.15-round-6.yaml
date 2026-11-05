@@ -3,7 +3,7 @@
 # to what failed, is new or whose inputs moved. Crash-prone last (the heavy town and the long panel). Shaders on.
 # The tree booth stills (tests/journeys/batches/1.15-round-6-booth.txt) run on the same boot after the batch.
 id: 1.15-round-6
-relaunch_mb: 6000
+relaunch_mb: 9000   # the clone has 16 GB; at 6000 the game relaunched after every third journey (5 min each on a fresh GPU), 01:2x
 relaunch_every: 0
 one_load: true
 settle_waits: true
@@ -13,6 +13,7 @@ items:
   - river-steps
   - ground-materials
   - road-look
+  - grade-ab
   - bridge-look
   - junction-dry
   - rain-look
