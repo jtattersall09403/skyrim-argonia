@@ -34,14 +34,21 @@ the endgame's third option (the empty throne) is in a room by the end of the act
   three cultists at a fixed level, enable-parented to one attack marker; fire FX statics on the same parent; a hatching
   shed and clutch statics in Pussbottom; a light on LilmothHist's tree under its own parent (turned off when the tree
   closes); a locked chest of the player's fixed starting gear. BM&V's WE adventurers and thieves at LilmothHist
-  (`02A204`-`02A206`, `02A208`, `02A209`) get an enable parent that turns on after MQ01, so they do not join the attack.
-- **MQ03:** Nesh-Deeka and two An-Xileel wardens placed; the courier's body left on Dock1; a lock on the cabin door;
-  two books (the overseer's ledger, the roll's copy); `01Cavebig`'s ten actors disabled and fog added.
+  (`02A204`-`02A206`, `02A208`, `02A209`, vanilla levelled bases), Old Salty (`015184`, a levelled crab boss) and the
+  Daedroth pack by the grove (`1453EF`-`1453F3`) get an enable parent that stays off (decisions 0035, 0006).
+- **MQ03:** Nesh-Deeka and two Lilmoth dock wardens placed; the courier's body and strap left at Dock1; the overseer
+  hidden in BM&V's cabin `01CabinIntsiningDUPLICATE002` (`0FE8B7`, door `0FE95B` by Pusbottom), its door locked and its
+  Maiden Spider removed; the Restless Dead (`0AA65F`, `0AA660`), a crocodile (`1453FD`) and levelled Bonemen
+  (`02A228`-`02A22A`) by the cabin removed; a strongbox and three books; a lean-to and an alchemy table by Hereguard's
+  landing (the census gives Hereguard no interior); `01Cavebig`'s ten actors removed and fog added.
 - **MQ04:** Nurwul-Neel and Mee-Vei placed in the Village from BM&V's tribal template; a Hist tree reference (the base
   BM&V uses in LilmothHist) placed above the pools; the eight `SoM_00EncDraugrzombiez1` placements (`084AF9` first)
-  disabled under a parent that stays off (a draugr look, decision 0006); a camp of three cultists at a fixed level, a
+  and the six draugr-race and dragon-priest-race placements (`07F92F`, `07F931`-`07F933`, `120E0A`, `120E0B`) removed
+  under a parent that stays off (decision 0006); four fixed-level leeches placed on the cut root; a camp of three cultists at a fixed level, a
   chest of jars and a trail of gum spots at swamplandsrose; an An-Xileel officer, disabled until one ending calls him.
-- **MQ05:** three raiders at a fixed level by dock5; two Reed escorts; six people at Helstrom (Ei-Tuja, Kaska-Meen,
+- **MQ05:** three raiders at a fixed level by dock5; two Reed escorts; two Megalanians and a Leopard on the walk; the
+  four doors into Helstrom's house interior that open outside the city (`1E42B7`-`1E42B9` at dock5, `1E44AE`) locked;
+  a young Hist for the Tree-Minders' grove and markers for the Reed's rooms and the debating house; six people at Helstrom (Ei-Tuja, Kaska-Meen,
   Never-Writes-Twice, the hall keeper, two gate guards) on its navmesh and in its house interior; a throne static
   and a broom in the hall. BM&V's Helstrom has no actors at all, so these six are the city: thin, and it says so
   (below).
@@ -57,11 +64,18 @@ Every enemy is at a fixed level (decision 0035); no levelled list is used.
   into a search, a sample test and a forced lock.
 - **MQ04:** the first affected Hist community is BM&V's tribal Village; its leeches, already there in numbers, become
   the misdiagnosis. A camp the player finds by following a gum trail adds the hunt (MISSING secondary).
-- **MQ05:** the convoy is BM&V's ship and an escorted walk. Helstrom is a census-empty city; six people and one
+- **MQ05:** the convoy is BM&V's ship and an escorted walk, and the ambush comes from a leak in the Reed's own office.
+  The theological quarrel became a bargain (Helstrom answers to no outsider, and the Nisswo hold many readings): the
+  player wins the Tree-Minders' leave for Reed watchers at the wounded trees. Helstrom is a census-empty city; six people and one
   reused interior give the arrival, the Reed office, the dispute and the empty throne. Act II's council and archive
   will need more of Helstrom and are a later phase's call.
 
 ## Open, recorded
+
+- The coast road and Longmont need a decision 0006/0035 audit before Phase 4 builds MQ04 (Longmont has vanilla Imperial
+  soldier bases; the road has hagravens renamed "Tree Mother", and levelled boar and Soul Cairn bases).
+- The quest vocabulary's skills are Morrowind's; the block C-skill maps them to Skyrim's for now. Phase 4 owes the
+  vocabulary itself.
 
 - BM&V's Helstrom has nine house doors into one interior: the house quarter reads as one building inside. Kept;
   retargeting doors is a later edit if the owner finds it odd.

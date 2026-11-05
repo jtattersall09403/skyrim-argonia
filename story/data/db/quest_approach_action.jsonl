@@ -42,11 +42,11 @@
 {"quest_id":"quest.main.mq04","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"alchemy","use":"test-a-sample","setting":"open-ground","note":"the leech: its belly is sap"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"approaches_ord":0,"ord":0,"skill":"sneak","use":"spy","setting":"by night","target":"Mee-Vei"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"persuade","target":"Mee-Vei","note":"he tells of the watch and the three on a Speech check, or when shown the gum"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"sneak","use":"follow","setting":"open-ground"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":1,"ord":0,"skill":"long-blade","use":"clear-a-place","target":"a rival crew","note":"three cultists at a fixed level (D2)"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"approaches_ord":2,"ord":0,"skill":"sneak","use":"steal","setting":"by night","note":"the chest of jars taken while they sleep"}
-{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"the clearing line needs the jars and either the leech or the gum (C-item)"}
-{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"intimidate","target":"Nurwul-Neel","note":"the An-Xileel will take the tree in hand"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":0,"ord":0,"skill":"sneak","use":"follow","setting":"open-ground"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":1,"ord":0,"skill":"long-blade","use":"clear-a-place","target":"a rival crew","note":"three cultists at a fixed level (D2)"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"approaches_ord":2,"ord":0,"skill":"sneak","use":"steal","setting":"by night","note":"the chest of jars taken while they sleep"}
+{"quest_id":"quest.main.mq04","stages_ord":7,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"the clearing line needs the jars and either the leech or the gum (C-item)"}
+{"quest_id":"quest.main.mq04","stages_ord":7,"approaches_ord":1,"ord":0,"skill":"speechcraft","use":"intimidate","target":"Nurwul-Neel","note":"the An-Xileel will take the tree in hand"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":0,"ord":0,"skill":"marksman","use":"snipe","setting":"height","target":"pirates","note":"from the ship's deck"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":1,"ord":0,"skill":"spear","use":"fight","target":"pirates"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"approaches_ord":2,"ord":0,"skill":"sneak","use":"pickpocket","target":"pirates","note":"the copy, from the leader, if the player closes unseen; otherwise it is on his body"}
@@ -54,6 +54,8 @@
 {"quest_id":"quest.main.mq05","stages_ord":3,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","target":"the town watch","note":"the gate guards admit a stranger from the marsh on Nesh-Deeka's token, or on a Speech check"}
 {"quest_id":"quest.main.mq05","stages_ord":5,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","setting":"before witnesses (a council, a hearing, a household)","target":"Kaska-Meen","note":"the grant line needs the gum or the jars held (C-item) and a Speech check (C-skill)"}
 {"quest_id":"quest.main.mq05","stages_ord":5,"approaches_ord":1,"ord":0,"skill":"mercantile","use":"bribe","target":"Ei-Tuja","note":"he preaches that a closed tree may be watched by any who mean it well; 200 gold"}
+{"quest_id":"quest.main.mq05","stages_ord":6,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"persuade","setting":"before witnesses (a council, a hearing, a household)","target":"Kaska-Meen","note":"the grant line needs the gum or the jars held (C-item) and a Speech check (C-skill)"}
+{"quest_id":"quest.main.mq05","stages_ord":6,"approaches_ord":1,"ord":0,"skill":"mercantile","use":"bribe","target":"Ei-Tuja","note":"he preaches that a closed tree may be watched by any who mean it well; 200 gold"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"approaches_ord":0,"ord":0,"skill":"alteration","use":"water-breathe","setting":"in a flooded ruin, root-cave or under water"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"approaches_ord":1,"ord":0,"skill":"spear","use":"fight","setting":"in a flooded ruin, root-cave or under water","target":"vermin: parasite swarms in a root-cave","note":"clears the air pocket on the way"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"approaches_ord":0,"ord":0,"skill":"speechcraft","use":"present-evidence","setting":"before witnesses (a council, a hearing, a household)","note":"the samples and the tool-marks against Im-Moro's belief"}

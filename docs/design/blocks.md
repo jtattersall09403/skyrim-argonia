@@ -1,0 +1,154 @@
+# The block set: every engine mechanic Act I uses
+
+Phase 2 ([brief](../phases/2-first-act-on-paper.md)). Derived from the act's quest records (`quest.main.mq01`,
+`mq03`, `mq04`, `mq05`; adaptation in [act1-on-bmv](../../story/design/quests/act1-on-bmv.md)). A quest is QUST stages
+joined by connectors: a **trigger** moves a stage, a **condition** gates a trigger or a line, an **effect** is what a
+stage does, and a **world edit** is the record under them. Each block has one record shape (Spriggit YAML under
+`plugin/Argonia`, built by `tools/ArgoniaPlugin`) and at most one Papyrus shape (a stage fragment, `QF_`, or a
+dialogue fragment, `TIF_`). Precedent is counted in Skyrim.esm (decision 0034; the counts and how they were taken:
+[quest-block-precedent](../research/skyrim/quest-block-precedent.md)). No block needs SKSE.
+
+## Triggers (what moves a stage)
+
+| Block | Record shape | Papyrus shape | Skyrim.esm precedent |
+|---|---|---|---|
+| **TR-topic**: a dialogue topic or choice | DIAL in the quest's branch; INFO with conditions; the choice is one INFO per answer | TIF_ `GetOwningQuest().SetStage(n)` | 5,540 INFOs with a fragment, in 475 quests |
+| **TR-zone**: entering an area | ACTI trigger box (XPRM primitive) placed as REFR | the vanilla `defaultSetStageTrigScript` (properties: quest, stage, prereq stage); no script of ours | 327 refs carry it; 2,966 refs of 256 *Trig* bases |
+| **TR-activate**: using or reading a thing | the thing is a forced-ref alias | the vanilla `defaultSetStageAliasScript` / `defaultSetStageActScript` | 119 quests use the alias set-stage family; 178 activate-script records; 6 read-book set-stage |
+| **TR-acquire**: picking up an item | the item is a forced-ref alias | the vanilla `defaultSetStageOnPlayerAcquire` | 16 quests |
+| **TR-death**: a death, or a group cleared | the actor (or each of the group) is a forced-ref alias | the vanilla `defaultSetStageOnDeathRefAlias`; for a group, `defaultCounterIncrementOnDeath` | 20 and 47 |
+| **TR-chain**: another quest's stage | the next quest's QUST (not Start Game Enabled) | QF_ `NextQuest.Start()` / `SetStage(10)` at the ending stage | 86 quests read another quest's stage; 1,596 INFOs do |
+| **TR-scene**: a scene finishing | SCEN owned by the quest | SCEN end fragment `SetStage(n)` | 577 scenes have fragments; 1,706 scenes in 1,378 quests |
+
+## Conditions (what gates a trigger or a line), all CTDA on INFO, QUST or PACK
+
+| Block | Function | Precedent (uses in QUST, INFO, PACK, SCEN) |
+|---|---|---|
+| **C-stage** | GetStage / GetStageDone (own quest or another's) | 8,029 / 4,175 |
+| **C-global** | GetGlobalValue (settlement standing, owings) | 1,579 |
+| **C-faction** | GetInFaction / GetFactionRank | 6,904 / 259 |
+| **C-item** | GetItemCount | 678 |
+| **C-skill** | GetActorValue on a skill (speech, sneak, alchemy...) | 150 on skills, of 543 |
+| **C-time** | GetCurrentTime | 518 |
+| **C-alive** | GetDead | 1,028 |
+
+Flags in the records (`flag.mq*`) are not a block of their own: each is a stage done (C-stage) or a global
+(C-global), whichever the record writes it as.
+
+## Effects (what a stage does)
+
+| Block | Record shape | Papyrus shape | Precedent |
+|---|---|---|---|
+| **E-stage**: the next stage, its journal entry and objective | QUST stage with log entry (CNAM) and QOBJ objective, no target | QF_ `SetStage`, `SetObjectiveDisplayed/Completed` | 726 log stages in 203 quests; 1,452 objectives in 396 |
+| **E-enable**: show or hide a set of things | each set's refs carry XESP to one XMarker parent; the parent starts disabled or enabled | QF_ `Parent.Enable()` / `Disable()` | 23,239 refs with XESP; 911 initially disabled with one |
+| **E-item**: give or take an item or gold | the item is a MISC/BOOK/WEAP record (fixed, never a levelled list) | QF_/TIF_ `Game.GetPlayer().AddItem/RemoveItem` | every vanilla reward; fragment bodies not counted (compiled) |
+| **E-move**: place or move an actor or the player | an XMarker as the destination | QF_ `Ref.MoveTo(Marker)` | MQ101 and the vanilla dream quest DA16 do this; not counted |
+| **E-faction**: join a faction or change rank | alias faction list (ALFC) on the alias, or a fragment | QF_ `AddToFaction/SetFactionRank` | 1,215 alias factions in 140 quests |
+| **E-scene**: start a scene | SCEN owned by the quest, actors as aliases | QF_ `Scene.Start()` | 1,706 scenes |
+| **E-package**: give an actor new behaviour | alias package list (ALPC: follow, travel, sandbox at a marker) | none: the alias filling applies it | 4,125 alias packages in 365 quests |
+| **E-global**: change standing, owings, a remembered choice | GLOB record | QF_/TIF_ `Global.SetValue/Mod` | backs the 1,579 GetGlobalValue uses |
+| **E-regard**: a person likes the player more or less | none | TIF_ `Actor.SetRelationshipRank(Player, n)` | the vanilla favour quests' `favorNPCDeathScript` set (46 quests) stand on it; not counted |
+
+## World edits (the records under the blocks)
+
+| Block | Record shape | Precedent |
+|---|---|---|
+| **W-npc**: a new person from a template, on existing navmesh | NPC_ with TPLT to a BM&V or vanilla base, our name, placed ACHR, persistent | 3,651 of 5,118 NPC_ have a template |
+| **W-fixed**: a creature or enemy at a fixed level | NPC_ with the PC-level-mult flag off, a fixed level for its band (decision 0035) | 4,664 of 5,118 NPC_ are fixed level |
+| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group); a removal is an enable parent that stays off, never a delete | 4,072 refs start disabled |
+| **W-override**: a changed BM&V record (a lock, a door, a container) | the BM&V record overridden in Argonia.esp (Argonia.esp already does this for MQ101 and 182 others) | Update.esm overrides Skyrim.esm the same way; not counted |
+
+Aliases are a rule of the blocks, not a block: every alias in an act quest is a **forced reference** to a persistent
+ref we placed or a BM&V ref (2,687 forced-ref aliases in 425 vanilla quests), never "find matching".
+
+## Dropped, and why
+
+- **Waiting or sleeping as a trigger.** Vanilla has no alias script for it (0 quests) and only 10 records with a sleep
+  script. MQ01's dawn and MQ03's dream were re-authored: the dawn is a topic with a C-time condition (talk to the
+  survivor after five in the morning), and the dream is a bed the player activates (TR-activate, then E-move into
+  `01Cavebig`).
+- **Change Location story-manager starts.** 135 vanilla quests use them, but no act quest needs one: every quest
+  starts from the one before (TR-chain), and arrival is a TR-zone at the settlement's edge.
+- **Location conditions** (GetInCurrentLoc). BM&V has no LCTN records of its own (census), so a location condition
+  has nothing to test; zones do the work.
+
+## The induction note
+
+**Why the base cases and one composite prove any quest built from the set.** A quest built from these blocks is a
+graph of QUST stages; every edge is one trigger, gated by conditions, and every node fires effects over world edits.
+The engine joins them only through the quest's stage: a trigger's whole output is `SetStage(n)`, an effect's whole
+input is "stage n began", a condition's whole input is engine state (stage, global, faction, item, actor value,
+clock, death). So a block proven once (the **base case**: it fires, or holds, in a quest of its own) behaves the same in
+any quest, provided the joint is proven too. The **inductive step** is one composite quest in which every trigger
+type moves a stage that fires every effect type, each trigger gated by every condition type. If a quest of k stages
+works, adding a stage adds one edge of proven kinds through the proven joint, so the quest of k+1 stages works.
+
+**Where the argument fails on this engine, and the guard for each.**
+
+| Failure | Why it breaks | Guard (a rule of the block or a case in the composite) |
+|---|---|---|
+| Two triggers racing for one stage | MQ01 stage 40: two zones (the shed, the dock) could both fire; SetStage is not atomic with the read of the stage | Rule of TR-zone and TR-topic: every trigger carries a prerequisite (`GetStage == n`, the trigger script's prereq property), and the two outcomes are different stages (41, 42), each fragment disabling the other's trigger first. The composite has two zones that fire in the same frame. |
+| Alias filling at quest start | a forced alias whose ref is disabled or in an unloaded cell fails to fill, and the quest refuses to start | Rule: forced refs only, every aliased ref persistent, aliases that may be gone marked Optional; no find-matching. The composite starts while its aliased refs are disabled and two cells away. |
+| Persistent references | a non-persistent ref in an unloaded cell cannot be enabled, moved or filled | Rule of W-ref and W-npc: every ref a block names is persistent (in the cell's persistent group); the build check lists any quest-named ref that is not. |
+| AI package priority | an alias package can lose to the actor's own (BM&V or template) package, or to combat | Rule of E-package: alias packages sit on the alias (which outranks the actor's own) and each has its conditions on the stage; a scene's actors are aliases of the scene's quest. The composite runs an escort while a hostile is enabled. |
+| Save and reload mid-quest | a fragment running at the save is cut short; a trigger box that fired once may fire again; a scene in progress restarts | Rule of E-stage: fragments are short and idempotent (enable what should be enabled, never toggle); triggers carry the stage prerequisite so a refire does nothing; scenes are written to restart from their beginning. The composite is saved and reloaded at every stage. |
+
+## Every stage of every act quest, mapped
+
+Every stage of every act quest maps to the blocks above. Columns: the trigger that enters the next stage, the
+conditions that gate it, the effects the stage fires, and the world edits it stands on. Record terms map to blocks so:
+`topicHeardFrom` is TR-topic; `inZone` and `inSettlement` are TR-zone; `hasItem` as a trigger is TR-acquire, as a gate
+C-item; `npcAlive` failing is TR-death; `counterAtLeast` and `placeCleared` are TR-death's counter; `questStage` and
+`stageEverReached` are C-stage; `timeOfDay` is C-time; a record `flag` is C-stage or C-global; `npcAtMark` is
+E-package (the actor's alias package puts them there) plus C-time; `grantTopic` is the topic's own C-stage condition;
+`setFactionRank` and `grantServiceAccess` are E-faction; `changeStanding` and `changeSettlementStanding` are E-global;
+`changeDisposition` is E-regard; `enableRef`/`disableRef`/`applyLocalVariant` are E-enable; `giveItem`/`takeItem`/
+`giveGold`/`takeGold` are E-item; `moveRef` is E-move; `startScene` is E-scene. Skill uses named with Morrowind skills
+in the vocabulary map to Skyrim actor values for C-skill (speechcraft and mercantile to Speech, security to
+Lockpicking, sneak to Sneak or Pickpocket, marksman to Archery, the blades and spear to One-Handed or Two-Handed); swim,
+dive and climb are movement (FreeClimb, water), never a check.
+
+| Quest stage | Trigger in | Conditions | Effects | World edits |
+|---|---|---|---|---|
+| MQ01 10 | ARG_Opening start (built) | - | E-stage | W-npc (the gang), W-ref (roll, chest) |
+| MQ01 20 | TR-topic (the roll) | C-alive fail-forward | E-stage, E-item (jars) | W-ref (shed, chest), W-override none |
+| MQ01 30 | TR-zone (dock return) | C-stage (objective done) | E-stage, E-enable (attack parent), E-scene (strike) | W-npc, W-fixed (cell), W-ref (fire) |
+| MQ01 40 | TR-zone (lane) | C-stage | E-stage | - |
+| MQ01 41 / 42 | TR-zone (shed-first / planks-first), racing | C-stage == 40 on both | E-stage, E-enable (the other zone and the person not reached off), E-package (the saved person travels to Hereguard alone) | W-ref (zones), W-ref removal (Old Salty 015184, the Daedroth pack 1453EF-F3) |
+| MQ01 43 | TR-death (both survivors) | C-alive | E-stage | - |
+| MQ01 50 | TR-zone (grove), after TR-death (cutters' counter) on the 41 path | C-stage | E-stage, E-scene (closing), E-enable (Hist light off) | W-npc (tenders), W-ref (light) |
+| MQ01 60 | TR-zone (Hereguard) | C-stage | E-stage, E-package (the gang travels to Hereguard's steps) | - |
+| MQ01 90 / 91 / 92 | TR-topic (dawn, per survivor) or TR-death | C-time (after dawn), C-alive, C-stage (41, 42 or 43 reached) | E-stage, E-item (knife or pouch), E-global (saved flag), E-enable (attack off), TR-chain (MQ03 starts) | - |
+| MQ03 10 | TR-chain (MQ01 ending) | - | E-stage, E-enable (Nesh-Deeka) | W-npc |
+| MQ03 20 | TR-topic | C-alive | E-stage, E-item (Reed token), E-move (the overseer to the cabin) | W-npc, W-fixed (wardens), W-ref (strap, root), W-ref removal (Restless Dead, crocodile, Bonemen by the cabin) |
+| MQ03 30 | TR-acquire (strap, gum) | C-item | E-stage | - |
+| MQ03 35 | TR-death (overseer) | C-alive | E-stage | - |
+| MQ03 40 | TR-topic or TR-acquire (ledger) | C-skill (Speech check on the purse line) | E-stage | W-override (cabin lock), W-ref (strongbox), W-ref removal (the spider) |
+| MQ03 50 | TR-topic (name or spare) | C-item (each case line gated on the thing held) | E-stage, E-global (overseer named) | - |
+| MQ03 60 | TR-topic (pardon plain or price) | C-alive | E-stage | W-ref (lean-to, alchemy table) |
+| MQ03 70 | TR-activate (lean-to) | C-stage | E-stage, E-move (player into 01Cavebig) | W-ref (fog, dream marks, removal of its 10 actors) |
+| MQ03 95 | TR-death (Nesh-Deeka) | C-alive | E-stage | W-ref (letter) |
+| MQ03 96 | TR-acquire (the letter) | C-item | E-stage | - |
+| MQ03 90 / 91 | TR-zone (the dream's door) | C-global (the gang's months struck off or not) | E-stage, E-move (back to the lean-to), E-faction (Veiled Reed), E-item (token, gold), E-global, E-regard, TR-chain | - |
+| MQ04 10 | TR-chain (MQ03 ending) | - | E-stage | W-npc (Nurwul-Neel, Mee-Vei), W-ref (Hist), W-ref removal (14 Nordic-look actors) |
+| MQ04 15 | TR-death (warden-mother) | C-alive | E-stage | - |
+| MQ04 20 | TR-topic or TR-zone (village) | C-stage | E-stage | W-fixed check (BM&V leeches) |
+| MQ04 30 | TR-death (the leech bed's counter) and TR-acquire (the leech) | C-item | E-stage | W-fixed (four leeches on the root), W-ref (root activator, leech drop) |
+| MQ04 35 | TR-death (Mee-Vei) | C-alive | E-stage | - |
+| MQ04 41 | TR-acquire (cracked jar, from 35) | C-item | E-stage | W-ref (trail) |
+| MQ04 40 | TR-zone (root at night) or TR-topic (the watch) or TR-acquire (cracked jar, from 35) | C-time (night), C-skill (Speech), C-stage | E-stage, E-package (Mee-Vei's night sandbox at the root) | W-ref (trail: drips, jar, skiff) |
+| MQ04 50 | TR-acquire (the jars) | C-item | E-stage, E-scene (judgement) | W-ref, W-fixed (the camp) |
+| MQ04 90 / 91 / 92 / 93 / 94 | TR-topic (clear, call, let stand) or TR-death | C-item (jars and leech or gum for the clearing line), C-alive (the tender, for 90/92 against 94) | E-stage, E-enable (one of three parents), E-item (charm; jars taken), E-global (standing), TR-chain | W-npc (An-Xileel officer), W-ref (three parents) |
+| MQ05 10 | TR-chain (MQ04 ending) | - | E-stage | - (BM&V's ship is used as it is) |
+| MQ05 20 | TR-zone (dock5) | C-stage | E-stage, E-enable (raid parent) | W-fixed (raiders), W-ref (copy) |
+| MQ05 30 | TR-death (raiders' counter; Foolhardy, none flees) | C-stage | E-stage, E-scene (escort), E-package (escorts travel) | W-npc (escorts), W-fixed (beasts), W-override (four locked doors) |
+| MQ05 40 | TR-zone (gate) | C-skill (the gate's Speech line) | E-stage | W-npc (Helstrom's six), W-ref (the hall's seat) |
+| MQ05 45 | TR-death (Never-Writes-Twice) | C-alive | E-stage | W-ref (her orders) |
+| MQ05 51 | TR-acquire (her orders) | C-item | E-stage | - |
+| MQ05 50 | TR-topic (the report) | C-alive | E-stage | W-ref (the grove's Hist, the rooms' markers, the reed screen) |
+| MQ05 90 / 91 / 92 / 93 (from 50 or 51) | TR-topic (grant, refuse, a reading) or TR-death (Kaska-Meen) | C-item (gum or jars), C-skill (Speech), C-alive | E-stage, E-faction (Reed rank, grove service faction), E-item (gold given or taken), E-regard | - |
+
+Every stage maps; no stage needs a block outside the set, and no block needs SKSE. The set is seven triggers, seven
+conditions, nine effects and four world edits. The composite quest that proves the joints (Phase 3's first build)
+needs one stage per trigger, each gated by one condition of each kind across the set and firing one effect of each
+kind, plus the five guard cases above.

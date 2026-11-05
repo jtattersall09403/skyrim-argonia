@@ -37,11 +37,11 @@
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":1,"id":"a-test"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":0,"id":"a-spy"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":1,"id":"a-ask"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"ord":0,"id":"a-follow"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"ord":1,"id":"a-fight"}
-{"quest_id":"quest.main.mq04","stages_ord":5,"ord":2,"id":"a-steal"}
-{"quest_id":"quest.main.mq04","stages_ord":6,"ord":0,"id":"a-evidence"}
-{"quest_id":"quest.main.mq04","stages_ord":6,"ord":1,"id":"a-xileel"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"ord":0,"id":"a-follow"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"ord":1,"id":"a-fight"}
+{"quest_id":"quest.main.mq04","stages_ord":6,"ord":2,"id":"a-steal"}
+{"quest_id":"quest.main.mq04","stages_ord":7,"ord":0,"id":"a-evidence"}
+{"quest_id":"quest.main.mq04","stages_ord":7,"ord":1,"id":"a-xileel"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"id":"a-bow"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":1,"id":"a-blade"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":2,"id":"a-copy"}
@@ -49,6 +49,8 @@
 {"quest_id":"quest.main.mq05","stages_ord":3,"ord":0,"id":"a-gate"}
 {"quest_id":"quest.main.mq05","stages_ord":5,"ord":0,"id":"a-wound"}
 {"quest_id":"quest.main.mq05","stages_ord":5,"ord":1,"id":"a-reading"}
+{"quest_id":"quest.main.mq05","stages_ord":6,"ord":0,"id":"a-wound"}
+{"quest_id":"quest.main.mq05","stages_ord":6,"ord":1,"id":"a-reading"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":0,"id":"a-breath"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":1,"id":"a-swarm"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"ord":0,"id":"a-evidence"}
