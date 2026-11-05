@@ -109,9 +109,10 @@ def refresh(only: set[str] | None = None) -> int:
         p.write_text(look.ground_materials(b, log, [ln for ln in p.read_text().splitlines() if ln.startswith("#")]))
     if want("creatures-kinds"):
         (JOURNEYS / "creatures-kinds.yaml").write_text(gen.creatures_kinds(b, w, log))
-    for n in ("claywater-look", "claywater-walk"):   # claywater-look's standard lines are authored and kept
-        if want(n):
-            (JOURNEYS / n).with_suffix(".yaml").write_text(gen.claywater(b, n, log))
+    if want("claywater-look"):   # derived from the place's refs and the placed-static clearance
+        (JOURNEYS / "claywater-look.yaml").write_text(gen.claywater_look(b, log))
+    if want("claywater-walk"):
+        (JOURNEYS / "claywater-walk.yaml").write_text(gen.claywater(b, "claywater-walk", log))
     moved = [r for r in log if r["moved_m"]]
     stuck = [r for r in log if not r["clear"]]
     for r in moved + [r for r in stuck if r not in moved] + [r for r in log if r["why"].startswith("clearance:")

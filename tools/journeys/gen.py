@@ -1349,3 +1349,181 @@ def grade_ab(b: Build) -> str:
          "independent_steps": True, "runner": 1, "crash_risk": "low", "scene": "world-panel", "camera": "first",
          "steps": steps}
     return GRADE_HEAD + json.dumps(j, indent=1) + "\n"
+
+
+# -- claywater-look: the stops derived from the place's refs (lane 1.15-r6-claywater-look-derived) ---------------------
+# r6-chain23's hand-pinned stands sat inside the station's walls once lane claywater-water re-seated the pads and huts.
+# Each exterior stop is now a stand CLAY_BAND_M off its subject's bounds (the subject refs' collision boxes, or a body
+# round a marker or a person), dry, clear of plants (look.score) and of every placed static (static_hits), aimed at
+# the subject's middle; the interior stop keeps its door approach.
+CLAY_BAND_M = (8.0, 15.0)
+CLAY_PREFER_M = 10.0
+CLAY_BEARING_STEP = 10.0
+CLAY_SIDE_DEG = 45.0    # a stand more than this off the preferred side ranks after one on it (before tall grass)
+CLAY_ARRIVE = "ARG_Ref_ClaywaterStationQuestBoard"   # the moveto that loads the station's cells (dry: 0.98 m clear)
+CLAY_PERSON_U, CLAY_MARKER_U = (35.0, 125.0), (35.0, 35.0)   # (half width, height) of a person's or a marker's body
+R = "ARG_Ref_ClaywaterStation"
+# name, subject refs, the subject's own pieces (their boxes are the subject), the preferred side (bearing from the
+# first ref to the second: the stand's bearing off the subject), what the reader judges.
+CLAY_STOPS = (
+    ("road-in", ("RoadIn",), (), ("B1", "RoadIn"),
+     "the Blackwood Road coming in to the station, the road a worn lane meeting the ground, the station's roofs beyond"),
+    ("well-junction", ("Well", "QuestBoard"), ("WellSilt", "WellWater", "MortarTub"), ("B1", "Well"),
+     "the stone well head seated on the yard, its rim level, the yard ground around it dry"),
+    ("station-house-front", ("B1",), ("B1Door", "B1Doorframe", "B1Stairs", "B1Post", "B1Sack", "B1Barrel", "B1Bucket",
+                                      "B1Bench", "B1Wood", "D9Notice"), ("B1", "B1Door"),
+     "the station house's front, the door at its doorway, the stairs meeting the porch and the ground"),
+    ("huts-row", ("B4", "B6"), ("B4Door", "B4Doorway", "B6Door", "B6Doorway"), ("B6", "B6Door"),
+     "the two mud huts side by side, each footing meeting the ground, the doors at their doorways"),
+    ("family-hut", ("B5",), ("B5Door", "B5Doorway"), ("B5", "B5Door"),
+     "the family's mud hut, its footing meeting the ground, the door at its doorway, the cooking stand by it"),
+    ("landing-and-raft", ("LandDock1", "LandDock2", "Raft"), ("Cleat1", "Cleat2", "Plank"), ("Raft", "B4"),
+     "the plank landing over the water and the raft beside it, the deck level, the raft on the water, no float"),
+    ("clay-cut-and-pool", ("ClayBend",), (), ("ClayBend", "Well"),
+     "the clay cut in the bank and the scour pool holding water at its foot"),
+    ("ford-ambush-road", ("AmbushPlayer", "AmbushDeserter"), (), ("AmbushDeserter", "AmbushPlayer"),
+     "the road at the ford where the ambush comes, the water crossing it, the road meeting the water's edge"),
+    ("livia-full-body", ("Livia",), (), ("B1", "Livia"),
+     "Livia whole from head to feet, her clothes and skin one tone, no seam, no dark face"),
+    ("signs-full-body", ("Signs",), (), ("Signs", "B4"),
+     "the landing's poler whole from head to feet on the deck, no seam, no dark face"),
+)
+CLAY_COMMON = ("no Nordic model, texture or word", "Black Marsh style (mud, reed, cypress)",
+               "pads and pieces meeting the ground", "nothing floating or buried")
+CLAY_INSIDE = """  - name: station-house-inside
+    scan: 6
+    # claywater-walk's stand-off: 70 units out on the porch against the door's heading, facing it (moveto onto the door
+    # left the player outside with the prompt shown; diag2-crash-misc); the settle waits through the cell load (7db289ec)
+    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+         {console: "player.moveto ARG_Ref_ClaywaterStationB1Door 37 60 20"}, {console: "player.setangle z 212"}, {console: "player.setangle x 0"}, {console: "player.setangle y 0"}, {key: "W 80"}, {wait: 2},
+         {key: "E 120"}, {wait: 6}, {settle: {cap: 30, min: 3}}]
+    weather: any  # interior: the stop ends inside the station house, no sky in the still
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 0"}]
+    reader: [the station house's room: walls, floor and roof whole, no hole to the void, the keeper's bed and the ledger, no Nordic piece]
+"""
+
+
+def clay_subject(b: Build, refs: tuple, own: tuple) -> dict:
+    """The subject's bounds (units): the union of its refs' and own pieces' static boxes, a body round each ref with
+    none (a person, a marker); its middle (centre, halfway up from the ground or the box's foot)."""
+    boxes = {x["edid"]: x for x in b.statics()}
+    parts, edids = [], set()
+    for name in refs + own:
+        e = R + name
+        if e in boxes:
+            parts.append(boxes[e])
+            edids.add(e)
+            continue
+        if name not in refs:
+            continue
+        r = b.ref(e)
+        if r is None or "x" not in r:
+            raise KeyError(f"claywater-look: {e} is no placed exterior ref")
+        g = r["z"] if r["own_z"] else (b.water_u(r["x"], r["y"]) if b.wet(r["x"], r["y"]) else b.ground_u(r["x"], r["y"]))
+        if r["own_z"] is False and "Signs" in e:   # the poler stands on the deck (its seat, place_build)
+            g = max(g, (b.water_u(r["x"], r["y"]) or g) + su.metres_to_units(0.85))
+        hw, h = CLAY_PERSON_U if any(k in name for k in ("Livia", "Signs")) else CLAY_MARKER_U
+        parts.append({"edid": e, "x0": r["x"] - hw, "y0": r["y"] - hw, "z0": g, "x1": r["x"] + hw, "y1": r["y"] + hw,
+                      "z1": g + h})
+    u = {k: (min if k.endswith("0") else max)(p[k] for p in parts) for k in ("x0", "y0", "z0", "x1", "y1", "z1")}
+    cx, cy = (u["x0"] + u["x1"]) / 2, (u["y0"] + u["y1"]) / 2
+    foot = max(u["z0"], b.ground_u(cx, cy) if not b.wet(cx, cy) else b.water_u(cx, cy))
+    return {"box": u, "mid": (cx, cy, (foot + u["z1"]) / 2), "own": tuple(sorted(edids)), "half_m":
+            (round((u["x1"] - u["x0"]) / 2 / U, 1), round((u["y1"] - u["y0"]) / 2 / U, 1))}
+
+
+def _bearing(b: Build, a: str, z: str) -> float:
+    ra, rz = b.ref(R + a), b.ref(R + z)
+    return math.degrees(math.atan2(rz["x"] - ra["x"], rz["y"] - ra["y"])) % 360
+
+
+def clay_score(b: Build, x: float, y: float, s: dict) -> dict:
+    from tools.journeys import box_dist_u, static_hits
+    from tools.journeys import look
+    sc = look.score(b, x, y, s["mid"])
+    st = static_hits(b, x, y, s["mid"], s["own"])
+    return {**sc, "soaked": b.soaked(x, y), "static_stand": st["stand"], "static_aim": st["aim"],
+            "static_line": st["line"], "bounds_m": round(box_dist_u(s["box"], x, y) / U, 1)}
+
+
+def _clay_key(sc: dict) -> tuple:
+    # a wall between the eye and the subject hides more than tall grass under the line's first metres
+    return (sc["soaked"] or sc["wet"], bool(sc["static_stand"]), bool(sc["static_aim"]), sc["bad"] > 0, sc["line"],
+            sc["canopy"], len(sc["static_line"]), sc.get("off_side", 0), sc["grass"])
+
+
+def clay_stand(b: Build, s: dict, first: float) -> tuple[float, float, dict]:
+    """The stand off the subject's bounds in CLAY_BAND_M (nearest CLAY_PREFER_M first) on bearings from the subject's
+    centre out from `first` both ways; the first fully clear wins, else the one with the least in the way."""
+    from tools.journeys import box_dist_u
+    cx, cy = s["mid"][0], s["mid"][1]
+    lo, hi = (v * U for v in CLAY_BAND_M)
+    n = int(180 / CLAY_BEARING_STEP)
+    brgs = [first] + [(first + sg * k * CLAY_BEARING_STEP) % 360 for k in range(1, n + 1) for sg in (1, -1)][:-1]
+    best = None
+    for brg in brgs:
+        ux, uy = math.sin(math.radians(brg)), math.cos(math.radians(brg))
+        cands = []
+        for k in range(1, int(60 / 0.5)):
+            x, y = cx + ux * k * 0.5 * U, cy + uy * k * 0.5 * U
+            d = box_dist_u(s["box"], x, y)
+            if d > hi:
+                break
+            if d >= lo:
+                cands.append((abs(d - CLAY_PREFER_M * U), x, y))
+        for _, x, y in sorted(cands)[::2]:
+            sc = clay_score(b, x, y, s)
+            sc["off_side"] = int(abs((brg - first + 180) % 360 - 180) // CLAY_SIDE_DEG)   # the preferred side first
+            k = _clay_key(sc)
+            if not any(k):
+                return x, y, {**sc, "bearing": brg}
+            if best is None or k < best[0]:
+                best = (k, x, y, {**sc, "bearing": brg})
+    return best[1], best[2], best[3]
+
+
+def _clay_numbers(sc: dict) -> str:
+    return (f"{sc['bounds_m']} m off the bounds, {sc['d_m']} m to the middle, bearing {sc['bearing']:.0f}; plants line "
+            f"{sc['line']} canopy {sc['canopy']} grass {sc['grass']} bad {sc['bad']}; statics stand "
+            f"{len(sc['static_stand'])} aim {len(sc['static_aim'])} line {len(sc['static_line'])}"
+            f"{' SOAKED' if sc['soaked'] or sc['wet'] else ''}")
+
+
+def claywater_look(b: Build, log: list) -> str:
+    head = ["# GENERATED by `python3 -m tools.journeys refresh --only claywater-look` (gen.claywater_look): do not hand-edit.",
+            "# 0.4 §d's look loop: vantage stills of Claywater Station at the play camera, for a `reader` against the place's",
+            "# design note (world/sources/blueprints, claywater-station). Each exterior stop is derived from the DB's placed refs",
+            f"# (build_ref, place claywater-station): a stand {CLAY_BAND_M[0]:.0f}-{CLAY_BAND_M[1]:.0f} m off the subject's bounds "
+            "(its pieces' collision boxes),",
+            "# dry, clear of plants (look.score) and of every placed static (1.5 m off its box, nothing within 3 m on the eye",
+            "# line: tools/journeys static_hits), aimed at the subject's middle; teleport first, the three angles, the weather",
+            "# forced and read back, six headings. The interior stop keeps its door approach.",
+            "# Reader checklist, every stop: " + "; ".join(CLAY_COMMON) + ". Per stop:"]
+    steps = []
+    for name, refs, own, (fa, fz), reader in CLAY_STOPS:
+        s = clay_subject(b, refs, own)
+        x, y, sc = clay_stand(b, s, _bearing(b, fa, fz))
+        z = b.ground_u(x, y) + SEAT_U
+        h, p = sc["h"], sc["p"]
+        ok = not any(_clay_key(sc))
+        log.append({"journey": "claywater-look", "step": name, "moved_m": 0.0, "clear": ok,
+                    "why": "clearance: " + _clay_numbers(sc), "stand": [round(x), round(y), round(z)],
+                    "subject": [round(v) for v in s["mid"]], "half_m": s["half_m"]})
+        head.append(f"#   {name}: {reader}")
+        steps += [f"  - name: {name}", "    scan: 6",
+                  f"    # subject: {s['mid'][0]:.0f} {s['mid'][1]:.0f} {s['mid'][2]:.0f}   ({', '.join(refs)}; half "
+                  f"{s['half_m'][0]} x {s['half_m'][1]} m)",
+                  f"    # stand: {_clay_numbers(sc)}",
+                  f"    do: [{{hud: \"off\"}}, {{console: \"player.moveto {CLAY_ARRIVE}\"}}, {{wait: 4}},",
+                  f"         {{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}}, "
+                  f"{{console: \"player.setpos z {z:.0f}\"}},",
+                  f"         {{console: \"player.setangle z {h:.0f}\"}}, {{console: \"player.setangle x {p:.0f}\"}}, "
+                  "{console: \"player.setangle y 0\"}, {wait: 3},",
+                  f"         {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, {{settle: {{cap: 14, min: 3}}}}]",
+                  "    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},",
+                  f"             {{read: [player], path: pos, keep: {name.replace('-', '_')}}}]",
+                  f"    reader: [{reader}; {'; '.join(CLAY_COMMON)}]"]
+    head.append("#   station-house-inside: the room whole, no hole to the void, the bed and the ledger, no Nordic piece")
+    head += ["id: claywater-look", "look: world", "runner: 1", "independent_steps: true", "crash_risk: low",
+             "scene: claywater", "camera: first", "steps:"]
+    return "\n".join(head + steps) + "\n" + CLAY_INSIDE

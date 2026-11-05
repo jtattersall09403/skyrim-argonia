@@ -346,3 +346,62 @@ def test_a_canopy_radius_widens_a_plant_whose_fronds_hang_past_its_bounds(tmp_pa
     t.write_text('{"radius_u": {"a": 74.4}}')
     assert canopy.load(t) == {"a": 74.4} and canopy.load(tmp_path / "none.json") == {}
     assert "03A57A:King of the Murkmire.esp" in canopy.load()    # the measured table is in data/
+
+
+def test_placed_static_rule_rejects_a_stand_inside_a_box_and_accepts_one_2_m_outside():
+    """static_hits: a stand inside a placed static's box (or within 1.5 m of it) is rejected; 2 m outside it is clear;
+    an eye line entering a box within 3 m is an aim hit; the subject's own box never counts."""
+    sx, sy = at(60, 60)
+    g = 10 * U
+    box = {"edid": "ARG_Ref_Hut", "x0": sx - 3 * U, "y0": sy - 3 * U, "z0": g - 1 * U, "x1": sx + 3 * U, "y1": sy + 3 * U, "z1": g + 5 * U}
+    b = J.Build(ground=np.full((80, 80), 10.0, np.float32), water={}, refs={}, statics=[box])
+    far = (sx, sy + 20 * U, g + 1 * U)   # the subject 20 m north, past the hut
+    assert J.static_hits(b, sx, sy, far)["stand"] == ["ARG_Ref_Hut"]                  # inside the hut
+    assert J.static_hits(b, sx + 4 * U, sy, far)["stand"] == ["ARG_Ref_Hut"]          # 1 m off its wall: within 1.5 m
+    clear = J.static_hits(b, sx + 5 * U, sy, far)                                     # 2 m outside, looking past it
+    assert clear == {"stand": [], "aim": [], "line": []}
+    hut = (sx, sy, g + 2 * U)
+    assert J.static_hits(b, sx + 5 * U, sy, hut, own=("ARG_Ref_Hut",)) == clear       # the hut as the subject: its own box
+    assert J.static_hits(b, sx - 5.5 * U, sy, (sx + 10 * U, sy, g + 1.6 * U))["aim"] == ["ARG_Ref_Hut"]   # through it at 2.5 m
+    assert J.static_hits(b, sx, sy - 10 * U, (sx, sy + 12 * U, g + 1.6 * U))["line"] == ["ARG_Ref_Hut"]  # behind it, 7 m on
+
+
+def test_claywater_look_derives_every_stop_off_its_subjects_bounds(monkeypatch):
+    """gen.claywater_look: one setpos stop per CLAY_STOPS row, each 8-15 m off its subject's bounds and outside every
+    static box by 1.5 m, aimed at the subject's middle; then the interior stop with its door approach and a load settle."""
+    import math
+    import re
+
+    import yaml
+
+    from tools.journeys import gen, look
+    monkeypatch.setattr(look, "grass_hits", lambda *a, **k: 0)
+    names = sorted({n for _, refs, own, side, _ in gen.CLAY_STOPS for n in (*refs, *side)})
+    refs, statics = {}, []
+    for i, n in enumerate(names):   # a grid of refs 40 m apart; the buildings get a 6 m box
+        x, y = at(40 + (i % 5) * 40, 40 + (i // 5) * 40)
+        refs[gen.R + n] = {"id": n, "x": x, "y": y, "own_z": False, "marker": False, "z": None}
+        if n.startswith("B"):
+            statics.append({"edid": gen.R + n, "x0": x - 3 * U, "y0": y - 3 * U, "z0": 10 * U, "x1": x + 3 * U,
+                            "y1": y + 3 * U, "z1": 16 * U})
+    b = J.Build(ground=np.full((80, 80), 10.0, np.float32), water={}, refs=refs, statics=statics)
+    b.wet = lambda x, y: False
+    b.soaked = lambda x, y: False
+    b._foliage = {}
+    b._cell_foliage = lambda cx, cy: []
+    log = []
+    text = gen.claywater_look(b, log)
+    steps = yaml.safe_load(text)["steps"]
+    assert [s["name"] for s in steps] == [r[0] for r in gen.CLAY_STOPS] + ["station-house-inside"]
+    assert len(log) == len(gen.CLAY_STOPS) and all(r["clear"] for r in log)
+    for (name, refs_, own, _, _), r in zip(gen.CLAY_STOPS, log):
+        s = gen.clay_subject(b, refs_, own)
+        x, y = r["stand"][:2]
+        assert 8.0 - 0.1 <= J.box_dist_u(s["box"], x, y) / U <= 15.0 + 0.1, name
+        assert all(J.box_dist_u(bx, x, y) > J.STATIC_CLEAR_M * U for bx in statics), name
+        blk = text.split(f"name: {name}\n")[1].split("- name:")[0]
+        h = float(re.search(r"setangle z (-?\d+)", blk).group(1))
+        want = math.degrees(math.atan2(s["mid"][0] - x, s["mid"][1] - y)) % 360
+        assert abs((h - want + 180) % 360 - 180) <= 1.0, name   # aimed at the subject's middle
+    inside = steps[-1]
+    assert inside["weather"] == "any" and {"settle": {"cap": 30, "min": 3}} in inside["do"]

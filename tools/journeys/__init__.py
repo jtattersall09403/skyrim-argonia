@@ -58,8 +58,9 @@ DRY_FOOTING_M = 0.5     # a stand's ground is at least this far above the cell w
 class Build:
     """The current build's ground, water, foliage and refs, loaded lazily (ground 2 s; the DB ~13 s, only for refs)."""
 
-    def __init__(self, ground=None, water=None, foliage=None, refs=None):
+    def __init__(self, ground=None, water=None, foliage=None, refs=None, statics=None):
         self._ground, self._water, self._foliage, self._refs = ground, water, foliage, refs
+        self._statics = statics
         self.real = ground is None and water is None and foliage is None and refs is None   # only the real build's measures are cached
 
     # -- the ground and the water ------------------------------------------------------------------------------------
@@ -185,6 +186,16 @@ class Build:
                                                  "marker": r["cell_id"].startswith("cell.studio."),
                                                  "z": su.metres_to_units(r["z_m"]) if own else None}
         return self._refs.get(edid)
+
+    # -- placed statics (lane 1.15-r6-claywater-look-derived) --------------------------------------------------------
+    def statics(self) -> list[dict]:
+        """Every placed exterior static's box (units): {edid, x0, y0, z0, x1, y1, z1}. The box is the AABB of the
+        collision triangles (out/navmesh/province/in/objects.f32: navmesh/placed.py read each piece's own Havok
+        collision on the machine that has the meshes) nearest that ref (STATIC_ASSIGN_M), at the ref's current xy
+        from the DB; a piece with no collision (a candle, a reed) has no box, as in game."""
+        if self._statics is None:
+            self._statics = static_boxes(static_refs(), OBJECTS)
+        return self._statics
 
     # -- the eye line ------------------------------------------------------------------------------------------------
     def blockers(self, eye: tuple, subj: tuple) -> list[tuple]:
@@ -392,6 +403,100 @@ def place(b: Build, subj: tuple, d0_u: float, bearings, band: tuple | None = Non
             return f
         tried.append(f)
     return min(tried, key=lambda f: (not f["dry"], f["blockers"]))  # the dry one with the fewest plants on the line
+
+
+# -- the placed-static clearance (lane 1.15-r6-claywater-look-derived) -------------------------------------------------
+# r6-chain23's Claywater stills stood inside the station's walls (a frame of one clay texture, the camera under a floor):
+# the plant measure knows only foliage. A stand keeps STATIC_CLEAR_M off every placed static's box and its eye line
+# meets no static within STATIC_AIM_M.
+OBJECTS = ROOT / "out" / "navmesh" / "province" / "in" / "objects.f32"
+STATIC_CLEAR_M, STATIC_AIM_M = 1.5, 3.0
+STATIC_ASSIGN_M = 15.0     # a collision triangle belongs to the nearest placed static within this
+NOT_STATIC = ("000034:Skyrim.esm",)    # the XMarker (markers have no body)
+NOT_STATIC_PREFIX = ("ARG_Npc_", "ARG_Misc_", "ARG_Book_")   # people, creatures and loose items move
+
+
+def static_refs() -> list[dict]:
+    """The placed exterior statics (not markers, actors or loose items): edid, x, y (units)."""
+    from tools.argonia_world import db
+    from tools.argonia_world.place_build import ref_edid
+    w = db.open()
+    out = []
+    for r in w.query("SELECT r.id, r.x_m, r.y_m, r.base FROM build_ref r JOIN build_cell c ON c.id = r.cell_id "
+                     "WHERE c.kind = 'exterior' AND r.npc_id IS NULL AND COALESCE(r.actor, 0) = 0 "
+                     "AND COALESCE(r.disabled, 0) = 0"):
+        b = r["base"] or ""
+        if b in NOT_STATIC or b.startswith(NOT_STATIC_PREFIX):
+            continue
+        x, y = su.province_to_skyrim(r["x_m"], r["y_m"])
+        out.append({"edid": ref_edid(r["id"]), "x": x, "y": y})
+    return out
+
+
+def static_boxes(refs: list[dict], objects) -> list[dict]:
+    """Each ref's box from the collision triangles nearest it (within STATIC_ASSIGN_M); objects: a path to the
+    (n, 3, 3) float32 triangles, or the array. Refs that get no triangle are left out."""
+    import numpy as np
+    if not refs:
+        return []
+    if not isinstance(objects, np.ndarray):
+        if not Path(objects).is_file():
+            return []
+        objects = np.fromfile(objects, np.float32).reshape(-1, 3, 3)
+    c = objects.mean(axis=1)[:, :2]
+    rx = np.array([[r["x"], r["y"]] for r in refs])
+    near = np.full(len(c), -1)
+    best = np.full(len(c), STATIC_ASSIGN_M * su.UNITS_PER_METRE)
+    for i in range(0, len(rx), 256):
+        d = np.hypot(c[:, None, 0] - rx[None, i:i + 256, 0], c[:, None, 1] - rx[None, i:i + 256, 1])
+        k = d.argmin(axis=1)
+        dk = d[np.arange(len(c)), k]
+        hit = dk < best
+        best[hit], near[hit] = dk[hit], k[hit] + i
+    out = []
+    for i in np.unique(near[near >= 0]):
+        t = objects[near == i].reshape(-1, 3)
+        lo, hi = t.min(axis=0), t.max(axis=0)
+        out.append({"edid": refs[i]["edid"], "x0": float(lo[0]), "y0": float(lo[1]), "z0": float(lo[2]),
+                    "x1": float(hi[0]), "y1": float(hi[1]), "z1": float(hi[2])})
+    return out
+
+
+def box_dist_u(bx: dict, x: float, y: float) -> float:
+    """The horizontal distance from a point to a box (0 inside)."""
+    return math.hypot(max(bx["x0"] - x, 0.0, x - bx["x1"]), max(bx["y0"] - y, 0.0, y - bx["y1"]))
+
+
+def _in_box(bx: dict, p: tuple, pad_u: float = 0.0) -> bool:
+    return (bx["x0"] - pad_u <= p[0] <= bx["x1"] + pad_u and bx["y0"] - pad_u <= p[1] <= bx["y1"] + pad_u
+            and bx["z0"] - pad_u <= p[2] <= bx["z1"] + pad_u)
+
+
+def static_hits(b: Build, x: float, y: float, subj: tuple, own: tuple = ()) -> dict:
+    """The placed-static measure of a stand looking at `subj`: `stand`, the statics whose box (grown STATIC_CLEAR_M)
+    the body (feet to eye) stands in; `aim`, those the eye line enters within STATIC_AIM_M of the eye; `line`, those it
+    crosses further on before the subject (the subject's own boxes, edids in `own`, and any box within 1 m of the subject
+    excepted)."""
+    u = su.UNITS_PER_METRE
+    eye = eye_of(b, x, y)
+    feet = eye[2] - su.EYE_HEIGHT_UNITS
+    clear = STATIC_CLEAR_M * u
+    L = math.dist(eye, subj) or 1.0
+    reach = L + clear
+    stand, aim_, line = [], [], []
+    for bx in b.statics():
+        if bx["edid"] in own or box_dist_u(bx, x, y) > reach or _in_box(bx, subj, u):
+            continue   # the subject's own, out of reach, or what the subject stands on or in (the poler's deck)
+        if box_dist_u(bx, x, y) <= clear and bx["z0"] - clear <= eye[2] and bx["z1"] + clear >= feet:
+            stand.append(bx["edid"])
+            continue
+        for k in range(1, int(L / (0.25 * u)) + 1):
+            t = k * 0.25 * u
+            p = tuple(eye[i] + (subj[i] - eye[i]) * t / L for i in range(3))
+            if _in_box(bx, p):
+                (aim_ if t <= STATIC_AIM_M * u else line).append(bx["edid"])
+                break
+    return {"stand": stand, "aim": aim_, "line": line}
 
 
 # -- the journey text ------------------------------------------------------------------------------------------------
