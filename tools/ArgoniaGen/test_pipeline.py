@@ -238,3 +238,11 @@ def test_terrain_stamp_walk_misses_the_weather_tables_and_reaches_the_shells():
     assert "tools/argonia_world/regions/shells.py" in walked
     assert "tools/argonia_world/regions/api.py" not in walked
     assert "tools/argonia_world/regions/classify.py" not in walked
+
+
+def test_ground_stamp_walk_misses_place_build_and_reaches_ground_seat():
+    """Lane claywater-reseat: an edit of place_build.py must not re-key the land pass (terrain and routes import ground_seat)."""
+    for stage in ("ground", "terrain"):
+        walked = {str(f.relative_to(pipeline.ROOT)) for f in pipeline.walk_imports(pipeline.STAGE_ENTRY[stage])}
+        assert "tools/argonia_world/place_build.py" not in walked, stage
+    assert "tools/argonia_world/ground_seat.py" in walked
