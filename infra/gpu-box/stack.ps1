@@ -384,14 +384,15 @@ public static class ParHash {
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on
-      # Our own plugins and compiled scripts (`on` lays only the modlist).
-      foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "$Root\ours\$e") {
+      # Our own plugin, enabled and last in Plugins.txt, and compiled scripts (`on` lays only the modlist).
+      # Argonia.esp (decision 0038); the dead total conversion's ArgoniaWorld.esm/Argonia.esm are never laid.
+      foreach ($e in @('Argonia.esp')) { if (Test-Path "$Root\ours\$e") {
         Copy-Item "$Root\ours\$e" "$Data\$e" -Force
         $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
         $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
       $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
       if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
-      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia*.esm' }) -join ', '); $($pex.Count) .pex"
+      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia.esp' }) -join ', '); $($pex.Count) .pex"
       # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }

@@ -102,6 +102,11 @@
   {
    "file": "FreeClimb.esp",
    "mod": "freeclimb"
+  },
+  {
+   "file": "Argonia.esp",
+   "mod": "ours",
+   "note": "our plugin, built from plugin/Argonia by make plugin; laid last and enabled by infra/gpu-box/stack.ps1 from C:\\argonia\\ours, never staged by stack.py"
   }
  ],
  "mods": [

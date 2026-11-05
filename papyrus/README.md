@@ -7,4 +7,5 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 
 | Script | What it does |
 |---|---|
-| `ARG_StartQuestScript.psc` | the seed of a start quest: on `OnInit`, fade to black and move the player to a marker. Grows into our start quest: a new game skips Helgen and goes straight into our opening in Black Marsh (PLAN Phase 1) |
+| `ARG_QF_MQ101.psc` | MQ101's fragment script in `Argonia.esp`'s MQ101 override: the engine starts MQ101 on a new game; stage 0 starts `ARG_Opening` and stops MQ101 (no Helgen) |
+| `ARG_StartQuestScript.psc` | `ARG_Opening`'s script: the player to `ARG_OpeningMarker` on Lilmoth's dock, the race menu, the roughspun tunic and footwraps, stage 10's journal line (PLAN Phase 1, the start) |
