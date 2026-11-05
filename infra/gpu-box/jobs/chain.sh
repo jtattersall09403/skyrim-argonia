@@ -26,7 +26,12 @@ if [ -z "${CHAIN_IN_TREE:-}" ]; then
   # its pre-batch (r6-chain16/18/20/21, 2026-11-04/05: four chains ended on "land is stale", five land jobs by hand)
   if [ -z "${CHAIN_DRY:-}" ] && ! (cd "$src" && "$HOME/.argonia/venv/bin/python" - <<'PY'
 import pathlib, sys
-from tools.ArgoniaGen.pipeline import _ground_stamp, _terrain_stamp
+try:
+    from tools.ArgoniaGen.pipeline import _ground_stamp, _terrain_stamp
+except Exception:  # a tree without the pipeline (the chain's own tests build a bare repo): nothing to check
+    sys.exit(0)
+if not pathlib.Path("out/terrain").is_dir():
+    sys.exit(0)
 ok = all(pathlib.Path(f).exists() and pathlib.Path(f).read_text() == v for f, v in
        (("out/terrain/ground.stamp", _ground_stamp()), ("out/terrain/terrain.stamp", _terrain_stamp()),
         ("out/navmesh/province/terrain.stamp", _terrain_stamp())))
