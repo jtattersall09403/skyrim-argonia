@@ -33,6 +33,7 @@ heights the LAND stores), so the L1 check holds each one within GROUND_TOL_M of 
 
 Design piece names resolve through DESIGN_PIECES (the asset registry for these few pieces), then pieces.py.
 
+    python3 -m tools.argonia_world.routes.infra ease      the bridges' roads eased onto their square decks
     python3 -m tools.argonia_world.routes.infra check     every placement, resolved and on the ground, or why not
 """
 from __future__ import annotations
@@ -169,10 +170,21 @@ def bridge_placements(w, z_at, decks: list[dict] | None | bool = True) -> list[d
     mean line of its roads at the census point, seated on GameGround (seat()). Banks and lifts against z_at."""
     if decks is True:
         decks = load_decks()
+    level = None
+    if decks:
+        from tools.argonia_world.terrain import cellwater
+        level = cellwater.load(w).level
     out = []
     for bid, (q, reach, routes) in sorted(BRIDGES.items()):
         d = next((d for d in decks or () if d["id"] == f"bridge.{bid}"), None) or next(
             (d for d in decks or () if math.hypot(d["centre"][0] - q[0], d["centre"][1] - q[1]) <= DECK_MATCH_M), None)
+        if d is not None and level is not None:  # a deck laid on another axis (a file older than deck_axis): stale
+            ax_, ay_, ah = deck_axis(w, bid, level)
+            if math.hypot(d["centre"][0] - ax_, d["centre"][1] - ay_) > 0.5 or \
+                    abs(((d["heading"] - ah + 90) % 180) - 90) > 1.0:
+                print(f"infra: warning: {bid}'s deck in the file is off deck_axis (stale); from GameGround",
+                      file=sys.stderr)
+                d = None
         if d is not None:  # the file's centre, heading and yaw as generate laid the seats; the top on the corridor
             hd = d["heading"]
             ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
@@ -191,12 +203,116 @@ def bridge_placements(w, z_at, decks: list[dict] | None | bool = True) -> list[d
             "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
         if any(len(v) < 2 for v in lines.values()):
             continue  # a road not traced: nothing to bridge
-        near = [nearest_on(lines[r], q) for r in routes]
-        x, y, hd = axis(near)
+        x, y, _ = axis([nearest_on(lines[r], q) for r in routes])
+        cx, cy, hd = deck_axis(w, bid)
         ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
-        c, top, banks = seat(lambda s: z_at(x + ux * s, y + uy * s))
-        out.append(_bridge(bid, reach, routes, x + ux * c, y + uy * c, hd, top, banks, (x, y), "ground"))
+        half = BRIDGE_LEN_M / 2 - SEAT_M
+        banks = (z_at(cx - ux * half, cy - uy * half), z_at(cx + ux * half, cy + uy * half))
+        out.append(_bridge(bid, reach, routes, cx, cy, hd, max(banks), banks, (x, y), "ground"))
     return out
+
+
+# The deck crosses the step square (Skyrim's bridges cross their water square; lane roads-dry 6e1fffdd: a deck
+# along the channel set its end corner beside the bed row): centred on the step's channel where the roads cross it,
+# its axis square to the step's edge (the cell line between the two levels), the roads eased onto it.
+EASE_M = 30.0  # each road leaves its own line this far (along it) from the deck's centre and bends onto the deck's end
+SEAT_HALF_WIDTH_M = BRIDGE_HALF_W_M + 2.0 + su.PROVINCE_SAMPLE_M  # the deck + 2 m, + one grid vertex each side
+SEAT_WIDTH_M = round(2 * SEAT_HALF_WIDTH_M, 2)  # bridge-decks.json `seat_width_m`, the held footprint's full width
+
+
+def step_edge(level, x: float, y: float) -> str | None:
+    """The orientation of the step edge nearest (x, y) among its cell's four sides whose neighbour's level differs by
+    more than STEP_M: "x" a line of constant x (north-south), "y" a line of constant y (east-west); None if none.
+    `level` is cellwater's (C, C) cell level grid (NaN dry), rows south."""
+    cm = su.QUADS_PER_CELL * su.PROVINCE_SAMPLE_M
+    n = level.shape[0]
+    i, j = min(max(int(x / cm), 0), n - 1), min(max(int(y / cm), 0), n - 1)
+    me = level[j, i]
+    best = None
+    for di, dj, d, o in ((-1, 0, x - i * cm, "x"), (1, 0, (i + 1) * cm - x, "x"),
+                         (0, -1, y - j * cm, "y"), (0, 1, (j + 1) * cm - y, "y")):
+        a, b = j + dj, i + di
+        if 0 <= a < n and 0 <= b < n and me == me and level[a, b] == level[a, b] and abs(level[a, b] - me) > STEP_M:
+            if best is None or d < best[0]:
+                best = (d, o)
+    return best[1] if best else None
+
+
+def square_heading(road_hd: float, edge: str | None) -> float:
+    """The deck's heading square to the edge, the one of the two senses nearer the road's; the road's own without
+    an edge."""
+    if edge is None:
+        return road_hd % 360
+    base = 90.0 if edge == "x" else 0.0
+    return min((base, base + 180.0), key=lambda h: abs(((road_hd - h + 180) % 360) - 180)) % 360
+
+
+def deck_axis(w, bid: str, level=None) -> tuple[float, float, float]:
+    """(x, y, heading) of a BRIDGES deck: its centre on the step's channel (the reach's centreline point nearest the
+    census point), its heading square to the step's edge there. bridge-decks' generator calls this (shape.py
+    bridge_crossings) so the file, the seats and the placement share one axis."""
+    q, reach, routes = BRIDGES[bid]
+    lines = [[(p["x_m"], p["y_m"]) for p in w.query("SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)]
+             for r in routes]
+    x, y, hd = axis([nearest_on(v, q) for v in lines if len(v) >= 2])
+    rp = [(p["east_m"], p["south_m"]) for p in w.query(
+        "SELECT east_m, south_m FROM hydrology_reach_point WHERE reach_id = ? ORDER BY ord", reach)]
+    if len(rp) >= 2:  # nearest the census point, so easing the roads onto the deck never moves it
+        _, (x, y), _ = nearest_on(rp, q)
+    if level is None:
+        from tools.argonia_world.terrain import cellwater
+        level = cellwater.load(w).level
+    return round(x, 2), round(y, 2), round(square_heading(hd, step_edge(level, x, y)), 2)
+
+
+def ease_line(pts, centre, hd: float, ease_m: float = EASE_M):
+    """The road's polyline with its run within ease_m of the deck's centre replaced by: its own point ease_m before,
+    the deck's near end, the deck's far end, its own point ease_m after. The ends kept; unchanged when the line
+    does not pass within ease_m or an end lies inside."""
+    from tools.argonia_world.routes.build import _cut
+    cx, cy = centre
+    ins = [math.hypot(px - cx, py - cy) < ease_m for px, py in pts]
+    if not any(ins) or ins[0] or ins[-1]:
+        return list(pts)
+    i = ins.index(True)
+    j = len(ins) - 1 - ins[::-1].index(True)
+    A, B = _cut(pts[i - 1], pts[i], cx, cy, ease_m), _cut(pts[j + 1], pts[j], cx, cy, ease_m)
+    ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
+    h = BRIDGE_LEN_M / 2
+    e1, e2 = (cx - ux * h, cy - uy * h), (cx + ux * h, cy + uy * h)
+    if math.hypot(e1[0] - A[0], e1[1] - A[1]) > math.hypot(e2[0] - A[0], e2[1] - A[1]):
+        e1, e2 = e2, e1
+    return list(pts[:i]) + [A, e1, e2, B] + list(pts[j + 1:])
+
+
+def ease_roads(w) -> list[str]:
+    """Every BRIDGES road eased onto its deck (ease_line), through the route rows (road_point, the road's lengths,
+    its edges' chainages and 3D lengths, as build.reroute)."""
+    from tools.argonia_world.routes.build import Ground, length_2d, sub_polyline
+    from tools.argonia_world.terrain import cellwater
+    level = cellwater.load(w).level
+    ground, done = Ground(), []
+    for bid, (_q, _reach, routes) in sorted(BRIDGES.items()):
+        cx, cy, hd = deck_axis(w, bid, level)
+        for rid in routes:
+            old = [(p["x_m"], p["y_m"]) for p in w.query(
+                "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", rid)]
+            new = [(round(a, 2), round(b, 2)) for a, b in ease_line(old, (cx, cy), hd)]
+            if new == old:
+                continue
+            k = next(n for n, (a, b) in enumerate(zip(old, new)) if a != b)
+            at, delta = length_2d(old[:k]), length_2d(new) - length_2d(old)
+            w.delete("road_point", route_id=rid)
+            w.insert_many("road_point", [{"route_id": rid, "ord": n, "x_m": a, "y_m": b} for n, (a, b) in enumerate(new)])
+            w.update("road", rid, length_m=round(length_2d(new), 1), length_3d_m=round(ground.length_3d(new), 1))
+            for e in w.query("SELECT id, from_chain_m c0, to_chain_m c1 FROM route_edge WHERE route_id = ? AND "
+                             "to_chain_m IS NOT NULL", rid):
+                c0 = e["c0"] + delta if e["c0"] > at else e["c0"]
+                c1 = e["c1"] + delta if e["c1"] > at else e["c1"]
+                w.update("route_edge", e["id"], from_chain_m=round(c0, 1), to_chain_m=round(c1, 1),
+                         length_m=round(ground.length_3d(sub_polyline(new, c0, c1), 0.5), 1))
+            done.append(f"{bid} {rid}: heading {hd}, {delta:+.1f} m")
+    return done
 
 
 def _bridge(bid, reach, routes, cx, cy, hd, top, banks, crossing, source) -> dict:
@@ -237,7 +353,7 @@ def seats(w, z_at, decks: list[dict] | None | bool = True) -> list[dict]:
     for p in bridge_placements(w, z_at, decks):
         for k, e in enumerate(p["ends_m"]):
             out.append({"bridge": p["id"], "end": k, "at_m": e[:2], "z_m": p["deck_m"], "heading": p["heading"],
-                        "from_m": -SEAT_M, "to_m": APPROACH_M, "half_width_m": round(BRIDGE_HALF_W_M + 2.0, 2),
+                        "from_m": -SEAT_M, "to_m": APPROACH_M, "half_width_m": round(SEAT_HALF_WIDTH_M, 2),
                         "lift_m": p["lift_m"][k]})
     return out
 
@@ -524,6 +640,12 @@ def bridge_errors(p: dict, w, z_at) -> list[str]:
 
 def main(argv: list[str]) -> int:
     from tools.argonia_world import db
+    if argv[:1] == ["ease"]:  # `infra ease`: the bridges' roads eased onto their square decks (route rows)
+        w = db.open()
+        moved = ease_roads(w)
+        w.save()
+        print("ease:", *moved, sep="\n   ")
+        return 0
     from tools.argonia_world.pieces import Index, Resolver
     from tools.argonia_world.place_build import GameGround
 

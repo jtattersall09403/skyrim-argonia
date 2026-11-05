@@ -54,9 +54,11 @@ def test_the_six_step_crossings_are_bridged_on_their_lines(world):
     assert len({r for p in ps for r in p["routes"]}) == 6  # the census's six roads (gideon-stormhold also shares the gideon step)
     for p in ps:
         assert infra.bridge_errors(p, w, g.z) == [], p["id"]
-        q = infra.BRIDGES[p["id"].split(".", 1)[1]][0]
-        al, ac = infra.lateral(p, q)  # the census's step point lies on the deck, between the seats
-        assert abs(al) <= infra.BRIDGE_LEN_M / 2 - infra.SEAT_M and abs(ac) <= infra.BRIDGE_HALF_W_M + 2.5
+        _q, reach, _r = infra.BRIDGES[p["id"].split(".", 1)[1]]
+        rp = [(r["east_m"], r["south_m"]) for r in w.query(
+            "SELECT east_m, south_m FROM hydrology_reach_point WHERE reach_id = ? ORDER BY ord", reach)]
+        assert infra.nearest_on(rp, p["at_m"][:2])[0] < 0.5  # the deck is centred on the step's channel
+        assert p["heading"] % 90 == 0  # square to the step's cell line
         assert p["at_m"][2] == pytest.approx(p["deck_m"] - infra.BRIDGE_TOP_M, abs=0.01)
 
 
@@ -84,7 +86,7 @@ def test_a_deck_file_sets_the_top_and_the_ends_and_the_census_reads_it(world, tm
     gid = ground["bridge.gideon-step"]
     top = gid["deck_m"] + 4.0  # the causeway's corridor, over the pre-causeway ground
     f = tmp_path / "bridge-decks.json"
-    c = [gid["at_m"][0] + 1.5, gid["at_m"][1] - 0.5]  # generate's centre (the roads' axis, no seat offset)
+    c = gid["at_m"][:2]  # generate's centre: deck_axis's
     f.write_text(json.dumps([{"id": "bridge.gideon-step", "deck_m": top, "ends_ground_m": [top - 0.4, top],
                               "centre_m": c, "ends_m": [e[:2] for e in gid["ends_m"]], "heading": gid["heading"],
                               "yaw": gid["yaw"]}], indent=1))
@@ -99,3 +101,25 @@ def test_a_deck_file_sets_the_top_and_the_ends_and_the_census_reads_it(world, tm
     seats = [s for s in infra.seats(w, g.z, decks) if s["bridge"] == "bridge.gideon-step"]
     assert len(seats) == 2 and all(s["z_m"] == round(top, 2) for s in seats)
     assert infra.load_decks(tmp_path / "none.json") is None
+    stale = [dict(decks[0], heading=(decks[0]["heading"] + 40) % 360)]  # a file laid on the old axis
+    assert {p["id"]: p for p in infra.bridge_placements(w, g.z, stale)}["bridge.gideon-step"]["deck_source"] == "ground"
+
+
+def test_a_channel_15_degrees_off_the_road_gets_a_square_deck_and_the_road_eases_onto_it():
+    import numpy as np
+    cm = infra.su.QUADS_PER_CELL * infra.su.PROVINCE_SAMPLE_M
+    level = np.full((4, 4), np.nan)
+    level[1, 1], level[2, 1] = 20.0, 15.0  # a 5 m step on the east-west line y = 2 cells
+    x, y = 1.5 * cm, 2 * cm - 1.0  # the channel just north of the line
+    assert infra.step_edge(level, x, y) == "y"
+    road = 75.0  # the road runs 15 degrees off the channel (east-west, heading 90)
+    hd = infra.square_heading(road, infra.step_edge(level, x, y))
+    assert hd == 0.0  # square to the edge: north, the sense nearer the road's
+    ux, uy = math.sin(math.radians(road)), -math.cos(math.radians(road))
+    pts = [(x - ux * 200, y - uy * 200), (x, y), (x + ux * 200, y + uy * 200)]
+    out = infra.ease_line(pts, (x, y), hd)
+    assert out[0] == pts[0] and out[-1] == pts[-1] and len(out) == 6
+    e1, e2 = out[2], out[3]
+    assert math.hypot(e2[0] - e1[0], e2[1] - e1[1]) == pytest.approx(infra.BRIDGE_LEN_M, abs=1e-6)
+    assert abs(e2[0] - e1[0]) < 1e-6  # the deck's run is square to the step's line (constant x)
+    assert infra.SEAT_WIDTH_M == pytest.approx(2 * (infra.BRIDGE_HALF_W_M + 2.0 + infra.su.PROVINCE_SAMPLE_M), abs=0.01)
