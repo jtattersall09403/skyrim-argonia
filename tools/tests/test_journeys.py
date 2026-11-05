@@ -424,7 +424,7 @@ def test_panel_aim_horizon_rule_turns_then_moves():
     assert moved == 6.0 and x >= 6 * u - 1 and h == 90.0
     # wet ground is never a stand: the aim stays and is flagged
     x, y, h, moved = gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=sc2, wet=lambda px, py: px != 0, ok_stand=lambda *a: True)
-    assert moved == 0.0 and not log[-1]["clear"]
+    assert moved == 0.0 and log[-1]["tier"] == 4
     # a forest: upper cover 0.62 everywhere but a clear line and near field: tier 3 accepts it; a trunk on the line never
     forest = {**open_, "upper": 0.62, "line20": 0, "near": 0.04}
     x, y, h, moved = gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=lambda *a: forest, wet=lambda *a: False,
@@ -432,5 +432,5 @@ def test_panel_aim_horizon_rule_turns_then_moves():
     assert log[-1]["tier"] == 3 and log[-1]["clear"] and moved == 0.0
     trunk = {**forest, "line20": 1}
     gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=lambda *a: trunk, wet=lambda *a: False, ok_stand=lambda *a: True)
-    assert log[-1]["tier"] == 0 and not log[-1]["clear"]
+    assert log[-1]["tier"] == 4 and log[-1]["clear"] and h == 90.0 and moved == 0.0
     # the frustum cover of a region of the frame never exceeds 100 %

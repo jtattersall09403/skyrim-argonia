@@ -1168,7 +1168,7 @@ def panel_aim(b: Build, vid: str, x: float, y: float, yaw: float, log: list, sco
     """(x, y, yaw, moved_m). Tiers: (1) the marker's stand, else the dry standable stand within PANEL_AIM_MOVE_M, with the
     first heading (nearest the authored one) that passes panel_pass; (2) the same out to PANEL_AIM_FAR_M; (3) the best
     heading at the marker or within PANEL_AIM_MOVE_M that passes panel_forest_pass (lowest near cover, then upper):
-    "forest vantage: canopy accepted"; else the least-bad aim at the marker's stand (WARNING). Printed and logged per
+    "forest vantage: canopy accepted"; (4) the marker's own heading, no move ("forest vantage: the scan decides"). Printed and logged per
     vantage. `score`, `wet`, `ok_stand` stand in for the measures in tests; `want_water(x, y, h)` keeps a shore vantage
     facing water."""
     score = score or (lambda px, py, h: panel_score(b, px, py, h))
@@ -1226,9 +1226,9 @@ def panel_aim(b: Build, vid: str, x: float, y: float, yaw: float, log: list, sco
         note = "forest vantage: canopy accepted" if t == 3 else ""
         ok = True
     else:
-        t = 0
-        h, s, ok = search(x, y, panel_pass, _panel_key)
-        nx, ny, moved, note = x, y, 0.0, "WARNING: no heading passes"
+        t, h, ok = 4, yaw, True   # tier 4: the marker's own heading, no move; the six-heading scan decides (a `ledger aim` pins it)
+        s = sc(x, y, h)
+        nx, ny, moved, note = x, y, 0.0, "forest vantage: the scan decides"
     print(f"world-panel: {vid}: tier {t} aim {h:.0f} (marker {yaw:.0f}) line {s['line']} canopy {s['canopy']} "
           f"grass {s['grass']} upper cover {s['upper']:.1%} near {s.get('near', 0.0):.1%} static {s['static']}, "
           f"stand moved {moved} m {note}")
