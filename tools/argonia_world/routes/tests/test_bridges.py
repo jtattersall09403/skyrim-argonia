@@ -84,12 +84,16 @@ def test_a_deck_file_sets_the_top_and_the_ends_and_the_census_reads_it(world, tm
     gid = ground["bridge.gideon-step"]
     top = gid["deck_m"] + 4.0  # the causeway's corridor, over the pre-causeway ground
     f = tmp_path / "bridge-decks.json"
-    f.write_text(json.dumps({"decks": [{"deck_top_m": top, "ends_m": [e[:2] for e in gid["ends_m"]], "yaw": 0}]}))
+    c = [gid["at_m"][0] + 1.5, gid["at_m"][1] - 0.5]  # generate's centre (the roads' axis, no seat offset)
+    f.write_text(json.dumps([{"id": "bridge.gideon-step", "deck_m": top, "ends_ground_m": [top - 0.4, top],
+                              "centre_m": c, "ends_m": [e[:2] for e in gid["ends_m"]], "heading": gid["heading"],
+                              "yaw": gid["yaw"]}], indent=1))
     decks = infra.load_decks(f)
     ps = {p["id"]: p for p in infra.bridge_placements(w, g.z, decks)}
     p = ps["bridge.gideon-step"]
     assert p["deck_source"] == "decks-file" and p["deck_m"] == round(top, 2)
-    assert p["at_m"][2] == pytest.approx(top - infra.BRIDGE_TOP_M, abs=0.01)
+    assert p["at_m"] == [round(c[0], 2), round(c[1], 2), round(top - infra.BRIDGE_TOP_M, 2)]
+    assert p["yaw"] == gid["yaw"] and p["heading"] == gid["heading"]
     assert ps["bridge.thorn-step"]["deck_source"] == "ground"  # no deck in the file for it: the fallback
     assert infra.bridge_errors(p, w, g.z) == []
     seats = [s for s in infra.seats(w, g.z, decks) if s["bridge"] == "bridge.gideon-step"]

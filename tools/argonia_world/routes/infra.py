@@ -107,8 +107,9 @@ DECK_MATCH_M = 20.0  # a file deck belongs to the BRIDGES crossing whose census 
 
 
 def load_decks(path: Path | None = None) -> list[dict] | None:
-    """The file's decks as [{"top": m, "ends": [[x, y], [x, y]]}], or None (with a warning) when it is absent.
-    Takes a list or {"decks": [...]}, the top as deck_top_m / deck_m / top_m, the ends as ends_m / ends."""
+    """The file's decks as [{"id", "top": m, "ends": [[x, y], [x, y]], "centre", "heading", "yaw"}], or None (with a
+    warning) when it is absent. generate writes a list of {id, deck_m, ends_ground_m, centre_m, ends_m, heading,
+    yaw} (routes/shape.py bridge_decks); a dict {"decks": [...]} and deck_top_m / top_m are read too."""
     import json
     p = Path(path or DECKS_FILE)
     if not p.exists():
@@ -119,7 +120,11 @@ def load_decks(path: Path | None = None) -> list[dict] | None:
     for d in doc["decks"] if isinstance(doc, dict) else doc:
         top = next(d[k] for k in ("deck_top_m", "deck_m", "top_m") if k in d)
         ends = next(d[k] for k in ("ends_m", "ends") if k in d)
-        out.append({"top": float(top), "ends": [list(map(float, e[:2])) for e in ends]})
+        ends = [list(map(float, e[:2])) for e in ends]
+        c = d.get("centre_m") or [(ends[0][0] + ends[1][0]) / 2, (ends[0][1] + ends[1][1]) / 2]
+        hd = d.get("heading", heading(ends[0], ends[1]))
+        out.append({"id": d.get("id"), "top": float(top), "ends": ends, "centre": [float(c[0]), float(c[1])],
+                    "heading": float(hd), "yaw": float(d.get("yaw", (hd + BRIDGE_YAW_OFFSET) % 360))})
     return out
 
 
@@ -166,20 +171,21 @@ def bridge_placements(w, z_at, decks: list[dict] | None | bool = True) -> list[d
         decks = load_decks()
     out = []
     for bid, (q, reach, routes) in sorted(BRIDGES.items()):
-        d = next((d for d in decks or () if math.hypot((d["ends"][0][0] + d["ends"][1][0]) / 2 - q[0],
-                                                        (d["ends"][0][1] + d["ends"][1][1]) / 2 - q[1]) <= DECK_MATCH_M), None)
-        if d is not None:
-            (ax, ay), (bx, by) = d["ends"]
-            hd = heading((ax, ay), (bx, by))
+        d = next((d for d in decks or () if d["id"] == f"bridge.{bid}"), None) or next(
+            (d for d in decks or () if math.hypot(d["centre"][0] - q[0], d["centre"][1] - q[1]) <= DECK_MATCH_M), None)
+        if d is not None:  # the file's centre, heading and yaw as generate laid the seats; the top on the corridor
+            hd = d["heading"]
             ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
-            cx, cy, top = (ax + bx) / 2, (ay + by) / 2, d["top"]
+            (cx, cy), top = d["centre"], d["top"]
             half = BRIDGE_LEN_M / 2 - SEAT_M
             banks = (z_at(cx - ux * half, cy - uy * half), z_at(cx + ux * half, cy + uy * half))
             lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
                 "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
             near = [nearest_on(v, q) for v in lines.values() if len(v) >= 2]
             x, y = axis(near)[:2] if near else (cx, cy)
-            out.append(_bridge(bid, reach, routes, cx, cy, hd, top, banks, (x, y), "decks-file"))
+            p = _bridge(bid, reach, routes, cx, cy, hd, top, banks, (x, y), "decks-file")
+            p["yaw"] = round(d["yaw"] % 360, 2)
+            out.append(p)
             continue
         lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
             "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
