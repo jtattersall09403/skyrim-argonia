@@ -1008,7 +1008,8 @@
    "plugins": [
     "Elder Souls - sweep attack standalone.esp"
    ],
-   "check": "the archive nests its Data under Elder Souls - Sweep Attacks SE-47395-1-0-1616432709/: confirm stage finds it"
+   "check": "the archive nests its Data under Elder Souls - Sweep Attacks SE-47395-1-0-1616432709/: confirm stage finds it",
+   "install_note": "Archive nests its Data folder; stage lays the one plugin 'Elder Souls - sweep attack standalone.esp' at the mod root."
   },
   {
    "id": "elder-souls-collection",
@@ -1061,6 +1062,35 @@
    "runtime": "not checked on 1.7.104.0",
    "conflicts": "not checked",
    "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "skyui",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 12604,
+    "file": 749043
+   },
+   "name": "SkyUI",
+   "author": "SkyUI Team",
+   "version": "6.11",
+   "archive": "SkyUI-12604-6-11-1778020881.zip",
+   "size_kb": 2630,
+   "why": "menus, MCM host; Dear Diary skins it",
+   "required": true,
+   "profile": "play",
+   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1",
+   "licence": "none stated (github schlangster/skyui has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'",
+   "plugins": [
+    "SkyUI_SE.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "mcm-helper",
@@ -1127,35 +1157,6 @@
    ]
   },
   {
-   "id": "skyui",
-   "group": "core",
-   "source": {
-    "nexus": "skyrimspecialedition",
-    "mod": 12604,
-    "file": 749043
-   },
-   "name": "SkyUI",
-   "author": "SkyUI Team",
-   "version": "6.11",
-   "archive": "SkyUI-12604-6-11-1778020881.zip",
-   "size_kb": 2630,
-   "why": "menus, MCM host; Dear Diary skins it",
-   "required": true,
-   "profile": "play",
-   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1",
-   "licence": "none stated (github schlangster/skyui has no licence file)",
-   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
-   "ai_clause": "not stated: ask the author",
-   "permission_ask": true,
-   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'",
-   "plugins": [
-    "SkyUI_SE.esp"
-   ],
-   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
-   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
-   "linked_or_forked_by": "none: depended on as the player’s own download"
-  },
-  {
    "id": "smoothcam",
    "group": "combat",
    "source": {
@@ -1184,7 +1185,8 @@
     "SmoothCam.esl",
     "SmoothCam.esp"
    ],
-   "check": "the archive ships SmoothCam.esl and SmoothCam.esp under Release_Package/00 Data (a FOMOD): confirm which the collection installs"
+   "check": "the archive ships SmoothCam.esl and SmoothCam.esp under Release_Package/00 Data (a FOMOD): confirm which the collection installs",
+   "install_note": "Archive ships SmoothCam.esl and SmoothCam.esp in Data/ via a FOMOD; stage takes the FOMOD defaults, which lay SmoothCam.esp only (plugins.txt lists *SmoothCam.esp). Not tested in game."
   },
   {
    "id": "soulslike-smoothcam",
@@ -1270,7 +1272,8 @@
    "plugins": [
     "AMMCO.esp"
    ],
-   "check": "the archive holds two AMMCO.esp variants (Source/Data/Distar Edit, Mern Edit): add the pick the collection uses before staging"
+   "check": "the archive holds two AMMCO.esp variants (Source/Data/Distar Edit, Mern Edit): add the pick the collection uses before staging",
+   "install_note": "Staged as the archive's Distar/Default edit (running speeds 1HM~80, 2HM~80, bows 90: DS-like walk pace); the Mern edit (1HM~170, bows~300) is the arcade variant and is not taken. The two ESPs differ only in those speed values (md5 f962cdf0 vs 822af5b2). Chosen 2026-11-05 by the stage default, not tested in game."
   },
   {
    "id": "leviathan-male",

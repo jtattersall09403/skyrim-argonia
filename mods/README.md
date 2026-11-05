@@ -37,3 +37,9 @@ every DLL's load) or find the 1.7.x build.
 The vanilla-shutdown list in `docs/decisions/0012` is the spec for PLAN Phase 1's "shut the vanilla systems down"
 step; that phase writes `mods/allowed-quests.json`, the quests that may still run (the mods' controller and MCM
 quests, Live Another Life's, BM&V's), and proves the rest stopped.
+
+## Staging notes (Phase 1, 2026-11-05)
+
+- Row order is load order and masters must precede dependants: SkyUI sits before MCM Helper (stage refuses the other order).
+- AMMCO: the Distar/Default edit is staged (walk-pace speeds); see the row's `install_note`. SmoothCam: FOMOD default lays the .esp only. Sweep Attacks: nested Data folder, one standalone ESP.
+- `stack.py stage` result: 51 mods, 21 plugins, 5993 files (53 rows; two rows are not in the play profile).
