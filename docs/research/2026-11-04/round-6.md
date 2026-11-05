@@ -126,3 +126,111 @@ ledger rows move with the verdicts. Then the LOD halves whose inputs moved, the 
 | capacity: no spot capacity lines | 75 |
 | interrupts | 1 |
 | locks: queued behind | 46 |
+
+## Where the time went (tooling/round_retro.py)
+
+35 logs (r6-chain*)
+
+| stage | n | median s | p90 s | total s | share |
+|---|---|---|---|---|---|
+| round total | 5 | 902 | 5565 | 11102 | (sum) |
+| round: batch | 5 | 702 | 5096 | 9879 | (sum) |
+| batch: per journey run | 36 | 141 | 608 | 9711 | 33.9 % |
+| round: deploy | 13 | 419 | 763 | 5205 | (sum) |
+| prebatch: gate | 13 | 364 | 513 | 5131 | 17.9 % |
+| prebatch: journeys | 19 | 219 | 370 | 4178 | 14.6 % |
+| deploy total | 7 | 438 | 516 | 3024 | (sum) |
+| prebatch: plugin | 19 | 68 | 175 | 1654 | 5.8 % |
+| deploy: skse build | 5 | 187 | 360 | 1194 | 4.2 % |
+| deploy: stack push | 10 | 50 | 92 | 943 | 3.3 % |
+| deploy: make plugin | 22 | 32 | 86 | 809 | 2.8 % |
+| deploy: launch | 7 | 101 | 114 | 662 | 2.3 % |
+| deploy: stack stage | 11 | 2 | 153 | 536 | 1.9 % |
+| prebatch: chart4k | 14 | 42 | 47 | 417 | 1.5 % |
+| prebatch: chart | 14 | 22 | 49 | 369 | 1.3 % |
+| prebatch: vegetation | 14 | 21 | 23 | 339 | 1.2 % |
+| prebatch: plugin-check | 3 | 116 | 128 | 335 | 1.2 % |
+| prebatch: plugin-ids | 14 | 24 | 45 | 325 | 1.1 % |
+| round: up | 2 | 148 | 291 | 296 | 1.0 % |
+| deploy: base save | 7 | 28 | 28 | 277 | 1.0 % |
+| capacity wait ((tries-1) x 60 s) | 21 | 0 | 0 | 240 | 0.8 % |
+| deploy: send ESMs and helpers | 10 | 12 | 14 | 159 | 0.6 % |
+| deploy: mesh patches | 9 | 16 | 20 | 155 | 0.5 % |
+| deploy: ground textures | 10 | 13 | 14 | 131 | 0.5 % |
+| deploy: theme | 14 | 9 | 11 | 117 | 0.4 % |
+| prebatch: roads | 15 | 5 | 8 | 83 | 0.3 % |
+| deploy: lod | 9 | 9 | 10 | 82 | 0.3 % |
+| prebatch: water | 14 | 4 | 6 | 64 | 0.2 % |
+| deploy: chart | 17 | 1 | 1 | 59 | 0.2 % |
+| deploy: machine up | 18 | 3 | 4 | 55 | 0.2 % |
+| prebatch: sample | 14 | 4 | 5 | 52 | 0.2 % |
+| deploy: views | 15 | 1 | 8 | 51 | 0.2 % |
+| deploy: chart 4k | 16 | 0 | 1 | 48 | 0.2 % |
+| prebatch: navmesh | 11 | 4 | 6 | 44 | 0.2 % |
+| deploy: perks | 14 | 3 | 4 | 34 | 0.1 % |
+| deploy: game down | 28 | 1 | 2 | 29 | 0.1 % |
+| deploy: shader cache save | 7 | 2 | 3 | 22 | 0.1 % |
+| deploy: shader cache | 8 | 2 | 2 | 18 | 0.1 % |
+| deploy: send scenes | 7 | 2 | 3 | 18 | 0.1 % |
+| deploy: controls | 9 | 1 | 1 | 10 | 0.0 % |
+| deploy: papyrus | 10 | 0 | 0 | 0 | 0.0 % |
+
+| wait or LOD half | lines |
+|---|---|
+| capacity: no spot capacity lines | 76 |
+| interrupts | 1 |
+| locks: queued behind | 79 |
+
+## Where the time went (tooling/round_retro.py)
+
+35 logs (r6-chain*)
+
+| stage | n | median s | p90 s | total s | share |
+|---|---|---|---|---|---|
+| round total | 6 | 478 | 4562 | 11104 | (sum) |
+| round: batch | 5 | 702 | 5096 | 9879 | (sum) |
+| batch: per journey run | 36 | 141 | 608 | 9711 | 33.9 % |
+| round: deploy | 13 | 419 | 763 | 5205 | (sum) |
+| prebatch: gate | 13 | 364 | 513 | 5131 | 17.9 % |
+| prebatch: journeys | 19 | 219 | 370 | 4178 | 14.6 % |
+| deploy total | 7 | 438 | 516 | 3024 | (sum) |
+| prebatch: plugin | 19 | 68 | 175 | 1654 | 5.8 % |
+| deploy: skse build | 5 | 187 | 360 | 1194 | 4.2 % |
+| deploy: stack push | 10 | 50 | 92 | 943 | 3.3 % |
+| deploy: make plugin | 22 | 32 | 86 | 809 | 2.8 % |
+| deploy: launch | 7 | 101 | 114 | 662 | 2.3 % |
+| deploy: stack stage | 11 | 2 | 153 | 536 | 1.9 % |
+| prebatch: chart4k | 14 | 42 | 47 | 417 | 1.5 % |
+| prebatch: chart | 14 | 22 | 49 | 369 | 1.3 % |
+| prebatch: vegetation | 14 | 21 | 23 | 339 | 1.2 % |
+| prebatch: plugin-check | 3 | 116 | 128 | 335 | 1.2 % |
+| prebatch: plugin-ids | 14 | 24 | 45 | 325 | 1.1 % |
+| round: up | 2 | 148 | 291 | 296 | 1.0 % |
+| deploy: base save | 7 | 28 | 28 | 277 | 1.0 % |
+| capacity wait ((tries-1) x 60 s) | 22 | 0 | 0 | 240 | 0.8 % |
+| deploy: send ESMs and helpers | 10 | 12 | 14 | 159 | 0.6 % |
+| deploy: mesh patches | 9 | 16 | 20 | 155 | 0.5 % |
+| deploy: ground textures | 10 | 13 | 14 | 131 | 0.5 % |
+| deploy: theme | 14 | 9 | 11 | 117 | 0.4 % |
+| prebatch: roads | 15 | 5 | 8 | 83 | 0.3 % |
+| deploy: lod | 9 | 9 | 10 | 82 | 0.3 % |
+| prebatch: water | 14 | 4 | 6 | 64 | 0.2 % |
+| deploy: chart | 17 | 1 | 1 | 59 | 0.2 % |
+| deploy: machine up | 18 | 3 | 4 | 55 | 0.2 % |
+| prebatch: sample | 14 | 4 | 5 | 52 | 0.2 % |
+| deploy: views | 15 | 1 | 8 | 51 | 0.2 % |
+| deploy: chart 4k | 16 | 0 | 1 | 48 | 0.2 % |
+| prebatch: navmesh | 11 | 4 | 6 | 44 | 0.2 % |
+| deploy: perks | 14 | 3 | 4 | 34 | 0.1 % |
+| deploy: game down | 28 | 1 | 2 | 29 | 0.1 % |
+| deploy: shader cache save | 7 | 2 | 3 | 22 | 0.1 % |
+| deploy: shader cache | 8 | 2 | 2 | 18 | 0.1 % |
+| deploy: send scenes | 7 | 2 | 3 | 18 | 0.1 % |
+| deploy: controls | 9 | 1 | 1 | 10 | 0.0 % |
+| deploy: papyrus | 10 | 0 | 0 | 0 | 0.0 % |
+
+| wait or LOD half | lines |
+|---|---|
+| capacity: no spot capacity lines | 77 |
+| interrupts | 1 |
+| locks: queued behind | 80 |
