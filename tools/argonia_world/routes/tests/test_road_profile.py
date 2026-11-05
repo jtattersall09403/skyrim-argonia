@@ -70,3 +70,31 @@ def test_paint_is_full_across_the_lane():
     from tools.argonia_world.terrain import material as M
     # Skyrim.esm's road dirt holds to 5 m from the centre (probes/vanilla_road_profile.py --marsh); a 6 m lane
     assert 3.0 + M.ROAD_FULL_M >= 5.0 and M.ROAD_FULL_M + M.ROAD_BLEND_M <= 4.0 + 1e-9
+
+
+def test_site_flat_crossed_by_road_is_no_slab():
+    """A place's tilted pinned pad crossed by a road: the trough is cut after the pad (lane roadslab): the fold at 4 m
+    is vanilla's band, the flat width inside Skyrim's p95, the pad never raised."""
+    h = np.full((N + 1, N + 1), 5.0) + 0.02 * np.arange(N + 1)[None, :]
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
+    lo[:, 60:140], hi[:, 60:140] = h[:, 60:140], h[:, 60:140]
+    base = h.copy()
+    road = _road(N)
+    S.shape(h, road, None, lo, hi)
+    h = np.minimum(np.maximum(h, lo), hi)
+    offs, pr = C.cross_profiles(h, road[0][0], step_m=10.0)
+    on = pr[8:12]
+    fold4 = (on[:, np.isclose(offs, 4.0)] + on[:, np.isclose(offs, -4.0)])[:, 0] / 2
+    lo4, hi4 = C.TROUGH_BAND[4.0]
+    assert ((fold4 >= lo4) & (fold4 <= hi4 + 0.05)).all(), fold4
+    assert max(C.flat_width(z, len(offs) // 2, C.PROFILE_DS_M) for z in on) <= C.VANILLA_PROFILE["flat_width_p95_m"]
+    assert (h[:, 60:140] <= base[:, 60:140] + 1e-9).all()
+
+
+def test_road_end_is_square_across():
+    """A road that ends (a place's centre) still reads the full trough at its last point."""
+    h = np.full((N + 1, N + 1), 5.0)
+    road = _road(N)
+    S.shape(h, road, None)
+    offs, pr = C.cross_profiles(h, road[0][0], step_m=10.0)
+    assert C.flat_width(pr[-1], len(offs) // 2, C.PROFILE_DS_M) <= C.VANILLA_PROFILE["flat_width_p95_m"]

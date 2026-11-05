@@ -42,6 +42,26 @@ PIN_TOL_M = 0.05  # a sample whose bounds are this close is a place's pin (censu
 BLEND_M = 9.0  # the road's ground blends back to the land over this beyond its core (vanilla's fold flattens by 8 m)
 
 
+PAD_CUT_M = 0.45  # a pinned pad's road trough: the centre this far under the pad (vanilla's fold at 4 m is 0.42)
+PAD_REACH_M = 2.0  # the pad's trough reaches this far past the core's edge
+CAP_M = 2.0  # a road's ends run on this far (m) along the end tangent, so the trough is square across the end itself
+
+
+def _capped(p: np.ndarray, extra: float) -> np.ndarray:
+    """The dense centreline with each end run on straight `extra` samples (the cross profile at a road's end, in a
+    place's site, then reads the trough, not the half of it a terminal point sees)."""
+    n = int(np.ceil(extra))
+    if len(p) < 3 or n < 1:
+        return p
+    out = []
+    for end, sg in ((p[:3], -1), (p[-3:], 1)):
+        v = end[-1] - end[0] if sg > 0 else end[0] - end[-1]
+        v = v / max(float(np.hypot(*v)), 1e-9)
+        base = p[-1] if sg > 0 else p[0]
+        out.append(base + v[None] * np.arange(1, n + 1)[:, None])
+    return np.concatenate([out[0][::-1], p, out[1]])
+
+
 def trough(d_m):
     return np.interp(d_m, TROUGH_AT_M, TROUGH_M)
 
@@ -182,6 +202,7 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
     for pts, core in roads:
         core_m = core * MPP
         p, _s = _dense(pts)
+        p = _capped(p, core + 1.0)
         if water is not None:
             wp = water[np.clip(np.rint(p[:, 1]).astype(int), 0, h.shape[0] - 1),
                        np.clip(np.rint(p[:, 0]).astype(int), 0, h.shape[1] - 1)]
@@ -229,12 +250,16 @@ def shape(h: np.ndarray, roads: list[tuple[np.ndarray, float]], water: np.ndarra
                 # road's own trough (lane 1.15-r6-road-profile: 43 of 50 road points on a pin read a 20 m slab, the
                 # 'plaza' at blackwood-flat-46 is Fort Greenditch's pad): inside the core the pin's floor drops by
                 # the centre's set (half the core's trough), never a raise; Skyrim.esm's road is a trough everywhere
-                inside = d_m <= core_m + MPP
+                inside = d_m <= core_m + PAD_REACH_M
                 pinned = inside & np.isfinite(lo[rr, cc]) & (np.abs(hi[rr, cc] - lo[rr, cc]) < PIN_TOL_M)
                 if pinned.any():
-                    cut = 0.5 * TROUGH_GAIN * trough(core_m)
+                    # the trough on the pad is Skyrim's: the pad's level at the lane's edge, the centre PAD_CUT_M under
+                    # it, rising with the measured fold between (a half-trough cut left a 0.1 m fold: the slab)
                     pr_, pc_ = rr[pinned], cc[pinned]
+                    cut = np.maximum(0.0, PAD_CUT_M - TROUGH_GAIN * trough(d_m[pinned]))
                     lo[pr_, pc_] = np.minimum(lo[pr_, pc_], hi[pr_, pc_] - cut)
+                    t = t.copy()
+                    t[pinned] = np.minimum(t[pinned], hi[pr_, pc_] - cut)
                 t = np.minimum(np.maximum(t, lo[rr, cc]), np.maximum(hi[rr, cc], lo[rr, cc]))
             keep = w > 0
             if water is not None:
