@@ -117,7 +117,12 @@ case "$cmd" in
   run)
     parse_gpu "$@"; shift $shiftn
     name=$1; shift; [ "${1:-}" = "--" ] && shift
-    if [ -f "$JOBS/$name.pid" ] && kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
+    # a pid is live only if it was written this boot (.boot beside it) and the process exists: a reboot kills every job,
+    # and its pid is reused after (r6-chain29, 2026-11-05); an old-boot pid file is cleared. No .boot file: pre-change job.
+    if [ -f "$JOBS/$name.pid" ]; then
+      if [ -f "$JOBS/$name.boot" ] && [ "$(cat "$JOBS/$name.boot")" != "$(cat /proc/sys/kernel/random/boot_id)" ]; then rm -f "$JOBS/$name.pid" "$JOBS/$name.boot"
+      elif kill -0 "$(cat "$JOBS/$name.pid")" 2>/dev/null; then echo "job $name already running" >&2; exit 2; fi
+    fi
     rm -f "$JOBS/$name.rc" "$JOBS/$name.started" "$JOBS/$name.lane" "$JOBS/$name.machine" "$JOBS/$name.unit" "$JOBS/$name.gpu"
     # The spool a relaunch needs (job_resume.sh). JOB_SEQ keeps a resumed job's place; else the next number.
     if [ -n "${JOB_SEQ:-}" ]; then seq=$JOB_SEQ; else
@@ -142,7 +147,7 @@ case "$cmd" in
     else
       launch '"$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"' "$@"
     fi
-    echo $jpid > "$JOBS/$name.pid"; echo "started $name (pid $jpid), log $JOBS/$name.log" ;;
+    cat /proc/sys/kernel/random/boot_id > "$JOBS/$name.boot"; echo $jpid > "$JOBS/$name.pid"; echo "started $name (pid $jpid), log $JOBS/$name.log" ;;
   wait)
     name=$1; end=$((SECONDS + 270))
     while [ $SECONDS -lt $end ]; do

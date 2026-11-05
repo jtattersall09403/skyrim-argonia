@@ -100,3 +100,34 @@ def test_restore_order_and_finished_not_rerun(tmp_path):
     assert gpu_lines == ["run1", "q2", "q3"]
     assert f"q3 lane-x {tmp_path}" in lines
     assert "done1" not in lines  # finished before the interrupt: not rerun
+
+
+def test_old_boot_pid_is_not_running(tmp_path):
+    """A pid file from another boot (pid reused by an unrelated live process) does not block a run; one from this boot does."""
+    jobs = tmp_path / "jobs"
+    jobs.mkdir()
+    (jobs / "j.pid").write_text(f"{os.getpid()}\n")  # a live pid, as a reused one would be
+    (jobs / "j.boot").write_text("some-other-boot-id\n")
+    assert guard(tmp_path, "run", "j", "--", "true").returncode == 0
+    assert guard(tmp_path, "wait", "j").returncode == 0
+    assert (jobs / "j.boot").read_text() == Path("/proc/sys/kernel/random/boot_id").read_text()
+    (jobs / "k.pid").write_text(f"{os.getpid()}\n")
+    (jobs / "k.boot").write_text(Path("/proc/sys/kernel/random/boot_id").read_text())
+    r = guard(tmp_path, "run", "k", "--", "true")
+    assert r.returncode == 2 and "already running" in r.stderr
+
+
+def test_resume_relaunches_over_old_boot_pid(tmp_path):
+    jobs = tmp_path / "jobs"
+    jobs.mkdir()
+    out = tmp_path / "ran"
+    (jobs / "j.cmd").write_bytes(f"touch\0{out}\0".encode())
+    (jobs / "j.state").write_text("running\n")
+    (jobs / "j.seq").write_text("1\n")
+    (jobs / "j.cwd").write_text(f"{tmp_path}\n")
+    (jobs / "j.pid").write_text(f"{os.getpid()}\n")
+    (jobs / "j.boot").write_text("old-boot\n")
+    r = subprocess.run(["bash", str(RESUME)], env=env_for(tmp_path, {"RESUME_BOOT_ID": "newboot"}),
+                       capture_output=True, text=True, timeout=300)
+    assert "relaunched j" in r.stdout and "FAILED" not in r.stdout, r.stdout
+    assert until(out.exists)

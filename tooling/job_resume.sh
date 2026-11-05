@@ -38,12 +38,13 @@ for f in "$JOBS"/*.cmd; do [ -e "$f" ] || continue; n=$(basename "$f" .cmd)
   st=$(cat "$JOBS/$n.state" 2>/dev/null || echo ""); [ "$st" = queued ] || [ "$st" = running ] || continue
   # still alive: not interrupted (by its unit when it has one: after a reboot a bare pid may be someone else's)
   if u=$(cat "$JOBS/$n.unit" 2>/dev/null) && [ -n "$u" ]; then systemctl --user is-active -q "$u" 2>/dev/null && continue
-  else kill -0 "$(cat "$JOBS/$n.pid" 2>/dev/null || echo 0)" 2>/dev/null && continue; fi
+  else [ "$(cat "$JOBS/$n.boot" 2>/dev/null || echo "$boot")" = "$boot" ] && kill -0 "$(cat "$JOBS/$n.pid" 2>/dev/null || echo 0)" 2>/dev/null && continue; fi
   [ $((now - $(stat -c %Y "$JOBS/$n.state"))) -le "$maxage" ] || continue
   list+=("$(cat "$JOBS/$n.seq" 2>/dev/null || echo 0) $n")
 done
 { echo "boot $boot at $(date -Is)"
   printf '%s\n' "${list[@]}" | sort -n | while read -r seq n; do [ -n "${n:-}" ] || continue
+    rm -f "$JOBS/$n.pid" "$JOBS/$n.boot"  # a reboot killed every job: a pid file from a previous boot is never live
     mapfile -d '' argv < "$JOBS/$n.cmd"; mapfile -d '' envs < "$JOBS/$n.env" 2>/dev/null || envs=()
     gpu=(); [ -f "$JOBS/$n.gpu" ] && gpu=(--gpu="$(cat "$JOBS/$n.gpu")")
     cwd=$(cat "$JOBS/$n.cwd" 2>/dev/null || echo "$HOME"); [ -d "$cwd" ] || cwd=$HOME
