@@ -3,14 +3,18 @@
 # argonia-play exists it prints it and exits. Bash, not PowerShell, because it runs on the Linux build VM; the
 # Windows side is setup.ps1, run over SSH.
 #
-#   infra/gpu-box/create.sh [instance-type] [az]     default g6.xlarge in eu-west-2a (see infra/README.md)
+#   infra/gpu-box/create.sh [instance-type] [region] [az]     default g6.xlarge in eu-west-3b: the region and zone
+#   are chosen by the spot placement score (decision 0008: whichever European region interrupts least at a similar
+#   price; Paris euw3-az2 scored 9 against London's 1 on 2026-11-05). The region's default VPC is used; machines.conf
+#   must name the machine in that region afterwards (run.sh reads it) and `cloudflare_gate.py worker` re-points the Worker.
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
-R=eu-west-2
 TYPE="${1:-g6.xlarge}"
-AZ="${2:-eu-west-2a}"
-VPC=vpc-8dfe71e5
-BUILD_IP=$(hostname -I | awk '{print $1}')
+R="${2:-eu-west-3}"
+AZ="${3:-eu-west-3b}"
+VPC=$(aws ec2 describe-vpcs --region $R --filters Name=isDefault,Values=true --query 'Vpcs[0].VpcId' --output text)
+# The machine is reached on its public address: SSH is opened to the build VM's public IP (run.sh up refreshes it).
+BUILD_IP=$(curl -s --max-time 5 https://checkip.amazonaws.com || hostname -I | awk '{print $1}')
 KEY="$HOME/.argonia/keys/argonia-play"
 TAGS="{Key=Name,Value=argonia-play},{Key=project,Value=argonia}"
 

@@ -66,91 +66,16 @@ cannot do it. We make no art, no world, no engine code of our own.
 ## 4. The phases
 
 Each phase ends when the owner has played it and said so on its issue. Phases run in order; the blocks inside
-Phase 2 run in any order. Nothing is estimated in advance; each phase records what it measured.
+Phase 2 run in any order. Nothing is estimated in advance; each phase records what it measured. Each phase is one
+file in [phases/](phases/), edited as the phase goes.
 
-### Phase 0: the play machine is back and vanilla Skyrim streams
-
-- Pick the region: the spot placement score and interruption band for a g6.xlarge in London and Paris (and any
-  other European region at a similar price); the least-interrupted wins. Recreate `argonia-play` there
-  (create.sh, setup.ps1: driver, Steam, MO2, Sunshine, Moonlight-Web, the tunnel; machines.conf and the Worker
-  updated to the region). The owner logs Steam in once; Skyrim is pinned to build 24914197.
-- The play page starts it, the vanilla card runs, saves sync, idle-stop stops it.
-- **Owner test:** play vanilla for ten minutes from the phone and the Mac.
-
-### Phase 1: the stack, in BM&V as the default world
-
-The owner's first walk is the whole stack *inside* Black Marsh, so the stack and the default world are one phase.
-
-- **The stack.** `mods/dependencies.json` holds the new list: core (SKSE, Address Library, USSEP, Pandora, OAR,
-  the DLL fixes), the collection's 31 mods as rows, FreeClimb, Magic Expanded, BM&V (the ModDB archive from the
-  private bucket), Alternate Start - Live Another Life, houseCARL. `stack.py fetch --record` fills the hashes;
-  `stage` applies the FOMOD choices; `push` and `stack.ps1 on` lay the hard links; Pandora runs on the machine.
-- **Rebase the collection onto 1.7.104.** The collection was pinned for AE 1.6: DAR is replaced by Open
-  Animation Replacer, Nemesis by Pandora, and the AE-era DLLs (Stop On Slash, Elden Counter, Animated Armoury's
-  DLL if any) are checked for a 1.7.x build or dropped with a note. houseCARL reports conflicts and missing
-  masters; the game reaches the main menu with every DLL loaded (SKSE's log).
-- **The start.** Our plugin adds a Live Another Life start option that places the player in Black Marsh
-  (LAL's addon pattern: a start quest, a marker in a BM&V cell, a line in the statue's dialogue), the opening
-  taken from the story's prisoner work-detail premise in its lightest form. If LAL's addon route fails, the
-  seed in `papyrus/ARG_StartQuestScript.psc` (a start-game-enabled quest that moves the player) is the fallback.
-- **The shutdown.** Our plugin stops what still fires with LAL: the main quest chain from MQ102 on (no dragon
-  ever rises), the civil war, the Thieves Guild, Dark Brotherhood and inheritance couriers, World Interaction and
-  radiant quests, bounty letters. Method in route order: Start Game Enabled off in an override, story-manager node
-  conditions, a startup script that stops the rest. The allow-list of quests that may run (the mods' own
-  controller and MCM quests, LAL's, BM&V's) is written in this phase as `mods/allowed-quests.json`; a console
-  `sqs`-style listing after 30 in-game days is the proof the owner can take, and the agent proves the override
-  diff in xEdit first.
-- **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
-  one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
-- BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
-  ([research/bmv](research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly.
-- **Owner test (the first walk):** new game, choose the Black Marsh start, arrive in BM&V; a fight with the
-  collection's moveset, a climb, a Morrowind spell from Magic Expanded, a walk between two BM&V places; then wait
-  30 days: no dragon, no courier, no civil-war or guild starts; the journal holds only what the allow-list says.
-
-### Phase 2: the building blocks (the proving kit)
-
-Each block is one small, real example built in our plugin on top of BM&V, proven off game by the agent, then
-verified in game by the owner. A block's record and script shapes become the template every later use copies.
-The first block also settles **the authoring route**: records are written as Spriggit YAML in `plugin/` and
-built to the ESP on the build VM (`spriggit` is installed at `~/.argonia/spriggit`); xEdit on the play machine is
-the checker; the Creation Kit is used only where nothing else can (FaceGen for a new face; the Papyrus
-compiler). If Spriggit proves awkward for a record type, a Mutagen script replaces it for that type.
-
-| Block | The example | What it proves for later |
+| Phase | What | Ends when the owner can say |
 |---|---|---|
-| B1 Dialogue | a new greeting and one new topic on an existing BM&V NPC, conditioned on a global | changing anyone's lines, Fuz Ro D-oh silent voice, conditions |
-| B2 NPC | a new NPC (template from a BM&V or vanilla actor, so no FaceGen) placed on existing navmesh with sandbox and sleep packages and a bed | placing people anywhere, schedules, ownership |
-| B3 Creature and boss | one creature at a fixed level in a marsh spot; one named boss with a unique inventory | encounters, bosses, [0035](decisions/0035-nothing-is-levelled-against-the-player.md) |
-| B4 Quest starts | one quest started three ways: a dialogue topic, entering a trigger volume, reading a note | every quest trigger we will need |
-| B5 Scripting | a stage fragment, an alias script (OnDeath), a trigger script, a global-driven condition; compiled on the machine | the script shapes, the compile job, where logic lives |
-| B6 Items | one weapon with our stats, placed in a container and given as a reward | items and loot without levelled lists |
-| B7 Faction | a faction with two ranks, an NPC in it, a line that changes with rank | faction lines |
-| B8 Remove or change | a BM&V NPC disabled; a BM&V reference moved; a BM&V quest's stage changed | editing what BM&V built |
-| B9 Journal | a quest with directions written in the journal, no marker | directions, not markers |
-
-**Owner test:** one session through the nine examples, from an issue that says where each one is and what to
-do. A block the owner finds broken is fixed and re-posted; a block that passes is never re-tested.
-
-### Phase 3: the story's first act on BM&V
-
-- **The census.** A dump of BM&V's locations, cells, NPCs, factions and quests (Spriggit or xEdit) into
-  `story/bmv/`, and a map from our designed regions and places ([story/design/quests/index](../story/design/quests/index/))
-  onto BM&V's towns and cells. Where BM&V has no place for a designed one, the quest moves to the nearest BM&V
-  place or waits.
-- **The opening** (prisoner work detail, the attack, the Veiled Reed) and the main quest's first three or four
-  quests, written with the `quest-write`, `quest-review` and `dialogue-write` skills from the story records, built
-  with the blocks.
-- **One faction line's first two quests** (the owner picks the faction).
-- **Owner test:** play the act from the Black Marsh start.
-
-### Phase 4 and on: scale
-
-The same blocks and skills, in the owner's order: the main quest's acts II and III and the three endings; the
-four deep faction lines, then the standard ones and the detectives' faction
-([0025](decisions/0025-a-detectives-faction.md)); regional and standalone quests; bosses and creatures by danger
-band; items. Each milestone is one owner test. New block types (a boat, a dungeon layout, a new kind of script)
-are proved as blocks first.
+| [0](phases/0-play-machine.md) | the play machine is back and vanilla Skyrim streams | "I played vanilla Skyrim for ten minutes from the phone and the Mac" |
+| [1](phases/1-stack-in-bmv.md) | the stack, in BM&V as the default world | "I started in Black Marsh, fought, climbed, cast a Morrowind spell and nothing from Skyrim followed me" |
+| [2](phases/2-building-blocks.md) | the building blocks (the proving kit) | "I saw all nine blocks work in game" |
+| [3](phases/3-first-act.md) | the story's first act on BM&V | "I played the first act from the Black Marsh start" |
+| [4 and on](phases/4-scale.md) | scale | "the story is in, milestone by milestone" |
 
 ## 5. Risks, named
 

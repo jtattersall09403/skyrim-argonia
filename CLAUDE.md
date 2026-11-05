@@ -10,7 +10,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 
 ## Session start
 
-- Read [PLAN](docs/PLAN.md) and [PROGRESS](docs/PROGRESS.md); the current phase's section is the work.
+- Read [PLAN](docs/PLAN.md), [PROGRESS](docs/PROGRESS.md) and the current phase's file in `docs/phases/`; that file is the work and is edited as it goes.
 - Read the owner inbox (`tooling/owner_inbox.py --list`); an owner reply is acknowledged before anything else.
 
 ## Never
