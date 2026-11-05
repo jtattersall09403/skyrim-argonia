@@ -17,7 +17,9 @@ small details with PIL.
    worst first when asked.
 
 An image that won't open: convert to PNG with PIL, retry once, else report unreadable. In a sequence open every
-frame itself, one Read each, a whole transition's frames in one turn; log each frame in one line in the report
+frame itself, one Read each, never several images in one turn (the media request limit drops frames and scrambles
+their order: 48 scan frames in batches, 2026-11-05 04:2x, left no stop judged); a read is at most ~24 images, the
+planner splits a larger set by stop; log each frame in one line in the report
 file. A red never ends the read: go to the last frame, give a verdict per transition and every distinct defect
 with its first frame. A named range is read whole and only it.
 
