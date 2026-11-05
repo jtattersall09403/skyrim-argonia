@@ -318,14 +318,62 @@ class Resume:
         self.path.unlink(missing_ok=True)
 
 
-def unrar_into(inner, data):
-    subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
+def unrar_into(inner, data, names=None):
+    """Lay a rar into Data; with `names`, only those members (an @listfile, one exact name a line)."""
+    if names is None:
+        subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), str(data) + "/"], check=True)
+        return
+    lst = pathlib.Path(str(inner) + ".extract.lst")
+    lst.write_text("\n".join(names) + "\n")
+    subprocess.run(["unrar", "x", "-o+", "-inul", str(inner), "@" + str(lst), str(data) + "/"], check=True)
+    lst.unlink()
 
 
-def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=unrar_into):
+def list_rar(inner):
+    """Member names of a rar, as stored (case kept)."""
+    out = subprocess.run(["unrar", "lb", str(inner)], check=True, capture_output=True, text=True).stdout
+    return [n for n in out.splitlines() if n and not n.endswith("/")]
+
+
+def keep_select(listings, m):
+    """The members of the row's rars that its `keep` (and `drop`) leave in Data: {rar: [names]}. The extraction list is
+    built from the keep list, so BM&V's 21 GB is never laid, only its few hundred files. A keep glob that matches no
+    member is a red (a stale entry or a case/prefix slip), never skipped quietly."""
+    globs, drops = m["keep"], m.get("drop", [])
+    sel, hit = {}, set()
+    for rar, names in listings.items():
+        sel[rar] = []
+        for n in names:
+            r = n.lower().replace("\\", "/")
+            if any(fnmatch.fnmatch(r, d.lower()) for d in drops):
+                continue
+            g = [x for x in globs if fnmatch.fnmatch(r, x)]
+            if g or (r.count("/") == 0 and pathlib.Path(r).suffix in PLUGIN_EXT):
+                sel[rar].append(n)
+                hit.update(g)
+    missing = [x for x in globs if x not in hit]
+    if missing:
+        raise SystemExit(f"{m['id']}: keep entries matching nothing in {', '.join(listings)}: {missing}")
+    return sel
+
+
+KEPT_HEADROOM = 1 << 30  # what a keep-listed row lays beyond its archive's own unpack (BM&V: measured 191 MB)
+
+
+def stage_need(m, size):
+    """Bytes a row's stage needs free: the archive unpacked plus the staged copy (x3). A nested row with a keep list
+    lays only its keep list: its archive's members (x1) plus the kept files, never the full 21 GB."""
+    if m.get("nested") and m.get("keep"):
+        return size + KEPT_HEADROOM
+    return size * 3
+
+
+def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=unrar_into, list_fn=list_rar):
     """A row whose archive holds archives (BM&V: a 9 GB tar of Data1.rar, Data2.rar, 21 GB laid). Each step is marked
     on disk when done; a rerun after a kill skips the done steps, and a step cut half-way (no mark) is redone over its
-    partial files (unrar -o+ overwrites). A changed stage key (or no mark) clears the partial copy first."""
+    partial files (unrar -o+ overwrites). A changed stage key (or no mark) clears the partial copy first.
+    A row with a `keep` list lays only the members its keep list names, plus the textures those meshes name (a second
+    pass), instead of the whole 21 GB that prune would then delete."""
     unpack_fn = unpack_fn or unpack
     r = Resume(progress, key)
     if r.fresh:
@@ -336,16 +384,40 @@ def stage_nested(m, key, archive, src, data, progress, unpack_fn=None, unrar_fn=
         r.mark("unpack")
         print(f"  {m['id']}: unpacked the archive", flush=True)
     data.mkdir(parents=True, exist_ok=True)
+    inners = {}
     for name in m["nested"]:
-        if r.done(f"rar:{name}"):
-            print(f"  {m['id']}: {name} already laid (resumed)", flush=True)
-            continue
         inner = ci(data_root(src), name)
         if inner is None:
             raise SystemExit(f"{m['id']}: {name} not in the archive")
-        unrar_fn(inner, data)
+        inners[name] = inner
+    sel = None
+    if m.get("keep"):
+        listings = {name: list_fn(inner) for name, inner in inners.items()}
+        sel = keep_select(listings, m)
+        print(f"  {m['id']}: extraction list {sum(len(v) for v in sel.values())} of "
+              f"{sum(len(v) for v in listings.values())} members", flush=True)
+    for name, inner in inners.items():
+        if r.done(f"rar:{name}"):
+            print(f"  {m['id']}: {name} already laid (resumed)", flush=True)
+            continue
+        if sel is None:
+            unrar_fn(inner, data)
+        elif sel[name]:
+            unrar_fn(inner, data, sel[name])
         r.mark(f"rar:{name}")
         print(f"  {m['id']}: laid {name}", flush=True)
+    if sel is not None and not r.done("textures"):
+        have = {str(f.relative_to(data)).lower().replace("\\", "/") for f in data.rglob("*") if f.is_file()}
+        wanted = {}
+        for f in data.rglob("*.nif"):
+            for t in nif_textures(f.read_bytes()):
+                wanted[t] = None
+        for name in inners:
+            more = [n for n in listings[name] if n.lower().replace("\\", "/") in wanted and n.lower() not in have]
+            if more:
+                unrar_fn(inners[name], data, more)
+        r.mark("textures")
+        print(f"  {m['id']}: laid the meshes' textures", flush=True)
     return r
 
 
@@ -542,6 +614,16 @@ def prune(data, m):
 DDS = re.compile(rb"[\x20-\x7e]{3,200}?\.dds", re.I)
 
 
+def nif_textures(raw):
+    """Texture paths (lower case, under textures/) a nif's strings name."""
+    out = set()
+    for t in DDS.findall(raw):
+        t = t.decode().lower().replace("\\", "/")
+        t = t[t.find("textures/"):] if "textures/" in t else t.lstrip("/")  # a length byte may precede it
+        out.add(t if t.startswith("textures/") else "textures/" + t)
+    return out
+
+
 def keep_subset(data, globs):
     """A row's `keep`: only the Data paths the world references (globs, lower case), the row's plugins, and every
     texture a kept mesh names (read from the nif's strings) stay; the rest of the row is removed (BM&V, 9.6 GB, of
@@ -550,12 +632,7 @@ def keep_subset(data, globs):
     kept = {r for r in files if any(fnmatch.fnmatch(r, g) for g in globs)
             or (r.count("/") == 0 and pathlib.Path(r).suffix in PLUGIN_EXT)}
     for r in [r for r in kept if r.endswith(".nif")]:
-        for t in DDS.findall(files[r].read_bytes()):
-            t = t.decode().lower().replace("\\", "/")
-            t = t[t.find("textures/"):] if "textures/" in t else t.lstrip("/")  # a length byte may precede it
-            t = t if t.startswith("textures/") else "textures/" + t
-            if t in files:
-                kept.add(t)
+        kept.update(t for t in nif_textures(files[r].read_bytes()) if t in files)
     for r, f in files.items():
         if r not in kept:
             f.unlink()
@@ -807,7 +884,7 @@ def cmd_plan(a):
     rows, pick = chosen(doc, sets, a.dev, a.through, need=our_masters()), picks(doc, sets)
     STACK, MO2 = stack_dirs(a)  # noqa: N806
     todo = [m for m in rows if not staged_ok(m, stage_key(m, pick), STACK / "staged", MO2 / "mods", MO2 / "tools")]
-    need = sum(archive_path(m).stat().st_size * 3 if archive_path(m).exists() else 0 for m in todo)
+    need = sum(stage_need(m, archive_path(m).stat().st_size) if archive_path(m).exists() else 0 for m in todo)
     out = {"restage": [m["id"] for m in todo], "need_bytes": need}
     if getattr(a, "ui", None):
         v = ui_variant(a.ui, MO2)
@@ -896,7 +973,7 @@ def cmd_stage(a):
             resume = Resume(prog, key) if m.get("nested") else None
             if resume is None or resume.fresh:  # a resumed row keeps the partial copy it is part-way through
                 shutil.rmtree(data, ignore_errors=True)  # the old staged copy first: BM&V's is 21 GB on a 116 GB disk
-                room(archive_path(m).stat().st_size * 3, f"unpack {m['id']}")  # unpacked plus staged copy
+                room(stage_need(m, archive_path(m).stat().st_size), f"unpack {m['id']}")  # unpacked plus staged copy
             if resume is not None:
                 resume = stage_nested(m, key, archive_path(m), src, data, prog)
                 taken = []
