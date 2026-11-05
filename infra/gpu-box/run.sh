@@ -28,9 +28,12 @@ C="$HOME/.argonia/cache"; mkdir -p "$C"
 open_ssh() {
   [ "$ADDR" = public ] || return 0
   local me sg; me=$(curl -s -m 5 https://checkip.amazonaws.com) || return 0
-  [ "$(cat "$C/sg-$M" 2>/dev/null)" = "$me" ] && return 0  # already opened to this address (saves ~3 s a call)
   sg=$(aws ec2 describe-instances --region $R --filters Name=tag:Name,Values="$M" \
     --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)
+  # The cache alone is not trusted: a recreated machine with the same name kept the old marker and no rule was added
+  # (2026-11-05, Phase 0: SSH closed for 15 min while the group held 31 stale addresses).
+  if [ "$(cat "$C/sg-$M" 2>/dev/null)" = "$me" ] && aws ec2 describe-security-groups --region $R --group-ids "$sg" \
+       --query 'SecurityGroups[0].IpPermissions[?FromPort==`22`].IpRanges[].CidrIp' --output text | grep -q "^$me/32$\|	$me/32\|$me/32"; then return 0; fi
   # one rule per build-VM address, the previous one revoked first: a spot build VM changes address at every reboot and the
   # group's rule limit was reached after 55 of them (2026-11-04 18:0x: SSH timed out for 30 min while AWS called the machine healthy)
   local prev; prev=$(cat "$C/sg-$M" 2>/dev/null || true)  # no file yet for a new machine: not an exit under set -e (the clone, 19:32)
@@ -112,7 +115,7 @@ Get-Content $o -EA SilentlyContinue' ;;
   setup)
     stage="${2:-all}"
     ps 'New-Item -ItemType Directory -Force C:\argonia\infra | Out-Null'
-    scp "${SSH_OPTS[@]}" "$here"/*.ps1 "Administrator@$(ip):C:/argonia/infra/" >/dev/null
+    scp "${SSH_OPTS[@]}" "$here"/*.ps1 "$here"/*.json "$here"/*.txt "Administrator@$(ip):C:/argonia/infra/" >/dev/null
     for pass in 1 2 3; do
       out=$(ps "powershell -ExecutionPolicy Bypass -File C:\\argonia\\infra\\setup.ps1 -Stage $stage" 2>&1) || { echo "$out"; exit 1; }
       echo "$out"

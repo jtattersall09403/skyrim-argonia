@@ -11,8 +11,8 @@ Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit thi
   our own authored records carry their form keys in `mod_form` as the Magic Expanded forms already do. The quest
   skills read the mapping, so a quest written against a designed place resolves to a BM&V cell. Where BM&V has no
   place for a designed one, the row is mapped to the nearest BM&V place or marked waiting.
+- **Review the opening act as authored** - review the opening act of the main quest in detail and the overall shape of it at a higher level, against the newly mined place records from above. We may make minor changes to the BM&V world (e.g. placing new objects or getting rid of old ones, adding/removing/changing NPCs, adding/removing creatures, scripting existing things differently...etc) but not major changes. So we will need to adapt our main quest to keep the *spirit* of it and each of its acts, whilst adapting the *detail* to work with (a minorly-edited/added to version of) the BM&V world.
 - **The opening** (prisoner work detail, the attack, the Veiled Reed) and the main quest's first three or four
   quests, written with the `quest-write`, `quest-review` and `dialogue-write` skills from the story records, built
   with the blocks.
-- **One faction line's first two quests** (the owner picks the faction).
 - **Owner test:** play the act from the Black Marsh start.
