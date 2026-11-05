@@ -20,7 +20,7 @@ def final():
 def _implicit():
     w = db.open()
     cells = {c.id for c in w.rows("build_cell") if c.kind == "exterior"}
-    return [r for r in w.rows("build_ref") if r.cell_id in cells and r.z_m is None
+    return [r for r in w.rows("build_ref") if r.cell_id in cells and r.z_m is None and r.z_over_m is None
             and place_build.water_seat(r.piece) is None]  # docks and boats stand on the water (test_place_seating)
 
 

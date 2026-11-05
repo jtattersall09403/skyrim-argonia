@@ -89,7 +89,7 @@ def rows(w, ground, place: str) -> list[dict]:
             kind, ok = "dock", abs(z - max(g, lv) - seat) <= SEAT_TOL_M
         else:
             kind, ok = "dry", g - lv >= DRY_M  # it stands on this ground (a doorway's origin sits 1.2 m under its door)
-        if kind in ("dry", "dry cell") and getattr(r, "z_m", None) is None and abs(z - g) > SUPPORT_TOL_M:
+        if kind in ("dry", "dry cell") and getattr(r, "z_m", None) is None and getattr(r, "z_over_m", None) is None and abs(z - g) > SUPPORT_TOL_M:
             kind, ok = "afloat", False
         if r.id in penned:
             kind, ok = "in a pen", False

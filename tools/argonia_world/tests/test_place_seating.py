@@ -33,9 +33,47 @@ def _exterior(w):
 
 
 def test_explicit_heights_stand_on_the_game_ground(world, ground):
-    bad = [(r.id, round(r.z_m - ground.z(r.x_m, r.y_m), 2)) for r in _exterior(world)
-           if r.z_m is not None and not -BELOW_M <= r.z_m - ground.z(r.x_m, r.y_m) <= ABOVE_M]
+    bad = [(r.id, round(_z(world, ground, r) - ground.z(r.x_m, r.y_m), 2)) for r in _exterior(world)
+           if (r.z_m is not None or r.z_over_m is not None)
+           and not -BELOW_M <= _z(world, ground, r) - ground.z(r.x_m, r.y_m) <= ABOVE_M]
     assert not bad, f"{len(bad)} refs off the ground: {bad}"
+
+
+def _z(w, ground, r) -> float:
+    ctx = type("C", (), {"ground": ground, "world": w})
+    return place_build._pos(ctx, "exterior", r)[2] / place_build.su.UNITS_PER_METRE
+
+
+# A piece whose origin stands under its support on purpose: (ref id suffix, its support, metres under the ground).
+# KotM's house origin is its sunk floor slab, its stairs foot a step under the door; a doorway's origin is 1.22 m under
+# its door (KotM's door-local offset). Each is checked against its support, which stands on the ground.
+STACKED = {"b1": ("b1-door", -1.34), "b1-stairs": ("b1-door", -0.52), "b1-doorframe": ("b1-door", 1.11),
+           "b4-doorway": ("b4-door", -1.22), "b5-doorway": ("b5-door", -1.22), "b6-doorway": ("b6-door", -1.22)}
+SEAT_M = 0.3
+
+
+def test_no_exterior_ref_buried_or_afloat(world, ground):
+    """Every exterior ref of every place stands within 0.3 m of the game ground at plugin time, unless it is a water
+    seat (a dock, a boat, a person on a deck: over the cell water) or a stacked piece, checked against its support."""
+    refs = {r.id: r for r in _exterior(world) if not r.id.startswith(MARKERS)}
+    bad = []
+    for r in refs.values():
+        z, g = _z(world, ground, r), ground.z(r.x_m, r.y_m)
+        if place_build.water_seat(r.piece) is not None:
+            continue  # test_docks_and_boats_on_the_water_with_posts_in_the_ground
+        lv = place_build.water_level(world, r.x_m, r.y_m)
+        if r.z_m is None and r.z_over_m is None and lv is not None and g < lv and place_build._is_person_spot(world, r):
+            continue  # a person on the deck over the cell water (test_no_person_stands_under_the_ground...)
+        short = r.id.rsplit(".", 1)[-1]
+        if short in STACKED:
+            sup, off = STACKED[short]
+            s = refs[r.id.rsplit(".", 1)[0] + "." + sup]
+            if abs(z - _z(world, ground, s) - off) > SEAT_M:
+                bad.append((r.id, "off its support", sup, round(z - _z(world, ground, s), 2)))
+            continue
+        if abs(z - g) > SEAT_M:
+            bad.append((r.id, round(z - g, 2)))
+    assert not bad, f"{len(bad)} exterior refs buried or afloat: {bad}"
 
 
 def _decks(w, ground):

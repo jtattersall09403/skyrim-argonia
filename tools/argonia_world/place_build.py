@@ -186,6 +186,8 @@ def _pos(ctx, cell_kind: str, r) -> list[float]:
     from tools.argonia_world.intermediate import _pos_exterior, _pos_interior
     if cell_kind == "exterior":
         z = r.z_m if r.z_m is not None else ctx.ground.z(r.x_m, r.y_m)
+        if (over := getattr(r, "z_over_m", None)) is not None:  # a height over the built ground, never a frozen one
+            return _pos_exterior([r.x_m, r.y_m, z + over])
         if r.z_m is None and getattr(r, "piece", None) and water_seat(r.piece) is not None:
             z = seated_z(ctx.world, z, r.piece, r.x_m, r.y_m)
         if r.z_m is None and _is_person_spot(ctx.world, r):
@@ -215,8 +217,9 @@ def _arrival(ctx, refs_by_id, cells, partner) -> tuple[list[float], list[float]]
     n = math.hypot(dx, dy) or 1.0
     x, y = partner.x_m + DOOR_ARRIVAL_M * dx / n, partner.y_m + DOOR_ARRIVAL_M * dy / n
     z = partner.z_m
+    over = getattr(partner, "z_over_m", None)
     yaw = math.degrees(math.atan2(dx, -dy)) % 360  # province frame: y south, yaw clockwise from north
-    p = type("P", (), {"x_m": x, "y_m": y, "z_m": z})
+    p = type("P", (), {"x_m": x, "y_m": y, "z_m": z, "z_over_m": over})
     return _pos(ctx, kind, p), _rot(yaw)
 
 

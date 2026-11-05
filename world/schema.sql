@@ -6469,6 +6469,10 @@ CREATE TABLE "build_ref" (
   "x_m" REAL NOT NULL,
   "y_m" REAL NOT NULL,
   "z_m" REAL,
+  -- an exterior piece's height over the game ground at its x, y (lane 1.15-r6-claywater-reseat): resolved against the
+  -- built ground at plugin time (place_build._pos), so a regrade never buries it; z_m is an absolute world height,
+  -- kept only for studio markers and interiors
+  "z_over_m" REAL CHECK ("z_over_m" IS NULL OR "z_m" IS NULL),
   "yaw_deg" REAL NOT NULL DEFAULT 0,
   "scale" REAL CHECK ("scale" IS NULL OR "scale" > 0),
   "persistent" BOOLEAN NOT NULL DEFAULT 0 CHECK ("persistent" IN (0, 1)),
