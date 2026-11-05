@@ -11,7 +11,7 @@
 # <class>_kinds, <class>_spawn). The fourth stop is Claywater's guar pen: both kept guar (lane 1.15-r5-creatures) read
 # present, alive, enabled and near. A failed step alone takes a still.
 id: creatures-kinds
-reach: ["tools/argonia_world/creatures/**", "data/creature-kind-bars.json", "data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -61,60 r1", "records: cell -61,61 r1", "records: cell -57,11 r1", "records: cell -45,-25 r1", "records: cell -45,-24 r1", "records: cell -33,-6 r1", "records: cell 3,18 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["tools/argonia_world/creatures/**", "data/creature-kind-bars.json", "data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -61,60 r1", "records: cell -61,61 r1", "records: cell -57,11 r1", "records: cell -45,-25 r1", "records: cell -45,-24 r1", "records: cell -33,-6 r1", "records: cell 38,33 r1", "records: cell 39,33 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium
@@ -19,29 +19,31 @@ scene: creature-spots
 stills: false
 steps:
 - name: coastal-lagoon
-  # cell (3, 18) coastal-lagoon, spawn lvln.coastal-lagoon.D4.shore (D4) ref ArgoniaWorld.esm|0xE9E840, the class on 13 of the 25 cells round it, 7 spawn points within 90 m; the stand is 16 m from it
-  # subject: 16128 77568 115
+  # cell (38, 33) coastal-lagoon, spawn lvln.coastal-lagoon.D1.shore (D1) ref ArgoniaWorld.esm|0xEBC980, the class on 18 of the 25 cells round it, 4 spawn points within 90 m; the stand is 18 m from it
+  # subject: 159360 137088 91
+  # kinds (our name = the game's FULL name): Burglar Crab = Mudcrab; Burglar Crab = Mudcrab; Burglar Crab = Mudcrab; Crocodile = Crocodile; Crocodile = Swamp Crocodile; Crocodile = Salt Crocodile; Crocodile = Crocodile; Crow = Crow; Crow = Crow; Crow = Raven; Dreugh = Dreugh; Fellrunner = Mudrunner; Fellrunner = Verminous Stalker; Fleshfly Swarm = Fleshflies; Giant Centipede = Giant Centipede; Giant Centipede = Jungle Centipede; Giant Leech = Giant Leech; Giant Leech = Leech; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Wasp = Kotu Gava; Hackwing = Hackwing; Hackwing = Hackwing; Haj Mota = Turtle; Hoarvor = Forest Spider; Jassa Red Slug = Jassa Red Slug; Jassa Red Slug = Jassa Red Slug; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Marsh Bird = Seagull; Marsh Bird = Pectoral Sandpiper; Marsh Bird = Oystercatcher; Marsh Bird = Kingfisher; Marsh Rat = Swamp Rat; Marsh Turtle = Mock Turtle; Marsh Turtle = Baby Mock Turtle; Marsh Turtle = Great Mock Turtle; Moon Adder = Moon-Adder; Moon Adder = Jungle Rattler; Pad-sa Shark = Shark; Pad-sa Shark = Shark; Red Hooped Tree-Viper = Viper; Sea-Drake = Sea Drake; Slaughterfish = Swamp Slaughterfish; Swamp Jelly = Betty Swamp Jelly; Swamp Jelly = Bull Swamp Jelly; Swamp Jelly = Netch Calf
   do:
   - console: tgm
-  - console: {line: cow ARG_Province 3 18, settle: 60}
+  - console: {line: cow ARG_Province 38 33, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x 15336
-  - console: player.setpos y 76776
-  - console: player.setpos z 86
+  - console: player.setpos x 160251
+  - console: player.setpos y 137979
+  - console: player.setpos z 431
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: coastal_lagoon_stand}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE9E840"], path: refs.0, ne: null, keep: coastal_lagoon_spawn}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE9E840"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE9E840"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE9E840"], path: refs, kinds: {ge: 1, among: ["Burglar Crab", "Crocodile", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle"]}, keep: coastal_lagoon_spawn_kind}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEBC980"], path: refs.0, ne: null, keep: coastal_lagoon_spawn}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEBC980"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEBC980"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEBC980"], path: refs, kinds: {ge: 1, among: ["Baby Mock Turtle", "Great Mock Turtle", "Kingfisher", "Kotu Gava", "Mock Turtle", "Mudcrab", "Oystercatcher", "Pectoral Sandpiper", "Seagull"]}, keep: coastal_lagoon_spawn_kind}
   - {read: [actors, "8192"], path: listed, keep: coastal_lagoon}
-  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Burglar Crab", "Crocodile", "Crow", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Pad-sa Shark", "Red Hooped Tree-Viper", "Sea-Drake", "Slaughterfish", "Swamp Jelly", "Wamasu"]}, keep: coastal_lagoon_kinds}
+  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Baby Mock Turtle", "Betty Swamp Jelly", "Bull Swamp Jelly", "Crocodile", "Crow", "Dreugh", "Fleshflies", "Forest Spider", "Giant Centipede", "Giant Leech", "Giant Snail", "Great Mock Turtle", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kingfisher", "Kotu Gava", "Leech", "Mock Turtle", "Moon-Adder", "Mudcrab", "Mudrunner", "Netch Calf", "Oystercatcher", "Pectoral Sandpiper", "Raven", "Salt Crocodile", "Sea Drake", "Seagull", "Shark", "Swamp Crocodile", "Swamp Rat", "Swamp Slaughterfish", "Turtle", "Verminous Stalker", "Viper"]}, keep: coastal_lagoon_kinds}
 - name: northern-transition
   # cell (-61, 60) northern-transition, spawn lvln.northern-transition.D3.shore (D3) ref ArgoniaWorld.esm|0xEF0341, the class on 20 of the 25 cells round it, 9 spawn points within 90 m; the stand is 15 m from it
   # subject: -249728 249728 17211
+  # kinds (our name = the game's FULL name): Alit = Alit; Bog Dog = Forest Drake; Crocodile = Crocodile; Crocodile = Swamp Crocodile; Crocodile = Salt Crocodile; Crocodile = Crocodile; Crow = Crow; Crow = Crow; Crow = Raven; Dragon Frog = Ruby Hopper; Dragon Frog = Sun-Blessed Toad; Dragon Frog = Red Poison Frog; Dreugh = Dreugh; Fellrunner = Mudrunner; Fellrunner = Verminous Stalker; Fleshfly Swarm = Fleshflies; Giant Centipede = Giant Centipede; Giant Centipede = Jungle Centipede; Giant Leech = Giant Leech; Giant Leech = Leech; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Wasp = Kotu Gava; Hackwing = Hackwing; Hackwing = Hackwing; Haj Mota = Turtle; Hoarvor = Forest Spider; Jassa Red Slug = Jassa Red Slug; Jassa Red Slug = Jassa Red Slug; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Marsh Bird = Seagull; Marsh Bird = Pectoral Sandpiper; Marsh Bird = Oystercatcher; Marsh Bird = Kingfisher; Marsh Rat = Swamp Rat; Marsh Turtle = Mock Turtle; Marsh Turtle = Baby Mock Turtle; Marsh Turtle = Great Mock Turtle; Moon Adder = Moon-Adder; Moon Adder = Jungle Rattler; Red Hooped Tree-Viper = Viper; Singing Frog = Moss-Foot Croaker; Singing Frog = Indigo Tree Frog; Singing Frog = Blue Poison Frog; Singing Frog = Green Poison Frog; Voriplasm = Voriplasm; Voriplasm = Voriplasm; Voriplasm = Voriplasm
   do:
   - console: {line: cow ARG_Province -61 60, settle: 60}
   - wait: 8
@@ -56,12 +58,13 @@ steps:
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xEF0341"], path: refs.0, ne: null, keep: northern_transition_spawn}
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xEF0341"], path: refs.0.disabled, eq: false}
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xEF0341"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEF0341"], path: refs, kinds: {ge: 1, among: ["Crocodile", "Dragon Frog", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle", "Singing Frog", "Voriplasm"]}, keep: northern_transition_spawn_kind}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xEF0341"], path: refs, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle", "Voriplasm"]}, keep: northern_transition_spawn_kind}
   - {read: [actors, "8192"], path: listed, keep: northern_transition}
-  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Dragon Frog", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: northern_transition_kinds}
+  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Crow", "Dreugh", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Leech", "Giant Snail", "Great Mock Turtle", "Green Poison Frog", "Hackwing", "Indigo Tree Frog", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kingfisher", "Kotu Gava", "Leech", "Mock Turtle", "Moon-Adder", "Moss-Foot Croaker", "Mudrunner", "Oystercatcher", "Pectoral Sandpiper", "Raven", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Swamp Rat", "Turtle", "Verminous Stalker", "Viper", "Voriplasm"]}, keep: northern_transition_kinds}
 - name: western-frontier
   # cell (-33, -6) western-frontier, spawn lvln.western-frontier.D3.shore (D3) ref ArgoniaWorld.esm|0xE6EB41, the class on 19 of the 25 cells round it, 10 spawn points within 90 m; the stand is 20 m from it
   # subject: -132096 -20480 923
+  # kinds (our name = the game's FULL name): Alit = Alit; Bog Dog = Forest Drake; Crocodile = Crocodile; Crocodile = Swamp Crocodile; Crocodile = Salt Crocodile; Crocodile = Crocodile; Crow = Crow; Crow = Crow; Crow = Raven; Death Hopper = Large Indigo Tree Frog; Death Hopper = Large Sun-Blessed Toad; Death Hopper = Large Moss-Foot Croaker; Death Hopper = Large Ruby Hopper; Dragon Frog = Ruby Hopper; Dragon Frog = Sun-Blessed Toad; Dragon Frog = Red Poison Frog; Fellrunner = Mudrunner; Fellrunner = Verminous Stalker; Fleshfly Swarm = Fleshflies; Giant Centipede = Giant Centipede; Giant Centipede = Jungle Centipede; Giant Leech = Giant Leech; Giant Leech = Leech; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Snail = Giant Snail; Giant Wasp = Kotu Gava; Hackwing = Hackwing; Hackwing = Hackwing; Haj Mota = Turtle; Hoarvor = Forest Spider; Jassa Red Slug = Jassa Red Slug; Jassa Red Slug = Jassa Red Slug; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Kotu Gava = Kotu Gava; Marsh Bird = Seagull; Marsh Bird = Pectoral Sandpiper; Marsh Bird = Oystercatcher; Marsh Bird = Kingfisher; Marsh Rat = Swamp Rat; Marsh Turtle = Mock Turtle; Marsh Turtle = Baby Mock Turtle; Marsh Turtle = Great Mock Turtle; Moon Adder = Moon-Adder; Moon Adder = Jungle Rattler; Red Hooped Tree-Viper = Viper; Singing Frog = Moss-Foot Croaker; Singing Frog = Indigo Tree Frog; Singing Frog = Blue Poison Frog; Singing Frog = Green Poison Frog; Voriplasm = Voriplasm; Voriplasm = Voriplasm; Voriplasm = Voriplasm
   do:
   - console: {line: cow ARG_Province -33 -6, settle: 60}
   - wait: 8
@@ -76,9 +79,9 @@ steps:
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0, ne: null, keep: western_frontier_spawn}
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0.disabled, eq: false}
   - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs, kinds: {ge: 1, among: ["Crocodile", "Death Hopper", "Dragon Frog", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle", "Singing Frog", "Voriplasm"]}, keep: western_frontier_spawn_kind}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs, kinds: {ge: 1, among: ["Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Great Mock Turtle", "Green Poison Frog", "Indigo Tree Frog", "Kingfisher", "Kotu Gava", "Large Indigo Tree Frog", "Large Moss-Foot Croaker", "Large Ruby Hopper", "Large Sun-Blessed Toad", "Mock Turtle", "Moss-Foot Croaker", "Oystercatcher", "Pectoral Sandpiper", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Turtle", "Voriplasm"]}, keep: western_frontier_spawn_kind}
   - {read: [actors, "8192"], path: listed, keep: western_frontier}
-  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Death Hopper", "Dragon Frog", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: western_frontier_kinds}
+  - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Baby Mock Turtle", "Blue Poison Frog", "Crocodile", "Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Leech", "Giant Snail", "Great Mock Turtle", "Green Poison Frog", "Hackwing", "Indigo Tree Frog", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kingfisher", "Kotu Gava", "Large Indigo Tree Frog", "Large Moss-Foot Croaker", "Large Ruby Hopper", "Large Sun-Blessed Toad", "Leech", "Mock Turtle", "Moon-Adder", "Moss-Foot Croaker", "Mudrunner", "Oystercatcher", "Pectoral Sandpiper", "Raven", "Red Poison Frog", "Ruby Hopper", "Salt Crocodile", "Seagull", "Sun-Blessed Toad", "Swamp Crocodile", "Swamp Rat", "Turtle", "Verminous Stalker", "Viper", "Voriplasm"]}, keep: western_frontier_kinds}
 - name: western-frontier-probe
   # the land-spawn probe, state of the spawn ref ArgoniaWorld.esm|0xE491C0 (template NPC_ ArgoniaWorld.esm|0x0D1071, list ArgoniaWorld.esm|0x0D0071) at the western-frontier stand; keeps every field
   # subject: -182784 -98688 1403
@@ -105,7 +108,7 @@ steps:
   - wait: 6
   expect:
   - {read: [actors, "2801"], path: listed, keep: western_frontier_probe_list}
-  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_probe_list_kinds}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: western_frontier_probe_list_kinds}
 - name: western-frontier-probe-entry
   # player.placeatme its first concrete entry ArgoniaWorld.esm|0x0D400C at the stand (follows western-frontier-probe, no new teleport); the actors within 40 m, at least one of the list's kinds
   do:
@@ -113,7 +116,7 @@ steps:
   - wait: 6
   expect:
   - {read: [actors, "2801"], path: listed, keep: western_frontier_probe_entry}
-  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_probe_entry_kinds}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Crow", "Fleshflies", "Forest Drake", "Forest Spider", "Giant Centipede", "Giant Snail", "Hackwing", "Jassa Red Slug", "Jungle Centipede", "Jungle Rattler", "Kotu Gava", "Moon-Adder", "Mudrunner", "Raven", "Swamp Rat", "Verminous Stalker", "Viper"]}, keep: western_frontier_probe_entry_kinds}
 - name: guar-pen
   # Claywater Station's pen (the pen markers 22.8 m east of the centre): both kept guar
   # subject: -229967 46738 4902

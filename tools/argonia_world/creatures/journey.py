@@ -85,11 +85,28 @@ def ref_ids(refs: list[dict]) -> dict[int, str]:
     return out
 
 
+def list_forms(w, list_id: str) -> list[tuple[str, str]]:
+    """(our kind name, the form's FULL as the game reports it) per entry of one levelled list, sorted, FULL read from the mod's record."""
+    from tools.argonia_world.creatures.levelled import full_name
+    rows = w.query("SELECT DISTINCT c.name AS kind, e.form_key FROM creature_list_entry e JOIN creature_form f "
+                   "ON f.form_key = e.form_key JOIN creature c ON c.id = f.creature_id WHERE e.list_id LIKE ? "
+                   "ORDER BY c.name, e.form_key", list_id)
+    return [(r["kind"], full_name(r["form_key"]) or r["kind"]) for r in rows]
+
+
+def full_names(pairs: list[tuple[str, str]]) -> list[str]:
+    """The distinct FULL names of list_forms pairs, sorted; the runner's `among` (it compares what the game reports)."""
+    return sorted({f for _, f in pairs})
+
+
 def list_kinds(w, list_id: str) -> list[str]:
-    """The kinds (roster names) of one levelled list: the region class and band's own, never a levelled one (0035)."""
-    return [x["name"] for x in w.query(
-        "SELECT DISTINCT c.name FROM creature_list_entry e JOIN creature_form f ON f.form_key = e.form_key "
-        "JOIN creature c ON c.id = f.creature_id WHERE e.list_id = ? ORDER BY c.name", list_id)]
+    """The FULL names of every form of one levelled list: the region class and band's own, never a levelled one (0035)."""
+    return full_names(list_forms(w, list_id))
+
+
+def class_kinds(w, region_class: str) -> list[str]:
+    """The FULL names of every form of every list of one region class (lists `lvln.<class>.%`)."""
+    return full_names(list_forms(w, f"lvln.{region_class}.%"))
 
 
 def creature_name(w, cid: str) -> list[str]:

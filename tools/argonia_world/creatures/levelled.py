@@ -111,6 +111,16 @@ def scales(form_key: str) -> bool:
     return bool(r and r[0] == b"NPC_" and acbs(r[1])[0] & PC_MULT)
 
 
+def full_name(form_key: str) -> str:
+    """The FULL name the game shows for a mod NPC_ (`0008F6:King of the Murkmire.esp`): its own, else its template's
+    through the Use Traits flag; "" when none. Read from the plugin's bytes, never typed."""
+    fid, name = form_key.split(":", 1)
+    masters, _ = _plugin(name)
+    _, r = _resolve(name, (len(masters) << 24) | int(fid, 16), USE_TRAITS)
+    full = r and _one(r[1], b"FULL")
+    return full.rstrip(b"\0").decode("utf-8", "replace") if full and len(full) != 4 else ""
+
+
 def levelled_list(name: str, fid: int, depth: int = 0) -> bool:
     """An LVLI that reaches an entry above level 1."""
     owner, r = _get(name, fid)

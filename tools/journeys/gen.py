@@ -1021,7 +1021,7 @@ def _land_probe(b: Build, w, cands: list) -> str:
 
 
 def creatures_kinds(b: Build, w, log: list) -> str:
-    from tools.argonia_world.creatures.journey import list_kinds
+    from tools.argonia_world.creatures.journey import class_kinds, list_forms, list_kinds
     spots = _kinds_spawns(w, b)
     text = KINDS_HEAD.format(reach=round(KINDS_REACH_M), lo=KINDS_BAND_M[0], hi=KINDS_BAND_M[1], radius=KINDS_RADIUS_U,
                              n=KINDS_N)
@@ -1037,8 +1037,7 @@ def creatures_kinds(b: Build, w, log: list) -> str:
         if pick is None:
             raise SystemExit(f"creatures-kinds: no spawn point of {c} with a dry, clear stand {KINDS_BAND_M} m off")
         r, n, same, subj, f = pick
-        among = [x["name"] for x in w.query(f"SELECT c.name FROM creature_region_class rc JOIN creature c "
-                                            f"ON c.id = rc.creature_id WHERE rc.region_class = '{c}' ORDER BY c.name")]
+        among = class_kinds(w, c)  # FULL names of the class's list forms (our kind names in the comment below)
         x, y = f["x"], f["y"]
         log.append({"journey": "creatures-kinds", "step": c, "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
         cx, cy = r["cell"]
@@ -1048,8 +1047,9 @@ def creatures_kinds(b: Build, w, log: list) -> str:
         text += "\n".join([
             f"- name: {c}", f"  # cell ({cx}, {cy}) {c}, spawn {r['base']} ({r['band']}) ref {ref}, the class on {same} of the 25 cells round it, "
             f"{n} spawn points within {round(KINDS_REACH_M)} m; the stand is {math.hypot(x - r['x'], y - r['y']) / U:.0f} m from it",
-            f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
-            *(["  - console: tgm"] if k == 0 else []),
+            f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
+            f"  # kinds (our name = the game's FULL name): {'; '.join(f'{a} = {b}' for a, b in list_forms(w, f'lvln.{c}.%'))}",
+            "  do:", *(["  - console: tgm"] if k == 0 else []),
             f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}", "  - wait: 8",
             "  - console: set gamehour to 13", "  - settle: {cap: 14, min: 3}", f"  - console: player.setpos x {x:.0f}",
             f"  - console: player.setpos y {y:.0f}",
