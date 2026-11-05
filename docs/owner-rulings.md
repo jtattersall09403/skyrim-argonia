@@ -24,6 +24,10 @@ added here the day they are made, with the date and the issue.
   around the blocks that work (2026-11-05).
 - An offline interactive 2D map of BM&V's world, linked to the mined place records, for the owner and agents
   (2026-11-05).
+- Decided by the agents under the owner's hand-over (2026-11-05, "gate nothing on me; full permission"): the four
+  free Creation Club files' self-starting quests are stopped like vanilla's; our plugin ships `Argonia.ini` to blank
+  the race-menu bound-hands pose, as Live Another Life does; the opening marker stands on Lilmoth's pier, a dock
+  arrival; the Creation Kit EULA was accepted with the owner's OK.
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

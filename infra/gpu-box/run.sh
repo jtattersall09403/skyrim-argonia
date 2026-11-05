@@ -110,8 +110,10 @@ Register-ScheduledTask -TaskName argonia-desktop-'"$j"' -Action $a -User Adminis
 Start-ScheduledTask argonia-desktop-'"$j"'
 for ($i=0; $i -lt '"${DESKTOP_WAIT:-240}"' -and -not (Test-Path C:\argonia\logs\desktop-'"$j"'.done); $i++) { Start-Sleep 1 }
 Get-Content $o -EA SilentlyContinue' ;;
-  get) scp "${SSH_OPTS[@]}" -r "Administrator@$(ip):$2" "$3" ;;
-  put) shift; dst=${!#}; scp "${SSH_OPTS[@]}" -r "${@:1:$#-1}" "Administrator@$(ip):$dst" ;;
+  # put and get refresh the busy flag too: a push of 1 GB parts by scp alone ran 15 min without a ps, and
+  # idle-stop.ps1 shut the machine down mid-push (2026-11-05 20:20).
+  get) ps 'New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null' >/dev/null || true; scp "${SSH_OPTS[@]}" -r "Administrator@$(ip):$2" "$3" ;;
+  put) shift; dst=${!#}; ps 'New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null' >/dev/null || true; scp "${SSH_OPTS[@]}" -r "${@:1:$#-1}" "Administrator@$(ip):$dst" ;;
   setup)
     stage="${2:-all}"
     ps 'New-Item -ItemType Directory -Force C:\argonia\infra | Out-Null'
