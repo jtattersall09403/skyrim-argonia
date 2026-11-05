@@ -38,6 +38,9 @@ def _panel(b: Build, w, log: list) -> None:
         log.append({"journey": "world-panel", "step": v["id"], "moved_m": f["moved_m"], "why": f["why"], "clear": f["clear"]})
         cx, cy, v["yaw_deg"] = gen.panel_clear(b, v["id"], f["x"], f["y"], v["yaw_deg"], log, w,
                                                   v.get("land_region"))
+        cx, cy, v["yaw_deg"], _ = gen.panel_aim(
+            b, v["id"], cx, cy, v["yaw_deg"], log,
+            want_water=(lambda px, py, h, v=v: v["view"] != "shore" or gen.water_share(b, px, py, h) >= 0.2))
         if (cx, cy) != (f["x"], f["y"]):
             f = {**f, "x": cx, "y": cy, "moved_m": round(math.hypot(cx - x, cy - y) / su.UNITS_PER_METRE, 1) or 0.1}
         if f["moved_m"]:

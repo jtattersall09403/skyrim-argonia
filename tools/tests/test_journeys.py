@@ -405,3 +405,23 @@ def test_claywater_look_derives_every_stop_off_its_subjects_bounds(monkeypatch):
         assert abs((h - want + 180) % 360 - 180) <= 1.0, name   # aimed at the subject's middle
     inside = steps[-1]
     assert inside["weather"] == "any" and {"settle": {"cap": 30, "min": 3}} in inside["do"]
+
+
+def test_panel_aim_horizon_rule_turns_then_moves():
+    from tools.journeys import gen
+    open_ = {"line": 0, "canopy": 0, "grass": 0, "upper": 0.05, "static": 0}
+    wall = {**open_, "upper": 0.62}
+    assert gen.panel_pass(open_) and not gen.panel_pass(wall)
+    assert not gen.panel_pass({**open_, "static": 1}) and gen.panel_pass({**open_, "grass": 40})
+    log: list = []
+    # a heading 45 deg round the marker's passes: the stand stays, the heading turns
+    sc = lambda x, y, h: open_ if round(h) == 45 else wall
+    assert gen.panel_aim(None, "t", 0.0, 0.0, 0.0, log, score=sc, wet=lambda *a: False, ok_stand=lambda *a: True) == (0.0, 0.0, 45.0, 0.0)
+    # nothing passes at the marker: the nearest stand 6 m east (x >= 6 m) that has a passing heading
+    u = gen.U
+    sc2 = lambda x, y, h: open_ if x >= 6 * u - 1 else wall
+    x, y, h, moved = gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=sc2, wet=lambda *a: False, ok_stand=lambda *a: True)
+    assert moved == 6.0 and x >= 6 * u - 1 and h == 90.0
+    # wet ground is never a stand: the aim stays and is flagged
+    x, y, h, moved = gen.panel_aim(None, "t", 0.0, 0.0, 90.0, log, score=sc2, wet=lambda px, py: px != 0, ok_stand=lambda *a: True)
+    assert moved == 0.0 and not log[-1]["clear"]

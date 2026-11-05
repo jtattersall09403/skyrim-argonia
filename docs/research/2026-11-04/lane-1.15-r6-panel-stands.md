@@ -1,0 +1,9 @@
+# Lane 1.15-r6-panel-stands: every world-panel vantage aimed by the clearance measure and a horizon rule
+
+- Evidence: r6-chain23 rootland-shore s0/s2/s4 (moss-trunk close-ups, no sky), coastal-lagoon-high s2 (ground close-up).
+- `gen.panel_aim` (after `panel_clear`, called from `__main__._panel`): per vantage, headings every 15 degrees round the marker's own, nearest first, scored by `panel_score`: clearance (plants on the eye line, canopy), tall grass (counted, preferred, not a gate: 30 to 60 vertices on every forest floor), `static_hits` (the placed-static rule) and `frustum_cover` upper (the frame above the aim) under 30 %.
+- Shore vantages keep water in view (near-field share 20 %) before the rule relaxes. No heading at the marker passes: the dry, standable stand within 30 m (3 m grid, nearest first) with a passing heading; the marker row moves with it (printed `stand moved m`).
+- Run: 24 panel vantages, 19 moved in the refresh; 12 of the 24 still read WARNING (no heading passes anywhere within 30 m): the deep-river-corridor, deep-sink-basin, flooded-forest-shore, interior-swamp, northern-transition-shore, rootland-shore, tidal-delta and their canopy over the eye; upper cover sums overlaps so dense forest reads hundreds of per cent.
+- Rootland-shore: best aim 20, line 10 canopy 19 (a wall of trunks and crowns within 30 m); needs a wider search or a ruling that these classes are read as forest.
+- Structure kept: two vantages per class, noon and dawn, `scan: 6`, records reach. A reader-named aim override that the move invalidated (sky-ab coastal-lagoon-shore-noon) was dropped by the existing 5 m rule.
+- Tests: `test_panel_aim_horizon_rule_turns_then_moves`. Open: widen PANEL_AIM_MOVE_M for the 12, or relax canopy for them.

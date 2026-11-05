@@ -9,7 +9,7 @@
 {
  "id": "sky-ab",
  "look": "world",
- "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: cell -51,35 r1", "records: cell 26,-17 r1"],
+ "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: cell -52,35 r1", "records: cell -51,35 r1", "records: cell 26,-17 r1", "records: cell 26,-16 r1"],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",
@@ -42,7 +42,7 @@
      }
     },
     {
-     "console": "player.setangle z 154"
+     "console": "player.setangle z 94"
     },
     {
      "console": "player.setangle x -12"
@@ -76,28 +76,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 107103
+     "gt": 106683
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107703
+     "lt": 107283
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66251
+     "gt": -65830
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65651
+     "lt": -65230
     },
     {
      "read": [
@@ -157,28 +157,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 107103
+     "gt": 106683
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107703
+     "lt": 107283
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66251
+     "gt": -65830
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65651
+     "lt": -65230
     },
     {
      "read": [
@@ -238,28 +238,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -209196
+     "gt": -210036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -208596
+     "lt": -209436
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 143316
+     "gt": 143946
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 143916
+     "lt": 144546
     },
     {
      "read": [
@@ -319,28 +319,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": -209196
+     "gt": -210036
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": -208596
+     "lt": -209436
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": 143316
+     "gt": 143946
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": 143916
+     "lt": 144546
     },
     {
      "read": [

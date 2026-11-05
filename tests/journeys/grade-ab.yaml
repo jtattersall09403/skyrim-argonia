@@ -45,7 +45,7 @@
      }
     },
     {
-     "console": "player.setangle z 154"
+     "console": "player.setangle z 94"
     },
     {
      "console": "player.setangle x 0"
@@ -82,28 +82,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 107103
+     "gt": 106683
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107703
+     "lt": 107283
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66251
+     "gt": -65830
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65651
+     "lt": -65230
     },
     {
      "read": [
@@ -132,7 +132,7 @@
      }
     },
     {
-     "console": "player.setangle z 154"
+     "console": "player.setangle z 94"
     },
     {
      "console": "player.setangle x 0"
@@ -169,28 +169,28 @@
       "player"
      ],
      "path": "pos.x",
-     "gt": 107103
+     "gt": 106683
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.x",
-     "lt": 107703
+     "lt": 107283
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "gt": -66251
+     "gt": -65830
     },
     {
      "read": [
       "player"
      ],
      "path": "pos.y",
-     "lt": -65651
+     "lt": -65230
     },
     {
      "read": [

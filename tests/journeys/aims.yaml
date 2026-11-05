@@ -1,8 +1,3 @@
 # Aim overrides (tools/journeys/aims.py): a reader-named heading (and pitch) for one journey step, kept while
 # the stand stays within 5 m of the x, y recorded. Written by `python3 -m tools.journeys ledger aim`.
-aims:
-- journey: sky-ab
-  step: coastal-lagoon-shore-noon
-  heading: 154.0
-  x: 107403
-  y: -65951
+aims: []
