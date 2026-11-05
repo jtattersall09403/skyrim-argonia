@@ -7,6 +7,9 @@
 #   are chosen by the spot placement score (decision 0008: whichever European region interrupts least at a similar
 #   price; Paris euw3-az2 scored 9 against London's 1 on 2026-11-05). The region's default VPC is used; machines.conf
 #   must name the machine in that region afterwards (run.sh reads it) and `cloudflare_gate.py worker` re-points the Worker.
+#   MARKET=ondemand   an on-demand machine instead of persistent spot (owner, 2026-11-05: g4dn.xlarge on demand, guaranteed)
+#   AMI=ami-...       launch from our own image of a set-up machine (Steam login, Skyrim, the Creation Kit, the stack)
+#                     instead of a fresh Windows Server; setup.ps1 is then not needed
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
 TYPE="${1:-g6.xlarge}"
@@ -41,7 +44,7 @@ fi
 
 SUBNET=$(aws ec2 describe-subnets --region $R --filters Name=vpc-id,Values=$VPC Name=availability-zone,Values="$AZ" \
   --query 'Subnets[0].SubnetId' --output text)
-AMI=$(aws ec2 describe-images --region $R --owners amazon \
+[ -n "${AMI:-}" ] || AMI=$(aws ec2 describe-images --region $R --owners amazon \
   --filters 'Name=name,Values=Windows_Server-2022-English-Full-Base-*' \
   --query 'sort_by(Images,&CreationDate)[-1].ImageId' --output text)
 
@@ -60,10 +63,12 @@ New-NetFirewallRule -Name sshd-build -DisplayName 'SSH from build VM' -Protocol 
 <persist>false</persist>
 EOF
 
+if [ "${MARKET:-spot}" = ondemand ]; then MARKET_OPTS=(); else
+  MARKET_OPTS=(--instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}'); fi
 launch() {
   aws ec2 run-instances --region $R --image-id "$AMI" --instance-type "$TYPE" --subnet-id "$SUBNET" \
     --security-group-ids "$SG" "$@" \
-    --instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}' \
+    "${MARKET_OPTS[@]}" --instance-initiated-shutdown-behavior stop \
     --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=150,VolumeType=gp3,DeleteOnTermination=true}' \
     --metadata-options HttpTokens=required \
     --user-data "file://$USERDATA" \
