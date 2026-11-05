@@ -27,7 +27,7 @@ _state: dict = {"key": None, "db": None, "mem": None, "dir": None}
 
 def build_key() -> str:
     """What the measures read, by content not mtime: the plant-bounds and grass tables, the water cells, the vegetation and
-    land shard sizes (a boot re-checkout touches every mtime) and MEASURE_VERSION."""
+    land shard bytes (sha256 of each; a boot re-checkout touches every mtime) and MEASURE_VERSION."""
     h = hashlib.sha1()
     for t in READS_DB:   # the tables the measures read, by content: other lanes' rebuilds of the rest move nothing
         h.update((db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl").read_bytes())   # the jsonl bytes, the path named by db.py (0030 §3)
@@ -35,7 +35,7 @@ def build_key() -> str:
     h.update((o / "water" / "cells.jsonl").read_bytes())
     for p in [*sorted((o / "terrain" / "vegetation").glob("cy*.jsonl.gz")), *sorted((o / "terrain" / "land").glob("cy*.jsonl.gz"))]:
         if p.is_file():
-            h.update(f"{p.name}:{p.stat().st_size};".encode())
+            h.update(p.name.encode() + b":" + hashlib.sha256(p.read_bytes()).digest())   # the gzip header's mtime is 0: equal content, equal bytes
     h.update(f"v{MEASURE_VERSION}".encode())
     return h.hexdigest()[:16]
 

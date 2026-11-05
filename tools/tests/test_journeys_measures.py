@@ -78,3 +78,22 @@ def test_two_writers_lose_nothing(store):
     assert all(p.exitcode == 0 for p in ps)
     n = sqlite3.connect(store / "k1.sqlite").execute("SELECT count(*) FROM m").fetchone()[0]
     assert n == 450
+
+
+def test_the_key_follows_shard_content_not_the_write(tmp_path, monkeypatch):
+    import os
+    veg = tmp_path / "out" / "terrain" / "vegetation"
+    veg.mkdir(parents=True)
+    (tmp_path / "out" / "terrain" / "land").mkdir(parents=True)
+    (tmp_path / "out" / "water").mkdir()
+    (tmp_path / "out" / "water" / "cells.jsonl").write_bytes(b"w")
+    monkeypatch.setattr(M, "ROOT", tmp_path)
+    shard = veg / "cy+000.jsonl.gz"
+    shard.write_bytes(b"abcdef")
+    a = M.build_key()
+    shard.unlink()
+    shard.write_bytes(b"abcdef")
+    os.utime(shard, (1, 1))
+    assert M.build_key() == a            # rewritten with identical bytes: unchanged
+    shard.write_bytes(b"abcdeg")         # one byte, same size
+    assert M.build_key() != a
