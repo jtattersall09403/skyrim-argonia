@@ -323,8 +323,6 @@
 {"place_id":"place.imperial-fringe.claywater-station","ord":16,"op":"place","uid":"wd-ford-barrel","asset":"vanilla:clutter/barrel02","at_x":319.0,"at_y":3028.5,"yaw":20.0,"settle":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":18,"op":"place","uid":"wd-road-post","asset":"htbm:here there be monsters - curse of cipactli/architecture/villages/kothringi/tamu_woodpole01","at_x":333.8,"at_y":3073.0,"yaw":115.0,"settle":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":22,"op":"place","uid":"canoe","asset":"canoe:actors/sfss/canoe/canoe1","at_x":331.0,"at_y":3006.5,"yaw":120.0,"settle":true,"beached":true}
-{"place_id":"place.imperial-fringe.claywater-station","ord":23,"op":"place","uid":"cleat1","asset":"bmv:sheogorad/dagon fel/cleat","at_x":332.6,"at_y":3003.4,"yaw":95.0,"settle":true,"beached":true}
-{"place_id":"place.imperial-fringe.claywater-station","ord":24,"op":"place","uid":"cleat2","asset":"bmv:sheogorad/dagon fel/cleat","at_x":333.6,"at_y":3004.3,"yaw":95.0,"settle":true,"beached":true}
 {"place_id":"place.imperial-fringe.claywater-station","ord":28,"op":"place","uid":"isy-lamp","asset":"vanilla:clutter/common/candlelanternwithcandle01","at_x":313.5,"at_y":3054.0,"yaw":0.0}
 {"place_id":"place.imperial-fringe.claywater-station","ord":31,"op":"place","uid":"isy-flame","asset":"vanilla:effects/fxfirewithembers01","at_x":313.5,"at_y":3054.0,"yaw":0.0}
 {"place_id":"place.imperial-fringe.claywater-station","ord":34,"op":"place","uid":"b1-wood","asset":"vanilla:clutter/firewood/firewoodpilemedium01","at_x":309.0,"at_y":3063.0,"yaw":32.0,"settle":true}

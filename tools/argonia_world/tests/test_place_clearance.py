@@ -27,3 +27,21 @@ def test_the_save_marker_is_first_and_dry(got):
     q = got[0]
     assert q["short"] == "quest-board" and q["kind"] == "dry" and q["ground"] - q["water"] >= places.DRY_M
     assert {d["short"] for d in got if d["kind"] == "dock"} >= {"land-dock1", "land-dock2", "poler-work", "signs"}
+
+
+def test_no_prop_stands_in_a_kept_creatures_pen(got):
+    """Lane 1.15-r6-claywater-pads-look (02-well-junction-s0: a post through the pen's guar): no prop within a kept
+    creature's sandbox radius + PEN_BODY_M of its pen marker. The rule fires on the round-6 pen (on the well)."""
+    assert not [d["short"] for d in got if d["kind"] == "in a pen"]
+    w = db.open()
+    for n in ("kept-guar-1-pen", "kept-guar-2-pen"):
+        w.update("build_ref", f"ref.claywater-station.{n}", x_m=324.5, y_m=3059.2)
+    refs = [r for r in w.rows("build_ref") if r.cell_id == "cell.claywater-station.exterior"]
+    assert {"well", "well-water", "mortar-tub"} <= {k.split(".")[-1] for k in places.in_pen(w, refs)}
+
+
+def test_every_unheighted_thing_sits_on_its_ground_or_its_water(got):
+    """Every placed thing with no z of its own stands within SUPPORT_TOL_M of its ground (dry) or at its water seat
+    (dock, boat): nothing afloat, no deck fitting off its deck (the Dagon Fel cleats beside the jetty, round 6)."""
+    assert not [d["short"] for d in got if d["kind"] == "afloat"]
+    assert not [d["short"] for d in got if "cleat" in d["short"]]

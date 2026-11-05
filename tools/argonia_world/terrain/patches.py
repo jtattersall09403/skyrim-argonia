@@ -137,7 +137,10 @@ class Patches:
                 np.minimum(win, p.level + np.maximum(0.0, d - p.radius_m) * BOWL_RISE, out=win)
 
     def paint(self, w: np.ndarray, r0: int, c0: int, index: dict[str, int]) -> None:
-        """Texture weights (rows, cols, n) of a window: a patch's ltex rules its disc."""
+        """Texture weights (rows, cols, n) of a window: a patch's ltex rules its disc and fades into the ground's own
+        material over its blend (smoothstep), as Skyrim.esm's yards fade their dirt over a few vertices (audit §4: a
+        0.02-0.98 run is 1 vertex at p50, 5 at p90). A binary disc on the 1.83 m vertex grid read as a square slab with
+        hard straight edges (Claywater's well, round 6; lane 1.15-r6-claywater-pads-look)."""
         for p in self.items:
             if not p.ltex:
                 continue
@@ -145,11 +148,17 @@ class Patches:
             if got is None:
                 continue
             sl, d = got
-            m = d <= p.radius_m
+            fade = max(p.blend_m, 2 * su.PROVINCE_SAMPLE_M)
+            t = np.clip((d - p.radius_m) / fade, 0.0, 1.0)
+            a = 1.0 - t * t * (3 - 2 * t)  # 1 inside the disc, 0 beyond its blend
+            m = a > 0.0
             if m.any():
                 win = w[sl]
-                win[m] = 0.0
-                win[m, index[p.ltex]] = 1.0
+                k = index[p.ltex]
+                am = a[m].astype(win.dtype)[:, None]
+                v = win[m] * (1.0 - am)
+                v[:, k] += am[:, 0]
+                win[m] = v
 
     def key(self, r0: int, r1: int) -> bytes:
         """The patches reaching grid rows [r0, r1), for the LAND row reuse key."""

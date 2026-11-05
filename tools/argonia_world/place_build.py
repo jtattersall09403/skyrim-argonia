@@ -147,8 +147,10 @@ class _Ctx:
 # (Skyrim.esm's DockStRSol01/02 refs, the kit of our DockStRent02: origin over their cell's XCLW p50 0.76-0.88 m,
 # n 5; lane 1.15-r4-claywater); a boat floats at the water; each on the ground where that is higher.
 DOCK_DECK_M = 0.85
-WATER_SEATED = (("meshes/architecture/docks/", DOCK_DECK_M), ("meshes/sheogorad/dagon fel/cleat.nif", DOCK_DECK_M),
-                ("meshes/argonia/mudhuts/tamu_wooddock", DOCK_DECK_M), ("meshes/yamadori/ferries/", 0.0),
+# No fitting is deck-seated on its own: BM&V's Dagon Fel cleat stood at the deck height beside the jetty, its plank
+# base afloat and its metal white (metalironrusty.dds is in no laid mod); Claywater's two were removed (lane
+# 1.15-r6-claywater-pads-look).
+WATER_SEATED = (("meshes/architecture/docks/", DOCK_DECK_M), ("meshes/argonia/mudhuts/tamu_wooddock", DOCK_DECK_M), ("meshes/yamadori/ferries/", 0.0),
                 ("meshes/actors/sfss/canoe/", 0.0))
 
 

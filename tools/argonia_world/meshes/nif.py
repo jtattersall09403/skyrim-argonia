@@ -86,6 +86,7 @@ class Shape:
         ne, = struct.unpack_from("<I", b, 4)
         q = 8 + 4 * ne + 4 + 4 + 12 + 36 + 4 + 4 + 16  # extra data, controller, flags, transform, collision, sphere
         _skin, self.shader, _alpha = struct.unpack_from("<iii", b, q)
+        self._shader_at = q + 4
         q += 12
         self.desc, = struct.unpack_from("<Q", b, q)
         self.ntri, self.nv = struct.unpack_from("<HH", b, q + 8)
@@ -102,6 +103,12 @@ class Shape:
 
     def positions(self) -> np.ndarray:
         return self._view(0, np.float32, 3).astype(float)  # SSE: full-precision Vector3 then bitangent X
+
+    def set_shader(self, block: int) -> None:
+        """Draw this shape with another shape's BSLightingShaderProperty (its flags and texture set)."""
+        struct.pack_into("<i", self.nif.blocks[self.i], self._shader_at, block)
+        self.shader = block
+        self.prop = Lighting(self.nif, block)
 
     def has_uv(self) -> bool:
         return bool(self.attrs & 0x2) and self.nv > 0

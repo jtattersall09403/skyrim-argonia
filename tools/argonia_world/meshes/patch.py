@@ -7,7 +7,7 @@ edits as data (data/mesh-patches.yaml: per mesh and shape, the measured before, 
 applies them to the source mod's mesh on the player's machine side of the build (the deploy's lay step), writing
 copies into ours\\derived\\argonia-meshes, laid over every mod. Nothing patched is ever committed.
 
-Ops (per shape): clear_flags / set_flags [names of nif.F1/F2]; emissive {rgb, mult}; texture_slot {slot: path};
+Ops (per shape): shader_from <shape> (draw with that shape's shader and texture set); clear_flags / set_flags [names of nif.F1/F2]; emissive {rgb, mult}; texture_slot {slot: path};
 vertex_colour {lum_to: n | sat_to: s} (the drawn diffuse x vertex colour; the shared texture is never touched);
 uv_scale {axis: u|v, factor: <number> | fit} (fit: per UV island, the factor from FIT_STEPS that minimises the
 island's median stretch; the island is scaled about its own minimum so the half floats stay small).
@@ -168,6 +168,8 @@ def apply(n: N.Nif, entry: dict) -> list[str]:
             if now.get(k) != v:
                 bad.append(f"shape {se['shape']} {k}: table {v}, bytes {now.get(k)}")
         ops = se.get("ops") or {}
+        if "shader_from" in ops:  # a shape sharing a texture set it should not (a retexture's atlas strip)
+            sh.set_shader(shapes[int(ops["shader_from"])].shader)
         p = sh.prop
         if "clear_flags" in ops or "set_flags" in ops:
             f1, f2 = p.flags

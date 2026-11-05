@@ -52,6 +52,19 @@ def test_pad_paints_its_disc():
     assert w[30, 30, 2] == 1.0 and w[30, 30, 0] == 0.0 and w[0, 0, 0] == 1.0
 
 
+def test_pad_paint_fades_over_its_blend():
+    """Lane 1.15-r6-claywater-pads-look: a binary disc read as a hard-edged slab; the paint eases out over blend_m
+    (partial weight on a radius out to blend_m), and the weights still sum to 1."""
+    g = _ground()
+    p = patches.Patches.from_rows(_rows(), g, 0, lambda x, y: None)
+    w = np.zeros((60, 60, 3), np.float32)
+    w[..., 0] = 1.0
+    p.paint(w, 0, 0, {"LDirtPath01": 2})
+    line = w[30, 30:, 2]
+    assert ((line > 0.02) & (line < 0.98)).sum() >= 1 and line[int((4.0 + max(3.0, 2 * S)) / S) + 1:].max() == 0.0
+    assert np.all(np.diff(line) <= 1e-6) and np.allclose(w.sum(axis=2), 1.0)
+
+
 def test_old_key_only_rows_are_never_applied():
     p = patches.Patches.from_rows([{"id": "patch.bed-cut.x", "kind": None}], _ground(), 0, lambda x, y: None)
     assert len(p) == 0

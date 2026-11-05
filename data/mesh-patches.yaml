@@ -887,3 +887,55 @@ meshes:
       stretch: 7.0
       lum: 62.3
       sat: 0.2
+- mesh: meshes/here there be monsters - curse of cipactli/architecture/villages/argonian/orcawningfull01.nif
+  mod: htbm-cipactli
+  forms:
+  - ARG_STAT_here_there_be_monsters_curse_of_cipactli_architecture_villages_argonian_orcawningfull01
+  lane: 1.15-r6-claywater-pads-look measured and patched
+  shapes:
+  - shape: 7
+    name: OrcAwningFull01:0
+    kind: other
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      stretch: 1.1
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: the roof; Own_Emit with a black emissive (no glow, cleared for the bar)
+  - shape: 10
+    name: OrcAwningFull01:1
+    kind: other
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      stretch: 1.2
+    ops:
+      shader_from: 13
+    reason: 'the zebra post (Claywater''s stable, round-6 02-well-junction-s3): the collar at 2.68-3.10 m shares the roof''s
+      texture set and samples its strip v 0.70-0.87, which on Skyrim.esm''s orcawningfull01 is PlatedRoof''s edge; HTBM put
+      wicker03 in that set, so the collar draws magnified wicker strands as stripes; it takes the posts'' woodrough08'
+  - shape: 13
+    name: OrcAwningFull01:3
+    kind: other
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Vertex_Colors
+      stretch: 1.5
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: the posts and beams; Own_Emit with a black emissive (no glow, cleared for the bar)
