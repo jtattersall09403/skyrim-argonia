@@ -6553,15 +6553,15 @@ NavigationMeshes:
     - Mesh: 60919D:ArgoniaWorld.esm
       TriangleIndex: 18
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 682
+      TriangleIndex: 677
     - Mesh: 60919D:ArgoniaWorld.esm
       TriangleIndex: 102
     - Mesh: 60919D:ArgoniaWorld.esm
       TriangleIndex: 103
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 684
+      TriangleIndex: 679
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 686
+      TriangleIndex: 681
     - Mesh: 609096:ArgoniaWorld.esm
       TriangleIndex: 17
     - Mesh: 608F91:ArgoniaWorld.esm
@@ -6579,9 +6579,9 @@ NavigationMeshes:
     - Mesh: 609096:ArgoniaWorld.esm
       TriangleIndex: 189
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 681
+      TriangleIndex: 676
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 685
+      TriangleIndex: 680
     - Mesh: 60919D:ArgoniaWorld.esm
       TriangleIndex: 104
     - Mesh: 60919D:ArgoniaWorld.esm

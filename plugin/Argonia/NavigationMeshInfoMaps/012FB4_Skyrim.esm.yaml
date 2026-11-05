@@ -18,8 +18,8 @@ MapInfos:
     ParentWorldspace: 000800:ArgoniaWorld.esm
     ParentWorldspaceCoord: 11, -57
 - NavigationMesh: 60919D:ArgoniaWorld.esm
-  Point: -231293.22, 51370.156, 4774.8154
-  PreferredMergesFlag: 1030948997
+  Point: -231300.45, 51366.973, 4775.5024
+  PreferredMergesFlag: 1031065087
   MergedTo:
   - 609097:ArgoniaWorld.esm
   - 60919C:ArgoniaWorld.esm

@@ -1935,9 +1935,9 @@ NavigationMeshes:
       - Found
     EdgeLinks:
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 624
+      TriangleIndex: 619
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 627
+      TriangleIndex: 622
     - Mesh: 6093A9:ArgoniaWorld.esm
       TriangleIndex: 16
     - Mesh: 6092A2:ArgoniaWorld.esm
@@ -1965,17 +1965,17 @@ NavigationMeshes:
     - Mesh: 6093A9:ArgoniaWorld.esm
       TriangleIndex: 182
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 672
+      TriangleIndex: 667
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 673
+      TriangleIndex: 668
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 675
+      TriangleIndex: 670
     - Mesh: 6092A4:ArgoniaWorld.esm
       TriangleIndex: 22
     - Mesh: 6092A4:ArgoniaWorld.esm
       TriangleIndex: 163
     - Mesh: 60919D:ArgoniaWorld.esm
-      TriangleIndex: 689
+      TriangleIndex: 684
     - Mesh: 6092A2:ArgoniaWorld.esm
       TriangleIndex: 14
     - Mesh: 6093A9:ArgoniaWorld.esm
