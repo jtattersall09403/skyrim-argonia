@@ -6,5 +6,31 @@
   "03A57B:King of the Murkmire.esp": 200.7,
   "03A582:King of the Murkmire.esp": 266.8,
   "03A583:King of the Murkmire.esp": 377.9
+ },
+ "z_u": {
+  "000041:ArgonianLakeHouse.esl": [
+   -60.2,
+   153.7
+  ],
+  "03A57A:King of the Murkmire.esp": [
+   -50.0,
+   208.2
+  ],
+  "03A57B:King of the Murkmire.esp": [
+   -10.9,
+   211.3
+  ],
+  "03A582:King of the Murkmire.esp": [
+   -61.6,
+   377.9
+  ],
+  "03A583:King of the Murkmire.esp": [
+   -185.3,
+   438.0
+  ],
+  "11DC5A:Black Marsh.esm": [
+   6.2,
+   55.5
+  ]
  }
 }

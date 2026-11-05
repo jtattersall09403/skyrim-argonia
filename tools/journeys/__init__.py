@@ -292,6 +292,44 @@ def clearance(b: Build, eye: tuple, heading: float, line_m: float = CLEAR_LINE_M
     return line, canopy
 
 
+TALL_REACH_M, TALL_OFF_M, TALL_M = 15.0, 4.0, 1.0   # the river stand's near field: nothing over 1 m within 4 m of the line to 15 m
+
+
+def tall_near(b: Build, eye: tuple, heading: float, reach_m: float = TALL_REACH_M, off_m: float = TALL_OFF_M,
+              tall_m: float = TALL_M) -> int:
+    """The plants whose volume (canopy-widened radius) comes within off_m of the eye line's footprint out to reach_m
+    and whose top stands more than tall_m over the ground at its pivot (lane 1.15-r6-water-stands-5: the river stand's
+    s0 looked through a palm's fronds 0.5 m off the line)."""
+    u = su.UNITS_PER_METRE
+    ex, ey = eye[0], eye[1]
+    a = math.radians(heading)
+    dx, dy = math.sin(a) * reach_m * u, math.cos(a) * reach_m * u
+    L2 = dx * dx + dy * dy
+    n = 0
+    for f in b.foliage_near(ex + dx / 2, ey + dy / 2, reach_m * u / 2 + off_m * u):
+        fx, fy, fz, fr, fh = f[:5]
+        top = fz + (f[6] if len(f) > 6 else 0.0) + fh
+        t = min(max(((fx - ex) * dx + (fy - ey) * dy) / L2, 0.0), 1.0)
+        if math.hypot(ex + t * dx - fx, ey + t * dy - fy) - fr < off_m * u and top - b.ground_u(fx, fy) > tall_m * u:
+            n += 1
+    return n
+
+
+def far_bank_m(b: Build, x: float, y: float, heading: float, limit_m: float = 60.0, step_m: float = 0.5) -> float | None:
+    """The footprint along `heading` from (x, y): the distance to the first dry sample past the water (the far bank),
+    or None when the line meets no water, or no far bank, within limit_m."""
+    u = su.UNITS_PER_METRE
+    sx, sy = math.sin(math.radians(heading)), math.cos(math.radians(heading))
+    seen = False
+    for k in range(1, int(limit_m / step_m) + 1):
+        w = b.wet(x + sx * k * step_m * u, y + sy * k * step_m * u)
+        if w:
+            seen = True
+        elif seen:
+            return k * step_m
+    return None
+
+
 @memo("ground_slope_deg", reach=lambda x, y: around(x, y, 4.0))
 def ground_slope_deg(b: Build, x: float, y: float) -> float:
     """The ground's steepest slope at a point, degrees, over a LAND quad either side (VERTEX_SPACING_UNITS)."""

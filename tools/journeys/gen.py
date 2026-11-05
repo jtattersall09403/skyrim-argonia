@@ -10,7 +10,7 @@ import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import (FRAME_MIN_SHARE, NEAR_COVER_MAX, UPPER_COVER_MAX, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits,
+from tools.journeys import (FRAME_MIN_SHARE, NEAR_COVER_MAX, UPPER_COVER_MAX, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits, far_bank_m, tall_near,
                             TYPE_MIN_SHARE, cover_ok, frame_floor, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
@@ -527,10 +527,41 @@ FIT_COARSE_M, FIT_FINE_M = 25.0, 2.5   # 25 m to FIT_FAR_M, then 2.5 m within 25
 
 
 FLOW_AIM_DEG = 30.0   # the river stand's aim within this of the reach's flow (downstream) heading
+STREAM_BANK_M = 25.0     # the stream stand: the far bank on the aim's footprint within this (both banks in frame)
+NARROW_REACH_M = 200.0   # the stream's subject: the narrowest point of its reach within this of the shore cell's point
+
+
+def _reach_width_m(b: Build, pts: list, i: int, limit_m: float = 100.0) -> float | None:
+    """The water's width across the reach at centreline point i (the footprint, both ways along the normal), or None
+    where the point is dry or a side meets no bank within limit_m."""
+    j, k = min(i + 1, len(pts) - 1), max(i - 1, 0)
+    tx, ty = pts[j][0] - pts[k][0], pts[j][1] - pts[k][1]
+    n = math.hypot(tx, ty) or 1.0
+    nx, ny = -ty / n, tx / n
+    px, py = pts[i][0], pts[i][1]
+    if not b.wet(px, py):
+        return None
+    w = 0.0
+    for s in (1, -1):
+        for q in range(1, int(limit_m / 0.5) + 1):
+            if not b.wet(px + s * nx * q * 0.5 * U, py + s * ny * q * 0.5 * U):
+                w += q * 0.5
+                break
+        else:
+            return None
+    return w
+
+
+def _narrowest(b: Build, pts: list, mid: int, reach_m: float = NARROW_REACH_M) -> int:
+    """The index of the reach's narrowest wet point within reach_m of point mid (mid when none measures)."""
+    ws = [(w, i) for i in range(len(pts))
+          if math.hypot(pts[i][0] - pts[mid][0], pts[i][1] - pts[mid][1]) <= reach_m * U
+          and (w := _reach_width_m(b, pts, i)) is not None]
+    return min(ws)[1] if ws else mid
 
 
 def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, strict: bool = False,
-         types: dict | None = None, want=(), flow: float | None = None):
+         types: dict | None = None, want=(), flow: float | None = None, tall: bool = False, bank_m: float | None = None):
     """The authored stand `f` aimed at the body's centre, or the nearest stand that is dry footing, whose aim point is
     water, whose clearance reads 0/0/0 (placed plants on the eye line, canopy over the eye, tall landscape grass near the
     eye and under the first 20 m of the line) and whose frame share (the lower half of the still, 0-60 m, +-30 deg, from
@@ -539,7 +570,9 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
     grid round the best, which is kept (meeting the share first, then fewest hits) and named in SHORT_OF_FRAME when
     short. Lane 1.15-r6-water-stands-3 adds the frame, not only the line: the frustum cover (cover_ok: near-frame plant
     cover, plant bounds by the eye, the sea's upper frame), the lower frame's wet rays carrying the stop's own type
-    (TYPE_MIN_SHARE of them, from `types`), and for `flow` (a heading) the aim within FLOW_AIM_DEG of it.
+    (TYPE_MIN_SHARE of them, from `types`), and for `flow` (a heading) the aim within FLOW_AIM_DEG of it. Lane
+    1.15-r6-water-stands-5: `tall` counts every plant over 1 m within 4 m of the line to 15 m as a hit (tall_near), and
+    `bank_m` one more hit when the aim's footprint meets no far bank within it (far_bank_m).
     Returns (x, y, subject, share, key)."""
     w_ = None if sea else _wet_near(b, centre)
 
@@ -565,6 +598,10 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         if strict and cl:
             return None
         cl += grass_hits(b, eye, h, first=strict)
+        if tall:
+            cl += tall_near(b, eye, h)
+        if bank_m is not None and ((fb := far_bank_m(b, x, y, h)) is None or fb > bank_m):
+            cl += 1
         if strict and cl:
             return None
         if flow is not None and abs((h - flow + 180) % 360 - 180) > FLOW_AIM_DEG:
@@ -626,10 +663,16 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
     if name in ("river", "stream"):
         pts = line[reach_of[(cx, cy)]]
         mid = min(range(len(pts) - 1), key=lambda i: math.hypot(pts[i][0] - ox - su.CELL_UNITS / 2, pts[i][1] - oy - su.CELL_UNITS / 2))
-        ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
-        tx, ty = pts[ahead][0] - pts[mid][0], pts[ahead][1] - pts[mid][1]
+        if name == "stream":   # the stream: across its narrowest point within NARROW_REACH_M, both banks in frame
+            mid = min(_narrowest(b, pts, mid), len(pts) - 2)
+            ahead = mid
+            j = mid + 1
+        else:
+            ahead = min(len(pts) - 1, mid + int(DOWNSTREAM_M / 5.5))
+            j = ahead
+        tx, ty = pts[j][0] - pts[mid][0], pts[j][1] - pts[mid][1]
         n = math.hypot(tx, ty) or 1.0
-        if name in ("river", "stream"):   # the aim along the channel; the reach's centreline runs source to end (cell_types): downstream is along it
+        if name == "river":   # the aim along the channel; the reach's centreline runs source to end (cell_types): downstream is along it
             flow = math.degrees(math.atan2(tx, ty)) % 360
         for side in (1, -1):  # the bank to the reach's left, then right, standing back upstream of the subject
             nx, ny = -ty / n * side, tx / n * side
@@ -652,7 +695,8 @@ def _stop_at(b: Build, name: str, cx: int, cy: int, dx: int, dy: int, level: dic
                     sh[1] - dy * (SEA_OUT_M if name == "sea" else REACH_CELLS / 2 * su.CELL_UNITS / U) * U, z)
     if not f:
         raise ValueError(f"water-types: {name}: no dry stand by cell ({cx},{cy})")
-    return _fit(b, name, f, subj, name == "sea", log, strict, types, want, flow)
+    return _fit(b, name, f, subj, name == "sea", log, strict, types, want, flow, tall=name == "river",
+                bank_m=STREAM_BANK_M if name == "stream" else None)
 
 
 def water_types(b: Build, w, log: list) -> str:

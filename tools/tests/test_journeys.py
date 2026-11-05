@@ -189,6 +189,42 @@ def test_clearance_counts_fronds_on_the_line_and_canopy_over_the_eye():
     assert J.clearance(Flat([low, far, high]), eye, 0.0) == (0, 0)
 
 
+def test_frond_clearance_rejects_a_river_stand_with_a_palm_3_m_off_the_aim():
+    """tall_near: a palm (fronds 2 m round, 4 m tall) 3 m off the aim line 8 m out counts; a fern under 1 m, a palm 7 m
+    off and one 25 m out do not (lane 1.15-r6-water-stands-5)."""
+    x, y = at(60, 60)
+    b0 = Flat()
+    eye = J.eye_of(b0, x, y)
+    g = b0.ground_u(x, y)
+    palm = (x + 3 * U, y + 8 * U, g, 2 * U, 4 * U, True)
+    fern = (x + 1 * U, y + 5 * U, g, 1 * U, 0.8 * U, True)
+    off = (x + 7 * U, y + 8 * U, g, 2 * U, 4 * U, True)
+    far = (x, y + 25 * U, g, 2 * U, 4 * U, True)
+    assert J.tall_near(Flat([palm, fern, off, far]), eye, 0.0) == 1
+    assert J.tall_near(Flat([fern, off, far]), eye, 0.0) == 0
+
+
+def test_stream_far_bank_and_reach_width_bound():
+    """far_bank_m: the footprint's far bank along the aim; gen._reach_width_m: the water's width across a reach point;
+    gen._narrowest: the narrowest wet point within its reach."""
+    from tools.journeys import gen
+    x, y = at(60, 60)
+    b = Flat()
+    band = lambda w: (lambda px, py: y + 10 * U <= py <= y + (10 + w) * U)   # noqa: E731  a channel crossing north
+    b.wet = band(8)
+    assert J.far_bank_m(b, x, y, 0.0) == 18.5 and J.far_bank_m(b, x, y, 0.0) <= gen.STREAM_BANK_M
+    b.wet = band(30)
+    assert J.far_bank_m(b, x, y, 0.0) > gen.STREAM_BANK_M
+    b.wet = lambda px, py: False
+    assert J.far_bank_m(b, x, y, 0.0) is None
+    # a reach running east whose water narrows from 20 m to 6 m wide at its fourth point
+    pts = [(x + i * 20 * U, y) for i in range(8)]
+    half = {i: (3 if i == 3 else 10) for i in range(8)}
+    b.wet = lambda px, py: abs(py - y) < half[min(range(8), key=lambda i: abs(pts[i][0] - px))] * U
+    assert gen._reach_width_m(b, pts, 0) == 21.0 and gen._reach_width_m(b, pts, 3) == 7.0   # to the first dry 0.5 m sample
+    assert gen._narrowest(b, pts, 0) == 3
+
+
 def test_sky_ab_bounds_follow_the_markers_and_a_moved_marker_is_stale():
     from tools.journeys import gen
 
@@ -343,8 +379,10 @@ def test_a_canopy_radius_widens_a_plant_whose_fronds_hang_past_its_bounds(tmp_pa
     wide = canopy.reach(shapes, {"a": 74.4, "b": 120.0})
     assert wide["a"] == (74.4, 129.0, True, 0.0) and wide["b"] == shapes["b"] and wide["c"] == shapes["c"]
     t = tmp_path / "t.json"
-    t.write_text('{"radius_u": {"a": 74.4}}')
-    assert canopy.load(t) == {"a": 74.4} and canopy.load(tmp_path / "none.json") == {}
+    t.write_text('{"radius_u": {"a": 74.4}, "z_u": {"c": [-185.0, 438.0]}}')
+    assert canopy.load(t) == {"a": (74.4, None, None), "c": (0.0, -185.0, 438.0)} and canopy.load(tmp_path / "none.json") == {}
+    tall = canopy.reach(shapes, canopy.load(t))   # fronds standing past the OBND's top: the span grows to the mesh's
+    assert tall["c"] == (50.0, 623.0, True, -185.0) and tall["a"] == (74.4, 129.0, True, 0.0)
     assert "03A57A:King of the Murkmire.esp" in canopy.load()    # the measured table is in data/
 
 

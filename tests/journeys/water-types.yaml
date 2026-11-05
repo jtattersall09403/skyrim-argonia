@@ -90,19 +90,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: river
   scan: 6
-  # river-se water from cell (15,-8), level 0.8 m
-  # subject: 69073 -29754 60
+  # river-se water from cell (18,-8), level 0.8 m
+  # subject: 79262 -28136 60
   do:
   - hud: off
-  - console: {line: cow ARG_Province 15 -8, settle: 60}
+  - console: {line: cow ARG_Province 18 -7, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 65000
-  - console: player.setpos y -30046
-  - console: player.setpos z 126
+  - console: player.setpos x 74927
+  - console: player.setpos y -26263
+  - console: player.setpos z 118
   - wait: 6
-  - console: player.setangle z 86
-  - console: player.setangle x 3
+  - console: player.setangle z 113
+  - console: player.setangle x 2
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -115,18 +115,18 @@ steps:
 - name: stream
   scan: 6
   # creek-se water from cell (-44,-8), level 117.5 m
-  # subject: -172404 -30951 7429
+  # subject: -168028 -32072 6474
   do:
   - hud: off
-  - console: {line: cow ARG_Province -44 -7, settle: 60}
+  - console: {line: cow ARG_Province -42 -8, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -178131
-  - console: player.setpos y -26983
-  - console: player.setpos z 8317
+  - console: player.setpos x -169553
+  - console: player.setpos y -31515
+  - console: player.setpos z 6526
   - wait: 6
-  - console: player.setangle z 125
-  - console: player.setangle x 8
+  - console: player.setangle z 110
+  - console: player.setangle x 6
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -138,19 +138,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: tarn
   scan: 6
-  # cold water from cell (-55,7), level 68.0 m
-  # subject: -223232 48365 4763
+  # cold water from cell (-55,13), level 68.0 m
+  # subject: -223232 40593 4763
   do:
   - hud: off
-  - console: {line: cow ARG_Province -54 8, settle: 60}
+  - console: {line: cow ARG_Province -55 20, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -219941
-  - console: player.setpos y 35377
-  - console: player.setpos z 4817
+  - console: player.setpos x -224102
+  - console: player.setpos y 83313
+  - console: player.setpos z 13776
   - wait: 6
-  - console: player.setangle z 346
-  - console: player.setangle x 1
+  - console: player.setangle z 179
+  - console: player.setangle x 12
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
