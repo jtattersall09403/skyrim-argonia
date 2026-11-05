@@ -161,3 +161,18 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
   - the channel keeps its bed and water.
 - L2 test `test_bridge_whose_ends_differ_by_4_m_ramps_the_lower_end`: deck = the higher end, both seats green on the census's bilinear axis, under-deck clear by 1 m, the lower road eased within GRADE_MAX.
 - Carried by the next land pass.
+
+## Round 10: why the real seats miss (03:2x pass; gideon end 0 0.43 m, end 1 2.94 m, glenbridge end 1 0.51 m)
+- Bilinear ground along gideon-step end 1's seat axis, deck 71.86 m. t is metres from end 1; negative is under the deck.
+  - t = -6..0: 55.5, 56.6, 58.1, 60.6, 64.4, 67.3, 69.6
+  - t = 1..4: 71.86, 71.86, 71.86, 71.88
+  - t = 5..8: 72.1, 72.4, 72.5, 72.3
+- The held samples read the deck exactly: the nearest samples at t = -2.3..3.2 are all 71.86.
+- The census's -0.3 m point reads 68.9 m. The census axis is the seat's axis, and the deck file's ends match infra's to 0.01 m.
+- The 2.94 m comes from the step's channel beside the axis, not under it. The 9 x 9 samples around end 1 show the channel's two rows (bed 55.4 m and 57.8 m, roles 1 and 2) running east-west along the cell line. The deck runs at heading 75 deg, nearly along the channel, and end 1 lies 0.86 of a sample north of the bed row. The bilinear ground at the deck end mixes the bed in at 18 % weight.
+- No later pass overwrote the seat: not the water field, the road pass, the sites, or the channel bed. The seat cannot hold that sample without filling the step's channel (the step chain), which the rule forbids.
+- glenbridge end 1 (deck 18.12 m) reads 17.71 m at t = -2 and 18.12 m from t = -1. The 0.51 m is the same lateral mixing beside its channel.
+- Not fixed in code. A synthetic fixture built from the axis profile alone passes under both the old and the new seat rules, so it cannot prove the fix. The fault is the crossing's geometry: the road meets a cell-line step nearly parallel to it, so a deck along the road lies along the channel. Proposed fixes, for the bridges lane or the route:
+  (a) the deck's axis crosses the step's edge at right angles, with the road eased into the turn over the seat's 4 m and the ease; or
+  (b) the road re-routed to cross the cell line squarely; or
+  (c) the census's seat bar reads the nearest held sample at the deck end, not the bilinear ground, accepting a 0.3-0.9 sample bank edge beside the channel under a 0.3 m seat.
