@@ -230,3 +230,11 @@ def test_sync_yaml_follows_the_trees_not_a_shared_stage_key(tmp_path):
     (dst / "W" / "RecordData.yaml").write_text("Position: 1, 2, 4631.53\n")  # another tree's build moved out/ on
     assert pipeline.sync_yaml(src, dst)                      # stale: brought level whatever any stage key says
     assert (dst / "W" / "RecordData.yaml").read_text() == "Position: 1, 2, 4631.89\n"
+
+
+def test_terrain_stamp_walk_misses_the_weather_tables_and_reaches_the_shells():
+    """Lane storm-grey: a weather colour change must not re-key the land pass (terrain imports regions.shells, not api)."""
+    walked = {str(f.relative_to(pipeline.ROOT)) for f in pipeline.walk_imports(pipeline.STAGE_ENTRY["terrain"])}
+    assert "tools/argonia_world/regions/shells.py" in walked
+    assert "tools/argonia_world/regions/api.py" not in walked
+    assert "tools/argonia_world/regions/classify.py" not in walked

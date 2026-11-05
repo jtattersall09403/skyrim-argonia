@@ -67,7 +67,7 @@ def _base_order(base: list[str], extra: list[str]) -> list[str]:
 def document(cell_range: tuple[int, int, int, int], land_dir: Path, world=None) -> dict:
     """The WRLD intermediate, the REGN shells and the cells' region runs (XCLR; 2.W3's regions/api.py)."""
     from tools.argonia_world import db
-    from tools.argonia_world.regions import api as regions
+    from tools.argonia_world.regions import shells as regions
     from tools.argonia_world.creatures import records as creatures
     from tools.argonia_world.vegetation import rocks
     from tools.argonia_world.vegetation.mesh_textures import ALT_DROPPED
