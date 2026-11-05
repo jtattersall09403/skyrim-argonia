@@ -135,9 +135,9 @@ P = {}  # weather -> slot -> (sunrise, day, sunset, night)
 P["clear-dry"] = {
     "skyUpper": ("577FAC", "4B86C8", "676E9E", "0C1A1F"),
     "skyLower": ("C99A6A", "91B5CD", "C38057", "1E2723"),
-    "horizon": ("E4B174", "CDD2A5", "DF8E4B", "2F3029"),
-    "fogNear": ("9F8664", "8D9A7F", "AC805D", "202E21"),
-    "fogFar": ("A08667", "A7BABB", "AF8060", "2C342C"),
+    "horizon": ("E4B174", "C7D6CB", "DF8E4B", "2F3029"),
+    "fogNear": ("9F8664", "7B9498", "AC805D", "202E21"),
+    "fogFar": ("8C755B", "A7BABB", "AF8060", "2C342C"),
     "ambient": ("6C6351", "7A8367", "685745", "1A281F"),
     "unknown": ("655A4E", "717664", "614C42", "181E23"),
     "sunlight": ("F4BA73", "F9ECC1", "F09C53", "465643"),
@@ -159,7 +159,7 @@ P["monsoon-overcast"] = {
     "skyLower": ("8D8880", "AFAFA6", "8E7B71", "1E1F1A"),
     "horizon": ("A99B8A", "B9BCAC", "A58C75", "242622"),
     "fogNear": ("898A7B", "8E9888", "867F73", "162321"),
-    "fogFar": ("8D8B7B", "9FA795", "5C686F", "242D23"),  # sunset: template slate (was olive)
+    "fogFar": ("807E6F", "9FA795", "5C686F", "242D23"),  # sunrise 807E6F and sunset slate, both as the DB (fog-yellow lane)
     "ambient": ("5E6153", "788573", "5C594F", "142019"),
     "unknown": ("59564E", "6E756F", "5A4C4C", "17171A"),
     "sunlight": ("AF9C81", "C8CAAF", "AB8C75", "514F4D"),
@@ -247,7 +247,7 @@ P["montane-haze"] = {
     "skyLower": ("A9A49A", "A6BABA", "A89486", "192023"),
     "horizon": ("C1B69F", "BDC4BE", "BDA28D", "212727"),
     "fogNear": ("868783", "8B9890", "8E9692", "182724"),
-    "fogFar": ("818989", "A3AFAB", "838A8D", "213027"),
+    "fogFar": ("818989", "8A9490", "838A8D", "213027"),
     "ambient": ("687161", "78897B", "666559", "15221A"),
     "unknown": ("67615C", "717A74", "615854", "141A19"),
     "sunlight": ("D8BE93", "EBEACE", "D4AA83", "415743"),
@@ -267,9 +267,9 @@ P["montane-haze"] = {
 P["tannin-haze"] = {
     "skyUpper": ("777A8A", "7992A9", "7B6E7C", "101A1B"),
     "skyLower": ("C4A070", "B6AD8F", "C08965", "232123"),
-    "horizon": ("DBA976", "CDBA85", "D7985D", "282C24"),
-    "fogNear": ("A08662", "9C9673", "AE8355", "1B2822"),
-    "fogFar": ("A58560", "AFA083", "AF8255", "282F21"),
+    "horizon": ("AEADAA", "B5BAB6", "9EA1A2", "28292A"),
+    "fogNear": ("878B89", "919090", "8E8B8A", "242425"),
+    "fogFar": ("7E8281", "A6A5A6", "888789", "2C2C2B"),
     "ambient": ("6C6149", "7A795F", "685741", "15231E"),
     "unknown": ("67564A", "736E5C", "634C40", "172115"),
     "sunlight": ("F0B067", "F9DEA5", "EC9855", "455642"),

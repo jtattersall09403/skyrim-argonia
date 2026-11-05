@@ -160,9 +160,9 @@ class Build:
                              for r in db.open().query("SELECT form_key, role_id, bound_x0, bound_x1, bound_y0, bound_y1, "
                                                       "bound_z0, bound_z1 FROM object_form")
                              if r["role_id"] not in NOT_FOLIAGE}
-        return Build._shapes
             from tools.journeys import canopy
             Build._shapes = canopy.reach(Build._shapes, canopy.load())   # fronds hung past the OBND (data/canopy-radius.json)
+        return Build._shapes
 
     # -- placed refs -------------------------------------------------------------------------------------------------
     def ref(self, edid: str) -> dict | None:
