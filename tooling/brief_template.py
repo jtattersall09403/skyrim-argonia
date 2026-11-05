@@ -7,6 +7,8 @@
 
 Fields: Lane, Paths, Acceptance (a runnable command or a number; no <placeholder>), Report path,
 Test level (L1-L6), Route (decision 0010 route 1-7, then why higher routes were not enough), Prior art.
+--write also emits a "## Rules" section (--no-rules omits it, --rules-extra "<line>" adds lines, --return-lines N
+sets the return limit, default 12); --check requires that section unless the file carries "Rules: none".
 """
 import argparse
 import glob
@@ -56,6 +58,29 @@ def problem(fields):
     return ""
 
 
+def rules_problem(text):
+    """'' when the brief has a '## Rules' section or 'Rules: none', else the refusal."""
+    if re.search(r"^##\s+Rules\b", text, re.M) or re.search(r"^\s*Rules\s*:\s*none\b", text, re.M | re.I):
+        return ""
+    return 'missing "## Rules" section (or "Rules: none")'
+
+
+def rules_section(return_lines=12, extra=()):
+    lines = [
+        "The lane runs no game.",
+        "Work in a git worktree of origin/main under ~/argonia-lanes; never touch the main tree's working files or out/ "
+        "(the round chain builds the land there).",
+        "Commit with `tooling/lane_commit.sh -m msg -- paths` from the worktree.",
+        "One heavy process at a time.",
+        "Any step over two minutes runs under `tooling/job_guard.sh run <name> -- <cmd>` so a spot reclaim resumes it.",
+        "Write intermediate results to files as you go.",
+        "Scratch goes under ~/argonia-lanes/<lane>-scratch, deleted when done.",
+        *extra,
+        f"Return at most {return_lines} lines.",
+    ]
+    return "\n## Rules\n" + "\n".join(f"- {x}" for x in lines) + "\n"
+
+
 def chunk_row(cid):
     """(table row, brief file path) for a chunk id, or None."""
     for readme in sorted(glob.glob(os.path.join(ROOT, "docs/phases/*/README.md"))):
@@ -87,6 +112,9 @@ def main(argv=None):
     p.add_argument("--test-level")
     p.add_argument("--route")
     p.add_argument("--prior-art")
+    p.add_argument("--no-rules", action="store_true")
+    p.add_argument("--rules-extra", action="append", default=[], metavar="LINE")
+    p.add_argument("--return-lines", type=int, default=12)
     a = p.parse_args(argv)
     if a.chunk:
         r = chunk_row(a.chunk)
@@ -96,7 +124,8 @@ def main(argv=None):
         print(r[0] + "\nbrief file: " + os.path.relpath(r[1], ROOT))
         return 0
     if a.check:
-        why = problem(parse(open(a.check, encoding="utf-8").read()))
+        text = open(a.check, encoding="utf-8").read()
+        why = problem(parse(text)) or rules_problem(text)
         if why:
             print(f"brief refused: {why}")
             return 2
@@ -104,8 +133,10 @@ def main(argv=None):
         return 0
     if a.write:
         text = render(a)
+        if not a.no_rules:
+            text += rules_section(a.return_lines, a.rules_extra)
         print(text, end="")
-        why = problem(parse(text))
+        why = problem(parse(text)) or ("" if a.no_rules else rules_problem(text))
         if why:
             print(f"# not yet valid: {why}", file=sys.stderr)
         return 0

@@ -10,6 +10,7 @@ Report path: /tmp/r.md
 Test level: L2
 Route: 3 no dependency mod or open fork covers it
 Prior art: searched field notes, nothing reusable
+Rules: none
 """
 
 
@@ -50,3 +51,15 @@ def test_chunk_row():
     r = run("--chunk", "0.1")
     assert r.returncode == 0 and "| 0.1 |" in r.stdout and "0.1-bootstrap.md" in r.stdout
     assert run("--chunk", "99.9").returncode == 1
+
+
+def test_write_emits_rules_by_default_and_options():
+    out = run("--write", "--rules-extra", "extra one", "--return-lines", "5").stdout
+    assert "## Rules" in out and "- extra one" in out and "at most 5 lines" in out and "job_guard.sh" in out
+    assert "## Rules" not in run("--write", "--no-rules").stdout
+
+
+def test_check_requires_rules(tmp_path):
+    r = run("--check", brief(tmp_path, GOOD.replace("Rules: none\n", "")))
+    assert r.returncode == 2 and "Rules" in r.stdout
+    assert run("--check", brief(tmp_path, GOOD.replace("Rules: none\n", "\n## Rules\n- x\n"))).returncode == 0
