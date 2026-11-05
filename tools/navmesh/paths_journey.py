@@ -67,8 +67,10 @@ def render(groups, dense_cell, bar=(16.67, 22.22)) -> str:
     for gi, (a, ps) in enumerate(groups):
         lines += [f"  - name: a{gi:02d}-arrive",
                   f"    why: '{a[3]}'",
-                  f"    do: [{{teleport: \"pos {_f(a[0])} {_f(a[1])} {_f(a[2] + 20)}\"}}, {{wait: 8}}]",
-                  "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\"}]"]
+                  f"    do: [{{teleport: \"pos {_f(a[0])} {_f(a[1])} {_f(a[2] + 20)}\"}}, {{settle: {{cap: 30, min: 3}}}}]",
+                  # teleport, then the settle (Loading Menu closed, position still; the runner caps a settle at 30 s), then
+                  # the worldspace read polled: a relaunched game's first cow is a full load (r6-chain23 read 0 at 31 s)
+                  "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\", within: 30}]"]
         for k, p in enumerate(ps):
             lines += [f"  - name: a{gi:02d}-nav-{k}",
                       f"    expect: [{{read: [nav, {_f(a[0])}, {_f(a[1])}, {_f(a[2])}, {_f(p[0])}, {_f(p[1])}, {_f(p[2])}],"

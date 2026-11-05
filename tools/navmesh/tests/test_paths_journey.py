@@ -16,3 +16,13 @@ def test_spread_and_pairs_and_render():
     navs = [s for s in j["steps"] if "-nav-" in s["name"]]
     assert len(navs) == pj.PER * len(groups) and navs[0]["expect"][0]["read"][0] == "nav"
     assert j["steps"][-1]["name"] == "dense-frametime" and j["independent_steps"] is True
+
+
+def test_arrival_order_teleport_settle_then_polled_worldspace():
+    a = (100.0, 200.0, 5.0, "place x")
+    j = yaml.safe_load(pj.render([(a, [(900.0, 200.0, 5.0, "s")] * pj.PER)], (3, -12)))
+    s = j["steps"][0]
+    assert s["name"] == "a00-arrive"
+    assert [next(iter(d)) for d in s["do"]] == ["teleport", "settle"]
+    assert s["do"][1]["settle"]["cap"] == 30 and s["do"][1]["settle"]["min"] >= 1
+    assert s["expect"][0]["within"] >= 30 and "contains" in s["expect"][0]

@@ -12,8 +12,8 @@ independent_steps: true
 steps:
   - name: a00-arrive
     why: 'place D2'
-    do: [{teleport: "pos -226494 -215594 47"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -226494 -215594 47"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a00-nav-0
     expect: [{read: [nav, -226494, -215594, 27, -227584, -213760, 152], path: length, gt: 0}]
   - name: a00-nav-1
@@ -26,8 +26,8 @@ steps:
     expect: [{read: [nav, -226494, -215594, 27, -222336, -213760, 320], path: length, gt: 0}]
   - name: a01-arrive
     why: 'place D3'
-    do: [{teleport: "pos -228798 227774 23674"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -228798 227774 23674"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a01-nav-0
     expect: [{read: [nav, -228798, 227774, 23654, -225280, 225280, 24608], path: length, gt: 0}]
   - name: a01-nav-1
@@ -40,8 +40,8 @@ steps:
     expect: [{read: [nav, -228798, 227774, 23654, -234112, 223104, 21432], path: length, gt: 0}]
   - name: a02-arrive
     why: 'place D4'
-    do: [{teleport: "pos 5054 117186 540"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 5054 117186 540"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a02-nav-0
     expect: [{read: [nav, 5054, 117186, 520, 896, 118016, 560], path: length, gt: 0}]
   - name: a02-nav-1
@@ -54,8 +54,8 @@ steps:
     expect: [{read: [nav, 5054, 117186, 520, -128, 118656, 608], path: length, gt: 0}]
   - name: a03-arrive
     why: 'place D3'
-    do: [{teleport: "pos -184309 -3108 9092"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -184309 -3108 9092"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a03-nav-0
     expect: [{read: [nav, -184309, -3108, 9072, -180224, -1280, 8464], path: length, gt: 0}]
   - name: a03-nav-1
@@ -68,8 +68,8 @@ steps:
     expect: [{read: [nav, -184309, -3108, 9072, -182656, 1920, 8080], path: length, gt: 0}]
   - name: a04-arrive
     why: 'place D4'
-    do: [{teleport: "pos -36032 -44095 772"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -36032 -44095 772"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a04-nav-0
     expect: [{read: [nav, -36032, -44095, 752, -40192, -44928, 640], path: length, gt: 0}]
   - name: a04-nav-1
@@ -82,8 +82,8 @@ steps:
     expect: [{read: [nav, -36032, -44095, 752, -40576, -46720, 632], path: length, gt: 0}]
   - name: a05-arrive
     why: 'place D4'
-    do: [{teleport: "pos 126783 30785 50"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 126783 30785 50"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a05-nav-0
     expect: [{read: [nav, 126783, 30785, 30, 123520, 31616, 96], path: length, gt: 0}]
   - name: a05-nav-1
@@ -96,8 +96,8 @@ steps:
     expect: [{read: [nav, 126783, 30785, 30, 122752, 28288, 80], path: length, gt: 0}]
   - name: a06-arrive
     why: 'place D4'
-    do: [{teleport: "pos -128189 -148542 140"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -128189 -148542 140"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a06-nav-0
     expect: [{read: [nav, -128189, -148542, 120, -130048, -147840, 112], path: length, gt: 0}]
   - name: a06-nav-1
@@ -110,8 +110,8 @@ steps:
     expect: [{read: [nav, -128189, -148542, 120, -132352, -145664, 88], path: length, gt: 0}]
   - name: a07-arrive
     why: 'place D3'
-    do: [{teleport: "pos 123142 151164 1284"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 123142 151164 1284"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a07-nav-0
     expect: [{read: [nav, 123142, 151164, 1264, 125824, 150272, 1384], path: length, gt: 0}]
   - name: a07-nav-1
@@ -121,11 +121,11 @@ steps:
   - name: a07-nav-3
     expect: [{read: [nav, 123142, 151164, 1264, 127360, 156288, 2672], path: length, gt: 0}]
   - name: a07-nav-4
-    expect: [{read: [nav, 123142, 151164, 1264, 129024, 147584, 1208], path: length, gt: 0}]
+    expect: [{read: [nav, 123142, 151164, 1264, 129024, 147584, 1200], path: length, gt: 0}]
   - name: a08-arrive
     why: 'place D3'
-    do: [{teleport: "pos -249918 91458 17208"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -249918 91458 17208"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a08-nav-0
     expect: [{read: [nav, -249918, 91458, 17188, -252928, 90112, 17464], path: length, gt: 0}]
   - name: a08-nav-1
@@ -138,8 +138,8 @@ steps:
     expect: [{read: [nav, -249918, 91458, 17188, -246400, 87552, 17552], path: length, gt: 0}]
   - name: a09-arrive
     why: 'place D5'
-    do: [{teleport: "pos -74050 52669 138"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -74050 52669 138"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a09-nav-0
     expect: [{read: [nav, -74050, 52669, 118, -73984, 50432, 120], path: length, gt: 0}]
   - name: a09-nav-1
@@ -152,36 +152,36 @@ steps:
     expect: [{read: [nav, -74050, 52669, 118, -69120, 52992, 128], path: length, gt: 0}]
   - name: a10-arrive
     why: 'place D3'
-    do: [{teleport: "pos -12222 208194 760"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -12222 208194 760"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a10-nav-0
     expect: [{read: [nav, -12222, 208194, 740, -12928, 212352, 1128], path: length, gt: 0}]
   - name: a10-nav-1
     expect: [{read: [nav, -12222, 208194, 740, -15360, 205312, 864], path: length, gt: 0}]
   - name: a10-nav-2
-    expect: [{read: [nav, -12222, 208194, 740, -10240, 204416, 712], path: length, gt: 0}]
+    expect: [{read: [nav, -12222, 208194, 740, -10112, 204416, 712], path: length, gt: 0}]
   - name: a10-nav-3
     expect: [{read: [nav, -12222, 208194, 740, -9344, 204928, 664], path: length, gt: 0}]
   - name: a10-nav-4
     expect: [{read: [nav, -12222, 208194, 740, -12288, 212992, 1136], path: length, gt: 0}]
   - name: a11-arrive
     why: 'place D3'
-    do: [{teleport: "pos 21755 24840 1156"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 21755 24840 1156"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a11-nav-0
-    expect: [{read: [nav, 21755, 24840, 1136, 20992, 22272, 1176], path: length, gt: 0}]
+    expect: [{read: [nav, 21755, 24840, 1136, 24448, 22400, 1272], path: length, gt: 0}]
   - name: a11-nav-1
-    expect: [{read: [nav, 21755, 24840, 1136, 23680, 21248, 1280], path: length, gt: 0}]
+    expect: [{read: [nav, 21755, 24840, 1136, 23552, 21248, 1280], path: length, gt: 0}]
   - name: a11-nav-2
     expect: [{read: [nav, 21755, 24840, 1136, 25728, 25984, 1248], path: length, gt: 0}]
   - name: a11-nav-3
-    expect: [{read: [nav, 21755, 24840, 1136, 18944, 19200, 1288], path: length, gt: 0}]
+    expect: [{read: [nav, 21755, 24840, 1136, 18944, 19200, 1272], path: length, gt: 0}]
   - name: a11-nav-4
     expect: [{read: [nav, 21755, 24840, 1136, 27008, 20608, 1288], path: length, gt: 0}]
   - name: a12-arrive
     why: 'place D5'
-    do: [{teleport: "pos 26944 -102464 1534"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 26944 -102464 1534"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a12-nav-0
     expect: [{read: [nav, 26944, -102464, 1514, 24320, -103040, 1584], path: length, gt: 0}]
   - name: a12-nav-1
@@ -194,22 +194,22 @@ steps:
     expect: [{read: [nav, 26944, -102464, 1514, 25600, -106112, 1504], path: length, gt: 0}]
   - name: a13-arrive
     why: 'place D3'
-    do: [{teleport: "pos -124351 -56385 496"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -124351 -56385 494"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a13-nav-0
-    expect: [{read: [nav, -124351, -56385, 476, -127104, -59776, 464], path: length, gt: 0}]
+    expect: [{read: [nav, -124351, -56385, 474, -127104, -59776, 464], path: length, gt: 0}]
   - name: a13-nav-1
-    expect: [{read: [nav, -124351, -56385, 476, -125440, -60672, 336], path: length, gt: 0}]
+    expect: [{read: [nav, -124351, -56385, 474, -125440, -60672, 336], path: length, gt: 0}]
   - name: a13-nav-2
-    expect: [{read: [nav, -124351, -56385, 476, -124800, -51968, 472], path: length, gt: 0}]
+    expect: [{read: [nav, -124351, -56385, 474, -125056, -51968, 480], path: length, gt: 0}]
   - name: a13-nav-3
-    expect: [{read: [nav, -124351, -56385, 476, -120192, -58112, 400], path: length, gt: 0}]
+    expect: [{read: [nav, -124351, -56385, 474, -120192, -58112, 400], path: length, gt: 0}]
   - name: a13-nav-4
-    expect: [{read: [nav, -124351, -56385, 476, -124160, -51840, 504], path: length, gt: 0}]
+    expect: [{read: [nav, -124351, -56385, 474, -124544, -51840, 456], path: length, gt: 0}]
   - name: a14-arrive
     why: 'place D4'
-    do: [{teleport: "pos -54463 -124355 236"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -54463 -124355 236"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a14-nav-0
     expect: [{read: [nav, -54463, -124355, 216, -55936, -120320, 224], path: length, gt: 0}]
   - name: a14-nav-1
@@ -222,8 +222,8 @@ steps:
     expect: [{read: [nav, -54463, -124355, 216, -50560, -120704, 248], path: length, gt: 0}]
   - name: a15-arrive
     why: 'place D3'
-    do: [{teleport: "pos 48835 174014 48"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 48835 174014 48"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a15-nav-0
     expect: [{read: [nav, 48835, 174014, 28, 51072, 178048, 224], path: length, gt: 0}]
   - name: a15-nav-1
@@ -236,8 +236,8 @@ steps:
     expect: [{read: [nav, 48835, 174014, 28, 55424, 176384, 272], path: length, gt: 0}]
   - name: a16-arrive
     why: 'place D3'
-    do: [{teleport: "pos -167741 228930 39868"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -167741 228930 39868"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a16-nav-0
     expect: [{read: [nav, -167741, 228930, 39848, -171136, 226304, 39104], path: length, gt: 0}]
   - name: a16-nav-1
@@ -250,8 +250,8 @@ steps:
     expect: [{read: [nav, -167741, 228930, 39848, -163840, 223744, 38912], path: length, gt: 0}]
   - name: a17-arrive
     why: 'place D3'
-    do: [{teleport: "pos -238399 25022 7034"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -238399 25022 7034"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a17-nav-0
     expect: [{read: [nav, -238399, 25022, 7014, -240896, 26368, 7032], path: length, gt: 0}]
   - name: a17-nav-1
@@ -264,8 +264,8 @@ steps:
     expect: [{read: [nav, -238399, 25022, 7014, -237568, 30208, 5928], path: length, gt: 0}]
   - name: a18-arrive
     why: 'place D3'
-    do: [{teleport: "pos -236095 148671 29556"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -236095 148671 29556"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a18-nav-0
     expect: [{read: [nav, -236095, 148671, 29536, -234240, 143360, 30872], path: length, gt: 0}]
   - name: a18-nav-1
@@ -278,8 +278,8 @@ steps:
     expect: [{read: [nav, -236095, 148671, 29536, -228864, 147456, 30120], path: length, gt: 0}]
   - name: a19-arrive
     why: 'place D4'
-    do: [{teleport: "pos -85955 111423 320"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -85955 111423 320"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a19-nav-0
     expect: [{read: [nav, -85955, 111423, 300, -87424, 109952, 296], path: length, gt: 0}]
   - name: a19-nav-1
@@ -292,36 +292,36 @@ steps:
     expect: [{read: [nav, -85955, 111423, 300, -80768, 111360, 1152], path: length, gt: 0}]
   - name: a20-arrive
     why: 'place D3'
-    do: [{teleport: "pos 174213 170372 1124"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 6979 258881 358"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a20-nav-0
-    expect: [{read: [nav, 174213, 170372, 1104, 172672, 169216, 1056], path: length, gt: 0}]
+    expect: [{read: [nav, 6979, 258881, 338, 9344, 253568, 24], path: length, gt: 0}]
   - name: a20-nav-1
-    expect: [{read: [nav, 174213, 170372, 1104, 175872, 167552, 80], path: length, gt: 0}]
+    expect: [{read: [nav, 6979, 258881, 338, 640, 258432, 120], path: length, gt: 0}]
   - name: a20-nav-2
-    expect: [{read: [nav, 174213, 170372, 1104, 174208, 174464, 1216], path: length, gt: 0}]
+    expect: [{read: [nav, 6979, 258881, 338, 12160, 255104, 800], path: length, gt: 0}]
   - name: a20-nav-3
-    expect: [{read: [nav, 174213, 170372, 1104, 173952, 174976, 1312], path: length, gt: 0}]
+    expect: [{read: [nav, 6979, 258881, 338, 13184, 256512, 688], path: length, gt: 0}]
   - name: a20-nav-4
-    expect: [{read: [nav, 174213, 170372, 1104, 178816, 171520, 752], path: length, gt: 0}]
+    expect: [{read: [nav, 6979, 258881, 338, 14080, 259200, 72], path: length, gt: 0}]
   - name: a21-arrive
     why: 'place D3'
-    do: [{teleport: "pos 6979 258881 358"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -177727 167487 27168"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a21-nav-0
-    expect: [{read: [nav, 6979, 258881, 338, 9344, 253568, 24], path: length, gt: 0}]
+    expect: [{read: [nav, -177727, 167487, 27148, -177280, 165376, 27464], path: length, gt: 0}]
   - name: a21-nav-1
-    expect: [{read: [nav, 6979, 258881, 338, 640, 258432, 120], path: length, gt: 0}]
+    expect: [{read: [nav, -177727, 167487, 27148, -174976, 165504, 28056], path: length, gt: 0}]
   - name: a21-nav-2
-    expect: [{read: [nav, 6979, 258881, 338, 12160, 255104, 800], path: length, gt: 0}]
+    expect: [{read: [nav, -177727, 167487, 27148, -177920, 170880, 27192], path: length, gt: 0}]
   - name: a21-nav-3
-    expect: [{read: [nav, 6979, 258881, 338, 13184, 256512, 688], path: length, gt: 0}]
+    expect: [{read: [nav, -177727, 167487, 27148, -182272, 166016, 25048], path: length, gt: 0}]
   - name: a21-nav-4
-    expect: [{read: [nav, 6979, 258881, 338, 14080, 259200, 72], path: length, gt: 0}]
+    expect: [{read: [nav, -177727, 167487, 27148, -182272, 169472, 25312], path: length, gt: 0}]
   - name: a22-arrive
     why: 'spawn interior-swamp'
-    do: [{teleport: "pos -225152 -217600 236"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -225152 -217600 236"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a22-nav-0
     expect: [{read: [nav, -225152, -217600, 216, -227584, -213760, 152], path: length, gt: 0}]
   - name: a22-nav-1
@@ -334,8 +334,8 @@ steps:
     expect: [{read: [nav, -225152, -217600, 216, -221056, -220544, 168], path: length, gt: 0}]
   - name: a23-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos 233472 260096 148"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 233472 260096 148"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a23-nav-0
     expect: [{read: [nav, 233472, 260096, 128, 231808, 260224, 272], path: length, gt: 0}]
   - name: a23-nav-1
@@ -348,8 +348,8 @@ steps:
     expect: [{read: [nav, 233472, 260096, 128, 233728, 253696, 1352], path: length, gt: 0}]
   - name: a24-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos -252288 259840 17124"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -252288 259840 17124"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a24-nav-0
     expect: [{read: [nav, -252288, 259840, 17104, -253824, 258560, 17184], path: length, gt: 0}]
   - name: a24-nav-1
@@ -362,8 +362,8 @@ steps:
     expect: [{read: [nav, -252288, 259840, 17104, -253696, 253824, 16960], path: length, gt: 0}]
   - name: a25-arrive
     why: 'spawn western-frontier'
-    do: [{teleport: "pos -142208 28416 4868"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -142208 28416 4868"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a25-nav-0
     expect: [{read: [nav, -142208, 28416, 4848, -143360, 29184, 4880], path: length, gt: 0}]
   - name: a25-nav-1
@@ -376,8 +376,8 @@ steps:
     expect: [{read: [nav, -142208, 28416, 4848, -139392, 33408, 5016], path: length, gt: 0}]
   - name: a26-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos -8960 240256 844"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -8960 240256 844"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a26-nav-0
     expect: [{read: [nav, -8960, 240256, 824, -6144, 241920, 1304], path: length, gt: 0}]
   - name: a26-nav-1
@@ -390,8 +390,8 @@ steps:
     expect: [{read: [nav, -8960, 240256, 824, -14848, 243072, 2896], path: length, gt: 0}]
   - name: a27-arrive
     why: 'spawn interior-swamp'
-    do: [{teleport: "pos 124800 112256 180"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 124800 112256 180"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a27-nav-0
     expect: [{read: [nav, 124800, 112256, 160, 126336, 109184, 136], path: length, gt: 0}]
   - name: a27-nav-1
@@ -404,8 +404,8 @@ steps:
     expect: [{read: [nav, 124800, 112256, 160, 120576, 115072, 224], path: length, gt: 0}]
   - name: a28-arrive
     why: 'spawn rootland'
-    do: [{teleport: "pos -46592 -77824 228"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -46592 -77824 228"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a28-nav-0
     expect: [{read: [nav, -46592, -77824, 208, -46848, -74624, 312], path: length, gt: 0}]
   - name: a28-nav-1
@@ -418,8 +418,8 @@ steps:
     expect: [{read: [nav, -46592, -77824, 208, -42368, -80256, 240], path: length, gt: 0}]
   - name: a29-arrive
     why: 'spawn flooded-forest'
-    do: [{teleport: "pos -14080 94080 228"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -14080 94080 228"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a29-nav-0
     expect: [{read: [nav, -14080, 94080, 208, -10368, 94208, 184], path: length, gt: 0}]
   - name: a29-nav-1
@@ -432,8 +432,8 @@ steps:
     expect: [{read: [nav, -14080, 94080, 208, -12032, 100480, 264], path: length, gt: 0}]
   - name: a30-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos 113024 235776 18588"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 113024 235776 18588"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a30-nav-0
     expect: [{read: [nav, 113024, 235776, 18568, 112640, 233984, 18632], path: length, gt: 0}]
   - name: a30-nav-1
@@ -446,8 +446,8 @@ steps:
     expect: [{read: [nav, 113024, 235776, 18568, 117120, 240128, 18376], path: length, gt: 0}]
   - name: a31-arrive
     why: 'spawn interior-swamp'
-    do: [{teleport: "pos -150144 -129024 196"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -150144 -129024 196"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a31-nav-0
     expect: [{read: [nav, -150144, -129024, 176, -149888, -131712, 200], path: length, gt: 0}]
   - name: a31-nav-1
@@ -460,8 +460,8 @@ steps:
     expect: [{read: [nav, -150144, -129024, 176, -145152, -129280, 160], path: length, gt: 0}]
   - name: a32-arrive
     why: 'spawn flooded-forest'
-    do: [{teleport: "pos 59008 24064 980"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 59008 24064 980"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a32-nav-0
     expect: [{read: [nav, 59008, 24064, 960, 61056, 22272, 808], path: length, gt: 0}]
   - name: a32-nav-1
@@ -474,8 +474,8 @@ steps:
     expect: [{read: [nav, 59008, 24064, 960, 55424, 25472, 1088], path: length, gt: 0}]
   - name: a33-arrive
     why: 'spawn flooded-forest'
-    do: [{teleport: "pos 49664 -154624 148"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 49664 -154624 148"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a33-nav-0
     expect: [{read: [nav, 49664, -154624, 128, 46592, -154496, 200], path: length, gt: 0}]
   - name: a33-nav-1
@@ -488,8 +488,8 @@ steps:
     expect: [{read: [nav, 49664, -154624, 128, 51712, -150016, 280], path: length, gt: 0}]
   - name: a34-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos -100096 258048 27252"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -100096 258048 27252"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a34-nav-0
     expect: [{read: [nav, -100096, 258048, 27232, -98688, 255488, 27552], path: length, gt: 0}]
   - name: a34-nav-1
@@ -502,8 +502,8 @@ steps:
     expect: [{read: [nav, -100096, 258048, 27232, -96896, 261888, 28184], path: length, gt: 0}]
   - name: a35-arrive
     why: 'spawn coastal-lagoon'
-    do: [{teleport: "pos 52992 171776 68"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 52992 171776 68"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a35-nav-0
     expect: [{read: [nav, 52992, 171776, 48, 53248, 175872, 232], path: length, gt: 0}]
   - name: a35-nav-1
@@ -516,8 +516,8 @@ steps:
     expect: [{read: [nav, 52992, 171776, 48, 51072, 178048, 224], path: length, gt: 0}]
   - name: a36-arrive
     why: 'spawn flooded-forest'
-    do: [{teleport: "pos -38144 10624 1228"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -38144 10624 1228"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a36-nav-0
     expect: [{read: [nav, -38144, 10624, 1208, -38400, 12800, 992], path: length, gt: 0}]
   - name: a36-nav-1
@@ -525,13 +525,13 @@ steps:
   - name: a36-nav-2
     expect: [{read: [nav, -38144, 10624, 1208, -36352, 14080, 856], path: length, gt: 0}]
   - name: a36-nav-3
-    expect: [{read: [nav, -38144, 10624, 1208, -35584, 6272, 1544], path: length, gt: 0}]
+    expect: [{read: [nav, -38144, 10624, 1208, -37376, 17152, 544], path: length, gt: 0}]
   - name: a36-nav-4
-    expect: [{read: [nav, -38144, 10624, 1208, -44416, 8704, 1592], path: length, gt: 0}]
+    expect: [{read: [nav, -38144, 10624, 1208, -33152, 6272, 1544], path: length, gt: 0}]
   - name: a37-arrive
     why: 'spawn deep-sink-basin'
-    do: [{teleport: "pos -218496 181760 22700"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -218496 181760 22700"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a37-nav-0
     expect: [{read: [nav, -218496, 181760, 22680, -221824, 183040, 22744], path: length, gt: 0}]
   - name: a37-nav-1
@@ -544,8 +544,8 @@ steps:
     expect: [{read: [nav, -218496, 181760, 22680, -224384, 177408, 22664], path: length, gt: 0}]
   - name: a38-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos -49920 168704 964"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos -49920 168704 964"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a38-nav-0
     expect: [{read: [nav, -49920, 168704, 944, -51840, 170496, 872], path: length, gt: 0}]
   - name: a38-nav-1
@@ -555,19 +555,19 @@ steps:
   - name: a38-nav-3
     expect: [{read: [nav, -49920, 168704, 944, -49664, 163456, 792], path: length, gt: 0}]
   - name: a38-nav-4
-    expect: [{read: [nav, -49920, 168704, 944, -49920, 174336, 1080], path: length, gt: 0}]
+    expect: [{read: [nav, -49920, 168704, 944, -49664, 174336, 1064], path: length, gt: 0}]
   - name: a39-arrive
     why: 'spawn northern-transition'
-    do: [{teleport: "pos 172032 179072 1836"}, {wait: 8}]
-    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}]
+    do: [{teleport: "pos 172032 179072 1836"}, {settle: {cap: 30, min: 3}}]
+    expect: [{console: "player.GetInWorldspace ARG_Province", contains: ">> 1", within: 30}]
   - name: a39-nav-0
     expect: [{read: [nav, 172032, 179072, 1816, 169472, 180224, 2096], path: length, gt: 0}]
   - name: a39-nav-1
-    expect: [{read: [nav, 172032, 179072, 1816, 175488, 178432, 1720], path: length, gt: 0}]
-  - name: a39-nav-2
     expect: [{read: [nav, 172032, 179072, 1816, 170752, 175744, 1624], path: length, gt: 0}]
+  - name: a39-nav-2
+    expect: [{read: [nav, 172032, 179072, 1816, 175616, 178432, 1712], path: length, gt: 0}]
   - name: a39-nav-3
-    expect: [{read: [nav, 172032, 179072, 1816, 173952, 174976, 1312], path: length, gt: 0}]
+    expect: [{read: [nav, 172032, 179072, 1816, 173952, 174976, 1352], path: length, gt: 0}]
   - name: a39-nav-4
     expect: [{read: [nav, 172032, 179072, 1816, 176128, 180992, 1792], path: length, gt: 0}]
   - name: dense-frametime
