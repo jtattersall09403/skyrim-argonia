@@ -72,3 +72,57 @@ ledger rows move with the verdicts. Then the LOD halves whose inputs moved, the 
 | capacity: no spot capacity lines | 74 |
 | interrupts | 1 |
 | locks: queued behind | 42 |
+
+## Where the time went (tooling/round_retro.py)
+
+27 logs (r6-chain*)
+
+| stage | n | median s | p90 s | total s | share |
+|---|---|---|---|---|---|
+| round total | 4 | 2308 | 5565 | 10200 | (sum) |
+| batch: per journey run | 35 | 137 | 608 | 9476 | 41.1 % |
+| round: batch | 4 | 2032 | 5096 | 9177 | (sum) |
+| round: deploy | 7 | 486 | 763 | 3948 | (sum) |
+| prebatch: journeys | 11 | 338 | 396 | 3253 | 14.1 % |
+| prebatch: gate | 9 | 337 | 375 | 3155 | 13.7 % |
+| deploy total | 5 | 486 | 763 | 2413 | (sum) |
+| prebatch: plugin | 13 | 68 | 193 | 1211 | 5.3 % |
+| deploy: skse build | 5 | 187 | 360 | 1194 | 5.2 % |
+| deploy: stack push | 7 | 52 | 92 | 828 | 3.6 % |
+| deploy: launch | 5 | 101 | 114 | 498 | 2.2 % |
+| deploy: make plugin | 13 | 21 | 86 | 410 | 1.8 % |
+| prebatch: plugin-check | 3 | 116 | 128 | 335 | 1.5 % |
+| prebatch: chart4k | 9 | 45 | 47 | 328 | 1.4 % |
+| round: up | 2 | 148 | 291 | 296 | 1.3 % |
+| prebatch: chart | 9 | 42 | 46 | 276 | 1.2 % |
+| capacity wait ((tries-1) x 60 s) | 11 | 0 | 0 | 240 | 1.0 % |
+| prebatch: vegetation | 9 | 21 | 22 | 237 | 1.0 % |
+| deploy: base save | 5 | 28 | 125 | 232 | 1.0 % |
+| prebatch: plugin-ids | 9 | 12 | 28 | 168 | 0.7 % |
+| deploy: send ESMs and helpers | 7 | 12 | 14 | 127 | 0.6 % |
+| deploy: mesh patches | 7 | 15 | 20 | 116 | 0.5 % |
+| deploy: ground textures | 7 | 13 | 14 | 92 | 0.4 % |
+| deploy: theme | 8 | 9 | 10 | 72 | 0.3 % |
+| deploy: lod | 7 | 9 | 9 | 64 | 0.3 % |
+| deploy: chart | 10 | 1 | 1 | 54 | 0.2 % |
+| prebatch: roads | 9 | 5 | 7 | 51 | 0.2 % |
+| deploy: chart 4k | 9 | 1 | 1 | 45 | 0.2 % |
+| prebatch: water | 9 | 4 | 6 | 44 | 0.2 % |
+| deploy: views | 9 | 7 | 8 | 40 | 0.2 % |
+| prebatch: sample | 9 | 4 | 5 | 35 | 0.2 % |
+| deploy: machine up | 11 | 3 | 4 | 34 | 0.1 % |
+| deploy: perks | 8 | 3 | 4 | 22 | 0.1 % |
+| prebatch: navmesh | 6 | 4 | 4 | 22 | 0.1 % |
+| deploy: shader cache save | 5 | 2 | 8 | 17 | 0.1 % |
+| deploy: game down | 18 | 1 | 1 | 16 | 0.1 % |
+| deploy: stack stage | 8 | 2 | 2 | 16 | 0.1 % |
+| deploy: shader cache | 6 | 1 | 2 | 14 | 0.1 % |
+| deploy: send scenes | 5 | 2 | 4 | 13 | 0.1 % |
+| deploy: controls | 7 | 1 | 1 | 8 | 0.0 % |
+| deploy: papyrus | 7 | 0 | 0 | 0 | 0.0 % |
+
+| wait or LOD half | lines |
+|---|---|
+| capacity: no spot capacity lines | 75 |
+| interrupts | 1 |
+| locks: queued behind | 46 |
