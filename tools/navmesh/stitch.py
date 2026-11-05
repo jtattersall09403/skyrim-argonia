@@ -20,7 +20,9 @@ from __future__ import annotations
 
 import base64
 import gzip
+import hashlib
 import json
+import os
 import struct
 from collections import defaultdict
 from dataclasses import dataclass, field
@@ -71,22 +73,31 @@ class Mesh:
 
 
 # ---- reading ----------------------------------------------------------------------------------------------------
-def read_raw(path: Path):
+def read_raw(path: Path, want=None, digests: dict | None = None):
+    """The raw cells of one row file. `want(x, y)`: build only those meshes; `digests`, if given, takes (x, y) ->
+    sha256 of each cell's raw bytes (the stitch cache's input)."""
     b = path.read_bytes()
     o = 0
     while o < len(b):
+        o0 = o
         x, y, nv, nt = struct.unpack_from("<iiii", b, o)
         o += 16
-        v = np.frombuffer(b, "<f4", 3 * nv, o).reshape(nv, 3)
+        vo = o
         o += 12 * nv
-        t = np.frombuffer(b, np.dtype([("v", "<u2", 3), ("a", "u1")]), nt, o)
+        to = o
         o += 7 * nt
+        if digests is not None:
+            digests[(x, y)] = hashlib.sha256(b[o0:o]).digest() if nt else None
+        if want is not None and not want(x, y):
+            continue
+        v = np.frombuffer(b, "<f4", 3 * nv, vo).reshape(nv, 3)
+        t = np.frombuffer(b, np.dtype([("v", "<u2", 3), ("a", "u1")]), nt, to)
         yield Mesh(x, y, v.astype(np.float64).tolist(), t["v"].astype(int).tolist(), t["a"].astype(int).tolist())
 
 
-def raw_row(raw: Path, cy: int) -> dict[int, Mesh]:
+def raw_row(raw: Path, cy: int, want=None, digests: dict | None = None) -> dict[int, Mesh]:
     p = raw / f"cy{cy:+04d}.bin"
-    return {m.x: m for m in read_raw(p)} if p.exists() else {}
+    return {m.x: m for m in read_raw(p, want, digests)} if p.exists() else {}
 
 
 # ---- geometry ---------------------------------------------------------------------------------------------------
@@ -345,45 +356,98 @@ def finish(m: Mesh, grid: Grid, world_local: int) -> tuple[bytes, bytes, dict]:
     return nvnm.encode(n), mi, stats
 
 
+STITCH_VERSION = "stitch/1"  # bump when the stitch's method changes outside the files hashed below
+RING = [(dx, dy) for dx in (-1, 0, 1) for dy in (-1, 0, 1) if dx or dy]
+
+
+def _salt(grid: Grid, world_local: int) -> bytes:
+    h = hashlib.sha256(f"{STITCH_VERSION}|{grid}|{world_local}|{MASTERS}|{SELF_FILE}".encode())
+    for name in ("stitch.py", "nvnm.py", "params.py", "esm.py"):
+        h.update((Path(__file__).parent / name).read_bytes())
+    return h.digest()
+
+
+def _read_meta(p: Path):
+    try:
+        with open(p, "rb") as f:
+            return json.loads(f.readline())
+    except (OSError, ValueError):
+        return None
+
+
 def run(out: Path, box, grid: Grid, world_local: int) -> dict:
-    """Stitch every raw cell of `box` under out/raw into out/navm and out/navi.json; returns the totals."""
+    """Stitch every raw cell of `box` under out/raw into out/navm and out/navi.json; returns the totals.
+
+    Checkpoint (decision 0037): each cell's NAVM line and NVMI are kept in out/stitch/x_y.json under the sha256 of
+    its raw mesh and its eight neighbours' (a seam is split at the neighbour's vertices and linked to the
+    neighbour's edge, so a changed cell changes its ring), the stitch's code and the grid; a cell whose key holds is
+    copied as it was (same FormIDs, so the NAVI and the edge links stay valid), the rest are stitched with their
+    ring loaded. Totals carry `reused` and `built`."""
     raw = out / "raw"
     dest = out / "navm"
     dest.mkdir(parents=True, exist_ok=True)
-    for old in dest.glob("cy*.jsonl.gz"):
-        old.unlink()
+    store = out / "stitch"
+    store.mkdir(exist_ok=True)
     x0, y0, x1, y1 = box
+    digests: dict = {}
+    for cy in range(y0, y1 + 1):
+        p = raw / f"cy{cy:+04d}.bin"
+        if p.exists():
+            for _ in read_raw(p, want=lambda x, y: False, digests=digests):
+                pass
+    cells = {k for k, d in digests.items() if d is not None}
+    salt = _salt(grid, world_local)
+    keys = {}
+    for (x, y) in cells:
+        h = hashlib.sha256(salt + digests[(x, y)])
+        for dx, dy in RING:
+            h.update(digests.get((x + dx, y + dy)) or b"-")
+        keys[(x, y)] = h.digest().hex()
+    meta = {}
+    built = set()
+    for c in cells:
+        m = _read_meta(store / f"{c[0]}_{c[1]}.json")
+        if m and m.get("key") == keys[c]:
+            meta[c] = m
+        else:
+            built.add(c)
+    active = set(built)
+    for (x, y) in built:
+        active.update((x + dx, y + dy) for dx, dy in RING if (x + dx, y + dy) in cells)
     rows: dict[int, dict[int, Mesh]] = {}
     seam_pts: dict[int, dict[int, dict[str, list]]] = {}
     done: dict[int, dict[int, Mesh]] = {}
-    nvmis: list[tuple[int, bytes]] = []
-    tot = defaultdict(int)
+    own: dict[tuple, dict] = {}  # per active cell: its own counters (slivers, T-junctions, seam splits)
+    fresh: dict[tuple, str] = {}
 
     def load(cy):
         if cy not in rows and y0 <= cy <= y1:
-            rows[cy] = {x: m for x, m in raw_row(raw, cy).items() if m.tris}
+            rows[cy] = {x: m for x, m in raw_row(raw, cy, want=lambda x, y: (x, y) in active).items() if m.tris}
             for m in rows[cy].values():
-                tot["slivers_dropped"] += drop_slivers(m)
-                tot["t_junction_splits"] += repair_t_junctions(m)
+                own[(m.x, m.y)] = {"slivers_dropped": drop_slivers(m), "t_junction_splits": repair_t_junctions(m)}
             seam_pts[cy] = {x: {s: seam_points(m, s) for s in "WESN"} for x, m in rows[cy].items()}
 
     def flush(cy):
-        lines = []
+        from tools.navmesh.esm import pack_subrecord
         for x, m in sorted(done.pop(cy, {}).items()):
+            if (x, cy) not in built:
+                continue
             nv, mi, st = finish(m, grid, world_local)
-            for k, v in st.items():
-                tot[k] += v
-            tot["cells"] += 1
-            from tools.navmesh.esm import pack_subrecord
+            st.update(own[(x, cy)])
             rec = record(b"NAVM", fid(grid.local(x, cy)), pack_subrecord(b"NVNM", nv))
-            lines.append(json.dumps({"x": x, "y": cy, "formKey": grid.form_key(x, cy),
-                                     "navm": base64.b64encode(rec).decode("ascii")}, sort_keys=True))
-            nvmis.append((grid.local(x, cy), mi))
-        if lines:
-            with open(dest / f"cy{cy:+04d}.jsonl.gz", "wb") as f, gzip.GzipFile(fileobj=f, mode="wb", mtime=0, filename="") as z:
-                z.write(("\n".join(lines) + "\n").encode("ascii"))
+            line = json.dumps({"x": x, "y": cy, "formKey": grid.form_key(x, cy),
+                               "navm": base64.b64encode(rec).decode("ascii")}, sort_keys=True)
+            mt = {"key": keys[(x, cy)], "local": grid.local(x, cy), "mi": base64.b64encode(mi).decode("ascii"), "stats": st}
+            p = store / f"{x}_{cy}.json"
+            tmp = p.with_suffix(f".{os.getpid()}.tmp")
+            tmp.write_text(json.dumps(mt, sort_keys=True) + "\n" + line + "\n")
+            tmp.replace(p)
+            meta[(x, cy)] = mt
+            fresh[(x, cy)] = line
 
     for cy in range(y1, y0 - 1, -1):  # north to south
+        if not active:
+            break
         for r in (cy + 1, cy, cy - 1):
             load(r)
         row = rows[cy]
@@ -393,18 +457,50 @@ def run(out: Path, box, grid: Grid, world_local: int) -> dict:
                 nbr = seam_pts.get(cy + dy, {}).get(x + dx)
                 if nbr:
                     pts[side] = nbr[OPP[side]]
-            tot["seam_splits"] += split_seams(m, pts)
+            own[(x, cy)]["seam_splits"] = split_seams(m, pts)
         for x, m in sorted(row.items()):  # links within the row, then to the finished row to the north
             if x + 1 in row:
-                tot["seam_links"] += link_seam(m, row[x + 1], "E")
+                link_seam(m, row[x + 1], "E")
             if x in done.get(cy + 1, {}):
-                tot["seam_links"] += link_seam(m, done[cy + 1][x], "N")
+                link_seam(m, done[cy + 1][x], "N")
         done[cy] = row
         flush(cy + 1)
         rows.pop(cy + 1, None)
         seam_pts.pop(cy + 1, None)
     flush(y0)
-    nvmis.sort()
+
+    # the row files: kept when every cell key in them holds (rows.json), else rewritten from the stored lines
+    manifest_p = out / "navm" / "rows.json"
+    try:
+        manifest = json.loads(manifest_p.read_text())
+    except (OSError, ValueError):
+        manifest = {}
+    by_row: dict[int, list] = defaultdict(list)
+    for (x, y) in sorted(cells):
+        by_row[y].append(x)
+    now = {}
+    for cy, xs in by_row.items():
+        sig = hashlib.sha256("|".join(f"{x}:{keys[(x, cy)]}" for x in xs).encode()).hexdigest()
+        now[str(cy)] = sig
+        f = dest / f"cy{cy:+04d}.jsonl.gz"
+        if manifest.get(str(cy)) == sig and f.exists():
+            continue
+        lines = [fresh[(x, cy)] if (x, cy) in fresh else
+                 (store / f"{x}_{cy}.json").read_text().split("\n", 2)[1] for x in xs]
+        with open(f, "wb") as fh, gzip.GzipFile(fileobj=fh, mode="wb", mtime=0, filename="") as z:
+            z.write(("\n".join(lines) + "\n").encode("ascii"))
+    for old in dest.glob("cy*.jsonl.gz"):
+        if str(int(old.name[2:6])) not in now:
+            old.unlink()
+    manifest_p.write_text(json.dumps(now, sort_keys=True))
+    tot = defaultdict(int)
+    for c in cells:
+        for k, v in meta[c]["stats"].items():
+            tot[k] += v
+        tot["cells"] += 1
+    tot["seam_links"] = tot["links"] // 2
+    tot["reused"], tot["built"] = len(cells) - len(built), len(built)
+    nvmis = sorted((meta[c]["local"], base64.b64decode(meta[c]["mi"])) for c in cells)
     (out / "navi.json").write_text(json.dumps({
         "schema": 1, "masters": MASTERS, "self": SELF_FILE, "count": len(nvmis),
         "navi": base64.b64encode(navi_record([b for _, b in nvmis])).decode("ascii")}, sort_keys=True) + "\n")

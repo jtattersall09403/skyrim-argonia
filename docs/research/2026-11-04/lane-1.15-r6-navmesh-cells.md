@@ -1,0 +1,10 @@
+# Lane 1.15-r6-navmesh-cells: per-cell checkpoint for the stitch and the checks
+
+- Found: ArgoniaNav's recast pass was already per-cell keyed (lodkey lane; recast_s 5 s on the province). What a land rebuild still paid every time was the stitch (88.5 s), the L1 checks (101 s) and the ESM stages; nothing there was keyed per cell.
+- stitch.run now keeps each cell's NAVM line, NVMI and counters in out/navmesh/<box>/stitch/x_y.json under sha256(raw mesh of the cell and its 8 neighbours, stitch/nvnm/params/esm code, grid); a hit is copied as built (same form ids, so the NAVI and edge links hold).
+- A seam is split at the neighbour's vertices and linked to its edge, so a changed cell changes its ring: cells whose key moved are rebuilt, with their ring loaded for the splits and links (only the rebuilt ones are written). Row files are kept when every key in the row holds (navm/rows.json).
+- The checks reuse check.json when the records, every raster under in/ and the checks' code are unchanged (out/.../check.key). Both print through `cells: N reused, M built`.
+- Test tools/navmesh/tests/test_cells.py (5x5 real cells, 32 s): build twice = 25 reused / 0 built, same sha; bump one cell's land = exactly its 9-cell ring rebuilt, the other 16 cells' NAVM lines byte-identical, and a clean build of the same edit equals the cached one (sha, lines, totals). Sample manifest hash unchanged (67cfc8df9bf6); navmesh tests 23 passed; ruff clean.
+- Timings (Claywater 8x8 = 64 cells, 4 vCPU shared): first 28.7 s (inputs 7.4, recast 11.4, stitch 2.3, check 3.5); unchanged rerun 14.2 s (inputs 7.8, recast 0.3, stitch 0.0, check 0.0 reused).
+- NOT measured: the province (r6-land5 was running). The first province build after this commit has no stitch store, so it pays stitch + checks once (about 190 s) and writes it; reruns on unchanged ground should be about inputs 5.5 + key/hash passes, expected under 60 s: planner to confirm "cells: 15841 reused, 0 built".
+- `make navmesh` also runs scans, water and the ground/terrain/ESM stages around the build; those keep their own stamps (the ground stage was 163 s in r6-land4) and are not part of this key.

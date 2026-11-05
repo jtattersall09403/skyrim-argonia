@@ -59,19 +59,40 @@ def records_sha256(out: Path) -> str:
     return h.hexdigest()
 
 
+def checked(out: Path, records: str) -> dict:
+    """checks.run, reused when its inputs (the records, every raster under in/, the checks' code) are unchanged."""
+    from tools.navmesh import checks
+    h = hashlib.sha256(records.encode())
+    for p in sorted((out / "in").iterdir()):
+        h.update(p.name.encode() + hashlib.sha256(p.read_bytes()).digest())
+    for name in ("checks.py", "nvnm.py", "params.py", "stitch.py", "esm.py"):
+        h.update((Path(__file__).parent / name).read_bytes())
+    key, held = h.hexdigest(), out / "check.key"
+    prev = out / "check.json"
+    if held.exists() and held.read_text() == key and prev.exists():
+        return json.loads(prev.read_text())
+    held.unlink(missing_ok=True)
+    res = checks.run(out)
+    prev.write_text(json.dumps(res, indent=1, sort_keys=True) + "\n")
+    held.write_text(key)
+    return res
+
+
 def build_tool() -> None:
     subprocess.run(["dotnet", "build", str(NAV_PROJ), "-c", "Release", "-nologo", "-v", "q"], check=True,
                    env=DOTNET_ENV, capture_output=True)
 
 
-def build(box, out: Path, check: bool = True, objects=None) -> dict:
-    from tools.navmesh import checks, inputs, stitch
+def build(box, out: Path, check: bool = True, objects=None, after_inputs=None) -> dict:
+    from tools.navmesh import inputs, stitch
     from tools.argonia_world.terrain import world
 
     t = {}
     t0 = time.time()
     build_tool()
     inputs.write(out / "in", box, objects=objects)
+    if after_inputs:  # a test's hook: edit the rasters before the cells are read
+        after_inputs(out / "in")
     t["inputs_s"] = round(time.time() - t0, 1)
     t0 = time.time()
     r = subprocess.run([str(NAV_BIN), "cells", "--in", str(out / "in"), "--out", str(out)], env=DOTNET_ENV,
@@ -86,10 +107,11 @@ def build(box, out: Path, check: bool = True, objects=None) -> dict:
     totals = stitch.run(out, box, stitch.Grid(gx0, gy0, gw), world.WRLD_ID)
     t["stitch_s"] = round(time.time() - t0, 1)
     shutil.rmtree(out / "raw")
+    print(f"cells: {totals['reused']} reused, {totals['built']} built")
     res = {"box": list(box), "times": t, "totals": totals, "sha256": records_sha256(out)}
     if check:
         t0 = time.time()
-        res["check"] = checks.run(out)
+        res["check"] = checked(out, res["sha256"])
         t["check_s"] = round(time.time() - t0, 1)
         (out / "check.json").write_text(json.dumps(res["check"], indent=1, sort_keys=True) + "\n")
     (out / "build.json").write_text(json.dumps(res, indent=1, sort_keys=True) + "\n")
