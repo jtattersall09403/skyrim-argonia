@@ -18,7 +18,7 @@ right point without the owner having to remember). Numbered 0018 on the side bra
    extrapolation (`world/sources/lore/`, `world/sources/lore/extrapolation/`) and the Shadowscales and
    Night-Reed records, and writes the faction's place in 4E 201 Black Marsh as an extrapolation entry with
    sources and confidence. Who would pay for detectives here, and why they are trusted, must have an answer
-   the lore supports. Must also be grounded in popular mystery storyline tropes. There are certain structures that are known to 'work' for detective/mystery storylines. We don't need to create completely original stories here. Let's take some classics that are known
+   the lore supports. Must also be grounded in popular mystery storyline tropes. There are certain structures that are known to 'work' for detective/mystery storylines. We don't need to create completely original stories here. Let's take some simple classic structures that are known to work and just apply them to our game and world in a way that is lore consistent and fun to play through and meets our quest write/review requirements.
 4. **Built with the writing skills** (decision 0024): a line record, then quest records through `quest-write`
    (MURDER, THEFT, FRAUD, MISSING and RECKONING principles), `quest-review`, then dialogue.
 5. **The systems it needs ship whole in Part 2:** evidence-gated topics, presenting evidence, accusation and the
