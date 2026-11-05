@@ -1122,12 +1122,14 @@ BRIDGE_READER = ("a wooden plank bridge spanning the water step along the road (
 DECK_READER = "standing on a wooden plank deck, the road continuing level past the far end, no gap, no float, no Nordic piece"
 
 
-def _do(cell: tuple[int, int], x: float, y: float, z: float, h: float, p: float, cow: bool = True) -> str:
+def _do(cell: tuple[int, int], x: float, y: float, z: float, h: float, p: float, cow: bool = True, far: bool = False) -> str:
+    # the weather is forced AFTER the teleport and its settle (the new cell's region weather replaces an earlier force)
     return (f"    do: [{{hud: \"off\"}}, {{console: {{line: \"cow ARG_Province {cell[0]} {cell[1]}\", settle: 60}}}}, {{wait: 8}},\n"
-            f"         {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, {{settle: {{cap: 14, min: 3}}}},\n"
             f"         {{console: \"set gamehour to 12\"}}, {{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}},\n"
             f"         {{console: \"player.setpos z {z:.0f}\"}}, {{console: \"player.setangle z {h:.0f}\"}}, "
-            f"{{console: \"player.setangle x {p:.0f}\"}}, {{wait: 4}}]")
+            f"{{console: \"player.setangle x {p:.0f}\"}}, {{wait: 4}},\n"
+            f"         {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, {{settle: {{cap: 14, min: 3}}}}"
+            + (", {wait: 20}]" if far else "]"))   # far: a teleport of more than a cell, 20 s more for the region weather to take (the lint caps the read's `within` at 20)
 
 
 def bridge_stands(b: Build, w) -> list[dict]:
@@ -1172,7 +1174,7 @@ def bridge_look(b: Build, w, log: list) -> str:
                   f"  - name: {n}-deck", "    scan: 6",
                   f"    # deck: the player on the deck's middle (deck top {su.units_to_metres(s['top_u']):.2f} m = {s['top_u']:.0f} u): "
                   "feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand",
-                  _do(su.cell_of(s["dx"], s["dy"]), s["dx"], s["dy"], s["top_u"] + BRIDGE_DECK_DROP_U, s["h"], 3),
+                  _do(su.cell_of(s["dx"], s["dy"]), s["dx"], s["dy"], s["top_u"] + BRIDGE_DECK_DROP_U, s["h"], 3, far=True),
                   "    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},",
                   f"             {{read: [player], path: pos, keep: {n.replace('-', '_')}_deck}},",
                   f"             {{read: [player], path: pos.z, ge: {s['top_u'] - BRIDGE_DECK_TOL_U:.0f}, within: 10}}, "

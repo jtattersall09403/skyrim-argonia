@@ -311,3 +311,7 @@ def test_bridge_look_stands_12_m_from_the_deck_end_on_the_yaw_and_the_deck_stop_
     assert z - top == gen.BRIDGE_DECK_DROP_U
     assert f"pos.z, ge: {top - gen.BRIDGE_DECK_TOL_U}" in deck and f"pos.z, le: {top + gen.BRIDGE_DECK_TOL_U}" in deck
     assert f"player.setpos x {cx:.0f}" in deck and "# deck:" in deck   # the deck stop is exempt from the ground check
+    # every stop forces the weather AFTER the teleport and its settle, then reads it back (20 s more wait on the deck stop)
+    for part in (text.split("name: t-step-deck")[0], deck):
+        assert part.index("player.setpos z") < part.index('"sw ') < part.index('"fw ') < part.index("settle: {cap: 14", part.index('"fw '))
+    assert "{wait: 20}]" in deck and "{wait: 20}]" not in text.split("name: t-step-deck")[0]
