@@ -111,6 +111,47 @@ def _reads(key: str, ref: str, radius: float, among: list[str]) -> list[str]:
             f"  - {{read: [actors, {rad}], path: listed, kinds: {{ge: 1, among: {a}}}, keep: {key}_kinds}}"]
 
 
+def plugin_id(key: str) -> str:
+    """`0D0044:ArgoniaWorld.esm` (a FormKey) as `ArgoniaWorld.esm|0x0D0044`, which the runner turns into this launch's runtime id."""
+    local, plugin = key.split(":", 1)
+    return f"{plugin}|0x{local}"
+
+
+def probe_steps(w, name: str, r: dict, ref: str, go: list[str], among: list[str], subj: tuple) -> list[str]:
+    """The land-spawn probe (lane 1.15-r6-land-spawn-probe): at a stop whose land spawn read nothing, three steps from the
+    same stand. `<name>-probe` keeps every field of the spawn's reference as the bridge reads it (the actors read by id,
+    the `refs` read of its template base: count, enabled, disabled) and the actors near. `<name>-probe-list` places the
+    spot's own levelled list by console and keeps the actors within READ_M; at least one a kind of the list, else
+    the list does not generate (the ACHR or zone path is then not the fault). `<name>-probe-entry` places one concrete
+    NPC_ entry of that list the same way: does a concrete entry spawn. Every read is kept before the assertion."""
+    from tools.argonia_world.creatures import records
+    rad = f"\"{READ_M * su.UNITS_PER_METRE:.0f}\""
+    a = json.dumps(among)
+    tmpl = plugin_id(records.template_key(r["base"]))
+    lvln = plugin_id(records.list_key(r["base"]))
+    first = w.query("SELECT form_key FROM creature_list_entry WHERE list_id = ? ORDER BY form_key LIMIT 1", r["base"])[0]["form_key"]
+    entry = plugin_id(records.actor_key(w, first, r["band"]))
+    k = name.replace("-", "_") + "_probe"
+    out = [f"- name: {name}-probe",
+           f"  # the land-spawn probe, state of the spawn ref {ref} (template NPC_ {tmpl}, list {lvln}) at the {name} stand; keeps every field",
+           f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
+           "  do:", *go, "  expect:",
+           "  - {read: [player], path: pos, keep: " + k + "_arrive}",
+           f"  - {{read: [actors, {rad}, \"{ref}\"], path: refs, keep: {k}_spawn}}",
+           f"  - {{read: [actors, {rad}, \"{ref}\"], path: counts, keep: {k}_counts}}",
+           f"  - {{read: [refs, \"{tmpl}\", {rad}], path: count, keep: {k}_template_count}}",
+           f"  - {{read: [refs, \"{tmpl}\", {rad}], path: refs, keep: {k}_template_refs}}",
+           f"  - {{read: [actors, {rad}], path: listed, keep: {k}_before}}"]
+    for step, what, form in (("list", f"the levelled list {lvln}", lvln), ("entry", f"its first concrete entry {entry}", entry)):
+        kk = f"{k}_{step}"
+        out += [f"- name: {name}-probe-{step}",
+                f"  # player.placeatme {what} at the stand (follows {name}-probe, no new teleport); the actors within 40 m, at least one of the list's kinds",
+                "  do:", f"  - console: player.placeatme {form} 1", f"  - wait: {WAIT_S}", "  expect:",
+                f"  - {{read: [actors, {rad}], path: listed, keep: {kk}}}",
+                f"  - {{read: [actors, {rad}], path: listed, kinds: {{ge: 1, among: {a}}}, keep: {kk}_kinds}}"]
+    return out
+
+
 def build(refs: list[dict], b, w, log: list | None = None) -> tuple[str, str]:
     log = [] if log is None else log
     radius = READ_M * su.UNITS_PER_METRE
@@ -121,6 +162,7 @@ def build(refs: list[dict], b, w, log: list | None = None) -> tuple[str, str]:
              "# read by the bridge the spawn's own reference (ArgoniaWorld.esm|0x...: present, enabled, 3D loaded, its",
              "# actor a kind of the spot's list) and every actor within 40 m (at least one, at least one a kind of the",
              "# list of that region class and band, a fixed list, never levelled: 0035). The den reads its predator.",
+             "# marsh-a-probe* (lane 1.15-r6-land-spawn-probe): the land spawn that read nothing, probed from the same stand.",
              "# A failure names the read; a failed step alone takes a still. No walking, no fighting (owner, 2026-11-01).",
              "id: creature-spots", "runner: 1", "independent_steps: true", "crash_risk: medium", "scene: creature-spots",
              "stills: false", "steps:"]
@@ -144,6 +186,8 @@ def build(refs: list[dict], b, w, log: list | None = None) -> tuple[str, str]:
                   "  do:", *(["  - console: tgm"] if not lines[-1].startswith("  -") else []),
                   *_go(r, x, y, z, hour),
                   "  expect:", *_reads(step.replace("-", "_"), rid[id(r)], radius, list_kinds(w, r["base"]))]
+        if step == "marsh-a":   # lane 1.15-r6-land-spawn-probe: a D3 land spawn read nothing in r6-chain23
+            lines += probe_steps(w, step, r, rid[id(r)], _go(r, x, y, z, hour), list_kinds(w, r["base"]), subj)
     for den in (r for r in refs if r["kind"] == "den"):
         pred = next((o for o in refs if o["kind"] == "predator" and o["cell"] == den["cell"]
                      and o.get("creature") == den["creature"]), None)

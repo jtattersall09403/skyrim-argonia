@@ -11,7 +11,7 @@
 # <class>_kinds, <class>_spawn). The fourth stop is Claywater's guar pen: both kept guar (lane 1.15-r5-creatures) read
 # present, alive, enabled and near. A failed step alone takes a still.
 id: creatures-kinds
-reach: ["tools/argonia_world/creatures/**", "data/creature-kind-bars.json", "data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -61,60 r1", "records: cell -61,61 r1", "records: cell -57,11 r1", "records: cell -35,-4 r1", "records: cell -34,-4 r1", "records: cell 3,18 r1", "records: cell 3,19 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["tools/argonia_world/creatures/**", "data/creature-kind-bars.json", "data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -61,60 r1", "records: cell -61,61 r1", "records: cell -57,11 r1", "records: cell -45,-25 r1", "records: cell -45,-24 r1", "records: cell -33,-6 r1", "records: cell 3,18 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium
@@ -19,7 +19,7 @@ scene: creature-spots
 stills: false
 steps:
 - name: coastal-lagoon
-  # cell (3, 18) coastal-lagoon, spawn lvln.coastal-lagoon.D4.shore (D4) ref ArgoniaWorld.esm|0xE9E840, the class on 13 of the 25 cells round it, 7 spawn points within 90 m; the stand is 15 m from it
+  # cell (3, 18) coastal-lagoon, spawn lvln.coastal-lagoon.D4.shore (D4) ref ArgoniaWorld.esm|0xE9E840, the class on 13 of the 25 cells round it, 7 spawn points within 90 m; the stand is 16 m from it
   # subject: 16128 77568 115
   do:
   - console: tgm
@@ -27,9 +27,9 @@ steps:
   - wait: 8
   - console: set gamehour to 13
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x 15385
-  - console: player.setpos y 78311
-  - console: player.setpos z 88
+  - console: player.setpos x 15336
+  - console: player.setpos y 76776
+  - console: player.setpos z 86
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: coastal_lagoon_stand}
@@ -60,25 +60,60 @@ steps:
   - {read: [actors, "8192"], path: listed, keep: northern_transition}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Dragon Frog", "Dreugh", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: northern_transition_kinds}
 - name: western-frontier
-  # cell (-34, -4) western-frontier, spawn lvln.western-frontier.D3.land (D3) ref ArgoniaWorld.esm|0xE72A01, the class on 25 of the 25 cells round it, 9 spawn points within 90 m; the stand is 20 m from it
-  # subject: -139008 -16384 1371
+  # cell (-33, -6) western-frontier, spawn lvln.western-frontier.D3.shore (D3) ref ArgoniaWorld.esm|0xE6EB41, the class on 19 of the 25 cells round it, 10 spawn points within 90 m; the stand is 20 m from it
+  # subject: -132096 -20480 923
   do:
-  - console: {line: cow ARG_Province -34 -4, settle: 60}
+  - console: {line: cow ARG_Province -33 -6, settle: 60}
   - wait: 8
   - console: set gamehour to 13
   - settle: {cap: 14, min: 3}
-  - console: player.setpos x -140409
-  - console: player.setpos y -16384
-  - console: player.setpos z 1463
+  - console: player.setpos x -132096
+  - console: player.setpos y -21881
+  - console: player.setpos z 896
   - wait: 10
   expect:
   - {read: [player], path: pos, keep: western_frontier_stand}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE72A01"], path: refs.0, ne: null, keep: western_frontier_spawn}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE72A01"], path: refs.0.disabled, eq: false}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE72A01"], path: refs.0.loaded_3d, eq: true}
-  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE72A01"], path: refs, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_spawn_kind}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0, ne: null, keep: western_frontier_spawn}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0.disabled, eq: false}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs.0.loaded_3d, eq: true}
+  - {read: [actors, "8192", "ArgoniaWorld.esm|0xE6EB41"], path: refs, kinds: {ge: 1, among: ["Crocodile", "Death Hopper", "Dragon Frog", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle", "Singing Frog", "Voriplasm"]}, keep: western_frontier_spawn_kind}
   - {read: [actors, "8192"], path: listed, keep: western_frontier}
   - {read: [actors, "8192"], path: listed, kinds: {ge: 4, among: ["Alit", "Bog Dog", "Crocodile", "Crow", "Death Hopper", "Dragon Frog", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Leech", "Giant Snail", "Giant Snake", "Giant Wasp", "Hackwing", "Haj Mota", "Hoarvor", "Jassa Red Slug", "Kotu Gava", "Marsh Bird", "Marsh Rat", "Marsh Turtle", "Moon Adder", "Red Hooped Tree-Viper", "Singing Frog", "Voriplasm", "Wamasu"]}, keep: western_frontier_kinds}
+- name: western-frontier-probe
+  # the land-spawn probe, state of the spawn ref ArgoniaWorld.esm|0xE491C0 (template NPC_ ArgoniaWorld.esm|0x0D1071, list ArgoniaWorld.esm|0x0D0071) at the western-frontier stand; keeps every field
+  # subject: -182784 -98688 1403
+  do:
+  - console: {line: cow ARG_Province -45 -25, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - settle: {cap: 14, min: 3}
+  - console: player.setpos x -182784
+  - console: player.setpos y -97287
+  - console: player.setpos z 1472
+  - wait: 10
+  expect:
+  - {read: [player], path: pos, keep: western_frontier_probe_arrive}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xE491C0"], path: refs, keep: western_frontier_probe_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xE491C0"], path: counts, keep: western_frontier_probe_counts}
+  - {read: [refs, "ArgoniaWorld.esm|0x0D1071", "2801"], path: count, keep: western_frontier_probe_template_count}
+  - {read: [refs, "ArgoniaWorld.esm|0x0D1071", "2801"], path: refs, keep: western_frontier_probe_template_refs}
+  - {read: [actors, "2801"], path: listed, keep: western_frontier_probe_before}
+- name: western-frontier-probe-list
+  # player.placeatme the levelled list ArgoniaWorld.esm|0x0D0071 at the stand (follows western-frontier-probe, no new teleport); the actors within 40 m, at least one of the list's kinds
+  do:
+  - console: player.placeatme ArgoniaWorld.esm|0x0D0071 1
+  - wait: 6
+  expect:
+  - {read: [actors, "2801"], path: listed, keep: western_frontier_probe_list}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_probe_list_kinds}
+- name: western-frontier-probe-entry
+  # player.placeatme its first concrete entry ArgoniaWorld.esm|0x0D400C at the stand (follows western-frontier-probe, no new teleport); the actors within 40 m, at least one of the list's kinds
+  do:
+  - console: player.placeatme ArgoniaWorld.esm|0x0D400C 1
+  - wait: 6
+  expect:
+  - {read: [actors, "2801"], path: listed, keep: western_frontier_probe_entry}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Alit", "Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: western_frontier_probe_entry_kinds}
 - name: guar-pen
   # Claywater Station's pen (the pen markers 22.8 m east of the centre): both kept guar
   # subject: -231228 47914 4902

@@ -22,6 +22,8 @@ def test_generated_journey_takes_no_still_and_reads_kinds(name):
         assert actors, s["name"]
         if s["name"] == "guar-pen":   # the kept guar, by editor id: alive, enabled, near
             continue
+        if "-probe" in s["name"]:   # the land-spawn probe (lane 1.15-r6-land-spawn-probe): see test_land_spawn_probe
+            continue
         kinds = [e for e in actors if "kinds" in e]
         assert any(e["path"] == "listed" for e in kinds), s["name"]   # the actors near, of the list's kinds
         spawn = [e for e in kinds if e["path"] == "refs"]
@@ -36,3 +38,22 @@ def test_ref_ids_number_refs_per_cell_as_the_shards_do():
     ids = journey.ref_ids(refs)
     assert ids[id(refs[2])] == f"ArgoniaWorld.esm|0x{records.ref_id(0, 0, 1):06X}"
     assert ids[id(refs[1])] == f"ArgoniaWorld.esm|0x{records.ref_id(1, 0, 0):06X}"
+
+
+@pytest.mark.parametrize("name,stop", [("creature-spots", "marsh-a"), ("creatures-kinds", "western-frontier")])
+def test_land_spawn_probe(name, stop):
+    """The land-spawn probe (lane 1.15-r6-land-spawn-probe): the same stand, the spawn ref's fields kept, then the land
+    list and one concrete entry placed by console (placeatme), each read within 40 m and kept before its kind assertion."""
+    j = yaml.safe_load((ROOT / "tests" / "journeys" / f"{name}.yaml").read_text())
+    names = [s["name"] for s in j["steps"]]
+    k = names.index(f"{stop}-probe")
+    assert names[k:k + 3] == [f"{stop}-probe", f"{stop}-probe-list", f"{stop}-probe-entry"]
+    by = {s["name"]: s for s in j["steps"]}
+    first = by[f"{stop}-probe"]
+    assert any(e.get("read", [None])[0] == "refs" for e in first["expect"])
+    assert all("keep" in e for e in first["expect"])
+    for step in ("list", "entry"):
+        s = by[f"{stop}-probe-{step}"]
+        assert re.match(r"^player\.placeatme ArgoniaWorld\.esm\|0x[0-9A-F]{6} 1$", s["do"][0]["console"])
+        keeps = [e for e in s["expect"] if "keep" in e]
+        assert len(keeps) == 2 and keeps[1]["kinds"]["ge"] == 1   # the kept read comes before the assertion's

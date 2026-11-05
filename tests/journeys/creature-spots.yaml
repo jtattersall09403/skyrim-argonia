@@ -4,6 +4,7 @@
 # read by the bridge the spawn's own reference (ArgoniaWorld.esm|0x...: present, enabled, 3D loaded, its
 # actor a kind of the spot's list) and every actor within 40 m (at least one, at least one a kind of the
 # list of that region class and band, a fixed list, never levelled: 0035). The den reads its predator.
+# marsh-a-probe* (lane 1.15-r6-land-spawn-probe): the land spawn that read nothing, probed from the same stand.
 # A failure names the read; a failed step alone takes a still. No walking, no fighting (owner, 2026-11-01).
 id: creature-spots
 reach: ["data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -38,29 r1", "records: cell -38,30 r1", "records: cell -37,25 r1", "records: cell -36,37 r1", "records: cell -31,27 r1", "records: cell -26,30 r1", "records: cell -26,31 r1", "records: cell -26,34 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
@@ -14,16 +15,16 @@ scene: creature-spots
 stills: false
 steps:
 - name: water-a
-  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water, spawn ref ArgoniaWorld.esm|0xEABAC0; the stand 20 m from it, the next spawn point 55 m
+  # cell (-37, 25) western-frontier D3 water: list lvln.western-frontier.D3.water, spawn ref ArgoniaWorld.esm|0xEABAC0; the stand 19 m from it, the next spawn point 54 m
   # subject: -148992 103424 27793
   do:
   - console: tgm
   - console: {line: cow ARG_Province -37 25, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -150393
+  - console: player.setpos x -150323
   - console: player.setpos y 103424
-  - console: player.setpos z 14080
+  - console: player.setpos z 14085
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: water_a_arrive}
@@ -35,15 +36,15 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Giant Leech"]}, keep: water_a_kinds}
 - name: water-b
-  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore, spawn ref ArgoniaWorld.esm|0xEC3500; the stand 20 m from it, the next spawn point 71 m
+  # cell (-36, 37) western-frontier D2 shore: list lvln.western-frontier.D2.shore, spawn ref ArgoniaWorld.esm|0xEC3500; the stand 21 m from it, the next spawn point 72 m
   # subject: -143488 153984 14403
   do:
   - console: {line: cow ARG_Province -36 37, settle: 60}
   - wait: 8
   - console: set gamehour to 11
-  - console: player.setpos x -144478
-  - console: player.setpos y 154974
-  - console: player.setpos z 14980
+  - console: player.setpos x -144528
+  - console: player.setpos y 155024
+  - console: player.setpos z 15034
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: water_b_arrive}
@@ -55,15 +56,15 @@ steps:
   - {read: [actors, "2801"], path: listed, keep: water_b}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Crocodile", "Death Hopper", "Dragon Frog", "Haj Mota", "Kotu Gava", "Marsh Bird", "Marsh Turtle", "Singing Frog"]}, keep: water_b_kinds}
 - name: marsh-a
-  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB7A80; the stand 20 m from it, the next spawn point 41 m
+  # cell (-26, 31) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEB7A80; the stand 16 m from it, the next spawn point 44 m
   # subject: -103936 127488 675
   do:
   - console: {line: cow ARG_Province -26 31, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -102946
-  - console: player.setpos y 126498
-  - console: player.setpos z 524
+  - console: player.setpos x -103144
+  - console: player.setpos y 126696
+  - console: player.setpos z 549
   - wait: 6
   expect:
   - {read: [player], path: pos, keep: marsh_a_arrive}
@@ -74,6 +75,40 @@ steps:
   - {read: [actors, "2801"], path: listed.0, ne: null, keep: marsh_a_first}
   - {read: [actors, "2801"], path: listed, keep: marsh_a}
   - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: marsh_a_kinds}
+- name: marsh-a-probe
+  # the land-spawn probe, state of the spawn ref ArgoniaWorld.esm|0xEB7A80 (template NPC_ ArgoniaWorld.esm|0x0D1044, list ArgoniaWorld.esm|0x0D0044) at the marsh-a stand; keeps every field
+  # subject: -103936 127488 675
+  do:
+  - console: {line: cow ARG_Province -26 31, settle: 60}
+  - wait: 8
+  - console: set gamehour to 13
+  - console: player.setpos x -103144
+  - console: player.setpos y 126696
+  - console: player.setpos z 549
+  - wait: 6
+  expect:
+  - {read: [player], path: pos, keep: marsh_a_probe_arrive}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: refs, keep: marsh_a_probe_spawn}
+  - {read: [actors, "2801", "ArgoniaWorld.esm|0xEB7A80"], path: counts, keep: marsh_a_probe_counts}
+  - {read: [refs, "ArgoniaWorld.esm|0x0D1044", "2801"], path: count, keep: marsh_a_probe_template_count}
+  - {read: [refs, "ArgoniaWorld.esm|0x0D1044", "2801"], path: refs, keep: marsh_a_probe_template_refs}
+  - {read: [actors, "2801"], path: listed, keep: marsh_a_probe_before}
+- name: marsh-a-probe-list
+  # player.placeatme the levelled list ArgoniaWorld.esm|0x0D0044 at the stand (follows marsh-a-probe, no new teleport); the actors within 40 m, at least one of the list's kinds
+  do:
+  - console: player.placeatme ArgoniaWorld.esm|0x0D0044 1
+  - wait: 6
+  expect:
+  - {read: [actors, "2801"], path: listed, keep: marsh_a_probe_list}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: marsh_a_probe_list_kinds}
+- name: marsh-a-probe-entry
+  # player.placeatme its first concrete entry ArgoniaWorld.esm|0x0D4020 at the stand (follows marsh-a-probe, no new teleport); the actors within 40 m, at least one of the list's kinds
+  do:
+  - console: player.placeatme ArgoniaWorld.esm|0x0D4020 1
+  - wait: 6
+  expect:
+  - {read: [actors, "2801"], path: listed, keep: marsh_a_probe_entry}
+  - {read: [actors, "2801"], path: listed, kinds: {ge: 1, among: ["Bog Dog", "Crow", "Fellrunner", "Fleshfly Swarm", "Giant Centipede", "Giant Snail", "Giant Wasp", "Hackwing", "Hoarvor", "Jassa Red Slug", "Marsh Rat", "Moon Adder", "Red Hooped Tree-Viper"]}, keep: marsh_a_probe_entry_kinds}
 - name: marsh-b
   # cell (-26, 34) flooded-forest D3 land: list lvln.flooded-forest.D3.land, spawn ref ArgoniaWorld.esm|0xEBD900; the stand 20 m from it, the next spawn point 49 m
   # subject: -105984 139264 2131

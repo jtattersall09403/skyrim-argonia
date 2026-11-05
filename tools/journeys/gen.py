@@ -957,6 +957,25 @@ def _kinds_spawns(w, b: Build) -> dict:
     return out
 
 
+def _land_probe(b: Build, w, cands: list) -> str:
+    """The probe steps (creatures.journey.probe_steps) at the first western-frontier LAND spawn with a dry, clear stand."""
+    from tools.argonia_world.creatures.journey import list_kinds, probe_steps
+    for _, r, _n, _same in cands:
+        if r["medium"] != "land":
+            continue
+        subj = (r["x"], r["y"], b.ground_u(r["x"], r["y"]) + 0.5 * U)
+        f = place(b, subj, 20.0 * U, around(270.0), band=KINDS_BAND_M)
+        if not (f["clear"] and f["dry"]):
+            continue
+        x, y = f["x"], f["y"]
+        cx, cy = r["cell"]
+        go = [f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}", "  - wait: 8", "  - console: set gamehour to 13",
+              "  - settle: {cap: 14, min: 3}", f"  - console: player.setpos x {x:.0f}", f"  - console: player.setpos y {y:.0f}",
+              f"  - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", "  - wait: 10"]
+        return "\n".join(probe_steps(w, "western-frontier", r, r["ref"], go, list_kinds(w, r["base"]), subj)) + "\n"
+    raise SystemExit("creatures-kinds: no western-frontier land spawn with a dry, clear stand for the probe")
+
+
 def creatures_kinds(b: Build, w, log: list) -> str:
     from tools.argonia_world.creatures.journey import list_kinds
     spots = _kinds_spawns(w, b)
@@ -999,6 +1018,8 @@ def creatures_kinds(b: Build, w, log: list) -> str:
             f"  - {{read: [actors, {rad}], path: listed, keep: {key}}}",
             f"  - {{read: [actors, {rad}], path: listed, kinds: {{ge: {min(KINDS_N, len(among))}, "
             f"among: {json.dumps(among)}}}, keep: {key}_kinds}}"]) + "\n"
+        if c == "western-frontier":   # lane 1.15-r6-land-spawn-probe: a D3 land spawn read nothing in r6-chain23
+            text += _land_probe(b, w, spots[c])
     refs = [b.ref(e) for e in GUAR_EDIDS]
     if not all(refs):
         raise SystemExit("creatures-kinds: the kept guar are not placed in this build")
