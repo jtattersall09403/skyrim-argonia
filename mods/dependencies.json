@@ -36,10 +36,6 @@
    "mod": "bmv"
   },
   {
-   "file": "Alternate Start - Live Another Life.esp",
-   "mod": "alternate-start"
-  },
-  {
    "file": "Ultimate Dodge Mod.esp",
    "mod": "tudmr"
   },
@@ -830,35 +826,6 @@
     "meshes/vurt/deadtrees/vurt_treewigs.nif"
    ],
    "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name, plus BM&V's landscape pack (textures/TEXTUREPACK/landscape, 118 files) that our TXST records point the ground's LTEX at (1.15 materials); flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
-  },
-  {
-   "id": "alternate-start",
-   "group": "start",
-   "source": {
-    "nexus": "skyrimspecialedition",
-    "mod": 272,
-    "file": 729409
-   },
-   "name": "Alternate Start - Live Another Life - SSE",
-   "author": "Arthmoor",
-   "version": "4.2.6a",
-   "archive": "Alternate Start - Live Another Life-272-4-2-6a-1772996477.7z",
-   "size_kb": 5295,
-   "why": "starts the player in Black Marsh instead of the Helgen cart",
-   "required": true,
-   "profile": "play",
-   "sha256": "5d4abc988f28e439ce47650b80b14c0c330f83a9222c4d9b4b4e92fff52ec7f7",
-   "licence": "not read",
-   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
-   "ai_clause": "not read",
-   "permission_ask": true,
-   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
-   "runtime": "not checked on 1.7.104.0",
-   "conflicts": "not checked",
-   "linked_or_forked_by": "none: depended on as the player's own download",
-   "plugins": [
-    "Alternate Start - Live Another Life.esp"
-   ]
   },
   {
    "id": "tudmr",

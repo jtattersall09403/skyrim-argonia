@@ -6,27 +6,34 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
 
 - **The stack.** `mods/dependencies.json` holds the new list: core (SKSE, Address Library, USSEP, Pandora, OAR,
   the DLL fixes), the collection's 31 mods as rows, FreeClimb, Magic Expanded, BM&V (the ModDB archive from the
-  private bucket), Alternate Start - Live Another Life, houseCARL. `stack.py fetch --record` fills the hashes;
+  private bucket), houseCARL. `stack.py fetch --record` fills the hashes;
   `stage` applies the FOMOD choices; `push` and `stack.ps1 on` lay the hard links; Pandora runs on the machine.
 - **Rebase the collection onto 1.7.104.** The collection was pinned for AE 1.6: DAR is replaced by Open
   Animation Replacer, Nemesis by Pandora, and the AE-era DLLs (Stop On Slash, Elden Counter, Animated Armoury's
   DLL if any) are checked for a 1.7.x build or dropped with a note. houseCARL reports conflicts and missing
   masters; the game reaches the main menu with every DLL loaded (SKSE's log).
-- **The start.** Our plugin adds a Live Another Life start option that places the player in Black Marsh
-  (LAL's addon pattern: a start quest, a marker in a BM&V cell, a line in the statue's dialogue), the opening
-  taken from the story's prisoner work-detail premise in its lightest form. If LAL's addon route fails, the
-  seed in `papyrus/ARG_StartQuestScript.psc` (a start-game-enabled quest that moves the player) is the fallback.
-- **The shutdown.** Our plugin stops what still fires with LAL: the main quest chain from MQ102 on (no dragon
+- **The start: a new game goes straight into our own opening, Enderal-style.** No Helgen, no cart, no
+  alternate-start statue or menu. Our plugin carries a start quest (Start Game Enabled, run before anything else)
+  that, on a new game: stops the vanilla intro `MQ101` before its cart scene, opens the race menu for character
+  creation, and moves the player to our opening's marker in Black Marsh. In this phase the opening is its lightest
+  form: the player wakes on the prisoner work detail at a BM&V place (Lilmoth's dock cell `Dock1` or another
+  BM&V exterior picked from the census; BM&V's only link to Skyrim is a ship door placed under the sea, so there
+  is no in-world arrival to reuse), with a work-detail outfit and a one-line journal entry. Phase 3 replaces it with
+  the authored opening act. The method is how total conversions on Skyrim's engine do it: Enderal ships its own
+  master and its own start quest; on top of Skyrim.esm the same effect comes from an `MQ101` override (its
+  Start Game Enabled flag and stage-0 fragment) plus our start quest, seeded by
+  `papyrus/ARG_StartQuestScript.psc`. The agent proves the record diff in xEdit; the owner sees it in the walk.
+- **The shutdown.** Our plugin stops what still fires once Helgen is skipped: the main quest chain from MQ102 on (no dragon
   ever rises), the civil war, the Thieves Guild, Dark Brotherhood and inheritance couriers, World Interaction and
   radiant quests, bounty letters. Method in route order: Start Game Enabled off in an override, story-manager node
   conditions, a startup script that stops the rest. The allow-list of quests that may run (the mods' own
-  controller and MCM quests, LAL's, BM&V's) is written in this phase as `mods/allowed-quests.json`; a console
+  controller and MCM quests, BM&V's, ours) is written in this phase as `mods/allowed-quests.json`; a console
   `sqs`-style listing after 30 in-game days is the proof the owner can take, and the agent proves the override
   diff in xEdit first.
 - **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
   one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly.
-- **Owner test (the first walk):** new game, choose the Black Marsh start, arrive in BM&V; a fight with the
+- **Owner test (the first walk):** new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the
   collection's moveset, a climb, a Morrowind spell from Magic Expanded, a walk between two BM&V places; then wait
   30 days: no dragon, no courier, no civil-war or guild starts; the journal holds only what the allow-list says.

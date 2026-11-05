@@ -11,6 +11,8 @@ added here the day they are made, with the date and the issue.
   FreeClimb + Morrowind magic (Magic Expanded). BM&V is the default world: a start mod puts the player in Black
   Marsh; the main quest, dragon attacks, the civil war, the Thieves Guild couriers and Skyrim's radiant quests are
   stopped.
+- A new game takes the player straight into our own authored opening, nothing via Helgen and no alternate-start
+  menu, as Enderal does it (2026-11-05).
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

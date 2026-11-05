@@ -9,8 +9,8 @@ cache `s3://argonia-private-050977237313/mods/`.
 `dependencies.json` holds one row per mod: id, name, group, source (Nexus mod/file, GitHub release, or `vault`
 for a manual download held only in the private cache), version, why, the licence and permission fields, and the
 archive's sha256. Groups: `core` (script extender, fixes, frameworks, USSEP, the TDM/TrueHUD lock-on), `combat`,
-`traversal` (FreeClimb), `magic` (Magic Expanded), `world` (Black Marsh & Valenwood, the default world), `start`
-(Alternate Start), `dev` (houseCARL, laid only with `--dev`). Row order is load order; `plugins` lists the result.
+`traversal` (FreeClimb), `magic` (Magic Expanded), `world` (Black Marsh & Valenwood, the default world),
+`dev` (houseCARL, laid only with `--dev`). Row order is load order; `plugins` lists the result.
 A `check` field is an open question to answer before the row is trusted. `sourcing-register.json` records every
 mod and tool we depend on.
 
@@ -36,7 +36,7 @@ every DLL's load) or find the 1.7.x build.
 
 The vanilla-shutdown list in `docs/decisions/0012` is the spec for PLAN Phase 1's "shut the vanilla systems down"
 step; that phase writes `mods/allowed-quests.json`, the quests that may still run (the mods' controller and MCM
-quests, Live Another Life's, BM&V's), and proves the rest stopped.
+quests, BM&V's, ours), and proves the rest stopped.
 
 ## Staging notes (Phase 1, 2026-11-05)
 

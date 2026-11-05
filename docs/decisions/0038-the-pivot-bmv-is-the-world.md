@@ -14,8 +14,8 @@ as light as possible.
 ## Decision
 
 1. The game is **vanilla Skyrim SE + Black Marsh & Valenwood + the Nexus collection xyf1u3 (soulslike combat)
-   + FreeClimb + Magic Expanded**, with BM&V as the **default world**: an Alternate Start-style start in Black
-   Marsh, and the vanilla main quest, dragons, civil war, couriers and radiant quests shut down.
+   + FreeClimb + Magic Expanded**, with BM&V as the **default world**: a new game goes straight into our own
+   opening in Black Marsh (Enderal-style, no Helgen; owner, 2026-11-05), and the vanilla main quest, dragons, civil war, couriers and radiant quests shut down.
 2. Once that works on the play machine, the work is **our storyline, quests and factions modded on top of
    BM&V's world** with minimal tweaks (NPCs, items, bosses, creatures added, removed or changed).
 3. **Process:** agents avoid in-game testing; the owner tests. A small number of building blocks are proved

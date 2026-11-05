@@ -333,15 +333,6 @@
   "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
  },
  {
-  "name": "Alternate Start - Live Another Life - SSE (Nexus 272)",
-  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/272?tab=files&file_id=729409",
-  "version": "4.2.6a (archive sha256 5d4abc988f28..., mods/dependencies.json row alternate-start)",
-  "licence": "not read",
-  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): starts the player in Black Marsh instead of the Helgen cart",
-  "linked_or_forked_by": "none: depended on as the player's own download",
-  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
- },
- {
   "name": "(DMC) The Ultimate Dodge Mod Reanimated - TUDMR (Nexus 33049)",
   "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33049?tab=files&file_id=130315",
   "version": "1.1 (archive sha256 0f8deaa3947b..., mods/dependencies.json row tudmr)",

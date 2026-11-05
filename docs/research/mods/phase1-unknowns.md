@@ -1,5 +1,9 @@
 # Phase 1 unknowns: AE-era DLLs on 1.7.104, the LAL addon pattern, BM&V's start facts
 
+**Superseded in part (owner, 2026-11-05):** no alternate-start mod; a new game goes straight into our own opening
+(Enderal-style). §2 (the LAL addon pattern) and the LAL rows of §3's conflict list no longer apply; the BM&V start
+cells, the DLL verdicts and the BM&V vs USSEP overrides still stand.
+
 Researched 2026-11-05 for [phase 1](../../phases/1-stack-in-bmv.md). [V] = fetched or measured today, [K] = prior knowledge, unproven here.
 Live docs: `mods/README.md` (Combat section) says Stop On Slash and Elden Counter are "AE-era DLLs: confirm each loads"; this note
 answers that (verdicts below) and corrects `mods/dependencies.json` row `pace` (it says "PACE combat AI"; PACE is a movement-speed mod).

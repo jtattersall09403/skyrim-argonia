@@ -7,4 +7,4 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 
 | Script | What it does |
 |---|---|
-| `ARG_StartQuestScript.psc` | the seed of a start quest: on `OnInit`, fade to black and move the player to a marker. The fallback for the Black Marsh start if the Live Another Life addon route fails (PLAN Phase 1) |
+| `ARG_StartQuestScript.psc` | the seed of a start quest: on `OnInit`, fade to black and move the player to a marker. Grows into our start quest: a new game skips Helgen and goes straight into our opening in Black Marsh (PLAN Phase 1) |

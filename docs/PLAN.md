@@ -11,7 +11,7 @@ A free Skyrim SE mod set, playable by the owner over the stream, made of:
 
 1. **Vanilla Skyrim SE** at the pinned runtime (1.7.104, SKSE 2.3.1; [0002](decisions/0002-one-pinned-skyrim-runtime.md)).
 2. **Black Marsh & Valenwood (BM&V)** as the **default world**: a new game starts in Black Marsh through an
-   Alternate Start-style mod, and the vanilla systems that would still fire are shut down (the main quest, dragon
+   start quest of our own that skips Helgen and goes straight into our opening (Enderal-style), and the vanilla systems that would still fire are shut down (the main quest, dragon
    attacks, the civil war, the Thieves Guild and other couriers, Skyrim's radiant quests;
    [0012](decisions/0012-vanilla-skyrim-is-quarantined.md)).
 3. **Soulslike combat** from the Nexus collection
@@ -81,7 +81,7 @@ file in [phases/](phases/), edited as the phase goes.
 
 - The collection's AE-era DLLs may have no 1.7.104 build; the fix is a newer equivalent mod or dropping that one
   behaviour, decided in Phase 1 and recorded in `mods/README.md`.
-- BM&V may fight LAL or USSEP (missing masters, overridden cells); houseCARL's report decides the load order.
+- BM&V may fight USSEP (missing masters, overridden cells); houseCARL's report and a record-conflict census decide the load order.
 - New NPCs with new faces need FaceGen from the Creation Kit; B2 avoids it with templates, and the CK route is
   used only if a unique face is worth it.
 - Spot capacity for a g6.xlarge can be scarce; the play page waits and retries, the region is chosen by
