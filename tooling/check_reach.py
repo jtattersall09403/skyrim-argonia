@@ -25,7 +25,7 @@ REPO = Path(__file__).resolve().parents[1]
 ROUND = Path(os.environ.get("ARGONIA_ROUND_DIR", Path.home() / ".argonia" / "round"))
 GREEN = ROUND / "gate-green"
 MAX_AGE = 24 * 3600
-PARTS = ["guard", "lint", "unit", "budget", "links", "records", "ledger", "world", "roads-census", "plugin-check", "skse", "immersion", "ui"]
+PARTS = ["guard", "lint", "unit", "budget", "links", "records", "ledger", "world", "roads-census", "edges-census", "plugin-check", "skse", "immersion", "ui"]
 
 # (glob, steps). `**` crosses directories, `*` does not. First match wins, so narrow rules come first.
 # "unit" means the pytest directories beside the file; "unit:all" the whole unit step.
@@ -37,16 +37,16 @@ RULES: list[tuple[str, list[str]]] = [
     ("**/*.md", ["links"]),
     # the world database and what builds from it
     ("world/db/build_ref.jsonl", ["world"]),
-    ("out/terrain/ground.stamp", ["roads-census"]),  # a land rebuild: the census reads the new ground
+    ("out/terrain/ground.stamp", ["roads-census", "edges-census"]),  # a land rebuild: the census reads the new ground
     ("world/**", ["world", "plugin-check", "immersion", "unit"]),
     ("data/**", ["world"]),
     ("tools/argonia_world/skyrim_units.py", ["lint", "unit:all", "world", "plugin-check"]),
     ("tools/argonia_world/db.py", ["lint", "unit:all", "world", "plugin-check"]),
     ("tools/argonia_world/checks.py", ["lint", "unit", "world"]),
-    ("tools/argonia_world/water/**", ["lint", "unit", "world", "roads-census"]),
+    ("tools/argonia_world/water/**", ["lint", "unit", "world", "roads-census", "edges-census"]),
     ("tools/argonia_world/vegetation/**", ["lint", "unit", "world"]),
     ("tools/argonia_world/routes/**", ["lint", "unit", "world", "roads-census"]),
-    ("tools/argonia_world/terrain/**", ["lint", "unit", "world", "roads-census"]),
+    ("tools/argonia_world/terrain/**", ["lint", "unit", "world", "roads-census", "edges-census"]),
     ("tools/argonia_world/**/tests/**", ["lint", "unit"]),
     ("tools/argonia_world/**", ["lint", "unit", "world", "plugin-check"]),
     ("plugin/**", ["plugin-check"]),

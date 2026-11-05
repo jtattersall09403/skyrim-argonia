@@ -55,6 +55,7 @@ def main():
     chain, foot_run = [], []
     lip, run, worst, face, foot = [], [], [], [], []
     drops, over, lower_wet, uppers = [], [], [], set()
+    bed_range, cell_fall, face_end = [], [], []
     for (x, y), _ in list(water.items()):
         for dx, dy, se, so in ((1, 0, "e", "w"), (-1, 0, "w", "e"), (0, 1, "n", "s"), (0, -1, "s", "n")):
             o = (x + dx, y + dy)
@@ -89,6 +90,15 @@ def main():
                 lower_wet.append(float((land[o] < ho).mean()))
                 uppers.add((x, y))
                 chain.append(o)
+                # lane 1.15-r6-stepped-pools: the upper cell's pool, the bed along the flow (each row in from the step
+                # line, its lowest vertex: the thalweg), its range under the upper level and over the whole cell; and
+                # the lower cell's thalweg from the line to its first vertex under the lower level (the falls' face)
+                t = strip(land[(x, y)], se).min(axis=0)
+                wet_t = t[t < hu]
+                bed_range.append(float(wet_t.max() - wet_t.min()) / 70.03 if wet_t.size else 0.0)
+                cell_fall.append(float(t.max() - t.min()) / 70.03)
+                lt = s.min(axis=0)
+                face_end.append(int(np.argmax(lt < ho)) if (lt < ho).any() else 33)
     again = sum(1 for o in chain if o in uppers)
     q = lambda a: np.percentile(a, [10, 50, 90]).round(2).tolist() if a else []
     worst.sort(reverse=True)
@@ -106,7 +116,10 @@ def main():
                  "drop_m_p10_50_90_max": q(drops) + [round(max(drops), 2)] if drops else [],
                  "line_max_over_upper_m_p50_90_max": np.percentile(over, [50, 90, 100]).round(2).tolist() if over else [],
                  "lower_wet_share_p10_50_90": q(lower_wet),
-                 "lower_steps_again": f"{again} of {len(chain)}"},
+                 "lower_steps_again": f"{again} of {len(chain)}",
+                 "upper_bed_range_m_p50_90_max": np.percentile(bed_range, [50, 90, 100]).round(2).tolist(),
+                 "upper_cell_thalweg_fall_m_p50_90_max": np.percentile(cell_fall, [50, 90, 100]).round(2).tolist(),
+                 "lower_thalweg_under_level_at_vertex_p10_50_90": q(face_end)},
         "worst": [{"m": round(m, 1), "cell": c, "edge": e, "kind": k, "depth_m": d} for m, c, e, k, d in worst[:20]],
     }, indent=1))
 
