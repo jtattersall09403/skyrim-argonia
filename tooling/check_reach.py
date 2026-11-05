@@ -25,7 +25,7 @@ REPO = Path(__file__).resolve().parents[1]
 ROUND = Path(os.environ.get("ARGONIA_ROUND_DIR", Path.home() / ".argonia" / "round"))
 GREEN = ROUND / "gate-green"
 MAX_AGE = 24 * 3600
-PARTS = ["guard", "lint", "unit", "budget", "links", "records", "ledger", "world", "roads-census", "edges-census", "plugin-check", "skse", "immersion", "ui"]
+PARTS = ["guard", "lint", "unit", "budget", "links", "records", "ledger", "world", "roads-census", "trees-census", "edges-census", "plugin-check", "skse", "immersion", "ui"]
 
 # (glob, steps). `**` crosses directories, `*` does not. First match wins, so narrow rules come first.
 # "unit" means the pytest directories beside the file; "unit:all" the whole unit step.
@@ -304,8 +304,7 @@ def main(argv=None) -> int:
         print(f"reach: {why_full}")
         if a.plan:
             return 0
-        rc = subprocess.run(["make", "--no-print-directory", "check"], cwd=REPO).returncode
-        return finish(rc, a)
+        return finish(run_gate(list(PARTS), {"__all__"}, [], a, full_key(a.key)), a)
     print(f"reach: {len(paths)} changed path(s) since {since}")
     if not paths:
         print("reach: nothing changed; every step skipped")
@@ -318,15 +317,28 @@ def main(argv=None) -> int:
             print(f"  skip {s}: no changed path reads it")
     if a.plan:
         return 0
-    t0 = time.time()
     steps = [x for x in PARTS if x in reached]
+    return finish(run_gate(steps, targets, paths, a, a.key), a)
+
+
+def full_key(key: str) -> str:
+    """A full run's stamp key: the caller's key plus HEAD, marked full, so a part green in a full run is not taken for a
+    green part of a narrower run and a resume of the full run skips only parts green at this commit."""
+    head = subprocess.run(["git", "rev-parse", "HEAD"], cwd=REPO, capture_output=True, text=True).stdout.strip()
+    return f"{key}|full|{head}"
+
+
+def run_gate(steps: list[str], targets: set[str], paths: list[str], a, key: str) -> int:
+    """Every step through the per-part loop with state recording: no monolithic `make check` (it restarts from zero on a
+    spot reclaim). The full run is all of PARTS, the same set `make check` runs. -> 0 green, 1 red."""
+    t0 = time.time()
     run = resumable(lambda x: run_part(x, targets, paths), Path(a.state) if a.state else None,
-                    lambda x: part_stamp(x, paths, targets, a.key))
+                    lambda x: part_stamp(x, paths, targets, key))
     res = run_pool(steps, a.jobs, run)
     red = [x for x in steps if res.get(x)]
     wall = time.time() - t0
-    print((f"REACH RED: {' '.join(red)} ({wall:.0f} s wall, {a.jobs} jobs)") if red else f"REACH GREEN ({len(reached)} steps of {len(PARTS)}, {wall:.0f} s wall, {a.jobs} jobs)")
-    return finish(1 if red else 0, a)
+    print((f"REACH RED: {' '.join(red)} ({wall:.0f} s wall, {a.jobs} jobs)") if red else f"REACH GREEN ({len(steps)} steps of {len(PARTS)}, {wall:.0f} s wall, {a.jobs} jobs)")
+    return 1 if red else 0
 
 
 def finish(rc: int, a) -> int:

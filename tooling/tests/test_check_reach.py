@@ -95,3 +95,44 @@ def test_part_stamp_follows_content(tmp_path, monkeypatch):
     f.write_text("y")
     assert a != cr.part_stamp("links", ["docs/a.md"], set(), "k")
     assert cr.part_stamp("links", ["docs/a.md"], set(), "k") != cr.part_stamp("links", ["docs/a.md"], set(), "k2")
+
+
+def test_parts_cover_make_check():
+    import re
+    mk = (cr.REPO / "Makefile").read_text()
+    make_parts = re.search(r"^PARTS := (.+)$", mk, re.M).group(1).split()
+    assert sorted(make_parts) == sorted(cr.PARTS)
+
+
+def test_full_gate_runs_every_part_resumably(tmp_path, monkeypatch):
+    """No monolithic fallback: the full run goes part by part, records each green part as it ends, and a rerun after a
+    kill skips the parts already green."""
+    state = tmp_path / "gate.state"
+    ran = []
+    monkeypatch.setattr(cr, "full_key", lambda k: k + "|full|H")
+
+    class Killed(Exception):
+        pass
+
+    def fake_part(s, targets, paths):
+        if s == cr.PARTS[2] and kill:
+            raise Killed
+        ran.append(s)
+        return 0, 0.0, ""
+
+    monkeypatch.setattr(cr, "run_part", fake_part)
+    monkeypatch.setattr(cr, "finish", lambda rc, a: rc)
+    monkeypatch.setattr(cr, "last_green", lambda: (None, None))
+    kill = True
+    import pytest
+    with pytest.raises(Killed):
+        cr.main(["--since", "auto", "--jobs", "1", "--state", str(state)])
+    done = {l.split()[0] for l in state.read_text().splitlines()}
+    assert done == set(ran) and ran  # each green part recorded as it ended
+    first = list(ran)
+    ran.clear()
+    kill = False
+    assert cr.main(["--since", "auto", "--jobs", "1", "--state", str(state)]) == 0
+    assert not set(ran) & set(first)
+    assert set(ran) | set(first) == set(cr.PARTS)
+    assert all("|full|" not in l for l in state.read_text().splitlines())  # stamps are hashes
