@@ -9,7 +9,7 @@ namespace argonia::core::gen {
 
 // One record of ours by its world id: the plugin that holds it, its signature and its local FormID.
 struct FormRow { std::string_view id, plugin, type; std::uint32_t local; };
-inline constexpr std::array<FormRow, 1667> kForms{{
+inline constexpr std::array<FormRow, 1669> kForms{{
     {"birthsign.serpent", "Argonia.esm", "SPEL", 0x000808},
     {"border.wall.0.0", "Argonia.esm", "REFR", 0x0009FA},
     {"border.wall.0.1", "Argonia.esm", "REFR", 0x0009FB},
@@ -657,6 +657,7 @@ inline constexpr std::array<FormRow, 1667> kForms{{
     {"hook.vastei-pile", "Argonia.esm", "KYWD", 0x00085A},
     {"image_space.dawn", "Argonia.esm", "IMGS", 0x000809},
     {"image_space.day", "Argonia.esm", "IMGS", 0x00080A},
+    {"image_space.day-neutral", "Argonia.esm", "IMGS", 0x000F04},
     {"image_space.haze", "Argonia.esm", "IMGS", 0x00080B},
     {"image_space.mist", "Argonia.esm", "IMGS", 0x00080C},
     {"image_space.montane", "Argonia.esm", "IMGS", 0x000E97},
@@ -1609,6 +1610,7 @@ inline constexpr std::array<FormRow, 1667> kForms{{
     {"weapon_class.shortBlade", "Argonia.esm", "KYWD", 0x00083E},
     {"weapon_class.spear", "Argonia.esm", "KYWD", 0x00083F},
     {"weather.clear-dry", "Argonia.esm", "WTHR", 0x000E9B},
+    {"weather.clear-dry-neutral", "Argonia.esm", "WTHR", 0x000F03},
     {"weather.mist", "Argonia.esm", "WTHR", 0x00080F},
     {"weather.mist-20m", "Argonia.esm", "WTHR", 0x000ED4},
     {"weather.mist-25m", "Argonia.esm", "WTHR", 0x000ED5},

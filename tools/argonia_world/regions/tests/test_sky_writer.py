@@ -84,18 +84,29 @@ def test_written_sky_follows_its_templates(tmp_path):
     ours = {x.formid & 0xFFFFFF: x for x in esm.records(out.read_bytes()) if x.sig in ("WTHR", "IMGS")}
     # each template as the game resolves it: the load order's last plugin carrying it (Tropical Skyrim's restyle
     # first; lane 1.15-r5-sky-2), every one of ours named by the record
-    plugin = {r["template"]: r["templatePlugin"] for r in images + weathers}
+    # (the grade A/B twin, api.SKYRIM_PINNED, names Skyrim.esm's own: each record judged against its own plugin's)
+    plugin = {r["template"]: r["templatePlugin"] for r in images + weathers if r["templatePlugin"] != "Skyrim.esm"}
     assert plugin["00081A:Skyrim.esm"] == plugin["10A1EE:Skyrim.esm"] == "Tropical Skyrim.esp"
-    van = {}
-    for p in dict.fromkeys(plugin.values()):
+    vans = {}
+    for p in dict.fromkeys(r["templatePlugin"] for r in images + weathers):
         byid = {x.formid & 0xFFFFFF: x for x in esm.records((GAME / p).read_bytes()) if x.sig in ("WTHR", "IMGS")}
-        van.update({_fid(k): byid[_fid(k)] for k, q in plugin.items() if q == p})
+        vans.update({(_fid(r["template"]), p): byid[_fid(r["template"])] for r in images + weathers
+                     if r["templatePlugin"] == p})
+    tp = {r["formKey"]: r["templatePlugin"] for r in images + weathers}
+
+    class _Van(dict):  # van[fid] for the record being judged (set by `rec`)
+        rec = None
+
+        def __getitem__(self, k):
+            return vans[k, tp[self.rec]]
+    van = _Van()
     upd = {x.formid & 0xFFFFFF: x for x in esm.records((GAME / "Update.esm").read_bytes()) if x.sig == "WTHR"}
     hn = {w["edid"]: ours[_fid(w["formKey"])].first("HNAM") for w in weathers}
     assert any(hn["ARG_Weather_clear_dry"]) and any(hn["ARG_Weather_mist"])  # god rays linked on clear and mist
-    edid = {k: (v.first("EDID") or b"").rstrip(b"\0").decode() for k, v in van.items()}
+    edid = {k: (v.first("EDID") or b"").rstrip(b"\0").decode() for (k, _p), v in vans.items()}
     errs = []
     for w in weathers:
+        van.rec = w["formKey"]
         errs += [f"{w['edid']}: {e}" for e in checks.sky_clouds(ours[_fid(w["formKey"])], van[_fid(w["template"])],
                                                                 "Pleasant" in w["flags"])]
         errs += [f"{w['edid']}: {e}" for e in checks.sky_paint(ours[_fid(w["formKey"])], van[_fid(w["template"])])]
@@ -110,6 +121,7 @@ def test_written_sky_follows_its_templates(tmp_path):
             if tod in ("sunrise", "sunset") and key == w["images"]["day"]:
                 continue  # one image all day (mist, overcast, rain, storm): judged as the day's
             i = next(x for x in images if x["formKey"] == key)
+            van.rec = key
             errs += [f"{w['edid']} {i['edid']}: {e}" for e in checks.sky_image(
                 ours[_fid(key)], van[_fid(i["template"])], tod, edid[_fid(i["template"])])]
             if i["gradeFromTemplate"]:  # a clear weather's image: the template's grade and tint (lane 1.15-r6-light)

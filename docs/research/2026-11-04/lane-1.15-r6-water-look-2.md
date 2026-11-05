@@ -58,3 +58,20 @@ Keep Tropical Skyrim's clear-day grade (yellow-green tint 0.56 x DCE1AE, fog 888
 ## Next scan must show
 Black swamp water near-black (V < .15) and grey, not olive; the stream reads clear over its bed, with flow judged on a
 clip; the cast row stays open until the owner rules.
+
+## The owner's A/B for the cast (coordinator, after the first hand-back)
+- One source on the road too: the Blackwood Road frames (r6-chain23 05-road-look) read 7C8C6F / 7D8C71 / 687454
+  (82-93°); every region's noon is the one clear-dry WTHR and its `day` IMGS (Tropical's 10A1EE).
+- `clear-dry-neutral` (ARG_Weather_clear_dry_neutral, 000F03:Argonia.esm): clear-dry's DB rows copied (db.py; the
+  seed carries it too); its day image space `day-neutral` (ARG_ImageSpace_day_skyrim, 000F04). `api.SKYRIM_PINNED`
+  names both: their templatePlugin is Skyrim.esm, so the writer takes SkyrimClear's light (fog near included) and
+  ISSkyrimClearDAY_FF's grade and tint (1.3/1.1/1.25, 0.56 x DBCCBA). No region list draws it. The DB's tint_amount
+  check (at most 0.03) is why it is the pinned template, not our own row. Reseeding with `migrate --weathers-1-15`
+  is refused: the seed is behind the DB for monsoon-overcast, montane-haze and tannin-haze (11 slot errors), so the
+  rows went in directly.
+- Journey `grade-ab` (gen.grade_ab, DERIVED, batch after road-look): coastal-lagoon-shore at sky-ab's marker and aim
+  (yaw 154, pitch 0) and road-look's blackwood-20 stand, each `-tropical` and `-skyrim` at 12:00, scan 6, with
+  position and weather read back. refresh, check (0 stale), lint and dry all ok.
+- Tests: test_no_yellow_sky (the twin differs from clear-dry only in its day image, Skyrim.esm pinned, not in any
+  list); test_sky_writer judges each record against its own plugin's template.
+- Owed before deploy: `make plugin` (plugin/Argonia/ gains the two records' YAML).

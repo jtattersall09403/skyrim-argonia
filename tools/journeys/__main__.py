@@ -100,6 +100,8 @@ def refresh(only: set[str] | None = None) -> int:
         p.write_text(look.reaim(b, p.read_text(), "road-look", log, lambda d: (d, d), 0.0))
     if want("bridge-look"):
         (JOURNEYS / "bridge-look.yaml").write_text(gen.bridge_look(b, w, log))
+    if want("grade-ab"):   # after road-look and sky-ab: their stands
+        (JOURNEYS / "grade-ab.yaml").write_text(gen.grade_ab(Build()))
     if want("junction-dry"):
         (JOURNEYS / "junction-dry.yaml").write_text(gen.junction_dry(b, w, log))
     if want("ground-materials"):

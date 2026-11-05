@@ -668,6 +668,7 @@
 {"editor_id":"ARG_HoldingCell","plugin":"Argonia.esm","form_id":2050,"record_type":"CELL"}
 {"editor_id":"ARG_HoldingFloor","plugin":"Argonia.esm","form_id":2052,"record_type":"REFR"}
 {"editor_id":"ARG_HoldingMarker","plugin":"Argonia.esm","form_id":2051,"record_type":"REFR"}
+{"editor_id":"ARG_ImageSpace_day_skyrim","plugin":"Argonia.esm","form_id":3844,"record_type":"IMGS","entity_key":"image_space.day-neutral"}
 {"editor_id":"ARG_ImageSpace_marsh_dawn","plugin":"Argonia.esm","form_id":2057,"record_type":"IMGS","entity_key":"image_space.dawn"}
 {"editor_id":"ARG_ImageSpace_marsh_day","plugin":"Argonia.esm","form_id":2058,"record_type":"IMGS","entity_key":"image_space.day"}
 {"editor_id":"ARG_ImageSpace_marsh_haze","plugin":"Argonia.esm","form_id":2059,"record_type":"IMGS","entity_key":"image_space.haze"}
@@ -1814,6 +1815,7 @@
 {"editor_id":"ARG_Weap_SteelScimitar","plugin":"Argonia.esm","form_id":3728,"record_type":"WEAP","entity_key":"item.steel-scimitar"}
 {"editor_id":"ARG_Weap_SteelSword","plugin":"Argonia.esm","form_id":2112,"record_type":"WEAP","entity_key":"item.steel-sword"}
 {"editor_id":"ARG_Weather_clear_dry","plugin":"Argonia.esm","form_id":3739,"record_type":"WTHR","entity_key":"weather.clear-dry"}
+{"editor_id":"ARG_Weather_clear_dry_neutral","plugin":"Argonia.esm","form_id":3843,"record_type":"WTHR","entity_key":"weather.clear-dry-neutral"}
 {"editor_id":"ARG_Weather_mist","plugin":"Argonia.esm","form_id":2063,"record_type":"WTHR","entity_key":"weather.mist"}
 {"editor_id":"ARG_Weather_mist_20m","plugin":"Argonia.esm","form_id":3796,"record_type":"WTHR","entity_key":"weather.mist-20m"}
 {"editor_id":"ARG_Weather_mist_25m","plugin":"Argonia.esm","form_id":3797,"record_type":"WTHR","entity_key":"weather.mist-25m"}

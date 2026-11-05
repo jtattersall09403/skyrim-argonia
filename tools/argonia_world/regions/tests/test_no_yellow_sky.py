@@ -63,3 +63,26 @@ def test_rain_storm_and_overcast_images_keep_our_untinted_grade():
             row = w.query("SELECT tint_amount FROM image_space WHERE id = ?", i)[0]
             assert row["tint_amount"] == 0.0, (r["id"], i)
     assert not graded & {"rain", "storm", "overcast"}
+
+
+def test_grade_ab_twin_is_clear_dry_on_skyrims_own_clear_light_and_grade():
+    """The owner's noon-cast A/B (lane 1.15-r6-water-look-2): clear-dry-neutral is clear-dry but for its day image
+    space, and both resolve to Skyrim.esm's own records (SkyrimClear, ISSkyrimClearDAY_FF), in no region's list."""
+    from tools.argonia_world import db
+    from tools.argonia_world.formids import Allocator
+    w = db.open()
+    a, b = (dict(w.query("SELECT * FROM weather WHERE id = ?", i)[0]) for i in ("clear-dry", "clear-dry-neutral"))
+    assert {k for k in a if a[k] != b[k]} == {"id", "edid", "image_day_id", "why"}
+    assert b["image_day_id"] == "day-neutral" and a["image_day_id"] == "day"
+    col = "SELECT slot, tod, rgb FROM weather_colour WHERE weather_id = ? ORDER BY slot, tod"
+    assert [tuple(r) for r in w.query(col, "clear-dry")] == [tuple(r) for r in w.query(col, "clear-dry-neutral")]
+    assert not w.query("SELECT 1 FROM land_region_weather WHERE weather_id = 'clear-dry-neutral'")
+    imgs, _ = api._image_records(Allocator(w, frozen=True), w)
+    by = {r["edid"]: r for r in imgs}
+    n, t = by["ARG_ImageSpace_day_skyrim"], by["ARG_ImageSpace_marsh_day"]
+    assert n["template"] == t["template"] == "10A1EE:Skyrim.esm" and n["gradeFromTemplate"] and t["gradeFromTemplate"]
+    assert n["templatePlugin"] == "Skyrim.esm" and t["templatePlugin"] == "Tropical Skyrim.esp"
+    wx = {r["edid"]: r for r in api._weather_records(Allocator(w, frozen=True), w, _)}
+    assert wx["ARG_Weather_clear_dry_neutral"]["templatePlugin"] == "Skyrim.esm"
+    assert wx["ARG_Weather_clear_dry_neutral"]["formKey"] == "000F03:Argonia.esm"
+    assert wx["ARG_Weather_clear_dry_neutral"]["lightFromTemplate"]

@@ -42,7 +42,8 @@ TRUNKED = ("canopy", "emergent", "palm", "mangrove", "gallery", "cliff-tree", "d
 CROWN_FROM, TRUNK_U = 0.4, 25.0   # a tree's crown from 0.4 of its height up; below it a trunk ~0.35 m round
 # The data-driven journeys: refresh re-derives them, the L1 test checks them.
 DERIVED = ("world-panel", "river-steps", "water-types", "road-look", "claywater-walk", "claywater-look", "creature-spots", "tree-seat",
-           "rock-booth", "creatures-kinds", "sky-ab", "bridge-look", "junction-dry")
+           "rock-booth", "creatures-kinds", "sky-ab", "bridge-look", "junction-dry",
+           "grade-ab")
 
 SETPOS = re.compile(r"player\.setpos ([xyz]) (-?\d+(?:\.\d+)?)")
 SETANGLE = re.compile(r"player\.setangle ([xz]) (-?\d+(?:\.\d+)?)")
@@ -465,6 +466,10 @@ def check(b: Build, names=DERIVED) -> dict[str, list[str]]:
         if n == "sky-ab":   # derived from the panel markers' positions, not stands
             from tools.journeys import gen
             out[n] = gen.sky_ab_stale(b)
+            continue
+        if n == "grade-ab":   # derived from sky-ab's marker and road-look's stand
+            from tools.journeys import gen
+            out[n] = [] if text == gen.grade_ab(b) else ["grade-ab differs from its generator (refresh --only grade-ab)"]
             continue
         j = yaml.safe_load(text)
         ss = stands(text) + scene_stands(j.get("scene") or "")

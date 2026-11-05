@@ -42,6 +42,11 @@ WEATHERS = {
     "clear-dry": ("ARG_Weather_clear_dry", "clear", "clear-humid", 15, 1400, 5, 714, "day", "dawn", "night",
                   "dry-season subsidence clear: the NW dry pole's best visibility, a pale hot sky over olive haze "
                   "(climatology §4 NW border; 55 §98 cloudless days belong to dry spells)"),
+    # the owner's A/B for the noon cast (lane 1.15-r6-water-look-2): clear-dry with Skyrim.esm's own clear light and
+    # clear-day grade (api.SKYRIM_PINNED), in no region's list; only the grade-ab journey forces it
+    "clear-dry-neutral": ("ARG_Weather_clear_dry_neutral", "clear", "clear-humid", 15, 1400, 5, 714, "day-neutral",
+                          "dawn", "night", "A/B twin of clear-dry: Skyrim.esm's SkyrimClear light and its clear-day "
+                          "image space, against Tropical Skyrim's (owner call, lane 1.15-r6-water-look-2)"),
     "monsoon-overcast": ("ARG_Weather_monsoon_overcast", "cloudy-ma", "monsoon-downpour", 15, 700, 10, 480,
                          "overcast", "overcast", "night",
                          "a monsoon break day under a full deck: flat bright light, no rain (55 §98 coverage ladder)"),
@@ -91,6 +96,8 @@ SKY = {
 IMAGES = (
     ("day", "ARG_ImageSpace_marsh_day", "10A1EE:Skyrim.esm", 1.06, 1.0, 1.05,
      "dry clear day: a little saturation for the hot greens, contrast for hard sun; colour from the slots"),
+    ("day-neutral", "ARG_ImageSpace_day_skyrim", "10A1EE:Skyrim.esm", 1.3, 1.1, 1.25,
+     "A/B: Skyrim.esm's own ISSkyrimClearDAY_FF grade and tint (0.56 x DBCCBA), not Tropical's (api.SKYRIM_PINNED)"),
     ("dawn", "ARG_ImageSpace_marsh_dawn", "10A1EB:Skyrim.esm", 1.04, 0.98, 1.02,
      "low sun through humid air: the gold is in the sunlight slot, not a screen wash"),
     ("night", "ARG_ImageSpace_marsh_night", "10A1EC:Skyrim.esm", 0.88, 0.92, 1.0,
@@ -400,3 +407,9 @@ def band_fog_height_u(lo_m: float, hi_m: float) -> float:
     b = su.metres_to_units(lo_m) + su.EYE_HEIGHT_UNITS - BANK_TOP_U
     return round((a + b) / 2, 1)
 
+
+
+# the A/B twin carries clear-dry's rows (its drawn colours are Skyrim.esm's SkyrimClear's: lightFromTemplate, pinned)
+SKY["clear-dry-neutral"] = SKY["clear-dry"]
+WHY_SLOT["clear-dry-neutral"] = WHY_SLOT["clear-dry"]
+P["clear-dry-neutral"] = P["clear-dry"]

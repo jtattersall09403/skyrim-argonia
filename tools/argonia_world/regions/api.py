@@ -304,6 +304,12 @@ def template_colours(form_key: str, data: Path = GAME_DATA) -> dict[tuple[str, s
             for i, t in enumerate(TOD)}
 
 
+# Records whose template resolves to Skyrim.esm's own, not the load order's winner: the owner's A/B for the noon cast
+# (lane 1.15-r6-water-look-2). Tropical Skyrim's ISSkyrimClearDAY_FF tints 0.56 x DCE1AE (yellow-green) where
+# Skyrim.esm's tints 0.56 x DBCCBA; its SkyrimClear's day fog near is 888A44. The twin takes Skyrim.esm's of both.
+SKYRIM_PINNED = {"image": {"day-neutral"}, "weather": {"clear-dry-neutral"}}
+
+
 def template_graded(world) -> set[str]:
     """The image spaces that take their template's cinematic grade and tint: those a clear (Pleasant) weather draws,
     which takes every colour from its template (lane 1.15-r6-light). Every other image space keeps our grade and no
@@ -327,7 +333,8 @@ def _image_records(alloc, world) -> tuple[list[dict], dict]:
         # own starting point put sky scale 1.6 against Skyrim.esm's 0.02-0.3 and white 4.0 against 0.88-1.02, a sky
         # blown to a flat pale sheet at noon
         recs.append({"type": "IMGS", "edid": i["edid"], "formKey": i["formKey"], "template": i["template_form_key"],
-                     "templatePlugin": template_plugin(i["template_form_key"]),
+                     "templatePlugin": "Skyrim.esm" if i["id"] in SKYRIM_PINNED["image"]
+                     else template_plugin(i["template_form_key"]),
                      "cinematic": {"saturation": i["saturation"], "brightness": i["brightness"],
                                    "contrast": i["contrast"]},
                      "tint": {"color": rgb(i["tint"]), "amount": i["tint_amount"]},
@@ -345,7 +352,8 @@ def _weather_records(alloc, world, images: dict) -> list[dict]:
         thunder = w["thunder"]
         recs.append({
             "type": "WTHR", "edid": w["edid"], "formKey": weather_key(alloc, w), "template": w["template_form_key"],
-            "templatePlugin": template_plugin(w["template_form_key"]),
+            "templatePlugin": "Skyrim.esm" if w["id"] in SKYRIM_PINNED["weather"]
+            else template_plugin(w["template_form_key"]),
             # the sky's paint (upper, lower, horizon, the sun disc) is the resolved template's: our authored
             # northern-pale slots read a grey-blue zenith at noon (lane 1.15-r5-sky-2; 0006 §8 Tropical first)
             "skyFromTemplate": True,
