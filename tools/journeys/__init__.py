@@ -163,6 +163,8 @@ class Build:
             from tools.journeys import canopy
             Build._shapes = canopy.reach(Build._shapes, canopy.load())   # fronds hung past the OBND (data/canopy-radius.json)
         return Build._shapes
+            from tools.journeys import canopy
+            Build._shapes = canopy.reach(Build._shapes, canopy.load())   # fronds hung past the OBND (data/canopy-radius.json)
 
     # -- placed refs -------------------------------------------------------------------------------------------------
     def ref(self, edid: str) -> dict | None:
