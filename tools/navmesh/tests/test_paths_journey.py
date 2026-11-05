@@ -25,4 +25,10 @@ def test_arrival_order_teleport_settle_then_polled_worldspace():
     assert s["name"] == "a00-arrive"
     assert [next(iter(d)) for d in s["do"]] == ["teleport", "settle"]
     assert s["do"][1]["settle"]["cap"] == 30 and s["do"][1]["settle"]["min"] >= 1
-    assert s["expect"][0]["within"] >= 30 and "contains" in s["expect"][0]
+    ex = s["expect"]
+    assert not any("console" in e for e in ex)
+    assert ex[0]["read"] == ["player"] and ex[0]["path"] == "worldspace.editor_id" and ex[0]["eq"] == "ARG_Province"
+    assert ex[0]["within"] >= 30
+    px, py = ex[1], ex[2]
+    assert (px["path"], py["path"]) == ("pos.x", "pos.y")
+    assert px["ge"] == 100 - 210 and px["le"] == 100 + 210 and py["ge"] == 200 - 210 and py["le"] == 200 + 210

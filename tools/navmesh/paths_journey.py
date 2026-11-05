@@ -44,6 +44,9 @@ def pairs(anchors: list[tuple], spawns: list[tuple], per: int = PER) -> list[tup
     return out
 
 
+ARRIVE_U = 3 * 70.03  # arrival tolerance: 3 m in Skyrim units (skyrim_units.UNITS_PER_METRE)
+
+
 def _f(v: float) -> str:
     return f"{v:.0f}"
 
@@ -69,8 +72,12 @@ def render(groups, dense_cell, bar=(16.67, 22.22)) -> str:
                   f"    why: '{a[3]}'",
                   f"    do: [{{teleport: \"pos {_f(a[0])} {_f(a[1])} {_f(a[2] + 20)}\"}}, {{settle: {{cap: 30, min: 3}}}}]",
                   # teleport, then the settle (Loading Menu closed, position still; the runner caps a settle at 30 s), then
-                  # the worldspace read polled: a relaunched game's first cow is a full load (r6-chain23 read 0 at 31 s)
-                  "    expect: [{console: \"player.GetInWorldspace ARG_Province\", contains: \">> 1\", within: 30}]"]
+                  # arrival read from the bridge's player state as the other journeys do (the console's GetInWorldspace with
+                  # an editor-id argument prints 0 whatever the worldspace): worldspace, and x/y within 3 m of the target
+                  "    expect:",
+                  f"      - {{read: [player], path: worldspace.editor_id, eq: ARG_Province, within: 30}}"]
+        for axis, v in (("x", a[0]), ("y", a[1])):
+            lines += [f"      - {{read: [player], path: pos.{axis}, ge: {_f(v - ARRIVE_U)}, le: {_f(v + ARRIVE_U)}, within: 30}}"]
         for k, p in enumerate(ps):
             lines += [f"  - name: a{gi:02d}-nav-{k}",
                       f"    expect: [{{read: [nav, {_f(a[0])}, {_f(a[1])}, {_f(a[2])}, {_f(p[0])}, {_f(p[1])}, {_f(p[2])}],"
