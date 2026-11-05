@@ -1,0 +1,10 @@
+{
+ "note": "mesh reach past the OBND, units; made by python -m tools.journeys.canopy",
+ "radius_u": {
+  "000041:ArgonianLakeHouse.esl": 46.2,
+  "03A57A:King of the Murkmire.esp": 74.4,
+  "03A57B:King of the Murkmire.esp": 200.7,
+  "03A582:King of the Murkmire.esp": 266.8,
+  "03A583:King of the Murkmire.esp": 377.9
+ }
+}

@@ -315,3 +315,34 @@ def test_bridge_look_stands_12_m_from_the_deck_end_on_the_yaw_and_the_deck_stop_
     for part in (text.split("name: t-step-deck")[0], deck):
         assert part.index("player.setpos z") < part.index('"sw ') < part.index('"fw ') < part.index("settle: {cap: 14", part.index('"fw '))
     assert "{wait: 20}]" in deck and "{wait: 20}]" not in text.split("name: t-step-deck")[0]
+
+
+def test_stands_lie_two_cells_inside_the_built_box_read_from_the_terrain_grid():
+    from tools.journeys import gen
+    x0, y0 = su.PROVINCE_CELL_SW
+    n = su.PROVINCE_CELLS
+
+    def mid(cx, cy):
+        return (cx + 0.5) * su.CELL_UNITS, (cy + 0.5) * su.CELL_UNITS
+    assert gen.in_box(*mid(x0 + 2, y0 + 2)) and gen.in_box(*mid(x0 + n - 3, y0 + n - 3))
+    assert not gen.in_box(*mid(x0 + 1, y0 + 5)) and not gen.in_box(*mid(x0 + 5, y0 + n - 2))
+    assert not gen.in_box(*mid(-63, -24))          # r6-chain23's sea stand: outside the box, on the apron
+
+
+def test_sea_far_names_the_parts_of_its_bar_a_stand_misses():
+    from tools.journeys import gen
+    ok = {"upper": 0.02, "near": 0.0, "sea_share": 0.9, "rays": 60}
+    assert gen.sea_far_fails(ok) == []
+    assert gen.sea_far_fails({**ok, "upper": 0.12, "sea_share": 0.5}) == ["upper cover", "sea share"]
+    assert gen.sea_far_fails({**ok, "rays": 3}) == ["rays"]
+
+
+def test_a_canopy_radius_widens_a_plant_whose_fronds_hang_past_its_bounds(tmp_path):
+    from tools.journeys import canopy
+    shapes = {"a": (37.0, 129.0, True, 0.0), "b": (300.0, 500.0, False, 0.0), "c": (50.0, 60.0, True, 0.0)}
+    wide = canopy.reach(shapes, {"a": 74.4, "b": 120.0})
+    assert wide["a"] == (74.4, 129.0, True, 0.0) and wide["b"] == shapes["b"] and wide["c"] == shapes["c"]
+    t = tmp_path / "t.json"
+    t.write_text('{"radius_u": {"a": 74.4}}')
+    assert canopy.load(t) == {"a": 74.4} and canopy.load(tmp_path / "none.json") == {}
+    assert "03A57A:King of the Murkmire.esp" in canopy.load()    # the measured table is in data/

@@ -4,12 +4,13 @@ derives only the positions, heights and headings from the build (tools/journeys/
 """
 from __future__ import annotations
 
+import collections
 import json
 import math
 import re
 
 from tools.argonia_world import skyrim_units as su
-from tools.journeys import (FRAME_MIN_SHARE, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits,
+from tools.journeys import (FRAME_MIN_SHARE, NEAR_COVER_MAX, UPPER_COVER_MAX, JOURNEYS, ROOT, SEAT_U, Build, clearance, clearance3, grass_hits,
                             TYPE_MIN_SHARE, cover_ok, frame_floor, cover_text, frame_read, frustum_cover, type_share, aim, eye_of, place, stand_bad, water_share)
 
 U = su.UNITS_PER_METRE
@@ -529,7 +530,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
 
     def ev(di, dj):
         x, y = f["x"] + di * U, f["y"] + dj * U
-        if b.soaked(x, y):
+        if b.soaked(x, y) or not in_box(x, y):
             return None
         if sea:   # the aim 400 m out over water, the horizon in frame
             brg = math.atan2(centre[0] - x, centre[1] - y)
@@ -650,7 +651,7 @@ def water_types(b: Build, w, log: list) -> str:
         line.setdefault(rid, []).append(su.province_to_skyrim(e, so))
     dirs = ((1, 0), (-1, 0), (0, 1), (0, -1))
     x0, y0 = su.PROVINCE_CELL_SW
-    inside = lambda x, y: x0 + 1 <= x < x0 + su.PROVINCE_CELLS - 1 and y0 + 1 <= y < y0 + su.PROVINCE_CELLS - 1  # noqa: E731
+    inside = lambda x, y: x0 + BOX_MARGIN_CELLS <= x < x0 + su.PROVINCE_CELLS - BOX_MARGIN_CELLS and y0 + BOX_MARGIN_CELLS <= y < y0 + su.PROVINCE_CELLS - BOX_MARGIN_CELLS  # noqa: E731,E501
     out, first = [WATER_TYPES_HEAD], True
     STANDS.clear()
     SHORT_OF_FRAME.clear()
@@ -762,11 +763,13 @@ def sea_far_ok(b: Build, x: float, y: float, h: float, types: dict) -> dict:
 
 
 def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log: list, near: tuple) -> str:
+SEA_FAR_BACK_M = (1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 8.0, 10.0, 12.0, 15.0, 20.0, 30.0, 40.0)   # stands back from the shore: a bare
+SEA_FAR_SIDE_M = (0.0, -15.0, 15.0, -25.0, 25.0)   # strip of beach is a few metres wide (the first run's 5 m steps missed all of them)
     """The far-sea stop (owner #41, round 6: the near sea stop is "fine for shallows by the coast"): an open shore facing
     out to sea, level, the horizon in frame, the upper frame's plant cover under UPPER_COVER_MAX, and at least
     TYPE_MIN_SHARE of the lower half's wet rays out to SEA_FAR_M on sea cells; on a shore other than the near stop's."""
     x0, y0 = su.PROVINCE_CELL_SW
-    inside = lambda x, y: x0 + 1 <= x < x0 + su.PROVINCE_CELLS - 1 and y0 + 1 <= y < y0 + su.PROVINCE_CELLS - 1  # noqa: E731
+    inside = lambda x, y: x0 + BOX_MARGIN_CELLS <= x < x0 + su.PROVINCE_CELLS - BOX_MARGIN_CELLS and y0 + BOX_MARGIN_CELLS <= y < y0 + su.PROVINCE_CELLS - BOX_MARGIN_CELLS  # noqa: E731,E501
     cands = []
     for (cx, cy), t in sorted(types.items()):
         if t != "sea":
@@ -775,6 +778,13 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
             if (cx + dx, cy + dy) in types or not inside(cx + dx, cy + dy):
                 continue
             n = 0
+def sea_far_fails(m: dict) -> list[str]:
+    """Which parts of the far-sea bar a stand's measures (sea_far_ok) miss: the upper-frame cover, the near-frame cover, the
+    sea share to SEA_FAR_M, the open-water ray count."""
+    return [k for k, bad in (("upper cover", m["upper"] >= UPPER_COVER_MAX), ("near cover", m["near"] >= NEAR_COVER_MAX),
+                             ("sea share", m["sea_share"] < TYPE_MIN_SHARE), ("rays", m["rays"] < SEA_FAR_MIN_RAYS)) if bad]
+
+
             for k in range(1, SEA_FAR_REACH_CELLS + 1):
                 if types.get((cx - dx * k, cy - dy * k)) != "sea":
                     break
@@ -797,11 +807,15 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
             sh = _shore(b, wet[0], wet[1], dx, dy)
             if sh is None:
                 continue
-            for back in (5.0, 10.0, 15.0, 20.0, 30.0, 40.0):
-                for side in (0.0, -10.0, 10.0, -20.0, 20.0):
+            for back in SEA_FAR_BACK_M:
+                for side in SEA_FAR_SIDE_M:
                     sx, sy = sh[0] + dx * back * U, sh[1] + dy * back * U
                     sx, sy = sx + (-dy) * side * U, sy + dx * side * U
-                    if b.soaked(sx, sy):
+                    if b.soaked(sx, sy) or not in_box(sx, sy):
+                        tally["off-box/soaked"] += 1
+        tally: collections.Counter = collections.Counter()
+        best_of = None
+        print(f"water-types: sea-far: {len(cands)} shore candidates (dry side {BOX_MARGIN_CELLS}+ cells inside the box)", flush=True)
                         continue
                     for turn in (0.0, -20.0, 20.0):
                         h = (math.degrees(math.atan2(-dx, -dy)) + turn) % 360
@@ -811,7 +825,10 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
                                     if b.wet(sx + math.sin(math.radians(h)) * d * U, sy + math.cos(math.radians(h)) * d * U)), None)
                         if far is None:
                             continue
-                        if stand_bad(b, sx, sy, (far[0], far[1], eye[2])) or sum(clearance3(b, eye, h)):
+                        cl3 = clearance3(b, eye, h)
+                        if sum(cl3):
+                            for k, v in zip(("plants on the eye line", "canopy over the eye", "tall grass"), cl3):
+                                tally["clearance: " + k] += bool(v)
                             continue
                         m = sea_far_ok(b, sx, sy, h, types)
                         if m["ok"] and m["rays"] >= SEA_FAR_MIN_RAYS:
@@ -824,14 +841,30 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
     res = search()
     log.extend(res["log"])
     if res["got"] is None:   # never raise on a stand search: water-types still regenerates, the log says why
+                            tally["no water 50-400 m out"] += 1
+                            continue
+                        bad = stand_bad(b, sx, sy, (far[0], far[1], eye[2]))
+                        if bad:
+                            tally["stand: " + bad[0].split(" at ")[0].split(" ")[0]] += 1
         print("water-types: WARNING sea-far: no shore meets the far-sea bar; no sea-far stop written")
         return ""
     x, y, subj, (cx, cy) = res["got"]
     h = aim(eye_of(b, x, y), subj)[0]
+                        why = sea_far_fails(m)
+                        for k in why:
+                            tally[k] += 1
+                        if best_of is None or (len(why), -m["sea_share"]) < best_of[0]:
+                            best_of = ((len(why), -m["sea_share"]), (cx, cy), sx, sy, h, m, why)
     m = sea_far_ok(b, x, y, h, types)
     cl = clearance3(b, eye_of(b, x, y), h)
     fs, _ = frame_read(b, x, y, h, 0.0)
     STANDS.append(("sea-far", x, y, h, 0.0, cl, fs, fs, frustum_cover(b, eye_of(b, x, y), h, 0.0), m["sea_share"], m["others"]))
+        print(f"water-types: sea-far: no stand meets the bar; rejects by part {dict(tally)}", flush=True)
+        if best_of:   # the per-candidate numbers of the nearest miss
+            _, c_, sx_, sy_, h_, m_, why_ = best_of
+            print(f"water-types: sea-far: nearest miss shore {c_} at {sx_:.0f} {sy_:.0f} facing {h_:.0f}: upper {m_['upper']:.1%} "
+                  f"(<{UPPER_COVER_MAX:.0%}) near {m_['near']:.1%} sea share {m_['sea_share']:.0%} (>={TYPE_MIN_SHARE:.0%}) "
+                  f"rays {m_['rays']} (>={SEA_FAR_MIN_RAYS}) others {m_['others']}; fails {why_}", flush=True)
     print(f"water-types: sea-far: stand cell {su.cell_of(x, y)} at {x:.0f} {y:.0f} facing {h:.0f}; clearance "
           f"{cl[0]}/{cl[1]}/{cl[2]}; upper cover {m['upper']:.1%} near {m['near']:.1%}; sea share to {SEA_FAR_M:.0f} m "
           f"{m['sea_share']:.0%} of {m['rays']} wet rays (others {m['others']}); frame share {fs:.0%}")

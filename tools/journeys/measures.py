@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CACHE_DIR = ROOT / "out" / "journeys-cache"
-MEASURE_VERSION = 1
+MEASURE_VERSION = 2   # 2: canopy radii (data/canopy-radius.json) widen the plant shapes
 READS_DB = ("object_form", "ltex_grass")   # plant bounds (Build.shapes) and the landscape textures' grass (ltex_grass_heights)
 ROUND = 4          # key arguments rounded to 0.1 mm (units are 1/70 m: finer than any search step)
 KEEP_DAYS = 3
@@ -31,6 +31,8 @@ def build_key() -> str:
     h = hashlib.sha1()
     for t in READS_DB:   # the tables the measures read, by content: other lanes' rebuilds of the rest move nothing
         h.update((db.WORLD_ROOT / db.DB_DIR / f"{t}.jsonl").read_bytes())   # the jsonl bytes, the path named by db.py (0030 §3)
+    if (ROOT / "data" / "canopy-radius.json").is_file():
+        h.update((ROOT / "data" / "canopy-radius.json").read_bytes())
     o = ROOT / "out"
     h.update((o / "water" / "cells.jsonl").read_bytes())
     for p in [*sorted((o / "terrain" / "vegetation").glob("cy*.jsonl.gz")), *sorted((o / "terrain" / "land").glob("cy*.jsonl.gz"))]:
