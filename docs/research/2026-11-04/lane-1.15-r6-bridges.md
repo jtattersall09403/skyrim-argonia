@@ -78,3 +78,16 @@ The Blue Hole (place.imperial-penal-south.natural-dive-shaft, 30 m site, entranc
   - The Blue Hole's three tracks are unchanged.
 - `routes.build check`: 1 component, worst terrain deviation 2.02 %, site_conflicts 0 red.
 - Tests: routes tests pass, 30 (no road enters a water-entered site; a planted road into a disc is red). Ruff is clean.
+
+## Round 3: the deck at the corridor's height, and what the piece looks like
+- The r6-chain23 bridge-look stills (gideon-step 01 and 02) show the deck at the bottom of a trench 3-5 m under the raised road.
+  - Cause: the ref's z came from the pre-causeway ground, and the seats cut the causeway down to it.
+- `infra.bridge_placements` now reads generate's `out/terrain/bridge-decks.json` (`load_decks`; a list or `{"decks": [...]}`, with `deck_top_m` and `ends_m`).
+  - A file deck whose centre lies within 20 m of a crossing's census point sets that bridge's ends, heading and top.
+  - The piece's z is the top less 0.67 m (BRIDGE_TOP_M), and `deck_source` is `decks-file`.
+  - Without the file it prints a warning and falls back to GameGround (`deck_source` `ground`).
+  - `seats` and `census_bridges` read the same file.
+- Test `test_a_deck_file_sets_the_top_and_the_ends_and_the_census_reads_it` uses a synthetic deck file. Routes tests pass: 32.
+- The form placed is CypressStockadeBridgeB04, 10A58B:King of the Murkmire.esp (`stockadescaffoldbridge04.nif`). Its name says cypress stockade, but the mesh is a bamboo-pole deck with rope rails on short posts, as the still shows.
+  - That is a long wooden footbridge, which meets the lore's "long wooden bridges" (stormhold.md 43).
+  - It is not a plank road bridge: whether bamboo reads as Argonian is the owner's look, at the next check.

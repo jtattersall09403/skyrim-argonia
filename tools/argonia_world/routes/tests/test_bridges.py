@@ -75,3 +75,23 @@ def test_a_road_into_a_keep_out_disc_is_red(world, monkeypatch):
     rows = [{"route_id": "route.track.rose-causeway", "x_m": x - 200.0, "y_m": y}, {"route_id": "route.track.rose-causeway", "x_m": x + 200.0, "y_m": y}]
     monkeypatch.setattr(w, "query", lambda q, *a: rows if q.startswith("SELECT route_id, x_m, y_m FROM road_point") else real(q, *a))
     assert [c["road"] for c in build.site_conflicts(w)["red"]] == ["route.track.rose-causeway"]
+
+
+def test_a_deck_file_sets_the_top_and_the_ends_and_the_census_reads_it(world, tmp_path):
+    import json
+    w, g = world
+    ground = {p["id"]: p for p in infra.bridge_placements(w, g.z, decks=None)}
+    gid = ground["bridge.gideon-step"]
+    top = gid["deck_m"] + 4.0  # the causeway's corridor, over the pre-causeway ground
+    f = tmp_path / "bridge-decks.json"
+    f.write_text(json.dumps({"decks": [{"deck_top_m": top, "ends_m": [e[:2] for e in gid["ends_m"]], "yaw": 0}]}))
+    decks = infra.load_decks(f)
+    ps = {p["id"]: p for p in infra.bridge_placements(w, g.z, decks)}
+    p = ps["bridge.gideon-step"]
+    assert p["deck_source"] == "decks-file" and p["deck_m"] == round(top, 2)
+    assert p["at_m"][2] == pytest.approx(top - infra.BRIDGE_TOP_M, abs=0.01)
+    assert ps["bridge.thorn-step"]["deck_source"] == "ground"  # no deck in the file for it: the fallback
+    assert infra.bridge_errors(p, w, g.z) == []
+    seats = [s for s in infra.seats(w, g.z, decks) if s["bridge"] == "bridge.gideon-step"]
+    assert len(seats) == 2 and all(s["z_m"] == round(top, 2) for s in seats)
+    assert infra.load_decks(tmp_path / "none.json") is None

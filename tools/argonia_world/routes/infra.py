@@ -40,6 +40,7 @@ from __future__ import annotations
 import math
 import re
 import sys
+from pathlib import Path
 
 from tools.argonia_world import skyrim_units as su
 
@@ -98,6 +99,30 @@ BRIDGES = {
 }
 
 
+# generate's decks (lane roads-dry): per crossing the deck top on the road corridor after the causeway, its ends'
+# (x, y) and yaw. The deck's top is that height, never the pre-causeway ground (the r6-chain23 look: a deck in a
+# trench 3-5 m under the raised road).
+DECKS_FILE = Path(__file__).resolve().parents[3] / "out" / "terrain" / "bridge-decks.json"
+DECK_MATCH_M = 20.0  # a file deck belongs to the BRIDGES crossing whose census point is this near its centre
+
+
+def load_decks(path: Path | None = None) -> list[dict] | None:
+    """The file's decks as [{"top": m, "ends": [[x, y], [x, y]]}], or None (with a warning) when it is absent.
+    Takes a list or {"decks": [...]}, the top as deck_top_m / deck_m / top_m, the ends as ends_m / ends."""
+    import json
+    p = Path(path or DECKS_FILE)
+    if not p.exists():
+        print(f"infra: warning: no {p}; bridge decks from GameGround (the pre-causeway ground)", file=sys.stderr)
+        return None
+    doc = json.loads(p.read_text())
+    out = []
+    for d in doc["decks"] if isinstance(doc, dict) else doc:
+        top = next(d[k] for k in ("deck_top_m", "deck_m", "top_m") if k in d)
+        ends = next(d[k] for k in ("ends_m", "ends") if k in d)
+        out.append({"top": float(top), "ends": [list(map(float, e[:2])) for e in ends]})
+    return out
+
+
 def nearest_on(pts, q) -> tuple[float, tuple[float, float], float]:
     """(distance, the nearest point, the heading there) of a polyline to q."""
     best = None
@@ -133,11 +158,29 @@ def seat(z_along, length: float = BRIDGE_LEN_M, reach: float = BRIDGE_LEN_M / 2 
     return best[1], best[2], best[3]
 
 
-def bridge_placements(w, z_at) -> list[dict]:
-    """Every BRIDGES piece: on its first road's line at the census point, along that road, seated (seat()); its two
-    ends' positions and banks, and the lift each bank needs to meet the deck."""
+def bridge_placements(w, z_at, decks: list[dict] | None | bool = True) -> list[dict]:
+    """Every BRIDGES piece. With generate's deck file (load_decks; `decks` True reads DECKS_FILE): the deck matched
+    to the crossing sets the ends and the top, and the piece's z is the top less BRIDGE_TOP_M. Without it: on the
+    mean line of its roads at the census point, seated on GameGround (seat()). Banks and lifts against z_at."""
+    if decks is True:
+        decks = load_decks()
     out = []
     for bid, (q, reach, routes) in sorted(BRIDGES.items()):
+        d = next((d for d in decks or () if math.hypot((d["ends"][0][0] + d["ends"][1][0]) / 2 - q[0],
+                                                        (d["ends"][0][1] + d["ends"][1][1]) / 2 - q[1]) <= DECK_MATCH_M), None)
+        if d is not None:
+            (ax, ay), (bx, by) = d["ends"]
+            hd = heading((ax, ay), (bx, by))
+            ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
+            cx, cy, top = (ax + bx) / 2, (ay + by) / 2, d["top"]
+            half = BRIDGE_LEN_M / 2 - SEAT_M
+            banks = (z_at(cx - ux * half, cy - uy * half), z_at(cx + ux * half, cy + uy * half))
+            lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
+                "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
+            near = [nearest_on(v, q) for v in lines.values() if len(v) >= 2]
+            x, y = axis(near)[:2] if near else (cx, cy)
+            out.append(_bridge(bid, reach, routes, cx, cy, hd, top, banks, (x, y), "decks-file"))
+            continue
         lines = {r: [(p["x_m"], p["y_m"]) for p in w.query(
             "SELECT x_m, y_m FROM road_point WHERE route_id = ? ORDER BY ord", r)] for r in routes}
         if any(len(v) < 2 for v in lines.values()):
@@ -146,17 +189,21 @@ def bridge_placements(w, z_at) -> list[dict]:
         x, y, hd = axis(near)
         ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
         c, top, banks = seat(lambda s: z_at(x + ux * s, y + uy * s))
-        cx, cy = x + ux * c, y + uy * c
-        half = BRIDGE_LEN_M / 2
-        ends = [[round(cx - ux * half, 2), round(cy - uy * half, 2), round(top, 2)],
-                [round(cx + ux * half, 2), round(cy + uy * half, 2), round(top, 2)]]
-        out.append({"id": f"bridge.{bid}", "kind": "bridge", "piece": BRIDGE_PIECE,
-                    "at_m": [round(cx, 2), round(cy, 2), round(top - BRIDGE_TOP_M, 2)],
-                    "yaw": round((hd + BRIDGE_YAW_OFFSET) % 360, 2), "heading": round(hd, 2), "deck_m": round(top, 2),
-                    "ends_m": ends, "banks_m": [round(b, 2) for b in banks],
-                    "lift_m": [round(top - b, 2) for b in banks], "routes": list(routes), "reach": reach,
-                    "crossing_m": [round(x, 2), round(y, 2)]})
+        out.append(_bridge(bid, reach, routes, x + ux * c, y + uy * c, hd, top, banks, (x, y), "ground"))
     return out
+
+
+def _bridge(bid, reach, routes, cx, cy, hd, top, banks, crossing, source) -> dict:
+    ux, uy = math.sin(math.radians(hd)), -math.cos(math.radians(hd))
+    half = BRIDGE_LEN_M / 2
+    ends = [[round(cx - ux * half, 2), round(cy - uy * half, 2), round(top, 2)],
+            [round(cx + ux * half, 2), round(cy + uy * half, 2), round(top, 2)]]
+    return {"id": f"bridge.{bid}", "kind": "bridge", "piece": BRIDGE_PIECE,
+            "at_m": [round(cx, 2), round(cy, 2), round(top - BRIDGE_TOP_M, 2)],
+            "yaw": round((hd + BRIDGE_YAW_OFFSET) % 360, 2), "heading": round(hd, 2), "deck_m": round(top, 2),
+            "ends_m": ends, "banks_m": [round(b, 2) for b in banks], "lift_m": [round(top - b, 2) for b in banks],
+            "routes": list(routes), "reach": reach, "crossing_m": [round(crossing[0], 2), round(crossing[1], 2)],
+            "deck_source": source}
 
 
 def axis(near) -> tuple[float, float, float]:
@@ -175,13 +222,13 @@ def lateral(p: dict, pt) -> tuple[float, float]:
     return dx * ux + dy * uy, -dx * uy + dy * ux
 
 
-def seats(w, z_at) -> list[dict]:
+def seats(w, z_at, decks: list[dict] | None | bool = True) -> list[dict]:
     """The ask to the terrain's road pass (the lane may not edit terrain/generate.py or routes/shape.py): at each
     bridge end, the corridor held at the deck's top from SEAT_M under the deck out to APPROACH_M beyond it, the
     deck's width plus the road's shoulder wide, then eased into the road's own profile at GRADE_MAX; between the two
     seats the channel is left to the water (the deck stands over it)."""
     out = []
-    for p in bridge_placements(w, z_at):
+    for p in bridge_placements(w, z_at, decks):
         for k, e in enumerate(p["ends_m"]):
             out.append({"bridge": p["id"], "end": k, "at_m": e[:2], "z_m": p["deck_m"], "heading": p["heading"],
                         "from_m": -SEAT_M, "to_m": APPROACH_M, "half_width_m": round(BRIDGE_HALF_W_M + 2.0, 2),
@@ -189,15 +236,16 @@ def seats(w, z_at) -> list[dict]:
     return out
 
 
-def census_bridges(w, z_at) -> list[dict]:
+def census_bridges(w, z_at, decks: list[dict] | None | bool = True) -> list[dict]:
     """The census's `bridges` entry (routes/shape.py wet_main, the planner's edit): per crossing, the bridge form,
     its roads and its ends' bank heights against the deck."""
     from tools.argonia_world.pieces import Index, Resolver
     r, _ = _mesh(Resolver(Index.load()), BRIDGE_PIECE)
     form = r.form_key if r is not None else None
     return [{"id": p["id"], "form": form, "routes": p["routes"], "at_m": p["at_m"][:2], "deck_m": p["deck_m"],
-             "banks_m": p["banks_m"], "seated": all(abs(x) <= SEAT_TOL_M for x in p["lift_m"])}
-            for p in bridge_placements(w, z_at)]
+             "banks_m": p["banks_m"], "seated": all(abs(x) <= SEAT_TOL_M for x in p["lift_m"]),
+             "deck_source": p["deck_source"]}
+            for p in bridge_placements(w, z_at, decks)]
 
 
 def walk_back(pts: list[tuple[float, float]], dist: float) -> tuple[tuple[float, float], float]:
@@ -459,7 +507,7 @@ def bridge_errors(p: dict, w, z_at) -> list[str]:
         al, ac = lateral(p, q)
         if abs(ac) > BRIDGE_HALF_W_M or abs(al) > BRIDGE_LEN_M / 2 - SEAT_M:
             errs.append(f"{p['id']}: {r} crosses {ac:+.1f} m across, {al:+.1f} m along the deck")
-    if abs(p["deck_m"] - max(p["banks_m"])) > 0.01 or min(p["lift_m"]) < -0.01:
+    if p.get("deck_source") != "decks-file" and (abs(p["deck_m"] - max(p["banks_m"])) > 0.01 or min(p["lift_m"]) < -0.01):
         errs.append(f"{p['id']}: deck {p['deck_m']} m not at the higher bank {p['banks_m']}")
     under = min(z_at(p["at_m"][0] + (e[0] - p["at_m"][0]) * t, p["at_m"][1] + (e[1] - p["at_m"][1]) * t)
                 for e in p["ends_m"] for t in (0.0, 0.25, 0.5, 0.75))
