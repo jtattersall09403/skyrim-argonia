@@ -23,28 +23,31 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   our XMarker `ARG_OpeningMarker` on Lilmoth's dock walkway (BM&V `BlackMarsh` worldspace, cell `Dock1` (1,-2), at
   5403,-6109,66, a triangle centre of BM&V's navmesh 079823; a persistent reference in the world's persistent cell),
   takes everything away, opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
-  (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`) and sets stage 10, the one journal line ("You wake on the Lilmoth
-  work detail, a prisoner in roughspun with nothing to your name."). Records: `plugin/Argonia/` (Spriggit YAML,
+  (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`) and sets stage 10, the one journal line ("I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.", through
+  text-review). Records: `plugin/Argonia/` (Spriggit YAML,
   seeded by `tools/ArgoniaPlugin`, `make plugin-seed`); `make plugin` builds `out/Argonia.esp`; `make plugin-check`
   proves the round trip and reads the ESP back into [the records table](../research/skyrim/argonia-esp-records.md).
   Owed: `records_jobs.sh papyrus` on the play machine once the CK is there (it already compiles `papyrus/*.psc`;
   `deploy.sh` sends `out/*.esp` and the `.pex` to `C:\argonia\ours`, and `stack.ps1` now lays `Argonia.esp` last and
-  enabled), then the owner's walk. The race menu may show the bound-hands pose (LAL blanks `sPosePlayerRaceSexMenu`
-  in its ini); left as Skyrim does it unless the owner minds. Phase 3 replaces the opening with the authored act.
+  enabled), then the owner's walk. The race menu keeps the standing pose: our own `plugin/Argonia.ini` blanks
+  `sPosePlayerRaceSexMenu` as LAL's ini does (ruling via the coordinator, 2026-11-05); `make plugin` copies it to
+  `out/`, `deploy.sh` sends it and `stack.ps1` lays it beside the ESP. Phase 3 replaces the opening with the authored act.
 - **The shutdown. Built off game (2026-11-05); owed: the walk's 30-day check.** Route order as planned, and the first
-  two routes were enough, no startup script: (1) Start Game Enabled off in overrides of 85 vanilla openers (the main
+  two routes were enough, no startup script: (1) Start Game Enabled off in overrides of 92 openers (the main
   quest's MQ00 and MQ103, the civil war, Thieves Guild, Dark Brotherhood, guild, misc and Daedric openers, Dawnguard's
-  DLC1Init, DLC1VQ00 and radiant, Dragonborn's DLC2Init and DLC2MQ00, Hearthfire's house quests); each override is
-  the load order's winner with its player-visible text removed; (2) 102 story-manager nodes, children of the event
+  DLC1Init, DLC1VQ00 and radiant, Dragonborn's DLC2Init and DLC2MQ00, Hearthfire's house quests, and the free Creation Club openers: Fishing's Fish_MQ1, Crab_MQ1 and radiant quests, Saints & Seducers' QuestA, Staada and two misc quests); each override is
+  the load order's winner with its player-visible text removed; (2) 105 story-manager nodes, children of the event
   nodes, gated by a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0): couriers
   (inheritance, guild letters), World Interactions, bounties, radiant and favour quests, world encounters, main-quest
   dragons, civil-war garrisons and scenes, guild radiants, Dawnguard's vampire attacks and scouts, Dragonborn's cultist
-  ambush and world encounters, Hearthfire's letters. MQ102 on never starts: only MQ101 starts it. The list and its
+  ambush and world encounters, Hearthfire's letters, Saints & Seducers' world encounters. MQ102 on never starts: only MQ101 starts it. The list and its
   reasons: `tools/ArgoniaPlugin/shutdown.json`; what stays: `mods/allowed-quests.json` (576 Start Game Enabled quests
-  in the staged load order: 85 off, 153 the mods', 338 vanilla dialogue, dungeon and mechanics quests that start
-  nothing by themselves). Left on, owner calls: the Creation Club content in the owner's install (Fish, Saints &
-  Seducers, Curios, Survival; gating them would make their files masters), and two nodes Mutagen cannot copy
-  (their quests never start here).
+  in the staged load order: 92 off, 146 the mods' (Survival's only quest is the mode itself, Curios' only one its
+  stock), 338 vanilla dialogue, dungeon and mechanics quests that start nothing by themselves). The four free
+  Creation Club files are masters (ruling via the coordinator, 2026-11-05). Two nodes (MG01ShoutNode,
+  CompanionsJorrvaskrTheftNode) hold GetVMQuestVariable conditions that Spriggit 0.41's YAML loses one of; `make
+  plugin` re-copies their conditions from the load order's winners after deserialising, and the read-back proves
+  the count against the winners.
 - **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
   one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
   Read 2026-11-05: BM&V's `BlackMarsh` worldspace carries map data (camera heights 50000 to 80000, bounds) and

@@ -1,0 +1,832 @@
+FormKey: 000912:ccBGSSSE025-AdvDSGS.esm
+VersionControl: 1978158
+EditorID: ccBGSSSE025_QuestA
+Version2: 1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ccstartafterchargenscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ101
+      Object: 03372B:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: MyQuestStageToSet
+      Data: 100
+  - Name: QF_ccBGSSSE025_QuestA_02000912
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Risaad
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RiSaadNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsBanditCamp1ObjectiveMarker
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsBanditCamp2ObjectiveMarker
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsBanditCampChest1
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsBanditLeader
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsBanditLeaderNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsCampBandit02
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsCampBandit03
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsCampBandit04
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsCampBanditNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SaintsCampBanditWithNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersBanditCamp1ObjectiveMarker
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersBanditCamp2ObjectiveMarker
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersBanditCampChest1
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersBanditLeader
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersBanditLeaderNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersCampBandit02
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersCampBandit03
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersCampBandit04
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersCampBanditNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeducersCampBanditWithNote
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtrFrgRecipes
+      Object: 0CDE01:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtrFrgResults
+      Object: 0CDE02:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHLItemKhajiitCaravans
+      Object: 000915:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_LItemAllBooks
+      Object: 086B0B:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_PlayerKnowsAboutBandits
+      Object: 00086A:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_PlayerKnowsSewerLocation
+      Object: 00087D:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_PlayerKnowsSolitudeLocation
+      Object: 00087E:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_QuestB
+      Object: 000913:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_Smithing
+      Object: 21BD6B:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE040_MatchingSet
+      Object: 21BD61:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE040_MatchingSetHeavy
+      Object: 21BD62:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DSAtrForgeRecipeHostile
+      Object: 1B1811:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DSAtrForgeRecipeScroll
+      Object: 1B180B:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DSAtrForgeRecipeTome
+      Object: 1B180A:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DSScroll
+      Object: 1C0B40:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DSTome
+      Object: 1C0B41:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GSAtrForgeRecipeHostile
+      Object: 1B1810:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GSAtrForgeRecipeScroll
+      Object: 1B180C:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GSAtrForgeRecipeTome
+      Object: 1B1807:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GSScroll
+      Object: 1C0B3E:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GSTome
+      Object: 1C0B3F:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HostileDS
+      Object: 1CAD47:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HostileGS
+      Object: 1CAD46:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HostileStaada
+      Object: 1B1815:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LItemBook4All
+      Object: 03FFFF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerTalkedToRisaad
+      Object: 1CAD49:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SaintsCamp2EnableMarker
+      Object: 0008B8:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SaintsCampCampfire
+      Object: 000909:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SaintsHuntPlayerQuest
+      Object: 21BD5F:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SeducersCamp2EnableMarker
+      Object: 0AF335:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SeducersCampCampfire
+      Object: 000ABC:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SeducersHuntPlayerQuest
+      Object: 21BD6D:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StaadaAtrForgeRecipeHostile
+      Object: 1B1812:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StaadaAtrForgeRecipeScroll
+      Object: 1B180D:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StaadaAtrFrgRecipe
+      Object: 19D3F6:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StaadaScroll
+      Object: 1B180E:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StaadaTome
+      Object: 19D3F9:ccBGSSSE025-AdvDSGS.esm
+  FileName: QF_ccBGSSSE025_QuestA_02000912
+  Fragments:
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_1
+  - Stage: 300
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_2
+  - Stage: 400
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_7
+  - Stage: 400
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_17
+  - Stage: 420
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_8
+  - Stage: 420
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_20
+  - Stage: 425
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_23
+  - Stage: 430
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_9
+  - Stage: 430
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_21
+  - Stage: 440
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_3
+  - Stage: 450
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_4
+  - Stage: 455
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_26
+  - Stage: 460
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_10
+  - Stage: 500
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_11
+  - Stage: 500
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_18
+  - Stage: 520
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_12
+  - Stage: 520
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_19
+  - Stage: 525
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_24
+  - Stage: 530
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_13
+  - Stage: 530
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_22
+  - Stage: 540
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_14
+  - Stage: 550
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_15
+  - Stage: 555
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_25
+  - Stage: 560
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_16
+  - Stage: 900
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_5
+  - Stage: 2000
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_QuestA_02000912
+    FragmentName: Fragment_6
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 2
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 300
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 12
+    Scripts:
+    - Name: defaultsetstageondeathrefalias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 420
+    - Name: defaultsetStageOnHitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptBoolProperty
+        Name: playerOnly
+        Data: True
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 400
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 13
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 430
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 425
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 14
+    Scripts:
+    - Name: defaultsetstageondeathrefalias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 520
+    - Name: defaultsetStageOnHitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptBoolProperty
+        Name: playerOnly
+        Data: True
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 500
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 15
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 530
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 525
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 8
+    Scripts:
+    - Name: defaultsetStageOnHitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptBoolProperty
+        Name: playerOnly
+        Data: True
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 440
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 9
+    Scripts:
+    - Name: defaultsetStageOnHitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptBoolProperty
+        Name: playerOnly
+        Data: True
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 540
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 24
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 460
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 455
+  - Property:
+      Name: ''
+      Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      Alias: 25
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 560
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000912:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 555
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 0
+Stages:
+- {}
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 300
+  Unknown: 40
+  LogEntries:
+  - Flags: []
+- Index: 400
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 420
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 425
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 430
+  Unknown: 125
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 440
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 450
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 455
+  Unknown: 124
+  LogEntries:
+  - Flags: []
+- Index: 460
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 500
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 520
+  Unknown: 125
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 525
+  Unknown: 101
+  LogEntries:
+  - Flags: []
+- Index: 530
+  Unknown: 127
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+      ComparisonValue: 1
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 00086A:ccBGSSSE025-AdvDSGS.esm
+- Index: 540
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 550
+  Unknown: 79
+  LogEntries:
+  - Flags: []
+- Index: 555
+  Unknown: 40
+  LogEntries:
+  - Flags: []
+- Index: 560
+  Unknown: 67
+  LogEntries:
+  - Flags: []
+- Index: 900
+  Unknown: 40
+  LogEntries:
+  - Flags: []
+- Index: 2000
+  Unknown: 40
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 29
+Aliases:
+- Name: RiSaad
+  Flags: []
+  UniqueActor: 01B1DB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: RiSaadNote
+  Flags:
+  - Optional
+  - QuestObject
+  VoiceTypes: Null
+- ID: 1
+  Name: SaintsBanditCamp1ObjectiveMarker
+  Flags: []
+  ForcedReference: 0008BE:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: SaintsCampBanditWithNote
+  Flags:
+  - Protected
+  - UsesStoredText
+  ForcedReference: 0008BC:ccBGSSSE025-AdvDSGS.esm
+  Items:
+  - Item:
+      Item: 000800:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 000AEE:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  DisplayName: 0A512D:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: SaintsCampBandit02
+  Flags:
+  - Protected
+  ForcedReference: 0008C3:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: SaintsCampBandit03
+  Flags:
+  - Protected
+  ForcedReference: 0008BA:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: SaintsCampBandit04
+  Flags:
+  - Protected
+  ForcedReference: 0008BF:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: SaintsCampBanditNote
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 00087A:ccBGSSSE025-AdvDSGS.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null
+- ID: 6
+  Name: SaintsBanditCamp2ObjectiveMarker
+  Flags: []
+  ForcedReference: 0008C0:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: SeducersBanditCamp1ObjectiveMarker
+  Flags: []
+  ForcedReference: 00094F:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: SeducersCampBanditWithNote
+  Flags:
+  - Protected
+  - UsesStoredText
+  ForcedReference: 000952:ccBGSSSE025-AdvDSGS.esm
+  Items:
+  - Item:
+      Item: 000805:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 000AEC:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  DisplayName: 0A512E:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: SeducersCampBandit02
+  Flags:
+  - Protected
+  ForcedReference: 000950:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: SeducersCampBandit03
+  Flags:
+  - Protected
+  ForcedReference: 000953:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: SeducersCampBandit04
+  Flags:
+  - Protected
+  ForcedReference: 000951:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: SeducersCampBanditNote
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 00087B:ccBGSSSE025-AdvDSGS.esm
+    AliasID: 14
+    Create: In
+  VoiceTypes: Null
+- ID: 7
+  Name: SeducersBanditCamp2ObjectiveMarker
+  Flags: []
+  ForcedReference: 0AF34B:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: SaintsBanditLeader
+  Flags: []
+  ForcedReference: 0008C1:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: SeducersBanditLeader
+  Flags: []
+  ForcedReference: 0AF337:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: SaintsBanditLeaderNote
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0009DD:ccBGSSSE025-AdvDSGS.esm
+    AliasID: 8
+    Create: In
+  VoiceTypes: Null
+- ID: 25
+  Name: SeducersBanditLeaderNote
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0009D8:ccBGSSSE025-AdvDSGS.esm
+    AliasID: 9
+    Create: In
+  VoiceTypes: Null
+- ID: 26
+  Name: SaintsBanditCampChest1
+  Flags: []
+  ForcedReference: 0008ED:ccBGSSSE025-AdvDSGS.esm
+  Items:
+  - Item:
+      Item: 0009E5:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 000878:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 000877:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  VoiceTypes: Null
+- ID: 27
+  Name: SeducersBanditCampChest1
+  Flags: []
+  ForcedReference: 00094E:ccBGSSSE025-AdvDSGS.esm
+  Items:
+  - Item:
+      Item: 000874:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 0009E6:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  - Item:
+      Item: 000873:ccBGSSSE025-AdvDSGS.esm
+      Count: 1
+  VoiceTypes: Null

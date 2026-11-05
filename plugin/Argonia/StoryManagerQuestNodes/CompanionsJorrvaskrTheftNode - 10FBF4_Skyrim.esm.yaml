@@ -1,0 +1,33 @@
+FormKey: 10FBF4:Skyrim.esm
+VersionControl: 3303435
+EditorID: CompanionsJorrvaskrTheftNode
+FormVersion: 39
+Version2: 1
+Parent: 02C439:Skyrim.esm
+PreviousSibling: 035B5C:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetVMQuestVariableConditionData
+    Quest: 04B2D9:Skyrim.esm
+    VariableName: ::PlayerThievingAndNotPaying_var
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInCellConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Cell: 07947A:Skyrim.esm
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 10FBF5:Skyrim.esm

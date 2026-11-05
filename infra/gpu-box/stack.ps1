@@ -390,6 +390,7 @@ public static class ParHash {
         Copy-Item "$Root\ours\$e" "$Data\$e" -Force
         $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
         $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
+      if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }  # the plugin's own ini
       $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
       if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
       "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia.esp' }) -join ', '); $($pex.Count) .pex"

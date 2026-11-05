@@ -53,7 +53,7 @@ static class Generate
         opening.Stages.Add(new QuestStage
         {
             Index = 10,
-            LogEntries = { new QuestLogEntry { Entry = "You wake on the Lilmoth work detail, a prisoner in roughspun with nothing to your name." } },
+            LogEntries = { new QuestLogEntry { Entry = "I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear." } },
         });
         opening.VirtualMachineAdapter = new QuestAdapter
         {

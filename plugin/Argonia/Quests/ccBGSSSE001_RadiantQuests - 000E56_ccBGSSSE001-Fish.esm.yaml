@@ -1,0 +1,25 @@
+FormKey: 000E56:ccBGSSSE001-Fish.esm
+VersionControl: 1977919
+EditorID: ccBGSSSE001_RadiantQuests
+Version2: 1
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 0
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 0009DE:ccBGSSSE001-Fish.esm
+  ComparisonValue: 10
+NextAliasID: 1
+Aliases:
+- Name: QuestGiver
+  Flags: []
+  ForcedReference: 00091C:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null

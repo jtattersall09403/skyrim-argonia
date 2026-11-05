@@ -1,5 +1,5 @@
 {
-  "_about": "What tools/ArgoniaPlugin seeds into plugin/Argonia/ (PLAN Phase 1, the shutdown). quests_sge_off: vanilla Start Game Enabled quests whose override turns the flag off (the record is the load order's winner, its player-visible text stripped: it never runs). story_nodes_off: vanilla story-manager nodes, children of an event node, given a first condition GetGlobalValue ARG_VanillaStoryManager == 1 (the global is 0), so nothing under them starts. Everything not named here runs as before; mods/allowed-quests.json says why. Left out on purpose: CompanionsJorrvaskrTheftNode (10FBF4) and MG01ShoutNode (0B812F), whose GetVMQuestVariable conditions do not survive Mutagen 0.54.4 (the condition after one is lost; the read-back against the winners caught it); each reads a variable of a quest that never starts here (C00, MG01), so neither can fire.",
+  "_about": "What tools/ArgoniaPlugin seeds into plugin/Argonia/ (PLAN Phase 1, the shutdown). quests_sge_off: vanilla Start Game Enabled quests whose override turns the flag off (the record is the load order's winner, its player-visible text stripped: it never runs). story_nodes_off: vanilla story-manager nodes, children of an event node, given a first condition GetGlobalValue ARG_VanillaStoryManager == 1 (the global is 0), so nothing under them starts. Everything not named here runs as before; mods/allowed-quests.json says why. conditions_from_winner: nodes whose conditions Spriggit 0.41's YAML loses (a GetVMQuestVariable condition beside another of the same function drops one: the ESP Mutagen writes is right, the serialised YAML is short); `plugin.sh build` re-copies their conditions from the load order's winner after deserialising, and the read-back proves the count. The four free Creation Club files (every 1.6+ install has them) are masters for the creation club group (owner ruling via the coordinator, 2026-11-05).",
   "quests_sge_off": {
     "main quest": [
       "MQ00",
@@ -103,6 +103,15 @@
       "BYOHHouseFalkreath",
       "BYOHHouseHjaalmarch",
       "BYOHHousePale"
+    ],
+    "creation club": [
+      "ccBGSSSE001_Fish_MQ1",
+      "ccBGSSSE001_Crab_MQ1",
+      "ccBGSSSE001_RadiantQuests",
+      "ccBGSSSE025_QuestA",
+      "ccBGSSSE025_StaadaQuest",
+      "ccBGSSSE025_MiscQuest_AmberMadnessGear",
+      "ccBGSSSE025_MiscQuest_Nerveshatter"
     ]
   },
   "story_nodes_off": {
@@ -165,7 +174,9 @@
       "DB03JailNode",
       "CompanionsNode",
       "CompanionsRadiantNode",
-      "CompanionsSingleCombatNode"
+      "CompanionsSingleCombatNode",
+      "MG01ShoutNode",
+      "CompanionsJorrvaskrTheftNode"
     ],
     "radiant, misc and bounties": [
       "QuestNode",
@@ -223,6 +234,13 @@
       "BYOHHouseChangeLocationNode",
       "BYOHAdoptionQuestNode",
       "BYOHHouseNode"
+    ],
+    "creation club": [
+      "BGSSSE025_WEQuestNode"
     ]
-  }
+  },
+  "conditions_from_winner": [
+    "MG01ShoutNode",
+    "CompanionsJorrvaskrTheftNode"
+  ]
 }

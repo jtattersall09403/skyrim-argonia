@@ -17,6 +17,10 @@ ModHeader:
     FileSize: 0
   - Master: Dragonborn.esm
     FileSize: 0
+  - Master: ccBGSSSE001-Fish.esm
+    FileSize: 0
+  - Master: ccBGSSSE025-AdvDSGS.esm
+    FileSize: 0
   - Master: unofficial skyrim special edition patch.esp
     FileSize: 0
   - Master: Black Marsh.esm

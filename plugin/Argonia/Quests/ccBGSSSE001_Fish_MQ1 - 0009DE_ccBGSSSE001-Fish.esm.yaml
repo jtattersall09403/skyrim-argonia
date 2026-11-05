@@ -1,0 +1,165 @@
+FormKey: 0009DE:ccBGSSSE001-Fish.esm
+VersionControl: 1977919
+EditorID: ccBGSSSE001_Fish_MQ1
+Version2: 1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_ccBGSSSE001_Fish_MQ1_050009DE
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Guide
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_list
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SwimsInDeepWaters
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BookBlocker
+      Object: 00B20C:ccBGSSSE001-Fish.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: fishList
+      Object: 0008E7:ccBGSSSE001-Fish.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: fishTank
+      Object: 01031A:ccBGSSSE001-Fish.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Goldfish
+      Object: 0008EF:ccBGSSSE001-Fish.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NextQuest
+      Object: 0009EB:ccBGSSSE001-Fish.esm
+  FileName: QF_ccBGSSSE001_Fish_MQ1_050009DE
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Fish_MQ1_050009DE
+    FragmentName: Fragment_1
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Fish_MQ1_050009DE
+    FragmentName: Fragment_2
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Fish_MQ1_050009DE
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Fish_MQ1_050009DE
+    FragmentName: Fragment_3
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 2
+    Scripts:
+    - Name: ccBGSSSE001_ItemCollectObjectiveScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: givenItemsStage
+        Data: 200
+      - MutagenObjectType: ScriptIntProperty
+        Name: hasAllItemsObjective
+        Data: 50
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0009DE:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: questItems
+        Object: 000A43:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: readNoteStage
+        Data: 20
+  - Property:
+      Name: ''
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 1
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0009DE:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 20
+  - Property:
+      Name: ''
+      Object: 0009DE:ccBGSSSE001-Fish.esm
+      Alias: 3
+    Scripts:
+    - Name: ccBGSSSE001_OnReadSetStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0009DE:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 21
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 0
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+  ComparisonValue: 1
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 168
+- Index: 10
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  Unknown: 69
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 4
+Aliases:
+- ID: 2
+  Name: Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- Name: SwimsInDeepWaters
+  Flags: []
+  UniqueActor: 0008F8:ccBGSSSE001-Fish.esm
+  PackageData:
+  - 0D6122:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: List
+  Flags:
+  - Optional
+  - QuestObject
+  VoiceTypes: Null
+- ID: 3
+  Name: Guide
+  Flags:
+  - QuestObject
+  ForcedReference: 00B20B:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null

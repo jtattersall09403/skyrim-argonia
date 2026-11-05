@@ -1,0 +1,33 @@
+FormKey: 220E6E:ccBGSSSE025-AdvDSGS.esm
+EditorID: BGSSSE025_WEQuestNode
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 0331C1:Dragonborn.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 0B8EC1:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 04A600:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 1027A6:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

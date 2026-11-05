@@ -1,0 +1,279 @@
+FormKey: 0010BF:ccBGSSSE025-AdvDSGS.esm
+EditorID: ccBGSSSE025_MiscQuest_Nerveshatter
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ccBGSSSE025_NerveshQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: amberCountGlobal
+      Object: 000834:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AmberOre
+      Object: 000BC6:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: madnessCountGlobal
+      Object: 000835:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MadnessOre
+      Object: 000BC9:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: nerveshatterQuest
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: offerTriggerRef
+      Object: 000FFB:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+  - Name: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Bandit1
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Bandit2
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BanditNote
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BanditWithNote
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Journal
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nerveshatter
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OfferTrigger
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AmberOre
+      Object: 000BC6:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dustDropRef
+      Object: 0FB321:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MadnessOre
+      Object: 000BC9:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGTeleportInEffect
+      Object: 102730:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: placedAmber
+      Object: 000FF9:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: placedMadness
+      Object: 000FFD:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: revealFX
+      Object: 10272E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShakeSound
+      Object: 1038C3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonFX
+      Object: 0142BA:Dawnguard.esm
+  FileName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+  Fragments:
+  - Stage: 2
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_8
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_7
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_1
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_2
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_3
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_4
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_5
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE025_MiscQuest_Ner_050010BF
+    FragmentName: Fragment_6
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 3
+    Scripts:
+    - Name: ccBGSSSE025_NerveshPlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: AmberOre
+        Object: 000BC6:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MadnessOre
+        Object: 000BC9:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: nerveshatterQuest
+        Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: nerveshatterQuestScript
+        Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+  - Property:
+      Name: ''
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 8
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 5
+  - Property:
+      Name: ''
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 0
+    Scripts:
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 200
+  - Property:
+      Name: ''
+      Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      Alias: 4
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0010BF:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 10
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 65
+Type: Misc
+TextDisplayGlobals:
+- 000834:ccBGSSSE025-AdvDSGS.esm
+- 000835:ccBGSSSE025-AdvDSGS.esm
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 173
+- Index: 2
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 21
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 30
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 40
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 10
+Aliases:
+- ID: 3
+  Name: Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: BanditWithNote
+  Flags: []
+  ForcedReference: 000925:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: BanditNote
+  Flags: []
+  CreateReferenceToObject:
+    Object: 000C41:ccBGSSSE025-AdvDSGS.esm
+    AliasID: 7
+    Create: In
+  VoiceTypes: Null
+- Name: Nerveshatter
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000FFC:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: Journal
+  Flags:
+  - QuestObject
+  ForcedReference: 000FFA:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: OfferTrigger
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000FFB:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Bandit1
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000FF8:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Bandit2
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000FFE:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null

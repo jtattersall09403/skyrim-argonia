@@ -1,0 +1,162 @@
+FormKey: 0009D4:ccBGSSSE001-Fish.esm
+VersionControl: 1977919
+EditorID: ccBGSSSE001_Crab_MQ1
+Version2: 1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_ccBGSSSE001_Crab_MQ1_050009D4
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CrabCritter
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DeadAdventurer
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DeadAdventurerNote
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Note
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Viriya
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JuvenileMudcrab
+      Object: 0008F2:ccBGSSSE001-Fish.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerRef
+      Object: 000014:Skyrim.esm
+  FileName: QF_ccBGSSSE001_Crab_MQ1_050009D4
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Crab_MQ1_050009D4
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Crab_MQ1_050009D4
+    FragmentName: Fragment_3
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Crab_MQ1_050009D4
+    FragmentName: Fragment_4
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_ccBGSSSE001_Crab_MQ1_050009D4
+    FragmentName: Fragment_2
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 6
+    Scripts:
+    - Name: ccBGSSSE001_ItemCollectObjectiveScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: givenItemsStage
+        Data: 200
+      - MutagenObjectType: ScriptIntProperty
+        Name: hasAllItemsObjective
+        Data: 20
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0009D4:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerRef
+        Object: 000014:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: questItems
+        Object: 000A47:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: readNoteStage
+        Data: 20
+  - Property:
+      Name: ''
+      Object: 0009D4:ccBGSSSE001-Fish.esm
+      Alias: 1
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 0009D4:ccBGSSSE001-Fish.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 15
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 0
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsAliasRefConditionData
+  ComparisonValue: 1
+Stages:
+- Unknown: 155
+- Index: 10
+  Unknown: 155
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 16
+  Unknown: 99
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 155
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 7
+Aliases:
+- ID: 6
+  Name: Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- Name: Viriya
+  Flags: []
+  UniqueActor: 0008F6:ccBGSSSE001-Fish.esm
+  PackageData:
+  - 0D6121:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: CrabCritter
+  Flags:
+  - AllowDisabled
+  ForcedReference: 15A5DB:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: DeadAdventurer
+  Flags:
+  - AllowDead
+  ForcedReference: 000960:ccBGSSSE001-Fish.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: DeadAdventurerNote
+  Flags: []
+  CreateReferenceToObject:
+    Object: 0008E9:ccBGSSSE001-Fish.esm
+    AliasID: 3
+    Create: In
+  VoiceTypes: Null
+- ID: 1
+  Name: Note
+  Flags:
+  - Optional
+  - QuestObject
+  VoiceTypes: Null

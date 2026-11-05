@@ -41,27 +41,20 @@
    "plugin": "ccBGSSSE001-Fish.esm",
    "quests": [
     "ccBGSSSE001_DLCDetectionQuest",
-    "ccBGSSSE001_Crab_MQ1",
-    "ccBGSSSE001_Fish_MQ1",
-    "ccBGSSSE001_RadiantQuests",
     "ccBGSSSE001_MudcrabAllyQuest",
     "ccBGSSSE001_FishPlaqueQuest",
     "ccBGSSSE001_FishingSystemQuest",
     "ccBGSSSE001_PersistentDialogueQuest",
     "ccBGSSSE001_DecorationDialogue"
    ],
-   "reason": "Creation Club content in the owner's install: left running, owner call (its openers come by courier, and the courier node is gated off)"
+   "reason": "Fishing (Creation Club): the fishing system, plaques, decorations and its dialogue; its openers (Fish_MQ1, Crab_MQ1, radiant) are off"
   },
   {
    "plugin": "ccBGSSSE025-AdvDSGS.esm",
    "quests": [
-    "ccBGSSSE025_QuestA",
-    "ccBGSSSE025_MiscQuest_AmberMadnessGear",
-    "ccBGSSSE025_MiscQuest_Nerveshatter",
-    "ccBGSSSE025_RareCuriosIntegration",
-    "ccBGSSSE025_StaadaQuest"
+    "ccBGSSSE025_RareCuriosIntegration"
    ],
-   "reason": "Creation Club content in the owner's install: left running, owner call (its openers come by courier, and the courier node is gated off)"
+   "reason": "Saints & Seducers (Creation Club): DLC detection and Rare Curios stock; its openers and misc quests are off and its world-encounter node is gated"
   },
   {
    "plugin": "ccBGSSSE037-Curios.esl",
@@ -634,5 +627,5 @@
    ]
   }
  ],
- "story_manager_kept": "every vanilla story-manager node not in shutdown.json: jail, arrest and escape, weather shouts, marriage, bard songs, brawls, follower comments, creature and town hellos, hold scenes, caravans, achievements, tutorials, dungeon nodes, the vampire-feeding bystander node, USSEP's fix nodes, and two nodes whose quests never start here (CompanionsJorrvaskrTheftNode, MG01ShoutNode). The Creation Club Saints & Seducers world-encounter node (BGSSSE025_WEQuestNode) is left running: gating it would make its .esm a master (owner call)."
+ "story_manager_kept": "every vanilla story-manager node not in shutdown.json: jail, arrest and escape, weather shouts, marriage, bard songs, brawls, follower comments, creature and town hellos, hold scenes, caravans, achievements, tutorials, dungeon nodes, the vampire-feeding bystander node and USSEP's fix nodes. The four free Creation Club files are masters (ruling 2026-11-05): their openers are off and Saints & Seducers' world-encounter node is gated."
 }

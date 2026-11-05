@@ -1,0 +1,29 @@
+FormKey: 0B812F:Skyrim.esm
+VersionControl: 5006348
+EditorID: MG01ShoutNode
+FormVersion: 35
+Version2: 1
+Parent: 046829:Skyrim.esm
+PreviousSibling: 070216:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: IsInList
+    Member: Form
+    Record: 0167D9:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetVMQuestVariableConditionData
+    Quest: 01F251:Skyrim.esm
+    VariableName: ::ShoutTrigger_var
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0B812E:Skyrim.esm

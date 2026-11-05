@@ -1,0 +1,175 @@
+FormKey: 000C4D:ccBGSSSE025-AdvDSGS.esm
+VersionControl: 1978158
+EditorID: ccBGSSSE025_MiscQuest_AmberMadnessGear
+Version2: 1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ccstartafterchargenscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ101
+      Object: 03372B:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: MyQuestStageToSet
+      Data: 5
+  - Name: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Amber
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ArcaneBlacksmith
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Journal
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Madness
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ccBGSSSE025_LItemAmberMadnessOre
+      Object: 000D53:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: enableMarker
+      Object: 1B6922:ccBGSSSE025-AdvDSGS.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LItemLootIMineralsProcessed
+      Object: 087138:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LItemSpecialLoot100
+      Object: 1031D0:Skyrim.esm
+  FileName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_2
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_1
+  - Stage: 12
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_3
+  - Stage: 14
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_4
+  - Stage: 16
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_5
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: SSE_QF_ccBGSSSE025_MiscQuest__05000C4D
+    FragmentName: Fragment_0
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 0
+    Scripts:
+    - Name: defaultsetStageOnHitAliasScript
+      Properties:
+      - MutagenObjectType: ScriptBoolProperty
+        Name: playerOnly
+        Data: True
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 12
+    - Name: defaultsetstageondeathrefalias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 14
+  - Property:
+      Name: ''
+      Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      Alias: 1
+    Scripts:
+    - Name: DefaultOnReadSetQuestStage
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: myStage
+        Data: 20
+    - Name: ccBGSSSE025_SetStageOnPickup
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQuest
+        Object: 000C4D:ccBGSSSE025-AdvDSGS.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 16
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- Index: 5
+  Flags:
+  - StartUpStage
+  Unknown: 173
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 169
+  LogEntries:
+  - Flags: []
+- Index: 12
+  Unknown: 124
+  LogEntries:
+  - Flags: []
+- Index: 14
+  LogEntries:
+  - Flags: []
+- Index: 16
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 171
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 30
+  Unknown: 171
+NextAliasID: 6
+Aliases:
+- Name: ArcaneBlacksmith
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 001004:ccBGSSSE025-AdvDSGS.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Journal
+  Flags:
+  - QuestObject
+  - AllowDisabled
+  CreateReferenceToObject:
+    Object: 000B9B:ccBGSSSE025-AdvDSGS.esm
+    Create: In
+  VoiceTypes: Null
+- ID: 4
+  Name: Amber
+  Flags:
+  - Optional
+  - AllowDisabled
+  VoiceTypes: Null
+- ID: 5
+  Name: Madness
+  Flags:
+  - Optional
+  - AllowDisabled
+  VoiceTypes: Null

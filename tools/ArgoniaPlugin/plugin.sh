@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Argonia.esp from plugin/Argonia (Spriggit YAML is the source; decision 0018).
-#   plugin.sh build    plugin/Argonia -> out/Argonia.esp (Spriggit deserialize)
+#   plugin.sh build    plugin/Argonia -> out/Argonia.esp (Spriggit deserialize, then the conditions fixup, which
+#                      needs the game data and staged profile), plugin/Argonia.ini -> out/Argonia.ini
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
@@ -12,7 +13,12 @@ spriggit=("$HOME/.argonia/spriggit/0.41.0/Spriggit.CLI")  # pinned in infra/buil
 spr=(-p Spriggit.Yaml -v 0.41.0)
 yaml=plugin/Argonia; esp=out/Argonia.esp; bin=out/tools/ArgoniaPlugin
 tool() { dotnet build -c Release -o "$bin" tools/ArgoniaPlugin >/dev/null && dotnet "$bin/ArgoniaPlugin.dll" "$@"; }
-build() { mkdir -p out; "${spriggit[@]}" deserialize -i "$yaml" -o "$esp" "${spr[@]}" >/dev/null; echo "built $esp ($(stat -c %s "$esp") bytes)"; }
+build() {
+  mkdir -p out; "${spriggit[@]}" deserialize -i "$yaml" -o "$esp" "${spr[@]}" >/dev/null
+  loadorder; tool fixup "$esp" "${lo[@]}"  # the conditions Spriggit's YAML cannot carry (shutdown.json)
+  cp plugin/Argonia.ini out/Argonia.ini      # the plugin's own ini, loaded beside it
+  echo "built $esp ($(stat -c %s "$esp") bytes) and out/Argonia.ini"
+}
 loadorder() {  # the staged profile's plugins after the game's, as stack.py lays them
   local data="${ARGONIA_GAME_ROOT:-$HOME/games/skyrimse}/Data" mo2="$HOME/.argonia/stack/MO2" p f c
   lo=("$data"/{Skyrim,Update,Dawnguard,HearthFires,Dragonborn}.esm)
@@ -29,7 +35,6 @@ case "${1:-}" in
     rt=$(mktemp -d); trap 'rm -rf "$rt"' EXIT
     "${spriggit[@]}" serialize -i "$esp" -o "$rt/y" -g SkyrimSE "${spr[@]}" >/dev/null
     diff -r "$yaml" "$rt/y" && echo "round trip clean: $(find "$yaml" -name '*.yaml' | wc -l) yaml files"
-    lo=(); [ -d "$HOME/.argonia/stack/MO2" ] && loadorder  # the winners comparison needs the game data
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
   seed)
     loadorder
