@@ -136,6 +136,12 @@ std::string camera(const Request& req) {
     if (!cam) return reply_error("camera", "no camera");
     if (a == CameraAsk::kState) return camera_reply(cam, "state");
     bool first = a == CameraAsk::kFirst;
+    // the auto-vanity camera (idleTimer counting down to kAutoVanity after fAutoVanityModeDelay idle) was the state
+    // every first-person switch in the round-6 batch failed to leave (r6-chain22, 00:4x: "native vanity" x7): the studio
+    // never wants it, so it is off here as well as in Skyrim.ini (stack.ps1), and the timer is reset before the switch
+    auto& rt2 = cam->GetRuntimeData2();
+    rt2.allowAutoVanityMode = false;
+    rt2.idleTimer = 1.0e9f;
     if (first) cam->ForceFirstPerson(); else cam->ForceThirdPerson();
     auto want = first ? RE::CameraState::kFirstPerson : RE::CameraState::kThirdPerson;
     auto* cur = cam->currentState.get();
