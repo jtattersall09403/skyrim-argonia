@@ -1304,11 +1304,13 @@ def grade_ab(b: Build) -> str:
     pos = {k: float(v) for k, v in SETPOS.findall(blk)}
     ang = {k: float(v) for k, v in SETANGLE.findall(blk)}
     stands = [(key, [{"console": {"line": f"player.moveto {edid}", "settle": 60}},
-                     {"console": f"player.setangle z {yaw:.0f}"}, {"console": "player.setangle x 0"}],
+                     {"console": f"player.setangle z {yaw:.0f}"}, {"console": "player.setangle x 0"},
+                     {"console": "player.setangle y 0"}, {"wait": 4}],
                (round(r["x"]), round(r["y"]))),
               ("blackwood-20", [*({"console": f"player.setpos {a} {pos[a]:.0f}"} for a in "xyz"),
                                 {"console": f"player.setangle z {ang['z']:.0f}"},
-                                {"console": f"player.setangle x {ang['x']:.0f}"}], (round(pos["x"]), round(pos["y"])))]
+                                {"console": f"player.setangle x {ang['x']:.0f}"},
+                                {"console": "player.setangle y 0"}, {"wait": 4}], (round(pos["x"]), round(pos["y"])))]
     steps = [{"name": "first-person-no-hud", "setup": True, "do": [{"wait": 10}, {"hud": "off"}], "expect": []}]
     for name, go, (x, y) in stands:
         for tag, wthr, wid in GRADE_WEATHERS:

@@ -51,6 +51,12 @@
      "console": "player.setangle x 0"
     },
     {
+     "console": "player.setangle y 0"
+    },
+    {
+     "wait": 4
+    },
+    {
      "console": "set gamehour to 12"
     },
     {
@@ -130,6 +136,12 @@
     },
     {
      "console": "player.setangle x 0"
+    },
+    {
+     "console": "player.setangle y 0"
+    },
+    {
+     "wait": 4
     },
     {
      "console": "set gamehour to 12"
@@ -216,6 +228,12 @@
      "console": "player.setangle x 5"
     },
     {
+     "console": "player.setangle y 0"
+    },
+    {
+     "wait": 4
+    },
+    {
      "console": "set gamehour to 12"
     },
     {
@@ -298,6 +316,12 @@
     },
     {
      "console": "player.setangle x 5"
+    },
+    {
+     "console": "player.setangle y 0"
+    },
+    {
+     "wait": 4
     },
     {
      "console": "set gamehour to 12"
