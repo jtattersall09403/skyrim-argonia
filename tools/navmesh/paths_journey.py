@@ -75,7 +75,7 @@ def render(groups, dense_cell, bar=(16.67, 22.22)) -> str:
                   # arrival read from the bridge's player state as the other journeys do (the console's GetInWorldspace with
                   # an editor-id argument prints 0 whatever the worldspace): worldspace, and x/y within 3 m of the target
                   "    expect:",
-                  f"      - {{read: [player], path: worldspace.editor_id, eq: ARG_Province, within: 30}}"]
+                  "      - {read: [player], path: worldspace.editor_id, eq: ARG_Province, within: 30}"]
         for axis, v in (("x", a[0]), ("y", a[1])):
             lines += [f"      - {{read: [player], path: pos.{axis}, ge: {_f(v - ARRIVE_U)}, le: {_f(v + ARRIVE_U)}, within: 30}}"]
         for k, p in enumerate(ps):
