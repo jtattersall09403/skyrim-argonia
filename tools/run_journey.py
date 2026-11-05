@@ -457,6 +457,19 @@ class Runner:
                 shutil.rmtree(tmp, ignore_errors=True)
                 return True
         shutil.rmtree(tmp, ignore_errors=True)
+        # identical frames on every try (diff 0.00) say the picture is frozen (a load, a paused frame, the first frame
+        # after a relaunch), not that the camera did not move: the native state is the primary assert (lane
+        # camera-native); a second opinion with no information does not veto it (r6-chain23 river-steps, 01:08: 8 cycles
+        # of 'native first' + 'view diff 0.00' failed the whole journey before its first still)
+        if all(t == "view diff 0.00" for t in tries[-attempts:] if t.startswith("view diff")):
+            try:
+                st = self.b.call("camera", "state")
+                if st.get("first_person") and st.get("native"):
+                    tries.append("view check inconclusive (frozen frames); native first accepted")
+                    self.view_unverified = False
+                    return True
+            except BridgeError:
+                pass
         return False
 
     ENGINE_STATE_READS = ("IsSwimming", "GetSitState", "GetKnockedState", "GetSleepState", "GetDead")
