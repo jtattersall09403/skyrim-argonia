@@ -128,6 +128,8 @@ def refresh(only: set[str] | None = None) -> int:
     reach_records.apply(only)   # the records each look journey judges, in place of the whole ESM
     (ROOT / "out" / "journeys-refresh.json").write_text(json.dumps(log, indent=1))
     print(f"journeys refresh: {len(log)} vantages, {len(moved)} moved, {len(stuck)} not clear")
+    from tools.journeys import measures
+    print(measures.stats())
     return _check(b, only)
 
 
