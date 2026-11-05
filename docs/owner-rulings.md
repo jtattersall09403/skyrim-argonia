@@ -18,6 +18,12 @@ added here the day they are made, with the date and the issue.
 - Agents verify by reading the files the game will consume (the ESP, the scripts, the DLLs, the profile) and
   loop until that read meets the bar; they never run the game themselves (2026-11-05).
 - The BM&V census into the relational story data runs in Phase 1, beside the stack (2026-11-05).
+- Write and review the first act before building any block, so the blocks are the ones the story needs; aim for
+  a small set of blocks that combine into many quest dynamics, so proving each once (and their connectors once)
+  proves every quest built from them, like a proof by induction; if a block is too hard, re-author the quests
+  around the blocks that work (2026-11-05).
+- An offline interactive 2D map of BM&V's world, linked to the mined place records, for the owner and agents
+  (2026-11-05).
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

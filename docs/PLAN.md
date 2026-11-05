@@ -32,7 +32,7 @@ cannot do it. We make no art, no world, no engine code of our own.
 - **Agents do not test in game.** The owner tests. An agent proves its work off game (the plugin loads in xEdit
   or houseCARL without errors, the script compiles, the record diff is what was intended) and then posts one
   owner check: what to look at, where, how, in plain English (`tooling/owner_inbox.py --post`).
-- **Prove a building block once, then reuse it everywhere.** Phase 2 proves each kind of change on one example
+- **Prove a building block once, then reuse it everywhere.** Phase 3 proves each kind of change on one example
   (one NPC's dialogue, three ways to start a quest, the script types, a placement on existing navmesh, a faction,
   an item, a boss). Once the owner has verified a block in game, every later use of the same block is built the
   same way and not re-tested individually. Only a new kind of change earns a new block.
@@ -66,16 +66,17 @@ cannot do it. We make no art, no world, no engine code of our own.
 ## 4. The phases
 
 Each phase ends when the owner has played it and said so on its issue. Phases run in order; the blocks inside
-Phase 2 run in any order. Nothing is estimated in advance; each phase records what it measured. Each phase is one
+Phase 3 run in any order. Nothing is estimated in advance; each phase records what it measured. Each phase is one
 file in [phases/](phases/), edited as the phase goes.
 
 | Phase | What | Ends when the owner can say |
 |---|---|---|
 | [0](phases/0-play-machine.md) | the play machine is back and vanilla Skyrim streams | no owner test: the machine, Steam and the pinned game are checked by the agent; the owner tries the Vanilla card in the first walk (owner, 2026-11-05) |
 | [1](phases/1-stack-in-bmv.md) | the stack, in BM&V as the default world | "I started in Black Marsh, fought, climbed, cast a Morrowind spell and nothing from Skyrim followed me" |
-| [2](phases/2-building-blocks.md) | the building blocks (the proving kit) | "I saw all nine blocks work in game" |
-| [3](phases/3-first-act.md) | the story's first act on BM&V | "I played the first act from the Black Marsh start" |
-| [4 and on](phases/4-scale.md) | scale | "the story is in, milestone by milestone" |
+| [2](phases/2-first-act-on-paper.md) | the first act written as quest records, and the small composable block set it needs, derived from them | "the act reads right and the block list is enough" (read, not played) |
+| [3](phases/3-building-blocks.md) | each block proved once, plus one composite quest for the connectors (the induction) | "I saw every block and the composite work in game" |
+| [4](phases/4-first-act-built.md) | the first act built from the proven blocks, with its dialogue | "I played the first act from a new game" |
+| [5 and on](phases/5-scale.md) | scale | "the story is in, milestone by milestone" |
 
 ## 5. Risks, named
 

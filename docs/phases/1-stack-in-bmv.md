@@ -44,6 +44,15 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   our own authored records carry their form keys in `mod_form` as the Magic Expanded forms already do. The quest
   skills read the mapping, so a quest written against a designed place resolves to a BM&V cell. Where BM&V has no
   place for a designed one, the row is mapped to the nearest BM&V place or marked waiting.
+- **An offline 2d interactive map**
+- After the census: **an offline interactive 2D map of BM&V's world** (owner, 2026-11-05), for the owner and agents
+  to explore, linked to the mined records: pan and zoom over each BM&V worldspace, the land drawn from BM&V's own
+  terrain heights and water, every exterior cell gridded, each settlement, door, NPC placement and quest-relevant
+  place clickable to its census row (form key, editor id, name, settlement, NPCs there) and to our designed place
+  mapped onto it. A generator under `tools/` builds one self-contained HTML page into `out/bmv-map/` from
+  `story/data` and the ESM; the rendered terrain image is derived from BM&V's files, so it is never committed
+  (decision 0003): the owner gets it as a private page, agents open the local build. Searchable by name and editor
+  id; coordinates shown in cell grid and game units, so an agent can turn a click into a marker position.
 - **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner. For the census mine, do a loop between a miner and reviewer, where the reviewer thinks critically about what the miner might have missed and provides feedback. You as the planner use your judgment to decide when that loop exits. We need to know we have information about every place from the BM&V mod, and we have enough information about every place to meet the requirements for our goal (and for being able to properly author and review our quests).
 - **Owner test (the first walk, the first owner test since the pivot):** both cards on the play page, Vanilla
   Skyrim (a quick check that the stream and the game run) and Argonia. On Argonia, a new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the
