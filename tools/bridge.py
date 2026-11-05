@@ -170,7 +170,10 @@ class Bridge:
         ssh = ["ssh", "-i", str(KEY), "-o", "StrictHostKeyChecking=accept-new", "-o", "BatchMode=yes",
                "-o", "ExitOnForwardFailure=yes", "-o", "ServerAliveInterval=30", "-f", "-N",
                "-L", f"{self.host}:{self.port}:127.0.0.1:{PORT}", f"Administrator@{self.machine.ip()}"]
-        _sh(ssh, timeout=30)
+        try:
+            _sh(ssh, timeout=30)
+        except BridgeError as e:  # ssh itself failed: the machine does not answer (terminated, stopped)
+            raise GameDown(f"GAME DOWN (machine unreachable): {e}") from e
         for _ in range(20):
             if self._port_open():
                 return
@@ -231,7 +234,17 @@ class Bridge:
         for n in range(tries):
             try:
                 return self._call_once(command, *args, timeout=timeout)
-            except (BridgeError, ConnectionResetError) as e:
+            except (subprocess.TimeoutExpired, OSError) as e:
+                if isinstance(e, ConnectionResetError):
+                    if n + 1 >= tries:
+                        raise
+                    self.transport_retries += 1
+                    print(f"bridge: {command}: transport retry {n + 1} after {e}", file=sys.stderr)
+                    time.sleep(RETRY_BACKOFF[n])
+                    continue
+                # the ssh tunnel or run.sh timed out or failed: never a raw exception, the path a crash takes
+                raise GameDown(f"GAME DOWN (machine unreachable): {type(e).__name__}: {e}") from e
+            except BridgeError as e:
                 hitch = isinstance(e, ConnectionResetError) or (
                     type(e) is BridgeError and "did not run the task" in str(e))
                 if not hitch or n + 1 >= tries:

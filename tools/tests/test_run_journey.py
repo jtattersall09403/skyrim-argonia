@@ -993,3 +993,20 @@ def test_scene_load_timeout_probes_and_finds_it_hung(tmp_path):
     fake.call = dead
     rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [WALK]), "base")
     assert not rep["passed"] and rep["crash"].startswith("GAME DOWN (hung):")
+
+
+def test_ssh_tunnel_timeout_ends_the_journey_as_a_crash(tmp_path):
+    """r6-chain35: the clone machine was terminated mid-journey; the tunnel's ssh timed out and raised raw."""
+    import subprocess
+
+    from tools.bridge import Bridge
+    b = Bridge.__new__(Bridge)
+    b.transport_retries = 0
+
+    def dead():
+        raise subprocess.TimeoutExpired(["ssh"], 30)
+    b.tunnel = dead
+    with pytest.raises(GameDown, match=r"GAME DOWN \(machine unreachable\)"):
+        b.call("events")
+    rep = rj.Runner(b, tmp_path / "out").run(journey(tmp_path, [{"name": "a", "do": [{"console": "x"}]}]), "base")
+    assert not rep["passed"] and rep["crash"].startswith("GAME DOWN (machine unreachable)")

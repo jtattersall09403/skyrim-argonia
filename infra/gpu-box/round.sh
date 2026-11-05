@@ -74,6 +74,7 @@ print("" if x is None else (x if isinstance(x, str) else (x.get("journey") or x.
   [ "$last" != "$before" ] && echo "batch-dir $last" >>"$state"
   if [ $rc -le 1 ]; then echo "batch OK" >>"$state"; fi
   echo "ROUND batch $([ $rc -le 1 ] && echo OK || echo FAIL) in $(( SECONDS - s )) s (rc $rc: 0 all passed, 1 some failed, 2 no game)"
+  [ $rc -le 1 ] || exit 4   # no game / machine gone: a partial batch is never a finished round; the planner relaunches
 fi
 [ -n "$last" ] || { echo "ROUND DONE no batch run"; exit 5; }
 # the stills for the reader: every still of this round's batch runs (a resumed round has several), one per line
@@ -81,6 +82,7 @@ dirs=$(sed -n 's/^batch-dir //p' "$state")
 find $dirs -name '*.png' | sort >"${last}stills.txt"
 passed=$("$PY" -c 'import json, sys
 i = [x for d in sys.argv[1:] for x in json.load(open(d + "summary.json")).get("items", [])]
-print(str(sum(x["passed"] for x in i)) + "/" + str(len(i)))' $dirs 2>/dev/null || echo "?/?")
+n = sum(json.load(open(d + "summary.json")).get("planned", 0) for d in sys.argv[1:])
+print(str(sum(x["passed"] for x in i)) + "/" + str(max(n, len(i))))' $dirs 2>/dev/null || echo "?/?")
 round_rc=0
 echo "ROUND DONE $passed in $(( SECONDS - t0 )) s; stills: $(wc -l <"${last}stills.txt") in ${last}stills.txt"

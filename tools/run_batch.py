@@ -201,7 +201,7 @@ def private_mb(b) -> float | None:
     try:
         out = b.machine.ps("$p = Get-Process SkyrimSE -EA SilentlyContinue; if ($p) { 'MB ' + [int]($p.PrivateMemorySize64/1MB) } else { 'MB none' }",
                            timeout=90)
-    except BridgeError:
+    except (BridgeError, subprocess.SubprocessError, OSError):
         return None
     m = re.findall(r"MB (\d+)", out)
     return float(m[-1]) if m else None
@@ -228,6 +228,8 @@ class Batch:
         self.sent: dict = {}  # scenes already on the machine (run_journey's Runner skips an unchanged re-put)
         self.summary = {"id": batch["id"], "out": str(out), "items": [], "launches": [], "passed": False}
         self.since_launch = 0
+        self.planned = sum(i["runs"] for i in batch["items"])  # every journey due, run or not (a partial batch never reads complete)
+        self.summary["planned"] = self.planned
         self.hung = False  # the last journey ended "GAME DOWN (hung)": the process is alive but dead; kill and relaunch
 
     def write(self):
@@ -359,9 +361,24 @@ class Batch:
                       + ("" if rep["passed"] else f" at {rec['failed_at']}: {rec['reason']}"), flush=True)
                 self.totals(t0)
                 self.write()
+                if str(rep.get("crash") or "").startswith("GAME DOWN (machine unreachable)") and self.machine_gone():
+                    self.summary["aborted"] = (f"GAME DOWN (machine gone): {len(self.summary['items'])} of "
+                                               f"{self.planned} journeys run")
+                    self.summary["machine_gone"] = True
+                    self.totals(t0)
+                    self.write()
+                    print("ROUND batch " + self.summary["aborted"], flush=True)
+                    return self.summary
         self.totals(t0)
         self.write()
         return self.summary
+
+    def machine_gone(self) -> bool:
+        """The bridge could not reach the machine: ask it once over its own channel; no answer means it is gone."""
+        try:
+            return "alive" not in self.b.machine.ps("'alive'", timeout=45)
+        except (BridgeError, subprocess.SubprocessError, OSError):
+            return True
 
     def done(self, it: dict, rep: dict, rec: dict) -> pathlib.Path | None:
         """`<journey run>/done.json` as the journey finishes (journey, verdict, stills, scan files), and the
@@ -542,7 +559,7 @@ def main(argv=None) -> int:
     dry(batch)  # a bad item fails before the game is touched
     out = REPO / "out" / "batch" / batch["id"] / time.strftime("%Y%m%dT%H%M%S")
     s = Batch(Bridge(), batch, out, stills=not a.no_stills, force=a.all, on_done=a.on_done).run(start=a.only or a.start, only=bool(a.only))
-    print(f"{batch['id']}: {s['passed_n']}/{len(s['items'])} passed in {s['seconds']} s; {s.get('steps_run', 0)} steps"
+    print(f"{batch['id']}: {s['passed_n']}/{s.get('planned', len(s['items']))} passed in {s['seconds']} s; {s.get('steps_run', 0)} steps"
           f" ran, {s.get('steps_skipped', 0)} skipped (passed on the same inputs); {out / 'summary.json'}")
     from tools import check_ledger  # the check ledgers' journey rows follow the run (owner, 2026-10-31)
     print(f"ledgers: {check_ledger.update(s)} rows rewritten (docs/phases/*/checks.md); commit them with the report")

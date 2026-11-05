@@ -3,6 +3,7 @@ on, memory past the threshold relaunches, a chained item skips the save load, an
 and summary.json carries pass/fail, the failing step's reason and the timings."""
 import json
 import pathlib
+import subprocess
 import sys
 
 import pytest
@@ -309,3 +310,23 @@ def test_hung_game_is_killed_and_relaunched_before_the_next_item(tmp_path, journ
     f, s, _ = run(tmp_path, ["wedge", "good"])
     assert s["items"][0]["crash"] and s["items"][0]["reason"].startswith("GAME DOWN (hung)")
     assert s["items"][1]["passed"] and s["items"][1]["relaunched_before"] and f.launches == 2
+
+
+def test_machine_gone_ends_the_batch_with_a_verdict_and_counts_the_planned(tmp_path, journeys):
+    f = Fake()
+    real = f.call
+
+    def call(cmd, *args, timeout=None):
+        if cmd == "console" and args[0] == "boom":
+            f.gone = True
+        if getattr(f, "gone", False) and cmd != "load":
+            raise GameDown("GAME DOWN (machine unreachable): TimeoutExpired: ssh 30")
+        return real(cmd, *args, timeout=timeout)
+    f.call = call
+    f.machine.ps = lambda script, timeout=120: (_ for _ in ()).throw(subprocess.TimeoutExpired("run.sh", 45))
+    items = ["crash"] + ["good"] * 15
+    batch = {"id": "t", "items": rb.parse_items(items), "relaunch_mb": 6000, "relaunch_every": 0}
+    s = rb.Batch(f, batch, tmp_path / "out", stills=False).run()
+    assert s["machine_gone"] and len(s["items"]) == 1 and s["planned"] == 16
+    assert s["aborted"] == "GAME DOWN (machine gone): 1 of 16 journeys run" and not s["passed"]
+
