@@ -204,6 +204,7 @@
 {"list_id":"quest_stage:quest.main.mq03|1:on_enter","ord":1,"term":"moveRef"}
 {"list_id":"quest_stage:quest.main.mq03|4:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":0,"term":"moveRef"}
+{"list_id":"quest_stage:quest.main.mq03|8:on_enter","ord":0,"term":"giveItem"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|7:on_enter","ord":0,"term":"startScene"}
 {"list_id":"quest_stage:quest.main.mq05|1:on_enter","ord":0,"term":"enableRef"}

@@ -39,3 +39,27 @@ The act is written before any block is built, so the blocks are the ones the sto
 - **Owner test:** none in game. The act outline and the block list go to the owner as one issue to read and rule
   on: a short summary of each quest, what changed from the authored design and why, and the block list with the
   induction note.
+
+## Done (2026-11-05)
+
+- **The adaptation:** [act1-on-bmv](../../story/design/quests/act1-on-bmv.md). The act's spirit and shape are kept; its
+  beats move to BM&V's Lilmoth (Dock1, Pusbottom, its Hist grove), Hereguard Plantation, the tribal Village east of
+  Lilmoth (as the Hatching Pools, `place_bmv` row added), and Helstrom by BM&V's ship. Minor edits only: placed
+  people and fixed-level enemies, enable parents, locks, a few statics; levelled and Nordic-look BM&V placements in the
+  act's path are removed under parents that stay off.
+- **The records:** `quest.main.mq01` (the work detail, the attack, the Hist closing), `mq03` (the Veiled Reed's
+  pardon and the first dream), `mq04` (the second closed tree), `mq05` (Helstrom), in the story data, each citing its
+  census rows. Each was reviewed by a fresh `quest-reviewer` three times and revised until nothing blocking remained;
+  the findings and answers are in each record's `review` section. `brief.py` builds every brief.
+- **The blocks:** [docs/design/blocks.md](../design/blocks.md), with the precedent counts in
+  [quest-block-precedent](../research/skyrim/quest-block-precedent.md). Seven triggers (topic, zone, activate, acquire,
+  death or counted deaths, another quest's stage, a scene's end), seven conditions (stage, global, faction, item, skill,
+  time, alive), nine effects (stage with journal and objective, enable parent, item or gold, move, faction, scene, alias
+  package, global, regard), four world edits (templated NPC, fixed-level actor, new or removed reference, overridden BM&V
+  record). Dropped: sleeping or waiting as a trigger (no vanilla precedent; re-authored as an activated bed and a
+  time-gated topic), change-location starts and location conditions (BM&V has no locations). Every stage of the four
+  quests maps; nothing needs SKSE.
+- **The induction note** is in blocks.md: the stage is the only joint, so base cases plus one composite prove any
+  quest of the set; guards for racing triggers, alias fills, persistent refs, package priority and save-reload.
+- **Owed to Phase 4:** the quest vocabulary's skill names are Morrowind's (mapped to Skyrim's in C-skill for now); a
+  0006/0035 audit of the coast road and Longmont before MQ04 is built.
