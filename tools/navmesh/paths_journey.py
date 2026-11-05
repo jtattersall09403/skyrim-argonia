@@ -15,6 +15,8 @@ import json
 import math
 from pathlib import Path
 
+from tools.argonia_world import skyrim_units as su
+
 ROOT = Path(__file__).resolve().parents[2]
 ANCHORS, PER = 40, 5
 NEAR_U, FAR_U = 600.0, 7500.0  # under 2 cells (8192 u): the grid a teleport loads
@@ -44,7 +46,7 @@ def pairs(anchors: list[tuple], spawns: list[tuple], per: int = PER) -> list[tup
     return out
 
 
-ARRIVE_U = 3 * 70.03  # arrival tolerance: 3 m in Skyrim units (skyrim_units.UNITS_PER_METRE)
+ARRIVE_U = su.metres_to_units(3)  # arrival tolerance: 3 m in Skyrim units
 
 
 def _f(v: float) -> str:
@@ -118,7 +120,6 @@ def build() -> str:
 def _run(w, cb):
     from tools.argonia_world.terrain.grid import Sources
     from tools.argonia_world.water import solve
-    from tools.argonia_world import skyrim_units as su
     ground = sorted((ROOT / "out" / "terrain" / "build").glob("*/ground-f32.npy"), key=lambda p: p.stat().st_mtime)[-1]
     x0, y0 = su.PROVINCE_CELL_SW
     cells = [(x, y) for y in range(y0, y0 + su.PROVINCE_CELLS) for x in range(x0, x0 + su.PROVINCE_CELLS)]

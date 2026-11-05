@@ -13,13 +13,14 @@ from pathlib import Path
 
 import numpy as np
 
+from tools.argonia_world import skyrim_units as su
 from tools.argonia_world.terrain.esm import records
 from tools.argonia_world.terrain.probes.vanilla_lake_cells import TAMRIEL, vhgt
 from tools.argonia_world.water.edges_census import first_run
 
 ESM = Path(sys.argv[1] if len(sys.argv) > 1 else "/home/ubuntu/games/skyrimse/Data/Skyrim.esm")
 TOL_U = 21.0  # 0.3 m
-SEG_M = 128 / 70.03
+SEG_M = su.VERTEX_SPACING_UNITS / su.UNITS_PER_METRE
 
 
 def load():
@@ -69,22 +70,22 @@ def main():
             out[kind][0] += float(seg.sum()) * SEG_M
             out[kind][1] += 32 * SEG_M
             if seg.any():
-                worst.append((float(seg.sum()) * SEG_M, (x, y), se, kind, round(float(hu - e.min()) / 70.03, 2)))
+                worst.append((float(seg.sum()) * SEG_M, (x, y), se, kind, round(float(hu - e.min()) / su.UNITS_PER_METRE, 2)))
             if kind == "step":
-                lip.append(float(np.median(e - hu)) / 70.03)
+                lip.append(float(np.median(e - hu)) / su.UNITS_PER_METRE)
                 s = strip(land[o], so)
                 under = s < ho
                 run.append(float(np.median([np.argmax(r) if r.any() else 33 for r in under])))
                 # the face at the channel (the line's lowest vertex): the lower cell's ground by vertex in, over the
                 # lower level (m), and whether the lower water reaches it (vertices to the first under-level vertex)
                 r0 = int(np.argmin(e))
-                face.append(((s[r0, :9] - ho) / 70.03).round(1).tolist())
+                face.append(((s[r0, :9] - ho) / su.UNITS_PER_METRE).round(1).tolist())
                 foot.append(int(np.argmax(under[r0])) if under[r0].any() else 33)
                 foot_run.append(first_run(under[r0]))
                 # the bar for a bank: the step line's ground over the upper level off the channel (vanilla's lift), the
                 # drop, the lower cell's wet share (vertices under its level), and whether the lower cell steps again
-                drops.append(float(hu - ho) / 70.03)
-                over.append(float(np.max(e - hu)) / 70.03)
+                drops.append(float(hu - ho) / su.UNITS_PER_METRE)
+                over.append(float(np.max(e - hu)) / su.UNITS_PER_METRE)
                 lower_wet.append(float((land[o] < ho).mean()))
                 uppers.add((x, y))
                 chain.append(o)
