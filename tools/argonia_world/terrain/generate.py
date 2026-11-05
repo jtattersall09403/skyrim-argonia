@@ -432,6 +432,27 @@ def stamp_polyline(mask_val: np.ndarray, pts: np.ndarray, rad: float, value=True
     mask_val[rr[ok], cc[ok]] = value
 
 
+POOL_EXEMPT_M = 14.0  # beyond a road's core: the causeway shoulder (6 m) and the 8 m bank the roads census bars
+SEAT_EXEMPT_M = 30.0  # beyond a bridge seat's approach: its GRADE_MAX ease (at 14 m gideon-step's seat stood 0.35 m off)
+
+
+def pool_exempt(shape_, inp) -> np.ndarray:
+    """The samples the pool-keep rule (water_field) leaves to the full lift: each road's corridor and causeway cone
+    (routes/shape.corridor plus POOL_EXEMPT_M) and each step bridge's seat (its reach past the end, and the deck span),
+    so the roads census holds (lane 1.15-r6-stepped-pools-2)."""
+    from tools.argonia_world.routes.shape import corridor, deck_span
+    m = corridor(shape_, inp.roads, extra_m=POOL_EXEMPT_M) if inp.roads else np.zeros(shape_, bool)
+    if inp.seats:
+        m |= deck_span(shape_, inp.seats)
+        yy, xx = np.ogrid[:shape_[0], :shape_[1]]
+        for q in inp.seats:
+            x, y = (float(v) / MPP for v in q["at_m"])
+            r = (q["to_m"] + q["half_width_m"] + SEAT_EXEMPT_M) / MPP
+            r0, r1, c0, c1 = max(int(y - r), 0), int(y + r) + 1, max(int(x - r), 0), int(x + r) + 1
+            m[r0:r1, c0:c1] |= (yy[r0:r1] - y) ** 2 + (xx[:, c0:c1] - x) ** 2 <= r * r
+    return m
+
+
 def generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     """A whole-province generate (the full 4033² prior) takes the province lock: one at a time on the build VM."""
     from tools.argonia_world.province_lock import province_lock
@@ -618,7 +639,7 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     hi = np.full((N + 1, N + 1), np.inf)
     from tools.argonia_world.terrain.water_field import water_field
     h_wf_in = h.astype(np.float32)
-    h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully)
+    h, role, lo, hi, wf_ = water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully, exempt=pool_exempt(h.shape, inp))
     st["water"]["field"] = {"lift_samples": int((wf_["lift"] > 0.05).sum()), "carve_samples": int((wf_["carve"] > 0.05).sum()),
                             "iso_samples": int(wf_["iso"].sum()), "iso_in_raster_cells": int((wf_["iso"] & blocks[hi_c][:, hi_c]).sum())}
     diag["iso"] = wf_["iso"]

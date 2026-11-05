@@ -16,6 +16,14 @@ import numpy as np
 from tools.argonia_world.terrain import generate as G
 
 LIFT_GRADE = 0.6  # m per sample (18 deg): a raised bank's fall-off to the ground beside it
+# lane 1.15-r6-stepped-pools: Skyrim.esm's falls face drops ~2.0 m per vertex into the lower pool
+# (probes/vanilla_hanging_edges.py: the channel face 6.2, 5.4, 4.0, 3.5, 3.4, 1.6 m over the lower water by vertex) and
+# the lower thalweg is under the lower level by vertex 6 (p50); a step line's bank lift falls into the pool at this
+# grade, and no lift raises the carved footprint (the raster water) by more than this per sample of distance from it:
+# the bank lift and the hollow lift had filled the carved pool back in (lift p50 25 m at -50,46 against a 15 m
+# shortfall; 1,654 buried cells, 183 kept steps with no lower water within 12 vertices)
+FACE_GRADE = 2.0
+WALL_GRADE = 6.0
 CARVE_GRADE = 0.6  # m per sample: the ground's fall into raster water down to the bed
 TYPE_BLEND = 16.0  # samples (half a cell): the bed depth by type blends over this, never steps at a cell line
 SOFT = 3.0  # samples: the fields' blur (no crease at the cone's foot)
@@ -84,7 +92,13 @@ def lift_to(h, src, need, grade, band=0):
     return cone(src & (amt > 0), amt, grade)
 
 
-def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
+def pool_room(foot: np.ndarray) -> np.ndarray:
+    """The most any lift may raise a sample: 0 on the raster water, growing FACE_GRADE per sample away from it, so the
+    carved pool keeps its bed and the bank rises from it as a falls face, never a fill."""
+    return -G.majorant(np.where(foot, 0.0, -1e9), FACE_GRADE)
+
+
+def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None, exempt=None):
     has = np.isfinite(vmin)
     drop = np.nan_to_num(vmax - vmin, nan=0.0)
     need = np.where(has, vmax + G.FREEBOARD_M, -np.inf)
@@ -121,16 +135,24 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
     edge = src & touch
     lf = np.maximum(lift_to(h1, src & ~edge, need, LIFT_GRADE, band=BAND),
                     lift_to(h1, edge, need + EDGE_UP, EDGE_GRADE, band=BAND))
-    h1 = h1 + lf
-    # 3. under-level ground not joined to the raster water (a hollow past the basin's pass, a low corner of the
-    # cell): the cell's plane would draw a square pool over it, so it is lifted above the water the same way
-    under = has & (h1 < vmin - G.FREEBOARD_M) & ~chz
+    # a clipped line keeps its need and falls from it at the face grade; the pool beyond keeps its bed
+    # the cells beside a level step (a riffle or more under or over a neighbour): the hillside staircase. Only there
+    # is the pool kept from the lifts; a flat marsh or a ford keeps its gentle banks (roads' bank bar)
     dd = drop > G.RIFFLE_M
     dd = dd[:-1, :-1] | dd[1:, 1:] | dd[:-1, 1:] | dd[1:, :-1]
     n_ = dd.shape[0] // G.Q
     stc = dd[:n_ * G.Q, :n_ * G.Q].reshape(n_, G.Q, n_, G.Q).any(axis=(1, 3))
     st_s = np.pad(np.repeat(np.repeat(stc, G.Q, 0), G.Q, 1), ((0, h.shape[0] - n_ * G.Q), (0, h.shape[1] - n_ * G.Q)),
                   mode="edge")
+    room = np.maximum(pool_room(foot), cone(src & (lf > 0), np.where(src, lf, 0.0), WALL_GRADE))
+    # a road's corridor and cone and a step bridge's seats keep the full lift (the causeway and the seat stand on it)
+    keep_ = st_s if exempt is None else st_s & ~exempt
+    room = np.where(keep_, room, np.inf)
+    lf = np.minimum(lf, room)
+    h1 = h1 + lf
+    # 3. under-level ground not joined to the raster water (a hollow past the basin's pass, a low corner of the
+    # cell): the cell's plane would draw a square pool over it, so it is lifted above the water the same way
+    under = has & (h1 < vmin - G.FREEBOARD_M) & ~chz
     dfo, _ = G.chamfer(foot, FLOOD_BAND + 1)
     keep = under & ~(st_s & ~(np.nan_to_num(dfo, nan=99) <= FLOOD_BAND))
     iso = under & ~G.reach(foot & keep, keep)
@@ -140,6 +162,7 @@ def water_field(h, foot, vmin, vmax, touch, chz, tsamp, gully=None):
         # (the slow fade only inside the hollow; past its rim the lift falls at LIFT_GRADE like any bank)
         inner = np.where(iso, cone(iso, np.where(iso, need - h1, 0.0) + HOLLOW_PAD, HOLLOW_GRADE), -1e9)
         lf2 = G.blur(np.maximum(G.majorant(inner, LIFT_GRADE), 0.0), SOFT)
+        lf2 = np.minimum(lf2, room)  # a raised hollow beside the pool does not fill it
         lf2 = lf2 + lift_to(h1 + lf2, iso & (h1 + lf2 < need), need, LIFT_GRADE)
         h1 = h1 + lf2
         lf = lf + lf2

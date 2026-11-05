@@ -31,12 +31,12 @@ FOOT_BAR = 12  # vertices: vanilla's p50 8 plus our channel's graded bed (steps.
 WET_SHARE = 0.8  # a cell keeps at least this share of its raster footprint wet
 FOOT_RUN = 3  # vertices: the lower water meets the foot where this many in a row stand under it (a pool, not a pit)
 FOOT_MIN = 0.05  # a footprint under this share of the cell (a fringe of the raster) is not counted
-# the gate holds both measures at the 2026-11-05 ground (out/terrain 05:04) until the fix lane drives them to 0:
-# 183 of 203 kept steps with no lower water within FOOT_BAR of the line (Skyrim.esm: 36 of 77), 1,654 of 2,449 held
-# cells under WET_SHARE of their footprint (by stage on the dump: the carve leaves 430, the bank lift buries 681
-# more, the shore floor 539; lane-1.15-r6-water-edges-2.md). More than these is red
-FOOT_FAR_MAX = 183
-BURIED_MAX = 1654
+# the gate holds both measures at the landed counts of lane 1.15-r6-stepped-pools-2 (the pool-keep rule in
+# water_field, roads and bridge seats exempt; scratch ground 2026-11-05): 83 of 203 kept steps with no lower water
+# within FOOT_BAR of the line (was 183; Skyrim.esm: 36 of 77), 1,232 of 2,449 held cells under WET_SHARE of their
+# footprint (was 1,654; most of the rest are blackwater bodies, a separate lane). More than these is red
+FOOT_FAR_MAX = 83
+BURIED_MAX = 1232
 
 
 def step_foot(level: np.ndarray, ground: np.ndarray, s, cx0: int, cy0: int) -> int:
