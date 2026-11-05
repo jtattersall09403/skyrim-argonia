@@ -95,8 +95,8 @@ def main():
                 # the lower cell's thalweg from the line to its first vertex under the lower level (the falls' face)
                 t = strip(land[(x, y)], se).min(axis=0)
                 wet_t = t[t < hu]
-                bed_range.append(float(wet_t.max() - wet_t.min()) / 70.03 if wet_t.size else 0.0)
-                cell_fall.append(float(t.max() - t.min()) / 70.03)
+                bed_range.append(su.units_to_metres(float(wet_t.max() - wet_t.min())) if wet_t.size else 0.0)
+                cell_fall.append(su.units_to_metres(float(t.max() - t.min())))
                 lt = s.min(axis=0)
                 face_end.append(int(np.argmax(lt < ho)) if (lt < ho).any() else 33)
     again = sum(1 for o in chain if o in uppers)
