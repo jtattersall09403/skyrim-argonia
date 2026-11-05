@@ -4,7 +4,7 @@
 # yaw, aimed at the deck's middle (eye at the current ground + 1.6 m); then the player teleported onto the deck's middle
 # must stand within 0.3 m of the deck top infra reads (the state read).
 id: bridge-look
-reach: ["tools/argonia_world/regions/**", "tools/argonia_world/routes/**", "data/dependencies.json", "records: ref ARG_Ref_BridgeGideonStep", "records: ref ARG_Ref_BridgeGlenbridgeStep", "records: ref ARG_Ref_BridgeThornStep", "records: cell -35,11 r1", "records: cell -35,12 r1", "records: cell -31,17 r1", "records: cell 33,38 r1", "records: cell 33,39 r1"]
+reach: ["tools/argonia_world/regions/**", "tools/argonia_world/routes/**", "data/dependencies.json", "records: ref ARG_Ref_BridgeGideonStep", "records: ref ARG_Ref_BridgeGlenbridgeStep", "records: ref ARG_Ref_BridgeThornStep", "records: cell -35,11 r1", "records: cell -31,17 r1", "records: cell -30,17 r1", "records: cell 33,38 r1", "records: cell 33,39 r1"]
 look: world
 runner: 1
 independent_steps: true
@@ -14,64 +14,64 @@ camera: first
 steps:
   - name: gideon-step
     scan: 6
-    # subject: -141918 49232 4679
+    # subject: -141544 49135 5324
     do: [{hud: "off"}, {console: {line: "cow ARG_Province -35 11", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x -143323"}, {console: "player.setpos y 48858"},
-         {console: "player.setpos z 5058"}, {console: "player.setangle z 75"}, {console: "player.setangle x 19"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "set gamehour to 12"}, {console: "player.setpos x -141544"}, {console: "player.setpos y 47680"},
+         {console: "player.setpos z 5322"}, {console: "player.setangle z 0"}, {console: "player.setangle x 5"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [a wooden plank bridge spanning the water step along the road (gideon-soulrest and gideon-stormhold), both ends meeting the road, no gap at either end, no float, no Nordic piece]
   - name: gideon-step-deck
     scan: 6
-    # deck: the player on the deck's middle (deck top 66.81 m = 4679 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
-    do: [{hud: "off"}, {console: {line: "cow ARG_Province -35 12", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x -141918"}, {console: "player.setpos y 49232"},
-         {console: "player.setpos z 4695"}, {console: "player.setangle z 75"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
+    # deck: the player on the deck's middle (deck top 76.03 m = 5324 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
+    do: [{hud: "off"}, {console: {line: "cow ARG_Province -35 11", settle: 60}}, {wait: 8},
+         {console: "set gamehour to 12"}, {console: "player.setpos x -141544"}, {console: "player.setpos y 49135"},
+         {console: "player.setpos z 5340"}, {console: "player.setangle z 0"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}, {wait: 20}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},
              {read: [player], path: pos, keep: gideon_step_deck},
-             {read: [player], path: pos.z, ge: 4658, within: 10}, {read: [player], path: pos.z, le: 4700, within: 10},
+             {read: [player], path: pos.z, ge: 5303, within: 10}, {read: [player], path: pos.z, le: 5345, within: 10},
              {console: "player.getpos z", contains: ">>"}]
     reader: [standing on a wooden plank deck, the road continuing level past the far end, no gap, no float, no Nordic piece]
   - name: glenbridge-step
     scan: 6
-    # subject: -122891 71441 1269
-    do: [{hud: "off"}, {console: {line: "cow ARG_Province -31 17", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x -123673"}, {console: "player.setpos y 70214"},
-         {console: "player.setpos z 1302"}, {console: "player.setangle z 33"}, {console: "player.setangle x 6"}, {console: "player.setangle y 0"}, {wait: 4},
+    # subject: -122927 71524 1207
+    do: [{hud: "off"}, {console: {line: "cow ARG_Province -30 17", settle: 60}}, {wait: 8},
+         {console: "set gamehour to 12"}, {console: "player.setpos x -121753"}, {console: "player.setpos y 71524"},
+         {console: "player.setpos z 1142"}, {console: "player.setangle z 270"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [a wooden plank bridge spanning the water step along the road (gideon-stormhold, glenbridge-the-road-nisswo-house and north-shadowfen-rootworm-line), both ends meeting the road, no gap at either end, no float, no Nordic piece]
   - name: glenbridge-step-deck
     scan: 6
-    # deck: the player on the deck's middle (deck top 18.12 m = 1269 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
+    # deck: the player on the deck's middle (deck top 17.23 m = 1207 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
     do: [{hud: "off"}, {console: {line: "cow ARG_Province -31 17", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x -122891"}, {console: "player.setpos y 71441"},
-         {console: "player.setpos z 1285"}, {console: "player.setangle z 33"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "set gamehour to 12"}, {console: "player.setpos x -122927"}, {console: "player.setpos y 71524"},
+         {console: "player.setpos z 1223"}, {console: "player.setangle z 270"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}, {wait: 20}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},
              {read: [player], path: pos, keep: glenbridge_step_deck},
-             {read: [player], path: pos.z, ge: 1248, within: 10}, {read: [player], path: pos.z, le: 1290, within: 10},
+             {read: [player], path: pos.z, ge: 1186, within: 10}, {read: [player], path: pos.z, le: 1228, within: 10},
              {console: "player.getpos z", contains: ">>"}]
     reader: [standing on a wooden plank deck, the road continuing level past the far end, no gap, no float, no Nordic piece]
   - name: thorn-step
     scan: 6
-    # subject: 136860 159855 2194
+    # subject: 136959 159904 2237
     do: [{hud: "off"}, {console: {line: "cow ARG_Province 33 38", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x 135634"}, {console: "player.setpos y 159072"},
-         {console: "player.setpos z 2397"}, {console: "player.setangle z 57"}, {console: "player.setangle x 13"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "set gamehour to 12"}, {console: "player.setpos x 136959"}, {console: "player.setpos y 158449"},
+         {console: "player.setpos z 2109"}, {console: "player.setangle z 0"}, {console: "player.setangle x 0"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [a wooden plank bridge spanning the water step along the road (stormhold-thorn and dres-slave-road), both ends meeting the road, no gap at either end, no float, no Nordic piece]
   - name: thorn-step-deck
     scan: 6
-    # deck: the player on the deck's middle (deck top 31.33 m = 2194 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
+    # deck: the player on the deck's middle (deck top 31.94 m = 2237 u): feet within 0.3 m (21 u) of the deck top; over the channel, so not a ground stand
     do: [{hud: "off"}, {console: {line: "cow ARG_Province 33 39", settle: 60}}, {wait: 8},
-         {console: "set gamehour to 12"}, {console: "player.setpos x 136860"}, {console: "player.setpos y 159855"},
-         {console: "player.setpos z 2210"}, {console: "player.setangle z 57"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "set gamehour to 12"}, {console: "player.setpos x 136959"}, {console: "player.setpos y 159904"},
+         {console: "player.setpos z 2253"}, {console: "player.setangle z 0"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}, {wait: 20}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},
              {read: [player], path: pos, keep: thorn_step_deck},
-             {read: [player], path: pos.z, ge: 2173, within: 10}, {read: [player], path: pos.z, le: 2215, within: 10},
+             {read: [player], path: pos.z, ge: 2216, within: 10}, {read: [player], path: pos.z, le: 2258, within: 10},
              {console: "player.getpos z", contains: ">>"}]
     reader: [standing on a wooden plank deck, the road continuing level past the far end, no gap, no float, no Nordic piece]

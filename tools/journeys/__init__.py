@@ -705,6 +705,9 @@ def water_share(b: Build, x: float, y: float, heading: float, near_m: float = WA
     return hit / tot if tot else 0.0
 
 
+SHORTFALL = re.compile(r"#\s*shortfall: water (\d+)%")   # a kept stop below its floor: the generator's own share, whole %
+
+
 def water_stops(text: str) -> list[dict]:
     """The stops of a water journey: name, stand (x, y), heading, subject (x, y)."""
     lines = text.splitlines()
@@ -715,8 +718,10 @@ def water_stops(text: str) -> list[dict]:
         ang = {k: float(v) for k, v in SETANGLE.findall(blk)}
         m = SUBJECT.search(blk)
         if {"x", "y"} <= set(pos) and m and "z" in ang:
+            sf = SHORTFALL.search(blk)
             out.append({"step": name, "x": pos["x"], "y": pos["y"], "heading": ang["z"],
-                        "pitch": ang.get("x", 0.0), "subject": tuple(float(v) for v in m.groups())})
+                        "pitch": ang.get("x", 0.0), "subject": tuple(float(v) for v in m.groups()),
+                        "shortfall": int(sf.group(1)) if sf else None})
     return out
 
 
@@ -733,8 +738,15 @@ def water_stop_bad(b: Build, s: dict) -> str | None:
     if b.soaked(s["x"], s["y"]):
         return (f"{s['step']}: no dry footing: ground {su.units_to_metres(b.margin_u(s['x'], s['y'])):+.2f} m over the cell "
                 f"water level (needs {DRY_FOOTING_M} m)")
+    if s["step"] == "sea-far":   # the horizon stop: the open water within SEA_FAR_M, as the generator reads it
+        from tools.journeys import gen
+        rays = sum(frame_read(b, s["x"], s["y"], s["heading"], 0.0, near_m=gen.SEA_FAR_M)[1].values())
+        return None if rays >= gen.SEA_FAR_MIN_RAYS else (
+            f"sea-far: {rays} wet rays to {gen.SEA_FAR_M:.0f} m, under {gen.SEA_FAR_MIN_RAYS}: it looks at land")
     sh = frame_share(b, s["x"], s["y"], s["heading"], s.get("pitch", 0.0))
     fl = frame_floor(s["step"])
+    if sh < fl and s.get("shortfall") == round(sh * 100):   # kept short by the generator: current until the build moves it
+        return None
     if sh < fl:
         return f"{s['step']}: water is {sh:.0%} of the lower frame (0-60 m, +-30 deg), under its floor {fl:.0%}"
     return None

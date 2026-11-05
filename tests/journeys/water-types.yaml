@@ -17,19 +17,19 @@ camera: first
 steps:
 - name: sea
   scan: 6
-  # sea water from cell (-53,-26), level 0.0 m
-  # subject: -243668 -104086 175
+  # sea water from cell (-17,9), level 0.0 m
+  # subject: -67462 69298 243
   do:
   - hud: off
   - console: tgm
-  - console: {line: cow ARG_Province -53 -28, settle: 60}
+  - console: {line: cow ARG_Province -18 10, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -216896
-  - console: player.setpos y -112326
-  - console: player.setpos z 54
+  - console: player.setpos x -70945
+  - console: player.setpos y 41503
+  - console: player.setpos z 122
   - wait: 6
-  - console: player.setangle z 287
+  - console: player.setangle z 7
   - console: player.setangle x 0
   - console: player.setangle y 0
   - wait: 4
@@ -43,17 +43,17 @@ steps:
 - name: green-marsh
   scan: 6
   # marsh water from cell (-31,28), level 18.4 m
-  # subject: -105183 116736 310
+  # subject: -104622 116736 310
   do:
   - hud: off
   - console: {line: cow ARG_Province -30 28, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -121497
-  - console: player.setpos y 116876
-  - console: player.setpos z 1349
+  - console: player.setpos x -121076
+  - console: player.setpos y 116456
+  - console: player.setpos z 1346
   - wait: 6
-  - console: player.setangle z 90
+  - console: player.setangle z 89
   - console: player.setangle x 4
   - console: player.setangle y 0
   - wait: 4
@@ -66,19 +66,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: black-swamp
   scan: 6
-  # black water from cell (-45,-30), level 5.4 m
-  # subject: -181292 -137776 300
+  # black water from cell (-47,-29), level 7.7 m
+  # subject: -188643 -140963 172
   do:
   - hud: off
   - console: {line: cow ARG_Province -48 -39, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -196453
-  - console: player.setpos y -156267
-  - console: player.setpos z 321
+  - console: player.setpos x -193265
+  - console: player.setpos y -158299
+  - console: player.setpos z 243
   - wait: 6
-  - console: player.setangle z 39
-  - console: player.setangle x 0
+  - console: player.setangle z 15
+  - console: player.setangle x 1
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -90,19 +90,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: river
   scan: 6
-  # river-se water from cell (18,-8), level 0.8 m
-  # subject: 79262 -28136 60
+  # river-sw water from cell (-49,16), level 181.3 m
+  # subject: -202334 66885 12295
   do:
   - hud: off
-  - console: {line: cow ARG_Province 18 -7, settle: 60}
+  - console: {line: cow ARG_Province -50 16, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 74927
-  - console: player.setpos y -26263
-  - console: player.setpos z 118
+  - console: player.setpos x -200716
+  - console: player.setpos y 67578
+  - console: player.setpos z 12501
   - wait: 6
-  - console: player.setangle z 113
-  - console: player.setangle x 2
+  - console: player.setangle z 247
+  - console: player.setangle x 11
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -115,18 +115,18 @@ steps:
 - name: stream
   scan: 6
   # creek-se water from cell (-44,-8), level 117.5 m
-  # subject: -168028 -32072 6474
+  # subject: -167663 -32198 5962
   do:
   - hud: off
-  - console: {line: cow ARG_Province -42 -8, settle: 60}
+  - console: {line: cow ARG_Province -41 -8, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -169553
-  - console: player.setpos y -31515
-  - console: player.setpos z 6526
+  - console: player.setpos x -165127
+  - console: player.setpos y -32761
+  - console: player.setpos z 6571
   - wait: 6
-  - console: player.setangle z 110
-  - console: player.setangle x 6
+  - console: player.setangle z 283
+  - console: player.setangle x 16
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -138,19 +138,19 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: tarn
   scan: 6
-  # cold water from cell (-55,13), level 68.0 m
-  # subject: -223232 40593 4763
+  # cold water from cell (-42,13), level 79.7 m
+  # subject: -169564 38632 4775
   do:
   - hud: off
-  - console: {line: cow ARG_Province -55 20, settle: 60}
+  - console: {line: cow ARG_Province -42 13, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -224102
-  - console: player.setpos y 83313
-  - console: player.setpos z 13776
+  - console: player.setpos x -170544
+  - console: player.setpos y 56206
+  - console: player.setpos z 5798
   - wait: 6
-  - console: player.setangle z 179
-  - console: player.setangle x 12
+  - console: player.setangle z 177
+  - console: player.setangle x 4
   - console: player.setangle y 0
   - wait: 4
   - console: sw Argonia.esm|0x000E9B
@@ -162,18 +162,18 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: brackish-rim
   scan: 6
-  # brackish water from cell (-19,58), level 0.0 m
-  # subject: -75776 224773 0
+  # brackish water from cell (21,16), level 0.0 m
+  # subject: 62576 67584 0
   do:
   - hud: off
-  - console: {line: cow ARG_Province -19 58, settle: 60}
+  - console: {line: cow ARG_Province 20 17, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x -76553
-  - console: player.setpos y 241233
-  - console: player.setpos z 307
+  - console: player.setpos x 82567
+  - console: player.setpos y 70560
+  - console: player.setpos z 67
   - wait: 6
-  - console: player.setangle z 177
+  - console: player.setangle z 262
   - console: player.setangle x 1
   - console: player.setangle y 0
   - wait: 4
@@ -186,18 +186,18 @@ steps:
   reader: [the header checklist for this kind of stop]
 - name: sea-far
   scan: 6
-  # sea water from cell (15,13), level 0.0 m, out to sea
-  # subject: 62438 81207 171
+  # sea water from cell (-53,-22), level 0.0 m, out to sea
+  # subject: -244164 -96594 1881
   do:
   - hud: off
-  - console: {line: cow ARG_Province 15 12, settle: 60}
+  - console: {line: cow ARG_Province -54 -22, settle: 60}
   - wait: 8
   - console: set gamehour to 13
-  - console: player.setpos x 62438
-  - console: player.setpos y 53195
-  - console: player.setpos z 50
+  - console: player.setpos x -217841
+  - console: player.setpos y -87014
+  - console: player.setpos z 1760
   - wait: 6
-  - console: player.setangle z 0
+  - console: player.setangle z 250
   - console: player.setangle x 0
   - console: player.setangle y 0
   - wait: 4

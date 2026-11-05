@@ -159,10 +159,31 @@ def test_water_stop_bad_flags_an_off_water_aim_and_a_dry_field_and_passes_a_good
     assert "of the lower frame" in J.water_stop_bad(Pond({(cx, cy + 3)}), dry)
 
 
+def test_a_kept_shortfall_stop_reads_current_until_the_measure_moves_and_a_dry_sea_far_is_rejected(monkeypatch):
+    cx, cy = su.cell_of(*at(60, 60))
+    b = Pond({(cx, cy + k) for k in range(1, 3)})
+    ox, oy = su.cell_origin(cx, cy)
+    x, y = ox + su.CELL_UNITS / 2, oy + 100.0
+    stop = {"step": "stream", "x": x, "y": y, "heading": 0.0, "pitch": 0.0, "subject": (x, y + 2 * su.CELL_UNITS, 10.5 * U)}
+    sh = J.frame_share(b, x, y, 0.0, 0.0)
+    assert 0 < sh < J.frame_floor("stream") and "under its floor" in J.water_stop_bad(b, stop)
+    assert J.water_stop_bad(b, {**stop, "shortfall": round(sh * 100)}) is None            # kept short, measure unchanged: current
+    assert "under its floor" in J.water_stop_bad(b, {**stop, "shortfall": round(sh * 100) + 5})   # the build moved it: stale
+    far = {**stop, "step": "sea-far"}
+    sea = {"subject": (x, y + 10.5 * su.CELL_UNITS, 10.5 * U)}
+    assert "looks at land" in J.water_stop_bad(Pond({(cx, cy + 10)}), {**far, **sea})   # sea only past 300 m: a stand on land
+    from tools.journeys import gen
+    monkeypatch.setattr(gen, "SEA_FAR_MIN_RAYS", 5)   # flat test ground gives few grazing rays; the bar's number is the generator's
+    assert J.water_stop_bad(Pond({(cx, cy + k) for k in range(1, 11)}), {**far, **sea}) is None
+
+
 def test_water_stops_parse_a_journey_text():
     text = ("steps:\n- name: s1\n  # subject: 10 20 30\n  do:\n  - console: player.setpos x 1\n  - console: player.setpos y 2\n"
             "  - console: player.setangle z 90\n")
-    assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "pitch": 0.0, "subject": (10.0, 20.0, 30.0)}]
+    assert J.water_stops(text) == [{"step": "s1", "x": 1.0, "y": 2.0, "heading": 90.0, "pitch": 0.0, "subject": (10.0, 20.0, 30.0),
+                                       "shortfall": None}]
+    text = text.replace("  do:", "  # shortfall: water 28% < floor 30%\n  do:")
+    assert J.water_stops(text)[0]["shortfall"] == 28
 
 
 def test_dry_footing_needs_half_a_metre_over_the_cell_water():

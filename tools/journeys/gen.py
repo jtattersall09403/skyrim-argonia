@@ -79,10 +79,18 @@ WEATHER_DO = (f"  - console: sw {CLEAR_DRY}", f"  - console: fw {CLEAR_DRY}", " 
 WEATHER_EXPECT = "  - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}"
 
 
-def _cow_step(name: str, note: str, x: float, y: float, z: float, h: float, p: float, subj, first: bool) -> str:
+def written_aim(h: float, p: float) -> tuple[float, float]:
+    """The heading and pitch as the journey writes them (whole degrees): every measure of a stand reads these, so the
+    generator's share is the one `check` reads back from the yaml (a 32% at the float aim read 28% at the written one)."""
+    return float(round(h)) % 360, float(round(p))
+
+
+def _cow_step(name: str, note: str, x: float, y: float, z: float, h: float, p: float, subj, first: bool,
+              shortfall: str | None = None) -> str:
     cx, cy = su.cell_of(x, y)
     return "\n".join([
-        f"- name: {name}", f"  # {note}", f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
+        f"- name: {name}", f"  # {note}", f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
+        *([f"  # shortfall: {shortfall}"] if shortfall else []), "  do:",
         "  - hud: off", *(["  - console: tgm"] if first else []),
         f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}", "  - wait: 8",
         "  - console: set gamehour to 13", f"  - console: player.setpos x {x:.0f}",
@@ -589,7 +597,7 @@ def _fit(b: Build, name: str, f: dict, centre: tuple, sea: bool, log: list, stri
         if not subj or not b.wet(subj[0], subj[1]):
             return None
         eye = eye_of(b, x, y)
-        h, p = aim(eye, subj)
+        h, p = written_aim(*aim(eye, subj))
         if sea:
             subj, p = (subj[0], subj[1], eye[2]), 0.0
         if stand_bad(b, x, y, (eye[0] + math.sin(math.radians(h)) * 60 * U, eye[1] + math.cos(math.radians(h)) * 60 * U, eye[2])):
@@ -779,7 +787,7 @@ def water_types(b: Build, w, log: list) -> str:
         if res["short"]:
             SHORT_OF_FRAME[name] = res["short"]
         x, y, subj, share, _, (cx, cy) = res["got"]
-        h, p = aim(eye_of(b, x, y), subj)
+        h, p = written_aim(*aim(eye_of(b, x, y), subj))
         if name == "sea":
             p = 0.0
         cl = clearance3(b, eye_of(b, x, y), h)
@@ -798,7 +806,9 @@ def water_types(b: Build, w, log: list) -> str:
         if name == "sea":
             p = 0.0
         out.append(_cow_step(name, f"{types[(cx, cy)]} water from cell ({cx},{cy}), level {level[(cx, cy)]:.1f} m",
-                             x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first))
+                             x, y, b.ground_u(x, y) + SEAT_U, h, p, subj, first,
+                             shortfall=None if fs >= frame_floor(name) else
+                             f"water {fs:.0%} < floor {frame_floor(name):.0%}"))
         first = False
     out.append(sea_far(b, types, level, line, reach_of, log, [s_ for s_ in STANDS if s_[0] == "sea"][0]))
     return look_world("".join(out))
@@ -877,7 +887,7 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
                         tally["off-box/soaked"] += 1
                         continue
                     for turn in (0.0, -20.0, 20.0):
-                        h = (math.degrees(math.atan2(-dx, -dy)) + turn) % 360
+                        h = float(round((math.degrees(math.atan2(-dx, -dy)) + turn) % 360)) % 360
                         eye = eye_of(b, sx, sy)
                         far = next(((sx + math.sin(math.radians(h)) * d * U, sy + math.cos(math.radians(h)) * d * U)
                                     for d in range(int(SEA_OUT_M), 50, -10)   # the aim: the farthest water cell out to 400 m
@@ -919,7 +929,7 @@ def sea_far(b: Build, types: dict, level: dict, line: dict, reach_of: dict, log:
         print("water-types: WARNING sea-far: no shore meets the far-sea bar; no sea-far stop written")
         return ""
     x, y, subj, (cx, cy) = res["got"]
-    h = aim(eye_of(b, x, y), subj)[0]
+    h = written_aim(aim(eye_of(b, x, y), subj)[0], 0.0)[0]
     m = sea_far_ok(b, x, y, h, types)
     cl = clearance3(b, eye_of(b, x, y), h)
     fs, _ = frame_read(b, x, y, h, 0.0)
@@ -1350,6 +1360,7 @@ def sky_ab_stale(b: Build) -> list[str]:
 
 
 # -- bridge-look and junction-dry (rows 164 and 165): stands derived from the build and the route rows ----------------
+BRIDGE_BACK_TRIES_M = (0.0, -4.0, -8.0, 4.0, 8.0, 12.0, 16.0, 20.0, 28.0)   # added to BRIDGE_BACK_M until the stand is dry
 BRIDGE_BACK_M = 12.0       # a bridge's stand: this far back from the deck's end, along the yaw, on the approach
 BRIDGE_DECK_TOL_U = 21     # the deck stop's z reads within 0.3 m of the deck top
 BRIDGE_DECK_DROP_U = 16    # the deck stop teleports this far above the deck top (the feet settle onto it)
@@ -1379,13 +1390,16 @@ def bridge_stands(b: Build, w) -> list[dict]:
     out = []
     for p in infra.bridge_placements(w, g.z):
         ux, uy = math.sin(math.radians(p["heading"])), -math.cos(math.radians(p["heading"]))
-        back = infra.BRIDGE_LEN_M / 2 + BRIDGE_BACK_M
-        sx, sy = su.province_to_skyrim(p["at_m"][0] - ux * back, p["at_m"][1] - uy * back)
         dx, dy = su.province_to_skyrim(p["at_m"][0], p["at_m"][1])
         top_u = su.metres_to_units(p["deck_m"])
-        sx, sy, dx, dy = round(sx), round(sy), round(dx), round(dy)
+        dx, dy = round(dx), round(dy)
+        for extra in BRIDGE_BACK_TRIES_M:   # the stand back from the deck's end on the yaw; in or by water: the next on the approach
+            back = infra.BRIDGE_LEN_M / 2 + BRIDGE_BACK_M + extra
+            sx, sy = (round(v) for v in su.province_to_skyrim(p["at_m"][0] - ux * back, p["at_m"][1] - uy * back))
+            if not b.soaked(sx, sy) and not b.wet(sx, sy):
+                break
         sz = b.ground_u(sx, sy) + SEAT_U
-        h, pitch = aim(eye_of(b, sx, sy), (dx, dy, top_u))
+        h, pitch = written_aim(*aim(eye_of(b, sx, sy), (dx, dy, top_u)))
         out.append({"id": p["id"].removeprefix("bridge."), "roads": [r.rsplit(".", 1)[-1] for r in p["routes"]],
                     "sx": sx, "sy": sy, "sz": sz, "h": h, "p": pitch, "dx": dx, "dy": dy, "top_u": top_u,
                     "yaw": p["heading"], "soaked": b.soaked(sx, sy)})
