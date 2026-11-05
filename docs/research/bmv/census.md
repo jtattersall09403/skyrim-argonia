@@ -47,14 +47,12 @@ Outside every settlement: 83 placements, 251 content squares and 6,612 refs (sca
 interiors have no load door, in or out: 01Cavebig (723 refs, 10 actors), 01newcell1, 01Som_CaveDUPLICATE003,
 01Som_Cave2, 01Dwarmerhome, 4 smaller ones, and 3 vanilla overrides. They are orphans, unreachable without a door
 of ours.
-
 ## Main town cells
 
 - Lilmoth: 00596F (3,-1). Dock1: 00591F. LilmothHist: 005A0D. Pussbottom: 005A0B.
 - Blackrose: 0AFC34 (33,-14). Blackrosemarket: 0AFD1E. Blackrosegate: 0AFD20.
 - Helstrom: 0D794B (BM2 -7,21).
 - Longmont: 07548F. HereguardPlantation: 005919. AltenMeirhall: 039727. Murkwood: 0D73AF.
-
 ## How the worldspaces are entered
 Only ships connect the worldspaces.
 
@@ -73,7 +71,6 @@ Waiting (10): Stormhold, Gideon, Thorn, Soulrest, Archon, Alten Corimont, White 
 Greenspring, Rockgrove. Each row cites its lore file.
 BM&V's actors are generic: creatures, and "Villager", "Merchant", "Prisoner". None of them is a designed person, and
 none of its 6 factions is a designed faction, so `npc_bmv` and `faction_bmv` are empty.
-
 ## Unresolved
 
 - Display names for the editor-id settlements are owed by the story side.
