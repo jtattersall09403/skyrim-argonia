@@ -1,8 +1,0 @@
-FormKey: 019FD1:Skyrim.esm
-EditorID: DialogueWhiterunTempleofKynarethScene1
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

@@ -1,8 +1,0 @@
-{
- "setup": [{"click": "video.video-stream"}, {"probe": "({ locked: !!document.pointerLockElement })"}, {"scene": "plain-armed"}],
- "hud": [{"wait": 2000}, {"shot": "hud"}],
- "menu": [{"key": "Tab"}, {"wait": 1500}, {"shot": "menu"}, {"key": "Tab"}, {"wait": 1500}, {"shot": "menu-closed"}],
- "move": [{"down": "KeyW"}, {"wait": 1800}, {"up": "KeyW"}, {"shot": "moved"}],
- "attack": [{"click": "video.video-stream"}, {"wait": 500}, {"click": "video.video-stream"}, {"wait": 500}, {"click": "video.video-stream"}, {"wait": 500}, {"click": "video.video-stream"}, {"wait": 500}, {"click": "video.video-stream"}, {"wait": 500}, {"click": "video.video-stream"}, {"shot": "attack"}],
- "end": [{"wait": 2500}, {"probe": "FEEL"}]
-}

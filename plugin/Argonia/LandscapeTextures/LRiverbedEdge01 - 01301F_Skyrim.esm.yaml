@@ -1,9 +1,0 @@
-FormKey: 01301F:Skyrim.esm
-EditorID: LRiverbedEdge01
-TextureSet: 000EAD:Argonia.esm
-MaterialType: 012F34:Skyrim.esm
-HavokFriction: 2
-TextureSpecularExponent: 30
-Grasses:
-- 03DCE1:DepthsOfSkyrim.esp
-Flags: []

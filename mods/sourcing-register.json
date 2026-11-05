@@ -1,0 +1,524 @@
+[
+ {
+  "name": "Moonlight-Web (moonlight-web-stream)",
+  "source_url": "https://github.com/MrCreativ3001/moonlight-web-stream/releases/tag/v3.0.1",
+  "version": "v3.0.1 (release asset moonlight-web-x86_64-pc-windows-gnu.zip, sha256 7680f8eb...40b1f)",
+  "licence": "GPL-3.0-or-later",
+  "used_by": "infra/stream-client (our client page, chunk 0.0 §c)",
+  "linked_or_forked_by": "forked: build.sh fetches the release's built static/ at the tag, adds our argonia.js (src/) and one script tag in stream.html; nothing upstream is committed; NOTICE and LICENSE kept",
+  "notes": "Rust server not rebuilt (the frontend build needs cargo for ts-rs bindings and the moonlight-common-rust wasm). Our changes are GPL-3.0-or-later too."
+ },
+ {
+  "name": "esbuild, TypeScript, @types/node (dev tools)",
+  "source_url": "https://www.npmjs.com/package/esbuild",
+  "version": "esbuild 0.24.0, typescript 5.6.3, @types/node 22.9.0",
+  "licence": "MIT (esbuild, @types/node), Apache-2.0 (typescript)",
+  "used_by": "infra/stream-client build and lint",
+  "linked_or_forked_by": "npm devDependencies (package-lock.json); not shipped",
+  "notes": "Build tools only."
+ },
+ {
+  "name": "Puppeteer with Chrome for Testing (test tool)",
+  "source_url": "https://pptr.dev",
+  "version": "puppeteer 23.6.0, Chrome 130.0.6723.58",
+  "licence": "Apache-2.0 (puppeteer); Chrome for Testing under Google's terms",
+  "used_by": "infra/stream-client/e2e (end-to-end and offline checks on the build VM)",
+  "linked_or_forked_by": "installed by e2e.sh under the gitignored build/e2e; not shipped",
+  "notes": "Test only."
+ },
+ {
+  "name": "Mutagen (Mutagen.Bethesda.Skyrim)",
+  "source_url": "https://github.com/Mutagen-Modding/Mutagen",
+  "version": "0.54.4 (NuGet)",
+  "licence": "GPL-3.0",
+  "used_by": "tools/ArgoniaGen (records, chunk 0.1/0.4 §a), tools/immersion/InventoryDump (0.4 §c)",
+  "linked_or_forked_by": "linked as a NuGet package at build; nothing vendored",
+  "notes": "build-VM tools only; never shipped to players"
+ },
+ {
+  "name": "Spriggit (Spriggit.Yaml CLI)",
+  "source_url": "https://github.com/Mutagen-Modding/Spriggit",
+  "version": "0.41.0 (sha256 146bf173…b5b, infra/build-vm/toolchain.lock)",
+  "licence": "GPL-3.0",
+  "used_by": "tools/ArgoniaGen/pipeline.py: Argonia.esm <-> plugin/Argonia/ YAML (0.4 §a)",
+  "linked_or_forked_by": "run as a CLI; nothing vendored",
+  "notes": "build-VM tool only"
+ },
+ {
+  "name": "Skyrim Script Extender (SKSE64) (Nexus 30379)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/30379?tab=files&file_id=795992",
+  "version": "2.3.1 (archive sha256 7bad616ed360..., mods/dependencies.json row skse)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: script extender every plugin needs",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "Address Library for SKSE Plugins (Nexus 32444)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/32444?tab=files&file_id=795954",
+  "version": "13 (archive sha256 be0c7c07fb63..., mods/dependencies.json row address-library)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: version-independent addresses for SKSE plugins",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "Crash Logger SSE AE VR - PDB support (Nexus 59818)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/59818?tab=files&file_id=825684",
+  "version": "1.27.0 (archive sha256 eb112aa69b4e..., mods/dependencies.json row crash-logger)",
+  "licence": "MIT (github alandtse/CrashLoggerSSE)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.3: crash reports read after every run",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "SSE Engine Fixes (skse64 plugin) (Nexus 17230)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/17230?tab=files&file_id=794484",
+  "version": "7.0.21 beta (archive sha256 b6de89ec76d4..., mods/dependencies.json row engine-fixes)",
+  "licence": "MIT (github aers/EngineFixesSkyrim64)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Community Shaders requires EngineFixes.dll (without it CS disables all its hooks and features, seen at the main menu 2026-10-29); engine bug fixes",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "PapyrusUtil SE - Modders Scripting Utility Functions (Nexus 13048)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/13048?tab=files&file_id=797330",
+  "version": "4.8 (archive sha256 0ef140a20459..., mods/dependencies.json row papyrusutil)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Papyrus storage and file helpers several mods call",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "powerofthree's Tweaks (Nexus 51073)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/51073?tab=files&file_id=794717",
+  "version": "1.17.1 (archive sha256 5aeadd195dce..., mods/dependencies.json row po3-tweaks)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: required by po3 Papyrus Extender; editor-ID lookups",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "powerofthree's Papyrus Extender (Nexus 22854)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/22854?tab=files&file_id=800720",
+  "version": "6.5.2 (archive sha256 2ba01d7ea678..., mods/dependencies.json row po3-papyrus-extender)",
+  "licence": "GPL-3.0 (github powerof3/PapyrusExtenderSSE)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Papyrus functions the UI and traversal mods call",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "ConsoleUtilSSE NG (Nexus 76649)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/76649?tab=files&file_id=793316",
+  "version": "1.6.1 (archive sha256 df531d4f1061..., mods/dependencies.json row consoleutilsse-ng)",
+  "licence": "GPL-3.0 (github VersuchDrei/ConsoleUtilSSE)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: console from Papyrus; Sailable Ship requires it",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "Fuz Ro D-oh - Silent Voice (Nexus 15109)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/15109?tab=files&file_id=814513",
+  "version": "2.6 (archive sha256 9a3ed3a31713..., mods/dependencies.json row fuz-ro-doh)",
+  "licence": "GPL-3.0 (github shadeMe/Fuz-Ro-D-oh, repo matched by name only)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.3: silent voice timing for unvoiced lines (quarantine 0012)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "SkyUI (Nexus 12604)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/12604?tab=files&file_id=749043",
+  "version": "6.11 (archive sha256 4eb0c9fc5241..., mods/dependencies.json row skyui)",
+  "licence": "none stated (github schlangster/skyui has no licence file)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: menus, MCM host; Dear Diary skins it",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "MCM Helper (Nexus 53000)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/53000?tab=files&file_id=795510",
+  "version": "1.6.3 (archive sha256 505af9c27062..., mods/dependencies.json row mcm-helper)",
+  "licence": "MIT (github Exit-9B/MCM-Helper)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: MCM menus for the combat mods",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "Pandora Behaviour Engine Plus (Nexus 133232)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/133232?tab=files&file_id=813165",
+  "version": "5.0.0-beta (archive sha256 89c57c0d2f27..., mods/dependencies.json row pandora)",
+  "licence": "GPL-3.0 (github Monitor221hz/Pandora-Behaviour-Engine-Plus)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: behaviour engine run on the machine (decision 0014)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "Open Animation Replacer (Nexus 92109)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/92109?tab=files&file_id=798222",
+  "version": "3.2.1 (archive sha256 970cb6c34045..., mods/dependencies.json row open-animation-replacer)",
+  "licence": "GPL-3.0 (github Ersh1/OpenAnimationReplacer)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: conditional animation replacement",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "Animation Queue Fix (Nexus 82395)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/82395?tab=files&file_id=798212",
+  "version": "1.0.2 (archive sha256 b2deff34aa46..., mods/dependencies.json row animation-queue-fix)",
+  "licence": "GPL-3.0 (github Ersh1/AnimationQueueFix)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: OAR's requirement",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "Animation Motion Revolution (Nexus 50258)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/50258?tab=files&file_id=320113",
+  "version": "1.5.3 (archive sha256 986b11630b6c..., mods/dependencies.json row amr)",
+  "licence": "MIT (github alexsylex/AnimationMotionRevolution)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Animation Motion Revolution: animation-driven motion (animmotion annotations) for rolls and traversal",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "Animation Motion Revolution - Skyrim 1.7.104.0 Update (Nexus 191697)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/191697?tab=files&file_id=805238",
+  "version": "1 (archive sha256 13d01a2fb321..., mods/dependencies.json row amr-1.7.104)",
+  "licence": "MIT (github alexsylex/AnimationMotionRevolution (upstream; 1.7.104 rebuild repo not found via gh))",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: AMR's DLL rebuilt for 1.7.104",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "Payload Interpreter (Nexus 65089)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/65089?tab=files&file_id=394150",
+  "version": "1.1.0 (archive sha256 e3705da4f0aa..., mods/dependencies.json row payload-interpreter)",
+  "licence": "MIT (github D7ry/PayloadInterpreter)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: annotation payloads the combat clips use",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "Payload Interpreter - Skyrim 1.7.104.0 Update (Nexus 192679)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/192679?tab=files&file_id=809282",
+  "version": "2 (archive sha256 a7c335396b64..., mods/dependencies.json row payload-interpreter-1.7.104)",
+  "licence": "GPL-3.0-or-later (github AntonTissen-del/PayloadInterpreter)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Payload Interpreter's DLL for 1.7.104",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0-or-later governs"
+ },
+ {
+  "name": "Spell Perk Item Distributor (SPID) (Nexus 36869)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/36869?tab=files&file_id=795621",
+  "version": "7.3.3 (archive sha256 b1a2f44f7a55..., mods/dependencies.json row spid)",
+  "licence": "MIT (github powerof3/Spell-Perk-Item-Distributor)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: spell, perk and item distribution",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "SKSE Menu Framework (Nexus 120352)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/120352?tab=files&file_id=806684",
+  "version": "3.18 (archive sha256 282a954bc52e..., mods/dependencies.json row skse-menu-framework)",
+  "licence": "GPL-3.0 (github qtr-modding/skse-menu-framework-3)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: in-game menus FreeClimb and the TK Dodge addon need",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "ImGui Icons (Nexus 114790)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/114790?tab=files&file_id=690123",
+  "version": "1.2.0 (archive sha256 af1ebf8be8fa..., mods/dependencies.json row imgui-icons)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: FreeClimb's requirement",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "XP32 Maximum Skeleton Special Extended - XPMSSE (Nexus 1988)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/1988?tab=files&file_id=469854",
+  "version": "5.06 (archive sha256 62335bad5638..., mods/dependencies.json row xpmsse)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: skeleton the animation mods expect",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "Auto Skeleton Patch - Universal Behaviour Runtime (Nexus 176724)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/176724?tab=files&file_id=788564",
+  "version": "1.0.0 (archive sha256 89fa609f0668..., mods/dependencies.json row pandora-xpmse-patch)",
+  "licence": "GPL-3.0 (github Monitor221hz/Skyrim-Skeleton-Auto-Patch)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: Pandora's skeleton patch for XPMSSE",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "SSE Display Tweaks (Nexus 34705)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/34705?tab=files&file_id=797175",
+  "version": "0.5.25 (archive sha256 4f7a4980955e..., mods/dependencies.json row ssedisplaytweaks)",
+  "licence": "MIT (github SlavicPotato/SSEDisplayTweaks)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: frame-rate cap and borderless window",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "True Directional Movement - Modernized Third Person Gameplay (Nexus 51614)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/51614?tab=files&file_id=798770",
+  "version": "2.3.1 (archive sha256 059337907299..., mods/dependencies.json row true-directional-movement)",
+  "licence": "GPL-3.0 (github Ersh1/TrueDirectionalMovement)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: lock-on (RS click) and 8-way movement",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "TrueHUD - HUD Additions (Nexus 62775)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/62775?tab=files&file_id=798218",
+  "version": "1.1.10 (archive sha256 ad10182e0806..., mods/dependencies.json row truehud)",
+  "licence": "GPL-3.0 (github Ersh1/TrueHUD)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: lock-on reticle and boss bars",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "(SGC) SkySA - Combat Behavior Compulsion (Nexus 31390)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/31390?tab=files&file_id=203059",
+  "version": "1.9.4 (archive sha256 bc48aa390078..., mods/dependencies.json row skysa)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: souls-like attack behaviour",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "FreeClimb (Nexus 193552)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/193552?tab=files&file_id=817460",
+  "version": "0.5.0 (archive sha256 3c54c07a0128..., mods/dependencies.json row freeclimb)",
+  "licence": "GPL-3.0-only (github Eelta/FreeClimb)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 2.8: climbing walls and ladders",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. Its animation clips carry separate third-party notices we have not read. AI clause: none: open licence GPL-3.0-only governs"
+ },
+ {
+  "name": "Magic Expanded - Morrowind Oblivion Shout and New Spells (Nexus 133435)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/133435?tab=files&file_id=788301",
+  "version": "5.1 (archive sha256 fd504f807c98..., mods/dependencies.json row magic-expanded)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 2.9: Mark, Recall, Levitate-like effects (a check for 2.9)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "Black Marsh & Valenwood",
+  "source_url": "https://www.moddb.com/mods/black-marsh-valenwood",
+  "version": " (archive sha256 f236dc8d45c4..., mods/dependencies.json row bmv)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.4: Black Marsh & Valenwood: buildings, props, creatures (ModDB, 9.6 GB; cached privately); 2.W3: the signpost arm boards (roadsignmedium01r, one ACTI per destination); 1.15 materials: the ground's look, its landscape pack textures\\TEXTUREPACK\\landscape (19 diffuses: riverbottom.dds, rivermud.dds, riverbededge.dds, coastoceanfloor01.dds, coastbeach01.dds, coastbeachgrass01.dds, frozenmarshlichen01.dds, frozenmarshgrass01.dds, fallforestdirt01.dds, fallforestleaves01.dds, pineforest03.dds, pineforest02.dds, fieldgrass02.dds, reachmoss01.dds, reachmossyrocks01.dds, reachdirt01.dds, rocks01.dds, tundrarocks01.dds, dirtpath01.dds) named by Argonia.esm's TXST records (terrain/texture_sets.py), each re-pointing the vanilla-named LTEX the material paints (no normal maps ship)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "houseCARL - A Skyrim Modding MCP (Nexus 181738)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/181738?tab=files&file_id=824460",
+  "version": "2.1.1 (archive sha256 1cb9fda83459..., mods/dependencies.json row housecarl)",
+  "licence": "GPL-3.0-only (github Avick3110/houseCARL)",
+  "used_by": "dev only on the game machine, never shipped; chunk 0.2: load-order and conflict inspection for agents",
+  "linked_or_forked_by": "none: a dev tool on our machine",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0-only governs"
+ },
+ {
+  "name": "Unofficial Skyrim Special Edition Patch - USSEP (Nexus 266)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/266?tab=files&file_id=800977",
+  "version": "4.3.9c (archive sha256 008f594d9065..., mods/dependencies.json row ussep)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): the community bug-fix patch the collection and BM&V expect",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Alternate Start - Live Another Life - SSE (Nexus 272)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/272?tab=files&file_id=729409",
+  "version": "4.2.6a (archive sha256 5d4abc988f28..., mods/dependencies.json row alternate-start)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): starts the player in Black Marsh instead of the Helgen cart",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "(DMC) The Ultimate Dodge Mod Reanimated - TUDMR (Nexus 33049)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33049?tab=files&file_id=130315",
+  "version": "1.1 (archive sha256 0f8deaa3947b..., mods/dependencies.json row tudmr)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): dodge with i-frames (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "(SGC) Normal Attack Stamina Consumption - NASC (Nexus 32996)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/32996?tab=files&file_id=224384",
+  "version": "1.1 (archive sha256 9fb182563d2c..., mods/dependencies.json row nasc)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): normal attacks cost stamina (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "(SGC) Dark Souls Movement and Stamina Regen (Nexus 33135)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/33135?tab=files&file_id=126274",
+  "version": "1.0 (archive sha256 c094792891c8..., mods/dependencies.json row ds-movement-stamina)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): Dark Souls movement speed and stamina regen (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "None (Nexus 47395)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/47395?tab=files&file_id=192986",
+  "version": "1.1 (archive sha256 9485436c7128..., mods/dependencies.json row sweep-attacks)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): sweeping attacks hit everyone in the arc (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. check: the archive nests its Data under Elder Souls - Sweep Attacks SE-47395-1-0-1616432709/: confirm stage finds it"
+ },
+ {
+  "name": "Elder Souls - The Collection (Nexus 53174)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/53174?tab=files&file_id=218925",
+  "version": "0.4 (archive sha256 1f9253d7c5b7..., mods/dependencies.json row elder-souls-collection)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): Elder Souls attack animations, AMR and DAR conditions (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "(Superseded) Leviathan Animations - Female Idle Walk And Run (Nexus 42204)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/42204?tab=files&file_id=192293",
+  "version": "1.5 (archive sha256 7ea2ff5fb941..., mods/dependencies.json row leviathan-female)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): female idle, walk and run animations (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "PACE (Nexus 27268)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/27268?tab=files&file_id=115123",
+  "version": "1.0.2 (archive sha256 9d11cfc9432c..., mods/dependencies.json row pace)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): PACE combat AI (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "SmoothCam (Nexus 41252)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/41252?tab=files&file_id=813109",
+  "version": "1.8.1 (archive sha256 efed5592257a..., mods/dependencies.json row smoothcam)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): third-person camera (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. check: the archive ships SmoothCam.esl and SmoothCam.esp under Release_Package/00 Data (a FOMOD): confirm which the collection installs"
+ },
+ {
+  "name": "Souls-Like SmoothCam Preset (Nexus 41413)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/41413?tab=files&file_id=178930",
+  "version": "2.1 (archive sha256 97a4003dffc7..., mods/dependencies.json row soulslike-smoothcam)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): the collection's souls-like SmoothCam preset (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Stop On Slash AE - Hitstop and Screenshake (Nexus 66155)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/66155?tab=files&file_id=280468",
+  "version": "2.2 (archive sha256 9b60faf77d07..., mods/dependencies.json row stop-on-slash)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): hitstop and screenshake (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. check: AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build"
+ },
+ {
+  "name": "Arena Movement - MCO (AMMCO) (Nexus 53528)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/53528?tab=files&file_id=219991",
+  "version": "1.2 (archive sha256 6ef515c35eb0..., mods/dependencies.json row ammco)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): Arena Movement (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. check: the archive holds two AMMCO.esp variants (Source/Data/Distar Edit, Mern Edit): add the pick the collection uses before staging"
+ },
+ {
+  "name": "(Superseded) Leviathan Animations - Male Idle Walk And Run (Nexus 42590)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/42590?tab=files&file_id=192606",
+  "version": "1.5 (archive sha256 4fa722d7e5a4..., mods/dependencies.json row leviathan-male)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): male idle, walk and run animations (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Vanargand Animations - Crossbows (Nexus 66286)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/66286?tab=files&file_id=794553",
+  "version": "1.1 (archive sha256 17c1305b7af3..., mods/dependencies.json row vanargand-crossbows)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): crossbow animations (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Unarmed Street Fighter SkySa Animations (Nexus 50634)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/50634?tab=files&file_id=208506",
+  "version": "2.0 (archive sha256 9d774e929cf9..., mods/dependencies.json row unarmed-street-fighter)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): unarmed SkySA animations (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Vanargand Animations - Sneak Archery (Nexus 56788)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/56788?tab=files&file_id=794535",
+  "version": "1.5 (archive sha256 dd644b9aa323..., mods/dependencies.json row vanargand-sneak-archery)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): sneak archery animations (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Animated Armoury - DAR Version - New Weapons with animations (Nexus 35978)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/35978?tab=files&file_id=236456",
+  "version": "2.3 (archive sha256 57ef2ddf08ce..., mods/dependencies.json row animated-armoury)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): new weapon classes, DAR conditions read by OAR (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Elden Counter (Nexus 65579)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/65579?tab=files&file_id=279662",
+  "version": "1.6 (archive sha256 c9ad30fc9968..., mods/dependencies.json row elden-counter)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): counter-attack window after a block (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. check: AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build"
+ },
+ {
+  "name": "Rapier Animations for SkySA (Nexus 57592)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/57592?tab=files&file_id=239072",
+  "version": "1.1 (archive sha256 7cb6c5950d58..., mods/dependencies.json row rapier-skysa)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): rapier animations for SkySA (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Battlestaff Animations for SkySA (Nexus 58762)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/58762?tab=files&file_id=242899",
+  "version": "1.0 (archive sha256 5260cbca3a80..., mods/dependencies.json row battlestaff-skysa)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): battlestaff animations for SkySA (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Claw Animations for SkySA (Nexus 58302)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/58302?tab=files&file_id=241832",
+  "version": "1.0 (archive sha256 6d684d4f65c6..., mods/dependencies.json row claw-skysa)",
+  "licence": "not read",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): claw animations for SkySA (collection xyf1u3)",
+  "linked_or_forked_by": "none: depended on as the player's own download",
+  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ }
+]

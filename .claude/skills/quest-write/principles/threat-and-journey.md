@@ -1,7 +1,6 @@
 # PREDATOR, CONTAMINATION, EXPEDITION
 
-Read with `general.md`. Evidence: `docs/research/2026-10-27/quest-shape-threat-and-journey.md`, including its
-ten-step method for directions without markers.
+Read with `general.md`.
 
 ## PREDATOR
 

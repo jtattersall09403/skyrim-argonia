@@ -1,8 +1,0 @@
-{
- "setup": [{"probe": "argonia.layer.isShown() ? 'shown' : (document.getElementById('argonia-touch-toggle').click(), 'toggled')"}, {"scene": "plain-armed"}],
- "hud": [{"wait": 2000}, {"shot": "hud"}],
- "menu": [{"tap": "#argonia-touch .at-btn[data-id=\"start\"]"}, {"wait": 1500}, {"shot": "menu"}, {"tap": "#argonia-touch .at-btn[data-id=\"b\"]"}, {"wait": 1500}, {"shot": "menu-closed"}],
- "move": [{"drag": ["#argonia-touch .at-zone[data-side=\"left\"]", 0, -90, 1800]}, {"shot": "moved"}],
- "attack": [{"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"wait": 700}, {"tap": "#argonia-touch .at-btn[data-id=\"rt\"]"}, {"shot": "attack"}],
- "end": [{"wait": 2500}, {"probe": "FEEL"}]
-}

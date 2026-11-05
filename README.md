@@ -1,48 +1,17 @@
-# Elder Souls: Argonia (Skyrim SE)
-(Developed and written with Claude Opus 5.5)
+# Elder Souls: Argonia
 
-A free, non-commercial total conversion mod for **The Elder Scrolls V: Skyrim Special Edition**, set in Black Marsh,
-with Morrowind's systems and spirit, Dark Souls-style combat, climbing, swimming and sailable boats.
+A free Skyrim Special Edition mod set in Black Marsh: vanilla Skyrim plus
+[Black Marsh & Valenwood](https://www.moddb.com/mods/black-marsh-valenwood) as the default world, soulslike combat
+from the Nexus collection [Soulsborne Combat](https://www.nexusmods.com/games/skyrimspecialedition/collections/xyf1u3),
+free climbing and Morrowind's magic, with our own storyline, quests and factions built on top. Built by Claude
+Code agents on AWS; the owner plays it streamed to a browser.
 
-**Status:** planning complete; Part 0 (foundation), chunk 0.1, next. See [docs/PLAN.md](docs/PLAN.md) and
-[docs/PROGRESS.md](docs/PROGRESS.md).
+- The plan: [docs/PLAN.md](docs/PLAN.md). Status: [docs/PROGRESS.md](docs/PROGRESS.md).
+- The story: [story/](story/README.md) (lore dossiers, the quest and faction design, the structured story data).
+- The mods: [mods/](mods/README.md) (the pinned list and credits). No game or mod file is ever committed; players
+  need Skyrim SE and the listed free mods.
+- The machines and the play path: [infra/](infra/README.md).
+- Rules for agents: [CLAUDE.md](CLAUDE.md). The why: [docs/decisions/](docs/decisions/README.md).
 
-## What this repo contains
-
-This repository contains only our own source code, our own generated data, docs and
-tests. **It never contains any file from Skyrim, any other game, or any third-party mod**, converted or not.
-To play, you will need your own copy of Skyrim Special Edition and a list of free mods downloaded from their
-authors' pages; the installer will guide you. Details: [decision 0003](docs/decisions/0003-nothing-shipped-that-players-do-not-own.md).
-
-Not made, distributed or supported by ZeniMax Media, Bethesda Softworks, FromSoftware or Bandai Namco. Not
-affiliated with Tamriel Rebuilt or Beyond Skyrim. Built largely with AI assistance (Claude Code).
-
-## Layout
-
-| Path | What |
-|---|---|
-| `docs/` | plan, phases, decisions, research, ways of working, legal |
-| `world/` | the world's source data (imported from the earlier three.js project) |
-| `tools/` | generators (Python, C# with Mutagen) |
-| `plugin/` | the generated plugin as Spriggit YAML |
-| `skse/` | our SKSE plugins (C++, CommonLibSSE-NG) |
-| `papyrus/` | our Papyrus scripts |
-| `ui/` | PrismaUI views (HTML/CSS/TypeScript) |
-| `data/` | combat golden table, dependency manifest, immersion inventory, sourcing register |
-| `installer/` | install and verify scripts |
-| `infra/` | machine setup and operations |
-| `tests/` | studio scenes and journeys and unit tests |
-| `tooling/` | guards and agent tooling |
-
-## Licence
-
-Code is **GPL-3.0-or-later** ([LICENSE](LICENSE)); the world data, design documents and written content are
-**CC BY-NC-SA 4.0** ([LICENSE-content](LICENSE-content)). Applied on 2026-10-29 as decision
-[0015](docs/decisions/0015-repo-licence-and-licence-tracking.md)'s recommendation, pending the owner's
-confirmation or change (owner call O-14). Third-party mods are player-downloaded dependencies under their
-own terms and are never redistributed here.
-
-## Credits
-
-Credits are generated from `data/sourcing-register.json` once it exists (chunk 0.3). The plan already depends on
-the work of many mod authors; see [docs/legal-and-sourcing.md](docs/legal-and-sourcing.md).
+Licence: code GPL-3.0-or-later ([LICENSE](LICENSE)); our original content CC BY-NC-SA 4.0
+([LICENSE-content](LICENSE-content)); third-party mods keep their own terms.

@@ -1,6 +1,6 @@
 # DISPUTE, NEGOTIATION, SUCCESSION, BONDAGE
 
-Read with `general.md`. Evidence: `docs/research/2026-10-27/quest-shape-social.md`.
+Read with `general.md`.
 
 ## All four
 

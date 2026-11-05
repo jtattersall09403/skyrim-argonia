@@ -1,8 +1,8 @@
 # MURDER, MISSING, RECKONING (and every case the player must solve)
 
 Read with `general.md`. Also used for THEFT and FRAUD the player solves (`crime-and-deceit.md`) and for every
-case of the detectives' line (`questlines.md`). Evidence: `docs/research/2026-10-27/quest-shape-investigation.md`
-(methods M1 to M8). An investigation is fair, mechanical and solvable from the player's side: simpler than a
+case of the detectives' line (`questlines.md`).
+An investigation is fair, mechanical and solvable from the player's side: simpler than a
 novel, never a guess.
 
 ## The case

@@ -1,7 +1,6 @@
 # Questlines: faction, main, local and Daedric lines
 
-Read with `general.md` before any quest of a line. Evidence: `docs/research/2026-10-27/questline-design.md`
-(its 14-step template and detectives' notes) and `quest-design-elder-scrolls.md`.
+Read with `general.md` before any quest of a line.
 
 ## The line record comes first
 

@@ -1,70 +1,51 @@
-# 0008: Infrastructure: AWS London, an x86 build VM and an on-demand GPU box, under $100 a month
+# 0008: Infrastructure: AWS, an on-demand build VM run a few hours a day, a spot GPU play machine, under $100 a month
 
-**Note (owner, 2026-10-29):** October 2026 is over the cap (about $357 month to date on the 29th) because of the
-old project's costlier way of working in its first four weeks; the $100 cap binds from November 2026.
-
-**Status:** decided 2026-10-27 (owner: AWS, max $100/month for infrastructure, not Hetzner, "as cheaply as
-possible", London). Prices re-measured in 0.1 and recorded in [infra/README.md](../../infra/README.md).
+**Status:** decided 2026-10-27 (owner: AWS, max $100/month for infrastructure, "as cheaply as possible");
+corrected by the owner on 2026-11-05: the build VM is **on demand**, the play machine stays **spot**.
+The $100 cap binds from November 2026 (October was the old project's spend).
 
 ## Decision
 
-1. **Build VM `argonia-build`**: `m7i.xlarge` (4 vCPU, 16 GiB, x86), Ubuntu 24.04, 120 GiB gp3, **persistent
-   spot, stop on interruption**, no inbound rules. The owner works in **VS Code in the browser**
-   (vscode.dev through a `code tunnel` service named `argonia-build`, GitHub sign-in); **SSM Session Manager**
-   in the AWS console is the break-glass shell. Nothing is installed on the Mac. Claude Code runs in the
-   tunnel's terminal inside `tmux`. x86 is required: Wine (xEdit,
-   PapyrusCompiler, msvc-wine, BSArch, xLODGen, DSAnimStudio) does not run on Graviton.
-2. **GPU box `argonia-play`**: created in 0.2 from a script in `infra/`; g6.2xlarge (L4) persistent spot in London's
-   euw2-az3 (owner, #30, 2026-10-31: the same L4 as the g6.xlarge, which AWS kept reclaiming in Paris, at capacity
-   score 9 and interruption band 5–10%, ~$0.49/h; evidence docs/research/2026-10-31/1.8-machine-evidence.md), in the
-   build VM's VPC. Stopped when idle
-   (15 min). It holds Skyrim, the pinned dependency mods, Proton, the agent bridge, Selkies and saves.
-3. **Control from Claude Code**: AWS CLI under an IAM role scoped to start/stop/describe instances tagged
-   `project=argonia` and read/write one S3 bucket; optionally the AWS MCP server with the same role. The GPU
-   box is reached from the build VM over the private VPC address (security group: build VM → GPU box on SSH
-   and the bridge port only).
-4. **RunPod is not used for play** (no inbound UDP: WebRTC fails). Vast.ai is the documented fallback GPU host.
-   Hetzner is excluded.
-5. **Budget guard**: an AWS Budget at $100 with alerts at 50/80/100% actual and 100% forecast (the owner's setup step 1).
-   The planner reads month-to-date cost weekly (Cost Explorer via CLI) and reports it in the owner check-in.
+1. **Build VM `argonia-build`** (London, eu-west-2): `m7i-flex.xlarge` (4 vCPU, 16 GiB, x86), Ubuntu 24.04,
+   120 GiB gp3, **on demand** (the owner recreated it so on 2026-11-05 after spot reclaims cost whole builds).
+   Because it is on demand it **runs only while an agent is working, about 8 to 10 hours a day**: the idle-stop
+   timer (`infra/build-vm/idle-stop.sh`, 20 minutes with no Claude session, no job and no tunnel client) stops
+   it, `tooling/agent_stop.sh` stops it when the agent is done, and an owner comment starts it again
+   (`.github/workflows/wake.yml`). An agent never leaves it running idle overnight. The owner works in VS Code in
+   the browser (a `code tunnel` named `argonia-build`); SSM Session Manager is the break-glass shell.
+2. **Play machine `argonia-play`**: a **g6.xlarge** (L4, comfortably strong enough) **persistent spot** instance,
+   Windows Server 2022, stopped when idle (15 minutes) and started by the play page. It has run in Paris
+   (eu-west-3) since 2026-10-31. **The region is whichever European region is expected to interrupt a g6.xlarge
+   least at a similar price** (the spot placement score and the interruption band on the Spot Instance Advisor,
+   measured when the machine is created or moved; London and Paris are the usual two). The machine was terminated
+   with its disk on 2026-11-05 and is recreated in PLAN Phase 0; the region is chosen then by that measure.
+3. **Control from Claude Code**: the AWS CLI under the build VM's IAM role (start/stop/describe instances tagged
+   `project=argonia`, the two S3 buckets); the play machine is reached over SSH on its public address, open only to
+   the build VM.
+4. **Nothing lives only on a machine** ([machine-moves.md](../machine-moves.md)): saves and mod archives are in
+   S3; everything else is rebuilt from the scripts.
 
-## Monthly estimate (London, 2026-10-27 prices, re-measure in 0.1)
+## Monthly estimate (2026-11-05)
 
 | Item | Assumption | $/month |
 |---|---|---|
-| Build VM m7i.xlarge spot | ~$0.08/h, idle-stopped when no agent runs (5x plan ≈ 120 h/week ≈ 520 h/month) | ~42 (58 if always on) |
+| Build VM m7i-flex.xlarge on demand | ~$0.19/h × 9 h/day × 30 | ~51 |
 | Build VM disk | 120 GiB gp3 | ~11 |
-| GPU box, agent test runs | g4dn ~$0.19/h or g6 ~$0.36/h × ~43 h | ~8–16 |
-| GPU box, owner play | g6 ~$0.36/h × ~43 h (10 h/week) | ~16 |
-| GPU box disk | ~150 GiB (Skyrim + dependency mods + Proton) | ~14 |
-| Egress (streaming) | ~150 GB, first 100 GB free | ~5 |
-| Public IPv4 | while attached | ~4 |
-| S3 (saves, small backups) | <10 GB | <1 |
-| **Total** | | **~$95–110** |
+| Play machine g6.xlarge spot | ~$0.35–0.45/h × ~50 h (owner play and the odd agent check) | ~20 |
+| Play machine disk | ~150 GiB gp3 | ~14 |
+| Egress (streaming), public IPv4, S3 | | ~8 |
+| **Total** | | **~$100** |
 
-This is at the limit. **The $100 is a hard cap for AWS infrastructure only** (owner rule). The Claude
-subscription is separate (decision 0013); Fal usage is separate and small (the old project's UI art cost about
-$0.15 per generated image) and is reported in check-ins. **Levers, in order:** idle-stop the build VM when no agent session runs (biggest);
-shrink the GPU disk by keeping only the pinned files; use g4dn for agent runs; release the old
-elder-souls-argonia machine's 250 GiB disk (~$23/month while stopped, outside this table: owner call O-1);
-move to `m7i.large` for the build VM during low-parallelism parts.
+At the limit. **Levers, in order:** keep the build VM's running hours down (stop when idle, batch agent work
+into sessions); keep the play machine stopped between sessions; shrink its disk to the pinned mods; a smaller
+build VM for light phases.
 
-## Per-part cost budget (AWS, on top of the steady state above)
-
-| Part | Extra items | Budget |
-|---|---|---|
-| 0 | the 0.0 stream and controls test (~10 h); GPU benchmark hours on three instance types (~15 h); a temporary Windows spot instance only if 0.3/0.4/2.7 §b need it (~10 h); the owner's streaming test; installer from-scratch runs (~10 GPU hours) | ≤ $35 |
-| 1 | the core-loop soak (~3 GPU hours); L4 batches otherwise inside the steady state | ≤ $5 |
-| 2 | a 64 GiB spot instance for LOD generation (~6 h per full build; e.g. r7i.2xlarge/m7i.4xlarge spot) and navmesh/vegetation L4 sweeps (world track); systems-track L4 batches inside the steady state; the owner's playthrough counted as play | ≤ $20 |
-| 3 | a temporary Windows spot instance for install and release tests (~10 h) | ≤ $10 |
-| 4 | immersion booth batches at 4.1 (~20 GPU hours on g4dn, ≤ $10); per region: L4 sweeps (~10 GPU hours) and one LOD rebuild at region close (~6 h big instance), ≤ $10 per region | as listed |
-
-**Stop-and-ask rule (T-COST):** the planner projects the month's AWS total weekly (month-to-date plus planned
-hours at current spot prices). If the projection exceeds $100, it stops starting new paid work, applies the
-levers above, and if that is not enough asks the owner (raise the cap for the month, or slow down). A part's
-extra budget overrunning by 50% also triggers a check-in.
+**Stop-and-ask rule:** each check-in reports month-to-date; if the projection passes $100 the agent stops starting
+paid work, applies the levers, and only then asks the owner (raise the cap for the month, or slow down).
 
 ## Consequences
 
-- No local GPU for the build VM: every in-game test is a GPU-box job (testing level L4+), batched.
-- The Claude subscription is separate from this budget (decision 0013).
+- The build VM's hours are a budget: agents work in sessions and stop the machine; long jobs are scheduled inside
+  those hours, and a job that can run on the play machine while the owner is not playing may run there.
+- Spot reclaims still hit the play machine, so every job on it, and every agent's work, stays interrupt-proof
+  ([0037](0037-work-is-interrupt-proof.md)).

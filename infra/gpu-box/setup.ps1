@@ -145,21 +145,7 @@ function Install-Stream {
     Register-ScheduledTask -TaskName argonia-spot-watch -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -Settings $st -User SYSTEM -RunLevel Highest | Out-Null
     Start-ScheduledTask -TaskName argonia-spot-watch
   }
-  # The owner's desktop launchers: vanilla, or the 0.0 combat-test mods.
-  $sh = New-Object -ComObject WScript.Shell
-  foreach ($l in @(@('Skyrim (vanilla)', 'play-vanilla'), @('Skyrim (souls-like mods)', 'play-modded'))) {
-    $s = $sh.CreateShortcut("C:\Users\Public\Desktop\$($l[0]).lnk")
-    $s.TargetPath = 'powershell.exe'
-    $s.Arguments = "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\combat-mode.ps1 $($l[1])"
-    $s.IconLocation = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition\SkyrimSE.exe,0'
-    $s.Save()
-  }
-  Write-Host 'idle-stop and launchers: set'
-  # Host-side stream numbers for every client type (host-metrics.ps1), for comparing the three setups.
-  if (-not (Get-ScheduledTask -TaskName argonia-host-metrics -ErrorAction SilentlyContinue)) {
-    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\host-metrics.ps1"
-    Register-ScheduledTask -TaskName argonia-host-metrics -Action $a -Trigger (New-ScheduledTaskTrigger -AtStartup) -User SYSTEM -RunLevel Highest | Out-Null
-  }
+  Write-Host 'idle-stop: set'
 }
 
 function Install-Dcv {
@@ -210,51 +196,10 @@ function Install-GameRedist {
   Write-Host "game runtimes: xinput1_3 $(Test-Path C:\Windows\System32\xinput1_3.dll)"
 }
 
-function Install-Combat {
-  # The 0.0 combat test (§d): the MO2 instance staged by combat_test_stage.py and copied to
-  # C:\argonia\combat-stage. Steam's own launch stays vanilla; MO2's "SKSE" executable is the modded game.
-  $game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
-  $stage = "$Root\combat-stage"
-  if (-not (Test-Path $stage)) { throw "no stage at ${stage}; run combat_test_stage.py and copy it first" }
-  Copy-Item "$stage\root\*" $game -Force
-  Copy-Item "$stage\MO2\*" "$Root\MO2" -Recurse -Force
-  $g = $game.Replace('\', '\\')
-  $m = "$Root\MO2".Replace('\', '/')
-  @"
-[General]
-gameName=Skyrim Special Edition
-gamePath=@ByteArray($g)
-selected_profile=@ByteArray(Default)
-first_start=false
-
-[Settings]
-check_for_updates=false
-profile_local_inis=false
-profile_local_saves=false
-
-[customExecutables]
-size=2
-1\title=SKSE
-1\binary=$($game.Replace('\', '/'))/skse64_loader.exe
-1\workingDirectory=$($game.Replace('\', '/'))
-1\arguments=
-1\toolbar=true
-1\ownicon=true
-2\title=Pandora
-2\binary=$m/tools/Pandora/Pandora Behaviour Engine+.exe
-2\workingDirectory=$m/tools/Pandora
-2\arguments=--auto_run --auto_close -o "$m/mods/Pandora Output"
-2\toolbar=true
-2\ownicon=true
-"@ | Set-Content "$Root\MO2\ModOrganizer.ini" -Encoding ASCII
-  Write-Host "combat: $((Get-ChildItem "$Root\MO2\mods" -Directory).Count) mod folders, skse loader $(Test-Path "$game\skse64_loader.exe")"
-}
-
 switch ($Stage) {
   'base' { Install-Base }
   'stream' { Install-Stream }
   'dcv'    { Install-Dcv }
-  'combat' { Install-Combat }
   'redist' { Install-GameRedist }
   'all'  { Install-Base; Install-Stream; Install-Dcv }
   default { throw "unknown stage $Stage" }

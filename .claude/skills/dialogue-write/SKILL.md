@@ -6,7 +6,7 @@ description: Write Morrowind-style topic dialogue for one Argonia NPC of any rac
 # Writing dialogue for one person
 
 The goal: lines that read as if they were Morrowind's, about our people
-and places. Every rule here came from an owner correction; add new bans to `bans.yaml`, new voice evidence
+and places in Black Marsh & Valenwood's (BM&V's) world; the lines become Creation Kit dialogue records on top of BM&V. Every rule here came from an owner correction; add new bans to `bans.yaml`, new voice evidence
 to `voices.md`.
 
 ## 1. The brief
@@ -17,8 +17,8 @@ The writer works only from a brief built from a record, never from a hand-writte
   and one journal brief, from the quest record's rows.
 - **Place topics** (the person's topics in the place record: the place, its work, people, danger,
   directions, rumours, their role): `python3 .claude/skills/dialogue-write/place_brief.py --person <npc id>
-  --out BRIEF.md`. It reads only the world database (decision 0030): the person's `npc` row, the `stance` rows
-  and the culture sheets they chain, the place's `fact` rows and last build (`place_build`, `place_person`) and
+  --out BRIEF.md`. It reads only the story data (`story/data`, through `tools/argonia_world/db.py`): the person's `npc` row, the `stance` rows
+  and the culture sheets they chain, the place's `fact` rows and people (`place_person`) and
   the `topic` rows, and says when the talk can happen (a hostile place's flips).
 
 A brief holds: what the player can see (race, sex, look, outfit); what they cannot (role, services,
@@ -66,7 +66,7 @@ and quote against the corpus before using it. Never paste Morrowind lines into t
 - **Held-back information says so** (B09), so the player knows to raise disposition.
 - **Plain and explicit:** who did what and why, in plain clauses (B05); every quest line can be acted on.
 - **British English** spelling and punctuation, no serial comma (B08); the style guide
-  (`../../../docs/design/standards/text/style-guide.md`) and its culture registers bind every line.
+  (`../../../story/design/text/style-guide.md`) and its culture registers bind every line.
 - Text macros: `[player]`, `[player race]`, `[player rank]`, `[name]`.
 
 ## 5. Process

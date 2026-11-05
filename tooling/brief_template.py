@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Write and check agent briefs (docs/ways-of-working.md section 2).
+"""Write and check agent briefs.
 
     brief_template.py --write [--lane L --paths P.. --acceptance A --report R --test-level L3 --route "3 why" --prior-art T]
     brief_template.py --check <file>     exit 2 naming the first missing or unfilled field
-    brief_template.py --chunk <id>       the chunk's row from docs/phases/*/README.md and its brief file
 
 Fields: Lane, Paths, Acceptance (a runnable command or a number; no <placeholder>), Report path,
 Test level (L1-L6), Route (decision 0010 route 1-7, then why higher routes were not enough), Prior art.
@@ -11,13 +10,11 @@ Test level (L1-L6), Route (decision 0010 route 1-7, then why higher routes were 
 sets the return limit, default 12); --check requires that section unless the file carries "Rules: none".
 """
 import argparse
-import glob
 import os
 import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ROW = re.compile(r"^\|\s*([\w.-]+)\s*\|\s*\[([^\]]+)\]\(([^)]+)\)")
 FIELDS = ("Lane", "Paths", "Acceptance", "Report path", "Test level", "Route", "Prior art")
 PLACEHOLDER = re.compile(r"<[^<>\n]+>")
 COMMAND = re.compile(r"\b(python3?|pytest|make|bash|sh|node|cmake|git|grep|\./\S+)\b|`[^`]+`|\d")
@@ -81,15 +78,6 @@ def rules_section(return_lines=12, extra=()):
     return "\n## Rules\n" + "\n".join(f"- {x}" for x in lines) + "\n"
 
 
-def chunk_row(cid):
-    """(table row, brief file path) for a chunk id, or None."""
-    for readme in sorted(glob.glob(os.path.join(ROOT, "docs/phases/*/README.md"))):
-        for line in open(readme, encoding="utf-8"):
-            m = ROW.match(line)
-            if m and m.group(1) == cid:
-                return line.strip(), os.path.normpath(os.path.join(os.path.dirname(readme), m.group(3).split("#")[0]))
-    return None
-
 
 def render(a):
     v = {"Lane": a.lane, "Paths": " ".join(a.paths or []), "Acceptance": a.acceptance, "Report path": a.report,
@@ -104,7 +92,6 @@ def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--write", action="store_true")
     p.add_argument("--check", metavar="FILE")
-    p.add_argument("--chunk", metavar="ID")
     p.add_argument("--lane")
     p.add_argument("--paths", nargs="*")
     p.add_argument("--acceptance")
@@ -116,13 +103,6 @@ def main(argv=None):
     p.add_argument("--rules-extra", action="append", default=[], metavar="LINE")
     p.add_argument("--return-lines", type=int, default=12)
     a = p.parse_args(argv)
-    if a.chunk:
-        r = chunk_row(a.chunk)
-        if not r:
-            print(f"no chunk {a.chunk} in docs/phases/*/README.md")
-            return 1
-        print(r[0] + "\nbrief file: " + os.path.relpath(r[1], ROOT))
-        return 0
     if a.check:
         text = open(a.check, encoding="utf-8").read()
         why = problem(parse(text)) or rules_problem(text)

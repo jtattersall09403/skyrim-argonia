@@ -10,7 +10,7 @@ right point without the owner having to remember). Numbered 0018 on the side bra
 1. **A new joinable faction** whose members solve crimes in Black Marsh, set against the Shadowscales (the
    assassins) and the Night-Reed Chapter (the thieves). Its name, founding, patrons and headquarters come from
    the lore pass below, not from this record.
-2. **Its line escalates by case** from petty crimes to a **grand murder-mystery finale**. Its structure comes
+2. **Its line escalates by case** from petty crimes to a **grand finale** via escalating series' of thefts, larcenies and murder mysteries on the way. The final murder mystery must involve highly important NPCs in the world of Black Marsh. Its structure comes
    from the old repo's quest foundation and faction designs (imported in 0.1 §f), which already cover much of
    what such a line needs; the principles in `quest-write/principles/questlines.md` and `investigation.md`
    (and their research packs) are applied on top.
@@ -18,7 +18,7 @@ right point without the owner having to remember). Numbered 0018 on the side bra
    extrapolation (`world/sources/lore/`, `world/sources/lore/extrapolation/`) and the Shadowscales and
    Night-Reed records, and writes the faction's place in 4E 201 Black Marsh as an extrapolation entry with
    sources and confidence. Who would pay for detectives here, and why they are trusted, must have an answer
-   the lore supports.
+   the lore supports. Must also be grounded in popular mystery storyline tropes. There are certain structures that are known to 'work' for detective/mystery storylines. We don't need to create completely original stories here. Let's take some classics that are known
 4. **Built with the writing skills** (decision 0024): a line record, then quest records through `quest-write`
    (MURDER, THEFT, FRAUD, MISSING and RECKONING principles), `quest-review`, then dialogue.
 5. **The systems it needs ship whole in Part 2:** evidence-gated topics, presenting evidence, accusation and the

@@ -1,6 +1,6 @@
 # THEFT, FRAUD, SMUGGLING
 
-Read with `general.md`. Evidence: `docs/research/2026-10-27/quest-shape-crime-and-deceit.md` (methods A to F).
+Read with `general.md`.
 A theft the player must **solve** also reads `investigation.md`.
 
 ## THEFT the player commits (a heist)

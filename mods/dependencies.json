@@ -1,0 +1,1704 @@
+{
+ "_about": "Every mod the Argonia profile installs, in load order, grouped: core (script extender, fixes, frameworks, USSEP, the TDM/TrueHUD lock-on), combat (Nexus collection xyf1u3 'Soulsborne Combat' out of the box, one row per mod), traversal (FreeClimb), magic (Magic Expanded), world (Black Marsh & Valenwood, the default world), start (Alternate Start), dev (laid only with --dev, never shipped). Archives are downloaded to ~/.argonia/mods by infra/gpu-box/stack.py, cached in s3://argonia-private-050977237313/mods/, and never committed (decision 0003). sha256 is the archive's: null on a new row until `stack.py fetch --record` fills it; stack.py verify checks it and the installed files' hashes. check: a question to answer before the row is trusted. Row order is load order: stage writes plugins.txt from it; `plugins` lists the result (the Skyrim masters, USSEP, Black Marsh.esm, Alternate Start, then the collection's plugins in its order, Magic.esp, FreeClimb.esp).",
+ "game": "skyrimspecialedition",
+ "runtime": "1.7.104.0 (Steam build 24914197), SKSE 2.3.1",
+ "plugins": [
+  {
+   "file": "Skyrim.esm",
+   "mod": "skyrim"
+  },
+  {
+   "file": "Update.esm",
+   "mod": "skyrim"
+  },
+  {
+   "file": "Dawnguard.esm",
+   "mod": "skyrim"
+  },
+  {
+   "file": "HearthFires.esm",
+   "mod": "skyrim"
+  },
+  {
+   "file": "Dragonborn.esm",
+   "mod": "skyrim"
+  },
+  {
+   "file": "Unofficial Skyrim Special Edition Patch.esp",
+   "mod": "ussep"
+  },
+  {
+   "file": "XPMSE.esp",
+   "mod": "xpmsse"
+  },
+  {
+   "file": "Black Marsh.esm",
+   "mod": "bmv"
+  },
+  {
+   "file": "Alternate Start - Live Another Life.esp",
+   "mod": "alternate-start"
+  },
+  {
+   "file": "Ultimate Dodge Mod.esp",
+   "mod": "tudmr"
+  },
+  {
+   "file": "(SGC) NASC.esl",
+   "mod": "nasc"
+  },
+  {
+   "file": "(SGC) SkySA.esp",
+   "mod": "skysa"
+  },
+  {
+   "file": "Dark Souls Movement and Stamina Regen.esp",
+   "mod": "ds-movement-stamina"
+  },
+  {
+   "file": "Elder Souls - sweep attack standalone.esp",
+   "mod": "sweep-attacks"
+  },
+  {
+   "file": "MCMHelper.esp",
+   "mod": "mcm-helper"
+  },
+  {
+   "file": "PACE.esl",
+   "mod": "pace"
+  },
+  {
+   "file": "SkyUI_SE.esp",
+   "mod": "skyui"
+  },
+  {
+   "file": "SmoothCam.esl",
+   "mod": "smoothcam"
+  },
+  {
+   "file": "SmoothCam.esp",
+   "mod": "smoothcam"
+  },
+  {
+   "file": "StopOnSlash.esp",
+   "mod": "stop-on-slash"
+  },
+  {
+   "file": "AMMCO.esp",
+   "mod": "ammco"
+  },
+  {
+   "file": "NewArmoury.esp",
+   "mod": "animated-armoury"
+  },
+  {
+   "file": "EldenCounter.esp",
+   "mod": "elden-counter"
+  },
+  {
+   "file": "TrueDirectionalMovement.esp",
+   "mod": "true-directional-movement"
+  },
+  {
+   "file": "TrueHUD.esl",
+   "mod": "truehud"
+  },
+  {
+   "file": "Magic.esp",
+   "mod": "magic-expanded"
+  },
+  {
+   "file": "FreeClimb.esp",
+   "mod": "freeclimb"
+  }
+ ],
+ "mods": [
+  {
+   "id": "skse",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 30379,
+    "file": 795992
+   },
+   "name": "Skyrim Script Extender (SKSE64)",
+   "author": "SKSE Team",
+   "version": "2.3.1",
+   "archive": "Skyrim Script Extender (SKSE64) Steam 30379 2.3.1 2026-08-27T16-52Z s6Og0dG94.7z",
+   "size_kb": 930,
+   "why": "script extender every plugin needs",
+   "required": true,
+   "profile": "play",
+   "install": "root",
+   "sha256": "7bad616ed360823a027f8828801d91e3a4aa2eacd952023af7f3e31adb2ae250",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; SKSE's own readme terms not read",
+   "runtime": "loads on 1.7.104.0 (skse64 2.3.1 loader; main menu reached 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "address-library",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 32444,
+    "file": 795954
+   },
+   "name": "Address Library for SKSE Plugins",
+   "author": "meh321",
+   "version": "13",
+   "archive": "Address Library All in One (1.7.104.0) v13 32444 13 2026-08-27T15-29Z Ae46W7Fw2.zip",
+   "size_kb": 6484,
+   "why": "version-independent addresses for SKSE plugins",
+   "required": true,
+   "profile": "play",
+   "sha256": "be0c7c07fb63fd1c1403690d4797c7a8fdf8799118acceb605f285d7b0ee055f",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "crash-logger",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 59818,
+    "file": 825684
+   },
+   "name": "Crash Logger SSE AE VR - PDB support",
+   "author": "alandtse",
+   "version": "1.27.0",
+   "archive": "CrashLogger 59818 1.27.0 2026-10-25T06-21Z 31i7IoqRd.7z",
+   "size_kb": 7324,
+   "why": "crash reports read after every run",
+   "required": true,
+   "profile": "play",
+   "sha256": "eb112aa69b4e4f595a0230e43f7f080dbdc533647d4986fc042692f461baaad3",
+   "licence": "MIT (github alandtse/CrashLoggerSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/alandtse/CrashLoggerSSE licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (CrashLogger.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "engine-fixes",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 17230,
+    "file": 794484
+   },
+   "name": "SSE Engine Fixes (skse64 plugin)",
+   "author": "aers",
+   "version": "7.0.21 beta",
+   "archive": "Engine Fixes 7.0.21 beta for Skyrim AE 1.7.99 17230 7.0.21 2026-08-24T16-52Z vlGiB9OkV.7z",
+   "size_kb": 9289,
+   "why": "Community Shaders requires EngineFixes.dll (without it CS disables all its hooks and features, seen at the main menu 2026-10-29); engine bug fixes",
+   "required": true,
+   "profile": "play",
+   "sha256": "b6de89ec76d426e2f9701dce0cba44dd07619abe1ed885bfafd34cceb3225744",
+   "licence": "MIT (github aers/EngineFixesSkyrim64)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/aers/EngineFixesSkyrim64 licence MIT; Nexus description states no AI clause",
+   "pick": [
+    "EngineFixes FOMOD Installer/Required/*",
+    "EngineFixes FOMOD Installer/AE/*"
+   ],
+   "runtime": "loads on 1.7.104.0 (EngineFixes.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "papyrusutil",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 13048,
+    "file": 797330
+   },
+   "name": "PapyrusUtil SE - Modders Scripting Utility Functions",
+   "author": "exiledviper meh321",
+   "version": "4.8",
+   "archive": "PapyrusUtil AE SE - Scripting Utility Functions 13048 4.8 2026-08-30T01-51Z OyYrPu3oN.zip",
+   "size_kb": 560,
+   "why": "Papyrus storage and file helpers several mods call",
+   "required": true,
+   "profile": "play",
+   "sha256": "0ef140a204591491343749296d184d60837eb130928b4c0925f8bf949c0dd437",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "loads on 1.7.104.0 (PapyrusUtil.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "po3-tweaks",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 51073,
+    "file": 794717
+   },
+   "name": "powerofthree's Tweaks",
+   "author": "powerofthree",
+   "version": "1.17.1",
+   "archive": "powerofthree's Tweaks 51073 1.17.1 2026-08-25T00-11Z zYsEpQvXg.7z",
+   "size_kb": 8354,
+   "why": "required by po3 Papyrus Extender; editor-ID lookups",
+   "required": true,
+   "profile": "play",
+   "sha256": "5aeadd195dce06e3d72d7684373bab9116f8eadf3833af5cdf45c0d2ad4f9268",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; gh powerof3/Tweaks not found",
+   "runtime": "loads on 1.7.104.0 (po3_Tweaks.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "po3-papyrus-extender",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 22854,
+    "file": 800720
+   },
+   "name": "powerofthree's Papyrus Extender",
+   "author": "powerofthree",
+   "version": "6.5.2",
+   "archive": "Papyrus Extender 22854 6.5.2 2026-09-05T12-53Z Sx9oEwOl7.7z",
+   "size_kb": 14911,
+   "why": "Papyrus functions the UI and traversal mods call",
+   "required": true,
+   "profile": "play",
+   "sha256": "2ba01d7ea67826f4207cc667bbfb94f2787f0e02114cca4cda8c22c8750513e7",
+   "licence": "GPL-3.0 (github powerof3/PapyrusExtenderSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/powerof3/PapyrusExtenderSSE licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (po3_PapyrusExtender.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "consoleutilsse-ng",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 76649,
+    "file": 793316
+   },
+   "name": "ConsoleUtilSSE NG",
+   "author": "Ryan---VersuchDrei",
+   "version": "1.6.1",
+   "archive": "ConsoleUtilSSE NG 76649 1.6.1 2026-08-22T12-59Z Yj6wQRl9M.zip",
+   "size_kb": 12604,
+   "why": "console from Papyrus; Sailable Ship requires it",
+   "required": true,
+   "profile": "play",
+   "sha256": "df531d4f1061565b1b4225f4ac88473f2afc97d1f6ab6df6e9f1f7509c43d966",
+   "licence": "GPL-3.0 (github VersuchDrei/ConsoleUtilSSE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/VersuchDrei/ConsoleUtilSSE licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (ConsoleUtilSSE.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "fuz-ro-doh",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 15109,
+    "file": 814513
+   },
+   "name": "Fuz Ro D-oh - Silent Voice",
+   "author": "shadeMe",
+   "version": "2.6",
+   "archive": "Fuz Ro D'Oh 15109 2.6 2026-10-04T11-17Z eVtX7JAFs.7z",
+   "size_kb": 283,
+   "why": "silent voice timing for unvoiced lines (quarantine 0012)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9a3ed3a31713fb60b62fb87616aa60d9c24b0cd184c0c66dfd1aee29929e9c3f",
+   "licence": "GPL-3.0 (github shadeMe/Fuz-Ro-D-oh, repo matched by name only)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "repo guessed from author name shadeMe; gh licence GPL-3.0; page text has no terms",
+   "runtime": "loads on 1.7.104.0 (Fuz Ro D'oh.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "pandora",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133232,
+    "file": 813165
+   },
+   "name": "Pandora Behaviour Engine Plus",
+   "author": "Pandora Behaviour Engine Team",
+   "version": "5.0.0-beta",
+   "archive": "Pandora Behaviour Engine v5.0.0-beta 133232 5.0.0-beta 2026-10-01T16-11Z pQ0AZ3F4B.zip",
+   "size_kb": 81161,
+   "why": "behaviour engine run on the machine (decision 0014)",
+   "required": true,
+   "profile": "play",
+   "install": "tool",
+   "sha256": "89c57c0d2f27afd038a68105acff9577ce49a34969ec2b0db75d5354cfe17688",
+   "licence": "GPL-3.0 (github Monitor221hz/Pandora-Behaviour-Engine-Plus)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Monitor221hz/Pandora-Behaviour-Engine-Plus licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "a Windows tool, runs beside the game",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "open-animation-replacer",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 92109,
+    "file": 798222
+   },
+   "name": "Open Animation Replacer",
+   "author": "Ersh",
+   "version": "3.2.1",
+   "archive": "Open Animation Replacer 92109 3.2.1 2026-08-31T16-32Z MWx0rveD6.7z",
+   "size_kb": 8094,
+   "why": "conditional animation replacement",
+   "required": true,
+   "profile": "play",
+   "sha256": "970cb6c34045ee6a5ba7a5f0c598a8e398d0973cc81a9a6ee5dd303329907de8",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "GPL-3.0 (github Ersh1/OpenAnimationReplacer)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/OpenAnimationReplacer licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (OpenAnimationReplacer.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "animation-queue-fix",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82395,
+    "file": 798212
+   },
+   "name": "Animation Queue Fix",
+   "author": "Ersh",
+   "version": "1.0.2",
+   "archive": "Animation Queue Fix 82395 1.0.2 2026-08-31T16-18Z PuQ2UKIR4.7z",
+   "size_kb": 3605,
+   "why": "OAR's requirement",
+   "required": true,
+   "profile": "play",
+   "sha256": "b2deff34aa462d5d439f56fe5ed86b32028e959ed02d361cacdc51504bab1b89",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "GPL-3.0 (github Ersh1/AnimationQueueFix)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/AnimationQueueFix licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (AnimationQueueFix.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "amr",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 50258,
+    "file": 320113
+   },
+   "name": "Animation Motion Revolution",
+   "author": "alexsylex",
+   "version": "1.5.3",
+   "archive": "Animation Motion Revolution-50258-1-5-3-1664395662.rar",
+   "size_kb": 378,
+   "why": "Animation Motion Revolution: animation-driven motion (animmotion annotations) for rolls and traversal",
+   "required": true,
+   "profile": "play",
+   "sha256": "986b11630b6c93c65ff9a6441a7eac442012f77fd0a7386bcf30075fafd199fd",
+   "licence": "MIT (github alexsylex/AnimationMotionRevolution)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/alexsylex/AnimationMotionRevolution licence MIT; Nexus description states no AI clause",
+   "runtime": "its AnimationMotionRevolution.dll is replaced by amr-1.7.104's 1.7 build (intended)",
+   "conflicts": "AnimationMotionRevolution.dll overridden by amr-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "amr-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 191697,
+    "file": 805238
+   },
+   "name": "Animation Motion Revolution - Skyrim 1.7.104.0 Update",
+   "author": "DeadOnKeyboard",
+   "version": "1",
+   "archive": "AnimationMotionRevolution 1.5.4 Skyrim 1.7.104 191697 1 2026-09-14T20-08Z 4t2yDcWzW.zip",
+   "size_kb": 600,
+   "why": "AMR's DLL rebuilt for 1.7.104",
+   "required": true,
+   "profile": "play",
+   "sha256": "13d01a2fb3219725568233da76ce30419c8630ee5c240113b45ea70bf6992f3f",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "MIT (github alexsylex/AnimationMotionRevolution (upstream; 1.7.104 rebuild repo not found via gh))",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description says original source by alexsylex; upstream gh MIT; rebuild repo's own licence not read",
+   "runtime": "loads on 1.7.104.0 (AnimationMotionRevolution.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "payload-interpreter",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 65089,
+    "file": 394150
+   },
+   "name": "Payload Interpreter",
+   "author": "dTry alexsylex",
+   "version": "1.1.0",
+   "archive": "Payload Interpreter-65089-1-1-0-1685672813.zip",
+   "size_kb": 244,
+   "why": "annotation payloads the combat clips use",
+   "required": true,
+   "profile": "play",
+   "sha256": "e3705da4f0aaaf704d16382eccf8c07a12f16c64ea3a5877714a748c6196e246",
+   "licence": "MIT (github D7ry/PayloadInterpreter)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/D7ry/PayloadInterpreter licence MIT; Nexus description states no AI clause",
+   "runtime": "its PayloadInterpreter.dll is replaced by payload-interpreter-1.7.104's 1.7 build (intended)",
+   "conflicts": "PayloadInterpreter.dll overridden by payload-interpreter-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "payload-interpreter-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 192679,
+    "file": 809282
+   },
+   "name": "Payload Interpreter - Skyrim 1.7.104.0 Update",
+   "author": "AT Mods",
+   "version": "2",
+   "archive": "PayloadInterpreter 1.7.104 Update 192679 2 2026-09-22T18-35Z izKcFpvAw.zip",
+   "size_kb": 305,
+   "why": "Payload Interpreter's DLL for 1.7.104",
+   "required": true,
+   "profile": "play",
+   "sha256": "a7c335396b64a439af01843789fe4d5b51389334f17b2f77f43431f9004d1f6c",
+   "licence": "GPL-3.0-or-later (github AntonTissen-del/PayloadInterpreter)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0-or-later governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description states relicensed GPL-3.0-or-later, D7ry MIT original preserved; gh GPL-3.0",
+   "runtime": "loads on 1.7.104.0 (PayloadInterpreter.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "spid",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 36869,
+    "file": 795621
+   },
+   "name": "Spell Perk Item Distributor (SPID)",
+   "author": "powerofthree-sasnikol",
+   "version": "7.3.3",
+   "archive": "Spell Perk Item Distributor 36869 7.3.3 2026-08-26T21-53Z rvwm2B1Z2.7z",
+   "size_kb": 6241,
+   "why": "spell, perk and item distribution",
+   "required": true,
+   "profile": "play",
+   "sha256": "b1a2f44f7a55062cf8999d5ae88fbeb4e7a985a371f9be01a358e8870b24ee71",
+   "licence": "MIT (github powerof3/Spell-Perk-Item-Distributor)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/powerof3/Spell-Perk-Item-Distributor licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (po3_SpellPerkItemDistributor.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "skse-menu-framework",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 120352,
+    "file": 806684
+   },
+   "name": "SKSE Menu Framework",
+   "author": "Thiago",
+   "version": "3.18",
+   "archive": "SKSE Menu Framework 120352 3.18 2026-09-17T16-36Z cE8hkAlOT.7z",
+   "size_kb": 10464,
+   "why": "in-game menus FreeClimb and the TK Dodge addon need",
+   "required": true,
+   "profile": "play",
+   "sha256": "282a954bc52e376d7821ad615ab9ae99f0142d9aeba796c673725f86312524e5",
+   "licence": "GPL-3.0 (github qtr-modding/skse-menu-framework-3)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/qtr-modding/skse-menu-framework-3 licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (SKSEMenuFramework.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "imgui-icons",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114790,
+    "file": 690123
+   },
+   "name": "ImGui Icons",
+   "author": "powerofthree",
+   "version": "1.2.0",
+   "archive": "imGui Icons-114790-1-2-0-1763843695.7z",
+   "size_kb": 2990,
+   "why": "FreeClimb's requirement",
+   "required": true,
+   "profile": "play",
+   "sha256": "af1ebf8be8fa0d2c44bece5bc8c2c5e56a28f875f96ca80befb203a39cf41086",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; credits Jost, Noto Sans JP, Font Awesome 5 icons without terms",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "ussep",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 266,
+    "file": 800977
+   },
+   "name": "Unofficial Skyrim Special Edition Patch - USSEP",
+   "author": "The Unofficial Patch Project Team",
+   "version": "4.3.9c",
+   "archive": "Unofficial Skyrim Special Edition Patch 266 4.3.9c 2026-09-05T22-22Z lNkz9LChN.7z",
+   "size_kb": 178058,
+   "why": "the community bug-fix patch the collection and BM&V expect",
+   "required": true,
+   "profile": "play",
+   "sha256": "008f594d90650a27d36dae93f205681cfa4114a674ff55e26b1128666fcb4fb4",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "Unofficial Skyrim Special Edition Patch.esp"
+   ]
+  },
+  {
+   "id": "xpmsse",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 1988,
+    "file": 469854
+   },
+   "name": "XP32 Maximum Skeleton Special Extended - XPMSSE",
+   "author": "Team XPMSE",
+   "version": "5.06",
+   "archive": "XP32 Maximum Skeleton Special Extended-1988-5-06-1707663131.7z",
+   "size_kb": 2310,
+   "why": "skeleton the animation mods expect",
+   "required": true,
+   "profile": "play",
+   "sha256": "62335bad563800402a4f47e410bf96b5a6b3b920a6b5ea606cd723d03973ed41",
+   "fomod": {
+    "Installation": [
+     "Basic"
+    ],
+    "Animation Rig Map": [
+     "XPMS(S)E Latest"
+    ],
+    "Character and Weapons": [
+     "None or other mods"
+    ]
+   },
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; the player's own download is fine as a dependency, but placing its meshes/textures in our generated plugin is using its contents in our mod and needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found; skeleton/behaviour assets used as installed dependency",
+   "plugins": [
+    "XPMSE.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "pandora-xpmse-patch",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 176724,
+    "file": 788564
+   },
+   "name": "Auto Skeleton Patch - Universal Behaviour Runtime",
+   "author": "Monitor221hz",
+   "version": "1.0.0",
+   "archive": "Pandora XPMSE Behavior Patch 176724 1.0.0 2026-08-11T17-13Z N2AYL5CCn.7z",
+   "size_kb": 1,
+   "why": "Pandora's skeleton patch for XPMSSE",
+   "required": true,
+   "profile": "play",
+   "sha256": "89fa609f0668deec01403cfe49c500647da5ec2ff946c681b3e6e5c2b6b919df",
+   "licence": "GPL-3.0 (github Monitor221hz/Skyrim-Skeleton-Auto-Patch)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Monitor221hz/Skyrim-Skeleton-Auto-Patch licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "ssedisplaytweaks",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 34705,
+    "file": 797175
+   },
+   "name": "SSE Display Tweaks",
+   "author": "SlavicPotato",
+   "version": "0.5.25",
+   "archive": "SSE Display Tweaks 34705 0.5.25 2026-08-29T20-20Z QRde31FV2.zip",
+   "size_kb": 182,
+   "why": "frame-rate cap and borderless window",
+   "required": true,
+   "profile": "play",
+   "sha256": "4f7a4980955eec472f3e73219df487fb990c48fd5ad0020c101cd8082b6b2c8c",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "MIT (github SlavicPotato/SSEDisplayTweaks)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/SlavicPotato/SSEDisplayTweaks licence MIT; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (SSEDisplayTweaks.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "bmv",
+   "group": "world",
+   "source": {
+    "vault": "bmv",
+    "origin": "https://www.moddb.com/mods/black-marsh-valenwood",
+    "manual": true
+   },
+   "name": "Black Marsh & Valenwood",
+   "why": "Black Marsh & Valenwood: the default world the player starts in (ModDB, 9.6 GB; cached privately)",
+   "required": true,
+   "profile": "play",
+   "sha256": "f236dc8d45c4bc714493b5319254d95838cefdb2d6081662d83cb7e4b7d845eb",
+   "nested": [
+    "Data1.rar",
+    "Data2.rar"
+   ],
+   "drop": [
+    "valenwood.esp",
+    "bosmerarmormaty743.esm",
+    "black marsh north.esp",
+    "lodsettings*"
+   ],
+   "note": "the vault part holds the ModDB download as Data1.rar and Data2.rar; Valenwood and Black Marsh North are left out",
+   "licence": "none stated",
+   "permission_summary": "ModDB page states no permissions and no credits, and bundles third-party resources; the audit records it as 'available for this project', but using its contents in our mod without the author's written grant is unconfirmed.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "assets-creatures.md line 130 (ModDB page states no permissions or credits); audit-world.md line 53 ('available for this project')",
+   "plugins": [
+    "Black Marsh.esm"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "keep": [
+    "meshes/advertising_board.nif",
+    "meshes/architecture/phitt/aldredanyia/signpost.nif",
+    "meshes/roadsignmedium01l.nif",
+    "meshes/roadsignmedium01r.nif",
+    "meshes/sheogorad/dagon fel/cleat.nif",
+    "meshes/trdata/mushrooms/tr_oth_tallmush01.nif",
+    "meshes/landscape/trees/reedsmall2.nif",
+    "meshes/vvardenfell/rocks/al/altr16.nif",
+    "meshes/vvardenfell/rocks/al/altrstacked01.nif",
+    "meshes/vvardenfell/stronghold/fort00.nif",
+    "textures/texturepack/landscape/*",
+    "textures/landscape/trees/kahl lod_n.dds",
+    "meshes/stroti/bctree.nif",
+    "meshes/landscape/grass/vurt_reeds.nif",
+    "meshes/landscape/plants/braken.nif",
+    "meshes/landscape/plants/chickweed.nif",
+    "meshes/landscape/plants/esalixshrub03.nif",
+    "meshes/landscape/plants/fernlarge03.nif",
+    "meshes/landscape/plants/kelptallstatic01aaa.nif",
+    "meshes/landscape/rocks/alrocks/al_rock11.nif",
+    "meshes/landscape/rocks/alrocks/al_rock12.nif",
+    "meshes/landscape/rocks/alrocks/al_rock14.nif",
+    "meshes/landscape/rocks/alrocks/al_rock15.nif",
+    "meshes/landscape/rocks/glrocks/gl_rock03.nif",
+    "meshes/landscape/rocks/glrocks/gl_rock04.nif",
+    "meshes/landscape/rocks/glrocks/gl_rock06.nif",
+    "meshes/landscape/rocks/glrocks/gl_rock09.nif",
+    "meshes/landscape/rocks/glrocks/gl_rock11.nif",
+    "meshes/landscape/stingingnettel_03.nif",
+    "meshes/landscape/trees/11skykahl1.nif",
+    "meshes/landscape/trees/birch-.nif",
+    "meshes/landscape/trees/cypress1.nif",
+    "meshes/landscape/trees/cypress5.nif",
+    "meshes/landscape/trees/dwarfjunip01.nif",
+    "meshes/landscape/trees/gkbjungletreenew12v3.nif",
+    "meshes/landscape/trees/gkbjungletreenew6.nif",
+    "meshes/landscape/trees/gkblillipad2.nif",
+    "meshes/landscape/trees/treeofwolene4.nif",
+    "meshes/landscape/trees/treewillow01a.nif",
+    "meshes/landscape/trees/tropicalplant01.nif",
+    "meshes/landscaping/rocks/from_online_resource/rock_32.nif",
+    "meshes/landscaping/rocks/from_online_resource/rock_35.nif",
+    "meshes/vurt/deadtrees/vurt_treewigs.nif"
+   ],
+   "keep_note": "only the meshes the world references outside flora (16 refs of props and signs across the 18 places, plus Claywater's reedsmall2) and the textures they name, plus BM&V's landscape pack (textures/TEXTUREPACK/landscape, 118 files) that our TXST records point the ground's LTEX at (1.15 materials); flora is Tropical Skyrim's (0028); the 136 other flora refs in the layouts are a 2.W5 question (audit recommendation 5)"
+  },
+  {
+   "id": "alternate-start",
+   "group": "start",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 272,
+    "file": 729409
+   },
+   "name": "Alternate Start - Live Another Life - SSE",
+   "author": "Arthmoor",
+   "version": "4.2.6a",
+   "archive": "Alternate Start - Live Another Life-272-4-2-6a-1772996477.7z",
+   "size_kb": 5295,
+   "why": "starts the player in Black Marsh instead of the Helgen cart",
+   "required": true,
+   "profile": "play",
+   "sha256": "5d4abc988f28e439ce47650b80b14c0c330f83a9222c4d9b4b4e92fff52ec7f7",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "Alternate Start - Live Another Life.esp"
+   ]
+  },
+  {
+   "id": "tudmr",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 33049,
+    "file": 130315
+   },
+   "name": "(DMC) The Ultimate Dodge Mod Reanimated - TUDMR",
+   "author": "distar66",
+   "version": "1.1",
+   "archive": "(DMC) The Ultimate Dodge Mod Reanimated-33049-1-1-1585073759.7z",
+   "size_kb": 17,
+   "why": "dodge with i-frames (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "0f8deaa3947b65836ff0708f28ac91e07328f1e79cdf18c7d2b1f87ab10258b6",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "Ultimate Dodge Mod.esp"
+   ]
+  },
+  {
+   "id": "nasc",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 32996,
+    "file": 224384
+   },
+   "name": "(SGC) Normal Attack Stamina Consumption - NASC",
+   "author": "distar66",
+   "version": "1.1",
+   "archive": "(SGC) NASC-32996-1-1-1630160159.7z",
+   "size_kb": 3,
+   "why": "normal attacks cost stamina (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9fb182563d2c3aea3466968054ed0623a662e1489b551c2943dde44cc0c8d07f",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "(SGC) NASC.esl"
+   ]
+  },
+  {
+   "id": "skysa",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 31390,
+    "file": 203059
+   },
+   "name": "(SGC) SkySA - Combat Behavior Compulsion",
+   "author": "BOTuser999 - Distar - EdenExile  - Khonraad - NickNack - Notnt - Shikyokira",
+   "version": "1.9.4",
+   "archive": "(SGC) SkySA - Combat Behavior Compulsion-31390-1-9-4-1620832514.7z",
+   "size_kb": 7819,
+   "why": "SkySA combat behaviour: commitment to attacks (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "bc48aa3900782734865eb7e1d4830f703dcb17d30e203503d68191d46164228f",
+   "pick": [
+    "data/*"
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description is a video link only; reuse-audit.md line 267: no source or licence stated",
+   "plugins": [
+    "(SGC) SkySA.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "ds-movement-stamina",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 33135,
+    "file": 126274
+   },
+   "name": "(SGC) Dark Souls Movement and Stamina Regen",
+   "author": "distar66",
+   "version": "1.0",
+   "archive": "Dark Souls Movement And Stamina Regen-33135-1-0-1582882782.7z",
+   "size_kb": 25,
+   "why": "Dark Souls movement speed and stamina regen (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "c094792891c8744e3e3751cadcbbc0e9e61229f6c52c2fa87e7bc9666c6c9f55",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "Dark Souls Movement and Stamina Regen.esp"
+   ]
+  },
+  {
+   "id": "sweep-attacks",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 47395,
+    "file": 192986
+   },
+   "name": null,
+   "author": "miken1ke and distar but mostly distar",
+   "version": "1.1",
+   "archive": "Elder Souls - Sweep Attacks SE-47395-1-1-1616444963.7z",
+   "size_kb": 1,
+   "why": "sweeping attacks hit everyone in the arc (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9485436c712874bce8eff1edd56a8da096afdeedb1ff77d165a501a8d7d2d2e8",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "note": "the mod page is hidden on Nexus (2026-11-05) but the API still serves MAIN file 192986 (v1.1)",
+   "plugins": [
+    "Elder Souls - sweep attack standalone.esp"
+   ],
+   "check": "the archive nests its Data under Elder Souls - Sweep Attacks SE-47395-1-0-1616432709/: confirm stage finds it"
+  },
+  {
+   "id": "elder-souls-collection",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 53174,
+    "file": 218925
+   },
+   "name": "Elder Souls - The Collection",
+   "author": "miken1ke",
+   "version": "0.4",
+   "archive": "Elder Souls - The Collection v0.4 SE - AMR and DAR Support-53174-0-4-1628139039.7z",
+   "size_kb": 484,
+   "why": "Elder Souls attack animations, AMR and DAR conditions (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "1f9253d7c5b77aad2519aac0598a60ba6a496b117152f469dc5f3f13e2960362",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "leviathan-female",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 42204,
+    "file": 192293
+   },
+   "name": "(Superseded) Leviathan Animations - Female Idle Walk And Run",
+   "author": "Verolevi",
+   "version": "1.5",
+   "archive": "Leviathan Animations Female Idle walk and run-42204-1-5-1616156266.7z",
+   "size_kb": 98,
+   "why": "female idle, walk and run animations (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "7ea2ff5fb94166a81083a32e942170cfbb88011aab28aaff153a44edf19b931d",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "mcm-helper",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 53000,
+    "file": 795510
+   },
+   "name": "MCM Helper",
+   "author": "Parapets",
+   "version": "1.6.3",
+   "archive": "MCM Helper 53000 1.6.3 2026-08-26T18-07Z kATsMWjPO.7z",
+   "size_kb": 7995,
+   "why": "MCM menus for the combat mods",
+   "required": true,
+   "profile": "play",
+   "sha256": "505af9c27062febd497be09b661d5df82e013ae4a205ffbec99698adf4503f52",
+   "pick": [
+    "Data/*",
+    "SkyrimSE/SKSE",
+    "ESL/MCMHelper.esp",
+    "Loose/*"
+   ],
+   "licence": "MIT (github Exit-9B/MCM-Helper)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Exit-9B/MCM-Helper licence MIT; Nexus description states no AI clause",
+   "plugins": [
+    "MCMHelper.esp"
+   ],
+   "runtime": "loads on 1.7.104.0 (MCMHelper.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "pace",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 27268,
+    "file": 115123
+   },
+   "name": "PACE",
+   "author": "CryoFox64",
+   "version": "1.0.2",
+   "archive": "PACE-27268-1-0-2-1575416552.zip",
+   "size_kb": 304,
+   "why": "PACE combat AI (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9d11cfc9432c1f5d897ac05adbaa9f2326860640a4cbd12a36920a4d9cad53fe",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "PACE.esl"
+   ]
+  },
+  {
+   "id": "skyui",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 12604,
+    "file": 749043
+   },
+   "name": "SkyUI",
+   "author": "SkyUI Team",
+   "version": "6.11",
+   "archive": "SkyUI-12604-6-11-1778020881.zip",
+   "size_kb": 2630,
+   "why": "menus, MCM host; Dear Diary skins it",
+   "required": true,
+   "profile": "play",
+   "sha256": "4eb0c9fc5241e5c3dd2fd773ee8a89627c924bf4445cf70373d3a4c7c4393ff1",
+   "licence": "none stated (github schlangster/skyui has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description read; gh schlangster/skyui licence none; reuse-audit.md line 236 'source-visible, not open-licensed'",
+   "plugins": [
+    "SkyUI_SE.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "smoothcam",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 41252,
+    "file": 813109
+   },
+   "name": "SmoothCam",
+   "author": "mwilsnd",
+   "version": "1.8.1",
+   "archive": "SmoothCam 41252 1.8.1 2026-10-01T13-51Z QRde31pap.zip",
+   "size_kb": 45438,
+   "why": "third-person camera (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "efed5592257aa67d92beb48f9d6f8cacb00c1784491cfb9c748bec9a9ec5d07b",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "SmoothCam.esl",
+    "SmoothCam.esp"
+   ],
+   "check": "the archive ships SmoothCam.esl and SmoothCam.esp under Release_Package/00 Data (a FOMOD): confirm which the collection installs"
+  },
+  {
+   "id": "soulslike-smoothcam",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 41413,
+    "file": 178930
+   },
+   "name": "Souls-Like SmoothCam Preset",
+   "author": "0x4Ch0x4Fh0x4Bh0x49h",
+   "version": "2.1",
+   "archive": "SoulsLike_Smoothcam v2.1-41413-2-1-1610353748.rar",
+   "size_kb": 1,
+   "why": "the collection's souls-like SmoothCam preset (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "97a4003dffc7dc427ae978250212551dd5bba16cb6b570ce3df675bf15b07b35",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "stop-on-slash",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 66155,
+    "file": 280468
+   },
+   "name": "Stop On Slash AE - Hitstop and Screenshake",
+   "author": "dTry",
+   "version": "2.2",
+   "archive": "Stop On Slash - AE-66155-2-2-1651316809.7z",
+   "size_kb": 313,
+   "why": "hitstop and screenshake (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9b60faf77d074c964256c2b83be178591a7954e1e180d5439a8f99967f90eb2d",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "check": "AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build",
+   "plugins": [
+    "StopOnSlash.esp"
+   ]
+  },
+  {
+   "id": "ammco",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 53528,
+    "file": 219991
+   },
+   "name": "Arena Movement - MCO (AMMCO)",
+   "author": "Distar66 and Mern",
+   "version": "1.2",
+   "archive": "Arena Movement - Modern Combat Overhaul-53528-1-2-1628528341.rar",
+   "size_kb": 203,
+   "why": "Arena Movement (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "6ef515c35eb0cf0dd35d1ca1d1a40f7002fa808f8218e71aa11caba5fd22873a",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "AMMCO.esp"
+   ],
+   "check": "the archive holds two AMMCO.esp variants (Source/Data/Distar Edit, Mern Edit): add the pick the collection uses before staging"
+  },
+  {
+   "id": "leviathan-male",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 42590,
+    "file": 192606
+   },
+   "name": "(Superseded) Leviathan Animations - Male Idle Walk And Run",
+   "author": "Verolevi",
+   "version": "1.5",
+   "archive": "Leviathan Animations Male Idle Walk and Run-42590-1-5-1616287877.7z",
+   "size_kb": 95,
+   "why": "male idle, walk and run animations (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "4fa722d7e5a458a779d465e593129573e012f454023ebdb04973e6e75de3c85a",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "vanargand-crossbows",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 66286,
+    "file": 794553
+   },
+   "name": "Vanargand Animations - Crossbows",
+   "author": "Verolevi",
+   "version": "1.1",
+   "archive": "Vanargand Animations - Crossbows 66286 1.1 2026-08-24T18-47Z L5WQbqhdN.7z",
+   "size_kb": 146,
+   "why": "crossbow animations (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "17c1305b7af338342d6c6d9a99846d53391e6aa2784757b34290ddd9b6b65c03",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "unarmed-street-fighter",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 50634,
+    "file": 208506
+   },
+   "name": "Unarmed Street Fighter SkySa Animations",
+   "author": "Hiro",
+   "version": "2.0",
+   "archive": "Unarmed Street Fighter 2.0-50634-2-0-1623358907.rar",
+   "size_kb": 555,
+   "why": "unarmed SkySA animations (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "9d774e929cf9fed739ab4a31ae14127f012a3b1144db36e4057f9c9c4bb09b59",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "vanargand-sneak-archery",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 56788,
+    "file": 794535
+   },
+   "name": "Vanargand Animations - Sneak Archery",
+   "author": "Verolevi",
+   "version": "1.5",
+   "archive": "Vanargand Animations - Sneak Archery 56788 1.5 2026-08-24T18-33Z UK35XnE7d.7z",
+   "size_kb": 119,
+   "why": "sneak archery animations (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "dd644b9aa323a714ce7107f4617ecebda0b6c655af24bd05a6e9fe772cba5e57",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "animated-armoury",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 35978,
+    "file": 236456
+   },
+   "name": "Animated Armoury - DAR Version - New Weapons with animations",
+   "author": "NickNak",
+   "version": "2.3",
+   "archive": "Animated Armoury-35978-2-3-1634920456.7z",
+   "size_kb": 34303,
+   "why": "new weapon classes, DAR conditions read by OAR (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "57ef2ddf08cea13ba648736ef955b03730ace741ecc784f19cc0ad2ff7e7cdba",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "plugins": [
+    "NewArmoury.esp"
+   ]
+  },
+  {
+   "id": "elden-counter",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 65579,
+    "file": 279662
+   },
+   "name": "Elden Counter",
+   "author": "dTry",
+   "version": "1.6",
+   "archive": "Elden Counter-65579-1-6-1650933767.7z",
+   "size_kb": 870,
+   "why": "counter-attack window after a block (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "c9ad30fc99680f29bcda6f2af9135161428d610d012bdd93874ed671d6cd9c79",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download",
+   "check": "AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build",
+   "plugins": [
+    "EldenCounter.esp"
+   ]
+  },
+  {
+   "id": "rapier-skysa",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 57592,
+    "file": 239072
+   },
+   "name": "Rapier Animations for SkySA",
+   "author": "ciome",
+   "version": "1.1",
+   "archive": "RapierForSkySA-57592-1-1-1636071309.rar",
+   "size_kb": 69,
+   "why": "rapier animations for SkySA (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "7cb6c5950d5855d0bbaf745e0e9c585283c076cb6b446e8fe7ecf6d3258fe79d",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "battlestaff-skysa",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 58762,
+    "file": 242899
+   },
+   "name": "Battlestaff Animations for SkySA",
+   "author": "ciome",
+   "version": "1.0",
+   "archive": "BattlestaffForSkySA-58762-1-0-1637415749.rar",
+   "size_kb": 97,
+   "why": "battlestaff animations for SkySA (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "5260cbca3a80fc7e9a509f30380e17bf0e14f0ff6b4b9a75ac59e198a2801f8b",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "claw-skysa",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 58302,
+    "file": 241832
+   },
+   "name": "Claw Animations for SkySA",
+   "author": "ciome",
+   "version": "1.0",
+   "archive": "ClawsForSkySA-58302-1-0-1637022816.rar",
+   "size_kb": 251,
+   "why": "claw animations for SkySA (collection xyf1u3)",
+   "required": true,
+   "profile": "play",
+   "sha256": "6d684d4f65c66656160d9f86c9396a6a15b1f46c898fbe4ff3e25cf55a83322c",
+   "licence": "not read",
+   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not read",
+   "permission_ask": true,
+   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
+   "runtime": "not checked on 1.7.104.0",
+   "conflicts": "not checked",
+   "linked_or_forked_by": "none: depended on as the player's own download"
+  },
+  {
+   "id": "true-directional-movement",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 51614,
+    "file": 798770
+   },
+   "name": "True Directional Movement - Modernized Third Person Gameplay",
+   "author": "Ersh",
+   "version": "2.3.1",
+   "archive": "True Directional Movement 51614 2.3.1 2026-09-01T17-15Z PuQ2UKIMI.7z",
+   "size_kb": 5088,
+   "why": "lock-on (RS click) and 8-way movement",
+   "required": true,
+   "profile": "play",
+   "sha256": "0593379072997689f3d1db2302b0bf060c0ddc116743ab9585feaf328bec0b0f",
+   "ini": [
+    {
+     "file": "mcm/config/truedirectionalmovement/settings.ini",
+     "section": "Keys",
+     "set": {
+      "uTargetLockKey": "273"
+     }
+    },
+    {
+     "file": "mcm/config/truedirectionalmovement/settings.ini",
+     "section": "TargetLock",
+     "set": {
+      "bTargetLockUsePOVSwitchGamepad": "0",
+      "bTargetLockUsePOVSwitchKeyboard": "1"
+     }
+    }
+   ],
+   "licence": "GPL-3.0 (github Ersh1/TrueDirectionalMovement)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/TrueDirectionalMovement licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "TrueDirectionalMovement.esp"
+   ],
+   "runtime": "loads on 1.7.104.0 (TrueDirectionalMovement.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "truehud",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 62775,
+    "file": 798218
+   },
+   "name": "TrueHUD - HUD Additions",
+   "author": "Ersh",
+   "version": "1.1.10",
+   "archive": "TrueHUD 62775 1.1.10 2026-08-31T16-21Z 31i7IoHze.7z",
+   "size_kb": 4284,
+   "why": "lock-on reticle and boss bars",
+   "ini": [
+    {
+     "file": "MCM/Config/TrueHUD/settings.ini",
+     "section": "General",
+     "set": {
+      "bEnablePlayerWidget": "0"
+     }
+    }
+   ],
+   "required": true,
+   "profile": "play",
+   "sha256": "ad10182e0806c47998bc6bf7badd34b8160c9ff008b85b796245e031a77ceed5",
+   "licence": "GPL-3.0 (github Ersh1/TrueHUD)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/TrueHUD licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "TrueHUD.esl"
+   ],
+   "runtime": "loads on 1.7.104.0 (TrueHUD.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "magic-expanded",
+   "group": "magic",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 133435,
+    "file": 788301
+   },
+   "name": "Magic Expanded - Morrowind Oblivion Shout and New Spells",
+   "author": "Destructor36",
+   "version": "5.1",
+   "archive": "Magic 133435 5.1 2026-08-11T02-19Z 587RqTjYq.zip",
+   "size_kb": 1078,
+   "why": "Morrowind's spells and schools (Mark, Recall, Levitate and the rest)",
+   "required": true,
+   "profile": "play",
+   "sha256": "fd504f807c98f37c980a0d5554ffe7d0997ef18ed9986f5a92f92efbc551eb52",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Magic.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "freeclimb",
+   "group": "traversal",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 193552,
+    "file": 817460
+   },
+   "name": "FreeClimb",
+   "author": "Epsilona11",
+   "version": "0.5.0",
+   "archive": "FreeClimb 193552 0.5.0 2026-10-10T12-21Z Sx9oEwy6h.zip",
+   "size_kb": 3866,
+   "why": "climbing walls and ladders",
+   "required": true,
+   "profile": "play",
+   "sha256": "3c54c07a012820b81b26c4153b7df17876a7c790cd3d0a24053a2183161eb95a",
+   "licence": "GPL-3.0-only (github Eelta/FreeClimb)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. Its animation clips carry separate third-party notices we have not read.",
+   "ai_clause": "none: open licence GPL-3.0-only governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description: code GPL-3.0 only; gh GPL-3.0; sourcing-register uses its clips (third-party animation licensing is in its THIRD-PARTY-NOTICES, not read)",
+   "plugins": [
+    "FreeClimb.esp"
+   ],
+   "runtime": "loads on 1.7.104.0 (FreeClimb.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "ini": [
+    {
+     "file": "SKSE/Plugins/FreeClimb.ini",
+     "section": "Controls",
+     "set": {
+      "Entry": "W+Space"
+     }
+    },
+    {
+     "file": "SKSE/Plugins/FreeClimb.ini",
+     "section": "Gamepad",
+     "set": {
+      "Entry": "Y"
+     }
+    }
+   ],
+   "settings_why": "Climbing starts by jumping at a wall: W+Space, or the pad's Y (our jump), instead of FreeClimb's default W+A+D+Space / LB+Y chords, which the owner could not find in play test 2 (1.12). Proved in game 2026-10-31 before the change: the default chord reached FreeClimb (\"Entry input: phase=begin\") and a grab was refused only for the slope (\"surface layer, slope or facing rejected\"); its 31 clips commit and its hooks install on 1.7.104."
+  },
+  {
+   "id": "housecarl",
+   "group": "dev",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 181738,
+    "file": 824460
+   },
+   "name": "houseCARL - A Skyrim Modding MCP",
+   "author": "Aaronavich",
+   "version": "2.1.1",
+   "archive": "houseCARL 181738 2.1.1 2026-10-22T21-10Z JrECN2OGt.zip",
+   "size_kb": 12374,
+   "why": "load-order and conflict inspection for agents",
+   "required": true,
+   "profile": "dev",
+   "sha256": "1cb9fda834590d367e9907c35e5053624be050c316424d1f917f74e004c4816c",
+   "install": "tool",
+   "note": "a Windows MCP server (.NET 10, Mutagen) reading the MO2 instance C:\\argonia\\MO2; laid under tools, never into Data",
+   "licence": "GPL-3.0-only (github Avick3110/houseCARL)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0-only governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description: 'GPL-3.0-only, as required by Mutagen'; gh licence GPL-3.0",
+   "runtime": "a Windows tool, runs beside the game",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: a dev tool on our machine"
+  }
+ ]
+}

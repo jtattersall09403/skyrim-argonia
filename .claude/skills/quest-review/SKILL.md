@@ -12,22 +12,20 @@ builder); it judges whether the quest is good and believable.
 ## 1. Set-up
 
 - Run as a fresh agent given only the quest record, the world records it cites and this skill; never the
-  author's reasoning, so the reading is not anchored on it. The record is rows in the world database (decision
-  0030): read its YAML view with `python3 -m tools.argonia_world.quest_record export <quest id>`. The world
+  author's reasoning, so the reading is not anchored on it. The record is rows in the story data (`story/data`): read its YAML view with `python3 -m tools.argonia_world.quest_record export <quest id>`. The world
   records, read only through the database (`python3 -m tools.argonia_world.db query "SELECT ..."` or `db show
-  <table> <id>`; the tables are described in `../../../docs/design/world/98-data-model.md`): the place's facts
+  <table> <id>`; the tables are described in `../../../story/data/schema.sql`): the place's facts
   (`fact` by `place_id`), the people (`npc`, `npc_faction`), the stance and culture sheets (`stance`,
   `stance_chain`, `stance_topic`, `culture_sheet`, `culture_entry`, `culture_opinion`), the other quests at the
-  place (`quest` by `settlement`, each exported as above). The lore is not yet a table: read it from the
-  import, read-only (`../../../world/sources/lore/`).
-- Also binding: the quest index rules and coverage (`../../../docs/design/quests/index/README.md` §47b–c,
-  `../../../docs/design/quests/index/coverage.md`), 00-overview §4 (`../../../docs/design/quests/00-overview.md`), the condition
-  vocabulary (`condition_term` rows; `../../../docs/design/quests/85-condition-vocabulary.md` explains each term) and the style guide's journal register
-  (`../../../docs/design/standards/text/style-guide.md`).
+  place (`quest` by `settlement`, each exported as above). The lore: `../../../story/lore/`. The world is BM&V's
+  (Black Marsh & Valenwood, an existing mod): judge the quest against the BM&V place it names in `foundation`.
+- Also binding: the quest index rules and coverage (`../../../story/design/quests/index/README.md` §47b–c,
+  `../../../story/design/quests/index/coverage.md`), 00-overview §4 (`../../../story/design/quests/00-overview.md`), the condition
+  vocabulary (`condition_term` rows; `../../../story/design/quests/85-condition-vocabulary.md` explains each term) and the style guide's journal register
+  (`../../../story/design/text/style-guide.md`).
 - Read the principle files the record routes to (`../quest-write/shapes.yaml`: always
   `../quest-write/principles/general.md` and `../quest-write/principles/actions.md`, the group's file, each
-  shape's file); their checklists are part of this review. The research
-  packs behind them are in `../../../docs/research/2026-10-27/`.
+  shape's file); their checklists are part of this review.
 
 ## 2. Read it twice
 

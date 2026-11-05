@@ -1,9 +1,9 @@
-"""The world database (decision 0030): the only reader and the only writer of `world/db/*.jsonl`.
+"""The world database (decision 0030): the only reader and the only writer of `story/data/db/*.jsonl`.
 
-`world/schema.sql` is the single description of the world's data; `world/db/<table>.jsonl` holds one row per line,
+`story/data/schema.sql` is the single description of the world's data; `story/data/db/<table>.jsonl` holds one row per line,
 columns in schema order, rows sorted by primary key. This module loads every table into SQLite with the DDL and
 foreign keys enforced, hands out typed rows and queries, and writes changed tables back sorted. A tool that opens a
-`world/` file itself is a defect (the gate's `world-reads` check).
+story data file directly bypasses its checks.
 
     from tools.argonia_world import db
     w = db.open()                          # load (or reuse a fresh out/world.sqlite), FKs on
@@ -11,10 +11,10 @@ foreign keys enforced, hands out typed rows and queries, and writes changed tabl
     w.rows("npc_faction", npc_id="npc.x")  # typed rows, ordered by primary key
     w.query("SELECT ... WHERE id = ?", x)  # sqlite3.Row list for anything else
     w.insert("topic", id=..., ...); w.update("topic", "topic.x", label="..."); w.delete("topic", "topic.x")
-    w.save()                               # FK check + named checks, then the changed tables written back sorted
+    w.save()                               # FK check, then the changed tables written back sorted
 
     python3 -m tools.argonia_world.db build [--out out/world.sqlite]   # `make db`
-    python3 -m tools.argonia_world.db check                            # the gate: load + constraints + named checks
+    python3 -m tools.argonia_world.db check                            # load + constraints + foreign keys
     python3 -m tools.argonia_world.db query "SELECT count(*) FROM npc"
     python3 -m tools.argonia_world.db show npc npc.claywater.x
 """
@@ -33,11 +33,11 @@ from pathlib import Path
 from typing import Any, Callable, Iterable
 
 REPO = Path(__file__).resolve().parents[2]
-SCHEMA = "world/schema.sql"
-DB_DIR = "world/db"
+SCHEMA = "story/data/schema.sql"
+DB_DIR = "story/data/db"
 OUT = "out/world.sqlite"
 # The world every tool loads by default: this repo's, or another root (a scale or scratch copy) named by the
-# environment, so a whole gate run can point at it: ARGONIA_WORLD_ROOT=out/scale make check
+# environment: ARGONIA_WORLD_ROOT=<dir holding story/data>
 WORLD_ROOT = Path(os.environ.get("ARGONIA_WORLD_ROOT") or REPO).resolve()
 
 PYTYPE = {"TEXT": str, "INTEGER": int, "REAL": float, "BOOLEAN": bool, "": object}
@@ -281,14 +281,11 @@ class World:
         return cur.rowcount
 
     def errors(self) -> list[str]:
-        """Every dangling foreign key and every failing named check."""
-        out = fk_errors(self)
-        from . import checks
-        out += checks.run(self)
-        return out
+        """Every dangling foreign key (the old named world checks went with the world generator)."""
+        return fk_errors(self)
 
     def save(self, tables: Iterable[str] | None = None) -> list[str]:
-        """Write the changed tables (or `tables`) back to world/db, sorted by key, after the FK and named checks.
+        """Write the changed tables (or `tables`) back to story/data/db, sorted by key, after the FK check.
         Nothing is written while any check fails; the errors are raised."""
         errs = self.errors()
         names = sorted(set(tables) if tables is not None else self.dirty)
@@ -362,7 +359,7 @@ def _connect(path: str = ":memory:") -> sqlite3.Connection:
 
 
 def load(root: Path | str | None = None, db_dir: Path | str | None = None, strict: bool = True) -> World:
-    """Build the world in memory from schema.sql and world/db/*.jsonl. Every type, NOT NULL, CHECK, UNIQUE and
+    """Build the world in memory from schema.sql and story/data/db/*.jsonl. Every type, NOT NULL, CHECK, UNIQUE and
     foreign-key violation is collected and raised as one LoadError (strict) or left in w.load_errors."""
     root = Path(root or WORLD_ROOT)
     sig = signature(root)        # before reading: a file written during the load makes the cache stale, not fresh
@@ -481,7 +478,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
     b = sub.add_parser("build", help="load and write out/world.sqlite")
     b.add_argument("--out", default=OUT)
-    sub.add_parser("check", help="load with every constraint, then the named checks")
+    sub.add_parser("check", help="load with every constraint")
     q = sub.add_parser("query")
     q.add_argument("sql")
     s = sub.add_parser("show")
@@ -502,7 +499,7 @@ def main(argv: list[str] | None = None) -> int:
         if errs:
             print(f"world: {len(errs)} error(s)\n  " + "\n  ".join(errs))
             return 1
-        print(f"world: {len(w.tables)} tables, {sum(counts(w).values())} rows, FKs and named checks green")
+        print(f"world: {len(w.tables)} tables, {sum(counts(w).values())} rows, FKs green")
     elif a.cmd == "query":
         for r in w.query(a.sql):
             print("\t".join("" if v is None else str(v) for v in r))

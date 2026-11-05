@@ -1,8 +1,0 @@
-FormKey: 02BB38:Skyrim.esm
-EditorID: DA10HauntingController
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

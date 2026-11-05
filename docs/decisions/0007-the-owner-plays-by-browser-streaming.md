@@ -12,7 +12,7 @@ to a browser, which also gives seamless saves across devices.
 ## Decision
 
 1. The game runs on an on-demand **AWS GPU instance in London** (g6.xlarge L4 preferred for modded Skyrim
-   and AV1/H.264 NVENC; g4dn.xlarge T4 for lighter agent test runs; g5.xlarge A10G if L4 spot is scarce),
+   and AV1/H.264 NVENC; g4dn.xlarge T4 for lighter agent test runs),
    chosen by the 0.0 and 0.2 benchmarks (G0, 0.2 §d).
 2. **Selkies** (linuxserver.io build) streams the desktop to a browser tab over WebRTC, with WebSocket/TCP-443
    mode for networks that block UDP (likely the work Mac's). Moonlight-Web + Sunshine is the alternative if

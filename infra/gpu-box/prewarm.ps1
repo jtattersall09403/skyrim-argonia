@@ -1,5 +1,5 @@
 # Read the game's files once on a disk just made from an image (1.8). EBS fetches each block from S3 on its first read,
-# so a fresh machine's first game launch stalls (the bridge's ping timed out at deploy, 2026-10-31); reading the
+# so a fresh machine's first game launch stalls; reading the
 # game, the mods and our files once warms them. The reads run on $Threads runspaces at once: one reader took 20+ min
 # for ~90 GB because each first read waits on S3 (speed tick, 2026-10-31; AWS's own advice is parallel reads).
 # Prints GB read and seconds.

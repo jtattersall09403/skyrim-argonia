@@ -1,131 +1,24 @@
-# The one gate. `make check` runs every target in parallel and ends with one list of the reds.
-RED := $(shell git rev-parse --git-dir)/check-red  # .git is a file in a worktree
-PARTS := guard lint unit budget links records ledger world roads-census trees-census edges-census plugin-check skse immersion ui
-# The build VM's pinned venv (infra/build-vm/toolchain.lock) when present: numpy, pytest, pyyaml.
+# The one gate: `make check` runs lint, the unit tests and the no-assets guard.
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
-# A failing part records its name, then fails.
-FAIL = || { echo $@ >> $(RED); exit 1; }
+RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check check-run hooks plugin plugin-ids db chart navmesh ui-stills deploy $(PARTS)
+.PHONY: check guard lint unit hooks deploy
 
-# One gate at a time on this VM: two lanes' checks at once share $(RED) and out/check/, and thrash the CPU (2026-10-30).
-check:
-	@mkdir -p out && flock out/.check.lock $(MAKE) --no-print-directory check-run
-
-check-run:
-	@rm -f $(RED)
-	@$(MAKE) -k -j --no-print-directory $(PARTS) || true
-	@if [ -s $(RED) ]; then echo "CHECK RED: $$(sort $(RED) | tr '\n' ' ')"; rm -f $(RED); exit 1; else echo "CHECK GREEN"; fi
-
-check-reach:  ## the gate for what changed since SINCE (default origin/main): tooling/check_reach.py maps paths to the steps that read them
-	@$(PY) tooling/check_reach.py --since $(or $(SINCE),origin/main)
+check: guard lint unit
+	@echo "CHECK GREEN"
 
 guard:
-	@python3 tooling/guards/no_assets.py --tree $(FAIL)
+	@python3 tooling/guards/no_assets.py --tree
 
 lint:
-	@if [ -x $(HOME)/.argonia/venv/bin/ruff ]; then $(HOME)/.argonia/venv/bin/ruff check -q tooling tools; \
-	elif command -v ruff >/dev/null; then ruff check -q tooling tools; \
-	elif python3 -m pyflakes --version >/dev/null 2>&1; then python3 -m pyflakes tooling tools; \
-	else python3 -m compileall -q tooling tools >/dev/null; fi $(FAIL)
+	@$(RUFF) check -q tooling tools infra .claude
 
 unit:
-	@$(PY) -m pytest -q --ignore=tooling/tests/test_word_budget.py tooling/tests tools infra/stream-client/e2e/test_feel.py; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ] $(FAIL)
-	@node infra/cloudflare/test/spot.mjs >/dev/null $(FAIL)  # the play page's start retry and reclaim message (1.8)
-	@node infra/cloudflare/test/pool.mjs >/dev/null $(FAIL)  # the pool: which standby the play page starts or sends to (1.8 §7)
-
-budget:
-	@python3 -m pytest -q tooling/tests/test_word_budget.py $(FAIL)
-
-# The records agree and cite only what exists (owner, 2026-10-31: never stale): tools/check_records.py.
-records:
-	@python3 tools/check_records.py $(FAIL)
-	@python3 tools/doc_index.py --check $(FAIL)  # docs/INDEX.md is current: python3 tools/doc_index.py --write
-
-# The check ledgers (docs/phases/*/checks.md): every row valid, its evidence resolving, every batch journey in one.
-ledger:
-	@python3 tools/check_ledger.py $(FAIL)
-
-links:
-	@python3 tooling/check_links.py $(FAIL)
-
-# The world database (decision 0030): the load with every constraint and the named checks; no tool reads world/ itself.
-world:
-	@python3 -m tools.argonia_world.db check && python3 tools/argonia_world/check_world_reads.py && \
-	  $(PY) -m tools.argonia_world.vegetation textures check && \
-	  { [ ! -f $${ARGONIA_DATA:-$(HOME)/.argonia/data}/hydrology-graph-bodies.npz ] || $(PY) -m tools.argonia_world.water check; } $(FAIL)
-
-# lane 1.15-r6-stamp-walk (owner #42): the roads against the cell water on the current out/terrain ground (routes
-# census: a wet metre outside a ford, a ford over 0.3 m, a raised bank over GRADE_MAX is red; about 1 s)
-roads-census:
-	@{ [ ! -f out/terrain/ground-f32.npy ] && echo "roads-census: no out/terrain ground (skipped)"; } || \
-	  $(PY) -m tools.argonia_world.routes census > out/roads-census.json || { tail -c 600 out/roads-census.json; echo $@ >> $(RED); exit 1; }
-
-# lane 1.15-r6-water-edges-2: no water sheet hangs at a cell line, and the lower water meeting a step's foot and the
-# held cells' wet share held at their ceilings (water edges census, the result cached by its stamp; about 3 s)
-edges-census:
-	@{ [ ! -f out/terrain/ground-f32.npy ] && echo "edges-census: no out/terrain ground (skipped)"; } || \
-	  $(PY) -m tools.argonia_world.water.edges_census > out/edges-census.json || { head -c 600 out/edges-census.json; echo $@ >> $(RED); exit 1; }
-
-# lane 1.15-r6-trees-in-water: no tree or large shrub in the sea, a lake, a river or a stream (vegetation census: a
-# stem on ground under its cell's water or within 1 m of it is red, bar cypress and mangrove in black water; the
-# result cached by its stamp, the bytes it reads; about 20 s cold). It also reds a tree or large shrub whose body
-# reaches a road lane (routes/paint.py width) and counts ground flora on the lane
-trees-census:
-	@{ [ ! -f out/terrain/vegetation/summary.json ] && echo "trees-census: no out/terrain vegetation (skipped)"; } || \
-	  $(PY) -m tools.argonia_world.vegetation census > out/trees-census.json || { head -c 1200 out/trees-census.json; echo $@ >> $(RED); exit 1; }
-
-# out/world.sqlite for DuckDB, pandas or the sqlite3 shell.
-db:
-	@python3 -m tools.argonia_world.db build
-
-# skse/core and the bridge protocol: pure C++ unit tests built natively on the build VM (0.3 §b).
-skse:
-	@bash skse/check.sh $(FAIL)
-
-# The views' side of the message schema and its generator (1.1 §c): the TS validator's refusals, the fixtures.
-NODE := $(firstword $(shell command -v node) $(HOME)/.local/bin/node)
-# The views (1.2): their L1 tests here; the L3 smoke (headless shell, ~6 s) runs in `unit` as tools/ui_harness/tests.
-ui:
-	@$(NODE) --experimental-strip-types --disable-warning=ExperimentalWarning --test --test-reporter=dot 'ui/schema/tests/*.test.ts' 'tools/schema_gen/tests/*.test.ts' 'ui/views/tests/*.test.ts' $(FAIL)
-
-# The L3 stills (1.2): every view x fixture x viewport -> out/ui/stills/ and out/ui/report.json; not in the gate (~160 s).
-ui-stills:
-	@$(PY) -m tools.ui_harness
-
-# The immersion inventory's counts (decision 0006 §2); binding from 2.17 with IMMERSION_BIND=1.
-immersion:
-	@python3 tools/immersion/inventory.py --gate $(FAIL)
-
-# Records (0.4 §a): world -> intermediate JSON -> ArgoniaGen (Mutagen) -> out/Argonia.esm -> Spriggit plugin/Argonia/.
-# One build at a time: two lanes' parallel builds raced on out/ (2026-10-29); the second waits for the lock.
-plugin:  # PLAN=1: print each stage's key and run/skip, build nothing (no lock)
-	@mkdir -p out && $(if $(PLAN),$(PY) tools/ArgoniaGen/pipeline.py plugin --plan,flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py plugin)
-
-plugin-ids:  # Argonia.esm and its new FormIDs over the existing out/ArgoniaWorld.esm, no province world build
-	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py ids
-
-# FormIDs append-only, pieces resolved, regenerate twice identical, plugin/ current, Spriggit round trip byte-identical.
-plugin-check:
-	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py check $(FAIL)
-
-# Our build onto the game machine (0.3 §e): make plugin, the profile restaged, our DLLs built there, the ESMs and
-# scenes sent, the game relaunched, the base save rebuilt. Run it under tooling/job_guard.sh run --gpu.
-deploy:
-	@bash infra/gpu-box/deploy.sh $(DEPLOY_ARGS)
-
-pool-deploy:  # main onto every standby that is behind (1.8 §7); long: run under tooling/job_guard.sh
-	@bash infra/gpu-box/pool_deploy.sh
+	@$(PY) -m pytest -q tooling/tests tools/tests; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ]
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
 
-# The parchment chart (2.W4 §c): out/chart/ layers, copies, tiles, index and the L1 checks; not in the gate (~100 s,
-# ~1 GB); the gate's part is tools/chart/tests (the sample's pinned hash). Pelagiad: python -m tools.chart fetch-font.
-chart:
-	@$(PY) -m tools.chart render
-
-# The navmesh (2.W4 §b): the province's NAVM and NAVI (tools/navmesh, DotRecast), then out/ArgoniaWorld.esm with
-# them, verified byte for byte; not in the gate (tens of minutes); the gate's part is plugin-check's four-cell hash.
-navmesh:
-	@mkdir -p out && flock out/.plugin.lock $(PY) tools/ArgoniaGen/pipeline.py navmesh
+# Our plugin and compiled scripts onto the play machine (infra/gpu-box/deploy.sh); run under tooling/job_guard.sh.
+deploy:
+	@bash infra/gpu-box/deploy.sh $(DEPLOY_ARGS)

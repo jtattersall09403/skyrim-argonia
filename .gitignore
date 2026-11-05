@@ -10,7 +10,6 @@ __pycache__/
 .ruff_cache/
 bin/
 obj/
-*.wine/
 tmp/
 # game and mod files never enter the repo (decision 0003); the no-assets guard is the gate, this is the first net
 *.esm
@@ -35,7 +34,6 @@ tmp/
 *.btr
 *.bto
 *.psc.bak
-# Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (a worldspace override) or ".esp" (a borrowed
-# cell's override, 0012 §6): not a plugin file
-!plugin/Argonia/**/*.esm/
-!plugin/Argonia/**/*.esp/
+# Spriggit names a record directory "<EditorID> - <id>_<Plugin>.esm" (an override of a master's record): not a plugin file
+!plugin/**/*.esm/
+!plugin/**/*.esp/

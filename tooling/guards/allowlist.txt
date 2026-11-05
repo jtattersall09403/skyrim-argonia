@@ -1,14 +1,7 @@
 # Paths (repo-relative, one per line) allowed to exceed 1 MB. Text only; no game or mod files.
-world/sources/assets/registry-vanilla.jsonl
-world/sources/assets/registry-bmv.jsonl
-world/sources/flora/vegetation-patches.json
-world/sources/flora/palettes.json
-world/sources/placement/exterior-interior-links.json
-world/sources/sites/candidate-sites.json
+story/data/sources/assets/registry-vanilla.jsonl
+story/data/sources/assets/registry-bmv.jsonl
+story/data/db/place.jsonl
+story/data/db/dialogue_line.jsonl
 LICENSE
 LICENSE-content
-world/db/place.jsonl
-world/db/dialogue_line.jsonl
-world/db/hydrology_body.jsonl
-world/db/water_regrade.jsonl
-world/db/land_region_object.jsonl

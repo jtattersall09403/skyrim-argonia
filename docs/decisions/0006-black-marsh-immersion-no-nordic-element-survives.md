@@ -1,68 +1,19 @@
-# 0006: Black Marsh immersion: no Nordic element survives; Pelagiad, new music, a 100% audit; Fal for minor art
+# 0006: Black Marsh immersion: minimal Nordic elements survive; Pelagiad, new music, a 100% audit; Fal for minor art
 
-**Status:** decided 2026-10-27 (owner: "It will be very immersion breaking for there to be Nordic design
-elements sneaking into our Black Marsh game"; wants Pelagiad throughout, new music, a full audit and overhaul
-of UI and art elements, an agentic approach that covers everything 100%; Fal allowed for minor new art).
+**Status:** decided 2026-10-27; re-scoped by the pivot (0038, 2026-11-05): the world is Black Marsh & Valenwood's as its authors made it; the rule now binds what *we* add (NPCs, lines, items, quests, journal text) and the vanilla systems we leave reachable (0012) (owner: "It will be very immersion breaking for there to be Nordic design
+elements sneaking into our Black Marsh game"; wants Pelagiad font throughout, new music we will create via Suno).
 
 ## Decision
 
-1. **The immersion inventory.** Every player-perceivable element is a row in one generated inventory
-   (`data/immersion/inventory.jsonl`), produced by enumerating, not by searching:
-   - every record our load order can show the player (WEAP, ARMO, MISC, BOOK, NPC_, CREA-equivalents, STAT,
-     FURN, ACTI, DOOR, CONT, LIGH, FLOR, TREE, GRAS, LTEX, TXST, WTHR, CLMT, IMGS, SOUN/SNDR, MUSC/MUST,
-     MESG, GMST strings, LSCR loading screens, SPEL/MGEF names and icons, PERK, RACE, CLAS, FACT, QUST,
-     DIAL/INFO, WOOP, SHOU, LCTN, REGN, VTYP voice types);
-   - every UI surface (each vanilla menu SWF in the pinned set, each PrismaUI view, the main menu, loading
-     screens, HUD, fonts, icons, cursor, message boxes);
-   - every audio surface (music tracks and types, ambience, UI sounds, combat barks, NPC voice types,
-     creature sounds);
-   - every text surface (strings shown anywhere, item names, book texts, loading tips).
-   Each row carries: source (plugin/file), where the player can meet it, a **verdict** (`keep` /
-   `restyle` / `replace` / `hide` / `remove`), the replacement's id, evidence (screenshot path or record
-   diff), and the check that proves it.
-2. **Coverage is measured, not believed.** The gate fails if any reachable row has no verdict, or a
-   `replace`/`hide`/`remove` row has no passing check. Reachability comes from our own load order and the
-   world (what is placed, sold, dropped, spawned or shown), computed by the generator.
-3. **Visual judgement** is done by independent `reader` agents on in-game captures with a Nordic-tells
-   checklist (knotwork, dragon motifs, Nordic runes, horned helmets, Skyrim seal, Sovngarde/Dragonborn
-   wording, snow/pine palettes, Nordic voice accents) and by the owner on sampled packets.
-4. **Font:** **Pelagiad** (SIL OFL; OpenMW's free twin of Magic Cards) everywhere: vanilla menus via our own
-   font library SWF and `fontconfig.txt` (decision 0014 §7), PrismaUI views via web font. Shipping Pelagiad is permitted by OFL
-   with its licence file.
-5. **Music:** new music for every music type (explore by region and time, combat, dungeon, town, menu,
-   death, discovery). Sources in order: (a) permissively licensed existing music (CC0/CC-BY, credited);
-   (b) owner-commissioned; (c) Fal-generated, with the AI-use constraints below. Vanilla Skyrim music never
-   plays.
-6. **New art:** UI elements and minor tweaks only (owner rule). Restyling existing meshes by retexturing is a
-   "tweak"; new meshes are not made. **Fal** may generate minor 2D art (icons, UI ornaments, the paper map
-   base, loading-screen paintings, book illustrations) when no sourced asset fits. Every Fal output is
-   recorded with its prompt and model in the sourcing register.
-7. **AI-use constraint.** Some mod authors forbid use of their assets in mods "that make use of AI" (King of
-   the Murkmire's terms), and Nexus requires AI-content disclosure (since 2026-07-31). Argonia's code, text and
-   any Fal art are AI-made, so: the sourcing register records each dependency's AI clause; any mod whose terms
-   forbid AI-made content is either cleared in writing by its author or dropped (docs/legal-and-sourcing.md).
-   The Nexus page discloses AI use.
-
-8. **Tropical Skyrim is the base-asset layer** (owner ruling 2026-10-27). Tropical Skyrim's SSE version
-   ([Nexus SSE 78044](https://www.nexusmods.com/skyrimspecialedition/mods/78044); original by Soolie,
-   [Nexus 33017](https://www.nexusmods.com/skyrim/mods/33017)) is a required dependency and the source for any
-   base-Skyrim asset: wherever a generator or builder would pick a vanilla Skyrim tree, plant, grass, rock,
-   landscape texture, ground cover, weather texture or other base asset, it picks Tropical Skyrim's
-   replacement or addition instead. A vanilla asset is used only where Tropical Skyrim has no equivalent, and
-   then only with a `keep` verdict in the inventory. Asset selection order (rewritten by [0028](0028-the-land-is-tropical-skyrim-through-skyrims-own-systems.md),
-   owner 2026-10-29): **for the land** (terrain textures, grass, trees, shrubs, rocks, scatter, weather, sky)
-   Tropical Skyrim → vanilla forms Tropical Skyrim replaces, nothing else; **for buildings, props and creatures**
-   Black Marsh–specific mods (Black Marsh & Valenwood, Xanmeer, King of the Murkmire, Sign of Cipactli…) →
-   Tropical Skyrim → other permitted mods → vanilla Skyrim. Because Tropical Skyrim replaces vanilla files in place, it also removes many Nordic
-   tells at source; the inventory still checks each one. Permissions: the original requires contacting Soolie,
-   and it bundles GKB, Muppetpuppet, Tamira, Birds of Skyrim and lookout21 assets with their own terms; the SSE
-   port's author is asked too (O-5).
+1. Nothing we add to the game carries a Nordic element: no Nord names, places, gods, idioms, architecture or
+   music in our records, lines, journal entries or items. Skyrim's own voiced barks stay (owner, 2026-10-31, #22),
+   filtered of lines naming Skyrim places, people or events where our plugin can condition them out.
+2. The vanilla systems that would carry Skyrim's story into Black Marsh are shut down (0012).
+3. A full UI overhaul was part of the old goal and is not planned now; the
+   owner may ask for it later.
+4. We make no art. Fal-made 2D art is allowed only if the owner asks for a specific small piece.
 
 ## Consequences
 
-- The immersion audit is a cross-cutting track (T-IMM in [PLAN.md](../PLAN.md)), not one late phase: the
-  inventory exists from 0.4, every chunk's new elements enter it, the gate binds on every reachable row from
-  the slice's close (2.17), 4.1 sets up verdicts at scale, and every content packet (4.2) passes it (decision
-  0023 §6).
-- Vanilla Skyrim *systems* that are Nordic by nature (dragons, shouts, Dragonborn, Sovngarde, Helgen, the
-  civil war) are handled by decision 0012.
+- Our text goes through the `text-review` skill, whose linter carries the Nordic-tell list.
+- An element BM&V or a listed mod ships is theirs, not ours to fix; we may include them.

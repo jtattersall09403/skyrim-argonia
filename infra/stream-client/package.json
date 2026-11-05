@@ -1,7 +1,7 @@
 {
   "name": "argonia-stream-client",
   "version": "0.1.0",
-  "description": "Our client page: Moonlight-Web v3.0.1's web frontend plus the touch gamepad and the stream metrics (chunk 0.0 §c)",
+  "description": "Our client page: Moonlight-Web v3.0.1's web frontend plus the touch gamepad (chunk 0.0 §c)",
   "license": "GPL-3.0-or-later",
   "private": true,
   "type": "module",

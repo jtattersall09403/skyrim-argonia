@@ -1,23 +1,22 @@
-// The play switch (owner call #6; the pool, 1.8 §7): a Cloudflare Worker on play.<domain> (and dcv., sunshine.), behind
-// Cloudflare Access. The pool is two standby machines (POOL, from machines.conf's pool= column), each with its own
-// tunnel and hostnames (play-paris.<domain>, play-ireland.<domain>, behind Access with the switch's service token).
-// - A page load goes to the machine in use: the one this browser was sent to (a cookie), else a running one no agent
-//   job holds. The Worker forwards the request to that machine's own hostname.
-// - None running: it starts the standby with the newest build and the best spot placement score, falling back to the
-//   next on a refusal or no capacity, and shows a page that reloads into the stream once it is up.
-// - /argonia/stop stops the machine in use; /argonia/status reports the pool.
-// - Cost backstops for every pool machine (scheduled every 10 min): stop one that has run longer than MAX_HOURS, whose
-//   heartbeat (idle-stop.ps1, at /argonia-metrics/activity) has been missing or stale STALE_MINUTES after its start,
-//   and every night at NIGHT_STOP; an agent's fresh "agent job" beat spares it from the cap and the night stop.
+// The play switch (owner call #6): a Cloudflare Worker on play.<domain> (and dcv., sunshine.), behind Cloudflare
+// Access, for the one play machine, argonia-play (eu-west-3, g6.xlarge persistent spot), whose own hostname is
+// play-<ORIGIN_LABEL>.<domain> (behind Access with the switch's service token).
+// - A page load goes to the machine if it runs: the Worker forwards the request to its own hostname.
+// - Stopped: it starts it and shows a page that reloads into the stream once it is up (a settling refusal retries).
+// - /argonia/stop stops it; /argonia/status reports it.
+// - Cost backstops (scheduled every 10 min): stop it when it has run longer than MAX_HOURS, when its heartbeat
+//   (idle-stop.ps1, at /argonia-metrics/activity) has been missing or stale STALE_MINUTES after its start, and
+//   every night at NIGHT_STOP; an agent's fresh "agent job" beat spares it from the cap and the night stop.
 //   Idle with a live heartbeat is the machine's own idle-stop's job (15 minutes).
-// Bindings: AWS_KEY_ID, AWS_SECRET (an IAM user that may start and stop only instances tagged argonia-pool, and read
-// spot placement scores); POOL (JSON [{name, label, region, type, az}]); DOMAIN; CF_TOKEN, CF_ZONE, HOST_NAME keep
-// host.<domain> (DNS only) on the machine in use for the Moonlight app; CF_ACCESS_ID, CF_ACCESS_SECRET (an Access
-// service token) pass the machines' own gates. Deployed by infra/gpu-box/cloudflare_gate.py worker.
+// Bindings: AWS_KEY_ID, AWS_SECRET (an IAM user that may start and stop only the play instance);
+// REGION (default eu-west-3), NAME (default argonia-play), ORIGIN_LABEL (default paris); DOMAIN; CF_TOKEN, CF_ZONE,
+// HOST_NAME keep host.<domain> (DNS only) on the machine for the Moonlight app; CF_ACCESS_ID, CF_ACCESS_SECRET (an
+// Access service token) pass the machine's own gates. Deployed by infra/gpu-box/cloudflare_gate.py worker.
 
 const MAX_HOURS = 8
 const STALE_MINUTES = 30
-const COOKIE = "argoniaMachine"
+const NAME = "argonia-play"
+const REGION = "eu-west-3"   // g6.xlarge persistent spot
 
 /** Stop for a dead heartbeat? Only once the machine has been up STALE_MINUTES, so a boot is never cut short, and
  *  only on time since this start: the old traffic alarm counted quiet minutes from before a stop. */
@@ -36,40 +35,8 @@ export function agentBusy(nowMs, beat) {
   return (beat.why || []).some((w) => w === "agent ssh" || w === "agent job")
 }
 
-/** The machine a page load goes to, of those running (or starting): this browser's machine if it is up, else one no
- *  agent holds, newest build first. null: start one. */
-export function inUse(machines, cookieName, held) {
-  const up = machines.filter((m) => m.state === "running" || m.state === "pending")
-  const mine = up.find((m) => m.name === cookieName)
-  if (mine) return mine
-  const free = up.filter((m) => !held.has(m.name))
-  free.sort((a, b) => (b.buildUtc || "").localeCompare(a.buildUtc || ""))
-  return free[0] || null
-}
-
-/** The order to try starting the stopped machines: the newest build first (the pool must hold one build; a machine a
- *  deploy has not reached yet is only a fallback), then the best spot placement score, then POOL's order. The machine
- *  this browser started in the last 5 minutes goes first, so a reload never starts a second one on a shifted score. */
-export function startOrder(machines, scores, justStarted) {
-  const newest = machines.reduce((a, m) => ((m.buildUtc || "") > a ? m.buildUtc : a), "")
-  const behind = (m) => ((m.buildUtc || "") < newest ? 1 : 0)
-  return machines.map((m, i) => ({ m, i })).filter(({ m }) => m.state === "stopped")
-    .sort((a, b) => (b.m.name === justStarted) - (a.m.name === justStarted) || behind(a.m) - behind(b.m) || (scores[b.m.name] ?? -1) - (scores[a.m.name] ?? -1) || a.i - b.i)
-    .map(({ m }) => m)
-}
-
-/** The score of a GetSpotPlacementScores answer for one zone id (else the region's best), or null. */
-export function placementScore(xml, az) {
-  const items = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)].map((x) => ({
-    az: /<availabilityZoneId>([^<]+)</.exec(x[1])?.[1], score: Number(/<score>(\d+)</.exec(x[1])?.[1]) }))
-    .filter((x) => x.score >= 0)
-  const hit = items.find((x) => x.az === az)
-  if (hit) return hit.score
-  return items.length ? Math.max(...items.map((x) => x.score)) : null
-}
-
 /** A Start refused while the spot request or the instance is still settling after a stop (owner #29), or for no spot
- *  capacity: the next standby is tried; if none starts, the page says "starting…" and tries again at each reload (4 s)
+ *  capacity: the page says "starting…" and tries again at each reload (4 s)
  *  for up to START_RETRY_MS from the first refusal, which a cookie carries. */
 export const START_RETRY_MS = 120e3
 const SETTLING = /IncorrectSpotRequestState|IncorrectInstanceState|InsufficientInstanceCapacity/
@@ -78,38 +45,25 @@ export function startRetry(error, firstMs, nowMs) {
   return !firstMs || nowMs - firstMs < START_RETRY_MS
 }
 const RETRY_COOKIE = "argoniaStartRetry"
-const STARTED_COOKIE = "argoniaStarted"
 
 const cookieOf = (request, name) => new RegExp(`(?:^|;\\s*)${name}=([^;]*)`).exec(request?.headers.get("cookie") || "")?.[1]
-const title = (m) => m.label.charAt(0).toUpperCase() + m.label.slice(1)
+const LABEL = "Paris"
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url)
-    const ms = await poolState(env)
-    const cookieName = cookieOf(request, COOKIE)
-    if (url.pathname === "/argonia/status") {
-      const beats = await beatsOf(env, ms)
-      return json(ms.map((m) => ({ ...m, beat: beats[m.name] ?? null })))
-    }
+    const m = await machineState(env)
+    if (url.pathname === "/argonia/status") return json({ ...m, beat: m.state === "running" ? await beatOf(env, m) : null })
     if (url.pathname === "/argonia/stop") {
-      const held = await heldSet(env, ms)
-      const m = inUse(ms, cookieName, held)
-      if (m && m.state === "running") await ec2(env, m.region, { Action: "StopInstances", "InstanceId.1": m.id })
+      if (m.state === "running") await ec2(env, m.region, { Action: "StopInstances", "InstanceId.1": m.id })
       cached = null
-      const res = page(m ? `Stopping ${title(m)}` : "Nothing to stop", "It is switching off. Nothing is charged while it is off.", false)
-      res.headers.append("set-cookie", `${COOKIE}=; Path=/; Max-Age=0; Secure`)
-      return res
+      return page(m.state === "running" ? `Stopping ${LABEL}` : "Nothing to stop", "It is switching off. Nothing is charged while it is off.", false)
     }
-    // this browser's machine, if up, without reading heartbeats (every asset and stream message comes this way)
-    const own = ms.find((x) => x.name === cookieName && (x.state === "running" || x.state === "pending"))
-    const held = own ? new Set() : await heldSet(env, ms)
-    const m = url.pathname === "/argonia/start" ? null : own || inUse(ms, cookieName, held)
-    if (!m) {
-      // Only a page load starts a machine: the heartbeat read and a stale tab's metrics posts must not
-      // (a heartbeat check through the gate started it, 2026-10-29).
+    // Only a page load starts the machine: the heartbeat read and a stale tab's metrics posts must not
+    // (a heartbeat check through the gate started it, 2026-10-29).
+    if (url.pathname === "/argonia/start" || m.state !== "running" && m.state !== "pending") {
       if (url.pathname.startsWith("/argonia-metrics")) return json({ error: "no game machine is on" }, 503)
-      return startPage(env, request, ms, held)
+      return startPage(env, request, m)
     }
     if (m.ip) await syncHost(env, m.ip)
     let res = null
@@ -117,32 +71,25 @@ export default {
       try { res = await forward(request, env, m) } catch (e) { res = null }
     }
     if (!res || res.status === 530 || res.status === 502 || res.status === 1033) {
-      if (url.pathname.startsWith("/argonia-metrics")) return json({ error: `${m.label} is starting` }, 503)
-      res = m.state === "running" ? page(`${title(m)} is on; its desktop is starting`, "Usually under two minutes.", true)
-                                  : page(`Starting ${title(m)}`, "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
-    }
-    if (cookieName !== m.name && res.status !== 101) {
-      res = new Response(res.body, res)
-      res.headers.append("set-cookie", `${COOKIE}=${m.name}; Path=/; Max-Age=43200; Secure; SameSite=Lax`)
+      if (url.pathname.startsWith("/argonia-metrics")) return json({ error: `${LABEL} is starting` }, 503)
+      res = m.state === "running" ? page(`${LABEL} is on; its desktop is starting`, "Usually under two minutes.", true)
+                                  : page(`Starting ${LABEL}`, "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
     }
     return res
   },
 
   async scheduled(event, env) {
-    const ms = await poolState(env)
-    const beats = await beatsOf(env, ms)
-    for (const m of ms) {
-      if (m.state !== "running") continue
-      const hours = (Date.now() - Date.parse(m.launched)) / 3.6e6
-      const beat = beats[m.name]
-      const capped = (event.cron === env.NIGHT_STOP || hours > MAX_HOURS) && !agentBusy(Date.now(), beat)
-      if (capped || heartbeatStop(Date.parse(m.launched), Date.now(), beat?.utc))
-        await ec2(env, m.region, { Action: "StopInstances", "InstanceId.1": m.id })
-    }
+    const m = await machineState(env)
+    if (m.state !== "running") return
+    const hours = (Date.now() - Date.parse(m.launched)) / 3.6e6
+    const beat = await beatOf(env, m)
+    const capped = (event.cron === env.NIGHT_STOP || hours > MAX_HOURS) && !agentBusy(Date.now(), beat)
+    if (capped || heartbeatStop(Date.parse(m.launched), Date.now(), beat?.utc))
+      await ec2(env, m.region, { Action: "StopInstances", "InstanceId.1": m.id })
   },
 }
 
-/** The pool machine's own hostname for this request's page (play. -> play-paris.). */
+/** The machine's own hostname for this request's page (play. -> play-paris.). */
 export function originHost(host, label, domain) {
   const prefix = host.split(".")[0]
   return `${prefix}-${label}.${domain}`
@@ -155,7 +102,7 @@ export function originHost(host, label, domain) {
 async function forward(request, env, m) {
   const url = new URL(request.url)
   const host = url.hostname
-  url.hostname = originHost(host, m.label, env.DOMAIN)
+  url.hostname = originHost(host, env.ORIGIN_LABEL || "paris", env.DOMAIN)
   const headers = new Headers(request.headers)
   const cookie = request.headers.get("cookie")
   if (cookie) {
@@ -173,68 +120,38 @@ async function forward(request, env, m) {
   return res
 }
 
-// Each running machine's heartbeat through its own hostname, past Access with the service token; null if it does not
+// The running machine's heartbeat through its own hostname, past Access with the service token; null if it does not
 // answer. Not configured: never stop on it.
-async function beatsOf(env, ms) {
-  const out = {}
-  await Promise.all(ms.filter((m) => m.state === "running").map(async (m) => {
-    if (!env.CF_ACCESS_ID) { out[m.name] = { utc: new Date().toISOString() }; return }
-    try {
-      const r = await fetch(`https://${originHost("play.x", m.label, env.DOMAIN)}/argonia-metrics/activity`,
-        { headers: { "CF-Access-Client-Id": env.CF_ACCESS_ID, "CF-Access-Client-Secret": env.CF_ACCESS_SECRET } })
-      out[m.name] = r.ok ? await r.json() : null
-    } catch { out[m.name] = null }
-  }))
-  return out
+async function beatOf(env, m) {
+  if (!env.CF_ACCESS_ID) return { utc: new Date().toISOString() }
+  try {
+    const r = await fetch(`https://${originHost("play.x", env.ORIGIN_LABEL || "paris", env.DOMAIN)}/argonia-metrics/activity`,
+      { headers: { "CF-Access-Client-Id": env.CF_ACCESS_ID, "CF-Access-Client-Secret": env.CF_ACCESS_SECRET } })
+    return r.ok ? await r.json() : null
+  } catch { return null }
 }
 
-async function heldSet(env, ms) {
-  if (!ms.some((m) => m.state === "running")) return new Set()
-  const beats = await beatsOf(env, ms)
-  return new Set(ms.filter((m) => agentBusy(Date.now(), beats[m.name])).map((m) => m.name))
-}
-
-async function scoresOf(env, ms) {
-  const out = {}
-  await Promise.all(ms.map(async (m) => {
-    try {
-      out[m.name] = placementScore(await ec2(env, m.region, { Action: "GetSpotPlacementScores", "InstanceType.1": m.type,
-        TargetCapacity: "1", SingleAvailabilityZone: "true", "RegionName.1": m.region }), m.az)
-    } catch { out[m.name] = null }   // not allowed yet, or throttled: POOL's order decides
-  }))
-  return out
-}
-
-async function startPage(env, request, ms, held) {
+async function startPage(env, request, m) {
   const first = Number(cookieOf(request, RETRY_COOKIE)) || 0
-  const busy = ms.filter((m) => held.has(m.name)).map(title)
-  const note = busy.length ? ` (${busy.join(" and ")} ${busy.length > 1 ? "are" : "is"} running an agent test.)` : ""
-  const order = startOrder(ms, ms.some((m) => m.state === "stopped") ? await scoresOf(env, ms) : {}, cookieOf(request, STARTED_COOKIE))
-  const errors = []
-  for (const m of order) {
-    try {
-      await ec2(env, m.region, { Action: "StartInstances", "InstanceId.1": m.id })
-      cached = null
-    } catch (e) { errors.push(`${title(m)}: ${String(e.message).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").slice(0, 200)}`); continue }
-    const behind = order[0] !== m && (order[0].buildUtc || "") > (m.buildUtc || "") ? ` ${title(order[0])} could not start, and ${title(m)} is a build behind.` : ""
-    const res = page(`Starting ${title(m)}`, (m.reclaimed ? RECLAIMED_TEXT + " " : "") +
-      `Usually under a minute. This page turns into the stream as soon as it is ready.${behind}${note}`, true)
-    res.headers.append("set-cookie", `${COOKIE}=${m.name}; Path=/; Max-Age=43200; Secure; SameSite=Lax`)
+  if (m.state === "stopping") return page("The game machine is still switching off", "Give it a minute; this page will start it again.", true)
+  if (m.state !== "stopped") return page("The game machine is not set up", "No instance named " + (env.NAME || NAME) + " exists.", true)
+  try {
+    await ec2(env, m.region, { Action: "StartInstances", "InstanceId.1": m.id })
+    cached = null
+  } catch (e) {
+    const err = String(e.message).replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").slice(0, 200)
+    const now = Date.now()
+    if (startRetry(String(e.message), first, now)) {
+      const res = page("Starting\u2026", "AWS has no room for the machine this moment, or is still settling it after its stop; this page keeps trying for two minutes.", true)
+      if (!first) res.headers.append("set-cookie", `${RETRY_COOKIE}=${now}; Path=/; Max-Age=300; Secure`)
+      return res
+    }
+    const res = page("No game machine could start", `AWS said: ${err}`, false)
     res.headers.append("set-cookie", `${RETRY_COOKIE}=; Path=/; Max-Age=0; Secure`)
-    res.headers.append("set-cookie", `${STARTED_COOKIE}=${m.name}; Path=/; Max-Age=300; Secure; SameSite=Lax`)
     return res
   }
-  if (!order.length) {
-    if (ms.some((m) => m.state === "stopping")) return page("A game machine is still switching off", "Give it a minute; this page will start it again." + note, true)
-    return page("No game machine is free", "Every standby is running an agent test or is not set up." + note, true)
-  }
-  const now = Date.now()
-  if (errors.every((e) => startRetry(e, first, now))) {
-    const res = page("Starting\u2026", "AWS has no room for either machine this moment, or is still settling one after its stop; this page keeps trying for two minutes." + note, true)
-    if (!first) res.headers.append("set-cookie", `${RETRY_COOKIE}=${now}; Path=/; Max-Age=300; Secure`)
-    return res
-  }
-  const res = page("No game machine could start", `AWS said: ${errors.join(" / ")}`, false)
+  const res = page(`Starting ${LABEL}`, (m.reclaimed ? RECLAIMED_TEXT + " " : "") +
+    "Usually under a minute. This page turns into the stream as soon as it is ready.", true)
   res.headers.append("set-cookie", `${RETRY_COOKIE}=; Path=/; Max-Age=0; Secure`)
   return res
 }
@@ -261,29 +178,26 @@ main{max-width:30em;text-align:center}a{color:#c9b67a}.stop{display:inline-block
 
 function json(o, status = 200) { return new Response(JSON.stringify(o), { status, headers: { "content-type": "application/json", "cache-control": "no-store" } }) }
 
-function pool(env) { try { return JSON.parse(env.POOL || "[]") } catch { return [] } }
-
-/** Every pool machine's state (DescribeInstances by its Name in its region), with its build stamp and spot status;
+/** The machine's state (DescribeInstances by its Name in its region), with its build stamp and spot status;
  *  kept 5 s in the isolate, so a page's burst of requests asks AWS once. */
 let cached = null
-async function poolState(env) {
-  if (cached && cached.env === env && Date.now() - cached.t < 5e3) return cached.ms
-  const ms = await describePool(env)
-  cached = { env, t: Date.now(), ms }
-  return ms
+async function machineState(env) {
+  if (cached && cached.env === env && Date.now() - cached.t < 5e3) return cached.m
+  const m = await describe(env)
+  cached = { env, t: Date.now(), m }
+  return m
 }
-async function describePool(env) {
-  return Promise.all(pool(env).map(async (p) => {
-    const xml = await ec2(env, p.region, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": p.name,
-      // never a terminated or shutting-down instance that still carries the name (a cut-over leaves one)
-      "Filter.2.Name": "instance-state-name", "Filter.2.Value.1": "pending", "Filter.2.Value.2": "running", "Filter.2.Value.3": "stopping", "Filter.2.Value.4": "stopped" })
-    const s = { ...p, ...parseInstance(xml) }
-    if (s.spot && s.state !== "running") {  // why it stopped, if AWS stopped it (1.8 §2)
-      try { s.spotStatus = spotStatus(await ec2(env, p.region, { Action: "DescribeSpotInstanceRequests", "SpotInstanceRequestId.1": s.spot })) } catch { s.spotStatus = null }
-      s.reclaimed = reclaimed(s.state, s.spotStatus)
-    }
-    return s
-  }))
+async function describe(env) {
+  const region = env.REGION || REGION, name = env.NAME || NAME
+  const xml = await ec2(env, region, { Action: "DescribeInstances", "Filter.1.Name": "tag:Name", "Filter.1.Value.1": name,
+    // never a terminated or shutting-down instance that still carries the name (a cut-over leaves one)
+    "Filter.2.Name": "instance-state-name", "Filter.2.Value.1": "pending", "Filter.2.Value.2": "running", "Filter.2.Value.3": "stopping", "Filter.2.Value.4": "stopped" })
+  const s = { name, region, ...parseInstance(xml) }
+  if (s.spot && s.state !== "running") {  // why it stopped, if AWS stopped it (1.8 §2)
+    try { s.spotStatus = spotStatus(await ec2(env, region, { Action: "DescribeSpotInstanceRequests", "SpotInstanceRequestId.1": s.spot })) } catch { s.spotStatus = null }
+    s.reclaimed = reclaimed(s.state, s.spotStatus)
+  }
+  return s
 }
 
 /** The first instance of a DescribeInstances answer: id, state, launch time, public IP, spot request id, build. */

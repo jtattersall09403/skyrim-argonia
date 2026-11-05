@@ -24,7 +24,7 @@ touches:
 - {id: npc.hist-heartland.greenspring.n3, access: write}
 - {id: npc.hist-heartland.greenspring.tree-minder, access: read}
 - {id: place.hist-heartland.greenspring, access: read}
-sources: [docs/design/quests/index/coverage.md, world/sources/quests/local-hist-heartland.json, world/sources/blueprints/greenspring.design.md]
+sources: [story/design/quests/index/coverage.md, story/design/quests/index/local-hist-heartland.md]
 essentialTopics: [topic.lh38-sickness, topic.greenspring-drinker, topic.greenspring-drinker-raised]
 startWhen:
   topicHeardFrom: [topic.latest-rumours, npc.hist-heartland.greenspring.n2]
@@ -37,11 +37,11 @@ foundation: 'The imported skeleton (LH38 in local-hist-heartland.json; the Green
   with approaches. Changed in review (2026-10-29): the sickness is blamed on the fire stand''s food, not on the salt,
   because the salt belongs to MR01 at the same spring.'
 recordSources:
-  placeFacts: world/sources/placement/facts/place.hist-heartland.greenspring.json
-  stance: world/sources/dialogue/stance/greenspring.json
+  placeFacts: story/data/db/fact.jsonl#place.hist-heartland.greenspring
+  stance: story/data/db/stance.jsonl#greenspring
   cultureSheets: [culture.settlement.greenspring, culture.group.greenspring.lodge, culture.group.greenspring.road-guests,
     culture.group.greenspring.office-holders, culture.household.greenspring.fire-stand-hut]
-  people: world/sources/registries/npcs.json
+  people: story/data/db/npc.jsonl
 centrepiece: DIVE
 actionPlan:
 - {skill: alchemy, use: test-a-sample, reason: 'tells the spring from the food, which the misdiagnosis needs'}

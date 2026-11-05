@@ -1,8 +1,0 @@
-FormKey: 017415:Skyrim.esm
-EditorID: MUSSpecialWordOfPower
-Flags:
-- PlaysOneSelection
-- DucksCurrentTrack
-- DoesNotQueue
-Tracks:
-- 0137FA:Skyrim.esm

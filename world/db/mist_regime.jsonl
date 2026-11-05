@@ -1,3 +1,0 @@
-{"id":"montane","weather_id":"montane-haze","why":"the cloud-forest belt clings to the massif, thick in rain, clear on settled days (climatology §2 altitude, §4; 55 §97)"}
-{"id":"radiation","weather_id":"mist","why":"radiation mist forms on clear calm nights over wet ground and burns off after dawn (climatology §2); its fog curve (thick at night and dawn, lifting by day) does the dawn work"}
-{"id":"sea_fog","weather_id":"sea-fog","why":"advection fog rolls in on the sea breeze's reversal (climatology §2, §3 exp(-dCoast/8))"}

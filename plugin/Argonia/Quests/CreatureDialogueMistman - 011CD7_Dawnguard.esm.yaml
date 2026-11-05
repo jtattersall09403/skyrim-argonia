@@ -1,8 +1,0 @@
-FormKey: 011CD7:Dawnguard.esm
-EditorID: CreatureDialogueMistman
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

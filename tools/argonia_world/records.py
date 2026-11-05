@@ -9,11 +9,25 @@ def num(v):
     return int(v) if isinstance(v, float) and v.is_integer() else v
 
 
+def _split(args: str) -> list[str]:
+    """Top-level comma parts of an args shape (commas inside {...} or (...) belong to their part)."""
+    parts, depth, cur = [], 0, ""
+    for ch in args:
+        depth += ch in "{(" and 1 or ch in "})" and -1 or 0
+        if ch == "," and depth == 0:
+            parts.append(cur.strip())
+            cur = ""
+        else:
+            cur += ch
+    if cur.strip():
+        parts.append(cur.strip())
+    return parts
+
+
 def _bool_positions(w) -> dict[str, set[int]]:
     """term -> the argument positions its shape types `bool` (an untyped SQLite value stores true as 1)."""
     cache = getattr(w, "_bool_positions", None)
     if cache is None:
-        from .checks import _split
         cache = {}
         for r in w.query("SELECT id, args FROM condition_term WHERE args IS NOT NULL"):
             cache[r["id"]] = {i for i, part in enumerate(_split(r["args"])) if part.strip().strip("`").endswith("bool")}

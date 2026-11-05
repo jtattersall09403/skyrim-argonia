@@ -4,7 +4,7 @@
 
 ## Decision
 
-1. **The machines are spot and stay spot.** The build VM and the game machines are reclaimed without warning (thirteen
+1. **The play machine is spot and stays spot** (the build VM became on demand on 2026-11-05, 0008; the rule still binds every agent's work). Spot machines are reclaimed without warning (thirteen
    times on 2026-11-03) and come back within minutes. No on-demand instance is bought to avoid it (owner: "I cannot
    afford on demand").
 2. **An interruption may cost only the gap itself.** Every long job is a sequence of steps whose verdicts are

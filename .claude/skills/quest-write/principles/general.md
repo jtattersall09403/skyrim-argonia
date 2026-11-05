@@ -1,7 +1,6 @@
 # General principles (every quest)
 
-Binding for `quest-write` and `quest-review`. Evidence: `docs/research/2026-10-27/quest-design-open-world-rpg.md`
-(OW) and `quest-design-elder-scrolls.md` (ES); numbers in brackets are their principle numbers.
+Binding for `quest-write` and `quest-review`. Bracketed OW and ES numbers cite the principles of the original open-world and Elder Scrolls quest research.
 
 ## The premise and the truth
 

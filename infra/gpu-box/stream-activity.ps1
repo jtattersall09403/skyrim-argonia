@@ -1,4 +1,4 @@
-# Is anyone streaming, and with what? Dot-sourced by idle-stop.ps1 and host-metrics.ps1 (chunk 0.0 §c).
+# Is anyone streaming, and with what? Dot-sourced by idle-stop.ps1.
 #   Get-StreamActivity  -> @{ streaming; clients; outKbps }
 # Signals, any of which means a stream is live:
 #   - Sunshine's log: a CLIENT CONNECTED with no CLIENT DISCONNECTED after it (Moonlight-Web and the Moonlight app

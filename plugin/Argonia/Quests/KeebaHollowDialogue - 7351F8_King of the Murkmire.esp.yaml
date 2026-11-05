@@ -1,8 +1,0 @@
-FormKey: 7351F8:King of the Murkmire.esp
-EditorID: KeebaHollowDialogue
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

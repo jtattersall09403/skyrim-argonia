@@ -1,8 +1,0 @@
-# Round 5's water types alone (the batch's item aborted at its camera step); the same deploy, the machine kept up.
-id: 1.15-round-5-water
-relaunch_mb: 6000
-relaunch_every: 0
-one_load: true
-settle_waits: true
-items:
-  - water-types

@@ -2,7 +2,7 @@
   "env": {},
   "apps": [
     {
-      "name": "Argonia (shaders on)",
+      "name": "Argonia",
       "prep-cmd": [
         {
           "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
@@ -10,13 +10,13 @@
           "elevated": false
         }
       ],
-      "image-path": "C:\\argonia\\cards\\argonia-on.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Shaders on -Ui windui -Wait",
+      "image-path": "C:\\argonia\\cards\\argonia.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Wait",
       "auto-detach": false,
       "wait-all": true
     },
     {
-      "name": "Argonia custom UI",
+      "name": "Vanilla Skyrim",
       "prep-cmd": [
         {
           "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
@@ -24,22 +24,8 @@
           "elevated": false
         }
       ],
-      "image-path": "C:\\argonia\\cards\\argonia-custom-ui.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Shaders on -Ui custom -Wait",
-      "auto-detach": false,
-      "wait-all": true
-    },
-    {
-      "name": "Argonia (shaders off)",
-      "prep-cmd": [
-        {
-          "do": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\sunshine-prep.ps1",
-          "undo": "",
-          "elevated": false
-        }
-      ],
-      "image-path": "C:\\argonia\\cards\\argonia-off.png",
-      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-modded -Shaders off -Wait",
+      "image-path": "C:\\argonia\\cards\\vanilla.png",
+      "cmd": "powershell.exe -ExecutionPolicy Bypass -WindowStyle Hidden -File C:\\argonia\\infra\\stack.ps1 play-vanilla -Wait",
       "auto-detach": false,
       "wait-all": true
     }

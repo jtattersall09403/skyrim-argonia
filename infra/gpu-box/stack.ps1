@@ -8,10 +8,9 @@
 #   stack.ps1 menu                 launch through SKSE, wait for the main menu, keep a still, print SKSE's plugin lines
 #   stack.ps1 verify [-Full]       every laid file's hash against installed.json (cached by size and mtime; -Full rehashes)
 #   stack.ps1 play-vanilla | play-modded [-Wait]   switch, then launch (the owner's stream cards)
-#   stack.ps1 play-modded -Ui windui|custom   Wind UI + Dear Diary, or set aside for our own screens (the UI cards)
 #   stack.ps1 play-modded -Shaders on|off [-Wait]   the same with Community Shaders' DLL laid or set aside (the
 #                                  owner's on/off comparison, #16); the next `on` lays it again (exact undo)
-param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '', [ValidateSet('', 'windui', 'custom')][string]$Ui = '')
+param([Parameter(Mandatory)][string]$Cmd, [switch]$Wait, [switch]$Full, [ValidateSet('', 'on', 'off')][string]$Shaders = '')
 $ErrorActionPreference = 'Stop'
 $Game = 'C:\Program Files (x86)\Steam\steamapps\common\Skyrim Special Edition'
 $Data = "$Game\Data"
@@ -78,7 +77,7 @@ function Set-GameWindow {
   & $set "$docs\SkyrimPrefs.ini" 'Display' @{ 'iSize W' = $b.Width; 'iSize H' = $b.Height; 'bFull Screen' = 0; 'bBorderless' = 1 }
   & $set "$docs\Skyrim.ini" 'General' @{ 'bAlwaysActive' = 1 }
   # the auto-vanity camera: after fAutoVanityModeDelay seconds idle the camera orbits the player and no first-person
-  # switch takes (round 6, 00:4x: the bridge's native read said 'vanity' on every assert after a settle); never in the studio
+  # switch takes; never in the studio
   & $set "$docs\Skyrim.ini" 'Camera' @{ 'fAutoVanityModeDelay' = 1000000 }
   # No compass and no quest marker (1.2 §a, Morrowind's way): the player finds places by the chart and directions.
   & $set "$docs\SkyrimPrefs.ini" 'Interface' @{ 'bShowCompass' = 0 }
@@ -161,7 +160,7 @@ switch ($Cmd) {
       ? { -not (Get-ChildItem -LiteralPath $_.FullName -Force) } | % { Remove-Item -LiteralPath ("\\?\" + $_.FullName) -Force }
     # SKSE's loader and DLLs beside the game (inert unless launched through skse64_loader.exe)
     if (Test-Path "$Mo2\root") { Copy-Item "$Mo2\root\*" $Game -Force }
-    # the gamepad layout (controlmap.py makes it from the player's own Interface archive): loose in Data, which
+    # the gamepad layout (a pad layout made on the machine, if any): loose in Data, which
     # Skyrim reads over its archive; ControlMap_Custom.txt in My Games was not read (2026-10-29)
     if (Test-Path "$Root\controls\controlmap.txt") {
       New-Item -ItemType Directory -Force "$Data\Interface\Controls\PC" | Out-Null
@@ -273,8 +272,7 @@ switch ($Cmd) {
     if (Get-Process SkyrimSE -EA SilentlyContinue) { Stop-Process -Name SkyrimSE -Force; Start-Sleep 3 }
     if (-not (Test-Path "$State\mode-on")) { & $PSCommandPath on | Out-Null }
     # -Shaders on|off (round 5's sky A/B, 2026-11-03): only Community Shaders' DLL is laid or set aside, as the
-    # play-modded cards do (its settings files stay). Never `on` here: a bare re-lay just before the launch removed
-    # the ArgoniaBridge and ArgoniaCore DLLs that prepare had laid (09:40: the game up, the bridge never loaded).
+    # play-modded cards do (its settings files stay).
     $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
     if ($Shaders -eq 'on' -and -not (Test-Path $cs)) {
       $src = Get-ChildItem "$Mo2\mods\*\SKSE\Plugins\CommunityShaders.dll" -EA SilentlyContinue | Select -First 1
@@ -296,7 +294,6 @@ switch ($Cmd) {
       if ((Test-Path "$skse\skse64.log") -and (Select-String -Path "$skse\skse64.log" -Pattern 'dispatch message \(8\)' -Quiet)) { $ok = $true; break }
       if ($i -gt 30 -and -not (Get-Process SkyrimSE -EA SilentlyContinue)) { break }
     }
-    if ($ok) { Start-Sleep 15; & C:\argonia\infra\grab.ps1 C:\argonia\logs\menu.png | Out-Null }
     $alive = [bool](Get-Process SkyrimSE -EA SilentlyContinue)
     "data loaded after $([int]((Get-Date) - $t0).TotalSeconds) s; running: $alive"
     Get-Content "$skse\skse64.log" -EA SilentlyContinue | ? { $_ -match '^plugin ' }
@@ -334,8 +331,8 @@ public static class ParHash {
 }
 '@
     # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's;
-    # the generated LOD (lod.ps1) is made on the machine too, so neither is in installed.json
-    $pandora = @{}; foreach ($gen in 'pandora-output', 'Argonia LOD (generated)') { if (Test-Path "$Mo2\mods\$gen") {
+    # the machine-made outputs are not in installed.json
+    $pandora = @{}; foreach ($gen in 'pandora-output') { if (Test-Path "$Mo2\mods\$gen") {
       Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
     $out = New-Object System.Collections.Generic.List[string]
@@ -367,7 +364,7 @@ public static class ParHash {
     # .NET's enumeration, not cmd's dir: dir prints in the OEM code page, which mangles non-ASCII names
     foreach ($f in [IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories')) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or $rel -eq 'skse\plugins\argoniabridge.dll' -or $rel -eq 'skse\plugins\argoniacore.dll' -or
+      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
       if (@(Get-ChildItem "$Root\ours\derived\*\$rel" -EA SilentlyContinue).Count) { continue }  # a derived folder's (on)
       "unrecorded: $rel"; $extra++
@@ -387,38 +384,18 @@ public static class ParHash {
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on
-      # Argonia itself (game-21: `on` lays only the modlist, so the Argonia cards started Skyrim without our ESMs,
-      # ArgoniaCore or scripts, and removed the ones a studio launch had laid): the same lay as bridge.ps1 prepare,
-      # without the dev-only bridge.
+      # Our own plugins and compiled scripts (`on` lays only the modlist).
       foreach ($e in 'ArgoniaWorld.esm', 'Argonia.esm') { if (Test-Path "$Root\ours\$e") {
         Copy-Item "$Root\ours\$e" "$Data\$e" -Force
         $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
         $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
-      $core = "$Root\MO2\mods\Argonia SKSE\SKSE\Plugins\ArgoniaCore.dll"
-      if (Test-Path $core) { New-Item -ItemType Directory -Force "$Data\SKSE\Plugins" | Out-Null; Copy-Item $core "$Data\SKSE\Plugins\ArgoniaCore.dll" -Force }
       $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
       if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
-      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia*.esm' }) -join ', '); core $(Test-Path "$Data\SKSE\Plugins\ArgoniaCore.dll"); $($pex.Count) .pex"
+      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia*.esm' }) -join ', '); $($pex.Count) .pex"
       # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }
       elseif ($Shaders) { "community shaders: $(if (Test-Path $cs) { 'on' } else { 'on asked, DLL not in the profile' })" }
-      # The custom-UI card (owner, 2026-11-02 22:06): Wind UI, Dear Diary and Wood and Paper set aside from Data (hard
-      # links: their mod files stay; `on` lays them again next launch), each path re-laid from the highest remaining
-      # mod where one places it; their plugins leave Plugins.txt. The list is stack.py's ui-custom.json, pushed with
-      # the profile.
-      $uiList = "$Mo2\profiles\Argonia\ui-custom.json"
-      if ($Ui -eq 'custom') {
-        if (-not (Test-Path $uiList)) { throw 'ui custom: no ui-custom.json in the profile (stack.py push lays it)' }
-        $v = Get-Content $uiList -Raw -Encoding UTF8 | ConvertFrom-Json; $gone = 0; $back = 0
-        foreach ($p in $v.paths.PSObject.Properties) {
-          $d = "\\?\$Data\$($p.Name)"
-          if (Test-Path -LiteralPath $d) { Remove-Item -LiteralPath $d -Force; $gone++ }
-          if ($p.Value) { Copy-Item -LiteralPath "$Mo2\mods\$($p.Value[0])\$($p.Value[1])" $d -Force; $back++ }
-        }
-        if ($v.plugins) { @(Get-Content "$Prefs\Plugins.txt" | ? { $v.plugins -notcontains $_.TrimStart('*') }) | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII }
-        "ui custom: $gone files set aside ($($v.drop -join ', ')), $back re-laid, $(@($v.plugins).Count) plugins off"
-      } elseif ($Ui) { 'ui windui: the profile as laid' }
       Wait-Steam | Out-Null
       Start-Process "$Game\skse64_loader.exe" -WorkingDirectory $Game
     }

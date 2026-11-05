@@ -1,6 +1,8 @@
 # 0012: Vanilla Skyrim is quarantined: its world, quests and Nordic systems never reach the player
 
-**Status:** decided 2026-10-27 (follows from 0005 and 0006).
+**Status:** decided 2026-10-27; after the pivot (0038) this is the specification of PLAN Phase 2 "the shutdown": the
+list in §Context and points 2 and 3 of the decision bind; point 1 is now an Alternate Start (Live Another Life)
+start option in Black Marsh; point 4's dialogue path is Skyrim's own with Fuz Ro D-oh; point 5's inventory is dropped.
 
 ## Context
 

@@ -1,8 +1,0 @@
-FormKey: 027E2A:Skyrim.esm
-EditorID: CreatureDialogueMammoth
-EventConditions:
-- MutagenObjectType: ConditionFloat
-  Data:
-    MutagenObjectType: GetGlobalValueConditionData
-    Global: 000800:Argonia.esm
-  ComparisonValue: 1

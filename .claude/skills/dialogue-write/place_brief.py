@@ -7,7 +7,7 @@ Usage: python3 place_brief.py --person NPC_ID --out BRIEF.md
 Reads, through the world database (tools/argonia_world/db.py, decision 0030), for the person: the `npc` row (name,
 race, sex, role, look, factions, home place); the `stance` rows (culture chain, per-topic lean and deviation,
 voice); the `culture_sheet` rows the chain names; the place's `fact` rows (facts the person carries, what the
-player sees) and its last build (`place_build`, `place_person`: the place's people and their topics, hostility);
+player sees) and its people (`place_person`: the place's people and their topics) and hostility (`place.hostility_baseline`, `place_hostility_flips`);
 and the `topic` rows for the labels of the person's topics. Nothing is hand-made; a missing record stops the brief.
 """
 import argparse
@@ -45,7 +45,7 @@ def main() -> int:
         print(f"{a.person} is not an npc row; no brief written")
         return 1
     place_id = me["home"]
-    build = w.get("place_build", place_id) if place_id else None
+    build = w.get("place", place_id) if place_id else None
     if build is None:
         print(f"no place facts for {place_id}; no brief written")
         return 1
@@ -71,10 +71,9 @@ def main() -> int:
     facts = records.place_facts(w, place_id)
 
     slot = a.person.rsplit(".", 1)[-1]
-    # A fact names its carrier by the person's id, its roster uid (npc-<slot>) or the place's npc socket for the
-    # person's roster slot (socket.<place>.npc-<slot>, whose roster_slot_id is the slot).
-    carriers = {a.person, "npc-" + slot} | set(w.values(
-        "SELECT id FROM socket WHERE place_id = ? AND kind = 'npc' AND roster_slot_id = ?", place_id, slot))
+    # A fact names its carrier by the person's id, its roster uid (npc-<slot>) or the old layout's npc socket
+    # (socket.<place short id>.npc-<slot>; the socket table went with the layout, so the id is rebuilt by name).
+    carriers = {a.person, "npc-" + slot, f"socket.{place_id.rsplit('.', 1)[-1]}.npc-{slot}"}
 
     mine = [f for f in facts if (f["carrier_built_uid"] or f["carrier_queued_ref"]) in carriers]
     seen = [f for f in facts if f["carrier_built_type"] in ("piece-set", "visual-cue")]
@@ -102,11 +101,10 @@ def main() -> int:
         for k, kind in (("norms", "norm"), ("taboos", "taboo"), ("values", "value"), ("contempts", "contempt")):
             if e.get(kind):
                 L.append(f"  - {k}: {'; '.join(e[kind])}")
-    h = w.get("place_build_hostility", place_id)
-    if h:
+    if build.hostility_baseline:
         flips = "; ".join(f"{f['to']} when {records.condition(w, f['when'])}" for f in
-                          w.query("SELECT * FROM place_build_hostility_flips WHERE place_id = ? ORDER BY ord", place_id))
-        L += ["", "## When this talk happens", f"- The place is {h.baseline}" + (f"; it turns {flips}" if flips else ".")]
+                          w.query("SELECT * FROM place_hostility_flips WHERE place_id = ? ORDER BY ord", place_id))
+        L += ["", "## When this talk happens", f"- The place is {build.hostility_baseline}" + (f"; it turns {flips}" if flips else ".")]
     L += ["", "## Others here (the player may be sent to them)"]
     L += [f"- {p['name']}: {p['role']}" for p in people if p["id"] != a.person]
     L += ["", "## What the player can see of the place"] + [f"- `{f['id']}`: {f['claim']}" for f in seen]

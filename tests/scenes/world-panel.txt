@@ -1,5 +1,0 @@
-; the world panel (1.15 §0; tools/argonia_world/panel.py writes it): the first vantage, staged last
-tgm
-tcai
-set gamehour to 12
-player.moveto ARG_Ref_PanelCoastalLagoonShore

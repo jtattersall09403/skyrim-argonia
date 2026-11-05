@@ -1,9 +1,0 @@
-# Round 5's sky A/B (owner 2026-11-03 08:55, #37): the same two vantages at noon clear-dry and dawn with Community
-# Shaders off (ARGONIA_SHADERS=off at launch), so a reader can tell the shaders' veil from the records'. Pair: sky-off.
-id: 1.15-round-5-sky-off
-relaunch_mb: 6000
-relaunch_every: 0
-one_load: true
-settle_waits: true
-items:
-  - sky-ab

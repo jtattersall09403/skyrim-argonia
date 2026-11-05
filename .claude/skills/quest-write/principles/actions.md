@@ -4,8 +4,7 @@ Read for every quest. Owner rulings (0024 §9, 2026-10-28): an action is **a use
 skills** (long blade, axe, sneak, security, alchemy, armorer, speechcraft, athletics and the rest). That is
 what makes a quest interesting: it uses and builds the character the player is making. Each skill can be used
 in many ways (long blade against rats in a cellar, a giant in a ruin, the town watch on a bridge, a duellist
-at dawn), and quests combine skills creatively. A chain of plain conversations is not a quest. Evidence:
-`docs/research/2026-10-27/quest-actions-and-skills.md`.
+at dawn), and quests combine skills creatively. A chain of plain conversations is not a quest.
 
 ## Actions first, then the quest is built round them
 
@@ -39,6 +38,6 @@ at dawn), and quests combine skills creatively. A chain of plain conversations i
 part: `shadowscales`, `night-reed`, `marsh-charter`, `sunken-archive`, `nisswo`, `many-root`, `reed-sail`,
 `league-of-open-water`, `chainbreakers`, `thorn-ash-reed`, `umbriel-witness`, `rootworm-waykeepers`,
 `salt-teeth`, `main`, `daedric`, `local`) and the planned `detectives` (decision 0025). Each is read from the
-line's section of `docs/design/quests/40-factions.md` and its faction culture sheet, cited in `from`, and
+line's section of `story/design/quests/40-factions.md` and its faction culture sheet, cited in `from`, and
 weighs families, skills, targets and settings. A local quest takes `local` and leans by its place: its danger
 band, its terrain (water, heights, ruins) and its people's work.

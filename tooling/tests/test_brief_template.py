@@ -47,12 +47,6 @@ def test_write_prints_all_fields():
     assert all(f + ":" in out for f in ("Lane", "Paths", "Acceptance", "Report path", "Test level", "Route", "Prior art"))
 
 
-def test_chunk_row():
-    r = run("--chunk", "0.1")
-    assert r.returncode == 0 and "| 0.1 |" in r.stdout and "0.1-bootstrap.md" in r.stdout
-    assert run("--chunk", "99.9").returncode == 1
-
-
 def test_write_emits_rules_by_default_and_options():
     out = run("--write", "--rules-extra", "extra one", "--return-lines", "5").stdout
     assert "## Rules" in out and "- extra one" in out and "at most 5 lines" in out and "job_guard.sh" in out

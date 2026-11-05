@@ -1,6 +1,6 @@
 # The quest record
 
-A quest's record is rows in the world database, the only source of truth for that quest (decisions 0024 §1,
+A quest's record is rows in the story data (`story/data`), the only source of truth for that quest (decisions 0024 §1,
 0030 §5): the `quest` row and its `quest_*` child tables, its facts as `fact` rows (`quest_id`, in `ord`
 order), its conditions and actions as `condition*` and `action*` rows. This file describes its **YAML view**,
 the form a writer edits: **the imported quest object plus the record's sections**. The object's fields are the
@@ -10,7 +10,7 @@ record rows with the view's (refusing the whole record on any unknown field, wro
 lookup value or failing named check), and `quest_record export <quest id>` rebuilds the view from the rows.
 Every YAML path maps to one column or child table (`tools/argonia_world/quest_view.json`). Conditions and actions
 are written only in the condition vocabulary (`condition_term` rows with their argument shapes;
-`docs/design/quests/85-condition-vocabulary.md` explains each); a term it lacks is added first, never written
+`story/design/quests/85-condition-vocabulary.md` explains each); a term it lacks is added first, never written
 in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples/lh38.yaml) (local),
 [examples/mr01.yaml](examples/mr01.yaml) (faction).
 
@@ -21,7 +21,7 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | `id`, `code`, `title` | `quest.<line-slug>.<code-lower>`, never reused; two capitals two digits; working title |
 | `line`, `group`, `tier` | a `quest_line` id; its group (`main`, `faction`, `line`, `local`, `daedric`, `proposed`); 0–3, a quest may not write what a lower tier owns (40-factions §30b) |
 | `status` | the import's `live`, `concept`, `skeleton`, `proposed`. The record's own progress is `recordStatus` (§2) |
-| `shapes` | primary first, up to two secondary, from the 16 (docs/design/quests/index/README.md §47b) |
+| `shapes` | primary first, up to two secondary, from the 16 (story/design/quests/index/README.md §47b) |
 | `region`, `settlement`, `anchorPlaces` | catalogue region; a live settlement `place.` id, also in `anchorPlaces` |
 | `premise` | one clause the player could say back afterwards |
 | `costTier`, `milestone` | `S`/`M`/`L` (00-overview, cost tiers); 1 or 2 |
@@ -67,6 +67,9 @@ A **line record** (faction, main, Daedric) comes before its quests: `principles/
 
 ## 3. The engine-mapping table: every machine field and its consumer
 
+The consumers named here are the old plan's generator chunks. Under the current goal each field is built by
+hand or script as the Creation Kit/xEdit record in the "How" column, on top of BM&V's world; the mapping holds.
+
 | Field | Consumer (chunk) | How |
 |---|---|---|
 | `id`, `code`, `stages[].id` | quest generator (1.4 first rung, 2.12 §a) | one QUST per quest, EDID from `code`; stage indices from ids |
@@ -104,7 +107,7 @@ before a quest that uses it is generated):
 
 ## 4. Journal rules (imported design)
 
-Journal text follows `docs/design/standards/text/style-guide.md` § `journal`: first person, past tense for events,
+Journal text follows `story/design/text/style-guide.md` § `journal`: first person, past tense for events,
 "I'm to…" or "I must…" for the outstanding objective; full names and place names every entry; each entry
 re-summarises the chain from its start; directions in landmark prose, never a marker for an undiscovered place
 (old 0137); a failure state has its own flat entry with its consequence. One entry per stage (`journal`), written

@@ -1,6 +1,6 @@
 # HAUNTING, RITE, WONDER, and Daedric or oddity quests
 
-Read with `general.md`. Evidence: `docs/research/2026-10-27/quest-shape-otherworldly.md` (methods M1 to M7).
+Read with `general.md`.
 Black Marsh's dead go to the Hist, are pinned by grave-stakes (xul-vaat) and can be ancestral spirits;
 nothing Nordic (no draugr, no barrows) and no vanilla ghost unreviewed (0006, 0012).
 

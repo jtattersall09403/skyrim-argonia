@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Every relative markdown link under docs/ and CLAUDE.md must resolve to a file (anchors ignored)."""
+"""Every relative markdown link in the plan docs, the READMEs and CLAUDE.md must resolve to a file (anchors ignored)."""
 import glob
 import os
 import re
@@ -10,10 +10,11 @@ LINK = re.compile(r"\]\(([^)\s]+)\)")
 
 
 def broken(root=ROOT):
-    # docs/design/ is imported unchanged from the old project (0.1 §f); its internal links are not ours to fix
+    # docs/research/ and story/design/ hold files kept from the old plan; their internal links are not checked
     files = [f for f in glob.glob(os.path.join(root, "docs/**/*.md"), recursive=True)
-             if not f.startswith(os.path.join(root, "docs/design/")) or f.endswith("docs/design/goals.md")
-             or f.endswith("docs/design/README.md")] + [os.path.join(root, "CLAUDE.md")]
+             if not f.startswith(os.path.join(root, "docs/research/"))] + [
+        os.path.join(root, "CLAUDE.md"), os.path.join(root, "README.md"), os.path.join(root, "docs/research/README.md"),
+        os.path.join(root, "story/README.md"), os.path.join(root, "mods/README.md"), os.path.join(root, "infra/README.md")]
     out = []
     for f in sorted(files):
         if not os.path.exists(f):

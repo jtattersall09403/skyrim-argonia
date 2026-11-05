@@ -3,12 +3,12 @@
 the game machine, fronted by Cloudflare Access so only the owner's email gets in (one-time code by email).
 
   cloudflare_gate.py check       verify the token, the zone and the login methods; change nothing
-  cloudflare_gate.py apply       create or update one tunnel per pool machine (machines.conf pool=), their hostnames
+  cloudflare_gate.py apply       create or update one tunnel per play machine (machines.conf), their hostnames
                                  (play-<label>. ...), DNS and the Access apps (idempotent); tokens to secrets.env as
                                  CLOUDFLARE_TUNNEL_TOKEN_<LABEL>; install one on its machine with `tunnel <machine>`
   cloudflare_gate.py tunnel M    install machine M's own tunnel connector (cloudflared service) over run.sh
   cloudflare_gate.py worker      deploy the play switch (infra/cloudflare/play-switch.js) on play., dcv. and sunshine.
-                                 with the pool and its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET
+                                 with the machine and its schedules; needs AWS_SWITCH_KEY_ID / AWS_SWITCH_SECRET
 
 Reads CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_DOMAIN and GATE_EMAIL from ~/.argonia/secrets.env and
 writes CLOUDFLARE_TUNNEL_TOKEN back there; nothing secret is printed. The machine opens no web port: cloudflared
@@ -77,19 +77,19 @@ def save_secret(key, value):
     SECRETS.write_text(text)
 
 
-def pool():
-    """The standby pool from machines.conf (1.8 §7): [(machine, label, region)] for each line with pool=<label>."""
+def machines():
+    """The play machines from machines.conf: [(machine, label, region)]; the label names its origin host
+    (play-<label>.<domain>) and its tunnel token: a label=<x> column, else "paris"."""
     out = []
     for line in (pathlib.Path(__file__).resolve().parent / "machines.conf").read_text().splitlines():
         f = line.split("#")[0].split()
-        lab = next((x[5:] for x in f[3:] if x.startswith("pool=")), None)
-        if f and lab:
-            out.append((f[0], lab, f[1]))
+        if f and f[0] != "name":
+            out.append((f[0], next((x[6:] for x in f[3:] if x.startswith("label=")), "paris"), f[1]))
     return out
 
 
 def origin(prefix, label):
-    """A pool machine's own hostname for a gated page: play-paris.<domain>. Only the Worker on play. uses it."""
+    """A play machine's own hostname for a gated page: play-paris.<domain>. Only the Worker on play. uses it."""
     return f"{prefix}-{label}.{DOMAIN}"
 
 
@@ -123,15 +123,14 @@ def tunnel(zid, name, hosts, rules):
 
 def apply():
     zid = zone_id()
-    # play., dcv. and sunshine. are the owner's addresses; the Worker on them forwards each request to the pool
-    # machine in use, on that machine's own hostnames (play-paris., play-ireland., ...), one tunnel per machine, so
-    # an agent's machine and the owner's never share a connector (1.8 §7). The shared names keep a CNAME (a Worker
+    # play., dcv. and sunshine. are the owner's addresses; the Worker on them forwards each request to the play
+    # machine on its own hostnames (play-paris., ...), one tunnel per machine. The shared names keep a CNAME (a Worker
     # route needs a proxied record) to the first machine's tunnel.
     first = None
-    for name, label, _ in pool():
+    for name, label, _ in machines():
         hosts = {p: origin(p, label) for p in ROUTES}
-        # the first tunnel also keeps the owner's names as before the pool: a machine still on that connector serves
-        # them if the Worker passes a request straight through (and the move to the pool never cut a live stream)
+        # the first tunnel also keeps the owner's names: a machine on that connector serves
+        # them if the Worker passes a request straight through
         rules = list(hosts.values()) + ([f"{p}.{DOMAIN}" for p in ROUTES] if first is None else [])
         tok = tunnel(zid, name, hosts, rules)
         save_secret(f"CLOUDFLARE_TUNNEL_TOKEN_{label.upper()}", tok)
@@ -170,7 +169,7 @@ def apply():
         else cf("POST", f"/accounts/{ACCT}/access/policies", body)["id"]
     apps = cf("GET", f"/accounts/{ACCT}/access/apps")
     hosts = {f"{p}.{DOMAIN}": p == "play" for p in ROUTES}
-    hosts |= {origin(p, label): True for _, label, _ in pool() for p in ROUTES}
+    hosts |= {origin(p, label): True for _, label, _ in machines() for p in ROUTES}
     for host, token_ok in hosts.items():
         app = next((a for a in apps if a.get("domain") == host), None)
         allow = [{"id": pid, "precedence": 1}] + ([{"id": hbid, "precedence": 2}] if token_ok else [])
@@ -186,21 +185,6 @@ def apply():
 NIGHT_STOP = "0 3 * * *"  # 03:00 UTC: 03:00 UK in winter, 04:00 in summer
 
 
-def pool_binding():
-    """POOL for the Worker: each standby's name, label, region, type and zone id, read from AWS (the build role)."""
-    import subprocess
-    out = []
-    for name, label, region in pool():
-        aws = ["aws", "ec2", "--region", region, "--output", "text"]
-        typ, zone = subprocess.check_output(aws + ["describe-instances", "--filters", f"Name=tag:Name,Values={name}",
-            "Name=instance-state-name,Values=pending,running,stopping,stopped",
-            "--query", "Reservations[0].Instances[0].[InstanceType,Placement.AvailabilityZone]"], text=True).split()
-        az = subprocess.check_output(aws + ["describe-availability-zones", "--zone-names", zone,
-                                            "--query", "AvailabilityZones[0].ZoneId"], text=True).strip()
-        out.append({"name": name, "label": label, "region": region, "type": typ, "az": az})
-    return out
-
-
 def worker():
     import uuid
     src = (pathlib.Path(__file__).resolve().parents[1] / "cloudflare" / "play-switch.js").read_text()
@@ -208,7 +192,9 @@ def worker():
         {"type": "secret_text", "name": "AWS_KEY_ID", "text": env["AWS_SWITCH_KEY_ID"]},
         {"type": "secret_text", "name": "AWS_SECRET", "text": env["AWS_SWITCH_SECRET"]},
         {"type": "plain_text", "name": "NIGHT_STOP", "text": NIGHT_STOP},
-        {"type": "plain_text", "name": "POOL", "text": json.dumps(pool_binding())},
+        {"type": "plain_text", "name": "NAME", "text": machines()[0][0]},
+        {"type": "plain_text", "name": "ORIGIN_LABEL", "text": machines()[0][1]},
+        {"type": "plain_text", "name": "REGION", "text": machines()[0][2]},
         {"type": "plain_text", "name": "DOMAIN", "text": DOMAIN},
         {"type": "secret_text", "name": "CF_TOKEN", "text": env["CLOUDFLARE_API_TOKEN"]},
         {"type": "plain_text", "name": "CF_ZONE", "text": zone_id()},
@@ -243,7 +229,7 @@ def install_tunnel():
     machine, so two machines up at once never share one). The token goes over SSH, never printed."""
     import subprocess
     name = sys.argv[2]
-    label = next(lab for n, lab, _ in pool() if n == name)
+    label = next(lab for n, lab, _ in machines() if n == name)
     tok = secrets()[f"CLOUDFLARE_TUNNEL_TOKEN_{label.upper()}"]
     ps = ("$c='C:\\argonia\\cloudflared.exe'; "
           "Get-ScheduledTask -EA SilentlyContinue | ? { $_.TaskName -like '*cloudflared*' } | Disable-ScheduledTask | Out-Null; "

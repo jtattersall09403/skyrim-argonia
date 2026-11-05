@@ -1,9 +1,0 @@
-# Round 5's menus alone, after lane 1.12-r5-system-pages (the Settings and Load pages in our frame, the lockpicking
-# step that opens a real lock): the deploy carries the rebuilt theme; the machine stops after.
-id: 1.15-round-5-menus
-relaunch_mb: 6000
-relaunch_every: 0
-one_load: true
-settle_waits: true
-items:
-  - menus-look

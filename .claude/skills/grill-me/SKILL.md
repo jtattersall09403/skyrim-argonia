@@ -15,8 +15,7 @@ Finding facts is our job, never the owner's. Before each question, look for the 
 
 - `docs/owner-brief.md` and `docs/inherited-rulings.md`: rulings the owner has already made.
 - `docs/decisions/README.md` and the decision records it indexes.
-- `docs/PLAN.md`, `docs/PROGRESS.md`, `docs/phases/README.md`, the part README, chunk briefs and `checks.md`.
-- `docs/research/`, `docs/design/`, other READMEs, and owner issues and replies (`tooling/owner_inbox.py`, `gh issue`).
+- `docs/research/`, `story/` (its README), other READMEs, and owner issues and replies (`tooling/owner_inbox.py`, `gh issue`).
 
 For a wide sweep, dispatch a `find` or `research` agent with a fresh context and keep only its conclusion;
 don't block on it: ask questions it can't affect while it runs. Then:

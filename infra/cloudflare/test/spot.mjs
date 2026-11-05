@@ -28,31 +28,24 @@ assert.equal(startRetry("EC2 StartInstances 400: <Code>IncorrectInstanceState</C
 assert.equal(startRetry("EC2 StartInstances 403: <Code>UnauthorizedOperation</Code>", 0, 1e6), false, "a real fault: no retry")
 console.log("start retry: 5 checks pass")
 
-// The start page through the Worker, with EC2 stubbed: a settling refusal on every standby shows "Starting…" and
-// sets the cookie; a refusal on the best one starts the next (the pool, 1.8 §7).
+// The start page through the Worker, with EC2 stubbed: a settling refusal shows "Starting…" and sets the cookie; past
+// the window, the error; a clean start says "Starting Paris"; a running machine is forwarded to.
 import worker from "../play-switch.js"
-const POOL = JSON.stringify([{ name: "argonia-play", label: "paris", region: "eu-west-3", type: "g6.xlarge", az: "euw3-az2" },
-                             { name: "argonia-play-ie", label: "ireland", region: "eu-west-1", type: "g5.xlarge", az: "euw1-az1" }])
-const capErr = "EC2 StartInstances 500: <Code>InsufficientInstanceCapacity</Code>"
-const stub = (refuse, score = {}) => async (u) => {
+const stub = (refuse, state = "stopped") => async (u) => {
   u = String(u)
-  const region = /ec2\.([a-z0-9-]+)\./.exec(u)?.[1]
-  if (u.includes("StartInstances")) return refuse(region) ? new Response(refuse(region), { status: 400 }) : new Response("<ok/>", { status: 200 })
-  if (u.includes("GetSpotPlacementScores")) return new Response(`<x><item><availabilityZoneId>z</availabilityZoneId><score>${score[region] ?? 5}</score></item></x>`)
-  return new Response(u.includes("DescribeInstances") ? inst("stopped") : "", { status: 200 })
+  if (u.includes("StartInstances")) return refuse ? new Response(refuse, { status: 400 }) : new Response("<ok/>", { status: 200 })
+  return new Response(u.includes("DescribeInstances") ? inst(state) : "", { status: 200 })
 }
-const env = () => ({ AWS_KEY_ID: "k", AWS_SECRET: "s", POOL, DOMAIN: "x" })
-globalThis.fetch = stub(() => spotErr)
+const env = () => ({ AWS_KEY_ID: "k", AWS_SECRET: "s", DOMAIN: "x" })
+globalThis.fetch = stub(spotErr)
 let r = await worker.fetch(new Request("https://x/argonia/start"), env()), body = await r.text()
 assert.match(body, /<h1>Starting…<\/h1>/); assert.match(r.headers.get("set-cookie"), /argoniaStartRetry=\d+/)
 r = await worker.fetch(new Request("https://x/argonia/start", { headers: { cookie: `argoniaStartRetry=${Date.now() - 130e3}` } }), env())
 assert.match(await r.text(), /No game machine could start/, "past the window: the error")
-// Ireland scores better but has no capacity: Paris starts, and this browser is sent to Paris
-globalThis.fetch = stub((region) => region === "eu-west-1" ? capErr : null, { "eu-west-1": 9, "eu-west-3": 3 })
-r = await worker.fetch(new Request("https://x/"), env()); body = await r.text()
-assert.match(body, /<h1>Starting Paris<\/h1>/); assert.match(r.headers.get("set-cookie"), /argoniaMachine=argonia-play;/)
-// both have room: the better score (Ireland) starts
-globalThis.fetch = stub(() => null, { "eu-west-1": 9, "eu-west-3": 3 })
+globalThis.fetch = stub(null)
 r = await worker.fetch(new Request("https://x/"), env())
-assert.match(await r.text(), /<h1>Starting Ireland<\/h1>/)
-console.log("start page: 5 checks pass")
+assert.match(await r.text(), /<h1>Starting Paris<\/h1>/)
+globalThis.fetch = stub(null, "stopping")
+r = await worker.fetch(new Request("https://x/"), env())
+assert.match(await r.text(), /still switching off/)
+console.log("start page: 6 checks pass")

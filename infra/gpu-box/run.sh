@@ -91,7 +91,7 @@ case "${1:-}" in
   ps) shift; ps "$*" ;;
   desktop)
     # DESKTOP_JOB names the job (default "job"): its task, script, log and done flag are its own, so a long GUI job
-    # (lod.sh's, hours) and the bridge's short ones (launch, stills, the pad) run side by side (game-12).
+    # and short ones run side by side (game-12).
     shift; j=${DESKTOP_JOB:-job}
     case "$j" in *[!a-z0-9-]*|'') echo "DESKTOP_JOB: [a-z0-9-] only" >&2; exit 2 ;; esac
     printf '%s\n' "$*" > "${TMPDIR:-/tmp}/argonia-desktop-$M-$j.ps1"

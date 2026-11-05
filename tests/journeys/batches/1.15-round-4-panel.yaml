@@ -1,9 +1,0 @@
-# Round 4's third pass: the panel alone, its weather set and forced by runtime form id (the editor-id `sw` left the
-# region's own pick in place in both earlier passes); first person through the bridge camera command.
-id: 1.15-round-4-panel
-relaunch_mb: 6000
-relaunch_every: 0
-one_load: true
-settle_waits: true
-items:
-  - world-panel

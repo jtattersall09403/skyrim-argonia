@@ -1,73 +1,32 @@
 # Owner setup: what only the owner can do
 
-For the owner, and for any agent helping the owner set up (including a Claude session in another account). Work
-down the list. Each item says where it is done and how to confirm it. **Never paste a secret into chat, an
-issue, a commit or this file.** Secrets go only into `~/.argonia/secrets.env` on the build VM, edited in the VS
-Code browser editor. The file is mode 600 (`chmod 600 ~/.argonia/secrets.env`) and lives outside the repo.
+Never paste a secret into chat, an issue, a commit or this file. Secrets go only into `~/.argonia/secrets.env` on the build VM (mode 600, outside the repo). Status: **[x]** done, **[ ]** to do.
 
-Status: **[x]** done, **[ ]** to do, **[~]** waiting on AWS or someone else. The planner keeps this file current.
-
-## Already done (2026-10-27 to 28)
+## Done
 - [x] AWS budget alert `argonia-monthly` ($100).
-- [x] Build VM `argonia-build`: **m7i-flex.xlarge** persistent spot (stop on interruption), London, with the IAM role
-  `argonia-build-ssm` and tags `Name=argonia-build`, `project=argonia`. It moved from m7i.xlarge on 2026-10-28 after three
-  spot interruptions in 30 minutes; the Spot Advisor gives m7i-flex.xlarge under 5% a month. It was rebuilt from the
-  snapshot `argonia-build-2026-10-28` (image `argonia-build-ena`).
-- [x] The VS Code tunnel `argonia-build`, signed in with **GitHub** (`jtattersall09403`). The browser must sign in to
-  vscode.dev with the same GitHub account; a Microsoft sign-in hangs on "opening remote".
-- [x] GPU spot quota "All G and VT Spot Instance Requests", eu-west-2: 8 vCPUs, approved 2026-10-28. That is one
-  g6.2xlarge or two g6.xlarge. A rise to 16 is requested only when parallel game copies are needed.
+- [x] Build VM `argonia-build` (m7i-flex.xlarge persistent spot, London, role `argonia-build-ssm`, tags `Name=argonia-build`, `project=argonia`).
+- [x] VS Code tunnel `argonia-build`, signed in with GitHub (open `https://vscode.dev/tunnel/argonia-build` with the same GitHub account).
+- [x] Claude Code, `gh` and the repo on the build VM (tmux session `argonia`).
+- [x] `NEXUS_API_KEY` in `secrets.env` (Nexus profile, Site preferences, API keys; Premium).
 
-## Before chunk 0.0 starts
-- [ ] **Start the build VM** whenever it is stopped: AWS console (London region) → EC2 → Instances → select
-  `argonia-build` → Instance state → Start. Wait about a minute until it shows Running and 2/2 checks, then open
-  `https://vscode.dev/tunnel/argonia-build` and sign in with GitHub. (The AWS console phone app works too.)
-- [ ] **The idle backstop alarm** (once): EC2 → Instances → select `argonia-build` → Actions → Monitor and
-  troubleshoot → Manage CloudWatch alarms → Create an alarm.
-  - Notification: off.
-  - Alarm action: on, **Stop**.
-  - Alarm thresholds: CPU utilization, Average, **<= 2 percent**, for **12 consecutive periods of 5 minutes** (one
-    hour).
-  - Name it `argonia-build-idle-stop` → Create.
+## Starting the build VM
+EC2 (London) -> Instances -> `argonia-build` -> Instance state -> Start; wait for 2/2 checks. After an interruption: `tmux new -s argonia -c ~/skyrim-argonia`, then `claude --continue`.
 
-  This is only a backstop. In 0.0 the agent installs a smarter idle-stop on the machine: it stops after about
-  20 minutes with no agent working and no VS Code tab open, and it never stops mid-job.
-- [x] **Claude Code and GitHub on the build VM** (setup step 4, done 2026-10-28):
-  1. In the VS Code terminal, start a tmux session: `tmux new -s argonia` (later, `tmux attach -t argonia` gets
-     back to it).
-  2. Install Claude Code: `curl -fsSL https://claude.ai/install.sh | bash`, then open a new terminal tab and check
-     with `claude --version`. Log in by running `claude` and following the browser prompt with the Max account.
-  3. Run `gh auth login`.
-  4. Clone the repo: `git clone https://github.com/jtattersall09403/skyrim-argonia ~/skyrim-argonia`.
-  5. Set git config: `user.name`, and the owner's email.
-- [x] **The secrets file, first line only now.** Run `mkdir -p ~/.argonia && touch ~/.argonia/secrets.env && chmod 600 ~/.argonia/secrets.env`,
-  then open it in the VS Code editor (File → Open File → `/home/ubuntu/.argonia/secrets.env`) and add one line:
-  - `NEXUS_API_KEY=...`: Nexus Mods → profile → Site preferences → API keys → personal API key (Premium account).
-    0.0 needs it for the souls-like mods in the combat test.
+## To do when recreating the play machine
+- [ ] GPU spot quota "All G and VT Spot Instance Requests" in **eu-west-3 (Paris)**: at least 4 vCPUs (one g6.xlarge).
+- [ ] The agent runs `gpu-box/create.sh`, `setup.ps1`, then `stack.py`. Log in to Steam on the machine through the stream (password and Steam Guard, about 3 minutes, once). Skyrim SE must be the pinned build (decision 0002).
+- [ ] Never reset the Windows password; if you change it, do it signed in, with the old one.
 
-## When chunk 0.1 starts (the agent asks; not needed for 0.0)
-- [ ] Add these lines to `~/.argonia/secrets.env`:
-  - `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_ENDPOINT`: the old project's Cloudflare R2 credentials.
-    These are in the owner's password manager, or in `/workspaces/.es-secrets.env` on the stopped old machine (see
-    chunk 0.1 §e for the safe way to copy them).
-  - `OLD_REPO_TOKEN`: a fine-grained GitHub token with read-only Contents access to
-    `jtattersall09403/elder-souls-argonia` only. Create it at GitHub → Settings → Developer settings →
-    Fine-grained tokens.
-  - `FAL_KEY`: fal.ai dashboard → API keys. This is for the agents' Fal access on the build VM; the owner's Fal
-    MCP connection elsewhere is separate.
-- [ ] **Add the Creation Kit to the Steam library:** Steam → search "Skyrim Special Edition: Creation Kit" → add
-  (free with Skyrim SE).
+## Cloudflare (the sign-in gate and play switch)
+- [ ] Cloudflare account with the domain; tokens in `secrets.env`. The agent runs `gpu-box/cloudflare_gate.py` to put `play.<domain>` behind Access (your email only) and deploys the Worker `cloudflare/play-switch.js`, which starts the machine when you open the page.
+- [ ] The Access service token and AWS IAM user for the Worker (start/stop of the play machine only) are created once; the agent lists the exact steps in an owner issue.
 
-## During setup, after step 4 (about 15 minutes)
+## Keys
+- [x] Nexus API key (above). The agent fetches mods from `~/.argonia/mods`, then `s3://argonia-private-050977237313/mods/`, then Nexus.
+- [ ] `FAL_KEY` in `secrets.env` only if 2D art is needed (fal.ai dashboard -> API keys).
 
-If the machine is interrupted (spot) before 0.0 installs auto-resume: start it again (top of this file), open
-VS Code, then in the terminal run `tmux new -s argonia -c ~/skyrim-argonia`, then `claude --continue`.
-
-### Step 5: the agent's AWS permissions
-AWS console → IAM → Roles → `argonia-build-ssm` → Add permissions → Create inline policy → JSON. Paste the
-policy below and name it `argonia-agent`. It lets the agent create, start and stop only machines tagged
-`project=argonia` in London, use `argonia-*` S3 buckets, and read costs and quotas. If the agent later needs
-something this does not allow, it asks in an owner issue with the exact addition.
+## Build-VM agent permissions
+IAM -> Roles -> `argonia-build-ssm` -> inline policy `argonia-agent`. It lets agents create, start and stop only machines tagged `project=argonia` (London and Paris), use `argonia-*` buckets, and read costs and quotas.
 
 ```json
 {
@@ -77,14 +36,14 @@ something this does not allow, it asks in an owner issue with the exact addition
      "Action": ["ec2:Describe*", "servicequotas:GetServiceQuota", "servicequotas:ListServiceQuotas",
                 "servicequotas:RequestServiceQuotaIncrease",
                 "ce:GetCostAndUsage", "ce:GetCostForecast", "pricing:GetProducts"]},
-    {"Sid": "CreateInLondon", "Effect": "Allow", "Resource": "*",
+    {"Sid": "Create", "Effect": "Allow", "Resource": "*",
      "Action": ["ec2:RunInstances", "ec2:RequestSpotInstances", "ec2:CreateVolume", "ec2:CreateTags",
                 "ec2:CreateLaunchTemplate", "ec2:CreateLaunchTemplateVersion", "ec2:CreateSecurityGroup",
-                "ec2:CreateKeyPair", "ec2:ImportKeyPair", "ec2:CopyImage"],
-     "Condition": {"StringEquals": {"aws:RequestedRegion": ["eu-west-2", "eu-west-3", "eu-north-1"]}}},
+                "ec2:CreateKeyPair", "ec2:ImportKeyPair"],
+     "Condition": {"StringEquals": {"aws:RequestedRegion": ["eu-west-2", "eu-west-3"]}}},
     {"Sid": "ManageOwnMachines", "Effect": "Allow", "Resource": "*",
      "Action": ["ec2:StartInstances", "ec2:StopInstances", "ec2:RebootInstances", "ec2:TerminateInstances",
-                "ec2:ModifyInstanceAttribute", "ec2:CreateImage", "ec2:AttachVolume", "ec2:DetachVolume",
+                "ec2:ModifyInstanceAttribute", "ec2:AttachVolume", "ec2:DetachVolume",
                 "ec2:ModifyVolume", "ec2:DeleteVolume", "ec2:AuthorizeSecurityGroupIngress",
                 "ec2:RevokeSecurityGroupIngress", "ec2:AuthorizeSecurityGroupEgress",
                 "ec2:RevokeSecurityGroupEgress", "ec2:DeleteSecurityGroup"],
@@ -98,76 +57,5 @@ something this does not allow, it asks in an owner issue with the exact addition
 }
 ```
 
-### Step 6: wake on reply (GitHub → AWS, no stored keys)
-1. IAM → Identity providers → Add provider → OpenID Connect. Provider URL
-   `https://token.actions.githubusercontent.com`, audience `sts.amazonaws.com`. Skip this if it already exists.
-2. IAM → Roles → Create role → Custom trust policy. Paste the trust policy below, replacing `ACCOUNT_ID` with
-   your 12-digit account id (top right of the console). Name the role `argonia-github-wake`.
-
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [{
-       "Effect": "Allow",
-       "Principal": {"Federated": "arn:aws:iam::ACCOUNT_ID:oidc-provider/token.actions.githubusercontent.com"},
-       "Action": "sts:AssumeRoleWithWebIdentity",
-       "Condition": {
-         "StringEquals": {"token.actions.githubusercontent.com:aud": "sts.amazonaws.com",
-                          "token.actions.githubusercontent.com:sub": "repo:jtattersall09403/skyrim-argonia:ref:refs/heads/main"}
-       }
-     }]
-   }
-   ```
-
-3. Give that role one inline policy, `wake-build-vm`. It can only start the build VM and look it up:
-
-   ```json
-   {
-     "Version": "2012-10-17",
-     "Statement": [
-       {"Effect": "Allow", "Action": "ec2:DescribeInstances", "Resource": "*"},
-       {"Effect": "Allow", "Action": "ec2:StartInstances", "Resource": "*",
-        "Condition": {"StringEquals": {"aws:ResourceTag/Name": "argonia-build"}}}
-     ]
-   }
-   ```
-
-4. Copy the role's ARN. Go to GitHub → the repo → Settings → Secrets and variables → Actions → Variables → New
-   variable, named `AWS_WAKE_ROLE_ARN`, with the ARN as its value. (It is not secret: it only works from this
-   repo's main branch.)
-5. Check that the build VM has the tag `Name = argonia-build` (EC2 → the instance → Tags).
-6. In the VS Code terminal, run `gh auth refresh -s workflow`, so the agent can push the workflow file.
-
-The agent writes the workflow itself. It runs only for comments by `jtattersall09403`, never for its own. One
-run at a time, so a second comment queues. It only starts the existing machine and never creates one.
-
-### Step 7: Steam on the build VM (game data for the tools)
-The build VM needs Skyrim SE's own data files (read-only, for our record generator), Dark Souls Remastered (for
-measuring). In the VS Code terminal:
-
-```bash
-sudo add-apt-repository -y multiverse && sudo dpkg --add-architecture i386 && sudo apt update
-sudo apt install -y steamcmd
-steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir ~/games/skyrimse +login YOUR_STEAM_NAME +app_update 489830 validate +quit
-```
-
-It asks for your password and a Steam Guard code once, then remembers the login. Then:
-
-```bash
-steamcmd +@sSteamCmdForcePlatformType windows +force_install_dir ~/games/dsr +login YOUR_STEAM_NAME +app_update 570940 validate +quit
-# Morrowind is not needed (owner, 2026-10-28)
-```
-
-If an app id is refused, the agent finds the right one; it is not worth your time.
-
-### Step 8: start the work
-In the tmux session: `cd ~/skyrim-argonia && claude`, then say **"start chunk 0.0"**.
-
-## Left for chunk 0.0 (one moment, at the start of your play session)
-- [ ] Log in to Steam on the Windows game machine through the stream (password and Steam Guard, about 3
-  minutes). The Creation Kit, Skyrim and the mods are then installed there by the agent.
-
-## Confirm when done
-The planner runs `tools/owner_setup_check.sh` (written in 0.0). It checks that each secret name is present
-without printing any value, that `gh` and the AWS role work, and that the quota is at least 4. It ticks the
-boxes above.
+## Wake on reply (GitHub to AWS, no stored keys)
+Role `argonia-github-wake` trusts GitHub's OIDC provider for `repo:jtattersall09403/skyrim-argonia:ref:refs/heads/main` and may only describe instances and start the one tagged `Name=argonia-build`. Its ARN is the repo Actions variable `AWS_WAKE_ROLE_ARN`. The workflow runs only for the owner's comments. Details are in the role's trust and inline policies in IAM.

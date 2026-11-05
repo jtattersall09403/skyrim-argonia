@@ -290,7 +290,7 @@ def main() -> int:
         print(f"wrote {path} ({len(my_topics)} topics)")
 
     J = [f"# Journal brief: {q['code']} {q['title']}", "",
-         "Write each entry in the style guide's journal register (docs/design/standards/text/style-guide.md § journal):",
+         "Write each entry in the style guide's journal register (story/design/text/style-guide.md § journal):",
          "first person; past tense for events; \"I'm to\" for the objective; full names every entry; re-summarise the",
          "chain; directions in landmark prose; failure entries flat, with the consequence.", ""]
     for s in q["stages"]:

@@ -1,8 +1,10 @@
 # papyrus
-Our Papyrus: generated quest-stage fragments and the glue the engine requires. Logic stays out of Papyrus (1.1); every script here is listed with why it is not C++.
 
-Compiled on the game machine by `infra/gpu-box/papyrus-compile.ps1` (the CK's compiler, base sources from its `Scripts.zip`, never committed); the `.pex` files are build outputs.
+Our Papyrus scripts: quest-stage fragments, alias and trigger scripts, and the glue a record cannot do
+(PLAN Phase 3, block B5 settles the shapes). Compiled on the play machine by
+`infra/gpu-box/records_jobs.sh papyrus` (the Creation Kit's compiler against its `Scripts.zip`, never committed);
+the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 
-| Script | What it does | Why Papyrus, not C++ |
-|---|---|---|
-| `ARG_StartQuestScript.psc` | new game: black screen, the player moved to the holding cell (0.4 §b) | it is the quest's own `OnInit`, the engine's hook for a start-game-enabled quest; three engine calls, no rule |
+| Script | What it does |
+|---|---|
+| `ARG_StartQuestScript.psc` | the seed of a start quest: on `OnInit`, fade to black and move the player to a marker. The fallback for the Black Marsh start if the Live Another Life addon route fails (PLAN Phase 2) |

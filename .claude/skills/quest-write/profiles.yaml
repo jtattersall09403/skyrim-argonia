@@ -1,6 +1,6 @@
 # Action-plan weights per questline (decision 0024 §9; principles/actions.md). One entry per line in
 # `quest_line` row (key = the line id's last part), plus the planned detectives' line (0025)
-# and `default`. Each entry is read from the line's section of docs/design/quests/40-factions.md (premise,
+# and `default`. Each entry is read from the line's section of story/design/quests/40-factions.md (premise,
 # quest table, set pieces) and its faction culture sheet (`culture_sheet` at level faction), cited in
 # `from`. `families` weigh first (shared by their skills), then `skills` within them (1 = default, 3 = strong
 # lean, 0 = never; unlisted = 1). `endure` (armour skills) stays low: a quest uses them through where it sends

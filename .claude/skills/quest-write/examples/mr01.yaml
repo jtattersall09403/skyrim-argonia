@@ -22,7 +22,7 @@ touches:
 - {id: place.hist-heartland.root-gallery-drowned-stair, access: read}
 - {id: flag.mr01.founders-named, access: write}
 - {id: variant.greenspring.cure, access: write}
-sources: [docs/design/quests/40-factions.md, docs/design/quests/36-cast-roster.md, world/sources/blueprints/greenspring.design.md]
+sources: [story/design/quests/40-factions.md, story/design/quests/36-cast-roster.md]
 essentialTopics: [topic.greenspring-sick-root]
 startWhen:
   all:
@@ -37,11 +37,11 @@ foundation: '40-factions §36 MR01 and the imported row: kept the premise, the d
   keeping stage 20 at the drowned stair; the patron is the root-herald Ixo-Vaal, the line''s first desk (36-cast-roster
   §56), who lives at Greenspring in the registry.'
 recordSources:
-  placeFacts: world/sources/placement/facts/place.hist-heartland.greenspring.json
-  stance: world/sources/dialogue/stance/greenspring.json
+  placeFacts: story/data/db/fact.jsonl#place.hist-heartland.greenspring
+  stance: story/data/db/stance.jsonl#greenspring
   cultureSheets: [culture.faction.many-root-conclave, culture.settlement.greenspring, culture.group.greenspring.office-holders]
-  catalogue: world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair
-  roster: docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)
+  catalogue: story/data/db/place.jsonl#place.hist-heartland.root-gallery-drowned-stair
+  roster: story/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)
 centrepiece: DIVE
 actionPlan:
 - {skill: alchemy, use: test-a-sample, reason: the diagnosis is samples; the river test refutes the salt works}

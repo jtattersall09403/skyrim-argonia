@@ -8,7 +8,7 @@
 #              A system whose `needs` starts "DECISION" has no chunk yet: a quest may not lean on it until a
 #              decision gives it one (quest-record.md, "needs a decision").
 #   uses:      use -> `world`: what the world must hold for it (each becomes a `things` row or a provision)
-#   verbTags:  the old dramatic-centrepiece tags (docs/design/quests/00-overview.md §4, "Dramatic register")
+#   verbTags:  the old dramatic-centrepiece tags (story/design/quests/00-overview.md §4, "Dramatic register")
 #              -> the uses that make a stage carry that tag. A record's `centrepiece` is one of these.
 #   supporting: acts the player performs that use no skill (reading, waiting, harvesting). A stage may list
 #              them as `{system: ..., use: ...}` beside its skill actions; they never stand alone.

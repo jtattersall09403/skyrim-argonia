@@ -6,40 +6,42 @@ description: Design or rewrite an Argonia quest or questline as a record (hidden
 # Writing a quest
 
 Quests, their dialogue and the world are consistent because they are built from one record in a fixed order
-(decision 0024). The record is the imported quest object plus the record's sections:
+(decision 0024). The world is Black Marsh & Valenwood's (BM&V, an existing mod), not our old generated places:
+a quest is written as a record here, then built as Creation Kit/xEdit-style records (quest, dialogue, aliases,
+placed or changed NPCs, items, creatures) on top of BM&V. The record is the imported quest object plus the record's sections:
 [quest-record.md](quest-record.md), which also holds the engine-mapping table. The record lives as rows in the
-world database (`quest` and its `quest_*` tables, decision 0030); you write its YAML view and import it. Worked
+story data in `story/data` (`quest` and its `quest_*` tables, decision 0030); you write its YAML view and import it. Worked
 examples, exported from the database: [examples/lh38.yaml](examples/lh38.yaml) (local) and
 [examples/mr01.yaml](examples/mr01.yaml) (faction).
 
-Read the world only through the database: `python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>` (decision 0030; the tables are described in `../../../docs/design/world/98-data-model.md`). A world file is never opened directly.
+Read the world only through the database: `python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>` (the tables and their comments are in `../../../story/data/schema.sql`). A data file is never opened directly.
 
 ## 1. Start from the foundation
 
 - The old quest design is the base (0024 §8). Start from the quest's rows: `python3 -m
   tools.argonia_world.quest_record export <quest id> -o <quest>.yaml` gives the quest object (and the record,
   once one is written) as the YAML view; the `quest_line` row gives its line. Then its design:
-  `../../../docs/design/quests/30-main-quest.md`, `../../../docs/design/quests/40-factions.md` (the line's
-  section), `../../../docs/design/quests/50-side-quests.md`, or the generated view in
-  `../../../docs/design/quests/index/`. Keep its premise, cast and beats; say what changed and why in `foundation`.
+  `../../../story/design/quests/30-main-quest.md`, `../../../story/design/quests/40-factions.md` (the line's
+  section), `../../../story/design/quests/50-side-quests.md`, or the generated view in
+  `../../../story/design/quests/index/`. Keep its premise, cast and beats; say what changed and why in `foundation`.
 - Read the world records the quest stands on: the place's facts (`fact` where `place_id` is the place, in
-  `ord` order), the place row (`place` and its `place_*` tables), its last build (`place_build`, `place_person`),
+  `ord` order), the place row (`place` and its `place_*` tables, its people in `place_person`),
   the people (`npc`, `npc_faction`), their stance (`stance`, `stance_chain`, `stance_topic`) and the culture
   sheets it chains (`culture_sheet`, `culture_entry`, `culture_opinion`), and the other quests at the place and
-  its neighbours (`quest` by `settlement`). Two families are not yet tables and are read from the import,
-  read-only, until their chunks migrate them: the place's blueprint (`../../../world/sources/blueprints/`, the
-  place builds) and the lore dossiers and extrapolation (`../../../world/sources/lore/`).
-- **Cast:** a recurring or principal person comes from `../../../docs/design/quests/36-cast-roster.md` (the
+  its neighbours (`quest` by `settlement`). The lore dossiers and extrapolation are read from
+  `../../../story/lore/`. The old places are design intent: map each onto the BM&V place that will host the quest,
+  and name that place (its cell or editor id) in `foundation`.
+- **Cast:** a recurring or principal person comes from `../../../story/design/quests/36-cast-roster.md` (the
   line's desks and its argument, §56; the principal cast, §55; oddities, §58), under the rules of
-  `../../../docs/design/quests/35-cast.md`; a placed person is an `npc` row. A person the quest needs who
-  exists in neither is an `invented` persona for 2.4 to add, never silently made up.
+  `../../../story/design/quests/35-cast.md`; a placed person is an `npc` row. A person the quest needs who
+  exists in neither, nor in BM&V, is an `invented` persona to add, never silently made up.
 - For a line, its line record first (`principles/questlines.md`).
 
 ## 2. The novelty rule and the shape budget (old 55 §47c, binding)
 
 Before the record is written:
 
-1. **Scan** `../../../docs/design/quests/index/coverage.md` (the commissioning brief: thin shapes, regions
+1. **Scan** `../../../story/design/quests/index/coverage.md` (the commissioning brief: thin shapes, regions
    short of quests), then the index view for the quest's primary shape and region.
 2. **Collision test:** the quest collides if it shares its primary shape with an existing quest and any of:
    the same region packet; the same faction line; the same reversal (the twist is the same twist); the same
@@ -90,9 +92,9 @@ register, the wonder budget, deliverability tiers D-A/D-B/D-C and the cheap patt
 8. **`shapeData`** for each shape.
 9. **Stages** in the imported shape (`place`, `journal`, `onEnter`, `objectives`, `successors`,
    `failForward`, `ending`) with conditions and actions only from the vocabulary (`condition_term` rows, with
-   their argument shapes; `../../../docs/design/quests/85-condition-vocabulary.md` explains each term; a missing
-   term is added as a row first, with its chunk), plus `actions` or `approaches`, `learns`, `directions` and `journalText` (style guide § journal,
-   `../../../docs/design/standards/text/style-guide.md`).
+   their argument shapes; `../../../story/design/quests/85-condition-vocabulary.md` explains each term; a missing
+   term is added as a row first), plus `actions` or `approaches`, `learns`, `directions` and `journalText` (style guide § journal,
+   `../../../story/design/text/style-guide.md`).
 10. **Endings**: two or more with real costs, as actions, and where the player sees them.
 11. **Topics**: `topic.` ids of `topic` rows or marked `new`; per person
     and stage, the intent, the facts it may state and hide, the links it grants.
@@ -102,8 +104,7 @@ register, the wonder budget, deliverability tiers D-A/D-B/D-C and the cheap patt
 1. `quest-review` by a `quest-reviewer` agent that has not seen your reasoning; its findings go in `review`.
 2. Revise the record for every finding, or answer it there; set `recordStatus: reviewed`.
 3. `python3 -m tools.argonia_world.quest_record import QUEST.yaml` writes the record into the database; it
-   refuses the whole record on any unknown field, wrong type, dangling key, unknown lookup value or failing
-   named check, and writes nothing then. `--dry-run` checks without writing. Then
+   refuses the whole record on any unknown field, wrong type, dangling key or unknown lookup value, and writes nothing then. `--dry-run` checks without writing. Then
    `python3 .claude/skills/quest-write/brief.py <quest id> OUT_DIR` builds one brief per person and a
    journal brief. It reads the record, people, stance, culture sheets, place facts, topics and vocabulary from
    the database, and writes nothing while any reference, vocabulary term, stage field, `shapeData` section,
