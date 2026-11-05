@@ -37,7 +37,7 @@
 {"quest_id":"quest.main.mq05","ord":0,"skill":"marksman","use":"snipe","reason":"the raiders on the shore at dock5, from the ship's deck"}
 {"quest_id":"quest.main.mq05","ord":1,"skill":"block","use":"protect","reason":"the two Reed escorts on the walk to Helstrom"}
 {"quest_id":"quest.main.mq05","ord":2,"skill":"spear","use":"fight","reason":"the beasts on the walk, at a fixed level"}
-{"quest_id":"quest.main.mq05","ord":3,"skill":"sneak","use":"pickpocket","reason":"the raider leader carries a copy of Nesh-Deeka's message"}
+{"quest_id":"quest.main.mq05","ord":3,"skill":"sneak","use":"pickpocket","reason":"the raider leader carries a copy of the Reed's message"}
 {"quest_id":"quest.main.mq05","ord":4,"skill":"speechcraft","use":"persuade","reason":"Kaska-Meen is won by the wound shown her"}
 {"quest_id":"quest.main.mq05","ord":5,"skill":"mercantile","use":"bribe","reason":"Ei-Tuja's help has a price"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}

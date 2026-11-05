@@ -127,8 +127,8 @@ dive and climb are movement (FreeClimb, water), never a check.
 | MQ03 50 | TR-topic (name or spare) | C-item (each case line gated on the thing held) | E-stage, E-global (overseer named) | - |
 | MQ03 60 | TR-topic (pardon plain or price) | C-alive | E-stage | W-ref (lean-to, alchemy table) |
 | MQ03 70 | TR-activate (lean-to) | C-stage | E-stage, E-move (player into 01Cavebig) | W-ref (fog, dream marks, removal of its 10 actors) |
-| MQ03 95 | TR-death (Nesh-Deeka) | C-alive | E-stage | W-ref (letter) |
-| MQ03 96 | TR-acquire (the letter) | C-item | E-stage | - |
+| MQ03 65 | TR-death (Nesh-Deeka) | C-alive | E-stage, E-item (the letter) | W-ref (letter) |
+| MQ03 66 | TR-acquire (the letter) | C-item | E-stage | - |
 | MQ03 90 / 91 | TR-zone (the dream's door) | C-global (the gang's months struck off or not) | E-stage, E-move (back to the lean-to), E-faction (Veiled Reed), E-item (token, gold), E-global, E-regard, TR-chain | - |
 | MQ04 10 | TR-chain (MQ03 ending) | - | E-stage | W-npc (Nurwul-Neel, Mee-Vei), W-ref (Hist), W-ref removal (14 Nordic-look actors) |
 | MQ04 15 | TR-death (warden-mother) | C-alive | E-stage | - |

@@ -60,7 +60,7 @@
 {"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"empty"}
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"all","value":"black gum"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"locked"}
+{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"door unlocked"}
 {"quest_id":"quest.main.mq03","things_ord":9,"state":"all","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":10,"state":"all","value":"hiding"}
 {"quest_id":"quest.main.mq03","things_ord":11,"state":"all","value":"disabled"}

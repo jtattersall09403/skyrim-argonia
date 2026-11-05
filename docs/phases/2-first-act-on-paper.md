@@ -49,7 +49,7 @@ The act is written before any block is built, so the blocks are the ones the sto
   act's path are removed under parents that stay off.
 - **The records:** `quest.main.mq01` (the work detail, the attack, the Hist closing), `mq03` (the Veiled Reed's
   pardon and the first dream), `mq04` (the second closed tree), `mq05` (Helstrom), in the story data, each citing its
-  census rows. Each was reviewed by a fresh `quest-reviewer` three times and revised until nothing blocking remained;
+  census rows. Each was reviewed by a fresh `quest-reviewer` six times (the last two narrowing to the fixes) and revised until nothing blocking remained;
   the findings and answers are in each record's `review` section. `brief.py` builds every brief.
 - **The blocks:** [docs/design/blocks.md](../design/blocks.md), with the precedent counts in
   [quest-block-precedent](../research/skyrim/quest-block-precedent.md). Seven triggers (topic, zone, activate, acquire,

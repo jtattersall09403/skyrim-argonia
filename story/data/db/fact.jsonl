@@ -581,12 +581,12 @@
 {"id":"fact.mq04.three-cutters","claim":"Three people came to the root by night twelve days ago and left by the reeds to the south.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.trail","claim":"Gum drips, a cracked jar and a sunk skiff mark a way south and east from the village.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.warden-blames","claim":"Nurwul-Neel believes Mee-Vei cut the root.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq05.leak","claim":"The raiders at dock5 carried a copy of Nesh-Deeka's message: someone in Helstrom sold it.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.leak","claim":"The raiders at dock5 carried a copy of the Reed's message: someone in Helstrom sold it.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.minders-refuse","claim":"Kaska-Meen will let no outsider near Helstrom's trees.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.sermon","claim":"Ei-Tuja preaches this season that the trees closed of their own will.","ord":3,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.sermon-for-hire","claim":"Ei-Tuja holds other readings and will preach the one that pays.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.throne-empty","claim":"The Scalded Throne in Helstrom has stood empty for centuries and is swept every morning.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.word-sent","claim":"Nesh-Deeka sent word to the Reed office in Helstrom that I was coming by dock5.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.word-sent","claim":"The Veiled Reed sent word to its office in Helstrom that I was coming by dock5.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.wound","claim":"The trees that closed were cut by outsiders and sealed with black gum; they did not close of their own will.","ord":5,"from_ref":"t6","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}

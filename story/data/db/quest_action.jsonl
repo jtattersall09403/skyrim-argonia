@@ -13,7 +13,7 @@
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":0,"skill":"speechcraft","use":"interrogate","setting":"indoors","target":"the chief"}
 {"quest_id":"quest.main.mq04","stages_ord":4,"ord":0,"skill":"sneak","use":"follow","setting":"open-ground"}
 {"quest_id":"quest.main.mq04","stages_ord":5,"ord":0,"skill":"long-blade","use":"clear-a-place","note":"three cultists at a fixed level (D2)","target":"a rival crew"}
-{"quest_id":"quest.main.mq05","stages_ord":0,"ord":0,"skill":"mercantile","use":"bargain","note":"the fare, or Nesh-Deeka's token","target":"the ship's captain"}
+{"quest_id":"quest.main.mq05","stages_ord":0,"ord":0,"skill":"mercantile","use":"bargain","note":"the fare, or the Reed's token","target":"the ship's captain"}
 {"quest_id":"quest.main.mq05","stages_ord":4,"ord":0,"skill":"sneak","use":"search-unseen","setting":"indoors","note":"the Reed's rooms are locked; her key is on her body"}
 {"quest_id":"quest.mr.mr01","stages_ord":0,"ord":0,"skill":"alchemy","use":"test-a-sample","setting":"open ground by day","note":"the river above the fork against the spring"}
 {"quest_id":"quest.mr.mr01","stages_ord":0,"ord":1,"use":"harvest-a-plant","system":"harvest"}
