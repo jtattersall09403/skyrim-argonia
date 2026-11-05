@@ -25,7 +25,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 ## How we build
 
 - Reuse first: a mod or a record before a script; Papyrus only where a record cannot do it; no SKSE of our own.
-- Prove each kind of change once as a building block (PLAN Phase 3), then copy the block; a new kind of change is a new block.
+- Prove each kind of change once as a building block (PLAN Phase 2), then copy the block; a new kind of change is a new block.
 - Records are Spriggit YAML in `plugin/`, built to the ESP on the build VM; xEdit and houseCARL on the play machine are the checkers; the Creation Kit only for the Papyrus compiler and FaceGen ([0018](docs/decisions/0018-the-creation-kit-is-a-tool-not-the-workflow.md)).
 - Story, people and quest calls cite the lore (`story/lore/`) or the extrapolation ([0032](docs/decisions/0032-every-world-call-is-grounded-in-the-lore.md)); quests and dialogue are written through the skills ([0024](docs/decisions/0024-content-is-written-from-one-source-of-truth.md)).
 - Before inventing a rule, ask how Bethesda did it and do the same ([0034](docs/decisions/0034-ask-how-bethesda-did-it-and-do-the-same.md)).

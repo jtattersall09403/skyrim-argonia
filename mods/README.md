@@ -34,6 +34,6 @@ every DLL's load) or find the 1.7.x build.
 
 ## Shutting vanilla down
 
-The vanilla-shutdown list in `docs/decisions/0012` is the spec for PLAN Phase 2's "shut the vanilla systems down"
+The vanilla-shutdown list in `docs/decisions/0012` is the spec for PLAN Phase 1's "shut the vanilla systems down"
 step; that phase writes `mods/allowed-quests.json`, the quests that may still run (the mods' controller and MCM
 quests, Live Another Life's, BM&V's), and proves the rest stopped.
