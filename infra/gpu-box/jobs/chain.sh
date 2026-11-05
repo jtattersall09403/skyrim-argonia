@@ -24,7 +24,9 @@ if [ -z "${CHAIN_IN_TREE:-}" ]; then
   # the land (ground, terrain, navmesh) is built in the main tree, never from the worktree (pipeline refuses a shared
   # rebuild): when its stamps are stale the chain runs that pass here first, keyed and resumable, instead of dying in
   # its pre-batch (r6-chain16/18/20/21, 2026-11-04/05: four chains ended on "land is stale", five land jobs by hand)
-  if [ -z "${CHAIN_DRY:-}" ] && ! (cd "$src" && "$HOME/.argonia/venv/bin/python" - <<'PY'
+  land_rc=0
+  if [ -z "${CHAIN_DRY:-}" ]; then
+    (cd "$src" && "$HOME/.argonia/venv/bin/python" - <<'PY'
 import pathlib, sys
 try:
     from tools.ArgoniaGen.pipeline import _ground_stamp, _terrain_stamp
@@ -35,9 +37,11 @@ if not pathlib.Path("out/terrain").is_dir():
 ok = all(pathlib.Path(f).exists() and pathlib.Path(f).read_text() == v for f, v in
        (("out/terrain/ground.stamp", _ground_stamp()), ("out/terrain/terrain.stamp", _terrain_stamp()),
         ("out/navmesh/province/terrain.stamp", _terrain_stamp())))
-sys.exit(0 if ok else 1)
+sys.exit(0 if ok else 3)  # 3 = stale; any other failure (no interpreter, an import error) is no verdict
 PY
-  ); then
+    ) 2>/dev/null; land_rc=$?
+  fi
+  if [ "$land_rc" = 3 ]; then
     echo "CHAIN land stale in $src: the land pass runs there first $(date -u +%H:%M:%S)"
     (cd "$src" && make plugin && infra/gpu-box/jobs/navmesh_if_stale.sh) || { echo "CHAIN land pass FAILED"; exit 3; }
     echo "CHAIN land pass done $(date -u +%H:%M:%S)"
