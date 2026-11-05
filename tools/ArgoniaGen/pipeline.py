@@ -640,12 +640,19 @@ def _hand(name: str) -> tuple[list[Path], tuple[str, ...]]:
             "creatures": ([*(rt / "creatures").glob("*.py"), rt / "regions/api.py"], CREATURE_TABLES)}[name]
 
 
+STAGE_WRITES = {"ground": {"entrance_site"}}  # tables a stage writes while it runs: never part of its own key
+
+
 @_memo
 def stage_cover(name: str) -> tuple[tuple[Path, ...], tuple[str, ...]]:
     """A stage's files and tables: the hand list unioned with the entry's import walk and its FROM/JOIN names."""
     files, tables = _hand(name)
     walked = walk_imports(STAGE_ENTRY[name])
-    return tuple(sorted(set(files) | set(walked))), tuple(sorted(set(tables) | set(sql_tables(walked))))
+    # a table the stage itself writes (the generate's entrance_site rows) is an output, not an input: in the key it made
+    # every tree with uncommitted output rows disagree with a committed one (r6-chain24, 03:17: "land is stale" in the
+    # worktree while the main tree's stamps held)
+    written = STAGE_WRITES.get(name, set())
+    return tuple(sorted(set(files) | set(walked))), tuple(sorted((set(tables) | set(sql_tables(walked))) - written))
 
 
 def _cover_key(name: str) -> str:

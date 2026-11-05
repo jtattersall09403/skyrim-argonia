@@ -21,6 +21,29 @@ src=${ARGONIA_REPO:-$(cd "$(dirname "$(readlink -f "$0")")/../../.." && pwd)}
 case $record in /*) ;; *) record="$src/$record";; esac
 if [ -z "${CHAIN_IN_TREE:-}" ]; then
   tree=${CHAIN_TREE:-$HOME/.argonia/round/tree}; keyf="$HOME/.argonia/round/chain.$(basename "$batch" .yaml).sha"
+  # the land (ground, terrain, navmesh) is built in the main tree, never from the worktree (pipeline refuses a shared
+  # rebuild): when its stamps are stale the chain runs that pass here first, keyed and resumable, instead of dying in
+  # its pre-batch (r6-chain16/18/20/21, 2026-11-04/05: four chains ended on "land is stale", five land jobs by hand)
+  if [ -z "${CHAIN_DRY:-}" ] && ! (cd "$src" && "$HOME/.argonia/venv/bin/python" - <<'PY'
+import pathlib, sys
+from tools.ArgoniaGen.pipeline import _ground_stamp, _terrain_stamp
+ok = all(pathlib.Path(f).exists() and pathlib.Path(f).read_text() == v for f, v in
+       (("out/terrain/ground.stamp", _ground_stamp()), ("out/terrain/terrain.stamp", _terrain_stamp()),
+        ("out/navmesh/province/terrain.stamp", _terrain_stamp())))
+sys.exit(0 if ok else 1)
+PY
+  ); then
+    echo "CHAIN land stale in $src: the land pass runs there first $(date -u +%H:%M:%S)"
+    (cd "$src" && make plugin && infra/gpu-box/jobs/navmesh_if_stale.sh) || { echo "CHAIN land pass FAILED"; exit 3; }
+    echo "CHAIN land pass done $(date -u +%H:%M:%S)"
+  fi
+  # the build outputs the main tree holds uncommitted (the generate's entrance sites, the plugin YAML, form ids) are
+  # committed by path first, so the worktree at HEAD reads the same rows (r6-chain24: a stale land from an uncommitted
+  # entrance_site.jsonl)
+  if [ -z "${CHAIN_DRY:-}" ]; then
+    git -C "$src" add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated 2>/dev/null
+    git -C "$src" diff --cached --quiet || git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" && git -C "$src" push -q origin HEAD:main 2>/dev/null || true
+  fi
   sha=${CHAIN_SHA:-$(cat "$keyf" 2>/dev/null || git -C "$src" rev-parse HEAD)}; sha=$(git -C "$src" rev-parse "$sha^{commit}") || exit 2
   echo "CHAIN tree $tree sha $sha"
   if [ -n "${CHAIN_DRY:-}" ]; then echo "  would run on: $tree at $sha (out/ -> $src/out)"
@@ -36,22 +59,6 @@ if [ -z "${CHAIN_IN_TREE:-}" ]; then
     git -C "$src" ls-files -oi --exclude-standard -- data world plugin | while read -r f; do
       [ -e "$tree/$f" ] || { mkdir -p "$(dirname "$tree/$f")"; ln -s "$src/$f" "$tree/$f"; }; done
     echo "CHAIN tree ready in $(( SECONDS - s0 )) s: $(git -C "$tree" rev-parse --short HEAD)"
-    # the land (ground, terrain, navmesh) is built in the main tree, never from the worktree (pipeline refuses a shared
-    # rebuild): when its stamps are stale the chain runs that pass here first, keyed and resumable, instead of dying in
-    # its pre-batch (r6-chain16/18/20/21, 2026-11-04/05: four chains ended on "land is stale", five land jobs by hand)
-    if [ -z "${CHAIN_DRY:-}" ] && ! (cd "$src" && "$HOME/.argonia/venv/bin/python" - <<'PY'
-import pathlib, sys
-from tools.ArgoniaGen.pipeline import _ground_stamp, _terrain_stamp
-ok = all(pathlib.Path(f).exists() and pathlib.Path(f).read_text() == v for f, v in
-         (("out/terrain/ground.stamp", _ground_stamp()), ("out/terrain/terrain.stamp", _terrain_stamp()),
-          ("out/navmesh/province/terrain.stamp", _terrain_stamp())))
-sys.exit(0 if ok else 1)
-PY
-    ); then
-      echo "CHAIN land stale in $src: the land pass runs there first $(date -u +%H:%M:%S)"
-      (cd "$src" && make plugin && infra/gpu-box/jobs/navmesh_if_stale.sh) || { echo "CHAIN land pass FAILED"; exit 3; }
-      echo "CHAIN land pass done $(date -u +%H:%M:%S)"
-    fi
     CHAIN_IN_TREE=1 ARGONIA_REPO="$tree" bash "$tree/infra/gpu-box/jobs/chain.sh" "$batch" "$record" "$logs"; rc=$?
     [ "$rc" = 0 ] && rm -f "$keyf"; exit "$rc"
   fi

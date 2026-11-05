@@ -181,6 +181,7 @@ def _expected(entry: str) -> tuple[set, set]:
 def test_stamp_covers_the_stage_imports_and_tables(stage):
     files, tables = pipeline.stage_cover(stage)
     want_files, want_tables = _expected(pipeline.STAGE_ENTRY[stage])
+    want_tables -= pipeline.STAGE_WRITES.get(stage, set())  # a table the stage writes is its output, not its key
     assert want_files - set(files) == set(), f"{stage}: imported but not in the stamp"
     assert want_tables - set(tables) == set(), f"{stage}: read but not in the stamp"
 
