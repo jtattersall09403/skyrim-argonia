@@ -1,0 +1,22 @@
+FormKey: 0B0274:Skyrim.esm
+VersionControl: 6186014
+EditorID: FavorSimpleDrunksNode
+FormVersion: 35
+Version2: 4
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 047A26:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 0B0273:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0B0270:Skyrim.esm

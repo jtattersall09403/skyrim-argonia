@@ -1,0 +1,26 @@
+FormKey: 04F593:Skyrim.esm
+VersionControl: 6186523
+EditorID: WICraftItemBranchNode
+FormVersion: 37
+Version2: 3
+Parent: 039D86:Skyrim.esm
+PreviousSibling: 10538A:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Location: 0192B2:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 035D66:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

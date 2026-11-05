@@ -1,0 +1,15 @@
+FormKey: 03332D:Dragonborn.esm
+VersionControl: 5141518
+EditorID: DLC2RRMineNode
+FormVersion: 43
+Version2: 1
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 09002B:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

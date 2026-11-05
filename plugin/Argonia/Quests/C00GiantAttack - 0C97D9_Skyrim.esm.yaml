@@ -1,0 +1,147 @@
+FormKey: 0C97D9:Skyrim.esm
+VersionControl: 3303178
+EditorID: C00GiantAttack
+FormVersion: 37
+Version2: 11
+VirtualMachineAdapter:
+  Scripts:
+  - Name: C00GiantAttackScript
+    Properties:
+    - MutagenObjectType: ScriptBoolProperty
+      Name: AelaShouldFG
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CentralQuest
+      Object: 04B2D9:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerAttacked
+  - Name: QF_C00GiantAttack_000C97D9
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AelaSpot
+      Object: 0C97D6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Aela
+      Object: 0C97D9:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Farkas
+      Object: 0C97D9:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Giant
+      Object: 0C97D9:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Ria
+      Object: 0C97D9:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FarkasSpot
+      Object: 0C97D3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HealthRegen
+      Object: 0C97DF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiaSpot
+      Object: 0C97D4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Whiterun
+      Object: 01A26F:Skyrim.esm
+  FileName: QF_C00GiantAttack_000C97D9
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_C00GiantAttack_000C97D9
+    FragmentName: Fragment_6
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_C00GiantAttack_000C97D9
+    FragmentName: Fragment_0
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_C00GiantAttack_000C97D9
+    FragmentName: Fragment_2
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_C00GiantAttack_000C97D9
+    FragmentName: Fragment_7
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0C97D9:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: C00GiantAttackCompanionsScript
+  - Property:
+      Name: ''
+      Object: 0C97D9:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: C00GiantAttackCompanionsScript
+  - Property:
+      Name: ''
+      Object: 0C97D9:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: C00GiantAttackCompanionsScript
+  - Property:
+      Name: ''
+      Object: 0C97D9:Skyrim.esm
+      Alias: 5
+    Scripts:
+    - Name: C00GiantScript
+Flags:
+- 0x10
+- RunOnce
+Priority: 80
+QuestFormVersion: 0
+Type: CompanionQuests
+Filter: Faction\Companions\Story\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 1
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+NextAliasID: 6
+Aliases:
+- Name: Aela
+  Flags:
+  - Essential
+  ForcedReference: 01A697:Skyrim.esm
+  PackageData:
+  - 0CF2E3:Skyrim.esm
+  - 0C97DA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Ria
+  Flags:
+  - Essential
+  ForcedReference: 01A6D8:Skyrim.esm
+  PackageData:
+  - 0C97DC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Farkas
+  Flags:
+  - Essential
+  ForcedReference: 01A693:Skyrim.esm
+  PackageData:
+  - 0C97DD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Giant
+  Flags: []
+  ForcedReference: 0C97D2:Skyrim.esm
+  VoiceTypes: Null

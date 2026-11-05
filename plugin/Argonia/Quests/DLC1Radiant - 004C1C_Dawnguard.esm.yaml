@@ -1,0 +1,410 @@
+FormKey: 004C1C:Dawnguard.esm
+EditorID: DLC1Radiant
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1_QF_DLC1Radiant_01004C1C
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CurrentQuestGiver
+      Object: 004C1C:Dawnguard.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 004C1C:Dawnguard.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Sorine
+      Object: 004C1C:Dawnguard.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TrollFollower
+      Object: 004C1C:Dawnguard.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireTurn
+      Object: 00588C:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TestVampireFeedActor
+      Object: 013482:Skyrim.esm
+  - Name: DLC1OneToManyFactionRelationScript
+    Properties:
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: AllyFactions
+      Objects:
+      - Name: ''
+        Object: 05ADD2:Skyrim.esm
+      - Name: ''
+        Object: 044CCD:Skyrim.esm
+      - Name: ''
+        Object: 044CCE:Skyrim.esm
+      - Name: ''
+        Object: 044CCF:Skyrim.esm
+      - Name: ''
+        Object: 0E0CD9:Skyrim.esm
+      - Name: ''
+        Object: 026724:Skyrim.esm
+      - Name: ''
+        Object: 0E0CDA:Skyrim.esm
+      - Name: ''
+        Object: 01BCC0:Skyrim.esm
+      - Name: ''
+        Object: 034B74:Skyrim.esm
+      - Name: ''
+        Object: 000013:Skyrim.esm
+      - Name: ''
+        Object: 0E0CDB:Skyrim.esm
+      - Name: ''
+        Object: 02430D:Skyrim.esm
+      - Name: ''
+        Object: 0AA784:Skyrim.esm
+      - Name: ''
+        Object: 02D1DF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TargetFaction
+      Object: 007C41:Dawnguard.esm
+  - Name: dlc1radiantscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BanditFaction
+      Object: 01BCC0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionEastmarch
+      Object: 0267E3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionFalkreath
+      Object: 028170:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionHaafingar
+      Object: 029DB0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionHjaalmarch
+      Object: 02816D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionPale
+      Object: 02816E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionReach
+      Object: 02816C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionRift
+      Object: 02816B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionWhiterun
+      Object: 0267EA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionWinterhold
+      Object: 02816F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CurrentQuestGiver
+      Object: 004C1C:Dawnguard.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueFollower
+      Object: 0750BA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: DisguisedHunterActorBases
+      Objects:
+      - Name: ''
+        Object: 004C25:Dawnguard.esm
+      - Name: ''
+        Object: 004C24:Dawnguard.esm
+      - Name: ''
+        Object: 004C26:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: DisguisedVampireActorBases
+      Objects:
+      - Name: ''
+        Object: 005E4D:Dawnguard.esm
+      - Name: ''
+        Object: 005E4C:Dawnguard.esm
+      - Name: ''
+        Object: 005E4E:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1BloodChaliceActivatorEmptyRef
+      Object: 0141A1:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1BloodChaliceActivatorFullRef
+      Object: 0141A2:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1BloodPotion
+      Object: 018EF3:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1DawnguardArmoredTrollSpawnMarker
+      Object: 010571:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1dunRedwaterDenPower
+      Object: 0149A7:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1dunRedwaterDenPowerStopDay
+      Object: 0149A6:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1dunRedwaterDenWithdrawalStopDay
+      Object: 014B00:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1dunRedwaterDenWithdrawl
+      Object: 0149A8:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1HunterFaction
+      Object: 003375:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1HunterHQLocation
+      Object: 004C1F:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1IntroCompletedHunter
+      Object: 0141A4:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1IntroCompletedVampire
+      Object: 0141A3:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1LvlTrollArmoredPlayerFollower
+      Object: 0117F1:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantHighProfileFactions
+      Object: 0050C3:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantHunterStart
+      Object: 004C1E:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantHunterTechStart
+      Object: 002F22:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantReward
+      Object: 018EF5:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantVampireBanditNecroAllys
+      Object: 007C41:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantVampireStart
+      Object: 004C1D:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1TrollCost
+      Object: 010573:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1TrollFollowerDismissedMsg
+      Object: 01881A:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireCastleLocation
+      Object: 004C20:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireChaliceLevel
+      Object: 014198:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireChalicePower
+      Object: 01419B:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireChaliceStopDay
+      Object: 014199:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireFaction
+      Object: 003376:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireTurn
+      Object: 00588C:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireTurnPerk
+      Object: 00588B:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VendorChestSorineJurardRef
+      Object: 00F1A6:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ01
+      Object: 00352A:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ02
+      Object: 002F65:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ03Hunter
+      Object: 0098CB:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ03Vampire
+      Object: 004C3D:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ04
+      Object: 00284F:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ05
+      Object: 002850:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ06
+      Object: 002852:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ07
+      Object: 002853:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ08
+      Object: 007C25:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1WENextSpecialAttackDay
+      Object: 004205:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EastmarchHoldLocation
+      Object: 01676A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FalkreathHoldLocation
+      Object: 01676F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameDaysPassed
+      Object: 000039:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HaafingarHoldLocation
+      Object: 016770:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HjaalmarchHoldLocation
+      Object: 01676E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LocTypeHold
+      Object: 016771:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlVampire
+      Object: 02F9E1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NecromancerFaction
+      Object: 034B74:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PaleHoldLocation
+      Object: 01676D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ReachHoldLocation
+      Object: 016769:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiftHoldLocation
+      Object: 01676C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TrollFollower
+      Object: 004C1C:Dawnguard.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: USLEEPDLC1RV03InitialHighProfileTargets
+      Object: 0C8213:unofficial skyrim special edition patch.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Vampire
+      Object: 0A82BB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhiterunHoldLocation
+      Object: 016772:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WinterholdHoldLocation
+      Object: 01676B:Skyrim.esm
+  FileName: DLC1_QF_DLC1Radiant_01004C1C
+  Fragments:
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_0
+  - Stage: 2
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_1
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_2
+  - Stage: 11
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_4
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_10
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_13
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_6
+  - Stage: 31
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_8
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Radiant_01004C1C
+    FragmentName: Fragment_15
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 004C1C:Dawnguard.esm
+      Alias: 0
+    Scripts:
+    - Name: DLC1RadiantPlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DLC1Radiant
+        Object: 004C1C:Dawnguard.esm
+  - Property:
+      Name: ''
+      Object: 004C1C:Dawnguard.esm
+      Alias: 2
+    Scripts:
+    - Name: DLC1RadiantTrollFollowerScript
+Flags:
+- AllowRepeatedStages
+- 0x10
+- WarnOnAliasFillFailure
+Priority: 40
+QuestFormVersion: 65
+Type: Misc
+TextDisplayGlobals:
+- 010573:Dawnguard.esm
+Filter: DLC1\Radiant\
+Stages:
+- Index: 1
+  LogEntries:
+  - Flags: []
+- Index: 2
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 11
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 31
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+NextAliasID: 5
+Aliases:
+- Name: Player
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: CurrentQuestGiver
+  Flags:
+  - Optional
+  - StoresText
+  VoiceTypes: Null
+- ID: 2
+  Name: TrollFollower
+  Flags:
+  - Optional
+  Factions:
+  - 05C84E:Skyrim.esm
+  PackageData:
+  - 05C84B:Skyrim.esm
+  VoiceTypes: 0117F3:Dawnguard.esm
+- ID: 3
+  Name: Sorine
+  Flags:
+  - AllowDisabled
+  UniqueActor: 00336B:Dawnguard.esm
+  VoiceTypes: Null

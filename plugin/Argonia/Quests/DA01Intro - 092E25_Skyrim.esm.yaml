@@ -1,0 +1,42 @@
+FormKey: 092E25:Skyrim.esm
+VersionControl: 79128
+EditorID: DA01Intro
+Version2: 8
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DA01Intro_00092E25
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Aranea
+      Object: 092E25:Skyrim.esm
+      Alias: 1
+  FileName: QF_DA01Intro_00092E25
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA01Intro_00092E25
+    FragmentName: Fragment_0
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA01Intro_00092E25
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Filter: Daedric\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+NextAliasID: 3
+Aliases:
+- ID: 1
+  Name: Aranea
+  Flags: []
+  UniqueActor: 028AD0:Skyrim.esm
+  VoiceTypes: Null

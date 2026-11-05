@@ -1,0 +1,426 @@
+FormKey: 028AD6:Skyrim.esm
+EditorID: DA01
+Version2: 7
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DA01_00028AD6
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Aranea
+      Object: 028AD6:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AzuraSpeaksTrigger
+      Object: 028AD6:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AzurasStarBroken
+      Object: 028AD6:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AzurasStarInterior
+      Object: 028AD6:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_IlinaltasDeepDoor
+      Object: 028AD6:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_IlinaltasDeepLocation
+      Object: 028AD6:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MalynsJournal
+      Object: 028AD6:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MalynVaren
+      Object: 028AD6:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MalynVarensCorpse
+      Object: 028AD6:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nelacar
+      Object: 028AD6:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NelacarStar
+      Object: 028AD6:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NelacarVoiceMarker
+      Object: 028AD6:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nirya
+      Object: 028AD6:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShrineofAzura
+      Object: 028AD6:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VoiceofAzura
+      Object: 028AD6:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WinterholdMapMarker
+      Object: 028AD6:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AzuraShrineBrokenStarRef
+      Object: 0A2CB3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CollegeofWinterholdFaction
+      Object: 01F259:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01
+      Object: 028AD6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01AraneaGiveStarScene
+      Object: 04C441:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01EnableMarker
+      Object: 0C6BAD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01FIN
+      Object: 01DD49:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01Intro
+      Object: 092E25:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01PlayerEnemyFaction
+      Object: 04C43C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01SoulGemAzurasStar
+      Object: 063B27:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA01SoulGemBlackStar
+      Object: 063B29:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MagesGuild
+      Object: 01F259:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01
+      Object: 01F251:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAraneaAllyFaction
+      Object: 092F2C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAraneaForcegreetFrozenHearthScene
+      Object: 08CF85:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAraneaStarMarker
+      Object: 093791:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAzuraFinalScene
+      Object: 04F7F0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAzuraStarMarker
+      Object: 04C438:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pIlinaltasDeepMarker
+      Object: 01626A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarActorBase
+      Object: 01E7D5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarEnemyFaction
+      Object: 093795:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarExamineStarScene
+      Object: 091AE9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarFinalScene
+      Object: 093797:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarReturnMarker
+      Object: 092E24:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNelacarSoulTrapScene
+      Object: 092E1D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pShrineofAzuraMarker
+      Object: 092496:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pShrineReturnMarker
+      Object: 092E23:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pWaterBreathingPotion
+      Object: 03AC2F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StarPlayerMarker
+      Object: 093791:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WinterholdCenter
+      Object: 01C1B1:Skyrim.esm
+  FileName: QF_DA01_00028AD6
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_33
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_4
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_56
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_2
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_8
+  - Stage: 57
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_42
+  - Stage: 58
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_43
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_10
+  - Stage: 61
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_58
+  - Stage: 62
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_50
+  - Stage: 65
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_45
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_13
+  - Stage: 75
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_28
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_57
+  - Stage: 85
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_46
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_48
+  - Stage: 95
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_49
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_15
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_17
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_DA01_00028AD6
+    FragmentName: Fragment_52
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 028AD6:Skyrim.esm
+      Alias: 9
+    Scripts:
+    - Name: DA01BrokenStarScript
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 65
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 13
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 25
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 57
+  Unknown: 39
+  LogEntries:
+  - Flags: []
+- Index: 58
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 61
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 62
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 65
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 75
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 85
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 90
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 95
+  Unknown: 64
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 110
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 250
+  LogEntries:
+  - Flags:
+    - FailQuest
+NextAliasID: 31
+Aliases:
+- Name: Aranea
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  UniqueActor: 028AD0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Type: Location
+  Name: IlinaltasDeepLocation
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 01919C:Skyrim.esm
+- ID: 24
+  Type: Location
+  Name: AzurasStarInterior
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 018EE6:Skyrim.esm
+- ID: 1
+  Name: Nelacar
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01E7D5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: AzurasStarBroken
+  Flags:
+  - QuestObject
+  ForcedReference: 02AC88:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: ShrineofAzura
+  Flags: []
+  ForcedReference: 092493:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: WinterholdMapMarker
+  Flags: []
+  ForcedReference: 0177EF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: MalynVarensCorpse
+  Flags: []
+  ForcedReference: 028AD4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: MalynsJournal
+  Flags: []
+  ForcedReference: 0A2CB9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: MalynVaren
+  Flags:
+  - AllowDisabled
+  UniqueActor: 028AD3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: VoiceofAzura
+  Flags: []
+  ForcedReference: 092493:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: Nirya
+  Flags: []
+  UniqueActor: 01C19B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: AzuraSpeaksTrigger
+  Flags:
+  - AllowDisabled
+  ForcedReference: 04C445:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: IlinaltasDeepDoor
+  Flags: []
+  ForcedReference: 0C8C78:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: NelacarVoiceMarker
+  Flags: []
+  ForcedReference: 04C43F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: NelacarStar
+  Flags:
+  - AllowReuseInQuest
+  - AllowDisabled
+  ForcedReference: 0917D2:Skyrim.esm
+  VoiceTypes: Null

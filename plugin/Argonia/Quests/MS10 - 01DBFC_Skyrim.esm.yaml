@@ -1,0 +1,519 @@
+FormKey: 01DBFC:Skyrim.esm
+VersionControl: 79128
+EditorID: MS10
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ms10questscript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Adelaisa
+      Object: 01DBFC:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptBoolProperty
+      Name: AdelaisaFGInOffice
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalFollower
+      Object: 0750BA:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AnimalFollowerTarget
+      Object: 102016:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: BribeAmount
+      Data: 500
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BribeItem
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FightingStig
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Follower
+      Object: 0750BA:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FollowerTarget
+      Object: 102015:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Haldyn
+      Object: 01DBFC:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Journal
+      Object: 01DBFE:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: KnowsNameOfPirates
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LocalAdelaisaTarget
+      Object: 0C43F0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LocalAnimalFollowerTarget
+      Object: 102017:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LocalFollowerTarget
+      Object: 102018:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LocalPlayerTarget
+      Object: 0C43EF:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerKnowsAboutHaldyn
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RemoteAdelaisaTarget
+      Object: 05227D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RemotePlayerTarget
+      Object: 05227E:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: RewardAmount
+      Data: 500
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RewardItem
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipAtIsland
+      Object: 01DBFC:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipDoorInWindhelm
+      Object: 01DBFC:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShipInWindhelm
+      Object: 01DBFC:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptBoolProperty
+      Name: StigIntroduced
+    - MutagenObjectType: ScriptBoolProperty
+      Name: StigPersuaded
+  - Name: QF_MS10_0001DBFC
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Adelaisa
+      Object: 01DBFC:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BloodHorkerOrders
+      Object: 01DBFC:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BoatAttackMarker
+      Object: 01DBFC:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BoatMarkerA
+      Object: 01DBFC:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BoatMarkerB
+      Object: 01DBFC:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DawnstarMapMarker
+      Object: 01DBFC:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FogMarker
+      Object: 01DBFC:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Haldyn
+      Object: 01DBFC:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_InnDoorTrigger
+      Object: 01DBFC:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Innkeeper
+      Object: 01DBFC:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_JaphetsFolly
+      Object: 01DBFC:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Orthus
+      Object: 01DBFC:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pirate1
+      Object: 01DBFC:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pirate2
+      Object: 01DBFC:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pirate3
+      Object: 01DBFC:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SecretIslandDoor
+      Object: 01DBFC:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShacksOff
+      Object: 01DBFC:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShacksOn
+      Object: 01DBFC:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShipAtIsland
+      Object: 01DBFC:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShipInWindhelm
+      Object: 01DBFC:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_StartMarker
+      Object: 01DBFC:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Stig
+      Object: 01DBFC:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SuvarisJournal
+      Object: 01DBFC:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TransitMerc
+      Object: 01DBFC:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WindhelmDockDoor
+      Object: 01DBFC:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WreckageMarker
+      Object: 01DBFC:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MajorFavor
+      Object: 03521A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS10PostQuest
+      Object: 0C4B19:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PointerQuest
+      Object: 10D3BB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG04EECQuest
+      Object: 1007FC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Reward
+      Object: 0C0406:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SuvarisJournal
+      Object: 01DBFC:Skyrim.esm
+      Alias: 0
+  FileName: QF_MS10_0001DBFC
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_26
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_2
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_4
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_10
+  - Stage: 41
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_22
+  - Stage: 42
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_23
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_14
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_16
+  - Stage: 75
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_28
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_29
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS10_0001DBFC
+    FragmentName: Fragment_18
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01DBFC:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: MS10SuvarisJournalScript
+  - Property:
+      Name: ''
+      Object: 01DBFC:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: MS10StigScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS10DefeatingStigMessage
+        Object: 017D1E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS10Quest
+        Object: 01DBFC:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01DBFC:Skyrim.esm
+      Alias: 4
+    Scripts:
+    - Name: MS10HaldynScript
+  - Property:
+      Name: ''
+      Object: 01DBFC:Skyrim.esm
+      Alias: 28
+    Scripts:
+    - Name: MS10BloodHorkerOrdersScript
+  - Property:
+      Name: ''
+      Object: 01DBFC:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: MS10InnDoorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PirateScene
+        Object: 05226D:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 0
+Type: SideQuest
+Filter: Misc\Windhelm\
+Stages:
+- Unknown: 40
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 46
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 48
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 100
+  LogEntries:
+  - Flags: []
+- Index: 41
+  Unknown: 18
+  LogEntries:
+  - Flags: []
+- Index: 42
+  Unknown: 44
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 75
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 30
+Aliases:
+- ID: 20
+  Type: Location
+  Name: JaphetsFolly
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 019178:Skyrim.esm
+- ID: 27
+  Name: DawnstarMapMarker
+  Flags: []
+  ForcedReference: 01773A:Skyrim.esm
+  VoiceTypes: Null
+- Name: SuvarisJournal
+  Flags:
+  - QuestObject
+  ForcedReference: 01E187:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Orthus
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  ForcedReference: 01B13D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: Adelaisa
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowDisabled
+  ForcedReference: 01B13E:Skyrim.esm
+  PackageData:
+  - 10D6ED:Skyrim.esm
+  - 056AFC:Skyrim.esm
+  - 056B02:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Stig
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 01DC01:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: Haldyn
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 053447:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Pirate1
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 05226A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: Pirate2
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 05226B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: Pirate3
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 05226C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: BloodHorkerOrders
+  Flags: []
+  CreateReferenceToObject:
+    Object: 0C58A6:Skyrim.esm
+    AliasID: 2
+    Create: In
+  VoiceTypes: Null
+- ID: 9
+  Name: Innkeeper
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 01A6C7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: InnDoorTrigger
+  Flags:
+  - AllowDisabled
+  ForcedReference: 05227A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 29
+  Name: WindhelmDockDoor
+  Flags: []
+  ForcedReference: 0A17D3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: TransitMerc
+  Flags:
+  - Essential
+  - AllowDisabled
+  ForcedReference: 052280:Skyrim.esm
+  PackageData:
+  - 025BFC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: ShipInWindhelm
+  Flags:
+  - AllowDisabled
+  ForcedReference: 05227F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: ShipAtIsland
+  Flags:
+  - AllowDisabled
+  ForcedReference: 056B01:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: SecretIslandDoor
+  Flags: []
+  ForcedReference: 02C695:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: StartMarker
+  Flags: []
+  ForcedReference: 0249BE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: FogMarker
+  Flags: []
+  ForcedReference: 056AFB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: BoatMarkerA
+  Flags: []
+  ForcedReference: 074FEF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: BoatMarkerB
+  Flags: []
+  ForcedReference: 07501B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 23
+  Name: WreckageMarker
+  Flags: []
+  ForcedReference: 075004:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: BoatAttackMarker
+  Flags: []
+  ForcedReference: 074FEE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: ShacksOn
+  Flags: []
+  ForcedReference: 096160:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: ShacksOff
+  Flags: []
+  ForcedReference: 096161:Skyrim.esm
+  VoiceTypes: Null

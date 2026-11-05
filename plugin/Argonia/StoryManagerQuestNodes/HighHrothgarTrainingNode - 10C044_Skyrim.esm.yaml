@@ -1,0 +1,44 @@
+FormKey: 10C044:Skyrim.esm
+VersionControl: 2320144
+EditorID: HighHrothgarTrainingNode
+FormVersion: 39
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 1092E3:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 10C043:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 0242BA:Skyrim.esm
+  ComparisonValue: 160
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 0242BA:Skyrim.esm
+  ComparisonValue: 220
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 02D515:Skyrim.esm
+  ComparisonValue: 10
+QuestFlags:
+- DoAllBeforeRepeating
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 10C045:Skyrim.esm
+- Quest: 10C052:Skyrim.esm
+- Quest: 10C055:Skyrim.esm

@@ -1,0 +1,3388 @@
+FormKey: 010BEE:HearthFires.esm
+EditorID: BYOHHousePale
+VirtualMachineAdapter:
+  Scripts:
+  - Name: BYOH_QF_BYOHHousePale_01010BEE
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CarpentersWorkbench
+      Object: 010BEE:HearthFires.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Charter
+      Object: 010BEE:HearthFires.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CourierNote
+      Object: 010BEE:HearthFires.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DraftingTable
+      Object: 010BEE:HearthFires.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hold
+      Object: 010BEE:HearthFires.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HoldCity
+      Object: 010BEE:HearthFires.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HouseCarriageDriver
+      Object: 010BEE:HearthFires.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HouseHorse
+      Object: 010BEE:HearthFires.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HouseInteriorMarker
+      Object: 010BEE:HearthFires.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_houseLocation
+      Object: 010BEE:HearthFires.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_IntroNote
+      Object: 010BEE:HearthFires.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Jarl
+      Object: 010BEE:HearthFires.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Steward
+      Object: 010BEE:HearthFires.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHouseJarlFriendLetter
+      Object: 010BEF:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHouseJarlIntroLetter
+      Object: 016130:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Charter
+      Object: 0157A1:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameDaysPassed
+      Object: 000039:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WICourier
+      Object: 039F82:Skyrim.esm
+  - Name: byohhousescript
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: AdditionLayoutIndexMax
+      Data: 70
+    - MutagenObjectType: ScriptIntProperty
+      Name: AdditionLayoutIndexMin
+      Data: 44
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHouseBuilding
+      Object: 00305D:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHouseBuildingRoomWorkbenches
+      Object: 00A319:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHouseLocation
+      Object: 00308D:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCost
+      Object: 003079:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCostBard
+      Object: 018DE6:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCostCarriage
+      Object: 003137:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCostChicken
+      Object: 007A8C:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCostCow
+      Object: 003136:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHHPCostGarden
+      Object: 003135:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BYOHMaterialLog
+      Object: 00300E:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: ChildBedRefsRoom2
+      Objects:
+      - Name: ''
+        Object: 016D81:HearthFires.esm
+      - Name: ''
+        Object: 016D80:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ChildChestRoom2
+      Object: 016DB2:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ChildChestRoom2Replacement
+      Object: 00081B:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: DisableList
+      Objects:
+      - Name: ''
+      - Name: ''
+        Object: 010E1B:HearthFires.esm
+      - Name: ''
+        Object: 010E1B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DF1:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016E00:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DFF:HearthFires.esm
+      - Name: ''
+        Object: 016DF1:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DF1:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF2:HearthFires.esm
+      - Name: ''
+        Object: 010DFF:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF2:HearthFires.esm
+      - Name: ''
+        Object: 010E09:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF2:HearthFires.esm
+      - Name: ''
+        Object: 010E58:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF3:HearthFires.esm
+      - Name: ''
+        Object: 010E3F:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DF3:HearthFires.esm
+      - Name: ''
+        Object: 010E48:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DF3:HearthFires.esm
+      - Name: ''
+        Object: 010E67:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DF4:HearthFires.esm
+      - Name: ''
+        Object: 010E59:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010DF4:HearthFires.esm
+      - Name: ''
+        Object: 010E5A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010DF4:HearthFires.esm
+      - Name: ''
+        Object: 010E5B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016D76:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCA:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC9:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC8:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 0174B2:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF8:HearthFires.esm
+      - Name: ''
+        Object: 010DFF:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF8:HearthFires.esm
+      - Name: ''
+        Object: 010E09:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF8:HearthFires.esm
+      - Name: ''
+        Object: 010E58:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010DF9:HearthFires.esm
+      - Name: ''
+        Object: 010E3F:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DF9:HearthFires.esm
+      - Name: ''
+        Object: 010E48:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DF9:HearthFires.esm
+      - Name: ''
+        Object: 010E67:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010DFA:HearthFires.esm
+      - Name: ''
+        Object: 010E59:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010DFA:HearthFires.esm
+      - Name: ''
+        Object: 010E5A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010DFA:HearthFires.esm
+      - Name: ''
+        Object: 010E5B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: DisableList2
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E19:HearthFires.esm
+      - Name: ''
+        Object: 01771A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E19:HearthFires.esm
+      - Name: ''
+        Object: 01771A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DFC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E19:HearthFires.esm
+      - Name: ''
+        Object: 01771A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E11:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E97:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 010E85:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E99:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E85:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 010DF7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E98:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DFB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E97:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DFB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 010E86:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E99:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E86:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 010DFD:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E98:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DFD:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: EnableList
+      Objects:
+      - Name: ''
+        Object: 010E1B:HearthFires.esm
+      - Name: ''
+        Object: 010E1C:HearthFires.esm
+      - Name: ''
+        Object: 010E1D:HearthFires.esm
+      - Name: ''
+        Object: 010E1A:HearthFires.esm
+      - Name: ''
+        Object: 010E1F:HearthFires.esm
+      - Name: ''
+        Object: 010E1E:HearthFires.esm
+      - Name: ''
+        Object: 010E20:HearthFires.esm
+      - Name: ''
+        Object: 010DDF:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010E21:HearthFires.esm
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+        Object: 010E23:HearthFires.esm
+      - Name: ''
+        Object: 010E22:HearthFires.esm
+      - Name: ''
+        Object: 010E24:HearthFires.esm
+      - Name: ''
+        Object: 010E28:HearthFires.esm
+      - Name: ''
+        Object: 010E29:HearthFires.esm
+      - Name: ''
+        Object: 010E25:HearthFires.esm
+      - Name: ''
+        Object: 010E27:HearthFires.esm
+      - Name: ''
+        Object: 010E26:HearthFires.esm
+      - Name: ''
+        Object: 016E00:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DFF:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+        Object: 010DEA:HearthFires.esm
+      - Name: ''
+        Object: 010DEB:HearthFires.esm
+      - Name: ''
+        Object: 010DEC:HearthFires.esm
+      - Name: ''
+        Object: 010DED:HearthFires.esm
+      - Name: ''
+        Object: 010DEE:HearthFires.esm
+      - Name: ''
+        Object: 010DEF:HearthFires.esm
+      - Name: ''
+        Object: 010DF0:HearthFires.esm
+      - Name: ''
+        Object: 010DF1:HearthFires.esm
+      - Name: ''
+        Object: 010DDE:HearthFires.esm
+      - Name: ''
+        Object: 010E0A:HearthFires.esm
+      - Name: ''
+        Object: 010E0B:HearthFires.esm
+      - Name: ''
+        Object: 010E0C:HearthFires.esm
+      - Name: ''
+        Object: 010E0E:HearthFires.esm
+      - Name: ''
+        Object: 010E12:HearthFires.esm
+      - Name: ''
+        Object: 010E15:HearthFires.esm
+      - Name: ''
+        Object: 010E16:HearthFires.esm
+      - Name: ''
+        Object: 010E17:HearthFires.esm
+      - Name: ''
+        Object: 010DFF:HearthFires.esm
+      - Name: ''
+        Object: 010E09:HearthFires.esm
+      - Name: ''
+        Object: 010E58:HearthFires.esm
+      - Name: ''
+        Object: 010E3F:HearthFires.esm
+      - Name: ''
+        Object: 010E48:HearthFires.esm
+      - Name: ''
+        Object: 010E67:HearthFires.esm
+      - Name: ''
+        Object: 010E59:HearthFires.esm
+      - Name: ''
+        Object: 010E5A:HearthFires.esm
+      - Name: ''
+        Object: 010E5B:HearthFires.esm
+      - Name: ''
+        Object: 010DFF:HearthFires.esm
+      - Name: ''
+        Object: 010E09:HearthFires.esm
+      - Name: ''
+        Object: 010E58:HearthFires.esm
+      - Name: ''
+        Object: 010E3F:HearthFires.esm
+      - Name: ''
+        Object: 010E48:HearthFires.esm
+      - Name: ''
+        Object: 010E67:HearthFires.esm
+      - Name: ''
+        Object: 010E59:HearthFires.esm
+      - Name: ''
+        Object: 010E5A:HearthFires.esm
+      - Name: ''
+        Object: 010E5B:HearthFires.esm
+      - Name: ''
+        Object: 010DFF:HearthFires.esm
+      - Name: ''
+        Object: 010E09:HearthFires.esm
+      - Name: ''
+        Object: 010E58:HearthFires.esm
+      - Name: ''
+        Object: 010E3F:HearthFires.esm
+      - Name: ''
+        Object: 010E48:HearthFires.esm
+      - Name: ''
+        Object: 010E67:HearthFires.esm
+      - Name: ''
+        Object: 010E59:HearthFires.esm
+      - Name: ''
+        Object: 010E5A:HearthFires.esm
+      - Name: ''
+        Object: 010E5B:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010E00:HearthFires.esm
+      - Name: ''
+        Object: 010E01:HearthFires.esm
+      - Name: ''
+        Object: 010E02:HearthFires.esm
+      - Name: ''
+        Object: 010E08:HearthFires.esm
+      - Name: ''
+        Object: 010E18:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010E2B:HearthFires.esm
+      - Name: ''
+        Object: 010E2C:HearthFires.esm
+      - Name: ''
+        Object: 010E2D:HearthFires.esm
+      - Name: ''
+        Object: 010E2E:HearthFires.esm
+      - Name: ''
+        Object: 010E30:HearthFires.esm
+      - Name: ''
+        Object: 010E2F:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010E51:HearthFires.esm
+      - Name: ''
+        Object: 010E57:HearthFires.esm
+      - Name: ''
+        Object: 010E55:HearthFires.esm
+      - Name: ''
+        Object: 010E52:HearthFires.esm
+      - Name: ''
+        Object: 010E56:HearthFires.esm
+      - Name: ''
+        Object: 010E54:HearthFires.esm
+      - Name: ''
+        Object: 010E53:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010E40:HearthFires.esm
+      - Name: ''
+        Object: 010E41:HearthFires.esm
+      - Name: ''
+        Object: 010E42:HearthFires.esm
+      - Name: ''
+        Object: 010E43:HearthFires.esm
+      - Name: ''
+        Object: 010E44:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010E49:HearthFires.esm
+      - Name: ''
+        Object: 010E4A:HearthFires.esm
+      - Name: ''
+        Object: 010E4B:HearthFires.esm
+      - Name: ''
+        Object: 010E4C:HearthFires.esm
+      - Name: ''
+        Object: 010E4D:HearthFires.esm
+      - Name: ''
+        Object: 010E4E:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010E68:HearthFires.esm
+      - Name: ''
+        Object: 010E69:HearthFires.esm
+      - Name: ''
+        Object: 010E6A:HearthFires.esm
+      - Name: ''
+        Object: 010E6B:HearthFires.esm
+      - Name: ''
+        Object: 010E6C:HearthFires.esm
+      - Name: ''
+        Object: 010E6D:HearthFires.esm
+      - Name: ''
+        Object: 010E6E:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010E32:HearthFires.esm
+      - Name: ''
+        Object: 010E33:HearthFires.esm
+      - Name: ''
+        Object: 010E34:HearthFires.esm
+      - Name: ''
+        Object: 010E35:HearthFires.esm
+      - Name: ''
+        Object: 010E5C:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010E36:HearthFires.esm
+      - Name: ''
+        Object: 010E37:HearthFires.esm
+      - Name: ''
+        Object: 010E38:HearthFires.esm
+      - Name: ''
+        Object: 010E39:HearthFires.esm
+      - Name: ''
+        Object: 010E3A:HearthFires.esm
+      - Name: ''
+        Object: 010E5D:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010E5F:HearthFires.esm
+      - Name: ''
+        Object: 010E5E:HearthFires.esm
+      - Name: ''
+        Object: 010E60:HearthFires.esm
+      - Name: ''
+        Object: 010E62:HearthFires.esm
+      - Name: ''
+        Object: 010E64:HearthFires.esm
+      - Name: ''
+        Object: 010E61:HearthFires.esm
+      - Name: ''
+        Object: 010E63:HearthFires.esm
+      - Name: ''
+        Object: 016DCD:HearthFires.esm
+      - Name: ''
+        Object: 016D76:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DCA:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC9:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC8:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 016DC5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 0174B2:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E94:HearthFires.esm
+      - Name: ''
+        Object: 010E95:HearthFires.esm
+      - Name: ''
+        Object: 010E93:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010EAC:HearthFires.esm
+      - Name: ''
+        Object: 010EAD:HearthFires.esm
+      - Name: ''
+        Object: 010EAE:HearthFires.esm
+      - Name: ''
+        Object: 010EAF:HearthFires.esm
+      - Name: ''
+        Object: 010EB1:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010EB9:HearthFires.esm
+      - Name: ''
+        Object: 010EBA:HearthFires.esm
+      - Name: ''
+        Object: 010EBB:HearthFires.esm
+      - Name: ''
+        Object: 010EBC:HearthFires.esm
+      - Name: ''
+        Object: 010EBD:HearthFires.esm
+      - Name: ''
+        Object: 010EBE:HearthFires.esm
+      - Name: ''
+        Object: 010E06:HearthFires.esm
+      - Name: ''
+        Object: 010EC5:HearthFires.esm
+      - Name: ''
+        Object: 010EC6:HearthFires.esm
+      - Name: ''
+        Object: 010EC7:HearthFires.esm
+      - Name: ''
+        Object: 010EC8:HearthFires.esm
+      - Name: ''
+        Object: 010EC9:HearthFires.esm
+      - Name: ''
+        Object: 010ECA:HearthFires.esm
+      - Name: ''
+        Object: 010ECB:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010ED7:HearthFires.esm
+      - Name: ''
+        Object: 010ED8:HearthFires.esm
+      - Name: ''
+        Object: 010ED9:HearthFires.esm
+      - Name: ''
+        Object: 010EDA:HearthFires.esm
+      - Name: ''
+        Object: 010EAB:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010EE5:HearthFires.esm
+      - Name: ''
+        Object: 010EE6:HearthFires.esm
+      - Name: ''
+        Object: 010EE7:HearthFires.esm
+      - Name: ''
+        Object: 010EE8:HearthFires.esm
+      - Name: ''
+        Object: 010EE9:HearthFires.esm
+      - Name: ''
+        Object: 010EEA:HearthFires.esm
+      - Name: ''
+        Object: 010E72:HearthFires.esm
+      - Name: ''
+        Object: 010EF1:HearthFires.esm
+      - Name: ''
+        Object: 010EF2:HearthFires.esm
+      - Name: ''
+        Object: 010EF3:HearthFires.esm
+      - Name: ''
+        Object: 010EF4:HearthFires.esm
+      - Name: ''
+        Object: 010EF5:HearthFires.esm
+      - Name: ''
+        Object: 010EF6:HearthFires.esm
+      - Name: ''
+        Object: 010EF7:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010F01:HearthFires.esm
+      - Name: ''
+        Object: 010F02:HearthFires.esm
+      - Name: ''
+        Object: 010F03:HearthFires.esm
+      - Name: ''
+        Object: 010F04:HearthFires.esm
+      - Name: ''
+        Object: 010F06:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010F0D:HearthFires.esm
+      - Name: ''
+        Object: 010F0E:HearthFires.esm
+      - Name: ''
+        Object: 010F0F:HearthFires.esm
+      - Name: ''
+        Object: 010F10:HearthFires.esm
+      - Name: ''
+        Object: 010F11:HearthFires.esm
+      - Name: ''
+        Object: 010F12:HearthFires.esm
+      - Name: ''
+        Object: 010E74:HearthFires.esm
+      - Name: ''
+        Object: 010F19:HearthFires.esm
+      - Name: ''
+        Object: 010F1A:HearthFires.esm
+      - Name: ''
+        Object: 010F1B:HearthFires.esm
+      - Name: ''
+        Object: 010F1C:HearthFires.esm
+      - Name: ''
+        Object: 010F1D:HearthFires.esm
+      - Name: ''
+        Object: 010F1E:HearthFires.esm
+      - Name: ''
+        Object: 010F1F:HearthFires.esm
+      - Name: ''
+        Object: 010ECC:HearthFires.esm
+      - Name: ''
+        Object: 010EF8:HearthFires.esm
+      - Name: ''
+        Object: 010F20:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: EnableList2
+      Objects:
+      - Name: ''
+      - Name: ''
+        Object: 010DE0:HearthFires.esm
+      - Name: ''
+        Object: 010DE0:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E19:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010DF2:HearthFires.esm
+      - Name: ''
+        Object: 010DF5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E85:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010DF8:HearthFires.esm
+      - Name: ''
+        Object: 010DFB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E86:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+        Object: 010E96:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E0F:HearthFires.esm
+      - Name: ''
+        Object: 010E13:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 010E87:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E03:HearthFires.esm
+      - Name: ''
+        Object: 010E2A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEE:HearthFires.esm
+      - Name: ''
+        Object: 010E03:HearthFires.esm
+      - Name: ''
+        Object: 010E45:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEF:HearthFires.esm
+      - Name: ''
+        Object: 010E03:HearthFires.esm
+      - Name: ''
+        Object: 010E4F:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE0:HearthFires.esm
+      - Name: ''
+        Object: 010E76:HearthFires.esm
+      - Name: ''
+        Object: 010E3D:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD8:HearthFires.esm
+      - Name: ''
+        Object: 010E76:HearthFires.esm
+      - Name: ''
+        Object: 010E46:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DDA:HearthFires.esm
+      - Name: ''
+        Object: 010E76:HearthFires.esm
+      - Name: ''
+        Object: 010E65:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD6:HearthFires.esm
+      - Name: ''
+        Object: 010E78:HearthFires.esm
+      - Name: ''
+        Object: 010E3B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DED:HearthFires.esm
+      - Name: ''
+        Object: 010E78:HearthFires.esm
+      - Name: ''
+        Object: 010E7A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEC:HearthFires.esm
+      - Name: ''
+        Object: 010E78:HearthFires.esm
+      - Name: ''
+        Object: 010E70:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD3:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E89:HearthFires.esm
+      - Name: ''
+        Object: 010E2A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEE:HearthFires.esm
+      - Name: ''
+        Object: 010E89:HearthFires.esm
+      - Name: ''
+        Object: 010E45:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEF:HearthFires.esm
+      - Name: ''
+        Object: 010E89:HearthFires.esm
+      - Name: ''
+        Object: 010E4F:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE0:HearthFires.esm
+      - Name: ''
+        Object: 010E88:HearthFires.esm
+      - Name: ''
+        Object: 010E3D:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD8:HearthFires.esm
+      - Name: ''
+        Object: 010E88:HearthFires.esm
+      - Name: ''
+        Object: 010E46:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DDA:HearthFires.esm
+      - Name: ''
+        Object: 010E88:HearthFires.esm
+      - Name: ''
+        Object: 010E65:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD6:HearthFires.esm
+      - Name: ''
+        Object: 010E8A:HearthFires.esm
+      - Name: ''
+        Object: 010E3B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DED:HearthFires.esm
+      - Name: ''
+        Object: 010E8A:HearthFires.esm
+      - Name: ''
+        Object: 010E7A:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEC:HearthFires.esm
+      - Name: ''
+        Object: 010E8A:HearthFires.esm
+      - Name: ''
+        Object: 010E70:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DD3:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: EnableList3
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF3:HearthFires.esm
+      - Name: ''
+        Object: 010DF6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DED:HearthFires.esm
+      - Name: ''
+        Object: 010DFC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E0D:HearthFires.esm
+      - Name: ''
+        Object: 010E11:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E04:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+        Object: 010E04:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+        Object: 010E77:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+        Object: 010E77:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+        Object: 010E79:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+        Object: 010E79:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E8C:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+        Object: 010E8C:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DEB:HearthFires.esm
+      - Name: ''
+        Object: 010E8B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+        Object: 010E8B:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE6:HearthFires.esm
+      - Name: ''
+        Object: 010E8D:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+        Object: 010E8D:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DE1:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: EnableList4
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DF4:HearthFires.esm
+      - Name: ''
+        Object: 010DF7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010DFA:HearthFires.esm
+      - Name: ''
+        Object: 010DFD:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E10:HearthFires.esm
+      - Name: ''
+        Object: 010E14:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 016D76:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DCC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 016DCB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7C:HearthFires.esm
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 016DCA:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DC9:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 016DC8:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7D:HearthFires.esm
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+        Object: 016DC7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DC6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+        Object: 016DC5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7E:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 016D76:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DCC:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E05:HearthFires.esm
+      - Name: ''
+        Object: 016DCB:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7C:HearthFires.esm
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 016DCA:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DC9:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E71:HearthFires.esm
+      - Name: ''
+        Object: 016DC8:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7D:HearthFires.esm
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+        Object: 016DC7:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 016DC6:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E73:HearthFires.esm
+      - Name: ''
+        Object: 016DC5:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+        Object: 010E7E:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EndTable
+      Object: 009B89:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EntrywayChest
+      Object: 016E04:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: ExteriorEnableList
+      Objects:
+      - Name: ''
+        Object: 00C3C8:HearthFires.esm
+      - Name: ''
+        Object: 00C3C5:HearthFires.esm
+      - Name: ''
+        Object: 00C3C9:HearthFires.esm
+      - Name: ''
+        Object: 00C38B:HearthFires.esm
+      - Name: ''
+        Object: 00C390:HearthFires.esm
+      - Name: ''
+        Object: 00C391:HearthFires.esm
+      - Name: ''
+      - Name: ''
+        Object: 012A59:HearthFires.esm
+      - Name: ''
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HoldingChestRoom1
+      Object: 010FC9:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HorseCost
+      Object: 0F49BD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HouseCraftingTrigger
+      Object: 010FB9:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HouseHoldingChest
+      Object: 0030AF:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: houseLocation
+      Object: 010BEE:HearthFires.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HouseMapMarker
+      Object: 010DE8:HearthFires.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: iHouseIndex
+      Data: 2
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: InteriorSwapTriggers
+      Objects:
+      - Name: ''
+        Object: 010DDD:HearthFires.esm
+      - Name: ''
+        Object: 010DE9:HearthFires.esm
+      - Name: ''
+        Object: 010DFE:HearthFires.esm
+      - Name: ''
+        Object: 010E31:HearthFires.esm
+      - Name: ''
+        Object: 010E50:HearthFires.esm
+      - Name: ''
+        Object: 010E3E:HearthFires.esm
+      - Name: ''
+        Object: 010E47:HearthFires.esm
+      - Name: ''
+        Object: 010E66:HearthFires.esm
+      - Name: ''
+        Object: 010E3C:HearthFires.esm
+      - Name: ''
+        Object: 010E7B:HearthFires.esm
+      - Name: ''
+        Object: 010E6F:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: numCowsMax
+      Object: 003138:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room01AEnableList
+      Objects:
+      - Name: ''
+        Object: 016D0A:HearthFires.esm
+      - Name: ''
+        Object: 016D0C:HearthFires.esm
+      - Name: ''
+        Object: 016D0D:HearthFires.esm
+      - Name: ''
+        Object: 016D08:HearthFires.esm
+      - Name: ''
+        Object: 016D0B:HearthFires.esm
+      - Name: ''
+        Object: 016D0E:HearthFires.esm
+      - Name: ''
+        Object: 016CF8:HearthFires.esm
+      - Name: ''
+        Object: 016D09:HearthFires.esm
+      - Name: ''
+        Object: 016D06:HearthFires.esm
+      - Name: ''
+        Object: 016D07:HearthFires.esm
+      - Name: ''
+        Object: 016CEA:HearthFires.esm
+      - Name: ''
+        Object: 000921:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room01BEnableList
+      Objects:
+      - Name: ''
+        Object: 016CFB:HearthFires.esm
+      - Name: ''
+        Object: 016CFE:HearthFires.esm
+      - Name: ''
+        Object: 016D0C:HearthFires.esm
+      - Name: ''
+        Object: 016D08:HearthFires.esm
+      - Name: ''
+        Object: 016CFD:HearthFires.esm
+      - Name: ''
+        Object: 016D04:HearthFires.esm
+      - Name: ''
+        Object: 016D00:HearthFires.esm
+      - Name: ''
+        Object: 016D02:HearthFires.esm
+      - Name: ''
+        Object: 016D01:HearthFires.esm
+      - Name: ''
+        Object: 016D09:HearthFires.esm
+      - Name: ''
+        Object: 016CFF:HearthFires.esm
+      - Name: ''
+        Object: 016D06:HearthFires.esm
+      - Name: ''
+        Object: 016CFC:HearthFires.esm
+      - Name: ''
+        Object: 016CF9:HearthFires.esm
+      - Name: ''
+        Object: 016CF7:HearthFires.esm
+      - Name: ''
+        Object: 016CEC:HearthFires.esm
+      - Name: ''
+        Object: 016CF4:HearthFires.esm
+      - Name: ''
+        Object: 016D03:HearthFires.esm
+      - Name: ''
+        Object: 000921:HearthFires.esm
+      - Name: ''
+        Object: 016CFA:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room01RemodelDisableList
+      Objects:
+      - Name: ''
+        Object: 016D0A:HearthFires.esm
+      - Name: ''
+        Object: 016D0D:HearthFires.esm
+      - Name: ''
+        Object: 016D0B:HearthFires.esm
+      - Name: ''
+        Object: 016CF8:HearthFires.esm
+      - Name: ''
+        Object: 016D07:HearthFires.esm
+      - Name: ''
+        Object: 016CEA:HearthFires.esm
+      - Name: ''
+        Object: 016D0E:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room01RemodelEnableList
+      Objects:
+      - Name: ''
+        Object: 016DA1:HearthFires.esm
+      - Name: ''
+        Object: 016D8D:HearthFires.esm
+      - Name: ''
+        Object: 016DAD:HearthFires.esm
+      - Name: ''
+        Object: 016DBF:HearthFires.esm
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room02EnableList
+      Objects:
+      - Name: ''
+        Object: 016DC0:HearthFires.esm
+      - Name: ''
+        Object: 016DA5:HearthFires.esm
+      - Name: ''
+        Object: 016D9C:HearthFires.esm
+      - Name: ''
+        Object: 016DA0:HearthFires.esm
+      - Name: ''
+        Object: 016DA2:HearthFires.esm
+      - Name: ''
+        Object: 016D9E:HearthFires.esm
+      - Name: ''
+        Object: 016D9F:HearthFires.esm
+      - Name: ''
+        Object: 016D8E:HearthFires.esm
+      - Name: ''
+        Object: 016D85:HearthFires.esm
+      - Name: ''
+        Object: 016D8A:HearthFires.esm
+      - Name: ''
+        Object: 016D86:HearthFires.esm
+      - Name: ''
+        Object: 016DA7:HearthFires.esm
+      - Name: ''
+        Object: 016DA4:HearthFires.esm
+      - Name: ''
+        Object: 016D89:HearthFires.esm
+      - Name: ''
+        Object: 016D88:HearthFires.esm
+      - Name: ''
+        Object: 016D87:HearthFires.esm
+      - Name: ''
+        Object: 016D8C:HearthFires.esm
+      - Name: ''
+        Object: 016D83:HearthFires.esm
+      - Name: ''
+        Object: 016D96:HearthFires.esm
+      - Name: ''
+        Object: 016DA8:HearthFires.esm
+      - Name: ''
+        Object: 016D14:HearthFires.esm
+      - Name: ''
+        Object: 016D97:HearthFires.esm
+      - Name: ''
+        Object: 016D94:HearthFires.esm
+      - Name: ''
+        Object: 016D98:HearthFires.esm
+      - Name: ''
+        Object: 016D93:HearthFires.esm
+      - Name: ''
+        Object: 016D95:HearthFires.esm
+      - Name: ''
+        Object: 016D99:HearthFires.esm
+      - Name: ''
+        Object: 016DA9:HearthFires.esm
+      - Name: ''
+        Object: 016DBD:HearthFires.esm
+      - Name: ''
+        Object: 016DBE:HearthFires.esm
+      - Name: ''
+        Object: 016D8D:HearthFires.esm
+      - Name: ''
+        Object: 016DAF:HearthFires.esm
+      - Name: ''
+        Object: 016DB1:HearthFires.esm
+      - Name: ''
+        Object: 016DB0:HearthFires.esm
+      - Name: ''
+        Object: 016DB2:HearthFires.esm
+      - Name: ''
+        Object: 016DAD:HearthFires.esm
+      - Name: ''
+        Object: 016DBF:HearthFires.esm
+      - Name: ''
+        Object: 016DB4:HearthFires.esm
+      - Name: ''
+        Object: 016DB5:HearthFires.esm
+      - Name: ''
+        Object: 016DA6:HearthFires.esm
+      - Name: ''
+        Object: 016DB7:HearthFires.esm
+      - Name: ''
+        Object: 016DB9:HearthFires.esm
+      - Name: ''
+        Object: 016DB6:HearthFires.esm
+      - Name: ''
+        Object: 016DB8:HearthFires.esm
+      - Name: ''
+        Object: 016D16:HearthFires.esm
+      - Name: ''
+        Object: 016DB3:HearthFires.esm
+      - Name: ''
+        Object: 016D8F:HearthFires.esm
+      - Name: ''
+        Object: 016DAA:HearthFires.esm
+      - Name: ''
+        Object: 016DAC:HearthFires.esm
+      - Name: ''
+        Object: 016DAB:HearthFires.esm
+      - Name: ''
+        Object: 016D84:HearthFires.esm
+      - Name: ''
+        Object: 016DBA:HearthFires.esm
+      - Name: ''
+        Object: 016D90:HearthFires.esm
+      - Name: ''
+        Object: 016D91:HearthFires.esm
+      - Name: ''
+        Object: 016DBB:HearthFires.esm
+      - Name: ''
+        Object: 016DBC:HearthFires.esm
+      - Name: ''
+        Object: 016DAE:HearthFires.esm
+      - Name: ''
+        Object: 016D9D:HearthFires.esm
+      - Name: ''
+        Object: 016D9B:HearthFires.esm
+      - Name: ''
+        Object: 016D82:HearthFires.esm
+      - Name: ''
+        Object: 016D9A:HearthFires.esm
+      - Name: ''
+        Object: 016D8B:HearthFires.esm
+      - Name: ''
+        Object: 0009B3:HearthFires.esm
+      - Name: ''
+        Object: 016DA1:HearthFires.esm
+      - Name: ''
+        Object: 016DA3:HearthFires.esm
+      - Name: ''
+        Object: 016D15:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room03EnableList
+      Objects:
+      - Name: ''
+        Object: 016D63:HearthFires.esm
+      - Name: ''
+        Object: 016D65:HearthFires.esm
+      - Name: ''
+        Object: 016D69:HearthFires.esm
+      - Name: ''
+        Object: 016D6C:HearthFires.esm
+      - Name: ''
+        Object: 016D66:HearthFires.esm
+      - Name: ''
+        Object: 016D67:HearthFires.esm
+      - Name: ''
+        Object: 016D6F:HearthFires.esm
+      - Name: ''
+        Object: 016D6E:HearthFires.esm
+      - Name: ''
+        Object: 016D58:HearthFires.esm
+      - Name: ''
+        Object: 016D60:HearthFires.esm
+      - Name: ''
+        Object: 016D6B:HearthFires.esm
+      - Name: ''
+        Object: 016D5F:HearthFires.esm
+      - Name: ''
+        Object: 016D6D:HearthFires.esm
+      - Name: ''
+        Object: 016D73:HearthFires.esm
+      - Name: ''
+        Object: 016D70:HearthFires.esm
+      - Name: ''
+        Object: 016D6A:HearthFires.esm
+      - Name: ''
+        Object: 016D61:HearthFires.esm
+      - Name: ''
+        Object: 016D75:HearthFires.esm
+      - Name: ''
+        Object: 016D74:HearthFires.esm
+      - Name: ''
+        Object: 016D62:HearthFires.esm
+      - Name: ''
+        Object: 016D68:HearthFires.esm
+      - Name: ''
+        Object: 016D64:HearthFires.esm
+      - Name: ''
+        Object: 016D5C:HearthFires.esm
+      - Name: ''
+        Object: 010E9F:HearthFires.esm
+      - Name: ''
+        Object: 010E9B:HearthFires.esm
+      - Name: ''
+        Object: 010E9C:HearthFires.esm
+      - Name: ''
+        Object: 010EA3:HearthFires.esm
+      - Name: ''
+        Object: 010E9E:HearthFires.esm
+      - Name: ''
+        Object: 010E9D:HearthFires.esm
+      - Name: ''
+        Object: 010E9A:HearthFires.esm
+      - Name: ''
+        Object: 010EA0:HearthFires.esm
+      - Name: ''
+        Object: 016D5E:HearthFires.esm
+      - Name: ''
+        Object: 016D5D:HearthFires.esm
+      - Name: ''
+        Object: 00094A:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room04EnableList
+      Objects:
+      - Name: ''
+        Object: 016A96:HearthFires.esm
+      - Name: ''
+        Object: 016A86:HearthFires.esm
+      - Name: ''
+        Object: 016A8C:HearthFires.esm
+      - Name: ''
+        Object: 016A88:HearthFires.esm
+      - Name: ''
+        Object: 016A95:HearthFires.esm
+      - Name: ''
+        Object: 016A8D:HearthFires.esm
+      - Name: ''
+        Object: 016A8E:HearthFires.esm
+      - Name: ''
+        Object: 016A82:HearthFires.esm
+      - Name: ''
+        Object: 016A84:HearthFires.esm
+      - Name: ''
+        Object: 016A89:HearthFires.esm
+      - Name: ''
+        Object: 016A87:HearthFires.esm
+      - Name: ''
+        Object: 016A85:HearthFires.esm
+      - Name: ''
+        Object: 016A8B:HearthFires.esm
+      - Name: ''
+        Object: 016A7F:HearthFires.esm
+      - Name: ''
+        Object: 016A9A:HearthFires.esm
+      - Name: ''
+        Object: 016A9E:HearthFires.esm
+      - Name: ''
+        Object: 016A93:HearthFires.esm
+      - Name: ''
+        Object: 016A90:HearthFires.esm
+      - Name: ''
+        Object: 016A97:HearthFires.esm
+      - Name: ''
+        Object: 016AA0:HearthFires.esm
+      - Name: ''
+        Object: 016AA4:HearthFires.esm
+      - Name: ''
+        Object: 016AB1:HearthFires.esm
+      - Name: ''
+        Object: 016AA3:HearthFires.esm
+      - Name: ''
+        Object: 016A8A:HearthFires.esm
+      - Name: ''
+        Object: 016A83:HearthFires.esm
+      - Name: ''
+        Object: 016A81:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room05EnableList
+      Objects:
+      - Name: ''
+        Object: 016B32:HearthFires.esm
+      - Name: ''
+        Object: 016B35:HearthFires.esm
+      - Name: ''
+        Object: 016B36:HearthFires.esm
+      - Name: ''
+        Object: 016B38:HearthFires.esm
+      - Name: ''
+        Object: 016B30:HearthFires.esm
+      - Name: ''
+        Object: 016B33:HearthFires.esm
+      - Name: ''
+        Object: 016B42:HearthFires.esm
+      - Name: ''
+        Object: 016B41:HearthFires.esm
+      - Name: ''
+        Object: 016B34:HearthFires.esm
+      - Name: ''
+        Object: 016B37:HearthFires.esm
+      - Name: ''
+        Object: 016B3B:HearthFires.esm
+      - Name: ''
+        Object: 016B3C:HearthFires.esm
+      - Name: ''
+        Object: 016B40:HearthFires.esm
+      - Name: ''
+        Object: 016B39:HearthFires.esm
+      - Name: ''
+        Object: 016B3A:HearthFires.esm
+      - Name: ''
+        Object: 016B3F:HearthFires.esm
+      - Name: ''
+        Object: 010F29:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room06EnableList
+      Objects:
+      - Name: ''
+        Object: 016B11:HearthFires.esm
+      - Name: ''
+        Object: 016B1C:HearthFires.esm
+      - Name: ''
+        Object: 016B21:HearthFires.esm
+      - Name: ''
+        Object: 016B10:HearthFires.esm
+      - Name: ''
+        Object: 016B1E:HearthFires.esm
+      - Name: ''
+        Object: 016B26:HearthFires.esm
+      - Name: ''
+        Object: 016B27:HearthFires.esm
+      - Name: ''
+        Object: 016B14:HearthFires.esm
+      - Name: ''
+        Object: 016B19:HearthFires.esm
+      - Name: ''
+        Object: 016B28:HearthFires.esm
+      - Name: ''
+        Object: 016B25:HearthFires.esm
+      - Name: ''
+        Object: 016B15:HearthFires.esm
+      - Name: ''
+        Object: 016B0D:HearthFires.esm
+      - Name: ''
+        Object: 016B0B:HearthFires.esm
+      - Name: ''
+        Object: 016B0C:HearthFires.esm
+      - Name: ''
+        Object: 016B1F:HearthFires.esm
+      - Name: ''
+        Object: 016B13:HearthFires.esm
+      - Name: ''
+        Object: 016B0E:HearthFires.esm
+      - Name: ''
+        Object: 010F30:HearthFires.esm
+      - Name: ''
+        Object: 010EA5:HearthFires.esm
+      - Name: ''
+        Object: 010EA4:HearthFires.esm
+      - Name: ''
+        Object: 010F31:HearthFires.esm
+      - Name: ''
+        Object: 010F2E:HearthFires.esm
+      - Name: ''
+        Object: 010F2D:HearthFires.esm
+      - Name: ''
+        Object: 010EA6:HearthFires.esm
+      - Name: ''
+        Object: 016B22:HearthFires.esm
+      - Name: ''
+        Object: 016B1A:HearthFires.esm
+      - Name: ''
+        Object: 016B0F:HearthFires.esm
+      - Name: ''
+        Object: 016B20:HearthFires.esm
+      - Name: ''
+        Object: 016B23:HearthFires.esm
+      - Name: ''
+        Object: 016B1B:HearthFires.esm
+      - Name: ''
+        Object: 016B18:HearthFires.esm
+      - Name: ''
+        Object: 016B12:HearthFires.esm
+      - Name: ''
+        Object: 016B16:HearthFires.esm
+      - Name: ''
+        Object: 016B17:HearthFires.esm
+      - Name: ''
+        Object: 016B24:HearthFires.esm
+      - Name: ''
+        Object: 016B1D:HearthFires.esm
+      - Name: ''
+        Object: 000949:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room07EnableList
+      Objects:
+      - Name: ''
+        Object: 016CE4:HearthFires.esm
+      - Name: ''
+        Object: 016CE8:HearthFires.esm
+      - Name: ''
+        Object: 016CE3:HearthFires.esm
+      - Name: ''
+        Object: 016CE5:HearthFires.esm
+      - Name: ''
+        Object: 016CE9:HearthFires.esm
+      - Name: ''
+        Object: 016CDD:HearthFires.esm
+      - Name: ''
+        Object: 016CE6:HearthFires.esm
+      - Name: ''
+        Object: 016CE2:HearthFires.esm
+      - Name: ''
+        Object: 016CE7:HearthFires.esm
+      - Name: ''
+        Object: 016CDF:HearthFires.esm
+      - Name: ''
+        Object: 016CDB:HearthFires.esm
+      - Name: ''
+        Object: 016CDC:HearthFires.esm
+      - Name: ''
+        Object: 016CE0:HearthFires.esm
+      - Name: ''
+        Object: 016CDE:HearthFires.esm
+      - Name: ''
+        Object: 016CD8:HearthFires.esm
+      - Name: ''
+        Object: 016CD5:HearthFires.esm
+      - Name: ''
+        Object: 016CD6:HearthFires.esm
+      - Name: ''
+        Object: 016CD7:HearthFires.esm
+      - Name: ''
+        Object: 016CDA:HearthFires.esm
+      - Name: ''
+        Object: 016CD4:HearthFires.esm
+      - Name: ''
+        Object: 016CD3:HearthFires.esm
+      - Name: ''
+        Object: 016CE1:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room08EnableList
+      Objects:
+      - Name: ''
+        Object: 016AB6:HearthFires.esm
+      - Name: ''
+        Object: 016AC4:HearthFires.esm
+      - Name: ''
+        Object: 016AC9:HearthFires.esm
+      - Name: ''
+        Object: 016ABE:HearthFires.esm
+      - Name: ''
+        Object: 016AC3:HearthFires.esm
+      - Name: ''
+        Object: 016AC7:HearthFires.esm
+      - Name: ''
+        Object: 016AB9:HearthFires.esm
+      - Name: ''
+        Object: 016AB8:HearthFires.esm
+      - Name: ''
+        Object: 016AB7:HearthFires.esm
+      - Name: ''
+        Object: 016AC2:HearthFires.esm
+      - Name: ''
+        Object: 016ABC:HearthFires.esm
+      - Name: ''
+        Object: 016ABD:HearthFires.esm
+      - Name: ''
+        Object: 016AC8:HearthFires.esm
+      - Name: ''
+        Object: 016ABA:HearthFires.esm
+      - Name: ''
+        Object: 016AC5:HearthFires.esm
+      - Name: ''
+        Object: 016AB4:HearthFires.esm
+      - Name: ''
+        Object: 016ABB:HearthFires.esm
+      - Name: ''
+        Object: 016AB2:HearthFires.esm
+      - Name: ''
+        Object: 016ABF:HearthFires.esm
+      - Name: ''
+        Object: 016AC6:HearthFires.esm
+      - Name: ''
+        Object: 016AB5:HearthFires.esm
+      - Name: ''
+        Object: 016AC1:HearthFires.esm
+      - Name: ''
+        Object: 016AC0:HearthFires.esm
+      - Name: ''
+        Object: 016AB3:HearthFires.esm
+      - Name: ''
+        Object: 010F32:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room09EnableList
+      Objects:
+      - Name: ''
+        Object: 016ACA:HearthFires.esm
+      - Name: ''
+        Object: 016AFF:HearthFires.esm
+      - Name: ''
+        Object: 016AF9:HearthFires.esm
+      - Name: ''
+        Object: 016AF4:HearthFires.esm
+      - Name: ''
+        Object: 016AFE:HearthFires.esm
+      - Name: ''
+        Object: 016AD5:HearthFires.esm
+      - Name: ''
+        Object: 016B00:HearthFires.esm
+      - Name: ''
+        Object: 016AD0:HearthFires.esm
+      - Name: ''
+        Object: 016AD1:HearthFires.esm
+      - Name: ''
+        Object: 016AD2:HearthFires.esm
+      - Name: ''
+        Object: 016AD3:HearthFires.esm
+      - Name: ''
+        Object: 016ACD:HearthFires.esm
+      - Name: ''
+        Object: 010F2B:HearthFires.esm
+      - Name: ''
+        Object: 010F2C:HearthFires.esm
+      - Name: ''
+        Object: 010F2A:HearthFires.esm
+      - Name: ''
+        Object: 010EA1:HearthFires.esm
+      - Name: ''
+        Object: 010F2F:HearthFires.esm
+      - Name: ''
+        Object: 010EA2:HearthFires.esm
+      - Name: ''
+        Object: 016ACC:HearthFires.esm
+      - Name: ''
+        Object: 016ACE:HearthFires.esm
+      - Name: ''
+        Object: 016AFD:HearthFires.esm
+      - Name: ''
+        Object: 016ACB:HearthFires.esm
+      - Name: ''
+        Object: 016ACF:HearthFires.esm
+      - Name: ''
+        Object: 016AFB:HearthFires.esm
+      - Name: ''
+        Object: 016AFA:HearthFires.esm
+      - Name: ''
+        Object: 016AF8:HearthFires.esm
+      - Name: ''
+        Object: 016AF5:HearthFires.esm
+      - Name: ''
+        Object: 016AF6:HearthFires.esm
+      - Name: ''
+        Object: 016B05:HearthFires.esm
+      - Name: ''
+        Object: 016B03:HearthFires.esm
+      - Name: ''
+        Object: 016B01:HearthFires.esm
+      - Name: ''
+        Object: 016AF2:HearthFires.esm
+      - Name: ''
+        Object: 016B07:HearthFires.esm
+      - Name: ''
+        Object: 016B08:HearthFires.esm
+      - Name: ''
+        Object: 016AFC:HearthFires.esm
+      - Name: ''
+        Object: 016AD4:HearthFires.esm
+      - Name: ''
+        Object: 000944:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room10EnableList
+      Objects:
+      - Name: ''
+        Object: 016A7E:HearthFires.esm
+      - Name: ''
+        Object: 016A6D:HearthFires.esm
+      - Name: ''
+        Object: 016A76:HearthFires.esm
+      - Name: ''
+        Object: 016A6B:HearthFires.esm
+      - Name: ''
+        Object: 016A6C:HearthFires.esm
+      - Name: ''
+        Object: 016A75:HearthFires.esm
+      - Name: ''
+        Object: 016A7C:HearthFires.esm
+      - Name: ''
+        Object: 016A6F:HearthFires.esm
+      - Name: ''
+        Object: 016A79:HearthFires.esm
+      - Name: ''
+        Object: 016A7A:HearthFires.esm
+      - Name: ''
+        Object: 016A69:HearthFires.esm
+      - Name: ''
+        Object: 016A6E:HearthFires.esm
+      - Name: ''
+        Object: 016A77:HearthFires.esm
+      - Name: ''
+        Object: 016A6A:HearthFires.esm
+      - Name: ''
+        Object: 016A74:HearthFires.esm
+      - Name: ''
+        Object: 016A72:HearthFires.esm
+      - Name: ''
+        Object: 016A70:HearthFires.esm
+      - Name: ''
+        Object: 016A66:HearthFires.esm
+      - Name: ''
+        Object: 016A78:HearthFires.esm
+      - Name: ''
+        Object: 016A7B:HearthFires.esm
+      - Name: ''
+        Object: 016A7D:HearthFires.esm
+      - Name: ''
+        Object: 016A68:HearthFires.esm
+      - Name: ''
+        Object: 016A71:HearthFires.esm
+      - Name: ''
+        Object: 016A73:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room11EnableList
+      Objects:
+      - Name: ''
+        Object: 016CC1:HearthFires.esm
+      - Name: ''
+        Object: 016CC3:HearthFires.esm
+      - Name: ''
+        Object: 016CC6:HearthFires.esm
+      - Name: ''
+        Object: 016B5E:HearthFires.esm
+      - Name: ''
+        Object: 016CC2:HearthFires.esm
+      - Name: ''
+        Object: 016B43:HearthFires.esm
+      - Name: ''
+        Object: 016C53:HearthFires.esm
+      - Name: ''
+        Object: 016C6E:HearthFires.esm
+      - Name: ''
+        Object: 016C1E:HearthFires.esm
+      - Name: ''
+        Object: 016C89:HearthFires.esm
+      - Name: ''
+        Object: 016BE8:HearthFires.esm
+      - Name: ''
+        Object: 016BAE:HearthFires.esm
+      - Name: ''
+        Object: 016B79:HearthFires.esm
+      - Name: ''
+        Object: 016CC4:HearthFires.esm
+      - Name: ''
+        Object: 016CC5:HearthFires.esm
+      - Name: ''
+        Object: 010F33:HearthFires.esm
+      - Name: ''
+        Object: 016CC7:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room12EnableList
+      Objects:
+      - Name: ''
+        Object: 017482:HearthFires.esm
+      - Name: ''
+        Object: 01747D:HearthFires.esm
+      - Name: ''
+        Object: 017489:HearthFires.esm
+      - Name: ''
+        Object: 01748C:HearthFires.esm
+      - Name: ''
+        Object: 017469:HearthFires.esm
+      - Name: ''
+        Object: 017480:HearthFires.esm
+      - Name: ''
+        Object: 017485:HearthFires.esm
+      - Name: ''
+        Object: 017483:HearthFires.esm
+      - Name: ''
+        Object: 0174A7:HearthFires.esm
+      - Name: ''
+        Object: 0174AE:HearthFires.esm
+      - Name: ''
+        Object: 017484:HearthFires.esm
+      - Name: ''
+        Object: 017498:HearthFires.esm
+      - Name: ''
+        Object: 017492:HearthFires.esm
+      - Name: ''
+        Object: 017478:HearthFires.esm
+      - Name: ''
+        Object: 017479:HearthFires.esm
+      - Name: ''
+        Object: 017465:HearthFires.esm
+      - Name: ''
+        Object: 01748B:HearthFires.esm
+      - Name: ''
+        Object: 01748D:HearthFires.esm
+      - Name: ''
+        Object: 017477:HearthFires.esm
+      - Name: ''
+        Object: 01747C:HearthFires.esm
+      - Name: ''
+        Object: 017474:HearthFires.esm
+      - Name: ''
+        Object: 01747A:HearthFires.esm
+      - Name: ''
+        Object: 017476:HearthFires.esm
+      - Name: ''
+        Object: 01749A:HearthFires.esm
+      - Name: ''
+        Object: 01746A:HearthFires.esm
+      - Name: ''
+        Object: 017494:HearthFires.esm
+      - Name: ''
+        Object: 017493:HearthFires.esm
+      - Name: ''
+        Object: 017496:HearthFires.esm
+      - Name: ''
+        Object: 017466:HearthFires.esm
+      - Name: ''
+        Object: 017468:HearthFires.esm
+      - Name: ''
+        Object: 017486:HearthFires.esm
+      - Name: ''
+        Object: 017491:HearthFires.esm
+      - Name: ''
+        Object: 01748A:HearthFires.esm
+      - Name: ''
+        Object: 017495:HearthFires.esm
+      - Name: ''
+        Object: 017475:HearthFires.esm
+      - Name: ''
+        Object: 017487:HearthFires.esm
+      - Name: ''
+        Object: 017488:HearthFires.esm
+      - Name: ''
+        Object: 017481:HearthFires.esm
+      - Name: ''
+        Object: 017464:HearthFires.esm
+      - Name: ''
+        Object: 000804:HearthFires.esm
+      - Name: ''
+        Object: 01747B:HearthFires.esm
+      - Name: ''
+        Object: 01746B:HearthFires.esm
+      - Name: ''
+        Object: 01746E:HearthFires.esm
+      - Name: ''
+        Object: 01746F:HearthFires.esm
+      - Name: ''
+        Object: 017470:HearthFires.esm
+      - Name: ''
+        Object: 017473:HearthFires.esm
+      - Name: ''
+        Object: 017472:HearthFires.esm
+      - Name: ''
+        Object: 017471:HearthFires.esm
+      - Name: ''
+        Object: 01746D:HearthFires.esm
+      - Name: ''
+        Object: 01746C:HearthFires.esm
+      - Name: ''
+        Object: 0180BF:HearthFires.esm
+      - Name: ''
+        Object: 017467:HearthFires.esm
+      - Name: ''
+        Object: 000B5B:HearthFires.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: Room1MaxIndex
+      Data: 6
+    - MutagenObjectType: ScriptIntProperty
+      Name: Room1WorkbenchIndex
+      Data: 20
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room3Rail
+      Objects:
+      - Name: ''
+        Object: 010E81:HearthFires.esm
+      - Name: ''
+        Object: 010EB0:HearthFires.esm
+      - Name: ''
+        Object: 010EB4:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room6BridgeLeft
+      Objects:
+      - Name: ''
+        Object: 010E84:HearthFires.esm
+      - Name: ''
+        Object: 010ED5:HearthFires.esm
+      - Name: ''
+        Object: 010EDD:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Room6BridgeLeftNavCut
+      Object: 010EA9:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room6BridgeRight
+      Objects:
+      - Name: ''
+        Object: 010E83:HearthFires.esm
+      - Name: ''
+        Object: 010ED6:HearthFires.esm
+      - Name: ''
+        Object: 010EDE:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Room6BridgeRightNavCut
+      Object: 010EAA:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room6RailLeft
+      Objects:
+      - Name: ''
+        Object: 010E7F:HearthFires.esm
+      - Name: ''
+        Object: 010EDB:HearthFires.esm
+      - Name: ''
+        Object: 010EE3:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room6RailRight
+      Objects:
+      - Name: ''
+        Object: 010E80:HearthFires.esm
+      - Name: ''
+        Object: 010EDC:HearthFires.esm
+      - Name: ''
+        Object: 010EE4:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: Room9Rail
+      Objects:
+      - Name: ''
+        Object: 010E82:HearthFires.esm
+      - Name: ''
+        Object: 010F05:HearthFires.esm
+      - Name: ''
+        Object: 010F0B:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: RoomDisableList
+      Objects:
+      - Name: ''
+      - Name: ''
+        Object: 016E09:HearthFires.esm
+      - Name: ''
+        Object: 016E07:HearthFires.esm
+      - Name: ''
+        Object: 016E07:HearthFires.esm
+      - Name: ''
+        Object: 016E07:HearthFires.esm
+      - Name: ''
+        Object: 016E08:HearthFires.esm
+      - Name: ''
+        Object: 016E08:HearthFires.esm
+      - Name: ''
+        Object: 016E08:HearthFires.esm
+      - Name: ''
+        Object: 016DF0:HearthFires.esm
+      - Name: ''
+        Object: 016DF0:HearthFires.esm
+      - Name: ''
+        Object: 016DF0:HearthFires.esm
+      - Name: ''
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RoomDoneFlags
+      Object: 010C05:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: RoomEnableList
+      Objects:
+      - Name: ''
+        Object: 010DDD:HearthFires.esm
+      - Name: ''
+        Object: 010DE9:HearthFires.esm
+      - Name: ''
+        Object: 010DFE:HearthFires.esm
+      - Name: ''
+        Object: 010E31:HearthFires.esm
+      - Name: ''
+        Object: 010E50:HearthFires.esm
+      - Name: ''
+        Object: 010E3E:HearthFires.esm
+      - Name: ''
+        Object: 010E47:HearthFires.esm
+      - Name: ''
+        Object: 010E66:HearthFires.esm
+      - Name: ''
+        Object: 010E3C:HearthFires.esm
+      - Name: ''
+        Object: 010E7B:HearthFires.esm
+      - Name: ''
+        Object: 010E6F:HearthFires.esm
+      - Name: ''
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: RoomHoldingChests
+      Objects:
+      - Name: ''
+        Object: 010FC9:HearthFires.esm
+      - Name: ''
+        Object: 010FC9:HearthFires.esm
+      - Name: ''
+        Object: 010FC1:HearthFires.esm
+      - Name: ''
+        Object: 010FC2:HearthFires.esm
+      - Name: ''
+        Object: 010FC3:HearthFires.esm
+      - Name: ''
+        Object: 010FC4:HearthFires.esm
+      - Name: ''
+        Object: 010FC5:HearthFires.esm
+      - Name: ''
+        Object: 010FC6:HearthFires.esm
+      - Name: ''
+        Object: 010FCB:HearthFires.esm
+      - Name: ''
+        Object: 010FCA:HearthFires.esm
+      - Name: ''
+        Object: 010FC8:HearthFires.esm
+      - Name: ''
+        Object: 010FC7:HearthFires.esm
+      - Name: ''
+        Object: 010FCC:HearthFires.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: RoomStartDisableList
+      Objects:
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+      - Name: ''
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RoomStartedFlags
+      Object: 000C02:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SiteEnableMarker
+      Object: 00C3C6:HearthFires.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StewardChest
+      Object: 010FCE:HearthFires.esm
+  FileName: BYOH_QF_BYOHHousePale_01010BEE
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_23
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_5
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_14
+  - Stage: 30
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_27
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_10
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_1
+  - Stage: 100
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_25
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_12
+  - Stage: 120
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_20
+  - Stage: 130
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_21
+  - Stage: 1010
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_3
+  - Stage: 1020
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_4
+  - Stage: 1030
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_15
+  - Stage: 1060
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_16
+  - Stage: 1090
+    Unknown2: 1
+    ScriptName: BYOH_QF_BYOHHousePale_01010BEE
+    FragmentName: Fragment_18
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 010BEE:HearthFires.esm
+      Alias: 0
+    Scripts:
+    - Name: SwapJobAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: JobFaction
+        Object: 03662A:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MasterJobAlias
+        Object: 03829F:Skyrim.esm
+        Alias: 0
+  - Property:
+      Name: ''
+      Object: 010BEE:HearthFires.esm
+      Alias: 1
+    Scripts:
+    - Name: SwapJobAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: JobFaction
+        Object: 03662A:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MasterJobAlias
+        Object: 03829F:Skyrim.esm
+        Alias: 0
+  - Property:
+      Name: ''
+      Object: 010BEE:HearthFires.esm
+      Alias: 9
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 10
+Flags:
+- 0x10
+- 0x1000
+Priority: 50
+QuestFormVersion: 65
+Type: Misc
+TextDisplayGlobals:
+- 003079:HearthFires.esm
+- 003135:HearthFires.esm
+- 003136:HearthFires.esm
+- 003137:HearthFires.esm
+- 007A8C:HearthFires.esm
+- 000039:Skyrim.esm
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetStageDoneConditionData
+        Quest: 010BEE:HearthFires.esm
+        Stage: 50
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetStageDoneConditionData
+        Quest: 00BE09:HearthFires.esm
+        Stage: 100
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetStageDoneConditionData
+        Quest: 00305E:HearthFires.esm
+        Stage: 100
+      ComparisonValue: 1
+- Index: 110
+  LogEntries:
+  - Flags: []
+- Index: 120
+  LogEntries:
+  - Flags: []
+- Index: 130
+  LogEntries:
+  - Flags: []
+- Index: 1010
+  LogEntries:
+  - Flags: []
+- Index: 1020
+  LogEntries:
+  - Flags: []
+- Index: 1030
+  LogEntries:
+  - Flags: []
+- Index: 1040
+- Index: 1050
+- Index: 1060
+  LogEntries:
+  - Flags: []
+- Index: 1070
+- Index: 1080
+- Index: 1090
+  LogEntries:
+  - Flags: []
+- Index: 1100
+- Index: 1110
+- Index: 1120
+NextAliasID: 16
+Aliases:
+- Name: Jarl
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  - AllowDead
+  - AllowDisabled
+  - StoresText
+  - AllowReserved
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInFactionConditionData
+      Faction: 03662A:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsIDConditionData
+      Object: 013620:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsIDConditionData
+      Object: 01A6B7:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 1
+  Name: Steward
+  Flags:
+  - Optional
+  - AllowReuseInQuest
+  - AllowDead
+  - AllowDisabled
+  - StoresText
+  - AllowReserved
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInFactionConditionData
+      Faction: 03662A:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsIDConditionData
+      Object: 013620:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Flags:
+    - OR
+    Data:
+      MutagenObjectType: GetIsIDConditionData
+      Object: 01A6B7:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 11
+  Type: Location
+  Name: HouseLocation
+  Flags: []
+  SpecificLocation: 00520A:HearthFires.esm
+- ID: 3
+  Name: HouseInteriorMarker
+  Flags: []
+  ForcedReference: 016E05:HearthFires.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: DraftingTable
+  Flags:
+  - AllowDisabled
+  ForcedReference: 00C3B1:HearthFires.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: CarpentersWorkbench
+  Flags:
+  - AllowDisabled
+  ForcedReference: 00C3B0:HearthFires.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: HouseCarriageDriver
+  Flags:
+  - AllowDisabled
+  UniqueActor: 010FBA:HearthFires.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: HouseHorse
+  Flags:
+  - AllowDisabled
+  - StoresText
+  - UsesStoredText
+  ForcedReference: 010FBC:HearthFires.esm
+  DisplayName: 09DE90:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Type: Location
+  Name: Hold
+  Flags:
+  - StoresText
+  SpecificLocation: 01676D:Skyrim.esm
+- ID: 10
+  Type: Location
+  Name: HoldCity
+  Flags:
+  - StoresText
+  SpecificLocation: 018A50:Skyrim.esm
+- ID: 9
+  Name: CourierNote
+  Flags:
+  - Optional
+  - UsesStoredText
+  VoiceTypes: Null
+- ID: 14
+  Name: Charter
+  Flags:
+  - Optional
+  - UsesStoredText
+  VoiceTypes: Null
+- ID: 15
+  Name: IntroNote
+  Flags:
+  - Optional
+  - UsesStoredText
+  VoiceTypes: Null

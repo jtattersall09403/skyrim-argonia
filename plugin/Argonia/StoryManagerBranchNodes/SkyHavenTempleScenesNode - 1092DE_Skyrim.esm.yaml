@@ -1,0 +1,35 @@
+FormKey: 1092DE:Skyrim.esm
+VersionControl: 2320135
+EditorID: SkyHavenTempleScenesNode
+FormVersion: 37
+Version2: 1
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 0A71AB:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Location: 018E42:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12882
+    Location: 018E42:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 02D515:Skyrim.esm
+  ComparisonValue: 20
+Flags: []
+MaxConcurrentQuests: 0

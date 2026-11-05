@@ -1,0 +1,15 @@
+FormKey: 0609AD:Skyrim.esm
+VersionControl: 6186014
+EditorID: ThievesGuildRadiantNode
+FormVersion: 35
+Version2: 3
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 0B39A5:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

@@ -1,0 +1,41 @@
+FormKey: 0D7897:Skyrim.esm
+VersionControl: 79128
+EditorID: DA15Rumor
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DA15Rumor_000D7897
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dervenin
+      Object: 0D7897:Skyrim.esm
+      Alias: 0
+  FileName: QF_DA15Rumor_000D7897
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA15Rumor_000D7897
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA15Rumor_000D7897
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: Dervenin
+  Flags: []
+  UniqueActor: 01327C:Skyrim.esm
+  VoiceTypes: Null

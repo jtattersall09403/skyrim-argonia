@@ -1,0 +1,56 @@
+FormKey: 04D918:Skyrim.esm
+VersionControl: 3303435
+EditorID: DA02KillFriendNodeOBSOLETE
+FormVersion: 39
+Version2: 6
+Parent: 013010:Skyrim.esm
+PreviousSibling: 10FAEF:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 0216A9:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12882
+    Object: 000007:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: GetValue
+    Member: Value2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Faction: 0BD738:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Faction: 05C84E:Skyrim.esm
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 04D917:Skyrim.esm

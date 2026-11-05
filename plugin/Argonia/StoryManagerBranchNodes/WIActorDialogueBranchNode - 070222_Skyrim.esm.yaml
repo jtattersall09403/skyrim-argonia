@@ -1,0 +1,35 @@
+FormKey: 070222:Skyrim.esm
+VersionControl: 5072392
+EditorID: WIActorDialogueBranchNode
+FormVersion: 37
+Version2: 6
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 06B19E:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Location: 0192B2:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetQuestRunningConditionData
+    Quest: 070217:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetQuestRunningConditionData
+    Quest: 0DEE92:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

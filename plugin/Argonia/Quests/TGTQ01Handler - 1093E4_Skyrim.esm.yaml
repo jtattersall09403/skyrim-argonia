@@ -1,0 +1,44 @@
+FormKey: 1093E4:Skyrim.esm
+VersionControl: 79128
+EditorID: TGTQ01Handler
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TGTQ01Handler_001093E4
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGHandlerSilverMoldAlias
+      Object: 1093E4:Skyrim.esm
+      Alias: 0
+  FileName: QF_TGTQ01Handler_001093E4
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TGTQ01Handler_001093E4
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TGTQ01Handler_001093E4
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 90
+QuestFormVersion: 0
+Filter: Faction\ThievesGuild\Radiant\
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: TGHandlerSilverMoldAlias
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  ForcedReference: 044E13:Skyrim.esm
+  VoiceTypes: Null

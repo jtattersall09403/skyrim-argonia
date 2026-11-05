@@ -1,0 +1,25 @@
+FormKey: 10EA41:Skyrim.esm
+VersionControl: 5138204
+EditorID: FFR09KickerNode
+FormVersion: 39
+Version2: 1
+Parent: 05BD79:Skyrim.esm
+PreviousSibling: 0D91D2:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetLevelConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+  ComparisonValue: 10EA42:Skyrim.esm
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 05331C:Skyrim.esm

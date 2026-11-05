@@ -1,0 +1,241 @@
+FormKey: 0BC0BD:Skyrim.esm
+VersionControl: 3303435
+EditorID: C00JorrvaskrFight
+FormVersion: 39
+Version2: 5
+VirtualMachineAdapter:
+  Scripts:
+  - Name: C00JorrvaskrFightSceneScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Athis
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AthisStartPoint
+      Object: 0BC0C0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Brill
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BrillStartPoint
+      Object: 0BC0D5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CenterPoint
+      Object: 0BC0BF:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: Clockwise
+      Data: True
+    - MutagenObjectType: ScriptBoolProperty
+      Name: CountingDown
+    - MutagenObjectType: ScriptBoolProperty
+      Name: CrowdSceneSetup
+    - MutagenObjectType: ScriptBoolProperty
+      Name: EndVolley
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FightOngoing
+      Data: True
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FightPrepped
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GovRuling
+      Object: 03662A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: IronSword
+      Object: 09F25C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Njada
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NjadaStartPoint
+      Object: 0BC0C1:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerEndedFight
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Skjor
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SkjorStartPoint
+      Object: 0BC0D0:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: StartPhase
+      Data: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tilma
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TilmaStartPoint
+      Object: 0CF2DF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Torvar
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TorvarStartPoint
+      Object: 0BC0D4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Unarmed
+      Object: 0001F4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Vignar
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VignarStartPoint
+      Object: 0BC0D6:Skyrim.esm
+  - Name: QF_C00JorrvaskrFight_000BC0BD
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Athis
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Brill
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Njada
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Skjor
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Tilma
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Torvar
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Vignar
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FightScene
+      Object: 0BC0BE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NorthPoint
+      Object: 0BC0C0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SouthPoint
+      Object: 0BC0C1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpectatorScene
+      Object: 0BC0CC:Skyrim.esm
+  FileName: QF_C00JorrvaskrFight_000BC0BD
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_C00JorrvaskrFight_000BC0BD
+    FragmentName: Fragment_0
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_C00JorrvaskrFight_000BC0BD
+    FragmentName: Fragment_4
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_C00JorrvaskrFight_000BC0BD
+    FragmentName: Fragment_2
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: C00JorrvaskrFightAthisScript
+  - Property:
+      Name: ''
+      Object: 0BC0BD:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: C00JorrvaskrFightNjadaScript
+Flags:
+- 0x10
+- RunOnce
+Priority: 90
+QuestFormVersion: 0
+Filter: Faction\Companions\Story\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 1
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 7
+Aliases:
+- Name: Athis
+  Flags:
+  - AllowReserved
+  - Protected
+  UniqueActor: 01A6D5:Skyrim.esm
+  Factions:
+  - 0EC25E:Skyrim.esm
+  PackageData:
+  - 0F7949:Skyrim.esm
+  - 0BC0C8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Njada
+  Flags:
+  - AllowReserved
+  - Protected
+  UniqueActor: 01A6D9:Skyrim.esm
+  Factions:
+  - 0EC25E:Skyrim.esm
+  PackageData:
+  - 0F794A:Skyrim.esm
+  - 0BC0C8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Skjor
+  Flags:
+  - AllowReserved
+  UniqueActor: 01A690:Skyrim.esm
+  PackageData:
+  - 0F794B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Torvar
+  Flags:
+  - AllowReserved
+  UniqueActor: 01A6DB:Skyrim.esm
+  PackageData:
+  - 0F794C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: Vignar
+  Flags:
+  - AllowReserved
+  UniqueActor: 013BB5:Skyrim.esm
+  PackageData:
+  - 0F794D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Brill
+  Flags:
+  - AllowReserved
+  UniqueActor: 01A6A2:Skyrim.esm
+  PackageData:
+  - 0F794E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Tilma
+  Flags:
+  - AllowReserved
+  UniqueActor: 013BB6:Skyrim.esm
+  PackageData:
+  - 0F794F:Skyrim.esm
+  VoiceTypes: Null

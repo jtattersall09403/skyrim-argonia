@@ -1,0 +1,98 @@
+FormKey: 01C5D9:Skyrim.esm
+VersionControl: 79128
+EditorID: MQ00
+Version2: 13
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MQ00QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArngeirRef
+      Object: 0886B3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ106
+      Object: 032926:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQArngeirNoSpeakTopic
+      Object: 07A4A8:Skyrim.esm
+  - Name: QF_MQ00_0001C5D9
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Delphine
+      Object: 01C5D9:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ElderScroll
+      Object: 01C5D9:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Esbern
+      Object: 01C5D9:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_EsbernDreamLookTarget
+      Object: 01C5D9:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HousePurchase
+      Object: 0A7B33:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQEsbernDreamScene
+      Object: 0B0BC5:Skyrim.esm
+  FileName: QF_MQ00_0001C5D9
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MQ00_0001C5D9
+    FragmentName: Fragment_4
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MQ00_0001C5D9
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_MQ00_0001C5D9
+    FragmentName: Fragment_2
+Flags:
+- 0x10
+Priority: 80
+QuestFormVersion: 0
+Filter: Main Quest\
+Stages:
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 15
+  Unknown: 18
+  LogEntries:
+  - Flags: []
+NextAliasID: 9
+Aliases:
+- ID: 3
+  Name: Esbern
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 013358:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Delphine
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 013478:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: ElderScroll
+  Flags:
+  - QuestObject
+  ForcedReference: 02D4F1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: EsbernDreamLookTarget
+  Flags: []
+  ForcedReference: 0A8D4A:Skyrim.esm
+  VoiceTypes: Null

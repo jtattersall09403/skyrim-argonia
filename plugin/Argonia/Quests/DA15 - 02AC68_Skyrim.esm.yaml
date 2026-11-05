@@ -1,0 +1,372 @@
+FormKey: 02AC68:Skyrim.esm
+EditorID: DA15
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA15Script
+  - Name: QF_DA15_0002AC68
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15BluePalaceReturnMarker
+      Object: 02AC68:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15BluePalacWorldTrigger
+      Object: 02AC68:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15BluePalaWingStartMarker
+      Object: 02AC68:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15LoathingQT
+      Object: 02AC68:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15ParanoiaQT
+      Object: 02AC68:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA15TerrorQT
+      Object: 02AC68:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dervenin
+      Object: 02AC68:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Doorway
+      Object: 02AC68:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Erdi
+      Object: 02AC68:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Falk
+      Object: 02AC68:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HipBone
+      Object: 02AC68:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pelagius
+      Object: 02AC68:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PelagiusKey
+      Object: 02AC68:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Sheogorath
+      Object: 02AC68:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Una
+      Object: 02AC68:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Wabbajack
+      Object: 02AC68:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ClothesFineBoots02
+      Object: 0CEE82:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ClothesFineClothes02Variant
+      Object: 0F8715:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ClothesFineHat02
+      Object: 0CEE84:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Container
+      Object: 02AC73:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15ExitDoor
+      Object: 015388:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Loathing
+      Object: 0B3B44:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Paranoia
+      Object: 0B3B1C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15PelagiusReappearMarker
+      Object: 02BE86:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Return
+      Object: 10FF8F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Rumor
+      Object: 0D7897:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA15Terror
+      Object: 0B3B1D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PelagiusEnd
+      Object: 02AC6E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PelagiusKey
+      Object: 02AC70:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PelagiusMeet
+      Object: 02AC6D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RealWabbajack
+      Object: 02AC6F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Temp155Message
+      Object: 02BE87:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TempExitMessage
+      Object: 02BE85:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Wabbajack
+      Object: 09B2B2:Skyrim.esm
+  FileName: QF_DA15_0002AC68
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_0
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_19
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_23
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_25
+  - Stage: 45
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_21
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_27
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_31
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_29
+  - Stage: 95
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_3
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_5
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_32
+  - Stage: 190
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_35
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA15_0002AC68
+    FragmentName: Fragment_17
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 02AC68:Skyrim.esm
+      Alias: 4
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 50
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 9
+  - Property:
+      Name: ''
+      Object: 02AC68:Skyrim.esm
+      Alias: 8
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 50
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 55
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+Flags:
+- 0x10
+- RunOnce
+Priority: 70
+QuestFormVersion: 65
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 45
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 90
+  LogEntries:
+  - Flags: []
+- Index: 95
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Unknown: 3
+  LogEntries:
+  - Flags: []
+- Index: 150
+  LogEntries:
+  - Flags: []
+- Index: 190
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 18
+Aliases:
+- ID: 1
+  Name: Dervenin
+  Flags: []
+  ForcedReference: 0198DC:Skyrim.esm
+  PackageData:
+  - 085486:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Pelagius
+  Flags: []
+  ForcedReference: 02AC6B:Skyrim.esm
+  PackageData:
+  - 107DAB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Sheogorath
+  Flags:
+  - Essential
+  ForcedReference: 02AC6C:Skyrim.esm
+  PackageData:
+  - 02BD10:Skyrim.esm
+  - 085C52:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: Doorway
+  Flags: []
+  ForcedReference: 034249:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: HipBone
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 04286C:Skyrim.esm
+    AliasID: 1
+    Create: In
+  VoiceTypes: Null
+- ID: 7
+  Name: DA15BluePalaWingStartMarker
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 085C53:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: DA15BluePalacWorldTrigger
+  Flags: []
+  ForcedReference: 085C55:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: DA15BluePalaceReturnMarker
+  Flags: []
+  ForcedReference: 0FF9EE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: DA15ParanoiaQT
+  Flags: []
+  ForcedReference: 105B42:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: DA15LoathingQT
+  Flags: []
+  ForcedReference: 105B43:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: DA15TerrorQT
+  Flags: []
+  ForcedReference: 105B44:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: Wabbajack
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  - AllowDisabled
+  - AllowDestroyed
+  CreateReferenceToObject:
+    Object: 09B2B2:Skyrim.esm
+    AliasID: 3
+    Create: In
+  VoiceTypes: Null
+- ID: 14
+  Name: PelagiusKey
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  - AllowDisabled
+  CreateReferenceToObject:
+    Object: 02AC70:Skyrim.esm
+    AliasID: 3
+    Create: In
+  VoiceTypes: Null
+- ID: 15
+  Name: Falk
+  Flags: []
+  UniqueActor: 013274:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: Una
+  Flags: []
+  UniqueActor: 0132AC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: Erdi
+  Flags: []
+  UniqueActor: 013271:Skyrim.esm
+  VoiceTypes: Null

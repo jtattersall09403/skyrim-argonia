@@ -1,0 +1,421 @@
+FormKey: 01CF26:Skyrim.esm
+EditorID: MS09
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS09QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardLarge
+      Object: 035217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GrayManeHouse
+      Object: 01F874:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09AvulsteinAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09AvulsteinKeepMarker
+      Object: 03AF70:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09FraliaAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09GrayManeHouseScene
+      Object: 03AF62:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09SonsSoldier1
+      Object: 01CF26:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09SonsSoldier2
+      Object: 01CF26:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09ThoraldAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NorthwatchKeep
+      Object: 019285:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Whiterun
+      Object: 018A56:Skyrim.esm
+  - Name: QF_MS09_0001CF26
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_KeepFrontDoor
+      Object: 01CF26:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09AvulsteinAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09AvulsteinKeepMarkerAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09FraliaAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09IdolafAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09JonAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09MissiveAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09OlfinaAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09SonsSoldier1
+      Object: 01CF26:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09SonsSoldier2
+      Object: 01CF26:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS09ThoraldAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NorthwatchKeepAlias
+      Object: 01CF26:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ThalmorGuard
+      Object: 01CF26:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArgueScene
+      Object: 037CC4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorExcludedFaction
+      Object: 094393:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09AllyFaction
+      Object: 09DD4F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09GrayManeHouseScene
+      Object: 03AF62:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09Reward
+      Object: 02E45C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS09TriggerDisableRef
+      Object: 0C7B71:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NorthwatchKeepInterior
+      Object: 015235:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ThalmorFaction
+      Object: 039F26:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ThalmorInterrogator
+      Object: 0A02FE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhiterunHouseGrayMane
+      Object: 0165B2:Skyrim.esm
+  FileName: QF_MS09_0001CF26
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_22
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_2
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_4
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_7
+  - Stage: 45
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_35
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_9
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_13
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_15
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_18
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_28
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_20
+  - Stage: 201
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_30
+  - Stage: 202
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_34
+  - Stage: 255
+    Unknown2: 1
+    ScriptName: QF_MS09_0001CF26
+    FragmentName: Fragment_26
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01CF26:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: MS09AvulsteinScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS09
+        Object: 01CF26:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01CF26:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MS09ThoraldScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS09
+        Object: 01CF26:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NorthwatchKeep
+        Object: 019285:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01CF26:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: MS09FraliaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS09
+        Object: 01CF26:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS09Argue
+        Object: 037CC2:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01CF26:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: MS09MissiveScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS09
+        Object: 01CF26:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Filter: Misc\Whiterun\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 25
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 45
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 110
+  Unknown: 62
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 201
+  Unknown: 171
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 202
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 255
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - FailQuest
+NextAliasID: 17
+Aliases:
+- Name: MS09AvulsteinAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013B9A:Skyrim.esm
+  PackageData:
+  - 024496:unofficial skyrim special edition patch.esp
+  - 03AF7A:Skyrim.esm
+  - 03AF74:Skyrim.esm
+  - 0A1A5F:Skyrim.esm
+  - 03AF71:Skyrim.esm
+  - 027F70:Skyrim.esm
+  - 03AF69:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: MS09ThoraldAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  UniqueActor: 01C241:Skyrim.esm
+  Factions:
+  - 0AA784:Skyrim.esm
+  PackageData:
+  - 024496:unofficial skyrim special edition patch.esp
+  - 09DD50:Skyrim.esm
+  - 0D762D:Skyrim.esm
+  - 0480F4:Skyrim.esm
+  - 046B93:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: MS09IdolafAlias
+  Flags: []
+  UniqueActor: 013BB2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: MS09FraliaAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013B9C:Skyrim.esm
+  PackageData:
+  - 03AF65:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: MS09OlfinaAlias
+  Flags: []
+  UniqueActor: 013B9B:Skyrim.esm
+  PackageData:
+  - 10F98E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: MS09JonAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013BB1:Skyrim.esm
+  PackageData:
+  - 0FEDCE:Skyrim.esm
+  - 0FEDCD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: MS09MissiveAlias
+  Flags:
+  - QuestObject
+  ForcedReference: 039C8F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: MS09AvulsteinKeepMarkerAlias
+  Flags: []
+  ForcedReference: 03AF70:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MS09SonsSoldier1
+  Flags: []
+  CreateReferenceToObject:
+    Object: 0C4409:Skyrim.esm
+    AliasID: 9
+    Level: Medium
+  PackageData:
+  - 024496:unofficial skyrim special edition patch.esp
+  - 027F7C:Skyrim.esm
+  - 0C440E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: MS09SonsSoldier2
+  Flags: []
+  CreateReferenceToObject:
+    Object: 0C440A:Skyrim.esm
+    AliasID: 9
+    Level: Medium
+  PackageData:
+  - 024496:unofficial skyrim special edition patch.esp
+  - 027F7C:Skyrim.esm
+  - 0C440C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: KeepFrontDoor
+  Flags: []
+  ForcedReference: 015E5B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Type: Location
+  Name: NorthwatchKeepAlias
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 019285:Skyrim.esm
+- ID: 16
+  Name: ThalmorGuard
+  Flags:
+  - Optional
+  - AllowDead
+  - AllowDisabled
+  PackageData:
+  - 024495:unofficial skyrim special edition patch.esp
+  VoiceTypes: Null

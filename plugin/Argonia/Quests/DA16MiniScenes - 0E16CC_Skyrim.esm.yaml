@@ -1,0 +1,54 @@
+FormKey: 0E16CC:Skyrim.esm
+VersionControl: 79128
+EditorID: DA16MiniScenes
+Version2: 5
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Filter: Daedric\
+NextAliasID: 59
+Aliases:
+- ID: 48
+  Name: DA16VaerminaAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 105377:Skyrim.esm
+  VoiceTypes: 0E16CD:Skyrim.esm
+- ID: 53
+  Type: Location
+  Name: DA16LocationAlias
+  Flags: []
+  SpecificLocation: 0192B9:Skyrim.esm
+- ID: 52
+  Name: DA16MaleSlyPriestAlias
+  Flags:
+  - AllowDisabled
+  Location:
+    AliasID: 53
+    RefType: 0E16D5:Skyrim.esm
+  VoiceTypes: 0E16D2:Skyrim.esm
+- ID: 54
+  Name: DA16MaleWarPriestAlias
+  Flags:
+  - AllowDisabled
+  Location:
+    AliasID: 53
+    RefType: 0E16D6:Skyrim.esm
+  VoiceTypes: 0E16D3:Skyrim.esm
+- ID: 55
+  Name: DA16FemaleConPriestAlias
+  Flags:
+  - AllowDisabled
+  Location:
+    AliasID: 53
+    RefType: 0E16D7:Skyrim.esm
+  VoiceTypes: 0E16D4:Skyrim.esm
+- ID: 56
+  Name: DA16BarrierPriest
+  Flags:
+  - AllowDisabled
+  Location:
+    AliasID: 53
+    RefType: 0E16DC:Skyrim.esm
+  VoiceTypes: 0B91A3:Skyrim.esm

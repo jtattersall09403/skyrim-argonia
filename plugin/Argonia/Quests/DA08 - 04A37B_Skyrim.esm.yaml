@@ -1,0 +1,419 @@
+FormKey: 04A37B:Skyrim.esm
+EditorID: DA08
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA08QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltBalgruufSpot
+      Object: 0FE473:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltDagnySpot
+      Object: 0FE476:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltFrotharSpot
+      Object: 0FE475:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltNelkirSpot
+      Object: 0FE477:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltProventusSealedDoor
+      Object: 0CC16E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltProventusSpot
+      Object: 0FE474:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Balgruuf
+      Object: 04A37B:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptBoolProperty
+      Name: ChildrenExiled
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Dagny
+      Object: 04A37B:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DeposedFaction
+      Object: 036629:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DragonsreachOccupants
+      Object: 065794:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EbonyBlade
+      Object: 04A37B:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Frothar
+      Object: 04A37B:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FrotharOutsideJarlsQuarters
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FrotharShouldForceGreet
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Karinda
+      Object: 04A37B:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: KarindaEssential
+      Object: 04A37B:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptBoolProperty
+      Name: LearnedAboutDagny
+    - MutagenObjectType: ScriptBoolProperty
+      Name: LearnedAboutFrothar
+    - MutagenObjectType: ScriptBoolProperty
+      Name: LearnedAboutNelkir
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Nelkir
+      Object: 04A37B:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptBoolProperty
+      Name: NelkirShouldForceGreet
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerGotRumor
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerOutsideJarlsQuarters
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RealEbonyBlade
+      Object: 0EA29C:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TurnedDagny
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TurnedFrothar
+    - MutagenObjectType: ScriptBoolProperty
+      Name: TurnedNelkir
+  - Name: QF_DA08_0004A37B
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Balgruuf
+      Object: 04A37B:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BalgruufEssential
+      Object: 04A37B:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dagny
+      Object: 04A37B:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_EbonyBlade
+      Object: 04A37B:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_EbonyBladeQuestItem
+      Object: 04A37B:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Farengar
+      Object: 04A37B:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Frothar
+      Object: 04A37B:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Karinda
+      Object: 04A37B:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_KarindaEssential
+      Object: 04A37B:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MephalaInYourHead
+      Object: 04A37B:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MysteriousDoorName
+      Object: 04A37B:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nelkir
+      Object: 04A37B:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhisperingDoor
+      Object: 04A37B:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhisperingDoorName
+      Object: 04A37B:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhisperingDoorTA
+      Object: 04A37B:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BladeTracker
+      Object: 10FAEC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA08RumorPointer
+      Object: 0DC9E0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ105
+      Object: 0242BA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StartMarker
+      Object: 05BF3B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhisperingDoorKey
+      Object: 028D8B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhiterunGate
+      Object: 01B1F1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhiterunGateQuest
+      Object: 0D1984:Skyrim.esm
+  FileName: QF_DA08_0004A37B
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_16
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_32
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_14
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_18
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_33
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_19
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_20
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_21
+  - Stage: 51
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_30
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_22
+  - Stage: 60
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_35
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_DA08_0004A37B
+    FragmentName: Fragment_36
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 04A37B:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: DA08WhisperingDoorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DA08WhisperingDoorTalkingActivator
+        Object: 04A37B:Skyrim.esm
+        Alias: 2
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MysteriousName
+        Object: 04A37B:Skyrim.esm
+        Alias: 9
+      - MutagenObjectType: ScriptObjectProperty
+        Name: WhisperingName
+        Object: 04A37B:Skyrim.esm
+        Alias: 8
+  - Property:
+      Name: ''
+      Object: 04A37B:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: DA08KarindaScript
+  - Property:
+      Name: ''
+      Object: 04A37B:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: DA08BalgruufScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BalgruufEssential
+        Object: 04A37B:Skyrim.esm
+        Alias: 14
+      - MutagenObjectType: ScriptObjectProperty
+        Name: EbonyBlade
+        Object: 04A38F:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 1
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 25
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 51
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 0216A9:Skyrim.esm
+      ComparisonValue: 1
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 0216A9:Skyrim.esm
+- Index: 80
+  LogEntries:
+  - Flags: []
+NextAliasID: 25
+Aliases:
+- Name: Nelkir
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 01A67B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: WhisperingDoor
+  Flags: []
+  ForcedReference: 04A38C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: WhisperingDoorTA
+  Flags: []
+  ForcedReference: 04A38A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: Karinda
+  Flags:
+  - ReservesLocationOrReference
+  - Optional
+  - AllowDisabled
+  AliasIDToForceIntoWhenFilled: 15
+  VoiceTypes: Null
+- ID: 15
+  Name: KarindaEssential
+  Flags:
+  - Optional
+  - Essential
+  - AllowDisabled
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 3
+  Name: Balgruuf
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 14
+  ForcedReference: 01A677:Skyrim.esm
+  PackageData:
+  - 064A28:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: BalgruufEssential
+  Flags:
+  - Optional
+  - Essential
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 11
+  Name: Farengar
+  Flags: []
+  ForcedReference: 01A67E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: EbonyBlade
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 12
+  ForcedReference: 04A39D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: EbonyBladeQuestItem
+  Flags:
+  - Optional
+  - QuestObject
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 5
+  Name: Frothar
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 01A679:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Dagny
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 01A67A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MephalaInYourHead
+  Flags:
+  - StoresText
+  ForcedReference: 05BF3E:Skyrim.esm
+  DisplayName: 05F864:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: WhisperingDoorName
+  Flags:
+  - Optional
+  - StoresText
+  DisplayName: 05F864:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: MysteriousDoorName
+  Flags:
+  - Optional
+  - StoresText
+  DisplayName: 05F863:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,15 @@
+FormKey: 0236A1:Skyrim.esm
+VersionControl: 5069320
+EditorID: CWBranchNode
+FormVersion: 26
+Version2: 7
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 06D1E6:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

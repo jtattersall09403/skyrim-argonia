@@ -1,0 +1,39 @@
+FormKey: 028A55:Skyrim.esm
+VersionControl: 79128
+EditorID: MGRShell
+Version2: 10
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MGRShellScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRDrevis
+      Object: 028A52:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRSergius
+      Object: 028A53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRTolfdir
+      Object: 028A51:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRUrag
+      Object: 028A54:Skyrim.esm
+  - Name: QF_MGRShell_00028A55
+  FileName: QF_MGRShell_00028A55
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRShell_00028A55
+    FragmentName: Fragment_0
+Flags:
+- 0x10
+QuestFormVersion: 0
+Filter: Faction\Mages Guild\Radiant\
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  Unknown: 54
+  LogEntries:
+  - Flags: []
+NextAliasID: 0

@@ -1,0 +1,690 @@
+FormKey: 0B2FD9:Skyrim.esm
+VersionControl: 79128
+EditorID: SolitudeOpening
+Version2: 15
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DialogueSolitudeOpeningSce_000B2FD9
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Addvar
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 60
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Ahtar
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Beirand
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 62
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CaptainAldis
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 56
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Evette
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 61
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Greta
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 47
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Jala
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 59
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lisette
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Noster
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 63
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpeningSceneExitTrigger
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 79
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpeningSceneExitTrigger2
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 94
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpeningSceneInterruptTrigger
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 85
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpenningSceneStartTrigger
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpenningSceneStartTrigger2
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 87
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpenningSceneStartTrigger3
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 88
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpenningSceneStartTrigger4
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 89
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PlatformGuard
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 77
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Prisoner
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PrisonerCuffs
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 86
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PrisonerHeadtrackMarker
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 76
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Silana
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 42
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeGateExteriorForOpening
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 84
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeGateExteriorPostOpening
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 82
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeGateForOpening
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 83
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeGatePostOpening
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 67
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeshopsAngelines
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 90
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeshopsBits
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 93
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeshopsRaiment
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 92
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SolitudeshopsSkeever
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 91
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Sorex
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 41
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Svari
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Taarie
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 50
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Vivienne
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 45
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionHaafingar
+      Object: 029DB0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExecutionerAxe
+      Object: 0BE25E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExecutionScene
+      Object: 0A3BE5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ExecutionSceneLeadIn
+      Object: 0A9623:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07
+      Object: 023A64:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SolitudeOpeningPrisonerFaction
+      Object: 10FD8E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TownSolitudeFaction
+      Object: 02817C:Skyrim.esm
+  - Name: SolitudeOpeningScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SolitudeOpening
+      Object: 0B2FD9:Skyrim.esm
+  FileName: QF_DialogueSolitudeOpeningSce_000B2FD9
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_20
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_10
+  - Stage: 29
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_16
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_11
+  - Stage: 31
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_22
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_13
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_12
+  - Stage: 45
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_14
+  - Stage: 190
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_15
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DialogueSolitudeOpeningSce_000B2FD9
+    FragmentName: Fragment_9
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 36
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 87
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 88
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 89
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 83
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 90
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 91
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 92
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 93
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 58
+    Scripts:
+    - Name: SolitudeOpeningPrisonerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: OffsetBoundStandingStart
+        Object: 0B600A:Skyrim.esm
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 29
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 2
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 56
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+    - Name: SolitudeOpeningOnCellDetach
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 37
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 79
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 29
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 94
+    Scripts:
+    - Name: SolitudeOpeningSetStageScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMaxOPT
+        Data: 29
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageMinOPT
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 31
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 0B2FD9:Skyrim.esm
+      Alias: 85
+    Scripts:
+    - Name: ExecutionInterruptTriggerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: CurrentFollowerFaction
+        Object: 05C84E:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 29
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 0
+Type: Misc
+Filter: Dialogue\Haafingar\Solitude\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 29
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 31
+  LogEntries:
+  - Flags: []
+- Index: 35
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 45
+  LogEntries:
+  - Flags: []
+- Index: 190
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 95
+Aliases:
+- ID: 36
+  Name: OpenningSceneStartTrigger
+  Flags: []
+  ForcedReference: 085373:Skyrim.esm
+  VoiceTypes: Null
+- ID: 87
+  Name: OpenningSceneStartTrigger2
+  Flags: []
+  ForcedReference: 10AA55:Skyrim.esm
+  VoiceTypes: Null
+- ID: 88
+  Name: OpenningSceneStartTrigger3
+  Flags: []
+  ForcedReference: 10AA56:Skyrim.esm
+  VoiceTypes: Null
+- ID: 89
+  Name: OpenningSceneStartTrigger4
+  Flags: []
+  ForcedReference: 10AA57:Skyrim.esm
+  VoiceTypes: Null
+- ID: 67
+  Name: SolitudeGatePostOpening
+  Flags: []
+  ForcedReference: 037F1B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 83
+  Name: SolitudeGateForOpening
+  Flags: []
+  ForcedReference: 101D9D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 90
+  Name: SolitudeshopsAngelines
+  Flags: []
+  ForcedReference: 037F24:Skyrim.esm
+  VoiceTypes: Null
+- ID: 91
+  Name: SolitudeshopsSkeever
+  Flags: []
+  ForcedReference: 037F25:Skyrim.esm
+  VoiceTypes: Null
+- ID: 92
+  Name: SolitudeshopsRaiment
+  Flags: []
+  ForcedReference: 037F26:Skyrim.esm
+  VoiceTypes: Null
+- ID: 93
+  Name: SolitudeshopsBits
+  Flags: []
+  ForcedReference: 037F27:Skyrim.esm
+  VoiceTypes: Null
+- ID: 82
+  Name: SolitudeGateExteriorPostOpening
+  Flags: []
+  ForcedReference: 01C386:Skyrim.esm
+  VoiceTypes: Null
+- ID: 84
+  Name: SolitudeGateExteriorForOpening
+  Flags: []
+  ForcedReference: 101D9E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 58
+  Name: Prisoner
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 0A3BDB:Skyrim.esm
+  Factions:
+  - 0DAB6D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 56
+  Name: CaptainAldis
+  Flags: []
+  UniqueActor: 041FB8:Skyrim.esm
+  Keywords:
+  - 0EB60C:Skyrim.esm
+  Factions:
+  - 0DAB6D:Skyrim.esm
+  PackageData:
+  - 109CD8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 42
+  Name: Silana
+  Flags: []
+  UniqueActor: 0132A5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: Ahtar
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01325F:Skyrim.esm
+  Factions:
+  - 0DAB6D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 62
+  Name: Beirand
+  Flags: []
+  UniqueActor: 013261:Skyrim.esm
+  VoiceTypes: Null
+- ID: 35
+  Name: Lisette
+  Flags: []
+  UniqueActor: 013297:Skyrim.esm
+  VoiceTypes: Null
+- ID: 47
+  Name: Greta
+  Flags: []
+  UniqueActor: 013283:Skyrim.esm
+  VoiceTypes: Null
+- ID: 61
+  Name: Evette
+  Flags: []
+  UniqueActor: 013273:Skyrim.esm
+  VoiceTypes: Null
+- ID: 60
+  Name: Addvar
+  Flags: []
+  UniqueActor: 013255:Skyrim.esm
+  VoiceTypes: Null
+- ID: 59
+  Name: Jala
+  Flags: []
+  UniqueActor: 01328C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 41
+  Name: Sorex
+  Flags: []
+  UniqueActor: 0132A7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 45
+  Name: Vivienne
+  Flags: []
+  UniqueActor: 0132AE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 50
+  Name: Taarie
+  Flags: []
+  UniqueActor: 0132AB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 63
+  Name: Noster
+  Flags: []
+  UniqueActor: 01329C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 34
+  Name: Svari
+  Flags: []
+  UniqueActor: 0132A9:Skyrim.esm
+  PackageData:
+  - 0A962C:Skyrim.esm
+  - 0A962D:Skyrim.esm
+  - 01B217:Skyrim.esm
+  VoiceTypes: Null
+- ID: 76
+  Name: PrisonerHeadtrackMarker
+  Flags: []
+  ForcedReference: 0D6A78:Skyrim.esm
+  VoiceTypes: Null
+- ID: 77
+  Name: PlatformGuard
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 02E1D1:Skyrim.esm
+  Factions:
+  - 0DAB6D:Skyrim.esm
+  PackageData:
+  - 0DAB68:Skyrim.esm
+  - 0F4C8E:Skyrim.esm
+  VoiceTypes: 0B3E4E:Skyrim.esm
+- ID: 79
+  Name: OpeningSceneExitTrigger
+  Flags: []
+  ForcedReference: 0F4C8D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 94
+  Name: OpeningSceneExitTrigger2
+  Flags: []
+  ForcedReference: 10FF19:Skyrim.esm
+  VoiceTypes: Null
+- ID: 85
+  Name: OpeningSceneInterruptTrigger
+  Flags: []
+  ForcedReference: 0DAB6C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 86
+  Name: PrisonerCuffs
+  Flags: []
+  CreateReferenceToObject:
+    Object: 10E2D8:Skyrim.esm
+    AliasID: 58
+    Create: In
+  VoiceTypes: Null

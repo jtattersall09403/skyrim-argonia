@@ -1,0 +1,455 @@
+FormKey: 01CF25:Skyrim.esm
+EditorID: MS08
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS08QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardLarge
+      Object: 035217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS08AlikrPrisoner
+      Object: 01CF25:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptIntProperty
+      Name: SaadiaFollow
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WhiterunDragonsreachBasement
+      Object: 04A376:Skyrim.esm
+  - Name: QF_MS08_0001CF25
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlikrAmbushMarker01
+      Object: 01CF25:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlikrAmbushMarker2
+      Object: 01CF25:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlikrAmbushMarker3
+      Object: 01CF25:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlikrPrisoner
+      Object: 01CF25:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DungeonLoc
+      Object: 01CF25:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FailsafeCastMarker
+      Object: 01CF25:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Kematu
+      Object: 01CF25:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_KematuAmbushMarker
+      Object: 01CF25:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS08AmbushTriggerAlias
+      Object: 01CF25:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS08KematuTriggerAlias
+      Object: 01CF25:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS08QuestActiveMarker
+      Object: 01CF25:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS08QuestInactiveMarker
+      Object: 01CF25:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RJBanditCalm
+      Object: 01CF25:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RJBanditScared
+      Object: 01CF25:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RoriksteadMapMarker
+      Object: 01CF25:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Saadia
+      Object: 01CF25:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhiterunWarrior01
+      Object: 01CF25:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhiterunWarrior02
+      Object: 01CF25:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BaseFaction
+      Object: 058B3E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JobInnServer
+      Object: 0DEE93:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS08ParalysisAbility
+      Object: 0649B0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS08PrisonerSceneQuest
+      Object: 0D87E7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS08SaadiaFaction
+      Object: 0F7F44:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFaction
+      Object: 000DB1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SaadiaRef
+      Object: 0D7505:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SwindlersDenMapMarker
+      Object: 015D4D:Skyrim.esm
+  FileName: QF_MS08_0001CF25
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_28
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_2
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_4
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_0
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_7
+  - Stage: 75
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_9
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_11
+  - Stage: 101
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_13
+  - Stage: 125
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_15
+  - Stage: 130
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_16
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_22
+  - Stage: 160
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_19
+  - Stage: 175
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_21
+  - Stage: 199
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_35
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_24
+  - Stage: 201
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_26
+  - Stage: 255
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_31
+  - Stage: 300
+    Unknown2: 1
+    ScriptName: QF_MS08_0001CF25
+    FragmentName: Fragment_33
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01CF25:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: MS08SaadiaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS08
+        Object: 01CF25:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS08Kematu
+        Object: 01CF25:Skyrim.esm
+        Alias: 6
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS08Paralysis
+        Object: 09DD4E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: WITavern
+        Object: 0DEE92:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01CF25:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: MS08AlikrPrisonerScript
+  - Property:
+      Name: ''
+      Object: 01CF25:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: MS08KematuScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: KematuFaction
+        Object: 058B3D:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS08
+        Object: 01CF25:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerFaction
+        Object: 000DB1:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01CF25:Skyrim.esm
+      Alias: 7
+    Scripts:
+    - Name: MS08AmbushTriggerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: AmbushScene
+        Object: 057FAC:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Saadia
+        Object: 01CF25:Skyrim.esm
+        Alias: 0
+  - Property:
+      Name: ''
+      Object: 01CF25:Skyrim.esm
+      Alias: 12
+    Scripts:
+    - Name: MS08KematuTriggerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: KematuScene
+        Object: 0579AA:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Filter: Misc\Whiterun\
+Stages:
+- Flags:
+  - StartUpStage
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 25
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 75
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 101
+  LogEntries:
+  - Flags: []
+- Index: 125
+  LogEntries:
+  - Flags: []
+- Index: 130
+  LogEntries:
+  - Flags: []
+- Index: 150
+  LogEntries:
+  - Flags: []
+- Index: 160
+  LogEntries:
+  - Flags: []
+- Index: 175
+  LogEntries:
+  - Flags: []
+- Index: 199
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 201
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 255
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 300
+  Unknown: 171
+  LogEntries:
+  - Flags:
+    - FailQuest
+NextAliasID: 21
+Aliases:
+- Name: Saadia
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013BA2:Skyrim.esm
+  PackageData:
+  - 057FAD:Skyrim.esm
+  - 10FD8A:Skyrim.esm
+  - 0D8724:Skyrim.esm
+  - 070378:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: AlikrPrisoner
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  UniqueActor: 0215F5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: MS08QuestActiveMarker
+  Flags: []
+  ForcedReference: 042438:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: MS08QuestInactiveMarker
+  Flags: []
+  ForcedReference: 042416:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Kematu
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  - AllowReserved
+  - Protected
+  UniqueActor: 021601:Skyrim.esm
+  PackageData:
+  - 058B3A:Skyrim.esm
+  - 109490:Skyrim.esm
+  - 0579A9:Skyrim.esm
+  - 017327:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MS08AmbushTriggerAlias
+  Flags: []
+  ForcedReference: 057FAB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: KematuAmbushMarker
+  Flags: []
+  ForcedReference: 057FA6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: AlikrAmbushMarker01
+  Flags: []
+  ForcedReference: 057FA7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: AlikrAmbushMarker2
+  Flags: []
+  ForcedReference: 057FA9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: AlikrAmbushMarker3
+  Flags: []
+  ForcedReference: 057FA8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: MS08KematuTriggerAlias
+  Flags: []
+  ForcedReference: 063350:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: WhiterunWarrior01
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 0215CF:Skyrim.esm
+  PackageData:
+  - 094B31:Skyrim.esm
+  - 07F3FE:Skyrim.esm
+  - 10AA49:Skyrim.esm
+  - 094B30:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: WhiterunWarrior02
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 055FB3:Skyrim.esm
+  PackageData:
+  - 094B31:Skyrim.esm
+  - 10AA49:Skyrim.esm
+  - 094B30:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: RJBanditScared
+  Flags: []
+  ForcedReference: 09345B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: RJBanditCalm
+  Flags: []
+  ForcedReference: 042460:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Type: Location
+  Name: DungeonLoc
+  Flags:
+  - ReservesLocationOrReference
+  - Optional
+  SpecificLocation: 018EE2:Skyrim.esm
+- ID: 19
+  Name: RoriksteadMapMarker
+  Flags: []
+  ForcedReference: 0177CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: FailsafeCastMarker
+  Flags: []
+  ForcedReference: 10483D:Skyrim.esm
+  VoiceTypes: Null

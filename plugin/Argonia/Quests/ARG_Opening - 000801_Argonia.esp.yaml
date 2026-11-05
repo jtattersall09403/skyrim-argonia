@@ -1,0 +1,31 @@
+FormKey: 000801:Argonia.esp
+EditorID: ARG_Opening
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_StartQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Footwraps
+      Object: 03CA00:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StartMarker
+      Object: 000802:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tunic
+      Object: 03C9FE:Skyrim.esm
+  FileName: ''
+Name:
+  TargetLanguage: English
+  Value: The Work Detail
+Flags:
+- RunOnce
+Priority: 90
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+- Index: 10
+  LogEntries:
+  - Entry:
+      TargetLanguage: English
+      Value: You wake on the Lilmoth work detail, a prisoner in roughspun with nothing to your name.

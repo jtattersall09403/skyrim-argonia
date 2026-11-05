@@ -1,0 +1,15 @@
+FormKey: 09002B:Skyrim.esm
+VersionControl: 3302915
+EditorID: IntroScenesNode
+FormVersion: 36
+Version2: 6
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 09002E:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

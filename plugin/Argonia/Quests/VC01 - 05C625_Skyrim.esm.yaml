@@ -1,0 +1,149 @@
+FormKey: 05C625:Skyrim.esm
+EditorID: VC01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_VC01_0005C625
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Falion
+      Object: 05C625:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05FalionsSoulGem
+      Object: 05C625:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05SummoningCircleMarker
+      Object: 05C625:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VC01StartMarker
+      Object: 05C625:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BlackSoulGem
+      Object: 02E504:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireChange
+      Object: 00283B:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireLordDisallow
+      Object: 00E8D9:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerVampireQuest
+      Object: 0EAFD5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Scene_VC01VampirismCureRitual
+      Object: 05DBA7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VC01RitualCompleteDialogueTopic
+      Object: 05DB93:Skyrim.esm
+  FileName: QF_VC01_0005C625
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_10
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_1
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_2
+  - Stage: 125
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_5
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_3
+  - Stage: 175
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_6
+  - Stage: 185
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_7
+  - Stage: 195
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_9
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_VC01_0005C625
+    FragmentName: Fragment_4
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 25
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 125
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 150
+  LogEntries:
+  - Flags: []
+- Index: 175
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 185
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 195
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 5
+Aliases:
+- Name: MS05Falion
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 0135E9:Skyrim.esm
+  PackageData:
+  - 05DBA8:Skyrim.esm
+  - 10FF16:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: MS05FalionsSoulGem
+  Flags: []
+  CreateReferenceToObject:
+    Object: 02E500:Skyrim.esm
+    Create: In
+  VoiceTypes: Null
+- ID: 2
+  Name: MS05SummoningCircleMarker
+  Flags: []
+  ForcedReference: 044389:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: VC01StartMarker
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 01EB95:Skyrim.esm
+  VoiceTypes: Null

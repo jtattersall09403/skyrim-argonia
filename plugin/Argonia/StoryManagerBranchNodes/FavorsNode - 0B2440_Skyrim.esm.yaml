@@ -1,0 +1,28 @@
+FormKey: 0B2440:Skyrim.esm
+VersionControl: 6185742
+EditorID: FavorsNode
+FormVersion: 34
+Version2: 5
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 030B13:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: HasKeyword
+    Member: NewLocation
+    Record: 039793:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: HasKeyword
+    Member: OldLocation
+    Record: 0130DC:Skyrim.esm
+Flags: []
+MaxConcurrentQuests: 0

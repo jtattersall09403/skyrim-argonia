@@ -1,0 +1,47 @@
+FormKey: 23D689:Black Marsh.esm
+EditorID: BlackMarsh
+Name:
+  TargetLanguage: English
+  Value: Black Marsh
+Climate: 130762:Black Marsh.esm
+Water: 062A72:Skyrim.esm
+LodWater: 062A72:Skyrim.esm
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -2048
+MapData:
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: -36, -39
+ObjectBoundsMax: 36, 20
+TopCell:
+  FormKey: 00ACB9:Black Marsh.esm
+  IsCompressed: True
+  MajorRecordFlagsRaw: 263168
+  SkyrimMajorRecordFlags:
+  - 0x400
+  - Compressed
+  Flags:
+  - HasWater
+  Grid:
+    Flags: -1403458816
+  WaterHeight: 3.4028235E+38
+  Persistent:
+  - MutagenObjectType: PlacedObject
+    FormKey: 000802:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_OpeningMarker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 5403, -6109, 66
+  MajorFlags:
+  - Persistent
+  - 0x40000
+SubCellsUnknown: 16843009

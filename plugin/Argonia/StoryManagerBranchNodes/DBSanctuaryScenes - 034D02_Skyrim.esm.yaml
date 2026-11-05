@@ -1,0 +1,37 @@
+FormKey: 034D02:Skyrim.esm
+VersionControl: 4482590
+EditorID: DBSanctuaryScenes
+FormVersion: 37
+Version2: 4
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 070222:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Location: 03444E:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsEditorLocationConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Location: 03444E:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetQuestRunningConditionData
+    Quest: 03CEDA:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetQuestRunningConditionData
+    Quest: 01EA59:Skyrim.esm
+Flags: []
+MaxConcurrentQuests: 0

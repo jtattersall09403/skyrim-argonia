@@ -1,0 +1,90 @@
+FormKey: 038386:Skyrim.esm
+VersionControl: 6186005
+EditorID: MS13LucanCamillaScene
+FormVersion: 35
+Version2: 4
+VirtualMachineAdapter:
+  Version: 4
+  ObjectFormat: 1
+  Scripts:
+  - Name: QF_MS13LucanCamillaScene_00038386
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Camilla
+      Object: 038386:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lucan
+      Object: 038386:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Marker
+      Object: 038386:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13LucanCamillaSceneView
+      Object: 03839B:Skyrim.esm
+  FileName: QF_MS13LucanCamillaScene_00038386
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MS13LucanCamillaScene_00038386
+    FragmentName: Fragment_4
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS13LucanCamillaScene_00038386
+    FragmentName: Fragment_0
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 038386:Skyrim.esm
+      Alias: 3
+    Version: 4
+    ObjectFormat: 1
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 6
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 0
+Filter: Misc\Riverwood\
+EventConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageDoneConditionData
+    Quest: 039645:Skyrim.esm
+    Stage: 5
+Stages:
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+NextAliasID: 4
+Aliases:
+- Name: Lucan
+  Flags:
+  - AllowReserved
+  UniqueActor: 01347A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Camilla
+  Flags:
+  - AllowReserved
+  UniqueActor: 01347B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Marker
+  Flags: []
+  ForcedReference: 0383BE:Skyrim.esm
+  VoiceTypes: Null

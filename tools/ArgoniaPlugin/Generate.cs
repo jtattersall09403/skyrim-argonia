@@ -1,0 +1,139 @@
+using Noggog;
+using System.Text.Json;
+using Mutagen.Bethesda;
+using Mutagen.Bethesda.Plugins;
+using Mutagen.Bethesda.Plugins.Records;
+using Mutagen.Bethesda.Skyrim;
+
+// seed <out.esp> <plugin paths in load order...>: Argonia.esp from shutdown.json and the opening's records.
+static class Generate
+{
+    static readonly ModKey Ours = ModKey.FromFileName("Argonia.esp");
+    static readonly ModKey Bmv = ModKey.FromFileName("Black Marsh.esm");
+    // The opening's spot: a navmesh triangle's centre on Lilmoth's dock walkway, BM&V cell Dock1 (1,-2), NAVM 079823.
+    static readonly P3Float Spot = new(5403f, -6109f, 66f);
+
+    public static void Run(string outPath, string[] paths)
+    {
+        var plan = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "shutdown.json"))).RootElement;
+        var mods = Survey.Load(paths);
+        var quests = Survey.Winners<IQuestGetter>(mods);
+        var nodes = Survey.Winners<IAStoryManagerNodeGetter>(mods);
+        var byEdid = quests.Values.Where(v => v.rec.EditorID != null).GroupBy(v => v.rec.EditorID!).ToDictionary(g => g.Key, g => g.Last().rec);
+        var nodeByEdid = nodes.Values.Where(v => v.rec.EditorID != null).GroupBy(v => v.rec.EditorID!).ToDictionary(g => g.Key, g => g.Last().rec);
+
+        var mod = new SkyrimMod(Ours, SkyrimRelease.SkyrimSE);
+        mod.ModHeader.Author = "Elder Souls: Argonia";
+        mod.ModHeader.Description = "Built from plugin/Argonia (Spriggit YAML); seeded by tools/ArgoniaPlugin.";
+
+        // Our records: allocate in a fixed order so form ids are stable.
+        var global = mod.Globals.AddNewShort("ARG_VanillaStoryManager");
+        global.Data = 0;
+        var opening = mod.Quests.AddNew("ARG_Opening");
+        var world = new Worldspace(FormKey.Factory("23D689:Black Marsh.esm"), SkyrimRelease.SkyrimSE);
+        var bmWorld = mods.First(m => m.ModKey == Bmv).Worldspaces.First(w => w.FormKey == world.FormKey);
+        var marker = new PlacedObject(mod.GetNextFormKey(), SkyrimRelease.SkyrimSE)
+        {
+            EditorID = "ARG_OpeningMarker",
+            Base = new FormLinkNullable<IPlaceableObjectGetter>(FormKey.Factory("00003B:Skyrim.esm")), // XMarker
+            MajorRecordFlagsRaw = 0x400, // persistent: MoveTo needs it loaded from anywhere
+            Placement = new Placement { Position = Spot, Rotation = new P3Float(0, 0, 0) },
+        };
+        world = bmWorld.DeepCopy(new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false });
+        world.TopCell = bmWorld.TopCell!.DeepCopy(new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false });
+        world.TopCell.Persistent.Add(marker);
+        mod.Worldspaces.Add(world);
+
+        // The opening quest: started by MQ101's stage 0 (below), its script moves the player and sets stage 10.
+        opening.Flags = Quest.Flag.RunOnce;
+        opening.Priority = 90;
+        opening.Type = Quest.TypeEnum.SideQuest;
+        opening.Name = "The Work Detail";
+        opening.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage });
+        opening.Stages.Add(new QuestStage
+        {
+            Index = 10,
+            LogEntries = { new QuestLogEntry { Entry = "You wake on the Lilmoth work detail, a prisoner in roughspun with nothing to your name." } },
+        });
+        opening.VirtualMachineAdapter = new QuestAdapter
+        {
+            Scripts =
+            {
+                new ScriptEntry
+                {
+                    Name = "ARG_StartQuestScript",
+                    Properties =
+                    {
+                        new ScriptObjectProperty { Name = "StartMarker", Object = marker.ToLink() },
+                        new ScriptObjectProperty { Name = "Tunic", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03C9FE:Skyrim.esm")) },
+                        new ScriptObjectProperty { Name = "Footwraps", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03CA00:Skyrim.esm")) },
+                    },
+                },
+            },
+        };
+
+        // MQ101, the engine's new-game quest: the Helgen intro replaced by one stage-0 fragment that starts ours
+        // (LAL's method: a stage-0 fragment on MQ101 diverts the start; here nothing of Helgen is kept).
+        var mq101 = new Quest(FormKey.Factory("03372B:Skyrim.esm"), SkyrimRelease.SkyrimSE)
+        {
+            EditorID = "MQ101", Flags = Quest.Flag.RunOnce, Priority = 80, Type = Quest.TypeEnum.MainQuest,
+            Stages = { new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage } },
+            VirtualMachineAdapter = new QuestAdapter
+            {
+                FileName = "ARG_QF_MQ101",
+                Scripts =
+                {
+                    new ScriptEntry
+                    {
+                        Name = "ARG_QF_MQ101",
+                        Properties = { new ScriptObjectProperty { Name = "ARGOpening", Object = opening.ToLink() } },
+                    },
+                },
+                Fragments = { new QuestScriptFragment { Stage = 0, StageIndex = 0, ScriptName = "ARG_QF_MQ101", FragmentName = "Fragment_0" } },
+            },
+        };
+        mod.Quests.Add(mq101);
+
+        // The shutdown: Start Game Enabled off, text stripped (these quests never run).
+        var strip = new Quest.TranslationMask(true)
+        {
+            Name = false, Description = false, Objectives = false,
+            Stages = new QuestStage.TranslationMask(true) { LogEntries = new QuestLogEntry.TranslationMask(true) { Entry = false } },
+        };
+        foreach (var group in plan.GetProperty("quests_sge_off").EnumerateObject())
+            foreach (var e in group.Value.EnumerateArray())
+            {
+                var id = e.GetString()!;
+                if (!byEdid.TryGetValue(id, out var q)) throw new Exception($"no quest {id}");
+                if (!q.Flags.HasFlag(Quest.Flag.StartGameEnabled)) throw new Exception($"{id} is not Start Game Enabled");
+                var copy = q.DeepCopy(strip);
+                copy.Flags &= ~Quest.Flag.StartGameEnabled;
+                copy.Name = null; copy.Description = null;
+                foreach (var st in copy.Stages) foreach (var le in st.LogEntries) le.Entry = null;
+                foreach (var o in copy.Objectives) o.DisplayText = null;
+                mod.Quests.Add(copy);
+            }
+        var cond = new ConditionFloat
+        {
+            CompareOperator = CompareOperator.EqualTo, ComparisonValue = 1,
+            Data = new GetGlobalValueConditionData { Global = { Link = { FormKey = global.FormKey } } },
+        };
+        foreach (var group in plan.GetProperty("story_nodes_off").EnumerateObject())
+            foreach (var e in group.Value.EnumerateArray())
+            {
+                var id = e.GetString()!;
+                var n = id.Contains(':') ? nodes[FormKey.Factory(id)].rec : nodeByEdid.TryGetValue(id, out var x) ? x : throw new Exception($"no node {id}");
+                var copy = (IAStoryManagerNode)n.DeepCopy();
+                copy.Conditions.Insert(0, cond.DeepCopy());
+                switch (copy)
+                {
+                    case StoryManagerQuestNode qn: mod.StoryManagerQuestNodes.Add(qn); break;
+                    case StoryManagerBranchNode bn: mod.StoryManagerBranchNodes.Add(bn); break;
+                    default: throw new Exception($"{id}: not a quest or branch node");
+                }
+            }
+        var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
+        mod.BeginWrite.ToPath(outPath).WithLoadOrder(order).WithNoDataFolder().Write();
+        Console.WriteLine($"wrote {outPath}: {mod.EnumerateMajorRecords().Count()} records");
+    }
+}

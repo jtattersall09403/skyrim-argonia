@@ -1,0 +1,25 @@
+FormKey: 024003:Dragonborn.esm
+VersionControl: 6583324
+EditorID: DLC2dunHaknirTreasureNodeSHARES
+FormVersion: 43
+Version2: 4
+Parent: 05BD79:Skyrim.esm
+PreviousSibling: 10EA41:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetLevelConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+  ComparisonValue: 024004:Dragonborn.esm
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 038FB0:Dragonborn.esm

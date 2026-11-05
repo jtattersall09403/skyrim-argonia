@@ -1,0 +1,27 @@
+FormKey: 01CEEF:Skyrim.esm
+VersionControl: 3302428
+EditorID: CR00
+FormVersion: 35
+Version2: 13
+VirtualMachineAdapter:
+  Version: 4
+  ObjectFormat: 1
+  Scripts:
+  - Name: CR00QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ParentQuest
+      Object: 04B2D9:Skyrim.esm
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Flags:
+- 0x10
+QuestFormVersion: 0
+Type: CompanionQuests
+Filter: Faction\Companions\Radiant\
+Stages:
+- LogEntries:
+  - Flags: []
+NextAliasID: 1

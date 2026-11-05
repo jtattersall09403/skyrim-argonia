@@ -1,0 +1,43 @@
+FormKey: 03833E:Skyrim.esm
+VersionControl: 5072151
+EditorID: WIDeadBodyNode
+FormVersion: 35
+Version2: 9
+Parent: 03833D:Skyrim.esm
+PreviousSibling: 0B48FC:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Location: 0192B2:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRandomPercentConditionData
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12882
+    Faction: 038C72:Skyrim.esm
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 035D6C:Skyrim.esm
+  ComparisonValue: 000039:Skyrim.esm
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 035D66:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

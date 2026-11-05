@@ -1,0 +1,22 @@
+FormKey: 046B8D:Skyrim.esm
+VersionControl: 2320157
+EditorID: MQCallDragonNode
+FormVersion: 39
+Version2: 9
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 10EC64:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 046B88:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 046B8E:Skyrim.esm

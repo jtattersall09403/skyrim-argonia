@@ -1,0 +1,841 @@
+FormKey: 0242AF:Skyrim.esm
+VersionControl: 79128
+EditorID: DA16
+Version2: 12
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA16QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA16DreamActorEnableMarker
+      Object: 0C433B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA16DreamActorEnableMarker02
+      Object: 0343DD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA16PreQuestActorEnableMarker
+      Object: 0C6322:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA16PresentActorEnableMarker
+      Object: 0C433A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA16PresentPostDreamActorEnableMarker
+      Object: 0C4DB9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DreamISMD
+      Object: 0201D3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16BossVar
+      Object: 07EA26:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ConfrontScene
+      Object: 079BB4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16DreamSetup
+      Object: 09E199:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16Erandur
+      Object: 02427D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ErandurAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ErandurMarker
+      Object: 09FC03:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16InitScene
+      Object: 058C97:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16LabVar
+      Object: 078660:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16LibraryVar
+      Object: 07865F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16PlayerEndDream
+      Object: 09DDE0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16PlayerStartDream
+      Object: 09DDE1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16Quest
+      Object: 0242AF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16RitualScene
+      Object: 09FC1D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ThorekAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16VerenAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 3
+  - Name: QF_DA16_000242AF
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BarrierGemAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16AlchemyTomeAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16ErandurMarkerAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 32
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16LabMarkerAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16LibraryMarkerAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16NightcallerLocationAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16PointerAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 47
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16SkullPedestal
+      Object: 0242AF:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16Spectator01Alias
+      Object: 0242AF:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16Spectator02Alias
+      Object: 0242AF:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16Spectator03Alias
+      Object: 0242AF:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16Spectator04Alias
+      Object: 0242AF:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16ThorekAmbushAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 45
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16ThoringAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 42
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16TorporAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16TorporQuestItemAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DA16VerenAmbushAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 44
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ErandurAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FrukiAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_IrgnirAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MiasmaLeverAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SkullAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ThorekAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VerenAlias
+      Object: 0242AF:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pConfrontEnabler
+      Object: 079BBD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ErandurDead
+      Object: 1052EC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ErandurFaction
+      Object: 10ACB3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16ErandurMeetingMarker
+      Object: 024301:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16FoeFaction
+      Object: 07A50A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16Friend
+      Object: 07A509:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16InHeadScene
+      Object: 0E16CF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16QS
+      Object: 0242AF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16SkullDestroyed
+      Object: 1052ED:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16SkullHandler
+      Object: 1093CF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA16Walk
+      Object: 0E16C8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDLC1VampireLordDisallow
+      Object: 00E8D9:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pErandur
+      Object: 024280:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pErandurBase
+      Object: 02427D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pLDT
+      Object: 078659:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRitualScene
+      Object: 09FC1D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRitualScene02
+      Object: 07EA29:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSkullCollision
+      Object: 07710F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSkullPedestal
+      Object: 09AE42:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSkullShield
+      Object: 0DD025:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pThorek_Ambush
+      Object: 0341FF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVerenDuleri_Ambush
+      Object: 0341FE:Skyrim.esm
+  FileName: QF_DA16_000242AF
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_0
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_74
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_129
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_8
+  - Stage: 22
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_128
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_10
+  - Stage: 28
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_124
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_11
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_13
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_91
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_92
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_93
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_94
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_96
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_98
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_99
+  - Stage: 120
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_101
+  - Stage: 140
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_104
+  - Stage: 145
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_118
+  - Stage: 148
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_126
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_106
+  - Stage: 155
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_120
+  - Stage: 160
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_108
+  - Stage: 170
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_110
+  - Stage: 180
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_112
+  - Stage: 190
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_113
+  - Stage: 191
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_131
+  - Stage: 192
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_122
+  - Stage: 195
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_137
+  - Stage: 196
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_142
+  - Stage: 197
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_114
+  - Stage: 198
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_116
+  - Stage: 199
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_138
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_67
+  - Stage: 200
+    StageIndex: 2
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_141
+  - Stage: 200
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_DA16_000242AF
+    FragmentName: Fragment_139
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: DA16ErandurScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16ErandurDead
+        Object: 1052EC:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Quest
+        Object: 0242AF:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 14
+    Scripts:
+    - Name: DA16SkullScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Quest
+        Object: 0242AF:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 26
+    Scripts:
+    - Name: DA16TorporScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16QS
+        Object: 0242AF:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Quest
+        Object: 0242AF:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 27
+    Scripts:
+    - Name: DA16AlchemyTomeScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16QS
+        Object: 0242AF:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Quest
+        Object: 0242AF:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 44
+    Scripts:
+    - Name: DA16BossKillerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Boss
+        Object: 07EA26:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16QS
+        Object: 0242AF:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0242AF:Skyrim.esm
+      Alias: 45
+    Scripts:
+    - Name: DA16BossKillerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16Boss
+        Object: 07EA26:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA16QS
+        Object: 0242AF:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+- 0x1000
+Priority: 60
+QuestFormVersion: 0
+Type: Daedric
+Filter: Daedric\
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 5
+  Unknown: 42
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 22
+  LogEntries:
+  - Flags: []
+- Index: 25
+  LogEntries:
+  - Flags: []
+- Index: 28
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 60
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 70
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 80
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 90
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 110
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 120
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 140
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 145
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 148
+  LogEntries:
+  - Flags: []
+- Index: 150
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 155
+  Unknown: 49
+  LogEntries:
+  - Flags: []
+- Index: 160
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 170
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 180
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 190
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 191
+  LogEntries:
+  - Flags: []
+- Index: 192
+  Unknown: 49
+  LogEntries:
+  - Flags: []
+- Index: 195
+  LogEntries:
+  - Flags: []
+- Index: 196
+  LogEntries:
+  - Flags: []
+- Index: 197
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 198
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 199
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 1052EC:Skyrim.esm
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 1052EC:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 1052ED:Skyrim.esm
+      ComparisonValue: 1
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 1052EC:Skyrim.esm
+      ComparisonValue: 1
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetGlobalValueConditionData
+        Global: 1052ED:Skyrim.esm
+NextAliasID: 49
+Aliases:
+- ID: 36
+  Type: Location
+  Name: DA16NightcallerLocationAlias
+  Flags: []
+  SpecificLocation: 0192B9:Skyrim.esm
+- Name: ErandurAlias
+  Flags:
+  - AllowDisabled
+  UniqueActor: 02427D:Skyrim.esm
+  PackageData:
+  - 07EA2A:Skyrim.esm
+  - 10531E:Skyrim.esm
+  - 10539C:Skyrim.esm
+  - 063235:Skyrim.esm
+  - 07EA27:Skyrim.esm
+  - 035069:Skyrim.esm
+  - 0428E0:Skyrim.esm
+  - 09FC0D:Skyrim.esm
+  - 079AD2:Skyrim.esm
+  - 09FC0C:Skyrim.esm
+  - 09FC0A:Skyrim.esm
+  - 07865B:Skyrim.esm
+  - 09FC08:Skyrim.esm
+  - 0428DF:Skyrim.esm
+  - 0428E4:Skyrim.esm
+  - 105CE3:Skyrim.esm
+  - 0AAA13:Skyrim.esm
+  - 035068:Skyrim.esm
+  - 099D9F:Skyrim.esm
+  - 0A0305:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: ThorekAlias
+  Flags:
+  - Essential
+  - AllowDisabled
+  Location:
+    AliasID: 36
+    RefType: 036EE9:Skyrim.esm
+  PackageData:
+  - 0242FF:Skyrim.esm
+  - 0242F4:Skyrim.esm
+  VoiceTypes: 024278:Skyrim.esm
+- ID: 3
+  Name: VerenAlias
+  Flags:
+  - Essential
+  - AllowDisabled
+  Location:
+    AliasID: 36
+    RefType: 036EEA:Skyrim.esm
+  PackageData:
+  - 0242FE:Skyrim.esm
+  - 02430A:Skyrim.esm
+  - 0242E9:Skyrim.esm
+  VoiceTypes: 02427C:Skyrim.esm
+- ID: 14
+  Name: SkullAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 10DE0E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: IrgnirAlias
+  Flags: []
+  UniqueActor: 013617:Skyrim.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: FrukiAlias
+  Flags: []
+  UniqueActor: 013615:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: BarrierGemAlias
+  Flags: []
+  ForcedReference: 109673:Skyrim.esm
+  VoiceTypes: Null
+- ID: 23
+  Name: MiasmaLeverAlias
+  Flags: []
+  ForcedReference: 09EF2E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: DA16TorporAlias
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 46
+  ForcedReference: 09DD91:Skyrim.esm
+  VoiceTypes: Null
+- ID: 46
+  Name: DA16TorporQuestItemAlias
+  Flags:
+  - Optional
+  - QuestObject
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 27
+  Name: DA16AlchemyTomeAlias
+  Flags:
+  - QuestObject
+  ForcedReference: 09DE3E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: DA16LibraryMarkerAlias
+  Flags: []
+  ForcedReference: 09FC09:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: DA16LabMarkerAlias
+  Flags: []
+  ForcedReference: 09FC0B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 31
+  Name: DA16SkullPedestal
+  Flags: []
+  ForcedReference: 09AE42:Skyrim.esm
+  VoiceTypes: Null
+- ID: 32
+  Name: DA16ErandurMarkerAlias
+  Flags: []
+  ForcedReference: 024301:Skyrim.esm
+  VoiceTypes: Null
+- ID: 42
+  Name: DA16ThoringAlias
+  Flags: []
+  UniqueActor: 013621:Skyrim.esm
+  PackageData:
+  - 099D66:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: DA16Spectator01Alias
+  Flags:
+  - Optional
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: HasKeywordConditionData
+      Keyword: 013794:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInCellConditionData
+      Cell: 013A7F:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 38
+  Name: DA16Spectator02Alias
+  Flags:
+  - Optional
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: HasKeywordConditionData
+      Keyword: 013794:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInCellConditionData
+      Cell: 013A7F:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 39
+  Name: DA16Spectator03Alias
+  Flags:
+  - Optional
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: HasKeywordConditionData
+      Keyword: 013794:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInCellConditionData
+      Cell: 013A7F:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 40
+  Name: DA16Spectator04Alias
+  Flags:
+  - Optional
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: HasKeywordConditionData
+      Keyword: 013794:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInCellConditionData
+      Cell: 013A7F:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 44
+  Name: DA16VerenAmbushAlias
+  Flags:
+  - AllowDisabled
+  UniqueActor: 0341FE:Skyrim.esm
+  PackageData:
+  - 0F9AE5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 45
+  Name: DA16ThorekAmbushAlias
+  Flags:
+  - AllowDisabled
+  UniqueActor: 0341FF:Skyrim.esm
+  PackageData:
+  - 0F9AE6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 47
+  Name: DA16PointerAlias
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 0E16C9:Skyrim.esm
+  VoiceTypes: Null

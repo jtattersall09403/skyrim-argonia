@@ -1,0 +1,36 @@
+FormKey: 01E7D9:Dragonborn.esm
+VersionControl: 5075483
+EditorID: DLC2WENode
+FormVersion: 43
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 0896A8:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 0B8EC1:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 01AA2B:Dragonborn.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 01AA2A:Dragonborn.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

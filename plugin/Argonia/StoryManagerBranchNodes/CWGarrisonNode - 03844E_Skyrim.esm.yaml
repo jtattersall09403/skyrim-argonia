@@ -1,0 +1,15 @@
+FormKey: 03844E:Skyrim.esm
+VersionControl: 5071378
+EditorID: CWGarrisonNode
+FormVersion: 34
+Version2: 5
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 09002A:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

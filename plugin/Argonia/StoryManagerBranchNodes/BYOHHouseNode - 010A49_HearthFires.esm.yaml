@@ -1,0 +1,15 @@
+FormKey: 010A49:HearthFires.esm
+VersionControl: 946188
+EditorID: BYOHHouseNode
+FormVersion: 43
+Version2: 3
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 003F7A:HearthFires.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

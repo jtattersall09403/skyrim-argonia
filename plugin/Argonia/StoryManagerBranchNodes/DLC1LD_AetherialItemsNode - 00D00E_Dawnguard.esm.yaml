@@ -1,0 +1,15 @@
+FormKey: 00D00E:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1LD_AetherialItemsNode
+FormVersion: 43
+Version2: 2
+Parent: 039D86:Skyrim.esm
+PreviousSibling: 0FDE7E:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

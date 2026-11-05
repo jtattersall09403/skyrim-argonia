@@ -1,0 +1,55 @@
+FormKey: 0AF269:Skyrim.esm
+EditorID: MS11PreEssentializing
+Version2: 9
+Flags:
+- 0x10
+QuestFormVersion: 65
+NextAliasID: 9
+Aliases:
+- Name: Helgird
+  Flags:
+  - Essential
+  UniqueActor: 014124:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Calixto
+  Flags:
+  - Essential
+  UniqueActor: 01414A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Silda
+  Flags:
+  - Essential
+  UniqueActor: 014121:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Jorleif
+  Flags:
+  - Essential
+  UniqueActor: 014135:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Susanna
+  Flags:
+  - Essential
+  UniqueActor: 01412B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Wuunferth
+  Flags:
+  - Essential
+  UniqueActor: 014146:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: Viola
+  Flags:
+  - Essential
+  UniqueActor: 014129:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: Arivanya
+  Flags:
+  - Essential
+  UniqueActor: 014127:Skyrim.esm
+  VoiceTypes: Null

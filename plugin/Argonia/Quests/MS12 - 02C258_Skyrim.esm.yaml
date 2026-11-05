@@ -1,0 +1,215 @@
+FormKey: 02C258:Skyrim.esm
+EditorID: MS12
+Version2: 11
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS12QuestScript
+    Properties:
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GivenBrokenPhialToNurelion
+    - MutagenObjectType: ScriptBoolProperty
+      Name: HeardAboutPhial
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PreReq
+      Object: 02D515:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: QuintusLookForTonic
+    - MutagenObjectType: ScriptIntProperty
+      Name: RewardAmount
+      Data: 500
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RewardObject
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShadowQuest
+      Object: 02499C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StartingPosition
+      Object: 024990:Skyrim.esm
+  - Name: QF_MS12_0002C258
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ForsakenCaveMapMarker
+      Object: 02C258:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nurelion
+      Object: 02C258:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NurelionEssential
+      Object: 02C258:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OpeningPotion
+      Object: 02C258:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Quintus
+      Object: 02C258:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuintusEssential
+      Object: 02C258:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhitePhialDamaged
+      Object: 02C258:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CityApothecaryAlias
+      Object: 03502E:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameDaysPassed
+      Object: 000039:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS12EnableMarker
+      Object: 08DBA8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS12FollowUpStartDay
+      Object: 0C6B9F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TGNoPickpocketFaction
+      Object: 09E0E5:Skyrim.esm
+  FileName: QF_MS12_0002C258
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS12_0002C258
+    FragmentName: Fragment_11
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS12_0002C258
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS12_0002C258
+    FragmentName: Fragment_2
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: QF_MS12_0002C258
+    FragmentName: Fragment_13
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS12_0002C258
+    FragmentName: Fragment_9
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 02C258:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: defaultsetstageonplayeracquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 02C258:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 20
+  - Property:
+      Name: ''
+      Object: 02C258:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MS12NurelionScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Convalescent
+        Object: 02C26D:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NurelionBed
+        Object: 01678E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NurelionDying
+        Object: 09726C:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Filter: Misc\Windhelm\
+Stages:
+- Unknown: 47
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 65
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 11
+Aliases:
+- Name: WhitePhialDamaged
+  Flags:
+  - QuestObject
+  ForcedReference: 02C25B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Nurelion
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 8
+  ForcedReference: 01B115:Skyrim.esm
+  Factions:
+  - 01365B:Skyrim.esm
+  PackageData:
+  - 02C26D:Skyrim.esm
+  - 0C6BA0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Quintus
+  Flags:
+  - ReservesLocationOrReference
+  AliasIDToForceIntoWhenFilled: 9
+  ForcedReference: 01B116:Skyrim.esm
+  Factions:
+  - 01365B:Skyrim.esm
+  PackageData:
+  - 0C97E3:Skyrim.esm
+  - 0C97E2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: ForsakenCaveMapMarker
+  Flags: []
+  ForcedReference: 016248:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: NurelionEssential
+  Flags:
+  - Optional
+  - Essential
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 9
+  Name: QuintusEssential
+  Flags:
+  - Optional
+  - Essential
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 10
+  Name: OpeningPotion
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0C4F2E:Skyrim.esm
+    AliasID: 1
+    Create: In
+  VoiceTypes: Null

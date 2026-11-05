@@ -1,0 +1,12 @@
+FormKey: 0880E1:Skyrim.esm
+VersionControl: 3302428
+EditorID: CompanionsRejoinQuest
+FormVersion: 35
+Version2: 12
+Flags:
+- 0x10
+Priority: 70
+QuestFormVersion: 0
+Type: CompanionQuests
+Filter: Faction\Companions\Radiant\
+NextAliasID: 0

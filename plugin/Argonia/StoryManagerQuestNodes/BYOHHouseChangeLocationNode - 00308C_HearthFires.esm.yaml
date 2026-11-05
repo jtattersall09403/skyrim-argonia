@@ -1,0 +1,26 @@
+FormKey: 00308C:HearthFires.esm
+VersionControl: 946188
+EditorID: BYOHHouseChangeLocationNode
+FormVersion: 43
+Version2: 5
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 0CBA9F:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: HasKeyword
+    Member: NewLocation
+    Record: 00308D:HearthFires.esm
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 00308B:HearthFires.esm
+  HoursUntilReset: 24

@@ -1,0 +1,23 @@
+FormKey: 0C791B:Skyrim.esm
+VersionControl: 5072148
+EditorID: WIGreetingNodeSHARES
+FormVersion: 35
+Version2: 3
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 0DEE94:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsTrespassingConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0C7919:Skyrim.esm

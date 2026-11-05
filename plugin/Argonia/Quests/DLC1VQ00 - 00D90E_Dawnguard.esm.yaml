@@ -1,0 +1,136 @@
+FormKey: 00D90E:Dawnguard.esm
+VersionControl: 79128
+EditorID: DLC1VQ00
+Version2: 8
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1_QF_DLC1VQ00_0100D90E
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Location
+      Object: 00D90E:Dawnguard.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LocationCenterMarker
+      Object: 00D90E:Dawnguard.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Messenger
+      Object: 00D90E:Dawnguard.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VQ01MiscObjective
+      Object: 00D06C:Dawnguard.esm
+  FileName: DLC1_QF_DLC1VQ00_0100D90E
+  Fragments:
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_10
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_8
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_14
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_7
+  - Stage: 50
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_15
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_12
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: DLC1_QF_DLC1VQ00_0100D90E
+    FragmentName: Fragment_4
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 00D90E:Dawnguard.esm
+      Alias: 3
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 100
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+Flags:
+- 0x10
+- RunOnce
+Priority: 62
+QuestFormVersion: 0
+Type: Misc
+Filter: DLC1\Main Quest\
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetStageDoneConditionData
+        Quest: 00D06C:Dawnguard.esm
+        Stage: 10
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetInCurrentLocConditionData
+        RunOnType: Reference
+        Reference: 000014:Skyrim.esm
+        Location: 004C1F:Dawnguard.esm
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 8
+Aliases:
+- ID: 7
+  Type: Location
+  Name: Location
+  Flags:
+  - Optional
+- ID: 2
+  Name: LocationCenterMarker
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 3
+  Name: Messenger
+  Flags:
+  - Optional
+  - AllowDisabled
+  - AllowReserved
+  - Protected
+  PackageData:
+  - 00D90C:Dawnguard.esm
+  - 00D90D:Dawnguard.esm
+  VoiceTypes: Null

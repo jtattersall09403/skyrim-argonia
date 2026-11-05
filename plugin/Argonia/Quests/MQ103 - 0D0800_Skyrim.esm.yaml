@@ -1,0 +1,450 @@
+FormKey: 0D0800:Skyrim.esm
+VersionControl: 79128
+EditorID: MQ103
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MQ103NewScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ00
+      Object: 01C5D9:Skyrim.esm
+  - Name: QF_MQ103_000D0800
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Balgruuf
+      Object: 0D0800:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BleakFallsBoss
+      Object: 0D0800:Skyrim.esm
+      Alias: 52
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BleakFallsLocation
+      Object: 0D0800:Skyrim.esm
+      Alias: 53
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dagny
+      Object: 0D0800:Skyrim.esm
+      Alias: 62
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Delphine
+      Object: 0D0800:Skyrim.esm
+      Alias: 59
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_dragonStone
+      Object: 0D0800:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Farengar
+      Object: 0D0800:Skyrim.esm
+      Alias: 54
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Frothar
+      Object: 0D0800:Skyrim.esm
+      Alias: 60
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hrongar
+      Object: 0D0800:Skyrim.esm
+      Alias: 63
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Irileth
+      Object: 0D0800:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Nelkir
+      Object: 0D0800:Skyrim.esm
+      Alias: 61
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Riverwood
+      Object: 0D0800:Skyrim.esm
+      Alias: 56
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RiverwoodGuard01
+      Object: 0D0800:Skyrim.esm
+      Alias: 55
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RiverwoodGuard02
+      Object: 0D0800:Skyrim.esm
+      Alias: 57
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RiverwoodGuard03
+      Object: 0D0800:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BleakFallsMapMarker
+      Object: 016232:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW
+      Object: 019E53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DelphineMoveMarker
+      Object: 0D50F7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DelphineSpyOutfit
+      Object: 0996E4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunDragonMoundQST
+      Object: 0FDBA2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FarengarBook
+      Object: 0FBA58:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FarengarLabTrigger
+      Object: 0D50FE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: introScene
+      Object: 0D50F6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: IrilethScene
+      Object: 0D5323:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ102
+      Object: 04E50D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ104
+      Object: 02610C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQReserved
+      Object: 01BC95:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OutroScene
+      Object: 0D8B7D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OutroTrigger
+      Object: 0D8B81:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiverwoodGuardCampEnableMarker
+      Object: 0D50FF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiverwoodGuardMarker
+      Object: 0D5321:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiverwoodGuardsEnableMarker
+      Object: 01B754:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SleepingGiantIntroTrigger
+      Object: 0BCF06:Skyrim.esm
+  FileName: QF_MQ103_000D0800
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_25
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_5
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_68
+  - Stage: 8
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_80
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_69
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_78
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_70
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_7
+  - Stage: 50
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_88
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_72
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_89
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_76
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_77
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_74
+  - Stage: 180
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_18
+  - Stage: 180
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_87
+  - Stage: 182
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_81
+  - Stage: 185
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_83
+  - Stage: 190
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_20
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MQ103_000D0800
+    FragmentName: Fragment_23
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0D0800:Skyrim.esm
+      Alias: 18
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 180
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 7
+Flags:
+- 0x10
+- RunOnce
+Priority: 81
+QuestFormVersion: 0
+Type: MainQuest
+Filter: Main Quest\
+Stages:
+- Unknown: 83
+  LogEntries:
+  - Flags: []
+- Index: 1
+  Unknown: 32
+  LogEntries:
+  - Flags: []
+- Index: 5
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 8
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      CompareOperator: GreaterThan
+      Data:
+        MutagenObjectType: GetItemCountConditionData
+        RunOnType: Reference
+        Reference: 000014:Skyrim.esm
+        ItemOrList: 0DF202:Skyrim.esm
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 90
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 180
+  LogEntries:
+  - Flags: []
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetInCellConditionData
+        RunOnType: Reference
+        Reference: 000014:Skyrim.esm
+        Cell: 0371DD:Skyrim.esm
+      ComparisonValue: 1
+- Index: 182
+  LogEntries:
+  - Flags: []
+- Index: 185
+  LogEntries:
+  - Flags: []
+- Index: 190
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 200
+  LogEntries:
+  - Flags: []
+    NextQuest: 02610C:Skyrim.esm
+NextAliasID: 64
+Aliases:
+- ID: 4
+  Name: Balgruuf
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 013BBD:Skyrim.esm
+  PackageData:
+  - 10076E:Skyrim.esm
+  - 0D0801:Skyrim.esm
+  - 0D50F8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: Irileth
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 013BB8:Skyrim.esm
+  PackageData:
+  - 0D50F4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 54
+  Name: Farengar
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 013BBB:Skyrim.esm
+  PackageData:
+  - 0D8B80:Skyrim.esm
+  - 0D50F9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 59
+  Name: Delphine
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 013478:Skyrim.esm
+  PackageData:
+  - 0D5541:Skyrim.esm
+  VoiceTypes: Null
+- ID: 53
+  Type: Location
+  Name: BleakFallsLocation
+  Flags: []
+  SpecificLocation: 018EE9:Skyrim.esm
+- ID: 52
+  Name: BleakFallsBoss
+  Flags:
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 53
+    RefType: 0130F7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: dragonStone
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0DF202:Skyrim.esm
+    AliasID: 52
+    Create: In
+  VoiceTypes: Null
+- ID: 56
+  Type: Location
+  Name: Riverwood
+  Flags: []
+  SpecificLocation: 013163:Skyrim.esm
+- ID: 55
+  Name: RiverwoodGuard01
+  Flags: []
+  Location:
+    AliasID: 56
+    RefType: 01DA51:Skyrim.esm
+  PackageData:
+  - 0D5328:Skyrim.esm
+  - 0D5324:Skyrim.esm
+  VoiceTypes: 0274AB:Skyrim.esm
+- ID: 57
+  Name: RiverwoodGuard02
+  Flags: []
+  Location:
+    AliasID: 56
+    RefType: 01DA51:Skyrim.esm
+  PackageData:
+  - 0D5328:Skyrim.esm
+  - 0D5326:Skyrim.esm
+  VoiceTypes: 0274AB:Skyrim.esm
+- ID: 58
+  Name: RiverwoodGuard03
+  Flags: []
+  Location:
+    AliasID: 56
+    RefType: 01DA51:Skyrim.esm
+  PackageData:
+  - 0D5328:Skyrim.esm
+  - 0D5326:Skyrim.esm
+  VoiceTypes: 0274AB:Skyrim.esm
+- ID: 60
+  Name: Frothar
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 01434C:Skyrim.esm
+  PackageData:
+  - 0E0EBF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 61
+  Name: Nelkir
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 01434D:Skyrim.esm
+  PackageData:
+  - 0E0EBF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 62
+  Name: Dagny
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 01434B:Skyrim.esm
+  PackageData:
+  - 0E0EBF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 63
+  Name: Hrongar
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 013BBC:Skyrim.esm
+  PackageData:
+  - 0E0EC0:Skyrim.esm
+  - 0E0EC1:Skyrim.esm
+  VoiceTypes: Null

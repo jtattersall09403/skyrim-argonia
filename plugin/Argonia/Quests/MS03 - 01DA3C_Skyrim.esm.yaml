@@ -1,0 +1,316 @@
+FormKey: 01DA3C:Skyrim.esm
+VersionControl: 79128
+EditorID: MS03
+Version2: 8
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS03Script
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LouisLetrush
+      Object: 01DA3C:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LetrushHideoutMarker
+      Object: 01DA45:Skyrim.esm
+  - Name: QF_MS03_0001DA3C
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BlackBriarLodgeMapMarker
+      Object: 01DA3C:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LouisLetrush
+      Object: 01DA3C:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MavenBlackBriar
+      Object: 01DA3C:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS03Grane
+      Object: 01DA3C:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS03HiddenStash
+      Object: 01DA3C:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS03IdentityPapers
+      Object: 01DA3C:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS03JailSibbiMarkerAlias
+      Object: 01DA3C:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS03LouisLetrushMeetMarker
+      Object: 01DA3C:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SibbiBlackBriar
+      Object: 01DA3C:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_StashKey
+      Object: 01DA3C:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward03Large
+      Object: 0C0406:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS03LouisEntrance
+      Object: 01ECAA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS03NearHideoutMarker
+      Object: 01E194:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TempWarning
+      Object: 01ECA9:Skyrim.esm
+  FileName: QF_MS03_0001DA3C
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_4
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_6
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_48
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_45
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_44
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_14
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_18
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_34
+  - Stage: 225
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_38
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_46
+  - Stage: 275
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_47
+  - Stage: 300
+    Unknown2: 1
+    ScriptName: QF_MS03_0001DA3C
+    FragmentName: Fragment_49
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01DA3C:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 250
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 275
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+  - Property:
+      Name: ''
+      Object: 01DA3C:Skyrim.esm
+      Alias: 20
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 50
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+    - Name: defaultsetstageondeathrefalias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 01DA3C:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 300
+  - Property:
+      Name: ''
+      Object: 01DA3C:Skyrim.esm
+      Alias: 21
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 25
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 7
+  - Property:
+      Name: ''
+      Object: 01DA3C:Skyrim.esm
+      Alias: 24
+    Scripts:
+    - Name: MS03SetObjectiveCompleted
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: objective
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: SideQuest
+Filter: Misc\Riften\
+Stages:
+- Index: 5
+  Unknown: 65
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 32
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 34
+  LogEntries:
+  - Flags: []
+- Index: 25
+  Unknown: 34
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+- Index: 225
+  LogEntries:
+  - Flags: []
+- Index: 250
+  LogEntries:
+  - Flags: []
+- Index: 275
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 300
+  LogEntries:
+  - Flags:
+    - FailQuest
+NextAliasID: 29
+Aliases:
+- Name: LouisLetrush
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 013368:Skyrim.esm
+  PackageData:
+  - 0D793F:Skyrim.esm
+  - 0D7941:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: MavenBlackBriar
+  Flags:
+  - AllowReserved
+  UniqueActor: 01336A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: SibbiBlackBriar
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 01337B:Skyrim.esm
+  PackageData:
+  - 074A17:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: MS03JailSibbiMarkerAlias
+  Flags: []
+  ForcedReference: 05DEB4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: MS03Grane
+  Flags: []
+  ForcedReference: 097E1F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: MS03IdentityPapers
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  ForcedReference: 0F8751:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: MS03LouisLetrushMeetMarker
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 0D793E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: MS03HiddenStash
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0AD09B:Skyrim.esm
+  Items:
+  - Item:
+      Item: 0C0404:Skyrim.esm
+      Count: 1
+  VoiceTypes: Null
+- ID: 26
+  Name: StashKey
+  Flags: []
+  CreateReferenceToObject:
+    Object: 0B862F:Skyrim.esm
+    AliasID: 3
+    Create: In
+  VoiceTypes: Null
+- ID: 28
+  Name: BlackBriarLodgeMapMarker
+  Flags: []
+  ForcedReference: 0A7CE5:Skyrim.esm
+  VoiceTypes: Null

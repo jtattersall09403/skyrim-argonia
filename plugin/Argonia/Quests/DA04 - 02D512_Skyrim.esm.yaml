@@ -1,0 +1,569 @@
+FormKey: 02D512:Skyrim.esm
+EditorID: DA04
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA04QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Altmer
+      Object: 013743:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AltmerVampire
+      Object: 088840:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: AstrolabeOpened
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Bosmer
+      Object: 013749:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BosmerVampire
+      Object: 088884:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: BoxOpened
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DefiedHermaeusMora
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Disappear
+      Object: 106E1E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Dunmer
+      Object: 013742:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DunmerVampire
+      Object: 08883D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Extractor
+      Object: 01A31C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FALMER
+      Object: 0131F4:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GotAltmerBlood
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GotBosmerBlood
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GotDunmerBlood
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GotFalmerBlood
+    - MutagenObjectType: ScriptBoolProperty
+      Name: GotOrsimerBlood
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraActivator
+      Object: 0F5B00:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraActivatorAlt
+      Object: 0F5B04:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraCollision
+      Object: 0F5B01:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraCollisionAlt
+      Object: 0F5B03:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraEndSpot
+      Object: 015B73:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraFX
+      Object: 0F5AFE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraFXAlt
+      Object: 0F5B05:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HermaeusMoraTA
+      Object: 03278E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OghmaInfinium
+      Object: 02D512:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Orsimer
+      Object: 013747:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OrsimerVampire
+      Object: 0A82B9:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: ReadCrazyBook
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Septimus
+      Object: 02D512:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SeptimusEssential
+      Object: 02D512:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SeptimusMentionedBlackreach
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SeptimusReadScroll
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SeptimusSentForPlayer
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SeptimusStartAscension
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SeptimusVanished
+  - Name: QF_DA04_0002D512
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AlftandMapMarker
+      Object: 015D4A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ActualBlackreachDoor
+      Object: 02D512:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlftandSecondCellDoor
+      Object: 02D512:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlftandWorldDoor
+      Object: 02D512:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlftandZCellIntDoor
+      Object: 02D512:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AtunementSphere
+      Object: 02D512:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BlackreachLock
+      Object: 02D512:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CubeStorageChest
+      Object: 02D512:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ElderScroll
+      Object: 02D512:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Extractor
+      Object: 02D512:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ExtractorQuestItem
+      Object: 02D512:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HermaeusMora
+      Object: 02D512:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HermaeusMoraRename
+      Object: 02D512:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LexiconCubeBlank
+      Object: 02D512:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LexiconCubeInscribed
+      Object: 02D512:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LexiconStand
+      Object: 02D512:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OghmaInfinium
+      Object: 02D512:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RuminationsBook
+      Object: 02D512:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RuminationsQuestItem
+      Object: 02D512:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Septimus
+      Object: 02D512:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SeptimusEssential
+      Object: 02D512:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TamrielToAlftand
+      Object: 02D512:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TowerOfMzarkDoor
+      Object: 02D512:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Urag
+      Object: 02D512:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_UragEssential
+      Object: 02D512:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BloodHarvest
+      Object: 079AF5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Harvester
+      Object: 01A31C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Lexicon
+      Object: 03A3D2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ205
+      Object: 02D516:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MzarkMapMarker
+      Object: 0D30DA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDLC1VQElderHandler
+      Object: 0181BF:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Sphere
+      Object: 03532C:Skyrim.esm
+  FileName: QF_DA04_0002D512
+  Fragments:
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_18
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_21
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_2
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_4
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_26
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_6
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_12
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_25
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_14
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_16
+  - Stage: 105
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_23
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA04_0002D512
+    FragmentName: Fragment_24
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 02D512:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: DA04SeptimusScript
+  - Property:
+      Name: ''
+      Object: 02D512:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: DA04OghmaInfiniumScript
+      Properties:
+      - MutagenObjectType: ScriptFloatProperty
+        Name: MaxMove
+        Data: 200
+      - MutagenObjectType: ScriptFloatProperty
+        Name: MaxRotate
+        Data: 300
+    - Name: defaultsetstageonplayeracquire
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 02D512:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 55
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 60
+  - Property:
+      Name: ''
+      Object: 02D512:Skyrim.esm
+      Alias: 8
+    Scripts:
+    - Name: DA04LexiconStand
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BlankLexicon
+        Object: 02D512:Skyrim.esm
+        Alias: 9
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Button1
+        Object: 01BA5B:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Button2
+        Object: 01BA5D:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Button3
+        Object: 01BA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Button4
+        Object: 01BA5E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: InscribedLexicon
+        Object: 02D512:Skyrim.esm
+        Alias: 10
+      - MutagenObjectType: ScriptObjectProperty
+        Name: InscribedVersion
+        Object: 088269:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Lens
+        Object: 0A0333:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: StorageChest
+        Object: 0C4DDB:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 02D512:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: defaultsetstageonplayeracquire
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 02D512:Skyrim.esm
+      Alias: 19
+    Scripts:
+    - Name: DA04RuminationsScript
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Index: 1
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 35
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 105
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 200
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 28
+Aliases:
+- ID: 17
+  Name: Urag
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 18
+  UniqueActor: 01C193:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: UragEssential
+  Flags:
+  - Optional
+  - Essential
+  - ForcedByAliases
+  VoiceTypes: Null
+- Name: Septimus
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 5
+  ForcedReference: 02D4F2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: SeptimusEssential
+  Flags:
+  - Optional
+  - Essential
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 1
+  Name: ElderScroll
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 02D4F1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: HermaeusMora
+  Flags:
+  - AllowDisabled
+  ForcedReference: 03278E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: HermaeusMoraRename
+  Flags:
+  - Optional
+  - UsesStoredText
+  DisplayName: 015B75:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: OghmaInfinium
+  Flags:
+  - AllowDisabled
+  ForcedReference: 032795:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Extractor
+  Flags:
+  - AllowDisabled
+  AliasIDToForceIntoWhenFilled: 7
+  ForcedReference: 0BA50F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: ExtractorQuestItem
+  Flags:
+  - Optional
+  - QuestObject
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 8
+  Name: LexiconStand
+  Flags:
+  - Optional
+  - AllowDisabled
+  ForcedReference: 01BA5F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: LexiconCubeBlank
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 03A3D2:Skyrim.esm
+    Create: In
+  VoiceTypes: Null
+- ID: 21
+  Name: AtunementSphere
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 03532C:Skyrim.esm
+    Create: In
+  VoiceTypes: Null
+- ID: 11
+  Name: CubeStorageChest
+  Flags: []
+  ForcedReference: 0C4DDB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: LexiconCubeInscribed
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 03A3DD:Skyrim.esm
+    AliasID: 11
+    Create: In
+  VoiceTypes: Null
+- ID: 12
+  Name: RuminationsQuestItem
+  Flags:
+  - Optional
+  - QuestObject
+  VoiceTypes: Null
+- ID: 19
+  Name: RuminationsBook
+  Flags:
+  - AllowDisabled
+  ForcedReference: 032787:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: AlftandWorldDoor
+  Flags: []
+  ForcedReference: 09256A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: AlftandSecondCellDoor
+  Flags: []
+  ForcedReference: 092809:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: AlftandZCellIntDoor
+  Flags: []
+  ForcedReference: 0F94FC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: BlackreachLock
+  Flags: []
+  ForcedReference: 0A9FDA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: ActualBlackreachDoor
+  Flags: []
+  ForcedReference: 06998D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: TamrielToAlftand
+  Flags: []
+  ForcedReference: 015D48:Skyrim.esm
+  VoiceTypes: Null
+- ID: 27
+  Name: TowerOfMzarkDoor
+  Flags: []
+  ForcedReference: 0EF7CD:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,419 @@
+FormKey: 053511:Skyrim.esm
+EditorID: MS05
+Version2: 10
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS05QuestScript
+  - Name: QF_MS05DUPLICATE000_00053511
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Bolgeir
+      Object: 053511:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05BookOfKingOlaf
+      Object: 053511:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05CourtMarker
+      Object: 053511:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05DeadMansRespiteMapmarker
+      Object: 053511:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Effigy
+      Object: 053511:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05ElisifTheFair
+      Object: 053511:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Erdi
+      Object: 053511:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Erikur
+      Object: 053511:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Falk
+      Object: 053511:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05FestivalMarker
+      Object: 053511:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05GeneralTullius
+      Object: 053511:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Giraud
+      Object: 053511:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Heimvar
+      Object: 053511:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Jorn
+      Object: 053511:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Meleran
+      Object: 053511:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Odar
+      Object: 053511:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Sybelle
+      Object: 053511:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Una
+      Object: 053511:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS05Viarmo
+      Object: 053511:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward01Small
+      Object: 0C0404:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward02Medium
+      Object: 0C0405:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward03Large
+      Object: 0C0406:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward04Wow
+      Object: 0C0407:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS05CourtScene
+      Object: 05351E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS05DungeonQuest
+      Object: 016C8D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS05KingOlafsFestival
+      Object: 06C0EA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS05Rumor
+      Object: 0D789C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS05Start
+      Object: 042868:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: USLEEPMS05Reward
+      Object: 0028C8:unofficial skyrim special edition patch.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: USLEEPMS05RewardNoDisplay
+      Object: 0028C9:unofficial skyrim special edition patch.esp
+  FileName: QF_MS05DUPLICATE000_00053511
+  Fragments:
+  - Stage: 75
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_4
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_17
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_5
+  - Stage: 125
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_6
+  - Stage: 135
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_19
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_0
+  - Stage: 175
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_7
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_8
+  - Stage: 225
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_9
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_10
+  - Stage: 253
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_20
+  - Stage: 254
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_15
+  - Stage: 255
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_11
+  - Stage: 260
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_18
+  - Stage: 265
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_16
+  - Stage: 290
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_23
+  - Stage: 300
+    Unknown2: 1
+    ScriptName: QF_MS05DUPLICATE000_00053511
+    FragmentName: Fragment_12
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 053511:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: DefaultAddItemAliasScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: MinStageToCheck
+        Data: 75
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 100
+  - Property:
+      Name: ''
+      Object: 053511:Skyrim.esm
+      Alias: 5
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 260
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 265
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Stages:
+- Unknown: 99
+- Index: 10
+- Index: 75
+  Unknown: 255
+  LogEntries:
+  - Flags: []
+- Index: 90
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Unknown: 99
+  LogEntries:
+  - Flags: []
+- Index: 125
+  Unknown: 105
+  LogEntries:
+  - Flags: []
+- Index: 135
+  LogEntries:
+  - Flags: []
+- Index: 145
+- Index: 150
+  Unknown: 99
+  LogEntries:
+  - Flags: []
+- Index: 175
+  Unknown: 105
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 111
+  LogEntries:
+  - Flags: []
+- Index: 225
+  Unknown: 48
+  LogEntries:
+  - Flags: []
+- Index: 250
+  Unknown: 100
+  LogEntries:
+  - Flags: []
+- Index: 253
+  LogEntries:
+  - Flags: []
+- Index: 254
+  LogEntries:
+  - Flags: []
+- Index: 255
+  Unknown: 114
+  LogEntries:
+  - Flags: []
+- Index: 260
+  Unknown: 97
+  LogEntries:
+  - Flags: []
+- Index: 265
+  LogEntries:
+  - Flags: []
+- Index: 290
+  LogEntries:
+  - Flags: []
+- Index: 300
+  Unknown: 107
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 22
+Aliases:
+- Name: MS05Viarmo
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 0132AD:Skyrim.esm
+  PackageData:
+  - 01703F:Skyrim.esm
+  - 10F143:Skyrim.esm
+  - 0D16CF:Skyrim.esm
+  - 0D16CC:Skyrim.esm
+  - 0E9E18:Skyrim.esm
+  - 0E9E19:Skyrim.esm
+  - 10E3DE:Skyrim.esm
+  - 10E3DC:Skyrim.esm
+  - 0C2A59:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: MS05BookOfKingOlaf
+  Flags:
+  - QuestObject
+  ForcedReference: 0AE325:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: MS05ElisifTheFair
+  Flags:
+  - AllowReserved
+  UniqueActor: 01326A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: MS05Jorn
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 01328F:Skyrim.esm
+  PackageData:
+  - 05C624:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: MS05Effigy
+  Flags: []
+  ForcedReference: 0905B3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: MS05GeneralTullius
+  Flags: []
+  UniqueActor: 01327E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MS05CourtMarker
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 020085:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: MS05FestivalMarker
+  Flags: []
+  ForcedReference: 073F9F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: MS05Heimvar
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: MS05Sybelle
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: MS05Falk
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: MS05Bolgeir
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: MS05Una
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: MS05Erdi
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198C7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: MS05Meleran
+  Flags:
+  - AllowReserved
+  ForcedReference: 01A638:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: MS05Erikur
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198A9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: MS05Odar
+  Flags: []
+  ForcedReference: 0198C6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: MS05Giraud
+  Flags: []
+  UniqueActor: 013281:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: MS05DeadMansRespiteMapmarker
+  Flags: []
+  ForcedReference: 01622E:Skyrim.esm
+  VoiceTypes: Null

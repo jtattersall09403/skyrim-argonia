@@ -1,0 +1,102 @@
+FormKey: 026242:Dragonborn.esm
+VersionControl: 2323737
+EditorID: DLC2MQ00
+FormVersion: 43
+Version2: 10
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC2_QF_DLC2MQ00_02026242
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BeastStoneMapMarker
+      Object: 0143E3:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BlackBook02Final
+      Object: 016E02:Dragonborn.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2BlackBook02RefFrea
+      Object: 01DC54:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2DragonAspectWord1
+      Object: 01DF93:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2DragonAspectWord2
+      Object: 01DF94:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2DragonAspectWord3
+      Object: 01DF95:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2MQ06
+      Object: 0179D7:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC2WWDragonAspect
+      Object: 027434:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: EarthStoneMapMarker
+      Object: 0143E4:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SunStoneMapMarker
+      Object: 0143E5:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WaterStoneMapMarker
+      Object: 0143E6:Dragonborn.esm
+  FileName: DLC2_QF_DLC2MQ00_02026242
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_2
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_9
+  - Stage: 22
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_11
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_4
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_7
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2MQ00_02026242
+    FragmentName: Fragment_13
+Flags:
+- 0x10
+- RunOnce
+Priority: 69
+QuestFormVersion: 69
+Filter: DLC2\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  LogEntries:
+  - Flags: []
+- Index: 22
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+NextAliasID: 1

@@ -1,0 +1,707 @@
+FormKey: 0240B8:Skyrim.esm
+VersionControl: 79128
+EditorID: DA07
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA07QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Altar
+      Object: 0240B8:Skyrim.esm
+      Alias: 51
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Blade
+      Object: 0240D5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07
+      Object: 0240B8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hilt
+      Object: 0240D3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Jorgen
+      Object: 0240B8:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Pommel
+      Object: 0240D4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Razor
+      Object: 0240B8:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptIntProperty
+      Name: RazorPiecesOwned
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShrineofMehrunesDagon
+      Object: 0240E6:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: TalkedtoValmir
+  - Name: QF_DA07_000240B8
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Altar
+      Object: 0240B8:Skyrim.esm
+      Alias: 51
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CommentariesCase
+      Object: 0240B8:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CrackedTuskKeep
+      Object: 0240B8:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DagonDoor
+      Object: 0240B8:Skyrim.esm
+      Alias: 54
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DagonSpeaksTrigger
+      Object: 0240B8:Skyrim.esm
+      Alias: 50
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DagonVoiceMarker
+      Object: 0240B8:Skyrim.esm
+      Alias: 56
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DeadCroneRock
+      Object: 0240B8:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Drascua
+      Object: 0240B8:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dremora01
+      Object: 0240B8:Skyrim.esm
+      Alias: 52
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dremora02
+      Object: 0240B8:Skyrim.esm
+      Alias: 53
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dremora1Marker
+      Object: 0240B8:Skyrim.esm
+      Alias: 62
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dremora2Marker
+      Object: 0240B8:Skyrim.esm
+      Alias: 61
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Ghunzul
+      Object: 0240B8:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HagRockRedoubt
+      Object: 0240B8:Skyrim.esm
+      Alias: 60
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Jorgen
+      Object: 0240B8:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_JorgenChest
+      Object: 0240B8:Skyrim.esm
+      Alias: 47
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MehrunesRazor
+      Object: 0240B8:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RazorBlade
+      Object: 0240B8:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RazorCase
+      Object: 0240B8:Skyrim.esm
+      Alias: 41
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RazorHilt
+      Object: 0240B8:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RazorPommel
+      Object: 0240B8:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ReforgeTrigger
+      Object: 0240B8:Skyrim.esm
+      Alias: 57
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RobesCase
+      Object: 0240B8:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShrineMapMarker
+      Object: 0240B8:Skyrim.esm
+      Alias: 48
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Silus
+      Object: 0240B8:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SilusDoor
+      Object: 0240B8:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SilusHouse
+      Object: 0240B8:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VoiceofDagon
+      Object: 0240B8:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_XarxesCase
+      Object: 0240B8:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07AltarBladeREF
+      Object: 0BA1B9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07AltarHiltREF
+      Object: 0BA1B8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07AltarPommelREF
+      Object: 0BA1B7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07AltarScabbardREF
+      Object: 0BA1B6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07DagonEndScene
+      Object: 0BA1C6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Da07DagonRejectedScene
+      Object: 0BA1C5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07FIN
+      Object: 0BA1CC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07intro
+      Object: 094D89:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07JorgenKey
+      Object: 026BC8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07PlayerEnemyFaction
+      Object: 0BA1CB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07RazorTrigger
+      Object: 0BA1C1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA07SilusShrineScene
+      Object: 0BA182:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JorgenHouseKey
+      Object: 0B858A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MAGConjureFire
+      Object: 03ADB5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MorthalJorganandLamisHouse
+      Object: 0138CF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MuseumBladeREF
+      Object: 0B23B3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MuseumHiltREF
+      Object: 0B23B0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MuseumPommelREF
+      Object: 0B23AF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MuseumScabbardREF
+      Object: 0B3E85:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDeadCroneRockMapMarker
+      Object: 01622D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGularzMapMarker
+      Object: 01625B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pKeepersNote
+      Object: 0973AC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pMorthalMapMarker
+      Object: 0177B0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Razor
+      Object: 0240D2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonTargetVisualFX
+      Object: 107D96:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ValmirHouseExterior
+      Object: 05278B:Skyrim.esm
+  FileName: QF_DA07_000240B8
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_38
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_64
+  - Stage: 11
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_65
+  - Stage: 13
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_42
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_44
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_47
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_45
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_48
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_46
+  - Stage: 45
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_49
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_10
+  - Stage: 52
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_73
+  - Stage: 53
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_67
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_66
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_68
+  - Stage: 65
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_75
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_18
+  - Stage: 75
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_72
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_52
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_69
+  - Stage: 95
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_74
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_54
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_70
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA07_000240B8
+    FragmentName: Fragment_50
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: DA07SilusScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SilusMarker
+        Object: 0BA181:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 31
+    Scripts:
+    - Name: DA07RazorPieceScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: iObjective
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: iStage
+        Data: 20
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 29
+    Scripts:
+    - Name: DA07RazorPieceScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: iObjective
+        Data: 12
+      - MutagenObjectType: ScriptIntProperty
+        Name: iStage
+        Data: 30
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 30
+    Scripts:
+    - Name: DA07RazorPieceScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: iObjective
+        Data: 14
+      - MutagenObjectType: ScriptIntProperty
+        Name: iStage
+        Data: 40
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 51
+    Scripts:
+    - Name: DA07AltarAliasScript
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 52
+    Scripts:
+    - Name: DA07DremoraScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MAGConjureFire
+        Object: 03ADB5:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SummonTargetVisualFX
+        Object: 107D96:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 53
+    Scripts:
+    - Name: DA07DremoraScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MAGConjureFire
+        Object: 03ADB5:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SummonTargetVisualFX
+        Object: 107D96:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0240B8:Skyrim.esm
+      Alias: 57
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 95
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 11
+  LogEntries:
+  - Flags: []
+- Index: 13
+  LogEntries:
+  - Flags: []
+- Index: 15
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 25
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 30
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 35
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 45
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 52
+  LogEntries:
+  - Flags: []
+- Index: 53
+  LogEntries:
+  - Flags: []
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 65
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 75
+  LogEntries:
+  - Flags: []
+- Index: 80
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 90
+  LogEntries:
+  - Flags: []
+- Index: 95
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Unknown: 5
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 150
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 200
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - FailQuest
+NextAliasID: 63
+Aliases:
+- ID: 1
+  Name: Silus
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  - Protected
+  UniqueActor: 0240CC:Skyrim.esm
+  PackageData:
+  - 0BA1CA:Skyrim.esm
+  - 0BA1A5:Skyrim.esm
+  - 10E0F3:Skyrim.esm
+  - 0BA167:Skyrim.esm
+  - 0B7388:Skyrim.esm
+  - 096FD8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 35
+  Type: Location
+  Name: SilusHouse
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 0240CF:Skyrim.esm
+- ID: 46
+  Name: SilusDoor
+  Flags: []
+  ForcedReference: 0240CA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 60
+  Type: Location
+  Name: HagRockRedoubt
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 019190:Skyrim.esm
+- ID: 36
+  Type: Location
+  Name: DeadCroneRock
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 019160:Skyrim.esm
+- ID: 58
+  Type: Location
+  Name: CrackedTuskKeep
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 01918D:Skyrim.esm
+- ID: 4
+  Name: Drascua
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 0240D8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Ghunzul
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 019835:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Jorgen
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 0138B6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 47
+  Name: JorgenChest
+  Flags: []
+  ForcedReference: 0B8588:Skyrim.esm
+  VoiceTypes: Null
+- ID: 31
+  Name: RazorPommel
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0240D4:Skyrim.esm
+    AliasID: 4
+    Create: In
+  VoiceTypes: Null
+- ID: 29
+  Name: RazorBlade
+  Flags:
+  - QuestObject
+  ForcedReference: 04F203:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: RazorHilt
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0240D3:Skyrim.esm
+    AliasID: 47
+    Create: In
+  VoiceTypes: Null
+- ID: 8
+  Name: MehrunesRazor
+  Flags: []
+  ForcedReference: 0BA1BB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: VoiceofDagon
+  Flags: []
+  ForcedReference: 0BA1BE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 38
+  Name: RobesCase
+  Flags: []
+  ForcedReference: 0E0270:Skyrim.esm
+  VoiceTypes: Null
+- ID: 39
+  Name: XarxesCase
+  Flags: []
+  ForcedReference: 0E026F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 40
+  Name: CommentariesCase
+  Flags: []
+  ForcedReference: 0E026A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 41
+  Name: RazorCase
+  Flags: []
+  ForcedReference: 0E0269:Skyrim.esm
+  VoiceTypes: Null
+- ID: 48
+  Name: ShrineMapMarker
+  Flags: []
+  ForcedReference: 0246A5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 50
+  Name: DagonSpeaksTrigger
+  Flags: []
+  ForcedReference: 0BA1BD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 51
+  Name: Altar
+  Flags: []
+  ForcedReference: 0BA14B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 52
+  Name: Dremora01
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0BA1C7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 53
+  Name: Dremora02
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0BA1C8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 54
+  Name: DagonDoor
+  Flags: []
+  ForcedReference: 0240EC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 56
+  Name: DagonVoiceMarker
+  Flags: []
+  ForcedReference: 0BA1D1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 57
+  Name: ReforgeTrigger
+  Flags: []
+  ForcedReference: 0C3D1C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 61
+  Name: Dremora2Marker
+  Flags: []
+  ForcedReference: 107D93:Skyrim.esm
+  VoiceTypes: Null
+- ID: 62
+  Name: Dremora1Marker
+  Flags: []
+  ForcedReference: 107D92:Skyrim.esm
+  VoiceTypes: Null

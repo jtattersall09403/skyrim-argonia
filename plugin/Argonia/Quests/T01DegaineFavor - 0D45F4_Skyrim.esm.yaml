@@ -1,0 +1,87 @@
+FormKey: 0D45F4:Skyrim.esm
+VersionControl: 79128
+EditorID: T01DegaineFavor
+Version2: 9
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_T01DegaineFavor_000D45F4
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Chalice
+      Object: 0D45F4:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Degaine
+      Object: 0D45F4:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: T01
+      Object: 023B6C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: T01Chalice
+      Object: 06C9EF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: T01Intro
+      Object: 0C5940:Skyrim.esm
+  FileName: QF_T01DegaineFavor_000D45F4
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_T01DegaineFavor_000D45F4
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_T01DegaineFavor_000D45F4
+    FragmentName: Fragment_1
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_T01DegaineFavor_000D45F4
+    FragmentName: Fragment_4
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_T01DegaineFavor_000D45F4
+    FragmentName: Fragment_6
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0D45F4:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: t01chalicescript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: ParentQuest
+        Object: 023B6C:Skyrim.esm
+Flags:
+- 0x10
+Priority: 45
+QuestFormVersion: 0
+Type: Misc
+Filter: Misc\Markarth\
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+NextAliasID: 4
+Aliases:
+- ID: 2
+  Name: Degaine
+  Flags: []
+  UniqueActor: 013392:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Chalice
+  Flags:
+  - QuestObject
+  ForcedReference: 08F966:Skyrim.esm
+  VoiceTypes: Null

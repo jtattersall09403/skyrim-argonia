@@ -1,0 +1,92 @@
+FormKey: 02ADDA:Dragonborn.esm
+VersionControl: 79128
+EditorID: DLC2RRArrivalScene
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC2_QF_DLC2RRArrivalScene_0202ADDA
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DLC2RRASAdrilAlias
+      Object: 02ADDA:Dragonborn.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DLC2RRASGjalundAlias
+      Object: 02ADDA:Dragonborn.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DLC2RRASGuardAlias
+      Object: 02ADDA:Dragonborn.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DLC2RRASRavenRockLocation
+      Object: 02ADDA:Dragonborn.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GjalundMarker
+      Object: 02ADDA:Dragonborn.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDLC2RRArrivalGoScene
+      Object: 02ADDB:Dragonborn.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDLC2RRASGo
+      Object: 02ADDE:Dragonborn.esm
+  FileName: DLC2_QF_DLC2RRArrivalScene_0202ADDA
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2RRArrivalScene_0202ADDA
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: DLC2_QF_DLC2RRArrivalScene_0202ADDA
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+- RunOnce
+Priority: 40
+QuestFormVersion: 0
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 5
+Aliases:
+- Name: DLC2RRASGjalundAlias
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  - AllowDisabled
+  UniqueActor: 02582B:Dragonborn.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: DLC2RRASAdrilAlias
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  - AllowDisabled
+  UniqueActor: 018280:Dragonborn.esm
+  VoiceTypes: Null
+- ID: 3
+  Type: Location
+  Name: DLC2RRASRavenRockLocation
+  Flags: []
+  SpecificLocation: 0143B9:Dragonborn.esm
+- ID: 2
+  Name: DLC2RRASGuardAlias
+  Flags: []
+  Location:
+    AliasID: 3
+    RefType: 03215B:Dragonborn.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: GjalundMarker
+  Flags: []
+  ForcedReference: 0184E2:Dragonborn.esm
+  VoiceTypes: Null

@@ -1,0 +1,61 @@
+FormKey: 06D585:Skyrim.esm
+VersionControl: 79128
+EditorID: TGCrownMisc
+Version2: 12
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TGCrownMisc_0006D585
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownMiscMaulAlias
+      Object: 06D585:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownQuest
+      Object: 09DD77:Skyrim.esm
+  FileName: QF_TGCrownMisc_0006D585
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TGCrownMisc_0006D585
+    FragmentName: Fragment_0
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TGCrownMisc_0006D585
+    FragmentName: Fragment_2
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_TGCrownMisc_0006D585
+    FragmentName: Fragment_14
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TGCrownMisc_0006D585
+    FragmentName: Fragment_8
+Flags:
+- 0x10
+Priority: 40
+QuestFormVersion: 0
+Type: Misc
+Filter: Faction\ThievesGuild\
+Stages:
+- Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 29
+Aliases:
+- ID: 4
+  Name: TGCrownMiscMaulAlias
+  Flags: []
+  UniqueActor: 0371D6:Skyrim.esm
+  VoiceTypes: Null

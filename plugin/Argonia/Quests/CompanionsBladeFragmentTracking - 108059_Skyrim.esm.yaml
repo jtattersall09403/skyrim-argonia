@@ -1,0 +1,94 @@
+FormKey: 108059:Skyrim.esm
+VersionControl: 3303199
+EditorID: CompanionsBladeFragmentTracking
+FormVersion: 39
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: CompanionsBladeFragmentTracking
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted01
+      Object: 0DAB9B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted02
+      Object: 0DAB9C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted03
+      Object: 0DAB9D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted04
+      Object: 0DAB9E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted05
+      Object: 0DAB9F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted06
+      Object: 0DABA0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted07
+      Object: 0DABA1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted08
+      Object: 0DABA2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted09
+      Object: 0DABA3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted10
+      Object: 0DABA4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted11
+      Object: 0DABA5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FragmentMounted12
+      Object: 0DABA6:Skyrim.esm
+    - MutagenObjectType: ScriptBoolProperty
+      Name: FragmentsAvailable
+      Data: True
+    - MutagenObjectType: ScriptBoolListProperty
+      Name: InJorrvaskr
+      Data:
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+    - MutagenObjectType: ScriptBoolListProperty
+      Name: OtherwiseIndisposed
+      Data:
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+      - False
+  - Name: QF_CompanionsBladeFragmentTr_00108059
+  FileName: QF_CompanionsBladeFragmentTr_00108059
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_CompanionsBladeFragmentTr_00108059
+    FragmentName: Fragment_0
+Flags:
+- 0x10
+QuestFormVersion: 0
+Filter: Faction\Companions\Radiant\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 0

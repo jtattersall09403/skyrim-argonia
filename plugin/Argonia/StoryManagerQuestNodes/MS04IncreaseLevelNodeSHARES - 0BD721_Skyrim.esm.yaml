@@ -1,0 +1,27 @@
+FormKey: 0BD721:Skyrim.esm
+VersionControl: 5661710
+EditorID: MS04IncreaseLevelNodeSHARES
+FormVersion: 35
+Version2: 1
+Parent: 05BD79:Skyrim.esm
+PreviousSibling: 0C4CC5:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetLevelConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+  ComparisonValue: 0BD722:Skyrim.esm
+Flags:
+- WarnIfNoChildQuestStarted
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0209CA:Skyrim.esm

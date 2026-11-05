@@ -1,0 +1,365 @@
+FormKey: 0A4E82:Skyrim.esm
+VersionControl: 79128
+EditorID: MGRitual01
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MGRitual01_000A4E82
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book01
+      Object: 0A4E82:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book01Activator
+      Object: 0A4E82:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book02
+      Object: 0A4E82:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book02Activator
+      Object: 0A4E82:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book03
+      Object: 0A4E82:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book03Activator
+      Object: 0A4E82:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book04
+      Object: 0A4E82:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Faralda
+      Object: 0A4E82:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MGHoldingChest
+      Object: 0A4E82:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pedestal01
+      Object: 0A4E82:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pedestal02
+      Object: 0A4E82:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Pedestal03
+      Object: 0A4E82:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Blizzard
+      Object: 0A270D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitualDestBook
+      Object: 0FDE72:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeLightningStorm
+      Object: 0A270E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorChest
+      Object: 098BA6:Skyrim.esm
+  FileName: QF_MGRitual01_000A4E82
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRitual01_000A4E82
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MGRitual01_000A4E82
+    FragmentName: Fragment_2
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: MGRDestructionBook01ActivatorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookNew
+        Object: 0A4E82:Skyrim.esm
+        Alias: 4
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookOld
+        Object: 0A4E82:Skyrim.esm
+        Alias: 13
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Pedestal
+        Object: 0A4E82:Skyrim.esm
+        Alias: 1
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 7
+    Scripts:
+    - Name: MGRDestructionBook02ActivatorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookNew
+        Object: 0A4E82:Skyrim.esm
+        Alias: 8
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookOld
+        Object: 0A4E82:Skyrim.esm
+        Alias: 4
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Pedestal
+        Object: 0A4E82:Skyrim.esm
+        Alias: 6
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 9
+    Scripts:
+    - Name: MGRDestructionBook03ActivatorScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookNew
+        Object: 0A4E82:Skyrim.esm
+        Alias: 10
+      - MutagenObjectType: ScriptObjectProperty
+        Name: BookOld
+        Object: 0A4E82:Skyrim.esm
+        Alias: 8
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Pedestal
+        Object: 0A4E82:Skyrim.esm
+        Alias: 11
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: MGRDestructionBook04Script
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRDestructionFinal
+        Object: 09C8C2:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual01
+        Object: 0A4E82:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MGRDPedestal01AliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book01
+        Object: 0A4E82:Skyrim.esm
+        Alias: 13
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book01Activator
+        Object: 0A4E82:Skyrim.esm
+        Alias: 3
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book02
+        Object: 0A4E82:Skyrim.esm
+        Alias: 4
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Fireball
+        Object: 01C789:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: FireExplosion
+        Object: 0439C0:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Flames
+        Object: 013CA9:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MagicDamageFire
+        Object: 01CEAD:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGHoldingChest
+        Object: 0A4E82:Skyrim.esm
+        Alias: 12
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: MGRDPedestal02AliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book02
+        Object: 0A4E82:Skyrim.esm
+        Alias: 4
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book02Activator
+        Object: 0A4E82:Skyrim.esm
+        Alias: 7
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book03
+        Object: 0A4E82:Skyrim.esm
+        Alias: 8
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Frost
+        Object: 013CAA:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: IceExplosion
+        Object: 073271:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: IceStorm
+        Object: 035D80:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MagicDamageFrost
+        Object: 01CEAE:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGHoldingChest
+        Object: 0A4E82:Skyrim.esm
+        Alias: 12
+  - Property:
+      Name: ''
+      Object: 0A4E82:Skyrim.esm
+      Alias: 11
+    Scripts:
+    - Name: MGRDPedestal03AliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book03
+        Object: 0A4E82:Skyrim.esm
+        Alias: 8
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book03Activator
+        Object: 0A4E82:Skyrim.esm
+        Alias: 9
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Book04
+        Object: 0A4E82:Skyrim.esm
+        Alias: 10
+      - MutagenObjectType: ScriptObjectProperty
+        Name: IceStorm
+        Object: 035D81:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MagicDamageShock
+        Object: 01CEAF:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGHoldingChest
+        Object: 0A4E82:Skyrim.esm
+        Alias: 12
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Shock
+        Object: 013CAB:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: ShockExplosion
+        Object: 073326:Skyrim.esm
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 0
+Type: MageGuild
+Filter: Faction\Mages Guild\
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: Target
+    Faction: 01F259:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Destruction
+  ComparisonValue: 90
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 14
+Aliases:
+- Name: Faralda
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C197:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Book01Activator
+  Flags:
+  - AllowDisabled
+  ForcedReference: 09C8C3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: Book02Activator
+  Flags:
+  - AllowDisabled
+  ForcedReference: 09C8C9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: Book03Activator
+  Flags:
+  - AllowDisabled
+  ForcedReference: 09C8CD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: MGHoldingChest
+  Flags: []
+  ForcedReference: 0D762E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: Book01
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 09C8C0:Skyrim.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null
+- ID: 4
+  Name: Book02
+  Flags:
+  - QuestObject
+  - AllowDisabled
+  CreateReferenceToObject:
+    Object: 09C8C6:Skyrim.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null
+- ID: 8
+  Name: Book03
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 09C8C1:Skyrim.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null
+- ID: 10
+  Name: Book04
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0F37D0:Skyrim.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null
+- ID: 1
+  Name: Pedestal01
+  Flags: []
+  ForcedReference: 09C8BC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Pedestal02
+  Flags: []
+  ForcedReference: 09C8BD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: Pedestal03
+  Flags: []
+  ForcedReference: 09C8BE:Skyrim.esm
+  VoiceTypes: Null

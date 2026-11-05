@@ -1,0 +1,18 @@
+FormKey: 004210:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1RadiantDisguisedVampireLordQuestNode
+FormVersion: 43
+Version2: 2
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 0041D3:Dawnguard.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 00420E:Dawnguard.esm

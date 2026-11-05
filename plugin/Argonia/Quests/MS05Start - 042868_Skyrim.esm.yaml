@@ -1,0 +1,43 @@
+FormKey: 042868:Skyrim.esm
+VersionControl: 79128
+EditorID: MS05Start
+Version2: 10
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MS05Start_00042868
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Viarmo
+      Object: 042868:Skyrim.esm
+      Alias: 0
+  FileName: QF_MS05Start_00042868
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS05Start_00042868
+    FragmentName: Fragment_2
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS05Start_00042868
+    FragmentName: Fragment_0
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: Viarmo
+  Flags:
+  - AllowReserved
+  UniqueActor: 0132AD:Skyrim.esm
+  VoiceTypes: Null

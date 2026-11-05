@@ -1,0 +1,26 @@
+FormKey: 01574C:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1RadiantDisguised
+FormVersion: 43
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1RadiantDisguisedScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueFavorGeneric
+      Object: 05A6DC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1RadiantDisguisedFollowPlayerFaction
+      Object: 015758:Dawnguard.esm
+  Versioning:
+  - Break0
+  ExtraBindDataVersion: 0
+  FileName: ''
+Flags:
+- 0x10
+- RunOnce
+Priority: 41
+QuestFormVersion: 50
+Filter: DLC1\Radiant\
+NextAliasID: 1

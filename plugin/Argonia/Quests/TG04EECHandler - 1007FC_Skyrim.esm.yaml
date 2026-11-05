@@ -1,0 +1,57 @@
+FormKey: 1007FC:Skyrim.esm
+VersionControl: 79128
+EditorID: TG04EECHandler
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TG04EECHandler_001007FC
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG04EECOrthas
+      Object: 1007FC:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pImperialEnabler
+      Object: 1007F7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pQuestEnabler
+      Object: 1007F9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSonsEnabler
+      Object: 1007F8:Skyrim.esm
+  FileName: QF_TG04EECHandler_001007FC
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TG04EECHandler_001007FC
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_TG04EECHandler_001007FC
+    FragmentName: Fragment_2
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_TG04EECHandler_001007FC
+    FragmentName: Fragment_4
+Flags:
+- 0x10
+Priority: 90
+QuestFormVersion: 0
+Type: Misc
+Filter: Faction\ThievesGuild\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: TG04EECOrthas
+  Flags: []
+  UniqueActor: 01413B:Skyrim.esm
+  VoiceTypes: Null

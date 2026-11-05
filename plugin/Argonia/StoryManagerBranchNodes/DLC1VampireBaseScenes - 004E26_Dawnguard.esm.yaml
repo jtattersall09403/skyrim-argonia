@@ -1,0 +1,33 @@
+FormKey: 004E26:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1VampireBaseScenes
+FormVersion: 43
+Version2: 2
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 004E25:Dawnguard.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Faction: 003376:Dawnguard.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12882
+    Faction: 003376:Dawnguard.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

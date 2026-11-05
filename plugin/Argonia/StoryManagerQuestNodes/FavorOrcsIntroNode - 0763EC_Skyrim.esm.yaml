@@ -1,0 +1,22 @@
+FormKey: 0763EC:Skyrim.esm
+VersionControl: 6160671
+EditorID: FavorOrcsIntroNode
+FormVersion: 31
+Version2: 2
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 01E3C2:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 0763D0:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 076335:Skyrim.esm

@@ -1,0 +1,55 @@
+FormKey: 020686:Dragonborn.esm
+VersionControl: 5141518
+EditorID: DLC2TelMithrynBranchNode
+FormVersion: 43
+Version2: 2
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 03332D:Dragonborn.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Member: NewLocation
+    Record: 01CDEB:Dragonborn.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Member: NewLocation
+    Record: 01CDEC:Dragonborn.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Member: NewLocation
+    Record: 01CDED:Dragonborn.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Member: NewLocation
+    Record: 01CDEA:Dragonborn.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

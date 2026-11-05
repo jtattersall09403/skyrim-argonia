@@ -1,0 +1,17 @@
+FormKey: 01434C:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1RV07Post
+FormVersion: 43
+Version2: 2
+Flags:
+- 0x10
+- RunOnce
+Priority: 40
+QuestFormVersion: 50
+Filter: DLC1\Radiant\Vampire\
+NextAliasID: 1
+Aliases:
+- Name: Cairine
+  Flags: []
+  UniqueActor: 0D66FE:Skyrim.esm
+  VoiceTypes: Null

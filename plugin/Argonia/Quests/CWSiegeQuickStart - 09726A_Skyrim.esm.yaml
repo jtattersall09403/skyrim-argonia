@@ -1,0 +1,315 @@
+FormKey: 09726A:Skyrim.esm
+VersionControl: 5072404
+EditorID: CWSiegeQuickStart
+FormVersion: 37
+Version2: 6
+VirtualMachineAdapter:
+  ObjectFormat: 1
+  Scripts:
+  - Name: CWSiegeQuickStartScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AelaTheHuntressREF
+      Object: 01A697:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AthisRef
+      Object: 01A6D6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: C00GiantAttack
+      Object: 0C97D9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: C00GiantREF
+      Object: 0C97D2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWFinale
+      Object: 0D1444:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWFinaleLeaderAlias
+      Object: 0D1444:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWFortSiege
+      Object: 087C21:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWs
+      Object: 019E53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWSiege
+      Object: 0954E1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWSiegeMainGateExterior
+      Object: 0954E1:Skyrim.esm
+      Alias: 111
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FarkasRef
+      Object: 01A693:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MQ103
+      Object: 0D0800:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RiaRef
+      Object: 01A6D8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RunilREF
+      Object: 019820:Skyrim.esm
+  - Name: QF_CWSiegeQuickStart_0009726A
+  FileName: QF_CWSiegeQuickStart_0009726A
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_5
+  - Stage: 1110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_17
+  - Stage: 1120
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_18
+  - Stage: 1210
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_19
+  - Stage: 1220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_20
+  - Stage: 1225
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_29
+  - Stage: 2110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_6
+  - Stage: 2120
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_7
+  - Stage: 2210
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_8
+  - Stage: 2220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_9
+  - Stage: 2225
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_33
+  - Stage: 3220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_28
+  - Stage: 4001
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_14
+  - Stage: 4110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_0
+  - Stage: 4120
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_4
+  - Stage: 4210
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_1
+  - Stage: 4215
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_35
+  - Stage: 4220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_2
+  - Stage: 4221
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_15
+  - Stage: 4225
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_32
+  - Stage: 5220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_25
+  - Stage: 6110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_27
+  - Stage: 7110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_31
+  - Stage: 8110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_21
+  - Stage: 8115
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_37
+  - Stage: 8120
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_22
+  - Stage: 8210
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_23
+  - Stage: 8220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_24
+  - Stage: 9110
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_10
+  - Stage: 9115
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_34
+  - Stage: 9120
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_11
+  - Stage: 9210
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_12
+  - Stage: 9220
+    Unknown2: 1
+    ScriptName: QF_CWSiegeQuickStart_0009726A
+    FragmentName: Fragment_13
+Flags:
+- 0x10
+QuestFormVersion: 0
+Type: CivilWar
+Filter: Civil War\Siege\
+Stages:
+- Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 1110
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 1120
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 1210
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 1220
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 1225
+  LogEntries:
+  - Flags: []
+- Index: 2110
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 2120
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 2210
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 2220
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 2225
+  LogEntries:
+  - Flags: []
+- Index: 3220
+  LogEntries:
+  - Flags: []
+- Index: 4001
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 4110
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 4120
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 4210
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 4215
+  LogEntries:
+  - Flags: []
+- Index: 4220
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 4221
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 4225
+  LogEntries:
+  - Flags: []
+- Index: 5220
+  LogEntries:
+  - Flags: []
+- Index: 6110
+  LogEntries:
+  - Flags: []
+- Index: 7110
+  LogEntries:
+  - Flags: []
+- Index: 8110
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 8115
+  LogEntries:
+  - Flags: []
+- Index: 8120
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 8210
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 8220
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 9110
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 9115
+  LogEntries:
+  - Flags: []
+- Index: 9120
+  LogEntries:
+  - Flags: []
+- Index: 9210
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 9220
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+NextAliasID: 0

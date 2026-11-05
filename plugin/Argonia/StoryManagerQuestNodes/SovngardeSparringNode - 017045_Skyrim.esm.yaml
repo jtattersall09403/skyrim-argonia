@@ -1,0 +1,22 @@
+FormKey: 017045:Skyrim.esm
+VersionControl: 2320406
+EditorID: SovngardeSparringNode
+FormVersion: 40
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 10C044:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 017044:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0F0A10:Skyrim.esm

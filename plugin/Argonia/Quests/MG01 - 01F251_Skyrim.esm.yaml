@@ -1,0 +1,465 @@
+FormKey: 01F251:Skyrim.esm
+EditorID: MG01
+Version2: 6
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MG01QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardSmall
+      Object: 035215:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PointerQuest
+      Object: 054D0A:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: TolfdirResponseVar
+    - MutagenObjectType: ScriptIntProperty
+      Name: WaitingForShout
+    - MutagenObjectType: ScriptIntProperty
+      Name: WardGiven
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WardScene
+      Object: 09152B:Skyrim.esm
+  - Name: QF_MG01_0001F251
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CastMarker
+      Object: 01F251:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01AncanoAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01BrelynaAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01ClassroomExtDoor
+      Object: 01F251:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01ClassroomIntDoor
+      Object: 01F251:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01FaraldaAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01GateAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01JzargoAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01MirabelleAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01NiryaAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01OnmundAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01StoneAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MG01TolfdirAlias
+      Object: 01F251:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 01F251:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CollegeFaction
+      Object: 01F259:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01BrelynaClassMarker
+      Object: 020035:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01JzargoClassMarker
+      Object: 020036:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01OnmundClassMarker
+      Object: 020034:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01TestCastMessage
+      Object: 0206C6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01TourScene
+      Object: 02002F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG01WellCollisionRef
+      Object: 10BF7A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MG02
+      Object: 01F252:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGCollegeLectures
+      Object: 0E0C67:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGDialogueQuest
+      Object: 03618F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGR21
+      Object: 0E0E04:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NiryaWaitMarker
+      Object: 0379EF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PointerQuest
+      Object: 054D0A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TempGateRef
+      Object: 037A7D:Skyrim.esm
+  FileName: QF_MG01_0001F251
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_2
+  - Stage: 3
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_21
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_3
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_5
+  - Stage: 22
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_7
+  - Stage: 23
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_9
+  - Stage: 24
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_11
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_13
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_15
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_16
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MG01_0001F251
+    FragmentName: Fragment_18
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MG01NiryaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Fire
+        Object: 013CA9:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Heal
+        Object: 01CEA5:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Magelight
+        Object: 01EA6D:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01Nirya
+        Object: 01F251:Skyrim.esm
+        Alias: 1
+      - MutagenObjectType: ScriptObjectProperty
+        Name: WardBreaker
+        Object: 052FF3:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: MG01TolfdirScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01TeachFirebolt
+        Object: 09152C:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: MG01ApprenticeScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 4
+    Scripts:
+    - Name: MG01ApprenticeScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 5
+    Scripts:
+    - Name: MG01ApprenticeScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: MG01StoneScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Faralda
+        Object: 01F251:Skyrim.esm
+        Alias: 11
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Fear
+        Object: 04DEEA:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Firebolt
+        Object: 012FD0:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Magelight
+        Object: 043323:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Nirya
+        Object: 01F251:Skyrim.esm
+        Alias: 1
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 11
+    Scripts:
+    - Name: MG01NiryaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Heal
+        Object: 01CEA5:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01Nirya
+        Object: 01F251:Skyrim.esm
+        Alias: 11
+  - Property:
+      Name: ''
+      Object: 01F251:Skyrim.esm
+      Alias: 13
+    Scripts:
+    - Name: mg01playerscript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01
+        Object: 01F251:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01TolfdirAlias
+        Object: 01F251:Skyrim.esm
+        Alias: 2
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MG01TolfdirSpell
+        Object: 09152C:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 70
+QuestFormVersion: 65
+Type: MageGuild
+Filter: Faction\Mages Guild\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 3
+  Unknown: 15
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  LogEntries:
+  - Flags: []
+- Index: 22
+  LogEntries:
+  - Flags: []
+- Index: 23
+  LogEntries:
+  - Flags: []
+- Index: 24
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 15
+Aliases:
+- Name: MG01MirabelleAlias
+  Flags:
+  - Essential
+  - AllowReserved
+  UniqueActor: 01C1A0:Skyrim.esm
+  PackageData:
+  - 073317:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: MG01NiryaAlias
+  Flags:
+  - Essential
+  - AllowReserved
+  UniqueActor: 01C19B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: MG01TolfdirAlias
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowReserved
+  UniqueActor: 01C19E:Skyrim.esm
+  PackageData:
+  - 0F9368:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: MG01OnmundAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C194:Skyrim.esm
+  PackageData:
+  - 0F9367:Skyrim.esm
+  - 02003A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: MG01BrelynaAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C196:Skyrim.esm
+  PackageData:
+  - 0F9369:Skyrim.esm
+  - 020039:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: MG01JzargoAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C195:Skyrim.esm
+  PackageData:
+  - 0F936A:Skyrim.esm
+  - 02003B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: MG01GateAlias
+  Flags: []
+  ForcedReference: 051190:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MG01ClassroomExtDoor
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 8
+  Name: MG01ClassroomIntDoor
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 9
+  Name: MG01StoneAlias
+  Flags:
+  - Optional
+  ForcedReference: 037A7D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: MG01AncanoAlias
+  Flags: []
+  UniqueActor: 01E7D7:Skyrim.esm
+  PackageData:
+  - 0D67DE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: MG01FaraldaAlias
+  Flags: []
+  UniqueActor: 01C197:Skyrim.esm
+  Factions:
+  - 0AD8CC:Skyrim.esm
+  PackageData:
+  - 06F089:Skyrim.esm
+  - 06F097:Skyrim.esm
+  - 06F0A2:Skyrim.esm
+  - 06F0A4:Skyrim.esm
+  - 06F13C:Skyrim.esm
+  - 06F13F:Skyrim.esm
+  - 06F141:Skyrim.esm
+  - 06F142:Skyrim.esm
+  - 06F14A:Skyrim.esm
+  - 06F149:Skyrim.esm
+  - 037996:Skyrim.esm
+  - 0B8130:Skyrim.esm
+  - 0AF0F1:Skyrim.esm
+  - 0AF0F0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: Player
+  Flags: []
+  UniqueActor: 000007:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: CastMarker
+  Flags: []
+  ForcedReference: 0F9363:Skyrim.esm
+  VoiceTypes: Null

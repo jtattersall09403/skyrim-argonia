@@ -1,0 +1,676 @@
+FormKey: 025F3E:Skyrim.esm
+EditorID: MS14
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS14
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Benor
+      Object: 025F3E:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CoffinDirt
+      Object: 025F3E:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HelgiCoffin
+      Object: 025F3E:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Jorgen
+      Object: 025F3E:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Laelette
+      Object: 025F3E:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lami
+      Object: 025F3E:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lurbuk
+      Object: 025F3E:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Thonnir
+      Object: 025F3E:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptIntProperty
+      Name: CoffinClue
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameHour
+      Object: 000038:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: LaeletteEnabled
+    - MutagenObjectType: ScriptIntProperty
+      Name: MobMarch
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MovarthsLair
+      Object: 01526F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS14LaeletteStart
+      Object: 03AEA4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS14MobScared
+      Object: 02F203:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS14ThonnirArrivedMarker
+      Object: 02F1FD:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: PCFoundAlvasCoffin
+    - MutagenObjectType: ScriptIntProperty
+      Name: PCKnowsThonnir
+    - MutagenObjectType: ScriptIntProperty
+      Name: StopHouseRumor
+    - MutagenObjectType: ScriptIntProperty
+      Name: ThonnirFollow
+  - Name: QF_MS14_00025F3E
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Alva
+      Object: 025F3E:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlvasCoffin
+      Object: 025F3E:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlvasJournal
+      Object: 025F3E:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Benor
+      Object: 025F3E:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BossVampireMorvath
+      Object: 025F3E:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BurnedHouse
+      Object: 025F3E:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CoffinDirt
+      Object: 025F3E:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GhorunnHall
+      Object: 025F3E:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Gravedigger
+      Object: 025F3E:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Helgi
+      Object: 025F3E:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HelgiCoffin
+      Object: 025F3E:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hroggar
+      Object: 025F3E:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Innkeeper
+      Object: 025F3E:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_JarlImperial
+      Object: 025F3E:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_JarlRebel
+      Object: 025F3E:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Jorgen
+      Object: 025F3E:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Laelette
+      Object: 025F3E:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lami
+      Object: 025F3E:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lurbuk
+      Object: 025F3E:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Thonnir
+      Object: 025F3E:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BenorGhoruunWait
+      Object: 02F1FA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BenorWaitMarker
+      Object: 02DD2F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFaction
+      Object: 02816D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CurrentFollowerFaction
+      Object: 05C84E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FirstReward
+      Object: 0C0404:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GhoruunCell
+      Object: 01526F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JobJarlFaction
+      Object: 050920:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JorgenGhoruunWait
+      Object: 02F1FE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: JorgenWaitMarker
+      Object: 02DD30:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LamiGhoruunWait
+      Object: 02F1FC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LamiWaitMarker
+      Object: 02DD31:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LurbukGhoruunWait
+      Object: 02F1FB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LurbukWaitMarker
+      Object: 02DD33:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MobScared
+      Object: 02F203:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS14HelgiThankYouMarker
+      Object: 07749D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Reward
+      Object: 0C0405:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ThonnirFindLaelette
+      Object: 076F4E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ThonnirGhoruunWait
+      Object: 02F1FD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ThonnirWaitMarker
+      Object: 02DD32:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TownMorthalFaction
+      Object: 02817D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VampireFaction
+      Object: 027242:Skyrim.esm
+  FileName: QF_MS14_00025F3E
+  Fragments:
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_46
+  - Stage: 6
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_63
+  - Stage: 7
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_48
+  - Stage: 9
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_61
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_38
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_1
+  - Stage: 25
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_40
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_4
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_59
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_7
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_11
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_13
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_15
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_20
+  - Stage: 90
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_23
+  - Stage: 95
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_25
+  - Stage: 97
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_50
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_27
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_33
+  - Stage: 120
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_36
+  - Stage: 130
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_55
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS14_00025F3E
+    FragmentName: Fragment_30
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MS14BurnedHouseScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MorthalLocation
+        Object: 018A53:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: MS14AlvaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Alva
+        Object: 025F3E:Skyrim.esm
+        Alias: 2
+      - MutagenObjectType: ScriptObjectProperty
+        Name: AlvasHouse
+        Object: 01EB8E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: CrimeFaction
+        Object: 02816D:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Hroggar
+        Object: 025F3E:Skyrim.esm
+        Alias: 3
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MovarthsLairLocation
+        Object: 01BDFC:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 5
+    Scripts:
+    - Name: MS14HelgiCoffinScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: GameHour
+        Object: 000038:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Helgi
+        Object: 025F3E:Skyrim.esm
+        Alias: 6
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS14HelgiCoffinScene
+        Object: 029545:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS14HelgiLaeletteNotDead
+        Object: 036652:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NewProperty
+        Object: 029544:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 7
+    Scripts:
+    - Name: MS14ThonnirScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS14MobSceneTown
+        Object: 02F1F7:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 17
+    Scripts:
+    - Name: MS14LamiScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 18
+    Scripts:
+    - Name: MS14BenorScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 19
+    Scripts:
+    - Name: MS14JorgenScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 20
+    Scripts:
+    - Name: MS14LurbukScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 21
+    Scripts:
+    - Name: MS14LaeletteScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 9
+    Scripts:
+    - Name: MS14AlvasCoffinScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: Alias_Alva
+        Object: 025F3E:Skyrim.esm
+        Alias: 2
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: MS14BossVampireScript
+  - Property:
+      Name: ''
+      Object: 025F3E:Skyrim.esm
+      Alias: 22
+    Scripts:
+    - Name: MS14AlvasJournalScript
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Filter: Misc\Towns\
+Stages:
+- Index: 1
+  Flags:
+  - StartUpStage
+  Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 5
+  Unknown: 4
+- Index: 6
+  LogEntries:
+  - Flags: []
+- Index: 7
+  Unknown: 45
+  LogEntries:
+  - Flags: []
+- Index: 9
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 25
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 35
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 90
+  LogEntries:
+  - Flags: []
+- Index: 95
+  LogEntries:
+  - Flags: []
+- Index: 97
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 110
+  LogEntries:
+  - Flags: []
+- Index: 120
+  LogEntries:
+  - Flags: []
+- Index: 130
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 27
+Aliases:
+- ID: 1
+  Name: BurnedHouse
+  Flags: []
+  ForcedReference: 02749E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Alva
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 0135E6:Skyrim.esm
+  PackageData:
+  - 0771B0:Skyrim.esm
+  - 0771AE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Helgi
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  UniqueActor: 0274A5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: HelgiCoffin
+  Flags:
+  - AllowDisabled
+  ForcedReference: 070E7E:Skyrim.esm
+  DisplayName: 070E7F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: CoffinDirt
+  Flags: []
+  ForcedReference: 029544:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: Innkeeper
+  Flags: []
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetIsEditorLocationConditionData
+      Location: 018A53:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetInFactionConditionData
+      Faction: 05091B:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: GetIsIDConditionData
+      Object: 0135ED:Skyrim.esm
+    ComparisonValue: 1
+  VoiceTypes: Null
+- ID: 3
+  Name: Hroggar
+  Flags:
+  - ReservesLocationOrReference
+  - StoresText
+  UniqueActor: 0135F0:Skyrim.esm
+  PackageData:
+  - 044384:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: JarlImperial
+  Flags: []
+  ForcedReference: 01AA66:Skyrim.esm
+  VoiceTypes: Null
+- ID: 23
+  Name: JarlRebel
+  Flags:
+  - Optional
+  ForcedReference: 01AA57:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: Thonnir
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 0135F2:Skyrim.esm
+  PackageData:
+  - 03293D:Skyrim.esm
+  - 070E83:Skyrim.esm
+  - 02F1F5:Skyrim.esm
+  - 076F4B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: Lami
+  Flags:
+  - Optional
+  UniqueActor: 0135EF:Skyrim.esm
+  PackageData:
+  - 070E82:Skyrim.esm
+  - 02F1F6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: Benor
+  Flags:
+  - Optional
+  UniqueActor: 0135E8:Skyrim.esm
+  PackageData:
+  - 070E84:Skyrim.esm
+  - 02F1F4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: Jorgen
+  Flags:
+  - Optional
+  UniqueActor: 0138B6:Skyrim.esm
+  PackageData:
+  - 070E86:Skyrim.esm
+  - 02F1F3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: Lurbuk
+  Flags:
+  - Optional
+  UniqueActor: 01AA63:Skyrim.esm
+  PackageData:
+  - 070E85:Skyrim.esm
+  - 02F1F2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: Laelette
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 0274A1:Skyrim.esm
+  PackageData:
+  - 0CDB69:Skyrim.esm
+  - 10C6A1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: AlvasCoffin
+  Flags: []
+  ForcedReference: 029AB5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Type: Location
+  Name: GhorunnHall
+  Flags: []
+  SpecificLocation: 01BDFC:Skyrim.esm
+- ID: 10
+  Name: BossVampireMorvath
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  ForcedReference: 01F593:Skyrim.esm
+  DisplayName: 02EBE8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: AlvasJournal
+  Flags:
+  - QuestObject
+  - AllowDisabled
+  ForcedReference: 02A970:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: Gravedigger
+  Flags: []
+  ForcedReference: 028092:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,16 @@
+FormKey: 0A9B1A:Skyrim.esm
+VersionControl: 6184459
+EditorID: DA10HauntingNode
+FormVersion: 30
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 07F3FD:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 02BB38:Skyrim.esm

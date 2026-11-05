@@ -1,0 +1,38 @@
+FormKey: 0A71AB:Skyrim.esm
+VersionControl: 6185991
+EditorID: ReachcliffCaveScenes
+FormVersion: 35
+Version2: 1
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 0340CF:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Location: 019292:Skyrim.esm
+  ComparisonValue: 1
+Flags:
+- Random
+QuestFlags:
+- DoAllBeforeRepeating
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0A71A9:Skyrim.esm
+  HoursUntilReset: 24
+- Quest: 0A71A7:Skyrim.esm
+  HoursUntilReset: 24
+- Quest: 0A7185:Skyrim.esm
+  HoursUntilReset: 24
+- Quest: 0A7242:Skyrim.esm
+  HoursUntilReset: 24
+- Quest: 0A7240:Skyrim.esm
+  HoursUntilReset: 24
+- Quest: 0A71AC:Skyrim.esm
+  HoursUntilReset: 24

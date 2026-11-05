@@ -1,0 +1,22 @@
+FormKey: 0CBA9F:Skyrim.esm
+VersionControl: 5072661
+EditorID: BQBranchNodeSHARES
+FormVersion: 39
+Version2: 6
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 0B2440:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: HasKeyword
+    Member: NewLocation
+    Record: 039793:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

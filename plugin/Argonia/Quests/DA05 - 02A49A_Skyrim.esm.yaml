@@ -1,0 +1,587 @@
+FormKey: 02A49A:Skyrim.esm
+VersionControl: 79128
+EditorID: DA05
+Version2: 1
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA05QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BloatedMansGrotto
+      Object: 01FAE2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CompanionsCentralQuest
+      Object: 04B2D9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CursedRing
+      Object: 0F82FE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Falkreath
+      Object: 018A49:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FuneralScene
+      Object: 01A336:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameHour
+      Object: 000038:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter10
+      Object: 02A49A:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter11
+      Object: 02A49A:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter12
+      Object: 02A49A:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter5
+      Object: 02A49A:Skyrim.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter6
+      Object: 02A49A:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter7
+      Object: 02A49A:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter8
+      Object: 02A49A:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Hunter9
+      Object: 02A49A:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptIntProperty
+      Name: HuntersAlive
+      Data: 9
+    - MutagenObjectType: ScriptBoolProperty
+      Name: MathiesToldStory
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerSawFuneral
+    - MutagenObjectType: ScriptBoolProperty
+      Name: PlayerTalkedToHunter
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Sinding
+      Object: 02A49A:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SindingMentionedHircine
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SindingToldAboutWitches
+    - MutagenObjectType: ScriptBoolProperty
+      Name: SindingToldStory
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WerewolfBeastRace
+      Object: 0CDD84:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WerewolfChange
+      Object: 092C48:Skyrim.esm
+  - Name: QF_DA05_0002A49A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Funeralizer
+      Object: 02A49A:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GlenmorilLeader
+      Object: 02A49A:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GreatHuntStart
+      Object: 02A49A:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HircinesRing
+      Object: 02A49A:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HircinesRingQuestItem
+      Object: 02A49A:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter_1
+      Object: 02A49A:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter_2
+      Object: 02A49A:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter_3
+      Object: 02A49A:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter_4
+      Object: 02A49A:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter10
+      Object: 02A49A:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter11
+      Object: 02A49A:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter12
+      Object: 02A49A:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter5
+      Object: 02A49A:Skyrim.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter6
+      Object: 02A49A:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter7
+      Object: 02A49A:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter8
+      Object: 02A49A:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hunter9
+      Object: 02A49A:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuestingBeast
+      Object: 02A49A:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuestingBeastGhost
+      Object: 02A49A:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuestingBeastTA
+      Object: 02A49A:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Sinding
+      Object: 02A49A:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SindingGhost
+      Object: 02A49A:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SindingSkin
+      Object: 02A49A:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SkinBox
+      Object: 02A49A:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VictimFather
+      Object: 02A49A:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VictimMother
+      Object: 02A49A:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AspirantMarker
+      Object: 0A844E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BloatedMansGrottoMapMarker
+      Object: 016215:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: C04WitchMarker
+      Object: 01ED34:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CR08ExclusionFaction
+      Object: 000944:Update.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA05FuneralScene
+      Object: 01A336:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA05WitchMarker
+      Object: 01ED33:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunBloatedMansGrottoQST
+      Object: 0955CF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunDA05POIMarker
+      Object: 10E42C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GlenmorilMapMarker
+      Object: 016257:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MajorFavorPoints
+      Object: 03521A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NordRace
+      Object: 013746:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OutsideHircineMarker
+      Object: 0CEDF9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: OutsideTrigger
+      Object: 1097B5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SaviorsHide
+      Object: 02AC61:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SindingSkin
+      Object: 02AC62:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpiderMarker
+      Object: 01ED35:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WolfSinding
+      Object: 02ABBD:Skyrim.esm
+  FileName: QF_DA05_0002A49A
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_40
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_2
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_7
+  - Stage: 55
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_26
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_8
+  - Stage: 61
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_10
+  - Stage: 65
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_11
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_14
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_15
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_20
+  - Stage: 105
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_22
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_27
+  - Stage: 205
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_38
+  - Stage: 210
+    Unknown2: 1
+    ScriptName: QF_DA05_0002A49A
+    FragmentName: Fragment_43
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 02A49A:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: DA05SindingScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DA05
+        Object: 02A49A:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SindingGhost
+        Object: 02A49A:Skyrim.esm
+        Alias: 30
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SindingSkin
+        Object: 02A49A:Skyrim.esm
+        Alias: 25
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SkinMessage
+        Object: 02ED6A:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 02A49A:Skyrim.esm
+      Alias: 27
+    Scripts:
+    - Name: DA05QuestingBeastScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: QuestingBeastGhost
+        Object: 02A49A:Skyrim.esm
+        Alias: 28
+      - MutagenObjectType: ScriptObjectProperty
+        Name: QuestingBeastTA
+        Object: 02A49A:Skyrim.esm
+        Alias: 31
+  - Property:
+      Name: ''
+      Object: 02A49A:Skyrim.esm
+      Alias: 28
+    Scripts:
+    - Name: DA05QuestingBeastGhostScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: QuestingBeastTA
+        Object: 02A49A:Skyrim.esm
+        Alias: 31
+Flags:
+- AllowRepeatedStages
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 0
+Type: Daedric
+Filter: Daedric\
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 55
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 61
+  LogEntries:
+  - Flags: []
+- Index: 65
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 105
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 200
+  LogEntries:
+  - Flags: []
+- Index: 205
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 210
+  LogEntries:
+  - Flags: []
+NextAliasID: 41
+Aliases:
+- Name: Sinding
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 06C1B7:Skyrim.esm
+  PackageData:
+  - 0F50E8:Skyrim.esm
+  - 103B01:Skyrim.esm
+  - 0A032A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: SindingGhost
+  Flags:
+  - AllowDisabled
+  - UsesStoredText
+  UniqueActor: 090CF2:Skyrim.esm
+  DisplayName: 090CEF:Skyrim.esm
+  PackageData:
+  - 015C68:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: GlenmorilLeader
+  Flags:
+  - Essential
+  - AllowDisabled
+  UniqueActor: 02ABBE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: GreatHuntStart
+  Flags: []
+  ForcedReference: 02ABC8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Hunter 1
+  Flags:
+  - AllowDisabled
+  ForcedReference: 02ABC1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: Hunter 2
+  Flags:
+  - AllowDisabled
+  ForcedReference: 02ABC6:Skyrim.esm
+  PackageData:
+  - 01A733:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Hunter 3
+  Flags:
+  - AllowDisabled
+  ForcedReference: 02ABC7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: Hunter 4
+  Flags:
+  - AllowDisabled
+  ForcedReference: 02ABC5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: VictimMother
+  Flags: []
+  UniqueActor: 01364F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: VictimFather
+  Flags: []
+  UniqueActor: 01364E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: Funeralizer
+  Flags: []
+  UniqueActor: 01364D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: HircinesRing
+  Flags: []
+  AliasIDToForceIntoWhenFilled: 26
+  CreateReferenceToObject:
+    Object: 0F82FE:Skyrim.esm
+    Create: In
+  VoiceTypes: Null
+- ID: 26
+  Name: HircinesRingQuestItem
+  Flags:
+  - Optional
+  - QuestObject
+  - ForcedByAliases
+  VoiceTypes: Null
+- ID: 23
+  Name: SkinBox
+  Flags: []
+  ForcedReference: 0954CD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: SindingSkin
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 02AC62:Skyrim.esm
+    AliasID: 23
+    Create: In
+  VoiceTypes: Null
+- ID: 27
+  Name: QuestingBeast
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 090CE1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: QuestingBeastGhost
+  Flags:
+  - AllowDisabled
+  - UsesStoredText
+  ForcedReference: 090CE9:Skyrim.esm
+  CombatOverridePackageList: 104122:Skyrim.esm
+  DisplayName: 090CEF:Skyrim.esm
+  PackageData:
+  - 1097B6:Skyrim.esm
+  - 090CEB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 31
+  Name: QuestingBeastTA
+  Flags: []
+  ForcedReference: 0EB4FF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 33
+  Name: Hunter5
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 34
+  Name: Hunter6
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 40
+  Name: Hunter7
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 39
+  Name: Hunter8
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 38
+  Name: Hunter9
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 37
+  Name: Hunter10
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 36
+  Name: Hunter11
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null
+- ID: 35
+  Name: Hunter12
+  Flags:
+  - Optional
+  - AllowDead
+  VoiceTypes: Null

@@ -1,0 +1,579 @@
+FormKey: 029940:Skyrim.esm
+EditorID: CWObj
+Version2: 11
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_CWObj_00029940
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampImperialEastmarchQT
+      Object: 029940:Skyrim.esm
+      Alias: 50
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampImperialPaleQT
+      Object: 029940:Skyrim.esm
+      Alias: 47
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampImperialRiftQT
+      Object: 029940:Skyrim.esm
+      Alias: 48
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampImperialWinterholdQT
+      Object: 029940:Skyrim.esm
+      Alias: 49
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampSonsFalkreathQT
+      Object: 029940:Skyrim.esm
+      Alias: 43
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampSonsHaafingarQT
+      Object: 029940:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampSonsHjaalmarchQT
+      Object: 029940:Skyrim.esm
+      Alias: 45
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CampSonsReachQT
+      Object: 029940:Skyrim.esm
+      Alias: 44
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialEastmarchCamp
+      Object: 029940:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialFalkreathCamp
+      Object: 029940:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialHjaalmarchCamp
+      Object: 029940:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialPaleCamp
+      Object: 029940:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialReachCamp
+      Object: 029940:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialRiftCamp
+      Object: 029940:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialWhiterunCamp
+      Object: 029940:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOImperialWinterholdCamp
+      Object: 029940:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsFalkreathCamp
+      Object: 029940:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsHaafingarCamp
+      Object: 029940:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsHjaalmarchCamp
+      Object: 029940:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsPaleCamp
+      Object: 029940:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsReachCamp
+      Object: 029940:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsRiftCamp
+      Object: 029940:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsWhiterunCamp
+      Object: 029940:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CWFieldCOSonsWinterholdCamp
+      Object: 029940:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Galmar
+      Object: 029940:Skyrim.esm
+      Alias: 42
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampEastmarchImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampFalkreathImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampFalkreathSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampHaafingarSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampHjaalmarchImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampHjaalmarchSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampPaleImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampPaleSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampReachImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampReachSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampRiftImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampRiftSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampWhiterunImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampWhiterunSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampWinterholdImperialLocation
+      Object: 029940:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MilitaryCampWinterholdSonsLocation
+      Object: 029940:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_QuestNameLocation
+      Object: 029940:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Rikke
+      Object: 029940:Skyrim.esm
+      Alias: 41
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Tullius
+      Object: 029940:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Ulfric
+      Object: 029940:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_WhiterunCapitalImperialFieldCO
+      Object: 029940:Skyrim.esm
+      Alias: 38
+  FileName: QF_CWObj_00029940
+  Fragments:
+  - Stage: 255
+    Unknown2: 1
+    ScriptName: QF_CWObj_00029940
+    FragmentName: Fragment_0
+  - Stage: 255
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_CWObj_00029940
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+QuestFormVersion: 65
+Type: CivilWar
+TextDisplayGlobals:
+- 02994A:Skyrim.esm
+- 029945:Skyrim.esm
+- 029941:Skyrim.esm
+- 029943:Skyrim.esm
+- 029947:Skyrim.esm
+- 029942:Skyrim.esm
+- 02994B:Skyrim.esm
+- 029944:Skyrim.esm
+- 029949:Skyrim.esm
+Filter: Civil War\
+Stages:
+- Index: 1
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionGlobal
+      Data:
+        MutagenObjectType: GetVMQuestVariableConditionData
+        Quest: 019E53:Skyrim.esm
+        VariableName: ::playerAllegiance_var
+      ComparisonValue: 073F10:Skyrim.esm
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionGlobal
+      Data:
+        MutagenObjectType: GetVMQuestVariableConditionData
+        Quest: 019E53:Skyrim.esm
+        VariableName: ::playerAllegiance_var
+      ComparisonValue: 073F11:Skyrim.esm
+- Index: 255
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionGlobal
+      Data:
+        MutagenObjectType: GetVMQuestVariableConditionData
+        Quest: 019E53:Skyrim.esm
+        VariableName: ::playerAllegiance_var
+      ComparisonValue: 073F10:Skyrim.esm
+  - Flags:
+    - CompleteQuest
+    Conditions:
+    - MutagenObjectType: ConditionGlobal
+      Data:
+        MutagenObjectType: GetVMQuestVariableConditionData
+        Quest: 019E53:Skyrim.esm
+        VariableName: ::playerAllegiance_var
+      ComparisonValue: 073F11:Skyrim.esm
+NextAliasID: 51
+Aliases:
+- ID: 35
+  Type: Location
+  Name: QuestNameLocation
+  Flags:
+  - Optional
+  - StoresText
+- ID: 16
+  Type: Location
+  Name: MilitaryCampEastmarchImperialLocation
+  Flags: []
+  SpecificLocation: 01926C:Skyrim.esm
+- ID: 17
+  Type: Location
+  Name: MilitaryCampFalkreathImperialLocation
+  Flags: []
+  SpecificLocation: 019270:Skyrim.esm
+- ID: 18
+  Type: Location
+  Name: MilitaryCampFalkreathSonsLocation
+  Flags: []
+  SpecificLocation: 01926F:Skyrim.esm
+- ID: 19
+  Type: Location
+  Name: MilitaryCampHaafingarSonsLocation
+  Flags: []
+  SpecificLocation: 019274:Skyrim.esm
+- ID: 20
+  Type: Location
+  Name: MilitaryCampHjaalmarchImperialLocation
+  Flags: []
+  SpecificLocation: 019275:Skyrim.esm
+- ID: 21
+  Type: Location
+  Name: MilitaryCampHjaalmarchSonsLocation
+  Flags: []
+  SpecificLocation: 019276:Skyrim.esm
+- ID: 22
+  Type: Location
+  Name: MilitaryCampPaleImperialLocation
+  Flags: []
+  SpecificLocation: 019277:Skyrim.esm
+- ID: 23
+  Type: Location
+  Name: MilitaryCampPaleSonsLocation
+  Flags: []
+  SpecificLocation: 019278:Skyrim.esm
+- ID: 24
+  Type: Location
+  Name: MilitaryCampReachImperialLocation
+  Flags: []
+  SpecificLocation: 019273:Skyrim.esm
+- ID: 25
+  Type: Location
+  Name: MilitaryCampReachSonsLocation
+  Flags: []
+  SpecificLocation: 01926B:Skyrim.esm
+- ID: 26
+  Type: Location
+  Name: MilitaryCampRiftImperialLocation
+  Flags: []
+  SpecificLocation: 01926E:Skyrim.esm
+- ID: 27
+  Type: Location
+  Name: MilitaryCampRiftSonsLocation
+  Flags: []
+  SpecificLocation: 01926D:Skyrim.esm
+- ID: 28
+  Type: Location
+  Name: MilitaryCampWhiterunImperialLocation
+  Flags: []
+  SpecificLocation: 019271:Skyrim.esm
+- ID: 29
+  Type: Location
+  Name: MilitaryCampWhiterunSonsLocation
+  Flags: []
+  SpecificLocation: 019272:Skyrim.esm
+- ID: 30
+  Type: Location
+  Name: MilitaryCampWinterholdImperialLocation
+  Flags: []
+  SpecificLocation: 019279:Skyrim.esm
+- ID: 31
+  Type: Location
+  Name: MilitaryCampWinterholdSonsLocation
+  Flags: []
+  SpecificLocation: 01927A:Skyrim.esm
+- Name: CwFieldCOImperialEastmarchCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 16
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: CWFieldCOImperialFalkreathCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 17
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: CWFieldCOImperialHjaalmarchCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 20
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: CWFieldCOImperialPaleCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 22
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: CWFieldCOImperialReachCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 24
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: CWFieldCOImperialRiftCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 26
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: CWFieldCOImperialWhiterunCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 28
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: CWFieldCOImperialWinterholdCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 30
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: CWFieldCOSonsFalkreathCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 18
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: CWFieldCOSonsHaafingarCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 19
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: CWFieldCOSonsHjaalmarchCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 21
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: CWFieldCOSonsPaleCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 23
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: CWFieldCOSonsReachCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 25
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: CWFieldCOSonsRiftCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 27
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: CWFieldCOSonsWhiterunCamp
+  Flags:
+  - AllowDisabled
+  - StoresText
+  - AllowReserved
+  - UsesStoredText
+  Location:
+    AliasID: 29
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: CWFieldCOSonsWinterholdCamp
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  Location:
+    AliasID: 31
+    RefType: 0205CC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 38
+  Name: WhiterunCapitalImperialFieldCO
+  Flags:
+  - AllowReuseInQuest
+  - AllowDisabled
+  - StoresText
+  - AllowReserved
+  - UsesStoredText
+  ForcedReference: 0BF561:Skyrim.esm
+  VoiceTypes: Null
+- ID: 39
+  Name: Tullius
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198BA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 41
+  Name: Rikke
+  Flags:
+  - AllowReserved
+  ForcedReference: 0198BB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 40
+  Name: Ulfric
+  Flags:
+  - AllowReserved
+  ForcedReference: 01B131:Skyrim.esm
+  VoiceTypes: Null
+- ID: 42
+  Name: Galmar
+  Flags:
+  - AllowReserved
+  ForcedReference: 01B133:Skyrim.esm
+  VoiceTypes: Null
+- ID: 43
+  Name: CampSonsFalkreathQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F003C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 44
+  Name: CampSonsReachQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F003D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 45
+  Name: CampSonsHjaalmarchQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F003E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 46
+  Name: CampSonsHaafingarQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F003F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 47
+  Name: CampImperialPaleQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F0043:Skyrim.esm
+  VoiceTypes: Null
+- ID: 48
+  Name: CampImperialRiftQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F0046:Skyrim.esm
+  VoiceTypes: Null
+- ID: 49
+  Name: CampImperialWinterholdQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F0048:Skyrim.esm
+  VoiceTypes: Null
+- ID: 50
+  Name: CampImperialEastmarchQT
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 0F0040:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,1294 @@
+FormKey: 09DD77:Skyrim.esm
+EditorID: TGCrown
+Version2: 10
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TGCrown_0009DD77
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownAlias
+      Object: 09DD77:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias01
+      Object: 09DD77:Skyrim.esm
+      Alias: 51
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias02
+      Object: 09DD77:Skyrim.esm
+      Alias: 52
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias03
+      Object: 09DD77:Skyrim.esm
+      Alias: 53
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias04
+      Object: 09DD77:Skyrim.esm
+      Alias: 54
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias05
+      Object: 09DD77:Skyrim.esm
+      Alias: 55
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias06
+      Object: 09DD77:Skyrim.esm
+      Alias: 56
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias07
+      Object: 09DD77:Skyrim.esm
+      Alias: 57
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias08
+      Object: 09DD77:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias09
+      Object: 09DD77:Skyrim.esm
+      Alias: 59
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias10
+      Object: 09DD77:Skyrim.esm
+      Alias: 60
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias11
+      Object: 09DD77:Skyrim.esm
+      Alias: 61
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias12
+      Object: 09DD77:Skyrim.esm
+      Alias: 62
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias13
+      Object: 09DD77:Skyrim.esm
+      Alias: 63
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias14
+      Object: 09DD77:Skyrim.esm
+      Alias: 64
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias15
+      Object: 09DD77:Skyrim.esm
+      Alias: 65
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias16
+      Object: 09DD77:Skyrim.esm
+      Alias: 66
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias17
+      Object: 09DD77:Skyrim.esm
+      Alias: 67
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias18
+      Object: 09DD77:Skyrim.esm
+      Alias: 68
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias19
+      Object: 09DD77:Skyrim.esm
+      Alias: 69
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias20
+      Object: 09DD77:Skyrim.esm
+      Alias: 70
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias21
+      Object: 09DD77:Skyrim.esm
+      Alias: 71
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias22
+      Object: 09DD77:Skyrim.esm
+      Alias: 72
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias23
+      Object: 09DD77:Skyrim.esm
+      Alias: 73
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemActivatorAlias24
+      Object: 09DD77:Skyrim.esm
+      Alias: 74
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias01
+      Object: 09DD77:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias02
+      Object: 09DD77:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias03
+      Object: 09DD77:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias04
+      Object: 09DD77:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias05
+      Object: 09DD77:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias06
+      Object: 09DD77:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias07
+      Object: 09DD77:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias08
+      Object: 09DD77:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias09
+      Object: 09DD77:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias10
+      Object: 09DD77:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias11
+      Object: 09DD77:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias12
+      Object: 09DD77:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias13
+      Object: 09DD77:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias14
+      Object: 09DD77:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias15
+      Object: 09DD77:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias16
+      Object: 09DD77:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias17
+      Object: 09DD77:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias18
+      Object: 09DD77:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias19
+      Object: 09DD77:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias20
+      Object: 09DD77:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias21
+      Object: 09DD77:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias22
+      Object: 09DD77:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias23
+      Object: 09DD77:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownGemAlias24
+      Object: 09DD77:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias01
+      Object: 09DD77:Skyrim.esm
+      Alias: 75
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias02
+      Object: 09DD77:Skyrim.esm
+      Alias: 76
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias03
+      Object: 09DD77:Skyrim.esm
+      Alias: 77
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias04
+      Object: 09DD77:Skyrim.esm
+      Alias: 78
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias05
+      Object: 09DD77:Skyrim.esm
+      Alias: 79
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias06
+      Object: 09DD77:Skyrim.esm
+      Alias: 80
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias07
+      Object: 09DD77:Skyrim.esm
+      Alias: 81
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias08
+      Object: 09DD77:Skyrim.esm
+      Alias: 82
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias09
+      Object: 09DD77:Skyrim.esm
+      Alias: 83
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias10
+      Object: 09DD77:Skyrim.esm
+      Alias: 84
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias11
+      Object: 09DD77:Skyrim.esm
+      Alias: 85
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias12
+      Object: 09DD77:Skyrim.esm
+      Alias: 86
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias13
+      Object: 09DD77:Skyrim.esm
+      Alias: 87
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias14
+      Object: 09DD77:Skyrim.esm
+      Alias: 88
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias15
+      Object: 09DD77:Skyrim.esm
+      Alias: 89
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias16
+      Object: 09DD77:Skyrim.esm
+      Alias: 90
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias17
+      Object: 09DD77:Skyrim.esm
+      Alias: 91
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias18
+      Object: 09DD77:Skyrim.esm
+      Alias: 92
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias19
+      Object: 09DD77:Skyrim.esm
+      Alias: 93
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias20
+      Object: 09DD77:Skyrim.esm
+      Alias: 94
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias21
+      Object: 09DD77:Skyrim.esm
+      Alias: 95
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias22
+      Object: 09DD77:Skyrim.esm
+      Alias: 96
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias23
+      Object: 09DD77:Skyrim.esm
+      Alias: 97
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameActivatorAlias24
+      Object: 09DD77:Skyrim.esm
+      Alias: 98
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias01
+      Object: 09DD77:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias02
+      Object: 09DD77:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias03
+      Object: 09DD77:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias04
+      Object: 09DD77:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias05
+      Object: 09DD77:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias06
+      Object: 09DD77:Skyrim.esm
+      Alias: 32
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias07
+      Object: 09DD77:Skyrim.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias08
+      Object: 09DD77:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias09
+      Object: 09DD77:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias10
+      Object: 09DD77:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias11
+      Object: 09DD77:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias12
+      Object: 09DD77:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias13
+      Object: 09DD77:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias14
+      Object: 09DD77:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias15
+      Object: 09DD77:Skyrim.esm
+      Alias: 41
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias16
+      Object: 09DD77:Skyrim.esm
+      Alias: 42
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias17
+      Object: 09DD77:Skyrim.esm
+      Alias: 43
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias18
+      Object: 09DD77:Skyrim.esm
+      Alias: 44
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias19
+      Object: 09DD77:Skyrim.esm
+      Alias: 45
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias20
+      Object: 09DD77:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias21
+      Object: 09DD77:Skyrim.esm
+      Alias: 47
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias22
+      Object: 09DD77:Skyrim.esm
+      Alias: 48
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias23
+      Object: 09DD77:Skyrim.esm
+      Alias: 49
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownNameAlias24
+      Object: 09DD77:Skyrim.esm
+      Alias: 50
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGCrownVexAlias
+      Object: 09DD77:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGemGlobal
+      Object: 06D53F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pProwlersProfit
+      Object: 0F20BE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCQS
+      Object: 09DD77:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownDungeonDisabler
+      Object: 0BF6B5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownMiscQuest
+      Object: 06D585:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownNameAlias
+      Object: 09DD77:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownPerk
+      Object: 0FFF50:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownStand
+      Object: 06D625:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTolvaldsCaveMapMarkerRef
+      Object: 0162C5:Skyrim.esm
+  - Name: TGCrownQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DialogueRiftenMaul
+      Object: 0649FC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG02BQuest
+      Object: 084ABD:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrown
+      Object: 09DFF5:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownFound
+      Object: 06D53F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem01
+      Object: 09DD77:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem02
+      Object: 09DD77:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem03
+      Object: 09DD77:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem04
+      Object: 09DD77:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem05
+      Object: 09DD77:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem06
+      Object: 09DD77:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem07
+      Object: 09DD77:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem08
+      Object: 09DD77:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem09
+      Object: 09DD77:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem10
+      Object: 09DD77:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem11
+      Object: 09DD77:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem12
+      Object: 09DD77:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem13
+      Object: 09DD77:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem14
+      Object: 09DD77:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem15
+      Object: 09DD77:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem16
+      Object: 09DD77:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem17
+      Object: 09DD77:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem18
+      Object: 09DD77:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem19
+      Object: 09DD77:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem20
+      Object: 09DD77:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem21
+      Object: 09DD77:Skyrim.esm
+      Alias: 23
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem22
+      Object: 09DD77:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem23
+      Object: 09DD77:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownGem24
+      Object: 09DD77:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownMiscQuest
+      Object: 06D585:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownQuest
+      Object: 09DD77:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGCrownTotal
+      Object: 09DFEF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGStand
+      Object: 06D625:Skyrim.esm
+  FileName: QF_TGCrown_0009DD77
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_0
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_14
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_2
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_10
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_4
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_6
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_12
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TGCrown_0009DD77
+    FragmentName: Fragment_8
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 09DD77:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: tgcrownscript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTGCrownQuest
+        Object: 09DD77:Skyrim.esm
+Flags:
+- 0x10
+Priority: 40
+QuestFormVersion: 65
+Type: ThievesGuild
+TextDisplayGlobals:
+- 06D53F:Skyrim.esm
+- 06D540:Skyrim.esm
+Filter: Faction\ThievesGuild\
+Stages:
+- Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 30
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 50
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 99
+Aliases:
+- Name: TGCrownVexAlias
+  Flags: []
+  UniqueActor: 01CD90:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TGCrownAlias
+  Flags:
+  - QuestObject
+  ForcedReference: 09E0E4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: TGCrownGemAlias01
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: TGCrownGemAlias02
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: TGCrownGemAlias03
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: TGCrownGemAlias04
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: TGCrownGemAlias05
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: TGCrownGemAlias06
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFD9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: TGCrownGemAlias07
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: TGCrownGemAlias08
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: TGCrownGemAlias09
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 12
+  Name: TGCrownGemAlias10
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDD:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: TGCrownGemAlias11
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: TGCrownGemAlias12
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFDF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: TGCrownGemAlias13
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: TGCrownGemAlias14
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: TGCrownGemAlias15
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE2:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: TGCrownGemAlias16
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: TGCrownGemAlias17
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: TGCrownGemAlias18
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: TGCrownGemAlias19
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: TGCrownGemAlias20
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 23
+  Name: TGCrownGemAlias21
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: TGCrownGemAlias22
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFE9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: TGCrownGemAlias23
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFEA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: TGCrownGemAlias24
+  Flags:
+  - QuestObject
+  ForcedReference: 09DFEB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 27
+  Name: TGCrownNameAlias01
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: TGCrownNameAlias02
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 29
+  Name: TGCrownNameAlias03
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: TGCrownNameAlias04
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 31
+  Name: TGCrownNameAlias05
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 32
+  Name: TGCrownNameAlias06
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 33
+  Name: TGCrownNameAlias07
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 34
+  Name: TGCrownNameAlias08
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 35
+  Name: TGCrownNameAlias09
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 36
+  Name: TGCrownNameAlias10
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: TGCrownNameAlias11
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 38
+  Name: TGCrownNameAlias12
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 39
+  Name: TGCrownNameAlias13
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 40
+  Name: TGCrownNameAlias14
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 41
+  Name: TGCrownNameAlias15
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 42
+  Name: TGCrownNameAlias16
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 43
+  Name: TGCrownNameAlias17
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 44
+  Name: TGCrownNameAlias18
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 45
+  Name: TGCrownNameAlias19
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 46
+  Name: TGCrownNameAlias20
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 47
+  Name: TGCrownNameAlias21
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 48
+  Name: TGCrownNameAlias22
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 49
+  Name: TGCrownNameAlias23
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 50
+  Name: TGCrownNameAlias24
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 51
+  Name: TGCrownGemActivatorAlias01
+  Flags: []
+  ForcedReference: 07F901:Skyrim.esm
+  VoiceTypes: Null
+- ID: 52
+  Name: TGCrownGemActivatorAlias02
+  Flags: []
+  ForcedReference: 07F908:Skyrim.esm
+  VoiceTypes: Null
+- ID: 53
+  Name: TGCrownGemActivatorAlias03
+  Flags: []
+  ForcedReference: 07F923:Skyrim.esm
+  VoiceTypes: Null
+- ID: 54
+  Name: TGCrownGemActivatorAlias04
+  Flags: []
+  ForcedReference: 07F909:Skyrim.esm
+  VoiceTypes: Null
+- ID: 55
+  Name: TGCrownGemActivatorAlias05
+  Flags: []
+  ForcedReference: 07F925:Skyrim.esm
+  VoiceTypes: Null
+- ID: 56
+  Name: TGCrownGemActivatorAlias06
+  Flags: []
+  ForcedReference: 07F926:Skyrim.esm
+  VoiceTypes: Null
+- ID: 57
+  Name: TGCrownGemActivatorAlias07
+  Flags: []
+  ForcedReference: 07FB3A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 58
+  Name: TGCrownGemActivatorAlias08
+  Flags: []
+  ForcedReference: 07F965:Skyrim.esm
+  VoiceTypes: Null
+- ID: 59
+  Name: TGCrownGemActivatorAlias09
+  Flags: []
+  ForcedReference: 07F962:Skyrim.esm
+  VoiceTypes: Null
+- ID: 60
+  Name: TGCrownGemActivatorAlias10
+  Flags: []
+  ForcedReference: 07F95D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 61
+  Name: TGCrownGemActivatorAlias11
+  Flags: []
+  ForcedReference: 07F956:Skyrim.esm
+  VoiceTypes: Null
+- ID: 62
+  Name: TGCrownGemActivatorAlias12
+  Flags: []
+  ForcedReference: 07F927:Skyrim.esm
+  VoiceTypes: Null
+- ID: 63
+  Name: TGCrownGemActivatorAlias13
+  Flags: []
+  ForcedReference: 07FB56:Skyrim.esm
+  VoiceTypes: Null
+- ID: 64
+  Name: TGCrownGemActivatorAlias14
+  Flags: []
+  ForcedReference: 07FB55:Skyrim.esm
+  VoiceTypes: Null
+- ID: 65
+  Name: TGCrownGemActivatorAlias15
+  Flags: []
+  ForcedReference: 07FB54:Skyrim.esm
+  VoiceTypes: Null
+- ID: 66
+  Name: TGCrownGemActivatorAlias16
+  Flags: []
+  ForcedReference: 07FB51:Skyrim.esm
+  VoiceTypes: Null
+- ID: 67
+  Name: TGCrownGemActivatorAlias17
+  Flags: []
+  ForcedReference: 07FB4F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 68
+  Name: TGCrownGemActivatorAlias18
+  Flags: []
+  ForcedReference: 07FB4A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 69
+  Name: TGCrownGemActivatorAlias19
+  Flags: []
+  ForcedReference: 07FB65:Skyrim.esm
+  VoiceTypes: Null
+- ID: 70
+  Name: TGCrownGemActivatorAlias20
+  Flags: []
+  ForcedReference: 07FB58:Skyrim.esm
+  VoiceTypes: Null
+- ID: 71
+  Name: TGCrownGemActivatorAlias21
+  Flags: []
+  ForcedReference: 07FB5D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 72
+  Name: TGCrownGemActivatorAlias22
+  Flags: []
+  ForcedReference: 07FB63:Skyrim.esm
+  VoiceTypes: Null
+- ID: 73
+  Name: TGCrownGemActivatorAlias23
+  Flags: []
+  ForcedReference: 07FB64:Skyrim.esm
+  VoiceTypes: Null
+- ID: 74
+  Name: TGCrownGemActivatorAlias24
+  Flags: []
+  ForcedReference: 07FB45:Skyrim.esm
+  VoiceTypes: Null
+- ID: 75
+  Name: TGCrownNameActivatorAlias01
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 76
+  Name: TGCrownNameActivatorAlias02
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 77
+  Name: TGCrownNameActivatorAlias03
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 78
+  Name: TGCrownNameActivatorAlias04
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 79
+  Name: TGCrownNameActivatorAlias05
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 80
+  Name: TGCrownNameActivatorAlias06
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 81
+  Name: TGCrownNameActivatorAlias07
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 82
+  Name: TGCrownNameActivatorAlias08
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 83
+  Name: TGCrownNameActivatorAlias09
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 84
+  Name: TGCrownNameActivatorAlias10
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 85
+  Name: TGCrownNameActivatorAlias11
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 86
+  Name: TGCrownNameActivatorAlias12
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 87
+  Name: TGCrownNameActivatorAlias13
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 88
+  Name: TGCrownNameActivatorAlias14
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 89
+  Name: TGCrownNameActivatorAlias15
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 90
+  Name: TGCrownNameActivatorAlias16
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 91
+  Name: TGCrownNameActivatorAlias17
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 92
+  Name: TGCrownNameActivatorAlias18
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 93
+  Name: TGCrownNameActivatorAlias19
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 94
+  Name: TGCrownNameActivatorAlias20
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 95
+  Name: TGCrownNameActivatorAlias21
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 96
+  Name: TGCrownNameActivatorAlias22
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 97
+  Name: TGCrownNameActivatorAlias23
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null
+- ID: 98
+  Name: TGCrownNameActivatorAlias24
+  Flags:
+  - Optional
+  - StoresText
+  - UsesStoredText
+  DisplayName: 06D626:Skyrim.esm
+  VoiceTypes: Null

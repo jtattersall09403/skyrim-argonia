@@ -1,0 +1,18 @@
+FormKey: 01B65E:Dragonborn.esm
+VersionControl: 2847251
+EditorID: DLC2NelothRadiantQuests
+FormVersion: 43
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 017045:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags:
+- Random
+QuestFlags:
+- DoAllBeforeRepeating
+MaxConcurrentQuests: 0

@@ -1,0 +1,183 @@
+FormKey: 01EA4F:Skyrim.esm
+EditorID: DB01Misc
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DB01Misc_0001EA4F
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CiceroRoadAlias
+      Object: 01EA4F:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CurweAlias
+      Object: 01EA4F:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DB01MiscGuardImperial
+      Object: 01EA4F:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DB01MiscGuardSons
+      Object: 01EA4F:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LoreiusAlias
+      Object: 01EA4F:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDB01GuardScene
+      Object: 0870CC:Skyrim.esm
+  FileName: QF_DB01Misc_0001EA4F
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_14
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_4
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_6
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_8
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_10
+  - Stage: 40
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_16
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_12
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_0
+  - Stage: 210
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_20
+  - Stage: 215
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_21
+  - Stage: 255
+    Unknown2: 1
+    ScriptName: QF_DB01Misc_0001EA4F
+    FragmentName: Fragment_2
+Flags:
+- 0x10
+- RunOnce
+Priority: 70
+QuestFormVersion: 65
+Type: DarkBrotherhood
+Filter: Faction\Dark Brotherhood\
+Stages:
+- Unknown: 41
+- Index: 5
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 41
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 41
+  LogEntries:
+  - Flags: []
+- Index: 30
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 41
+  LogEntries:
+  - Flags: []
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 41
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 210
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 215
+  LogEntries:
+  - Flags: []
+- Index: 255
+  Flags:
+  - ShutDownStage
+  Unknown: 41
+  LogEntries:
+  - Flags: []
+NextAliasID: 7
+Aliases:
+- ID: 5
+  Name: DB01MiscGuardImperial
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - Essential
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 043D20:Skyrim.esm
+  PackageData:
+  - 01A733:Skyrim.esm
+  VoiceTypes: 07F3F1:Skyrim.esm
+- ID: 6
+  Name: DB01MiscGuardSons
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - Essential
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 043D1D:Skyrim.esm
+  PackageData:
+  - 01A733:Skyrim.esm
+  VoiceTypes: 07F3F1:Skyrim.esm
+- ID: 1
+  Name: CiceroRoadAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 0550F1:Skyrim.esm
+  PackageData:
+  - 101E54:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: CurweAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 01A6B3:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: LoreiusAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 01A6B1:Skyrim.esm
+  VoiceTypes: Null

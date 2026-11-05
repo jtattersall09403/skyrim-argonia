@@ -1,0 +1,795 @@
+FormKey: 01EA5C:Skyrim.esm
+EditorID: DarkBrotherhood
+Version2: 15
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DarkBrotherhood
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: AstridCiceroOpinion
+    - MutagenObjectType: ScriptIntProperty
+      Name: AstridContractAdvice
+    - MutagenObjectType: ScriptIntProperty
+      Name: AstridNightMotherTalk1
+    - MutagenObjectType: ScriptIntProperty
+      Name: AstridNightMotherTalk2
+    - MutagenObjectType: ScriptIntProperty
+      Name: AstridSanctuaryMove
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AstridSanctuaryOutfit
+      Object: 0D3BF9:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: BlackDoorPass
+    - MutagenObjectType: ScriptIntProperty
+      Name: BlackSacrament
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroArrive
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroBack
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroFollower
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroFramed
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroGone
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroGoneSceneStart
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroGuardResponse
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroSancMood
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroState
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroTalk1
+    - MutagenObjectType: ScriptIntProperty
+      Name: CiceroTalk2
+    - MutagenObjectType: ScriptIntProperty
+      Name: ContractSet
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DaggerMarkarth
+      Object: 015CF4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DarkDialogueQuest
+      Object: 02E7AF:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: DawnstarDoorPass
+    - MutagenObjectType: ScriptIntProperty
+      Name: DB01MiscResolved
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DBDestroy
+      Object: 0934FB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DBForever
+      Object: 01EA5A:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: DoorDoOnce
+    - MutagenObjectType: ScriptIntProperty
+      Name: FestusRespect
+    - MutagenObjectType: ScriptIntProperty
+      Name: FirstKill
+    - MutagenObjectType: ScriptIntProperty
+      Name: FirstSet
+    - MutagenObjectType: ScriptIntProperty
+      Name: HavePoison
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Helvard
+      Object: 01EA5C:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptIntProperty
+      Name: LoreiusState
+    - MutagenObjectType: ScriptIntProperty
+      Name: MoreSides
+    - MutagenObjectType: ScriptIntProperty
+      Name: NextSet
+    - MutagenObjectType: ScriptIntProperty
+      Name: pAgnisAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pAnoriathAlreadyDead
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pArnbjorn
+      Object: 01EA5C:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pArnbjornMarker
+      Object: 02EE3D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAstrid
+      Object: 01EA5C:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAstridCiceroMarker
+      Object: 01E64C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAstridMarker
+      Object: 022F4D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pBabette
+      Object: 01EA5C:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pBabetteMarker
+      Object: 08D295:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pBetildAlreadyDead
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pCicero
+      Object: 01EA5C:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptIntProperty
+      Name: pCiceroGuardScene
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pCiceroMarker
+      Object: 01E64B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDB01
+      Object: 01EA50:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDB02
+      Object: 01EA51:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDBEntranceQuest
+      Object: 050F2E:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pDeekusAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pEnnodiusAlreadyDead
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFestus
+      Object: 01EA5C:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFestusMarker
+      Object: 02EE3E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFirstArriveScene
+      Object: 06E26D:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pFirstScene
+    - MutagenObjectType: ScriptIntProperty
+      Name: pFirstSceneOver
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGabriella
+      Object: 01EA5C:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGabriellaMarker
+      Object: 01D23E:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pGiveOlavaToken
+    - MutagenObjectType: ScriptIntProperty
+      Name: pHelvardAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pHernAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pLurbukAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pMalurilAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pMarandrujoAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pNarfiAlreadyDead
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNazir
+      Object: 01EA5C:Skyrim.esm
+      Alias: 44
+    - MutagenObjectType: ScriptIntProperty
+      Name: pNazirStartingOut
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNightMotherCoffin
+      Object: 01E648:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pPlayerInWindhelm
+    - MutagenObjectType: ScriptIntProperty
+      Name: pSafiaAlreadyDead
+    - MutagenObjectType: ScriptIntProperty
+      Name: pSanctuaryAstrid
+    - MutagenObjectType: ScriptIntProperty
+      Name: pTalkBabetteAfterDB11
+    - MutagenObjectType: ScriptIntProperty
+      Name: pTalkBabetteBeforeDB11
+    - MutagenObjectType: ScriptIntProperty
+      Name: pTalkNazirAfterDB11
+    - MutagenObjectType: ScriptIntProperty
+      Name: pTalkNazirBeforeDB11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVeezara
+      Object: 01EA5C:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVeezaraMarker
+      Object: 08D294:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pWindhelmLocation
+      Object: 018A57:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: SolitudeStormcloaks
+  - Name: QF_DarkBrotherhood_0001EA5C
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AlainAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 45
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AmaundAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AntonAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 57
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ArnbjornAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AsgeirAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 55
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AstridRef
+      Object: 01EA5C:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AventusAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BabetteAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BarrelAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 49
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BlackDoorAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 36
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CiceroAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_CiceroEndGameAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 50
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FestusKrexAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GabriellaAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 46
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HelvardAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 58
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Initiate1Alias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 52
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Initiate2Alias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 53
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MuiriAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NazirAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 44
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NilsineAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 56
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_OlfridAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_PoisonAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 48
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SamuelAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SancSoldierAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TovaAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 59
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VeezaraAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VittoriaViciAlias
+      Object: 01EA5C:Skyrim.esm
+      Alias: 54
+  FileName: QF_DarkBrotherhood_0001EA5C
+  Fragments:
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_DarkBrotherhood_0001EA5C
+    FragmentName: Fragment_0
+  - Stage: 1
+    StageIndex: 2
+    Unknown2: 1
+    ScriptName: QF_DarkBrotherhood_0001EA5C
+    FragmentName: Fragment_8
+  - Stage: 1
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_DarkBrotherhood_0001EA5C
+    FragmentName: Fragment_6
+  - Stage: 1
+    StageIndex: 3
+    Unknown2: 1
+    ScriptName: QF_DarkBrotherhood_0001EA5C
+    FragmentName: Fragment_10
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: CiceroScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: CiceroAlias
+        Object: 01EA5C:Skyrim.esm
+        Alias: 0
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DarkBrotherhoodQuest
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DBAttackPlayerFaction
+        Object: 0C4EB3:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB07
+        Object: 01EA56:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: pAstridScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DarkBrotherhoodQuest
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DBDestroyQuest
+        Object: 0934FB:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB02
+        Object: 01EA51:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 8
+    Scripts:
+    - Name: pAmaundScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pAmaundAlias
+        Object: 01EA5C:Skyrim.esm
+        Alias: 8
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB04
+        Object: 01EA53:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 26
+    Scripts:
+    - Name: pMuiriScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MuiriAlias
+        Object: 01EA5C:Skyrim.esm
+        Alias: 26
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB03
+        Object: 01EA52:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pMuiriMarker
+        Object: 01FEDB:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: pMuiriStand
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 29
+    Scripts:
+    - Name: pOlfridScript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: pDoOnce
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pWhiterunArgueScene
+        Object: 037CC4:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pWhiterunSceneQuest
+        Object: 037CC2:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 37
+    Scripts:
+    - Name: pSancSoldierScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB09
+        Object: 01EA58:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB10
+        Object: 03CEDA:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 45
+    Scripts:
+    - Name: pAlainScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDB03
+        Object: 01EA52:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 48
+    Scripts:
+    - Name: DB03PoisonAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DarkBrotherhoodQuest
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DB03
+        Object: 01EA52:Skyrim.esm
+      - MutagenObjectType: ScriptIntProperty
+        Name: doOnce
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 50
+    Scripts:
+    - Name: USKP_DBFollowerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DBScript
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: FollowerDismissMessageWait
+        Object: 0FFCE4:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerFollowerCount
+        Object: 0BCC98:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 52
+    Scripts:
+    - Name: USKP_DBFollowerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DBScript
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: FollowerDismissMessageWait
+        Object: 0FFCE4:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerFollowerCount
+        Object: 0BCC98:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 01EA5C:Skyrim.esm
+      Alias: 53
+    Scripts:
+    - Name: USKP_DBFollowerAliasScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DBScript
+        Object: 01EA5C:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: FollowerDismissMessageWait
+        Object: 0FFCE4:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: PlayerFollowerCount
+        Object: 0BCC98:Skyrim.esm
+Flags:
+- 0x10
+- RunOnce
+Priority: 69
+QuestFormVersion: 65
+Type: DarkBrotherhood
+Filter: Faction\Dark Brotherhood\
+Stages:
+- Index: 1
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+  - Flags: []
+  - Flags: []
+  - Flags: []
+NextAliasID: 60
+Aliases:
+- Name: CiceroAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 01E64A:Skyrim.esm
+  PackageData:
+  - 02EE3B:Skyrim.esm
+  - 1027E1:Skyrim.esm
+  - 05A40E:Skyrim.esm
+  - 104F74:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: AstridRef
+  Flags:
+  - AllowReserved
+  ForcedReference: 01BDE8:Skyrim.esm
+  PackageData:
+  - 01FEDD:Skyrim.esm
+  - 02EE3C:Skyrim.esm
+  - 05B499:Skyrim.esm
+  - 05B498:Skyrim.esm
+  - 028C99:Skyrim.esm
+  - 06416B:Skyrim.esm
+  - 01D23F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: FestusKrexAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 01D4BB:Skyrim.esm
+  PackageData:
+  - 102EB1:Skyrim.esm
+  - 02EE40:Skyrim.esm
+  - 01D242:Skyrim.esm
+  - 01681F:Skyrim.esm
+  - 016820:Skyrim.esm
+  - 016821:Skyrim.esm
+  - 016822:Skyrim.esm
+  - 06E7A1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: ArnbjornAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 01BDE7:Skyrim.esm
+  PackageData:
+  - 102EB2:Skyrim.esm
+  - 02EE3F:Skyrim.esm
+  - 1093BC:Skyrim.esm
+  - 016826:Skyrim.esm
+  - 016828:Skyrim.esm
+  - 016829:Skyrim.esm
+  - 01682A:Skyrim.esm
+  - 016827:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: BabetteAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 01D4BC:Skyrim.esm
+  PackageData:
+  - 06E79B:Skyrim.esm
+  - 08D298:Skyrim.esm
+  - 01D241:Skyrim.esm
+  - 07724A:Skyrim.esm
+  - 10FFBB:Skyrim.esm
+  - 01682C:Skyrim.esm
+  - 01682B:Skyrim.esm
+  - 07737B:Skyrim.esm
+  - 07E8E8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: VeezaraAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 01C3AE:Skyrim.esm
+  PackageData:
+  - 06E79B:Skyrim.esm
+  - 08D297:Skyrim.esm
+  - 0F1A93:Skyrim.esm
+  - 0A2A6D:Skyrim.esm
+  - 016831:Skyrim.esm
+  - 01682F:Skyrim.esm
+  - 016830:Skyrim.esm
+  - 016832:Skyrim.esm
+  - 016833:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: AmaundAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 03B43A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: AventusAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 014132:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: MuiriAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReuseInQuest
+  - AllowReserved
+  UniqueActor: 01406B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: SamuelAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01337A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 29
+  Name: OlfridAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 013BB4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 36
+  Name: BlackDoorAlias
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 025C00:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: SancSoldierAlias
+  Flags:
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 04BD90:Skyrim.esm
+  VoiceTypes: Null
+- ID: 44
+  Name: NazirAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 01C3AD:Skyrim.esm
+  PackageData:
+  - 06E79B:Skyrim.esm
+  - 01D244:Skyrim.esm
+  - 050736:Skyrim.esm
+  - 037D96:unofficial skyrim special edition patch.esp
+  - 101E56:Skyrim.esm
+  - 101E57:Skyrim.esm
+  - 050737:Skyrim.esm
+  - 037D97:unofficial skyrim special edition patch.esp
+  - 10A2C4:Skyrim.esm
+  - 10A2C5:Skyrim.esm
+  - 10A2C6:Skyrim.esm
+  - 10A2C7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 45
+  Name: AlainAlias
+  Flags:
+  - AllowReuseInQuest
+  - AllowDead
+  - AllowReserved
+  ForcedReference: 0D2AFF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 46
+  Name: GabriellaAlias
+  Flags:
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 01BDEB:Skyrim.esm
+  PackageData:
+  - 06E79B:Skyrim.esm
+  - 08D293:Skyrim.esm
+  - 074DB2:Skyrim.esm
+  - 01D243:Skyrim.esm
+  - 10FFBB:Skyrim.esm
+  - 016825:Skyrim.esm
+  - 016823:Skyrim.esm
+  - 016824:Skyrim.esm
+  VoiceTypes: Null
+- ID: 49
+  Name: BarrelAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 097F79:Skyrim.esm
+  VoiceTypes: Null
+- ID: 48
+  Name: PoisonAlias
+  Flags:
+  - AllowDisabled
+  CreateReferenceToObject:
+    Object: 058CFB:Skyrim.esm
+    AliasID: 49
+    Create: In
+  VoiceTypes: Null
+- ID: 50
+  Name: CiceroEndGameAlias
+  Flags:
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 09BCB0:Skyrim.esm
+  PackageData:
+  - 09BE50:Skyrim.esm
+  - 09BE51:Skyrim.esm
+  - 09BE52:Skyrim.esm
+  - 09BE53:Skyrim.esm
+  VoiceTypes: Null
+- ID: 52
+  Name: Initiate1Alias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  ForcedReference: 015D07:Skyrim.esm
+  VoiceTypes: Null
+- ID: 53
+  Name: Initiate2Alias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  ForcedReference: 015D09:Skyrim.esm
+  VoiceTypes: Null
+- ID: 54
+  Name: VittoriaViciAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01327A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 55
+  Name: AsgeirAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01334B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 56
+  Name: NilsineAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01412C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 57
+  Name: AntonAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013387:Skyrim.esm
+  VoiceTypes: Null
+- ID: 58
+  Name: HelvardAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 013657:Skyrim.esm
+  VoiceTypes: Null
+- ID: 59
+  Name: TovaAlias
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 014125:Skyrim.esm
+  VoiceTypes: Null

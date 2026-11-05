@@ -1,0 +1,526 @@
+FormKey: 039645:Skyrim.esm
+VersionControl: 79128
+EditorID: MS13
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS13QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Arvel
+      Object: 039645:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptIntProperty
+      Name: ArvelGreet
+    - MutagenObjectType: ScriptIntProperty
+      Name: ArvelShouted
+    - MutagenObjectType: ScriptIntProperty
+      Name: CamillaEscort
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CamillaEscortScene
+      Object: 0383B6:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: CamillaForceGreet
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardLarge
+      Object: 035217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GoldenClaw
+      Object: 039647:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: LucanForceGreet
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13
+      Object: 039645:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13ArvelStuck
+      Object: 0489EC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13FIN
+      Object: 03DD29:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: MS13Intro
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRiverwoodLocation
+      Object: 013163:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRiverwoodRiverwoodTraderLocation
+      Object: 01CB8D:Skyrim.esm
+    - MutagenObjectType: ScriptIntProperty
+      Name: SceneTriggers
+  - Name: QF_MS13_00039645
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Action_Arvel
+      Object: 013009:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Arvel
+      Object: 039645:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ArvelsJournal
+      Object: 039645:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ArvelWeb
+      Object: 039645:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BFShoutTrigger01
+      Object: 039645:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BFShoutTrigger02
+      Object: 039645:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BFShoutTrigger02000
+      Object: 039645:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BleakFallsLookMarker
+      Object: 039645:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Camilla
+      Object: 039645:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DoorToBleakFallsBarrow
+      Object: 039645:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FrostbiteSpider
+      Object: 039645:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GoldenClaw
+      Object: 039645:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HallofStoriesDoor
+      Object: 039645:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lucan
+      Object: 039645:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_LucanClaw
+      Object: 039645:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RadiantReserveMarker
+      Object: 039645:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Riverwood
+      Object: 039645:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShoutPower
+      Object: 039645:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArvelShout01
+      Object: 04940E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArvelShout02
+      Object: 04940F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArvelShout03
+      Object: 049410:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ArvelStuck
+      Object: 0489EC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LvlQuestReward02Medium
+      Object: 0C0405:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13ArvelRunsScene
+      Object: 03A1E4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS13Intro
+      Object: 0B6031:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pCamillaEscortOfferScene
+      Object: 0383A3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpiderScene
+      Object: 03A17B:Skyrim.esm
+  FileName: QF_MS13_00039645
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_25
+  - Stage: 6
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_27
+  - Stage: 7
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_29
+  - Stage: 8
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_30
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_0
+  - Stage: 10
+    StageIndex: 1
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_46
+  - Stage: 12
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_38
+  - Stage: 13
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_47
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_37
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_2
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_5
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_8
+  - Stage: 37
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_41
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_10
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_11
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_13
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_17
+  - Stage: 110
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_43
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_42
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_MS13_00039645
+    FragmentName: Fragment_40
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: MS13LucanScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pCamilla
+        Object: 039645:Skyrim.esm
+        Alias: 9
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 9
+    Scripts:
+    - Name: MS13CamillaScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pLucan
+        Object: 039645:Skyrim.esm
+        Alias: 0
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 16
+    Scripts:
+    - Name: MS13ArvelsJournalScript
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 8
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 11
+    Scripts:
+    - Name: MS13GoldenClawScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MS13
+        Object: 039645:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 12
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 6
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 13
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 7
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+  - Property:
+      Name: ''
+      Object: 039645:Skyrim.esm
+      Alias: 14
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 8
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 0
+Type: SideQuest
+Filter: Misc\Riverwood\
+Stages:
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 6
+  Unknown: 54
+  LogEntries:
+  - Flags: []
+- Index: 7
+  Unknown: 54
+  LogEntries:
+  - Flags: []
+- Index: 8
+  Unknown: 54
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetDeadConditionData
+        RunOnType: QuestAlias
+        RunOnTypeIndex: 0
+  - Flags: []
+    Conditions:
+    - MutagenObjectType: ConditionFloat
+      Data:
+        MutagenObjectType: GetDeadConditionData
+        RunOnType: QuestAlias
+        RunOnTypeIndex: 0
+      ComparisonValue: 1
+- Index: 12
+  LogEntries:
+  - Flags: []
+- Index: 13
+  LogEntries:
+  - Flags: []
+- Index: 15
+  Unknown: 5
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 35
+  LogEntries:
+  - Flags: []
+- Index: 37
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 110
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 200
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 250
+  LogEntries:
+  - Flags: []
+NextAliasID: 19
+Aliases:
+- ID: 4
+  Type: Location
+  Name: Riverwood
+  Flags: []
+  SpecificLocation: 013163:Skyrim.esm
+- ID: 2
+  Name: RadiantReserveMarker
+  Flags:
+  - ReservesLocationOrReference
+  Location:
+    AliasID: 4
+    RefType: 02165E:Skyrim.esm
+  VoiceTypes: Null
+- Name: Lucan
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  UniqueActor: 01347A:Skyrim.esm
+  Factions:
+  - 0AB87A:Skyrim.esm
+  PackageData:
+  - 0AB87B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: Camilla
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01347B:Skyrim.esm
+  Factions:
+  - 0AB87A:Skyrim.esm
+  PackageData:
+  - 0383BF:Skyrim.esm
+  - 017E0D:Skyrim.esm
+  - 063B2A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Arvel
+  Flags: []
+  UniqueActor: 039646:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: ArvelsJournal
+  Flags: []
+  CreateReferenceToObject:
+    Object: 039654:Skyrim.esm
+    AliasID: 1
+    Create: In
+  VoiceTypes: Null
+- ID: 3
+  Name: ShoutPower
+  Flags: []
+  ForcedReference: 0709D4:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: HallofStoriesDoor
+  Flags: []
+  ForcedReference: 04E2B9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Name: FrostbiteSpider
+  Flags:
+  - Optional
+  ForcedReference: 03A1E1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: ArvelWeb
+  Flags: []
+  ForcedReference: 01FC43:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: GoldenClaw
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 039647:Skyrim.esm
+    AliasID: 1
+    Create: In
+  VoiceTypes: Null
+- ID: 12
+  Name: BFShoutTrigger01
+  Flags: []
+  ForcedReference: 03BC7A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: BFShoutTrigger02
+  Flags: []
+  ForcedReference: 03BC79:Skyrim.esm
+  VoiceTypes: Null
+- ID: 14
+  Name: BFShoutTrigger02000
+  Flags: []
+  ForcedReference: 04940D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: DoorToBleakFallsBarrow
+  Flags: []
+  ForcedReference: 015DA5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: LucanClaw
+  Flags: []
+  ForcedReference: 0AC9B6:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: BleakFallsLookMarker
+  Flags: []
+  ForcedReference: 06B216:Skyrim.esm
+  VoiceTypes: Null

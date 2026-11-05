@@ -1,0 +1,41 @@
+FormKey: 0AA9A9:Skyrim.esm
+VersionControl: 79128
+EditorID: MS07Rumor
+Version2: 7
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MS07Start_000AA9A9
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07StartJareeRa
+      Object: 0AA9A9:Skyrim.esm
+      Alias: 0
+  FileName: QF_MS07Start_000AA9A9
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS07Start_000AA9A9
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS07Start_000AA9A9
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: MS07StartJareeRa
+  Flags: []
+  UniqueActor: 01328D:Skyrim.esm
+  VoiceTypes: Null

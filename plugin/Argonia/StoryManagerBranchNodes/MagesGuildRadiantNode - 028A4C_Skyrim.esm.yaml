@@ -1,0 +1,15 @@
+FormKey: 028A4C:Skyrim.esm
+VersionControl: 3277078
+EditorID: MagesGuildRadiantNode
+FormVersion: 31
+Version2: 4
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 0BFC76:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

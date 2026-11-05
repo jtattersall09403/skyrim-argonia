@@ -1,0 +1,41 @@
+FormKey: 0D789C:Skyrim.esm
+VersionControl: 79128
+EditorID: MS05Rumor
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MS05Rumor_000D789C
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Viarmo
+      Object: 0D789C:Skyrim.esm
+      Alias: 0
+  FileName: QF_MS05Rumor_000D789C
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS05Rumor_000D789C
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS05Rumor_000D789C
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: Viarmo
+  Flags: []
+  UniqueActor: 0132AD:Skyrim.esm
+  VoiceTypes: Null

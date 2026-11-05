@@ -1,0 +1,157 @@
+FormKey: 002C09:Dawnguard.esm
+VersionControl: 2846990
+EditorID: DLC1Init
+FormVersion: 43
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DLC1_QF_DLC1Init_01002C09
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1abCrossbowStagger
+      Object: 012CCC:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1AncestorsGlade
+      Object: 0048C7:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1AurielsBowClearWeather
+      Object: 00F89C:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1Boneyard
+      Object: 00528D:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1DarkfallPassageWorld
+      Object: 004BEA:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1DawnguardItemPerk
+      Object: 00D83A:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1Eclipse
+      Object: 006AEC:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1ForebearsHoldout
+      Object: 002F64:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1HuskyArmoredRace
+      Object: 018B33:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1HuskyBareRace
+      Object: 018B36:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1LD_AetheriumWars
+      Object: 004D5B:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1MagicAurielBowCloudyWeather
+      Object: 00F89D:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1SoulCairn
+      Object: 001408:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: LItemBookClutter
+      Object: 0D9F89:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MentalModel
+      Object: 002B6E:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PreventAurielsBow
+      Object: 00099A:Update.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PreventDurnehviirSummoning
+      Object: 000999:Update.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SunDamageExceptionWorldSpaces
+      Object: 000969:Update.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WeatherExceptionList
+      Object: 000998:Update.esm
+  - Name: DLC1InitScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1flExplodesGasTrapEquippedSpell
+      Object: 01A688:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1flExplodesGasTrapOnEnter
+      Object: 01A686:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1flExplodesGasTrapOnHit
+      Object: 01A687:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1flExplodesGasTrapOnMagicEffectApply
+      Object: 01A689:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1SeranaFaction
+      Object: 0183A5:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1trapGasWeapon
+      Object: 01A685:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DLC1VampireFaction
+      Object: 003376:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: EnemyFactions
+      Objects:
+      - Name: ''
+        Object: 0267E3:Skyrim.esm
+      - Name: ''
+        Object: 028170:Skyrim.esm
+      - Name: ''
+        Object: 029DB0:Skyrim.esm
+      - Name: ''
+        Object: 02816D:Skyrim.esm
+      - Name: ''
+        Object: 028848:Skyrim.esm
+      - Name: ''
+        Object: 028713:Skyrim.esm
+      - Name: ''
+        Object: 02816E:Skyrim.esm
+      - Name: ''
+        Object: 02816C:Skyrim.esm
+      - Name: ''
+        Object: 02816B:Skyrim.esm
+      - Name: ''
+        Object: 028849:Skyrim.esm
+      - Name: ''
+        Object: 0267EA:Skyrim.esm
+      - Name: ''
+        Object: 02816F:Skyrim.esm
+      - Name: ''
+        Object: 048362:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: flExplodesGasTrapEquippedSpell
+      Object: 082F6E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: flExplodesGasTrapOnEnter
+      Object: 082E15:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: flExplodesGasTrapOnHit
+      Object: 082E17:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: flExplodesGasTrapOnMagicEffectApply
+      Object: 082E16:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFaction
+      Object: 000DB1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: trapGasWeapon
+      Object: 109E7B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VampireLordFaction
+      Object: 0071D3:Dawnguard.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WerewolfHateFactions
+      Object: 0957F6:Skyrim.esm
+  FileName: DLC1_QF_DLC1Init_01002C09
+  Fragments:
+  - Unknown2: 1
+    ScriptName: DLC1_QF_DLC1Init_01002C09
+    FragmentName: Fragment_0
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 51
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 0

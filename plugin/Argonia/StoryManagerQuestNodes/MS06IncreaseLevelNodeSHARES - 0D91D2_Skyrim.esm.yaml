@@ -1,0 +1,37 @@
+FormKey: 0D91D2:Skyrim.esm
+EditorID: MS06IncreaseLevelNodeSHARES
+Version2: 4
+Parent: 05BD79:Skyrim.esm
+PreviousSibling: 0BD721:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: NotEqualTo
+  Data:
+    MutagenObjectType: GetInCurrentLocConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Location: 018A5A:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageDoneConditionData
+    Quest: 093807:Skyrim.esm
+    Stage: 250
+  ComparisonValue: 1
+- MutagenObjectType: ConditionGlobal
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetLevelConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+  ComparisonValue: 0D91F9:Skyrim.esm
+Flags:
+- WarnIfNoChildQuestStarted
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0

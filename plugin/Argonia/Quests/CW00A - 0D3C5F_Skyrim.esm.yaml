@@ -1,0 +1,117 @@
+FormKey: 0D3C5F:Skyrim.esm
+VersionControl: 79128
+EditorID: CW00A
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: CW00AScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW
+      Object: 019E53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW00SolitudeMapTableScene
+      Object: 0D5165:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW01A
+      Object: 0D517A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tullius
+      Object: 0D3C5F:Skyrim.esm
+      Alias: 2
+  - Name: QF_CW00_000D3C5F
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Galmar
+      Object: 0D3C5F:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Rikke
+      Object: 0D3C5F:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Tullius
+      Object: 0D3C5F:Skyrim.esm
+      Alias: 2
+  FileName: QF_CW00_000D3C5F
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_3
+  - Stage: 1
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_0
+  - Stage: 2
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_2
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_5
+  - Stage: 7
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_7
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_4
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_6
+  - Stage: 21
+    Unknown2: 1
+    ScriptName: QF_CW00_000D3C5F
+    FragmentName: Fragment_8
+Flags:
+- 0x10
+- RunOnce
+Priority: 71
+QuestFormVersion: 0
+Type: Misc
+Filter: Civil War\
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 1
+  LogEntries:
+  - Flags: []
+- Index: 2
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 7
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 21
+  LogEntries:
+  - Flags: []
+NextAliasID: 4
+Aliases:
+- ID: 2
+  Name: Tullius
+  Flags: []
+  UniqueActor: 01327E:Skyrim.esm
+  PackageData:
+  - 0E7A2C:Skyrim.esm
+  VoiceTypes: Null
+- Name: Rikke
+  Flags: []
+  UniqueActor: 0132A1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Galmar
+  Flags: []
+  UniqueActor: 014128:Skyrim.esm
+  VoiceTypes: Null

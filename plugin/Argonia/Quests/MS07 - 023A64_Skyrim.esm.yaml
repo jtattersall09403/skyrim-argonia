@@ -1,0 +1,457 @@
+FormKey: 023A64:Skyrim.esm
+EditorID: MS07
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MS07Script
+  - Name: QF_MS07_00023A64
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07BanditGreeter
+      Object: 023A64:Skyrim.esm
+      Alias: 28
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07BrokenOarEntranceStageSetter
+      Object: 023A64:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07BrokenOarGrottoMapMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07Deeja
+      Object: 023A64:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07DeejaIcerunnerMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07DeejaNote
+      Object: 023A64:Skyrim.esm
+      Alias: 19
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07IcerunnerChest
+      Object: 023A64:Skyrim.esm
+      Alias: 21
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07IcerunnerLoot
+      Object: 023A64:Skyrim.esm
+      Alias: 22
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07IcerunnerLootEnabler
+      Object: 023A64:Skyrim.esm
+      Alias: 20
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07IceRunnerMapMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07JareeRa
+      Object: 023A64:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07JareeRaCampBrokenOarMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07JareeRaDocksMeetingMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 24
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07LighthouseFire
+      Object: 023A64:Skyrim.esm
+      Alias: 18
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07LighthouseFireOff
+      Object: 023A64:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07LighthouseMapMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 32
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07OpeningSceneTrigger
+      Object: 023A64:Skyrim.esm
+      Alias: 31
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07SorexMarker
+      Object: 023A64:Skyrim.esm
+      Alias: 30
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MS07SorexVinius
+      Object: 023A64:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 023A64:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionHaafingar
+      Object: 029DB0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: IcerunnerQST
+      Object: 0906D4:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07BanditContact2WaitMarker
+      Object: 0267D9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07BanditLeaderMarker
+      Object: 023A67:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07BanditSiblings
+      Object: 025F95:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07OpeningScene
+      Object: 0C588D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS07Rumor
+      Object: 0AA9A9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFaction
+      Object: 000DB1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SolitudeDocksDistrictMarker
+      Object: 01B433:Skyrim.esm
+  FileName: QF_MS07_00023A64
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_0
+  - Stage: 3
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_48
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_47
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_2
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_42
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_14
+  - Stage: 125
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_43
+  - Stage: 150
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_18
+  - Stage: 175
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_44
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_24
+  - Stage: 225
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_45
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_MS07_00023A64
+    FragmentName: Fragment_46
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 31
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 3
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 5
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 3
+    - Name: CWDisableDuringSiegeALIASScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: CW
+        Object: 019E53:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 250
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 18
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 50
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 100
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 7
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 175
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+    - Name: MS07setstageonhitaliasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 125
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 150
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 19
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 175
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 200
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 4
+  - Property:
+      Name: ''
+      Object: 023A64:Skyrim.esm
+      Alias: 16
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 200
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 225
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+Flags:
+- 0x10
+- RunOnce
+Priority: 60
+QuestFormVersion: 65
+Type: SideQuest
+Filter: Misc\Solitude\
+Stages:
+- Unknown: 206
+  LogEntries:
+  - Flags: []
+- Index: 3
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 8
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 32
+  LogEntries:
+  - Flags: []
+- Index: 50
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 100
+  LogEntries:
+  - Flags: []
+- Index: 125
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 150
+  LogEntries:
+  - Flags: []
+- Index: 175
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+- Index: 225
+  Unknown: 171
+  LogEntries:
+  - Flags: []
+- Index: 250
+  Unknown: 171
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 36
+Aliases:
+- ID: 35
+  Name: Player
+  Flags:
+  - StoresText
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null
+- ID: 31
+  Name: MS07OpeningSceneTrigger
+  Flags: []
+  ForcedReference: 0C588C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 29
+  Name: MS07SorexVinius
+  Flags: []
+  ForcedReference: 0198A3:Skyrim.esm
+  PackageData:
+  - 0C588F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: MS07JareeRa
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 01328D:Skyrim.esm
+  PackageData:
+  - 088CC0:Skyrim.esm
+  - 07EB07:Skyrim.esm
+  - 0C5890:Skyrim.esm
+  - 05DE1D:Skyrim.esm
+  - 025F7B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 18
+  Name: MS07LighthouseFire
+  Flags: []
+  ForcedReference: 07526C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 27
+  Name: MS07LighthouseFireOff
+  Flags: []
+  ForcedReference: 062832:Skyrim.esm
+  VoiceTypes: Null
+- ID: 24
+  Name: MS07JareeRaDocksMeetingMarker
+  Flags: []
+  ForcedReference: 062831:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: MS07Deeja
+  Flags:
+  - ReservesLocationOrReference
+  - QuestObject
+  - AllowReserved
+  - Protected
+  UniqueActor: 013268:Skyrim.esm
+  Factions:
+  - 09653A:Skyrim.esm
+  PackageData:
+  - 088C84:Skyrim.esm
+  VoiceTypes: Null
+- ID: 19
+  Name: MS07DeejaNote
+  Flags:
+  - QuestObject
+  - AllowDisabled
+  - UsesStoredText
+  - InitiallyDisabled
+  CreateReferenceToObject:
+    Object: 0F23E0:Skyrim.esm
+    AliasID: 7
+  VoiceTypes: Null
+- ID: 25
+  Name: MS07DeejaIcerunnerMarker
+  Flags: []
+  ForcedReference: 0267D9:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: MS07BrokenOarEntranceStageSetter
+  Flags: []
+  ForcedReference: 015D79:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: MS07JareeRaCampBrokenOarMarker
+  Flags: []
+  ForcedReference: 023A67:Skyrim.esm
+  VoiceTypes: Null
+- ID: 20
+  Name: MS07IcerunnerLootEnabler
+  Flags: []
+  ForcedReference: 0BABBC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 21
+  Name: MS07IcerunnerChest
+  Flags:
+  - UsesStoredText
+  ForcedReference: 0BABB7:Skyrim.esm
+  DisplayName: 06282F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 22
+  Name: MS07IcerunnerLoot
+  Flags: []
+  ForcedReference: 0BABBB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 28
+  Name: MS07BanditGreeter
+  Flags:
+  - ReservesLocationOrReference
+  - Optional
+  - AllowDisabled
+  - AllowReserved
+  ForcedReference: 08E750:Skyrim.esm
+  PackageData:
+  - 088CA5:Skyrim.esm
+  VoiceTypes: Null
+- ID: 30
+  Name: MS07SorexMarker
+  Flags: []
+  ForcedReference: 0C588B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 32
+  Name: MS07LighthouseMapMarker
+  Flags: []
+  ForcedReference: 0C016D:Skyrim.esm
+  VoiceTypes: Null
+- ID: 33
+  Name: MS07IceRunnerMapMarker
+  Flags: []
+  ForcedReference: 0162AA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 34
+  Name: MS07BrokenOarGrottoMapMarker
+  Flags: []
+  ForcedReference: 0B77C3:Skyrim.esm
+  VoiceTypes: Null

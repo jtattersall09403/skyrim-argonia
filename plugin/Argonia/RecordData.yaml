@@ -1,0 +1,23 @@
+SpriggitSource:
+  PackageName: Spriggit.Yaml.Skyrim
+  Version: 0.41
+ModKey: Argonia.esp
+GameRelease: SkyrimSE
+ModHeader:
+  Author: 'Elder Souls: Argonia'
+  Description: Built from plugin/Argonia (Spriggit YAML); seeded by tools/ArgoniaPlugin.
+  MasterReferences:
+  - Master: Skyrim.esm
+    FileSize: 0
+  - Master: Update.esm
+    FileSize: 0
+  - Master: Dawnguard.esm
+    FileSize: 0
+  - Master: HearthFires.esm
+    FileSize: 0
+  - Master: Dragonborn.esm
+    FileSize: 0
+  - Master: unofficial skyrim special edition patch.esp
+    FileSize: 0
+  - Master: Black Marsh.esm
+    FileSize: 0

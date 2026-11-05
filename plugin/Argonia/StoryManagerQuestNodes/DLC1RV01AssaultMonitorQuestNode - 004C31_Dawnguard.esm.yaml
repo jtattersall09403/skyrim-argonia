@@ -1,0 +1,25 @@
+FormKey: 004C31:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1RV01AssaultMonitorQuestNode
+FormVersion: 43
+Version2: 3
+Parent: 02C494:Skyrim.esm
+PreviousSibling: 037FBE:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Faction: 004C2D:Dawnguard.esm
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 004C30:Dawnguard.esm

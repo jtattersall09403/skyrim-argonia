@@ -1,0 +1,25 @@
+FormKey: 010DE4:Dawnguard.esm
+VersionControl: 3809983
+EditorID: DLC1VQ00VampireAttackNodeAM
+Version2: 5
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 010DE3:Dawnguard.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 0216A9:Skyrim.esm
+Flags:
+- Random
+QuestFlags:
+- DoAllBeforeRepeating
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 017648:Dawnguard.esm
+- Quest: 01764B:Dawnguard.esm

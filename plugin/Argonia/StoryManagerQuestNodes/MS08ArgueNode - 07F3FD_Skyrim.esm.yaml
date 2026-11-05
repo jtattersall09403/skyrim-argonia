@@ -1,0 +1,20 @@
+FormKey: 07F3FD:Skyrim.esm
+VersionControl: 5005839
+EditorID: MS08ArgueNode
+FormVersion: 34
+Version2: 3
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 04C729:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 01CF25:Skyrim.esm
+  ComparisonValue: 10
+MaxConcurrentQuests: 0

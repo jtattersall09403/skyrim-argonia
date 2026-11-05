@@ -1,0 +1,201 @@
+FormKey: 103395:Skyrim.esm
+EditorID: TGREnablerHandler
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TGREnablerHandler_00103395
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREFlagonAlias
+      Object: 103395:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREGobletAlias
+      Object: 103395:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREHornAlias
+      Object: 103395:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREModelAlias
+      Object: 103395:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREndSafeAlias
+      Object: 103395:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREPitcherAlias
+      Object: 103395:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGREUrnAlias
+      Object: 103395:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TGRRECandleAlias
+      Object: 103395:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_USKPUtteringHillsReservation
+      Object: 103395:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pCandles
+      Object: 103395:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFlagon
+      Object: 103395:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGoblet
+      Object: 103395:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pHorn
+      Object: 103395:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pModel
+      Object: 103395:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pPitcher
+      Object: 103395:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSafe
+      Object: 103395:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pUrn
+      Object: 103395:Skyrim.esm
+      Alias: 3
+  - Name: TGREnablerHandlerQuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGRMasterTotal
+      Object: 103396:Skyrim.esm
+  FileName: QF_TGREnablerHandler_00103395
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_1
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_3
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_4
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_5
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_6
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_7
+  - Stage: 80
+    Unknown2: 1
+    ScriptName: QF_TGREnablerHandler_00103395
+    FragmentName: Fragment_8
+Flags:
+- 0x10
+Priority: 80
+QuestFormVersion: 65
+Filter: Faction\ThievesGuild\Radiant\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 80
+  LogEntries:
+  - Flags: []
+- Index: 200
+NextAliasID: 9
+Aliases:
+- Name: TGREModelAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F05:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: TGREHornAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F00:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: TGREPitcherAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F04:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: TGREUrnAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F03:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: TGREGobletAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F02:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: TGRRECandleAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8EFF:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: TGREFlagonAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 0E8F01:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: TGREndSafeAlias
+  Flags:
+  - AllowDisabled
+  ForcedReference: 103398:Skyrim.esm
+  VoiceTypes: Null
+- ID: 8
+  Type: Location
+  Name: USKPUtteringHillsReservation
+  Flags:
+  - ReservesLocationOrReference
+  - Optional
+  SpecificLocation: 0192C0:Skyrim.esm

@@ -1,0 +1,147 @@
+FormKey: 0C9BA0:Skyrim.esm
+EditorID: NN01
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: NN01QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNirnrootRed
+      Object: 0B701A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNN01Count
+      Object: 0E4D71:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pSarethiFarmMapMarker
+      Object: 016379:Skyrim.esm
+  - Name: QF_NIRN01_000C9BA0
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NN01AvrusaAlias
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NN01JournalAlias
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NN01PlayerAlias
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NN01SinderionCorpseAlias
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNirnrootRed
+      Object: 0B701A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNN01Count
+      Object: 0E4D71:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNN01Perk
+      Object: 10BF0A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNN01SinderionsTome
+      Object: 10BEDF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pNN01Spell
+      Object: 10BF09:Skyrim.esm
+  FileName: QF_NIRN01_000C9BA0
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_NIRN01_000C9BA0
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_NIRN01_000C9BA0
+    FragmentName: Fragment_6
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_NIRN01_000C9BA0
+    FragmentName: Fragment_1
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_NIRN01_000C9BA0
+    FragmentName: Fragment_4
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: NN01JournalScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pNN01Quest
+        Object: 0C9BA0:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0C9BA0:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: NN01CrimsonNirnrootScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: NN01Quest
+        Object: 0C9BA0:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pNirnrootRed
+        Object: 0B701A:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pNN01QS
+        Object: 0C9BA0:Skyrim.esm
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 65
+Type: SideQuest
+TextDisplayGlobals:
+- 0E4D71:Skyrim.esm
+- 0E4D72:Skyrim.esm
+Filter: Misc\
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 4
+Aliases:
+- Name: NN01AvrusaAlias
+  Flags: []
+  UniqueActor: 019BFE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: NN01SinderionCorpseAlias
+  Flags: []
+  ForcedReference: 0EEC5F:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: NN01JournalAlias
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0E4D6F:Skyrim.esm
+    AliasID: 3
+    Create: In
+  VoiceTypes: Null
+- ID: 2
+  Name: NN01PlayerAlias
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

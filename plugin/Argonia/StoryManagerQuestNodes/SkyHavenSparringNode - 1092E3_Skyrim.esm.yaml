@@ -1,0 +1,23 @@
+FormKey: 1092E3:Skyrim.esm
+VersionControl: 2320144
+EditorID: SkyHavenSparringNode
+FormVersion: 39
+Version2: 2
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 047027:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 1092E4:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 1092D3:Skyrim.esm
+  HoursUntilReset: 2

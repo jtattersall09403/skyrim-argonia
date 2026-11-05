@@ -1,0 +1,151 @@
+FormKey: 01EA50:Skyrim.esm
+VersionControl: 79128
+EditorID: DB01
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DB01QuestScript
+    Properties:
+    - MutagenObjectType: ScriptIntProperty
+      Name: ChildrenCheer
+    - MutagenObjectType: ScriptIntProperty
+      Name: EnterOrphanage
+    - MutagenObjectType: ScriptIntProperty
+      Name: GrelodThreatened
+  - Name: QF_DB01_0001EA50
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AstridAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_AventusAretinoAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FrancoisAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_GrelodTheKindAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HroarAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_RunaAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SamuelAlias
+      Object: 01EA50:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Angrenor
+      Object: 01B138:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFavorReward
+      Object: 035217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WindhelmAretinoResidenceKey
+      Object: 09C795:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WindhelmAretinoResidenceLockList
+      Object: 09C757:Skyrim.esm
+  FileName: QF_DB01_0001EA50
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DB01_0001EA50
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DB01_0001EA50
+    FragmentName: Fragment_5
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DB01_0001EA50
+    FragmentName: Fragment_7
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DB01_0001EA50
+    FragmentName: Fragment_9
+Flags:
+- 0x10
+- RunOnce
+Priority: 70
+QuestFormVersion: 0
+Type: DarkBrotherhood
+Filter: Faction\Dark Brotherhood\
+Stages:
+- Unknown: 109
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 255
+  Flags:
+  - ShutDownStage
+  LogEntries:
+  - Flags: []
+NextAliasID: 7
+Aliases:
+- Name: AventusAretinoAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  UniqueActor: 014132:Skyrim.esm
+  PackageData:
+  - 01B9AE:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: GrelodTheKindAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDead
+  - AllowDisabled
+  - AllowReserved
+  UniqueActor: 01335E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: HroarAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 013363:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: RunaAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 013378:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: SamuelAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01337A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: FrancoisAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 013359:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: AstridAlias
+  Flags:
+  - ReservesLocationOrReference
+  - AllowReserved
+  ForcedReference: 01BDE8:Skyrim.esm
+  VoiceTypes: Null

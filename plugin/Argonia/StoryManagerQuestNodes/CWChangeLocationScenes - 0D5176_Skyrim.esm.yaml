@@ -1,0 +1,23 @@
+FormKey: 0D5176:Skyrim.esm
+VersionControl: 2847750
+EditorID: CWChangeLocationScenes
+FormVersion: 43
+Version2: 7
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 02C49F:Dragonborn.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetQuestRunningConditionData
+    Quest: 0D1444:Skyrim.esm
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0D5165:Skyrim.esm
+- Quest: 0D5F0A:Skyrim.esm
+- Quest: 0E1B36:Skyrim.esm
+- Quest: 0E2D3A:Skyrim.esm

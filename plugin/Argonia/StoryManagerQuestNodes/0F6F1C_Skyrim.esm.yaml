@@ -1,0 +1,17 @@
+FormKey: 0F6F1C:Skyrim.esm
+VersionControl: 2844163
+FormVersion: 36
+Version2: 2
+Parent: 02D386:Skyrim.esm
+PreviousSibling: 02D387:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0F2593:Skyrim.esm

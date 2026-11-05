@@ -1,0 +1,42 @@
+FormKey: 0DC53C:Skyrim.esm
+VersionControl: 79128
+EditorID: DA10MiscObjective
+Version2: 4
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_DA10MiscObjective_000DC53C
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Tyranus
+      Object: 0DC53C:Skyrim.esm
+      Alias: 0
+  FileName: QF_DA10MiscObjective_000DC53C
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA10MiscObjective_000DC53C
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA10MiscObjective_000DC53C
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 0
+Type: Misc
+Filter: Daedric\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: Tyranus
+  Flags:
+  - AllowDisabled
+  UniqueActor: 0A733B:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,39 @@
+FormKey: 004C21:Dawnguard.esm
+VersionControl: 946447
+EditorID: DLC1RadiantQuestNode
+FormVersion: 43
+Version2: 4
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 04C729:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 004C1E:Dawnguard.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 004C1D:Dawnguard.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 002F22:Dawnguard.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

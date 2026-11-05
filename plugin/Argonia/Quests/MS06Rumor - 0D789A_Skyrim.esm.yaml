@@ -1,0 +1,41 @@
+FormKey: 0D789A:Skyrim.esm
+VersionControl: 79128
+EditorID: MS06Rumor
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MS06Rumor_000D789A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_FalkFirebeard
+      Object: 0D789A:Skyrim.esm
+      Alias: 0
+  FileName: QF_MS06Rumor_000D789A
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS06Rumor_000D789A
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS06Rumor_000D789A
+    FragmentName: Fragment_1
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 1
+Aliases:
+- Name: FalkFirebeard
+  Flags: []
+  UniqueActor: 013274:Skyrim.esm
+  VoiceTypes: Null

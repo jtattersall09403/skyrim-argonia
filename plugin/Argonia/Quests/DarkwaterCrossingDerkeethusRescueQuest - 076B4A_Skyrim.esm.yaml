@@ -1,0 +1,141 @@
+FormKey: 076B4A:Skyrim.esm
+EditorID: DarkwaterCrossingDerkeethusRescueQuest
+Version2: 3
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DarkwaterDerkeethusRescueScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Derkeethus
+      Object: 076B4A:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DerkeethusHeadingHome
+    - MutagenObjectType: ScriptBoolProperty
+      Name: DerkeethusShouldForceGreet
+      Data: True
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DerkeethusSpot
+      Object: 076B4A:Skyrim.esm
+      Alias: 2
+  - Name: QF_DarkwaterCrossingDerkeethu_00076B4A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DarkwaterCavern
+      Object: 076B4A:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DarkwaterExit
+      Object: 076B4A:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DarkwaterExitTrigger
+      Object: 076B4A:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DarkwaterExitTrigger2
+      Object: 076B4A:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Derkeethus
+      Object: 076B4A:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DerkeethusSpot
+      Object: 076B4A:Skyrim.esm
+      Alias: 2
+  FileName: QF_DarkwaterCrossingDerkeethu_00076B4A
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_DarkwaterCrossingDerkeethu_00076B4A
+    FragmentName: Fragment_3
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DarkwaterCrossingDerkeethu_00076B4A
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DarkwaterCrossingDerkeethu_00076B4A
+    FragmentName: Fragment_1
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DarkwaterCrossingDerkeethu_00076B4A
+    FragmentName: Fragment_2
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 076B4A:Skyrim.esm
+      Alias: 5
+    Scripts:
+    - Name: DarkwaterLeavingTriggerScript
+  - Property:
+      Name: ''
+      Object: 076B4A:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: DarkwaterLeavingTriggerScript
+Flags:
+- 0x10
+Priority: 50
+QuestFormVersion: 65
+Type: Misc
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  Unknown: 35
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 35
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 35
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 205
+  Flags:
+  - ShutDownStage
+NextAliasID: 7
+Aliases:
+- Name: Derkeethus
+  Flags:
+  - ReservesLocationOrReference
+  - Essential
+  - AllowDisabled
+  UniqueActor: 01403E:Skyrim.esm
+  PackageData:
+  - 02B91C:unofficial skyrim special edition patch.esp
+  - 077F88:Skyrim.esm
+  - 077F82:Skyrim.esm
+  - 077F81:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Type: Location
+  Name: DarkwaterCavern
+  Flags: []
+  SpecificLocation: 01915F:Skyrim.esm
+- ID: 2
+  Name: DerkeethusSpot
+  Flags: []
+  ForcedReference: 0749A0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: DarkwaterExit
+  Flags: []
+  ForcedReference: 02CF25:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: DarkwaterExitTrigger
+  Flags: []
+  ForcedReference: 077F86:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: DarkwaterExitTrigger2
+  Flags: []
+  ForcedReference: 05256E:Skyrim.esm
+  VoiceTypes: Null

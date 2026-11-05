@@ -1,0 +1,33 @@
+FormKey: 0A17B2:Skyrim.esm
+VersionControl: 5075483
+EditorID: WE100ObjQuestsNode
+FormVersion: 43
+Version2: 7
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 01E7D9:Dragonborn.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 0A17B3:Skyrim.esm
+  ComparisonValue: 1
+Flags:
+- WarnIfNoChildQuestStarted
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0A17AD:Skyrim.esm
+- Quest: 0A17B4:Skyrim.esm
+- Quest: 0A17B5:Skyrim.esm
+- Quest: 0A17B6:Skyrim.esm
+- Quest: 0A17B7:Skyrim.esm
+- Quest: 0A17B8:Skyrim.esm
+- Quest: 0A17B9:Skyrim.esm
+- Quest: 0A17BA:Skyrim.esm
+- Quest: 0A17BB:Skyrim.esm
+- Quest: 0A17BC:Skyrim.esm

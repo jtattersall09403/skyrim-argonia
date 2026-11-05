@@ -1,0 +1,22 @@
+FormKey: 028667:Dragonborn.esm
+VersionControl: 5075737
+EditorID: DLC2PillarDestroyedNode
+FormVersion: 43
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 0B0274:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 028665:Dragonborn.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 028664:Dragonborn.esm

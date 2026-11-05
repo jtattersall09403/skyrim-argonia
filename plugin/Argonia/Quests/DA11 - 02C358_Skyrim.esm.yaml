@@ -1,0 +1,527 @@
+FormKey: 02C358:Skyrim.esm
+EditorID: DA11
+VirtualMachineAdapter:
+  Scripts:
+  - Name: DA11QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA11DraugrDeadCount
+      Object: 0819E3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA11DraugrTotalCount
+      Object: 0819E4:Skyrim.esm
+  - Name: QF_DA11_0002C358
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Banning
+      Object: 02C358:Skyrim.esm
+      Alias: 35
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BrotherVerulus
+      Object: 02C358:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Cultist01
+      Object: 02C358:Skyrim.esm
+      Alias: 37
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Cultist02
+      Object: 02C358:Skyrim.esm
+      Alias: 38
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DraugrBoss
+      Object: 02C358:Skyrim.esm
+      Alias: 17
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Glooredhel
+      Object: 02C358:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HalloftheDead
+      Object: 02C358:Skyrim.esm
+      Alias: 29
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_HalloftheDeadCenterMarker
+      Object: 02C358:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Hogni
+      Object: 02C358:Skyrim.esm
+      Alias: 34
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Lisbet
+      Object: 02C358:Skyrim.esm
+      Alias: 33
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MarkarthDoor
+      Object: 02C358:Skyrim.esm
+      Alias: 40
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_NamiraShrineRoomTrigger
+      Object: 02C358:Skyrim.esm
+      Alias: 25
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ReachcliffCave
+      Object: 02C358:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ReachcliffCaveCenter
+      Object: 02C358:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ReachcliffEntrance
+      Object: 02C358:Skyrim.esm
+      Alias: 39
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SecretExit
+      Object: 02C358:Skyrim.esm
+      Alias: 41
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShrineDoor
+      Object: 02C358:Skyrim.esm
+      Alias: 26
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ShrineofNamira
+      Object: 02C358:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_VoiceofNamira
+      Object: 02C358:Skyrim.esm
+      Alias: 27
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CenterMarkarthMarker
+      Object: 01B38D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrimeFactionReach
+      Object: 02816C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA11CannibalAttackFaction
+      Object: 0E953D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA11CannibalFaction
+      Object: 08942F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunReachcliffBlockerMarker
+      Object: 0DE153:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunReachCliffDA11
+      Object: 0A2F10:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunReachcliffExitMarker
+      Object: 0DE164:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: dunReachcliffSecExitDoor
+      Object: 0DB044:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FeastHallMarker
+      Object: 09BB44:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GlooredhelVerulusScene
+      Object: 02C373:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Invisibility
+      Object: 027EB6:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MarkarthKeepDoor
+      Object: 04D219:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pAttackPlayerFaction
+      Object: 0819E0:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA11Favor
+      Object: 07D949:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA11FIN
+      Object: 04D217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pDA11NamiraScene
+      Object: 087B60:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pFavorReward
+      Object: 035217:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGlooredhelActorBase
+      Object: 01990F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGlooredhelAllyFaction
+      Object: 08796A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGlooredhelVerulusAttackFaction
+      Object: 087B5F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pGold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pReachCliffMapMarker
+      Object: 01629D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pReachcliffNormalMarker
+      Object: 0A2F0F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pReachcliffPreQuestMarker
+      Object: 01C3EB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRingofNamira
+      Object: 02C37B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVerulusActorBase
+      Object: 01338C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVerulusAllyFaction
+      Object: 089430:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVerulusDeadScene
+      Object: 04C4F9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pVerulusGlooredhelScene
+      Object: 02C373:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ReachcliffCave01
+      Object: 015227:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VerulusDeadScene
+      Object: 04C4F9:Skyrim.esm
+  FileName: QF_DA11_0002C358
+  Fragments:
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_37
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_0
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_40
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_39
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_41
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_43
+  - Stage: 45
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_47
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_45
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_46
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_48
+  - Stage: 100
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_49
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_15
+  - Stage: 225
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_54
+  - Stage: 250
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_38
+  - Stage: 500
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_42
+  - Stage: 600
+    Unknown2: 1
+    ScriptName: QF_DA11_0002C358
+    FragmentName: Fragment_55
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 02C358:Skyrim.esm
+      Alias: 0
+    Scripts:
+    - Name: DA11GlooredhelScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pGlooredhelTravelMarker
+        Object: 02C386:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pMarkarthHalloftheDead
+        Object: 024016:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pReachcliffCaveInsideEntranceMarker
+        Object: 0819E7:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pReachcliffCaveLocation
+        Object: 019292:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pReachcliffState1Marker
+        Object: 0A2F0F:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pReachcliffState2Marker
+        Object: 0A2F10:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 02C358:Skyrim.esm
+      Alias: 7
+    Scripts:
+    - Name: DA11VerulusScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: CorpseMessage
+        Object: 02C379:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: EatMessage
+        Object: 02C37A:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: IdleCannibalFeedStanding
+        Object: 0FE09E:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA11QuestScript
+        Object: 02C358:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 02C358:Skyrim.esm
+      Alias: 17
+    Scripts:
+    - Name: defaultsetstagealiasscript
+      Properties:
+      - MutagenObjectType: ScriptIntProperty
+        Name: prereqStageOPT
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: stage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: TriggerType
+        Data: 1
+  - Property:
+      Name: ''
+      Object: 02C358:Skyrim.esm
+      Alias: 25
+    Scripts:
+    - Name: DA11ShrineRoomTriggerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pDA11QuestScript
+        Object: 02C358:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pVerulus
+        Object: 02C358:Skyrim.esm
+        Alias: 7
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 65
+Type: Daedric
+Filter: Daedric\
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 11
+- Index: 15
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 20
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 45
+  LogEntries:
+  - Flags: []
+- Index: 50
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 60
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 70
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 100
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+- Index: 200
+  LogEntries:
+  - Flags: []
+- Index: 225
+  LogEntries:
+  - Flags: []
+- Index: 250
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 500
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - FailQuest
+- Index: 600
+  LogEntries:
+  - Flags: []
+NextAliasID: 42
+Aliases:
+- Name: Glooredhel
+  Flags:
+  - ReservesLocationOrReference
+  - AllowDisabled
+  UniqueActor: 01990F:Skyrim.esm
+  PackageData:
+  - 0A0D49:Skyrim.esm
+  - 09BB3F:Skyrim.esm
+  - 087968:Skyrim.esm
+  - 081F11:Skyrim.esm
+  - 081F13:Skyrim.esm
+  - 0819DE:Skyrim.esm
+  - 02C376:Skyrim.esm
+  - 03C3D1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: BrotherVerulus
+  Flags:
+  - ReservesLocationOrReference
+  - Protected
+  UniqueActor: 01338C:Skyrim.esm
+  PackageData:
+  - 09BB3D:Skyrim.esm
+  - 087977:Skyrim.esm
+  - 0AEC26:Skyrim.esm
+  - 01BBED:Skyrim.esm
+  VoiceTypes: Null
+- ID: 29
+  Type: Location
+  Name: HalloftheDead
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 024016:Skyrim.esm
+- ID: 15
+  Type: Location
+  Name: ReachcliffCave
+  Flags:
+  - ReservesLocationOrReference
+  SpecificLocation: 019292:Skyrim.esm
+- ID: 14
+  Name: HalloftheDeadCenterMarker
+  Flags: []
+  ForcedReference: 06A9AB:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: ShrineofNamira
+  Flags: []
+  ForcedReference: 02C361:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: ReachcliffCaveCenter
+  Flags: []
+  ForcedReference: 02C385:Skyrim.esm
+  VoiceTypes: Null
+- ID: 17
+  Name: DraugrBoss
+  Flags:
+  - Optional
+  - AllowDisabled
+  Location:
+    AliasID: 15
+    RefType: 0130F7:Skyrim.esm
+  VoiceTypes: Null
+- ID: 25
+  Name: NamiraShrineRoomTrigger
+  Flags: []
+  ForcedReference: 08796E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 26
+  Name: ShrineDoor
+  Flags: []
+  ForcedReference: 087970:Skyrim.esm
+  VoiceTypes: Null
+- ID: 27
+  Name: VoiceofNamira
+  Flags:
+  - ReservesLocationOrReference
+  ForcedReference: 02C361:Skyrim.esm
+  VoiceTypes: Null
+- ID: 33
+  Name: Lisbet
+  Flags:
+  - Optional
+  UniqueActor: 0133A5:Skyrim.esm
+  PackageData:
+  - 09BB4C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 34
+  Name: Hogni
+  Flags:
+  - Optional
+  UniqueActor: 0284AC:Skyrim.esm
+  VoiceTypes: Null
+- ID: 35
+  Name: Banning
+  Flags:
+  - Optional
+  UniqueActor: 09A7A8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 37
+  Name: Cultist01
+  Flags:
+  - AllowDisabled
+  ForcedReference: 09BB46:Skyrim.esm
+  VoiceTypes: Null
+- ID: 38
+  Name: Cultist02
+  Flags: []
+  ForcedReference: 09BB48:Skyrim.esm
+  VoiceTypes: Null
+- ID: 39
+  Name: ReachcliffEntrance
+  Flags: []
+  ForcedReference: 015EE0:Skyrim.esm
+  VoiceTypes: Null
+- ID: 40
+  Name: MarkarthDoor
+  Flags: []
+  ForcedReference: 07F65E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 41
+  Name: SecretExit
+  Flags: []
+  ForcedReference: 0DAE8E:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,150 @@
+FormKey: 0D0755:Skyrim.esm
+EditorID: MGRitual05
+Version2: 2
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MGRitual05QuestScript
+  - Name: QF_MGRitual05_000D0755
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Dagger
+      Object: 0D0755:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DaggerContainer
+      Object: 0D0755:Skyrim.esm
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DaggerDungeon
+      Object: 0D0755:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Tolfdir
+      Object: 0D0755:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AlterationVendorChest
+      Object: 098BAC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BaneoftheUndead
+      Object: 08C1AB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FXMarker
+      Object: 0D0750:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HeartScales
+      Object: 0D0756:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitual04AugurEndScene
+      Object: 0CD98A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitualAltBook
+      Object: 0FDE73:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Ritual02Spell
+      Object: 0B323E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeDragonskin
+      Object: 0D2B4E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeMassParalysis
+      Object: 0DD646:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonFXActivator
+      Object: 07CD55:Skyrim.esm
+  FileName: QF_MGRitual05_000D0755
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRitual05_000D0755
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MGRitual05_000D0755
+    FragmentName: Fragment_19
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MGRitual05_000D0755
+    FragmentName: Fragment_16
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 65
+Type: MageGuild
+Filter: Faction\Mages Guild\
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: Target
+    Faction: 01F259:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Alteration
+  ComparisonValue: 90
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 14
+Aliases:
+- Name: Tolfdir
+  Flags:
+  - AllowReserved
+  - Protected
+  UniqueActor: 01C19E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Type: Location
+  Name: DaggerDungeon
+  Flags: []
+  Conditions:
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: LocationHasKeywordConditionData
+      Keyword: 0130DB:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: LocationHasKeywordConditionData
+      Keyword: 0130E1:Skyrim.esm
+    ComparisonValue: 1
+  - MutagenObjectType: ConditionFloat
+    Data:
+      MutagenObjectType: LocationHasRefTypeConditionData
+      LocationReferenceType: 0130F8:Skyrim.esm
+    ComparisonValue: 1
+- ID: 12
+  Name: DaggerContainer
+  Flags: []
+  Location:
+    AliasID: 11
+    RefType: 0130F8:Skyrim.esm
+  VoiceTypes: Null
+- ID: 13
+  Name: Dagger
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0D0758:Skyrim.esm
+    AliasID: 12
+    Create: In
+  VoiceTypes: Null

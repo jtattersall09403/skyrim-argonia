@@ -1,0 +1,22 @@
+FormKey: 04BCCC:Skyrim.esm
+VersionControl: 943895
+EditorID: TGHeadquartersScenes
+FormVersion: 39
+Version2: 2
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 05B5A6:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInCellConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Cell: 016BD0:Skyrim.esm
+  ComparisonValue: 1
+Flags: []
+MaxConcurrentQuests: 0

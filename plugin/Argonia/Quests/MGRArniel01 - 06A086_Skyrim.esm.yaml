@@ -1,0 +1,56 @@
+FormKey: 06A086:Skyrim.esm
+VersionControl: 79128
+EditorID: MGRArniel01
+Version2: 11
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MGRArniel01_0006A086
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_ArnielGane
+      Object: 06A086:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DweCog
+      Object: 0AEBF1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardGoldSmall
+      Object: 0494DF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FavorRewardSmall
+      Object: 035215:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRArniel02
+      Object: 06A08D:Skyrim.esm
+  FileName: QF_MGRArniel01_0006A086
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRArniel01_0006A086
+    FragmentName: Fragment_2
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MGRArniel01_0006A086
+    FragmentName: Fragment_0
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 0
+Type: MageGuild
+Filter: Faction\Mages Guild\Radiant\
+Stages:
+- Index: 10
+  Unknown: 4
+  LogEntries:
+  - Flags: []
+- Index: 200
+  Unknown: 4
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 1
+Aliases:
+- Name: ArnielGane
+  Flags: []
+  ForcedReference: 01C1AB:Skyrim.esm
+  VoiceTypes: Null

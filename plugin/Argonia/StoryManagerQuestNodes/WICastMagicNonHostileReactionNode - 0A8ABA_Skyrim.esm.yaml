@@ -1,0 +1,18 @@
+FormKey: 0A8ABA:Skyrim.esm
+VersionControl: 2320141
+EditorID: WICastMagicNonHostileReactionNode
+FormVersion: 37
+Version2: 2
+Parent: 046829:Skyrim.esm
+PreviousSibling: Null
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0A8A86:Skyrim.esm

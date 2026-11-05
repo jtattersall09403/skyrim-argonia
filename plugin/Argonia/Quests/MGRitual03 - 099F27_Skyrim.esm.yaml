@@ -1,0 +1,227 @@
+FormKey: 099F27:Skyrim.esm
+EditorID: MGRitual03
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MGRitual03QuestScript
+  - Name: QF_MGRitual03_00099F27
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_DremoraAlias
+      Object: 099F27:Skyrim.esm
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MGHoldingChest
+      Object: 099F27:Skyrim.esm
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Phinis
+      Object: 099F27:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Player
+      Object: 099F27:Skyrim.esm
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SigilStoneAlias
+      Object: 099F27:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_SummonLocationMarker
+      Object: 099F27:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtrFrgDaedricRecipeChance
+      Object: 10F8B3:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AtrFrgDaedricRecipeChestChance
+      Object: 10F8B9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BladesFaction
+      Object: 072834:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CollegeofWinterholdFaction
+      Object: 01F259:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ConjurationVendorChest
+      Object: 098BA7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DA03BarbasFaction
+      Object: 01C4ED:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitual03LightRef
+      Object: 109732:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitualConjBook
+      Object: 0FDE74:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitualDremoraFaction
+      Object: 0DB386:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: PlayerFaction
+      Object: 000DB1:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Ritual03Spell
+      Object: 099F39:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: sigilStone
+      Object: 0D363B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeDeadThrall
+      Object: 0A26F9:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeFlameThrall
+      Object: 0A26FA:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeFrostThrall
+      Object: 0A26FB:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeStormThrall
+      Object: 0A26FC:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SummonTargetFXActivator
+      Object: 07CD55:Skyrim.esm
+  FileName: QF_MGRitual03_00099F27
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_0
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_1
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_3
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_7
+  - Stage: 50
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_8
+  - Stage: 60
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_9
+  - Stage: 70
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_10
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MGRitual03_00099F27
+    FragmentName: Fragment_5
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 099F27:Skyrim.esm
+      Alias: 6
+    Scripts:
+    - Name: MGRitual03EffectScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: DremoraAlias
+        Object: 099F27:Skyrim.esm
+        Alias: 7
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRDremoraSummon
+        Object: 099F2F:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual03
+        Object: 099F27:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitualSummonMarker
+        Object: 099F77:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRSummonDremora
+        Object: 099F39:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: SummonTargetFXActivator
+        Object: 07CD55:Skyrim.esm
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 65
+Type: MageGuild
+Filter: Faction\Mages Guild\
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: Target
+    Faction: 01F259:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Conjuration
+  ComparisonValue: 90
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 50
+  LogEntries:
+  - Flags: []
+- Index: 60
+  LogEntries:
+  - Flags: []
+- Index: 70
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 10
+Aliases:
+- Name: Phinis
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C199:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: SummonLocationMarker
+  Flags: []
+  ForcedReference: 099F77:Skyrim.esm
+  VoiceTypes: Null
+- ID: 6
+  Name: Player
+  Flags: []
+  UniqueActor: 000007:Skyrim.esm
+  VoiceTypes: Null
+- ID: 7
+  Name: DremoraAlias
+  Flags:
+  - Optional
+  VoiceTypes: Null
+- ID: 8
+  Name: MGHoldingChest
+  Flags:
+  - QuestObject
+  ForcedReference: 0D762E:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: SigilStoneAlias
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 0D363B:Skyrim.esm
+    AliasID: 8
+    Create: In
+  VoiceTypes: Null

@@ -1,0 +1,20 @@
+FormKey: 03372B:Skyrim.esm
+EditorID: MQ101
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_MQ101
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ARGOpening
+      Object: 000801:Argonia.esp
+  FileName: ARG_QF_MQ101
+  Fragments:
+  - ScriptName: ARG_QF_MQ101
+    FragmentName: Fragment_0
+Flags:
+- RunOnce
+Priority: 80
+Type: MainQuest
+Stages:
+- Flags:
+  - StartUpStage

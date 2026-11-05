@@ -1,0 +1,109 @@
+FormKey: 0E1B5A:Skyrim.esm
+VersionControl: 79128
+EditorID: CW00B
+Version2: 12
+VirtualMachineAdapter:
+  Scripts:
+  - Name: CW00BScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW
+      Object: 019E53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW00WindhelmMapTableScene
+      Object: 0E1B36:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW01B
+      Object: 0E2D29:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW01BPlayerHelpItems
+      Object: 0E2D3C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW01BPlayerLevelHelp
+      Object: 0E2D3B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Ulfric
+      Object: 0E1B5A:Skyrim.esm
+      Alias: 2
+  - Name: QF_CW00B_000E1B5A
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Galmar
+      Object: 0E1B5A:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Ulfric
+      Object: 0E1B5A:Skyrim.esm
+      Alias: 2
+  FileName: QF_CW00B_000E1B5A
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_3
+  - Stage: 2
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_2
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_5
+  - Stage: 7
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_9
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_4
+  - Stage: 15
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_7
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_CW00B_000E1B5A
+    FragmentName: Fragment_6
+Flags:
+- 0x10
+- RunOnce
+Priority: 71
+QuestFormVersion: 0
+Type: Misc
+Filter: Civil War\
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 2
+  LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 7
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 15
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 3
+Aliases:
+- ID: 2
+  Name: Ulfric
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 01414D:Skyrim.esm
+  PackageData:
+  - 0E7A2D:Skyrim.esm
+  VoiceTypes: Null
+- Name: Galmar
+  Flags:
+  - ReservesLocationOrReference
+  UniqueActor: 014128:Skyrim.esm
+  VoiceTypes: Null

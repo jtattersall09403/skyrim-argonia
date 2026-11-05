@@ -1,0 +1,23 @@
+FormKey: 08D5DC:Skyrim.esm
+VersionControl: 2320153
+EditorID: DB03JailNode
+FormVersion: 39
+Version2: 5
+Parent: 05BD7A:Skyrim.esm
+PreviousSibling: 10DCD7:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 01EA52:Skyrim.esm
+  ComparisonValue: 20000
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 08D5DA:Skyrim.esm

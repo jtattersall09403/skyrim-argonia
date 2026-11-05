@@ -1,0 +1,22 @@
+FormKey: 10EC64:Skyrim.esm
+VersionControl: 2320157
+EditorID: MQGreybeardCallNode
+FormVersion: 39
+Version2: 1
+Parent: 01379A:Skyrim.esm
+PreviousSibling: 028A4C:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Member: Keyword
+    Record: 10EC62:Skyrim.esm
+  ComparisonValue: 1
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 10EC61:Skyrim.esm

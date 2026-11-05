@@ -1,0 +1,87 @@
+FormKey: 107987:Skyrim.esm
+VersionControl: 5072921
+EditorID: CWMissionQuickStart
+FormVersion: 40
+Version2: 9
+VirtualMachineAdapter:
+  Scripts:
+  - Name: CWMissionQuickstartScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CW
+      Object: 019E53:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CWGarrisonEnableMarkerSonsCampFalkreath
+      Object: 052915:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GalmarRef
+      Object: 01B133:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MilitaryCampFalkreathSonsMapMarker
+      Object: 016282:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MilitaryCampHjaalmarchSonsMapMarker
+      Object: 01627A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MilitaryCampPaleImperialMapMarker
+      Object: 01627B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MilitaryCampReachSonsMapMarker
+      Object: 016276:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MilitaryCampRiftImperialMapMarker
+      Object: 016281:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RikkeRef
+      Object: 0198BB:Skyrim.esm
+  - Name: QF_CWMissionQuickStart_00107987
+  FileName: QF_CWMissionQuickStart_00107987
+  Fragments:
+  - Stage: 32
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_3
+  - Stage: 42
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_1
+  - Stage: 71
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_4
+  - Stage: 72
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_2
+  - Stage: 600
+    Unknown2: 1
+    ScriptName: QF_CWMissionQuickStart_00107987
+    FragmentName: Fragment_5
+Flags:
+- 0x10
+QuestFormVersion: 0
+Filter: Civil War\Mission\
+Stages:
+- Index: 32
+  LogEntries:
+  - Flags: []
+- Index: 42
+  LogEntries:
+  - Flags: []
+- Index: 71
+  LogEntries:
+  - Flags: []
+- Index: 72
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags: []
+- Index: 600
+  LogEntries:
+  - Flags: []
+NextAliasID: 0

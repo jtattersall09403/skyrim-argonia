@@ -1,0 +1,17 @@
+FormKey: 038FB1:Dragonborn.esm
+VersionControl: 5075996
+EditorID: DLC2CultistOrdersQuestObjectHandler
+FormVersion: 43
+Version2: 1
+Flags:
+- 0x10
+- RunOnce
+QuestFormVersion: 49
+Filter: DLC2\Radiant\
+NextAliasID: 1
+Aliases:
+- Name: Note
+  Flags:
+  - Optional
+  - QuestObject
+  VoiceTypes: Null

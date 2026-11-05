@@ -1,0 +1,35 @@
+FormKey: 06B19E:Skyrim.esm
+VersionControl: 5072392
+EditorID: CWActorDialogueSoldiersNode
+FormVersion: 37
+Version2: 3
+Parent: 015FCE:Skyrim.esm
+PreviousSibling: 0BC3EE:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12626
+    Faction: 06B18C:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: EventData
+    RunOnTypeIndex: 12882
+    Faction: 06B18C:Skyrim.esm
+  ComparisonValue: 1
+Flags:
+- Random
+QuestFlags:
+- DoAllBeforeRepeating
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 06A270:Skyrim.esm
+- Quest: 0FC076:Skyrim.esm

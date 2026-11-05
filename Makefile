@@ -2,7 +2,7 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit hooks deploy
+.PHONY: check guard lint unit hooks deploy plugin plugin-check plugin-seed
 
 check: guard lint unit
 	@echo "CHECK GREEN"
@@ -18,6 +18,18 @@ unit:
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
+
+# Our plugin (decision 0018): plugin/Argonia (Spriggit YAML, the source) -> out/Argonia.esp; the check adds the round
+# trip (serialised back, no diff) and the read-back table docs/research/skyrim/argonia-esp-records.md.
+plugin:
+	@bash tools/ArgoniaPlugin/plugin.sh build
+
+plugin-check:
+	@bash tools/ArgoniaPlugin/plugin.sh check
+
+# Regenerate plugin/Argonia from tools/ArgoniaPlugin/shutdown.json and the staged load order's winners.
+plugin-seed:
+	@bash tools/ArgoniaPlugin/plugin.sh seed
 
 # Our plugin and compiled scripts onto the play machine (infra/gpu-box/deploy.sh); run under tooling/job_guard.sh.
 deploy:

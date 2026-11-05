@@ -1,0 +1,174 @@
+FormKey: 0B3233:Skyrim.esm
+EditorID: MGRitual02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: MGRitual02QuestScript
+  - Name: QF_MGRitual02_000B3233
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book1
+      Object: 0B3233:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book2
+      Object: 0B3233:Skyrim.esm
+      Alias: 2
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book3
+      Object: 0B3233:Skyrim.esm
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Book4
+      Object: 0B3233:Skyrim.esm
+      Alias: 4
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Drevis
+      Object: 0B3233:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MGRitualIllBook
+      Object: 0FDE75:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Ritual02Spell
+      Object: 0B323E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeCallToArms
+      Object: 0A271B:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeHarmony
+      Object: 0A271A:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeHysteria
+      Object: 0A271C:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpellTomeMayhem
+      Object: 0A2719:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: VendorChest
+      Object: 098B9F:Skyrim.esm
+  FileName: QF_MGRitual02_000B3233
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MGRitual02_000B3233
+    FragmentName: Fragment_0
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_MGRitual02_000B3233
+    FragmentName: Fragment_1
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 0B3233:Skyrim.esm
+      Alias: 1
+    Scripts:
+    - Name: MGRitual02BookScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: LifeDetected
+        Object: 0D7661:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual02
+        Object: 0B3233:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0B3233:Skyrim.esm
+      Alias: 2
+    Scripts:
+    - Name: MGRitual02BookScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: LifeDetected
+        Object: 0D7661:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual02
+        Object: 0B3233:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0B3233:Skyrim.esm
+      Alias: 3
+    Scripts:
+    - Name: MGRitual02BookScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: LifeDetected
+        Object: 0D7661:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual02
+        Object: 0B3233:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 0B3233:Skyrim.esm
+      Alias: 4
+    Scripts:
+    - Name: MGRitual02BookScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: LifeDetected
+        Object: 0D7661:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: MGRitual02
+        Object: 0B3233:Skyrim.esm
+Flags:
+- 0x10
+Priority: 30
+QuestFormVersion: 65
+Type: MageGuild
+Filter: Faction\Mages Guild\
+DialogConditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetInFactionConditionData
+    RunOnType: Target
+    Faction: 01F259:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetActorValueConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ActorValue: Illusion
+  ComparisonValue: 90
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 5
+Aliases:
+- Name: Drevis
+  Flags:
+  - AllowReserved
+  UniqueActor: 01C198:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Book1
+  Flags:
+  - QuestObject
+  ForcedReference: 0B323A:Skyrim.esm
+  VoiceTypes: Null
+- ID: 2
+  Name: Book2
+  Flags:
+  - QuestObject
+  ForcedReference: 0B323B:Skyrim.esm
+  VoiceTypes: Null
+- ID: 3
+  Name: Book3
+  Flags:
+  - QuestObject
+  ForcedReference: 0B323C:Skyrim.esm
+  VoiceTypes: Null
+- ID: 4
+  Name: Book4
+  Flags:
+  - QuestObject
+  ForcedReference: 0B323D:Skyrim.esm
+  VoiceTypes: Null

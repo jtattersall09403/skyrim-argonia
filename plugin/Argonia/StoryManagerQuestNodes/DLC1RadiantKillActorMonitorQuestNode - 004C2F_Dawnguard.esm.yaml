@@ -1,0 +1,19 @@
+FormKey: 004C2F:Dawnguard.esm
+VersionControl: 5468178
+EditorID: DLC1RadiantKillActorMonitorQuestNode
+FormVersion: 43
+Version2: 3
+Parent: 013010:Skyrim.esm
+PreviousSibling: 0EAFA8:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 004C2E:Dawnguard.esm
+- Quest: 0050C1:Dawnguard.esm

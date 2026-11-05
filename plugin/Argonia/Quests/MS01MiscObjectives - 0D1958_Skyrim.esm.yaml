@@ -1,0 +1,57 @@
+FormKey: 0D1958:Skyrim.esm
+VersionControl: 79128
+EditorID: MS01MiscObjectives
+Version2: 7
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_MS01MiscObjectives_000D1958
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Eltrys
+      Object: 0D1958:Skyrim.esm
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_Note
+      Object: 0D1958:Skyrim.esm
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MS01
+      Object: 018B4B:Skyrim.esm
+  FileName: QF_MS01MiscObjectives_000D1958
+  Fragments:
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_MS01MiscObjectives_000D1958
+    FragmentName: Fragment_1
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_MS01MiscObjectives_000D1958
+    FragmentName: Fragment_2
+Flags:
+- 0x10
+Priority: 60
+QuestFormVersion: 0
+Type: Misc
+Filter: Misc\Markarth\
+Stages:
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+NextAliasID: 4
+Aliases:
+- Name: Eltrys
+  Flags:
+  - AllowReserved
+  UniqueActor: 013394:Skyrim.esm
+  VoiceTypes: Null
+- ID: 1
+  Name: Note
+  Flags:
+  - QuestObject
+  - InitiallyDisabled
+  CreateReferenceToObject:
+    Object: 0D1955:Skyrim.esm
+  VoiceTypes: Null

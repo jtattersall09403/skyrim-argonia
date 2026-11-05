@@ -1,0 +1,287 @@
+FormKey: 021556:Skyrim.esm
+VersionControl: 79128
+EditorID: TG00
+Version2: 5
+VirtualMachineAdapter:
+  Scripts:
+  - Name: QF_TG00_00021556
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BrandSheiAlias
+      Object: 021556:Skyrim.esm
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_BrynjolfAlias
+      Object: 021556:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_MadesiAlias
+      Object: 021556:Skyrim.esm
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG00City
+      Object: 021556:Skyrim.esm
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG00HoldingSafe
+      Object: 021556:Skyrim.esm
+      Alias: 15
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG00MadesiChest
+      Object: 021556:Skyrim.esm
+      Alias: 14
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG00PlayerAlias
+      Object: 021556:Skyrim.esm
+      Alias: 16
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Alias_TG00RingAlias
+      Object: 021556:Skyrim.esm
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pBrynjolf
+      Object: 01B07D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pRing
+      Object: 076F12:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00Brandshei
+      Object: 01334F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00Madesi
+      Object: 01B072:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00MaulHandler
+      Object: 064A14:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00Pickpockethelper
+      Object: 10F21E:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00QS
+      Object: 021556:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00SPQuest
+      Object: 020BE7:Skyrim.esm
+  - Name: TG00QuestScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: GameDaysPassed
+      Object: 000039:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00
+      Object: 021556:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00Blood
+      Object: 076F17:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00BrynjolfAlias
+      Object: 021556:Skyrim.esm
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00CWOwner
+      Object: 02A456:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00Gold
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00GuardImperial
+      Object: 07494D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00GuardStormcloak
+      Object: 074954:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00MdesiRing
+      Object: 076F12:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00MiscHandler
+      Object: 0C99EF:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00SP
+      Object: 020BE7:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG00SPArrest
+      Object: 04EF25:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTG01
+      Object: 01F326:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: pTGFailure
+      Object: 020F20:Skyrim.esm
+  FileName: QF_TG00_00021556
+  Fragments:
+  - Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_0
+  - Stage: 5
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_18
+  - Stage: 8
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_14
+  - Stage: 10
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_4
+  - Stage: 20
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_6
+  - Stage: 30
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_8
+  - Stage: 35
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_17
+  - Stage: 40
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_26
+  - Stage: 200
+    Unknown2: 1
+    ScriptName: QF_TG00_00021556
+    FragmentName: Fragment_10
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 021556:Skyrim.esm
+      Alias: 9
+    Scripts:
+    - Name: tg00ringscript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00Brandish
+        Object: 021556:Skyrim.esm
+        Alias: 10
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00Quest
+        Object: 021556:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00QuestScript
+        Object: 021556:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 021556:Skyrim.esm
+      Alias: 10
+    Scripts:
+    - Name: TG00BrandsheiScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00Quest
+        Object: 021556:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 021556:Skyrim.esm
+      Alias: 11
+    Scripts:
+    - Name: TG00MdesiScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00Quest
+        Object: 021556:Skyrim.esm
+  - Property:
+      Name: ''
+      Object: 021556:Skyrim.esm
+      Alias: 16
+    Scripts:
+    - Name: TG00PlayerScript
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pRiften
+        Object: 018A58:Skyrim.esm
+      - MutagenObjectType: ScriptObjectProperty
+        Name: pTG00Quest
+        Object: 021556:Skyrim.esm
+Flags:
+- 0x10
+Priority: 70
+QuestFormVersion: 0
+Type: ThievesGuild
+Filter: Faction\ThievesGuild\
+Stages:
+- LogEntries:
+  - Flags: []
+- Index: 5
+  LogEntries:
+  - Flags: []
+- Index: 8
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+- Index: 30
+  LogEntries:
+  - Flags: []
+- Index: 35
+  LogEntries:
+  - Flags: []
+- Index: 40
+  LogEntries:
+  - Flags: []
+- Index: 200
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+NextAliasID: 17
+Aliases:
+- ID: 13
+  Type: Location
+  Name: TG00City
+  Flags: []
+  SpecificLocation: 018A58:Skyrim.esm
+- ID: 14
+  Name: TG00MadesiChest
+  Flags: []
+  ForcedReference: 076F14:Skyrim.esm
+  VoiceTypes: Null
+- ID: 15
+  Name: TG00HoldingSafe
+  Flags:
+  - AllowReserved
+  ForcedReference: 0C0BDA:Skyrim.esm
+  VoiceTypes: Null
+- ID: 9
+  Name: TG00RingAlias
+  Flags: []
+  ForcedReference: 0CDF65:Skyrim.esm
+  VoiceTypes: Null
+- ID: 5
+  Name: BrynjolfAlias
+  Flags:
+  - AllowReserved
+  UniqueActor: 01B07D:Skyrim.esm
+  PackageData:
+  - 035595:Skyrim.esm
+  - 08C45A:Skyrim.esm
+  - 08C45B:Skyrim.esm
+  - 0352FD:Skyrim.esm
+  - 020F1A:Skyrim.esm
+  - 0D33C2:Skyrim.esm
+  - 0D33C1:Skyrim.esm
+  VoiceTypes: Null
+- ID: 10
+  Name: BrandSheiAlias
+  Flags:
+  - Essential
+  UniqueActor: 01334F:Skyrim.esm
+  PackageData:
+  - 076F18:Skyrim.esm
+  VoiceTypes: Null
+- ID: 11
+  Name: MadesiAlias
+  Flags:
+  - Essential
+  UniqueActor: 01B072:Skyrim.esm
+  VoiceTypes: Null
+- ID: 16
+  Name: TG00PlayerAlias
+  Flags: []
+  ForcedReference: 000014:Skyrim.esm
+  VoiceTypes: Null

@@ -1,0 +1,25 @@
+FormKey: 0DEE94:Skyrim.esm
+VersionControl: 5071385
+EditorID: WITavernQuestNodeSHARES
+FormVersion: 34
+Version2: 1
+Parent: 01320E:Skyrim.esm
+PreviousSibling: 039FBD:Skyrim.esm
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetGlobalValueConditionData
+    Global: 000800:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetEventDataConditionData
+    Function: HasKeyword
+    Member: NewLocation
+    Record: 01CB87:Skyrim.esm
+  ComparisonValue: 1
+QuestFlags:
+- SharesEvent
+MaxConcurrentQuests: 0
+Quests:
+- Quest: 0DEE92:Skyrim.esm
