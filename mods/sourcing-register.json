@@ -387,15 +387,6 @@
   "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
  },
  {
-  "name": "PACE (Nexus 27268)",
-  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/27268?tab=files&file_id=115123",
-  "version": "1.0.2 (archive sha256 9d11cfc9432c..., mods/dependencies.json row pace)",
-  "licence": "not read",
-  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): PACE combat AI (collection xyf1u3)",
-  "linked_or_forked_by": "none: depended on as the player's own download",
-  "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
- },
- {
   "name": "SmoothCam (Nexus 41252)",
   "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/41252?tab=files&file_id=813109",
   "version": "1.8.1 (archive sha256 efed5592257a..., mods/dependencies.json row smoothcam)",
@@ -511,5 +502,32 @@
   "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): claw animations for SkySA (collection xyf1u3)",
   "linked_or_forked_by": "none: depended on as the player's own download",
   "notes": "permission: Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission."
+ },
+ {
+  "name": "Community Shaders",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/86492",
+  "version": "1.9.1",
+  "licence": "GPL-3.0",
+  "used_by": "the play profile (player-downloaded dependency)",
+  "linked_or_forked_by": "none",
+  "notes": "shaders over the whole game, default features; the height-fog add-on not laid"
+ },
+ {
+  "name": "dTry Plugin Updates: Stop On Slash",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/85740",
+  "version": "2.2.1",
+  "licence": "GPL-3.0 with a modding exception",
+  "used_by": "the play profile (player-downloaded dependency)",
+  "linked_or_forked_by": "none",
+  "notes": "Stop On Slash's DLL for 1.7.x"
+ },
+ {
+  "name": "dTry Plugin Updates: Elden Counter",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/85740",
+  "version": "1.0.4",
+  "licence": "GPL-3.0 with a modding exception",
+  "used_by": "the play profile (player-downloaded dependency)",
+  "linked_or_forked_by": "none",
+  "notes": "Elden Counter's DLL for 1.7.x"
  }
 ]

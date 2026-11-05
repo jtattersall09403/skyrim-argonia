@@ -29,8 +29,9 @@ The combat group is Nexus collection xyf1u3 "Soulsborne Combat"
 (https://www.nexusmods.com/games/skyrimspecialedition/collections/xyf1u3), one row per mod, with these changes
 for 1.7.104: DAR is replaced by Open Animation Replacer (it reads DAR folders), Nemesis by Pandora, Address
 Library is v13 for 1.7.104, AMR and Payload Interpreter carry their 1.7.104 DLL rebuilds, USSEP is the current
-4.3.9c. Stop On Slash and Elden Counter are AE-era DLLs: confirm each loads on 1.7.104 (`stack.py menu` lists
-every DLL's load) or find the 1.7.x build.
+4.3.9c. Stop On Slash and Elden Counter carry AE-era DLLs, replaced by their dTry Plugin Updates rebuilds (Nexus 85740,
+version-independent; the next row after each). PACE is dropped: its DLL needs 1.5.97. Community Shaders runs at its
+default features; its Exponential Height Fog add-on is not laid. `stack.py menu` lists every DLL's load at the menu.
 
 ## Shutting vanilla down
 

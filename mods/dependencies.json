@@ -60,10 +60,6 @@
    "mod": "mcm-helper"
   },
   {
-   "file": "PACE.esl",
-   "mod": "pace"
-  },
-  {
    "file": "SkyUI_SE.esp",
    "mod": "skyui"
   },
@@ -746,6 +742,54 @@
    "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
+   "id": "community-shaders",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 86492,
+    "file": 810029
+   },
+   "name": "Community Shaders",
+   "author": "Community Shaders Team",
+   "version": "1.9.1",
+   "archive": "Community Shaders 86492 1.9.1 2026-09-24T12-49Z lNkz9LIZ8.zip",
+   "size_kb": 44085,
+   "why": "the look over BM&V's world and every mod: improved lighting, shadows, screen-space effects, water and grass lighting, at its default features (owner, 2026-11-05). Needs Engine Fixes (EngineFixes.dll, already a core row). Its separate Exponential Height Fog add-on is NOT laid: with it the 2026-11-03 sky went to a grey veil. The first launch builds the shader cache once (about 11 minutes per machine, 2026-11-04).",
+   "required": true,
+   "profile": "play",
+   "sha256": "21daeba464bcbc6ee90f5bbf6d8bd17a0ad2b024cc406ba8a6ee216fc7679fcb",
+   "licence": "GPL-3.0 (github community-shaders/skyrim-community-shaders)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "Nexus description 'Open Source (GPL-3.0)'; gh GPL-3.0",
+   "runtime": "loads on 1.7.104.0 (CommunityShaders.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "files": [
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_ExponentialHeightFog.json",
+     "text": "{\n \"enabled\": 1,\n \"disableVanillaFog\": 0,\n \"respectVanillaFogFade\": 1,\n \"originalFogColorAmount\": 1.0,\n \"fogHeight\": 0.0,\n \"fogHeightFalloff\": 0.2,\n \"fogDensity\": 0.0,\n \"startDistance\": 0.0,\n \"directionalInscatteringAnisotropy\": 0.6,\n \"directionalInscatteringMultiplier\": 1.0,\n \"volumetricFogEnabled\": 0,\n \"volumetricFogDistance\": 20000.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Round 5 ruling (2026-11-03, the sky bisect on Paris): this feature is OFF (neutered) until it is authored within measured bounds: with it and the volumetric lighting on, the sky was a grey veil with no clouds and dawn a cream wash; with both off the clouds returned and the dawn cast went grey; a residual grey from another Community Shaders feature remains to bisect. Community Shaders' Exponential Height Fog at the feature's shipped defaults (density 0.005, falloff 0.2, startDistance 0, fogHeight 0; ExponentialHeightFog.h), volumetric on and lit by the weather's own fog slots. Argonia's low mist comes from the weather records' fog near/far, not this shader; round 5 removed the 20x density and the 30 falloff that veiled the sky (sky A/B, 2026-11-03). No per-weather files: absent, the global applies\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_VolumetricLighting.json",
+     "text": "{\n \"ExteriorEnabled\": false,\n \"ExteriorQuality\": 1,\n \"InteriorEnabled\": true,\n \"InteriorQuality\": 1,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Round 5 ruling (2026-11-03, the sky bisect on Paris): this feature is OFF (neutered) until it is authored within measured bounds: with it and the volumetric lighting on, the sky was a grey veil with no clouds and dawn a cream wash; with both off the clouds returned and the dawn cast went grey; a residual grey from another Community Shaders feature remains to bisect. God rays and light shafts through canopy haze (vibe-01, vibe-06). Medium quality, not High: the quality is the 3D scattering texture size (High is 320x192x90 froxels), so Medium keeps the cost flat while shafts still show; raise only if the dawn stills show banding\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_CloudShadows.json",
+     "text": "{\n \"Opacity\": 0.5,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Cloud shadows drifting over the marsh at the CS default 0.5 (range 0-4; higher is darker): moving dapple at vanilla-range contrast, one texture sample per pixel so no cost cliff; kept explicit so a stack change cannot darken it\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_TerrainShadows.json",
+     "text": "{\n \"EnableTerrainShadow\": true,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Long hill shadows at dawn and dusk (montane haze belt). It reads a baked height map per worldspace (textures/heightmaps) and does nothing where none exists, so it costs nothing in the marsh until Argonia ships a height map of its own; no tunable beyond on/off in 1.9.1\"\n }\n}\n"
+    },
+    {
+     "path": "SKSE/Plugins/CommunityShaders/Overrides/Argonia_GrassLighting.json",
+     "text": "{\n \"Glossiness\": 20.0,\n \"SpecularStrength\": 0.3,\n \"SubsurfaceScatteringAmount\": 1.0,\n \"_metadata\": {\n  \"modName\": \"Argonia\",\n  \"version\": \"1.15\",\n  \"enabled\": true,\n  \"description\": \"Backlit grass and reed glow so shafts land on a living ground: SSS amount 1.0 (CS default) and glossiness 20 (default), specular strength 0.3 under the 0.5 default so wet marsh grass does not glitter; pixel-shader terms only, no extra pass\"\n }\n}\n"
+    }
+   ]
+  },
+  {
    "id": "bmv",
    "group": "world",
    "source": {
@@ -1095,35 +1139,6 @@
    "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
-   "id": "pace",
-   "group": "combat",
-   "source": {
-    "nexus": "skyrimspecialedition",
-    "mod": 27268,
-    "file": 115123
-   },
-   "name": "PACE",
-   "author": "CryoFox64",
-   "version": "1.0.2",
-   "archive": "PACE-27268-1-0-2-1575416552.zip",
-   "size_kb": 304,
-   "why": "PACE combat AI (collection xyf1u3)",
-   "required": true,
-   "profile": "play",
-   "sha256": "9d11cfc9432c1f5d897ac05adbaa9f2326860640a4cbd12a36920a4d9cad53fe",
-   "licence": "not read",
-   "permission_summary": "Not read yet; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
-   "ai_clause": "not read",
-   "permission_ask": true,
-   "permission_evidence": "not read (row added 2026-11-05 from collection xyf1u3)",
-   "runtime": "not checked on 1.7.104.0",
-   "conflicts": "not checked",
-   "linked_or_forked_by": "none: depended on as the player's own download",
-   "plugins": [
-    "PACE.esl"
-   ]
-  },
-  {
    "id": "smoothcam",
    "group": "combat",
    "source": {
@@ -1194,7 +1209,7 @@
    "version": "2.2",
    "archive": "Stop On Slash - AE-66155-2-2-1651316809.7z",
    "size_kb": 313,
-   "why": "hitstop and screenshake (collection xyf1u3)",
+   "why": "hitstop and screenshake (collection xyf1u3) The DLL is replaced by its dTry rebuild (the next row).",
    "required": true,
    "profile": "play",
    "sha256": "9b60faf77d074c964256c2b83be178591a7954e1e180d5439a8f99967f90eb2d",
@@ -1206,10 +1221,31 @@
    "runtime": "not checked on 1.7.104.0",
    "conflicts": "not checked",
    "linked_or_forked_by": "none: depended on as the player's own download",
-   "check": "AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build",
    "plugins": [
     "StopOnSlash.esp"
    ]
+  },
+  {
+   "id": "stop-on-slash-1.7",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 85740,
+    "file": 794626
+   },
+   "name": "dTry Plugin Updates: Stop On Slash 2.2.1",
+   "author": "dTry",
+   "version": "2.2.1",
+   "why": "Stop On Slash's DLL rebuilt on CommonLibSSE-NG (version-independent), overwriting the AE-era DLL by name (docs/research/mods/phase1-unknowns.md); confirm it loads on 1.7.104 in SKSE's log",
+   "required": true,
+   "profile": "play",
+   "sha256": "3473e334e294a59f3a49bdac9b4151261b6ba2234abf06ec60e0d3c79b963be9",
+   "licence": "GPL-3.0 with a modding exception (dTry Plugin Updates)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence governs",
+   "permission_ask": false,
+   "archive": "Stop On Slash 85740 2.2.1 2026-08-24T21-04Z MWx0rvRNV.zip",
+   "size_kb": 5351
   },
   {
    "id": "ammco",
@@ -1388,7 +1424,7 @@
    "version": "1.6",
    "archive": "Elden Counter-65579-1-6-1650933767.7z",
    "size_kb": 870,
-   "why": "counter-attack window after a block (collection xyf1u3)",
+   "why": "counter-attack window after a block (collection xyf1u3) The DLL is replaced by its dTry rebuild (the next row).",
    "required": true,
    "profile": "play",
    "sha256": "c9ad30fc99680f29bcda6f2af9135161428d610d012bdd93874ed671d6cd9c79",
@@ -1400,10 +1436,31 @@
    "runtime": "not checked on 1.7.104.0",
    "conflicts": "not checked",
    "linked_or_forked_by": "none: depended on as the player's own download",
-   "check": "AE-era DLL; confirm it loads on 1.7.104 or find the 1.7.x build",
    "plugins": [
     "EldenCounter.esp"
    ]
+  },
+  {
+   "id": "elden-counter-1.7",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 85740,
+    "file": 794613
+   },
+   "name": "dTry Plugin Updates: Elden Counter 1.0.4",
+   "author": "dTry",
+   "version": "1.0.4",
+   "why": "Elden Counter's DLL rebuilt on CommonLibSSE-NG (version-independent), overwriting the AE-era DLL by name (docs/research/mods/phase1-unknowns.md); confirm it loads on 1.7.104 in SKSE's log",
+   "required": true,
+   "profile": "play",
+   "sha256": "10d3509bb8836dfafdc3a509132792268c7b4a98cd7108e35b4316f4a037bf8c",
+   "licence": "GPL-3.0 with a modding exception (dTry Plugin Updates)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence governs",
+   "permission_ask": false,
+   "archive": "Elden Counter 85740 1.0.4 2026-08-24T20-58Z GkqKVMY7i.zip",
+   "size_kb": 5234
   },
   {
    "id": "rapier-skysa",
