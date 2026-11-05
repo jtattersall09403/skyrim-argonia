@@ -10,3 +10,7 @@ four deep faction lines, then the standard ones and the detectives' faction
 band; items. Each milestone is one owner test.
 
 - **Loop**: design the loop architectures that agents should follow in these phases that you author at this point. e.g. from earlier phases: "read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner."
+- **The wider minor questlines (placeholder, owner 2026-11-05).** After the authored lines are built, a build-out of new
+  minor, regional and standalone quests for BM&V's places towards Morrowind's density (old design target: about 20
+  quests per km²), planned at this point from what Phase 2's capacity measure and ledger show is free; written with the
+  same skills and the same whole-set checks so they never clash with the authored lines.

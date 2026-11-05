@@ -1,11 +1,11 @@
-# Phase 2: the first act on paper, and the block set it needs
+# Phase 2: the first act on paper, the whole quest system adapted to BM&V, and the block set it needs
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
 
 The act is written before any block is built, so the blocks are the ones the story needs and no more (owner,
 2026-11-05). Nothing is built in game in this phase.
 
-- **Review the opening act as authored** - review the opening act of the main quest in detail and the overall shape of it at a higher level, against the mined place records from phase 1. We may make minor changes to the BM&V world (e.g. placing new objects or getting rid of old ones, adding/removing/changing NPCs, adding/removing creatures, scripting existing things differently...etc) but not major changes. So we will need to adapt our main quest to keep the *spirit* of it and each of its acts, whilst adapting the *detail* to work with (a minorly-edited/added to version of) the BM&V world.
+- **Review the opening act as authored** - review the opening act of the main quest in detail and the overall shape of the entire main questline at a higher level, against the mined place records from phase 1. We may make minor changes to the BM&V world (e.g. placing new objects or getting rid of old ones, adding/removing/changing NPCs, adding/removing creatures, scripting existing things differently...etc) but not major changes. So we will need to adapt our main quest to keep the *spirit* of it and each of its acts, whilst adapting the *detail* to work with (a minorly-edited/added to version of) the BM&V world.
 - **Write the act as quest records.** The opening (prisoner work detail, the attack, the Veiled Reed) and the main
   quest's first three or four quests, through `quest-write` and `quest-review`, from the story data and the census's
   BM&V mappings. Records only: hidden truth, cast, things, clues, actions, stages, endings, topics. Dialogue is
@@ -39,6 +39,48 @@ The act is written before any block is built, so the blocks are the ones the sto
 - **Owner test:** none in game. The act outline and the block list go to the owner as one issue to read and rule
   on: a short summary of each quest, what changed from the authored design and why, and the block list with the
   induction note.
+
+## The whole quest system on BM&V (owner, 2026-11-05)
+
+Not only the main quest: every authored questline and quest (in the story data: 717 quests in 16 lines, 33
+factions; the detectives' faction of decision 0025 included) is reviewed against BM&V's whole world (all four plugins,
+after the full census) and adapted to it, keeping the spirit of each line, with minor edits to the world where they
+serve. Minor questlines are adapted or dropped; the wider build-out of new minor quests is Phase 5's. The set of
+adaptations works as one consistent whole: it is designed once across everything, never quest by quest.
+
+The method, in order:
+
+1. **Inventory.** Every line and quest, its status (live, skeleton, proposed), region, settlement, faction and links
+   (prerequisites, successors, shared cast, shared places, exclusivities).
+2. **The spirit of each line, written down first.** For each line and each quest of it: what it is about (the promise
+   to the player, the emotional and thematic core, the signature beats and the faction's identity), and which details
+   are free to change. The source designs in `story/design/quests/` and the lore are the authority. Nothing is changed
+   yet.
+3. **The world's capacity, measured.** From the census: each BM&V settlement, region and dungeon with what it can host
+   (people, interiors, faction seats, danger band, travel links), and what each line needs of the world.
+4. **One allocation across all lines at once.** Every line gets its hubs (faction seats, quest-givers' homes), its
+   places and its cast in BM&V's world, chosen together so no two lines compete for the same place, person or role
+   unless the design wants them to meet; danger rises along each line as the fixed bands allow (decision 0035); the
+   travel between a line's places fits BM&V's roads and boats.
+5. **One adaptation ledger.** In the story data: per quest a verdict (keep, adapt, merge, drop), its adapted premise
+   and host places; and one world-edit ledger (each edit once: an NPC added, moved or removed, a reference placed or
+   disabled, a creature or boss, a changed BM&V record), linked to every quest that needs it. Act I's four records
+   join the ledger like every other quest.
+6. **Checks over the whole set, by code** (a checker run in `make check`): every kept quest lands on a place that
+   exists or a ledgered edit; no edit undoes what another quest needs (a person removed by one and used by another,
+   a place repurposed twice); faction exclusivities and the prerequisite graph still hold and have no cycles; danger
+   rises along each line; no settlement is over capacity; every call cites the lore or the extrapolation (0032); no
+   Nordic element (0006) and nothing levelled (0035).
+7. **Critical reviewers, independent and briefed with the files only:** one per line (does the adapted line keep its
+   spirit?), one across all lines (clashes, repetition, tone, the world's consistency) and one for the lore.
+8. **The loop:** the reviewers' and the checker's findings are fixed in the allocation and the ledger as one batch,
+   never one quest at a time; then the checker runs and fresh reviewers read the whole set again. The loop ends when a
+   full round, checker and every reviewer, raises nothing blocking.
+9. **The block set covers the whole story.** The mechanics every adapted line needs are mapped to the block set; any
+   mechanic outside it gets a new block with its Skyrim.esm precedent (or the quest is re-authored), so Phase 3 proves
+   the blocks the whole story uses, not only Act I's.
+10. **The owner's read:** a summary per line (what it keeps, what changed and why, its new home in BM&V) on one issue;
+    nothing waits on it.
 
 ## Done (2026-11-05)
 

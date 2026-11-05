@@ -28,6 +28,11 @@ added here the day they are made, with the date and the issue.
   free Creation Club files' self-starting quests are stopped like vanilla's; our plugin ships `Argonia.ini` to blank
   the race-menu bound-hands pose, as Live Another Life does; the opening marker stands on Lilmoth's pier, a dock
   arrival; the Creation Kit EULA was accepted with the owner's OK.
+- Phase 2 adapts the entire quest system and every faction line to BM&V's world (minor world edits allowed), keeping
+  each line's spirit, designed once as a consistent whole with no clashes; minor lines adapted or dropped; a wider
+  minor-quest build-out is a Phase 5 placeholder (2026-11-05).
+- BM&V is used whole, all four plugins and every file of both ModDB parts; all of it goes through the census and the
+  map (2026-11-05).
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small
