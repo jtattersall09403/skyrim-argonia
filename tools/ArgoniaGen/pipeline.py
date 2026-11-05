@@ -181,6 +181,19 @@ def build_tool():
     run("dotnet", "build", PROJ, "-c", "Release", "-nologo", "-v", "q", capped=True)
 
 
+SCAN_OUTS = ("vanilla-scan.json", "pieces-index.json", "ltex-scan.json")
+
+
+def scans_key(data: Path) -> str:
+    """The scans' inputs: the load order's plugins, the BSAs and the mesh lists (name, size, mtime: the masters are
+    large) and the generator that reads them (its sources, as _gen_key)."""
+    sys.path.insert(0, str(ROOT))
+    from tools.argonia_world.intermediate import load_order
+    order = load_order(data)
+    files = [data / p for p in order] + sorted(data.glob("*.bsa")) + sorted((data / "argonia-mesh-lists").glob("*.txt"))
+    return _files_key("scans", ",".join(order), _stat_key(*files), _gen_key())
+
+
 def scans(data: Path):
     """The vanilla scan and the piece index, remade only when the load order or a plugin changed."""
     sys.path.insert(0, str(ROOT))
@@ -823,9 +836,9 @@ def plugin(force: bool = False, world: bool = True) -> int:
             return 0
     PLUGIN_STAMP.unlink(missing_ok=True)
     TIMES.clear()
-    with stage("tool", None):
+    with stage("tool", _gen_key(), GEN, GEN.with_suffix(".dll")):
         build_tool()
-    with stage("scans", None):
+    with stage("scans", scans_key(data), *(OUT / f for f in SCAN_OUTS)):
         scans(data)
     master_world(data, rebuild=world)  # first: Argonia.esm's place cells override its cells
     esm, yaml = generate(data, OUT / "build", frozen=False, keyed=True)

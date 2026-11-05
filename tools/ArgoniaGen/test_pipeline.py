@@ -246,3 +246,47 @@ def test_ground_stamp_walk_misses_place_build_and_reaches_ground_seat():
         walked = {str(f.relative_to(pipeline.ROOT)) for f in pipeline.walk_imports(pipeline.STAGE_ENTRY[stage])}
         assert "tools/argonia_world/place_build.py" not in walked, stage
     assert "tools/argonia_world/ground_seat.py" in walked
+
+
+def test_tool_and_scans_stages_skip_when_current(tmp_path, monkeypatch):
+    """The tool and scans stages are keyed: a second run with unchanged inputs skips, a changed input re-runs."""
+    import os
+    proj, data = tmp_path / "proj", tmp_path / "Data"
+    (data / "argonia-mesh-lists").mkdir(parents=True)
+    proj.mkdir()
+    (proj / "A.cs").write_text("class A {}")
+    (proj / "ArgoniaGen.csproj").write_text("<P/>")
+    (data / "Skyrim.esm").write_bytes(b"m")
+    (data / "m.bsa").write_bytes(b"b")
+    gen = proj / "ArgoniaGen"
+    gen.write_bytes(b"bin")
+    gen.with_suffix(".dll").write_bytes(b"dll")
+    monkeypatch.setattr(pipeline, "PROJ", proj)
+    monkeypatch.setattr(pipeline, "GEN", gen)
+    monkeypatch.setattr(pipeline, "STAGE_DIR", tmp_path / "stages")
+    monkeypatch.setattr(pipeline, "OUT", tmp_path / "out")
+    (tmp_path / "out").mkdir()
+    from tools.argonia_world import intermediate
+    monkeypatch.setattr(intermediate, "load_order", lambda d: ["Skyrim.esm"])
+    outs = [tmp_path / "out" / f for f in pipeline.SCAN_OUTS]
+
+    def go():
+        ran = {}
+        with pipeline.stage("tool", pipeline._gen_key(), gen, gen.with_suffix(".dll")) as st:
+            ran["tool"] = st.run
+        with pipeline.stage("scans", pipeline.scans_key(data), *outs) as st:
+            ran["scans"] = st.run
+            if st.run:
+                for o in outs:
+                    o.write_text("{}")
+        return ran
+
+    assert go() == {"tool": True, "scans": True}
+    assert go() == {"tool": False, "scans": False}
+    (proj / "A.cs").write_text("class A { int x; }")
+    assert go() == {"tool": True, "scans": True}           # the generator moved: both re-run
+    (data / "m.bsa").write_bytes(b"bb")
+    os.utime(data / "m.bsa", (1, 1))
+    assert go() == {"tool": False, "scans": True}          # a scanned input moved: only scans
+    outs[0].unlink()
+    assert go() == {"tool": False, "scans": True}          # an output is gone
