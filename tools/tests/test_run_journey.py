@@ -20,7 +20,7 @@ class Fake:
     def __init__(self, crash_on=None):
         self.x, self.crash_on, self.lines = 0.0, crash_on, []
 
-    def call(self, cmd, *args):
+    def call(self, cmd, *args, timeout=None):
         if cmd == self.crash_on:
             raise GameDown("SkyrimSE is not running; crash log crash-1.log")
         if cmd == "player":
@@ -947,3 +947,49 @@ def test_an_arrive_failure_skips_its_groups_nav_steps(tmp_path):
     assert [n for n, s in by.items() if s.get("skipped")] == ["a00-nav-0", "a00-nav-1"]
     assert by["a01-arrive"]["passed"] and "skipped" not in by["a01-nav-0"]
     assert rep["reason"].startswith("1 of 3 steps failed, first: a00-arrive: ")
+
+
+HUNG = "console: main thread did not run the task within 3000 ms"
+
+
+def test_hung_game_ends_the_journey_as_game_down(tmp_path):
+    """The bridge answers but the main thread runs nothing: the step's timeout and the probe both fail -> GAME DOWN (hung)."""
+    fake = Fake()
+    real = fake.call
+
+    def hung(cmd, *args, timeout=None):
+        if cmd == "console" and args[0] != "IsPC1stPerson" or (cmd == "console" and args[0] == "IsPC1stPerson" and getattr(fake, "stuck", False)):
+            fake.stuck = True
+            raise BridgeError(HUNG)
+        return real(cmd, *args)
+    fake.call = hung
+    rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [{"name": "a", "do": [{"console": "x"}]}, WALK]), "base")
+    assert not rep["passed"] and rep["crash"].startswith("GAME DOWN (hung):")
+
+
+def test_one_timeout_then_a_run_is_not_hung(tmp_path):
+    fake = Fake()
+    real, n = fake.call, [0]
+
+    def once(cmd, *args, timeout=None):
+        if cmd == "console" and args[0] == "x":
+            n[0] += 1
+            raise BridgeError(HUNG)
+        return real(cmd, *args)
+    fake.call = once
+    rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [{"name": "a", "do": [{"console": "x"}]}]), "base")
+    assert not rep["passed"] and not rep.get("crash")
+
+
+def test_scene_load_timeout_probes_and_finds_it_hung(tmp_path):
+    fake = Fake()
+    real = fake.call
+
+    def dead(cmd, *args, timeout=None):
+        if cmd == "load" or (cmd == "console" and args[0] == "IsPC1stPerson" and getattr(fake, "stuck", False)):
+            fake.stuck = True
+            raise BridgeError("scene load: main thread did not run the task within 30000 ms")
+        return real(cmd, *args)
+    fake.call = dead
+    rep = rj.Runner(fake, tmp_path / "out").run(journey(tmp_path, [WALK]), "base")
+    assert not rep["passed"] and rep["crash"].startswith("GAME DOWN (hung):")

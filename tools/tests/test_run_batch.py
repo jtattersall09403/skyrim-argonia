@@ -38,6 +38,7 @@ class Fake:
 
     def launch(self, fresh=False):
         self.launches += 1
+        self.hung, self.launches_after = False, self.launches
         self.alive, self.mb = True, 2500
         return {"ping": {}}
 
@@ -54,6 +55,10 @@ class Fake:
             return {"last": 1, "events": []} if args else {"last": 1}
         if cmd == "console":
             self.lines.append(args[0])
+            if args[0] == "wedge":
+                self.hung = True
+            if getattr(self, "hung", False):
+                raise BridgeError("console: main thread did not run the task within 3000 ms")
             if args[0] == "boom":
                 self.alive = False
                 raise GameDown("SkyrimSE is not running; crash log crash-1.log")
@@ -295,3 +300,12 @@ def test_done_marker_per_journey_and_the_hook_runs_detached(tmp_path, journeys, 
     assert marks[0]["stills"][0]["step"] == "ok" and marks[0]["scans"] == []
     assert [a[:3] for a, _ in started] == [["python3", "reader.py", "--x"]] * 2 and all(d for _, d in started)
     assert started[0][0][3].endswith("done.json") and len(s["items"]) == 2
+
+
+def test_hung_game_is_killed_and_relaunched_before_the_next_item(tmp_path, journeys):
+    import yaml
+    (rb.JOURNEYS / "wedge.yaml").write_text(yaml.safe_dump({"id": "wedge", "runner": 1, "scene": "sc",
+                                                         "steps": [{"name": "stuck", "do": [{"console": "wedge"}]}]}))
+    f, s, _ = run(tmp_path, ["wedge", "good"])
+    assert s["items"][0]["crash"] and s["items"][0]["reason"].startswith("GAME DOWN (hung)")
+    assert s["items"][1]["passed"] and s["items"][1]["relaunched_before"] and f.launches == 2

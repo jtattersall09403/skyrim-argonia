@@ -228,6 +228,7 @@ class Batch:
         self.sent: dict = {}  # scenes already on the machine (run_journey's Runner skips an unchanged re-put)
         self.summary = {"id": batch["id"], "out": str(out), "items": [], "launches": [], "passed": False}
         self.since_launch = 0
+        self.hung = False  # the last journey ended "GAME DOWN (hung)": the process is alive but dead; kill and relaunch
 
     def write(self):
         self.out.mkdir(parents=True, exist_ok=True)
@@ -240,7 +241,7 @@ class Batch:
             try:
                 self.b.launch()
                 self.summary["launches"].append({"why": why, "seconds": round(self.clock() - t, 1), "attempt": attempt})
-                self.since_launch = 0
+                self.since_launch, self.hung = 0, False
                 return True
             except BridgeError as e:
                 self.summary["launches"].append({"why": why, "seconds": round(self.clock() - t, 1), "attempt": attempt,
@@ -248,6 +249,8 @@ class Batch:
         return False
 
     def need_relaunch(self, mb: float | None) -> str | None:
+        if self.hung:
+            return "GAME DOWN (hung): the last item ended with the main thread not running tasks"
         if mb is None:
             return "the game is not running"
         if mb > self.batch["relaunch_mb"]:
@@ -272,6 +275,9 @@ class Batch:
         rep = runner.run(j, save, load=load, skip=(plan or {}).get("skip"),
                          **({"start": start, "only": only} if start else {}))
         rep["_out"] = str(out)
+        self.hung = str(rep.get("crash") or "").startswith("GAME DOWN (hung)")
+        if self.hung:
+            print(f"{it['id']}: GAME DOWN (hung): the batch relaunches the game before the next item", flush=True)
         for r in rep.get("relaunches", []):  # a camera relaunch inside the journey is a launch of the batch too
             self.summary["launches"].append({"why": f"camera relaunch in {it['id']}#{r['step']}", "seconds": r.get("seconds", 0.0),
                                              "attempt": 1, **({"error": r["error"]} if r.get("error") else {})})

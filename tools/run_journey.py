@@ -1016,6 +1016,11 @@ class Runner:
         except (BridgeError, StepFailed) as e:
             rep["failed_at"] = rep.get("failed_at") or "scene"
             rep["error"] = str(e)
+            if "did not run the task" in str(e):   # a scene load that times out: one probe, hung or just busy
+                try:
+                    self._probe_hung(e)
+                except GameDown as g:
+                    rep["crash"] = str(g)
         if not rep["passed"]:
             rep["logs"] = fetch_failure_logs(self.b, self.out, crash=bool(rep.get("crash")))
         rep["seconds"] = round(time.monotonic() - t0, 1)
@@ -1024,6 +1029,24 @@ class Runner:
             rep["relaunches"] = self.relaunches
         (self.out / "report.json").write_text(json.dumps(rep, indent=1))
         return rep
+
+    HUNG_PROBE_S = 10   # the one trivial main-thread task that tells a hung game from a busy one
+
+    def _probe_hung(self, err) -> None:
+        """A bridge task met "main thread did not run the task": probe once more with a trivial console read and a
+        10 s wait. When that does not run either the game is hung (the bridge answers, the main thread never runs a
+        task; r6-chain27: 6087 MB static, every later journey failed in seconds): GameDown "GAME DOWN (hung)", which
+        ends the journey as a crash does and has the batch kill and relaunch the game."""
+        try:
+            try:
+                self.b.call("console", "IsPC1stPerson", timeout=self.HUNG_PROBE_S)
+            except TypeError:   # a stand-in bridge without the timeout argument
+                self.b.call("console", "IsPC1stPerson")
+        except GameDown:
+            raise
+        except BridgeError as e:
+            if isinstance(e, NoReply) or "did not run the task" in str(e):
+                raise GameDown(f"GAME DOWN (hung): {err}; the probe after it did not run either ({e})") from None
 
     def step(self, n: int, step: dict) -> dict:
         """One step. When `camera:` never flips in a journey of independent steps, the game process is the cause
@@ -1106,6 +1129,7 @@ class Runner:
             rec.update(passed=False, reason=f"{type(e).__name__}: {e}")
             if isinstance(e, NoReply) or "did not run the task" in str(e):
                 rec["game_failure"] = True   # a transport failure: the game process is the cause, the run ends
+                self._probe_hung(e)   # a transport failure: the game process is the cause, the run ends
         if ctx.get("notes"):
             rec["notes"] = ctx["notes"]
         if new := {k: v for k, v in self.kept.items() if k not in kept0 or kept0[k] != v}:
