@@ -1109,7 +1109,7 @@ class Runner:
         return rec
 
 
-SCAN_SETTLE_S = 2.0  # a scan heading's settle before its still (the owner's ruling, 19:05 #41)
+SCAN_SETTLE_S = 0.8  # a scan heading's settle before its still: a turn loads nothing (2.0 cost 54 s a panel stop, r6-chain23)
 
 MOVES = ("moveto", "coc ", "cow ", "setpos", "sw ", "fw ", "set gamehour", "setangle")
 
