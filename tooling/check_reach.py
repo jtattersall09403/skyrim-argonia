@@ -152,6 +152,67 @@ def sh(cmd: list[str]) -> tuple[int, float]:
     return subprocess.run(cmd, cwd=REPO).returncode, time.time() - t
 
 
+# The heavy parts start first so the pool overlaps them (the memory watcher's 3 GB-per-process cap: 3 at once).
+# plugin-check alone takes out/.plugin.lock (make plugin-check); no other part does, so no part shares a worker.
+HEAVY = ["unit", "plugin-check", "skse"]
+
+
+def queue_order(steps: list[str]) -> list[str]:
+    """Reached steps, heavy first, the rest in PARTS order."""
+    return [s for s in HEAVY if s in steps] + [s for s in PARTS if s in steps and s not in HEAVY]
+
+
+def run_part(s: str, targets: set[str], paths: list[str]) -> tuple[int, float, str]:
+    """One part with its output captured whole: (rc, seconds, text)."""
+    t = time.time()
+    if s == "unit":
+        cmd_unit = run_unit_cmds(targets)
+        out, rc = "", 0
+        for cmd in cmd_unit:
+            r = subprocess.run(cmd, cwd=REPO, capture_output=True, text=True)
+            out += r.stdout + r.stderr
+            if r.returncode not in (0, 5) and cmd[0] != "make":
+                rc = 1
+            elif cmd[0] == "make" and r.returncode:
+                rc = r.returncode
+        return rc, time.time() - t, out
+    r = subprocess.run(["make", "--no-print-directory", s], cwd=REPO, capture_output=True, text=True)
+    return r.returncode, time.time() - t, r.stdout + r.stderr
+
+
+def run_pool(steps: list[str], jobs: int, runner, emit=print) -> dict[str, int]:
+    """Run steps with `jobs` workers in queue_order; each part's text is emitted whole, in PARTS order, once it and
+    every earlier part has ended. -> {step: rc}."""
+    from concurrent.futures import ThreadPoolExecutor
+    order = [s for s in PARTS if s in steps]
+    done: dict[str, tuple[int, float, str]] = {}
+    results: dict[str, int] = {}
+    nxt = 0
+    with ThreadPoolExecutor(max_workers=max(1, jobs)) as ex:
+        futs = {ex.submit(runner, s): s for s in queue_order(steps)}
+        from concurrent.futures import as_completed
+        for f in as_completed(futs):
+            done[futs[f]] = f.result()
+            while nxt < len(order) and order[nxt] in done:
+                s = order[nxt]
+                r, secs, text = done[s]
+                if text.strip():
+                    emit(text.rstrip("\n"))
+                emit(f"reach: {s} {'GREEN' if r == 0 else 'RED'} in {secs:.0f} s")
+                results[s] = r
+                nxt += 1
+    return results
+
+
+def run_unit_cmds(targets: set[str]) -> list[list[str]]:
+    py = Path.home() / ".argonia/venv/bin/python"
+    py = str(py) if py.exists() else "python3"
+    if "__all__" in targets:
+        return [["make", "--no-print-directory", "unit"]]
+    ex = sorted(t for t in targets if (REPO / t).exists())
+    return [[py, "-m", "pytest", "-q", "-p", "no:cacheprovider", "--ignore=tooling/tests/test_word_budget.py", *ex]] if ex else []
+
+
 def run_unit(targets: set[str], paths: list[str]) -> int:
     py = Path.home() / ".argonia/venv/bin/python"
     py = str(py) if py.exists() else "python3"
@@ -179,6 +240,7 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--since", default="origin/main")
     ap.add_argument("--plan", action="store_true")
+    ap.add_argument("--jobs", type=int, default=3, help="parts run at once (default 3; 1 is the serial run)")
     ap.add_argument("--record", action="store_true", help="a green run on a clean tree records HEAD as the last green gate")
     a = ap.parse_args(argv)
     since, why_full = a.since, None
@@ -212,17 +274,12 @@ def main(argv=None) -> int:
             print(f"  skip {s}: no changed path reads it")
     if a.plan:
         return 0
-    red = []
     t0 = time.time()
-    for s in PARTS:
-        if s not in reached:
-            continue
-        t = time.time()
-        r = run_unit(targets, paths) if s == "unit" else sh(["make", "--no-print-directory", s])[0]
-        print(f"reach: {s} {'GREEN' if r == 0 else 'RED'} in {time.time() - t:.0f} s")
-        if r:
-            red.append(s)
-    print(("REACH RED: " + " ".join(red)) if red else f"REACH GREEN ({len(reached)} steps of {len(PARTS)}, {time.time() - t0:.0f} s)")
+    steps = [x for x in PARTS if x in reached]
+    res = run_pool(steps, a.jobs, lambda x: run_part(x, targets, paths))
+    red = [x for x in steps if res.get(x)]
+    wall = time.time() - t0
+    print((f"REACH RED: {' '.join(red)} ({wall:.0f} s wall, {a.jobs} jobs)") if red else f"REACH GREEN ({len(reached)} steps of {len(PARTS)}, {wall:.0f} s wall, {a.jobs} jobs)")
     return finish(1 if red else 0, a)
 
 
