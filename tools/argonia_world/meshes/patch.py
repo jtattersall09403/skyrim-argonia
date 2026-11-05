@@ -9,10 +9,13 @@ copies into ours\\derived\\argonia-meshes, laid over every mod. Nothing patched 
 
 Ops (per shape): shader_from <shape> (draw with that shape's shader and texture set); clear_flags / set_flags [names of nif.F1/F2]; emissive {rgb, mult}; texture_slot {slot: path};
 vertex_colour {lum_to: n | sat_to: s} (the drawn diffuse x vertex colour; the shared texture is never touched);
+alpha {threshold: n} (the NiAlphaProperty's test threshold, 0-255; Bethesda's own value for the
+same texture, e.g. its weeping willow's 127);
 uv_scale {axis: u|v, factor: <number> | fit} (fit: per UV island, the factor from FIT_STEPS that minimises the
-island's median stretch; the island is scaled about its own minimum so the half floats stay small).
+island's area-weighted 90th-percentile stretch; the island is scaled about its own minimum so the half floats stay small).
 Bars, every shape of a patched mesh, after: a soft-lit shape has a slot-2 map; no shape is Own_Emit unless the entry
-names the lore (`lore_emit`); a shape of kind bark has a normal (slot 1), a median UV stretch <= STRETCH_BAR and a drawn
+names the lore (`lore_emit`); a shape of kind bark has a normal (slot 1), a median UV stretch <= STRETCH_BAR, an area-weighted 90th-percentile stretch <= STRETCH_P90_BAR
+unless the entry's `p90_owed` names the measure and why no op reaches it (the streaked tail: a buttress or a fold stretched while the median passes; lane 1.15-r6-veg-forms-3) and a drawn
 luminance <= BARK_LUM_BAR; a leaf with a sat_to op draws at saturation <= LEAF_SAT_BAR.
 
     python3 -m tools.argonia_world.meshes patch --check [--mods DIR ...]   before/after per entry; exit 1 on any bar
@@ -35,6 +38,7 @@ MODS = Path.home() / ".argonia" / "stack" / "MO2" / "mods"
 DERIVED = "argonia-meshes"  # the derived folder: ours\\derived\\<this> on the machine, laid over every mod (stack.ps1)
 OUT = ROOT / "out" / "derived" / DERIVED
 STRETCH_BAR = 6.0
+STRETCH_P90_BAR = 6.0
 BARK_LUM_BAR = 81.0  # the brightest kept placed bark (gkbbark27, lane 1.15-r5-white-trunks); placed median 59
 BARK_LUM_TARGET = 59.0
 LEAF_SAT_BAR = 0.71  # the stack's leaf diffuses' p90 saturation (179 measured; median 0.39)
@@ -75,6 +79,8 @@ def measure(sh: N.Shape) -> dict:
         f1, f2 = p.flags
         sl = p.slots() + [""] * 3
         m.update(flags=N.flag_names(f1, f2), emissive=list(p.emissive), soft=p.soft, slot1=sl[1], slot2=sl[2])
+        if sh.alpha is not None:
+            m["alpha"] = list(sh.alpha)  # [flags, threshold]: bit 0 blend, bit 9 test
         d = _diffuse_rgb(sl[0])
         if d is not None:
             c = sh.colours()
@@ -83,7 +89,22 @@ def measure(sh: N.Shape) -> dict:
             m.update(lum=round(_lum(e), 1), sat=round(_sat(e), 2))
     st = sh.stretch() if sh.has_uv() else None
     m["stretch"] = None if st is None else round(st, 1)
+    if st is not None:
+        r, t = sh.ratios()
+        m["stretch90"] = round(_area_q(r, _areas(sh.positions(), t), 0.9), 1)
     return m
+
+
+def _areas(p: np.ndarray, t: np.ndarray) -> np.ndarray:
+    return np.linalg.norm(np.cross(p[t[:, 1]] - p[t[:, 0]], p[t[:, 2]] - p[t[:, 0]]), axis=1)
+
+
+def _area_q(r: np.ndarray, a: np.ndarray, q: float) -> float:
+    """The area-weighted quantile of the per-triangle stretch: what share of the drawn surface is stretched (a count
+    quantile is ruled by a branch tip's thousand slivers)."""
+    o = np.argsort(r)
+    c = np.cumsum(a[o]) / max(a.sum(), 1e-12)
+    return float(r[o][min(int(np.searchsorted(c, q)), len(r) - 1)])
 
 
 def _flags(names: list[str]) -> tuple[int, int]:
@@ -116,15 +137,15 @@ def _uv_scale(sh: N.Shape, axis: str, factor) -> None:
         tt = t[js]
         vs = np.unique(tt)
         lo = uv[vs, k].min()
-        r0, _ = N.ratios(pos, uv, tt)
+        r0, k0 = N.ratios(pos, uv, tt)
         if not len(r0):
             continue
-        best, bf = float(np.median(r0)), 1.0
+        best, bf = _area_q(r0, _areas(pos, k0), 0.9), 1.0
         for f in FIT_STEPS:
             trial = uv.copy()
             trial[vs, k] = lo + (uv[vs, k] - lo) * f
-            r, _ = N.ratios(pos, trial, tt)
-            if len(r) and (m := float(np.median(r))) < best - 1e-6:
+            r, kk = N.ratios(pos, trial, tt)
+            if len(r) and (m := _area_q(r, _areas(pos, kk), 0.9)) < best - 1e-6:
                 best, bf = m, f
         uv[vs, k] = lo + (uv[vs, k] - lo) * bf
     sh.set_uv(uv)
@@ -182,6 +203,11 @@ def apply(n: N.Nif, entry: dict) -> list[str]:
             p.set_slot(int(slot), path)
         if "vertex_colour" in ops:
             _vertex_colour(sh, ops["vertex_colour"])
+        if "alpha" in ops:
+            if sh.alpha is None:
+                bad.append(f"shape {se['shape']}: alpha op on a shape with no NiAlphaProperty")
+            else:
+                sh.set_alpha(sh.alpha[0], int(ops["alpha"]["threshold"]))
         if "uv_scale" in ops:
             _uv_scale(sh, ops["uv_scale"]["axis"], ops["uv_scale"]["factor"])
     return bad
@@ -207,6 +233,8 @@ def bars(n: N.Nif, entry: dict) -> list[str]:
                 out.append(f"{tag}: bark draws at luminance {m['lum']} > {BARK_LUM_BAR}")
             if m["stretch"] is not None and m["stretch"] > STRETCH_BAR:
                 out.append(f"{tag}: UV stretch {m['stretch']}:1 > {STRETCH_BAR}:1")
+            if m.get("stretch90") is not None and m["stretch90"] > STRETCH_P90_BAR and not entry.get("p90_owed"):
+                out.append(f"{tag}: UV stretch p90 {m['stretch90']}:1 > {STRETCH_P90_BAR}:1")
         if sh.i in sat_op and m.get("sat") is not None and m["sat"] > LEAF_SAT_BAR + 0.005:
             out.append(f"{tag}: leaf draws at saturation {m['sat']} > {LEAF_SAT_BAR}")
     return out
@@ -243,11 +271,13 @@ def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=prin
             if s.i in {x["shape"] for x in e["shapes"] if x.get("ops")}:
                 a, b = before[s.i], measure(s)
                 say(f"    shape {s.i} {s.name}:")
-                for k in ("flags", "emissive", "slot1", "slot2", "stretch", "lum", "sat"):
+                for k in ("flags", "emissive", "alpha", "slot1", "slot2", "stretch", "stretch90", "lum", "sat"):
                     if k in a:
                         say(f"      {k:8} {a[k]} -> {b.get(k)}" if a[k] != b.get(k) else f"      {k:8} {a[k]} (kept)")
         for p in problems:
             say(f"    BAR {p}")
+        if e.get("p90_owed"):
+            say(f"    OWED p90: {e['p90_owed']}")
         bad += bool(problems)
         if out is not None and not problems:
             dst = out / e["mesh"]

@@ -470,6 +470,9 @@ meshes:
   - shape: 21
     name: SwampTreeTall04:Vines
     kind: other
+  p90_owed: 'after the per-island V fit the branches'' median is 1.8:1 but the stretched tenth of their surface stays 18.3:1
+    (area p90; raw 72:1): the twigs'' UVs are sheared inside each of the 1593 islands, which no per-island axis scale reaches
+    (v, then u, then v: 18.3); a re-unwrap is owed (lane 1.15-r6-veg-forms-3)'
 - mesh: meshes/argonia/trees/greguire/jungletree01.nif
   mod: king-of-the-murkmire
   forms:
@@ -795,9 +798,9 @@ meshes:
         sat_to: 0.71
       clear_flags:
       - Own_Emit
-    reason: 'the bright lime palm: Tropical Skyrim''s Bush01 (the load order''s winner) draws anvilleafpalm02 (sat 0.86)
-      at saturation 0.88 through its vertex colour; a per-channel vertex factor takes it to the stack''s leaf p90 (0.71)
-      at the same luminance; Own_Emit (black) cleared'
+    reason: 'the bright lime palm: Tropical Skyrim''s Bush01 (the load order''s winner) draws anvilleafpalm02 (sat 0.86) at
+      saturation 0.88 through its vertex colour; a per-channel vertex factor takes it to the stack''s leaf p90 (0.71) at the
+      same luminance; Own_Emit (black) cleared'
 - mesh: meshes/argonia/trees/greguire/greatsejutree01.nif
   mod: king-of-the-murkmire
   forms:
@@ -811,8 +814,8 @@ meshes:
       uv_scale:
         axis: v
         factor: fit
-    reason: 'bark UV stretched 7.9:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
-      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    reason: 'bark UV stretched 7.9:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look
+      still showed on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
     before:
       flags:
       - Specular
@@ -841,8 +844,8 @@ meshes:
       uv_scale:
         axis: v
         factor: fit
-    reason: 'bark UV stretched 6.4:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
-      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    reason: 'bark UV stretched 6.4:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look
+      still showed on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
     before:
       flags:
       - Specular
@@ -858,11 +861,13 @@ meshes:
       stretch: 6.4
       lum: 37.4
       sat: 0.13
+  p90_owed: 'after the V fit the stump bark''s median is 2.6:1 and its area p90 7.0:1 (raw 14.3:1), sheared inside its 19
+    islands (v/u/v fits: 7.0); a re-unwrap is owed (lane 1.15-r6-veg-forms-3)'
 - mesh: meshes/argonia/trees/willow05.nif
   mod: king-of-the-murkmire
   forms:
   - 0E67A9:King of the Murkmire.esp
-  lane: 1.15-r6-lane-clear measured
+  lane: 1.15-r6-lane-clear measured; 1.15-r6-veg-forms-3 measured and patched
   shapes:
   - shape: 5
     name: jungletree26weeping_1
@@ -871,8 +876,8 @@ meshes:
       uv_scale:
         axis: v
         factor: fit
-    reason: 'bark UV stretched 7.0:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look still showed
-      on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
+    reason: 'bark UV stretched 7.0:1 (the placed bark band is 3:1 to 6:1): a streaked blurry trunk like the round-6 road-look
+      still showed on the Blackwood Road (forms not identified at that stand); V is scaled per UV island to square texels'
     before:
       flags:
       - ZBuffer_Test
@@ -887,6 +892,38 @@ meshes:
       stretch: 7.0
       lum: 62.3
       sat: 0.2
+  - shape: 8
+    name: jungletree26weeping_6
+    kind: leaf
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      - Soft_Lighting
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 80
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbranches01_n.dds
+      slot2: textures\_resourcepack\landscape\trees\weepingwillowbranches01_d.dds
+      stretch: 2.1
+    ops:
+      clear_flags:
+      - Soft_Lighting
+      alpha:
+        threshold: 127
+    reason: 'the hard-edged bright lime curtain (round-6 panel 14/15-flooded-forest-shore-s4, this willow at 10.6-12.9 m):
+      the leaf card is soft-lit (wrap 5.0, its own diffuse as the soft-light map) and alpha-tested at 80; Bethesda''s own
+      weeping willow (_ResourcePack treeweepingwillow01/02) draws the same WeepingWillowBranches01_d with Soft_Lighting off
+      and the test at 127 (alpha flags 0x12EC, no blend, as every vanilla and Tropical Skyrim tree leaf); the card takes Bethesda''s
+      two values'
 - mesh: meshes/here there be monsters - curse of cipactli/architecture/villages/argonian/orcawningfull01.nif
   mod: htbm-cipactli
   forms:
@@ -939,3 +976,233 @@ meshes:
       clear_flags:
       - Own_Emit
     reason: the posts and beams; Own_Emit with a black emissive (no glow, cleared for the bar)
+- mesh: meshes/argonia/trees/willow04.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 0E67A8:King of the Murkmire.esp
+  lane: 1.15-r6-veg-forms-3 measured and patched
+  shapes:
+  - shape: 5
+    name: jungletree25weeping:5
+    kind: bark
+  - shape: 8
+    name: jungletree25weeping_3
+    kind: leaf
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      - Soft_Lighting
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 80
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbranches01_n.dds
+      slot2: textures\_resourcepack\landscape\trees\weepingwillowbranches01_d.dds
+      stretch: 2.0
+    ops:
+      clear_flags:
+      - Soft_Lighting
+      alpha:
+        threshold: 127
+    reason: 'the hard-edged bright lime curtain (round-6 panel 14/15-flooded-forest-shore-s4, this willow at 10.6-12.9 m):
+      the leaf card is soft-lit (wrap 5.0, its own diffuse as the soft-light map) and alpha-tested at 80; Bethesda''s own
+      weeping willow (_ResourcePack treeweepingwillow01/02) draws the same WeepingWillowBranches01_d with Soft_Lighting off
+      and the test at 127 (alpha flags 0x12EC, no blend, as every vanilla and Tropical Skyrim tree leaf); the card takes Bethesda''s
+      two values'
+- mesh: meshes/argonia/trees/willow07.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 0E67AA:King of the Murkmire.esp
+  lane: 1.15-r6-veg-forms-3 measured and patched
+  shapes:
+  - shape: 5
+    name: jungletree27weeping:5
+    kind: bark
+  - shape: 8
+    name: jungletree27weeping_5
+    kind: leaf
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      - Soft_Lighting
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      alpha:
+      - 4844
+      - 80
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbranches01_n.dds
+      slot2: textures\_resourcepack\landscape\trees\weepingwillowbranches01_d.dds
+      stretch: 2.1
+    ops:
+      clear_flags:
+      - Soft_Lighting
+      alpha:
+        threshold: 127
+    reason: 'the hard-edged bright lime curtain (round-6 panel 14/15-flooded-forest-shore-s4, this willow at 10.6-12.9 m):
+      the leaf card is soft-lit (wrap 5.0, its own diffuse as the soft-light map) and alpha-tested at 80; Bethesda''s own
+      weeping willow (_ResourcePack treeweepingwillow01/02) draws the same WeepingWillowBranches01_d with Soft_Lighting off
+      and the test at 127 (alpha flags 0x12EC, no blend, as every vanilla and Tropical Skyrim tree leaf); the card takes Bethesda''s
+      two values'
+- mesh: meshes/argonia/trees/greguire/eruttree01.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 155FE5:King of the Murkmire.esp
+  lane: 1.15-r6-veg-forms-3 measured and patched
+  shapes:
+  - shape: 7
+    name: ErutTree01:Trunk
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\snowgumbark01_n.dds
+      slot2: ''
+      stretch: 1.5
+    ops:
+      texture_slot:
+        1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+    reason: 'the blotched trunk (round-6 panel 22-northern-transition-shore-noon-s2, Erut01/02 at 11.9-15.6 m): its weepingwillowbark01_d
+      diffuse is paired with snowgumbark01_n in the normal slot, so the relief belongs to another bark; slot 1 takes weepingwillowbark01_n,
+      the pair of its diffuse (as Erut07 and MegaTree04''s trunk)'
+  - shape: 10
+    name: ErutTree01:Leaves
+    kind: leaf
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      emissive:
+      - - 0.474
+        - 0.474
+        - 0.474
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\tamira\newplants\leaves27_n.dds
+      slot2: ''
+      stretch: 1.5
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: Own_Emit grey 0.47 on the leaf (every Erut leaf carries it; the bar is per patched mesh)
+- mesh: meshes/argonia/trees/greguire/eruttree02.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 155FE7:King of the Murkmire.esp
+  lane: 1.15-r6-veg-forms-3 measured and patched
+  shapes:
+  - shape: 7
+    name: ErutTree02:Trunk
+    kind: bark
+    before:
+      flags:
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\snowgumbark01_n.dds
+      slot2: ''
+      stretch: 1.2
+    ops:
+      texture_slot:
+        1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+    reason: 'the blotched trunk (round-6 panel 22-northern-transition-shore-noon-s2, Erut01/02 at 11.9-15.6 m): its weepingwillowbark01_d
+      diffuse is paired with snowgumbark01_n in the normal slot, so the relief belongs to another bark; slot 1 takes weepingwillowbark01_n,
+      the pair of its diffuse (as Erut07 and MegaTree04''s trunk)'
+  - shape: 10
+    name: ErutTree02:Leaves.001
+    kind: leaf
+    before:
+      flags:
+      - Specular
+      - Own_Emit
+      - ZBuffer_Test
+      - ZBuffer_Write
+      - Double_Sided
+      - Vertex_Colors
+      - Tree_Anim
+      emissive:
+      - - 0.474
+        - 0.474
+        - 0.474
+      - 1.0
+      alpha:
+      - 4844
+      - 128
+      slot1: textures\plants\tamira\newplants\leaves27_n.dds
+      slot2: ''
+      stretch: 1.5
+    ops:
+      clear_flags:
+      - Own_Emit
+    reason: Own_Emit grey 0.47 on the leaf (every Erut leaf carries it; the bar is per patched mesh)
+  - shape: 14
+    name: ErutTree02:moss
+    kind: other
+- mesh: meshes/argonia/trees/greguire/jungletree03.nif
+  mod: king-of-the-murkmire
+  forms:
+  - 0EB924:King of the Murkmire.esp
+  - 0EB926:King of the Murkmire.esp
+  lane: 1.15-r6-veg-forms-3 measured and patched
+  shapes:
+  - shape: 7
+    name: JungleTree03
+    kind: bark
+    before:
+      flags:
+      - Specular
+      - ZBuffer_Test
+      - ZBuffer_Write
+      emissive:
+      - - 0.0
+        - 0.0
+        - 0.0
+      - 1.0
+      slot1: textures\_resourcepack\landscape\trees\weepingwillowbark01_n.dds
+      slot2: ''
+      stretch: 5.1
+      stretch90: 8.4
+    ops:
+      uv_scale:
+        axis: v
+        factor: fit
+    reason: 'bark UV stretched 5.1:1 at the median and 8.4:1 over the stretched tenth of its surface (area p90): the streaked
+      mossy trunk the round-6 panel showed at 10-deep-sink-basin-shore-s2 and 26-rootland-shore-s2 (Jungle05/06 at 21-24 m,
+      the only trunk2 bark in those frusta); the median bar passed it, the area p90 bar does not; V is fitted per UV island'
+  - shape: 10
+    name: JungleTree03:Vines
+    kind: other
+  - shape: 14
+    name: JungleTree03:Leaves
+    kind: leaf

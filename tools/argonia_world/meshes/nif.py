@@ -85,7 +85,7 @@ class Shape:
         self.name = nif.name(i)
         ne, = struct.unpack_from("<I", b, 4)
         q = 8 + 4 * ne + 4 + 4 + 12 + 36 + 4 + 4 + 16  # extra data, controller, flags, transform, collision, sphere
-        _skin, self.shader, _alpha = struct.unpack_from("<iii", b, q)
+        _skin, self.shader, self.alpha_ref = struct.unpack_from("<iii", b, q)
         self._shader_at = q + 4
         q += 12
         self.desc, = struct.unpack_from("<Q", b, q)
@@ -95,6 +95,21 @@ class Shape:
         self.attrs = (self.desc >> 44) & 0xFFF
         ok = 0 <= self.shader < len(nif.types) and nif.types[self.shader] == "BSLightingShaderProperty"
         self.prop = Lighting(nif, self.shader) if ok else None
+
+    @property
+    def alpha(self) -> tuple[int, int] | None:
+        """The NiAlphaProperty's (flags, threshold), or None: bit 0 blend, bit 9 test (nif.xml AlphaFlags)."""
+        a = self.alpha_ref
+        if not (0 <= a < len(self.nif.types)) or self.nif.types[a] != "NiAlphaProperty":
+            return None
+        b = self.nif.blocks[a]
+        ne, = struct.unpack_from("<I", b, 4)
+        return struct.unpack_from("<HB", b, 8 + 4 * ne + 4)
+
+    def set_alpha(self, flags: int, threshold: int) -> None:
+        b = self.nif.blocks[self.alpha_ref]
+        ne, = struct.unpack_from("<I", b, 4)
+        struct.pack_into("<HB", b, 8 + 4 * ne + 4, flags, threshold)
 
     def _view(self, off: int, dtype, n: int) -> np.ndarray:
         b = np.frombuffer(bytes(self.nif.blocks[self.i][self.vdata:self.vdata + self.nv * self.vsize]), np.uint8)

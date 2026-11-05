@@ -13,9 +13,9 @@ def _sized(s: str) -> bytes:
     return struct.pack("<I", len(s)) + s.encode()
 
 
-def make_nif(f1=0, f2=0, emit=(0, 0, 0), slots=("d.dds", "d_n.dds", ""), stretch_v=1.0) -> bytes:
+def make_nif(f1=0, f2=0, emit=(0, 0, 0), slots=("d.dds", "d_n.dds", ""), stretch_v=1.0, alpha=None) -> bytes:
     """A BS 100 NIF: block 0 BSTriShape (a 2x2 quad grid in one island), 1 BSLightingShaderProperty, 2 texture set."""
-    types = ["BSTriShape", "BSLightingShaderProperty", "BSShaderTextureSet"]
+    types = ["BSTriShape", "BSLightingShaderProperty", "BSShaderTextureSet"] + (["NiAlphaProperty"] if alpha else [])
     pos = [(x, y, 0.0) for y in range(3) for x in range(3)]
     uv = [(x / 2, y / 2 / stretch_v) for y in range(3) for x in range(3)]
     tris = []
@@ -27,7 +27,7 @@ def make_nif(f1=0, f2=0, emit=(0, 0, 0), slots=("d.dds", "d_n.dds", ""), stretch
     vd = b"".join(struct.pack("<4f", *p, 0) + np.array(u, np.float16).tobytes() + b"\0" * 4 for p, u in zip(pos, uv))
     shape = (struct.pack("<iI", 0, 0) + struct.pack("<i", -1) + struct.pack("<I", 14) + b"\0" * 12
              + struct.pack("<9f", 1, 0, 0, 0, 1, 0, 0, 0, 1) + struct.pack("<f", 1) + struct.pack("<i", -1)
-             + b"\0" * 16 + struct.pack("<iii", -1, 1, -1) + struct.pack("<Q", desc)
+             + b"\0" * 16 + struct.pack("<iii", -1, 1, 3 if alpha else -1) + struct.pack("<Q", desc)
              + struct.pack("<HHI", len(tris), len(pos), len(vd)) + vd
              + b"".join(struct.pack("<3H", *t) for t in tris))
     prop = (struct.pack("<IiI", 1, -1, 0) + struct.pack("<i", -1) + struct.pack("<II", f1, f2)
@@ -35,10 +35,10 @@ def make_nif(f1=0, f2=0, emit=(0, 0, 0), slots=("d.dds", "d_n.dds", ""), stretch
             + struct.pack("<I", 3) + struct.pack("<3f", 1, 1, 80) + struct.pack("<4f", 1, 1, 1, 1)
             + struct.pack("<2f", 0.3, 2.0) + b"\0" * 8)
     tex = struct.pack("<I", 9) + b"".join(_sized(s) for s in list(slots) + [""] * (9 - len(slots)))
-    blocks = [shape, prop, tex]
+    blocks = [shape, prop, tex] + ([struct.pack("<iIiHB", -1, 0, -1, *alpha)] if alpha else [])
     h = b"Gamebryo File Format, Version 20.2.0.7\n" + struct.pack("<IBII", 0x14020007, 1, 12, len(blocks))
     h += struct.pack("<I", 100) + b"\x01\0" * 3 + struct.pack("<H", len(types)) + b"".join(_sized(t) for t in types)
-    h += struct.pack("<3H", 0, 1, 2) + struct.pack("<3I", *map(len, blocks))
+    h += struct.pack(f"<{len(blocks)}H", *range(len(blocks))) + struct.pack(f"<{len(blocks)}I", *map(len, blocks))
     h += struct.pack("<II", 1, 4) + _sized("Leaf") + struct.pack("<I", 0)
     return h + b"".join(blocks) + struct.pack("<II", 1, 0)
 
@@ -161,3 +161,20 @@ def test_the_table_loads_and_names_every_op_shape():
                 assert s["reason"] and s["before"]
                 for f in s["ops"].get("clear_flags", []) + s["ops"].get("set_flags", []):
                     assert f in N.F1 or f in N.F2
+
+
+def test_alpha_op_sets_the_threshold_and_keeps_the_flags():
+    d = make_nif(alpha=(0x12EC, 80))
+    n = N.Nif(d)
+    assert n.shapes()[0].alpha == (0x12EC, 80)
+    assert patch.apply(n, entry({"alpha": {"threshold": 127}, "clear_flags": ["Soft_Lighting"]},
+                                before={"alpha": [0x12EC, 80]})) == []
+    assert N.Nif(n.to_bytes()).shapes()[0].alpha == (0x12EC, 127)
+
+
+def test_bark_stretch_tail_fails_unless_owed():
+    n = N.Nif(make_nif(stretch_v=9.0))
+    e = entry({}, kind="bark")
+    assert any("p90" in b for b in patch.bars(n, e))
+    e["p90_owed"] = "measured; a re-unwrap is owed"
+    assert not any("p90" in b for b in patch.bars(n, e))
