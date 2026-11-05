@@ -26,7 +26,9 @@ if [ -z "${CHAIN_IN_TREE:-}" ]; then
   # committed by path, so the worktree at HEAD reads the same rows (r6-chain24: a stale land from an uncommitted
   # entrance_site.jsonl). Also run BEFORE the sync: an interrupted land pass leaves them dirty (r6-chain29 blocked)
   commit_outputs() {
-    git -C "$src" add plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated 2>/dev/null
+    for f in plugin world/db/formid.jsonl world/db/build_ref.jsonl world/db/entrance_site.jsonl skse/core/generated; do
+      [ -e "$src/$f" ] && git -C "$src" add "$f" 2>/dev/null   # one missing path must not drop the others
+    done
     if ! git -C "$src" diff --cached --quiet; then
       git -C "$src" commit -q -m "round build output before the chain: the plugin YAML, form ids, build ref, entrance sites" \
         && return 0
