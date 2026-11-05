@@ -22,9 +22,6 @@ steps:
       line: cow ARG_Province -55 63
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -37,7 +34,12 @@ steps:
       line: player.setangle z 1
   - console:
       line: player.setangle x -6
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xDD1A00
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -57,9 +59,6 @@ steps:
       line: cow ARG_Province -60 18
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -72,7 +71,12 @@ steps:
       line: player.setangle z 263
   - console:
       line: player.setangle x -26
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xB0C424
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -92,9 +96,6 @@ steps:
       line: cow ARG_Province -41 26
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -107,7 +108,12 @@ steps:
       line: player.setangle z 294
   - console:
       line: player.setangle x -20
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xB8CA05
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -127,9 +133,6 @@ steps:
       line: cow ARG_Province 24 44
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -142,7 +145,12 @@ steps:
       line: player.setangle z 56
   - console:
       line: player.setangle x -37
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xCB0401
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -162,9 +170,6 @@ steps:
       line: cow ARG_Province -41 39
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -177,7 +182,12 @@ steps:
       line: player.setangle z 351
   - console:
       line: player.setangle x -30
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xC59609
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -197,9 +207,6 @@ steps:
       line: cow ARG_Province -35 42
       settle: 60
   - wait: 8
-  - console: sw Argonia.esm|0x000E9B
-  - console: fw Argonia.esm|0x000E9B
-  - settle: {cap: 14, min: 3}
   - console:
       line: set gamehour to 12
   - console:
@@ -212,7 +219,12 @@ steps:
       line: player.setangle z 232
   - console:
       line: player.setangle x 19
+  - console:
+      line: player.setangle y 0
   - wait: 6
+  - console: sw Argonia.esm|0x000E9B
+  - console: fw Argonia.esm|0x000E9B
+  - settle: {cap: 14, min: 3}
   - console: prid ArgoniaWorld.esm|0xC8963A
   expect:
   - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}

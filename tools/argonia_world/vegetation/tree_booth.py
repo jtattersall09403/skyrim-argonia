@@ -53,7 +53,7 @@ def _steps(name: str, note: str, d: dict, x: float, y: float, z: float, h: float
             "      line: set gamehour to 12", "  - console:", f"      line: player.setpos x {x:.0f}", "  - console:",
             f"      line: player.setpos y {y:.0f}", "  - console:", f"      line: player.setpos z {z:.0f}",
             "  - console:", f"      line: player.setangle z {h:.0f}", "  - console:",
-            f"      line: player.setangle x {pitch:.0f}", "  - wait: 6",
+            f"      line: player.setangle x {pitch:.0f}", "  - console:", "      line: player.setangle y 0", "  - wait: 6",
             "  - console:", f"      line: fw {wx}"]   # AFTER the teleport and its settle (the region weather replaces an earlier force)
 
 

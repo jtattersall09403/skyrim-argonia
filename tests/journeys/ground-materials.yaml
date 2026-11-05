@@ -22,16 +22,17 @@ steps:
       - console: {line: cow ARG_Province -9 27, settle: 60}
       - wait: 8
       - console: set gamehour to 13
-      - console: sw Argonia.esm|0x000E9B
-      - console: fw Argonia.esm|0x000E9B
-      - settle: {cap: 14, min: 3}
       - console: player.setpos x -32295
       - console: player.setpos y 113836
       - console: player.setpos z 224
       - wait: 6
       - console: player.setangle z 330
       - console: player.setangle x 14
+      - console: player.setangle y 0
       - wait: 4
+      - console: sw Argonia.esm|0x000E9B
+      - console: fw Argonia.esm|0x000E9B
+      - settle: {cap: 14, min: 3}
     expect:
       - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}
       - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}
@@ -45,16 +46,17 @@ steps:
       - console: {line: cow ARG_Province -50 8, settle: 60}
       - wait: 8
       - console: set gamehour to 13
-      - console: sw Argonia.esm|0x000E9B
-      - console: fw Argonia.esm|0x000E9B
-      - settle: {cap: 14, min: 3}
       - console: player.setpos x -204993
       - console: player.setpos y 38668
       - console: player.setpos z 5088
       - wait: 6
       - console: player.setangle z 180
       - console: player.setangle x 7
+      - console: player.setangle y 0
       - wait: 4
+      - console: sw Argonia.esm|0x000E9B
+      - console: fw Argonia.esm|0x000E9B
+      - settle: {cap: 14, min: 3}
     expect:
       - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}
       - {read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}

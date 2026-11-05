@@ -16,7 +16,7 @@ steps:
     # subject: -82671 -176885 248
     do: [{hud: "off"}, {console: {line: "cow ARG_Province -21 -44", settle: 60}}, {wait: 8},
          {console: "set gamehour to 12"}, {console: "player.setpos x -82671"}, {console: "player.setpos y -176885"},
-         {console: "player.setpos z 248"}, {console: "player.setangle z 0"}, {console: "player.setangle x 3"}, {wait: 4},
+         {console: "player.setpos z 248"}, {console: "player.setangle z 0"}, {console: "player.setangle x 3"}, {console: "player.setangle y 0"}, {wait: 4},
          {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20},
              {console: "player.IsSwimming", contains: ">> 0"}]

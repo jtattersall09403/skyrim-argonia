@@ -48,6 +48,9 @@
      "console": "player.setangle x -12"
     },
     {
+     "console": "player.setangle y 0"
+    },
+    {
      "console": "set gamehour to 12"
     },
     {
@@ -124,6 +127,9 @@
     },
     {
      "console": "player.setangle x -12"
+    },
+    {
+     "console": "player.setangle y 0"
     },
     {
      "console": "set gamehour to 6.5"
@@ -204,6 +210,9 @@
      "console": "player.setangle x -12"
     },
     {
+     "console": "player.setangle y 0"
+    },
+    {
      "console": "set gamehour to 12"
     },
     {
@@ -280,6 +289,9 @@
     },
     {
      "console": "player.setangle x -12"
+    },
+    {
+     "console": "player.setangle y 0"
     },
     {
      "console": "set gamehour to 6.5"

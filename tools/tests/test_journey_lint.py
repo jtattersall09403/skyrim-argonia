@@ -97,19 +97,19 @@ def test_a_look_journey_needs_first_person_hud_off_and_forced_weather_per_stop()
     assert any("camera: first" in e for e in errs) and any("hud: off" in e for e in errs)
     assert any("form id" in e for e in errs) and any("read the weather back" in e for e in errs)
     good = {"name": "s", "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"},
-                                {"console": "fw Argonia.esm|0x000E9B"}],
+                                {"console": "fw Argonia.esm|0x000E9B"}, {"console": "player.setangle x 0"}, {"console": "player.setangle y 0"}, {"console": "player.setangle z 0"}, {"wait": 4}],
             "expect": [{"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}],
             "scan": 6}
     assert L.look({**j, "camera": "first", "steps": [good]}) == []
     by_edid = {**good, "do": [{"hud": "off"}, {"console": "cow ARG_Province -9 27"}, {"console": "fw ARG_Weather_clear_dry"}]}
     assert any("form id" in e for e in L.look({**j, "camera": "first", "steps": [by_edid]}))
-    anyw = {"name": "s", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any", "scan": 6}
+    anyw = {"name": "s", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}, {"console": "player.setangle x 0"}, {"console": "player.setangle y 0"}, {"console": "player.setangle z 0"}, {"wait": 4}], "weather": "any", "scan": 6}
     assert L.look({**j, "camera": "first", "steps": [anyw]}) == []
     assert L.look({"id": "j", "steps": [stop]}) == []   # unmarked: not a look journey
 
 
 def test_a_look_stop_without_a_scan_fails_naming_the_step():
-    stop = {"name": "pebbles", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}], "weather": "any"}
+    stop = {"name": "pebbles", "do": [{"hud": "off"}, {"console": "player.setpos x 1"}, {"console": "player.setangle x 0"}, {"console": "player.setangle y 0"}, {"console": "player.setangle z 0"}, {"wait": 4}], "weather": "any"}
     j = {"id": "j", "look": "world", "camera": "first", "steps": [stop]}
     assert L.look(j) == ["step pebbles: look: world: a scan of headings at each stop (`scan: 6`; owner 19:05 #41)"]
     assert L.look({**j, "steps": [{**stop, "scan": 1}]}) != []
@@ -123,3 +123,20 @@ def test_the_five_look_journeys_meet_the_standard():
         assert j.get("look") == "world", n
         errs = [e for e in L.look(j) if "a scan of headings" not in e]  # scans land at the planner's refresh (look.py)
         assert errs == [], (n, errs[:3])
+
+
+def test_a_look_stop_may_not_teleport_after_its_fw_and_sets_all_three_angles():
+    ang = [{"console": f"player.setangle {a} 0"} for a in "xyz"]
+    ok = [{"hud": "off"}, {"console": "cow ARG_Province -9 27"}, {"console": "player.setpos x 1"}, *ang, {"wait": 4},
+          {"console": "sw Argonia.esm|0x000E9B"}, {"console": "fw Argonia.esm|0x000E9B"}]
+    stop = {"name": "rock-1", "scan": 6, "do": ok,
+            "expect": [{"read": ["weather"], "path": "current.editor_id", "eq": "ARG_Weather_clear_dry", "within": 20}]}
+    j = {"id": "j", "look": "world", "camera": "first", "steps": [stop]}
+    assert L.look(j) == []
+    early = {**stop, "do": [ok[0], *ok[-2:], *ok[1:-2]]}
+    errs = L.look({**j, "steps": [early]})
+    assert any(e.startswith("step rock-1: look: world: `cow ARG_Province -9 27` follows the `fw`") for e in errs)
+    noroll = {**stop, "do": [a for a in ok if a != ang[1]]}
+    assert any("setangle y`" in e for e in L.look({**j, "steps": [noroll]}))
+    nowait = {**stop, "do": [a for a in ok if a != {"wait": 4}][:6]}
+    assert any("wait at least 2 s" in e for e in L.look({**j, "steps": [nowait]}))

@@ -216,7 +216,7 @@ def journey_text(vs: list[dict]) -> str:
             do = [{"hud": "off"},
                   {"console": {"line": f"player.moveto {marker_edid(v)}", "settle": 60}},
                   {"console": f"player.setangle z {v['yaw_deg']:.0f}"},
-                  {"console": "player.setangle x 0"}, {"console": f"set gamehour to {hour}"}]
+                  {"console": "player.setangle x 0"}, {"console": "player.setangle y 0"}, {"console": f"set gamehour to {hour}"}]
             # `sw` (set, no transition) after the moveto's settle: the region's own list had replaced `fw`'s weather
             # (round 3: storm, wet_rain from vanilla ClearCO); the bridge `weather` read proves the sky took it
             # before the still (a null read means a menu is open: it is polled until it holds)

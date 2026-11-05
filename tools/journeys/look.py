@@ -183,12 +183,12 @@ def ground_materials(b: Build, log: list, head: list[str]) -> str:
                 f"8-15 m off; {_numbers(sc)}",
                 f"    # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "    do:", "      - hud: off",
                 f"      - console: {{line: cow ARG_Province {cell[0]} {cell[1]}, settle: 60}}", "      - wait: 8",
-                "      - console: set gamehour to 13", f"      - console: sw {CLEAR_DRY}", f"      - console: fw {CLEAR_DRY}",
-                "      - settle: {cap: 14, min: 3}",
+                "      - console: set gamehour to 13",
                 f"      - console: player.setpos x {x:.0f}", f"      - console: player.setpos y {y:.0f}",
                 f"      - console: player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}", "      - wait: 6",
                 f"      - console: player.setangle z {sc['h']:.0f}", f"      - console: player.setangle x {sc['p']:.0f}",
-                "      - wait: 4",
+                "      - console: player.setangle y 0", "      - wait: 4", f"      - console: sw {CLEAR_DRY}", f"      - console: fw {CLEAR_DRY}",
+                "      - settle: {cap: 14, min: 3}",
                 "    expect:", '      - {console: "player.GetInWorldspace ARG_Province", contains: ">> 1"}',
                 f"      - {WEATHER_READ}", f"    reader: [{reader}]"]
     return "\n".join(out) + "\n"

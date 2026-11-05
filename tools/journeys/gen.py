@@ -84,10 +84,11 @@ def _cow_step(name: str, note: str, x: float, y: float, z: float, h: float, p: f
         f"- name: {name}", f"  # {note}", f"  # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}", "  do:",
         "  - hud: off", *(["  - console: tgm"] if first else []),
         f"  - console: {{line: cow ARG_Province {cx} {cy}, settle: 60}}", "  - wait: 8",
-        "  - console: set gamehour to 13", *WEATHER_DO, f"  - console: player.setpos x {x:.0f}",
+        "  - console: set gamehour to 13", f"  - console: player.setpos x {x:.0f}",
         f"  - console: player.setpos y {y:.0f}",
         f"  - console: player.setpos z {z:.0f}", "  - wait: 6", f"  - console: player.setangle z {h:.0f}",
-        f"  - console: player.setangle x {p:.0f}", "  - wait: 4",
+        f"  - console: player.setangle x {p:.0f}", "  - console: player.setangle y 0", "  - wait: 4",
+        *WEATHER_DO,   # teleport, angles (roll 0), settle, THEN the weather (the new cell's region weather replaces an earlier force)
         "  expect:", f"  - {{read: [player], path: pos, keep: {name}}}", WEATHER_EXPECT,
         "  reader: [the header checklist for this kind of stop]"]) + "\n"
 
@@ -193,7 +194,7 @@ def _still_again(name: str, note: str, x: float, y: float, z: float, h: float, p
         "  weather: any  # the drift pair's second still: no reload, the first stop's forced weather still holds", "  do:",
         "  - hud: off", f"  - console: player.setpos x {x:.0f}", f"  - console: player.setpos y {y:.0f}",
         f"  - console: player.setpos z {z:.0f}", f"  - console: player.setangle z {h:.0f}",
-        f"  - console: player.setangle x {p:.0f}", "  - wait: 5",
+        f"  - console: player.setangle x {p:.0f}", "  - console: player.setangle y 0", "  - wait: 5",
         "  expect:", f"  - {{read: [player], path: pos, keep: {name}}}", WEATHER_EXPECT,
         "  reader: [the header checklist for this kind of stop]"]) + "\n"
 
@@ -369,11 +370,12 @@ def road_look(b: Build, w, log: list) -> str:
         print(f"road-look: {name}: cell {su.cell_of(x, y)} off the line {r['off_m']:.1f} m, heading {h:.0f} vs road "
               f"{r['road_deg']:.0f} ({r['head_off_deg']:.0f} deg), trough within {r['third_deg']:.1f} deg, grass {r['grass']}, slid {r['slid_m']:+.0f} m")
         lines += [f"  - name: {name}", f"    # subject: {subj[0]:.0f} {subj[1]:.0f} {subj[2]:.0f}",
-                  f"    do: [{{hud: \"off\"}}, {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, "
-                  "{settle: {cap: 14, min: 3}},",
+                  "    do: [{hud: \"off\"},",
                   f"         {{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}}, "
                   f"{{console: \"player.setpos z {b.ground_u(x, y) + SEAT_U:.0f}\"}},",
-                  f"         {{console: \"player.setangle z {h:.0f}\"}}, {{console: \"player.setangle x {p:.0f}\"}}, {{wait: 4}}]"]
+                  f"         {{console: \"player.setangle z {h:.0f}\"}}, {{console: \"player.setangle x {p:.0f}\"}}, "
+                  f"{{console: \"player.setangle y 0\"}}, {{wait: 4}},\n"
+                  f"         {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, {{settle: {{cap: 14, min: 3}}}}]"]
         lines += ["    expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]",
                   "    reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt "
                   "blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]"]
@@ -1075,7 +1077,7 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
                 "name": f"{key}-{when}",
                 "do": [{"hud": "off"},
                        {"console": {"line": f"player.moveto {edid}", "settle": 60}},
-                       {"console": f"player.setangle z {yaw}"}, {"console": "player.setangle x -12"},
+                       {"console": f"player.setangle z {yaw}"}, {"console": "player.setangle x -12"}, {"console": "player.setangle y 0"},
                        {"console": f"set gamehour to {hour}"}, {"console": f"sw {wthr}"},
                        {"console": f"fw {wthr}"}, {"settle": {"cap": 14, "min": 3}}],
                 "expect": [{"console": "player.GetInWorldspace ARG_Province", "contains": ">> 1"},
@@ -1127,7 +1129,7 @@ def _do(cell: tuple[int, int], x: float, y: float, z: float, h: float, p: float,
     return (f"    do: [{{hud: \"off\"}}, {{console: {{line: \"cow ARG_Province {cell[0]} {cell[1]}\", settle: 60}}}}, {{wait: 8}},\n"
             f"         {{console: \"set gamehour to 12\"}}, {{console: \"player.setpos x {x:.0f}\"}}, {{console: \"player.setpos y {y:.0f}\"}},\n"
             f"         {{console: \"player.setpos z {z:.0f}\"}}, {{console: \"player.setangle z {h:.0f}\"}}, "
-            f"{{console: \"player.setangle x {p:.0f}\"}}, {{wait: 4}},\n"
+            f"{{console: \"player.setangle x {p:.0f}\"}}, {{console: \"player.setangle y 0\"}}, {{wait: 4}},\n"
             f"         {{console: \"sw {CLEAR_DRY}\"}}, {{console: \"fw {CLEAR_DRY}\"}}, {{settle: {{cap: 14, min: 3}}}}"
             + (", {wait: 20}]" if far else "]"))   # far: a teleport of more than a cell, 20 s more for the region weather to take (the lint caps the read's `within` at 20)
 

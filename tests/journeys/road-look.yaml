@@ -20,24 +20,27 @@ steps:
   - name: blackwood-20
     scan: 6
     # subject: -168257 30778 4820
-    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+    do: [{hud: "off"},
          {console: "player.setpos x -166754"}, {console: "player.setpos y 31672"}, {console: "player.setpos z 4852"},
-         {console: "player.setangle z 239"}, {console: "player.setangle x 5"}, {wait: 4}]
+         {console: "player.setangle z 239"}, {console: "player.setangle x 5"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]
   - name: blackwood-flat-46
     scan: 6
     # subject: -193612 40901 4970
-    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+    do: [{hud: "off"},
          {console: "player.setpos x -191886"}, {console: "player.setpos y 41148"}, {console: "player.setpos z 4991"},
-         {console: "player.setangle z 262"}, {console: "player.setangle x 5"}, {wait: 4}]
+         {console: "player.setangle z 262"}, {console: "player.setangle x 5"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]
   - name: blackwood-slope-57
     scan: 6
     # subject: -210100 39884 4919
-    do: [{hud: "off"}, {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}},
+    do: [{hud: "off"},
          {console: "player.setpos x -209686"}, {console: "player.setpos y 41582"}, {console: "player.setpos z 4920"},
-         {console: "player.setangle z 194"}, {console: "player.setangle x 4"}, {wait: 4}]
+         {console: "player.setangle z 194"}, {console: "player.setangle x 4"}, {console: "player.setangle y 0"}, {wait: 4},
+         {console: "sw Argonia.esm|0x000E9B"}, {console: "fw Argonia.esm|0x000E9B"}, {settle: {cap: 14, min: 3}}]
     expect: [{read: [weather], path: current.editor_id, eq: ARG_Weather_clear_dry, within: 20}]
     reader: [the road the low line of a shallow worn trough along the middle of the frame, its dirt blending into the land over ~4 m each side, no spike, wall or step along it, no Nordic piece]

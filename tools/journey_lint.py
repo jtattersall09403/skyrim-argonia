@@ -147,6 +147,15 @@ def _line(a) -> str | None:
     return str(v["line"] if isinstance(v, dict) else v)
 
 
+SETANGLE_LINE = re.compile(r"^\s*(?:player\.)?setangle\s+([xyz])\b", re.I)
+
+
+def _after_last_angle(step: dict) -> list:
+    do = step.get("do", [])
+    idx = [i for i, a in enumerate(do) if (ln := _line(a)) is not None and SETANGLE_LINE.match(ln)]
+    return do[idx[-1] + 1:] if idx else []
+
+
 def look(journey: dict) -> list[str]:
     """The look-journey standard (`look: world`): first person, HUD off before the first still, weather per stop."""
     if journey.get("look") != "world":
@@ -165,8 +174,22 @@ def look(journey: dict) -> list[str]:
             errs.append(f"step {n}: look: world: a scan of headings at each stop (`scan: 6`; owner 19:05 #41)")
         if indep and not hud(s):
             errs.append(f"step {n}: look: world: `hud: off` in each stop (independent_steps relaunches)")
+        ls = lines(s)
+        have = {m.group(1).lower() for ln in ls if (m := SETANGLE_LINE.match(ln))}
+        aimed = have - {"y"}
+        need = {"x", "y", "z"} if aimed or any(re.match(r"^\s*(?:player\.)?setpos\b", ln, re.I) for ln in ls) else {"y"}
+        if need - have:   # a stop that aims sets all three; a bare moveto at least zeroes the roll
+            errs.append(f"step {n}: look: world: set `player.setangle {'/'.join(sorted(need - have))}` "
+                        "(roll `y 0`, with x and z when the stop aims): a leftover roll tilts the horizon")
+        elif aimed and not any(("wait" in a and float(a["wait"]) >= 2) or "settle" in a for a in _after_last_angle(s)):
+            errs.append(f"step {n}: look: world: wait at least 2 s (or settle) after the angles before the still")
         if s.get("weather") == "any":
             continue
+        fws = [i for i, ln in enumerate(ls) if FORCE_WEATHER.match(ln)]
+        late = [ln.strip() for ln in ls[fws[-1] + 1:] if TELEPORT.match(ln)] if fws else []
+        if late:
+            errs.append(f"step {n}: look: world: `{late[0]}` follows the `fw`: teleport first, then `sw`, `fw`, settle "
+                        "(the new cell's region weather replaces a force made before the teleport)")
         if not any(FORCE_WEATHER.match(ln) for ln in lines(s)):
             errs.append(f"step {n}: look: world: force the weather by form id (`fw Argonia.esm|0x...`) or say "
                         "`weather: any  # why`")
