@@ -5152,13 +5152,14 @@ CREATE TABLE "formid" (
 -- A terrain patch over the generated ground (terrain/patches.py, applied by grid.Sources.heights and the material).
 -- The old chain's rows (bed-cut.*, receipts in terrain_patch_outcome) are keys only (kind NULL) and never applied.
 -- A `pad` is flat at the mean of the generated ground in its disc plus rise_m, easing back over blend_m; a `bowl`
--- is carved to depth_m under its cell's water (cell_water), its side rising 0.5 m a metre. No absolute height is
+-- is carved to depth_m under its cell's water (cell_water), its side rising 0.5 m a metre. A `lift` raises a yard by the least that
+-- clears its cells' water by 1 m (plus rise_m), its relief kept (a pad is a footprint, never a yard). No absolute height is
 -- stored: a regraded ground or water moves the patch with it (lane 1.15-r4-claywater: the old absolute heights
 -- stood 33 m under the round-3 ground). ltex_edid, when set, paints the disc (material.TEXTURES).
 CREATE TABLE "terrain_patch" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "place_id" TEXT REFERENCES "place"("id"),
-  "kind" TEXT CHECK ("kind" IN ('pad', 'bowl')),
+  "kind" TEXT CHECK ("kind" IN ('pad', 'lift', 'bowl')),
   "x_m" REAL,
   "y_m" REAL,
   "radius_m" REAL CHECK ("radius_m" > 0),

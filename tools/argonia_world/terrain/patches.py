@@ -6,7 +6,16 @@ the navmesh) and where its material is painted (material.Material), so a pad is 
   cell's water), easing back to the ground over
   blend_m (smoothstep). Skyrim.esm's exterior wells (farmwell01, swell, rtplazawell01, genericwell01) stand on
   ground with p50 0.23 m of relief within 2 m and on a dirt or mud vertex (LDirt02, LFallForestDirt01,
-  LRiverMud01): a flat pad under the dirt path's texture (lane 1.15-r4-claywater).
+  LRiverMud01): a flat pad under the dirt path's texture (lane 1.15-r4-claywater). A pad is a footprint (a house, a
+  byre, a well), never a yard: its level is read on the ground the place's lifts leave, and its edge falls to the
+  slope over at least |level - ring| / tan(SEAT_FALL_DEG), so no pad stands proud of the slope as a plate.
+- `lift`: a yard or a group of huts raised as a whole by the least that sets its dry ground's LIFT_LOW_PCT PAD_FREEBOARD_M
+  over its cells' water (plus rise_m), its relief kept, easing back over blend_m. Skyrim.esm never flattens a farmstead's yard: the LAND
+  around 58 farmhouses on slopes (Farmhouse01-06, FarmhouseSmith01, rim slope >= 4 deg) runs on at the slope's own
+  gradient (0-3 m out p50 5.0 deg, 6-12 m p50 6.5 deg), flat (|dz| < 0.15 m) a p50 2 m beyond the footprint, and
+  even under the footprint keeps p50 1.9 m of relief that the house's own stone plinth takes up (lane
+  1.15-r6-claywater-pad-seat: Claywater's 28 m common pad stood as a plate, 0.5 m under the site's flat at its north
+  edge, falling 4-5 m at its east and west, the station house's pad 1.0 m proud of it).
 - `bowl`: the ground carved down to depth_m under its cell's water level within its radius, its side rising
   BOWL_RISE metres a metre beyond (place_ground.py's bowl, re-based on the water: its floor_m was absolute and
   stood 35 m under the round-3 ground).
@@ -30,6 +39,13 @@ BOWL_REACH_M = 20.0
 # the water is lifted clear of it, never left a hand's width over it (lane 1.15-r6-claywater-water: Claywater's
 # common stood 0.52 m over the river, the quest-board marker 0.08 m over it on the bank's slope).
 PAD_FREEBOARD_M = 1.0
+# A lift sets this low percentile of its dry ground PAD_FREEBOARD_M over the water (the yard's low edge, not one
+# bank sample; the river's bed and shelf under the water are the river's and are not counted).
+LIFT_LOW_PCT = 5
+# A pad's edge falls to the ground at no more than this gradient: Skyrim.esm's LAND 0-3 m out from a farmhouse's
+# footprint on a slope, p90 16.7 deg (n 58 houses x 4 sides; lane 1.15-r6-claywater-pad-seat).
+SEAT_FALL_DEG = 16.7
+SEAT_REACH_M = 12.0  # the widest a pad's blend grows: Skyrim.esm's profiles reach their slope within 12 m (the probe's span)
 
 
 @dataclass(frozen=True)
@@ -40,11 +56,16 @@ class Patch:
     col: float
     radius_m: float
     blend_m: float
-    level: float  # the pad's level, the bowl's floor (metres)
+    level: float  # the pad's level, the bowl's floor, the lift's rise (metres)
     ltex: str | None
 
     def reach_m(self) -> float:
-        return self.radius_m + (self.blend_m if self.kind == "pad" else BOWL_REACH_M)
+        return self.radius_m + (BOWL_REACH_M if self.kind == "bowl" else self.blend_m)
+
+    def weight(self, d: np.ndarray) -> np.ndarray:
+        """1 inside the disc, easing (smoothstep) to 0 at radius + blend."""
+        t = np.clip((d - self.radius_m) / self.blend_m, 0.0, 1.0) if self.blend_m else (d > self.radius_m).astype(float)
+        return 1.0 - t * t * (3 - 2 * t)
 
 
 def pad_level(ground: np.ndarray, row: float, col: float, radius_m: float, rise: float = 0.0) -> float:
@@ -57,6 +78,39 @@ def pad_level(ground: np.ndarray, row: float, col: float, radius_m: float, rise:
     d = np.hypot(yy - row, xx - col) * s
     sel = win[d <= max(radius_m, s)]
     return float(sel.mean()) + rise
+
+
+def disc_values(ground: np.ndarray, row: float, col: float, r0_m: float, r1_m: float) -> np.ndarray:
+    """The (province, unpadded) ground's samples between r0_m and r1_m of a point (r0_m < 0: the whole disc)."""
+    s = su.PROVINCE_SAMPLE_M
+    k = max(int(math.ceil(r1_m / s)), 1)
+    i0, j0 = max(int(row) - k, 0), max(int(col) - k, 0)
+    win = np.asarray(ground[i0:int(row) + k + 2, j0:int(col) + k + 2], np.float64)
+    yy, xx = np.mgrid[i0:i0 + win.shape[0], j0:j0 + win.shape[1]]
+    d = np.hypot(yy - row, xx - col) * s
+    return win[(d > r0_m) & (d <= max(r1_m, s))]
+
+
+def seat_blend(ground: np.ndarray, row: float, col: float, radius_m: float, blend_m: float, level: float | None,
+               step: float | None = None) -> float:
+    """The least blend (at least blend_m, at most SEAT_REACH_M) over which the pad's step off the ground at its rim,
+    the worst of its sides, eases away at no more than tan(SEAT_FALL_DEG) on top of the slope's own fall (the
+    smoothstep's steepest is 1.5 x its mean; a downhill side on a slope steps more than the ring's mean says). A lift
+    passes its rise as `step` (the same everywhere on its rim)."""
+    s = su.PROVINCE_SAMPLE_M
+    th = np.linspace(0.0, 2 * np.pi, 48, endpoint=False)
+
+    def ring(r_m: float) -> np.ndarray:
+        rr = np.clip(np.rint(row + np.sin(th) * r_m / s).astype(int), 0, ground.shape[0] - 1)
+        cc = np.clip(np.rint(col + np.cos(th) * r_m / s).astype(int), 0, ground.shape[1] - 1)
+        return np.asarray(ground[rr, cc], np.float64)
+    g0 = ring(radius_m)
+    if step is None:
+        step = float(np.abs(level - g0).max())
+    tan_ = math.tan(math.radians(SEAT_FALL_DEG))
+    k = float(np.abs(ring(radius_m + 2 * s) - g0).max()) / (2 * s)  # the slope's own fall outward: the pad's share is
+    need = 1.5 * step / max(tan_ - k, 0.5 * tan_)  # what is left of the bar (half of it at least)
+    return round(max(blend_m, min(need, SEAT_REACH_M)), 3)
 
 
 def pad_water(r: dict, water_at) -> float | None:
@@ -79,24 +133,44 @@ class Patches:
     def from_rows(cls, rows, ground: np.ndarray, pad: int, water_at) -> "Patches":
         """rows: dicts of terrain_patch; ground: the province array (no pad); water_at(x_m, y_m) -> level or None."""
         s = su.PROVINCE_SAMPLE_M
-        out = []
-        for r in rows:
-            if not r["kind"]:
+        rows = [r for r in rows if r["kind"]]
+        lifts, out = [], []
+        for r in rows:  # the lifts first: a pad's level is read on the ground they leave
+            if r["kind"] != "lift":
                 continue
             row, col = r["y_m"] / s, r["x_m"] / s
+            lv = pad_water(r, water_at)
+            lift = 0.0
+            if lv is not None:  # the yard's dry ground clears the water; the river's own bed and shore in the disc
+                # are the river's, never lifted into a bank (Claywater's common holds 28 bed and 75 shore samples)
+                v = disc_values(ground, row, col, -1.0, r["radius_m"])
+                v = v[v > lv]
+                lift = max(0.0, lv + PAD_FREEBOARD_M - float(np.percentile(v, LIFT_LOW_PCT))) if v.size else 0.0
+            lift += r["rise_m"] or 0.0
+            blend = seat_blend(ground, row, col, r["radius_m"], r["blend_m"] or 0.0, None, abs(lift))
+            lifts.append(Patch(r["id"], "lift", row + pad, col + pad, r["radius_m"], blend, round(lift, 3),
+                               r["ltex_edid"]))
+
+        def lifted(row: float, col: float) -> float:
+            return sum(float(q.weight(np.array(math.hypot(row + pad - q.row, col + pad - q.col) * s))) * q.level
+                       for q in lifts)
+        for r in rows:
+            row, col = r["y_m"] / s, r["x_m"] / s
             if r["kind"] == "pad":
-                level = pad_level(ground, row, col, r["radius_m"], r["rise_m"] or 0.0)
+                level = pad_level(ground, row, col, r["radius_m"], r["rise_m"] or 0.0) + lifted(row, col)
                 lv = pad_water(r, water_at)
                 if lv is not None:
                     level = max(level, lv + PAD_FREEBOARD_M)
-            else:
+                blend = seat_blend(ground, row, col, r["radius_m"], r["blend_m"] or 0.0, level - lifted(row, col))
+                out.append(Patch(r["id"], "pad", row + pad, col + pad, r["radius_m"], round(blend, 3),
+                                 round(level, 3), r["ltex_edid"]))
+            elif r["kind"] == "bowl":
                 lv = water_at(r["x_m"], r["y_m"])
                 if lv is None:
                     raise ValueError(f"{r['id']}: a bowl in a cell with no water")
-                level = lv - r["depth_m"]
-            out.append(Patch(r["id"], r["kind"], row + pad, col + pad, r["radius_m"], r["blend_m"] or 0.0,
-                             round(level, 3), r["ltex_edid"]))
-        return cls(out)
+                out.append(Patch(r["id"], "bowl", row + pad, col + pad, r["radius_m"], r["blend_m"] or 0.0,
+                                 round(lv - r["depth_m"], 3), r["ltex_edid"]))
+        return cls(lifts + out)
 
     @classmethod
     def load(cls, ground: np.ndarray, pad: int, world=None) -> "Patches | None":
@@ -129,10 +203,10 @@ class Patches:
                 continue
             sl, d = got
             win = out[sl]
-            if p.kind == "pad":
-                t = np.clip((d - p.radius_m) / p.blend_m, 0.0, 1.0) if p.blend_m else (d > p.radius_m).astype(float)
-                keep = t * t * (3 - 2 * t)
-                win[...] = p.level + (win - p.level) * keep
+            if p.kind == "lift":
+                win += p.level * p.weight(d)
+            elif p.kind == "pad":
+                win[...] = p.level + (win - p.level) * (1.0 - p.weight(d))
             else:
                 np.minimum(win, p.level + np.maximum(0.0, d - p.radius_m) * BOWL_RISE, out=win)
 

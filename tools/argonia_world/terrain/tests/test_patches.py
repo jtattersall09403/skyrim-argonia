@@ -29,7 +29,7 @@ def test_pad_is_flat_at_its_mean_and_blends_out():
     d = np.hypot(yy - 30, xx - 30) * S
     inside = out[d <= 4.0]
     assert np.ptp(inside) < 1e-6 and abs(inside.mean() - g[30, 30]) < 0.3
-    far = d > 7.0 + S
+    far = d > 4.0 + p.items[0].blend_m + S  # the blend widens to the seat gradient on a slope (pad-seat)
     assert np.allclose(out[far], g[far])
 
 
@@ -61,7 +61,7 @@ def test_pad_paint_fades_over_its_blend():
     w[..., 0] = 1.0
     p.paint(w, 0, 0, {"LDirtPath01": 2})
     line = w[30, 30:, 2]
-    assert ((line > 0.02) & (line < 0.98)).sum() >= 1 and line[int((4.0 + max(3.0, 2 * S)) / S) + 1:].max() == 0.0
+    assert ((line > 0.02) & (line < 0.98)).sum() >= 1 and line[int((4.0 + max(p.items[0].blend_m, 2 * S)) / S) + 1:].max() == 0.0
     assert np.all(np.diff(line) <= 1e-6) and np.allclose(w.sum(axis=2), 1.0)
 
 
@@ -80,3 +80,77 @@ def test_pad_stands_its_freeboard_over_the_wettest_cell_under_its_disc():
     assert patches.Patches.from_rows(_rows(), g, 0, wet).items[0].level == round(mean + patches.PAD_FREEBOARD_M, 3)
     low = lambda x, y: mean - 5.0
     assert patches.Patches.from_rows(_rows(), g, 0, low).items[0].level == mean
+
+
+def test_a_lift_keeps_the_yards_relief_and_clears_the_water():
+    """Lane 1.15-r6-claywater-pad-seat: Skyrim.esm never flattens a farmstead's yard (58 farmhouses on slopes: the LAND
+    runs on at the slope's gradient beside the footprint). A lift raises the yard by the least that sets its dry
+    ground's low edge PAD_FREEBOARD_M over the water, its relief kept; the river's bed in its disc is never counted; over dry
+    cells it is no change at all."""
+    g = _ground()
+    lift = _rows(kind="lift", radius_m=8.0, blend_m=4.0, ltex_edid=None)
+    dry = patches.Patches.from_rows(lift, g, 0, lambda x, y: None)
+    out = g.astype(np.float64).copy()
+    dry.apply(out, 0, 0)
+    assert np.allclose(out, g)
+    lv = float(g[30, 30]) - 0.2  # the water 0.2 m under the yard's centre: the yard rises 1.2 m
+    wet = patches.Patches.from_rows(lift, g, 0, lambda x, y: lv)
+    v = patches.disc_values(g, 30, 30, -1.0, 8.0)
+    low = float(np.percentile(v[v > lv], patches.LIFT_LOW_PCT))
+    assert abs(wet.items[0].level - (lv + patches.PAD_FREEBOARD_M - low)) < 1e-3
+    out = g.astype(np.float64).copy()
+    wet.apply(out, 0, 0)
+    yy, xx = np.mgrid[0:60, 0:60]
+    d = np.hypot(yy - 30, xx - 30) * S
+    inside = d <= 8.0
+    assert np.allclose(out[inside] - g[inside], wet.items[0].level)  # raised as a whole: the slope is kept
+    far = d > 8.0 + wet.items[0].blend_m + S
+    assert np.allclose(out[far], g[far])
+
+
+def _edge_profiles(out, r_m):
+    """The ground every 0.5 m from a pad's rim to 12 m out, on its four sides (bilinear)."""
+    t = np.arange(0.0, 12.01, 0.5)
+    prof = []
+    for dy, dx in ((0, 1), (0, -1), (1, 0), (-1, 0)):
+        rr, cc = 30 + dy * (r_m + t) / S, 30 + dx * (r_m + t) / S
+        i, j = np.floor(rr).astype(int), np.floor(cc).astype(int)
+        fr, fc = rr - i, cc - j
+        prof.append(out[i, j] * (1 - fr) * (1 - fc) + out[i, j + 1] * (1 - fr) * fc + out[i + 1, j] * fr * (1 - fc)
+                    + out[i + 1, j + 1] * fr * fc)
+    return np.array(prof)
+
+
+def test_a_footprint_pad_sits_in_the_slope_with_no_plate_edge():
+    """Lane 1.15-r6-claywater-pad-seat: a pad inside a lift is read on the lifted ground (the station house's pad
+    stood 1.0 m proud of the common's plate), and its edge falls to the slope no steeper than SEAT_FALL_DEG (Skyrim.esm's
+    farmhouse LAND 0-3 m out, p90) with the road-profile bar's second difference (0.487 m p95 at 0.5 m steps);
+    beyond the blend the ground is the slope's own, no flat run longer than Skyrim's beside a footprint (p90 8.5 m)."""
+    g = _ground()
+    lv = float(g[30, 30]) - 0.2
+    rows = _rows(kind="lift", id="a-yard", radius_m=10.0, blend_m=4.0, ltex_edid=None) + _rows(id="b-house")
+    p = patches.Patches.from_rows(rows, g, 0, lambda x, y: lv)
+    lift, pad = p.items
+    assert lift.kind == "lift" and pad.kind == "pad"
+    # read on the lifted ground, its own freeboard kept
+    assert abs(pad.level - max(patches.pad_level(g, 30, 30, 4.0) + lift.level, lv + patches.PAD_FREEBOARD_M)) < 1e-3
+    out = g.astype(np.float64).copy()
+    p.apply(out, 0, 0)
+    prof = _edge_profiles(out, 4.0)
+    assert np.percentile(np.abs(np.diff(prof, 2, axis=1)), 95) < 0.487
+    # on Skyrim's p50 farmstead slope (5 deg) the edge falls no steeper than SEAT_FALL_DEG with the slope included
+    g5 = (10.0 + np.tan(np.radians(5.0)) * np.mgrid[0:60, 0:60][1] * S).astype(np.float32)
+    lv5 = float(g5[30, 30]) - 0.2
+    out5 = g5.astype(np.float64).copy()
+    patches.Patches.from_rows(rows, g5, 0, lambda x, y: lv5).apply(out5, 0, 0)
+    fall = np.abs(np.diff(_edge_profiles(out5, 4.0), axis=1)).max() / 0.5
+    assert np.degrees(np.arctan(fall)) <= patches.SEAT_FALL_DEG + 0.5
+    flat = [(np.abs(z - z[0]) < 0.15).argmin() * 0.5 for z in prof]
+    assert max(flat) <= 8.5
+
+
+def test_a_steep_pad_edge_widens_its_blend_to_the_seat_gradient():
+    g = _ground()
+    p = patches.Patches.from_rows(_rows(blend_m=0.5, rise_m=2.0), g, 0, lambda x, y: None)
+    need = 2.0 / np.tan(np.radians(patches.SEAT_FALL_DEG))
+    assert p.items[0].blend_m >= need - 0.5
