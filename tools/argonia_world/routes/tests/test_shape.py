@@ -111,3 +111,23 @@ def test_deck_span_lies_between_the_seats():
              for k, cx in enumerate((50.0, 60.0))]
     m = S.deck_span((101, 101), seats)
     assert m[50, 51:60].all() and not m[50, 49] and not m[50, 61] and not m[40, 55]
+
+
+def test_bridge_on_a_climbing_road_seats_the_whole_axis():
+    """The road climbs away from the crossing: the deck is the seat axis's highest ground, and after the seats the
+    ground along each seat (0.3 m under the deck to 4 m beyond) stands at the deck top (the census's seat bar)."""
+    from tools.argonia_world.routes import census as K
+    n = 120
+    y, x = np.mgrid[0:n + 1, 0:n + 1].astype(np.float64)
+    chan = (x >= 58) & (x <= 62)
+    h = 60.0 + 0.6 * np.abs(x - 60) * S.MPP  # climbing 0.6 m a metre both ways from the channel
+    lo, hi = np.full(h.shape, -np.inf), np.full(h.shape, np.inf)
+    road = [(np.array([[10.0, n / 2], [n - 10.0, n / 2]]), 4.5 / S.MPP)]
+    seats = [{"bridge": "b", "end": k, "at_m": [cx * S.MPP, n / 2 * S.MPP], "z_m": None, "heading": 90.0,
+              "centre_m": [60 * S.MPP, n / 2 * S.MPP], "yaw": 0.0, "from_m": -0.3, "to_m": 4.0, "half_width_m": 3.0}
+             for k, cx in enumerate((55.0, 65.0))]
+    S.bridge_decks(h, seats)
+    S.bridge_seats(seats, lo, hi, keep=chan, corridor_m=S.corridor(h.shape, road), h=h)
+    f = np.minimum(np.maximum(h, lo), hi)
+    out = K.seat_census(f, seats)
+    assert not any(q["red"] for q in out), out

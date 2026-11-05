@@ -702,17 +702,6 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
         span = deck_span(chan.shape, inp.seats)
     dc = dry_corridor(inp.roads, lo, hi, role, vmin, vmax, reach_, keep=chan | span)
     st["roads_dry"] = dc["stats"]
-    decks = []
-    if inp.seats:  # each deck at its road's corridor (the higher end), the ends eased up to it (the channel untouched)
-        from tools.argonia_world.routes.shape import bridge_decks, bridge_seats, corridor
-        hc = np.minimum(np.maximum(h, lo), hi)
-        decks = bridge_decks(hc, inp.seats)
-        bs = bridge_seats(inp.seats, lo, hi, keep=chan | span, corridor_m=corridor(lo.shape, inp.roads), h=hc)
-        del hc
-        st["bridge_seats"] = bs["stats"]
-        role[bs["seated"] & (role == 1)] = 3
-        dc["bank"] = dc["bank"] | bs["seated"]
-        del bs
     road_dry = dc["bank"]
     road_raised = dc["raised"].astype(np.uint8)
     foot &= ~road_dry
@@ -728,6 +717,21 @@ def _generate(inp: Inputs, log=print, pre_only: bool = False) -> dict:
     sites = shape_sites(h, lo, hi, role, inp, vmin, vmax, foot & ~sbank, sbank | touch | fbank, nz, chan)  # a dry cell's vertex stays bank; a step's channel keeps its bed
     diag["h_roads_in"] = h.astype(np.float32)  # after the sites, before the roads
     st["sites"] = {k: sum(s["shape"] == k for s in sites) for k in ("rise", "bank", "depression", "flat", "deep_water")}
+    decks = []
+    # after the sites (a town's flat ground reshapes the land a seat stands on: gideon-step's deck was set 3 m under
+    # the ground the Gideon site then raised): each deck at its road's corridor (the higher end), the ends eased up
+    # to it (the channel untouched)
+    if inp.seats:
+        from tools.argonia_world.routes.shape import bridge_decks, bridge_seats, corridor
+        hc = np.minimum(np.maximum(h, lo), hi)
+        decks = bridge_decks(hc, inp.seats)
+        bs = bridge_seats(inp.seats, lo, hi, keep=chan | span, corridor_m=corridor(lo.shape, inp.roads), h=hc)
+        del hc
+        st["bridge_seats"] = bs["stats"]
+        role[bs["seated"] & (role == 1)] = 3
+        road_dry |= bs["seated"]
+        foot &= ~bs["seated"]
+        del bs
 
     # 4 (run here). the roads laid in as Skyrim.esm lays them (routes/shape.py: the measured trough across, the grade
     # along), after the water field and the sites so neither re-slopes them, then held inside their cones: a pinned

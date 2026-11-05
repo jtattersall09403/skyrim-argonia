@@ -136,3 +136,10 @@ No crossing is too wide or deep for a ford: every reach is 25.3 m or narrower (w
   4. `bridge_seats` only raises: lo = deck over the seat, pinned (hi = deck) only where the ground is at or under the deck, and a lo cone at GRADE_MAX eases the road up to it. It never cuts below the causeway.
   5. generate writes `out/terrain/bridge-decks.json` with, per bridge: id, deck_m, ends_ground_m, centre_m, ends_m, heading, yaw. infra should take both z and centre_m from it: the deck is centred on the axis point, with no seat() offset.
 - L2 tests: `test_bridge_deck_stands_at_the_raised_corridor` (deck = corridor 61.1 m, seats level, none under the causeway, the channel untouched, the ease within GRADE_MAX) and `test_deck_span_lies_between_the_seats`.
+
+## Round 8: gideon-step's seats 2.9 m off their deck (fifth rebuild)
+- The census's axis is right: it measures the seat's own length, 0.3 m under the deck to 4 m beyond.
+- The seat was wrong. bridge_decks and bridge_seats ran before `shape_sites`, which then raised the place.imperial-fringe.gideon site's flat ground around the crossing to about 70-72 m. At generate time the seat ground was 66.81 m, and the final ground was 66.8-69.7 m along end 0 and 63.8-68.2 m along end 1.
+- Fix: the decks and seats now run after the sites, on the ground the road pass starts from.
+- L2 test `test_bridge_on_a_climbing_road_seats_the_whole_axis`: a road climbing 0.6 m a metre from the channel, deck from bridge_decks, the seat census green.
+- Carried by the next land rebuild.
