@@ -126,8 +126,14 @@ def reach(value, where: str) -> list[str]:
     if not isinstance(value, list) or not all(isinstance(p, str) and p.strip() for p in value):
         return [f"{where}reach: a list of repo paths or globs (or `esm`)"]
     from tools import pass_ledger
-    return [f"{where}reach `{p}` matches no tracked file" for p in value
-            if p != "esm" and not pass_ledger._blobs(str(pass_ledger.REPO), (p,)).strip()]
+    errs = []
+    for p in value:
+        if p.startswith(pass_ledger.RECORDS):   # a records spec (tools/pass_ledger.py): its form, not a tracked file
+            if pass_ledger._files(str(pass_ledger.REPO), p[len(pass_ledger.RECORDS):]) is None:
+                errs.append(f"{where}reach `{p}`: records: Folder, wrld, or cell X,Y [rN]")
+        elif p != "esm" and not pass_ledger._blobs(str(pass_ledger.REPO), (p,)).strip():
+            errs.append(f"{where}reach `{p}` matches no tracked file")
+    return errs
 
 
 TELEPORT = re.compile(r"^\s*(?:player\.)?(?:cow|coc|setpos|moveto|centeronworld|centeroncell)\b", re.I)

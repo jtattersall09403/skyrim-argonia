@@ -11,7 +11,7 @@
 # <class>_kinds, <class>_spawn). The fourth stop is Claywater's guar pen: both kept guar (lane 1.15-r5-creatures) read
 # present, alive, enabled and near. A failed step alone takes a still.
 id: creatures-kinds
-reach: [esm, "tools/argonia_world/creatures/**", data/creature-kind-bars.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["tools/argonia_world/creatures/**", "data/creature-kind-bars.json", "data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -61,60 r1", "records: cell -61,61 r1", "records: cell -57,11 r1", "records: cell -35,-4 r1", "records: cell -34,-4 r1", "records: cell 3,18 r1", "records: cell 3,19 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium

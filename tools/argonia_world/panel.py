@@ -233,7 +233,8 @@ def journey_text(vs: list[dict]) -> str:
             # at least 3 s for the sky and near textures after `sw`, capped at the old 14 s
             do += [{"settle": {"cap": 14, "min": 3}}]
             steps.append({"name": f"{v['id']}-{when}", "scan": look.SCAN, "do": do, "expect": ex})
-    j = {"id": "world-panel", "look": "world", "reach": ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+    # reach: the records and cells are added by tools/journeys/reach_records.py (refresh)
+    j = {"id": "world-panel", "look": "world", "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     from tools.journeys import aims   # a reader-named heading for a stop (tests/journeys/aims.yaml)

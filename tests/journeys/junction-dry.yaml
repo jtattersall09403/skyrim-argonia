@@ -3,7 +3,7 @@
 # blackrose-cordon-line, coast-road and rose-causeway share one arc of radius 52.24 m round (2475.8, 6226.5) m), clear-dry at noon,
 # at the arc's middle (2445.9, 6269.3) m. The player stands there and is not swimming.
 id: junction-dry
-reach: [esm, "tools/argonia_world/regions/**", "tools/argonia_world/routes/**", data/dependencies.json]
+reach: ["tools/argonia_world/regions/**", "tools/argonia_world/routes/**", "data/dependencies.json", "records: ref ARG_Ref_BridgeGideonStep", "records: ref ARG_Ref_BridgeGlenbridgeStep", "records: ref ARG_Ref_BridgeThornStep", "records: cell -21,-44 r1"]
 look: world
 runner: 1
 independent_steps: true

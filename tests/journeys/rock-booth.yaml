@@ -4,6 +4,7 @@
 # own clear weather (no fog over the base). Reader checklist per still: sunk (no open bottom), no gap
 # under the downhill lip, no hollow back, leans with the slope not against it. Never set what it tests.
 id: rock-booth
+reach: ["data/dependencies.json", "records: Statics", "records: cell -60,18 r1", "records: cell -55,63 r1", "records: cell -41,26 r1", "records: cell -41,39 r1", "records: cell -35,42 r1", "records: cell 24,44 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true

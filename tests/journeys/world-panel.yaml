@@ -10,11 +10,7 @@
 {
  "id": "world-panel",
  "look": "world",
- "reach": [
-  "esm",
-  "tests/scenes/world-panel.txt",
-  "data/dependencies.json"
- ],
+ "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonHigh", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelDeepRiverCorridorHigh", "records: ref ARG_Ref_PanelDeepRiverCorridorShore", "records: ref ARG_Ref_PanelDeepSinkBasinHigh", "records: ref ARG_Ref_PanelDeepSinkBasinShore", "records: ref ARG_Ref_PanelFloodedForestHigh", "records: ref ARG_Ref_PanelFloodedForestShore", "records: ref ARG_Ref_PanelInteriorSwampHigh", "records: ref ARG_Ref_PanelInteriorSwampShore", "records: ref ARG_Ref_PanelNorthernTransitionHigh", "records: ref ARG_Ref_PanelNorthernTransitionShore", "records: ref ARG_Ref_PanelRootlandHigh", "records: ref ARG_Ref_PanelRootlandShore", "records: ref ARG_Ref_PanelTidalDeltaHigh", "records: ref ARG_Ref_PanelTidalDeltaShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: ref ARG_Ref_PanelWesternFrontierShore", "records: cell -59,-16 r1", "records: cell -51,35 r1", "records: cell -43,60 r1", "records: cell -40,53 r1", "records: cell -39,13 r1", "records: cell -30,-36 r1", "records: cell -28,-34 r1", "records: cell -22,-6 r1", "records: cell -17,-8 r1", "records: cell -16,-31 r1", "records: cell -16,-3 r1", "records: cell -2,6 r1", "records: cell -1,55 r1", "records: cell 9,48 r1", "records: cell 25,-12 r1", "records: cell 26,-17 r1", "records: cell 26,-15 r1", "records: cell 44,44 r1"],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",

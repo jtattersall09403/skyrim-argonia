@@ -9,11 +9,7 @@
 {
  "id": "sky-ab",
  "look": "world",
- "reach": [
-  "esm",
-  "tests/scenes/world-panel.txt",
-  "data/dependencies.json"
- ],
+ "reach": ["tests/scenes/world-panel.txt", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Climates", "records: Regions", "records: wrld", "records: ref ARG_Ref_PanelCoastalLagoonShore", "records: ref ARG_Ref_PanelWesternFrontierHigh", "records: cell -51,35 r1", "records: cell 26,-17 r1"],
  "independent_steps": true,
  "runner": 1,
  "crash_risk": "medium",

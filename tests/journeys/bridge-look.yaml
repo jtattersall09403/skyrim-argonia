@@ -4,7 +4,7 @@
 # yaw, aimed at the deck's middle (eye at the current ground + 1.6 m); then the player teleported onto the deck's middle
 # must stand within 0.3 m of the deck top infra reads (the state read).
 id: bridge-look
-reach: [esm, "tools/argonia_world/regions/**", "tools/argonia_world/routes/**", data/dependencies.json]
+reach: ["tools/argonia_world/regions/**", "tools/argonia_world/routes/**", "data/dependencies.json", "records: ref ARG_Ref_BridgeGideonStep", "records: ref ARG_Ref_BridgeGlenbridgeStep", "records: ref ARG_Ref_BridgeThornStep", "records: cell -35,11 r1", "records: cell -35,12 r1", "records: cell -31,17 r1", "records: cell 33,38 r1", "records: cell 33,39 r1"]
 look: world
 runner: 1
 independent_steps: true

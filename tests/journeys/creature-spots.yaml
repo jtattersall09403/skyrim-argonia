@@ -6,6 +6,7 @@
 # list of that region class and band, a fixed list, never levelled: 0035). The den reads its predator.
 # A failure names the read; a failed step alone takes a still. No walking, no fighting (owner, 2026-11-01).
 id: creature-spots
+reach: ["data/dependencies.json", "records: Npcs", "records: LeveledNpcs", "records: EncounterZones", "records: cell -38,29 r1", "records: cell -38,30 r1", "records: cell -37,25 r1", "records: cell -36,37 r1", "records: cell -31,27 r1", "records: cell -26,30 r1", "records: cell -26,31 r1", "records: cell -26,34 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium

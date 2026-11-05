@@ -180,8 +180,10 @@ def test_panel_and_sky_reach_ignores_other_journeys_and_follows_placement(name, 
     every key. Their own reach: an unrelated journey's edit leaves the keys; a placement (ESM) change moves them."""
     import yaml
     j = yaml.safe_load((ROOT / "tests" / "journeys" / f"{name}.yaml").read_text())
-    assert "esm" in j["reach"] and "tests/journeys/**" not in j["reach"]
+    assert "esm" not in j["reach"] and "records: Weathers" in j["reach"] and "tests/journeys/**" not in j["reach"]
     r = tmp_path / "repo"
+    (r / "plugin" / "Argonia" / "Weathers").mkdir(parents=True)
+    (r / "plugin" / "Argonia" / "Weathers" / "w.yaml").write_text("sky: 1\n")
     (r / "tests" / "journeys").mkdir(parents=True)
     (r / "tests" / "scenes").mkdir(parents=True)
     (r / "data").mkdir()
@@ -199,10 +201,111 @@ def test_panel_and_sky_reach_ignores_other_journeys_and_follows_placement(name, 
     subprocess.run(["git", "add", "."], cwd=r, check=True)
     pl.clear_cache()
     assert keys() == k0
-    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"refs2")   # a placement change
+    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"refs2")   # a placement change elsewhere: the ESM is not in reach
+    pl.clear_cache()
+    assert keys() == k0
+    (r / "plugin" / "Argonia" / "Weathers" / "w.yaml").write_text("sky: 2\n")   # a weather record the stops judge
     pl.clear_cache()
     assert all(a != b for a, b in zip(keys(), k0))
     pl.clear_cache()
+
+
+def _plugin(tmp_path):
+    r = tmp_path / "rec"
+    pa = r / "plugin" / "Argonia"
+    ws = pa / "Worldspaces" / "WS - 000800_X.esm"
+    for rel, txt in (("Weathers/a.yaml", "w: 1\n"), ("Weathers/b.yaml", "w: 2\n"), ("ImageSpaces/i.yaml", "i: 1\n"),
+                     ("Worldspaces/WS - 000800_X.esm/RecordData.yaml",
+                      "EditorID: WS\nTopCell:\n  Persistent:\n  - FormKey: 1\n    EditorID: Ref_A\n    Position: 1, 2, 3\n"
+                      "  - FormKey: 2\n    EditorID: Ref_B\n    Position: 4, 5, 6\n"),
+                     ("Worldspaces/WS - 000800_X.esm/-1, 0/-2, 0/0A_X.esm/RecordData.yaml", "Grid:\n  Point: -9, 27\n"),
+                     ("Worldspaces/WS - 000800_X.esm/-1, 0/-2, 1/0B_X.esm/RecordData.yaml", "Grid:\n  Point: 3, 4\n")):
+        (pa / rel).parent.mkdir(parents=True, exist_ok=True)
+        (pa / rel).write_text(txt)
+    pl.clear_cache()
+    return r, pa, ws
+
+
+def test_a_records_spec_hashes_only_its_files(tmp_path):
+    r, pa, _ = _plugin(tmp_path)
+    j = {"id": "x", "reach": ["records: Weathers", "records: ImageSpaces"]}
+    h = lambda: pl.reach_hash(j, {"name": "s"}, r)  # noqa: E731
+    h0 = h()
+    (pa / "Climates").mkdir()
+    (pa / "Climates" / "c.yaml").write_text("c\n")   # another folder: not reached
+    (pa / "Statics").mkdir()
+    (pa / "Statics" / "s.yaml").write_text("s\n")
+    pl.clear_cache()
+    assert h() == h0
+    (pa / "Weathers" / "b.yaml").write_text("w: 3\n")
+    pl.clear_cache()
+    assert h() != h0
+    # the ESM is not read by a records-only reach
+    (r / "out").mkdir()
+    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"x")
+    h1 = h()
+    (r / "out" / "ArgoniaWorld.esm").write_bytes(b"y")
+    pl.clear_cache()
+    assert h() == h1
+
+
+def test_a_cell_spec_follows_the_cell_folder_and_its_shard_line(tmp_path):
+    import gzip
+    r, pa, ws = _plugin(tmp_path)
+    land = r / "out" / "terrain" / "land"
+    land.mkdir(parents=True)
+
+    def shard(v):
+        with gzip.open(land / "cy+027.jsonl.gz", "wb") as f:
+            f.write(json.dumps({"cell": "A", "vhgt": v, "x": -9, "y": 27}).encode() + b"\n")
+            f.write(json.dumps({"cell": "B", "vhgt": 0, "x": 50, "y": 27}).encode() + b"\n")
+    shard("a")
+    j = {"id": "x", "reach": ["records: cell -9,27"]}
+    h = lambda: pl.reach_hash(j, {"name": "s"}, r)  # noqa: E731
+    h0 = h()
+    (ws / "-1, 0" / "-2, 1" / "0B_X.esm" / "RecordData.yaml").write_text("Grid:\n  Point: 3, 4\nchanged: 1\n")   # another cell
+    (pa / "Weathers" / "a.yaml").write_text("w: 9\n")
+    pl.clear_cache()
+    assert h() == h0
+    (ws / "-1, 0" / "-2, 0" / "0A_X.esm").mkdir(exist_ok=True)
+    (ws / "-1, 0" / "-2, 0" / "0A_X.esm" / "Temporary.yaml").write_text("ref: 1\n")   # a ref placed in the cell
+    pl.clear_cache()
+    h1 = h()
+    assert h1 != h0
+    shard("b")   # the cell's own LAND line
+    pl.clear_cache()
+    h2 = h()
+    assert h2 != h1
+    with gzip.open(land / "cy+027.jsonl.gz", "ab") as f:   # a neighbour's line in the same shard: not this cell
+        f.write(json.dumps({"cell": "C", "vhgt": 1, "x": -8, "y": 27}).encode() + b"\n")
+    pl.clear_cache()
+    assert h() == h2
+    j = {"id": "x", "reach": ["records: cell -9,27 r1"]}   # the ring takes the neighbour in
+    pl.clear_cache()
+    h3 = h()
+    with gzip.open(land / "cy+027.jsonl.gz", "ab") as f:
+        f.write(json.dumps({"cell": "D", "vhgt": 2, "x": -8, "y": 27}).encode() + b"\n")
+    pl.clear_cache()
+    assert h() != h3
+
+
+def test_wrld_spec_leaves_out_persistent_refs_and_ref_spec_is_one_of_them(tmp_path):
+    r, pa, ws = _plugin(tmp_path)
+    f = ws / "RecordData.yaml"
+    hs = lambda *specs: pl.reach_hash({"id": "x", "reach": [*("records: " + s for s in specs)]}, {"name": "s"}, r)  # noqa: E731
+    w0, a0, b0 = hs("wrld"), hs("ref Ref_A"), hs("ref Ref_B")
+    f.write_text(f.read_text().replace("4, 5, 6", "4, 5, 7"))   # ref B moved
+    pl.clear_cache()
+    assert (hs("wrld"), hs("ref Ref_A")) == (w0, a0) and hs("ref Ref_B") != b0
+    f.write_text(f.read_text().replace("EditorID: WS", "EditorID: WS2"))   # the record itself
+    pl.clear_cache()
+    assert hs("wrld") != w0
+
+
+def test_lint_accepts_records_specs_and_rejects_bad_ones():
+    from tools import journey_lint as jl
+    assert jl.reach(["records: Weathers", "records: wrld", "records: cell -9,27 r1", "records: ref A_b"], "") == []
+    assert jl.reach(["records: cell nine"], "")
 
 
 def test_a_setup_step_is_never_skipped(repo, tmp_path):

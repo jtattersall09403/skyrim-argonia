@@ -5,7 +5,7 @@
 # Argonia.esm (TXST TX01 = Skyrim.esm's normals) and ArgoniaWorld.esm (the new gradient). Midday sun for the sheen.
 id: ground-materials
 look: world
-reach: [esm, "tools/argonia_world/terrain/**", data/mesh-textures.json, data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["tools/argonia_world/terrain/**", "data/mesh-textures.json", "data/dependencies.json", "records: LandscapeTextures", "records: TextureSets", "records: cell -51,9 r1", "records: cell -50,8 r1", "records: cell -9,27 r1", "records: cell -8,27 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 runner: 1
 independent_steps: true
 crash_risk: medium

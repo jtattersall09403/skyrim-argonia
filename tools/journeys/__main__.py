@@ -118,6 +118,8 @@ def refresh(only: set[str] | None = None) -> int:
               f"{'' if r['clear'] else ' (no clear stand within reach)'}")
     _apply_aims(b, only)
     _put_reach(reach)
+    from tools.journeys import reach_records
+    reach_records.apply(only)   # the records each look journey judges, in place of the whole ESM
     (ROOT / "out" / "journeys-refresh.json").write_text(json.dumps(log, indent=1))
     print(f"journeys refresh: {len(log)} vantages, {len(moved)} moved, {len(stuck)} not clear")
     return _check(b, only)

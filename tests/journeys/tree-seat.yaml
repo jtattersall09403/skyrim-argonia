@@ -10,6 +10,7 @@
 # the trees and plants seen; the six classes' stills should not read as one forest.
 # 
 id: tree-seat
+reach: ["data/dependencies.json", "records: Statics", "records: cell -62,46 r1", "records: cell -46,-30 r1", "records: cell -46,-29 r1", "records: cell -35,50 r1", "records: cell -31,-2 r1", "records: cell -30,-25 r1", "records: cell -30,48 r1", "records: cell -18,59 r1", "records: cell -15,-16 r1", "records: cell -6,-54 r1", "records: cell 6,42 r1", "records: cell 14,29 r1", "records: cell 22,14 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true

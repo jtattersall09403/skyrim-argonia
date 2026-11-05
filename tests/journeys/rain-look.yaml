@@ -1,7 +1,7 @@
 # 1.15 round 6 (checks row 158, owner 19:05 #41: yellow smog fog in rain): the rock-booth rock-1 stand under our wet-rain and
 # storm weathers, forced by form id at noon. One still each for a `reader`: grey or slate, no yellow or olive cast.
 id: rain-look
-reach: [esm, "tools/argonia_world/regions/**", data/dependencies.json]   # the pass ledger's inputs (tools/pass_ledger.py)
+reach: ["tools/argonia_world/regions/**", "data/dependencies.json", "records: Weathers", "records: ImageSpaces", "records: Regions", "records: cell -55,63 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true

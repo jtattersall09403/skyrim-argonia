@@ -1087,7 +1087,7 @@ def sky_ab(b: Build, reach=None) -> tuple[str, list]:
     for st in steps:   # every still stop takes the scan of headings (look.SCAN); the setup step takes none
         if not st.get("setup"):
             st["scan"] = look.SCAN
-    j = {"id": "sky-ab", "look": "world", "reach": reach or ["esm", "tests/scenes/world-panel.txt", "data/dependencies.json"],
+    j = {"id": "sky-ab", "look": "world", "reach": reach or ["tests/scenes/world-panel.txt", "data/dependencies.json"],
          "independent_steps": True, "runner": 1, "crash_risk": "medium", "scene": "world-panel", "camera": "first",
          "steps": steps}
     from tools.journeys import aims

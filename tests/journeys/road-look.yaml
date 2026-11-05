@@ -6,6 +6,7 @@
 # window (46 %) and the slope window (57 %) of the L3 stills; each faces along the road. Stills are the evidence;
 # each step only checks the player landed in the province.
 id: road-look
+reach: ["tools/argonia_world/regions/**", "tools/argonia_world/routes/**", "data/dependencies.json", "records: cell -52,10 r1", "records: cell -47,10 r1", "records: cell -41,7 r1"]   # the pass ledger's inputs (tools/pass_ledger.py)
 look: world
 runner: 1
 independent_steps: true
