@@ -64,6 +64,18 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   persistent cells, content squares and shared interiors the first pass had missed, and they were fixed. Still
   owed: display names for the editor-id settlements, and a decision on the Tamriel entry door (its base is
   `OrcDoorLoad01`).
+- In parallel: **An offline 2d interactive map** of BM&V. Done 2026-11-05. `make map` (tools/bmv_map) writes one
+  self-contained page, `out/bmv-map/index.html` (3.7 MB, no network), and then checks it: BlackMarsh and BlackMarsh2
+  (a switcher), the land drawn from Black Marsh.esm's own LAND height grids at 32 px a cell (1,114 and 3,228 cells),
+  with a hillshade and water below each cell's water level. Hovering shows the cell and game units; a click copies
+  "worldspace, cell x,y, x, y" and opens the census row of what was clicked. Layers: settlements, load doors and
+  where they lead, people and creatures, navmesh cells, our places by confidence, our markers (read from
+  plugin/Argonia). A search box flies to names and editor ids. `verify` reads the page back. Every exterior cell,
+  settlement, door and placement of both worldspaces is on it, and every cell with LAND is drawn.
+  `ARG_OpeningMarker` (5403, -6109, 66; cell 1,-2, one of Lilmoth's cells) stands on BM&V's Lilmoth pier
+  (`DLC2RRDockPier01`, 005A9F), over water at -2,016, not on land: a dock arrival as intended. The page and terrain
+  come from BM&V's files, so they are never committed (out/ is ignored; decision 0003). Rebuild after the census
+  or the plugin changes.
 - **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner. For the census mine, do a loop between a miner and reviewer, where the reviewer thinks critically about what the miner might have missed and provides feedback. You as the planner use your judgment to decide when that loop exits. We need to know we have information about every place from the BM&V mod, and we have enough information about every place to meet the requirements for our goal (and for being able to properly author and review our quests).
 - **Owner test (the first walk, the first owner test since the pivot):** both cards on the play page, Vanilla
   Skyrim (a quick check that the stream and the game run) and Argonia. On Argonia, a new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the

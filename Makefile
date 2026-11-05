@@ -2,7 +2,7 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit hooks deploy plugin plugin-check plugin-seed
+.PHONY: check guard lint unit hooks deploy plugin plugin-check plugin-seed map
 
 check: guard lint unit
 	@echo "CHECK GREEN"
@@ -34,3 +34,7 @@ plugin-seed:
 # Our plugin and compiled scripts onto the play machine (infra/gpu-box/deploy.sh); run under tooling/job_guard.sh.
 deploy:
 	@bash infra/gpu-box/deploy.sh $(DEPLOY_ARGS)
+
+# The offline BM&V map (tools/bmv_map): out/bmv-map/index.html from Black Marsh.esm's LAND and the census; never committed.
+map:
+	@$(PY) -m tools.bmv_map.build build && $(PY) -m tools.bmv_map.build verify
