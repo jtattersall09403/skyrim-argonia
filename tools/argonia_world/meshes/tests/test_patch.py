@@ -190,3 +190,25 @@ def test_the_tree_look_defects_carry_their_ops():
     got = {e["mesh"]: {k for s in e["shapes"] for k in (s.get("ops") or {})} for e in patch.load()}
     for mesh, ops in want.items():
         assert ops <= got.get(mesh, set()), mesh
+
+
+def _absent(tmp_path, kept):
+    import json
+    mods = tmp_path / "mods"
+    (mods / "m").mkdir(parents=True)
+    t = tmp_path / "t.yaml"
+    t.write_text(yaml.safe_dump({"meshes": [entry({})]}))
+    d = tmp_path / "deps.json"
+    d.write_text(json.dumps({"keep": {"m": ["meshes/t.nif"] if kept else []}}))
+    lines = []
+    return patch.run([mods], table=t, say=lines.append, deps=d), lines
+
+
+def test_absent_and_unplaced_is_skipped(tmp_path):
+    rc, lines = _absent(tmp_path, kept=False)
+    assert rc == 0 and any("skipped: not staged, not placed" in x for x in lines)
+
+
+def test_absent_but_placed_fails(tmp_path):
+    rc, lines = _absent(tmp_path, kept=True)
+    assert rc == 1 and any(x.startswith("FAIL") for x in lines)

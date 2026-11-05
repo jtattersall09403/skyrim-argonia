@@ -42,6 +42,7 @@ STRETCH_P90_BAR = 6.0
 BARK_LUM_BAR = 81.0  # the brightest kept placed bark (gkbbark27, lane 1.15-r5-white-trunks); placed median 59
 BARK_LUM_TARGET = 59.0
 LEAF_SAT_BAR = 0.71  # the stack's leaf diffuses' p90 saturation (179 measured; median 0.39)
+DEPS = ROOT / "data" / "dependencies.json"
 HUE = ROOT / "data" / "leaf-hue.json"  # the placed bark band's top (lane 1.15-r5-white-trunks: 3:1 to 6:1; global median 1.7:1)
 FIT_STEPS = np.geomspace(1 / 128, 128, 57)
 
@@ -251,12 +252,31 @@ def find(mods: list[Path], entry: dict) -> bytes:
     raise FileNotFoundError(f"{entry['mod']}/{entry['mesh']} in none of {', '.join(map(str, mods))}")
 
 
-def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=print) -> int:
-    bad = 0
+def placed(mesh: str, deps: Path = DEPS) -> bool:
+    """Is the mesh on the keep list (data/dependencies.json: every mesh the stage lays for a form we place)?"""
+    def walk(x):
+        if isinstance(x, str):
+            yield x.lower()
+        elif isinstance(x, dict):
+            for v in x.values():
+                yield from walk(v)
+        elif isinstance(x, list):
+            for v in x:
+                yield from walk(v)
+    import json
+    return mesh.lower() in set(walk(json.loads(deps.read_text(encoding="utf-8"))))
+
+
+def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=print, deps: Path = DEPS) -> int:
+    bad = skipped = 0
     for e in load(table):
         try:
             d = find(mods, e)
         except FileNotFoundError as x:
+            if not placed(e["mesh"], deps):  # off the keep list: the stage does not lay it and no form we place draws it
+                say(f"skipped: not staged, not placed {e['mod']}/{e['mesh']}")
+                skipped += 1
+                continue
             say(f"FAIL {e['mesh']}: source not found ({x})")
             bad += 1
             continue
@@ -286,7 +306,7 @@ def run(mods: list[Path], out: Path | None = None, table: Path = TABLE, say=prin
             if N.Nif(dst.read_bytes()).to_bytes() != data:
                 say(f"FAIL {dst}: read-back differs")
                 bad += 1
-    say(f"{len(load(table))} meshes, {bad} failing")
+    say(f"{len(load(table))} meshes, {bad} failing" + (f", {skipped} skipped (not staged, not placed)" if skipped else ""))
     return 1 if bad else 0
 
 
