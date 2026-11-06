@@ -151,3 +151,6 @@ added here the day they are made, with the date and the issue.
   named skills, so different builds can finish it. Faction quests are tied to the faction's own skills ("for
   consistency and immersion"). The opening is too slow. Every stage must make plain what to do (e.g. the dive for
   the bronze thing). MQ05's tree climb is pointless (and tree climbing is buggy): replace it. Update the slice quests.
+- 2026-11-06 (#53): you can run with a weapon drawn (Arena Movement's faster variant). Explicit permission to
+  override the safety check to install the attack-queue plugin. Swimming and climbing are not skills: they do not
+  count as skills in quest writing.
