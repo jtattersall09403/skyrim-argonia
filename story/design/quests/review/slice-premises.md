@@ -148,4 +148,4 @@ Accepted at premise level:
 - LQ25: the crew bases show "Villager" (00FF4D) and "Aragonian Vliiager" (02A1EE). Name them through aliases, not
   base edits. we.lq25.crew needs 08D5EF as a target. The beast's lair has no cell.
 
-Round 3: applied (see the commit that adds this line)
+Round 3: applied (0ef4f61e)
