@@ -9,7 +9,7 @@ with the record.
 - Stages: 5 (10 camp, 20 house, 40 the dream, endings 90 and 91).
 - Choices: 1 (the Reed's oath taken or refused).
 - Endings: 2 (e-sworn, e-unsworn; Nesh-Deeka's death fails forward to e-unsworn).
-- Skills by stage: Alchemy 25 (the phial) or Swimming (the dive for the tag); the tag or Speechcraft 25 (Ties); climbing.
+- Skills by stage: Alchemy 25 (the phial); the tag or Speechcraft 25 (Ties).
 - MQ04 starts the same after either ending.
 
 ### Settled
