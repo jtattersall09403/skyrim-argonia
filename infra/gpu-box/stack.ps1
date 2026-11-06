@@ -57,6 +57,11 @@ function Set-GameWindow {
   $cur = Get-CurrentMode ([System.Windows.Forms.Screen]::AllScreens | ? Primary).DeviceName
   $b = @{ Width = $cur.W; Height = $cur.H }
   $docs = "$env:USERPROFILE\Documents\My Games\Skyrim Special Edition"
+  # A machine where the Skyrim launcher never ran has no ini files yet; make them as the launcher does, from the game's
+  # own presets (a fresh g4dn had none, and every card failed here, 2026-11-06).
+  New-Item -ItemType Directory -Force $docs | Out-Null
+  if (-not (Test-Path "$docs\SkyrimPrefs.ini")) { Copy-Item "$Game\High.ini" "$docs\SkyrimPrefs.ini" }
+  if (-not (Test-Path "$docs\Skyrim.ini")) { Copy-Item "$Game\Skyrim_Default.ini" "$docs\Skyrim.ini" }
   $set = {
     param($file, $section, $values)
     # The key is set inside its own section, and a copy of it under any other section is dropped: the first match
