@@ -170,9 +170,8 @@
 {"quest_id":"quest.main.mq01","topics_ord":10,"ord":0,"value":"fact.mq01.roots-cut"}
 {"quest_id":"quest.main.mq01","topics_ord":10,"ord":1,"value":"fact.mq01.clutch-dead"}
 {"quest_id":"quest.main.mq01","topics_ord":11,"ord":0,"value":"fact.mq01.clutch-dead"}
-{"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.satchel-reed"}
-{"quest_id":"quest.main.mq03","topics_ord":0,"ord":1,"value":"fact.mq03.house-reed"}
-{"quest_id":"quest.main.mq03","topics_ord":0,"ord":2,"value":"fact.mq03.sap-cell"}
+{"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.clean-cut"}
+{"quest_id":"quest.main.mq03","topics_ord":0,"ord":1,"value":"fact.mq03.satchel-hers"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.clean-cut"}
 {"quest_id":"quest.main.mq03","topics_ord":2,"ord":0,"value":"fact.mq03.clean-cut"}
 {"quest_id":"quest.main.mq03","topics_ord":3,"ord":0,"value":"fact.mq03.clean-cut"}
@@ -183,8 +182,7 @@
 {"quest_id":"quest.main.mq03","topics_ord":6,"ord":1,"value":"fact.mq03.word-carried"}
 {"quest_id":"quest.main.mq03","topics_ord":7,"ord":0,"value":"fact.mq03.protection-spoken"}
 {"quest_id":"quest.main.mq03","topics_ord":8,"ord":0,"value":"fact.mq03.protection-spoken"}
-{"quest_id":"quest.main.mq03","topics_ord":9,"ord":0,"value":"fact.mq03.house-reed"}
-{"quest_id":"quest.main.mq03","topics_ord":9,"ord":1,"value":"fact.mq03.word-carried"}
+{"quest_id":"quest.main.mq03","topics_ord":9,"ord":0,"value":"fact.mq03.house-customer"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":0,"value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":1,"value":"fact.mq04.naming-due"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":0,"value":"fact.mq04.strangers-seen"}

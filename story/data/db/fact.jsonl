@@ -569,10 +569,12 @@
 {"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq03.clean-cut","claim":"The cutting's roots were cut clean at the ring, one stroke each, by hands that knew where.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.house-customer","claim":"The Lilmoth house belongs to a fish-trader, Salts-The-Catch, who keeps it for a customer who pays and wants quiet, and asks no more.","ord":7,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.house-reed","claim":"The Lilmoth house belongs to a fish-trader, Salts-The-Catch, who keeps it for the Reed, carries its word to the broker and says nothing of the state.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.months-unprovable","claim":"The burnt roll leaves the broker nothing to prove my months by, and nobody but the gang and the broker knows my face: I owe no one anyone can prove, which suits a person the Reed can deny.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.protection-spoken","claim":"The protection is spoken, not written: the broker will never claim my months again, and it holds only while I serve the Reed.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first work of it Nesh-Deeka has seen.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.satchel-hers","claim":"The courier's satchel was Nesh-Deeka's to see carried, and she says no more of it.","ord":8,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.satchel-reed","claim":"The courier's satchel was the Reed's business.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.word-carried","claim":"The fish-trader will carry the Reed's word to the broker that my months are not his to claim; no Reed face goes to him.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq03"}
 {"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":8,"from_ref":"t5","quest_id":"quest.main.mq04"}

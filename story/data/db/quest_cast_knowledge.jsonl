@@ -114,11 +114,14 @@
 {"quest_id":"quest.main.mq01","cast_ord":8,"fact_id":"fact.mq01.washed-out","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":9,"fact_id":"fact.mq01.roots-cut","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":9,"fact_id":"fact.mq01.satchel","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.house-customer","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.months-unprovable","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.sap-cell","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.satchel-hers","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.satchel-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.word-carried","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.house-customer","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.months-unprovable","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.word-carried","value":"knows"}
