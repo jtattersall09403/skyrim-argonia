@@ -367,6 +367,6 @@ Not taken:
 Loop change: a fix may not add a mechanism (a new edit, alias, door or name). If a fix needs one, the planner rules
 on it first.
 
-Round 4: applied (SHA_PLACEHOLDER)
+Round 4: applied (11ed07df; the database rows in 0ef4f61e and e5e9ceea)
 
 Round 3: applied (e5e9ceea)
