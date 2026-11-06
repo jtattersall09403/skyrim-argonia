@@ -43,7 +43,7 @@
 {"quest_id":"quest.main.mq04","ord":2,"id":"k3","form":"behaviour","carrier":"npc.mercantile-coast.low-reed-village.chime-tuner","kind":"lead"}
 {"quest_id":"quest.main.mq04","ord":3,"id":"k4","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender","kind":"lead"}
 {"quest_id":"quest.main.mq04","ord":4,"id":"k5","form":"place","carrier":"thing.mq04.village","kind":"lead"}
-{"quest_id":"quest.main.mq04","ord":5,"id":"k6","form":"thing","carrier":"thing.mq04.knife","kind":"concept"}
+{"quest_id":"quest.main.mq04","ord":5,"id":"k6","form":"thing","carrier":"thing.mq04.sap-jars","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":6,"id":"k7","form":"place","carrier":"thing.mq04.camp","kind":"concept"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}

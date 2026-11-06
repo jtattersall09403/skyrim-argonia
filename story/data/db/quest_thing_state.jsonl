@@ -68,9 +68,7 @@
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"after-40","value":"carried"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"after-90","value":"poured at the cut root, or with the Reed (e-reed)"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"before-40","value":"at the camp"}
-{"quest_id":"quest.main.mq04","things_ord":4,"state":"after-40","value":"carried, if taken"}
-{"quest_id":"quest.main.mq04","things_ord":4,"state":"before-40","value":"at the camp"}
-{"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}

@@ -185,11 +185,7 @@
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":1,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":2,"value":"fact.mq04.gum-trail"}
 {"quest_id":"quest.main.mq04","topics_ord":2,"ord":0,"value":"fact.mq04.strangers-seen"}
-{"quest_id":"quest.main.mq04","topics_ord":3,"ord":0,"value":"fact.mq04.knife-at-camp"}
-{"quest_id":"quest.main.mq04","topics_ord":4,"ord":0,"value":"fact.mq04.camp-jars"}
-{"quest_id":"quest.main.mq04","topics_ord":5,"ord":0,"value":"fact.mq04.cell-cord"}
-{"quest_id":"quest.main.mq04","topics_ord":5,"ord":1,"value":"fact.mq04.root-cut"}
-{"quest_id":"quest.main.mq04","topics_ord":6,"ord":0,"value":"fact.mq04.officer-waits"}
+{"quest_id":"quest.main.mq04","topics_ord":3,"ord":0,"value":"fact.mq04.officer-waits"}
 {"quest_id":"quest.main.mq05","topics_ord":0,"ord":0,"value":"fact.mq05.reed-sent"}
 {"quest_id":"quest.main.mq05","topics_ord":0,"ord":1,"value":"fact.mq05.basin-lethal"}
 {"quest_id":"quest.main.mq05","topics_ord":1,"ord":0,"value":"fact.mq05.throne-empty"}

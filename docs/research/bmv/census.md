@@ -153,7 +153,7 @@ Mapped (10):
 - High: Lilmoth, Blackrose, Helstrom, Hereguard Plantation, and now Thorn (BMN's worldspace is named Thorn; its
   map marker Thorn stands in `bmv.blackmarshnorth.thorn1`, with guards, soldiers, prisoners and slaves; the lore
   sets Thorn toward Tear, story/lore/thorn.md).
-- Medium: Longmont, Alten Meerhleel (BM&V's AltenMeirhall), Murkwood Verge, the Hatching Pools (BM&V's Village).
+- Medium: Longmont, Alten Meerhleel (BM&V's AltenMeirhall), Murkwood Verge, Low-Reed Village (BM&V's unnamed Village east of Lilmoth, QA6; not the Hatching Pools).
 - Low: Blackrose Prison (interior 01BlackRoseJail, door in BM2; BMN's map marker "Black Rose Jail" stands at
   BlackMarsh 31,-15 by Blackrose with no door there).
 Waiting (9): Stormhold, Gideon, Soulrest, Archon, Alten Corimont, White Rose Prison, Rockspring, Greenspring,

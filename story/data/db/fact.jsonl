@@ -583,7 +583,7 @@
 {"id":"fact.mq03.witness-wanted","claim":"Nesh-Deeka wants the survivor's account of the cell's work, and then the Reed's people see the survivor home.","ord":12,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":11,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman at the Hereguard camp did.","ord":12,"from_ref":"t1","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the Hereguard camp was the first work of it.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the Hereguard camp was its work.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.gum-origin","claim":"The black gum is the gum the village's sap-workshop works, and the knife-peg by its door is empty.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.gum-trail","claim":"Black gum drips run north from the workshop to the leech water, and pick up again on its far side where reed stems are bent, to a camp two cells out.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.knife-at-camp","claim":"Pays-Late's knife lies by the camp's fire, its edge black with gum.","ord":13,"from_ref":"t6","quest_id":"quest.main.mq04"}
