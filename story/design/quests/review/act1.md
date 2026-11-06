@@ -100,6 +100,7 @@ outline, which becomes the source.
 - N5: "Lilmoth's dock" in text, never Dock1; the hatching shed is the uxith (no "uxith goes dark"); Ux-Xeek's role
   matches (Wuleen-Sei reads the roll); the foundation lists both held-back forms (0BCC51, 0F0F3E).
 Budget after the fix: 11 stage ids, 1 real choice, 3 endings.
+Round 1: applied (commit c28a4e07): 11 stages, 1 choices, 3 endings
 
 ### Cross-quest rulings (planner, round 1)
 
