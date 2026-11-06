@@ -12,7 +12,7 @@
 {"quest":"quest.main.mq01","ord":3,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"end","what":"the escape by water or reed to the shore below the camp, where the night ends"}
 {"quest":"quest.main.mq03","ord":0,"settlement":"bmv.hereguardplantation","role":"start","what":"the camp's aftermath at dawn"}
 {"quest":"quest.main.mq03","ord":1,"settlement":"bmv.lilmoth","cell":"0FE7F7:Black Marsh.esm","role":"main","what":"the unmarked house: the talk with the witness and Nesh-Deeka's bargain"}
-{"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog and empty, the barge having sailed"}
+{"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog and empty, its door locked"}
 {"quest":"quest.main.mq04","ord":0,"settlement":"bmv.village","role":"main","what":"the village, its Hist, pools and homes"}
 {"quest":"quest.main.mq04","ord":1,"settlement":"bmv.village","role":"stage","what":"the cell's swamp camp at the end of the gum trail"}
 {"quest":"quest.main.mq05","ord":0,"settlement":"bmv.lilmoth","role":"start","what":"the ship at Lilmoth's stop"}

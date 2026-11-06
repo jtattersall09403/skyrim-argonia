@@ -115,7 +115,7 @@
 {"quest_id":"quest.main.mq01","cast_ord":9,"fact_id":"fact.mq01.roots-cut","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":9,"fact_id":"fact.mq01.satchel","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.barge-gone","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.courier-token","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.courier-token","value":"suspects"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.no-claim","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.reed-named","value":"knows"}
@@ -128,18 +128,9 @@
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.barge-gone","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.clean-cut","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.cord-woman","value":"suspects"}
-{"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.jar-rings","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.barge-gone","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.clean-cut","value":"suspects"}
-{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.cord-woman","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.barge-gone","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.cord-woman","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.satchel-hers","value":"suspects"}
 {"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.clean-cut","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.cord-woman","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":5,"fact_id":"fact.mq03.barge-gone","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":5,"fact_id":"fact.mq03.clean-cut","value":"suspects"}
-{"quest_id":"quest.main.mq03","cast_ord":6,"fact_id":"fact.mq03.satchel-hers","value":"suspects"}
-{"quest_id":"quest.main.mq03","cast_ord":7,"fact_id":"fact.mq03.clean-cut","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.leech-effect","value":"believes \"the leeches closed the tree, and Pays-Late let them in\""}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.tree-closed","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.uxith-dark","value":"knows"}

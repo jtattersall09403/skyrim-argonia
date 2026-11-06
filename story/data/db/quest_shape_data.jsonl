@@ -25,14 +25,14 @@
 {"quest_id":"quest.main.mq01","section":"breakPoints","value":"none the player can stop: the cell cuts the roots at dusk as the player is at the fire; the player can only choose which one of the two witnesses lives"}
 {"quest_id":"quest.main.mq01","section":"costToTheBound","value":"Two of the gang are visibly washed out from years away from their Hist, and their cutting is cut; the player's own line is blank, so no amount of work can pay it down. Whoever the player does not reach in the burning camp dies, and the gang families lose their clutch."}
 {"quest_id":"quest.main.mq01","section":"rite","value":"The cutting's withdrawal: the light in the cutting goes out and the sap stops, in front of the gang families, with the harvest at its roots as the officiant and the severed clutch as the sign."}
-{"quest_id":"quest.main.mq03","section":"answer","value":"none yet; the voice is left unexplained until much later (§18d)"}
-{"quest_id":"quest.main.mq03","section":"familiarGround","value":"the barge hold where the game began, empty now"}
+{"quest_id":"quest.main.mq03","section":"answer","value":"the voice is Cuts-the-Old-Knot's, the cell's leader, unnamed to the player until much later (§18d)"}
+{"quest_id":"quest.main.mq03","section":"familiarGround","value":"the barge hold where the game began, empty now, its door locked"}
 {"quest_id":"quest.main.mq03","section":"guiltyParties","value":"the cell of the woman with the knotted cord (Cuts-the-Old-Knot, unnamed here) and its three cutters"}
 {"quest_id":"quest.main.mq03","section":"image","value":"a ring of trees in fog with a door-gap nobody built at its top, and a dry voice"}
 {"quest_id":"quest.main.mq03","section":"leads","value":"the root-ends lead to the shed; the shed's rings lead to the sap's freshness; the shallows give the courier's tag; the survivor gives the cord woman; Nesh-Deeka joins them"}
 {"quest_id":"quest.main.mq03","section":"nodes"}
 {"quest_id":"quest.main.mq03","section":"rule","value":"the dream comes to whoever tasted the cell's sap (QA18); it cannot be fought or refused"}
-{"quest_id":"quest.main.mq03","section":"timeline","value":"dusk: the courier killed, the satchel taken, the roots cut and the sap jarred, the roll burnt (MQ01); dawn: the barge gone with the unhurt, the strangers come for the hurt; morning: the house; night: the dream"}
+{"quest_id":"quest.main.mq03","section":"timeline","value":"dusk: the courier killed and his strap torn off into the shallows, the satchel taken, the roots cut and the sap jarred, the roll burnt (MQ01); dawn: the unhurt marched back to the barge, the strangers come for the hurt; morning: the house; night: the dream"}
 {"quest_id":"quest.main.mq04","section":"cure","value":"the sap in the jars poured back at the cut root (QA11)"}
 {"quest_id":"quest.main.mq04","section":"fate","value":"the sap was drawn into jars and waits at the cell's camp for a larger boat"}
 {"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the uxith's eggs first; the tree itself is closed, not sick"}

@@ -49,7 +49,7 @@
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"on the shed floor"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried, if found"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"in the shallows"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"before-20","value":"at the shore"}
@@ -57,11 +57,9 @@
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"after-90","value":"gone"}
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"at-20-to-40","value":"on a mat"}
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"before-20","value":"on the shore"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"after-20","value":"gone"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"before-20","value":"moored"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"at-40","value":"on"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"before-40","value":"off"}
-{"quest_id":"quest.main.mq03","things_ord":9,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":7,"state":"at-40","value":"on"}
+{"quest_id":"quest.main.mq03","things_ord":7,"state":"before-40","value":"off"}
+{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled (light back low) or withdrawn (e-reed)"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present"}

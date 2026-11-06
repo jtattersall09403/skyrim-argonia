@@ -56,9 +56,9 @@
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":1,"value":"fact.mq03.house-reed"}
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":2,"value":"fact.mq03.sap-cell"}
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":3,"value":"fact.mq03.no-claim"}
-{"quest_id":"quest.main.mq03","stages_ord":2,"ord":0,"value":"fact.mq03.reed-named"}
-{"quest_id":"quest.main.mq03","stages_ord":2,"ord":1,"value":"fact.mq03.reed-offer"}
-{"quest_id":"quest.main.mq03","stages_ord":2,"ord":2,"value":"fact.mq03.witness-wanted"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"ord":4,"value":"fact.mq03.reed-named"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"ord":5,"value":"fact.mq03.reed-offer"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"ord":6,"value":"fact.mq03.witness-wanted"}
 {"quest_id":"quest.main.mq04","stages_ord":0,"ord":0,"value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","stages_ord":0,"ord":1,"value":"fact.mq04.uxith-dark"}
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":0,"value":"fact.mq04.root-cut"}

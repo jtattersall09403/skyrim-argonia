@@ -568,10 +568,10 @@
 {"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei took the barge down the coast for Soulrest at dawn with the unhurt and the families; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei marched the unhurt and the families back to the barge at Lilmoth's dock at dawn; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.clean-cut","claim":"The cutting's roots were cut clean at the ring, one stroke each, by hands that knew where.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.cord-woman","claim":"The woman with the knotted cord at her wrist led the cell; she took the courier's satchel and left the cutting to her cutters.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.courier-token","claim":"The courier's brass tag on its strap lay in the shallows where he went down: he was the state's man.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.courier-token","claim":"The courier's brass tag on its strap fell through the burnt boards into the shallows below the camp: he was the state's man.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.house-reed","claim":"Salts-The-Catch, a fish-trader, keeps the house for the Reed and asks nothing.","ord":7,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.jar-rings","claim":"Ring-marks of jars stand in the sap spilled on the shed floor: the cutters came with jars and filled them there.","ord":1,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.no-claim","claim":"The roll burnt in the camp's fire: nobody can show what I owe, or that I was ever on it.","ord":8,"from_ref":"t3","quest_id":"quest.main.mq03"}
@@ -580,7 +580,7 @@
 {"id":"fact.mq03.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first work of it the Reed has seen.","ord":10,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.sap-fresh","claim":"The spilled sap is fresh, drawn at dusk, and the rings are many: the cell means to keep what it draws, so it is a long work and not a raid.","ord":2,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.satchel-hers","claim":"The courier's satchel was Nesh-Deeka's to see carried, and she says no more of it.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.witness-wanted","claim":"Nesh-Deeka wants the survivor kept near, as a witness to the cell's work; the survivor wants to go home.","ord":12,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.witness-wanted","claim":"Nesh-Deeka wants the survivor's account of the cell's work, and then the Reed's people see the survivor home.","ord":12,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":11,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman at the Hereguard camp did.","ord":12,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the Hereguard camp was the first work of it.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}

@@ -31,7 +31,7 @@
 {"quest_id":"quest.main.mq01","ord":2,"id":"k3","form":"place","carrier":"thing.mq01.cutting"}
 {"quest_id":"quest.main.mq01","ord":3,"id":"k4","form":"behaviour","carrier":"thing.mq01.cell"}
 {"quest_id":"quest.main.mq01","ord":4,"id":"k5","form":"line","carrier":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"}
-{"quest_id":"quest.main.mq03","ord":0,"id":"k1","form":"line","carrier":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness","kind":"concept"}
+{"quest_id":"quest.main.mq03","ord":0,"id":"k1","form":"line","carrier":"npc.pirate-freeholds.opening-work-camp.n1","kind":"concept"}
 {"quest_id":"quest.main.mq03","ord":1,"id":"k2","form":"place","carrier":"thing.mq03.camp","kind":"concept"}
 {"quest_id":"quest.main.mq03","ord":2,"id":"k3","form":"thing","carrier":"thing.mq03.sap-phial","kind":"lead"}
 {"quest_id":"quest.main.mq03","ord":3,"id":"k4","form":"behaviour","carrier":"npc.nesh-deeka","kind":"concept"}
