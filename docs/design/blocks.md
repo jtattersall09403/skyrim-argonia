@@ -116,9 +116,8 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | Quest stage | Trigger in | Conditions | Effects |
 |---|---|---|---|
 | MQ01 10 | the new-game start (ARG_Opening) | - | E-stage |
-| MQ01 20 | TR-topic | - | E-package, E-stage |
-| MQ01 30 | TR-zone | - | E-enable, E-stage |
-| MQ01 40 | TR-topic, TR-zone | - | E-enable, E-scene, E-stage |
+| MQ01 20 | TR-topic | - | E-enable, E-package, E-stage |
+| MQ01 40 | TR-zone | - | E-enable, E-scene, E-stage |
 | MQ01 41 | TR-zone | C-stage | E-stage |
 | MQ01 42 | TR-zone | C-stage | E-stage |
 | MQ01 44 | TR-death, TR-zone | C-alive | E-stage |
@@ -131,18 +130,17 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-stage |
 | MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
 | MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
-| MQ04 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
+| MQ04 10 | TR-chain (the previous quest ends) | - | E-stage |
 | MQ04 20 | TR-death, TR-topic | C-alive | E-stage |
 | MQ04 30 | TR-zone | - | E-stage |
-| MQ04 40 | TR-death, TR-topic, TR-acquire | C-alive, C-item | E-stage |
-| MQ04 91 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
-| MQ04 92 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ04 40 | TR-death, TR-topic | C-alive | E-stage |
+| MQ04 91 | TR-acquire, TR-zone | C-item | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
 | MQ05 20 | TR-death, TR-topic | C-alive, C-item, C-skill | E-enable, E-stage |
 | MQ05 40 | TR-zone | - | E-stage |
 | MQ05 50 | TR-zone | - | E-stage |
-| MQ05 91 | TR-death, TR-topic | C-alive | E-enable, E-global, E-regard, E-stage, TR-chain |
-| MQ05 92 | TR-death, TR-topic | C-alive | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 91 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 92 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
 
 - MQ01 stands on 13 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.pier-mesh`, `we.mq01.start`.
 - MQ03 stands on 12 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.hold-location`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.hurt`, `we.mq03.jar-marks`, `we.mq03.reed`, `we.mq03.rooms`.
