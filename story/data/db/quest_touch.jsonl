@@ -100,9 +100,17 @@
 {"quest_id":"quest.local.lq15","ord":1,"id":"place.imperial-fringe.the-broke-column","access":"read"}
 {"quest_id":"quest.local.lq15","ord":2,"id":"place.imperial-fringe.cartwrights-cross","access":"read"}
 {"quest_id":"quest.local.lq15","ord":3,"id":"variant.the-broke-column.toll-watch","access":"write"}
+{"quest_id":"quest.local.lq25","ord":0,"id":"npc.hist-heartland.helstrom.lq25-crew-poler","access":"write"}
+{"quest_id":"quest.local.lq25","ord":1,"id":"npc.hist-heartland.helstrom.lq25-crew-steerer","access":"write"}
+{"quest_id":"quest.local.lq25","ord":2,"id":"npc.hist-heartland.helstrom.boat-captain","access":"write"}
+{"quest_id":"quest.local.lq25","ord":3,"id":"place.hist-heartland.helstrom","access":"read"}
 {"quest_id":"quest.local.lq29","ord":0,"id":"npc.mercantile-coast.chasepoint.station-keeper","access":"read"}
 {"quest_id":"quest.local.lq29","ord":1,"id":"npc.mercantile-coast.chasepoint.n1-2","access":"read"}
 {"quest_id":"quest.local.lq29","ord":2,"id":"place.mercantile-coast.chasepoint","access":"read"}
+{"quest_id":"quest.local.lq30","ord":0,"id":"npc.hist-heartland.helstrom.levy-warden-01","access":"read"}
+{"quest_id":"quest.local.lq30","ord":1,"id":"npc.hist-heartland.helstrom.lq30-youth","access":"write"}
+{"quest_id":"quest.local.lq30","ord":2,"id":"npc.hist-heartland.helstrom.lq30-kin","access":"write"}
+{"quest_id":"quest.local.lq30","ord":3,"id":"place.hist-heartland.helstrom","access":"read"}
 {"quest_id":"quest.local.lr03","ord":0,"id":"npc.imperial-penal-south.rose-bone-waystation.rose-family","access":"read"}
 {"quest_id":"quest.local.lr03","ord":1,"id":"npc.imperial-penal-south.rose-bone-waystation.tag-keeper","access":"read"}
 {"quest_id":"quest.local.lr03","ord":2,"id":"place.imperial-penal-south.blackrose","access":"read"}

@@ -4,9 +4,9 @@
 {"quest":"quest.bc.bc02","ord":1,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"main","what":"the burning cells under the Rose's outer post"}
 {"quest":"quest.bc.bc03","ord":0,"settlement":"bmv.dock2","role":"start","what":"Ussa-Rekh on Soulrest's open dock among the crews, and his cabin"}
 {"quest":"quest.local.lq25","ord":0,"settlement":"bmv.dock5","role":"start","what":"the landing"}
-{"quest":"quest.local.lq25","ord":1,"settlement":"bmv.dock5","role":"end","what":"the beast's lair under the pier"}
+{"quest":"quest.local.lq25","ord":1,"settlement":"bmv.dock5","role":"end","what":"the beast's lair under the pier","cell":"0D7723:Black Marsh.esm"}
 {"quest":"quest.local.lq30","ord":0,"settlement":"bmv.helstrom","role":"start","what":"the gate at the city's edge"}
-{"quest":"quest.local.lq30","ord":1,"settlement":"bmv.helstrom","cell":"0D7885:Black Marsh.esm","role":"end","what":"the shelter in the basin, in the empty cell (-4,18) east of the gate and off MQ05's way in from the landing"}
+{"quest":"quest.local.lq30","ord":1,"settlement":"bmv.helstrom","cell":"0D7883:Black Marsh.esm","role":"end","what":"the shelter in the basin, in cell 0D7883 (-5,18, navmesh, no NPCs) east of the gate and off MQ05's way in from the landing"}
 {"quest":"quest.main.mq01","ord":0,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"start","what":"processing and character creation in the barge's hold"}
 {"quest":"quest.main.mq01","ord":1,"settlement":"bmv.lilmoth","role":"stage","what":"the march from the plank (it starts at the first navmeshed square, 1,-2) along the shore"}
 {"quest":"quest.main.mq01","ord":2,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"main","what":"the camp at the paddy edge, the cutting, the hatching shed; the attack"}

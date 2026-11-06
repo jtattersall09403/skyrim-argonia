@@ -23,6 +23,15 @@
 {"quest_id":"quest.local.lh38","truth_ord":4,"ord":0,"value":"travellers"}
 {"quest_id":"quest.local.lh38","truth_ord":5,"ord":0,"value":"npc.hist-heartland.greenspring.n3"}
 {"quest_id":"quest.local.lh38","truth_ord":6,"ord":0,"value":"npc.hist-heartland.greenspring.n3"}
+{"quest_id":"quest.local.lq25","truth_ord":0,"ord":0,"value":"npc.hist-heartland.helstrom.lq25-crew-steerer"}
+{"quest_id":"quest.local.lq25","truth_ord":0,"ord":1,"value":"npc.hist-heartland.helstrom.lq25-crew-poler"}
+{"quest_id":"quest.local.lq25","truth_ord":1,"ord":0,"value":"creature-at.hist-heartland.helstrom.lq25-river-beast"}
+{"quest_id":"quest.local.lq25","truth_ord":2,"ord":0,"value":"npc.hist-heartland.helstrom.lq25-crew-poler"}
+{"quest_id":"quest.local.lq30","truth_ord":0,"ord":0,"value":"npc.hist-heartland.helstrom.lq30-youth"}
+{"quest_id":"quest.local.lq30","truth_ord":1,"ord":0,"value":"npc.hist-heartland.helstrom.lq30-youth"}
+{"quest_id":"quest.local.lq30","truth_ord":1,"ord":1,"value":"creature-at.hist-heartland.helstrom.lq30-basin-beast"}
+{"quest_id":"quest.local.lq30","truth_ord":2,"ord":0,"value":"npc.hist-heartland.helstrom.lq30-kin"}
+{"quest_id":"quest.local.lq30","truth_ord":2,"ord":1,"value":"npc.hist-heartland.helstrom.levy-warden-01"}
 {"quest_id":"quest.main.mq01","truth_ord":1,"ord":0,"value":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound-root"}
 {"quest_id":"quest.main.mq01","truth_ord":2,"ord":0,"value":"npc.mercantile-coast.lilmoth.broker-buys-the-months"}
 {"quest_id":"quest.main.mq01","truth_ord":3,"ord":0,"value":"npc.pirate-freeholds.opening-work-barge.npc-opening-overseer"}

@@ -997,3 +997,10 @@
 {"npc_id":"npc.saxhleel-coast.quay-tradehouse.npc-archon-tradehouse-keeper","ord":0,"value":"place.saxhleel-coast.quay-tradehouse notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.seafalls.npc-seafalls-transfer-clerk","ord":0,"value":"place.saxhleel-coast.seafalls notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.wall-hist-village.npc-wall-village-naheesh","ord":0,"value":"place.saxhleel-coast.wall-hist-village notableNpcSlots[0]"}
+{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-poler","ord":0,"value":"bmv_placement 08D5EE:Black Marsh North.esp"}
+{"npc_id":"npc.hist-heartland.helstrom.lq25-crew-steerer","ord":0,"value":"bmv_placement 08D5EF:Black Marsh North.esp"}
+{"npc_id":"npc.hist-heartland.helstrom.boat-captain","ord":0,"value":"bmv_placement 08D5F1:Black Marsh North.esp"}
+{"npc_id":"npc.hist-heartland.helstrom.lq30-youth","ord":0,"value":"we.lq30.youth"}
+{"npc_id":"npc.hist-heartland.helstrom.lq30-kin","ord":0,"value":"we.lq30.youth"}
+{"npc_id":"creature-at.hist-heartland.helstrom.lq25-river-beast","ord":0,"value":"we.lq25.beast"}
+{"npc_id":"creature-at.hist-heartland.helstrom.lq30-basin-beast","ord":0,"value":"we.lq30.beast"}

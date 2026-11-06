@@ -34,7 +34,9 @@
 {"quest_id":"quest.local.lp19","ord":0,"value":"topic.hist-less-naming"}
 {"quest_id":"quest.local.lq15","ord":0,"value":"topic.broke-column-schedules"}
 {"quest_id":"quest.local.lq15","ord":1,"value":"topic.broke-column-watches"}
+{"quest_id":"quest.local.lq25","ord":0,"value":"topic.lq25-the-beast"}
 {"quest_id":"quest.local.lq29","ord":0,"value":"topic.chasepoint-living-cargo"}
+{"quest_id":"quest.local.lq30","ord":0,"value":"topic.lq30-walked-out"}
 {"quest_id":"quest.local.lr03","ord":0,"value":"topic.returned-tag"}
 {"quest_id":"quest.local.lr24","ord":0,"value":"topic.dead-papers"}
 {"quest_id":"quest.local.lr39","ord":0,"value":"topic.living-tags"}
