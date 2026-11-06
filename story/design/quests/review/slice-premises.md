@@ -166,4 +166,4 @@ Converging (blocking 6, then 1, a wording fix). All accepted:
 
 Round 3 cut TG01's door re-base: BM&V's own doors are never re-modelled (N7).
 
-Round 4: applied (SLICESHA), 7 of 7.
+Round 4: applied (fff0782b), 7 of 7.
