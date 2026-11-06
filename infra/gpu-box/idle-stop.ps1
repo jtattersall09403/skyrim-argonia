@@ -14,6 +14,10 @@ if ($act.streaming) { $why += "stream ($(($act.clients + "$($act.outKbps) kbps")
 # An open SSH connection is no longer a sign of work: a tunnel kept up after a lane ends, and held Paris
 # busy for hours (1.8, 2026-10-31). Agents' work is the busy flag (run.sh touches it each command).
 if ((Test-Path "$State\busy") -and ((Get-Item "$State\busy").LastWriteTime -gt (Get-Date).AddMinutes(-$IdleMinutes))) { $why += 'agent job' }
+# An agent command still running holds the machine (run.sh writes hold-<pid> for its length); a hold older than 4 hours
+# is a dropped session's leftover and is ignored (2026-11-06: a 21 GB unpack outlived the busy flag).
+$holds = @(Get-ChildItem "$State\hold-*" -EA SilentlyContinue | ? { $_.LastWriteTime -gt (Get-Date).AddHours(-4) })
+if ($holds.Count) { $why += "agent command running ($($holds.Count))" }
 $now = Get-Date
 # The heartbeat the play switch reads through the tunnel (/argonia-metrics/activity): if it goes stale, the
 # Worker stops the machine (Windows hung, or this task broken). It replaces the traffic alarm, which counted

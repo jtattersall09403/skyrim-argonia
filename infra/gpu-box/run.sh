@@ -64,11 +64,14 @@ SSH_OPTS=(-i "$KEY" -o StrictHostKeyChecking=accept-new -o ConnectTimeout=8 -o B
 # ARGONIA_PEEK=1 (a read-only look: is anyone streaming, a log line) leaves it, so a status check never keeps an idle
 # machine up (1.8: each 20-min check held Paris busy for 15 min).
 ps() {  # a connection failure (255) with a cached address re-reads it once: the machine was restarted elsewhere
-  local rc=0 touch="New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; "
-  [ -z "${ARGONIA_PEEK:-}" ] || touch=""
-  ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*" || rc=$?
+  # A command also holds the machine while it runs (C:\argonia\state\hold-<pid>, removed when it ends): one long
+  # command (BM&V's 21 GB unpack, 2026-11-06 11:00) outlived the 15-minute busy flag and idle-stop shut the machine
+  # down mid-command. idle-stop.ps1 ignores a hold older than 4 hours (a dropped SSH session leaves its file).
+  local rc=0 touch='New-Item -ItemType File -Force C:\argonia\state\busy | Out-Null; $argHold = "C:\argonia\state\hold-$PID"; New-Item -ItemType File -Force $argHold | Out-Null; try { ' end=' } finally { Remove-Item -Force $argHold -EA SilentlyContinue }'
+  [ -z "${ARGONIA_PEEK:-}" ] || { touch=""; end=""; }
+  ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*$end" || rc=$?
   if [ $rc = 255 ] && [ -f "$C/ip-$M" ]; then rm -f "$C/ip-$M"
-    rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*" || rc=$?; fi
+    rc=0; ssh "${SSH_OPTS[@]}" "Administrator@$(ip)" "$touch$*$end" || rc=$?; fi
   return $rc
 }
 wait_ssh() {
