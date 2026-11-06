@@ -370,3 +370,76 @@ on it first.
 Round 4: applied (11ed07df; the database rows in 0ef4f61e and e5e9ceea)
 
 Round 3: applied (e5e9ceea)
+
+### The whole main line, round 5 delta (2026-11-06): the planner's rulings
+
+Converging (blocking 8, then 4). All four blocking and all five notes accepted, by subtraction:
+- B1: "keeps the cult's trust" is cut from MQ21, beat ord 2 and changed item 12. The truth branch reads "her raid burns
+  the house and its stock".
+- B2 and N2: the name Tear is dropped everywhere ("the north-east coast's ship landing").
+- B3: MQ05's foundation reads "MQ05 starts the same after MQ04's ending (91)".
+- B4: MQ01's premise loses the doubled clause; "aboard" becomes "among them".
+- N1: the spirit rows of MQ10, MQ18, MQ26 and MQ29 each become one sentence carrying the quest's turn, taken from
+  the outline's own text.
+- N3: "flooded lower ground".
+- N4: "his blade (given, or taken)".
+- N5: the garbled parenthesis is cut from MQ04's foundation.
+- The Places section drops its door re-base notes (BM&V's own doors are never re-modelled).
+
+Round 5: applied (150b818f), 9 of 9; the line_spirit_beat rows in the database are the older text and held neither phrase.
+
+### MQ01, round 4 delta (2026-11-06): the planner's rulings
+
+Flat (blocking 4, then 4), but the findings are now one kind: who is present, and under which enable parent, as
+round 3's cross-quest move of Ties left it. Each finding is answered by a cut, so nothing new is wired. All four
+blocking and notes N1 to N6 accepted:
+- B1: Ties is cut from journal 30 and from the families lists. His one ref first appears, burnt, on the shore at 50.
+- B2: "(ref.mq01.survivors)" is cut from the foundation; thing.mq01.survivors reads "Ties-The-Loose-Plank beside them
+  on his own ref".
+- B3: the same fix as the main line's round 5 B4.
+- B4: MQ03's t2 reads "him", not "his barge".
+- N1: the courier stands outside the broker's enable parent; the two states are scoped to the broker.
+- N2: the hold door's lock is cut.
+- N3: "Deesh-Duun said...".
+- N4: we.mq01.hold-location is listed in the ledger and in the changes.
+- N5: "the player brings the saved one (stages 41, 42)".
+- N6: "until an MQ03 ending disables him".
+
+### MQ04, round 4 delta (2026-11-06): the planner's rulings
+
+Converging (blocking 5, then 2: both leftover copies of the cut branch). All accepted, by cuts:
+- B1: the quest_adaptation premise is cut from "or hands" to the end.
+- B2: "and bound" is cut from stage 40's note.
+- N1: the drips clause is cut from topic.mq04-the-cut's intent and from stage 30's note.
+- N2: the cell-man npc notes point at we.mq04.cell.
+- The QA9 citation is cut from recordSources.lore.
+- This file's MQ04 summary is brought up to date (one ending).
+
+### MQ03, round 4 delta (2026-11-06): the planner's rulings
+
+B1 and B2 are MQ01's round 4 B2 and N1 seen from MQ03's side; MQ01's fixes answer them (Ties on his own ref; the
+courier outside the broker's parent). Accepted:
+- B3: "already" and "and the families" are cut from t2 and we.mq03.reed; "at dawn" and "and the families" are cut
+  from fact.mq03.barge-gone.
+- N1: "once both are answered" is cut from stage 20's directions.
+Act I is converging: 7 unique blocking findings this round across MQ01, MQ03 and MQ04, against 19 in round 3.
+
+### MQ05, round 4 delta (2026-11-06): the planner's rulings
+
+Converging (blocking 7, then 3). All accepted as worded, by cuts or restores:
+- B1: the cast changes go back to 91 and 92. The fact is cut from the uses of the two tell topics, because the player
+  says it and the speaker needs no knowledge of it.
+- B2: the broom clause is restored in we.mq05.throne.
+- B3: the foundation's MQ04-ending clause is cut.
+- N4: the depth-stick and held-fast clauses are cut everywhere.
+- N5: the levy-warden-01 row is marked as 082C96's occupant with nothing built; the name and look are dropped.
+- N6: marsh-way is listed in topic.mq05-the-word's uses and Nesh-Deeka's knowledge; the warden clause is cut from
+  the hint.
+- N7: "it sends no escort".
+- N8: the watch's question is cut.
+- N9: takeGold goes into topic.mq05-the-word's intent.
+- N10: "until the quest ends (91 or 92)".
+- N11: "tells".
+- N12: "his;" is cut.
+- N13: thing.mq05.ship's source names we.mq05.ship-door.
+- N14 is the slice's round 4 B1.

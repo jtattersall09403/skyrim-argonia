@@ -11,7 +11,7 @@
 {"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
 {"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 005911:Black Marsh.esm (Hereguard Plantation), bmv_placement 0F9399 (the hold's door), 005AB4 (pier door); census docs/research/bmv/census.md"}
 {"quest_id":"quest.main.mq01","source":"bmvPeople","value":"none of BM&V's own actors is used by the quest; every person is a registry person or a ledger person"}
-{"quest_id":"quest.main.mq01","source":"ledger","value":"quest_adaptation, quest_host, quest_world_edit and world_edit of quest.main.mq01 (we.mq01.start, .barge-crew, .broker, .gang, .families, .camp, .cell, .pier-mesh, .no-valenwood, .no-welcome; we.clean.lilmoth, we.clean.hereguardplantation)"}
+{"quest_id":"quest.main.mq01","source":"ledger","value":"quest_adaptation, quest_host, quest_world_edit and world_edit of quest.main.mq01 (we.mq01.start, .barge-crew, .broker, .gang, .families, .camp, .cell, .pier-mesh, .no-valenwood, .no-welcome, .hold-location; we.clean.lilmoth, we.clean.hereguardplantation)"}
 {"quest_id":"quest.main.mq01","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
 {"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0FE7F7:Black Marsh.esm (House, Lilmoth), 0F9178:Black Marsh.esm (the hold), 005911:Black Marsh.esm (the camp), bmv_placement 0FE95A (house door)"}

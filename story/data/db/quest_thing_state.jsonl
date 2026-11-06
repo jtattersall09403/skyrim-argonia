@@ -27,9 +27,7 @@
 {"quest_id":"quest.local.lh38","things_ord":10,"state":"all","value":"inZone; entering it unseen or with leave"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"after-90","value":"crew and gang off (MQ01's crew parent disabled)"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"after-40","value":"the courier dead at the fire"}
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"after-90","value":"gone from the pier"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"before-20","value":"the courier waits on the pier for the gang"}
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"before-90","value":"on the pier"}
 {"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"present until the strike"}
 {"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
