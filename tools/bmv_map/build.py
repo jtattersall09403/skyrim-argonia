@@ -41,7 +41,8 @@ LORE_EXTRA = [("Shadowfen", "story/lore/regions/shadowfen.md"), ("Thornmarsh", "
               ("Deepmire", "story/lore/regions/murkmire.md"), ("Murkwood", "story/lore/regions/middle-argonia.md"),
               ("Blackwood", "story/lore/regions/blackwood-and-gloommire.md"),
               ("Gloommire", "story/lore/regions/blackwood-and-gloommire.md"),
-              ("Blackwood Bog", "story/lore/regions/blackwood-and-gloommire.md")]
+              ("Blackwood Bog", "story/lore/regions/blackwood-and-gloommire.md"), ("Pusbottom", "story/lore/lilmoth.md"),
+              ("Blackwood Road", "story/lore/gideon.md"), ("Shadowscales Training Facility", "story/lore/archon.md")]
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out/bmv-map/index.html"
@@ -368,7 +369,43 @@ def islands(d: dict, cells: dict) -> None:
                     "markers": sorted({n for k in keys for n in mks[k]}), "settlements": sts, "verdict": verdict})
         for k in keys:
             of[k] = i
+    # bare stretches: 8-connected runs of 10+ dry cells with no object, inside an island that has objects elsewhere
+    bare = {k for k in of if not (d["cells"].get(k) or {}).get("refs")}
+    seen, n0 = set(), len(out)
+    for k in sorted(bare):
+        if k in seen or not out[of[k]]["refs"]:
+            continue
+        st, comp = [k], []
+        seen.add(k)
+        while st:
+            c = st.pop()
+            comp.append(c)
+            x, y = map(int, c.split(","))
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    nb = f"{x + dx},{y + dy}"
+                    if nb in bare and nb not in seen:
+                        seen.add(nb)
+                        st.append(nb)
+        if len(comp) < 10:
+            continue
+        xs = [int(c.split(",")[0]) for c in comp]
+        ys = [int(c.split(",")[1]) for c in comp]
+        out.append({"i": len(out), "part_of": of[k], "cells": len(comp), "km2": round(len(comp) * CELL_KM2, 2),
+                    "x0": min(xs), "x1": max(xs), "y0": min(ys), "y1": max(ys), "cx": (min(xs) + max(xs) + 1) / 2,
+                    "cy": (min(ys) + max(ys) + 1) / 2, "refs": 0, "placements": 0, "doors": 0, "markers": [],
+                    "settlements": [], "verdict": f"bare stretch of island {of[k] + 1}: no object, actor or door"})
+    out[n0:] = sorted(out[n0:], key=lambda r: -r["cells"])
+    for j, r in enumerate(out):
+        r["i"] = j
     d["islands"], d["island_of"] = out, of
+    land = {f"{x},{y}" for x, y in cells}
+    wet = [k for k in d["cells"] if k in land and k not in of]
+    nol = [k for k in d["cells"] if k not in land and d["cells"][k].get("refs")]
+    d["wet"] = {"cells": len(wet), "refs": sum(d["cells"][k].get("refs") or 0 for k in wet),
+                "placements": sum(acts[k] for k in wet)}
+    d["noland"] = {"cells": len(nol), "refs": sum(d["cells"][k]["refs"] for k in nol),
+                   "placements": sum(acts[k] for k in nol), "keys": sorted(nol)[:40]}
 
 
 def links(w: db.World, data: dict) -> list[dict]:
@@ -441,16 +478,42 @@ def links(w: db.World, data: dict) -> list[dict]:
 
 
 def norm(s: str) -> str:
-    return re.sub(r"[^a-z]", "", (s or "").lower())
+    return re.sub(r"[^a-z]", "", re.sub(r"^the ", "", (s or "").lower()))
 
 
 def lore_places(w: db.World, data: dict) -> list[dict]:
     """Every Black Marsh place story/lore names (the place table's canon-named places, the dossiers' own places and the
     province dossier's sub-regions) with where it is in BM&V: a ruled mapping (place_bmv), a name match, or none."""
-    rows = [dict(r) for r in w.query("SELECT id, name, region FROM place WHERE provenance = 'canon-named'")]
+    lore = {f: f.read_text() for f in sorted((ROOT / "story/lore").rglob("*.md"))}
+    text = " ".join(lore.values())
+    # the place table's places whose name the lore's text uses (not the ones we invented)
+    rows = [dict(r) for r in w.query("SELECT id, name, region FROM place")
+            if len(r["name"]) > 3 and re.search(r"\b" + re.escape(r["name"]) + r"\b", text)]
+    tribes = {norm(t) for t in re.findall(r"\*\*([^*]+)\*\*", lore.get(ROOT / "story/lore/tribes.md", ""))}
+    rows = [r for r in rows if ", the " not in r["name"] and norm(r["name"]) not in tribes]
     pb = {r["place"]: dict(r) for r in w.query("SELECT * FROM place_bmv")}
+    have = {r["id"] for r in rows}                    # every place the census mapped or searched for, too
+    rows += [dict(r) for r in w.query("SELECT id, name, region FROM place") if r["id"] in pb and r["id"] not in have]
     seen = {norm(r["name"]) for r in rows}
-    rows += [{"id": None, "name": n, "region": None, "source": src} for n, src in LORE_EXTRA if norm(n) not in seen]
+    extra = list(LORE_EXTRA)
+    # every bold first-column name (and its / aliases) of the place tables in the province and region dossiers
+    for f, t in lore.items():
+        if f.parent.name != "regions" and f.name != "black-marsh-province.md":
+            continue
+        for m in re.finditer(r"^\| ((?:\*\*[^*|]+\*\*[^|*]*?)+)\|", t, re.M):
+            for n in re.findall(r"\*\*([^*]+)\*\*", m.group(1)):
+                extra.append((n.strip(), str(f.relative_to(ROOT))))
+    tribes |= {"naga"}                            # a people in a regional table, not a place
+    split = []
+    for n, src in extra:                       # "Umpholo / Umphollo" and "Blackrose Prison ("the Rose")": each name once
+        for part in re.split(r" / ", re.sub(r"\s*\(.*?\)", "", n)):
+            split.append((part.strip(), src))
+    for n, src in split:
+        if ", the " in n or norm(n) in tribes:   # a Hist ("Needle-Crown, the Agaceph Hist") or a tribe, not a place
+            continue
+        if norm(n) and norm(n) not in seen:
+            seen.add(norm(n))
+            rows.append({"id": None, "name": n, "region": None, "source": src})
     # every BM&V name with a position: map markers, settlement names (marker names), cell names and editor ids
     cand = []
     for wsd, d in data.items():
@@ -459,6 +522,19 @@ def lore_places(w: db.World, data: dict) -> list[dict]:
         for s in d["settlements"]:
             cand.append((norm(s["name"]), wsd, (s["grid_x"] + .5) * GRID, (s["grid_y"] + .5) * GRID,
                          f"cell editor id {s['name']}" + (f" (\"{s['label']}\")" if s["label"] else "")))
+        for k, c in d["cells"].items():
+            gx, gy = map(int, k.split(","))
+            for n in (c["edid"], c["name"]):
+                if n:
+                    cand.append((norm(n), wsd, (gx + .5) * GRID, (gy + .5) * GRID, f"exterior cell {c['edid'] or k}"))
+    for r in w.query("SELECT editor_id, name FROM bmv_cell WHERE interior = 1"):   # interiors: no map position
+        for n in (r["editor_id"], r["name"]):
+            if n:
+                cand.append((norm(n), None, None, None, f"interior {r['editor_id']} (\"{r['name'] or 'no name'}\")"))
+    for r in w.query("SELECT editor_id, name FROM bmv_location"):
+        for n in (r["editor_id"], r["name"]):
+            if n:
+                cand.append((norm(n), None, None, None, f"location {r['name']}"))
     out = []
     for r in sorted(rows, key=lambda r: r["name"]):  # sorted again below: mapped, name matches, absent
         p = pb.get(r["id"]) if r["id"] else None
@@ -474,19 +550,23 @@ def lore_places(w: db.World, data: dict) -> list[dict]:
                              what=f"ruled mapping ({p['confidence']}): {at}", reason=p["reason"])
             if "status" not in e:
                 c = w.query("SELECT editor_id, name FROM bmv_cell WHERE id = ?", p["cell"])
-                what = (f"{c[0][0]}, a vanilla test cell BM&V reuses (in-game name \"{c[0][1]}\"): no real prison"
-                        if c else p["cell"])
+                what = (f"interior {c[0][0]}, Dawnguard's test cell 000811 that BM&V reuses as the jail (in-game "
+                        f"name \"{c[0][1]}\"), reached by a door in the interior worldspace; BM&V's \"Black Rose Jail\" "
+                        "map marker at Black Rose has no door" if c else p["cell"])
                 e.update(status="mapped", what=f"ruled mapping ({p['confidence']}) to an interior: {what}",
                          reason=p["reason"])
         else:
             n = norm(r["name"])
-            hit = [c for c in cand if c[0] == n] or [c for c in cand if len(n) > 4 and c[0].startswith(n)]
+            dd = lambda t: re.sub(r"(.)\1", r"\1", t)  # noqa: E731 - Pusbottom / Pussbottom
+            hit = [c for c in cand if c[0] == n] or [c for c in cand if dd(c[0]) == dd(n)] or [c for c in cand if len(n) > 4 and c[0].startswith(n)]
             if hit:
                 c = hit[0]
                 e.update(status="name", ws=c[1], x=c[2], y=c[3], what=f"name match only, not a ruled mapping: {c[4]}")
             else:
+                water = re.search(r"river|bay|sea\b|ocean|estuary|confluence|strand|lake", r["name"], re.I)
+                e["kind"] = "water" if water else "place"
                 e.update(status="absent", what="not in BM&V" + (": the census searched every record of the four "
-                                                                "files" if p else ": no BM&V marker or cell name matches"))
+                                                                "files" if p else ": no name match among BM&V's map markers, settlements, cells (exterior and interior) or locations"))
         out.append(e)
     return out
 

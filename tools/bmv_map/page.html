@@ -41,8 +41,8 @@ const wsSel=document.getElementById('ws');
 {const o=document.createElement('option');o.value='';o.textContent='Overview: all worldspaces';wsSel.appendChild(o);
  const g1=document.createElement('optgroup');g1.label="BM&V's own worldspaces (separate maps)";
  for(const w of OV.order){const d=DATA[w],o=document.createElement('option');o.value=w;o.textContent=`${d.role[0]} (${d.size.km2} km²; ${d.role[1]})`;g1.appendChild(o)}
- wsSel.appendChild(g1);const g2=document.createElement('optgroup');g2.label="Vanilla or empty worldspaces BM&V edits (no land of its own)";
- for(const w in DATA)if(!OV.order.includes(w)){const d=DATA[w],o=document.createElement('option');o.value=w;o.textContent=`${d.name||'no name'} (${w}, ${Object.keys(d.cells).length} cells)`;g2.appendChild(o)}
+ wsSel.appendChild(g1);const g2=document.createElement('optgroup');g2.label="Vanilla worldspaces BM&V edits";
+ for(const w in DATA)if(!OV.order.includes(w)){const d=DATA[w],o=document.createElement('option');o.value=w;const n=Object.keys(d.cells).length;if(!n)continue;o.textContent=`${d.name||w}: ${n} vanilla cell${n>1?'s':''} BM&V edits (no BM&V land)`;g2.appendChild(o)}
  wsSel.appendChild(g2)}
 let W=null, Wk=null, img, view={s:1,x:0,y:0}, sel=null, hover=null;
 const imgs={};for(const w in IMAGES){const i=new Image();i.src=IMAGES[w];i.onload=()=>draw();imgs[w]=i}
@@ -58,7 +58,9 @@ function resize(){cv.width=cv.clientWidth;cv.height=cv.clientHeight;if(!W)ovFit(
 window.onresize=resize;
 const CONF={high:'#4ade80',medium:'#facc15',low:'#f97316'};
 function dot(x,y,r,f,s){cx.beginPath();cx.arc(x,y,r,0,7);cx.fillStyle=f;cx.fill();if(s){cx.strokeStyle=s;cx.lineWidth=1.5;cx.stroke()}}
-function txt(t,x,y,f,font){cx.font=font||'bold 12px sans-serif';cx.lineWidth=3;cx.strokeStyle='rgba(0,0,0,.85)';cx.strokeText(t,x,y);cx.fillStyle=f;cx.fillText(t,x,y)}
+const txt=(...a)=>TXT(...a);
+const ours=e=>e.replace(/^ARG_/,'').replace(/([a-z])([A-Z])/g,'$1 $2').toLowerCase().replace(/^./,c=>c.toUpperCase())+' (ours)';
+function TXT(t,x,y,f,font){cx.font=font||'bold 12px sans-serif';cx.lineWidth=3;cx.strokeStyle='rgba(0,0,0,.85)';cx.strokeText(t,x,y);cx.fillStyle=f;cx.fillText(t,x,y)}
 const nm=s=>(s||'').toLowerCase().replace(/[^a-z]/g,'');
 // ---------------------------------------------------------------- the overview
 // frames in cell units: BM&V's worldspaces side by side at one scale (one cell = 58.5 m), Skyrim below
@@ -67,7 +69,7 @@ let FR={}, OVB=null, ovHover=null;
  for(const w of OV.order){const t=DATA[w].terrain,fw=t.x1-t.x0+1,fh=t.y1-t.y0+1;FR[w]={x,y:0,w:fw,h:fh};x+=fw+(gap[w]||14);H=Math.max(H,fh)}
  const bm=OV.order.filter(w=>w!=='Valenwood');const bx0=FR[bm[0]].x,bx1=FR[bm[bm.length-1]].x+FR[bm[bm.length-1]].w;
  FR._sky={x:FR.Valenwood?FR.Valenwood.x:0,y:H+40,w:bx1-(FR.Valenwood?FR.Valenwood.x:0),h:12};
- FR._bm={x0:bx0,x1:bx1};OVB={x0:-4,y0:-(34+18*OV.links.filter(l=>!l.skyrim.length&&!l.ends.some(e=>e.ws==='Tamriel')).length),x1:x+40-14,y1:H+56}})();
+ FR._bm={x0:bx0,x1:bx1};OVB={x0:-4,y0:-(48+18*OV.links.filter(l=>!l.skyrim.length&&!l.ends.some(e=>e.ws==='Tamriel')).length),x1:x+40-14,y1:H+56}})();
 function ovFit(){const left=Math.min(450,cv.width*.45),w=OVB.x1-OVB.x0,h=OVB.y1-OVB.y0;view.s=Math.min((cv.width-left-20)/w,(cv.height-20)/h);view.x=left+10-OVB.x0*view.s+((cv.width-left-20)-w*view.s)/2;view.y=10-OVB.y0*view.s}
 function ou(u){return u*view.s+view.x} function ovv(v){return v*view.s+view.y}
 function opt(w,x,y){const f=FR[w],t=DATA[w].terrain;return [ou(f.x+x/G-t.x0),ovv(f.y+t.y1+1-y/G)]}
@@ -75,22 +77,20 @@ function setOverview(){W=null;Wk=null;wsSel.value='';ovFit();document.getElement
 function note(){const T=OV.total,B=OV.black_marsh,S=OV.tamriel;let h=`<h2>BM&amp;V is ${OV.order.length} separate worldspaces, not one land</h2>`;
  h+=`<p>Black Marsh &amp; Valenwood builds each region as its own worldspace: three for Black Marsh (the south, the interior, the north) and one for Valenwood. Each has its own map and coordinates; the edge of one never runs into another, and the gaps and placement on this page are only for comparison. They are drawn at one scale (a cell is 58.5 m a side). The player moves between them only by load doors: the ships, a house with a door in two worlds and a book portal (the lines above). From Skyrim, a book in Dawnstar's Windpeak Inn opens on Lilmoth, Cragslane Cavern's door leads into the interior, and two portals in Riverwood's Sleeping Giant Inn and a cave in Tamriel lead to Valenwood (the lines below). Valenwood has no door to Black Marsh. Click a worldspace to open it.</p>`;
  if(S)h+=`<p><b>Size.</b> All four together hold ${fmt(T.cells)} LAND cells, ${T.km2} km²: ${Math.round(100*T.km2/S.km2)}% of Skyrim's Tamriel (${fmt(S.cells)} cells, ${S.km2} km², measured the same way from Skyrim.esm and Update.esm). Black Marsh's three are ${B.km2} km² (${Math.round(100*B.km2/S.km2)}%). Counting only ground above the water, BM&amp;V has ${T.dry_km2} km² (Black Marsh ${B.dry_km2}) against Tamriel's ${S.dry_km2}. The mod's description is said to claim about 4 times the size of Skyrim (the claim as reported to us; no copy is in our records); the files do not bear it out: together they are a little smaller than Skyrim.</p>`;
- h+=`<table><tr><th>worldspace</th><th>LAND cells</th><th>km²</th><th>above water</th></tr>`+OV.order.map(w=>{const z=DATA[w].size;return `<tr><td><a class=fly data-w="${w}">${esc(DATA[w].role[0])}</a> <span class=mut>${w}</span></td><td>${fmt(z.cells)}</td><td>${z.km2}</td><td>${z.dry_km2}</td></tr>`}).join('')+`<tr><td><b>all four</b></td><td>${fmt(T.cells)}</td><td>${T.km2}</td><td>${T.dry_km2}</td></tr>`+(S?`<tr><td>Skyrim's Tamriel</td><td>${fmt(S.cells)}</td><td>${S.km2}</td><td>${S.dry_km2}</td></tr>`:'')+`</table>`;
+ h+=`<table><tr><th>worldspace</th><th>LAND cells</th><th>km²</th><th>above water</th></tr>`+OV.order.map(w=>{const z=DATA[w].size;return `<tr><td><a class=fly data-w="${w}">${esc(DATA[w].role[0])}</a></td><td>${fmt(z.cells)}</td><td>${z.km2}</td><td>${z.dry_km2}</td></tr>`}).join('')+`<tr><td><b>all four</b></td><td>${fmt(T.cells)}</td><td>${T.km2}</td><td>${T.dry_km2}</td></tr>`+(S?`<tr><td>Skyrim's Tamriel</td><td>${fmt(S.cells)}</td><td>${S.km2}</td><td>${S.dry_km2}</td></tr>`:'')+`</table>`;
  h+=`<p class=mut>Cells counted are exterior cells with a LAND record, as the engine stores them (both totals include sea and land beyond the playable border). "Above water" counts the height points standing above each cell's water.</p>`;
- h+=`<h2 style="margin-top:10px">The ways between worldspaces</h2><ul>`+OV.links.map(l=>`<li><b>${esc(l.kind)}</b> via ${esc(l.via)}${l.skyrim.length?' <span class=mut>(a Skyrim interior)</span>':''}: `+uniq(l.ends).map(e=>`<a class=fly data-w="${e.ws}" data-x="${e.x}" data-y="${e.y}">${esc(e.ws==='Tamriel'?'Skyrim, Tamriel':role(e.ws))}${e.at?', '+esc(e.at):''}</a>`).join(' · ')+`</li>`).join('')+`</ul>`;
+ h+=`<h2 style="margin-top:10px">The ways between worldspaces</h2><ul>`+OV.links.map(l=>`<li><b>${esc(l.kind)}</b> via ${esc(viaName(l))}${l.skyrim.length?' <span class=mut>(a Skyrim interior)</span>':''}: `+uniq(l.ends).map(e=>`<a class=fly data-w="${e.ws}" data-x="${e.x}" data-y="${e.y}">${esc(e.ws==='Tamriel'?'Skyrim, Tamriel':role(e.ws))}${e.at?', '+esc(e.at):''}</a>`).join(' · ')+`</li>`).join('')+`</ul>`;
  const n=document.getElementById('note');n.innerHTML=h;n.querySelectorAll('a.fly').forEach(a=>a.onclick=()=>a.dataset.x?flyTo(a.dataset.w,+a.dataset.x,+a.dataset.y):setWorld(a.dataset.w))}
 function uniq(E){const s=new Set();return E.filter(e=>{const k=e.ws+'|'+(e.at||Math.floor(e.x/G)+','+Math.floor(e.y/G));if(s.has(k))return false;s.add(k);return true})}
+function viaName(l){return l.via.split(', ').map(v=>{const n=v.replace(/ \(.*\)$/,'');return n==='no name'?'an unnamed interior':n}).join(', ')}
 function linkShort(l){const v=l.via.split(' (')[0];return l.kind+(v&&v!=='no name'&&v.toLowerCase()!==l.kind?': '+v:'')}
 function drawOverview(){const s=view.s;
  for(const w of OV.order){const f=FR[w],t=DATA[w].terrain,X=ou(f.x),Y=ovv(f.y);cx.fillStyle='rgba(255,255,255,.03)';cx.fillRect(X,Y,f.w*s,f.h*s);
   if(imgs[w].complete)cx.drawImage(imgs[w],X,Y,f.w*s,f.h*s);cx.strokeStyle=ovHover===w?'#e8b04a':'rgba(255,255,255,.25)';cx.lineWidth=ovHover===w?2.5:1;cx.strokeRect(X,Y,f.w*s,f.h*s);
-  const d=DATA[w];txt(d.role[0],X,ovv(f.y+f.h)+18,'#e8b04a','bold 15px sans-serif');
+  const d=DATA[w];txt(d.role[0],X,ovv(f.y+f.h)+18,'#e8b04a','bold 15px sans-serif');if(d.name&&d.name!==d.role[0])txt('in game: "'+d.name+'"',X,ovv(f.y+f.h)+66,'#9aa3ab','11px sans-serif');
   txt(`${d.size.km2} km²`,X,ovv(f.y+f.h)+34,'#e4e6e8','12px sans-serif');txt(`${fmt(d.size.cells)} LAND cells`,X,ovv(f.y+f.h)+50,'#e4e6e8','12px sans-serif');
-  for(const m of d.bmvmarkers){if(/test/i.test(m.name))continue;const [a,b]=opt(w,m.x,m.y);dot(a,b,2.5,/coming soon/i.test(m.name)?'#fb923c':'#fff');txt(m.name,a+4,b-3,/coming soon/i.test(m.name)?'#fb923c':'#fff','10px sans-serif')}}
+  const boxes=[],seenN=new Set();for(const m of d.bmvmarkers){if(/test/i.test(m.name))continue;const [a,b]=opt(w,m.x,m.y),soon=/coming soon/i.test(m.name),col=soon?'#fb923c':'#fff';dot(a,b,2.5,col);if(seenN.has(m.name))continue;cx.font='10px sans-serif';const bw=cx.measureText(m.name).width,bx=[a+4,b-12,a+4+bw,b];if(boxes.some(o=>bx[0]<o[2]&&bx[2]>o[0]&&bx[1]<o[3]&&bx[3]>o[1]))continue;boxes.push(bx);seenN.add(m.name);txt(m.name,a+4,b-3,col,'10px sans-serif')}}
  // brackets: Valenwood apart, Black Marsh's three together
- const bm=FR._bm;cx.strokeStyle='rgba(232,176,74,.7)';cx.lineWidth=2;cx.beginPath();const by=ovv(-6);cx.moveTo(ou(bm.x0),by+8);cx.lineTo(ou(bm.x0),by);cx.lineTo(ou(bm.x1),by);cx.lineTo(ou(bm.x1),by+8);cx.stroke();
- txt('Black Marsh: three separate worldspaces',ou(bm.x0),by-6,'#e8b04a','bold 14px sans-serif');
- if(FR.Valenwood){const f=FR.Valenwood;cx.beginPath();cx.moveTo(ou(f.x),by+8);cx.lineTo(ou(f.x),by);cx.lineTo(ou(f.x+f.w),by);cx.lineTo(ou(f.x+f.w),by+8);cx.stroke();txt('Valenwood: one worldspace',ou(f.x),by-6,'#e8b04a','bold 14px sans-serif')}
  // Skyrim
  const k=FR._sky;cx.fillStyle='rgba(148,163,184,.12)';cx.fillRect(ou(k.x),ovv(k.y),k.w*s,k.h*s);cx.strokeStyle='rgba(148,163,184,.6)';cx.lineWidth=1;cx.strokeRect(ou(k.x),ovv(k.y),k.w*s,k.h*s);
  txt("Skyrim (vanilla Tamriel and its interiors): the ways in",ou(k.x)+8,ovv(k.y)+18,'#cbd5e1','bold 13px sans-serif');
@@ -105,10 +105,13 @@ function drawOverview(){const s=view.s;
    txt(l.kind+': '+where,kx-60,ky+16-(sk%2)*0,'#cbd5e1','11px sans-serif');continue}
   const per=[],seen=new Set();for(const e of ends)if(!seen.has(e.ws)){seen.add(e.ws);per.push(e)}
   per.sort((a,b)=>OV.order.indexOf(a.ws)-OV.order.indexOf(b.ws));
-  const hgt=26+up*18;up++;const col=l.kind.includes('portal')?'#22d3ee':'#c084fc';
+  const hgt=40+up*18;up++;const col=l.kind.includes('portal')?'#22d3ee':'#c084fc';
   for(let i=0;i+1<per.length;i++){const [a,b]=opt(per[i].ws,per[i].x,per[i].y),[c,d]=opt(per[i+1].ws,per[i+1].x,per[i+1].y);const top=ovv(-hgt);
    cx.strokeStyle=col;cx.lineWidth=2;cx.beginPath();cx.moveTo(a,b);cx.bezierCurveTo(a,top,c,top,c,d);cx.stroke();
-   if(i===0){const lab=up+'. '+linkShort(l)+': '+per.map(e=>(e.at||role(e.ws).replace('Black Marsh: ',''))).join(' ↔ ');cx.font='bold 11px sans-serif';const lw=cx.measureText(lab).width;txt(lab,Math.max(ou(OVB.x0),(a+c)/2-lw/2),.25*Math.min(b,d)+.75*top-4,col,'bold 11px sans-serif')}}}
+   if(i===0){const nd=uniq(l.ends).length,lab=up+'. '+linkShort(l)+': '+per.map(e=>role(e.ws).replace('Black Marsh: ','')).join(' ↔ ')+' ('+nd+' landings: '+uniq(l.ends).map(e=>e.at||Math.floor(e.x/G)+','+Math.floor(e.y/G)).join(', ')+')';cx.font='bold 11px sans-serif';const lw=cx.measureText(lab).width;txt(lab,Math.max(ou(OVB.x0),(a+c)/2-lw/2),.25*Math.min(b,d)+.75*top-4,col,'bold 11px sans-serif')}}}
+ const bm=FR._bm;cx.strokeStyle='rgba(232,176,74,.7)';cx.lineWidth=2;cx.beginPath();const by=ovv(-6);cx.moveTo(ou(bm.x0),by+8);cx.lineTo(ou(bm.x0),by);cx.lineTo(ou(bm.x1),by);cx.lineTo(ou(bm.x1),by+8);cx.stroke();
+ txt('Black Marsh: three separate worldspaces',ou(bm.x0),by-6,'#e8b04a','bold 14px sans-serif');
+ if(FR.Valenwood){const f=FR.Valenwood;cx.beginPath();cx.moveTo(ou(f.x),by+8);cx.lineTo(ou(f.x),by);cx.lineTo(ou(f.x+f.w),by);cx.lineTo(ou(f.x+f.w),by+8);cx.stroke();txt('Valenwood: one worldspace',ou(f.x),by-6,'#e8b04a','bold 14px sans-serif')}
 }
 // ---------------------------------------------------------------- a worldspace
 function draw(){cx.fillStyle='#0b0e11';cx.fillRect(0,0,cv.width,cv.height);if(!W){drawOverview();return}
@@ -116,7 +119,7 @@ function draw(){cx.fillStyle='#0b0e11';cx.fillRect(0,0,cv.width,cv.height);if(!W
  if(img.complete)cx.drawImage(img,view.x,view.y,(t.x1-t.x0+1)*s,(t.y1-t.y0+1)*s);
  if(!t.land.length){cx.fillStyle='rgba(160,170,180,.25)';for(const k in W.cells){const [a,b]=k.split(',').map(Number);cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
  if(on.nav){cx.fillStyle='rgba(120,200,255,.22)';for(const k in W.cells)if(W.cells[k].nav){const [a,b]=k.split(',').map(Number);cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
- if(on.islands){for(const k in W.island_of){const I=W.islands[W.island_of[k]];if(I.refs)continue;const [a,b]=k.split(',').map(Number);cx.fillStyle='rgba(251,146,60,.30)';cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
+ if(on.islands){for(const k in W.island_of){const I=W.islands[W.island_of[k]];if(I.refs&&(W.cells[k]||{}).refs)continue;const [a,b]=k.split(',').map(Number);cx.fillStyle='rgba(251,146,60,.30)';cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
  if(on.grid&&s>6){cx.strokeStyle='rgba(255,255,255,'+Math.min(.25,s/200)+')';cx.lineWidth=1;cx.beginPath();
   for(let a=t.x0;a<=t.x1+1;a++){cx.moveTo(tx(a*G),ty((t.y1+1)*G));cx.lineTo(tx(a*G),ty(t.y0*G))}
   for(let b=t.y0;b<=t.y1+1;b++){cx.moveTo(tx(t.x0*G),ty(b*G));cx.lineTo(tx((t.x1+1)*G),ty(b*G))}cx.stroke();
@@ -138,11 +141,12 @@ function draw(){cx.fillStyle='#0b0e11';cx.fillRect(0,0,cv.width,cv.height);if(!W
  if(on.bmvmarkers)for(const m of W.bmvmarkers){const X=tx(m.x),Y=ty(m.y);cx.beginPath();cx.moveTo(X,Y);cx.lineTo(X,Y-14);cx.lineTo(X+9,Y-10);cx.lineTo(X,Y-6);cx.strokeStyle='#000';cx.lineWidth=3;cx.stroke();cx.strokeStyle='#fff';cx.lineWidth=1.5;cx.stroke()}
  if(on.markers)for(const m of W.markers){const X=tx(m.x),Y=ty(m.y);cx.beginPath();cx.moveTo(X,Y-9);cx.lineTo(X+7,Y);cx.lineTo(X,Y+9);cx.lineTo(X-7,Y);cx.closePath();cx.fillStyle='#fde047';cx.fill();cx.strokeStyle='#000';cx.lineWidth=1.5;cx.stroke()}
  // labels: in-game names only (map markers; a settlement's own marker names; our places), each name once nearby
- const shown=[];const near4=(n,x,y)=>shown.some(o=>o.n===nm(n)&&Math.hypot(o.x-x,o.y-y)<4*G);
+ const shown=[],boxes=[];const near4=(n,x,y)=>shown.some(o=>o.n===nm(n)&&Math.hypot(o.x-x,o.y-y)<4*G);
+ const txt=(t,x,y,f,font)=>{cx.font=font||'bold 12px sans-serif';const b=[x,y-12,x+cx.measureText(t).width,y+3];if(boxes.some(o=>b[0]<o[2]&&b[2]>o[0]&&b[1]<o[3]&&b[3]>o[1]))return;boxes.push(b);TXT(t,x,y,f,font)};
  if(on.bmvmarkers)for(const m of W.bmvmarkers){const X=tx(m.x),Y=ty(m.y),soon=/coming soon/i.test(m.name);txt((m.name||'')+(soon?' (unfinished: BM&V marker)':''),X+11,Y-8,soon?'#fb923c':'#fff');shown.push({n:nm(m.name),x:m.x,y:m.y})}
  if(on.settlements)for(const st of W.settlements){if(!st.label)continue;const x=(st.grid_x+.5)*G,y=(st.grid_y+.5)*G,ns=st.label.split('; ').filter(n=>!near4(n,x,y)&&!W.bmvmarkers.some(m=>m.name===n));if(!ns.length)continue;txt(ns.join('; '),tx(x)+6,ty(y),'#fde68a');ns.forEach(n=>shown.push({n:nm(n),x,y}))}
  if(on.places)for(const p of W.places){const x=(p.gx+.5)*G,y=(p.gy+.5)*G;if(near4(p.place_name,x,y))continue;txt(p.place_name,tx(x)+6,ty(y)+16,CONF[p.confidence]||'#fff')}
- if(on.markers)for(const m of W.markers)txt(m.edid,tx(m.x)+10,ty(m.y)+4,'#fde047');
+ if(on.markers)for(const m of W.markers)txt(ours(m.edid),tx(m.x)+10,ty(m.y)+4,'#fde047');
 }
 function doorTo(d){const t=d.to;if(t.elsewhere)return 'Skyrim (a master\'s door)';if(t.test)return t.settlement?'an interior of '+(t.label||'this place'):'an interior';
  if(t.ws&&t.ws!==W.id){const e=Object.keys(DATA).find(k=>DATA[k].id===t.ws);return (t.label||'')+' ('+role(e)+')'}return t.label||(t.interior?'an interior':'elsewhere here')}
@@ -184,7 +188,8 @@ function panel(f){const o=f.o;let h='';
   if(d.unfinished.length)h+=`<h4>Unfinished</h4>`+d.unfinished.map(m=>flyLink(Wk,m.x,m.y,`BM&V's own map marker "${m.name}"`)+` at ${m.grid_x},${m.grid_y}`).join('<br>');
   const L=OV.links.filter(l=>l.ends.some(e=>e.ws===Wk));
   if(L.length)h+=`<h4>Ways in and out</h4>`+L.map(l=>`<b>${esc(l.kind)}</b> via ${esc(l.via)}${l.skyrim.length?' (Skyrim: '+esc(l.skyrim.join(', '))+')':''}: `+uniq(l.ends).map(e=>e.ws===Wk?flyLink(Wk,e.x,e.y,e.at||`${Math.floor(e.x/G)},${Math.floor(e.y/G)}`):esc(e.ws==='Tamriel'?'Tamriel':role(e.ws))+(e.at?', '+esc(e.at):'')).join(' · ')).join('<br>');
-  if(d.islands&&d.islands.length){h+=`<h4>Islands (dry ground; tick "Islands" to tint the bare ones)</h4><table>`+d.islands.filter(I=>I.cells>=3).map(I=>`<tr><td>${flyLink(Wk,I.cx*G,I.cy*G,I.cells+' cells')}<br><span class=mut>${I.x0}..${I.x1}, ${I.y0}..${I.y1}</span></td><td>${esc(I.verdict)}; ${fmt(I.refs)} objects, ${fmt(I.placements)} actors${I.markers.length?'; '+esc(I.markers.join(', ')):''}</td></tr>`).join('')+`</table>`}}
+  if(d.wet)h+=`<p class=mut>The island counts cover dry ground only. ${fmt(d.wet.cells)} LAND cells under water hold ${fmt(d.wet.refs)} more objects and ${fmt(d.wet.placements)} actors.`+(d.noland.cells?` ${fmt(d.noland.cells)} cells with no LAND at all hold ${fmt(d.noland.refs)} objects and ${fmt(d.noland.placements)} actors (drawn as empty squares; ${esc(d.noland.keys.slice(0,8).join(' '))}${d.noland.cells>8?' ...':''}).`:'')+`</p>`;
+  if(d.islands&&d.islands.length){h+=`<h4>Islands (dry ground; tick "Islands" to tint the bare ones)</h4><table>`+d.islands.filter(I=>I.cells>=3).map(I=>`<tr><td>${I.part_of==null?(I.i+1)+'. ':'↳ '}${flyLink(Wk,I.cx*G,I.cy*G,I.cells+' cells')}<br><span class=mut>${I.x0}..${I.x1}, ${I.y0}..${I.y1}</span></td><td>${esc(I.verdict)}; ${fmt(I.refs)} objects, ${fmt(I.placements)} actors${I.markers.length?'; '+esc(I.markers.join(', ')):''}</td></tr>`).join('')+`</table>`}}
  else if(f.kind==='settlement')h=`<h3>${esc(o.label||'Unnamed place')}</h3>`+rows({'in-game name':o.label||'none: BM&V gives it no map marker or cell name','editor id':o.name,'settlement id':o.id,'internal test cell':o.test?'yes (BM&V\'s own test label)':null,kind:o.kind,anchor:o.grid_x+','+o.grid_y,why:o.why,'exterior cells':o.cells.length,interiors:o.interiors,'NPCs there':count(o.npcs)})+placeRows(o.places);
  else if(f.kind==='door')h=`<h3>${o.portal?'Book portal':'Load door'} to ${esc(doorTo(o))}</h3>`+rows({'form key':o.id,base:o.base,'base name':o.base_name,plugin:o.plugin,cell:o.cell,'exterior cell':o.ext_cell,position:`${o.x.toFixed(0)}, ${o.y.toFixed(0)}, ${o.z.toFixed(0)}`,'leads to':o.to.label||(o.to.elsewhere?'a master: '+o.to.elsewhere:''),'target cell editor id':o.to.edid,'target door':o.to.door,'target cell':o.to.cell,'target settlement':o.to.settlement,'target world':o.to.ws,'note':o.to.test?'the target interior\'s in-game name is BM&V\'s leftover "Quick Test Cell" or a test label':null});
  else if(f.kind==='actor')h=`<h3>${esc(o.name||o.edid)}</h3>`+rows({'placement':o.id,'base':o.npc,'editor id':o.edid,name:o.name,record:o.rec,kind:o.person?'person':'creature',disabled:o.disabled?'yes':'',cell:o.cell,settlement:o.settlement,position:`${o.x.toFixed(0)}, ${o.y.toFixed(0)}, ${o.z.toFixed(0)}`});
@@ -196,8 +201,8 @@ function panel(f){const o=f.o;let h='';
  if(W&&W.waiting.length&&f.kind==='place')h+=`<h4>Waiting (no BM&amp;V place yet)</h4>`+W.waiting.map(p=>esc(p.place_name)).join(', ');
  const sb=document.getElementById('sb');sb.innerHTML=h;sb.querySelectorAll('a.fly').forEach(a=>a.onclick=()=>flyTo(a.dataset.w,+a.dataset.x,+a.dataset.y));document.getElementById('side').style.display='block'}
 function lorePanel(){const L=OV.lore,c=k=>L.filter(p=>p.status===k).length;
- return `<h3>Lore places in BM&amp;V</h3><p class=mut>The canon-named Black Marsh places of the place table (the lore's named places; not our invented ones) and the province dossier's sub-regions: <span class=st-mapped>${c('mapped')} ruled mappings</span>, <span class=st-name>${c('name')} name matches only</span>, <span class=st-absent>${c('absent')} not in BM&amp;V</span>.</p><table>`+
-  L.map(p=>`<tr><td>${esc(p.name)}<br><span class=mut>${esc(p.region||'region')}</span></td><td class=st-${p.status}>${p.ws&&p.x!=null?flyLink(p.ws,p.x,p.y,role(p.ws)):''} ${esc(p.what)}</td></tr>`).join('')+'</table>'}
+ return `<h3>Lore places in BM&amp;V</h3><p class=mut>Every Black Marsh place named in story/lore: the place table's places whose name the lore's text uses, every name in the place tables of the province and region dossiers, and the province's sub-regions: <span class=st-mapped>${c('mapped')} ruled mappings</span>, <span class=st-name>${c('name')} name matches only</span>, <span class=st-absent>${c('absent')} not in BM&amp;V</span>. A ruled mapping carries its confidence (high, medium, low: medium and low are judgements). "Not in BM&amp;V" says whether the census searched every record or only no name matches.</p><table>`+
+  L.map(p=>`<tr><td>${esc(p.name)}<br><span class=mut>${esc(p.kind==='water'?'water':(p.region||'from '+(p.source||'').split('/').pop()))}</span></td><td class=st-${p.status}>${p.ws&&p.x!=null&&DATA[p.ws]?flyLink(p.ws,p.x,p.y,role(p.ws)):''} ${esc(p.what)}</td></tr>`).join('')+'</table>'}
 document.getElementById('lorebtn').onclick=()=>{sel={kind:'lore'};panel(sel)};
 document.getElementById('x').onclick=()=>{document.getElementById('side').style.display='none';sel=null;draw()};
 function flyTo(w,x,y){if(w!==Wk)setWorld(w,true);view.s=Math.max(view.s,60);view.x=cv.width/2-(x/G-W.terrain.x0)*view.s;view.y=cv.height/2-(W.terrain.y1+1-y/G)*view.s;hover=[Math.floor(x/G),Math.floor(y/G)];draw()}
