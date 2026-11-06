@@ -272,8 +272,7 @@ Thalmor, vanilla Imperial official, skeleton, draugr-race walker, Soul Cairn sha
 gargoyle, Dremora, Dwemer construct, fox-race person and named vanilla horse, cow or dog in the place and its rooms
 is set initially disabled in its own override, with each place's extras (Soulrest's bears, glowing deer, spriggan
 and slave; Blackrose's Breton merchants and Shadowscale recruit; the village's lurker sharks; the Naga at Lilmoth's
-ship stop); every templated actor that stays gets a fixed level at the place's band. Per place (disabled / fixed):
-blackrose 28/4; dock2 11/1; helstrom 1/2; hereguardplantation 7/11; lilmoth 49/10; village 10/0.
+ship stop); every templated actor that stays gets a fixed level at the place's band. Per place (disabled / fixed), the place's own squares, the squares next to them and its rooms: blackmarshnorth.thorn1 3/0; blackrose 34/4; dock2 16/1; dock5 3/0; helstrom 2/2; hereguardplantation 28/1; lilmoth 50/10; village 11/0.
 The checker fails a slice quest hosted where any templated or levelled placement is not in its clean-up, and one that
 places people in a room with no navmesh without a navmesh edit.
 
@@ -284,12 +283,12 @@ places people in a room with no navmesh without a navmesh edit.
 | BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh lives on a mooring-barge at Soulrest's dock. |
 | LQ25 The River Monster's Rent | Local quests | 2 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
 | LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out into the basin to prove something to the tribe. |
-| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit fence who answers for the Chapter tests you with a job. |
-| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Pusbottom, Lilmoth's drowned quarter, a merchant's house has sunk into the canal with a lockbox of pledges in it. |
+| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit fence passes you the Chapter's word: its people want to see how you work, and they set the job. |
+| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Pusbottom, Lilmoth's drowned quarter, a merchant's house has sunk into the canal with a lockbox of pledged things in it, a carved token, a charm and a deed-stake. |
 | MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of a debt-labour broker's barge moored at Lilmoth's Dock1, where an Owing gang hired to Hereguard Plantation is processed: the broker's overseer reads the roll aloud with the months added for food, and character creation is the processing itself. |
 | MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the Veiled Reed's people take the survivors off the island, through the camp's aftermath, to an unmarked house in Lilmoth that a Lilmoth fish-trader keeps for them. |
 | MQ04 The Tree That Turned Its Face | The Eye and the Root | 2 | village | East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. |
-| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,dock5,helstrom | The Veiled Reed takes the player on the coast ship from Lilmoth to Helstrom's river landing and walks them inland to the city, the basin's danger named at every turn. |
+| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,blackmarshnorth.thorn1,dock5,helstrom | The Veiled Reed takes the player on the coast ship from Lilmoth to Helstrom's river landing and walks them inland to the city, the basin's danger named at every turn. |
 
 ### Review rounds
 
@@ -318,4 +317,14 @@ places people in a room with no navmesh without a navmesh edit.
   Night-Reed: a Khajiit fence, the thief's round placed, the Chapter peopled; TG02 hosted at Pusbottom with an air
   pocket, pledges not accounts. LQ25's beast waits behind its quest's enable parent; LQ30's guards keep off tribal
   ground. Explicit prerequisites now order each line.
+- **Round 3** (six fresh reviewers): vibe, lore and Night-Reed raised nothing blocking; Act I, Chainbreakers and
+  cross-line raised 9, fixed as one batch. The coast ship's own cell is a host and is cleaned (a Naga and two
+  corpses); BM&V's uniformed 'New Order', 'Tax Heel' and 'Rebelion' soldiers, in no lore file, leave every slice
+  place and the squares next to it (LQ30's gate soldier stays); the clean-up reaches neighbouring squares. MQ01: the
+  camp is placed at a named square (-1,0) with its creatures cleared, the gang starts in the hold, the roll burns in
+  the attack and the cell's harvest is what kills the clutch; Valenwood's two start-game quests wait until the player
+  enters Valenwood. BC01's estate and BC02's gate have named squares; the Black Rose Guard are the Rose's own watch at
+  the gate; the lower levels' 67 refs are a build-time check. Minor fixes taken: the Chapter tests as a peer, two of
+  the fence's three doors shut, Pusbottom named, the pledges are things, BC03 is a refusal and a side taken, LQ30 is
+  a rite no one trails and follows LQ25, MQ04's tending-ground and its officer from outside.
 

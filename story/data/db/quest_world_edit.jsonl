@@ -23,6 +23,7 @@
 {"quest":"quest.main.mq01","edit":"we.mq01.camp"}
 {"quest":"quest.main.mq01","edit":"we.mq01.cell"}
 {"quest":"quest.main.mq01","edit":"we.mq01.gang"}
+{"quest":"quest.main.mq01","edit":"we.mq01.no-valenwood"}
 {"quest":"quest.main.mq01","edit":"we.mq01.no-welcome"}
 {"quest":"quest.main.mq01","edit":"we.mq01.pier-mesh"}
 {"quest":"quest.main.mq01","edit":"we.mq01.start"}
@@ -39,6 +40,7 @@
 {"quest":"quest.main.mq05","edit":"we.clean.dock5"}
 {"quest":"quest.main.mq05","edit":"we.clean.helstrom"}
 {"quest":"quest.main.mq05","edit":"we.clean.lilmoth"}
+{"quest":"quest.main.mq05","edit":"we.clean.thorn1"}
 {"quest":"quest.main.mq05","edit":"we.mq05.dispute"}
 {"quest":"quest.main.mq05","edit":"we.mq05.escort"}
 {"quest":"quest.main.mq05","edit":"we.mq05.throne"}
@@ -46,7 +48,9 @@
 {"quest":"quest.tg.tg01","edit":"we.clean.lilmoth"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.chapter"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.dock"}
+{"quest":"quest.tg.tg01","edit":"we.tg01.doors"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.fence"}
+{"quest":"quest.tg.tg01","edit":"we.tg01.pusbottom"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.ranger"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.round"}
 {"quest":"quest.tg.tg02","edit":"we.clean.lilmoth"}

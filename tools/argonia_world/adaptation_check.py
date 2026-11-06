@@ -42,6 +42,7 @@ class Ledger:
     nord: set = field(default_factory=set)            # form keys of Nord-race bases and their placements
     levelled_at: dict = field(default_factory=dict)   # settlement -> placements that may scale (LVLN or templated)
     edit_targets: dict = field(default_factory=dict)  # edit -> every form it acts on
+    levelled_in: dict = field(default_factory=dict)   # cell -> placements that may scale there
     no_navmesh: set = field(default_factory=set)      # cells without navmesh
     all_quests: set = field(default_factory=set)
 
@@ -73,6 +74,9 @@ def load() -> Ledger:
         lg.capacity[r["id"]] = (r["people"], r["ints"])
     lg.levelled = set(w.values("SELECT id FROM bmv_npc WHERE record = 'LVLN'")) | set(w.values(
         "SELECT p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE n.record = 'LVLN'"))
+    for c, pid in w.query("""SELECT p.cell, p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc
+            WHERE n.record = 'LVLN' OR n.template IS NOT NULL"""):
+        lg.levelled_in.setdefault(c, set()).add(pid)
     for s, pid in w.query("""SELECT c.settlement, p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc
             JOIN bmv_settlement_cell c ON c.cell = p.cell
             WHERE n.record = 'LVLN' OR n.template IS NOT NULL"""):
@@ -297,14 +301,16 @@ def check_nordic_and_levelled(lg: Ledger) -> list[str]:
         ed = lg.edits.get(e)
         if ed and ed["target"] and ed["kind"] in REMOVING:
             fixed[q].add(ed["target"])
-    for q, s, *_ in lg.hosts:
-        if s and lg.levelled_at.get(s) and lg.quests.get(q, {}).get("verdict") in LIVE:
+    whole = {(q, s) for q, s, c, *_ in lg.hosts if s and not c}
+    for q, s, c, *_ in lg.hosts:
+        scaling = lg.levelled_at.get(s, set()) if (q, s) in whole else lg.levelled_in.get(c, set())
+        if s and scaling and lg.quests.get(q, {}).get("verdict") in LIVE:
             clean = "we.clean." + s.split(".")[-1]
             if (q, clean) not in set(lg.quest_edits):
-                out.append(f"{q}: hosted at {s}, which has {len(lg.levelled_at[s])} placement(s) that may scale and "
+                out.append(f"{q}: hosted at {c or s}, which has {len(scaling)} placement(s) that may scale and "
                            f"no clean-up edit {clean} linked (0035)")
             else:
-                left = lg.levelled_at[s] - lg.edit_targets.get(clean, set())
+                left = scaling - lg.edit_targets.get(clean, set())
                 if left:
                     out.append(f"{q}: {clean} leaves {len(left)} placement(s) that may scale (first {min(left)}; 0035)")
     for q, t in lg.needs:
