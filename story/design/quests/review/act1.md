@@ -6,7 +6,7 @@ with the record.
 
 ## MQ03 A Dead Prisoner's Use (M)
 
-- Stages: 7 (10 camp, 20 house, 30 the offer, 40 the dream, endings 90 and 91).
+- Stages: 5 (10 camp, 20 house, 40 the dream, endings 90 and 91).
 - Choices: 2 (the survivor goes home or stays as the Reed's witness; the Reed's oath taken or refused).
 - Endings: 2 (e-sworn, e-unsworn; Nesh-Deeka's death fails forward to e-unsworn).
 - Skills by stage: alchemy (taste) and swimming (dive); speech; speech; climbing.
@@ -14,7 +14,7 @@ with the record.
 
 ### Settled
 
-(none yet)
+- Round 3: Ties-The-Loose-Plank is essential, with his own ref (ref.mq01.ties) enabled by MQ01 stage 50, moved to the mat at stage 20 and disabled by both endings; ref.mq03.house-hurt, c2, k5 and k7 are cut; journals 10, 20, 90 and 91 and t2's timing are as ruled; topic.mq03-the-boat uses fact.mq03.satchel-hers.
 
 ## MQ04 The Tree That Turned Its Face (M)
 
@@ -315,6 +315,8 @@ strike; N10: cut clutch-dead from Deesh-Duun's and Dives's rows; N11: Wuleen-Sei
 Loop change: the checker's helgen rule extends across quests. A person a later quest's stage needs is protected
 from their first appearance in any quest until that stage, or has a fail-forward there.
 
+Round 3: applied (8ae52554).
+
 ### MQ03, round 3 delta (2026-11-06): the planner's rulings
 
 Converging (blocking 5 then 3). All three blocking and all six notes accepted as worded:
@@ -327,6 +329,8 @@ Converging (blocking 5 then 3). All three blocking and all six notes accepted as
 - The stale act1.md MQ03 header and the Settled list are brought up to date.
 Loop change: adaptation_check normalises a form id written without its plugin. B3's door was missed because the id
 lacked ":Black Marsh.esm".
+
+Round 3: applied (8ae52554). The 0F9399 door-base part of B3 is skipped under the MQ05 round 3 ruling.
 
 ### MQ05, round 3 delta (2026-11-06): the planner's rulings
 
