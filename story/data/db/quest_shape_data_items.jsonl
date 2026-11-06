@@ -88,3 +88,28 @@
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}
+{"quest_id":"quest.tg.tg01","section":"leverage","ord":0,"value":"he is a coward and runs from a fight"}
+{"quest_id":"quest.tg.tg01","section":"leverage","ord":1,"value":"his friend does not think much of him"}
+{"quest_id":"quest.tg.tg01","section":"leverage","ord":2,"value":"a few coins buy what he cannot sell yet"}
+{"quest_id":"quest.tg.tg01","section":"objections","ord":0,"value":"he says it was left lying"}
+{"quest_id":"quest.tg.tg01","section":"objections","ord":1,"value":"he says he has a buyer"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":0,"value":"lift it off him on the dock by day"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":1,"value":"take it from the bedroll while he drinks"}
+{"quest_id":"quest.tg.tg01","section":"planTexts","ord":2,"value":"talk or buy it off him at the drinking spot"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":0,"value":"Pickpocket on the dock by day"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":1,"value":"Sneak to the bedroll in the evening"}
+{"quest_id":"quest.tg.tg01","section":"routes","ord":2,"value":"Speechcraft or gold at the drinking spot"}
+{"quest_id":"quest.tg.tg01","section":"sides","ord":0,"value":"Keeps-What-Floats"}
+{"quest_id":"quest.tg.tg01","section":"sides","ord":1,"value":"who wants to keep it"}
+{"quest_id":"quest.tg.tg01","section":"sides","ord":2,"value":"and the player"}
+{"quest_id":"quest.tg.tg01","section":"sides","ord":3,"value":"who wants it back"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":0,"value":"Deep-In-Her-Cups names the thief and the necklace"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":1,"value":"Sits-By-The-Water tells where he sleeps"}
+{"quest_id":"quest.tg.tg01","section":"sources","ord":2,"value":"watching his round shows it"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":0,"value":"slip past the eels on the canal floor"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":1,"value":"open the box where it lies"}
+{"quest_id":"quest.tg.tg02","section":"planTexts","ord":2,"value":"swim out"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":0,"value":"Sneak and timing past the eels"}
+{"quest_id":"quest.tg.tg02","section":"routes","ord":1,"value":"Lockpicking on the box; fighting the eels is open to any build"}
+{"quest_id":"quest.tg.tg02","section":"sources","ord":0,"value":"Bent-Spine names the box and where it lies"}
+{"quest_id":"quest.tg.tg02","section":"sources","ord":1,"value":"the three clients each claim one thing in it"}

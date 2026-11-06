@@ -1011,3 +1011,8 @@
 {"npc_id":"npc.hist-heartland.helstrom.lq30-kin","ord":0,"value":"we.lq30.youth"}
 {"npc_id":"creature-at.hist-heartland.helstrom.lq25-river-beast","ord":0,"value":"we.lq25.beast"}
 {"npc_id":"creature-at.hist-heartland.helstrom.lq30-basin-beast","ord":0,"value":"we.lq30.beast"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-thief","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-friend","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-charm-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-beads-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}

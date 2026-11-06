@@ -965,3 +965,8 @@
 {"npc_id":"npc.saxhleel-coast.quay-tradehouse.npc-archon-tradehouse-keeper","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.saxhleel-coast.seafalls.npc-seafalls-transfer-clerk","fight":5,"flee":60,"alarm":60}
 {"npc_id":"npc.saxhleel-coast.wall-hist-village.npc-wall-village-naheesh","fight":90,"flee":10,"alarm":100}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-thief","fight":0,"flee":100,"alarm":60}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-friend","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-charm-client","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-beads-client","fight":0,"flee":70,"alarm":60}

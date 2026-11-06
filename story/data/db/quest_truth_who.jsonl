@@ -78,3 +78,15 @@
 {"quest_id":"quest.mr.mr01","truth_ord":1,"ord":0,"value":"Greenspring's founding families"}
 {"quest_id":"quest.mr.mr01","truth_ord":3,"ord":0,"value":"npc.hist-heartland.greenspring.tree-minder"}
 {"quest_id":"quest.mr.mr01","truth_ord":4,"ord":0,"value":"npc.hist-heartland.greenspring.root-herald"}
+{"quest_id":"quest.tg.tg01","truth_ord":0,"ord":0,"value":"npc.mercantile-coast.soulrest.khajiit-caravan-factor"}
+{"quest_id":"quest.tg.tg01","truth_ord":0,"ord":1,"value":"npc.mercantile-coast.soulrest.keeper-harbour-den"}
+{"quest_id":"quest.tg.tg01","truth_ord":1,"ord":0,"value":"npc.mercantile-coast.soulrest.tg01-thief"}
+{"quest_id":"quest.tg.tg01","truth_ord":2,"ord":0,"value":"npc.mercantile-coast.soulrest.keeper-harbour-den"}
+{"quest_id":"quest.tg.tg01","truth_ord":3,"ord":0,"value":"npc.mercantile-coast.soulrest.tg01-thief"}
+{"quest_id":"quest.tg.tg01","truth_ord":3,"ord":1,"value":"npc.mercantile-coast.soulrest.tg01-friend"}
+{"quest_id":"quest.tg.tg01","truth_ord":4,"ord":0,"value":"npc.mercantile-coast.soulrest.keeper-harbour-den"}
+{"quest_id":"quest.tg.tg01","truth_ord":4,"ord":1,"value":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence"}
+{"quest_id":"quest.tg.tg02","truth_ord":1,"ord":0,"value":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence"}
+{"quest_id":"quest.tg.tg02","truth_ord":2,"ord":0,"value":"npc.mercantile-coast.lilmoth.tg02-clutch-client"}
+{"quest_id":"quest.tg.tg02","truth_ord":2,"ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-charm-client"}
+{"quest_id":"quest.tg.tg02","truth_ord":2,"ord":2,"value":"npc.mercantile-coast.lilmoth.tg02-beads-client"}

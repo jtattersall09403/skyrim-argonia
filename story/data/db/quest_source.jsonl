@@ -1760,8 +1760,14 @@
 {"quest_id":"quest.ta.ta05","ord":1,"value":"docs/quests/40-factions.md"}
 {"quest_id":"quest.tg.tg01","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.tg.tg01","ord":1,"value":"docs/quests/40-factions.md"}
+{"quest_id":"quest.tg.tg01","ord":2,"value":"story/design/quests/adaptation.md"}
+{"quest_id":"quest.tg.tg01","ord":3,"value":"story/design/quests/review/slice-premises.md"}
+{"quest_id":"quest.tg.tg01","ord":4,"value":"docs/research/bmv/census.md"}
 {"quest_id":"quest.tg.tg02","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.tg.tg02","ord":1,"value":"docs/quests/40-factions.md"}
+{"quest_id":"quest.tg.tg02","ord":2,"value":"story/design/quests/adaptation.md"}
+{"quest_id":"quest.tg.tg02","ord":3,"value":"story/design/quests/review/slice-premises.md"}
+{"quest_id":"quest.tg.tg02","ord":4,"value":"docs/research/bmv/census.md"}
 {"quest_id":"quest.tg.tg03","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.tg.tg03","ord":1,"value":"docs/quests/40-factions.md"}
 {"quest_id":"quest.tg.tg04","ord":0,"value":"docs/quests/55-quest-index.md"}
