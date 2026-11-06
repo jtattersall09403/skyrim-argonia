@@ -92,6 +92,17 @@
 {"quest_id":"quest.local.lh38","cast_ord":4,"fact_id":"fact.lh38.pool-office","value":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":4,"fact_id":"fact.lh38.sickness","value":"believes \"it is the travellers' own food, not the water\""}
 {"quest_id":"quest.local.lh38","cast_ord":5,"fact_id":"fact.lh38.stake-blank","value":"ignorant"}
+{"quest_id":"quest.local.lq25","cast_ord":0,"fact_id":"fact.lq25.beast-real","value":"knows"}
+{"quest_id":"quest.local.lq25","cast_ord":0,"fact_id":"fact.lq25.crew-baited","value":"hides \"it was the crew's doing and it drew the beast\""}
+{"quest_id":"quest.local.lq25","cast_ord":1,"fact_id":"fact.lq25.bait","value":"knows"}
+{"quest_id":"quest.local.lq25","cast_ord":1,"fact_id":"fact.lq25.crew-baited","value":"knows"}
+{"quest_id":"quest.local.lq25","cast_ord":2,"fact_id":"fact.lq25.beast-real","value":"believes the beast was always there"}
+{"quest_id":"quest.local.lq30","cast_ord":0,"fact_id":"fact.lq30.custom","value":"knows"}
+{"quest_id":"quest.local.lq30","cast_ord":0,"fact_id":"fact.lq30.trail","value":"knows"}
+{"quest_id":"quest.local.lq30","cast_ord":0,"fact_id":"fact.lq30.walked-out","value":"knows"}
+{"quest_id":"quest.local.lq30","cast_ord":1,"fact_id":"fact.lq30.custom","value":"knows"}
+{"quest_id":"quest.local.lq30","cast_ord":1,"fact_id":"fact.lq30.walked-out","value":"knows"}
+{"quest_id":"quest.local.lq30","cast_ord":2,"fact_id":"fact.lq30.cornered","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"fact_id":"fact.mq01.blank-line","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"fact_id":"fact.mq01.broker-holds","value":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"fact_id":"fact.mq01.courier-state","value":"suspects"}

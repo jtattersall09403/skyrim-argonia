@@ -1042,6 +1042,8 @@
 {"quest_id":"quest.local.lq24","ord":1,"value":"docs/quests/50-side-quests.md"}
 {"quest_id":"quest.local.lq25","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.local.lq25","ord":1,"value":"docs/quests/50-side-quests.md"}
+{"quest_id":"quest.local.lq25","ord":2,"value":"story/design/quests/review/slice-premises.md"}
+{"quest_id":"quest.local.lq25","ord":3,"value":"docs/research/bmv/census.md"}
 {"quest_id":"quest.local.lq26","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.local.lq26","ord":1,"value":"docs/quests/50-side-quests.md"}
 {"quest_id":"quest.local.lq27","ord":0,"value":"docs/quests/55-quest-index.md"}
@@ -1052,6 +1054,8 @@
 {"quest_id":"quest.local.lq29","ord":1,"value":"docs/quests/50-side-quests.md"}
 {"quest_id":"quest.local.lq30","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.local.lq30","ord":1,"value":"docs/quests/50-side-quests.md"}
+{"quest_id":"quest.local.lq30","ord":2,"value":"story/design/quests/review/slice-premises.md"}
+{"quest_id":"quest.local.lq30","ord":3,"value":"docs/research/bmv/census.md"}
 {"quest_id":"quest.local.lq31","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.local.lq31","ord":1,"value":"docs/quests/50-side-quests.md"}
 {"quest_id":"quest.local.lr01","ord":0,"value":"world/sources/catalogue/places-imperial-penal-south.json"}

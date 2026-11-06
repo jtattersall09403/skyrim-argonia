@@ -48,6 +48,20 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":3,"value":"t4"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
+{"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"the bait points found from the pier unseen (Sneak)"}
+{"quest_id":"quest.local.lq25","section":"clueChoices","ord":1,"value":"the bait points found by a swim under the pier"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"the gate"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the trail"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the shelter"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"the walk home"}
+{"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"the youth sees who killed the beast"}
+{"quest_id":"quest.local.lq30","section":"breakPoints","ord":1,"value":"the youth is brought home"}
+{"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he cut reeds to mark his way"}
+{"quest_id":"quest.local.lq30","section":"leads","ord":1,"value":"the cut reeds themselves"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":0,"value":"the gate"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":1,"value":"the cut reeds"}
+{"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the reed shelter"}
+{"quest_id":"quest.local.lq30","section":"openQuestions","ord":0,"value":"whether the walk-out still counts if the player is seen"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: on the shore, when the saved witness names the player as the one who came for them"}

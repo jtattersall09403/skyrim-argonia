@@ -166,7 +166,7 @@ the slice (W-navmesh, W-name). No new trigger, condition or effect is needed.
 | BC01 the hearing | TR-topic (Never-Sold, the hearing), TR-activate (cut the boat loose) | C-item or gold (buy out), C-stage | E-stage, E-scene (the hearing), E-item, E-global (month taken on) | W-npc, W-ref (landing, book, toll post), W-name (the house) |
 | BC02 the fire | TR-zone (into the smoke), TR-topic (whom first), TR-death (fail-forward) | C-alive, C-time (a timer as a scene: TR-scene) | E-stage, E-enable (smoke, burning, burnt), E-package (the heirs follow), E-item (the book) | W-npc, W-ref (cells, sealed door, stockade), W-override (door pair), W-navmesh, W-name |
 | BC03 the refusal | TR-topic | C-stage | E-stage, E-regard (the side not taken) | W-npc, W-ref (barge, shelf) |
-| LQ25 the river-beast | TR-topic, TR-death (the beast) | C-stage | E-enable (the beast's parent), E-stage, E-global (the award) | W-fixed (the beast), W-npc |
-| LQ30 the walk-out | TR-zone (the shelter), TR-topic (the kin) | C-alive | E-stage, E-package (the youth walks home) | W-npc, W-ref (gate, trail, shelter) |
+| LQ25 the river-beast | TR-topic (the poler, the choice), TR-zone or TR-acquire (the bait), TR-death (the beast) | C-item, C-alive | E-enable (the beast's parent), E-stage, E-item (gold), E-regard | W-fixed (the beast), W-ref (the bait), the crew named by forced-ref aliases |
+| LQ30 the walk-out | TR-zone (the gate, the shelter), TR-topic (the kin, the youth), TR-death (the beast) | C-alive, C-stage | E-enable (the beast's parent), E-stage, E-package (the youth walks home), E-item (gold), E-regard | W-npc, W-fixed, W-ref (trail, shelter in 0D7883) |
 | The clean-ups (every place) | - | - | - | W-ref (each placement initially disabled), W-fixed (each templated actor kept) |
 

@@ -35,6 +35,7 @@
 {"quest_id":"quest.local.lp14","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lp14|1|0:when"}
 {"quest_id":"quest.local.lp19","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lp19|0|0:when"}
 {"quest_id":"quest.local.lq15","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lq15|0|0:when"}
+{"quest_id":"quest.local.lq25","stages_ord":3,"ord":0,"to":91,"when":"quest_fail_forward:quest.local.lq25|3|0:when"}
 {"quest_id":"quest.local.lq29","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lq29|0|0:when"}
 {"quest_id":"quest.local.lr03","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lr03|0|0:when"}
 {"quest_id":"quest.local.lr24","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.lr24|0|0:when"}
