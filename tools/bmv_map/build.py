@@ -26,6 +26,23 @@ import numpy as np
 from tools.argonia_world import db, esm
 from tools.argonia_world.bmv_census import DIR, MASTERS, MASTER_FILES, GRID, Load, is_interior
 
+CELL_KM2 = (GRID / 70 / 1000) ** 2   # a cell is 4096 units a side at 70 units a metre: 58.5 m, 0.00342 km²
+DRY = 0.02                  # a cell is dry ground when more than 2% of its height points stand above its water
+TEST = re.compile(r"test|^fix$", re.I)   # BM&V's internal test cells and labels (Quick Test Cell, test1, misttest, fix)
+# BM&V's own worldspaces with LAND, in the overview's order, with their role
+ROLES = {"Valenwood": ("Valenwood", "Valenwood.esp's whole province: Elden Root, Falinesti, Arenthia, Woodhearth..."),
+         "BlackMarsh": ("Black Marsh: the south", "Lilmoth, Blackrose, Hereguard Plantation, Longmont, Alten Merihall"),
+         "BlackMarsh2": ("Black Marsh: the interior", "Helstrom, Murkmire, Murkwood, Temple Pass"),
+         "BlackMarshNorth": ("Black Marsh: the north", "Thorn, Tear, Dres village, the Morrowind border")}
+# the province dossier's sub-regions and the dossiers' own places (story/lore/black-marsh-province.md, regions/)
+LORE_EXTRA = [("Shadowfen", "story/lore/regions/shadowfen.md"), ("Thornmarsh", "story/lore/regions/thornmarsh-and-east.md"),
+              ("Arnesia", "story/lore/regions/thornmarsh-and-east.md"), ("Tear", "story/lore/regions/thornmarsh-and-east.md"),
+              ("Middle Argonia", "story/lore/regions/middle-argonia.md"), ("Murkmire", "story/lore/regions/murkmire.md"),
+              ("Deepmire", "story/lore/regions/murkmire.md"), ("Murkwood", "story/lore/regions/middle-argonia.md"),
+              ("Blackwood", "story/lore/regions/blackwood-and-gloommire.md"),
+              ("Gloommire", "story/lore/regions/blackwood-and-gloommire.md"),
+              ("Blackwood Bog", "story/lore/regions/blackwood-and-gloommire.md")]
+
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out/bmv-map/index.html"
 PLUGIN = ROOT / "plugin/Argonia/Worldspaces"
@@ -189,9 +206,31 @@ def layers(w: db.World) -> dict[str, dict]:
             n = npcs[a["npc"]]
             s_npcs[s["settlement"]].append(n["name"] or n["editor_id"])
 
+    mm_names = defaultdict(list)                                   # a settlement's in-game names: its map markers'
+    for m in mms:
+        if m["settlement"] and m["name"] not in mm_names[m["settlement"]]:
+            mm_names[m["settlement"]].append(m["name"])
+
+    def display(s):
+        """A settlement's in-game name: the census's marker name, else a map marker of the same name as its editor id
+        within 10 cells (Helstrom, Murkmire, Temple Pass), else the markers standing in it, else none."""
+        if s["marker_name"]:
+            return s["marker_name"]
+        k = re.sub(r"[^a-z]", "", (s["name"] or "").lower())
+        same = [m["name"] for m in mms if m["worldspace"] == s["worldspace"] and k and
+                re.sub(r"[^a-z]", "", m["name"].lower()) == k and
+                max(abs(m["grid_x"] - s["grid_x"]), abs(m["grid_y"] - s["grid_y"])) <= 10]
+        return same[0] if same else "; ".join(mm_names[s["id"]]) or None
+
     def label(cid):
+        """A cell's in-game name (its FULL, unless a test name), else its settlement's map-marker name, else none."""
         c = cells.get(cid)
-        return (c["name"] or c["editor_id"] or cid) if c else cid
+        if not c:
+            return None
+        if c["name"] and not TEST.search(c["name"]):
+            return c["name"]
+        m = member.get(cid)
+        return display(sett[m["settlement"]]) if m else None
 
     out = {}
     for ed, wr in worlds.items():
@@ -204,8 +243,9 @@ def layers(w: db.World) -> dict[str, dict]:
             sc = [k for k, m in member.items() if m["settlement"] == s["id"]]
             S.append({**s, "cells": [[cells[k]["grid_x"], cells[k]["grid_y"], member[k]["role"]] for k in sc
                                      if cells[k]["grid_x"] is not None],
-                      "label": s["marker_name"] or s["name"],
-                      "interiors": sorted(label(k) for k in sc if cells[k]["interior"]),
+                      "label": display(s), "test": bool(TEST.search(s["name"] or "")) and not display(s),
+                      "interiors": sorted(f"{cells[k]['name'] or 'no name'} ({cells[k]['editor_id']})" for k in sc
+                                          if cells[k]["interior"]),
                       "npcs": sorted(s_npcs[s["id"]]), "places": place_of[s["id"]]})
         D = []
         for d in doors.values():
@@ -215,7 +255,8 @@ def layers(w: db.World) -> dict[str, dict]:
             to = {"elsewhere": d["target_elsewhere"]}
             if t:
                 tc = cells[t["cell"]]
-                to = {"door": t["id"], "cell": t["cell"], "label": label(t["cell"]),
+                to = {"door": t["id"], "cell": t["cell"], "label": label(t["cell"]), "edid": tc["editor_id"],
+                      "test": bool(TEST.search(tc["name"] or "") or TEST.search(tc["editor_id"] or "")),
                       "interior": bool(tc["interior"]), "ws": t["worldspace"], "x": t["x"], "y": t["y"]}
                 m = member.get(t["cell"])
                 if m:
@@ -235,6 +276,7 @@ def layers(w: db.World) -> dict[str, dict]:
                       "person": n["person"], "x": a["x"], "y": a["y"], "z": a["z"], "disabled": a["disabled"],
                       "cell": a["cell"], "settlement": sett[m["settlement"]]["name"] if m else None})
         C = {f"{c['grid_x']},{c['grid_y']}": {"id": c["id"], "edid": c["editor_id"], "name": c["name"],
+                                              "test": bool(TEST.search(c["editor_id"] or "")),
                                               "nav": c["has_navmesh"], "refs": c["refs"],
                                               "settlement": sett[member[c["id"]]["settlement"]]["name"]
                                               if c["id"] in member else None,
@@ -248,13 +290,204 @@ def layers(w: db.World) -> dict[str, dict]:
             if s and s["worldspace"] == wid:
                 P.append({**p, "gx": s["grid_x"], "gy": s["grid_y"], "at": s["name"]})
             elif c and c["worldspace"] == wid and c["grid_x"] is not None:
-                P.append({**p, "gx": c["grid_x"], "gy": c["grid_y"], "at": label(c["id"])})
+                P.append({**p, "gx": c["grid_x"], "gy": c["grid_y"], "at": label(c["id"]) or c["editor_id"]})
         M = [m for m in markers() if m["ws"] == wid]
         B = [{**m, "settlement": sett[m["settlement"]]["name"] if m["settlement"] else None}
              for m in mms if m["worldspace"] == wid]
         out[ed] = {"id": wid, "name": wr["name"], "plugin": wr["plugin"], "settlements": S, "doors": D, "actors": A,
                    "cells": C, "places": P, "markers": M, "bmvmarkers": B,
                    "waiting": [p for p in places if p["status"] == "waiting"]}
+    return out
+
+
+# --- the overview, islands, links and lore places ----------------------------------------------------------------------
+
+def dry_cells(cells: dict) -> set[tuple[int, int]]:
+    """The cells whose ground stands above their water at more than DRY of their height points."""
+    return {k for k, (h, wl) in cells.items() if h is not None
+            and (h[:32, :32] > (wl if wl is not None else -1e30)).mean() > DRY}
+
+
+def size(cells: dict) -> dict:
+    n, d = len(cells), len(dry_cells(cells))
+    frac = float(np.mean([(h[:32, :32] > (wl if wl is not None else -1e30)).mean() for h, wl in cells.values()])) \
+        if cells else 0.0
+    return {"cells": n, "km2": round(n * CELL_KM2, 2), "dry_km2": round(n * frac * CELL_KM2, 2), "dry_cells": d}
+
+
+def tamriel() -> dict | None:
+    """Skyrim's Tamriel measured the same way, from Skyrim.esm and Update.esm's LAND (None if the masters are absent)."""
+    if not (MASTERS / "Skyrim.esm").exists():
+        return None
+    t = lands(Load(MASTERS, ("Skyrim.esm", "Update.esm"))).get("00003C:Skyrim.esm", {})
+    return size(t)
+
+
+def islands(d: dict, cells: dict) -> None:
+    """The dry ground of a worldspace as islands (8-connected dry cells), each with what stands on it; sets
+    d["islands"] (largest first) and d["island_of"] ("x,y" -> index)."""
+    dry = dry_cells(cells)
+    seen, comps = set(), []
+    for s in sorted(dry):
+        if s in seen:
+            continue
+        st, comp = [s], []
+        seen.add(s)
+        while st:
+            c = st.pop()
+            comp.append(c)
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    n = (c[0] + dx, c[1] + dy)
+                    if n in dry and n not in seen:
+                        seen.add(n)
+                        st.append(n)
+        comps.append(comp)
+    comps.sort(key=len, reverse=True)
+    sq = lambda o: f"{math.floor(o['x'] / GRID)},{math.floor(o['y'] / GRID)}"  # noqa: E731
+    acts, doors, mks = defaultdict(int), defaultdict(int), defaultdict(list)
+    for a in d["actors"]:
+        acts[sq(a)] += 1
+    for o in d["doors"]:
+        doors[sq(o)] += 1
+    for m in d["bmvmarkers"]:
+        mks[sq(m)].append(m["name"])
+    out, of = [], {}
+    for i, comp in enumerate(comps):
+        keys = [f"{x},{y}" for x, y in comp]
+        xs, ys = [c[0] for c in comp], [c[1] for c in comp]
+        refs = sum((d["cells"].get(k) or {}).get("refs") or 0 for k in keys)
+        npl = sum(acts[k] for k in keys)
+        sts = sorted({st["label"] or st["name"] for st in d["settlements"] if any(f"{c[0]},{c[1]}" in keys
+                                                                                 for c in st["cells"])})
+        verdict = ("bare LAND: nothing placed on it (no object, no actor, no door)" if refs == 0 else
+                   "objects only: no actor placed" if npl == 0 else "inhabited")
+        out.append({"i": i, "cells": len(comp), "km2": round(len(comp) * CELL_KM2, 2), "x0": min(xs), "x1": max(xs),
+                    "y0": min(ys), "y1": max(ys), "cx": (min(xs) + max(xs) + 1) / 2, "cy": (min(ys) + max(ys) + 1) / 2,
+                    "refs": refs, "placements": npl, "doors": sum(doors[k] for k in keys),
+                    "markers": sorted({n for k in keys for n in mks[k]}), "settlements": sts, "verdict": verdict})
+        for k in keys:
+            of[k] = i
+    d["islands"], d["island_of"] = out, of
+
+
+def links(w: db.World, data: dict) -> list[dict]:
+    """The ways between worldspaces: each group of interiors joined by load doors (a ship, a house, a cave run, an
+    inn) that has doors out to more than one worldspace, or to one of BM&V's and a vanilla Skyrim interior."""
+    q = lambda sql: [dict(r) for r in w.query(sql)]  # noqa: E731
+    cells = {c["id"]: c for c in q("SELECT id, editor_id, name, interior, worldspace, defined_in FROM bmv_cell")}
+    doors = {d["id"]: d for d in q("SELECT * FROM bmv_door")}
+    ed = {r["id"]: r["editor_id"] for r in q("SELECT id, editor_id FROM bmv_worldspace")}
+    sett = {r["cell"]: r["settlement"] for r in q("SELECT cell, settlement FROM bmv_settlement_cell")}
+    names = {s["id"]: s["label"] for d in data.values() for s in d["settlements"]}
+    par: dict = {}
+
+    def find(x):
+        while par.setdefault(x, x) != x:
+            x = par[x]
+        return x
+    for d in doors.values():
+        t = doors.get(d["target"])
+        if t and cells[d["cell"]]["interior"] and cells[t["cell"]]["interior"]:
+            par[find(d["cell"])] = find(t["cell"])
+    ends, members, bases = defaultdict(dict), defaultdict(set), defaultdict(set)
+    for d in doors.values():
+        t = doors.get(d["target"])
+        for a, b in ((d, t), (t, d)):
+            if not a or not b or not cells[a["cell"]]["interior"] or cells[b["cell"]]["interior"]:
+                continue
+            g = find(a["cell"])
+            members[g].add(a["cell"])
+            bases[g].update(x["base_editor_id"] or "" for x in (a, b))
+            wsd = ed.get(cells[b["cell"]]["worldspace"])
+            s = sett.get(b["cell"])
+            ends[g][b["id"]] = {"ws": wsd, "x": b["x"], "y": b["y"], "door": b["id"], "settlement": s,
+                                "at": names.get(s) if s else None}
+    for e in ends.values():                # an end with no named settlement: the nearest map marker within 3 cells
+        for x in e.values():
+            if x["at"] or x["ws"] not in data:
+                continue
+            g = [math.floor(x["x"] / GRID), math.floor(x["y"] / GRID)]
+            own = [st["label"] for st in data[x["ws"]]["settlements"] if st["label"] and any(c[:2] == g for c in st["cells"])]
+            if own:
+                x["at"] = own[0]
+                continue
+            mk = sorted((math.hypot(m["x"] - x["x"], m["y"] - x["y"]), m["name"]) for m in data[x["ws"]]["bmvmarkers"])
+            if mk and mk[0][0] <= 3 * GRID:
+                x["at"] = f"by {mk[0][1]}"
+    locs = [(r["editor_id"][:-len("Location")], r["name"]) for r in q("SELECT editor_id, name FROM bmv_location")
+            if (r["editor_id"] or "").endswith("Location")]
+
+    def vname(c):
+        """A vanilla interior's name as Skyrim shows it: its location's name where the cell's own is generic."""
+        loc = [n for e, n in locs if (c["editor_id"] or "").startswith(e)]
+        return loc[0] if loc else c["name"] or c["editor_id"]
+    out = []
+    for g, e in ends.items():
+        vanilla = sorted(vname(cells[m]) for m in members[g]
+                         if cells[m]["defined_in"] in MASTER_FILES and not (cells[m]["editor_id"] or "").startswith("01"))
+        wss = {x["ws"] for x in e.values()}
+        if len(wss) < 2 and not vanilla:
+            continue
+        b = " ".join(bases[g])
+        mem = sorted(members[g], key=lambda m: cells[m]["editor_id"] or "")
+        kind = ("book portal" if re.search(r"book", b, re.I) else "magic portal" if re.search(r"portal", b, re.I)
+                else "ship" if any(re.search(r"ship|dock", cells[m]["editor_id"] or "", re.I) for m in mem)
+                else "door")
+        via = ", ".join(f"{cells[m]['name'] or 'no name'} ({cells[m]['editor_id']})" for m in mem)
+        out.append({"kind": kind, "via": via, "skyrim": vanilla, "ends": sorted(e.values(), key=lambda x: (x["ws"], x["x"]))})
+    out.sort(key=lambda r: (bool(r["skyrim"]), r["via"]))
+    return out
+
+
+def norm(s: str) -> str:
+    return re.sub(r"[^a-z]", "", (s or "").lower())
+
+
+def lore_places(w: db.World, data: dict) -> list[dict]:
+    """Every Black Marsh place story/lore names (the place table's canon-named places, the dossiers' own places and the
+    province dossier's sub-regions) with where it is in BM&V: a ruled mapping (place_bmv), a name match, or none."""
+    rows = [dict(r) for r in w.query("SELECT id, name, region FROM place WHERE provenance = 'canon-named'")]
+    pb = {r["place"]: dict(r) for r in w.query("SELECT * FROM place_bmv")}
+    seen = {norm(r["name"]) for r in rows}
+    rows += [{"id": None, "name": n, "region": None, "source": src} for n, src in LORE_EXTRA if norm(n) not in seen]
+    # every BM&V name with a position: map markers, settlement names (marker names), cell names and editor ids
+    cand = []
+    for wsd, d in data.items():
+        for m in d["bmvmarkers"]:
+            cand.append((norm(m["name"]), wsd, m["x"], m["y"], f"BM&V map marker \"{m['name']}\""))
+        for s in d["settlements"]:
+            cand.append((norm(s["name"]), wsd, (s["grid_x"] + .5) * GRID, (s["grid_y"] + .5) * GRID,
+                         f"cell editor id {s['name']}" + (f" (\"{s['label']}\")" if s["label"] else "")))
+    out = []
+    for r in sorted(rows, key=lambda r: r["name"]):  # sorted again below: mapped, name matches, absent
+        p = pb.get(r["id"]) if r["id"] else None
+        e = {"name": r["name"], "place": r["id"], "region": r["region"], "source": r.get("source")}
+        if p and p["status"] == "mapped":
+            for wsd, d in data.items():
+                hit = [x for x in d["places"] if x["place"] == r["id"]]
+                if hit:
+                    h = hit[0]
+                    s = next((x for x in d["settlements"] if x["id"] == h["settlement"]), None)
+                    at = (s["label"] or "an unnamed place (no in-game name; click for its editor id)") if s else h["at"]
+                    e.update(status="mapped", ws=wsd, x=(h["gx"] + .5) * GRID, y=(h["gy"] + .5) * GRID,
+                             what=f"ruled mapping ({p['confidence']}): {at}", reason=p["reason"])
+            if "status" not in e:
+                c = w.query("SELECT editor_id, name FROM bmv_cell WHERE id = ?", p["cell"])
+                what = (f"{c[0][0]}, a vanilla test cell BM&V reuses (in-game name \"{c[0][1]}\"): no real prison"
+                        if c else p["cell"])
+                e.update(status="mapped", what=f"ruled mapping ({p['confidence']}) to an interior: {what}",
+                         reason=p["reason"])
+        else:
+            n = norm(r["name"])
+            hit = [c for c in cand if c[0] == n] or [c for c in cand if len(n) > 4 and c[0].startswith(n)]
+            if hit:
+                c = hit[0]
+                e.update(status="name", ws=c[1], x=c[2], y=c[3], what=f"name match only, not a ruled mapping: {c[4]}")
+            else:
+                e.update(status="absent", what="not in BM&V" + (": the census searched every record of the four "
+                                                                "files" if p else ": no BM&V marker or cell name matches"))
+        out.append(e)
     return out
 
 
@@ -284,8 +517,22 @@ def build(bdir: Path, out: Path) -> dict:
         d["terrain"] = {"ppc": ppc, "x0": x0, "y0": y0, "x1": x1, "y1": y1,
                         "land": sorted(f"{x},{y}" for x, y in land.get(d["id"], {}))}
         stats[ed] = f"{len(d['terrain']['land'])} LAND at {ppc} px"
+        islands(d, land.get(d["id"], {}))
+        d["size"] = size(land.get(d["id"], {}))
+        d["role"] = ROLES.get(ed)
+        d["unfinished"] = [m for m in d["bmvmarkers"] if re.search(r"coming soon", m["name"] or "", re.I)]
+    w = db.open()
+    ov = {"order": [e for e in ROLES if e in data], "tamriel": tamriel(), "links": links(w, data),
+          "lore": lore_places(w, data)}
+    mine = [data[e]["size"] for e in ov["order"]]
+    ov["total"] = {k: round(sum(m[k] for m in mine), 2) for k in ("cells", "km2", "dry_km2")}
+    bm = [data[e]["size"] for e in ov["order"] if e != "Valenwood"]
+    ov["black_marsh"] = {k: round(sum(m[k] for m in bm), 2) for k in ("cells", "km2", "dry_km2")}
+    stats["overview"] = {"total": ov["total"], "black_marsh": ov["black_marsh"], "tamriel": ov["tamriel"],
+                         "links": len(ov["links"])}
     page = TEMPLATE.replace("/*DATA*/null", json.dumps(data, separators=(",", ":")).replace("</", "<\\/")).replace(
-        "/*IMAGES*/null", json.dumps(uris))
+        "/*IMAGES*/null", json.dumps(uris)).replace("/*OVERVIEW*/null", json.dumps(ov, separators=(",", ":")).replace(
+            "</", "<\\/"))
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".tmp")
     tmp.write_text(page)
