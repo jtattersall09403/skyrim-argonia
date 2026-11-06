@@ -18,10 +18,10 @@ with the record.
 
 ## MQ04 The Tree That Turned Its Face (M)
 
-- Stages: 7 (10 root-herald, 20 the cut root, 30 the tree-minder, 40 the trail and the camp, 50 the return, endings
-  91 and 92).
-- Choices: 1 (a cell man taken alive and handed to the Reed on the jetty, or not; the jars are poured either way).
-- Endings: 2 (e-minder 91, e-reed 92); every ending reaches stage 90 or more, so MQ05 starts the same.
+- Stages: 6 (10 root-herald, 20 the cut root, 30 the tree-minder, 40 the trail and the camp, 50 the return, ending
+  91).
+- Choices: 0 (a cell man may be taken alive or not; the jars are poured either way).
+- Endings: 1 (e-minder 91), so MQ05 starts the same.
 - Skills by stage: speech; blade; sneak or speech; swimming with sneak or blade; the pour at the root.
 
 ### Settled
@@ -417,6 +417,8 @@ Converging (blocking 5, then 2: both leftover copies of the cut branch). All acc
 - The QA9 citation is cut from recordSources.lore.
 - This file's MQ04 summary is brought up to date (one ending).
 
+Round 4: applied (MQ04SHA), 6 of 6 (N5, the foundation's parenthesis, in 150b818f).
+
 ### MQ03, round 4 delta (2026-11-06): the planner's rulings
 
 B1 and B2 are MQ01's round 4 B2 and N1 seen from MQ03's side; MQ01's fixes answer them (Ties on his own ref; the
@@ -425,6 +427,8 @@ courier outside the broker's parent). Accepted:
   from fact.mq03.barge-gone.
 - N1: "once both are answered" is cut from stage 20's directions.
 Act I is converging: 7 unique blocking findings this round across MQ01, MQ03 and MQ04, against 19 in round 3.
+
+Round 4: applied (3d5c90e7), 2 of 2 (B1, B2 and MQ01's B4 in 2791e6f7).
 
 ### MQ05, round 4 delta (2026-11-06): the planner's rulings
 
