@@ -582,3 +582,20 @@ now on every ruling spells out its fix in this file.
 - Self-review B3 (gold against the village's barter lore): the gift becomes food, not coin. Two portions of any
   common food (C-item on the food keyword, then E-item to take them); the journal says "bring her food".
 - Self-review N3: Turns-The-Clutch's protection until stage 40 stays (the Helgen rule needs it).
+
+### The slice's last checker warnings, and how the loop ends (2026-11-06): the planner's rulings, spelt out
+
+Checker calls (skill_routes):
+- Pickpocket counts as a route that can fail (it fails on detection, as in vanilla).
+- A Speech check of 25 or more with a gold or food alternative counts as a route, as Bethesda's persuade or bribe
+  does.
+- A pure choice stage is one whose successors are only distinct choice topics, whatever they lead to. BC03's stage
+  10 (stand with Ussa-Rekh or Heavy-Rope) is one.
+BC02:
+- Stage 20, the gate, is won by Speech 25 with Third-Born Tsaxi, or by Sneak, not detectedBy Tsaxi (C-detected).
+- Stage 40 merges into 30. Reaching the chosen prisoner and walking out are one stage, and the endings fire on
+  npcAtMark at we.door.rose-jail.
+How the loop ends: the planner rules, as the owner gave. The Act I and slice loop closes when:
+- adaptation_check prints no warning for the slice quests;
+- a last delta review raises nothing blocking that a single cut or rewording cannot answer;
+- those cuts are applied without another review.
