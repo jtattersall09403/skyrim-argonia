@@ -599,3 +599,15 @@ How the loop ends: the planner rules, as the owner gave. The Act I and slice loo
 - adaptation_check prints no warning for the slice quests;
 - a last delta review raises nothing blocking that a single cut or rewording cannot answer;
 - those cuts are applied without another review.
+
+### MQ01 stage 10 and MQ03 stage 40 (2026-11-06): the planner's rulings, spelt out
+
+- MQ01 stage 10, the hold: it is the new game's opening scene, Helgen's cart. A stage that completes on a scene's
+  end (TR-scene) and cannot be failed is a scene stage, exempt from the skill rule as a choice stage is. The hold's
+  talk plays as the scene (the roll call reading Sal-Sei and Deesh-Duun aloud, the answer). Stage 10 completes on
+  the scene's end, and the march follows as before.
+- MQ03 stage 40, the dream: the root-ledge climb is cut (the owner: climbing in trees is pointless and buggy, and a
+  climb that resets on a fall cannot fail). The dream is a short vision scene to the door (TR-scene), exempt as a
+  scene stage. The placed root-ledge statics are cut.
+- adaptation_check: skill_routes skips a stage whose only successor is a scene's end.
+- MQ01's place_hostility_flips rows that test the cut stages 30 and 60 are re-pointed at stage 40.
