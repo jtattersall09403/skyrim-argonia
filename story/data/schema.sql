@@ -2949,15 +2949,17 @@ CREATE TABLE "line_spirit_beat" (
   PRIMARY KEY ("line", "ord")
 );
 
--- Home of a line's seat and hubs in BM&V: a settlement, or an interior cell, with its role.
+-- Home of a line's seat and hubs: a BM&V settlement (or an interior cell), or a place a ledgered edit makes.
 CREATE TABLE "line_hub" (
   "line" TEXT NOT NULL REFERENCES "quest_line"("id"),
   "ord" INTEGER NOT NULL,
-  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
   "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "edit" TEXT REFERENCES "world_edit"("id"),
   "role" TEXT NOT NULL CHECK ("role" IN ('seat', 'hub', 'field')),
   "why" TEXT NOT NULL,
-  PRIMARY KEY ("line", "ord")
+  PRIMARY KEY ("line", "ord"),
+  CHECK ("settlement" IS NOT NULL OR "edit" IS NOT NULL)
 );
 
 -- Home of the senior exclusions between lines (40-factions): no two exclusive lines share a seat or a prerequisite.
@@ -2984,15 +2986,18 @@ CREATE TABLE "quest_adaptation" (
   CHECK ("verdict" IN ('merge', 'drop') OR ("premise" IS NOT NULL AND "band" IS NOT NULL AND "lore" IS NOT NULL))
 );
 
--- Home of the BM&V places a kept quest is played in: a settlement, or one of its interiors, with the place's role.
+-- Home of the places a kept quest is played in: a BM&V settlement (or one of its interiors), or a place a ledgered
+-- world edit makes (`edit`: place_new, interior_new, interior_copy or land_new), with the place's role.
 CREATE TABLE "quest_host" (
   "quest" TEXT NOT NULL REFERENCES "quest_adaptation"("quest") ON DELETE CASCADE,
   "ord" INTEGER NOT NULL,
-  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
   "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "edit" TEXT REFERENCES "world_edit"("id"),
   "role" TEXT NOT NULL CHECK ("role" IN ('start', 'main', 'stage', 'end')),
   "what" TEXT NOT NULL,
-  PRIMARY KEY ("quest", "ord")
+  PRIMARY KEY ("quest", "ord"),
+  CHECK ("settlement" IS NOT NULL OR "edit" IS NOT NULL)
 );
 
 -- Home of a quest's prerequisite beyond its line's order: it starts only after `needs` (another quest) ends.
@@ -3009,7 +3014,8 @@ CREATE TABLE "quest_prereq" (
 CREATE TABLE "world_edit" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "kind" TEXT NOT NULL CHECK ("kind" IN ('npc_add', 'npc_move', 'npc_remove', 'npc_change', 'creature_add',
-    'creature_remove', 'ref_place', 'ref_disable', 'door_add', 'interior_copy', 'record_change', 'name_place')),
+    'creature_remove', 'ref_place', 'ref_disable', 'door_add', 'interior_copy', 'interior_new', 'place_new',
+    'land_new', 'record_change', 'name_place')),
   "settlement" TEXT REFERENCES "bmv_settlement"("id"),
   "cell" TEXT REFERENCES "bmv_cell"("id"),
   "target" TEXT,

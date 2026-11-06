@@ -2,9 +2,9 @@
 PY := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/python) python3)
 RUFF := $(firstword $(wildcard $(HOME)/.argonia/venv/bin/ruff) $(shell command -v ruff) python3 -m ruff)
 
-.PHONY: check guard lint unit hooks deploy plugin plugin-check plugin-seed map
+.PHONY: check guard lint unit adaptation hooks deploy plugin plugin-check plugin-seed map
 
-check: guard lint unit
+check: guard lint unit adaptation
 	@echo "CHECK GREEN"
 
 guard:
@@ -15,6 +15,10 @@ lint:
 
 unit:
 	@$(PY) -m pytest -q tooling/tests tools/tests; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ]
+
+# The adaptation ledger's whole-set checks (phase 2): places, edits, prerequisites, danger, capacity, lore, 0006, 0035.
+adaptation:
+	@$(PY) -m tools.argonia_world.adaptation_check
 
 hooks:
 	@bash tooling/guards/install_hooks.sh
