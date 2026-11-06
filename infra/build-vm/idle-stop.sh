@@ -72,8 +72,15 @@ fi
 if [ "${1:-}" != "--status" ]; then
   want=on; job_active >/dev/null && want=off
   if [ "$(cat "$STATE/alarm-actions" 2>/dev/null)" != "$want" ]; then
-    if [ $want = off ]; then aws cloudwatch disable-alarm-actions --region eu-west-2 --alarm-names argonia-build-idle-stop 2>/dev/null
-    else aws cloudwatch enable-alarm-actions --region eu-west-2 --alarm-names argonia-build-idle-stop 2>/dev/null; fi &&
+    # the role may put the alarm but not call enable/disable-alarm-actions, so the alarm is written whole
+    tok=$(curl -s -m 3 -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 60')
+    iid=$(curl -s -m 3 -H "X-aws-ec2-metadata-token: $tok" http://169.254.169.254/latest/meta-data/instance-id)
+    [ $want = off ] && act=--no-actions-enabled || act=--actions-enabled
+    [ -n "$iid" ] && aws cloudwatch put-metric-alarm --region eu-west-2 --alarm-name argonia-build-idle-stop \
+      --alarm-description "Stop the build VM after an hour under 3% CPU: a backstop to its idle timer; idle-stop.sh turns its action off while a job_guard job runs" \
+      --namespace AWS/EC2 --metric-name CPUUtilization --dimensions "Name=InstanceId,Value=$iid" --statistic Average \
+      --period 300 --evaluation-periods 12 --threshold 3 --comparison-operator LessThanThreshold \
+      --treat-missing-data notBreaching --alarm-actions "arn:aws:automate:eu-west-2:ec2:stop" $act 2>/dev/null &&
       echo $want > "$STATE/alarm-actions"
   fi
 fi
