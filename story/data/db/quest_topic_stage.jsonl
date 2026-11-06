@@ -172,6 +172,13 @@
 {"quest_id":"quest.main.mq03","topics_ord":21,"ord":1,"value":91}
 {"quest_id":"quest.main.mq03","topics_ord":21,"ord":2,"value":92}
 {"quest_id":"quest.main.mq03","topics_ord":21,"ord":3,"value":93}
+{"quest_id":"quest.main.mq03","topics_ord":21,"ord":4,"value":96}
+{"quest_id":"quest.main.mq03","topics_ord":21,"ord":5,"value":97}
+{"quest_id":"quest.main.mq03","topics_ord":21,"ord":6,"value":98}
+{"quest_id":"quest.main.mq03","topics_ord":22,"ord":0,"value":92}
+{"quest_id":"quest.main.mq03","topics_ord":22,"ord":1,"value":94}
+{"quest_id":"quest.main.mq03","topics_ord":22,"ord":2,"value":95}
+{"quest_id":"quest.main.mq03","topics_ord":22,"ord":3,"value":99}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":0,"value":10}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":0,"value":10}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":1,"value":20}

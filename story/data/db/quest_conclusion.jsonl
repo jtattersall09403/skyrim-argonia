@@ -6,8 +6,8 @@
 {"quest_id":"quest.local.lh38","ord":2,"id":"c3","statement":"Reeh-Shaal killed him."}
 {"quest_id":"quest.main.mq01","ord":0,"id":"c1","statement":"The attackers came for the courier's satchel and for the cutting, not for the gang."}
 {"quest_id":"quest.main.mq01","ord":1,"id":"c2","statement":"The clutch died because the cutting's roots were cut, not because the cutting withdrew."}
-{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell, led by the woman with the cord, that came for the satchel and the cutting's sap, with jars ready, and means to keep what it draws: a long work, not a raid. Shown to Nesh-Deeka, it is what makes her give up what she knows of the courier unasked."}
-{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"With the roll burnt and the barge a day down the river, the broker's claim rests on the two in this house, and a release he speaks before witnesses would end it."}
+{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell, led by the woman with the cord, that came for the satchel and the cutting's sap, with jars ready, and means to keep what it draws: a long work, not a raid. Shown the phial, Nesh-Deeka stops asking twice about jars."}
+{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"With the roll burnt and the barge a day down the coast, the broker's claim rests on the two in this house, and a release he speaks before witnesses would end it."}
 {"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The root was cut by two strangers who came by the north reeds and used the unbarred workshop: the tree closed through a cut, not through Pays-Late's keeping."}
 {"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The leeches are an effect of the spilled sap, not the cause of the closing: they are only where the sap spilled."}
 {"quest_id":"quest.main.mq04","ord":2,"id":"c3","statement":"Pays-Late hid the cut and washes it out of fear, not guilt."}

@@ -39,7 +39,10 @@
 {"quest":"quest.main.mq01","edit":"we.mq01.start"}
 {"quest":"quest.main.mq03","edit":"we.clean.hereguardplantation"}
 {"quest":"quest.main.mq03","edit":"we.clean.lilmoth"}
+{"quest":"quest.main.mq03","edit":"we.mq01.broker"}
 {"quest":"quest.main.mq03","edit":"we.mq01.camp"}
+{"quest":"quest.main.mq03","edit":"we.mq01.hold-location"}
+{"quest":"quest.main.mq03","edit":"we.mq03.barge-sails"}
 {"quest":"quest.main.mq03","edit":"we.mq03.door"}
 {"quest":"quest.main.mq03","edit":"we.mq03.dream"}
 {"quest":"quest.main.mq03","edit":"we.mq03.house"}

@@ -179,6 +179,8 @@
 {"quest_id":"quest.main.mq03","ord":18,"id":"flag.mq03.reed-word","access":"write"}
 {"quest_id":"quest.main.mq03","ord":19,"id":"flag.mq03.broker-dead","access":"write"}
 {"quest_id":"quest.main.mq03","ord":20,"id":"npc.dunmer-north.stormhold.reed-officer","access":"read"}
+{"quest_id":"quest.main.mq03","ord":21,"id":"flag.mq03.reed-declined","access":"write"}
+{"quest_id":"quest.main.mq03","ord":22,"id":"flag.mq03.nesh-dead","access":"write"}
 {"quest_id":"quest.main.mq04","ord":0,"id":"npc.mercantile-coast.low-reed-village.root-herald","access":"write"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"npc.mercantile-coast.low-reed-village.chime-tuner","access":"write"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"npc.mercantile-coast.low-reed-village.egg-tender","access":"write"}

@@ -61,6 +61,8 @@
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":5,"value":"fact.mq03.broker-bought-honest"}
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":6,"value":"fact.mq03.food-months"}
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":7,"value":"fact.mq03.sap-soul"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"ord":8,"value":"fact.mq03.dock-claim"}
+{"quest_id":"quest.main.mq03","stages_ord":1,"ord":9,"value":"fact.mq03.survivor-refuses"}
 {"quest_id":"quest.main.mq03","stages_ord":2,"ord":0,"value":"fact.mq03.reed-named"}
 {"quest_id":"quest.main.mq03","stages_ord":2,"ord":1,"value":"fact.mq03.house-reed"}
 {"quest_id":"quest.main.mq03","stages_ord":2,"ord":2,"value":"fact.mq03.sap-cell"}

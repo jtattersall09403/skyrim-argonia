@@ -29,6 +29,8 @@
 {"quest_id":"quest.main.mq03","source":"lore","ord":9,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":10,"value":"story/lore/extrapolation/gap-register.md §8 QA18"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":11,"value":"story/lore/topics/hist-and-sap.md ('Sap': a Hist's sap is its soul; on non-Argonians a hallucinogen with a bloodlust edge)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":12,"value":"story/lore/extrapolation/gap-register.md §8 QA19"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":13,"value":"story/lore/soulrest.md (a port on Topal Bay)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/regions/murkmire.md (Villages and tribes; Politics)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Tribal Hist)"}
