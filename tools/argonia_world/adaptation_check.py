@@ -369,6 +369,193 @@ def motif_warnings(lg: Ledger, stages: dict | None = None) -> list[str]:
                 out.append(f"{q} {sid}: {', '.join(hits)}")
     return out
 
+
+# ---- record rules (2026-11-06): what quest-review used to judge by hand and a program can check. Warnings until the
+# current rows are clean; each returns "<quest or edit>: <what>" lines.
+VANILLA = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm")
+FORM_KEY = re.compile(r"\b[0-9A-F]{6}:[A-Za-z][\w .&'-]*?\.es[mpl]\b")
+FREE_TERMS = {"all", "any", "inZone", "inCell", "inSettlement", "timeOfDay", "questStage", "stageEverReached",
+              "knowsTopic", "topicHeardFrom", "flag"}
+
+
+@dataclass
+class Records:
+    census: set = field(default_factory=set)          # every bmv_* form key
+    base_placements: dict = field(default_factory=dict)  # bmv_npc base -> placements
+    door_base: dict = field(default_factory=dict)     # bmv_door -> its DOOR base key
+    texts: list = field(default_factory=list)         # (owner, text) scanned for form keys
+    needs: list = field(default_factory=list)         # (owner, form key) that must be in the census
+    names: dict = field(default_factory=dict)         # npc id -> name
+    people: list = field(default_factory=list)        # (quest, npc) speakers and cast
+    placing: str = ""                                 # every text that places someone (edits, actor things, needs)
+    quest_text: dict = field(default_factory=dict)    # quest -> foundation and notes
+    stages: dict = field(default_factory=dict)        # quest -> {stage: {"succ": [(to, terms, args)], "ff": set}}
+    topics: list = field(default_factory=list)        # (quest, npc, essential, {stages})
+    edits: dict = field(default_factory=dict)         # edit -> (kind, target)
+    edit_targets: dict = field(default_factory=dict)  # edit -> forms
+    quest_forms: dict = field(default_factory=dict)   # quest -> form keys it uses
+    live: set | None = None                           # quests kept or adapted; None checks every quest
+
+
+def _tree(w) -> dict:
+    kids, terms, args = defaultdict(list), {}, defaultdict(set)
+    for r in w.query("SELECT id, parent_id, term FROM condition"):
+        terms[r["id"]] = r["term"]
+        if r["parent_id"]:
+            kids[r["parent_id"]].append(r["id"])
+    for r in w.query("SELECT condition_id, value FROM condition_arg"):
+        args[r["condition_id"]].add(str(r["value"]))
+
+    def walk(c):
+        t, a = {terms.get(c)}, set(args[c])
+        for k in kids[c]:
+            kt, ka = walk(k)
+            t |= kt
+            a |= ka
+        return t, a
+    return {c: walk(c) for c in terms}
+
+
+def load_records() -> Records:
+    from tools.argonia_world import db
+    w = db.load()
+    rc = Records()
+    for t in ("bmv_worldspace", "bmv_location", "bmv_cell", "bmv_race", "bmv_class", "bmv_faction", "bmv_npc",
+              "bmv_placement", "bmv_quest", "bmv_door", "bmv_map_marker", "bmv_book"):
+        rc.census |= set(w.values(f"SELECT id FROM {t}"))
+    rc.base_placements = {r[0]: r[1] for r in w.query("SELECT npc, count(*) FROM bmv_placement GROUP BY npc")}
+    rc.door_base = {r[0]: r[1] for r in w.query("SELECT id, base FROM bmv_door")}
+    for r in w.query("SELECT id, kind, cell, target, description FROM world_edit"):
+        rc.edits[r["id"]] = (r["kind"], r["target"])
+        rc.texts.append((r["id"], r["description"]))
+        rc.needs += [(r["id"], k) for k in (r["cell"], r["target"]) if k]
+        rc.placing += " " + r["description"]
+    for e, t in w.query("SELECT edit, target FROM world_edit_target"):
+        rc.edit_targets.setdefault(e, set()).add(t)
+        rc.needs.append((e, t))
+    for q, t, what in w.query("SELECT quest, target, what FROM quest_bmv_need"):
+        rc.needs.append((q, t))
+        rc.placing += " " + what
+        rc.quest_forms.setdefault(q, set()).add(t)
+    for r in w.query('SELECT quest_id, kind, source, "where" FROM quest_thing'):
+        txt = f"{r['source']} {r['where'] or ''}"
+        rc.texts.append((r["quest_id"], txt))
+        rc.quest_forms.setdefault(r["quest_id"], set()).update(FORM_KEY.findall(txt))
+        if r["kind"] == "actors":
+            rc.placing += " " + txt
+    for q, e in w.query("SELECT quest, edit FROM quest_world_edit"):
+        ed = rc.edits.get(e)
+        if ed and ed[1]:
+            rc.quest_forms.setdefault(q, set()).add(ed[1])
+    rc.live = set(w.values("SELECT quest FROM quest_adaptation WHERE verdict IN ('keep', 'adapt')"))
+    rc.names = {r[0]: r[1] for r in w.query("SELECT id, name FROM npc")}
+    rc.people = sorted({tuple(r) for r in w.query("SELECT quest_id, person FROM quest_topic")} |
+                       {tuple(r) for r in w.query("SELECT quest_id, id FROM quest_cast")})
+    rc.quest_text = {r[0]: f"{r[1] or ''} {r[2] or ''}" for r in w.query("SELECT id, foundation, notes FROM quest")}
+    tree = _tree(w)
+    sid = {(r[0], r[1]): r[2] for r in w.query("SELECT quest_id, ord, id FROM quest_stage")}
+    for (q, o), s in sid.items():
+        rc.stages.setdefault(q, {})[s] = {"succ": [], "ff": set()}
+    for r in w.query('SELECT quest_id, stages_ord, "to", "when" FROM quest_successor'):
+        t, a = tree.get(r["when"], (set(), set()))
+        rc.stages[r["quest_id"]][sid[(r["quest_id"], r["stages_ord"])]]["succ"].append((r["to"], t, a))
+    for r in w.query('SELECT quest_id, stages_ord, "when" FROM quest_fail_forward'):
+        rc.stages[r["quest_id"]][sid[(r["quest_id"], r["stages_ord"])]]["ff"] |= tree.get(r["when"], (set(), set()))[1]
+    st = defaultdict(set)
+    for r in w.query("SELECT quest_id, topics_ord, value FROM quest_topic_stage"):
+        st[(r[0], r[1])].add(r[2])
+    rc.topics = [(r[0], r[2], bool(r[3]), st[(r[0], r[1])])
+                 for r in w.query("SELECT quest_id, ord, person, essential FROM quest_topic")]
+    return rc
+
+
+def rule_census_ids(rc: Records) -> list[str]:
+    """Every form key a row names is a census row (free text: BM&V's own plugins only)."""
+    out = {f"{o}: {k} is not in the census" for o, k in rc.needs if FORM_KEY.fullmatch(k) and k not in rc.census}
+    for o, txt in rc.texts:
+        for k in FORM_KEY.findall(txt or ""):
+            if k.split(":", 1)[1] not in VANILLA and k not in rc.census:
+                out.add(f"{o}: {k} is not in the census")
+    return sorted(out)
+
+
+def rule_placed(rc: Records) -> list[str]:
+    """A speaker or cast member is placed: some edit, actor thing or BM&V need names them."""
+    out = []
+    for q, p in rc.people:
+        name = rc.names.get(p) or ""
+        if p not in rc.placing and not (name and name in rc.placing):
+            out.append(f"{q}: {p} ({name}) speaks or acts but no edit, actor thing or need places them")
+    return out
+
+
+def _guarded(text: str, name: str) -> bool:
+    return any(name in s and re.search(r"\b(essential|protected)\b", s) for s in re.split(r"(?<=[.;])\s", text))
+
+
+def rule_helgen(rc: Records) -> list[str]:
+    """Someone a stage needs (an essential topic's speaker there, or named in its successors) is essential or protected
+    in the record's text, or the stage fails forward on them (Helgen's Hadvar and Ralof)."""
+    need = defaultdict(set)
+    for q, p, ess, sts in rc.topics:
+        if ess:
+            for s in sts:
+                need[(q, s)].add(p)
+    for q, sts in rc.stages.items():
+        for s, d in sts.items():
+            for _, _, a in d["succ"]:
+                need[(q, s)] |= {x for x in a if x.startswith("npc.")}
+    out = []
+    for (q, s), ps in sorted(need.items(), key=str):
+        ff = rc.stages.get(q, {}).get(s, {}).get("ff", set())
+        for p in sorted(ps):
+            name = rc.names.get(p) or p
+            if p not in ff and not _guarded(rc.quest_text.get(q, ""), name):
+                out.append(f"{q}: stage {s} needs {name} alive, who is not essential or protected and has no fail-forward")
+    return out
+
+
+def rule_shared_base(rc: Records) -> list[str]:
+    """An edit to an actor base changes every placement of it."""
+    return [f"{e}: {k} of base {t}, which has {rc.base_placements[t]} placements (edit the placement instead)"
+            for e, (k, t) in sorted(rc.edits.items())
+            if k in ("npc_change", "record_change") and rc.base_placements.get(t, 0) > 1]
+
+
+def rule_vanilla_door(rc: Records) -> list[str]:
+    """A door a quest uses shows no vanilla Skyrim model unless a record_change re-models it (0006)."""
+    fixed = set()
+    for e, (k, t) in rc.edits.items():
+        if k == "record_change":
+            fixed |= {t} | rc.edit_targets.get(e, set())
+    out = []
+    for q, forms in sorted(rc.quest_forms.items()):
+        for d in sorted(forms):
+            b = rc.door_base.get(d)
+            if b and b.split(":", 1)[-1] in VANILLA and d not in fixed:
+                out.append(f"{q}: door {d} uses vanilla model {b} and no record_change re-models it (0006)")
+    return out
+
+
+def rule_skill_gate(rc: Records) -> list[str]:
+    """A skill-gated successor is not doubled by a free one to the same stage."""
+    out = []
+    for q, sts in sorted(rc.stages.items()):
+        for s, d in sorted(sts.items()):
+            for to, t, _ in d["succ"]:
+                if "skillAtLeast" in t and any(to2 == to and t2 <= FREE_TERMS for to2, t2, _ in d["succ"]):
+                    out.append(f"{q}: stage {s} -> {to} is skill-gated, but a free successor walks round it")
+    return out
+
+
+RULES = (rule_census_ids, rule_placed, rule_helgen, rule_shared_base, rule_vanilla_door, rule_skill_gate)
+
+
+def record_warnings(rc: Records) -> list[str]:
+    live = lambda f: rc.live is None or not f.startswith("quest.") or f.split(":")[0] in rc.live
+    return [f"{r.__name__[5:]}: {f}" for r in RULES for f in r(rc) if live(f)]
+
+
 def run(lg: Ledger) -> list[str]:
     return [f"{c.__name__[6:]}: {f}" for c in CHECKS for f in c(lg)]
 
@@ -385,7 +572,11 @@ def main() -> int:
     warns = motif_warnings(lg, stages)
     for w in warns:
         print(f"motif (warning): {w}")
-    print(f"adaptation_check: {len(findings)} finding(s), {len(warns)} procedure-word warning(s)")
+    recs = record_warnings(load_records())
+    for w in recs:
+        print(f"record (warning): {w}")
+    print(f"adaptation_check: {len(findings)} finding(s), {len(warns)} procedure-word warning(s), "
+          f"{len(recs)} record warning(s)")
     return 1 if findings else 0
 
 

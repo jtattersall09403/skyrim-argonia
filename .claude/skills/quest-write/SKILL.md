@@ -9,12 +9,11 @@ Quests, their dialogue and the world are consistent because they are built from 
 (decision 0024). The world is Black Marsh & Valenwood's (BM&V, an existing mod), not our old generated places:
 a quest is written as a record here, then built as Creation Kit/xEdit-style records (quest, dialogue, aliases,
 placed or changed NPCs, items, creatures) on top of BM&V. The record is the imported quest object plus the record's sections:
-[quest-record.md](quest-record.md), which also holds the engine-mapping table. The record lives as rows in the
-story data in `story/data` (`quest` and its `quest_*` tables, decision 0030); you write its YAML view and import it. Worked
-examples, exported from the database: [examples/lh38.yaml](examples/lh38.yaml) (local) and
-[examples/mr01.yaml](examples/mr01.yaml) (faction).
-
-Read the world only through the database: `python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>` (the tables and their comments are in `../../../story/data/schema.sql`). A data file is never opened directly.
+[quest-record.md](quest-record.md), with the engine-mapping table. The story database (`story/data`: `schema.sql`
+and `db/*.jsonl`, through `db.py`; decision 0030) is the one source of truth: every write and fix goes into its rows
+(import the YAML view, or edit rows through `db.py`), never into a generator, an export or a doc copy. Read it only
+through `python3 -m tools.argonia_world.db query "SELECT ..."` or `db show <table> <id>`. Examples:
+[examples/lh38.yaml](examples/lh38.yaml) (local), [examples/mr01.yaml](examples/mr01.yaml) (faction).
 
 ## 1. Start from the foundation
 
@@ -22,8 +21,7 @@ Read the world only through the database: `python3 -m tools.argonia_world.db que
   tools.argonia_world.quest_record export <quest id> -o <quest>.yaml` gives the quest object (and the record,
   once one is written) as the YAML view; the `quest_line` row gives its line. Then its design:
   `../../../story/design/quests/30-main-quest.md`, `../../../story/design/quests/40-factions.md` (the line's
-  section), `../../../story/design/quests/50-side-quests.md`, or the generated view in
-  `../../../story/design/quests/index/`. Keep its premise, cast and beats; say what changed and why in `foundation`.
+  section) or `../../../story/design/quests/50-side-quests.md`. Keep its premise, cast and beats; say what changed and why in `foundation`.
 - Read the world records the quest stands on: the place's facts (`fact` where `place_id` is the place, in
   `ord` order), the place row (`place` and its `place_*` tables, its people in `place_person`),
   the people (`npc`, `npc_faction`), their stance (`stance`, `stance_chain`, `stance_topic`) and the culture
@@ -96,10 +94,8 @@ Read `shapes.yaml`: always `principles/general.md` and `principles/actions.md`; 
 | PREDATOR, CONTAMINATION, EXPEDITION | `principles/threat-and-journey.md` |
 | HAUNTING, RITE, WONDER, Daedric | `principles/otherworldly.md` |
 
-Also binding from the import: 00-overview §4 (cost tiers S/M/L and their design dimensions, the dramatic
-register, the wonder budget, deliverability tiers D-A/D-B/D-C and the cheap patterns, the boredom test),
-20-world-provisions (what a quest may ask of the world), and the old ruling that nothing is unkillable (old
-0138: every stage that names a person has a fail-forward).
+Also binding: 00-overview §4 (cost tiers, register, wonder budget, deliverability tiers, the boredom test),
+20-world-provisions, and old 0138 (a person a stage needs is essential, protected or failed forward from).
 
 ## 4. Write the record in order
 
@@ -171,4 +167,7 @@ not handed on to §5. A `QA<n>` id is the next free one in the gap register, re-
    catalogue use, fail-forward or ending is missing.
 4. `dialogue-write` (the `dialogue-writer` agent) per brief. A fact request comes back here; add the fact and
    rebuild the briefs.
-5. The record's rows are the quest's rows (same `id`): there is no second copy to update.
+5. **A fact lives in one row; a cut is a search.** A fact is stated once (a `fact`, a thing state, a world edit) and
+   journals, notes, topics and `foundation` cite it. To change or cut a thing, `grep -rn` its id, name and words
+   over `story/data/db/` and change every hit. Before every commit, writing or fixing, run that search and
+   `python3 -m tools.argonia_world.adaptation_check`; a fix adds no `record (warning)` line.

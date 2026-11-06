@@ -121,3 +121,54 @@ def test_motif_warnings_flag_procedure_words():
     assert any(x.startswith("q.a premise:") and "arbitration" in x for x in w)
     assert any(x.startswith("q.b s10:") and "ledger" in x for x in w)
     assert not any(x.startswith("q.c") for x in w)
+
+
+def recs():
+    rc = ac.Records()
+    rc.census = {"000001:Black Marsh.esm", "000002:Black Marsh.esm", "000003:Black Marsh.esm"}
+    rc.names = {"npc.a": "Ana-Tei", "npc.b": "Bo-Sei"}
+    rc.placing = "we.q.people: Ana-Tei at the hut"
+    rc.people = [("q", "npc.a")]
+    rc.stages = {"q": {10: {"succ": [(20, {"inZone"}, set())], "ff": set()}}}
+    return rc
+
+
+def test_clean_records_pass():
+    assert ac.record_warnings(recs()) == []
+
+
+def test_census_and_placement():
+    rc = recs()
+    rc.needs.append(("we.q.x", "00FFFF:Black Marsh.esm"))
+    rc.texts.append(("q", "the door 00EEEE:Black Marsh.esm and 07B91A:Skyrim.esm"))
+    rc.people.append(("q", "npc.b"))
+    w = ac.record_warnings(rc)
+    assert any("00FFFF" in x for x in w) and any("00EEEE" in x for x in w)
+    assert not any("07B91A" in x for x in w)
+    assert any("npc.b" in x and x.startswith("placed") for x in w)
+
+
+def test_helgen_rule():
+    rc = recs()
+    rc.topics = [("q", "npc.a", True, {10})]
+    assert any(x.startswith("helgen") for x in ac.record_warnings(rc))
+    rc.quest_text = {"q": "Build notes: Ana-Tei is essential until stage 40."}
+    assert ac.record_warnings(rc) == []
+    rc.quest_text = {}
+    rc.stages["q"][10]["ff"] = {"npc.a"}
+    assert ac.record_warnings(rc) == []
+
+
+def test_shared_base_vanilla_door_skill_gate():
+    rc = recs()
+    rc.base_placements = {"000001:Black Marsh.esm": 10}
+    rc.edits = {"we.q.sweep": ("npc_change", "000001:Black Marsh.esm")}
+    rc.door_base = {"000002:Black Marsh.esm": "0C227B:Skyrim.esm"}
+    rc.quest_forms = {"q": {"000002:Black Marsh.esm"}}
+    rc.stages["q"][10]["succ"].append((20, {"all", "skillAtLeast"}, set()))
+    w = ac.record_warnings(rc)
+    assert any(x.startswith("shared_base") for x in w)
+    assert any(x.startswith("vanilla_door") for x in w)
+    assert any(x.startswith("skill_gate") for x in w)
+    rc.edits["we.q.door"] = ("record_change", "000002:Black Marsh.esm")
+    assert not any(x.startswith("vanilla_door") for x in ac.record_warnings(rc))

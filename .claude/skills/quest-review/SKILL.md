@@ -25,33 +25,33 @@ builder); it judges whether the quest is good and believable.
   them again, nor variants of them, unless the record has since changed in a way that reopens them (say how).
 - **Prefer subtraction:** a proposed fix removes or rewrites before it adds; never propose a new stage, branch or
   ending where a cut or a merge would answer the finding.
-- **Report at most the five most serious blocking findings and five notes.**
+- **No cap: report every finding**, blocking and notes alike. Round 1 reads the whole record. Every later round is a
+  delta: only the rows changed since the last review (`git diff <last reviewed sha> -- story/data/db/` read against
+  the export) and every row that cites them; the loop ends when a delta round raises nothing blocking.
 - The planner, not you, decides which findings are fixed and when the loop ends.
 
 ## 1. Set-up
 
-- Run as a fresh agent given only the quest record, the world records it cites and this skill; never the
-  author's reasoning, so the reading is not anchored on it. The record is rows in the story data (`story/data`): read its YAML view with `python3 -m tools.argonia_world.quest_record export <quest id>`. The world
-  records, read only through the database (`python3 -m tools.argonia_world.db query "SELECT ..."` or `db show
-  <table> <id>`; the tables are described in `../../../story/data/schema.sql`): the place's facts
-  (`fact` by `place_id`), the people (`npc`, `npc_faction`), the stance and culture sheets (`stance`,
-  `stance_chain`, `stance_topic`, `culture_sheet`, `culture_entry`, `culture_opinion`), the other quests at the
-  place (`quest` by `settlement`, each exported as above). The lore: `../../../story/lore/`. The world is BM&V's
-  (Black Marsh & Valenwood, an existing mod): judge the quest against the BM&V place it names in `foundation`.
+- Run as a fresh agent given only the quest record, the world records it cites and this skill; never the author's
+  reasoning. The story database (`story/data`: `schema.sql` and `db/*.jsonl`, through `db.py`) is the one source of
+  truth: read the record with `python3 -m tools.argonia_world.quest_record export <quest id>` and the world with
+  `python3 -m tools.argonia_world.db query "SELECT ..."` (`fact` by `place_id`, `npc`, `npc_faction`, `stance*`,
+  `culture_*`, the place's other quests). The lore: `../../../story/lore/`. Judge the quest against the BM&V place
+  it names in `foundation`.
+- First run `python3 -m tools.argonia_world.adaptation_check`: its `record (warning)` lines (an id not in the
+  census, an unplaced speaker, a needed person with no essential, protected or fail-forward, an edit to a shared
+  base, a vanilla door model, a skill gate walked round) are findings already; copy them, do not re-judge them.
 - Also binding: the quest index rules and coverage (`../../../story/design/quests/index/README.md` §47b–c,
   `../../../story/design/quests/index/coverage.md`), 00-overview §4 (`../../../story/design/quests/00-overview.md`), the condition
   vocabulary (`condition_term` rows; `../../../story/design/quests/85-condition-vocabulary.md` explains each term) and the style guide's journal register
   (`../../../story/design/text/style-guide.md`).
-- Read the principle files the record routes to (`../quest-write/shapes.yaml`: always
-  `../quest-write/principles/general.md` and `../quest-write/principles/actions.md`, the group's file, each
-  shape's file); their checklists are part of this review.
+- Read the principle files the record routes to (`../quest-write/shapes.yaml`: always `principles/general.md` and
+  `principles/actions.md`, the group's file, each shape's file); their checklists are part of this review.
 
 ## 2. Read it twice
 
-1. **As the player**, using only what the player knows at each stage (the record's `playerStart` and each
-   stage's `learns`): can I tell what to do next and where to go, from dialogue and the journal alone? Where
-   would I be lost, bored or unrewarded?
-2. **As the designer**, against the checklist below.
+1. **As the player**, knowing only `playerStart` and each stage's `learns`: from dialogue and the journal alone, can
+   I tell what to do next and where? Where would I be lost, bored or unrewarded? 2. **As the designer**, below.
 
 ## 3. Checklist (answer each yes or no, with the record ids that show it; then each routed principle file's checklist)
 
@@ -80,9 +80,9 @@ Endings and rewards
 14. Is every reward concrete, proportionate and tied to the story?
 
 The world
-15. Does every physical thing have an existing id or a `new` row with where and state per stage?
-16a. Does anything need the base world to change (a deeper pool, a schedule, a container, anything else), and is that written as a row, not assumed? If something does need to change, are you handing it to the planner to get it delivered?
-16b. Does anything during the request require anything in the world to be scripted? e.g. a change to somebody's     schedule (if you need to observe them doing something at a certain place and time); a timed bandit attack the player need to be present for; a tree that changes to a 'sick' appearance until healed; anything else? And if yes,  are you handing it to the planner to get it delivered?
+15. (The program checks ids and placements, §1.) Does every `new` thing have its where and state per stage?
+16. Is every change to the base world (a deeper pool, a schedule, a container) and every scripted event (a timed
+    attack, a tree that sickens) written as a row, not assumed, and handed to the planner?
 17. **Lore and vibe (blocking).** Read `../../../story/design/province-vibe.md` and the lore the record names,
     then check every person, role, job, place, institution, object and custom in the record against the lore
     dossiers and the extrapolation (`../../../story/lore/`, first `extrapolation/argonia-4e201-state.md`,
@@ -110,8 +110,7 @@ Action and fit
 18. Is the quest built round an action plan of real skill uses (i.e. in-game skills: long blade, sneak, alchemy, speechcraft...etc),
     with almost every stage using one? Is it more than a chain of conversations or mundane tasks? Quests are
     only fun if they involve using the character the player is building.
-19. Is every condition and action a term of the condition vocabulary, and does every stage that names a
-    person have a fail-forward for that person's death (old 0138)? real in-game skills.
+19. (The importer checks the vocabulary; the program checks the fail-forwards, §1.)
 20. Do the actions follow from the truth and the place, do they lean to the line's or faction's profile, and
     do they vary from the quests around it (the same skill, use, target and setting not repeated without
     reason)?
@@ -129,6 +128,7 @@ Text
 
 ## 4. Report
 
-Return findings ranked most serious first, blocking ones (item 17) at the top, each with `severity: blocking` in the record's `review.findings`, each with: the record ids, what is wrong, what a player would
-experience, and a proposed fix. End with the answers to the checklist as one line of ids per failed item, writing item 17 as `17(B)`.
+Return every finding, most serious first, blocking ones (item 17) at the top, each with `severity: blocking` in the
+record's `review.findings`, each with: the record ids, what is wrong, what a player would experience, and a proposed
+fix; in a delta round, only findings on the changed rows and the rows citing them. End with the answers to the checklist as one line of ids per failed item, writing item 17 as `17(B)`.
 The quest writer copies the findings into the record's `review` section with how each was answered.
