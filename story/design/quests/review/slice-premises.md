@@ -33,7 +33,26 @@ Settled: (none yet)
 
 ## Night-Reed: TG01, TG02
 
-Round 1: awaiting the reviewer.
+### Round 1 (2026-11-06), planner's rulings
+
+Must-fix:
+- B1 TG01: the thief runs when caught (a coward setting on his npc row, no script); harming him costs the reward and
+  a line from Deep-In-Her-Cups, who still sends the player on: the line never dead-ends.
+- B2 adaptation.md §5: the TG01 and TG02 summaries rewritten from the quest_adaptation premises (Deep-In-Her-Cups
+  keeps the desk, the Khajiit trader is her front; Pusbottom is the repopulated slum, not the drowned quarter).
+- N1 TG02: the canon ripper eels in the canal, slipped past by sneak and timing (eel-slime kept for TG10); Speech to
+  draw out the lies; Lockpicking on the box. No new stage.
+- N2 TG02: each client's lie written as one fact tied to its object; the "deed-stake" replaced by a sourced object
+  (blue-jasper jewellery, material-culture.md).
+- N3 TG02: the box is a container in the open beside a stilt house fallen from its stilts (not "sunk"), with a
+  water-depth check row for the Pusbottom cell; no Riften or Nordic static (0006); the authored air pocket and
+  escape either restored as a simple swim-out or their drop noted in `changed`.
+- N4 TG02: Vasha gives the job; the ending is an act (hand the box to one client, or sell a lie back to its teller),
+  at most three endings, none carried forward; THEFT is the primary shape (not DISPUTE).
+- N5 TG01: the keepsake is named, sourced Argonian jewellery; watching the thief is a sneak where being seen makes him
+  move it; the thief's round gets its package rows; the trip to Lilmoth is by the coast ship we.name.soulrest gives.
+
+Settled: Soulrest as one house on the wrong coast (a trade-off recorded in adaptation.md §4).
 
 ## Chainbreakers: BC01, BC02, BC03
 
