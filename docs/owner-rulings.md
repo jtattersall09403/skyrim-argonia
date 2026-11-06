@@ -33,6 +33,12 @@ added here the day they are made, with the date and the issue.
   minor-quest build-out is a Phase 5 placeholder (2026-11-05).
 - BM&V is used whole, all four plugins and every file of both ModDB parts; all of it goes through the census and the
   map (2026-11-05).
+- The first story slice (owner, 2026-11-06): BM&V's world stays as it is (separate worldspaces, not stitched into one
+  walkable land), with only the allowed minor edits; fitted to it first are (a) the opening act of the main quest,
+  including the new-game flow and the opening scene (our Helgen), and (b) a sensible subset of non-clashing factions
+  and questlines. Get that working in the modded world for the owner to try, then decide what else to change. The
+  world-option analyses (joining the worldspaces, extending the land, interiors and places) are still posted as calls,
+  but nothing waits on them.
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

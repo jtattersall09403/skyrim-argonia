@@ -42,6 +42,15 @@ The act is written before any block is built, so the blocks are the ones the sto
   on: a short summary of each quest, what changed from the authored design and why, and the block list with the
   induction note.
 
+## Scope now: the first story slice (owner, 2026-11-06)
+
+BM&V stays as it is (separate worldspaces, minor edits only). Fitted to it first: the main quest's opening act,
+including the new-game flow and the opening scene (our Helgen equivalent, replacing Phase 1's lightest start), and a
+sensible subset of factions and questlines chosen so they do not clash, each with its seat and first quests. The
+method below applies to the slice: the spirit of every line is already written for all of them (steps 1 and 2), the
+capacity and allocation (steps 3 and 4) are used for the slice, and steps 5 to 10 run over the slice only. The rest of
+the quest system follows once the owner has tried the slice.
+
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
 Not only the main quest: every authored questline and quest (in the story data: 717 quests in 16 lines, 33
