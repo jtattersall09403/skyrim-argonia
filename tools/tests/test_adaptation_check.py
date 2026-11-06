@@ -172,3 +172,12 @@ def test_shared_base_vanilla_door_skill_gate():
     assert any(x.startswith("skill_gate") for x in w)
     rc.edits["we.q.door"] = ("record_change", "000002:Black Marsh.esm")
     assert not any(x.startswith("vanilla_door") for x in ac.record_warnings(rc))
+
+
+def test_record_rules_bind_kept_quests_only():
+    rc = recs()
+    rc.people.append(("quest.x", "npc.b"))
+    rc.live = {"quest.x"}
+    assert any(x.startswith("placed") for x in ac.record_warnings(rc))
+    rc.live = set()
+    assert ac.record_warnings(rc) == []

@@ -574,10 +574,9 @@ def main() -> int:
         print(f"motif (warning): {w}")
     recs = record_warnings(load_records())
     for w in recs:
-        print(f"record (warning): {w}")
-    print(f"adaptation_check: {len(findings)} finding(s), {len(warns)} procedure-word warning(s), "
-          f"{len(recs)} record warning(s)")
-    return 1 if findings else 0
+        print(f"record: {w}")
+    print(f"adaptation_check: {len(findings) + len(recs)} finding(s), {len(warns)} procedure-word warning(s)")
+    return 1 if findings or recs else 0
 
 
 if __name__ == "__main__":
