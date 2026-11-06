@@ -228,3 +228,25 @@ def test_speaker_knows_and_learnable():
     w = ac.record_warnings(rc)
     assert any(x.startswith("learnable") and "topic.t" in x for x in w)
     assert any(x.startswith("learnable") and "clue k1" in x for x in w)
+
+
+def test_skill_routes():
+    rc = recs()
+    rc.stages = {"q": {10: {"succ": [(20, set(), set())], "ff": set()}, 20: {"succ": [(30, set(), set())], "ff": set()},
+                       30: {"succ": [], "ff": set()}}}
+    rc.stage_end = {"q": {30}}
+    rc.quest_kind = {"q": ("main", None)}
+    assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))
+    rc.skill_stages = {"q": {20: {"sneak"}}}
+    assert any("needs two ways" in x for x in ac.skill_routes(rc))          # one skill is one way through
+    rc.stages["q"][25] = {"succ": [(30, set(), set())], "ff": set()}
+    rc.skill_stages["q"][25] = {"longblade"}
+    assert ac.skill_routes(rc) == []
+    rc.quest_kind = {"q": ("faction", "faction.f")}
+    rc.faction_skills = {"faction.f": {"security"}}
+    assert any("faction.f" in x for x in ac.skill_routes(rc))
+    rc.faction_skills = {"faction.f": {"sneak"}}
+    assert ac.skill_routes(rc) == []
+    rc.live = set()
+    rc.faction_skills = {"faction.f": {"security"}}
+    assert ac.skill_routes(rc) == []                                       # only kept or adapted quests

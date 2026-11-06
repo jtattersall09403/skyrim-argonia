@@ -415,6 +415,10 @@ class Records:
     knowers: dict = field(default_factory=dict)       # (quest, npc) -> {fact: stage it is known from (0 = at the start)}
     topic_from: dict = field(default_factory=dict)    # (quest, topic id) -> earliest stage the topic is said
     learnable: dict = field(default_factory=dict)     # quest -> facts a stage teaches, a cast member holds or the player starts with
+    skill_stages: dict = field(default_factory=dict)  # quest -> {stage: skills its actions, objectives and successors name}
+    stage_end: dict = field(default_factory=dict)     # quest -> stages that end it (an ending, or no successor)
+    quest_kind: dict = field(default_factory=dict)    # quest -> (line group, line faction)
+    faction_skills: dict = field(default_factory=dict)  # faction -> the skills it leans on
 
 
 def _tree(w) -> dict:
@@ -510,7 +514,65 @@ def load_records() -> Records:
         rc.topic_from[(q, tid)] = s
     for q, f in w.query("SELECT quest_id, value FROM quest_stage_learns UNION SELECT quest_id, value FROM quest_player_start"):
         rc.learnable.setdefault(q, set()).add(f)
+    skill_ids = {_sk(x) for x in w.values("SELECT id FROM skill")}
+    ssk = rc.skill_stages
+    for r in w.query("SELECT a.quest_id, s.id, a.skill FROM quest_action a JOIN quest_stage s "
+                     "ON s.quest_id = a.quest_id AND s.ord = a.stages_ord WHERE a.skill IS NOT NULL"):
+        ssk.setdefault(r[0], {}).setdefault(r[1], set()).add(_sk(r[2]))
+    # a skill named inside a stage's objective or successor condition (skillAtLeast carries the skill as an argument)
+    for q, st in rc.stages.items():
+        for sid, d in st.items():
+            ssk.setdefault(q, {}).setdefault(sid, set())
+            for _, t, a in d["succ"]:
+                if "skillAtLeast" in t:
+                    ssk[q][sid] |= {_sk(x) for x in a if _sk(x) in skill_ids}
+    for r in w.query("SELECT o.quest_id, s.id, o.complete_when FROM quest_objective o JOIN quest_stage s "
+                     "ON s.quest_id = o.quest_id AND s.ord = o.stages_ord"):
+        t, a = tree.get(r[2], (set(), set()))
+        if "skillAtLeast" in t:
+            ssk.setdefault(r[0], {}).setdefault(r[1], set()).update(_sk(x) for x in a if _sk(x) in skill_ids)
+    for q, st in rc.stages.items():
+        rc.stage_end[q] = {sid for sid, d in st.items() if not d["succ"]}
+    for q, sid, e, eid in w.query("SELECT quest_id, id, ending, ending_id FROM quest_stage"):
+        if e or eid:
+            rc.stage_end.setdefault(q, set()).add(sid)
+    rc.quest_kind = {r[0]: (r[1], r[2]) for r in w.query(
+        'SELECT q.id, l."group", l.faction FROM quest q JOIN quest_line l ON l.id = q.line')}
+    for f, sk in w.query("SELECT faction_id, value FROM faction_skill"):
+        rc.faction_skills.setdefault(f, set()).add(_sk(sk))
     return rc
+
+
+def _sk(x) -> str:
+    """A skill name as one comparable key: 'long-blade', 'longBlade' and 'Long Blade' are one skill."""
+    return re.sub(r"[^a-z]", "", str(x).lower())
+
+
+# Owner ruling #50 (2026-11-06): see skill_routes. A warning while the slice has hits; set True to make it an error.
+SKILL_ROUTES_BLOCK = False
+
+
+def skill_routes(rc: Records) -> list[str]:
+    """Skills win the stages (ruling #50). For a kept or adapted quest: every stage between the start and the endings
+    names a skill (an action, an objective or a successor's skillAtLeast); a main-line quest uses at least two
+    distinct skills across them; a faction quest uses at least one skill from its faction's list."""
+    out = []
+    for q, sts in sorted(rc.stages.items()):
+        if rc.live is not None and q not in rc.live:
+            continue
+        ssk, ends = rc.skill_stages.get(q, {}), rc.stage_end.get(q, set())
+        first = min(sts) if sts else None
+        mid = [s for s in sorted(sts) if s != first and s not in ends]
+        for s in mid:
+            if not ssk.get(s):
+                out.append(f"{q}: stage {s} names no skill (no action, objective or successor uses one)")
+        used = set().union(*(ssk.get(s, set()) for s in mid)) if mid else set()
+        group, fac = rc.quest_kind.get(q, (None, None))
+        if group == "main" and len(used) < 2:
+            out.append(f"{q}: main quest has {len(used)} distinct skill(s) {sorted(used)}, needs two ways through")
+        if group == "faction" and fac and rc.faction_skills.get(fac) and not used & rc.faction_skills[fac]:
+            out.append(f"{q}: uses none of {fac}'s skills {sorted(rc.faction_skills[fac])} (has {sorted(used)})")
+    return out
 
 
 def rule_census_ids(rc: Records) -> list[str]:
@@ -637,8 +699,12 @@ def main() -> int:
     recs = record_warnings(load_records())
     for w in recs:
         print(f"record: {w}")
-    print(f"adaptation_check: {len(findings) + len(recs)} finding(s), {len(warns)} procedure-word warning(s)")
-    return 1 if findings or recs else 0
+    rc = load_records()
+    routes = [f"{f}" for f in skill_routes(rc) if rc.live is None or f.split(":")[0] in rc.live]
+    for f in routes:
+        print(f"skill_routes ({'error' if SKILL_ROUTES_BLOCK else 'warning'}): {f}")
+    print(f"adaptation_check: {len(findings) + len(recs) + (len(routes) if SKILL_ROUTES_BLOCK else 0)} finding(s), {len(warns)} procedure-word warning(s)")
+    return 1 if findings or recs or (routes and SKILL_ROUTES_BLOCK) else 0
 
 
 if __name__ == "__main__":

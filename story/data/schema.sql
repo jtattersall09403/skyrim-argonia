@@ -206,6 +206,15 @@ CREATE TABLE "faction_source" (
   FOREIGN KEY ("faction_id") REFERENCES "faction" ("id") ON DELETE CASCADE
 );
 
+-- Home of one row per skill a faction leans on (ruling #50: a faction quest uses at least one of them).
+CREATE TABLE "faction_skill" (
+  "faction_id" TEXT NOT NULL,
+  "ord" INTEGER NOT NULL,
+  "value" TEXT NOT NULL,
+  PRIMARY KEY ("faction_id", "ord"),
+  FOREIGN KEY ("faction_id") REFERENCES "faction" ("id") ON DELETE CASCADE
+);
+
 -- Home of one row per element of `standing.join.sources` of each faction row (ordered by `ord` where it has one).
 CREATE TABLE "faction_standing_join_sources" (
   "faction_id" TEXT NOT NULL,

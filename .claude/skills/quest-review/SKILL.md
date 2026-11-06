@@ -14,8 +14,9 @@ builder); it judges whether the quest is good and believable.
 - **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be reached or left; (b) a
   contradiction inside the record, or with the world data (census, story data); (c) a contradiction with canon lore
   or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled); (e) the quest
-  breaks the skill-use rule: the player's in-game skills (blade, blunt, archery, sneak, lockpicking, pickpocket,
-  speech, alchemy, the magic schools, climbing, swimming...) are not what moves it on, so it is not fun; (f) it would
+  breaks the skill rule (ruling #50, quest-write §2 item 4, program-checked): a stage is not won by a named skill, a
+  main quest lacks two ways through on different skills, a faction quest ignores its faction's skills, a stage
+  does not say plainly what to do and where, or the route climbs a tree; (f) it would
   be harder to script than an average Skyrim quest (more stages, aliases, conditions, timers or bespoke scripts than a
   typical vanilla side quest needs); (g) the climax or the resolution is a procedure: an arbitration, a hearing, a
   trial, a ruling, a witnessed or spoken release, a negotiation at a table (owner, 2026-11-06: "the classic boring
@@ -107,9 +108,8 @@ The world
 17b. Does the quest add to the vibe (`province-vibe.md` §10) rather than only avoid jarring with it?
 
 Action and fit
-18. Is the quest built round an action plan of real skill uses (i.e. in-game skills: long blade, sneak, alchemy, speechcraft...etc),
-    with almost every stage using one? Is it more than a chain of conversations or mundane tasks? Quests are
-    only fun if they involve using the character the player is building.
+18. Does it meet the skill rule (quest-write §2 item 4)? Name the skills each stage uses; a main quest needs two
+    ways through on different skills, a faction quest its faction's skills, and every stage's text a plain next action.
 19. (The importer checks the vocabulary; the program checks the fail-forwards, §1.)
 20. Do the actions follow from the truth and the place, do they lean to the line's or faction's profile, and
     do they vary from the quests around it (the same skill, use, target and setting not repeated without

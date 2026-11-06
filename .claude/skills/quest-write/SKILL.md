@@ -70,10 +70,12 @@ Before the record is written:
    the player took in an earlier one; an earlier choice may change a line of dialogue, a reward or who greets the
    player, never the later quest's stages or whether it can be done. Only a line's designated finale choices carry
    forward, and those are planned once for the whole line (owner, 2026-11-06).
-4. **Skills drive it, and it stays easy to script.** Each stage the player plays is won with an in-game skill
-   (blade, archery, sneak, lockpicking, pickpocket, speech, alchemy, a magic school, climbing, swimming...), varied
-   across the quest; and the whole quest needs no more scripting than an average Skyrim side quest (a handful of
-   stages, a few aliases, standard conditions, the blocks of `docs/design/blocks.md`).
+4. **Skills win the stages (owner ruling #50, binding, checked by `skill_routes`).** Name the skills the quest uses
+   (One-Handed, Two-Handed, Archery, Block, Heavy/Light Armor, Destruction, Alteration, Illusion, Conjuration,
+   Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism (Magic Expanded), climbing (FreeClimb),
+   swimming). Each stage is won by a named skill, not by walking or talking alone. Every main quest has two ways
+   through on different skills; a faction quest leans on its faction's skills. Each stage's journal or objective
+   says plainly what to do and where. No tree climbing. Scripting stays at a vanilla side quest's.
 5. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes
    from the lore dossiers, the extrapolation, the census or the story data, cited as you write it. Where the quest
    needs something none of them gives, choose: leave it vague in the text (the player does not need the mechanism),
@@ -150,9 +152,7 @@ not handed on to §5. A `QA<n>` id is the next free one in the gap register, re-
    customs, the ex-Archein estates and hiring offices, the Rose, foreigners at a foreign foothold), and the
    record's `L<n>` entry names the place and the institution (a port, Gideon, the Collections, the Veiled Reed).
    Anywhere else, use what Argonian ground uses instead (§9's third column). Every record is measured: a stage
-   whose `actions` hold no skill use (only supporting `{system, use}` acts, or none, or a skill use whose only point is to receive, hand over or
-   read a message or document) counts as hollow; a quest with
-   more than a third of its stages hollow, or whose central action (judged from the stages' `learns`, `directions`
+   whose `actions` hold no skill use counts as hollow; a quest with more than a third of its stages hollow, or whose central action (judged from the stages' `learns`, `directions`
    and `journalText`, not the `centrepiece` tag) is delivering, filing, counting or reading a record, is rewritten round a real action.
 
 ## 5. Hand on
