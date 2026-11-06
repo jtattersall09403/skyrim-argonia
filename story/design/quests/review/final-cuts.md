@@ -230,3 +230,19 @@ B7 and B8 had additive fixes. The planner answers them by subtraction instead, a
     him to walk home alone, and his walk-out is his own.";
   - topics walked-out and the-basin add fact.mq05.basin-lethal to their uses;
   - blocks.md is regenerated.
+
+## Ruling #53 applied (base 1612fdeb): swimming and climbing are not skills
+
+- Method: quest-write §2 item 4, quest-review's skill item, actions.md and skill-uses.yaml no longer list swimming or
+  climbing as skills; `skill_routes` no longer counts swimming, climbing, athletics, acrobatics or a dive; the
+  chainbreakers lean on Lockpicking, Sneak and Speechcraft (40-factions.md §39).
+- MQ01 stage 40: a Destruction fight on the shed route (the two cutters stand between the fire and the shed); the
+  dive into the huts stays as the way in.
+- MQ01 stage 41: the reeds route is now a real Sneak route: reaching the shore with Sal-Sei needs not detectedBy
+  the Unbound Root (C-detected); the Flames fight still wins it, as the dead do not see.
+- MQ01 stage 42: Sneak, not detectedBy the Unbound Root, under the plank boards to the shore, or kill the cutters
+  first; objective "out" and journal 42 say so; we.mq01.cell puts the two cutters in faction.unbound-root, and
+  at 42 they walk the plank boards over the huts' water towards the shore (review B1, B2). The action plan's dive becomes this Sneak route.
+- MQ03 stage 10: the phial objective now needs Alchemy 25 (C-skill), as the record already said; the tag now lies in a
+  sunk fish-trap, locked (Novice): Lockpicking, with the dive only the way down (review B3).
+- The other slice quests already had a real skill on every stage; adaptation_check: 0 findings, 0 warnings.

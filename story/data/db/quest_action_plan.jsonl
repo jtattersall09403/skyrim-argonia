@@ -41,7 +41,7 @@
 {"quest_id":"quest.main.mq01","ord":1,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
 {"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"out of the burning huts under the plank boards to the shore, unseen by the cutters (the dive is the way in, not the skill)"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"Alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"Swimming","use":"dive","reason":"one breath off the burnt plank boards at the camp's fire to the bottom of the deep water for the courier's brass tag, which fell with his strap"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"Lockpicking","use":"pick-a-lock","reason":"the courier's brass tag lies in a sunk, locked fish-trap under the burnt plank boards at the camp's fire"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"Speechcraft","use":"persuade","reason":"Ties will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round (Speechcraft 25)"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth: a Speech check of 25, or bring her food, for leave to see the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"OneHanded","use":"fight","reason":"the leeches crowd the cut root (fixed band 2)"}
