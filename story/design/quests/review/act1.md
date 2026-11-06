@@ -248,3 +248,5 @@ All five blocking and all five notes accepted, by subtraction.
 - N4: "opens the Lost City" struck from eye-of-argonia.md; the Tear marker phrase struck.
 - N5: MQ07's "speech to buy a look" and MQ10's "at night" cut.
 - MQ05 addendum (slice round 2, B2): we.mq05.sweeper cut; the broom stays in we.mq05.throne.
+
+Round 3: applied (9567fb28).
