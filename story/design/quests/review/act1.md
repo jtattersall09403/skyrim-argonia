@@ -200,6 +200,7 @@ All three blocking and all five notes accepted, by subtraction; plus the planner
 - N4: "expose the cell before the village" cut from the foundation's Kept list; act1.md's MQ04 summary regenerated.
 - N5 and the boat (planner): the bound man is at the jetty only ("fence" cut from ref names and seen text) and is
   handed over on the jetty to Zaren-Ish, who walks him off; no boat. gum-origin listed in topic.mq04-the-cut's uses.
+- Round 2: applied (4915a86f).
 
 ### MQ01, round 2 (2026-11-06): the planner's rulings
 
