@@ -399,7 +399,6 @@
 {"quest_id":"quest.main.mq03","review_findings_ord":52,"ord":4,"value":"topics"}
 {"quest_id":"quest.main.mq03","review_findings_ord":53,"ord":0,"value":"shapeData.deadline"}
 {"quest_id":"quest.main.mq03","review_findings_ord":53,"ord":1,"value":"stages.40"}
-{"quest_id":"quest.main.mq03","review_findings_ord":53,"ord":2,"value":"stages.45"}
 {"quest_id":"quest.main.mq03","review_findings_ord":54,"ord":0,"value":"endings"}
 {"quest_id":"quest.main.mq03","review_findings_ord":54,"ord":1,"value":"things.thing.mq03.broker"}
 {"quest_id":"quest.main.mq03","review_findings_ord":54,"ord":2,"value":"things.thing.mq03.hurt"}

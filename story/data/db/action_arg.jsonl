@@ -514,11 +514,9 @@
 {"list_id":"quest_stage:quest.main.mq03|6:on_enter","ord":4,"arg_ord":0,"value":"topic.mq03-release-mine"}
 {"list_id":"quest_stage:quest.main.mq03|6:on_enter","ord":5,"arg_ord":0,"value":"topic.mq03-release-theirs"}
 {"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":0,"arg_ord":0,"value":"ref.player"}
-{"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":0,"arg_ord":1,"value":"mark.mq03.mat"}
-{"list_id":"quest_stage:quest.main.mq03|8:on_enter","ord":0,"arg_ord":0,"value":"ref.player"}
-{"list_id":"quest_stage:quest.main.mq03|8:on_enter","ord":0,"arg_ord":1,"value":"mark.mq03.dream"}
-{"list_id":"quest_stage:quest.main.mq03|8:on_enter","ord":1,"arg_ord":0,"value":"ref.mq03.dream-parent"}
-{"list_id":"quest_stage:quest.main.mq03|8:on_enter","ord":2,"arg_ord":0,"value":"ref.mq01.broker-parent"}
+{"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":0,"arg_ord":1,"value":"mark.mq03.dream"}
+{"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":1,"arg_ord":0,"value":"ref.mq03.dream-parent"}
+{"list_id":"quest_stage:quest.main.mq03|7:on_enter","ord":2,"arg_ord":0,"value":"ref.mq01.broker-parent"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"arg_ord":0,"value":"topic.mq04-the-village"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":1,"arg_ord":0,"value":"topic.mq04-the-weirs"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":2,"arg_ord":0,"value":"ref.mq04.cell-camp"}
