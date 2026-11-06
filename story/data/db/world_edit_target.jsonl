@@ -157,6 +157,11 @@
 {"edit":"we.clean.lilmoth","target":"17BF4C:Black Marsh.esm","what":"disabled: Lost Castle Guard LostCasteSkelaton"}
 {"edit":"we.clean.lilmoth","target":"17BF4D:Black Marsh.esm","what":"disabled: Lost Castle Guard LostCasteSkelaton"}
 {"edit":"we.clean.lilmoth","target":"17BF81:Black Marsh.esm","what":"disabled: Lost Castle Guard LostCasteSkelaton"}
+{"edit":"we.clean.road","target":"15649F:Black Marsh.esm","what":"disabled: MQ101ImperialArcherFemale"}
+{"edit":"we.clean.road","target":"1564A0:Black Marsh.esm","what":"disabled: MQ101ImperialArcherFemale"}
+{"edit":"we.clean.road","target":"1564A1:Black Marsh.esm","what":"disabled: Imperial Soldier MQ101ImperialSoldierMelee02"}
+{"edit":"we.clean.road","target":"1564A2:Black Marsh.esm","what":"disabled: Imperial Captain MQ101ImperialSoldierOfficer"}
+{"edit":"we.clean.road","target":"1564A3:Black Marsh.esm","what":"disabled: Imperial Soldier MQ101ImperialSoldier04"}
 {"edit":"we.clean.thorn1","target":"03E40E:Black Marsh North.esp","what":"disabled: Naga Spellsword BMNaga1brown"}
 {"edit":"we.clean.thorn1","target":"16BF6D:Black Marsh North.esp","what":"disabled: DLC2TreasCorpseBanditMissileDarkElfFemale03"}
 {"edit":"we.clean.thorn1","target":"16BF6F:Black Marsh North.esp","what":"disabled: DLC2TreasCorpseBanditMagicDarkElfFemale01"}

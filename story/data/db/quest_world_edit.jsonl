@@ -5,6 +5,7 @@
 {"quest":"quest.bc.bc01","edit":"we.bc01.members"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.never-sold"}
 {"quest":"quest.bc.bc01","edit":"we.clean.blackrose"}
+{"quest":"quest.bc.bc01","edit":"we.clean.road"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.fire"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.gate"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.mesh"}
@@ -50,6 +51,7 @@
 {"quest":"quest.main.mq05","edit":"we.clean.thorn1"}
 {"quest":"quest.main.mq05","edit":"we.mq05.dispute"}
 {"quest":"quest.main.mq05","edit":"we.mq05.escort"}
+{"quest":"quest.main.mq05","edit":"we.mq05.grove"}
 {"quest":"quest.main.mq05","edit":"we.mq05.throne"}
 {"quest":"quest.tg.tg01","edit":"we.clean.dock2"}
 {"quest":"quest.tg.tg01","edit":"we.clean.lilmoth"}

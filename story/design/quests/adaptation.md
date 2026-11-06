@@ -342,4 +342,12 @@ places people in a room with no navmesh without a navmesh edit.
   must-keep restored); MQ01 ends at the camp's shore. Minor fixes taken: Soulrest's name linked to its two quests,
   the post's door id, a first word of the Chainbreakers on Lilmoth's shore, the netch bulls at the hearing and the
   gate. Act I's stage records were flagged stale: they are rewritten from this ledger next (step 5's last part).
+- **Round 6** (six fresh reviewers): five raised nothing blocking; Chainbreakers raised one, fixed: Never-Sold is
+  a woman (36-cast-roster). Minor fixes taken with it: the road from Lilmoth to Blackrose loses its vanilla Imperial
+  soldiers (`we.clean.road`) and BC01 rises to band 2 for its swamp; Hereguard's Dwemer constructs, panthers and
+  megalania by the camp go; MQ01 names the processing choice and burns the roll in the camp's fire, with a shore
+  fallback if the water will not take an islet; MQ05's grove is placed and its spirit row trimmed to §21; named
+  cells for MQ04's and MQ05's edits. Build-time checks recorded, not ledger faults: the Pusbottom canal's depth,
+  the Rose cell's shape (a borrowed vanilla interior behind the same door is the fallback, decision 0012 §6), and
+  what BM&V's greeting quest does when it fires after MQ03.
 
