@@ -48,8 +48,8 @@
 {"quest_id":"quest.main.mq01","ord":0,"value":"topic.mq01-the-roll"}
 {"quest_id":"quest.main.mq01","ord":1,"value":"topic.mq01-dawn"}
 {"quest_id":"quest.main.mq03","ord":0,"value":"topic.mq03-the-attack"}
-{"quest_id":"quest.main.mq03","ord":1,"value":"topic.mq03-the-roll"}
-{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-the-protection"}
+{"quest_id":"quest.main.mq03","ord":1,"value":"topic.mq03-the-offer"}
+{"quest_id":"quest.main.mq03","ord":2,"value":"topic.mq03-broker-claim"}
 {"quest_id":"quest.main.mq04","ord":0,"value":"topic.mq04-the-village"}
 {"quest_id":"quest.main.mq04","ord":1,"value":"topic.mq04-the-naming"}
 {"quest_id":"quest.main.mq05","ord":0,"value":"topic.mq05-the-word"}

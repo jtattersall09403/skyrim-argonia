@@ -51,25 +51,34 @@
 {"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: the shore at dawn, when the saved witness names the player as the one who came for them"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the camp: the cut root-ends, the grey clutch, the dark uxith"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"the house: the survivors and Nesh-Deeka"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the dream: the ring of trees and the door"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":0,"value":"the night before: the cell cuts the roots at the ring, one stroke each, jars ready (t1)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":1,"value":"dawn: Nesh-Deeka sends two of her people to take the survivors off (t2)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":2,"value":"morning: the survivors tell the night; Nesh-Deeka asks about the jars (t3)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":3,"value":"afternoon: the protection is offered and argued (t4)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":4,"value":"night: the first sap-dream (t5)"}
+{"quest_id":"quest.main.mq03","section":"leverage","ord":0,"value":"the survivor's refusal to bear witness: held by the survivor (whichever MQ01 saved); gathered stage 20, by tending them (restoration) or by talk behind the screen (speechcraft); spent on the broker's first objection; it costs the survivor the broker's spite at the next hire"}
+{"quest_id":"quest.main.mq03","section":"leverage","ord":1,"value":"the Reed's coin: held by Nesh-Deeka; gathered stage 30, by bargaining her condition (mercantile); spent on the broker's second objection; the coin is then owed to the Reed"}
+{"quest_id":"quest.main.mq03","section":"leverage","ord":2,"value":"the courier he carried and lost: held by Nesh-Deeka (and the player who saw the courier in MQ01); gathered stage 30; spent on the broker's third objection, said before Salts-The-Catch, a Lilmoth trader (intimidate); Salts-The-Catch will not stand for it if the player defied the broker at the plank (flag.mq01.manner-defied) unless the player persuades her first"}
+{"quest_id":"quest.main.mq03","section":"objections","ord":0,"value":"\"The survivors heard the months read at the hold and the fire; they will say so.\" Answer: the survivor will not, or no survivor lives to say it (topic.mq03-broker-witnesses)"}
+{"quest_id":"quest.main.mq03","section":"objections","ord":1,"value":"\"I am out a season's hire for the lot of you.\" Answer: the Reed's coin, counted through Salts-The-Catch's hands (topic.mq03-broker-price)"}
+{"quest_id":"quest.main.mq03","section":"objections","ord":2,"value":"\"Why should I fear a stranger in a fish-trader's house?\" Answer: the state's courier he carried and lost at his own camp, spoken before a Lilmoth trader (topic.mq03-broker-courier)"}
+{"quest_id":"quest.main.mq03","section":"revealOrder","ord":0,"value":"1 sympathetic: the broker bought the gang's months honestly from earlier holders and has lost a season's hire and his overseer's roll (stage 20, his claim)"}
+{"quest_id":"quest.main.mq03","section":"revealOrder","ord":1,"value":"2 damning: the months he adds for the gang's food, so the families were born owing (stage 20, the survivor's telling, from MQ01)"}
+{"quest_id":"quest.main.mq03","section":"revealOrder","ord":2,"value":"3 sympathetic: he came to a fish-trader's door rather than send enforcers along the stilts (stage 30, Salts-The-Catch)"}
+{"quest_id":"quest.main.mq03","section":"revealOrder","ord":3,"value":"4 damning: he would take a hurt survivor to Soulrest at dawn on a word of witness (stage 40, his objection)"}
+{"quest_id":"quest.main.mq03","section":"sides","ord":0,"value":"Buys-The-Months: wants his surviving hands back or their price, and his name kept with Lilmoth's traders; gives a release spoken before witnesses for one hand's months, when two of his three objections are answered; never gives a release with no witnesses by, or two hands for the price of one"}
+{"quest_id":"quest.main.mq03","section":"sides","ord":1,"value":"Nesh-Deeka (behind the screen): wants the player free of the broker and bound to the Reed instead, and no Reed face seen; gives the Reed's coin for the broker's price, and what she knows of the courier he carried, on condition the player serves; never gives her face or her name to the broker"}
+{"quest_id":"quest.main.mq03","section":"sides","ord":2,"value":"the survivor: wants their own months ended and the road home to Nine Bends; gives a refusal to bear witness to the months read at the camp; never gives a false witness that the months were never read"}
 {"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"day 0: the lowest pool's clutch dies of the cut"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"after stage 30: the next clutch cannot be laid under a cut root"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"after stage 50: the root-herald names the tree-minder if the player brings nothing"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"on the player's arrival: three nights to the laying, said by the root-herald and the egg-tender"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"the third night: the hearing at the fence, with whatever the player holds"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":3,"value":"a night after the hearing opens with no answer: the award is made without the player"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the tending-ground and the leeches"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"the cut root"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"the tree-minder at night"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"the egg-tender at the pool"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the sap-workshop"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":5,"value":"the camp"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":5,"value":"the gum trail"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":6,"value":"the camp"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":7,"value":"the hearing at the fence"}
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"who sent the cell (the Reed holds a name, MQ05)"}
-{"quest_id":"quest.main.mq04","section":"openQuestions","ord":1,"value":"whether the tree will open"}
+{"quest_id":"quest.main.mq04","section":"openQuestions","ord":1,"value":"whether the tree closed through Pays-Late's keeping, or through a cut"}
+{"quest_id":"quest.main.mq04","section":"openQuestions","ord":2,"value":"whether the next clutch can be laid"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the cut root (gum)"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"the sap-workshop floor"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"gum drips through the village reeds"}

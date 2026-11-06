@@ -21,10 +21,12 @@
 {"quest_id":"quest.main.mq01","ord":4,"skill":"short-blade","use":"fight","reason":"the two root-cutters at the cutting (band 1, fixed)"}
 {"quest_id":"quest.main.mq01","ord":5,"skill":"athletics","use":"swim","reason":"out of the burning huts through the shallows to the saved witness"}
 {"quest_id":"quest.main.mq01","ord":6,"skill":"athletics","use":"pole-or-sail-a-boat","reason":"the rowboat across the shallows with the saved witness"}
-{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player tests the sap the cell spilled on the shed floor where its jars stood, and reads how the roots were cut"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"restoration","use":"heal-the-sick","reason":"the hurt on the house's two mats talk to whoever tends them"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"speechcraft","use":"lie","reason":"the player may tell Nesh-Deeka all of the woman with the cord or hold her back"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"mercantile","use":"settle-an-owing","reason":"the price of the protection: the camp families' months bought out of the broker's hands with the Reed's coin, which the player then owes the Reed"}
+{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player scrapes the sap the cell spilled where its jars stood into a phial and reads it: drawn fresh at the ring; the phial is what Nesh-Deeka asks after"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"restoration","use":"heal-the-sick","reason":"the hurt on the house's mats; the survivor speaks to whoever tends them"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"speechcraft","use":"persuade","reason":"the survivor is asked by the broker to bear witness to the months read at the camp; the player can talk them out of it, at a cost to them"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"mercantile","use":"bargain","reason":"Nesh-Deeka's coin is on her condition; the player takes it, or bargains with their own"}
+{"quest_id":"quest.main.mq03","ord":4,"skill":"speechcraft","use":"intimidate","reason":"the broker carried the state's courier and lost him at his own camp; said before a Lilmoth fish-trader, that is a name no raft-trader hires"}
+{"quest_id":"quest.main.mq03","ord":5,"skill":"mercantile","use":"settle-an-owing","reason":"the release spoken before witnesses, for the player's months or the survivor's"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of Lilmoth's people and the Reed; the player earns the look at the Hist and the pool"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"test-a-sample","reason":"a leech from the water below the tending-ground: the leeches are fat on spilled sap and came after the tree closed"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes to the cut root at night; watching him clears him"}

@@ -6,10 +6,11 @@
 {"quest_id":"quest.local.lh38","ord":2,"id":"c3","statement":"Reeh-Shaal killed him."}
 {"quest_id":"quest.main.mq01","ord":0,"id":"c1","statement":"The attackers came for the courier's satchel and for the cutting, not for the gang."}
 {"quest_id":"quest.main.mq01","ord":1,"id":"c2","statement":"The clutch died because the cutting's roots were cut, not because the cutting withdrew."}
-{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell led by the woman with the cord, who came for the satchel and for the cutting."}
-{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"The cell knew where a Hist's roots meet its eggs and came with jars: it has done this before, or been shown how."}
-{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The root was cut by strangers who used the sap-workshop, not by Pays-Late."}
+{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell, led by the woman with the cord, that came for the satchel and for the cutting's sap, with jars ready."}
+{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"With the roll burnt, the broker's whole claim rests on the survivors' word, and a release he speaks before witnesses would end it."}
+{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The root was cut by two strangers who came by the north reeds and used the unbarred workshop: the tree closed through a cut, not through Pays-Late's keeping."}
 {"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The leeches are an effect of the spilled sap, not the cause of the closing."}
+{"quest_id":"quest.main.mq04","ord":2,"id":"c3","statement":"Pays-Late hid the cut and washes it out of fear, not guilt."}
 {"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"The two parties are each half right, and the difference between a Hist turning and a Hist cut is the player's to carry."}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"c2","statement":"The salt comes up from a breach below the village."}

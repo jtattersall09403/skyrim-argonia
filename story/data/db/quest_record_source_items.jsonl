@@ -23,9 +23,8 @@
 {"quest_id":"quest.main.mq03","source":"lore","ord":3,"value":"story/lore/topics/labour-and-bondage.md §2-3"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":4,"value":"story/lore/extrapolation/quest-plan-deltas.md (Q7)"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":5,"value":"story/design/quests/10-political-frame.md §6"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"§9"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":8,"value":"story/lore/extrapolation/gap-register.md §8 QA7, QA8"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5, §9, §10"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA7, QA8, QA13"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/regions/murkmire.md (Villages and tribes; Politics)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Tribal Hist)"}
