@@ -1970,6 +1970,7 @@
 {"condition_id":"quest_fail_forward:quest.main.mq01|6|0:when.0.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"}
 {"condition_id":"quest_fail_forward:quest.main.mq01|6|0:when.1.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness"}
 {"condition_id":"quest_fail_forward:quest.main.mq01|6|0:when.2.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.n1"}
+{"condition_id":"quest_fail_forward:quest.main.mq01|6|1:when","ord":0,"value":"night"}
 {"condition_id":"quest_fail_forward:quest.main.mq01|7|0:when.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"}
 {"condition_id":"quest_fail_forward:quest.main.mq01|8|0:when.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness"}
 {"condition_id":"quest_fail_forward:quest.main.mq01|9|0:when.0","ord":0,"value":"npc.pirate-freeholds.opening-work-camp.n1"}
@@ -2423,12 +2424,14 @@
 {"condition_id":"quest_successor:quest.main.mq03|5|0:when.1.0","ord":0,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_successor:quest.main.mq03|5|1:when.0","ord":0,"value":"zone.mq03.door"}
 {"condition_id":"quest_successor:quest.main.mq03|5|1:when.1","ord":0,"value":"npc.nesh-deeka"}
-{"condition_id":"quest_successor:quest.main.mq03|5|1:when.2","ord":0,"value":"topic.mq03-protection-plain"}
-{"condition_id":"quest_successor:quest.main.mq03|5|1:when.2","ord":1,"value":"npc.nesh-deeka"}
+{"condition_id":"quest_successor:quest.main.mq03|5|1:when.2","ord":0,"value":"npc.mercantile-coast.lilmoth.fish-trader-house"}
+{"condition_id":"quest_successor:quest.main.mq03|5|1:when.3","ord":0,"value":"topic.mq03-protection-plain"}
+{"condition_id":"quest_successor:quest.main.mq03|5|1:when.3","ord":1,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_successor:quest.main.mq03|5|2:when.0","ord":0,"value":"zone.mq03.door"}
 {"condition_id":"quest_successor:quest.main.mq03|5|2:when.1","ord":0,"value":"npc.nesh-deeka"}
-{"condition_id":"quest_successor:quest.main.mq03|5|2:when.2","ord":0,"value":"topic.mq03-protection-price"}
-{"condition_id":"quest_successor:quest.main.mq03|5|2:when.2","ord":1,"value":"npc.nesh-deeka"}
+{"condition_id":"quest_successor:quest.main.mq03|5|2:when.2","ord":0,"value":"npc.mercantile-coast.lilmoth.fish-trader-house"}
+{"condition_id":"quest_successor:quest.main.mq03|5|2:when.3","ord":0,"value":"topic.mq03-protection-price"}
+{"condition_id":"quest_successor:quest.main.mq03|5|2:when.3","ord":1,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_successor:quest.main.mq03|5|3:when.0","ord":0,"value":"zone.mq03.door"}
 {"condition_id":"quest_successor:quest.main.mq03|5|3:when.1","ord":0,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_successor:quest.main.mq03|5|3:when.2.0","ord":0,"value":"npc.mercantile-coast.lilmoth.fish-trader-house"}

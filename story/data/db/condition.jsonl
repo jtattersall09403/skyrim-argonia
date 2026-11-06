@@ -2868,6 +2868,7 @@
 {"id":"quest_fail_forward:quest.main.mq01|6|0:when.1.0","parent_id":"quest_fail_forward:quest.main.mq01|6|0:when.1","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq01|6|0:when.2","parent_id":"quest_fail_forward:quest.main.mq01|6|0:when","ord":2,"term":"not"}
 {"id":"quest_fail_forward:quest.main.mq01|6|0:when.2.0","parent_id":"quest_fail_forward:quest.main.mq01|6|0:when.2","ord":0,"term":"npcAlive"}
+{"id":"quest_fail_forward:quest.main.mq01|6|1:when","term":"timeOfDay"}
 {"id":"quest_fail_forward:quest.main.mq01|7|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq01|7|0:when.0","parent_id":"quest_fail_forward:quest.main.mq01|7|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq01|8|0:when","term":"not"}
@@ -3224,11 +3225,13 @@
 {"id":"quest_successor:quest.main.mq03|5|1:when","term":"all"}
 {"id":"quest_successor:quest.main.mq03|5|1:when.0","parent_id":"quest_successor:quest.main.mq03|5|1:when","ord":0,"term":"inZone"}
 {"id":"quest_successor:quest.main.mq03|5|1:when.1","parent_id":"quest_successor:quest.main.mq03|5|1:when","ord":1,"term":"npcAlive"}
-{"id":"quest_successor:quest.main.mq03|5|1:when.2","parent_id":"quest_successor:quest.main.mq03|5|1:when","ord":2,"term":"topicHeardFrom"}
+{"id":"quest_successor:quest.main.mq03|5|1:when.2","parent_id":"quest_successor:quest.main.mq03|5|1:when","ord":2,"term":"npcAlive"}
+{"id":"quest_successor:quest.main.mq03|5|1:when.3","parent_id":"quest_successor:quest.main.mq03|5|1:when","ord":3,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.main.mq03|5|2:when","term":"all"}
 {"id":"quest_successor:quest.main.mq03|5|2:when.0","parent_id":"quest_successor:quest.main.mq03|5|2:when","ord":0,"term":"inZone"}
 {"id":"quest_successor:quest.main.mq03|5|2:when.1","parent_id":"quest_successor:quest.main.mq03|5|2:when","ord":1,"term":"npcAlive"}
-{"id":"quest_successor:quest.main.mq03|5|2:when.2","parent_id":"quest_successor:quest.main.mq03|5|2:when","ord":2,"term":"topicHeardFrom"}
+{"id":"quest_successor:quest.main.mq03|5|2:when.2","parent_id":"quest_successor:quest.main.mq03|5|2:when","ord":2,"term":"npcAlive"}
+{"id":"quest_successor:quest.main.mq03|5|2:when.3","parent_id":"quest_successor:quest.main.mq03|5|2:when","ord":3,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.main.mq03|5|3:when","term":"all"}
 {"id":"quest_successor:quest.main.mq03|5|3:when.0","parent_id":"quest_successor:quest.main.mq03|5|3:when","ord":0,"term":"inZone"}
 {"id":"quest_successor:quest.main.mq03|5|3:when.1","parent_id":"quest_successor:quest.main.mq03|5|3:when","ord":1,"term":"npcAlive"}

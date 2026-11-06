@@ -79,7 +79,7 @@
 {"quest_id":"quest.main.mq03","stages_ord":5,"ord":0,"to":92,"when":"quest_successor:quest.main.mq03|5|0:when"}
 {"quest_id":"quest.main.mq03","stages_ord":5,"ord":1,"to":90,"when":"quest_successor:quest.main.mq03|5|1:when"}
 {"quest_id":"quest.main.mq03","stages_ord":5,"ord":2,"to":91,"when":"quest_successor:quest.main.mq03|5|2:when"}
-{"quest_id":"quest.main.mq03","stages_ord":5,"ord":3,"to":90,"when":"quest_successor:quest.main.mq03|5|3:when"}
+{"quest_id":"quest.main.mq03","stages_ord":5,"ord":3,"to":93,"when":"quest_successor:quest.main.mq03|5|3:when"}
 {"quest_id":"quest.main.mq04","stages_ord":0,"ord":0,"to":20,"when":"quest_successor:quest.main.mq04|0|0:when"}
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":0,"to":30,"when":"quest_successor:quest.main.mq04|1|0:when"}
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":0,"to":40,"when":"quest_successor:quest.main.mq04|2|0:when"}

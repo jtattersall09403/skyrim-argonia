@@ -50,7 +50,7 @@ ROWS = [
    E(id="we.mq03.dream", kind="ref_place", settlement="bmv.lilmoth", cell="0F9178:" + BM, description="fog and a circle of root shapes in the hold under an enable parent the dream turns on; the barge crew and the gang stand under MQ01's own parent, which MQ01's end turns off", lore="story/lore/topics/hist-and-sap.md"),
    E(id="we.mq03.reed", kind="npc_add", settlement="bmv.hereguardplantation", cell="005911:" + BM, description="two of the Reed's people who take the survivors off at dawn; the move to the house is a fade and a MoveTo", race="Argonian", band=1, lore="story/lore/an-xileel.md"),
    E(id="we.mq03.rooms", kind="ref_place", settlement="bmv.lilmoth", cell="0FE7F7:" + BM, description="a table with what was brought from the camp, two sleeping mats for the hurt, a screen; BM&V's own Argonian clutter", lore="story/lore/lilmoth.md"),
-   E(id="we.mq03.door", kind="record_change", settlement="bmv.lilmoth", target="0FE95A:" + BM, description="the house's outer door (RiftenDoorLoad01, a Riften model) takes the base of BM&V's own Lilmoth house doors (0006)", lore="story/lore/lilmoth.md")],
+   E(id="we.mq03.door", kind="record_change", settlement="bmv.lilmoth", target="0FE95A:" + BM, description="the house's outer door 0FE95A (RiftenDoorLoad01, a Riften model) and its inner door 0FE832 in cell 0FE7F7 (WRShackDoor01, a Whiterun model) take the base of BM&V's own Lilmoth house doors (0006)", lore="story/lore/lilmoth.md")],
   needs=[]),
  dict(quest="quest.main.mq04", verdict="adapt",
   spirit="The first affected Hist community: the player recognises the dark uxith from the camp, and untangles disease, sabotage, grief and ritual.",
