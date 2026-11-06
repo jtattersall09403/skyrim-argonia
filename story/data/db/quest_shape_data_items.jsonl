@@ -63,11 +63,11 @@
 {"quest_id":"quest.local.lq30","section":"nodes","ord":2,"value":"the reed shelter"}
 {"quest_id":"quest.local.lq30","section":"openQuestions","ord":0,"value":"whether the walk-out still counts if the player is seen"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
-{"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist"}
+{"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist, where the reading names Sal-Sei, keeper of the clutch, and Deesh-Duun aloud"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: on the shore, when the saved witness names the player as the one who came for them"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the cut root-ends"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"the jar-rings in the shed"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the shallows where the courier went down"}
+{"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the deep water under the boards where the courier's tag went down"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":3,"value":"the survivor"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":4,"value":"Nesh-Deeka"}
 {"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"day 0: the eggs die of the cut"}

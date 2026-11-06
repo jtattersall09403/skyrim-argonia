@@ -8,11 +8,9 @@
 {"quest_id":"quest.local.lq25","cast_ord":2,"ord":1,"at_stage":40,"fact":"fact.lq25.bait-drew-it","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"ord":0,"at_stage":40,"fact":"fact.mq01.satchel","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"ord":0,"at_stage":40,"fact":"fact.mq01.roots-cut","to":"knows"}
-{"quest_id":"quest.main.mq01","cast_ord":4,"ord":1,"at_stage":50,"fact":"fact.mq01.clutch-dead","to":"knows"}
+{"quest_id":"quest.main.mq01","cast_ord":4,"ord":1,"at_stage":41,"fact":"fact.mq01.clutch-dead","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"ord":0,"at_stage":40,"fact":"fact.mq01.her-face","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":5,"ord":1,"at_stage":40,"fact":"fact.mq01.satchel","to":"knows"}
-{"quest_id":"quest.main.mq01","cast_ord":5,"ord":2,"at_stage":50,"fact":"fact.mq01.clutch-dead","to":"knows"}
-{"quest_id":"quest.main.mq01","cast_ord":7,"ord":0,"at_stage":50,"fact":"fact.mq01.clutch-dead","to":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"ord":0,"at_stage":20,"fact":"fact.mq03.clean-cut","to":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"ord":1,"at_stage":20,"fact":"fact.mq03.jar-rings","to":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":2,"ord":0,"at_stage":91,"fact":"fact.mq05.severance-not-silence","to":"knows"}

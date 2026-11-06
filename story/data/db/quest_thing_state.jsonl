@@ -64,8 +64,8 @@
 {"quest_id":"quest.main.mq01","things_ord":2,"state":"before-90","value":"on the pier"}
 {"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"present until the strike"}
 {"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-50","value":"on the shore, burnt and wet"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-50","value":"off"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-90","value":"on the shore, burnt and wet"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-90","value":"off"}
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey)"}
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"at-40","value":"attacked (fire in the huts)"}
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
@@ -79,9 +79,11 @@
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"on the shed floor"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"in the shallows"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"at-10","value":"on the shed floor"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"absent (the jar-marks parent off)"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried if dived for, else on the bottom"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"at-10","value":"on the bottom"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"absent (the jar-marks parent off)"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"before-20","value":"at the shore"}
 {"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"present"}
