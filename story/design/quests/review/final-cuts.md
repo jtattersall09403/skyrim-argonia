@@ -292,3 +292,43 @@ B7 and B8 had additive fixes. The planner answers them by subtraction instead, a
   - Stage 10 journal: "or dive for the tag" becomes "or dive for the tag in the families' sunk fish-trap and pick
     its lock".
   - Skill ids use one casing, Lockpicking.
+
+## MQ01 and MQ03, last pass (base 84a82815): 4 blocking, all single cuts; applied under the exit rule, no further review
+
+- B1: MQ03 t1's "three of her cutters" becomes "two of her cutters". Its trap clause becomes "and in at the mouth of
+  the families' sunk fish-trap below, whose lid the families keep locked against the hungry gang."
+  shapeData.guiltyParties becomes "the cell of the woman with the knotted cord (Cuts-the-Old-Knot, unnamed here) and
+  its two cutters".
+- B2 and N1: five lockpicks lie loose on the burnt plank boards beside the fire.
+  - we.mq03.jar-marks: "two lockpicks in the families' net-basket on the burnt plank boards beside the fire" becomes
+    "five lockpicks loose on the burnt plank boards beside the fire".
+  - thing.mq03.courier-token: "two lockpicks in the families' net-basket on the boards above" becomes "five lockpicks
+    loose on the boards above".
+  - Stage 10 directions: "their net-basket on the boards holds picks." becomes "lockpicks lie loose on the boards
+    beside the fire."
+- B3 (ruling): a stage whose only successors are zones the player chooses between, each opening a stage won by a
+  skill, is a choice stage (Helgen's Hadvar or Ralof). MQ01 stage 40 is one. Its Destruction row is cut; that
+  fight happens in 41.
+- B4: add review row L11 to MQ03: {severity: lore, ids: [truth.t1, facts.fact.mq03.courier-token,
+  things.thing.mq03.courier-token], finding: "The families keep their sunk fish-trap locked against the hungry
+  gang.", answer: "sourced: story/lore/topics/labour-and-bondage.md §2 (drift 3, months added for food); owner #53
+  (Lockpicking, Novice, for the sunk fish-trap)"}.
+- N2: append to we.mq03.jar-marks "(a new container base on a BM&V basket or trap model, chosen at build; never a
+  Skyrim.esm model)".
+- N3: MQ03's ties objective becomes "Get Ties-The-Loose-Plank to tell the night too: show him the courier's tag, or
+  talk him round."
+- N4: fact.mq03.courier-token's claim becomes "The courier's brass tag on its strap fell through the burnt plank
+  boards at the camp's fire into the families' sunk fish-trap below: he was the state's man."
+- N5: MQ03 journal 10 becomes "I'm to taste the sap, then take a phial of it or dive for the tag in the families'
+  sunk fish-trap and pick the trap's lock, and then tell the stranger on the shore I am ready to go."
+- N6: MQ01 journal 42's first sentence becomes "From the water I can hear the cutters on the plank boards over us,
+  walking from the shed to the water's edge where they came in, and Sal-Sei has not come out."
+- N7: the cutters' clause in thing.mq01.cell and we.mq01.cell becomes "walk from the shed along the standing plank
+  boards past the huts' water to the water's edge where the cell came in, away from the shore below the camp, wade
+  into the deep water and are disabled there".
+- N8: MQ01 foundation: "into the deep water, where MQ03's dive recovers it" becomes "into the families' sunk
+  fish-trap in the deep water, where MQ03 recovers it (the dive, then the trap's Novice lock)". MQ03
+  shapeData.nodes item: "the families' sunk fish-trap under the boards where the courier's tag went in".
+- N9: courier-token at-10 becomes "in the locked fish-trap; the picks on the boards above".
+- N10: act1.md's MQ03 header drops "Swimming (the dive for the tag)" and "climbing". The swimming and athletics
+  dive rows in BC02, TG02, LH38 and MR01 are relabelled as movement, not skills (#53).
