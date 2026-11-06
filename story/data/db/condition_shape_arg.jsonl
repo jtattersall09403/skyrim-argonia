@@ -66,6 +66,7 @@
 {"term":"raceIs","ord":0,"kind":"id","optional":false}
 {"term":"rumourActive","ord":0,"kind":"id","optional":false}
 {"term":"rumourActive","ord":1,"kind":"id","optional":false}
+{"term":"sceneEnded","ord":0,"kind":"id","optional":false}
 {"term":"seasonIs","ord":0,"kind":"enum","optional":false}
 {"term":"seenBy","ord":0,"kind":"id","optional":false}
 {"term":"settlementStandingAtLeast","ord":0,"kind":"id","optional":false}

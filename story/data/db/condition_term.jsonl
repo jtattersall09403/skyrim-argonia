@@ -73,6 +73,7 @@
 {"id":"recordWitnessed","kind":"action","section":"B2","args":"event"}
 {"id":"removeTopic","kind":"action","section":"B2","args":"topic","reads":"tier-aware"}
 {"id":"rumourActive","kind":"predicate","section":"A3","args":"rumour `id`, region `id`","reads":"regional rumour pools"}
+{"id":"sceneEnded","kind":"predicate","section":"A7","args":"scene `id`","reads":"the scene's end fragment sets the stage (TR-scene)"}
 {"id":"seasonIs","kind":"predicate","section":"A6","args":"`enum`","reads":"seasonal content"}
 {"id":"seedRumour","kind":"action","section":"B2","args":"rumour, region"}
 {"id":"seenBy","kind":"predicate","section":"A5","args":"npc `id` *or* faction `id`","reads":"whether that observer is past suspicious right now (the notice service, 0092; planned: 2.10)","planned":"2.10"}

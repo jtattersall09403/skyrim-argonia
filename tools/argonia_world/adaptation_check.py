@@ -593,7 +593,8 @@ SKILL_ROUTES_BLOCK = False
 # A route counts only if it can fail: a check of 25+ (Bethesda's easy level), or a fight, lock, dive or spell.
 FAIL_SKILLS = {_sk(x) for x in ("OneHanded", "TwoHanded", "Marksman", "Archery", "Block", "Destruction", "Alteration",
                                 "Illusion", "Conjuration", "Restoration", "Mysticism", "Lockpicking", "Security",
-                                "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand")}
+                                "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand",
+                                "Pickpocket")}
 FAIL_USES = {"dive", "pick-a-lock", "open-a-strongbox", "fight", "duel"}
 
 
@@ -607,14 +608,19 @@ def _hard_check(args) -> bool:
 
 
 def _choice_stage(succ, ends) -> bool:
-    """Only distinct choice topics, each leading to an ending: a decision, exempt like an ending. A choice may also
+    """Only distinct choice topics, whatever they lead to: a decision, exempt like an ending. A choice may also
     need the evidence in hand (hasItem, C-item), as a tell-someone exit does."""
     seen = set()
     for to, t, a in succ:
-        if to not in ends or "topicHeardFrom" not in t or t - {"topicHeardFrom", "hasItem", "all", "any"} or frozenset(a) in seen:
+        if "topicHeardFrom" not in t or t - {"topicHeardFrom", "hasItem", "all", "any"} or frozenset(a) in seen:
             return False
         seen.add(frozenset(a))
     return len(succ) >= 2
+
+
+def _scene_stage(succ) -> bool:
+    """Every successor waits on a scene's end (TR-scene): a scene stage that cannot be failed, exempt like a choice."""
+    return bool(succ) and all("sceneEnded" in t for _, t, _ in succ)
 
 
 def skill_routes(rc: Records) -> list[str]:
@@ -626,11 +632,13 @@ def skill_routes(rc: Records) -> list[str]:
         if rc.live is not None and q not in rc.live:
             continue
         ssk, ends = rc.skill_stages.get(q, {}), rc.stage_end.get(q, set())
-        mid = [s for s in sorted(sts) if s not in ends and not _choice_stage(sts[s]["succ"], ends)]
+        mid = [s for s in sorted(sts) if s not in ends and not _choice_stage(sts[s]["succ"], ends)
+               and not _scene_stage(sts[s]["succ"])]
         for s in mid:
             if not ssk.get(s):
                 out.append(f"{q}: stage {s} names no skill (no action, objective or successor uses one)")
-        used = set().union(*(ssk.get(s, set()) for s in mid)) if mid else set()
+        live = [s for s in sorted(sts) if s not in ends]          # an exempt stage's skills still count as ways through
+        used = set().union(*(ssk.get(s, set()) for s in live)) if live else set()
         group, fac = rc.quest_kind.get(q, (None, None))
         if group == "main" and len(used) < 2:
             out.append(f"{q}: main quest has {len(used)} distinct skill(s) {sorted(used)}, needs two ways through")

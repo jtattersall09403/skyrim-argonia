@@ -45,6 +45,7 @@
 {"term":"questState","shape":"is"}
 {"term":"raceIs","shape":"is","native":"GetIsRace"}
 {"term":"rumourActive","shape":"truth"}
+{"term":"sceneEnded","shape":"truth"}
 {"term":"seasonIs","shape":"is"}
 {"term":"seenBy","shape":"truth"}
 {"term":"settlementStandingAtLeast","shape":"at_least"}
