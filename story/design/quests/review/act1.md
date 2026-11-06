@@ -131,6 +131,7 @@ Round 1: applied (commit c28a4e07): 11 stages, 1 choices, 3 endings
 - N4: the dream gets its fall-reset trigger and no fall damage in we.mq03.dream; the ring a build-check row; the move
   into the dream happens at night or after a rest, never mid-day "I slept".
 - N5: grantHistStep as a stage action; Nesh-Deeka suspects, not knows, the courier's tag; t2.who matches the cast.
+Round 1: applied (commit 7842f495): 5 stages, 1 choices, 2 endings
 
 ### MQ04, round 1: fix (planner's rulings; all accepted)
 
