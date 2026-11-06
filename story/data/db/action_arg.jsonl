@@ -216,12 +216,16 @@
 {"list_id":"quest_ending:quest.local.lq25|1:rewards","ord":1,"arg_ord":1,"value":10}
 {"list_id":"quest_ending:quest.local.lq25|1:world","ord":0,"arg_ord":0,"value":"ref.lq25.beast"}
 {"list_id":"quest_ending:quest.local.lq30|0:world","ord":0,"arg_ord":0,"value":"ref.lq30.beast"}
+{"list_id":"quest_ending:quest.local.lq30|0:world","ord":1,"arg_ord":0,"value":"ref.lq30.youth"}
+{"list_id":"quest_ending:quest.local.lq30|0:world","ord":1,"arg_ord":1,"value":"mark.lq30.gate"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":0,"arg_ord":0,"value":60}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":1,"arg_ord":0,"value":"npc.hist-heartland.helstrom.lq30-kin"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":1,"arg_ord":1,"value":20}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":2,"arg_ord":0,"value":"npc.hist-heartland.helstrom.lq30-youth"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":2,"arg_ord":1,"value":-20}
 {"list_id":"quest_ending:quest.local.lq30|1:world","ord":0,"arg_ord":0,"value":"ref.lq30.beast"}
+{"list_id":"quest_ending:quest.local.lq30|1:world","ord":1,"arg_ord":0,"value":"ref.lq30.youth"}
+{"list_id":"quest_ending:quest.local.lq30|1:world","ord":1,"arg_ord":1,"value":"mark.lq30.gate"}
 {"list_id":"quest_ending:quest.main.mq01|0:rewards","ord":0,"arg_ord":0,"value":"item.mq01.sal-reed-knife"}
 {"list_id":"quest_ending:quest.main.mq01|0:rewards","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.main.mq01|0:world","ord":0,"arg_ord":0,"value":"ref.mq01.camp-aftermath"}

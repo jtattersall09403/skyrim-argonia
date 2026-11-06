@@ -54,12 +54,14 @@
 {"quest_id":"quest.local.lq25","things_ord":1,"state":"before-20","value":"absent"}
 {"quest_id":"quest.local.lq25","things_ord":1,"state":"during","value":"by the pilings in the lair"}
 {"quest_id":"quest.local.lq25","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.local.lq25","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.local.lq30","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"after-30","value":"dead"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"before-30","value":"absent"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"during","value":"at the shelter"}
 {"quest_id":"quest.local.lq30","things_ord":2,"state":"after-90","value":"Sei-Wan at the gate"}
-{"quest_id":"quest.local.lq30","things_ord":2,"state":"before-90","value":"Sei-Wan in the shelter and Haj-Wan by the gate"}
+{"quest_id":"quest.local.lq30","things_ord":2,"state":"before-30","value":"Haj-Wan by the gate, Sei-Wan absent"}
+{"quest_id":"quest.local.lq30","things_ord":2,"state":"during","value":"Sei-Wan in the shelter and Haj-Wan by the gate"}
 {"quest_id":"quest.local.lq30","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"after-90","value":"crew and gang off (MQ01's crew parent disabled)"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}

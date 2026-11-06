@@ -38,7 +38,7 @@
 {"quest_id":"quest.local.lq25","section":"habit","value":"One crocodile (band 1) lairs in the shallows by the pilings under the landing pier, where the offal is dumped, and takes what comes off the rafts."}
 {"quest_id":"quest.local.lq25","section":"nonCombat","value":"none needed (band 1): it is shot or burnt from the pier as it lies by the pilings"}
 {"quest_id":"quest.local.lq25","section":"twist","value":"The beast was a lie the landing crew told with offal, and the offal brought a real one."}
-{"quest_id":"quest.local.lq25","section":"weakSample","value":"The offal under the pier is fresh, and the bucket beside it is the landing crew's."}
+{"quest_id":"quest.local.lq25","section":"weakSample","value":"none: one crocodile at the landing's band 1"}
 {"quest_id":"quest.local.lq25","section":"whyUnsolved","value":"The levy soldier by the crew's houses guards the town, not the river; the crew who know why it stays will not say, and the rest of the landing will not take a raft out near it."}
 {"quest_id":"quest.local.lq30","section":"beats"}
 {"quest_id":"quest.local.lq30","section":"breakPoints"}

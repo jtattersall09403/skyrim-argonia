@@ -116,22 +116,22 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 <!-- stage_blocks:begin (generated; do not edit) -->
 | Quest stage | Trigger in | Conditions | Effects |
 |---|---|---|---|
-| MQ01 10 | the new-game start (ARG_Opening) | - | E-enable, E-stage |
-| MQ01 40 | TR-zone (objectives done) | - | E-enable, E-scene, E-stage |
+| MQ01 10 | the new-game start (ARG_Opening) | - | E-enable, E-scene, E-stage |
+| MQ01 40 | TR-scene | - | E-enable, E-scene, E-stage |
 | MQ01 41 | TR-zone | C-stage | E-stage |
 | MQ01 42 | TR-zone | C-stage | E-stage |
-| MQ01 90 | TR-zone | - | E-enable, E-global, E-item, E-stage, TR-chain |
-| MQ01 91 | TR-zone | - | E-enable, E-global, E-stage, TR-chain |
+| MQ01 90 | TR-zone | C-time | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ01 91 | TR-zone | C-time | E-enable, E-global, E-stage, TR-chain |
 | MQ01 93 | TR-zone | - | E-enable, E-stage, TR-chain |
 | MQ03 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
 | MQ03 20 | TR-acquire, TR-topic | C-item | E-enable, E-global, E-move, E-stage |
-| MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-stage |
-| MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
-| MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
-| MQ04 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ04 20 | TR-death, TR-topic | C-alive | E-stage |
+| MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-scene, E-stage |
+| MQ03 90 | TR-scene, TR-topic | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
+| MQ03 91 | TR-death, TR-scene | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
+| MQ04 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
+| MQ04 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item, C-skill | E-stage |
 | MQ04 30 | TR-zone | - | E-stage |
-| MQ04 40 | TR-death, TR-topic | C-alive | E-stage |
+| MQ04 40 | TR-death, TR-topic, TR-zone | C-alive, C-detected, C-skill, C-time | E-stage |
 | MQ04 91 | TR-acquire, TR-zone | C-item | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
 | MQ05 20 | TR-death, TR-topic | C-alive, C-item, C-skill | E-enable, E-stage |

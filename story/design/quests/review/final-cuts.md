@@ -1,4 +1,5 @@
 # The slice's final cuts (2026-11-06)
+Applied: acbbb6a7, 742e8156, ada9b368, d6d3b754, 36d5f5d2, efe2f8fa, and the LQ25/LQ30 commit that carries this line.
 
 The last delta review, under the loop's exit rule (act1.md: "how the loop ends"). Every finding here is answered by
 a single cut or rewording, applied without another review. Each fix is spelt out word for word.

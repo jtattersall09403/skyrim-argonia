@@ -1853,7 +1853,7 @@
 {"condition_id":"quest:quest.local.lf83:start_when.1.2","ord":1,"value":"npc.imperial-fringe.claywater-station.landing-s-poler"}
 {"condition_id":"quest:quest.local.lh38:start_when","ord":0,"value":"topic.latest-rumours"}
 {"condition_id":"quest:quest.local.lh38:start_when","ord":1,"value":"npc.hist-heartland.greenspring.n2"}
-{"condition_id":"quest:quest.local.lq25:start_when.0","ord":0,"value":"0D77AD:Black Marsh.esm"}
+{"condition_id":"quest:quest.local.lq25:start_when.0","ord":0,"value":"zone.lq25.landing"}
 {"condition_id":"quest:quest.local.lq25:start_when.1","ord":0,"value":"quest.main.mq05"}
 {"condition_id":"quest:quest.local.lq25:start_when.1","ord":1,"value":"≥"}
 {"condition_id":"quest:quest.local.lq25:start_when.1","ord":2,"value":40}

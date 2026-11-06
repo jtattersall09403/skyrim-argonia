@@ -8,10 +8,10 @@ import yaml
 QUESTS = ("mq01", "mq03", "mq04", "mq05")
 TRIG = {"topicHeardFrom": "TR-topic", "inZone": "TR-zone", "inSettlement": "TR-zone", "npcAlive": "TR-death",
         "placeCleared": "TR-death", "counterAtLeast": "TR-death", "hasItem": "TR-acquire", "objectiveComplete": "TR-stage",
-        "npcInCustody": "TR-death"}
+        "npcInCustody": "TR-death", "sceneEnded": "TR-scene"}
 COND = {"questStage": "C-stage", "stageEverReached": "C-stage", "flag": "C-stage", "timeOfDay": "C-time",
         "hasItem": "C-item", "npcAlive": "C-alive", "skillAtLeast": "C-skill", "dispositionAtLeast": "C-global",
-        "npcAtMark": "C-time", "goldAtLeast": "C-item"}
+        "npcAtMark": "C-time", "goldAtLeast": "C-item", "detectedBy": "C-detected"}
 EFF = {"grantTopic": "E-stage", "setFlag": "E-global", "enableRef": "E-enable", "disableRef": "E-enable",
        "applyLocalVariant": "E-enable", "startScene": "E-scene", "moveRef": "E-move", "setSchedule": "E-package",
        "giveItem": "E-item", "takeItem": "E-item", "giveGold": "E-item", "takeGold": "E-item",
