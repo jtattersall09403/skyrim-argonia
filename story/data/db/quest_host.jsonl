@@ -1,0 +1,28 @@
+{"quest":"quest.bc.bc01","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"start","what":"Never-Sold at the Chainbreakers' house."}
+{"quest":"quest.bc.bc01","ord":1,"settlement":"bmv.blackmarshnorth.manor","role":"main","what":"The estate quarters, the steward's account and the landing."}
+{"quest":"quest.bc.bc02","ord":0,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"main","what":"The Rose's lower levels, the burnt wing and the duplicate store."}
+{"quest":"quest.bc.bc02","ord":1,"settlement":"bmv.blackmarshnorth.manor","role":"stage","what":"The estate account for cross-reference."}
+{"quest":"quest.bc.bc03","ord":0,"settlement":"bmv.blackrose","role":"main","what":"Ussa-Rekh's barge and the market dock."}
+{"quest":"quest.fg.fg01","ord":0,"settlement":"bmv.castle","cell":"0378ED:Black Marsh North.esp","role":"start","what":"The Charter hall in Gideon's mansion and the patron."}
+{"quest":"quest.fg.fg01","ord":1,"settlement":"bmv.tribe","role":"main","what":"The palisade, the Naga approach lanes and the village speakers."}
+{"quest":"quest.fg.fg02","ord":0,"settlement":"bmv.castle","role":"start","what":"Gideon's gate and the patron's word"}
+{"quest":"quest.fg.fg02","ord":1,"settlement":"bmv.castle","role":"main","what":"the patrol camp, the ford and the survivor's reed hut on the marsh road below Gideon"}
+{"quest":"quest.local.lq25","ord":0,"settlement":"bmv.dock5","role":"start","what":"The landing."}
+{"quest":"quest.local.lq25","ord":1,"settlement":"bmv.dock5","role":"end","what":"The beast's lair under the pier."}
+{"quest":"quest.local.lq30","ord":0,"settlement":"bmv.helstrom","role":"start","what":"The gate."}
+{"quest":"quest.local.lq30","ord":1,"settlement":"bmv.helstrom","role":"end","what":"The basin shelter."}
+{"quest":"quest.main.mq01","ord":0,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"start","what":"processing and character creation in the barge's hold"}
+{"quest":"quest.main.mq01","ord":1,"settlement":"bmv.hereguardplantation","role":"main","what":"the work camp at the paddy edge, its Hist, uxith and hatching shed; the attack"}
+{"quest":"quest.main.mq01","ord":2,"settlement":"bmv.lilmoth","role":"end","what":"the shallow-water escape into Lilmoth by Dock1"}
+{"quest":"quest.main.mq03","ord":0,"settlement":"bmv.lilmoth","cell":"0FE7F7:Black Marsh.esm","role":"main","what":"the Reed's house: interview, infirmary, the evidence on the table"}
+{"quest":"quest.main.mq03","ord":1,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog"}
+{"quest":"quest.main.mq04","ord":0,"settlement":"bmv.village","role":"main","what":"the village, its Hist, pools and homes"}
+{"quest":"quest.main.mq04","ord":1,"settlement":"bmv.village","role":"stage","what":"the cell's swamp camp at the end of the gum trail"}
+{"quest":"quest.main.mq05","ord":0,"settlement":"bmv.lilmoth","role":"start","what":"the ship at Lilmoth's stop"}
+{"quest":"quest.main.mq05","ord":1,"settlement":"bmv.dock5","cell":"04F222:Black Marsh North.esp","role":"stage","what":"the guarded boat-station at Helstrom's landing"}
+{"quest":"quest.main.mq05","ord":2,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"main","what":"the Hall of the Scalded Throne, swept"}
+{"quest":"quest.main.mq05","ord":3,"settlement":"bmv.helstrom","role":"end","what":"the dispute in the city"}
+{"quest":"quest.tg.tg01","ord":0,"settlement":"bmv.dock2","cell":"0E96A9:Black Marsh.esm","role":"start","what":"Deep-In-Her-Cups in the cabin den."}
+{"quest":"quest.tg.tg01","ord":1,"settlement":"bmv.dock2","role":"main","what":"The target thief's hut, three ways in."}
+{"quest":"quest.tg.tg01","ord":2,"settlement":"bmv.lilmoth","cell":"16BF81:Black Marsh North.esp","role":"end","what":"The way down to the Chapter's seat."}
+{"quest":"quest.tg.tg02","ord":0,"settlement":"bmv.lilmoth","role":"main","what":"The drowned quarter, the sunken counting house and its air pocket."}

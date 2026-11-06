@@ -4,7 +4,9 @@ The human-readable plan for Phase 2's "whole quest system on BM&V" ([phase 2](..
 per line its spirit, its new home in BM&V, what changed and why, and the world-edit ledger in summary. The story data
 is the record; this file is the read of it. Act I's own adaptation is [act1-on-bmv](act1-on-bmv.md).
 
-Status: steps 1 and 2 done and re-read against the province vibe; the checker is in `make check`. Sections 3 and 4 (capacity, allocation) are a draft held while the owner weighs the world options (joined worldspaces, new land, more interiors); step 5 onward waits on that ruling.
+Status: the first story slice (owner, 2026-11-06) is ledgered in §5: Act I and the first quests of three faction lines
+and two locals; the other 704 quests wait (`wait`) until the owner has tried the slice. Sections 3 and 4 stay the
+whole-province draft the slice was cut from.
 
 ## 1. Inventory (step 1)
 
@@ -114,7 +116,7 @@ Beats kept: UW01 two witness texts, one edited after its author's death.; UW03 a
 From the census of all four plugins (`bmv_settlement`, `bmv_settlement_cell`, `bmv_placement`, `bmv_door`;
 [census](../../../docs/research/bmv/census.md)). Black Marsh is three separate worldspaces joined by ships and
 doors, and Valenwood a fourth entered only from Skyrim. What limits the story is not ground but people and rooms:
-the three Black Marsh worlds hold 34 interiors in all, and the people are generic (guards, villagers, soldiers).
+the three Black Marsh worlds have 26 reachable interiors (24 of them BM&V's own: 7 houses or halls, 13 caves, ruins and dungeons, 4 ships or dock rooms) behind 53 load doors, and 12 more doorless; Lilmoth has 6, Helstrom 4 (9 of its 12 doors share one house), Blackrose 2, and Murkmire, Thorn, Tear and Hereguard none; and the people are generic (guards, villagers, soldiers).
 
 | settlement | marker | world | interiors | navmesh squares | people | other actors |
 |---|---|---|---|---|---|---|
@@ -239,3 +241,44 @@ Temple and Murkmire hold Imperial MQ101 soldiers and an Arkay priestess, and Lon
 One world-wide clean-up edit decides them all at step 5, never line by line.
 Also found: the Marsh Charter's patron Halvar the Damp is a Nord in 36-cast-roster.md (decision 0006); he is recast
 (a Breton of Gideon, renamed) when the line's ledger rows land. FG03's wamasu becomes BM&V's crocodile (decision 0027 §3).
+
+## 5. The first story slice (steps 5 to 8)
+
+The owner ruled (2026-11-06) that BM&V stays as it is and that a slice is fitted first. The slice is chosen for
+fit and variety, and so that nothing in it clashes:
+
+- **Act I of the main quest** (MQ01, MQ03, MQ04, MQ05), with the new-game flow and the opening scene.
+- **Night-Reed** (TG01, TG02): thieves; its seat is reachable under Lilmoth, its first jobs are in Soulrest and Lilmoth.
+- **Marsh Charter** (FG01, FG02): contract fighters out of Gideon's mansion (a doorless BM&V room given a door) and
+  a tribe village on the Naga approach. FG02 leaves from Gideon, so Hereguard stays the opening's alone.
+- **Chainbreakers** (BC01 to BC03): the Owing, the lore's most Argonian injustice (vibe §10), at Blackrose, the Dres
+  Rows and the Rose's lower levels.
+- **Two locals**: a river-beast at Helstrom's landing (LQ25) and a youth gone into the basin (LQ30), in Act I's towns.
+
+Not chosen for the slice: Shadowscales (their seat needs Gallows Rock cleared of Silver Hand and werewolves), the
+Nisswo and Umbriel lines (seats in villages with no rooms and a garrison of Imperial actors), Reed-Sail (excluded
+against the Marsh Charter at senior rank), the Sunken Archive and the Many-Root (seats in empty places), Thorn
+Ash-Reed (Thorn has no enterable building), the League (Alten Meerhleel has no room), and the detectives (no
+quests yet). No two chosen lines are exclusive (`line_exclusion`), and none shares a seat.
+
+**The clean-up** (one `we.clean.<place>` edit per slice place): every Nord, Thalmor, vanilla Imperial official,
+skeleton, draugr-race walker, Soul Cairn shade, Lurker, werebear-race beast, Dwemer construct, named vanilla dog
+and levelled placement in the slice's places goes under one enable parent kept off: 38 in Lilmoth (its drowned
+dead and the dungeon's Volkihar skeletons), 25 at Blackrose, 10 in the Dres Rows, 9 at Gideon, 5 in the village, 1 each at Soulrest and Helstrom.
+BM&V's own Argonians, Naga, crocodiles, leeches and wildlife stay.
+
+| quest | line | band | where | the adapted premise, in short |
+|---|---|---|---|---|
+| BC01 Four Months for a Boat | Chainbreakers | 2 | blackrose,blackmarshnorth.manor | At the Chainbreakers' house in Blackrose, Never-Sold sends you to an old ex-Archein estate in the Dres Rows where a woman has worked off a boat for eleven years. |
+| BC02 Names Scratched Out | Chainbreakers | 2 | blackrose,blackmarshnorth.manor | In the Rose's lower levels, reached by its new door, you read a burnt wing's remains and a duplicate store against the estate account from the Dres Rows. |
+| BC03 The Broker's Mercy | Chainbreakers | 1 | blackrose | Ussa-Rekh lives on a mooring-barge at Blackrose's market dock. |
+| LQ25 The River Monster's Rent | Local quests | 2 | dock5 | At Helstrom's landing a river-beast has begun to take rafts. |
+| LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out to the basin to prove something to the tribe. |
+| FG01 A Contract in Mud | Marsh Charter | 2 | castle,tribe | At Gideon's mansion, where written contracts are still taken, the Charter's patron sends you with a contract to a palisaded tribe village on the Naga approach. |
+| FG02 The Missing Patrol | Marsh Charter | 1 | castle | A Charter patrol out of Gideon has not come back. |
+| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest the Chapter's desk-keeper (named at quest-write) tests you with a job. |
+| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Lilmoth's drowned quarter an estate's counting house has sunk. |
+| MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of the work barge moored at Lilmoth's Dock1, where the Owing gang is processed: the roll is read out with the months added for food, and character creation is the processing itself. |
+| MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | lilmoth | The survivors are held under the Veiled Reed's guard in a Lilmoth house the Reed keeps. |
+| MQ04 The Tree That Turned Its Face | The Eye and the Root | 2 | village | East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. |
+| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,dock5,helstrom | The Veiled Reed takes the player up the coast on BM&V's ship from Lilmoth to Helstrom's landing, under escort, and walks them to the city with the basin's danger named at every turn. |

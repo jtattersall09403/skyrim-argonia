@@ -2972,9 +2972,10 @@ CREATE TABLE "line_exclusion" (
 );
 
 -- Home of a quest's verdict and adapted premise. `band` is its peak danger (0-5, fixed by place: decision 0035).
+-- `wait`: outside the first story slice (owner, 2026-11-06); adapted once the owner has tried the slice.
 CREATE TABLE "quest_adaptation" (
   "quest" TEXT NOT NULL PRIMARY KEY REFERENCES "quest"("id"),
-  "verdict" TEXT NOT NULL CHECK ("verdict" IN ('keep', 'adapt', 'merge', 'drop')),
+  "verdict" TEXT NOT NULL CHECK ("verdict" IN ('keep', 'adapt', 'merge', 'drop', 'wait')),
   "merged_into" TEXT REFERENCES "quest"("id"),
   "spirit" TEXT NOT NULL,
   "premise" TEXT,
@@ -2983,7 +2984,7 @@ CREATE TABLE "quest_adaptation" (
   "band" INTEGER CHECK ("band" BETWEEN 0 AND 5),
   "lore" TEXT,
   CHECK (("verdict" = 'merge') = ("merged_into" IS NOT NULL)),
-  CHECK ("verdict" IN ('merge', 'drop') OR ("premise" IS NOT NULL AND "band" IS NOT NULL AND "lore" IS NOT NULL))
+  CHECK ("verdict" IN ('merge', 'drop', 'wait') OR ("premise" IS NOT NULL AND "band" IS NOT NULL AND "lore" IS NOT NULL))
 );
 
 -- Home of the places a kept quest is played in: a BM&V settlement (or one of its interiors), or a place a ledgered
