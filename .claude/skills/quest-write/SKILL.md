@@ -64,7 +64,7 @@ Before the record is written:
 
 1. **Action, danger and discovery drive the quest**, not procedure. Law, custom, hearings, debts, permits and
    bargaining stay in the background as colour; at most one stage may turn on a formal procedure, and never the
-   climax. Prefer a place to reach, a thing to find, a creature or person to face, a secret to uncover.
+   climax or the resolution (no arbitration, hearing, trial, ruling or witnessed release resolves a quest). Prefer a place to reach, a thing to find, a creature or person to face, a secret to uncover.
 2. **The branching budget:** at most two real choices and at most three endings per quest (a death or a failure
    uses the standard fail-forward of the block set, not an ending of its own). At most about 8 stages for an M
    quest, 12 for an L. Depart only with a one-line reason the planner accepts.

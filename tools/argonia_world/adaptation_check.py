@@ -55,7 +55,8 @@ def load() -> Ledger:
     for r in w.query("""SELECT a.*, q.line, q.code FROM quest_adaptation a JOIN quest q ON q.id = a.quest"""):
         lg.quests[r["quest"]] = dict(line=r["line"], code=r["code"], verdict=r["verdict"], merged_into=r["merged_into"],
                                      band=r["band"], lore=r["lore"],
-                                     text=" ".join(x or "" for x in (r["spirit"], r["premise"], r["changed"])))
+                                     text=" ".join(x or "" for x in (r["spirit"], r["premise"], r["changed"])),
+                                     premise=r["premise"])
     lg.hosts = [tuple(r) for r in w.query("SELECT quest, settlement, cell, role, edit FROM quest_host")]
     lg.prereqs = [tuple(r) for r in w.query("SELECT quest, needs FROM quest_prereq")]
     for r in w.query("SELECT * FROM world_edit"):
@@ -344,15 +345,47 @@ CHECKS = (check_navmesh, check_coverage, check_hosts, check_edits, check_graph, 
           check_lore, check_nordic_and_levelled)
 
 
+
+# Procedure and bureaucracy words (owner, 2026-11-06: an arbitration resolving a quest is "the classic boring
+# bureaucracy issue"; story/design/province-vibe.md's "what jars"). A hit is a warning for the planner's triage, not a
+# failure: a word may be licensed (Gideon's courthouse, a port's customs) or describe what was removed.
+PROCEDURE = re.compile(r"\b(arbitrat\w*|hearings?|tribunals?|trials?|rulings?|verdicts?|courts?|testimon\w*|"
+                       r"witness(?:es|ed)?|ledgers?|tall(?:y|ies)|registers?|rolls?|clerks?|permits?|petitions?|"
+                       r"writs?|decrees?|paperwork|contracts?|couriers?|letters?|papers?|fines?|negotiat\w*)\b", re.I)
+
+
+def motif_warnings(lg: Ledger, stages: dict | None = None) -> list[str]:
+    """Each adapted quest's premise, and its stages' journal text when given, scanned for procedure words."""
+    out = []
+    for q, r in sorted(lg.quests.items()):
+        if r["verdict"] not in ("keep", "adapt"):
+            continue
+        hits = sorted({m.lower() for m in PROCEDURE.findall(r.get("premise") or "")})
+        if hits:
+            out.append(f"{q} premise: {', '.join(hits)}")
+        for sid, text in (stages or {}).get(q, []):
+            hits = sorted({m.lower() for m in PROCEDURE.findall(text or "")})
+            if hits:
+                out.append(f"{q} {sid}: {', '.join(hits)}")
+    return out
+
 def run(lg: Ledger) -> list[str]:
     return [f"{c.__name__[6:]}: {f}" for c in CHECKS for f in c(lg)]
 
 
 def main() -> int:
-    findings = run(load())
+    lg = load()
+    findings = run(lg)
     for f in findings:
         print(f)
-    print(f"adaptation_check: {len(findings)} finding(s)")
+    from tools.argonia_world import db
+    stages: dict = {}
+    for row in db.load().query("SELECT quest_id, id, journal FROM quest_stage"):
+        stages.setdefault(row["quest_id"], []).append((row["id"], row["journal"]))
+    warns = motif_warnings(lg, stages)
+    for w in warns:
+        print(f"motif (warning): {w}")
+    print(f"adaptation_check: {len(findings)} finding(s), {len(warns)} procedure-word warning(s)")
     return 1 if findings else 0
 
 

@@ -109,3 +109,15 @@ def test_people_in_a_cell_without_navmesh_need_one():
                                   lore="story/lore/README.md", text="navmesh")
     lg.quest_edits.append(("a1", "we.a1.mesh"))
     assert ac.run(lg) == []
+
+
+def test_motif_warnings_flag_procedure_words():
+    from tools.argonia_world import adaptation_check as ac
+    lg = ac.Ledger()
+    lg.quests = {"q.a": dict(verdict="adapt", premise="It ends in an arbitration before witnesses."),
+                 "q.b": dict(verdict="adapt", premise="A beast takes rafts at the landing."),
+                 "q.c": dict(verdict="wait", premise="A hearing.")}
+    w = ac.motif_warnings(lg, {"q.b": [("s10", "You find the clerk's ledger.")]})
+    assert any(x.startswith("q.a premise:") and "arbitration" in x for x in w)
+    assert any(x.startswith("q.b s10:") and "ledger" in x for x in w)
+    assert not any(x.startswith("q.c") for x in w)

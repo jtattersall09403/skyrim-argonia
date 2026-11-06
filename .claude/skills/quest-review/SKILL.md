@@ -17,7 +17,9 @@ builder); it judges whether the quest is good and believable.
   breaks the skill-use rule: the player's in-game skills (blade, blunt, archery, sneak, lockpicking, pickpocket,
   speech, alchemy, the magic schools, climbing, swimming...) are not what moves it on, so it is not fun; (f) it would
   be harder to script than an average Skyrim quest (more stages, aliases, conditions, timers or bespoke scripts than a
-  typical vanilla side quest needs). Nothing else is
+  typical vanilla side quest needs); (g) the climax or the resolution is a procedure: an arbitration, a hearing, a
+  trial, a ruling, a witnessed or spoken release, a negotiation at a table (owner, 2026-11-06: "the classic boring
+  bureaucracy issue"); procedure may colour a quest, never resolve it. Nothing else is
   blocking, however much you would change it: write it as a `note` with its weight (`high`, `low`).
 - **Settled is settled:** the record's `review.settled` list holds findings the planner has ruled on; do not raise
   them again, nor variants of them, unless the record has since changed in a way that reopens them (say how).
