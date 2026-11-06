@@ -359,6 +359,8 @@ public static class ParHash {
       if ($k.StartsWith('..\')) { $f = "\\?\$Game\" + $k.Substring(3) } else { $f = "\\?\$Data\" + $k }
       $n++
       if ($pandora[$k]) { continue }
+      # Files a mod rewrites while the game runs (Engine Fixes' enginefixes_snct.ini, 2026-11-06): present is enough.
+      if ($k -like 'skse\plugins\*_snct.ini') { if (-not (Test-Path -LiteralPath $f)) { "missing: $k"; $bad++ }; continue }
       $fi = New-Object IO.FileInfo $f
       if (-not $fi.Exists) { "missing: $k"; $bad++; continue }
       $c = $cache[$k]
