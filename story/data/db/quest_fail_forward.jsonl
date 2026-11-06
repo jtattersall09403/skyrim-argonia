@@ -1,5 +1,4 @@
 {"quest_id":"quest.bc.bc02","stages_ord":1,"ord":0,"to":94,"when":"quest_fail_forward:quest.bc.bc02|1|0:when"}
-{"quest_id":"quest.bc.bc02","stages_ord":2,"ord":0,"to":94,"when":"quest_fail_forward:quest.bc.bc02|2|0:when"}
 {"quest_id":"quest.bc.bc05","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.bc.bc05|0|0:when"}
 {"quest_id":"quest.local.ld65","stages_ord":0,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.ld65|0|0:when"}
 {"quest_id":"quest.local.ld65","stages_ord":1,"ord":0,"to":90,"when":"quest_fail_forward:quest.local.ld65|1|0:when"}

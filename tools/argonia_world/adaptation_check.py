@@ -591,7 +591,8 @@ SKILL_ROUTES_BLOCK = False
 # A route counts only if it can fail: a check of 25+ (Bethesda's easy level), or a fight, lock, dive or spell.
 FAIL_SKILLS = {_sk(x) for x in ("OneHanded", "TwoHanded", "Marksman", "Archery", "Block", "Destruction", "Alteration",
                                 "Illusion", "Conjuration", "Restoration", "Mysticism", "Lockpicking", "Security",
-                                "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand")}
+                                "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand",
+                                "Pickpocket")}
 FAIL_USES = {"dive", "pick-a-lock", "open-a-strongbox", "fight", "duel"}
 
 
@@ -605,10 +606,10 @@ def _hard_check(args) -> bool:
 
 
 def _choice_stage(succ, ends) -> bool:
-    """Only distinct choice topics, each leading to an ending: a decision, exempt like an ending."""
+    """Only distinct choice topics, whatever they lead to: a decision, exempt like an ending."""
     seen = set()
     for to, t, a in succ:
-        if to not in ends or "topicHeardFrom" not in t or t - {"topicHeardFrom", "all", "any"} or frozenset(a) in seen:
+        if "topicHeardFrom" not in t or t - {"topicHeardFrom", "all", "any"} or frozenset(a) in seen:
             return False
         seen.add(frozenset(a))
     return len(succ) >= 2
