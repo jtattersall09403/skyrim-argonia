@@ -350,4 +350,10 @@ places people in a room with no navmesh without a navmesh edit.
   cells for MQ04's and MQ05's edits. Build-time checks recorded, not ledger faults: the Pusbottom canal's depth,
   the Rose cell's shape (a borrowed vanilla interior behind the same door is the fallback, decision 0012 §6), and
   what BM&V's greeting quest does when it fires after MQ03.
+- **Round 7** (six fresh reviewers): **nothing blocking from any reviewer or the checker; the loop ends.** Minor
+  fixes taken after it, none changing a premise: the pier and ship doors take BM&V's Argonian door base, the Reed
+  escort leaves the landing when MQ05 ends, MQ05's grove and dispute have their cell, BC01's companion is
+  Never-Sold alone, Hereguard keeps its two servants so the plantation is worked. Left for the build, recorded as
+  needs: the canal's depth (TG02), the camp's water (islet or shore), the Rose cell's shape, the BM&V statics named
+  in the edits, BM&V's greeting quest after MQ03.
 
