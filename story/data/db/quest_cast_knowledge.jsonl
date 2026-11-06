@@ -117,6 +117,7 @@
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.house-customer","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.months-unprovable","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.reed-named","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.sap-cell","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.satchel-hers","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":0,"fact_id":"fact.mq03.satchel-reed","value":"knows"}
@@ -124,6 +125,7 @@
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.house-customer","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.house-reed","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.months-unprovable","value":"knows"}
+{"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.reed-named","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":1,"fact_id":"fact.mq03.word-carried","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.clean-cut","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.clean-cut","value":"suspects"}

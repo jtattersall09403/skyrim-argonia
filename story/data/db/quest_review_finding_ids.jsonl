@@ -321,6 +321,11 @@
 {"quest_id":"quest.main.mq03","review_findings_ord":34,"ord":2,"value":"topics.topic.mq03-the-attack"}
 {"quest_id":"quest.main.mq03","review_findings_ord":34,"ord":3,"value":"topics.topic.mq03-the-house"}
 {"quest_id":"quest.main.mq03","review_findings_ord":35,"ord":0,"value":"stages.93"}
+{"quest_id":"quest.main.mq03","review_findings_ord":36,"ord":0,"value":"stages.10"}
+{"quest_id":"quest.main.mq03","review_findings_ord":36,"ord":1,"value":"stages.50"}
+{"quest_id":"quest.main.mq03","review_findings_ord":36,"ord":2,"value":"stages.92"}
+{"quest_id":"quest.main.mq03","review_findings_ord":37,"ord":0,"value":"stages.30"}
+{"quest_id":"quest.main.mq03","review_findings_ord":37,"ord":1,"value":"facts.fact.mq03.reed-named"}
 {"quest_id":"quest.main.mq04","review_findings_ord":0,"ord":0,"value":"foundation"}
 {"quest_id":"quest.main.mq04","review_findings_ord":0,"ord":1,"value":"settlement"}
 {"quest_id":"quest.main.mq04","review_findings_ord":1,"ord":0,"value":"facts.fact.mq04.tree-closed"}
