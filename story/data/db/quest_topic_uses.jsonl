@@ -214,13 +214,14 @@
 {"quest_id":"quest.main.mq03","topics_ord":21,"ord":0,"value":"fact.mq03.release-witnessed"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":0,"value":"fact.mq04.tree-closed"}
 {"quest_id":"quest.main.mq04","topics_ord":0,"ord":1,"value":"fact.mq04.naming-due"}
-{"quest_id":"quest.main.mq04","topics_ord":0,"ord":2,"value":"fact.mq04.laying-due"}
-{"quest_id":"quest.main.mq04","topics_ord":0,"ord":3,"value":"fact.mq04.jetty-man"}
-{"quest_id":"quest.main.mq04","topics_ord":0,"ord":4,"value":"fact.mq04.leech-effect"}
+{"quest_id":"quest.main.mq04","topics_ord":0,"ord":2,"value":"fact.mq04.jetty-man"}
+{"quest_id":"quest.main.mq04","topics_ord":0,"ord":3,"value":"fact.mq04.leech-effect"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":0,"value":"fact.mq04.strangers-seen"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":1,"value":"fact.mq04.uxith-dark"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":2,"value":"fact.mq04.leech-effect"}
 {"quest_id":"quest.main.mq04","topics_ord":1,"ord":3,"value":"fact.mq04.jetty-man"}
+{"quest_id":"quest.main.mq04","topics_ord":1,"ord":4,"value":"fact.mq04.root-cut"}
+{"quest_id":"quest.main.mq04","topics_ord":1,"ord":5,"value":"fact.mq04.minder-hid"}
 {"quest_id":"quest.main.mq04","topics_ord":2,"ord":0,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","topics_ord":2,"ord":1,"value":"fact.mq04.minder-hid"}
 {"quest_id":"quest.main.mq04","topics_ord":2,"ord":2,"value":"fact.mq04.workshop-unbarred"}
@@ -239,7 +240,7 @@
 {"quest_id":"quest.main.mq04","topics_ord":8,"ord":0,"value":"fact.mq04.officer-waits"}
 {"quest_id":"quest.main.mq04","topics_ord":9,"ord":0,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","topics_ord":10,"ord":0,"value":"fact.mq04.naming-due"}
-{"quest_id":"quest.main.mq04","topics_ord":11,"ord":0,"value":"fact.mq04.camp-jars"}
+{"quest_id":"quest.main.mq04","topics_ord":11,"ord":0,"value":"fact.mq04.root-cut"}
 {"quest_id":"quest.main.mq04","topics_ord":12,"ord":0,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","topics_ord":12,"ord":1,"value":"fact.mq04.minder-hid"}
 {"quest_id":"quest.main.mq05","topics_ord":0,"ord":0,"value":"fact.mq05.reed-sent"}

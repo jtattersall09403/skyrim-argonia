@@ -9,7 +9,7 @@
 {"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell, led by the woman with the cord, that came for the satchel and the cutting's sap, with jars ready, and means to keep what it draws: a long work, not a raid. Shown to Nesh-Deeka, it is what makes her give up what she knows of the courier unasked."}
 {"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"With the roll burnt, the broker's claim rests on the two in this house, since a word said aboard his barge is not said before a trader (QA16), and a release he speaks before witnesses would end it."}
 {"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The root was cut by two strangers who came by the north reeds and used the unbarred workshop: the tree closed through a cut, not through Pays-Late's keeping."}
-{"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The leeches are an effect of the spilled sap, not the cause of the closing."}
+{"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The leeches are an effect of the spilled sap, not the cause of the closing: they are only where the sap spilled."}
 {"quest_id":"quest.main.mq04","ord":2,"id":"c3","statement":"Pays-Late hid the cut and washes it out of fear, not guilt."}
 {"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"The two parties are each half right, and the difference between a Hist turning and a Hist cut is the player's to carry."}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}

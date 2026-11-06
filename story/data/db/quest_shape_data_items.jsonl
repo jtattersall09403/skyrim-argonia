@@ -65,10 +65,8 @@
 {"quest_id":"quest.main.mq03","section":"sides","ord":1,"value":"Nesh-Deeka (behind the screen): wants the player free of the broker and bound to the Reed instead, and no Reed face seen; gives the Reed's coin for the broker's price and what she knows of the courier, on condition the player serves; never gives her face or her name to the broker"}
 {"quest_id":"quest.main.mq03","section":"sides","ord":2,"value":"the two on the mats: want their own months ended and the road home; give a refusal to bear witness to the months read at the camp; never give a false witness that the months were never read"}
 {"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"day 0: the lowest pool's clutch dies of the cut"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"on the player's leave: three nights to the laying, said by the root-herald and the egg-tender"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"a second pool above the lowest goes dull each night the sap is not returned (shown in the pools)"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":3,"value":"the third night: the hearing at the fence, with whatever the player holds"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":4,"value":"a night after the laying with no answer: the award is made without the player"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"stage 30, once the player has seen the cut: a second pool above the lowest goes dull (ref.mq04.second-dull), the tree not mended"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"stage 60: the village gathers at the fence and the herald hears the matter with whatever the player holds"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the tending-ground and the leeches"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"the cut root"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"the tree-minder at night"}

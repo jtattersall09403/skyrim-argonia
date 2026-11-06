@@ -67,11 +67,13 @@
 {"quest_id":"quest.main.mq03","things_ord":9,"state":"before-20","value":"on the shore with the unhurt"}
 {"quest_id":"quest.main.mq03","things_ord":10,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled: the Hist's leaves part and its light comes back low and slow"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"reconciled; Zaren-Ish, the go-between and the cell's men gone"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn; the tree-minder at his post; grave-stakes by the lowest pool"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn; the tree-minder at the weirs; grave-stakes by the lowest pool"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-96","value":"reconciled; the bound man at the weirs"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"reconciled; Zaren-Ish, the go-between and the bound man gone"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"reconciled; the tree-minder at his post, the player owing the weirs"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"reconciled; the tree-minder at his work by day"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-94","value":"reconciled; no tree-minder, the egg-tender at the pool"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-95","value":"reconciled; the tenders silent"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-96","value":"reconciled; the bound man at the weirs under the kaal's spears"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn; a second pool dull from stage 30"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present until their stage"}
 {"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"used"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"all","value":"present"}
