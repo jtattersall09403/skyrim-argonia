@@ -81,6 +81,21 @@ outline, which becomes the source.
 - N5: MQ04 stage 10's journal has a sender line for when Nesh-Deeka died in MQ03; the Eye's two statements in
   eye-of-argonia.md reconciled (the Eye "grants no kingship" vs CLAIM's coronation).
 
+### The whole main line, round 2 (2026-11-06): fresh read of main-line-outline.md; the planner's rulings
+
+All accepted, each fixed by subtraction or a place swap; nothing else in the outline is reopened (settled stays settled).
+- B1: the Lost City is open ground; the Eye opens only the Root's door.
+- B2: MQ07's boat tail cut; the buyer's mark names the cave.
+- B3: MQ07's places re-chosen from the census (no Bandit Dock as Murkwood; no 01CabinInt2).
+- B4: MQ20 uses 01cabinintDUPLICATE002, not 01Tower (a copy of vanilla Darklight Tower).
+- B5: the second Hist is a recorded tribal tree, not the Murkwood Verge coast wonder.
+- N1 and N3 together: MQ18's door swap targets the temple's front door (BM2 13,25); the bait is the Eye brought to that door.
+- N2: Ahnjazzi cut from MQ10 (she never leaves her Soulrest desk; "salvage rights" is a permits motif).
+- N4: MQ16's divers race in the dry chambers.
+- N5: Swampy Cave's back-water route runs inside its one cell; 01Cavebig in place of the occupied 01Cavern; the
+  reed-cutters' camp gets a census id or is dropped; the old Rose's walls confirmed on the map data.
+Round 2: applied (main-line-outline.md): B1 to B5, N1 to N5; reed-cutters' camp dropped (no census id); old Rose cells confirmed (BlackRoseold 7 refs, gg 17, no actors or doors; statics not itemised in the census).
+
 ### MQ01, round 1: fix by subtraction (planner's rulings; all accepted)
 
 - B1: stages 11, 12, 13 and flag.mq01.manner-cooperated/-silent/-defied cut; all three stage-10 answers go to 20,
