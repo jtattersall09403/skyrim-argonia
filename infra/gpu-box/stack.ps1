@@ -177,6 +177,17 @@ switch ($Cmd) {
       '{"Menu":{"FirstTimeSetupCompleted":true}}' | Set-Content $csUser -Encoding ASCII
     }
     Copy-Item "$Profile\plugins.txt" "$Prefs\Plugins.txt" -Force
+    # Our own plugin (enabled, last in Plugins.txt), its ini and compiled scripts, laid with the profile so the laid
+    # Data can be read back before any launch (2026-11-06; until then only the Argonia card's launch laid them).
+    # Argonia.esp (decision 0038); the dead total conversion's ArgoniaWorld.esm/Argonia.esm are never laid.
+    foreach ($e in @('Argonia.esp')) { if (Test-Path "$Root\ours\$e") {
+      Copy-Item "$Root\ours\$e" "$Data\$e" -Force
+      $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
+      $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
+    if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }
+    $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
+    if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
+    "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia.esp' }) -join ', '); $($pex.Count) .pex"
     New-Item -ItemType File -Force "$State\mode-on" | Out-Null
     "argonia profile on: $n files laid, $kept already laid, $removed removed, from $($order.Count) mods"
   }
@@ -332,6 +343,9 @@ public static class ParHash {
 '@
     # Pandora's outputs replace some mods' behaviour files in Data: those paths hold Pandora's file, not the mod's;
     # the machine-made outputs are not in installed.json
+    # our own files, laid by `on` from C:\argonia\ours (Argonia.esp, Argonia.ini, scripts\*.pex): expected, not extra
+    $ours = @{}; foreach ($f in @(Get-ChildItem "$Root\ours" -Recurse -File -EA SilentlyContinue | ? { $_.FullName -notlike "$Root\ours\derived\*" })) {
+      $ours[$f.FullName.Substring("$Root\ours\".Length).ToLower()] = 1 }
     $pandora = @{}; foreach ($gen in 'pandora-output') { if (Test-Path "$Mo2\mods\$gen") {
       Get-ChildItem "$Mo2\mods\$gen" -Recurse -File | % { $pandora[$_.FullName.Substring("$Mo2\mods\$gen\".Length).ToLower()] = 1 } } }
     $bad = 0; $n = 0; $todo = New-Object System.Collections.Generic.List[object]; $hits = 0
@@ -364,7 +378,7 @@ public static class ParHash {
     # .NET's enumeration, not cmd's dir: dir prints in the OEM code page, which mangles non-ASCII names
     foreach ($f in [IO.Directory]::EnumerateFiles("\\?\$Data", '*', 'AllDirectories')) {
       $rel = $f.Substring($f.IndexOf('\Data\') + 6).ToLower()
-      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or
+      if ($vanilla[$rel] -or $pandora[$rel] -or $rec[$rel] -or $keepSet[$rel] -or $ours[$rel] -or $rel.StartsWith('shadercache\') -or $rel.StartsWith('mcm\settings\') -or $rel -eq 'interface\controls\pc\controlmap.txt' -or
           ($rel -match '^skse\\(plugins\\[^\\]+\.ini|[^\\]+\.log)$')) { continue }  # inis and logs the plugins write at first run
       if (@(Get-ChildItem "$Root\ours\derived\*\$rel" -EA SilentlyContinue).Count) { continue }  # a derived folder's (on)
       "unrecorded: $rel"; $extra++
@@ -384,16 +398,7 @@ public static class ParHash {
     if ($Cmd -eq 'play-vanilla') { & $PSCommandPath off; Wait-Steam | Out-Null; Start-Process "$Game\SkyrimSE.exe" -WorkingDirectory $Game }
     else {
       & $PSCommandPath on
-      # Our own plugin, enabled and last in Plugins.txt, and compiled scripts (`on` lays only the modlist).
-      # Argonia.esp (decision 0038); the dead total conversion's ArgoniaWorld.esm/Argonia.esm are never laid.
-      foreach ($e in @('Argonia.esp')) { if (Test-Path "$Root\ours\$e") {
-        Copy-Item "$Root\ours\$e" "$Data\$e" -Force
-        $lines = @(Get-Content "$Prefs\Plugins.txt" | ? { $_.TrimStart('*') -ne $e }); $lines += "*$e"
-        $lines | Set-Content "$Prefs\Plugins.txt" -Encoding ASCII } }
-      if (Test-Path "$Root\ours\Argonia.ini") { Copy-Item "$Root\ours\Argonia.ini" "$Data\Argonia.ini" -Force }  # the plugin's own ini
-      $pex = @(Get-ChildItem "$Root\ours\scripts\*.pex" -EA SilentlyContinue)
-      if ($pex) { New-Item -ItemType Directory -Force "$Data\Scripts" | Out-Null; $pex | Copy-Item -Destination "$Data\Scripts" -Force }
-      "argonia: $((Get-Content "$Prefs\Plugins.txt" | ? { $_ -like '*Argonia.esp' }) -join ', '); $($pex.Count) .pex"
+      # our own plugin, its ini and scripts are laid by `on` itself (above), so Data is checkable before a launch
       # Shaders off: only CS's DLL leaves Data (a hard link: its mod file stays); its settings files stay ($Keep)
       $cs = "$Data\SKSE\Plugins\CommunityShaders.dll"
       if ($Shaders -eq 'off' -and (Test-Path $cs)) { Remove-Item -LiteralPath $cs -Force; 'community shaders: off (DLL set aside)' }

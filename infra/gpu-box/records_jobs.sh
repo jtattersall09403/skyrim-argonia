@@ -13,7 +13,7 @@ stage=${1:-all}
 case "$stage" in papyrus|bsarch|all) ;; *) sed -n '2,4p' "$0"; exit 2 ;; esac
 shift || true
 srcs=()
-[ $# -gt 0 ] || set -- "$repo/papyrus" "$repo/papyrus/generated"
+[ $# -gt 0 ] || { set -- "$repo/papyrus"; [ -d "$repo/papyrus/generated" ] && set -- "$@" "$repo/papyrus/generated"; }
 for a in "$@"; do
   if [ -d "$a" ]; then compgen -G "$a/*.psc" >/dev/null && srcs+=("$a"/*.psc) || true; else srcs+=("$a"); fi
 done

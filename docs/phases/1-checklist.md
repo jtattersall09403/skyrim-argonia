@@ -15,15 +15,16 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-i
 - [x] Reset Skyrim's Data folder to vanilla (`stack.ps1 off`)
 - [x] Run Pandora on the machine: 21 behaviour files from 10 mods (it now runs over SSH; the desktop session it used
   to need does not exist on a freshly booted machine)
-- [ ] **In progress:** patch the animation data Pandora leaves out (so rolls move, not play in place)
+- [x] Patch the animation data Pandora leaves out: 12 dodge clips added; pandora-output and Data match
 
 ## After the install
 
-- [ ] Compile our two scripts on the machine with the Creation Kit's compiler (the start quest, the intro override)
-- [ ] Build `Argonia.esp`; deploy it with `Argonia.ini` and the compiled scripts; lay the profile into Data
-- [ ] Read back, never running the game:
-  - [ ] every laid file hashed against the manifest (`stack.py verify`)
-  - [ ] Pandora's output holds the collection's behaviours
-  - [ ] the compile log is clean and each script exists
-  - [ ] our plugin last in `plugins.txt`, its ini beside it
-- [ ] Post the owner's walk issue: both cards, Vanilla Skyrim then Argonia
+- [x] Compile our two scripts on the machine with the Creation Kit's compiler: 2 succeeded, 0 errors, 0 warnings
+- [x] Build `Argonia.esp`; deploy it with `Argonia.ini` and the compiled scripts; lay the profile into Data (our files
+  now laid by `stack.ps1 on` itself, so Data is checkable before a launch)
+- [x] Read back, never running the game:
+  - [x] every laid file hashed against the manifest: 54 of 54 archives, 51,278 files, 0 bad, 0 unrecorded
+  - [x] Pandora patched exactly the 10 mod components that ship behaviour patches (the dodge mod ships animations only)
+  - [x] the compile log is clean and each script is laid, byte-identical to the build
+  - [x] `Argonia.esp` enabled and last in `plugins.txt`, its ini beside it, all byte-identical to the build
+- [x] Post the owner's walk issue: both cards, Vanilla Skyrim then Argonia (#49)
