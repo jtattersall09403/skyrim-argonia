@@ -568,7 +568,7 @@
 {"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei marched the unhurt and the families back to the barge at Lilmoth's dock at dawn; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei marched the unhurt back to the barge at Lilmoth's dock; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.clean-cut","claim":"The cutting's roots were cut clean at the ring, one stroke each, by hands that knew where.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.cord-woman","claim":"The woman with the knotted cord at her wrist led the cell; she took the courier's satchel and left the cutting to her cutters.","ord":3,"from_ref":"t1","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.courier-token","claim":"The courier's brass tag on its strap fell through the burnt boards into the shallows below the camp: he was the state's man.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq03"}

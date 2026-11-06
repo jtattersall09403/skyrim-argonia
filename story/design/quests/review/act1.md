@@ -405,6 +405,8 @@ blocking and notes N1 to N6 accepted:
 - N5: "the player brings the saved one (stages 41, 42)".
 - N6: "until an MQ03 ending disables him".
 
+Round 4: applied (2791e6f7), 10 of 10 (B3 with the main line's B4 in 150b818f).
+
 ### MQ04, round 4 delta (2026-11-06): the planner's rulings
 
 Converging (blocking 5, then 2: both leftover copies of the cut branch). All accepted, by cuts:
