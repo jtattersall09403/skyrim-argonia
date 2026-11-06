@@ -22,10 +22,10 @@
 {"quest_id":"quest.main.mq04","source":"ledger","value":"we.mq04.name, we.mq04.village, we.mq04.people, we.mq04.cell, we.mq04.items, we.mq04.leeches, we.clean.village"}
 {"quest_id":"quest.main.mq04","source":"lore"}
 {"quest_id":"quest.main.mq04","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Never-Writes-Twice the Reed''s fallback handler; Cuts-the-Old-Knot)"}
-{"quest_id":"quest.main.mq05","source":"bmv","value":"bmv_cell 0AA665:Black Marsh.esm (ship), 0D76E1:Black Marsh.esm (landing), 2076BB:Black Marsh.esm (hall), 0D78C1:Black Marsh.esm (grove), doors 0AA837 and 0830A8; bmv_placement 08D5E9 (the gate soldier, LQ30's), 166BBE, 166BBF, 166BC1, 166BC2 and 166BC3 (the wasps' kind)"}
-{"quest_id":"quest.main.mq05","source":"ledger","value":"we.mq05.way, we.mq05.throne, we.mq05.sweeper, we.mq05.hall-name, we.mq05.grove, we.mq05.people, we.lq30.trail (cited, not owned), we.clean.lilmoth, we.clean.thorn1, we.clean.dock5, we.clean.helstrom"}
+{"quest_id":"quest.main.mq05","source":"bmv","value":"bmv_cell 0AA665:Black Marsh.esm (ship), 0D76E1:Black Marsh.esm (landing), 2076BB:Black Marsh.esm (hall), 0D78C1:Black Marsh.esm (grove), doors 0AA837 (pair 0AA664) and 23D496 (pair 0830A8); bmv_placement 08D5E9 (the gate soldier, LQ30's), 166BBE, 166BBF, 166BC2 and 166BC3 (the wasps' kind)"}
+{"quest_id":"quest.main.mq05","source":"ledger","value":"we.mq05.way, we.mq05.throne, we.mq05.hall-name, we.mq05.grove, we.mq05.people, we.lq30.trail (cited, not owned), we.clean.lilmoth, we.clean.thorn1, we.clean.dock5, we.clean.helstrom"}
 {"quest_id":"quest.main.mq05","source":"lore"}
-{"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Never-Writes-Twice the Reed's fallback handler; Kaska-Meen; Ei-Tuja)"}
+{"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Kaska-Meen; Ei-Tuja)"}
 {"quest_id":"quest.mr.mr01","source":"catalogue","value":"world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets"}
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}

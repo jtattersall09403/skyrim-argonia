@@ -33,9 +33,7 @@
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"Nesh-Deeka sends the player only if they can be denied, so the player argues that they can carry the word and leave the Reed unnamed"}
 {"quest_id":"quest.main.mq05","ord":1,"skill":"athletics","use":"cross-a-flood","reason":"the way in from the landing is the marsh, root and shallows"}
 {"quest_id":"quest.main.mq05","ord":2,"skill":"long-blade","use":"fight","reason":"two giant wasps nest at the way's far bend (fixed level, band 1), fought, slipped past or shot"}
-{"quest_id":"quest.main.mq05","ord":3,"skill":"mercantile","use":"bargain","reason":"a purchase in the hall's outer room opens the sweeper's tongue about where the tree-minder keeps her watch"}
-{"quest_id":"quest.main.mq05","ord":4,"skill":"athletics","use":"climb","reason":"the grove's crown is reached up the root-ladders"}
-{"quest_id":"quest.main.mq05","ord":5,"skill":"speechcraft","use":"persuade","reason":"Kaska-Meen will not take a stranger's account of a cut Hist for a Nisswo's talk; the player convinces her"}
+{"quest_id":"quest.main.mq05","ord":3,"skill":"athletics","use":"climb","reason":"the grove's crown is reached up the root-ladders"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}
 {"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}
