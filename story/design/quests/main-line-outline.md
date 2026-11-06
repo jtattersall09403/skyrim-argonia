@@ -6,7 +6,7 @@ This is the source for the main quest's Acts II to V. Act I's four records (MQ01
 them, and its branch-state model, reward tracks and per-quest table are replaced here.
 
 Rules this outline is written to: the planner's rulings in [review/act1.md](review/act1.md), "The whole main line,
-round 1", "round 2", "round 3" and "round 4 delta" (each B1 to B5, N1 to N5), and the owner's ruling of 2026-11-06 ([owner-rulings](../../../docs/owner-rulings.md)):
+rounds 1 to 6" (each B1 to B5, N1 to N5), and the owner's ruling of 2026-11-06 ([owner-rulings](../../../docs/owner-rulings.md)):
 keep the treasure hunt, the spies and the spirit; more Black Marsh, more exciting, less bureaucratic; law and
 custom only as background; choices do not multiply; every quest uses the player's skills; nothing harder to script
 than an average Skyrim quest; no procedural climax.
@@ -15,7 +15,7 @@ Line-wide rules:
 - **One carried choice.** Each quest below plays the same whatever came before. A quest may hold one local choice;
   its result is colour (a line, a body, a letter) and never changes a later quest's stages. Only the finale's CUT,
   CLAIM or MEND carries forward, into the closing scene and the world's end states.
-- **Act I's flags** (`flag.mq04.adopted`, `flag.mq05.reed-exposed`) are read for one line of colour at most, or not
+- **Act I's flag** (`flag.mq04.adopted`) is read for one line of colour at most, or not
   at all.
 - **Deaths** use the standard fail-forward (30-main-quest §23): every principal is killable; a fallback sender or
   document carries the stage. The Eye cannot be lost.
@@ -59,7 +59,7 @@ camp means to buy it.
 - **MQ09 The Map Beneath the Old Rose.** The setting's cipher points to an explorer who died in the old Black Rose
   with an Eye route-tablet: a ruin in the far west of the marsh that the marsh took back, not the Rose BC02 uses.
   The tablet lies in the ruin's flooded lower ground. Skills: climbing (FreeClimb) over the fallen walls, swimming
-  and breath in the flooded lower ground, a fight with what nests there (the marsh's own creatures; no draugr). No choice.
+  and breath in the flooded lower ground, a fight with, or a sneak past, what nests there (the marsh's own creatures; no draugr). No choice.
   Reward: the tablet and a fixed find in the explorer's resting place (row needed).
 - **MQ10 The Auction of Drowned Things.** The last of the three leads, and the act's end (N1). Salvage divers at
   the north-east coast's ship landing are working a wreck whose cargo holds a lens-frame matching the setting; the Collector is asking
@@ -109,11 +109,10 @@ retired Shadowscale, who has vanished.
 
 - **MQ23 Marks Only the Eye Can See.** One route chain (B1). The Eye lights marks at a waterfall, a ruin and the
   drowned marsh in the north; the wards on the last mark need a Shadowscale's knowledge. The player tracks the one
-  vanished retired Shadowscale (round 3 B3: not "the last"; Veezara is canon's last, in Skyrim; see
-  story/lore/topics/sithis-nisswo-shadowscales.md): at each site he is already gone, and the player reads which way
+  vanished retired Shadowscale (not "the last"; Veezara is canon's last, in Skyrim): at each site he is already gone, and the player reads which way
   from what the place gives up, then finds his hide at the lizardmen's shack. Skills: climbing to the marks, sneak
   and detection to read the trail, swimming between sites; at the hide, speech to have the wards from him, or a
-  fight (his notes carry them). No one hunts the player. Reward: his blade (given, or taken).
+  fight (his notes carry them). No one hunts the player. Reward: his blade (given, or taken; row needed).
 - **MQ26 The Root of Accord.** The last mark opens the old roots beneath the northern marsh. Not a desk (B2): a
   flooded root-ruin where the carved tableaux and one guardian show the twist: the Root of Accord began as a bond
   freely given by selected Hist and was later made compulsory. The cult's grievance is real; its severance is
@@ -245,7 +244,7 @@ line_spirit:
     forward.
   source: >-
     story/design/quests/main-line-outline.md; story/design/quests/30-main-quest.md §16, §18, §19, §23, §24;
-    story/design/quests/review/act1.md (the whole main line, rounds 1 to 4); story/lore/eye-of-argonia.md;
+    story/design/quests/review/act1.md (the whole main line, rounds 1 to 6); story/lore/eye-of-argonia.md;
     story/lore/topics/hist-and-sap.md; story/lore/topics/labour-and-bondage.md;
     story/lore/topics/sithis-nisswo-shadowscales.md
 line_spirit_beat:
@@ -254,7 +253,7 @@ line_spirit_beat:
       Act I (MQ01 to MQ05, records): the Owing barge and the camp's burning, Cuts-the-Old-Knot taking the courier's
       satchel and sparing the player; a Hist turns its face and its clutch dies; the burnt camp read at dawn and the
       Reed's offer; the first sap-dream (a ring of trees, a door not built, a voice); the cut tree at Low-Reed
-      Village and the cell's camp across the leech water; Helstrom behind its thorns, past the empty, swept
+      Village and the cell's camp across the leech water; Helstrom, past the empty, swept
       Scalded Throne
   - ord: 1
     beat: >-
