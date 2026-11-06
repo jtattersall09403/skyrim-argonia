@@ -12,7 +12,7 @@ Pt.3):**
 
 **Project layer (docs/quests/, PROJECT/AGENT_AUTHORED):** cut gem in an old
 setting; reveals prepared route-marks/inscriptions; cipher for selected
-pre-Duskfall systems; opens the Lost City; politically symbolic: it grants no
+pre-Duskfall systems; politically symbolic: it grants no
 kingship by any power of its own, but it is a king's jewel, and a bearer who
 holds it and the Lost City's door can press a claim to the empty throne that
 others back for what the jewel means to them (the CLAIM ending,

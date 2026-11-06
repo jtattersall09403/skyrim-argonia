@@ -6,7 +6,7 @@ This is the source for the main quest's Acts II to V. Act I's four records (MQ01
 them, and its branch-state model, reward tracks and per-quest table are replaced here.
 
 Rules this outline is written to: the planner's rulings in [review/act1.md](review/act1.md), "The whole main line,
-round 1" (B1 to B5, N1 to N5) and "round 2" (B1 to B5, N1 to N5), and the owner's ruling of 2026-11-06 ([owner-rulings](../../../docs/owner-rulings.md)):
+round 1", "round 2" and "round 3" (each B1 to B5, N1 to N5), and the owner's ruling of 2026-11-06 ([owner-rulings](../../../docs/owner-rulings.md)):
 keep the treasure hunt, the spies and the spirit; more Black Marsh, more exciting, less bureaucratic; law and
 custom only as background; choices do not multiply; every quest uses the player's skills; nothing harder to script
 than an average Skyrim quest; no procedural climax.
@@ -45,35 +45,33 @@ sends the Act II hook in her place (the sender line, N5).
 camp means to buy it.
 
 - **MQ07 The First False Eye.** At the Bandit Dock (`bmv.murkwoodext`, BlackMarsh2 -10,6, its own place and not
-  Murkwood; the sale room is the smugglers' ship `01Ship` moored there, exit door 0830A6 at BlackMarsh2 -10,7)
-  smugglers sell a jewel they call the Eye to rival buyers, one of them a
+  Murkwood; the sale and the strongroom are on the Bandit Dock's own ground, in the open and its
+  buildings, no ship interior) smugglers sell a jewel they call the Eye to rival buyers, one of them a
   courteous collector who withdraws at the last moment and leaves the player a polite note (Opens-the-Last-Door,
   unnamed). The stone is glass; its old setting is real and carries a cut route-cipher. Skills: sneak or
-  pickpocket to lift the setting from the strongroom chest (lockpicking), or speech to buy a look; then a fight or
+  pickpocket to lift the setting from the strongroom chest (lockpicking); then a fight or
   a swim out from the dock when the smugglers find it gone. No choice. The cult buyer's mark, left with the
   setting, names the cave where the cell hides (Swampy Cave): no tail, no boat. Reward: the setting (quest item)
   and the Collector's note.
 - **MQ08 The Unbound Root.** The buyer's mark names the cell's safehouse in Swampy Cave
   (`01Goblincave`, BlackMarshNorth site). Inside: the cell's people, its sap jars, and the first plain sight of what
   the cult wants: a Mnemic Egg (story/lore/topics/hist-and-sap.md), which only a dead Hist leaves, and the Eye, to
-  open a door they have dreamed of. Skills: sneak or blade through the cell (non-lethal route by the back water,
-  swimming, all inside the cave's one cell); alchemy to read the jars. No choice. Reward: the cell's chest (fixed loot, row needed) and the first
+  open a door they have dreamed of. Skills: sneak or blade through the cell, all inside the cave's one cell. No choice. Reward: the cell's chest (fixed loot, row needed) and the first
   name of the cult, the Unbound Root.
 - **MQ09 The Map Beneath the Old Rose.** The setting's cipher points to an explorer who died in the Rose with an Eye
   route-tablet. Not the Rose BC02 uses: BM&V's unused old Black Rose in the far west of BlackMarsh (`gg`,
   `therose`, `mountainpass`; cell BlackRoseold; no actors, no doors), a ruin the marsh took back. The tablet lies
-  in the flooded cells below. (Census check: the old Rose is cell BlackRoseold, BlackMarsh -27,-7, 7 refs, with
+  in the old Rose's ruin cells, on the ruin's own ground. (Census check: the old Rose is cell BlackRoseold, BlackMarsh -27,-7, 7 refs, with
   `gg` 17 refs beside it, no navmesh, no actors and no doors; the census holds counts, not statics, so the fallen
-  walls are as the cells' refs show them, not itemised.) Need: one interior for the cells (a reused BM&V cave interior, `01Cavebig`
-  (doorless, 723 refs), with a new door pair at the old Rose). Skills: climbing (FreeClimb) over the fallen walls,
+  walls are as the cells' refs show them, not itemised.) No interior and no new door pair: the cells are the ruin's own ground. Skills: climbing (FreeClimb) over the fallen walls,
   swimming and breath in the flooded tier, a fight with what nests there (the marsh's own creatures; no draugr).
   No choice. Reward: the tablet and a fixed find in the explorer's cell (row needed).
 - **MQ10 The Auction of Drowned Things.** The last of the three leads, and the act's end (N1). Salvage divers at
-  Tear's ship landing (BlackMarshNorth 25,19, BM&V's Tear markers; attached to no settlement) are working a wreck
+  the ship landing at BlackMarshNorth 25,19 (attached to no settlement) are working a wreck
   whose cargo holds a lens-frame matching the setting; the Collector is asking the same questions. Need: a sunken hull placed in the water by the landing
   (statics only) with one air pocket. Skills: swimming (dive first, past the slaughterfish), or speech or
-  pickpocket to take it off the divers' raft. Last stage: setting, tablet and lens-frame fitted together at
-  night show one place, a Xanmeer drowned off the coast, and the same night word comes that a second Hist has
+  pickpocket to take it off the divers' raft. Last stage: setting, tablet and lens-frame fitted together
+  show one place, a Xanmeer drowned off the coast, and the same night word comes that a second Hist has
   been cut, at a recorded tribal tree (Low-Crown, the Paatru Hist, `place.hist-heartland.hist-paatru-lowcrown`, one
   fixed place, B1; need: its home in BM&V, story/lore/topics/hist-placement.md "one per tribal settlement"). That
   tree dies; the cult has its Egg.
@@ -91,7 +89,8 @@ noticed to walk into it carrying the jewel as bait.
   ring of trees, the door. No choice. Reward: the Eye of Argonia.
 - **MQ18 A Sermon Against Roots.** Opening stage: Nesh-Deeka (fallback Never-Writes-Twice) sends the player to that front door with
   the Eye as bait. The Unbound Root gathers in the abandoned temple's undercroft (`bmv.abondedtemple`, interior `01aundergroundcell`, entered by the temple's front
-  door at BlackMarsh2 13,25: its book base swapped for a plain door); the preacher is the Collector, Opens-the-Last-Door, who knows the player
+  door at BlackMarsh2 13,25: its book base swapped for a plain door; a `we.clean` row disables the cell's 10
+  placements); the preacher is the Collector, Opens-the-Last-Door, who knows the player
   and says nothing. His sermon names the state's real abuse. Skills: speech to hold the cover in the private
   interview (a skill check, not a trust meter); if it fails, the house turns on the player (at most six hostiles)
   and the way out is a fight back to the front door. Both outcomes reach the same next stage. No choice. Reward: the
@@ -101,28 +100,27 @@ noticed to walk into it carrying the jewel as bait.
   honest word has put her among them. A break-in and rescue (B2), no files: the Reed's dream-house near Thorn
   (`bmv.blackmarshnorth.thorn1`, where BM&V keeps guards and prisoners; need: a door to BM&V's doorless house interior
   `01cabinintDUPLICATE002`, 129 refs, as the house). Skills: sneak or lockpicking in, a fight or illusion past the
-  keepers, and getting the dreamers out by the water (swimming). If Nesh-Deeka died earlier, the dreamers alone,
+  keepers, and opening the cells; the freed dreamers leave on their own (no escort). If Nesh-Deeka died earlier, the dreamers alone,
   and her cell holds her last letter. Choice: free Nesh-Deeka with the dreamers, or leave her (she knows the Reed
   best); colour only: freed, she leaves the province and writes once at the end. Reward: fixed (row needed).
 - **MQ21 The Black Sap House.** The cult's laboratory in Sharpslope Cave (`01templecave`, BlackMarshNorth site),
   where it has been waking the Egg with sap and volunteers, one of whom volunteered twice. Skills: alchemy to know
   what the pools are doing, sneak or blade through, swimming by the underwater way. Last choice (the lie, B2):
   Never-Writes-Twice asks where the sap house is. Tell her the truth and her raid comes while the player is still
-  inside, and the player gets the volunteers out through the fire; lie and the cult moves the Egg, and the raid comes
-  too late to stop it and finds the volunteers left behind, with the player still standing in the sap house (no
-  reed-cutters' camp: the census has no id for one). Either way the
-  raid is played, someone pays on screen, the Egg is gone toward the door, and Act IV starts the same. Reward:
+  inside, and the player gets the volunteers out through the fire, and they leave on their own (no escort); lie and the
+  cult moves the Egg, no raid comes, and the volunteers are left behind. Either way someone pays on screen, the Egg
+  is gone toward the door, and Act IV starts the same. Reward:
   fixed (row needed).
 
 ## Act IV: the marks and the road (three quests)
 
-**Hook:** the Eye shows marks no one else can see, and the only living hand that knows the wards on them is the
-last Shadowscale, who has vanished.
+**Hook:** the Eye shows marks no one else can see, and the only hand that knows the wards on them is an old retired
+Shadowscale, who has vanished.
 
 - **MQ23 Marks Only the Eye Can See.** One route chain (B1). The Eye lights marks at BlackMarshNorth's waterfalls
   (`bmv.blackmarshnorth.waterfalls`), the ruin at `ruin12` and the drowned marsh (`marsh`); the wards on the last
-  mark need a Shadowscale's knowledge. The player tracks the single vanished survivor (B4; the order's last living
-  member dies in 4E 201, story/lore/topics/sithis-nisswo-shadowscales.md): at each site he is already gone, and
+  mark need a Shadowscale's knowledge. The player tracks the one vanished retired Shadowscale (round 3 B3: not "the last"; Veezara is canon's last, in
+  Skyrim; see story/lore/topics/sithis-nisswo-shadowscales.md): at each site he is already gone, and
   the player reads which way from what the place gives up, then finds his hide at the lizardmen's shack
   (`bmv.blackmarshnorth.lizardmen`). Skills: climbing to the marks, sneak and detection to read the trail, swimming
   between sites; at the hide, speech to have the wards from him, or a fight (his notes carry them). He dies this
@@ -132,8 +130,8 @@ last Shadowscale, who has vanished.
   and `01Underdarkmiddle`, entered at BlackMarshNorth -9,15 and -20,22; need: their book doors swapped for root
   hatches). Not a desk (B2): a flooded root-ruin where the carved tableaux and one guardian show the twist: the Root
   of Accord began as a bond freely given by selected Hist and was later made compulsory. The cult's grievance is
-  real; its severance is indiscriminate. Skills: swimming, climbing, one guardian fight; the Eye reads the carvings.
-  No choice. Reward: the consent carving's rubbing (quest item; it weakens the Last Warden in MQ29) and a fixed
+  real; its severance is indiscriminate. Skills: swimming, climbing, the one guardian fight; the Eye reads the carvings.
+  No choice. The guardian is the existing Grevious Twilight, fought in `01Underdarkmiddle`; no new actor. Reward: the consent carving's rubbing (quest item; it weakens the Last Warden in MQ29) and a fixed
   find (row needed).
 - **MQ27 The Road No Map Keeps.** The crossing of the deep basin to the Lost City, guided by Walks-Against-Current,
   who leads and is never escorted (the guide waits at the far side of every swim and climb). It leaves from the
@@ -180,12 +178,12 @@ of them.
    only what accumulated state has enabled"; §21b.3's wrong-mark lead; MQ15's variant per lead city; the
    carry-forward clauses of MQ20, MQ25 and MQ27. Rewards are fixed per quest; the second Hist is one fixed recorded
    tribal tree (Low-Crown); Cuts-the-Old-Knot holds the door on every path (B1).
-2. MQ22's two reports cut: the lie is MQ21's last choice and its victim the raid the player stands in. MQ20 is a
+2. MQ22's two reports cut: the lie is MQ21's last choice (no raid comes on the lie). MQ20 is a
    break-in and rescue, no files. MQ25's council is background only and no longer a quest. MQ26 is a flooded ruin,
    not an archive desk. The consent evidence weakens the Last Warden but never releases it. MEND is an act at the
    Root; custodians appear only in the closing scene (B2).
 3. MQ05 is reworked whole by its own ruling; this outline reads only what it hands on (B3).
-4. No living Shadowscales hunt the player: MQ23 tracks the single vanished survivor, who dies in 4E 201 (B4).
+4. No Shadowscales hunt the player: MQ23 tracks one old retired Shadowscale, not "the last" (round 3 B3).
 5. MQ14 (Archon's lighthouse) and MQ13 (Pusbottom, TG02's place) dropped: the three leads are MQ07, MQ09 and MQ10.
    Gideon and Stormhold homes struck: MQ07 at the Bandit Dock, MQ20 near Thorn. The sunken Xanmeer (MQ16)
    and the Lost City (MQ29) are recorded needs (B5, N2).
@@ -199,6 +197,9 @@ of them.
     its own; CLAIM's backing is what people believe the king's jewel means (N5). The owner's ruling: more Black
     Marsh (Murkwood, Tear, the north's caves and roots instead of offices), less bureaucratic (no reports, files,
     council or desk), every quest won with skills.
+11. Round 3: MQ07 on the dock's own ground, no ship interior; MQ09 has no interior (the tablet lies in the old Rose's ruin
+    cells); MQ18's undercroft cleaned by a we.clean row; MQ20 and MQ21 captives leave on their own; MQ26's guardian is
+    the existing Grevious Twilight; MQ08's alchemy and back-water route, MQ07's speech-to-buy and MQ10's "at night" cut.
 
 ## For the data
 
@@ -225,7 +226,7 @@ line_spirit:
     forward.
   source: >-
     story/design/quests/main-line-outline.md; story/design/quests/30-main-quest.md §16, §18, §19, §23, §24;
-    story/design/quests/review/act1.md (the whole main line, rounds 1 and 2); story/lore/eye-of-argonia.md;
+    story/design/quests/review/act1.md (the whole main line, rounds 1 to 3); story/lore/eye-of-argonia.md;
     story/lore/topics/hist-and-sap.md; story/lore/topics/labour-and-bondage.md;
     story/lore/topics/sithis-nisswo-shadowscales.md
 line_spirit_beat:
@@ -247,11 +248,11 @@ line_spirit_beat:
       Act III, the spies (MQ16 to MQ21, outline): the Eye taken from the drowned Xanmeer and its unbidden dream; the
       player sent into the cult's sermon with the jewel as bait, where the preacher, the Collector Opens-the-Last-
       Door, knows them and says nothing; the Reed's dream-house broken open and its dreamers, and perhaps Nesh-
-      Deeka, brought out; the cult's sap house, and a raid the player stands in, in time or too late as they told the truth
-      or lied
+      Deeka, freed to leave on their own; the cult's sap house, and a raid that comes only if the player told the
+      truth
   - ord: 3
     beat: >-
-      Act IV, the marks and the road (MQ23 to MQ27, outline): marks only the Eye can see, and the last Shadowscale
+      Act IV, the marks and the road (MQ23 to MQ27, outline): marks only the Eye can see, and one old retired Shadowscale
       tracked from one to the next and found dying; the old roots under the northern marsh show the Root of Accord
       began as a bond freely given; Walks-Against-Current leads the crossing of the deep basin
   - ord: 4
