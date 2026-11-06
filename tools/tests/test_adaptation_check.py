@@ -84,3 +84,13 @@ def test_empty_ledger_passes():
     lg = ac.Ledger()
     lg.all_quests = {"a1"}
     assert ac.run(lg) == []
+
+
+def test_a_host_with_levelled_actors_needs_its_clean_up():
+    lg = base()
+    lg.levelled_at = {"s1": {"P1"}}
+    assert any("no clean-up edit we.clean.s1" in x for x in ac.run(lg))
+    lg.edits["we.clean.s1"] = dict(kind="creature_remove", settlement="s1", cell=None, target="P1", race=None,
+                                   band=None, lore="story/lore/README.md", text="clean")
+    lg.quest_edits += [("a1", "we.clean.s1"), ("a2", "we.clean.s1")]
+    assert ac.run(lg) == []

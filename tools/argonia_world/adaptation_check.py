@@ -40,6 +40,7 @@ class Ledger:
     capacity: dict = field(default_factory=dict)      # settlement -> (people, interiors)
     levelled: set = field(default_factory=set)        # form keys of LVLN bases and their placements
     nord: set = field(default_factory=set)            # form keys of Nord-race bases and their placements
+    levelled_at: dict = field(default_factory=dict)   # settlement -> levelled placements there (LVLN or LVLN template)
     all_quests: set = field(default_factory=set)
 
 
@@ -70,6 +71,10 @@ def load() -> Ledger:
         lg.capacity[r["id"]] = (r["people"], r["ints"])
     lg.levelled = set(w.values("SELECT id FROM bmv_npc WHERE record = 'LVLN'")) | set(w.values(
         "SELECT p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE n.record = 'LVLN'"))
+    for s, pid in w.query("""SELECT c.settlement, p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc
+            JOIN bmv_settlement_cell c ON c.cell = p.cell
+            WHERE n.record = 'LVLN' OR n.template IN (SELECT id FROM bmv_npc WHERE record = 'LVLN')"""):
+        lg.levelled_at.setdefault(s, set()).add(pid)
     nord_races = set(w.values("SELECT id FROM bmv_race WHERE editor_id LIKE 'Nord%'")) if _has_col(
         w, "bmv_race", "editor_id") else set()
     lg.nord = set(w.values(f"SELECT id FROM bmv_npc WHERE race IN ({','.join('?' * len(nord_races)) or 'NULL'})",
@@ -287,6 +292,12 @@ def check_nordic_and_levelled(lg: Ledger) -> list[str]:
         ed = lg.edits.get(e)
         if ed and ed["target"] and ed["kind"] in REMOVING:
             fixed[q].add(ed["target"])
+    for q, s, *_ in lg.hosts:
+        if s and lg.levelled_at.get(s) and lg.quests.get(q, {}).get("verdict") in LIVE:
+            clean = "we.clean." + s.split(".")[-1]
+            if (q, clean) not in set(lg.quest_edits):
+                out.append(f"{q}: hosted at {s}, which has {len(lg.levelled_at[s])} levelled placement(s) and no "
+                           f"clean-up edit {clean} linked (0035)")
     for q, t in lg.needs:
         if t in lg.nord:
             out.append(f"{q}: needs {t}, a Nord (0006)")
