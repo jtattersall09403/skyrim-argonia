@@ -1,0 +1,47 @@
+{"line":"quest.line.chainbreakers","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"seat","why":"Blackrose and the Rose"}
+{"line":"quest.line.chainbreakers","ord":1,"settlement":"bmv.blackmarshnorth.manor","role":"hub","why":"the Dres Rows (BM&V's 'Dres village')"}
+{"line":"quest.line.chainbreakers","ord":2,"settlement":"bmv.gg","role":"field","why":"White Rose Prison: the unused old Black Rose"}
+{"line":"quest.line.daedric","ord":0,"settlement":"bmv.blackmarshnorth.marsh","cell":"08DD0B:Black Marsh North.esp","role":"field","why":"the Underdark book portal as Apocrypha's edge"}
+{"line":"quest.line.detectives","ord":0,"settlement":"bmv.lilmoth","cell":"0FE8B7:Black Marsh.esm","role":"seat","why":"a house in Lilmoth, across the water from the Chapter"}
+{"line":"quest.line.detectives","ord":1,"settlement":"bmv.blackrose","role":"hub","why":"the prison heirs' crimes"}
+{"line":"quest.line.detectives","ord":2,"settlement":"bmv.helstrom","role":"hub","why":"the finale's great"}
+{"line":"quest.line.league-of-open-water","ord":0,"settlement":"bmv.altenmeirhall","role":"seat","why":"Alten Meerhleel, the port built to trade with outsiders"}
+{"line":"quest.line.league-of-open-water","ord":1,"settlement":"bmv.longmont","role":"hub","why":"a second ward"}
+{"line":"quest.line.main","ord":0,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"seat","why":"the Veiled Reed sits in Helstrom; the hall of the empty throne (BMN's merchants trade under it)"}
+{"line":"quest.line.main","ord":1,"settlement":"bmv.lilmoth","role":"hub","why":"the arrival from Skyrim, Dock1, Pusbottom and Lilmoth's Hist: the opening"}
+{"line":"quest.line.main","ord":2,"settlement":"bmv.hereguardplantation","role":"hub","why":"the guarded river station of MQ03 (BMN's New Order soldiers)"}
+{"line":"quest.line.main","ord":3,"settlement":"bmv.village","role":"hub","why":"the Hatching Pools: the first turned Hist"}
+{"line":"quest.line.main","ord":4,"settlement":"bmv.dock5","role":"hub","why":"Helstrom's landing: the 01Ship convoy's end"}
+{"line":"quest.line.main","ord":5,"settlement":"bmv.blackrose","role":"hub","why":"Blackrose Prison and the Blackguards' heirs (MQ09)"}
+{"line":"quest.line.main","ord":6,"settlement":"bmv.dwarven","cell":"0D7625:Black Marsh.esm","role":"field","why":"the pyramid and its ruins as the Lost City (Act IV)"}
+{"line":"quest.line.many-root","ord":0,"settlement":"bmv.groot","role":"seat","why":"the conclave grove (BM2's great root, unpeopled today)"}
+{"line":"quest.line.many-root","ord":1,"settlement":"bmv.temple2","role":"hub","why":"Greenspring"}
+{"line":"quest.line.many-root","ord":2,"settlement":"bmv.village","role":"hub","why":"the Hatching Pools' egg nursery"}
+{"line":"quest.line.many-root","ord":3,"settlement":"bmv.tribe","role":"hub","why":"a tribal settlement for the hearings"}
+{"line":"quest.line.marsh-charter","ord":0,"settlement":"bmv.castle","cell":"0378ED:Black Marsh North.esp","role":"seat","why":"Gideon's old Governor's Mansion: the castle, with doorless 01cell1 'Manor' given a door"}
+{"line":"quest.line.marsh-charter","ord":1,"settlement":"bmv.hereguardplantation","role":"hub","why":"the frontier fort"}
+{"line":"quest.line.marsh-charter","ord":2,"settlement":"bmv.tribe","role":"field","why":"a palisaded village"}
+{"line":"quest.line.night-reed","ord":0,"settlement":"bmv.lilmoth","cell":"16BF81:Black Marsh North.esp","role":"seat","why":"the Chapter under Lilmoth: BMN's Lilmoth dungeon"}
+{"line":"quest.line.night-reed","ord":1,"settlement":"bmv.blackrose","cell":"0AFD1E:Black Marsh.esm","role":"hub","why":"Blackrose's market dock"}
+{"line":"quest.line.night-reed","ord":2,"settlement":"bmv.dock2","role":"hub","why":"Soulrest's port"}
+{"line":"quest.line.nisswo","ord":0,"settlement":"bmv.temple","role":"seat","why":"the Teeth of Sithis, tended by the Clutch of Nisswo"}
+{"line":"quest.line.nisswo","ord":1,"settlement":"bmv.murkmire","role":"hub","why":"the necropolis village"}
+{"line":"quest.line.nisswo","ord":2,"settlement":"bmv.dock2","role":"hub","why":"Soulrest's funerals"}
+{"line":"quest.line.reed-sail","ord":0,"settlement":"bmv.dock2","cell":"0E96A9:Black Marsh.esm","role":"seat","why":"Soulrest's harbour, on the 01Ship coast line"}
+{"line":"quest.line.reed-sail","ord":1,"settlement":"bmv.murkwoodext","role":"hub","why":"Bandit Dock: the Salt-Teeth's cove"}
+{"line":"quest.line.reed-sail","ord":2,"settlement":"bmv.blackrose","cell":"1BEAD7:Black Marsh.esm","role":"hub","why":"the Blackrose ship and toll"}
+{"line":"quest.line.reed-sail","ord":3,"settlement":"bmv.valenwood.woodhearth","cell":"00ACD9:Valenwood.esp","role":"field","why":"the Southern Sea trade leg (one new ship door)"}
+{"line":"quest.line.rootworm-waykeepers","ord":0,"settlement":"bmv.dock5","cell":"04F222:Black Marsh North.esp","role":"seat","why":"Helstrom's station (01Exit2 'To Helstrom')"}
+{"line":"quest.line.rootworm-waykeepers","ord":1,"settlement":"bmv.banditcamp1","cell":"0E9786:Black Marsh.esm","role":"hub","why":"the house whose doors join Black Marsh and BlackMarsh2: a root station"}
+{"line":"quest.line.rootworm-waykeepers","ord":2,"settlement":"bmv.tribe","role":"hub","why":"a third node"}
+{"line":"quest.line.shadowscales","ord":0,"settlement":"bmv.blackmarshnorth.treehouse","cell":"0DF2E2:Black Marsh North.esp","role":"seat","why":"the Empty Cradle: doorless Gallows Rock given one door at the treehouse"}
+{"line":"quest.line.shadowscales","ord":1,"settlement":"bmv.longmont","cell":"190D03:Black Marsh.esm","role":"field","why":"the ruined hatchery (Longmont's ruins)"}
+{"line":"quest.line.shadowscales","ord":2,"settlement":"bmv.helstrom","role":"hub","why":"the An-Xileel's office"}
+{"line":"quest.line.sunken-archive","ord":0,"settlement":"bmv.abondedtemple","cell":"092944:Black Marsh North.esp","role":"seat","why":"the archive in the abandoned temple's underground"}
+{"line":"quest.line.sunken-archive","ord":1,"settlement":"bmv.blackmarshnorth.marsh","role":"hub","why":"Stormhold's tablets"}
+{"line":"quest.line.sunken-archive","ord":2,"settlement":"bmv.grass","cell":"020043:Black Marsh.esm","role":"field","why":"the excavated ruin"}
+{"line":"quest.line.thorn-ash-reed","ord":0,"settlement":"bmv.blackmarshnorth.thorn1","role":"seat","why":"Thorn"}
+{"line":"quest.line.thorn-ash-reed","ord":1,"settlement":"bmv.blackmarshnorth.tear","role":"hub","why":"Tear and its landing"}
+{"line":"quest.line.umbriel-witness","ord":0,"settlement":"bmv.murkmire","role":"seat","why":"Dead-Water: the Naga-Kur kept the memory of Umbriel"}
+{"line":"quest.line.umbriel-witness","ord":1,"settlement":"bmv.outercave","role":"field","why":"the Refuge (Deepmire)"}
+{"line":"quest.line.umbriel-witness","ord":2,"settlement":"bmv.lilmoth","cell":"005A0B:Black Marsh.esm","role":"hub","why":"Pusbottom, drowned by Umbriel"}

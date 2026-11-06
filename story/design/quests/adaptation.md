@@ -4,7 +4,7 @@ The human-readable plan for Phase 2's "whole quest system on BM&V" ([phase 2](..
 per line its spirit, its new home in BM&V, what changed and why, and the world-edit ledger in summary. The story data
 is the record; this file is the read of it. Act I's own adaptation is [act1-on-bmv](act1-on-bmv.md).
 
-Status: steps 1 (inventory) and 2 (spirit) done; step 3 waits on the census of all four BM&V plugins.
+Status: steps 1 to 4 done (inventory, spirit, capacity, allocation); step 5 waits on the province vibe and the updated quest skills.
 
 ## 1. Inventory (step 1)
 
@@ -104,3 +104,126 @@ Beats kept: One memorial site, two commemorated atrocities (TA01); A body on the
 **Umbriel Witness.** You handle an inherited catastrophe that nobody alive saw, and decide how the truth of Umbriel is kept, told or buried. History argued over at the distance of inherited memory: edited testimony, missing households, and a Society whose own founding account is compromised.
 Beats kept: UW01 two witness texts, one edited after its author's death.; UW03 a household omitted from every casualty list.; UW04 the expedition to the Refuge at Deepmire, Old Nusa who is bored of Umbriel, and proof the Society's founding testimony came from a collaborator of Hierem's agents.; UW05 the choice of full archive, protected testimony, official narrative or sealed evidence, now including the Society itself.. Free: Archive, home and workshop locations; names of minor people; the route and shelters of the UW04 trek, provided it remains the line's one traversal spike.
 
+## 3. The world's capacity (step 3)
+
+From the census of all four plugins (`bmv_settlement`, `bmv_settlement_cell`, `bmv_placement`, `bmv_door`;
+[census](../../../docs/research/bmv/census.md)). Black Marsh is three separate worldspaces joined by ships and
+doors, and Valenwood a fourth entered only from Skyrim. What limits the story is not ground but people and rooms:
+the three Black Marsh worlds hold 34 interiors in all, and the people are generic (guards, villagers, soldiers).
+
+| settlement | marker | world | interiors | navmesh squares | people | other actors |
+|---|---|---|---|---|---|---|
+| blackrose | Black Rose | Black | 2 | 53 | 66 | 66 |
+| altenmeirhall | Alten Merihall | Black | 0 | 27 | 21 | 17 |
+| lilmoth | Lolmoth; Lilmoth Dock | Black | 4 | 34 | 20 | 65 |
+| village | - | Black | 0 | 30 | 17 | 87 |
+| hereguardplantation | Hereguard Plantation | Black | 0 | 19 | 11 | 35 |
+| dock2 | Docks | Black | 1 | 11 | 8 | 20 |
+| longmont | Longmont | Black | 1 | 32 | 7 | 88 |
+| castle | - | Black | 1 | 21 | 6 | 21 |
+| swamplandsrose | - | Black | 0 | 48 | 1 | 104 |
+| grass | - | Black | 1 | 9 | 0 | 25 |
+| murkmire | - | Black | 0 | 54 | 50 | 3 |
+| murkwood | - | Black | 0 | 79 | 35 | 25 |
+| dwarven | Dwarven Ruins | Black | 2 | 88 | 17 | 78 |
+| banditcamp1 | - | Black | 1 | 44 | 12 | 25 |
+| helstrom | - | Black | 2 | 58 | 11 | 7 |
+| tribe | - | Black | 0 | 46 | 11 | 22 |
+| dock5 | Helstrom | Black | 1 | 30 | 8 | 1 |
+| temple | - | Black | 0 | 59 | 8 | 54 |
+| murkwoodext | Bandit Dock | Black | 0 | 29 | 5 | 12 |
+| temple2 | Road to Docks | Black | 1 | 19 | 4 | 9 |
+| templepass | - | Black | 0 | 40 | 3 | 26 |
+| outercave | - | Black | 0 | 23 | 1 | 17 |
+| abondedtemple | - | Black | 1 | 35 | 0 | 60 |
+| groot | - | Black | 0 | 63 | 0 | 17 |
+| blackmarshnorth.thorn1 | Thorn | Thorn | 1 | 30 | 36 | 0 |
+| blackmarshnorth.manor | Dres village | Thorn | 0 | 40 | 7 | 26 |
+| blackmarshnorth.treehouse | - | Thorn | 0 | 31 | 6 | 10 |
+| blackmarshnorth.marsh | - | Thorn | 1 | 81 | 4 | 44 |
+| blackmarshnorth.ruin12 | - | Thorn | 1 | 88 | 2 | 101 |
+| blackmarshnorth.1 | - | Thorn | 0 | 108 | 0 | 54 |
+| blackmarshnorth.dessert | - | Thorn | 0 | 115 | 0 | 42 |
+| blackmarshnorth.lizardmen | - | Thorn | 0 | 75 | 0 | 45 |
+| blackmarshnorth.tear | Tear | Thorn | 0 | 56 | 0 | 14 |
+| blackmarshnorth.test1 | - | Thorn | 0 | 58 | 0 | 35 |
+| blackmarshnorth.waterfalls | - | Thorn | 1 | 71 | 0 | 55 |
+| site.01goblincave | - | Thorn | 1 | 1 | 0 | 6 |
+| site.01templecave | - | Thorn | 1 | 1 | 0 | 14 |
+| valenwood.woodhearth | Woodhearth | Valenw | 3 | 10 | 25 | 31 |
+
+Valenwood's other 46 settlements (Elden Root 73 people and 7 interiors, Haven 44, Falinesti) are left to BM&V's own
+two quests. 12 interiors have no door (Gallows Rock, Darklight Tower, 01Cavebig, 01cell1 "Manor", 01Cell2 and
+others): one new door makes each a room we can use.
+
+The travel spine is BM&V's own: ship `01Ship` stops at Lilmoth (BlackMarsh 7,-1), the Docks (10,-2),
+Helstrom's landing (BM2 -10,12), Bandit Dock (-10,7), Murkmire (-23,20), Thorn (BMN 5,13) and Tear (25,19), the
+very coast line the lore runs from Lilmoth through Soulrest to Tear (settlement-register §2, Archon). Blackrose
+reaches Murkwood by `01dock3to4`; the house `01CabinInt2` joins BlackMarsh and BlackMarsh2 by doors.
+
+What the lines need of it: 156 line quests and 34 live local quests need about 60 distinct places and 40 rooms.
+Rooms are the shortage, so the rules of the allocation are: an existing interior first; a doorless one given a
+door next; an exterior scene on navmesh (a camp, a hut, a platform) after; a copied interior last and rarely.
+
+## 4. One allocation across all lines (step 4)
+
+**Where the designed cities land** (the nine waiting places and the census's open items, resolved together):
+
+| designed place | BM&V home | why |
+|---|---|---|
+| Lilmoth, Blackrose, Helstrom, Hereguard, Thorn | as mapped | BM&V's own names |
+| Alten Meerhleel, Longmont, Murkwood | as mapped | BM&V's own names |
+| Hatching Pools | Village (BlackMarsh 22,-4) | a Hist village with pools, east of Lilmoth |
+| Soulrest | Docks (`dock2`) | a port on the ship line between Lilmoth and Tear |
+| Gideon | Castle (BlackMarsh 2,6), with doorless "Manor" as the Governor's Mansion | the city around the old mansion, reduced |
+| Stormhold | BMN's Marsh (-7,15), with the Underdark beneath | a northern town; the Conclave of Baal's books |
+| Alten Corimont | BMN's Tear1, beside Tear | the north port, smuggling and transit |
+| Tear, Tearmouth | Tear, and its ship landing (25,19) | canon Tear; Tearmouth is its landing |
+| White Rose Prison | the unused old Black Rose (`gg`, far west) | inland in the west, a stone prison in ruin |
+| Greenspring | `temple2` near Helstrom | a Hist village close to the capital |
+| Rockgrove (Sul-Xan) | Temple Pass | a held ruin on the northern road |
+| Dead-Water (Naga-Kur) | BM&V's "Murkmire" village (BM2 -22,20) | Murkmire stays the region's name; the village is the Naga-Kur's |
+| Teeth of Sithis | Temple (BM2 7,-6) | a tended Sithis temple |
+| Deepmire, the Refuge | Outercave (BM2 16,-3) | a place survivors climbed to |
+| the Dres Rows | BMN's "Dres village" | the old Dres estate rows |
+| Archon, Rockspring, Hissmir | not visited: named in talk only | no room for them without new towns; their quests move (below) |
+| Falinesti | Valenwood's Capital and `falinesti` are one city | four squares apart; ours uses neither |
+
+**Each line's seat and hubs** (`line_hub`): no two lines share a seat; a shared city gives each line its own
+building and people.
+
+| line | seat | hubs and field |
+|---|---|---|
+| Main (Eye and the Root) | Helstrom, the hall of the empty throne | Lilmoth, Hereguard, Hatching Pools, Helstrom's landing, Blackrose; the pyramid ruins as the Lost City |
+| Night-Reed | under Lilmoth (BMN's Lilmoth dungeon) | Blackrose market dock, Soulrest |
+| Shadowscales | the Empty Cradle (Gallows Rock, a new door at BMN's treehouse) | Longmont's ruins (the hatchery), Helstrom |
+| Nisswo | Teeth of Sithis | Dead-Water's necropolis, Soulrest's funerals |
+| Many-Root | the conclave grove (`groot`) | Greenspring, Hatching Pools, a tribe village |
+| Sunken Archive | the abandoned temple's underground | Stormhold, the ruin at Grass |
+| Umbriel Witness | Dead-Water | Deepmire, Pusbottom |
+| Rootworm Waykeepers | Helstrom's station (`01Exit2`) | the house between the worlds (`01CabinInt2`), a tribe village |
+| League of Open Water | Alten Meerhleel | Longmont |
+| Marsh Charter | Gideon's mansion | Hereguard as the frontier fort, a tribe village |
+| Reed-Sail | Soulrest's harbour | Bandit Dock (the Salt-Teeth), the Blackrose ship, Woodhearth in Valenwood |
+| Chainbreakers | Blackrose | the Dres Rows, White Rose |
+| Thorn Ash-Reed | Thorn | Tear |
+| Daedric | none | the Underdark book portal as Apocrypha's edge; the rest by quest |
+| Detectives (0025) | a house in Lilmoth, across the water from the Chapter (rivals by design) | Blackrose, Helstrom for the finale |
+
+**Valenwood.** The lore gives one honest thread: Kothringi sailors carried Z'en to Valenwood and Argonian
+refugees lived there (lore: topics/sithis-nisswo-shadowscales.md). Valenwood hosts the Reed-Sail's Southern Sea
+run to Woodhearth, by one new ship door from Soulrest, and nothing else; no Thalmor thread (canon has none in 4E
+Black Marsh, topics/foreign-powers.md).
+
+**The shared world edits** (`world_edit`, 18 so far): ten place names, four doors (the Cradle, the Mansion, the
+Rose's lower levels, the Woodhearth run), and four small peopled places (Tear, Alten Corimont, the conclave grove,
+White Rose), every actor Argonian at a fixed band.
+
+**Exclusions** (`line_exclusion`, 6): the senior exclusions of 40-factions, kept; no exclusive pair shares a seat.
+
+**Local and proposed quests.** The 527 skeleton locals and the 17 proposals were premises written for 88 designed
+settlements that BM&V does not have; Phase 5 commissions minor quests against BM&V's places and draws on them. The
+34 live locals are weighed one by one against the hubs above at step 5.
+
+Held: the per-quest verdicts and adapted premises (step 5) wait on the province vibe and the updated quest skills
+(owner, 2026-11-06); the step 2 rows are re-read against the vibe then.

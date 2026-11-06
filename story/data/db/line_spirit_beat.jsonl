@@ -1,0 +1,96 @@
+{"line":"quest.line.chainbreakers","ord":0,"beat":"An Owing correct at every step: four months for a boat, eleven years running (BC01)"}
+{"line":"quest.line.chainbreakers","ord":1,"beat":"The burnt Rose registers and estate ledgers as one class of document (BC02)"}
+{"line":"quest.line.chainbreakers","ord":2,"beat":"Ussa-Rekh's thirty years of forgiveness and the brokerage that now indentures the dock crews (BC03)"}
+{"line":"quest.line.chainbreakers","ord":3,"beat":"The procession of the Argonian dead carried home by name by Grave-Singer Ossu through contested crossings (BC05)"}
+{"line":"quest.line.chainbreakers","ord":4,"beat":"What the Rose Becomes, ending in a unglamorous reform of assessment itself (BC06)"}
+{"line":"quest.line.chainbreakers","ord":5,"beat":"Protected in every end: the archive wing, the confiscation-ledger record class and the Rose heirs as a community"}
+{"line":"quest.line.daedric","ord":0,"beat":"Each quest is found by rumour, shrine, book or strange encounter, never a quest board"}
+{"line":"quest.line.daedric","ord":1,"beat":"Each Prince's bargain or curse is literally true and quietly ruinous (door wishes, mask wants, drowned-library price)"}
+{"line":"quest.line.daedric","ord":2,"beat":"The player makes a real choice about which side or hunt to finish (cure, quarantine, expose or let it run; which hunt)"}
+{"line":"quest.line.daedric","ord":3,"beat":"At least one element in each stays unexplained (wonder budget)"}
+{"line":"quest.line.daedric","ord":4,"beat":"Fixed unique artifact rewards, not scaled loot"}
+{"line":"quest.line.daedric","ord":5,"beat":"Horror is found through hospitality, memory or rite rather than only through combat"}
+{"line":"quest.line.detectives","ord":0,"beat":"Early cases are petty crimes: thefts and larcenies"}
+{"line":"quest.line.detectives","ord":1,"beat":"Cases escalate in series of thefts, larcenies and murder mysteries as rank rises"}
+{"line":"quest.line.detectives","ord":2,"beat":"Rivalry with the Shadowscales and the Night-Reed Chapter runs through the line"}
+{"line":"quest.line.detectives","ord":3,"beat":"Recurring cast and a rival, with clues for the finale seeded along the way"}
+{"line":"quest.line.detectives","ord":4,"beat":"Grand finale: a murder mystery that must involve highly important NPCs of Black Marsh"}
+{"line":"quest.line.league-of-open-water","ord":0,"beat":"A resident is refused registration because no Hist claims them (LW01), and the lore remedy of the Hissmir trials sharpens rather than solves it"}
+{"line":"quest.line.league-of-open-water","ord":1,"beat":"The murdered delegate who was exposing League financiers, with the hate-crime story that suits many groups (LW04)"}
+{"line":"quest.line.league-of-open-water","ord":2,"beat":"The traditional ordeal demanded in a mixed court (LW05)"}
+{"line":"quest.line.league-of-open-water","ord":3,"beat":"The canal that improves sanitation but cuts a sacred route and displaces households (LW08)"}
+{"line":"quest.line.league-of-open-water","ord":4,"beat":"The charter negotiation where prior cases limit credible clauses (LW09)"}
+{"line":"quest.line.league-of-open-water","ord":5,"beat":"The finale: plural civic movement, merchant oligarchy, municipal service, or collapse after exposing its own contradictions (LW10)"}
+{"line":"quest.line.local","ord":0,"beat":"Every quest starts from a causal local situation (geography, culture, politics, someone's motive) rather than a fetch list."}
+{"line":"quest.line.local","ord":1,"beat":"No quest is only collecting objects; recovery needs ownership, route, danger or interpretation to make it a problem."}
+{"line":"quest.line.local","ord":2,"beat":"The quest-giver is the payload: a person with a local occupation and one stated want."}
+{"line":"quest.line.local","ord":3,"beat":"Each region packet holds at least one oddity with no faction stakes, reward or explanation."}
+{"line":"quest.line.local","ord":4,"beat":"Cross-line texture comes through shared places and networks, never imported characters; delivery stays mostly low-tier (moved evidence, aftermath, retrieval)."}
+{"line":"quest.line.main","ord":0,"beat":"MQ01: the Owing-gang processing, then the Unbound Root's attack led in person by Cuts-the-Old-Knot, who takes the courier's satchel and decides the player is not worth killing; a Hist turns its face and its egg clutch dies that night"}
+{"line":"quest.line.main","ord":1,"beat":"The recurring sap-dreams begin the night of the attack (circle of trees, a door not yet built, a voice) and return at authored beats"}
+{"line":"quest.line.main","ord":2,"beat":"MQ05: the arrival walk at Helstrom passes the Hall of the Scalded Throne, empty for centuries and still swept, so the endgame's third option stands in a room in Act I"}
+{"line":"quest.line.main","ord":3,"beat":"MQ26: the hidden archive shows the Root of Accord was an ancient voluntary accord converted into a compulsory state instrument"}
+{"line":"quest.line.main","ord":4,"beat":"MQ20 and MQ22: the Reed's own sap-dream files and the two incompatible reports, where a lie or truth has a visible victim and the player's handler falls"}
+{"line":"quest.line.main","ord":5,"beat":"MQ18: the preacher at the sermon house is the Collector, Opens-the-Last-Door, who knows the player and says nothing"}
+{"line":"quest.line.main","ord":6,"beat":"MQ29 to MQ31: the Lost City and its Last Warden, then the door confrontation where a seeded principal stands opposed, with a speech route and a hard fair duel always available, ending in the three families CUT, CLAIM or MEND"}
+{"line":"quest.line.many-root","ord":0,"beat":"Discover in danger, decide in council: each quest's evidence is gathered in a dive, boat run, camp infiltration or den before the hearing."}
+{"line":"quest.line.many-root","ord":1,"beat":"MR01 root-cave dive finds the founders' hand-cut breach; the cure and whether the founders are named are the player's call."}
+{"line":"quest.line.many-root","ord":2,"beat":"MR02 night boat run with the eggs aboard, adoption terms answered at the far dock, the flood being engineered upstream."}
+{"line":"quest.line.many-root","ord":3,"beat":"MR04 night entry into the harvest camp with a blown-cover escape; the loudest ban campaigner is the biggest quiet buyer."}
+{"line":"quest.line.many-root","ord":4,"beat":"MR05 the den in the abandoned grove and the truth that the curer led the clutch out that night."}
+{"line":"quest.line.many-root","ord":5,"beat":"MR08 the council convened by clearing the channel, the toll and the falsified minutes, then run by one procedure (Ixo-Vaal or Kaska-Meen)."}
+{"line":"quest.line.many-root","ord":6,"beat":"MR10 the loading-dock intercept of a genuine-paper cutting taking, then the finale choice of what the Conclave becomes."}
+{"line":"quest.line.marsh-charter","ord":0,"beat":"The first contract understates the danger and overcharges residents (FG01)"}
+{"line":"quest.line.marsh-charter","ord":1,"beat":"Patrol vanished after refusing an unsafe order: negligence, not a monster (FG02)"}
+{"line":"quest.line.marsh-charter","ord":2,"beat":"The juvenile Wamasu: kill, relocate, return eggs or expose trophy hunters (FG03)"}
+{"line":"quest.line.marsh-charter","ord":3,"beat":"Charter War, with Ka-Deelith Ushu's hereditary-defence argument as the hardest to answer and least practical (FG08)"}
+{"line":"quest.line.marsh-charter","ord":4,"beat":"The extermination order that targets a marsh community for its land and water, read aloud by Halvar the Damp before he signs (FG09)"}
+{"line":"quest.line.marsh-charter","ord":5,"beat":"The four outcomes: public service, disciplined mercenary company, An-Xileel auxiliary, broken protection cartel (FG10)"}
+{"line":"quest.line.night-reed","ord":0,"beat":"TG01: prove value by recovering stolen goods without harming the thief, observation and social leverage over burglary"}
+{"line":"quest.line.night-reed","ord":1,"beat":"TG02: the drowned lockbox whose contents expose all three clients"}
+{"line":"quest.line.night-reed","ord":2,"beat":"TG07: Silt is innocent, is never told she was suspected, and is cleared without alerting the real informer the den trusts too much"}
+{"line":"quest.line.night-reed","ord":3,"beat":"TG08 and TG09: the Pusbottom vault as route-planning lesson, and two of four optional preparations, none mandatory"}
+{"line":"quest.line.night-reed","ord":4,"beat":"TG10: the Tidal Palace heist with player-chosen methods and the ripper eels turned aside by eel-slime"}
+{"line":"quest.line.night-reed","ord":5,"beat":"TG11: the ledger proves patrons, merchants and officials jointly engineered housing seizures, and you expose, sell, redistribute or build an oligarchy"}
+{"line":"quest.line.nisswo","ord":0,"beat":"NI01: a funeral dispute teaches that Nisswo practice is interpretive, not a rigid death cult"}
+{"line":"quest.line.nisswo","ord":1,"beat":"NI02: a silent Nisswo takes you through a six-stop day and you err publicly at least twice; she never says what it was for"}
+{"line":"quest.line.nisswo","ord":2,"beat":"NI05: the Teeth of Sithis, a violent Sul-Xan splinter, and telling sincere theology from opportunism and state provocation"}
+{"line":"quest.line.nisswo","ord":3,"beat":"NI07: the admired priest who invents revelations and also made a real peace"}
+{"line":"quest.line.nisswo","ord":4,"beat":"NI08: a condemned murderer, victims and the state, resolved by process, not a pardon or execution binary"}
+{"line":"quest.line.nisswo","ord":5,"beat":"NI09 and NI10: dispersed order or teaching house, ending as plural network, formal school, itinerant tradition or dissolved order"}
+{"line":"quest.line.proposed","ord":0,"beat":"No beat is binding: none is authored, none has a brief or cast"}
+{"line":"quest.line.proposed","ord":1,"beat":"Any author picking one up must re-run the collision test against the current index first"}
+{"line":"quest.line.proposed","ord":2,"beat":"Any proposal may be dropped without loss"}
+{"line":"quest.line.reed-sail","ord":0,"beat":"Earning the pole on a working ferry with current, passengers and a staged obstruction, not a combat test (RS01)"}
+{"line":"quest.line.reed-sail","ord":1,"beat":"Ferry in the Dark: hunted passenger evaded by route and timing past static watcher boats (RS02)"}
+{"line":"quest.line.reed-sail","ord":2,"beat":"Pirates of Topal: a crew of ferry workers displaced by a monopoly (RS05)"}
+{"line":"quest.line.reed-sail","ord":3,"beat":"Storm at Archon: allocating limited rescue capacity, with Ahnjazzi's letter read aloud (RS07)"}
+{"line":"quest.line.reed-sail","ord":4,"beat":"Compact or Cartel: the internal election and which votes stay legitimate (RS09)"}
+{"line":"quest.line.reed-sail","ord":5,"beat":"Open Channels: worker compact, merchant cartel, pirate confederation or regulated public ferry (RS10)"}
+{"line":"quest.line.rootworm-waykeepers","ord":0,"beat":"The worm is never on screen: presence reads through a tunnel mouth, churned water, wake, sound."}
+{"line":"quest.line.rootworm-waykeepers","ord":1,"beat":"RW01 the refusal read entirely from behaviourless evidence."}
+{"line":"quest.line.rootworm-waykeepers","ord":2,"beat":"RW03 a sacred route sold to smugglers to fund repairs the state refused."}
+{"line":"quest.line.rootworm-waykeepers","ord":3,"beat":"RW04 reopen the route by cutting living roots or abandoning a dependent settlement."}
+{"line":"quest.line.rootworm-waykeepers","ord":4,"beat":"RW05 four end states (open public service, restricted sacred order, state bureau, dispersed keepers), all keeping the Helstrom terminus in service."}
+{"line":"quest.line.shadowscales","ord":0,"beat":"SS01: the last trained Shadowscale dies in the player's hands and the list of surviving initiates is the prize"}
+{"line":"quest.line.shadowscales","ord":1,"beat":"SS02: a writ from an authority that does not exist, and each choice states the order's legal philosophy"}
+{"line":"quest.line.shadowscales","ord":2,"beat":"SS03: the ruined hatchery and a survivor who never consented"}
+{"line":"quest.line.shadowscales","ord":3,"beat":"SS04, SS05 and SS08: three bidders (Black-Tongues, Brotherhood, Veiled Reed) each offer legitimacy for control"}
+{"line":"quest.line.shadowscales","ord":4,"beat":"SS07: two knives, one name, where authentic and innocent diverge and executing either claims the empty throne's authority"}
+{"line":"quest.line.shadowscales","ord":5,"beat":"SS09: the Night Mother ritual with ambiguous evidence and a staged deception"}
+{"line":"quest.line.shadowscales","ord":6,"beat":"SS10: the final choice among state service, Brotherhood, independent ethical order, or dissolution with records returned to victims"}
+{"line":"quest.line.sunken-archive","ord":0,"beat":"SA01 recovering a waterproofed text from an inhabited ruin whose owners are present."}
+{"line":"quest.line.sunken-archive","ord":1,"beat":"SA04 the College's offer of independence hiding a binding experiment and the exhumation of Umbriel's dead."}
+{"line":"quest.line.sunken-archive","ord":2,"beat":"SA05 the Synod's funding against exclusive custody, with Hierem the Synod grandee in the archive's own records."}
+{"line":"quest.line.sunken-archive","ord":3,"beat":"SA08 reading an escaped construct's wake at fixed breach points and choosing which containment point to hold."}
+{"line":"quest.line.sunken-archive","ord":4,"beat":"SA09 Three Charters: Synod, College and independent futures are incompatible and earlier conduct changes support."}
+{"line":"quest.line.sunken-archive","ord":5,"beat":"SA10 What We Publish: open archive, local custody, Imperial institution or suppression."}
+{"line":"quest.line.thorn-ash-reed","ord":0,"beat":"One memorial site, two commemorated atrocities (TA01)"}
+{"line":"quest.line.thorn-ash-reed","ord":1,"beat":"A body on the ferry: the victim moved Owing-held labourers as freight, ending in a manhunt via ferries and static intercepts (TA02)"}
+{"line":"quest.line.thorn-ash-reed","ord":2,"beat":"Saltrice fields with no titles, only occupation, worked under Owings by an ex-Archein family (TA03)"}
+{"line":"quest.line.thorn-ash-reed","ord":3,"beat":"Both militias keep lists of civilians to seize (TA04)"}
+{"line":"quest.line.thorn-ash-reed","ord":4,"beat":"Ash-Reed Accord: truth commission, security pact, closed separation or factional victory (TA05)"}
+{"line":"quest.line.umbriel-witness","ord":0,"beat":"UW01 two witness texts, one edited after its author's death."}
+{"line":"quest.line.umbriel-witness","ord":1,"beat":"UW03 a household omitted from every casualty list."}
+{"line":"quest.line.umbriel-witness","ord":2,"beat":"UW04 the expedition to the Refuge at Deepmire, Old Nusa who is bored of Umbriel, and proof the Society's founding testimony came from a collaborator of Hierem's agents."}
+{"line":"quest.line.umbriel-witness","ord":3,"beat":"UW05 the choice of full archive, protected testimony, official narrative or sealed evidence, now including the Society itself."}

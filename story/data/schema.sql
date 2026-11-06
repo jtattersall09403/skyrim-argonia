@@ -2924,3 +2924,114 @@ CREATE TABLE "faction_bmv" (
   "reason" TEXT NOT NULL,
   "source" TEXT NOT NULL
 );
+
+-- ---------------------------------------------------------------------------------------------------------------------
+-- The adaptation ledger (phase 2, "the whole quest system on BM&V"): every line's spirit and hubs, every quest's
+-- verdict, premise and hosts in BM&V's world, and one ledger of world edits linked to the quests that need them.
+-- Checked as a whole by `tools/argonia_world/adaptation_check.py` (make check). The plan: story/design/quests/adaptation.md.
+-- ---------------------------------------------------------------------------------------------------------------------
+
+-- Home of a line's spirit: the promise, the core and the identity any adaptation keeps, and what is free.
+CREATE TABLE "line_spirit" (
+  "line" TEXT NOT NULL PRIMARY KEY REFERENCES "quest_line"("id"),
+  "promise" TEXT NOT NULL,
+  "core" TEXT NOT NULL,
+  "identity" TEXT,
+  "free" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);
+
+-- Home of one signature beat of a line (ordered), which must survive the adaptation.
+CREATE TABLE "line_spirit_beat" (
+  "line" TEXT NOT NULL REFERENCES "line_spirit"("line") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "beat" TEXT NOT NULL,
+  PRIMARY KEY ("line", "ord")
+);
+
+-- Home of a line's seat and hubs in BM&V: a settlement, or an interior cell, with its role.
+CREATE TABLE "line_hub" (
+  "line" TEXT NOT NULL REFERENCES "quest_line"("id"),
+  "ord" INTEGER NOT NULL,
+  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "role" TEXT NOT NULL CHECK ("role" IN ('seat', 'hub', 'field')),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("line", "ord")
+);
+
+-- Home of the senior exclusions between lines (40-factions): no two exclusive lines share a seat or a prerequisite.
+CREATE TABLE "line_exclusion" (
+  "line" TEXT NOT NULL REFERENCES "quest_line"("id"),
+  "other" TEXT NOT NULL REFERENCES "quest_line"("id"),
+  "what" TEXT NOT NULL,
+  PRIMARY KEY ("line", "other"),
+  CHECK ("line" < "other")
+);
+
+-- Home of a quest's verdict and adapted premise. `band` is its peak danger (0-5, fixed by place: decision 0035).
+CREATE TABLE "quest_adaptation" (
+  "quest" TEXT NOT NULL PRIMARY KEY REFERENCES "quest"("id"),
+  "verdict" TEXT NOT NULL CHECK ("verdict" IN ('keep', 'adapt', 'merge', 'drop')),
+  "merged_into" TEXT REFERENCES "quest"("id"),
+  "spirit" TEXT NOT NULL,
+  "premise" TEXT,
+  "changed" TEXT,
+  "why" TEXT NOT NULL,
+  "band" INTEGER CHECK ("band" BETWEEN 0 AND 5),
+  "lore" TEXT,
+  CHECK (("verdict" = 'merge') = ("merged_into" IS NOT NULL)),
+  CHECK ("verdict" IN ('merge', 'drop') OR ("premise" IS NOT NULL AND "band" IS NOT NULL AND "lore" IS NOT NULL))
+);
+
+-- Home of the BM&V places a kept quest is played in: a settlement, or one of its interiors, with the place's role.
+CREATE TABLE "quest_host" (
+  "quest" TEXT NOT NULL REFERENCES "quest_adaptation"("quest") ON DELETE CASCADE,
+  "ord" INTEGER NOT NULL,
+  "settlement" TEXT NOT NULL REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "role" TEXT NOT NULL CHECK ("role" IN ('start', 'main', 'stage', 'end')),
+  "what" TEXT NOT NULL,
+  PRIMARY KEY ("quest", "ord")
+);
+
+-- Home of a quest's prerequisite beyond its line's order: it starts only after `needs` (another quest) ends.
+CREATE TABLE "quest_prereq" (
+  "quest" TEXT NOT NULL REFERENCES "quest_adaptation"("quest") ON DELETE CASCADE,
+  "needs" TEXT NOT NULL REFERENCES "quest_adaptation"("quest"),
+  "why" TEXT NOT NULL,
+  PRIMARY KEY ("quest", "needs"),
+  CHECK ("quest" <> "needs")
+);
+
+-- Home of one minor world edit, ledgered once. `target` is the BM&V form key it changes (null for a new thing);
+-- `band` the fixed danger of an actor it adds (decision 0035: never levelled).
+CREATE TABLE "world_edit" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "kind" TEXT NOT NULL CHECK ("kind" IN ('npc_add', 'npc_move', 'npc_remove', 'npc_change', 'creature_add',
+    'creature_remove', 'ref_place', 'ref_disable', 'door_add', 'interior_copy', 'record_change', 'name_place')),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT REFERENCES "bmv_cell"("id"),
+  "target" TEXT,
+  "description" TEXT NOT NULL,
+  "race" TEXT,
+  "band" INTEGER CHECK ("band" BETWEEN 0 AND 5),
+  "lore" TEXT NOT NULL,
+  CHECK ("kind" NOT IN ('npc_add', 'creature_add') OR "band" IS NOT NULL),
+  CHECK ("kind" NOT IN ('npc_move', 'npc_remove', 'npc_change', 'creature_remove', 'ref_disable', 'record_change')
+    OR "target" IS NOT NULL)
+);
+
+-- Home of a quest's need of a world edit, or of a BM&V thing as it stands (`target`, a form key, no edit).
+CREATE TABLE "quest_world_edit" (
+  "quest" TEXT NOT NULL REFERENCES "quest_adaptation"("quest") ON DELETE CASCADE,
+  "edit" TEXT NOT NULL REFERENCES "world_edit"("id"),
+  PRIMARY KEY ("quest", "edit")
+);
+
+CREATE TABLE "quest_bmv_need" (
+  "quest" TEXT NOT NULL REFERENCES "quest_adaptation"("quest") ON DELETE CASCADE,
+  "target" TEXT NOT NULL,
+  "what" TEXT NOT NULL,
+  PRIMARY KEY ("quest", "target")
+);
