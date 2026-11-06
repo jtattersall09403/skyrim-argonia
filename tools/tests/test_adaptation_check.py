@@ -355,3 +355,16 @@ def test_choice_stage_whatever_it_leads_to():
     ch = lambda to, t: (to, {"topicHeardFrom"}, {t})
     assert ac._choice_stage([ch(20, "a"), ch(30, "b")], {99})     # successors need not be endings
     assert not ac._choice_stage([ch(20, "a"), ch(30, "a")], {99})
+
+
+def test_skill_routes_scene_stage_exempt():
+    rc = recs()
+    rc.stages = {"q": {10: {"succ": [(20, {"sceneEnded"}, {"scene.q.s"})], "ff": set()},
+                       20: {"succ": [(90, {"all", "sceneEnded", "topicHeardFrom"}, set()), (91, {"sceneEnded"}, set())],
+                            "ff": set()},
+                       90: {"succ": [], "ff": set()}, 91: {"succ": [], "ff": set()}}}
+    rc.stage_end = {"q": {90, 91}}
+    rc.quest_kind = {"q": ("local", None)}
+    assert ac.skill_routes(rc) == []                                       # a scene's end is not a skill route
+    rc.stages["q"][10]["succ"] = [(20, {"inZone"}, set())]
+    assert any("stage 10 names no skill" in x for x in ac.skill_routes(rc))

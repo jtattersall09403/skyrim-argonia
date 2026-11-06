@@ -274,8 +274,9 @@
 {"list_id":"quest_stage:quest.local.lv40|2:on_enter","ord":1,"term":"setFlag"}
 {"list_id":"quest_stage:quest.local.sx06|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.sx06|2:on_enter","ord":0,"term":"takeItem"}
-{"list_id":"quest_stage:quest.main.mq01|0:on_enter","ord":0,"term":"grantTopic"}
-{"list_id":"quest_stage:quest.main.mq01|0:on_enter","ord":1,"term":"enableRef"}
+{"list_id":"quest_stage:quest.main.mq01|0:on_enter","ord":0,"term":"startScene"}
+{"list_id":"quest_stage:quest.main.mq01|0:on_enter","ord":1,"term":"grantTopic"}
+{"list_id":"quest_stage:quest.main.mq01|0:on_enter","ord":2,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq01|1:on_enter","ord":0,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq01|1:on_enter","ord":1,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq01|1:on_enter","ord":2,"term":"startScene"}
@@ -293,6 +294,7 @@
 {"list_id":"quest_stage:quest.main.mq03|1:on_enter","ord":8,"term":"disableRef"}
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":0,"term":"moveRef"}
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":1,"term":"enableRef"}
+{"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":2,"term":"startScene"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":1,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":0,"term":"grantTopic"}

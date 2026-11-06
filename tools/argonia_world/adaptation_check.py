@@ -615,6 +615,11 @@ def _choice_stage(succ, ends) -> bool:
     return len(succ) >= 2
 
 
+def _scene_stage(succ) -> bool:
+    """Every successor waits on a scene's end (TR-scene): a scene stage that cannot be failed, exempt like a choice."""
+    return bool(succ) and all("sceneEnded" in t for _, t, _ in succ)
+
+
 def skill_routes(rc: Records) -> list[str]:
     """Skills win the stages (ruling #50). For a kept or adapted quest: every stage between the start and the endings
     names a skill route that can fail (see FAIL_SKILLS; a skillAtLeast of 25+), the first stage too; a pure choice stage is exempt; a main-line quest uses at least two
@@ -624,11 +629,13 @@ def skill_routes(rc: Records) -> list[str]:
         if rc.live is not None and q not in rc.live:
             continue
         ssk, ends = rc.skill_stages.get(q, {}), rc.stage_end.get(q, set())
-        mid = [s for s in sorted(sts) if s not in ends and not _choice_stage(sts[s]["succ"], ends)]
+        mid = [s for s in sorted(sts) if s not in ends and not _choice_stage(sts[s]["succ"], ends)
+               and not _scene_stage(sts[s]["succ"])]
         for s in mid:
             if not ssk.get(s):
                 out.append(f"{q}: stage {s} names no skill (no action, objective or successor uses one)")
-        used = set().union(*(ssk.get(s, set()) for s in mid)) if mid else set()
+        live = [s for s in sorted(sts) if s not in ends]          # an exempt stage's skills still count as ways through
+        used = set().union(*(ssk.get(s, set()) for s in live)) if live else set()
         group, fac = rc.quest_kind.get(q, (None, None))
         if group == "main" and len(used) < 2:
             out.append(f"{q}: main quest has {len(used)} distinct skill(s) {sorted(used)}, needs two ways through")
