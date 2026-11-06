@@ -12,16 +12,21 @@ How to play: the Argonia card on Moonlight starts the game (the play machine sta
 
 From a new game on the Argonia card.
 
-- [ ] New Game shows the race menu with the character's face bare (no helmet).
-- [ ] After the race menu you stand on Lilmoth's dock (not Hereguard Plantation), in third person, roughspun clothes,
-      with a journal line.
-- [ ] The start inventory holds a weapon (and shield or second weapon) and Morrowind spells or spell books; equip and use them.
-- [ ] With a weapon drawn you can run (not only walk), or the reason it is slow is the collection's design (see the issue).
-- [ ] Dodge: a tap of the dodge key standing still backsteps; a tap while moving rolls in that direction.
-- [ ] Parry or counter works as the controls issue describes.
-- [ ] Lock-on, sprint and climbing work with the controls on the issue, on the Mac keyboard and on the GameSir X2.
-- [ ] A Morrowind spell (Mark then Recall, or Levitate) casts.
-- [ ] The HUD is the collection's (TrueHUD and any other HUD mod the controls issue names), not vanilla Skyrim's.
+- [ ] New Game shows the race menu with the character's face bare (no helmet, no armour).
+- [ ] After the race menu you stand on a wooden dock with lanterns, at the "Lilmoth Dock" map marker (not Hereguard
+      Plantation), in third person, in roughspun clothes, with a journal line.
+- [ ] The inventory holds an Imperial sword and an Imperial light shield; the Magic menu lists Morrowind spells
+      (Mark, Recall, Jump, Slowfall, Water Walking, Fire Touch, Force, Burden, Teleport and others; Magic Expanded has
+      no Levitate, so Jump and Slowfall stand in).
+- [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
+- [ ] Weapon drawn: you walk or sprint but do not run. This is Arena Movement's design ("you can walk, you can
+      sprint, you just can't run around"). Reply "keep" or "faster": the faster variant runs at about twice walking pace.
+- [ ] Dodge (issue #51): tap Alt (pad: LB) for under half a second. Standing still you backstep; moving you roll in
+      that direction. Holding it sprints.
+- [ ] Guard counter (issue #51): block an enemy's hit, then power attack within 1.5 seconds. There is no timed
+      parry in the collection; #51 asks whether to add one.
+- [ ] Lock-on (pad: right stick click; keyboard: tap F), sprint and climbing, on the Mac keyboard and on the GameSir X2.
+- [ ] The HUD shows TrueHUD's player bars, not vanilla Skyrim's.
 
 ## Phase 3 walk: the building blocks test quest
 
