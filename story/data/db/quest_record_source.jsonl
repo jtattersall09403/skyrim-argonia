@@ -9,24 +9,23 @@
 {"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
 {"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
-{"quest_id":"quest.main.mq01","source":"bmvCells","value":"bmv_cell 00591F Dock1, 00596F Lilmoth, 005A0B Pussbottom, 005A0D LilmothHist, 005919 HereguardPlantation"}
-{"quest_id":"quest.main.mq01","source":"bmvPeople","value":"bmv_placement 02A1E7 Flaa Heet, 02A204-02A206 and 02A208-02A209 (WE adventurers and thieves at LilmothHist), 02A207 Deep-In-His-Cups, 00AC8E Argonian Boat Captain at Hereguard"}
+{"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 005911:Black Marsh.esm (Hereguard Plantation), bmv_placement 005AB4 (pier door), 0AA664 (ship door at Lilmoth); census docs/research/bmv/census.md"}
+{"quest_id":"quest.main.mq01","source":"bmvPeople","value":"none of BM&V's own actors is used by the quest; every person is a registry person or a ledger person"}
+{"quest_id":"quest.main.mq01","source":"ledger","value":"quest_adaptation, quest_host, quest_world_edit and world_edit of quest.main.mq01 (we.mq01.start, .barge-crew, .gang, .camp, .cell, .doors, .pier-mesh, .no-valenwood, .no-welcome; we.clean.lilmoth, we.clean.hereguardplantation)"}
 {"quest_id":"quest.main.mq01","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
-{"quest_id":"quest.main.mq03","source":"bmvCells","value":"bmv_cell 005919 HereguardPlantation, 00591F Dock1, 005A0B Pussbottom, 0FE8B7 01CabinIntsiningDUPLICATE002 (door 0FE95B), 01Cavebig (orphan, census)"}
-{"quest_id":"quest.main.mq03","source":"bmvPeople","value":"bmv_placement 015193, 015195 Manor Servant; 00AC8E Argonian Boat Captain (the Merchants 0AA64F, 0AA650 are deleted by Black Marsh North.esp)"}
-{"quest_id":"quest.main.mq03","source":"cultureSheets"}
-{"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka, Never-Writes-Twice)"}
-{"quest_id":"quest.main.mq04","source":"bmvCells","value":"bmv_cell 03978F Village; trail cells 03978D (22,-5), 0397CD (22,-7), 07A6BC (26,-8); camp 0954C7 (28,-7)"}
-{"quest_id":"quest.main.mq04","source":"bmvPeople","value":"bmv_placement 084A7F Argonian Chief, 084A7B-084A91 tribal Argonians and children; Leech x72 (084AD7 first); removed under a parent that stays off (decision 0006): (the eight SoM_00EncDraugrzombiez1, 084AF9 first, are deleted by Black Marsh North.esp) 00Corpseleech (draugr race) 07F92F, 07F931, 07F932, 07F933, 0Namith \"Condemed\" (dragon priest race) 120E0A, 120E0B"}
-{"quest_id":"quest.main.mq04","source":"cultureSheets"}
+{"quest_id":"quest.main.mq03","source":"bmv","value":"bmv_cell 0FE7F7:Black Marsh.esm (House, Lilmoth), 0F9178:Black Marsh.esm (the hold), 005911:Black Marsh.esm (the camp), bmv_placement 0FE95A (house door)"}
+{"quest_id":"quest.main.mq03","source":"ledger","value":"we.mq03.reed, we.mq03.house, we.mq03.rooms, we.mq03.door, we.mq03.dream, we.mq01.camp (aftermath), we.clean.hereguardplantation, we.clean.lilmoth"}
+{"quest_id":"quest.main.mq03","source":"lore"}
+{"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka; Cuts-the-Old-Knot)"}
+{"quest_id":"quest.main.mq04","source":"bmv","value":"bmv_settlement bmv.village, bmv_cell 03978F:Black Marsh.esm"}
+{"quest_id":"quest.main.mq04","source":"ledger","value":"we.mq04.village, we.mq04.people, we.mq04.name, we.clean.village; quest_bmv_need 084A7F (Argonian Chief)"}
 {"quest_id":"quest.main.mq04","source":"lore"}
-{"quest_id":"quest.main.mq05","source":"bmvCells","value":"bmv_cell 0D794B Helstrom, 1DE4A1 01ArgonianHouseinside, 2076BB 01cellDUPLICATE002; bmv_settlement bmv.dock5; bmv.lilmoth (ship 01Ship)"}
-{"quest_id":"quest.main.mq05","source":"bmvDoors","value":"bmv_door into 1DE4A1: 1E42B2-1E42B6 (Helstrom), 1E42B7-1E42B9 (dock5, locked), 1E44AE (-7,16, locked); 2076D0 (the hall)"}
-{"quest_id":"quest.main.mq05","source":"bmvPeople","value":"Black Marsh North.esp places 13 in Helstrom's cells (the boatman Namorine 08D5E6, an Argonian Soldier 08D5E9, a Rebelion Soldier 08D5E4, a Member of the Night 08D5E7, villagers 08D5E8 and 08D5F0, a dock worker 08D5E3, a boat captain 08D5F1, five Dragling Blind 0882BC-0882C0) and three in the hall 01cellDUPLICATE002 (merchants 166BBE One Who Has Fire Hands and 166BBF, soldier 166BC1); none on the walk; creature bases for the walk from bmv_placement at bmv.temple: Megalanian 103C91, Leopard 103C96"}
-{"quest_id":"quest.main.mq05","source":"cultureSheets"}
+{"quest_id":"quest.main.mq04","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka)"}
+{"quest_id":"quest.main.mq05","source":"bmv","value":"bmv_cell 0AA665:Black Marsh.esm (ship), 2076BB:Black Marsh.esm (hall), 0D78C1:Black Marsh.esm, 0D76E1:Black Marsh.esm, doors 0AA837 and 0830A8; bmv_placement 166BBE, 166BBF, 166BC1"}
+{"quest_id":"quest.main.mq05","source":"ledger","value":"we.mq05.escort, we.mq05.throne, we.mq05.grove, we.mq05.dispute, we.clean.lilmoth, we.clean.thorn1, we.clean.dock5, we.clean.helstrom"}
 {"quest_id":"quest.main.mq05","source":"lore"}
-{"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Ei-Tuja, Kaska-Meen, Never-Writes-Twice)"}
+{"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Ei-Tuja, Kaska-Meen)"}
 {"quest_id":"quest.mr.mr01","source":"catalogue","value":"world/sources/catalogue/places-hist-heartland.json#place.hist-heartland.root-gallery-drowned-stair"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets"}
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}

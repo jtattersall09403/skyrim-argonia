@@ -48,35 +48,33 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":3,"value":"t4"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
-{"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"the cut root in Pusbottom (stage 41 or seen at 42)"}
-{"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"the grove: the tenders kneel, the light goes out (stage 50)"}
-{"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"dawn: the clutch grey (stage 90-92)"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the docks: the body and the strap"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"Pusbottom: the cut root"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the cabin: the overseer and her ledger"}
-{"quest_id":"quest.main.mq03","section":"nodes","ord":3,"value":"Hereguard: the survivors and Nesh-Deeka"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":0,"value":"the morning before: the purse paid (t1)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":1,"value":"noon: the strap cut, the root cut and sealed (t2, t3)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":2,"value":"after: the overseer hides (t4)"}
-{"quest_id":"quest.main.mq03","section":"timeline","ord":3,"value":"night: Nesh-Deeka arrives with the copy (t5)"}
+{"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
+{"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist"}
+{"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: the shore at dawn, when the saved witness names the player as the one who came for them"}
+{"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the camp: the cut root-ends, the grey clutch, the dark uxith"}
+{"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"the house: the survivors and Nesh-Deeka"}
+{"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the dream: the ring of trees and the door"}
+{"quest_id":"quest.main.mq03","section":"timeline","ord":0,"value":"the night before: the cell cuts the roots at the ring, one stroke each (t1)"}
+{"quest_id":"quest.main.mq03","section":"timeline","ord":1,"value":"dawn: Nesh-Deeka sends two of her people to take the survivors off (t2)"}
+{"quest_id":"quest.main.mq03","section":"timeline","ord":2,"value":"morning: the survivors tell the night; Nesh-Deeka goes quiet at the cut (t3)"}
+{"quest_id":"quest.main.mq03","section":"timeline","ord":3,"value":"afternoon: the pardon is offered and argued (t4)"}
+{"quest_id":"quest.main.mq03","section":"timeline","ord":4,"value":"night: the first sap-dream (t5)"}
 {"quest_id":"quest.main.mq04","section":"ladder","ord":0,"value":"day 0: the nest cold"}
 {"quest_id":"quest.main.mq04","section":"ladder","ord":1,"value":"after stage 30: a second clutch greys"}
-{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"after stage 50: the warden-mother names the tender if the player brings nothing"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the pools and the leeches"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"the root"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"Mee-Vei at night"}
-{"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"the trail"}
+{"quest_id":"quest.main.mq04","section":"ladder","ord":2,"value":"after stage 50: the tribe speaker names the tree-minder if the player brings nothing"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":0,"value":"the tending-ground and the leeches"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":1,"value":"the cut root"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":2,"value":"the tree-minder at night"}
+{"quest_id":"quest.main.mq04","section":"nodes","ord":3,"value":"the sap-workshop"}
 {"quest_id":"quest.main.mq04","section":"nodes","ord":4,"value":"the camp"}
-{"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"who sent the cutters (the cipher note goes to the Reed, MQ05)"}
+{"quest_id":"quest.main.mq04","section":"openQuestions","ord":0,"value":"who sent the cell (the Reed holds a name, MQ05)"}
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":1,"value":"whether the tree will open"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the cut root (gum)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"gum drips on the reeds south of the village (22,-5)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the cracked jar at a reed bed (22,-7)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the sunk skiff south of Longmont (26,-8)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":4,"value":"the camp on its rise (28,-7)"}
-{"quest_id":"quest.main.mq05","section":"objections","ord":0,"value":"Kaska-Meen: outsiders at a tree are what closed it (answered by the gum: the cutters were outsiders, and watchers would have seen them)"}
-{"quest_id":"quest.main.mq05","section":"objections","ord":1,"value":"Kaska-Meen: the Reed leaks (true; answered only by the player's word to find the leak)"}
-{"quest_id":"quest.main.mq05","section":"objections","ord":2,"value":"Ei-Tuja: a reading for nothing is a reading against himself (answered by a price)"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"the sap-workshop floor"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"gum drips through the village reeds"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the cell's camp"}
+{"quest_id":"quest.main.mq05","section":"objections","ord":0,"value":"Kaska-Meen: outsiders at a tree are what hurt it (answered by the cut roots: outsiders cut them, and only a watcher who knew would have seen them cut)"}
+{"quest_id":"quest.main.mq05","section":"objections","ord":1,"value":"Ei-Tuja: a reading for nothing is a reading against himself (answered by a price, or by the player's distinction)"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}

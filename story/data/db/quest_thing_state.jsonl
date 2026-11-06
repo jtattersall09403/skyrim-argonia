@@ -25,86 +25,47 @@
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"before-70","value":"feverish; say they ate at the fire stand"}
 {"quest_id":"quest.local.lh38","things_ord":9,"state":"all","value":"Tsono-Ra's work spot"}
 {"quest_id":"quest.local.lh38","things_ord":10,"state":"all","value":"inZone; entering it unseen or with leave"}
-{"quest_id":"quest.main.mq01","things_ord":0,"state":"after-30","value":"scattered; the courier's body stays for MQ03"}
-{"quest_id":"quest.main.mq01","things_ord":0,"state":"before-30","value":"at work"}
-{"quest_id":"quest.main.mq01","things_ord":1,"state":"after-30","value":"burnt (the whole roll disabled, a burnt one enabled)"}
-{"quest_id":"quest.main.mq01","things_ord":1,"state":"before-30","value":"whole"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"full of pool feed"}
-{"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"locked"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-30","value":"Cuts-the-Old-Knot disabled when her scene ends; two cultists hold the Pusbottom lane, two cut the root"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"at-30","value":"enabled"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"before-30","value":"disabled"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-30","value":"burning"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-90","value":"out"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-30","value":"absent"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"eggs grey"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"before-90","value":"eggs warm"}
-{"quest_id":"quest.main.mq01","things_ord":7,"state":"all","value":"half full of sap"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-50","value":"dark"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"before-50","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq01","things_ord":10,"state":"after-50","value":"at Hereguard"}
-{"quest_id":"quest.main.mq01","things_ord":10,"state":"before-50","value":"on the docks"}
-{"quest_id":"quest.main.mq01","things_ord":11,"state":"all","value":"disabled"}
-{"quest_id":"quest.main.mq01","things_ord":12,"state":"all","value":"disabled"}
-{"quest_id":"quest.main.mq01","things_ord":13,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq01","things_ord":14,"state":"all","value":"given at e-keeper"}
-{"quest_id":"quest.main.mq01","things_ord":15,"state":"all","value":"given at e-witness"}
-{"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"after-40","value":"gone"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-40","value":"on watch"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-40","value":"disabled"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"before-40","value":"on the planks"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"cut low and clean"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"all","value":"sealed with black gum"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"empty"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"all","value":"black gum"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"door unlocked"}
-{"quest_id":"quest.main.mq03","things_ord":9,"state":"all","value":"carried"}
-{"quest_id":"quest.main.mq03","things_ord":10,"state":"all","value":"hiding"}
-{"quest_id":"quest.main.mq03","things_ord":11,"state":"all","value":"disabled"}
-{"quest_id":"quest.main.mq03","things_ord":12,"state":"all","value":"locked"}
-{"quest_id":"quest.main.mq03","things_ord":13,"state":"all","value":"the purse entered in her own hand"}
-{"quest_id":"quest.main.mq03","things_ord":14,"state":"all","value":"the player's line blank"}
-{"quest_id":"quest.main.mq03","things_ord":15,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":16,"state":"all","value":"fog"}
-{"quest_id":"quest.main.mq03","things_ord":17,"state":"all","value":"the pardon's terms"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"nightly"}
-{"quest_id":"quest.main.mq04","things_ord":2,"state":"after-50","value":"per the ending's parent"}
-{"quest_id":"quest.main.mq04","things_ord":2,"state":"before-50","value":"dark"}
-{"quest_id":"quest.main.mq04","things_ord":3,"state":"all","value":"off until an ending"}
-{"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"disabled"}
-{"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"on the root until killed or burnt"}
-{"quest_id":"quest.main.mq04","things_ord":7,"state":"all","value":"visible"}
-{"quest_id":"quest.main.mq04","things_ord":8,"state":"all","value":"sealed with black gum and washed"}
-{"quest_id":"quest.main.mq04","things_ord":9,"state":"all","value":"full of sap"}
-{"quest_id":"quest.main.mq04","things_ord":10,"state":"all","value":"cracked, gum on its lip"}
-{"quest_id":"quest.main.mq04","things_ord":11,"state":"all","value":"sunk"}
-{"quest_id":"quest.main.mq04","things_ord":12,"state":"after-40","value":"cleared or robbed"}
-{"quest_id":"quest.main.mq04","things_ord":12,"state":"before-40","value":"occupied"}
-{"quest_id":"quest.main.mq04","things_ord":13,"state":"all","value":"sealed"}
-{"quest_id":"quest.main.mq04","things_ord":14,"state":"all","value":"disabled until e-guarded"}
-{"quest_id":"quest.main.mq04","things_ord":15,"state":"all","value":"given at e-reconciled"}
-{"quest_id":"quest.main.mq04","things_ord":16,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"in service"}
-{"quest_id":"quest.main.mq05","things_ord":1,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":2,"state":"all","value":"on her desk"}
-{"quest_id":"quest.main.mq05","things_ord":3,"state":"after-20","value":"dead (Foolhardy confidence on the NPC_ record; none flees)"}
-{"quest_id":"quest.main.mq05","things_ord":3,"state":"at-20","value":"enabled"}
-{"quest_id":"quest.main.mq05","things_ord":3,"state":"before-20","value":"disabled"}
-{"quest_id":"quest.main.mq05","things_ord":4,"state":"all","value":"in a clerk's hand"}
-{"quest_id":"quest.main.mq05","things_ord":5,"state":"after-30","value":"at the gate or dead"}
-{"quest_id":"quest.main.mq05","things_ord":5,"state":"before-30","value":"at the landing"}
-{"quest_id":"quest.main.mq05","things_ord":6,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":7,"state":"all","value":"locked"}
-{"quest_id":"quest.main.mq05","things_ord":8,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":9,"state":"all","value":"swept"}
-{"quest_id":"quest.main.mq05","things_ord":10,"state":"all","value":"held"}
-{"quest_id":"quest.main.mq05","things_ord":11,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":12,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq01","things_ord":0,"state":"after-90","value":"crew and gang off (MQ01's crew parent disabled)"}
+{"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}
+{"quest_id":"quest.main.mq01","things_ord":1,"state":"after-40","value":"the courier dead at the fire"}
+{"quest_id":"quest.main.mq01","things_ord":1,"state":"before-40","value":"alive"}
+{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"present until the strike"}
+{"quest_id":"quest.main.mq01","things_ord":3,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey, the uxith dark)"}
+{"quest_id":"quest.main.mq01","things_ord":3,"state":"at-40","value":"attacked (fire in the huts)"}
+{"quest_id":"quest.main.mq01","things_ord":3,"state":"before-40","value":"orderly"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-40","value":"withdrawn (light out)"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"before-40","value":"lit"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting and one at the rowboat"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"at-40","value":"enabled"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-40","value":"disabled"}
+{"quest_id":"quest.main.mq01","things_ord":6,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq01","things_ord":7,"state":"all","value":"as the ledger says"}
+{"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"after-20","value":"gone with the survivors"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-20","value":"at the shore"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"at-50","value":"on"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"before-50","value":"off"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"guarded"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn, the minder sheltered"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn, the minder gone"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
+{"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present until their stage"}
+{"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"used"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present until the jars are taken"}
+{"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"full"}
+{"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
+{"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}
+{"quest_id":"quest.main.mq05","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":3,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":4,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.mr.mr01","things_ord":0,"state":"all","value":"fresh water"}
 {"quest_id":"quest.mr.mr01","things_ord":1,"state":"all","value":"rock salt from upriver, not the works"}
 {"quest_id":"quest.mr.mr01","things_ord":2,"state":"all","value":"carved; read with Vees-Wai"}

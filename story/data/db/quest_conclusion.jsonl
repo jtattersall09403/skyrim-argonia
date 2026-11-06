@@ -4,16 +4,13 @@
 {"quest_id":"quest.local.lh38","ord":0,"id":"c1","statement":"Something in the spring, not the food, is making people sick."}
 {"quest_id":"quest.local.lh38","ord":1,"id":"c2","statement":"The courier did not leave; he was murdered and hidden in the spring."}
 {"quest_id":"quest.local.lh38","ord":2,"id":"c3","statement":"Reeh-Shaal killed him."}
-{"quest_id":"quest.main.mq01","ord":0,"id":"c1","statement":"The attackers came for the satchel and the Hist's sap, not for the gang."}
-{"quest_id":"quest.main.mq01","ord":1,"id":"c2","statement":"The clutch died because the root was cut."}
-{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was led by someone the Veiled Reed trained."}
-{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"The overseer sold the gang's place at noon."}
-{"quest_id":"quest.main.mq03","ord":2,"id":"c3","statement":"The root was cut by people who came ready to harvest sap."}
-{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The leeches did not close the tree."}
-{"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"Mee-Vei did not cut the root."}
-{"quest_id":"quest.main.mq04","ord":2,"id":"c3","statement":"The cult cut it, and the sap is at the camp."}
-{"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"Someone in Helstrom sold the Reed's message to the cult."}
-{"quest_id":"quest.main.mq05","ord":1,"id":"c2","statement":"Kaska-Meen will yield only to the wound itself, or to a reading that lets her yield without shame."}
+{"quest_id":"quest.main.mq01","ord":0,"id":"c1","statement":"The attackers came for the courier's satchel and for the cutting, not for the gang."}
+{"quest_id":"quest.main.mq01","ord":1,"id":"c2","statement":"The clutch died because the cutting's roots were cut, not because the cutting withdrew."}
+{"quest_id":"quest.main.mq03","ord":0,"id":"c1","statement":"The attack was one cell led by the woman with the cord, who came for the satchel and for the cutting."}
+{"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"The cut was made by hands the Reed taught."}
+{"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The root was cut by strangers who used the sap-workshop, not by Pays-Late."}
+{"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The leeches are an effect of the spilled sap, not the cause of the closing."}
+{"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"The two parties are each half right, and the difference between a Hist turning and a Hist cut is the player's to carry."}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"c2","statement":"The salt comes up from a breach below the village."}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"c3","statement":"The founders cut the breach to kill a rival grove."}

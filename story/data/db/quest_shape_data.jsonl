@@ -19,34 +19,36 @@
 {"quest_id":"quest.local.lh38","section":"source","value":"ref.lh38.courier-body"}
 {"quest_id":"quest.local.lh38","section":"spread","value":"the spring water, drunk and used for cooking"}
 {"quest_id":"quest.local.lh38","section":"timeline"}
-{"quest_id":"quest.main.mq01","section":"aftermath","value":"the roll burns: nobody can prove what anyone owes; the gang scatters to Hereguard, and MQ03 decides whether their months stand"}
+{"quest_id":"quest.main.mq01","section":"aftermath","value":"The roll burns: nobody can prove what anyone owes; the gang scatters on the shore, and MQ03 decides whether their months stand. Three places within a day change: the camp (the cutting withdrawn, the clutch grey, the uxith dark), the barge (the crew parent off), the paddies behind the camp (the families on the shore)."}
 {"quest_id":"quest.main.mq01","section":"beats"}
-{"quest_id":"quest.main.mq01","section":"bondageSheet","value":"the Owing roll (story/lore/topics/labour-and-bondage.md): months owed, months added for food; the holder a Lilmoth contractor, the overseer Wuleen-Sei; the exit is paying down, which food prevents"}
-{"quest_id":"quest.main.mq01","section":"breakPoints","value":"none the player can stop: the cut is made before the player reaches the shed; what the player chooses is who lives to say so"}
-{"quest_id":"quest.main.mq01","section":"costToTheBound","value":"the two washed-out gang members, kept years from their Hist; the player, whose line is blank and so can never be paid down"}
-{"quest_id":"quest.main.mq01","section":"rite","value":"the Hist's closing: the shrine-light goes out and the sap stops at the bowl, before its two tenders"}
-{"quest_id":"quest.main.mq03","section":"guiltyParties","value":"Cuts-the-Old-Knot (unnamed yet: \"Reed-trained\"); her two root-cutters; Wuleen-Sei, who took the purse"}
-{"quest_id":"quest.main.mq03","section":"leads","value":"the body leads to the strap in the water; the root to the gum; the saved survivor (Deesh-Duun saw her run, or Sal-Sei knows the shed) or the dock wardens' talk leads to the cabin; any two nodes lead to the third"}
+{"quest_id":"quest.main.mq01","section":"bondageSheet","value":"The Owing roll (labour-and-bondage §2): the debt is months owed, with months added for food; the holder is a Lilmoth debt-labour broker who bought the gang's months from earlier holders (drift 2, transferable) and hires it to Hereguard Plantation; the overseer reads the roll; the exit in law is working the months off, and in practice the food months outrun the work, so the gang families are born into it. The bound want to be home under their own Hist, and have the right to refuse help: the washed-out woman will not leave the gang while her daughter owes."}
+{"quest_id":"quest.main.mq01","section":"breakPoints","value":"none the player can stop: the cell cuts the roots at dusk as the player is at the fire; the player can only choose which one of the three witnesses lives"}
+{"quest_id":"quest.main.mq01","section":"costToTheBound","value":"Two of the gang are visibly washed out from years away from their Hist, and their cutting is cut; the player's own line is blank, so no amount of work can pay it down. Whoever the player does not reach in the burning camp dies, and the gang families lose their clutch."}
+{"quest_id":"quest.main.mq01","section":"rite","value":"The cutting's withdrawal: the light in the cutting goes out, the sap stops, the uxith goes dark, in front of the gang families, with the harvest at its roots as the officiant and the severed clutch as the sign."}
+{"quest_id":"quest.main.mq03","section":"guiltyParties","value":"Cuts-the-Old-Knot and her cell (unnamed to the player until the sap-dreams); the Reed's own teaching, which Nesh-Deeka hides"}
+{"quest_id":"quest.main.mq03","section":"leads","value":"the camp's cut leads to the survivors; any survivor leads to the woman with the cord; Nesh-Deeka's silence at the cut leads to the Reed's own teaching; any two nodes lead to the third"}
 {"quest_id":"quest.main.mq03","section":"nodes"}
-{"quest_id":"quest.main.mq03","section":"reckoning","value":"Nesh-Deeka files what the player found; the player decides whether Wuleen-Sei is named in the file"}
+{"quest_id":"quest.main.mq03","section":"reckoning","value":"Nesh-Deeka files what the player found and the player decides how much of the woman with the cord to give her"}
 {"quest_id":"quest.main.mq03","section":"timeline"}
-{"quest_id":"quest.main.mq03","section":"wrong","value":"the courier was killed for his purse by river pirates"}
+{"quest_id":"quest.main.mq03","section":"wrong","value":"the courier was killed for his purse and the fire was an accident"}
 {"quest_id":"quest.main.mq04","section":"cure","value":"the sap returned to the root and the cut washed (reconciled), or the tree guarded by the An-Xileel (guarded)"}
-{"quest_id":"quest.main.mq04","section":"fate","value":"the sap is at the camp in eleven jars, waiting for a boat; the cutters are alive"}
-{"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs in the lowest pool first, the upper pools last, the tree itself never sick, only closed"}
+{"quest_id":"quest.main.mq04","section":"fate","value":"the sap is at the camp in jars, waiting for a boat; the two men are alive"}
+{"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs in the lowest pool first, the upper pools last; the tree itself is never sick, only closed"}
 {"quest_id":"quest.main.mq04","section":"ladder"}
-{"quest_id":"quest.main.mq04","section":"leads","value":"the root leads to the trail; Mee-Vei (spied on or persuaded) leads to the three cutters and the south; the village children (BM&V's, 084A85, 084A91) saw a skiff, a second lead to the trail"}
-{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leech sickness, and a tender who cut the root","test":"the dead leech full of sap (k1); the tender seen washing the cut (k4)"}
+{"quest_id":"quest.main.mq04","section":"leads","value":"the root leads to the workshop; the tree-minder (spied on or persuaded) leads to the workshop and the gum; the gum leads to the camp"}
+{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leech sickness, and a tree-minder who cut the root","test":"the leech fat on sap (k4); the minder seen washing the cut (k1)"}
 {"quest_id":"quest.main.mq04","section":"nodes"}
 {"quest_id":"quest.main.mq04","section":"openQuestions"}
-{"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.nest-cold"}
-{"quest_id":"quest.main.mq04","section":"source","value":"the cut root above the pools"}
-{"quest_id":"quest.main.mq04","section":"spread","value":"sap leaking into the pools, the leeches breeding on it"}
+{"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.chimes-still"}
+{"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Listening-Tree, sealed with black gum"}
+{"quest_id":"quest.main.mq04","section":"spread","value":"the spilled sap, the leeches that breed on it, the uxith that goes dark"}
 {"quest_id":"quest.main.mq04","section":"trail"}
-{"quest_id":"quest.main.mq05","section":"aftermath","value":"watchers admitted: the Reed opens its Helstrom office to the player and Kaska-Meen is cold; refused: Kaska-Meen becomes the player's guide to the city's trees and the Reed's file says the player failed; Ei-Tuja's reading: both half-satisfied, and Ei-Tuja is owed"}
-{"quest_id":"quest.main.mq05","section":"leverage","value":"the black gum and the jars from the Hatching Pools (if the player kept them, or the gum sample); the copy that shows a leak in the Reed's own office; gold for Ei-Tuja"}
+{"quest_id":"quest.main.mq05","section":"aftermath","value":"minders hold: Kaska-Meen guides the player to the city's trees and the Reed's file says the player failed; the Nisswo's reading: both half-satisfied and Ei-Tuja is owed; the distinction: both half-satisfied, and the city knows the Reed sent the player. Three places change: the grove, the hall's outer room (talk of the player), the debating house; a greeting changes in each."}
+{"quest_id":"quest.main.mq05","section":"deadline","value":"the grove sits that evening; the Root Talk is in the season of Hist-Tsoko, and the dispute will go to it unanswered if the player says nothing"}
+{"quest_id":"quest.main.mq05","section":"leverage","value":"the player's own sight of the camp's cut roots, the dead clutch (MQ01) and the cut root, the gum and the jars (MQ04); the distinction between a Hist turning and its roots cut"}
 {"quest_id":"quest.main.mq05","section":"objections"}
-{"quest_id":"quest.main.mq05","section":"sides","value":"Never-Writes-Twice for the Veiled Reed (watchers at the trees); Kaska-Meen for the Tree-Minders (no outsider at any tree); Ei-Tuja, a broker who can give either side a reading"}
+{"quest_id":"quest.main.mq05","section":"revealOrder","value":"the hall's empty seat first (the city's own refusal to fill it), then Kaska-Meen's case (the good one), then Ei-Tuja's (half right), then what the player saw"}
+{"quest_id":"quest.main.mq05","section":"sides","value":"Kaska-Meen for the Tree-Minders: no outsider at any tree; Ei-Tuja for the Nisswo, a broker who can give either side a reading and says the tree is a mind to be read; the player carries the Reed's account and is its denied voice. Each side wants, gives and never gives: Kaska-Meen wants the trees watched by tree-minders only, will give a hearing and a guide, never an outsider at a tree; Ei-Tuja wants the debate kept open, will give a reading, never a clamp."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
 {"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive in the wet season"}

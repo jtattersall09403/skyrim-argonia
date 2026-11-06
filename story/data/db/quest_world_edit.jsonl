@@ -26,9 +26,11 @@
 {"quest":"quest.main.mq01","edit":"we.clean.hereguardplantation"}
 {"quest":"quest.main.mq01","edit":"we.clean.lilmoth"}
 {"quest":"quest.main.mq01","edit":"we.mq01.barge-crew"}
+{"quest":"quest.main.mq01","edit":"we.mq01.broker"}
 {"quest":"quest.main.mq01","edit":"we.mq01.camp"}
 {"quest":"quest.main.mq01","edit":"we.mq01.cell"}
 {"quest":"quest.main.mq01","edit":"we.mq01.doors"}
+{"quest":"quest.main.mq01","edit":"we.mq01.families"}
 {"quest":"quest.main.mq01","edit":"we.mq01.gang"}
 {"quest":"quest.main.mq01","edit":"we.mq01.no-valenwood"}
 {"quest":"quest.main.mq01","edit":"we.mq01.no-welcome"}
@@ -53,6 +55,8 @@
 {"quest":"quest.main.mq05","edit":"we.mq05.dispute"}
 {"quest":"quest.main.mq05","edit":"we.mq05.escort"}
 {"quest":"quest.main.mq05","edit":"we.mq05.grove"}
+{"quest":"quest.main.mq05","edit":"we.mq05.hall-name"}
+{"quest":"quest.main.mq05","edit":"we.mq05.sweeper"}
 {"quest":"quest.main.mq05","edit":"we.mq05.throne"}
 {"quest":"quest.tg.tg01","edit":"we.clean.dock2"}
 {"quest":"quest.tg.tg01","edit":"we.clean.lilmoth"}
