@@ -9,6 +9,7 @@ switch (args.FirstOrDefault())
     case "cell": CellStudy.Run(args[1], args[2]); break;
     case "survey": Survey.Run(args[1..]); break;
     case "seat": Seat.Run(args[1..]); break;
+    case "inspect": Inspect.Run(args[1], args[2..]); break;
     case "quests": Study2.Run(args[1], args[2..]); break;
     default: Console.Error.WriteLine("ArgoniaPlugin seed <out.esp> <plugins...> | list <esp> <md> | survey <plugins...> | study|quests|cell|find ..."); return 2;
 }

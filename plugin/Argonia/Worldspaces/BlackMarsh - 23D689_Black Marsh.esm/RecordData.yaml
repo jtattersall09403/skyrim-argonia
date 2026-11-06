@@ -40,7 +40,7 @@ TopCell:
     - 0x400
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 5403, -6109, 66
+      Position: 30901, -2903, 3
   MajorFlags:
   - Persistent
   - 0x40000

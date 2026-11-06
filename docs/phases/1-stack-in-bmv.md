@@ -19,11 +19,10 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   (it is not Start Game Enabled, in Skyrim.esm or LAL), and LAL adds a stage-0 fragment to `MQ101` that diverts to its
   own chargen quest. `Argonia.esp` does the same with nothing of Helgen kept: its `MQ101` override is one start-up
   stage 0, no aliases, scenes or Helgen stages, whose fragment (`papyrus/ARG_QF_MQ101.psc`) takes everything away,
-  moves the player to our XMarker `ARG_OpeningMarker` on Lilmoth's dock walkway (BM&V `BlackMarsh` worldspace, cell `Dock1` (1,-2), at
-  5403,-6109,66, a triangle centre of BM&V's navmesh 079823; a persistent reference in the world's persistent cell; re-derived 2026-11-05 with BM&V staged whole: Black Marsh North.esp overrides the `BlackMarsh` worldspace and cell `Dock1` but not navmesh 079823 or the pier, so the marker stays put on the winning navmesh at its height, our worldspace override starts from Black Marsh North's record and that plugin is a master after Black Marsh.esm; the read-back checks all three),
+  moves the player to our XMarker `ARG_OpeningMarker` on Lilmoth's dock (BM&V `BlackMarsh` worldspace, cell `005A21` (7,-1), one of Lilmoth's cells in the census, at 30901,-2903,3: triangle 14's centre of BM&V's navmesh 07EEF8, the winner, on the fishing dock beside Black Marsh North's "Lilmoth Dock" map marker 082193 at 30909,-2852; a persistent reference in the world's persistent cell; our worldspace override starts from Black Marsh North's record and that plugin is a master after Black Marsh.esm; the read-back checks the navmesh and masters). **Moved 2026-11-06 (owner's walk: New Game landed at Hereguard Plantation):** the old spot, cell `Dock1` (1,-2) at 5403,-6109, is Hereguard Plantation's dock (its map marker 09348E at 5332,-3634), not Lilmoth's,
   starts `ARG_Opening` and stops `MQ101`; `ARG_Opening`'s script (`papyrus/ARG_StartQuestScript.psc`) then, in game
-  mode, forces third person, opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
-  (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`) and sets stage 10, the one journal line ("I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.", through
+  mode, forces third person, strips the player (`UnequipAll`, `RemoveAllItems`: the Player NPC's default outfit `ArmorIronAllOutfit`, with its iron helmet, is put on when the player's 3D loads, after stage 0's strip, so the owner's race menu showed a helmet, 2026-11-06), opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
+  (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`), gives the **test kit for the walk phases** (removed with the authored opening in Phase 3: the Imperial sword `0135B8` and Imperial light shield `013AB2`, no Nordic item, and fourteen Magic Expanded spells from `Magic.esp`, which has no Levitate: Mark, Recall, Jump, Slowfall, Water Walking, Fire Touch, Damage Health, Force, Burden, Teleport, Analyze, Dispel Self, Soul Trap Mass, Bound Shield) and sets stage 10, the one journal line ("I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.", through
   text-review), forcing third person again (third person is the default: `fMinCurrentZoom` in `stack.ps1` stops the
   zoom before first person). **New Game did nothing (owner, 2026-11-06), fixed:** the menu stayed up with its music
   because the player was never moved into a cell. MQ101's stage 0 had no log entry, and a quest fragment binds to a
@@ -56,6 +55,11 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   CompanionsJorrvaskrTheftNode) hold GetVMQuestVariable conditions that Spriggit 0.41's YAML loses one of; `make
   plugin` re-copies their conditions from the load order's winners after deserialising, and the read-back proves
   the count against the winners.
+- **Weapon drawn: walk or sprint, no run (owner's walk, 2026-11-06): the collection's design, kept.** AMMCO.esp (Arena
+  Movement, Distar edit, loaded after Dark Souls Movement) wins `NPC_1HM_MT` and `NPC_2HM_MT` with run speed equal to walk
+  (forward 80.1, back 45.45 and 71.93), so a drawn weapon walks; Dark Souls Movement's own 300 run loses. The mod's summary
+  (Nexus 53528): "you can walk, you can sprint, you just can't run around". Its Mern edit (1HM run about 170) is the
+  faster variant, a one-row `pick` in `stack.py` if the owner wants it.
 - **The map.** Skyrim's world map shows BM&V's worldspace when the player is in it (BM&V's own map if it ships
   one; otherwise the vanilla map of that worldspace). Doors and boats to Skyrim are left as BM&V made them.
   Read 2026-11-05: BM&V's `BlackMarsh` worldspace carries map data (camera heights 50000 to 80000, bounds) and

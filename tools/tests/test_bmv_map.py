@@ -21,4 +21,4 @@ def test_png_round_trip():
 
 def test_opening_marker_read_from_plugin():
     m = [x for x in build.markers() if x["edid"] == "ARG_OpeningMarker"]
-    assert len(m) == 1 and m[0]["ws"] == "23D689:Black Marsh.esm" and (m[0]["x"], m[0]["y"]) == (5403.0, -6109.0)
+    assert len(m) == 1 and m[0]["ws"] == "23D689:Black Marsh.esm" and (m[0]["x"], m[0]["y"]) == (30901.0, -2903.0)

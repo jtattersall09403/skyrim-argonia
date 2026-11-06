@@ -9,9 +9,16 @@ using Mutagen.Bethesda.Skyrim;
 static class Generate
 {
     static readonly ModKey Ours = ModKey.FromFileName("Argonia.esp");
-    // The opening's spot: a navmesh triangle's centre on Lilmoth's dock walkway, BM&V cell Dock1 (1,-2), NAVM 079823
-    // (still the winner with Black Marsh North.esp loaded; the read-back checks it).
-    static readonly P3Float Spot = new(5403f, -6109f, 66f);
+    // The opening's spot: a navmesh triangle's centre on Lilmoth's dock, BM&V cell 005A21 (7,-1), NAVM 07EEF8 triangle 14,
+    // on the fishing dock (BYOHFishDock01 005A21's 02A20A) beside Black Marsh North's "Lilmoth Dock" map marker 082193
+    // (30909,-2852). Cell Dock1 (1,-2) was Hereguard Plantation's dock (owner's walk, 2026-11-06). The read-back checks it.
+    static readonly P3Float Spot = new(30901f, -2903f, 3f);
+
+    static FormLink<ISkyrimMajorRecordGetter> Fk(string k) => new(FormKey.Factory(k));
+    // Magic Expanded (Magic.esp 5.1) spells in the test kit, by editor id: Mark, Recall (aaaMarkRecallSpell), Jump (it has
+    // no Levitate), Slowfall, Water Walking, Fire Touch, Damage Health (Entropic Bolt), Force, Burden, Teleport, Analyze,
+    // Dispel Self, Soul Trap Mass, Bound Shield.
+    static readonly string[] TestSpells = ["000A8C", "000A8E", "0009EE", "00095C", "000A9B", "000A0A", "0009BE", "000AA5", "0009FB", "0009F2", "000ACD", "000991", "000823", "0009D3"];
 
     public static void Run(string outPath, string[] paths)
     {
@@ -70,6 +77,11 @@ static class Generate
                         new ScriptObjectProperty { Name = "StartMarker", Object = marker.ToLink() },
                         new ScriptObjectProperty { Name = "Tunic", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03C9FE:Skyrim.esm")) },
                         new ScriptObjectProperty { Name = "Footwraps", Object = new FormLink<ISkyrimMajorRecordGetter>(FormKey.Factory("03CA00:Skyrim.esm")) },
+                        // TEST KIT for the walk phases (owner, 2026-11-06), removed with the authored opening (Phase 3):
+                        // an Imperial sword and light shield (decision 0006: no Nordic item) and a set of Magic Expanded spells.
+                        new ScriptObjectProperty { Name = "TestWeapon", Object = Fk("0135B8:Skyrim.esm") }, // Imperialsword
+                        new ScriptObjectProperty { Name = "TestShield", Object = Fk("013AB2:Skyrim.esm") }, // ArmorImperialLightShield
+                        new ScriptObjectListProperty { Name = "TestSpells", Objects = TestSpells.Select(k => new ScriptObjectProperty { Object = Fk(k + ":Magic.esp") }).ToExtendedList() },
                     },
                 },
             },

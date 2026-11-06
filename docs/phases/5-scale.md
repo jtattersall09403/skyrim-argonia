@@ -14,3 +14,6 @@ band; items. Each milestone is one owner test.
   minor, regional and standalone quests for BM&V's places towards Morrowind's density (old design target: about 20
   quests per km²), planned at this point from what Phase 2's capacity measure and ledger show is free; written with the
   same skills and the same whole-set checks so they never clash with the authored lines.
+- **The world map (owner, 2026-11-06: leave it until this phase).** The in-game world map is still Skyrim's map with
+  BM&V's markers drawn on it, and Black Marsh North.esp's map marker for Lilmoth (`0934A4`) is named "Lolmoth". Make our
+  own map of Black Marsh (or fix the one BM&V ships, if it has one) and correct the marker's name, as part of this phase.

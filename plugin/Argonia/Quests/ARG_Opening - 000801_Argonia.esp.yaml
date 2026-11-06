@@ -11,6 +11,43 @@ VirtualMachineAdapter:
       Name: StartMarker
       Object: 000802:Argonia.esp
     - MutagenObjectType: ScriptObjectProperty
+      Name: TestShield
+      Object: 013AB2:Skyrim.esm
+    - MutagenObjectType: ScriptObjectListProperty
+      Name: TestSpells
+      Objects:
+      - Name: ''
+        Object: 000A8C:Magic.esp
+      - Name: ''
+        Object: 000A8E:Magic.esp
+      - Name: ''
+        Object: 0009EE:Magic.esp
+      - Name: ''
+        Object: 00095C:Magic.esp
+      - Name: ''
+        Object: 000A9B:Magic.esp
+      - Name: ''
+        Object: 000A0A:Magic.esp
+      - Name: ''
+        Object: 0009BE:Magic.esp
+      - Name: ''
+        Object: 000AA5:Magic.esp
+      - Name: ''
+        Object: 0009FB:Magic.esp
+      - Name: ''
+        Object: 0009F2:Magic.esp
+      - Name: ''
+        Object: 000ACD:Magic.esp
+      - Name: ''
+        Object: 000991:Magic.esp
+      - Name: ''
+        Object: 000823:Magic.esp
+      - Name: ''
+        Object: 0009D3:Magic.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: TestWeapon
+      Object: 0135B8:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
       Name: Tunic
       Object: 03C9FE:Skyrim.esm
   FileName: ''
