@@ -37,5 +37,30 @@ Round 1: awaiting the reviewer.
 
 ## Chainbreakers: BC01, BC02, BC03
 
-Round 1: awaiting the reviewer. The checker's procedure-word warnings stand against BC01 (hearing, witnesses) and
-BC03 (ledger).
+### Round 1 (2026-11-06), planner's rulings
+
+Must-fix:
+- B1 BC01: no hearing, no road witnesses, no "take a month" ending. Never-Sold makes her point to the steward in one
+  exchange. The estate's debt book is only a thing the player steals (sneak or lockpick, the vibe licenses books on a
+  former Archein estate) and uses to bring the buy-out down. Cutting her loose is slipping her into the channel at
+  night (she cannot drown, labour §1) while the player keeps the two estate men off her (sneak, blade, bow). One
+  choice, two endings; no boat chase.
+- B2 we.clean.road: add to its targets the Lurkers 060C61, 060C62 and the Dwemer ballistas 048FD0, 048FD1 (disabled);
+  the boars 060C5E, 060C5F, 05D7DC, 05D7BD, 120D5C and Ja Tal 16BF58 at a fixed level. No new edit.
+- B3: the quest rows of BC01-03 rewritten from quest_adaptation (settlement, region, anchors to the hosts); the shapes
+  FRAUD, MISSING and RECKONING dropped; line_spirit_beat chainbreakers ord1 rewritten to the fire; Ussa-Rekh's npc row
+  is the Soulrest broker, not an envoy at the Rose.
+- B4 BC02: the place is the outer post's cells, not the Rose's lower levels; the sealed door and the old dead cut
+  (they are BC04's Rose); the two heirs who go in cut; each cell reached by a skill (a lock, a collapsed way to climb,
+  a flooded cell to dive); the way burns shut after the first is out, said plainly.
+- B5 BC03: the side is taken by one act each: for the crew, take their owing tokens from his cabin (lockpick, sneak or
+  pickpocket the key) so they break them before him (tokens, not ledgers); for him, face the crew in a standard
+  brawl. Each side's cost is a concrete loss: his hire, or the crew's trade.
+- N1: the line's promise becomes "by freeing its people and burying its dead"; the fire carries the line.
+- N2: BC03 off a barge: Ussa-Rekh on Soulrest's open dock among the crews (no repeat of MQ01's barge or MQ03's
+  bargain).
+- N3: each choice changes only a greeting or a line later; the woman lives in every BC01 ending.
+- N4: one start host per quest; the fire's cause stated or plainly left unsaid.
+- N5: the crossing-keeper and his toll post cut; Never-Sold's npc row matches her host (BM&V's House).
+
+Settled: (none yet)
