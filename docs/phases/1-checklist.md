@@ -28,3 +28,12 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-i
   - [x] the compile log is clean and each script is laid, byte-identical to the build
   - [x] `Argonia.esp` enabled and last in `plugins.txt`, its ini beside it, all byte-identical to the build
 - [x] Post the owner's walk issue: both cards, Vanilla Skyrim then Argonia (#49)
+
+## Before the walk (added 2026-11-06)
+
+- [x] The heartbeat collector installed (without it the play page stopped the machine 30 minutes after each start)
+- [x] Auto sign-in of the Administrator at boot (owner-approved: Sunshine could start no card without a session)
+- [x] Skyrim's ini files made from the game's presets (the launcher never ran on this machine; every card failed)
+- [ ] **In progress:** warm the Community Shaders cache to the main menu (owner's request), and read every DLL's load in SKSE's log
+- [ ] Tell the owner on #49 the machine is ready
+
