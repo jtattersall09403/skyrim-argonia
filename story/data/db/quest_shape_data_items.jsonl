@@ -70,8 +70,9 @@
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the drips to the leech water"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the bent reeds on the far side"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":4,"value":"the camp"}
-{"quest_id":"quest.main.mq05","section":"objections","ord":0,"value":"Kaska-Meen: outsiders at a tree are what hurt it (answered by the cut roots: outsiders cut them, and only a watcher who knew would have seen them cut)"}
-{"quest_id":"quest.main.mq05","section":"objections","ord":1,"value":"Ei-Tuja: a Hist's turning is its own act, and to clamp it is to read it wrong (answered by the player's distinction between a turning and a cut)"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"the landing's lodge keeper: keep to the sounded way and carry a depth stick; the mud holds a standing man fast"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":1,"value":"the gate's levy warden: the basin kills what walks in it, and the levy does not go after those who walk out"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":2,"value":"the hall's merchants: a depth stick and dried flower buds to purify water are sold in the outer room, with the warning that the way's water is a soup of suffering"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}

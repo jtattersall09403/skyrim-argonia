@@ -53,9 +53,13 @@
 {"quest_id":"quest.main.mq04","truth_ord":6,"ord":0,"value":"npc.mercantile-coast.low-reed-village.reed-hand"}
 {"quest_id":"quest.main.mq04","truth_ord":6,"ord":1,"value":"npc.nesh-deeka"}
 {"quest_id":"quest.main.mq05","truth_ord":0,"ord":0,"value":"npc.nesh-deeka"}
-{"quest_id":"quest.main.mq05","truth_ord":1,"ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
-{"quest_id":"quest.main.mq05","truth_ord":1,"ord":1,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
-{"quest_id":"quest.main.mq05","truth_ord":2,"ord":0,"value":"npc.hist-heartland.helstrom.keeper-scalded-throne-hall"}
+{"quest_id":"quest.main.mq05","truth_ord":1,"ord":0,"value":"npc.nesh-deeka"}
+{"quest_id":"quest.main.mq05","truth_ord":1,"ord":1,"value":"npc.dunmer-north.stormhold.reed-officer"}
+{"quest_id":"quest.main.mq05","truth_ord":2,"ord":0,"value":"npc.hist-heartland.helstrom.keeper-landing-lodge"}
+{"quest_id":"quest.main.mq05","truth_ord":2,"ord":1,"value":"npc.hist-heartland.helstrom.levy-warden-01"}
+{"quest_id":"quest.main.mq05","truth_ord":3,"ord":0,"value":"npc.hist-heartland.helstrom.keeper-scalded-throne-hall"}
+{"quest_id":"quest.main.mq05","truth_ord":4,"ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
+{"quest_id":"quest.main.mq05","truth_ord":4,"ord":1,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"quest_id":"quest.mr.mr01","truth_ord":0,"ord":0,"value":"Greenspring's founding families"}
 {"quest_id":"quest.mr.mr01","truth_ord":1,"ord":0,"value":"Greenspring's founding families"}
 {"quest_id":"quest.mr.mr01","truth_ord":3,"ord":0,"value":"npc.hist-heartland.greenspring.tree-minder"}

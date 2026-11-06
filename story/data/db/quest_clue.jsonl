@@ -45,9 +45,12 @@
 {"quest_id":"quest.main.mq04","ord":4,"id":"k5","form":"place","carrier":"thing.mq04.village","kind":"lead"}
 {"quest_id":"quest.main.mq04","ord":5,"id":"k6","form":"thing","carrier":"thing.mq04.sap-jars","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":6,"id":"k7","form":"place","carrier":"thing.mq04.camp","kind":"concept"}
-{"quest_id":"quest.main.mq05","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
-{"quest_id":"quest.main.mq05","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
-{"quest_id":"quest.main.mq05","ord":2,"id":"k3","form":"place","carrier":"thing.mq05.hall"}
+{"quest_id":"quest.main.mq05","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.keeper-landing-lodge"}
+{"quest_id":"quest.main.mq05","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.levy-warden-01"}
+{"quest_id":"quest.main.mq05","ord":2,"id":"k3","form":"place","carrier":"thing.mq05.way"}
+{"quest_id":"quest.main.mq05","ord":3,"id":"k4","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
+{"quest_id":"quest.main.mq05","ord":4,"id":"k5","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
+{"quest_id":"quest.main.mq05","ord":5,"id":"k6","form":"place","carrier":"thing.mq05.hall"}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"k1","form":"thing","carrier":"thing.river-fork"}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.greenspring.root-herald"}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"k3","form":"thing","carrier":"thing.sample-2"}

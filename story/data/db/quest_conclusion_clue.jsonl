@@ -46,6 +46,9 @@
 {"quest_id":"quest.main.mq05","conclusions_ord":0,"ord":0,"value":"k1"}
 {"quest_id":"quest.main.mq05","conclusions_ord":0,"ord":1,"value":"k2"}
 {"quest_id":"quest.main.mq05","conclusions_ord":0,"ord":2,"value":"k3"}
+{"quest_id":"quest.main.mq05","conclusions_ord":1,"ord":0,"value":"k4"}
+{"quest_id":"quest.main.mq05","conclusions_ord":1,"ord":1,"value":"k5"}
+{"quest_id":"quest.main.mq05","conclusions_ord":1,"ord":2,"value":"k6"}
 {"quest_id":"quest.mr.mr01","conclusions_ord":0,"ord":0,"value":"k1"}
 {"quest_id":"quest.mr.mr01","conclusions_ord":0,"ord":1,"value":"k2"}
 {"quest_id":"quest.mr.mr01","conclusions_ord":0,"ord":2,"value":"k3"}

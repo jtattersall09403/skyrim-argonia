@@ -1532,7 +1532,10 @@
 {"quest_id":"quest.main.mq05","ord":0,"value":"story/design/quests/30-main-quest.md"}
 {"quest_id":"quest.main.mq05","ord":1,"value":"story/design/quests/36-cast-roster.md"}
 {"quest_id":"quest.main.mq05","ord":2,"value":"story/design/quests/adaptation.md"}
-{"quest_id":"quest.main.mq05","ord":3,"value":"docs/research/bmv/census.md"}
+{"quest_id":"quest.main.mq05","ord":3,"value":"story/design/quests/main-line-outline.md"}
+{"quest_id":"quest.main.mq05","ord":4,"value":"story/design/quests/review/act1.md"}
+{"quest_id":"quest.main.mq05","ord":5,"value":"story/design/quests/review/slice-premises.md"}
+{"quest_id":"quest.main.mq05","ord":6,"value":"docs/research/bmv/census.md"}
 {"quest_id":"quest.main.mq06","ord":0,"value":"docs/quests/55-quest-index.md"}
 {"quest_id":"quest.main.mq06","ord":1,"value":"docs/quests/30-main-quest.md"}
 {"quest_id":"quest.main.mq07","ord":0,"value":"docs/quests/55-quest-index.md"}

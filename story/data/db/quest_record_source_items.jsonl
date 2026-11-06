@@ -34,13 +34,23 @@
 {"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5, §7, §9"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9, QA11, QA15"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md (The Scalded Throne; the Clutch of Nisswo)"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":3,"value":"story/lore/extrapolation/argonia-4e201-state.md §2.2"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":4,"value":"story/lore/topics/hist-placement.md (Helstrom)"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":5,"value":"story/lore/extrapolation/gap-register.md §6 (G6.3)"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5"}
-{"quest_id":"quest.main.mq05","source":"lore","ord":7,"value":"§9"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":3,"value":"story/lore/topics/hist-placement.md (Helstrom)"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":4,"value":"story/lore/topics/material-culture.md (tree-minder"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":5,"value":"flint vine"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":6,"value":"the interior kit)"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":7,"value":"story/lore/topics/fauna-hazards.md (giant wasps"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":8,"value":"Heart-Mud"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":9,"value":"depth sticks)"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":10,"value":"story/lore/topics/roads-and-routes-4e201.md (Helstrom is reached by river and root)"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":11,"value":"story/lore/extrapolation/argonia-4e201-state.md §2.2"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":12,"value":"story/lore/extrapolation/settlement-register.md (Helstrom)"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":13,"value":"story/lore/extrapolation/gap-register.md §6 G6.3 and §8 QA10, QA12, QA19"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":14,"value":"story/design/province-vibe.md §3-5"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":15,"value":"§7"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":16,"value":"§9"}
+{"quest_id":"quest.main.mq05","source":"lore","ord":17,"value":"story/design/quests/10-political-frame.md §6"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets","ord":0,"value":"culture.faction.many-root-conclave"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets","ord":1,"value":"culture.settlement.greenspring"}
 {"quest_id":"quest.mr.mr01","source":"cultureSheets","ord":2,"value":"culture.group.greenspring.office-holders"}

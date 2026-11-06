@@ -70,12 +70,14 @@
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"before-40","value":"at the camp"}
 {"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
-{"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}
-{"quest_id":"quest.main.mq05","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":1,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":2,"state":"after-90","value":"gone"}
+{"quest_id":"quest.main.mq05","things_ord":2,"state":"before-20","value":"absent"}
+{"quest_id":"quest.main.mq05","things_ord":2,"state":"during","value":"at the far bend"}
 {"quest_id":"quest.main.mq05","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":4,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq05","things_ord":6,"state":"all","value":"present"}
 {"quest_id":"quest.mr.mr01","things_ord":0,"state":"all","value":"fresh water"}
 {"quest_id":"quest.mr.mr01","things_ord":1,"state":"all","value":"rock salt from upriver, not the works"}
 {"quest_id":"quest.mr.mr01","things_ord":2,"state":"all","value":"carved; read with Vees-Wai"}

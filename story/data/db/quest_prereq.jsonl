@@ -1,6 +1,6 @@
 {"quest":"quest.bc.bc02","needs":"quest.bc.bc01","why":"the estate woman's mother"}
 {"quest":"quest.bc.bc03","needs":"quest.bc.bc01","why":"Never-Sold sends you"}
-{"quest":"quest.local.lq25","needs":"quest.main.mq05","why":"the beast is not on the landing while MQ05's escorts stand there"}
+{"quest":"quest.local.lq25","needs":"quest.main.mq05","why":"the landing is first met on MQ05's way in; the beast is not on it before then"}
 {"quest":"quest.main.mq03","needs":"quest.main.mq01","why":"Act I's order"}
 {"quest":"quest.main.mq04","needs":"quest.main.mq03","why":"the Reed sends the player"}
 {"quest":"quest.main.mq05","needs":"quest.main.mq04","why":"Act I's order"}

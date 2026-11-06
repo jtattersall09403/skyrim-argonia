@@ -10,7 +10,8 @@
 {"quest_id":"quest.main.mq03","ord":1,"id":"c2","statement":"With the roll burnt, nobody can claim the player, and that is what the Reed wants of them."}
 {"quest_id":"quest.main.mq04","ord":0,"id":"c1","statement":"The tree was cut, not sickened, and not by its tree-minder."}
 {"quest_id":"quest.main.mq04","ord":1,"id":"c2","statement":"The cut sap went north to the cell's camp."}
-{"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"The two parties are each half right, and the difference between a Hist turning and a Hist cut is the player's to carry."}
+{"quest_id":"quest.main.mq05","ord":0,"id":"c1","statement":"The only way in is the marsh itself, and the landing's people know how to cross it."}
+{"quest_id":"quest.main.mq05","ord":1,"id":"c2","statement":"Kaska-Meen and Ei-Tuja have each half of it, and neither has seen a cut root."}
 {"quest_id":"quest.mr.mr01","ord":0,"id":"c1","statement":"The salt works are not the cause."}
 {"quest_id":"quest.mr.mr01","ord":1,"id":"c2","statement":"The salt comes up from a breach below the village."}
 {"quest_id":"quest.mr.mr01","ord":2,"id":"c3","statement":"The founders cut the breach to kill a rival grove."}
