@@ -284,7 +284,7 @@ places people in a room with no navmesh without a navmesh edit.
 | BC01 Four Months for a Boat | Chainbreakers | 2 | blackrose | At the Chainbreakers' house in Blackrose, Never-Sold, born owing and long free, the one who remembers every bought-out name, sends you to an ex-Archein estate on the swamp road just north of the town. |
 | BC02 Names Scratched Out | Chainbreakers | 2 | blackrose | At the Rose's outer post on the edge of Blackrose, the cells under the post have caught fire. |
 | BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh works Soulrest's open dock among the crews. |
-| LQ25 The River Monster's Rent | Local quests | 1 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
+| LQ25 The River Monster | Local quests | 1 | dock5 | At Helstrom's river landing the talk is of a beast that takes boats in the deep channel. |
 | LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out into the basin to prove something to the tribe. |
 | TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit trader on the dock sends you to Tilts-The-Jug, who keeps the Chapter's desk inside the house and drinks nothing. |
 | TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In the Chapter under Pusbottom, Vasha Half-Rent gives you the job: a lockbox of pledged things beside a stilt house fallen into the canal. |

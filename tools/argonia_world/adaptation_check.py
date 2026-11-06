@@ -562,6 +562,8 @@ def load_records() -> Records:
             for _, t, a in d["succ"]:
                 if "skillAtLeast" in t and _hard_check(a):
                     ssk[q][sid] |= {_sk(x) for x in a if _sk(x) in skill_ids}
+                if "detectedBy" in t:  # C-detected: going unseen is a sneak route that can fail
+                    ssk[q][sid].add(_sk("sneak"))
     for r in w.query("SELECT o.quest_id, s.id, o.complete_when FROM quest_objective o JOIN quest_stage s "
                      "ON s.quest_id = o.quest_id AND s.ord = o.stages_ord"):
         t, a = tree.get(r[2], (set(), set()))
@@ -605,10 +607,11 @@ def _hard_check(args) -> bool:
 
 
 def _choice_stage(succ, ends) -> bool:
-    """Only distinct choice topics, each leading to an ending: a decision, exempt like an ending."""
+    """Only distinct choice topics, each leading to an ending: a decision, exempt like an ending. A choice may also
+    need the evidence in hand (hasItem, C-item), as a tell-someone exit does."""
     seen = set()
     for to, t, a in succ:
-        if to not in ends or "topicHeardFrom" not in t or t - {"topicHeardFrom", "all", "any"} or frozenset(a) in seen:
+        if to not in ends or "topicHeardFrom" not in t or t - {"topicHeardFrom", "hasItem", "all", "any"} or frozenset(a) in seen:
             return False
         seen.add(frozenset(a))
     return len(succ) >= 2

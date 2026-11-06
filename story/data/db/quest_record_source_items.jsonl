@@ -34,14 +34,17 @@
 {"quest_id":"quest.local.lq25","source":"lore","ord":0,"value":"story/lore/helstrom.md (Agaceph"}
 {"quest_id":"quest.local.lq25","source":"lore","ord":1,"value":"tail-poled rafts"}
 {"quest_id":"quest.local.lq25","source":"lore","ord":2,"value":"accomplished Illusionists)"}
-{"quest_id":"quest.local.lq25","source":"lore","ord":3,"value":"story/lore/topics/fauna-hazards.md (Crocodiles; the Helstrom Crocodile extinct)"}
-{"quest_id":"quest.local.lq25","source":"lore","ord":4,"value":"story/design/province-vibe.md §5 and §9"}
-{"quest_id":"quest.local.lq25","source":"lore","ord":5,"value":"story/lore/extrapolation/settlement-register.md (Helstrom)"}
-{"quest_id":"quest.local.lq30","source":"lore","ord":0,"value":"story/lore/helstrom.md (Heart-Mud; the city's guard)"}
-{"quest_id":"quest.local.lq30","source":"lore","ord":1,"value":"story/lore/topics/fauna-hazards.md (Crocodiles; Heart-Mud)"}
-{"quest_id":"quest.local.lq30","source":"lore","ord":2,"value":"story/lore/extrapolation/argonia-4e201-state.md §2 (the guard a tribal levy)"}
-{"quest_id":"quest.local.lq30","source":"lore","ord":3,"value":"story/lore/extrapolation/gap-register.md §8 QA5"}
-{"quest_id":"quest.local.lq30","source":"lore","ord":4,"value":"story/design/province-vibe.md §5 and §9"}
+{"quest_id":"quest.local.lq25","source":"lore","ord":3,"value":"story/lore/tribes.md (Agaceph"}
+{"quest_id":"quest.local.lq25","source":"lore","ord":4,"value":"one-person rafts)"}
+{"quest_id":"quest.local.lq25","source":"lore","ord":5,"value":"story/lore/topics/fauna-hazards.md (Crocodiles; the Helstrom Crocodile extinct)"}
+{"quest_id":"quest.local.lq25","source":"lore","ord":6,"value":"story/design/province-vibe.md §5 and §9"}
+{"quest_id":"quest.local.lq25","source":"lore","ord":7,"value":"story/lore/extrapolation/settlement-register.md (Helstrom)"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":0,"value":"story/lore/helstrom.md (Heart-Mud; the city's guard; the Agaceph)"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":1,"value":"story/lore/topics/fauna-hazards.md (Heart-Mud)"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":2,"value":"story/lore/topics/loading-facts.md (the red hooped tree-viper; the Dead-Water rites of passage)"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":3,"value":"story/lore/extrapolation/argonia-4e201-state.md §2 (the guard a tribal levy)"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA5"}
+{"quest_id":"quest.local.lq30","source":"lore","ord":5,"value":"story/design/province-vibe.md §5 and §9"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":0,"value":"story/lore/topics/labour-and-bondage.md §2-3"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":1,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery; Gloor)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Nine Bends; Hereguard)"}

@@ -272,6 +272,10 @@ def test_skill_routes_choice_stage_exempt():
     assert ac.skill_routes(rc) == []                                       # whom to tell: a choice, not a skill
     rc.stages["q"][20]["succ"][1] = ch(91, "a")                            # not distinct topics
     assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))
+    rc.stages["q"][20]["succ"][1] = (91, {"all", "topicHeardFrom", "hasItem"}, {"b", "item.x"})
+    assert ac.skill_routes(rc) == []                                       # tell with the evidence in hand
+    rc.stages["q"][20]["succ"][1] = (91, {"all", "topicHeardFrom", "inZone"}, {"b", "zone.z"})
+    assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))
 
 
 def wires(rc):

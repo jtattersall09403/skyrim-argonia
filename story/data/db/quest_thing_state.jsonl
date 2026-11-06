@@ -46,17 +46,19 @@
 {"quest_id":"quest.local.lh38","things_ord":8,"state":"before-70","value":"feverish; say they ate at the fire stand"}
 {"quest_id":"quest.local.lh38","things_ord":9,"state":"all","value":"Tsono-Ra's work spot"}
 {"quest_id":"quest.local.lh38","things_ord":10,"state":"all","value":"inZone; entering it unseen or with leave"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"after-30","value":"dead"}
-{"quest_id":"quest.local.lq25","things_ord":0,"state":"before-10","value":"absent"}
+{"quest_id":"quest.local.lq25","things_ord":0,"state":"after-20","value":"dead"}
+{"quest_id":"quest.local.lq25","things_ord":0,"state":"before-20","value":"absent"}
 {"quest_id":"quest.local.lq25","things_ord":0,"state":"during","value":"in its lair under the pier"}
-{"quest_id":"quest.local.lq25","things_ord":1,"state":"all","value":"present"}
+{"quest_id":"quest.local.lq25","things_ord":1,"state":"after-40","value":"taken or left"}
+{"quest_id":"quest.local.lq25","things_ord":1,"state":"before-20","value":"absent"}
+{"quest_id":"quest.local.lq25","things_ord":1,"state":"during","value":"by the pilings in the lair"}
 {"quest_id":"quest.local.lq25","things_ord":2,"state":"all","value":"present"}
-{"quest_id":"quest.local.lq25","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.local.lq30","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"after-30","value":"dead"}
-{"quest_id":"quest.local.lq30","things_ord":1,"state":"before-20","value":"absent"}
+{"quest_id":"quest.local.lq30","things_ord":1,"state":"before-30","value":"absent"}
 {"quest_id":"quest.local.lq30","things_ord":1,"state":"during","value":"at the shelter"}
-{"quest_id":"quest.local.lq30","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.local.lq30","things_ord":2,"state":"after-90","value":"Sei-Wan at the gate"}
+{"quest_id":"quest.local.lq30","things_ord":2,"state":"before-90","value":"Sei-Wan in the shelter and Haj-Wan by the gate"}
 {"quest_id":"quest.local.lq30","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"after-90","value":"crew and gang off (MQ01's crew parent disabled)"}
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}
