@@ -29,6 +29,8 @@ Must-fix:
 - N4: the beast is never called the Helstrom Crocodile (extinct); the crews are Agaceph with tail-poled rafts.
 - N5: LQ30's "four hours ago" stays a line, not a timer.
 
+Round 1: applied (commit e87457d4)
+
 Settled: (none yet)
 
 ## Night-Reed: TG01, TG02
@@ -51,6 +53,8 @@ Must-fix:
   at most three endings, none carried forward; THEFT is the primary shape (not DISPUTE).
 - N5 TG01: the keepsake is named, sourced Argonian jewellery; watching the thief is a sneak where being seen makes him
   move it; the thief's round gets its package rows; the trip to Lilmoth is by the coast ship we.name.soulrest gives.
+
+Round 1: applied (commit e87457d4)
 
 Settled: Soulrest as one house on the wrong coast (a trade-off recorded in adaptation.md §4).
 
@@ -81,5 +85,7 @@ Must-fix:
 - N3: each choice changes only a greeting or a line later; the woman lives in every BC01 ending.
 - N4: one start host per quest; the fire's cause stated or plainly left unsaid.
 - N5: the crossing-keeper and his toll post cut; Never-Sold's npc row matches her host (BM&V's House).
+
+Round 1: applied (commit e87457d4)
 
 Settled: (none yet)
