@@ -166,3 +166,4 @@ Round 1: applied (commit 7842f495): 5 stages, 1 choices, 2 endings
   package only in stage 30, after the leeches are cleared.
 - N5: the kaal's npc row loses the struck award; census.md's "Hatching Pools" line corrected; stage 10 gives the
   route from Lilmoth; journal 50 not conditional.
+Round 1: applied (commit 34ceef35): 5 stages, 2 choices, 2 endings
