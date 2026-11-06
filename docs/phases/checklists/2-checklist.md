@@ -40,7 +40,7 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-a
 - [ ] The whole main quest reviewed (every act's outline) and Act I's four records reviewed; the planner's triage,
   then fixes, until a round has nothing the planner rules must-fix
 - [ ] The Act I stage table in `docs/design/blocks.md` regenerated from the final records
-- [ ] The story issue for the owner (owner, 2026-11-06): the main quest and the slice quests told spoiler-free (premise,
+- [x] The story issue for the owner (owner, 2026-11-06): the main quest and the slice quests told spoiler-free (premise,
   stakes, places, the kind of action and the mood; no twists, hidden truths or endings), so the owner can judge the
   excitement and still be surprised
 - [ ] The owner's read posted (draft `docs/phases/2-owner-read-draft.md`, every figure checked)
