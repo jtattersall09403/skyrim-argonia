@@ -18,11 +18,12 @@ with the record.
 
 ## MQ04 The Tree That Turned Its Face (M)
 
-- Stages: 6 (10 root-herald, 20 the cut root, 30 the tree-minder, 40 the trail and the camp, 50 the return, ending
-  91).
-- Choices: 0 (a cell man may be taken alive or not; the jars are poured either way).
+- Stages: 4 (10 the root-herald, 20 the cut root, 30 the tree-minder or the egg-tender, 40 the trail, the camp and the
+  return), ending 91.
+- Choices: 0 (the jars are poured at the root in every play).
 - Endings: 1 (e-minder 91), so MQ05 starts the same.
-- Skills by stage: speech; blade; sneak or speech; swimming with sneak or blade; the pour at the root.
+- Skills by stage: 10 Speech 25 or 40 gold; 20 One-Handed or Destruction; 30 Sneak unseen (not detectedBy Pays-Late,
+  C-detected) or Speech 25; 40 swimming, then Sneak or One-Handed.
 
 ### Settled
 
