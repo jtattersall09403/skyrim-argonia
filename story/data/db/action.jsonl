@@ -213,12 +213,12 @@
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":1,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq05|0:on_enter","ord":0,"term":"grantTopic"}
-{"list_id":"quest_stage:quest.main.mq05|1:on_enter","ord":0,"term":"grantTopic"}
-{"list_id":"quest_stage:quest.main.mq05|1:on_enter","ord":1,"term":"enableRef"}
+{"list_id":"quest_stage:quest.main.mq05|1:on_enter","ord":0,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq05|2:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq05|3:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq05|3:on_enter","ord":1,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq05|3:on_enter","ord":2,"term":"grantTopic"}
+{"list_id":"quest_stage:quest.main.mq05|3:on_enter","ord":3,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.mr.mr01|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.mr.mr01|3:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.mr.mr01|4:on_enter","ord":0,"term":"startScene"}

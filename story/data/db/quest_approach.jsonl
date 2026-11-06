@@ -15,10 +15,9 @@
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":0,"id":"a-accuse"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":1,"id":"a-fight"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":2,"id":"a-deal"}
-{"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"id":"a-fight"}
-{"quest_id":"quest.main.mq05","stages_ord":1,"ord":1,"id":"a-sneak"}
-{"quest_id":"quest.main.mq05","stages_ord":1,"ord":2,"id":"a-shoot"}
-{"quest_id":"quest.main.mq05","stages_ord":2,"ord":0,"id":"a-levitate"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":0,"id":"a-fight"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":1,"id":"a-shoot"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":2,"id":"a-under"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":0,"id":"a-breath"}
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":1,"id":"a-swarm"}
 {"quest_id":"quest.mr.mr01","stages_ord":4,"ord":0,"id":"a-evidence"}

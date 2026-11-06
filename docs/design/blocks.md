@@ -137,10 +137,10 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ04 91 | TR-acquire, TR-zone | C-item | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
 | MQ05 20 | TR-death, TR-topic | C-alive, C-item, C-skill | E-enable, E-stage |
+| MQ05 30 | TR-zone | - | E-stage |
 | MQ05 40 | TR-zone | - | E-stage |
-| MQ05 50 | TR-zone | - | E-stage |
 | MQ05 91 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
-| MQ05 92 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 92 | TR-death, TR-topic | C-alive | E-enable, E-global, E-regard, E-stage, TR-chain |
 
 - MQ01 stands on 13 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.pier-mesh`, `we.mq01.start`.
 - MQ03 stands on 12 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.hold-location`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.hurt`, `we.mq03.jar-marks`, `we.mq03.reed`, `we.mq03.rooms`.

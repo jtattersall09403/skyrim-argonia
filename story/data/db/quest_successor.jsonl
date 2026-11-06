@@ -71,8 +71,8 @@
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":0,"to":40,"when":"quest_successor:quest.main.mq04|2|0:when"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":0,"to":91,"when":"quest_successor:quest.main.mq04|3|0:when"}
 {"quest_id":"quest.main.mq05","stages_ord":0,"ord":0,"to":20,"when":"quest_successor:quest.main.mq05|0|0:when"}
-{"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"to":40,"when":"quest_successor:quest.main.mq05|1|0:when"}
-{"quest_id":"quest.main.mq05","stages_ord":2,"ord":0,"to":50,"when":"quest_successor:quest.main.mq05|2|0:when"}
+{"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"to":30,"when":"quest_successor:quest.main.mq05|1|0:when"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":0,"to":40,"when":"quest_successor:quest.main.mq05|2|0:when"}
 {"quest_id":"quest.main.mq05","stages_ord":3,"ord":0,"to":91,"when":"quest_successor:quest.main.mq05|3|0:when"}
 {"quest_id":"quest.main.mq05","stages_ord":3,"ord":1,"to":92,"when":"quest_successor:quest.main.mq05|3|1:when"}
 {"quest_id":"quest.mr.mr01","stages_ord":0,"ord":0,"to":20,"when":"quest_successor:quest.mr.mr01|0|0:when"}
