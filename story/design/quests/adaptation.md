@@ -237,3 +237,5 @@ Held: the per-quest verdicts and adapted premises (step 5) wait on the province 
 Rock holds Silver Hand, werewolf and Imperial-corpse actors; BMN's Lilmoth dungeon holds Volkihar skeletons; the
 Temple and Murkmire hold Imperial MQ101 soldiers and an Arkay priestess, and Longmont, Blackrose and Murkwood more.
 One world-wide clean-up edit decides them all at step 5, never line by line.
+Also found: the Marsh Charter's patron Halvar the Damp is a Nord in 36-cast-roster.md (decision 0006); he is recast
+(a Breton of Gideon, renamed) when the line's ledger rows land. FG03's wamasu becomes BM&V's crocodile (decision 0027 §3).
