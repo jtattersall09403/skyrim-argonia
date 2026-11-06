@@ -11,10 +11,9 @@
 {"quest_id":"quest.bc.bc02","review_findings_ord":0,"ord":1,"value":"things.thing.bc02.cells"}
 {"quest_id":"quest.bc.bc02","review_findings_ord":1,"ord":0,"value":"truth.t2"}
 {"quest_id":"quest.bc.bc02","review_findings_ord":1,"ord":1,"value":"facts.fact.bc02.three-held"}
-{"quest_id":"quest.bc.bc02","review_findings_ord":2,"ord":0,"value":"stages.40"}
-{"quest_id":"quest.bc.bc02","review_findings_ord":3,"ord":0,"value":"cast.chainbreaker-patron"}
-{"quest_id":"quest.bc.bc02","review_findings_ord":3,"ord":1,"value":"endings"}
-{"quest_id":"quest.bc.bc02","review_findings_ord":4,"ord":0,"value":"stages"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":2,"ord":0,"value":"cast.chainbreaker-patron"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":2,"ord":1,"value":"endings"}
+{"quest_id":"quest.bc.bc02","review_findings_ord":3,"ord":0,"value":"stages"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":0,"ord":0,"value":"cast.chainbreaker-envoy-camped-causeway"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":1,"ord":0,"value":"items.item.bc03.tokens"}
 {"quest_id":"quest.bc.bc03","review_findings_ord":1,"ord":1,"value":"facts.fact.bc03.tokens"}

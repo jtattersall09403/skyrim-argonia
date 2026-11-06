@@ -451,7 +451,7 @@ charter draft at LW07; LW09/LW10 resolve it.
 Rebuilt around the **Owing** (lore: topics/labour-and-bondage.md; quest-side
 rewrite in [40-factions.md](40-factions.md) §39).
 
-**Desks:** Never-Sold above a boat-shed in Blackrose city; Ussa-Rekh at his
+**Desks:** Never-Sold in Blackrose city; Ussa-Rekh at his
 Soulrest hiring office; Third-Born Xeekh inside the Rose. Grave-Singer Ossu is
 itinerant by canon office — grave-singers travel to the dead — and moves only
 along the line's own procession routes. **The argument:** Never-Sold vs Xeekh

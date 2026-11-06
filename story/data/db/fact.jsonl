@@ -45,9 +45,8 @@
 {"id":"fact.bc01.night-men","claim":"Two estate men walk the landing at night.","ord":5,"from_ref":"t4","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.put-by","claim":"Never-Sold has put by enough to buy out what the Owing was.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc01"}
 {"id":"fact.bc01.washed-out","claim":"She has grown grey from years away from her tree.","ord":3,"from_ref":"t2","quest_id":"quest.bc.bc01"}
-{"id":"fact.bc02.drain","claim":"The flooded cell's drain runs out to the gate square.","ord":4,"from_ref":"t3","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.fire","claim":"The cells under the Rose's outer post are burning, and nobody says how it started.","ord":0,"from_ref":"t1","quest_id":"quest.bc.bc02"}
-{"id":"fact.bc02.one-out","claim":"When the first is out the way burns shut; only one comes out.","ord":3,"from_ref":"t3","quest_id":"quest.bc.bc02"}
+{"id":"fact.bc02.one-out","claim":"When the first comes away with the player, the fire takes the other two; only one comes out.","ord":3,"from_ref":"t3","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.three-held","claim":"Three are held inside: a man for speaking against the heirs, a woman for a killing, and Rows-For-Another's mother on the heirs' reckoning of her Owing.","ord":1,"from_ref":"t2","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc02.ways","claim":"One cell is behind a lock, one is reached by a collapsed way, one is flooded.","ord":2,"from_ref":"t3","quest_id":"quest.bc.bc02"}
 {"id":"fact.bc03.break","claim":"A crew that breaks its tokens before him is done with him.","ord":3,"from_ref":"t1","quest_id":"quest.bc.bc03"}
