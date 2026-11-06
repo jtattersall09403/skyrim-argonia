@@ -7,14 +7,14 @@ with the record.
 ## MQ03 A Dead Prisoner's Use (M)
 
 - Stages: 5 (10 camp, 20 house, 40 the dream, endings 90 and 91).
-- Choices: 2 (the survivor goes home or stays as the Reed's witness; the Reed's oath taken or refused).
+- Choices: 1 (the Reed's oath taken or refused).
 - Endings: 2 (e-sworn, e-unsworn; Nesh-Deeka's death fails forward to e-unsworn).
-- Skills by stage: alchemy (taste) and swimming (dive); speech; speech; climbing.
+- Skills by stage: Alchemy 25 (the phial) or Swimming (the dive for the tag); the tag or Speechcraft 25 (Ties); climbing.
 - MQ04 starts the same after either ending.
 
 ### Settled
 
-- Round 3: Ties-The-Loose-Plank is essential, with his own ref (ref.mq01.ties) enabled by MQ01 stage 50, moved to the mat at stage 20 and disabled by both endings; ref.mq03.house-hurt, c2, k5 and k7 are cut; journals 10, 20, 90 and 91 and t2's timing are as ruled; topic.mq03-the-boat uses fact.mq03.satchel-hers.
+- Round 3: Ties-The-Loose-Plank is essential, with his own ref (ref.mq01.ties) enabled by MQ01's endings, moved to the mat at stage 20 and disabled by both endings; ref.mq03.house-hurt, c2, k5 and k7 are cut; journals 10, 20, 90 and 91 and t2's timing are as ruled; topic.mq03-the-boat uses fact.mq03.satchel-hers.
 
 ## MQ04 The Tree That Turned Its Face (M)
 

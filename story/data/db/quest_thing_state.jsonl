@@ -81,7 +81,7 @@
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"at-10","value":"on the shed floor"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"absent (the jar-marks parent off)"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried, if dived for"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried if dived for, else on the bottom"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"at-10","value":"on the bottom"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"absent (the jar-marks parent off)"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
