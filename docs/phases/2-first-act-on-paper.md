@@ -1,6 +1,6 @@
 # Phase 2: the first act on paper, the whole quest system adapted to BM&V, and the block set it needs
 
-Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
+Status: done (2026-11-06; story #50), see [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
 
 The act is written before any block is built, so the blocks are the ones the story needs and no more (owner,
 2026-11-05). Nothing is built in game in this phase.
@@ -38,9 +38,8 @@ The act is written before any block is built, so the blocks are the ones the sto
   dropped and the quests that used it are re-authored around the blocks that remain.
 - **Loop**: re-run `quest-review` on the re-authored records and the block mapping until every stage of every quest
   maps to blocks in the set and the review raises nothing blocking. Do not build anything in game.
-- **Owner test:** none in game. The act outline and the block list go to the owner as one issue to read and rule
-  on: a short summary of each quest, what changed from the authored design and why, and the block list with the
-  induction note.
+- **Owner test:** none in game. The owner's read of the act and the block list is now the read section of the next
+  walk issue (owner ruling: process light; see Done, 2026-11-06).
 
 ## Scope now: the first story slice (owner, 2026-11-06)
 
@@ -51,38 +50,41 @@ method below applies to the slice: the spirit of every line is already written f
 capacity and allocation (steps 3 and 4) are used for the slice, and steps 5 to 10 run over the slice only. The rest of
 the quest system follows once the owner has tried the slice.
 
-## Status of the first story slice (2026-11-06, hand-off)
+## Done (2026-11-06)
 
-- Done: steps 1 to 8 over the slice (adaptation §5): the ledger in the story data, the checker in `make check`,
-  seven ledger review rounds, the last clean. The committed rows are the one source
-  (the slice generator was retired 2026-11-06); rows are edited through db.py or `quest_record` export and import. Blocks: W-navmesh and W-name
-  added with precedent; blocks.md's Act I stage table is generated from the records
-  (`python3 -m tools.argonia_world.slice_ledger.stage_blocks`; every stage maps to the set). The 35 old camp facts are
-  retired; Low-Reed Village's people have low-reed-village ids; the cell men of MQ04 are npc rows.
-- Act I's records: MQ05 clean at round 4, MQ01 clean at round 6. MQ03 and MQ04 have had eight fresh rounds each.
-  Every round's blocking findings were fixed as one batch, yet each fresh round raises new blocking ones (round 8: MQ03
-  3, MQ04 2). They are now structural rather than slips:
-  - MQ03: why the broker obeys a spoken word (QA7 buy-back); hollow stages over the one-third limit (35, 30, 50);
-    facts missing for the cord and the jars; RECKONING does not fit.
-  - MQ04: the charge against Pays-Late is cutting, while the law and the award fit only negligence; the naming topic
-    and the workshop zone short-cut the investigation.
-  Done 2026-11-06 (commit 55b72d22): both reworked whole through quest-write. MQ03 is NEGOTIATION with BONDAGE (the
-  broker comes to the house and ends his own claim by a release spoken before witnesses, QA13; QA8 rewritten); MQ04's
-  charge is a keeper's failure, the hearing waits for the clutch-laying and needs two signs. Ledger premises follow;
-  adaptation_check 0; make check green; brief.py builds both.
-- Rework round 1 (fresh reviewers; reports in the session scratchpad r/w1-mq03.md, r/w1-mq04.md): MQ03 5 blocking
-  (no cause for the sap-dream for a non-marsh player, so taste the sap at stage 10; the Reed's name has no topic and 20
-  can skip 30; other gang survivors are witnesses too; the coin choice is not recorded; ending successors unguarded and
-  no broker-dead ending), MQ04 3 blocking (stage 35 dead-ends into 94; stage 96 pre-empts the handing ending 91; the
-  kaal judges and holds the cell man). Majors in both: skill uses gate nothing (add skillAtLeast or disposition
-  thresholds), missing world rows, tier-1 rewards of 30-main-quest §24b dropped, journals out of step with world state.
-  Next: fix round 1 as one batch, then round 2; then stage_blocks, the owner read and PROGRESS.
-- Rework under the owner's 2026-11-06 rules (quest-write §2b): MQ03 and MQ04 rewritten whole. MQ03 is RECKONING
-  with WONDER (the burnt camp read by taste and dive, the Reed's offer, a dream climbed to the door; 7 stages, 2
-  choices, 2 endings); the broker's bargain is cut. MQ04 keeps the cut tree, the leeches, the gum trail and the camp
-  (8 stages, 2 choices, 3 endings); the hearing, award and weirs are cut. QA13, QA17, QA19, QA20 and QA21 struck. The
-  main line's spirit rewritten for the whole quest (Acts II on as outline). Loop state: story/design/quests/review/act1.md,
-  round 0, awaiting review.
+Phase 2 is closed. The review loop ended under its exit rule (`story/design/quests/review/act1.md`, "how the loop
+ends"): `adaptation_check` prints 0 findings and 0 warnings, a last delta review raised only single cuts and
+rewordings, and those were applied without another review (`story/design/quests/review/final-cuts.md`, all applied).
+`make check` is green. Nothing was built in game.
+
+- **Act I, to the owner's #50 ruling.** MQ01, MQ03, MQ04 and MQ05 are reworked whole: every stage names a Skyrim
+  skill, each main quest offers at least two ways through with different skills, and the stages say plainly what to
+  do. Records are in the story database (`quest.main.mq01`, `mq03`, `mq04`, `mq05`). The ruling is in
+  [owner-rulings](../owner-rulings.md) (2026-11-06, #50).
+- **The seven slice quests as full records** in the story database: BC01 to BC03 (Chainbreakers), TG01 and TG02
+  (Night-Reed), LQ25 and LQ30 (Helstrom). The Marsh Charter is left out (Gideon has no room).
+- **The main line outline:** [main-line-outline](../../story/design/quests/main-line-outline.md), the spirit and
+  shape of the whole main quest (Acts II on as outline), with Act I's flags and joins.
+- **The block set:** [blocks.md](../design/blocks.md), now with C-detected (sneak that must go unseen, on the
+  `detectedBy` term) and the `sceneEnded` predicate mapped to TR-scene; the Act I and slice stage tables are generated
+  from the records (`python3 -m tools.argonia_world.slice_ledger.stage_blocks`) and every stage maps to the set.
+- **The checker rules:** `tools/argonia_world/adaptation_check.py`, run in `make check`: the ledger checks, the skill
+  routes rule (a route must be able to fail; Pickpocket, a Speech 25 with a gold or food alternative, and choice or
+  scene stages count as the loop ruled), the wiring rules (reachable, acquire_prereq, present_before_start,
+  topic_per_speaker) and the procedure and bureaucracy word warnings.
+- **The skills:** `.claude/skills/quest-write` and `.claude/skills/quest-review` (the lore, society and vibe checks,
+  the one skill rule, Skyrim skill names, the review bar in quest-review §0), and dialogue-write's ban B10. The vibe
+  they check against is `story/design/province-vibe.md`.
+- **The loop method (owner, 2026-11-06):** the planner triages and decides the exit; one bar for blocking
+  (unfinishable, contradiction, lore, 0006/0035, no skill use, harder to script than an average Skyrim quest, a
+  procedural climax); settled stays settled; fixes subtract first; a branching budget; action over law and custom;
+  write only from sources. Its state and every ruling are in `story/design/quests/review/act1.md`; the final cuts in
+  `final-cuts.md`; the slice premises in `slice-premises.md`.
+- **The owner's read:** replaced by the read section of the next walk issue (owner ruling: process light). The
+  spoiler-free story telling is part of that issue, not a separate one.
+- **Still owed, to later phases:** Phase 4 writes the dialogue; the quest vocabulary's Morrowind skill names are
+  mapped to Skyrim's in C-skill for now; the rest of the quest system (706 quests waiting in the ledger) follows once
+  the owner has tried the slice.
 
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
@@ -126,7 +128,7 @@ The method, in order:
 10. **The owner's read:** a summary per line (what it keeps, what changed and why, its new home in BM&V) on one issue;
     nothing waits on it.
 
-## Done (2026-11-05)
+## Done earlier (2026-11-05)
 
 - **The adaptation:** [act1-on-bmv](../../story/design/quests/act1-on-bmv.md). The act's spirit and shape are kept; its
   beats move to BM&V's Lilmoth (Dock1, Pusbottom, its Hist grove), Hereguard Plantation, the tribal Village east of

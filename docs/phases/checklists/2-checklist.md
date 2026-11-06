@@ -32,16 +32,16 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-a
   procedural climax);
   settled stays settled; fixes subtract first; a branching budget; choices do not multiply down a line; action over
   law and custom; write only from sources
-- [ ] **In progress:** MQ03 and MQ04 reworked to the new rules, the joins to MQ01 and MQ05 checked, and the main
-  line's spirit and outline rewritten for the whole main quest (more Black Marsh, more exciting, less bureaucratic)
-- [x] The adaptation checker warns on procedure and bureaucracy words (5 premises flagged: BC01, BC03, LQ25, MQ01, MQ03)
-- [ ] **In progress:** the slice's faction and local quests reviewed at premise level (Night-Reed TG01-02,
-  Chainbreakers BC01-03, Helstrom LQ25 and LQ30), then fixed as the planner rules
-- [ ] The whole main quest reviewed (every act's outline) and Act I's four records reviewed; the planner's triage,
-  then fixes, until a round has nothing the planner rules must-fix
-- [ ] The Act I stage table in `docs/design/blocks.md` regenerated from the final records
+- [x] MQ03 and MQ04 reworked to the new rules, the joins to MQ01 and MQ05 checked, and the main line's spirit and
+  outline rewritten for the whole main quest (`story/design/quests/main-line-outline.md`)
+- [x] The adaptation checker warns on procedure and bureaucracy words; the slice now prints 0 findings and 0 warnings
+- [x] The slice's faction and local quests (TG01-02, BC01-03, LQ25, LQ30) written as full records and reviewed, then
+  fixed as the planner ruled
+- [x] The whole main quest reviewed (every act's outline) and Act I's four records reviewed; the loop closed under its
+  exit rule and the final cuts are applied (`story/design/quests/review/final-cuts.md`)
+- [x] The Act I stage table in `docs/design/blocks.md` regenerated from the final records (with C-detected and the sceneEnded and TR-scene mapping)
 - [x] The story issue for the owner (owner, 2026-11-06): the main quest and the slice quests told spoiler-free (premise,
   stakes, places, the kind of action and the mood; no twists, hidden truths or endings), so the owner can judge the
   excitement and still be surprised
-- [ ] The owner's read posted (draft `docs/phases/2-owner-read-draft.md`, every figure checked)
-- [ ] The phase file's Done section; PROGRESS row to done
+- [x] The owner's read: replaced by the read section of the next walk issue (owner ruling: process light)
+- [x] The phase file's Done section; PROGRESS row to done
