@@ -403,6 +403,16 @@
 {"quest_id":"quest.main.mq04","review_findings_ord":30,"ord":3,"value":"stages.91"}
 {"quest_id":"quest.main.mq04","review_findings_ord":30,"ord":4,"value":"endings.e-handed"}
 {"quest_id":"quest.main.mq04","review_findings_ord":30,"ord":5,"value":"QA9"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":0,"value":"stages.60"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":1,"value":"topics.topic.mq04-the-handing"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":2,"value":"truth.t6"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":3,"value":"stages.91"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":4,"value":"endings.e-handed"}
+{"quest_id":"quest.main.mq04","review_findings_ord":31,"ord":5,"value":"stages.10"}
+{"quest_id":"quest.main.mq04","review_findings_ord":32,"ord":0,"value":"stages.50"}
+{"quest_id":"quest.main.mq04","review_findings_ord":32,"ord":1,"value":"stages.91"}
+{"quest_id":"quest.main.mq04","review_findings_ord":32,"ord":2,"value":"stages.94"}
+{"quest_id":"quest.main.mq04","review_findings_ord":32,"ord":3,"value":"stages.95"}
 {"quest_id":"quest.main.mq05","review_findings_ord":0,"ord":0,"value":"things.thing.mq05.ship"}
 {"quest_id":"quest.main.mq05","review_findings_ord":0,"ord":1,"value":"stages.20"}
 {"quest_id":"quest.main.mq05","review_findings_ord":1,"ord":0,"value":"facts.fact.mq05.throne-empty"}

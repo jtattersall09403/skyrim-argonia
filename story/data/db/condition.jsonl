@@ -2911,7 +2911,11 @@
 {"id":"quest_fail_forward:quest.main.mq04|2|0:when.0","parent_id":"quest_fail_forward:quest.main.mq04|2|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq04|4|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq04|4|0:when.0","parent_id":"quest_fail_forward:quest.main.mq04|4|0:when","ord":0,"term":"npcAlive"}
-{"id":"quest_fail_forward:quest.main.mq04|5|0:when","term":"placeCleared"}
+{"id":"quest_fail_forward:quest.main.mq04|5|0:when","term":"all"}
+{"id":"quest_fail_forward:quest.main.mq04|5|0:when.0","parent_id":"quest_fail_forward:quest.main.mq04|5|0:when","ord":0,"term":"not"}
+{"id":"quest_fail_forward:quest.main.mq04|5|0:when.0.0","parent_id":"quest_fail_forward:quest.main.mq04|5|0:when.0","ord":0,"term":"npcAlive"}
+{"id":"quest_fail_forward:quest.main.mq04|5|0:when.1","parent_id":"quest_fail_forward:quest.main.mq04|5|0:when","ord":1,"term":"not"}
+{"id":"quest_fail_forward:quest.main.mq04|5|0:when.1.0","parent_id":"quest_fail_forward:quest.main.mq04|5|0:when.1","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq04|5|1:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq04|5|1:when.0","parent_id":"quest_fail_forward:quest.main.mq04|5|1:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq04|6|0:when","term":"not"}
@@ -3257,7 +3261,9 @@
 {"id":"quest_successor:quest.main.mq04|6|1:when","term":"all"}
 {"id":"quest_successor:quest.main.mq04|6|1:when.0","parent_id":"quest_successor:quest.main.mq04|6|1:when","ord":0,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.main.mq04|6|1:when.1","parent_id":"quest_successor:quest.main.mq04|6|1:when","ord":1,"term":"topicHeardFrom"}
-{"id":"quest_successor:quest.main.mq04|6|1:when.2","parent_id":"quest_successor:quest.main.mq04|6|1:when","ord":2,"term":"stageEverReached"}
+{"id":"quest_successor:quest.main.mq04|6|1:when.2","parent_id":"quest_successor:quest.main.mq04|6|1:when","ord":2,"term":"any"}
+{"id":"quest_successor:quest.main.mq04|6|1:when.2.0","parent_id":"quest_successor:quest.main.mq04|6|1:when.2","ord":0,"term":"npcInCustody"}
+{"id":"quest_successor:quest.main.mq04|6|1:when.2.1","parent_id":"quest_successor:quest.main.mq04|6|1:when.2","ord":1,"term":"npcInCustody"}
 {"id":"quest_successor:quest.main.mq04|6|2:when","term":"all"}
 {"id":"quest_successor:quest.main.mq04|6|2:when.0","parent_id":"quest_successor:quest.main.mq04|6|2:when","ord":0,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.main.mq04|6|2:when.1","parent_id":"quest_successor:quest.main.mq04|6|2:when","ord":1,"term":"dispositionAtLeast"}

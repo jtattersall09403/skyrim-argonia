@@ -246,6 +246,11 @@
 {"list_id":"quest_ending:quest.main.mq04|4:world","ord":0,"arg_ord":0,"value":"flag.mq04.minder-dead"}
 {"list_id":"quest_ending:quest.main.mq04|4:world","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.main.mq04|4:world","ord":1,"arg_ord":0,"value":"ref.mq04.guarded"}
+{"list_id":"quest_ending:quest.main.mq04|4:world","ord":2,"arg_ord":0,"value":"thing.mq04.sap-jars"}
+{"list_id":"quest_ending:quest.main.mq04|4:world","ord":2,"arg_ord":1,"value":1}
+{"list_id":"quest_ending:quest.main.mq04|5:world","ord":0,"arg_ord":0,"value":"flag.mq04.herald-dead"}
+{"list_id":"quest_ending:quest.main.mq04|5:world","ord":0,"arg_ord":1,"value":1}
+{"list_id":"quest_ending:quest.main.mq04|5:world","ord":1,"arg_ord":0,"value":"ref.mq04.guarded"}
 {"list_id":"quest_ending:quest.main.mq05|0:rewards","ord":0,"arg_ord":0,"value":"faction.veiled-reed"}
 {"list_id":"quest_ending:quest.main.mq05|0:rewards","ord":0,"arg_ord":1,"value":-5}
 {"list_id":"quest_ending:quest.main.mq05|0:rewards","ord":1,"arg_ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
