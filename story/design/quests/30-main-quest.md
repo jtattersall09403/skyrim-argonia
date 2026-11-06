@@ -1,6 +1,11 @@
 <!-- imported unchanged from elder-souls-argonia docs/quests/30-main-quest.md @ b581910f0f87d8da88eaa9876d238cdc5d709e78 (0.1 §f) -->
 # Main quest: The Eye and the Root — structure, cast, endings
 
+> **Authored history (2026-11-06).** This is the main quest as first designed. The adapted outline, and the source
+> for Acts II to V, is [main-line-outline.md](main-line-outline.md), written to the planner's rulings in
+> [review/act1.md](review/act1.md) ("The whole main line, round 1"). Where the two differ, the outline wins; §20,
+> §21's table and §24b here are superseded.
+
 > Module of the quest/narrative master plan (see [README](README.md)).
 
 # Part IV — Main quest: _The Eye and the Root_
@@ -314,11 +319,11 @@ transitions only, never on elapsed play time.
 
 ## 22. Pacing
 
-- **Prologue and Act I (MQ01–MQ05):** processing and the attack — the villain seen, the clutch dead, the dreams begun; recruitment; first Hist case; early Helstrom and the empty throne.
-- **Act II (MQ06–MQ16):** treasure hunt across outer cities, four leads, the Collector shadowing, the second withdrawal. The player is encouraged to build a cover through local and faction work.
-- **Act III (MQ18–MQ22):** possession of the Eye, infiltration, moral exposure of both sides, the handler purged, the loyalty pivot filed to a woman who cannot be lied to.
-- **Act IV (MQ23–MQ26):** route revelation and the Shadowscale manhunt, the council under attack, the Accord twist.
-- **Act V (MQ27, MQ29, MQ31–MQ32):** expedition and crossing, Lost City with the Last Warden, the sanctuary confrontation, the choice, the epilogue.
+- **Act I (MQ01, MQ03, MQ04, MQ05):** processing and the attack — the villain seen, the clutch dead, the dreams begun; recruitment; first Hist case; Helstrom and the empty throne.
+- **Act II (MQ07–MQ10):** the hunt — the false Eye, the cell's safehouse, the old Rose, the wreck at Tear; the triangulation is MQ10's last stage, and the second Hist dies.
+- **Act III (MQ16–MQ21):** the Eye recovered, the sermon under cover, the Reed's dream-house broken open and the handler's fall, the sap house and the raid the player stands in.
+- **Act IV (MQ23–MQ27):** the marks and the last Shadowscale, the Root of Accord's twist, the crossing of the basin.
+- **Act V (MQ29, MQ31):** the Lost City and the Last Warden, the door, CUT, CLAIM or MEND, the closing scene.
 
 The full crisis is foreshadowed early, while urgency becomes immediate only after the Eye and cult plan are understood. This protects open-world pacing.
 
