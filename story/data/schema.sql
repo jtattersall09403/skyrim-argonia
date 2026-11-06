@@ -2665,23 +2665,34 @@ CREATE TABLE "creature_list_entry" (
 );
 
 -- ---------------------------------------------------------------------------------------------------------------------
--- The BM&V census (phase 1): our data about Black Marsh.esm, read from the file by `tools/argonia_world/bmv_census.py`
--- (never copied from it: keys, editor ids, names, coordinates, counts and links only). Every id is a form key
--- "XXXXXX:Plugin" as mod_form writes them; `defined_in` is the plugin whose record wins (Black Marsh.esm, or the master
--- a BM&V record points at). Designed rows are linked to it by place_bmv, npc_bmv and faction_bmv, never copied.
+-- The BM&V census (phase 1): our data about BM&V's four plugins in load order (BosmerArmorMATY743.esm, Black Marsh.esm,
+-- Black Marsh North.esp, Valenwood.esp), read from the files by `tools/argonia_world/bmv_census.py` (never copied from
+-- them: keys, editor ids, names, coordinates, counts and links only). Every id is a form key "XXXXXX:Plugin" of the
+-- defining master, as mod_form writes them; `defined_in` is that master. A record's values are the load order's
+-- winner (a later plugin's version wins; a winner flagged deleted removes it). `plugin` is the first BM&V file that
+-- carries the record (its defining file for BM&V's own forms; null for a master form no BM&V file carries) and
+-- `overridden_by` the later BM&V files that override it, space-separated (null: none). Designed rows are linked to it
+-- by place_bmv, npc_bmv and faction_bmv, never copied.
 -- ---------------------------------------------------------------------------------------------------------------------
 
--- Home of a worldspace BM&V adds or edits (WRLD).
+-- Home of a worldspace BM&V adds or edits (WRLD); `parent` its parent worldspace (WNAM); `land_cells` its exterior
+-- cells with LAND in the load order.
 CREATE TABLE "bmv_worldspace" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT NOT NULL,
   "name" TEXT,
-  "defined_in" TEXT NOT NULL
+  "defined_in" TEXT NOT NULL,
+  "parent" TEXT,
+  "land_cells" INTEGER NOT NULL CHECK ("land_cells" >= 0)
 );
 
 -- Home of a location (LCTN) BM&V defines, overrides, or names on one of its cells.
 CREATE TABLE "bmv_location" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "parent" TEXT,
@@ -2689,10 +2700,12 @@ CREATE TABLE "bmv_location" (
   "in_bmv" BOOLEAN NOT NULL CHECK ("in_bmv" IN (0, 1))
 );
 
--- Home of a cell (CELL) in Black Marsh.esm: an interior, or an exterior of a worldspace at a grid square; the
--- persistent cell of a worldspace (flag 0x400, directly under its WRLD) has no grid. `refs` counts the placed references (REFR and ACHR) the file puts in it.
+-- Home of a cell (CELL) in BM&V's plugins: an interior, or an exterior of a worldspace at a grid square; the
+-- persistent cell of a worldspace (flag 0x400, directly under its WRLD) has no grid. `refs` counts the placed references (REFR, ACHR, PGRE) the load order's winners put in it.
 CREATE TABLE "bmv_cell" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "interior" BOOLEAN NOT NULL CHECK ("interior" IN (0, 1)),
@@ -2713,6 +2726,8 @@ CREATE TABLE "bmv_cell" (
 -- Home of a race a BM&V actor uses (RACE).
 CREATE TABLE "bmv_race" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "defined_in" TEXT NOT NULL
@@ -2721,6 +2736,8 @@ CREATE TABLE "bmv_race" (
 -- Home of a class a BM&V actor uses (CLAS).
 CREATE TABLE "bmv_class" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "defined_in" TEXT NOT NULL
@@ -2729,6 +2746,8 @@ CREATE TABLE "bmv_class" (
 -- Home of a faction (FACT) BM&V defines or overrides, or that one of its actors belongs to.
 CREATE TABLE "bmv_faction" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "defined_in" TEXT NOT NULL,
@@ -2740,6 +2759,8 @@ CREATE TABLE "bmv_faction" (
 -- come from its template. `person` is whether its own race carries ActorTypeNPC (false: a creature).
 CREATE TABLE "bmv_npc" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "record" TEXT NOT NULL CHECK ("record" IN ('NPC_', 'LVLN')),
   "editor_id" TEXT,
   "name" TEXT,
@@ -2762,10 +2783,12 @@ CREATE TABLE "bmv_npc_faction" (
   PRIMARY KEY ("npc", "faction")
 );
 
--- Home of a placed actor (ACHR) in Black Marsh.esm: its base, its cell, its position; grid is the exterior square
+-- Home of a placed actor (ACHR) in BM&V's plugins: its base, its cell, its position; grid is the exterior square
 -- the position falls in (for a reference in a worldspace's persistent cell too), null in an interior.
 CREATE TABLE "bmv_placement" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "npc" TEXT NOT NULL REFERENCES "bmv_npc"("id"),
   "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
   "x" REAL NOT NULL,
@@ -2780,6 +2803,8 @@ CREATE TABLE "bmv_placement" (
 -- Home of a quest (QUST) BM&V defines or overrides.
 CREATE TABLE "bmv_quest" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "editor_id" TEXT,
   "name" TEXT,
   "start_game_enabled" BOOLEAN NOT NULL CHECK ("start_game_enabled" IN (0, 1)),
@@ -2787,11 +2812,13 @@ CREATE TABLE "bmv_quest" (
   "defined_in" TEXT NOT NULL
 );
 
--- Home of a load door (a REFR with XTEL) in Black Marsh.esm: where it stands and the door it leads to. An exterior
+-- Home of a load door (a REFR with XTEL) in BM&V's plugins (`base` its DOOR: a book-shaped base is a book portal): where it stands and the door it leads to. An exterior
 -- door sits in its worldspace's persistent cell; `ext_cell` is the exterior square it stands on.
--- `target` is the paired door when the file holds it; `target_elsewhere` the paired door's key when a master holds it.
+-- `target` is the paired door when BM&V holds it; `target_elsewhere` the paired door's key when only a master holds it.
 CREATE TABLE "bmv_door" (
   "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
   "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
   "x" REAL NOT NULL,
   "y" REAL NOT NULL,
@@ -2802,11 +2829,15 @@ CREATE TABLE "bmv_door" (
   "ext_cell" TEXT REFERENCES "bmv_cell"("id"),
   "target" TEXT REFERENCES "bmv_door"("id"),
   "target_elsewhere" TEXT,
+  "base" TEXT NOT NULL,
+  "base_editor_id" TEXT,
+  "base_name" TEXT,
   CHECK (("target" IS NULL) <> ("target_elsewhere" IS NULL))
 );
 
 -- Home of a settlement or site the census groups BM&V's cells into (BM&V has no LCTN of its own): a named exterior
--- cell cluster ('settlement'), or interiors reached by load doors from one exterior spot ('site'). Derived, with why.
+-- cell cluster ('settlement'), or interiors reached by load doors from one exterior spot ('site'). Derived, with why;
+-- `marker_name` is the world-map name of the BM&V map marker that stands in its cells, if any.
 CREATE TABLE "bmv_settlement" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "name" TEXT NOT NULL,
@@ -2814,7 +2845,33 @@ CREATE TABLE "bmv_settlement" (
   "worldspace" TEXT REFERENCES "bmv_worldspace"("id"),
   "grid_x" INTEGER,
   "grid_y" INTEGER,
-  "why" TEXT NOT NULL
+  "why" TEXT NOT NULL,
+  "marker_name" TEXT
+);
+
+-- Home of a map marker BM&V places (a REFR with XMRK): its worldspace, square, position and the name the world map shows.
+CREATE TABLE "bmv_map_marker" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
+  "name" TEXT,
+  "worldspace" TEXT NOT NULL REFERENCES "bmv_worldspace"("id"),
+  "x" REAL NOT NULL,
+  "y" REAL NOT NULL,
+  "grid_x" INTEGER NOT NULL,
+  "grid_y" INTEGER NOT NULL,
+  "settlement" TEXT REFERENCES "bmv_settlement"("id")
+);
+
+-- Home of a book (BOOK) a BM&V file defines or overrides, with how often and where the load order places it.
+CREATE TABLE "bmv_book" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "plugin" TEXT,
+  "overridden_by" TEXT,
+  "editor_id" TEXT,
+  "name" TEXT,
+  "placed" INTEGER NOT NULL CHECK ("placed" >= 0),
+  "first_cell" TEXT REFERENCES "bmv_cell"("id")
 );
 
 -- Home of a cell's membership of a settlement: an anchor (a named exterior cell), a neighbour square (within one), an
@@ -2828,7 +2885,8 @@ CREATE TABLE "bmv_settlement_cell" (
 );
 
 -- Home of one way out of an interior: an exterior load door its door graph reaches, and the settlement there if any.
--- A ship has one per port, a shared house interior one per house door; an interior with none has no load door in.
+-- A ship has one per port, a shared house interior one per house door; an interior with none has no load door in,
+-- or is a vanilla interior BM&V edits (Skyrim's, left out of the settlements).
 CREATE TABLE "bmv_interior_exit" (
   "interior" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
   "door" TEXT NOT NULL REFERENCES "bmv_door"("id"),

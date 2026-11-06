@@ -55,27 +55,32 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   the markers; owed: the owner looks in the walk, and LOD is generated only if it is bare.
 - BM&V's known gap: 203 of its texture-set records name diffuse textures no archive holds
   ([research/bmv](../research/bmv/)); it is left as BM&V ships it unless the owner finds it ugly
-- In parallel: **The census, into the story data.** Done 2026-11-05 ([census](../research/bmv/census.md)).
-  `tools/argonia_world/bmv_census.py build` reads `Black Marsh.esm` with its own reader (`esm.py`; masters for
-  names), and `verify` recounts the ESM against the db. It found 4 worldspaces, 4,826 cells, 243 actor bases,
-  1,139 placements, 84 factions, 3 quests and 79 load doors, grouped into 24 settlements (1,403 cells) and 40
-  interior exits. The designed rows are linked, not copied: `place_bmv` holds 8 mapped places and 10 waiting;
-  `npc_bmv` and `faction_bmv` are empty, because BM&V's actors and factions are generic. A reviewer pass found
-  persistent cells, content squares and shared interiors the first pass had missed, and they were fixed. Still
-  owed: display names for the editor-id settlements, and a decision on the Tamriel entry door (its base is
-  `OrcDoorLoad01`).
-- In parallel: **An offline 2d interactive map** of BM&V. Done 2026-11-05. `make map` (tools/bmv_map) writes one
-  self-contained page, `out/bmv-map/index.html` (3.7 MB, no network), and then checks it: BlackMarsh and BlackMarsh2
-  (a switcher), the land drawn from Black Marsh.esm's own LAND height grids at 32 px a cell (1,114 and 3,228 cells),
-  with a hillshade and water below each cell's water level. Hovering shows the cell and game units; a click copies
-  "worldspace, cell x,y, x, y" and opens the census row of what was clicked. Layers: settlements, load doors and
-  where they lead, people and creatures, navmesh cells, our places by confidence, our markers (read from
-  plugin/Argonia). A search box flies to names and editor ids. `verify` reads the page back. Every exterior cell,
-  settlement, door and placement of both worldspaces is on it, and every cell with LAND is drawn.
-  `ARG_OpeningMarker` (5403, -6109, 66; cell 1,-2, one of Lilmoth's cells) stands on BM&V's Lilmoth pier
-  (`DLC2RRDockPier01`, 005A9F), over water at -2,016, not on land: a dock arrival as intended. The page and terrain
-  come from BM&V's files, so they are never committed (out/ is ignored; decision 0003). Rebuild after the census
-  or the plugin changes.
+- In parallel: **The census, into the story data.** Redone 2026-11-05 over the whole of BM&V
+  ([census](../research/bmv/census.md)): the first pass read `Black Marsh.esm` alone, from a trimmed BM&V. BM&V is
+  four plugins (BosmerArmorMATY743.esm, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp);
+  `tools/argonia_world/bmv_census.py build` reads them in load order with its own reader (`esm.py`), the last
+  version of a form winning and a deleted winner removing it, each row keeping its defining master's form key with
+  `plugin` and `overridden_by`. It found 10 worldspaces (5 BM&V's own: BlackMarsh, BlackMarsh2, BlackMarshNorth
+  "Thorn", an empty UnderDark, Valenwood; 10,530 LAND cells, 36.1 km², 94% of Skyrim's Tamriel measured the same way),
+  11,561 cells, 674 actor bases, 2,869 placements, 241 load doors, 40 BM&V map markers, 12 books, 5 quests,
+  grouped into 86 settlements and 2 sites. `verify` is the completeness proof: per plugin and type the census
+  accounts for every WRLD, CELL, LAND, ACHR, NPC_, FACT, QUST, LCTN, BOOK, load door and map marker (byte-walk
+  count = read = in census + overridden later + deleted). The ways in: Dawnstar's Windpeak Inn's book portal to
+  Lilmoth (Black Marsh North.esp deletes the old undersea Nordic door), Cragslane Cavern's rewired door into
+  BlackMarsh2, Riverwood's Sleeping Giant Inn's two portals and a Tamriel cave into Valenwood; ships and book
+  portals between the Black Marsh worlds; Valenwood joins none of them. Thorn is now mapped (high); nine designed
+  places still wait (no record of the four files names them); story/lore has no Valenwood place. Black Marsh
+  North.esp deletes ten placements the Act I records cited and peoples Helstrom: the citations are updated (census
+  §Changed citations). Owed: the MQ05 hall (BMN puts merchants in it) to the quest writer; Valenwood's two
+  start-game-enabled quests against the shutdown; display names for unmarked settlements. Reviewer rounds: census §Review rounds.
+- In parallel: **An offline 2d interactive map** of BM&V. Redone 2026-11-05 over all four plugins. `make map`
+  (tools/bmv_map) writes one self-contained page, `out/bmv-map/index.html` (about 9 MB, no network), and then
+  checks it: a switcher over all 10 worldspaces, the land drawn from the load order's winning LAND (32 px a cell,
+  Valenwood 16), with a hillshade and water; layers for settlements, load doors (book portals marked), people and
+  creatures, navmesh, BM&V's own map markers, our places by confidence and our markers. `verify` reads the page back:
+  every census cell, settlement, door, placement and map marker of each worldspace is on it, and every exterior cell
+  with LAND is drawn. `ARG_OpeningMarker` still stands on Lilmoth's pier (`DLC2RRDockPier01`, 005A9F). The page is
+  derived from BM&V's files, so it is never committed (decision 0003). Rebuild after the census or the plugin changes.
 - **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner. For the census mine, do a loop between a miner and reviewer, where the reviewer thinks critically about what the miner might have missed and provides feedback. You as the planner use your judgment to decide when that loop exits. We need to know we have information about every place from the BM&V mod, and we have enough information about every place to meet the requirements for our goal (and for being able to properly author and review our quests).
 - **Owner test (the first walk, the first owner test since the pivot):** both cards on the play page, Vanilla
   Skyrim (a quick check that the stream and the game run) and Argonia. On Argonia, a new game: character creation, then straight into Black Marsh with no Helgen and no start menu; a fight with the

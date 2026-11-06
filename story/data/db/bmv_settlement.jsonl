@@ -1,24 +1,88 @@
-{"id":"bmv.altenmeirhall","name":"AltenMeirhall","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":15,"grid_y":-6,"why":"named exterior cell AltenMeirhall"}
+{"id":"bmv.abondedtemple","name":"abondedtemple","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":13,"grid_y":23,"why":"named exterior cell abondedtemple"}
+{"id":"bmv.altenmeirhall","name":"AltenMeirhall","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":15,"grid_y":-6,"why":"named exterior cell AltenMeirhall","marker_name":"Alten Merihall"}
 {"id":"bmv.banditcamp1","name":"BANDITCAMP1","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":0,"grid_y":-10,"why":"named exterior cell BANDITCAMP1"}
-{"id":"bmv.blackrose","name":"Blackrose","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":31,"grid_y":-16,"why":"named exterior cell Blackrose with mound, Blackrosegate, Blackrosemarket within 5 squares"}
+{"id":"bmv.blackmarshnorth.1","name":"1","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-19,"grid_y":16,"why":"named exterior cell 1"}
+{"id":"bmv.blackmarshnorth.dessert","name":"Dessert","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-22,"grid_y":26,"why":"named exterior cell Dessert"}
+{"id":"bmv.blackmarshnorth.lizardmen","name":"lizardmen","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-16,"grid_y":16,"why":"named exterior cell lizardmen with Shack within 5 squares"}
+{"id":"bmv.blackmarshnorth.manor","name":"Manor","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-6,"grid_y":5,"why":"named exterior cell Manor","marker_name":"Dres village"}
+{"id":"bmv.blackmarshnorth.marsh","name":"Marsh","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-7,"grid_y":15,"why":"named exterior cell Marsh"}
+{"id":"bmv.blackmarshnorth.ruin12","name":"ruin12","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":1,"grid_y":1,"why":"named exterior cell ruin12"}
+{"id":"bmv.blackmarshnorth.tear","name":"Tear","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":22,"grid_y":24,"why":"named exterior cell Tear","marker_name":"Tear"}
+{"id":"bmv.blackmarshnorth.tear1","name":"Tear1","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":27,"grid_y":22,"why":"named exterior cell Tear1"}
+{"id":"bmv.blackmarshnorth.test1","name":"test1","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-13,"grid_y":4,"why":"named exterior cell test1"}
+{"id":"bmv.blackmarshnorth.thorn1","name":"Thorn1","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":5,"grid_y":15,"why":"named exterior cell Thorn1","marker_name":"Thorn"}
+{"id":"bmv.blackmarshnorth.treehouse","name":"Treehouse","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-17,"grid_y":4,"why":"named exterior cell Treehouse"}
+{"id":"bmv.blackmarshnorth.waterfalls","name":"waterfalls","kind":"settlement","worldspace":"005900:Black Marsh North.esp","grid_x":-10,"grid_y":1,"why":"named exterior cell waterfalls"}
+{"id":"bmv.blackrose","name":"Blackrose","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":31,"grid_y":-16,"why":"named exterior cell Blackrose with mound, Blackrosegate, RealBlackRose, DockDUPLICATE004 within 5 squares","marker_name":"Black Rose"}
 {"id":"bmv.castle","name":"Castle","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":2,"grid_y":6,"why":"named exterior cell Castle"}
-{"id":"bmv.dock2","name":"Dock2","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":10,"grid_y":-2,"why":"named exterior cell Dock2 with BoattoBlackMarsh within 5 squares"}
-{"id":"bmv.dock3","name":"Dock3","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":-27,"grid_y":-8,"why":"named exterior cell Dock3 with BlackRoseold within 5 squares"}
-{"id":"bmv.dock5","name":"dock5","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-11,"grid_y":13,"why":"named exterior cell dock5"}
-{"id":"bmv.dwarven","name":"DWARVEN","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-2,"grid_y":8,"why":"named exterior cell DWARVEN with pyramid within 5 squares"}
+{"id":"bmv.dock2","name":"Dock2","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":10,"grid_y":-2,"why":"named exterior cell Dock2 with BoattoBlackMarsh within 5 squares","marker_name":"Docks"}
+{"id":"bmv.dock5","name":"dock5","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-11,"grid_y":13,"why":"named exterior cell dock5","marker_name":"Helstrom"}
+{"id":"bmv.dwarven","name":"DWARVEN","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-2,"grid_y":8,"why":"named exterior cell DWARVEN with pyramid within 5 squares","marker_name":"Dwarven Ruins"}
+{"id":"bmv.gg","name":"gg","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":-27,"grid_y":-8,"why":"named exterior cell gg with BlackRoseold within 5 squares"}
 {"id":"bmv.grass","name":"Grass","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":11,"grid_y":-5,"why":"named exterior cell Grass"}
+{"id":"bmv.groot","name":"groot","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-1,"grid_y":-2,"why":"named exterior cell groot"}
 {"id":"bmv.helstrom","name":"Helstrom","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-7,"grid_y":21,"why":"named exterior cell Helstrom"}
-{"id":"bmv.hereguardplantation","name":"HereguardPlantation","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":0,"grid_y":-1,"why":"named exterior cell HereguardPlantation"}
-{"id":"bmv.lilmoth","name":"Lilmoth","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":4,"grid_y":-2,"why":"named exterior cell Lilmoth with Dock1, Pussbottom, LilmothHist within 5 squares"}
-{"id":"bmv.longmont","name":"Longmont","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":25,"grid_y":-5,"why":"named exterior cell Longmont"}
+{"id":"bmv.hereguardplantation","name":"HereguardPlantation","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":0,"grid_y":-1,"why":"named exterior cell HereguardPlantation","marker_name":"Hereguard Plantation"}
+{"id":"bmv.lilmoth","name":"Lilmoth","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":4,"grid_y":-2,"why":"named exterior cell Lilmoth with Dock1, Pussbottom, LilmothHist within 5 squares","marker_name":"Lolmoth; Lilmoth Dock"}
+{"id":"bmv.longmont","name":"Longmont","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":25,"grid_y":-5,"why":"named exterior cell Longmont","marker_name":"Longmont"}
 {"id":"bmv.mountainpass","name":"MountainPass","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":-33,"grid_y":-8,"why":"named exterior cell MountainPass"}
 {"id":"bmv.murkmire","name":"Murkmire","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-22,"grid_y":20,"why":"named exterior cell Murkmire with Murkmire1 within 5 squares"}
 {"id":"bmv.murkwood","name":"Murkwood","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":15,"grid_y":0,"why":"named exterior cell Murkwood with dock4 within 5 squares"}
-{"id":"bmv.murkwoodext","name":"Murkwoodext","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-10,"grid_y":6,"why":"named exterior cell Murkwoodext"}
+{"id":"bmv.murkwoodext","name":"Murkwoodext","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-10,"grid_y":6,"why":"named exterior cell Murkwoodext","marker_name":"Bandit Dock"}
 {"id":"bmv.outercave","name":"Outercave","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":16,"grid_y":-3,"why":"named exterior cell Outercave"}
+{"id":"bmv.site.01goblincave","name":"Swampy Cave","kind":"site","worldspace":"005900:Black Marsh North.esp","grid_x":-14,"grid_y":7,"why":"interiors whose load doors lead out at BlackMarshNorth square (-14, 7), no named exterior cell within 2"}
+{"id":"bmv.site.01templecave","name":"Sharpslope Cave","kind":"site","worldspace":"005900:Black Marsh North.esp","grid_x":-13,"grid_y":13,"why":"interiors whose load doors lead out at BlackMarshNorth square (-13, 13), no named exterior cell within 2"}
 {"id":"bmv.swamplandsrose","name":"swamplandsrose","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":29,"grid_y":-7,"why":"named exterior cell swamplandsrose with SPOT within 5 squares"}
 {"id":"bmv.temple","name":"Temple","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":7,"grid_y":-6,"why":"named exterior cell Temple"}
-{"id":"bmv.temple2","name":"temple2","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-10,"grid_y":25,"why":"named exterior cell temple2"}
+{"id":"bmv.temple2","name":"temple2","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-10,"grid_y":25,"why":"named exterior cell temple2","marker_name":"Road to Docks"}
+{"id":"bmv.templepass","name":"templepass","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":9,"grid_y":24,"why":"named exterior cell templepass"}
 {"id":"bmv.therose","name":"TheRose","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":-31,"grid_y":-5,"why":"named exterior cell TheRose"}
-{"id":"bmv.tribe","name":"TRIBE","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-6,"grid_y":-3,"why":"named exterior cell TRIBE"}
+{"id":"bmv.tribe","name":"TRIBE","kind":"settlement","worldspace":"0D6960:Black Marsh.esm","grid_x":-6,"grid_y":-2,"why":"named exterior cell TRIBE with exit2 within 5 squares"}
+{"id":"bmv.valenwood.ants","name":"ants","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":23,"grid_y":7,"why":"named exterior cell ants"}
+{"id":"bmv.valenwood.arenthi","name":"Arenthi","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":17,"grid_y":27,"why":"named exterior cell Arenthi with end, Arenthia within 5 squares","marker_name":"Arenthia"}
+{"id":"bmv.valenwood.ayruin1","name":"AyRuin1","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-26,"grid_y":-13,"why":"named exterior cell AyRuin1"}
+{"id":"bmv.valenwood.ayruin2","name":"AyRuin2","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-13,"grid_y":12,"why":"named exterior cell AyRuin2"}
+{"id":"bmv.valenwood.ayruin3","name":"AYruin3","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":0,"grid_y":7,"why":"named exterior cell AYruin3"}
+{"id":"bmv.valenwood.barracks","name":"Barracks","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-23,"grid_y":-21,"why":"named exterior cell Barracks"}
+{"id":"bmv.valenwood.beach","name":"Beach","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-30,"grid_y":7,"why":"named exterior cell Beach"}
+{"id":"bmv.valenwood.border","name":"border","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":24,"grid_y":13,"why":"named exterior cell border"}
+{"id":"bmv.valenwood.bosmer","name":"Bosmer","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-11,"grid_y":-3,"why":"named exterior cell Bosmer","marker_name":"Silvenar"}
+{"id":"bmv.valenwood.bosmertown","name":"Bosmertown","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":18,"grid_y":-10,"why":"named exterior cell Bosmertown with GrahtOak within 5 squares"}
+{"id":"bmv.valenwood.bosmertree","name":"Bosmertree","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-15,"grid_y":-19,"why":"named exterior cell Bosmertree with check, treeelves within 5 squares","marker_name":"Canopy Pass"}
+{"id":"bmv.valenwood.burnttown","name":"burnttown","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-29,"grid_y":-5,"why":"named exterior cell burnttown"}
+{"id":"bmv.valenwood.capital","name":"Capital","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-16,"grid_y":7,"why":"named exterior cell Capital","marker_name":"Falinesti"}
+{"id":"bmv.valenwood.cavepass","name":"Cavepass","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-8,"grid_y":12,"why":"named exterior cell Cavepass with Empty within 5 squares"}
+{"id":"bmv.valenwood.crater","name":"crater","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-8,"grid_y":-3,"why":"named exterior cell crater"}
+{"id":"bmv.valenwood.dwarmer1valen","name":"Dwarmer1valen","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":13,"grid_y":-20,"why":"named exterior cell Dwarmer1valen"}
+{"id":"bmv.valenwood.ebonro","name":"EbonRo","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-1,"grid_y":18,"why":"named exterior cell EbonRo"}
+{"id":"bmv.valenwood.eldenroot","name":"EldenRoot","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":4,"grid_y":-14,"why":"named exterior cell EldenRoot with EldenRoot1 within 5 squares","marker_name":"Elden Root"}
+{"id":"bmv.valenwood.falinesti","name":"Falinesti","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-16,"grid_y":11,"why":"named exterior cell Falinesti"}
+{"id":"bmv.valenwood.falls","name":"falls","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-6,"grid_y":2,"why":"named exterior cell falls"}
+{"id":"bmv.valenwood.gilvardelle","name":"GilVarDelle","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":7,"grid_y":-2,"why":"named exterior cell GilVarDelle"}
+{"id":"bmv.valenwood.greatforrest","name":"Greatforrest","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":9,"grid_y":-7,"why":"named exterior cell Greatforrest"}
+{"id":"bmv.valenwood.greenheart","name":"Greenheart","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-6,"grid_y":-18,"why":"named exterior cell Greenheart","marker_name":"Greenheart"}
+{"id":"bmv.valenwood.haven","name":"Haven","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":28,"grid_y":-20,"why":"named exterior cell Haven","marker_name":"Haven"}
+{"id":"bmv.valenwood.inbetween","name":"inbetween","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":28,"grid_y":-8,"why":"named exterior cell inbetween"}
+{"id":"bmv.valenwood.island","name":"Island","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":12,"grid_y":-1,"why":"named exterior cell Island with Island2 within 5 squares"}
+{"id":"bmv.valenwood.longvale","name":"Longvale","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-19,"grid_y":-9,"why":"named exterior cell Longvale with tower within 5 squares"}
+{"id":"bmv.valenwood.misttest","name":"misttest","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":28,"grid_y":-3,"why":"named exterior cell misttest"}
+{"id":"bmv.valenwood.moonmount","name":"Moonmount","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":19,"grid_y":-5,"why":"named exterior cell Moonmount","marker_name":"Moonmount"}
+{"id":"bmv.valenwood.oasis","name":"oasis","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":26,"grid_y":3,"why":"named exterior cell oasis with reapersmarch within 5 squares"}
+{"id":"bmv.valenwood.oasis1","name":"oasis1","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":26,"grid_y":9,"why":"named exterior cell oasis1"}
+{"id":"bmv.valenwood.orc","name":"Orc","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-13,"grid_y":-15,"why":"named exterior cell Orc"}
+{"id":"bmv.valenwood.passto","name":"passto","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-6,"grid_y":-14,"why":"named exterior cell passto"}
+{"id":"bmv.valenwood.shrine","name":"Shrine","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-13,"grid_y":-9,"why":"named exterior cell Shrine"}
+{"id":"bmv.valenwood.southpoint","name":"SouthPoint","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":6,"grid_y":-31,"why":"named exterior cell SouthPoint","marker_name":"Southpoint"}
+{"id":"bmv.valenwood.spidercave","name":"spidercave","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-12,"grid_y":-21,"why":"named exterior cell spidercave with griffinspot within 5 squares"}
+{"id":"bmv.valenwood.stonefell","name":"Stonefell","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":3,"grid_y":13,"why":"named exterior cell Stonefell with fix within 5 squares"}
+{"id":"bmv.valenwood.thamor","name":"Thamor","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":28,"grid_y":12,"why":"named exterior cell Thamor"}
+{"id":"bmv.valenwood.town","name":"town","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-16,"grid_y":3,"why":"named exterior cell town"}
+{"id":"bmv.valenwood.town2","name":"town2","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":9,"grid_y":13,"why":"named exterior cell town2 with Plains2, Valenwood1 within 5 squares"}
+{"id":"bmv.valenwood.village5","name":"Village5","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":0,"grid_y":10,"why":"named exterior cell Village5"}
+{"id":"bmv.valenwood.villageval","name":"VillageVal","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":18,"grid_y":-24,"why":"named exterior cell VillageVal with dock6 within 5 squares"}
+{"id":"bmv.valenwood.waterfalls","name":"Waterfalls","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-3,"grid_y":-6,"why":"named exterior cell Waterfalls"}
+{"id":"bmv.valenwood.wild","name":"Wild","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":16,"grid_y":18,"why":"named exterior cell Wild with plains within 5 squares"}
+{"id":"bmv.valenwood.wild1","name":"wild1","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":11,"grid_y":3,"why":"named exterior cell wild1"}
+{"id":"bmv.valenwood.wild2","name":"wild2","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-11,"grid_y":5,"why":"named exterior cell wild2"}
+{"id":"bmv.valenwood.woodhearth","name":"Woodhearth","kind":"settlement","worldspace":"005900:Valenwood.esp","grid_x":-29,"grid_y":-18,"why":"named exterior cell Woodhearth with Dock7 within 5 squares","marker_name":"Woodhearth"}
 {"id":"bmv.village","name":"Village","kind":"settlement","worldspace":"23D689:Black Marsh.esm","grid_x":22,"grid_y":-4,"why":"named exterior cell Village"}

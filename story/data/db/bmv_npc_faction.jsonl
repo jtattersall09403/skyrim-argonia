@@ -1,18 +1,54 @@
 {"npc":"005909:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"005909:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"005909:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
+{"npc":"007995:BosmerArmorMATY743.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"007995:BosmerArmorMATY743.esm","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"007995:BosmerArmorMATY743.esm","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"0094A9:BosmerArmorMATY743.esm","faction":"0AA784:Skyrim.esm","rank":0}
+{"npc":"0094AA:BosmerArmorMATY743.esm","faction":"0AA784:Skyrim.esm","rank":0}
+{"npc":"00AFB9:BosmerArmorMATY743.esm","faction":"0AA784:Skyrim.esm","rank":0}
+{"npc":"00AFBA:BosmerArmorMATY743.esm","faction":"0AA784:Skyrim.esm","rank":0}
+{"npc":"00BAA4:BosmerArmorMATY743.esm","faction":"019809:Skyrim.esm","rank":0}
+{"npc":"00BAA4:BosmerArmorMATY743.esm","faction":"05C84D:Skyrim.esm","rank":0}
+{"npc":"00BAA4:BosmerArmorMATY743.esm","faction":"05C84E:Skyrim.esm","rank":-1}
+{"npc":"00BAA4:BosmerArmorMATY743.esm","faction":"0BCC9A:Skyrim.esm","rank":0}
+{"npc":"00BAA4:BosmerArmorMATY743.esm","faction":"0BD738:Skyrim.esm","rank":-1}
+{"npc":"013349:Skyrim.esm","faction":"02816B:Skyrim.esm","rank":0}
+{"npc":"013349:Skyrim.esm","faction":"028186:Skyrim.esm","rank":0}
+{"npc":"013349:Skyrim.esm","faction":"036629:Skyrim.esm","rank":-1}
+{"npc":"013349:Skyrim.esm","faction":"03662A:Skyrim.esm","rank":0}
+{"npc":"013349:Skyrim.esm","faction":"036634:Skyrim.esm","rank":0}
+{"npc":"013349:Skyrim.esm","faction":"050922:Skyrim.esm","rank":-1}
+{"npc":"013349:Skyrim.esm","faction":"0A251F:Skyrim.esm","rank":0}
 {"npc":"015194:Black Marsh.esm","faction":"0267E3:Skyrim.esm","rank":0}
 {"npc":"015194:Black Marsh.esm","faction":"028173:Skyrim.esm","rank":0}
 {"npc":"017074:Dragonborn.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"017074:Dragonborn.esm","faction":"017964:Dragonborn.esm","rank":0}
 {"npc":"017074:Dragonborn.esm","faction":"02997F:Skyrim.esm","rank":0}
 {"npc":"017074:Dragonborn.esm","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"017E92:Dawnguard.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"017E92:Dawnguard.esm","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"017E92:Dawnguard.esm","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"017E92:Dawnguard.esm","faction":"02D1DF:Skyrim.esm","rank":0}
 {"npc":"01A3A5:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"01A3A5:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"01A3A5:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
 {"npc":"01A3A6:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"01A3A6:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"01A3A6:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
+{"npc":"01CCD8:Black Marsh North.esp","faction":"051591:Skyrim.esm","rank":0}
+{"npc":"01CCE4:Black Marsh North.esp","faction":"0813B7:Skyrim.esm","rank":0}
+{"npc":"01CCE4:Black Marsh North.esp","faction":"0D27F3:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"028186:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"029DA9:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"0A2527:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"0E3A49:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"0E3A4E:Skyrim.esm","rank":0}
+{"npc":"01CD91:Skyrim.esm","faction":"10A794:Skyrim.esm","rank":0}
+{"npc":"01E957:Skyrim.esm","faction":"0267E3:Skyrim.esm","rank":0}
+{"npc":"01E957:Skyrim.esm","faction":"028173:Skyrim.esm","rank":0}
+{"npc":"01E957:Skyrim.esm","faction":"040B60:Skyrim.esm","rank":4}
 {"npc":"021875:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"021875:Skyrim.esm","faction":"02E894:Skyrim.esm","rank":0}
 {"npc":"023A95:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
@@ -21,6 +57,11 @@
 {"npc":"023AAE:Skyrim.esm","faction":"04359A:Skyrim.esm","rank":0}
 {"npc":"023AB0:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"023AB0:Skyrim.esm","faction":"04359E:Skyrim.esm","rank":0}
+{"npc":"023AB2:Skyrim.esm","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"023AB2:Skyrim.esm","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"023AB9:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"023AB9:Skyrim.esm","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"023AB9:Skyrim.esm","faction":"03E094:Skyrim.esm","rank":0}
 {"npc":"023ABA:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"023ABA:Skyrim.esm","faction":"02997E:Skyrim.esm","rank":0}
 {"npc":"023ABA:Skyrim.esm","faction":"0435A1:Skyrim.esm","rank":0}
@@ -34,16 +75,77 @@
 {"npc":"025D1D:Skyrim.esm","faction":"043597:Skyrim.esm","rank":0}
 {"npc":"02857E:Dragonborn.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"02857E:Dragonborn.esm","faction":"02507C:Dragonborn.esm","rank":0}
+{"npc":"029DAA:Skyrim.esm","faction":"028186:Skyrim.esm","rank":0}
+{"npc":"029DAA:Skyrim.esm","faction":"029DA9:Skyrim.esm","rank":0}
+{"npc":"029DAA:Skyrim.esm","faction":"051592:Skyrim.esm","rank":-1}
+{"npc":"029DAA:Skyrim.esm","faction":"051596:Skyrim.esm","rank":-1}
+{"npc":"029DAA:Skyrim.esm","faction":"0AC9DF:Skyrim.esm","rank":0}
+{"npc":"029DAA:Skyrim.esm","faction":"10A794:Skyrim.esm","rank":0}
 {"npc":"02A233:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"02A233:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"02D299:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"02D299:Black Marsh North.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"02D44A:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"02D44A:Black Marsh North.esp","faction":"0267E3:Skyrim.esm","rank":0}
 {"npc":"030437:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"030437:Skyrim.esm","faction":"04359A:Skyrim.esm","rank":0}
 {"npc":"030438:Skyrim.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"030438:Skyrim.esm","faction":"04359A:Skyrim.esm","rank":0}
 {"npc":"0322B1:Dragonborn.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0322B1:Dragonborn.esm","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"03286D:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"03286D:Black Marsh North.esp","faction":"0267E3:Skyrim.esm","rank":0}
+{"npc":"03286E:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"03286E:Black Marsh North.esp","faction":"0267E3:Skyrim.esm","rank":0}
+{"npc":"03286F:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"03286F:Black Marsh North.esp","faction":"0267E3:Skyrim.esm","rank":0}
+{"npc":"033F45:Skyrim.esm","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"033F45:Skyrim.esm","faction":"042398:Skyrim.esm","rank":0}
+{"npc":"03AF2F:Skyrim.esm","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"03AF2F:Skyrim.esm","faction":"042398:Skyrim.esm","rank":0}
 {"npc":"03B585:Black Marsh.esm","faction":"040859:Black Marsh.esm","rank":0}
 {"npc":"03B587:Black Marsh.esm","faction":"040858:Black Marsh.esm","rank":0}
+{"npc":"03DE8B:Valenwood.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"03DEC6:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"03DEC6:Valenwood.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"03DEC6:Valenwood.esp","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"03DEC6:Valenwood.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"03DEC6:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"03DED1:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"03DED1:Valenwood.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"03DED1:Valenwood.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"03DED1:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"03E417:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"03E417:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"03E417:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"0267EA:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"028172:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"051592:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"09F259:Skyrim.esm","rank":0}
+{"npc":"042347:Valenwood.esp","faction":"0CD069:Skyrim.esm","rank":0}
+{"npc":"04234A:Valenwood.esp","faction":"08562A:Skyrim.esm","rank":0}
+{"npc":"042351:Valenwood.esp","faction":"019809:Skyrim.esm","rank":0}
+{"npc":"042351:Valenwood.esp","faction":"0267E3:Skyrim.esm","rank":0}
+{"npc":"042351:Valenwood.esp","faction":"028183:Skyrim.esm","rank":0}
+{"npc":"042351:Valenwood.esp","faction":"05C84D:Skyrim.esm","rank":0}
+{"npc":"042351:Valenwood.esp","faction":"05C84E:Skyrim.esm","rank":-1}
+{"npc":"045D4D:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"045D4D:Black Marsh North.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"045D4F:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"045D4F:Black Marsh North.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"046794:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"047548:Valenwood.esp","faction":"04754B:Valenwood.esp","rank":0}
+{"npc":"047548:Valenwood.esp","faction":"05091D:Skyrim.esm","rank":0}
+{"npc":"047548:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"047548:Valenwood.esp","faction":"10CEE9:Skyrim.esm","rank":0}
+{"npc":"04F1CB:Black Marsh North.esp","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"04F26C:Black Marsh North.esp","faction":"02B0E5:Skyrim.esm","rank":0}
 {"npc":"0534A3:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0534A3:Black Marsh.esm","faction":"02997F:Skyrim.esm","rank":0}
 {"npc":"0534A3:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
@@ -52,6 +154,15 @@
 {"npc":"056691:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"056691:Black Marsh.esm","faction":"02997E:Skyrim.esm","rank":0}
 {"npc":"056691:Black Marsh.esm","faction":"0435A1:Skyrim.esm","rank":0}
+{"npc":"056DB9:Valenwood.esp","faction":"05091D:Skyrim.esm","rank":0}
+{"npc":"056DB9:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"056DB9:Valenwood.esp","faction":"056DBB:Valenwood.esp","rank":0}
+{"npc":"056DB9:Valenwood.esp","faction":"10CEE9:Skyrim.esm","rank":0}
+{"npc":"056DE8:Valenwood.esp","faction":"05091C:Skyrim.esm","rank":0}
+{"npc":"056DE8:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"056DE8:Valenwood.esp","faction":"056DED:Valenwood.esp","rank":0}
+{"npc":"056DEA:Valenwood.esp","faction":"05091C:Skyrim.esm","rank":0}
+{"npc":"056DEA:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
 {"npc":"0585BE:Black Marsh.esm","faction":"01D9C9:Dragonborn.esm","rank":0}
 {"npc":"0585C2:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0585C2:Black Marsh.esm","faction":"04359E:Skyrim.esm","rank":0}
@@ -65,10 +176,16 @@
 {"npc":"05867B:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"05867B:Black Marsh.esm","faction":"032D9C:Skyrim.esm","rank":0}
 {"npc":"05867C:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"05D45E:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"05D45E:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"05D462:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"05D462:Black Marsh North.esp","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"05D79B:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"05D79B:Black Marsh.esm","faction":"011BE2:Dawnguard.esm","rank":0}
 {"npc":"05D79B:Black Marsh.esm","faction":"043597:Skyrim.esm","rank":0}
 {"npc":"05D79B:Black Marsh.esm","faction":"106643:Skyrim.esm","rank":0}
 {"npc":"05D7AA:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"05D7AA:Black Marsh.esm","faction":"011BE2:Dawnguard.esm","rank":0}
 {"npc":"05D7AA:Black Marsh.esm","faction":"106643:Skyrim.esm","rank":0}
 {"npc":"05D7D6:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"05D7D6:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
@@ -78,10 +195,50 @@
 {"npc":"05D7D8:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"05D7D8:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"05D7D8:Black Marsh.esm","faction":"0FBBF3:Skyrim.esm","rank":0}
+{"npc":"068850:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"068850:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"068850:Black Marsh North.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"068850:Black Marsh North.esp","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"06888A:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"06888A:Black Marsh North.esp","faction":"032D9C:Skyrim.esm","rank":0}
+{"npc":"0688B8:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0688B8:Black Marsh North.esp","faction":"02997E:Skyrim.esm","rank":0}
+{"npc":"0688B8:Black Marsh North.esp","faction":"0435A1:Skyrim.esm","rank":0}
+{"npc":"0688BE:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0688BE:Black Marsh North.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"0688BE:Black Marsh North.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"0688FC:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0688FC:Black Marsh North.esp","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"0688FE:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0688FE:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0688FE:Black Marsh North.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"068907:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"068907:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"068907:Black Marsh North.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"06890A:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"06890A:Black Marsh North.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"06890A:Black Marsh North.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"068994:Black Marsh North.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"068D03:Skyrim.esm","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"068D03:Skyrim.esm","faction":"03E095:Skyrim.esm","rank":0}
 {"npc":"06B1E1:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"06B1E1:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"06B1E1:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"06B1E1:Black Marsh.esm","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"072362:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"072362:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"072362:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"073FC1:Skyrim.esm","faction":"04E509:Skyrim.esm","rank":0}
+{"npc":"073FC1:Skyrim.esm","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"073FC1:Skyrim.esm","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"073FC1:Skyrim.esm","faction":"0AC9C2:Skyrim.esm","rank":0}
+{"npc":"078452:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"078452:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"078452:Black Marsh North.esp","faction":"02856C:Dragonborn.esm","rank":0}
+{"npc":"078452:Black Marsh North.esp","faction":"02BC5E:Dragonborn.esm","rank":0}
+{"npc":"078452:Black Marsh North.esp","faction":"0397E3:Dragonborn.esm","rank":0}
+{"npc":"078460:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"078460:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
 {"npc":"079817:Black Marsh.esm","faction":"051596:Skyrim.esm","rank":0}
 {"npc":"079817:Black Marsh.esm","faction":"07F6BE:Skyrim.esm","rank":0}
 {"npc":"07A60C:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
@@ -95,6 +252,16 @@
 {"npc":"07F934:Black Marsh.esm","faction":"0F1ABC:Skyrim.esm","rank":0}
 {"npc":"07F93C:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"07F93C:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
+{"npc":"082C96:Black Marsh North.esp","faction":"0813B7:Skyrim.esm","rank":0}
+{"npc":"0832F1:Black Marsh North.esp","faction":"0D27F3:Skyrim.esm","rank":0}
+{"npc":"08340E:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"08340E:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"08340E:Black Marsh North.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"08340E:Black Marsh North.esp","faction":"0FBBF3:Skyrim.esm","rank":0}
+{"npc":"083413:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"083413:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"083413:Black Marsh North.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"083413:Black Marsh North.esp","faction":"03E691:Skyrim.esm","rank":0}
 {"npc":"084A7A:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"084A7D:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"084A7E:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
@@ -108,34 +275,207 @@
 {"npc":"084B0F:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"084B0F:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"084B0F:Black Marsh.esm","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"08889D:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"08889D:Black Marsh North.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"08889D:Black Marsh North.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"08889D:Black Marsh North.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"0888A2:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0888A2:Black Marsh North.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"0888A2:Black Marsh North.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"0888A2:Black Marsh North.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
 {"npc":"089CD6:Black Marsh.esm","faction":"05091D:Skyrim.esm","rank":0}
 {"npc":"089CD6:Black Marsh.esm","faction":"051596:Skyrim.esm","rank":0}
 {"npc":"089CD6:Black Marsh.esm","faction":"079816:Black Marsh.esm","rank":0}
+{"npc":"08FF55:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"08FF55:Valenwood.esp","faction":"032D9C:Skyrim.esm","rank":0}
+{"npc":"08FF8A:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"08FF8A:Valenwood.esp","faction":"042398:Skyrim.esm","rank":0}
 {"npc":"090233:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"090233:Black Marsh.esm","faction":"04359A:Skyrim.esm","rank":0}
 {"npc":"09023F:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"09023F:Black Marsh.esm","faction":"02997F:Skyrim.esm","rank":0}
 {"npc":"09023F:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"090241:Black Marsh.esm","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"093417:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"095A7E:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"095A7E:Valenwood.esp","faction":"0D25A6:Skyrim.esm","rank":0}
+{"npc":"095A85:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"095A85:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"095A85:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"095A85:Valenwood.esp","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"099D52:Skyrim.esm","faction":"0AA784:Skyrim.esm","rank":0}
+{"npc":"09A3F6:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"09A3F6:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"09A3F6:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"09A3F8:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"09A3F8:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"09A3F8:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"09A3F9:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"09A3F9:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"09A3F9:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
 {"npc":"09AE2F:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"09AE2F:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"09AE2F:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"09AE2F:Black Marsh.esm","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"09E35D:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"09E35D:Black Marsh North.esp","faction":"043597:Skyrim.esm","rank":0}
+{"npc":"09E35D:Black Marsh North.esp","faction":"106643:Skyrim.esm","rank":0}
+{"npc":"0A09C6:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0A09C6:Valenwood.esp","faction":"04359E:Skyrim.esm","rank":0}
+{"npc":"0A09C6:Valenwood.esp","faction":"0E0CDB:Skyrim.esm","rank":0}
+{"npc":"0A09C6:Valenwood.esp","faction":"106643:Skyrim.esm","rank":0}
+{"npc":"0AA2CC:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0AA2CC:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"0AA2CC:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"0AA2CC:Valenwood.esp","faction":"04E849:Skyrim.esm","rank":0}
 {"npc":"0AA65E:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0AA65E:Black Marsh.esm","faction":"03E096:Skyrim.esm","rank":0}
+{"npc":"0ABC44:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0ABC44:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0ABC44:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"0ABC46:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0ABC46:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0ABC46:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"0ABC48:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0ABC48:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0ABC48:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"0ABC4A:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"0ABC4B:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"0ABCD3:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"0ABCD6:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"0ABCDC:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0ABCDC:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0ABCDC:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
 {"npc":"0B2E12:Skyrim.esm","faction":"07F6BE:Skyrim.esm","rank":0}
+{"npc":"0B617D:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0B617D:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0B617D:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
 {"npc":"0BCAFF:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0BCAFF:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
 {"npc":"0BCB00:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0BCB00:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
 {"npc":"0BCB01:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0BCB01:Black Marsh.esm","faction":"0418EA:Skyrim.esm","rank":0}
+{"npc":"0BFB46:Skyrim.esm","faction":"04E509:Skyrim.esm","rank":0}
+{"npc":"0BFB46:Skyrim.esm","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0BFB46:Skyrim.esm","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0BFB46:Skyrim.esm","faction":"0AC9C2:Skyrim.esm","rank":0}
+{"npc":"0C49DE:Skyrim.esm","faction":"04E509:Skyrim.esm","rank":0}
+{"npc":"0C49DE:Skyrim.esm","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"0C49DE:Skyrim.esm","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0C49DE:Skyrim.esm","faction":"0AC9C2:Skyrim.esm","rank":0}
+{"npc":"0C4E8B:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0C4E8B:Valenwood.esp","faction":"02430D:Skyrim.esm","rank":0}
+{"npc":"0C4E97:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0C4E97:Valenwood.esp","faction":"02430D:Skyrim.esm","rank":0}
+{"npc":"0C4FF9:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0C4FF9:Valenwood.esp","faction":"0E0CDB:Skyrim.esm","rank":0}
+{"npc":"0C4FF9:Valenwood.esp","faction":"106643:Skyrim.esm","rank":0}
+{"npc":"0C5003:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0C5003:Valenwood.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"0C5003:Valenwood.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"0C5003:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"0C642E:Valenwood.esp","faction":"02856C:Dragonborn.esm","rank":0}
+{"npc":"0C642E:Valenwood.esp","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"0C642E:Valenwood.esp","faction":"02BC5E:Dragonborn.esm","rank":0}
+{"npc":"0C642E:Valenwood.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"0C642E:Valenwood.esp","faction":"0397E3:Dragonborn.esm","rank":0}
+{"npc":"0C6441:Valenwood.esp","faction":"02B0E5:Skyrim.esm","rank":0}
+{"npc":"0C70FC:Black Marsh North.esp","faction":"043598:Skyrim.esm","rank":0}
+{"npc":"0C70FF:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0C70FF:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"0C70FF:Black Marsh North.esp","faction":"03C9A8:Skyrim.esm","rank":0}
 {"npc":"0C71F4:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0C71F4:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"0C71F4:Black Marsh.esm","faction":"03C9A8:Skyrim.esm","rank":0}
 {"npc":"0C7249:Black Marsh.esm","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"0CAB2F:Skyrim.esm","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"0D95F4:Skyrim.esm","faction":"028176:Skyrim.esm","rank":0}
+{"npc":"0D95FC:Skyrim.esm","faction":"028176:Skyrim.esm","rank":0}
+{"npc":"0DF92E:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0E4EB3:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0E4EB3:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0E4EB3:Black Marsh North.esp","faction":"02856C:Dragonborn.esm","rank":0}
+{"npc":"0E4EB3:Black Marsh North.esp","faction":"02BC5E:Dragonborn.esm","rank":0}
+{"npc":"0E4EB3:Black Marsh North.esp","faction":"0397E3:Dragonborn.esm","rank":0}
+{"npc":"0EB099:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0EB099:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0EB099:Black Marsh North.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"0EB099:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"0EB0BE:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0EB0BE:Black Marsh North.esp","faction":"0D25A6:Skyrim.esm","rank":0}
+{"npc":"0F0477:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0F0477:Black Marsh North.esp","faction":"032D9C:Skyrim.esm","rank":0}
+{"npc":"0F09FC:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0F0A02:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0F0A02:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0F0A02:Black Marsh North.esp","faction":"04359B:Skyrim.esm","rank":0}
+{"npc":"0FB91F:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FB91F:Valenwood.esp","faction":"04359B:Skyrim.esm","rank":0}
+{"npc":"0FB92B:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FB92B:Valenwood.esp","faction":"0435A1:Skyrim.esm","rank":0}
+{"npc":"0FB92C:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FB92C:Valenwood.esp","faction":"0435A1:Skyrim.esm","rank":0}
+{"npc":"0FB930:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FB930:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"0FB930:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"0FB930:Valenwood.esp","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"0FB931:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FB931:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"0FB931:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"0FB931:Valenwood.esp","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"0FBACB:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"0FBACB:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"0FBACB:Valenwood.esp","faction":"0B5E12:Skyrim.esm","rank":-1}
+{"npc":"0FBACB:Valenwood.esp","faction":"0B80F7:Skyrim.esm","rank":0}
+{"npc":"0FBACB:Valenwood.esp","faction":"0BA0B2:Skyrim.esm","rank":-1}
+{"npc":"0FBACE:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"0FBAD0:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"0FBAD2:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"0FBAD2:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"0FBAD2:Valenwood.esp","faction":"0B5E12:Skyrim.esm","rank":-1}
+{"npc":"0FBAD2:Valenwood.esp","faction":"0B80F7:Skyrim.esm","rank":0}
+{"npc":"0FBAD2:Valenwood.esp","faction":"0BA0B2:Skyrim.esm","rank":-1}
+{"npc":"0FBF1E:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FBF1E:Black Marsh North.esp","faction":"007A66:Dawnguard.esm","rank":0}
+{"npc":"0FBF1E:Black Marsh North.esp","faction":"0083A6:Dawnguard.esm","rank":0}
+{"npc":"0FBF1E:Black Marsh North.esp","faction":"032D9C:Skyrim.esm","rank":0}
+{"npc":"0FBF1E:Black Marsh North.esp","faction":"07A0DF:Skyrim.esm","rank":0}
+{"npc":"0FBF20:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"0FBF20:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"0FBF20:Black Marsh North.esp","faction":"02D1DF:Skyrim.esm","rank":0}
+{"npc":"0FBF20:Black Marsh North.esp","faction":"032D9C:Skyrim.esm","rank":0}
+{"npc":"0FBF20:Black Marsh North.esp","faction":"07A0DF:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"0FE510:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
 {"npc":"0FE956:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"0FE956:Black Marsh.esm","faction":"02997F:Skyrim.esm","rank":0}
 {"npc":"0FE956:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"102D63:Skyrim.esm","faction":"0522B6:Skyrim.esm","rank":0}
 {"npc":"106B83:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
 {"npc":"106B83:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
 {"npc":"106B83:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
@@ -148,6 +488,17 @@
 {"npc":"106B84:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
 {"npc":"106B84:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
 {"npc":"106B84:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"106C79:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"106C79:Black Marsh North.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"106C80:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"106C80:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"106C80:Black Marsh North.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"106C80:Black Marsh North.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"106C88:Black Marsh North.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"106C88:Black Marsh North.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"106C88:Black Marsh North.esp","faction":"02856C:Dragonborn.esm","rank":0}
+{"npc":"106C88:Black Marsh North.esp","faction":"02BC5E:Dragonborn.esm","rank":0}
+{"npc":"106C88:Black Marsh North.esp","faction":"0397E3:Dragonborn.esm","rank":0}
 {"npc":"107572:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
 {"npc":"107572:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
 {"npc":"107572:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
@@ -162,6 +513,12 @@
 {"npc":"108F89:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"108F89:Black Marsh.esm","faction":"02E894:Skyrim.esm","rank":0}
 {"npc":"108F89:Black Marsh.esm","faction":"0330B1:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"10A19F:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
 {"npc":"10A1A0:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
 {"npc":"10A1A0:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
 {"npc":"10A1A0:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
@@ -174,20 +531,98 @@
 {"npc":"10A1A1:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
 {"npc":"10A1A1:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
 {"npc":"10A1A1:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"10A1A2:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"10A1A2:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"10A1A2:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"10A1A2:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"10A1A2:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"01C9FC:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"028848:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"02BF9A:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"06491A:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"094393:Skyrim.esm","rank":0}
 {"npc":"10A1AB:Skyrim.esm","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"10AF34:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"10AF92:Valenwood.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"10AFC1:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"10AFC1:Valenwood.esp","faction":"011BE2:Dawnguard.esm","rank":0}
+{"npc":"10AFC1:Valenwood.esp","faction":"018C4F:Dawnguard.esm","rank":0}
+{"npc":"111277:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"111277:Valenwood.esp","faction":"0B80F7:Skyrim.esm","rank":0}
+{"npc":"1117B7:Black Marsh North.esp","faction":"05091D:Skyrim.esm","rank":0}
+{"npc":"1117B7:Black Marsh North.esp","faction":"10C303:Black Marsh North.esp","rank":0}
+{"npc":"116600:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116600:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"116600:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"116600:Valenwood.esp","faction":"0FBBF3:Skyrim.esm","rank":0}
+{"npc":"116601:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116601:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"116601:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"116601:Valenwood.esp","faction":"04E849:Skyrim.esm","rank":0}
+{"npc":"116602:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116602:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"116602:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"116602:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"116603:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116603:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"116603:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"116603:Valenwood.esp","faction":"0D25A6:Skyrim.esm","rank":0}
+{"npc":"116603:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"116604:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116604:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"116604:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"116604:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"116605:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116605:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"116605:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"116605:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"11662D:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"11662D:Valenwood.esp","faction":"02430D:Skyrim.esm","rank":0}
+{"npc":"11662E:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"11662F:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"11662F:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"11662F:Valenwood.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"116630:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116630:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"116630:Valenwood.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"116653:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116653:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"116653:Valenwood.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"116655:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"116655:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"116655:Valenwood.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"11665D:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"11665D:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
 {"npc":"120DF3:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"120DF3:Black Marsh.esm","faction":"032D9C:Skyrim.esm","rank":0}
 {"npc":"120E9A:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"120E9A:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"120E9A:Black Marsh.esm","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"12117D:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"12117D:Valenwood.esp","faction":"04359A:Skyrim.esm","rank":0}
+{"npc":"12117E:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"12117E:Valenwood.esp","faction":"04359A:Skyrim.esm","rank":0}
+{"npc":"12117F:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"12117F:Valenwood.esp","faction":"04359E:Skyrim.esm","rank":0}
+{"npc":"1211A4:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1211A4:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"1211A4:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"1211A4:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
 {"npc":"12618E:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"12618E:Black Marsh.esm","faction":"02B0E5:Skyrim.esm","rank":0}
 {"npc":"12618E:Black Marsh.esm","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"14157A:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"14157A:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"14157A:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"14157B:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"14157B:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"14157B:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
 {"npc":"1453ED:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"1453ED:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"1453ED:Black Marsh.esm","faction":"043594:Skyrim.esm","rank":0}
@@ -199,6 +634,33 @@
 {"npc":"1453F8:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"1453F8:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"1453F8:Black Marsh.esm","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"145CFD:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"145CFD:Valenwood.esp","faction":"042398:Skyrim.esm","rank":0}
+{"npc":"145CFF:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"145CFF:Valenwood.esp","faction":"042398:Skyrim.esm","rank":0}
+{"npc":"145D04:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"145D04:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"145D0A:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"145D0A:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"154778:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"154778:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"154778:Valenwood.esp","faction":"03C9A8:Skyrim.esm","rank":0}
+{"npc":"15FF54:Valenwood.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"15FF56:Valenwood.esp","faction":"01D9C9:Dragonborn.esm","rank":0}
+{"npc":"15FF60:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"15FF60:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"15FF60:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"15FF60:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"15FF63:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"15FF63:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"15FF63:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"15FF63:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"15FF66:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"15FF66:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"15FF66:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"15FF66:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
+{"npc":"15FF94:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"15FF94:Valenwood.esp","faction":"032D9C:Skyrim.esm","rank":0}
 {"npc":"166381:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"166381:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"166381:Black Marsh.esm","faction":"03C9A8:Skyrim.esm","rank":0}
@@ -207,6 +669,38 @@
 {"npc":"166383:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"166383:Black Marsh.esm","faction":"03C9A8:Skyrim.esm","rank":0}
 {"npc":"166385:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"166BBC:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"166BBC:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"166BBC:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"166BBD:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"166BBD:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"166BBD:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"166C29:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"166C29:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"166C29:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"16A60B:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"16A60B:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"16A60B:Valenwood.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"16A60D:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"16A60D:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"16A60D:Valenwood.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"16A60E:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"16A60E:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"16A60E:Valenwood.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"16A648:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"16A648:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"16A648:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"16A648:Valenwood.esp","faction":"0E0CD9:Skyrim.esm","rank":0}
+{"npc":"16A648:Valenwood.esp","faction":"0FBBF3:Skyrim.esm","rank":0}
+{"npc":"16A64C:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"16A64C:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"16A64C:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"16A64C:Valenwood.esp","faction":"0FBBF3:Skyrim.esm","rank":0}
+{"npc":"16A654:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"16A654:Valenwood.esp","faction":"042398:Skyrim.esm","rank":0}
+{"npc":"16BF57:Black Marsh North.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"16BF57:Black Marsh North.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"16BF57:Black Marsh North.esp","faction":"0B5D55:Skyrim.esm","rank":0}
 {"npc":"16C3BB:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"16C3BB:Black Marsh.esm","faction":"02E894:Skyrim.esm","rank":0}
 {"npc":"16C3BB:Black Marsh.esm","faction":"03E095:Skyrim.esm","rank":0}
@@ -220,8 +714,22 @@
 {"npc":"17BC86:Black Marsh.esm","faction":"04359B:Skyrim.esm","rank":0}
 {"npc":"17BF43:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"17BF43:Black Marsh.esm","faction":"0D25A6:Skyrim.esm","rank":0}
+{"npc":"17FB39:Valenwood.esp","faction":"043598:Skyrim.esm","rank":0}
+{"npc":"19F397:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"19F399:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"1A3C0B:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"1A3C0B:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"1A3C0C:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"1A3C0C:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"1A3C0D:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"1A3C0D:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"1AF933:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
 {"npc":"1B32E6:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"1B32E6:Black Marsh.esm","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"1B4E19:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1B4E19:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"1B4E19:Valenwood.esp","faction":"03E095:Skyrim.esm","rank":0}
+{"npc":"1B4E19:Valenwood.esp","faction":"0F1ABC:Skyrim.esm","rank":0}
 {"npc":"1B88A4:Black Marsh.esm","faction":"000DB1:Skyrim.esm","rank":0}
 {"npc":"1B88A4:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"1B88A6:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
@@ -230,6 +738,27 @@
 {"npc":"1B88AC:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
 {"npc":"1B88AE:Black Marsh.esm","faction":"000DB1:Skyrim.esm","rank":0}
 {"npc":"1B88AE:Black Marsh.esm","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"1BEBE7:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1BEBE7:Valenwood.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"01BCC0:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"024029:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"044EF6:Skyrim.esm","rank":0}
+{"npc":"1BEBE8:Valenwood.esp","faction":"0E0CD9:Skyrim.esm","rank":0}
+{"npc":"1BEBF2:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1BEBF2:Valenwood.esp","faction":"106643:Skyrim.esm","rank":0}
+{"npc":"1BEBFB:Valenwood.esp","faction":"072FE9:Skyrim.esm","rank":0}
+{"npc":"1BF493:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1BF493:Valenwood.esp","faction":"02430D:Skyrim.esm","rank":0}
+{"npc":"1BF496:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1BF496:Valenwood.esp","faction":"02430D:Skyrim.esm","rank":0}
+{"npc":"1CE83E:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"1CE83E:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"1CE83E:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"1D52C1:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"1D52C1:Valenwood.esp","faction":"02E894:Skyrim.esm","rank":0}
+{"npc":"202EA9:Valenwood.esp","faction":"02B0E5:Skyrim.esm","rank":0}
 {"npc":"207810:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
 {"npc":"207810:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"207810:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
@@ -238,18 +767,87 @@
 {"npc":"20789C:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
 {"npc":"20789C:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
 {"npc":"20789C:Black Marsh.esm","faction":"03E691:Skyrim.esm","rank":0}
-{"npc":"450649:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
-{"npc":"450649:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
-{"npc":"450649:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
-{"npc":"450649:Black Marsh.esm","faction":"03E691:Skyrim.esm","rank":0}
-{"npc":"45064A:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
-{"npc":"45064A:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
-{"npc":"45064A:Black Marsh.esm","faction":"03E093:Skyrim.esm","rank":0}
-{"npc":"45064A:Black Marsh.esm","faction":"03E691:Skyrim.esm","rank":0}
-{"npc":"4506AB:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
-{"npc":"4506AB:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
-{"npc":"4506C9:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
-{"npc":"4506C9:Black Marsh.esm","faction":"02430D:Skyrim.esm","rank":0}
-{"npc":"6F72CA:Black Marsh.esm","faction":"000013:Skyrim.esm","rank":0}
-{"npc":"6F72CA:Black Marsh.esm","faction":"02997F:Skyrim.esm","rank":0}
-{"npc":"6F72CA:Black Marsh.esm","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"20D4C2:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"20D4C4:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"20D4C6:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"20D4C8:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"20D4CA:Valenwood.esp","faction":"20D4C1:Valenwood.esp","rank":0}
+{"npc":"21CE40:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"21CE40:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"21CE40:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"21CE41:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"21CE41:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"21CE41:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"222219:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"222219:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"222219:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"2274F5:Valenwood.esp","faction":"039F26:Skyrim.esm","rank":0}
+{"npc":"227507:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"227507:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"227507:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"227509:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"227509:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"227509:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"01C9FC:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"028848:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"02BF9A:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"06491A:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"094393:Skyrim.esm","rank":0}
+{"npc":"227B7A:Valenwood.esp","faction":"0B4054:Skyrim.esm","rank":0}
+{"npc":"22CE7F:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"22CE7F:Valenwood.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"22CE7F:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"22CE85:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"22CE85:Valenwood.esp","faction":"02997F:Skyrim.esm","rank":0}
+{"npc":"22CE85:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"22CE94:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"22CE94:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"22CE94:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"22CE94:Valenwood.esp","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"22CE98:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"22CE98:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"22CE98:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"22CE98:Valenwood.esp","faction":"03E691:Skyrim.esm","rank":0}
+{"npc":"2321BF:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"2321BF:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"2321BF:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"2321E9:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"2321E9:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"2321E9:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"23228A:Valenwood.esp","faction":"051596:Skyrim.esm","rank":0}
+{"npc":"23228A:Valenwood.esp","faction":"0522B6:Skyrim.esm","rank":0}
+{"npc":"23228A:Valenwood.esp","faction":"0B5D55:Skyrim.esm","rank":0}
+{"npc":"2322A0:Valenwood.esp","faction":"0B5E10:Skyrim.esm","rank":0}
+{"npc":"2322A0:Valenwood.esp","faction":"0B80F7:Skyrim.esm","rank":0}
+{"npc":"2375BD:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"2375BD:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"2375BD:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"2375BD:Valenwood.esp","faction":"03E094:Skyrim.esm","rank":0}
+{"npc":"2375C5:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"2375C5:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"2375C5:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"2375C5:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"2375C5:Valenwood.esp","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"2375C8:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"2375C8:Valenwood.esp","faction":"027242:Skyrim.esm","rank":0}
+{"npc":"2375C8:Valenwood.esp","faction":"02E893:Skyrim.esm","rank":0}
+{"npc":"2375C8:Valenwood.esp","faction":"03E093:Skyrim.esm","rank":0}
+{"npc":"2375C8:Valenwood.esp","faction":"0435A2:Skyrim.esm","rank":0}
+{"npc":"23C8D7:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"23C8D7:Valenwood.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"23C8D9:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"23C8D9:Valenwood.esp","faction":"043594:Skyrim.esm","rank":0}
+{"npc":"23C8DB:Valenwood.esp","faction":"000013:Skyrim.esm","rank":0}
+{"npc":"23C8DB:Valenwood.esp","faction":"043594:Skyrim.esm","rank":0}

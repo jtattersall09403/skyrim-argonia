@@ -14,16 +14,16 @@
 {"quest_id":"quest.main.mq01","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Cuts-the-Old-Knot)"}
 {"quest_id":"quest.main.mq03","source":"bmvCells","value":"bmv_cell 005919 HereguardPlantation, 00591F Dock1, 005A0B Pussbottom, 0FE8B7 01CabinIntsiningDUPLICATE002 (door 0FE95B), 01Cavebig (orphan, census)"}
-{"quest_id":"quest.main.mq03","source":"bmvPeople","value":"bmv_placement 015193, 015195 Manor Servant; 0AA64F, 0AA650 Merchant; 00AC8E Argonian Boat Captain"}
+{"quest_id":"quest.main.mq03","source":"bmvPeople","value":"bmv_placement 015193, 015195 Manor Servant; 00AC8E Argonian Boat Captain (the Merchants 0AA64F, 0AA650 are deleted by Black Marsh North.esp)"}
 {"quest_id":"quest.main.mq03","source":"cultureSheets"}
 {"quest_id":"quest.main.mq03","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Nesh-Deeka, Never-Writes-Twice)"}
 {"quest_id":"quest.main.mq04","source":"bmvCells","value":"bmv_cell 03978F Village; trail cells 03978D (22,-5), 0397CD (22,-7), 07A6BC (26,-8); camp 0954C7 (28,-7)"}
-{"quest_id":"quest.main.mq04","source":"bmvPeople","value":"bmv_placement 084A7F Argonian Chief, 084A7B-084A91 tribal Argonians and children; Leech x72 (084AD7 first); removed under a parent that stays off (decision 0006): SoM_00EncDraugrzombiez1 x8 (084AF9 first), 00Corpseleech (draugr race) 07F92F, 07F931, 07F932, 07F933, 0Namith \"Condemed\" (dragon priest race) 120E0A, 120E0B"}
+{"quest_id":"quest.main.mq04","source":"bmvPeople","value":"bmv_placement 084A7F Argonian Chief, 084A7B-084A91 tribal Argonians and children; Leech x72 (084AD7 first); removed under a parent that stays off (decision 0006): (the eight SoM_00EncDraugrzombiez1, 084AF9 first, are deleted by Black Marsh North.esp) 00Corpseleech (draugr race) 07F92F, 07F931, 07F932, 07F933, 0Namith \"Condemed\" (dragon priest race) 120E0A, 120E0B"}
 {"quest_id":"quest.main.mq04","source":"cultureSheets"}
 {"quest_id":"quest.main.mq04","source":"lore"}
 {"quest_id":"quest.main.mq05","source":"bmvCells","value":"bmv_cell 0D794B Helstrom, 1DE4A1 01ArgonianHouseinside, 2076BB 01cellDUPLICATE002; bmv_settlement bmv.dock5; bmv.lilmoth (ship 01Ship)"}
 {"quest_id":"quest.main.mq05","source":"bmvDoors","value":"bmv_door into 1DE4A1: 1E42B2-1E42B6 (Helstrom), 1E42B7-1E42B9 (dock5, locked), 1E44AE (-7,16, locked); 2076D0 (the hall)"}
-{"quest_id":"quest.main.mq05","source":"bmvPeople","value":"none at Helstrom or on the walk (census); creature bases for the walk from bmv_placement at bmv.temple: Megalanian 103C91, Leopard 103C96"}
+{"quest_id":"quest.main.mq05","source":"bmvPeople","value":"Black Marsh North.esp places 13 in Helstrom's cells (the boatman Namorine 08D5E6, an Argonian Soldier 08D5E9, a Rebelion Soldier 08D5E4, a Member of the Night 08D5E7, villagers 08D5E8 and 08D5F0, a dock worker 08D5E3, a boat captain 08D5F1, five Dragling Blind 0882BC-0882C0) and three in the hall 01cellDUPLICATE002 (merchants 166BBE One Who Has Fire Hands and 166BBF, soldier 166BC1); none on the walk; creature bases for the walk from bmv_placement at bmv.temple: Megalanian 103C91, Leopard 103C96"}
 {"quest_id":"quest.main.mq05","source":"cultureSheets"}
 {"quest_id":"quest.main.mq05","source":"lore"}
 {"quest_id":"quest.main.mq05","source":"roster","value":"story/design/quests/36-cast-roster.md §55 (Ei-Tuja, Kaska-Meen, Never-Writes-Twice)"}

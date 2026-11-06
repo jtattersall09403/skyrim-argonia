@@ -63,8 +63,9 @@ New-NetFirewallRule -Name sshd-build -DisplayName 'SSH from build VM' -Protocol 
 <persist>false</persist>
 EOF
 
-if [ "${MARKET:-spot}" = ondemand ]; then MARKET_OPTS=(); else
-  MARKET_OPTS=(--instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}'); fi
+if [ "${MARKET:-spot}" = ondemand ]; then MARKET_OPTS=(); SPOT_TAGS=(); else
+  MARKET_OPTS=(--instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}')
+  SPOT_TAGS=("ResourceType=spot-instances-request,Tags=[$TAGS]"); fi
 launch() {
   aws ec2 run-instances --region $R --image-id "$AMI" --instance-type "$TYPE" --subnet-id "$SUBNET" \
     --security-group-ids "$SG" "$@" \
@@ -72,8 +73,7 @@ launch() {
     --block-device-mappings 'DeviceName=/dev/sda1,Ebs={VolumeSize=150,VolumeType=gp3,DeleteOnTermination=true}' \
     --metadata-options HttpTokens=required \
     --user-data "file://$USERDATA" \
-    --tag-specifications "ResourceType=instance,Tags=[$TAGS]" "ResourceType=volume,Tags=[$TAGS]" \
-      "ResourceType=spot-instances-request,Tags=[$TAGS]" \
+    --tag-specifications "ResourceType=instance,Tags=[$TAGS]" "ResourceType=volume,Tags=[$TAGS]" "${SPOT_TAGS[@]}" \
     --query 'Instances[0].InstanceId' --output text
 }
 # The instance role is optional (SSM break-glass); launch without it if it does not exist.

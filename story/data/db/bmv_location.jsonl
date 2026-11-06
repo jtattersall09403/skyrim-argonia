@@ -1,7 +1,26 @@
-{"id":"018EE8:Skyrim.esm","editor_id":"BlackreachLocation","name":"Blackreach","parent":"01676B:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
-{"id":"019152:Skyrim.esm","editor_id":"BthardamzLocation","name":"Bthardamz","parent":"016769:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
-{"id":"019159:Skyrim.esm","editor_id":"CragslaneCavernLocation","name":"Cragslane Cavern","parent":"01676A:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
-{"id":"019281:Skyrim.esm","editor_id":"MzulftLocation","name":"Mzulft","parent":"01676A:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
-{"id":"019283:Skyrim.esm","editor_id":"NchuandZelLocation","name":"Nchuand-Zel","parent":"016769:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
-{"id":"05254C:Skyrim.esm","editor_id":"AbandonedShackInteriorLocation","name":"Abandoned Shack","parent":"05254B:Skyrim.esm","defined_in":"Dawnguard.esm","in_bmv":false}
-{"id":"07B91A:Skyrim.esm","editor_id":"DaintySloadLocation","name":"Dainty Sload","parent":"016770:Skyrim.esm","defined_in":"Black Marsh.esm","in_bmv":true}
+{"id":"0142A0:Dragonborn.esm","plugin":"Black Marsh North.esp","editor_id":"DLC2FahlbtharzLocation","name":"Fahlbtharz","parent":"016E2A:Dragonborn.esm","defined_in":"Dragonborn.esm","in_bmv":true}
+{"id":"0162B2:Dawnguard.esm","editor_id":"DLC1zFalmerValley02Location","name":"Sharpslope Cave","parent":"00A87C:Dawnguard.esm","defined_in":"Dawnguard.esm","in_bmv":false}
+{"id":"018A49:Skyrim.esm","editor_id":"FalkreathLocation","name":"Falkreath","parent":"01676F:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"018C92:Skyrim.esm","plugin":"Valenwood.esp","editor_id":"ThalmorEmbassyLocation","name":"Thalmor Embassy","parent":"016770:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"018EE8:Skyrim.esm","plugin":"Black Marsh.esm","editor_id":"BlackreachLocation","name":"Blackreach","parent":"01676B:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019152:Skyrim.esm","plugin":"Black Marsh.esm","editor_id":"BthardamzLocation","name":"Bthardamz","parent":"016769:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019153:Skyrim.esm","plugin":"Valenwood.esp","editor_id":"BrokenOarGrottoLocation","name":"Broken Oar Grotto","parent":"016770:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019154:Skyrim.esm","editor_id":"ChillwindDepthsLocation","name":"Chillwind Depths","parent":"01676E:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"019159:Skyrim.esm","plugin":"Black Marsh.esm","editor_id":"CragslaneCavernLocation","name":"Cragslane Cavern","parent":"01676A:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"01915D:Skyrim.esm","plugin":"Valenwood.esp","editor_id":"DarklightTowerLocation","name":"Darklight Tower","parent":"01676C:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019187:Skyrim.esm","plugin":"Black Marsh North.esp","editor_id":"GallowsRockLocation","name":"Gallows Rock","parent":"01676A:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"01918E:Skyrim.esm","plugin":"Black Marsh North.esp","overridden_by":"Valenwood.esp","editor_id":"GuldunRockLocation","name":"Guldun Rock","parent":"016772:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019264:Skyrim.esm","editor_id":"LiarsRetreatLocation","name":"Liar's Retreat","parent":"016769:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"019281:Skyrim.esm","plugin":"Black Marsh.esm","overridden_by":"Valenwood.esp","editor_id":"MzulftLocation","name":"Mzulft","parent":"01676A:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"019283:Skyrim.esm","plugin":"Black Marsh.esm","editor_id":"NchuandZelLocation","name":"Nchuand-Zel","parent":"016769:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"01CB89:Skyrim.esm","editor_id":"RiverwoodFaendalsHouseLocation","name":"Faendal's House","parent":"013163:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01CB8C:Skyrim.esm","editor_id":"RiverwoodSleepingGiantInnLocation","name":"Sleeping Giant Inn","parent":"013163:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01F30C:Skyrim.esm","editor_id":"MarkarthEndonsHouseLocation","name":"Endon's House","parent":"018A59:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"01F872:Skyrim.esm","editor_id":"WhiterunDrunkenHuntsmanLocation","name":"Drunken Huntsman","parent":"018A56:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"020065:Skyrim.esm","editor_id":"DawnstarWindpeakInnLocation","name":"Windpeak Inn","parent":"018A50:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"03A07F:Dragonborn.esm","editor_id":"DLC2BloodskalBarrowBanditLocation","name":"Bloodskal Barrow","parent":"016E2A:Dragonborn.esm","defined_in":"Dragonborn.esm","in_bmv":false}
+{"id":"05254C:Skyrim.esm","editor_id":"AbandonedShackInteriorLocation","name":"Abandoned Shack","parent":"05254B:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"05CA26:Skyrim.esm","editor_id":"FalkreathDeadMansDrinkLocation","name":"Dead Man's Drink","parent":"018A49:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"07B91A:Skyrim.esm","plugin":"Black Marsh.esm","editor_id":"DaintySloadLocation","name":"Dainty Sload","parent":"016770:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":true}
+{"id":"09CD0E:Skyrim.esm","editor_id":"RiftenValindorsHouseLocation","name":"Valindor's House","parent":"018A58:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}
+{"id":"0A8C86:Skyrim.esm","editor_id":"RiftenJailLocation","name":"Riften Jail","parent":"018A58:Skyrim.esm","defined_in":"Skyrim.esm","in_bmv":false}

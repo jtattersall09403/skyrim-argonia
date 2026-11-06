@@ -22,12 +22,12 @@
 const DATA = /*DATA*/null;
 const IMAGES = /*IMAGES*/null;
 const G=4096, cv=document.getElementById('cv'), cx=cv.getContext('2d');
-const LAYERS={grid:'Grid',settlements:'Settlements',doors:'Load doors',people:'People',creatures:'Creatures',nav:'Navmesh cells',places:'Our places',markers:'Our markers'};
-const on={grid:true,settlements:true,doors:true,people:true,creatures:true,nav:false,places:true,markers:true};
+const LAYERS={grid:'Grid',settlements:'Settlements',doors:'Load doors',people:'People',creatures:'Creatures',nav:'Navmesh cells',bmvmarkers:'BM&V map markers',places:'Our places',markers:'Our markers'};
+const on={grid:true,settlements:true,doors:true,people:true,creatures:true,nav:false,bmvmarkers:true,places:true,markers:true};
 const lay=document.getElementById('layers');
 for(const k in LAYERS){const l=document.createElement('label');l.innerHTML=`<input type=checkbox ${on[k]?'checked':''}> ${LAYERS[k]}`;l.firstChild.onchange=e=>{on[k]=e.target.checked;draw()};lay.appendChild(l)}
 const wsSel=document.getElementById('ws');
-for(const w in DATA){const o=document.createElement('option');o.value=w;o.textContent=w+' ('+DATA[w].name+')';wsSel.appendChild(o)}
+for(const w in DATA){const o=document.createElement('option');o.value=w;o.textContent=w+' ('+(DATA[w].name||'no name')+', '+DATA[w].plugin+', '+DATA[w].terrain.land.length+' cells)';wsSel.appendChild(o)}
 let W, img, view={s:1,x:0,y:0}, sel=null, hover=null;
 const imgs={};for(const w in IMAGES){const i=new Image();i.src=IMAGES[w];i.onload=draw;imgs[w]=i}
 function setWorld(w,keep){W=DATA[w];img=imgs[w];wsSel.value=w;if(!keep)fit();draw()}
@@ -46,6 +46,7 @@ function draw(){
  if(!W)return;cx.fillStyle='#0b0e11';cx.fillRect(0,0,cv.width,cv.height);
  const t=W.terrain,s=view.s;cx.imageSmoothingEnabled=s/t.ppc<2;
  if(img.complete)cx.drawImage(img,view.x,view.y,(t.x1-t.x0+1)*s,(t.y1-t.y0+1)*s);
+ if(!t.land.length){cx.fillStyle='rgba(160,170,180,.25)';for(const k in W.cells){const [a,b]=k.split(',').map(Number);cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
  if(on.nav){cx.fillStyle='rgba(120,200,255,.22)';for(const k in W.cells)if(W.cells[k].nav){const [a,b]=k.split(',').map(Number);cx.fillRect(tx(a*G),ty((b+1)*G),s,s)}}
  if(on.grid&&s>6){cx.strokeStyle='rgba(255,255,255,'+Math.min(.25,s/200)+')';cx.lineWidth=1;cx.beginPath();
   for(let a=t.x0;a<=t.x1+1;a++){cx.moveTo(tx(a*G),ty((t.y1+1)*G));cx.lineTo(tx(a*G),ty(t.y0*G))}
@@ -61,13 +62,15 @@ function draw(){
    if(!set.has((a-1)+','+b)){cx.moveTo(X,Y);cx.lineTo(X,Y+s)}if(!set.has((a+1)+','+b)){cx.moveTo(X+s,Y);cx.lineTo(X+s,Y+s)}cx.stroke()}}
  if(on.doors)for(const d of W.doors){const X=tx(d.x),Y=ty(d.y);
   if(d.to.ws===W.id&&!d.to.interior&&s>4){cx.strokeStyle='rgba(192,132,252,.6)';cx.beginPath();cx.moveTo(X,Y);cx.lineTo(tx(d.to.x),ty(d.to.y));cx.stroke()}
-  cx.fillStyle='#c084fc';cx.fillRect(X-3,Y-3,6,6);
+  cx.fillStyle=d.portal?'#22d3ee':'#c084fc';if(d.portal){cx.beginPath();cx.arc(X,Y,5,0,7);cx.fill()}else cx.fillRect(X-3,Y-3,6,6);
   if(s>90){cx.fillStyle='#e9d5ff';cx.font='11px sans-serif';cx.fillText('→ '+(d.to.label||d.to.elsewhere),X+5,Y-4)}}
  for(const a of W.actors){const p=a.person;if(p?!on.people:!on.creatures)continue;dot(tx(a.x),ty(a.y),s>40?3.5:2.2,p?'#38bdf8':'#f87171',a.disabled?'#000':null)}
  if(on.places)for(const p of W.places){const X=tx((p.gx+.5)*G),Y=ty((p.gy+.5)*G);cx.beginPath();cx.arc(X,Y,Math.max(8,s*.6),0,7);cx.strokeStyle=CONF[p.confidence]||'#fff';cx.lineWidth=3;cx.stroke()}
+ if(on.bmvmarkers)for(const m of W.bmvmarkers){const X=tx(m.x),Y=ty(m.y);cx.beginPath();cx.moveTo(X,Y);cx.lineTo(X,Y-14);cx.lineTo(X+9,Y-10);cx.lineTo(X,Y-6);cx.strokeStyle='#000';cx.lineWidth=3;cx.stroke();cx.strokeStyle='#fff';cx.lineWidth=1.5;cx.stroke()}
  if(on.markers)for(const m of W.markers){const X=tx(m.x),Y=ty(m.y);cx.beginPath();cx.moveTo(X,Y-9);cx.lineTo(X+7,Y);cx.lineTo(X,Y+9);cx.lineTo(X-7,Y);cx.closePath();cx.fillStyle='#fde047';cx.fill();cx.strokeStyle='#000';cx.lineWidth=1.5;cx.stroke()}
  cx.font='bold 12px sans-serif';cx.lineWidth=3;cx.strokeStyle='rgba(0,0,0,.8)';
  if(on.settlements)for(const st of W.settlements){const X=tx((st.grid_x+.5)*G),Y=ty((st.grid_y+.5)*G);cx.fillStyle='#fde68a';cx.strokeText(st.name,X+6,Y);cx.fillText(st.name,X+6,Y)}
+ if(on.bmvmarkers)for(const m of W.bmvmarkers){const X=tx(m.x),Y=ty(m.y);cx.fillStyle='#fff';cx.strokeText(m.name||'',X+11,Y-8);cx.fillText(m.name||'',X+11,Y-8)}
  if(on.places)for(const p of W.places){const X=tx((p.gx+.5)*G),Y=ty((p.gy+.5)*G)+16;cx.fillStyle=CONF[p.confidence];cx.strokeText(p.place_name,X+6,Y);cx.fillText(p.place_name,X+6,Y)}
  if(on.markers)for(const m of W.markers){const X=tx(m.x),Y=ty(m.y);cx.fillStyle='#fde047';cx.strokeText(m.edid,X+10,Y+4);cx.fillText(m.edid,X+10,Y+4)}
 }
@@ -86,6 +89,7 @@ function copy(txt){const fb=()=>{const a=document.createElement('textarea');a.va
 function near(X,Y){let best=null,bd=10;const t=(o,kind,x,y)=>{const d=Math.hypot(tx(x)-X,ty(y)-Y);if(d<bd){bd=d;best={kind,o}}};
  if(on.markers)W.markers.forEach(m=>t(m,'marker',m.x,m.y));
  if(on.doors)W.doors.forEach(d=>t(d,'door',d.x,d.y));
+ if(on.bmvmarkers)W.bmvmarkers.forEach(m=>t(m,'bmvmarker',m.x,m.y));
  W.actors.forEach(a=>{if(a.person?on.people:on.creatures)t(a,'actor',a.x,a.y)});
  if(on.places)W.places.forEach(p=>t(p,'place',(p.gx+.5)*G,(p.gy+.5)*G));
  if(!best&&on.settlements){const a=Math.floor(gx(X)/G),b=Math.floor(gy(Y)/G);const st=W.settlements.find(s=>s.cells.some(c=>c[0]===a&&c[1]===b));if(st)best={kind:'settlement',o:st}}
@@ -98,9 +102,10 @@ function rows(o){return '<table>'+Object.entries(o).filter(([k,v])=>v!==null&&v!
 function placeRows(ps){return (ps||[]).map(p=>`<h4>Our place: ${esc(p.place_name)}</h4>`+rows({place:p.place,confidence:p.confidence,reason:p.reason,lore:p.source})).join('')}
 function count(list){const c={};list.forEach(n=>c[n]=(c[n]||0)+1);return Object.entries(c).map(([n,k])=>k>1?`${n} x${k}`:n)}
 function panel(f){const o=f.o;let h='';
- if(f.kind==='settlement')h=`<h3>${esc(o.name)}</h3>`+rows({'settlement id':o.id,kind:o.kind,anchor:o.grid_x+','+o.grid_y,why:o.why,'exterior cells':o.cells.length,interiors:o.interiors,'NPCs there':count(o.npcs)})+placeRows(o.places);
- else if(f.kind==='door')h=`<h3>Load door</h3>`+rows({'form key':o.id,cell:o.cell,'exterior cell':o.ext_cell,position:`${o.x.toFixed(0)}, ${o.y.toFixed(0)}, ${o.z.toFixed(0)}`,'leads to':o.to.label||('a master: '+o.to.elsewhere),'target door':o.to.door,'target cell':o.to.cell,'target settlement':o.to.settlement,'target world':o.to.ws});
+ if(f.kind==='settlement')h=`<h3>${esc(o.label)}</h3>`+rows({'settlement id':o.id,'editor id':o.name,'BM&V map name':o.marker_name,kind:o.kind,anchor:o.grid_x+','+o.grid_y,why:o.why,'exterior cells':o.cells.length,interiors:o.interiors,'NPCs there':count(o.npcs)})+placeRows(o.places);
+ else if(f.kind==='door')h=`<h3>${o.portal?'Book portal':'Load door'}</h3>`+rows({'form key':o.id,base:o.base,'base name':o.base_name,plugin:o.plugin,cell:o.cell,'exterior cell':o.ext_cell,position:`${o.x.toFixed(0)}, ${o.y.toFixed(0)}, ${o.z.toFixed(0)}`,'leads to':o.to.label||('a master: '+o.to.elsewhere),'target door':o.to.door,'target cell':o.to.cell,'target settlement':o.to.settlement,'target world':o.to.ws});
  else if(f.kind==='actor')h=`<h3>${esc(o.name||o.edid)}</h3>`+rows({'placement':o.id,'base':o.npc,'editor id':o.edid,name:o.name,record:o.rec,kind:o.person?'person':'creature',disabled:o.disabled?'yes':'',cell:o.cell,settlement:o.settlement,position:`${o.x.toFixed(0)}, ${o.y.toFixed(0)}, ${o.z.toFixed(0)}`});
+ else if(f.kind==='bmvmarker')h=`<h3>${esc(o.name)}</h3>`+rows({source:'BM&V map marker',id:o.id,plugin:o.plugin,'overridden by':o.overridden_by,cell:o.grid_x+','+o.grid_y,position:`${o.x}, ${o.y}`,settlement:o.settlement});
  else if(f.kind==='place')h=`<h3>${esc(o.place_name)}</h3>`+rows({place:o.place,'lands on':o.at,settlement:o.settlement,cell:o.cell,confidence:o.confidence,reason:o.reason,lore:o.source});
  else if(f.kind==='marker')h=`<h3>${esc(o.edid)}</h3>`+rows({source:'plugin/Argonia (ours)',worldspace:o.ws,position:`${o.x}, ${o.y}, ${o.z}`,cell:Math.floor(o.x/G)+','+Math.floor(o.y/G)});
  else h=`<h3>Cell ${esc(o.key)}</h3>`+rows({'form key':o.id,'editor id':o.edid,name:o.name,settlement:o.settlement,navmesh:o.nav?'yes':(o.id?'no':''),refs:o.refs,'LAND':W.terrain.land.includes(o.key)?'yes':'no'})+placeRows(o.places);
@@ -110,11 +115,12 @@ document.getElementById('x').onclick=()=>{document.getElementById('side').style.
 // search
 const q=document.getElementById('q'),res=document.getElementById('res');
 function index(){const out=[];for(const w in DATA){const d=DATA[w];
- d.settlements.forEach(o=>out.push({w,kind:'settlement',o,t:o.name+' '+o.id,x:(o.grid_x+.5)*G,y:(o.grid_y+.5)*G}));
+ d.bmvmarkers.forEach(o=>out.push({w,kind:'bmvmarker',o,t:'map marker '+(o.name||'')+' '+o.id,x:o.x,y:o.y}));
+ d.settlements.forEach(o=>out.push({w,kind:'settlement',o,t:o.label+' '+o.name+' '+o.id,x:(o.grid_x+.5)*G,y:(o.grid_y+.5)*G}));
  d.places.forEach(o=>out.push({w,kind:'place',o,t:o.place_name+' '+o.place,x:(o.gx+.5)*G,y:(o.gy+.5)*G}));
  d.markers.forEach(o=>out.push({w,kind:'marker',o,t:o.edid,x:o.x,y:o.y}));
  d.actors.forEach(o=>out.push({w,kind:'actor',o,t:(o.name||'')+' '+(o.edid||'')+' '+o.id,x:o.x,y:o.y}));
- d.doors.forEach(o=>out.push({w,kind:'door',o,t:'door '+(o.to.label||'')+' '+o.id,x:o.x,y:o.y}));
+ d.doors.forEach(o=>out.push({w,kind:'door',o,t:(o.portal?'book portal ':'door ')+(o.base||'')+' '+(o.to.label||'')+' '+o.id,x:o.x,y:o.y}));
  for(const k in d.cells){const c=d.cells[k];if(c.edid||c.name){const [a,b]=k.split(',').map(Number);out.push({w,kind:'cell',o:{key:k,...c},t:(c.name||'')+' '+(c.edid||'')+' cell '+k,x:(a+.5)*G,y:(b+.5)*G})}}}
  return out}
 const IDX=index();

@@ -114,7 +114,7 @@ dive and climb are movement (FreeClimb, water), never a check.
 | MQ01 20 | TR-topic (the roll) | C-alive fail-forward | E-stage, E-item (jars) | W-ref (shed, chest), W-override none |
 | MQ01 30 | TR-zone (dock return) | C-stage (objective done) | E-stage, E-enable (attack parent), E-scene (strike) | W-npc, W-fixed (cell), W-ref (fire) |
 | MQ01 40 | TR-zone (lane) | C-stage | E-stage | - |
-| MQ01 41 / 42 | TR-zone (shed-first / planks-first), racing | C-stage == 40 on both | E-stage, E-enable (the other zone and the person not reached off), E-package (the saved person travels to Hereguard alone) | W-ref (zones), W-ref removal (Old Salty 015184, the Daedroth pack 1453EF-F3) |
+| MQ01 41 / 42 | TR-zone (shed-first / planks-first), racing | C-stage == 40 on both | E-stage, E-enable (the other zone and the person not reached off), E-package (the saved person travels to Hereguard alone) | W-ref (zones), W-ref removal (Old Salty 015184; the Daedroth pack 1453EF-F3 is deleted by Black Marsh North.esp) |
 | MQ01 43 | TR-death (both survivors) | C-alive | E-stage | - |
 | MQ01 50 | TR-zone (grove), after TR-death (cutters' counter) on the 41 path | C-stage | E-stage, E-scene (closing), E-enable (Hist light off) | W-npc (tenders), W-ref (light) |
 | MQ01 60 | TR-zone (Hereguard) | C-stage | E-stage, E-package (the gang travels to Hereguard's steps) | - |

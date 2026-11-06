@@ -3,5 +3,6 @@ story/data/sources/assets/registry-vanilla.jsonl
 story/data/sources/assets/registry-bmv.jsonl
 story/data/db/place.jsonl
 story/data/db/dialogue_line.jsonl
+story/data/db/bmv_cell.jsonl
 LICENSE
 LICENSE-content

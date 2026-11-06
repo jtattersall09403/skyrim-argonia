@@ -1,4 +1,10 @@
-{"id":"00003C:Skyrim.esm","editor_id":"Tamriel","name":"Skyrim","defined_in":"Black Marsh.esm"}
-{"id":"000800:Dragonborn.esm","editor_id":"DLC2SolstheimWorld","name":"Solstheim","defined_in":"Black Marsh.esm"}
-{"id":"0D6960:Black Marsh.esm","editor_id":"BlackMarsh2","name":"Black Marsh2","defined_in":"Black Marsh.esm"}
-{"id":"23D689:Black Marsh.esm","editor_id":"BlackMarsh","name":"Black Marsh","defined_in":"Black Marsh.esm"}
+{"id":"00003C:Skyrim.esm","plugin":"BosmerArmorMATY743.esm","overridden_by":"Black Marsh.esm Black Marsh North.esp Valenwood.esp","editor_id":"Tamriel","name":"Skyrim","defined_in":"Skyrim.esm","land_cells":0}
+{"id":"000800:Dragonborn.esm","plugin":"Black Marsh.esm","overridden_by":"Black Marsh North.esp","editor_id":"DLC2SolstheimWorld","name":"Solstheim","defined_in":"Dragonborn.esm","land_cells":0}
+{"id":"00293A:Update.esm","plugin":"Black Marsh North.esp","editor_id":"zz","defined_in":"Update.esm","land_cells":0}
+{"id":"005900:Black Marsh North.esp","plugin":"Black Marsh North.esp","editor_id":"BlackMarshNorth","name":"Thorn","defined_in":"Black Marsh North.esp","land_cells":2733}
+{"id":"005900:Valenwood.esp","plugin":"Valenwood.esp","editor_id":"Valenwood","name":"Valenwood","defined_in":"Valenwood.esp","land_cells":3440}
+{"id":"01A26F:Skyrim.esm","plugin":"Valenwood.esp","editor_id":"WhiterunWorld","name":"Whiterun","defined_in":"Skyrim.esm","parent":"00003C:Skyrim.esm","land_cells":0}
+{"id":"02A9D8:Skyrim.esm","plugin":"BosmerArmorMATY743.esm","editor_id":"ShadowgreenCavernWorld","name":"Shadowgreen Cavern","defined_in":"Skyrim.esm","parent":"00003C:Skyrim.esm","land_cells":0}
+{"id":"0B8BDD:Black Marsh North.esp","plugin":"Black Marsh North.esp","editor_id":"UnderDark","name":"a","defined_in":"Black Marsh North.esp","parent":"005900:Black Marsh North.esp","land_cells":0}
+{"id":"0D6960:Black Marsh.esm","plugin":"Black Marsh.esm","overridden_by":"Black Marsh North.esp","editor_id":"BlackMarsh2","name":"Black Marsh2","defined_in":"Black Marsh.esm","land_cells":3230}
+{"id":"23D689:Black Marsh.esm","plugin":"Black Marsh.esm","overridden_by":"Black Marsh North.esp","editor_id":"BlackMarsh","name":"Black Marsh","defined_in":"Black Marsh.esm","land_cells":1127}

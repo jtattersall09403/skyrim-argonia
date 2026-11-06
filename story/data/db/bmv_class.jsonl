@@ -1,31 +1,52 @@
 {"id":"005206:Dawnguard.esm","editor_id":"DLC1_EncClassChaurusFlyer","name":"ChaurusFlyer","defined_in":"Dawnguard.esm"}
 {"id":"00D6F6:Dawnguard.esm","editor_id":"DLC1EncClassGargoyle","name":"Gargoyle","defined_in":"Dawnguard.esm"}
 {"id":"013176:Skyrim.esm","editor_id":"CombatWarrior1H","name":"Warrior","defined_in":"Skyrim.esm"}
+{"id":"013178:Skyrim.esm","editor_id":"CombatWitchblade","name":"Witchblade","defined_in":"Skyrim.esm"}
 {"id":"013179:Skyrim.esm","editor_id":"CombatSorcerer","name":"Sorcerer","defined_in":"Skyrim.esm"}
+{"id":"01317C:Skyrim.esm","editor_id":"CombatNightblade","name":"Nightblade","defined_in":"Skyrim.esm"}
 {"id":"01317D:Skyrim.esm","editor_id":"CombatScout","name":"Scout","defined_in":"Skyrim.esm"}
 {"id":"01317E:Skyrim.esm","editor_id":"CombatThief","name":"Thief","defined_in":"Skyrim.esm"}
+{"id":"01317F:Skyrim.esm","editor_id":"CombatAssassin","name":"Assassin","defined_in":"Skyrim.esm"}
+{"id":"013181:Skyrim.esm","editor_id":"CombatRanger","name":"Ranger","defined_in":"Skyrim.esm"}
+{"id":"013182:Skyrim.esm","editor_id":"CombatMonk","name":"Monk","defined_in":"Skyrim.esm"}
 {"id":"0131E6:Skyrim.esm","editor_id":"EncClassAnimalPredator","name":"Predator","defined_in":"Skyrim.esm"}
+{"id":"013256:Skyrim.esm","editor_id":"VendorFood","name":"Food Vendor","defined_in":"Skyrim.esm"}
+{"id":"013259:Skyrim.esm","editor_id":"VendorFletcher","name":"Fletcher","defined_in":"Skyrim.esm"}
 {"id":"01326B:Skyrim.esm","editor_id":"Citizen","name":"Citizen","defined_in":"Skyrim.esm"}
+{"id":"01326C:Skyrim.esm","editor_id":"Farmer","name":"Farmer","defined_in":"Skyrim.esm"}
+{"id":"01326E:Skyrim.esm","editor_id":"Lumberjack","name":"Lumberjack","defined_in":"Skyrim.esm"}
 {"id":"013276:Skyrim.esm","editor_id":"Priest","name":"Priest","defined_in":"Skyrim.esm"}
+{"id":"01327B:Skyrim.esm","editor_id":"Beggar","name":"Beggar","defined_in":"Skyrim.esm"}
+{"id":"01327F:Skyrim.esm","editor_id":"SoldierImperialNotGuard","name":"Imperial Soldier","defined_in":"Skyrim.esm"}
 {"id":"015BE7:Skyrim.esm","editor_id":"EncClassBanditMissile","name":"Bandit Archer","defined_in":"Skyrim.esm"}
 {"id":"017008:Skyrim.esm","editor_id":"EncClassDremoraMelee","name":"Dremora","defined_in":"Skyrim.esm"}
 {"id":"01CE14:Skyrim.esm","editor_id":"CombatMageConjurer","name":"Conjurer","defined_in":"Skyrim.esm"}
+{"id":"01CE15:Skyrim.esm","editor_id":"CombatWarrior2H","name":"Warrior","defined_in":"Skyrim.esm"}
 {"id":"01CE16:Skyrim.esm","editor_id":"CombatBarbarian","name":"Barbarian","defined_in":"Skyrim.esm"}
 {"id":"01CE17:Skyrim.esm","editor_id":"EncClassBanditMelee","name":"Bandit","defined_in":"Skyrim.esm"}
 {"id":"01CE1C:Skyrim.esm","editor_id":"EncClassDragonPriest","name":"Dragon Priest","defined_in":"Skyrim.esm"}
 {"id":"01CE1D:Skyrim.esm","editor_id":"EncClassAnimalPrey","name":"Prey","defined_in":"Skyrim.esm"}
+{"id":"01CE1E:Skyrim.esm","editor_id":"EncClassFalmer","name":"Falmer","defined_in":"Skyrim.esm"}
 {"id":"01E7D0:Skyrim.esm","editor_id":"CombatMageDestruction","name":"Destruction Mage","defined_in":"Skyrim.esm"}
+{"id":"01E8AC:Dragonborn.esm","editor_id":"DLC2EncClassBanditBoss","name":"Bandit","defined_in":"Dragonborn.esm"}
 {"id":"023C0C:Skyrim.esm","editor_id":"EncClassDraugrMelee","name":"Draugr Melee","defined_in":"Skyrim.esm"}
 {"id":"023C0E:Skyrim.esm","editor_id":"EncClassDraugrMagic","name":"Draugr Warlock","defined_in":"Skyrim.esm"}
+{"id":"0253F2:Skyrim.esm","editor_id":"GuardImperial","name":"Guard","defined_in":"Skyrim.esm"}
+{"id":"02A477:Skyrim.esm","editor_id":"GuardOrc1H","name":"Orc Warrior","defined_in":"Skyrim.esm"}
+{"id":"02E00F:Skyrim.esm","editor_id":"EncClassVampire","name":"Vampire","defined_in":"Skyrim.esm"}
 {"id":"02F201:Skyrim.esm","editor_id":"EncClassDragon","name":"Dragon","defined_in":"Skyrim.esm"}
 {"id":"02F202:Skyrim.esm","editor_id":"AAAPlayerSpellswordClass","name":"Player Spellsword Class","defined_in":"Skyrim.esm"}
 {"id":"03183A:Dragonborn.esm","editor_id":"DLC2EncClassLurker","name":"Lurker","defined_in":"Dragonborn.esm"}
 {"id":"039D30:Skyrim.esm","editor_id":"EncClassBanditWizard","name":"Bandit Wizard","defined_in":"Skyrim.esm"}
 {"id":"03BD08:Dragonborn.esm","editor_id":"DLC2EncClassRiekling","name":"Bandit Archer","defined_in":"Dragonborn.esm"}
+{"id":"03C6A3:Dragonborn.esm","editor_id":"DLC2EncClassSeeker","name":"Atronach","defined_in":"Dragonborn.esm"}
+{"id":"03CF6A:Dragonborn.esm","editor_id":"DLC2EncClassAshGuardian","name":"Atronach","defined_in":"Dragonborn.esm"}
 {"id":"044CCA:Skyrim.esm","editor_id":"EncClassChaurus","name":"Chaurus","defined_in":"Skyrim.esm"}
 {"id":"044CCB:Skyrim.esm","editor_id":"EncClassFrostbiteSpider","name":"Frostbite Spider","defined_in":"Skyrim.esm"}
 {"id":"06766D:Skyrim.esm","editor_id":"EncClassAlikrWizard","name":"Alik'r Wizard","defined_in":"Skyrim.esm"}
 {"id":"072887:Skyrim.esm","editor_id":"EncClassThalmorWizard","name":"Thalmor Wizard","defined_in":"Skyrim.esm"}
+{"id":"072891:Skyrim.esm","editor_id":"EncClassThalmorMissile","name":"Thalmor Archer","defined_in":"Skyrim.esm"}
+{"id":"07289D:Skyrim.esm","editor_id":"EncClassThalmorMelee","name":"Thalmor Warrior","defined_in":"Skyrim.esm"}
 {"id":"073F1F:Skyrim.esm","editor_id":"EncClassIceWraith","name":"Ice Wraith","defined_in":"Skyrim.esm"}
 {"id":"090356:Skyrim.esm","editor_id":"EncClassDwarvenCenturion","name":"Dwarven Centurion","defined_in":"Skyrim.esm"}
 {"id":"090358:Skyrim.esm","editor_id":"EncClassDwarvenSphere","name":"Dwarven Sphere","defined_in":"Skyrim.esm"}
@@ -35,6 +56,8 @@
 {"id":"0AD236:Skyrim.esm","editor_id":"EncClassAtronachFrost","name":"Atronach","defined_in":"Skyrim.esm"}
 {"id":"0AD237:Skyrim.esm","editor_id":"EncClassAtronachStorm","name":"Atronach","defined_in":"Skyrim.esm"}
 {"id":"0BB4B0:Skyrim.esm","editor_id":"EncClassMudCrab","name":"MudCrab","defined_in":"Skyrim.esm"}
+{"id":"0E3A66:Skyrim.esm","editor_id":"TrainerMarksmanMaster","name":"Thief","defined_in":"Skyrim.esm"}
+{"id":"0E3A6D:Skyrim.esm","editor_id":"TrainerSneakJourneyman","name":"Warrior","defined_in":"Skyrim.esm"}
 {"id":"0EDD36:Skyrim.esm","editor_id":"EncClassHorker","name":"Horker","defined_in":"Skyrim.esm"}
 {"id":"0F2594:Skyrim.esm","editor_id":"EncClassMammoth","name":"Mammoth","defined_in":"Skyrim.esm"}
 {"id":"106AED:Skyrim.esm","editor_id":"EncClassBear","name":"Predator","defined_in":"Skyrim.esm"}

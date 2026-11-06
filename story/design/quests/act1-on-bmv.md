@@ -19,7 +19,7 @@ the endgame's third option (the empty throne) is in a room by the end of the act
 | MQ01 processing | work barge near Alten Corimont | Dock1 `00591F` | Argonia.esp already wakes the player there (ARG_OpeningMarker, ARG_Opening stage 10) |
 | MQ01 camp, clutch | work camp | Pussbottom `005A0B` | the lore's Pusbottom district; navmesh; 138 refs of dressing |
 | MQ01 the Hist | upriver Hist village | LilmothHist `005A0D` | Lilmoth's own Hist (lore: it once went rogue and was purged, `story/lore/lilmoth.md`:52,76) |
-| MQ01 escape end, MQ03 | Stormhold river station | Hereguard Plantation `005919` | one square west of Lilmoth; manor servants `015193`, `015195`, merchants `0AA64F`, `0AA650`, boat captain `00AC8E` |
+| MQ01 escape end, MQ03 | Stormhold river station | Hereguard Plantation `005919` | one square west of Lilmoth; manor servants `015193`, `015195`, boat captain `00AC8E` (Black Marsh North.esp deletes the merchants `0AA64F`, `0AA650`) |
 | MQ03 the hiding overseer | none | cabin `01CabinIntsining1` `0FE7F7` (door `0FE832`) | a BM&V interior at Lilmoth |
 | MQ03 the first sap-dream | fog-dressed reuse | orphan cave `01Cavebig` (no door; 723 refs) | reached by moving the player while asleep, so no door is needed |
 | MQ04 hatching pools | Hatching Pools, north | Village `03978F` (22,-4) | tribal chief `084A7F`, tribe `084A7B`-`084A91`; its 72 leeches are the disease the village blames |
@@ -35,22 +35,23 @@ the endgame's third option (the empty throne) is in a room by the end of the act
   shed and clutch statics in Pussbottom; a light on LilmothHist's tree under its own parent (turned off when the tree
   closes); a locked chest of the player's fixed starting gear. BM&V's WE adventurers and thieves at LilmothHist
   (`02A204`-`02A206`, `02A208`, `02A209`, vanilla levelled bases), Old Salty (`015184`, a levelled crab boss) and the
-  Daedroth pack by the grove (`1453EF`-`1453F3`) get an enable parent that stays off (decisions 0035, 0006).
+  Megalanian `155C92` get an enable parent that stays off (decisions 0035, 0006); the Daedroth pack by the grove
+  (`1453EF`-`1453F3`) is deleted by Black Marsh North.esp.
 - **MQ03:** Nesh-Deeka and two Lilmoth dock wardens placed; the courier's body and strap left at Dock1; the overseer
   hidden in BM&V's cabin `01CabinIntsiningDUPLICATE002` (`0FE8B7`, door `0FE95B` by Pusbottom), its door locked and its
-  Maiden Spider removed; the Restless Dead (`0AA65F`, `0AA660`), a crocodile (`1453FD`) and levelled Bonemen
-  (`02A228`-`02A22A`) by the cabin removed; a strongbox and three books; a lean-to and an alchemy table by Hereguard's
+  Maiden Spider removed; the Restless Dead `0AA660` and levelled Bonemen
+  (`02A228`-`02A22A`) by the cabin removed (Black Marsh North.esp deletes `0AA65F` and the crocodile `1453FD`); a strongbox and three books; a lean-to and an alchemy table by Hereguard's
   landing (the census gives Hereguard no interior); `01Cavebig`'s ten actors removed and fog added.
 - **MQ04:** Nurwul-Neel and Mee-Vei placed in the Village from BM&V's tribal template; a Hist tree reference (the base
-  BM&V uses in LilmothHist) placed above the pools; the eight `SoM_00EncDraugrzombiez1` placements (`084AF9` first)
-  and the six draugr-race and dragon-priest-race placements (`07F92F`, `07F931`-`07F933`, `120E0A`, `120E0B`) removed
+  BM&V uses in LilmothHist) placed above the pools; the six draugr-race and dragon-priest-race placements (`07F92F`, `07F931`-`07F933`, `120E0A`, `120E0B`) removed
+  (Black Marsh North.esp already deletes the eight `SoM_00EncDraugrzombiez1`, `084AF9` first, and `120E0A`, `120E0B`)
   under a parent that stays off (decision 0006); four fixed-level leeches placed on the cut root; a camp of three cultists at a fixed level, a
   chest of jars and a trail of gum spots at swamplandsrose; an An-Xileel officer, disabled until one ending calls him.
 - **MQ05:** three raiders at a fixed level by dock5; two Reed escorts; two Megalanians and a Leopard on the walk; the
   four doors into Helstrom's house interior that open outside the city (`1E42B7`-`1E42B9` at dock5, `1E44AE`) locked;
   a young Hist for the Tree-Minders' grove and markers for the Reed's rooms and the debating house; six people at Helstrom (Ei-Tuja, Kaska-Meen,
   Never-Writes-Twice, the hall keeper, two gate guards) on its navmesh and in its house interior; a throne static
-  and a broom in the hall. BM&V's Helstrom has no actors at all, so these six are the city: thin, and it says so
+  and a broom in the hall. Black Marsh.esm's Helstrom had no actors; Black Marsh North.esp places 13 in its cells (a boatman, soldiers, villagers) and two merchants and a soldier in the hall `01cellDUPLICATE002` (census), so these six are the city's named people among BM&V's
   (below).
 
 Every enemy is at a fixed level (decision 0035); no levelled list is used.

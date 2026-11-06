@@ -1,11 +1,12 @@
-"""The offline BM&V map (phase 1): one self-contained HTML page, out/bmv-map/index.html, of BM&V's two worldspaces
-(BlackMarsh, BlackMarsh2). The land is drawn from Black Marsh.esm's own LAND height grids (hillshade, and water where
-the land lies below the cell's water); the census tables (bmv_* through tools/argonia_world/db.py), place_bmv and our
+"""The offline BM&V map (phase 1): one self-contained HTML page, out/bmv-map/index.html, of every worldspace BM&V's
+four plugins add or edit (a switcher). The land is drawn from the load order's winning LAND height grids (hillshade,
+and water where the land lies below the cell's water; a LAND without heights is drawn flat at the worldspace's default
+land height); the census tables (bmv_* through tools/argonia_world/db.py), place_bmv, BM&V's own map markers and our
 markers in plugin/Argonia sit on top as layers. The page and its terrain are derived from BM&V's files, so they live
 under out/ and are never committed (decision 0003). Rerunning rewrites the page whole.
 
-    python3 -m tools.bmv_map.build build  [--esm PATH] [--out out/bmv-map/index.html]   # `make map`
-    python3 -m tools.bmv_map.build verify [--out ...]   # read the built page back and check it against the db and ESM
+    python3 -m tools.bmv_map.build build  [--dir DIR] [--out out/bmv-map/index.html]   # `make map`
+    python3 -m tools.bmv_map.build verify [--out ...]   # read the built page back and check it against the db and files
 """
 from __future__ import annotations
 
@@ -23,13 +24,12 @@ from pathlib import Path
 import numpy as np
 
 from tools.argonia_world import db, esm
-from tools.argonia_world.bmv_census import ESM, MASTERS, GRID, cell_of, is_interior, world_of
+from tools.argonia_world.bmv_census import DIR, MASTERS, MASTER_FILES, GRID, Load, is_interior
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "out/bmv-map/index.html"
-WORLDS = ("BlackMarsh", "BlackMarsh2")
 PLUGIN = ROOT / "plugin/Argonia/Worldspaces"
-BUDGET = 13_000_000          # bytes of base64 terrain across both worlds; the page stays under ~15 MB
+BUDGET = 4_000_000           # bytes of base64 terrain per worldspace (the page stays under ~20 MB)
 NO_WATER = 1e30              # XCLW at FLT_MAX means "the worldspace's default"
 
 
@@ -74,45 +74,51 @@ def unpng(b: bytes) -> np.ndarray:
     return px.reshape(h, w, 4)
 
 
-def lands(p: esm.Plugin, wid: dict[int, str]) -> dict[str, dict[tuple[int, int], tuple[np.ndarray, float | None]]]:
-    """Per worldspace editor id: (grid x, grid y) -> (33x33 heights, water height or None when the cell has none)."""
+def lands(L: Load) -> dict[str, dict[tuple[int, int], tuple[np.ndarray, float | None]]]:
+    """Per worldspace form key: (grid x, grid y) -> (33x33 heights, water height or None when the cell has none), from
+    the load order's winning LAND of each exterior cell."""
     default = {}
-    for w in p.records("WRLD"):
-        if w.formid in wid:
-            dn = w.sub("DNAM")
-            default[w.formid] = struct.unpack_from("<f", dn, 4)[0] if dn else 0.0
+    for w in L.live("WRLD"):
+        dn = w.sub("DNAM")
+        default[w.key] = struct.unpack_from("<ff", dn) if dn else (0.0, 0.0)
     cells = {}
-    for c in p.records("CELL"):
-        wf = world_of(c)
-        if wf in wid and not is_interior(c) and c.sub("XCLC"):
+    for c in L.live("CELL"):
+        if not is_interior(c) and c.sub("XCLC") and not c.flags & 0x400:
+            wk = L.world_key(c)
             gx, gy = struct.unpack_from("<ii", c.sub("XCLC"))
             d = c.sub("DATA")
             has = bool(d and d[0] & 2)
             xw = c.sub("XCLW")
             wl = struct.unpack_from("<f", xw)[0] if xw else NO_WATER * 2
             if wl > NO_WATER:
-                wl = default[wf]
-            cells[c.formid] = (wid[wf], gx, gy, wl if has else None)
+                wl = default.get(wk, (0.0, 0.0))[1]
+            cells[c.key] = (wk, gx, gy, wl if has else None)
     out: dict = defaultdict(dict)
-    for r in p.records("LAND"):
-        cf = cell_of(r)
-        d = r.sub("VHGT")
-        if cf in cells and d:
-            ws, gx, gy, wl = cells[cf]
-            out[ws][(gx, gy)] = (vhgt(d), wl)
+    for r in L.live("LAND"):
+        ck = L.cell_key(r)
+        if ck in cells:
+            ws, gx, gy, wl = cells[ck]
+            d = r.sub("VHGT")
+            h = vhgt(d) if d else np.full((33, 33), default.get(ws, (0.0, 0.0))[0])
+            out[ws][(gx, gy)] = (h, wl)
     return out
 
 
-def terrain(cells: dict, ppc: int) -> tuple[np.ndarray, tuple[int, int, int, int]]:
-    """The RGBA image of one worldspace at `ppc` pixels per cell, and its grid bounds (x0, y0, x1, y1) inclusive."""
-    xs = [g[0] for g in cells]
-    ys = [g[1] for g in cells]
+def terrain(cells: dict, ppc: int, extra=()) -> tuple[np.ndarray, tuple[int, int, int, int]]:
+    """The RGBA image of one worldspace at `ppc` pixels per cell, and its grid bounds (x0, y0, x1, y1) inclusive,
+    widened to hold the `extra` squares (cells and content with no LAND)."""
+    xs = [g[0] for g in cells] + [g[0] for g in extra]
+    ys = [g[1] for g in cells] + [g[1] for g in extra]
     x0, x1, y0, y1 = min(xs), max(xs), min(ys), max(ys)
     n = 32
+    if not any(h is not None for h, _ in cells.values()):     # no LAND: an empty (transparent) frame of the bounds
+        return np.zeros(((y1 - y0 + 1) * ppc, (x1 - x0 + 1) * ppc, 4), np.uint8), (x0, y0, x1, y1)
     W, H = (x1 - x0 + 1) * n, (y1 - y0 + 1) * n
     hgt = np.full((H, W), np.nan)
     wat = np.full((H, W), np.nan)
     for (gx, gy), (h, wl) in cells.items():
+        if h is None:
+            continue
         r0 = (y1 - gy) * n          # image row 0 is the north edge
         c0 = (gx - x0) * n
         hgt[r0:r0 + n, c0:c0 + n] = h[:n, :n][::-1]
@@ -161,7 +167,8 @@ def markers() -> list[dict]:
 
 def layers(w: db.World) -> dict[str, dict]:
     q = lambda sql, *a: [dict(r) for r in w.query(sql, *a)]  # noqa: E731
-    worlds = {r["editor_id"]: r for r in q("SELECT * FROM bmv_worldspace WHERE editor_id IN (?, ?)", *WORLDS)}
+    worlds = {r["editor_id"]: r for r in q("SELECT * FROM bmv_worldspace")}
+    mms = q("SELECT * FROM bmv_map_marker")
     cells = {r["id"]: r for r in q("SELECT * FROM bmv_cell")}
     member = {r["cell"]: r for r in q("SELECT * FROM bmv_settlement_cell")}
     sett = {r["id"]: r for r in q("SELECT * FROM bmv_settlement")}
@@ -197,6 +204,7 @@ def layers(w: db.World) -> dict[str, dict]:
             sc = [k for k, m in member.items() if m["settlement"] == s["id"]]
             S.append({**s, "cells": [[cells[k]["grid_x"], cells[k]["grid_y"], member[k]["role"]] for k in sc
                                      if cells[k]["grid_x"] is not None],
+                      "label": s["marker_name"] or s["name"],
                       "interiors": sorted(label(k) for k in sc if cells[k]["interior"]),
                       "npcs": sorted(s_npcs[s["id"]]), "places": place_of[s["id"]]})
         D = []
@@ -212,7 +220,9 @@ def layers(w: db.World) -> dict[str, dict]:
                 m = member.get(t["cell"])
                 if m:
                     to["settlement"] = sett[m["settlement"]]["name"]
-            D.append({"id": d["id"], "x": d["x"], "y": d["y"], "z": d["z"], "cell": d["cell"],
+            D.append({"id": d["id"], "x": d["x"], "y": d["y"], "z": d["z"], "cell": d["cell"], "base": d["base_editor_id"],
+                      "base_name": d["base_name"], "plugin": d["plugin"],
+                      "portal": bool(re.search(r"book|portal", d["base_editor_id"] or "", re.I)),
                       "ext_cell": d["ext_cell"], "to": to})
         A = []
         for a in plac:
@@ -240,33 +250,47 @@ def layers(w: db.World) -> dict[str, dict]:
             elif c and c["worldspace"] == wid and c["grid_x"] is not None:
                 P.append({**p, "gx": c["grid_x"], "gy": c["grid_y"], "at": label(c["id"])})
         M = [m for m in markers() if m["ws"] == wid]
-        out[ed] = {"id": wid, "name": wr["name"], "settlements": S, "doors": D, "actors": A, "cells": C,
-                   "places": P, "markers": M, "waiting": [p for p in places if p["status"] == "waiting"]}
+        B = [{**m, "settlement": sett[m["settlement"]]["name"] if m["settlement"] else None}
+             for m in mms if m["worldspace"] == wid]
+        out[ed] = {"id": wid, "name": wr["name"], "plugin": wr["plugin"], "settlements": S, "doors": D, "actors": A,
+                   "cells": C, "places": P, "markers": M, "bmvmarkers": B,
+                   "waiting": [p for p in places if p["status"] == "waiting"]}
     return out
 
 
 # --- the page ---------------------------------------------------------------------------------------------------------
 
-def build(esm_path: Path, out: Path) -> dict:
-    p = esm.Plugin.read(esm_path)
-    wid = {w.formid: w.edid for w in p.records("WRLD") if w.edid in WORLDS and w.own}
-    land = lands(p, wid)
+def bounds(d: dict) -> dict[tuple[int, int], None]:
+    """The squares a worldspace's layers touch, for a world with no LAND of BM&V's (a vanilla override)."""
+    sq = {tuple(map(int, k.split(","))): None for k in d["cells"]}
+    for o in d["doors"] + d["actors"] + d["bmvmarkers"] + d["markers"]:
+        sq[(math.floor(o["x"] / GRID), math.floor(o["y"] / GRID))] = None
+    return sq or {(0, 0): None}
+
+
+def build(bdir: Path, out: Path) -> dict:
+    L = Load(bdir)
+    land = lands(L)
     data = layers(db.open())
-    for ppc in (32, 16, 8, 4):
-        imgs = {ws: terrain(land[ws], ppc) for ws in WORLDS}
-        uris = {ws: base64.b64encode(png(im)).decode() for ws, (im, _) in imgs.items()}
-        if sum(map(len, uris.values())) <= BUDGET:
-            break
-    for ws, (im, (x0, y0, x1, y1)) in imgs.items():
-        data[ws]["terrain"] = {"ppc": ppc, "x0": x0, "y0": y0, "x1": x1, "y1": y1,
-                               "land": sorted(f"{x},{y}" for x, y in land[ws])}
+    uris, stats = {}, {}
+    for ed, d in data.items():
+        cells = land.get(d["id"]) or {k: (None, None) for k in bounds(d)}
+        for ppc in (32, 16, 8, 4, 2):
+            im, (x0, y0, x1, y1) = terrain(cells, ppc, list(bounds(d)))
+            u = base64.b64encode(png(im)).decode()
+            if len(u) <= BUDGET:
+                break
+        uris[ed] = "data:image/png;base64," + u
+        d["terrain"] = {"ppc": ppc, "x0": x0, "y0": y0, "x1": x1, "y1": y1,
+                        "land": sorted(f"{x},{y}" for x, y in land.get(d["id"], {}))}
+        stats[ed] = f"{len(d['terrain']['land'])} LAND at {ppc} px"
     page = TEMPLATE.replace("/*DATA*/null", json.dumps(data, separators=(",", ":")).replace("</", "<\\/")).replace(
-        "/*IMAGES*/null", json.dumps({ws: "data:image/png;base64," + u for ws, u in uris.items()}))
+        "/*IMAGES*/null", json.dumps(uris))
     out.parent.mkdir(parents=True, exist_ok=True)
     tmp = out.with_suffix(".tmp")
     tmp.write_text(page)
     tmp.replace(out)
-    return {"ppc": ppc, "bytes": len(page.encode()), **{ws: len(land[ws]) for ws in WORLDS}}
+    return {"bytes": len(page.encode()), **stats}
 
 
 def read_page(out: Path) -> tuple[dict, dict]:
@@ -276,25 +300,37 @@ def read_page(out: Path) -> tuple[dict, dict]:
     return data, images
 
 
-def verify(esm_path: Path, out: Path) -> list[str]:
-    """Read the built page back: every census row with coordinates present, the terrain over every LAND cell, the
-    opening marker on land at Lilmoth. Returns the problems (empty: the map is right)."""
+def verify(bdir: Path, out: Path) -> list[str]:
+    """Read the built page back: every worldspace of the census on the switcher, every census row with coordinates
+    present, the terrain over every LAND cell, the opening marker at Lilmoth. Returns the problems (empty: right)."""
     bad = []
     data, images = read_page(out)
     w = db.open()
-    for ws in WORLDS:
+    worlds = {r[0]: r[1] for r in w.query("SELECT editor_id, id FROM bmv_worldspace")}
+    for ed in set(worlds) ^ set(data):
+        bad.append(f"worldspace {ed}: in the census or on the page, not both")
+    L = Load(bdir)
+    land = lands(L)
+    for ws, wid in sorted(worlds.items()):
+        if ws not in data:
+            continue
         d = data[ws]
-        wid = d["id"]
         cnt = lambda sql: w.query(sql, wid)[0][0]  # noqa: E731
         want = {"settlements": cnt("SELECT count(*) FROM bmv_settlement WHERE worldspace = ?"),
                 "doors": cnt("SELECT count(*) FROM bmv_door WHERE worldspace = ?"),
                 "actors": cnt("SELECT count(*) FROM bmv_placement a JOIN bmv_cell c ON c.id = a.cell "
                               "WHERE c.worldspace = ?"),
-                "cells": cnt("SELECT count(*) FROM bmv_cell WHERE worldspace = ? AND grid_x IS NOT NULL")}
+                "cells": cnt("SELECT count(*) FROM bmv_cell WHERE worldspace = ? AND grid_x IS NOT NULL"),
+                "bmvmarkers": cnt("SELECT count(*) FROM bmv_map_marker WHERE worldspace = ?")}
         for k, n in want.items():
             if len(d[k]) != n:
                 bad.append(f"{ws}: {k} {len(d[k])} on the page, {n} in the db")
         t = d["terrain"]
+        if set(t["land"]) != {f"{x},{y}" for x, y in land.get(wid, {})}:
+            bad.append(f"{ws}: the page's LAND list differs from the files'")
+        n_land = cnt("SELECT land_cells FROM bmv_worldspace WHERE id = ?")
+        if len(t["land"]) != n_land:
+            bad.append(f"{ws}: {len(t['land'])} LAND cells drawn, the census counts {n_land}")
         img = unpng(base64.b64decode(images[ws].split(",", 1)[1]))
         ppc = t["ppc"]
         for key in t["land"]:
@@ -302,18 +338,24 @@ def verify(esm_path: Path, out: Path) -> list[str]:
             r0, c0 = (t["y1"] - gy) * ppc, (gx - t["x0"]) * ppc
             if not (img[r0:r0 + ppc, c0:c0 + ppc, 3] == 255).all():
                 bad.append(f"{ws}: cell {key} has LAND but the terrain is not drawn there")
+        for key in d["cells"]:                            # every census cell inside the drawn frame
+            gx, gy = map(int, key.split(","))
+            if not (t["x0"] <= gx <= t["x1"] and t["y0"] <= gy <= t["y1"]):
+                bad.append(f"{ws}: cell {key} lies outside the drawn frame")
+        for k in ("doors", "actors", "bmvmarkers"):    # every point inside the drawn frame
+            for o in d[k]:
+                gx, gy = math.floor(o["x"] / GRID), math.floor(o["y"] / GRID)
+                if not (t["x0"] <= gx <= t["x1"] and t["y0"] <= gy <= t["y1"]):
+                    bad.append(f"{ws}: {k} {o['id']} at {gx},{gy} lies outside the drawn frame")
         print(f"{ws}: {len(t['land'])} LAND cells drawn at {ppc} px/cell ({img.shape[1]}x{img.shape[0]}); "
               + ", ".join(f"{k} {len(d[k])}" for k in want))
-    # the opening marker: on land (above the cell's water) and in a cell of Lilmoth's settlement
-    p = esm.Plugin.read(esm_path)
-    wid = {x.formid: x.edid for x in p.records("WRLD") if x.edid in WORLDS and x.own}
-    land = lands(p, wid)
+    # the opening marker: on land (above the cell's water) or a dock, and in a cell of Lilmoth's settlement
     mk = [m for m in data["BlackMarsh"]["markers"] if m["edid"] == "ARG_OpeningMarker"]
     if not mk:
         bad.append("ARG_OpeningMarker is not on the BlackMarsh page")
     for m in mk:
         gx, gy = int(m["x"] // GRID), int(m["y"] // GRID)
-        h, wl = land["BlackMarsh"].get((gx, gy), (None, None))
+        h, wl = land[data["BlackMarsh"]["id"]].get((gx, gy), (None, None))
         if h is None:
             bad.append(f"ARG_OpeningMarker: cell {gx},{gy} has no LAND")
             continue
@@ -324,7 +366,7 @@ def verify(esm_path: Path, out: Path) -> list[str]:
         print(f"ARG_OpeningMarker at {m['x']:.0f},{m['y']:.0f},{m['z']:.0f}: cell {gx},{gy}, ground {ground:.0f}, "
               f"water {wl}, in Lilmoth's cells: {inlil}")
         if wl is not None and ground < wl:
-            deck = standing_on(p, m["x"], m["y"])
+            deck = standing_on(L, m["x"], m["y"])
             print(f"  ground below the water; standing on: {deck}")
             if not deck:
                 bad.append(f"ARG_OpeningMarker: ground {ground:.0f} is below the water {wl:.0f} and no dock is there")
@@ -333,15 +375,15 @@ def verify(esm_path: Path, out: Path) -> list[str]:
     return bad
 
 
-def standing_on(p: esm.Plugin, x: float, y: float) -> str | None:
+def standing_on(L: Load, x: float, y: float) -> str | None:
     """The editor id of a dock or pier static (BM&V's or a master's) whose footprint holds (x, y), if any."""
     bases = {}
-    for m in p.masters:
+    for m in MASTER_FILES:
         mp = MASTERS / m
         if mp.exists():
             bases.update({r.key: r for r in esm.Plugin.read(mp, {"STAT"}).records("STAT")})
-    bases.update({r.key: r for r in p.records("STAT")})
-    for r in p.records("REFR"):
+    bases.update({r.key: r for r in L.live("STAT")})
+    for r in L.live("REFR"):
         d, b = r.sub("DATA"), bases.get(r.ref("NAME"))
         if not d or not b or not re.search(r"dock|pier", b.edid or "", re.I) or not b.sub("OBND"):
             continue
@@ -360,13 +402,13 @@ def standing_on(p: esm.Plugin, x: float, y: float) -> str | None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["build", "verify"])
-    ap.add_argument("--esm", type=Path, default=ESM)
+    ap.add_argument("--dir", type=Path, default=DIR)
     ap.add_argument("--out", type=Path, default=OUT)
     a = ap.parse_args(argv)
     if a.cmd == "build":
-        print(json.dumps(build(a.esm, a.out)), a.out)
+        print(json.dumps(build(a.dir, a.out)), a.out)
         return 0
-    bad = verify(a.esm, a.out)
+    bad = verify(a.dir, a.out)
     for b in bad:
         print("BAD", b)
     print("MAP GREEN" if not bad else f"MAP RED: {len(bad)} problems")
