@@ -27,7 +27,16 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-a
 - [x] The ledger generators in the repo (`tools/argonia_world/slice_ledger/`)
 - [x] Act I rewritten from scratch against the full census; MQ01 and MQ05 clean in review
 - [x] MQ03 and MQ04 reworked whole (eight rounds of patches had not converged)
-- [ ] **In progress:** MQ03 and MQ04 review loop, round 1's findings fixed as one batch, then fresh rounds until clean
+- [x] The review method changed (owner, 2026-11-06): the planner triages and decides the exit; one bar for blocking
+  (unfinishable, contradiction, lore, 0006/0035, no skill use, harder to script than an average Skyrim quest);
+  settled stays settled; fixes subtract first; a branching budget; choices do not multiply down a line; action over
+  law and custom; write only from sources
+- [ ] **In progress:** MQ03 and MQ04 reworked to the new rules, the joins to MQ01 and MQ05 checked, and the main
+  line's spirit and outline rewritten for the whole main quest (more Black Marsh, more exciting, less bureaucratic)
+- [ ] **In progress:** the slice's faction and local quests reviewed at premise level (Night-Reed TG01-02,
+  Chainbreakers BC01-03, Helstrom LQ25 and LQ30), then fixed as the planner rules
+- [ ] The whole main quest reviewed (every act's outline) and Act I's four records reviewed; the planner's triage,
+  then fixes, until a round has nothing the planner rules must-fix
 - [ ] The Act I stage table in `docs/design/blocks.md` regenerated from the final records
-- [ ] The owner's read posted (draft `2-owner-read-draft.md`, every figure checked)
+- [ ] The owner's read posted (draft `docs/phases/2-owner-read-draft.md`, every figure checked)
 - [ ] The phase file's Done section; PROGRESS row to done
