@@ -146,3 +146,14 @@ Helper scripts: main.py, stats3.py in this folder. Script-name regexes are case-
 | W-name | CELLs with FULL; map markers with FULL | 583 (all interiors); 397 of 397 XMRK REFRs | KilkreathRuins03, TwistedRootCaveMapMarker | CELL FULL; REFR with XMRK then FULL |
 | W-ref | placements initially disabled; with an enable parent | 4,072 (2,682 REFR, 1,390 ACHR); 23,239 XESP; 911 both | DA09PedestalEmptyRef, TGNightingaleBeds | record flag 0x800; XESP subrecord |
 
+
+## Added 2026-11-06 (setDoorAccess: a door unlocked or its key given by a quest)
+
+| block | measure | count | examples | how measured |
+|---|---|---|---|---|
+| E-item (setDoorAccess) | door REFRs with a lock (XLOC); of which name a key | 762; 398 | | REFR whose NAME is a DOOR base, XLOC present, key form id at XLOC offset 4 |
+| E-item (setDoorAccess) | QUST whose QF_ fragment script has a property that is a locked door ref or a KEYM | 36 (22 a locked door, 18 a key) | HousePurchase, MQ101, MG01, DB01, TG06, MS01 | VMAD scripts parsed property by property (object and object-array values); script name starts qf_ |
+| E-item (setDoorAccess) | INFO whose TIF_ fragment script has such a property | 25 INFOs (7 a door, 18 a key) in 13 quests | MS01 6, DialogueWhiterunGuardGateStop 4, DA15 3 | as above, script name starts tif_; owner is the DIAL's QNAM |
+| E-item (setDoorAccess) | quests with either | 43 | | union of the two |
+
+The stage a fragment belongs to is in the compiled fragment and is not counted; a property names what a fragment may touch, not what it does (a door may be opened, unlocked or disabled).
