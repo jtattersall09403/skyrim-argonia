@@ -47,44 +47,32 @@
 {"quest_id":"quest.main.mq01","things_ord":10,"state":"all","value":"as the ledger says"}
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried (tasted)"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"all-after","value":"kept by the player, who may pour it back at the roots of a severed tree (QA11)"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"on the shed floor"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-20","value":"gone with the survivors"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"before-20","value":"at the shore"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-50","value":"gone from the table, skiff gone, or dead"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-90 to 99","value":"at the Lilmoth dock at mark.mq03.dock, civil or holding the claim, under his own parent, except where dead (94, 95, 99)"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"at-20-to-50","value":"at the table in the front room"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"before-20","value":"off (MQ01's end)"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"after-10","value":"carried, if found"}
-{"quest_id":"quest.main.mq03","things_ord":6,"state":"before-10","value":"in the shallows"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried, if found"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"in the shallows"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"before-20","value":"at the shore"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":6,"state":"after-90","value":"gone"}
+{"quest_id":"quest.main.mq03","things_ord":6,"state":"at-20-to-40","value":"on a mat"}
+{"quest_id":"quest.main.mq03","things_ord":6,"state":"before-20","value":"on the shore"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"after-20","value":"gone"}
-{"quest_id":"quest.main.mq03","things_ord":7,"state":"before-20","value":"moored at Dock1"}
-{"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":9,"state":"at-50","value":"on, hold door locked"}
-{"quest_id":"quest.main.mq03","things_ord":9,"state":"before-50","value":"off"}
-{"quest_id":"quest.main.mq03","things_ord":10,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":11,"state":"after-90 to 95","value":"gone with the skiff, or walking the shore road (e-theirs)"}
-{"quest_id":"quest.main.mq03","things_ord":11,"state":"at-20-to-50","value":"on the two mats"}
-{"quest_id":"quest.main.mq03","things_ord":11,"state":"before-20","value":"on the shore with the hurt"}
-{"quest_id":"quest.main.mq03","things_ord":12,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled: the Hist's leaves part and its light comes back low and slow"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"reconciled; Zaren-Ish, the go-between and the bound man gone"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"reconciled; the tree-minder at his post, the player owing the weirs"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"reconciled; the tree-minder at his work by day"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-94","value":"reconciled; no tree-minder, the two tenders at the pool"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-95","value":"reconciled; the village silent"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-96","value":"reconciled; the bound man working his counted nushmeekos at the weirs only, never at the tending-ground, under the kaal's spears"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn; a second pool dull from stage 30"}
-{"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present until their stage"}
-{"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"used"}
-{"quest_id":"quest.main.mq04","things_ord":3,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present until the jars are taken"}
-{"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"full"}
-{"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"present in the water"}
-{"quest_id":"quest.main.mq04","things_ord":7,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":8,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":7,"state":"before-20","value":"moored"}
+{"quest_id":"quest.main.mq03","things_ord":8,"state":"at-40","value":"on"}
+{"quest_id":"quest.main.mq03","things_ord":8,"state":"before-40","value":"off"}
+{"quest_id":"quest.main.mq03","things_ord":9,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled (light back low) or withdrawn (e-reed)"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
+{"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":2,"state":"after-90","value":"gone"}
+{"quest_id":"quest.main.mq04","things_ord":2,"state":"before-90","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"after-40","value":"carried"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"after-90","value":"poured at the cut root, or with the Reed (e-reed)"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"before-40","value":"at the camp"}
+{"quest_id":"quest.main.mq04","things_ord":4,"state":"after-40","value":"carried, if taken"}
+{"quest_id":"quest.main.mq04","things_ord":4,"state":"before-40","value":"at the camp"}
+{"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}

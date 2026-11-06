@@ -2,5 +2,3 @@
 {"quest_id":"quest.local.lh38","section":"accusation","ord":1,"value":"item.lh38.courier-bill"}
 {"quest_id":"quest.local.lh38","section":"accusation","ord":2,"value":"item.lh38.satchel"}
 {"quest_id":"quest.local.lh38","section":"accusation","ord":3,"value":"fact.lh38.night-watch"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":0,"value":"the jars of sap (thing.mq04.sap-jars), always held at the hearing"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":1,"value":"a second sign: a cell man taken alive (npcInCustody) and the knife at his camp, or the leech (thing.mq04.leech), or the egg-tender's word before the village (topic.mq04-tender-speaks), or the tree-minder seen washing the cut, told to the herald (topic.mq04-show-watch)"}

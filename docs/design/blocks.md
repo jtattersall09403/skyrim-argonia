@@ -131,28 +131,19 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ01 92 | TR-topic | C-stage | E-enable, E-global, E-regard, E-stage, TR-chain |
 | MQ01 93 | TR-death, TR-topic | C-alive, C-stage, C-time | E-enable, E-stage, TR-chain |
 | MQ03 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ03 20 | TR-zone (objectives done) | - | E-move, E-stage |
-| MQ03 30 | TR-death (objectives done) | C-alive, C-stage | E-stage |
-| MQ03 35 | TR-death | C-alive | E-stage |
-| MQ03 40 | TR-topic | - | E-stage |
-| MQ03 50 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-move, E-stage |
-| MQ03 90 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
-| MQ03 91 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-faction, E-global, E-move, E-stage, TR-chain |
-| MQ03 92 | TR-death, TR-zone | C-alive | E-enable, E-item, E-move, E-stage, TR-chain |
-| MQ03 93 | TR-death, TR-zone | C-alive | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
-| MQ04 10 | TR-chain (the previous quest ends) | - | E-stage |
+| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-move, E-stage |
+| MQ03 30 | TR-topic | - | E-stage |
+| MQ03 40 | TR-death, TR-zone (objectives done) | C-alive | E-enable, E-move, E-stage |
+| MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
+| MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
+| MQ04 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
 | MQ04 20 | TR-death, TR-topic | C-alive | E-stage |
-| MQ04 30 | TR-death (objectives done) | C-alive | E-enable, E-stage |
-| MQ04 35 | TR-death | C-alive | E-stage |
-| MQ04 40 | TR-topic, TR-zone | - | E-stage |
-| MQ04 50 | TR-zone | - | E-stage |
-| MQ04 60 | TR-acquire, TR-death, TR-topic, TR-zone | C-alive, C-item | E-enable, E-stage |
-| MQ04 90 | TR-acquire, TR-topic | C-item | E-enable, E-global, E-item, E-regard, E-stage, TR-chain |
-| MQ04 91 | TR-death, TR-topic | - | E-enable, E-global, E-stage, TR-chain |
-| MQ04 92 | TR-topic | C-global | E-global, E-regard, E-stage, TR-chain |
-| MQ04 93 | TR-topic | C-global | E-global, E-regard, E-stage, TR-chain |
-| MQ04 94 | TR-death | C-alive | E-enable, E-global, E-item, E-stage, TR-chain |
-| MQ04 95 | TR-death | C-alive | E-enable, E-global, E-stage, TR-chain |
+| MQ04 30 | TR-zone | - | E-stage |
+| MQ04 40 | TR-death, TR-topic | C-alive | E-stage |
+| MQ04 50 | TR-acquire | C-item | E-stage |
+| MQ04 90 | TR-topic | - | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
+| MQ04 91 | TR-death, TR-topic | C-alive | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
+| MQ04 92 | TR-topic | - | E-enable, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
 | MQ05 20 | TR-death, TR-topic, TR-zone | C-alive | E-stage |
 | MQ05 30 | TR-zone | - | E-stage |
@@ -166,8 +157,8 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ05 94 | TR-death | C-alive | E-enable, E-stage, TR-chain |
 
 - MQ01 stands on 14 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.doors`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.pier-mesh`, `we.mq01.start`.
-- MQ03 stands on 8 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.camp`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.reed`, `we.mq03.rooms`.
-- MQ04 stands on 4 ledgered world edits: `we.clean.village`, `we.mq04.name`, `we.mq04.people`, `we.mq04.village`.
+- MQ03 stands on 13 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.hold-location`, `we.mq03.barge-sails`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.hurt`, `we.mq03.jar-marks`, `we.mq03.reed`, `we.mq03.rooms`.
+- MQ04 stands on 7 ledgered world edits: `we.clean.village`, `we.mq04.cell`, `we.mq04.items`, `we.mq04.leeches`, `we.mq04.name`, `we.mq04.people`, `we.mq04.village`.
 - MQ05 stands on 10 ledgered world edits: `we.clean.dock5`, `we.clean.helstrom`, `we.clean.lilmoth`, `we.clean.thorn1`, `we.mq05.dispute`, `we.mq05.escort`, `we.mq05.grove`, `we.mq05.hall-name`, `we.mq05.sweeper`, `we.mq05.throne`.
 
 Every stage maps; no stage needs a block outside the set, and no block needs SKSE. The set is seven triggers, seven

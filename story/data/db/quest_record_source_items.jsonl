@@ -17,35 +17,23 @@
 {"quest_id":"quest.main.mq01","source":"lore","ord":6,"value":"story/lore/topics/sithis-nisswo-shadowscales.md (grave-stakes)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":7,"value":"story/design/province-vibe.md §3-5"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":8,"value":"§9"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Communion)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Sap; Silence vs severance)"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":1,"value":"story/lore/an-xileel.md"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":2,"value":"story/lore/lilmoth.md (Government; Lilmoth in 4E 201)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":3,"value":"story/lore/topics/labour-and-bondage.md §2-3"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":4,"value":"story/lore/extrapolation/quest-plan-deltas.md (Q7)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":2,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":3,"value":"story/lore/soulrest.md"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":4,"value":"story/lore/topics/labour-and-bondage.md §2"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":5,"value":"story/design/quests/10-political-frame.md §6"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5, §9, §10"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA7, QA8, QA13"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":8,"value":"story/lore/topics/hist-and-sap.md ('Sap'; Communion)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":9,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":10,"value":"story/lore/extrapolation/gap-register.md §8 QA18"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":11,"value":"story/lore/topics/hist-and-sap.md ('Sap': a Hist's sap is its soul; on non-Argonians a hallucinogen with a bloodlust edge)"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":12,"value":"story/lore/extrapolation/gap-register.md §8 QA19"}
-{"quest_id":"quest.main.mq03","source":"lore","ord":13,"value":"story/lore/soulrest.md (a port on Topal Bay)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/regions/murkmire.md (Villages and tribes; Politics)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Tribal Hist)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":3,"value":"story/lore/topics/material-culture.md (tree-minder, kaal, egg-tender)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":4,"value":"story/lore/an-xileel.md"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"story/lore/extrapolation/argonia-4e201-state.md §2.2"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9, QA11"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"story/design/province-vibe.md §3-5, §8-9"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":8,"value":"story/design/quests/30-main-quest.md §24b.3 (adoption); story/design/province-vibe.md §5 (law is arbitration; fines are owed work; prisons only in ruins and the Rose)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":9,"value":"story/lore/topics/hist-placement.md §3 (Low-Reed Village row added)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":10,"value":"story/lore/extrapolation/gap-register.md §8 QA15, QA17"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":11,"value":"story/lore/topics/labour-and-bondage.md §2-3 (the Owing ends; a punishment that stores a person is renounced)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":12,"value":"story/lore/extrapolation/gap-register.md §8 QA17 (reworded in round 3)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":13,"value":"story/lore/topics/labour-and-bondage.md §2 (tree-minders and warchiefs settle affairs in their own territory; counted in nushmeekos), §3"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":14,"value":"story/lore/topics/hist-and-sap.md (Reproduction; Silence vs severance), story/lore/topics/hist-placement.md (Tribal Hist relics), story/lore/extrapolation/gap-register.md §8 QA20, QA17 (reworded in round 4)"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/quests/30-main-quest.md §18d, §24b.2"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"story/design/province-vibe.md §5, §7, §9"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":8,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA7, QA8, QA18"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Sap; Reproduction and the hatchery; Silence vs severance)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/topics/material-culture.md (tree-minder, root-herald, egg-tender)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/regions/murkmire.md (Villages and tribes)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":3,"value":"story/lore/topics/hist-placement.md (Low-Reed Village)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":4,"value":"story/design/quests/10-political-frame.md §6"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"story/design/quests/30-main-quest.md §24b.3"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5, §7, §9"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9, QA11, QA15"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}

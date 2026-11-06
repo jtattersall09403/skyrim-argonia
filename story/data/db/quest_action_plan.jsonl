@@ -21,17 +21,18 @@
 {"quest_id":"quest.main.mq01","ord":4,"skill":"short-blade","use":"fight","reason":"the two root-cutters at the cutting (band 1, fixed)"}
 {"quest_id":"quest.main.mq01","ord":5,"skill":"athletics","use":"swim","reason":"out of the burning huts through the shallows to the saved witness"}
 {"quest_id":"quest.main.mq01","ord":6,"skill":"athletics","use":"pole-or-sail-a-boat","reason":"the rowboat across the shallows with the saved witness"}
-{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player tastes the sap the cell spilled where its jars stood, as a tester takes an ingredient; Nesh-Deeka reads the sample herself, and the player's alchemy only adds what the taste says (drawn fresh at the ring)"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"speechcraft","use":"persuade","reason":"the survivor is asked by the broker to bear witness to the months read at the camp; the player can talk them out of it, at a cost to them"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"mercantile","use":"bargain","reason":"Nesh-Deeka's coin is on her condition; the player takes it, or bargains with their own"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"intimidate","reason":"the broker carried the state's courier and lost him at his own camp; said before a Lilmoth fish-trader, that is a name no raft-trader hires"}
-{"quest_id":"quest.main.mq03","ord":4,"skill":"mercantile","use":"settle-an-owing","reason":"the release spoken before witnesses, for the player's months or the survivor's"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of Lilmoth's people and the Reed and starts guarded (a Speech check of 30); the player earns the look at the Hist and the pool"}
-{"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"gather-ingredients","reason":"a leech gathered from the water at the cut root and the pools above searched for any: the leeches gathered where the sap spilled, so they came after the tree closed (the leech is a placed ingredient, we.mq04.leeches)"}
-{"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes to the cut root at night; watching him clears him"}
-{"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"sneak-past","reason":"the drips run out of the workshop and pick up again past the leech water, black on the reeds by day and night; a cell man keeps watch at the camp's edge and the player slips past him"}
-{"quest_id":"quest.main.mq04","ord":4,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp is taken alive to speak before the village or to be handed over"}
-{"quest_id":"quest.main.mq04","ord":5,"skill":"long-blade","use":"fight","reason":"or the two are fought at the camp, at a fixed level (band 2)"}
+{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"athletics","use":"dive","reason":"one breath under the burnt boards in the shallows for the courier's brass tag"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"speechcraft","use":"persuade","reason":"the survivor will not tell the night before a stranger behind a screen until the player talks them round"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"persuade","reason":"the player argues for the survivor's road home, or the stipend's size"}
+{"quest_id":"quest.main.mq03","ord":4,"skill":"athletics","use":"climb","reason":"in the dream the player climbs the ring of roots to the door (FreeClimb)"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth and must be talked round before the player may go to the tree"}
+{"quest_id":"quest.main.mq04","ord":1,"skill":"long-blade","use":"fight","reason":"the leeches crowd the cut root and the water below it (fixed band 2)"}
+{"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes down to the cut root after dark; watching him unseen opens him"}
+{"quest_id":"quest.main.mq04","ord":3,"skill":"athletics","use":"swim","reason":"the gum trail breaks at the leech water and picks up on the far side"}
+{"quest_id":"quest.main.mq04","ord":4,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
+{"quest_id":"quest.main.mq04","ord":5,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp may be taken alive"}
+{"quest_id":"quest.main.mq04","ord":6,"skill":"athletics","use":"pole-or-sail-a-boat","reason":"a captive is poled out to the Reed's boat, or walked to the village"}
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"the player carries the Reed's account to two parties who each distrust it"}
 {"quest_id":"quest.main.mq05","ord":1,"skill":"mercantile","use":"bargain","reason":"the hall's two merchants sell in the outer room, and a purchase there opens the sweeper's tongue"}
 {"quest_id":"quest.main.mq05","ord":2,"skill":"speechcraft","use":"admire","reason":"the sweeper of the seat is asked why"}

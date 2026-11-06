@@ -77,6 +77,12 @@ the quest system follows once the owner has tried the slice.
   kaal judges and holds the cell man). Majors in both: skill uses gate nothing (add skillAtLeast or disposition
   thresholds), missing world rows, tier-1 rewards of 30-main-quest §24b dropped, journals out of step with world state.
   Next: fix round 1 as one batch, then round 2; then stage_blocks, the owner read and PROGRESS.
+- Rework under the owner's 2026-11-06 rules (quest-write §2b): MQ03 and MQ04 rewritten whole. MQ03 is RECKONING
+  with WONDER (the burnt camp read by taste and dive, the Reed's offer, a dream climbed to the door; 7 stages, 2
+  choices, 2 endings); the broker's bargain is cut. MQ04 keeps the cut tree, the leeches, the gum trail and the camp
+  (8 stages, 2 choices, 3 endings); the hearing, award and weirs are cut. QA13, QA17, QA19, QA20 and QA21 struck. The
+  main line's spirit rewritten for the whole quest (Acts II on as outline). Loop state: story/design/quests/review/act1.md,
+  round 0, awaiting review.
 
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
