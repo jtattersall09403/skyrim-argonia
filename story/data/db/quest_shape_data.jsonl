@@ -25,30 +25,30 @@
 {"quest_id":"quest.main.mq01","section":"breakPoints","value":"none the player can stop: the cell cuts the roots at dusk as the player is at the fire; the player can only choose which one of the three witnesses lives"}
 {"quest_id":"quest.main.mq01","section":"costToTheBound","value":"Two of the gang are visibly washed out from years away from their Hist, and their cutting is cut; the player's own line is blank, so no amount of work can pay it down. Whoever the player does not reach in the burning camp dies, and the gang families lose their clutch."}
 {"quest_id":"quest.main.mq01","section":"rite","value":"The cutting's withdrawal: the light in the cutting goes out, the sap stops, the uxith goes dark, in front of the gang families, with the harvest at its roots as the officiant and the severed clutch as the sign."}
-{"quest_id":"quest.main.mq03","section":"guiltyParties","value":"Cuts-the-Old-Knot and her cell (unnamed to the player until the sap-dreams); the Reed's own teaching, which Nesh-Deeka hides"}
-{"quest_id":"quest.main.mq03","section":"leads","value":"the camp's cut leads to the survivors; any survivor leads to the woman with the cord; Nesh-Deeka's silence at the cut leads to the Reed's own teaching; any two nodes lead to the third"}
+{"quest_id":"quest.main.mq03","section":"guiltyParties","value":"Cuts-the-Old-Knot and her cell (unnamed to the player until the sap-dreams)"}
+{"quest_id":"quest.main.mq03","section":"leads","value":"the camp's cut leads to the survivors; any survivor leads to the woman with the cord; Nesh-Deeka's question about the jars leads to the cell's practice; any two nodes lead to the third"}
 {"quest_id":"quest.main.mq03","section":"nodes"}
 {"quest_id":"quest.main.mq03","section":"reckoning","value":"Nesh-Deeka files what the player found and the player decides how much of the woman with the cord to give her"}
 {"quest_id":"quest.main.mq03","section":"timeline"}
 {"quest_id":"quest.main.mq03","section":"wrong","value":"the courier was killed for his purse and the fire was an accident"}
-{"quest_id":"quest.main.mq04","section":"cure","value":"the sap returned to the root and the cut washed (reconciled), or the tree guarded by the An-Xileel (guarded)"}
+{"quest_id":"quest.main.mq04","section":"cure","value":"the sap returned to the root and the cut washed, so that the next clutch may be laid (reconciled, QA11); or the cell's people handed to the officer, who leaves the tree to the village (handed over), which mends nothing"}
 {"quest_id":"quest.main.mq04","section":"fate","value":"the sap is at the camp in jars, waiting for a boat; the two men are alive"}
 {"quest_id":"quest.main.mq04","section":"firstIllLastWell","value":"the eggs in the lowest pool first, the upper pools last; the tree itself is never sick, only closed"}
 {"quest_id":"quest.main.mq04","section":"ladder"}
-{"quest_id":"quest.main.mq04","section":"leads","value":"the root leads to the workshop; the tree-minder (spied on or persuaded) leads to the workshop and the gum; the gum leads to the camp"}
-{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leech sickness, and a tree-minder who cut the root","test":"the leech fat on sap (k4); the minder seen washing the cut (k1)"}
+{"quest_id":"quest.main.mq04","section":"leads","value":"the root leads to the workshop; the tree-minder (spied on or persuaded) leads to the workshop and the gum; the egg-tender leads to the strangers' boat; the gum leads to the camp"}
+{"quest_id":"quest.main.mq04","section":"misdiagnosis","wrong":"leech sickness, and a tree-minder who cut the root","test":"the leech fat on sap (k4); the minder seen washing the cut (k1); the egg-tender who saw the strangers (k7)"}
 {"quest_id":"quest.main.mq04","section":"nodes"}
 {"quest_id":"quest.main.mq04","section":"openQuestions"}
-{"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.chimes-still"}
-{"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Listening-Tree, sealed with black gum"}
+{"quest_id":"quest.main.mq04","section":"sign","value":"fact.mq04.tree-closed"}
+{"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Hist, sealed with black gum"}
 {"quest_id":"quest.main.mq04","section":"spread","value":"the spilled sap, the leeches that breed on it, the uxith that goes dark"}
 {"quest_id":"quest.main.mq04","section":"trail"}
-{"quest_id":"quest.main.mq05","section":"aftermath","value":"minders hold: Kaska-Meen guides the player to the city's trees and the Reed's file says the player failed; the Nisswo's reading: both half-satisfied and Ei-Tuja is owed; the distinction: both half-satisfied, and the city knows the Reed sent the player. Three places change: the grove, the hall's outer room (talk of the player), the debating house; a greeting changes in each."}
-{"quest_id":"quest.main.mq05","section":"deadline","value":"the grove sits that evening; the Root Talk is in the season of Hist-Tsoko, and the dispute will go to it unanswered if the player says nothing"}
-{"quest_id":"quest.main.mq05","section":"leverage","value":"the player's own sight of the camp's cut roots, the dead clutch (MQ01) and the cut root, the gum and the jars (MQ04); the distinction between a Hist turning and its roots cut"}
+{"quest_id":"quest.main.mq05","section":"aftermath","value":"minders hold: Kaska-Meen guides the player to the city's trees and the Reed's file says the player failed; the Nisswo's reading: both half-satisfied and Ei-Tuja gave the reading freely; the distinction: both half-satisfied, and the city knows the Reed sent the player. Three places change: the grove, the hall's outer room (talk of the player), the debating house; a greeting changes in each."}
+{"quest_id":"quest.main.mq05","section":"deadline","value":"the grove sits that evening; the dispute goes to the Root Talk unanswered if the player says nothing (the Root Talk issues no orders, vibe §3)"}
+{"quest_id":"quest.main.mq05","section":"leverage","value":"the player's own sight of the camp's cut roots and the dead clutch (MQ01) and the cut root, the gum and the jars (MQ04); the distinction between a Hist turning and its roots cut"}
 {"quest_id":"quest.main.mq05","section":"objections"}
 {"quest_id":"quest.main.mq05","section":"revealOrder","value":"the hall's empty seat first (the city's own refusal to fill it), then Kaska-Meen's case (the good one), then Ei-Tuja's (half right), then what the player saw"}
-{"quest_id":"quest.main.mq05","section":"sides","value":"Kaska-Meen for the Tree-Minders: no outsider at any tree; Ei-Tuja for the Nisswo, a broker who can give either side a reading and says the tree is a mind to be read; the player carries the Reed's account and is its denied voice. Each side wants, gives and never gives: Kaska-Meen wants the trees watched by tree-minders only, will give a hearing and a guide, never an outsider at a tree; Ei-Tuja wants the debate kept open, will give a reading, never a clamp."}
+{"quest_id":"quest.main.mq05","section":"sides","value":"Kaska-Meen for the Tree-Minders: no outsider at any tree; Ei-Tuja for the Nisswo, who can give either side a reading and says the tree is a mind to be read; the player carries the Reed's account and is its denied voice. Each side wants, gives and never gives: Kaska-Meen wants the trees watched by tree-minders only, will give a hearing and a guide, never an outsider at a tree; Ei-Tuja wants the debate kept open, will give a reading freely, never a clamp."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}
 {"quest_id":"quest.mr.mr01","section":"gate","value":"the second landing is a full dive in the wet season"}

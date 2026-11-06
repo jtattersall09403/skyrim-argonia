@@ -21,19 +21,19 @@
 {"quest_id":"quest.main.mq01","ord":4,"skill":"short-blade","use":"fight","reason":"the two root-cutters at the cutting (band 1, fixed)"}
 {"quest_id":"quest.main.mq01","ord":5,"skill":"athletics","use":"swim","reason":"out of the burning huts through the shallows to the saved witness"}
 {"quest_id":"quest.main.mq01","ord":6,"skill":"athletics","use":"pole-or-sail-a-boat","reason":"the rowboat across the shallows with the saved witness"}
-{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player takes a scraping of sap from a cut root-end at the withdrawn cutting and reads how it was cut"}
+{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player tests the sap the cell spilled on the shed floor where its jars stood, and reads how the roots were cut"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"restoration","use":"heal-the-sick","reason":"the hurt on the house's two mats talk to whoever tends them"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"speechcraft","use":"lie","reason":"the player may tell Nesh-Deeka all of the woman with the cord or hold her back"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"mercantile","use":"settle-an-owing","reason":"the price of the pardon: the camp families' months spoken off by the Reed, at a cost to the player"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the tribe speaker is wary of Lilmoth's people and the Reed; the player earns the look at the Listening-Tree"}
-{"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"test-a-sample","reason":"a leech from the water and the water round the tending-ground: the leeches are fat on spilled sap and came after the tree closed"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"mercantile","use":"settle-an-owing","reason":"the price of the protection: the camp families' months bought out of the broker's hands with the Reed's coin, which the player then owes the Reed"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of Lilmoth's people and the Reed; the player earns the look at the Hist and the pool"}
+{"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"test-a-sample","reason":"a leech from the water below the tending-ground: the leeches are fat on spilled sap and came after the tree closed"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes to the cut root at night; watching him clears him"}
 {"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"follow","reason":"the cell's men come back to the sap-workshop and go out along the gum trail"}
-{"quest_id":"quest.main.mq04","ord":4,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp is taken alive to speak before the village"}
+{"quest_id":"quest.main.mq04","ord":4,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp is taken alive to speak before the village or to be handed over"}
 {"quest_id":"quest.main.mq04","ord":5,"skill":"long-blade","use":"fight","reason":"or the two are fought at the camp, at a fixed level (band 2)"}
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"the player carries the Reed's account to two parties who each distrust it"}
-{"quest_id":"quest.main.mq05","ord":1,"skill":"mercantile","use":"bargain","reason":"the hall's two merchants sell in the outer room, and a bargain opens the sweeper"}
-{"quest_id":"quest.main.mq05","ord":2,"skill":"speechcraft","use":"admire","reason":"the soldier who sweeps the seat is asked why"}
+{"quest_id":"quest.main.mq05","ord":1,"skill":"mercantile","use":"bargain","reason":"the hall's two merchants sell in the outer room, and a purchase there opens the sweeper's tongue"}
+{"quest_id":"quest.main.mq05","ord":2,"skill":"speechcraft","use":"admire","reason":"the sweeper of the seat is asked why"}
 {"quest_id":"quest.main.mq05","ord":3,"skill":"speechcraft","use":"lie","reason":"the player may hide that the Reed sent them, or be the Reed's voice"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}

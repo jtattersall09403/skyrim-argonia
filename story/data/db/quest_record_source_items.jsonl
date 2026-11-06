@@ -12,7 +12,7 @@
 {"quest_id":"quest.main.mq01","source":"lore","ord":1,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery; Gloor)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Nine Bends; Hereguard)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":3,"value":"story/lore/lilmoth.md (Lilmoth in 4E 201)"}
-{"quest_id":"quest.main.mq01","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA1"}
+{"quest_id":"quest.main.mq01","source":"lore","ord":4,"value":"story/lore/extrapolation/gap-register.md §8 QA1, QA7"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":5,"value":"story/lore/extrapolation/quest-plan-deltas.md (Q7)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":6,"value":"story/lore/topics/sithis-nisswo-shadowscales.md (grave-stakes)"}
 {"quest_id":"quest.main.mq01","source":"lore","ord":7,"value":"story/design/province-vibe.md §3-5"}
@@ -25,18 +25,15 @@
 {"quest_id":"quest.main.mq03","source":"lore","ord":5,"value":"story/design/quests/10-political-frame.md §6"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5"}
 {"quest_id":"quest.main.mq03","source":"lore","ord":7,"value":"§9"}
+{"quest_id":"quest.main.mq03","source":"lore","ord":8,"value":"story/lore/extrapolation/gap-register.md §8 QA7, QA8"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":0,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance; Reproduction and the hatchery)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/regions/murkmire.md (Bright-Throat Village)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Bright-Throat; Tribal Hist)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":3,"value":"story/lore/tribes.md (Bright-Throats)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":4,"value":"story/lore/topics/material-culture.md (tree-minder"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"kaal"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"egg-tender"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"chime-maker)"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":8,"value":"story/lore/an-xileel.md"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":9,"value":"story/lore/extrapolation/gap-register.md §8 QA6"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":10,"value":"story/design/province-vibe.md §3-5"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":11,"value":"§9"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":1,"value":"story/lore/regions/murkmire.md (Villages and tribes; Politics)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/topics/hist-placement.md (Tribal Hist)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":3,"value":"story/lore/topics/material-culture.md (tree-minder, kaal, egg-tender)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":4,"value":"story/lore/an-xileel.md"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"story/lore/extrapolation/argonia-4e201-state.md §2.2"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"story/design/province-vibe.md §3-5, §8-9"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}

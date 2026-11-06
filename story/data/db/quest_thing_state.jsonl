@@ -29,36 +29,43 @@
 {"quest_id":"quest.main.mq01","things_ord":0,"state":"before-90","value":"crew and gang present"}
 {"quest_id":"quest.main.mq01","things_ord":1,"state":"after-40","value":"the courier dead at the fire"}
 {"quest_id":"quest.main.mq01","things_ord":1,"state":"before-40","value":"alive"}
-{"quest_id":"quest.main.mq01","things_ord":2,"state":"all","value":"present until the strike"}
-{"quest_id":"quest.main.mq01","things_ord":3,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey, the uxith dark)"}
-{"quest_id":"quest.main.mq01","things_ord":3,"state":"at-40","value":"attacked (fire in the huts)"}
-{"quest_id":"quest.main.mq01","things_ord":3,"state":"before-40","value":"orderly"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"after-40","value":"withdrawn (light out)"}
-{"quest_id":"quest.main.mq01","things_ord":4,"state":"before-40","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting and one at the rowboat"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"at-40","value":"enabled"}
-{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-40","value":"disabled"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq01","things_ord":7,"state":"all","value":"as the ledger says"}
+{"quest_id":"quest.main.mq01","things_ord":2,"state":"after-90","value":"gone from the pier"}
+{"quest_id":"quest.main.mq01","things_ord":2,"state":"before-90","value":"on the pier"}
+{"quest_id":"quest.main.mq01","things_ord":3,"state":"all","value":"present until the strike"}
+{"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"after-40","value":"on the shore, burnt and wet"}
+{"quest_id":"quest.main.mq01","things_ord":5,"state":"before-40","value":"off"}
+{"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey, the uxith dark)"}
+{"quest_id":"quest.main.mq01","things_ord":6,"state":"at-40","value":"attacked (fire in the huts)"}
+{"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
+{"quest_id":"quest.main.mq01","things_ord":7,"state":"after-40","value":"withdrawn (light out)"}
+{"quest_id":"quest.main.mq01","things_ord":7,"state":"before-40","value":"lit"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting and one at the rowboat"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"at-40","value":"enabled"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"before-40","value":"disabled"}
+{"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq01","things_ord":10,"state":"all","value":"as the ledger says"}
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"after-20","value":"gone with the survivors"}
-{"quest_id":"quest.main.mq03","things_ord":1,"state":"before-20","value":"at the shore"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-20","value":"gone with the survivors"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"before-20","value":"at the shore"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"at-50","value":"on"}
-{"quest_id":"quest.main.mq03","things_ord":4,"state":"before-50","value":"off"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":4,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"at-50","value":"on"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"before-50","value":"off"}
+{"quest_id":"quest.main.mq03","things_ord":6,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"guarded"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn, the minder sheltered"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn, the minder gone"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"withdrawn; the officer, the go-between and the cell's people gone from the village"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn; the tree-minder at his post on the player's word"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn; the tree-minder made to apologise before the Hist and set to a season's work at the weirs"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present until their stage"}
 {"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"used"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present until the jars are taken"}
 {"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"full"}
-{"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"present in the water"}
+{"quest_id":"quest.main.mq04","things_ord":7,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}

@@ -557,38 +557,43 @@
 {"id":"fact.morrowind.border","says":"The border between the provinces is cold and resented on both sides."}
 {"id":"fact.morrowind.mournhold","says":"Argonian armies sacked Mournhold in the Fourth Era."}
 {"id":"fact.morrowind.north","says":"Morrowind is the Dunmer province north of the marsh."}
-{"id":"fact.mq01.blank-line","claim":"The roll has a line for me and no name on it.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.clutch-dead","claim":"The camp's egg clutch died the night of the attack.","ord":9,"from_ref":"t7","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.courier-state","claim":"'The man who rides with the gang serves the state and will not say so.'.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.cutting-withdrew","claim":"The camp's Hist cutting withdrew the night of the attack.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.gang-hist","claim":"The gang families keep a Hist cutting from Nine Bends at their camp, with their clutch at its roots.","ord":4,"from_ref":"t1","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.her-face","claim":"'A tall Argonian woman with a knotted cord at her wrist led the attackers, and she let me live.'.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.blank-line","claim":"The roll has a line for me and no name on it.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.broker-holds","claim":"The broker on the pier at Dock1 holds the gang's months and hires them out to Hereguard Plantation; my blank line is his to fill or to leave.","ord":1,"from_ref":"t9","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.clutch-dead","claim":"The camp's egg clutch died the night of the attack.","ord":10,"from_ref":"t7","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.courier-state","claim":"'The man who rides with the gang serves the state and will not say so.'.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.cutting-withdrew","claim":"The camp's Hist cutting withdrew the night of the attack.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.gang-hist","claim":"The gang families keep a Hist cutting from Nine Bends at their camp, with their clutch at its roots.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.her-face","claim":"'A tall Argonian woman with a knotted cord at her wrist led the attackers, and she let me live.'.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.owing-roll","claim":"Everyone on the broker's gang owes months, and the roll adds months for food.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.roots-cut","claim":"'The cutting''s roots to the clutch were cut and its sap drawn into jars before it withdrew.'.","ord":7,"from_ref":"t6","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":5,"from_ref":"t5","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut and its sap drawn into jars before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq03.clean-cut","claim":"The cutting's roots were cut clean at the ring, one stroke each, by hands that knew where.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.house-reed","claim":"The Lilmoth house belongs to a fish-trader who keeps it for the Reed and says nothing of the state.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.legally-dead","claim":"The burnt roll leaves me owing no one and known to no one: dead to every roll and tied to none.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.pardon-spoken","claim":"The pardon is spoken, not written, and holds only while I serve.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq03"}
-{"id":"fact.mq03.reed-trained","claim":"Nesh-Deeka goes quiet at the cut: someone the Reed trained led the attack.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.house-reed","claim":"The Lilmoth house belongs to a fish-trader, Salts-The-Catch, who keeps it for the Reed, carries its word to the broker and says nothing of the state.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.months-unprovable","claim":"The burnt roll leaves the broker nothing to prove my months by, and nobody but the gang and the broker knows my face: I owe no one anyone can prove, which suits a person the Reed can deny.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.protection-spoken","claim":"The protection is spoken, not written: the broker will never claim my months again, and it holds only while I serve the Reed.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq03"}
+{"id":"fact.mq03.sap-cell","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the camp is the first work of it Nesh-Deeka has seen.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq03"}
 {"id":"fact.mq03.satchel-reed","claim":"The courier's satchel was the Reed's business.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq03"}
-{"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Listening-Tree's sap and two men of the cell.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.chimes-still","claim":"The wind blows and the chimes of the Listening-Tree hang still.","ord":0,"from_ref":"t3","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.gum-trail","claim":"Black gum drips lead from the sap-workshop through the reeds to a camp.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq04"}
+{"id":"fact.mq03.word-carried","claim":"The fish-trader will carry the Reed's word to the broker that my months are not his to claim; no Reed face goes to him.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq03"}
+{"id":"fact.mq04.camp-jars","claim":"The camp holds jars of the Hist's sap and two men of the cell.","ord":8,"from_ref":"t5","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.gum-trail","claim":"Black gum drips lead from the sap-workshop through the reeds to a camp.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.leech-effect","claim":"The leeches are fat on spilled sap and came after the tree closed; they did not close it.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-washes","claim":"Pays-Late goes to the cut root every night to wash it; he did not cut it.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.naming-due","claim":"The tribe speaker means to name Pays-Late before the next clutch is laid.","ord":8,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.root-cut","claim":"A root of the Listening-Tree was cut at the ring and sealed with black gum.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.naming-due","claim":"Hires-By-The-Season, whom the egg-tenders and Pays-Late chose to hear it, means to name Pays-Late before the Hist: an apology and a season's work at the weirs.","ord":9,"from_ref":"t4","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.officer-waits","claim":"An An-Xileel officer and a Lilmoth go-between wait at the village's jetty for the cell's people, not for the tree.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.strangers-seen","claim":"Two men not of the village poled in by the north reeds on the night of the netting, when every netter was at the weirs and only the egg-tender kept the pool.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut, and the wind no longer moves them.","ord":0,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.uxith-dark","claim":"The village's uxith is dark, as the camp's was.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.workshop-used","claim":"The sap-workshop was used the night of the cut by strangers with his tools.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq05.basin-lethal","claim":"The basin round Helstrom kills what walks in it and the city says so at every gate.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's turning is its own act, to be read and not clamped.","ord":4,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that an outside hand cut the trees and that tree-minders alone must watch every Hist.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's trees and Nisswo to hear what a cut Hist looks like, and wants it said by someone it can deny.","ord":6,"from_ref":"t1","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.reed-sent","claim":"The Reed sent me, and wants it unsaid.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.severance-not-silence","claim":"The clutch died of the cut, not the turning: the Hist's turning is one thing and the cutting of its roots another.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.severance-not-silence","claim":"The clutch died of the cut, not the turning: the Hist's turning is one thing and the cutting of its roots another.","ord":7,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.throne-empty","claim":"The Scalded Throne is a plain root-and-reed seat that has stood empty for centuries and may never have been filled.","ord":1,"from_ref":"t3","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.throne-swept","claim":"The seat is swept every day by a soldier, and the city sells in the room before it.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.throne-swept","claim":"The seat is swept every day by the hall's sweeper, and the city sells in the room before it.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.consent","claim":"No Hist speaks for all the Hist, and one tree's will does not bind another's people.","ord":9,"from_ref":"culture.faction.many-root-conclave#norms","quest_id":"quest.mr.mr01"}

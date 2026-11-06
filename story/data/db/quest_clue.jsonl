@@ -39,9 +39,10 @@
 {"quest_id":"quest.main.mq04","ord":0,"id":"k1","form":"behaviour","carrier":"npc.mercantile-coast.bright-throat-village.chime-tuner"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"k2","form":"place","carrier":"thing.mq04.gum-trail"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"k3","form":"thing","carrier":"thing.mq04.sap-jars"}
-{"quest_id":"quest.main.mq04","ord":3,"id":"k4","form":"thing","carrier":"thing.mq04.village"}
-{"quest_id":"quest.main.mq04","ord":4,"id":"k5","form":"line","carrier":"npc.mercantile-coast.bright-throat-village.tribe-speaker"}
-{"quest_id":"quest.main.mq04","ord":5,"id":"k6","form":"place","carrier":"thing.mq04.village"}
+{"quest_id":"quest.main.mq04","ord":3,"id":"k7","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender"}
+{"quest_id":"quest.main.mq04","ord":4,"id":"k4","form":"thing","carrier":"thing.mq04.village"}
+{"quest_id":"quest.main.mq04","ord":5,"id":"k5","form":"line","carrier":"npc.mercantile-coast.bright-throat-village.tribe-speaker"}
+{"quest_id":"quest.main.mq04","ord":6,"id":"k6","form":"place","carrier":"thing.mq04.village"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"k3","form":"place","carrier":"thing.mq05.hall"}

@@ -51,6 +51,17 @@ method below applies to the slice: the spirit of every line is already written f
 capacity and allocation (steps 3 and 4) are used for the slice, and steps 5 to 10 run over the slice only. The rest of
 the quest system follows once the owner has tried the slice.
 
+## Status of the first story slice (2026-11-06, hand-off)
+
+- Done: steps 1 to 8 over the slice (adaptation §5): the ledger in the story data, the checker in `make check`,
+  seven review rounds, the last clean across all six reviewers. Blocks: W-navmesh and W-name added with precedent
+  (blocks.md); the slice's other quests mapped.
+- Open: Act I's records (mq01 16 stages, mq03 9, mq04 12, mq05 11) are rewritten from the ledger and reviewed four
+  rounds; mq05's last round was clean, mq01/03/04's last-round findings are fixed but need one more fresh review
+  round; then blocks.md's Act I stage table is re-mapped from them, the owner's read is posted (draft ready), and
+  PROGRESS moves. Not closed in the records: legacy `bright-throat-village.*` npc ids, the 35 old camp facts on
+  `place.pirate-freeholds.opening-work-camp` (retire them), the cell men as npc rows.
+
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
 Not only the main quest: every authored questline and quest (in the story data: 717 quests in 16 lines, 33
