@@ -97,3 +97,21 @@ MQ05 cites it rather than owning a row (MQ05's rework follows); one band per que
 accepted; TG02's three lies are characters' claims inside the quest, not facts about the world, so they need no lore
 source. Round 2 (a fresh reviewer per line) runs with the Act I round.
 
+
+## Round 2 (2026-11-06), planner's rulings (all seven quests)
+
+All five blocking and all five notes accepted, by subtraction or swap.
+- B1 LQ25: Namorine and the placed rival pair dropped; the crew are the two villagers at -10,15 and -9,15; the rivals
+  are BM&V's Boat Captain at -9,19.
+- B2 LQ30 x MQ05: we.mq05.sweeper cut (one record, 01ArgonianSoldier2, behind ten placements); applied with MQ05's fixes.
+- B3 TG01: we.tg01.doors widened to give 120E93, 0E971F and 039827 BM&V's Argonian door; no new row.
+- B4 TG01/TG02: both quest rows rewritten from quest_adaptation (TG02 the fallen stilt house in the Pusbottom canal),
+  each naming its settlement.
+- B5 TG02: the eels are Slaughterfish (023AB8) at a fixed level, called ripper eels; the patrol path cut.
+- N1 LQ30: the shelter's cell named, off MQ05's way in from the landing.
+- N2 BC02/BC03: BC03's dock host is its start; BC02 starts with Never-Sold at the house (BC01's host reused).
+- N3 BC03: one crew boss brawls; the other two and the pickpocket route cut.
+- N4 BC01: Never-Sold's escort cut; she meets the player at the estate landing.
+- N5 TG02: the job goes to an existing Chapter row (Vasha Half-Rent cut); the third pledge a different sourced object.
+
+Round 2: applied (ab2cc1bf; B2 applied with MQ05).
