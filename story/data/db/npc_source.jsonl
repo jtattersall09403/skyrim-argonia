@@ -824,7 +824,7 @@
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.n2","ord":0,"value":"place.mercantile-coast.lighter-flotilla blueprint occupants:n2"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.n2","ord":1,"value":"place.mercantile-coast.lighter-flotilla life.groups:n2"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.purser","ord":0,"value":"place.mercantile-coast.lighter-flotilla life.groups:purser"}
-{"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","ord":0,"value":"place.mercantile-coast.lilmoth-divers-yard notableNpcSlots[1]"}
+{"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","ord":0,"value":"place.mercantile-coast.lilmoth"}
 {"npc_id":"npc.mercantile-coast.lilmoth-divers-yard.valuer","ord":0,"value":"place.mercantile-coast.lilmoth-divers-yard notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.altmer-alchemist-licensed-dock","ord":0,"value":"place.mercantile-coast.lilmoth notableNpcSlots[10]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.canal-warden","ord":0,"value":"docs/quests/36-cast-roster.md"}

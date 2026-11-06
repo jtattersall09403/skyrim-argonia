@@ -450,5 +450,5 @@ Converging (blocking 7, then 3). All accepted as worded, by cuts or restores:
 - N13: thing.mq05.ship's source names we.mq05.ship-door.
 - N14 is the slice's round 4 B1.
 
-Round 4: applied (MQ05SHA), 11 of 14 here; B3 in 150b818f (the main line's B3), N14 with the slice's B1. Not
+Round 4: applied (830f4fd1), 11 of 14 here; B3 in 150b818f (the main line's B3), N14 with the slice's B1. Not
 applied: N11 ("tells"), whose row the ruling does not name.

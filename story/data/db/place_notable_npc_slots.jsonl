@@ -421,7 +421,6 @@
 {"place_id":"place.mercantile-coast.lilmoth","ord":9,"slot_id":"keeper-descendants-room-behind","role":"Keeper of the descendants' room behind a Pusbottom chandlery"}
 {"place_id":"place.mercantile-coast.lilmoth","ord":10,"slot_id":"altmer-alchemist-licensed-dock","role":"Altmer alchemist who holds a licence for the dock quarter and buys marsh reagents that no Summerset garden grows"}
 {"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":0,"slot_id":"valuer","role":"Valuer who never asks a find's provenance"}
-{"place_id":"place.mercantile-coast.lilmoth-divers-yard","ord":1,"slot_id":"night-reed-fence","role":"Night-Reed fence"}
 {"place_id":"place.mercantile-coast.long-bar-wreckers","ord":0,"slot_id":"light-keeper","role":"Light-keeper in name only"}
 {"place_id":"place.mercantile-coast.mad-hermit-jungle","ord":0,"slot_id":"npc-talking-hut-occupant","role":"npc.talking-hut.occupant"}
 {"place_id":"place.mercantile-coast.moonmarch","ord":0,"slot_id":"khajiit-factor-holding-last","role":"Khajiit factor holding the last lease"}

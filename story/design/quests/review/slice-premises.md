@@ -147,5 +147,23 @@ Accepted at premise level:
 - BC01/BC02: Never-Sold has one placement (15635D). Bethesda's way to the 095465 landing is an alias travel package.
 - LQ25: the crew bases show "Villager" (00FF4D) and "Aragonian Vliiager" (02A1EE). Name them through aliases, not
   base edits. we.lq25.crew needs 08D5EF as a target. The beast's lair has no cell.
+- TG02: the beads (item.glass-bead-strand, in we.tg02.house's lockbox) take a silver amulet's model, not glass
+  (round 4 N5).
 
 Round 3: applied (0ef4f61e)
+
+## Round 4 delta (2026-11-06), planner's rulings
+
+Converging (blocking 6, then 1, a wording fix). All accepted:
+- B1: LQ25's prerequisite reason reads "the player first meets the landing on MQ05's way in".
+- N2: the unheld Under-Yard slot night-reed-fence is deleted; Bent-Spine's npc_source is re-pointed to Lilmoth; the
+  stray " ." is cut.
+- N3: "scare the Boat Captain's trade off the river ... expose the crew to her, their rival".
+- N4: "The gate's warden, of the tribe's own levy".
+- N6: "08D5E9, " is cut from MQ05's changed text.
+- N7: a line here records that round 3 cut TG01's door re-base (BM&V's own doors are never re-modelled).
+- N5 goes to "Places to fit at record time": the beads' model is a silver amulet, not glass.
+
+Round 3 cut TG01's door re-base: BM&V's own doors are never re-modelled (N7).
+
+Round 4: applied (SLICESHA), 7 of 7.
