@@ -141,3 +141,7 @@ added here the day they are made, with the date and the issue.
   GameSir layout like Dark Souls: B dodge and sprint, LB block, RB light attack, RT heavy or power attack, LB+RB
   parry then RB riposte (Rim Parry And Execution), LT shouts, the Tween menu on d-pad left or right; RB pressed
   during a dodge queues the attack for straight after it.
+- 2026-11-06 (#51): Precision (Nexus 72347) goes into the stack. On the attack queued after a dodge the owner wrote
+  "*make* the dodge mod support it" and "Writing our own skse code absolutely should not be ruled out by our build
+  rules, I want to rule that in, make that change now". Our own SKSE plugin is allowed where no mod, record or
+  script does the job (CLAUDE.md and PLAN §6 changed the same day).

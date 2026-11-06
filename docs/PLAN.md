@@ -90,6 +90,6 @@ file in [phases/](phases/), edited as the phase goes.
 
 ## 6. What is deliberately not in this plan
 
-Our own worldspace, terrain, water, vegetation or LOD; our own SKSE plugins, UI, HUD or stats system; DS1
+Our own worldspace, terrain, water, vegetation or LOD; our own UI, HUD or stats system (our own SKSE plugins are allowed where no mod does the job: owner, #51); DS1
 measurement; a relational world database; agent-driven in-game journeys and the bridge; voice acting; an
 installer for other players (later, if the owner wants one).
