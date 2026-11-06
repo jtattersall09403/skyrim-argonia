@@ -608,7 +608,7 @@
 {"id":"fact.mq04.cell-cord","claim":"The two men at the camp wear the knotted cord at the wrist, as the woman at the Hereguard camp did.","ord":11,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.cell-known","claim":"The Reed has word of a cell that cuts a Hist's roots and draws its sap into jars; the Hereguard camp was its work.","ord":0,"from_ref":"t1","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.gum-origin","claim":"The black gum is the gum the village's sap-workshop works, and the knife-peg by its door is empty.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.gum-trail","claim":"Black gum drips run north from the workshop to the leech water, and pick up again on its far side where reed stems are bent, to a camp two cells out.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.gum-trail","claim":"Black gum drips run north from the workshop to the leech water, and pick up again on its far side, to a camp past the last stilt house, where the reeds bend.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.knife-at-camp","claim":"Pays-Late's knife lies by the camp's fire, its edge black with gum.","ord":12,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.leech-effect","claim":"The leeches crowd only the cut root, where the sap weeps: they came to the sap, after the tree closed; they did not close it.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq04"}
