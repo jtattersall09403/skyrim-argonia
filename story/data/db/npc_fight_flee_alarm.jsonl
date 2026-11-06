@@ -743,8 +743,14 @@
 {"npc_id":"npc.imperial-penal-south.blackrose-prison.person","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.imperial-penal-south.blackrose-prison.third-generation-rose-family","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.imperial-penal-south.blackrose.chainbreaker-patron","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.estate-debtor","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.estate-steward","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-killer","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-mother","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-speaker","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-penal-south.blackrose.island-core-castellan","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-penal-south.blackrose.magnate","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.imperial-penal-south.blackrose.post-gatekeeper","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-penal-south.blackrose.rose-liaison","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-penal-south.blackrose.toll-compact-s-outside","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.imperial-penal-south.blackrose.xileel-resident-unwelcome","fight":0,"flee":70,"alarm":60}
@@ -832,6 +838,7 @@
 {"npc_id":"npc.mercantile-coast.slaughter-memorial.wall-cutter","fight":5,"flee":60,"alarm":60}
 {"npc_id":"npc.mercantile-coast.soulrest-breaking-yard.yard-master","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.soulrest-quay-tradehouse.rate-caller","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.mercantile-coast.soulrest.crew-boss","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.soulrest.free-pilot","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.soulrest.keeper-harbour-den","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.soulrest.khajiit-caravan-factor","fight":0,"flee":70,"alarm":60}

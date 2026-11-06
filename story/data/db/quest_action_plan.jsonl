@@ -1,3 +1,19 @@
+{"quest_id":"quest.bc.bc01","ord":0,"skill":"Speechcraft","use":"persuade","reason":"Never-Sold sends only one who will hear the whole of the Owing before acting"}
+{"quest_id":"quest.bc.bc01","ord":1,"skill":"Speechcraft","use":"intimidate","reason":"the steward is pressed at the landing to name the buy-out"}
+{"quest_id":"quest.bc.bc01","ord":2,"skill":"Lockpicking","use":"pick-a-lock","reason":"the debt book's chest in the work shed is on a low lock"}
+{"quest_id":"quest.bc.bc01","ord":3,"skill":"Sneak","use":"steal","reason":"the book is taken from the shed unseen"}
+{"quest_id":"quest.bc.bc01","ord":4,"skill":"Speechcraft","use":"present-evidence","reason":"the book's own lines bring the buy-out down"}
+{"quest_id":"quest.bc.bc01","ord":5,"skill":"Sneak","use":"sneak-past","reason":"the two estate men walk the landing at night"}
+{"quest_id":"quest.bc.bc01","ord":6,"skill":"swimming","use":"swim","reason":"the woman is slipped into the channel and the player swims it with her"}
+{"quest_id":"quest.bc.bc02","ord":0,"skill":"Speechcraft","use":"persuade","reason":"the gate-keepers will not go in and will not open the gate for a stranger"}
+{"quest_id":"quest.bc.bc02","ord":1,"skill":"Sneak","use":"sneak-past","reason":"or the player slips through the stockade gate past them"}
+{"quest_id":"quest.bc.bc02","ord":2,"skill":"Lockpicking","use":"pick-a-lock","reason":"the first cell is behind a lock"}
+{"quest_id":"quest.bc.bc02","ord":3,"skill":"climbing","use":"climb","reason":"the second cell is reached by a collapsed way"}
+{"quest_id":"quest.bc.bc02","ord":4,"skill":"swimming","use":"dive","reason":"the third cell is flooded; its drain is the way out once the timber falls"}
+{"quest_id":"quest.bc.bc03","ord":0,"skill":"Speechcraft","use":"interrogate","reason":"the player hears both sides on the dock"}
+{"quest_id":"quest.bc.bc03","ord":1,"skill":"Lockpicking","use":"open-a-strongbox","reason":"the tokens' chest in the cabin is on a low lock"}
+{"quest_id":"quest.bc.bc03","ord":2,"skill":"Sneak","use":"steal","reason":"the tokens are taken unseen"}
+{"quest_id":"quest.bc.bc03","ord":3,"skill":"Block","use":"hold-a-line","reason":"the standard brawl with Heavy-Rope"}
 {"quest_id":"quest.local.lf83","ord":0,"skill":"spear","use":"hunt","reason":"a crocodile has taken the deep pool under the clay cut below the ford, where the landing digs its plaster clay; the landing will not dig until it is dead"}
 {"quest_id":"quest.local.lf83","ord":1,"skill":"marksman","use":"snipe","reason":"or shoot it from the station's wall above the cut when it suns"}
 {"quest_id":"quest.local.lf83","ord":2,"skill":"speechcraft","use":"present-evidence","reason":"each keeper's objections are answered with what the player found (the cracked and re-mortared head, the silt, the ledger, the doubter's word) or by persuasion"}

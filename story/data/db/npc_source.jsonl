@@ -757,8 +757,14 @@
 {"npc_id":"npc.imperial-penal-south.blackrose-prison.person","ord":0,"value":"place.imperial-penal-south.blackrose-prison notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.blackrose-prison.third-generation-rose-family","ord":0,"value":"docs/quests/36-cast-roster.md:56"}
 {"npc_id":"npc.imperial-penal-south.blackrose.chainbreaker-patron","ord":0,"value":"docs/quests/36-cast-roster.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.estate-debtor","ord":0,"value":"story/design/quests/review/slice-premises.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.estate-steward","ord":0,"value":"story/design/quests/review/slice-premises.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-killer","ord":0,"value":"story/design/quests/review/slice-premises.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-mother","ord":0,"value":"story/design/quests/review/slice-premises.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.held-speaker","ord":0,"value":"story/design/quests/review/slice-premises.md"}
 {"npc_id":"npc.imperial-penal-south.blackrose.island-core-castellan","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[0]"}
 {"npc_id":"npc.imperial-penal-south.blackrose.magnate","ord":0,"value":"docs/quests/36-cast-roster.md"}
+{"npc_id":"npc.imperial-penal-south.blackrose.post-gatekeeper","ord":0,"value":"story/design/quests/review/slice-premises.md"}
 {"npc_id":"npc.imperial-penal-south.blackrose.rose-liaison","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[3]"}
 {"npc_id":"npc.imperial-penal-south.blackrose.toll-compact-s-outside","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[1]"}
 {"npc_id":"npc.imperial-penal-south.blackrose.xileel-resident-unwelcome","ord":0,"value":"place.imperial-penal-south.blackrose notableNpcSlots[2]"}
@@ -853,6 +859,7 @@
 {"npc_id":"npc.mercantile-coast.slaughter-memorial.wall-cutter","ord":0,"value":"place.mercantile-coast.slaughter-memorial notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.soulrest-breaking-yard.yard-master","ord":0,"value":"place.mercantile-coast.soulrest-breaking-yard notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.soulrest-quay-tradehouse.rate-caller","ord":0,"value":"place.mercantile-coast.soulrest-quay-tradehouse notableNpcSlots[0]"}
+{"npc_id":"npc.mercantile-coast.soulrest.crew-boss","ord":0,"value":"story/design/quests/review/slice-premises.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.free-pilot","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.keeper-harbour-den","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.soulrest.khajiit-caravan-factor","ord":0,"value":"place.mercantile-coast.soulrest notableNpcSlots[1]"}

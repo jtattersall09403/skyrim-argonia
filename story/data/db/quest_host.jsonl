@@ -2,7 +2,7 @@
 {"quest":"quest.bc.bc01","ord":1,"settlement":"bmv.blackrose","cell":"095465:Black Marsh.esm","role":"main","what":"the estate's landing on the swamp road just north of the town, the work shed and the channel"}
 {"quest":"quest.bc.bc02","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"start","what":"Never-Sold at the Chainbreakers' house (BC01's host reused)"}
 {"quest":"quest.bc.bc02","ord":1,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"main","what":"the burning cells under the Rose's outer post"}
-{"quest":"quest.bc.bc03","ord":0,"settlement":"bmv.dock2","role":"start","what":"Ussa-Rekh on Soulrest's open dock among the crews, and his cabin"}
+{"quest":"quest.bc.bc03","ord":0,"settlement":"bmv.dock2","cell":"02F35A:Black Marsh.esm","role":"start","what":"Ussa-Rekh on Soulrest's open dock among the crews, and his cabin"}
 {"quest":"quest.local.lq25","ord":0,"settlement":"bmv.dock5","role":"start","what":"the landing"}
 {"quest":"quest.local.lq25","ord":1,"settlement":"bmv.dock5","role":"end","what":"the beast's lair under the pier","cell":"0D7723:Black Marsh.esm"}
 {"quest":"quest.local.lq30","ord":0,"settlement":"bmv.helstrom","role":"start","what":"the gate at the city's edge"}

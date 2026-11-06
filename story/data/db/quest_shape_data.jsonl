@@ -1,3 +1,18 @@
+{"quest_id":"quest.bc.bc01","section":"aftermath","value":"She greets the player in Blackrose in either ending; her colour returns as she nears her tree."}
+{"quest_id":"quest.bc.bc01","section":"bondageSheet","value":"The debt: four months for a boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit in practice: bought out, or gone. What she wants: to go home to her tree."}
+{"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps her boat; slipped away, she can never go back to the swamp road, and the estate men are rougher with the next one held."}
+{"quest_id":"quest.bc.bc01","section":"deadline","value":"none: the Owing runs on; the channel is taken at night."}
+{"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey first (k3), then the steward's true account (k1), then the book itself (k2)."}
+{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one brought out greets the player in the Chainbreakers' house and speaks the others' names to Never-Sold."}
+{"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: the fire. What each wants: out."}
+{"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three die in the smoke whichever the player chooses; the one brought out is in the Chainbreakers' keeping and cannot go back to the heirs."}
+{"quest_id":"quest.bc.bc02","section":"deadline","value":"the smoke: a line, not a timer; the way shuts only when the first is out."}
+{"quest_id":"quest.bc.bc02","section":"revealOrder","value":"The fire (k2 at the door), the three held, then the gate-keeper's word that only one comes out (k1), then the fall itself (k3)."}
+{"quest_id":"quest.bc.bc03","section":"aftermath","value":"A greeting on the dock changes; nothing later turns on it."}
+{"quest_id":"quest.bc.bc03","section":"bondageSheet","value":"The debt: the crew's last season of hire, owed for the Owings he bought. The holder: Ussa-Rekh. The terms: he hires them out until it is worked. The exit in law: the season's end. The exit in practice: breaking the tokens before him. What they want: done a season early."}
+{"quest_id":"quest.bc.bc03","section":"costToTheBound","value":"With the crew, they lose his hire and must find their own on the dock; with him, they work the season and lose their trade on the dock afterwards."}
+{"quest_id":"quest.bc.bc03","section":"deadline","value":"none: the season runs on."}
+{"quest_id":"quest.bc.bc03","section":"revealOrder","value":"The refusal (k2), his thirty years (k1), the tokens themselves (k3)."}
 {"quest_id":"quest.local.lf83","section":"aftermath"}
 {"quest_id":"quest.local.lf83","section":"deadline","value":"the world's: the wet season. The quest starts only in the dry season (startWhen seasonIs dry) and fails to stage 90 when the wet season comes (seasonIs wet); the rains are announced by Signs-For-The-Cargo and Takes-The-Short-Weight (fact.lf83.rains-close). The monsoon closes the road at the Drowning Gate, 87 m east along the road (place.imperial-fringe.the-drowning-gate), and with it the station's trade, which raises Livia's stake"}
 {"quest_id":"quest.local.lf83","section":"leverage"}
