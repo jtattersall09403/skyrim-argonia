@@ -516,20 +516,21 @@ def load_records() -> Records:
         rc.learnable.setdefault(q, set()).add(f)
     skill_ids = {_sk(x) for x in w.values("SELECT id FROM skill")}
     ssk = rc.skill_stages
-    for r in w.query("SELECT a.quest_id, s.id, a.skill FROM quest_action a JOIN quest_stage s "
+    for r in w.query("SELECT a.quest_id, s.id, a.skill, a.use FROM quest_action a JOIN quest_stage s "
                      "ON s.quest_id = a.quest_id AND s.ord = a.stages_ord WHERE a.skill IS NOT NULL"):
-        ssk.setdefault(r[0], {}).setdefault(r[1], set()).add(_sk(r[2]))
+        if _can_fail_action(r[2], r[3]):
+            ssk.setdefault(r[0], {}).setdefault(r[1], set()).add(_sk(r[2]))
     # a skill named inside a stage's objective or successor condition (skillAtLeast carries the skill as an argument)
     for q, st in rc.stages.items():
         for sid, d in st.items():
             ssk.setdefault(q, {}).setdefault(sid, set())
             for _, t, a in d["succ"]:
-                if "skillAtLeast" in t:
+                if "skillAtLeast" in t and _hard_check(a):
                     ssk[q][sid] |= {_sk(x) for x in a if _sk(x) in skill_ids}
     for r in w.query("SELECT o.quest_id, s.id, o.complete_when FROM quest_objective o JOIN quest_stage s "
                      "ON s.quest_id = o.quest_id AND s.ord = o.stages_ord"):
         t, a = tree.get(r[2], (set(), set()))
-        if "skillAtLeast" in t:
+        if "skillAtLeast" in t and _hard_check(a):
             ssk.setdefault(r[0], {}).setdefault(r[1], set()).update(_sk(x) for x in a if _sk(x) in skill_ids)
     for q, st in rc.stages.items():
         rc.stage_end[q] = {sid for sid, d in st.items() if not d["succ"]}
@@ -552,17 +553,42 @@ def _sk(x) -> str:
 SKILL_ROUTES_BLOCK = False
 
 
+# A route counts only if it can fail: a check of 25+ (Bethesda's easy level), or a fight, lock, dive or spell.
+FAIL_SKILLS = {_sk(x) for x in ("OneHanded", "TwoHanded", "Marksman", "Archery", "Block", "Destruction", "Alteration",
+                                "Illusion", "Conjuration", "Restoration", "Mysticism", "Lockpicking", "Security",
+                                "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand")}
+FAIL_USES = {"dive", "pick-a-lock", "open-a-strongbox", "fight", "duel"}
+
+
+def _can_fail_action(skill, use) -> bool:
+    return _sk(skill) in FAIL_SKILLS or str(use) in FAIL_USES
+
+
+def _hard_check(args) -> bool:
+    """A skillAtLeast whose value (an integer argument) is 25 or more."""
+    return any(str(x).isdigit() and int(x) >= 25 for x in args)
+
+
+def _choice_stage(succ, ends) -> bool:
+    """Only distinct choice topics, each leading to an ending: a decision, exempt like an ending."""
+    seen = set()
+    for to, t, a in succ:
+        if to not in ends or "topicHeardFrom" not in t or t - {"topicHeardFrom", "all", "any"} or frozenset(a) in seen:
+            return False
+        seen.add(frozenset(a))
+    return len(succ) >= 2
+
+
 def skill_routes(rc: Records) -> list[str]:
     """Skills win the stages (ruling #50). For a kept or adapted quest: every stage between the start and the endings
-    names a skill (an action, an objective or a successor's skillAtLeast); a main-line quest uses at least two
+    names a skill route that can fail (see FAIL_SKILLS; a skillAtLeast of 25+), the first stage too; a pure choice stage is exempt; a main-line quest uses at least two
     distinct skills across them; a faction quest uses at least one skill from its faction's list."""
     out = []
     for q, sts in sorted(rc.stages.items()):
         if rc.live is not None and q not in rc.live:
             continue
         ssk, ends = rc.skill_stages.get(q, {}), rc.stage_end.get(q, set())
-        first = min(sts) if sts else None
-        mid = [s for s in sorted(sts) if s != first and s not in ends]
+        mid = [s for s in sorted(sts) if s not in ends and not _choice_stage(sts[s]["succ"], ends)]
         for s in mid:
             if not ssk.get(s):
                 out.append(f"{q}: stage {s} names no skill (no action, objective or successor uses one)")

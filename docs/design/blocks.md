@@ -31,6 +31,7 @@ dialogue fragment, `TIF_`). Precedent is counted in Skyrim.esm (decision 0034; t
 | **C-skill** | GetActorValue on a skill (speech, sneak, alchemy...) | 150 on skills, of 543 |
 | **C-time** | GetCurrentTime | 518 |
 | **C-alive** | GetDead | 1,028 |
+| **C-detected** | GetDetected, on the condition term `detectedBy` (sneak that must go unseen) | 36 (QUST 4, INFO 5, PACK 16, SCEN 11), in 20 records |
 
 Flags in the records (`flag.mq*`) are not a block of their own: each is a stage done (C-stage) or a global
 (C-global), whichever the record writes it as.

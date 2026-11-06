@@ -1,5 +1,5 @@
 # The skill-use catalogue: what quests ask the player to DO, by the game's own skills (decision 0005 C2:
-# Morrowind's 27; crossbows and thrown under Marksman, 0016) and every other system the player can use.
+# Skyrim's actor values, ruling #50; the older keys below stay, `aliases` maps the Skyrim names onto them) and every other system the player can use.
 # A quest's actions are drawn from here (decision 0024 §9), so they use and build the player's real skills.
 # Variety comes from crossing a use with a target and a setting.
 #
@@ -12,6 +12,8 @@
 #              -> the uses that make a stage carry that tag. A record's `centrepiece` is one of these.
 #   supporting: acts the player performs that use no skill (reading, waiting, harvesting). A stage may list
 #              them as `{system: ..., use: ...}` beside its skill actions; they never stand alone.
+
+aliases: {onehanded: long-blade, twohanded: axe, archery: marksman, heavyarmor: heavy-armor, lightarmor: light-armor, speech: speechcraft, smithing: armorer, enchanting: enchant}  # normalised Skyrim name -> key
 
 targets:   # who or what a combat, stealth or magic use is aimed at; the danger band comes from the place
   vermin: [rats in the meal sacks, mudcrabs on a landing, a nest of fleshflies, parasite swarms in a root-cave]

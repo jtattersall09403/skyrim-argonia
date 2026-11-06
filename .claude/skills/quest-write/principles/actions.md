@@ -1,10 +1,10 @@
 # Actions: what the player does, by skill
 
 Read for every quest. Owner rulings (0024 §9, 2026-10-28): an action is **a use of one of the player's
-skills** (long blade, axe, sneak, security, alchemy, armorer, speechcraft, athletics and the rest). That is
-what makes a quest interesting: it uses and builds the character the player is making. Each skill can be used
-in many ways (long blade against rats in a cellar, a giant in a ruin, the town watch on a bridge, a duellist
-at dawn), and quests combine skills creatively. A chain of plain conversations is not a quest.
+skills** (Skyrim's actor values: OneHanded, TwoHanded, Marksman, Block, HeavyArmor, LightArmor, Destruction,
+Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speechcraft, Mysticism
+(Magic Expanded), climbing, swimming). That uses and builds the character the player is making. Each skill is used in
+many ways (OneHanded against rats in a cellar, a duellist at dawn); a chain of plain conversations is not a quest.
 
 ## Actions first, then the quest is built round them
 
@@ -19,7 +19,7 @@ at dawn), and quests combine skills creatively. A chain of plain conversations i
    something worth locking; a duel needs someone with a grievance. The plausibility pass still applies: if an
    action does not follow from believable people and places, change the plan or the truth.
 3. **Every stage that is not an ending has an action** (`skill`, `use`, target, setting), or offers
-   approaches that each have one. Speech counts when it uses Speechcraft or Mercantile (persuade, intimidate,
+   approaches that each have one. Speech counts when it uses Speechcraft (persuade, intimidate,
    bribe, present evidence, accuse), not when it is only listening.
 4. **Offer more than one build a way through** where the story allows: a stage a fighter, a thief, a mage and
    a talker can each pass, at different costs.

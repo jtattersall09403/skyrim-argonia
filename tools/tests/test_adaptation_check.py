@@ -237,10 +237,11 @@ def test_skill_routes():
     rc.stage_end = {"q": {30}}
     rc.quest_kind = {"q": ("main", None)}
     assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))
-    rc.skill_stages = {"q": {20: {"sneak"}}}
+    assert any("stage 10 names no skill" in x for x in ac.skill_routes(rc))     # the first stage counts
+    rc.skill_stages = {"q": {10: {"sneak"}, 20: {"sneak"}}}
     assert any("needs two ways" in x for x in ac.skill_routes(rc))          # one skill is one way through
     rc.stages["q"][25] = {"succ": [(30, set(), set())], "ff": set()}
-    rc.skill_stages["q"][25] = {"longblade"}
+    rc.skill_stages["q"][25] = {"onehanded"}
     assert ac.skill_routes(rc) == []
     rc.quest_kind = {"q": ("faction", "faction.f")}
     rc.faction_skills = {"faction.f": {"security"}}
@@ -250,3 +251,24 @@ def test_skill_routes():
     rc.live = set()
     rc.faction_skills = {"faction.f": {"security"}}
     assert ac.skill_routes(rc) == []                                       # only kept or adapted quests
+
+
+def test_skill_route_can_fail():
+    assert ac._can_fail_action("OneHanded", "fight") and ac._can_fail_action("Athletics", "dive")
+    assert ac._can_fail_action("Lockpicking", "pick-a-lock") and ac._can_fail_action("Destruction", "burn-a-nest")
+    assert not ac._can_fail_action("Sneak", "sneak-past") and not ac._can_fail_action("Speechcraft", "persuade")
+    assert ac._hard_check({"speechcraft", "25"}) and not ac._hard_check({"speechcraft", "15"})
+
+
+def test_skill_routes_choice_stage_exempt():
+    rc = recs()
+    ch = lambda to, t: (to, {"topicHeardFrom"}, {t})
+    rc.stages = {"q": {10: {"succ": [(20, set(), set())], "ff": set()},
+                       20: {"succ": [ch(90, "a"), ch(91, "b")], "ff": set()},
+                       90: {"succ": [], "ff": set()}, 91: {"succ": [], "ff": set()}}}
+    rc.stage_end = {"q": {90, 91}}
+    rc.skill_stages = {"q": {10: {"sneak"}}}
+    rc.quest_kind = {"q": ("local", None)}
+    assert ac.skill_routes(rc) == []                                       # whom to tell: a choice, not a skill
+    rc.stages["q"][20]["succ"][1] = ch(91, "a")                            # not distinct topics
+    assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))

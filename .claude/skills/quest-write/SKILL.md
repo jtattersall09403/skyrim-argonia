@@ -73,9 +73,9 @@ Before the record is written:
 4. **Skills win the stages (owner ruling #50, binding, checked by `skill_routes`).** Name the skills the quest uses
    (One-Handed, Two-Handed, Archery, Block, Heavy/Light Armor, Destruction, Alteration, Illusion, Conjuration,
    Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism (Magic Expanded), climbing (FreeClimb),
-   swimming). Each stage is won by a named skill, not by walking or talking alone. Every main quest has two ways
-   through on different skills; a faction quest leans on its faction's skills. Each stage's journal or objective
-   says plainly what to do and where. No tree climbing. Scripting stays at a vanilla side quest's.
+   swimming). Each stage is won by a skill route that can fail (a check of 25 or more, or a real fight, lock, dive or spell), not by
+   walking or talking alone; a pure choice stage (whom to tell) is exempt, as an ending is. Every main quest has two ways
+   through on different skills; a faction quest leans on its faction's skills. Each stage's journal or objective says plainly what to do and where. No tree climbing. Scripting stays at a vanilla side quest's.
 5. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes
    from the lore dossiers, the extrapolation, the census or the story data, cited as you write it. Where the quest
    needs something none of them gives, choose: leave it vague in the text (the player does not need the mechanism),

@@ -158,7 +158,7 @@ def main() -> int:
                 if x.get("use") not in cat["supporting"]:
                     missing.append(f"stage {s['id']}: supporting {x.get('use')} not in skill-uses.yaml")
                 continue
-            skills = WEAPONS if x.get("skill") == "any-weapon" else [x.get("skill")]
+            skills = WEAPONS if x.get("skill") == "any-weapon" else [cat["aliases"].get(re.sub("[^a-z]", "", str(x.get("skill")).lower()), x.get("skill"))]
             if not any(sk in cat["skills"] and x.get("use") in cat["skills"][sk]["uses"] for sk in skills):
                 missing.append(f"stage {s['id']}: {x.get('skill')}: {x.get('use')} is not in skill-uses.yaml")
             used.add(x.get("use"))
