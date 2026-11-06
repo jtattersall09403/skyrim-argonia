@@ -52,8 +52,8 @@ Links the adaptation must keep:
 ## 2. The spirit of each line (step 2)
 
 Per line: the promise, the core, the beats any adaptation must keep, and what is free. Per quest the same is in the
-staging file [adaptation-spirit.jsonl](adaptation-spirit.jsonl) (one row per quest, 717 rows, plus the 17 line
-rows), which moves into the `line_spirit` and `quest_adaptation` tables at step 5 and is then deleted.
+story database's `quest_adaptation` table (717 rows) and `line_spirit` (17 rows), the one source; edit them
+through `tools/argonia_world/db.py`.
 
 **Detectives (0025).** Join a band of crime solvers in Black Marsh and climb from petty thefts and larcenies through murder mysteries to a grand murder finale involving highly important people of the province. Solving crimes the Shadowscales (assassins) and the Night-Reed Chapter (thieves) live by, using classic mystery structures made to fit the lore and the world.
 Beats kept: Early cases are petty crimes: thefts and larcenies; Cases escalate in series of thefts, larcenies and murder mysteries as rank rises; Rivalry with the Shadowscales and the Night-Reed Chapter runs through the line; Recurring cast and a rival, with clues for the finale seeded along the way; Grand finale: a murder mystery that must involve highly important NPCs of Black Marsh. Free: Almost everything is open: the faction's name, founding, patrons, headquarters, ranks, number of cases per rank, the cast, which regions host cases, and the finale's victim and culprit. Fixed by the decision only: escalation by case, a joinable faction, rivalry with the two guilds, a grand finale with important NPCs, grounded in lore and in simple classic mystery structures.
