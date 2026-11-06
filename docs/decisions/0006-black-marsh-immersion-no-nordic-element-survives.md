@@ -11,7 +11,10 @@ elements sneaking into our Black Marsh game"; wants Pelagiad font throughout, ne
 2. The vanilla systems that would carry Skyrim's story into Black Marsh are shut down (0012).
 3. A full UI overhaul was part of the old goal and is not planned now; the
    owner may ask for it later.
-4. We make no art. Fal-made 2D art is allowed only if the owner asks for a specific small piece.
+4. The soulslike collection xyf1u3 comes in whole, Nordic-themed parts included (owner, 2026-11-06: "I want the full
+   mod stack from that collection in, even if there are some nordic themed elements"); the rule binds what we
+   write, not the collection's mods.
+5. We make no art. Fal-made 2D art is allowed only if the owner asks for a specific small piece.
 
 ## Consequences
 

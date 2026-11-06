@@ -128,3 +128,8 @@ added here the day they are made, with the date and the issue.
 - Speakers and players may be any of the ten races; address and manner vary by player race, faction and rank.
 - Quests, places, dialogue, characters and facts are consistent first time, by how they are written.
 - Every world, people and quest call cites the lore dossiers (`story/lore/`) or the extrapolation (0032).
+- 2026-11-06: the whole of the soulslike collection xyf1u3 is in the stack, Nordic-themed parts included ("I want
+  the full mod stack from that collection in, even if there are some nordic themed elements"); decision 0006 item 4.
+- 2026-11-06: reviewers return every finding they need, no cap in any round; the 3NF story database is the single
+  source of truth.
+- 2026-11-06: owner-facing writing assumes no context: every name explained, full sentences, no shorthand.
