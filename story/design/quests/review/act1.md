@@ -18,11 +18,11 @@ with the record.
 
 ## MQ04 The Tree That Turned Its Face (M)
 
-- Stages: 8 (10 root-herald, 20 the cut root, 30 the tree-minder, 40 the trail and the camp, 50 the return, endings
-  90, 91 and 92).
-- Choices: 2 (take a cell man alive or not; a bound man brought before the village or handed to the Reed).
-- Endings: 3 (e-exposed, e-minder, e-reed); every ending reaches stage 90 or more, so MQ05 starts the same.
-- Skills by stage: speech; blade; sneak; swimming with sneak or blade; a boat or speech.
+- Stages: 7 (10 root-herald, 20 the cut root, 30 the tree-minder, 40 the trail and the camp, 50 the return, endings
+  91 and 92).
+- Choices: 1 (a cell man taken alive and handed to the Reed on the jetty, or not; the jars are poured either way).
+- Endings: 2 (e-minder 91, e-reed 92); every ending reaches stage 90 or more, so MQ05 starts the same.
+- Skills by stage: speech; blade; sneak or speech; swimming with sneak or blade; the pour at the root.
 
 ### Settled
 
