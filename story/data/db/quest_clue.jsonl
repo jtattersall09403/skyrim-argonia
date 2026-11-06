@@ -42,7 +42,7 @@
 {"quest_id":"quest.main.mq04","ord":0,"id":"k1","form":"behaviour","carrier":"npc.mercantile-coast.low-reed-village.chime-tuner","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"k2","form":"place","carrier":"thing.mq04.gum-trail","kind":"lead"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"k3","form":"thing","carrier":"thing.mq04.sap-jars","kind":"concept"}
-{"quest_id":"quest.main.mq04","ord":3,"id":"k7","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender","kind":"lead"}
+{"quest_id":"quest.main.mq04","ord":3,"id":"k7","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":4,"id":"k4","form":"thing","carrier":"thing.mq04.leech","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":5,"id":"k5","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":6,"id":"k6","form":"place","carrier":"thing.mq04.village","kind":"lead"}

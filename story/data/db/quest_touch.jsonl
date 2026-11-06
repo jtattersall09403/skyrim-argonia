@@ -200,6 +200,8 @@
 {"quest_id":"quest.main.mq04","ord":16,"id":"faction.veiled-reed","access":"write"}
 {"quest_id":"quest.main.mq04","ord":17,"id":"flag.mq04.adopted","access":"write"}
 {"quest_id":"quest.main.mq04","ord":18,"id":"thing.mq04.knife","access":"write"}
+{"quest_id":"quest.main.mq04","ord":19,"id":"npc.mercantile-coast.low-reed-village.kaal","access":"write"}
+{"quest_id":"quest.main.mq04","ord":20,"id":"flag.mq04.captive-kept","access":"write"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"npc.nesh-deeka","access":"write"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"npc.hist-heartland.helstrom.grove-s-senior-tree","access":"write"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house","access":"write"}

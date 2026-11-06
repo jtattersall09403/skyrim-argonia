@@ -44,6 +44,8 @@
 {"quest_id":"quest.main.mq04","source":"lore","ord":10,"value":"story/lore/extrapolation/gap-register.md §8 QA15, QA17"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":11,"value":"story/lore/topics/labour-and-bondage.md §2-3 (the Owing ends; a punishment that stores a person is renounced)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":12,"value":"story/lore/extrapolation/gap-register.md §8 QA17 (reworded in round 3)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":13,"value":"story/lore/topics/labour-and-bondage.md §2 (tree-minders and warchiefs settle affairs in their own territory; counted in nushmeekos), §3"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":14,"value":"story/lore/topics/hist-and-sap.md (Reproduction; Silence vs severance), story/lore/topics/hist-placement.md (Tribal Hist relics), story/lore/extrapolation/gap-register.md §8 QA20, QA17 (reworded in round 4)"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}

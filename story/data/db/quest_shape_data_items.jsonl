@@ -79,9 +79,9 @@
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":1,"value":"whether the tree closed through Pays-Late's keeping, or through a cut"}
 {"quest_id":"quest.main.mq04","section":"openQuestions","ord":2,"value":"whether the next clutch can be laid"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":0,"value":"the cut root (gum, dry at the cut)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"the sap-workshop floor (rings of jars in the gum)"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"faint gum drips through the reeds on the tending-ground's side, broken at the leech water and picked up on its far side where the pole-boat bent the reeds, with the camp's smoke at dusk"}
-{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the cell's camp an hour out, the jars and the knife"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":1,"value":"the sap-workshop floor (rings of jars in the gum, the empty knife-peg, the new bar)"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"glossy black gum drips through the reeds on the tending-ground's side, broken at the leech water and picked up on its far side where the pole-boat bent the reeds, with the camp's smoke over the rise"}
+{"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the cell's camp two cells out, the jars and the knife"}
 {"quest_id":"quest.main.mq05","section":"objections","ord":0,"value":"Kaska-Meen: outsiders at a tree are what hurt it (answered by the cut roots: outsiders cut them, and only a watcher who knew would have seen them cut)"}
 {"quest_id":"quest.main.mq05","section":"objections","ord":1,"value":"Ei-Tuja: a Hist's turning is its own act, and to clamp it is to read it wrong (answered by the player's distinction between a turning and a cut)"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
