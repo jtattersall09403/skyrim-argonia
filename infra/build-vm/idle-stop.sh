@@ -67,10 +67,10 @@ elif r=$(tunnel_client); then reason="$r"
 fi
 
 # The CloudWatch backstop (argonia-build-idle-stop: an hour under 3% CPU) must never stop the VM while a job waits on
-# AWS at low CPU (it did during a 2-hour snapshot wait, 2026-11-05): its stop action is off while a job runs, on again
-# when none does. The state is cached so the API is called only on a change.
+# AWS at low CPU (it did during a 2-hour snapshot wait, 2026-11-05): its stop action is off while a job runs or Claude is
+# active (an agent waiting on subagents is near 0% CPU too), on again when neither is. The state is cached so the API is called only on a change.
 if [ "${1:-}" != "--status" ]; then
-  want=on; job_active >/dev/null && want=off
+  want=on; { job_active || claude_active; } >/dev/null && want=off   # an agent waiting on subagents uses little CPU too
   if [ "$(cat "$STATE/alarm-actions" 2>/dev/null)" != "$want" ]; then
     # the role may put the alarm but not call enable/disable-alarm-actions, so the alarm is written whole
     tok=$(curl -s -m 3 -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 60')
