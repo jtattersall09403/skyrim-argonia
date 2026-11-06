@@ -1,7 +1,7 @@
-# The block set: every engine mechanic Act I uses
+# The block set: every engine mechanic the first story slice uses
 
 Phase 2 ([brief](../phases/2-first-act-on-paper.md)). Derived from the act's quest records (`quest.main.mq01`,
-`mq03`, `mq04`, `mq05`; adaptation in [act1-on-bmv](../../story/design/quests/act1-on-bmv.md)). A quest is QUST stages
+`mq03`, `mq04`, `mq05`; adaptation in [adaptation](../../story/design/quests/adaptation.md) §5). A quest is QUST stages
 joined by connectors: a **trigger** moves a stage, a **condition** gates a trigger or a line, an **effect** is what a
 stage does, and a **world edit** is the record under them. Each block has one record shape (Spriggit YAML under
 `plugin/Argonia`, built by `tools/ArgoniaPlugin`) and at most one Papyrus shape (a stage fragment, `QF_`, or a
@@ -55,7 +55,9 @@ Flags in the records (`flag.mq*`) are not a block of their own: each is a stage 
 |---|---|---|
 | **W-npc**: a new person from a template, on existing navmesh | NPC_ with TPLT to a BM&V or vanilla base, our name, placed ACHR, persistent | 3,651 of 5,118 NPC_ have a template |
 | **W-fixed**: a creature or enemy at a fixed level | NPC_ with the PC-level-mult flag off, a fixed level for its band (decision 0035) | 4,664 of 5,118 NPC_ are fixed level |
-| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group); a removal is an enable parent that stays off, never a delete | 4,072 refs start disabled |
+| **W-ref**: a new, moved or removed reference | REFR in a BM&V cell (our override of the cell's persistent/temporary group); a removal is the ref's own override set initially disabled (record flag 0x800), or a set under an enable parent that stays off, never a delete | 4,072 placements start disabled (2,682 REFR, 1,390 ACHR); 23,239 carry an enable parent (XESP) |
+| **W-navmesh**: navmesh for a room that has none, so placed people can walk | NAVM in the interior CELL's group, made in the Creation Kit from the room's geometry | 583 of 590 interiors carry navmesh (1,519 NAVM); the seven without are test, preload or maze cells |
+| **W-name**: a name for a place (an interior cell, or a map marker) | CELL FULL, or a map-marker REFR (XMRK) with FULL, overriding BM&V's | 583 CELLs carry FULL (all interiors); 397 map markers, every one named |
 | **W-override**: a changed BM&V record (a lock, a door, a container) | the BM&V record overridden in Argonia.esp (Argonia.esp already does this for MQ101 and 182 others) | Update.esm overrides Skyrim.esm the same way; not counted |
 
 Aliases are a rule of the blocks, not a block: every alias in an act quest is a **forced reference** to a persistent
@@ -152,3 +154,21 @@ Every stage maps; no stage needs a block outside the set, and no block needs SKS
 conditions, nine effects and four world edits. The composite quest that proves the joints (Phase 3's first build)
 needs one stage per trigger, each gated by one condition of each kind across the set and firing one effect of each
 kind, plus the five guard cases above.
+
+## The rest of the slice, mapped (phase 2, the first story slice)
+
+The slice's other quests (adaptation §5) are written to the ledger, not yet as stage records; each is mapped here
+from its premise and edits, and every mechanic falls inside the set above plus the two world-edit blocks added for
+the slice (W-navmesh, W-name). No new trigger, condition or effect is needed.
+
+| Quest | Triggers | Conditions | Effects | World edits |
+|---|---|---|---|---|
+| TG01 the keepsake | TR-topic (the desk, the trader), TR-zone (the thief's round), TR-acquire (the keepsake) | C-time (the round by day), C-skill (talk, pickpocket), C-alive (no harm) | E-stage, E-item, E-faction (the Chapter) | W-npc, W-ref (bedroll, drinking spot), W-override (two door pairs locked), W-name (Pusbottom) |
+| TG02 the lockbox | TR-topic (the three clients), TR-acquire (the lockbox underwater) | C-item | E-stage, E-item, E-global (whose lie is kept) | W-npc, W-ref (sunk house) |
+| BC01 the hearing | TR-topic (Never-Sold, the hearing), TR-activate (cut the boat loose) | C-item or gold (buy out), C-stage | E-stage, E-scene (the hearing), E-item, E-global (month taken on) | W-npc, W-ref (landing, book, toll post), W-name (the house) |
+| BC02 the fire | TR-zone (into the smoke), TR-topic (whom first), TR-death (fail-forward) | C-alive, C-time (a timer as a scene: TR-scene) | E-stage, E-enable (smoke, burning, burnt), E-package (the heirs follow), E-item (the book) | W-npc, W-ref (cells, sealed door, stockade), W-override (door pair), W-navmesh, W-name |
+| BC03 the refusal | TR-topic | C-stage | E-stage, E-regard (the side not taken) | W-npc, W-ref (barge, shelf) |
+| LQ25 the river-beast | TR-topic, TR-death (the beast) | C-stage | E-enable (the beast's parent), E-stage, E-global (the award) | W-fixed (the beast), W-npc |
+| LQ30 the walk-out | TR-zone (the shelter), TR-topic (the kin) | C-alive | E-stage, E-package (the youth walks home) | W-npc, W-ref (gate, trail, shelter) |
+| The clean-ups (every place) | - | - | - | W-ref (each placement initially disabled), W-fixed (each templated actor kept) |
+

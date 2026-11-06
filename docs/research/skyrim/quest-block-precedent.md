@@ -137,3 +137,12 @@ Helper scripts: main.py, stats3.py in this folder. Script-name regexes are case-
 - Quest-fragment bodies (QF_ scripts are compiled; whether they set other quests' stages is opaque).
 - Script behaviour by pex body (name-based classification only).
 - Story Manager event code meanings (not in the xEdit file consulted).
+
+## Added 2026-11-06 (the slice's world edits)
+
+| block | measure | count | examples | how measured |
+|---|---|---|---|---|
+| W-navmesh | interior CELLs with NAVM | 583 of 590 (1,519 NAVM in interiors; 15,966 in all) | NightingaleHall01, DragonBridgeFarm, WhiterunJail02 | CELL DATA bit 0x1; NAVM in the CELL's child group |
+| W-name | CELLs with FULL; map markers with FULL | 583 (all interiors); 397 of 397 XMRK REFRs | KilkreathRuins03, TwistedRootCaveMapMarker | CELL FULL; REFR with XMRK then FULL |
+| W-ref | placements initially disabled; with an enable parent | 4,072 (2,682 REFR, 1,390 ACHR); 23,239 XESP; 911 both | DA09PedestalEmptyRef, TGNightingaleBeds | record flag 0x800; XESP subrecord |
+
