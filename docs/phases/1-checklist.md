@@ -13,8 +13,9 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-i
 - [x] Send and unpack the remaining changed mods: 2 of 54 had changed (bmv, xpmsse)
 - [x] Send the profile (load order, plugin list), the tools and the root files (SKSE's loader)
 - [x] Reset Skyrim's Data folder to vanilla (`stack.ps1 off`)
-- [ ] **In progress:** run Pandora on the machine to build the behaviour files (up to 15 minutes)
-- [ ] Patch the animation data Pandora leaves out (so rolls move, not play in place)
+- [x] Run Pandora on the machine: 21 behaviour files from 10 mods (it now runs over SSH; the desktop session it used
+  to need does not exist on a freshly booted machine)
+- [ ] **In progress:** patch the animation data Pandora leaves out (so rolls move, not play in place)
 
 ## After the install
 

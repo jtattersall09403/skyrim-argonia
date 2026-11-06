@@ -1026,8 +1026,9 @@ def cmd_install(a):
     run("ps", r"Get-Process SkyrimSE,skse64_loader -EA SilentlyContinue | Stop-Process -Force; Start-Sleep 3")
     cmd_push(a)
     print(run("ps", r"& C:\argonia\infra\stack.ps1 off", capture=True))  # bare Data first
-    os.environ["DESKTOP_WAIT"] = "2000"  # Pandora (900 s at most)
-    print(run("desktop", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
+    # Pandora runs over SSH with --auto_run --auto_close: no desktop session needed (a freshly booted machine has no
+    # signed-in user, and the desktop job never started, 2026-11-06)
+    print(run("ps", r"& C:\argonia\infra\stack.ps1 pandora", capture=True))
     cmd_animdata(a)
     # No main-menu launch here: agents never run the game (owner, 2026-11-05); the laid files are checked by reading.
 
