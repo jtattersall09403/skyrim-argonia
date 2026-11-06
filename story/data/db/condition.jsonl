@@ -2849,6 +2849,8 @@
 {"id":"quest_fail_forward:quest.main.mq04|2|0:when.1.0","parent_id":"quest_fail_forward:quest.main.mq04|2|0:when.1","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.main.mq05|0|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.main.mq05|0|0:when.0","parent_id":"quest_fail_forward:quest.main.mq05|0|0:when","ord":0,"term":"npcAlive"}
+{"id":"quest_fail_forward:quest.main.mq05|3|0:when","term":"not"}
+{"id":"quest_fail_forward:quest.main.mq05|3|0:when.0","parent_id":"quest_fail_forward:quest.main.mq05|3|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.mr.mr01|0|0:when","term":"not"}
 {"id":"quest_fail_forward:quest.mr.mr01|0|0:when.0","parent_id":"quest_fail_forward:quest.mr.mr01|0|0:when","ord":0,"term":"npcAlive"}
 {"id":"quest_fail_forward:quest.mr.mr01|3|0:when","term":"not"}

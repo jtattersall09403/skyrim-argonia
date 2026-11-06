@@ -45,13 +45,13 @@
 {"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Hist, sealed with black gum"}
 {"quest_id":"quest.main.mq04","section":"spread","value":"the weeping sap and the leeches it draws; the uxith dark"}
 {"quest_id":"quest.main.mq04","section":"trail"}
-{"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps nest, and the gate itself, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
-{"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps the player runs back to the landing and tries again; a slip from the ladder drops the player to the root's foot; nothing is lost"}
+{"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps nest over a drowned root channel: fought, or passed under by swimming; then the gate, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
+{"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps the player runs back down the way and tries again, by the other route if they choose; nothing is lost"}
 {"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"none: the way can be walked back"}
 {"quest_id":"quest.main.mq05","section":"prepHints"}
 {"quest_id":"quest.main.mq05","section":"prize","value":"Kaska-Meen's or Ei-Tuja's word carried: whichever the player tells carries what the player saw to the interior's tree-minders or to the Nisswo."}
-{"quest_id":"quest.main.mq05","section":"return","value":"The player comes down the ladders to a grove whose two quarrellers have each been told or left out, and walks out through the hall."}
-{"quest_id":"quest.main.mq05","section":"route","value":"The Reed's house, then the coast ship's door at Lilmoth's stop (0AA837, pair 0AA664), then the ship's door to Helstrom's river landing (23D496, pair 0830A8, found by its place in the ship); from the landing the marsh way, root and shallows, to the levy warden at the gate; the hall of the Scalded Throne by the first street, the grove behind it, and the flint-vine root-ladders up to its crown."}
+{"quest_id":"quest.main.mq05","section":"return","value":"The player leaves a grove whose two quarrellers have each been told or left out, and walks out through the hall."}
+{"quest_id":"quest.main.mq05","section":"route","value":"The Reed's house, then the coast ship's door at Lilmoth's stop (0AA837, pair 0AA664), then the ship's door to Helstrom's river landing (23D496, pair 0830A8, found by its place in the ship); from the landing the marsh way, root and shallows, to the levy warden at the gate; the hall of the Scalded Throne by the first street, the grove behind it."}
 {"quest_id":"quest.main.mq05","section":"rumour","value":"The Reed says the interior's tree-minders and Nisswo gather at Helstrom and carry news home, and that it cannot say a cut Hist's story there itself."}
 {"quest_id":"quest.mr.mr01","section":"cure","value":"seal the cut (costs the roots it runs through), or reopen it downstream (floods the dead grove's land, where the founders' rival's descendants now fish)"}
 {"quest_id":"quest.mr.mr01","section":"firstIllLastWell","value":"the Hist's lowest roots first, then the spring, then the river landing last"}

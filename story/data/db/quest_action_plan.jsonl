@@ -31,9 +31,10 @@
 {"quest_id":"quest.main.mq04","ord":4,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
 {"quest_id":"quest.main.mq04","ord":5,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp may be taken alive"}
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"Nesh-Deeka sends the player only if they can be denied, so the player argues that they can carry the word and leave the Reed unnamed"}
-{"quest_id":"quest.main.mq05","ord":1,"skill":"athletics","use":"cross-a-flood","reason":"the way in from the landing is the marsh, root and shallows"}
-{"quest_id":"quest.main.mq05","ord":2,"skill":"long-blade","use":"fight","reason":"two giant wasps nest at the way's far bend (fixed level, band 1), fought, slipped past or shot"}
-{"quest_id":"quest.main.mq05","ord":3,"skill":"athletics","use":"climb","reason":"the grove's crown is reached up the root-ladders"}
+{"quest_id":"quest.main.mq05","ord":1,"skill":"swimming","use":"cross-a-flood","reason":"the way in from the landing is the marsh, root and shallows (fauna-hazards: Heart-Mud)"}
+{"quest_id":"quest.main.mq05","ord":2,"skill":"oneHanded","use":"fight","reason":"two giant wasps the size of ponies (fauna-hazards) nest at the way's far bend (fixed level, band 1): the quest's high point"}
+{"quest_id":"quest.main.mq05","ord":3,"skill":"swimming","use":"swim","reason":"the other way through the nest: under the root in the drowned channel, unseen"}
+{"quest_id":"quest.main.mq05","ord":4,"skill":"speechcraft","use":"persuade","reason":"the player tells a tree-minder or a Nisswo what a cut Hist looks like"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}
 {"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}
