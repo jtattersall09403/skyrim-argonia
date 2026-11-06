@@ -22,9 +22,10 @@
 {"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
 {"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"athletics","use":"dive","reason":"one breath under the burnt boards in the shallows for the courier's brass tag, which fell with his strap"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"speechcraft","use":"persuade","reason":"the survivor will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"athletics","use":"climb","reason":"in the dream the player climbs the ring of roots to the door (FreeClimb)"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"swimming","use":"dive","reason":"one breath off the end of the burnt boards to the bottom of the shallows for the courier's brass tag, which fell with his strap"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"alteration","use":"water-breathe","reason":"the other way down: Waterbreathing lets a slow swimmer search the bottom as long as it takes"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"persuade","reason":"the survivor will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round"}
+{"quest_id":"quest.main.mq03","ord":4,"skill":"climbing","use":"climb","reason":"in the dream the player climbs the ring's root ledges, placed statics and no tree, to the door (FreeClimb)"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth and must be talked round before the player may go to the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"long-blade","use":"fight","reason":"the leeches crowd the cut root and the water below it (fixed band 2)"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes down to the cut root after dark; watching him opens him"}

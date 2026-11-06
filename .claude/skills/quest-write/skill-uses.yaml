@@ -66,6 +66,9 @@ skills:
   # traversal
   acrobatics:   {family: traversal, system: climb, uses: [jump-a-gap, fall-safely, reach-a-roof]}
   athletics:    {family: traversal, system: swim, uses: [swim, dive, climb, run-down, outrun, cross-a-flood, pole-or-sail-a-boat]}
+  # Skyrim's own movement skills (ruling #50): new records name these, never athletics
+  swimming:     {family: traversal, system: swim, uses: [swim, dive, cross-a-flood]}
+  climbing:     {family: traversal, system: climb, uses: [climb, reach-a-roof]}
   # speech and trade
   speechcraft:  {family: speech, system: persuasion, uses: [persuade, intimidate, admire, taunt, lie, present-evidence, accuse, interrogate]}
   mercantile:   {family: speech, system: barter, uses: [bargain, bribe, buy-the-only-one, appraise, sell-a-forgery, settle-an-owing]}

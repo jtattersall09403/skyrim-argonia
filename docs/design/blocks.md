@@ -126,7 +126,7 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ01 91 | TR-topic | C-stage | E-enable, E-global, E-stage, TR-chain |
 | MQ01 93 | TR-death, TR-topic | C-alive, C-stage | E-enable, E-stage, TR-chain |
 | MQ03 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-global, E-move, E-stage |
+| MQ03 20 | TR-acquire, TR-death | C-alive, C-item | E-enable, E-global, E-move, E-stage |
 | MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-stage |
 | MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
 | MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
