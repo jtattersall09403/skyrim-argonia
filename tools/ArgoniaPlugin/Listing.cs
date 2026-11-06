@@ -30,10 +30,10 @@ static class Listing
         foreach (var r in mod.EnumerateMajorRecords().Where(r => r.FormKey.ModKey == mod.ModKey))
             sb.AppendLine($"| ours | {Kind(r)} | new | {r.EditorID} `{r.FormKey}` |");
         var mq = quests["MQ101"];
-        var mqOk = !mq.Flags.HasFlag(Quest.Flag.StartGameEnabled) && mq.Stages.Count == 1 && mq.Aliases.Count == 0
+        var mqOk = !mq.Flags.HasFlag(Quest.Flag.StartGameEnabled) && mq.Stages.Count == 1 && mq.Stages[0].LogEntries.Count == 1 && mq.Aliases.Count == 0
                    && mq.VirtualMachineAdapter is IQuestAdapterGetter a && a.Fragments.Single().Stage == 0 && a.Scripts.Single().Name == "ARG_QF_MQ101";
-        if (!mqOk) errs.Add("MQ101 is not the one-stage diversion");
-        sb.AppendLine($"| intro | quest | replaced: one stage 0 whose fragment (ARG_QF_MQ101) starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `{mq.FormKey}` |");
+        if (!mqOk) errs.Add("MQ101 is not the one-stage diversion (stage 0 needs one log entry for its fragment to run)");
+        sb.AppendLine($"| intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `{mq.FormKey}` |");
         var ws = mod.Worldspaces.Single();
         sb.AppendLine($"| opening | worldspace | BM&V's record kept, our marker in its persistent cell | {ws.EditorID} `{ws.FormKey}` |");
         var seen = new HashSet<string> { "MQ101", "ARG_Opening" };
@@ -113,7 +113,7 @@ static class Listing
         }
         if (nodes.Count != plan.GetProperty("story_nodes_off").EnumerateObject().Sum(g => g.Value.GetArrayLength())) errs.Add("node count differs from shutdown.json");
         sb.AppendLine();
-        sb.AppendLine(errs.Count == 0 ? "Read-back: every override carries its change (MQ101 one stage; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate)." : "Read-back FAILED: " + string.Join("; ", errs));
+        sb.AppendLine(errs.Count == 0 ? "Read-back: every override carries its change (MQ101 one stage with its log entry; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate)." : "Read-back FAILED: " + string.Join("; ", errs));
         File.WriteAllText(md, sb.ToString());
         foreach (var e in errs) Console.Error.WriteLine(e);
         Console.WriteLine($"{md}: {sb.ToString().Split('\n').Length} lines, {errs.Count} errors");

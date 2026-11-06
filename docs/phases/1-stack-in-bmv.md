@@ -18,13 +18,21 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   Life does it, read from its esp (Nexus 272 file 729409, read and deleted): the engine starts `MQ101` on a new game
   (it is not Start Game Enabled, in Skyrim.esm or LAL), and LAL adds a stage-0 fragment to `MQ101` that diverts to its
   own chargen quest. `Argonia.esp` does the same with nothing of Helgen kept: its `MQ101` override is one start-up
-  stage 0, no aliases, scenes or Helgen stages, whose fragment (`papyrus/ARG_QF_MQ101.psc`) starts `ARG_Opening` and
-  stops `MQ101`. `ARG_Opening`'s script (`papyrus/ARG_StartQuestScript.psc`) waits for game mode, moves the player to
-  our XMarker `ARG_OpeningMarker` on Lilmoth's dock walkway (BM&V `BlackMarsh` worldspace, cell `Dock1` (1,-2), at
+  stage 0, no aliases, scenes or Helgen stages, whose fragment (`papyrus/ARG_QF_MQ101.psc`) takes everything away,
+  moves the player to our XMarker `ARG_OpeningMarker` on Lilmoth's dock walkway (BM&V `BlackMarsh` worldspace, cell `Dock1` (1,-2), at
   5403,-6109,66, a triangle centre of BM&V's navmesh 079823; a persistent reference in the world's persistent cell; re-derived 2026-11-05 with BM&V staged whole: Black Marsh North.esp overrides the `BlackMarsh` worldspace and cell `Dock1` but not navmesh 079823 or the pier, so the marker stays put on the winning navmesh at its height, our worldspace override starts from Black Marsh North's record and that plugin is a master after Black Marsh.esm; the read-back checks all three),
-  takes everything away, opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
+  starts `ARG_Opening` and stops `MQ101`; `ARG_Opening`'s script (`papyrus/ARG_StartQuestScript.psc`) then, in game
+  mode, forces third person, opens the race menu, then dresses the player in the vanilla roughspun tunic and footwraps
   (`ClothesPrisonerTunic`, `ClothesPrisonerShoes`) and sets stage 10, the one journal line ("I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.", through
-  text-review). Records: `plugin/Argonia/` (Spriggit YAML,
+  text-review), forcing third person again (third person is the default: `fMinCurrentZoom` in `stack.ps1` stops the
+  zoom before first person). **New Game did nothing (owner, 2026-11-06), fixed:** the menu stayed up with its music
+  because the player was never moved into a cell. MQ101's stage 0 had no log entry, and a quest fragment binds to a
+  stage's log entry (VMAD: stage, entry index), so the fragment never ran: the game started (Papyrus.0.log, 15:55:07,
+  SkyUI and MCM quests initialised) with no `ARG_` line, `ARG_Opening` never started, and nothing moved the player,
+  whom the engine leaves in no cell until MQ101 moves them. LAL's MQ101 stage-0 fragment does `Player.MoveTo(NewStartMarker)`
+  itself and then starts its chargen quest (its `qf_mq101_0003372b.psc`, Fragment_332, read from its BSA and deleted);
+  we now do the same, and stage 0 of both quests carries one empty log entry (`QSDT`), checked by the read-back.
+  Papyrus logging (`bEnableLogging`, `bEnableTrace`, `bLoadDebugInformation`) is set in `stack.ps1`'s Set-GameWindow. Records: `plugin/Argonia/` (Spriggit YAML,
   seeded by `tools/ArgoniaPlugin`, `make plugin-seed`); `make plugin` builds `out/Argonia.esp`; `make plugin-check`
   proves the round trip and reads the ESP back into [the records table](../research/skyrim/argonia-esp-records.md).
   Owed: `records_jobs.sh papyrus` on the play machine once the CK is there (it already compiles `papyrus/*.psc`;

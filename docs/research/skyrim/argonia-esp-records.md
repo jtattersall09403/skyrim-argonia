@@ -7,7 +7,7 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | global | new | ARG_VanillaStoryManager `000800:Argonia.esp` |
 | ours | XMarker reference | new | ARG_OpeningMarker `000802:Argonia.esp` |
 | ours | quest | new | ARG_Opening `000801:Argonia.esp` |
-| intro | quest | replaced: one stage 0 whose fragment (ARG_QF_MQ101) starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
+| intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
 | opening | worldspace | BM&V's record kept, our marker in its persistent cell | BlackMarsh `23D689:Black Marsh.esm` |
 | main quest | quest | Start Game Enabled off | MQ00 `01C5D9`, MQ103 `0D0800` |
 | civil war | quest | Start Game Enabled off | CW `019E53`, CWObj `029940`, CW00A `0D3C5F`, CW00B `0E1B5A`, CWSiegeQuickStart `09726A`, CWMissionQuickStart `107987` |
@@ -33,4 +33,4 @@ Worldspace BlackMarsh: the winner's record (Black Marsh North.esp), a master. AR
 
 Compared with the load order's winners (32 plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.
 
-Read-back: every override carries its change (MQ101 one stage; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate).
+Read-back: every override carries its change (MQ101 one stage with its log entry; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate).

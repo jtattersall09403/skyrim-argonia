@@ -24,8 +24,11 @@ Type: SideQuest
 Stages:
 - Flags:
   - StartUpStage
+  LogEntries:
+  - Flags: []
 - Index: 10
   LogEntries:
-  - Entry:
+  - Flags: []
+    Entry:
       TargetLanguage: English
       Value: I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear.

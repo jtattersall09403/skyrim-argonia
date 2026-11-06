@@ -7,6 +7,9 @@ VirtualMachineAdapter:
     - MutagenObjectType: ScriptObjectProperty
       Name: ARGOpening
       Object: 000801:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StartMarker
+      Object: 000802:Argonia.esp
   FileName: ARG_QF_MQ101
   Fragments:
   - ScriptName: ARG_QF_MQ101
@@ -18,3 +21,5 @@ Type: MainQuest
 Stages:
 - Flags:
   - StartUpStage
+  LogEntries:
+  - Flags: []

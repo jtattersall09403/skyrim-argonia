@@ -50,11 +50,13 @@ static class Generate
         opening.Priority = 90;
         opening.Type = Quest.TypeEnum.SideQuest;
         opening.Name = "The Work Detail";
-        opening.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage });
+        // A stage's fragment binds to one of its log entries (VMAD: stage, log entry index), so a startup stage holds one
+        // empty entry, as every vanilla stage does; with none the fragment never ran and New Game stayed on the menu.
+        opening.Stages.Add(new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } });
         opening.Stages.Add(new QuestStage
         {
             Index = 10,
-            LogEntries = { new QuestLogEntry { Entry = "I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear." } },
+            LogEntries = { new QuestLogEntry { Flags = 0, Entry = "I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear." } },
         });
         opening.VirtualMachineAdapter = new QuestAdapter
         {
@@ -74,11 +76,12 @@ static class Generate
         };
 
         // MQ101, the engine's new-game quest: the Helgen intro replaced by one stage-0 fragment that starts ours
-        // (LAL's method: a stage-0 fragment on MQ101 diverts the start; here nothing of Helgen is kept).
+        // (LAL's method: MQ101's stage-0 fragment moves the player to the start marker and starts the next quest; here
+        // nothing of Helgen is kept).
         var mq101 = new Quest(FormKey.Factory("03372B:Skyrim.esm"), SkyrimRelease.SkyrimSE)
         {
             EditorID = "MQ101", Flags = Quest.Flag.RunOnce, Priority = 80, Type = Quest.TypeEnum.MainQuest,
-            Stages = { new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage } },
+            Stages = { new QuestStage { Index = 0, Flags = QuestStage.Flag.StartUpStage, LogEntries = { new QuestLogEntry { Flags = 0 } } } },
             VirtualMachineAdapter = new QuestAdapter
             {
                 FileName = "ARG_QF_MQ101",
@@ -87,7 +90,11 @@ static class Generate
                     new ScriptEntry
                     {
                         Name = "ARG_QF_MQ101",
-                        Properties = { new ScriptObjectProperty { Name = "ARGOpening", Object = opening.ToLink() } },
+                        Properties =
+                        {
+                            new ScriptObjectProperty { Name = "ARGOpening", Object = opening.ToLink() },
+                            new ScriptObjectProperty { Name = "StartMarker", Object = marker.ToLink() },
+                        },
                     },
                 },
                 Fragments = { new QuestScriptFragment { Stage = 0, StageIndex = 0, ScriptName = "ARG_QF_MQ101", FragmentName = "Fragment_0" } },
