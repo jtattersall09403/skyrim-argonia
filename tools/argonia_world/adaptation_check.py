@@ -166,13 +166,17 @@ def check_edits(lg: Ledger) -> list[str]:
             changed[ed["target"]].append(e)
             for q in sorted(need_by[ed["target"]] - users[e]):
                 out.append(f"{e}: {ed['kind']} of {ed['target']}, which {q} needs as it stands")
+    for e, ts in lg.edit_targets.items():
+        for t in ts:
+            changed[t].append(e)
     for t, es in sorted(changed.items()):
+        es = sorted(set(es))
         if len(es) > 1:
             out.append(f"{t}: changed by {len(es)} edits ({', '.join(sorted(es))})")
     named = defaultdict(list)
     for e, ed in lg.edits.items():
         if ed["kind"] == "name_place":
-            named[ed["settlement"]].append(e)
+            named[ed["cell"] or ed["settlement"]].append(e)
     for s, es in sorted(named.items()):
         if len(es) > 1:
             out.append(f"{s}: named twice ({', '.join(sorted(es))})")

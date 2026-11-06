@@ -327,4 +327,11 @@ places people in a room with no navmesh without a navmesh edit.
   the gate; the lower levels' 67 refs are a build-time check. Minor fixes taken: the Chapter tests as a peer, two of
   the fence's three doors shut, Pusbottom named, the pledges are things, BC03 is a refusal and a side taken, LQ30 is
   a rite no one trails and follows LQ25, MQ04's tending-ground and its officer from outside.
+- **Round 4** (six fresh reviewers): vibe and lore raised nothing blocking (lore's one item, TG02's place, fixed);
+  Act I, Night-Reed, Chainbreakers and cross-line raised 6, fixed as one batch: the Ranger's move clashed with the
+  clean-up's disable of the same form (dropped; the checker now treats every clean-up form as changed, so the clash
+  is caught); Soulrest's extra doors are locked on both sides; Deep-In-Her-Cups keeps the Chapter's desk, a Khajiit
+  trader her front; the Chainbreakers' house is named, marked and peopled; MQ03's dream has its fog edit and MQ01's
+  crew its parent; MQ04's village gets its Hist. Minor fixes taken: the Rose's stockade gate and its spared record
+  room, the pier's vipers, the hall's soldier as its sweeper, MQ03's move by fade, MQ03 after MQ01.
 

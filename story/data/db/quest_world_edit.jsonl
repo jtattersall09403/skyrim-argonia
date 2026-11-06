@@ -1,8 +1,11 @@
 {"quest":"quest.bc.bc01","edit":"we.bc01.estate"}
+{"quest":"quest.bc.bc01","edit":"we.bc01.house"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.landing"}
+{"quest":"quest.bc.bc01","edit":"we.bc01.members"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.never-sold"}
 {"quest":"quest.bc.bc01","edit":"we.clean.blackrose"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.fire"}
+{"quest":"quest.bc.bc02","edit":"we.bc02.gate"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.mesh"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.name"}
 {"quest":"quest.bc.bc02","edit":"we.bc02.people"}
@@ -31,7 +34,9 @@
 {"quest":"quest.main.mq03","edit":"we.clean.lilmoth"}
 {"quest":"quest.main.mq03","edit":"we.mq01.camp"}
 {"quest":"quest.main.mq03","edit":"we.mq03.door"}
+{"quest":"quest.main.mq03","edit":"we.mq03.dream"}
 {"quest":"quest.main.mq03","edit":"we.mq03.house"}
+{"quest":"quest.main.mq03","edit":"we.mq03.reed"}
 {"quest":"quest.main.mq03","edit":"we.mq03.rooms"}
 {"quest":"quest.main.mq04","edit":"we.clean.village"}
 {"quest":"quest.main.mq04","edit":"we.mq04.name"}
@@ -51,8 +56,8 @@
 {"quest":"quest.tg.tg01","edit":"we.tg01.doors"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.fence"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.pusbottom"}
-{"quest":"quest.tg.tg01","edit":"we.tg01.ranger"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.round"}
+{"quest":"quest.tg.tg01","edit":"we.tg01.trader"}
 {"quest":"quest.tg.tg02","edit":"we.clean.lilmoth"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.clients"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.house"}
