@@ -110,45 +110,65 @@ in the vocabulary map to Skyrim actor values for C-skill (speechcraft and mercan
 Lockpicking, sneak to Sneak or Pickpocket, marksman to Archery, the blades and spear to One-Handed or Two-Handed); swim,
 dive and climb are movement (FreeClimb, water), never a check.
 
-| Quest stage | Trigger in | Conditions | Effects | World edits |
-|---|---|---|---|---|
-| MQ01 10 | ARG_Opening start (built) | - | E-stage | W-npc (the gang), W-ref (roll, chest) |
-| MQ01 20 | TR-topic (the roll) | C-alive fail-forward | E-stage, E-item (jars) | W-ref (shed, chest), W-override none |
-| MQ01 30 | TR-zone (dock return) | C-stage (objective done) | E-stage, E-enable (attack parent), E-scene (strike) | W-npc, W-fixed (cell), W-ref (fire) |
-| MQ01 40 | TR-zone (lane) | C-stage | E-stage | - |
-| MQ01 41 / 42 | TR-zone (shed-first / planks-first), racing | C-stage == 40 on both | E-stage, E-enable (the other zone and the person not reached off), E-package (the saved person travels to Hereguard alone) | W-ref (zones), W-ref removal (Old Salty 015184; the Daedroth pack 1453EF-F3 is deleted by Black Marsh North.esp) |
-| MQ01 43 | TR-death (both survivors) | C-alive | E-stage | - |
-| MQ01 50 | TR-zone (grove), after TR-death (cutters' counter) on the 41 path | C-stage | E-stage, E-scene (closing), E-enable (Hist light off) | W-npc (tenders), W-ref (light) |
-| MQ01 60 | TR-zone (Hereguard) | C-stage | E-stage, E-package (the gang travels to Hereguard's steps) | - |
-| MQ01 90 / 91 / 92 | TR-topic (dawn, per survivor) or TR-death | C-time (after dawn), C-alive, C-stage (41, 42 or 43 reached) | E-stage, E-item (knife or pouch), E-global (saved flag), E-enable (attack off), TR-chain (MQ03 starts) | - |
-| MQ03 10 | TR-chain (MQ01 ending) | - | E-stage, E-enable (Nesh-Deeka) | W-npc |
-| MQ03 20 | TR-topic | C-alive | E-stage, E-item (Reed token), E-move (the overseer to the cabin) | W-npc, W-fixed (wardens), W-ref (strap, root), W-ref removal (Restless Dead, crocodile, Bonemen by the cabin) |
-| MQ03 30 | TR-acquire (strap, gum) | C-item | E-stage | - |
-| MQ03 35 | TR-death (overseer) | C-alive | E-stage | - |
-| MQ03 40 | TR-topic or TR-acquire (ledger) | C-skill (Speech check on the purse line) | E-stage | W-override (cabin lock), W-ref (strongbox), W-ref removal (the spider) |
-| MQ03 50 | TR-topic (name or spare) | C-item (each case line gated on the thing held) | E-stage, E-global (overseer named) | - |
-| MQ03 60 | TR-topic (pardon plain or price) | C-alive | E-stage | W-ref (lean-to, alchemy table) |
-| MQ03 70 | TR-activate (lean-to) | C-stage | E-stage, E-move (player into 01Cavebig) | W-ref (fog, dream marks, removal of its 10 actors) |
-| MQ03 65 | TR-death (Nesh-Deeka) | C-alive | E-stage, E-item (the letter) | W-ref (letter) |
-| MQ03 66 | TR-acquire (the letter) | C-item | E-stage | - |
-| MQ03 90 / 91 | TR-zone (the dream's door) | C-global (the gang's months struck off or not) | E-stage, E-move (back to the lean-to), E-faction (Veiled Reed), E-item (token, gold), E-global, E-regard, TR-chain | - |
-| MQ04 10 | TR-chain (MQ03 ending) | - | E-stage | W-npc (Nurwul-Neel, Mee-Vei), W-ref (Hist), W-ref removal (14 Nordic-look actors) |
-| MQ04 15 | TR-death (warden-mother) | C-alive | E-stage | - |
-| MQ04 20 | TR-topic or TR-zone (village) | C-stage | E-stage | W-fixed check (BM&V leeches) |
-| MQ04 30 | TR-death (the leech bed's counter) and TR-acquire (the leech) | C-item | E-stage | W-fixed (four leeches on the root), W-ref (root activator, leech drop) |
-| MQ04 35 | TR-death (Mee-Vei) | C-alive | E-stage | - |
-| MQ04 41 | TR-acquire (cracked jar, from 35) | C-item | E-stage | W-ref (trail) |
-| MQ04 40 | TR-zone (root at night) or TR-topic (the watch) or TR-acquire (cracked jar, from 35) | C-time (night), C-skill (Speech), C-stage | E-stage, E-package (Mee-Vei's night sandbox at the root) | W-ref (trail: drips, jar, skiff) |
-| MQ04 50 | TR-acquire (the jars) | C-item | E-stage, E-scene (judgement) | W-ref, W-fixed (the camp) |
-| MQ04 90 / 91 / 92 / 93 / 94 | TR-topic (clear, call, let stand) or TR-death | C-item (jars and leech or gum for the clearing line), C-alive (the tender, for 90/92 against 94) | E-stage, E-enable (one of three parents), E-item (charm; jars taken), E-global (standing), TR-chain | W-npc (An-Xileel officer), W-ref (three parents) |
-| MQ05 10 | TR-chain (MQ04 ending) | - | E-stage | - (BM&V's ship is used as it is) |
-| MQ05 20 | TR-zone (dock5) | C-stage | E-stage, E-enable (raid parent) | W-fixed (raiders), W-ref (copy) |
-| MQ05 30 | TR-death (raiders' counter; Foolhardy, none flees) | C-stage | E-stage, E-scene (escort), E-package (escorts travel) | W-npc (escorts), W-fixed (beasts), W-override (four locked doors) |
-| MQ05 40 | TR-zone (gate) | C-skill (the gate's Speech line) | E-stage | W-npc (Helstrom's six), W-ref (the hall's seat) |
-| MQ05 45 | TR-death (Never-Writes-Twice) | C-alive | E-stage | W-ref (her orders) |
-| MQ05 51 | TR-acquire (her orders) | C-item | E-stage | - |
-| MQ05 50 | TR-topic (the report) | C-alive | E-stage | W-ref (the grove's Hist, the rooms' markers, the reed screen) |
-| MQ05 90 / 91 / 92 / 93 (from 50 or 51) | TR-topic (grant, refuse, a reading) or TR-death (Kaska-Meen) | C-item (gum or jars), C-skill (Speech), C-alive | E-stage, E-faction (Reed rank, grove service faction), E-item (gold given or taken), E-regard | - |
+Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage_blocks` (2026-11-06, after review round 8); re-run it when a record changes. Trigger in is what enters the stage (its predecessors' successor and fail-forward conditions); an `npcAlive` failing is TR-death, and `objectiveComplete` is the stage's own objectives done. The world edits each quest stands on map to the world-edit blocks so: `npc_add` is W-npc with W-fixed, `ref_place` W-ref, `creature_remove`/`npc_remove` W-ref removal, `record_change` and `npc_change` W-override, `name_place` W-name, `navmesh_add` W-navmesh.
+
+| Quest stage | Trigger in | Conditions | Effects |
+|---|---|---|---|
+| MQ01 10 | the new-game start (ARG_Opening) | - | E-stage |
+| MQ01 11 | TR-topic | - | E-global, E-stage |
+| MQ01 12 | TR-topic | - | E-global, E-stage |
+| MQ01 13 | TR-topic | - | E-global, E-stage |
+| MQ01 20 | TR-death, TR-zone | C-alive | E-package, E-stage |
+| MQ01 30 | TR-death, TR-zone | C-alive | E-enable, E-stage |
+| MQ01 40 | TR-death, TR-topic | C-alive, C-time | E-enable, E-scene, E-stage |
+| MQ01 41 | TR-zone | C-stage | E-enable, E-stage |
+| MQ01 42 | TR-zone | C-stage | E-enable, E-stage |
+| MQ01 43 | TR-zone | C-stage | E-enable, E-stage |
+| MQ01 44 | TR-death | C-alive, C-time | E-stage |
+| MQ01 50 | TR-zone | - | E-enable, E-stage |
+| MQ01 90 | TR-topic | C-stage | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ01 91 | TR-topic | C-stage | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ01 92 | TR-topic | C-stage | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ01 93 | TR-death, TR-topic | C-alive, C-stage, C-time | E-enable, E-stage, TR-chain |
+| MQ03 10 | TR-chain (the previous quest ends) | - | E-stage |
+| MQ03 20 | TR-zone (objectives done) | - | E-move, E-stage |
+| MQ03 30 | TR-death (objectives done) | C-alive, C-stage | E-stage |
+| MQ03 35 | TR-death | C-alive | E-stage |
+| MQ03 40 | TR-topic | - | E-stage |
+| MQ03 50 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-move, E-stage |
+| MQ03 90 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
+| MQ03 91 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-faction, E-global, E-move, E-stage, TR-chain |
+| MQ03 92 | TR-death, TR-zone | C-alive | E-enable, E-item, E-move, E-stage, TR-chain |
+| MQ03 93 | TR-death, TR-zone | C-alive | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
+| MQ04 10 | TR-chain (the previous quest ends) | - | E-stage |
+| MQ04 20 | TR-death, TR-topic | C-alive | E-stage |
+| MQ04 30 | TR-death (objectives done) | C-alive | E-enable, E-stage |
+| MQ04 35 | TR-death | C-alive | E-stage |
+| MQ04 40 | TR-topic, TR-zone | - | E-stage |
+| MQ04 50 | TR-zone | - | E-stage |
+| MQ04 60 | TR-acquire, TR-death, TR-topic, TR-zone | C-alive, C-item | E-enable, E-stage |
+| MQ04 90 | TR-acquire, TR-topic | C-item | E-enable, E-global, E-item, E-regard, E-stage, TR-chain |
+| MQ04 91 | TR-death, TR-topic | - | E-enable, E-global, E-stage, TR-chain |
+| MQ04 92 | TR-topic | C-global | E-global, E-regard, E-stage, TR-chain |
+| MQ04 93 | TR-topic | C-global | E-global, E-regard, E-stage, TR-chain |
+| MQ04 94 | TR-death | C-alive | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ04 95 | TR-death | C-alive | E-enable, E-global, E-stage, TR-chain |
+| MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
+| MQ05 20 | TR-death, TR-topic, TR-zone | C-alive | E-stage |
+| MQ05 30 | TR-zone | - | E-stage |
+| MQ05 40 | TR-zone | - | E-stage |
+| MQ05 50 | TR-death, TR-topic, TR-zone | C-alive | E-stage |
+| MQ05 60 | TR-topic | - | E-stage |
+| MQ05 90 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 91 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 92 | TR-topic | - | E-enable, E-global, E-regard, E-stage, TR-chain |
+| MQ05 93 | TR-death | C-alive | E-enable, E-stage, TR-chain |
+| MQ05 94 | TR-death | C-alive | E-enable, E-stage, TR-chain |
+
+- MQ01 stands on 14 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.doors`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.pier-mesh`, `we.mq01.start`.
+- MQ03 stands on 8 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.camp`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.reed`, `we.mq03.rooms`.
+- MQ04 stands on 4 ledgered world edits: `we.clean.village`, `we.mq04.name`, `we.mq04.people`, `we.mq04.village`.
+- MQ05 stands on 10 ledgered world edits: `we.clean.dock5`, `we.clean.helstrom`, `we.clean.lilmoth`, `we.clean.thorn1`, `we.mq05.dispute`, `we.mq05.escort`, `we.mq05.grove`, `we.mq05.hall-name`, `we.mq05.sweeper`, `we.mq05.throne`.
 
 Every stage maps; no stage needs a block outside the set, and no block needs SKSE. The set is seven triggers, seven
 conditions, nine effects and four world edits. The composite quest that proves the joints (Phase 3's first build)

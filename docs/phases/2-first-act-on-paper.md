@@ -54,13 +54,21 @@ the quest system follows once the owner has tried the slice.
 ## Status of the first story slice (2026-11-06, hand-off)
 
 - Done: steps 1 to 8 over the slice (adaptation §5): the ledger in the story data, the checker in `make check`,
-  seven review rounds, the last clean across all six reviewers. Blocks: W-navmesh and W-name added with precedent
-  (blocks.md); the slice's other quests mapped.
-- Open: Act I's records (mq01 16 stages, mq03 9, mq04 12, mq05 11) are rewritten from the ledger and reviewed four
-  rounds; mq05's last round was clean, mq01/03/04's last-round findings are fixed but need one more fresh review
-  round; then blocks.md's Act I stage table is re-mapped from them, the owner's read is posted (draft ready), and
-  PROGRESS moves. Not closed in the records: legacy `bright-throat-village.*` npc ids, the 35 old camp facts on
-  `place.pirate-freeholds.opening-work-camp` (retire them), the cell men as npc rows.
+  seven ledger review rounds, the last clean. The ledger's generators are in the repo
+  (`python3 -m tools.argonia_world.slice_ledger.slice` reproduces the committed rows). Blocks: W-navmesh and W-name
+  added with precedent; blocks.md's Act I stage table is generated from the records
+  (`python3 -m tools.argonia_world.slice_ledger.stage_blocks`; every stage maps to the set). The 35 old camp facts are
+  retired; Low-Reed Village's people have low-reed-village ids; the cell men of MQ04 are npc rows.
+- Act I's records: MQ05 clean at round 4, MQ01 clean at round 6. MQ03 and MQ04 have had eight fresh rounds each.
+  Every round's blocking findings were fixed as one batch, yet each fresh round raises new blocking ones (round 8: MQ03
+  3, MQ04 2). They are now structural rather than slips:
+  - MQ03: why the broker obeys a spoken word (QA7 buy-back); hollow stages over the one-third limit (35, 30, 50);
+    facts missing for the cord and the jars; RECKONING does not fit.
+  - MQ04: the charge against Pays-Late is cutting, while the law and the award fit only negligence; the naming topic
+    and the workshop zone short-cut the investigation.
+  Spot patches will not converge. The next step is one quest-write rework of MQ03 and MQ04 against all eight rounds'
+  findings (`review` rows in each record), including the shape change to NEGOTIATION for MQ03. Then a fresh round,
+  then the owner's read (draft ready) and PROGRESS.
 
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
