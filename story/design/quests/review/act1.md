@@ -234,6 +234,7 @@ All three blocking and all five notes accepted, by subtraction.
 - N3: the Speech gate on Kaska-Meen dropped; the ending is a free choice.
 - N4: the disposition clause cut from topic.mq05-tell-minder; shapeData.prize reworded (no "hearing").
 - N5: the rescue clause and "nobody turns back" cut; both keep their posts all day, only the quarrel is evening.
+- Round 2: applied (ab2cc1bf).
 
 ### The whole main line, round 3 (2026-11-06): the planner's rulings
 
