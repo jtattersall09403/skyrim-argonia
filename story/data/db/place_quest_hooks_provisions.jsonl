@@ -16,10 +16,8 @@
 {"place_id":"place.dunmer-north.stormhold","ord":1,"value":"quest.provision.stormhold-river-station"}
 {"place_id":"place.dunmer-north.stormhold-causeway","ord":0,"value":"quest.provision.lq01-anchor"}
 {"place_id":"place.dunmer-north.the-charge-pond","ord":0,"value":"quest.provision.canon.wamasu-charged-water"}
-{"place_id":"place.dunmer-north.the-dres-rows","ord":0,"value":"quest.provision.bc01-anchor"}
 {"place_id":"place.dunmer-north.the-dres-rows","ord":1,"value":"quest.provision.canon.washed-out-variant"}
 {"place_id":"place.dunmer-north.the-dres-rows","ord":2,"value":"quest.provision.slave-road-memorial"}
-{"place_id":"place.dunmer-north.the-freed-rows","ord":0,"value":"quest.provision.bc03-anchor"}
 {"place_id":"place.dunmer-north.the-last-landing","ord":0,"value":"quest.provision.stormhold-river-station"}
 {"place_id":"place.dunmer-north.the-north-holding-pit","ord":0,"value":"quest.provision.canon.the-owing"}
 {"place_id":"place.dunmer-north.the-northern-rest","ord":0,"value":"quest.provision.ni07-anchor"}
@@ -88,7 +86,6 @@
 {"place_id":"place.hist-heartland.the-cut-circle","ord":0,"value":"quest.provision.cult-sermon-house"}
 {"place_id":"place.hist-heartland.the-cut-circle","ord":1,"value":"quest.provision.sermon-house"}
 {"place_id":"place.hist-heartland.treasure-hunters-live-camp","ord":0,"value":"quest.provision.lq22-anchor"}
-{"place_id":"place.hist-heartland.vista-ledge-canopy-break","ord":0,"value":"quest.provision.lq30-anchor"}
 {"place_id":"place.hist-heartland.walkway-junction-high-crossroads","ord":0,"value":"quest.provision.mr06-anchor"}
 {"place_id":"place.hist-heartland.wamasu-pond-nest","ord":0,"value":"quest.provision.canon.wamasu-charged-water"}
 {"place_id":"place.hist-heartland.xal-krona-making-ground","ord":0,"value":"quest.provision.lost-city-last-warden"}
@@ -133,7 +130,6 @@
 {"place_id":"place.imperial-fringe.westfield-village","ord":0,"value":"quest.provision.fg01-anchor"}
 {"place_id":"place.imperial-penal-south.blackrose-prison","ord":0,"value":"quest.provision.blackrose-archive-wing"}
 {"place_id":"place.imperial-penal-south.bramman-head","ord":0,"value":"quest.provision.canon.brammans-river"}
-{"place_id":"place.imperial-penal-south.chainbreaker-shelter","ord":0,"value":"quest.provision.bc03-anchor"}
 {"place_id":"place.imperial-penal-south.cordon-cellars","ord":0,"value":"quest.provision.canon.the-owing"}
 {"place_id":"place.imperial-penal-south.drowned-gallery","ord":0,"value":"quest.provision.blackrose-tunnels"}
 {"place_id":"place.imperial-penal-south.lake-drowned-village","ord":0,"value":"quest.provision.mr09-anchor"}
@@ -191,7 +187,6 @@
 {"place_id":"place.mercantile-coast.teeba-enoo-court","ord":0,"value":"quest.provision.canon.alten-meerhleel"}
 {"place_id":"place.mercantile-coast.teeth-of-sithis","ord":0,"value":"quest.provision.murkmire-teeth-of-sithis"}
 {"place_id":"place.mercantile-coast.villa-cellars","ord":0,"value":"quest.provision.lilmoth-pusbottom-vault"}
-{"place_id":"place.mercantile-coast.villa-cellars","ord":1,"value":"quest.provision.tg02-anchor"}
 {"place_id":"place.mercantile-coast.white-rose-prison","ord":0,"value":"quest.provision.whiterose-prison-ruin"}
 {"place_id":"place.mercantile-coast.xhon-mehl-shrine","ord":0,"value":"quest.provision.sa01-anchor"}
 {"place_id":"place.naga-kur-deeps.bog-blight-ground-nine-stakes","ord":0,"value":"quest.provision.canon.grave-stakes"}
@@ -209,7 +204,6 @@
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":0,"value":"quest.provision.rs05-anchor"}
 {"place_id":"place.pirate-freeholds.channel-pirate-anchorage","ord":1,"value":"quest.provision.salt-teeth-reach-crew"}
 {"place_id":"place.pirate-freeholds.corimont-crosstrees","ord":0,"value":"quest.provision.opening-vantage"}
-{"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":0,"value":"quest.provision.bc01-anchor"}
 {"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":1,"value":"quest.provision.canon.the-owing"}
 {"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":2,"value":"quest.provision.canon.washed-out-variant"}
 {"place_id":"place.pirate-freeholds.corimont-hiring-yard","ord":3,"value":"quest.provision.owing-hiring-hall"}

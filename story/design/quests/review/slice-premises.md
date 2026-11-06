@@ -115,3 +115,37 @@ All five blocking and all five notes accepted, by subtraction or swap.
 - N5 TG02: the job goes to an existing Chapter row (Vasha Half-Rent cut); the third pledge a different sourced object.
 
 Round 2: applied (ab2cc1bf; B2 applied with MQ05).
+
+## Round 3 delta (2026-11-06), planner's rulings
+
+Not converging (blocking 5, then 6). The cause is the same as the main line outline's. These seven quests are
+premise-level records: no stages, no journals. Yet they are reviewed at build depth (navmesh, enable parents, aliases,
+model sources), and round 2's fixes added mechanisms (Never-Sold's second placement). Loop change (replace): premise
+records are reviewed at premise level only. That covers the premise against the census and lore, hosts, prerequisites,
+the branching budget, motifs, and clashes with other quests. Place fit is checked when a quest is written as a record,
+and the known facts are listed below so they are not rediscovered.
+
+Accepted at premise level:
+- B3: the BC03 prerequisite's reason becomes "the crew know the player as the Chainbreakers' since BC01".
+- B4: the six stale place_quest_hooks_provisions rows are deleted.
+- B5: LQ25's rival trades from Helstrom; the crew want to scare her trade off the river; "on tail-poled rafts" is cut
+  for her.
+- B2, by subtraction: Never-Sold's second placement and its enable parent are cut. How she meets the player at the
+  landing is a place-fit item.
+- N7: the item is named "Kothringi Glass Beads".
+- N8: the beads use a model already in the load order (no Monk Prayer Beads).
+- N9: Bent-Spine's home is place.mercantile-coast.lilmoth; "(Under-Yard)" is cut.
+- N11: BC01 and BC03 read "by its lock, unseen"; the lock is kept low.
+- N12: BC03's crew wording is about the one boss.
+- N13: "the gate's warden".
+- N15: LQ25's prerequisite reason is rewritten.
+- B6 and N14 are MQ05's: the warden is "his" and is called the levy warden, with no name.
+
+### Places to fit at record time (known facts)
+- LQ30: the shelter 0D7885 (-4,18) has no navmesh; 0D7883 (-5,18) has navmesh and no NPCs. The youth's cell is
+  not set.
+- BC01/BC02: Never-Sold has one placement (15635D). Bethesda's way to the 095465 landing is an alias travel package.
+- LQ25: the crew bases show "Villager" (00FF4D) and "Aragonian Vliiager" (02A1EE). Name them through aliases, not
+  base edits. we.lq25.crew needs 08D5EF as a target. The beast's lair has no cell.
+
+Round 3: applied (see the commit that adds this line)
