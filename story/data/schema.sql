@@ -3016,7 +3016,7 @@ CREATE TABLE "world_edit" (
   "id" TEXT NOT NULL PRIMARY KEY,
   "kind" TEXT NOT NULL CHECK ("kind" IN ('npc_add', 'npc_move', 'npc_remove', 'npc_change', 'creature_add',
     'creature_remove', 'ref_place', 'ref_disable', 'door_add', 'interior_copy', 'interior_new', 'place_new',
-    'land_new', 'record_change', 'name_place')),
+    'land_new', 'record_change', 'name_place', 'navmesh_add', 'level_fix')),
   "settlement" TEXT REFERENCES "bmv_settlement"("id"),
   "cell" TEXT REFERENCES "bmv_cell"("id"),
   "target" TEXT,
@@ -3027,6 +3027,15 @@ CREATE TABLE "world_edit" (
   CHECK ("kind" NOT IN ('npc_add', 'creature_add') OR "band" IS NOT NULL),
   CHECK ("kind" NOT IN ('npc_move', 'npc_remove', 'npc_change', 'creature_remove', 'ref_disable', 'record_change')
     OR "target" IS NOT NULL)
+);
+
+-- Home of each BM&V form an edit acts on beyond its first `target` (a clean-up's every placement, a level fix's
+-- every base), so the build and the checker see the whole set.
+CREATE TABLE "world_edit_target" (
+  "edit" TEXT NOT NULL REFERENCES "world_edit"("id") ON DELETE CASCADE,
+  "target" TEXT NOT NULL,
+  "what" TEXT NOT NULL,
+  PRIMARY KEY ("edit", "target")
 );
 
 -- Home of a quest's need of a world edit, or of a BM&V thing as it stands (`target`, a form key, no edit).

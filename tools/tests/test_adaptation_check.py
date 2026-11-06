@@ -93,4 +93,19 @@ def test_a_host_with_levelled_actors_needs_its_clean_up():
     lg.edits["we.clean.s1"] = dict(kind="creature_remove", settlement="s1", cell=None, target="P1", race=None,
                                    band=None, lore="story/lore/README.md", text="clean")
     lg.quest_edits += [("a1", "we.clean.s1"), ("a2", "we.clean.s1")]
+    assert any("leaves 1 placement" in x for x in ac.run(lg))
+    lg.edit_targets = {"we.clean.s1": {"P1"}}
+    assert ac.run(lg) == []
+
+
+def test_people_in_a_cell_without_navmesh_need_one():
+    lg = base()
+    lg.no_navmesh = {"c1"}
+    lg.edits["we.a1.people"] = dict(kind="npc_add", settlement="s1", cell="c1", target=None, race="Argonian", band=0,
+                                    lore="story/lore/README.md", text="two people")
+    lg.quest_edits.append(("a1", "we.a1.people"))
+    assert any("no navmesh" in x for x in ac.run(lg))
+    lg.edits["we.a1.mesh"] = dict(kind="navmesh_add", settlement="s1", cell="c1", target=None, race=None, band=None,
+                                  lore="story/lore/README.md", text="navmesh")
+    lg.quest_edits.append(("a1", "we.a1.mesh"))
     assert ac.run(lg) == []

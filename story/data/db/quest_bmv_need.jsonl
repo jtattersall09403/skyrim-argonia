@@ -1,8 +1,7 @@
-{"quest":"quest.fg.fg01","target":"04F20F:Black Marsh North.esp","what":"Naga Leader (BMNaga1blueLeader), the danger the contract understates"}
-{"quest":"quest.fg.fg01","target":"1DE49E:Black Marsh.esm","what":"Raz (ArgonianMaleTribeLeader1) as the village speaker"}
-{"quest":"quest.local.lq30","target":"08D5E9:Black Marsh North.esp","what":"Helstrom's soldiers at the gate who will not follow"}
-{"quest":"quest.main.mq01","target":"0F9178:Black Marsh.esm","what":"the ship interior at Dock1 as the barge's hold"}
+{"quest":"quest.local.lq30","target":"08D5E9:Black Marsh North.esp","what":"Helstrom's soldier at the gate who will not follow"}
+{"quest":"quest.main.mq01","target":"0F9178:Black Marsh.esm","what":"the ship interior at Dock1 as the barge's hold, with its one door to the pier"}
 {"quest":"quest.main.mq04","target":"084A7F:Black Marsh.esm","what":"the Argonian Chief as the village's kaal"}
-{"quest":"quest.main.mq05","target":"08D5E6:Black Marsh North.esp","what":"Namorine the boatman at Helstrom"}
-{"quest":"quest.main.mq05","target":"166BBE:Black Marsh North.esp","what":"One Who Has Fire Hands, trading in the hall's outer room"}
+{"quest":"quest.main.mq05","target":"0AA665:Black Marsh.esm","what":"the coast ship and its stops at Lilmoth (7,-1) and Helstrom's landing"}
+{"quest":"quest.main.mq05","target":"166BBE:Black Marsh North.esp","what":"One Who Has Fire Hands, selling in the hall's outer room"}
 {"quest":"quest.main.mq05","target":"166BBF:Black Marsh North.esp","what":"the weapons dealer in the hall's outer room"}
+{"quest":"quest.tg.tg02","target":"005A0B:Black Marsh.esm","what":"the Pusbottom canal deep enough to dive (to be measured at build)"}

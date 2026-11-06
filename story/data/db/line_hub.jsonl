@@ -1,19 +1,17 @@
-{"line":"quest.line.chainbreakers","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"seat","why":"Blackrose and the Rose"}
-{"line":"quest.line.chainbreakers","ord":1,"settlement":"bmv.blackmarshnorth.manor","role":"hub","why":"the Dres Rows (BM&V's 'Dres village')"}
-{"line":"quest.line.chainbreakers","ord":2,"settlement":"bmv.gg","role":"field","why":"White Rose Prison: the unused old Black Rose"}
+{"line":"quest.line.chainbreakers","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"seat","why":"the Chainbreakers' house in Blackrose"}
+{"line":"quest.line.chainbreakers","ord":1,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"hub","why":"the Rose's lower levels, outside the town"}
+{"line":"quest.line.chainbreakers","ord":2,"settlement":"bmv.dock2","role":"hub","why":"the broker's barge at Soulrest"}
 {"line":"quest.line.daedric","ord":0,"settlement":"bmv.blackmarshnorth.marsh","cell":"08DD0B:Black Marsh North.esp","role":"field","why":"the Underdark book portal as Apocrypha's edge"}
 {"line":"quest.line.detectives","ord":0,"settlement":"bmv.lilmoth","cell":"0FE8B7:Black Marsh.esm","role":"seat","why":"a house in Lilmoth, across the water from the Chapter"}
 {"line":"quest.line.detectives","ord":1,"settlement":"bmv.blackrose","role":"hub","why":"the prison heirs' crimes"}
 {"line":"quest.line.detectives","ord":2,"settlement":"bmv.helstrom","role":"hub","why":"the finale's great"}
 {"line":"quest.line.league-of-open-water","ord":0,"settlement":"bmv.altenmeirhall","role":"seat","why":"Alten Meerhleel, the port built to trade with outsiders"}
 {"line":"quest.line.league-of-open-water","ord":1,"settlement":"bmv.longmont","role":"hub","why":"a second ward"}
-{"line":"quest.line.main","ord":0,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"seat","why":"the Veiled Reed sits in Helstrom; the hall of the empty throne (BMN's merchants trade under it)"}
-{"line":"quest.line.main","ord":1,"settlement":"bmv.lilmoth","role":"hub","why":"the arrival from Skyrim, Dock1, Pusbottom and Lilmoth's Hist: the opening"}
-{"line":"quest.line.main","ord":2,"settlement":"bmv.hereguardplantation","role":"hub","why":"the guarded river station of MQ03 (BMN's New Order soldiers)"}
-{"line":"quest.line.main","ord":3,"settlement":"bmv.village","role":"hub","why":"the Hatching Pools: the first turned Hist"}
-{"line":"quest.line.main","ord":4,"settlement":"bmv.dock5","role":"hub","why":"Helstrom's landing: the 01Ship convoy's end"}
-{"line":"quest.line.main","ord":5,"settlement":"bmv.blackrose","role":"hub","why":"Blackrose Prison and the Blackguards' heirs (MQ09)"}
-{"line":"quest.line.main","ord":6,"settlement":"bmv.dwarven","cell":"0D7625:Black Marsh.esm","role":"field","why":"the pyramid and its ruins as the Lost City (Act IV)"}
+{"line":"quest.line.main","ord":0,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"seat","why":"the Veiled Reed in Helstrom; the hall where the empty seat is lodged"}
+{"line":"quest.line.main","ord":1,"settlement":"bmv.lilmoth","role":"hub","why":"the opening at Dock1, the unmarked house"}
+{"line":"quest.line.main","ord":2,"settlement":"bmv.hereguardplantation","role":"hub","why":"the Owing camp at the paddy edge"}
+{"line":"quest.line.main","ord":3,"settlement":"bmv.village","role":"hub","why":"the first turned Hist, east of Lilmoth"}
+{"line":"quest.line.main","ord":4,"settlement":"bmv.dock5","role":"hub","why":"Helstrom's river landing"}
 {"line":"quest.line.many-root","ord":0,"settlement":"bmv.groot","role":"seat","why":"the conclave grove (BM2's great root, unpeopled today)"}
 {"line":"quest.line.many-root","ord":1,"settlement":"bmv.temple2","role":"hub","why":"Greenspring"}
 {"line":"quest.line.many-root","ord":2,"settlement":"bmv.village","role":"hub","why":"the Hatching Pools' egg nursery"}
@@ -21,9 +19,8 @@
 {"line":"quest.line.marsh-charter","ord":0,"settlement":"bmv.castle","cell":"0378ED:Black Marsh North.esp","role":"seat","why":"Gideon's old Governor's Mansion: the castle, with doorless 01cell1 'Manor' given a door"}
 {"line":"quest.line.marsh-charter","ord":1,"settlement":"bmv.hereguardplantation","role":"hub","why":"the frontier fort"}
 {"line":"quest.line.marsh-charter","ord":2,"settlement":"bmv.tribe","role":"field","why":"a palisaded village"}
-{"line":"quest.line.night-reed","ord":0,"settlement":"bmv.lilmoth","cell":"16BF81:Black Marsh North.esp","role":"seat","why":"the Chapter under Lilmoth: BMN's Lilmoth dungeon"}
-{"line":"quest.line.night-reed","ord":1,"settlement":"bmv.blackrose","cell":"0AFD1E:Black Marsh.esm","role":"hub","why":"Blackrose's market dock"}
-{"line":"quest.line.night-reed","ord":2,"settlement":"bmv.dock2","role":"hub","why":"Soulrest's port"}
+{"line":"quest.line.night-reed","ord":0,"settlement":"bmv.lilmoth","cell":"16BF81:Black Marsh North.esp","role":"seat","why":"the Chapter under Pusbottom"}
+{"line":"quest.line.night-reed","ord":1,"settlement":"bmv.dock2","role":"hub","why":"Soulrest's dock and its fence"}
 {"line":"quest.line.nisswo","ord":0,"settlement":"bmv.temple","role":"seat","why":"the Teeth of Sithis, tended by the Clutch of Nisswo"}
 {"line":"quest.line.nisswo","ord":1,"settlement":"bmv.murkmire","role":"hub","why":"the necropolis village"}
 {"line":"quest.line.nisswo","ord":2,"settlement":"bmv.dock2","role":"hub","why":"Soulrest's funerals"}

@@ -4,8 +4,8 @@ The human-readable plan for Phase 2's "whole quest system on BM&V" ([phase 2](..
 per line its spirit, its new home in BM&V, what changed and why, and the world-edit ledger in summary. The story data
 is the record; this file is the read of it. Act I's own adaptation is [act1-on-bmv](act1-on-bmv.md).
 
-Status: the first story slice (owner, 2026-11-06) is ledgered in §5: Act I and the first quests of three faction lines
-and two locals; the other 704 quests wait (`wait`) until the owner has tried the slice. Sections 3 and 4 stay the
+Status: the first story slice (owner, 2026-11-06) is ledgered in §5: Act I and the first quests of two faction lines
+and two locals; the other 706 quests wait (`wait`) until the owner has tried the slice. Sections 3 and 4 stay the
 whole-province draft the slice was cut from.
 
 ## 1. Inventory (step 1)
@@ -245,51 +245,51 @@ Also found: the Marsh Charter's patron Halvar the Damp is a Nord in 36-cast-rost
 ## 5. The first story slice (steps 5 to 8)
 
 The owner ruled (2026-11-06) that BM&V stays as it is and that a slice is fitted first. The slice is chosen for
-fit and variety, and so that nothing in it clashes:
+fit and variety, and so that nothing in it clashes. It holds 11 quests and 45 world edits:
 
-- **Act I of the main quest** (MQ01, MQ03, MQ04, MQ05), with the new-game flow and the opening scene: the game
-  opens in the work barge's hold at Lilmoth's Dock1, the gang is marched to its camp on a river island at the edge
-  of Hereguard's paddies, where the gang families keep a Hist cutting from Nine Bends (gap-register QA1).
-- **Night-Reed** (TG01, TG02): thieves; a fence at Soulrest, then the Chapter in Pusbottom under Lilmoth, then a dive.
-- **Marsh Charter** (FG01, FG02): a hired company renting rooms in Gideon's old mansion (QA2); a palisade held at a
-  tribe village, then a lost patrol at a ford below Gideon. Hereguard stays the opening's alone.
-- **Chainbreakers** (BC01 to BC03): the Owing, the lore's most Argonian injustice (vibe §10): a witnessed hearing at
-  an ex-Archein estate east of Blackrose (QA3), a fire in the Rose's lower levels, a broker's barge; each choice
-  costs the player work.
+- **Act I of the main quest** (MQ01, MQ03, MQ04, MQ05), with the new-game flow and the opening scene: the game opens
+  in a debt-labour broker's barge at Lilmoth's Dock1 (the state's only presence is the An-Xileel courier, owner Q7),
+  the gang is marched to its camp on a river island at the edge of Hereguard's paddies, where the gang families keep
+  a Hist cutting from Nine Bends (gap-register QA1); the Reed's house in Lilmoth is unmarked and kept through a
+  Lilmoth go-between; the ship takes the player to Helstrom's river landing.
+- **Night-Reed** (TG01, TG02): a Khajiit fence at Soulrest and a thief's round on the boardwalk, the Chapter under
+  Pusbottom, a dive into a sunk house.
+- **Chainbreakers** (BC01 to BC03): a witnessed hearing at an ex-Archein estate just north of Blackrose (QA3), a
+  fire in the Rose's lower levels at its gate outside the town (QA4), a broker's barge at Soulrest.
 - **Two locals** in Act I's towns: a river-beast at Helstrom's landing ending in an arbitration (LQ25), and a youth
   gone into the basin (LQ30).
 
-Not chosen for the slice: Shadowscales (their seat needs Gallows Rock cleared of Silver Hand and werewolves), the
-Nisswo and Umbriel lines (seats in villages with no rooms and a garrison of Imperial actors), Reed-Sail (excluded
-against the Marsh Charter at senior rank), the Sunken Archive and the Many-Root (seats in empty places), Thorn
-Ash-Reed (Thorn has no enterable building), the League (Alten Meerhleel has no room), and the detectives (no
-quests yet). No two chosen lines are exclusive (`line_exclusion`), and none shares a seat. Of the allocation's
-shared edits only four serve the slice (Gideon's and Soulrest's names, the Mansion's door, the Rose's door pair);
-the rest leave the ledger until their lines are fitted.
+The Marsh Charter left the slice in round 2: Gideon's only room is an unfurnished, doorless shell with no navmesh,
+BM&V's Gideon has no living people once its skeletons go, and its first quest's village lies in another worldspace.
+It waits with the others: Shadowscales (Gallows Rock full of Silver Hand and werewolves), the Nisswo and Umbriel
+lines (villages with no rooms and an Imperial garrison), Reed-Sail, the Sunken Archive, the Many-Root, Thorn
+Ash-Reed (no enterable building), the League (no room) and the detectives (no quests yet). No two slice lines are
+exclusive, and none shares a seat. Of the allocation's shared edits only two serve the slice (Soulrest's name, the
+Rose's door pair); the rest leave the ledger until their lines are fitted.
 
-**The clean-up** (one `we.clean.<place>` edit per slice place): every Nord, Thalmor, vanilla Imperial official,
-skeleton, draugr-race walker, Soul Cairn shade, Lurker, werebear-race beast, gargoyle, Dwemer construct, fox-race
-person, named vanilla horse, cow or dog, and every levelled placement (levelled base or levelled template) in the
-slice's places goes under one enable parent kept off, and the Naga packs at Lilmoth's ship stop and at Gideon's
-door: 25 at blackrose, 16 at castle, 2 p at dock2, 1 p at helstrom, 11 at hereguardplantation, 49 at lilmoth, 5 p at village. BM&V's own
-Argonians, crocodiles, leeches and wildlife stay, and the tribe village keeps its Naga for FG01. The checker fails
-any slice quest hosted where a levelled placement has no clean-up.
+**The clean-up** (one `we.clean.<place>` edit per host place, its every form in `world_edit_target`): every Nord,
+Thalmor, vanilla Imperial official, skeleton, draugr-race walker, Soul Cairn shade, Lurker, werebear-race beast,
+gargoyle, Dremora, Dwemer construct, fox-race person and named vanilla horse, cow or dog in the place and its rooms
+is set initially disabled in its own override, with each place's extras (Soulrest's bears, glowing deer, spriggan
+and slave; Blackrose's Breton merchants and Shadowscale recruit; the village's lurker sharks; the Naga at Lilmoth's
+ship stop); every templated actor that stays gets a fixed level at the place's band. Per place (disabled / fixed):
+blackrose 28/4; dock2 11/1; helstrom 1/2; hereguardplantation 7/11; lilmoth 49/10; village 10/0.
+The checker fails a slice quest hosted where any templated or levelled placement is not in its clean-up, and one that
+places people in a room with no navmesh without a navmesh edit.
 
 | quest | line | band | where | the adapted premise, in short |
 |---|---|---|---|---|
-| BC01 Four Months for a Boat | Chainbreakers | 2 | blackrose,swamplandsrose | At the Chainbreakers' house in Blackrose, Never-Sold, born owing and long free, the one who remembers every bought-out name, sends you to an ex-Archein estate on the swamp road east of the town. |
-| BC02 Names Scratched Out | Chainbreakers | 2 | blackrose | In the Rose's lower levels, reached by a new door from Blackrose, the prison heirs' old record wing has caught fire. |
-| BC03 The Broker's Mercy | Chainbreakers | 1 | blackrose | Ussa-Rekh lives on a mooring-barge at Blackrose's market dock. |
+| BC01 Four Months for a Boat | Chainbreakers | 1 | blackrose | At the Chainbreakers' house in Blackrose, Never-Sold, born owing and long free, the one who remembers every bought-out name, sends you to an ex-Archein estate on the swamp road just north of the town. |
+| BC02 Names Scratched Out | Chainbreakers | 2 | blackrose | Outside Blackrose, at the Rose's gate, the heirs' lower levels have caught fire. |
+| BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh lives on a mooring-barge at Soulrest's dock. |
 | LQ25 The River Monster's Rent | Local quests | 2 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
-| LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out to the basin to prove something to the tribe. |
-| FG01 A Contract in Mud | Marsh Charter | 2 | castle,tribe | In Gideon the Marsh Charter's hired company keeps rooms in the old Governor's Mansion, where the council also sits. |
-| FG02 The Missing Patrol | Marsh Charter | 1 | castle | A Charter patrol out of Gideon has not come back. |
-| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a dock fence who answers for the Chapter tests you with a job. |
-| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Lilmoth's drowned quarter a merchant's counting house has sunk into the canal. |
-| MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of the work barge moored at Lilmoth's Dock1, where the Owing gang is processed: the roll is read out with the months added for food, and character creation is the processing itself. |
-| MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the Veiled Reed's people take the survivors off the island, through the camp's aftermath, to a Lilmoth house the Reed keeps. |
+| LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out into the basin to prove something to the tribe. |
+| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit fence who answers for the Chapter tests you with a job. |
+| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Pusbottom, Lilmoth's drowned quarter, a merchant's house has sunk into the canal with a lockbox of pledges in it. |
+| MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of a debt-labour broker's barge moored at Lilmoth's Dock1, where an Owing gang hired to Hereguard Plantation is processed: the broker's overseer reads the roll aloud with the months added for food, and character creation is the processing itself. |
+| MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the Veiled Reed's people take the survivors off the island, through the camp's aftermath, to an unmarked house in Lilmoth that a Lilmoth fish-trader keeps for them. |
 | MQ04 The Tree That Turned Its Face | The Eye and the Root | 2 | village | East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. |
-| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,dock5,helstrom | The Veiled Reed takes the player on BM&V's ship from Lilmoth to Helstrom's river landing, under escort, and walks them inland to the city with the basin's danger named at every turn. |
+| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,dock5,helstrom | The Veiled Reed takes the player on the coast ship from Lilmoth to Helstrom's river landing and walks them inland to the city, the basin's danger named at every turn. |
 
 ### Review rounds
 
@@ -306,4 +306,16 @@ any slice quest hosted where a levelled placement has no clean-up.
   river landing, BM&V's greeting quest waits until MQ03 ends, MQ03 starts at the camp's aftermath. Ruled: the Lost
   City is not BM&V's Dwemer pyramid ruins as they stand (lore: no Dwemer in Black Marsh; a xanmeer is needed); its
   home is chosen when Act IV is fitted.
+- **Round 2** (seven fresh reviewers: Act I, Night-Reed, Marsh Charter, Chainbreakers, cross-line, lore, vibe and
+  society): 21 blocking, fixed as one batch. The Marsh Charter left the slice (above). Act I: the barge is a
+  broker's, not the state's (Q7); the Reed's house is unmarked; the pier gets navmesh; the house's Riften door takes
+  a BM&V base; the empty seat is plain root and reed in the hall where the state's seat is lodged and ignored. The
+  clean-up is per form, initially disabled in each override (an enable parent cannot span rooms and exteriors), and
+  fixes every templated actor's level (the census holds no levelled lists, so a template is treated as scaling); the
+  checker now tests both and navmesh. Chainbreakers: the estate is north of the town and peopled with witnesses;
+  the Rose's door pair is corrected (1F5AE4 re-pointed, 1EEB70 disabled), the cell renamed and navmeshed, the fire
+  is a rescue of people; the broker moves to Soulrest, where the lore puts the crews; QA2 withdrawn, QA4 added.
+  Night-Reed: a Khajiit fence, the thief's round placed, the Chapter peopled; TG02 hosted at Pusbottom with an air
+  pocket, pledges not accounts. LQ25's beast waits behind its quest's enable parent; LQ30's guards keep off tribal
+  ground. Explicit prerequisites now order each line.
 

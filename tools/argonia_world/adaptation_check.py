@@ -40,7 +40,9 @@ class Ledger:
     capacity: dict = field(default_factory=dict)      # settlement -> (people, interiors)
     levelled: set = field(default_factory=set)        # form keys of LVLN bases and their placements
     nord: set = field(default_factory=set)            # form keys of Nord-race bases and their placements
-    levelled_at: dict = field(default_factory=dict)   # settlement -> levelled placements there (LVLN or LVLN template)
+    levelled_at: dict = field(default_factory=dict)   # settlement -> placements that may scale (LVLN or templated)
+    edit_targets: dict = field(default_factory=dict)  # edit -> every form it acts on
+    no_navmesh: set = field(default_factory=set)      # cells without navmesh
     all_quests: set = field(default_factory=set)
 
 
@@ -73,8 +75,11 @@ def load() -> Ledger:
         "SELECT p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE n.record = 'LVLN'"))
     for s, pid in w.query("""SELECT c.settlement, p.id FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc
             JOIN bmv_settlement_cell c ON c.cell = p.cell
-            WHERE n.record = 'LVLN' OR n.template IN (SELECT id FROM bmv_npc WHERE record = 'LVLN')"""):
+            WHERE n.record = 'LVLN' OR n.template IS NOT NULL"""):
         lg.levelled_at.setdefault(s, set()).add(pid)
+    for e, tg in w.query("SELECT edit, target FROM world_edit_target"):
+        lg.edit_targets.setdefault(e, set()).add(tg)
+    lg.no_navmesh = set(w.values("SELECT id FROM bmv_cell WHERE NOT has_navmesh"))
     nord_races = set(w.values("SELECT id FROM bmv_race WHERE editor_id LIKE 'Nord%'")) if _has_col(
         w, "bmv_race", "editor_id") else set()
     lg.nord = set(w.values(f"SELECT id FROM bmv_npc WHERE race IN ({','.join('?' * len(nord_races)) or 'NULL'})",
@@ -296,8 +301,12 @@ def check_nordic_and_levelled(lg: Ledger) -> list[str]:
         if s and lg.levelled_at.get(s) and lg.quests.get(q, {}).get("verdict") in LIVE:
             clean = "we.clean." + s.split(".")[-1]
             if (q, clean) not in set(lg.quest_edits):
-                out.append(f"{q}: hosted at {s}, which has {len(lg.levelled_at[s])} levelled placement(s) and no "
-                           f"clean-up edit {clean} linked (0035)")
+                out.append(f"{q}: hosted at {s}, which has {len(lg.levelled_at[s])} placement(s) that may scale and "
+                           f"no clean-up edit {clean} linked (0035)")
+            else:
+                left = lg.levelled_at[s] - lg.edit_targets.get(clean, set())
+                if left:
+                    out.append(f"{q}: {clean} leaves {len(left)} placement(s) that may scale (first {min(left)}; 0035)")
     for q, t in lg.needs:
         if t in lg.nord:
             out.append(f"{q}: needs {t}, a Nord (0006)")
@@ -306,7 +315,22 @@ def check_nordic_and_levelled(lg: Ledger) -> list[str]:
     return out
 
 
-CHECKS = (check_coverage, check_hosts, check_edits, check_graph, check_seats, check_danger, check_capacity,
+def check_navmesh(lg: Ledger) -> list[str]:
+    """An actor placed in a cell without navmesh cannot walk: a linked navmesh_add must give it one."""
+    out = []
+    meshed = defaultdict(set)
+    for q, e in lg.quest_edits:
+        ed = lg.edits.get(e)
+        if ed and ed["kind"] == "navmesh_add" and ed["cell"]:
+            meshed[q].add(ed["cell"])
+    for q, e in sorted(lg.quest_edits):
+        ed = lg.edits.get(e)
+        if ed and ed["kind"] == "npc_add" and ed["cell"] in lg.no_navmesh and ed["cell"] not in meshed[q]:
+            out.append(f"{q}: {e} places people in {ed['cell']}, which has no navmesh, and no navmesh_add is linked")
+    return out
+
+
+CHECKS = (check_navmesh, check_coverage, check_hosts, check_edits, check_graph, check_seats, check_danger, check_capacity,
           check_lore, check_nordic_and_levelled)
 
 
