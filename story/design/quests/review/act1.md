@@ -269,7 +269,7 @@ Round 3: applied (9567fb28).
   its Skyrim.esm precedent counted), so every stage maps.
 - Generator: slice.py's rebuild must reproduce the committed rows exactly; every hand edit since round 1 (we.clean
   .abondedtemple, the MQ01-05 and slice edits) is carried into slice_rows.py.
-Reconciliation: applied (sha in the commit that adds this line; see git log -1 -- story/design/quests/review/act1.md):
+Reconciliation: applied (f34c6cba):
 seat topic cut and fail-forward 91 gated on Kaska-Meen alive; ship navmesh 0AA666 (353 triangles, one component) reaches
 0AA837 but nothing within 2954 units of 23D496, so we.mq05.ship-door adds one inner door pair; Zaren-Ish on the jetty;
 k7's c2 support deleted; goldAtLeast C-item, grantHistStep E-global, setDoorAccess E-item; the generator retired: the
