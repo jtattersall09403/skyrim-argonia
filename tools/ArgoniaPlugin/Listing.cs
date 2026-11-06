@@ -50,7 +50,7 @@ static class Listing
             }
             sb.AppendLine($"| {g.Name} | quest | Start Game Enabled off | {Row(rs)} |");
         }
-        foreach (var q in quests.Values.Where(q => !seen.Contains(q.EditorID ?? "")))
+        foreach (var q in quests.Values.Where(q => q.FormKey.ModKey != mod.ModKey && !seen.Contains(q.EditorID ?? "")))
             errs.Add($"{q.EditorID}: a quest override no group names");
         var byId = nodes.ToDictionary(n => n.EditorID ?? n.FormKey.ToString());
         foreach (var g in plan.GetProperty("story_nodes_off").EnumerateObject())

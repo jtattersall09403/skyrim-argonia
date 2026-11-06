@@ -9,3 +9,6 @@ the `.pex` files are build outputs and are sent by `infra/gpu-box/deploy.sh`.
 |---|---|
 | `ARG_QF_MQ101.psc` | MQ101's fragment script in `Argonia.esp`'s MQ101 override: the engine starts MQ101 on a new game; stage 0 starts `ARG_Opening` and stops MQ101 (no Helgen) |
 | `ARG_StartQuestScript.psc` | `ARG_Opening`'s script: the player to `ARG_OpeningMarker` on Lilmoth's dock, the race menu, the roughspun tunic and footwraps, stage 10's journal line (PLAN Phase 1, the start) |
+| `ARG_QF_BlockTest.psc` | Phase 3's test quest `ARG_BlockTest`: the stage fragments, every effect block once (docs/phases/3-building-blocks.md); removed after the owner's walk |
+| `TIF_ARG_BT_20/40/50/90.psc` | the test quest's keeper lines: `GetOwningQuest().SetStage(n)` at the line's end (TR-topic) |
+| `SF_ARG_BT_Scene.psc` | the test scene's end fragment: stage 60 (TR-scene) |

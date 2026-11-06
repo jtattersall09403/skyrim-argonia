@@ -1,0 +1,17 @@
+FormKey: 000804:Argonia.esp
+EditorID: ARG_BlockTestEnd
+Name:
+  TargetLanguage: English
+  Value: Block Test, the end
+Priority: 50
+Type: Misc
+Stages:
+- Index: 10
+  Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: The second quest started from the first.

@@ -51,6 +51,8 @@ static class Generate
         world.TopCell = bmWorld.TopCell!.DeepCopy(new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false });
         world.TopCell.Persistent.Add(marker);
         mod.Worldspaces.Add(world);
+        // Phase 3's test quest (BlockTest.cs): allocated next, removed after the owner's walk.
+        BlockTest.Add(mod, mods, world, Spot);
 
         // The opening quest: started by MQ101's stage 0 (below), its script moves the player and sets stage 10.
         opening.Flags = Quest.Flag.RunOnce;

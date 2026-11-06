@@ -41,6 +41,162 @@ TopCell:
     Base: 00003B:Skyrim.esm
     Placement:
       Position: 30901, -2903, 3
+  - MutagenObjectType: PlacedObject
+    FormKey: 000808:Argonia.esp
+    MajorRecordFlagsRaw: 3072
+    EditorID: ARG_BT_TokenParent
+    SkyrimMajorRecordFlags:
+    - 0x400
+    - InitiallyDisabled
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 30603, -2893, -200
+  - MutagenObjectType: PlacedObject
+    FormKey: 000809:Argonia.esp
+    MajorRecordFlagsRaw: 3072
+    EditorID: ARG_BT_CrabParent
+    SkyrimMajorRecordFlags:
+    - 0x400
+    - InitiallyDisabled
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 31351, -3506, -200
+  - MutagenObjectType: PlacedNpc
+    FormKey: 00080A:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_KeeperRef
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000805:Argonia.esp
+    Placement:
+      Position: 30757, -2589, -5
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedNpc
+    FormKey: 00080C:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_CrabRef
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000807:Argonia.esp
+    EnableParent:
+      Reference: 000809:Argonia.esp
+      Unknown: 0x000000
+    Placement:
+      Position: 31351, -3506, 0
+    MajorFlags:
+    - Persistent
+  - MutagenObjectType: PlacedObject
+    FormKey: 00080D:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_StartMarker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 30535, -2646, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 00080E:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_WalkerMarker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 30714, -2461, -5
+  - MutagenObjectType: PlacedObject
+    FormKey: 00080F:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_DoorMarker
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 00003B:Skyrim.esm
+    Placement:
+      Position: 30981, -3029, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000811:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_TokenRef
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 000810:Argonia.esp
+    EnableParent:
+      Reference: 000808:Argonia.esp
+      Unknown: 0x000000
+    Placement:
+      Position: 30603, -2893, 0
+  - MutagenObjectType: PlacedObject
+    FormKey: 000813:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_ZoneA
+    SkyrimMajorRecordFlags:
+    - 0x400
+    VirtualMachineAdapter:
+      Scripts:
+      - Name: defaultSetStageTrigScript
+        Properties:
+        - MutagenObjectType: ScriptObjectProperty
+          Name: myQuest
+          Object: 000803:Argonia.esp
+        - MutagenObjectType: ScriptIntProperty
+          Name: prereqStageOPT
+          Data: 65
+        - MutagenObjectType: ScriptIntProperty
+          Name: stage
+          Data: 71
+    Base: 099312:Skyrim.esm
+    Primitive:
+      Bounds: 150, 150, 100
+      Color: '#00CC4C33'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 32087, -2475, 85
+  - MutagenObjectType: PlacedObject
+    FormKey: 000814:Argonia.esp
+    MajorRecordFlagsRaw: 1024
+    EditorID: ARG_BT_ZoneB
+    SkyrimMajorRecordFlags:
+    - 0x400
+    VirtualMachineAdapter:
+      Scripts:
+      - Name: defaultSetStageTrigScript
+        Properties:
+        - MutagenObjectType: ScriptObjectProperty
+          Name: myQuest
+          Object: 000803:Argonia.esp
+        - MutagenObjectType: ScriptIntProperty
+          Name: prereqStageOPT
+          Data: 65
+        - MutagenObjectType: ScriptIntProperty
+          Name: stage
+          Data: 72
+    Base: 099312:Skyrim.esm
+    Primitive:
+      Bounds: 150, 150, 100
+      Color: '#00CC4C33'
+      Unknown: 0.15
+      Type: Box
+    Placement:
+      Position: 32087, -2475, 85
+  - MutagenObjectType: PlacedObject
+    FormKey: 0AA664:Black Marsh.esm
+    MajorRecordFlagsRaw: 1024
+    SkyrimMajorRecordFlags:
+    - 0x400
+    Base: 0E3E3F:Skyrim.esm
+    TeleportDestination:
+      Door: 0AA837:Black Marsh.esm
+      Position: 2910.2424, 5085.5513, 7040.7993
+      Rotation: 0, 0, 3.0831912
+    Lock:
+      Level: 255
+      Unused: 0x000000
+      Key: 000812:Argonia.esp
+      Unused2: 0x0000000000000000000000
+    Placement:
+      Position: 32176.264, -2430.5193, -14.69051
+      Rotation: 1.6103865, 0.7411929, 3.1683283
   MajorFlags:
   - Persistent
   - 0x40000

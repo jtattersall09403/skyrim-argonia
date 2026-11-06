@@ -1,12 +1,58 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Magic.esp. 203 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Magic.esp. 257 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
+| ours | global | new | ARG_BT_Global `000815:Argonia.esp` |
 | ours | global | new | ARG_VanillaStoryManager `000800:Argonia.esp` |
+| ours | Faction | new | ARG_BT_Faction `000816:Argonia.esp` |
+| ours | MiscItem | new | ARG_BT_Token `000810:Argonia.esp` |
+| ours | Npc | new | ARG_BT_Crab `000807:Argonia.esp` |
+| ours | Npc | new | ARG_BT_Walker `000806:Argonia.esp` |
+| ours | Npc | new | ARG_BT_Keeper `000805:Argonia.esp` |
+| ours | Key | new | ARG_BT_Key `000812:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BT_WalkerRef `00080B:Argonia.esp` |
 | ours | XMarker reference | new | ARG_OpeningMarker `000802:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_TokenParent `000808:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_CrabParent `000809:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BT_KeeperRef `00080A:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BT_CrabRef `00080C:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_StartMarker `00080D:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_WalkerMarker `00080E:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_DoorMarker `00080F:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_TokenRef `000811:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_ZoneA `000813:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BT_ZoneB `000814:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene3 `00081C:Argonia.esp` |
+| ours | DialogResponses | new |  `00081D:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene1 `000818:Argonia.esp` |
+| ours | DialogResponses | new |  `000819:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic50Never `00082C:Argonia.esp` |
+| ours | DialogResponses | new |  `00082A:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene4 `00081E:Argonia.esp` |
+| ours | DialogResponses | new |  `00081F:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic90 `000830:Argonia.esp` |
+| ours | DialogResponses | new |  `00082D:Argonia.esp` |
+| ours | DialogResponses | new |  `00082E:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic20 `000823:Argonia.esp` |
+| ours | DialogResponses | new |  `000821:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic50 `000829:Argonia.esp` |
+| ours | DialogResponses | new |  `000827:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic40 `000826:Argonia.esp` |
+| ours | DialogResponses | new |  `000824:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene2 `00081A:Argonia.esp` |
+| ours | DialogResponses | new |  `00081B:Argonia.esp` |
+| ours | quest | new | ARG_BlockTestEnd `000804:Argonia.esp` |
+| ours | quest | new | ARG_BlockTest `000803:Argonia.esp` |
 | ours | quest | new | ARG_Opening `000801:Argonia.esp` |
+| ours | Package | new | ARG_BT_WalkPackage `000817:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BT_Branch20 `000822:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BT_Branch90 `00082F:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BT_Branch40 `000825:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BT_Branch50 `000828:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BT_Branch50Never `00082B:Argonia.esp` |
+| ours | Scene | new | ARG_BT_Scene `000820:Argonia.esp` |
 | intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
 | opening | worldspace | BM&V's record kept, our marker in its persistent cell | BlackMarsh `23D689:Black Marsh.esm` |
 | main quest | quest | Start Game Enabled off | MQ00 `01C5D9`, MQ103 `0D0800` |
@@ -31,6 +77,6 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 
 Worldspace BlackMarsh: the winner's record (Black Marsh North.esp), a master. ARG_OpeningMarker at 30901, -2903, 3: on navmesh `07EEF8` (Black Marsh.esm, the winner) triangle 14, its height 2.7.
 
-Compared with the load order's winners (32 plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.
+Compared with the load order's winners (39 plugins): stage, alias, condition and script counts, flags, parent and sibling links equal but for the change.
 
 Read-back: every override carries its change (MQ101 one stage with its log entry; no quest named here is Start Game Enabled or keeps text; every node's first condition is the gate).

@@ -230,6 +230,32 @@ present and points at the right records; every ref a block names is persistent; 
 every placed actor stands within a 07EEF8 triangle or in `01Ship`; the five Naga overrides are initially disabled.
 Loop until it does.
 
+## As built (2026-11-06)
+
+Built by `tools/ArgoniaPlugin/BlockTest.cs` (called from `Generate.cs` after the opening's records), YAML in
+`plugin/Argonia`, scripts `papyrus/ARG_QF_BlockTest.psc`, `TIF_ARG_BT_20/40/50/90.psc`, `SF_ARG_BT_Scene.psc` (8 of 8
+compiled, 0 errors). The agent check is `bash tools/ArgoniaPlugin/plugin.sh blocktest` (BlockTestCheck.cs: the ESP,
+the .pex strings, the compile log); all 13 steps pass. Where the build differs from the design above, and why:
+
+- **One branch per keeper line.** A topic shows one menu choice (its first passing INFO), so "Talk me into it." and
+  its "master" twin must be two topics for step 5 to show one and hide the other. Each line is its own top-level
+  DLBR and DIAL (`ARG_BT_Topic20`, `40`, `50`, `50Never`, `90`); the two "crab is dead" replies are two INFOs of
+  `ARG_BT_Topic90`, the first that passes wins. Every INFO also carries GetIsID Keeper.
+- **The scene's lines** are four Scene-category topics (`ARG_BT_Scene1` to `4`), one INFO each.
+- **The ship door is off 07EEF8.** 07EEF8's east edge is about 17 m short of door 0AA664; the navmesh under the door
+  (0FE9A3) belongs to another worldspace, and BlackMarsh has none at dock height there. So `ARG_BT_DoorMarker` (the
+  walk's end) is 07EEF8's nearest triangle, and the two zone boxes (the player's, not an actor's) sit on the door,
+  1.5 m toward the dock (32087,-2475). The crab's "15 m east" snaps to 07EEF8's nearest, 15 m south-east.
+- **C-detected on the package** is `GetDetected Player >= 0`: the condition is read on the PACK, the walk never gated.
+- **TriggerType 0** (on activate) for the door's alias script, from vanilla's activate aliases (SolitudeFreeform07's
+  HornActivator, TutorialEnchanting's FarengarEnchanter).
+- **Stats are ours**: the three bases inherit everything from their templates but Stats and Base Data (name,
+  Protected), with fixed levels 5, 5 and 4 and AutoCalcStats on the template's class.
+
+Positions (07EEF8 triangle): start marker 30535,-2646 (29), keeper 30757,-2589 (32), walker marker 30714,-2461 (31),
+door marker 30981,-3029 (22), crab 31351,-3506 (189), token 30603,-2893 (25); the walker in `01Ship` at 2907,5107,7046
+(0AA666 triangle 28).
+
 ## Owner test
 
 One issue: the console command, where it puts you, and the step table's last two columns. You play it once and reply

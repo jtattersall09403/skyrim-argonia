@@ -1,0 +1,34 @@
+FormKey: 000821:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_BT_20
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_BT_20
+    OnEnd:
+      ScriptName: TIF_ARG_BT_20
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Then take this key, and find the token on the planks.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000805:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000803:Argonia.esp
+  ComparisonValue: 10
+Prompt:
+  TargetLanguage: English
+  Value: I am ready for the test.

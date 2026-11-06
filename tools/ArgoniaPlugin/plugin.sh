@@ -4,6 +4,7 @@
 #                      needs the game data and staged profile), plugin/Argonia.ini -> out/Argonia.ini
 #   plugin.sh check    build, then serialize it back and diff with plugin/Argonia (round trip clean), then read the
 #                      ESP back (tools/ArgoniaPlugin list): every override carries its change; writes the records table
+#   plugin.sh blocktest  build, then Phase 3's agent check of ARG_BlockTest from the ESP and out/gpu/papyrus (the .pex)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
 #                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
 set -euo pipefail
@@ -36,11 +37,12 @@ case "${1:-}" in
     "${spriggit[@]}" serialize -i "$esp" -o "$rt/y" -g SkyrimSE "${spr[@]}" >/dev/null
     diff -r "$yaml" "$rt/y" && echo "round trip clean: $(find "$yaml" -name '*.yaml' | wc -l) yaml files"
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
+  blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT
     tool seed "$tmp/Argonia.esp" "${lo[@]}"
     "${spriggit[@]}" serialize -i "$tmp/Argonia.esp" -o "$tmp/y" -g SkyrimSE "${spr[@]}" >/dev/null
     rm -rf "$yaml"; mkdir -p plugin; mv "$tmp/y" "$yaml"; echo "seeded $yaml" ;;
-  *) sed -n '2,8p' "$0"; exit 2 ;;
+  *) sed -n '2,9p' "$0"; exit 2 ;;
 esac

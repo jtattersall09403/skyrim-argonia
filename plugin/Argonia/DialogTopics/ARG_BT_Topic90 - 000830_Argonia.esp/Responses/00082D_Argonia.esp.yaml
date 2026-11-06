@@ -1,0 +1,51 @@
+FormKey: 00082D:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_BT_90
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_BT_90
+    OnEnd:
+      ScriptName: TIF_ARG_BT_90
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: By day, too. Done.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000805:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+    RunOnType: QuestAlias
+    RunOnTypeIndex: 2
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetCurrentTimeConditionData
+  ComparisonValue: 6
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Data:
+    MutagenObjectType: GetCurrentTimeConditionData
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageDoneConditionData
+    Quest: 000803:Argonia.esp
+    Stage: 80
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: The crab is dead.
