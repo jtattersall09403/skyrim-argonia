@@ -43,6 +43,12 @@ added here the day they are made, with the date and the issue.
   encrypted), so Sunshine's cards can start after any reboot (owner, 2026-11-06).
 - An agent may launch the game to warm Community Shaders' shader cache before the owner plays (owner, 2026-11-06);
   it tests nothing that way.
+- The quest review loop (owner, 2026-11-06): the planner judges which findings matter and when the loop ends, not
+  a reviewer finding nothing; one shared bar for "blocking" (an unfinishable path, a contradiction with the record,
+  the world or the lore, a 0006 or 0035 breach); settled findings stay settled; fixes subtract before they add;
+  a branching budget keeps quests simple (some branching for interest); agents write only what the lore and data
+  give, so no unsourced claims are made in the first place; quests lean on action, danger and discovery, not on
+  law and custom; no long hand-overs (small fixer agents, the loop's state in a file).
 - Then our storyline, quests and factions on top of BM&V's world, with minimal tweaks (NPCs, items, bosses,
   creatures added, removed, changed). This is the main work, in phases.
 - Process as light as possible. Agents avoid in-game testing if at all possible; the owner tests. Test a small

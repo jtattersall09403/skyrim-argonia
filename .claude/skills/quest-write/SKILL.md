@@ -60,6 +60,20 @@ Before the record is written:
 7. **Verb variety:** the `centrepiece` verb tag (00-overview §4) is weighed across the line or packet;
    `SOCIAL` and `INVESTIGATE` may not exceed two thirds of its M and L quests.
 
+## 2b. Keep it simple, and write only what the lore gives (owner, 2026-11-06, binding)
+
+1. **Action, danger and discovery drive the quest**, not procedure. Law, custom, hearings, debts, permits and
+   bargaining stay in the background as colour; at most one stage may turn on a formal procedure, and never the
+   climax. Prefer a place to reach, a thing to find, a creature or person to face, a secret to uncover.
+2. **The branching budget:** at most two real choices and at most three endings per quest (a death or a failure
+   uses the standard fail-forward of the block set, not an ending of its own). At most about 8 stages for an M
+   quest, 12 for an L. Depart only with a one-line reason the planner accepts.
+3. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes
+   from the lore dossiers, the extrapolation, the census or the story data, cited as you write it. Where the quest
+   needs something none of them gives, choose: leave it vague in the text (the player does not need the mechanism),
+   or add it to the extrapolation now with its gap-register row, before the record uses it. Never invent an
+   institution or a law to make a plot work.
+
 ## 3. Route to the principles
 
 Read `shapes.yaml`: always `principles/general.md` and `principles/actions.md`; the file for the quest's

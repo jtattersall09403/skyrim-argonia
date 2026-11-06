@@ -9,6 +9,19 @@ The review is design critique of the record (`../quest-write/quest-record.md`: t
 the record's sections), run before any dialogue exists, so problems are fixed where they start. It is not the consistency mechanism (that is the record's build order and the brief
 builder); it judges whether the quest is good and believable.
 
+## 0. The bar, and what you are not asked to do (owner, 2026-11-06, binding)
+
+- **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be reached or left; (b) a
+  contradiction inside the record, or with the world data (census, story data); (c) a contradiction with canon lore
+  or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled). Nothing else is
+  blocking, however much you would change it: write it as a `note` with its weight (`high`, `low`).
+- **Settled is settled:** the record's `review.settled` list holds findings the planner has ruled on; do not raise
+  them again, nor variants of them, unless the record has since changed in a way that reopens them (say how).
+- **Prefer subtraction:** a proposed fix removes or rewrites before it adds; never propose a new stage, branch or
+  ending where a cut or a merge would answer the finding.
+- **Report at most the five most serious blocking findings and five notes.**
+- The planner, not you, decides which findings are fixed and when the loop ends.
+
 ## 1. Set-up
 
 - Run as a fresh agent given only the quest record, the world records it cites and this skill; never the
