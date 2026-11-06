@@ -3063,7 +3063,7 @@
 {"id":"quest_objective:quest.main.mq04|0|0:complete_when.0","parent_id":"quest_objective:quest.main.mq04|0|0:complete_when","ord":0,"term":"topicHeardFrom"}
 {"id":"quest_objective:quest.main.mq04|0|0:complete_when.1","parent_id":"quest_objective:quest.main.mq04|0|0:complete_when","ord":1,"term":"any"}
 {"id":"quest_objective:quest.main.mq04|0|0:complete_when.1.0","parent_id":"quest_objective:quest.main.mq04|0|0:complete_when.1","ord":0,"term":"skillAtLeast"}
-{"id":"quest_objective:quest.main.mq04|0|0:complete_when.1.1","parent_id":"quest_objective:quest.main.mq04|0|0:complete_when.1","ord":1,"term":"goldAtLeast"}
+{"id":"quest_objective:quest.main.mq04|0|0:complete_when.1.1","parent_id":"quest_objective:quest.main.mq04|0|0:complete_when.1","ord":1,"term":"hasItem"}
 {"id":"quest_objective:quest.main.mq04|1|0:complete_when","term":"inZone"}
 {"id":"quest_objective:quest.main.mq04|2|0:complete_when","term":"any"}
 {"id":"quest_objective:quest.main.mq04|2|0:complete_when.0","parent_id":"quest_objective:quest.main.mq04|2|0:complete_when","ord":0,"term":"all"}
@@ -3279,7 +3279,7 @@
 {"id":"quest_successor:quest.main.mq04|0|0:when.0","parent_id":"quest_successor:quest.main.mq04|0|0:when","ord":0,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.main.mq04|0|0:when.1","parent_id":"quest_successor:quest.main.mq04|0|0:when","ord":1,"term":"any"}
 {"id":"quest_successor:quest.main.mq04|0|0:when.1.0","parent_id":"quest_successor:quest.main.mq04|0|0:when.1","ord":0,"term":"skillAtLeast"}
-{"id":"quest_successor:quest.main.mq04|0|0:when.1.1","parent_id":"quest_successor:quest.main.mq04|0|0:when.1","ord":1,"term":"goldAtLeast"}
+{"id":"quest_successor:quest.main.mq04|0|0:when.1.1","parent_id":"quest_successor:quest.main.mq04|0|0:when.1","ord":1,"term":"hasItem"}
 {"id":"quest_successor:quest.main.mq04|1|0:when","term":"inZone"}
 {"id":"quest_successor:quest.main.mq04|2|0:when","term":"any"}
 {"id":"quest_successor:quest.main.mq04|2|0:when.0","parent_id":"quest_successor:quest.main.mq04|2|0:when","ord":0,"term":"all"}

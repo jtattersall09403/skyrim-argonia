@@ -53,7 +53,7 @@
 {"quest_id":"quest.main.mq03","ord":2,"skill":"alteration","use":"water-breathe","reason":"the other way down: Waterbreathing lets a slow swimmer search the bottom as long as it takes"}
 {"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"persuade","reason":"the survivor will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round"}
 {"quest_id":"quest.main.mq03","ord":4,"skill":"climbing","use":"climb","reason":"in the dream the player climbs the ring's root ledges, placed statics and no tree, to the door (FreeClimb)"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth: a Speech check of 25, or pay her, for leave to see the tree"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"Speech","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth: a Speech check of 25, or bring her food, for leave to see the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"OneHanded","use":"fight","reason":"the leeches crowd the cut root (fixed band 2)"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"Destruction","use":"fight","reason":"the same leeches from the stilts above"}
 {"quest_id":"quest.main.mq04","ord":3,"skill":"Sneak","use":"spy","reason":"the tree-minder washes the cut root after dark; watched unseen (not detected by him), he is seen at it"}
