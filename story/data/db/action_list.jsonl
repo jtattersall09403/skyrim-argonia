@@ -114,6 +114,7 @@
 {"id":"quest_stage:quest.bc.bc01|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc02|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc02|1:on_enter"}
+{"id":"quest_ending:quest.tg.tg02|2:world"}
 {"id":"quest_stage:quest.bc.bc03|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc03|1:on_enter"}
 {"id":"quest_stage:quest.bc.bc03|2:on_enter"}
@@ -182,9 +183,7 @@
 {"id":"quest_stage:quest.tg.tg01|1:on_enter"}
 {"id":"quest_stage:quest.tg.tg01|2:on_enter"}
 {"id":"quest_stage:quest.tg.tg01|3:on_enter"}
-{"id":"quest_stage:quest.tg.tg01|4:on_enter"}
 {"id":"quest_stage:quest.tg.tg02|0:on_enter"}
 {"id":"quest_stage:quest.tg.tg02|1:on_enter"}
-{"id":"quest_stage:quest.tg.tg02|3:on_enter"}
 {"id":"quest_stage:quest.tg.tg04|1:on_enter"}
 {"id":"quest_stage:quest.tg.tg04|2:on_enter"}

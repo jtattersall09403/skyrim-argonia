@@ -984,15 +984,14 @@
 {"id":"fact.tender.moored","says":"The tenders are moored over the lots."}
 {"id":"fact.tender.never-enters","says":"The tender never enters the water."}
 {"id":"fact.tender.shared","says":"The diver families share the tenders."}
-{"id":"fact.tg01.bedroll","claim":"While he drinks in the evening, the necklace lies in his bedroll under the awning.","ord":5,"from_ref":"t3","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.chapter-way","claim":"The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth.","ord":6,"from_ref":"t4","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.desk-door","claim":"Deep-In-Her-Cups keeps the Chapter's desk in the back room of Soulrest's house.","ord":0,"from_ref":"t0","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.chapter-way","claim":"The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth.","ord":5,"from_ref":"t4","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.desk-door","claim":"Tilts-The-Jug keeps the Chapter's desk inside Soulrest's house.","ord":0,"from_ref":"t0","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.he-runs","claim":"Caught, Keeps-What-Floats runs rather than fights.","ord":3,"from_ref":"t1","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.necklace","claim":"Keeps-What-Floats took a necklace of polished blue jaspers from another thief of the dock.","ord":2,"from_ref":"t1","quest_id":"quest.tg.tg01"}
-{"id":"fact.tg01.round","claim":"Keeps-What-Floats walks the dock and boardwalk by day, drinks by the water in the evening and sleeps under a boardwalk awning.","ord":4,"from_ref":"t3","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.round","claim":"Keeps-What-Floats walks the dock and boardwalk by day, drinks by the water in the evening and sleeps under a boardwalk awning, with the necklace on him.","ord":4,"from_ref":"t3","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.test","claim":"The Chapter wants the keepsake back from the one who took it, with no harm done to him, to see how I work.","ord":1,"from_ref":"t2","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg02.beads-kothringi","claim":"The beads are Kothringi glass, the kind the old cairns hold, no Argonian family's work.","ord":8,"from_ref":"t4","quest_id":"quest.tg.tg02"}
-{"id":"fact.tg02.box","claim":"A locked lockbox of pledged things lies on the canal floor beside the fallen stilt house: a carved bone figurine, a Neesak charm and a strand of Kothringi Glass Beads.","ord":1,"from_ref":"t1","quest_id":"quest.tg.tg02"}
+{"id":"fact.tg02.box","claim":"A locked lockbox of pledged things lies on the canal floor beside the fallen stilt house: a bone figurine, a Neesak charm and a strand of Kothringi Glass Beads.","ord":1,"from_ref":"t1","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.charm-remounted","claim":"The charm sits in a new silver mount the merchant put on it, as no one does to a thing only pledged.","ord":7,"from_ref":"t4","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.claim-beads","claim":"Dar-Zeel says the beads are old family work.","ord":5,"from_ref":"t3","quest_id":"quest.tg.tg02"}
 {"id":"fact.tg02.claim-charm","claim":"Okan-Tei says the charm was only pledged and never sold.","ord":4,"from_ref":"t3","quest_id":"quest.tg.tg02"}

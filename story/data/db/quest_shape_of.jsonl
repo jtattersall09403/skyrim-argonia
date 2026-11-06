@@ -1249,7 +1249,6 @@
 {"quest_id":"quest.ta.ta05","ord":0,"value":"NEGOTIATION"}
 {"quest_id":"quest.ta.ta05","ord":1,"value":"SUCCESSION"}
 {"quest_id":"quest.tg.tg01","ord":0,"value":"THEFT"}
-{"quest_id":"quest.tg.tg01","ord":1,"value":"NEGOTIATION"}
 {"quest_id":"quest.tg.tg02","ord":0,"value":"THEFT"}
 {"quest_id":"quest.tg.tg03","ord":0,"value":"SMUGGLING"}
 {"quest_id":"quest.tg.tg03","ord":1,"value":"FRAUD"}
