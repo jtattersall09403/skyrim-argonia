@@ -253,7 +253,7 @@ never regenerated:
   the gang is marched to its camp on a river island at the edge of Hereguard's paddies, where the gang families keep
   a Hist cutting from Nine Bends (gap-register QA1); the Reed's house in Lilmoth is unmarked and kept through a
   Lilmoth go-between; the ship takes the player to Helstrom's river landing.
-- **Night-Reed** (TG01, TG02): Deep-In-Her-Cups keeps the Chapter's desk at Soulrest behind a Khajiit trader, her
+- **Night-Reed** (TG01, TG02): Tilts-The-Jug keeps the Chapter's desk at Soulrest behind a Khajiit trader, her
   front on the dock, and a cowardly thief's round on the boardwalk is watched; the Chapter under Pusbottom, the
   repopulated slum, then sends the player past the canal's ripper eels to a lockbox beside a fallen stilt house.
 - **Chainbreakers** (BC01 to BC03): a debt book stolen or a woman slipped into the channel at an ex-Archein estate
@@ -286,7 +286,7 @@ places people in a room with no navmesh without a navmesh edit.
 | BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh works Soulrest's open dock among the crews. |
 | LQ25 The River Monster's Rent | Local quests | 1 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
 | LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out into the basin to prove something to the tribe. |
-| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit trader on the dock sends you to Deep-In-Her-Cups, who keeps the Chapter's desk in a back room and drinks nothing. |
+| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit trader on the dock sends you to Tilts-The-Jug, who keeps the Chapter's desk inside the house and drinks nothing. |
 | TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In the Chapter under Pusbottom, Vasha Half-Rent gives you the job: a lockbox of pledged things beside a stilt house fallen into the canal. |
 | MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of a debt-labour broker's barge moored at Lilmoth's Dock1, where an Owing gang hired to Hereguard Plantation is processed: the broker's overseer reads the roll aloud with the months added for food, and character creation is the processing itself. |
 | MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the player reads the burnt camp the cell left at Hereguard, then the Veiled Reed's people carry the hurt to an unmarked Lilmoth house, where Nesh-Deeka offers the Reed's protection; that night the first sap-dream comes. |
@@ -333,7 +333,7 @@ places people in a room with no navmesh without a navmesh edit.
 - **Round 4** (six fresh reviewers): vibe and lore raised nothing blocking (lore's one item, TG02's place, fixed);
   Act I, Night-Reed, Chainbreakers and cross-line raised 6, fixed as one batch: the Ranger's move clashed with the
   clean-up's disable of the same form (dropped; the checker now treats every clean-up form as changed, so the clash
-  is caught); Soulrest's extra doors are locked on both sides; Deep-In-Her-Cups keeps the Chapter's desk, a Khajiit
+  is caught); Soulrest's extra doors are locked on both sides; Tilts-The-Jug keeps the Chapter's desk, a Khajiit
   trader her front; the Chainbreakers' house is named, marked and peopled; MQ03's dream has its fog edit and MQ01's
   crew its parent; MQ04's village gets its Hist. Minor fixes taken: the Rose's stockade gate and its spared record
   room, the pier's vipers, the hall's soldier as its sweeper, MQ03's move by fade, MQ03 after MQ01.

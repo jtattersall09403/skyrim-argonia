@@ -65,6 +65,7 @@
 {"quest_id":"quest.ni.ni05","ord":1,"value":"topic.teeth-lost-purpose"}
 {"quest_id":"quest.tg.tg01","ord":0,"value":"topic.tg01-the-test"}
 {"quest_id":"quest.tg.tg01","ord":1,"value":"topic.tg01-return"}
+{"quest_id":"quest.tg.tg01","ord":2,"value":"topic.tg01-welcome"}
 {"quest_id":"quest.tg.tg02","ord":0,"value":"topic.tg02-the-job"}
 {"quest_id":"quest.tg.tg04","ord":0,"value":"topic.flotilla-floating-house"}
 {"quest_id":"quest.tg.tg04","ord":1,"value":"topic.flotilla-tally-handover"}

@@ -287,7 +287,7 @@ resolved at SS10.
 
 ### Night-Reed Chapter — thieves
 
-**Desks:** Deep-In-Her-Cups (the Soulrest den — professional restraint: no
+**Desks:** Tilts-The-Jug (the Soulrest den — professional restraint: no
 kills, no poor, no politics), **Vasha "Half-Rent"** (the Lilmoth chapter,
 above a pawnshop in Pusbottom — leverage everything; information is the only
 cargo that appreciates; she has never paid full price for anything including,
@@ -302,7 +302,7 @@ third corner, not its resolution.
 
 | Name | Role | Who, and the quirk |
 |---|---|---|
-| **Deep-In-Her-Cups** | Patron | Runs the Soulrest den from a dockside tavern. **The name is inherited from her mother, who earned it; she herself is teetotal** and keeps the name because it makes people underestimate her. A canon-form name subverted at zero cost |
+| **Tilts-The-Jug** | Patron | Runs the Soulrest den from a dockside tavern. **The name is inherited from her mother, who earned it; she herself is teetotal** and keeps the name because it makes people underestimate her. A canon-form name subverted at zero cost |
 | **"the Eel-Keeper"** | Nemesis | Lilmoth's canal warden, who maintains the **ripper eels trained to hunt canal-crossers** (canon, with its canon eel-slime counter). Excellent at his job, genuinely fond of the guild, would drown any of them. **Quirk**: the eels have names and he is sentimental about them, which makes TG10 personal |
 | **Tsuun-Wai** | Dependent | The Lilmoth fence of TG05 — bad at fencing. She took the work to keep her brother out of an **Owing** and is drowning. Prop her up or replace her; either choice returns in TG11 |
 | **Silt** ★ | Peer | The deliberate cliché: the fast, charming young climber. **Subversion**: she is not a traitor and never becomes one. Every beat of TG07 points at her, and the informer is someone else, and she never finds out she was suspected |

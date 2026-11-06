@@ -5,7 +5,7 @@ Nothing waits on this. It is the read of the first story slice, fitted to Black 
 - **The opening act of the main quest (MQ01, MQ03, MQ04, MQ05)**, with the new-game start: a new game opens in the hold of a debt-labour broker's barge at Lilmoth's Dock1. Character creation is the gang's processing, with the roll read aloud. The gang is marched along the shore to its camp at the edge of Hereguard's paddies. There the Unbound Root's cell strikes, the camp's Hist withdraws and its clutch dies. Then comes the Veiled Reed's offer in an unmarked Lilmoth house, the first turned Hist at a village east of Lilmoth, and BM&V's own ship to Helstrom and the empty seat of the Scalded Throne.
   - Kept: every beat of the authored act.
   - Changed: the barge is a broker's, not the state's (your Q7). The camp's tree is the gang families' cutting from Nine Bends, because the lore gives Hereguard no Hist. The Reed's station is an unmarked Lilmoth house, because Lilmoth denies the state.
-- **Night-Reed (TG01, TG02):** Deep-In-Her-Cups's desk at Soulrest (BM&V's "Docks", renamed), a thief's round to watch, the Chapter under Pusbottom in Lilmoth, then a dive for a lockbox.
+- **Night-Reed (TG01, TG02):** Tilts-The-Jug's desk at Soulrest (BM&V's "Docks", renamed), a thief's round to watch, the Chapter under Pusbottom in Lilmoth, then a dive for a lockbox.
 - **Chainbreakers (BC01 to BC03):** the Owing is the heart of this line.
   - BC01: a hearing at an ex-Archein estate just north of Blackrose, where every line of an account is true and still unjust.
   - BC02: a fire in the cells under the Rose's outer post at the town's edge.

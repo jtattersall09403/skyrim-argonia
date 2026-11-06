@@ -90,7 +90,7 @@ Thieving, fencing and route work that escalates to the Tidal Palace heist.
 
 | ID | Title | Region | Shapes | Premise | Anchor places | Status |
 |---|---|---|---|---|---|---|
-| TG01 | A Dry Hand in a Wet City | mercantile-coast | `THEFT`, `NEGOTIATION` | The task is to recover stolen property. The thief took it from another thief. The thief must not be harmed. | `mercantile-coast.soulrest-quay-tradehouse` | live |
+| TG01 | A Dry Hand in a Wet City | mercantile-coast | `THEFT` | The task is to recover stolen property. The thief took it from another thief. The thief must not be harmed. | `mercantile-coast.soulrest-quay-tradehouse` | live |
 | TG02 | The Drowned Lockbox | mercantile-coast | `DISPUTE`, `THEFT` | Three clients claim a lockbox in a sunken counting house. The contents expose all three clients. | `mercantile-coast.villa-cellars` | live |
 | TG03 | Honest Customs | imperial-fringe | `SMUGGLING`, `FRAUD`, `BONDAGE` | Customs officers run an illegal tariff. A smuggler uses the scandal to move captives. | `imperial-fringe.bonded-shed-of-the-onkobra`<br>`imperial-fringe.slough-point` | live |
 | TG04 | The House That Floats | mercantile-coast | `EXPEDITION`, `THEFT` | A wealthy household's hull tally passes from hand to hand on the moored flotilla. | `mercantile-coast.lighter-flotilla` | live |

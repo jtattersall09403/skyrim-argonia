@@ -88,9 +88,9 @@
 {"quest_id":"quest.mr.mr01","clues_ord":5,"ord":0,"value":"fact.mr01.founders-stakes"}
 {"quest_id":"quest.mr.mr01","clues_ord":6,"ord":0,"value":"fact.mr01.rival-grove"}
 {"quest_id":"quest.tg.tg01","clues_ord":0,"ord":0,"value":"fact.tg01.round"}
-{"quest_id":"quest.tg.tg01","clues_ord":1,"ord":0,"value":"fact.tg01.bedroll"}
+{"quest_id":"quest.tg.tg01","clues_ord":1,"ord":0,"value":"fact.tg01.round"}
 {"quest_id":"quest.tg.tg01","clues_ord":1,"ord":1,"value":"fact.tg01.he-runs"}
-{"quest_id":"quest.tg.tg01","clues_ord":2,"ord":0,"value":"fact.tg01.bedroll"}
+{"quest_id":"quest.tg.tg01","clues_ord":2,"ord":0,"value":"fact.tg01.round"}
 {"quest_id":"quest.tg.tg02","clues_ord":0,"ord":0,"value":"fact.tg02.figurine-old"}
 {"quest_id":"quest.tg.tg02","clues_ord":1,"ord":0,"value":"fact.tg02.charm-remounted"}
 {"quest_id":"quest.tg.tg02","clues_ord":2,"ord":0,"value":"fact.tg02.beads-kothringi"}

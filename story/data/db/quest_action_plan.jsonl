@@ -30,13 +30,6 @@
 {"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
 {"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
 {"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
-{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
-{"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
-{"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
-{"quest_id":"quest.main.mq01","ord":3,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed), with Sal-Sei's reed-knife"}
-{"quest_id":"quest.main.mq01","ord":4,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
-{"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
-{"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.local.lq25","ord":0,"skill":"Sneak","use":"search-unseen","reason":"the bait points are found from the pier while the crew are not looking"}
 {"quest_id":"quest.local.lq25","ord":1,"skill":"Swimming","use":"dive","reason":"the bait points are found by a swim under the pier"}
 {"quest_id":"quest.local.lq25","ord":2,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought in its lair under the pier"}
@@ -48,6 +41,13 @@
 {"quest_id":"quest.local.lq30","ord":3,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought at the shelter"}
 {"quest_id":"quest.local.lq30","ord":4,"skill":"Sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
 {"quest_id":"quest.local.lq30","ord":5,"skill":"Speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
+{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
+{"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
+{"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
+{"quest_id":"quest.main.mq01","ord":3,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed), with Sal-Sei's reed-knife"}
+{"quest_id":"quest.main.mq01","ord":4,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
+{"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
+{"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"swimming","use":"dive","reason":"one breath off the end of the burnt boards to the bottom of the shallows for the courier's brass tag, which fell with his strap"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"alteration","use":"water-breathe","reason":"the other way down: Waterbreathing lets a slow swimmer search the bottom as long as it takes"}
@@ -70,12 +70,13 @@
 {"quest_id":"quest.mr.mr01","ord":3,"skill":"destruction","use":"burn-a-nest","reason":"parasite swarms between the sites"}
 {"quest_id":"quest.mr.mr01","ord":4,"skill":"spear","use":"fight","reason":"or fight through the swarms"}
 {"quest_id":"quest.mr.mr01","ord":5,"skill":"speechcraft","use":"present-evidence","reason":"the council payoff: discover in danger, decide in council"}
-{"quest_id":"quest.tg.tg01","ord":0,"skill":"sneak","use":"follow","reason":"the thief's round is watched from cover by day, to learn where he drinks and sleeps"}
+{"quest_id":"quest.tg.tg01","ord":0,"skill":"sneak","use":"follow","reason":"the thief's round is followed unseen until he sleeps"}
 {"quest_id":"quest.tg.tg01","ord":1,"skill":"pickpocket","use":"pickpocket","reason":"the necklace is lifted off him on the dock by day"}
-{"quest_id":"quest.tg.tg01","ord":2,"skill":"sneak","use":"steal","reason":"or it is taken from his bedroll while he drinks in the evening"}
+{"quest_id":"quest.tg.tg01","ord":2,"skill":"pickpocket","use":"pickpocket","reason":"or it is lifted off him while he sleeps under the awning at night"}
 {"quest_id":"quest.tg.tg01","ord":3,"skill":"speechcraft","use":"persuade","reason":"or he is talked out of it at his drinking spot"}
 {"quest_id":"quest.tg.tg01","ord":4,"skill":"lockpicking","use":"pick-a-lock","reason":"the Chapter's trapdoor under Lilmoth is opened by the player's own hand"}
 {"quest_id":"quest.tg.tg02","ord":0,"skill":"speechcraft","use":"persuade","reason":"each client is drawn into saying what they claim the box holds for them"}
-{"quest_id":"quest.tg.tg02","ord":1,"skill":"sneak","use":"sneak-past","reason":"the ripper eels in the canal are slipped past by stealth and timing"}
-{"quest_id":"quest.tg.tg02","ord":2,"skill":"lockpicking","use":"open-a-strongbox","reason":"the lockbox is opened where it lies on the canal floor"}
-{"quest_id":"quest.tg.tg02","ord":3,"skill":"speechcraft","use":"persuade","reason":"each pledge is sold back to its teller at the price the box shows"}
+{"quest_id":"quest.tg.tg02","ord":1,"skill":"swimming","use":"dive","reason":"the lockbox lies on the canal floor"}
+{"quest_id":"quest.tg.tg02","ord":2,"skill":"sneak","use":"sneak-past","reason":"the ripper eels in the canal are slipped past by stealth and timing"}
+{"quest_id":"quest.tg.tg02","ord":3,"skill":"lockpicking","use":"open-a-strongbox","reason":"the lockbox is opened where it lies on the canal floor"}
+{"quest_id":"quest.tg.tg02","ord":4,"skill":"speechcraft","use":"persuade","reason":"each client is sold the thing they claimed at a fixed sum"}

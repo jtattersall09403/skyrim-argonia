@@ -214,10 +214,8 @@
 {"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.he-runs","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.necklace","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.test","value":"knows"}
-{"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.bedroll","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.necklace","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.round","value":"knows"}
-{"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.bedroll","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.he-runs","value":"knows"}
 {"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.necklace","value":"suspects"}
 {"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.round","value":"knows"}

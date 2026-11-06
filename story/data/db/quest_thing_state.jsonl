@@ -119,19 +119,18 @@
 {"quest_id":"quest.mr.mr01","things_ord":6,"state":"before-60","value":"open cut with tool-marks"}
 {"quest_id":"quest.mr.mr01","things_ord":7,"state":"all","value":"vermin, band D3 in a D4 place"}
 {"quest_id":"quest.tg.tg01","things_ord":0,"state":"after-30","value":"the player's"}
-{"quest_id":"quest.tg.tg01","things_ord":0,"state":"after-40","value":"Deep-In-Her-Cups's"}
-{"quest_id":"quest.tg.tg01","things_ord":0,"state":"before-30","value":"on him or in the bedroll"}
+{"quest_id":"quest.tg.tg01","things_ord":0,"state":"after-40","value":"Tilts-The-Jug's"}
+{"quest_id":"quest.tg.tg01","things_ord":0,"state":"before-30","value":"on him"}
 {"quest_id":"quest.tg.tg01","things_ord":1,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg01","things_ord":2,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg01","things_ord":3,"state":"all","value":"locked until opened"}
 {"quest_id":"quest.tg.tg01","things_ord":4,"state":"all","value":"present"}
-{"quest_id":"quest.tg.tg01","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":1,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":2,"state":"all","value":"present"}
-{"quest_id":"quest.tg.tg02","things_ord":3,"state":"after-30","value":"the player's"}
-{"quest_id":"quest.tg.tg02","things_ord":3,"state":"before-30","value":"in the box"}
-{"quest_id":"quest.tg.tg02","things_ord":4,"state":"after-30","value":"the player's"}
-{"quest_id":"quest.tg.tg02","things_ord":4,"state":"before-30","value":"in the box"}
-{"quest_id":"quest.tg.tg02","things_ord":5,"state":"after-30","value":"the player's"}
-{"quest_id":"quest.tg.tg02","things_ord":5,"state":"before-30","value":"in the box"}
+{"quest_id":"quest.tg.tg02","things_ord":3,"state":"after-40","value":"the player's"}
+{"quest_id":"quest.tg.tg02","things_ord":3,"state":"before-40","value":"in the box"}
+{"quest_id":"quest.tg.tg02","things_ord":4,"state":"after-40","value":"the player's"}
+{"quest_id":"quest.tg.tg02","things_ord":4,"state":"before-40","value":"in the box"}
+{"quest_id":"quest.tg.tg02","things_ord":5,"state":"after-40","value":"the player's"}
+{"quest_id":"quest.tg.tg02","things_ord":5,"state":"before-40","value":"in the box"}

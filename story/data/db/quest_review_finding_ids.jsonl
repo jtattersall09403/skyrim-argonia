@@ -345,7 +345,7 @@
 {"quest_id":"quest.mr.mr01","review_findings_ord":3,"ord":1,"value":"scene.mr01.council"}
 {"quest_id":"quest.mr.mr01","review_findings_ord":4,"ord":0,"value":"startWhen"}
 {"quest_id":"quest.tg.tg01","review_findings_ord":0,"ord":0,"value":"cast.keeper-harbour-den"}
-{"quest_id":"quest.tg.tg01","review_findings_ord":0,"ord":1,"value":"stages.10"}
+{"quest_id":"quest.tg.tg01","review_findings_ord":0,"ord":1,"value":"stages.20"}
 {"quest_id":"quest.tg.tg01","review_findings_ord":1,"ord":0,"value":"cast.khajiit-caravan-factor"}
 {"quest_id":"quest.tg.tg01","review_findings_ord":1,"ord":1,"value":"topics.topic.tg01-the-door"}
 {"quest_id":"quest.tg.tg01","review_findings_ord":2,"ord":0,"value":"item.tg01.jasper-necklace"}
