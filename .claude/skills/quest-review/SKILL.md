@@ -14,7 +14,7 @@ builder); it judges whether the quest is good and believable.
 - **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be left; (b) a
   contradiction inside the record, or with the world data (census, story data); (c) a contradiction with canon lore
   or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled); (e) the quest
-  breaks the skill rule (ruling #50, quest-write §2 item 4, program-checked): a stage (a pure choice stage excepted) is not won by a skill route that can fail (25+ check, fight, lock, dive, spell), a
+  breaks the skill rule (ruling #50, quest-write §2 item 4, program-checked): a stage (a pure choice stage excepted) is not won by a skill route that can fail (25+ check, fight, lock, spell), a
   main quest lacks two ways through on different skills, a faction quest ignores its faction's skills, a stage
   does not say plainly what to do and where, or the route climbs a tree; (f) it would
   be harder to script than an average Skyrim quest (more stages, aliases, conditions, timers or bespoke scripts than a

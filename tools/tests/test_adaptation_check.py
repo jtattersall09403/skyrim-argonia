@@ -254,9 +254,9 @@ def test_skill_routes():
 
 
 def test_skill_route_can_fail():
-    assert ac._can_fail_action("OneHanded", "fight") and ac._can_fail_action("Athletics", "dive")
+    assert ac._can_fail_action("OneHanded", "fight") and not ac._can_fail_action("Athletics", "dive")
     assert ac._can_fail_action("Lockpicking", "pick-a-lock") and ac._can_fail_action("Destruction", "burn-a-nest")
-    assert not ac._can_fail_action("Sneak", "sneak-past") and not ac._can_fail_action("Speechcraft", "persuade")
+    assert not ac._can_fail_action("Sneak", "sneak-past") and not ac._can_fail_action("swimming", "fight")
     assert ac._hard_check({"speechcraft", "25"}) and not ac._hard_check({"speechcraft", "15"})
 
 

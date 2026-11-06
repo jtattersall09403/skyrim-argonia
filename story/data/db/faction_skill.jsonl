@@ -1,8 +1,6 @@
 {"faction_id":"faction.chainbreakers","ord":0,"value":"Lockpicking"}
 {"faction_id":"faction.chainbreakers","ord":1,"value":"Sneak"}
-{"faction_id":"faction.chainbreakers","ord":2,"value":"swimming"}
-{"faction_id":"faction.chainbreakers","ord":3,"value":"climbing"}
-{"faction_id":"faction.chainbreakers","ord":4,"value":"Speechcraft"}
+{"faction_id":"faction.chainbreakers","ord":2,"value":"Speechcraft"}
 {"faction_id":"faction.night-reed-chapter","ord":0,"value":"sneak"}
 {"faction_id":"faction.night-reed-chapter","ord":1,"value":"lockpicking"}
 {"faction_id":"faction.night-reed-chapter","ord":2,"value":"pickpocket"}

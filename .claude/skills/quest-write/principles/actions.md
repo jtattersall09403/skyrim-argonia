@@ -3,7 +3,7 @@
 Read for every quest. Owner rulings (0024 §9, 2026-10-28): an action is **a use of one of the player's
 skills** (Skyrim's actor values: OneHanded, TwoHanded, Marksman, Block, HeavyArmor, LightArmor, Destruction,
 Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speechcraft, Mysticism
-(Magic Expanded), climbing, swimming). That uses and builds the character the player is making. Each skill is used in
+(Magic Expanded); swimming and climbing are movement, not skills, ruling #53). That uses and builds the character the player is making. Each skill is used in
 many ways (OneHanded against rats in a cellar, a duellist at dawn); a chain of plain conversations is not a quest.
 
 ## Actions first, then the quest is built round them
@@ -15,7 +15,7 @@ many ways (OneHanded against rats in a cellar, a duellist at dawn); a chain of p
    `skill-uses.yaml` (skill, use, target, setting), weighted by the line's profile and steering away from
    what the ledger has already used. Pick one, adapt it, or write your own from the
    catalogue; record it as `actionPlan` with the reason.
-2. **Then write the truth so the actions follow from it.** A dive needs something under water; a lock needs
+2. **Then write the truth so the actions follow from it.** A lock needs
    something worth locking; a duel needs someone with a grievance. The plausibility pass still applies: if an
    action does not follow from believable people and places, change the plan or the truth.
 3. **Every stage that is not an ending has an action** (`skill`, `use`, target, setting), or offers
@@ -24,7 +24,7 @@ many ways (OneHanded against rats in a cellar, a duellist at dawn); a chain of p
 4. **Offer more than one build a way through** where the story allows: a stage a fighter, a thief, a mage and
    a talker can each pass, at different costs.
 5. **Each use carries its `world` needs and its `system`** (`skill-uses.yaml`): the hostiles and their band,
-   the lock and its level, the climbable face, the dive, the recipe become `things` rows, so the world is
+   the lock and its level, the recipe become `things` rows, so the world is
    built to hold them; the system names the engine feature and chunk. A system marked DECISION has no chunk
    yet: do not build a stage on it alone.
 6. **Escalate across a line:** later quests combine skills the earlier ones used, against harder targets and

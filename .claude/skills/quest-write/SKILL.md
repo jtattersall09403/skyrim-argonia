@@ -72,8 +72,8 @@ Before the record is written:
    forward, and those are planned once for the whole line (owner, 2026-11-06).
 4. **Skills win the stages (owner ruling #50, binding, checked by `skill_routes`).** Name the skills the quest uses
    (One-Handed, Two-Handed, Archery, Block, Heavy/Light Armor, Destruction, Alteration, Illusion, Conjuration,
-   Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism (Magic Expanded), climbing (FreeClimb),
-   swimming). Each stage is won by a skill route that can fail (a check of 25 or more, or a real fight, lock, dive or spell), not by
+   Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism (Magic Expanded); not swimming or
+   climbing, #53). Each stage is won by a skill route that can fail (a check of 25 or more, or a real fight, lock or spell), not by
    walking or talking alone; a pure choice stage (whom to tell) is exempt, as an ending is. Every main quest has two ways
    through on different skills; a faction quest leans on its faction's skills. Each stage's journal or objective says plainly what to do and where. No tree climbing. Scripting stays at a vanilla side quest's.
 5. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes

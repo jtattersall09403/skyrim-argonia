@@ -590,16 +590,16 @@ def _sk(x) -> str:
 SKILL_ROUTES_BLOCK = False
 
 
-# A route counts only if it can fail: a check of 25+ (Bethesda's easy level), or a fight, lock, dive or spell.
 FAIL_SKILLS = {_sk(x) for x in ("OneHanded", "TwoHanded", "Marksman", "Archery", "Block", "Destruction", "Alteration",
                                 "Illusion", "Conjuration", "Restoration", "Mysticism", "Lockpicking", "Security",
                                 "long-blade", "short-blade", "axe", "blunt-weapon", "spear", "hand-to-hand",
                                 "Pickpocket")}
-FAIL_USES = {"dive", "pick-a-lock", "open-a-strongbox", "fight", "duel"}
+FAIL_USES = {"pick-a-lock", "open-a-strongbox", "fight", "duel"}
+MOVES = {"swimming", "climbing", "athletics", "acrobatics"}  # movement, never a skill (#53)
 
 
 def _can_fail_action(skill, use) -> bool:
-    return _sk(skill) in FAIL_SKILLS or str(use) in FAIL_USES
+    return _sk(skill) not in MOVES and (_sk(skill) in FAIL_SKILLS or str(use) in FAIL_USES)
 
 
 def _hard_check(args) -> bool:
@@ -625,7 +625,7 @@ def _scene_stage(succ) -> bool:
 
 def skill_routes(rc: Records) -> list[str]:
     """Skills win the stages (ruling #50). For a kept or adapted quest: every stage between the start and the endings
-    names a skill route that can fail (see FAIL_SKILLS; a skillAtLeast of 25+), the first stage too; a pure choice stage is exempt; a main-line quest uses at least two
+    names a skill route that can fail (FAIL_SKILLS, a fight, lock or spell; skillAtLeast 25+); a pure choice stage is exempt; a main-line quest uses at least two
     distinct skills across them; a faction quest uses at least one skill from its faction's list."""
     out = []
     for q, sts in sorted(rc.stages.items()):
