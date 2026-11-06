@@ -51,6 +51,8 @@ BM&V's terrain shows one; rewards with real rows or cut; tree-minder as a villag
 the npc and fact rows corrected. MQ05's place in the line (the spirit: Helstrom behind its thorns, past the empty,
 swept Scalded Throne) is kept; make it exciting and Black Marsh-y.
 
+Round 1: applied (commit 341a5dae): 5 stages, 1 choices, 2 endings
+
 Settled: (none yet)
 
 ## The whole main line, round 1 (2026-11-06): the planner's rulings
