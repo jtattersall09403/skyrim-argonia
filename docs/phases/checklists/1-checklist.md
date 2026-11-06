@@ -1,6 +1,6 @@
 # Phase 1: what is left before the owner's walk
 
-Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-in-bmv.md](1-stack-in-bmv.md).
+Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-in-bmv.md](../1-stack-in-bmv.md).
 
 ## The install (`stack.py install` on the play machine)
 

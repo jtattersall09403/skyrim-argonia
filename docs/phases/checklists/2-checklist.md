@@ -1,6 +1,6 @@
 # Phase 2: the first story slice on paper, the checklist
 
-Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-act-on-paper.md](2-first-act-on-paper.md).
+Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-act-on-paper.md](../2-first-act-on-paper.md).
 
 ## Foundations
 
