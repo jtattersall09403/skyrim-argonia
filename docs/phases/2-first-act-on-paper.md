@@ -66,9 +66,17 @@ the quest system follows once the owner has tried the slice.
     facts missing for the cord and the jars; RECKONING does not fit.
   - MQ04: the charge against Pays-Late is cutting, while the law and the award fit only negligence; the naming topic
     and the workshop zone short-cut the investigation.
-  Spot patches will not converge. The next step is one quest-write rework of MQ03 and MQ04 against all eight rounds'
-  findings (`review` rows in each record), including the shape change to NEGOTIATION for MQ03. Then a fresh round,
-  then the owner's read (draft: [2-owner-read-draft](2-owner-read-draft.md), figures checked: 63 edits, 11 quests, 706 waiting) and PROGRESS.
+  Done 2026-11-06 (commit 55b72d22): both reworked whole through quest-write. MQ03 is NEGOTIATION with BONDAGE (the
+  broker comes to the house and ends his own claim by a release spoken before witnesses, QA13; QA8 rewritten); MQ04's
+  charge is a keeper's failure, the hearing waits for the clutch-laying and needs two signs. Ledger premises follow;
+  adaptation_check 0; make check green; brief.py builds both.
+- Rework round 1 (fresh reviewers; reports in the session scratchpad r/w1-mq03.md, r/w1-mq04.md): MQ03 5 blocking
+  (no cause for the sap-dream for a non-marsh player, so taste the sap at stage 10; the Reed's name has no topic and 20
+  can skip 30; other gang survivors are witnesses too; the coin choice is not recorded; ending successors unguarded and
+  no broker-dead ending), MQ04 3 blocking (stage 35 dead-ends into 94; stage 96 pre-empts the handing ending 91; the
+  kaal judges and holds the cell man). Majors in both: skill uses gate nothing (add skillAtLeast or disposition
+  thresholds), missing world rows, tier-1 rewards of 30-main-quest §24b dropped, journals out of step with world state.
+  Next: fix round 1 as one batch, then round 2; then stage_blocks, the owner read and PROGRESS.
 
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
