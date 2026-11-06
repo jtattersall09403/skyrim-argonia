@@ -59,10 +59,10 @@ camp means to buy it.
 - **MQ09 The Map Beneath the Old Rose.** The setting's cipher points to an explorer who died in the old Black Rose
   with an Eye route-tablet: a ruin in the far west of the marsh that the marsh took back, not the Rose BC02 uses.
   The tablet lies in the ruin's flooded lower ground. Skills: climbing (FreeClimb) over the fallen walls, swimming
-  and breath in the flooded tier, a fight with what nests there (the marsh's own creatures; no draugr). No choice.
+  and breath in the flooded lower ground, a fight with what nests there (the marsh's own creatures; no draugr). No choice.
   Reward: the tablet and a fixed find in the explorer's resting place (row needed).
 - **MQ10 The Auction of Drowned Things.** The last of the three leads, and the act's end (N1). Salvage divers at
-  Tear's landing are working a wreck whose cargo holds a lens-frame matching the setting; the Collector is asking
+  the north-east coast's ship landing are working a wreck whose cargo holds a lens-frame matching the setting; the Collector is asking
   the same questions. Skills: swimming (dive first, past the slaughterfish), or speech or pickpocket to take it off
   the divers' raft. Last stage: setting, tablet and lens-frame fitted together show one place, a Xanmeer drowned off
   the coast, and word comes that a second Hist has been cut, at a recorded tribal tree (Low-Crown, the Paatru Hist,
@@ -97,8 +97,8 @@ noticed to walk into it carrying the jewel as bait.
 - **MQ21 The Black Sap House.** The cult's laboratory in a cave of the north, where it has been waking the Egg with
   sap and volunteers, one of whom volunteered twice. Skills: alchemy to know what the pools are doing, sneak or
   blade through, swimming by the underwater way. Last choice (the lie, B2): Never-Writes-Twice asks where the sap
-  house is. Tell her the truth and her raid comes while the player is still inside, and the volunteers leave
-  on their own; lie and the player keeps the cult's trust and the house's whole stock of sap (fixed loot), the cult
+  house is. Tell her the truth and her raid burns the house and its stock while the player is still inside, and the volunteers leave
+  on their own; lie and the player keeps the house's whole stock of sap (fixed loot), the cult
   moves the Egg, no raid comes, and the volunteers are left behind. Either way the Egg is gone toward the door, and
   Act IV starts the same. Reward: fixed (row needed).
 
@@ -113,7 +113,7 @@ retired Shadowscale, who has vanished.
   story/lore/topics/sithis-nisswo-shadowscales.md): at each site he is already gone, and the player reads which way
   from what the place gives up, then finds his hide at the lizardmen's shack. Skills: climbing to the marks, sneak
   and detection to read the trail, swimming between sites; at the hide, speech to have the wards from him, or a
-  fight (his notes carry them). No one hunts the player. Reward: his blade (fixed, row needed).
+  fight (his notes carry them). No one hunts the player. Reward: his blade (given, or taken).
 - **MQ26 The Root of Accord.** The last mark opens the old roots beneath the northern marsh. Not a desk (B2): a
   flooded root-ruin where the carved tableaux and one guardian show the twist: the Root of Accord began as a bond
   freely given by selected Hist and was later made compulsory. The cult's grievance is real; its severance is
@@ -164,21 +164,19 @@ rediscovers them (census ids, `docs/research/bmv/census.md`):
 - **MQ09, the old Rose:** cell BlackRoseold (BlackMarsh -27,-7, 7 refs) with `gg` (17 refs) beside it, `therose` and
   `mountainpass`: no navmesh, no actors, no placements to use and no doors. The census holds counts, not statics.
   Needs navmesh, set dressing and the tablet's place at record time; no interior and no new door pair.
-- **MQ10, Tear's landing:** BlackMarshNorth 25,19, attached to no settlement. The only door is 08325C (a Skyrim
+- **MQ10, the north-east coast's ship landing:** BlackMarshNorth 25,19, attached to no settlement. The only door is 08325C (a Skyrim
   ship-door model, ShipKatariahDoorLoad01) into the ship cell `01Ship` (0AA665, MQ05's); a hull placed in the water
-  with one air pocket is a statics need. Re-base 08325C or use no door.
+  with one air pocket is a statics need.
 - **MQ16:** the drowned Xanmeer's interior is a need, recorded before Act III is fitted (B5).
 - **MQ18, the temple:** `bmv.abondedtemple`, interior `01aundergroundcell` (092944), entered by the temple's front
-  door 097D1A at BlackMarsh2 13,25 (a book base, 01doorbook, to swap for a plain door). The cell's 10 placements
-  need a `we.clean` row. Its inner doors are Nordic: 097CDE (HHDoor02) and 097D1D (NorWoodDoor01), a breach of 0006
-  until re-based; the back door 097D22 (at -12,1, already Argonian 1DE5DF) is the way out.
+  door 097D1A at BlackMarsh2 13,25. The cell's 10 placements
+  need a `we.clean` row. Its inner doors are Nordic: 097CDE (HHDoor02) and 097D1D (NorWoodDoor01); the back door 097D22 (at -12,1, already Argonian 1DE5DF) is the way out.
 - **MQ20, near Thorn:** `bmv.blackmarshnorth.thorn1` keeps guards and prisoners. The house interior
   `01cabinintDUPLICATE002` (129 refs) has no doors, so a door pair is a need.
 - **MQ21:** Sharpslope Cave, `01templecave`, BlackMarshNorth site.
 - **MQ23:** BlackMarshNorth waterfalls (`bmv.blackmarshnorth.waterfalls`), the ruin `ruin12`, the drowned marsh
   (`marsh`), and the lizardmen's shack (`bmv.blackmarshnorth.lizardmen`).
-- **MQ26:** `01underdark` and `01Underdarkmiddle`, entered at BlackMarshNorth -9,15 and -20,22 by book doors to swap
-  for root hatches. `01Underdarkmiddle` holds a vampire lord and Dawnguard skeletons (vanilla, not ours): clear them
+- **MQ26:** `01underdark` and `01Underdarkmiddle`, entered at BlackMarshNorth -9,15 and -20,22 by book doors. `01Underdarkmiddle` holds a vampire lord and Dawnguard skeletons (vanilla, not ours): clear them
   or make them part of the fight. The guardian is Grevious Twilight, fought there.
 - **MQ27:** the tribe village (`bmv.tribe`) and Temple Pass (`bmv.templepass`).
 - **MQ29:** the Lost City's Xanmeer is a need, recorded before Act III is fitted (B5).
@@ -207,20 +205,20 @@ of them.
    and the Lost City (MQ29) are recorded needs (B5, N2).
 6. Act II opens on MQ07's false Eye; MQ06 cut; the triangulation is MQ10's last stage, so MQ15 is cut (N1).
 7. Helstrom is the seat only; MQ09 leaves BC02's Blackrose cells for the old Rose; MQ10 leaves Soulrest's dock for
-   Tear's landing; MQ27 leaves by Temple Pass, not LQ30's gate; one MQ23 route chain (N2).
+   the north-east coast's ship landing; MQ27 leaves by Temple Pass, not LQ30's gate; one MQ23 route chain (N2).
 8. Talk-only quests cut or given skill stages: MQ06, MQ15, MQ22, MQ25 cut; MQ32's epilogue folded into MQ31's
    ending; MQ18's cover is a Speech check with a played failure (N3).
 9. The act split (30-main-quest §22) now matches the line spirit below: 17 quests, I 4, II 4, III 4, IV 3, V 2 (N4).
 10. The Eye's two statements reconciled in story/lore/eye-of-argonia.md: it grants no kingship by any power of
     its own; CLAIM's backing is what people believe the king's jewel means (N5). The owner's ruling: more Black
-    Marsh (Murkwood, Tear, the north's caves and roots instead of offices), less bureaucratic (no reports, files,
+    Marsh (Murkwood, the north's caves and roots instead of offices), less bureaucratic (no reports, files,
     council or desk), every quest won with skills.
 11. Round 3: MQ07 on the dock's own ground, no ship interior; MQ09 has no interior (the tablet lies in the old Rose's ruin
     cells); MQ18's undercroft cleaned by a we.clean row; MQ20 and MQ21 captives leave on their own; MQ26's guardian is
     the existing Grevious Twilight; MQ08's alchemy and back-water route, MQ07's speech-to-buy and MQ10's "at night" cut.
 12. Round 4: the outline is line level; cell ids, door ids and in-cell mechanics moved to "Places to fit at record
     time". Cut: MQ21's "someone pays on screen" and fire escort, MQ23's "dies this year either way", MQ10's "the same
-    night". MQ21's lie gains the player the cult's trust and the stock of sap.
+    night". MQ21's lie gains the player the stock of sap.
 
 ## For the data
 
@@ -262,7 +260,7 @@ line_spirit_beat:
     beat: >-
       Act II, the hunt (MQ07 to MQ10, outline): a false Eye sold at the Bandit Dock, its real setting lifted
       under the Collector's eye; the cell's safehouse, named by the buyer's mark and the cult's want of a Mnemic Egg; a route-tablet in the
-      flooded cells of the old Rose; a lens-frame dived from a wreck at Tear; the three together place a drowned
+      flooded cells of the old Rose; a lens-frame dived from a wreck at the north-east coast's ship landing; the three together place a drowned
       Xanmeer, and word comes that the Hist at Low-Crown is cut and dies
   - ord: 2
     beat: >-
@@ -270,7 +268,7 @@ line_spirit_beat:
       player sent into the cult's sermon with the jewel as bait, where the preacher, the Collector Opens-the-Last-
       Door, knows them and says nothing; the Reed's dream-house broken open and its dreamers, and perhaps Nesh-
       Deeka, freed to leave on their own; the cult's sap house, and a raid that comes only if the player told the
-      truth, and a lie that keeps the cult's trust
+      truth
   - ord: 3
     beat: >-
       Act IV, the marks and the road (MQ23 to MQ27, outline): marks only the Eye can see, and one old retired Shadowscale

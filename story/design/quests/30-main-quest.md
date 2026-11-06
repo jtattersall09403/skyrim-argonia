@@ -320,7 +320,7 @@ transitions only, never on elapsed play time.
 ## 22. Pacing
 
 - **Act I (MQ01, MQ03, MQ04, MQ05):** processing and the attack — the villain seen, the clutch dead, the dreams begun; recruitment; first Hist case; Helstrom and the empty throne.
-- **Act II (MQ07–MQ10):** the hunt — the false Eye, the cell's safehouse, the old Rose, the wreck at Tear; the triangulation is MQ10's last stage, and the second Hist dies.
+- **Act II (MQ07–MQ10):** the hunt — the false Eye, the cell's safehouse, the old Rose, the wreck at the north-east coast's ship landing; the triangulation is MQ10's last stage, and the second Hist dies.
 - **Act III (MQ16–MQ21):** the Eye recovered, the sermon under cover, the Reed's dream-house broken open and the handler's fall, the sap house and the raid the player stands in.
 - **Act IV (MQ23–MQ27):** the marks and the last Shadowscale, the Root of Accord's twist, the crossing of the basin.
 - **Act V (MQ29, MQ31):** the Lost City and the Last Warden, the door, CUT, CLAIM or MEND, the closing scene.
