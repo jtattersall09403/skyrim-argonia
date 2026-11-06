@@ -50,7 +50,7 @@
 {"quest_id":"quest.main.mq03","clues_ord":4,"ord":1,"value":"fact.mq03.months-witnessed"}
 {"quest_id":"quest.main.mq03","clues_ord":5,"ord":0,"value":"fact.mq03.months-witnessed"}
 {"quest_id":"quest.main.mq03","clues_ord":6,"ord":0,"value":"fact.mq03.release-witnessed"}
-{"quest_id":"quest.main.mq03","clues_ord":6,"ord":1,"value":"fact.mq03.aboard"}
+{"quest_id":"quest.main.mq03","clues_ord":6,"ord":1,"value":"fact.mq03.barge-gone"}
 {"quest_id":"quest.main.mq04","clues_ord":0,"ord":0,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","clues_ord":1,"ord":0,"value":"fact.mq04.gum-trail"}
 {"quest_id":"quest.main.mq04","clues_ord":2,"ord":0,"value":"fact.mq04.camp-jars"}
