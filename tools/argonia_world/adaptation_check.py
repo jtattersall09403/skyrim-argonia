@@ -374,8 +374,22 @@ def motif_warnings(lg: Ledger, stages: dict | None = None) -> list[str]:
 # current rows are clean; each returns "<quest or edit>: <what>" lines.
 VANILLA = ("Skyrim.esm", "Update.esm", "Dawnguard.esm", "HearthFires.esm", "Dragonborn.esm")
 FORM_KEY = re.compile(r"\b[0-9A-F]{6}:[A-Za-z][\w .&'-]*?\.es[mpl]\b")
+BARE_KEY = re.compile(r"(?<![\w:])[0-9A-F]{6}(?![\w:])")
 FREE_TERMS = {"all", "any", "inZone", "inCell", "inSettlement", "timeOfDay", "questStage", "stageEverReached",
               "knowsTopic", "topicHeardFrom", "flag"}
+
+
+def form_keys(text: str, census=()) -> list[str]:
+    """Form keys in free text: the written ones, and a bare six-digit id (0F9399) written without its plugin, resolved
+    to the census key it names when exactly one census row has that id."""
+    out = FORM_KEY.findall(text or "")
+    index = defaultdict(list)
+    for k in census:
+        index[k.split(":", 1)[0]].append(k)
+    for b in BARE_KEY.findall(text or ""):
+        if len(index.get(b, ())) == 1 and index[b][0] not in out:
+            out.append(index[b][0])
+    return out
 
 
 @dataclass
@@ -394,7 +408,13 @@ class Records:
     edits: dict = field(default_factory=dict)         # edit -> (kind, target)
     edit_targets: dict = field(default_factory=dict)  # edit -> forms
     quest_forms: dict = field(default_factory=dict)   # quest -> form keys it uses
+    edit_text: dict = field(default_factory=dict)     # edit -> its description
     live: set | None = None                           # quests kept or adapted; None checks every quest
+    uses: list = field(default_factory=list)          # (quest, topic id, speaker, fact) a topic uses
+    gives: list = field(default_factory=list)         # (quest, clue id, fact) a clue gives (what a conclusion rests on)
+    knowers: dict = field(default_factory=dict)       # (quest, npc) -> {fact: stage it is known from (0 = at the start)}
+    topic_from: dict = field(default_factory=dict)    # (quest, topic id) -> earliest stage the topic is said
+    learnable: dict = field(default_factory=dict)     # quest -> facts a stage teaches, a cast member holds or the player starts with
 
 
 def _tree(w) -> dict:
@@ -428,6 +448,7 @@ def load_records() -> Records:
     for r in w.query("SELECT id, kind, cell, target, description FROM world_edit"):
         rc.edits[r["id"]] = (r["kind"], r["target"])
         rc.texts.append((r["id"], r["description"]))
+        rc.edit_text[r["id"]] = r["description"]
         rc.needs += [(r["id"], k) for k in (r["cell"], r["target"]) if k]
         rc.placing += " " + r["description"]
     for e, t in w.query("SELECT edit, target FROM world_edit_target"):
@@ -440,7 +461,7 @@ def load_records() -> Records:
     for r in w.query('SELECT quest_id, kind, source, "where" FROM quest_thing'):
         txt = f"{r['source']} {r['where'] or ''}"
         rc.texts.append((r["quest_id"], txt))
-        rc.quest_forms.setdefault(r["quest_id"], set()).update(FORM_KEY.findall(txt))
+        rc.quest_forms.setdefault(r["quest_id"], set()).update(form_keys(txt, rc.census))
         if r["kind"] == "actors":
             rc.placing += " " + txt
     for q, e in w.query("SELECT quest, edit FROM quest_world_edit"):
@@ -466,6 +487,29 @@ def load_records() -> Records:
         st[(r[0], r[1])].add(r[2])
     rc.topics = [(r[0], r[2], bool(r[3]), st[(r[0], r[1])])
                  for r in w.query("SELECT quest_id, ord, person, essential FROM quest_topic")]
+    rc.uses = [tuple(r) for r in w.query(
+        "SELECT t.quest_id, t.id, t.person, u.value FROM quest_topic t "
+        "JOIN quest_topic_uses u ON u.quest_id = t.quest_id AND u.topics_ord = t.ord")]
+    rc.gives = [tuple(r) for r in w.query(
+        "SELECT c.quest_id, c.id, g.value FROM quest_clue c "
+        "JOIN quest_clue_gives g ON g.quest_id = c.quest_id AND g.clues_ord = c.ord")]
+    for q, npc, f, v in w.query("SELECT c.quest_id, c.id, k.fact_id, k.value FROM quest_cast c "
+                                "JOIN quest_cast_knowledge k ON k.quest_id = c.quest_id AND k.cast_ord = c.ord"):
+        rc.learnable.setdefault(q, set()).add(f)
+        if v.split()[0] in ("knows", "believes"):
+            rc.knowers.setdefault((q, npc), {})[f] = 0
+    for q, npc, f, v, s in w.query(
+            'SELECT c.quest_id, c.id, h.fact, h."to", h.at_stage FROM quest_cast c '
+            "JOIN quest_cast_change h ON h.quest_id = c.quest_id AND h.cast_ord = c.ord"):
+        if v.split()[0] in ("knows", "believes"):
+            k = rc.knowers.setdefault((q, npc), {})
+            k[f] = min(s, k.get(f, s))
+    for q, tid, s in w.query("SELECT t.quest_id, t.id, min(s.value) FROM quest_topic t "
+                             "JOIN quest_topic_stage s ON s.quest_id = t.quest_id AND s.topics_ord = t.ord "
+                             "GROUP BY t.quest_id, t.id"):
+        rc.topic_from[(q, tid)] = s
+    for q, f in w.query("SELECT quest_id, value FROM quest_stage_learns UNION SELECT quest_id, value FROM quest_player_start"):
+        rc.learnable.setdefault(q, set()).add(f)
     return rc
 
 
@@ -473,7 +517,7 @@ def rule_census_ids(rc: Records) -> list[str]:
     """Every form key a row names is a census row (free text: BM&V's own plugins only)."""
     out = {f"{o}: {k} is not in the census" for o, k in rc.needs if FORM_KEY.fullmatch(k) and k not in rc.census}
     for o, txt in rc.texts:
-        for k in FORM_KEY.findall(txt or ""):
+        for k in form_keys(txt, rc.census):
             if k.split(":", 1)[1] not in VANILLA and k not in rc.census:
                 out.add(f"{o}: {k} is not in the census")
     return sorted(out)
@@ -495,7 +539,8 @@ def _guarded(text: str, name: str) -> bool:
 
 def rule_helgen(rc: Records) -> list[str]:
     """Someone a stage needs (an essential topic's speaker there, or named in its successors) is essential or protected
-    in the record's text, or the stage fails forward on them (Helgen's Hadvar and Ralof)."""
+    in the record's text, or the stage fails forward on them (Helgen's Hadvar and Ralof). Across quests: from their
+    first appearance in any earlier quest of the line until that stage they are protected in each quest's text."""
     need = defaultdict(set)
     for q, p, ess, sts in rc.topics:
         if ess:
@@ -505,13 +550,22 @@ def rule_helgen(rc: Records) -> list[str]:
         for s, d in sts.items():
             for _, _, a in d["succ"]:
                 need[(q, s)] |= {x for x in a if x.startswith("npc.")}
+    appears = defaultdict(set)
+    for q, p in rc.people:
+        appears[p].add(q)
     out = []
     for (q, s), ps in sorted(need.items(), key=str):
         ff = rc.stages.get(q, {}).get(s, {}).get("ff", set())
+        line = q.rsplit(".", 1)[0]
         for p in sorted(ps):
+            if p in ff:
+                continue
             name = rc.names.get(p) or p
-            if p not in ff and not _guarded(rc.quest_text.get(q, ""), name):
-                out.append(f"{q}: stage {s} needs {name} alive, who is not essential or protected and has no fail-forward")
+            for e in sorted(x for x in set(rc.quest_text) | appears[p] | {q} if x.rsplit(".", 1)[0] == line and x <= q):
+                here = e == q or e in appears[p] or (rc.names.get(p) and name in rc.quest_text.get(e, ""))
+                if here and not _guarded(rc.quest_text.get(e, ""), name):
+                    where = "" if e == q else f" (it is in {e} first)"
+                    out.append(f"{q}: stage {s} needs {name} alive, who is not essential or protected in {e}{where} and has no fail-forward")
     return out
 
 
@@ -523,18 +577,11 @@ def rule_shared_base(rc: Records) -> list[str]:
 
 
 def rule_vanilla_door(rc: Records) -> list[str]:
-    """A door a quest uses shows no vanilla Skyrim model unless a record_change re-models it (0006)."""
-    fixed = set()
-    for e, (k, t) in rc.edits.items():
-        if k == "record_change":
-            fixed |= {t} | rc.edit_targets.get(e, set())
-    out = []
-    for q, forms in sorted(rc.quest_forms.items()):
-        for d in sorted(forms):
-            b = rc.door_base.get(d)
-            if b and b.split(":", 1)[-1] in VANILLA and d not in fixed:
-                out.append(f"{q}: door {d} uses vanilla model {b} and no record_change re-models it (0006)")
-    return out
+    """A door we add (door_add) takes BM&V's own Argonian door base, 1DE5DF, in its row (0006). BM&V's own doors are
+    BM&V's world as its authors made it and are not checked (decision 0038)."""
+    return [f"{e}: a door we add does not say it takes BM&V's Argonian door base (1DE5DF) (0006)"
+            for e, (k, _) in sorted(rc.edits.items())
+            if k == "door_add" and "1DE5DF" not in rc.edit_text.get(e, "")]
 
 
 def rule_skill_gate(rc: Records) -> list[str]:
@@ -548,7 +595,22 @@ def rule_skill_gate(rc: Records) -> list[str]:
     return out
 
 
-RULES = (rule_census_ids, rule_placed, rule_helgen, rule_shared_base, rule_vanilla_door, rule_skill_gate)
+def rule_speaker_knows(rc: Records) -> list[str]:
+    """Every fact a topic uses is in its speaker's knowledge (knows or believes), from the stage the topic is said."""
+    return [f"{q}: topic {t} uses {f}, which {p} neither knows nor believes by then"
+            for q, t, p, f in rc.uses
+            if rc.knowers.get((q, p), {}).get(f, 10 ** 9) > rc.topic_from.get((q, t), 0)]
+
+
+def rule_learnable(rc: Records) -> list[str]:
+    """Every fact a topic uses or a conclusion rests on (a clue gives) is learnable: in some stage's learns or some
+    cast member's knowledge (or the player's start)."""
+    seen = [(q, f"topic {t}", f) for q, t, _, f in rc.uses] + [(q, f"clue {c}", f) for q, c, f in rc.gives]
+    return sorted({f"{q}: {what} uses {f}, which no stage teaches and no cast member holds"
+                   for q, what, f in seen if f not in rc.learnable.get(q, set())})
+
+
+RULES = (rule_census_ids, rule_placed, rule_helgen, rule_shared_base, rule_vanilla_door, rule_skill_gate, rule_speaker_knows, rule_learnable)
 
 
 def record_warnings(rc: Records) -> list[str]:

@@ -30,9 +30,8 @@
 {"quest_id":"quest.main.mq04","source":"lore","ord":2,"value":"story/lore/regions/murkmire.md (Villages and tribes)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":3,"value":"story/lore/topics/hist-placement.md (Low-Reed Village)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":4,"value":"story/design/quests/10-political-frame.md §6"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"story/design/quests/30-main-quest.md §24b.3"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/design/province-vibe.md §3-5, §7, §9"}
-{"quest_id":"quest.main.mq04","source":"lore","ord":7,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9, QA11, QA15"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":5,"value":"story/design/province-vibe.md §3-5, §7, §9"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":6,"value":"story/lore/extrapolation/gap-register.md §8 QA6, QA9, QA11, QA15"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md (The Scalded Throne; the Clutch of Nisswo)"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}

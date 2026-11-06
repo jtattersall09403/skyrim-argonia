@@ -35,9 +35,7 @@
 {"quest_id":"quest.main.mq03","ord":1,"id":"k2","form":"place","carrier":"thing.mq03.camp","kind":"concept"}
 {"quest_id":"quest.main.mq03","ord":2,"id":"k3","form":"thing","carrier":"thing.mq03.sap-phial","kind":"lead"}
 {"quest_id":"quest.main.mq03","ord":3,"id":"k4","form":"behaviour","carrier":"npc.nesh-deeka","kind":"concept"}
-{"quest_id":"quest.main.mq03","ord":4,"id":"k5","form":"line","carrier":"npc.nesh-deeka","kind":"lead"}
-{"quest_id":"quest.main.mq03","ord":5,"id":"k6","form":"thing","carrier":"thing.mq03.courier-token","kind":"lead"}
-{"quest_id":"quest.main.mq03","ord":6,"id":"k7","form":"line","carrier":"npc.pirate-freeholds.opening-work-camp.n1","kind":"concept"}
+{"quest_id":"quest.main.mq03","ord":4,"id":"k6","form":"thing","carrier":"thing.mq03.courier-token","kind":"lead"}
 {"quest_id":"quest.main.mq04","ord":0,"id":"k1","form":"place","carrier":"thing.mq04.village","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"k2","form":"behaviour","carrier":"thing.mq04.leeches","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"k3","form":"behaviour","carrier":"npc.mercantile-coast.low-reed-village.chime-tuner","kind":"lead"}

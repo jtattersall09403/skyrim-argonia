@@ -46,9 +46,7 @@
 {"quest_id":"quest.main.mq03","clues_ord":2,"ord":0,"value":"fact.mq03.jar-rings"}
 {"quest_id":"quest.main.mq03","clues_ord":2,"ord":1,"value":"fact.mq03.sap-fresh"}
 {"quest_id":"quest.main.mq03","clues_ord":3,"ord":0,"value":"fact.mq03.sap-cell"}
-{"quest_id":"quest.main.mq03","clues_ord":4,"ord":0,"value":"fact.mq03.no-claim"}
-{"quest_id":"quest.main.mq03","clues_ord":5,"ord":0,"value":"fact.mq03.courier-token"}
-{"quest_id":"quest.main.mq03","clues_ord":6,"ord":0,"value":"fact.mq03.barge-gone"}
+{"quest_id":"quest.main.mq03","clues_ord":4,"ord":0,"value":"fact.mq03.courier-token"}
 {"quest_id":"quest.main.mq04","clues_ord":0,"ord":0,"value":"fact.mq04.root-cut"}
 {"quest_id":"quest.main.mq04","clues_ord":1,"ord":0,"value":"fact.mq04.leech-effect"}
 {"quest_id":"quest.main.mq04","clues_ord":2,"ord":0,"value":"fact.mq04.minder-washes"}

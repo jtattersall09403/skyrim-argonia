@@ -30,7 +30,6 @@
 {"quest":"quest.main.mq01","edit":"we.mq01.broker"}
 {"quest":"quest.main.mq01","edit":"we.mq01.camp"}
 {"quest":"quest.main.mq01","edit":"we.mq01.cell"}
-{"quest":"quest.main.mq01","edit":"we.mq01.doors"}
 {"quest":"quest.main.mq01","edit":"we.mq01.families"}
 {"quest":"quest.main.mq01","edit":"we.mq01.gang"}
 {"quest":"quest.main.mq01","edit":"we.mq01.hold-location"}
@@ -65,7 +64,7 @@
 {"quest":"quest.main.mq05","edit":"we.mq05.hall-name"}
 {"quest":"quest.main.mq05","edit":"we.mq05.people"}
 {"quest":"quest.main.mq05","edit":"we.mq05.ship-door"}
-{"quest":"quest.main.mq05","edit":"we.mq05.ship-door-base"}
+{"quest":"quest.main.mq05","edit":"we.mq05.ship-door-pair-base"}
 {"quest":"quest.main.mq05","edit":"we.mq05.throne"}
 {"quest":"quest.main.mq05","edit":"we.mq05.way"}
 {"quest":"quest.main.mq18","edit":"we.clean.abondedtemple"}

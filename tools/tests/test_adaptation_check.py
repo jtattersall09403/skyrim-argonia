@@ -159,18 +159,46 @@ def test_helgen_rule():
     assert ac.record_warnings(rc) == []
 
 
+def test_helgen_rule_across_quests():
+    rc = recs()
+    rc.people = [("quest.l.a", "npc.a"), ("quest.l.b", "npc.a")]
+    rc.stages = {"quest.l.a": {10: {"succ": [], "ff": set()}}, "quest.l.b": {10: {"succ": [(20, {"inZone"}, set())], "ff": set()}}}
+    rc.topics = [("quest.l.b", "npc.a", True, {10})]
+    rc.quest_text = {"quest.l.a": "Ana-Tei is in the camp.", "quest.l.b": "Ana-Tei is essential to stage 10."}
+    w = ac.record_warnings(rc)
+    assert any("quest.l.b: stage 10" in x and "quest.l.a first" in x for x in w)
+    rc.quest_text["quest.l.a"] = "Ana-Tei is essential from the start."
+    assert ac.record_warnings(rc) == []
+    rc.quest_text["quest.l.a"] = ""
+    rc.stages["quest.l.b"][10]["ff"] = {"npc.a"}
+    assert ac.record_warnings(rc) == []
+
+
+def test_bare_form_id_is_normalised():
+    census = {"0F9399:Black Marsh.esm", "000001:Black Marsh.esm", "000001:Other.esm"}
+    assert ac.form_keys("the door 0F9399 and 000001 and 0F9399:Black Marsh.esm", census) == ["0F9399:Black Marsh.esm"]
+    rc = recs()
+    rc.census |= {"0F9399:Black Marsh.esm"}
+    rc.texts.append(("q", "locks 0F9399"))
+    assert ac.record_warnings(rc) == []
+
+
 def test_shared_base_vanilla_door_skill_gate():
     rc = recs()
     rc.base_placements = {"000001:Black Marsh.esm": 10}
     rc.edits = {"we.q.sweep": ("npc_change", "000001:Black Marsh.esm")}
-    rc.door_base = {"000002:Black Marsh.esm": "0C227B:Skyrim.esm"}
-    rc.quest_forms = {"q": {"000002:Black Marsh.esm"}}
+    rc.edits["we.q.door"] = ("door_add", None)
+    rc.edit_text = {"we.q.door": "a door pair inside the ship"}
     rc.stages["q"][10]["succ"].append((20, {"all", "skillAtLeast"}, set()))
     w = ac.record_warnings(rc)
     assert any(x.startswith("shared_base") for x in w)
     assert any(x.startswith("vanilla_door") for x in w)
     assert any(x.startswith("skill_gate") for x in w)
-    rc.edits["we.q.door"] = ("record_change", "000002:Black Marsh.esm")
+    rc.edit_text["we.q.door"] = "both doors take BM&V's Argonian door base (1DE5DF)"
+    assert not any(x.startswith("vanilla_door") for x in ac.record_warnings(rc))
+    rc.edits = {"we.q.sweep": ("record_change", "000002:Black Marsh.esm")}     # BM&V's own door: not checked
+    rc.door_base = {"000002:Black Marsh.esm": "0C227B:Skyrim.esm"}
+    rc.quest_forms = {"q": {"000002:Black Marsh.esm"}}
     assert not any(x.startswith("vanilla_door") for x in ac.record_warnings(rc))
 
 
@@ -181,3 +209,22 @@ def test_record_rules_bind_kept_quests_only():
     assert any(x.startswith("placed") for x in ac.record_warnings(rc))
     rc.live = set()
     assert ac.record_warnings(rc) == []
+
+
+def test_speaker_knows_and_learnable():
+    rc = recs()
+    rc.uses = [("q", "topic.t", "npc.a", "fact.f")]
+    rc.topic_from = {("q", "topic.t"): 30}
+    rc.learnable = {"q": {"fact.f"}}
+    w = ac.record_warnings(rc)
+    assert any(x.startswith("speaker_knows") and "fact.f" in x for x in w)
+    assert not any(x.startswith("learnable") for x in w)
+    rc.knowers = {("q", "npc.a"): {"fact.f": 50}}          # known only from stage 50: too late for stage 30
+    assert any(x.startswith("speaker_knows") for x in ac.record_warnings(rc))
+    rc.knowers = {("q", "npc.a"): {"fact.f": 0}}
+    assert ac.record_warnings(rc) == []
+    rc.learnable = {}
+    rc.gives = [("q", "k1", "fact.g")]
+    w = ac.record_warnings(rc)
+    assert any(x.startswith("learnable") and "topic.t" in x for x in w)
+    assert any(x.startswith("learnable") and "clue k1" in x for x in w)

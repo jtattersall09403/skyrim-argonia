@@ -47,7 +47,7 @@
 {"quest_id":"quest.main.mq04","section":"trail"}
 {"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps nest, and the gate itself, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
 {"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps the player runs back to the landing and tries again; a slip from the ladder drops the player to the root's foot; nothing is lost"}
-{"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"the way's far bend (the root narrows to one foot-width there)"}
+{"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"none: the way can be walked back"}
 {"quest_id":"quest.main.mq05","section":"prepHints"}
 {"quest_id":"quest.main.mq05","section":"prize","value":"Kaska-Meen's or Ei-Tuja's word carried: whichever the player tells carries what the player saw to the interior's tree-minders or to the Nisswo."}
 {"quest_id":"quest.main.mq05","section":"return","value":"The player comes down the ladders to a grove whose two quarrellers have each been told or left out, and walks out through the hall."}

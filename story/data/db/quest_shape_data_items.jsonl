@@ -50,7 +50,7 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":0,"value":"separation: the processing (the player is read as blank and loses a name)"}
 {"quest_id":"quest.main.mq01","section":"beats","ord":1,"value":"liminal: the camp at dusk, the player a debtor without a home Hist, among families whose cutting is their only home Hist"}
-{"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: the shore at dawn, when the saved witness names the player as the one who came for them"}
+{"quest_id":"quest.main.mq01","section":"beats","ord":2,"value":"incorporation: on the shore, when the saved witness names the player as the one who came for them"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":0,"value":"the cut root-ends"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":1,"value":"the jar-rings in the shed"}
 {"quest_id":"quest.main.mq03","section":"nodes","ord":2,"value":"the shallows where the courier went down"}
@@ -70,8 +70,7 @@
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the drips to the leech water"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the bent reeds on the far side"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":4,"value":"the camp"}
-{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"the gate's levy warden: the basin kills what walks in it, and the levy does not go after those who walk out"}
-{"quest_id":"quest.main.mq05","section":"prepHints","ord":1,"value":"the hall's merchants: a depth stick and dried flower buds to purify water are sold in the outer room, with the warning that the way's water is a soup of suffering"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"the gate's levy warden: the basin kills what walks in it, and the levy does not go after those who walk out (topic.mq05-the-word names the marsh way in; k3 shows it)"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}

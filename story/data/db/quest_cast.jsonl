@@ -13,7 +13,7 @@
 {"quest_id":"quest.main.mq01","ord":2,"id":"npc.pirate-freeholds.opening-work-barge.npc-opening-roll-reader","wants":"the water handed round and the names called without a mistake","fears":"being the hand who loses a name from the hold"}
 {"quest_id":"quest.main.mq01","ord":3,"id":"npc.pirate-freeholds.opening-work-barge.npc-opening-courier","wants":"the satchel out of Lilmoth unopened","fears":"being seen to care what is in it"}
 {"quest_id":"quest.main.mq01","ord":4,"id":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper","wants":"the clutch kept warm and fed from the cutting's roots (hist-and-sap, Reproduction and the hatchery)","fears":"the cutting being moved off its roots"}
-{"quest_id":"quest.main.mq01","ord":5,"id":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness","wants":"off the roll and out of the broker's hire","fears":"the fire in the huts"}
+{"quest_id":"quest.main.mq01","ord":5,"id":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness","wants":"off the roll and out of the broker's hire","fears":"the cell's blades, and the fire in the huts"}
 {"quest_id":"quest.main.mq01","ord":6,"id":"npc.pirate-freeholds.opening-work-camp.n1","wants":"his family's months paid","fears":"the fire, now that the huts burn"}
 {"quest_id":"quest.main.mq01","ord":7,"id":"npc.pirate-freeholds.opening-work-camp.n1-2","wants":"to stand beside the camp's cutting before her colour is gone, as she cannot beside her own Hist","fears":"that the camp's cutting will not be there on the morning"}
 {"quest_id":"quest.main.mq01","ord":8,"id":"npc.pirate-freeholds.opening-work-camp.n1-3","wants":"the same, for her daughter's sake","fears":"the broker's next reading"}
@@ -28,8 +28,7 @@
 {"quest_id":"quest.main.mq04","ord":2,"id":"npc.mercantile-coast.low-reed-village.egg-tender","wants":"the Hist open before the next clutch is laid","fears":"owning that she took the strangers' boat for a netter"}
 {"quest_id":"quest.main.mq04","ord":3,"id":"npc.mercantile-coast.low-reed-village.cell-man-1","wants":"the jars away on the boat, and no one following the gum","fears":"being taken alive by a village whose tree he cut"}
 {"quest_id":"quest.main.mq04","ord":4,"id":"npc.mercantile-coast.low-reed-village.cell-man-2","wants":"as Hides-His-Wake","fears":"as Hides-His-Wake"}
-{"quest_id":"quest.main.mq04","ord":5,"id":"npc.mercantile-coast.low-reed-village.reed-hand","wants":"the cell's people in his hands, and who sent them","fears":"being known in the village for the Reed's man (QA9)"}
-{"quest_id":"quest.main.mq04","ord":6,"id":"npc.nesh-deeka","wants":"the cell's method learned, and a witness to it","fears":"the Reed named for it"}
+{"quest_id":"quest.main.mq04","ord":5,"id":"npc.nesh-deeka","wants":"the cell's method learned, and a witness to it","fears":"the Reed named for it"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"npc.nesh-deeka","wants":"the interior's tree-minders and Nisswo to hear what a cut Hist looks like, from someone she can deny (culture.faction.veiled-reed)","fears":"the Reed being named in Helstrom"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"npc.hist-heartland.helstrom.levy-warden-01","wants":"the gate kept, and no stranger walked into the basin unwarned","fears":"strangers who do not hear the warning"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"npc.hist-heartland.helstrom.grove-s-senior-tree","wants":"the Hist watched by tree-minders alone (culture.office.many-root-conclave.tree-minder)","fears":"being seen to need outsiders, at her age, in her post"}

@@ -169,6 +169,8 @@
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.flotilla-speaker","ord":0,"faction_id":"faction.reed-sail-compact"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.lighterman","ord":0,"faction_id":"faction.reed-sail-compact"}
 {"npc_id":"npc.mercantile-coast.lighter-flotilla.purser","ord":0,"faction_id":"faction.reed-sail-compact"}
+{"npc_id":"npc.mercantile-coast.low-reed-village.cell-man-1","ord":0,"faction_id":"faction.unbound-root"}
+{"npc_id":"npc.mercantile-coast.low-reed-village.cell-man-2","ord":0,"faction_id":"faction.unbound-root"}
 {"npc_id":"npc.mercantile-coast.teeth-of-sithis.n1","ord":0,"faction_id":"faction.nisswo"}
 {"npc_id":"npc.mercantile-coast.teeth-of-sithis.n2","ord":0,"faction_id":"faction.nisswo"}
 {"npc_id":"npc.mercantile-coast.teeth-of-sithis.n2-2","ord":0,"faction_id":"faction.nisswo"}
@@ -179,6 +181,3 @@
 {"npc_id":"npc.pirate-freeholds.opening-work-camp.n3","ord":0,"faction_id":"faction.dres-remnant"}
 {"npc_id":"npc.pirate-freeholds.opening-work-camp.n3-2","ord":0,"faction_id":"faction.dres-remnant"}
 {"npc_id":"npc.pirate-freeholds.upriver-hist-village.npc-opening-tree-minder","ord":0,"faction_id":"faction.many-root-conclave"}
-{"npc_id":"npc.mercantile-coast.low-reed-village.reed-hand","ord":0,"faction_id":"faction.veiled-reed"}
-{"npc_id":"npc.mercantile-coast.low-reed-village.cell-man-1","ord":0,"faction_id":"faction.unbound-root"}
-{"npc_id":"npc.mercantile-coast.low-reed-village.cell-man-2","ord":0,"faction_id":"faction.unbound-root"}

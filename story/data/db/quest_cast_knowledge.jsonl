@@ -129,9 +129,10 @@
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.barge-gone","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.clean-cut","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":2,"fact_id":"fact.mq03.cord-woman","value":"knows"}
-{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.satchel-hers","value":"suspects"}
+{"quest_id":"quest.main.mq03","cast_ord":3,"fact_id":"fact.mq03.satchel-hers","value":"knows"}
 {"quest_id":"quest.main.mq03","cast_ord":4,"fact_id":"fact.mq03.clean-cut","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.leech-effect","value":"believes \"the leeches closed the tree, and Pays-Late let them in\""}
+{"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.minder-washes","value":"believes \"Pays-Late goes down to the roots at night; the village sees him go\""}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.tree-closed","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":0,"fact_id":"fact.mq04.uxith-dark","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":1,"fact_id":"fact.mq04.gum-origin","value":"knows"}
@@ -151,10 +152,7 @@
 {"quest_id":"quest.main.mq04","cast_ord":4,"fact_id":"fact.mq04.camp-jars","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":4,"fact_id":"fact.mq04.cell-cord","value":"knows"}
 {"quest_id":"quest.main.mq04","cast_ord":4,"fact_id":"fact.mq04.root-cut","value":"knows"}
-{"quest_id":"quest.main.mq04","cast_ord":5,"fact_id":"fact.mq04.camp-jars","value":"suspects"}
-{"quest_id":"quest.main.mq04","cast_ord":5,"fact_id":"fact.mq04.officer-waits","value":"knows"}
-{"quest_id":"quest.main.mq04","cast_ord":6,"fact_id":"fact.mq04.cell-known","value":"knows"}
-{"quest_id":"quest.main.mq04","cast_ord":6,"fact_id":"fact.mq04.officer-waits","value":"knows"}
+{"quest_id":"quest.main.mq04","cast_ord":5,"fact_id":"fact.mq04.cell-known","value":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":0,"fact_id":"fact.mq05.reed-goal","value":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":0,"fact_id":"fact.mq05.reed-sent","value":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":0,"fact_id":"fact.mq05.severance-not-silence","value":"knows"}

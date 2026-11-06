@@ -274,3 +274,93 @@ seat topic cut and fail-forward 91 gated on Kaska-Meen alive; ship navmesh 0AA66
 0AA837 but nothing within 2954 units of 23D496, so we.mq05.ship-door adds one inner door pair; Zaren-Ish on the jetty;
 k7's c2 support deleted; goldAtLeast C-item, grantHistStep E-global, setDoorAccess E-item; the generator retired: the
 story database is the one source, edited through db.py or quest_record export and import.
+
+### MQ04, round 3 delta (2026-11-06): the planner's rulings
+
+Not converging (round 2: 3 blocking; round 3: 5). Cause: the Reed hand-over branch. Every fix to it left copies
+(boat, walk-off, go-between, a superseded §24b citation), and it gives the player almost nothing over e-minder. Ruling,
+by subtraction: cut the branch. MQ04 has one ending (the pour at the root, e-minder). Zaren-Ish, the hand-over topic,
+flag.mq04.handed-over, e-reed, journal 92, the bound-at-jetty refs, ref.mq04.guarded, fact.mq04.officer-waits, t7, L6
+and Carries-Both-Ways' row (used by no quest) all go. The captured cell man stays the village's (e-minder's text).
+The 1 choice left is MQ04's route (talk or night watch); 1 ending. QA9 keeps its lore but loses the MQ04 citations.
+Also accepted: B5 (the root-herald believes minder-washes; t5 says the village sees him go down at night); N1
+(objective 30 "Learn what Pays-Late or the egg-tender saw."); N2 (gum-trail into stage 40's learns); N3 (minder-hid cut
+from stage 30's learns).
+Loop change (replace, not add): B5 and N2 are mechanical (a topic uses a fact its speaker does not know; a fact used
+that nobody can learn). They become adaptation_check rules, and quest-review's checklist items 4 and 23 shrink to
+pointers.
+
+### The whole main line, round 4 delta (2026-11-06): the planner's rulings
+
+Not converging (blocking 6, 5, 8 over rounds 2-4). Cause: the outline names cells, doors and in-cell mechanics for
+Acts II to V. Each place swap brings new census facts (occupants, navmesh, doors, models) that a reviewer then
+checks at build level, long before those quests are written as records. Loop change (replace): the outline is reviewed
+at line level only (spirit, act beats, lore, motifs, branching, carry-forward). Place fit is checked when each quest
+becomes a record. In the outline, each Act II-V quest keeps its settlement or region and the kind of place. Cell ids,
+door ids and in-cell mechanics move to one list, "Places to fit at record time", which records the known facts
+(round 4 B1-B3, B7, B8; MQ18's back door; MQ10's landing door) so they are not rediscovered.
+Accepted at line level: B5 (the stale premise and spirit rows of MQ09, 10, 18, 20, 23, 26, 27 and 29 replaced by
+the outline's first sentence); B6 (MQ21's "someone pays on screen" and its fire escort clause cut); MQ23 note ("He
+dies this year either way" cut; "found dying" becomes "found"); the Act IV hook ("a hand that knows the wards");
+MQ10's "the same night" cut and one wording for Tear; MQ21's lie needs a motive or a gain, or the choice goes (the
+fixer picks the smaller change, from the outline's own beats). B4 (MQ04) is closed by MQ04's round 3 cut.
+Slice: MQ05's new door pair (we.mq05.ship-door) takes 1DE5DF in its own row.
+
+### MQ01, round 3 delta (2026-11-06): the planner's rulings
+
+Not converging (blocking 4 then 4). Causes: three of four are stale copies the round 2 fixer left (it ran before the
+"a cut is a search" rule), and one is a cross-quest Helgen case the checker does not see. All four blocking and all
+seven notes accepted, as the reviewer worded the fixes (B2: Deesh-Duun into the huts and Sal-Sei to the shed at the
+strike; N10: cut clutch-dead from Deesh-Duun's and Dives's rows; N11: Wuleen-Sei essential to 90, hold door 0F9399).
+Loop change: the checker's helgen rule extends across quests. A person a later quest's stage needs is protected
+from their first appearance in any quest until that stage, or has a fail-forward there.
+
+### MQ03, round 3 delta (2026-11-06): the planner's rulings
+
+Converging (blocking 5 then 3). All three blocking and all six notes accepted as worded:
+- B1: Ties is essential, not protected, while the parent is on.
+- B2: ref.mq03.house-hurt is cut. Ties's own ref is acted on: MQ01 stage 50 enables him outside the survivors parent,
+  MQ03 stage 20 moves him to the mat, and both endings disable him. MQ03 stage 20's onEnter disables
+  ref.mq01.survivors during the fade.
+- B3: 0F9399:Black Marsh.esm is written with its plugin and added as a target of we.mq01.doors on base 1DE5DF.
+- N4 to N9 as worded.
+- The stale act1.md MQ03 header and the Settled list are brought up to date.
+Loop change: adaptation_check normalises a form id written without its plugin. B3's door was missed because the id
+lacked ":Black Marsh.esm".
+
+### MQ05, round 3 delta (2026-11-06): the planner's rulings
+
+Diverging (blocking 3 then 7). Causes:
+- The reconciliation added mechanisms: a door re-model and a named warden. Each brings fresh rows to check.
+- Our door rule reached further than decision 0006. 0006 binds what we add; BM&V's own doors are BM&V's world as its
+  authors made it (decision 0038, owner: "BM&V stays as it is").
+Ruling, by subtraction:
+- We do not re-model BM&V's own doors anywhere. we.mq05.ship-door-base is cut, and so are the door-base swaps in
+  we.tg01.doors and we.mq01.doors (and the MQ03 B3 addition of 0F9399). A door we add takes 1DE5DF.
+- adaptation_check's vanilla_door rule applies only to doors we add.
+Accepted:
+- B1: the inner pair takes 1DE5DF; "ship door statics" cut.
+- B3: "named and given her post by the quest" cut. The soldier speaks through a reference alias on 08D5E9 and is
+  "his".
+- B4: failForward[1] cut, and e-minder.when's Ei-Tuja-dead clause with it.
+- B5: One Who Has Fire Hands' clauses cut.
+- B6: the watch's stranger clause cut; "Tell" replaces "Convince".
+- B7: each stale clause cut; the ledger lists we.mq05.ship-door.
+- N1: the hints point at topic.mq05-the-word and k3; the merchant hint is dropped; pointOfNoReturn reads "none: the
+  way can be walked back".
+- N2: the gift takes 40 gold (takeGold).
+- N3: journal 20 reads "The Reed wants...".
+- N4: Ei-Tuja is essential to 92, and both stage 50 fail-forwards are cut (Helgen).
+- N5: c1 cut; k6's c2 support cut.
+- N9: "every day" cut.
+- N10: one clause on the inner door in stage 20's directions, measured at build.
+Not taken:
+- N6: the +20 rewards stay.
+- N7: moot once ship-door-base is cut.
+- N8: the pair stays, cheaper than a build-time collision check.
+Loop change: a fix may not add a mechanism (a new edit, alias, door or name). If a fix needs one, the planner rules
+on it first.
+
+Round 4: applied (SHA_PLACEHOLDER)
+
+Round 3: applied (pending sha)

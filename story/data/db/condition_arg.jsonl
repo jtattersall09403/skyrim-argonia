@@ -1956,10 +1956,6 @@
 {"condition_id":"quest_fail_forward:quest.main.mq04|2|0:when.0.0","ord":0,"value":"npc.mercantile-coast.low-reed-village.chime-tuner"}
 {"condition_id":"quest_fail_forward:quest.main.mq04|2|0:when.1.0","ord":0,"value":"npc.mercantile-coast.low-reed-village.egg-tender"}
 {"condition_id":"quest_fail_forward:quest.main.mq05|0|0:when.0","ord":0,"value":"npc.nesh-deeka"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|3|0:when.0.0","ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|3|0:when.1.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|3|1:when.0","ord":0,"value":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
-{"condition_id":"quest_fail_forward:quest.main.mq05|3|1:when.1.0","ord":0,"value":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"condition_id":"quest_fail_forward:quest.mr.mr01|0|0:when.0","ord":0,"value":"npc.hist-heartland.greenspring.spring-keeper"}
 {"condition_id":"quest_fail_forward:quest.mr.mr01|3|0:when.0","ord":0,"value":"npc.hist-heartland.greenspring.tree-minder"}
 {"condition_id":"quest_fail_forward:quest.mr.mr01|4|0:when.0","ord":0,"value":"npc.hist-heartland.greenspring.root-herald"}
@@ -2344,13 +2340,6 @@
 {"condition_id":"quest_successor:quest.main.mq04|4|0:when.0","ord":0,"value":"zone.mq04.root"}
 {"condition_id":"quest_successor:quest.main.mq04|4|0:when.1","ord":0,"value":"thing.mq04.sap-jars"}
 {"condition_id":"quest_successor:quest.main.mq04|4|0:when.1","ord":1,"value":1}
-{"condition_id":"quest_successor:quest.main.mq04|4|0:when.2","ord":0,"value":"flag.mq04.handed-over"}
-{"condition_id":"quest_successor:quest.main.mq04|4|0:when.2","ord":1,"value":1}
-{"condition_id":"quest_successor:quest.main.mq04|4|1:when.0","ord":0,"value":"zone.mq04.root"}
-{"condition_id":"quest_successor:quest.main.mq04|4|1:when.1","ord":0,"value":"thing.mq04.sap-jars"}
-{"condition_id":"quest_successor:quest.main.mq04|4|1:when.1","ord":1,"value":1}
-{"condition_id":"quest_successor:quest.main.mq04|4|1:when.2","ord":0,"value":"flag.mq04.handed-over"}
-{"condition_id":"quest_successor:quest.main.mq04|4|1:when.2","ord":1,"value":0}
 {"condition_id":"quest_successor:quest.main.mq05|0|0:when.0","ord":0,"value":"topic.mq05-the-word"}
 {"condition_id":"quest_successor:quest.main.mq05|0|0:when.0","ord":1,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_successor:quest.main.mq05|0|0:when.1.0","ord":0,"value":"speechcraft"}
