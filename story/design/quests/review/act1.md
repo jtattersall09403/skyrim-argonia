@@ -80,3 +80,23 @@ outline, which becomes the source.
 - N4: the act split in §22 matches the line spirit.
 - N5: MQ04 stage 10's journal has a sender line for when Nesh-Deeka died in MQ03; the Eye's two statements in
   eye-of-argonia.md reconciled (the Eye "grants no kingship" vs CLAIM's coronation).
+
+### MQ01, round 1: fix by subtraction (planner's rulings; all accepted)
+
+- B1: stages 11, 12, 13 and flag.mq01.manner-cooperated/-silent/-defied cut; all three stage-10 answers go to 20,
+  the one broker approach moves into 20.
+- B2: the rowboat rescue cut (stages 43 and 92, e-ties, flag.mq01.saved-ties, zone.mq01.boat-first): no boat
+  system in the stack; Ties is a burnt survivor on the shore; MQ03 drops its saved-ties read and "from the water".
+- B3: no timeOfDay gates or scene clock: 40 starts when the player reaches the fire after the clutch talk (as
+  Helgen starts on arrival); the night fall-forward becomes inZone zone.mq01.shore to 44.
+- B4: the stale clauses cut (the courier dies in the shallows as MQ03 has it; two cutters; one port hand, Ux-Xeek;
+  the witnesses are camp families; n1-2 and n1-3 match thing.gang; no "MQ03 decides whether their months stand");
+  the saved witness protected to stage 90, the three dawn fall-forwards cut, so 93's "alone" holds.
+- N1: stage 30 completes on the reed handed to Sal-Sei; a-persuade cut.
+- N2: the jars cut from MQ01's journals and fact.mq01.roots-cut (MQ03's reversal, MQ04's premise).
+- N3: the leader's "fear of being named" and the witness clause cut from MQ01's cast.
+- N4: at dawn only the clutch-dead line; e-sal leaves the player Sal-Sei's reed-knife (already in the world); no
+  disposition-only rewards.
+- N5: "Lilmoth's dock" in text, never Dock1; the hatching shed is the uxith (no "uxith goes dark"); Ux-Xeek's role
+  matches (Wuleen-Sei reads the roll); the foundation lists both held-back forms (0BCC51, 0F0F3E).
+Budget after the fix: 11 stage ids, 1 real choice, 3 endings.
