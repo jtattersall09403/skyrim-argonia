@@ -232,3 +232,8 @@ settlements that BM&V does not have; Phase 5 commissions minor quests against BM
 
 Held: the per-quest verdicts and adapted premises (step 5) wait on the province vibe and the updated quest skills
 (owner, 2026-11-06); the step 2 rows are re-read against the vibe then.
+
+**Found while drafting (held for the world ruling).** BM&V's seats are dressed with vanilla actors that jar: Gallows
+Rock holds Silver Hand, werewolf and Imperial-corpse actors; BMN's Lilmoth dungeon holds Volkihar skeletons; the
+Temple and Murkmire hold Imperial MQ101 soldiers and an Arkay priestess, and Longmont, Blackrose and Murkwood more.
+One world-wide clean-up edit decides them all at step 5, never line by line.
