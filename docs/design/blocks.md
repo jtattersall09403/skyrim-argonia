@@ -120,8 +120,8 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ01 40 | TR-scene | - | E-enable, E-scene, E-stage |
 | MQ01 41 | TR-zone | C-stage | E-stage |
 | MQ01 42 | TR-zone | C-stage | E-stage |
-| MQ01 90 | TR-zone | C-time | E-enable, E-global, E-item, E-stage, TR-chain |
-| MQ01 91 | TR-zone | C-time | E-enable, E-global, E-stage, TR-chain |
+| MQ01 90 | TR-zone | C-detected, C-time | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ01 91 | TR-zone | C-detected, C-time | E-enable, E-global, E-stage, TR-chain |
 | MQ01 93 | TR-zone | - | E-enable, E-stage, TR-chain |
 | MQ03 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
 | MQ03 20 | TR-acquire, TR-topic | C-item | E-enable, E-global, E-move, E-stage |

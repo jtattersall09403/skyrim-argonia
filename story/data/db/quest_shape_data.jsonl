@@ -58,7 +58,7 @@
 {"quest_id":"quest.main.mq03","section":"familiarGround","value":"the barge hold where the game began, empty now, its door locked"}
 {"quest_id":"quest.main.mq03","section":"guiltyParties","value":"the cell of the woman with the knotted cord (Cuts-the-Old-Knot, unnamed here) and its three cutters"}
 {"quest_id":"quest.main.mq03","section":"image","value":"a ring of trees in fog with a door-gap nobody built at its top, and a dry voice"}
-{"quest_id":"quest.main.mq03","section":"leads","value":"the root-ends lead to the shed; the shed's rings lead to the sap's freshness; the deep water gives the courier's tag; the survivor gives the cord woman; Nesh-Deeka joins them"}
+{"quest_id":"quest.main.mq03","section":"leads","value":"the root-ends lead to the shed; the shed's rings lead to the sap's freshness; the sunk fish-trap gives the courier's tag; the survivor gives the cord woman; Nesh-Deeka joins them"}
 {"quest_id":"quest.main.mq03","section":"nodes"}
 {"quest_id":"quest.main.mq03","section":"rule","value":"the dream comes to whoever tasted the cell's sap (QA18); it cannot be fought or refused"}
 {"quest_id":"quest.main.mq03","section":"timeline","value":"dusk: the courier killed and his strap torn off into the deep water under the boards, the satchel taken, the roots cut and the sap jarred, the roll burnt (MQ01); dawn: the unhurt marched back to the barge, the strangers come for the hurt; morning: the house; night: the dream"}

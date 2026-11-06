@@ -76,7 +76,7 @@
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"after-40","value":"withdrawn (light out)"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"before-40","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone; the two cutters at the shed, then on the plank boards, then disabled at the water's edge"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"at-40","value":"enabled"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"before-40","value":"disabled"}
 {"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}
@@ -86,8 +86,8 @@
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"at-10","value":"on the shed floor"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"absent (the jar-marks parent off)"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried if dived for, else on the bottom"}
-{"quest_id":"quest.main.mq03","things_ord":3,"state":"at-10","value":"on the bottom"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"after-10","value":"carried if taken from the trap, else in the trap"}
+{"quest_id":"quest.main.mq03","things_ord":3,"state":"at-10","value":"in the locked fish-trap"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"before-10","value":"absent (the jar-marks parent off)"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"after-20","value":"gone"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"before-20","value":"at the shore"}
