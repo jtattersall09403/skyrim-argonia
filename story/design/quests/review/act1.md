@@ -567,3 +567,18 @@ accepted, by cuts:
 - N10: the review rows that cite stage 30 are marked as cut by #50.
 MQ01 is now the hold, the strike, three rescue branches each won by a skill (blade, Destruction or reeds; the dive
 from the huts; the swim), and the endings.
+
+### MQ04, the leftovers of the #50 fix (2026-11-06): the planner's rulings, spelt out
+
+The fixer could not apply "as worded" rulings whose wording lived only in the review message. Loop change: from
+now on every ruling spells out its fix in this file.
+- B2: cut fact.mq04.strangers-seen and fact.mq04.gum-origin from stage 30's learns. Journal 40's first sentence
+  becomes "A root of Low-Reed Village's Hist was cut and its sap drawn off." we.mq04.village's drips clause says
+  what fact.mq04.gum-trail says: drips from the workshop to the leech water.
+- N3: cut "in a crowd or a market" from stage 30's Speech setting.
+- N4: cut the two-handed, bow and Destruction clauses folded into the OneHanded notes of stages 20 and 40.
+- N5: "two cells out" becomes "past the last stilt house, where the reeds bend".
+- N6: cut "where he found it" from journal 91.
+- Self-review B3 (gold against the village's barter lore): the gift becomes food, not coin. Two portions of any
+  common food (C-item on the food keyword, then E-item to take them); the journal says "bring her food".
+- Self-review N3: Turns-The-Clutch's protection until stage 40 stays (the Helgen rule needs it).
