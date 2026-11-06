@@ -246,3 +246,49 @@ B7 and B8 had additive fixes. The planner answers them by subtraction instead, a
 - MQ03 stage 10: the phial objective now needs Alchemy 25 (C-skill), as the record already said; the tag now lies in a
   sunk fish-trap, locked (Novice): Lockpicking, with the dive only the way down (review B3).
 - The other slice quests already had a real skill on every stage; adaptation_check: 0 findings, 0 warnings.
+
+## MQ01 and MQ03 after #53 (base 0f308d22): 3 blocking; all accepted with the reviewer's exact text
+
+- B1, MQ01:
+  - thing.mq01.cell source: replace "; at stage 42 the two cutters walk from the shed along the plank boards over
+    the huts' water towards the shore" with "; when stage 41 or 42 starts, the two cutters walk from the shed along
+    the plank boards over the huts' water to the water's edge where the cell came in, away from the shore below the
+    camp, and are disabled there".
+  - we.mq01.cell description becomes, whole: "two of the Unbound Root cell, in faction.unbound-root, and
+    Cuts-the-Old-Knot, who is scene-protected and leaves before the player is free (disabled when gone); when stage
+    41 or 42 starts the two cutters walk from the shed along the plank boards over the huts' water to the water's
+    edge where the cell came in, away from the shore below the camp, and are disabled there".
+  - Stage 42 journal becomes "From the water I can hear the cutters leaving the shed along the plank boards over us,
+    back to the water they came by, and Sal-Sei has not come out. I'm to bring Deesh-Duun south under the plank
+    boards to the shore below the camp, keeping out of the cutters' sight until they are gone, or kill them first."
+- B2, MQ01: thing.mq01.cell's after-40 state becomes "Cuts-the-Old-Knot gone; the two cutters at the shed, then on
+  the plank boards, then disabled at the water's edge".
+- B3, MQ03 (planner: accepted, two placed lockpicks, as at Helgen's Novice cage):
+  - we.mq03.jar-marks: after "in a sunk fish-trap, locked (Novice);" insert " two lockpicks in the families'
+    net-basket on the burnt plank boards beside the fire;".
+  - thing.mq03.courier-token source: "locked (Novice, W-ref): dive to it and pick its lock" becomes "locked
+    (Novice, W-ref), two lockpicks in the families' net-basket on the boards above: dive to it and pick its lock".
+  - Stage 10 directions: "the courier's strap and tag lie on the bottom straight below them, one breath down."
+    becomes "the courier's strap and tag lie in the families' locked fish-trap on the bottom straight below them,
+    one breath down; their net-basket on the boards holds picks."
+- Notes (high):
+  - MQ03 t1: "falls through the burnt plank boards at the camp's fire into the deep water below." becomes "falls
+    through the burnt plank boards at the camp's fire and in at the mouth of the families' sunk fish-trap below,
+    whose lid they keep locked against the hungry gang."
+  - Cut quest_action mq01|1|0 and mq01|3|0 (the Swimming rows).
+  - MQ03 foundation:
+    - "Swimming for the dive" becomes "Lockpicking (Novice) for the sunk fish-trap, owner #53";
+    - "the tag (the dive)" becomes "the tag (the fish-trap's lock)";
+    - "into the deep water below, and the dive recovers it" becomes "into the families' sunk fish-trap below, which
+      the player dives to and picks".
+  - MQ01 foundation: "and the huts (the dive under the plank boards)" becomes "and the huts (Sneak under the plank
+    boards; the dive is the way in, not a skill, #53)".
+- Notes (low):
+  - MQ03 objective ties: "still on the bottom under" becomes "still in the sunk fish-trap under".
+  - Courier-token states: at-10 becomes "in the locked fish-trap"; after-10 becomes "carried if taken from the
+    trap, else in the trap".
+  - shapeData.leads: "the deep water gives the courier's tag" becomes "the sunk fish-trap gives the courier's tag".
+  - L10: "Danger is terrain only (the dive)" becomes "Danger is terrain and a fixed Novice lock".
+  - Stage 10 journal: "or dive for the tag" becomes "or dive for the tag in the families' sunk fish-trap and pick
+    its lock".
+  - Skill ids use one casing, Lockpicking.
