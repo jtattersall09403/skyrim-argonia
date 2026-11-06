@@ -290,6 +290,8 @@ Loop change (replace, not add): B5 and N2 are mechanical (a topic uses a fact it
 that nobody can learn). They become adaptation_check rules, and quest-review's checklist items 4 and 23 shrink to
 pointers.
 
+Round 3: applied (e5e9ceea; gap-register QA9/QA15 and this line in the next commit).
+
 ### The whole main line, round 4 delta (2026-11-06): the planner's rulings
 
 Not converging (blocking 6, 5, 8 over rounds 2-4). Cause: the outline names cells, doors and in-cell mechanics for
