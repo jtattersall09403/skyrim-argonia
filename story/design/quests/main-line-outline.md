@@ -33,7 +33,7 @@ Line-wide rules:
 killing, and that night a clutch dies in the egg.
 
 MQ01 No Name on the Work Roll, MQ03 A Dead Prisoner's Use, MQ04 The Tree That Turned Its Face, MQ05 Helstrom Behind
-the Thorns (being reworked whole). What Act I hands on, on every ending: the player is the Reed's deniable hand,
+the Thorns. What Act I hands on, on every ending: the player is the Reed's deniable hand,
 has seen Cuts-the-Old-Knot, dreams the ring of trees and the unbuilt door, knows the cell cut a Hist's root to take
 its sap, and stands in Helstrom having met Kaska-Meen and Ei-Tuja (one may be dead) and walked past the empty, swept
 Scalded Throne. The handler is Nesh-Deeka; if she died, Never-Writes-Twice, already in the Reed's house since MQ03,
