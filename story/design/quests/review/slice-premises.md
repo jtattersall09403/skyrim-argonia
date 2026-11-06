@@ -89,3 +89,11 @@ Must-fix:
 Round 1: applied (commit e87457d4)
 
 Settled: (none yet)
+
+## After round 1
+
+Applied (commit e87457d4). Planner's rulings on the fixer's judgement calls: LQ30 uses BM&V's own gate (08D5E9), and
+MQ05 cites it rather than owning a row (MQ05's rework follows); one band per quest (LQ25 at the landing's band 1)
+accepted; TG02's three lies are characters' claims inside the quest, not facts about the world, so they need no lore
+source. Round 2 (a fresh reviewer per line) runs with the Act I round.
+

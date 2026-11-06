@@ -52,3 +52,31 @@ the npc and fact rows corrected. MQ05's place in the line (the spirit: Helstrom 
 swept Scalded Throne) is kept; make it exciting and Black Marsh-y.
 
 Settled: (none yet)
+
+## The whole main line, round 1 (2026-11-06): the planner's rulings
+
+All five blocking findings and all five notes accepted. Fix at outline level (Acts II to V have no records yet);
+the authored story/design/quests/30-main-quest.md stays as history, with a header note pointing to the adapted
+outline, which becomes the source.
+- B1: no multiplying choices down the line: §20's trust variables and paths, §24b's reward tracks and tier locks,
+  §24.4's "offers only what accumulated state has enabled", §21b.3's wrong-mark lead, MQ15's variant per lead city,
+  the carry-forward clauses of MQ20, MQ25 and MQ27 all cut; rewards fixed per quest; the second Hist in one fixed
+  place; Cuts-the-Old-Knot opposes at the door on every path; only the finale's CUT, CLAIM or MEND carries forward;
+  Act I's flags (flag.mq05.reed-exposed, flag.mq04.adopted) colour only or cut.
+- B2: no procedure resolves an act: MQ22's two reports cut (the lie becomes MQ21's last choice, its victim the raid
+  the player stands in); MQ20 a break-in and rescue (no files, no copy/alter/leak menu); MQ25's council background
+  only; MQ26's archive not a desk; evidence weakens the Last Warden (MQ29) but never releases it; MEND an act at the
+  Root, custodians only in the epilogue.
+- B3: MQ05 as ruled above.
+- B4: no living Shadowscales hunting the player (the last dies in 4E 201): the single vanished survivor the player
+  tracks, or MQ23's manhunt cut.
+- B5: homes only where the world has them: MQ14 (Archon's lighthouse) dropped from the beats (three leads: MQ07,
+  MQ09, MQ10); Gideon and Stormhold homes struck from §21; the sunken Xanmeer (MQ16) and the Lost City (MQ29)
+  recorded as needs before Act III is fitted.
+- N1: Act II opens on MQ07's false Eye; MQ06 cut; the triangulation is the last stage of the third lead.
+- N2: Helstrom freed of most main quests (by the cuts above); one MQ23 route chain; no main quest in a faction seat or a
+  slice quest's place (MQ13 vs TG02's Pusbottom, MQ09 vs BC02's cells, MQ04's village vs the Many-Root hub).
+- N3: talk-only quests cut or given skill stages.
+- N4: the act split in §22 matches the line spirit.
+- N5: MQ04 stage 10's journal has a sender line for when Nesh-Deeka died in MQ03; the Eye's two statements in
+  eye-of-argonia.md reconciled (the Eye "grants no kingship" vs CLAIM's coronation).
