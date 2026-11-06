@@ -1,9 +1,9 @@
-{"quest_id":"quest.bc.bc01","section":"aftermath","value":"She greets the player in Blackrose in either ending; her colour returns as she nears her tree."}
+{"quest_id":"quest.bc.bc01","section":"aftermath","value":"Bought down, she greets the player in Blackrose by name; slipped away, she is gone, and Hulm-Tei will not speak to the player."}
 {"quest_id":"quest.bc.bc01","section":"bondageSheet","value":"The debt: four months for a boat. The holder: the estate and its steward Hulm-Tei. The terms: her food, the boat's upkeep and sick days are added to it. The exit in law: worked off. The exit in practice: bought out, or gone. What she wants: to go home to her tree."}
 {"quest_id":"quest.bc.bc01","section":"costToTheBound","value":"Bought down, she owes nothing but the estate keeps her boat; slipped away, she can never go back to the swamp road, and the estate men are rougher with the next one held."}
 {"quest_id":"quest.bc.bc01","section":"deadline","value":"none: the Owing runs on; the channel is taken at night."}
 {"quest_id":"quest.bc.bc01","section":"revealOrder","value":"Her grey first (k3), then the steward's true account (k1), then the book itself (k2)."}
-{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one brought out greets the player in the Chainbreakers' house and speaks the others' names to Never-Sold."}
+{"quest_id":"quest.bc.bc02","section":"aftermath","value":"The one brought out greets the player and speaks the others' names to Never-Sold."}
 {"quest_id":"quest.bc.bc02","section":"bondageSheet","value":"The debt: Keeps-The-Old-Count's Owing as the heirs reckon it; Says-It-Plain held for words; Hides-In-Reeds for a killing. The holder: the heirs of the Rose. The exit in law: none they own to. The exit in practice: the fire. What each wants: out."}
 {"quest_id":"quest.bc.bc02","section":"costToTheBound","value":"Two of the three die in the smoke whichever the player chooses; the one brought out is in the Chainbreakers' keeping and cannot go back to the heirs."}
 {"quest_id":"quest.bc.bc02","section":"deadline","value":"the smoke: a line, not a timer; the fire takes the other two only when the first comes away."}

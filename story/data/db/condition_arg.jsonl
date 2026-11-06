@@ -1835,12 +1835,15 @@
 {"condition_id":"place_hostility_flips:place.saxhleel-coast.wall-hist-village|0:when","ord":1,"value":"hunted"}
 {"condition_id":"place_hostility_flips:place.saxhleel-coast.wall-hist-village|1:when","ord":0,"value":"faction.an-xileel"}
 {"condition_id":"place_hostility_flips:place.saxhleel-coast.wall-hist-village|1:when","ord":1,"value":1}
-{"condition_id":"quest:quest.bc.bc02:start_when","ord":0,"value":"quest.bc.bc01"}
-{"condition_id":"quest:quest.bc.bc02:start_when","ord":1,"value":"≥"}
-{"condition_id":"quest:quest.bc.bc02:start_when","ord":2,"value":90}
-{"condition_id":"quest:quest.bc.bc03:start_when","ord":0,"value":"quest.bc.bc01"}
-{"condition_id":"quest:quest.bc.bc03:start_when","ord":1,"value":"≥"}
-{"condition_id":"quest:quest.bc.bc03:start_when","ord":2,"value":90}
+{"condition_id":"quest:quest.bc.bc01:start_when","ord":0,"value":"15635D:Black Marsh.esm"}
+{"condition_id":"quest:quest.bc.bc02:start_when.0","ord":0,"value":"quest.bc.bc01"}
+{"condition_id":"quest:quest.bc.bc02:start_when.0","ord":1,"value":"≥"}
+{"condition_id":"quest:quest.bc.bc02:start_when.0","ord":2,"value":90}
+{"condition_id":"quest:quest.bc.bc02:start_when.1","ord":0,"value":"15635D:Black Marsh.esm"}
+{"condition_id":"quest:quest.bc.bc03:start_when.0","ord":0,"value":"quest.bc.bc01"}
+{"condition_id":"quest:quest.bc.bc03:start_when.0","ord":1,"value":"≥"}
+{"condition_id":"quest:quest.bc.bc03:start_when.0","ord":2,"value":90}
+{"condition_id":"quest:quest.bc.bc03:start_when.1","ord":0,"value":"02F35A:Black Marsh.esm"}
 {"condition_id":"quest:quest.local.lf83:start_when.0","ord":0,"value":"dry"}
 {"condition_id":"quest:quest.local.lf83:start_when.1.0","ord":0,"value":"topic.claywater-two-charges"}
 {"condition_id":"quest:quest.local.lf83:start_when.1.0","ord":1,"value":"npc.imperial-fringe.claywater-station.n1-3"}
@@ -1987,8 +1990,7 @@
 {"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0.0","ord":1,"value":25}
 {"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0.1","ord":0,"value":"topic.bc02-the-gate"}
 {"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0.1","ord":1,"value":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
-{"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.0","ord":0,"value":"sneak"}
-{"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.0","ord":1,"value":25}
+{"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.0","ord":0,"value":"zone.bc02.gate-inner"}
 {"condition_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
 {"condition_id":"quest_objective:quest.bc.bc02|1|0:complete_when.0","ord":0,"value":"topic.bc02-come-speaker"}
 {"condition_id":"quest_objective:quest.bc.bc02|1|0:complete_when.0","ord":1,"value":"npc.imperial-penal-south.blackrose.held-speaker"}
@@ -2280,8 +2282,7 @@
 {"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.0.0","ord":1,"value":25}
 {"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.0.1","ord":0,"value":"topic.bc02-the-gate"}
 {"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.0.1","ord":1,"value":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
-{"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.1.0","ord":0,"value":"sneak"}
-{"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.1.0","ord":1,"value":25}
+{"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.1.0","ord":0,"value":"zone.bc02.gate-inner"}
 {"condition_id":"quest_successor:quest.bc.bc02|0|0:when.1.1.1.0","ord":0,"value":"npc.imperial-penal-south.blackrose.post-gatekeeper"}
 {"condition_id":"quest_successor:quest.bc.bc02|1|0:when","ord":0,"value":"npc.imperial-penal-south.blackrose.held-speaker"}
 {"condition_id":"quest_successor:quest.bc.bc02|1|0:when","ord":1,"value":"we.door.rose-jail"}

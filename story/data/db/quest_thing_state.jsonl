@@ -5,6 +5,7 @@
 {"quest_id":"quest.bc.bc01","things_ord":2,"state":"during","value":"in the chest, or carried"}
 {"quest_id":"quest.bc.bc01","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc01","things_ord":4,"state":"after-10","value":"at the landing"}
+{"quest_id":"quest.bc.bc01","things_ord":4,"state":"after-90","value":"in the house"}
 {"quest_id":"quest.bc.bc01","things_ord":4,"state":"before-10","value":"in the house"}
 {"quest_id":"quest.bc.bc01","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":0,"state":"all","value":"present"}

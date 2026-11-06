@@ -10,7 +10,6 @@
 {"quest_id":"quest.bc.bc02","ord":3,"id":"npc.imperial-penal-south.blackrose.held-killer","access":"write"}
 {"quest_id":"quest.bc.bc02","ord":4,"id":"npc.imperial-penal-south.blackrose.held-mother","access":"write"}
 {"quest_id":"quest.bc.bc02","ord":5,"id":"place.imperial-penal-south.blackrose","access":"read"}
-{"quest_id":"quest.bc.bc02","ord":6,"id":"flag.bc02.who-lived","access":"write"}
 {"quest_id":"quest.bc.bc03","ord":0,"id":"npc.imperial-penal-south.blackrose-prison.chainbreaker-envoy-camped-causeway","access":"write"}
 {"quest_id":"quest.bc.bc03","ord":1,"id":"npc.mercantile-coast.soulrest.crew-boss","access":"write"}
 {"quest_id":"quest.bc.bc03","ord":2,"id":"place.mercantile-coast.soulrest","access":"read"}

@@ -2637,8 +2637,13 @@
 {"id":"place_hostility_flips:place.saxhleel-coast.umbriel-shore-memorial|0:when","term":"flag"}
 {"id":"place_hostility_flips:place.saxhleel-coast.wall-hist-village|0:when","term":"notorietyTier"}
 {"id":"place_hostility_flips:place.saxhleel-coast.wall-hist-village|1:when","term":"factionRankAtLeast"}
-{"id":"quest:quest.bc.bc02:start_when","term":"questStage"}
-{"id":"quest:quest.bc.bc03:start_when","term":"questStage"}
+{"id":"quest:quest.bc.bc01:start_when","term":"inCell"}
+{"id":"quest:quest.bc.bc02:start_when","term":"all"}
+{"id":"quest:quest.bc.bc02:start_when.0","parent_id":"quest:quest.bc.bc02:start_when","ord":0,"term":"questStage"}
+{"id":"quest:quest.bc.bc02:start_when.1","parent_id":"quest:quest.bc.bc02:start_when","ord":1,"term":"inCell"}
+{"id":"quest:quest.bc.bc03:start_when","term":"all"}
+{"id":"quest:quest.bc.bc03:start_when.0","parent_id":"quest:quest.bc.bc03:start_when","ord":0,"term":"questStage"}
+{"id":"quest:quest.bc.bc03:start_when.1","parent_id":"quest:quest.bc.bc03:start_when","ord":1,"term":"inCell"}
 {"id":"quest:quest.local.lf83:start_when","term":"all"}
 {"id":"quest:quest.local.lf83:start_when.0","parent_id":"quest:quest.local.lf83:start_when","ord":0,"term":"seasonIs"}
 {"id":"quest:quest.local.lf83:start_when.1","parent_id":"quest:quest.local.lf83:start_when","ord":1,"term":"any"}
@@ -2893,7 +2898,7 @@
 {"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0.0","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0","ord":0,"term":"skillAtLeast"}
 {"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0.1","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.0","ord":1,"term":"topicHeardFrom"}
 {"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1","ord":1,"term":"all"}
-{"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.0","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1","ord":0,"term":"skillAtLeast"}
+{"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.0","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1","ord":0,"term":"inZone"}
 {"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.1","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1","ord":1,"term":"not"}
 {"id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.1.0","parent_id":"quest_objective:quest.bc.bc02|0|0:complete_when.1.1.1","ord":0,"term":"detectedBy"}
 {"id":"quest_objective:quest.bc.bc02|1|0:complete_when","term":"any"}
@@ -3109,7 +3114,7 @@
 {"id":"quest_successor:quest.bc.bc02|0|0:when.1.0.0","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.0","ord":0,"term":"skillAtLeast"}
 {"id":"quest_successor:quest.bc.bc02|0|0:when.1.0.1","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.0","ord":1,"term":"topicHeardFrom"}
 {"id":"quest_successor:quest.bc.bc02|0|0:when.1.1","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1","ord":1,"term":"all"}
-{"id":"quest_successor:quest.bc.bc02|0|0:when.1.1.0","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.1","ord":0,"term":"skillAtLeast"}
+{"id":"quest_successor:quest.bc.bc02|0|0:when.1.1.0","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.1","ord":0,"term":"inZone"}
 {"id":"quest_successor:quest.bc.bc02|0|0:when.1.1.1","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.1","ord":1,"term":"not"}
 {"id":"quest_successor:quest.bc.bc02|0|0:when.1.1.1.0","parent_id":"quest_successor:quest.bc.bc02|0|0:when.1.1.1","ord":0,"term":"detectedBy"}
 {"id":"quest_successor:quest.bc.bc02|1|0:when","term":"npcAtMark"}
