@@ -317,7 +317,7 @@
 {"quest_id":"quest.main.mq05","review_findings_ord":1,"ord":2,"value":"stages.20"}
 {"quest_id":"quest.main.mq05","review_findings_ord":2,"ord":0,"value":"things.thing.mq05.wasps"}
 {"quest_id":"quest.main.mq05","review_findings_ord":2,"ord":1,"value":"facts.fact.mq05.wasps"}
-{"quest_id":"quest.main.mq05","review_findings_ord":2,"ord":2,"value":"stages.30"}
+{"quest_id":"quest.main.mq05","review_findings_ord":2,"ord":2,"value":"stages.20"}
 {"quest_id":"quest.main.mq05","review_findings_ord":3,"ord":0,"value":"cast.levy-warden-01"}
 {"quest_id":"quest.main.mq05","review_findings_ord":3,"ord":1,"value":"facts.fact.mq05.basin-lethal"}
 {"quest_id":"quest.main.mq05","review_findings_ord":4,"ord":0,"value":"facts.fact.mq05.throne-empty"}
@@ -333,8 +333,6 @@
 {"quest_id":"quest.main.mq05","review_findings_ord":9,"ord":0,"value":"actionPlan"}
 {"quest_id":"quest.main.mq05","review_findings_ord":9,"ord":1,"value":"stages.10"}
 {"quest_id":"quest.main.mq05","review_findings_ord":10,"ord":0,"value":"stages"}
-{"quest_id":"quest.main.mq05","review_findings_ord":11,"ord":0,"value":"stages.30"}
-{"quest_id":"quest.main.mq05","review_findings_ord":11,"ord":1,"value":"actionPlan"}
 {"quest_id":"quest.mr.mr01","review_findings_ord":0,"ord":0,"value":"essentialTopics"}
 {"quest_id":"quest.mr.mr01","review_findings_ord":0,"ord":1,"value":"topic.greenspring-sick-root"}
 {"quest_id":"quest.mr.mr01","review_findings_ord":1,"ord":0,"value":"stages.20"}

@@ -30,13 +30,6 @@
 {"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
 {"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
 {"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
-{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
-{"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
-{"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
-{"quest_id":"quest.main.mq01","ord":3,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed), with Sal-Sei's reed-knife"}
-{"quest_id":"quest.main.mq01","ord":4,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
-{"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
-{"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.local.lq25","ord":0,"skill":"Sneak","use":"search-unseen","reason":"the bait points are found from the pier while the crew are not looking"}
 {"quest_id":"quest.local.lq25","ord":1,"skill":"Swimming","use":"dive","reason":"the bait points are found by a swim under the pier"}
 {"quest_id":"quest.local.lq25","ord":2,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought in its lair under the pier"}
@@ -48,6 +41,13 @@
 {"quest_id":"quest.local.lq30","ord":3,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought at the shelter"}
 {"quest_id":"quest.local.lq30","ord":4,"skill":"Sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
 {"quest_id":"quest.local.lq30","ord":5,"skill":"Speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
+{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
+{"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
+{"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
+{"quest_id":"quest.main.mq01","ord":3,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed), with Sal-Sei's reed-knife"}
+{"quest_id":"quest.main.mq01","ord":4,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
+{"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
+{"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
 {"quest_id":"quest.main.mq03","ord":1,"skill":"swimming","use":"dive","reason":"one breath off the end of the burnt boards to the bottom of the shallows for the courier's brass tag, which fell with his strap"}
 {"quest_id":"quest.main.mq03","ord":2,"skill":"alteration","use":"water-breathe","reason":"the other way down: Waterbreathing lets a slow swimmer search the bottom as long as it takes"}
@@ -60,10 +60,9 @@
 {"quest_id":"quest.main.mq04","ord":4,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
 {"quest_id":"quest.main.mq04","ord":5,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp may be taken alive"}
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"Nesh-Deeka sends the player only if they can be denied, so the player argues that they can carry the word and leave the Reed unnamed"}
-{"quest_id":"quest.main.mq05","ord":1,"skill":"swimming","use":"cross-a-flood","reason":"the way in from the landing is the marsh, root and shallows (fauna-hazards: Heart-Mud)"}
-{"quest_id":"quest.main.mq05","ord":2,"skill":"oneHanded","use":"fight","reason":"two giant wasps the size of ponies (fauna-hazards) nest at the way's far bend (fixed level, band 1): the quest's high point"}
-{"quest_id":"quest.main.mq05","ord":3,"skill":"swimming","use":"swim","reason":"the other way through the nest: under the root in the drowned channel, unseen"}
-{"quest_id":"quest.main.mq05","ord":4,"skill":"speechcraft","use":"persuade","reason":"the player tells a tree-minder or a Nisswo what a cut Hist looks like"}
+{"quest_id":"quest.main.mq05","ord":1,"skill":"oneHanded","use":"fight","reason":"two giant wasps the size of ponies (fauna-hazards) nest at the way's far bend (fixed level, band 1): the quest's high point"}
+{"quest_id":"quest.main.mq05","ord":2,"skill":"sneak","use":"sneak-past","reason":"the other way past the nest: on the root at night"}
+{"quest_id":"quest.main.mq05","ord":3,"skill":"speechcraft","use":"persuade","reason":"the player tells a tree-minder or a Nisswo what a cut Hist looks like"}
 {"quest_id":"quest.mr.mr01","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the diagnosis is samples; the river test refutes the salt works"}
 {"quest_id":"quest.mr.mr01","ord":1,"skill":"athletics","use":"dive","reason":"three sampling sites in the drowned stair"}
 {"quest_id":"quest.mr.mr01","ord":2,"skill":"alteration","use":"water-breathe","reason":"the deepest chamber is beyond one breath"}

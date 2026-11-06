@@ -15,7 +15,7 @@ Line-wide rules:
 - **One carried choice.** Each quest below plays the same whatever came before. A quest may hold one local choice;
   its result is colour (a line, a body, a letter) and never changes a later quest's stages. Only the finale's CUT,
   CLAIM or MEND carries forward, into the closing scene and the world's end states.
-- **Act I's flags** (`flag.mq04.adopted`, `flag.mq05.reed-exposed`) are read for one line of colour at most, or not
+- **Act I's flag** (`flag.mq04.adopted`) is read for one line of colour at most, or not
   at all.
 - **Deaths** use the standard fail-forward (30-main-quest §23): every principal is killable; a fallback sender or
   document carries the stage. The Eye cannot be lost.
