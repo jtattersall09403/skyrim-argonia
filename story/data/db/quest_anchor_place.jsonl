@@ -1,7 +1,6 @@
-{"quest_id":"quest.bc.bc01","ord":0,"value":"place.dunmer-north.the-dres-rows"}
-{"quest_id":"quest.bc.bc01","ord":1,"value":"place.pirate-freeholds.corimont-hiring-yard"}
-{"quest_id":"quest.bc.bc03","ord":0,"value":"place.dunmer-north.the-freed-rows"}
-{"quest_id":"quest.bc.bc03","ord":1,"value":"place.imperial-penal-south.chainbreaker-shelter"}
+{"quest_id":"quest.bc.bc01","ord":0,"value":"place.imperial-penal-south.blackrose"}
+{"quest_id":"quest.bc.bc02","ord":0,"value":"place.imperial-penal-south.blackrose"}
+{"quest_id":"quest.bc.bc03","ord":0,"value":"place.mercantile-coast.soulrest"}
 {"quest_id":"quest.bc.bc04","ord":0,"value":"place.imperial-penal-south.rose-outworks"}
 {"quest_id":"quest.bc.bc05","ord":0,"value":"place.imperial-penal-south.rose-bone-waystation"}
 {"quest_id":"quest.bc.bc05","ord":1,"value":"place.mercantile-coast.white-rose-prison"}
@@ -771,13 +770,13 @@
 {"quest_id":"quest.local.lq22","ord":1,"value":"place.hist-heartland.treasure-hunters-live-camp"}
 {"quest_id":"quest.local.lq23","ord":0,"value":"place.mercantile-coast.oliis-air-station"}
 {"quest_id":"quest.local.lq24","ord":0,"value":"place.mercantile-coast.mudfoot"}
-{"quest_id":"quest.local.lq25","ord":0,"value":"place.imperial-penal-south.rose-supply-town"}
+{"quest_id":"quest.local.lq25","ord":0,"value":"place.hist-heartland.helstrom"}
 {"quest_id":"quest.local.lq26","ord":0,"value":"place.dunmer-north.greylight-village"}
 {"quest_id":"quest.local.lq27","ord":0,"value":"place.hist-heartland.mass-grave-flu-memorial"}
 {"quest_id":"quest.local.lq28","ord":0,"value":"place.pirate-freeholds.trunk-road-tradehouse"}
 {"quest_id":"quest.local.lq29","ord":0,"value":"place.mercantile-coast.chasepoint"}
 {"quest_id":"quest.local.lq29","ord":1,"value":"place.mercantile-coast.long-bar-wreckers"}
-{"quest_id":"quest.local.lq30","ord":0,"value":"place.hist-heartland.vista-ledge-canopy-break"}
+{"quest_id":"quest.local.lq30","ord":0,"value":"place.hist-heartland.helstrom"}
 {"quest_id":"quest.local.lq31","ord":0,"value":"place.mercantile-coast.bright-throat-village"}
 {"quest_id":"quest.local.lr01","ord":0,"value":"place.imperial-penal-south.blackrose"}
 {"quest_id":"quest.local.lr01","ord":1,"value":"place.imperial-penal-south.lilmothiit-quarry"}

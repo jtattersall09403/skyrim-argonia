@@ -13,14 +13,15 @@
 {"quest":"quest.bc.bc02","edit":"we.bc02.people"}
 {"quest":"quest.bc.bc02","edit":"we.clean.blackrose"}
 {"quest":"quest.bc.bc02","edit":"we.door.rose-jail"}
-{"quest":"quest.bc.bc03","edit":"we.bc03.barge"}
+{"quest":"quest.bc.bc03","edit":"we.bc03.cabin"}
 {"quest":"quest.bc.bc03","edit":"we.bc03.people"}
 {"quest":"quest.bc.bc03","edit":"we.clean.dock2"}
 {"quest":"quest.bc.bc03","edit":"we.name.soulrest"}
 {"quest":"quest.local.lq25","edit":"we.clean.dock5"}
 {"quest":"quest.local.lq25","edit":"we.lq25.beast"}
-{"quest":"quest.local.lq25","edit":"we.lq25.polers"}
+{"quest":"quest.local.lq25","edit":"we.lq25.crew"}
 {"quest":"quest.local.lq30","edit":"we.clean.helstrom"}
+{"quest":"quest.local.lq30","edit":"we.lq30.beast"}
 {"quest":"quest.local.lq30","edit":"we.lq30.trail"}
 {"quest":"quest.local.lq30","edit":"we.lq30.youth"}
 {"quest":"quest.main.mq01","edit":"we.clean.hereguardplantation"}
@@ -76,7 +77,9 @@
 {"quest":"quest.tg.tg01","edit":"we.tg01.fence"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.pusbottom"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.round"}
+{"quest":"quest.tg.tg01","edit":"we.tg01.thief"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.trader"}
 {"quest":"quest.tg.tg02","edit":"we.clean.lilmoth"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.clients"}
+{"quest":"quest.tg.tg02","edit":"we.tg02.eels"}
 {"quest":"quest.tg.tg02","edit":"we.tg02.house"}

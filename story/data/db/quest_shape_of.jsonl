@@ -1,8 +1,6 @@
 {"quest_id":"quest.bc.bc01","ord":0,"value":"BONDAGE"}
-{"quest_id":"quest.bc.bc02","ord":0,"value":"MISSING"}
-{"quest_id":"quest.bc.bc02","ord":1,"value":"FRAUD"}
-{"quest_id":"quest.bc.bc03","ord":0,"value":"RECKONING"}
-{"quest_id":"quest.bc.bc03","ord":1,"value":"BONDAGE"}
+{"quest_id":"quest.bc.bc02","ord":0,"value":"BONDAGE"}
+{"quest_id":"quest.bc.bc03","ord":0,"value":"BONDAGE"}
 {"quest_id":"quest.bc.bc04","ord":0,"value":"DISPUTE"}
 {"quest_id":"quest.bc.bc04","ord":1,"value":"BONDAGE"}
 {"quest_id":"quest.bc.bc05","ord":0,"value":"RITE"}
@@ -1253,8 +1251,7 @@
 {"quest_id":"quest.ta.ta05","ord":1,"value":"SUCCESSION"}
 {"quest_id":"quest.tg.tg01","ord":0,"value":"THEFT"}
 {"quest_id":"quest.tg.tg01","ord":1,"value":"NEGOTIATION"}
-{"quest_id":"quest.tg.tg02","ord":0,"value":"DISPUTE"}
-{"quest_id":"quest.tg.tg02","ord":1,"value":"THEFT"}
+{"quest_id":"quest.tg.tg02","ord":0,"value":"THEFT"}
 {"quest_id":"quest.tg.tg03","ord":0,"value":"SMUGGLING"}
 {"quest_id":"quest.tg.tg03","ord":1,"value":"FRAUD"}
 {"quest_id":"quest.tg.tg03","ord":2,"value":"BONDAGE"}

@@ -146,12 +146,10 @@
 {"place_id":"place.imperial-penal-south.rose-flooded-passage","ord":0,"value":"quest.provision.blackrose-tunnels"}
 {"place_id":"place.imperial-penal-south.rose-outworks","ord":0,"value":"quest.provision.bc04-anchor"}
 {"place_id":"place.imperial-penal-south.rose-supply-town","ord":0,"value":"quest.provision.lq04-anchor"}
-{"place_id":"place.imperial-penal-south.rose-supply-town","ord":1,"value":"quest.provision.lq25-anchor"}
 {"place_id":"place.imperial-penal-south.saltrice-village","ord":0,"value":"quest.provision.mr09-anchor"}
 {"place_id":"place.imperial-penal-south.scandal-holding-pit","ord":0,"value":"quest.provision.canon.the-owing"}
 {"place_id":"place.imperial-penal-south.three-gate-toll","ord":0,"value":"quest.provision.reed-writ-enforcement-point"}
 {"place_id":"place.imperial-penal-south.three-gate-toll","ord":1,"value":"quest.provision.rs04-anchor"}
-{"place_id":"place.imperial-penal-south.west-market-town","ord":0,"value":"quest.provision.lq25-anchor"}
 {"place_id":"place.mercantile-coast.alessian-hull","ord":0,"value":"quest.provision.wreck-eye-lens"}
 {"place_id":"place.mercantile-coast.alten-meerhleel","ord":0,"value":"quest.provision.canon.alten-meerhleel"}
 {"place_id":"place.mercantile-coast.ashroot-village","ord":0,"value":"quest.provision.hist02"}

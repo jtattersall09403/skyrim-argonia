@@ -63,8 +63,8 @@ Re-read against the [province vibe](../province-vibe.md) (2026-11-06): bureaucra
 **The detectives (decision 0025).** Join a band of crime solvers in Black Marsh and climb from petty thefts and larcenies through murder mysteries to a grand murder finale involving highly important people of the province. Solving crimes the Shadowscales (assassins) and the Night-Reed Chapter (thieves) live by, using classic mystery structures made to fit the lore and the world.
 Beats kept: Early cases are petty crimes: thefts and larcenies; Cases escalate in series of thefts, larcenies and murder mysteries as rank rises; Rivalry with the Shadowscales and the Night-Reed Chapter runs through the line; Recurring cast and a rival, with clues for the finale seeded along the way; Grand finale: a murder mystery that must involve highly important NPCs of Black Marsh. Free: Almost everything is open: the faction's name, founding, patrons, headquarters, ranks, number of cases per rank, the cast, which regions host cases, and the finale's victim and culprit. Fixed by the decision only: escalation by case, a joinable faction, rivalry with the two guilds, a grand finale with important NPCs, grounded in lore and in simple classic mystery structures.
 
-**Chainbreakers.** You fight the Owing, a humane native debt-labour custom that drifted into inherited bondage, by proving it and burying its dead, and you pay for each win. Injustice with no villain: correct arithmetic, kind brokers and a ruin that is implicated rather than evil. Burial work and abolition work are the same work.
-Beats kept: An Owing correct at every step: four months for a boat, eleven years running (BC01); The burnt Rose registers and estate ledgers as one class of document (BC02); Ussa-Rekh's thirty years of forgiveness and the brokerage that now indentures the dock crews (BC03); The procession of the Argonian dead carried home by name by Grave-Singer Ossu through contested crossings (BC05); What the Rose Becomes, ending in a unglamorous reform of assessment itself (BC06); Protected in every end: the archive wing, the confiscation-ledger record class and the Rose heirs as a community. Free: Which estate, crossing or dock hosts each case, minor workers and witnesses, ledger contents beyond the stated arithmetic, route of the procession.
+**Chainbreakers.** You fight the Owing, a humane native debt-labour custom that drifted into inherited bondage, by freeing its people and burying its dead, and you pay for each win. Injustice with no villain: correct arithmetic, kind brokers and a ruin that is implicated rather than evil. Burial work and abolition work are the same work.
+Beats kept: An Owing correct at every step: four months for a boat, eleven years running (BC01); The fire in the cells of the Rose's outer post, and whom the player brings out (BC02); Ussa-Rekh's thirty years of forgiveness and the brokerage that now indentures the dock crews (BC03); The procession of the Argonian dead carried home by name by Grave-Singer Ossu through contested crossings (BC05); What the Rose Becomes, ending in a unglamorous reform of assessment itself (BC06); Protected in every end: the archive wing, the confiscation-ledger record class and the Rose heirs as a community. Free: Which estate, crossing or dock hosts each case, minor workers and witnesses, ledger contents beyond the stated arithmetic, route of the procession.
 
 **Daedric and oddity quests.** Eight strange, standalone encounters, one per Prince plus the unexplained, that feel like intrusions of Oblivion into a Hist-and-Sithis world and leave at least one thing unexplained. Wonder and unease: each Prince's bargain is technically intact and practically ruinous, and the choice is the player's, with Argonians reacting from their own cosmology rather than as followers of the Princes.
 Beats kept: Each quest is found by rumour, shrine, book or strange encounter, never a quest board; Each Prince's bargain or curse is literally true and quietly ruinous (door wishes, mask wants, drowned-library price); The player makes a real choice about which side or hunt to finish (cure, quarantine, expose or let it run; which hunt); At least one element in each stays unexplained (wonder budget); Fixed unique artifact rewards, not scaled loot; Horror is found through hospitality, memory or rite rather than only through combat. Free: Which settlement or ruin hosts each quest, minor cast names, route and set dressing, which of the eight sit in Milestone 1 (DQ01-DQ04) versus wave 2, and which vanilla artifact mesh is re-skinned as the reward.
@@ -245,18 +245,20 @@ Also found: the Marsh Charter's patron Halvar the Damp is a Nord in 36-cast-rost
 ## 5. The first story slice (steps 5 to 8)
 
 The owner ruled (2026-11-06) that BM&V stays as it is and that a slice is fitted first. The slice is chosen for
-fit and variety, and so that nothing in it clashes. It holds 11 quests and 45 world edits:
+fit and variety, and so that nothing in it clashes. It holds 11 quests and 48 world edits:
 
 - **Act I of the main quest** (MQ01, MQ03, MQ04, MQ05), with the new-game flow and the opening scene: the game opens
   in a debt-labour broker's barge at Lilmoth's Dock1 (the state's only presence is the An-Xileel courier, owner Q7),
   the gang is marched to its camp on a river island at the edge of Hereguard's paddies, where the gang families keep
   a Hist cutting from Nine Bends (gap-register QA1); the Reed's house in Lilmoth is unmarked and kept through a
   Lilmoth go-between; the ship takes the player to Helstrom's river landing.
-- **Night-Reed** (TG01, TG02): a Khajiit fence at Soulrest and a thief's round on the boardwalk, the Chapter under
-  Pusbottom, a dive into a sunk house.
-- **Chainbreakers** (BC01 to BC03): a witnessed hearing at an ex-Archein estate just north of Blackrose (QA3), a
-  fire in the Rose's lower levels at its gate outside the town (QA4), a broker's barge at Soulrest.
-- **Two locals** in Act I's towns: a river-beast at Helstrom's landing ending in an arbitration (LQ25), and a youth
+- **Night-Reed** (TG01, TG02): Deep-In-Her-Cups keeps the Chapter's desk at Soulrest behind a Khajiit trader, her
+  front on the dock, and a cowardly thief's round on the boardwalk is watched; the Chapter under Pusbottom, the
+  repopulated slum, then sends the player past the canal's ripper eels to a lockbox beside a fallen stilt house.
+- **Chainbreakers** (BC01 to BC03): a debt book stolen or a woman slipped into the channel at an ex-Archein estate
+  just north of Blackrose (QA3), a fire in the cells of the Rose's outer post at the town's edge (QA4), a broker on
+  Soulrest's open dock.
+- **Two locals** in Act I's towns: a river-beast drawn to Helstrom's landing by a raft crew's bait (LQ25), and a youth
   gone into the basin (LQ30).
 
 The Marsh Charter left the slice in round 2: Gideon's only room is an unfurnished, doorless shell with no navmesh,
@@ -278,13 +280,13 @@ places people in a room with no navmesh without a navmesh edit.
 
 | quest | line | band | where | the adapted premise, in short |
 |---|---|---|---|---|
-| BC01 Four Months for a Boat | Chainbreakers | 1 | blackrose | At the Chainbreakers' house in Blackrose, Never-Sold, born owing and long free, the one who remembers every bought-out name, sends you to an ex-Archein estate on the swamp road just north of the town. |
-| BC02 Names Scratched Out | Chainbreakers | 2 | blackrose | Outside Blackrose, at the Rose's gate, the heirs' lower levels have caught fire. |
-| BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh lives on a mooring-barge at Soulrest's dock. |
-| LQ25 The River Monster's Rent | Local quests | 2 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
+| BC01 Four Months for a Boat | Chainbreakers | 2 | blackrose | At the Chainbreakers' house in Blackrose, Never-Sold, born owing and long free, the one who remembers every bought-out name, sends you to an ex-Archein estate on the swamp road just north of the town. |
+| BC02 Names Scratched Out | Chainbreakers | 2 | blackrose | At the Rose's outer post on the edge of Blackrose, the cells under the post have caught fire. |
+| BC03 The Broker's Mercy | Chainbreakers | 1 | dock2 | Ussa-Rekh works Soulrest's open dock among the crews. |
+| LQ25 The River Monster's Rent | Local quests | 1 | dock5 | At Helstrom's river landing a river-beast has begun to take rafts. |
 | LQ30 The Gates of Helstrom | Local quests | 3 | helstrom | A young Argonian of Helstrom has walked out into the basin to prove something to the tribe. |
-| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit fence passes you the Chapter's word: its people want to see how you work, and they set the job. |
-| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In Pusbottom, Lilmoth's drowned quarter, a merchant's house has sunk into the canal with a lockbox of pledged things in it, a carved token, a charm and a deed-stake. |
+| TG01 A Dry Hand in a Wet City | Night-Reed | 1 | dock2,lilmoth | At Soulrest a Khajiit trader on the dock sends you to Deep-In-Her-Cups, who keeps the Chapter's desk in a back room and drinks nothing. |
+| TG02 The Drowned Lockbox | Night-Reed | 2 | lilmoth | In the Chapter under Pusbottom, Vasha Half-Rent gives you the job: a lockbox of pledged things beside a stilt house fallen into the canal. |
 | MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of a debt-labour broker's barge moored at Lilmoth's Dock1, where an Owing gang hired to Hereguard Plantation is processed: the broker's overseer reads the roll aloud with the months added for food, and character creation is the processing itself. |
 | MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the player reads the burnt camp the cell left at Hereguard, then the Veiled Reed's people carry the hurt to an unmarked Lilmoth house, where Nesh-Deeka offers the Reed's protection; that night the first sap-dream comes. |
 | MQ04 The Tree That Turned Its Face | The Eye and the Root | 2 | village | East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. |

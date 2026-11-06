@@ -1,6 +1,6 @@
 {"line":"quest.line.chainbreakers","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"seat","why":"the Chainbreakers' house in Blackrose"}
-{"line":"quest.line.chainbreakers","ord":1,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"hub","why":"the Rose's lower levels, outside the town"}
-{"line":"quest.line.chainbreakers","ord":2,"settlement":"bmv.dock2","role":"hub","why":"the broker's barge at Soulrest"}
+{"line":"quest.line.chainbreakers","ord":1,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"hub","why":"the Rose's outer post's cells, at the town's edge"}
+{"line":"quest.line.chainbreakers","ord":2,"settlement":"bmv.dock2","role":"hub","why":"the broker on Soulrest's open dock"}
 {"line":"quest.line.daedric","ord":0,"settlement":"bmv.blackmarshnorth.marsh","cell":"08DD0B:Black Marsh North.esp","role":"field","why":"the Underdark book portal as Apocrypha's edge"}
 {"line":"quest.line.detectives","ord":0,"settlement":"bmv.lilmoth","cell":"0FE8B7:Black Marsh.esm","role":"seat","why":"a house in Lilmoth, across the water from the Chapter"}
 {"line":"quest.line.detectives","ord":1,"settlement":"bmv.blackrose","role":"hub","why":"the prison heirs' crimes"}

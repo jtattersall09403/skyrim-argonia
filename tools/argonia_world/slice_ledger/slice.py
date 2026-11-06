@@ -13,7 +13,7 @@ w.con.execute("DELETE FROM world_edit WHERE id NOT IN (%s)" % ",".join("?" * len
 w.dirty.add("world_edit")
 w.update("world_edit", "we.door.rose-jail", settlement="bmv.blackrose", cell="000811:Dawnguard.esm",
          description="a door pair: a new door at BMN's 'Black Rose Jail' marker outside Blackrose into 01BlackRoseJail, "
-                     "the Rose's lower levels; the interior's exit 1F5AE4 re-pointed to it; the old exterior door 1EEB70 "
+                     "the Rose's outer post's cells; the interior's exit 1F5AE4 re-pointed to it; the old exterior door 1EEB70 "
                      "in BlackMarsh2 (-8,26) disabled", lore="story/lore/extrapolation/gap-register.md §8 QA4")
 rows = {r["quest"]: r for r in ROWS}
 JAR = re.compile(r"^(DLC1Gargoyle|Fox|Nord|HighElf|Skeleton|Draugr|DLC1SoulCairn|DLC2Lurker|DLC2Werebear|DwarvenCenturion|DLC2DwarvenBallista|DA03Barbas|DogCompanion|DLC1Husky|Dremora)")
@@ -79,6 +79,13 @@ w.insert("world_edit", id="we.clean.road", kind="npc_remove", settlement="bmv.bl
          race=None, band=None, lore="story/lore/topics/foreign-powers.md (no Imperial presence in 4E Black Marsh)")
 for p_ in cor:
     w.insert("world_edit_target", edit="we.clean.road", target=p_["id"], what="disabled: " + p_["name"].strip()[:80])
+# the road's Lurkers and Dwemer ballistas go (0006); its boars and beasts and Ja Tal keep a fixed level (0035)
+for ids, what in ((("060C61", "060C62", "048FD0", "048FD1"), "disabled"),
+                  (("060C5E", "060C5F", "05D7DC", "05D7BD", "120D5C"), "fixed level"), (("16BF58:Black Marsh North.esp",), "fixed level")):
+    for i in ids:
+        t = i if ":" in i else i + ":Black Marsh.esm"
+        nm = w.query("SELECT coalesce(n.name,'') || ' ' || coalesce(n.editor_id,'') nm FROM bmv_placement p JOIN bmv_npc n ON n.id = p.npc WHERE p.id = ?", t)[0]["nm"]
+        w.insert("world_edit_target", edit="we.clean.road", target=t, what=what + ": " + nm.strip()[:80])
 for r in rows.values():
     for e in r["new_edits"]:
         w.insert("world_edit", **{k: e.get(k) for k in ("id", "kind", "settlement", "cell", "target", "description", "race", "band", "lore")})
@@ -112,7 +119,7 @@ HUB = {"main": [("bmv.helstrom", "2076BB:Black Marsh.esm", "seat", "the Veiled R
                 ("bmv.village", None, "hub", "the first turned Hist, east of Lilmoth"), ("bmv.dock5", None, "hub", "Helstrom's river landing")],
        "night-reed": [("bmv.lilmoth", "16BF81:Black Marsh North.esp", "seat", "the Chapter under Pusbottom"), ("bmv.dock2", None, "hub", "Soulrest's dock and its fence")],
        "chainbreakers": [("bmv.blackrose", "15635D:Black Marsh.esm", "seat", "the Chainbreakers' house in Blackrose"),
-                         ("bmv.blackrose", "000811:Dawnguard.esm", "hub", "the Rose's lower levels, outside the town"), ("bmv.dock2", None, "hub", "the broker's barge at Soulrest")]}
+                         ("bmv.blackrose", "000811:Dawnguard.esm", "hub", "the Rose's outer post's cells, at the town's edge"), ("bmv.dock2", None, "hub", "the broker on Soulrest's open dock")]}
 for line, hs in HUB.items():
     for i, (s, c, role, why) in enumerate(hs):
         w.insert("line_hub", line=L(line), ord=i, settlement=s, cell=c, edit=None, role=role, why=why)
