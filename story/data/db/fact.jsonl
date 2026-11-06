@@ -627,7 +627,7 @@
 {"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist whose root was cut are two things: silence kills no clutch, and the clutch at Low-Reed Village died of the cut.","ord":9,"from_ref":"t1","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.throne-empty","claim":"The Scalded Throne is a plain root-and-reed seat that has stood empty for centuries and may never have been filled.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.throne-swept","claim":"The seat is swept, and the city sells in the room before it.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.wasps","claim":"Two giant wasps nest at the way's far bend; a drowned channel runs under the root there.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.wasps","claim":"Two giant wasps nest at the way's far bend.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.consent","claim":"No Hist speaks for all the Hist, and one tree's will does not bind another's people.","ord":9,"from_ref":"culture.faction.many-root-conclave#norms","quest_id":"quest.mr.mr01"}
