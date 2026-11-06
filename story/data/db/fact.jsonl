@@ -557,14 +557,14 @@
 {"id":"fact.lots.lot-four","says":"A diver came up dead on lot four. She had no right to work that lot."}
 {"id":"fact.lots.numbered","says":"The Counted Lots are numbered pearl beds."}
 {"id":"fact.lots.tally","says":"The tally book records the pay and the deaths."}
-{"id":"fact.lq25.bait","claim":"Offal has been dumped under the pier, night after night, at two points by the pilings.","ord":1,"from_ref":"t1","quest_id":"quest.local.lq25"}
+{"id":"fact.lq25.bait","claim":"Offal has been dumped under the pier, night after night, by the pilings.","ord":1,"from_ref":"t1","quest_id":"quest.local.lq25"}
 {"id":"fact.lq25.bait-drew-it","claim":"The bait drew the crocodile in.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq25"}
 {"id":"fact.lq25.beast-real","claim":"A crocodile lairs in the shallows under Helstrom's landing pier and has taken a raft.","ord":0,"from_ref":"t2","quest_id":"quest.local.lq25"}
 {"id":"fact.lq25.crew-baited","claim":"The landing crew dumped the offal to fake a beast and scare the boat captain's trade off the river.","ord":2,"from_ref":"t1","quest_id":"quest.local.lq25"}
-{"id":"fact.lq30.cornered","claim":"A crocodile keeps Sei-Wan in the reed shelter in the basin.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq30"}
-{"id":"fact.lq30.custom","claim":"The tribe's custom forbids its own to follow a walk-out; it does not bind an outsider.","ord":1,"from_ref":"t3","quest_id":"quest.local.lq30"}
+{"id":"fact.lq30.cornered","claim":"A viper keeps Sei-Wan in the reed shelter in the basin.","ord":3,"from_ref":"t2","quest_id":"quest.local.lq30"}
+{"id":"fact.lq30.custom","claim":"The custom of Helstrom's Agaceph forbids its own to follow a walk-out; it does not bind an outsider.","ord":1,"from_ref":"t3","quest_id":"quest.local.lq30"}
 {"id":"fact.lq30.trail","claim":"Sei-Wan cut reeds to mark his way east from the gate.","ord":2,"from_ref":"t1","quest_id":"quest.local.lq30"}
-{"id":"fact.lq30.walked-out","claim":"Sei-Wan walked out into the basin alone four hours ago to prove himself to the tribe.","ord":0,"from_ref":"t1","quest_id":"quest.local.lq30"}
+{"id":"fact.lq30.walked-out","claim":"Sei-Wan walked out into the basin alone four hours ago to prove himself to Helstrom's Agaceph.","ord":0,"from_ref":"t1","quest_id":"quest.local.lq30"}
 {"id":"fact.lukiul.assimilated","says":"A lukiul is an assimilated Argonian who took on Imperial ways."}
 {"id":"fact.lukiul.deaf","says":"Argonians hatched outside Black Marsh cannot hear the Hist."}
 {"id":"fact.lukiul.slur","says":"Lukiul is a slur that the An-Xileel coined for assimilated Argonians."}

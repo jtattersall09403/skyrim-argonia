@@ -21,10 +21,10 @@
 {"quest_id":"quest.local.lh38","source":"people","value":"world/sources/registries/npcs.json"}
 {"quest_id":"quest.local.lh38","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.local.lh38","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
-{"quest_id":"quest.local.lq25","source":"bmv","value":"bmv_placement 08D5EE, 08D5EF (the crew), 08D5F1 (the boat captain); bmv_cell 0D7723:Black Marsh.esm (dock5, the pier), 0D77AD and 0D77AF (the crew's cells)"}
+{"quest_id":"quest.local.lq25","source":"bmv","value":"bmv_placement 08D5EE, 08D5EF (the crew), 08D5EC (the levy soldier), 08D5F1 (the boat captain); bmv_npc 0BCB00 (the crocodile's base); bmv_cell 0D7723:Black Marsh.esm (dock5, the pier), 0D77AD and 0D77AF (the crew's cells), 0D78BF (the boat captain's)"}
 {"quest_id":"quest.local.lq25","source":"ledger","value":"we.lq25.beast, we.lq25.crew, we.clean.dock5"}
 {"quest_id":"quest.local.lq25","source":"lore"}
-{"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the gate soldier, the levy warden); bmv_cell 0D787F:Black Marsh.esm (the gate), 0D7883:Black Marsh.esm (the shelter, navmesh, no NPCs)"}
+{"quest_id":"quest.local.lq30","source":"bmv","value":"bmv_placement 08D5E9 (the gate soldier, the levy warden); bmv_npc 17BC83 (the viper's base); bmv_cell 0D787F:Black Marsh.esm (the gate), 0D7883:Black Marsh.esm (the shelter, navmesh, no NPCs)"}
 {"quest_id":"quest.local.lq30","source":"ledger","value":"we.lq30.trail, we.lq30.beast, we.lq30.youth, we.clean.helstrom"}
 {"quest_id":"quest.local.lq30","source":"lore"}
 {"quest_id":"quest.main.mq01","source":"bmv","value":"bmv_cell 0F9178:Black Marsh.esm (ship at Dock1), 005911:Black Marsh.esm (Hereguard Plantation), bmv_placement 0F9399 (the hold's door), 005AB4 (pier door); census docs/research/bmv/census.md"}

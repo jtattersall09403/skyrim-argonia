@@ -1,6 +1,6 @@
 {"quest":"quest.bc.bc02","needs":"quest.bc.bc01","why":"the estate woman's mother"}
 {"quest":"quest.bc.bc03","needs":"quest.bc.bc01","why":"the crew know the player as the Chainbreakers' since BC01"}
-{"quest":"quest.local.lq25","needs":"quest.main.mq05","why":"the player first meets the landing on MQ05's way in"}
+{"quest":"quest.local.lq25","needs":"quest.main.mq05","why":"starts once MQ05 is at stage 40, so the beast is not on the landing while MQ05's escorts stand there"}
 {"quest":"quest.main.mq03","needs":"quest.main.mq01","why":"Act I's order"}
 {"quest":"quest.main.mq04","needs":"quest.main.mq03","why":"the Reed sends the player"}
 {"quest":"quest.main.mq05","needs":"quest.main.mq04","why":"Act I's order"}

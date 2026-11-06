@@ -48,13 +48,13 @@
 {"quest_id":"quest.local.lh38","section":"timeline","ord":3,"value":"t4"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":4,"value":"t6"}
 {"quest_id":"quest.local.lh38","section":"timeline","ord":5,"value":"t7"}
-{"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"the bait points found from the pier unseen (Sneak)"}
-{"quest_id":"quest.local.lq25","section":"clueChoices","ord":1,"value":"the bait points found by a swim under the pier"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"the gate"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the trail"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the shelter"}
-{"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"the walk home"}
-{"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"the youth sees who killed the beast"}
+{"quest_id":"quest.local.lq25","section":"clueChoices","ord":0,"value":"the offal and the crew's bait bucket by the pilings"}
+{"quest_id":"quest.local.lq25","section":"clueChoices","ord":1,"value":"in the crocodile's lair under the pier"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":0,"value":"Haj-Wan at the gate"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":1,"value":"the cut reeds through the basin"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":2,"value":"the viper at the shelter"}
+{"quest_id":"quest.local.lq30","section":"beats","ord":3,"value":"the choice to slip away or bring him home"}
+{"quest_id":"quest.local.lq30","section":"breakPoints","ord":0,"value":"the youth sees the player"}
 {"quest_id":"quest.local.lq30","section":"breakPoints","ord":1,"value":"the youth is brought home"}
 {"quest_id":"quest.local.lq30","section":"leads","ord":0,"value":"Haj-Wan says he cut reeds to mark his way"}
 {"quest_id":"quest.local.lq30","section":"leads","ord":1,"value":"the cut reeds themselves"}
