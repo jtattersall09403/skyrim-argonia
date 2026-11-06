@@ -419,6 +419,15 @@ class Records:
     stage_end: dict = field(default_factory=dict)     # quest -> stages that end it (an ending, or no successor)
     quest_kind: dict = field(default_factory=dict)    # quest -> (line group, line faction)
     faction_skills: dict = field(default_factory=dict)  # faction -> the skills it leans on
+    start: dict = field(default_factory=dict)         # quest -> its start stage
+    start_when: set = field(default_factory=set)      # quests with a startWhen
+    topic_rows: set = field(default_factory=set)      # (quest, topic id, speaker) of every quest_topic row
+    heard: list = field(default_factory=list)         # (quest, topic, speaker) named by a topicHeardFrom condition
+    given: dict = field(default_factory=dict)         # item -> [(quest, stage or None for an ending)] a giveItem hands over
+    item_states: dict = field(default_factory=dict)   # item -> [(quest, states)] of the quest things that place it
+    thing_edit: dict = field(default_factory=dict)    # (quest, thing id) -> the world edit its source names
+    quest_edits: dict = field(default_factory=dict)   # quest -> world edits it needs
+    enabled_by_quest: set = field(default_factory=set)  # world edits whose text says a quest turns them on
 
 
 def _tree(w) -> dict:
@@ -473,6 +482,23 @@ def load_records() -> Records:
         if ed and ed[1]:
             rc.quest_forms.setdefault(q, set()).add(ed[1])
     rc.live = set(w.values("SELECT quest FROM quest_adaptation WHERE verdict IN ('keep', 'adapt')"))
+    rc.start = {r[0]: r[1] for r in w.query("SELECT id, start FROM quest WHERE start IS NOT NULL")}
+    rc.start_when = set(w.values("SELECT id FROM quest WHERE start_when IS NOT NULL"))
+    for q, e in w.query("SELECT quest, edit FROM quest_world_edit"):
+        rc.quest_edits.setdefault(q, set()).add(e)
+    rc.enabled_by_quest = {e for e, d in rc.edit_text.items() if ENABLES.search(d or "")}
+    for r in w.query("SELECT quest_id, id, kind, source FROM quest_thing"):
+        m = EDIT_REF.search(r["source"])
+        if m:
+            rc.thing_edit[(r["quest_id"], r["id"])] = m.group(0)
+    for r in w.query("SELECT t.quest_id, t.id, s.state, s.value FROM quest_thing t "
+                     "JOIN quest_thing_state s ON s.quest_id = t.quest_id AND s.things_ord = t.ord WHERE t.kind = 'item'"):
+        rc.item_states.setdefault(r["id"], {}).setdefault(r["quest_id"], {})[r["state"]] = r["value"]
+    for r in w.query("SELECT s.quest_id, s.id, a.list_id, g.value FROM action a "
+                     "JOIN action_arg g ON g.list_id = a.list_id AND g.ord = a.ord AND g.arg_ord = 0 "
+                     "LEFT JOIN quest_stage s ON s.on_enter = a.list_id WHERE a.term = 'giveItem'"):
+        q = r["quest_id"] or (re.search(r"quest\.\w+\.\w+", r["list_id"]) or [None])[0]
+        rc.given.setdefault(r["value"], []).append((q, r["id"]))
     rc.names = {r[0]: r[1] for r in w.query("SELECT id, name FROM npc")}
     rc.people = sorted({tuple(r) for r in w.query("SELECT quest_id, person FROM quest_topic")} |
                        {tuple(r) for r in w.query("SELECT quest_id, id FROM quest_cast")})
@@ -480,17 +506,26 @@ def load_records() -> Records:
     tree = _tree(w)
     sid = {(r[0], r[1]): r[2] for r in w.query("SELECT quest_id, ord, id FROM quest_stage")}
     for (q, o), s in sid.items():
-        rc.stages.setdefault(q, {})[s] = {"succ": [], "ff": set()}
+        rc.stages.setdefault(q, {})[s] = {"succ": [], "ff": set(), "ff_to": []}
     for r in w.query('SELECT quest_id, stages_ord, "to", "when" FROM quest_successor'):
         t, a = tree.get(r["when"], (set(), set()))
         rc.stages[r["quest_id"]][sid[(r["quest_id"], r["stages_ord"])]]["succ"].append((r["to"], t, a))
-    for r in w.query('SELECT quest_id, stages_ord, "when" FROM quest_fail_forward'):
-        rc.stages[r["quest_id"]][sid[(r["quest_id"], r["stages_ord"])]]["ff"] |= tree.get(r["when"], (set(), set()))[1]
+    for r in w.query('SELECT quest_id, stages_ord, "to", "when" FROM quest_fail_forward'):
+        d = rc.stages[r["quest_id"]][sid[(r["quest_id"], r["stages_ord"])]]
+        d["ff"] |= tree.get(r["when"], (set(), set()))[1]
+        d["ff_to"].append(r["to"])
     st = defaultdict(set)
     for r in w.query("SELECT quest_id, topics_ord, value FROM quest_topic_stage"):
         st[(r[0], r[1])].add(r[2])
     rc.topics = [(r[0], r[2], bool(r[3]), st[(r[0], r[1])])
                  for r in w.query("SELECT quest_id, ord, person, essential FROM quest_topic")]
+    rc.topic_rows = {tuple(r) for r in w.query("SELECT quest_id, id, person FROM quest_topic")}
+    for r in w.query("SELECT c.id, a.ord, a.value FROM condition c JOIN condition_arg a ON a.condition_id = c.id "
+                     "WHERE c.term = 'topicHeardFrom' AND a.ord > 0"):
+        m = re.search(r"quest\.\w+\.\w+", r["id"])
+        top = w.values(f"SELECT value FROM condition_arg WHERE condition_id = '{r['id']}' AND ord = 0")
+        if m and top:
+            rc.heard.append((m[0], top[0], r["value"]))
     rc.uses = [tuple(r) for r in w.query(
         "SELECT t.quest_id, t.id, t.person, u.value FROM quest_topic t "
         "JOIN quest_topic_uses u ON u.quest_id = t.quest_id AND u.topics_ord = t.ord")]
@@ -698,6 +733,90 @@ def rule_learnable(rc: Records) -> list[str]:
                    for q, what, f in seen if f not in rc.learnable.get(q, set())})
 
 
+# Engine-wiring rules (slice review round 1): faults a program sees, so reviewers need not. A warning while the
+# slice has hits; set True to make them errors. They bind kept or adapted quests only.
+WIRING_BLOCK = False
+ENABLES = re.compile(r"enable parent|turns? (?:it |them )?on|enabled (?:at|by|from|on)|disabled until|switch(?:ed|es) on", re.I)
+EDIT_REF = re.compile(r"we\.[\w-]+(?:\.[\w-]+)+")
+PLACING_EDITS = ("npc_add", "creature_add", "ref_place")
+
+
+def rule_reachable(rc: Records) -> list[str]:
+    """A quest can start (a startWhen, or a topic said at stage 0 or at the start stage), and every non-ending stage is
+    reached from the start through successors or fail-forwards."""
+    out = []
+    for q, sts in sorted(rc.stages.items()):
+        first = rc.start.get(q, min(sts, default=None))
+        if first is None:
+            continue
+        if q not in rc.start_when and not any(tq == q and {0, first} & set(st) for tq, _, _, st in rc.topics):
+            out.append(f"{q}: nothing starts it (no startWhen, no topic said at stage 0 or {first})")
+        seen, todo = set(), [first]
+        while todo:
+            s = todo.pop()
+            if s in seen or s not in sts:
+                continue
+            seen.add(s)
+            todo += [to for to, _, _ in sts[s]["succ"]] + list(sts[s].get("ff_to", []))
+        ends = rc.stage_end.get(q, set())
+        out += [f"{q}: stage {s} cannot be reached from stage {first}" for s in sorted(sts) if s not in seen and s not in ends]
+    return out
+
+
+def rule_acquire_prereq(rc: Records) -> list[str]:
+    """A successor whose trigger is hasItem (TR-acquire) names an item the player could already hold before the stage:
+    given by an earlier stage or another quest, or placed from the start. Use C-item instead."""
+    out = []
+    for q, sts in sorted(rc.stages.items()):
+        for s, d in sorted(sts.items()):
+            for to, t, a in d["succ"]:
+                if "hasItem" not in t:
+                    continue
+                for item in sorted(x for x in a if x in rc.given or x in rc.item_states):
+                    early = [g for g in rc.given.get(item, []) if g[0] != q or g[1] is None or g[1] <= s]
+                    placed = [qq for qq, st in rc.item_states.get(item, {}).items()
+                              if any(k == "all" or k.startswith("before-") for k, v in st.items() if not v.startswith("absent"))]
+                    if early or placed:
+                        out.append(f"{q}: stage {s} -> {to} waits on hasItem {item}, which the player may hold before it "
+                                   f"({'given in ' + str(early[0][0]) if early else 'placed in ' + placed[0]}); use C-item")
+    return out
+
+
+def rule_present_before_start(rc: Records) -> list[str]:
+    """A unique item a quest needs (a new quest_thing item built by a world edit) or a person its topics or successors
+    name, placed by a world edit whose text does not say a quest turns it on, is there before the quest starts; flagged
+    unless an earlier quest of the same set needs that edit too."""
+    out, need = [], defaultdict(set)
+    for (q, tid), e in rc.thing_edit.items():
+        if q in rc.item_states.get(tid, {}):
+            need[q].add(e)
+    for q, p in rc.people:
+        for e, txt in rc.edit_text.items():
+            if p in txt and e in rc.quest_edits.get(q, ()):
+                need[q].add(e)
+    for q, es in sorted(need.items()):
+        for e in sorted(es):
+            if rc.edits.get(e, ("",))[0] not in PLACING_EDITS or e in rc.enabled_by_quest:
+                continue
+            if any(o < q and e in oe for o, oe in rc.quest_edits.items()):
+                continue
+            out.append(f"{q}: {e} places what the quest needs but nothing turns it on at the start (it is there before)")
+    return out
+
+
+def rule_topic_per_speaker(rc: Records) -> list[str]:
+    """A topicHeardFrom naming a person needs a quest_topic row of that topic for that person."""
+    return sorted({f"{q}: topicHeardFrom {t} from {p}, but no topic row gives {t} to {p}"
+                   for q, t, p in rc.heard if (q, t, p) not in rc.topic_rows})
+
+
+WIRING = (rule_reachable, rule_acquire_prereq, rule_present_before_start, rule_topic_per_speaker)
+
+
+def wiring(rc: Records) -> list[str]:
+    return [f"{r.__name__[5:]}: {f}" for r in WIRING for f in r(rc) if rc.live is None or f.split(":")[0] in rc.live]
+
+
 RULES = (rule_census_ids, rule_placed, rule_helgen, rule_shared_base, rule_vanilla_door, rule_skill_gate, rule_speaker_knows, rule_learnable)
 
 
@@ -729,8 +848,11 @@ def main() -> int:
     routes = [f"{f}" for f in skill_routes(rc) if rc.live is None or f.split(":")[0] in rc.live]
     for f in routes:
         print(f"skill_routes ({'error' if SKILL_ROUTES_BLOCK else 'warning'}): {f}")
-    print(f"adaptation_check: {len(findings) + len(recs) + (len(routes) if SKILL_ROUTES_BLOCK else 0)} finding(s), {len(warns)} procedure-word warning(s)")
-    return 1 if findings or recs or (routes and SKILL_ROUTES_BLOCK) else 0
+    wires = wiring(rc)
+    for f in wires:
+        print(f"wiring ({'error' if WIRING_BLOCK else 'warning'}): {f}")
+    print(f"adaptation_check: {len(findings) + len(recs) + (len(routes) if SKILL_ROUTES_BLOCK else 0) + (len(wires) if WIRING_BLOCK else 0)} finding(s), {len(warns)} procedure-word warning(s)")
+    return 1 if findings or recs or (routes and SKILL_ROUTES_BLOCK) or (wires and WIRING_BLOCK) else 0
 
 
 if __name__ == "__main__":

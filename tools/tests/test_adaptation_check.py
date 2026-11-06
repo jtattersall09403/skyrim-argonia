@@ -272,3 +272,71 @@ def test_skill_routes_choice_stage_exempt():
     assert ac.skill_routes(rc) == []                                       # whom to tell: a choice, not a skill
     rc.stages["q"][20]["succ"][1] = ch(91, "a")                            # not distinct topics
     assert any("stage 20 names no skill" in x for x in ac.skill_routes(rc))
+
+
+def wires(rc):
+    return [x for x in ac.wiring(rc)]
+
+
+def test_reachable():
+    rc = recs()
+    rc.stages = {"q": {10: {"succ": [(20, set(), set())], "ff": set()}, 20: {"succ": [], "ff": set(), "ff_to": []},
+                       30: {"succ": [(20, set(), set())], "ff": set()}, 40: {"succ": [], "ff": set()}}}
+    rc.stage_end = {"q": {20, 40}}
+    rc.start = {"q": 10}
+    w = wires(rc)
+    assert any("nothing starts it" in x for x in w)
+    assert any("stage 30 cannot be reached" in x for x in w)
+    assert not any("stage 40" in x for x in w)                       # an ending is not asked
+    rc.start_when = {"q"}
+    rc.stages["q"][20]["ff_to"] = [30]                                # a fail-forward is a way in
+    assert wires(rc) == []
+    rc.start_when = set()
+    rc.topics = [("q", "npc.a", False, {10})]
+    assert wires(rc) == []                                            # a topic said at the start stage starts it
+
+
+def test_acquire_prereq():
+    rc = recs()
+    rc.stages = {"q": {10: {"succ": [(20, {"hasItem"}, {"item.x", "1"})], "ff": set()}}}
+    rc.start_when = {"q"}
+    assert wires(rc) == []
+    rc.given = {"item.x": [("q", 5)]}
+    assert any(x.startswith("acquire_prereq") and "item.x" in x for x in wires(rc))
+    rc.given = {"item.x": [("q", 15)]}                                 # given only after the stage: fine
+    assert wires(rc) == []
+    rc.item_states = {"item.x": {"q": {"before-20": "in the box"}}}
+    assert any(x.startswith("acquire_prereq") for x in wires(rc))
+    rc.item_states = {"item.x": {"q": {"before-20": "absent"}}}
+    assert wires(rc) == []
+
+
+def test_present_before_start():
+    rc = recs()
+    rc.start_when = {"q"}
+    rc.item_states = {"item.x": {"q": {"all": "present"}}}
+    rc.thing_edit = {("q", "item.x"): "we.q.thief"}
+    rc.edits = {"we.q.thief": ("npc_add", None)}
+    rc.edit_text = {"we.q.thief": "the thief on his round"}
+    rc.quest_edits = {"q": {"we.q.thief"}}
+    assert any(x.startswith("present_before_start") and "we.q.thief" in x for x in wires(rc))
+    rc.edit_text["we.q.thief"] = "the thief, under an enable parent that stage 10 turns on"
+    rc.enabled_by_quest = {"we.q.thief"}
+    assert wires(rc) == []
+    rc.enabled_by_quest = set()
+    rc.quest_edits["p"] = {"we.q.thief"}                               # an earlier quest needs it too
+    assert wires(rc) == []
+
+
+def test_topic_per_speaker():
+    rc = recs()
+    rc.start_when = {"q"}
+    rc.heard = [("q", "topic.t", "npc.a"), ("q", "topic.t", "npc.b")]
+    rc.topic_rows = {("q", "topic.t", "npc.a")}
+    w = wires(rc)
+    assert len(w) == 1 and "npc.b" in w[0]
+    rc.topic_rows.add(("q", "topic.t", "npc.b"))
+    assert wires(rc) == []
+    rc.topic_rows = set()
+    rc.live = set()
+    assert wires(rc) == []                                             # kept or adapted quests only

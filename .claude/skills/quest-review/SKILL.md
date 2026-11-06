@@ -11,7 +11,7 @@ builder); it judges whether the quest is good and believable.
 
 ## 0. The bar, and what you are not asked to do (owner, 2026-11-06, binding)
 
-- **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be reached or left; (b) a
+- **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be left; (b) a
   contradiction inside the record, or with the world data (census, story data); (c) a contradiction with canon lore
   or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled); (e) the quest
   breaks the skill rule (ruling #50, quest-write §2 item 4, program-checked): a stage (a pure choice stage excepted) is not won by a skill route that can fail (25+ check, fight, lock, dive, spell), a
@@ -41,7 +41,7 @@ builder); it judges whether the quest is good and believable.
   it names in `foundation`.
 - First run `python3 -m tools.argonia_world.adaptation_check`: its `record (warning)` lines (an id not in the
   census, an unplaced speaker, a needed person with no essential, protected or fail-forward, an edit to a shared
-  base, a vanilla door model, a skill gate walked round) are findings already; copy them, do not re-judge them.
+  base, a vanilla door model, a skill gate walked round; `wiring` lines: unreachable stage, no start, a hasItem trigger for an item already held, a person or item present before the start, a topicHeardFrom speaker with no topic row; who knows what, every fact learnable) are findings already; copy them, do not re-judge them.
 - Also binding: the quest index rules and coverage (`../../../story/design/quests/index/README.md` §47b–c,
   `../../../story/design/quests/index/coverage.md`), 00-overview §4 (`../../../story/design/quests/00-overview.md`), the condition
   vocabulary (`condition_term` rows; `../../../story/design/quests/85-condition-vocabulary.md` explains each term) and the style guide's journal register
@@ -60,7 +60,6 @@ Premise and truth
 1. Can the premise be said in one sentence, and would a sensible person in Black Marsh act as it requires?
 2. Is the truth a timeline of physical events, and does every clue, rumour and lie follow from it?
 3. Does each person's every action pass the plausibility test given their wants, fears and knowledge?
-4. Mechanical, not reviewed: adaptation_check's speaker_knows and learnable rules (who knows what; every fact learnable).
 
 Investigation
 5. Does each conclusion have at least three clues in at least two forms?
@@ -110,7 +109,6 @@ The world
 Action and fit
 18. Does it meet the skill rule (quest-write §2 item 4)? Name the skills each stage uses (a pure choice stage is exempt); a main quest needs two
     ways through on different skills, a faction quest its faction's skills, and every stage's text a plain next action.
-19. (The importer checks the vocabulary; the program checks the fail-forwards, §1.)
 20. Do the actions follow from the truth and the place, do they lean to the line's or faction's profile, and
     do they vary from the quests around it (the same skill, use, target and setting not repeated without
     reason)?
