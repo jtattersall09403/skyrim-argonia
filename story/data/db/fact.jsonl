@@ -590,7 +590,7 @@
 {"id":"fact.mq04.leech-effect","claim":"The leeches crowd only the cut root, where the sap weeps: they came to the sap, after the tree closed; they did not close it.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":7,"from_ref":"t4","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-washes","claim":"Pays-Late goes down to the cut root every night after dark to wash it.","ord":8,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.officer-waits","claim":"A Reed hand, Zaren-Ish, keeps to a boat off the village and wants the cell's people, not the tree.","ord":1,"from_ref":"t7","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.officer-waits","claim":"A Reed hand, Zaren-Ish, waits on the village's jetty and wants the cell's people, not the tree.","ord":1,"from_ref":"t7","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds on the netters' night and went back out.","ord":9,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
@@ -603,7 +603,7 @@
 {"id":"fact.mq05.reed-sent","claim":"The Reed sent me, and wants it unsaid.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist whose root was cut are two things: silence kills no clutch, and the clutch at Low-Reed Village died of the cut.","ord":9,"from_ref":"t1","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.throne-empty","claim":"The Scalded Throne is a plain root-and-reed seat that has stood empty for centuries and may never have been filled.","ord":5,"from_ref":"t4","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.throne-swept","claim":"The seat is swept every day by the hall's sweeper, and the city sells in the room before it.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.throne-swept","claim":"The seat is swept every day, and the city sells in the room before it.","ord":6,"from_ref":"t4","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.wasps","claim":"Two giant wasps nest at the way's far bend.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mr01.breach","claim":"In the deepest chamber of the drowned stair a channel has been cut by hand through the roots into a brine seam.","ord":3,"from_ref":"t1","quest_id":"quest.mr.mr01"}
 {"id":"fact.mr01.brine-backflow","claim":"Each flood pushes brine back up the old cut into Greenspring's taproots.","ord":7,"from_ref":"t3","quest_id":"quest.mr.mr01"}

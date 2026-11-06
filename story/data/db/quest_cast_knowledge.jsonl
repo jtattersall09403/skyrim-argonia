@@ -159,10 +159,8 @@
 {"quest_id":"quest.main.mq05","cast_ord":0,"fact_id":"fact.mq05.reed-sent","value":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":0,"fact_id":"fact.mq05.severance-not-silence","value":"knows"}
 {"quest_id":"quest.main.mq05","cast_ord":1,"fact_id":"fact.mq05.basin-lethal","value":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":2,"fact_id":"fact.mq05.throne-empty","value":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":2,"fact_id":"fact.mq05.throne-swept","value":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":3,"fact_id":"fact.mq05.kaska-view","value":"knows"}
-{"quest_id":"quest.main.mq05","cast_ord":4,"fact_id":"fact.mq05.eituja-view","value":"knows"}
+{"quest_id":"quest.main.mq05","cast_ord":2,"fact_id":"fact.mq05.kaska-view","value":"knows"}
+{"quest_id":"quest.main.mq05","cast_ord":3,"fact_id":"fact.mq05.eituja-view","value":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.greenspring.why-pressures-3","value":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.mr01.consent","value":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":0,"fact_id":"fact.mr01.works-closed","value":"knows"}

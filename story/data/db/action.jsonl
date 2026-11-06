@@ -246,4 +246,3 @@
 {"list_id":"quest_stage:quest.tg.tg04|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":1,"term":"setFlag"}
-{"list_id":"quest_stage:quest.main.mq05|2:on_enter","ord":1,"term":"grantTopic"}

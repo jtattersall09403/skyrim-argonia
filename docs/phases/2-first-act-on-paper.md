@@ -54,8 +54,8 @@ the quest system follows once the owner has tried the slice.
 ## Status of the first story slice (2026-11-06, hand-off)
 
 - Done: steps 1 to 8 over the slice (adaptation §5): the ledger in the story data, the checker in `make check`,
-  seven ledger review rounds, the last clean. The ledger's generators are in the repo
-  (`python3 -m tools.argonia_world.slice_ledger.slice` reproduces the committed rows). Blocks: W-navmesh and W-name
+  seven ledger review rounds, the last clean. The committed rows are the one source
+  (the slice generator was retired 2026-11-06); rows are edited through db.py or `quest_record` export and import. Blocks: W-navmesh and W-name
   added with precedent; blocks.md's Act I stage table is generated from the records
   (`python3 -m tools.argonia_world.slice_ledger.stage_blocks`; every stage maps to the set). The 35 old camp facts are
   retired; Low-Reed Village's people have low-reed-village ids; the cell men of MQ04 are npc rows.

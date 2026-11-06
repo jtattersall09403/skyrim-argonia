@@ -254,3 +254,23 @@ All five blocking and all five notes accepted, by subtraction.
 - MQ05 addendum (slice round 2, B2): we.mq05.sweeper cut; the broom stays in we.mq05.throne.
 
 Round 3: applied (9567fb28).
+
+### Reconciliation after round 2 (2026-11-06): the planner's calls
+
+- MQ05: topic.mq05-the-seat cut (its speaker was the cut sweeper; the throne lines live in journal 40). The fail-forward
+  to 91 also needs Kaska-Meen alive, so with both dead only 92 matches.
+- MQ05 ship doors: 0AA837 (x 2924) and 23D496 (x 6038) sit in one cell 0AA665; prove from the cell's navmesh that one
+  walkable section joins them. If not, add one door pair inside the ship joining the two sections (block W-ref), the
+  lightest edit that keeps Lilmoth → Helstrom walkable.
+- MQ04: Zaren-Ish waits on the jetty itself (no boat anywhere: journal 10, fact.mq04.officer-waits, ref.mq04.guarded,
+  the npc notes).
+- MQ03: k7's support row for c2 deleted (quest_clue_supports); k6 and k7 left only where they still support.
+- Blocks: goldAtLeast, grantHistStep and setDoorAccess map to a block in blocks.md (an existing one, or a new one with
+  its Skyrim.esm precedent counted), so every stage maps.
+- Generator: slice.py's rebuild must reproduce the committed rows exactly; every hand edit since round 1 (we.clean
+  .abondedtemple, the MQ01-05 and slice edits) is carried into slice_rows.py.
+Reconciliation: applied (sha in the commit that adds this line; see git log -1 -- story/design/quests/review/act1.md):
+seat topic cut and fail-forward 91 gated on Kaska-Meen alive; ship navmesh 0AA666 (353 triangles, one component) reaches
+0AA837 but nothing within 2954 units of 23D496, so we.mq05.ship-door adds one inner door pair; Zaren-Ish on the jetty;
+k7's c2 support deleted; goldAtLeast C-item, grantHistStep E-global, setDoorAccess E-item; the generator retired: the
+story database is the one source, edited through db.py or quest_record export and import.

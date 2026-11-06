@@ -24,7 +24,7 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [2-first-a
   TG01-02, Chainbreakers BC01-03 and Helstrom's LQ25 and LQ30; the Marsh Charter left out (Gideon has no room)
 - [x] The ledger: 11 quests adapted, 706 waiting, 63 world edits including one clean-up per place
 - [x] Seven review rounds over the whole slice (six fresh reviewers each); round 7 clean
-- [x] The ledger generators in the repo (`tools/argonia_world/slice_ledger/`)
+- [x] The ledger in the committed rows, the one source (generator retired 2026-11-06; edit via db.py or quest_record export/import)
 - [x] Act I rewritten from scratch against the full census; MQ01 and MQ05 clean in review
 - [x] MQ03 and MQ04 reworked whole (eight rounds of patches had not converged)
 - [x] The review method changed (owner, 2026-11-06): the planner triages and decides the exit; one bar for blocking

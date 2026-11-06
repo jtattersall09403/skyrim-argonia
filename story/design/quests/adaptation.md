@@ -244,7 +244,9 @@ Also found: the Marsh Charter's patron Halvar the Damp is a Nord in 36-cast-rost
 ## 5. The first story slice (steps 5 to 8)
 
 The owner ruled (2026-11-06) that BM&V stays as it is and that a slice is fitted first. The slice is chosen for
-fit and variety, and so that nothing in it clashes. It holds 11 quests and 48 world edits:
+fit and variety, and so that nothing in it clashes. It holds 11 quests and 48 world edits. The committed rows in story/data are the ledger's one source: they are
+edited through db.py (tools/argonia_world/db.py) or `python3 -m tools.argonia_world.quest_record` export and import,
+never regenerated:
 
 - **Act I of the main quest** (MQ01, MQ03, MQ04, MQ05), with the new-game flow and the opening scene: the game opens
   in a debt-labour broker's barge at Lilmoth's Dock1 (the state's only presence is the An-Xileel courier, owner Q7),

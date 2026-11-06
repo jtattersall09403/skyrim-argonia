@@ -76,6 +76,8 @@
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":1,"value":"fact.mq05.wasps"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":2,"value":"fact.mq05.basin-lethal"}
 {"quest_id":"quest.main.mq05","stages_ord":2,"ord":0,"value":"fact.mq05.eituja-view"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":1,"value":"fact.mq05.throne-empty"}
+{"quest_id":"quest.main.mq05","stages_ord":2,"ord":2,"value":"fact.mq05.throne-swept"}
 {"quest_id":"quest.main.mq05","stages_ord":3,"ord":0,"value":"fact.mq05.kaska-view"}
 {"quest_id":"quest.main.mq05","stages_ord":3,"ord":1,"value":"fact.mq05.severance-not-silence"}
 {"quest_id":"quest.mr.mr01","stages_ord":0,"ord":0,"value":"fact.mr01.river-fresh"}
@@ -87,5 +89,3 @@
 {"quest_id":"quest.mr.mr01","stages_ord":2,"ord":2,"value":"fact.mr01.brine-backflow"}
 {"quest_id":"quest.mr.mr01","stages_ord":3,"ord":0,"value":"fact.mr01.founders-stakes"}
 {"quest_id":"quest.mr.mr01","stages_ord":3,"ord":1,"value":"fact.mr01.rival-grove"}
-{"quest_id":"quest.main.mq05","stages_ord":2,"ord":1,"value":"fact.mq05.throne-empty"}
-{"quest_id":"quest.main.mq05","stages_ord":2,"ord":2,"value":"fact.mq05.throne-swept"}

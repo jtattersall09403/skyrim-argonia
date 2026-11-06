@@ -105,13 +105,14 @@ C-item; `npcAlive` failing is TR-death; `counterAtLeast` and `placeCleared` are 
 E-package (the actor's alias package puts them there) plus C-time; `grantTopic` is the topic's own C-stage condition;
 `setFactionRank` and `grantServiceAccess` are E-faction; `changeStanding` and `changeSettlementStanding` are E-global;
 `changeDisposition` is E-regard; `enableRef`/`disableRef`/`applyLocalVariant` are E-enable; `giveItem`/`takeItem`/
-`giveGold`/`takeGold` are E-item; `moveRef` is E-move; `startScene` is E-scene. Skill uses named with Morrowind skills
+`giveGold`/`takeGold` are E-item; `moveRef` is E-move; `startScene` is E-scene. `goldAtLeast` is C-item (GetItemCount on Gold001, within the 678 GetItemCount uses counted in quest-block-precedent.md); `grantHistStep` is E-global (the hist-hearing GLOB raised by SetValue, never lowered; backs the 1,579 GetGlobalValue uses); `setDoorAccess` is E-item (the door locked to a key in its XLOC and the key given by AddItem, as Bethesda's bought houses are: the steward's house-purchase fragments hand the key). Skill uses named with Morrowind skills
 in the vocabulary map to Skyrim actor values for C-skill (speechcraft and mercantile to Speech, security to
 Lockpicking, sneak to Sneak or Pickpocket, marksman to Archery, the blades and spear to One-Handed or Two-Handed); swim,
 dive and climb are movement (FreeClimb, water), never a check.
 
-Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage_blocks` (2026-11-06, after review round 8); re-run it when a record changes. Trigger in is what enters the stage (its predecessors' successor and fail-forward conditions); an `npcAlive` failing is TR-death, and `objectiveComplete` is the stage's own objectives done. The world edits each quest stands on map to the world-edit blocks so: `npc_add` is W-npc with W-fixed, `ref_place` W-ref, `creature_remove`/`npc_remove` W-ref removal, `record_change` and `npc_change` W-override, `name_place` W-name, `navmesh_add` W-navmesh.
+Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage_blocks` (2026-11-06, after review round 8); re-run it when a record changes (it writes this table from the story database, the one source). Trigger in is what enters the stage (its predecessors' successor and fail-forward conditions); an `npcAlive` failing is TR-death, and `objectiveComplete` is the stage's own objectives done. The world edits each quest stands on map to the world-edit blocks so: `npc_add` is W-npc with W-fixed, `ref_place` W-ref, `creature_remove`/`npc_remove` W-ref removal, `record_change` and `npc_change` W-override, `name_place` W-name, `navmesh_add` W-navmesh.
 
+<!-- stage_blocks:begin (generated; do not edit) -->
 | Quest stage | Trigger in | Conditions | Effects |
 |---|---|---|---|
 | MQ01 10 | the new-game start (ARG_Opening) | - | E-stage |
@@ -126,7 +127,7 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ01 91 | TR-topic | C-stage | E-enable, E-global, E-stage, TR-chain |
 | MQ01 93 | TR-death, TR-topic | C-alive, C-stage | E-enable, E-stage, TR-chain |
 | MQ03 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-move, E-stage |
+| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-global, E-move, E-stage |
 | MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-stage |
 | MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
 | MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |
@@ -135,10 +136,10 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ04 30 | TR-zone | - | E-stage |
 | MQ04 40 | TR-death, TR-topic | C-alive | E-stage |
 | MQ04 50 | TR-acquire | C-item | E-stage |
-| MQ04 91 | TR-acquire, TR-zone | C-item | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
-| MQ04 92 | TR-topic | - | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ04 91 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
+| MQ04 92 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ05 20 | TR-death, TR-topic | C-alive, C-skill | E-enable, E-stage |
+| MQ05 20 | TR-death, TR-topic | C-alive, C-item, C-skill | E-enable, E-stage |
 | MQ05 40 | TR-zone | - | E-stage |
 | MQ05 50 | TR-zone | - | E-stage |
 | MQ05 91 | TR-death, TR-topic | C-alive | E-enable, E-global, E-regard, E-stage, TR-chain |
@@ -147,7 +148,8 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 - MQ01 stands on 14 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.barge-crew`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.cell`, `we.mq01.doors`, `we.mq01.families`, `we.mq01.gang`, `we.mq01.hold-location`, `we.mq01.no-valenwood`, `we.mq01.no-welcome`, `we.mq01.pier-mesh`, `we.mq01.start`.
 - MQ03 stands on 12 ledgered world edits: `we.clean.hereguardplantation`, `we.clean.lilmoth`, `we.mq01.broker`, `we.mq01.camp`, `we.mq01.hold-location`, `we.mq03.door`, `we.mq03.dream`, `we.mq03.house`, `we.mq03.hurt`, `we.mq03.jar-marks`, `we.mq03.reed`, `we.mq03.rooms`.
 - MQ04 stands on 7 ledgered world edits: `we.clean.village`, `we.mq04.cell`, `we.mq04.items`, `we.mq04.leeches`, `we.mq04.name`, `we.mq04.people`, `we.mq04.village`.
-- MQ05 stands on 10 ledgered world edits: `we.clean.dock5`, `we.clean.helstrom`, `we.clean.lilmoth`, `we.clean.thorn1`, `we.mq05.grove`, `we.mq05.hall-name`, `we.mq05.people`, `we.mq05.sweeper`, `we.mq05.throne`, `we.mq05.way`.
+- MQ05 stands on 10 ledgered world edits: `we.clean.dock5`, `we.clean.helstrom`, `we.clean.lilmoth`, `we.clean.thorn1`, `we.mq05.grove`, `we.mq05.hall-name`, `we.mq05.people`, `we.mq05.ship-door`, `we.mq05.throne`, `we.mq05.way`.
+<!-- stage_blocks:end -->
 
 Every stage maps; no stage needs a block outside the set, and no block needs SKSE. The set is seven triggers, seven
 conditions, nine effects and four world edits. The composite quest that proves the joints (Phase 3's first build)

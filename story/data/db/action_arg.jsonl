@@ -381,4 +381,3 @@
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":1,"arg_ord":0,"value":"flag.tg04.tally-handed"}
 {"list_id":"quest_stage:quest.tg.tg04|2:on_enter","ord":1,"arg_ord":1,"value":1}
-{"list_id":"quest_stage:quest.main.mq05|2:on_enter","ord":1,"arg_ord":0,"value":"topic.mq05-the-seat"}

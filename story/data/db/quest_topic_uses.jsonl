@@ -190,12 +190,10 @@
 {"quest_id":"quest.main.mq05","topics_ord":0,"ord":0,"value":"fact.mq05.reed-sent"}
 {"quest_id":"quest.main.mq05","topics_ord":0,"ord":1,"value":"fact.mq05.reed-goal"}
 {"quest_id":"quest.main.mq05","topics_ord":1,"ord":0,"value":"fact.mq05.basin-lethal"}
-{"quest_id":"quest.main.mq05","topics_ord":2,"ord":0,"value":"fact.mq05.throne-empty"}
-{"quest_id":"quest.main.mq05","topics_ord":2,"ord":1,"value":"fact.mq05.throne-swept"}
-{"quest_id":"quest.main.mq05","topics_ord":3,"ord":0,"value":"fact.mq05.eituja-view"}
-{"quest_id":"quest.main.mq05","topics_ord":4,"ord":0,"value":"fact.mq05.kaska-view"}
+{"quest_id":"quest.main.mq05","topics_ord":2,"ord":0,"value":"fact.mq05.eituja-view"}
+{"quest_id":"quest.main.mq05","topics_ord":3,"ord":0,"value":"fact.mq05.kaska-view"}
+{"quest_id":"quest.main.mq05","topics_ord":4,"ord":0,"value":"fact.mq05.severance-not-silence"}
 {"quest_id":"quest.main.mq05","topics_ord":5,"ord":0,"value":"fact.mq05.severance-not-silence"}
-{"quest_id":"quest.main.mq05","topics_ord":6,"ord":0,"value":"fact.mq05.severance-not-silence"}
 {"quest_id":"quest.mr.mr01","topics_ord":0,"ord":0,"value":"fact.mr01.sap-thin"}
 {"quest_id":"quest.mr.mr01","topics_ord":0,"ord":1,"value":"fact.mr01.works-closed"}
 {"quest_id":"quest.mr.mr01","topics_ord":0,"ord":2,"value":"fact.mr01.consent"}

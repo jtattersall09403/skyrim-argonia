@@ -17,8 +17,8 @@
 {"quest":"quest.main.mq04","ord":0,"settlement":"bmv.village","role":"main","what":"the village, its Hist, pools and homes"}
 {"quest":"quest.main.mq04","ord":1,"settlement":"bmv.village","role":"stage","what":"the cell's swamp camp at the end of the gum trail"}
 {"quest":"quest.main.mq05","ord":0,"settlement":"bmv.lilmoth","role":"start","what":"the Reed's house and the ship's door at Lilmoth's stop"}
-{"quest":"quest.main.mq05","ord":1,"settlement":"bmv.blackmarshnorth.thorn1","cell":"0AA665:Black Marsh.esm","role":"stage","what":"aboard the coast ship as a door pair only: the player takes its door to Helstrom's landing; its other doors stay BM&V's ordinary travel"}
-{"quest":"quest.main.mq05","ord":2,"settlement":"bmv.dock5","role":"stage","what":"the river landing and the marsh way to the gate"}
+{"quest":"quest.main.mq05","ord":1,"settlement":"bmv.blackmarshnorth.thorn1","cell":"0AA665:Black Marsh.esm","role":"stage","what":"aboard the coast ship as a door pair only: the player goes in by its door at the stop and out by its door to Helstrom's landing; its other doors stay BM&V's ordinary travel"}
+{"quest":"quest.main.mq05","ord":2,"settlement":"bmv.dock5","role":"stage","what":"the river landing and the marsh way to the gate and the city"}
 {"quest":"quest.main.mq05","ord":3,"settlement":"bmv.helstrom","cell":"2076BB:Black Marsh.esm","role":"main","what":"the hall of the empty seat, swept"}
 {"quest":"quest.main.mq05","ord":4,"settlement":"bmv.helstrom","cell":"0D78C1:Black Marsh.esm","role":"end","what":"the grove behind the hall and its crown"}
 {"quest":"quest.tg.tg01","ord":0,"settlement":"bmv.dock2","cell":"0E96A9:Black Marsh.esm","role":"start","what":"Deep-In-Her-Cups's back room"}
