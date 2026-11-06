@@ -2181,7 +2181,7 @@
 {"condition_id":"quest_objective:quest.main.mq01|1|0:complete_when.1","ord":2,"value":42}
 {"condition_id":"quest_objective:quest.main.mq01|1|0:complete_when.2","ord":0,"value":"quest.main.mq01"}
 {"condition_id":"quest_objective:quest.main.mq01|1|0:complete_when.2","ord":1,"value":"="}
-{"condition_id":"quest_objective:quest.main.mq01|1|0:complete_when.2","ord":2,"value":44}
+{"condition_id":"quest_objective:quest.main.mq01|1|0:complete_when.2","ord":2,"value":93}
 {"condition_id":"quest_objective:quest.main.mq01|2|0:complete_when","ord":0,"value":"zone.mq01.shore"}
 {"condition_id":"quest_objective:quest.main.mq01|3|0:complete_when","ord":0,"value":"zone.mq01.shore"}
 {"condition_id":"quest_objective:quest.main.mq03|0|0:complete_when","ord":0,"value":"thing.mq03.sap-phial"}
