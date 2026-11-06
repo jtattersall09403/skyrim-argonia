@@ -2246,6 +2246,9 @@
 {"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.1","ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-charm-client"}
 {"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.2","ord":0,"value":"topic.tg02-beads-claim"}
 {"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.2","ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-beads-client"}
+{"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.3.0","ord":0,"value":"speechcraft"}
+{"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.3.0","ord":1,"value":30}
+{"condition_id":"quest_objective:quest.tg.tg02|0|0:complete_when.3.1","ord":0,"value":20}
 {"condition_id":"quest_objective:quest.tg.tg02|1|0:complete_when.0","ord":0,"value":"item.tg02.bone-figurine"}
 {"condition_id":"quest_objective:quest.tg.tg02|1|0:complete_when.0","ord":1,"value":1}
 {"condition_id":"quest_objective:quest.tg.tg02|1|0:complete_when.1","ord":0,"value":"item.tg02.neesak-charm"}
@@ -2515,6 +2518,9 @@
 {"condition_id":"quest_successor:quest.tg.tg02|0|0:when.1","ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-charm-client"}
 {"condition_id":"quest_successor:quest.tg.tg02|0|0:when.2","ord":0,"value":"topic.tg02-beads-claim"}
 {"condition_id":"quest_successor:quest.tg.tg02|0|0:when.2","ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-beads-client"}
+{"condition_id":"quest_successor:quest.tg.tg02|0|0:when.3.0","ord":0,"value":"speechcraft"}
+{"condition_id":"quest_successor:quest.tg.tg02|0|0:when.3.0","ord":1,"value":30}
+{"condition_id":"quest_successor:quest.tg.tg02|0|0:when.3.1","ord":0,"value":20}
 {"condition_id":"quest_successor:quest.tg.tg02|1|0:when.0","ord":0,"value":"topic.tg02-hand-over"}
 {"condition_id":"quest_successor:quest.tg.tg02|1|0:when.0","ord":1,"value":"npc.mercantile-coast.lilmoth.tg02-clutch-client"}
 {"condition_id":"quest_successor:quest.tg.tg02|1|0:when.1","ord":0,"value":"topic.tg02-hand-over"}
