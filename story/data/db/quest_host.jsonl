@@ -1,6 +1,6 @@
 {"quest":"quest.bc.bc01","ord":0,"settlement":"bmv.blackrose","cell":"15635D:Black Marsh.esm","role":"start","what":"Never-Sold at the Chainbreakers' house"}
 {"quest":"quest.bc.bc01","ord":1,"settlement":"bmv.blackrose","cell":"095465:Black Marsh.esm","role":"main","what":"the estate's landing on the swamp road just north of the town, the hearing, the channel and the boat"}
-{"quest":"quest.bc.bc02","ord":0,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"main","what":"the burning lower levels of the Rose"}
+{"quest":"quest.bc.bc02","ord":0,"settlement":"bmv.blackrose","cell":"000811:Dawnguard.esm","role":"main","what":"the burning cells under the Rose's outer post"}
 {"quest":"quest.bc.bc03","ord":0,"settlement":"bmv.dock2","role":"main","what":"Ussa-Rekh's barge at Soulrest's dock"}
 {"quest":"quest.local.lq25","ord":0,"settlement":"bmv.dock5","role":"start","what":"the landing"}
 {"quest":"quest.local.lq25","ord":1,"settlement":"bmv.dock5","role":"end","what":"the beast's lair under the pier"}
@@ -9,7 +9,7 @@
 {"quest":"quest.main.mq01","ord":0,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"start","what":"processing and character creation in the barge's hold"}
 {"quest":"quest.main.mq01","ord":1,"settlement":"bmv.lilmoth","role":"stage","what":"the march from the plank (it starts at the first navmeshed square, 1,-2) along the shore"}
 {"quest":"quest.main.mq01","ord":2,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"main","what":"the camp at the paddy edge, the cutting, the hatching shed; the attack"}
-{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.lilmoth","role":"end","what":"the escape by water toward Dock1"}
+{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"end","what":"the escape by water, reed or rowboat to the shore below the camp, where the night ends"}
 {"quest":"quest.main.mq03","ord":0,"settlement":"bmv.hereguardplantation","role":"start","what":"the camp's aftermath at dawn"}
 {"quest":"quest.main.mq03","ord":1,"settlement":"bmv.lilmoth","cell":"0FE7F7:Black Marsh.esm","role":"main","what":"the unmarked house: the talk with the witness and Nesh-Deeka's bargain"}
 {"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog and emptied of the crew"}

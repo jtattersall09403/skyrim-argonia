@@ -212,7 +212,7 @@ building and people.
 | League of Open Water | Alten Meerhleel | Longmont |
 | Marsh Charter | Gideon's mansion | Hereguard as the frontier fort, a tribe village |
 | Reed-Sail | Soulrest's harbour | Bandit Dock (the Salt-Teeth), the Blackrose ship, Woodhearth in Valenwood |
-| Chainbreakers | Blackrose | an ex-Archein estate east of Blackrose, the Rose's lower levels; later the Dres Rows and White Rose (empty of the living: its dead only) |
+| Chainbreakers | Blackrose | an ex-Archein estate just north of Blackrose (QA3), the Rose's lower levels; later the Dres Rows and White Rose (empty of the living: its dead only) |
 | Thorn Ash-Reed | Thorn | Tear |
 | Daedric | none | the Underdark book portal as Apocrypha's edge; the rest by quest |
 | Detectives (0025) | a house in Lilmoth, across the water from the Chapter (rivals by design) | Blackrose, Helstrom for the finale |
@@ -334,4 +334,12 @@ places people in a room with no navmesh without a navmesh edit.
   trader her front; the Chainbreakers' house is named, marked and peopled; MQ03's dream has its fog edit and MQ01's
   crew its parent; MQ04's village gets its Hist. Minor fixes taken: the Rose's stockade gate and its spared record
   room, the pier's vipers, the hall's soldier as its sweeper, MQ03's move by fade, MQ03 after MQ01.
+- **Round 5** (six fresh reviewers): vibe, Night-Reed and Chainbreakers raised nothing blocking; lore, cross-line
+  and Act I raised 7, fixed as one batch: QA4 reworded so the heirs' outer post stands at the town's edge and the
+  prison proper still lies a day's march south (no contradiction left); the old dead stay behind a sealed door the
+  fire does not open (prisons Q3); LQ30's walk-out rite is QA5; Never-Sold reads the steward's own book aloud at the
+  hearing, a short readable book, and Ussa-Rekh keeps every forgiven ledger and the year it turned (each line's
+  must-keep restored); MQ01 ends at the camp's shore. Minor fixes taken: Soulrest's name linked to its two quests,
+  the post's door id, a first word of the Chainbreakers on Lilmoth's shore, the netch bulls at the hearing and the
+  gate. Act I's stage records were flagged stale: they are rewritten from this ledger next (step 5's last part).
 

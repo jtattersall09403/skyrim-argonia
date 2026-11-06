@@ -1,6 +1,7 @@
 {"quest":"quest.bc.bc01","edit":"we.bc01.estate"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.house"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.landing"}
+{"quest":"quest.bc.bc01","edit":"we.bc01.lead"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.members"}
 {"quest":"quest.bc.bc01","edit":"we.bc01.never-sold"}
 {"quest":"quest.bc.bc01","edit":"we.clean.blackrose"}
@@ -14,6 +15,7 @@
 {"quest":"quest.bc.bc03","edit":"we.bc03.barge"}
 {"quest":"quest.bc.bc03","edit":"we.bc03.people"}
 {"quest":"quest.bc.bc03","edit":"we.clean.dock2"}
+{"quest":"quest.bc.bc03","edit":"we.name.soulrest"}
 {"quest":"quest.local.lq25","edit":"we.clean.dock5"}
 {"quest":"quest.local.lq25","edit":"we.lq25.beast"}
 {"quest":"quest.local.lq25","edit":"we.lq25.polers"}
@@ -51,6 +53,7 @@
 {"quest":"quest.main.mq05","edit":"we.mq05.throne"}
 {"quest":"quest.tg.tg01","edit":"we.clean.dock2"}
 {"quest":"quest.tg.tg01","edit":"we.clean.lilmoth"}
+{"quest":"quest.tg.tg01","edit":"we.name.soulrest"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.chapter"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.dock"}
 {"quest":"quest.tg.tg01","edit":"we.tg01.doors"}

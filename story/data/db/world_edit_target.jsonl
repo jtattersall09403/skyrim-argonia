@@ -1,16 +1,24 @@
 {"edit":"we.clean.blackrose","target":"03E3E6:Black Marsh North.esp","what":"disabled: New Order Soldier NOSoldier"}
 {"edit":"we.clean.blackrose","target":"03E3E8:Black Marsh North.esp","what":"disabled: New Order Legion NOSoldierF"}
 {"edit":"we.clean.blackrose","target":"03E3F7:Black Marsh North.esp","what":"disabled: New Order Ranger NOSoldierR"}
+{"edit":"we.clean.blackrose","target":"0C7224:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
+{"edit":"we.clean.blackrose","target":"0C7229:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
 {"edit":"we.clean.blackrose","target":"0C7233:Black Marsh.esm","what":"disabled: Barbas DA03Barbas"}
 {"edit":"we.clean.blackrose","target":"0C7236:Black Marsh.esm","what":"disabled: Vale Deer DLC1EncDeerGlowing"}
 {"edit":"we.clean.blackrose","target":"0C7237:Black Marsh.esm","what":"disabled: Vale Deer DLC1EncDeerGlowing"}
 {"edit":"we.clean.blackrose","target":"0C7238:Black Marsh.esm","what":"disabled: Vale Deer DLC1EncDeerGlowing"}
 {"edit":"we.clean.blackrose","target":"0C7239:Black Marsh.esm","what":"disabled: Husky DLC1EncHusky"}
+{"edit":"we.clean.blackrose","target":"0C723D:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
+{"edit":"we.clean.blackrose","target":"0C723E:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
 {"edit":"we.clean.blackrose","target":"0C7243:Black Marsh.esm","what":"disabled: Vigilance TrainedDog"}
 {"edit":"we.clean.blackrose","target":"0C7244:Black Marsh.esm","what":"disabled: Meeko dunPOITundraMarshDog"}
 {"edit":"we.clean.blackrose","target":"0C724B:Black Marsh.esm","what":"disabled: Thalmor Wizard EncThalmor00WizardTemplate1"}
 {"edit":"we.clean.blackrose","target":"0C724C:Black Marsh.esm","what":"disabled: Thalmor Wizard EncThalmor00WizardTemplate1"}
 {"edit":"we.clean.blackrose","target":"0C724D:Black Marsh.esm","what":"disabled: Thalmor Wizard EncThalmor00WizardTemplate1"}
+{"edit":"we.clean.blackrose","target":"0C729B:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
+{"edit":"we.clean.blackrose","target":"0C729C:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
+{"edit":"we.clean.blackrose","target":"0C72BA:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
+{"edit":"we.clean.blackrose","target":"0C72BC:Black Marsh.esm","what":"disabled: Bull Netch DLC2EncNetchBull"}
 {"edit":"we.clean.blackrose","target":"12618F:Black Marsh.esm","what":"disabled: Soul Scounger 01SoulReaper"}
 {"edit":"we.clean.blackrose","target":"126190:Black Marsh.esm","what":"disabled: Soul Scounger 01SoulReaper"}
 {"edit":"we.clean.blackrose","target":"13077C:Black Marsh.esm","what":"disabled: Merchant BretonMaleMerchant"}
