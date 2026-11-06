@@ -100,3 +100,52 @@ outline, which becomes the source.
 - N5: "Lilmoth's dock" in text, never Dock1; the hatching shed is the uxith (no "uxith goes dark"); Ux-Xeek's role
   matches (Wuleen-Sei reads the roll); the foundation lists both held-back forms (0BCC51, 0F0F3E).
 Budget after the fix: 11 stage ids, 1 real choice, 3 endings.
+
+### Cross-quest rulings (planner, round 1)
+
+- The courier, Mee-Tuja, dies at the camp's fire, as MQ01 stages it. His strap with the brass tag is torn off in the
+  struggle and falls through the burnt boards into the shallows; MQ03's dive recovers it. (Overrides MQ01 B4's
+  courier clause; MQ03 B3 stands.)
+- No boats as a mechanic anywhere in Act I (no boat system in the stack): MQ01 B2, MQ04 B2.
+- If Nesh-Deeka dies in MQ03, later quests say "The Reed sent me"; Never-Writes-Twice is the fallback handler
+  (36-cast-roster §55): MQ03 B5, MQ04 N2.
+- The jars of sap are cut from MQ01 (MQ01 N2), so MQ03's finding is a discovery again.
+
+### MQ03, round 1: fix (planner's rulings; all accepted)
+
+- B1: the dive is required; the activator's skill claim dropped; stage 20 completes when the survivor is shown the
+  courier's tag (present-evidence) or passes a real skillAtLeast Speech check, so the dive's find opens the house.
+- B2: the survivor choice cut (its two topics, the objective, the Speech 25 action, the flag, half of
+  fact.witness-wanted); the survivor goes home by the Reed's people; stage 30 folds into 20: 6 stages, 1 choice (the
+  oath, a plain yes or no).
+- B3: as the cross-quest ruling; k6 re-pointed to c1 or cut.
+- B4: we.mq03.barge-sails and the Soulrest clause cut; Wuleen-Sei marches the unhurt back to the barge at Lilmoth's
+  dock; the hold's door locked under the dream parent.
+- B5: as the cross-quest ruling; "Nesh-Deeka, if she lives," deleted from 91.
+- N1: with MQ01's jars cut the reveal is MQ03's again; keep the shape the record can honour (drop RECKONING if its
+  rules stay unmet), conclusion c1 only where a clue supports it.
+- N2: shapeData.answer written (the voice is Cuts-the-Old-Knot); WONDER dropped from the shapes (the dream is the
+  line's set piece).
+- N3: stage 20 names the survivor by alias; the false "the one I pulled from the fire" cut.
+- N4: the dream gets its fall-reset trigger and no fall damage in we.mq03.dream; the ring a build-check row; the move
+  into the dream happens at night or after a rest, never mid-day "I slept".
+- N5: grantHistStep as a stage action; Nesh-Deeka suspects, not knows, the courier's tag; t2.who matches the cast.
+
+### MQ04, round 1: fix (planner's rulings; all accepted)
+
+- B1: both the-jars topics and that failForward cut; the player pours the jars at the cut root (zone.mq04.root plus
+  the item) and that moves to 91.
+- B2: no poling; the hand-over to Carries-Both-Ways on the jetty; the ending disables the fence ref; journal 92 fixed.
+- B3: no showing before witnesses and no Speech check to clear Pays-Late; e-exposed merges into e-minder (a man at
+  the fence becomes a greeting variant and +5 standing): 2 endings; choice 2 is "the Reed or not".
+- B4: both bypasses cut (the camp's-word skip at 10; "or shown the cut" at 30); the gift stays as 10's paid
+  fallback; the-cut gated on the night at the root (time plus zone while his package runs); "unseen" dropped unless a
+  detection block is proved in Phase 3.
+- B5: the timeline: cut "the first work of it" and "first affected" from the foundation.
+- N1: the knife goes in the jar bundle, so one take gets both.
+- N2: as the cross-quest ruling.
+- N3: fact.mq04.gum-origin moves to stage 30's learns; the false clauses cut; objective 30 reworded.
+- N4: binding a man built from blocks (TR-activate + E-enable + C-stage); the cell men protected; Pays-Late's
+  package only in stage 30, after the leeches are cleared.
+- N5: the kaal's npc row loses the struck award; census.md's "Hatching Pools" line corrected; stage 10 gives the
+  route from Lilmoth; journal 50 not conditional.
