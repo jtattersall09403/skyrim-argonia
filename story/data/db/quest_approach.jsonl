@@ -22,7 +22,6 @@
 {"quest_id":"quest.main.mq01","stages_ord":4,"ord":0,"id":"a-blade"}
 {"quest_id":"quest.main.mq01","stages_ord":4,"ord":1,"id":"a-sneak"}
 {"quest_id":"quest.main.mq01","stages_ord":5,"ord":0,"id":"a-swim"}
-{"quest_id":"quest.main.mq01","stages_ord":5,"ord":1,"id":"a-keep-alive"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"id":"a-fight"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":1,"id":"a-sneak"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":2,"id":"a-shoot"}

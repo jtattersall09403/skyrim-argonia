@@ -26,7 +26,7 @@
 {"quest_id":"quest.main.mq03","ord":3,"skill":"athletics","use":"climb","reason":"in the dream the player climbs the ring of roots to the door (FreeClimb)"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth and must be talked round before the player may go to the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"long-blade","use":"fight","reason":"the leeches crowd the cut root and the water below it (fixed band 2)"}
-{"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes down to the cut root after dark; watching him unseen opens him"}
+{"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes down to the cut root after dark; watching him opens him"}
 {"quest_id":"quest.main.mq04","ord":3,"skill":"athletics","use":"swim","reason":"the gum trail breaks at the leech water and picks up on the far side"}
 {"quest_id":"quest.main.mq04","ord":4,"skill":"sneak","use":"sneak-past","reason":"a sentry keeps the cell's camp on the trail side"}
 {"quest_id":"quest.main.mq04","ord":5,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp may be taken alive"}

@@ -67,7 +67,6 @@
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":1,"value":"fact.mq04.minder-hid"}
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":2,"value":"fact.mq04.minder-washes"}
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":3,"value":"fact.mq04.strangers-seen"}
-{"quest_id":"quest.main.mq04","stages_ord":2,"ord":4,"value":"fact.mq04.gum-trail"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":0,"value":"fact.mq04.camp-jars"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":1,"value":"fact.mq04.cell-cord"}
 {"quest_id":"quest.main.mq04","stages_ord":3,"ord":2,"value":"fact.mq04.knife-at-camp"}

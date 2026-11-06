@@ -115,11 +115,11 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | Quest stage | Trigger in | Conditions | Effects |
 |---|---|---|---|
 | MQ01 10 | the new-game start (ARG_Opening) | - | E-stage |
-| MQ01 20 | TR-death, TR-topic | C-alive | E-package, E-stage |
-| MQ01 30 | TR-death, TR-zone | C-alive | E-enable, E-stage |
-| MQ01 40 | TR-death, TR-topic, TR-zone | C-alive | E-enable, E-scene, E-stage |
-| MQ01 41 | TR-zone | C-stage | E-enable, E-stage |
-| MQ01 42 | TR-zone | C-stage | E-enable, E-stage |
+| MQ01 20 | TR-topic | - | E-package, E-stage |
+| MQ01 30 | TR-zone | - | E-enable, E-stage |
+| MQ01 40 | TR-topic, TR-zone | - | E-enable, E-scene, E-stage |
+| MQ01 41 | TR-zone | C-stage | E-stage |
+| MQ01 42 | TR-zone | C-stage | E-stage |
 | MQ01 44 | TR-death, TR-zone | C-alive | E-stage |
 | MQ01 50 | TR-zone | - | E-enable, E-stage |
 | MQ01 90 | TR-topic | C-stage | E-enable, E-global, E-item, E-stage, TR-chain |

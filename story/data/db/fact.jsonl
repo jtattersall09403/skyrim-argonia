@@ -591,7 +591,7 @@
 {"id":"fact.mq04.minder-hid","claim":"Pays-Late found the cut and hid it, because the gum was his and his knife gone, and it would look like his work.","ord":7,"from_ref":"t4","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-washes","claim":"Pays-Late goes down to the cut root every night after dark to wash it.","ord":8,"from_ref":"t4","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.officer-waits","claim":"A Reed hand, Zaren-Ish, keeps to a boat off the village and wants the cell's people, not the tree.","ord":1,"from_ref":"t7","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum; it is dry at the cut.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.strangers-seen","claim":"A boat came in from the north reeds on the netters' night and went back out.","ord":9,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.uxith-dark","claim":"The village's uxith is dark, as the camp's was.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq04"}
