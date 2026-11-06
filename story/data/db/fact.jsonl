@@ -597,7 +597,7 @@
 {"id":"fact.mq05.basin-lethal","claim":"The basin round Helstrom kills what walks in it and the gate says so.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.eituja-view","claim":"Ei-Tuja holds that a Hist's silence is its own act, to be read and not clamped.","ord":8,"from_ref":"t5","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.kaska-view","claim":"Kaska-Meen holds that a Hist that falls silent must be watched by tree-minders alone.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq05"}
-{"id":"fact.mq05.marsh-way","claim":"The way in from the landing is root and shallows through the Heart-Mud, sounded with depth sticks; whoever steps off it is held fast.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
+{"id":"fact.mq05.marsh-way","claim":"The way in from the landing is root and shallows through the Heart-Mud.","ord":3,"from_ref":"t3","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.reed-goal","claim":"The Reed wants Helstrom's tree-minders and Nisswo to hear what a cut Hist looks like, and wants it said by someone it can deny.","ord":1,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.reed-sent","claim":"The Reed sent me, and wants it unsaid.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq05"}
 {"id":"fact.mq05.severance-not-silence","claim":"A Hist gone silent and a Hist whose root was cut are two things: silence kills no clutch, and the clutch at Low-Reed Village died of the cut.","ord":9,"from_ref":"t1","quest_id":"quest.main.mq05"}

@@ -70,7 +70,7 @@
 {"quest_id":"quest.main.mq04","section":"trail","ord":2,"value":"the drips to the leech water"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":3,"value":"the bent reeds on the far side"}
 {"quest_id":"quest.main.mq04","section":"trail","ord":4,"value":"the camp"}
-{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"the gate's levy warden: the basin kills what walks in it, and the levy does not go after those who walk out (topic.mq05-the-word names the marsh way in; k3 shows it)"}
+{"quest_id":"quest.main.mq05","section":"prepHints","ord":0,"value":"topic.mq05-the-word names the marsh way in; k3 shows it"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":0,"value":"day 0: leaves falling out of season"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":1,"value":"after stage 20: the spring tastes of salt"}
 {"quest_id":"quest.mr.mr01","section":"ladder","ord":2,"value":"after stage 40: the sap stops at the naming bowl"}

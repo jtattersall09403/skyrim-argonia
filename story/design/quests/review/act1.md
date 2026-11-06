@@ -417,7 +417,7 @@ Converging (blocking 5, then 2: both leftover copies of the cut branch). All acc
 - The QA9 citation is cut from recordSources.lore.
 - This file's MQ04 summary is brought up to date (one ending).
 
-Round 4: applied (MQ04SHA), 6 of 6 (N5, the foundation's parenthesis, in 150b818f).
+Round 4: applied (e2c6fd4c), 6 of 6 (N5, the foundation's parenthesis, in 150b818f).
 
 ### MQ03, round 4 delta (2026-11-06): the planner's rulings
 
@@ -449,3 +449,6 @@ Converging (blocking 7, then 3). All accepted as worded, by cuts or restores:
 - N12: "his;" is cut.
 - N13: thing.mq05.ship's source names we.mq05.ship-door.
 - N14 is the slice's round 4 B1.
+
+Round 4: applied (MQ05SHA), 11 of 14 here; B3 in 150b818f (the main line's B3), N14 with the slice's B1. Not
+applied: N11 ("tells"), whose row the ruling does not name.
