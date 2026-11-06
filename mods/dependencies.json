@@ -36,8 +36,16 @@
    "mod": "bmv"
   },
   {
+   "file": "Keytrace.esp",
+   "mod": "dtry-key-utils"
+  },
+  {
    "file": "Ultimate Dodge Mod.esp",
    "mod": "tudmr"
+  },
+  {
+   "file": "TKDodgeAddon.esp",
+   "mod": "tk-dodge-re-addon"
   },
   {
    "file": "(SGC) NASC.esl",
@@ -623,6 +631,61 @@
    "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
+   "id": "dtry-key-utils",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 69944,
+    "file": 292793
+   },
+   "name": "dTry's Key Utils",
+   "author": "dTry",
+   "version": "1.1",
+   "archive": "dTry's Key Utils AE-69944-1-1-1655790332.7z",
+   "size_kb": 250,
+   "why": "8-way dodge input for Dynamic Dodge (TK Dodge RE)",
+   "required": true,
+   "profile": "play",
+   "sha256": "ffab378da57131d71ebe2e7b33beeff0e1eb374a347125ac07a8a504663b8196",
+   "licence": "none (github D7ry/DtryKeyUtil has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh D7ry/DtryKeyUtil licence none; Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "Keytrace.esp"
+   ],
+   "runtime": "its DtryKeyUtil.dll is replaced by dtry-key-utils-1.7.104's 1.7 build (intended)",
+   "conflicts": "DtryKeyUtil.dll overridden by dtry-key-utils-1.7.104 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "dtry-key-utils-1.7.104",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 189573,
+    "file": 794857
+   },
+   "name": "DtryKeyUtil-1.7.104-Patch",
+   "author": "Fleikon",
+   "version": "1",
+   "archive": "DtryKeyUtil 1.7.99 Compatibility Patch 189573 1 2026-08-25T07-33Z 2Bej58oqy.zip",
+   "size_kb": 665,
+   "why": "its DLL for 1.7.104",
+   "required": true,
+   "profile": "play",
+   "sha256": "6fe0cd8a0bde047a56e6205fb309a27f1f31f30445c69018de9e97e10eeff53a",
+   "licence": "GPL-3.0 (github Juan-MZ/DtryKeyUtil-1.7.99-Patch)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licence GPL-3.0; description discloses the patch was made with AI assistance and relies on Dtry's modification grant; original D7ry/DtryKeyUtil has no licence file",
+   "runtime": "loads on 1.7.104.0 (DtryKeyUtil.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
    "id": "ussep",
    "group": "core",
    "source": {
@@ -856,6 +919,161 @@
    "plugins": [
     "Ultimate Dodge Mod.esp"
    ]
+  },
+  {
+   "id": "tk-dodge-se",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 15309,
+    "file": 315866
+   },
+   "name": "TK Dodge SE",
+   "author": "tktk",
+   "version": "3.18",
+   "archive": "TK Dodge For RE-15309-3-18-1663096096.7z",
+   "size_kb": 345,
+   "why": "dodge behaviour and clips TK Dodge RE drives: the collection’s TUDMR is only clips for The Ultimate Dodge Mod, whose behaviour is not on Nexus, so nothing ever triggered a dodge (owner walk 2026-11-06)",
+   "required": true,
+   "profile": "play",
+   "sha256": "0ba17c40eaaeb32e54f77b910df1a4bb21c884be6c7e52ff0e1244ff263446f4",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "tk-dodge-re",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 56956,
+    "file": 402680
+   },
+   "name": "TK Dodge RE - Script Free",
+   "author": "Maxsu and FBplus and Loop and Xing",
+   "version": "v0.55-rc3",
+   "archive": "TK Dodge RE-v0.55-rc3-56956-v0-55-rc3-1688194322.zip",
+   "size_kb": 2811,
+   "why": "the dodge itself: tap sprint to roll, i-frames",
+   "required": true,
+   "profile": "play",
+   "sha256": "4809e8bbce01186468dc63760e0b347cb93e636c41a241047028be1245281e6f",
+   "pick": [
+    "TK dodge re v0.55-rc3 DLL/Main/*",
+    "TK dodge re v0.55-rc3 DLL/Sheathed Dodge/*",
+    "TK dodge re v0.55-rc3 DLL/Forward dodge movement fix/*",
+    "TK dodge re v0.55-rc3 DLL/Allow dodging when stagger - Directional Movement/*"
+   ],
+   "licence": "MIT (github max-su-2019/TK_Dodge_RE)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/TK_Dodge_RE licence MIT; Nexus description states no AI clause",
+   "runtime": "its TK_Dodge_RE.dll is replaced by tk-dodge-re-addon's 1.7 build (intended)",
+   "conflicts": "TK_Dodge_RE.dll overridden by tk-dodge-re-addon (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "tk-dodge-re-addon",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 125238,
+    "file": 800181
+   },
+   "name": "TK Dodge RE Addon",
+   "author": "Styyx",
+   "version": "3.3.0",
+   "archive": "TK Dodge RE Addon 125238 3.3.0 2026-09-04T14-46Z uhRBKsoPu.7z",
+   "size_kb": 3972,
+   "why": "TK Dodge RE's DLL for 1.7.x and its settings (tk-dodge.toml)",
+   "required": true,
+   "profile": "play",
+   "sha256": "223ba62d6dc57e17cc793d31a8a5dffff0c5eb88c213d3a621faf3cece6f4b45",
+   "ini": [
+    {
+     "file": "skse/plugins/tk-dodge.toml",
+     "section": "Settings",
+     "set": {
+      "bUseSprintKey": "true",
+      "uDodgeKey": "255"
+     }
+    }
+   ],
+   "licence": "none named; page says source and permissions are open",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. The page invites ports that honour the code licence, which it does not name.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus description: 'Source and permissions are open though and ports are welcome as long as they honor the license of the code'; no licence named",
+   "plugins": [
+    "TKDodgeAddon.esp"
+   ],
+   "runtime": "loads on 1.7.104.0 (TK_Dodge_RE.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "dynamic-dodge",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 79598,
+    "file": 429066
+   },
+   "name": "Dynamic Dodge Animation",
+   "author": "lSmoothl",
+   "version": "1.5",
+   "archive": "Dynamic Dodge-79598-1-5-1695708046.zip",
+   "size_kb": 9944,
+   "why": "8-way rolls and the standing backstep",
+   "required": true,
+   "profile": "play",
+   "sha256": "831d95c3adde9702981298ba93b526b169751c41acf7704965b1b05aea87f058",
+   "pick": [
+    "Dynamic Dodge/Roll to cancel attack/Dynamic Dodge - TK Dodge RE-0.55-rc3/*"
+   ],
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "iframe-generator",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 82737,
+    "file": 794617
+   },
+   "name": "IFrame Generator RE AE Support",
+   "author": "doodlum",
+   "version": "v1.03.2",
+   "archive": "IFrame Generator RE AE Support 82737 v1.03.2 2026-08-24T20-58Z CmfxYj7pW.zip",
+   "size_kb": 5703,
+   "why": "roll invincibility frames",
+   "required": true,
+   "profile": "play",
+   "sha256": "72e15b1e589e8c146b03727bc6a0f7bfab6cd4395723a9b963c503df70e0545f",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "GPL-3.0 (github doodlum/MaxsuIFrame-NG)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/doodlum/MaxsuIFrame-NG licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (MaxsuIFrame.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "nasc",
@@ -1395,7 +1613,20 @@
    "linked_or_forked_by": "none: depended on as the player's own download",
    "plugins": [
     "EldenCounter.esp"
-   ]
+   ],
+   "pick": [
+    "Elden Counter/Core/EldenCounter.esp",
+    "Elden Counter/Core/SKSE",
+    "Elden Counter/Core/meshes",
+    "Elden Counter/Core/sound",
+    "Elden Counter/Core/Nemesis_engine/mod/ecdmg",
+    "Elden Counter/Core/Nemesis_engine/mod/ecnpc"
+   ],
+   "pick_to": {
+    "Elden Counter/Core/Nemesis_engine/mod/ecdmg": "Nemesis_engine/mod/ecdmg",
+    "Elden Counter/Core/Nemesis_engine/mod/ecnpc": "Nemesis_engine/mod/ecnpc"
+   },
+   "install_note": "Core without ecvpc (the vanilla-behaviour patch): the author says SkySA needs no patch and ticking it with SkySA is wrong; Pandora enables every Nemesis folder in Data, so it is left out here. The DLL comes from elden-counter-1.7."
   },
   {
    "id": "elden-counter-1.7",

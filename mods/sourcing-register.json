@@ -529,5 +529,77 @@
   "used_by": "the play profile (player-downloaded dependency)",
   "linked_or_forked_by": "none",
   "notes": "Elden Counter's DLL for 1.7.x"
+ },
+ {
+  "name": "dTry's Key Utils (Nexus 69944)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/69944?tab=files&file_id=292793",
+  "version": "1.1 (archive sha256 ffab378da571..., data/dependencies.json row dtry-key-utils)",
+  "licence": "none (github D7ry/DtryKeyUtil has no licence file)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "DtryKeyUtil-1.7.104-Patch (Nexus 189573)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/189573?tab=files&file_id=794857",
+  "version": "1 (archive sha256 6fe0cd8a0bde..., data/dependencies.json row dtry-key-utils-1.7.104)",
+  "licence": "GPL-3.0 (github Juan-MZ/DtryKeyUtil-1.7.99-Patch)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "TK Dodge SE (Nexus 15309)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/15309?tab=files&file_id=315866",
+  "version": "3.18 (archive sha256 0ba17c40eaae..., data/dependencies.json row tk-dodge-se)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "TK Dodge RE - Script Free (Nexus 56956)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/56956?tab=files&file_id=402680",
+  "version": "v0.55-rc3 (archive sha256 4809e8bbce01..., data/dependencies.json row tk-dodge-re)",
+  "licence": "MIT (github max-su-2019/TK_Dodge_RE)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs"
+ },
+ {
+  "name": "TK Dodge RE Addon (Nexus 125238)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/125238?tab=files&file_id=800181",
+  "version": "3.3.0 (archive sha256 223ba62d6dc5..., data/dependencies.json row tk-dodge-re-addon)",
+  "licence": "none named; page says source and permissions are open",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. The page invites ports that honour the code licence, which it does not name. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "Dynamic Dodge Animation (Nexus 79598)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/79598?tab=files&file_id=429066",
+  "version": "1.5 (archive sha256 831d95c3adde..., data/dependencies.json row dynamic-dodge)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e)."
+ },
+ {
+  "name": "IFrame Generator RE AE Support (Nexus 82737)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/82737?tab=files&file_id=794617",
+  "version": "v1.03.2 (archive sha256 72e15b1e589e..., data/dependencies.json row iframe-generator)",
+  "licence": "GPL-3.0 (github doodlum/MaxsuIFrame-NG)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs"
+ },
+ {
+  "name": "TK Dodge RE Addon: its dodge perk (TKDodgeAddon.esp|0x809) and bUsePerkLock",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/125238",
+  "version": "the manifest's tk-dodge-re-addon row (data/dependencies.json)",
+  "licence": "the mod's Nexus permissions (the dependency row); depended on unmodified, the player's own download",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
+  "linked_or_forked_by": "linked: the perk is looked up at runtime by the plugin and local id the mod's own config names",
+  "notes": "The roll lock rides the mod's own condition, so no input filter or behaviour edit is needed (combat-wiring.md w.roll.tier)."
  }
 ]
