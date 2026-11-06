@@ -1,13 +1,12 @@
-{"faction_id":"faction.night-reed-chapter","ord":0,"value":"sneak"}
-{"faction_id":"faction.night-reed-chapter","ord":1,"value":"security"}
-{"faction_id":"faction.night-reed-chapter","ord":2,"value":"shortBlade"}
-{"faction_id":"faction.night-reed-chapter","ord":3,"value":"speechcraft"}
-{"faction_id":"faction.night-reed-chapter","ord":4,"value":"acrobatics"}
 {"faction_id":"faction.chainbreakers","ord":0,"value":"security"}
 {"faction_id":"faction.chainbreakers","ord":1,"value":"sneak"}
 {"faction_id":"faction.chainbreakers","ord":2,"value":"athletics"}
 {"faction_id":"faction.chainbreakers","ord":3,"value":"acrobatics"}
 {"faction_id":"faction.chainbreakers","ord":4,"value":"speechcraft"}
+{"faction_id":"faction.night-reed-chapter","ord":0,"value":"sneak"}
+{"faction_id":"faction.night-reed-chapter","ord":1,"value":"lockpicking"}
+{"faction_id":"faction.night-reed-chapter","ord":2,"value":"pickpocket"}
+{"faction_id":"faction.night-reed-chapter","ord":3,"value":"speechcraft"}
 {"faction_id":"faction.rootworm-waykeepers","ord":0,"value":"athletics"}
 {"faction_id":"faction.rootworm-waykeepers","ord":1,"value":"speechcraft"}
 {"faction_id":"faction.rootworm-waykeepers","ord":2,"value":"marksman"}

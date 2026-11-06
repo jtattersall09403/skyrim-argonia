@@ -51,3 +51,10 @@
 {"quest_id":"quest.mr.mr01","conclusions_ord":2,"ord":0,"value":"k5"}
 {"quest_id":"quest.mr.mr01","conclusions_ord":2,"ord":1,"value":"k6"}
 {"quest_id":"quest.mr.mr01","conclusions_ord":2,"ord":2,"value":"k7"}
+{"quest_id":"quest.tg.tg01","conclusions_ord":0,"ord":0,"value":"k1"}
+{"quest_id":"quest.tg.tg01","conclusions_ord":0,"ord":1,"value":"k2"}
+{"quest_id":"quest.tg.tg01","conclusions_ord":0,"ord":2,"value":"k3"}
+{"quest_id":"quest.tg.tg02","conclusions_ord":0,"ord":0,"value":"k1"}
+{"quest_id":"quest.tg.tg02","conclusions_ord":0,"ord":1,"value":"k2"}
+{"quest_id":"quest.tg.tg02","conclusions_ord":0,"ord":2,"value":"k3"}
+{"quest_id":"quest.tg.tg02","conclusions_ord":0,"ord":3,"value":"k4"}

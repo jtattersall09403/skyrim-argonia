@@ -68,3 +68,24 @@
 {"quest_id":"quest.mr.mr01","section":"sign","value":"fact.mr01.sap-thin"}
 {"quest_id":"quest.mr.mr01","section":"source","value":"thing.breach"}
 {"quest_id":"quest.mr.mr01","section":"spread","value":"brine up the taproots from the drowned stair, worst after each flood"}
+{"quest_id":"quest.tg.tg01","section":"aftermath","value":"Deep-In-Her-Cups pays if he lives and says why she does not if he died; either way she sends the player to the Chapter."}
+{"quest_id":"quest.tg.tg01","section":"escape","value":"none needed; the dock is open and he does not fight"}
+{"quest_id":"quest.tg.tg01","section":"failureLadder","value":"A failed lift or a seen theft sets Keeps-What-Floats running (Cowardly); he comes back to his round, and the bedroll or the talk is still open. If he dies, the necklace is on his body and the quest goes on at stage 41."}
+{"quest_id":"quest.tg.tg01","section":"leverage"}
+{"quest_id":"quest.tg.tg01","section":"objections"}
+{"quest_id":"quest.tg.tg01","section":"onSiteFact","value":"The necklace is on him by day and in his bedroll under the awning while he drinks in the evening."}
+{"quest_id":"quest.tg.tg01","section":"planTexts"}
+{"quest_id":"quest.tg.tg01","section":"routes"}
+{"quest_id":"quest.tg.tg01","section":"score","value":"The Blue Jasper Necklace, taken back from Keeps-What-Floats for the Chapter, with no harm to him."}
+{"quest_id":"quest.tg.tg01","section":"sides"}
+{"quest_id":"quest.tg.tg01","section":"sources"}
+{"quest_id":"quest.tg.tg01","section":"theftMode","value":"commit"}
+{"quest_id":"quest.tg.tg02","section":"aftermath","value":"The things go to one client, or each goes back to its teller at the price the box shows; the clients the player passed over turn cold."}
+{"quest_id":"quest.tg.tg02","section":"escape","value":"swim up and out onto the canal front"}
+{"quest_id":"quest.tg.tg02","section":"failureLadder","value":"An eel that sees the player gives chase; the player surfaces, climbs out and tries again. A broken pick is another try; the lock is Apprentice."}
+{"quest_id":"quest.tg.tg02","section":"onSiteFact","value":"The box lies in the open beside the fallen house, locked, with ripper eels hunting the canal round it."}
+{"quest_id":"quest.tg.tg02","section":"planTexts"}
+{"quest_id":"quest.tg.tg02","section":"routes"}
+{"quest_id":"quest.tg.tg02","section":"score","value":"The merchant's lockbox of pledges, from the canal floor beside the fallen stilt house in Pusbottom."}
+{"quest_id":"quest.tg.tg02","section":"sources"}
+{"quest_id":"quest.tg.tg02","section":"theftMode","value":"commit"}

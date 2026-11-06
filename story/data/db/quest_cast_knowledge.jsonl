@@ -168,3 +168,29 @@
 {"quest_id":"quest.mr.mr01","cast_ord":1,"fact_id":"fact.mr01.sap-thin","value":"knows"}
 {"quest_id":"quest.mr.mr01","cast_ord":2,"fact_id":"fact.greenspring.why-pressures-3","value":"believes \"the salt works foul the spring; nothing of ours does\""}
 {"quest_id":"quest.mr.mr01","cast_ord":2,"fact_id":"fact.mr01.founders-stakes","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":0,"fact_id":"fact.tg01.desk-door","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.chapter-way","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.desk-door","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.he-runs","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.necklace","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":1,"fact_id":"fact.tg01.test","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.bedroll","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.necklace","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":2,"fact_id":"fact.tg01.round","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.bedroll","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.he-runs","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.necklace","value":"suspects"}
+{"quest_id":"quest.tg.tg01","cast_ord":3,"fact_id":"fact.tg01.round","value":"knows"}
+{"quest_id":"quest.tg.tg01","cast_ord":4,"fact_id":"fact.tg01.chapter-way","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":0,"fact_id":"fact.tg02.box","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":0,"fact_id":"fact.tg02.eels","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":0,"fact_id":"fact.tg02.job","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":1,"fact_id":"fact.tg02.box","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":1,"fact_id":"fact.tg02.claim-figurine","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":1,"fact_id":"fact.tg02.figurine-old","value":"hides: she wants it for its worth"}
+{"quest_id":"quest.tg.tg02","cast_ord":2,"fact_id":"fact.tg02.box","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":2,"fact_id":"fact.tg02.charm-remounted","value":"hides: he sold it outright"}
+{"quest_id":"quest.tg.tg02","cast_ord":2,"fact_id":"fact.tg02.claim-charm","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":3,"fact_id":"fact.tg02.beads-kothringi","value":"hides: he bought them from cairn-robbers"}
+{"quest_id":"quest.tg.tg02","cast_ord":3,"fact_id":"fact.tg02.box","value":"knows"}
+{"quest_id":"quest.tg.tg02","cast_ord":3,"fact_id":"fact.tg02.claim-beads","value":"knows"}

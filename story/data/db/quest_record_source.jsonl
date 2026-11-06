@@ -31,3 +31,13 @@
 {"quest_id":"quest.mr.mr01","source":"placeFacts","value":"world/sources/placement/facts/place.hist-heartland.greenspring.json"}
 {"quest_id":"quest.mr.mr01","source":"roster","value":"docs/design/quests/36-cast-roster.md §56 (The Many-Root Conclave)"}
 {"quest_id":"quest.mr.mr01","source":"stance","value":"world/sources/dialogue/stance/greenspring.json"}
+{"quest_id":"quest.tg.tg01","source":"bmv","value":"bmv_cell 0E96A9:Black Marsh.esm (the house), 16BF81:Black Marsh North.esp (the Chapter), 005A0B:Black Marsh.esm (Pusbottom); doors 120E93/0E971F (the house), 039827/0AA6C9 (Soulrest to the ship), 0AA837/0AA664 (the ship to Lilmoth''s stop), 16BF7F/16C05B (the trapdoor)"}
+{"quest_id":"quest.tg.tg01","source":"culture"}
+{"quest_id":"quest.tg.tg01","source":"ledger","value":"we.tg01.fence, we.tg01.trader, we.tg01.thief, we.tg01.dock, we.tg01.round, we.tg01.doors, we.tg01.trapdoor, we.tg01.chapter, we.tg01.pusbottom, we.name.soulrest, we.clean.dock2, we.clean.lilmoth"}
+{"quest_id":"quest.tg.tg01","source":"lore"}
+{"quest_id":"quest.tg.tg01","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (Deep-In-Her-Cups, the Soulrest desk)"}
+{"quest_id":"quest.tg.tg02","source":"bmv","value":"bmv_cell 16BF81:Black Marsh North.esp (the Chapter), 005A0B:Black Marsh.esm (Pusbottom); doors 16C05B/16BF7F (the trapdoor); Slaughterfish 023AB8:Skyrim.esm (the eels)"}
+{"quest_id":"quest.tg.tg02","source":"culture"}
+{"quest_id":"quest.tg.tg02","source":"ledger","value":"we.tg01.chapter, we.tg02.house, we.tg02.clients, we.tg02.eels, we.clean.lilmoth"}
+{"quest_id":"quest.tg.tg02","source":"lore"}
+{"quest_id":"quest.tg.tg02","source":"roster","value":"story/design/quests/36-cast-roster.md §56 (the Lilmoth desk); npc row Bent-Spine (the Chapter's fence)"}

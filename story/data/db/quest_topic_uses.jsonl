@@ -202,3 +202,17 @@
 {"quest_id":"quest.mr.mr01","topics_ord":3,"ord":2,"value":"fact.mr01.tool-marks"}
 {"quest_id":"quest.mr.mr01","topics_ord":4,"ord":0,"value":"fact.mr01.breach"}
 {"quest_id":"quest.mr.mr01","topics_ord":4,"ord":1,"value":"fact.mr01.consent"}
+{"quest_id":"quest.tg.tg01","topics_ord":0,"ord":0,"value":"fact.tg01.desk-door"}
+{"quest_id":"quest.tg.tg01","topics_ord":1,"ord":0,"value":"fact.tg01.test"}
+{"quest_id":"quest.tg.tg01","topics_ord":1,"ord":1,"value":"fact.tg01.necklace"}
+{"quest_id":"quest.tg.tg01","topics_ord":2,"ord":0,"value":"fact.tg01.round"}
+{"quest_id":"quest.tg.tg01","topics_ord":2,"ord":1,"value":"fact.tg01.bedroll"}
+{"quest_id":"quest.tg.tg01","topics_ord":2,"ord":2,"value":"fact.tg01.he-runs"}
+{"quest_id":"quest.tg.tg01","topics_ord":3,"ord":0,"value":"fact.tg01.necklace"}
+{"quest_id":"quest.tg.tg01","topics_ord":4,"ord":0,"value":"fact.tg01.chapter-way"}
+{"quest_id":"quest.tg.tg02","topics_ord":0,"ord":0,"value":"fact.tg02.job"}
+{"quest_id":"quest.tg.tg02","topics_ord":0,"ord":1,"value":"fact.tg02.box"}
+{"quest_id":"quest.tg.tg02","topics_ord":0,"ord":2,"value":"fact.tg02.eels"}
+{"quest_id":"quest.tg.tg02","topics_ord":1,"ord":0,"value":"fact.tg02.claim-figurine"}
+{"quest_id":"quest.tg.tg02","topics_ord":2,"ord":0,"value":"fact.tg02.claim-charm"}
+{"quest_id":"quest.tg.tg02","topics_ord":3,"ord":0,"value":"fact.tg02.claim-beads"}

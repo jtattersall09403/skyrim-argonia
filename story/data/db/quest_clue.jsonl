@@ -55,3 +55,10 @@
 {"quest_id":"quest.mr.mr01","ord":4,"id":"k5","form":"thing","carrier":"thing.breach"}
 {"quest_id":"quest.mr.mr01","ord":5,"id":"k6","form":"thing","carrier":"thing.founders-stakes"}
 {"quest_id":"quest.mr.mr01","ord":6,"id":"k7","form":"line","carrier":"npc.hist-heartland.greenspring.tree-minder"}
+{"quest_id":"quest.tg.tg01","ord":0,"id":"k1","form":"behaviour","carrier":"npc.mercantile-coast.soulrest.tg01-thief"}
+{"quest_id":"quest.tg.tg01","ord":1,"id":"k2","form":"line","carrier":"npc.mercantile-coast.soulrest.tg01-friend"}
+{"quest_id":"quest.tg.tg01","ord":2,"id":"k3","form":"place","carrier":"thing.tg01.round"}
+{"quest_id":"quest.tg.tg02","ord":0,"id":"k1","form":"thing","carrier":"item.tg02.bone-figurine"}
+{"quest_id":"quest.tg.tg02","ord":1,"id":"k2","form":"thing","carrier":"item.tg02.neesak-charm"}
+{"quest_id":"quest.tg.tg02","ord":2,"id":"k3","form":"thing","carrier":"item.glass-bead-strand"}
+{"quest_id":"quest.tg.tg02","ord":3,"id":"k4","form":"line","carrier":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence"}

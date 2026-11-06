@@ -63,6 +63,9 @@ skills:
   # stealth
   sneak:        {family: stealth, system: sneak, uses: [sneak-past, spy, follow, pickpocket, plant, steal, search-unseen]}
   security:     {family: stealth, system: locks, uses: [pick-a-lock, disarm-a-trap, open-a-strongbox, set-a-trap]}
+  # Skyrim's own actor values (ruling #50): a quest written after the ruling names these, not security or sneak's pickpocket
+  lockpicking:  {family: stealth, system: locks, uses: [pick-a-lock, open-a-strongbox]}
+  pickpocket:   {family: stealth, system: pickpocket, uses: [pickpocket, plant, steal]}
   # traversal
   acrobatics:   {family: traversal, system: climb, uses: [jump-a-gap, fall-safely, reach-a-roof]}
   athletics:    {family: traversal, system: swim, uses: [swim, dive, climb, run-down, outrun, cross-a-flood, pole-or-sail-a-boat]}

@@ -997,3 +997,8 @@
 {"npc_id":"npc.saxhleel-coast.quay-tradehouse.npc-archon-tradehouse-keeper","ord":0,"value":"place.saxhleel-coast.quay-tradehouse notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.seafalls.npc-seafalls-transfer-clerk","ord":0,"value":"place.saxhleel-coast.seafalls notableNpcSlots[0]"}
 {"npc_id":"npc.saxhleel-coast.wall-hist-village.npc-wall-village-naheesh","ord":0,"value":"place.saxhleel-coast.wall-hist-village notableNpcSlots[0]"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-thief","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.soulrest.tg01-friend","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-charm-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}
+{"npc_id":"npc.mercantile-coast.lilmoth.tg02-beads-client","ord":0,"value":"story/design/quests/review/slice-premises.md (Night-Reed: TG01, TG02)"}

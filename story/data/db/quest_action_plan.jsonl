@@ -40,3 +40,12 @@
 {"quest_id":"quest.mr.mr01","ord":3,"skill":"destruction","use":"burn-a-nest","reason":"parasite swarms between the sites"}
 {"quest_id":"quest.mr.mr01","ord":4,"skill":"spear","use":"fight","reason":"or fight through the swarms"}
 {"quest_id":"quest.mr.mr01","ord":5,"skill":"speechcraft","use":"present-evidence","reason":"the council payoff: discover in danger, decide in council"}
+{"quest_id":"quest.tg.tg01","ord":0,"skill":"sneak","use":"follow","reason":"the thief's round is watched from cover by day, to learn where he drinks and sleeps"}
+{"quest_id":"quest.tg.tg01","ord":1,"skill":"pickpocket","use":"pickpocket","reason":"the necklace is lifted off him on the dock by day"}
+{"quest_id":"quest.tg.tg01","ord":2,"skill":"sneak","use":"steal","reason":"or it is taken from his bedroll while he drinks in the evening"}
+{"quest_id":"quest.tg.tg01","ord":3,"skill":"speechcraft","use":"persuade","reason":"or he is talked out of it at his drinking spot"}
+{"quest_id":"quest.tg.tg01","ord":4,"skill":"lockpicking","use":"pick-a-lock","reason":"the Chapter's trapdoor under Lilmoth is opened by the player's own hand"}
+{"quest_id":"quest.tg.tg02","ord":0,"skill":"speechcraft","use":"persuade","reason":"each client is drawn into saying what they claim the box holds for them"}
+{"quest_id":"quest.tg.tg02","ord":1,"skill":"sneak","use":"sneak-past","reason":"the ripper eels in the canal are slipped past by stealth and timing"}
+{"quest_id":"quest.tg.tg02","ord":2,"skill":"lockpicking","use":"open-a-strongbox","reason":"the lockbox is opened where it lies on the canal floor"}
+{"quest_id":"quest.tg.tg02","ord":3,"skill":"speechcraft","use":"persuade","reason":"each pledge is sold back to its teller at the price the box shows"}
