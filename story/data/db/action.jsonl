@@ -120,7 +120,6 @@
 {"list_id":"quest_ending:quest.local.lq25|1:rewards","ord":0,"term":"giveGold"}
 {"list_id":"quest_ending:quest.local.lq25|1:rewards","ord":1,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lq25|1:world","ord":0,"term":"disableRef"}
-{"list_id":"quest_ending:quest.local.lq30|0:rewards","ord":0,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.local.lq30|0:world","ord":0,"term":"disableRef"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":0,"term":"giveGold"}
 {"list_id":"quest_ending:quest.local.lq30|1:rewards","ord":1,"term":"changeDisposition"}
@@ -247,7 +246,7 @@
 {"list_id":"quest_stage:quest.local.lq30|0:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lq30|0:on_enter","ord":1,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lq30|0:on_enter","ord":2,"term":"enableRef"}
-{"list_id":"quest_stage:quest.local.lq30|2:on_enter","ord":0,"term":"grantTopic"}
+{"list_id":"quest_stage:quest.local.lq30|1:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.local.lr03|0:on_enter","ord":0,"term":"giveItem"}
 {"list_id":"quest_stage:quest.local.lr03|1:on_enter","ord":0,"term":"takeItem"}
 {"list_id":"quest_stage:quest.local.lr03|1:on_enter","ord":1,"term":"setFlag"}

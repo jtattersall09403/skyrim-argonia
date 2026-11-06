@@ -46,7 +46,7 @@
 {"quest_id":"quest.local.lq30","section":"leads"}
 {"quest_id":"quest.local.lq30","section":"nodes"}
 {"quest_id":"quest.local.lq30","section":"openQuestions"}
-{"quest_id":"quest.local.lq30","section":"rite","value":"A walk-out into the basin alone, which ends when the walker comes back through the gate on their own feet; the Agaceph of Helstrom may not follow, an outsider may, and a walker who is seen to be helped has not walked out (QA5)."}
+{"quest_id":"quest.local.lq30","section":"rite","value":"A walk-out into the basin alone, which ends when the walker comes back through the gate on their own feet; the Agaceph of Helstrom may not follow, and an outsider may (QA5)."}
 {"quest_id":"quest.local.lq30","section":"trail","value":"Cut reeds from the gate east along row 18 to the shelter in cell 0D7883."}
 {"quest_id":"quest.main.mq01","section":"aftermath","value":"The roll burns: nobody can prove what anyone owes; the gang scatters on the shore. Three places within a day change: the camp (the cutting withdrawn, the clutch grey), the barge (the crew parent off), the paddies behind the camp (the families on the shore)."}
 {"quest_id":"quest.main.mq01","section":"beats"}

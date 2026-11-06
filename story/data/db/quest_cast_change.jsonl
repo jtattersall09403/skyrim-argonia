@@ -4,8 +4,8 @@
 {"quest_id":"quest.local.lh38","cast_ord":2,"ord":0,"at_stage":40,"fact":"fact.lh38.pack-unpaid","to":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":4,"ord":0,"at_stage":40,"fact":"fact.lh38.body-in-throat","to":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":5,"ord":0,"at_stage":40,"fact":"fact.lh38.stake-blank","to":"knows"}
-{"quest_id":"quest.local.lq25","cast_ord":2,"ord":0,"at_stage":40,"fact":"fact.lq25.crew-baited","to":"knows"}
-{"quest_id":"quest.local.lq25","cast_ord":2,"ord":1,"at_stage":40,"fact":"fact.lq25.bait-drew-it","to":"knows"}
+{"quest_id":"quest.local.lq25","cast_ord":2,"ord":0,"at_stage":91,"fact":"fact.lq25.crew-baited","to":"knows"}
+{"quest_id":"quest.local.lq25","cast_ord":2,"ord":1,"at_stage":91,"fact":"fact.lq25.bait-drew-it","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":0,"ord":0,"at_stage":40,"fact":"fact.mq01.satchel","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"ord":0,"at_stage":40,"fact":"fact.mq01.roots-cut","to":"knows"}
 {"quest_id":"quest.main.mq01","cast_ord":4,"ord":1,"at_stage":50,"fact":"fact.mq01.clutch-dead","to":"knows"}

@@ -63,7 +63,7 @@
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":0,"value":"fact.lq30.walked-out"}
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":1,"value":"fact.lq30.custom"}
 {"quest_id":"quest.local.lq30","stages_ord":0,"ord":2,"value":"fact.lq30.trail"}
-{"quest_id":"quest.local.lq30","stages_ord":1,"ord":0,"value":"fact.lq30.cornered"}
+{"quest_id":"quest.local.lq30","stages_ord":0,"ord":3,"value":"fact.lq30.cornered"}
 {"quest_id":"quest.main.mq01","stages_ord":0,"ord":0,"value":"fact.mq01.owing-roll"}
 {"quest_id":"quest.main.mq01","stages_ord":0,"ord":1,"value":"fact.mq01.blank-line"}
 {"quest_id":"quest.main.mq01","stages_ord":0,"ord":2,"value":"fact.mq01.washed-out"}

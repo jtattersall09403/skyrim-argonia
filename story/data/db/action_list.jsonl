@@ -80,7 +80,6 @@
 {"id":"quest_ending:quest.local.lq25|0:world"}
 {"id":"quest_ending:quest.local.lq25|1:rewards"}
 {"id":"quest_ending:quest.local.lq25|1:world"}
-{"id":"quest_ending:quest.local.lq30|0:rewards"}
 {"id":"quest_ending:quest.local.lq30|0:world"}
 {"id":"quest_ending:quest.local.lq30|1:rewards"}
 {"id":"quest_ending:quest.local.lq30|1:world"}
@@ -151,7 +150,7 @@
 {"id":"quest_stage:quest.local.lq25|0:on_enter"}
 {"id":"quest_stage:quest.local.lq25|1:on_enter"}
 {"id":"quest_stage:quest.local.lq30|0:on_enter"}
-{"id":"quest_stage:quest.local.lq30|2:on_enter"}
+{"id":"quest_stage:quest.local.lq30|1:on_enter"}
 {"id":"quest_stage:quest.local.lr03|0:on_enter"}
 {"id":"quest_stage:quest.local.lr03|1:on_enter"}
 {"id":"quest_stage:quest.local.lv38|0:on_enter"}

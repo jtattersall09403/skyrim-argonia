@@ -34,11 +34,10 @@
 {"quest_id":"quest.local.lq25","ord":1,"skill":"marksman","use":"snipe","reason":"the crocodile is shot from the pier"}
 {"quest_id":"quest.local.lq25","ord":2,"skill":"destruction","use":"kill-from-range","reason":"the crocodile is burnt or frozen from the pier"}
 {"quest_id":"quest.local.lq25","ord":3,"skill":"speechcraft","use":"present-evidence","reason":"the crew's bait bucket is put to the boat captain or to the crew"}
-{"quest_id":"quest.local.lq30","ord":0,"skill":"alteration","use":"water-walk","reason":"the basin's water is walked over"}
-{"quest_id":"quest.local.lq30","ord":1,"skill":"marksman","use":"snipe","reason":"the viper is shot from cover so the youth never sees who did it"}
-{"quest_id":"quest.local.lq30","ord":2,"skill":"oneHanded","use":"fight","reason":"the viper is fought at the shelter"}
-{"quest_id":"quest.local.lq30","ord":3,"skill":"sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
-{"quest_id":"quest.local.lq30","ord":4,"skill":"speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
+{"quest_id":"quest.local.lq30","ord":0,"skill":"marksman","use":"snipe","reason":"the viper is shot from cover so the youth never sees who did it"}
+{"quest_id":"quest.local.lq30","ord":1,"skill":"oneHanded","use":"fight","reason":"the viper is fought at the shelter"}
+{"quest_id":"quest.local.lq30","ord":2,"skill":"sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
+{"quest_id":"quest.local.lq30","ord":3,"skill":"speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
 {"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
 {"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
 {"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
