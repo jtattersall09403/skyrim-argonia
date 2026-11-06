@@ -165,7 +165,6 @@
 {"quest_id":"quest.main.mq01","topics_ord":8,"ord":0,"value":"fact.mq01.clutch-dead"}
 {"quest_id":"quest.main.mq01","topics_ord":9,"ord":0,"value":"fact.mq01.clutch-dead"}
 {"quest_id":"quest.main.mq01","topics_ord":10,"ord":0,"value":"fact.mq01.clutch-dead"}
-{"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.barge-gone"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.sap-cell"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":1,"value":"fact.mq03.no-claim"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":2,"value":"fact.mq03.satchel-hers"}
