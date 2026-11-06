@@ -50,7 +50,7 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | # | Section | What it holds | Built from |
 |---|---|---|---|
 | 1 | `recordStatus`, `foundation` | `design`, `reviewed`, `briefed`, `written`; which imported design it rebuilds (the row, its 40-factions or 50-side-quests entry) and what changed | the import |
-| 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id | world data |
+| 2 | `recordSources` | the place facts file, culture sheets, stance file, roster section read, by path or id; `lore`: each lore file and section checked (quest-write §4b) | world data |
 | 3 | `actionPlan`, `centrepiece` | the skill uses the quest is built round (`skill`, `use`, reason), from `action_plan.py`; `centrepiece`: one verb tag (`skill-uses.yaml` verbTags; 00-overview §4) | profile, place, shapes |
 | 4 | `truth` | numbered physical events: `id`, `when`, `who`, `where`, `what` (and why) | premise + cast motives |
 | 5 | `playerStart`, `facts` | facts any player has on arrival; the quest's new facts `{id, claim, from}`, `from` a truth event, a place fact or `culture.*#field` | truth |
@@ -61,7 +61,7 @@ in prose. Worked examples, exported from the rows: [examples/lh38.yaml](examples
 | 10 | `stages` | as §1, with actions, learns and directions | conclusions + clues |
 | 11 | `endings` | `{id, when, world (actions), seen, rewards (actions)}`: two or more with real costs | stages |
 | 12 | `topics` | `{id: topic.<slug>, label, person, stages, essential, intent, uses, hides, grants}`; the id is an existing `topic` row or `new` (2.5 adds it) | cast + stages |
-| 13 | `review` | the `quest-review` findings and how each was answered | quest-review |
+| 13 | `review` | the `quest-review` findings and how each was answered; first the writer's lore-check entries (`id: L<n>`, `severity: lore`, quest-write §4b), then the reviewer's (`severity: blocking` for quest-review item 17, otherwise `high`, `medium`, `low`) | quest-write §4b, quest-review |
 
 A **line record** (faction, main, Daedric) comes before its quests: `principles/questlines.md` lists its sections.
 

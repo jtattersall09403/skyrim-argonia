@@ -127,3 +127,13 @@ Canon leaves these open on purpose. Recorded so no future agent "fixes" them.
 | G6.5 | **Why the Argonians stopped fighting in 1E 2836.** No source knows. |
 | G6.6 | **What the Hist actually are and want.** Every account is from outside or from a believer. |
 | G6.7 | **What the "Wild Ones" meant to the people so named.** We have fixed what the *An-Xileel* meant by it; what the interior tribes thought of the label is a question the setting should keep asking. |
+
+## 8. Quest assumptions
+
+Claims a quest record needs that the lore does not state, added by `quest-write` §4b and checked by
+`quest-review` item 17. Each row: id `QA<n>` (not the owner decisions Q1–Q5), the claim, status `ASSUMED`, the quest id, and the anchor it is the
+least inventive reading of (file and section). A row may not contradict the lore or put a motif where
+`story/design/province-vibe.md` §9 does not.
+
+| ID | Claim | Status | Quest | Anchor |
+|---|---|---|---|---|

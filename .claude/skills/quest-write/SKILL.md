@@ -29,7 +29,8 @@ Read the world only through the database: `python3 -m tools.argonia_world.db que
   the people (`npc`, `npc_faction`), their stance (`stance`, `stance_chain`, `stance_topic`) and the culture
   sheets it chains (`culture_sheet`, `culture_entry`, `culture_opinion`), and the other quests at the place and
   its neighbours (`quest` by `settlement`). The lore dossiers and extrapolation are read from
-  `../../../story/lore/`. The old places are design intent: map each onto the BM&V place that will host the quest,
+  `../../../story/lore/`, and the province's vibe from `../../../story/design/province-vibe.md`: the quest
+  adds to that vibe and must not jar against it (§4b). The old places are design intent: map each onto the BM&V place that will host the quest,
   and name that place (its cell or editor id) in `foundation`.
 - **Cast:** a recurring or principal person comes from `../../../story/design/quests/36-cast-roster.md` (the
   line's desks and its argument, §56; the principal cast, §55; oddities, §58), under the rules of
@@ -99,9 +100,46 @@ register, the wonder budget, deliverability tiers D-A/D-B/D-C and the cheap patt
 11. **Topics**: `topic.` ids of `topic` rows or marked `new`; per person
     and stage, the intent, the facts it may state and hide, the links it grants.
 
+## 4b. Check the record against the lore and the vibe (before review)
+
+Run the three checks on the whole record. Every lore source read goes in `recordSources.lore`, a list of
+`"<path> §<section>"`. Every claim's
+verdict goes in `review.findings` as a lore-check entry before the reviewer's: `id: L<n>`, `severity: lore`, `ids` (the record ids
+that carry the claim), `finding` (the claim, and for a §9 motif the motif and the place that licenses it),
+`answer` (`sourced: <file §>`, `gap: <QA id>`, or `changed: <what to>`). A record that fails any check is
+not handed on to §5. A `QA<n>` id is the next free one in the gap register, re-read just before commit.
+
+1. **Lore check.** List every person, role, job, place, institution, object, custom, belief, price and way of
+   doing things the record names. Check each against the lore dossiers and the extrapolation
+   (`../../../story/lore/`: the city and province dossiers, `tribes.md`, `regions/`, `topics/`, and
+   `extrapolation/`, first `argonia-4e201-state.md`, `settlement-register.md` and `gap-register.md`) and against
+   `province-vibe.md`. Each claim is one of three:
+   - **sourced**: canon or the extrapolation says it; cite the file and section;
+   - **gap**: nothing says it, but it is the least inventive reading of what does; add a row under the gap
+     register's `Quest assumptions` section (`../../../story/lore/extrapolation/gap-register.md`): id `QA<n>`,
+     the claim, status `ASSUMED`, the quest id, and the anchor it extends (file and section). A gap may not
+     contradict the lore or put a §9 motif where `province-vibe.md` §9 does not;
+   - **unsourced or contradicted**: change it. Never keep a claim because the quest needs it.
+2. **Society check.** For each cast member: is the role or job one this settlement and culture has in 4E 201
+   (`province-vibe.md` §3–4, the place's dossier, the settlement register)? An Argonian village has the
+   offices in `topics/material-culture.md`, not clerks or wardens. Then trace how the quest's information,
+   authority, law, trade and debt move: who tells whom, who decides, who pays in what (coin, barter or owed
+   work, by the tier of the place: settlement register §7), and whether anything is written down. It must fit
+   `province-vibe.md` §5 for that place.
+3. **Motifs only where the lore and the vibe put them.** Couriers, letters, dispatches, ledgers, accounts,
+   tallies, rolls, registers, records, clerks, officials, permits, licences, passes, papers, fines and prisons
+   are used only where `province-vibe.md` §9 puts them (the state and its agents, Gideon, the ports and their
+   customs, the ex-Archein estates and hiring offices, the Rose, foreigners at a foreign foothold), and the
+   record's `L<n>` entry names the place and the institution (a port, Gideon, the Collections, the Veiled Reed).
+   Anywhere else, use what Argonian ground uses instead (§9's third column). Every record is measured: a stage
+   whose `actions` hold no skill use (only supporting `{system, use}` acts, or none, or a skill use whose only point is to receive, hand over or
+   read a message or document) counts as hollow; a quest with
+   more than a third of its stages hollow, or whose central action (judged from the stages' `learns`, `directions`
+   and `journalText`, not the `centrepiece` tag) is delivering, filing, counting or reading a record, is rewritten round a real action.
+
 ## 5. Hand on
 
-1. `quest-review` by a `quest-reviewer` agent that has not seen your reasoning; its findings go in `review`.
+1. Once §4b passes, `quest-review` by a `quest-reviewer` agent that has not seen your reasoning; its findings go in `review`.
 2. Revise the record for every finding, or answer it there; set `recordStatus: reviewed`.
 3. `python3 -m tools.argonia_world.quest_record import QUEST.yaml` writes the record into the database; it
    refuses the whole record on any unknown field, wrong type, dangling key or unknown lookup value, and writes nothing then. `--dry-run` checks without writing. Then

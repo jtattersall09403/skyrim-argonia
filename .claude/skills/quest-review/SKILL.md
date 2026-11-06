@@ -64,9 +64,28 @@ The world
 15. Does every physical thing have an existing id or a `new` row with where and state per stage?
 16a. Does anything need the base world to change (a deeper pool, a schedule, a container, anything else), and is that written as a row, not assumed? If something does need to change, are you handing it to the planner to get it delivered?
 16b. Does anything during the request require anything in the world to be scripted? e.g. a change to somebody's     schedule (if you need to observe them doing something at a certain place and time); a timed bandit attack the player need to be present for; a tree that changes to a 'sick' appearance until healed; anything else? And if yes,  are you handing it to the planner to get it delivered?
-17. Does anything break Black Marsh in 4E 201: a Nordic element, a vanilla Skyrim reference, the wrong era, 
-    anything that isn't consistent with our lore dossiers or lore extrapolation? Does it fit the 'vibe' of Black Marsh, per the lore? e.g. we don't want lots of bureaucratic quests if the province is known for being
-    wild and mysterious and loosely governed. That's just one example amongst many. Reason about what lore dossiers will be relevant, and dispatch cheap Haiku subagents (giving them *short* briefs) to read them and return a short verdict.
+17. **Lore and vibe (blocking).** Read `../../../story/design/province-vibe.md` and the lore the record names,
+    then check every person, role, job, place, institution, object and custom in the record against the lore
+    dossiers and the extrapolation (`../../../story/lore/`, first `extrapolation/argonia-4e201-state.md`,
+    `settlement-register.md`, `gap-register.md`, the place's dossier and the topics it touches). A finding is
+    **blocking** when the quest:
+    - contradicts canon or the extrapolation (a Nordic element, a vanilla Skyrim reference, the wrong era, an
+      office or institution the lore says is gone, absent or elsewhere);
+    - rests on a claim with no source that has no `L<n>` lore-check entry, or whose gap-register `QA<n>` row is
+      not the least inventive reading of its anchor, contradicts the lore, or puts a §9 motif where §9 does not
+      (read every `QA<n>` row the record cites);
+    - gives a person a role or job that settlement and culture do not have in 4E 201 (`province-vibe.md` §3–4);
+    - moves information, authority, law, trade or debt in a way that does not fit the place (`province-vibe.md`
+      §5: spoken and carried by people in tribal ground; coin, barter or owed work by the place's tier);
+    - uses a motif from `province-vibe.md` §9 (couriers, letters, ledgers, accounts, tallies, rolls, records,
+      clerks, officials, permits, licences, passes, papers, fines, prisons) where §9 does not put it, or has more than a third of its stages hollow
+      (quest-write §4b.3), or a central action of delivering, filing, counting or reading
+      a record;
+    - otherwise jars with `province-vibe.md` (its register, tensions or the place's fringe).
+    Run `python3 ../dialogue-write/lint.py` over the stages' `journalText` and justify or flag every B10 warning.
+    Name the source file and section for each finding. For a long record, split the lore reading across cheap
+    subagents with short briefs (the claims to check and the files to check them in), each returning a verdict.
+17b. Does the quest add to the vibe (`province-vibe.md` §10) rather than only avoid jarring with it?
 
 Action and fit
 18. Is the quest built round an action plan of real skill uses (i.e. in-game skills: long blade, sneak, alchemy, speechcraft...etc),
@@ -91,6 +110,6 @@ Text
 
 ## 4. Report
 
-Return findings ranked most serious first, each with: the record ids, what is wrong, what a player would
-experience, and a proposed fix. End with the answers to the checklist as one line of ids per failed item.
+Return findings ranked most serious first, blocking ones (item 17) at the top, each with `severity: blocking` in the record's `review.findings`, each with: the record ids, what is wrong, what a player would
+experience, and a proposed fix. End with the answers to the checklist as one line of ids per failed item, writing item 17 as `17(B)`.
 The quest writer copies the findings into the record's `review` section with how each was answered.

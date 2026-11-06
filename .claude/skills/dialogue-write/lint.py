@@ -4,7 +4,8 @@
 Usage: python3 lint.py LINES.txt --race argonian
 LINES.txt holds one line of dialogue per row; blank rows and rows starting with # are skipped.
 Prints one row per hit (line number, ban id, matched text) and every `review` ban id to check by hand.
-Exit code 1 when any regex ban hits, 0 when none does, 2 on a usage error. The speaker's race is required
+A ban with `severity: warn` is printed as a warning and never fails the run.
+Exit code 1 when any other regex ban hits, 0 when none does, 2 on a usage error. The speaker's race is required
 (any case): a missing or misspelt race used to skip the race bans silently and pass a line that breaks them.
 """
 import argparse
@@ -27,7 +28,7 @@ def main() -> int:
     bans = [b for b in yaml.safe_load(BANS.read_text())
             if b.get("appliesTo") is None or args.race in [r.lower() for r in b["appliesTo"]]]
     rows = pathlib.Path(args.lines).read_text().splitlines()
-    hits = 0
+    hits = warns = 0
     for n, row in enumerate(rows, 1):
         if not row.strip() or row.lstrip().startswith("#"):
             continue
@@ -35,10 +36,14 @@ def main() -> int:
             if b["detect"] == "review":
                 continue
             for m in re.finditer(b["detect"], row):
-                print(f"{n}: {b['id']}: {m.group(0)!r}")
-                hits += 1
-    review = [b["id"] for b in bans if b["detect"] == "review"]
-    print(f"{hits} regex hits; review by hand: {', '.join(review)}")
+                if b.get("severity") == "warn":
+                    print(f"{n}: warn {b['id']}: {m.group(0)!r}")
+                    warns += 1
+                else:
+                    print(f"{n}: {b['id']}: {m.group(0)!r}")
+                    hits += 1
+    review = [b["id"] for b in bans if b["detect"] == "review" or b.get("severity") == "warn"]
+    print(f"{hits} regex hits, {warns} warnings; review by hand: {', '.join(review)}")
     return 1 if hits else 0
 
 

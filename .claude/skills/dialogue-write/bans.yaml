@@ -2,6 +2,7 @@
 # Fields: id, rule (one sentence), bad (examples), good (rewrites), and either
 #   detect: a Python regex run by lint.py over every line (a hit is flagged, not auto-rejected), or
 #   detect: review   when only a reader can spot it (the self-check and the reviewer go through these).
+#   severity: warn   optional: a regex hit is a warning to justify against the lore, never a failure.
 # A writer reads the whole list before writing; lint.py runs every regex; the reviewer checks every
 # `review` entry by id. Keep each entry short so the list stays cheap to read in full.
 
@@ -95,3 +96,14 @@
   good:
     - People at the lodge say it is salt from upstream. I think otherwise, but I do not share my thoughts with strangers.
   detect: review
+
+- id: B10-bureaucratic-dressing
+  rule: Couriers, letters, ledgers, tallies, rolls, registers, clerks, permits, papers and fines only where story/design/province-vibe.md §9 puts them (the state and its agents, Gideon, the ports and customs, ex-Archein crossings and estates, the Rose, foreigners); elsewhere use what Argonian ground uses.
+  bad:
+    - The tree-minder keeps a ledger of who owes what. (a tribal village)
+    - Send a courier to the naheesh with the permit.
+  good:
+    - The tree-minder heard both of them, and everyone there remembers what was agreed.
+    - Go yourself, or ask the root-herald to carry word to the naheesh.
+  detect: "(?i)\\b(couriers?|dispatch(es)?|letters?|scrolls? (of|from|to)|messengers?|runners?|ledgers?|tall(y|ies|ied)|work rolls?|registers?|accounts? book|officials?|passes|sealed|seals? of|messages?|envoys?|deeds?|documents?|records(?! of thunder)|clerks?|scribes?|permits?|licen[cs]es?|paperwork|papers|filing|writ|summons|pay a fine|fined|censuses)\\b"
+  severity: warn
