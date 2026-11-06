@@ -145,3 +145,9 @@ added here the day they are made, with the date and the issue.
   "*make* the dodge mod support it" and "Writing our own skse code absolutely should not be ruled out by our build
   rules, I want to rule that in, make that change now". Our own SKSE plugin is allowed where no mod, record or
   script does the job (CLAUDE.md and PLAN §6 changed the same day).
+- 2026-11-06 (#50): every quest uses named Skyrim skills (One-Handed, Two-Handed, Archery, Block, Destruction,
+  Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, Mysticism, plus
+  climbing and swimming), and names which. Every main quest offers at least two ways through, each with different
+  named skills, so different builds can finish it. Faction quests are tied to the faction's own skills ("for
+  consistency and immersion"). The opening is too slow. Every stage must make plain what to do (e.g. the dive for
+  the bronze thing). MQ05's tree climb is pointless (and tree climbing is buggy): replace it. Update the slice quests.

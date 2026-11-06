@@ -452,3 +452,5 @@ Converging (blocking 7, then 3). All accepted as worded, by cuts or restores:
 
 Round 4: applied (830f4fd1), 11 of 14 here; B3 in 150b818f (the main line's B3), N14 with the slice's B1. Not
 applied: N11 ("tells"), whose row the ruling does not name.
+- MQ05 round 4 N11, pointer: the row is quest.main.mq05's foundation, the B1 clause "the player convinces one
+  person". It becomes "tells". Applied in round 5.
