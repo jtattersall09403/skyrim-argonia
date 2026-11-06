@@ -133,3 +133,11 @@ added here the day they are made, with the date and the issue.
 - 2026-11-06: reviewers return every finding they need, no cap in any round; the 3NF story database is the single
   source of truth.
 - 2026-11-06: owner-facing writing assumes no context: every name explained, full sentences, no shorthand.
+- 2026-11-06 (#51): TrueHUD's player bars on. Add Rim Parry And Execution and Elden Parry. GameSir layout like Dark
+  Souls: B dodge/sprint, LB block, RB light attack, RT (R2) heavy/power attack, LB+RB parry then RB riposte (Rim
+  Parry And Execution), the Tween menu on d-pad left/right, LT shouts; RB pressed during a dodge queues the attack
+  for straight after the dodge.
+- 2026-11-06 (#51): TrueHUD's player bars on (done, fbdff408). Add Rim Parry And Execution and Elden Parry.
+  GameSir layout like Dark Souls: B dodge and sprint, LB block, RB light attack, RT heavy or power attack, LB+RB
+  parry then RB riposte (Rim Parry And Execution), LT shouts, the Tween menu on d-pad left or right; RB pressed
+  during a dodge queues the attack for straight after it.
