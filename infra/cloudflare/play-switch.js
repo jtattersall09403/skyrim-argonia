@@ -32,7 +32,8 @@ export function heartbeatStop(launchedMs, nowMs, beatUtc) {
 export function agentBusy(nowMs, beat) {
   const t = beat?.utc ? Date.parse(beat.utc) : NaN
   if (!(t > nowMs - 12 * 60e3)) return false
-  return (beat.why || []).some((w) => w === "agent ssh" || w === "agent job")
+  // "agent command running (n)": a command outliving the 15-minute busy flag (idle-stop.ps1's hold, 2026-11-06)
+  return (beat.why || []).some((w) => w === "agent ssh" || w === "agent job" || String(w).startsWith("agent command running"))
 }
 
 /** A Start refused while the spot request or the instance is still settling after a stop (owner #29), or for no spot

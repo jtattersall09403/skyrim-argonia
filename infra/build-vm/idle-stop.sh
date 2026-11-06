@@ -66,6 +66,18 @@ elif r=$(job_active); then reason="$r"
 elif r=$(tunnel_client); then reason="$r"
 fi
 
+# The CloudWatch backstop (argonia-build-idle-stop: an hour under 3% CPU) must never stop the VM while a job waits on
+# AWS at low CPU (it did during a 2-hour snapshot wait, 2026-11-05): its stop action is off while a job runs, on again
+# when none does. The state is cached so the API is called only on a change.
+if [ "${1:-}" != "--status" ]; then
+  want=on; job_active >/dev/null && want=off
+  if [ "$(cat "$STATE/alarm-actions" 2>/dev/null)" != "$want" ]; then
+    if [ $want = off ]; then aws cloudwatch disable-alarm-actions --region eu-west-2 --alarm-names argonia-build-idle-stop 2>/dev/null
+    else aws cloudwatch enable-alarm-actions --region eu-west-2 --alarm-names argonia-build-idle-stop 2>/dev/null; fi &&
+      echo $want > "$STATE/alarm-actions"
+  fi
+fi
+
 now=$(date +%s)
 if [ -n "$reason" ]; then
   echo "$now" > "$STATE/last-active"
