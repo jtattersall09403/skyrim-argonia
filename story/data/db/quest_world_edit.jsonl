@@ -43,9 +43,12 @@
 {"quest":"quest.main.mq03","edit":"we.mq03.door"}
 {"quest":"quest.main.mq03","edit":"we.mq03.dream"}
 {"quest":"quest.main.mq03","edit":"we.mq03.house"}
+{"quest":"quest.main.mq03","edit":"we.mq03.hurt"}
 {"quest":"quest.main.mq03","edit":"we.mq03.reed"}
 {"quest":"quest.main.mq03","edit":"we.mq03.rooms"}
 {"quest":"quest.main.mq04","edit":"we.clean.village"}
+{"quest":"quest.main.mq04","edit":"we.mq04.cell"}
+{"quest":"quest.main.mq04","edit":"we.mq04.items"}
 {"quest":"quest.main.mq04","edit":"we.mq04.name"}
 {"quest":"quest.main.mq04","edit":"we.mq04.people"}
 {"quest":"quest.main.mq04","edit":"we.mq04.village"}

@@ -1,8 +1,6 @@
 {"quest_id":"quest.local.lh38","section":"accusation","ord":0,"value":"who"}
 {"quest_id":"quest.local.lh38","section":"accusation","ord":1,"value":"how"}
 {"quest_id":"quest.local.lh38","section":"accusation","ord":2,"value":"why"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":0,"value":"who cut it (the strangers)"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":1,"value":"with what (his knife and gum"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":2,"value":"from the unbarred workshop)"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":3,"value":"why the tree closed (the cut"}
-{"quest_id":"quest.main.mq04","section":"accusation","ord":4,"value":"not the leeches)"}
+{"quest_id":"quest.main.mq04","section":"accusation","ord":0,"value":"who cut it (the strangers: the bound man says so in topic.mq04-show-man)"}
+{"quest_id":"quest.main.mq04","section":"accusation","ord":1,"value":"with what (the tree-minder's knife and gum, taken from the unbarred workshop: the knife and the jar rings)"}
+{"quest_id":"quest.main.mq04","section":"accusation","ord":2,"value":"why the tree closed (the cut, not the leeches)"}

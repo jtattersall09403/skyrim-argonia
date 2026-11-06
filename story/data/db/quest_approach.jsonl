@@ -33,9 +33,10 @@
 {"quest_id":"quest.main.mq03","stages_ord":1,"ord":2,"id":"a-show"}
 {"quest_id":"quest.main.mq03","stages_ord":2,"ord":0,"id":"a-take-coin"}
 {"quest_id":"quest.main.mq03","stages_ord":2,"ord":1,"id":"a-refuse-coin"}
-{"quest_id":"quest.main.mq03","stages_ord":3,"ord":0,"id":"a-witness"}
-{"quest_id":"quest.main.mq03","stages_ord":3,"ord":1,"id":"a-price"}
-{"quest_id":"quest.main.mq03","stages_ord":3,"ord":2,"id":"a-courier"}
+{"quest_id":"quest.main.mq03","stages_ord":2,"ord":2,"id":"a-own-purse"}
+{"quest_id":"quest.main.mq03","stages_ord":6,"ord":0,"id":"a-witness"}
+{"quest_id":"quest.main.mq03","stages_ord":6,"ord":1,"id":"a-price"}
+{"quest_id":"quest.main.mq03","stages_ord":6,"ord":2,"id":"a-courier"}
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":0,"id":"a-test"}
 {"quest_id":"quest.main.mq04","stages_ord":1,"ord":1,"id":"a-tender"}
 {"quest_id":"quest.main.mq04","stages_ord":2,"ord":0,"id":"a-spy"}

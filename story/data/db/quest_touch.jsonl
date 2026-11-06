@@ -175,6 +175,10 @@
 {"quest_id":"quest.main.mq03","ord":14,"id":"flag.mq03.released-theirs","access":"write"}
 {"quest_id":"quest.main.mq03","ord":15,"id":"flag.mq03.no-release","access":"write"}
 {"quest_id":"quest.main.mq03","ord":16,"id":"flag.mq03.reed-coin","access":"write"}
+{"quest_id":"quest.main.mq03","ord":17,"id":"npc.pirate-freeholds.opening-work-camp.n1-3","access":"write"}
+{"quest_id":"quest.main.mq03","ord":18,"id":"flag.mq03.paid-own","access":"write"}
+{"quest_id":"quest.main.mq03","ord":19,"id":"flag.mq03.reed-word","access":"write"}
+{"quest_id":"quest.main.mq03","ord":20,"id":"flag.mq03.broker-dead","access":"write"}
 {"quest_id":"quest.main.mq04","ord":0,"id":"npc.mercantile-coast.low-reed-village.root-herald","access":"write"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"npc.mercantile-coast.low-reed-village.chime-tuner","access":"write"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"npc.mercantile-coast.low-reed-village.egg-tender","access":"write"}
@@ -192,6 +196,8 @@
 {"quest_id":"quest.main.mq04","ord":14,"id":"npc.mercantile-coast.low-reed-village.cell-man-1","access":"write"}
 {"quest_id":"quest.main.mq04","ord":15,"id":"npc.mercantile-coast.low-reed-village.cell-man-2","access":"write"}
 {"quest_id":"quest.main.mq04","ord":16,"id":"faction.veiled-reed","access":"write"}
+{"quest_id":"quest.main.mq04","ord":17,"id":"flag.mq04.adopted","access":"write"}
+{"quest_id":"quest.main.mq04","ord":18,"id":"thing.mq04.knife","access":"write"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"npc.nesh-deeka","access":"write"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"npc.hist-heartland.helstrom.grove-s-senior-tree","access":"write"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house","access":"write"}

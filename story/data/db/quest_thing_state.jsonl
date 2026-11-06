@@ -47,22 +47,30 @@
 {"quest_id":"quest.main.mq01","things_ord":10,"state":"all","value":"as the ledger says"}
 {"quest_id":"quest.main.mq03","things_ord":0,"state":"all","value":"aftermath"}
 {"quest_id":"quest.main.mq03","things_ord":1,"state":"all","value":"aftermath"}
-{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-10","value":"carried (tasted)"}
+{"quest_id":"quest.main.mq03","things_ord":2,"state":"after-31","value":"kept by Nesh-Deeka, who reads it for the Reed and may pour it back at the roots when the Reed has read it (MQ20's sap lab)"}
 {"quest_id":"quest.main.mq03","things_ord":2,"state":"before-10","value":"on the shed floor"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"after-20","value":"gone with the survivors"}
 {"quest_id":"quest.main.mq03","things_ord":3,"state":"before-20","value":"at the shore"}
 {"quest_id":"quest.main.mq03","things_ord":4,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-50","value":"gone"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-50","value":"gone from the table"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-90 to 93","value":"back at Dock1 at mark.mq03.dock, civil or claiming, under his own parent"}
+{"quest_id":"quest.main.mq03","things_ord":5,"state":"after-94","value":"dead"}
 {"quest_id":"quest.main.mq03","things_ord":5,"state":"at-20-to-50","value":"at the table in the front room"}
 {"quest_id":"quest.main.mq03","things_ord":5,"state":"before-20","value":"off (MQ01's end)"}
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"at-50","value":"on"}
 {"quest_id":"quest.main.mq03","things_ord":7,"state":"before-50","value":"off"}
 {"quest_id":"quest.main.mq03","things_ord":8,"state":"all","value":"present"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled"}
+{"quest_id":"quest.main.mq03","things_ord":9,"state":"after-90 to 94","value":"gone aboard the barge or walking the shore road (e-theirs)"}
+{"quest_id":"quest.main.mq03","things_ord":9,"state":"at-20-to-50","value":"on the two mats"}
+{"quest_id":"quest.main.mq03","things_ord":9,"state":"before-20","value":"on the shore with the unhurt"}
+{"quest_id":"quest.main.mq03","things_ord":10,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled: the Hist's leaves part and its light comes back low and slow"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"reconciled; Zaren-Ish, the go-between and the cell's men gone"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn; the tree-minder at his post"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn; the tree-minder at the weirs"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn; the tree-minder at his post; grave-stakes by the lowest pool"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn; the tree-minder at the weirs; grave-stakes by the lowest pool"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-96","value":"reconciled; the bound man at the weirs"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present until their stage"}
 {"quest_id":"quest.main.mq04","things_ord":2,"state":"all","value":"used"}
@@ -71,6 +79,7 @@
 {"quest_id":"quest.main.mq04","things_ord":5,"state":"all","value":"full"}
 {"quest_id":"quest.main.mq04","things_ord":6,"state":"all","value":"present in the water"}
 {"quest_id":"quest.main.mq04","things_ord":7,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":8,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"after-90","value":"gone"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"before-90","value":"on the landing"}
