@@ -68,7 +68,7 @@ the quest system follows once the owner has tried the slice.
     and the workshop zone short-cut the investigation.
   Spot patches will not converge. The next step is one quest-write rework of MQ03 and MQ04 against all eight rounds'
   findings (`review` rows in each record), including the shape change to NEGOTIATION for MQ03. Then a fresh round,
-  then the owner's read (draft ready) and PROGRESS.
+  then the owner's read (draft: [2-owner-read-draft](2-owner-read-draft.md), figures checked: 63 edits, 11 quests, 706 waiting) and PROGRESS.
 
 ## The whole quest system on BM&V (owner, 2026-11-05)
 
