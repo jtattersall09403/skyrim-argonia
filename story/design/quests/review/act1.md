@@ -169,3 +169,82 @@ Round 1: applied (commit 7842f495): 5 stages, 1 choices, 2 endings
 - N5: the kaal's npc row loses the struck award; census.md's "Hatching Pools" line corrected; stage 10 gives the
   route from Lilmoth; journal 50 not conditional.
 Round 1: applied (commit 34ceef35): 5 stages, 2 choices, 2 endings
+
+### MQ03, round 2 (2026-11-06): the planner's rulings
+
+All five blocking and all five notes accepted, each by swap or subtraction.
+- B1: we.mq03.dream locks the hold's inner door 0F9399, not the exterior door 005AB4.
+- B2: Ties-The-Loose-Plank is protected while the hurt enable parent is on.
+- B3: "with a dry anger that passed" cut from the 90 and 91 journals.
+- B4: k6 deleted from c2.clues.
+- B5: t4.who is Cuts-the-Old-Knot; fact.mq03.barge-gone dropped from topic.mq03-the-boat's uses.
+- N1: stage 20's fail-forward on Nesh-Deeka's death is all(dead, inZone house, night).
+- N2: the activator's Hist grant is deleted from we.mq03.jar-marks; the taste (then stage 20) brings the dream.
+- N3: stage 20's journal keeps "I'm to tell her..." and loses the offer sentences.
+- N4: k7 cut from c2.
+- N5: Salts-The-Catch's look_body matches her sex (argonian-female).
+
+Round 2: applied (b05cf519).
+
+### MQ04, round 2 (2026-11-06): the planner's rulings
+
+All three blocking and all five notes accepted, by subtraction; plus the planner's own call on the boat.
+- B1: the topic successor to 92 cut; the hand-over sets flag.mq04.handed-over only; the pour at the root is the only
+  exit (92 if the flag, 91 if not); "withdrawn (e-reed)" and "or with the Reed" cut from the thing states.
+- B2: journal 40 and objective 30 say only what both routes give (strangers by the north reeds; go north to the leech
+  water); gum-trail dropped from stage 30's learns.
+- B3: "dry at the cut" cut from fact.mq04.root-cut and we.mq04.village.
+- N1: fact.mq04.minder-washes added to topic.mq04-the-village's uses; "after dark" in journal 30.
+- N2: e-reed's +10 Reed standing names the existing Reed gate it meets; no new reward.
+- N3: "unseen" cut from the sneak/spy reason.
+- N4: "expose the cell before the village" cut from the foundation's Kept list; act1.md's MQ04 summary regenerated.
+- N5 and the boat (planner): the bound man is at the jetty only ("fence" cut from ref names and seen text) and is
+  handed over on the jetty to Zaren-Ish, who walks him off; no boat. gum-origin listed in topic.mq04-the-cut's uses.
+
+### MQ01, round 2 (2026-11-06): the planner's rulings
+
+All four blocking and all five notes accepted, by subtraction or a flag.
+- B1: the saved one is essential (not protected) to stage 90.
+- B2: the barge clauses cut from t1 and t3; Mee-Tuja dropped from the hold and joins at the plank; journal 20 "walks with us".
+- B3: one place for the families: Deesh-Duun at the fire for the reading, into the huts at the strike; the other two
+  clauses cut.
+- B4: "the roots were cut" cut from 91 and 93; the clutch-dead changes move from stage 90 to 50, with Deesh-Duun's row.
+- N1: Wuleen-Sei, Mee-Tuja and Sal-Sei essential until stage 40 (Helgen's Hadvar and Ralof); their four failForwards cut.
+- N2: the hour words cut from journals 40 and 50 and the dawn topic intents.
+- N3: "always on the left hand" cut from stage 20.
+- N4: a-keep-alive and heal-the-sick ("tend the hurt") cut; the saved one placed in ref.mq01.survivors at stage 50.
+- N5: zone.mq01.plank, the ref.mq01.zone-*-first disables, "whichever of the three", journal 44's "neither in time",
+  journal 50's "from whoever I saved" and we.mq01.camp's islet clause all cut.
+
+### MQ05, round 2 (2026-11-06): the planner's rulings
+
+All three blocking and all five notes accepted, by subtraction.
+- B1: stage 10 fails forward to 20 on Nesh-Deeka's death alone; the reed-officer's topic row, successor clause and
+  "keeps the house" line cut.
+- B2: stage 30 merged into 40 (20→40 on inZone zone.mq05.grove); journal 30's hall lines become colour in 40;
+  zone.mq05.gate, 30's objective, both skill gates and a-admire cut. The climb at 40 is the quest's skill.
+- B3: the other person's reaction cut from 91 and 92; 91's fail-forward keeps topic.mq05-tell-minder heard (minus the
+  Speech clause); the fail-forward to 92 only when both are dead.
+- N1: the ship's landing door given by its place in the ship (measured at build); door pairs cited 0AA664↔0AA837 and
+  0830A8↔23D496; the list of other doors cut.
+- N2: Names-The-Late-Guest cut, with k1, topic.mq05-the-way and the prep hint.
+- N3: the Speech gate on Kaska-Meen dropped; the ending is a free choice.
+- N4: the disposition clause cut from topic.mq05-tell-minder; shapeData.prize reworded (no "hearing").
+- N5: the rescue clause and "nobody turns back" cut; both keep their posts all day, only the quarrel is evening.
+
+### The whole main line, round 3 (2026-11-06): the planner's rulings
+
+All five blocking and all five notes accepted, by subtraction.
+- B1: 01Ship cut from MQ07; the sale and the strongroom on the Bandit Dock's own ground (Murkwoodext).
+- B2: MQ09's interior and its new door pair dropped (the tablet lies in the old Rose's ruin cells); MQ18's undercroft
+  keeps 01aundergroundcell with a we.clean row disabling its 10 placements.
+- B3: MQ23's Shadowscale is an old retired one, not "the last" (Veezara is canon's last, in Skyrim); "last" and "the
+  order's last living member" cut from MQ23 and the Act IV hook. No one hunts the player.
+- B4: the 10 stale quest rows retired (MQ06, 11, 12, 13, 14, 15, 19, 22, 25, 32); stale settlements and titles cleared.
+- B5: the MQ20 and MQ21 group escorts cut; freed captives leave on their own.
+- N1: on MQ21's lie no raid comes; the volunteers are left behind.
+- N2: MQ26's guardian is the existing Grevious Twilight, fought in 01Underdarkmiddle; no new actor.
+- N3: MQ08's alchemy and back-water route cut.
+- N4: "opens the Lost City" struck from eye-of-argonia.md; the Tear marker phrase struck.
+- N5: MQ07's "speech to buy a look" and MQ10's "at night" cut.
+- MQ05 addendum (slice round 2, B2): we.mq05.sweeper cut; the broom stays in we.mq05.throne.
