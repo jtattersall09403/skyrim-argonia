@@ -184,6 +184,16 @@ All five blocking and all five notes accepted, each by swap or subtraction.
 - N4: k7 cut from c2.
 - N5: Salts-The-Catch's look_body matches her sex (argonian-female).
 
+### MQ03, ruling #50 rework (2026-11-06)
+
+- Skills per stage: 10 Alchemy (taste) and swimming or Alteration Waterbreathing (the dive); 20 the tag (swimming) or
+  Speech 15 for Ties; 40 climbing on the dream's root ledges (placed statics, no tree). Athletics gone from the record.
+- The dive is plain: journal, objective, directions and topic.mq03-the-boat all say off the end of the burnt boards, on
+  the bottom, for the courier's brass tag, to show whose man he was.
+- Cut: stage 10's "go down to the strangers" objective and its topic gate (holding phial and tag ends the stage); the
+  premise's procedure words. Settled rulings above stand. Still 5 stages, 1 choice, 2 endings; recordStatus design,
+  a quest-reviewer round to follow.
+
 Round 2: applied (b05cf519).
 
 ### MQ04, round 2 (2026-11-06): the planner's rulings

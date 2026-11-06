@@ -2114,8 +2114,6 @@
 {"condition_id":"quest_objective:quest.main.mq03|0|0:complete_when","ord":1,"value":1}
 {"condition_id":"quest_objective:quest.main.mq03|0|1:complete_when","ord":0,"value":"thing.mq03.courier-token"}
 {"condition_id":"quest_objective:quest.main.mq03|0|1:complete_when","ord":1,"value":1}
-{"condition_id":"quest_objective:quest.main.mq03|0|2:complete_when","ord":0,"value":"topic.mq03-the-boat"}
-{"condition_id":"quest_objective:quest.main.mq03|0|2:complete_when","ord":1,"value":"npc.dunmer-north.stormhold.reed-officer"}
 {"condition_id":"quest_objective:quest.main.mq03|1|0:complete_when.0","ord":0,"value":"topic.mq03-the-attack"}
 {"condition_id":"quest_objective:quest.main.mq03|1|0:complete_when.0","ord":1,"value":"npc.nesh-deeka"}
 {"condition_id":"quest_objective:quest.main.mq03|1|0:complete_when.1","ord":0,"value":"topic.mq03-the-night"}
@@ -2316,8 +2314,6 @@
 {"condition_id":"quest_successor:quest.main.mq03|0|0:when.0","ord":1,"value":1}
 {"condition_id":"quest_successor:quest.main.mq03|0|0:when.1","ord":0,"value":"thing.mq03.courier-token"}
 {"condition_id":"quest_successor:quest.main.mq03|0|0:when.1","ord":1,"value":1}
-{"condition_id":"quest_successor:quest.main.mq03|0|0:when.2","ord":0,"value":"topic.mq03-the-boat"}
-{"condition_id":"quest_successor:quest.main.mq03|0|0:when.2","ord":1,"value":"npc.dunmer-north.stormhold.reed-officer"}
 {"condition_id":"quest_successor:quest.main.mq03|1|0:when.0","ord":0,"value":"quest.main.mq03"}
 {"condition_id":"quest_successor:quest.main.mq03|1|0:when.0","ord":1,"value":"tell"}
 {"condition_id":"quest_successor:quest.main.mq03|1|0:when.1","ord":0,"value":"quest.main.mq03"}
