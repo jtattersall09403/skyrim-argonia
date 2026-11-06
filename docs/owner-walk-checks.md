@@ -19,8 +19,7 @@ From a new game on the Argonia card.
       (Mark, Recall, Jump, Slowfall, Water Walking, Fire Touch, Force, Burden, Teleport and others; Magic Expanded has
       no Levitate, so Jump and Slowfall stand in).
 - [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
-- [ ] Weapon drawn: you walk or sprint but do not run. This is Arena Movement's design ("you can walk, you can
-      sprint, you just can't run around"). Reply "keep" or "faster": the faster variant runs at about twice walking pace.
+- [ ] With a weapon drawn you can run (Arena Movement's faster variant, owner #53).
 - [ ] Dodge (issue #51): tap Alt (pad: B) for under half a second. Standing still you backstep; moving you roll in
       that direction. Holding it sprints.
 - [ ] Pad layout (issue #51, GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout,

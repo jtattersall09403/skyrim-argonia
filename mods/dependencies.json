@@ -1521,8 +1521,10 @@
    "plugins": [
     "AMMCO.esp"
    ],
-   "check": "the archive holds two AMMCO.esp variants (Source/Data/Distar Edit, Mern Edit): add the pick the collection uses before staging",
-   "install_note": "Staged as the archive's Distar/Default edit (running speeds 1HM~80, 2HM~80, bows 90: DS-like walk pace); the Mern edit (1HM~170, bows~300) is the arcade variant and is not taken. The two ESPs differ only in those speed values (md5 f962cdf0 vs 822af5b2). Chosen 2026-11-05 by the stage default, not tested in game."
+   "pick": [
+    "Source/Data/Mern Edit/Data/*"
+  ],
+   "install_note": "Staged as the archive's Mern edit via an explicit pick (running speeds 1HM~170, bows~300: you can run with a weapon drawn). The Distar edit (1HM~80, run equal to walk) is not taken. Owner ruling #53, 2026-11-06; the two ESPs differ only in those speed values (md5 822af5b2 Mern, f962cdf0 Distar)."
   },
   {
    "id": "leviathan-male",
