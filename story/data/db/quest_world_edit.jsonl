@@ -51,9 +51,12 @@
 {"quest":"quest.main.mq04","edit":"we.clean.village"}
 {"quest":"quest.main.mq04","edit":"we.mq04.cell"}
 {"quest":"quest.main.mq04","edit":"we.mq04.items"}
+{"quest":"quest.main.mq04","edit":"we.mq04.kaal"}
+{"quest":"quest.main.mq04","edit":"we.mq04.leeches"}
 {"quest":"quest.main.mq04","edit":"we.mq04.name"}
 {"quest":"quest.main.mq04","edit":"we.mq04.people"}
 {"quest":"quest.main.mq04","edit":"we.mq04.village"}
+{"quest":"quest.main.mq04","edit":"we.mq04.weirs"}
 {"quest":"quest.main.mq05","edit":"we.clean.dock5"}
 {"quest":"quest.main.mq05","edit":"we.clean.helstrom"}
 {"quest":"quest.main.mq05","edit":"we.clean.lilmoth"}

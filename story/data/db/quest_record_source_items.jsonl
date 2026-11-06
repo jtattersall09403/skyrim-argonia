@@ -40,6 +40,8 @@
 {"quest_id":"quest.main.mq04","source":"lore","ord":8,"value":"story/design/quests/30-main-quest.md §24b.3 (adoption); story/design/province-vibe.md §5 (law is arbitration; fines are owed work; prisons only in ruins and the Rose)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":9,"value":"story/lore/topics/hist-placement.md §3 (Low-Reed Village row added)"}
 {"quest_id":"quest.main.mq04","source":"lore","ord":10,"value":"story/lore/extrapolation/gap-register.md §8 QA15, QA17"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":11,"value":"story/lore/topics/labour-and-bondage.md §2-3 (the Owing ends; a punishment that stores a person is renounced)"}
+{"quest_id":"quest.main.mq04","source":"lore","ord":12,"value":"story/lore/extrapolation/gap-register.md §8 QA17 (reworded in round 3)"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":0,"value":"story/lore/helstrom.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":1,"value":"story/lore/topics/sithis-nisswo-shadowscales.md"}
 {"quest_id":"quest.main.mq05","source":"lore","ord":2,"value":"story/lore/topics/hist-and-sap.md (Silence vs severance)"}

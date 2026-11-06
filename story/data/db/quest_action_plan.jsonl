@@ -26,10 +26,10 @@
 {"quest_id":"quest.main.mq03","ord":2,"skill":"mercantile","use":"bargain","reason":"Nesh-Deeka's coin is on her condition; the player takes it, or bargains with their own"}
 {"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"intimidate","reason":"the broker carried the state's courier and lost him at his own camp; said before a Lilmoth fish-trader, that is a name no raft-trader hires"}
 {"quest_id":"quest.main.mq03","ord":4,"skill":"mercantile","use":"settle-an-owing","reason":"the release spoken before witnesses, for the player's months or the survivor's"}
-{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of Lilmoth's people and the Reed; the player earns the look at the Hist and the pool"}
-{"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"test-a-sample","reason":"a leech from the water at the cut root, set against the pools above, which have none: the leeches gathered where the sap spilled, so they came after the tree closed"}
+{"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of Lilmoth's people and the Reed and starts guarded (regard 18); the player earns the look at the Hist and the pool"}
+{"quest_id":"quest.main.mq04","ord":1,"skill":"alchemy","use":"gather-ingredients","reason":"a leech gathered from the water at the cut root and the pools above searched for any: the leeches gathered where the sap spilled, so they came after the tree closed (the leech is a placed ingredient, we.mq04.leeches)"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes to the cut root at night; watching him clears him"}
-{"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"follow","reason":"the cell's men come back to the sap-workshop and go out along the gum trail"}
+{"quest_id":"quest.main.mq04","ord":3,"skill":"sneak","use":"follow","reason":"the drips run out of the workshop and pick up again past the leech water; a cell man keeps watch at the camp's edge and the player follows them unseen"}
 {"quest_id":"quest.main.mq04","ord":4,"skill":"hand-to-hand","use":"subdue","reason":"one of the two at the camp is taken alive to speak before the village or to be handed over"}
 {"quest_id":"quest.main.mq04","ord":5,"skill":"long-blade","use":"fight","reason":"or the two are fought at the camp, at a fixed level (band 2)"}
 {"quest_id":"quest.main.mq05","ord":0,"skill":"speechcraft","use":"persuade","reason":"the player carries the Reed's account to two parties who each distrust it"}

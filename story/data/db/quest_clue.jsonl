@@ -49,6 +49,9 @@
 {"quest_id":"quest.main.mq04","ord":8,"id":"k9","form":"place","carrier":"thing.mq04.sap-workshop","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":9,"id":"k10","form":"place","carrier":"thing.mq04.sap-workshop","kind":"concept"}
 {"quest_id":"quest.main.mq04","ord":10,"id":"k11","form":"thing","carrier":"thing.mq04.knife","kind":"concept"}
+{"quest_id":"quest.main.mq04","ord":11,"id":"k12","form":"place","carrier":"thing.mq04.camp","kind":"lead"}
+{"quest_id":"quest.main.mq04","ord":12,"id":"k13","form":"line","carrier":"npc.mercantile-coast.low-reed-village.egg-tender","kind":"concept"}
+{"quest_id":"quest.main.mq04","ord":13,"id":"k14","form":"behaviour","carrier":"npc.mercantile-coast.low-reed-village.cell-man-1","kind":"concept"}
 {"quest_id":"quest.main.mq05","ord":0,"id":"k1","form":"line","carrier":"npc.hist-heartland.helstrom.grove-s-senior-tree"}
 {"quest_id":"quest.main.mq05","ord":1,"id":"k2","form":"line","carrier":"npc.hist-heartland.helstrom.nisswo-interpreter-debating-house"}
 {"quest_id":"quest.main.mq05","ord":2,"id":"k3","form":"place","carrier":"thing.mq05.hall"}

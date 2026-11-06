@@ -62,6 +62,9 @@
 {"quest_id":"quest.main.mq04","clues_ord":8,"ord":0,"value":"fact.mq04.workshop-unbarred"}
 {"quest_id":"quest.main.mq04","clues_ord":9,"ord":0,"value":"fact.mq04.sap-drawn"}
 {"quest_id":"quest.main.mq04","clues_ord":10,"ord":0,"value":"fact.mq04.knife-at-camp"}
+{"quest_id":"quest.main.mq04","clues_ord":11,"ord":0,"value":"fact.mq04.camp-smoke"}
+{"quest_id":"quest.main.mq04","clues_ord":12,"ord":0,"value":"fact.mq04.workshop-unbarred"}
+{"quest_id":"quest.main.mq04","clues_ord":13,"ord":0,"value":"fact.mq04.cell-cord"}
 {"quest_id":"quest.main.mq05","clues_ord":0,"ord":0,"value":"fact.mq05.kaska-view"}
 {"quest_id":"quest.main.mq05","clues_ord":1,"ord":0,"value":"fact.mq05.eituja-view"}
 {"quest_id":"quest.main.mq05","clues_ord":2,"ord":0,"value":"fact.mq05.throne-empty"}
