@@ -109,6 +109,8 @@ def archive_path(m):
         return have[0] if have else MODS / f"{s['mod']}-{s['file']}-{m['archive']}"
     if "github" in s:
         return MODS / f"gh-{s['github'].replace('/', '_')}-{s['asset']}"
+    if "built" in s:  # our own build (skse_build.sh pack): a tar of the plugin and its ini
+        return MODS / f"built-{s['built']}.tar"
     return MODS / f"vault-{s['vault']}.tar"
 
 
@@ -141,6 +143,8 @@ def fetch_one(m, key):
     elif "github" in s:
         download(f"https://github.com/{s['github']}/releases/download/{urllib.parse.quote(s['tag'], safe='')}/"
                  f"{urllib.parse.quote(s['asset'])}", dest)
+    elif "built" in s:  # our own SKSE plugin: made by `skse_build.sh build` then `pack`, never downloaded
+        raise OSError(f"{dest.name} is not built here or cached: run infra/gpu-box/skse_build.sh build, then pack")
     else:  # a manual download (ModDB): only the private cache holds it
         raise OSError(f"{dest.name} is not in s3://{CACHE_BUCKET}/mods/ (a manual download: upload it there)")
     return dest, "got"

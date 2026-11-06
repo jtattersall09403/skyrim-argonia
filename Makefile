@@ -15,6 +15,7 @@ lint:
 
 unit:
 	@$(PY) -m pytest -q tooling/tests tools/tests; rc=$$?; [ $$rc -eq 0 ] || [ $$rc -eq 5 ]
+	@bash skse/check.sh
 
 # The adaptation ledger's whole-set checks (phase 2): places, edits, prerequisites, danger, capacity, lore, 0006, 0035.
 adaptation:
