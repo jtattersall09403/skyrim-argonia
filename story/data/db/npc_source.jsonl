@@ -791,8 +791,6 @@
 {"npc_id":"npc.mercantile-coast.ashroot-village.tree-minder-surviving-hist","ord":0,"value":"place.mercantile-coast.ashroot-village notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.bereaved-village-murkmire.reciter","ord":0,"value":"place.mercantile-coast.bereaved-village-murkmire notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.bramman-screen.screen-pilot-sells-ninety","ord":0,"value":"place.mercantile-coast.bramman-screen notableNpcSlots[0]"}
-{"npc_id":"npc.mercantile-coast.bright-throat-village.chime-tuner","ord":0,"value":"place.mercantile-coast.bright-throat-village notableNpcSlots[0]"}
-{"npc_id":"npc.mercantile-coast.bright-throat-village.tribe-speaker","ord":0,"value":"place.mercantile-coast.bright-throat-village notableNpcSlots[1]"}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1","ord":0,"value":"place.mercantile-coast.chasepoint blueprint occupants:n1"}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1","ord":1,"value":"place.mercantile-coast.chasepoint life.groups:n1"}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1-2","ord":0,"value":"place.mercantile-coast.chasepoint life.groups:n1"}
@@ -840,6 +838,8 @@
 {"npc_id":"npc.mercantile-coast.lilmoth.xileel-resident-agent-deniable","ord":0,"value":"place.mercantile-coast.lilmoth notableNpcSlots[3]"}
 {"npc_id":"npc.mercantile-coast.lilmoth.young-climber-chapter-sends","ord":0,"value":"docs/quests/36-cast-roster.md"}
 {"npc_id":"npc.mercantile-coast.long-bar-wreckers.light-keeper","ord":0,"value":"place.mercantile-coast.long-bar-wreckers notableNpcSlots[0]"}
+{"npc_id":"npc.mercantile-coast.low-reed-village.chime-tuner","ord":0,"value":"place.mercantile-coast.bright-throat-village notableNpcSlots[0]"}
+{"npc_id":"npc.mercantile-coast.low-reed-village.root-herald","ord":0,"value":"place.mercantile-coast.bright-throat-village notableNpcSlots[1]"}
 {"npc_id":"npc.mercantile-coast.moonmarch.khajiit-factor-holding-last","ord":0,"value":"place.mercantile-coast.moonmarch notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.mudfoot.rake-caller","ord":0,"value":"place.mercantile-coast.mudfoot notableNpcSlots[0]"}
 {"npc_id":"npc.mercantile-coast.naga-village-oliis.court-holder","ord":0,"value":"place.mercantile-coast.naga-village-oliis notableNpcSlots[0]"}

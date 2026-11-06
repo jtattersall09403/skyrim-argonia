@@ -173,8 +173,8 @@
 {"quest_id":"quest.main.mq03","ord":12,"id":"flag.mq03.plain","access":"write"}
 {"quest_id":"quest.main.mq03","ord":13,"id":"flag.mq03.price","access":"write"}
 {"quest_id":"quest.main.mq03","ord":14,"id":"flag.mq03.gang-owings-cleared","access":"write"}
-{"quest_id":"quest.main.mq04","ord":0,"id":"npc.mercantile-coast.bright-throat-village.tribe-speaker","access":"write"}
-{"quest_id":"quest.main.mq04","ord":1,"id":"npc.mercantile-coast.bright-throat-village.chime-tuner","access":"write"}
+{"quest_id":"quest.main.mq04","ord":0,"id":"npc.mercantile-coast.low-reed-village.root-herald","access":"write"}
+{"quest_id":"quest.main.mq04","ord":1,"id":"npc.mercantile-coast.low-reed-village.chime-tuner","access":"write"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"npc.mercantile-coast.low-reed-village.egg-tender","access":"write"}
 {"quest_id":"quest.main.mq04","ord":3,"id":"npc.mercantile-coast.low-reed-village.an-xileel-officer","access":"write"}
 {"quest_id":"quest.main.mq04","ord":4,"id":"npc.mercantile-coast.lilmoth.go-between","access":"write"}

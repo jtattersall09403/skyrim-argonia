@@ -776,8 +776,6 @@
 {"npc_id":"npc.mercantile-coast.ashroot-village.tree-minder-surviving-hist","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.mercantile-coast.bereaved-village-murkmire.reciter","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.mercantile-coast.bramman-screen.screen-pilot-sells-ninety","fight":5,"flee":60,"alarm":60}
-{"npc_id":"npc.mercantile-coast.bright-throat-village.chime-tuner","fight":0,"flee":70,"alarm":60}
-{"npc_id":"npc.mercantile-coast.bright-throat-village.tribe-speaker","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1-2","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.mercantile-coast.chasepoint.n1-3","fight":20,"flee":40,"alarm":80}
@@ -819,6 +817,8 @@
 {"npc_id":"npc.mercantile-coast.lilmoth.xileel-resident-agent-deniable","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.lilmoth.young-climber-chapter-sends","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.long-bar-wreckers.light-keeper","fight":90,"flee":10,"alarm":100}
+{"npc_id":"npc.mercantile-coast.low-reed-village.chime-tuner","fight":0,"flee":70,"alarm":60}
+{"npc_id":"npc.mercantile-coast.low-reed-village.root-herald","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.moonmarch.khajiit-factor-holding-last","fight":20,"flee":40,"alarm":80}
 {"npc_id":"npc.mercantile-coast.mudfoot.rake-caller","fight":0,"flee":70,"alarm":60}
 {"npc_id":"npc.mercantile-coast.naga-village-oliis.court-holder","fight":90,"flee":10,"alarm":100}

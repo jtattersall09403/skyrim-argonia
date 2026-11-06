@@ -217,7 +217,7 @@
 {"list_id":"quest_ending:quest.main.mq03|2:world","ord":1,"arg_ord":1,"value":"mark.mq03.house"}
 {"list_id":"quest_ending:quest.main.mq04|0:rewards","ord":0,"arg_ord":0,"value":"place.mercantile-coast.low-reed-village"}
 {"list_id":"quest_ending:quest.main.mq04|0:rewards","ord":0,"arg_ord":1,"value":15}
-{"list_id":"quest_ending:quest.main.mq04|0:rewards","ord":1,"arg_ord":0,"value":"npc.mercantile-coast.bright-throat-village.chime-tuner"}
+{"list_id":"quest_ending:quest.main.mq04|0:rewards","ord":1,"arg_ord":0,"value":"npc.mercantile-coast.low-reed-village.chime-tuner"}
 {"list_id":"quest_ending:quest.main.mq04|0:rewards","ord":1,"arg_ord":1,"value":25}
 {"list_id":"quest_ending:quest.main.mq04|0:world","ord":0,"arg_ord":0,"value":"flag.mq04.reconciled"}
 {"list_id":"quest_ending:quest.main.mq04|0:world","ord":0,"arg_ord":1,"value":1}
@@ -235,13 +235,13 @@
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":2,"arg_ord":0,"value":"ref.mq04.guarded"}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":3,"arg_ord":0,"value":"thing.mq04.sap-jars"}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":3,"arg_ord":1,"value":1}
-{"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"arg_ord":0,"value":"npc.mercantile-coast.bright-throat-village.chime-tuner"}
+{"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"arg_ord":0,"value":"npc.mercantile-coast.low-reed-village.chime-tuner"}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"arg_ord":1,"value":20}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":1,"arg_ord":0,"value":"place.mercantile-coast.low-reed-village"}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":1,"arg_ord":1,"value":-5}
 {"list_id":"quest_ending:quest.main.mq04|2:world","ord":0,"arg_ord":0,"value":"flag.mq04.minder-sheltered"}
 {"list_id":"quest_ending:quest.main.mq04|2:world","ord":0,"arg_ord":1,"value":1}
-{"list_id":"quest_ending:quest.main.mq04|3:rewards","ord":0,"arg_ord":0,"value":"npc.mercantile-coast.bright-throat-village.chime-tuner"}
+{"list_id":"quest_ending:quest.main.mq04|3:rewards","ord":0,"arg_ord":0,"value":"npc.mercantile-coast.low-reed-village.chime-tuner"}
 {"list_id":"quest_ending:quest.main.mq04|3:rewards","ord":0,"arg_ord":1,"value":-20}
 {"list_id":"quest_ending:quest.main.mq04|3:world","ord":0,"arg_ord":0,"value":"flag.mq04.minder-barred"}
 {"list_id":"quest_ending:quest.main.mq04|3:world","ord":0,"arg_ord":1,"value":1}
