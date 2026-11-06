@@ -233,8 +233,6 @@
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":0,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":1,"arg_ord":0,"value":"ref.mq04.cell-camp"}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":2,"arg_ord":0,"value":"ref.mq04.guarded"}
-{"list_id":"quest_ending:quest.main.mq04|1:world","ord":3,"arg_ord":0,"value":"thing.mq04.sap-jars"}
-{"list_id":"quest_ending:quest.main.mq04|1:world","ord":3,"arg_ord":1,"value":1}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"arg_ord":0,"value":"npc.mercantile-coast.low-reed-village.chime-tuner"}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"arg_ord":1,"value":20}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":1,"arg_ord":0,"value":"place.mercantile-coast.low-reed-village"}

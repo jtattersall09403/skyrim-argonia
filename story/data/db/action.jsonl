@@ -132,7 +132,6 @@
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":0,"term":"setFlag"}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":1,"term":"disableRef"}
 {"list_id":"quest_ending:quest.main.mq04|1:world","ord":2,"term":"disableRef"}
-{"list_id":"quest_ending:quest.main.mq04|1:world","ord":3,"term":"takeItem"}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":0,"term":"changeDisposition"}
 {"list_id":"quest_ending:quest.main.mq04|2:rewards","ord":1,"term":"changeSettlementStanding"}
 {"list_id":"quest_ending:quest.main.mq04|2:world","ord":0,"term":"setFlag"}

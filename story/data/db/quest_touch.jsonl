@@ -176,7 +176,7 @@
 {"quest_id":"quest.main.mq04","ord":0,"id":"npc.mercantile-coast.low-reed-village.root-herald","access":"write"}
 {"quest_id":"quest.main.mq04","ord":1,"id":"npc.mercantile-coast.low-reed-village.chime-tuner","access":"write"}
 {"quest_id":"quest.main.mq04","ord":2,"id":"npc.mercantile-coast.low-reed-village.egg-tender","access":"write"}
-{"quest_id":"quest.main.mq04","ord":3,"id":"npc.mercantile-coast.low-reed-village.an-xileel-officer","access":"write"}
+{"quest_id":"quest.main.mq04","ord":3,"id":"npc.mercantile-coast.low-reed-village.reed-hand","access":"write"}
 {"quest_id":"quest.main.mq04","ord":4,"id":"npc.mercantile-coast.lilmoth.go-between","access":"write"}
 {"quest_id":"quest.main.mq04","ord":5,"id":"npc.nesh-deeka","access":"read"}
 {"quest_id":"quest.main.mq04","ord":6,"id":"place.mercantile-coast.low-reed-village","access":"write"}

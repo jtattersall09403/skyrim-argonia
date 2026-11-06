@@ -580,7 +580,7 @@
 {"id":"fact.mq04.leech-effect","claim":"The leeches are fat on spilled sap and came after the tree closed; they did not close it.","ord":2,"from_ref":"t3","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.minder-washes","claim":"Pays-Late goes to the cut root every night to wash it; he did not cut it.","ord":4,"from_ref":"t4","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.naming-due","claim":"Hires-By-The-Season, whom the egg-tenders and Pays-Late chose to hear it, means to name Pays-Late before the Hist: an apology and a season's work at the weirs.","ord":9,"from_ref":"t4","quest_id":"quest.main.mq04"}
-{"id":"fact.mq04.officer-waits","claim":"An An-Xileel officer and a Lilmoth go-between wait at the village's jetty for the cell's people, not for the tree.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
+{"id":"fact.mq04.officer-waits","claim":"A stranger in a boat off the village and a Lilmoth go-between wait for the cell's people, not for the tree.","ord":10,"from_ref":"t6","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.root-cut","claim":"A root of the Hist was cut at the ring and sealed with black gum.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.strangers-seen","claim":"Two men not of the village poled in by the north reeds on the night of the netting, when every netter was at the weirs and only the egg-tender kept the pool.","ord":6,"from_ref":"t2","quest_id":"quest.main.mq04"}
 {"id":"fact.mq04.tree-closed","claim":"The Hist's light is out and its leaves are shut, and the wind no longer moves them.","ord":0,"from_ref":"t3","quest_id":"quest.main.mq04"}

@@ -54,7 +54,7 @@ ROWS = [
   needs=[]),
  dict(quest="quest.main.mq04", verdict="adapt",
   spirit="The first affected Hist community: the player recognises the dark uxith from the camp, and untangles disease, sabotage, grief and ritual.",
-  premise=("East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. The tending-ground is closed, the tenders grieve and the uxith is dark, as at the camp. The village blames the leeches; its tree-minder is suspected; a gum trail leads to a swamp camp where the cell worked. The player can expose the cell, protect the tree-minder, or hand the cell's people to an An-Xileel officer come from outside with a Lilmoth go-between, who takes them and leaves the tree to the village."),
+  premise=("East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. The tending-ground is closed, the tenders grieve and the uxith is dark, as at the camp. The village blames the leeches; its tree-minder is suspected; a gum trail leads to a swamp camp where the cell worked. The player can expose the cell, protect the tree-minder, or hand the cell's people to the Veiled Reed's unmarked hand, who keeps to a boat off the village with a Lilmoth go-between, takes them and leaves the tree to the village (QA9)."),
   changed=("The Shadowfen Hist settlement becomes BM&V's unnamed Village east of Lilmoth, whose sixty-odd leeches are the false cause the design asked for. It is not the Hatching Pools, which the lore puts in central Shadowfen (the census's old mapping is out of date). Its name comes from the lore's Murkmire villages at quest-write."),
   why="BM&V's village has the people, the chief, the water and the leeches.",
   band=2, lore="story/lore/topics/hist-and-sap.md; story/lore/regions/murkmire.md",
@@ -63,7 +63,7 @@ ROWS = [
   new_edits=[
    E(id="we.mq04.name", kind="name_place", settlement="bmv.village", cell="03978F:" + BM, description="the Village named from the lore's Murkmire villages", lore="story/lore/regions/murkmire.md"),
    E(id="we.mq04.village", kind="ref_place", settlement="bmv.village", cell="03978F:" + BM, description="the village's Hist (BM&V's Hist static, if the cell has none already) with withdrawn and healthy enable parents, the closed tending-ground, a dark uxith, a sap-workshop, the gum trail and the cell's camp, from BM&V's own Argonian statics; enable parents for withdrawn, guarded, reconciled", lore="story/lore/topics/hist-and-sap.md"),
-   E(id="we.mq04.people", kind="npc_add", settlement="bmv.village", cell="03978F:" + BM, description="three: the village's tree-minder, an egg-tender, an An-Xileel officer; two cell members at the camp", race="Argonian", band=2, lore="story/lore/an-xileel.md")],
+   E(id="we.mq04.people", kind="npc_add", settlement="bmv.village", cell="03978F:" + BM, description="three: the village's tree-minder, an egg-tender, and Zaren-Ish, the Veiled Reed's unmarked hand, in a boat off the village with a Lilmoth go-between; two cell members at the camp", race="Argonian", band=2, lore="story/lore/extrapolation/gap-register.md §8 QA9")],
   needs=[dict(target="084A7F:" + BM, what="the Argonian Chief as the village's kaal")]),
  dict(quest="quest.main.mq05", verdict="adapt",
   spirit="The Reed carries the player to Helstrom, a safe city at the edge of a lethal basin, past the empty seat of the Scalded Throne; Nisswo and tree-minders dispute the first Hist.",

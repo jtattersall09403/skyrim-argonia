@@ -55,7 +55,7 @@
 {"quest_id":"quest.main.mq03","things_ord":5,"state":"before-50","value":"off"}
 {"quest_id":"quest.main.mq03","things_ord":6,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled"}
-{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"withdrawn; the officer, the go-between and the cell's people gone from the village"}
+{"quest_id":"quest.main.mq04","things_ord":0,"state":"after-91","value":"withdrawn; Zaren-Ish, the go-between and the cell's people gone from the village"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-92","value":"withdrawn; the tree-minder at his post on the player's word"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-93","value":"withdrawn; the tree-minder made to apologise before the Hist and set to a season's work at the weirs"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
