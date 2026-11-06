@@ -2,7 +2,7 @@
 #   infra/gpu-box/run.sh setup [stage]
 # Idempotent: each step checks before it acts. Stages: base (driver, Steam, MO2, tools), stream (hosts),
 # all (default). Reboots are requested by printing REBOOT-NEEDED; run.sh reboots and runs it again.
-param([string]$Stage = 'all')
+param([string]$Stage = 'all', [string]$Password = '')
 $ErrorActionPreference = 'Stop'
 $ProgressPreference = 'SilentlyContinue'
 $Root = 'C:\argonia'
@@ -148,6 +148,17 @@ function Install-Stream {
   Write-Host 'idle-stop: set'
 }
 
+function Install-Autologon([string]$Password) {
+  # The Administrator signs in at boot (owner, 2026-11-06): Sunshine starts a card only in a signed-in session, and a
+  # rebooted machine had none, so every card failed with "Permission denied". Sysinternals Autologon keeps the password
+  # as an encrypted LSA secret, not in the registry. Run once with the password: setup.ps1 -Stage autologon -Password ...
+  if (-not $Password) { 'autologon: no password given, skipped'; return }
+  $exe = "$Root\tools\autologon\Autologon64.exe"
+  if (-not (Test-Path $exe)) { $z = Get-File 'https://download.sysinternals.com/files/AutoLogon.zip' 'AutoLogon.zip'; Expand-Archive $z "$Root\tools\autologon" -Force }
+  & $exe Administrator . $Password /accepteula
+  "autologon: " + (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon').AutoAdminLogon
+}
+
 function Install-Dcv {
   # Amazon DCV with its bundled virtual display and gamepad driver; licensed free on EC2 through the instance
   # role's read of the dcv-license bucket.
@@ -200,6 +211,7 @@ switch ($Stage) {
   'base' { Install-Base }
   'stream' { Install-Stream }
   'dcv'    { Install-Dcv }
+  'autologon' { Install-Autologon $Password }
   'redist' { Install-GameRedist }
   'all'  { Install-Base; Install-Stream; Install-Dcv }
   default { throw "unknown stage $Stage" }
