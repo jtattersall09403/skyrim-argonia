@@ -1,8 +1,10 @@
 # Controls
 
-Current truth for the play stack (`mods/dependencies.json`). Keyboard is a Mac keyboard over Moonlight; the pad is the
-GameSir X2 in Xbox layout (Skyrim reads it as an Xbox pad). All pad bindings are Skyrim's defaults plus the mods' own;
-none needed changing for the X2.
+Current truth for the play stack (`mods/dependencies.json`). The keyboard is a Mac keyboard over Moonlight. The pad is
+the GameSir X2 in Xbox layout (Skyrim reads it as an Xbox pad), laid out like Dark Souls by owner ruling #51
+(2026-11-06). The pad layout is Skyrim's own control map with its gameplay pad column changed by
+`infra/gpu-box/controlmap.py`; `C:\argonia\controls\controlmap.txt` on the play machine is laid loose in Data by
+`stack.ps1 on`, and `deploy.sh` re-applies it. Keyboard and mouse are Skyrim's defaults plus the mods' own.
 
 ## Moonlight on a Mac
 
@@ -17,32 +19,50 @@ none needed changing for the X2.
 |---|---|---|---|
 | Move | W A S D | left stick | 8-way (True Directional Movement) |
 | Walk / run toggle | Caps Lock | push stick part way | |
-| Sprint | hold Option (Alt) | hold LB | hold longer than half a second |
-| Dodge: backstep | tap Option, standing still | tap LB, stick centred | TK Dodge RE: tap under 0.5 s; costs 15 stamina; i-frames |
-| Dodge: roll | tap Option while moving | tap LB with the stick held | rolls the way you move (Dynamic Dodge, 8-way) |
-| Jump | Space | Y | |
-| Climb | W + Space at a wall | Y at a wall | FreeClimb; drop off with Space / Y again |
-| Light attack (right hand) | left click | RT | |
-| Heavy (power) attack | hold left click | hold RT | |
-| Block | hold right click | hold LT | needs an empty left hand, a shield or a two-hander |
-| Guard counter (the "parry") | block a hit, then power attack within 1.5 s | block a hit (LT), then hold RT within 1.5 s | Elden Counter: the block must actually stop an enemy blow; there is no timed parry in the collection |
+| Sprint | hold Option (Alt) | hold B | hold longer than half a second |
+| Dodge: backstep | tap Option, standing still | tap B, stick centred | TK Dodge RE: tap under 0.5 s; costs 15 stamina; i-frames |
+| Dodge: roll | tap Option while moving | tap B with the stick held | rolls the way you move (Dynamic Dodge, 8-way) |
+| Light attack (right hand) | left click | RB | |
+| Heavy (power) attack | hold left click | RT (one press) | One Click Power Attack (`iKeycode 281`); RT is also bound to the right attack so the attack handler sees it |
+| Block | hold right click | hold LB | needs an empty left hand, a shield or a two-hander |
+| Parry | hold right click, tap left click as the blow lands | hold LB, tap RB as the blow lands | Elden Parry: the light bash is the parry, window 0.02 to 0.2 s into it; costs no stamina |
+| Riposte | left click after a parry | RB after a parry | Rim Parry And Execution with its One Parry patch: one parry makes a human or draugr kneel; lock on first; stand within 120 degrees in front |
+| Backstab | locked on behind the enemy: hold right click, tap left click, then left click | LB+RB, then RB | Rim Parry And Execution, within 60 degrees behind |
+| Guard counter | block a hit, then power attack within 1.5 s | block a hit (LB), then RT within 1.5 s | Elden Counter; kept beside the parry (they key on different moves: a block versus a bash) |
 | Lock on | tap F | click right stick | hold F switches first/third person |
 | Switch locked target | mouse flick / scroll wheel | flick right stick | |
+| Jump | Space | Y | |
+| Climb | W + Space at a wall | Y at a wall | FreeClimb; drop off with Space / Y again |
 | Draw / sheathe | R | X | |
 | Activate / talk / take | E | A | |
 | Sneak | Ctrl | click left stick | |
-| Cast left / right hand | left / right click with a spell in that hand | LT / RT | |
-| Shout / power | Z (hold for full shout) | RB | |
-| Favourites | Q | D-pad up or down | |
-| Tween menu (skills, items, map, magic) | Tab | B | |
-| Inventory / magic / map / skills | I / P / M / / (slash) | B then the stick | |
+| Cast left hand | right click with a spell in the left hand | LB | |
+| Cast right hand | left click with a spell in the right hand | RB | |
+| Shout / power | Z (hold for full shout) | LT | |
+| Favourites | Q | d-pad up or down | |
+| Tween menu (skills, items, map, magic) | Tab | d-pad left or right | |
+| Inventory / magic / map / skills | I / P / M / / (slash) | d-pad left or right, then the stick | |
 | Journal and system menu | J (journal), Esc (system) | Start (≡) | save, load, settings |
 | Wait | T | Back (⧉) | |
 | Change view | hold F | hold right stick click | |
 | Console | key left of 1 (see above) | none: needs a keyboard | |
 | Mod settings (MCM) | Esc, then Mod Configuration | Start, then Mod Configuration | |
 
+## What moved on the pad (ruling #51)
+
+| Input | Skyrim's default | Now | Default moved to |
+|---|---|---|---|
+| B | Tween menu | sprint and dodge | d-pad left or right |
+| LB | sprint (and dodge) | block | B |
+| RB | shout | light attack | LT |
+| RT | right attack | power attack (and right attack) | |
+| LT | left attack / block | shout | LB |
+| d-pad left / right | favourite hotkeys 1 and 2 | Tween menu | none: the favourites menu (d-pad up or down) does the same job |
+
 ## Known gaps
 
-- No timed parry: the collection's only block move is Elden Counter's guard counter.
-- TrueHUD's own player bars are switched off on purpose (`truehud` row); its enemy bars and lock-on mark show in fights.
+- Attack queued during a dodge: our own SKSE plugin ArgoniaDodgeBuffer (skse/ArgoniaDodgeBuffer, owner ruling #51) is
+  built but not yet laid on the play machine; until it is, an attack pressed during a roll is dropped.
+
+- Parry and riposte work on humans and draugr only (Rim Parry And Execution's own scope), and in third person only.
+- Precision gives melee real hit shapes; its camera shake on hits is off (`precision` row).

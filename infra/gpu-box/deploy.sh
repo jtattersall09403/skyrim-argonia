@@ -31,6 +31,16 @@ send() {
   "$run" ps "& C:\\argonia\\infra\\make-cards.ps1; \$a='C:\\Program Files\\Sunshine\\config\\apps.json'; \$n='C:\\argonia\\infra\\sunshine-apps.json'; if ((Get-FileHash \$n).Hash -ne (Get-FileHash \$a -EA SilentlyContinue).Hash) { Copy-Item \$n \$a -Force; Restart-Service SunshineService; 'sunshine: app list changed, restarted' } else { 'sunshine: app list unchanged' }"
 }
 step "send" send
+# The pad layout follows controlmap.py (owner ruling #51): the machine's made controlmap.txt fetched, GAMEPLAY
+# re-applied, sent back; stack.ps1 on lays it in Data. No file there: make it once with controlmap.py from the BSA.
+controls() {
+  local t; t=$(mktemp -d)
+  if "$run" get 'C:/argonia/controls/controlmap.txt' "$t/was.txt" 2>/dev/null; then
+    python3 "$here/controlmap.py" --remap "$t/was.txt" "$t/controlmap.txt" && "$run" put "$t/controlmap.txt" 'C:/argonia/controls/controlmap.txt'
+  else echo "controls: no C:\argonia\controls\controlmap.txt on the machine; make it with controlmap.py"; fi
+  rm -rf "$t"
+}
+step "controls" controls
 step "stack on" "$run" ps 'powershell -ExecutionPolicy Bypass -File C:\argonia\infra\stack.ps1 on'
 "$run" ps "Set-Content -NoNewline C:\\argonia\\state\\deployed.key '$key'" >/dev/null
 echo "DEPLOY OK in $(( SECONDS - t0 )) s"

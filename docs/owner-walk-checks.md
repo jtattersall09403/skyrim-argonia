@@ -21,10 +21,13 @@ From a new game on the Argonia card.
 - [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
 - [ ] Weapon drawn: you walk or sprint but do not run. This is Arena Movement's design ("you can walk, you can
       sprint, you just can't run around"). Reply "keep" or "faster": the faster variant runs at about twice walking pace.
-- [ ] Dodge (issue #51): tap Alt (pad: LB) for under half a second. Standing still you backstep; moving you roll in
+- [ ] Dodge (issue #51): tap Alt (pad: B) for under half a second. Standing still you backstep; moving you roll in
       that direction. Holding it sprints.
-- [ ] Guard counter (issue #51): block an enemy's hit, then power attack within 1.5 seconds. There is no timed
-      parry in the collection; #51 asks whether to add one.
+- [ ] Pad layout (issue #51, GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout,
+      d-pad left or right opens the Tween menu (skills, items, map, magic).
+- [ ] Parry and riposte (issue #51): lock on to a bandit, hold LB (keyboard: right mouse) and tap RB (left click)
+      just as their blow lands. They stagger and kneel; press RB (left click) again for the riposte.
+- [ ] Guard counter (issue #51): block a hit, then power attack (RT, or hold left click) within 1.5 seconds.
 - [ ] Lock-on (pad: right stick click; keyboard: tap F), sprint and climbing, on the Mac keyboard and on the GameSir X2.
 - [ ] The HUD shows TrueHUD's player bars, not vanilla Skyrim's.
 

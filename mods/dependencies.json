@@ -96,6 +96,26 @@
    "mod": "elden-counter"
   },
   {
+   "file": "Precision.esp",
+   "mod": "precision"
+  },
+  {
+   "file": "EldenParry.esp",
+   "mod": "elden-parry"
+  },
+  {
+   "file": "RimExecutionHitSA.esp",
+   "mod": "rim-parry-ctd-fix"
+  },
+  {
+   "file": "EREP_patchSA.esp",
+   "mod": "rim-parry-elden-patch"
+  },
+  {
+   "file": "OCPA.esl",
+   "mod": "one-click-power-attack"
+  },
+  {
    "file": "TrueDirectionalMovement.esp",
    "mod": "true-directional-movement"
   },
@@ -549,6 +569,35 @@
    "permission_ask": false,
    "permission_evidence": "Nexus description states relicensed GPL-3.0-or-later, D7ry MIT original preserved; gh GPL-3.0",
    "runtime": "loads on 1.7.104.0 (PayloadInterpreter.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "behavior-data-injector",
+   "group": "core",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78159,
+    "file": 794609
+   },
+   "name": "Behavior Data Injector Universal Support",
+   "author": "doodlum",
+   "version": "v0.13.0.4",
+   "archive": "Behavior Data Injector Universal Support 78159 v0.13.0.4 2026-08-24T20-55Z 2Bej58obO.zip",
+   "size_kb": 6438,
+   "why": "behaviour data for Rim Parry And Execution (its Payload Interpreter patch); owner ruling #51",
+   "required": true,
+   "profile": "play",
+   "sha256": "4f718764e67c265b509fcabe6afc00ba85255a03f2140e2b1de2bb03511ecde4",
+   "pick": [
+    "SKSE"
+   ],
+   "licence": "GPL-3.0 (github doodlum/BehaviorDataInjector)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/doodlum/BehaviorDataInjector licence GPL-3.0; Nexus description states no AI clause",
+   "runtime": "loads on 1.7.104.0 (BehaviorDataInjector.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: depended on as the player’s own download"
   },
@@ -1016,6 +1065,28 @@
    "runtime": "loads on 1.7.104.0 (TK_Dodge_RE.dll: SKSE 'loaded correctly', 2026-10-29)",
    "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
    "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "argonia-skse",
+   "group": "combat",
+   "source": {
+    "built": "argonia-skse"
+   },
+   "name": "Argonia SKSE (ArgoniaDodgeBuffer)",
+   "author": "Elder Souls: Argonia",
+   "version": "0.1.0",
+   "archive": "built-argonia-skse.tar",
+   "size_kb": 640,
+   "why": "our own SKSE plugin: an attack pressed during a TK Dodge RE dodge plays as the dodge ends (owner ruling #51)",
+   "required": true,
+   "profile": "play",
+   "sha256": "c3d6329f905504ca29a26d43961ff020c2faa55b1770825bb06499cd694b9ad5",
+   "licence": "GPL-3.0-or-later (our own code, skse/ArgoniaDodgeBuffer/; links CommonLibSSE-NG, GPL-3.0-or-later)",
+   "permission_summary": "Our own build from source in this repo; nothing of anyone else's is in it. Built on the game machine by infra/gpu-box/skse_build.sh and never committed (decision 0003).",
+   "ai_clause": "none: our own code",
+   "permission_ask": false,
+   "runtime": "version independent (Address Library), SKSE 2.3.1 on 1.7.104.0",
+   "conflicts": "none known: reads TK Dodge RE's animation-graph events TKDR_DodgeStart and TKDR_DodgeEnd; adds no record and no hook"
   },
   {
    "id": "dynamic-dodge",
@@ -1649,6 +1720,379 @@
    "permission_ask": false,
    "archive": "Elden Counter 85740 1.0.4 2026-08-24T20-58Z GkqKVMY7i.zip",
    "size_kb": 5234
+  },
+  {
+   "id": "precision",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 72347,
+    "file": 798533
+   },
+   "name": "Precision - Accurate Melee Collisions",
+   "author": "Ersh",
+   "version": "2.0.6",
+   "archive": "Precision 72347 2.0.6 2026-09-01T07-51Z pQ0AZ3jtL.7z",
+   "size_kb": 5676,
+   "why": "accurate melee collisions; a hard requirement of Rim Parry And Execution and added by owner ruling #51",
+   "required": true,
+   "profile": "play",
+   "sha256": "9e5ee9957b012ed0ced0add274ee6477077dddb10d68bd20a2abb055e00d8e98",
+   "pick": [
+    "Interface",
+    "MCM",
+    "Meshes",
+    "Scripts",
+    "SKSE",
+    "Textures",
+    "Nemesis_Engine/mod/colis",
+    "Precision.esp"
+   ],
+   "ini": [
+    {
+     "file": "MCM/Config/Precision/settings.ini",
+     "section": "Hitstop",
+     "set": {
+      "bEnableHitstopCameraShake": "0"
+     }
+    },
+    {
+     "file": "MCM/Config/Precision/settings.ini",
+     "section": "Recoil",
+     "set": {
+      "bEnableRecoilCameraShake": "0"
+     }
+    }
+   ],
+   "settings_why": "The camera shakes when the player is hit (owner play test 3, finding 15: 'does something mad, like dips underground'): Precision's own hit-reaction camera shake, [Hitstop] bEnableHitstopCameraShake (strength 6 on an NPC hit, 4 other, 0.3 s) and [Recoil] bEnableRecoilCameraShake (strength 10, 0.4 s), both 1 by default in MCM/Config/Precision/settings.ini and both documented MCM toggles (Precision's config.json). Off: the hitstop slowdown and the recoil animation stay (they are the DS1-style hit feel); only the camera movement goes. The hit impulse and ragdoll are not touched.",
+   "licence": "GPL-3.0 (github Ersh1/Precision)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/Ersh1/Precision licence GPL-3.0; Nexus description states no AI clause",
+   "plugins": [
+    "Precision.esp"
+   ],
+   "runtime": "loads on 1.7.104.0 (Precision.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "pick_to": {
+    "Nemesis_Engine/mod/colis": "Nemesis_Engine/mod/colis"
+   }
+  },
+  {
+   "id": "elden-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 70240,
+    "file": 304517
+   },
+   "name": "Elden Parry",
+   "author": "dTry",
+   "version": "1.3",
+   "archive": "Elden Parry AE-70240-1-3-1659616986.7z",
+   "size_kb": 379,
+   "why": "timed parry: a light bash (block + attack) at the moment of a hit (owner ruling #51); the DLL comes from elden-parry-1.7.99",
+   "required": true,
+   "profile": "play",
+   "sha256": "d2432a29cb116c083ab30ef7a29b0704242a9b5a9b3f243684e159ea2d772a49",
+   "licence": "none for D7ry original (github D7ry/EldenParry); GPL-3.0 only on the doodlum fork",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. Using the GPL-3.0 doodlum fork would need no asking.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh D7ry/EldenParry licence none; doodlum fork GPL-3.0 (reuse-audit.md line 271)",
+   "plugins": [
+    "EldenParry.esp"
+   ],
+   "runtime": "its EldenParry.dll is replaced by elden-parry-1.7.99's 1.7 build (intended)",
+   "conflicts": "EldenParry.dll overridden by elden-parry-1.7.99 (resolved: the later row is the 1.7 build)",
+   "linked_or_forked_by": "none: depended on as the player’s own download",
+   "ini": [
+    {
+     "file": "SKSE/Plugins/EldenParry.ini",
+     "section": "General",
+     "set": {
+      "fParryWindow_Start": "0.02",
+      "fParryWindow_End": "0.2"
+     }
+    }
+   ],
+   "settings_why": "Rim Parry And Execution's page: Start must be above 0 with Elden Parry; its author's values 0.02 and 0.2"
+  },
+  {
+   "id": "elden-parry-1.7.99",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 85740,
+    "file": 793442
+   },
+   "name": "dTry Plugin Updates",
+   "author": "doodlum",
+   "version": "1.7.99",
+   "archive": "Elden Parry 85740 1.7.99 2026-08-22T19-12Z FpnkHZ2AJ.zip",
+   "size_kb": 295,
+   "why": "Elden Parry's DLL rebuilt on CommonLibSSE-NG for 1.7.x (dTry Plugin Updates), overwriting it by name",
+   "required": true,
+   "profile": "play",
+   "sha256": "75b77081d9c7bac9937f52bab9ac234bdb434bbf19a492d0a440ef6f47053c7d",
+   "licence": "GPL-3.0 (github doodlum/EldenParry, doodlum/CombatMusicFix)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence GPL-3.0 governs",
+   "permission_ask": false,
+   "permission_evidence": "gh licences GPL-3.0 for doodlum forks; base D7ry/DtryKeyUtil has no licence file",
+   "runtime": "loads on 1.7.104.0 (EldenParry.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "elden-parry-precision-fix",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 188223,
+    "file": 789181
+   },
+   "name": "Elden Parry Precision Fix",
+   "author": "Laaaast",
+   "version": "1",
+   "archive": "EldenParryPrecisionFix 188223 1 2026-08-13T04-33Z qTl1SxRnL.zip",
+   "size_kb": 63,
+   "why": "stops Precision giving the light bash a hit of its own, which would bypass Elden Parry's window",
+   "required": true,
+   "profile": "play",
+   "sha256": "ade5e7c46d02f444b3bba7da0b0353d24c6acd35e658ad4e8973a26d05764155",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "bdi-payload-patch",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 78146,
+    "file": 328880
+   },
+   "name": "Behavior Data Injector",
+   "author": "Maxsu and Dropkicker",
+   "version": "v1.0",
+   "archive": "Payload Interpreter - Nemesis Less Patch-78146-v1-0-1667564948.7z",
+   "size_kb": 1,
+   "why": "Payload Interpreter through BDI, without a Nemesis patch; Rim Parry: 'Without these two the Execution can't be triggered'",
+   "required": true,
+   "profile": "play",
+   "sha256": "8d7d0f8150ca3e0a9e078b8a2fc341048e447b819f9b1c40f85d6e0e46d3fee3",
+   "licence": "MIT (github max-su-2019/BehaviorDataInjector)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/BehaviorDataInjector licence MIT; Nexus description states no AI clause",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "rim-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114366,
+    "file": 499427
+   },
+   "name": "Rim Parry and Execution",
+   "author": "SHADOWPQ",
+   "version": "v1.1",
+   "archive": "00 Rim Parry Stand Alone - v1.1 Update-114366-v1-1-1715262891.zip",
+   "size_kb": 56293,
+   "why": "parry animations, riposte (execution) and backstab (owner ruling #51)",
+   "required": true,
+   "profile": "play",
+   "sha256": "b9cadb65f6a88ff272c6863695edfbab92e1e323f0ac5a8d1e26bc7faa8a0a60",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read 2026-10-29 (lane 0.2): no permission or AI text found",
+   "plugins": [],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "rim-parry-ctd-fix",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 143312,
+    "file": 600715
+   },
+   "name": "Rim Parry and Execution v1.1 CTD fix",
+   "author": "shadowPQ",
+   "version": "v1.1",
+   "archive": "Rim Parry and Execution v1.1 CTD fix-143312-v1-1-1740879051.rar",
+   "size_kb": 14,
+   "why": "replaces Rim Parry's RimExecutionHitSA.esp to fix a v1.1 crash",
+   "required": true,
+   "profile": "play",
+   "sha256": "ba0da201ad4e3d06d8fbd401cbf58852dada18c7213240b72424273d49a46c5d",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "RimExecutionHitSA.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "rim-parry-elden-patch",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 114366,
+    "file": 499429
+   },
+   "name": "Rim Parry and Execution",
+   "author": "SHADOWPQ",
+   "version": "v1.1",
+   "archive": "02 Rim_Parry_Elden Parry_patch SA ver-114366-v1-1-1715262975.zip",
+   "size_kb": 3,
+   "why": "hands Rim Parry's parry to Elden Parry",
+   "required": true,
+   "profile": "play",
+   "sha256": "191abf0820eddc9367aa1eb3b0dcd5d2d28d384fa0d91ca3390fd9366f96f456",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus text credits only; reuse-audit.md line 272: source and licence unverified",
+   "plugins": [
+    "EREP_patchSA.esp"
+   ],
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "1 dangling refs inside EREP_patchSA.esp's own records (upstream leftovers; no missing master; houseCARL check 2026-10-29)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "rim-parry-one-parry",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 164526,
+    "file": 687622
+   },
+   "name": "Rim Parry and Execution - One Parry Patch",
+   "author": "SHADOWPQ",
+   "version": "1.0",
+   "archive": "Rim Parry and Execution - One Parry Patch-164526-1-0-1763198266.rar",
+   "size_kb": 10,
+   "why": "one parry (not two) opens the riposte, as in Dark Souls",
+   "required": true,
+   "profile": "play",
+   "sha256": "736bfae3d417245f7763e219e7d8fef2b974fe3600ca95e163503a62ce5615f2",
+   "licence": "none stated",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "Nexus API v1 description read in full; no permission or AI text found",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "modern-stagger-lock",
+   "group": "combat",
+   "source": {
+    "github": "SkyHorizon3/ModernStaggerLock",
+    "tag": "v1.07a-1.7.99+",
+    "asset": "Modern.Stagger.Lock.1.07a.7z"
+   },
+   "name": "modern-stagger-lock",
+   "author": "SkyHorizon3",
+   "why": "Rim Parry's hard requirement: the kneel that opens a riposte",
+   "required": true,
+   "profile": "play",
+   "sha256": "9c2389d1171f23782d0b6185fc5d732c1593267524e272b15c4cb584d26e38c3",
+   "licence": "MIT (github SkyHorizon3/ModernStaggerLock)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/SkyHorizon3/ModernStaggerLock licence MIT, pushed 2026-10-27; no AI clause in the licence",
+   "runtime": "loads on 1.7.104.0 (ModernStaggerLock.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "maxsu-block-overhaul",
+   "group": "combat",
+   "source": {
+    "github": "max-su-2019/MaxuBlockOverhaul",
+    "tag": "v0.24",
+    "asset": "MaxsuBlockOverhaul-V0.24a.7z"
+   },
+   "name": "maxsu-block-overhaul",
+   "author": "max-su-2019",
+   "why": "block-hit animations Rim Parry asks for",
+   "required": true,
+   "profile": "play",
+   "sha256": "39b9499501bbbb0457668a2a3e148a914605515b07ae0708dfd91114933129cf",
+   "licence": "MIT (github max-su-2019/MaxuBlockOverhaul)",
+   "permission_summary": "Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms.",
+   "ai_clause": "none: open licence MIT governs",
+   "permission_ask": false,
+   "permission_evidence": "gh api repos/max-su-2019/MaxuBlockOverhaul licence MIT, pushed 2025-02-17; Nexus 114366 text links it",
+   "runtime": "data only (no DLL); laid and loaded to the main menu on 1.7.104.0",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
+  },
+  {
+   "id": "one-click-power-attack",
+   "group": "combat",
+   "source": {
+    "nexus": "skyrimspecialedition",
+    "mod": 60878,
+    "file": 819249
+   },
+   "name": "One Click Power Attack NG",
+   "author": "Bingle",
+   "version": "1.2",
+   "archive": "One Click Power Attack AE 1.7 Test 60878 1.2 2026-10-13T06-25Z oPpNfUmNb.7z",
+   "size_kb": 209,
+   "why": "heavy (power) attack on RT with one press (owner ruling #51); RT also stays bound to the right attack so the attack handler sees it",
+   "required": true,
+   "profile": "play",
+   "sha256": "87b97d07acdd9cbbe9cf37bc1b39e938f473dcadf1a19ba0c9b1eeed03851e99",
+   "ini": [
+    {
+     "file": "mcm/config/ocpa/settings.ini",
+     "section": "General",
+     "set": {
+      "iKeycode": "281",
+      "iLongPressMode": "0"
+     }
+    }
+   ],
+   "licence": "none (github jarari/OneClickPowerAttack has no licence file)",
+   "permission_summary": "No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission.",
+   "ai_clause": "not stated: ask the author",
+   "permission_ask": true,
+   "permission_evidence": "gh jarari/OneClickPowerAttack licence none (reuse-audit.md line 273); Nexus API v1 description read in full; no permission or AI text found",
+   "plugins": [
+    "OCPA.esl"
+   ],
+   "runtime": "loads on 1.7.104.0 (OneClickPowerAttack.dll: SKSE 'loaded correctly', 2026-10-29)",
+   "conflicts": "none (houseCARL 2.1.1 sweep 2026-10-29: no missing master, no contested DLL, no parse failure)",
+   "linked_or_forked_by": "none: depended on as the player’s own download"
   },
   {
    "id": "rapier-skysa",

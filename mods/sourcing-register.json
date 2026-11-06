@@ -601,5 +601,122 @@
   "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); the dodge (owner walk 2026-11-06)",
   "linked_or_forked_by": "linked: the perk is looked up at runtime by the plugin and local id the mod's own config names",
   "notes": "The roll lock rides the mod's own condition, so no input filter or behaviour edit is needed (combat-wiring.md w.roll.tier)."
+ },
+ {
+  "name": "Behavior Data Injector Universal Support (Nexus 78159)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78159?tab=files&file_id=794609",
+  "version": "v0.13.0.4 (archive sha256 4f718764e67c..., data/dependencies.json row behavior-data-injector)",
+  "licence": "GPL-3.0 (github doodlum/BehaviorDataInjector)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 0.2: behaviour variables for Rim Parry and the addon",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Precision - Accurate Melee Collisions (Nexus 72347)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/72347?tab=files&file_id=798533",
+  "version": "2.0.6 (archive sha256 9e5ee9957b01..., data/dependencies.json row precision)",
+  "licence": "GPL-3.0 (github Ersh1/Precision)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: accurate melee collisions",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence GPL-3.0 governs Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Elden Parry (Nexus 70240)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/70240?tab=files&file_id=304517",
+  "version": "1.3 (archive sha256 d2432a29cb11..., data/dependencies.json row elden-parry)",
+  "licence": "none for D7ry original (github D7ry/EldenParry); GPL-3.0 only on the doodlum fork",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: parry",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. Using the GPL-3.0 doodlum fork would need no asking. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Elden Parry Precision Fix (Nexus 188223)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/188223?tab=files&file_id=789181",
+  "version": "1 (archive sha256 ade5e7c46d02..., data/dependencies.json row elden-parry-precision-fix)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: Elden Parry with Precision",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Behavior Data Injector (Nexus 78146)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/78146?tab=files&file_id=328880",
+  "version": "v1.0 (archive sha256 8d7d0f8150ca..., data/dependencies.json row bdi-payload-patch)",
+  "licence": "MIT (github max-su-2019/BehaviorDataInjector)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: Payload Interpreter without Nemesis",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Rim Parry and Execution (Nexus 114366)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/114366?tab=files&file_id=499427",
+  "version": "v1.1 (archive sha256 b9cadb65f6a8..., data/dependencies.json row rim-parry)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: riposte and execution",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Rim Parry and Execution v1.1 CTD fix (Nexus 143312)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/143312?tab=files&file_id=600715",
+  "version": "v1.1 (archive sha256 ba0da201ad4e..., data/dependencies.json row rim-parry-ctd-fix)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: Rim Parry crash fix",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "Rim Parry and Execution - One Parry Patch (Nexus 164526)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/164526?tab=files&file_id=687622",
+  "version": "1.0 (archive sha256 736bfae3d417..., data/dependencies.json row rim-parry-one-parry)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: one parry window",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "modern-stagger-lock",
+  "source_url": "https://github.com/SkyHorizon3/ModernStaggerLock/releases/tag/v1.07a-1.7.99+",
+  "version": " (archive sha256 9c2389d1171f..., data/dependencies.json row modern-stagger-lock)",
+  "licence": "MIT (github SkyHorizon3/ModernStaggerLock)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: stagger lock",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: Open licence lets a project depend on the player's own download with no permission; any copying or forking must follow the licence terms. AI clause: none: open licence MIT governs Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "One Click Power Attack NG (Nexus 60878)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/60878?tab=files&file_id=819249",
+  "version": "1.2 (archive sha256 87b97d07acdd..., data/dependencies.json row one-click-power-attack)",
+  "licence": "none (github jarari/OneClickPowerAttack has no licence file)",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it); chunk 1.4: heavy attack on RT",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "permission: No terms stated on the page; a player-downloaded dependency needs no grant, but forking, copying code or bundling it needs the author's permission. AI clause: not stated: ask the author Permission request drafted for the owner (0.2 §e). Re-added 2026-11-06 by owner ruling #51."
+ },
+ {
+  "name": "dTry Plugin Updates: Elden Parry (Nexus 85740)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/85740?tab=files&file_id=793442",
+  "version": "see mods/dependencies.json",
+  "licence": "GPL-3.0 with a modding exception",
+  "used_by": "the play profile (laid by infra/gpu-box/stack.py; the player downloads it); owner ruling #51 parry and riposte",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "added 2026-11-06"
+ },
+ {
+  "name": "MaxuBlockOverhaul (GitHub max-su-2019)",
+  "source_url": "https://github.com/max-su-2019/MaxuBlockOverhaul/releases/tag/v0.24",
+  "version": "see mods/dependencies.json",
+  "licence": "MIT",
+  "used_by": "the play profile (laid by infra/gpu-box/stack.py; the player downloads it); owner ruling #51 parry and riposte",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "added 2026-11-06"
+ },
+ {
+  "name": "CommonLibSSE-NG (alandtse fork, v15.2.0 at dec1be18)",
+  "source_url": "https://github.com/alandtse/CommonLibSSE-NG",
+  "version": "v15.2.0, commit dec1be18b1880c1f643afedc0d01db0118d648f9, prebuilt MSVC bundle",
+  "licence": "GPL-3.0-or-later",
+  "used_by": "skse/ArgoniaDodgeBuffer (our own SKSE plugin, ruling #51)",
+  "linked_or_forked_by": "linked: fetched at the pinned commit by skse/cmake/CommonLib.cmake on the game machine; nothing of it is committed; our plugin is GPL-3.0-or-later too",
+  "notes": "Address Library ids only; no decompiled code or retail offsets."
  }
 ]
