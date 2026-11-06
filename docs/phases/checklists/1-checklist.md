@@ -34,6 +34,8 @@ Ticked as each step is done (owner, 2026-11-06). The phase's brief is [1-stack-i
 - [x] The heartbeat collector installed (without it the play page stopped the machine 30 minutes after each start)
 - [x] Auto sign-in of the Administrator at boot (owner-approved: Sunshine could start no card without a session)
 - [x] Skyrim's ini files made from the game's presets (the launcher never ran on this machine; every card failed)
-- [ ] **In progress:** warm the Community Shaders cache to the main menu (owner's request), and read every DLL's load in SKSE's log
-- [ ] Tell the owner on #49 the machine is ready
+- [x] Skyrim's runtimes installed (DirectX June 2010 and Media Foundation were missing: the game stopped at XINPUT1_3.dll)
+- [x] Warm the Community Shaders cache to the main menu (owner's request): data loaded, 273 cache files; all 22 SKSE
+  plugins loaded correctly in SKSE's log, no crash
+- [x] Tell the owner on #49 the machine is ready
 
