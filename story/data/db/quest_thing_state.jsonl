@@ -125,6 +125,7 @@
 {"quest_id":"quest.tg.tg01","things_ord":2,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg01","things_ord":3,"state":"all","value":"locked until opened"}
 {"quest_id":"quest.tg.tg01","things_ord":4,"state":"all","value":"present"}
+{"quest_id":"quest.tg.tg01","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":1,"state":"all","value":"present"}
 {"quest_id":"quest.tg.tg02","things_ord":2,"state":"all","value":"present"}
