@@ -74,7 +74,7 @@
 {"quest_id":"quest.main.mq04","section":"source","value":"the cut root of the Hist, sealed with black gum"}
 {"quest_id":"quest.main.mq04","section":"spread","value":"the weeping sap and the leeches it draws; the uxith dark"}
 {"quest_id":"quest.main.mq04","section":"trail"}
-{"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps nest: fought, or passed on the root at night by Sneak; then the gate, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
+{"quest_id":"quest.main.mq05","section":"gate","value":"The way's far bend, where two giant wasps keep the root: fought, or passed on the root at night by Sneak; then the gate, where the levy warden says what the basin does; the basin beyond the gate is LQ30's and is seen, not entered."}
 {"quest_id":"quest.main.mq05","section":"nonLethalFailure","value":"driven back by the wasps the player runs back down the way and tries again, by the other route if they choose; nothing is lost"}
 {"quest_id":"quest.main.mq05","section":"pointOfNoReturn","value":"none: the way can be walked back"}
 {"quest_id":"quest.main.mq05","section":"prepHints"}

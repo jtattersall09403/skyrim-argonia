@@ -1,12 +1,12 @@
 {"quest":"quest.bc.bc02","target":"000811:Dawnguard.esm","what":"the cell's 67 refs as the outer post's cells (walkable shape and pieces to be confirmed in xEdit at build)"}
 {"quest":"quest.bc.bc02","target":"095447:Black Marsh.esm","what":"the gate square at BM&V's 'Black Rose Jail' marker, the outer post's site"}
+{"quest":"quest.local.lq25","target":"0D7723:Black Marsh.esm","what":"the dive under the landing pier to the pilings, where the crocodile lairs, is deep enough to swim: measured at build"}
 {"quest":"quest.local.lq30","target":"08D5E9:Black Marsh North.esp","what":"Helstrom's soldier at the gate who will not follow"}
+{"quest":"quest.local.lq30","target":"0D7883:Black Marsh.esm","what":"the basin east of the gate along the cut reeds is swimmable and its Heart-Mud lies where the trail runs: measured at build"}
 {"quest":"quest.main.mq01","target":"0F9178:Black Marsh.esm","what":"the ship interior at Lilmoth's dock as the barge's hold, with its one door to the pier"}
 {"quest":"quest.main.mq03","target":"005911:Black Marsh.esm","what":"the water below the plank boards at the camp's fire is swimming depth (the dive, and MQ01's escape): measured at build"}
 {"quest":"quest.main.mq05","target":"0AA665:Black Marsh.esm","what":"the coast ship's door at Lilmoth (7,-1) and its door to Helstrom's landing (-10,12)"}
-{"quest":"quest.main.mq05","target":"166381:Black Marsh.esm","what":"the cell on the way that holds the wasps' nest, from we.mq05.way's placement of BM&V's Giant Wasp: measured at build"}
+{"quest":"quest.main.mq05","target":"166381:Black Marsh.esm","what":"the cell on the way that holds the wasps, from we.mq05.way's placement of BM&V's Giant Wasp: measured at build"}
 {"quest":"quest.main.mq05","target":"166BBE:Black Marsh North.esp","what":"One Who Has Fire Hands, selling in the hall's outer room"}
 {"quest":"quest.main.mq05","target":"166BBF:Black Marsh North.esp","what":"the weapons dealer in the hall's outer room"}
 {"quest":"quest.tg.tg02","target":"005A0B:Black Marsh.esm","what":"the water depth of the Pusbottom canal at the fallen house, checked at build: deep enough to dive"}
-{"quest":"quest.local.lq25","target":"0D7723:Black Marsh.esm","what":"the dive under the landing pier to the pilings, where the crocodile lairs, is deep enough to swim: measured at build"}
-{"quest":"quest.local.lq30","target":"0D7883:Black Marsh.esm","what":"the basin east of the gate along the cut reeds is swimmable and its Heart-Mud lies where the trail runs: measured at build"}

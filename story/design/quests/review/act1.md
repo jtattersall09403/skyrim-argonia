@@ -22,7 +22,7 @@ with the record.
   return), ending 91.
 - Choices: 0 (the jars are poured at the root in every play).
 - Endings: 1 (e-minder 91), so MQ05 starts the same.
-- Skills by stage: 10 Speech 25 or 40 gold; 20 One-Handed or Destruction; 30 Sneak unseen (not detectedBy Pays-Late,
+- Skills by stage: 10 Speech 25 or two portions of food; 20 One-Handed or Destruction; 30 Sneak unseen (not detectedBy Pays-Late,
   C-detected) or Speech 25; 40 swimming, then Sneak or One-Handed.
 
 ### Settled
