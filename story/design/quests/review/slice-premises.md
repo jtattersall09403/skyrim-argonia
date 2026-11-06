@@ -167,3 +167,62 @@ Converging (blocking 6, then 1, a wording fix). All accepted:
 Round 3 cut TG01's door re-base: BM&V's own doors are never re-modelled (N7).
 
 Round 4: applied (fff0782b), 7 of 7.
+
+## Full records, round 1 (2026-11-06): LQ25 and LQ30, the planner's rulings
+
+Round 1 of new full records reads everything, so 9 blocking is expected. All accepted as worded, with these
+choices:
+- B1 LQ25: starts on reaching Okan-Tei (his cell 0D77AD); the beast is enabled at 20; journal 10 is rewritten.
+- B2: the directions name the real spot; the rafts and the watching are cut.
+- B3: the lie is a beast that takes boats in the deep channel.
+- B4: the bucket is the evidence; the fact moves to 20 or 30 via k2; journal 40 says "the crew".
+- B5: the lure is cut; shot or burnt from the pier; nonCombat reads "none needed".
+- B6: one landmark line in journal 40; the unmeasured stair and boat are cut.
+- B7: the failForward is deleted and both crew are protected.
+- B8 LQ30: 92 when topicHeardFrom come-back or detectedBy the youth (block C-detected); journal 92 covers being
+  seen.
+- B9: present tense, as worded.
+- N1 to N12, N14 and N15 accepted as worded. N5: cut stage 10 in each; merge LQ25's 20 and 30. N6: rebalance
+  without adding. N14: LQ30's beast becomes a census creature other than a crocodile or a wasp, at fixed band 3.
+- N13 (LQ22's shared reversal) waits until LQ22 is written; LQ22 is not in the slice.
+- The lows are accepted as worded.
+
+## Full records, round 1 (2026-11-06): TG01 and TG02, the planner's rulings
+
+Blocking 11. All accepted as worded, with these choices:
+- B1 and B2: TG01 starts on Deep-In-Her-Cups' topic.tg01-the-test at stage 0 (she is essential); stage 10 is cut in
+  both quests; TG01 40/41 end on Bent-Spine's welcome topic, which chains TG02 at 20.
+- B3: closed by B2.
+- B4: stage 20 stays and is won by Sneak, gated on not detectedBy the thief (block C-detected, proved in Phase 3).
+  The inZone completion is cut.
+- B5: the necklace stays on him; the bedroll container is cut; the evening route is Pickpocket while he sleeps.
+- B6: 30 merges into 40, and the settle topics are gated by C-item.
+- B7: the house, the box and the clients sit under one enable parent turned on at TG02's start. Likewise TG01's
+  thief and necklace are enabled at TG01's start.
+- B8 to B11: as worded.
+- Notes accepted as worded. Also:
+  - the canal-depth need is measured at build;
+  - NEGOTIATION is cut;
+  - a budgetExceptions line goes in for THEFT twice;
+  - the item names carry the tells, and journal 40's deductions are cut;
+  - the directions use the Lilmoth Hist, the fallen house and the "Lilmoth Dock" marker;
+  - the all-dead fail-forward uses the flat failure entry;
+  - the hand-over gets a Speech 25 check;
+  - swimming is named.
+- Low notes: accepted as worded, except the Deep-In-Her-Cups name. It echoes a vanilla Skyrim name, so she is
+  renamed from the roster's unused names (decision 0006, a name we add).
+
+## Full records, round 1 (2026-11-06): BC01 to BC03, the planner's rulings
+
+Blocking 16. All accepted as worded; nearly all of them are cuts. The planner's choices:
+- B1: the taboo row is cut (it is "inferred"; buying Owings is Never-Sold's method).
+- B2 and B3: stages 10 and 35 are cut, and so are the stage-20 topic gates. The act decides: the book in hand leads
+  to e-bought-down (its journal: Never-Sold put the book before Hulm-Tei, and named him a slaver to his face, which
+  is the lever, from the high note); Rows-For-Another in the channel at night leads to 91.
+- B4: closed by B2.
+- B10 and B11: Bethesda's way. On the first "come with me" the other two die in the fire (a kill in stage 40's begin
+  fragment). The fall, the drain and the swim out are cut, and the one reached walks out through we.door.rose-jail.
+- B5 to B9 and B12 to B16: as worded.
+- High notes: all accepted as worded. The line gets a one-line budgetExceptions row for BONDAGE three times; the
+  alteration opening is cut.
+- Low notes: accepted as worded. Player-facing text uses Skyrim's UI skill names ("Speech").

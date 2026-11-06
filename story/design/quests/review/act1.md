@@ -472,3 +472,97 @@ The ruling overrides round 1 B3 ("after the clutch talk") and N1 (stage 30 compl
 optional at stage 20. Every stage names a Skyrim skill: 10 Speechcraft; 20 Sneak or Speechcraft; 40 Sneak or
 swimming; 41 OneHanded, Destruction or Sneak; 42 swimming and Sneak; 44 swimming; 50 Speechcraft. Every other
 settled ruling stands; no MQ03-cited row id changed.
+
+### The whole main line, round 6 delta (2026-11-06): the planner's rulings
+
+Converging (blocking 4, then 3). All accepted:
+- B1: MQ29's spirit row ends at "fought on every path".
+- B2: the six-actor sentence is cut from MQ01's changed text.
+- B3: flag.mq05.reed-exposed is cut from line 18.
+- N4: MQ09 "a fight with, or a sneak past, what nests there".
+- N5: the parenthesis is cut.
+- N6: "behind its thorns" is cut.
+- N7: "(given, or taken; row needed)".
+- N8: "rounds 1 to 6".
+- Outside the delta, also accepted:
+  - the database's line_spirit and line_spirit_beat rows for quest.line.main are replaced by the outline's For the
+    data block (pending since round 1);
+  - the old spirit and premise rows of MQ21, MQ31, MQ16, MQ07 and MQ03 take the outline's first sentence;
+  - MQ05's foundation reads "tells".
+
+### MQ03 and MQ04, the delta after the #50 rework (2026-11-06): the planner's rulings
+
+Both found 3 blocking. Most of them are a new kind, caused by the #50 rework, not stale copies: skill routes that
+are labels only. Examples are a check of 15 that every new character passes, a branch already forced by the stage
+before, and "unseen" with no detection check. Loop change (replace), applied in the skills, the checker and the
+blocks:
+- principles/actions.md lists Skyrim's skills, not Morrowind's. The stale names came from there.
+- A skill route counts only if it can be failed: a skill check of 25 or more (Bethesda's easy level), or a fight,
+  lock, dive or spell the player must do. skill_routes counts the first stage too.
+- Sneak that must go unseen uses the existing condition term detectedBy, as a block C-detected (GetDetected, with
+  Skyrim.esm's count) proved in Phase 3. Sneak that only passes enemies without a fight needs no check, as in
+  vanilla.
+MQ03, all accepted:
+- B1: the boards are at the camp's fire, in the reviewer's wording.
+- B2, option (i): Ties is won by the tag (the dive, swimming) or by Speech 25. The tag is cut from stage 10's
+  successor, and both water-breathe rows are cut. The owner's #50 overrides round 1 B1's required dive.
+- B3: the stranger's errand is cut from the intent, the directions, the foundation and the premise.
+- N1: a need row: the water below the boards is swimming depth, measured at build.
+- N2: accepted as is.
+- N3: "In the hatching shed at the camp's far end".
+- N4: "the courier Mee-Tuja's brass tag"; "on the water side" is cut.
+- N7: this file's MQ03 header is rewritten to match the record.
+MQ04, all accepted:
+- B1: the night watch is won by Sneak gated on not detectedBy Pays-Late (C-detected); "unseen" stays.
+- B2: as worded.
+- B3: actionPlan and both summaries are rewritten to the stage skills; the hand-to-hand row is cut.
+- N1: Sneak is cut from stage 20.
+- N2: the gift is gold, in the topic's intent (takeGold), and the journal says "pay her".
+- N3 to N6: as worded.
+- N8: stage 30 fails forward on Pays-Late's death alone.
+- N10: this file's MQ04 summary is rewritten to match the record.
+
+### MQ05, the delta after the #50 rework (2026-11-06): the planner's rulings
+
+Blocking 4, from new material (the wasps' nest), not stale copies. All accepted, with the planner's choices:
+- B4 and N9: stages 20 and 30 merge. Stage 20 completes on zone.mq05.grove. The nest is met on the way: a fight
+  (OneHanded, TwoHanded, Block, or Marksman, Destruction) or a Sneak past on the root at night (no detection check,
+  as in vanilla). zone.mq05.bend, objective "bend" and journal 30's nest lines are cut.
+- N1: the drowned channel, its swimming rows, the channel clause in fact.mq05.wasps, L14 and the swim need are cut.
+- B2: the bmv need names the nest's cell on the way (from we.mq05.way's wasp placement, 166381), measured at build.
+- B1: LQ25 starts on MQ05 ≥ 40.
+- B3: "and FreeClimb" is cut.
+- N4: invisibility is cut. N5: the flint-vine cites are cut. N6: the wasp base is 166381.
+- N7: "walks out through the hall" is cut. N8: "north-east" and "by the first street, on the left inside the gate"
+  go into the journals.
+- N3: a pure choice stage (who is told) is exempt from the skill rule, as an ending is. The skill rule says so in
+  place (loop change).
+
+### MQ01, the delta after the #50 rework (2026-11-06): the planner's rulings
+
+Blocking 5. Cause: the rework labelled stages with skills, but few of those skills decide an exit (the same cause
+as MQ03 and MQ04; the stricter skill_routes rule now catches labels). All five blocking findings and N1 to N10 are
+accepted, by cuts:
+- B3: stage 20 is cut. The march is a follow scene after the answer (Helgen's cart). Stage 10 gets "follow Wuleen-Sei
+  to the camp's fire", the fire zone sets 40 from 10, and the plank and pier talk stay as colour.
+- B4: stage 50 is cut. The shore zone in 41, 42 and 44 sets 90, 91 or 93. 50's onEnter moves into the endings'
+  worlds. topic.mq01-dawn is cut. thing.mq03.hurt reads "by MQ01's endings".
+- B5: topic.mq01-the-clutch is cut. gang-hist moves to 40's learns. Journal 40 reads "at the families' Hist
+  cutting, over their clutch".
+- B1: stage 40's Sneak row is cut. The huts are entered only from the water, and the cutters stand between the
+  fire and the shed.
+- B2: "shallows" becomes the deep water under the plank boards (measured at build; the same need as MQ03's dive).
+  42's Sneak row is cut.
+- N1: the reading names Sal-Sei, keeper of the clutch, and Deesh-Duun aloud (Helgen's roll call); beats.liminal
+  matches.
+- N2: as worded.
+- N3: huts-first sits inside the huts.
+- N4: hide in the reeds until the cutters leave.
+- N5: closed by B4.
+- N6: the shed-wall knife is cut; the reward knife stays.
+- N7: the player overhears her guess and he does not deny it.
+- N8: noted.
+- N9: "saves one of them"; the serial comma is fixed.
+- N10: the review rows that cite stage 30 are marked as cut by #50.
+MQ01 is now the hold, the strike, three rescue branches each won by a skill (blade, Destruction or reeds; the dive
+from the huts; the swim), and the endings.
