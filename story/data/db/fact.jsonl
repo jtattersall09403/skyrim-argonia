@@ -558,14 +558,14 @@
 {"id":"fact.morrowind.mournhold","says":"Argonian armies sacked Mournhold in the Fourth Era."}
 {"id":"fact.morrowind.north","says":"Morrowind is the Dunmer province north of the marsh."}
 {"id":"fact.mq01.blank-line","claim":"The roll has a line for me and no name on it.","ord":2,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.broker-holds","claim":"The broker on the pier at Dock1 holds the gang's months and hires them out to Hereguard Plantation; my blank line is his to fill or to leave.","ord":1,"from_ref":"t9","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.broker-holds","claim":"The broker on the pier at Lilmoth's dock holds the gang's months and hires them out to Hereguard Plantation; my blank line is his to fill or to leave.","ord":1,"from_ref":"t9","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.clutch-dead","claim":"The camp's egg clutch died the night of the attack.","ord":10,"from_ref":"t7","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.courier-state","claim":"'The man who rides with the gang serves the state and will not say so.'.","ord":4,"from_ref":"t3","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.cutting-withdrew","claim":"The camp's Hist cutting withdrew the night of the attack.","ord":9,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.gang-hist","claim":"The gang families keep a Hist cutting from Nine Bends at their camp, with their clutch at its roots.","ord":5,"from_ref":"t1","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.her-face","claim":"'A tall Argonian woman with a knotted cord at her wrist led the attackers, and she let me live.'.","ord":7,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.owing-roll","claim":"Everyone on the broker's gang owes months, and the roll adds months for food.","ord":0,"from_ref":"t2","quest_id":"quest.main.mq01"}
-{"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut and its sap drawn into jars before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
+{"id":"fact.mq01.roots-cut","claim":"'The cutting's roots to the clutch were cut before it withdrew.'.","ord":8,"from_ref":"t6","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.satchel","claim":"The leader of the attackers took the courier's satchel and nothing else.","ord":6,"from_ref":"t5","quest_id":"quest.main.mq01"}
 {"id":"fact.mq01.washed-out","claim":"Two of the gang have been kept from their Hist so long that their colour and markings have thinned.","ord":3,"from_ref":"t2","quest_id":"quest.main.mq01"}
 {"id":"fact.mq03.barge-gone","claim":"Wuleen-Sei took the barge down the coast for Soulrest at dawn with the unhurt and the families; hurt hands are no hire.","ord":5,"from_ref":"t2","quest_id":"quest.main.mq03"}

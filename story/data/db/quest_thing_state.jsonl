@@ -35,12 +35,12 @@
 {"quest_id":"quest.main.mq01","things_ord":4,"state":"all","value":"present until the strike"}
 {"quest_id":"quest.main.mq01","things_ord":5,"state":"after-40","value":"on the shore, burnt and wet"}
 {"quest_id":"quest.main.mq01","things_ord":5,"state":"before-40","value":"off"}
-{"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey, the uxith dark)"}
+{"quest_id":"quest.main.mq01","things_ord":6,"state":"after-90","value":"aftermath (the cutting withdrawn, the clutch grey)"}
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"at-40","value":"attacked (fire in the huts)"}
 {"quest_id":"quest.main.mq01","things_ord":6,"state":"before-40","value":"orderly"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"after-40","value":"withdrawn (light out)"}
 {"quest_id":"quest.main.mq01","things_ord":7,"state":"before-40","value":"lit"}
-{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting and one at the rowboat"}
+{"quest_id":"quest.main.mq01","things_ord":8,"state":"after-40","value":"Cuts-the-Old-Knot gone, two cutters at the cutting"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"at-40","value":"enabled"}
 {"quest_id":"quest.main.mq01","things_ord":8,"state":"before-40","value":"disabled"}
 {"quest_id":"quest.main.mq01","things_ord":9,"state":"all","value":"present"}

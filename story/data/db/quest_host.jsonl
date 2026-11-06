@@ -9,7 +9,7 @@
 {"quest":"quest.main.mq01","ord":0,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"start","what":"processing and character creation in the barge's hold"}
 {"quest":"quest.main.mq01","ord":1,"settlement":"bmv.lilmoth","role":"stage","what":"the march from the plank (it starts at the first navmeshed square, 1,-2) along the shore"}
 {"quest":"quest.main.mq01","ord":2,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"main","what":"the camp at the paddy edge, the cutting, the hatching shed; the attack"}
-{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"end","what":"the escape by water, reed or rowboat to the shore below the camp, where the night ends"}
+{"quest":"quest.main.mq01","ord":3,"settlement":"bmv.hereguardplantation","cell":"005911:Black Marsh.esm","role":"end","what":"the escape by water or reed to the shore below the camp, where the night ends"}
 {"quest":"quest.main.mq03","ord":0,"settlement":"bmv.hereguardplantation","role":"start","what":"the camp's aftermath at dawn"}
 {"quest":"quest.main.mq03","ord":1,"settlement":"bmv.lilmoth","cell":"0FE7F7:Black Marsh.esm","role":"main","what":"the unmarked house: the talk with the witness and Nesh-Deeka's bargain"}
 {"quest":"quest.main.mq03","ord":2,"settlement":"bmv.lilmoth","cell":"0F9178:Black Marsh.esm","role":"stage","what":"the first sap-dream, in the hold dressed with fog and empty, the barge having sailed"}

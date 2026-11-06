@@ -35,7 +35,6 @@
 {"quest_id":"quest.main.mq01","truth_ord":8,"ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"}
 {"quest_id":"quest.main.mq01","truth_ord":9,"ord":0,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper"}
 {"quest_id":"quest.main.mq01","truth_ord":9,"ord":1,"value":"npc.pirate-freeholds.opening-work-camp.npc-opening-witness"}
-{"quest_id":"quest.main.mq01","truth_ord":9,"ord":2,"value":"npc.pirate-freeholds.opening-work-camp.n1"}
 {"quest_id":"quest.main.mq03","truth_ord":0,"ord":0,"value":"npc.hist-heartland.cult-raid-camp-unbound.leader-unbound-root"}
 {"quest_id":"quest.main.mq03","truth_ord":1,"ord":0,"value":"npc.nesh-deeka"}
 {"quest_id":"quest.main.mq03","truth_ord":1,"ord":1,"value":"npc.dunmer-north.stormhold.reed-officer"}

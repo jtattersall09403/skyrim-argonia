@@ -154,10 +154,6 @@
 {"quest_id":"quest.main.mq01","ord":11,"id":"place.mercantile-coast.hereguard-plantation","access":"read"}
 {"quest_id":"quest.main.mq01","ord":12,"id":"flag.mq01.saved-sal","access":"write"}
 {"quest_id":"quest.main.mq01","ord":13,"id":"flag.mq01.saved-deesh","access":"write"}
-{"quest_id":"quest.main.mq01","ord":14,"id":"flag.mq01.saved-ties","access":"write"}
-{"quest_id":"quest.main.mq01","ord":15,"id":"flag.mq01.manner-cooperated","access":"write"}
-{"quest_id":"quest.main.mq01","ord":16,"id":"flag.mq01.manner-silent","access":"write"}
-{"quest_id":"quest.main.mq01","ord":17,"id":"flag.mq01.manner-defied","access":"write"}
 {"quest_id":"quest.main.mq03","ord":0,"id":"npc.nesh-deeka","access":"write"}
 {"quest_id":"quest.main.mq03","ord":1,"id":"npc.mercantile-coast.lilmoth.fish-trader-house","access":"read"}
 {"quest_id":"quest.main.mq03","ord":2,"id":"npc.pirate-freeholds.opening-work-camp.npc-opening-clutch-keeper","access":"write"}
