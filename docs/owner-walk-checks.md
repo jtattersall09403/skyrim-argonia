@@ -21,6 +21,7 @@ From a new game on the Argonia card.
 - [ ] Parry or counter works as the controls issue describes.
 - [ ] Lock-on, sprint and climbing work with the controls on the issue, on the Mac keyboard and on the GameSir X2.
 - [ ] A Morrowind spell (Mark then Recall, or Levitate) casts.
+- [ ] The HUD is the collection's (TrueHUD and any other HUD mod the controls issue names), not vanilla Skyrim's.
 
 ## Phase 3 walk: the building blocks test quest
 
