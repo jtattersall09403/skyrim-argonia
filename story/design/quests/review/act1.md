@@ -454,3 +454,11 @@ Round 4: applied (830f4fd1), 11 of 14 here; B3 in 150b818f (the main line's B3),
 applied: N11 ("tells"), whose row the ruling does not name.
 - MQ05 round 4 N11, pointer: the row is quest.main.mq05's foundation, the B1 clause "the player convinces one
   person". It becomes "tells". Applied in round 5.
+
+### MQ01, owner ruling #50 rework (2026-11-06)
+
+The ruling overrides round 1 B3 ("after the clutch talk") and N1 (stage 30 completes on the reed): the camp stage
+(30) and the bedding-reed chore are cut, stage 20 ends at the fire and the strike starts there; the clutch talk is
+optional at stage 20. Every stage names a Skyrim skill: 10 Speechcraft; 20 Sneak or Speechcraft; 40 Sneak or
+swimming; 41 OneHanded, Destruction or Sneak; 42 swimming and Sneak; 44 swimming; 50 Speechcraft. Every other
+settled ruling stands; no MQ03-cited row id changed.

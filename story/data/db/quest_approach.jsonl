@@ -15,13 +15,6 @@
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":0,"id":"a-accuse"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":1,"id":"a-fight"}
 {"quest_id":"quest.local.lh38","stages_ord":4,"ord":2,"id":"a-deal"}
-{"quest_id":"quest.main.mq01","stages_ord":1,"ord":0,"id":"a-talk"}
-{"quest_id":"quest.main.mq01","stages_ord":1,"ord":1,"id":"a-watch"}
-{"quest_id":"quest.main.mq01","stages_ord":1,"ord":2,"id":"a-pier"}
-{"quest_id":"quest.main.mq01","stages_ord":2,"ord":0,"id":"a-reed"}
-{"quest_id":"quest.main.mq01","stages_ord":4,"ord":0,"id":"a-blade"}
-{"quest_id":"quest.main.mq01","stages_ord":4,"ord":1,"id":"a-sneak"}
-{"quest_id":"quest.main.mq01","stages_ord":5,"ord":0,"id":"a-swim"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":0,"id":"a-fight"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":1,"id":"a-sneak"}
 {"quest_id":"quest.main.mq05","stages_ord":1,"ord":2,"id":"a-shoot"}
