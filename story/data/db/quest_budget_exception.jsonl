@@ -1,4 +1,5 @@
+{"packet":"quests-factions","line":"quest.line.chainbreakers","shape":"BONDAGE","reason":"The Chainbreakers exist to end Owings, so all three of their quests are BONDAGE by design."}
+{"packet":"quests-factions","line":"quest.line.night-reed","shape":"THEFT","reason":"The Chapter's first two jobs, TG01 and TG02, are both takings won by its own skills (slice-premises.md, full records round 1)."}
 {"packet":"quests-proposed","line":"quest.line.proposed","shape":"WONDER","reason":"Eighteen proposals are weighted on purpose to WONDER and HAUNTING. WONDER and HAUNTING are the two standing coverage gaps. WONDER sits at four of eighteen."}
 {"packet":"quests-standalone","line":"quest.line.daedric","shape":"WONDER","reason":"The Daedric and oddity packet is the province's WONDER seam by design. Eight quests are too few to give a meaningful percentage."}
 {"packet":"quests-standalone","line":"quest.line.local","shape":"DISPUTE","reason":"The 2026-08-28 hand-written index set the DISPUTE share. Seven of the thirty-four standalone rows open on two parties with a real claim. Region agents writing new local rows must pick other shapes until DISPUTE falls back inside the band."}
-{"packet":"quests-factions","line":"quest.line.chainbreakers","shape":"BONDAGE","reason":"The Chainbreakers exist to end Owings, so all three of their quests are BONDAGE by design."}

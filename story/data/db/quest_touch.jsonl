@@ -222,10 +222,11 @@
 {"quest_id":"quest.tg.tg01","ord":3,"id":"npc.mercantile-coast.soulrest.tg01-friend","access":"read"}
 {"quest_id":"quest.tg.tg01","ord":4,"id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","access":"read"}
 {"quest_id":"quest.tg.tg01","ord":5,"id":"faction.night-reed-chapter","access":"write"}
-{"quest_id":"quest.tg.tg02","ord":0,"id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","access":"read"}
+{"quest_id":"quest.tg.tg02","ord":0,"id":"npc.mercantile-coast.lilmoth-divers-yard.night-reed-fence","access":"write"}
 {"quest_id":"quest.tg.tg02","ord":1,"id":"npc.mercantile-coast.lilmoth.tg02-clutch-client","access":"write"}
 {"quest_id":"quest.tg.tg02","ord":2,"id":"npc.mercantile-coast.lilmoth.tg02-charm-client","access":"write"}
 {"quest_id":"quest.tg.tg02","ord":3,"id":"npc.mercantile-coast.lilmoth.tg02-beads-client","access":"write"}
+{"quest_id":"quest.tg.tg02","ord":4,"id":"flag.tg02.okan-paid","access":"write"}
 {"quest_id":"quest.tg.tg04","ord":0,"id":"flag.tg04.tally-handed","access":"write"}
 {"quest_id":"quest.tg.tg04","ord":1,"id":"npc.mercantile-coast.lighter-flotilla.purser","access":"read"}
 {"quest_id":"quest.tg.tg04","ord":2,"id":"place.mercantile-coast.lighter-flotilla","access":"read"}
