@@ -15,8 +15,10 @@ Line-wide rules:
 - **One carried choice.** Each quest below plays the same whatever came before. A quest may hold one local choice;
   its result is colour (a line, a body, a letter) and never changes a later quest's stages. Only the finale's CUT,
   CLAIM or MEND carries forward, into the closing scene and the world's end states.
-- **Act I's flag** (`flag.mq04.adopted`) is read for one line of colour at most, or not
-  at all.
+- **Act I's flags** (`flag.mq01.saved-sal`, `flag.mq01.saved-deesh`,
+  `flag.mq03.reed-sworn`, `flag.mq03.reed-declined`, `flag.mq05.minders-hold`, `flag.mq05.nisswo-read`;
+  `flag.mq04.adopted` and `flag.mq04.reconciled` are set on every play) are read for one line of colour at most, or
+  not at all.
 - **Deaths** use the standard fail-forward (30-main-quest §23): every principal is killable; a fallback sender or
   document carries the stage. The Eye cannot be lost.
 - **Rewards are fixed per quest** and nothing is levelled against the player (decision 0035). Where a reward has no
@@ -33,9 +35,9 @@ Line-wide rules:
 killing, and that night a clutch dies in the egg.
 
 MQ01 No Name on the Work Roll, MQ03 A Dead Prisoner's Use, MQ04 The Tree That Turned Its Face, MQ05 Helstrom Behind
-the Thorns. What Act I hands on, on every ending: the player is the Reed's deniable hand,
+Its Marsh. What Act I hands on, on every ending: the player is the Reed's deniable hand,
 has seen Cuts-the-Old-Knot, dreams the ring of trees and the unbuilt door, knows the cell cut a Hist's root to take
-its sap, and stands in Helstrom having met Kaska-Meen and Ei-Tuja (one may be dead) and walked past the empty, swept
+its sap, and stands in Helstrom having met Kaska-Meen and Ei-Tuja (one may be dead) and walked past the hall of the empty, swept
 Scalded Throne. The handler is Nesh-Deeka; if she died, Never-Writes-Twice, already in the Reed's house since MQ03,
 sends the Act II hook in her place (the sender line, N5).
 
@@ -44,9 +46,9 @@ sends the Act II hook in her place (the sender line, N5).
 **Hook:** someone is selling the Eye of Argonia, the king's jewel nobody has seen, and the cell that burned the
 camp means to buy it.
 
-- **MQ07 The First False Eye.** At the Bandit Dock, on the open ground and the buildings of its own place (not
-  Murkwood, no ship interior), smugglers sell a jewel they call the Eye to rival buyers, one of them a courteous
-  collector who withdraws at the last moment and leaves the player a polite note (Opens-the-Last-Door, unnamed).
+- **MQ07 The First False Eye.** At the Bandit Dock, on the open ground and the buildings of its own place, smugglers
+  sell a jewel they call the Eye to rival buyers, one of them a courteous
+  collector who withdraws at the last moment and leaves the player a polite word left with the smugglers (Opens-the-Last-Door, unnamed).
   The stone is glass; its old setting is real and carries a cut route-cipher. Skills: sneak or pickpocket to lift
   the setting from the strongroom chest (lockpicking); then a fight or a swim out from the dock when the smugglers
   find it gone. No choice. The cult buyer's mark, left with the setting, names the cave where the cell hides: no
@@ -109,7 +111,7 @@ retired Shadowscale, who has vanished.
 
 - **MQ23 Marks Only the Eye Can See.** One route chain (B1). The Eye lights marks at a waterfall, a ruin and the
   drowned marsh in the north; the wards on the last mark need a Shadowscale's knowledge. The player tracks the one
-  vanished retired Shadowscale (not "the last"; Veezara is canon's last, in Skyrim): at each site he is already gone, and the player reads which way
+  vanished retired Shadowscale: at each site he is already gone, and the player reads which way
   from what the place gives up, then finds his hide at the lizardmen's shack. Skills: climbing to the marks, sneak
   and detection to read the trail, swimming between sites; at the hide, speech to have the wards from him, or a
   fight (his notes carry them). No one hunts the player. Reward: his blade (given, or taken; row needed).
@@ -148,8 +150,8 @@ with the Egg.
   - **MEND**: give the Egg back to the Root unbroken, and with the Eye read the old consent back into it, so the bond
     is again one each tree may refuse.
   The closing scene and the end states follow from the choice (old MQ32, folded in, N3): a few fixed swaps in
-  Helstrom (the throne hall for CLAIM), Low-Reed Village and the trees the player touched, a letter or two (Nesh-
-  Deeka's if freed), and the custodians of MEND named only there. Reward: fixed per ending (rows needed).
+  Helstrom (the throne hall for CLAIM), Low-Reed Village and the trees the player touched, a letter or two (Nesh-Deeka's
+  if freed), and the custodians of MEND named only there. Reward: fixed per ending (rows needed).
 
 ## Places to fit at record time
 
@@ -229,7 +231,7 @@ line_spirit:
   line: quest.line.main
   promise: >-
     A nobody pulled out of a burnt camp, owed to no one, becomes the spy the Veiled Reed can deny and the
-    treasure-hunter who finds the Eye of Argonia before the Unbound Root does: through smugglers' docks, a drowned
+    treasure-hunter who finds the Eye of Argonia before the Unbound Root does: through a smugglers' dock, a drowned
     prison, a wreck, a sunken Xanmeer and the lethal basin to the Lost City and the door in the sap-dreams, where
     the player holds the jewel and chooses what Black Marsh keeps.
   core: >-
@@ -258,15 +260,15 @@ line_spirit_beat:
   - ord: 1
     beat: >-
       Act II, the hunt (MQ07 to MQ10, outline): a false Eye sold at the Bandit Dock, its real setting lifted
-      under the Collector's eye; the cell's safehouse, named by the buyer's mark and the cult's want of a Mnemic Egg; a route-tablet in the
+      under the Collector's eye; the cell's safehouse, named by the buyer's mark, and in it the cult's want of a Mnemic Egg; a route-tablet in the
       flooded cells of the old Rose; a lens-frame dived from a wreck at the north-east coast's ship landing; the three together place a drowned
       Xanmeer, and word comes that the Hist at Low-Crown is cut and dies
   - ord: 2
     beat: >-
       Act III, the spies (MQ16 to MQ21, outline): the Eye taken from the drowned Xanmeer and its unbidden dream; the
-      player sent into the cult's sermon with the jewel as bait, where the preacher, the Collector Opens-the-Last-
-      Door, knows them and says nothing; the Reed's dream-house broken open and its dreamers, and perhaps Nesh-
-      Deeka, freed to leave on their own; the cult's sap house, and a raid that comes only if the player told the
+      player sent into the cult's sermon with the jewel as bait, where the preacher, the Collector Opens-the-Last-Door,
+      knows them and says nothing; the Reed's dream-house broken open and its dreamers, and perhaps Nesh-Deeka,
+      freed to leave on their own; the cult's sap house, and a raid that comes only if the player told the
       truth
   - ord: 3
     beat: >-

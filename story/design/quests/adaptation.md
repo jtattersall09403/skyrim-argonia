@@ -291,7 +291,7 @@ places people in a room with no navmesh without a navmesh edit.
 | MQ01 No Name on the Work Roll | The Eye and the Root | 1 | lilmoth,hereguardplantation | A new game opens in the hold of a debt-labour broker's barge moored at Lilmoth's Dock1, where an Owing gang hired to Hereguard Plantation is processed: the broker's overseer reads the roll aloud with the months added for food, and character creation is the processing itself. |
 | MQ03 A Dead Prisoner's Use | The Eye and the Root | 1 | hereguardplantation,lilmoth | At dawn the player reads the burnt camp the cell left at Hereguard, then the Veiled Reed's people carry the hurt to an unmarked Lilmoth house, where Nesh-Deeka offers the Reed's protection; that night the first sap-dream comes. |
 | MQ04 The Tree That Turned Its Face | The Eye and the Root | 2 | village | East of Lilmoth, the Hist of a stilt village on the leech water has turned its face. |
-| MQ05 Helstrom Behind the Thorns | The Eye and the Root | 1 | lilmoth,blackmarshnorth.thorn1,dock5,helstrom | The Veiled Reed takes the player on the coast ship from Lilmoth to Helstrom's river landing and walks them inland to the city, the basin's danger named at every turn. |
+| MQ05 Helstrom Behind Its Marsh | The Eye and the Root | 1 | lilmoth,blackmarshnorth.thorn1,dock5,helstrom | The Veiled Reed takes the player on the coast ship from Lilmoth to Helstrom's river landing and walks them inland to the city, the basin's danger named at every turn. |
 
 ### Review rounds
 
