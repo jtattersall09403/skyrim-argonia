@@ -450,6 +450,7 @@
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":0,"arg_ord":1,"value":"mark.mq03.dream"}
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":1,"arg_ord":0,"value":"ref.mq03.dream-parent"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"arg_ord":0,"value":"topic.mq04-the-village"}
+{"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":1,"arg_ord":0,"value":"ref.mq04.cell-camp"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":0,"arg_ord":0,"value":"topic.mq04-the-cut"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":1,"arg_ord":0,"value":"topic.mq04-the-boat"}
 {"list_id":"quest_stage:quest.main.mq05|0:on_enter","ord":0,"arg_ord":0,"value":"topic.mq05-the-word"}

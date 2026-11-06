@@ -94,11 +94,13 @@
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"after-90","value":"reconciled (light back low)"}
 {"quest_id":"quest.main.mq04","things_ord":0,"state":"before-90","value":"withdrawn"}
 {"quest_id":"quest.main.mq04","things_ord":1,"state":"all","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":2,"state":"after-10","value":"present"}
 {"quest_id":"quest.main.mq04","things_ord":2,"state":"after-90","value":"gone"}
-{"quest_id":"quest.main.mq04","things_ord":2,"state":"before-90","value":"present"}
+{"quest_id":"quest.main.mq04","things_ord":2,"state":"before-10","value":"absent"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"after-10","value":"at the camp"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"after-40","value":"carried"}
 {"quest_id":"quest.main.mq04","things_ord":3,"state":"after-90","value":"poured at the cut root"}
-{"quest_id":"quest.main.mq04","things_ord":3,"state":"before-40","value":"at the camp"}
+{"quest_id":"quest.main.mq04","things_ord":3,"state":"before-10","value":"absent"}
 {"quest_id":"quest.main.mq04","things_ord":4,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.main.mq05","things_ord":1,"state":"all","value":"present"}

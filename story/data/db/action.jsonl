@@ -288,6 +288,7 @@
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":0,"term":"moveRef"}
 {"list_id":"quest_stage:quest.main.mq03|2:on_enter","ord":1,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":0,"term":"grantTopic"}
+{"list_id":"quest_stage:quest.main.mq04|0:on_enter","ord":1,"term":"enableRef"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":0,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq04|2:on_enter","ord":1,"term":"grantTopic"}
 {"list_id":"quest_stage:quest.main.mq05|0:on_enter","ord":0,"term":"grantTopic"}
