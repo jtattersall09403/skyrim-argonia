@@ -216,6 +216,8 @@ All four blocking and all five notes accepted, by subtraction or a flag.
 - N5: zone.mq01.plank, the ref.mq01.zone-*-first disables, "whichever of the three", journal 44's "neither in time",
   journal 50's "from whoever I saved" and we.mq01.camp's islet clause all cut.
 
+Round 2: applied (112479fc).
+
 ### MQ05, round 2 (2026-11-06): the planner's rulings
 
 All three blocking and all five notes accepted, by subtraction.
