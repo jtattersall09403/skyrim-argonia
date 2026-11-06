@@ -68,7 +68,15 @@ Before the record is written:
 2. **The branching budget:** at most two real choices and at most three endings per quest (a death or a failure
    uses the standard fail-forward of the block set, not an ending of its own). At most about 8 stages for an M
    quest, 12 for an L. Depart only with a one-line reason the planner accepts.
-3. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes
+3. **Choices do not multiply down a line.** A later quest in a line must work the same whichever choice or ending
+   the player took in an earlier one; an earlier choice may change a line of dialogue, a reward or who greets the
+   player, never the later quest's stages or whether it can be done. Only a line's designated finale choices carry
+   forward, and those are planned once for the whole line (owner, 2026-11-06).
+4. **Skills drive it, and it stays easy to script.** Each stage the player plays is won with an in-game skill
+   (blade, archery, sneak, lockpicking, pickpocket, speech, alchemy, a magic school, climbing, swimming...), varied
+   across the quest; and the whole quest needs no more scripting than an average Skyrim side quest (a handful of
+   stages, a few aliases, standard conditions, the blocks of `docs/design/blocks.md`).
+5. **Write only from what exists.** Every person, role, institution, custom, object and way of doing things comes
    from the lore dossiers, the extrapolation, the census or the story data, cited as you write it. Where the quest
    needs something none of them gives, choose: leave it vague in the text (the player does not need the mechanism),
    or add it to the extrapolation now with its gap-register row, before the record uses it. Never invent an

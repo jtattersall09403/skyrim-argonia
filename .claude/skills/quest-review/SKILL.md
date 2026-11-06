@@ -13,7 +13,11 @@ builder); it judges whether the quest is good and believable.
 
 - **Blocking means only:** (a) a path the player cannot finish or a stage that cannot be reached or left; (b) a
   contradiction inside the record, or with the world data (census, story data); (c) a contradiction with canon lore
-  or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled). Nothing else is
+  or the extrapolation; (d) a breach of 0006 (a Nordic element we add) or 0035 (anything levelled); (e) the quest
+  breaks the skill-use rule: the player's in-game skills (blade, blunt, archery, sneak, lockpicking, pickpocket,
+  speech, alchemy, the magic schools, climbing, swimming...) are not what moves it on, so it is not fun; (f) it would
+  be harder to script than an average Skyrim quest (more stages, aliases, conditions, timers or bespoke scripts than a
+  typical vanilla side quest needs). Nothing else is
   blocking, however much you would change it: write it as a `note` with its weight (`high`, `low`).
 - **Settled is settled:** the record's `review.settled` list holds findings the planner has ruled on; do not raise
   them again, nor variants of them, unless the record has since changed in a way that reopens them (say how).
