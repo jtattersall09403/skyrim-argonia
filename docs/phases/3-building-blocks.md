@@ -1,26 +1,37 @@
-# Phase 3: the building blocks, proved once each
+# Phase 3: one test quest that proves the building blocks
 
 Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit this file as the phase goes; it is the phase's whole brief.
 
-The block set is Phase 2's, derived from the first act: as few blocks as compose into every quest the act needs.
-Each block is built once as a small, real example in our plugin on top of BM&V, proven off game by the agent, then
-verified in game by the owner. A block's record and script shapes become the template every later use copies.
+**What it is for.** The story is built in Phase 4 from a small set of engine mechanics, the blocks, listed in
+[blocks.md](../design/blocks.md) and derived from the Act I records in Phase 2: triggers (what moves a quest stage),
+conditions (what gates a trigger or a line), effects (what a stage does) and the world edits under them. This phase
+finds a broken block cheaply, in a throwaway test quest, before any story rests on it. If every block works, and the
+blocks work wired together, any quest made only of them works (the induction note in blocks.md).
 
-- **The authoring route** is settled by the first block: records are written as Spriggit YAML in `plugin/` and
-  built to the ESP on the build VM (`spriggit` is installed at `~/.argonia/spriggit`); xEdit and houseCARL on the
-  play machine are the checkers; the Creation Kit is used only where nothing else can (FaceGen for a new face; the
-  Papyrus compiler). If Spriggit proves awkward for a record type, a Mutagen script replaces it for that type.
-- **The base cases:** one example per block, each in its own small test quest started from a console command, so
-  the owner can reach it in seconds. The examples are chosen from the act's own needs (Phase 2's list), for example
-  a new topic on an existing BM&V NPC, a quest started by entering an area, an NPC from a template placed on
-  existing navmesh with a schedule, a boss at a fixed level, a BM&V reference disabled.
-- **The inductive step:** one composite test quest that wires every trigger type to a stage that fires every effect
-  type, gated by every condition type, including the guarded cases from Phase 2's note (two triggers racing for one
-  stage, a save and reload mid-quest).
-- **A block that fails** is fixed once; if it cannot be made reliable it is dropped, and Phase 2's records that used
-  it are re-authored around the remaining set before Phase 4.
-- **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner.
+**Starts when** Phase 2's review is finished and blocks.md's stage table is regenerated from the final records; the
+block list is then frozen for this phase.
 
-**Owner test:** one session through the base cases and the composite, from an issue that says the console command
-for each, where it is and what should happen. A block the owner finds broken is fixed and re-posted; a block that
-passes is never re-tested.
+**What gets built.** One test quest, `ARG_BlockTest`, in our plugin on top of BM&V, started by one console command
+and finished in about ten minutes. It chains every trigger, condition and effect the slice uses, each once, in one
+small place, and includes the engine's known risk cases:
+- two triggers firing at once for the same stage;
+- a save and reload in the middle of the quest;
+- an alias that must fill when the quest starts;
+- a persistent reference and an AI package that must win over the NPC's own.
+
+A block with no vanilla precedent (blocks.md's precedent column) gets one extra step of its own in the quest. A block
+that uses vanilla's own script unchanged needs no separate proof.
+
+**How it is built.** Records as Spriggit YAML in `plugin/`, built to the ESP on the build VM; Papyrus compiled on the
+play machine; the Creation Kit only for the compiler and FaceGen. The shapes used here become the templates every
+Phase 4 quest copies.
+
+**Agent check, before the owner.** Read the built plugin and scripts (not the game): every step's stage, condition and
+fragment is present and points at the right records. Loop until it does.
+
+**Owner test.** One issue: the console command, where it puts you, and one line per step saying what should happen.
+You play it once and reply with any step that did not happen. A broken block is fixed and only that step re-posted; if
+it cannot be made reliable it is dropped, and the Phase 2 records that used it are re-authored before Phase 4. A step
+that passes is never re-tested.
+
+**Done when** every step has passed in the owner's walk.

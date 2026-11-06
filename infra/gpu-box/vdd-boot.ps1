@@ -51,7 +51,4 @@ try {
 } catch {
   Add-Content $log "$(Get-Date -Format o) error: $_"
 }
-# The GRID driver's session container shows a "NVIDIA Control Panel is not found" pop-up over the game at every
-# logon (no driver setting stops it). Restarted once after logon, the service brings it back without the pop-up.
-Start-Sleep 15
-Get-Process NVDisplay.Container -EA SilentlyContinue | ? { $_.SessionId -ne 0 } | Stop-Process -Force -EA SilentlyContinue
+# The NVIDIA pop-up is handled by nv-popup.ps1 (its own logon task).

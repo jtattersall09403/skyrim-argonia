@@ -117,6 +117,11 @@ function Install-Stream {
     Register-ScheduledTask -TaskName argonia-vdd -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
     Disable-ScheduledTask -TaskName argonia-display | Out-Null   # the virtual display replaces the T4 head pin
   }
+  # The NVIDIA "Control Panel is not found" pop-up is cleared after every logon (nv-popup.ps1).
+  if (-not (Get-ScheduledTask -TaskName argonia-nvpopup -ErrorAction SilentlyContinue)) {
+    $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\nv-popup.ps1"
+    Register-ScheduledTask -TaskName argonia-nvpopup -Action $a -Trigger (New-ScheduledTaskTrigger -AtLogOn -User Administrator) -User Administrator -RunLevel Highest | Out-Null
+  }
   # The machine stops itself after 15 minutes with no stream client and no agent (idle-stop.ps1).
   if (-not (Get-ScheduledTask -TaskName argonia-idle-stop -ErrorAction SilentlyContinue)) {
     $a = New-ScheduledTaskAction -Execute 'powershell.exe' -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File $Root\infra\idle-stop.ps1"
