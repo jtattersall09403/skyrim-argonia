@@ -2,7 +2,8 @@
 # Run once at every boot by argonia-resume.service (chunk 0.0 §a). Opens tmux session `argonia` in the repo and
 # decides what Claude Code does there, from the clean-stop marker:
 #
-#   no marker, work was live     the machine stopped mid-task (Claude Code died, a manual stop while working): resume
+#   no marker, work was live     the session did not stop itself cleanly (idle-stop or the CPU alarm while an agent
+#                                waited, a manual stop, Claude Code dying): resume; prompts/resume.md says only that
 #   no marker, nothing for 15 min the machine stopped while idle (the CloudWatch CPU alarm, a manual stop): as marker
 #   marker + a new owner comment woken by a reply: read the owner's comments and act on them
 #   marker, nothing new          the owner started the machine: Claude waits at its prompt, nothing resumes
