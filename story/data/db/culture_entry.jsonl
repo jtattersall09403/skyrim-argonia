@@ -41,7 +41,6 @@
 {"culture_sheet_id":"culture.faction.chainbreakers","kind":"norm","ord":1,"text":"The burial work and the abolition work are one work.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.faction.chainbreakers","kind":"oath","ord":0,"text":"Bones go home.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.faction.chainbreakers","kind":"rumour","ord":0,"text":"A Gideon court threw out a transferred Owing.","source":"world/sources/lore/topics/labour-and-bondage.md"}
-{"culture_sheet_id":"culture.faction.chainbreakers","kind":"taboo","ord":0,"text":"Buying a debtor's Owing to free them; it feeds the trade.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.chainbreakers","kind":"value","ord":0,"text":"An ending for every debt.","source":"world/sources/lore/topics/labour-and-bondage.md"}
 {"culture_sheet_id":"culture.faction.college-of-whispers","kind":"address-term","ord":0,"text":"Colleague.","source":"inferred"}
 {"culture_sheet_id":"culture.faction.college-of-whispers","kind":"contempt","ord":0,"text":"The Synod's timidity.","source":"world/sources/lore/topics/guilds-and-orders.md"}

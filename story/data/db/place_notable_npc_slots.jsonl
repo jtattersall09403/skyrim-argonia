@@ -352,7 +352,7 @@
 {"place_id":"place.imperial-penal-south.blackrose","ord":1,"slot_id":"toll-compact-s-outside","role":"toll compact's outside voice"}
 {"place_id":"place.imperial-penal-south.blackrose","ord":2,"slot_id":"xileel-resident-unwelcome","role":"An-Xileel resident (unwelcome, tolerated)"}
 {"place_id":"place.imperial-penal-south.blackrose","ord":3,"slot_id":"rose-liaison","role":"Rose liaison"}
-{"place_id":"place.imperial-penal-south.blackrose","ord":4,"slot_id":"chainbreaker-patron","role":"Chainbreaker patron who audits ledgers above a boat-shed"}
+{"place_id":"place.imperial-penal-south.blackrose","ord":4,"slot_id":"chainbreaker-patron","role":"Chainbreaker patron who audits ledgers"}
 {"place_id":"place.imperial-penal-south.blackrose","ord":5,"slot_id":"magnate","role":"Magnate who signs himself Tibus Oleen"}
 {"place_id":"place.imperial-penal-south.blackrose-drowned-hist","ord":0,"slot_id":"speaker","role":"Speaker who dives to listen to the Hist"}
 {"place_id":"place.imperial-penal-south.blackrose-prison","ord":0,"slot_id":"third-generation-rose-family","role":"third-generation Rose family head"}

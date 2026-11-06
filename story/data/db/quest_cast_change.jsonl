@@ -1,5 +1,5 @@
-{"quest_id":"quest.bc.bc01","cast_ord":0,"ord":0,"at_stage":20,"fact":"fact.bc01.book-true","to":"knows"}
-{"quest_id":"quest.bc.bc01","cast_ord":0,"ord":1,"at_stage":20,"fact":"fact.bc01.book-shed","to":"knows"}
+{"quest_id":"quest.bc.bc01","cast_ord":0,"ord":0,"at_stage":10,"fact":"fact.bc01.book-true","to":"knows"}
+{"quest_id":"quest.bc.bc01","cast_ord":0,"ord":1,"at_stage":10,"fact":"fact.bc01.book-shed","to":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":1,"ord":0,"at_stage":40,"fact":"fact.lh38.rope-sold-late","to":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":2,"ord":0,"at_stage":40,"fact":"fact.lh38.pack-unpaid","to":"knows"}
 {"quest_id":"quest.local.lh38","cast_ord":4,"ord":0,"at_stage":40,"fact":"fact.lh38.body-in-throat","to":"knows"}
