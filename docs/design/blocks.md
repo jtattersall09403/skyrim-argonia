@@ -116,18 +116,16 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 <!-- stage_blocks:begin (generated; do not edit) -->
 | Quest stage | Trigger in | Conditions | Effects |
 |---|---|---|---|
-| MQ01 10 | the new-game start (ARG_Opening) | - | E-stage |
-| MQ01 20 | TR-topic | - | E-enable, E-package, E-stage |
-| MQ01 40 | TR-zone | - | E-enable, E-scene, E-stage |
+| MQ01 10 | the new-game start (ARG_Opening) | - | E-enable, E-package, E-stage |
+| MQ01 40 | TR-zone (objectives done) | - | E-enable, E-scene, E-stage |
 | MQ01 41 | TR-zone | C-stage | E-stage |
 | MQ01 42 | TR-zone | C-stage | E-stage |
 | MQ01 44 | TR-death, TR-zone | C-alive | E-stage |
-| MQ01 50 | TR-zone | - | E-enable, E-stage |
-| MQ01 90 | TR-topic | C-stage | E-enable, E-global, E-item, E-stage, TR-chain |
-| MQ01 91 | TR-topic | C-stage | E-enable, E-global, E-stage, TR-chain |
-| MQ01 93 | TR-death, TR-topic | C-alive, C-stage | E-enable, E-stage, TR-chain |
-| MQ03 10 | TR-chain (the previous quest ends) | - | E-stage |
-| MQ03 20 | TR-acquire, TR-death | C-alive, C-item | E-enable, E-global, E-move, E-stage |
+| MQ01 90 | TR-zone | - | E-enable, E-global, E-item, E-stage, TR-chain |
+| MQ01 91 | TR-zone | - | E-enable, E-global, E-stage, TR-chain |
+| MQ01 93 | TR-zone | - | E-enable, E-stage, TR-chain |
+| MQ03 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
+| MQ03 20 | TR-acquire, TR-death, TR-topic | C-alive, C-item | E-enable, E-global, E-move, E-stage |
 | MQ03 40 | TR-death, TR-zone (objectives done) | C-alive, C-time | E-enable, E-move, E-stage |
 | MQ03 90 | TR-topic, TR-zone | - | E-enable, E-faction, E-global, E-item, E-move, E-stage, TR-chain |
 | MQ03 91 | TR-death, TR-zone | C-alive | E-enable, E-global, E-move, E-stage, TR-chain |

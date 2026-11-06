@@ -30,13 +30,6 @@
 {"quest_id":"quest.local.lh38","ord":6,"skill":"sneak","use":"pickpocket","reason":"the satchel"}
 {"quest_id":"quest.local.lh38","ord":7,"skill":"speechcraft","use":"accuse","reason":"the close of a MURDER"}
 {"quest_id":"quest.local.lh38","ord":8,"skill":"any-weapon","use":"fight","reason":"if she runs for the landing"}
-{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
-{"quest_id":"quest.main.mq01","ord":1,"skill":"Sneak","use":"spy","reason":"on the march the player can listen in on the overseer and the courier at the plank and learn who the courier serves"}
-{"quest_id":"quest.main.mq01","ord":2,"skill":"Sneak","use":"sneak-past","reason":"the camp burns: past the cell's blades to the shed or the huts, or past the two cutters at the shed"}
-{"quest_id":"quest.main.mq01","ord":3,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed), with Sal-Sei's reed-knife"}
-{"quest_id":"quest.main.mq01","ord":4,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
-{"quest_id":"quest.main.mq01","ord":5,"skill":"swimming","use":"swim","reason":"out of the burning huts through the shallows to the shore"}
-{"quest_id":"quest.main.mq01","ord":6,"skill":"Speechcraft","use":"persuade","reason":"on the shore the survivors say what became of the clutch"}
 {"quest_id":"quest.local.lq25","ord":0,"skill":"Sneak","use":"search-unseen","reason":"the bait points are found from the pier while the crew are not looking"}
 {"quest_id":"quest.local.lq25","ord":1,"skill":"Swimming","use":"dive","reason":"the bait points are found by a swim under the pier"}
 {"quest_id":"quest.local.lq25","ord":2,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought in its lair under the pier"}
@@ -48,11 +41,14 @@
 {"quest_id":"quest.local.lq30","ord":3,"skill":"OneHanded","use":"fight","reason":"the crocodile is fought at the shelter"}
 {"quest_id":"quest.local.lq30","ord":4,"skill":"Sneak","use":"sneak-past","reason":"the player leaves the shelter unseen so the walk-out stays the youth's"}
 {"quest_id":"quest.local.lq30","ord":5,"skill":"Speechcraft","use":"persuade","reason":"the youth is talked into coming back"}
-{"quest_id":"quest.main.mq03","ord":0,"skill":"alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
-{"quest_id":"quest.main.mq03","ord":1,"skill":"swimming","use":"dive","reason":"one breath off the end of the burnt boards to the bottom of the shallows for the courier's brass tag, which fell with his strap"}
-{"quest_id":"quest.main.mq03","ord":2,"skill":"alteration","use":"water-breathe","reason":"the other way down: Waterbreathing lets a slow swimmer search the bottom as long as it takes"}
-{"quest_id":"quest.main.mq03","ord":3,"skill":"speechcraft","use":"persuade","reason":"the survivor will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round"}
-{"quest_id":"quest.main.mq03","ord":4,"skill":"climbing","use":"climb","reason":"in the dream the player climbs the ring's root ledges, placed statics and no tree, to the door (FreeClimb)"}
+{"quest_id":"quest.main.mq01","ord":0,"skill":"Speechcraft","use":"lie","reason":"at the roll the player gives any name, or none, or an insult; one answer, and the gang goes on"}
+{"quest_id":"quest.main.mq01","ord":1,"skill":"OneHanded","use":"fight","reason":"the two root-cutters at the shed (band 1, fixed)"}
+{"quest_id":"quest.main.mq01","ord":2,"skill":"Destruction","use":"fight","reason":"the two root-cutters at the shed with Flames, the spell every new character starts with"}
+{"quest_id":"quest.main.mq01","ord":3,"skill":"Swimming","use":"dive","reason":"into the burning huts and out of them through the deep water under the plank boards to the shore"}
+{"quest_id":"quest.main.mq03","ord":0,"skill":"Alchemy","use":"test-a-sample","reason":"the player puts a drop of the spilled sap to the tongue as a tester does; it reads fresh, drawn at dusk, and it is what brings the dream"}
+{"quest_id":"quest.main.mq03","ord":1,"skill":"Swimming","use":"dive","reason":"one breath off the burnt plank boards at the camp's fire to the bottom of the deep water for the courier's brass tag, which fell with his strap"}
+{"quest_id":"quest.main.mq03","ord":2,"skill":"Speechcraft","use":"persuade","reason":"Ties will not tell the night before a stranger behind a screen unless shown the courier's tag, or talked round (Speechcraft 25)"}
+{"quest_id":"quest.main.mq03","ord":3,"skill":"climbing","use":"climb","reason":"in the dream the player climbs the ring's root ledges, placed statics and no tree, to the door (FreeClimb)"}
 {"quest_id":"quest.main.mq04","ord":0,"skill":"speechcraft","use":"persuade","reason":"the root-herald is wary of strangers from Lilmoth and must be talked round before the player may go to the tree"}
 {"quest_id":"quest.main.mq04","ord":1,"skill":"long-blade","use":"fight","reason":"the leeches crowd the cut root and the water below it (fixed band 2)"}
 {"quest_id":"quest.main.mq04","ord":2,"skill":"sneak","use":"spy","reason":"the tree-minder goes down to the cut root after dark; watching him opens him"}

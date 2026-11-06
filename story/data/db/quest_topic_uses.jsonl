@@ -192,10 +192,6 @@
 {"quest_id":"quest.main.mq01","topics_ord":5,"ord":0,"value":"fact.mq01.owing-roll"}
 {"quest_id":"quest.main.mq01","topics_ord":6,"ord":0,"value":"fact.mq01.washed-out"}
 {"quest_id":"quest.main.mq01","topics_ord":6,"ord":1,"value":"fact.mq01.gang-hist"}
-{"quest_id":"quest.main.mq01","topics_ord":7,"ord":0,"value":"fact.mq01.gang-hist"}
-{"quest_id":"quest.main.mq01","topics_ord":8,"ord":0,"value":"fact.mq01.clutch-dead"}
-{"quest_id":"quest.main.mq01","topics_ord":9,"ord":0,"value":"fact.mq01.clutch-dead"}
-{"quest_id":"quest.main.mq01","topics_ord":10,"ord":0,"value":"fact.mq01.clutch-dead"}
 {"quest_id":"quest.main.mq03","topics_ord":0,"ord":0,"value":"fact.mq03.satchel-hers"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":0,"value":"fact.mq03.sap-cell"}
 {"quest_id":"quest.main.mq03","topics_ord":1,"ord":1,"value":"fact.mq03.no-claim"}
