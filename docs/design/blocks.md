@@ -134,8 +134,7 @@ Generated from the records by `python3 -m tools.argonia_world.slice_ledger.stage
 | MQ04 10 | TR-chain (the previous quest ends) | - | E-enable, E-stage |
 | MQ04 20 | TR-death, TR-topic | C-alive | E-stage |
 | MQ04 30 | TR-zone | - | E-stage |
-| MQ04 40 | TR-death, TR-topic | C-alive | E-stage |
-| MQ04 50 | TR-acquire | C-item | E-stage |
+| MQ04 40 | TR-death, TR-topic, TR-acquire | C-alive, C-item | E-stage |
 | MQ04 91 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-faction, E-global, E-item, E-stage, TR-chain |
 | MQ04 92 | TR-acquire, TR-zone | C-item, C-stage | E-enable, E-global, E-item, E-stage, TR-chain |
 | MQ05 10 | TR-chain (the previous quest ends) | - | E-stage |
