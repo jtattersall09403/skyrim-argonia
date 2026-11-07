@@ -154,3 +154,12 @@ added here the day they are made, with the date and the issue.
 - 2026-11-06 (#53): you can run with a weapon drawn (Arena Movement's faster variant). Explicit permission to
   override the safety check to install the attack-queue plugin. Swimming and climbing are not skills: they do not
   count as skills in quest writing.
+- 2026-11-07 (walk feedback): never disable, rewrite or toggle the build VM's CloudWatch idle-stop alarm (the owner's
+  `idle-stop-build-machine`: CPU at or under 3% for 6 periods of 5 minutes); for longer waits keep the CPU above 3%
+  instead. The g4dn on-demand machine is the play machine from now on; retire the g6 spot and every snapshot, image
+  and volume no longer needed. Every BM&V person must be talkable: a light backstory grounded in their place,
+  profession and spot, their own set of topics (some shared) that are all true in the world (places and how to get
+  there, nearby danger, rumours that lead to quests, loot spots, local ingredients, and more), written with the
+  dialogue writer. Enemies and the player must stagger when hit: use the stack's poise mod if it has one, else add
+  Nexus SSE mods 74032 and 72653 with all their requirements. Standing still, a dodge tap is a backstep (hop back),
+  not a backward roll. An attack pressed during a roll fires when the roll ends.
