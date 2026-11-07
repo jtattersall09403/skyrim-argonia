@@ -76,13 +76,25 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
     return buffer_ && buffer_->settings().enabled;
   }
 
-  // The player's graph is rebuilt on a load: take the sink off and on again so it is on exactly once.
-  void AttachGraph() {
+  // The player's graph is rebuilt on a load, and again when the race menu or a 3D reload replaces it: take the sink
+  // off and on again so it is on exactly once. At kNewGame the graph does not exist yet and the add is refused (owner
+  // walk 2026-11-07: refused at the new game, so no dodge was ever seen and no attack was queued), so the input sink
+  // re-attaches on a button press at most once a second (Reattach), and the next dodge is seen whatever rebuilt the graph.
+  void AttachGraph(bool quiet = false) {
     auto* player = RE::PlayerCharacter::GetSingleton();
     if (!player) return;
     player->RemoveAnimationGraphEventSink(this);
     const bool ok = player->AddAnimationGraphEventSink(this);
-    SKSE::log::info("animation graph sink on the player: {}", ok ? "added" : "REFUSED");
+    lastAttach_ = Now();
+    if (!quiet || ok != graphAttached_) SKSE::log::info("animation graph sink on the player: {}", ok ? "added" : "REFUSED");
+    graphAttached_ = ok;
+  }
+
+  void Reattach() {
+    if (Now() - lastAttach_ < 1.0 || !Enabled()) return;
+    auto* ui = RE::UI::GetSingleton();
+    if (!ui || ui->GameIsPaused()) return;
+    AttachGraph(true);
   }
 
   void AttachInput() {
@@ -115,6 +127,7 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
     for (auto* e = *events; e; e = e->next) {
       if (e->GetEventType() != RE::INPUT_EVENT_TYPE::kButton) continue;
       auto* b = e->AsButtonEvent();
+      if (b && b->IsDown()) Reattach();
       if (!b || !(b->IsDown() || b->IsUp()) || !IsAttackButton(b)) continue;
       std::lock_guard l(lock_);
       if (!buffer_) continue;
@@ -164,6 +177,8 @@ class Plugin : public RE::BSTEventSink<RE::BSAnimationGraphEvent>, public RE::BS
   std::mutex lock_;
   std::optional<db::Buffer> buffer_;
   bool inputAttached_ = false;
+  bool graphAttached_ = false;  // main thread only (load messages and input events)
+  double lastAttach_ = 0.0;
 };
 
 void OnMessage(SKSE::MessagingInterface::Message* m) {

@@ -718,5 +718,14 @@
   "used_by": "skse/ArgoniaDodgeBuffer (our own SKSE plugin, ruling #51)",
   "linked_or_forked_by": "linked: fetched at the pinned commit by skse/cmake/CommonLib.cmake on the game machine; nothing of it is committed; our plugin is GPL-3.0-or-later too",
   "notes": "Address Library ids only; no decompiled code or retail offsets."
+ },
+ {
+  "name": "Chocolate Poise (Nexus 70478)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/70478?tab=files&file_id=794996",
+  "version": "30I (data/dependencies.json row chocolate-poise)",
+  "licence": "GPL-3.0; page: 'UNSUPPORTED - DO WHATEVER YOU WANT'",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): poise and stagger (owner walk 2026-11-07)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "Added 2026-11-07 in place of POISE 72653 + Poisebreaker 74032, whose DLLs cannot load on 1.7.104."
  }
 ]
