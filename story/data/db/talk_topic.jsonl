@@ -1,0 +1,13 @@
+{"id":"talk.advice","prompt":"Little advice","scope":"trade","source":"a mechanic or world fact true in the loaded game","about":"a practical tip from the person's trade"}
+{"id":"talk.danger","prompt":"Dangers nearby","scope":"place","source":"hostile placed actors, corpses, traps (refs and their cells)","about":"what can hurt the player near here and where it is"}
+{"id":"talk.directions","prompt":"Directions","scope":"place","source":"bmv_map_marker positions (distance and compass from the speaker's cell)","about":"how to reach named places the map knows, by compass and distance"}
+{"id":"talk.harvest","prompt":"Plants and ingredients","scope":"place","source":"FLOR/TREE refs with an ingredient, INGR refs, ingredient barrels","about":"what can be gathered near here, where, and what it yields"}
+{"id":"talk.here","prompt":"This place","scope":"place","source":"settlement cells, map markers, story/lore","about":"what the settlement is, who lives there, what is in it"}
+{"id":"talk.loot","prompt":"Anything worth finding","scope":"place","source":"CONT refs, treasure corpses, books (bmv_book), chests by cell","about":"containers and caches the player can open, and where"}
+{"id":"talk.lore","prompt":"Black Marsh","scope":"place","source":"story/lore (decision 0032)","about":"the wider province, history and the Hist, as a local sees it"}
+{"id":"talk.rumours","prompt":"Latest rumours","scope":"place","source":"quest records (QUST start, stage, giver ref) or a placed thing worth finding","about":"news that leads to a real quest or a real find"}
+{"id":"talk.secret","prompt":"Little secret","scope":"personal","source":"a hidden ref, locked container or out-of-the-way spot (refs)","about":"something only this person would know, held back at low regard"}
+{"id":"talk.self","prompt":"Yourself","scope":"personal","source":"the talker row's backstory","about":"who the person is, lightly"}
+{"id":"talk.services","prompt":"Services","scope":"trade","source":"Job* faction, vendor and trainer data on the base","about":"what the person sells or teaches, if anything"}
+{"id":"talk.someone","prompt":"Someone in particular","scope":"place","source":"bmv_talker rows of the same settlement (names, spots)","about":"who else lives here and where to find them"}
+{"id":"talk.trade","prompt":"My trade","scope":"trade","source":"the census class and faction (bmv_talker), the talker row","about":"what the person does and where"}

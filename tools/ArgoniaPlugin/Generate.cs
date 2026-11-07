@@ -154,6 +154,8 @@ static class Generate
                     default: throw new Exception($"{id}: not a quest or branch node");
                 }
             }
+        // Talk (Talk.cs): BM&V's people's own topics, from the story data; allocated last so earlier ids never move.
+        Talk.Add(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

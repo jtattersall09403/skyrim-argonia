@@ -10,4 +10,5 @@ One line per phase and, inside Phase 3, per block. Status: `todo`, `in progress 
 | [2](phases/2-first-act-on-paper.md) The first act on paper, the whole quest system adapted to BM&V, and the block set | done (2026-11-06; story #50) |
 | [3](phases/3-building-blocks.md) The building blocks, proved once each | in progress (2026-11-06: ARG_BlockTest built, compiled and deployed; the agent read-back passes all 13 steps; owed: the owner's walk, docs/owner-walk-checks.md) |
 | [4](phases/4-first-act-built.md) The first act, built from the proven blocks | todo |
+| [4a](phases/4a-talk-to-everyone.md) Talk to everyone in BM&V | in progress (2026-11-07: W-talk built for all 12 of Lilmoth's talkable people, read back from the ESP; owed: the owner's Lilmoth walk, then the other 591 people by settlement) |
 | [5](phases/5-scale.md) Scale | todo |

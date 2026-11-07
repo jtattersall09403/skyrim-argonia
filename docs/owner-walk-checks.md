@@ -20,17 +20,32 @@ From a new game on the Argonia card.
       no Levitate, so Jump and Slowfall stand in).
 - [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
 - [x] With a weapon drawn you can run (Arena Movement's faster variant, owner #53).
-- [ ] Dodge (issue #51): tap Alt (pad: B) for under half a second. Standing still you backstep
+- [ ] Dodge (issue #51): standing still with no direction held, tap Alt (pad: B) for under half a second: you take a
+      quick backstep (a hop back), not a roll. Fixed 2026-11-07: the standing tap played Dynamic Dodge's back roll; it now
+      plays the same mod's backstep clip whenever no direction key is held.
 - [x] Dodge (issue #51): tap Alt (pad: B) for under half a second. moving you roll in
       that direction. Holding it sprints.
 - [ ] Queue attack during roll, our plugin: press attack during a roll, does it execute after roll completes?
+      Fixed 2026-11-07: our plugin (ArgoniaDodgeBuffer) could not watch the dodge after a New Game until the next
+      save was loaded; it now hooks in on your first key press. Test from a New Game: roll, press attack mid-roll, and
+      the swing should come straight out of the roll.
 - [ ] Pad layout (issue #51, GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout,
       d-pad left or right opens the Tween menu (skills, items, map, magic).
 - [ ] Parry and riposte (issue #51): lock on to a bandit, hold LB (keyboard: right mouse) and tap RB (left click)
       just as their blow lands. They stagger and kneel; press RB (left click) again for the riposte.
-- [ ] Backstab - block+attack from behind, then attack
+      2026-11-07: the mods were loaded, but none of your 37 parry attempts landed inside the parry window, so the
+      window is widened to Elden Parry's own setting (0.3 seconds, was 0.2). Start the bash a fraction before the blow
+      lands, not as it lands. Fighting bandit, in the console: `player.placeatme 00039CF6`, then click him and type
+      `additem 00012EB7 1` and `equipitem 00012EB7` (a level 1 Imperial bandit with an iron sword, who fights back).
+- [ ] Backstab - block+attack from behind, then attack. Lock on (F, or right stick click), stand behind them, hold
+      block and tap attack (a light bash): they are knocked down; then attack for the execution. A bandit who stands
+      still: `player.placeatme 00039CF6`, click him, `setav aggression 0` (he stays where he is and does not turn to
+      you until you hit him). If he still attacks, click him and type `tai` instead (his AI is off; type `tai` again
+      to turn it back on). Say which of the two you used and whether the knockdown played.
 - [x] Guard counter (issue #51): block a hit, then power attack (RT, or hold left click) within 1.5 seconds.
-- [ ] Combat - enemies stagger per poise system
+- [ ] Combat - enemies stagger per poise system. 2026-11-07: our stack had no poise mod; Chocolate Poise is added (why
+      not the two you named: issue #54; reply there). Hit a bandit with light attacks: after several hits he staggers; a
+      power attack staggers sooner. Bandits hitting you stagger you the same way.
 - [ ] Lock-on (pad: right stick click), sprint and climbing, on the GameSir X2.
 - [x] Lock-on (keyboard: tap F), sprint and climbing, on the Mac keyboard.
 - [ ] The HUD shows TrueHUD's player bars, not vanilla Skyrim's.
@@ -41,6 +56,13 @@ From any save or a new game on the Argonia card, about ten minutes, all on Lilmo
 type `startquest ARG_BlockTest`. After each step, `sqs ARG_BlockTest` in the console shows the stages done. Reply on the
 issue with the number of any step that did not happen as written (and the game hour for step 13).
 
+- [ ] Talk (W-talk). Stand on Lilmoth's dock (`coc` is not needed: the opening puts you there) and walk about
+      200 m south-west to a small village on the marsh. Talk to Flaa Heet (the headman, beside a food barrel) and the
+      villager standing a few metres west of him: each opens a menu with topics such as "Yourself", "Directions",
+      "Latest rumours", "Plants and ingredients"; each answer shows as a subtitle. Check one answer is true: the
+      villager says wild leeks grow just east of the village (go and pick one), or Flaa Heet says three dead Dunmer
+      lie at the east end of the dock (go and look). Also try the three Argonian sellswords and the drunk
+      Deep-In-His-Cups on the shore south-west of the dock. Reply with anyone who still opens nothing.
 - [x] 1. Anywhere: type `startquest ARG_BlockTest`. You are moved onto Lilmoth's fishing dock, 3 m west of the Dock
       Keeper; the journal has "Block Test" with "Speak to the Dock Keeper"; no Naga anywhere on the dock.
 - [x] 2a. Talk to the keeper, pick "I am ready for the test.". "Ship Door Key" is in your inventory;

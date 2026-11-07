@@ -1,0 +1,166 @@
+FormKey: 02A1E6:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: ArgonianMaleTribeLeader
+SkyrimMajorRecordFlags:
+- Compressed
+ObjectBounds:
+  First: -22, -14, 0
+  Second: 22, 14, 128
+Configuration:
+  Flags:
+  - IsCharGenFacePreset
+  - Respawn
+  - AutoCalcStats
+  - Unique
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 29
+  SpeedMultiplier: 100
+  DispositionBase: 35
+Voice: 000832:Argonia.esp
+Race: 013740:Skyrim.esm
+WornArmor: 069CE3:Skyrim.esm
+Items:
+- Item:
+    Item: 08970F:Skyrim.esm
+    Count: 1
+AIData:
+  Confidence: Foolhardy
+  EnergyLevel: 50
+  Responsibility: NoCrime
+  Mood: Angry
+  Assistance: HelpsFriendsAndAllies
+Packages:
+- 10F587:Skyrim.esm
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Flaa Heet
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 76
+  - Key: TwoHanded
+    Value: 35
+  - Key: Archery
+    Value: 56
+  - Key: Block
+    Value: 56
+  - Key: Smithing
+    Value: 15
+  - Key: HeavyArmor
+    Value: 76
+  - Key: LightArmor
+    Value: 20
+  - Key: Pickpocket
+    Value: 20
+  - Key: Lockpicking
+    Value: 25
+  - Key: Sneak
+    Value: 20
+  - Key: Alchemy
+    Value: 15
+  - Key: Speech
+    Value: 15
+  - Key: Alteration
+    Value: 20
+  - Key: Conjuration
+    Value: 15
+  - Key: Destruction
+    Value: 15
+  - Key: Illusion
+    Value: 15
+  - Key: Restoration
+    Value: 20
+  - Key: Enchanting
+    Value: 15
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 376
+  Magicka: 50
+  Stamina: 144
+  GearedUpWeapons: 1
+HeadParts:
+- 0B2FD5:Skyrim.esm
+- 09D75C:Skyrim.esm
+- 0B2FCA:Skyrim.esm
+- 0D3351:Skyrim.esm
+HairColor: 0829CF:Skyrim.esm
+NAM5: 255
+Height: 1.9
+Weight: 90
+SoundLevel: Normal
+DefaultOutfit: 09EF84:Skyrim.esm
+HeadTexture: 069CDD:Skyrim.esm
+TextureLighting: '#00926B6B'
+FaceMorph:
+  NoseLongVsShort: 0.4
+  NoseUpVsDown: 0.6
+  JawNarrowVsWide: 0.6
+  BrowsForwardVsBack: -0.4
+  ChinUpVsDown: -0.7
+  ChinUnderbiteVsOverbite: 0.8
+  Unknown: 3.4028235E+38
+FaceParts:
+  Nose: 3
+  Unknown: 4294967295
+  Eyes: 2
+TintLayers:
+- Index: 38
+  Color: '#00A95452'
+  InterpolationValue: 0.45
+  Preset: 53
+- Index: 28
+  Color: '#00D26900'
+  InterpolationValue: 1
+  Preset: 62
+- Index: 6
+  Color: '#00D26900'
+  InterpolationValue: 1
+  Preset: 74
+- Index: 7
+  Color: '#00D26900'
+  InterpolationValue: 1
+  Preset: 86
+- Index: 11
+  Color: '#00110E06'
+  InterpolationValue: 0.69
+  Preset: 105
+MajorFlags:
+- 0x40000

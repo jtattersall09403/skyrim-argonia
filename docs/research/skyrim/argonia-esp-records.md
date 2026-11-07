@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Magic.esp. 257 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Magic.esp. 328 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -28,30 +28,99 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | DialogResponses | new |  `00081D:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Scene1 `000818:Argonia.esp` |
 | ours | DialogResponses | new |  `000819:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Harvest `000844:Argonia.esp` |
+| ours | DialogResponses | new |  `000849:Argonia.esp` |
+| ours | DialogResponses | new |  `000847:Argonia.esp` |
+| ours | DialogResponses | new |  `000846:Argonia.esp` |
+| ours | DialogResponses | new |  `000845:Argonia.esp` |
+| ours | DialogResponses | new |  `00084A:Argonia.esp` |
+| ours | DialogResponses | new |  `000848:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic50Never `00082C:Argonia.esp` |
 | ours | DialogResponses | new |  `00082A:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Scene4 `00081E:Argonia.esp` |
 | ours | DialogResponses | new |  `00081F:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Self `000863:Argonia.esp` |
+| ours | DialogResponses | new |  `00086C:Argonia.esp` |
+| ours | DialogResponses | new |  `00086F:Argonia.esp` |
+| ours | DialogResponses | new |  `00086A:Argonia.esp` |
+| ours | DialogResponses | new |  `000865:Argonia.esp` |
+| ours | DialogResponses | new |  `000864:Argonia.esp` |
+| ours | DialogResponses | new |  `000867:Argonia.esp` |
+| ours | DialogResponses | new |  `000866:Argonia.esp` |
+| ours | DialogResponses | new |  `00086E:Argonia.esp` |
+| ours | DialogResponses | new |  `000868:Argonia.esp` |
+| ours | DialogResponses | new |  `00086D:Argonia.esp` |
+| ours | DialogResponses | new |  `00086B:Argonia.esp` |
+| ours | DialogResponses | new |  `000869:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Rumours `00085C:Argonia.esp` |
+| ours | DialogResponses | new |  `00085D:Argonia.esp` |
+| ours | DialogResponses | new |  `000860:Argonia.esp` |
+| ours | DialogResponses | new |  `000861:Argonia.esp` |
+| ours | DialogResponses | new |  `00085F:Argonia.esp` |
+| ours | DialogResponses | new |  `00085E:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic90 `000830:Argonia.esp` |
 | ours | DialogResponses | new |  `00082D:Argonia.esp` |
 | ours | DialogResponses | new |  `00082E:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Loot `000851:Argonia.esp` |
+| ours | DialogResponses | new |  `000854:Argonia.esp` |
+| ours | DialogResponses | new |  `000853:Argonia.esp` |
+| ours | DialogResponses | new |  `000852:Argonia.esp` |
+| ours | DialogResponses | new |  `000855:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic20 `000823:Argonia.esp` |
 | ours | DialogResponses | new |  `000821:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Directions `000838:Argonia.esp` |
+| ours | DialogResponses | new |  `000841:Argonia.esp` |
+| ours | DialogResponses | new |  `00083D:Argonia.esp` |
+| ours | DialogResponses | new |  `00083B:Argonia.esp` |
+| ours | DialogResponses | new |  `000839:Argonia.esp` |
+| ours | DialogResponses | new |  `00083C:Argonia.esp` |
+| ours | DialogResponses | new |  `00083A:Argonia.esp` |
+| ours | DialogResponses | new |  `000842:Argonia.esp` |
+| ours | DialogResponses | new |  `00083E:Argonia.esp` |
+| ours | DialogResponses | new |  `000840:Argonia.esp` |
+| ours | DialogResponses | new |  `00083F:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic50 `000829:Argonia.esp` |
 | ours | DialogResponses | new |  `000827:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Here `00084C:Argonia.esp` |
+| ours | DialogResponses | new |  `00084D:Argonia.esp` |
+| ours | DialogResponses | new |  `00084F:Argonia.esp` |
+| ours | DialogResponses | new |  `00084E:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Danger `000834:Argonia.esp` |
+| ours | DialogResponses | new |  `000836:Argonia.esp` |
+| ours | DialogResponses | new |  `000835:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Lore `000857:Argonia.esp` |
+| ours | DialogResponses | new |  `000859:Argonia.esp` |
+| ours | DialogResponses | new |  `000858:Argonia.esp` |
+| ours | DialogResponses | new |  `00085A:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic40 `000826:Argonia.esp` |
 | ours | DialogResponses | new |  `000824:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Someone `000871:Argonia.esp` |
+| ours | DialogResponses | new |  `000873:Argonia.esp` |
+| ours | DialogResponses | new |  `000872:Argonia.esp` |
+| ours | DialogResponses | new |  `000875:Argonia.esp` |
+| ours | DialogResponses | new |  `000874:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Scene2 `00081A:Argonia.esp` |
 | ours | DialogResponses | new |  `00081B:Argonia.esp` |
 | ours | quest | new | ARG_BlockTestEnd `000804:Argonia.esp` |
+| ours | quest | new | ARG_Talk `000831:Argonia.esp` |
 | ours | quest | new | ARG_BlockTest `000803:Argonia.esp` |
 | ours | quest | new | ARG_Opening `000801:Argonia.esp` |
 | ours | Package | new | ARG_BT_WalkPackage `000817:Argonia.esp` |
+| ours | VoiceType | new | ARG_TalkSilentVoice `000832:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_HereBranch `00084B:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch20 `000822:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_HarvestBranch `000843:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_DirectionsBranch `000837:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch90 `00082F:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch40 `000825:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_LoreBranch `000856:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_RumoursBranch `00085B:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_DangerBranch `000833:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_SomeoneBranch `000870:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch50 `000828:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch50Never `00082B:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_LootBranch `000850:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_SelfBranch `000862:Argonia.esp` |
 | ours | Scene | new | ARG_BT_Scene `000820:Argonia.esp` |
 | intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
 | opening | worldspace | BM&V's record kept, our marker in its persistent cell | BlackMarsh `23D689:Black Marsh.esm` |

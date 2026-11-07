@@ -1,0 +1,8 @@
+FormKey: 000834:Argonia.esp
+EditorID: ARG_Talk_Danger
+Name:
+  TargetLanguage: English
+  Value: Dangers nearby
+Branch: 000833:Argonia.esp
+Quest: 000831:Argonia.esp
+SubtypeName: CUST

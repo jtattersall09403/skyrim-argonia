@@ -263,6 +263,19 @@ with any step that did not happen. A broken block is fixed and only that step re
 it is dropped, and the Phase 2 records that used it are re-authored before Phase 4. A step that passes is never
 re-tested.
 
+## Block W-talk: a BM&V person's own topics (added 2026-11-07)
+
+A new kind of change (owner, 2026-11-07): BM&V's people open no dialogue, because Skyrim opens the menu only on a
+topic gated to that speaker and BM&V ships none ([talk.md](../design/talk.md), measured). Built in
+`tools/ArgoniaPlugin/Talk.cs` from the story data's talk tables: quest `ARG_Talk` (Start Game Enabled), one
+top-level topic per topic kind, one INFO per person gated GetIsReference to their placed ref; Flaa Heet (no voice
+type) gets our silent voice type `ARG_TalkSilentVoice` by a base override. Lines are subtitles (Fuz Ro D'oh).
+
+As built: all 12 talkable Lilmoth people (`bmv_talker`, settlement Lilmoth), 9 topics, 53 responses; the read-back
+of out/Argonia.esp finds every person's topics gated to their ref (12 of 12), ARG_Talk start-game-enabled, the
+voice override in place. Not this block: Lilmoth's five Naga (hostile) and the three Dunmer corpses. The rest of
+BM&V is [Phase 4a](4a-talk-to-everyone.md). Owner check: docs/owner-walk-checks.md, Phase 3 section.
+
 ## Risks
 
 1. **W-navmesh is not on this route.** The dock and the ship both have navmesh, and navmesh is made only in the

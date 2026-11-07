@@ -76,6 +76,7 @@ file in [phases/](phases/), edited as the phase goes.
 | [2](phases/2-first-act-on-paper.md) | the first act written as quest records, and the small composable block set it needs, derived from them | "the act reads right and the block list is enough" (read, not played) |
 | [3](phases/3-building-blocks.md) | each block proved once, plus one composite quest for the connectors (the induction) | "I saw every block and the composite work in game" |
 | [4](phases/4-first-act-built.md) | the first act built from the proven blocks, with its dialogue | "I played the first act from a new game" |
+| [4a](phases/4a-talk-to-everyone.md) | every BM&V person outside Lilmoth gets a backstory and topics of their own (W-talk, proved on Lilmoth's 12), settlement by settlement; runs beside Phase 4 | "I can talk to anyone I meet, and what they tell me is true" |
 | [5 and on](phases/5-scale.md) | scale | "the story is in, milestone by milestone" |
 
 ## 5. Risks, named

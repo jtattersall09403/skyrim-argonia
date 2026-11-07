@@ -165,3 +165,4 @@ added here the day they are made, with the date and the issue.
   not a backward roll. An attack pressed during a roll fires when the roll ends.
 - 2026-11-07: the g4dn's $0.80 an hour is fine: play is about 20 hours a month at most, not 50; the play machine
   must stop itself when the owner is not playing (its 15-minute idle stop stays on).
+- 2026-11-07: every BM&V person must be talkable, with a light backstory grounded in their place, trade and spot, and their own topics (directions, dangers, rumours that lead to quests, loot spots, ingredients, more), every fact real and true in the loaded world; do all of Lilmoth's people now, and put a phase in the plan for the rest (Phase 4a, docs/design/talk.md).

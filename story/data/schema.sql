@@ -3060,3 +3060,74 @@ CREATE TABLE "quest_bmv_need" (
   "what" TEXT NOT NULL,
   PRIMARY KEY ("quest", "target")
 );
+
+-- Talk (docs/design/talk.md): BM&V's people given topics of their own. The census (generated, replaced on each
+-- `talk_census build`): one row per enabled placed person, its talk status as the load order stands: silent (no
+-- topic passes: E to talk opens nothing), service (a vanilla job-faction topic opens the menu), vanilla-lines (a
+-- vanilla base with its own lines), hostile, corpse. sub_location is the interior's name or the nearest map marker.
+CREATE TABLE "bmv_talker" (
+  "id" TEXT NOT NULL PRIMARY KEY REFERENCES "bmv_placement"("id"),
+  "npc" TEXT NOT NULL REFERENCES "bmv_npc"("id"),
+  "editor_id" TEXT,
+  "name" TEXT,
+  "race" TEXT,
+  "sex" TEXT,
+  "class_name" TEXT,
+  "factions" TEXT,
+  "voice" TEXT,
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
+  "cell" TEXT NOT NULL REFERENCES "bmv_cell"("id"),
+  "interior" BOOLEAN NOT NULL CHECK ("interior" IN (0, 1)),
+  "sub_location" TEXT,
+  "x" INTEGER NOT NULL,
+  "y" INTEGER NOT NULL,
+  "status" TEXT NOT NULL CHECK ("status" IN ('silent', 'service', 'vanilla-lines', 'hostile', 'corpse'))
+);
+
+-- The topic catalogue: each kind of topic a talker can be asked, the player's prompt, who carries it (place: every
+-- talker of a settlement; trade: by profession; personal: the one talker) and the data a fact of it must cite.
+CREATE TABLE "talk_topic" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "prompt" TEXT NOT NULL,
+  "scope" TEXT NOT NULL CHECK ("scope" IN ('place', 'trade', 'personal')),
+  "source" TEXT NOT NULL,
+  "about" TEXT NOT NULL
+);
+
+-- A true thing a talker may say, with the record or lore that proves it is in the loaded world (`source`: a form
+-- key, a cell, a quest id, or a story/lore path and line). A fact of settlement scope is shared by its talkers.
+CREATE TABLE "talk_fact" (
+  "id" TEXT NOT NULL PRIMARY KEY,
+  "topic" TEXT NOT NULL REFERENCES "talk_topic"("id"),
+  "settlement" TEXT REFERENCES "bmv_settlement"("id"),
+  "claim" TEXT NOT NULL,
+  "source" TEXT NOT NULL
+);
+
+-- An authored talker: the light backstory (place, trade, spot; lore cited, decision 0032) a brief is built from.
+CREATE TABLE "talker" (
+  "id" TEXT NOT NULL PRIMARY KEY REFERENCES "bmv_talker"("id"),
+  "known_as" TEXT NOT NULL,
+  "trade" TEXT NOT NULL,
+  "spot" TEXT NOT NULL,
+  "backstory" TEXT NOT NULL,
+  "lore" TEXT NOT NULL,
+  "status" TEXT NOT NULL CHECK ("status" IN ('designed', 'written', 'built'))
+);
+
+-- A talker's topics and the facts each may state.
+CREATE TABLE "talker_topic" (
+  "talker" TEXT NOT NULL REFERENCES "talker"("id"),
+  "topic" TEXT NOT NULL REFERENCES "talk_topic"("id"),
+  "facts" TEXT NOT NULL,
+  PRIMARY KEY ("talker", "topic")
+);
+
+-- A written line: the talker's reply to a topic's prompt (one INFO; ord orders a reply of several responses).
+CREATE TABLE "talk_line" (
+  "talker" TEXT NOT NULL REFERENCES "talker"("id"),
+  "topic" TEXT NOT NULL REFERENCES "talk_topic"("id"),
+  "ord" INTEGER NOT NULL,
+  "text" TEXT NOT NULL,
+  PRIMARY KEY ("talker", "topic", "ord")
+);

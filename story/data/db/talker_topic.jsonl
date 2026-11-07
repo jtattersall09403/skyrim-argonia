@@ -1,0 +1,49 @@
+{"talker":"01512D:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.01512d.dir.lolmoth, fact.lilmoth.01512d.dir.hereguard, fact.lilmoth.01512d.dir.village"}
+{"talker":"01512D:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.no-big-ships"}
+{"talker":"01512D:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lilmoth-council, fact.lilmoth.hist"}
+{"talker":"01512D:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.village.dock-ne, fact.lilmoth.village.hereguard-wnw, fact.lilmoth.village.lolmoth-nnw"}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.village.people, fact.lilmoth.village.ferns"}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lilmoth-council, fact.lilmoth.no-big-ships, fact.lilmoth.hist"}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.rumours","facts":"fact.lilmoth.dock.dead-dunmer"}
+{"talker":"02A1E7:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A1E9:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a1e9.harvest.leeks, fact.lilmoth.02a1e9.harvest.mountain"}
+{"talker":"02A1E9:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A1E9:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.village.people"}
+{"talker":"02A1ED:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a1ed.dir.dock, fact.lilmoth.02a1ed.dir.lolmoth, fact.lilmoth.02a1ed.dir.hereguard"}
+{"talker":"02A1ED:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a1ed.harvest.leeks, fact.lilmoth.02a1ed.harvest.mountain"}
+{"talker":"02A1ED:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A1ED:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.village.people"}
+{"talker":"02A1F1:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.village.dock-ne"}
+{"talker":"02A1F1:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.village.leek-east, fact.lilmoth.village.flower-east"}
+{"talker":"02A1F1:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.village.barrel-camp, fact.lilmoth.village.food-barrel, fact.lilmoth.dock.dead-dunmer-loot"}
+{"talker":"02A1F1:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A1F1:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.village.people"}
+{"talker":"02A1F2:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a1f2.dir.dock, fact.lilmoth.02a1f2.dir.lolmoth, fact.lilmoth.02a1f2.dir.hereguard"}
+{"talker":"02A1F2:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.02a1f2.loot.dead-dunmer, fact.lilmoth.village.barrel-camp"}
+{"talker":"02A1F2:Black Marsh.esm","topic":"talk.rumours","facts":"fact.lilmoth.02a1f2.rumours.dead-dunmer"}
+{"talker":"02A1F2:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a204.danger.dead-dunmer"}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a204.dir.dock, fact.lilmoth.02a204.dir.village, fact.lilmoth.02a204.dir.lolmoth"}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.rumours","facts":"fact.lilmoth.02a204.rumours.dead-dunmer"}
+{"talker":"02A204:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A205:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a205.dir.dock, fact.lilmoth.02a205.dir.village, fact.lilmoth.02a205.dir.lolmoth"}
+{"talker":"02A205:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a205.harvest.leeks, fact.lilmoth.02a205.harvest.mountain, fact.lilmoth.02a205.harvest.poison"}
+{"talker":"02A205:Black Marsh.esm","topic":"talk.lore","facts":"fact.lilmoth.lilmoth-council, fact.lilmoth.hist"}
+{"talker":"02A205:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A206:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a206.dir.dock, fact.lilmoth.02a206.dir.village, fact.lilmoth.02a206.dir.lolmoth"}
+{"talker":"02A206:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.02a206.loot.dead-dunmer"}
+{"talker":"02A206:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A206:Black Marsh.esm","topic":"talk.someone","facts":"fact.lilmoth.02a206.someone.trio"}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a207.dir.dock, fact.lilmoth.02a207.dir.village, fact.lilmoth.02a207.dir.lolmoth"}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.here","facts":"fact.lilmoth.02a207.here.dead-trees"}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.rumours","facts":"fact.lilmoth.02a207.rumours.dead-dunmer"}
+{"talker":"02A207:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.directions","facts":"fact.lilmoth.02a208.dir.dock, fact.lilmoth.02a208.dir.village, fact.lilmoth.02a208.dir.lolmoth"}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a208.harvest.leeks, fact.lilmoth.02a208.harvest.mountain, fact.lilmoth.02a208.harvest.poison"}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.loot","facts":"fact.lilmoth.02a208.loot.dead-dunmer"}
+{"talker":"02A208:Black Marsh.esm","topic":"talk.self","facts":""}
+{"talker":"02A209:Black Marsh.esm","topic":"talk.danger","facts":"fact.lilmoth.02a209.danger.dead-dunmer"}
+{"talker":"02A209:Black Marsh.esm","topic":"talk.harvest","facts":"fact.lilmoth.02a209.harvest.leeks, fact.lilmoth.02a209.harvest.mountain, fact.lilmoth.02a209.harvest.poison"}
+{"talker":"02A209:Black Marsh.esm","topic":"talk.rumours","facts":"fact.lilmoth.02a209.rumours.dead-dunmer"}
+{"talker":"02A209:Black Marsh.esm","topic":"talk.self","facts":""}
