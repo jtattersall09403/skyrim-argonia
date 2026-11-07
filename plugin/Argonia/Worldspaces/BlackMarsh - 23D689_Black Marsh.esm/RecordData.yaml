@@ -50,7 +50,7 @@ TopCell:
     - InitiallyDisabled
     Base: 00003B:Skyrim.esm
     Placement:
-      Position: 30603, -2893, -200
+      Position: 30646, -2618, -170
   - MutagenObjectType: PlacedObject
     FormKey: 000809:Argonia.esp
     MajorRecordFlagsRaw: 3072
@@ -124,7 +124,7 @@ TopCell:
       Reference: 000808:Argonia.esp
       Unknown: 0x000000
     Placement:
-      Position: 30603, -2893, 0
+      Position: 30646, -2618, 30
   - MutagenObjectType: PlacedObject
     FormKey: 000813:Argonia.esp
     MajorRecordFlagsRaw: 1024

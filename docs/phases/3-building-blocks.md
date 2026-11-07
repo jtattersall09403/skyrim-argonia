@@ -51,7 +51,7 @@ triangle centre (as the opening marker was) and the read-back checks it.
 | `ARG_BT_StartMarker`, `ARG_BT_WalkerMarker`, `ARG_BT_DoorMarker` | REFR XMarker (`00003B`), persistent | E-move, E-package | where the player lands (2 m from the keeper), where the walker appears (beside the keeper), where she walks to (in front of the ship door) |
 | `ARG_BT_TokenParent`, `ARG_BT_CrabParent` | REFR XMarker, persistent, initially disabled | E-enable | enable parents |
 | `ARG_BT_Token` | MISC "Test Token" (value 0, a vanilla shell model such as `Clutter\Common\...` picked by the build agent from BM&V's dock clutter) | TR-acquire | the thing to pick up |
-| `ARG_BT_TokenRef` | REFR, persistent | TR-acquire, E-enable | the token on the dock planks 5 m west, enable parent `ARG_BT_TokenParent` |
+| `ARG_BT_TokenRef` | REFR, persistent | TR-acquire, E-enable | the token on the dock planks between the start marker and the keeper, 30 units above the navmesh so it settles onto the planks, enable parent `ARG_BT_TokenParent` |
 | `ARG_BT_Key` | KEYM "Ship Door Key" | E-item (setDoorAccess) | the key the keeper hands over |
 | `0AA664:Black Marsh.esm` override | REFR (W-override) | W-override, setDoorAccess | the ship door, XLOC level "requires key", key `ARG_BT_Key`; persistent flag set |
 | `0AA665:Black Marsh.esm` override | CELL (W-name) | W-name | the ship's FULL "Test Ship" (BM&V's is "Ship") |
@@ -249,11 +249,16 @@ the .pex strings, the compile log); all 13 steps pass. Where the build differs f
 - **C-detected on the package** is `GetDetected Player >= 0`: the condition is read on the PACK, the walk never gated.
 - **TriggerType 0** (on activate) for the door's alias script, from vanilla's activate aliases (SolitudeFreeform07's
   HornActivator, TutorialEnchanting's FarengarEnchanter).
+- **The token drops onto the planks** (owner walk 2026-11-07, step 2b): placed at navmesh height (30603,-2893,0) it
+  never showed, though stage 20 ran clean (key given, no Papyrus error in Papyrus.0.log); a loose item at the navmesh
+  sits inside the deck's collision and Havok drops it through. It now stands 30 units up, between the start marker and
+  the keeper, where the player stands. The keeper's rank is read with `ARG_BT_KeeperRef.getrelationshiprank player`
+  (no click: a console function with no reference selected prints nothing).
 - **Stats are ours**: the three bases inherit everything from their templates but Stats and Base Data (name,
   Protected), with fixed levels 5, 5 and 4 and AutoCalcStats on the template's class.
 
 Positions (07EEF8 triangle): start marker 30535,-2646 (29), keeper 30757,-2589 (32), walker marker 30714,-2461 (31),
-door marker 30981,-3029 (22), crab 31351,-3506 (189), token 30603,-2893 (25); the walker in `01Ship` at 2907,5107,7046
+door marker 30981,-3029 (22), crab 31351,-3506 (189), token 30646,-2618,30 (over 30); the walker in `01Ship` at 2907,5107,7046
 (0AA666 triangle 28).
 
 ## Owner test

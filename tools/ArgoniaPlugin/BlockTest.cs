@@ -90,7 +90,10 @@ static class BlockTest
         var doorPos = placed[Door].rec.Placement!.Position;
         var doorAt = snap.At(Navmesh, doorPos.X - 150, doorPos.Y);    // in front of the ship door
         var crabAt = snap.At(Navmesh, spot.X + 1050, spot.Y);         // 15 m east, or 07EEF8's nearest to it
-        var tokenAt = snap.At(Navmesh, spot.X - 350, spot.Y);         // 5 m west
+        // The token between the player's start and the keeper (07EEF8 tri 30), 30 units above the navmesh: a loose item
+        // placed at navmesh height sits inside the planks' collision and Havok drops it through (owner walk 2026-11-07:
+        // stage 20 ran clean in Papyrus.0.log, the bowl never showed at 30603,-2893,0).
+        var tokenAt = new P3Float(MathF.Round((startAt.X + keeperAt.X) / 2), MathF.Round((startAt.Y + keeperAt.Y) / 2), startAt.Z + 30);
         // The ship door stands off 07EEF8's east edge (no navmesh at dock height reaches it in BlackMarsh; 0FE9A3 under it
         // is another worldspace's): the door marker is 07EEF8's nearest triangle, and the zone boxes (the player's, not an
         // actor's) sit on the door, 1.5 m toward the dock, so the player enters them on the way to it.

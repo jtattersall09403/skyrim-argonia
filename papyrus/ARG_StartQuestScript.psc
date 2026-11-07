@@ -44,4 +44,6 @@ Event OnUpdate()
 	EndWhile
 	Game.ForceThirdPerson() ; the race menu leaves the camera as it found it; the game starts in third person (owner)
 	SetStage(10)
+	; the Quests menu lists an active quest only once an objective shows (owner walk 2026-11-07)
+	SetObjectiveDisplayed(10)
 EndEvent

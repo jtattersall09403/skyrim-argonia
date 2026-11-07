@@ -67,6 +67,9 @@ static class Generate
             Index = 10,
             LogEntries = { new QuestLogEntry { Flags = 0, Entry = "I woke as a prisoner on the work detail at Lilmoth. I own nothing but the roughspun I wear." } },
         });
+        // Skyrim lists an active quest in the Quests menu only once one of its objectives is shown (owner's walk
+        // 2026-11-07: the log entry alone left the menu empty); the script shows it with stage 10, as vanilla stages do.
+        opening.Objectives.Add(new QuestObjective { Index = 10, DisplayText = "Stay with the work detail on Lilmoth's dock" });
         opening.VirtualMachineAdapter = new QuestAdapter
         {
             Scripts =

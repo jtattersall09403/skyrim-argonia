@@ -18,7 +18,9 @@ From a new game on the Argonia card.
 - [X] The inventory holds an Imperial sword and an Imperial light shield; the Magic menu lists Morrowind spells
       (Mark, Recall, Jump, Slowfall, Water Walking, Fire Touch, Force, Burden, Teleport and others; Magic Expanded has
       no Levitate, so Jump and Slowfall stand in).
-- [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
+- [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark. A new character cannot afford them
+      (they are Expert Alteration spells and the test kit gives them early on purpose), so first type in the console
+      `player.setav alteration 100` then `player.setav magicka 600`, and wait a few seconds for magicka to fill.
 - [x] With a weapon drawn you can run (Arena Movement's faster variant, owner #53).
 - [ ] Dodge (issue #51): standing still with no direction held, tap Alt (pad: B) for under half a second: you take a
       quick backstep (a hop back), not a roll. Fixed 2026-11-07: the standing tap played Dynamic Dodge's back roll; it now
@@ -48,7 +50,9 @@ From a new game on the Argonia card.
       power attack staggers sooner. Bandits hitting you stagger you the same way.
 - [ ] Lock-on (pad: right stick click), sprint and climbing, on the GameSir X2.
 - [x] Lock-on (keyboard: tap F), sprint and climbing, on the Mac keyboard.
-- [ ] The HUD shows TrueHUD's player bars, not vanilla Skyrim's.
+- [ ] The HUD shows TrueHUD's player bars (health, magicka, stamina), not vanilla Skyrim's, all the time, even at
+      full health. (Your walk of 2026-11-07 saw none: TrueHUD hides each bar while it is full, and hides vanilla's; now
+      they always show. There is no compass on purpose.)
 
 ## Phase 3 walk: the building blocks test quest
 
@@ -66,8 +70,10 @@ issue with the number of any step that did not happen as written (and the game h
 - [x] 1. Anywhere: type `startquest ARG_BlockTest`. You are moved onto Lilmoth's fishing dock, 3 m west of the Dock
       Keeper; the journal has "Block Test" with "Speak to the Dock Keeper"; no Naga anywhere on the dock.
 - [x] 2a. Talk to the keeper, pick "I am ready for the test.". "Ship Door Key" is in your inventory;
-- [ ] 2b. a wooden bowl, "Test Token", is now on the planks about 5 m south of him; click him in the console, type
-      `getrelationshiprank player`: it says 1.
+- [ ] 2b. a wooden bowl, "Test Token", is now on the planks between where you started and the keeper, about 1.5 m
+      from him (moved after your walk of 2026-11-07: it had been placed inside the planks and fell through). In the
+      console type `ARG_BT_KeeperRef.getrelationshiprank player` (no clicking needed): it says
+      "GetRelationshipRank >> 1.00".
 - [ ] 3. Pick up the Test Token. The objective becomes "Bring the token to the Dock Keeper";
       `getglobalvalue ARG_BT_Global` says 1.
 - [ ] 4. Talk to the keeper, pick "Here is the token.". The token leaves your inventory;
