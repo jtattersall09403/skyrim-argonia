@@ -3,16 +3,15 @@
 # argonia-play exists it prints it and exits. Bash, not PowerShell, because it runs on the Linux build VM; the
 # Windows side is setup.ps1, run over SSH.
 #
-#   infra/gpu-box/create.sh [instance-type] [region] [az]     default g6.xlarge in eu-west-3b: the region and zone
-#   are chosen by the spot placement score (decision 0008: whichever European region interrupts least at a similar
-#   price; Paris euw3-az2 scored 9 against London's 1 on 2026-11-05). The region's default VPC is used; machines.conf
+#   infra/gpu-box/create.sh [instance-type] [region] [az]     default g4dn.xlarge on demand in eu-west-3b
+#   (decision 0039, owner 2026-11-07). The region's default VPC is used; machines.conf
 #   must name the machine in that region afterwards (run.sh reads it) and `cloudflare_gate.py worker` re-points the Worker.
-#   MARKET=ondemand   an on-demand machine instead of persistent spot (owner, 2026-11-05: g4dn.xlarge on demand, guaranteed)
+#   MARKET=spot       a persistent spot machine instead (retired 2026-11-07; kept only as an option)
 #   AMI=ami-...       launch from our own image of a set-up machine (Steam login, Skyrim, the Creation Kit, the stack)
 #                     instead of a fresh Windows Server; setup.ps1 is then not needed
 set -euo pipefail
 export PATH="$HOME/.local/bin:$PATH"
-TYPE="${1:-g6.xlarge}"
+TYPE="${1:-g4dn.xlarge}"
 R="${2:-eu-west-3}"
 AZ="${3:-eu-west-3b}"
 VPC=$(aws ec2 describe-vpcs --region $R --filters Name=isDefault,Values=true --query 'Vpcs[0].VpcId' --output text)
@@ -63,7 +62,7 @@ New-NetFirewallRule -Name sshd-build -DisplayName 'SSH from build VM' -Protocol 
 <persist>false</persist>
 EOF
 
-if [ "${MARKET:-spot}" = ondemand ]; then MARKET_OPTS=(); SPOT_TAGS=(); else
+if [ "${MARKET:-ondemand}" = ondemand ]; then MARKET_OPTS=(); SPOT_TAGS=(); else
   MARKET_OPTS=(--instance-market-options 'MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}')
   SPOT_TAGS=("ResourceType=spot-instances-request,Tags=[$TAGS]"); fi
 launch() {

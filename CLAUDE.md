@@ -20,7 +20,7 @@ world with minimal tweaks ([PLAN](docs/PLAN.md), [0038](docs/decisions/0038-the-
 - Never level anything against the player ([0035](docs/decisions/0035-nothing-is-levelled-against-the-player.md)).
 - Never update the pinned runtime outside a decision ([0002](docs/decisions/0002-one-pinned-skyrim-runtime.md)); never bypass DRM or ownership checks.
 - Never test in game yourself when the owner can: post an owner check instead ([PLAN §2](docs/PLAN.md)).
-- Never leave the build VM (on demand, 8 to 10 hours a day) running idle; the play machine is spot and stays spot ([0008](docs/decisions/0008-infrastructure-aws-london-under-100-a-month.md)).
+- Never leave the build VM (on demand, 8 to 10 hours a day) running idle; the play machine is the g4dn.xlarge on demand and stops itself when idle ([0039](docs/decisions/0039-the-play-machine-is-a-g4dn-on-demand.md)).
 
 ## How we build
 

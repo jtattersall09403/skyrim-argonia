@@ -1,7 +1,8 @@
 # 0008: Infrastructure: AWS, an on-demand build VM run a few hours a day, a spot GPU play machine, under $100 a month
 
 **Status:** decided 2026-10-27 (owner: AWS, max $100/month for infrastructure, "as cheaply as possible");
-corrected by the owner on 2026-11-05: the build VM is **on demand**, the play machine stays **spot**.
+corrected by the owner on 2026-11-05: the build VM is **on demand**, the play machine stays **spot**. Superseded for the play machine on 2026-11-07 by
+[0039](0039-the-play-machine-is-a-g4dn-on-demand.md): it is a g4dn.xlarge **on demand** in Paris.
 The $100 cap binds from November 2026 (October was the old project's spend).
 
 ## Decision
@@ -13,7 +14,7 @@ The $100 cap binds from November 2026 (October was the old project's spend).
    it, `tooling/agent_stop.sh` stops it when the agent is done, and an owner comment starts it again
    (`.github/workflows/wake.yml`). An agent never leaves it running idle overnight. The owner works in VS Code in
    the browser (a `code tunnel` named `argonia-build`); SSM Session Manager is the break-glass shell.
-2. **Play machine `argonia-play`**: a **g6.xlarge** (L4, comfortably strong enough) **persistent spot** instance,
+2. **Play machine `argonia-play`** (superseded by 0039: g4dn.xlarge on demand, eu-west-3b, ~$0.80/h): was a **g6.xlarge** (L4, comfortably strong enough) **persistent spot** instance,
    Windows Server 2022, stopped when idle (15 minutes) and started by the play page. It has run in Paris
    (eu-west-3) since 2026-10-31. **The region is whichever European region is expected to interrupt a g6.xlarge
    least at a similar price** (the spot placement score and the interruption band on the Spot Instance Advisor,
@@ -31,10 +32,10 @@ The $100 cap binds from November 2026 (October was the old project's spend).
 |---|---|---|
 | Build VM m7i-flex.xlarge on demand | ~$0.19/h × 9 h/day × 30 | ~51 |
 | Build VM disk | 120 GiB gp3 | ~11 |
-| Play machine g6.xlarge spot | ~$0.35–0.45/h × ~50 h (owner play and the odd agent check) | ~20 |
+| Play machine g4dn.xlarge on demand (0039) | ~$0.80/h × ~50 h (owner play and the odd agent check) | ~40 |
 | Play machine disk | ~150 GiB gp3 | ~14 |
 | Egress (streaming), public IPv4, S3 | | ~8 |
-| **Total** | | **~$100** |
+| **Total** | | **~$120 at 50 play hours: keep play and build hours down** |
 
 At the limit. **Levers, in order:** keep the build VM's running hours down (stop when idle, batch agent work
 into sessions); keep the play machine stopped between sessions; shrink its disk to the pinned mods; a smaller
@@ -47,5 +48,5 @@ paid work, applies the levers, and only then asks the owner (raise the cap for t
 
 - The build VM's hours are a budget: agents work in sessions and stop the machine; long jobs are scheduled inside
   those hours, and a job that can run on the play machine while the owner is not playing may run there.
-- Spot reclaims still hit the play machine, so every job on it, and every agent's work, stays interrupt-proof
+- The play machine is no longer reclaimed (0039), but every job on it, and every agent's work, stays interrupt-proof
   ([0037](0037-work-is-interrupt-proof.md)).

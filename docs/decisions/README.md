@@ -20,3 +20,4 @@ decision changes. Numbers missing from this list were superseded by the pivot
 - [0035](0035-nothing-is-levelled-against-the-player.md) Nothing is levelled against the player
 - [0037](0037-work-is-interrupt-proof.md) Work is interrupt-proof (spot machines)
 - [0038](0038-the-pivot-bmv-is-the-world.md) The pivot: BM&V is the world; we mod our story on top
+- [0039](0039-the-play-machine-is-a-g4dn-on-demand.md) The play machine is a g4dn.xlarge on demand

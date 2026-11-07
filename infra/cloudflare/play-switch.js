@@ -1,5 +1,5 @@
 // The play switch (owner call #6): a Cloudflare Worker on play.<domain> (and dcv., sunshine.), behind Cloudflare
-// Access, for the one play machine, argonia-play (eu-west-3, g6.xlarge persistent spot), whose own hostname is
+// Access, for the one play machine, argonia-play (eu-west-3, g4dn.xlarge on demand, decision 0039), whose own hostname is
 // play-<ORIGIN_LABEL>.<domain> (behind Access with the switch's service token).
 // - A page load goes to the machine if it runs: the Worker forwards the request to its own hostname.
 // - Stopped: it starts it and shows a page that reloads into the stream once it is up (a settling refusal retries).
@@ -16,7 +16,7 @@
 const MAX_HOURS = 8
 const STALE_MINUTES = 30
 const NAME = "argonia-play"
-const REGION = "eu-west-3"   // g6.xlarge persistent spot
+const REGION = "eu-west-3"   // g4dn.xlarge on demand (decision 0039)
 
 /** Stop for a dead heartbeat? Only once the machine has been up STALE_MINUTES, so a boot is never cut short, and
  *  only on time since this start: the old traffic alarm counted quiet minutes from before a stop. */
