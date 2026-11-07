@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Stop the build VM after IDLE_MINUTES with all three of: no Claude Code activity, no job_guard job, and no
-# VS Code tunnel client (chunk 0.0 §a). Run every minute by argonia-idle-stop.timer. The CloudWatch alarm
-# (an hour under 2% CPU) stays as the backstop. Before it stops, it stops every running game-machine clone
+# VS Code tunnel client (chunk 0.0 §a). Run every minute by argonia-idle-stop.timer. The owner's CloudWatch
+# alarm (30 minutes at or under 3% CPU) is the backstop and is never touched. Before it stops, it stops every running game-machine clone
 # (argonia-play-N): clones serve only agents, so with no agent left they are idle, and their own idle-stop.ps1 has no
 # Cloudflare watchdog behind it the way argonia-play has. argonia-play is left to its own idle-stop and the play switch,
 # since the owner may be playing on it.
@@ -66,25 +66,9 @@ elif r=$(job_active); then reason="$r"
 elif r=$(tunnel_client); then reason="$r"
 fi
 
-# The CloudWatch backstop (argonia-build-idle-stop: an hour under 3% CPU) must never stop the VM while a job waits on
-# AWS at low CPU (it did during a 2-hour snapshot wait, 2026-11-05): its stop action is off while a job runs or Claude is
-# active (an agent waiting on subagents is near 0% CPU too), on again when neither is. The state is cached so the API is called only on a change.
-if [ "${1:-}" != "--status" ]; then
-  want=on; { job_active || claude_active; } >/dev/null && want=off   # an agent waiting on subagents uses little CPU too
-  if [ "$(cat "$STATE/alarm-actions" 2>/dev/null)" != "$want" ]; then
-    # the role may put the alarm but not call enable/disable-alarm-actions, so the alarm is written whole
-    tok=$(curl -s -m 3 -X PUT http://169.254.169.254/latest/api/token -H 'X-aws-ec2-metadata-token-ttl-seconds: 60')
-    iid=$(curl -s -m 3 -H "X-aws-ec2-metadata-token: $tok" http://169.254.169.254/latest/meta-data/instance-id)
-    [ $want = off ] && act=--no-actions-enabled || act=--actions-enabled
-    [ -n "$iid" ] && aws cloudwatch put-metric-alarm --region eu-west-2 --alarm-name argonia-build-idle-stop \
-      --alarm-description "Stop the build VM after an hour under 3% CPU: a backstop to its idle timer; idle-stop.sh turns its action off while a job_guard job runs" \
-      --namespace AWS/EC2 --metric-name CPUUtilization --dimensions "Name=InstanceId,Value=$iid" --statistic Average \
-      --period 300 --evaluation-periods 12 --threshold 3 --comparison-operator LessThanThreshold \
-      --treat-missing-data notBreaching --alarm-actions "arn:aws:automate:eu-west-2:ec2:stop" $act 2>/dev/null &&
-      echo $want > "$STATE/alarm-actions"
-  fi
-fi
-
+# The owner's CloudWatch alarm (idle-stop-build-machine: CPU at or under 3% for 6 periods of 5 minutes) stops this VM.
+# Never disable, rewrite or toggle it (owner, 2026-11-07: a toggle here left it off and the VM ran idle 17 hours). Long
+# waits keep the CPU above 3% instead: keep-busy.py runs while a job_guard job is alive.
 now=$(date +%s)
 if [ -n "$reason" ]; then
   echo "$now" > "$STATE/last-active"
