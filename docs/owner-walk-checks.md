@@ -12,22 +12,27 @@ How to play: the Argonia card on Moonlight starts the game (the play machine sta
 
 From a new game on the Argonia card.
 
-- [ ] New Game shows the race menu with the character's face bare (no helmet, no armour).
-- [ ] After the race menu you stand on a wooden dock with lanterns, at the "Lilmoth Dock" map marker (not Hereguard
+- [x] New Game shows the race menu with the character's face bare (no helmet, no armour).
+- [x] After the race menu you stand on a wooden dock with lanterns, at the "Lilmoth Dock" map marker (not Hereguard
       Plantation), in third person, in roughspun clothes, with a journal line.
-- [ ] The inventory holds an Imperial sword and an Imperial light shield; the Magic menu lists Morrowind spells
+- [X] The inventory holds an Imperial sword and an Imperial light shield; the Magic menu lists Morrowind spells
       (Mark, Recall, Jump, Slowfall, Water Walking, Fire Touch, Force, Burden, Teleport and others; Magic Expanded has
       no Levitate, so Jump and Slowfall stand in).
 - [ ] Cast Mark, walk away, cast Recall: you return to where you cast Mark.
-- [ ] With a weapon drawn you can run (Arena Movement's faster variant, owner #53).
-- [ ] Dodge (issue #51): tap Alt (pad: B) for under half a second. Standing still you backstep; moving you roll in
+- [x] With a weapon drawn you can run (Arena Movement's faster variant, owner #53).
+- [ ] Dodge (issue #51): tap Alt (pad: B) for under half a second. Standing still you backstep
+- [x] Dodge (issue #51): tap Alt (pad: B) for under half a second. moving you roll in
       that direction. Holding it sprints.
+- [ ] Queue attack during roll, our plugin: press attack during a roll, does it execute after roll completes?
 - [ ] Pad layout (issue #51, GameSir X2): RB light attack, RT heavy (power) attack in one press, LB block, LT shout,
       d-pad left or right opens the Tween menu (skills, items, map, magic).
 - [ ] Parry and riposte (issue #51): lock on to a bandit, hold LB (keyboard: right mouse) and tap RB (left click)
       just as their blow lands. They stagger and kneel; press RB (left click) again for the riposte.
-- [ ] Guard counter (issue #51): block a hit, then power attack (RT, or hold left click) within 1.5 seconds.
-- [ ] Lock-on (pad: right stick click; keyboard: tap F), sprint and climbing, on the Mac keyboard and on the GameSir X2.
+- [ ] Backstab - block+attack from behind, then attack
+- [x] Guard counter (issue #51): block a hit, then power attack (RT, or hold left click) within 1.5 seconds.
+- [ ] Combat - enemies stagger per poise system
+- [ ] Lock-on (pad: right stick click), sprint and climbing, on the GameSir X2.
+- [x] Lock-on (keyboard: tap F), sprint and climbing, on the Mac keyboard.
 - [ ] The HUD shows TrueHUD's player bars, not vanilla Skyrim's.
 
 ## Phase 3 walk: the building blocks test quest
@@ -36,10 +41,10 @@ From any save or a new game on the Argonia card, about ten minutes, all on Lilmo
 type `startquest ARG_BlockTest`. After each step, `sqs ARG_BlockTest` in the console shows the stages done. Reply on the
 issue with the number of any step that did not happen as written (and the game hour for step 13).
 
-- [ ] 1. Anywhere: type `startquest ARG_BlockTest`. You are moved onto Lilmoth's fishing dock, 3 m west of the Dock
+- [x] 1. Anywhere: type `startquest ARG_BlockTest`. You are moved onto Lilmoth's fishing dock, 3 m west of the Dock
       Keeper; the journal has "Block Test" with "Speak to the Dock Keeper"; no Naga anywhere on the dock.
-- [ ] 2. Talk to the keeper, pick "I am ready for the test.". "Ship Door Key" is in your inventory; a wooden bowl,
-      "Test Token", is now on the planks about 5 m south of him; click him in the console, type
+- [x] 2a. Talk to the keeper, pick "I am ready for the test.". "Ship Door Key" is in your inventory;
+- [ ] 2b. a wooden bowl, "Test Token", is now on the planks about 5 m south of him; click him in the console, type
       `getrelationshiprank player`: it says 1.
 - [ ] 3. Pick up the Test Token. The objective becomes "Bring the token to the Dock Keeper";
       `getglobalvalue ARG_BT_Global` says 1.
