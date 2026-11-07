@@ -159,6 +159,14 @@ static class Generate
             }
         // Talk (Talk.cs): BM&V's people's own topics, from the story data; allocated last so earlier ids never move.
         Talk.Add(mod, mods);
+        // Name fix: BM&V's villager base 02A1EE (sixteen placements) is spelt "Aragonian Vliiager"; an override of its name
+        // only, copied from the last plugin in the load order that defines it (not the master alone).
+        {
+            var key = FormKey.Factory("02A1EE:Black Marsh.esm");
+            var villager = mod.Npcs.FirstOrDefault(n => n.FormKey == key) ?? (Npc)Survey.Winners<INpcGetter>(mods)[key].rec.DeepCopy();
+            villager.Name = "Argonian Villager";
+            if (!mod.Npcs.Any(n => n.FormKey == key)) mod.Npcs.Add(villager);
+        }
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.

@@ -181,3 +181,18 @@ def test_resumed_run_appends_to_its_log(tmp_path):
         assert guard(tmp_path, "run", "j", "--", "echo", "third", env=env).returncode == 0
         done(tmp_path, jobs)
         assert (jobs / "j.log").read_text().splitlines() == ["third"]
+
+
+def test_gpu_job_keeps_machine_busy_while_it_runs_only(tmp_path):
+    """A --gpu job holding the lock touches the machine's busy flag (run.sh ps) every GPU_KEEPALIVE_S while it runs, so the
+    play machine's idle-stop does not stop it under a quiet log (2026-11-07 15:20); nothing touches it once the job ends."""
+    fake = tmp_path / "run.sh"
+    hits = tmp_path / "hits"
+    fake.write_text(f'#!/bin/bash\necho "$@" >> {hits}\n')
+    env = {"GPU_KEEPALIVE_RUN": str(fake), "GPU_KEEPALIVE_S": "1"}
+    guard(tmp_path, "run", "--gpu", "ka", "--", "bash", "-c", "read -t 4 < /dev/zero; true", env=env)
+    assert guard(tmp_path, "wait", "ka").returncode == 0
+    n = len(hits.read_text().splitlines())
+    assert n >= 2 and "--machine argonia-play ps" in hits.read_text()
+    time.sleep(2.5)
+    assert len(hits.read_text().splitlines()) == n  # none after the job ended

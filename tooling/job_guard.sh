@@ -99,6 +99,9 @@ case "$cmd" in
       done
       [ -z "$ahead" ] && exit 0; [ $SECONDS -ge $end ] && exit 1; sleep 1
     done ;;
+  _keepalive)  # a --gpu job holding the machine lock keeps the machine's busy flag fresh (idle-stop reads it, 15 min) every 5 min; killed when the job ends
+    run=${GPU_KEEPALIVE_RUN:-$(dirname "$(readlink -f "$0")")/../infra/gpu-box/run.sh}
+    while :; do bash "$run" --machine "$1" ps 'exit 0' >/dev/null 2>&1 || true; read -t "${GPU_KEEPALIVE_S:-300}" < /dev/zero 2>/dev/null || true; done ;;
   reserve|release)
     parse_gpu "$@"; shift $shiftn
     [ $gpu = 1 ] || { export ARGONIA_PLAY="${ARGONIA_PLAY:-argonia-play}"; parse_gpu --gpu; }
@@ -143,7 +146,7 @@ case "$cmd" in
         if [ -n "'"$lane"'" ]; then bash "'"$me"'" _slotwait "'"$lock"'" "'"$lane"'" '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo "slot wait gave up"; exit 1; }; fi
         bash "'"$me"'" _turn "'"$ARGONIA_PLAY"'" '"$seq"' '"$wait_s"' || { echo 1 > "'"$JOBS/$name.rc"'"; echo done > "'"$JOBS/$name.state"'"; echo "turn wait gave up"; exit 1; }
         flock -w '"$wait_s"' "'"$lock"'" bash -c '"'"'echo '"$name"' > "'"$lock"'.holder"; touch "'"$JOBS/$name.started"'"; echo running > "'"$JOBS/$name.state"'"
-          echo "got the lock"; "$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
+          echo "got the lock"; bash "'"$me"'" _keepalive "'"$ARGONIA_PLAY"'" & ka=$!; "$@"; rc=$?; kill $ka 2>/dev/null; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"'"'"' _ "$@" || { rc=$?; [ -f "'"$JOBS/$name.rc"'" ] || echo "$rc" > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"; echo "lock wait gave up (rc $rc)"; }' "$@"
     else
       launch '"$@"; rc=$?; echo $rc > "'"$JOBS/$name.rc"'"; [ $rc -ge 128 ] || echo done > "'"$JOBS/$name.state"'"' "$@"
     fi
