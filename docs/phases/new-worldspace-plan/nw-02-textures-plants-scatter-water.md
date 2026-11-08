@@ -79,7 +79,7 @@ bucket, never in git.
 | 6 | Region flora sets in the DB, seabed sets: tools/newworld/flora.py (pull, build, report) from newworld/sources/flora/; 534 bases in 40 families, 19 habitats, 8 companion guilds, 5,465 region_flora rows; summary and similarity in research/nw-02-region-flora.md (land max weighted Jaccard 0.29, sea 0.45) | done; rerun `flora pull` if the catalogue changes |
 | 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | in progress: core landed (WRLD ArgoniaBlackMarsh, 20,160 LAND cells, `coc ArgoniaNWStart`; rerun `tools/newworld/world/world.sh` under job_guard; read-back PASS); textures, water types, regions to do |
 | 8 | Trees, plants, rocks, cliffs, road dressing, water edges, placed and seated | todo |
-| 9 | Ground mist over marsh and water, by hour and weather | todo |
-| 10 | Navmesh across the province | todo |
+| 9 | Ground mist over marsh and water, by hour and weather | in progress (with step 7's agent) |
+| 10 | Navmesh across the province | in progress (pipeline restored on the bare terrain; obstacles when step 8 lands) |
 | 11 | LOD (terrain, objects, trees) and the world map | todo |
 | 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | todo |
