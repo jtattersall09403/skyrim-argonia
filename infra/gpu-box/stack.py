@@ -655,6 +655,17 @@ def apply_files(m, data):
         print(f"  {m['id']}: wrote {f['path']}")
 
 
+def apply_first_push(m, data):
+    """The row's `first_push` clips cut to their first push of AMR root motion (backstep.py; owner ruling
+    2026-11-08: the standing backstep travels about half as far), in place on the staged copy."""
+    import backstep
+    for rel in m.get("first_push", []):
+        f = data / rel
+        out, old, new = backstep.cut(f.read_bytes())
+        f.write_bytes(out)
+        print(f"  {m['id']}: {rel} travel {old / backstep.UNITS_PER_M:.2f} m -> {new / backstep.UNITS_PER_M:.2f} m")
+
+
 def masters_of(plugin):
     """The MAST entries of a plugin's TES4 header."""
     with open(plugin, "rb") as f:
@@ -758,6 +769,7 @@ def cmd_stage(a):
                 complete_nested(m, archive_path(m), data)
             apply_ini(m, data)
             apply_files(m, data)
+            apply_first_push(m, data)
             kf.write_text(json.dumps({"key": key, "fomod": taken}))
             if resume is not None:
                 resume.clear()
