@@ -1,0 +1,12 @@
+{"id":"climate","applies_to":"region","about":"Weather and seasons."}
+{"id":"dangers","applies_to":"both","about":"What threatens it and what threatens a visitor there."}
+{"id":"ecology","applies_to":"region","about":"Plants and animals, and how they vary within the region."}
+{"id":"economy","applies_to":"both","about":"What it makes, trades and needs."}
+{"id":"faith","applies_to":"both","about":"Its belief: Hist, Sithis, the Nine, Daedra; shrines and rites."}
+{"id":"history","applies_to":"both","about":"Its past, to 4E 201."}
+{"id":"hooks","applies_to":"place","about":"What a player could find or do there: quest seeds, secrets, loot."}
+{"id":"landscape","applies_to":"region","about":"The lie of the land: relief, water, ground."}
+{"id":"look","applies_to":"both","about":"How it looks: building, materials, layout, plants, light, sound, smell."}
+{"id":"overview","applies_to":"both","about":"What it is and why it matters, for a reader who knows nothing."}
+{"id":"people","applies_to":"both","about":"Its people: race, tribe, faction, numbers, notable roles."}
+{"id":"present","applies_to":"both","about":"What it is like in 4E 201: who lives there, who holds it, how it is doing."}

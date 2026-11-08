@@ -1,0 +1,6 @@
+{"id":"D0","rank":0,"label":"Safe","foe_level":0,"about":"Inside a city or town: guards keep it."}
+{"id":"D1","rank":1,"label":"Settled","foe_level":1,"about":"Major roads, the land round towns and the settled coast: wildlife and the odd thief."}
+{"id":"D2","rank":2,"label":"Wild","foe_level":10,"about":"Countryside away from the roads: predators, bandits and tribal hunters."}
+{"id":"D3","rank":3,"label":"Dangerous","foe_level":20,"about":"The deep swamp and the edges of the interior: large predators, outlaw strongholds."}
+{"id":"D4","rank":4,"label":"Deadly","foe_level":35,"about":"The interior heartland and the haunted ruins: Hist-guarded land, undead, the worst of the swamp."}
+{"id":"D5","rank":5,"label":"Lethal","foe_level":50,"about":"The province's heart and its worst ruins: what few travellers come back from."}

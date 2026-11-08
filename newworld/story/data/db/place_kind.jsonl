@@ -1,0 +1,31 @@
+{"id":"abandoned-village","label":"Abandoned stilt village","family":"ruin","interior":"dungeon","about":"An abandoned Argonian stilt village of tiered timber halls."}
+{"id":"ayleid-ruin","label":"Barsaebic Ayleid ruin","family":"ruin","interior":"dungeon","about":"A ruin of the Barsaebic Ayleids, often with undead and Fenlord tombs below."}
+{"id":"belvedere","label":"Belvedere","family":"settlement","interior":"buildings","about":"A lookout house or retreat built for its view."}
+{"id":"cave","label":"Cave","family":"cave","interior":"cave","about":"A natural cave."}
+{"id":"city","label":"City","family":"settlement","interior":"buildings","about":"A city of the metropolis, large-city or small-city tier."}
+{"id":"estate","label":"Estate","family":"work","interior":"buildings","about":"A plantation or landholder's estate worked by tenants or bonded labour."}
+{"id":"farm","label":"Farm","family":"work","interior":"buildings","about":"A farm."}
+{"id":"ferry","label":"Ferry","family":"work","interior":"none","about":"A ferry landing across a river or channel."}
+{"id":"fort","label":"Fort","family":"military","interior":"buildings","about":"A garrisoned fort."}
+{"id":"hamlet","label":"Hamlet","family":"settlement","interior":"buildings","about":"A named handful of stilt houses or huts too small to be a village (a named triangle that is not a fort)."}
+{"id":"homestead","label":"Homestead","family":"work","interior":"buildings","about":"A lone household on its own land."}
+{"id":"imperial-ruin","label":"Imperial ruin","family":"ruin","interior":"dungeon","about":"A ruined Imperial (Second or Third Empire) tower, waystation or fort."}
+{"id":"keep","label":"Keep","family":"military","interior":"dungeon","about":"A stone keep, held or fallen."}
+{"id":"kothringi-ruin","label":"Kothringi ruin","family":"ruin","interior":"dungeon","about":"A stone ruin of the Kothringi, the silver-skinned humans dead of the Knahaten Flu."}
+{"id":"landmark","label":"Landmark","family":"landmark","interior":"none","about":"A named natural or built feature worth finding."}
+{"id":"lighthouse","label":"Lighthouse","family":"work","interior":"buildings","about":"A lighthouse and its keeper's house."}
+{"id":"lilmothiit-ruin","label":"Lilmothiit ruin","family":"ruin","interior":"dungeon","about":"A turf-and-leaf domed den of the Lilmothiit, the fox-folk of the southern coast."}
+{"id":"logging-camp","label":"Logging camp","family":"work","interior":"buildings","about":"A timber camp."}
+{"id":"mine","label":"Mine","family":"work","interior":"cave","about":"A mine: an entrance in the ground or a hillside and a worked interior."}
+{"id":"outlaw-camp","label":"Outlaw camp","family":"camp","interior":"none","about":"A pirate or smuggler camp."}
+{"id":"outpost","label":"Outpost","family":"settlement","interior":"buildings","about":"A waystation, watch post or trading post."}
+{"id":"peak","label":"Peak","family":"landmark","interior":"none","about":"A high point with a view."}
+{"id":"prison","label":"Prison","family":"military","interior":"buildings","about":"A prison (Blackrose Prison)."}
+{"id":"quarry","label":"Quarry","family":"work","interior":"none","about":"A stone quarry."}
+{"id":"shipwreck","label":"Shipwreck","family":"wreck","interior":"underwater","about":"A wreck, on a shore or under the water."}
+{"id":"station","label":"Station","family":"work","interior":"buildings","about":"A working platform at sea (Bell Station: a diving-bell station)."}
+{"id":"sunken-ruin","label":"Sunken ruin","family":"sunken","interior":"underwater","about":"A drowned spire on the sea floor."}
+{"id":"town","label":"Town","family":"settlement","interior":"buildings","about":"A town."}
+{"id":"tribal-camp","label":"Tribal camp","family":"camp","interior":"none","about":"A seasonal or permanent camp of a named Argonian tribe."}
+{"id":"velothi-ruin","label":"Cantemiric Velothi ruin","family":"ruin","interior":"dungeon","about":"A ruin of the Cantemiric Velothi, the Dunmer settlers of the eastern seaboard, dead of the Knahaten Flu."}
+{"id":"village","label":"Village","family":"settlement","interior":"buildings","about":"A village."}

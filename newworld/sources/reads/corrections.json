@@ -21,7 +21,13 @@
    "note": "missed by the tile reader; found in the review crops"
   }
  ],
- "drop": [],
+ "drop": [
+  {
+   "tile": "tile_-10_-110",
+   "index": 3,
+   "why": "the same glyph as Lujei, read again with its label cut off by the tile edge"
+  }
+ ],
  "set": [
   {
    "tile": "tile_-20_-70",
@@ -202,6 +208,40 @@
     "py": 2583.7
    },
    "why": "the read sat off its icon; moved onto it (measured in a 2x crop)"
+  },
+  {
+   "tile": "tile_-10_-70",
+   "index": 0,
+   "fields": {
+    "label": "[Outpost]"
+   },
+   "why": "label cut off by the tile edge; the full-size map reads [Outpost]"
+  },
+  {
+   "tile": "tile_-20_-110",
+   "index": 9,
+   "fields": {
+    "label": "[Logging Camp]"
+   },
+   "why": "label cut off by the tile edge; the full-size map reads [Logging Camp]"
+  },
+  {
+   "tile": "tile_-20_-60",
+   "index": 0,
+   "fields": {
+    "px": 1209.5,
+    "py": 421.4
+   },
+   "why": "the read sat on the label; moved onto the icon's glow"
+  },
+  {
+   "tile": "tile_-10_-70",
+   "index": 10,
+   "fields": {
+    "px": 1305.5,
+    "py": 787.8
+   },
+   "why": "the read sat on the label; moved onto the icon's glow"
   }
  ]
 }

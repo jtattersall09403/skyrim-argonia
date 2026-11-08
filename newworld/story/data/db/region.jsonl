@@ -1,0 +1,24 @@
+{"id":"althii-archipelago","name":"Althii Archipelago","map_label":"ALTHII ARCHIPELAGO","kind":"land","map_hex":"#c8bfa5","label_px":2391.0,"label_py":2333.0}
+{"id":"aphon-isle","name":"Aphon Isle","map_label":"APHON ISLE","kind":"land","map_hex":"#e5b7cc","label_px":314.0,"label_py":1796.0}
+{"id":"arnesian-jungle","name":"Arnesian Jungle","map_label":"ARNESIAN JUNGLE","kind":"land","map_hex":"#9abf86","label_px":2310.0,"label_py":628.0}
+{"id":"aunike-ridge","name":"Aunike Ridge","map_label":"AUNIKE RIDGE","kind":"land","map_hex":"#d8ad72","label_px":1414.0,"label_py":1564.0}
+{"id":"banujha-basin","name":"Banujha Basin","map_label":"BANUJHA BASIN","kind":"land","map_hex":"#7b6db2","label_px":1159.0,"label_py":1957.0}
+{"id":"barsaebica","name":"Barsaebica","map_label":"BARSAEBICA","kind":"land","map_hex":"#95baab","label_px":1170.0,"label_py":669.0}
+{"id":"benthic-yobesh","name":"Benthic Yobesh","map_label":"BENTHIC YOBESH","kind":"sea","map_hex":"#697b88","label_px":2796.0,"label_py":2424.0}
+{"id":"blackwood","name":"Blackwood","map_label":"BLACKWOOD","kind":"land","map_hex":"#6f966e","label_px":915.0,"label_py":992.0}
+{"id":"cape-percar","name":"Cape Percar","map_label":"CAPE PERCAR","kind":"land","map_hex":"#a4675b","label_px":851.0,"label_py":2391.0}
+{"id":"chixathe-mesa","name":"Chixathe Mesa","map_label":"CHIXATHE MESA","kind":"land","map_hex":"#bca9a7","label_px":2318.0,"label_py":866.0}
+{"id":"hatandros-bight","name":"Hatandros Bight","map_label":"HATANDROS BIGHT","kind":"land","map_hex":"#d8d790","label_px":2913.0,"label_py":913.0}
+{"id":"kotherra-mangroves","name":"Kotherra Mangroves","map_label":"KOTHERRA MANGROVES","kind":"land","map_hex":"#d0d7cc","label_px":670.0,"label_py":1510.0}
+{"id":"lake-ulaish","name":"Lake Ulaish","map_label":"LAKE ULAISH","kind":"land","map_hex":"#8f97bf","label_px":2010.0,"label_py":1502.0}
+{"id":"murkwood","name":"Murkwood","map_label":"MURKWOOD","kind":"land","map_hex":"#7c7462","label_px":1608.0,"label_py":1121.0}
+{"id":"nha-enasa","name":"Nha Enasa","map_label":"NHA ENASA","kind":"land","map_hex":"#b9c6a5","label_px":827.0,"label_py":1476.0}
+{"id":"nushara-bayou","name":"Nushara Bayou","map_label":"NUSHARA BAYOU","kind":"land","map_hex":"#8aada7","label_px":2488.0,"label_py":1901.0}
+{"id":"okuwun-rahei","name":"Okuwun Rahei","map_label":"OKUWUN RAHEI","kind":"land","map_hex":"#b27f6d","label_px":2591.0,"label_py":1291.0}
+{"id":"padomaic-ocean","name":"Padomaic Ocean","map_label":"PADOMAIC OCEAN","kind":"sea","map_hex":"#6b9cbf","label_px":3119.0,"label_py":1042.0}
+{"id":"sea-of-mists","name":"Sea of Mists","map_label":"SEA OF MISTS","kind":"sea","map_hex":"#85838e","label_px":1232.0,"label_py":2635.0}
+{"id":"skeith-isle","name":"Skeith Isle","map_label":"SKEITH ISLE","kind":"land","map_hex":"#a59681","label_px":3213.0,"label_py":1238.0}
+{"id":"topal-bay","name":"Topal Bay","map_label":"TOPAL BAY","kind":"sea","map_hex":"#8695a0","label_px":400.0,"label_py":1696.0}
+{"id":"tulmek-washes","name":"Tulmek Washes","map_label":"TULMEK WASHES","kind":"land","map_hex":"#a3adba","label_px":1716.0,"label_py":2268.0}
+{"id":"ultherus-swamp","name":"Ultherus Swamp","map_label":"ULTHERUS SWAMP","kind":"land","map_hex":"#9b7999","label_px":1766.0,"label_py":1819.0}
+{"id":"valley-of-storms","name":"Valley of Storms","map_label":"VALLEY OF STORMS","kind":"land","map_hex":"#b26fb7","label_px":1608.0,"label_py":601.0}

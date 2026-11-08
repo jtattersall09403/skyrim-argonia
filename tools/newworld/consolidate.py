@@ -38,8 +38,10 @@ def reads() -> list[dict]:
         for s in out:
             if (s["tile"], s["index"]) == (st["tile"], st["index"]):
                 s.update(st["fields"])
+                if "px" in st["fields"]:
+                    s["fixed"] = True     # placed by hand on review: never re-snapped
     for a in corr["add"]:
-        out.append(dict(a, tile="corrections", index=len(out)))
+        out.append(dict(a, tile="corrections", index=len(out), fixed=True))
     return out
 
 
@@ -49,6 +51,8 @@ def snap(syms: list[dict], glyphs: list[dict]) -> None:
     taken: set[int] = set()
     pairs = []
     for k, s in enumerate(syms):
+        if s.get("fixed"):
+            continue
         d = np.hypot(G[:, 0] - s["px"], G[:, 1] - s["py"])
         for i in np.argsort(d)[:4]:
             if d[i] <= SNAP_PX:
@@ -68,7 +72,7 @@ def snap_settlements(syms: list[dict], a: np.ndarray) -> None:
     outline with its hole filled) within 36 px of the read."""
     from scipy import ndimage as ndi
     for s in syms:
-        if s.get("glyph") != "settlement":
+        if s.get("glyph") != "settlement" or s.get("fixed"):
             continue
         x, y = int(round(s["px"])), int(round(s["py"]))
         x0, y0 = max(x - 36, 0), max(y - 36, 0)
@@ -126,6 +130,23 @@ def measure(syms: list[dict], a: np.ndarray, water: np.ndarray) -> None:
             s["tint_rgb"] = [int(v) for v in np.median(tint, 0)]
 
 
+def icon_colour(syms: list[dict], a: np.ndarray, water: np.ndarray) -> None:
+    """An icon's own colour: the median of the pixels within 9 px of its centre that are neither ground (plain
+    land, plain water) nor near-white glow, plus the share of near-white glow pixels."""
+    for s in syms:
+        if s.get("glyph") != "icon":
+            continue
+        x, y = int(round(s["px"])), int(round(s["py"]))
+        win = a[y - 9:y + 10, x - 9:x + 10].reshape(-1, 3).astype(int)
+        land = np.abs(win - (216, 193, 177)).sum(-1) < 40
+        wat = (win[:, 2] > win[:, 0] + 8) & (win[:, 1] - win[:, 0] >= 10)
+        glow = win.min(-1) > 215
+        body = win[~land & ~wat & ~glow]
+        s["glow_share"] = round(float(glow.mean()), 3)
+        if len(body):
+            s["icon_rgb"] = [int(v) for v in np.median(body, 0)]
+
+
 def main() -> None:
     glyphs = json.loads((f.OUT / "glyphs.json").read_text())
     syms = reads()
@@ -135,6 +156,7 @@ def main() -> None:
     syms = merge_duplicates(syms)
     water = np.asarray(Image.open(f.OUT / "raster" / "water.png").convert("L")) > 127
     measure(syms, a, water)
+    icon_colour(syms, a, water)
     for s in syms:
         s["cell"] = list(f.px_to_cell(s["px"], s["py"]))
         s["px"], s["py"] = round(s["px"], 1), round(s["py"], 1)

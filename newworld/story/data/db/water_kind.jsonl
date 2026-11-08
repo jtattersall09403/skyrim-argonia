@@ -1,0 +1,9 @@
+{"id":"bay","flows":false,"about":"Sea water held in by land."}
+{"id":"blackwater-swamp","flows":false,"about":"Still, dark, tannin-stained water under trees."}
+{"id":"estuary","flows":true,"about":"A river's tidal mouth."}
+{"id":"green-marsh","flows":false,"about":"Shallow open water thick with reeds and green growth."}
+{"id":"lake","flows":false,"about":"A large body of still fresh water."}
+{"id":"ocean","flows":false,"about":"The open sea."}
+{"id":"pond","flows":false,"about":"A small body of still water."}
+{"id":"river","flows":true,"about":"A broad flowing channel."}
+{"id":"stream","flows":true,"about":"A narrow flowing channel."}
