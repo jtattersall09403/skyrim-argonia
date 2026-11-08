@@ -14,12 +14,15 @@ How it works:
    steps of the background (square edges, shores), where the median fit is unreliable.
 2. Lines. The ink is dilated by 3 px, which closes a dash's gap, and thinned to a one-pixel skeleton; short
    spurs are pruned.
-3. Bridges. Each loose end looks ahead along its own direction (within 30 degrees) for the nearest other line
-   or loose end; it is joined by a straight bridge when the gap is short (<= 22 px) or mostly crosses what
-   hides a road (water, a glyph disc, a label, a square's edge), up to 90 px. Ends then join again.
+3. Bridges. Each loose end joins: any line within 10 px; any line ahead (30 degrees) within 22 px; across
+   wider gaps only another loose end facing back, over ground that hides a road (water, a label, a glyph; a
+   culture square does not hide one, the road is drawn on it), curving a little up to 65 px, dead straight
+   beyond (90 px at most). A loose end runs on to a settlement glyph ahead within 60 px, or to any glyph
+   within 22 px, over hidden ground. Last, two loose ends within 30 px across a river or label are joined.
 4. Graph. The skeleton is cut into edges between nodes (junctions and ends). Every end or junction within a
    place glyph's snap radius (14 px, or the glyph's half-size + 6) becomes that place's node, and the edge runs
-   on to the glyph centre.
+   on to the glyph centre; an end on (or within 20 px of) a settlement's culture square snaps to it.
+   Junctions joined by a stub of 8 px or less become one node.
 5. Class. Along each edge the ink is sampled on the skeleton: a solid road has no breaks; a dashed one breaks
    every ~11 px. A 40 px window's break count sets major or minor per pixel; an edge whose class changes part
    way is split there at a junction. Breaks inside bridges do not count.
@@ -54,6 +57,8 @@ SPUR_PX = 8
 STEP_PX = 3.0
 MARGIN_PX = 75          # the frame's rulers
 END_TO_GLYPH = 22
+MERGE_PX = 8            # junctions joined by a stub this short are one junction
+PAIR_PX = 30            # loose ends this close across a river or label are one road
 TOUCH_PX = 10           # a loose end this close to another line joins it whatever its direction
 GLYPH_REACH = 60        # a loose end reaches on to a glyph this far ahead
 M_PER_PX = f.UNITS_PER_PX / f.UNITS_PER_METRE
@@ -131,14 +136,14 @@ def snap_radius(s: dict) -> float:
     return max(SNAP_PX, (s.get("glyph_px") or 16) / 2 + 6)
 
 
-def road_ink(a, bg, province, region, glyphs, water, squares):
+def road_ink(a, bg, province, region, glyphs, water, squares, red_squares=None):
     """(ink, hidden): road-coloured pixels, and the pixels where a road may be hidden (unreadable)."""
     al, res = blend_fit(a, bg)
     step_len = np.linalg.norm(a - bg, axis=-1)
     along = np.sqrt(np.maximum(step_len ** 2 - res ** 2, 0)) / np.maximum(step_len, 1e-3)
     ink = (al > 0.15) & (along >= 0.95) & (res < 10)
     lum = a.mean(-1)
-    text = ndi.binary_dilation(lum < 90, iterations=2) & ~region
+    text = ndi.binary_dilation((lum < 90) & (np.linalg.norm(a - bg, axis=-1) > 30), iterations=2) & ~region
     gy = ndi.sobel(bg.mean(-1), 0)
     gx = ndi.sobel(bg.mean(-1), 1)
     step = ndi.binary_dilation(np.hypot(gx, gy) > 60, iterations=1)
@@ -147,6 +152,7 @@ def road_ink(a, bg, province, region, glyphs, water, squares):
     # over a culture square (and on a bridge over water) the road is drawn on top, in its own colour
     on_top = (np.linalg.norm(a - np.asarray(ROAD_RGB, np.float32), axis=-1) < 40) & (np.linalg.norm(a - bg, axis=-1) > 25)
     ink |= on_top & (squares | water) & ~(lines | glyphs | step | text)
+    ink &= ~(red_squares if red_squares is not None else False)
 
     lab, n_ = ndi.label(ink, np.ones((3, 3)))
     sizes = ndi.sum(ink, lab, range(1, n_ + 1))
@@ -302,9 +308,11 @@ def line_px(y0, x0, y1, x1) -> list[tuple[int, int]]:
 
 def bridge(sk: np.ndarray, hidden: np.ndarray, short: float = BRIDGE_SHORT, long: float = BRIDGE_LONG,
            angle: float = BRIDGE_ANGLE, keep_out: np.ndarray | None = None,
-           places: list | None = None, settlements: list | None = None) -> tuple[np.ndarray, list]:
+           places: list | None = None, settlements: list | None = None,
+           crossing: np.ndarray | None = None) -> tuple[np.ndarray, list]:
     """Join loose ends across gaps: a touching gap (TOUCH_PX) to any line, a short gap to any line ahead, a long
-    one only to a loose end facing back and only when at least 40% of it crosses hidden ground.
+    one only to a loose end facing back and only when at least 40% of it crosses `crossing` ground (water, a
+    label, a glyph: a road drawn over a culture square is visible there, so a square does not count).
     A loose end within GLYPH_REACH px of a settlement glyph centre ahead of it (within 35 degrees, over mostly hidden
     ground) runs on to it.
     Returns (skeleton with bridges drawn, bridges [(y0, x0, y1, x1)])."""
@@ -344,12 +352,15 @@ def bridge(sk: np.ndarray, hidden: np.ndarray, short: float = BRIDGE_SHORT, long
                 # a long gap only joins two loose ends that face each other
                 od = enddir.get((int(ty), int(tx)))
                 back = -(v[i, 0] * od[0] + v[i, 1] * od[1]) / dist[i] if od is not None else -1
-                lo, tot = (0.3, 1.1) if dist[i] <= 45 else (0.8, 1.7)   # wide water: nearly straight on
+                hid = np.mean([(crossing if crossing is not None else hidden)[p] for p in seg]) if seg else 1.0
+                # up to 65 px across mostly hidden ground (a river, a label) the two ends may curve a little;
+                # beyond that (wide water) only a straight-on pair is a crossing
+                lo, tot = (0.3, 1.1) if dist[i] <= 45 or (dist[i] <= 65 and hid >= 0.6) else (0.9, 1.85)
                 if min(back, cosang[i]) < lo or back + cosang[i] < tot:
                     continue
                 if not seg:
                     continue
-                hid = np.mean([hidden[p] for p in seg])
+                hid = np.mean([(crossing if crossing is not None else hidden)[p] for p in seg])
                 if hid < 0.4:
                     continue
             if keep_out is not None and any(keep_out[p] for p in seg):
@@ -398,6 +409,24 @@ def reach_glyphs(sk: np.ndarray, places: list, hidden: np.ndarray,
             for p in line_px(y, x, *best):
                 sk[p] = True
             out.append((y, x, *best))
+    return sk, out
+
+
+def pair_ends(sk: np.ndarray, crossing: np.ndarray, within: float = PAIR_PX) -> tuple[np.ndarray, list]:
+    """Two loose ends still facing each other within `within` px across a river or a label (half the way at
+    least over `crossing` ground) are one road: join them, nearest pairs first."""
+    sk = sk.copy()
+    ends = [(int(y), int(x)) for y, x, _, _ in end_tangents(sk)]
+    pairs = sorted((math.dist(a, b), a, b) for i, a in enumerate(ends) for b in ends[i + 1:]
+                   if 0 < math.dist(a, b) <= within)
+    used, out = set(), []
+    for _, a, b in pairs:
+        if a in used or b in used or hidden_share(crossing, *a, *b) < 0.5:
+            continue
+        used |= {a, b}
+        for p in line_px(*a, *b):
+            sk[p] = True
+        out.append((*a, *b))
     return sk, out
 
 
@@ -504,7 +533,7 @@ def polyline_length(pts) -> float:
 
 def snap_places(nodes_xy: list, symbols: list, degrees=None) -> list:
     """For each node (px, py): the index of the place glyph it snaps to, or None. An end snaps within the
-    glyph's snap radius or on (or within 10 px of) its culture square (the road has reached the settlement); a junction
+    glyph's snap radius or on (or within 20 px of) its culture square (the road has reached the settlement); a junction
     only inside the glyph itself (a road passing beside a glyph is not pulled)."""
     out = []
     for k, (x, y) in enumerate(nodes_xy):
@@ -513,7 +542,7 @@ def snap_places(nodes_xy: list, symbols: list, degrees=None) -> list:
         for i, s in enumerate(symbols):
             d = math.hypot(s["px"] - x, s["py"] - y)
             in_square = end and s.get("square_cells") and max(abs(s["px"] - x), abs(s["py"] - y)) <= (
-                20 * s["square_cells"] + 12)
+                20 * s["square_cells"] + 22)
             if (d <= (snap_radius(s) if end else glyph_radius(s)) or in_square) and d < bd:
                 best, bd = i, d
         out.append(best)
@@ -656,6 +685,52 @@ def build_roads(sk, ink, skipmask, symbols, weight=None):
     for n in out_nodes:
         if n["kind"] != "place":
             n["kind"] = "junction" if deg2[n["id"]] >= 2 else "end"
+    return merge_close_junctions(out_nodes, out_edges)
+
+
+def merge_close_junctions(nodes: list, edges: list, within: float = MERGE_PX) -> tuple[list, list]:
+    """Junctions a few px apart (where dashes meet) become one node at their mean; edges between them go."""
+    parent = list(range(len(nodes)))
+
+    def root(i):
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+    for e in edges:
+        a, b = nodes[e["from"]], nodes[e["to"]]
+        if (a["kind"] != "place" and b["kind"] != "place" and e["from"] != e["to"]
+                and polyline_length(e["points"]) <= within):
+            parent[root(e["from"])] = root(e["to"])
+    groups = {}
+    for i in range(len(nodes)):
+        groups.setdefault(root(i), []).append(i)
+    new_id, out_nodes = {}, []
+    for members in groups.values():
+        n = dict(nodes[members[0]])
+        if len(members) > 1:
+            n["px"] = round(sum(nodes[m]["px"] for m in members) / len(members), 2)
+            n["py"] = round(sum(nodes[m]["py"] for m in members) / len(members), 2)
+        n["id"] = len(out_nodes)
+        for m in members:
+            new_id[m] = n["id"]
+        out_nodes.append(n)
+    out_edges = []
+    for e in edges:
+        a, b = new_id[e["from"]], new_id[e["to"]]
+        if a == b and polyline_length(e["points"]) <= within:
+            continue
+        pts = [list(p) for p in e["points"]]
+        pts[0] = [out_nodes[a]["px"], out_nodes[a]["py"]]
+        pts[-1] = [out_nodes[b]["px"], out_nodes[b]["py"]]
+        out_edges.append({**e, "id": len(out_edges), "from": a, "to": b, "points": pts})
+    deg = [0] * len(out_nodes)
+    for e in out_edges:
+        deg[e["from"]] += 1
+        deg[e["to"]] += 1
+    for n in out_nodes:
+        if n["kind"] != "place":
+            n["kind"] = "junction" if deg[n["id"]] >= 2 else "end"
     return out_nodes, out_edges
 
 
@@ -702,21 +777,24 @@ def main() -> None:
     province &= ~(ruler | glyphs)
     region &= ~ruler
     squares = square_mask(a.shape[:2], symbols)
-    ink, hidden = road_ink(a, bg, province, region, glyphs, water, square_mask(a.shape[:2], symbols, True))
+    ink, hidden = road_ink(a, bg, province, region, glyphs, water, square_mask(a.shape[:2], symbols, True),
+                          square_mask(a.shape[:2], symbols) & ~square_mask(a.shape[:2], symbols, True))
     ink &= ~ruler
     hidden = hidden | water | ruler | squares
     places = [(int(s["py"]), int(s["px"])) for s in symbols]
+    crossing = hidden & ~squares | water | glyphs | ruler
     settlements = [(int(s["py"]), int(s["px"])) for s in symbols if s["glyph"] == "settlement"]
 
     sk = prune(skeleton(ndi.binary_dilation(ink, iterations=3)))
-    sk, br1 = bridge(sk, hidden, places=places, settlements=settlements)
+    sk, br1 = bridge(sk, hidden, places=places, settlements=settlements, crossing=crossing)
     sk = prune(skeleton(ndi.binary_dilation(sk, iterations=1)))
-    sk, br2 = bridge(sk, hidden, places=places, settlements=settlements)
+    sk, br2 = bridge(sk, hidden, places=places, settlements=settlements, crossing=crossing)
     sk = prune(skeleton(ndi.binary_dilation(sk, iterations=1)))
     sk, br3 = reach_glyphs(sk, places, hidden)
-    (CHECK / "bridges.json").write_text(json.dumps([[int(v) for v in b] for b in br1 + br2 + br3]))
+    sk, br4 = pair_ends(sk, crossing)
+    (CHECK / "bridges.json").write_text(json.dumps([[int(v) for v in b] for b in br1 + br2 + br3 + br4]))
     bridged = np.zeros_like(sk)
-    for y0, x0, y1, x1 in br1 + br2 + br3:
+    for y0, x0, y1, x1 in br1 + br2 + br3 + br4:
         for p in line_px(y0, x0, y1, x1):
             bridged[p] = True
     bridged = ndi.binary_dilation(bridged, iterations=1)

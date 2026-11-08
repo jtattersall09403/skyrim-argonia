@@ -6,7 +6,7 @@
 {"id":"102","kind":"junction","px":786.17,"py":1168.83,"world_x":-174864.4,"world_y":-632592.4}
 {"id":"103","kind":"junction","px":969.35,"py":1177.2,"world_x":-137349.1,"world_y":-634306.6}
 {"id":"104","kind":"junction","px":2777.17,"py":1181.83,"world_x":232892.4,"world_y":-635254.8}
-{"id":"105","kind":"end","px":971.5,"py":1203.5,"world_x":-136908.8,"world_y":-639692.8}
+{"id":"105","kind":"junction","px":971.5,"py":1203.5,"world_x":-136908.8,"world_y":-639692.8}
 {"id":"106","kind":"junction","px":2240.5,"py":1214.0,"world_x":122982.4,"world_y":-641843.2}
 {"id":"107","kind":"place","place_id":"hixinoag","px":695.5,"py":1219.0,"world_x":-193433.6,"world_y":-642867.2}
 {"id":"108","kind":"place","place_id":"outpost-m2-m79","px":1588.6,"py":1222.2,"world_x":-10526.7,"world_y":-643522.6}
@@ -50,7 +50,7 @@
 {"id":"142","kind":"place","place_id":"farm-28-m87","px":2782.0,"py":1554.0,"world_x":233881.6,"world_y":-711475.2}
 {"id":"143","kind":"junction","px":755.5,"py":1585.5,"world_x":-181145.6,"world_y":-717926.4}
 {"id":"144","kind":"junction","px":2403.5,"py":1586.25,"world_x":156364.8,"world_y":-718080.0}
-{"id":"145","kind":"end","px":2868.5,"py":1586.75,"world_x":251596.8,"world_y":-718182.4}
+{"id":"145","kind":"junction","px":2868.5,"py":1586.75,"world_x":251596.8,"world_y":-718182.4}
 {"id":"146","kind":"place","place_id":"truowa","px":2163.2,"py":1611.0,"world_x":107151.4,"world_y":-723148.8}
 {"id":"147","kind":"place","place_id":"kothringi-ruin-m24-m89","px":705.5,"py":1614.2,"world_x":-191385.6,"world_y":-723804.2}
 {"id":"148","kind":"junction","px":1110.0,"py":1615.0,"world_x":-108544.0,"world_y":-723968.0}
@@ -109,7 +109,7 @@
 {"id":"196","kind":"junction","px":1949.83,"py":2017.83,"world_x":63453.2,"world_y":-806467.6}
 {"id":"197","kind":"junction","px":2716.5,"py":2022.5,"world_x":220467.2,"world_y":-807424.0}
 {"id":"198","kind":"junction","px":738.5,"py":2040.75,"world_x":-184627.2,"world_y":-811161.6}
-{"id":"199","kind":"end","px":1238.5,"py":2054.5,"world_x":-82227.2,"world_y":-813977.6}
+{"id":"199","kind":"junction","px":1238.5,"py":2054.5,"world_x":-82227.2,"world_y":-813977.6}
 {"id":"2","kind":"place","place_id":"outpost-m3-m60","px":1550.6,"py":448.1,"world_x":-18309.1,"world_y":-484986.9}
 {"id":"20","kind":"junction","px":1802.83,"py":599.83,"world_x":33347.6,"world_y":-516061.2}
 {"id":"200","kind":"place","place_id":"tapauo","px":2381.6,"py":2055.2,"world_x":151879.7,"world_y":-814121.0}
@@ -337,7 +337,7 @@
 {"id":"7","kind":"junction","px":1544.5,"py":514.25,"world_x":-19558.4,"world_y":-498534.4}
 {"id":"70","kind":"junction","px":957.21,"py":926.36,"world_x":-139835.4,"world_y":-582934.5}
 {"id":"71","kind":"junction","px":1450.5,"py":964.5,"world_x":-38809.6,"world_y":-590745.6}
-{"id":"72","kind":"end","px":2421.5,"py":971.25,"world_x":160051.2,"world_y":-592128.0}
+{"id":"72","kind":"junction","px":2421.5,"py":971.25,"world_x":160051.2,"world_y":-592128.0}
 {"id":"73","kind":"place","place_id":"yuva-goli","px":2974.6,"py":977.2,"world_x":273326.1,"world_y":-593346.6}
 {"id":"74","kind":"place","place_id":"outpost-m15-m73","px":1066.6,"py":981.2,"world_x":-117432.3,"world_y":-594165.8}
 {"id":"75","kind":"junction","px":1000.5,"py":990.5,"world_x":-130969.6,"world_y":-596070.4}
@@ -367,3 +367,7 @@
 {"id":"97","kind":"place","place_id":"outpost-6-m77","px":1901.6,"py":1145.2,"world_x":53575.7,"world_y":-627753.0}
 {"id":"98","kind":"place","place_id":"icalca","px":2109.6,"py":1147.2,"world_x":96174.1,"world_y":-628162.6}
 {"id":"99","kind":"place","place_id":"arorha","px":2890.5,"py":1153.0,"world_x":256102.4,"world_y":-629350.4}
+{"id":"n-abandoned-village-m10-m100","kind":"place","place_id":"abandoned-village-m10-m100","px":1254.5,"py":2070.3,"world_x":-78950.4,"world_y":-817213.4}
+{"id":"n-logging-camp-m20-m107","kind":"place","place_id":"logging-camp-m20-m107","px":860.0,"py":2344.0,"world_x":-159744.0,"world_y":-873267.2}
+{"id":"n-noota-nara","kind":"place","place_id":"noota-nara","px":2426.5,"py":938.0,"world_x":161075.2,"world_y":-585318.4}
+{"id":"n-seafalls","kind":"place","place_id":"seafalls","px":2854.5,"py":1626.0,"world_x":248729.6,"world_y":-726220.8}

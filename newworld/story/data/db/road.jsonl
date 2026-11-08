@@ -367,3 +367,8 @@
 {"id":"97","road_class_id":"minor","from_node_id":"272","to_node_id":"193","length_m":447.0,"crosses_water_m":0.0}
 {"id":"98","road_class_id":"minor","from_node_id":"175","to_node_id":"312","length_m":451.3,"crosses_water_m":0.0}
 {"id":"99","road_class_id":"minor","from_node_id":"312","to_node_id":"313","length_m":205.1,"crosses_water_m":0.0}
+{"id":"join-abandoned-village-m10-m100","road_class_id":"minor","from_node_id":"199","to_node_id":"n-abandoned-village-m10-m100","length_m":65.8,"crosses_water_m":0.0}
+{"id":"join-gul-tej","road_class_id":"major","from_node_id":"105","to_node_id":"101","length_m":133.6,"crosses_water_m":35.6}
+{"id":"join-logging-camp-m20-m107","road_class_id":"major","from_node_id":"236","to_node_id":"n-logging-camp-m20-m107","length_m":121.3,"crosses_water_m":0.0}
+{"id":"join-noota-nara","road_class_id":"minor","from_node_id":"72","to_node_id":"n-noota-nara","length_m":98.4,"crosses_water_m":17.9}
+{"id":"join-seafalls","road_class_id":"minor","from_node_id":"145","to_node_id":"n-seafalls","length_m":121.9,"crosses_water_m":18.8}

@@ -1,0 +1,10 @@
+{
+ "about": "Joins the road tracer cannot see, found by checking each dead end on the map by eye: the road continues to the place under a label or a culture square. Each joins the road node at 'end' (map px) to the place 'place'.",
+ "join": [
+  {"end": [2421, 971], "place": "noota-nara", "why": "the dashed road curls up into Noota Nara's square"},
+  {"end": [971, 1203], "place": "gul-tej", "why": "the road runs on into Gul-Tej's square"},
+  {"end": [2868, 1587], "place": "seafalls", "why": "the dashed road from the homestead continues down to Seafalls"},
+  {"end": [1238, 2054], "place": "abandoned-village-m10-m100", "why": "the dashes run under the 10.100 ruler label to the ruin"},
+  {"end": [901, 2337], "place": "logging-camp-m20-m107", "why": "the road passes the logging camp; its spur to the dot is hidden under the culture square"}
+ ]
+}

@@ -8,8 +8,9 @@ The rules, applied in order, each cell keeping the first that sets it:
 3. The rest by depth into the province: a cell's distance in cells from the province's outer edge (the open sea and
    the border with foreign land), measured over land and inland water, sets its base band: under 4 cells D2, under 10
    D3, under 16 D4, deeper D5. The edge is safer; the heartland is the most dangerous.
-4. The region's researched baseline (`region.danger_band_id`) moves that base one band toward itself (a quiet
-   region tames its deep cells, a dreadful one darkens its edge), never further.
+4. The region's researched baseline (`region.danger_band_id`), when two or more bands from that base, moves it one
+   band toward itself (a quiet region tames its deep cells, a dreadful one darkens its edge); a base one band from
+   the baseline stands, so the heart of a dreadful region keeps the province's worst band.
 5. A minor road lowers the cells it passes through by one band, never below D1.
 Sea cells take their region's baseline within 2 cells of a coast, and one band higher (at most D3) beyond.
 
@@ -85,7 +86,7 @@ def assign(w: db.World) -> None:
         b = next((bb for lim, bb in DEPTH if d < lim), "D5")
         reason = f"{d} cells from the province's edge"
         base = regions[cells[k].region_id].danger_band_id
-        if base and base != b:
+        if base and abs(RANK[base] - RANK[b]) >= 2:
             step = 1 if RANK[base] > RANK[b] else -1
             b = BAND[RANK[b] + step]
             reason += f"; moved toward {regions[cells[k].region_id].name}'s baseline {base}"

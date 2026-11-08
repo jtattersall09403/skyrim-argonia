@@ -341,6 +341,7 @@ def roads_and_borders(w: db.World) -> None:
     rd = json.loads(rp.read_text())
     places = {(round(r.px), round(r.py)): r.id for r in w.rows("place")}
     syms = json.loads((f.OUT / "symbols.json").read_text())
+    join_dead_ends(w, rd, syms)
     for n in rd["nodes"]:
         pid = None
         if n.get("place_index") is not None:
@@ -393,6 +394,32 @@ def terrain_and_water(w: db.World) -> None:
                  name=o.get("name"), area_m2=r["area_m2"], label_px=r["label_px"], label_py=r["label_py"],
                  flows=bool(o.get("flows", r["flows"])), flow_toward_deg=o.get("flow_toward_deg", r.get("flow_deg")),
                  flow_note=r.get("flow_note"), set_by="owner" if o else "derived", why=r["why"])
+
+
+def join_dead_ends(w: db.World, rd: dict, syms: list) -> None:
+    """Apply newworld/sources/road_corrections.json: each listed dead end is joined by a straight road of its own
+    class to the place it was checked to reach, and becomes a junction."""
+    cp = SRC / "road_corrections.json"
+    if not cp.exists():
+        return
+    sym_index = {(round(s["px"]), round(s["py"])): i for i, s in enumerate(syms)}
+    for j in json.loads(cp.read_text())["join"]:
+        node = min(rd["nodes"], key=lambda n: math.dist((n["px"], n["py"]), j["end"]))
+        if math.dist((node["px"], node["py"]), j["end"]) > 8:
+            raise ValueError(f"road correction: no node within 8 px of {j['end']}")
+        p = w.get("place", j["place"])
+        target = next((n for n in rd["nodes"] if n.get("place_index") is not None
+                       and math.dist((n["px"], n["py"]), (p.px, p.py)) < 3), None)
+        if target is None:
+            target = {"id": f"n-{j['place']}", "kind": "place", "px": p.px, "py": p.py,
+                      "place_index": sym_index.get((round(p.px), round(p.py)))}
+            rd["nodes"].append(target)
+        cls = next(e["class"] for e in rd["edges"] if node["id"] in (e["from"], e["to"]))
+        n = max(2, int(math.dist((node["px"], node["py"]), (p.px, p.py)) / 3))
+        pts = [[node["px"] + (p.px - node["px"]) * k / n, node["py"] + (p.py - node["py"]) * k / n] for k in range(n + 1)]
+        rd["edges"].append({"id": f"join-{j['place']}", "class": cls, "from": node["id"], "to": target["id"],
+                            "points": pts})
+        node["kind"] = "junction"
 
 
 def main() -> None:
