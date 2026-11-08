@@ -42,7 +42,9 @@ Grid: 40 px per Morrowind cell (8192 units); the edge labels print the absolute 
 Build everything from the sources: `python3 -m tools.newworld.raster`, `tiles`, `glyphs`, `consolidate`, `regions`,
 `roads`, `terrain`, `build_db`, `map_page` (each `tools.newworld.<name>`, with the venv's python).
 
+Acceptance, each requirement with its evidence: [research/nw-01-acceptance.md](research/nw-01-acceptance.md).
+
 Checked and closed on the final build: inside the red culture squares each road follows the drawn ink to the glyph's
 edge (only the last pixels to its centre are straight, inside the settlement's own footprint); entrance banks are
 knolls blended into the land, no rings; each river mouth is one estuary body (71 in all). Water-body kinds and flow
-are defaults by design: the owner sets them by hand in `newworld/sources/water_overrides.json` (nw-02).
+are defaults derived from the map; authoring them is nw-02's work (its brief: "correct water types authored and implemented"), by the owner's overrides in `newworld/sources/water_overrides.json`.
