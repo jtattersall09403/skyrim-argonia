@@ -32,6 +32,10 @@ else
     "$key:$codekey" "$esm" "$(echo "$t1 - $t0" | bc)" "$stamp.tmp"
   mv "$stamp.tmp" "$stamp"
 fi
+# the native map (nw-02 step 11): settlement markers and MNAM/ONAM, applied whenever the ESM lacks this build's map
+"$py" -m tools.newworld.world.mapdata build >/dev/null
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" >/dev/null || dotnet "$bin/ArgoniaPlugin.dll" nwmap apply "$esm" "$out/map" "$data"
+dotnet "$bin/ArgoniaPlugin.dll" nwmap check "$esm" "$out/map" | tee "$out/map-check.txt"
 dotnet "$bin/ArgoniaPlugin.dll" newworld check "$esm" "$man" "$data" | tee "$out/check.txt"
 if [ "${NW_UPLOAD:-1}" = 1 ]; then
   id=$("$py" -c 'import json,sys; print(json.load(open(sys.argv[1]))["build_id"])' "$man")
