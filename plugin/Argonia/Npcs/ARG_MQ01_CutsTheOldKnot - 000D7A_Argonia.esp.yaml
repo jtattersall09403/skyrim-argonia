@@ -1,0 +1,30 @@
+FormKey: 000D7A:Argonia.esp
+EditorID: ARG_MQ01_CutsTheOldKnot
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  - Unique
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 20
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Factions:
+- Faction: 000D7C:Argonia.esp
+  Fluff: 0x000000
+Voice: 013AEF:Skyrim.esm
+Template: 160E6A:Black Marsh.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Cuts-the-Old-Knot

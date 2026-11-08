@@ -1,0 +1,28 @@
+FormKey: 000A50:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Empire's been gone from Black Marsh for two hundred years, sir. Imperial people stayed on, but the flag didn't, and I'd gone and thought I was joining the Legion.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Marsh? Two hundred years the Empire's been gone from it, they tell me. Plenty of our own people stayed on, but you won't find our flag, and I do keep looking for it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BC:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

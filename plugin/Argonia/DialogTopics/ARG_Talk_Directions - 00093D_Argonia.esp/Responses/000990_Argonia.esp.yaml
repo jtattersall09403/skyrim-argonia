@@ -1,0 +1,20 @@
+FormKey: 000990:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The cooking fire is in plain sight, about forty-five paces south-south-west of here. Walk straight to it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 141539:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

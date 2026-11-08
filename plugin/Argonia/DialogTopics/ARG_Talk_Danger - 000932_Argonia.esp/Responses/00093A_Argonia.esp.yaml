@@ -1,0 +1,20 @@
+FormKey: 00093A:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A Vale Deer lies dead about fifty paces south-east of here, child. Something killed it. I would not go looking to for the cause.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CB:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Dangers nearby

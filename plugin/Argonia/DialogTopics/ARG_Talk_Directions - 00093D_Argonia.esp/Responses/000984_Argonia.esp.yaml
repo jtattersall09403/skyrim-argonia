@@ -1,0 +1,20 @@
+FormKey: 000984:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The longboat? It is in plain sight. It lies about sixty-three paces east of here. You cannot miss it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7267:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

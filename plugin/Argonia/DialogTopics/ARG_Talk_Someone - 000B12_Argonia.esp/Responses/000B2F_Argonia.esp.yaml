@@ -1,0 +1,20 @@
+FormKey: 000B2F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Two Argonians loiter by the leeks to the north. Sheeh-Vos is about forty-five paces north-north-east, and Waits-For-Lanterns about the same distance north-east. I do not trust either of them. You there, what business do you have with them?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A206:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,20 @@
+FormKey: 000985:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Walk along the boards north-east, ninety paces or so. The longboat is there. You cannot miss it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7268:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

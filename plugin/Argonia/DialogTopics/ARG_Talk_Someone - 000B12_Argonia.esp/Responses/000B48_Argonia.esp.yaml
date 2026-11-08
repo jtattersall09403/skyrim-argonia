@@ -1,0 +1,20 @@
+FormKey: 000B48:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Wuleen-Taza is a few paces east-north-east of here. I stand by that one in everything. Azum-Kai the soldier is about a dozen paces east-south-east. He watches us too closely.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

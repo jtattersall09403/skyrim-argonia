@@ -1,0 +1,34 @@
+FormKey: 000C88:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_TG02_TopicClaimBeads_0
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_TG02_TopicClaimBeads_0
+    OnEnd:
+      ScriptName: TIF_ARG_TG02_TopicClaimBeads_0
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The beads are old family work. My family made them. They are worth nothing to a buyer.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C46:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C3B:Argonia.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: What do you claim from the lockbox?

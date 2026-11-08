@@ -1,0 +1,20 @@
+FormKey: 000A63:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Around Black Rose, an owing is taken at a crossing for "damage to the way". Then you work it off on the water. I have worked mine for nine seasons.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C725B:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

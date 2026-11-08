@@ -1,0 +1,65 @@
+FormKey: 2076BB:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: 01cellDUPLICATE002
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: Hall of the Scalded Throne
+Flags:
+- IsInteriorCell
+Lighting:
+  AmbientColor: '#00000000'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00000000'
+  FogPower: 1
+  AmbientColors:
+    DirectionalXPlus: '#00FFFFFF'
+    DirectionalXMinus: '#00FFFFFF'
+    DirectionalYPlus: '#00FFFFFF'
+    DirectionalYMinus: '#00FFFFFF'
+    DirectionalZPlus: '#00FFFFFF'
+    DirectionalZMinus: '#00FFFFFF'
+    Specular: '#00000000'
+    Scale: 1
+  FogFarColor: '#00000000'
+  FogMax: 1
+  Inherits:
+  - AmbientColor
+  - DirectionalColor
+  - FogColor
+  - FogNear
+  - FogFar
+  - ClipDistance
+  - FogPower
+  - FogMax
+  - LightFadeDistances
+WaterHeight: 0
+Persistent:
+- MutagenObjectType: PlacedObject
+  FormKey: 000D52:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ05_Seat
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 1E44EC:Black Marsh.esm
+  Placement:
+    Position: 354, 2419, -452
+- MutagenObjectType: PlacedObject
+  FormKey: 000D53:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ05_Broom
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 06717F:Skyrim.esm
+  Placement:
+    Position: 434, 2419, -422
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 166BC1:Black Marsh North.esp
+  Base: 000C11:Argonia.esp
+  Placement:
+    Position: 196.5548, 843.61505, -1016.2035
+MajorFlags:
+- 0x40000

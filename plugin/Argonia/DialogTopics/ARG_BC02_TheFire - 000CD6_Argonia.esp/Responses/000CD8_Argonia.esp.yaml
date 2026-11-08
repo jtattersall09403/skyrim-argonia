@@ -1,0 +1,26 @@
+FormKey: 000CD8:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The heirs' outer post, the old keep above Blackrose, is burning. How it started is not known. Three are bound inside. Says-It-Plain is held for speaking against the heirs. Hides-In-Reeds is held for a killing. Keeps-The-Old-Count, Rows-For-Another's mother, is working off what the heirs reckon she owes. Third-Born Tsaxi keeps the way in.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C9C:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000CBB:Argonia.esp
+  ComparisonValue: 20
+Prompt:
+  TargetLanguage: English
+  Value: What is burning above Blackrose?

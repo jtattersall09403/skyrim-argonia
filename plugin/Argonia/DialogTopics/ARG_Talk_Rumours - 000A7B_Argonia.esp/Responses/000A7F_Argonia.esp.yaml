@@ -1,0 +1,20 @@
+FormKey: 000A7F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Rumours? Helstrom and Stormhold have been rivals for a long time. I carried fares as far as the Stormhold side once. The people there haggled me down every time, so I do not go back.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E6:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

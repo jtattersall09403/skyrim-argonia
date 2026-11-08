@@ -1,0 +1,23 @@
+FormKey: 0008C5:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Back again, my friend. Mind the boards, the tide has them wet. I've a minute, if you want it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BD:Black Marsh North.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRelationshipRankConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1

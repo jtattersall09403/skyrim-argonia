@@ -1,0 +1,20 @@
+FormKey: 0009DE:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Look at the old stone columns, 27 paces north-east of here. There is an iron door 14 paces south-south-east that leads indoors. A house stands 34 paces south-south-west. That is all I count in this spot.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EA:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

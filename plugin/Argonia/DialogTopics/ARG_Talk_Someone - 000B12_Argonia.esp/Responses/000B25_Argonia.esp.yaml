@@ -1,0 +1,20 @@
+FormKey: 000B25:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: 'Counts-The-Bars watches the cage doors on the west side, about ninety paces east-north-east of here. Visitor, he is a nag: he reports every key I lose.'
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCFC:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

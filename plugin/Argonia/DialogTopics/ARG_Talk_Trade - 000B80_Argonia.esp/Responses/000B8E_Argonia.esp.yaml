@@ -1,0 +1,20 @@
+FormKey: 000B8E:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I haul the lines and the loads for whoever pays, here at the north end. A Dwemer ruin rises about forty paces south of here, so you cannot miss the place. Look at my hands if you doubt the work.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E3:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

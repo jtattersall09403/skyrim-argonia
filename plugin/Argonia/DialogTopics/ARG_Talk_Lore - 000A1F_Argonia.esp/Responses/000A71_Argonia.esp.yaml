@@ -1,0 +1,20 @@
+FormKey: 000A71:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Rose raised an army against the Empire in Empress Morihatha's day. Her battlemage Welloc broke it with a spell, not with soldiers. The town has not trusted a battlemage since. Neither do I.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 141539:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

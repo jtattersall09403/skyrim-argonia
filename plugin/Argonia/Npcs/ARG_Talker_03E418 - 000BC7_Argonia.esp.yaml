@@ -1,0 +1,33 @@
+FormKey: 000BC7:Argonia.esp
+EditorID: ARG_Talker_03E418
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Factions:
+- Faction: 000BC8:Argonia.esp
+  Fluff: 0x000000
+- Faction: 051596:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 0522B6:Skyrim.esm
+  Fluff: 0x000000
+Template: 03E417:Black Marsh North.esp
+Race: 013740:Skyrim.esm
+Class: 017008:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Looks-At-Books

@@ -1,0 +1,20 @@
+FormKey: 000976:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Rose Jail, traveller? Walk north for some thirty paces, until the marker post of Black Rose is on your left. Then climb north-east for about a hundred and eighty-five paces to the stone tower. Then north-east about forty more. The jail is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C7252:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

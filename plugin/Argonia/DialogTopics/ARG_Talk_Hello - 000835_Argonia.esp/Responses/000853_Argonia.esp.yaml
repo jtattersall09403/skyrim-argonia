@@ -1,0 +1,23 @@
+FormKey: 000853:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You are back, my friend. That is one face I know in a crowd of faces I do not. Stand by the doors with me a while.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE9:Black Marsh North.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetRelationshipRankConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1

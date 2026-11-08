@@ -1,0 +1,8 @@
+FormKey: 000CE1:Argonia.esp
+EditorID: ARG_BC02_ComeKiller
+Name:
+  TargetLanguage: English
+  Value: Come with me. I will get you out.
+Branch: 000CE0:Argonia.esp
+Quest: 000CBB:Argonia.esp
+SubtypeName: CUST

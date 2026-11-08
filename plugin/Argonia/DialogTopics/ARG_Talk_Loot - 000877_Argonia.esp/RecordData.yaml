@@ -1,8 +1,0 @@
-FormKey: 000877:Argonia.esp
-EditorID: ARG_Talk_Loot
-Name:
-  TargetLanguage: English
-  Value: Anything worth finding
-Branch: 000876:Argonia.esp
-Quest: 000833:Argonia.esp
-SubtypeName: CUST

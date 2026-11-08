@@ -1,0 +1,20 @@
+FormKey: 000B2B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Flaa Heet, the headman? He stands by the cooking spit, about twenty paces south. He knows everything, big one, everything. Hums-To-The-Rain is about twenty paces south-south-west, on the west side of the village. Hums-To-The-Rain sings too much.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1E9:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

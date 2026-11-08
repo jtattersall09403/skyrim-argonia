@@ -1,0 +1,87 @@
+FormKey: 0AFE55:Black Marsh.esm
+Flags:
+- HasWater
+Grid:
+  Point: 33, -18
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 03E3F7:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 03E3F6:Black Marsh North.esp
+  Placement:
+    Position: 136436.47, -70181.57, 97.28674
+    Rotation: 0, 0, 3.2831914
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454E5:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 1454E4:Black Marsh.esm
+  Placement:
+    Position: 137139.75, -71344.94, 165.78195
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454EA:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017142:Skyrim.esm
+  Placement:
+    Position: 137026.53, -70707.66, 233.72577
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454EB:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 01FC5D:Skyrim.esm
+  Placement:
+    Position: 136919.16, -70815.54, 232.72522
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454EC:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017140:Skyrim.esm
+  Placement:
+    Position: 137038.14, -70837.234, 241.81305
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454EF:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0199F8:Skyrim.esm
+  LevelModifier: Easy
+  Placement:
+    Position: 136827, -70386, 97
+    Rotation: 0, 0, 4.4831886
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454F0:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0199F8:Skyrim.esm
+  LevelModifier: Easy
+  Placement:
+    Position: 135590.92, -70356.945, 161.91306
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 1454F5:Black Marsh.esm
+  Base: 000C0F:Argonia.esp
+  Placement:
+    Position: 139017.52, -69674.766, 101.08594

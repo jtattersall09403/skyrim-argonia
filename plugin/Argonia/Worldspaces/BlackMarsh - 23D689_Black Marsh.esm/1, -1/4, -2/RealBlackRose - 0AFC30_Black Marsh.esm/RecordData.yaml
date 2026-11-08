@@ -1,0 +1,40 @@
+FormKey: 0AFC30:Black Marsh.esm
+EditorID: RealBlackRose
+Flags:
+- HasWater
+Grid:
+  Point: 32, -15
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 141561:Black Marsh North.esp
+  Base: 000C0B:Argonia.esp
+  Placement:
+    Position: 131458.88, -59108.37, 90.41642
+    Rotation: 0, 0, 0.20000185
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C7243:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 09A7AA:Skyrim.esm
+  Placement:
+    Position: 133785, -61106.17, 0
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C7259:Black Marsh.esm
+  Base: 000BF3:Argonia.esp
+  Placement:
+    Position: 134105.89, -60906.133, 0
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C725B:Black Marsh.esm
+  Base: 000BF5:Argonia.esp
+  Placement:
+    Position: 132905.31, -61408.89, 0
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C725D:Black Marsh.esm
+  Base: 000BF6:Argonia.esp
+  Placement:
+    Position: 131892.12, -60265.84, 0

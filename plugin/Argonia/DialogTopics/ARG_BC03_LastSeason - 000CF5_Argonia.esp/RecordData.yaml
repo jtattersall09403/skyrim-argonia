@@ -1,0 +1,8 @@
+FormKey: 000CF5:Argonia.esp
+EditorID: ARG_BC03_LastSeason
+Name:
+  TargetLanguage: English
+  Value: What is wrong with your crew?
+Branch: 000CF4:Argonia.esp
+Quest: 000CEC:Argonia.esp
+SubtypeName: CUST

@@ -1,0 +1,20 @@
+FormKey: 000937:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: State your business first, citizen. Then hear this. A giant crab, Old Salty, lives in the shallows, forty-five paces east-south-east of this bench. Giant mudcrabs sit on the shore sixty paces east-north-east. Keep clear of both.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E413:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Dangers nearby

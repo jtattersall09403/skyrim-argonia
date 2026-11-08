@@ -1,0 +1,20 @@
+FormKey: 000963:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Climb south about one hundred and seventy paces, until the waterfall is on your left. Then walk south-west some two hundred and eighty paces to the bridge on your left. Follow the shore south-west about eighty paces to the old stone columns on your left, then follow the shore south about a hundred paces more. Helstrom is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E8:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

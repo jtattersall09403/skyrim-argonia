@@ -21,6 +21,7 @@ Flags:
 - SmallWorld
 ObjectBoundsMin: -32, -32
 ObjectBoundsMax: 32, 41
+Music: 0C76D3:Skyrim.esm
 TopCell:
   FormKey: 01CCDA:Black Marsh North.esp
   IsCompressed: True

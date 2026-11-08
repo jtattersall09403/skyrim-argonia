@@ -1,0 +1,20 @@
+FormKey: 0009AF:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I keep this yard, visitor. It belongs to the plantation house. The house food barrels and the ingredient barrel stand about fifteen paces west of here, and the meat barrels about fifteen paces west-south-west. Do not touch them. Hereguard Plantation sells its crop in Lilmoth.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 00FF4E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

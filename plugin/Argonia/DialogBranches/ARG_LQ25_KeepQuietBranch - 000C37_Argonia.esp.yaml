@@ -1,0 +1,7 @@
+FormKey: 000C37:Argonia.esp
+EditorID: ARG_LQ25_KeepQuietBranch
+Quest: 000C28:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C38:Argonia.esp

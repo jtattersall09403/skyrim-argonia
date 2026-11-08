@@ -1,0 +1,7 @@
+FormKey: 000D59:Argonia.esp
+EditorID: ARG_MQ05_BasinBranch
+Quest: 000D0C:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D5A:Argonia.esp

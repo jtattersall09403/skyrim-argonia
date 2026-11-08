@@ -1,0 +1,42 @@
+FormKey: 000C6F:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_TG01_TopicBed_1
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_TG01_TopicBed_1
+    OnEnd:
+      ScriptName: TIF_ARG_TG01_TopicBed_1
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: That is a good drink, thank you. Keeps-What-Floats sits with me at the bench by the water until the lamps are low. Then he sleeps on a bedroll under the eaves of the shacks, north-west of the house. Shout at him and he runs.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C40:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C3A:Argonia.esp
+  ComparisonValue: 20
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 00000F:Skyrim.esm
+  ComparisonValue: 10
+Prompt:
+  TargetLanguage: English
+  Value: Where does Keeps-What-Floats sleep?

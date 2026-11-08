@@ -1,0 +1,33 @@
+FormKey: 000C6B:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_TG01_TopicTest_0
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_TG01_TopicTest_0
+    OnEnd:
+      ScriptName: TIF_ARG_TG01_TopicTest_0
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Chapter wants to see how you work. Keeps-What-Floats took a necklace of blue jaspers from another thief who was asleep. Bring it back and do not harm him. He carries the necklace on his round of the dock, so follow him. Sits-By-The-Water drinks with him.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000C3D:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000C3A:Argonia.esp
+Prompt:
+  TargetLanguage: English
+  Value: S'Tabi sent me about the Chapter.

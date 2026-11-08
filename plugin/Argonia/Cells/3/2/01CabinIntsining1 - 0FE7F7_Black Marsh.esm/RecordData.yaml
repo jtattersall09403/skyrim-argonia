@@ -1,0 +1,246 @@
+FormKey: 0FE7F7:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: 01CabinIntsining1
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: House
+Flags:
+- IsInteriorCell
+- HasWater
+- PublicArea
+- ShowSky
+Lighting:
+  AmbientColor: '#001F1F1F'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00877747'
+  FogFar: 2000
+  DirectionalFade: 1
+  FogPower: 0.7
+  AmbientColors:
+    DirectionalXPlus: '#00221F20'
+    DirectionalXMinus: '#001B1F1D'
+    DirectionalYPlus: '#001F201F'
+    DirectionalYMinus: '#001F1D1F'
+    DirectionalZPlus: '#000E0E0E'
+    DirectionalZMinus: '#002F2F2F'
+    Specular: '#00716C5E'
+    Scale: 1
+  FogFarColor: '#00716C5E'
+  FogMax: 1
+  Inherits:
+  - DirectionalColor
+  - FogNear
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - FogMax
+  - LightFadeDistances
+LightingTemplate: 068B3E:Skyrim.esm
+WaterHeight: 0
+SkyAndWeatherFromRegion: 0C5855:Skyrim.esm
+AcousticSpace: 0D78C2:Skyrim.esm
+Music: 01BA72:Skyrim.esm
+ImageSpace: 0CE16C:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedNpc
+  FormKey: 000DF0:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_NeshDeekaRef
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000DD6:Argonia.esp
+  Placement:
+    Position: 1620, 1250, 7441
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedNpc
+  FormKey: 000DF1:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ03_SaltsTheCatchRef
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000DD7:Argonia.esp
+  Placement:
+    Position: 1850, 800, 7631
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedObject
+  FormKey: 000DF2:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ03_HouseMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 00003B:Skyrim.esm
+  Placement:
+    Position: 1750, 950, 7567
+- MutagenObjectType: PlacedObject
+  FormKey: 000DF3:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ03_MatMarker
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 00003B:Skyrim.esm
+  Placement:
+    Position: 1550, 1150, 7483
+- MutagenObjectType: PlacedObject
+  FormKey: 000DF4:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ03_Mat1
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0B8371:Skyrim.esm
+  Placement:
+    Position: 1540, 1180, 7460
+- MutagenObjectType: PlacedObject
+  FormKey: 000DF5:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_MQ03_Mat2
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 0B8371:Skyrim.esm
+  Placement:
+    Position: 1540, 1060, 7511
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 0FE8B5:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 01B640:Dragonborn.esm
+  Placement:
+    Position: 2085.5354, 1186.4752, 7499.366
+    Rotation: 0, 0, 2.8
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 0FE8B6:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 01B645:Dragonborn.esm
+  Placement:
+    Position: 2362.3633, 1109.789, 7485.4204
+    Rotation: 0, 0, 3.883191
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF44:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 63030.77, -36352.164, 6320.9487
+    Rotation: 0, 0, 4.8831882
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF45:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61877.15, -36427.266, 6312.7383
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF46:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61173.89, -36605.13, 6325.7793
+    Rotation: 0, 0, 5.4831867
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF47:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61153.996, -34720.98, 6321.9565
+    Rotation: 0, 0, 3.6831903
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF48:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61610.566, -35354.57, 5737.376
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF49:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61781.64, -35302.734, 5737.376
+    Rotation: 0, 0, 2.6
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF4A:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61542.523, -36198.688, 5737.376
+    Rotation: 0, 0, 2
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF4B:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 62779.92, -35791.484, 5737.376
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF4C:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61670.188, -34275.91, 5121.519
+    Rotation: 0, 0, 3.283191
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF4D:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 61999.58, -34940.49, 5101.5063
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 17BF81:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 17BF43:Black Marsh.esm
+  Placement:
+    Position: 62769.53, -35977.19, 5101.5063
+  MajorFlags:
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

@@ -1,0 +1,21 @@
+FormKey: 03B21E:Black Marsh.esm
+EditorID: 01Captain
+Name:
+  TargetLanguage: English
+  Value: Welcome to Black Marsh
+Flags:
+- 0x10
+Priority: 30
+Type: Misc
+Stages:
+- Unknown: 40
+- Index: 1
+  Flags:
+  - StartUpStage
+  Unknown: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I hate this blasted place! So damn cold, why would anyone call this place home! Well any ways you look like you could use some adventure!
+NextAliasID: 0

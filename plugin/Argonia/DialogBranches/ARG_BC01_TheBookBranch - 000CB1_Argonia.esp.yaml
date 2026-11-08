@@ -1,0 +1,7 @@
+FormKey: 000CB1:Argonia.esp
+EditorID: ARG_BC01_TheBookBranch
+Quest: 000C9E:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CB2:Argonia.esp

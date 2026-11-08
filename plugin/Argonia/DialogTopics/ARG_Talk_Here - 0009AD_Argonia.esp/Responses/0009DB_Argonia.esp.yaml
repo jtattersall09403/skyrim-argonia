@@ -1,0 +1,20 @@
+FormKey: 0009DB:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: This is Helstrom, and I think it is the finest city there is. The Dwemer ruins rise just south of here, the nearer about sixteen paces off and the farther about thirty-three. There are iron doors too, about forty-two paces south-west and forty-four south-east, if you want to go indoors.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E6:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

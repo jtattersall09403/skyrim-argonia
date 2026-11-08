@@ -1,0 +1,7 @@
+FormKey: 000CD9:Argonia.esp
+EditorID: ARG_BC02_TheGateBranch
+Quest: 000CBB:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CDA:Argonia.esp

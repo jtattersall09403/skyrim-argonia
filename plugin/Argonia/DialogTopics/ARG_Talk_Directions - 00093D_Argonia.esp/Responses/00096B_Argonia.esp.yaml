@@ -1,0 +1,28 @@
+FormKey: 00096B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Ruins, buyer? Climb east some seventy paces to the stone tower. From there walk north-east about five hundred and forty paces, and Way to Ruins is waiting. I charge nothing for that walk. Hah.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Dwarven Ruins will cost you good boots. Walk south about four hundred and fifty paces until Helstrom is on your right. Then follow the shore south-east some seven hundred paces to the standing stone on your right. Follow the shore east about ninety paces to the bridge on your right, and cross it east for another thirty paces. Hah.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5F1:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

@@ -1,0 +1,8 @@
+FormKey: 000D5D:Argonia.esp
+EditorID: ARG_MQ05_QuarrelTopic
+Name:
+  TargetLanguage: English
+  Value: the silent Hist
+Branch: 000D5C:Argonia.esp
+Quest: 000D0C:Argonia.esp
+SubtypeName: CUST

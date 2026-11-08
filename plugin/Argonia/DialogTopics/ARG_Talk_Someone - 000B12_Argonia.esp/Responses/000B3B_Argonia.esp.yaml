@@ -1,0 +1,20 @@
+FormKey: 000B3B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Mends-The-Nets works east-south-east of here, about twenty paces. That is the cleverest person in the village. Ixa-Mee plays about twenty-two paces east. Ixa-Mee is a tattler. Keep your secrets from that one.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A85:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

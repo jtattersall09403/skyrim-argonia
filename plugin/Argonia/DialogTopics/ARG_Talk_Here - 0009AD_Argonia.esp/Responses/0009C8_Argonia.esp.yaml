@@ -1,0 +1,28 @@
+FormKey: 0009C8:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: This is our village, walker. A few families live here on the marsh outside Lilmoth. We pay no rents to it. The cooking spit is here. The carpenter's bench is five paces south-south-east and a food barrel stands five paces east-south-east.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: We keep a second hearth about thirty paces west, on the west edge of the village. It has food barrels, a cooking pot and a bed. Use none of it without asking.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1E7:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

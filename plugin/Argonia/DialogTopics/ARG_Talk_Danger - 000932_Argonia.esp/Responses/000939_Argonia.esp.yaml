@@ -1,0 +1,20 @@
+FormKey: 000939:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Easy water, traveller, but keep your eyes open to the south-south-east. A bear and her cubs roam about sixty-five paces off that way, and farther on, about a hundred paces more, a Tree Mother lives in the woods. Stay clear of both.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7C8:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Dangers nearby

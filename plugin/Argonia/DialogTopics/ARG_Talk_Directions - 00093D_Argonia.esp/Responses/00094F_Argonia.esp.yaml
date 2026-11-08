@@ -1,0 +1,28 @@
+FormKey: 00094F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The big ship? Climb south-east some thirty-five paces, outlander, until you reach the centre square of Thorn on your right. Then walk south, a hundred and forty paces or so. It is there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Climb south-east, thirty-five paces or so, until Thorn's centre square is on your right. After that, south for about a hundred and forty paces, outlander. You will see the big ship.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CD0A:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

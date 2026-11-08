@@ -1,0 +1,20 @@
+FormKey: 000933:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Slaughterfish swim about fifteen paces north of here and more about ten paces to the south-west. Giant mudcrabs sit on the shore about twenty-five paces south-south-west. Keep your feet out of the water, dry-foot.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512D:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Dangers nearby

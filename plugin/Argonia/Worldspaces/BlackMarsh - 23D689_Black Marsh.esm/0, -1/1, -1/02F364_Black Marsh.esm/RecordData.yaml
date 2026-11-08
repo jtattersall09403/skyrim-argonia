@@ -8,42 +8,63 @@ WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 0616E8:Black Marsh North.esp
-  Base: 0008F6:Argonia.esp
+  Base: 000BD1:Argonia.esp
   LinkedReferences:
   - Reference: 0616E9:Black Marsh North.esp
   Placement:
     Position: 50299.5, -5135.118, 29.056875
     Rotation: 0, 0, 3.2
 - MutagenObjectType: PlacedNpc
+  FormKey: 05D7C6:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 023A90:Skyrim.esm
+  Placement:
+    Position: 49375.27, -5740.114, 1.5258789E-05
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 05D7C7:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 023A90:Skyrim.esm
+  Placement:
+    Position: 50497.938, -5497.387, 0
+    Rotation: 0, 0, 3.88319
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
   FormKey: 05D7C8:Black Marsh.esm
-  Base: 0008F0:Argonia.esp
+  Base: 000BCB:Argonia.esp
   Placement:
     Position: 50119.01, -5827.914, 0
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7C9:Black Marsh.esm
-  Base: 0008F1:Argonia.esp
+  Base: 000BCC:Argonia.esp
   Placement:
     Position: 49550.17, -6304.2207, 0
     Rotation: 0, 0, 3.4831905
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CA:Black Marsh.esm
-  Base: 0008F2:Argonia.esp
+  Base: 000BCD:Argonia.esp
   Placement:
     Position: 49433.117, -5945.0874, 0
     Rotation: 0, 0, 5.6831865
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CB:Black Marsh.esm
-  Base: 0008F3:Argonia.esp
+  Base: 000BCE:Argonia.esp
   Placement:
     Position: 49245.14, -6306.804, 0
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CC:Black Marsh.esm
-  Base: 0008F4:Argonia.esp
+  Base: 000BCF:Argonia.esp
   Placement:
     Position: 49970.727, -5609.9243, 3.0517578E-05
     Rotation: 0, 0, 2.683192
 - MutagenObjectType: PlacedNpc
   FormKey: 05D7CD:Black Marsh.esm
-  Base: 0008F5:Argonia.esp
+  Base: 000BD0:Argonia.esp
   Placement:
     Position: 50146.617, -6530.093, 0

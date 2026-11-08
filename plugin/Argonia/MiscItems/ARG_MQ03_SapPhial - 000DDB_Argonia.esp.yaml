@@ -1,0 +1,8 @@
+FormKey: 000DDB:Argonia.esp
+EditorID: ARG_MQ03_SapPhial
+Name:
+  TargetLanguage: English
+  Value: Phial of Spilled Sap
+Model:
+  File: Meshes/Clutter/Potions/PotionHealthLesser.nif
+Weight: 0.2

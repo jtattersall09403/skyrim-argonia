@@ -1,0 +1,62 @@
+FormKey: 00BEE3:Black Marsh North.esp
+EditorID: Thorn1
+Flags:
+- HasWater
+Grid:
+  Point: 5, 15
+  Flags: -1417507584
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 01CCE9:Black Marsh North.esp
+  Base: 000BAC:Argonia.esp
+  LinkedReferences:
+  - Reference: 01CCE7:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 01CCE7:Black Marsh North.esp
+  Placement:
+    Position: 23000.36, 64612.598, 121.38588
+- MutagenObjectType: PlacedNpc
+  FormKey: 01CCF2:Black Marsh North.esp
+  Base: 000BB0:Argonia.esp
+  LinkedReferences:
+  - Reference: 01CCF3:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 01CCF3:Black Marsh North.esp
+  Placement:
+    Position: 22700.986, 61955.316, 1421.225
+    Rotation: 0, 0, 3.6831903
+- MutagenObjectType: PlacedNpc
+  FormKey: 01CCF4:Black Marsh North.esp
+  Base: 000BB1:Argonia.esp
+  LinkedReferences:
+  - Reference: 01CCF5:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 01CCF5:Black Marsh North.esp
+  Placement:
+    Position: 23010.016, 61849.88, 1421.225
+    Rotation: 0, 0, 6.0831904
+- MutagenObjectType: PlacedNpc
+  FormKey: 01CD0A:Black Marsh North.esp
+  Base: 000BB8:Argonia.esp
+  LinkedReferences:
+  - Reference: 01CD09:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 01CD09:Black Marsh North.esp
+  Placement:
+    Position: 22302.605, 62973.938, 139.23698
+- MutagenObjectType: PlacedNpc
+  FormKey: 037DFE:Black Marsh North.esp
+  Base: 000BC2:Argonia.esp
+  Placement:
+    Position: 22477.814, 61443.824, 190.44418
+    Rotation: 0, 0, 2.8
+- MutagenObjectType: PlacedNpc
+  FormKey: 0934C1:Black Marsh North.esp
+  Base: 000BE7:Argonia.esp
+  Placement:
+    Position: 22108.871, 64866.277, 139.3963

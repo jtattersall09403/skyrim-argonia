@@ -1,0 +1,20 @@
+FormKey: 000A4C:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: My people, the Agaceph, travel on thin rafts made for one, pushed along by the tail. I have never trusted anything bigger. As for Helstrom, no army has ever taken it. After the Battle of Argonia the Empire never tried.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

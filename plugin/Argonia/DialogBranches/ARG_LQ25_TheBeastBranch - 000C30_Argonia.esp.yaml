@@ -1,0 +1,7 @@
+FormKey: 000C30:Argonia.esp
+EditorID: ARG_LQ25_TheBeastBranch
+Quest: 000C28:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C31:Argonia.esp

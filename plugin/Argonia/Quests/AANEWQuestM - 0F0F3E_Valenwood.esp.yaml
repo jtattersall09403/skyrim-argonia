@@ -1,0 +1,24 @@
+FormKey: 0F0F3E:Valenwood.esp
+EditorID: AANEWQuestM
+Name:
+  TargetLanguage: English
+  Value: Welcome To Valenwood
+Flags:
+- 0x10
+Type: MainQuest
+Stages:
+- {}
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Help lady gather her things.
+- Index: 20
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Speak to the Guard.
+NextAliasID: 0

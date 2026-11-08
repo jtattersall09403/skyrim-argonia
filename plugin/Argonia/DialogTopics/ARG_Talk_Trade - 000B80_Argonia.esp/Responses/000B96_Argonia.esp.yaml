@@ -1,0 +1,20 @@
+FormKey: 000B96:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I'm with the hired company, sir. We sign on for a season and are paid at the end of it; not what I pictured when I put my name down, I'll admit. Decimus Pell, one of the company, still calls me 'boy', and he's cold with it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BC:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

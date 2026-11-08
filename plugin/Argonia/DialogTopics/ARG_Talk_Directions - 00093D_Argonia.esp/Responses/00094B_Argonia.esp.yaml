@@ -1,0 +1,28 @@
+FormKey: 00094B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The bridge? Follow the path north-west some thirty-five paces, until the dead tree stands on your right. Then keep north-west for about three hundred and fifty paces, and you are at the bridge.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You want the bridge, traveller. Take the path north-west, thirty-five paces or so, past a dead tree on your right. From there, walk north-west about three hundred and fifty paces, and the bridge is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCF4:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

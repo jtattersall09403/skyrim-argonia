@@ -1,0 +1,28 @@
+FormKey: 000A35:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Heita-Meen was a slave of Thorn, outlander. Heita-Meen killed Councillor Glathis Dres and took the Archein guard by duel. The freeing of the Argonians began here.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An Owing grows, outlander. Spoilage, breakage, sickness and even the food in the debtor's own mouth are all added to the account.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CD0A:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

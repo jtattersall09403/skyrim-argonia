@@ -1,0 +1,20 @@
+FormKey: 0009DA:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is a bench about twenty paces east-north-east of here. An iron door about thirty-four paces north-east leads indoors. The houses are further off, about sixty-four paces south-south-east and sixty-seven paces east-south-east.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E3:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

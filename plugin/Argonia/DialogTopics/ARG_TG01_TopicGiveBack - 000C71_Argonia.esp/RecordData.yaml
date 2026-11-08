@@ -1,0 +1,8 @@
+FormKey: 000C71:Argonia.esp
+EditorID: ARG_TG01_TopicGiveBack
+Name:
+  TargetLanguage: English
+  Value: Give me the jasper necklace.
+Branch: 000C70:Argonia.esp
+Quest: 000C3A:Argonia.esp
+SubtypeName: CUST

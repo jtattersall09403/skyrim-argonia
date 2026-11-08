@@ -1,0 +1,28 @@
+FormKey: 0AFC38:Black Marsh.esm
+Flags:
+- HasWater
+Grid:
+  Point: 33, -12
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C7237:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 002C02:Dawnguard.esm
+  Placement:
+    Position: 135692.62, -48272.97, -3.0517578E-05
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C7238:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 002C02:Dawnguard.esm
+  Placement:
+    Position: 137162.89, -46161.785, -3.0517578E-05
+  MajorFlags:
+  - InitiallyDisabled

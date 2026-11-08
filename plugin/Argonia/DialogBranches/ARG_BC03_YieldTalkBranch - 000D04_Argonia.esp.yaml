@@ -1,0 +1,7 @@
+FormKey: 000D04:Argonia.esp
+EditorID: ARG_BC03_YieldTalkBranch
+Quest: 000CEC:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D05:Argonia.esp

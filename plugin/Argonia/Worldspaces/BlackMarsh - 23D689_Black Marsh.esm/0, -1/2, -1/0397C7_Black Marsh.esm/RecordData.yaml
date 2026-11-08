@@ -1,0 +1,18 @@
+FormKey: 0397C7:Black Marsh.esm
+Flags:
+- HasWater
+Grid:
+  Point: 19, -7
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 08D64F:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 045D4D:Black Marsh North.esp
+  Placement:
+    Position: 79090.95, -26552.074, 0
+  MajorFlags:
+  - InitiallyDisabled

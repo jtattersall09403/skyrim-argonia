@@ -1,0 +1,7 @@
+FormKey: 000999:Argonia.esp
+EditorID: ARG_Talk_HarvestBranch
+Quest: 000833:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 00099A:Argonia.esp

@@ -1,0 +1,25 @@
+FormKey: 000D3B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I know something about the north reeds, and I am not ready to say it. It shames me. Give me honest reasons to speak, and I will think on it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000D0F:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D0B:Argonia.esp
+  ComparisonValue: 30
+Prompt:
+  TargetLanguage: English
+  Value: the boat

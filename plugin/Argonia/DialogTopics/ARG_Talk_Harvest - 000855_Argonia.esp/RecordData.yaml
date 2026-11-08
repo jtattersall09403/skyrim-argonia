@@ -1,8 +1,0 @@
-FormKey: 000855:Argonia.esp
-EditorID: ARG_Talk_Harvest
-Name:
-  TargetLanguage: English
-  Value: Plants and ingredients
-Branch: 000854:Argonia.esp
-Quest: 000833:Argonia.esp
-SubtypeName: CUST

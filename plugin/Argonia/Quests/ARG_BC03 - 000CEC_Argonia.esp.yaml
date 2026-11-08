@@ -1,0 +1,175 @@
+FormKey: 000CEC:Argonia.esp
+EditorID: ARG_BC03
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_BC03
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Broker
+      Object: 000CEC:Argonia.esp
+      Alias: 0
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ChainbreakersStanding
+      Object: 000C9B:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrewBoss
+      Object: 000CEC:Argonia.esp
+      Alias: 1
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Gold001
+      Object: 00000F:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tokens
+      Object: 000CEF:Argonia.esp
+  FileName: ARG_QF_BC03
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_10
+  - Stage: 20
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_30
+  - Stage: 90
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_92
+  - Stage: 94
+    ScriptName: ARG_QF_BC03
+    FragmentName: Fragment_94
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000CEC:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CEC:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+  - Property:
+      Name: ''
+      Object: 000CEC:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CEC:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 10
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+Name:
+  TargetLanguage: English
+  Value: The Broker's Mercy
+Flags:
+- StartGameEnabled
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years, refused to let Heavy-Rope's crew end their last season early. The crew know me as the Chainbreakers'. I'm to hear Ussa-Rekh and Heavy-Rope on the dock and take one side.
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I stood with Heavy-Rope's crew on Soulrest's open dock. Ussa-Rekh keeps their carved tokens in the chest beside him on the dock, and he promised that a crew who break their tokens before him are done with him. I'm to take the tokens from the chest and give them to Heavy-Rope.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I stood with Ussa-Rekh on Soulrest's open dock. Heavy-Rope will not take the refusal from a stranger's mouth. I'm to talk him into taking it, or pay his crew to take it.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: "On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with the crew: I took their tokens from Ussa-Rekh's chest and gave them to Heavy-Rope, and the crew broke them before him. They are done with him a season early, and he will hire neither of them again."
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with Ussa-Rekh and talked Heavy-Rope into taking the refusal. The crew will work their last season under him.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. I stood with Ussa-Rekh and paid Heavy-Rope's crew 50 gold to take the refusal. The crew will work their last season under him.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: On Soulrest's open dock the broker Ussa-Rekh, who bought out Owings for thirty years and hires out the crews he freed, refused to let Heavy-Rope's crew end their last season early. One of them is dead, and the matter died with him.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: On Soulrest's open dock, hear Ussa-Rekh and Heavy-Rope, then stand with one of them.
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Take the crew's tokens from Ussa-Rekh's chest on Soulrest's dock and give them to Heavy-Rope.
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: Talk Heavy-Rope into taking Ussa-Rekh's refusal, or pay his crew 50 gold to take it.
+Aliases:
+- Name: Broker
+  Flags:
+  - Essential
+  ForcedReference: 000CF1:Argonia.esp
+- ID: 1
+  Name: CrewBoss
+  Flags:
+  - Essential
+  ForcedReference: 000CF2:Argonia.esp
+- ID: 2
+  Name: Chest
+  Flags: []
+  ForcedReference: 000CF3:Argonia.esp
+- ID: 3
+  Name: Tokens
+  Flags:
+  - QuestObject
+  CreateReferenceToObject:
+    Object: 000CEF:Argonia.esp
+    AliasID: 2
+    Create: In

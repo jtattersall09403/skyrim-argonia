@@ -1,0 +1,7 @@
+FormKey: 000E07:Argonia.esp
+EditorID: ARG_MQ03_TheNightBranch
+Quest: 000D68:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000E08:Argonia.esp

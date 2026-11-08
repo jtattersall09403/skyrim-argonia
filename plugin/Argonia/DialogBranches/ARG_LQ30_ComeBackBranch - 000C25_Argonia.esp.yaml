@@ -1,0 +1,7 @@
+FormKey: 000C25:Argonia.esp
+EditorID: ARG_LQ30_ComeBackBranch
+Quest: 000C14:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C26:Argonia.esp

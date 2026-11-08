@@ -1,0 +1,7 @@
+FormKey: 000CD5:Argonia.esp
+EditorID: ARG_BC02_TheFireBranch
+Quest: 000CBB:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CD6:Argonia.esp

@@ -1,0 +1,20 @@
+FormKey: 000B15:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Okan-Wul is usually about five paces north of here, and I see that Okan-Wul eats. Tumeesh is about twenty-five paces north-north-east, and sweet, but lazy. Uleesh fishes the shallows below Lilmoth's walls, about forty-five paces east. He is the most honest man outside them.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01512B:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

@@ -1,0 +1,20 @@
+FormKey: 00099F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Leeks? There are wild leeks about fifty paces north-west, by the fish barrels. I hate the fish barrels. Moss, too, big one. Emperor Parasol Moss, hanging, about sixty paces north. Why do you want it?
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A1E9:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Plants and ingredients

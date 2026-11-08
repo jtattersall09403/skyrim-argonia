@@ -1,0 +1,20 @@
+FormKey: 000B39:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Little-Gecko sits ten paces west-south-west of here. Little-Gecko is a baby. Xeeh-Nah works fifteen paces south. Xeeh-Nah is the strongest person alive! Go and see for yourself, warrior.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CC:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

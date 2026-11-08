@@ -1,0 +1,20 @@
+FormKey: 000B37:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Seeks-The-Channel, the boat captain, stands about ten paces east of here. She is the best captain there is. Feldril Nethri, the Dunmer, works about fifteen paces north-east. He is kind to me, miss.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 05D7CA:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

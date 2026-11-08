@@ -1,0 +1,27 @@
+FormKey: 03978F:Black Marsh.esm
+EditorID: Village
+Name:
+  TargetLanguage: English
+  Value: Low-Reed Village
+Flags:
+- HasWater
+Grid:
+  Point: 22, -4
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 084A86:Black Marsh.esm
+  Base: 000BD3:Argonia.esp
+  Placement:
+    Position: 93819.555, -12497.489, 118.97345
+- MutagenObjectType: PlacedNpc
+  FormKey: 084A87:Black Marsh.esm
+  Base: 000BD4:Argonia.esp
+  Placement:
+    Position: 93457.84, -12975.926, 109.09828
+- MutagenObjectType: PlacedNpc
+  FormKey: 084A91:Black Marsh.esm
+  Base: 000BD7:Argonia.esp
+  Placement:
+    Position: 90478.516, -13595.791, -58.079704

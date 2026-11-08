@@ -1,0 +1,20 @@
+FormKey: 000B9D:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: I am a soldier of the rising against the Owings. We mean to break the Tax Heel's ledgers before anything else. The Tax Heel are the collectors the field-owners send for their Owings and tolls.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934C5:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: My trade

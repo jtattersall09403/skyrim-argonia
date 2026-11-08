@@ -1,0 +1,20 @@
+FormKey: 000A26:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: "Black Marsh? I am no scholar, outlander. Only a cook, or I was. I can tell you how an Owing goes, though. It grows. Spoilage, breakage, sickness, even what the debtor eats to stay alive: all of it is added to the account. Please don't tell anyone I said so."
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE0:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

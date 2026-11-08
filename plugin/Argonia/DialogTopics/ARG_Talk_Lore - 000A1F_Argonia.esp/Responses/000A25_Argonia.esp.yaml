@@ -1,0 +1,28 @@
+FormKey: 000A25:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Marsh, outlander? Dunmer and Argonian labourers are held under the same ledger here, and the old Archein managers who kept the accounts assess every Owing. Even-handed, you might say, so long as you are not the one owing.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Thorn has a good many Dunmer in it, you will notice. And how many families do you think have not got a grandparent on each side of the coffles? Ask the next man you pass, and watch his face.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCDE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

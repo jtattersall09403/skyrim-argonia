@@ -1,0 +1,42 @@
+FormKey: 0AFD1C:Black Marsh.esm
+Flags:
+- HasWater
+Grid:
+  Point: 31, -17
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 130773:Black Marsh.esm
+  Base: 000C06:Argonia.esp
+  LinkedReferences:
+  - Reference: 130784:Black Marsh.esm
+  Placement:
+    Position: 130738.75, -68675.09, 584.382
+    Rotation: 0, 0, 5.183186
+- MutagenObjectType: PlacedNpc
+  FormKey: 13077C:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 089CD8:Black Marsh.esm
+  Placement:
+    Position: 130215.31, -68590.43, 606.81396
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 13077E:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 089CD6:Black Marsh.esm
+  Placement:
+    Position: 130674.75, -67971.09, 584.382
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 130780:Black Marsh.esm
+  Base: 000C07:Argonia.esp
+  Placement:
+    Position: 130432, -67712, 640
+    Rotation: 0, 0, 4.6831884

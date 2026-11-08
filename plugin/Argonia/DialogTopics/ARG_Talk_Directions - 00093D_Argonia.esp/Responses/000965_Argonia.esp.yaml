@@ -1,0 +1,28 @@
+FormKey: 000965:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Helstrom? Count with me. Walk south-west 180 paces to the bridge on your left. Follow the shore south-west 80 paces to the old stone columns on your left. Then follow the shore south 111 paces. Helstrom is there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Gih-Xaleel keeps his post. It is three legs. Follow the shore north-east 37 paces to the old stone columns on your right. Follow the shore north 78 paces to the waterfall on your left. Then take the path north 40 paces.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EA:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

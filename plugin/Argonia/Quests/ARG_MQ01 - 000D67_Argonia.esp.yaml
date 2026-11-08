@@ -1,0 +1,337 @@
+FormKey: 000D67:Argonia.esp
+EditorID: ARG_MQ01
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_MQ01
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Answered
+      Object: 000D7F:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: BrokerParent
+      Object: 000D8C:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CampAftermath
+      Object: 000D96:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CampAttacked
+      Object: 000D95:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CampOrderly
+      Object: 000D94:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CellParent
+      Object: 000D97:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Courier
+      Object: 000D67:Argonia.esp
+      Alias: 3
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CrewParent
+      Object: 000D84:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Cutter1
+      Object: 000D67:Argonia.esp
+      Alias: 11
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Cutter2
+      Object: 000D67:Argonia.esp
+      Alias: 12
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DeeshDuun
+      Object: 000D67:Argonia.esp
+      Alias: 9
+    - MutagenObjectType: ScriptObjectProperty
+      Name: DivesMarch
+      Object: 000D67:Argonia.esp
+      Alias: 6
+    - MutagenObjectType: ScriptObjectProperty
+      Name: FindsMarch
+      Object: 000D67:Argonia.esp
+      Alias: 7
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Footwraps
+      Object: 03CA00:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HoldParent
+      Object: 000D83:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HutsMark
+      Object: 000D9C:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: HutsZone
+      Object: 000DB7:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Leader
+      Object: 000D67:Argonia.esp
+      Alias: 10
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MarchParent
+      Object: 000D8D:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: NextQuest
+      Object: 000D68:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ReedKnife
+      Object: 000D7D:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: RollRead
+      Object: 000D7E:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SalSei
+      Object: 000D67:Argonia.esp
+      Alias: 8
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SavedDeesh
+      Object: 000D81:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SavedSal
+      Object: 000D80:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShedMark
+      Object: 000D9B:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShedZone
+      Object: 000DB6:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Shore93Parent
+      Object: 000D99:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ShoreMark
+      Object: 000D9D:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: StartMarker
+      Object: 000D82:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SurvivorsParent
+      Object: 000D98:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Ties
+      Object: 000D67:Argonia.esp
+      Alias: 13
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Tunic
+      Object: 03C9FE:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: UxMarch
+      Object: 000D67:Argonia.esp
+      Alias: 5
+    - MutagenObjectType: ScriptObjectProperty
+      Name: WuleenMarch
+      Object: 000D67:Argonia.esp
+      Alias: 4
+  FileName: ARG_QF_MQ01
+  Fragments:
+  - Stage: 10
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_10
+  - Stage: 40
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_40
+  - Stage: 41
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_41
+  - Stage: 42
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_42
+  - Stage: 90
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_90
+  - Stage: 91
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_91
+  - Stage: 93
+    ScriptName: ARG_QF_MQ01
+    FragmentName: Fragment_93
+Name:
+  TargetLanguage: English
+  Value: No Name on the Work Roll
+Priority: 60
+Type: MainQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 10
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I came to in the hold of a broker's barge at Lilmoth's dock, among an Owing gang. Wuleen-Sei, the overseer, is reading the roll aloud, each name, the months owed and the months added for food, and my line is blank. I'm to answer her when she reaches it, then follow Wuleen-Sei up the plank, past Buys-The-Months, the broker on the pier, and north and west along the shore path to the families' camp at the edge of Hereguard Plantation, to the camp's fire.
+- Index: 40
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: As Wuleen-Sei read the roll at the camp's fire, in sight of the families' Hist cutting and the shed that holds their clutch, naming Sal-Sei, keeper of the clutch, and Deesh-Duun aloud, a tall Argonian woman with a knotted cord at her wrist came in off the water with two of her people, killed Mee-Tuja, the quiet man who walked with us, at the fire, took his satchel and looked at me, and left. In the struggle his strap with a brass tag was torn off and fell through the burnt boards into the deep water. The roll went into the fire. Her people are at the cutting and the huts are burning. Sal-Sei is at the shed and Deesh-Duun is hiding from the blades in the huts. I'm to reach one of them; I cannot reach both.
+- Index: 41
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I ran for the hatching shed at the camp on Hereguard Plantation's paddy edge. Two of the woman's people have cut the roots that tie the cutting to the clutch, and Sal-Sei is on the ground beside the eggs. Behind me the huts have fallen in where Deesh-Duun was. I'm to drive the cutters off, or hide in the reeds until they leave, and get Sal-Sei out through the reeds to the shore.
+- Index: 42
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I went into the burning huts at the camp on Hereguard Plantation's paddy edge and pulled Deesh-Duun out through the deep water under the plank boards. She saw the woman with the knotted cord as closely as I did. From the water I can hear the cutters on the plank boards over us, walking from the shed to the water's edge where they came in, and Sal-Sei has not come out. I'm to bring Deesh-Duun south under the plank boards to the shore below the camp, keeping out of the cutters' sight until they are gone, or kill them first.
+- Index: 90
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I got out of the burning camp on Hereguard Plantation's paddy edge with Sal-Sei, the clutch-keeper. The eggs under the cut roots are dead and the cutting has withdrawn. The roll burned in the fire, so nobody can say what I owe, and nobody can say what I do not.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I got out of the burning camp on Hereguard Plantation's paddy edge with Deesh-Duun, who saw the woman with the knotted cord as closely as I did. The roll burned in the fire, so nobody can say what I owe.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: I got out of the burning camp on Hereguard Plantation's paddy edge alone. Sal-Sei and Deesh-Duun are dead. The roll burned in the fire, so nobody can say what I owe.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: In the barge's hold, answer Wuleen-Sei when she reads the blank line (give a name, say nothing or tell her what she can do with it), then follow her up the plank and along the shore path to the fire in the middle of the camp.
+- Index: 40
+  DisplayText:
+    TargetLanguage: English
+    Value: "Reach one of the two before the fire does: Sal-Sei at the hatching shed at the camp's far end, past the two cutters, or Deesh-Duun in the burning huts, diving under the plank boards to reach her."
+- Index: 41
+  DisplayText:
+    TargetLanguage: English
+    Value: At the hatching shed, fight off the two cutters or hide in the reeds until they leave, and bring Sal-Sei south through the reeds to the shore below the camp.
+- Index: 42
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Deesh-Duun out of the burning huts and south through the deep water under the plank boards to the shore below the camp, out of the cutters' sight or past their bodies.
+Aliases:
+- Name: WuleenSei
+  Flags:
+  - Essential
+  - AllowDisabled
+  ForcedReference: 000D85:Argonia.esp
+- ID: 1
+  Name: UxXeek
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000D86:Argonia.esp
+- ID: 2
+  Name: BuysTheMonths
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000D8E:Argonia.esp
+- ID: 3
+  Name: Courier
+  Flags:
+  - Essential
+  ForcedReference: 000D8F:Argonia.esp
+  PackageData:
+  - 000DBB:Argonia.esp
+- ID: 4
+  Name: WuleenSeiMarch
+  Flags:
+  - Essential
+  - AllowDisabled
+  ForcedReference: 000D90:Argonia.esp
+  PackageData:
+  - 000DBB:Argonia.esp
+- ID: 5
+  Name: UxXeekMarch
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000D91:Argonia.esp
+  PackageData:
+  - 000DBB:Argonia.esp
+- ID: 6
+  Name: DivesMarch
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000D92:Argonia.esp
+  PackageData:
+  - 000DBB:Argonia.esp
+- ID: 7
+  Name: FindsMarch
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000D93:Argonia.esp
+  PackageData:
+  - 000DBB:Argonia.esp
+- ID: 8
+  Name: SalSei
+  Flags:
+  - Essential
+  ForcedReference: 000D9F:Argonia.esp
+  PackageData:
+  - 000DBE:Argonia.esp
+- ID: 9
+  Name: DeeshDuun
+  Flags:
+  - Essential
+  ForcedReference: 000DA0:Argonia.esp
+  PackageData:
+  - 000DBF:Argonia.esp
+- ID: 10
+  Name: CutsTheOldKnot
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 000DA2:Argonia.esp
+  PackageData:
+  - 000DBC:Argonia.esp
+- ID: 11
+  Name: RootCutter1
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DA3:Argonia.esp
+  PackageData:
+  - 000DBD:Argonia.esp
+- ID: 12
+  Name: RootCutter2
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DA4:Argonia.esp
+  PackageData:
+  - 000DBD:Argonia.esp
+- ID: 13
+  Name: TiesTheLoosePlank
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DA5:Argonia.esp
+- ID: 14
+  Name: ZoneFire
+  Flags: []
+  ForcedReference: 000DB5:Argonia.esp
+- ID: 15
+  Name: ZoneShed
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DB6:Argonia.esp
+- ID: 16
+  Name: ZoneHuts
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DB7:Argonia.esp
+- ID: 17
+  Name: ZoneShore90
+  Flags: []
+  ForcedReference: 000DB8:Argonia.esp
+- ID: 18
+  Name: ZoneShore91
+  Flags: []
+  ForcedReference: 000DB9:Argonia.esp
+- ID: 19
+  Name: ZoneShore93
+  Flags:
+  - AllowDisabled
+  ForcedReference: 000DBA:Argonia.esp

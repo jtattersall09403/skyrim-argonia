@@ -1,0 +1,8 @@
+FormKey: 000D60:Argonia.esp
+EditorID: ARG_MQ05_WatchTopic
+Name:
+  TargetLanguage: English
+  Value: the watch
+Branch: 000D5F:Argonia.esp
+Quest: 000D0C:Argonia.esp
+SubtypeName: CUST

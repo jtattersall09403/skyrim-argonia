@@ -1,0 +1,14 @@
+FormKey: 000C13:Argonia.esp
+EditorID: ARG_NoHealthRegen
+Name:
+  TargetLanguage: English
+  Value: No Health Regeneration
+EquipmentType: 013F44:Skyrim.esm
+Description:
+  TargetLanguage: English
+  Value: ''
+Type: Ability
+Effects:
+- BaseEffect: 000C12:Argonia.esp
+  Data:
+    Magnitude: 100

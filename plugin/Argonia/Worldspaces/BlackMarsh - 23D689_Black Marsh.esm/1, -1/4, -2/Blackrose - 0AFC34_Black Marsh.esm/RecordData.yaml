@@ -1,0 +1,14 @@
+FormKey: 0AFC34:Black Marsh.esm
+EditorID: Blackrose
+Flags:
+- HasWater
+Grid:
+  Point: 33, -14
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 0C72A4:Black Marsh.esm
+  Base: 000C02:Argonia.esp
+  Placement:
+    Position: 136987.88, -53954.066, 0

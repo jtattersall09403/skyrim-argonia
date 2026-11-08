@@ -1,0 +1,20 @@
+FormKey: 00098B:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Walk south-east about sixty-five paces. Black Rose will be on your left. Then south about eighty paces, until the statue is on your left. Then south-east about sixty-five paces, until the house is on your left. Then south about ninety paces. The longboat is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0C72A7:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

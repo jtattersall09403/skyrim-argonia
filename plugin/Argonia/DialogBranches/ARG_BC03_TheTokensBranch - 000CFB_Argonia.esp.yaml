@@ -1,0 +1,7 @@
+FormKey: 000CFB:Argonia.esp
+EditorID: ARG_BC03_TheTokensBranch
+Quest: 000CEC:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CFC:Argonia.esp

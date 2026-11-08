@@ -1,0 +1,67 @@
+FormKey: 00591B:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+Grid:
+  Point: 0, 1
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 01516F:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017074:Dragonborn.esm
+  Placement:
+    Position: 2336.9707, 6645.3716, 134.24127
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015170:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017074:Dragonborn.esm
+  Scale: 2.6
+  Placement:
+    Position: 2431.874, 6628.6226, 67.473694
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015171:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017074:Dragonborn.esm
+  Placement:
+    Position: 1131.4437, 7620.9883, 48
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015172:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017074:Dragonborn.esm
+  Scale: 2.6
+  Placement:
+    Position: 1261.6953, 7632.4727, 48
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015173:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 017074:Dragonborn.esm
+  Scale: 2.6
+  Placement:
+    Position: 1587.9839, 8062.121, 48
+  MajorFlags:
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

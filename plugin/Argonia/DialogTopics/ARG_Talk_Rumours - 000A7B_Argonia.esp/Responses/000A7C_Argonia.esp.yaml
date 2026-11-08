@@ -1,0 +1,20 @@
+FormKey: 000A7C:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A large ship lies on the shore about a hundred paces south of here. Her captain's journal and his armour were left beside her, some ninety-five paces south. Her crew lost her. They still tell people I ran her aground.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 00AC8E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Latest rumours

@@ -1,0 +1,34 @@
+FormKey: 000D61:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_MQ05_91
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_MQ05_91
+    OnEnd:
+      ScriptName: TIF_ARG_MQ05_91
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A silence and a cut are two things. I hear you. I will carry it to the tree-minders. I do not say they will agree.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000D44:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D0C:Argonia.esp
+  ComparisonValue: 40
+Prompt:
+  TargetLanguage: English
+  Value: what I saw

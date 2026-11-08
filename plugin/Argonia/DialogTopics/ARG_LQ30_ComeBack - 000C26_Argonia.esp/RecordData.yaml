@@ -1,0 +1,8 @@
+FormKey: 000C26:Argonia.esp
+EditorID: ARG_LQ30_ComeBack
+Name:
+  TargetLanguage: English
+  Value: Sei-Wan, come home now. Your kin is waiting.
+Branch: 000C25:Argonia.esp
+Quest: 000C14:Argonia.esp
+SubtypeName: CUST

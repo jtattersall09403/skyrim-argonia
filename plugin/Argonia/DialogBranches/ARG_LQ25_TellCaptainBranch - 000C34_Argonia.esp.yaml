@@ -1,0 +1,7 @@
+FormKey: 000C34:Argonia.esp
+EditorID: ARG_LQ25_TellCaptainBranch
+Quest: 000C28:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C35:Argonia.esp

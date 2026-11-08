@@ -13,13 +13,13 @@ WaterHeight: 3.4028235E+38
 Temporary:
 - MutagenObjectType: PlacedNpc
   FormKey: 03E418:Black Marsh North.esp
-  Base: 0008EC:Argonia.esp
+  Base: 000BC7:Argonia.esp
   LevelModifier: Easy
   Placement:
     Position: 1646.1263, -3525.361, 113.62277
 - MutagenObjectType: PlacedNpc
   FormKey: 00FF4E:Black Marsh.esm
-  Base: 0008D9:Argonia.esp
+  Base: 000B9F:Argonia.esp
   LinkedReferences:
   - Reference: 0934A0:Black Marsh North.esp
   ActivateParents:
@@ -30,7 +30,7 @@ Temporary:
     Rotation: 0, 0, 1.4
 - MutagenObjectType: PlacedNpc
   FormKey: 015193:Black Marsh.esm
-  Base: 0008DF:Argonia.esp
+  Base: 000BA5:Argonia.esp
   LinkedReferences:
   - Reference: 09349E:Black Marsh North.esp
   ActivateParents:
@@ -40,9 +40,42 @@ Temporary:
     Position: 2708.8247, -3332.1423, 64
 - MutagenObjectType: PlacedNpc
   FormKey: 015195:Black Marsh.esm
-  Base: 0008E0:Argonia.esp
+  Base: 000BA6:Argonia.esp
   Placement:
     Position: 2496.2334, -2703.2942, 141.13235
     Rotation: 0, 0, 1.6000018
+- MutagenObjectType: PlacedNpc
+  FormKey: 015196:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 010FBE:HearthFires.esm
+  Placement:
+    Position: 1893.5667, -2372.881, 214.28125
+    Rotation: 0, 0, 2.2
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015197:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 0C214E:Skyrim.esm
+  Placement:
+    Position: 2936.4766, -2357.4243, 201.03987
+    Rotation: 0, 0, 2.8000014
+  MajorFlags:
+  - InitiallyDisabled
+- MutagenObjectType: PlacedNpc
+  FormKey: 015198:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 109E3D:Skyrim.esm
+  Placement:
+    Position: 2272.065, -2131.2502, 212.88525
+    Rotation: 0, 0, 2.4
+  MajorFlags:
+  - InitiallyDisabled
 MajorFlags:
 - 0x40000

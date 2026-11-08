@@ -1,0 +1,20 @@
+FormKey: 00095C:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Stranger. Walk east about ninety paces to the giant tree. Then walk west a long way, nearly a thousand paces, until the Dwemer ruin is on your left. Walk south-west about thirty paces from there, and the ruin is in front of you.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A86:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

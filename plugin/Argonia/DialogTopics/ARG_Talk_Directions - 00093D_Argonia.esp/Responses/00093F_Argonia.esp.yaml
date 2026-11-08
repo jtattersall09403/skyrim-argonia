@@ -1,0 +1,20 @@
+FormKey: 00093F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lilmoth, visitor? Listen and say it back to me. Walk north-east about thirty paces until Hereguard Plantation is on your right. Then follow the path north about a hundred paces until the ruin is on your left. Then follow the shore east about three hundred and forty paces. Lilmoth is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 00FF4E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

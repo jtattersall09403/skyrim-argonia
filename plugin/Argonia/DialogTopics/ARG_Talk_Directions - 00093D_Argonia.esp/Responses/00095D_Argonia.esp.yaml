@@ -1,0 +1,28 @@
+FormKey: 00095D:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Alten Merihall, traveller. Walk south-west about 175 paces until the giant tree is on your right. Then go west about 500 paces to reach it.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Longmont is a winding way, traveller. Walk south-east about 40 paces to the bamboo hut on your right. Follow the shore south-east about 160 paces to a giant tree on your right, then walk east about 140 paces to the dead tree on your right. Last, go north-east about 28 paces.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 084A87:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

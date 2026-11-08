@@ -1,0 +1,28 @@
+FormKey: 000A1C:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is a beached ship about seventy paces south of here. Iron and leather armour, weapons, a silver plate and a captain's journal lie by it, untouched. I am only saying, boss.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A passage door near that ship leads in, about seventy-five paces south of here. Do not tell Hard-Scale you heard it from me.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E415:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Anything worth finding

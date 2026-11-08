@@ -21,5 +21,6 @@ Flags:
 - SmallWorld
 ObjectBoundsMin: -34, -34
 ObjectBoundsMax: 36, 37
+Music: 06D546:Skyrim.esm
 HdLodDiffuseTexture: data\textures\landscape\mountains\mountainslab02.dds
 HdLodNormalTexture: data\textures\landscape\mountains\mountainslab02_n.dds

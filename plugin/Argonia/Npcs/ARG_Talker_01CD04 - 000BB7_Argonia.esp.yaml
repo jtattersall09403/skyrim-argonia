@@ -1,0 +1,28 @@
+FormKey: 000BB7:Argonia.esp
+EditorID: ARG_Talker_01CD04
+Configuration:
+  Flags:
+  - Female
+  - AutoCalcStats
+  - Unique
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 01CD03:Black Marsh North.esp
+Race: 013742:Skyrim.esm
+Class: 02F202:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Ilvesa Drethan

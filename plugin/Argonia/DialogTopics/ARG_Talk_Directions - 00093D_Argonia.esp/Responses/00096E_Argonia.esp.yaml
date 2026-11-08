@@ -1,0 +1,28 @@
+FormKey: 00096E:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The big ship, traveller? Follow the boards south, some sixty-seven paces, until the big ship's on your right. Then keep on along the boards south-east for about fifty-four paces, and there it is.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: You'll want the big ship. Go south along the boards, a little over sixty paces, till it's on your right; after that, south-east along the boards for fifty-odd paces and you're at it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

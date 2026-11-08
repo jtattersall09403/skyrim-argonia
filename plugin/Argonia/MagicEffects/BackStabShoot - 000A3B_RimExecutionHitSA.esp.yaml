@@ -1,0 +1,73 @@
+FormKey: 000A3B:RimExecutionHitSA.esp
+EditorID: BackStabShoot
+VirtualMachineAdapter:
+  Scripts:
+  - Name: magicCastAnotherSpellScript
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: CastSpellName
+      Object: 000842:RimExecutionHitSA.esp
+MenuDisplayObject: 0435A5:Skyrim.esm
+Flags:
+- NoHitEvent
+- NoRecast
+BaseCost: 15
+CastingLight: 03BA90:Skyrim.esm
+TaperWeight: 1
+MinimumSkillLevel: 5
+SpellmakingCastingTime: 2
+Archetype:
+  MutagenObjectType: MagicEffectArchetype
+  Type: Script
+Projectile: 000A3C:RimExecutionHitSA.esp
+CastType: FireAndForget
+TargetType: Aimed
+CastingArt: 03CDFC:Skyrim.esm
+SkillUsageMultiplier: 2
+DualCastScale: 1
+CastingSoundLevel: Silent
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasMagicEffectKeywordConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    Keyword: 000A37:RimExecutionHitSA.esp
+- MutagenObjectType: ConditionFloat
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013794:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: HasKeywordConditionData
+    Keyword: 013796:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetDeadConditionData
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: IsHostileToActorConditionData
+    TargetNpc: 000014:Skyrim.esm
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  CompareOperator: LessThan
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetRelativeAngleConditionData
+    Target: 000014:Skyrim.esm
+    Axis: Z
+  ComparisonValue: 45
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThan
+  Flags:
+  - OR
+  Data:
+    MutagenObjectType: GetRelativeAngleConditionData
+    Target: 000014:Skyrim.esm
+    Axis: Z
+  ComparisonValue: 315

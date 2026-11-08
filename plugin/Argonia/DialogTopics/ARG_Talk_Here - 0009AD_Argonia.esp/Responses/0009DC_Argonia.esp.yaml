@@ -1,0 +1,20 @@
+FormKey: 0009DC:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: A Dwemer ruin stands right beside us, about two paces east-south-east. Another stands a little way north-north-east. Houses stand to the west, about thirty paces and forty paces on, with an iron door about twenty paces west.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5E8:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

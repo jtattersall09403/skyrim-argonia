@@ -1,0 +1,28 @@
+FormKey: 000A27:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: At Thorn, Dunmer and Argonian labourers are held under the same ledger, outlander. The old Archein managers who kept the accounts are the ones who assess our Owings.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: There is a painting in Thorn called the Slave-Coffles. It shows the city's worst day, and no one who sees it forgets it. I have seen it, and it is the same thing with better manners.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE2:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

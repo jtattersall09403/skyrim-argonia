@@ -1,0 +1,8 @@
+FormKey: 000DCA:Argonia.esp
+EditorID: ARG_MQ01_AnswerDefy
+Name:
+  TargetLanguage: English
+  Value: Do what you like with your roll.
+Branch: 000DC9:Argonia.esp
+Quest: 000D67:Argonia.esp
+SubtypeName: CUST

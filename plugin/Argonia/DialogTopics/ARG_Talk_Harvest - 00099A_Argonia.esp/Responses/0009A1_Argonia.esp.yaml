@@ -1,0 +1,20 @@
+FormKey: 0009A1:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Jazbay, lavender and juniper grow together about sixty paces to the north-west. An alchemist would find them useful. I would sooner see them gathered by a herbalist who knows the difference between them. Precisely.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 02A205:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Plants and ingredients

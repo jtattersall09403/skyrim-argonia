@@ -1,0 +1,7 @@
+FormKey: 000C7F:Argonia.esp
+EditorID: ARG_TG02_TopicClaimFigurineBranch
+Quest: 000C3B:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000C80:Argonia.esp

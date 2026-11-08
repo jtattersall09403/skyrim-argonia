@@ -1,0 +1,26 @@
+FormKey: 000BC6:Argonia.esp
+EditorID: ARG_Talker_03E415
+Configuration:
+  Flags:
+  - AutoCalcStats
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - Factions
+  - SpellList
+  - AIData
+  - AIPackages
+  - ModelAnimation
+  - Inventory
+  - Script
+  - DefPackList
+  - AttackData
+  - Keywords
+Template: 03E414:Black Marsh North.esp
+Race: 013740:Skyrim.esm
+Class: 013178:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Rakhee-Tul

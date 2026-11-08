@@ -1,0 +1,13 @@
+FormKey: 0D787B:Black Marsh.esm
+Flags:
+- HasWater
+Grid:
+  Point: -9, 18
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 08D5F0:Black Marsh North.esp
+  Base: 000BDE:Argonia.esp
+  Placement:
+    Position: -34600.004, 75583.36, 298.91992

@@ -1,0 +1,8 @@
+FormKey: 000C35:Argonia.esp
+EditorID: ARG_LQ25_TellCaptain
+Name:
+  TargetLanguage: English
+  Value: I found this bucket under the crew's plank walk.
+Branch: 000C34:Argonia.esp
+Quest: 000C28:Argonia.esp
+SubtypeName: CUST

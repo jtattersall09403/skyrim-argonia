@@ -1,0 +1,20 @@
+FormKey: 0009B8:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: It is not much to look at, and I am sorry for it, though it is hardly my doing. If you want to find your way about, the signpost is thirty-odd paces west-south-west of where we stand. You can't miss it, and I would not want you wandering off lost on my account.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCE0:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: This place

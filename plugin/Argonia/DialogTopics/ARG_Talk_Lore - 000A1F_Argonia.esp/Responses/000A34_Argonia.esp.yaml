@@ -1,0 +1,28 @@
+FormKey: 000A34:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Marsh? The Dres raided Thorn for slaves long ago, outlander. It made them the first of the great Dunmer families in the trade. I am what that trade left behind, if you want it said plainly.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: An Owing can be sold, outlander. The one who is owed sells it on, and the debtor's work goes with it. Those who buy are merchants in flesh, whatever they call themselves.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CD04:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

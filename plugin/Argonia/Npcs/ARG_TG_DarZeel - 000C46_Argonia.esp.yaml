@@ -1,0 +1,27 @@
+FormKey: 000C46:Argonia.esp
+EditorID: ARG_TG_DarZeel
+Configuration:
+  Flags:
+  - AutoCalcStats
+  - Unique
+  - Protected
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 5
+  TemplateFlags:
+  - Traits
+  - SpellList
+  - ModelAnimation
+  - Inventory
+  - AttackData
+  - Keywords
+Voice: Null
+Template: 1DE49D:Black Marsh.esm
+Race: 013740:Skyrim.esm
+AIData:
+  Confidence: Average
+  Responsibility: NoCrime
+Class: 013176:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: Dar-Zeel

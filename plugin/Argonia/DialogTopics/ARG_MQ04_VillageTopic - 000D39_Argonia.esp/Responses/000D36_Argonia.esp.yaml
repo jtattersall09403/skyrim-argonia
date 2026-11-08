@@ -1,0 +1,54 @@
+FormKey: 000D36:Argonia.esp
+VirtualMachineAdapter:
+  Scripts:
+  - Name: TIF_ARG_MQ04_20Food
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: Salt
+      Object: 034CDF:Skyrim.esm
+  ScriptFragments:
+    MutagenObjectType: ScriptFragments
+    FileName: TIF_ARG_MQ04_20Food
+    OnEnd:
+      ScriptName: TIF_ARG_MQ04_20Food
+      FragmentName: Fragment_0
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Two piles of salt. You have them. Give them here. Good. Salt is dear to us, because our water is fresh. Go to the tree.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The platform at the Hist's foot is mine, so walk softly there. Pays-Late goes down to the roots after dark, to wash the roots.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsIDConditionData
+    Object: 000D0D:Argonia.esp
+  ComparisonValue: 1
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetStageConditionData
+    Quest: 000D0B:Argonia.esp
+  ComparisonValue: 10
+- MutagenObjectType: ConditionFloat
+  CompareOperator: GreaterThanOrEqualTo
+  Data:
+    MutagenObjectType: GetItemCountConditionData
+    RunOnType: Reference
+    Reference: 000014:Skyrim.esm
+    ItemOrList: 034CDF:Skyrim.esm
+  ComparisonValue: 2
+Prompt:
+  TargetLanguage: English
+  Value: the tree

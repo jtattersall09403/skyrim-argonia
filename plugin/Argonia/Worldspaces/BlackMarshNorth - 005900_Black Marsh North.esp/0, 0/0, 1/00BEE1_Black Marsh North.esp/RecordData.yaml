@@ -1,0 +1,19 @@
+FormKey: 00BEE1:Black Marsh North.esp
+Flags:
+- HasWater
+Grid:
+  Point: 4, 15
+  Flags: -1417685760
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 01CCFC:Black Marsh North.esp
+  Base: 000BB4:Argonia.esp
+  LinkedReferences:
+  - Reference: 01CCFD:Black Marsh North.esp
+  ActivateParents:
+    Parents:
+    - Reference: 01CCFD:Black Marsh North.esp
+  Placement:
+    Position: 18308.479, 63668.176, 121.385864
+    Rotation: 0, 0, 1.2831947

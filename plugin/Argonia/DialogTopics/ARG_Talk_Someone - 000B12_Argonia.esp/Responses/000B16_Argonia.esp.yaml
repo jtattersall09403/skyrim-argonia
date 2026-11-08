@@ -1,0 +1,20 @@
+FormKey: 000B16:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Looks-At-Books keeps her shelf fifteen paces west of here. She is the only person here worth talking to. Hurz-Weel keeps the yard, five paces north-north-west. He tramps mud through the house. I do not forgive it.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 015193:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Someone in particular

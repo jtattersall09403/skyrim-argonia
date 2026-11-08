@@ -1,0 +1,28 @@
+FormKey: 00093E:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Lilmoth Dock? Follow the shore north-east, three hundred paces, until Lilmoth is on your right. Then east, a hundred and ninety, to the burnt-out house on your left. South-east a hundred and thirty-five from there, and that is the dock, passenger.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Alten Merihall is a long haul. East, near five hundred paces, until the burnt-out house is on your left. South-east a hundred and thirty to Lilmoth Dock, then east, close on four hundred, until Soulrest is on your left. Climb south-east, four hundred and thirty paces or so, and you are at Alten Merihall. Keep out of the shallows, passenger.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 00AC8E:Black Marsh.esm
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

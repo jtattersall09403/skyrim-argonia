@@ -1,0 +1,8 @@
+FormKey: 000C6A:Argonia.esp
+EditorID: ARG_TG01_TopicTest
+Name:
+  TargetLanguage: English
+  Value: S'Tabi sent me about the Chapter.
+Branch: 000C69:Argonia.esp
+Quest: 000C3A:Argonia.esp
+SubtypeName: CUST

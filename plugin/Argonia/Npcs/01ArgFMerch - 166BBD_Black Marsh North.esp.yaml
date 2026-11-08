@@ -1,0 +1,195 @@
+FormKey: 166BBD:Black Marsh North.esp
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: 01ArgFMerch
+SkyrimMajorRecordFlags:
+- Compressed
+ObjectBounds:
+  First: -41, -25, 0
+  Second: 41, 72, 86
+Configuration:
+  Flags:
+  - Female
+  - Invulnerable
+  Level:
+    MutagenObjectType: NpcLevel
+    Level: 1
+  SpeedMultiplier: 100
+  DispositionBase: 35
+Factions:
+- Faction: 051596:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 0522B6:Skyrim.esm
+  Fluff: 0x000000
+- Faction: 0B5D55:Skyrim.esm
+  Fluff: 0x000000
+Voice: 013ADE:Skyrim.esm
+Template: 03DECB:Skyrim.esm
+Race: 013740:Skyrim.esm
+Items:
+- Item:
+    Item: 00000A:Skyrim.esm
+    Count: 3
+- Item:
+    Item: 017177:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 037C2B:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 072AEB:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 074A37:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 09AF11:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 09CD48:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 09CD49:Skyrim.esm
+    Count: 5
+- Item:
+    Item: 0A2737:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 0A2739:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 0A273F:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 0A273F:Skyrim.esm
+    Count: 10
+- Item:
+    Item: 0A44C8:Skyrim.esm
+    Count: 5
+- Item:
+    Item: 105245:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 105249:Skyrim.esm
+    Count: 1
+- Item:
+    Item: 10E8A8:Skyrim.esm
+    Count: 1
+AIData:
+  Aggression: Aggressive
+  Confidence: Average
+  EnergyLevel: 50
+  Assistance: HelpsFriendsAndAllies
+Class: 017008:Skyrim.esm
+Name:
+  TargetLanguage: English
+  Value: One Who Has Fire Hands
+PlayerSkills:
+  SkillValues:
+  - Key: OneHanded
+    Value: 5
+  - Key: TwoHanded
+    Value: 5
+  - Key: Archery
+    Value: 5
+  - Key: Block
+    Value: 5
+  - Key: Smithing
+    Value: 5
+  - Key: HeavyArmor
+    Value: 5
+  - Key: LightArmor
+    Value: 5
+  - Key: Pickpocket
+    Value: 5
+  - Key: Lockpicking
+    Value: 5
+  - Key: Sneak
+    Value: 5
+  - Key: Alchemy
+    Value: 5
+  - Key: Speech
+    Value: 5
+  - Key: Alteration
+    Value: 5
+  - Key: Conjuration
+    Value: 5
+  - Key: Destruction
+    Value: 5
+  - Key: Illusion
+    Value: 5
+  - Key: Restoration
+    Value: 5
+  - Key: Enchanting
+    Value: 5
+  SkillOffsets:
+  - Key: OneHanded
+    Value: 0
+  - Key: TwoHanded
+    Value: 0
+  - Key: Archery
+    Value: 0
+  - Key: Block
+    Value: 0
+  - Key: Smithing
+    Value: 0
+  - Key: HeavyArmor
+    Value: 0
+  - Key: LightArmor
+    Value: 0
+  - Key: Pickpocket
+    Value: 0
+  - Key: Lockpicking
+    Value: 0
+  - Key: Sneak
+    Value: 0
+  - Key: Alchemy
+    Value: 0
+  - Key: Speech
+    Value: 0
+  - Key: Alteration
+    Value: 0
+  - Key: Conjuration
+    Value: 0
+  - Key: Destruction
+    Value: 0
+  - Key: Illusion
+    Value: 0
+  - Key: Restoration
+    Value: 0
+  - Key: Enchanting
+    Value: 0
+  Health: 30
+  Magicka: 25
+  Stamina: 70
+  GearedUpWeapons: 1
+HairColor: 0F1238:Skyrim.esm
+CombatStyle: 03BE1B:Skyrim.esm
+NAM5: 255
+Height: 1
+Weight: 70
+SoundLevel: Normal
+DefaultOutfit: 0E1EC2:Skyrim.esm
+CrimeFaction: 0522B6:Skyrim.esm
+TextureLighting: '#007F7631'
+FaceMorph:
+  NoseLongVsShort: 0.4
+  NoseUpVsDown: -0.9
+  JawUpVsDown: -0.4
+  JawNarrowVsWide: 0.6
+  JawForwardVsBack: -0.8
+  CheeksUpVsDown: 0.5
+  CheeksForwardVsBack: -0.3
+  EyesUpVsDown: -0.8
+  EyesInVsOut: 0.4
+  BrowsUpVsDown: 0.4
+  BrowsInVsOut: 0.5
+  LipsUpVsDown: -0.1
+  LipsInVsOut: 0.5
+  ChinNarrowVsWide: -0.1
+  ChinUpVsDown: 0.2
+  ChinUnderbiteVsOverbite: -0.38
+  EyesForwardVsBack: -0.1
+  Unknown: 3.4028235E+38
+MajorFlags:
+- 0x40000

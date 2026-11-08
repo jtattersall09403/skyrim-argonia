@@ -1,0 +1,7 @@
+FormKey: 000D62:Argonia.esp
+EditorID: ARG_MQ05_TellMinderBranch
+Quest: 000D0C:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000D63:Argonia.esp

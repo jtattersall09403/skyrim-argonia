@@ -1,0 +1,20 @@
+FormKey: 000968:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Helstrom, dry-foot? I know that shore better than any boat captain. Follow the shore south-west about forty paces until you reach the old stone columns on your left. Then keep to the shore south about a hundred and ten paces. That is Helstrom.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EE:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

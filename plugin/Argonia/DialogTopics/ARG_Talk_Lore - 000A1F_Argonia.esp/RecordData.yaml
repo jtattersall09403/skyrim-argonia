@@ -1,0 +1,8 @@
+FormKey: 000A1F:Argonia.esp
+EditorID: ARG_Talk_Lore
+Name:
+  TargetLanguage: English
+  Value: Black Marsh
+Branch: 000A1E:Argonia.esp
+Quest: 000833:Argonia.esp
+SubtypeName: CUST

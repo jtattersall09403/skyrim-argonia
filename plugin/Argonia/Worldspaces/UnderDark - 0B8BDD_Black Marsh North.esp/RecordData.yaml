@@ -1,0 +1,24 @@
+FormKey: 0B8BDD:Black Marsh North.esp
+EditorID: UnderDark
+Name:
+  TargetLanguage: English
+  Value: a
+Parent:
+  Worldspace: 005900:Black Marsh North.esp
+Climate: 001409:Dawnguard.esm
+Water: 051353:Skyrim.esm
+LodWater: 000018:Skyrim.esm
+LodWaterHeight: 0
+LandDefaults:
+  DefaultLandHeight: -2048
+MapData:
+  CameraMinHeight: 50000
+  CameraMaxHeight: 80000
+  CameraInitialPitch: 50
+WorldMapOffsetScale: 1
+DistantLodMultiplier: 1
+Flags:
+- SmallWorld
+ObjectBoundsMin: 8.3076745E+34, 8.3076745E+34
+ObjectBoundsMax: -8.3076745E+34, -8.3076745E+34
+Music: 094BDD:Skyrim.esm

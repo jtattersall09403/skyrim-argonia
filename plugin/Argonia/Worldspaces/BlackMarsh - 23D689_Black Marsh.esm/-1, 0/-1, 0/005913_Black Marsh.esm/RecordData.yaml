@@ -1,0 +1,24 @@
+FormKey: 005913:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+SkyrimMajorRecordFlags:
+- Compressed
+Flags:
+- HasWater
+Grid:
+  Point: -1, 1
+  Flags: -1536086528
+WaterHeight: 3.4028235E+38
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 02A23A:Black Marsh.esm
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 03284D:Dragonborn.esm
+  Placement:
+    Position: -789.3356, 7729.921, 75.75491
+  MajorFlags:
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

@@ -1,0 +1,20 @@
+FormKey: 000A33:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Black Marsh, traveller? I know the Tear road best, for I walked it for years guarding carts. It leaves Thorn going north, for Morrowind. The trade on it is real, and nobody who works it is sentimental. Tell me what is new in Morrowind!
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CD01:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

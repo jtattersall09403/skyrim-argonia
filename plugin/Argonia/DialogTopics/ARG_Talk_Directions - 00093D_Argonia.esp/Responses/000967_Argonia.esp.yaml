@@ -1,0 +1,28 @@
+FormKey: 000967:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Helstrom is close. Follow the shore south about one hundred and eight paces, past the old stone columns, until you see the boat on its rack on your left. Then follow the shore south-west about twenty-eight paces. Helstrom is there.
+  ScriptNotes: ''
+  Edits: ''
+- ResponseNumber: 2
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: The Dwarven Ruins lie beyond Helstrom. Follow the shore south about one hundred and forty paces past the old stone columns until Helstrom is on your right. Walk south-east about six hundred and forty-six paces until the standing stone is on your left. Then follow the shore south-east about one hundred and seventy-six paces to the ruins.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 08D5EC:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

@@ -1,0 +1,20 @@
+FormKey: 000A2A:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Thorn was razed once, traveller. A Naga named Avumar struck a bargain with a Dremora, and the city burned for it. I say the Tax Heel, the collectors the field-owners send for what they are owed and for tolls, will bring us another burning, and I do not say it lightly.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 01CCEA:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

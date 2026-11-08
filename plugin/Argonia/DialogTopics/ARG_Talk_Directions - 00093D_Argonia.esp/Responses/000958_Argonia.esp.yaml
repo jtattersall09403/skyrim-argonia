@@ -1,0 +1,20 @@
+FormKey: 000958:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Soulrest? Attend, citizen. Go north-east, about two hundred and sixty paces, until Lilmoth is on your right. Then east two hundred paces, until the burnt-out house is on your left. Then south-east, about a hundred and thirty paces, to Lilmoth Dock. From the dock go east four hundred paces. Soulrest is there.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E413:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

@@ -1,0 +1,109 @@
+FormKey: 0E96A9:Black Marsh.esm
+IsCompressed: True
+MajorRecordFlagsRaw: 262144
+EditorID: 01cabinintDUPLICATE001
+SkyrimMajorRecordFlags:
+- Compressed
+Name:
+  TargetLanguage: English
+  Value: House
+Flags:
+- IsInteriorCell
+- PublicArea
+- ShowSky
+Lighting:
+  AmbientColor: '#001F1F1F'
+  DirectionalColor: '#00000000'
+  FogNearColor: '#00877747'
+  FogFar: 2000
+  DirectionalFade: 1
+  FogPower: 0.7
+  AmbientColors:
+    DirectionalXPlus: '#00221F20'
+    DirectionalXMinus: '#001B1F1D'
+    DirectionalYPlus: '#001F201F'
+    DirectionalYMinus: '#001F1D1F'
+    DirectionalZPlus: '#000E0E0E'
+    DirectionalZMinus: '#002F2F2F'
+    Specular: '#00716C5E'
+    Scale: 1
+  FogFarColor: '#00716C5E'
+  FogMax: 1
+  Inherits:
+  - DirectionalColor
+  - FogNear
+  - DirectionalRotation
+  - DirectionalFade
+  - ClipDistance
+  - FogMax
+  - LightFadeDistances
+LightingTemplate: 068B3E:Skyrim.esm
+WaterHeight: 0
+SkyAndWeatherFromRegion: 0C5855:Skyrim.esm
+AcousticSpace: 0D78C2:Skyrim.esm
+Music: 01BA72:Skyrim.esm
+ImageSpace: 0CE16C:Skyrim.esm
+Persistent:
+- MutagenObjectType: PlacedNpc
+  FormKey: 000C4F:Argonia.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: ARG_TG_TiltsRef
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 000C3D:Argonia.esp
+  Placement:
+    Position: 2306, 1073, 7526
+  MajorFlags:
+  - Persistent
+- MutagenObjectType: PlacedObject
+  FormKey: 11ABF3:Black Marsh North.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: AbandonedShackInteriorDoorRef005
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 024E26:Skyrim.esm
+  TeleportDestination:
+    Door: 120E95:Black Marsh.esm
+    Position: 49745.906, -5262.704, 42.67453
+    Rotation: 0, 0, -2.9999945
+  Scale: 0.85
+  Lock:
+    Level: 255
+    Unused: 0x000000
+    Unused2: 0x0000000000000000000000
+  Owner: 01BDB4:Skyrim.esm
+  Placement:
+    Position: 410.30347, 2722.7285, 7584.728
+    Rotation: 0, 0, 1.5707964
+- MutagenObjectType: PlacedObject
+  FormKey: 11ACA1:Black Marsh North.esp
+  MajorRecordFlagsRaw: 1024
+  EditorID: AbandonedShackInteriorDoorRef006
+  SkyrimMajorRecordFlags:
+  - 0x400
+  Base: 024E26:Skyrim.esm
+  TeleportDestination:
+    Door: 11ACD3:Black Marsh North.esp
+    Position: 49432.043, -7250.3594, 82.72332
+  Scale: 0.85
+  Lock:
+    Level: 255
+    Unused: 0x000000
+    Unused2: 0x0000000000000000000000
+  Owner: 01BDB4:Skyrim.esm
+  Placement:
+    Position: 87.4491, 578.8512, 7584.728
+    Rotation: 0, 0, 1.5707964
+Temporary:
+- MutagenObjectType: PlacedNpc
+  FormKey: 059BF3:Black Marsh North.esp
+  MajorRecordFlagsRaw: 2048
+  SkyrimMajorRecordFlags:
+  - InitiallyDisabled
+  Base: 03E3F6:Black Marsh North.esp
+  Placement:
+    Position: 276.81647, 3177.0217, 7520
+  MajorFlags:
+  - InitiallyDisabled
+MajorFlags:
+- 0x40000

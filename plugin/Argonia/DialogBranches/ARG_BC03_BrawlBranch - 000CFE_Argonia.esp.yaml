@@ -1,0 +1,7 @@
+FormKey: 000CFE:Argonia.esp
+EditorID: ARG_BC03_BrawlBranch
+Quest: 000CEC:Argonia.esp
+Category: Player
+Flags:
+- TopLevel
+StartingTopic: 000CFF:Argonia.esp

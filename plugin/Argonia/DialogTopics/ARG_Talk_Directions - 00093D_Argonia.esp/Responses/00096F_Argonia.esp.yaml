@@ -1,0 +1,20 @@
+FormKey: 00096F:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Cage Door? Easy enough, stranger. Climb north-east about thirty paces till you reach Thorn, the centre square, on your left. Then follow the path north-west for seventy-odd paces and there's Cage Door in front of you.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 0934BF:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Directions

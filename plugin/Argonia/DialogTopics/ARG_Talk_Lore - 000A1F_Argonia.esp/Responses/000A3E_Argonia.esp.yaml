@@ -1,0 +1,20 @@
+FormKey: 000A3E:Argonia.esp
+Flags: {}
+Responses:
+- ResponseNumber: 1
+  Unknown2: 0x000000
+  Unknown3: 0x000000
+  Text:
+    TargetLanguage: English
+    Value: Once, a foreigner without a licence was kept to the docks of Lilmoth and barred from the city. A debt here is paid in work. An arbitrator turns the loss into months of labour. The months are counted in nushmeekos, and when you have worked them the debt is over.
+  ScriptNotes: ''
+  Edits: ''
+Conditions:
+- MutagenObjectType: ConditionFloat
+  Data:
+    MutagenObjectType: GetIsReferenceConditionData
+    Target: 03E418:Black Marsh North.esp
+  ComparisonValue: 1
+Prompt:
+  TargetLanguage: English
+  Value: Black Marsh

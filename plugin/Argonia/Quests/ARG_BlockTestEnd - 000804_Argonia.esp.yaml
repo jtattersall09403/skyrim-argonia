@@ -9,6 +9,9 @@ VirtualMachineAdapter:
       Object: 0FC85D:Skyrim.esm
   FileName: ARG_QF_BlockTestEnd
   Fragments:
+  - Stage: 10
+    ScriptName: ARG_QF_BlockTestEnd
+    FragmentName: Fragment_10
   - Stage: 100
     ScriptName: ARG_QF_BlockTestEnd
     FragmentName: Fragment_100
@@ -35,3 +38,8 @@ Stages:
     Entry:
       TargetLanguage: English
       Value: The second quest ended with the first.
+Objectives:
+- Index: 10
+  DisplayText:
+    TargetLanguage: English
+    Value: Wait for the first quest to end

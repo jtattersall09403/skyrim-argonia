@@ -1,0 +1,259 @@
+FormKey: 000CBB:Argonia.esp
+EditorID: ARG_BC02
+VirtualMachineAdapter:
+  Scripts:
+  - Name: ARG_QF_BC02
+    Properties:
+    - MutagenObjectType: ScriptObjectProperty
+      Name: AchievementsQuest
+      Object: 0FC85D:Skyrim.esm
+    - MutagenObjectType: ScriptObjectProperty
+      Name: ChainbreakersStanding
+      Object: 000C9B:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: KillerParent
+      Object: 000CC7:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: MotherParent
+      Object: 000CC8:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SmokeParent
+      Object: 000CC1:Argonia.esp
+    - MutagenObjectType: ScriptObjectProperty
+      Name: SpeakerParent
+      Object: 000CC6:Argonia.esp
+  FileName: ARG_QF_BC02
+  Fragments:
+  - Stage: 20
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_20
+  - Stage: 30
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_30
+  - Stage: 31
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_31
+  - Stage: 32
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_32
+  - Stage: 33
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_33
+  - Stage: 91
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_91
+  - Stage: 92
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_92
+  - Stage: 93
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_93
+  - Stage: 94
+    ScriptName: ARG_QF_BC02
+    FragmentName: Fragment_94
+  Aliases:
+  - Property:
+      Name: ''
+      Object: 000CBB:Argonia.esp
+      Alias: 2
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CBB:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+  - Property:
+      Name: ''
+      Object: 000CBB:Argonia.esp
+      Alias: 3
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CBB:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+  - Property:
+      Name: ''
+      Object: 000CBB:Argonia.esp
+      Alias: 4
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CBB:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 30
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+  - Property:
+      Name: ''
+      Object: 000CBB:Argonia.esp
+      Alias: 1
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CBB:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+  - Property:
+      Name: ''
+      Object: 000CBB:Argonia.esp
+      Alias: 0
+    Scripts:
+    - Name: defaultSetStageOnDeathRefAlias
+      Properties:
+      - MutagenObjectType: ScriptObjectProperty
+        Name: myQST
+        Object: 000CBB:Argonia.esp
+      - MutagenObjectType: ScriptIntProperty
+        Name: preReqStage
+        Data: 20
+      - MutagenObjectType: ScriptIntProperty
+        Name: StageToSet
+        Data: 94
+Name:
+  TargetLanguage: English
+  Value: One Out of the Smoke
+Flags:
+- StartGameEnabled
+Priority: 50
+Type: SideQuest
+Stages:
+- Flags:
+  - StartUpStage
+  LogEntries:
+  - Flags: []
+- Index: 20
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold told me the heirs' outer post, the old keep on the hill west of Blackrose, is burning. The heirs, born of the prisoners once held at the Rose, keep it. Three people whom the heirs hold are inside, Rows-For-Another's mother among them, and the heirs' gate-keepers will not go in. I'm to get past Third-Born Tsaxi at the keep's way in, by talking him round or slipping by, and go inside.
+- Index: 30
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: "I'm inside the burning keep above Blackrose. Three people whom the heirs hold are bound inside: Says-It-Plain, held for speaking against the heirs; Hides-In-Reeds, held for a killing; and Keeps-The-Old-Count, Rows-For-Another's mother, held on her Owing. The way out will bear one trip. I'm to choose one and tell them to come with me."
+- Index: 31
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Says-It-Plain to come with me. The fire took the other two. I'm to bring him out of the keep's way in.
+- Index: 32
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Hides-In-Reeds to come with me. The fire took the other two. I'm to bring her out of the keep's way in.
+- Index: 33
+  LogEntries:
+  - Flags: []
+    Entry:
+      TargetLanguage: English
+      Value: I told Keeps-The-Old-Count to come with me. The fire took the other two. I'm to bring her out of the keep's way in.
+- Index: 91
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Says-It-Plain out; the other two died in the fire. He walked free from the keep, to speak their names to Never-Sold.
+- Index: 92
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Hides-In-Reeds out; the other two died in the fire. She does not deny her killing. She walked free from the keep, to speak their names to Never-Sold.
+- Index: 93
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. I brought Keeps-The-Old-Count, Rows-For-Another's mother, out; the other two died in the fire. She walked free from the keep, to speak their names to Never-Sold.
+- Index: 94
+  LogEntries:
+  - Flags:
+    - CompleteQuest
+    Entry:
+      TargetLanguage: English
+      Value: Never-Sold of the Chainbreakers sent me into the heirs' burning keep above Blackrose, where they held three. All three died in the keep. Never-Sold at the Chainbreakers' house keeps the three names herself.
+Objectives:
+- Index: 20
+  DisplayText:
+    TargetLanguage: English
+    Value: Get past Third-Born Tsaxi into the burning keep on the hill west of Blackrose, by talking him round or slipping by.
+- Index: 30
+  DisplayText:
+    TargetLanguage: English
+    Value: In the burning keep, tell one of the three captives to come with me.
+- Index: 31
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Says-It-Plain out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+- Index: 32
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Hides-In-Reeds out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+- Index: 33
+  DisplayText:
+    TargetLanguage: English
+    Value: Bring Keeps-The-Old-Count out of the burning keep and past Third-Born Tsaxi, by talking him round or slipping by.
+Aliases:
+- Name: Patron
+  Flags:
+  - Essential
+  ForcedReference: 000C9D:Argonia.esp
+- ID: 1
+  Name: GateKeeper
+  Flags:
+  - Essential
+  ForcedReference: 000CCC:Argonia.esp
+- ID: 2
+  Name: Speaker
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 000CC9:Argonia.esp
+  PackageData:
+  - 000CD2:Argonia.esp
+- ID: 3
+  Name: Killer
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 000CCA:Argonia.esp
+  PackageData:
+  - 000CD3:Argonia.esp
+- ID: 4
+  Name: Mother
+  Flags:
+  - AllowDisabled
+  - Protected
+  ForcedReference: 000CCB:Argonia.esp
+  PackageData:
+  - 000CD4:Argonia.esp
