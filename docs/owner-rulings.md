@@ -178,3 +178,9 @@ added here the day they are made, with the date and the issue.
   shell buildings count as rooms for quests and homes. Fix the windows that render as flat blue panes in Lilmoth.
   The next walk re-tests only the blocks still unproved, not the whole test quest. The world map: investigate and
   plan (native or 2d parchment with fog of war, whichever is easiest and most reliable); do not build it yet.
+- 2026-11-08 (after walk-2 fixes): build the world map fix now (it is small). Walk-in shells need a census of every
+  place in the story data (done: `bmv_shell`). Backstab must actually work, not be explained. The standing backstep
+  goes about half as far: the first of its two pushes, by trimming Dynamic Dodge's clip (the owner checked its
+  permissions: customising is allowed) or by a shorter backstep clip, whichever is better. A lore fact said by two
+  or three people is fine. The "New Order" soldiers' lines must be consistent with our lore, as everything must.
+  Skyrim ingredient names are fine where BM&V places those ingredients.
