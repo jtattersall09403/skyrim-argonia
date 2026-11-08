@@ -122,3 +122,17 @@ the quest is re-authored.
   objective, fragment and .pex, alias, topic gate and trigger PASS for both; round trip clean (497 yaml files). Open:
   LQ25's MQ05 >= 40 gate is added when ARG_MQ05 is in the plugin (the check prints a NOTE until then); the record's
   ledger rows we.lq30.trail, we.lq25.beast and we.lq25.crew still carry the pre-B1 wording (quest review, 2026-11-08).
+- **MQ01 and MQ03 lines written (2026-11-08)** for every speaker with a topic (`*.lines.txt` beside each brief):
+  Wuleen-Sei (4 topics), Buys-The-Months, Ux-Xeek, Dives-Without-A-Rope, Nesh-Deeka (4), Never-Writes-Twice, Ties;
+  `lint.py` clean on all seven (B10 "courier" warnings justified, province-vibe §9). Not yet done: the text-review
+  reader pass; three different file layouts, to be made one before loading. Fact requests to answer in the records:
+  why Ties must be persuaded; whether the player knows "the Reed" by stage 20; who Wuleen-Sei is to Ties's listener;
+  whether the player knows Nesh-Deeka at stage 10; who keeps the Lilmoth house and when the boat leaves; the figure
+  for the food months (or "no figure"); whether Ux-Xeek may call the blank line aloud.
+- **Hand-off: the MQ01/MQ03 build (next context).** Not started: `MQ01.cs`, `MQ03.cs` (after `CleanUp.Add` in
+  Generate.cs), their Papyrus, the read-backs, the .pex. Copy the shapes from BlockTest.cs (zones, alias scripts,
+  scenes, topics with TIF fragments, the race guard on 91). Rulings to keep: quest editor ids ARG_MQ01/ARG_MQ03;
+  Nesh-Deeka's ref `ARG_NeshDeekaRef`; MQ03 90 and 91 call ARG_MQ04's SetStage(10) (look it up by editor id; allow
+  for it being absent); MQ101's override starts ARG_MQ01 in place of ARG_Opening; every placement on BM&V's own
+  navmesh (Surface/Snapper helpers); the camp in cell 005911 at the paddy edge. Order: MQ01 (the new game first),
+  then MQ03.

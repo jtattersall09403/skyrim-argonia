@@ -1,0 +1,21 @@
+# Ux-Xeek (argonian, female; holds the post npc.opening.roll-reader, The Roll). MQ01 No Name on the Work Roll.
+# Format: a comment row gives [band | listener]; the row after it is the line. Bands: low below 30, words 30 to 69, high 70 and over.
+# Source: dialogue brief mq01-ux-xeek.md. No stance row exists for her yet (2.4 composes one); voice is the argonian card.
+
+## topic.mq01-the-water (the water and the months; stage 10; not essential)
+# facts stated: fact.mq01.owing-roll. fact.mq01.blank-line is known to her but is not on her may-state list, so no line states it (see fact requests).
+
+# [low | any]
+Here is the day's water. Take it and pass the cup on. Every hand in the gang owes months. Food adds more. I call the names. I do not lose one.
+
+# [words | argonian]
+Here is the day's water. Drink what you need and pass the cup to the next hand. I call the names in the hold every day, in order. I have never lost one. Every hand in this gang owes months of work. The roll adds months for food as well, so every meal is counted against the hand who eats it.
+
+# [words | other]
+Here is the day's water, [player race]. Drink what you need and pass the cup to the next hand. I call the names in the hold every day, in order. I have never lost one. Every hand in this gang owes months of work. The roll adds months for food as well, so every meal is counted against the hand who eats it.
+
+# [high | argonian]
+Come and drink. I hand round the water and I call the names. My whole day is those two tasks. A name lost from the hold would be mine to answer for, so I say each one slowly and I say it right. Every hand here owes months of work. The roll adds months for food as well. Every meal goes against the hand who eats it. I tell you plainly, because you have been kind to me and I would like you to know what is owed.
+
+# [high | other]
+Come and drink, [player race]. I hand round the water and I call the names. My whole day is those two tasks. A name lost from the hold would be mine to answer for, so I say each one slowly and I say it right. Every hand here owes months of work. The roll adds months for food as well. Every meal goes against the hand who eats it. I tell you plainly, because you have been kind to me and I would like you to know what is owed.
