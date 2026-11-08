@@ -6,7 +6,7 @@ loaded back.
     python3 .claude/skills/dialogue-write/talk_brief.py load LINES.tsv --talker "02A1E7:Black Marsh.esm"
 
 Reads, through the world database: the census row (`bmv_talker`: race, sex, class, factions, cell, spot), the
-authored `talker` row (name, trade, spot, backstory, lore), the person's `talker_topic` rows and the `talk_fact`
+authored `talker` row (name, trade, spot, backstory, lore, personality), the person's `talker_topic` rows and the `talk_fact`
 rows they name, the `talk_topic` catalogue, and the race's voice card. Nothing is hand-made; a missing row stops it.
 
 LINES.tsv: one reply per line, `<topic id>\\t<text>`; a topic's second line is the reply's next response (the
@@ -23,6 +23,9 @@ from tools.argonia_world import db  # noqa: E402
 RACE = {"ArgonianRace": "Argonian", "DarkElfRace": "Dunmer", "ImperialRace": "Imperial", "KhajiitRace": "Khajiit",
         "NordRace": "Nord", "BretonRace": "Breton", "HighElfRace": "Altmer", "WoodElfRace": "Bosmer",
         "OrcRace": "Orc", "RedguardRace": "Redguard"}
+# The talker row's personality columns (docs/design/talk.md, "Personality"), in brief order.
+PERSONALITY = {"temperament": "Temperament", "manner": "Manner of speech", "wants": "Wants", "grudge": "Grudge",
+               "notices": "Notices", "opinions": "Opinions", "secret": "Secret (hidden)"}
 
 
 def voice_row(race: str) -> str:
@@ -54,8 +57,17 @@ def brief(w, who: str, out: pathlib.Path) -> int:
          f"- Trade: {t.trade}. Spot: {t.spot}.",
          f"- Backstory: {t.backstory}",
          f"- Lore it rests on: {t.lore}",
-         f"- Voice card ({race}): {voice_row(race)}", "",
-         "## Topics", ""]
+         f"- Voice card ({race}): {voice_row(race)}", ""]
+    pers = [(k, getattr(t, k, "")) for k in PERSONALITY]
+    if any(v for _, v in pers):
+        L += ["## Personality", "",
+              "Every reply carries this person: their temperament and manner shape the wording, what they want, resent "
+              "and notice colours what they choose to say, and their opinions come out where a topic touches the people "
+              "or places named. None of it is a fact to state as news; the secret stays hidden unless a topic asks for "
+              "it, and then it comes out only grudgingly. Two people given the same topic must not sound alike.", ""]
+        L += [f"- {PERSONALITY[k]}: {v}" for k, v in pers if v]
+        L.append("")
+    L += ["## Topics", ""]
     for tt in tts:
         tp = w.get("talk_topic", tt.topic)
         L += [f"### {tt.topic}: \"{tp.prompt}\"", "", f"About: {tp.about}.", ""]

@@ -1,8 +1,8 @@
 # Talk: every BM&V person has something to say
 
 Owner, 2026-11-07: "I want to be able to talk to everyone", with a light backstory per person, their own topics,
-and every fact in them real and true. This file is the design the talk pipeline runs from. Status: Lilmoth built
-(Phase 3 block W-talk); the rest of BM&V is [Phase 4a](../phases/4a-talk-to-everyone.md).
+and every fact in them real and true. This file is the design the talk pipeline runs from. Status: Lilmoth's 30 built
+(Phase 3 block W-talk; personality, names and the bookseller's stock after the owner's walk of 2026-11-07); the rest of BM&V is [Phase 4a](../phases/4a-talk-to-everyone.md).
 
 ## Why "E to talk" opens nothing (measured 2026-11-07)
 
@@ -37,13 +37,59 @@ INFOs' ids: harmless, as no save holds an INFO by id.)
 | `bmv_talker` | the census: every enabled placed person, race, sex, class, factions, voice, settlement, cell, sub-location (interior name or nearest map marker), position, status (`silent`, `service`, `vanilla-lines`, `hostile`, `corpse`) | `talk_census build` (regenerated) |
 | `talk_topic` | the catalogue below | by hand, once |
 | `talk_fact` | one true thing, its topic, and `source`: the form key, position or lore line that proves it | per settlement, from the plugins and story/lore |
-| `talker` | the light backstory: name used, trade, spot, backstory, lore cited | per person |
+| `talker` | the light backstory and personality: the name the player sees (`known_as`), trade, spot, backstory, lore cited; temperament, manner, wants, grudge, notices, opinions, secret | per settlement, one author pass over all its people |
 | `talker_topic` | a talker's topics and the facts each may state | per person |
 | `talk_line` | the written replies | the dialogue writer, loaded by `talk_brief.py load` |
 
 The brief is generated (`.claude/skills/dialogue-write/talk_brief.py brief --talker <ref> --out ...`); the
 `dialogue-writer` agent writes from it alone (one context per person); `talk_brief.py load LINES.tsv --talker`
-loads the lines; `plugin.sh seed` then `plugin.sh check` builds and reads back.
+loads the lines; `plugin.sh seed` then `plugin.sh check` builds, and `python3 -m tools.argonia_world.talk_check`
+reads the ESP back: each talker's topics gated to their ref, each renamed ref placing its own base with the name,
+each restocked vendor's chest.
+
+## Personality (owner walk 2026-11-07)
+
+The first twelve had a backstory and their trade only, and every one was given the same directions, the same leeks
+and the same three dead Dunmer: the owner found them "all much the same". So a talker row also carries seven short
+personality columns, and the brief passes them to the writer under **Personality**, with the instruction that every
+reply carries them and that two people given one topic must not sound alike:
+
+| Column | What it holds | Example (Lilmoth) |
+|---|---|---|
+| `temperament` | how the person is | suspicious of anyone off a boat |
+| `manner` | how they talk: a verbal habit, sentence length, what they call a stranger (within the race's voice card) | short answers, ends on a question |
+| `wants` | what they want now | a berth on a lighter |
+| `grudge` | whom or what they resent, and why | the stall-keeper who undersells her |
+| `notices` | what their trade makes them see in a stranger or the place | boots: who walked the marsh, who came by boat |
+| `opinions` | of two or three named neighbours (by `known_as`) and of a place | |
+| `secret` | a small private thing, said only if a topic draws it out | |
+
+None of it is a world fact: anything the player could check is a `talk_fact`. **Local knowledge differs per
+person:** each person's facts are what is near their own spot and what their trade would know (the fisher knows
+the slaughterfish, the soldier the dead walking by the walls, the trader her stock); neighbours may share a fact
+but say it from their own position, nobody knows every fact, and each has at least one fact no one else has. A
+settlement's people and facts are written in **one author pass** (one agent with the census rows, a ref scan of
+the area and the lore), so opinions of each other agree; then one writer per person, as before.
+
+## Names and bases
+
+A placed ref's base is shared, so a name needs a base of its own. A talker whose `known_as` differs from the base's
+name gets `ARG_Talker_<ref>` (Talk.cs): templated on the old base with W-npc's look flags (Traits, Factions, Spell
+List, AI Data, AI Packages, Model/Animation, Inventory, Script, Def Pack List, Attack Data, Keywords), so face,
+race, voice, outfit and behaviour stay BM&V's. **Use Traits carries the face:** the engine draws a templated NPC
+with its template's FaceGen, as `ARG_BT_Keeper` (templated on `00FF4D`) showed on the dock in the owner's walk.
+**Use Base Data is off**, so the name is ours; **Use Stats is off**, so the level is the old base's fixed level, or 5
+where the old base levels with the player (decision 0035). The placed ref is overridden (in its cell, or the
+worldspace's persistent cell for a persistent ref) to place the new base. Names are Argonian (Jel or translated),
+the race's own for others, unique, no Nordic element (decision 0006).
+
+## A trader's stock
+
+A vendor's goods are their vendor faction's chest. BM&V's traders mostly use vanilla's shared factions (Looks-At-Books
+had `WEServiceMiscMerchant`, whose chest's levelled lists stock any misc merchant in Skyrim). A trader whose stock does
+not fit them gets a vendor faction of their own (a copy of the old one: buy list, hours) and a chest with a fixed
+stock that fits who they are, vanilla or BM&V items only, nothing levelled (decision 0035); their base takes the old
+factions with the vendor faction swapped. Her `talk.services` facts list the same stock.
 
 ## The topic catalogue (Morrowind's, extended)
 
@@ -69,7 +115,9 @@ Proposed next, same rule: **Where to sleep** (beds and inns by ref), **Who buys 
 
 **Assignment.** Every talker has `talk.self`. Place topics (directions, harvest, loot, danger, rumours, someone,
 here, lore) are drawn from the settlement's facts; each talker gets three to five, the facts measured from **their
-own spot** (directions and distances differ per person), so neighbours overlap but never repeat word for word.
+own spot** (directions and distances differ per person), so neighbours overlap but never repeat word for word. The
+mix varies too: not everyone gives directions or knows the plants, and a widely known thing (a corpse, a wreck) is
+known by two or three people at most.
 Trade topics follow class and faction: a vendor gets services, a thief loot and secrets, a mage lore, a child only
 self, someone and harvest. Hostile and corpse rows get none.
 
@@ -87,10 +135,10 @@ the world: anything the player could check is a `talk_fact` with a source.
 - A fact that our own plugin changes (Lilmoth's five Naga, disabled by ARG_BlockTest and later `we.clean.lilmoth`)
   is not stated until the change is permanent.
 
-## Cost (measured 2026-11-07)
+## Cost (measured on Lilmoth's 30, 2026-11-08)
 
-One dialogue-writer run (Sonnet, high effort) with its corpus-find children: about 36,000 tokens, under two
-minutes, 4 to 5 topics. At list price that is about $0.40 a person; the facts for a settlement (a scripted scan
-plus an agent's backstories) about $4 a settlement. All 603 talkable people (553 silent, 50 service) in 45 groups:
-about $240 + $180 ≈ **$420, about 22% of a week's allowance**, spread over the phase. Build: `plugin.sh seed` and
-`check` take under 3 minutes for the whole set.
+The author pass (one Opus agent: census rows, ref scan, lore, 30 people's rows and 134 facts): about 160,000
+tokens, nine minutes. Thirty Sonnet writers without corpus-find children: 25,000 to 30,000 tokens each, under a
+minute each, in parallel (about 830,000 in all). One reader pass over the 166 lines: 57,000. About $0.45 a person
+all in. The other 573 talkable people: about **$260, about 14% of a week's allowance**, spread over Phase 4a. Build:
+`plugin.sh seed` and `check` under 3 minutes each.

@@ -3104,7 +3104,9 @@ CREATE TABLE "talk_fact" (
   "source" TEXT NOT NULL
 );
 
--- An authored talker: the light backstory (place, trade, spot; lore cited, decision 0032) a brief is built from.
+-- An authored talker: the light backstory (place, trade, spot; lore cited, decision 0032) and personality a brief is
+-- built from. known_as is the name the player sees: when it differs from the placed base's name, Talk.cs gives the
+-- person a base of their own (templated on the old one) carrying it.
 CREATE TABLE "talker" (
   "id" TEXT NOT NULL PRIMARY KEY REFERENCES "bmv_talker"("id"),
   "known_as" TEXT NOT NULL,
@@ -3112,6 +3114,15 @@ CREATE TABLE "talker" (
   "spot" TEXT NOT NULL,
   "backstory" TEXT NOT NULL,
   "lore" TEXT NOT NULL,
+  -- the personality the writer flavours every line with (docs/design/talk.md, "Personality"): no world fact here;
+  -- anything the player could check is a talk_fact
+  "temperament" TEXT NOT NULL DEFAULT '',
+  "manner" TEXT NOT NULL DEFAULT '',
+  "wants" TEXT NOT NULL DEFAULT '',
+  "grudge" TEXT NOT NULL DEFAULT '',
+  "notices" TEXT NOT NULL DEFAULT '',
+  "opinions" TEXT NOT NULL DEFAULT '',
+  "secret" TEXT NOT NULL DEFAULT '',
   "status" TEXT NOT NULL CHECK ("status" IN ('designed', 'written', 'built'))
 );
 
