@@ -33,12 +33,12 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 ### the Chapter (`topic.tg01-welcome`; stages [40, 41]; essential: no refusal band)
 - Intent: Bent-Spine takes in the player who came down the trapdoor by their own hand as a Lookout, then turns to the work he has (topic.tg02-the-job); hearing it ends the quest (90 after 40, 91 after 41) and so starts TG02 at its stage 20
 - May state:
-  - `fact.tg01.chapter-way`: The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth.
+  - `fact.tg01.chapter-way`: The Chapter's way down is a locked trapdoor just north of Pusbottom in Lilmoth.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - Lockpicking: pick-a-lock (the Chapter's trapdoor), at night
   - Lockpicking: pick-a-lock (the Chapter's trapdoor), at night
-- Directions to give: The coast ship's door is on Soulrest's dock (039827); inside the ship, the other door (0AA837) comes out at Lilmoth Dock (0AA664), on Lilmoth's east side. Walk west to the Lilmoth Hist; Pusbottom lies past it by the canals, and the trapdoor (16BF7F) is in the ground two squares north of Pusbottom. Below, Bent-Spine keeps to the Chapter's inner room, past the foot of the trapdoor's ladder.
-- Directions to give: The coast ship's door is on Soulrest's dock (039827); inside the ship, the other door (0AA837) comes out at Lilmoth Dock (0AA664), on Lilmoth's east side. Walk west to the Lilmoth Hist; Pusbottom lies past it by the canals, and the trapdoor (16BF7F) is in the ground two squares north of Pusbottom. Below, Bent-Spine keeps to the Chapter's inner room, past the foot of the trapdoor's ladder.
+- Directions to give: The coast ship's door is on Soulrest's dock (039827); inside the ship, the other door (0AA837) comes out at Lilmoth Dock (0AA664), on Lilmoth's east side. Walk west to the Lilmoth Hist; Pusbottom lies past it by the canals, and the trapdoor (16BF7F) is in the ground just north of Pusbottom. Below, Bent-Spine keeps to the Chapter's inner room, past the foot of the trapdoor's ladder.
+- Directions to give: The coast ship's door is on Soulrest's dock (039827); inside the ship, the other door (0AA837) comes out at Lilmoth Dock (0AA664), on Lilmoth's east side. Walk west to the Lilmoth Hist; Pusbottom lies past it by the canals, and the trapdoor (16BF7F) is in the ground just north of Pusbottom. Below, Bent-Spine keeps to the Chapter's inner room, past the foot of the trapdoor's ladder.
 - Bent-Spine's knowledge at stage 40:
   - `fact.tg01.chapter-way`: knows
 - The player already knows at stage 40 (anything else is explained when first named):

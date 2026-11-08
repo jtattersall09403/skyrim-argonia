@@ -136,6 +136,9 @@ static class Talk
         var cellWs = Rows("bmv_cell").ToDictionary(r => S(r, "id"),
             r => r.TryGetProperty("worldspace", out var ws) && ws.ValueKind == JsonValueKind.String ? ws.GetString() : null);
         var noRefs = new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
+        // the worldspace each exterior cell belongs to (Helstrom is in BlackMarsh2, not BlackMarsh)
+        var worldOf = new Dictionary<FormKey, FormKey>();
+        foreach (var m in mods) foreach (var ws in m.Worldspaces) foreach (var b in ws.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items) worldOf[c.FormKey] = ws.FormKey;
         int named = 0;
         foreach (var t in talkers)
         {
@@ -164,8 +167,10 @@ static class Talk
 
             var r = (PlacedNpc)((IPlacedNpcGetter)placed[refKey].rec).DeepCopy();
             r.Base.SetTo(n.FormKey);
-            if ((r.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(r);
-            else CellOf(world, cells[K(S(c, "cell"))].rec, noRefs).Temporary.Add(r);
+            var cellKey = K(S(c, "cell"));
+            var w = worldOf.TryGetValue(cellKey, out var wk) && wk != world.FormKey ? LocalQuests.World(mod, mods, wk) : world;
+            if ((r.MajorRecordFlagsRaw & 0x400) != 0) w.TopCell!.Persistent.Add(r);
+            else CellOf(mod, w, cells[cellKey].rec, noRefs).Temporary.Add(r);
             named++;
         }
         Console.WriteLine($"talk names: {named} people given bases of their own");
@@ -173,8 +178,9 @@ static class Talk
 
     // Our override of an exterior cell in the worldspace, found if another block already added it, else added (the
     // block and sub-block numbers are the grid divided by 32 and by 8, rounded down).
-    static Cell CellOf(Worldspace world, ICellGetter src, Cell.TranslationMask noRefs)
+    static Cell CellOf(SkyrimMod mod, Worldspace world, ICellGetter src, Cell.TranslationMask noRefs)
     {
+        if (src.Flags.HasFlag(Cell.Flag.IsInteriorCell)) return CleanUp.Interior(mod, src, noRefs);  // an interior (a Helstrom house)
         foreach (var b in world.SubCells) foreach (var sb in b.Items) foreach (var cell in sb.Items)
             if (cell.FormKey == src.FormKey) return cell;
         var g = src.Grid!.Point;

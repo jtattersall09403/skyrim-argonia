@@ -46,7 +46,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
 ### the necklace (`topic.tg01-return`; stages [30]; essential: no refusal band)
 - Intent: shown only while the player has the necklace (takeItem it); if he lives she pays and sends the player to the Chapter's trapdoor; if he is dead she says the Chapter wanted the necklace without a body, pays nothing, and sends the player all the same
 - May state:
-  - `fact.tg01.chapter-way`: The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth.
+  - `fact.tg01.chapter-way`: The Chapter's way down is a locked trapdoor just north of Pusbottom in Lilmoth.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - pickpocket: pickpocket (Keeps-What-Floats), in a crowd or a market
   - pickpocket: pickpocket (Keeps-What-Floats), at night

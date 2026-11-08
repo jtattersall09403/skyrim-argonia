@@ -8,6 +8,7 @@
 #   plugin.sh mqcheck  build, then the read-back of MQ04 and MQ05 from the ESP and out/gpu/papyrus against the record (MQCheck.cs)
 #   plugin.sh cleancheck  build, then read the slice's clean-ups back from the ESP (CleanUp.cs)
 #   plugin.sh bccheck  build, then read the Chainbreakers quests back from the ESP and the .pex (ChainbreakersCheck.cs)
+#   plugin.sh nightreedcheck  build, then read TG01/TG02 back from the ESP and the .pex (NightReedCheck.cs)
 #   plugin.sh seed     regenerate plugin/Argonia from shutdown.json and the load order's winners (game data needed:
 #                      $ARGONIA_GAME_ROOT/Data or ~/games/skyrimse/Data, the staged profile ~/.argonia/stack/MO2)
 set -euo pipefail
@@ -51,6 +52,7 @@ case "${1:-}" in
   localcheck) build; tool localcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   bccheck) build; tool bccheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   mqcheck) build; tool mqcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
+  nightreedcheck) build; tool nightreedcheck "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder
     tmp=$(mktemp -d); trap 'rm -rf "$tmp"' EXIT

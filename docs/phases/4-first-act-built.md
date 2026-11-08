@@ -126,14 +126,14 @@ the quest is re-authored.
   zone + night + unseen became an unconditioned zone at his bed (prereq 20) and the friend's line; TG02's "all three
   claims" and "all three sold" are hidden stages 21-23 and 43-45 with a guarded check; any client's death is the
   failed end 92 (three death aliases on one stage), replacing the 20-to-40 fail-forward. Measured: Pusbottom has no
-  water deeper than 24 units, so the lockbox, the fallen house and the eels are in the deep water two squares north
+  water deeper than 24 units, so the lockbox, the fallen house and the eels are in the deep water just north of Pusbottom
   (cell 5,0, floor about -700) by the Chapter's trapdoor, clients on its south bank (navmesh 07EDF2); Soulrest's
   docks have no navmesh at plank height, so the thief's round is on Soulrest's own navmesh 0A7785. Records: the
   re-authors are review findings B1-B4 in both, stage and journal text matches the build, and one quest-reviewer round
   ran (its 4 blocking findings applied as text and fact changes only; its notes 5-13 left open). Lines: one
   dialogue-writer per speaker (8) from brief.py's briefs, one reader pass (11 rewrites applied), lint clean;
   NightReed.cs builds all 21 from `story/data/dialogue-writer/quest/tg/nightreed.lines.tsv` (2026-11-08). The figurine is
-  now vanilla HorkerTusk's ivory (03AD68), not the Companions totem CRTotem2 (decision 0006). Read-back 228 of 228 (a
+  now vanilla HorkerTusk's ivory (03AD68), not the Companions totem CRTotem2 (decision 0006). Read-back 231 of 231 (the eel base read back as "Ripper Eel", ours; a
   new check: the figurine's model is not a totem), 37 of 37 .pex. Owed: the owner's in-game check.
 
 - **BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs`, called after `LocalQuests.Add` (it reuses

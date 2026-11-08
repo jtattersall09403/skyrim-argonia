@@ -113,6 +113,9 @@ static class LocalQuests
         public void Persist(FormKey key, Npc? newBase = null)
         {
             var existing = World.TopCell!.Persistent.OfType<PlacedNpc>().FirstOrDefault(r => r.FormKey == key);
+            // talk's override (Talk.cs) may already hold it in its cell: take it from there, one record per form
+            foreach (var b in World.SubCells) foreach (var sb in b.Items) foreach (var c in sb.Items)
+                if (existing == null && c.Temporary.OfType<PlacedNpc>().FirstOrDefault(r => r.FormKey == key) is { } t) { c.Temporary.Remove(t); existing = t; }
             var src = (IPlacedNpcGetter)Placed[key].rec;
             if (existing == null && newBase == null && (src.MajorRecordFlagsRaw & 0x400) != 0) return;
             var r = existing ?? (PlacedNpc)src.DeepCopy();

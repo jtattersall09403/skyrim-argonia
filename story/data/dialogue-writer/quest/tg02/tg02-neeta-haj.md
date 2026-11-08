@@ -39,7 +39,7 @@ Built by quest-write/brief.py from the quest record and the world records. Do no
   - `fact.tg02.figurine-old`: The figurine is worn smooth by many years of handling, older than any clutch of Neeta-Haj's.
 - What the player does at these stages (set it up: who, where, what danger, what they need):
   - speechcraft: persuade (the three clients), in a crowd or a market
-- Directions to give: Climb the trapdoor's ladder out of the Chapter; the fallen house lies in the deep water two squares north of Pusbottom by the trapdoor, and the three clients wait on its south bank.
+- Directions to give: Climb the trapdoor's ladder out of the Chapter; the fallen house lies in the deep water just north of Pusbottom by the trapdoor, and the three clients wait on its south bank.
 - Neeta-Haj's knowledge at stage 20:
   - `fact.tg02.box`: knows
   - `fact.tg02.claim-figurine`: knows

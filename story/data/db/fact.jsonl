@@ -985,7 +985,7 @@
 {"id":"fact.tender.moored","says":"The tenders are moored over the lots."}
 {"id":"fact.tender.never-enters","says":"The tender never enters the water."}
 {"id":"fact.tender.shared","says":"The diver families share the tenders."}
-{"id":"fact.tg01.chapter-way","claim":"The Chapter's way down is a locked trapdoor two squares north of Pusbottom in Lilmoth.","ord":5,"from_ref":"t4","quest_id":"quest.tg.tg01"}
+{"id":"fact.tg01.chapter-way","claim":"The Chapter's way down is a locked trapdoor just north of Pusbottom in Lilmoth.","ord":5,"from_ref":"t4","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.desk-door","claim":"Tilts-The-Jug keeps the Chapter's desk inside Soulrest's house.","ord":0,"from_ref":"t0","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.he-runs","claim":"Caught, Keeps-What-Floats runs rather than fights.","ord":3,"from_ref":"t1","quest_id":"quest.tg.tg01"}
 {"id":"fact.tg01.necklace","claim":"Keeps-What-Floats took a necklace of polished blue jaspers from another thief of the dock.","ord":2,"from_ref":"t1","quest_id":"quest.tg.tg01"}

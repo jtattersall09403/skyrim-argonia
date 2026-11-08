@@ -50,6 +50,13 @@ static class CleanUp
                         if ((mine.MajorRecordFlagsRaw & 0x400) != 0) world.TopCell!.Persistent.Add(mine);
                         else CellOf(world, cells[cellKey].rec, noRefs).Temporary.Add(mine);
                     }
+                    else if (!cells[cellKey].rec.Flags.HasFlag(Cell.Flag.IsInteriorCell))
+                    {   // an exterior cell of another BM&V worldspace (Helstrom is in BlackMarsh2)
+                        var wk = mods.SelectMany(m => m.Worldspaces.Where(w => w.SubCells.Any(b => b.Items.Any(sb => sb.Items.Any(cc => cc.FormKey == cellKey))))).First().FormKey;
+                        var w2 = LocalQuests.World(mod, mods, wk);
+                        if ((mine.MajorRecordFlagsRaw & 0x400) != 0) w2.TopCell!.Persistent.Add(mine);
+                        else CellOf(w2, cells[cellKey].rec, noRefs).Temporary.Add(mine);
+                    }
                     else
                     {
                         var c = Interior(mod, cells[cellKey].rec, noRefs);
@@ -96,7 +103,7 @@ static class CleanUp
     }
 
     // An interior cell's override: found if another block added it, else in block id % 10, sub-block (id / 10) % 10.
-    static Cell Interior(SkyrimMod mod, ICellGetter src, Cell.TranslationMask noRefs)
+    internal static Cell Interior(SkyrimMod mod, ICellGetter src, Cell.TranslationMask noRefs)
     {
         foreach (var b in mod.Cells.Records) foreach (var sb in b.SubBlocks) foreach (var cell in sb.Cells)
             if (cell.FormKey == src.FormKey) return cell;

@@ -162,6 +162,12 @@ static class NightReedCheck
         Check("enable parents initially disabled", placed[p1].MajorRecordFlagsRaw == 0xC00 && placed[p2].MajorRecordFlagsRaw == 0xC00);
         foreach (var n in mine.Npcs.Where(n => n.EditorID?.StartsWith("ARG_TG_") == true))
             Check($"{n.EditorID} fixed level, not PC-level-mult", n.Configuration.Level is INpcLevelGetter && !n.Configuration.Flags.HasFlag(NpcConfiguration.Flag.Unique) == (n.EditorID == "ARG_TG_RipperEel"));
+        {
+            var eb = mine.Npcs.FirstOrDefault(n => n.EditorID == "ARG_TG_RipperEel");
+            Check($"eel base is ours, named 'Ripper Eel' (read back: '{eb?.Name?.String}')", eb?.Name?.String == "Ripper Eel" && eb.FormKey.ModKey == mine.ModKey);
+            foreach (var er in new[] { "ARG_TG02_Eel1", "ARG_TG02_Eel2" })
+                Check($"{er} places the Ripper Eel base", placed.TryGetValue(F(er), out var e) && e is IPlacedNpcGetter pn && pn.Base.FormKey == eb?.FormKey);
+        }
         foreach (var d in NightReed.LockedDoors)
         {
             var o = placed.TryGetValue(FormKey.Factory(d), out var r) ? r as IPlacedObjectGetter : null;

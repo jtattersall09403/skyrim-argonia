@@ -5,8 +5,8 @@ first person; past tense for events; "I'm to" for the objective; full names ever
 chain; directions in landmark prose; failure entries flat, with the consequence.
 
 ## Stage 20 (`text.journal.tg02.20`)
-- Draft: I'm in the Night-Reed Chapter now, under Pusbottom in Lilmoth. Bent-Spine, the Chapter's fence, wants the lockbox of a merchant whose stilt house fell into the deep water two squares north of Pusbottom, by the Chapter's trapdoor; it lies locked on the floor beside the house, and ripper eels hunt the water. Three clients on the bank want it. I'm to talk to each of them, Neeta-Haj, Okan-Tei and Dar-Zeel, and get out of each what they claim the box holds for them.
-- Directions: Climb the trapdoor's ladder out of the Chapter; the fallen house lies in the deep water two squares north of Pusbottom by the trapdoor, and the three clients wait on its south bank.
+- Draft: I'm in the Night-Reed Chapter now, under Pusbottom in Lilmoth. Bent-Spine, the Chapter's fence, wants the lockbox of a merchant whose stilt house fell into the deep water just north of Pusbottom, by the Chapter's trapdoor; it lies locked on the floor beside the house, and ripper eels hunt the water. Three clients on the bank want it. I'm to talk to each of them, Neeta-Haj, Okan-Tei and Dar-Zeel, and get out of each what they claim the box holds for them.
+- Directions: Climb the trapdoor's ladder out of the Chapter; the fallen house lies in the deep water just north of Pusbottom by the trapdoor, and the three clients wait on its south bank.
 - The player knows: fact.tg02.job, fact.tg02.box, fact.tg02.eels, fact.tg02.claim-figurine, fact.tg02.claim-charm, fact.tg02.claim-beads
 
 ## Stage 40 (`text.journal.tg02.40`)
