@@ -532,7 +532,8 @@ def source(r: dict, speaker: str, target: str) -> str:
 
 def renames(w) -> dict[str, str]:
     """BM&V's names our world edits change ('Docks' -> 'Soulrest'), from world_edit rows of kind name_place."""
-    out = {}
+    out = dict(re.findall(r'\["([^"]+)"\] = "([^"]+)"',      # MapFix.cs: BM&V's misspelt marker names fixed
+                          (db.REPO / "tools/ArgoniaPlugin/MapFix.cs").read_text()))
     for e in w.rows("world_edit"):
         m = re.search(r"'([^']+)' named (?:the )?([A-Z][\w'-]+(?: [A-Z][\w'-]+)*)", e.description)
         if e.kind == "name_place" and m:
