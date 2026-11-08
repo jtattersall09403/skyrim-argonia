@@ -66,6 +66,7 @@ SEA = ("ocean", "shallow-coast", "bay")
 RUNNING = ("estuary", "river", "stream")
 COAST_M, ENCLOSE_M, ENCLOSED_LAND = 450, 3000, 0.45
 RIVER_W_M, SLOW_W_M, LAKE_M2, OPEN_POND_M = 40, 150, 500_000, 120
+CHANNEL_MIN_M, CHANNEL_ELONG = 150, 8         # a channel: centreline 150 m or more and 8 widths long, or branching
 TREE_WORDS = {"forest", "hist", "cypress", "bog", "root", "roots", "moss", "mosses", "jungle", "trees", "wood", "mangrove", "mangroves", "swamp"}
 REED_WORDS = {"reed", "reeds", "sedge", "cattail", "cattails", "fen", "rice", "saltrice", "paddy", "paddies", "bayou",
               "marsh", "lilies", "flats"}
@@ -191,8 +192,8 @@ STILL = ("lake", "pond", "green-marsh", "blackwater-swamp")
 def reshape(raster, byindex, painted, water, regions, names, rchar):
     """Step 2a, by whole connected water: a closed piece of water that is not a long through channel is still water
     of one kind throughout (merged into one body); in a channel network a wide stretch that the width cut made a
-    round still patch is merged back into the channel it lies in, unless it truly opens into a lake (0.5 km2 or
-    more and three times wider than the channels at it). Returns the raster with merged bodies."""
+    round still patch is merged back into the channel it lies in, unless it truly opens into still water (120 m
+    or more across and three times wider than the channels at it: a pond, or a lake from 0.5 km2). Returns the raster with merged bodies."""
     from skimage.morphology import skeletonize
     comp, _ = ndi.label(bridged(water), EIGHT)
     comp[~water] = 0
@@ -245,8 +246,8 @@ def reshape(raster, byindex, painted, water, regions, names, rchar):
             width = a / length
             long_m = length * M_PX
             has_lake = any(kind(i) in STILL and area[i] * M_PX * M_PX >= LAKE_M2 for i in members)
-            linear = length / max(width, 1.0) >= 10
-            network = linear and (long_m >= 3000 or ((c in edge or has_lake) and long_m >= 600))
+            network = channel_shaped(m) or (length / max(width, 1.0) >= 10
+                                            and (long_m >= 3000 or ((c in edge or has_lake) and long_m >= 600)))
             if not network:
                 keep = [i for i in members if i not in painted]
                 if not keep:
@@ -277,8 +278,9 @@ def reshape(raster, byindex, painted, water, regions, names, rchar):
                 if not chans:
                     continue
                 ref = max(wmean[j] for j in chans)
-                if area[i] * M_PX * M_PX >= LAKE_M2 and 2 * rmax[i] * M_PX >= 3 * ref:
-                    byindex[i].update(kind="lake", decided=True,
+                if 2 * rmax[i] * M_PX >= max(OPEN_POND_M, 3 * ref):
+                    k = "lake" if area[i] * M_PX * M_PX >= LAKE_M2 else "pond"
+                    byindex[i].update(kind=k, decided=True,
                                       why=f"a channel opens into still water {2 * rmax[i] * M_PX:.0f} m across")
                     continue
                 parent[i] = find(max(chans, key=lambda j: area[j]))
@@ -286,6 +288,25 @@ def reshape(raster, byindex, painted, water, regions, names, rchar):
     for i in idx.tolist():
         lut[i] = find(i)
     return lut[raster].astype(raster.dtype)
+
+
+def channel_shaped(m: np.ndarray) -> bool:
+    """A body drawn as a channel: its centreline long against its width (a ribbon), or branching (dendritic).
+    Only a compact closed blob is still water; a channel runs whether or not the map joins it to the network."""
+    from skimage.morphology import skeletonize
+    if m.sum() < 30:
+        return False
+    sk = skeletonize(m)
+    length = float(sk.sum())
+    width = float(m.sum()) / max(length, 1.0)
+    if length * M_PX < CHANNEL_MIN_M:
+        return False
+    elong = length / max(width, 1.0)
+    if elong >= CHANNEL_ELONG:
+        return True
+    nb = ndi.convolve(sk.astype(np.int8), EIGHT.astype(np.int8), mode="constant") - 1
+    forks = int(((nb >= 3) & sk).sum())
+    return forks >= 2 and elong >= CHANNEL_ELONG / 2
 
 
 def classify(png: bool = False, chunks: bool = False) -> dict:
@@ -372,15 +393,20 @@ def classify(png: bool = False, chunks: bool = False) -> dict:
     raster = final
 
     # steps 2 and 3: running and still inland water
+    objs_final = ndi.find_objects(raster)
     for r in rows:
         if r.pop("decided", False) and r["kind"] not in RUNNING:
             continue
         if r["set_by"] == "owner" or r["kind"] in SEA or r["kind"] == "estuary":
             continue
         ch = rchar.get(r["region_id"]) or {"wet": "pond", "name": "the margin", "swampy": False}
-        if r["src_kind"] in ("river", "stream"):
+        sl = objs_final[r["raster_index"] - 1]
+        shaped = r["area_m2"] < LAKE_M2 and channel_shaped(raster[sl] == r["raster_index"])
+        if r["src_kind"] in ("river", "stream") or shaped:
             r["kind"] = "river" if r["width_m"] >= RIVER_W_M else "stream"
-            r["why"] = f"a channel {r['width_m']:.0f} m wide on average"
+            r["why"] = (f"a channel {r['width_m']:.0f} m wide on average"
+                        + ("; channel-shaped (long or branching), so running whether or not the map joins it"
+                           if shaped and r["src_kind"] not in ("river", "stream") else ""))
         elif r["area_m2"] >= LAKE_M2:
             r["kind"], r["why"] = "lake", f"open still water of {r['area_m2'] / 1e6:.1f} km2"
         elif r["open_m"] >= OPEN_POND_M:
