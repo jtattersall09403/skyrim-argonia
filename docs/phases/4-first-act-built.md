@@ -21,13 +21,13 @@ Status: [PROGRESS.md](../PROGRESS.md). The plan: [PLAN.md](../PLAN.md). Edit thi
   fixed, by name-only overrides; `sMapWorldDefaultWorldSpace=BlackMarsh` under `[MapMenu]` only if (1) alone does
   not take; (4) one owner check: press M on Lilmoth's dock, in Thorn and in Valenwood: BM&V's land, pan and zoom,
   markers. A few hours and one check. If the map is still Tamriel or blank, the next step is in Phase 5.
-- **Rooms without load doors.** Lilmoth has 6 exterior load doors but about 60 shell buildings, most of them hollow
-  and walkable from outside (vanilla Solitude, Markarth and farmhouse shells; measured by navmesh inside each
-  footprint, 2026-11-08: [lilmoth-walkin-shells.tsv](../research/bmv/lilmoth-walkin-shells.tsv), class A = 14
-  houses with navmesh joined to the street, B and C need a look). Quests and homes use them as rooms and cite the
-  shell's ref key, not "a house". Before the first quest uses one, the census gains a `bmv_shell` table (ref, base,
-  cell, footprint, class, navmesh joined, floors, nearest door) for every settlement, and the owner walks into the
-  class-A list once (shells stand 100 to 800 units sunk, so navmesh is a proxy, not proof).
+- **Rooms without load doors.** BM&V's towns stand many shell buildings you walk straight into (Lilmoth: 6
+  exterior load doors, 52 shells). Done 2026-11-08: the `bmv_shell` table (`tools/argonia_world/bmv_shell.py`
+  build/verify) holds 1,889 building refs in 86 settlements' exterior cells, classed by the winning navmesh inside
+  each footprint: A 86 (joined to the street, >= 10 triangles), B 114, C 166, D 595, X 928 walkways and docks;
+  counts per settlement in [census.md](../research/bmv/census.md#shells-rooms-without-load-doors). Quests and homes
+  cite a shell by its `bmv_shell.id`, never "a house". Left: one owner walk into Lilmoth's 14 class-A shells, its
+  verdict in `owner_verdict` (navmesh is a proxy, not proof; shells stand up to 12 m sunk).
 - **Loop**: read the files that the game will consume and verify (to the extent that you can) that everything you intended to implement has been implemented correctly. If not, diagnose, fix, then repeat this loop until your read of the built game files (esm and plugin and whatever else) does meet this bar. But do not run the actual game yourself, just read/mine from the game files that you build. *Then* pass on to the owner.
 - **Owner test:** play the slice from a new game: the new-game flow, the opening scene, the opening act and the
   chosen faction lines.
