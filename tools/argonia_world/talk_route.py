@@ -15,7 +15,7 @@ as paces and a compass point only.
 
     python3 -m tools.argonia_world.talk_route cache    [--world 23D689:Black Marsh.esm]
     python3 -m tools.argonia_world.talk_route route    --from REF --to REF|MARKER|x,y [--json]
-    python3 -m tools.argonia_world.talk_route facts    --settlement bmv.lilmoth [--write] [--world W]  # every directions fact
+    python3 -m tools.argonia_world.talk_route facts    --settlement bmv.lilmoth [--write] [--raw]  # every directions fact
 """
 from __future__ import annotations
 
@@ -42,7 +42,11 @@ TURN = 700.0            # Douglas-Peucker tolerance: a bend this far off the lin
 REACH = 1600.0          # a leg's landmark lies this close to its end
 MIN_LEG = 1400.0        # a run shorter than this merges into the one before
 SPACE = 3000.0          # two cuts of a telling stand at least this far apart along the path
-MAX_LEGS = 4            # Morrowind gives two to four legs
+MAX_LEGS = 4            # Morrowind gives two to four legs (before the leg rules split a long one)
+MERGE = 50 * PACE       # leg rule 1: a leg shorter joins its neighbour
+SPLIT = 350 * PACE      # leg rule 2: a leg longer is cut at a landmark near its middle
+SHORT = 150 * PACE      # a whole route shorter keeps its short legs
+AWAY = 90.0             # leg rule 3: a first leg more than this many degrees off the target is re-planned
 RARE = 3000.0           # a landmark is distinctive when no other of its look stands this close
 SAME = 800.0            # pieces of one thing (a dock's planks, a waterfall's sheets) stand this close
 CLIMB = 700.0           # a leg rising this much is a climb
@@ -336,7 +340,7 @@ class Grid:
                         return jj * self.nx + ii
         return j * self.nx + i
 
-    def astar(self, s: int, t: int) -> list[int]:
+    def astar(self, s: int, t: int, blocked: set | None = None) -> list[int]:
         nx, tx, ty = self.nx, t % self.nx, t // self.nx
         g, came, pq = {s: 0.0}, {}, [(0.0, s)]
         steps = [(1, 0, 1), (-1, 0, 1), (0, 1, 1), (0, -1, 1), (1, 1, 1.414), (1, -1, 1.414), (-1, 1, 1.414),
@@ -352,7 +356,7 @@ class Grid:
                     continue
                 v = vy * nx + vx
                 c = self.cost(v)
-                if c is None:
+                if c is None or (blocked and v in blocked):
                     continue
                 ng = gu + c * dl
                 if ng < g.get(v, 1e18):
@@ -412,20 +416,20 @@ def _mode(G: Grid, k: int) -> str:
     return "walk"
 
 
-def _landmark(W: World, x: float, y: float, used: set, heading: tuple) -> dict | None:
+def _landmark(W: World, x: float, y: float, used: set, heading: tuple, wide: float = 1) -> dict | None:
     """The most distinctive landmark a stranger would pick out near (x, y): a map marker, else a thing with at most
     one twin of the same look within RARE; nearer is better."""
     best, bs = None, -1e9
     for r in W.refs:
         lm = r["lm"]
-        reach = REACH * (2 if lm and lm[0] == "marker" else 1)
+        reach = REACH * wide * (2 if lm and lm[0] == "marker" else 1)
         if not lm or r["key"] in used or abs(r["x"] - x) > reach or abs(r["y"] - y) > reach:
             continue
         if lm[0] != "marker" and r.get("twins", 0) >= 2:
             continue
         d = math.hypot(r["x"] - x, r["y"] - y)
-        if d <= reach and lm[2] - d / 400 > bs:
-            best, bs = r, lm[2] - d / 400
+        if d <= reach and lm[2] - d / (400 * wide) > bs:
+            best, bs = r, lm[2] - d / (400 * wide)
     if best is None or bs < 3:
         return None
     cx, cy = best["x"] - x, best["y"] - y
@@ -454,7 +458,14 @@ def _island(G: Grid, k: int, start: int) -> bool:
     return len(seen) < 4000
 
 
-def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str) -> dict:
+def _angle(ax: float, ay: float, bx: float, by: float) -> float:
+    """Degrees between two directions."""
+    d = math.degrees(math.atan2(by, bx) - math.atan2(ay, ax)) % 360
+    return min(d, 360 - d)
+
+
+def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str, shape: bool = True) -> dict:
+    """The route told as legs. shape=False gives the raw cut without the leg rules, for measuring them."""
     straight = math.hypot(tx - sx, ty - sy)
     out = {"from": (round(sx), round(sy)), "to": target, "to_xy": (round(tx), round(ty)),
            "straight_m": round(straight / UNITS_M), "bearing": compass(tx - sx, ty - sy)}
@@ -464,13 +475,62 @@ def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str) -> 
     if not path:
         out.update(kind="none", legs=[])
         return out
-    pts = [(*G.xy(k % G.nx, k // G.nx), G.h[k], _mode(G, k)) for k in path]
-    seg = lambda a, b: math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
-    length = sum(seg(i, i + 1) for i in range(len(pts) - 1))
-    out["route_m"] = round(length / UNITS_M)
-    if straight < CLOSE and length < straight * 1.35 + 600:
+    plan = _plan(W, G, s, path, target, shape)
+    out["route_m"] = round(plan["along"][-1] / UNITS_M)
+    if straight < CLOSE and plan["along"][-1] < straight * 1.35 + 600:
         out.update(kind="close", paces=round(straight / PACE), legs=[])
         return out
+    away = lambda legs: _angle(legs[0]["end"][0] - sx, legs[0]["end"][1] - sy, tx - sx, ty - sy) > AWAY
+    if shape and away(plan["legs"]):
+        # rule 3: the first leg heads away; block that start and take the next-best one while it costs little
+        blocked, best, cur = set(), None, plan
+        for _ in range(3):
+            end = _near_index(G, path, cur["legs"][0]["end"])
+            for k in path[3:path.index(end) + 1]:
+                i, j = k % G.nx, k // G.nx
+                blocked |= {(j + dj) * G.nx + i + di for dj in range(-2, 3) for di in range(-2, 3)}
+            blocked.discard(s)
+            blocked.discard(t)
+            alt = G.astar(s, t, blocked)
+            if not alt:
+                break
+            cur = _plan(W, G, s, alt, target, shape)
+            if cur["along"][-1] > plan["along"][-1] * 1.6:
+                break
+            path = alt
+            if not away(cur["legs"]):
+                best = cur
+                break
+        if best:
+            plan = best
+            out["route_m"] = round(plan["along"][-1] / UNITS_M)
+        else:
+            plan["legs"][0]["why"] = _forced(G, s, t, plan["legs"][0])
+    out.update(kind="route", legs=plan["legs"])
+    return out
+
+
+def _near_index(G: Grid, path: list, xy: tuple) -> int:
+    return min(path, key=lambda k: math.hypot(G.xy(k % G.nx, k // G.nx)[0] - xy[0],
+                                              G.xy(k % G.nx, k // G.nx)[1] - xy[1]))
+
+
+def _forced(G: Grid, s: int, t: int, leg: dict) -> str:
+    """Why the world sends the first leg away from the target: what lies on the straight line."""
+    (x0, y0), (x1, y1) = G.xy(s % G.nx, s // G.nx), G.xy(t % G.nx, t // G.nx)
+    n = max(2, int(math.hypot(x1 - x0, y1 - y0) // GRID))
+    kinds = [G.kind[j * G.nx + i] for i, j in (G.ij(x0 + (x1 - x0) * f / n, y0 + (y1 - y0) * f / n)
+                                                for f in range(n + 1)) if 0 <= i < G.nx and 0 <= j < G.ny]
+    if kinds.count("water") >= max(2, kinds.count("steep")):
+        return "round the inlet"
+    if kinds.count("steep") >= 2:
+        return "round the cliffs"
+    return "the path bends round" if leg["kind"] == "road" else "round the wet ground"
+
+
+def _plan(W: World, G: Grid, s: int, path: list, target: str, shape: bool) -> dict:
+    pts = [(*G.xy(k % G.nx, k // G.nx), G.h[k], _mode(G, k)) for k in path]
+    seg = lambda a, b: math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
     runs, cur = [], [0]                 # runs of one mode; a short run joins the one before
     for i in range(1, len(pts)):
         if pts[i][3] != pts[cur[0]][3]:
@@ -493,18 +553,26 @@ def route(W: World, sx: float, sy: float, tx: float, ty: float, target: str) -> 
     along = [0.0]
     for i in range(len(pts) - 1):
         along.append(along[-1] + seg(i, i + 1))
-    out.update(kind="route", legs=_legs(W, G, s, pts, along, [r[0] for r in merged[1:]], target))
-    return out
+    must = {r[0] for r in merged[1:] if "swim" in (pts[r[0] - 1][3], pts[r[0] + 1][3])
+            or "bridge" in (pts[r[0] - 1][3], pts[r[0] + 1][3])}
+    cuts = _cuts(W, pts, along, must, target)
+    if shape:
+        cuts = _rules(W, pts, along, must, cuts, target)
+    return {"along": along, "legs": _build(G, s, pts, along, cuts, must, shape)}
 
 
-def _legs(W: World, G: Grid, s: int, pts: list, along: list, bounds: list, target: str) -> list[dict]:
+def _heading(pts: list, i: int) -> tuple:
+    a, c = pts[max(0, i - 10)], pts[min(len(pts) - 1, i + 10)]
+    hx, hy = c[0] - a[0], c[1] - a[1]
+    hl = math.hypot(hx, hy) or 1.0
+    return hx / hl, hy / hl
+
+
+def _cuts(W: World, pts: list, along: list, must: set, target: str) -> list[tuple]:
     """At most MAX_LEGS legs. The cuts a telling may use: where a swim or a bridge begins or ends (kept), and any
     point of the path with a distinctive landmark near it, best at a turn; every other cut needs a landmark, so a
-    leg ends at a landmark, a far bank or the target. Neighbour legs of one kind and heading become one."""
+    leg ends at a landmark, a far bank or the target."""
     n = len(pts)
-    seg = lambda a, b: math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
-    must = {i for i in bounds if "swim" in (pts[i - 1][3], pts[i + 1][3]) or "bridge" in (pts[i - 1][3],
-                                                                                          pts[i + 1][3])}
     step = max(1, n // 300)
     scored = []
     for i in sorted(set(range(0, n, step)) | must):
@@ -514,9 +582,7 @@ def _legs(W: World, G: Grid, s: int, pts: list, along: list, bounds: list, targe
         h1 = math.atan2(pts[i][1] - a[1], pts[i][0] - a[0])
         h2 = math.atan2(c[1] - pts[i][1], c[0] - pts[i][0])
         turn = abs((h2 - h1 + math.pi) % (2 * math.pi) - math.pi)
-        hx, hy = c[0] - a[0], c[1] - a[1]
-        hl = math.hypot(hx, hy) or 1.0
-        lm = _landmark(W, pts[i][0], pts[i][1], {target}, (hx / hl, hy / hl))
+        lm = _landmark(W, pts[i][0], pts[i][1], {target}, _heading(pts, i))
         if lm is None and i not in must:
             continue
         dist = math.hypot(lm["x"] - pts[i][0], lm["y"] - pts[i][1]) if lm else 0.0
@@ -535,7 +601,82 @@ def _legs(W: World, G: Grid, s: int, pts: list, along: list, bounds: list, targe
         if lm:
             used.add(lm["key"])
             looks.add(lm["what"])
-    cuts = [(0, None)] + sorted(((i, lm) for _, i, lm in chosen), key=lambda x: x[0]) + [(n - 1, None)]
+    return [(0, None)] + sorted(((i, lm) for _, i, lm in chosen), key=lambda x: x[0]) + [(n - 1, None)]
+
+
+def _rules(W: World, pts: list, along: list, must: set, cuts: list, target: str) -> list[tuple]:
+    """Leg rules 1 and 2: a leg under MERGE joins its neighbour (the weaker inner cut goes) unless its cut is a swim
+    or bridge edge or the whole route is under SHORT; a leg over SPLIT is cut at the best landmark near its middle,
+    the search widening along the leg and out from it."""
+    cuts = list(cuts)
+    if along[-1] >= SHORT:
+        again = True
+        while again:
+            again = False
+            for k in range(len(cuts) - 1):
+                if along[cuts[k + 1][0]] - along[cuts[k][0]] >= MERGE:
+                    continue
+                inner = [c for c in (k, k + 1) if 0 < c < len(cuts) - 1 and cuts[c][0] not in must]
+                if inner:
+                    del cuts[min(inner, key=lambda c: cuts[c][1]["score"] if cuts[c][1] else -1)]
+                    again = True
+                    break
+    used = {target} | {lm["key"] for _, lm in cuts if lm}
+    looks = {lm["what"] for _, lm in cuts if lm}
+    k = 0
+    while k < len(cuts) - 1:
+        a, b = cuts[k][0], cuts[k + 1][0]
+        if along[b] - along[a] > SPLIT:
+            c = _mid_cut(W, pts, along, a, b, used, looks)
+            if c:
+                cuts.insert(k + 1, c)
+                used.add(c[1]["key"])
+                looks.add(c[1]["what"])
+                continue
+        k += 1
+    return cuts
+
+
+def _mid_cut(W: World, pts: list, along: list, a: int, b: int, used: set, looks: set) -> tuple | None:
+    """The best landmark near the middle of the leg a..b: the middle third first, then wider along the leg and
+    further out from it."""
+    ln = along[b] - along[a]
+    mid = along[a] + ln / 2
+    for lo, hi, wide in ((1 / 3, 2 / 3, 1), (0.25, 0.75, 2), (0.2, 0.8, 3), (0.15, 0.85, 4)):
+        best, bs = None, -1e9
+        for i in range(a + 1, b):
+            if not along[a] + lo * ln <= along[i] <= along[a] + hi * ln or i % 2:
+                continue
+            lm = _landmark(W, pts[i][0], pts[i][1], used, _heading(pts, i), wide)
+            if lm is None or lm["what"] in looks:
+                continue
+            sc = lm["score"] - abs(along[i] - mid) / 2000
+            if sc > bs:
+                best, bs = (i, lm), sc
+        if best:
+            return best
+    return None
+
+
+def _terrain(G: Grid, pts: list, a: int, b: int, kind: str) -> str:
+    """What a long leg with no landmark follows."""
+    if kind == "road":
+        return "along the path"
+    if kind == "swim":
+        return "across open water"
+    wet = 0
+    for x, y, _, _ in pts[a:b + 1]:
+        i, j = G.ij(x, y)
+        wet += any(0 <= i + di < G.nx and 0 <= j + dj < G.ny
+                   and G.kind[(j + dj) * G.nx + i + di] in ("water", "navwater")
+                   for di in (-3, 0, 3) for dj in (-3, 0, 3))
+    return "along the shore" if wet > 0.5 * (b - a + 1) else "over open ground"
+
+
+def _build(G: Grid, s: int, pts: list, along: list, cuts: list, must: set, shape: bool) -> list[dict]:
+    """The legs between the cuts; neighbour legs of one kind and heading become one while the sum stays under
+    SPLIT. With shape, each leg the rules let stand short or long carries its reason (why)."""
+    seg = lambda a, b: math.hypot(pts[b][0] - pts[a][0], pts[b][1] - pts[a][1])
     legs = []
     for (a, _), (b, lm) in zip(cuts, cuts[1:]):
         p0, p1 = pts[a], pts[b]
@@ -548,16 +689,29 @@ def _legs(W: World, G: Grid, s: int, pts: list, along: list, bounds: list, targe
         kind = "climb" if mode in ("walk", "road", "shore") and rise > CLIMB else mode
         lg = {"kind": kind, "heading": compass(p1[0] - p0[0], p1[1] - p0[1], 8), "m": round(d / UNITS_M),
               "paces": round(d / PACE), "start": (round(p0[0]), round(p0[1])), "end": (round(p1[0]), round(p1[1])),
-              "landmark": lm, "past": []}
+              "landmark": lm, "past": [], "a": a, "b": b}
         if kind == "swim":
             lg["island"] = _island(G, G.nearest_open(*G.ij(*lg["end"])), s)
-        if legs and legs[-1]["kind"] == kind and legs[-1]["heading"] == lg["heading"] and kind != "swim":
-            pv = legs[-1]
-            lg.update(start=pv["start"], m=pv["m"] + lg["m"], paces=pv["paces"] + lg["paces"],
-                      past=([pv["landmark"]] if pv["landmark"] else pv["past"]))
+        pv = legs[-1] if legs else None
+        if (pv and pv["kind"] == kind and pv["heading"] == lg["heading"] and kind != "swim"
+                and (not shape or along[b] - along[pv["a"]] <= SPLIT)):
+            lg.update(start=pv["start"], m=pv["m"] + lg["m"], paces=pv["paces"] + lg["paces"], a=pv["a"],
+                      past=pv["past"] + ([pv["landmark"]] if pv["landmark"] else []))
             legs[-1] = lg
         else:
             legs.append(lg)
+    for lg in legs:
+        a, b = lg.pop("a"), lg.pop("b")
+        if not shape:
+            continue
+        d = along[b] - along[a]
+        if d < MERGE and along[-1] >= SHORT:
+            why = ("a short swim" if lg["kind"] == "swim" else "a short crossing" if lg["kind"] == "bridge"
+                   else "to the water's edge" if a in must or b in must else "")
+            if why:
+                lg["why"] = why
+        if d > SPLIT:
+            lg["why"] = _terrain(G, pts, a, b, lg["kind"]) if not lg["past"] else "no landmark near its middle"
     return legs
 
 
@@ -577,6 +731,9 @@ def describe(r: dict, target_name: str) -> str:
         v = VERB[lg["kind"]].format(h=lg["heading"])
         if lg["kind"] == "swim" and lg.get("island"):
             v = f"swim to the island you can see to the {lg['heading']}"
+        why = lg.get("why", "")
+        if why.startswith(("round", "over", "across")) or (why.startswith("along") and why[10:] not in v):
+            v += f" {why}"
         s = f"{v} about {lg['paces']} paces"
         if lg.get("past"):
             s += " past " + " and ".join(p["what"] for p in lg["past"])
@@ -591,11 +748,50 @@ def describe(r: dict, target_name: str) -> str:
     return text[0].upper() + text[1:] + "."
 
 
+def _deg(a: tuple, b: tuple) -> int:
+    return round(math.degrees(math.atan2(b[1] - a[1], b[0] - a[0]))) % 360
+
+
+def legs_field(r: dict) -> str:
+    """The legs as talk_check reads them: `kind paces@degrees (why) | ...` (degrees counter-clockwise from east)."""
+    if r["kind"] != "route":
+        return f"{r['kind']} {r.get('paces', 0)}@{_deg(r['from'], r['to_xy'])}"
+    return " | ".join(f"{lg['kind']} {lg['paces']}@{_deg(lg['start'], lg['end'])}"
+                      + (f" ({lg['why']})" if lg.get("why") else "") for lg in r["legs"])
+
+
+LEG = re.compile(r"(\w+) (\d+)@(\d+)(?: \(([^)]*)\))?")
+
+
+def leg_problems(src: str) -> list[str]:
+    """The leg rules a directions fact's source breaks without a recorded reason: (1) a leg under MERGE in a route
+    of SHORT or more, (2) a leg over SPLIT, (3) a first leg more than AWAY off the target."""
+    m = re.search(r"legs: ([^;]*);", src)
+    pos = re.findall(r"\((-?\d+), (-?\d+)\)", src)
+    if not m or len(pos) < 2:
+        return ["no legs in its source: re-run talk_route facts"]
+    legs = [(k, int(p), int(d), why) for k, p, d, why in LEG.findall(m.group(1))]
+    if not legs or legs[0][0] in ("close", "none"):
+        return []
+    out, total = [], sum(p for _, p, _, _ in legs)
+    for n, (k, p, d, why) in enumerate(legs, 1):
+        if p * PACE < MERGE and total * PACE >= SHORT and len(legs) > 1 and not why:
+            out.append(f"leg {n} is {p} paces (under {round(MERGE / PACE)})")
+        if p * PACE > SPLIT and not why:
+            out.append(f"leg {n} is {p} paces (over {round(SPLIT / PACE)})")
+    (sx, sy), (tx, ty) = map(int, pos[0]), map(int, pos[-1])
+    d0 = legs[0][2]
+    off = _angle(math.cos(math.radians(d0)), math.sin(math.radians(d0)), tx - sx, ty - sy)
+    if off > AWAY and not legs[0][3]:
+        out.append(f"leg 1 heads {round(off)} degrees off the target")
+    return out
+
+
 def source(r: dict, speaker: str, target: str) -> str:
     wps = [f"{m['key']} {m['what']} ({m['x']}, {m['y']})"
            for lg in r.get("legs", []) for m in lg.get("past", []) + [lg.get("landmark")] if m]
     return (f"talk_route: speaker {speaker} {tuple(r['from'])}; " + (f"waypoints: {'; '.join(wps)}; " if wps else "")
-            + f"target {target} {tuple(r['to_xy'])}")
+            + f"legs: {legs_field(r)}; target {target} {tuple(r['to_xy'])}")
 
 
 # --- names the player sees, targets ----------------------------------------------------------------------------------
@@ -628,18 +824,26 @@ def resolve(W: World, w, key: str) -> tuple[float, float, str]:
     raise SystemExit(f"unknown target {key}")
 
 
-def facts(settlements: list[str], write: bool, world: str = WORLD) -> int:
-    """Every directions fact of the settlements re-made as a route from its speaker to its target; the old source
-    names both ("speaker 00AC8E", "map marker 082193" or "target <key>")."""
+def facts(settlements: list[str], write: bool, world: str | None = None, shape: bool = True) -> int:
+    """Every directions fact of the settlements re-made as a route from its speaker to its target, in the
+    settlement's worldspace (bmv_settlement) unless world is given; the old source names both ("speaker 00AC8E",
+    "map marker 082193" or "target <key>"). A fact whose claim changes is marked CHANGED."""
     w = db.open()
     names = renames(w)
-    W = World(world, names=names)
+    worlds: dict[str, World] = {}
+
+    def world_of(s: str) -> World:
+        ws = world or getattr(w.get("bmv_settlement", s), "worldspace", None) or WORLD
+        if ws not in worlds:
+            worlds[ws] = World(ws, names=names)
+        return worlds[ws]
     marks = {m.id[:6]: m for m in w.rows("bmv_map_marker")}
     talkers = {t.id[:6]: t for t in w.rows("bmv_talker")}
     n = 0
     for f in w.rows("talk_fact"):
         if f.topic != "talk.directions" or f.settlement not in settlements:
             continue
+        W = world_of(f.settlement)
         sp = re.search(r"speaker ([0-9A-F]{6})", f.source)
         tk = re.search(r"target ([0-9A-F]{6})", f.source) or re.search(r"([0-9A-F]{6})", f.source)
         spk = talkers.get(sp.group(1)) if sp else None
@@ -660,9 +864,9 @@ def facts(settlements: list[str], write: bool, world: str = WORLD) -> int:
         if spk is None or tgt is None:
             print(f"SKIP {f.id}: speaker or target not found in its source")
             continue
-        r = route(W, spk.x, spk.y, tgt[0], tgt[1], tgt[3])
+        r = route(W, spk.x, spk.y, tgt[0], tgt[1], tgt[3], shape)
         claim, src = describe(r, tgt[2]), source(r, spk.id, tgt[3])
-        print(f"{f.id}\n  {claim}\n  [{src}]")
+        print(f"{f.id}{'  CHANGED' if claim != f.claim else ''}\n  {claim}\n  [{src}]")
         if write:
             w.update("talk_fact", f.id, claim=claim, source=src)
         n += 1
@@ -683,13 +887,14 @@ def main(argv: list[str] | None = None) -> int:
     f = sp.add_parser("facts")
     f.add_argument("--settlement", action="append", required=True)
     f.add_argument("--write", action="store_true")
-    f.add_argument("--world", default=WORLD, help="the settlement's worldspace (the north: 0D6960:Black Marsh.esm)")
+    f.add_argument("--world", help="override the settlement's worldspace (bmv_settlement.worldspace)")
+    f.add_argument("--raw", action="store_true", help="without the leg rules (to measure them)")
     a = ap.parse_args(argv)
     if a.cmd == "cache":
         cache(a.world)
         return 0
     if a.cmd == "facts":
-        facts(a.settlement, a.write, a.world)
+        facts(a.settlement, a.write, a.world, not a.raw)
         return 0
     w = db.open()
     W = World(names=renames(w))

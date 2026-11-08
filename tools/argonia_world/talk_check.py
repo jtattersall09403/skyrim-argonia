@@ -117,6 +117,8 @@ def check_facts(w, settlements: list[str]) -> int:
         why = []
         if f.topic == "talk.directions" and not f.source.startswith("talk_route:"):
             why.append("directions not a talk_route route")
+        elif f.topic == "talk.directions":
+            why += [f"directions {p}" for p in tr.leg_problems(f.source)]
         if not FORM_KEY.search(f.source):
             low = f.claim.lower()
             for word, kinds in PHYSICAL.items():

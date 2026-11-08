@@ -36,8 +36,16 @@ Design: `docs/design/talk.md` (the tables, the topic catalogue). The four rules 
    each speaker come from the same cache (`talk_route.World().refs`, each with `lm`). Place, danger, loot,
    harvest and someone facts: one row each, `source` the form key and position.
 3. **Routes.** Write each directions fact with `source` naming `speaker <ref6>` and `target <key6>` (a map marker,
-   a talker or a ref), then `python3 -m tools.argonia_world.talk_route facts --settlement S --write`. Check a
-   route by hand with `talk_route route --from REF --to KEY`.
+   a talker or a ref), then `python3 -m tools.argonia_world.talk_route facts --settlement S --write` (the
+   settlement's own worldspace). Check a route by hand with `talk_route route --from REF --to KEY`. The legs it
+   makes keep these rules, and `source` carries each leg (`legs: kind paces@degrees (why)`) for talk_check:
+   - a leg under 50 paces joins its neighbour, unless it meets a swim or a bridge or the whole route is under 150;
+   - a leg over 350 paces is cut at a landmark near its middle (the search widens along the leg and out from it);
+     a long leg with no landmark at all names what it follows (along the shore, along the path, over open ground);
+   - a first leg more than 90 degrees off the target is re-planned from the next-best start; when the world forces
+     it, the leg says why (round the inlet, round the cliffs).
+   A leg that breaks a rule without its reason fails talk_check. When a route changes, rewrite only the
+   directions lines that tell it.
 4. **Lore facts**: from `story/lore`, rule 3; cite a ref where the claim is physical.
 5. **Talkers.** One author pass for the settlement (so opinions agree): `talker` rows (name by rule 4, trade,
    spot, two-to-three-sentence backstory citing lore, the seven personality columns) and `talker_topic` rows:
