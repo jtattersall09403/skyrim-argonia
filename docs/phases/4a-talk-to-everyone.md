@@ -53,6 +53,14 @@ these and Lilmoth's 30. The north's directions are routed in its own world (`tal
 aliases); 08D5E9 (the levy warden) and 08D5F1 (LQ25's boat captain) named Gih-Xaleel and Sells-Dear. Owed: the
 seed, check and ESP read-back with the next build; the owner's walk.
 
+**Blackrose (2026-11-08).** 66 talkable; the 28 on `we.clean.blackrose` (Thalmor, New Order, Imperial soldiers and
+sailors, the Nord crew, the shipwreck's MQ101 party) stay clean-up targets with no talker row; 38 built (20 guards,
+the market, the docks, the jail road, the north landing; no BC01/BC02 ref among them). 151 facts (40 directions
+routed with routes v2, 11 lore lines, one rumour: the dead on the road to Haven), 38 writers then a 40-line
+directions rewrite after routes v2 landed, one reader pass (150 fixes). Talk.cs Names now skips a talker outside
+Black Marsh's main world (BlackMarsh2's 18 crashed the seed); they keep the shared base name. Seed, check and
+`talk_check` (ESP read-back) 0 problems.
+
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 
 725 enabled placed people: 553 silent (E opens nothing), 50 service (a vanilla trade menu only), 3 with vanilla

@@ -656,3 +656,295 @@
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.rumours","ord":1,"text":"Helstrom and Stormhold are old rivals. The Stormhold folk are soft. I say it to anyone who asks."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"Levy soldier. I guard this hall. I would sooner be indoors than on the street."}
 {"talker":"166BC1:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Gih-Xaleel, the levy warden. He keeps the gate, just outside that door. Go and see him."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The market's cooking fire? North-east, about a hundred and thirty paces. The fire is there."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. The water is quiet, so stay a while and talk."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Speak. I have boats to watch."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The south landing's dock is thirty paces south of here. A boat lies thirty paces south-south-east. I know her hull."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In the Second Era, word went round the coast that Black Rose had fallen and was gone. It was not. It is still here. I watch its landing."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sakeeth. I watch the south landing for boats that do not pay. I grew up hauling nets on these docks. I joined the guard to be issued boots."}
+{"talker":"0C724F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is the guard on the path above the south docks. He is usually about fifty paces east-north-east of here. I would trust him in a real fight."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. North-east thirty paces to the marker post of Black Rose. Keep it on your left. Climb north-east two hundred paces to the stone tower. Then north-east forty more. The jail is there."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"Haven. South-east a hundred and ten paces, past the marker post of Black Rose, to the boat on its rack. Then south-west two hundred and thirty paces, past the stone tower. Haven is there."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you. Stand by the post a while, my friend. The road is quiet and I am glad of the company."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stop there. State your business. Let me see what you carry."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The tower is north-north-west of here, about ninety paces. Ahkeeh smokes fish in this town. It is the best thing in Black Rose. I stand at the west gate and count what comes through it."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"People say many go into Black Rose and few ever leave. Old prison staff, freed prisoners, deserters and runaways all came here and stayed. I have counted a good many of them through this gate."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"The dead lie on the road toward Haven. They are Imperials, with an elf among them. The people of Black Rose have not gone to bury them."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tzeel-Vaa, guard at the west gate. I have stood here longer than the two beside me have been alive. My father guarded this same road for the same pay."}
+{"talker":"0C7250:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Quintel is the other guard at this gate, grandson of an Imperial jailer. He is usually about five paces north-north-east of me. He is too soft for the work."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Walk east about two hundred and twenty-five paces, past the marker post of Black Rose. The fire is there. I charge no toll for directions."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again. Come, stand a while, my friend. For you there is no fee at this gate. I have said that to very few."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"The crossing costs coin. I will name the sum once I have seen your pack."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the west gate of Black Rose. I keep the toll here. The marker post is a few paces south-south-west of where you stand. Pass it only once the fee is settled."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Around Black Rose, an owing is taken at a crossing for damage to the way. The debtor works it off on the water. I did that myself once, so I know the sum of it better than most. Now I am the one who takes the toll. I will not apologise for the post."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Counts-The-Tolls, guard at this gate. I was a debtor once, working off an owing on the water. I took this post as the way out. I know how that sounds, but the post is paid work and the water was not."}
+{"talker":"0C7251:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tzeel-Vaa is the oldest of the three guards at this gate. He is usually about ten paces south-south-east of here. He watches my hands at every cart. He should have retired years ago. Speak to him if you must."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail, traveller? Walk north for some thirty paces, until the marker post of Black Rose is on your left. Then climb north-east for about a hundred and eighty-five paces to the stone tower. Then north-east about forty more. The jail is there."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Well met, my friend. Forgive me if I stand stiffly. It is how I was taught. It is good to see you at the gate again."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Good day, traveller. This is the west gate of Black Rose. State your business. I will help if I am able."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose, traveller. The tower stands about ninety paces north-north-west of here."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose once sent an envoy to the Imperial court. Emperor Pelagius answered him in grunts and squeaks. I do not enjoy telling it, traveller."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Quintel, a guard at the west gate. I carry the name of the Imperial jailer who raised my grandmother. I answer to no other. My family has worn a uniform in Black Rose for three generations."}
+{"talker":"0C7252:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ahkeeh, the fish smoker, works at the fire west of the gate. You will usually find Ahkeeh about fifty paces north-west of here."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail. Go north-east for about a hundred and ten paces, until the statue with the sword is on your left. Then north for thirty more. The jail stands there."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You have come back, my friend. I know your step now. Stand with me a while."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Speak quietly here. This is a shrine. I do not know you yet."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is about ten paces south-south-west of here. Go to it slowly. Do not climb on it."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The first city here belonged to the Lilmothiit, the fox-folk. A fever took every one of them, long before Argonians claimed this place."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I guard the standing stone. The other guards did not want the post, so I asked for it. The stone is older than this town. I keep it as a shrine."}
+{"talker":"0C7253:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mireel is a guard on the path above the south docks. You will usually find Mireel about seventy paces south-east of here. Do not expect much from the guards at the docks."}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Go along the boards east for about a hundred and ten paces. The longboat is there. Do you have business aboard?"}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend! Sunned and warm. I am glad of it. I have nothing to report today. Ask me what you like."}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Halt. State your business on the boards. I was told to ask every stranger, so I am asking you."}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the dock walk below the market. I guard it. There is a cooking fire about twenty-five paces south-east of here. The dock is about thirty paces south. Is that what you wanted to know?"}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"When the fever came to Murkmire, the last of the Lilmothiit fled inland toward Black Rose. What became of them is not known. Have you seen any of them on the road?"}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okaw-Sei, guard of the dock walk. I walk the boards between the dock and the market all day. I was told to watch for anything unusual. I am newly hatched to the guard, but I mean to serve it well."}
+{"talker":"0C7255:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Teeda-Wan, the guard at the market, is the best fighter on the docks. You will usually find Teeda-Wan about twenty-five paces east-south-east of here."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south about a hundred and thirty paces. The cooking fire is there."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, it is you. I am glad of it. Stand by me a while, the road is quiet."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You again. Good. Stay here with me and ask what you like."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hm. What do you want? Be quick about it."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Keep to the road, stranger. I am watching it."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the road below the jail. There is a house about ten paces south-east of here."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.here","ord":2,"text":"There is a house ten paces south-east of us. I keep watch near it."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Hm. I know little of Black Marsh, but I know the Rose. Its families are three generations deep. A newcomer owes the prison-born for shelter. The ledger is kept by people who were born owing."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.lore","ord":2,"text":"The Rose has families three generations deep. If you are new there, you owe the prison-born for your shelter. The ledger is kept by those who were born owing."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Xuth-Ma. I guard the road that runs up to the jail. Most days I talk to Dredges-The-Silt, who stops by the house here."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard on this road. I do not like the jail. I will not say why."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Dredges-The-Silt keeps the town's channels clear. I know no better company. You will usually find the dredger about five paces north-west of here."}
+{"talker":"0C7258:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Dredges-The-Silt, the dredger who clears the town's channels. Look about five paces north-west of here."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about a hundred and twenty paces. It is there. You cannot miss it."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. Good. I am still here, still watching that jail. I am still waiting for the day it is emptied."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? I am watching the road below the jail. Keep your hands where I can see them."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The house is south-west of here, about twenty paces. Go and look at it yourself."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The families who hold the Rose say it is their home, not a prison. They take it badly when outsiders call it one. I call it a jail. I do not care who hears me."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Wazei. I guard this road. My captain has put me where he can see me, because I have been warned twice for wanting a fight with the keepers up there."}
+{"talker":"0C7259:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ruh-Jaal is the guard nearest the jail. You will usually find him about thirty-five paces west-north-west of here. Do not expect much of him. He is a coward."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about forty-five paces, to the boat on its rack. Then south-west about forty-five more. You will be standing at it. Are you meeting someone there?"}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Come closer, my friend. Keep your voice down. I hear more on this dock than any other guard. For you I will share it."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your voice low. I do not know your face. I like to know every face on this dock."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are new here. Who have you been speaking to since you arrived?"}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quietly now, though everyone knows it. The dock is about twenty-five paces south-south-west of here. A boat lies about thirty paces the same way."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Everyone here knows this, but I still say it quietly. Black Rose once sent an envoy to the Imperial court. Emperor Pelagius answered him in grunts and squeaks."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"The dead lie on the road toward Haven, Imperials and an elf among them. The people of Black Rose have not gone to bury them. I would like to know why."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tuh-Weem. I guard this dock. Everything said on it reaches my ears. I am rarely wrong about what I hear."}
+{"talker":"0C725A:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Mends-The-Hulls mends boats at the north-east dock. He is usually about fifteen paces north-east of here. I think he is courting someone. Ask him yourself. Tell me what he says."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? Walk south-east, a hundred and thirty paces or so, until the boat on its rack is on your right. Then take the boards south-east for about forty more. The longboat is in front of you."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Come and stand by me. The water is low this season. I have time to talk."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Mind where you put your boots. The silt is soft here."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.here","ord":1,"text":"There is a house about ten paces south-east of here. That is all I would point out."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Around Black Rose, an owing is taken at a crossing for \"damage to the way\". Then you work it off on the water. I have worked mine for nine seasons."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Dredges-The-Silt. I clear the channels around Black Rose so the boats can pass. It is owing work. It has taken me nine seasons so far."}
+{"talker":"0C725B:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Xuth-Ma is the guard on the road to the jail. You will usually find him about five paces south-east of here. He is a good man. He is the one who listens to me in the evenings."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south, a hundred and sixty paces or so. The fire is there."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, my friend. Come and stand by me a while. Keep your voice low. I will not mind the company."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Move along, if you please. I am on watch."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is some forty paces north-west of here. The jail is a little nearer, about thirty-five paces that way. I would not look at it for long."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The families who hold the Rose say it is their home, not a prison. They take it badly when outsiders call it one, so I do not use the word near them."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am a guard. I stand nearest the jail and keep my post. That is all there is to say."}
+{"talker":"0C725D:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is a reed-weaver. She is kind. You will usually find her about twenty paces north-north-west of here, working off her owing in mats. Ask her, not me."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Black Rose Jail? You can see it from here. It is about sixty paces south-west. Do not wander off the way."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Back again, my friend. The north district is quiet today. I am glad of it. Stay as long as you like."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep to the road and keep your voice down. The families here are asleep or at their work."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district, where the families live. I know every child in it by name. The house is twenty paces north-north-west of here."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In the Second Era word went round the coast that Black Rose had fallen and was gone. It was not. It is still here."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Shaleem. I guard the north district, so mind how you behave in it."}
+{"talker":"0C725E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water is a boat captain in the north district. You will usually find him ten paces east-south-east of here. Tell him to take more care with his boat."}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Everyone knows that. Walk south about two hundred and fifteen paces past the house and you will be standing at it. Could you find it without me?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend! I have been watching the water for boats all day. Do you want to hear what I have noticed?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You are new here, are you not? I notice everyone new. Where did you come from? Did you come by boat?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north district. I know all of it. The house is about fifteen paces east-north-east of here. Why, are you looking for something?"}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Zeeki. I am the cleverest child in the north district. Ask anyone. One day I will captain a boat of my own."}
+{"talker":"0C725F:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Talks-To-Water, the boat captain? That is the best captain there is. You will usually find the captain about fifteen paces west-south-west of here. Could you ask for a place on the boat for me?"}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? A sweet first. Go south about thirty paces, until Black Rose Jail is on your right. Then south-east, two hundred and ten paces. The fire is there."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend! Did you bring a sweet? I have heard things at the jail. I will tell you them."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Stay where I can see you. Have you got a sweet?"}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The standing stone is five paces south of here. The tower is twenty paces off, north-north-west. Give me a sweet and I will tell you more."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Skink. I play by the standing stone, where the other children do not come. I have no family. I hear things at the jail. I tell them for a sweet."}
+{"talker":"0C7260:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Pays-In-Reeds is nice. She weaves reeds into mats to work off what she owes. She is usually about twenty-five paces east-south-east of here."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire by the docks? Listen, water, a stranger wants to walk. Go south-east about seventy paces to the house. Then go south about a hundred and fifty paces. The cooking fire is there."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. I said you would. Come, sit by the water and tell me what you have seen."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You have the look of someone who does not know the water. What do you want?"}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Quiet, little ripples, we have a guest. The house is ten paces south-south-east of here. I keep my boat at the north landing."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Long ago the bandit king Red Bramman ruled this country. He raided Topal Bay from here. The First Empire hunted him for years."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Talks-To-Water. I captain a boat out of the north landing. Yes, I talk to the water. My crew is used to it."}
+{"talker":"0C7263:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Zeeki, the child of the north district, is usually fifteen paces east-north-east of here. That one should be a sailor. I have said so."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south about eighty paces, until the longboat is on your left. Then the boards, west, about sixty-five paces. The fire is there."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Back again, my friend. If you have a boat that leaks, bring it to me and I will patch it today."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"You are welcome here. Mind the boards, they are wet. What needs mending?"}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? I have hulls to patch."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Speak quickly. I am in the middle of a hull."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My house is about ten paces north-east of here. The dock is east-north-east, about twenty-five paces, where the small boats tie up."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.here","ord":2,"text":"North-east, ten paces, is my house. East-north-east, twenty-five paces, is the dock. I patch the boats there."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mends-The-Hulls. I patch the small boats at the north-east dock, cheap and fast. My mother taught me the trade. She learned it working off an owing."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I mend hulls. Pitch-Pot says my work is careless, but Pitch-Pot is slow and expensive. My patches hold."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tuh-Weem is the guard at the north-east boat dock. She is usually about fifteen paces south-west of here. She should mind her own dock."}
+{"talker":"0C7264:Black Marsh.esm","topic":"talk.someone","ord":2,"text":"You want Tuh-Weem, the guard at the north-east boat dock. About fifteen paces south-west of here, as a rule. Go and ask her."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north-west for a little over two hundred paces. You will be at Black Rose Jail. Eat before you go."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"There you are, my friend. Sit down and eat. You look thin to me. The pot is hot."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"If you want food, say so. If you do not, I have a pot to watch."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. My cooking fire is ten paces north-west of here. The dock is fifteen or so to the north-north-east. Have you eaten today?"}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"People say many go into Black Rose and few ever leave. Old prison staff, freed prisoners, deserters and runaways all came here and stayed. I came on a prison barge. I never got back on it."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Weeska. I cook at the fire and feed the dock hands. Sit, or move along."}
+{"talker":"0C7266:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha mends nets at the market dock, about five paces south-south-west of here. Lux Ha works too hard. I doubt that one has eaten."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat? It is in plain sight. It lies about sixty-three paces east of here. You cannot miss it."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Come, see what the boats brought in today. If you have something to sell, I will give you a fair price."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Stranger. Buying or selling? I deal in both."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You want something. Say what it is, or show me what you carry."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The market is where the trade is. The cooking fire is five paces west-north-west of my stall. The dock is ten paces north-north-east."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Nuxi-Ra. I sell odds and ends here, whatever the boats bring in. I buy from every crew and I do not ask where a thing came from."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.self","ord":2,"text":"Nuxi-Ra. I trade here at the market."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.services","ord":1,"text":"I buy and I sell. My stall is at the market, by the cooking fire. My stock is whatever the boats bring in. Show me what you have and I will name a price."}
+{"talker":"0C7267:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Rows-Against-It is the boat captain at the market dock. You will usually find the captain about twenty-five paces south-south-west of here. Rows-Against-It pays on time."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk along the boards north-east, ninety paces or so. The longboat is there. You cannot miss it."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Back again, my friend. The water was kind today. My boat is yours if you need her."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You want a crossing, say where. If not, I have rope to mend."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.here","ord":1,"text":"My boat is ten paces south of here. The dock is five paces south-east, so mind your feet on the boards."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"When the fever came to Murkmire, the last of the Lilmothiit fled inland toward Black Rose. What became of them is not known."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Rows-Against-It. I run this boat from the market dock to wherever a fare will go. I paid off my owing on the water and kept the boat. No crossing-keeper gives me orders now."}
+{"talker":"0C7268:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Weeska cooks at the market fire. She is usually about twenty paces north-east of here."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. North, two hundred and thirty paces. Black Rose Jail is there."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again, my friend. Good. Stand by the fire and watch the market with me."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Show me your hands. Then say what you want."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Yes. What do you want?"}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the market. The cooking fire is five paces south of here. The dock is fifteen paces south. Keep the peace and you will have no trouble from me."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In the Rose, the families are three generations deep. A newcomer there owes the prison-born for shelter. The ledger is kept by people who were born owing."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.self","ord":1,"text":"Teeda-Wan. I keep the peace at this market. That is all."}
+{"talker":"0C7269:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Lux Ha mends nets at the market dock. About ten paces east-south-east of here, usually. Lux Ha should be paid more."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The longboat. Yes. Walk south-east, about a hundred and fifty-five paces, until the house is on your left. Then walk south, about a hundred paces more. The longboat is there."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. Stand with me a while. I am in no hurry. It is good to see you."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"You wish to speak with me? Then speak. I am Iron-Jaw. I guard the north district."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.here","ord":1,"text":"Hm. There is the house, just there, about ten paces north-north-west of where we stand."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose once sent an envoy to the Imperial court. Emperor Pelagius answered him in grunts and squeaks. It is true."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Iron-Jaw. A cudgel struck my face in my first year. The name stayed with me. I have stood in the north district ever since. I can read well."}
+{"talker":"0C729E:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Shaleem is the person you want. Shaleem is a guard in the north district. She is the best guard in the town. You will usually find Shaleem about five paces south-south-east of here."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south past Black Rose, about three hundred and thirty-five paces. The cooking fire is there."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Well met, my friend. Come and stand with me by the boats a while."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I do not know you. Why are you at the landing?"}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are a stranger here. Keep clear of the boats."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"There is a boat about twenty paces north-north-west of here. A rowing boat lies thirty-five paces north."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I am a guard, not a teller of old tales."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Raxa-Tum. I guard the north landing, where the fishing boats tie up. I was a fisher myself once."}
+{"talker":"0C72A3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is the best fisher in town. You will usually find Okeemu about twenty-five paces south-west of here, at the north landing."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The jail. Walk south-west past Black Rose, about one hundred and seventy-five paces. Black Rose Jail is there."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You have come up the road again, my friend. I keep the road, as ever. Speak if you wish."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"State your business on the north road."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Halt. Say what you want. I am on watch."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north road into Black Rose. The northern marker post is about fifteen paces south of here. A boat lies about thirty-five paces east-south-east."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.here","ord":2,"text":"I keep watch here, above the northern marker post. The post is about fifteen paces south. There is a boat about thirty-five paces east-south-east of where we stand."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"In Empress Morihatha's day Black Rose raised an army against the Empire. Her battlemage Welloc broke it with a spell, not with soldiers. The town has not trusted a battlemage since."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Watches-The-Road. I guard the north road into town. I report every lapse I see. That includes the lapses of other guards."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I am a guard. I watch the north road and I report what I find."}
+{"talker":"0C72A4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum, the guard at the north landing, is usually about fifty paces north-north-west of here. He fishes on duty. He should be dismissed."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Walk south past the house, about three hundred paces. You will find it there."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, you have come back, my friend. The water is good today. Sit by me a while."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Good day. I am fishing, so speak softly."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing of Black Rose. My boat is there, forty paces to the north-north-east."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The first city here was the Lilmothiit's, the fox-folk. A fever took every one of them, long before Argonians claimed this place."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Okeemu. I fish from the north landing with my family. My boat is the oldest at the landing."}
+{"talker":"0C72A6:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Heshra, the fishwife at the north landing, is usually about five paces west of here."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-east about sixty-five paces. Black Rose will be on your left. Then south about eighty paces, until the statue is on your left. Then south-east about sixty-five paces, until the house is on your left. Then south about ninety paces. The longboat is there."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. Come closer. For you I will not haggle."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"What do you want? If you are buying, say what you want and what you will pay."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the north landing, where I gut and sell the catch. The house is about forty paces south-south-west of here."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Heshra. I gut and sell Okeemu's catch here. I run my family. I watch the prices. A buyer does not bargain with me twice."}
+{"talker":"0C72A7:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okeemu is usually about five paces east of here. Okeemu is too soft to ask what a catch is worth, so I do the selling."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire is south of here. Walk past the house, about three hundred paces. You will find it."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"It is you, my friend. I practised with my stick today. Nobody laughed."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Oh. Hello. I am helping with the nets, so I cannot talk for long."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"I do not know you. What do you want?"}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The boat is just there, a little east of north. It is only thirty-odd paces from here."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Pip. Okeemu and Heshra are my parents. I help them with the nets. I am going to be a guard. I practise with this stick."}
+{"talker":"0C72A8:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Raxa-Tum is the guard at the north landing. You will usually find Raxa-Tum about twenty-five paces north-east of here. Raxa-Tum is the best guard."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north, two hundred paces or near it, past the statue with the sword. Black Rose Jail is there."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You again, my friend. Good. The path is quiet, so stay a while."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Keep your hand clear of your weapon. Then say what you want."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dock is twenty-five paces east-south-east. A rowing boat lies thirty paces south-east."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose raised an army against the Empire in Empress Morihatha's day. Her battlemage Welloc broke it with one spell, not with soldiers. The town has not trusted a battlemage since."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.self","ord":1,"text":"They call me Holds-Fast. I was the last one standing in a brawl on the docks. The name stayed. I guard the south path. I would rather be feared than liked."}
+{"talker":"130773:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ten-Coins guards between the south docks and the market. He is usually twenty-five paces north-north-east of here. He will hang one day."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? It is in plain sight, about seventy paces east. Walk straight towards it."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. It is good to see a face I know."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"I do not know you. State your name and your business. Spell the name if it is unusual."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The dock is about thirty-five paces south-east of here."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I know Lilmoth. It is a midden."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Mireel. I came to Black Rose from Lilmoth and stayed. The guard took me because I can read. I keep the duty rolls for the south docks."}
+{"talker":"130780:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Holds-Fast is usually about fifteen paces south-south-east of here, on this same path. He is a brute, but a useful one."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north about a hundred and seventy paces, past the statue with the sword. You are at Black Rose Jail. I give this way free."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, my friend, you are back. Stand with me a while. Today I will name you no price."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Good day, stranger. Keep your purse close and we will get on well."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You want something from me? Most things here have a price. Mine is always fair."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. The house is about thirty-five paces north-east of here. The market's cooking fire is about forty paces east."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The Rose's families go back three generations. A newcomer owes the prison-born for shelter. The ledger is kept by people who were born owing. I say no more of it for nothing."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ten-Coins. The name is the price of looking away. Everyone at the docks knows it. I call it a fee, and I call it a fair one."}
+{"talker":"130789:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Okaw-Sei is a guard like me, on the dock walk below the market. You will usually find him about fifteen paces east-south-east of here."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The cooking fire is in plain sight, about forty-five paces south-south-west of here. Walk straight to it."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. The dock is quiet. It is good to see a face I know."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"This dock is watched. Say who you are and why you are here."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"This is the east dock of Black Rose. The house is about ten paces north-west of me. A boat lies some fifteen paces south-east. I keep watch between them."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"Black Rose raised an army against the Empire in Empress Morihatha's day. Her battlemage Welloc broke it with a spell, not with soldiers. The town has not trusted a battlemage since. Neither do I."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Corvane, guard of the east dock and of the big ship moored past it. I took my name from a deserter who taught me the sword. We came to Black Rose together. I stayed after he left."}
+{"talker":"141539:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Pitch-Pot seals the boats at this dock. He works harder than anyone on the docks. You will usually find him about five paces east-south-east of me."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The jail? Walk north-west, about a hundred and ninety paces. Black Rose Jail is there."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend! Come close. I know I smell of pitch, but I am glad to see you."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mind your feet. The pitch is hot. You will smell me before you see me."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.greet-stranger","ord":2,"text":"Stand back from the pot or you will be burned. What do you want?"}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"I seal hulls here, so I can tell you about boats. The big ship is about forty paces east-south-east of here. A boat lies about twenty paces south-east."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"In the Second Era word went round the coast that Black Rose had fallen and was gone. It was not. It is still here."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"They call me Pitch-Pot. I got the name as a hatchling, when I fell into the pot. I have smelled of tar ever since."}
+{"talker":"14153A:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Corvane is the guard on the east dock. He is a good sort. He is usually a few paces west-north-west of here."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.directions","ord":1,"text":"The cooking fire? Go south-east about thirty paces, until Black Rose Jail is on your right. Then south, a hundred and fifty paces or so. The fire is there."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend. Sit by me a while. The reed can wait for one more mat."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.greet-stranger","ord":1,"text":"Mind the reed. I am counting mats."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.here","ord":1,"text":"My house is north of here, about fifteen paces. It is the one by the road."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.lore","ord":1,"text":"At a crossing near Black Rose they set an owing for damage to the way. It is worked off on the water. I pay mine in mats. It is the ledger I mind, not the work."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.self","ord":1,"text":"I am Pays-In-Reeds. I weave mats and baskets from marsh reed. I make one mat a day, and that pays my owing. I am working toward my last mat."}
+{"talker":"141561:Black Marsh North.esp","topic":"talk.someone","ord":1,"text":"Skink is the child who plays by the jail's standing stone, about twenty-five paces west-north-west of here. That child should be in a home, not out by a jail."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk north-west, about two hundred and twenty paces. Black Rose Jail is there."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. Sit a while. My hands will keep working, but I am glad of the company."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes? Mind the net, please. I am in the middle of a knot."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose, the market dock. The cooking fire is about ten paces west-south-west of here. A boat lies about twenty-five paces south-south-west."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Black Rose and Lilmoth have been rivals for as long as anyone has kept count. I was born on this side of it."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Lux Ha. I mend the nets that come off the market boats. There is always more to mend. I was born in Black Rose and have never left it."}
+{"talker":"1454E3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"You will usually find Nuxi-Ra, the street vendor at the market, about ten paces north of here."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Walk south-west about a hundred and fifteen paces, to the longboat on your left. Then west along the boards, sixty-five paces. The cooking fire is there."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Few people come out this far. You are always welcome, my friend. Sit by the water."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes? Say what you want."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are on my dock. Speak, then."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dock is a few paces south-east of here. My house is ten paces north."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"The first city here was the Lilmothiit's, the fox-folk. A fever took every one of them, long before Argonians claimed the place."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ree-Shaal. I fish from this dock and live in the house behind it."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.self","ord":2,"text":"I moved out to the edge to be away from the town. I like the quiet. Visitors spoil it."}
+{"talker":"1454F2:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Sleeps-Standing, the guard at the far east dock, is usually about twenty paces south-east of here. Go and talk to him."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Climb west, a hundred and thirty-five paces or so, until the longboat is on your left. Then take the boards west, sixty-five paces more. The cooking fire is there."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, you are back, my friend. Come, stand with me. Nothing is happening here."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Hnn. Yes? Speak. I am listening."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"Hm. What is it? Say it plainly."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The dock is there, about five paces east-south-east. The house is ten paces west-south-west. There is not much else to see. I prefer it that way."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Long ago the bandit king Red Bramman ruled this country. He raided Topal Bay from here. The First Empire hunted him for years."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Sleeps-Standing. I guard the dock at the eastern edge of Black Rose, where nothing happens. I have learned to sleep on my feet. I wake quickly when I must."}
+{"talker":"1454F3:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ree-Shaal, the fisher at the far east dock? Usually about twenty paces north-west of here. Ree-Shaal is a sour one. Ree-Shaal complains about me. Hnn."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Go west along the boards, about a hundred paces, past the longboat. The cooking fire is there."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You are back, my friend. It is good to see a face I know."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Yes. What do you want?"}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.here","ord":1,"text":"The big ship is some twenty paces west of here. My house is a few paces north-east, beside it."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"People say many go into Black Rose and few ever leave. Old prison staff, freed prisoners, deserters and runaways all came here and stayed. I came on a ship myself. I stayed."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ojeel. I unload the big ship whenever it comes in. I live in the house by its berth. I signed on to a crew once and walked off it here."}
+{"talker":"1454F4:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tadpole, the child who plays around the big ships, is usually about forty paces south of here. That child should be kept off the ships."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"The cooking fire? Go along the boards north-west, only about a hundred and ten paces past the longboat. You will be at the fire. It is easy."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"You came back, my friend! Did you see the ship? Is it still there? I kept watch while you were gone."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"Who are you? Are you here to see the ships? Did you drop a coin? I will look for it if you did."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is the east docks. Can you not see the big ship? It is just there, twenty paces west-north-west. The dock is ten paces north-west. I know every board of it."}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Tadpole. I play between the big ships and run errands for the crews. One day I will sail on one. Then you will hear of me. What is your name?"}
+{"talker":"1454F5:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Ojeel? He unloads the big ship. He is always about forty paces north of here. He chases me off the ship every time. Why do you want him?"}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":1,"text":"Haven? Walk south-east about sixty paces until you reach Black Rose. Then walk south about a hundred and eighty-five paces, until you reach the stone tower. From there south-west a little over a hundred and thirty paces. Haven is there."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.directions","ord":2,"text":"You mean the market's cooking fire, not mine. Walk south-east about fifty paces until you reach the marker post of Black Rose. Keep it on your right. Then walk east about two hundred and twenty-five paces. You will find the fire."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","ord":1,"text":"Ah, my friend, you came back. Sit by the fire. The next fish will not be long."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-friend","ord":2,"text":"Welcome back. Come near the fire and tell me what you need."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-stranger","ord":1,"text":"The fish is still on the fire. Say what you want."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.greet-stranger","ord":2,"text":"You are standing in my smoke. Speak, or buy something."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.here","ord":1,"text":"This is Black Rose. My cooking fire is about twenty paces west-south-west of here. The tower is forty paces north."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.lore","ord":1,"text":"Long ago Red Bramman, a bandit king, ruled this country. He raided Topal Bay from here. The First Empire hunted him for years."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.rumours","ord":1,"text":"There are dead lying on the road toward Haven, Imperials and an elf among them. The people of Black Rose have not gone to bury them."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.self","ord":1,"text":"I am Ahkeeh. I smoke fish over this fire outside the west gate. I sell it to the guards and to anyone coming in by road. I was born on a boat and came ashore when it sank. I have not been on the water since."}
+{"talker":"1454FC:Black Marsh.esm","topic":"talk.someone","ord":1,"text":"Tzeel-Vaa is the oldest of the three guards at the west gate. He is the only honest one. Look about fifty-five paces south-east of here. That is where Tzeel-Vaa usually stands."}

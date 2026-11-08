@@ -132,7 +132,9 @@ static class Talk
         var talkers = Rows("talker").OrderBy(r => S(r, "id")).ToList();
         var placed = Survey.Winners<IPlacedGetter>(mods);
         var cells = Survey.Winners<ICellGetter>(mods);
-        var world = mod.Worldspaces.First(w => w.FormKey == K("23D689:Black Marsh.esm"));
+        // each talker's cell names its worldspace (bmv_cell); an interior talker keeps the shared base for now
+        var cellWs = Rows("bmv_cell").ToDictionary(r => S(r, "id"),
+            r => r.TryGetProperty("worldspace", out var ws) && ws.ValueKind == JsonValueKind.String ? ws.GetString() : null);
         var noRefs = new Cell.TranslationMask(true) { Persistent = false, Temporary = false, NavigationMeshes = false, Landscape = false };
         int named = 0;
         foreach (var t in talkers)
@@ -141,6 +143,10 @@ static class Talk
             var name = S(t, "known_as");
             var oldName = c.TryGetProperty("name", out var nm) && nm.ValueKind == JsonValueKind.String ? nm.GetString() : null;
             if (name == oldName || name.StartsWith("the ")) continue;
+            var wsKey = cellWs.GetValueOrDefault(S(c, "cell"));
+            // only Black Marsh's main world for now: a BlackMarsh2 cell copied here collides with another block's override
+            var world = wsKey == "23D689:Black Marsh.esm" ? mod.Worldspaces.First(w => w.FormKey == K(wsKey)) : null;
+            if (world == null) { Console.WriteLine($"talk names: {id} ({name}) keeps its base: cell {S(c, "cell")} is not in Black Marsh's main world"); continue; }
             var tpl = npcs[K(S(c, "npc"))].rec;
             var n = mod.Npcs.AddNew("ARG_Talker_" + id.Split(':')[0]);
             n.Name = name;
