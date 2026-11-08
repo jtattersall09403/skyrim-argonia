@@ -1,0 +1,13 @@
+topic id	variant	band	prompt	line	fact ids
+topic.bc02-the-gate	main	low	Let me into the keep.	Go in. The heirs will not. The way out will bear one trip. Whoever is left inside, the fire takes.	fact.bc02.one-out
+topic.bc02-the-gate	main	words	Let me into the keep.	Your words hold. Go in. The heirs will not go in after you. The way out will bear one trip. One will come out. Whoever is left inside, the fire takes. Choose well.	fact.bc02.one-out
+topic.bc02-the-gate	main	high	Let me into the keep.	You speak plainly, so I will answer plainly. Go in. The heirs will not go in after you. The way out will bear one trip. One will come out. Whoever is left inside, the fire takes. I do not envy you the choosing.	fact.bc02.one-out
+topic.bc02-the-gate	fail	low	Let me into the keep.	No. I keep the way in. Your words do not move me yet.	
+topic.bc02-the-gate	fail	words	Let me into the keep.	No. I keep the way in. Your words do not move me yet. Find better words, or go back down the hill.	
+topic.bc02-the-gate	fail	high	Let me into the keep.	I would hear you out if I could, but your words are not enough. I keep the way in. I will not open it. Find better words, or go back down the hill.	
+topic.bc02-let-by	main	low	Let this one go by.	Go by. The heirs lost nothing worth entering the keep to fetch.	
+topic.bc02-let-by	main	words	Let this one go by.	Go by. The heirs lost nothing worth entering the keep to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes.	fact.bc02.one-out
+topic.bc02-let-by	main	high	Let this one go by.	You came out with one, so I will not stop you. Go by. The heirs lost nothing worth entering the keep to fetch. The way out will bear one trip. You have used it. Whoever is left inside, the fire takes. Go while you can.	fact.bc02.one-out
+topic.bc02-let-by	fail	low	Let this one go by.	No. This one does not go by. Your words do not move me yet.	
+topic.bc02-let-by	fail	words	Let this one go by.	No. I keep the way. This one does not go by. Your words do not move me yet. Find better words.	
+topic.bc02-let-by	fail	high	Let this one go by.	I hear you. I do not like to hold this one, but your words are not enough. I keep the way. This one does not go by. Find better words.	

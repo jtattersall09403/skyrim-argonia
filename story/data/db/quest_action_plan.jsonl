@@ -1,13 +1,8 @@
-{"quest_id":"quest.bc.bc01","ord":0,"skill":"Lockpicking","use":"pick-a-lock","reason":"the debt book's chest in the work shed is on a low lock"}
-{"quest_id":"quest.bc.bc01","ord":1,"skill":"sneak","use":"steal","reason":"the book is taken from the shed unseen"}
-{"quest_id":"quest.bc.bc01","ord":2,"skill":"sneak","use":"sneak-past","reason":"the two estate men walk the landing at night"}
-{"quest_id":"quest.bc.bc01","ord":3,"skill":"OneHanded","use":"fight","reason":"or the two estate men are fought off at night"}
-{"quest_id":"quest.bc.bc01","ord":4,"skill":"swimming","use":"swim","reason":"the player swims the channel with her"}
-{"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"the gate-keepers will not go in and will not open the gate for a stranger"}
-{"quest_id":"quest.bc.bc02","ord":1,"skill":"sneak","use":"sneak-past","reason":"or the player slips through the stockade gate past them"}
-{"quest_id":"quest.bc.bc02","ord":2,"skill":"Lockpicking","use":"pick-a-lock","reason":"the first cell is behind a lock"}
-{"quest_id":"quest.bc.bc02","ord":3,"skill":"climbing","use":"climb","reason":"the second cell is reached by a collapsed way"}
-{"quest_id":"quest.bc.bc02","ord":4,"skill":"swimming","use":"swim","reason":"the third cell is flooded"}
+{"quest_id":"quest.bc.bc01","ord":0,"skill":"Lockpicking","use":"pick-a-lock","reason":"the debt book's chest on the landing is on a low lock"}
+{"quest_id":"quest.bc.bc01","ord":1,"skill":"sneak","use":"steal","reason":"the book is taken from the chest unseen"}
+{"quest_id":"quest.bc.bc01","ord":2,"skill":"sneak","use":"sneak-past","reason":"the two estate men stand the landing at night"}
+{"quest_id":"quest.bc.bc02","ord":0,"skill":"speechcraft","use":"persuade","reason":"the gate-keeper will not let a stranger in"}
+{"quest_id":"quest.bc.bc02","ord":1,"skill":"sneak","use":"sneak-past","reason":"or the player slips into the keep past him"}
 {"quest_id":"quest.bc.bc03","ord":0,"skill":"speechcraft","use":"interrogate","reason":"the player hears both sides on the dock"}
 {"quest_id":"quest.bc.bc03","ord":1,"skill":"lockpicking","use":"open-a-strongbox","reason":"the tokens' chest on the dock is on a low lock"}
 {"quest_id":"quest.bc.bc03","ord":2,"skill":"speechcraft","use":"persuade","reason":"Heavy-Rope is talked into taking the refusal"}

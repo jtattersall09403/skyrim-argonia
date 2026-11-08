@@ -1,12 +1,15 @@
-{"quest_id":"quest.bc.bc01","topics_ord":0,"ord":0,"value":10}
+{"quest_id":"quest.bc.bc01","topics_ord":0,"ord":0,"value":0}
 {"quest_id":"quest.bc.bc01","topics_ord":1,"ord":0,"value":10}
 {"quest_id":"quest.bc.bc01","topics_ord":2,"ord":0,"value":10}
 {"quest_id":"quest.bc.bc01","topics_ord":3,"ord":0,"value":10}
-{"quest_id":"quest.bc.bc02","topics_ord":0,"ord":0,"value":20}
+{"quest_id":"quest.bc.bc02","topics_ord":0,"ord":0,"value":0}
 {"quest_id":"quest.bc.bc02","topics_ord":1,"ord":0,"value":20}
 {"quest_id":"quest.bc.bc02","topics_ord":2,"ord":0,"value":30}
 {"quest_id":"quest.bc.bc02","topics_ord":3,"ord":0,"value":30}
 {"quest_id":"quest.bc.bc02","topics_ord":4,"ord":0,"value":30}
+{"quest_id":"quest.bc.bc02","topics_ord":5,"ord":0,"value":31}
+{"quest_id":"quest.bc.bc02","topics_ord":5,"ord":1,"value":32}
+{"quest_id":"quest.bc.bc02","topics_ord":5,"ord":2,"value":33}
 {"quest_id":"quest.bc.bc03","topics_ord":0,"ord":0,"value":0}
 {"quest_id":"quest.bc.bc03","topics_ord":0,"ord":1,"value":10}
 {"quest_id":"quest.bc.bc03","topics_ord":1,"ord":0,"value":10}

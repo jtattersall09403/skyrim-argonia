@@ -136,16 +136,6 @@ the quest is re-authored.
   now vanilla HorkerTusk's ivory (03AD68), not the Companions totem CRTotem2 (decision 0006). Read-back 231 of 231 (the eel base read back as "Ripper Eel", ours; a
   new check: the figurine's model is not a totem), 37 of 37 .pex. Owed: the owner's in-game check.
 
-- **BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs`, called after `LocalQuests.Add` (it reuses
-  LocalQuests' kit, now internal, with `TopicV` for an info's variant lines). Ussa-Rekh, Heavy-Rope and his chest
-  (vanilla StrongBox, Novice lock, owned by him) are snapped to Dock2's navmesh (Black Marsh North's `0A7784`), and both men are
-  essential by alias flag. The tokens are a Quest Object alias created in the chest (F1). Hearing the season sets
-  `ARG_BC03_SeasonHeard`, which gates the two side topics (F4). Yield-talk needs Speechcraft 30 (pass or fail line) and
-  ends at 91; yield-pay needs 50 gold and ends at 92. A TR-death on each man sets 94. Lines: `story/data/quest_lines/bc03.json` (the words band
-  of the TSVs). Papyrus: 8 new scripts (24 of 24 .pex, 0 failed). Read-back `plugin.sh bccheck`: 30 PASS, 0 FAIL;
-  `localcheck` still PASS; round trip clean (679 yaml files). Open: the BC01 >= 90 gate is added when ARG_BC01 is
-  built (the check prints a NOTE); the record's `changeStanding` (Chainbreakers +10) and `setFlag` effects have no
-  global yet and are not built; the low and high bands are not built (one band, as LQ25 and LQ30).
 - **MQ04 and MQ05 built (2026-11-08).** `tools/ArgoniaPlugin/MQ04.cs`, `MQ05.cs` on `QuestKit.cs` (the block test's
   shapes as helpers), fragments `papyrus/ARG_QF_MQ04.psc`, `ARG_QF_MQ05.psc` and seven TIFs (18 of 18 scripts compile).
   MQ04 has the quest-review's F1 to F8 applied: Pays-Late is essential and carries the gum pot (pickpocketed; his topic
@@ -176,3 +166,25 @@ the quest is re-authored.
   the food months (labour-and-bondage §2 gives none); Ux-Xeek never reads the blank line. The house (0FE7F7) has no
   navmesh where its rooms are; its people stand 10 units over the tilted floor. Open: MQ05 looks `ARG_NeshDeekaRef` up before MainQuest allocates it, so its stage-10 topic is still left out; its lookup
   should move to a hook after `MainQuest.Add` (the MQ05 lane). Owed: the owner's walk from a new game.
+- **Chainbreakers BC01, BC02, BC03 built (2026-11-08).** `tools/ArgoniaPlugin/Chainbreakers.cs` (after `LocalQuests.Add`;
+  LocalQuests' kit), all in BM&V's BlackMarsh. The line's standing is the global `ARG_ChainbreakersStanding` (E-global):
+  BC01 90/91, BC02 91/92/93 and BC03 90 each add 10. BC01 and BC02 were re-authored to the proven blocks (planner
+  rulings), one quest-review pass each (BC01 4 blocking, BC02 4 blocking, all applied with the cheap minors), briefs,
+  one dialogue-writer per speaker (8), one reader pass (44 line fixes, 10 record and 1 book fix). **BC01 Four Months
+  for a Boat:** Start Game Enabled; Never-Sold (our base, placed once in BM&V's House 15635D) sets 10 by her estate
+  topic; stage 10's fragment puts the debt book (a BOOK) in Hulm-Tei's Apprentice-locked, owned chest on the landing
+  navmesh at 31,-12 (095465, Black Marsh North's 0ACD06; no shed); her alias's sandbox package takes her to the
+  landing; the book in hand on her bring-down topic sets 90 (her page torn out, the first price left in the chest,
+  Rows-For-Another moved by the house). Rows-For-Another's channel topic sets 40 only at night (C-time) and unseen by
+  Hulm-Tei and both estate men (C-detected, review F1), else a day line; she then follows by package to an
+  unconditioned zone where the channel leaves the estate (prereq 40, sets 91). TR-death on either woman to 94.
+  **BC02 One Out of the Smoke** (retitled, review F12): after BC01 >= 90, Never-Sold's fire topic sets 20 (smoke and
+  the three held enabled); the room is BM&V's walk-in keep 01cyKeep at 30,-15 (navmesh 0ACB8C; 01BlackRoseJail has
+  none), Tsaxi at the 'Black Rose Jail' marker; his Speech 25 topic or the zone inside the keep sets 30; each 'come
+  with me' sets 31/32/33, whose fragment disables the other two (each under its own enable parent; no kill); the
+  chosen follows by package; three exit zones at Tsaxi (prereq 31/32/33) or his Speech 25 let-by topic (review F1)
+  set 91/92/93; any held's death from 30, or Tsaxi's/Never-Sold's, to 94. QA4 and QA20 now place the post in the
+  keep. BC03's opening topic is gated on BC01 >= 90. Papyrus: 58 of 58 .pex, 0 failed (13 new scripts). Read-back
+  `plugin.sh bccheck`: 96 PASS, 0 FAIL (BC01, BC02, BC03); `localcheck` PASS; round trip clean (812 yaml files);
+  `make check` green. Open: the low and high bands are not built (one band, as BC03); positions on the landing and in
+  the keep are by navmesh height band, unwalked; the freed one's after-state greeting (review minor F5/F7) is not built.

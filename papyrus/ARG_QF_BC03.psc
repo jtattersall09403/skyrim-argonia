@@ -5,6 +5,7 @@ ReferenceAlias Property Broker Auto
 ReferenceAlias Property CrewBoss Auto
 MiscObject Property Tokens Auto
 MiscObject Property Gold001 Auto
+GlobalVariable Property ChainbreakersStanding Auto
 AchievementsScript Property AchievementsQuest Auto ; Skyrim.esm AchievementsQuest
 
 ; The race guard (blocks.md): one ending only; the check and the set have no call between them.
@@ -39,6 +40,7 @@ Function Fragment_90()
 	Actor player = Game.GetPlayer()
 	player.RemoveItem(Tokens, player.GetItemCount(Tokens))
 	Broker.GetActorRef().SetRelationshipRank(player, -1)
+	ChainbreakersStanding.Mod(10)
 	SetObjectiveCompleted(20)
 	AchievementsQuest.IncSideQuests()
 	Stop()

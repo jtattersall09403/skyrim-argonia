@@ -49,12 +49,14 @@
 {"id":"quest_ending:quest.bc.bc01|0:world"}
 {"id":"quest_ending:quest.bc.bc01|1:rewards"}
 {"id":"quest_ending:quest.bc.bc01|1:world"}
+{"id":"quest_ending:quest.bc.bc01|2:world"}
 {"id":"quest_ending:quest.bc.bc02|0:rewards"}
 {"id":"quest_ending:quest.bc.bc02|0:world"}
 {"id":"quest_ending:quest.bc.bc02|1:rewards"}
 {"id":"quest_ending:quest.bc.bc02|1:world"}
 {"id":"quest_ending:quest.bc.bc02|2:rewards"}
 {"id":"quest_ending:quest.bc.bc02|2:world"}
+{"id":"quest_ending:quest.bc.bc02|3:world"}
 {"id":"quest_ending:quest.bc.bc03|0:rewards"}
 {"id":"quest_ending:quest.bc.bc03|0:world"}
 {"id":"quest_ending:quest.bc.bc03|1:rewards"}
@@ -119,7 +121,10 @@
 {"id":"quest_stage:quest.bc.bc01|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc02|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc02|1:on_enter"}
-{"id":"quest_stage:quest.bc.bc02|5:on_enter"}
+{"id":"quest_stage:quest.bc.bc02|2:on_enter"}
+{"id":"quest_stage:quest.bc.bc02|3:on_enter"}
+{"id":"quest_stage:quest.bc.bc02|4:on_enter"}
+{"id":"quest_stage:quest.bc.bc02|8:on_enter"}
 {"id":"quest_stage:quest.bc.bc03|0:on_enter"}
 {"id":"quest_stage:quest.bc.bc03|1:on_enter"}
 {"id":"quest_stage:quest.bc.bc03|2:on_enter"}

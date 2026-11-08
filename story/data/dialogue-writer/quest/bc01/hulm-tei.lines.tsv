@@ -1,0 +1,4 @@
+topic id	variant	band	prompt	line	fact ids
+topic.bc01-the-book	main	low	Tell me about the estate's debt book.	Every line of the book is true. That is all I say to a stranger. Earn my regard and I will say more.	fact.bc01.book-true
+topic.bc01-the-book	main	words	Tell me about the estate's debt book.	Every line of the estate's debt book is true. Rows-For-Another's food is in it. So is the boat's upkeep, and her sick days. An Owing is a debt paid in work. I name a buy-out by the book. I am a steward. I am not a slaver.	fact.bc01.book-true
+topic.bc01-the-book	main	high	Tell me about the estate's debt book.	I will speak plainly, because you have listened. Every line of the estate's debt book is true. Rows-For-Another's food is in it. So is the boat's upkeep, and her sick days. An Owing is a debt paid in work. I name a buy-out by the book. Nothing else sets it. Some call that slaving. I am a steward. I keep what is true.	fact.bc01.book-true

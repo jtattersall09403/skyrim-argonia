@@ -1,52 +1,105 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp, Magic.esp, Magistrate Levitate.esp. 723 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp, Magic.esp, Magistrate Levitate.esp. 1044 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
 | ours | global | new | ARG_BT_RaceHits `000816:Argonia.esp` |
+| ours | global | new | ARG_BC03_SeasonHeard `000A12:Argonia.esp` |
 | ours | global | new | ARG_BT_Global `000815:Argonia.esp` |
 | ours | global | new | ARG_VanillaStoryManager `000800:Argonia.esp` |
+| ours | global | new | ARG_ChainbreakersStanding `0009BD:Argonia.esp` |
 | ours | global | new | ARG_BT_RaceRuns `000817:Argonia.esp` |
+| ours | Faction | new | ARG_VendorLooksAtBooks `00092A:Argonia.esp` |
+| ours | Faction | new | ARG_NightReedChapter `00095E:Argonia.esp` |
 | ours | Faction | new | ARG_BT_Faction `000818:Argonia.esp` |
-| ours | Faction | new | ARG_VendorLooksAtBooks `0008ED:Argonia.esp` |
-| ours | MagicEffect | new | ARG_NoHealthRegenEffect `0008F7:Argonia.esp` |
-| ours | Spell | new | ARG_NoHealthRegen `0008F8:Argonia.esp` |
-| ours | Container | new | ARG_VendorLooksAtBooksChest `0008EE:Argonia.esp` |
+| ours | MagicEffect | new | ARG_NoHealthRegenEffect `000934:Argonia.esp` |
+| ours | Spell | new | ARG_NoHealthRegen `000935:Argonia.esp` |
+| ours | Armor | new | ARG_TG01_JasperNecklace `00096A:Argonia.esp` |
+| ours | Armor | new | ARG_TG02_NeesakCharm `00096B:Argonia.esp` |
+| ours | Armor | new | ARG_TG02_GlassBeads `00096C:Argonia.esp` |
+| ours | Book | new | ARG_BC01_DebtBook `0009C4:Argonia.esp` |
+| ours | Container | new | ARG_TG02_Lockbox `00096E:Argonia.esp` |
+| ours | Container | new | ARG_VendorLooksAtBooksChest `00092B:Argonia.esp` |
+| ours | MiscItem | new | ARG_BC03_Tokens `000A11:Argonia.esp` |
 | ours | MiscItem | new | ARG_BT_Token `000810:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_03E418 `0008EC:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7C9 `0008F1:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A209 `0008E9:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_01512D `0008DD:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_0616E8 `0008F6:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7CC `0008F4:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7CD `0008F5:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A208 `0008E8:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A1F2 `0008E4:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A1E9 `0008E1:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A1ED `0008E2:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A205 `0008E6:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A204 `0008E5:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_00FF4E `0008D9:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_01512C `0008DC:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_00AC8E `0008D8:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_01512B `0008DB:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7C8 `0008F0:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7CA `0008F2:Argonia.esp` |
+| ours | MiscItem | new | ARG_LQ25_BaitBucket `00094E:Argonia.esp` |
+| ours | MiscItem | new | ARG_TG02_BoneFigurine `00096D:Argonia.esp` |
+| ours | Npc | new | ARG_BC02_KeepsTheOldCount `0009E2:Argonia.esp` |
+| ours | Npc | new | ARG_BC02_SaysItPlain `0009E0:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A208 `000925:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_015195 `00091D:Argonia.esp` |
+| ours | Npc | new | ARG_BC02_ThirdBornTsaxi `0009DE:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7C8 `00092D:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_01512C `000919:Argonia.esp` |
+| ours | Npc | new | ARG_BC02_GateKeeper `0009DF:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A1E9 `00091E:Argonia.esp` |
+| ours | Npc | new | ARG_TG_OkanTei `000967:Argonia.esp` |
+| ours | Npc | new | ARG_LQ30_SeiWan `000938:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7CD `000932:Argonia.esp` |
+| ours | Npc | new | ARG_TG_DarZeel `000968:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A1F2 `000921:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A1F1 `000920:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A206 `000924:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_0616E8 `000933:Argonia.esp` |
+| ours | Npc | new | ARG_BC01_EstateMan `0009C3:Argonia.esp` |
+| ours | Npc | new | ARG_TG_ChapterLookout1 `000964:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7CA `00092F:Argonia.esp` |
+| ours | Npc | new | ARG_LQ30_HajWan `000937:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_03E413 `000927:Argonia.esp` |
+| ours | Npc | new | ARG_TG_NeetaHaj `000966:Argonia.esp` |
+| ours | Npc | new | ARG_BC_NeverSold `0009BE:Argonia.esp` |
+| ours | Npc | new | ARG_TG_ChapterLookout2 `000965:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A204 `000922:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A205 `000923:Argonia.esp` |
+| ours | Npc | new | ARG_BC03_UssaRekh `000A0F:Argonia.esp` |
+| ours | Npc | new | ARG_LQ25_OkanZish `00094B:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_01512D `00091A:Argonia.esp` |
+| ours | Npc | new | ARG_BC01_RowsForAnother `0009C1:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A1ED `00091F:Argonia.esp` |
+| ours | Npc | new | ARG_LQ25_Crocodile `00094D:Argonia.esp` |
+| ours | Npc | new | ARG_TG_STabi `000960:Argonia.esp` |
+| ours | Npc | new | ARG_TG_KeepsWhatFloats `000961:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7C9 `00092E:Argonia.esp` |
+| ours | Npc | new | ARG_LQ30_Viper `000939:Argonia.esp` |
+| ours | Npc | new | ARG_LQ25_WuleenTaza `00094C:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_03E415 `000928:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7CC `000931:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_00AC8E `000915:Argonia.esp` |
 | ours | Npc | new | ARG_BT_Crab `000807:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A206 `0008E7:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_03E415 `0008EB:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_00FF4F `0008DA:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_015195 `0008E0:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_02A1F1 `0008E3:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_015193 `0008DF:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_03E413 `0008EA:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_01512B `000918:Argonia.esp` |
+| ours | Npc | new | ARG_TG_Tilts `00095F:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_05D7CB `000930:Argonia.esp` |
+| ours | Npc | new | ARG_TG_BentSpine `000963:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_00FF4E `000916:Argonia.esp` |
+| ours | Npc | new | ARG_TG_SitsByTheWater `000962:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_015193 `00091C:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_03E418 `000929:Argonia.esp` |
+| ours | Npc | new | ARG_BC03_HeavyRope `000A10:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_01512E `00091B:Argonia.esp` |
+| ours | Npc | new | ARG_BC02_HidesInReeds `0009E1:Argonia.esp` |
 | ours | Npc | new | ARG_BT_Walker `000806:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_05D7CB `0008F3:Argonia.esp` |
+| ours | Npc | new | ARG_BC01_HulmTei `0009C2:Argonia.esp` |
+| ours | Npc | new | ARG_TG_RipperEel `000969:Argonia.esp` |
 | ours | Npc | new | ARG_BT_Keeper `000805:Argonia.esp` |
-| ours | Npc | new | ARG_Talker_01512E `0008DE:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_00FF4F `000917:Argonia.esp` |
+| ours | Npc | new | ARG_Talker_02A209 `000926:Argonia.esp` |
 | ours | Key | new | ARG_BT_Key `000812:Argonia.esp` |
 | ours | PlacedNpc | new | ARG_BT_WalkerRef `00080B:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_BentSpineRef `000975:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_ChapterLookout1Ref `000976:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_ChapterLookout2Ref `000977:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_TiltsRef `000971:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC_NeverSoldRef `0009BF:Argonia.esp` |
+| ours | XMarker reference | new | ARG_LQ30_ViperParent `00093A:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_LQ30_HajWanRef `00093B:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_LQ30_SeiWanRef `00093C:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_LQ30_ViperRef `00093D:Argonia.esp` |
+| ours | XMarker reference | new | ARG_LQ30_GateMarker `00093E:Argonia.esp` |
+| ours | XMarker reference | new | ARG_LQ30_GateZone `00093F:Argonia.esp` |
+| ours | XMarker reference | new | ARG_LQ25_CrocParent `00094F:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_LQ25_CrocodileRef `000950:Argonia.esp` |
+| ours | XMarker reference | new | ARG_LQ25_BaitBucketRef `000951:Argonia.esp` |
 | ours | XMarker reference | new | ARG_OpeningMarker `000802:Argonia.esp` |
 | ours | XMarker reference | new | ARG_BT_TokenParent `000808:Argonia.esp` |
 | ours | XMarker reference | new | ARG_BT_CrabParent `000809:Argonia.esp` |
@@ -58,200 +111,455 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | XMarker reference | new | ARG_BT_TokenRef `000811:Argonia.esp` |
 | ours | XMarker reference | new | ARG_BT_ZoneA `000813:Argonia.esp` |
 | ours | XMarker reference | new | ARG_BT_ZoneB `000814:Argonia.esp` |
-| ours | XMarker reference | new | ARG_VendorLooksAtBooksChestRef `0008EF:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Lore `00087D:Argonia.esp` |
+| ours | XMarker reference | new | ARG_VendorLooksAtBooksChestRef `00092C:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_Parent `00096F:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG02_Parent `000970:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_STabiRef `000972:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_KeepsWhatFloatsRef `000973:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_SitsByTheWaterRef `000974:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_NeetaHajRef `000978:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_OkanTeiRef `000979:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG_DarZeelRef `00097A:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_DayMarker `00097B:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_DrinkMarker `00097C:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_SleepMarker `00097D:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_Bedroll `00097E:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG01_ZoneBed `00097F:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG02_LockboxRef `000980:Argonia.esp` |
+| ours | XMarker reference | new | ARG_TG02_FallenHouse `000981:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG02_Eel1 `000982:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_TG02_Eel2 `000983:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC01_ChestRef `0009C5:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC01_RowsForAnotherRef `0009C6:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC01_HulmTeiRef `0009C7:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC01_EstateMan1Ref `0009C8:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC01_EstateMan2Ref `0009C9:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC01_LandingMarker `0009CA:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC01_BlackroseMarker `0009CB:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC01_ChannelEndZone `0009CC:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_SmokeParent `0009E3:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_Smoke1 `0009E4:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_Smoke2 `0009E5:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_Smoke3 `0009E6:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_Smoke4 `0009E7:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_SpeakerParent `0009E8:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_KillerParent `0009E9:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_MotherParent `0009EA:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC02_SpeakerRef `0009EB:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC02_KillerRef `0009EC:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC02_MotherRef `0009ED:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC02_TsaxiRef `0009EE:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC02_GateKeeperRef `0009EF:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_InZone `0009F0:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_OutSpeakerZone `0009F1:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_OutKillerZone `0009F2:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC02_OutMotherZone `0009F3:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC03_UssaRekhRef `000A13:Argonia.esp` |
+| ours | PlacedNpc | new | ARG_BC03_HeavyRopeRef `000A14:Argonia.esp` |
+| ours | XMarker reference | new | ARG_BC03_ChestRef `000A15:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_ComeKiller `000A03:Argonia.esp` |
+| ours | DialogResponses | new |  `000A04:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC01_BringDown `0009DB:Argonia.esp` |
+| ours | DialogResponses | new |  `0009DC:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Secret `0008CF:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D2:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D1:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D0:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicGiveBack `000993:Argonia.esp` |
+| ours | DialogResponses | new |  `000994:Argonia.esp` |
+| ours | DialogResponses | new |  `000995:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicClaimCharm `0009A5:Argonia.esp` |
+| ours | DialogResponses | new |  `0009A7:Argonia.esp` |
+| ours | DialogResponses | new |  `0009A6:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Loot `0008B4:Argonia.esp` |
+| ours | DialogResponses | new |  `0008B7:Argonia.esp` |
+| ours | DialogResponses | new |  `0008B8:Argonia.esp` |
+| ours | DialogResponses | new |  `0008B5:Argonia.esp` |
+| ours | DialogResponses | new |  `0008B6:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ25_TheBeast `000953:Argonia.esp` |
+| ours | DialogResponses | new |  `000955:Argonia.esp` |
+| ours | DialogResponses | new |  `000954:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Danger `000878:Argonia.esp` |
+| ours | DialogResponses | new |  `000879:Argonia.esp` |
+| ours | DialogResponses | new |  `00087C:Argonia.esp` |
+| ours | DialogResponses | new |  `000880:Argonia.esp` |
+| ours | DialogResponses | new |  `00087B:Argonia.esp` |
+| ours | DialogResponses | new |  `00087A:Argonia.esp` |
+| ours | DialogResponses | new |  `00087D:Argonia.esp` |
+| ours | DialogResponses | new |  `00087F:Argonia.esp` |
+| ours | DialogResponses | new |  `00087E:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC01_TheEstate `0009D0:Argonia.esp` |
+| ours | DialogResponses | new |  `0009D2:Argonia.esp` |
+| ours | DialogResponses | new |  `0009D1:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic40 `000828:Argonia.esp` |
+| ours | DialogResponses | new |  `000826:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_Brawl `000A21:Argonia.esp` |
+| ours | DialogResponses | new |  `000A22:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC01_CutLoose `0009D7:Argonia.esp` |
+| ours | DialogResponses | new |  `0009D9:Argonia.esp` |
+| ours | DialogResponses | new |  `0009D8:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicReturn `000997:Argonia.esp` |
+| ours | DialogResponses | new |  `000998:Argonia.esp` |
+| ours | DialogResponses | new |  `000999:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ30_TheBasin `000945:Argonia.esp` |
+| ours | DialogResponses | new |  `000946:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_ComeSpeaker `000A00:Argonia.esp` |
+| ours | DialogResponses | new |  `000A01:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicClaimBeads `0009A9:Argonia.esp` |
+| ours | DialogResponses | new |  `0009AA:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicTest `00098C:Argonia.esp` |
+| ours | DialogResponses | new |  `00098D:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene1 `00081A:Argonia.esp` |
+| ours | DialogResponses | new |  `00081B:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_TheFire `0009F8:Argonia.esp` |
+| ours | DialogResponses | new |  `0009F9:Argonia.esp` |
+| ours | DialogResponses | new |  `0009FA:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_YieldPay `000A2B:Argonia.esp` |
+| ours | DialogResponses | new |  `000A2C:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicBed `00098F:Argonia.esp` |
+| ours | DialogResponses | new |  `000990:Argonia.esp` |
+| ours | DialogResponses | new |  `000991:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic50Never `00082E:Argonia.esp` |
+| ours | DialogResponses | new |  `00082C:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_LastSeason `000A17:Argonia.esp` |
+| ours | DialogResponses | new |  `000A18:Argonia.esp` |
+| ours | DialogResponses | new |  `000A19:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicHandOverDar `0009B2:Argonia.esp` |
+| ours | DialogResponses | new |  `0009B3:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicHandOverNeeta `0009AC:Argonia.esp` |
+| ours | DialogResponses | new |  `0009AD:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Someone `0008FB:Argonia.esp` |
+| ours | DialogResponses | new |  `0008FD:Argonia.esp` |
+| ours | DialogResponses | new |  `00090D:Argonia.esp` |
+| ours | DialogResponses | new |  `000909:Argonia.esp` |
+| ours | DialogResponses | new |  `000906:Argonia.esp` |
+| ours | DialogResponses | new |  `000905:Argonia.esp` |
+| ours | DialogResponses | new |  `000901:Argonia.esp` |
+| ours | DialogResponses | new |  `000904:Argonia.esp` |
+| ours | DialogResponses | new |  `000908:Argonia.esp` |
+| ours | DialogResponses | new |  `0008FE:Argonia.esp` |
+| ours | DialogResponses | new |  `000907:Argonia.esp` |
+| ours | DialogResponses | new |  `000902:Argonia.esp` |
+| ours | DialogResponses | new |  `00090C:Argonia.esp` |
+| ours | DialogResponses | new |  `0008FC:Argonia.esp` |
+| ours | DialogResponses | new |  `000903:Argonia.esp` |
+| ours | DialogResponses | new |  `00090E:Argonia.esp` |
+| ours | DialogResponses | new |  `0008FF:Argonia.esp` |
+| ours | DialogResponses | new |  `00090A:Argonia.esp` |
+| ours | DialogResponses | new |  `000900:Argonia.esp` |
+| ours | DialogResponses | new |  `00090B:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Rumours `0008CA:Argonia.esp` |
+| ours | DialogResponses | new |  `0008CD:Argonia.esp` |
+| ours | DialogResponses | new |  `0008CB:Argonia.esp` |
+| ours | DialogResponses | new |  `0008CC:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene4 `000820:Argonia.esp` |
+| ours | DialogResponses | new |  `000821:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ25_TellCaptain `000957:Argonia.esp` |
+| ours | DialogResponses | new |  `000958:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_TheTokens `000A1E:Argonia.esp` |
+| ours | DialogResponses | new |  `000A1F:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Self `0008D4:Argonia.esp` |
+| ours | DialogResponses | new |  `0008EC:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F2:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E1:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D8:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D9:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F0:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E7:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E4:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D5:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DA:Argonia.esp` |
+| ours | DialogResponses | new |  `0008EE:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D6:Argonia.esp` |
+| ours | DialogResponses | new |  `0008EB:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E5:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E2:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F1:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E0:Argonia.esp` |
+| ours | DialogResponses | new |  `0008EA:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DF:Argonia.esp` |
+| ours | DialogResponses | new |  `0008D7:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E6:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E8:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DD:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DE:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DC:Argonia.esp` |
+| ours | DialogResponses | new |  `0008DB:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E9:Argonia.esp` |
+| ours | DialogResponses | new |  `0008E3:Argonia.esp` |
+| ours | DialogResponses | new |  `0008EF:Argonia.esp` |
+| ours | DialogResponses | new |  `0008ED:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic50 `00082B:Argonia.esp` |
+| ours | DialogResponses | new |  `000829:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicSellBeads `0009BB:Argonia.esp` |
+| ours | DialogResponses | new |  `0009BC:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene2 `00081C:Argonia.esp` |
+| ours | DialogResponses | new |  `00081D:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Trade `000910:Argonia.esp` |
+| ours | DialogResponses | new |  `000913:Argonia.esp` |
+| ours | DialogResponses | new |  `000914:Argonia.esp` |
+| ours | DialogResponses | new |  `000911:Argonia.esp` |
+| ours | DialogResponses | new |  `000912:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ30_WalkedOut `000941:Argonia.esp` |
+| ours | DialogResponses | new |  `000942:Argonia.esp` |
+| ours | DialogResponses | new |  `000943:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_YieldTalk `000A27:Argonia.esp` |
+| ours | DialogResponses | new |  `000A28:Argonia.esp` |
+| ours | DialogResponses | new |  `000A29:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicSellCharm `0009B8:Argonia.esp` |
+| ours | DialogResponses | new |  `0009B9:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Directions `000882:Argonia.esp` |
+| ours | DialogResponses | new |  `00088C:Argonia.esp` |
+| ours | DialogResponses | new |  `000890:Argonia.esp` |
 | ours | DialogResponses | new |  `000884:Argonia.esp` |
 | ours | DialogResponses | new |  `00088A:Argonia.esp` |
 | ours | DialogResponses | new |  `00088B:Argonia.esp` |
-| ours | DialogResponses | new |  `000880:Argonia.esp` |
-| ours | DialogResponses | new |  `000882:Argonia.esp` |
 | ours | DialogResponses | new |  `000883:Argonia.esp` |
+| ours | DialogResponses | new |  `00088E:Argonia.esp` |
 | ours | DialogResponses | new |  `000887:Argonia.esp` |
-| ours | DialogResponses | new |  `000881:Argonia.esp` |
 | ours | DialogResponses | new |  `000885:Argonia.esp` |
-| ours | DialogResponses | new |  `00087F:Argonia.esp` |
+| ours | DialogResponses | new |  `00088D:Argonia.esp` |
 | ours | DialogResponses | new |  `000888:Argonia.esp` |
+| ours | DialogResponses | new |  `00088F:Argonia.esp` |
 | ours | DialogResponses | new |  `000886:Argonia.esp` |
-| ours | DialogResponses | new |  `00087E:Argonia.esp` |
 | ours | DialogResponses | new |  `000889:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Loot `000877:Argonia.esp` |
-| ours | DialogResponses | new |  `000878:Argonia.esp` |
-| ours | DialogResponses | new |  `000879:Argonia.esp` |
-| ours | DialogResponses | new |  `00087B:Argonia.esp` |
-| ours | DialogResponses | new |  `00087A:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Topic40 `000828:Argonia.esp` |
-| ours | DialogResponses | new |  `000826:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Self `000897:Argonia.esp` |
-| ours | DialogResponses | new |  `0008A3:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_TheSeason `000A1B:Argonia.esp` |
+| ours | DialogResponses | new |  `000A1C:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_LetBy `000A09:Argonia.esp` |
+| ours | DialogResponses | new |  `000A0C:Argonia.esp` |
+| ours | DialogResponses | new |  `000A0D:Argonia.esp` |
+| ours | DialogResponses | new |  `000A0A:Argonia.esp` |
+| ours | DialogResponses | new |  `000A0B:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicSellFigurine `0009B5:Argonia.esp` |
+| ours | DialogResponses | new |  `0009B6:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicWelcome `00099B:Argonia.esp` |
+| ours | DialogResponses | new |  `00099D:Argonia.esp` |
+| ours | DialogResponses | new |  `00099C:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_ComeMother `000A06:Argonia.esp` |
+| ours | DialogResponses | new |  `000A07:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Harvest `000892:Argonia.esp` |
 | ours | DialogResponses | new |  `00089F:Argonia.esp` |
+| ours | DialogResponses | new |  `000893:Argonia.esp` |
+| ours | DialogResponses | new |  `000896:Argonia.esp` |
+| ours | DialogResponses | new |  `00089E:Argonia.esp` |
+| ours | DialogResponses | new |  `000895:Argonia.esp` |
+| ours | DialogResponses | new |  `00089B:Argonia.esp` |
+| ours | DialogResponses | new |  `00089C:Argonia.esp` |
+| ours | DialogResponses | new |  `000894:Argonia.esp` |
+| ours | DialogResponses | new |  `000897:Argonia.esp` |
+| ours | DialogResponses | new |  `00089A:Argonia.esp` |
+| ours | DialogResponses | new |  `000898:Argonia.esp` |
+| ours | DialogResponses | new |  `000899:Argonia.esp` |
+| ours | DialogResponses | new |  `00089D:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ25_KeepQuiet `00095A:Argonia.esp` |
+| ours | DialogResponses | new |  `00095B:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Scene3 `00081E:Argonia.esp` |
+| ours | DialogResponses | new |  `00081F:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Services `0008F4:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F8:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F5:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F6:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F9:Argonia.esp` |
+| ours | DialogResponses | new |  `0008F7:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BT_Topic20 `000825:Argonia.esp` |
+| ours | DialogResponses | new |  `000823:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Here `0008A1:Argonia.esp` |
+| ours | DialogResponses | new |  `0008A3:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A9:Argonia.esp` |
-| ours | DialogResponses | new |  `0008B3:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AD:Argonia.esp` |
 | ours | DialogResponses | new |  `0008B1:Argonia.esp` |
-| ours | DialogResponses | new |  `0008B5:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A5:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AA:Argonia.esp` |
-| ours | DialogResponses | new |  `0008B4:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AB:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A4:Argonia.esp` |
-| ours | DialogResponses | new |  `00089E:Argonia.esp` |
 | ours | DialogResponses | new |  `0008B2:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AE:Argonia.esp` |
 | ours | DialogResponses | new |  `0008B0:Argonia.esp` |
-| ours | DialogResponses | new |  `0008A1:Argonia.esp` |
-| ours | DialogResponses | new |  `00089B:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AC:Argonia.esp` |
-| ours | DialogResponses | new |  `00089C:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A8:Argonia.esp` |
-| ours | DialogResponses | new |  `00089A:Argonia.esp` |
-| ours | DialogResponses | new |  `000898:Argonia.esp` |
 | ours | DialogResponses | new |  `0008AF:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A2:Argonia.esp` |
-| ours | DialogResponses | new |  `000899:Argonia.esp` |
-| ours | DialogResponses | new |  `0008A0:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A6:Argonia.esp` |
-| ours | DialogResponses | new |  `00089D:Argonia.esp` |
 | ours | DialogResponses | new |  `0008A7:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Scene1 `00081A:Argonia.esp` |
-| ours | DialogResponses | new |  `00081B:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Topic50Never `00082E:Argonia.esp` |
-| ours | DialogResponses | new |  `00082C:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Services `0008B7:Argonia.esp` |
-| ours | DialogResponses | new |  `0008B9:Argonia.esp` |
-| ours | DialogResponses | new |  `0008B8:Argonia.esp` |
-| ours | DialogResponses | new |  `0008BA:Argonia.esp` |
-| ours | DialogResponses | new |  `0008BC:Argonia.esp` |
-| ours | DialogResponses | new |  `0008BB:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Advice `000836:Argonia.esp` |
-| ours | DialogResponses | new |  `000837:Argonia.esp` |
-| ours | DialogResponses | new |  `000839:Argonia.esp` |
-| ours | DialogResponses | new |  `000838:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Scene4 `000820:Argonia.esp` |
-| ours | DialogResponses | new |  `000821:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Trade `0008D3:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D4:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D5:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D6:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D7:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Topic50 `00082B:Argonia.esp` |
-| ours | DialogResponses | new |  `000829:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Scene2 `00081C:Argonia.esp` |
-| ours | DialogResponses | new |  `00081D:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Harvest `000855:Argonia.esp` |
-| ours | DialogResponses | new |  `00085D:Argonia.esp` |
-| ours | DialogResponses | new |  `000860:Argonia.esp` |
-| ours | DialogResponses | new |  `00085B:Argonia.esp` |
-| ours | DialogResponses | new |  `000857:Argonia.esp` |
-| ours | DialogResponses | new |  `000856:Argonia.esp` |
-| ours | DialogResponses | new |  `00085C:Argonia.esp` |
-| ours | DialogResponses | new |  `000861:Argonia.esp` |
-| ours | DialogResponses | new |  `000862:Argonia.esp` |
-| ours | DialogResponses | new |  `00085F:Argonia.esp` |
-| ours | DialogResponses | new |  `00085E:Argonia.esp` |
-| ours | DialogResponses | new |  `000859:Argonia.esp` |
-| ours | DialogResponses | new |  `000858:Argonia.esp` |
-| ours | DialogResponses | new |  `00085A:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Rumours `00088D:Argonia.esp` |
-| ours | DialogResponses | new |  `000890:Argonia.esp` |
-| ours | DialogResponses | new |  `00088E:Argonia.esp` |
-| ours | DialogResponses | new |  `00088F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Secret `000892:Argonia.esp` |
-| ours | DialogResponses | new |  `000893:Argonia.esp` |
-| ours | DialogResponses | new |  `000895:Argonia.esp` |
-| ours | DialogResponses | new |  `000894:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Scene3 `00081E:Argonia.esp` |
-| ours | DialogResponses | new |  `00081F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_BT_Topic20 `000825:Argonia.esp` |
-| ours | DialogResponses | new |  `000823:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Directions `000845:Argonia.esp` |
-| ours | DialogResponses | new |  `000849:Argonia.esp` |
-| ours | DialogResponses | new |  `000847:Argonia.esp` |
-| ours | DialogResponses | new |  `00084D:Argonia.esp` |
-| ours | DialogResponses | new |  `000850:Argonia.esp` |
-| ours | DialogResponses | new |  `000853:Argonia.esp` |
-| ours | DialogResponses | new |  `000846:Argonia.esp` |
-| ours | DialogResponses | new |  `00084B:Argonia.esp` |
-| ours | DialogResponses | new |  `00084F:Argonia.esp` |
-| ours | DialogResponses | new |  `000852:Argonia.esp` |
-| ours | DialogResponses | new |  `00084E:Argonia.esp` |
-| ours | DialogResponses | new |  `000851:Argonia.esp` |
-| ours | DialogResponses | new |  `00084C:Argonia.esp` |
-| ours | DialogResponses | new |  `00084A:Argonia.esp` |
-| ours | DialogResponses | new |  `000848:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Someone `0008BE:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CE:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CA:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C9:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C0:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CD:Argonia.esp` |
-| ours | DialogResponses | new |  `0008BF:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CF:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C3:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C1:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C6:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D1:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C4:Argonia.esp` |
-| ours | DialogResponses | new |  `0008D0:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C5:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CB:Argonia.esp` |
-| ours | DialogResponses | new |  `0008CC:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C7:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C8:Argonia.esp` |
-| ours | DialogResponses | new |  `0008C2:Argonia.esp` |
 | ours | DialogTopic | new | ARG_BT_Topic90 `000832:Argonia.esp` |
 | ours | DialogResponses | new |  `000830:Argonia.esp` |
 | ours | DialogResponses | new |  `00082F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Danger `00083B:Argonia.esp` |
-| ours | DialogResponses | new |  `000841:Argonia.esp` |
-| ours | DialogResponses | new |  `00083D:Argonia.esp` |
-| ours | DialogResponses | new |  `00083C:Argonia.esp` |
-| ours | DialogResponses | new |  `000842:Argonia.esp` |
-| ours | DialogResponses | new |  `000843:Argonia.esp` |
-| ours | DialogResponses | new |  `00083E:Argonia.esp` |
-| ours | DialogResponses | new |  `000840:Argonia.esp` |
-| ours | DialogResponses | new |  `00083F:Argonia.esp` |
-| ours | DialogTopic | new | ARG_Talk_Here `000864:Argonia.esp` |
+| ours | DialogTopic | new | ARG_LQ30_ComeBack `000948:Argonia.esp` |
+| ours | DialogResponses | new |  `000949:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Hello `000835:Argonia.esp` |
+| ours | DialogResponses | new |  `00085D:Argonia.esp` |
+| ours | DialogResponses | new |  `000860:Argonia.esp` |
+| ours | DialogResponses | new |  `000837:Argonia.esp` |
+| ours | DialogResponses | new |  `00085B:Argonia.esp` |
 | ours | DialogResponses | new |  `00086C:Argonia.esp` |
 | ours | DialogResponses | new |  `00086F:Argonia.esp` |
+| ours | DialogResponses | new |  `000849:Argonia.esp` |
+| ours | DialogResponses | new |  `000841:Argonia.esp` |
+| ours | DialogResponses | new |  `00083D:Argonia.esp` |
+| ours | DialogResponses | new |  `000857:Argonia.esp` |
 | ours | DialogResponses | new |  `00086A:Argonia.esp` |
 | ours | DialogResponses | new |  `000865:Argonia.esp` |
-| ours | DialogResponses | new |  `000873:Argonia.esp` |
-| ours | DialogResponses | new |  `000872:Argonia.esp` |
+| ours | DialogResponses | new |  `000856:Argonia.esp` |
+| ours | DialogResponses | new |  `000847:Argonia.esp` |
+| ours | DialogResponses | new |  `00085C:Argonia.esp` |
+| ours | DialogResponses | new |  `00084D:Argonia.esp` |
+| ours | DialogResponses | new |  `000854:Argonia.esp` |
+| ours | DialogResponses | new |  `000850:Argonia.esp` |
+| ours | DialogResponses | new |  `000864:Argonia.esp` |
 | ours | DialogResponses | new |  `000870:Argonia.esp` |
+| ours | DialogResponses | new |  `000861:Argonia.esp` |
+| ours | DialogResponses | new |  `000863:Argonia.esp` |
+| ours | DialogResponses | new |  `000844:Argonia.esp` |
 | ours | DialogResponses | new |  `000867:Argonia.esp` |
+| ours | DialogResponses | new |  `00083B:Argonia.esp` |
+| ours | DialogResponses | new |  `000862:Argonia.esp` |
+| ours | DialogResponses | new |  `00085F:Argonia.esp` |
+| ours | DialogResponses | new |  `000839:Argonia.esp` |
+| ours | DialogResponses | new |  `000853:Argonia.esp` |
 | ours | DialogResponses | new |  `000866:Argonia.esp` |
+| ours | DialogResponses | new |  `000846:Argonia.esp` |
+| ours | DialogResponses | new |  `00083C:Argonia.esp` |
+| ours | DialogResponses | new |  `00083A:Argonia.esp` |
+| ours | DialogResponses | new |  `000842:Argonia.esp` |
+| ours | DialogResponses | new |  `00084B:Argonia.esp` |
+| ours | DialogResponses | new |  `000843:Argonia.esp` |
 | ours | DialogResponses | new |  `00086E:Argonia.esp` |
+| ours | DialogResponses | new |  `00085E:Argonia.esp` |
+| ours | DialogResponses | new |  `000859:Argonia.esp` |
+| ours | DialogResponses | new |  `00083E:Argonia.esp` |
+| ours | DialogResponses | new |  `000840:Argonia.esp` |
+| ours | DialogResponses | new |  `00084F:Argonia.esp` |
+| ours | DialogResponses | new |  `000852:Argonia.esp` |
 | ours | DialogResponses | new |  `000868:Argonia.esp` |
+| ours | DialogResponses | new |  `00084E:Argonia.esp` |
+| ours | DialogResponses | new |  `000845:Argonia.esp` |
+| ours | DialogResponses | new |  `00083F:Argonia.esp` |
+| ours | DialogResponses | new |  `000851:Argonia.esp` |
+| ours | DialogResponses | new |  `00084C:Argonia.esp` |
+| ours | DialogResponses | new |  `000871:Argonia.esp` |
+| ours | DialogResponses | new |  `000855:Argonia.esp` |
+| ours | DialogResponses | new |  `000858:Argonia.esp` |
+| ours | DialogResponses | new |  `00086D:Argonia.esp` |
+| ours | DialogResponses | new |  `000836:Argonia.esp` |
+| ours | DialogResponses | new |  `00086B:Argonia.esp` |
+| ours | DialogResponses | new |  `00084A:Argonia.esp` |
+| ours | DialogResponses | new |  `000848:Argonia.esp` |
+| ours | DialogResponses | new |  `00085A:Argonia.esp` |
+| ours | DialogResponses | new |  `000869:Argonia.esp` |
+| ours | DialogResponses | new |  `000838:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicClaimFigurine `0009A2:Argonia.esp` |
+| ours | DialogResponses | new |  `0009A3:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicJob `00099F:Argonia.esp` |
+| ours | DialogResponses | new |  `0009A0:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Advice `000873:Argonia.esp` |
+| ours | DialogResponses | new |  `000876:Argonia.esp` |
 | ours | DialogResponses | new |  `000875:Argonia.esp` |
 | ours | DialogResponses | new |  `000874:Argonia.esp` |
-| ours | DialogResponses | new |  `000871:Argonia.esp` |
-| ours | DialogResponses | new |  `00086D:Argonia.esp` |
-| ours | DialogResponses | new |  `00086B:Argonia.esp` |
-| ours | DialogResponses | new |  `000869:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG02_TopicHandOverOkan `0009AF:Argonia.esp` |
+| ours | DialogResponses | new |  `0009B0:Argonia.esp` |
+| ours | DialogTopic | new | ARG_Talk_Lore `0008BA:Argonia.esp` |
+| ours | DialogResponses | new |  `0008BD:Argonia.esp` |
+| ours | DialogResponses | new |  `0008BE:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C0:Argonia.esp` |
+| ours | DialogResponses | new |  `0008BF:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C3:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C1:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C6:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C4:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C5:Argonia.esp` |
+| ours | DialogResponses | new |  `0008BC:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C7:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C8:Argonia.esp` |
+| ours | DialogResponses | new |  `0008C2:Argonia.esp` |
+| ours | DialogResponses | new |  `0008BB:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC01_TheBook `0009D4:Argonia.esp` |
+| ours | DialogResponses | new |  `0009D5:Argonia.esp` |
+| ours | DialogTopic | new | ARG_TG01_TopicDoor `000989:Argonia.esp` |
+| ours | DialogResponses | new |  `00098A:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC03_Break `000A24:Argonia.esp` |
+| ours | DialogResponses | new |  `000A25:Argonia.esp` |
+| ours | DialogTopic | new | ARG_BC02_TheGate `0009FC:Argonia.esp` |
+| ours | DialogResponses | new |  `0009FE:Argonia.esp` |
+| ours | DialogResponses | new |  `0009FD:Argonia.esp` |
+| ours | quest | new | ARG_LQ30 `000936:Argonia.esp` |
+| ours | quest | new | ARG_BC03 `000A0E:Argonia.esp` |
 | ours | quest | new | ARG_BlockTestEnd `000804:Argonia.esp` |
+| ours | quest | new | ARG_LQ25 `00094A:Argonia.esp` |
+| ours | quest | new | ARG_BC02 `0009DD:Argonia.esp` |
+| ours | quest | new | ARG_TG01 `00095C:Argonia.esp` |
 | ours | quest | new | ARG_BlockTest `000803:Argonia.esp` |
+| ours | quest | new | ARG_BC01 `0009C0:Argonia.esp` |
 | ours | quest | new | ARG_Opening `000801:Argonia.esp` |
 | ours | quest | new | ARG_Talk `000833:Argonia.esp` |
+| ours | quest | new | ARG_TG02 `00095D:Argonia.esp` |
+| ours | Package | new | ARG_TG01_FriendBench `000987:Argonia.esp` |
+| ours | Package | new | ARG_TG01_ThiefEvening `000985:Argonia.esp` |
+| ours | Package | new | ARG_TG01_ThiefSleep `000986:Argonia.esp` |
+| ours | Package | new | ARG_BC01_DebtorFollow `0009CE:Argonia.esp` |
 | ours | Package | new | ARG_BT_WalkPackage `000819:Argonia.esp` |
+| ours | Package | new | ARG_BC02_MotherFollow `0009F6:Argonia.esp` |
+| ours | Package | new | ARG_TG01_ThiefDay `000984:Argonia.esp` |
+| ours | Package | new | ARG_BC01_PatronAtLanding `0009CD:Argonia.esp` |
+| ours | Package | new | ARG_BC02_SpeakerFollow `0009F4:Argonia.esp` |
+| ours | Package | new | ARG_BC02_KillerFollow `0009F5:Argonia.esp` |
 | ours | VoiceType | new | ARG_TalkSilentVoice `000834:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC01_TheEstateBranch `0009CF:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicClaimFigurineBranch `0009A1:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicTestBranch `00098B:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_ComeKillerBranch `000A02:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch40 `000827:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_LootBranch `0008B3:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch50 `00082A:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC01_CutLooseBranch `0009D6:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC01_TheBookBranch `0009D3:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch90 `000831:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_ServicesBranch `0008B6:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_RumoursBranch `00088C:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicGiveBackBranch `000992:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicSellBeadsBranch `0009BA:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicDoorBranch `000988:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_ComeMotherBranch `000A05:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ25_TellCaptainBranch `000956:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_TheSeasonBranch `000A1A:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch20 `000824:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_DirectionsBranch `000844:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_HarvestBranch `000854:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_AdviceBranch `000835:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_SomeoneBranch `0008BD:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_TradeBranch `0008D2:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_HarvestBranch `000891:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_BrawlBranch `000A20:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicBedBranch `00098E:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_YieldTalkBranch `000A26:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_ComeSpeakerBranch `0009FF:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ30_TheBasinBranch `000944:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_SecretBranch `0008CE:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ30_WalkedOutBranch `000940:Argonia.esp` |
 | ours | DialogBranch | new | ARG_BT_Branch50Never `00082D:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_SecretBranch `000891:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_LootBranch `000876:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_SelfBranch `000896:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_DangerBranch `00083A:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_HereBranch `000863:Argonia.esp` |
-| ours | DialogBranch | new | ARG_Talk_LoreBranch `00087C:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ25_TheBeastBranch `000952:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicHandOverNeetaBranch `0009AB:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ30_ComeBackBranch `000947:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC01_BringDownBranch `0009DA:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicReturnBranch `000996:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_SomeoneBranch `0008FA:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_AdviceBranch `000872:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicHandOverDarBranch `0009B1:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_HereBranch `0008A0:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_TheGateBranch `0009FB:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicHandOverOkanBranch `0009AE:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_BreakBranch `000A23:Argonia.esp` |
+| ours | DialogBranch | new | ARG_LQ25_KeepQuietBranch `000959:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_RumoursBranch `0008C9:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_SelfBranch `0008D3:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_LastSeasonBranch `000A16:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicClaimCharmBranch `0009A4:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_DirectionsBranch `000881:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicJobBranch `00099E:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_LoreBranch `0008B9:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_ServicesBranch `0008F3:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG01_TopicWelcomeBranch `00099A:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_TradeBranch `00090F:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_YieldPayBranch `000A2A:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicSellFigurineBranch `0009B4:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicClaimBeadsBranch `0009A8:Argonia.esp` |
+| ours | DialogBranch | new | ARG_Talk_DangerBranch `000877:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC03_TheTokensBranch `000A1D:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_TheFireBranch `0009F7:Argonia.esp` |
+| ours | DialogBranch | new | ARG_BC02_LetByBranch `000A08:Argonia.esp` |
+| ours | DialogBranch | new | ARG_TG02_TopicSellCharmBranch `0009B7:Argonia.esp` |
 | ours | Scene | new | ARG_BT_Scene `000822:Argonia.esp` |
 | intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
 | opening | worldspace | BM&V's record kept, our marker in its persistent cell | BlackMarsh `23D689:Black Marsh.esm` |

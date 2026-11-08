@@ -10,8 +10,8 @@
 {"quest_id":"quest.bc.bc01","things_ord":5,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":0,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":1,"state":"all","value":"present"}
-{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-30","value":"burnt"}
-{"quest_id":"quest.bc.bc02","things_ord":2,"state":"during","value":"burning"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"after-end","value":"as BM&V left it"}
+{"quest_id":"quest.bc.bc02","things_ord":2,"state":"during","value":"smoke under ref.bc02.smoke"}
 {"quest_id":"quest.bc.bc02","things_ord":3,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc02","things_ord":4,"state":"all","value":"present"}
 {"quest_id":"quest.bc.bc03","things_ord":0,"state":"all","value":"present"}

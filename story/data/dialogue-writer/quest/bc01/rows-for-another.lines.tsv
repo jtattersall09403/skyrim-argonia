@@ -1,0 +1,7 @@
+topic id	variant	band	prompt	line	fact ids
+topic.bc01-cut-loose	main	low	Will you leave with me?	Two estate men walk the landing at night. The channel runs out of the estate's reach. I cannot drown in it. I follow you.	fact.bc01.night-men,fact.bc01.channel
+topic.bc01-cut-loose	main	words	Will you leave with me?	I will not wait on the book. Two estate men walk the landing at night. Past them, the channel runs out of the estate's reach. I cannot drown in it. Go first. I will follow you.	fact.bc01.night-men,fact.bc01.channel
+topic.bc01-cut-loose	main	high	Will you leave with me?	I will not wait on the book any longer. Two estate men walk the landing at night. Pass them and the channel is open to us. It runs from the landing out of the estate's reach. I cannot drown in it. Go first. I will follow you.	fact.bc01.night-men,fact.bc01.channel
+topic.bc01-cut-loose	day	low	Will you leave with me?	Not in daylight, with the men watching. Come back after dark.	
+topic.bc01-cut-loose	day	words	Will you leave with me?	Not in daylight, with the men watching. Come back after dark. Then I will go with you.	
+topic.bc01-cut-loose	day	high	Will you leave with me?	I want to go, but not in daylight, with the men watching. Come back after dark. I will be ready. I will go with you.	
