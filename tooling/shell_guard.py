@@ -12,6 +12,8 @@ RULES = [
     (START + r"sleep\b", "no sleep: run long jobs under job_guard.sh and wait with it"),
     (r"\buntil\b[^\n]*;\s*do\b", "no poll loops: use job_guard.sh wait"),
     (r"\bwhile\b[^\n]*\bkill\s+-0\b", "no poll loops: use job_guard.sh wait"),
+    (r"\bread\b[^\n;|&]*<\s*/dev/zero", "read < /dev/zero never meets a newline and spins a whole core for the timeout: use job_guard.sh wait"),
+    (r"\bwhile\b[^\n]*\bpgrep\b", "no poll loops: use job_guard.sh wait"),
     (START + r"tail\b[^|;&\n]*\s(-[a-zA-Z]*f\b|--follow|--pid)", "no tail -f or --pid: use job_guard.sh wait"),
     (START + r"git\s+checkout\s+--(\s|$)", "git checkout -- discards work: use the Edit tool"),
     (START + r"git\s+checkout\s+(?!-b\b|-B\b|--detach\b|-q\s+--detach\b|-\s)[^\s;&|]*[./][^\s;&|]*", "git checkout <path> discards other lanes' edits (formid.jsonl is append-only, 2026-10-31): leave it, or commit your own paths"),

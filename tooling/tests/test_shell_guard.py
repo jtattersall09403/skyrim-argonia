@@ -19,6 +19,7 @@ def run(cmd):
     "until test -f x; do echo; done", "while kill -0 123; do :; done", "tail -f log", "tail -n5 --pid=3 log",
     "git checkout -- file", "git checkout world/db/formid.jsonl && make plugin", "git restore file", "git stash", "git pull --rebase --autostash -q", "git -c rebase.autoStash=true pull --rebase", "git reset --hard HEAD~1", "git update-ref refs/heads/main abc123", "GIT_INDEX_FILE=/tmp/i git commit -m x",
     "pkill python", "killall node", "kill -9 -1", "git commit -m x --", "git commit -m x -- ; ls",
+    "read -t 5 < /dev/zero || true", "while pgrep -f shot.py >/dev/null; do :; done",
     "cat ~/.argonia/secrets.env", "head -3 ~/.argonia/secrets.env", "rtk less ~/.argonia/secrets.env"])
 def test_refused(cmd):
     code, err = run(cmd)
@@ -27,6 +28,6 @@ def test_refused(cmd):
 
 @pytest.mark.parametrize("cmd", [
     "ls", "git status", "git commit -m x -- a.py", "git checkout main", "tail -n 20 log", "rtk git diff",
-    "kill 123", "echo sleeping", "grep secrets docs/x.md", "make check"])
+    "kill 123", "echo sleeping", "head -c 10 /dev/zero > f", "read -r -t 5 <> fifo", "grep secrets docs/x.md", "make check"])
 def test_allowed(cmd):
     assert run(cmd)[0] == 0
