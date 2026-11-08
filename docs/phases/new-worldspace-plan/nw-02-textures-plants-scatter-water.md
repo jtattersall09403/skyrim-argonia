@@ -83,7 +83,7 @@ bucket, never in git.
 | 9 | Ground mist over marsh and water, by hour and weather | in progress (with step 7's agent) |
 | 10 | Navmesh across the province: pipeline restored (tools/navmesh, NewWorldNavmesh.cs; ff1205f1), proven on 256 cells round Lilmoth (all land cells covered, 0 seam faults, 99% connected, 5/5 paths, codec byte-exact on Skyrim); full-province run (~15 min) owed on the final terrain and placed refs | in progress |
 | 11 | LOD (terrain, objects, trees) and the world map: map data and 116 settlement map markers (only Stormhold known) built and checked off game; LOD settings and tooling (xLODGen 132, DynDOLOD Alpha-217) laid on the play machine (b698ff61); the LOD run is waiting on the new-world profile, then the full build once the world is final (`NW_LOD=1 tooling/job_guard.sh run --gpu nw-lod -- infra/gpu-box/lod.sh stage`) | in progress |
-| 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | todo |
+| 12 | Off-game read-back loop over the built files, then deploy and the owner's walk check | in progress (verifier and walk-check draft being built ahead of the final world) |
 
 The new-world card (2e3215a5, d64744de): 10 asset-only rows (KotM, Tropical Skyrim, Depths, HTBM + Cipactli, Xanmeer,
 CC Ayleid, Sleeping Hist Tree, Mud Mother Grove, SIRENROOT) marked `profile: newworld`, their BSAs unpacked to loose
