@@ -219,3 +219,8 @@ added here the day they are made, with the date and the issue.
   their dialogue: a regression to fix. The standing backstep becomes Skyrim's own vanilla backstep, not the truncated
   Dynamic Dodge clip. TrueHUD's Combined preset did not reach the game: apply it. The backstab gave the stagger but
   not the execution or its damage: make the execution play.
+- 2026-11-08 (nw-02, in session): the old pipeline never fully fixed hard texture edges (it did fix the bare pebble
+  swathes), so the new world's texturing proves edges gone by measurement and by looking at close crops. Water
+  classification faults: closed little bodies classed as stream must be swamp, marsh or pond; a closed larger body
+  is one congruent marsh, not part marsh and part stream; river stretches are never blackwater swamp. Fixed at the
+  method's root and checked by a visual loop over the map in chunks until it reads sensibly.
