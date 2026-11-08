@@ -202,6 +202,10 @@ put the old ones back. That can no longer happen (the install now refuses an out
       asks the names, and after you have answered her, that it is written.
 - [ ] **9.6 Heights.** Mee-Tuja on the pier, and Ties-The-Loose-Plank on the shore after the fire, stand as tall as the
       others (they were about twelve feet).
+- [ ] **9.7 No things that act like people.** Every line we have was swept for objects, places and documents doing a
+      person's act (it was "the roll adds more months", "the hold heard you"). Ask Wuleen-Sei "Why am I here?": she now
+      says she adds the months to the roll herself, and that everyone in the hold heard you. Say if any line you meet
+      still makes a thing do what only a person does.
 
 ## Done
 
