@@ -69,13 +69,13 @@ bucket, never in git.
 | Step | What | Status |
 |---|---|---|
 | 0 | Map quick fixes: road classes, major-road gaps | in progress |
-| 1 | Study: what to salvage from the old pipeline (research/nw-02-salvage.md) | in progress |
+| 1 | Study: what to salvage from the old pipeline (research/nw-02-salvage.md) | done |
 | 2 | Study: ground, water, roads, mist rules from the game and mod files (research/nw-02-ground-water-rules.md) | in progress |
 | 3 | Study: flora, rocks, seabed, cliffs catalogue, seating and placement rules (research/nw-02-flora-rules.md) | in progress |
 | 4 | Terrain quality: nw-01's relief against Skyrim's, the improvement pass, room for large places | in progress |
 | 5 | Water: kinds and flow inferred, the owner's water editor, water types as records | todo |
 | 6 | Region flora sets in the DB, seabed sets | todo |
-| 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | todo |
+| 7 | The world plugin: worldspace, land, textures without hard edges, water, regions, BM&V weather | in progress (core: cells, land heights, start marker) |
 | 8 | Trees, plants, rocks, cliffs, road dressing, water edges, placed and seated | todo |
 | 9 | Ground mist over marsh and water, by hour and weather | todo |
 | 10 | Navmesh across the province | todo |
