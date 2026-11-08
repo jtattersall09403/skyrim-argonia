@@ -36,15 +36,19 @@ static class Listing
         sb.AppendLine($"| intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `{mq.FormKey}` |");
         var ws = mod.Worldspaces.Single(w => w.FormKey == FormKey.Factory("23D689:Black Marsh.esm"));
         sb.AppendLine($"| opening | worldspace | BM&V's record kept, our marker in its persistent cell | {ws.EditorID} `{ws.FormKey}` |");
-        // The map (MapFix.cs): the four BM&V worlds' MNAM pan box set, the marker names fixed.
+        // The map (MapFix.cs): the four BM&V worlds' MNAM pan box set, the marker names fixed. The music (Music.cs):
+        // ZNAM on those four and the Underdark (a child world with no map of its own).
         foreach (var w in mod.Worldspaces)
         {
+            if (w.Music.IsNull) errs.Add($"{w.EditorID}: no music");
+            else sb.AppendLine($"| music | worldspace | ZNAM `{w.Music.FormKey}`, the rest kept | {w.EditorID} `{w.FormKey}` |");
+            if (w.Parent != null) continue;
             var mnam = w.MapData;
             if (mnam == null || mnam.NorthwestCellCoords.X >= mnam.SoutheastCellCoords.X || mnam.NorthwestCellCoords.Y <= mnam.SoutheastCellCoords.Y)
                 errs.Add($"{w.EditorID}: no map box");
             else sb.AppendLine($"| map | worldspace | MNAM pan box NW({mnam.NorthwestCellCoords.X},{mnam.NorthwestCellCoords.Y}) SE({mnam.SoutheastCellCoords.X},{mnam.SoutheastCellCoords.Y}), the rest kept | {w.EditorID} `{w.FormKey}` |");
         }
-        if (mod.Worldspaces.Count != 4) errs.Add($"{mod.Worldspaces.Count} worldspace overrides, not 4");
+        if (mod.Worldspaces.Count != 5) errs.Add($"{mod.Worldspaces.Count} worldspace overrides, not 5");
         var markers = mod.Worldspaces.SelectMany(w => w.TopCell?.Persistent.OfType<IPlacedObjectGetter>() ?? []).Where(r => r.MapMarker != null)
             .ToDictionary(r => r.FormKey.ToString(), r => r.MapMarker!.Name?.String);
         foreach (var (k, n) in new[] { ("0934A4:Black Marsh North.esp", "Lilmoth"), ("083283:Black Marsh North.esp", "Southern Morrowind Pass") })
@@ -109,7 +113,8 @@ static class Listing
                 var wmask = new Worldspace.TranslationMask(true) { SubCells = false, TopCell = false, SubCellsTimestamp = false, SubCellsUnknown = false };  // the group stamp is the writer's
                 var wa = wo.DeepCopy(wmask); var wb = wwo.DeepCopy(wmask);
                 if (wa.MapData != null && wb.MapData != null) { wb.MapData.NorthwestCellCoords = wa.MapData.NorthwestCellCoords; wb.MapData.SoutheastCellCoords = wa.MapData.SoutheastCellCoords; }
-                if (!wa.Equals(wb)) errs.Add($"{wo.EditorID}: not the winner's record ({wfo}) beyond the map box: {wa.GetEqualsMask(wb)}");
+                wb.Music.SetTo(wa.Music.FormKey);
+                if (!wa.Equals(wb)) errs.Add($"{wo.EditorID}: not the winner's record ({wfo}) beyond the map box and music: {wa.GetEqualsMask(wb)}");
                 if (!masters.Contains(wfo)) errs.Add($"{wo.EditorID}: its winner {wfo} is not a master");
             }
             // Every overridden record's winning plugin is a master, and the masters are in load order.

@@ -12,6 +12,7 @@ switch (args.FirstOrDefault())
     case "cleancheck": return CleanUp.Check(args[1], args[2..]);
     case "blocktest": return BlockTestCheck.Run(args[1], args[2], args[3..]);
     case "mapprobe": MapFix.Probe(args[1..]); break;
+    case "musicprobe": Music.Probe(args[1..]); break;
     case "blockstudy": BlockTestStudy.Run(args[1]); break;
     case "surface": Surface.Run(args[1..]); break;
     case "asset": File.WriteAllBytes(args[2], new Surface.Assets(args[3..]).Read(args[1]) ?? throw new FileNotFoundException(args[1])); break; // read only, to a scratch path

@@ -43,6 +43,7 @@ case "${1:-}" in
     tool list "$esp" docs/research/skyrim/argonia-esp-records.md "${lo[@]}" ;;
   mapprobe) loadorder; tool mapprobe "${lo[@]}" ;;
   cleancheck) build; tool cleancheck "$esp" "${lo[@]}" ;;
+  musicprobe) loadorder; tool musicprobe "${lo[@]}" ;;
   blocktest) build; tool blocktest "$esp" out/gpu/papyrus "${lo[@]}" ;;
   seed)
     loadorder

@@ -79,7 +79,21 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   clip cut at the end of its first push (0.333 s), not its keys held while the clip plays whole; (2) TrueHUD from the
   Player Widget's "Combined" preset, then the owner's tweaks (the list above); (3) the backstab as Dark Souls': behind
   a person, locked on or not, a normal attack plays Rim Parry's backstab and execution; (4) Skyrim's normal game
-  music on in BM&V's worlds.
+  music on in BM&V's worlds. Done, owner checks owed: (1) `backstep.py` now ends the clip itself: the hkaAnimation's
+  duration 0.933 s becomes the first push's last key, 0.333 s, and the annotations after it are dropped (sorted in
+  place first: the author's are not in time order); the spline data is untouched (sampled by frame time) and no
+  byte moves. Measured on the player's copy: duration 0.333 s, travel 1.86 m (was 5.42 m by 0.833 s). The animation
+  data needs no change: the clip generator plays the replacement clip to its own duration, and AMR's keys, not the
+  animdata motion block, move it. Deployed by `stack.py install --skip-fetch`. (2) Row `truehud`'s ini set is
+  TrueHUD_MCM.psc's `LoadPreset("PlayerWidgetCombined")` (bar directions 0, display modes 1, shout indicator 3,
+  hide vanilla bars, enchantment meter, scale bars, combined on, X 0.045, min 50) with the owner's tweaks over it
+  (width 150 for 100, max 500 for 400, Y 0.105 for 0.920); deployed the same way. (4) Cause, measured
+  (`plugin.sh musicprobe`): BM&V's five worlds carry no WRLD music (ZNAM) and none of their regions a music
+  entry, so outdoors the engine has no music type; interiors mostly carry the author's own and combat music is the
+  engine's. Fix Bethesda's way for a separate world (Solstheim's ZNAM): `Music.cs` sets ZNAM on BlackMarsh,
+  BlackMarsh2 and BlackMarshNorth (MUSExploreMarsh), Valenwood (MUSExploreForestPine) and the Underdark
+  (MUSDungeonCave); no new forms; `plugin.sh check` reads each back. The ESP needs the integrator's re-seed and
+  deploy.
 - **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
   2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
   the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so

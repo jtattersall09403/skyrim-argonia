@@ -1,6 +1,6 @@
 # Argonia.esp: every record, read back from the built plugin
 
-Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp, Magic.esp, Magistrate Levitate.esp. 722 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
+Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.esp`; masters: Skyrim.esm, Update.esm, Dawnguard.esm, HearthFires.esm, Dragonborn.esm, ccBGSSSE001-Fish.esm, ccBGSSSE025-AdvDSGS.esm, unofficial skyrim special edition patch.esp, Black Marsh.esm, Black Marsh North.esp, Valenwood.esp, RimExecutionHitSA.esp, Magic.esp, Magistrate Levitate.esp. 723 records. Quest overrides keep the winning record (aliases, stages, scripts) with Start Game Enabled off and their player-visible text removed; story-manager overrides gain a first condition `GetGlobalValue ARG_VanillaStoryManager == 1` (the global is 0), so nothing under the node starts. The why is in `tools/ArgoniaPlugin/shutdown.json` and `mods/allowed-quests.json`.
 
 | Group | Kind | Change | Records (editor id, form id) |
 |---|---|---|---|
@@ -255,9 +255,14 @@ Written by `make plugin-check` (tools/ArgoniaPlugin `list`) from `out/Argonia.es
 | ours | Scene | new | ARG_BT_Scene `000822:Argonia.esp` |
 | intro | quest | replaced: one stage 0 with one empty log entry, which its fragment (ARG_QF_MQ101) binds to (no entry, no fragment: New Game stayed on the menu, 2026-11-06); the fragment moves the player to ARG_OpeningMarker, starts ARG_Opening and stops MQ101; no aliases, scenes or Helgen stages | MQ101 `03372B:Skyrim.esm` |
 | opening | worldspace | BM&V's record kept, our marker in its persistent cell | BlackMarsh `23D689:Black Marsh.esm` |
+| music | worldspace | ZNAM `0C76D3:Skyrim.esm`, the rest kept | BlackMarsh2 `0D6960:Black Marsh.esm` |
 | map | worldspace | MNAM pan box NW(-17,16) SE(16,-15), the rest kept | BlackMarsh2 `0D6960:Black Marsh.esm` |
+| music | worldspace | ZNAM `094BDD:Skyrim.esm`, the rest kept | UnderDark `0B8BDD:Black Marsh North.esp` |
+| music | worldspace | ZNAM `0C76D3:Skyrim.esm`, the rest kept | BlackMarshNorth `005900:Black Marsh North.esp` |
 | map | worldspace | MNAM pan box NW(-17,16) SE(16,-16), the rest kept | BlackMarshNorth `005900:Black Marsh North.esp` |
+| music | worldspace | ZNAM `0C76D3:Skyrim.esm`, the rest kept | BlackMarsh `23D689:Black Marsh.esm` |
 | map | worldspace | MNAM pan box NW(-18,4) SE(18,-25), the rest kept | BlackMarsh `23D689:Black Marsh.esm` |
+| music | worldspace | ZNAM `06D546:Skyrim.esm`, the rest kept | Valenwood `005900:Valenwood.esp` |
 | map | worldspace | MNAM pan box NW(-16,19) SE(17,-16), the rest kept | Valenwood `005900:Valenwood.esp` |
 | map | map marker | name only: Lilmoth | `0934A4:Black Marsh North.esp` |
 | map | map marker | name only: Southern Morrowind Pass | `083283:Black Marsh North.esp` |

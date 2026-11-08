@@ -175,6 +175,8 @@ static class Generate
         Combat.Add(mod, mods);
         // The slice's clean-ups (CleanUp.cs): overrides only, no new form ids.
         CleanUp.Add(mod, mods);
+        // Skyrim's game music in BM&V's worlds (Music.cs): WRLD ZNAM only, no new forms; after Combat.
+        Music.Apply(mod, mods);
         var order = mods.Select(m => m.ModKey).Append(Ours).ToList();
         // The plugin whose worldspace record we override is a master even when no form of it is referenced, so ours
         // always loads after it.
