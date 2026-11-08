@@ -46,6 +46,12 @@ kind and heading merge, passing the first landmark. Lilmoth's 22 directions re-r
 lines rewritten (14 writers), one reader pass (97 lines fixed: comma-and splices, nobody/someone, stacked
 closers, shared tics); `talk_brief.py load` maps a fact id given as a topic to its topic. `talk_check` 0.
 
+**The act's places (2026-11-08), in progress.** Talker rows, topics and facts for bmv.village (6), bmv.dock5 (5)
+and bmv.helstrom (7): 18 talkers `designed`, 143 topic rows, 103 facts; `talk_check --lines-only` 0. The north's
+directions are routed in its own world (`talk_route facts --world "0D6960:Black Marsh.esm"`). 08D5EE and 08D5EF
+keep LQ25's names (Okan-Zish, Wuleen-Taza: BM&V placements LQ25 aliases); 08D5E9 (the levy warden) and 08D5F1
+(LQ25's boat captain) named Gih-Xaleel and Sells-Dear. Next: briefs, 18 writers, a reader pass, load, `talk_check`.
+
 ## The census (`bmv_talker`, `python3 -m tools.argonia_world.talk_census build`)
 
 725 enabled placed people: 553 silent (E opens nothing), 50 service (a vanilla trade menu only), 3 with vanilla
