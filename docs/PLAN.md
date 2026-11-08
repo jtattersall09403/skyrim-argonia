@@ -77,7 +77,7 @@ file in [phases/](phases/), edited as the phase goes.
 | [3](phases/3-building-blocks.md) | each block proved once, plus one composite quest for the connectors (the induction) | "I saw every block and the composite work in game" |
 | [4](phases/4-first-act-built.md) | the first act built from the proven blocks, with its dialogue | "I played the first act from a new game" |
 | [4a](phases/4a-talk-to-everyone.md) | every BM&V person outside Lilmoth gets a backstory and topics of their own (W-talk, proved on Lilmoth's 12), settlement by settlement; runs beside Phase 4 | "I can talk to anyone I meet, and what they tell me is true" |
-| 4b (after Phase 4 is accepted) | the method as skills: cut from [quests-on-a-world](design/quests-on-a-world.md), talk-write and the block set, a skill (or set) for putting a quest system onto a new world, world edits included; first the builders' four quest kits and read-backs become one | "an agent with only the skills could do it again on another world" |
+| 4b (after Phase 4 is accepted) | the method as skills: a set that lets an agent put a full quest system onto a new world, cut from [quests-on-a-world](design/quests-on-a-world.md) (its ten parts: the world as the game's world, census, fitting and re-authoring the system with quest-write and quest-review, light world edits, building from the proven blocks without a test quest, talk-write, quest dialogue, read-back and deploy, the owner's walks, parallel lanes); first the four quest kits and read-backs become one shared kit | "an agent with only the skills could do it again on another world" |
 | [5 and on](phases/5-scale.md) | scale | "the story is in, milestone by milestone" |
 
 ## 5. Risks, named
