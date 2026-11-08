@@ -38,6 +38,7 @@ import datetime as dt
 import hashlib
 import json
 import math
+import os
 import subprocess
 import sys
 import time
@@ -47,14 +48,21 @@ from PIL import Image
 from scipy import ndimage as ndi
 
 from tools.newworld import frame as f
+from tools.newworld import terrain_coast as tc
 from tools.newworld import terrain_erode as te
 from tools.newworld import terrain_relief as tr
 from tools.newworld import terrain_shape as ts
 from tools.newworld import terrain_water as tw
 
 OUT = f.OUT / "terrain"
+# a trial build writes elsewhere (ARGONIA_TERRAIN_OUT) and leaves the shared outputs and the bucket alone
+TRIAL = bool(os.environ.get("ARGONIA_TERRAIN_OUT"))
+if TRIAL:
+    OUT = f.Path(os.environ["ARGONIA_TERRAIN_OUT"])
 BUCKET = "s3://argonia-private-050977237313/nw/terrain"
 CLIFF_DEG = 55.0
+MAP_HELD = 0.97        # share of map water (land) pixels whose centre reads under (over) the water level
+BLOCKS_HELD = 0.99     # share of 4 x 4 pixel blocks whose majority class the heightmap keeps
 SEED = 1952
 NEED_DEFAULT_R = {"entrance-in-slope": 15.0, "rise": 25.0, "shore-access": 20.0, "seabed": 30.0}
 SEABED_DEPTH = {"sunken-ruin": 8.0, "shipwreck": 5.0}
@@ -118,7 +126,7 @@ def lay_roads(h, water_px, water_s, grid, w):
     if not roads_file.exists():
         return plans, road_out, grade_of, np.zeros(h.shape, bool)
     for e in json.loads(roads_file.read_text())["edges"]:
-        pl = ts.plan_road(h, water_px, grid, e["points"], grade_of[e["class"]])
+        pl = ts.plan_road(h, water_px, grid, e["points"], grade_of[e["class"]], water_s=water_s)
         edges.append((pl, e["class"], e["from"], e["to"]))
         plans.append((pl, e["class"]))
     ts.solve_network(edges, grade_of)
@@ -166,12 +174,21 @@ def build(upload: bool = True) -> dict:
     ov_problems = tw.apply_overrides(bodies, overrides, {k.id for k in w.rows("water_kind")})
     log("water bodies", len(bodies))
     Image.fromarray(body_r.astype(np.uint16)).save(OUT / "water_bodies.png")
-    (f.OUT / "water_bodies.json").write_text(json.dumps(
+    (OUT if TRIAL else f.OUT).joinpath("water_bodies.json").write_text(json.dumps(
         [{k: b.get(k) for k in ("id", "water_kind_id", "area_m2", "label_px", "label_py", "flows", "flow_note",
                                 "why", "raster_index", "region_id", "flow_deg", "name", "overridden")} for b in bodies], indent=1, default=_j))
 
+    # the smooth coast: the map's water as a signed distance on the samples (terrain_coast)
+    sd_px, thin, force = tc.signed_distance(water_px, SEED)
+    sd_m = tc.sample(sd_px, thin, grid, SEED, force=force)
+    del sd_px, thin, force
+    rejoined = tc.repair(sd_m, grid, water_px)
+    water_s = sd_m < 0
+    coast = tc.agreement(water_s, grid, water_px)
+    coast["bodies_rejoined"] = rejoined
+    log("coast", coast)
+
     # 4. relief
-    water_s = ts.sample_classes(grid, water_px)
     C = tr.COARSE
     ci, cj = np.mgrid[0:grid.rows // C + 2, 0:grid.cols // C + 2]
     wx, wy = grid.ox + cj * C * ts.STEP, grid.oy - ci * C * ts.STEP
@@ -197,7 +214,9 @@ def build(upload: bool = True) -> dict:
     sm = grid.m
     n = {"big": tr.fbm(shape, sm, tr.SCALES["big"], SEED), "mid": tr.fbm(shape, sm, tr.SCALES["mid"], SEED + 1),
          "small": tr.fbm(shape, sm, tr.SCALES["small"], SEED + 2),
-         "hum": tr.noise(shape, tr.SCALES["hum"][0] / sm, SEED + 3)}
+         "hum": tr.noise(shape, tr.SCALES["hum"][0] / sm, SEED + 3),
+         "knoll": tr.fbm(shape, sm, tr.SCALES["knoll"], SEED + 4), "amod": tr.fbm(shape, sm, tr.SCALES["amod"], SEED + 5),
+         "micro": tr.fbm(shape, sm, tr.SCALES["micro"], SEED + 6)}
     log("noise and fields")
     relief_m = tr.relief(F, n, coast_full)
     del n
@@ -211,7 +230,10 @@ def build(upload: bool = True) -> dict:
     # 5. banks and beds
     jx = np.clip(np.floor(grid.p0x + np.arange(grid.cols) * grid.k).astype(int), 0, W - 1)
     iy = np.clip(np.floor(grid.p0y + np.arange(grid.rows) * grid.k).astype(int), 0, H - 1)
-    bidx = body_r[np.ix_(iy, jx)]
+    # each sample's bed is the body of its nearest map water pixel (the smooth coast moves banks by a pixel or two)
+    near_y, near_x = ndi.distance_transform_edt(~water_px, return_distances=False, return_indices=True)
+    bidx = body_r[near_y[np.ix_(iy, jx)], near_x[np.ix_(iy, jx)]]
+    del near_y, near_x
     slope_k = np.array([0.0] + [ts.BED[b["water_kind_id"]][0] for b in bodies], np.float32)
     cap_k = np.array([0.0] + [ts.BED[b["water_kind_id"]][1] for b in bodies], np.float32)
     off = ~((grid.p0x + np.arange(grid.cols) * grid.k >= 0) & (grid.p0x + np.arange(grid.cols) * grid.k < W))[None, :] \
@@ -221,7 +243,7 @@ def build(upload: bool = True) -> dict:
     # a water sample whose own pixel class disagrees (nearest-pixel edge cases) takes stream bed
     bed_slope = np.where(water_s & (bed_slope == 0), 0.12, bed_slope)
     bed_cap = np.where(water_s & (bed_cap == 0), 1.2, bed_cap)
-    h, d_land, d_water = ts.compose(water_s, relief_m, F["ramp"], bed_slope, bed_cap, sm)
+    h, d_land, d_water = ts.compose(water_s, relief_m, F["ramp"], bed_slope, bed_cap, sm, sd_m)
     del relief_m, bed_slope, bed_cap, d_land, d_water
     log("composed")
 
@@ -318,9 +340,10 @@ def build(upload: bool = True) -> dict:
     # LAND format and the water guarantee
     h = ts.quantise(h)
     passes = ts.clamp_steps(h)
-    fails = ts.guarantee(h, grid, water_px)
+    held = ts.hold_water(h, water_s)
     ts.clamp_steps(h)
-    log("guarantee fails", len(fails), "clamp passes", passes)
+    fails = []
+    log("water held", held, "clamp passes", passes)
     cliff = ts.slope_deg(h) > CLIFF_DEG
 
     # entrances judged on the finished ground; any spoiled by the rounding or the water guarantee is shaped again
@@ -331,7 +354,7 @@ def build(upload: bool = True) -> dict:
             shape_entrance(e[0], e[4], e[5], e[6])
         h = ts.quantise(h)
         ts.clamp_steps(h)
-        fails = ts.guarantee(h, grid, water_px)
+        ts.hold_water(h, water_s)
         ts.clamp_steps(h)
         cliff = ts.slope_deg(h) > CLIFF_DEG
         log("entrances reshaped", len(redo))
@@ -350,6 +373,7 @@ def build(upload: bool = True) -> dict:
     crops(h, water_s, grid, w)
     chk = check(h, grid, water_px, plans, grade_of, place_out, cliff)
     chk["guarantee_fails_px"] = fails[:200]
+    chk["coast"] = coast
     (OUT / "check.json").write_text(json.dumps(chk, indent=1, default=_j))
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     sha = hashlib.sha256((OUT / "heightmap.npy").read_bytes()).hexdigest()
@@ -362,7 +386,7 @@ def build(upload: bool = True) -> dict:
              "regions": psrc, "water_overrides": len(overrides), "water_override_problems": ov_problems, "roads_used": bool(plans), "settled_places": settled, "seconds": round(time.time() - t0)}
     (OUT / "build.json").write_text(json.dumps(bjson, indent=1, default=_j))
     log("checks", json.dumps({k: v for k, v in chk.items() if k != "guarantee_fails_px"}, default=_j))
-    if upload:
+    if upload and not TRIAL:
         subprocess.run(["aws", "s3", "cp", "--recursive", "--quiet", str(OUT), f"{BUCKET}/{stamp}/"], check=True)
         subprocess.run(["aws", "s3", "cp", "--quiet", str(f.OUT / "water_bodies.json"), f"{BUCKET}/{stamp}/"],
                        check=True)
@@ -435,12 +459,14 @@ def check_built() -> int:
                    oy=b["origin_world_y"])
     chk = check(h, grid, water_px)
     old = json.loads((OUT / "check.json").read_text())
-    for k in ("roads", "entrances", "entrances_bad"):
+    for k in ("roads", "entrances", "entrances_bad", "coast"):
         if k in old:
             chk[k] = old[k]
     chk["sha256_matches"] = sha == b["sha256"]
     print(json.dumps(chk, indent=1, default=_j))
-    ok = (chk["water_pixels_under"] == 1 and chk["land_pixels_above"] == 1 and chk["land_format"]["ok"]
+    # the smooth coast moves banks by a pixel or two: the map's water and land are held on 4 px blocks
+    ok = (chk["water_pixels_under"] >= MAP_HELD and chk["land_pixels_above"] >= MAP_HELD
+          and chk.get("coast", {}).get("blocks4", 0) >= BLOCKS_HELD and chk["land_format"]["ok"]
           and chk["sha256_matches"] and not chk.get("entrances_bad")
           and chk.get("roads", {}).get("grade_over_limit_points", 0) == 0)
     return 0 if ok else 1

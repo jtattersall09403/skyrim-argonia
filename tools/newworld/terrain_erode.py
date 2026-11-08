@@ -4,7 +4,7 @@ downstream (shores, beds, pads, roads, entrances, the water guarantee) is laid o
 before: the water mask, the water level and every shore are untouched by construction, and no water is added.
 
 The recipe (each step measured against Skyrim's Tamriel and BM&V's Black Marsh in terrain_quality):
-1. Drainage (stream power, implicit, Braun and Willett 2013) on a grid four samples apart (7.3 m): depressions on
+1. Drainage (stream power, implicit, Braun and Willett 2013) on a grid eight samples apart (14.6 m): depressions on
    land are filled, every land sample drains by steepest descent to the water (the map's water and the grid's edge
    are the only outlets; routed on a copy jittered by up to 0.25 m each step so filled flats never drain down
    dead-straight lines), and the ground is lowered by K A^0.5 S each step, with hillslope diffusion between. This
@@ -13,8 +13,10 @@ The recipe (each step measured against Skyrim's Tamriel and BM&V's Black Marsh i
 2. Erodibility K follows each region's relief span (summit - floor): about none under 15 m (marsh, bayou, basin stay
    flat and hummocky), full over 60 m (uplands, ridges and mesas carve the most). Mesa tops keep their flats: K is cut
    where the ground is a plateau.
-3. The coarse change is resampled (cubic) and added to the full-resolution ground.
-4. Detail: slope-weighted fine relief at 8 to 40 m (ridged noise, strongest on slopes, none on flats and valley
+3. Valleys, not trenches: the coarse cut is spread over two widths (VALLEY_SIGMA, mixed by VALLEY_MIX), so a
+   valley's width and depth grow with its drainage and its floor is rounded; no cut is deeper than MAX_CUT_SHARE of
+   the ground's height over its lowest point within 400 m. Then resampled (cubic) onto the full-resolution ground.
+4. Detail: slope-weighted fine relief at 20 to 45 m (ridged noise, strongest on slopes, none on flats and valley
    floors), sized from the region's roughness, so hillsides carry Skyrim's 20 m texture.
 5. Thermal weathering at full resolution: wherever two neighbours differ by more than the talus slope (TALUS_DEG,
    unless the slope is a cliff by design, over CLIFF_KEEP_DEG), a share of the difference moves downhill. This
@@ -26,7 +28,7 @@ The recipe (each step measured against Skyrim's Tamriel and BM&V's Black Marsh i
 8. Room to build (settle_places): each large built place (settlement tier town and up) gets a buildable core:
    within the radius BUILD_R_M[tier] the ground is eased toward its own broad shape (a 60 m Gaussian) until no slope
    exceeds BUILD_MAX_SLOPE; the remaining natural relief is kept at BUILD_KEEP of its amplitude, and the ease fades
-   out over a skirt as wide as half the radius, so the place sits in the land, neither bulldozed nor perched.
+   out over a skirt as wide as the radius, round an irregular edge, so the place sits in the land, neither bulldozed nor perched.
 """
 from __future__ import annotations
 
@@ -35,10 +37,13 @@ from scipy import ndimage as ndi
 from skimage.morphology import reconstruction
 
 M = 128.0 / 70.0          # metres a sample
-C = 4                     # drainage grid: one node every C samples
+C = 8                     # drainage grid: one node every C samples (14.6 m)
 DRY_M = 0.8               # eroded land stays this far above the water: valleys are dry
 K0 = 4.5e-3               # stream-power erodibility (per step, A in m^2, S dimensionless)
-STEPS = 60
+STEPS = 30
+VALLEY_SIGMA = (1.0, 3.0)  # the incision spread over two widths (drainage nodes): swales and broad valleys
+VALLEY_MIX = (0.6, 1.2)
+MAX_CUT_SHARE = 0.4        # no valley deeper than this share of the ground's height over its lowest point in 400 m
 DIFFUSE = 0.12            # hillslope diffusion per step (share of the Laplacian)
 TALUS_DEG = 42.0
 CLIFF_KEEP_DEG = 55.0
@@ -177,12 +182,20 @@ def weather(relief_m: np.ndarray, water_s: np.ndarray, F: dict, seed: int = 1952
     floorc = np.where(oc, 0.0, np.maximum(DRY_M, _down(F["floor"], C) * 0.3))
     floorc = np.minimum(floorc, hc)
     ec = stream_power(hc, oc, kc, floorc)
-    out = relief_m + _up(ec - hc, shape, C) * (_up(kc, shape, C) > 0)
+    # valleys, not trenches: the incision spread over two widths, so a valley's width and depth grow with its
+    # drainage (a big channel's cut spreads wide and U-shaped, a rill's stays a shallow swale), capped by the relief
+    cut = np.minimum(ec - hc, 0)
+    cut = sum(m * ndi.gaussian_filter(cut, sg) for m, sg in zip(VALLEY_MIX, VALLEY_SIGMA))
+    base = ndi.minimum_filter(hc, size=int(400 / (C * M)) | 1)
+    cut = np.maximum(cut, -MAX_CUT_SHARE * np.maximum(hc - base, 0))
+    # weighted by the full-resolution erodibility (a cubic resample of a near-zero field rings, and a hard mask of
+    # it flips in drainage-grid blocks)
+    out = relief_m + _up(cut, shape, C) * np.clip(kfac / 0.05, 0, 1)
     # detail: ridged fine relief on slopes, sized by the region's roughness
     gy, gx = np.gradient(ndi.gaussian_filter(out, 3), M)
     sl = np.clip(np.hypot(gx, gy) / 0.35, 0, 1)
-    det = 0.6 * ridged(shape, 22 / M, seed + 11) + 0.4 * ridged(shape, 9 / M, seed + 12)
-    out = out + (0.3 + 0.9 * kfac) * F["rough"] * sl * det
+    det = 0.6 * ridged(shape, 45 / M, seed + 11) + 0.4 * ridged(shape, 20 / M, seed + 12)
+    out = out + (0.1 + 0.3 * kfac) * F["rough"] * sl * det
     out = thermal(out)
     # low ground (little relief span) keeps only a third of its fine relief under 15 m: marsh lies flat between
     # rarer, softer hummocks
@@ -206,13 +219,15 @@ def settle_places(relief_m: np.ndarray, centres_ij: list[tuple[float, float, str
         r = BUILD_R_M.get(tier)
         if r is None:
             continue
-        skirt = r / 2
-        rr = int((r + skirt) / m) + 40
+        skirt = r
+        rr = int((1.3 * r + skirt) / m) + 40
         a, b = max(0, int(i0) - rr), min(relief_m.shape[0], int(i0) + rr + 1)
         c, d = max(0, int(j0) - rr), min(relief_m.shape[1], int(j0) + rr + 1)
         win = relief_m[a:b, c:d].astype(np.float64)
         ii, jj = np.mgrid[a:b, c:d]
         dist = np.hypot(ii - i0, jj - j0) * m
+        from tools.newworld.terrain_shape import wobble
+        dist = dist / wobble(i0, j0, np.arctan2(ii - i0, jj - j0))   # an irregular core, not a circle
         broad = ndi.gaussian_filter(win, 60 / m / 2, mode="nearest")
         fine = win - broad
         keep = BUILD_KEEP

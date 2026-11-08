@@ -125,3 +125,44 @@ def test_weathering_drains_keeps_marsh_flat_and_settles_places():
     done = te.settle_places(r, [(80.0, 90.0, "town")], te.M)
     assert done and done[0]["slope_p98_deg"] <= te.BUILD_MAX_SLOPE_DEG + 0.5
     assert done[0]["relief_m"] > 0.05                                       # not bulldozed flat
+
+
+def test_smooth_coast_keeps_thin_streams_and_rounds_square_corners():
+    from scipy import ndimage as ndi
+    from tools.newworld import terrain_coast as tc
+    water = np.zeros((80, 80), bool)
+    water[:, :20] = True                       # sea on the west
+    water[40, 20:70] = True                    # a 1 px stream into it
+    water[5:25, 20:40] = True                  # a square bay with sharp corners
+    g = ts.Grid(rows=120, cols=120, p0x=0.0, p0y=0.0)
+    sd, thin, force = tc.signed_distance(water, 3)
+    s = tc.sample(sd, thin, g, 3, force=force)
+    ws = s < 0
+    lab, _ = ndi.label(ws)
+    i, j = g.ij(np.array([65.5, 10.0]), np.array([40.5, 40.5]))
+    a = lab[int(round(i[0])), int(round(j[0]))]
+    b = lab[int(round(i[1])), int(round(j[1]))]
+    assert a > 0 and a == b                    # the stream reaches the sea in one body
+    ci, cj = g.ij(np.array([39.5]), np.array([24.5]))   # the bay's outer south-east corner pixel
+    assert s[int(round(ci[0])), int(round(cj[0]))] > -1.0   # rounded: no longer deep inside the water
+    agr = tc.agreement(ws, g, water)
+    assert agr["blocks4"] > 0.97
+
+
+def test_pad_follows_the_slope_without_a_rim():
+    water = np.zeros((62, 62), bool)
+    g = _grid()
+    yy = np.arange(g.rows)[:, None] * np.ones((1, g.cols))
+    h = (yy * 4.0 + 500).astype(np.float32)               # a gentle even slope
+    before = h.copy()
+    ts.flat_pad(h, np.zeros(h.shape, bool), g, 48.0, 48.0, 25.0)
+    assert np.abs(h - before).max() < 0.6 * ts.U         # a plane on the land's lie: almost nothing cut or filled
+    del water
+
+
+def test_shore_access_leaves_dry_ground_alone():
+    g = _grid()
+    h = np.full((g.rows, g.cols), 30 * ts.U, np.float32)
+    before = h.copy()
+    ts.shore_access(h, np.zeros(h.shape, bool), g, 48.0, 48.0, 30.0)
+    assert np.array_equal(h, before)

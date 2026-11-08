@@ -67,7 +67,10 @@ WORDS = {"swamp": "swamp", "bayou": "bayou", "mangroves": "mangroves", "basin": 
          "mesa": "mesa", "ridge": "ridge", "upland": "upland", "uplands": "upland", "marsh": "marsh",
          "hills": "upland", "island": "isle", "islands": "archipelago", "bog": "marsh", "floodplain": "basin", "delta": "basin"}
 FORMS = ("low", "hills", "mesa", "ridge")
-SCALES = {"big": (1500, 700), "mid": (300, 150), "small": (60, 25), "hum": (10,)}   # noise wavelengths, metres
+SCALES = {"big": (1500, 700), "mid": (300, 150), "small": (60, 25), "hum": (10,),
+          "knoll": (450, 200, 120), "amod": (2500,), "micro": (12, 6)}   # noise wavelengths, metres
+BMV_MARSH_FLOOR_M = 1.7   # BM&V's marsh lies level about 1.7 m above the water from about 10 m inland
+BMV_MARSH_RAMP_M = 7.0    # its shore: 0.11 m at the water, 0.46 at 4 m, 1.03 at 8 m, 1.71 at 16 m
 COARSE = 8           # coarse field spacing in samples (1024 units)
 BLEND_SIGMA = 8      # coarse samples: one Morrowind cell
 
@@ -93,6 +96,9 @@ def region_params(region) -> tuple[dict, str]:
             p[key] = float(v)
             used.append(col)
     src = f"db: {', '.join(used)}; fallback '{word}' for the rest" if used else f"fallback '{word}'"
+    if p["form"] == "low":            # Bethesda's numbers for marsh, whatever the table's floor
+        p["floor"], p["ramp"] = BMV_MARSH_FLOOR_M, BMV_MARSH_RAMP_M
+        src += f"; low ground at BM&V's {BMV_MARSH_FLOOR_M} m floor and {BMV_MARSH_RAMP_M} m shore ramp"
     return p, src
 
 
@@ -187,14 +193,23 @@ def coarse_fields(wx: np.ndarray, wy: np.ndarray, region_of_cell: dict, params: 
 
 
 def relief(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
-    """Natural ground height (metres above the water) from full-resolution fields F and noise n."""
-    hill = np.clip(0.5 + 0.22 * (0.7 * n["big"] + 0.5 * n["mid"]), 0, 1) ** 1.6
+    """Natural ground height (metres above the water) from full-resolution fields F and noise n.
+
+    Hills carry mid-scale landforms (knolls, ridges and swales at 120 to 450 m, from ridged noise) whose amplitude
+    itself varies over 2.5 km, so some ground is busy and some calm, as Skyrim's is; low ground is BM&V's flat floor
+    with sparse hummocks and a little micro relief."""
+    amod = smoothstep(-0.9, 1.0, n["amod"])
+    ridg = 1 - np.abs(n["knoll"])                          # sharp crests, rounded swales
+    knolls = amod * (ridg - 0.55)
+    base = np.clip(0.5 + 0.22 * (0.7 * n["big"] + 0.5 * n["mid"]), 0, 1)
+    hill = np.clip(base + 0.4 * knolls, 0, 1.2) ** 1.6
     m = 0.6 * n["big"] + 0.4 * n["mid"] + 0.04 * n["small"]
-    plateau = 0.55 * smoothstep(-0.35, -0.33, m) + 0.45 * smoothstep(0.45, 0.47, m)
+    plateau = 0.55 * smoothstep(-0.38, -0.30, m) + 0.45 * smoothstep(0.42, 0.50, m)   # escarpments, not cracks
     mesa = 0.12 * hill + 0.88 * plateau
     ridge = np.clip(F["spine"] * (0.8 + 0.12 * n["mid"]) + 0.25 * hill * (1 - F["spine"])
                     + 0.08 * np.abs(n["small"]) * F["spine"], 0, 1)
-    low = 0.3 * hill ** 2
+    hummock = np.clip(ridg - 0.7, 0, None) / 0.3 * amod      # sparse, soft, varied
+    low = 0.06 * np.clip(base, 0, 1) ** 3 + 0.18 * hummock ** 2
     rel = F["w_hills"] * hill + F["w_mesa"] * mesa + F["w_ridge"] * ridge + F["w_low"] * low
     span = np.maximum(F["summit"] - F["floor"], 0)
     inland = 0.35 + 0.65 * coast_t
@@ -207,5 +222,6 @@ def relief(F: dict, n: dict, coast_t: np.ndarray) -> np.ndarray:
     c = np.clip(F["cliff"] * 5.0, 0, 0.9) * (1 - F["w_mesa"]) * (1 - F["w_low"])
     h = (1 - c) * h + c * terr
     tops = F["w_mesa"] * plateau                     # mesa tops stay flat
-    h += F["rough"] * (0.35 * n["small"] + (0.08 + 0.25 * F["w_low"]) * n["hum"]) * (1 - 0.85 * tops)
+    h += F["rough"] * (0.08 * n["small"] + (0.05 + 0.1 * F["w_low"]) * n["hum"]) * (1 - 0.85 * tops)
+    h += 0.12 * n["micro"]          # micro relief over a LAND step: no 8-unit terraces on gentle ground
     return np.maximum(h, F["floor"] * 0.5).astype(np.float32)

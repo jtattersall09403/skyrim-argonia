@@ -11,14 +11,15 @@ shore ramp, h = fb + (relief - fb)(1 - exp(-d / ramp)); water falls from MIN_DEP
 of its kind to the kind's cap, so a channel's depth follows its width (the deepest point is half the width in) and
 the sea floor keeps deepening offshore.
 
-The map's water guaranteed. A map pixel is judged at its centre by bilinear reading of the four samples round it:
-water must read at least CHECK_MARGIN under the water level and land at least CHECK_MARGIN over it. Pixels that
-fail push their four samples (land up, water down) by the shortfall, rounded up to LAND's 8-unit step, alternately,
-until none fail or a pixel is held both ways (reported with its px).
+The map's water held. terrain_coast turns the map's water into a smooth signed distance on the samples (its shore
+a natural curve, its shape the map's at map scale); every water sample is held one LAND step under the water level
+and every land sample one over it (hold_water). The map's own pixels are then matched on 4 px blocks, not pixel by
+pixel, since the coast now runs between them.
 
 Places. Needs come from `place_terrain_need`; a place with no row there takes its kind's fallback (FALLBACK_NEEDS):
-- flat-pad: land in the footprint is set to the footprint's median height (at least fb + 0.5 m), feathered over
-  max(20 m, half the radius); water in it is left alone (stilts);
+- flat-pad: a plane fitted to the land under an irregular footprint (tilted with the land up to 2.5 deg, keeping a
+  quarter of the fine relief), eased out over a skirt as wide as the radius (at least 40 m); water in it is left
+  alone (stilts);
 - entrance-in-slope: a knoll 8 m high added to the ground behind the entrance, its face 6 m deep holding the
   opening, its back and sides easing out over 45 and 28 m; in front a corridor eased to at most 1 in 3;
 - rise: a mound of 3 to 12 m over the footprint; shore-access: a low pad 0.4 m above the water;
@@ -29,7 +30,8 @@ Roads (Skyrim's way, measured on Skyrim.esm): the centreline height is the groun
 15 m), held at least 0.4 m above the water and to the class's grade (grade_max less 10% headroom) by forward and
 backward passes; the cross profile is the measured trough (flat to 1.5 m out, then 0.10 m down at 2 m, 0.42 at 4 m,
 0.75 at 6 m, 1.03 at 8 m from the centre, minor roads two thirds of it) feathered into the ground by 14 m (major)
-or 9 m (minor). Only land samples are shaped: where the road meets water a crossing is recorded (a ford when the
+or 9 m (minor), cut only: past the bed the walls lower ground above them and never raise ground below, so a road
+sits in the land, not on a strip. Only land samples are shaped: where the road meets water a crossing is recorded (a ford when the
 water is up to FORD_M wide, else a bridge), and the water stays as drawn.
 
 LAND's format. Heights are rounded to 8 units (VHGT stores int8 steps of 8 units); a step between neighbours over
@@ -49,6 +51,7 @@ WATER_LEVEL = 0.0
 FREEBOARD = 0.3 * U           # land at the shore
 MIN_DEPTH = 0.3 * U           # water at the shore
 CHECK_MARGIN = 0.1 * U
+SHORE_M = 0.12                # land and water at the smooth shore (BM&V: 0.11 m at the water's edge)
 QUANT = 8.0
 MAX_STEP = 127 * QUANT
 FORD_M = 8.0
@@ -105,13 +108,22 @@ def sample_classes(grid: Grid, water_px: np.ndarray) -> np.ndarray:
 
 
 def compose(water_s: np.ndarray, relief_m: np.ndarray, ramp_m: np.ndarray, bed_slope: np.ndarray,
-            bed_cap_m: np.ndarray, m_per_sample: float) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    """Land and water heights (units) from the classes and relief. Returns (h, d_land_m, d_water_m)."""
-    d_land = np.maximum(ndi.distance_transform_edt(~water_s) * m_per_sample - m_per_sample / 2, 0).astype(np.float32)
-    d_water = np.maximum(ndi.distance_transform_edt(water_s) * m_per_sample - m_per_sample / 2, 0).astype(np.float32)
-    fb = FREEBOARD / U
+            bed_cap_m: np.ndarray, m_per_sample: float, sd_m: np.ndarray | None = None
+            ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Land and water heights (units) from the classes and relief. Returns (h, d_land_m, d_water_m).
+
+    With `sd_m` (terrain_coast's smooth signed distance, metres) the distances are read from it, so heights near
+    the shore follow the smooth coast between samples and the shore sits at SHORE_M (BM&V: 0.11 m at the water)."""
+    if sd_m is None:
+        d_land = np.maximum(ndi.distance_transform_edt(~water_s) * m_per_sample - m_per_sample / 2, 0)
+        d_water = np.maximum(ndi.distance_transform_edt(water_s) * m_per_sample - m_per_sample / 2, 0)
+        fb, wb = FREEBOARD / U, MIN_DEPTH / U
+    else:
+        d_land, d_water = np.maximum(sd_m, 0), np.maximum(-sd_m, 0)
+        fb = wb = SHORE_M
+    d_land, d_water = d_land.astype(np.float32), d_water.astype(np.float32)
     land = fb + np.maximum(relief_m - fb, 0) * (1 - np.exp(-d_land / np.maximum(ramp_m, 1)))
-    depth = np.minimum(MIN_DEPTH / U + bed_slope * d_water, np.maximum(bed_cap_m, MIN_DEPTH / U))
+    depth = np.minimum(wb + bed_slope * d_water, np.maximum(bed_cap_m, wb))
     h = np.where(water_s, -depth, land) * U
     return h.astype(np.float32), d_land, d_water
 
@@ -157,6 +169,16 @@ def guarantee(h: np.ndarray, grid: Grid, water_px: np.ndarray, rounds: int = 16)
                     a, c = np.clip(ii + di, 0, grid.rows - 1), np.clip(jj + dj, 0, grid.cols - 1)
                     fn.at(h, (a, c), h[a, c] + sign * push)
     return [(int(x + l), int(y + t)) for y, x in bad]
+
+
+def hold_water(h: np.ndarray, water_s: np.ndarray) -> int:
+    """Every water sample at least one LAND step under the water level, every land sample one over it (the smooth
+    coast decides which is which). Mutates h; returns the samples moved."""
+    lo = water_s & (h > WATER_LEVEL - QUANT)
+    hi = ~water_s & (h < WATER_LEVEL + QUANT)
+    h[lo] = WATER_LEVEL - QUANT
+    h[hi] = WATER_LEVEL + QUANT
+    return int(lo.sum() + hi.sum())
 
 
 def quantise(h: np.ndarray) -> np.ndarray:
@@ -208,27 +230,58 @@ def _ease(x):
     return x * x * (3 - 2 * x)
 
 
+PAD_TILT_DEG = 2.5            # a pad follows the land's lie up to this tilt
+PAD_KEEP = 0.25               # share of the land's fine relief a pad keeps
+
+
+def wobble(i0: float, j0: float, theta: np.ndarray, amount: float = 0.25) -> np.ndarray:
+    """A footprint's radius factor by heading: a few low harmonics seeded by the place, so no footprint is a circle."""
+    rng = np.random.default_rng(int(abs(i0) * 7919 + abs(j0) * 104729) % (2 ** 32))
+    out = np.zeros_like(theta)
+    for k in (2, 3, 5):
+        out += rng.normal(0, 1.0 / k) * np.cos(k * theta + rng.uniform(0, 2 * np.pi))
+    return 1 + amount * out / 0.8
+
+
 def flat_pad(h, water_s, grid, i0, j0, r_m, floor_units=None):
-    """Cut and fill: the core at the mean height of the land under it, a skirt as wide as the radius (at least 30 m)
-    easing back into the ground with zero slope at both ends, so there is neither a rim nor a plinth."""
-    skirt = max(30.0, r_m)
-    sl, di, dj = _disc(grid, i0, j0, (r_m + skirt) / grid.m)
+    """A buildable pad that still reads as ground: a plane fitted to the land under an irregular footprint (tilted
+    with the land, at most PAD_TILT_DEG), keeping PAD_KEEP of the land's fine relief, eased back into the ground
+    over a skirt as wide as the radius (at least 40 m) with zero slope at both ends: no rim, no bowl, no circle.
+    Returns the pad's height at the centre (units)."""
+    skirt = max(40.0, r_m)
+    sl, di, dj = _disc(grid, i0, j0, (1.3 * r_m + skirt) / grid.m)
     d = np.hypot(di, dj) * grid.m
+    rr = r_m * wobble(i0, j0, np.arctan2(di, dj))
     land = ~water_s[sl]
-    inner = land & (d <= r_m)
+    inner = land & (d <= rr)
     if not inner.any():
         return None
-    pad = float(np.mean(h[sl][inner])) if floor_units is None else floor_units
-    pad = max(pad, FREEBOARD + 0.5 * U) if floor_units is None else pad
-    x = np.clip((d - r_m) / skirt, 0, 1)
+    win = h[sl].astype(np.float64)
+    smooth = ndi.gaussian_filter(win, max(1.0, r_m / grid.m / 3), mode="nearest")
+    if floor_units is None:
+        A = np.stack([di[inner] * grid.m, dj[inner] * grid.m, np.ones(inner.sum())], 1)
+        gi, gj, c0 = np.linalg.lstsq(A, smooth[inner], rcond=None)[0]
+        g = math.hypot(gi, gj)
+        lim = math.tan(math.radians(PAD_TILT_DEG)) * U
+        if g > lim:
+            gi, gj = gi * lim / g, gj * lim / g
+        c0 = max(c0, FREEBOARD + 0.5 * U)
+        plane = c0 + gi * di * grid.m + gj * dj * grid.m
+    else:
+        c0 = floor_units
+        plane = np.full(win.shape, c0)
+    target = plane + PAD_KEEP * (win - smooth)
+    x = np.clip((d - rr) / skirt, 0, 1)
     w = 1 - x * x * x * (x * (6 * x - 15) + 10)       # smootherstep: no crease at either edge
-    h[sl] = np.where(land, h[sl] * (1 - w) + pad * w, h[sl])
-    return pad
+    h[sl] = np.where(land, win * (1 - w) + target * w, win).astype(h.dtype)
+    return float(c0)
 
 
 def shore_access(h, water_s, grid, i0, j0, r_m):
     """Within the radius, land near the water eases down to a gentle shore (1 in 8) to the waterline."""
     sl, di, dj = _disc(grid, i0, j0, (r_m + 20) / grid.m)
+    if not water_s[sl].any():           # no water in reach: nothing to give access to (no dish dug in dry ground)
+        return
     d = np.hypot(di, dj) * grid.m
     dw = ndi.distance_transform_edt(~water_s[sl]) * grid.m
     target = FREEBOARD + 0.125 * dw * U
@@ -388,14 +441,19 @@ def grade_limit(z: np.ndarray, ds: float, g: float, floor: np.ndarray, passes: i
     return z
 
 
-def plan_road(h, water_px, grid, points_px, grade_max, m_per_px=2.925714):
-    """Centreline (px points every ~1 m, z units, wet flags) for one road edge, and its water crossings."""
+def plan_road(h, water_px, grid, points_px, grade_max, m_per_px=2.925714, water_s=None):
+    """Centreline (px points every ~1 m, z units, wet flags) for one road edge, and its water crossings. Wet is read
+    from the samples' water (`water_s`, the smooth coast) when given, else from the map's pixels."""
     pts = densify(np.asarray(points_px, float), 1.0 / m_per_px)
     ii, jj = grid.ij(pts[:, 0], pts[:, 1])
-    H, W = water_px.shape
-    xi = np.clip(pts[:, 0].astype(int), 0, W - 1)
-    yi = np.clip(pts[:, 1].astype(int), 0, H - 1)
-    wet = water_px[yi, xi]
+    if water_s is not None:
+        wet = water_s[np.clip(np.round(ii).astype(int), 0, grid.rows - 1), np.clip(np.round(jj).astype(int), 0,
+                                                                                    grid.cols - 1)]
+    else:
+        H, W = water_px.shape
+        xi = np.clip(pts[:, 0].astype(int), 0, W - 1)
+        yi = np.clip(pts[:, 1].astype(int), 0, H - 1)
+        wet = water_px[yi, xi]
     ground = ndi.map_coordinates(h, [ii, jj], order=1)
     dry = ~wet
     smooth = ground.astype(np.float64)
@@ -491,10 +549,14 @@ def stamp_roads(h, water_s, grid, plans: list):
     feather = np.where(kc == 1, FEATHER_M["major"], FEATHER_M["minor"])
     scale = np.where(kc == 1, TROUGH_SCALE["major"], TROUGH_SCALE["minor"])
     fold = np.interp(d, TROUGH_D, TROUGH_M) * scale * U
-    w = 1 - _ease((d - 4.0) / np.maximum(feather - 4.0, 1))
+    target = zc + fold
+    # the bed (flat width and a little beyond) takes the road's height, cut or fill; past it the trough's walls only
+    # ever cut ground that stands above them, so the road sits in the land and never on a raised strip
+    w_bed = 1 - _ease((d - 2.0) / 3.0)
+    w_cut = 1 - _ease((d - 4.0) / np.maximum(feather - 4.0, 1))
     hs = h[r0:r1]
     land = ~water_s[r0:r1] & near[r0:r1]
-    new = w * (zc + fold) + (1 - w) * hs
+    new = hs + w_bed * (target - hs) + (1 - w_bed) * w_cut * np.minimum(target - hs, 0)
     hs[land] = np.maximum(new[land], FREEBOARD)
     corridor = np.zeros(h.shape, bool)
     corridor[r0:r1] = near[r0:r1] & (d <= 6.0)
