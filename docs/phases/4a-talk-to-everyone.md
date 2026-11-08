@@ -50,7 +50,10 @@ closers, shared tics); `talk_brief.py load` maps a fact id given as a topic to i
 
 725 enabled placed people: 553 silent (E opens nothing), 50 service (a vanilla trade menu only), 3 with vanilla
 lines, 42 hostile, 77 corpses. Talkable: 603; Lilmoth's 30 built (v1, to redo with v2); the act's places (Phase 4
-part B) 89 more. By settlement (silent + service): Blackrose 66, Elden Root 61, Murkmire 48, Murkwood 35, Thorn 33,
+part B) 89 more. Thorn's 33 (`bmv.blackmarshnorth.thorn1`) written under recipe v2 (2026-11-08): 128 facts, 23
+routed directions, 286 lines, reader pass, talk_check 0. Thorn is in the BlackMarshNorth worldspace, so its routes
+were made with `talk_route.route` over `World("005900:Black Marsh North.esp")`; `talk_route facts` and `talk_check`'s
+lore-claim box still read the BlackMarsh world only (to fix in the tool). By settlement (silent + service): Blackrose 66, Elden Root 61, Murkmire 48, Murkwood 35, Thorn 33,
 Haven 30, no settlement 29, Woodhearth 22, Alten Meirhall 21, AyRuin1 17, Greenheart 16, Capital 14, Arenthi 13,
 Barracks 12, BANDITCAMP1 12, Hereguard Plantation 11, Helstrom 11, Village5 10, DWARVEN 10, 26 smaller groups with 1
 to 9 each. Clean-up targets (`we.clean.*`) get no talker row unless kept as talkers (Phase 4 part B's rule).
