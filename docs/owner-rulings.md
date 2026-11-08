@@ -210,3 +210,12 @@ added here the day they are made, with the date and the issue.
   in-game world map are deployed and the owner's walk check is posted. The owner's edits to the plan (nw-02's brief,
   the README's lessons and the permission to use every mod named in the new-worldspace plan, nw-03's additions, the
   CLAUDE.md rule on updating skills after verified feedback) are committed as written.
+- 2026-11-08 (walk-4 feedback, tmp/walk-4-feedback.md, in session): personification is banned in all dialogue (an
+  inanimate thing doing a person's act: "the roll adds months", "the hold heard you"); every line we have is swept for
+  it. The opening needs more quest stages with journal entries: talk to Wuleen-Sei, go out of the hold's door, then
+  what to do next. Everyone in every place the slice quests touch talks, the opening barge's people included.
+  Buys-the-Months must let the player give a name. Mee-Tuja's height is wrong (about 12 feet). Audit every door we
+  have changed: one did nothing, another showed a room but teleported out. Many people near Lilmoth's docks lost
+  their dialogue: a regression to fix. The standing backstep becomes Skyrim's own vanilla backstep, not the truncated
+  Dynamic Dodge clip. TrueHUD's Combined preset did not reach the game: apply it. The backstab gave the stagger but
+  not the execution or its damage: make the execution play.
