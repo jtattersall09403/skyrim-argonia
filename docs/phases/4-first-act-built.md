@@ -98,10 +98,7 @@ the quest is re-authored.
   the alias flag. `brief.py` refuses a record with no fail-forward, so stage 94 and its death triggers stay wired
   (unreachable while essential). F3 skipped. Briefs were rebuilt and both speakers' lines rewritten (Heavy-Rope 21, Ussa-Rekh 3;
   lint 0). Fact requests: the tokens and the promise in Ussa-Rekh's season line are cut (gap QA21, not lore); the Owing
-  wording is kept, from labour-and-bondage.md §2. **Blocker found:** Dock2 (`02F35A`, 11,-2) has **no navmesh** in
-  Black Marsh.esm, Black Marsh North.esp or Valenwood.esp (`ArgoniaPlugin cell` on each), though the record says
-  it has one. The people and the chest need a navmeshed spot (another Soulrest dock cell), or the place goes back to
-  quest-write. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
+  wording is kept, from labour-and-bondage.md §2. Navmesh: Dock2 (`02F35A`) is navmeshed by Black Marsh North.esp (`0A7784`, 225 triangles at dock height, x 47488..49152), not by Black Marsh.esm. An earlier note here said it had none: that was a misread of a truncated listing. The place stands. Still to do: the text-review pass, Chainbreakers.cs, the TIF/QF Papyrus, the read-back, then BC01 and BC02.
 - **MQ01 and MQ03 re-authored to the blocks (2026-11-08, planner rulings).** Every zone is gated by its prerequisite
   stage only. MQ01: three shore boxes (90 from 41, 91 from 42, 93 from 40 under a parent that 41 and 42 turn off, as
   they turn off the other choice's zone); the saved one follows by alias package and is moved to the mark by the
