@@ -4,8 +4,9 @@ Sources (all committed):
 - `newworld/sources/key.json` — the map key and the lookups;
 - the extraction: `out/newworld/symbols.json` (tools/newworld/consolidate.py), `out/newworld/cell_region.json`
   (regions.py), the rasters (raster.py), and, when built, `out/newworld/roads.json` and `borders.json` (roads.py);
-- the research: `newworld/sources/research/cultures.json`, `regions/*.json`, `places/*.json` and `danger.json`
-  (written by the research passes; each record names the id it fills).
+- the research: `newworld/sources/research/cultures.json`, `regions/*.json` and `places/*.json`
+  (written by the research passes; each record names the id it fills);
+- the danger bands, derived by tools/newworld/danger.py from all of the above.
 
 The tables in `newworld/story/data/db/` are this build's output: rerunning rewrites them whole, so a change is made
 in a source and rebuilt, never in a table.
@@ -25,6 +26,7 @@ import numpy as np
 from PIL import Image
 
 from tools.argonia_world import db
+from tools.newworld import danger
 from tools.newworld import frame as f
 from tools.newworld.regions import REGIONS
 
@@ -123,7 +125,9 @@ def settlement_symbol(s: dict) -> tuple[str, str]:
 
 
 def culture_of(s: dict, settled: list[tuple[np.ndarray, str]]) -> str | None:
-    """A settlement glyph's culture: the culture whose fill (and square tint, when measured) is nearest."""
+    """A settlement glyph's culture: the culture whose fill (or square tint, when measured) is nearest. A minor
+    location's dot is too small to carry its colour reliably: it takes a colour only on a tight match, else the
+    culture of the nearest larger settlement."""
     fill = np.array(s.get("fill_rgb") or [0, 0, 0])
     tint = np.array(s["tint_rgb"]) if s.get("tint_rgb") else None
 
@@ -133,9 +137,8 @@ def culture_of(s: dict, settled: list[tuple[np.ndarray, str]]) -> str | None:
             d = min(d, np.abs(np.array(c[2]) - tint).sum() + 40)
         return d
     best = min(CULTURE_COLOURS, key=dist)
-    if dist(best) < 90:
+    if dist(best) < (40 if s.get("shape") == "dot" else 90):
         return best[0]
-    # a dot with an unrecognised fill: the culture of the nearest culture-bearing settlement
     p = np.array([s["px"], s["py"]])
     near = min(settled, key=lambda t: np.hypot(*(t[0] - p))) if settled else None
     return near[1] if near else None
@@ -203,7 +206,6 @@ def build() -> db.World:
     cultures_r = {r["id"]: r for r in load_json_dir(RESEARCH / "cultures.json")}
     regions_r = {r["id"]: r for r in load_json_dir(RESEARCH / "regions" / "*.json")}
     places_r = {r["id"]: r for r in load_json_dir(RESEARCH / "places" / "*.json")}
-    danger_r = json.loads((RESEARCH / "danger.json").read_text()) if (RESEARCH / "danger.json").exists() else {}
 
     for cid, fill, tint in CULTURE_COLOURS:
         r = cultures_r.get(cid, {})
@@ -236,14 +238,11 @@ def build() -> db.World:
                  label_px=px, label_py=py, **{k: r.get(k) for k in region_cols})
         write_notes(w, "region", rid, r, source)
 
-    # cells
-    band = danger_r.get("cells", {})
+    # cells (their danger bands are set by danger.py once places and roads are in)
     for (x, y), rid in sorted(cell_region.items()):
         l, t, rr, b = f.cell_px_box(x, y)
         land = 1.0 - float(water[max(t, 0):b, max(l, 0):rr].mean())
-        d = band.get(f"{x},{y}", {})
-        w.insert("cell", x=x, y=y, region_id=rid, land_share=round(land, 3), danger_band_id=d.get("band"),
-                 danger_why=d.get("why"))
+        w.insert("cell", x=x, y=y, region_id=rid, land_share=round(land, 3))
 
     # places
     rows, seen = [], Counter()
@@ -299,6 +298,7 @@ def build() -> db.World:
                      facing_deg=need.get("facing_deg"), why=need["why"])
 
     roads_and_borders(w)
+    danger.assign(w)
     w.insert_many("source", sorted(sources.values(), key=lambda r: r["id"]))
     w.save()
     return w
