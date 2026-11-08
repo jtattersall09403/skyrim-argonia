@@ -93,7 +93,8 @@ under ~/games/skyrimse/newworld-assets/<id>; 110 of 3,368 flora model paths do n
 LE tree meshes) and are never placed.
 
 Owed on the reworked terrain (one pass, in this order): water_kinds → landcover → textures → place (with each habitat's
-refs per hectare calibrated to the measured source density within ±20%: BM&V swamp ground 198/ha, KotM rainforest and
+refs per hectare calibrated to the measured source density within ±20%, and every texture named inside a
+placed model resolving in the NewWorld profile (25 KotM/TR texture paths do not): BM&V swamp ground 198/ha, KotM rainforest and
 mud 130–150/ha, marsh grass 39/ha, river bottom 27/ha, table in the report) → world.sh (ESM with refs) → navmesh full
 run → LOD full run → the off-game read-back (step 12).
 
