@@ -130,6 +130,10 @@ rules.
       the east side). Say whether names, topics and manner sit right, any two who sound alike, and any "my friend" from a
       stranger.
 
+- [ ] **6.3 Rumours.** Before taking a side quest, ask a local "Latest rumours" (Bejeen-Ul in Helstrom's street for LQ30;
+      in Blackrose, Talks-To-Water for BC01). They name the quest giver and where to find them; once the quest has
+      started they no longer offer it.
+
 ## 7. The first story slice (Phase 4): play it from a new game
 
 All 11 quests are built and every stage reads back from the plugin; none has run in game. Reply with the step where any
@@ -154,6 +158,9 @@ sinks or stands in a wall.
 - [ ] **7.6 Chainbreakers (BC01 to BC03).** In Blackrose, Never-Sold sends you to the estate landing* north of town;
       Rows-For-Another down the channel at night; then the fire in the keep* west of the jail (BC02); then Heavy-Rope and
       Ussa-Rekh on Soulrest's open dock (BC03).
+- [ ] **7.7 Warmth and afterwards.** A quest person you have helped greets you more warmly than a stranger does. After
+      BC01 ends, speak to Rows-For-Another: a short greeting about being out of the estate's hands (say the line, or
+      "silent").
 
 ## Done
 
