@@ -18,7 +18,30 @@
     - If you want rumours, ask at the lodge. People talk there in the evenings.
     - The water is free. We make our living from the beds and the rope we sell to travellers.
     - Off the path, you will sink to the knee in mud.
-  detect: "(?i)(^|[.!?]\\s+|,\\s+)(the |our |my |your )?([a-z]+\\s+and\\s+)?(lodge|village|spring|road|marsh|swamp|town|city|place|market|house|river|water|mud|tree|beds?|rope|coin|money|rumours?)\\s+((will|would|can|could|must)\\s+)?(talks?|says?|wants?|knows?|pays?|waits?|decides?|remembers?|forgets?|hears?|takes?|keeps?|is for|are for)\\b"
+  detect: subject-act
+  subjects: [roll, rolls, ledger, ledgers, book, books, list, tally, hold, barge, ship, ships, boat, boats, town, towns,
+    village, villages, city, camp, house, hall, lodge, place, marsh, marshes, swamp, swamps, bog, fen, river, rivers, water,
+    waters, mud, sea, shore, road, roads, path, paths, law, laws, debt, debts, Owing, owing, contract, contracts, letter,
+    letters, note, coin, coins, money, gold, market, markets, plantation, estate, estates, dock, docks, pier, fire, reeds,
+    rain, wind, wall, walls, gate, door, deck, tower, fort, prison, mine, quarry, field, fields, paddy, paddies, tide, tides,
+    flood, storm, dark, night, season, months, beds, rope, spring, tree, trees, rumour, rumours, ink, page, paper, chest,
+    cage, chain, chains, fever, coast, island, border, province, crown, treasury, tariff, tax, taxes, toll, tolls, price,
+    prices, trade, sword, blade, knife, net, nets, jungle, forest, ground, land, stone, shed, work, salt, rice, Guild, guild]
+  acts: [say says said saying, add adds added adding, hear hears heard hearing, want wants wanted wanting,
+    know knows knew known knowing, remember remembers remembered remembering, forget forgets forgot forgotten forgetting,
+    watch watches watched watching, decide decides decided deciding, wait waits waited waiting, talk talks talked talking,
+    tell tells told telling, ask asks asked asking, pay pays paid paying, give gives gave given giving,
+    see sees saw seen seeing, listen listens listened listening, like likes liked, hate hates hated, love loves loved,
+    care cares cared, forgive forgives forgave, judge judges judged, call calls called calling, demand demands demanded,
+    expect expects expected, allow allows allowed, refuse refuses refused, punish punishes punished,
+    swallow swallows swallowed, eat eats ate eaten, keep keeps kept keeping, take takes took taken taking,
+    claim claims claimed, count counts counted counting, name names named, own owns owned, choose chooses chose chosen,
+    wish wishes wished, need needs needed, mourn mourns mourned, welcome welcomes welcomed, warn warns warned,
+    promise promises promised, grant grants granted, let lets, owe owes owed, charge charges charged, sell sells sold,
+    buy buys bought, speak speaks spoke spoken, whisper whispers whispered, answer answers answered, sleep sleeps slept,
+    dream dreams dreamed, accept accepts accepted, reward rewards rewarded, trust trusts trusted, notice notices noticed,
+    learn learns learned, hunt hunts hunted, follow follows followed, seek seeks sought, guard guards guarded,
+    protect protects protected, weep weeps wept, laugh laughs laughed, mind minds, ignore ignores ignored, feed feeds fed]
 
 - id: B02-verbless-appositive
   rule: Do not open a sentence with a noun phrase, a comma and a description in place of a verb.
