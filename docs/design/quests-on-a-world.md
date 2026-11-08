@@ -69,6 +69,27 @@ The work runs in this order; each part names the skill or tool that carries it.
   the vibe.
 - **A slice first:** fit the opening act and a few lines that do not clash, play them, then the rest.
 
+**Skill use.** Quests are played with the game's own skills, named in the record:
+- Every stage that asks the player to do something names the skill it uses (One-Handed, Two-Handed, Archery, Block,
+  Destruction, Alteration, Illusion, Conjuration, Restoration, Alchemy, Sneak, Lockpicking, Pickpocket, Speech, and the
+  stack's added schools). Climbing and swimming are movement, not skills.
+- Every main quest offers at least two ways through using different skills, so different builds can finish it.
+  Faction quests lean on the faction's own skills.
+- A skill route can fail: a Speech check has a threshold and a gold or goods alternative; a lock has a level; a theft
+  or pickpocket can be seen; a fight can be lost. Failing moves the quest on or closes a way, never dead-ends it.
+- Each route is built from the matching block: a skill condition on a line, a lock level, the crime engine, a
+  fixed-level enemy and a death trigger.
+
+**Grounding.** Everything a quest or a line tells the player is true in the loaded world:
+- Every fact is a world record (its form key and position) or a lore line (its file and line).
+- Where the world and the lore disagree on something the player can see, the world wins and the lore line is not used.
+- A quest's places, people, things and clues are real references in the world or world edits in the ledger. Its
+  journal names what the player can find there.
+- A speaker's brief lists only the facts that speaker knows, measured from where they stand. The writer states no
+  other fact.
+- The checkers fail a line or fact without a source, a source the world contradicts, a place or person that is not
+  there, and a fact given to someone who could not know it.
+
 ## 4. Edit the world lightly
 
 - **Clean-up per host place:** placements that break the setting or level with the player are disabled by override;
@@ -130,7 +151,9 @@ services matching their stock, and rumours that point to a quest only while it c
 ## 7. Write the quest dialogue
 
 Per speaker from the record with `dialogue-write` (matched lines from the reference corpus as the model; the speaker's
-brief generated from the data), one `text-review` pass by another agent, then loaded. Cool, middle and warm bands are
+brief generated from the data, holding only that speaker's sourced facts, their part in each stage and the skill
+checks they answer), one `text-review` pass by another agent, then loaded. A line that sets a stage or checks a skill
+says so plainly in the words the player reads (what was agreed, what is needed). Cool, middle and warm bands are
 separated by the engine's relationship rank; race forms of address only where the brief asks; a short greeting for
 anyone a quest ending leaves standing; journal and objective text written and reviewed the same way.
 
