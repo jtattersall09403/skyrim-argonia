@@ -55,11 +55,20 @@ The owner's first walk is the whole stack *inside* Black Marsh, so the stack and
   CompanionsJorrvaskrTheftNode) hold GetVMQuestVariable conditions that Spriggit 0.41's YAML loses one of; `make
   plugin` re-copies their conditions from the load order's winners after deserialising, and the read-back proves
   the count against the winners.
-- **Weapon drawn: walk or sprint, no run (owner's walk, 2026-11-06): the collection's design, kept.** AMMCO.esp (Arena
-  Movement, Distar edit, loaded after Dark Souls Movement) wins `NPC_1HM_MT` and `NPC_2HM_MT` with run speed equal to walk
-  (forward 80.1, back 45.45 and 71.93), so a drawn weapon walks; Dark Souls Movement's own 300 run loses. The mod's summary
-  (Nexus 53528): "you can walk, you can sprint, you just can't run around". Its Mern edit (1HM run about 170) is the
-  faster variant, a one-row `pick` in `stack.py` if the owner wants it.
+- **Weapon drawn: the normal run (owner's walk 2, 2026-11-07).** AMMCO.esp (Arena Movement, Mern edit, owner #53) wins
+  `NPC_1HM_MT` and `NPC_2HM_MT` with run 170 and 130, which the owner felt as a fast walk. `Argonia.esp` overrides both
+  (tools/ArgoniaPlugin/Combat.cs) with Dark Souls Movement's run, 300 every way, the same as the sheathed run
+  (`NPC_Default_MT`, Dark Souls Movement); walk and turn speeds stay AMMCO's. Bows stay AMMCO's (run 300).
+- **Combat and HUD after walk 2 (2026-11-07).** TrueHUD's MCM defaults in the staged `settings.ini` (row `truehud`;
+  display mode 1 is "Dynamic", the earlier 2 was "In combat"), and MCM Helper's user file
+  `MCM/Settings/TrueHUD.ini` absent on argonia-play (searched 2026-11-08), so they hold. No health regen for the player: an ability
+  `ARG_NoHealthRegen` (Value Modifier, HealRateMult -100) on the Player's base record, no script. Compass on in
+  `stack.ps1`; quest markers stay off. Elden Parry's window end 0.5 s (stream delay; row `elden-parry`). The standing
+  dodge's travel (about 5.4 m in two pushes) is Dynamic Dodge's backstep clip as shipped (its AMR `animmotion`
+  annotations; our 80xxx submods are byte copies of its `StepDodgeBack.hkx`), kept. The backstab is Rim Parry's: the
+  light bash (block held, attack tapped) within 30 degrees of straight behind, cast through Payload Interpreter; Elden
+  Parry's parry from behind does nothing because its parry only answers hits from the front. Magistrate Levitate
+  (Nexus 24695, data only) laid; its Levitate is in the test kit.
 - **The map.** Owner, 2026-11-07 walk: in BlackMarsh the M map shows Skyrim's Tamriel with BM&V's markers. Measured
   2026-11-08 (research lane): BM&V's four worldspaces have no parent and an all-zero MNAM (no usable map bounds; only
   the camera heights 50000 to 80000 are set), and SkyrimSE.exe's `sMapWorldDefaultWorldSpace` default is Tamriel, so

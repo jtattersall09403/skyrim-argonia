@@ -727,5 +727,14 @@
   "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): poise and stagger (owner walk 2026-11-07)",
   "linked_or_forked_by": "none: depended on as the player’s own download",
   "notes": "Added 2026-11-07 in place of POISE 72653 + Poisebreaker 74032, whose DLLs cannot load on 1.7.104."
+ },
+ {
+  "name": "Magistrate Levitate SE (Nexus 24695)",
+  "source_url": "https://www.nexusmods.com/skyrimspecialedition/mods/24695?tab=files&file_id=598855",
+  "version": "2.85 (mods/dependencies.json row magistrate-levitate)",
+  "licence": "none stated",
+  "used_by": "the Argonia profile on the game machine (laid by infra/gpu-box/stack.py; the player downloads it): the Levitate spell in the opening's test kit (owner walk 2026-11-07)",
+  "linked_or_forked_by": "none: depended on as the player’s own download",
+  "notes": "author n7magistrate; floating animations credited by the author to DualSun. No terms or AI clause stated on the page."
  }
 ]
